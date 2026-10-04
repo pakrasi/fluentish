@@ -18,14 +18,14 @@ The old apps stay in use until the exam on 9 Oct **and** the iPhone check below.
 
 Igloo keeps its service worker for Drill offline, and its SM-2 data (`doors.srs.v1`, `doors.know.v1`, …) stays owned by Igloo.
 
-## Branches (local, not pushed)
+## Branches (local, not pushed, except Fluentish's)
 
 | Repo | Branch | Commits on top of main |
 |---|---|---|
 | `~/language-doors` | `cutover` (from `origin/main` 4d90cfb) | `88fd783` B1 hash guard, B1 assets dropped, scoped `swKill`, V 20261004a · `9712b4e` `scripts/cutover-merge.sh` |
 | `~/pakrasi-lab/b1-exam` | `cutover` (from main b8833f7) | `380d861` app guard + dashboard stub · `62ba54f` privacy fix · `81487ca`, `1166280` `scripts/cutover-merge.sh` (merge, `--redirect-only`, `--rollback`) |
 | `~/pakrasi-lab/b1-exam` | `cutover-redirects` | points at `380d861` (the stubs alone) |
-| `~/fluentish` | `docs-cutover` | this page and `tools/cutover/` (the rehearsal) |
+| `~/fluentish` | `docs-cutover` | this page and `tools/cutover/` (the rehearsal); merged into `main` with both blockers fixed |
 
 ### What each stub does
 
@@ -37,19 +37,24 @@ Igloo keeps its service worker for Drill offline, and its SM-2 data (`doors.srs.
 ### `version.json` and service workers
 
 - Igloo's `version.json` stays `"sw":"on"`. The old `swKill` on origin/main unregisters **every** registration on `pakrasi.github.io`, Fluentish's included, and any stale B1 tab would run it on `"sw":"off"`. So the cutover only bumps V. The new `swKill` is scoped. Retiring Igloo's worker belongs to phase 3, and that should ship a self-unregistering `sw.js` (`self.registration.unregister()` on activate, scoped by nature) rather than `"sw":"off"`.
-- Fluentish (`src/services/sw.js`) registers itself on every load and whenever the page becomes visible, so even an unscoped kill heals on the next visit (tested, E1 below). Its own kill switch is `"sw":"off"` in **Fluentish's** `version.json`. That affects only `/fluentish/` and `fluentish-*` caches. `tools/stamp.mjs` currently writes `sw: 'on'` (line ~147). Using the switch therefore means changing that value and deploying.
+- Fluentish (`src/services/sw.js`) registers itself on every load and whenever the page becomes visible, so even an unscoped kill heals on the next visit (tested, E1 below). Its own kill switch is `"sw":"off"` in **Fluentish's** `version.json`. That affects only `/fluentish/` and `fluentish-*` caches. It needs no code change: `tools/stamp.mjs` reads `--sw`, else `FLUENTISH_SW`, and `deploy.yml` sets that from its `sw` input or the repository variable `FLUENTISH_SW` (README › Service worker): `gh variable set FLUENTISH_SW --body off && gh workflow run deploy.yml`.
 
 ## Before the switch (blockers)
 
-1. **Preview profiles must convert (Fluentish code, not done yet).** The live build runs in shadow mode (`config.deployShadow: true`, `src/core/config.js`). A device that opened it has a `shadow` profile as `device.activeProfile`, and the shadow migration set `device.migratedAt`. Once `deployShadow` is false, `openSession` (`src/data/session.js`) still opens that existing profile. It stays `kind: 'shadow'`, so it never syncs, and it holds the legacy data from the preview day, not from exam week. The real migration never runs, because `migratedAt` is set. Profile › Delete all doesn't help either: it keeps `migratedAt` on purpose. Never clear Safari's site data for pakrasi.github.io as a workaround: the origin is shared, so that also deletes the legacy keys of both old apps.
-   **Needed:** when the session opens with `kind: 'local'` and the active profile is `shadow`, delete the shadow profiles (they never synced), forget a `migratedAt` that came from a shadow migration (record the profile kind next to it), then migrate from the legacy keys as on a first run. Add a test: shadow migrate → legacy keys change → local boot → counts equal the new legacy data.
-2. **Fluentish must read the word-audio index privately** before the full b1-exam merge. `src/services/audio.js` fetches the public `<exam media>/vocab/manifest.json`. The b1-exam `cutover` branch moves that file to private `data/vocab-audio.json`, so Fluentish has to fetch it like the other private files, with the token. Add `'vocab-audio'` to `PULLED` in `src/data/sync/github-b1exam.js` and have `audioManifest()` read the pulled copy. Without a token: no recordings, use the device voice. Until then, merge b1-exam with `--redirect-only`. Without it, word audio silently falls back to the device voice.
-   `progress.json` needs nothing: Fluentish never reads it. It reads `data/results.json`, `feedback.json`, `vocab.json` and `learner.json`.
+1. **Preview profiles convert. Fixed** (`src/data/session.js`, tests in `tests/unit/migrate.test.mjs`). The live build runs in shadow mode (`config.deployShadow: true`). A device that opened it has a `shadow` profile as `device.activeProfile`, and the shadow migration set `device.migratedAt`. On the first boot with `deployShadow: false`, `openSession` sees that the active profile is `shadow` and:
+   - deletes every shadow profile with its data and its recordings on the device (practice only, never synced);
+   - forgets the migration marker, unless a local profile is left (`device.migratedKind` now records which kind of profile a migration made; a marker from before that field can only be a shadow one here);
+   - runs the one-time migration from the legacy keys, as on a first run, so the import shows exam-week data, not preview-day data;
+   - shows one toast: "The preview profile was removed, and your progress was moved over from the old apps." The import notice on Today follows, with the counts.
+   Legacy keys are only read. A second boot opens the new local profile and migrates nothing. Profile › Delete all now also forgets the marker, so the next start imports from the legacy keys again (or opens onboarding when there are none). Tested with synthetic fixtures: preview on preview-day keys, practice and a recording in the preview, then a local boot on exam-week keys: one local profile, the preview data and recording gone, migrated counts equal to the legacy counts and to a first run, no legacy write, and an idempotent second boot.
+   Still: never clear Safari's site data for pakrasi.github.io. The origin is shared, so that also deletes the legacy keys of both old apps.
+2. **Word audio reads the private index. Fixed** (`src/services/audio.js`, `src/data/sync/github-b1exam.js`, tests in `tests/unit/audio.test.mjs`). `'vocab-audio'` is in `PULLED`: the results sync reads `data/vocab-audio.json` from the b1-exam repo with the device's token and keeps it under its own store key `exams.vocabAudio` (not exported). `audioManifest()` uses, in order: that private copy; the public `<exam media>/vocab/manifest.json` while it still exists; nothing, and then ▶ uses the device's German voice. The recordings themselves stay public under `b1-exam/audio/vocab/`. A device that isn't linked (or a preview profile, which never syncs) gets the device voice once the public index is gone. So `--redirect-only` is no longer needed: merge b1-exam in full.
+   `progress.json` needs nothing: Fluentish never reads it. It reads `data/results.json`, `feedback.json`, `vocab.json`, `learner.json` and `vocab-audio.json`.
 3. **Leave shadow mode.** `deployShadow: false`, deployed. This step makes Fluentish the writer for the B1 and exam collections, so from here on use Fluentish only for B1 and exams (one writer per collection, review B2). Old Igloo Drill/Test/Write stay fine.
 
 ## Order of the switch (planned for 13–16 Oct)
 
-1. Blockers 1 and 2 merged in Fluentish, CI green.
+1. Blockers 1 and 2 merged in Fluentish, CI green (done; the live build is still in shadow mode).
 2. On each device (iPhone Safari, Mac browser), run the **count bookmark** below on any pakrasi.github.io page and keep the numbers.
 3. Fluentish leaves shadow mode (commands below). Open `https://pakrasi.github.io/fluentish/` on each device once.
 4. Run the **iPhone checklist**. Any failure: stop and roll back Fluentish only (the old apps were never touched).
@@ -61,6 +66,7 @@ Igloo keeps its service worker for Drill offline, and its SM-2 data (`doors.srs.
 
 Do it on the iPhone in the same place he uses daily: either a Safari tab or the Home Screen icon. They have separate storage (review S3), so don't mix them.
 
+- [ ] **Preview removed.** On a device that opened the preview, the first visit shows the toast "The preview profile was removed…", the preview banner is gone, and Profile shows no preview profile.
 - [ ] **Migrated counts match.** Fluentish's import notice on Today shows cards, exam attempts, drafts and words. They equal the bookmark's `b1 cards`, `exam attempts`, `drafts` and `words`, except for cards that migrate.js skips as unusable (no valid S, D, due or reps). Any gap beyond a few cards is a stop. Check the Mac browser the same way.
 - [ ] **Mic**: Practice › Say it aloud: the mic check passes and a spoken answer is graded. Exam › a Sprechen part records, plays back and shows its length.
 - [ ] **Keyboard stays up** through a typed Practice round of at least 10 items: after Return the field keeps focus and the keyboard does not drop between items, including after a wrong answer and the retype.
@@ -70,7 +76,7 @@ Do it on the iPhone in the same place he uses daily: either a Safari tab or the 
 - [ ] **A captured word reaches the Mac**: save a word in an exam review, sync, `b1-review.py vocab-todo` lists it.
 - [ ] **Background and resume**: lock the phone during a Sprechen recording, unlock: the take is kept or recovered, not lost.
 - [ ] **Airplane mode**: answer a few items offline, reconnect: Today shows them sent within a minute.
-- [ ] **Word audio** (after blocker 2): ▶ on a saved word plays the recording, not the device voice.
+- [ ] **Word audio** (after the b1-exam merge in step 5 and one sync, e.g. reopen Today): `curl -sI https://pakrasi.github.io/b1-exam/audio/vocab/manifest.json` gives 404, and ▶ on a word in Look up still plays the recording, not the device voice.
 
 **Count bookmark** (save as a bookmark, run it on any `pakrasi.github.io` page; it only reads):
 
@@ -97,25 +103,27 @@ curl -s https://pakrasi.github.io/fluentish/version.json    # "sha" is the new c
 bash <(git -C ~/language-doors show cutover:scripts/cutover-merge.sh)
 ```
 
-**b1-exam** (merge under the sync lock, so sync.py can't interleave; resolve the expected conflicts in `docs/data/progress.json`, the word-audio index and `docs/app/version.json`; push; restart server.py):
+**b1-exam** (merge under the sync lock, so sync.py can't interleave; resolve the expected conflicts in `docs/data/progress.json`, the word-audio index and `docs/app/version.json`; push; restart server.py). Both blockers are fixed, so this is the full merge, redirects and privacy fix together:
 
 ```
-bash <(git -C ~/pakrasi-lab/b1-exam show cutover:scripts/cutover-merge.sh)                   # redirects + privacy fix
-bash <(git -C ~/pakrasi-lab/b1-exam show cutover:scripts/cutover-merge.sh) --redirect-only   # if blocker 2 is not done yet
+bash <(git -C ~/pakrasi-lab/b1-exam show cutover:scripts/cutover-merge.sh)
 ```
 
-Running it again without `--redirect-only` later merges the privacy fix. Afterwards `curl -sI https://pakrasi.github.io/b1-exam/data/progress.json` gives 404 (after the full merge) and the next `sync.py` writes `data/progress.json`.
+`--redirect-only` is no longer needed (it stays in the script, for a merge of the stubs alone). Afterwards `curl -sI https://pakrasi.github.io/b1-exam/data/progress.json` and `…/b1-exam/audio/vocab/manifest.json` give 404, and the next `sync.py` writes `data/progress.json`.
 
 After the switch, his language-doors working branch `b1-trainer` is behind `main`; continue on `main`.
 
 ## Rollback
 
-- **Fluentish**: `cd ~/fluentish && git revert --no-edit <cutover commit> && git push origin main`, or redeploy an earlier build with `gh workflow run deploy.yml -f sha=<sha>`. Profiles already made `local` stay local: the rollback stops new devices from leaving shadow mode, and it doesn't undo synced data.
+- **Fluentish**: `cd ~/fluentish && git revert --no-edit <cutover commit> && git push origin main`, or redeploy an earlier build with `gh workflow run deploy.yml -f sha=<sha>`. Profiles already made `local` stay local: the rollback stops new devices from leaving shadow mode, and it doesn't undo synced data. A service worker problem alone: `gh variable set FLUENTISH_SW --body off && gh workflow run deploy.yml` (README › Service worker).
+- **After a b1-exam rollback**, Fluentish's word audio needs nothing: the private copy it pulled stays in use until the next sync finds `data/vocab-audio.json` gone and drops it, and from the next start it reads the restored public index.
 - **language-doors**: `cd ~/language-doors && git switch main && git pull --ff-only && git revert --no-edit -m 1 <merge sha> && bash scripts/bump_v.sh && git commit -qam "Rollback V" && git push origin main`. The merge sha is in `git log --merges -1`.
 - **b1-exam**: `bash <(git -C ~/pakrasi-lab/b1-exam show cutover:scripts/cutover-merge.sh) --rollback`. It reverts every cutover merge under the sync lock, newest first, puts the word-audio index back in `docs/` with the entries added since, pushes, and restarts server.py.
 - **What a rollback can't bring back**: B1 reviews done in Fluentish after the cutover exist only in Fluentish. Exam attempts, recordings, words and feedback are safe, because they went to the b1-exam repo. The old apps' localStorage still holds the state from the migration, since migrate.js never writes it.
 
 ## `/b1-review` skill text (vault skill, symlinked to `~/.claude/skills/b1-review`)
+
+The skill names the learner where this page says "the learner"; keep its wording there.
 
 ```
 -description: Fritz reviews the learner's daily Goethe B1 mock exam (app at localhost:8426) — reads …
@@ -181,7 +189,7 @@ Also checked:
 
 ## Risks left
 
-- **Blocker 1** (preview profiles) is the main data risk: without it, exam-week progress on a device that opened the preview never reaches Fluentish, and nothing syncs.
+- **Home Screen icon and Safari tab** keep separate storage (review S3): each converts its own preview profile on its first visit after the switch, and only the one he uses daily matters for the counts.
 - **Offline at the moment of cutover**: Igloo's old worker answers `app.html` from its cache when the network fails. An old B1 hub can then run offline and write legacy keys after the migration. The delta re-merge (review B2) has to catch this for 7 days.
 - **Pages caches HTML for up to 10 minutes**, so for that long after a push a browser can still get the old `app.html` and old app. The version checks and the delta re-merge cover it.
 - **Hashed audio names stay public** (review N1): `md5(voice|text)` lets someone confirm a guessed word. The fix is the HMAC naming after the exam.
