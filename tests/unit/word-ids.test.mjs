@@ -52,7 +52,8 @@ test('a lower-case lemma finds the capitalised noun; an existing BW: card keeps 
   assert.equal(wordId('Quatsch', wm), 'BW:quatsch');
 });
 
-test('a lemma that joins the word list later keeps the BW: card it already has', () => {
+test('a lemma that joins the word list later keeps the BW: card it already has', async () => {
+  const { wordId } = await import('../../src/domain/itemids.js');
   const wm = { Raum: ['der_Raum', 'B1'] };
   assert.equal(wordId('Raum', wm), 'W:der_Raum', 'no card yet: the list id');
   assert.equal(wordId('Raum', wm, id => id === 'BW:raum'), 'BW:raum', 'a card made before the word was listed keeps its id');
