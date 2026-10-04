@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "fb6d7793b60c",
+ "version": "79ecf8c8fd2e",
  "languages": [
   {
    "id": "khasi",
@@ -183,8 +183,8 @@
    "id": "b1.items",
    "path": "b1/items.json",
    "schema": "b1-items@1",
-   "bytes": 351180,
-   "sha256": "4cb8bba8bc332f15ca4df4a50f2d0fa03efe48f9738a400f6547b02c3c5dfa2b"
+   "bytes": 351176,
+   "sha256": "4072acf17272ffba971b2d95af2391bb24dd9492f91543bf07e84b0241dacbf2"
   },
   {
    "id": "b1.nouns",
