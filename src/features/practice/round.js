@@ -555,13 +555,13 @@ function drawDone(el, ctx, data, round) {
     h('ul', { class: 'list' }, items.map(it => h('li', { class: 'list-item', lang: 'de' }, short(it))))) : null;
   const exam = c.exam && c.phase !== 'after' && c.phase !== 'none';
   const bar = recallBar(a.recall, a.coverage, t('practice.area.bar', { recall: `${p1(a.recall)} %`, seen: `${p1(a.coverage)} %` }));
-  const anotherHref = round.kind === 'today' ? '#/practice/round' : `#/practice/round?kind=${round.kind === 'area' ? `area:${round.area}` : round.kind === 'topic' ? `topic:${round.topic}` : round.kind}`;
+  const anotherHref = round.kind === 'today' || round.kind === 'mistakes' || round.kind === 'missed' ? '#/practice/round' : `#/practice/round?kind=${round.kind === 'area' ? `area:${round.area}` : round.kind === 'topic' ? `topic:${round.topic}` : round.kind}`;
   replace(el, h('div', { class: 'practice pr-done stack' },
     h('p', { class: 'label' }, t('practice.roundDone')),
     h('h1', null, h('span', { class: 'figure tnum' }, String(sum.right)), ' ', h('span', { class: 'pr-done-of' }, t('practice.ofRight', { n: sum.total }))),
     sum.late ? h('p', { class: 'caption' }, t('practice.late', { n: sum.late })) : null,
     sum.fixedLast ? h('p', { class: 'caption' }, t('practice.lastFixed')) : null,
-    h('div', { class: 'pr-ready' },
+    round.kind === 'mistakes' ? null : h('div', { class: 'pr-ready' },
       h('p', { class: 'pr-ready-top' }, h('span', { class: 'label' }, exam ? t('practice.readyFor', { date: label(c.exam) }) : t('practice.readyNow')),
         h('b', { class: 'tnum' }, `${p1(b.recall)} → ${p1(a.recall)} %`)), bar,
       Math.abs(a.recall - b.recall) < 0.0005 ? h('p', { class: 'caption' }, t('practice.repeats')) : null),

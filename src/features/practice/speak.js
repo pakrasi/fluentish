@@ -45,7 +45,7 @@ export async function mountSpeak(el, ctx, parts) {
   const sp = speech();
   const [what, sub] = parts;
   /** @type {(() => void)[]} */ const offs = [];
-  const cleanup = () => { offs.forEach(f => f()); sp.cancel(); };
+  const cleanup = () => { offs.forEach(f => f()); sp.cancel(); document.body.dataset.chrome = 'on'; };
   if (what === 'aloud') { await drawAloud(sub); return cleanup; }
   if (what === 'teil2') { await drawTeil2(); return cleanup; }
   // the list
@@ -232,6 +232,7 @@ export async function mountSpeak(el, ctx, parts) {
     }
     async function start() {
       const total = RUNS[run], scale = total / 180;
+      document.body.dataset.chrome = 'off';   // a timed talk is full screen, like a round
       if (audioUrl) { URL.revokeObjectURL(audioUrl); audioUrl = null; }
       /** @type {any} */ let rec = null;
       if (sp.canRecord()) { try { rec = await sp.record(); } catch { rec = null; } }
@@ -272,6 +273,7 @@ export async function mountSpeak(el, ctx, parts) {
       }
     }
     function after(/** @type {boolean} */ full) {
+      document.body.dataset.chrome = 'on';
       const r = runs[run];
       const nextRun = run + 1 < RUNS.length;
       replace(el, h('div', { class: 'practice stack' }, back('#/practice/speak', t('practice.speak.title')),

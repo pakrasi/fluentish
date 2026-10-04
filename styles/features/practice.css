@@ -142,3 +142,10 @@ body.pr-in-round #view { max-width: none; padding: 0; }
 .pr-folie { font: 400 24px/1.25 var(--font-display); }
 .pr-runbar { height: 6px; }
 .pr-audio { width: 100%; }
+
+/* with a hardware keyboard and room to spare, the buttons sit under the card instead of at the bottom edge */
+@media (hover: hover) and (pointer: fine) and (min-width: 720px) {
+  .pr-round { grid-template-rows: auto auto auto; align-content: start; overflow-y: auto; }
+  .pr-scroll { overflow: visible; }
+  .pr-actions { padding-top: var(--s-4); }
+}
