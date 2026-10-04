@@ -103,8 +103,14 @@ export async function createIdbAdapter(factory = indexedDB) {
     }),
     putAttempts: (/** @type {string} */ p, /** @type {any[]} */ list) => tx(['attempts'], 'readwrite', t => { for (const a of list) t.objectStore('attempts').put(a, [p, a.id]); }),
     putEvents: (/** @type {string} */ p, /** @type {any[]} */ list) => tx(['outbox'], 'readwrite', t => { for (const e of list) t.objectStore('outbox').put(e, [p, e.id]); }),
-    putBlob: (/** @type {string} */ id, /** @type {Blob} */ b) => tx(['blobs'], 'readwrite', t => { t.objectStore('blobs').put(b, id); }),
-    getBlob: (/** @type {string} */ id) => tx(['blobs'], 'readonly', t => req(t.objectStore('blobs').get(id))).then(v => v ?? null),
+    // Bytes, not the Blob itself: WebKit refuses Blobs in IndexedDB in private windows (and older iOS everywhere),
+    // while an ArrayBuffer is stored by every engine. The bytes are read before the transaction opens.
+    putBlob: async (/** @type {string} */ id, /** @type {Blob} */ b) => {
+      const rec = { type: b.type || 'application/octet-stream', buf: await b.arrayBuffer() };
+      return tx(['blobs'], 'readwrite', t => { t.objectStore('blobs').put(rec, id); });
+    },
+    getBlob: (/** @type {string} */ id) => tx(['blobs'], 'readonly', t => req(t.objectStore('blobs').get(id)))
+      .then((/** @type {any} */ v) => (v == null ? null : v instanceof Blob ? v : new Blob([v.buf], { type: v.type }))),
     deleteBlob: (/** @type {string} */ id) => tx(['blobs'], 'readwrite', t => { t.objectStore('blobs').delete(id); }),
     async estimate() {
       try {
