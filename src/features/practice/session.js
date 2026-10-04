@@ -14,6 +14,7 @@
 import * as FS from '../../domain/fsrs.js';
 import * as T from '../../domain/timer.js';
 import { stream } from './compose.js';
+import { origin } from '../../domain/itemids.js';
 
 /** @param {string[]} ids @param {{kind: string, area?: string, topic?: string}} spec @param {string} today @param {number} now */
 export function startRound(ids, spec, today, now) {
@@ -101,7 +102,8 @@ export function answer({ round, entry, o, cards, day, c, forecast = () => 0, now
   // a new Schreiben phrase counts against its own quota (newBy.w), not the daily rounds' new items (newShown)
   if (entry.isNew) { const st = stream(entry.item); if (st !== 'w') day.newShown++; day.newBy = day.newBy || {}; day.newBy[st] = (day.newBy[st] || 0) + 1; }
   if (!day.shown.includes(id)) day.shown.push(id);
-  const res = FS.schedule(rec, { g, ms: o.ms, onTime: !!(entry.limit && o.ms <= entry.limit * 1000), flags, mode: 't', logOnly }, { ...c, forecast }, now);
+  const src = entry.item.origin || (entry.item.area === 'words' ? 'exam' : origin(id, 'b1'));
+  const res = FS.schedule(rec, { g, ms: o.ms, onTime: !!(entry.limit && o.ms <= entry.limit * 1000), flags, mode: 't', logOnly, src }, { ...c, forecast }, now);
   // reinsert misses and learning steps: +4, then +10. A mistake from a correction typed right the first time is not
   // asked again in its own round: it comes back on its schedule.
   const times = round.queue.filter((/** @type {any} */ q) => q.id === id).length;

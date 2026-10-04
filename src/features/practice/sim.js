@@ -234,7 +234,7 @@ export const resumable = (r, today, now) => !!(r && Array.isArray(r.queue) && r.
  */
 export function gradeCard({ rec, g, c, now, ms = 0, forecast = () => 0 }) {
   const ctx = { ...c, forecast };
-  const res = FS.schedule(rec, { g, ms, onTime: g >= 3, flags: '', mode: 's' }, ctx, now);
+  const res = FS.schedule(rec, { g, ms, onTime: g >= 3, flags: '', mode: 's', src: 'speech' }, ctx, now);
   if (g === 4 && res.reinsert === 'learn' && res.rec && (!rec || !rec.reps)) {
     return { rec: { ...res.rec, learn: null, due: FS.dueFor(res.rec.S, ctx) }, reinsert: null, wrote: res.wrote };
   }

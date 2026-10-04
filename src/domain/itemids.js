@@ -14,10 +14,15 @@
      BW:<slug>        exam word that is not in the word list         area words
      F:<attempt>-<n>  a mistake from a Schreiben/Sprechen correction area mistakes
      SS:<fn>-<nn>     a speaking situation (self-graded), deck 'speak' area situations
+     CO:<a>~<b>       cluster study: given word a, type its opposite b  deck 'clusters'
+     CF:<word id>     cluster study: a word family's stem and a meaning, type the word  deck 'clusters'
+     CP:<gap id>      cluster study: a preposition gap sentence          deck 'clusters'
+   Cluster study also schedules W:<word id> (meaning → word) in deck 'clusters'. Script mode keeps SR: (section
+   rehearsals) and SW:<slug> (script words not in the list) in deck 'script'.
 
    Pure; tested in node (tests/unit/practice-ids.test.mjs). */
 
-/** @typedef {'phrase'|'reading'|'grammar'|'situation'|'reply'|'word'|'mistake'|'sim'} ItemKind */
+/** @typedef {'phrase'|'reading'|'grammar'|'situation'|'reply'|'word'|'mistake'|'sim'|'opposite'|'family'|'prep'} ItemKind */
 
 /** @type {Record<string, {kind: ItemKind, area: string}>} */
 export const TAGS = {
@@ -33,6 +38,9 @@ export const TAGS = {
   BW: { kind: 'word', area: 'words' },
   F: { kind: 'mistake', area: 'mistakes' },
   SS: { kind: 'sim', area: 'situations' },
+  CO: { kind: 'opposite', area: 'clusters' },
+  CF: { kind: 'family', area: 'clusters' },
+  CP: { kind: 'prep', area: 'clusters' },
 };
 
 /** The prefix of an item id ('BP', 'F', …) or null. @param {string} id */
@@ -81,3 +89,23 @@ export function wordId(lemma, wordmap = {}, has = null) {
 
 /** The card id of the n-th mistake (1-based) of an exam attempt. @param {string} attemptId @param {number} n */
 export const mistakeId = (attemptId, n) => `F:${attemptId}-${n}`;
+
+/** @typedef {'exam'|'speech'|'practice'|'lookup'|'script'|'test'} Origin */
+/**
+ * Where an item was first met, from its card id and deck, for cards that have no recorded src (every card made before
+ * src was recorded) and as the src of new cards: deck 'speak' → speech, 'script' → script; in deck 'b1' a mistake
+ * from a correction (F:) and a Lesen phrase (BL:) → exam, a Sprechen phrase or situation (BP:, BT:, BR:) → speech,
+ * an exam word (W:, BW: in the exam word list, isExam) → exam; everything else → practice.
+ * @param {string} id @param {string} deck @param {(id: string) => boolean} [isExam]
+ * @returns {Origin}
+ */
+export function origin(id, deck, isExam = () => false) {
+  if (deck === 'speak') return 'speech';
+  if (deck === 'script') return 'script';
+  if (deck !== 'b1') return 'practice';
+  const tag = tagOf(id);
+  if (tag === 'F' || tag === 'BL') return 'exam';
+  if (tag === 'BP' || tag === 'BT' || tag === 'BR') return 'speech';
+  if ((tag === 'W' || tag === 'BW') && isExam(id)) return 'exam';
+  return 'practice';
+}

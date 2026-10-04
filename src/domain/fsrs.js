@@ -58,7 +58,7 @@ function staircase(rec, g, onTime, phase) {
   else if (g <= 2) { rec.stage = Math.max(0, (rec.stage || 0) - 1); rec.streak = 0; }
   if (rec.S < 3) rec.stage = Math.min(rec.stage, 1);
 }
-// One answer. o = {g, ms, onTime, mode, flags}. ctx = {today, exam, phase, forecast(day)}, now (ms, for u).
+// One answer. o = {g, ms, onTime, mode, flags, src?}. ctx = {today, exam, phase, forecast(day)}, now (ms, for u).
 // Returns {rec, reinsert: null | 'learn' | 'lapse', wrote: bool}
 function schedule(rec0, o, ctx, now = Date.now()) {
   const t = ctx.today, g = o.g;
@@ -72,6 +72,8 @@ function schedule(rec0, o, ctx, now = Date.now()) {
   let rec, reinsert = null, wrote = true;
   if (!rec0 || !rec0.reps) {
     rec = { ...init(g), reps: 1, lapses: 0, last: t, first: t, stage: 0, streak: 0, learn: g >= 3 ? 1 : 0, relearn: false, due: t, hist: rec0?.hist || [] };
+    // where the item was first met (exam, speech, practice, lookup, script): added to new records only, for Explore
+    if (o.src && !rec0?.src) rec.src = o.src; else if (rec0?.src) rec.src = rec0.src;
     reinsert = 'learn';
   } else if (rec0.learn != null) {
     rec = { ...rec0 };

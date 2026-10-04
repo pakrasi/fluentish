@@ -2,11 +2,11 @@
    tsconfig.legacy.json checks fsrs.js itself, non-strict, until it is annotated. */
 export interface CardState {
   S: number; D: number; due: string; reps: number; lapses?: number; last?: string; first?: string;
-  stage?: number; streak?: number; learn?: number | null; relearn?: boolean; u?: number; hist?: [string, number, number, string, string][];
+  stage?: number; streak?: number; learn?: number | null; relearn?: boolean; u?: number; src?: string; hist?: [string, number, number, string, string][];
   [k: string]: unknown;
 }
 export interface ScheduleCtx { today: string; exam: string | null; phase: string; forecast?: (day: string) => number }
-export interface Answer { g: 1 | 2 | 3 | 4; ms?: number; onTime?: boolean; mode?: string; flags?: string; logOnly?: boolean }
+export interface Answer { g: 1 | 2 | 3 | 4; ms?: number; onTime?: boolean; mode?: string; flags?: string; logOnly?: boolean; src?: string }
 export const W: number[];
 export function R(t: number, S: number): number;
 export function Ron(rec: CardState | null | undefined, day: string): number;

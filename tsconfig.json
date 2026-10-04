@@ -4,6 +4,6 @@
     "allowJs": true, "checkJs": true, "noEmit": true, "strict": true, "skipLibCheck": true, "resolveJsonModule": true
   },
   "include": ["src/core/clock.js", "src/core/schema.js", "src/core/router.js", "src/core/bus.js", "src/core/i18n.js", "src/core/config.js",
-              "src/data/**/*.js", "src/domain/days.js", "src/domain/budget.js", "src/domain/runway.js", "src/domain/today.js", "src/domain/grade.js", "src/domain/wordtriage.js", "src/domain/itemids.js", "src/domain/modules.js", "src/domain/punct.js", "src/services/*.js", "src/features/practice/sim-audio.js"],
+              "src/data/**/*.js", "src/domain/days.js", "src/domain/budget.js", "src/domain/runway.js", "src/domain/today.js", "src/domain/grade.js", "src/domain/wordtriage.js", "src/domain/itemids.js", "src/domain/modules.js", "src/domain/punct.js", "src/domain/knowledge.js", "src/domain/clusters.js", "src/services/*.js", "src/features/practice/sim-audio.js"],
   "exclude": ["src/vendor"]
 }

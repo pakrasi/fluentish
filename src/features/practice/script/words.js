@@ -160,7 +160,7 @@ export async function mountWords(el, ctx) {
     const sc = deck === 'b1' ? c : (script ? fsCtx(script, c.today) : c);
     const rating = FS.rate({ ok, revealed, limit: null, umlaut: !!g?.umlautMiss?.length, capSlip: !!g?.capMiss?.length, partial: !!g?.partial });
     const ms = performance.now() - cardT0;
-    const res = FS.schedule(prev, { g: rating, ms, mode: 't', flags: revealed ? 'r' : '' }, { ...sc, forecast: () => 0 }, Date.now());
+    const res = FS.schedule(prev, { g: rating, ms, mode: 't', flags: revealed ? 'r' : '', src: 'script' }, { ...sc, forecast: () => 0 }, Date.now());
     if (res.rec) St.saveReview(store, { id: cur.id, rec: res.rec, prev, deck, g: rating, ms, mode: 't', flags: revealed ? 'r' : '', ctx: sc, scriptId: script ? script.id : 'words' });
     if (script && (!prev || !prev.reps)) St.countNew(store, script.id, c.today);
     if (!(cur.id in firstOk)) { firstOk[cur.id] = ok; if (ok) right++; }

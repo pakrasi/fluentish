@@ -170,8 +170,8 @@ export function index(c, words) {
   }
   /** @type {Map<string, string[]>} */ const opp = new Map();
   for (const p of c.opposites?.pairs || []) {
-    if (!opp.has(p.a)) opp.set(p.a, []); if (!opp.has(p.b)) opp.set(p.b, []);
-    opp.get(p.a).push(p.b); opp.get(p.b).push(p.a);
+    opp.set(p.a, [...(opp.get(p.a) || []), p.b]);
+    opp.set(p.b, [...(opp.get(p.b) || []), p.a]);
   }
   /** @type {Record<string, Cluster[]>} */ const byType = {};
   for (const t of TYPES) byType[t] = all.filter(x => x.type === t);
