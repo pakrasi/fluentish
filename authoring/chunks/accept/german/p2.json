@@ -1,0 +1,5624 @@
+{
+ "ENG_CHUNK_0485": {
+  "core_en": "could we get the check, please",
+  "accept": [
+   "die rechnung (bitte)",
+   "wir würden (gern) (gerne) zahlen",
+   "wir möchten (gern) (gerne) zahlen",
+   "zahlen bitte",
+   "können wir (bitte) zahlen",
+   "können wir (bitte) die rechnung haben",
+   "könnten wir (bitte) die rechnung haben",
+   "ich möchte (gern) (gerne) zahlen"
+  ]
+ },
+ "ENG_CHUNK_0486": {
+  "core_en": "watch your step",
+  "accept": [
+   "vorsicht stufe",
+   "pass auf wo du hintrittst",
+   "passen sie auf wo sie hintreten",
+   "pass (bloß) auf",
+   "passen sie auf",
+   "passt auf",
+   "vorsicht",
+   "achtung stufe"
+  ]
+ },
+ "ENG_CHUNK_0487": {
+  "core_en": "talk to you soon",
+  "accept": [
+   "bis bald",
+   "wir hören uns (bald)",
+   "wir sprechen uns (bald)",
+   "man hört sich",
+   "bis dann",
+   "wir telefonieren (bald)"
+  ]
+ },
+ "ENG_CHUNK_0488": {
+  "core_en": "you've got the wrong number",
+  "accept": [
+   "sie haben sich verwählt",
+   "du hast dich verwählt",
+   "sie haben die falsche nummer (gewählt)",
+   "du hast die falsche nummer (gewählt)",
+   "falsch verbunden"
+  ]
+ },
+ "ENG_CHUNK_0489": {
+  "core_en": "you're breaking up",
+  "accept": [
+   "du bist (ganz) abgehackt",
+   "die verbindung ist (ganz) (echt) schlecht",
+   "sie sind (ganz) abgehackt",
+   "ich verstehe dich (ganz) schlecht",
+   "ich verstehe sie (ganz) schlecht",
+   "du brichst (immer wieder) ab",
+   "sie brechen (immer wieder) ab",
+   "die verbindung bricht (immer wieder) ab"
+  ]
+ },
+ "ENG_CHUNK_0490": {
+  "core_en": "you're on mute",
+  "accept": [
+   "du bist stummgeschaltet",
+   "du bist auf stumm (geschaltet)",
+   "sie sind stummgeschaltet",
+   "sie sind auf stumm (geschaltet)",
+   "ihr seid stummgeschaltet",
+   "ihr seid auf stumm (geschaltet)",
+   "dein mikro ist aus",
+   "ihr mikro ist aus"
+  ]
+ },
+ "ENG_CHUNK_0491": {
+  "core_en": "until recently",
+  "accept": [
+   "bis vor kurzem",
+   "bis vor kurzer zeit",
+   "bis vor einiger zeit",
+   "bis neulich"
+  ]
+ },
+ "ENG_CHUNK_0492": {
+  "core_en": "in fact",
+  "accept": [
+   "im gegenteil",
+   "tatsächlich",
+   "(ganz) im gegenteil",
+   "in der tat",
+   "vielmehr"
+  ]
+ },
+ "ENG_CHUNK_0493": {
+  "core_en": "every time",
+  "accept": [
+   "jedes mal (wenn)",
+   "jedesmal (wenn)",
+   "immer wenn"
+  ]
+ },
+ "ENG_CHUNK_0494": {
+  "core_en": "the first time",
+  "accept": [
+   "das erste mal (als)",
+   "beim ersten mal",
+   "zum ersten mal",
+   "als ich (das) erste mal"
+  ]
+ },
+ "ENG_CHUNK_0495": {
+  "core_en": "next time",
+  "accept": [
+   "nächstes mal",
+   "das nächste mal",
+   "beim nächsten mal"
+  ]
+ },
+ "ENG_CHUNK_0496": {
+  "core_en": "right after",
+  "accept": [
+   "gleich nach",
+   "direkt nach",
+   "sofort nach",
+   "unmittelbar nach",
+   "gleich nachdem",
+   "direkt nachdem"
+  ]
+ },
+ "ENG_CHUNK_0497": {
+  "core_en": "before that",
+  "accept": [
+   "davor",
+   "vorher",
+   "zuvor"
+  ]
+ },
+ "ENG_CHUNK_0498": {
+  "core_en": "all of a sudden",
+  "accept": [
+   "plötzlich",
+   "auf einmal",
+   "ganz plötzlich",
+   "mit einem mal",
+   "urplötzlich"
+  ]
+ },
+ "ENG_CHUNK_0499": {
+  "core_en": "That way",
+  "accept": [
+   "so kommen wir",
+   "dann kommen wir",
+   "so sind wir",
+   "dann sind wir",
+   "auf diese weise",
+   "dadurch",
+   "so vermeiden wir"
+  ]
+ },
+ "ENG_CHUNK_0500": {
+  "core_en": "if not",
+  "accept": [
+   "wenn nicht",
+   "falls nicht",
+   "andernfalls",
+   "sonst",
+   "ansonsten"
+  ]
+ },
+ "ENG_CHUNK_0501": {
+  "core_en": "I'm scared of",
+  "accept": [
+   "ich (habe) (hab) angst vor",
+   "ich fürchte mich vor",
+   "ich hab schiss vor"
+  ]
+ },
+ "ENG_CHUNK_0502": {
+  "core_en": "How much does it cost to",
+  "accept": [
+   "was kostet es",
+   "wie viel kostet es",
+   "wieviel kostet es",
+   "was kostet das",
+   "wie viel kostet das",
+   "was kostet",
+   "wie teuer ist es"
+  ]
+ },
+ "ENG_CHUNK_0503": {
+  "core_en": "Are you sure",
+  "accept": [
+   "bist du (dir) sicher (dass)",
+   "sind sie (sich) sicher (dass)",
+   "seid ihr (euch) sicher (dass)"
+  ]
+ },
+ "ENG_CHUNK_0504": {
+  "core_en": "What makes you think",
+  "accept": [
+   "wie kommst du darauf",
+   "wie kommen sie darauf",
+   "wie kommt ihr darauf",
+   "warum denkst du",
+   "warum glaubst du",
+   "wieso denkst du",
+   "warum denken sie",
+   "was bringt dich auf die idee"
+  ]
+ },
+ "ENG_CHUNK_0505": {
+  "core_en": "Is it true that",
+  "accept": [
+   "stimmt es (dass)",
+   "ist es wahr (dass)",
+   "stimmt das",
+   "ist es richtig dass"
+  ]
+ },
+ "ENG_CHUNK_0506": {
+  "core_en": "Any idea",
+  "accept": [
+   "weißt du zufällig",
+   "wissen sie zufällig",
+   "wisst ihr zufällig",
+   "weißt du",
+   "wissen sie",
+   "hast du (eine) (irgendeine) ahnung",
+   "haben sie (eine) (irgendeine) ahnung",
+   "habt ihr (eine) (irgendeine) ahnung"
+  ]
+ },
+ "ENG_CHUNK_0507": {
+  "core_en": "Can I ask why",
+  "accept": [
+   "darf ich (mal) fragen warum",
+   "kann ich (mal) fragen warum",
+   "darf ich (mal) fragen wieso",
+   "kann ich (mal) fragen wieso",
+   "darf ich fragen weshalb",
+   "dürfte ich fragen warum"
+  ]
+ },
+ "ENG_CHUNK_0508": {
+  "core_en": "What's this button for",
+  "accept": [
+   "wofür ist",
+   "wozu ist",
+   "wozu dient",
+   "wofür braucht man",
+   "wozu braucht man"
+  ]
+ },
+ "ENG_CHUNK_0509": {
+  "core_en": "how do you say",
+  "accept": [
+   "wie sagt man",
+   "was heißt [x] auf",
+   "wie heißt [x] auf",
+   "wie nennt man"
+  ]
+ },
+ "ENG_CHUNK_0510": {
+  "core_en": "Could you show me how to",
+  "accept": [
+   "können sie mir (mal) zeigen wie",
+   "kannst du mir (mal) zeigen wie",
+   "könnten sie mir (mal) zeigen wie",
+   "könntest du mir (mal) zeigen wie",
+   "könnt ihr mir (mal) zeigen wie",
+   "zeigst du mir (mal) wie",
+   "zeigen sie mir (mal) wie",
+   "zeigt ihr mir (mal) wie"
+  ]
+ },
+ "ENG_CHUNK_0511": {
+  "core_en": "Can you recommend",
+  "accept": [
+   "können sie [x] empfehlen",
+   "kannst du [x] empfehlen",
+   "könnten sie [x] empfehlen",
+   "könntest du [x] empfehlen",
+   "könnt ihr [x] empfehlen",
+   "können sie [x] [x] empfehlen",
+   "kannst du [x] [x] empfehlen",
+   "was würden sie empfehlen"
+  ]
+ },
+ "ENG_CHUNK_0512": {
+  "core_en": "Is there anywhere I can",
+  "accept": [
+   "kann ich (hier) irgendwo",
+   "kann man (hier) irgendwo",
+   "gibt es hier irgendwo",
+   "gibt es irgendwo",
+   "wo kann ich (hier)"
+  ]
+ },
+ "ENG_CHUNK_0513": {
+  "core_en": "is there a pharmacy near here",
+  "accept": [
+   "gibt es hier in der nähe",
+   "gibt es in der nähe",
+   "gibt es [x] in der nähe",
+   "gibt es [x] hier in der nähe",
+   "ist [x] hier in der nähe",
+   "ist hier in der nähe",
+   "gibt es hier irgendwo"
+  ]
+ },
+ "ENG_CHUNK_0514": {
+  "core_en": "is this the right way to",
+  "accept": [
+   "geht es hier zum",
+   "geht es hier zur",
+   "geht es hier zu",
+   "geht's hier zum",
+   "ist das der richtige weg (zum) (zur) (zu)",
+   "bin ich hier richtig",
+   "komme ich hier zum",
+   "komme ich hier zur"
+  ]
+ },
+ "ENG_CHUNK_0515": {
+  "core_en": "How far is it to",
+  "accept": [
+   "wie weit ist es (von hier) bis",
+   "wie weit ist",
+   "wie weit weg ist",
+   "wie lange braucht man bis"
+  ]
+ },
+ "ENG_CHUNK_0516": {
+  "core_en": "does this bus go to",
+  "accept": [
+   "fährt dieser bus (zum) (zur) (zu) (nach)",
+   "fährt der bus (zum) (zur) (zu) (nach)",
+   "fährt der hier (zum) (zur) (nach)",
+   "hält dieser bus (am) (an der)",
+   "hält der bus (am) (an der)"
+  ]
+ },
+ "ENG_CHUNK_0517": {
+  "core_en": "What time does the last train leave",
+  "accept": [
+   "wann fährt [x] ab",
+   "wann fährt",
+   "um wie viel uhr fährt",
+   "um wieviel uhr fährt",
+   "wann geht der zug",
+   "wann geht der bus",
+   "wann geht der letzte"
+  ]
+ },
+ "ENG_CHUNK_0518": {
+  "core_en": "I'd like a round-trip ticket to",
+  "accept": [
+   "einmal hin und zurück nach",
+   "hin und zurück nach",
+   "ein ticket hin und zurück",
+   "eine fahrkarte hin und zurück",
+   "eine rückfahrkarte nach",
+   "eine hin- und rückfahrkarte"
+  ]
+ },
+ "ENG_CHUNK_0519": {
+  "core_en": "I have a reservation under",
+  "accept": [
+   "ich (habe) (hab) eine reservierung auf den namen",
+   "wir haben eine reservierung auf den namen",
+   "ich (habe) (hab) eine reservierung unter dem namen",
+   "ich habe auf den namen [x] reserviert",
+   "wir haben auf den namen [x] reserviert",
+   "ich habe unter [x] reserviert"
+  ]
+ },
+ "ENG_CHUNK_0520": {
+  "core_en": "I'd like to make a reservation for",
+  "accept": [
+   "ich möchte (gern) (gerne) [x] reservieren",
+   "ich würde (gern) (gerne) [x] reservieren",
+   "ich möchte (gern) (gerne) [x] [x] reservieren",
+   "ich würde (gern) (gerne) [x] [x] reservieren",
+   "ich möchte (gern) (gerne) einen tisch für",
+   "ich würde (gern) (gerne) einen tisch für",
+   "wir möchten (gern) (gerne) [x] reservieren",
+   "ich hätte (gern) einen tisch für"
+  ]
+ },
+ "ENG_CHUNK_0521": {
+  "core_en": "can we get a table for",
+  "accept": [
+   "haben sie (noch) einen tisch (frei) für",
+   "habt ihr (noch) einen tisch (frei) für",
+   "können wir (bitte) einen tisch für",
+   "einen tisch für [x] (bitte)",
+   "ein tisch für [x] (bitte)",
+   "haben sie (noch) platz für",
+   "habt ihr (noch) platz für"
+  ]
+ },
+ "ENG_CHUNK_0522": {
+  "core_en": "Does the soup have meat in it",
+  "accept": [
+   "ist in [x] drin",
+   "ist [x] in [x] drin",
+   "sind in [x] drin",
+   "ist da [x] drin",
+   "ist [x] drin",
+   "enthält",
+   "ist in [x] enthalten",
+   "ist [x] in [x] enthalten"
+  ]
+ },
+ "ENG_CHUNK_0523": {
+  "core_en": "I'm allergic to",
+  "accept": [
+   "ich bin allergisch gegen",
+   "ich bin allergisch auf",
+   "ich reagiere allergisch auf",
+   "ich habe eine allergie gegen",
+   "ich hab eine allergie gegen",
+   "ich vertrage keine"
+  ]
+ },
+ "ENG_CHUNK_0524": {
+  "core_en": "Can I get that without",
+  "accept": [
+   "kann ich (das) (bitte) (auch) ohne [x] haben",
+   "kann ich (das) (bitte) (auch) ohne",
+   "könnte ich (das) (bitte) (auch) ohne",
+   "ich hätte das (gern) (gerne) ohne",
+   "geht das (auch) ohne",
+   "können sie (das) (bitte) ohne",
+   "kannst du (das) (bitte) ohne",
+   "ohne [x] bitte"
+  ]
+ },
+ "ENG_CHUNK_0525": {
+  "core_en": "Is breakfast included",
+  "accept": [
+   "ist [x] inklusive",
+   "ist [x] dabei",
+   "ist [x] inbegriffen",
+   "ist [x] im preis",
+   "ist [x] mit dabei",
+   "ist [x] mit drin",
+   "ist [x] enthalten"
+  ]
+ },
+ "ENG_CHUNK_0526": {
+  "core_en": "where can I find",
+  "accept": [
+   "wo finde ich",
+   "wo kann ich [x] finden",
+   "wo gibt es (hier)",
+   "wo haben sie",
+   "wo habt ihr"
+  ]
+ },
+ "ENG_CHUNK_0527": {
+  "core_en": "Can I try these jeans on",
+  "accept": [
+   "kann ich [x] anprobieren",
+   "darf ich [x] anprobieren",
+   "könnte ich [x] anprobieren",
+   "kann man [x] anprobieren",
+   "wo kann ich [x] anprobieren"
+  ]
+ },
+ "ENG_CHUNK_0528": {
+  "core_en": "Is this jacket on sale",
+  "accept": [
+   "ist [x] reduziert",
+   "ist [x] im angebot",
+   "ist [x] runtergesetzt",
+   "ist [x] herabgesetzt",
+   "ist [x] im sale",
+   "gibt es [x] im angebot"
+  ]
+ },
+ "ENG_CHUNK_0529": {
+  "core_en": "Do you have anything less",
+  "accept": [
+   "haben sie (auch) (noch) etwas",
+   "haben sie (auch) (noch) was",
+   "habt ihr (auch) (noch) was",
+   "habt ihr (auch) (noch) etwas",
+   "hast du (auch) (noch) was",
+   "gibt es (auch) (noch) etwas",
+   "haben sie (das) (auch) (etwas) günstiger",
+   "gibt es das (auch) (etwas) günstiger"
+  ]
+ },
+ "ENG_CHUNK_0530": {
+  "core_en": "You're going to love",
+  "accept": [
+   "wird dir (bestimmt) (sicher) (total) (echt) gefallen",
+   "wird ihnen (bestimmt) (sicher) (total) gefallen",
+   "wird euch (bestimmt) (sicher) (total) gefallen",
+   "du wirst [x] lieben",
+   "sie werden [x] lieben",
+   "ihr werdet [x] lieben",
+   "das wirst du lieben"
+  ]
+ },
+ "ENG_CHUNK_0531": {
+  "core_en": "I'll take",
+  "accept": [
+   "ich nehme",
+   "ich nehm",
+   "dann nehme ich",
+   "ich hätte gern",
+   "ich hätte gerne",
+   "ich kaufe"
+  ]
+ },
+ "ENG_CHUNK_0532": {
+  "core_en": "Do you take",
+  "accept": [
+   "kann man (hier) mit [x] zahlen",
+   "kann ich (hier) mit [x] zahlen",
+   "kann man (hier) mit [x] bezahlen",
+   "kann ich (hier) mit [x] bezahlen",
+   "nehmen sie (auch)",
+   "akzeptieren sie",
+   "nehmt ihr (auch)"
+  ]
+ },
+ "ENG_CHUNK_0533": {
+  "core_en": "I'd like to return",
+  "accept": [
+   "ich möchte [x] zurückgeben",
+   "ich möchte [x] umtauschen",
+   "ich würde (gern) (gerne) [x] zurückgeben",
+   "ich würde (gern) (gerne) [x] umtauschen",
+   "ich möchte [x] zurückbringen",
+   "kann ich [x] zurückgeben",
+   "kann ich [x] umtauschen"
+  ]
+ },
+ "ENG_CHUNK_0534": {
+  "core_en": "I'd like to cancel",
+  "accept": [
+   "ich möchte [x] kündigen",
+   "ich möchte [x] stornieren",
+   "ich möchte [x] absagen",
+   "ich würde (gern) (gerne) [x] kündigen",
+   "ich würde (gern) (gerne) [x] stornieren",
+   "ich würde (gern) (gerne) [x] absagen",
+   "ich will [x] kündigen",
+   "ich möchte [x] abbestellen"
+  ]
+ },
+ "ENG_CHUNK_0535": {
+  "core_en": "Is there a fee for",
+  "accept": [
+   "kostet es extra",
+   "kostet das extra",
+   "gibt es eine gebühr (für)",
+   "fallen (dafür) gebühren an",
+   "fällt (dafür) eine gebühr an",
+   "kostet [x] extra",
+   "muss man für [x] extra zahlen"
+  ]
+ },
+ "ENG_CHUNK_0536": {
+  "core_en": "give it a try",
+  "accept": [
+   "(es) (mal) ausprobieren",
+   "probier's (mal)",
+   "probiers (mal)",
+   "probiere es (mal)",
+   "probier es (mal)",
+   "versuch's (mal)",
+   "versuche es (mal)",
+   "es (mal) versuchen"
+  ]
+ },
+ "ENG_CHUNK_0537": {
+  "core_en": "keep going",
+  "accept": [
+   "mach weiter",
+   "weiter so",
+   "weitermachen",
+   "nicht aufgeben",
+   "gib nicht auf",
+   "machen sie weiter",
+   "macht weiter",
+   "nur weiter"
+  ]
+ },
+ "ENG_CHUNK_0538": {
+  "core_en": "make a wish",
+  "accept": [
+   "wünsch dir (etwas) (was)",
+   "wünsche dir (etwas) (was)",
+   "wünscht euch (etwas) (was)",
+   "wünschen sie sich (etwas) (was)",
+   "sich (etwas) (was) wünschen"
+  ]
+ },
+ "ENG_CHUNK_0539": {
+  "core_en": "get together",
+  "accept": [
+   "uns (mal) (wieder) treffen",
+   "uns [x] treffen",
+   "treffen wir uns",
+   "sich (mal) treffen",
+   "uns (mal) (wieder) sehen",
+   "uns (mal) zusammensetzen",
+   "uns (mal) verabreden",
+   "(mal) (was) zusammen machen"
+  ]
+ },
+ "ENG_CHUNK_0540": {
+  "core_en": "show you around",
+  "accept": [
+   "ich zeige dir",
+   "ich zeig dir",
+   "zeige ich dir",
+   "zeig ich dir",
+   "ich zeige ihnen",
+   "zeige ich ihnen",
+   "herumführen",
+   "führe dich [x] herum"
+  ]
+ },
+ "ENG_CHUNK_0541": {
+  "core_en": "moving in with",
+  "accept": [
+   "mit [x] zusammenziehen",
+   "ziehe (ich) mit [x] zusammen",
+   "zieh (ich) mit [x] zusammen",
+   "bei [x] einziehen",
+   "ziehe (ich) bei [x] ein",
+   "zu [x] ziehen",
+   "ziehe (ich) zu"
+  ]
+ },
+ "ENG_CHUNK_0542": {
+  "core_en": "moved out",
+  "accept": [
+   "bin [x] ausgezogen",
+   "ausgezogen",
+   "von zu hause ausgezogen",
+   "zog [x] aus"
+  ]
+ },
+ "ENG_CHUNK_0543": {
+  "core_en": "I'm close to",
+  "accept": [
+   "ich habe ein enges verhältnis zu",
+   "ich hab ein enges verhältnis zu",
+   "ich stehe [x] (sehr) nahe",
+   "ich habe ein gutes verhältnis zu",
+   "ich habe eine enge beziehung zu",
+   "ich hab einen engen draht zu",
+   "ich habe einen guten draht zu"
+  ]
+ },
+ "ENG_CHUNK_0544": {
+  "core_en": "has a crush on",
+  "accept": [
+   "ist in [x] verknallt",
+   "in [x] verknallt",
+   "in [x] verliebt",
+   "verknallt in",
+   "verliebt in",
+   "steht auf",
+   "schwärmt für"
+  ]
+ },
+ "ENG_CHUNK_0545": {
+  "core_en": "make up with",
+  "accept": [
+   "mit [x] vertragen",
+   "mit [x] versöhnt",
+   "mit [x] versöhnen",
+   "habt ihr euch (wieder) vertragen",
+   "habt ihr euch (wieder) versöhnt",
+   "vertragt ihr euch (wieder)",
+   "haben sie sich [x] versöhnt"
+  ]
+ },
+ "ENG_CHUNK_0546": {
+  "core_en": "stay in touch",
+  "accept": [
+   "in kontakt bleiben",
+   "in kontakt",
+   "in verbindung bleiben",
+   "in verbindung",
+   "kontakt halten",
+   "voneinander hören"
+  ]
+ },
+ "ENG_CHUNK_0547": {
+  "core_en": "heard from",
+  "accept": [
+   "von [x] gehört",
+   "hat sich [x] gemeldet",
+   "hat [x] sich gemeldet",
+   "von [x] hören"
+  ]
+ },
+ "ENG_CHUNK_0548": {
+  "core_en": "complaining about",
+  "accept": [
+   "sich über [x] beschweren",
+   "beschwert sich über",
+   "beschwert sich [x] über",
+   "beklagt sich (ständig) (immer) über",
+   "meckert (ständig) (immer) über",
+   "beschweren sich [x] über"
+  ]
+ },
+ "ENG_CHUNK_0549": {
+  "core_en": "care about",
+  "accept": [
+   "ist mir (sehr) wichtig",
+   "ist mir [x] wichtig",
+   "ist mir [x] wichtiger",
+   "ist mir wichtiger",
+   "achte auf",
+   "achte [x] auf",
+   "lege [x] wert auf",
+   "kümmere mich [x] um"
+  ]
+ },
+ "ENG_CHUNK_0550": {
+  "core_en": "remind me to",
+  "accept": [
+   "mich daran erinnern",
+   "mich erinnern",
+   "erinnerst du mich (daran)",
+   "erinnern sie mich (daran)",
+   "erinnert ihr mich (daran)",
+   "erinner mich (daran)",
+   "erinnere mich (daran)"
+  ]
+ },
+ "ENG_CHUNK_0551": {
+  "core_en": "passed my driving test",
+  "accept": [
+   "die prüfung bestanden",
+   "habe [x] bestanden",
+   "hab [x] bestanden",
+   "bestanden"
+  ]
+ },
+ "ENG_CHUNK_0552": {
+  "core_en": "preparing for",
+  "accept": [
+   "bereite mich auf [x] vor",
+   "bereite mich [x] auf [x] vor",
+   "mich auf [x] vorbereiten",
+   "bereiten uns auf [x] vor",
+   "lerne [x] für",
+   "lerne für"
+  ]
+ },
+ "ENG_CHUNK_0553": {
+  "core_en": "take care of",
+  "accept": [
+   "ich kümmere mich um",
+   "ich kümmer mich um",
+   "kümmere ich mich um",
+   "ich übernehme",
+   "übernehme ich",
+   "ich erledige",
+   "ich regle"
+  ]
+ },
+ "ENG_CHUNK_0554": {
+  "core_en": "took part in",
+  "accept": [
+   "an [x] teilgenommen",
+   "nahmen an [x] teil",
+   "bei [x] mitgemacht",
+   "haben [x] mitgemacht",
+   "teilgenommen",
+   "mitgemacht"
+  ]
+ },
+ "ENG_CHUNK_0555": {
+  "core_en": "hand in",
+  "accept": [
+   "abgeben",
+   "einreichen",
+   "abliefern",
+   "abgegeben"
+  ]
+ },
+ "ENG_CHUNK_0556": {
+  "core_en": "give a presentation",
+  "accept": [
+   "eine präsentation halten",
+   "präsentation halten",
+   "einen vortrag halten",
+   "ein referat halten",
+   "eine präsentation machen",
+   "präsentieren"
+  ]
+ },
+ "ENG_CHUNK_0557": {
+  "core_en": "working overtime",
+  "accept": [
+   "überstunden machen",
+   "mache [x] überstunden",
+   "überstunden gemacht",
+   "überstunden"
+  ]
+ },
+ "ENG_CHUNK_0558": {
+  "core_en": "got promoted",
+  "accept": [
+   "ist [x] befördert worden",
+   "befördert worden",
+   "wurde [x] befördert",
+   "befördert",
+   "eine beförderung bekommen"
+  ]
+ },
+ "ENG_CHUNK_0559": {
+  "core_en": "lost his job",
+  "accept": [
+   "seinen job verloren",
+   "seine arbeit verloren",
+   "seine stelle verloren",
+   "arbeitslos geworden",
+   "gekündigt worden",
+   "wurde [x] gekündigt",
+   "entlassen worden",
+   "wurde [x] entlassen"
+  ]
+ },
+ "ENG_CHUNK_0560": {
+  "core_en": "quit her job",
+  "accept": [
+   "hat gekündigt",
+   "hat [x] gekündigt",
+   "gekündigt",
+   "ihren job aufgegeben",
+   "ihre stelle aufgegeben",
+   "ihre arbeit aufgegeben"
+  ]
+ },
+ "ENG_CHUNK_0561": {
+  "core_en": "a part-time job",
+  "accept": [
+   "einen teilzeitjob",
+   "teilzeitjob",
+   "minijob",
+   "nebenjob",
+   "teilzeitstelle",
+   "in teilzeit",
+   "aushilfsjob"
+  ]
+ },
+ "ENG_CHUNK_0562": {
+  "core_en": "a job interview",
+  "accept": [
+   "ein vorstellungsgespräch",
+   "vorstellungsgespräch",
+   "bewerbungsgespräch",
+   "jobinterview",
+   "ein (job) interview"
+  ]
+ },
+ "ENG_CHUNK_0563": {
+  "core_en": "get off work",
+  "accept": [
+   "hast du feierabend",
+   "haben sie feierabend",
+   "habt ihr feierabend",
+   "feierabend",
+   "machst du schluss",
+   "machen sie schluss",
+   "bist du mit der arbeit fertig",
+   "kommst du von der arbeit"
+  ]
+ },
+ "ENG_CHUNK_0564": {
+  "core_en": "I'm going to head out",
+  "accept": [
+   "ich mach mich (mal) auf den weg",
+   "ich mache mich (mal) auf den weg",
+   "ich mach mich (mal) los",
+   "ich mache mich (mal) los",
+   "ich geh dann (mal)",
+   "ich gehe dann (mal)",
+   "ich muss (dann) (mal) los",
+   "ich zieh (dann) (mal) los"
+  ]
+ },
+ "ENG_CHUNK_0565": {
+  "core_en": "rush hour",
+  "accept": [
+   "rushhour",
+   "berufsverkehr",
+   "rush hour",
+   "hauptverkehrszeit",
+   "stoßzeit",
+   "feierabendverkehr"
+  ]
+ },
+ "ENG_CHUNK_0566": {
+  "core_en": "It's hard to say",
+  "accept": [
+   "schwer zu sagen",
+   "das lässt sich schwer sagen",
+   "das kann man schwer sagen",
+   "das kann ich (noch) nicht (genau) sagen"
+  ]
+ },
+ "ENG_CHUNK_0567": {
+  "core_en": "Not that I know of",
+  "accept": [
+   "nicht dass ich wüsste",
+   "soweit ich weiß nicht",
+   "nicht soweit ich weiß",
+   "meines wissens nicht",
+   "ich glaube nicht"
+  ]
+ },
+ "ENG_CHUNK_0568": {
+  "core_en": "For sure",
+  "accept": [
+   "auf jeden fall",
+   "klar",
+   "na klar",
+   "sicher",
+   "ganz sicher",
+   "bestimmt",
+   "na logo",
+   "natürlich"
+  ]
+ },
+ "ENG_CHUNK_0569": {
+  "core_en": "Personally",
+  "accept": [
+   "ich persönlich",
+   "persönlich",
+   "für mich",
+   "also ich",
+   "meiner meinung nach"
+  ]
+ },
+ "ENG_CHUNK_0570": {
+  "core_en": "I have to say",
+  "accept": [
+   "ich muss (schon) (echt) sagen",
+   "muss ich (schon) (echt) sagen",
+   "ich muss zugeben",
+   "das muss man sagen"
+  ]
+ },
+ "ENG_CHUNK_0571": {
+  "core_en": "Trust me",
+  "accept": [
+   "glaub mir",
+   "glaube mir",
+   "glauben sie mir",
+   "glaubt mir",
+   "vertrau mir",
+   "vertrauen sie mir",
+   "vertraut mir"
+  ]
+ },
+ "ENG_CHUNK_0572": {
+  "core_en": "That's not true",
+  "accept": [
+   "das stimmt (doch) (gar) nicht",
+   "stimmt (doch) (gar) nicht",
+   "das ist (doch) (gar) nicht wahr",
+   "das ist falsch"
+  ]
+ },
+ "ENG_CHUNK_0573": {
+  "core_en": "I completely disagree",
+  "accept": [
+   "(da) bin ich (ganz) anderer meinung",
+   "ich bin (ganz) (völlig) anderer meinung",
+   "ich sehe das (ganz) (völlig) anders",
+   "ich bin (überhaupt) (gar) nicht einverstanden",
+   "ich bin (überhaupt) (gar) nicht deiner meinung",
+   "ich bin (überhaupt) (gar) nicht ihrer meinung",
+   "da muss ich (dir) (ihnen) widersprechen"
+  ]
+ },
+ "ENG_CHUNK_0574": {
+  "core_en": "Absolutely not",
+  "accept": [
+   "auf keinen fall",
+   "kommt (gar) (überhaupt) nicht in frage",
+   "kommt (gar) (überhaupt) nicht infrage",
+   "auf gar keinen fall",
+   "absolut nicht",
+   "keinesfalls",
+   "ganz sicher nicht",
+   "niemals"
+  ]
+ },
+ "ENG_CHUNK_0575": {
+  "core_en": "I hadn't thought of that",
+  "accept": [
+   "daran (habe) (hab) ich (gar) (noch) nicht gedacht",
+   "da (habe) (hab) ich (gar) nicht dran gedacht",
+   "ich (habe) (hab) (gar) (noch) nicht daran gedacht",
+   "das habe ich nicht bedacht",
+   "auf die idee bin ich (gar) nicht gekommen"
+  ]
+ },
+ "ENG_CHUNK_0576": {
+  "core_en": "you win",
+  "accept": [
+   "du hast gewonnen",
+   "ihr habt gewonnen",
+   "sie haben gewonnen",
+   "ich gebe mich geschlagen",
+   "ich geb mich geschlagen",
+   "du hast mich überzeugt",
+   "sie haben mich überzeugt"
+  ]
+ },
+ "ENG_CHUNK_0577": {
+  "core_en": "That's a tough one",
+  "accept": [
+   "das ist eine schwierige frage",
+   "schwierige frage",
+   "puh schwierig",
+   "das ist schwierig",
+   "gute frage",
+   "das ist nicht leicht",
+   "schwer zu sagen"
+  ]
+ },
+ "ENG_CHUNK_0578": {
+  "core_en": "Let me ask you something",
+  "accept": [
+   "darf ich dich (mal) (etwas) (was) fragen",
+   "darf ich sie (mal) (etwas) (was) fragen",
+   "kann ich dich (mal) (etwas) (was) fragen",
+   "kann ich sie (mal) (etwas) (was) fragen",
+   "darf ich euch (mal) (etwas) (was) fragen",
+   "ich muss dich (mal) (etwas) (was) fragen",
+   "lass mich dich (mal) (etwas) (was) fragen",
+   "ich hab (mal) eine frage"
+  ]
+ },
+ "ENG_CHUNK_0579": {
+  "core_en": "it gets worse",
+  "accept": [
+   "es kommt noch besser",
+   "es wird noch schlimmer",
+   "es kommt noch schlimmer",
+   "es kommt noch dicker",
+   "es wird sogar noch schlimmer"
+  ]
+ },
+ "ENG_CHUNK_0580": {
+  "core_en": "The funny thing is",
+  "accept": [
+   "das lustige ist",
+   "das witzige ist",
+   "das lustige daran ist",
+   "das witzige daran ist",
+   "das komische ist",
+   "das komische daran ist",
+   "lustigerweise",
+   "witzigerweise"
+  ]
+ },
+ "ENG_CHUNK_0581": {
+  "core_en": "Wish me luck",
+  "accept": [
+   "drück mir die daumen",
+   "drücken sie mir die daumen",
+   "drückt mir die daumen",
+   "halt mir die daumen",
+   "wünsch mir glück",
+   "wünschen sie mir glück",
+   "wünscht mir glück"
+  ]
+ },
+ "ENG_CHUNK_0582": {
+  "core_en": "better luck next time",
+  "accept": [
+   "beim nächsten mal klappt's",
+   "beim nächsten mal klappt es",
+   "nächstes mal klappt's",
+   "nächstes mal klappt es",
+   "das nächste mal klappt's",
+   "das nächste mal klappt es",
+   "mehr glück beim nächsten mal",
+   "viel glück beim nächsten mal"
+  ]
+ },
+ "ENG_CHUNK_0583": {
+  "core_en": "Hope you feel better soon",
+  "accept": [
+   "gute besserung",
+   "werd (bald) wieder gesund",
+   "werde (bald) wieder gesund",
+   "werden sie (bald) wieder gesund",
+   "ich hoffe es geht dir bald (wieder) besser",
+   "ich hoffe dass es dir bald (wieder) besser geht",
+   "hoffentlich geht es dir bald (wieder) besser",
+   "ich hoffe es geht ihnen bald (wieder) besser"
+  ]
+ },
+ "ENG_CHUNK_0584": {
+  "core_en": "It's a small world",
+  "accept": [
+   "die welt ist (doch) (echt) (so) klein",
+   "wie klein die welt ist",
+   "so klein ist die welt",
+   "die welt ist ein dorf"
+  ]
+ },
+ "ENG_CHUNK_0585": {
+  "core_en": "it's not really my thing",
+  "accept": [
+   "das ist nicht (so) mein ding",
+   "nicht (wirklich) (so) mein ding",
+   "das ist nichts für mich",
+   "ist nichts für mich",
+   "das liegt mir nicht",
+   "nicht (so) meins",
+   "nicht mein fall"
+  ]
+ },
+ "ENG_CHUNK_0586": {
+  "core_en": "Oh, come on!",
+  "accept": [
+   "ach komm (schon)",
+   "och nee",
+   "ach nee",
+   "och menno",
+   "das darf (doch) nicht wahr sein",
+   "nicht schon wieder",
+   "na toll"
+  ]
+ },
+ "ENG_CHUNK_0587": {
+  "core_en": "Time flies",
+  "accept": [
+   "die zeit vergeht (so) schnell",
+   "wie die zeit vergeht",
+   "die zeit vergeht (wie im flug)",
+   "die zeit rast",
+   "wie die zeit rennt",
+   "die zeit fliegt"
+  ]
+ },
+ "ENG_CHUNK_0588": {
+  "core_en": "Better late than never",
+  "accept": [
+   "besser spät als nie",
+   "lieber spät als nie"
+  ]
+ },
+ "ENG_CHUNK_0589": {
+  "core_en": "it's a piece of cake",
+  "accept": [
+   "das ist ein kinderspiel",
+   "ein kinderspiel",
+   "das ist (doch) (ganz) (total) leicht",
+   "das ist (doch) (ganz) (total) einfach",
+   "kinderleicht",
+   "ein klacks",
+   "das schaffst du locker"
+  ]
+ },
+ "ENG_CHUNK_0590": {
+  "core_en": "I told you so",
+  "accept": [
+   "hab ich (dir) (doch) (ja) gesagt",
+   "habe ich (dir) (doch) (ja) gesagt",
+   "ich hab's dir (ja) (doch) gesagt",
+   "ich (habe) (hab) es dir (ja) (doch) gesagt",
+   "ich (habe) (hab) es ihnen (ja) (doch) gesagt",
+   "hab ich's (dir) (doch) gesagt",
+   "sag ich doch",
+   "ich hab dich gewarnt"
+  ]
+ },
+ "ENG_CHUNK_0591": {
+  "core_en": "or else",
+  "accept": [
+   "sonst",
+   "ansonsten",
+   "andernfalls"
+  ]
+ },
+ "ENG_CHUNK_0592": {
+  "core_en": "just like",
+  "accept": [
+   "genau wie",
+   "genauso wie",
+   "genauso [x] wie",
+   "genau (so) wie",
+   "genau (so) [x] wie",
+   "sieht [x] ähnlich"
+  ]
+ },
+ "ENG_CHUNK_0593": {
+  "core_en": "Compared to",
+  "accept": [
+   "im vergleich zu",
+   "im vergleich zum",
+   "im vergleich zur",
+   "verglichen mit"
+  ]
+ },
+ "ENG_CHUNK_0594": {
+  "core_en": "for now",
+  "accept": [
+   "erst mal",
+   "erstmal",
+   "erst einmal",
+   "vorerst",
+   "fürs erste",
+   "vorläufig",
+   "für den moment",
+   "zunächst"
+  ]
+ },
+ "ENG_CHUNK_0595": {
+  "core_en": "in order to",
+  "accept": [
+   "um [x] zu",
+   "um [x] [x] zu",
+   "damit"
+  ]
+ },
+ "ENG_CHUNK_0596": {
+  "core_en": "no matter what",
+  "accept": [
+   "egal was passiert",
+   "egal was ist",
+   "egal was kommt",
+   "(ganz) egal was",
+   "auf jeden fall",
+   "was auch immer passiert",
+   "komme was wolle",
+   "unter allen umständen"
+  ]
+ },
+ "ENG_CHUNK_0597": {
+  "core_en": "only if",
+  "accept": [
+   "nur wenn",
+   "nur falls",
+   "nur dann wenn",
+   "nur unter der bedingung dass"
+  ]
+ },
+ "ENG_CHUNK_0598": {
+  "core_en": "as a result",
+  "accept": [
+   "deshalb",
+   "daher",
+   "infolgedessen",
+   "deswegen",
+   "darum",
+   "dadurch",
+   "folglich"
+  ]
+ },
+ "ENG_CHUNK_0599": {
+  "core_en": "after a while",
+  "accept": [
+   "nach einer weile",
+   "nach einiger zeit",
+   "mit der zeit",
+   "irgendwann"
+  ]
+ },
+ "ENG_CHUNK_0600": {
+  "core_en": "Sooner or later",
+  "accept": [
+   "früher oder später",
+   "irgendwann (mal)"
+  ]
+ },
+ "ENG_CHUNK_0601": {
+  "core_en": "I ordered",
+  "accept": [
+   "ich hatte [x] bestellt",
+   "ich habe [x] bestellt",
+   "ich hab [x] bestellt",
+   "(eigentlich) hatte ich [x] bestellt",
+   "ich wollte (eigentlich) [x] haben",
+   "bestellt aber"
+  ]
+ },
+ "ENG_CHUNK_0602": {
+  "core_en": "could I speak to",
+  "accept": [
+   "könnte ich (bitte) mit [x] sprechen",
+   "kann ich (bitte) mit [x] sprechen",
+   "könnte ich (bitte) [x] sprechen",
+   "kann ich (bitte) [x] sprechen",
+   "ich möchte (gern) (gerne) (bitte) mit [x] sprechen",
+   "ich würde (gern) (gerne) mit [x] sprechen",
+   "ist [x] da",
+   "ist [x] zu sprechen"
+  ]
+ },
+ "ENG_CHUNK_0603": {
+  "core_en": "this is Sam from the dental office",
+  "accept": [
+   "hier ist [x] von",
+   "hier spricht [x] von",
+   "hier ist [x] aus",
+   "ich bin [x] von",
+   "mein name ist [x] von"
+  ]
+ },
+ "ENG_CHUNK_0604": {
+  "core_en": "I'm calling about",
+  "accept": [
+   "ich rufe wegen [x] an",
+   "ich ruf wegen [x] an",
+   "ich rufe wegen [x] [x] an",
+   "ich rufe an wegen",
+   "ich rufe bezüglich [x] an",
+   "ich melde mich wegen",
+   "es geht um"
+  ]
+ },
+ "ENG_CHUNK_0605": {
+  "core_en": "Can I leave a message for",
+  "accept": [
+   "kann ich [x] eine nachricht hinterlassen",
+   "kann ich eine nachricht hinterlassen",
+   "kann ich eine nachricht für [x] hinterlassen",
+   "könnte ich [x] eine nachricht hinterlassen",
+   "kann ich [x] etwas ausrichten lassen",
+   "kann ich [x] was ausrichten",
+   "können sie [x] etwas ausrichten",
+   "kannst du [x] was ausrichten"
+  ]
+ },
+ "ENG_CHUNK_0606": {
+  "core_en": "Can you ask Tom to call me back",
+  "accept": [
+   "kannst du [x] sagen dass er mich zurückrufen soll",
+   "können sie [x] sagen dass",
+   "kannst du [x] bitten mich zurückzurufen",
+   "können sie [x] bitten mich zurückzurufen",
+   "mich zurückrufen",
+   "mich zurückzurufen",
+   "soll mich zurückrufen"
+  ]
+ },
+ "ENG_CHUNK_0607": {
+  "core_en": "I've had a headache for two days",
+  "accept": [
+   "ich habe (jetzt) (schon) seit",
+   "ich hab (jetzt) (schon) seit",
+   "ich habe [x] seit",
+   "ich hab [x] seit",
+   "seit [x] habe ich",
+   "seit [x] hab ich",
+   "habe ich (jetzt) (schon) seit"
+  ]
+ },
+ "ENG_CHUNK_0608": {
+  "core_en": "It hurts when I",
+  "accept": [
+   "es tut weh wenn ich",
+   "tut weh wenn ich",
+   "es schmerzt wenn ich",
+   "ich habe schmerzen wenn ich",
+   "ich hab schmerzen wenn ich",
+   "wenn ich [x] tut es weh"
+  ]
+ },
+ "ENG_CHUNK_0609": {
+  "core_en": "is killing me",
+  "accept": [
+   "tut (höllisch) (total) (echt) (so) weh",
+   "tut [x] (höllisch) (total) (so) weh",
+   "bringt mich (noch) um",
+   "ich habe (höllische) (starke) schmerzen",
+   "macht mich fertig"
+  ]
+ },
+ "ENG_CHUNK_0610": {
+  "core_en": "I think I might have",
+  "accept": [
+   "ich glaube ich habe",
+   "ich glaube ich hab",
+   "ich glaube ich bin",
+   "ich glaube ich bekomme",
+   "ich glaube ich krieg",
+   "ich denke ich habe",
+   "vielleicht habe ich",
+   "könnte sein dass ich"
+  ]
+ },
+ "ENG_CHUNK_0611": {
+  "core_en": "can you give me something for",
+  "accept": [
+   "haben sie (etwas) (was) gegen",
+   "hast du (etwas) (was) gegen",
+   "habt ihr (etwas) (was) gegen",
+   "können sie mir (etwas) (was) gegen",
+   "kannst du mir (etwas) (was) gegen",
+   "gibt es (etwas) (was) gegen",
+   "haben sie (etwas) (was) für",
+   "können sie mir (etwas) (was) für"
+  ]
+ },
+ "ENG_CHUNK_0612": {
+  "core_en": "Should I be worried about",
+  "accept": [
+   "muss ich mir wegen [x] sorgen machen",
+   "muss ich mir [x] sorgen machen",
+   "sollte ich mir [x] sorgen machen",
+   "muss ich mir sorgen machen",
+   "sollte ich mir sorgen machen",
+   "ist das etwas ernstes",
+   "ist das (was) schlimm"
+  ]
+ },
+ "ENG_CHUNK_0613": {
+  "core_en": "How often should I",
+  "accept": [
+   "wie oft soll ich",
+   "wie oft sollte ich",
+   "wie oft muss ich",
+   "wie häufig soll ich"
+  ]
+ },
+ "ENG_CHUNK_0614": {
+  "core_en": "Do I need a prescription for",
+  "accept": [
+   "brauche ich für [x] ein rezept",
+   "brauche ich [x] ein rezept",
+   "brauch ich [x] ein rezept",
+   "brauche ich ein rezept",
+   "ist [x] rezeptpflichtig",
+   "ist [x] rezeptfrei",
+   "gibt es [x] ohne rezept",
+   "bekomme ich [x] ohne rezept"
+  ]
+ },
+ "ENG_CHUNK_0615": {
+  "core_en": "I'm not a morning person",
+  "accept": [
+   "ich bin kein",
+   "ich bin (überhaupt) (gar) kein",
+   "bin ich (überhaupt) (gar) kein",
+   "ich bin nicht so der",
+   "bin ich nicht so der",
+   "kein morgenmensch"
+  ]
+ },
+ "ENG_CHUNK_0616": {
+  "core_en": "I've been feeling really good lately",
+  "accept": [
+   "mir geht's in letzter zeit",
+   "mir geht es in letzter zeit",
+   "ich fühle mich in letzter zeit",
+   "in letzter zeit geht's mir",
+   "in letzter zeit geht es mir",
+   "in letzter zeit fühle ich mich"
+  ]
+ },
+ "ENG_CHUNK_0617": {
+  "core_en": "I'm working on",
+  "accept": [
+   "ich arbeite (gerade) an",
+   "arbeite ich (gerade) an",
+   "ich arbeite [x] an",
+   "ich bin (gerade) an [x] dran",
+   "ich sitze (gerade) an"
+  ]
+ },
+ "ENG_CHUNK_0618": {
+  "core_en": "I'm in the middle of",
+  "accept": [
+   "ich bin gerade beim",
+   "ich bin (gerade) mitten (im) (in der) (in) (beim)",
+   "ich sitze gerade beim",
+   "ich bin gerade am",
+   "wir sind gerade beim",
+   "wir sitzen gerade beim"
+  ]
+ },
+ "ENG_CHUNK_0619": {
+  "core_en": "Do you have a minute to",
+  "accept": [
+   "hast du (mal) (kurz) zeit",
+   "haben sie (mal) (kurz) zeit",
+   "habt ihr (mal) (kurz) zeit",
+   "hast du (mal) eine minute",
+   "haben sie (mal) eine minute",
+   "hast du (mal) (kurz) einen moment",
+   "haben sie (mal) (kurz) einen moment",
+   "hättest du (mal) (kurz) zeit"
+  ]
+ },
+ "ENG_CHUNK_0620": {
+  "core_en": "I'll get back to you on",
+  "accept": [
+   "ich melde mich [x] bei dir",
+   "ich melde mich (noch) bei dir",
+   "ich melde mich [x] bei ihnen",
+   "ich melde mich (noch) bei ihnen",
+   "ich melde mich [x] bei euch",
+   "ich melde mich wegen",
+   "ich gebe dir [x] bescheid",
+   "ich gebe ihnen [x] bescheid"
+  ]
+ },
+ "ENG_CHUNK_0621": {
+  "core_en": "Can we move",
+  "accept": [
+   "können wir [x] auf [x] verschieben",
+   "können wir [x] verschieben",
+   "können wir [x] [x] verschieben",
+   "könnten wir [x] verschieben",
+   "kann man [x] verschieben",
+   "lässt sich [x] verschieben",
+   "können wir [x] vorziehen",
+   "können wir [x] auf [x] legen"
+  ]
+ },
+ "ENG_CHUNK_0622": {
+  "core_en": "Let me walk you through",
+  "accept": [
+   "ich zeig dir (mal) (schritt für schritt) wie",
+   "ich zeige dir (mal) (schritt für schritt) wie",
+   "ich zeige ihnen (mal) (schritt für schritt) wie",
+   "ich erklär dir (mal)",
+   "ich erkläre dir (mal)",
+   "ich erkläre ihnen (mal)",
+   "ich gehe [x] mit dir durch",
+   "ich gehe [x] mit ihnen durch"
+  ]
+ },
+ "ENG_CHUNK_0623": {
+  "core_en": "I'm in charge of",
+  "accept": [
+   "ich bin für [x] zuständig",
+   "ich bin für [x] verantwortlich",
+   "ich bin zuständig für",
+   "ich bin verantwortlich für",
+   "ich kümmere mich um",
+   "ich kümmer mich um",
+   "ich übernehme"
+  ]
+ },
+ "ENG_CHUNK_0624": {
+  "core_en": "I'm still waiting for",
+  "accept": [
+   "ich warte immer noch auf",
+   "ich warte noch immer auf",
+   "ich warte (bis jetzt) noch auf",
+   "ich warte nach wie vor auf",
+   "ich warte [x] noch auf"
+  ]
+ },
+ "ENG_CHUNK_0625": {
+  "core_en": "any update on",
+  "accept": [
+   "gibt's (schon) was neues wegen",
+   "gibt es (schon) (etwas) (was) neues wegen",
+   "gibt's (schon) was neues",
+   "gibt es (schon) (etwas) (was) neues",
+   "wie sieht's (denn) aus mit",
+   "wie sieht es (denn) aus mit",
+   "gibt es (schon) einen stand zu",
+   "weißt du (schon) was wegen"
+  ]
+ },
+ "ENG_CHUNK_0626": {
+  "core_en": "Congratulations on",
+  "accept": [
+   "herzlichen glückwunsch (zum) (zur) (zu)",
+   "glückwunsch (zum) (zur) (zu)",
+   "ich gratuliere (dir) (ihnen) (euch) (zum) (zur) (zu)",
+   "gratuliere zum",
+   "gratulation zum",
+   "alles gute zum"
+  ]
+ },
+ "ENG_CHUNK_0627": {
+  "core_en": "Good luck with",
+  "accept": [
+   "viel glück (bei) (beim)",
+   "viel erfolg (bei) (beim)",
+   "alles gute (für) (bei) (beim)",
+   "ich drück dir die daumen",
+   "ich drücke dir die daumen",
+   "ich drücke ihnen die daumen",
+   "toi toi toi"
+  ]
+ },
+ "ENG_CHUNK_0628": {
+  "core_en": "Say hi to your mom for me",
+  "accept": [
+   "grüß [x] von mir",
+   "grüße [x] von mir",
+   "grüßen sie [x] von mir",
+   "grüßt [x] von mir",
+   "schöne grüße an",
+   "liebe grüße an",
+   "viele grüße an",
+   "richte [x] grüße aus"
+  ]
+ },
+ "ENG_CHUNK_0629": {
+  "core_en": "Are you coming to",
+  "accept": [
+   "kommst du zu",
+   "kommst du zum",
+   "kommst du zur",
+   "kommst du [x] zur",
+   "kommst du [x] zum",
+   "kommst du [x] zu",
+   "kommen sie (auch) (zum) (zur) (zu)",
+   "kommt ihr (auch) (zum) (zur) (zu)"
+  ]
+ },
+ "ENG_CHUNK_0630": {
+  "core_en": "We're having a barbecue on Saturday",
+  "accept": [
+   "wir machen am",
+   "wir machen [x] am",
+   "wir grillen (am)",
+   "wir feiern (am)",
+   "wir geben am",
+   "wir schmeißen am",
+   "wir veranstalten am",
+   "bei uns gibt es am"
+  ]
+ },
+ "ENG_CHUNK_0631": {
+  "core_en": "What's going on with",
+  "accept": [
+   "was ist (denn) mit [x] los",
+   "was ist (denn) los mit",
+   "was ist (denn) mit",
+   "was stimmt (denn) nicht mit",
+   "was ist (denn) mit [x] passiert"
+  ]
+ },
+ "ENG_CHUNK_0632": {
+  "core_en": "Can you give me a ride to",
+  "accept": [
+   "kannst du mich [x] fahren",
+   "können sie mich [x] fahren",
+   "könntest du mich [x] fahren",
+   "nimmst du mich [x] mit",
+   "nimmst du mich mit",
+   "kannst du mich [x] mitnehmen",
+   "kannst du mich [x] bringen",
+   "können sie mich [x] bringen"
+  ]
+ },
+ "ENG_CHUNK_0633": {
+  "core_en": "I'll be there in",
+  "accept": [
+   "ich bin in [x] da",
+   "bin in [x] da",
+   "in [x] bin ich da",
+   "ich bin in [x] dort",
+   "ich bin in [x] bei dir",
+   "ich komme in"
+  ]
+ },
+ "ENG_CHUNK_0634": {
+  "core_en": "I'm on my way to",
+  "accept": [
+   "ich bin (gerade) auf dem weg",
+   "bin (gerade) auf dem weg",
+   "ich bin (gerade) unterwegs (zu) (zum) (zur) (ins)",
+   "ich fahre gerade (zu) (zum) (zur) (ins)",
+   "ich gehe gerade (zu) (zum) (zur) (ins)"
+  ]
+ },
+ "ENG_CHUNK_0635": {
+  "core_en": "Thanks for the offer, but",
+  "accept": [
+   "danke für das angebot (aber)",
+   "danke fürs angebot (aber)",
+   "danke für dein angebot (aber)",
+   "danke für ihr angebot (aber)",
+   "danke für euer angebot (aber)",
+   "vielen dank für das angebot (aber)",
+   "vielen dank für ihr angebot (aber)",
+   "das ist lieb aber"
+  ]
+ },
+ "ENG_CHUNK_0636": {
+  "core_en": "tell a joke",
+  "accept": [
+   "einen witz erzählen",
+   "witze erzählen",
+   "erzählt [x] witze",
+   "erzählt (gern) witze",
+   "erzählt [x] einen witz",
+   "witze reißen",
+   "reißt [x] witze",
+   "macht [x] witze"
+  ]
+ },
+ "ENG_CHUNK_0637": {
+  "core_en": "To tell the truth",
+  "accept": [
+   "ehrlich gesagt",
+   "um ehrlich zu sein",
+   "offen gesagt",
+   "wenn ich ehrlich bin",
+   "offen gestanden"
+  ]
+ },
+ "ENG_CHUNK_0638": {
+  "core_en": "make fun of",
+  "accept": [
+   "sich über [x] lustig machen",
+   "machen sich [x] über [x] lustig",
+   "machen sich über [x] lustig",
+   "lachen [x] über mich",
+   "lachen über mich",
+   "ziehen mich [x] auf",
+   "ziehen mich auf"
+  ]
+ },
+ "ENG_CHUNK_0639": {
+  "core_en": "making excuses",
+  "accept": [
+   "ausreden suchen",
+   "keine ausreden mehr",
+   "ausreden erfinden",
+   "ausreden",
+   "ausflüchte"
+  ]
+ },
+ "ENG_CHUNK_0640": {
+  "core_en": "break a promise",
+  "accept": [
+   "ein versprechen brechen",
+   "breche mein versprechen",
+   "mein versprechen [x] brechen",
+   "versprechen brechen",
+   "mein wort brechen",
+   "breche mein wort",
+   "halte mein versprechen",
+   "mein versprechen halten"
+  ]
+ },
+ "ENG_CHUNK_0641": {
+  "core_en": "blame me for",
+  "accept": [
+   "gib mir (nicht) die schuld",
+   "geben sie mir (nicht) die schuld",
+   "gebt mir (nicht) die schuld",
+   "mir die schuld [x] geben",
+   "ich bin nicht schuld",
+   "ich kann (doch) nichts für",
+   "das ist nicht meine schuld"
+  ]
+ },
+ "ENG_CHUNK_0642": {
+  "core_en": "do it on purpose",
+  "accept": [
+   "mit absicht gemacht",
+   "mit absicht",
+   "absichtlich",
+   "extra gemacht",
+   "nicht extra",
+   "bewusst gemacht"
+  ]
+ },
+ "ENG_CHUNK_0643": {
+  "core_en": "get some fresh air",
+  "accept": [
+   "frische luft schnappen",
+   "frische luft",
+   "luft schnappen",
+   "an die luft",
+   "frischluft tanken"
+  ]
+ },
+ "ENG_CHUNK_0644": {
+  "core_en": "make a suggestion",
+  "accept": [
+   "einen vorschlag machen",
+   "einen vorschlag",
+   "darf ich (etwas) (was) vorschlagen",
+   "kann ich (etwas) (was) vorschlagen"
+  ]
+ },
+ "ENG_CHUNK_0645": {
+  "core_en": "Watch out for",
+  "accept": [
+   "pass auf [x] auf",
+   "passen sie auf [x] auf",
+   "passt auf [x] auf",
+   "vorsicht (bei) (mit) (vor)",
+   "achte auf",
+   "achten sie auf",
+   "achtet auf",
+   "aufpassen auf"
+  ]
+ },
+ "ENG_CHUNK_0646": {
+  "core_en": "a long day",
+  "accept": [
+   "ein langer tag",
+   "langer tag",
+   "ein anstrengender tag"
+  ]
+ },
+ "ENG_CHUNK_0647": {
+  "core_en": "a bad habit",
+  "accept": [
+   "eine schlechte angewohnheit",
+   "schlechte angewohnheit",
+   "schlechte gewohnheit",
+   "blöde angewohnheit",
+   "dumme angewohnheit",
+   "unsitte"
+  ]
+ },
+ "ENG_CHUNK_0648": {
+  "core_en": "a good sense of humor",
+  "accept": [
+   "einen guten humor",
+   "guten humor",
+   "hat (echt) (richtig) (viel) humor",
+   "haben (echt) humor",
+   "einen tollen humor",
+   "sinn für humor",
+   "humorvoll"
+  ]
+ },
+ "ENG_CHUNK_0649": {
+  "core_en": "a big fan of",
+  "accept": [
+   "ein großer fan von",
+   "großer fan von",
+   "ich stehe (total) (voll) auf",
+   "ich steh (total) (voll) auf",
+   "ich bin (total) verrückt nach",
+   "ich liebe",
+   "ich mag [x] sehr"
+  ]
+ },
+ "ENG_CHUNK_0650": {
+  "core_en": "brand new",
+  "accept": [
+   "brandneu",
+   "brandneues",
+   "brandneue",
+   "brandneuen",
+   "nagelneu",
+   "nagelneues",
+   "nagelneue",
+   "nagelneuen"
+  ]
+ },
+ "ENG_CHUNK_0651": {
+  "core_en": "perfectly fine",
+  "accept": [
+   "völlig in ordnung",
+   "total okay",
+   "(ganz) (total) (absolut) (vollkommen) in ordnung",
+   "völlig okay",
+   "ganz okay",
+   "völlig ok",
+   "total ok",
+   "einwandfrei"
+  ]
+ },
+ "ENG_CHUNK_0652": {
+  "core_en": "getting the hang of",
+  "accept": [
+   "den dreh [x] raus",
+   "den dreh raus",
+   "den bogen [x] raus",
+   "den bogen raus",
+   "den dreh (endlich) (langsam) heraus",
+   "komme (langsam) (endlich) (so) rein",
+   "komme [x] mit [x] klar"
+  ]
+ },
+ "ENG_CHUNK_0653": {
+  "core_en": "jump to conclusions",
+  "accept": [
+   "voreilige schlüsse ziehen",
+   "voreiligen schlüsse (ziehen)",
+   "voreilige schlüsse",
+   "vorschnelle schlüsse",
+   "vorschnellen schlüsse",
+   "voreilige schlussfolgerungen",
+   "voreiligen schlussfolgerungen"
+  ]
+ },
+ "ENG_CHUNK_0654": {
+  "core_en": "look into",
+  "accept": [
+   "mir [x] ansehen",
+   "schaue mir [x] an",
+   "schau mir [x] an",
+   "sehe mir [x] an",
+   "seh mir [x] an",
+   "gucke mir [x] an",
+   "mir [x] anschauen",
+   "kümmere mich [x] um"
+  ]
+ },
+ "ENG_CHUNK_0655": {
+  "core_en": "bring up",
+  "accept": [
+   "ansprechen",
+   "zur sprache bringen",
+   "anschneiden",
+   "thematisieren",
+   "erwähnen"
+  ]
+ },
+ "ENG_CHUNK_0656": {
+  "core_en": "pointing out",
+  "accept": [
+   "auf [x] hinweisen",
+   "danke für den hinweis",
+   "auf [x] hingewiesen",
+   "hingewiesen",
+   "auf [x] aufmerksam gemacht",
+   "aufmerksam gemacht",
+   "danke fürs hinweisen"
+  ]
+ },
+ "ENG_CHUNK_0657": {
+  "core_en": "go over",
+  "accept": [
+   "durchgehen",
+   "gehen [x] durch",
+   "geh [x] durch",
+   "durchsprechen",
+   "sprechen [x] durch"
+  ]
+ },
+ "ENG_CHUNK_0658": {
+  "core_en": "following up on",
+  "accept": [
+   "nachhaken",
+   "nachgehakt",
+   "nachfragen",
+   "melde mich (noch) (mal) wegen",
+   "mich (noch) (mal) wegen [x] melden",
+   "hake [x] nach",
+   "frage [x] nach"
+  ]
+ },
+ "ENG_CHUNK_0659": {
+  "core_en": "run an idea by you",
+  "accept": [
+   "nach deiner meinung (zu)",
+   "nach ihrer meinung (zu)",
+   "was hältst du von",
+   "was halten sie von",
+   "was sagst du zu",
+   "was meinst du zu",
+   "dir (mal) eine idee vorstellen",
+   "ihnen (mal) eine idee vorstellen"
+  ]
+ },
+ "ENG_CHUNK_0660": {
+  "core_en": "fill me in",
+  "accept": [
+   "mich (kurz) auf den neuesten stand bringen",
+   "mich (kurz) auf den stand bringen",
+   "mich (kurz) updaten",
+   "mich (kurz) ins bild setzen",
+   "mich (kurz) informieren",
+   "mich (kurz) aufklären",
+   "mir (kurz) erzählen was"
+  ]
+ },
+ "ENG_CHUNK_0661": {
+  "core_en": "touch base with",
+  "accept": [
+   "sich (kurz) mit [x] abstimmen",
+   "mit [x] abstimmen",
+   "mit [x] kurzschließen",
+   "mit [x] austauschen",
+   "mit [x] rücksprache halten",
+   "uns [x] abstimmen"
+  ]
+ },
+ "ENG_CHUNK_0662": {
+  "core_en": "giving me a heads-up",
+  "accept": [
+   "vorwarnen",
+   "vorgewarnt",
+   "bescheid gesagt",
+   "bescheid gegeben",
+   "bescheid sagen",
+   "bescheid geben",
+   "danke für die warnung",
+   "danke für den hinweis"
+  ]
+ },
+ "ENG_CHUNK_0663": {
+  "core_en": "catching up on",
+  "accept": [
+   "nachholen",
+   "nachgeholt",
+   "nachzuholen",
+   "abarbeiten",
+   "abgearbeitet",
+   "abzuarbeiten",
+   "aufarbeiten",
+   "aufzuarbeiten"
+  ]
+ },
+ "ENG_CHUNK_0664": {
+  "core_en": "meet the deadline",
+  "accept": [
+   "(die) (eine) frist einhalten",
+   "(die) deadline (zu) schaffen",
+   "(die) deadline einhalten",
+   "(die) frist einzuhalten",
+   "(die) deadline einzuhalten",
+   "(die) frist (zu) schaffen",
+   "den termin einhalten",
+   "rechtzeitig fertig (zu) werden"
+  ]
+ },
+ "ENG_CHUNK_0665": {
+  "core_en": "under a lot of pressure",
+  "accept": [
+   "unter druck stehen",
+   "unter druck",
+   "unter [x] druck",
+   "im stress",
+   "viel stress"
+  ]
+ },
+ "ENG_CHUNK_0666": {
+  "core_en": "where do I start",
+  "accept": [
+   "wo soll ich (bloß) (nur) anfangen",
+   "wo fange ich an",
+   "wo fang ich an",
+   "womit soll ich anfangen"
+  ]
+ },
+ "ENG_CHUNK_0667": {
+  "core_en": "Between you and me",
+  "accept": [
+   "unter uns (gesagt)",
+   "unter uns beiden",
+   "(ganz) unter uns",
+   "im vertrauen (gesagt)"
+  ]
+ },
+ "ENG_CHUNK_0668": {
+  "core_en": "Like I said",
+  "accept": [
+   "wie gesagt",
+   "wie ich (schon) gesagt habe",
+   "wie ich (schon) sagte",
+   "wie (schon) gesagt"
+  ]
+ },
+ "ENG_CHUNK_0669": {
+  "core_en": "one more thing",
+  "accept": [
+   "noch eine sache",
+   "(und) noch was",
+   "noch etwas",
+   "noch eins",
+   "eine sache noch",
+   "eins noch"
+  ]
+ },
+ "ENG_CHUNK_0670": {
+  "core_en": "I don't know about you, but",
+  "accept": [
+   "ich weiß nicht wie's dir geht (aber)",
+   "ich weiß nicht wie es dir geht (aber)",
+   "ich weiß nicht wie es ihnen geht (aber)",
+   "ich weiß nicht wie es euch geht (aber)",
+   "ich weiß nicht wie's euch geht (aber)",
+   "keine ahnung wie's dir geht (aber)"
+  ]
+ },
+ "ENG_CHUNK_0671": {
+  "core_en": "You know what?",
+  "accept": [
+   "weißt du was",
+   "wissen sie was",
+   "wisst ihr was",
+   "weißte was"
+  ]
+ },
+ "ENG_CHUNK_0672": {
+  "core_en": "Look",
+  "accept": [
+   "hör mal",
+   "schau mal",
+   "hören sie (mal)",
+   "schauen sie (mal)",
+   "hört mal",
+   "guck mal",
+   "hör zu",
+   "hören sie zu"
+  ]
+ },
+ "ENG_CHUNK_0673": {
+  "core_en": "The question is",
+  "accept": [
+   "die frage ist",
+   "die frage lautet",
+   "es fragt sich",
+   "fragt sich nur"
+  ]
+ },
+ "ENG_CHUNK_0674": {
+  "core_en": "Did I get that right?",
+  "accept": [
+   "hab ich (das) (so) richtig verstanden",
+   "habe ich (das) (so) richtig verstanden",
+   "verstehe ich (das) richtig",
+   "versteh ich (das) richtig",
+   "hab ich (das) richtig mitbekommen",
+   "stimmt das (so)",
+   "ist das (so) richtig"
+  ]
+ },
+ "ENG_CHUNK_0675": {
+  "core_en": "could you slow down a bit",
+  "accept": [
+   "könnten sie (bitte) (etwas) (ein bisschen) langsamer sprechen",
+   "können sie (bitte) (etwas) (ein bisschen) langsamer sprechen",
+   "kannst du (bitte) (etwas) (ein bisschen) langsamer sprechen",
+   "könntest du (bitte) (etwas) (ein bisschen) langsamer sprechen",
+   "könnten sie (bitte) (etwas) langsamer reden",
+   "kannst du (bitte) (etwas) langsamer reden",
+   "etwas langsamer (bitte)",
+   "langsamer bitte"
+  ]
+ },
+ "ENG_CHUNK_0676": {
+  "core_en": "what's his name again",
+  "accept": [
+   "wie heißt er (noch) (mal)",
+   "wie heißt der (noch) (mal)",
+   "wie heißt (er) (der) (noch) (mal)",
+   "wie heißt (er) (der) noch gleich",
+   "wie hieß (er) (der) noch (mal) (gleich)",
+   "wie hieß (er) (der) (noch) (mal)"
+  ]
+ },
+ "ENG_CHUNK_0677": {
+  "core_en": "That's interesting",
+  "accept": [
+   "interessant",
+   "das ist (ja) (echt) interessant",
+   "wie interessant",
+   "spannend"
+  ]
+ },
+ "ENG_CHUNK_0678": {
+  "core_en": "Yes and no",
+  "accept": [
+   "jein",
+   "ja und nein",
+   "teils teils"
+  ]
+ },
+ "ENG_CHUNK_0679": {
+  "core_en": "and stuff like that",
+  "accept": [
+   "und so (was)",
+   "und so weiter",
+   "und solche sachen",
+   "und so zeug",
+   "und so kram",
+   "und dergleichen",
+   "usw"
+  ]
+ },
+ "ENG_CHUNK_0680": {
+  "core_en": "sorry, you first",
+  "accept": [
+   "(sorry) du zuerst",
+   "(bitte) sie zuerst",
+   "nach ihnen",
+   "nach dir",
+   "ihr zuerst",
+   "mach du zuerst",
+   "sprich du zuerst",
+   "geh du (zuerst) (vor)"
+  ]
+ },
+ "ENG_CHUNK_0681": {
+  "core_en": "Here you go",
+  "accept": [
+   "bitte schön",
+   "bitteschön",
+   "bitte sehr",
+   "hier bitte",
+   "hier (bitte) schön",
+   "hier hast du",
+   "hier haben sie"
+  ]
+ },
+ "ENG_CHUNK_0682": {
+  "core_en": "Oh well",
+  "accept": [
+   "na ja",
+   "naja",
+   "tja",
+   "schade",
+   "was soll's",
+   "was solls",
+   "dann (halt) nicht",
+   "pech gehabt"
+  ]
+ },
+ "ENG_CHUNK_0683": {
+  "core_en": "Thanks anyway",
+  "accept": [
+   "trotzdem danke",
+   "danke (dir) (ihnen) (euch) trotzdem",
+   "trotzdem vielen dank",
+   "vielen dank trotzdem",
+   "trotzdem danke schön",
+   "danke schön trotzdem"
+  ]
+ },
+ "ENG_CHUNK_0684": {
+  "core_en": "is this seat taken",
+  "accept": [
+   "ist hier noch frei",
+   "ist der platz (hier) (noch) frei",
+   "ist dieser platz (noch) frei",
+   "ist hier besetzt",
+   "ist der platz (hier) besetzt",
+   "ist dieser platz besetzt",
+   "sitzt hier (schon) jemand",
+   "ist hier (noch) ein platz frei"
+  ]
+ },
+ "ENG_CHUNK_0685": {
+  "core_en": "Have a safe trip",
+  "accept": [
+   "gute reise",
+   "komm gut an",
+   "kommt gut an",
+   "kommen sie gut an",
+   "gute fahrt",
+   "guten flug",
+   "komm gut heim",
+   "kommt gut heim"
+  ]
+ },
+ "ENG_CHUNK_0686": {
+  "core_en": "Look on the bright side",
+  "accept": [
+   "sieh es (doch) (mal) positiv",
+   "sieh's (doch) (mal) positiv",
+   "sieh es (doch) (mal) von der positiven seite",
+   "sieh's (doch) (mal) von der positiven seite",
+   "sehen sie (es) (doch) (mal) positiv",
+   "sehen sie (es) (doch) (mal) von der positiven seite",
+   "seht es (doch) (mal) positiv",
+   "das gute daran ist"
+  ]
+ },
+ "ENG_CHUNK_0687": {
+  "core_en": "Hang in there",
+  "accept": [
+   "halt durch",
+   "halte durch",
+   "halten sie durch",
+   "haltet durch",
+   "durchhalten",
+   "bleib dran",
+   "nicht aufgeben",
+   "gib nicht auf"
+  ]
+ },
+ "ENG_CHUNK_0688": {
+  "core_en": "It's not the end of the world",
+  "accept": [
+   "davon geht die welt nicht unter",
+   "die welt geht (davon) (deswegen) nicht unter",
+   "deswegen geht die welt nicht unter",
+   "(das) ist (doch) nicht (so) schlimm",
+   "nicht das ende der welt",
+   "halb so schlimm"
+  ]
+ },
+ "ENG_CHUNK_0689": {
+  "core_en": "these things happen",
+  "accept": [
+   "das kann (ja) (jedem) (mal) passieren",
+   "kann (ja) (mal) passieren",
+   "so was passiert (halt) (eben)",
+   "sowas passiert (halt)",
+   "das passiert (halt) (eben) (mal)",
+   "das kommt vor",
+   "kann jedem passieren"
+  ]
+ },
+ "ENG_CHUNK_0690": {
+  "core_en": "you shouldn't have",
+  "accept": [
+   "das wäre (aber) (doch) nicht nötig gewesen",
+   "das war (doch) nicht nötig",
+   "das hättest du nicht tun müssen",
+   "das hätten sie nicht tun müssen",
+   "das hättet ihr nicht tun müssen",
+   "das ist (aber) (so) lieb",
+   "das ist (aber) (so) nett"
+  ]
+ },
+ "ENG_CHUNK_0691": {
+  "core_en": "Until then",
+  "accept": [
+   "bis dahin",
+   "bis zu diesem zeitpunkt",
+   "bis zu diesem tag",
+   "bis es so weit ist"
+  ]
+ },
+ "ENG_CHUNK_0692": {
+  "core_en": "the next day",
+  "accept": [
+   "am nächsten tag",
+   "am folgenden tag",
+   "tags darauf",
+   "einen tag später",
+   "am tag danach",
+   "am darauffolgenden tag"
+  ]
+ },
+ "ENG_CHUNK_0693": {
+  "core_en": "The same goes for",
+  "accept": [
+   "das gleiche gilt für",
+   "dasselbe gilt für",
+   "das selbe gilt für",
+   "gleiches gilt für",
+   "das gilt (auch) (genauso) (übrigens) für",
+   "ich auch",
+   "genau wie ich"
+  ]
+ },
+ "ENG_CHUNK_0694": {
+  "core_en": "the whole time",
+  "accept": [
+   "die ganze zeit",
+   "die gesamte zeit",
+   "während der ganzen",
+   "während des ganzen",
+   "ununterbrochen"
+  ]
+ },
+ "ENG_CHUNK_0695": {
+  "core_en": "at the same time",
+  "accept": [
+   "gleichzeitig",
+   "andererseits",
+   "zugleich",
+   "auf der anderen seite",
+   "zur gleichen zeit"
+  ]
+ },
+ "ENG_CHUNK_0696": {
+  "core_en": "In general",
+  "accept": [
+   "im allgemeinen",
+   "generell",
+   "allgemein",
+   "grundsätzlich",
+   "normalerweise",
+   "im großen und ganzen",
+   "in der regel"
+  ]
+ },
+ "ENG_CHUNK_0697": {
+  "core_en": "right before",
+  "accept": [
+   "kurz vor",
+   "kurz bevor",
+   "unmittelbar vor",
+   "direkt vor",
+   "gleich vor",
+   "unmittelbar bevor",
+   "direkt bevor"
+  ]
+ },
+ "ENG_CHUNK_0698": {
+  "core_en": "All in all",
+  "accept": [
+   "alles in allem",
+   "insgesamt",
+   "im großen und ganzen",
+   "unterm strich",
+   "im ganzen"
+  ]
+ },
+ "ENG_CHUNK_0699": {
+  "core_en": "That's how",
+  "accept": [
+   "so sind wir",
+   "so haben wir",
+   "so wurden wir",
+   "so kam es dass",
+   "auf diese weise",
+   "dadurch sind wir",
+   "daher sind wir",
+   "so hat es angefangen"
+  ]
+ },
+ "ENG_CHUNK_0700": {
+  "core_en": "most of all",
+  "accept": [
+   "vor allem",
+   "am meisten",
+   "besonders",
+   "insbesondere",
+   "allen voran",
+   "vor allen dingen",
+   "am allermeisten"
+  ]
+ },
+ "ENG_CHUNK_0701": {
+  "core_en": "I'll try to",
+  "accept": [
+   "ich versuche",
+   "ich versuch's",
+   "ich versuch",
+   "ich werde versuchen",
+   "ich probiere",
+   "ich probier's",
+   "ich sehe zu dass",
+   "ich schau dass"
+  ]
+ },
+ "ENG_CHUNK_0702": {
+  "core_en": "I'll let you know when",
+  "accept": [
+   "ich sag dir bescheid (wenn)",
+   "ich sage dir bescheid (wenn)",
+   "ich geb dir bescheid (wenn)",
+   "ich gebe dir bescheid (wenn)",
+   "ich sage ihnen bescheid (wenn)",
+   "ich gebe ihnen bescheid (wenn)",
+   "ich sag euch bescheid",
+   "ich melde mich (bei dir) wenn"
+  ]
+ },
+ "ENG_CHUNK_0703": {
+  "core_en": "I'll make sure",
+  "accept": [
+   "ich sorge dafür (dass)",
+   "ich sorg dafür (dass)",
+   "ich kümmere mich (darum) (drum) (dass)",
+   "ich kümmer mich (drum) (darum)",
+   "ich passe auf dass",
+   "ich pass auf dass",
+   "ich achte darauf dass",
+   "ich stelle sicher dass"
+  ]
+ },
+ "ENG_CHUNK_0704": {
+  "core_en": "how did the interview go",
+  "accept": [
+   "wie ist [x] gelaufen",
+   "wie ist es gelaufen",
+   "wie war",
+   "wie war's",
+   "wie lief",
+   "wie hat [x] geklappt",
+   "wie ist [x] ausgegangen"
+  ]
+ },
+ "ENG_CHUNK_0705": {
+  "core_en": "Have you had a chance to",
+  "accept": [
+   "sind sie (schon) dazu gekommen",
+   "bist du (schon) dazu gekommen",
+   "seid ihr (schon) dazu gekommen",
+   "hatten sie (schon) (mal) (die) gelegenheit",
+   "hattest du (schon) (mal) (die) gelegenheit",
+   "hattest du (schon) zeit",
+   "hatten sie (schon) zeit",
+   "konntest du (schon)"
+  ]
+ },
+ "ENG_CHUNK_0706": {
+  "core_en": "How long does it take to",
+  "accept": [
+   "wie lange braucht man",
+   "wie lange dauert es",
+   "wie lang braucht man",
+   "wie lang dauert es",
+   "wie lange fährt man",
+   "wie lange brauche ich",
+   "wie lange ist man unterwegs",
+   "wie viel zeit braucht man"
+  ]
+ },
+ "ENG_CHUNK_0707": {
+  "core_en": "I'm surprised",
+  "accept": [
+   "ich bin überrascht (dass)",
+   "es überrascht mich (dass)",
+   "ich wundere mich (dass)",
+   "ich wunder mich",
+   "mich wundert (es) (dass)",
+   "es wundert mich (dass)",
+   "erstaunlich dass"
+  ]
+ },
+ "ENG_CHUNK_0708": {
+  "core_en": "According to",
+  "accept": [
+   "laut",
+   "zufolge",
+   "gemäß",
+   "nach angaben"
+  ]
+ },
+ "ENG_CHUNK_0709": {
+  "core_en": "They say",
+  "accept": [
+   "man sagt",
+   "angeblich",
+   "es heißt",
+   "die leute sagen",
+   "sagt man",
+   "es wird gesagt"
+  ]
+ },
+ "ENG_CHUNK_0710": {
+  "core_en": "It's kind of like",
+  "accept": [
+   "das ist (so) ähnlich wie",
+   "(so) ähnlich wie",
+   "(so) eine art",
+   "eine art",
+   "ähnlich wie",
+   "so was wie",
+   "sowas wie",
+   "quasi"
+  ]
+ },
+ "ENG_CHUNK_0711": {
+  "core_en": "reminds me of",
+  "accept": [
+   "erinnert mich (immer) (total) an",
+   "erinnern mich (immer) an",
+   "das erinnert mich an",
+   "da muss ich an [x] denken",
+   "muss ich (immer) an [x] denken"
+  ]
+ },
+ "ENG_CHUNK_0712": {
+  "core_en": "isn't as big as",
+  "accept": [
+   "ist nicht so [x] wie",
+   "nicht so [x] wie",
+   "ist kleiner als"
+  ]
+ },
+ "ENG_CHUNK_0713": {
+  "core_en": "What's the difference between",
+  "accept": [
+   "was ist der unterschied zwischen",
+   "wo ist der unterschied zwischen",
+   "worin liegt der unterschied zwischen",
+   "der unterschied zwischen",
+   "was unterscheidet",
+   "wie unterscheiden sich"
+  ]
+ },
+ "ENG_CHUNK_0714": {
+  "core_en": "It's too cold to",
+  "accept": [
+   "es ist zu [x] um",
+   "ist es zu [x] um",
+   "es ist zu [x] für",
+   "ist es zu [x] für",
+   "zu [x] um [x] zu",
+   "zu [x] zum"
+  ]
+ },
+ "ENG_CHUNK_0715": {
+  "core_en": "not warm enough to",
+  "accept": [
+   "es ist (noch) nicht [x] genug",
+   "ist es (noch) nicht [x] genug",
+   "nicht [x] genug um",
+   "nicht [x] genug für",
+   "noch zu [x] um",
+   "noch zu [x] für",
+   "noch zu [x] zum"
+  ]
+ },
+ "ENG_CHUNK_0716": {
+  "core_en": "It was such a",
+  "accept": [
+   "das war so eine",
+   "das war so ein",
+   "es war so eine",
+   "es war so ein",
+   "das war eine so",
+   "das war ein so",
+   "was für ein",
+   "was für eine"
+  ]
+ },
+ "ENG_CHUNK_0717": {
+  "core_en": "I had a great time",
+  "accept": [
+   "hat (mir) (echt) (total) (richtig) spaß gemacht",
+   "es hat mir (echt) (total) spaß gemacht",
+   "es war (echt) (total) (richtig) schön",
+   "war (echt) (total) schön",
+   "ich hatte (echt) (total) viel spaß",
+   "ich hatte eine tolle zeit",
+   "hat mir (echt) (total) gefallen"
+  ]
+ },
+ "ENG_CHUNK_0718": {
+  "core_en": "Do you ever",
+  "accept": [
+   "du manchmal",
+   "du [x] manchmal",
+   "du ab und zu",
+   "du [x] ab und zu",
+   "sie manchmal",
+   "sie [x] manchmal",
+   "ihr manchmal",
+   "du jemals"
+  ]
+ },
+ "ENG_CHUNK_0719": {
+  "core_en": "I miss",
+  "accept": [
+   "mir fehlt es",
+   "mir fehlt",
+   "mir fehlen",
+   "ich vermisse (es)",
+   "ich vermiss"
+  ]
+ },
+ "ENG_CHUNK_0720": {
+  "core_en": "I've always wanted to",
+  "accept": [
+   "ich wollte (schon) immer",
+   "ich wollte immer (schon)",
+   "wollte ich (schon) immer",
+   "ich hab (schon) immer [x] wollen",
+   "ich habe (schon) immer [x] wollen",
+   "ich wollte immer (mal)",
+   "es war (schon) immer mein traum"
+  ]
+ },
+ "ENG_CHUNK_0721": {
+  "core_en": "It would be nice to",
+  "accept": [
+   "es wäre (echt) (so) schön",
+   "wäre (doch) (echt) schön",
+   "es wär schön",
+   "es wäre (echt) toll",
+   "es wäre (echt) super",
+   "es wäre nett"
+  ]
+ },
+ "ENG_CHUNK_0722": {
+  "core_en": "If I had",
+  "accept": [
+   "wenn ich [x] hätte würde ich",
+   "wenn ich [x] hätte",
+   "wenn ich [x] [x] hätte",
+   "hätte ich [x] würde ich",
+   "hätte ich [x] dann würde ich"
+  ]
+ },
+ "ENG_CHUNK_0723": {
+  "core_en": "I could really use",
+  "accept": [
+   "ich könnte [x] gebrauchen",
+   "ich könnte [x] [x] gebrauchen",
+   "ich brauch (jetzt) dringend",
+   "ich brauche (jetzt) dringend",
+   "ich hätte jetzt (echt) gern"
+  ]
+ },
+ "ENG_CHUNK_0724": {
+  "core_en": "you might want to",
+  "accept": [
+   "du solltest (vielleicht)",
+   "sie sollten (vielleicht)",
+   "ihr solltet (vielleicht)",
+   "vielleicht solltest du",
+   "vielleicht sollten sie",
+   "du solltest (lieber) (besser)",
+   "es wäre (vielleicht) gut wenn du",
+   "du könntest (vielleicht)"
+  ]
+ },
+ "ENG_CHUNK_0725": {
+  "core_en": "you'd be better off",
+  "accept": [
+   "es wäre besser wenn du",
+   "es wäre besser (für dich)",
+   "du fährst besser",
+   "nimmst du besser",
+   "du nimmst besser",
+   "du solltest lieber",
+   "du solltest besser",
+   "sie sollten lieber"
+  ]
+ },
+ "ENG_CHUNK_0726": {
+  "core_en": "Is there any chance you could",
+  "accept": [
+   "wäre es (vielleicht) (eventuell) möglich (dass)",
+   "könntest du (mich) (vielleicht) eventuell",
+   "könntest du (mich) (vielleicht)",
+   "könnten sie (mich) (vielleicht) eventuell",
+   "könnten sie (mich) (vielleicht)",
+   "besteht die möglichkeit dass",
+   "gibt es eine chance dass",
+   "kannst du (mich) eventuell"
+  ]
+ },
+ "ENG_CHUNK_0727": {
+  "core_en": "I'd appreciate it if you could",
+  "accept": [
+   "ich wäre ihnen (sehr) dankbar wenn (sie)",
+   "ich wäre dir (sehr) dankbar wenn (du)",
+   "ich wäre euch (sehr) dankbar wenn",
+   "ich wäre (sehr) dankbar wenn",
+   "es wäre (sehr) nett wenn sie",
+   "es wäre (sehr) nett wenn du",
+   "ich würde mich freuen wenn sie",
+   "ich würde mich freuen wenn du"
+  ]
+ },
+ "ENG_CHUNK_0728": {
+  "core_en": "It's not like",
+  "accept": [
+   "es ist (ja) (doch) nicht so als (ob)",
+   "ist (ja) (doch) nicht so als (ob)",
+   "es ist (ja) (doch) nicht so dass",
+   "ist (ja) (doch) nicht so dass",
+   "ist (ja) nicht so"
+  ]
+ },
+ "ENG_CHUNK_0729": {
+  "core_en": "It's not every day",
+  "accept": [
+   "man wird (schließlich) (ja) nicht jeden tag",
+   "nicht jeden tag",
+   "nicht alle tage",
+   "(so) was hat man nicht alle tage"
+  ]
+ },
+ "ENG_CHUNK_0730": {
+  "core_en": "When it comes to",
+  "accept": [
+   "wenn es um [x] geht",
+   "wenn es ums [x] geht",
+   "wenn's um [x] geht",
+   "wenn's ums [x] geht",
+   "was [x] angeht",
+   "was [x] betrifft",
+   "in sachen",
+   "beim thema"
+  ]
+ },
+ "ENG_CHUNK_0731": {
+  "core_en": "Speaking of",
+  "accept": [
+   "apropos",
+   "wo wir gerade von [x] sprechen",
+   "wo wir gerade von [x] reden",
+   "wenn wir (schon) von [x] sprechen",
+   "wenn wir (schon) von [x] reden",
+   "da wir gerade von [x] sprechen",
+   "wo wir gerade beim thema [x] sind",
+   "wo wir gerade bei [x] sind"
+  ]
+ },
+ "ENG_CHUNK_0732": {
+  "core_en": "I have to admit",
+  "accept": [
+   "ich muss zugeben (dass)",
+   "ich muss gestehen (dass)",
+   "ich gebe zu (dass)",
+   "ich geb zu",
+   "zugegeben",
+   "ich muss sagen dass"
+  ]
+ },
+ "ENG_CHUNK_0733": {
+  "core_en": "The reason I'm asking is",
+  "accept": [
+   "ich frage (das) (nur) (deshalb) (deswegen) weil",
+   "ich frag (das) (nur) (deshalb) weil",
+   "ich frage dich (nur) weil",
+   "ich frage sie (nur) weil",
+   "der grund warum ich frage (ist)",
+   "der grund für meine frage (ist)"
+  ]
+ },
+ "ENG_CHUNK_0734": {
+  "core_en": "I'm not saying",
+  "accept": [
+   "ich sag (ja) nicht dass",
+   "ich sage (ja) nicht dass",
+   "ich sag nicht dass",
+   "ich will (ja) nicht sagen dass",
+   "ich behaupte (ja) nicht dass",
+   "ich meine (ja) nicht dass",
+   "das heißt nicht dass"
+  ]
+ },
+ "ENG_CHUNK_0735": {
+  "core_en": "It's not about",
+  "accept": [
+   "es geht (hier) (mir) nicht um",
+   "es geht (hier) (mir) nicht ums",
+   "geht (doch) nicht um",
+   "geht (doch) nicht ums"
+  ]
+ },
+ "ENG_CHUNK_0736": {
+  "core_en": "take on",
+  "accept": [
+   "übernehmen",
+   "übernehme",
+   "annehmen",
+   "auf mich nehmen",
+   "zusätzlich machen"
+  ]
+ },
+ "ENG_CHUNK_0737": {
+  "core_en": "called in sick",
+  "accept": [
+   "mich krankgemeldet",
+   "krankgemeldet",
+   "krank gemeldet",
+   "krankmelden",
+   "melde mich krank",
+   "meldete mich krank",
+   "krankschreiben lassen",
+   "krankgeschrieben"
+  ]
+ },
+ "ENG_CHUNK_0738": {
+  "core_en": "run a business",
+  "accept": [
+   "ein geschäft führen",
+   "führen ein geschäft",
+   "eine firma führen",
+   "führen eine firma",
+   "ein geschäft betreiben",
+   "betreiben ein geschäft",
+   "haben ein geschäft",
+   "haben eine firma"
+  ]
+ },
+ "ENG_CHUNK_0739": {
+  "core_en": "makes a living",
+  "accept": [
+   "verdient seinen lebensunterhalt",
+   "seinen lebensunterhalt verdienen",
+   "verdient sein geld",
+   "sein geld verdienen",
+   "verdient [x] geld",
+   "lebt davon",
+   "lebt vom"
+  ]
+ },
+ "ENG_CHUNK_0740": {
+  "core_en": "on the same page",
+  "accept": [
+   "auf dem gleichen stand",
+   "auf demselben stand",
+   "auf dem selben stand",
+   "uns einig sind",
+   "uns einig",
+   "einer meinung",
+   "dasselbe meinen",
+   "das gleiche meinen"
+  ]
+ },
+ "ENG_CHUNK_0741": {
+  "core_en": "cut corners",
+  "accept": [
+   "gepfuscht",
+   "pfuschen",
+   "an der falschen stelle gespart",
+   "an der falschen stelle sparen",
+   "schlampig gearbeitet",
+   "geschlampt"
+  ]
+ },
+ "ENG_CHUNK_0742": {
+  "core_en": "familiar with",
+  "accept": [
+   "kennst du dich [x] aus",
+   "kennst du dich aus",
+   "kennen sie sich [x] aus",
+   "kennen sie sich aus",
+   "kennt ihr euch [x] aus",
+   "sich [x] auskennen",
+   "kennst du",
+   "kennen sie"
+  ]
+ },
+ "ENG_CHUNK_0743": {
+  "core_en": "aware of",
+  "accept": [
+   "war mir [x] nicht bewusst",
+   "war mir nicht bewusst",
+   "wusste ich nichts",
+   "wusste nichts von",
+   "wusste ich [x] nichts",
+   "wusste ich nicht",
+   "hab [x] nicht gewusst",
+   "habe [x] nicht gewusst"
+  ]
+ },
+ "ENG_CHUNK_0744": {
+  "core_en": "a tight schedule",
+  "accept": [
+   "ein straffer zeitplan",
+   "straffen zeitplan",
+   "straffer zeitplan",
+   "vollen terminkalender",
+   "voller terminkalender",
+   "volles programm",
+   "eng getaktet",
+   "viele termine"
+  ]
+ },
+ "ENG_CHUNK_0745": {
+  "core_en": "on short notice",
+  "accept": [
+   "kurzfristig",
+   "auf die schnelle",
+   "spontan"
+  ]
+ },
+ "ENG_CHUNK_0746": {
+  "core_en": "make time for",
+  "accept": [
+   "sich zeit für [x] nehmen",
+   "zeit für [x] nehmen",
+   "nimm dir (mal) zeit für",
+   "nehmen sie sich (mal) zeit für",
+   "zeit für [x] einplanen",
+   "zeit für [x] finden"
+  ]
+ },
+ "ENG_CHUNK_0747": {
+  "core_en": "lost track of time",
+  "accept": [
+   "die zeit vergessen",
+   "die zeit aus den augen verloren",
+   "das zeitgefühl verloren",
+   "nicht auf die uhr geschaut",
+   "nicht auf die uhr geguckt",
+   "nicht auf die zeit geachtet"
+  ]
+ },
+ "ENG_CHUNK_0748": {
+  "core_en": "killed time",
+  "accept": [
+   "die zeit totschlagen",
+   "die zeit totgeschlagen",
+   "die zeit [x] totgeschlagen",
+   "die zeit vertrieben",
+   "die zeit [x] vertrieben",
+   "die zeit vertreiben",
+   "die zeit [x] überbrückt",
+   "schlugen die zeit tot"
+  ]
+ },
+ "ENG_CHUNK_0749": {
+  "core_en": "play it by ear",
+  "accept": [
+   "spontan entscheiden",
+   "entscheiden (einfach) spontan",
+   "schauen wie es läuft",
+   "(einfach) mal schauen",
+   "mal sehen",
+   "wir gucken mal",
+   "wir schauen (einfach) mal",
+   "spontan"
+  ]
+ },
+ "ENG_CHUNK_0750": {
+  "core_en": "keep you company",
+  "accept": [
+   "dir gesellschaft leisten",
+   "gesellschaft leisten",
+   "leiste dir gesellschaft",
+   "leiste ihnen gesellschaft",
+   "leiste euch gesellschaft",
+   "warte mit dir",
+   "bleibe bei dir",
+   "bleib bei dir"
+  ]
+ },
+ "ENG_CHUNK_0751": {
+  "core_en": "on a budget",
+  "accept": [
+   "aufs geld achten",
+   "sparen müssen",
+   "müssen wir (ein bisschen) (etwas) sparen",
+   "auf das geld achten",
+   "knapp bei kasse",
+   "wir sparen",
+   "sparen"
+  ]
+ },
+ "ENG_CHUNK_0752": {
+  "core_en": "cost a fortune",
+  "accept": [
+   "ein vermögen kosten",
+   "ein vermögen",
+   "sündhaft teuer",
+   "wahnsinnig teuer",
+   "sauteuer",
+   "ein heidengeld",
+   "eine stange geld",
+   "richtig teuer"
+  ]
+ },
+ "ENG_CHUNK_0753": {
+  "core_en": "make ends meet",
+  "accept": [
+   "über die runden kommen",
+   "über die runden",
+   "sich über wasser halten",
+   "über wasser zu halten",
+   "durchzukommen",
+   "auszukommen"
+  ]
+ },
+ "ENG_CHUNK_0754": {
+  "core_en": "paid off",
+  "accept": [
+   "abbezahlt",
+   "abbezahlen",
+   "abgezahlt",
+   "getilgt",
+   "tilgen",
+   "zurückgezahlt",
+   "zahle [x] ab"
+  ]
+ },
+ "ENG_CHUNK_0755": {
+  "core_en": "be in debt",
+  "accept": [
+   "schulden haben",
+   "verschuldet sein",
+   "verschuldet",
+   "schulden",
+   "in den miesen"
+  ]
+ },
+ "ENG_CHUNK_0756": {
+  "core_en": "cut back on",
+  "accept": [
+   "weniger [x] zu essen",
+   "weniger [x] essen",
+   "weniger [x] zu trinken",
+   "weniger [x] trinken",
+   "zu reduzieren",
+   "reduzieren",
+   "einzuschränken",
+   "einschränken"
+  ]
+ },
+ "ENG_CHUNK_0757": {
+  "core_en": "shop around",
+  "accept": [
+   "preise vergleichen",
+   "vergleich (erst) (mal) die preise",
+   "vergleiche (erst) (mal) die preise",
+   "vergleichen sie (erst) (mal) die preise",
+   "vergleicht (erst) (mal) die preise",
+   "die preise vergleichen",
+   "schau dich (erst) (mal) (noch) um",
+   "schauen sie sich (erst) (mal) (noch) um"
+  ]
+ },
+ "ENG_CHUNK_0758": {
+  "core_en": "coming down with",
+  "accept": [
+   "brüte [x] aus",
+   "ausbrüten",
+   "ich werde krank",
+   "ich werd krank",
+   "ich bekomme",
+   "ich krieg",
+   "im anmarsch",
+   "eingefangen"
+  ]
+ },
+ "ENG_CHUNK_0759": {
+  "core_en": "feeling under the weather",
+  "accept": [
+   "fühle mich nicht (ganz) fit",
+   "nicht (ganz) (so) fit",
+   "angeschlagen",
+   "fühle mich nicht (so) (ganz) gut",
+   "nicht (ganz) auf der höhe",
+   "fühle mich (etwas) (ein bisschen) krank",
+   "mir geht's nicht (so) gut",
+   "mir geht es nicht (so) gut"
+  ]
+ },
+ "ENG_CHUNK_0760": {
+  "core_en": "put on weight",
+  "accept": [
+   "zunehmen",
+   "zugenommen",
+   "nehme [x] zu",
+   "gewicht zugelegt",
+   "kilo zugelegt",
+   "kilo mehr"
+  ]
+ },
+ "ENG_CHUNK_0761": {
+  "core_en": "threw up",
+  "accept": [
+   "hat sich übergeben",
+   "übergeben",
+   "gespuckt",
+   "gekotzt",
+   "erbrochen",
+   "gebrochen",
+   "spuckte",
+   "kotzte"
+  ]
+ },
+ "ENG_CHUNK_0762": {
+  "core_en": "passed out",
+  "accept": [
+   "ohnmächtig geworden",
+   "ohnmächtig",
+   "umgekippt",
+   "umkippen",
+   "kippte um",
+   "zusammengebrochen",
+   "bewusstlos geworden",
+   "in ohnmacht gefallen"
+  ]
+ },
+ "ENG_CHUNK_0763": {
+  "core_en": "have a hangover",
+  "accept": [
+   "einen kater haben",
+   "(ich) (habe) (hab) einen kater",
+   "verkatert",
+   "mir brummt der schädel",
+   "brummschädel"
+  ]
+ },
+ "ENG_CHUNK_0764": {
+  "core_en": "get over",
+  "accept": [
+   "über [x] hinwegkommen",
+   "über [x] hinwegzukommen",
+   "über [x] hinweggekommen",
+   "über [x] hinweg zu kommen",
+   "verarbeiten",
+   "zu verarbeiten",
+   "überwinden",
+   "zu überwinden"
+  ]
+ },
+ "ENG_CHUNK_0765": {
+  "core_en": "coming to terms with",
+  "accept": [
+   "sich mit [x] abfinden",
+   "abfinden",
+   "damit klarkommen",
+   "damit klarzukommen",
+   "kommt [x] damit klar",
+   "verarbeiten",
+   "akzeptieren"
+  ]
+ },
+ "ENG_CHUNK_0766": {
+  "core_en": "Let's talk about something else",
+  "accept": [
+   "lass uns über (etwas) (was) anderes reden",
+   "lass uns über (etwas) (was) anderes sprechen",
+   "lasst uns über (etwas) (was) anderes reden",
+   "reden wir über (etwas) (was) anderes",
+   "sprechen wir über (etwas) (was) anderes",
+   "lass uns das thema wechseln",
+   "wechseln wir das thema",
+   "themawechsel"
+  ]
+ },
+ "ENG_CHUNK_0767": {
+  "core_en": "Enough about me",
+  "accept": [
+   "genug von mir",
+   "genug über mich",
+   "genug zu mir",
+   "jetzt zu dir"
+  ]
+ },
+ "ENG_CHUNK_0768": {
+  "core_en": "that's about it",
+  "accept": [
+   "das war's (eigentlich)",
+   "das war es (eigentlich)",
+   "das war's (auch) (schon)",
+   "das war es (auch) (schon)",
+   "das wars",
+   "das ist (eigentlich) alles",
+   "mehr war (eigentlich) nicht",
+   "mehr nicht"
+  ]
+ },
+ "ENG_CHUNK_0769": {
+  "core_en": "let's move on",
+  "accept": [
+   "lasst uns weitermachen",
+   "lass uns weitermachen",
+   "lassen sie uns weitermachen",
+   "machen wir weiter",
+   "kommen wir zum nächsten punkt",
+   "zum nächsten punkt",
+   "gehen wir weiter",
+   "weiter geht's"
+  ]
+ },
+ "ENG_CHUNK_0770": {
+  "core_en": "if you say so",
+  "accept": [
+   "wenn du meinst",
+   "wenn sie meinen",
+   "wenn ihr meint",
+   "wenn du (das) sagst",
+   "wenn sie (das) sagen"
+  ]
+ },
+ "ENG_CHUNK_0771": {
+  "core_en": "Who knows?",
+  "accept": [
+   "wer weiß",
+   "wer weiß das (schon)",
+   "man weiß nie",
+   "man kann nie wissen",
+   "weiß man's"
+  ]
+ },
+ "ENG_CHUNK_0772": {
+  "core_en": "No kidding",
+  "accept": [
+   "echt jetzt",
+   "(das ist) nicht dein ernst",
+   "im ernst",
+   "ernsthaft",
+   "echt",
+   "wirklich",
+   "das gibt's (doch) nicht",
+   "ach was"
+  ]
+ },
+ "ENG_CHUNK_0773": {
+  "core_en": "Come to think of it",
+  "accept": [
+   "wenn ich's mir (recht) (so) überlege",
+   "wenn ich (es) mir (recht) (so) überlege",
+   "jetzt wo ich (so) (darüber) (drüber) nachdenke",
+   "wenn ich (so) (darüber) (drüber) nachdenke",
+   "jetzt wo du (es) sagst",
+   "jetzt wo du's sagst",
+   "jetzt wo sie (es) sagen"
+  ]
+ },
+ "ENG_CHUNK_0774": {
+  "core_en": "The way I see it",
+  "accept": [
+   "(so) wie ich (das) sehe",
+   "(so) wie ich (es) sehe",
+   "wie ich (das) sehe",
+   "meiner meinung nach",
+   "aus meiner sicht",
+   "meines erachtens",
+   "für mich"
+  ]
+ },
+ "ENG_CHUNK_0775": {
+  "core_en": "Correct me if I'm wrong",
+  "accept": [
+   "korrigier mich (bitte) wenn ich (falsch liege) (mich irre)",
+   "korrigiere mich (bitte) wenn ich (falsch liege) (mich irre)",
+   "korrigieren sie mich (bitte) wenn ich (falsch liege) (mich irre)",
+   "korrigiert mich (bitte) wenn ich (falsch liege) (mich irre)",
+   "verbessere mich wenn ich",
+   "wenn ich mich nicht irre",
+   "wenn ich mich nicht täusche"
+  ]
+ },
+ "ENG_CHUNK_0776": {
+  "core_en": "For the record",
+  "accept": [
+   "(nur) damit das klar ist",
+   "fürs protokoll",
+   "nur zur info",
+   "nur zur information",
+   "nur dass du's weißt",
+   "nur dass du (es) weißt",
+   "nur dass sie (es) wissen",
+   "nur dass das klar ist"
+  ]
+ },
+ "ENG_CHUNK_0777": {
+  "core_en": "Not necessarily",
+  "accept": [
+   "nicht unbedingt",
+   "nicht zwingend",
+   "nicht immer",
+   "nicht notwendigerweise",
+   "nicht automatisch"
+  ]
+ },
+ "ENG_CHUNK_0778": {
+  "core_en": "or whatever",
+  "accept": [
+   "oder so",
+   "oder sowas",
+   "oder was auch immer",
+   "oder irgendwas",
+   "oder was anderes"
+  ]
+ },
+ "ENG_CHUNK_0779": {
+  "core_en": "I'm just thinking out loud",
+  "accept": [
+   "ich denk (nur) (mal) laut (nach)",
+   "ich denke (nur) (mal) laut (nach)",
+   "ich überleg (nur) (mal) laut",
+   "ich überlege (nur) (mal) laut",
+   "ich überleg (ja) nur",
+   "ich überlege (ja) nur",
+   "nur (so) ein gedanke",
+   "nur (so) eine idee"
+  ]
+ },
+ "ENG_CHUNK_0780": {
+  "core_en": "Off the top of my head",
+  "accept": [
+   "spontan würde ich sagen",
+   "spontan",
+   "aus dem stegreif",
+   "auf die schnelle",
+   "aus dem bauch (heraus) (raus)",
+   "ohne nachzuschauen",
+   "grob geschätzt",
+   "aus dem kopf"
+  ]
+ },
+ "ENG_CHUNK_0781": {
+  "core_en": "can't complain",
+  "accept": [
+   "kann nicht klagen",
+   "kann mich nicht beklagen",
+   "muss ja",
+   "passt schon",
+   "nicht schlecht",
+   "alles gut",
+   "läuft"
+  ]
+ },
+ "ENG_CHUNK_0782": {
+  "core_en": "keep me posted",
+  "accept": [
+   "halt mich auf dem laufenden",
+   "halte mich auf dem laufenden",
+   "halten sie mich auf dem laufenden",
+   "haltet mich auf dem laufenden",
+   "sag mir (dann) bescheid",
+   "gib mir (dann) bescheid",
+   "sagen sie mir (dann) bescheid",
+   "meld dich (dann)"
+  ]
+ },
+ "ENG_CHUNK_0783": {
+  "core_en": "Let's call it a day",
+  "accept": [
+   "machen wir feierabend",
+   "schluss für heute",
+   "lass uns feierabend machen",
+   "lasst uns feierabend machen",
+   "machen wir schluss (für heute)",
+   "lass uns schluss machen",
+   "lasst uns schluss machen",
+   "für heute reicht's"
+  ]
+ },
+ "ENG_CHUNK_0784": {
+  "core_en": "it's the least I could do",
+  "accept": [
+   "das ist (doch) das mindeste",
+   "das mindeste",
+   "gern geschehen",
+   "gerne geschehen",
+   "nicht der rede wert",
+   "das ist (doch) selbstverständlich",
+   "das war (doch) selbstverständlich"
+  ]
+ },
+ "ENG_CHUNK_0785": {
+  "core_en": "I'll let you go",
+  "accept": [
+   "ich will dich nicht (länger) (weiter) aufhalten",
+   "ich will sie nicht (länger) (weiter) aufhalten",
+   "ich will euch nicht (länger) (weiter) aufhalten",
+   "ich möchte sie nicht (länger) aufhalten",
+   "ich halte dich nicht länger auf",
+   "ich halte sie nicht länger auf",
+   "ich lass dich dann (mal)",
+   "ich lasse dich dann (mal)"
+  ]
+ },
+ "ENG_CHUNK_0786": {
+  "core_en": "Don't be a stranger",
+  "accept": [
+   "lass (mal) (wieder) von dir hören",
+   "lassen sie (mal) (wieder) von sich hören",
+   "lasst (mal) (wieder) von euch hören",
+   "meld dich (mal) (wieder)",
+   "melde dich (mal) (wieder)",
+   "melden sie sich (mal) (wieder)",
+   "meldet euch (mal) (wieder)"
+  ]
+ },
+ "ENG_CHUNK_0787": {
+  "core_en": "You've got to be kidding me",
+  "accept": [
+   "das ist (doch) nicht dein ernst",
+   "das darf (doch) nicht wahr sein",
+   "das kann (doch) nicht wahr sein",
+   "nicht dein ernst",
+   "nicht ihr ernst",
+   "das gibt's (doch) nicht",
+   "soll das ein witz sein",
+   "du machst witze"
+  ]
+ },
+ "ENG_CHUNK_0788": {
+  "core_en": "Give me a break",
+  "accept": [
+   "(jetzt) mach (mal) halblang",
+   "geht's noch",
+   "gehts noch",
+   "hör (bloß) (doch) auf",
+   "jetzt reicht's aber",
+   "ich glaub es hackt",
+   "das ist (ja) (wohl) nicht dein ernst",
+   "jetzt (mal) ehrlich"
+  ]
+ },
+ "ENG_CHUNK_0789": {
+  "core_en": "That's the last straw",
+  "accept": [
+   "jetzt reicht's",
+   "jetzt reicht es",
+   "mir reicht's",
+   "mir reicht es",
+   "das fass zum überlaufen",
+   "jetzt ist (endgültig) schluss",
+   "das war's jetzt",
+   "jetzt ist das maß voll"
+  ]
+ },
+ "ENG_CHUNK_0790": {
+  "core_en": "Just my luck",
+  "accept": [
+   "typisch",
+   "so ein pech",
+   "na toll",
+   "war (ja) klar",
+   "immer ich",
+   "so ist das immer bei mir"
+  ]
+ },
+ "ENG_CHUNK_0791": {
+  "core_en": "As usual",
+  "accept": [
+   "wie immer",
+   "wie üblich",
+   "wie gewöhnlich",
+   "wie so oft",
+   "mal wieder"
+  ]
+ },
+ "ENG_CHUNK_0792": {
+  "core_en": "Then again",
+  "accept": [
+   "andererseits",
+   "auf der anderen seite",
+   "allerdings"
+  ]
+ },
+ "ENG_CHUNK_0793": {
+  "core_en": "Even so",
+  "accept": [
+   "trotzdem",
+   "dennoch",
+   "trotz allem",
+   "trotzalledem"
+  ]
+ },
+ "ENG_CHUNK_0794": {
+  "core_en": "not to mention",
+  "accept": [
+   "ganz zu schweigen von",
+   "(ganz) abgesehen davon (dass)",
+   "ganz zu schweigen davon dass",
+   "und außerdem",
+   "und dazu noch",
+   "nicht zu vergessen",
+   "und obendrein"
+  ]
+ },
+ "ENG_CHUNK_0795": {
+  "core_en": "sure enough",
+  "accept": [
+   "und tatsächlich",
+   "und prompt",
+   "tatsächlich",
+   "prompt",
+   "wie erwartet",
+   "und natürlich",
+   "und wirklich"
+  ]
+ },
+ "ENG_CHUNK_0796": {
+  "core_en": "All the more reason",
+  "accept": [
+   "umso mehr ein grund",
+   "umso mehr grund",
+   "um so mehr ein grund",
+   "dann erst recht",
+   "erst recht",
+   "ein grund mehr",
+   "noch ein grund (mehr)"
+  ]
+ },
+ "ENG_CHUNK_0797": {
+  "core_en": "On second thought",
+  "accept": [
+   "doch lieber",
+   "nee warte",
+   "nein warte",
+   "ich hab's mir anders überlegt",
+   "ich habe es mir anders überlegt",
+   "ich überleg's mir anders",
+   "ach nee",
+   "ach nein"
+  ]
+ },
+ "ENG_CHUNK_0798": {
+  "core_en": "Ever since",
+  "accept": [
+   "seit",
+   "seitdem"
+  ]
+ },
+ "ENG_CHUNK_0799": {
+  "core_en": "Not only that",
+  "accept": [
+   "und nicht nur das",
+   "nicht nur das",
+   "nicht nur [x] sondern auch",
+   "außerdem",
+   "dazu kommt",
+   "hinzu kommt",
+   "obendrein",
+   "und dazu"
+  ]
+ },
+ "ENG_CHUNK_0800": {
+  "core_en": "At that point",
+  "accept": [
+   "in dem moment",
+   "in diesem moment",
+   "in dem augenblick",
+   "in diesem augenblick",
+   "zu dem zeitpunkt",
+   "zu diesem zeitpunkt",
+   "an dem punkt",
+   "an diesem punkt"
+  ]
+ },
+ "ENG_CHUNK_0801": {
+  "core_en": "Just because",
+  "accept": [
+   "nur weil",
+   "heißt das (noch) (lange) nicht (dass)",
+   "heißt (noch) (lange) nicht (dass)",
+   "bedeutet das (noch) (lange) nicht (dass)",
+   "bedeutet (noch) (lange) nicht (dass)"
+  ]
+ },
+ "ENG_CHUNK_0802": {
+  "core_en": "I see where you're coming from, but",
+  "accept": [
+   "ich verstehe (schon) was du meinst",
+   "ich versteh (schon) was du meinst",
+   "ich verstehe (schon) was sie meinen",
+   "ich verstehe (schon) was ihr meint",
+   "ich verstehe deinen punkt",
+   "ich verstehe ihren standpunkt",
+   "ich kann dich (schon) verstehen",
+   "ich kann sie (schon) verstehen"
+  ]
+ },
+ "ENG_CHUNK_0803": {
+  "core_en": "I can see why",
+  "accept": [
+   "ich kann (gut) (schon) verstehen (dass) (warum)",
+   "ich verstehe (gut) (schon) warum",
+   "ich verstehe (gut) (schon) dass",
+   "ich versteh (schon) warum",
+   "kann ich (gut) verstehen",
+   "ich kann nachvollziehen (dass) (warum)",
+   "verständlich dass"
+  ]
+ },
+ "ENG_CHUNK_0804": {
+  "core_en": "Is it just me, or",
+  "accept": [
+   "liegt's (nur) an mir (oder)",
+   "liegt es (nur) an mir (oder)",
+   "bin ich das nur (oder)",
+   "bin nur ich das (oder)",
+   "bilde ich mir das nur ein",
+   "geht das nur mir (so)",
+   "ist das nur bei mir (so)",
+   "kommt es nur mir (so) vor"
+  ]
+ },
+ "ENG_CHUNK_0805": {
+  "core_en": "You'd think",
+  "accept": [
+   "man sollte meinen",
+   "man würde (ja) denken",
+   "man sollte (doch) denken",
+   "man würde (doch) meinen",
+   "man könnte meinen",
+   "man sollte annehmen",
+   "man möchte meinen",
+   "(eigentlich) sollte man denken"
+  ]
+ },
+ "ENG_CHUNK_0806": {
+  "core_en": "No wonder",
+  "accept": [
+   "kein wunder (dass)",
+   "es wundert mich nicht (dass)",
+   "wundert mich nicht (dass)",
+   "(ist) (ja) klar dass"
+  ]
+ },
+ "ENG_CHUNK_0807": {
+  "core_en": "Don't tell me",
+  "accept": [
+   "sag (mir) (bloß) (jetzt) (nur) nicht dass",
+   "sag bloß",
+   "sagen sie (mir) (bloß) (jetzt) nicht dass",
+   "sagt (mir) (bloß) (jetzt) nicht dass",
+   "erzähl mir (bloß) (jetzt) nicht dass",
+   "doch nicht etwa"
+  ]
+ },
+ "ENG_CHUNK_0808": {
+  "core_en": "Are you telling me",
+  "accept": [
+   "willst du mir (etwa) erzählen (dass)",
+   "willst du mir (etwa) sagen (dass)",
+   "wollen sie mir (etwa) erzählen (dass)",
+   "wollen sie mir (etwa) sagen (dass)",
+   "wollt ihr mir (etwa) erzählen",
+   "heißt das (etwa) dass",
+   "soll das heißen dass",
+   "du willst mir (doch) nicht erzählen dass"
+  ]
+ },
+ "ENG_CHUNK_0809": {
+  "core_en": "I was under the impression",
+  "accept": [
+   "ich dachte (eigentlich)",
+   "ich war der meinung (dass)",
+   "ich war der auffassung (dass)",
+   "ich hatte den eindruck (dass)",
+   "ich ging davon aus (dass)",
+   "ich bin davon ausgegangen (dass)",
+   "ich hab gedacht",
+   "ich habe gedacht"
+  ]
+ },
+ "ENG_CHUNK_0810": {
+  "core_en": "I could have sworn",
+  "accept": [
+   "ich hätte schwören können (dass)",
+   "hätte schwören können",
+   "ich hätte (drauf) wetten können",
+   "ich war mir (ganz) (so) sicher (dass)",
+   "ich war (mir) fest überzeugt (dass)",
+   "ich war (mir) hundertprozentig sicher"
+  ]
+ },
+ "ENG_CHUNK_0811": {
+  "core_en": "I take it",
+  "accept": [
+   "ich nehme an (dass)",
+   "ich nehme (mal) an",
+   "ich vermute (mal)",
+   "ich schätze (mal)",
+   "ich gehe davon aus (dass)",
+   "anscheinend",
+   "offenbar",
+   "wohl"
+  ]
+ },
+ "ENG_CHUNK_0812": {
+  "core_en": "I'm starting to think",
+  "accept": [
+   "langsam glaube ich",
+   "langsam glaub ich",
+   "langsam denke ich",
+   "langsam denk ich",
+   "ich glaube langsam",
+   "ich glaub langsam",
+   "allmählich glaube ich",
+   "ich fange an zu glauben"
+  ]
+ },
+ "ENG_CHUNK_0813": {
+  "core_en": "it dawned on me that",
+  "accept": [
+   "ist mir (plötzlich) eingefallen",
+   "mir ist (plötzlich) eingefallen",
+   "fiel mir (plötzlich) ein",
+   "mir wurde (plötzlich) klar",
+   "wurde mir (plötzlich) klar",
+   "ist mir (plötzlich) klar geworden",
+   "mir ist (plötzlich) klar geworden",
+   "ist mir (plötzlich) aufgefallen"
+  ]
+ },
+ "ENG_CHUNK_0814": {
+  "core_en": "There's more to life than",
+  "accept": [
+   "es gibt (noch) mehr im leben als",
+   "im leben gibt es (noch) mehr als",
+   "das leben ist (doch) mehr als (nur)",
+   "ist (doch) mehr als nur",
+   "es gibt (noch) wichtigere dinge (im leben) als",
+   "es gibt (noch) mehr als (nur)"
+  ]
+ },
+ "ENG_CHUNK_0815": {
+  "core_en": "I wouldn't be surprised if",
+  "accept": [
+   "es würde mich nicht wundern (wenn)",
+   "würde mich nicht wundern",
+   "würde mich nicht überraschen",
+   "mich würde es nicht wundern",
+   "mich würde es nicht überraschen",
+   "ich wäre nicht überrascht (wenn)",
+   "es wundert mich nicht wenn"
+  ]
+ },
+ "ENG_CHUNK_0816": {
+  "core_en": "It's bound to",
+  "accept": [
+   "wird bestimmt",
+   "bestimmt",
+   "garantiert",
+   "ganz sicher",
+   "sicher",
+   "auf jeden fall",
+   "mit sicherheit",
+   "sicherlich"
+  ]
+ },
+ "ENG_CHUNK_0817": {
+  "core_en": "Knowing",
+  "accept": [
+   "(so) wie ich [x] kenne",
+   "wie ich [x] kenne",
+   "so gut wie ich [x] kenne",
+   "ich kenne doch"
+  ]
+ },
+ "ENG_CHUNK_0818": {
+  "core_en": "For all I know",
+  "accept": [
+   "was weiß ich",
+   "wer weiß",
+   "keine ahnung",
+   "es kann (gut) (auch) sein dass",
+   "gut möglich dass",
+   "könnte (auch) sein dass"
+  ]
+ },
+ "ENG_CHUNK_0819": {
+  "core_en": "There's no telling",
+  "accept": [
+   "man weiß nie",
+   "man kann nie wissen",
+   "das weiß man nie",
+   "man kann nicht sagen",
+   "wer weiß",
+   "keine ahnung",
+   "nicht abzusehen",
+   "man kann nicht vorhersagen"
+  ]
+ },
+ "ENG_CHUNK_0820": {
+  "core_en": "What does my age have to do with anything",
+  "accept": [
+   "was hat [x] mit [x] zu tun",
+   "was hat [x] damit zu tun",
+   "was hat das damit zu tun",
+   "was hat [x] zu tun",
+   "was spielt [x] (denn) für eine rolle"
+  ]
+ },
+ "ENG_CHUNK_0821": {
+  "core_en": "I'm not convinced",
+  "accept": [
+   "ich bin (noch) nicht (so) (ganz) überzeugt",
+   "ich bin (mir) (noch) nicht (so) sicher",
+   "ich bezweifle",
+   "ich zweifle (daran)",
+   "ich bin skeptisch",
+   "ich glaube nicht dass",
+   "(so) (ganz) überzeugt bin ich nicht",
+   "überzeugt bin ich nicht"
+  ]
+ },
+ "ENG_CHUNK_0822": {
+  "core_en": "I'll believe it when",
+  "accept": [
+   "das glaub ich erst (wenn)",
+   "das glaube ich erst (wenn)",
+   "ich glaub's erst (wenn)",
+   "ich glaube es erst (wenn)",
+   "ich glaub es erst (wenn)",
+   "erst wenn ich (es) sehe",
+   "das will ich sehen",
+   "das muss ich erst sehen"
+  ]
+ },
+ "ENG_CHUNK_0823": {
+  "core_en": "we could always",
+  "accept": [
+   "wir könnten (ja) auch",
+   "könnten wir (ja) auch",
+   "wir könnten ja",
+   "könnten wir ja",
+   "wir könnten (ja) (auch) immer noch",
+   "könnten wir (auch) immer noch",
+   "wir können (ja) (auch) immer noch",
+   "wir können ja (auch)"
+  ]
+ },
+ "ENG_CHUNK_0824": {
+  "core_en": "We might as well",
+  "accept": [
+   "dann können wir (ja) auch gleich",
+   "wir können (ja) auch gleich",
+   "können wir auch gleich",
+   "dann können wir (auch) (ja) genauso gut",
+   "wir können (auch) genauso gut",
+   "wir könnten (auch) genauso gut",
+   "dann können wir auch"
+  ]
+ },
+ "ENG_CHUNK_0825": {
+  "core_en": "I'm not one to",
+  "accept": [
+   "ich beschwere mich (ja) nicht gern",
+   "ich [x] (ja) nicht gern",
+   "ich [x] (ja) nicht gerne",
+   "ich [x] (eigentlich) nicht gern",
+   "ich bin (ja) (eigentlich) nicht der typ der",
+   "ich bin (ja) (eigentlich) keiner der",
+   "ich bin (ja) (eigentlich) nicht jemand der",
+   "normalerweise [x] ich (ja) nicht"
+  ]
+ },
+ "ENG_CHUNK_0826": {
+  "core_en": "It wouldn't hurt to",
+  "accept": [
+   "es kann nicht schaden",
+   "kann nicht schaden",
+   "es schadet nicht",
+   "schadet nicht",
+   "es würde nicht schaden",
+   "würde nicht schaden",
+   "es wäre (vielleicht) nicht schlecht",
+   "wäre (vielleicht) keine schlechte idee"
+  ]
+ },
+ "ENG_CHUNK_0827": {
+  "core_en": "you can't go wrong with",
+  "accept": [
+   "machst du nichts falsch",
+   "kannst du nichts falsch machen",
+   "machen sie nichts falsch",
+   "können sie nichts falsch machen",
+   "macht ihr nichts falsch",
+   "liegst du immer richtig",
+   "liegst du nie falsch",
+   "ist man immer auf der sicheren seite"
+  ]
+ },
+ "ENG_CHUNK_0828": {
+  "core_en": "There's no excuse for",
+  "accept": [
+   "es gibt keine entschuldigung dafür",
+   "keine entschuldigung (dafür) (für)",
+   "es gibt keine ausrede (dafür) (für)",
+   "keine ausrede (dafür) (für)",
+   "ist unentschuldbar",
+   "nicht zu entschuldigen"
+  ]
+ },
+ "ENG_CHUNK_0829": {
+  "core_en": "Whatever you do, don't",
+  "accept": [
+   "egal was du machst",
+   "egal was du tust",
+   "egal was sie machen",
+   "egal was sie tun",
+   "egal was ihr macht",
+   "was auch immer du tust",
+   "auf keinen fall",
+   "bloß nicht"
+  ]
+ },
+ "ENG_CHUNK_0830": {
+  "core_en": "Don't you dare",
+  "accept": [
+   "wehe du",
+   "wehe",
+   "wehe ihr",
+   "untersteh dich",
+   "unterstehen sie sich",
+   "wag es (bloß) (ja) nicht",
+   "wage es (bloß) (ja) nicht",
+   "trau dich (bloß) (ja) nicht"
+  ]
+ },
+ "ENG_CHUNK_0831": {
+  "core_en": "Don't bother",
+  "accept": [
+   "du brauchst gar nicht erst",
+   "du brauchst [x] gar nicht erst",
+   "sie brauchen gar nicht erst",
+   "sie brauchen [x] gar nicht erst",
+   "spar dir",
+   "sparen sie sich",
+   "spart euch",
+   "das kannst du dir sparen"
+  ]
+ },
+ "ENG_CHUNK_0832": {
+  "core_en": "Let's say",
+  "accept": [
+   "sagen wir (mal) (einfach)",
+   "nehmen wir (mal) an",
+   "angenommen",
+   "wie wär's wenn",
+   "wie wäre es wenn"
+  ]
+ },
+ "ENG_CHUNK_0833": {
+  "core_en": "It's safe to say",
+  "accept": [
+   "man kann wohl sagen",
+   "man kann (ruhig) (getrost) (sicher) sagen",
+   "man kann mit sicherheit sagen",
+   "man darf (wohl) sagen",
+   "man kann behaupten",
+   "es ist klar dass"
+  ]
+ },
+ "ENG_CHUNK_0834": {
+  "core_en": "I was going to ask if you wanted to",
+  "accept": [
+   "ich wollte (dich) (mal) fragen ob du lust hast",
+   "ich wollte (dich) (mal) fragen ob",
+   "ich wollte (sie) (mal) fragen ob sie lust haben",
+   "ich wollte (euch) (mal) fragen ob",
+   "hättest du lust",
+   "hast du lust",
+   "haben sie lust",
+   "hättet ihr lust"
+  ]
+ },
+ "ENG_CHUNK_0835": {
+  "core_en": "I'm up for",
+  "accept": [
+   "ich (habe) (hab) lust auf",
+   "ich hätte (echt) lust auf",
+   "ich hätte [x] lust auf",
+   "ich habe [x] lust auf",
+   "ich bin dabei",
+   "ich bin für [x] zu haben",
+   "ich wär dabei",
+   "ich wäre dabei"
+  ]
+ },
+ "ENG_CHUNK_0836": {
+  "core_en": "get a second opinion",
+  "accept": [
+   "eine zweite meinung einholen",
+   "eine zweite meinung",
+   "zweitmeinung",
+   "noch eine meinung einholen",
+   "einen anderen arzt fragen"
+  ]
+ },
+ "ENG_CHUNK_0837": {
+  "core_en": "side effects",
+  "accept": [
+   "nebenwirkungen",
+   "nebenwirkung"
+  ]
+ },
+ "ENG_CHUNK_0838": {
+  "core_en": "worn out",
+  "accept": [
+   "fix und fertig",
+   "völlig kaputt",
+   "total kaputt",
+   "kaputt",
+   "erschöpft",
+   "erledigt",
+   "todmüde",
+   "platt"
+  ]
+ },
+ "ENG_CHUNK_0839": {
+  "core_en": "catch my breath",
+  "accept": [
+   "kurz verschnaufen",
+   "verschnaufen",
+   "zu atem kommen",
+   "luft holen",
+   "durchatmen",
+   "verschnaufpause"
+  ]
+ },
+ "ENG_CHUNK_0840": {
+  "core_en": "lost my temper",
+  "accept": [
+   "die beherrschung verloren",
+   "beherrschung verloren",
+   "ausgerastet",
+   "die nerven verloren",
+   "ausgeflippt",
+   "laut geworden",
+   "die fassung verloren",
+   "mich nicht beherrschen konnte"
+  ]
+ },
+ "ENG_CHUNK_0841": {
+  "core_en": "freak out",
+  "accept": [
+   "flipp (jetzt) (bitte) nicht aus",
+   "flippen sie (jetzt) nicht aus",
+   "dreh (jetzt) (bitte) nicht durch",
+   "drehen sie (jetzt) nicht durch",
+   "raste (jetzt) nicht aus",
+   "reg dich (jetzt) nicht auf",
+   "ausflippen",
+   "durchdrehen"
+  ]
+ },
+ "ENG_CHUNK_0842": {
+  "core_en": "take it personally",
+  "accept": [
+   "nimm's nicht persönlich",
+   "nimm es nicht persönlich",
+   "nehmen sie (es) nicht persönlich",
+   "nehmt es nicht persönlich",
+   "persönlich nehmen",
+   "nicht persönlich",
+   "bezieh das nicht auf dich",
+   "beziehen sie (das) nicht auf sich"
+  ]
+ },
+ "ENG_CHUNK_0843": {
+  "core_en": "hurt your feelings",
+  "accept": [
+   "dich verletzt",
+   "sie verletzt",
+   "euch verletzt",
+   "dich gekränkt",
+   "sie gekränkt",
+   "deine gefühle verletzt",
+   "ihre gefühle verletzt",
+   "dir weh getan"
+  ]
+ },
+ "ENG_CHUNK_0844": {
+  "core_en": "feel left out",
+  "accept": [
+   "sich ausgeschlossen",
+   "fühlt sich [x] ausgeschlossen",
+   "ausgeschlossen fühlen",
+   "außen vor",
+   "sich übergangen",
+   "fühlt sich [x] übergangen",
+   "sich ausgegrenzt"
+  ]
+ },
+ "ENG_CHUNK_0845": {
+  "core_en": "opened up to",
+  "accept": [
+   "sich mir gegenüber geöffnet",
+   "sich [x] geöffnet",
+   "sich mir geöffnet",
+   "sich [x] anvertraut",
+   "sich mir anvertraut",
+   "aufgetaut",
+   "sich öffnen",
+   "öffnet sich"
+  ]
+ },
+ "ENG_CHUNK_0846": {
+  "core_en": "get something off my chest",
+  "accept": [
+   "mir [x] von der seele reden",
+   "von der seele reden",
+   "von der seele",
+   "loswerden",
+   "ich muss (dir) (mal) (etwas) (was) beichten"
+  ]
+ },
+ "ENG_CHUNK_0847": {
+  "core_en": "blow off steam",
+  "accept": [
+   "dampf ablassen",
+   "dampf abzulassen",
+   "stress abbauen",
+   "stress abzubauen",
+   "abreagieren",
+   "abzureagieren",
+   "den kopf frei (zu) (kriegen) (bekommen)"
+  ]
+ },
+ "ENG_CHUNK_0848": {
+  "core_en": "have mixed feelings about",
+  "accept": [
+   "gemischte gefühle",
+   "zwiegespalten",
+   "hin- und hergerissen",
+   "hin und hergerissen",
+   "hin und her gerissen",
+   "ambivalente gefühle"
+  ]
+ },
+ "ENG_CHUNK_0849": {
+  "core_en": "see that coming",
+  "accept": [
+   "damit hab ich nicht gerechnet",
+   "damit (habe) (hab) (hätte) ich (echt) (gar) (überhaupt) nicht gerechnet",
+   "das (habe) (hab) (hätte) ich nicht kommen sehen",
+   "hab ich nicht mit gerechnet",
+   "das hätte ich nicht gedacht",
+   "das kam (echt) unerwartet"
+  ]
+ },
+ "ENG_CHUNK_0850": {
+  "core_en": "let her down",
+  "accept": [
+   "im stich lassen",
+   "enttäuschen",
+   "hängen lassen",
+   "hängenlassen",
+   "im stich"
+  ]
+ },
+ "ENG_CHUNK_0851": {
+  "core_en": "looked up to",
+  "accept": [
+   "zu [x] aufgeschaut",
+   "zu [x] aufgesehen",
+   "zu [x] aufschauen",
+   "zu [x] aufsehen",
+   "bewundert",
+   "bewundere",
+   "vorbild"
+  ]
+ },
+ "ENG_CHUNK_0852": {
+  "core_en": "put up with",
+  "accept": [
+   "aushalten",
+   "aushältst",
+   "aushält",
+   "erträgst",
+   "ertragen",
+   "gefallen lassen",
+   "gefallen lässt",
+   "klarkommst"
+  ]
+ },
+ "ENG_CHUNK_0853": {
+  "core_en": "back me up",
+  "accept": [
+   "den rücken stärken",
+   "stärkst du mir [x] den rücken",
+   "mir [x] den rücken",
+   "unterstützt du mich",
+   "unterstützen sie mich",
+   "hältst du zu mir",
+   "stehst du [x] hinter mir",
+   "stehst du hinter mir"
+  ]
+ },
+ "ENG_CHUNK_0854": {
+  "core_en": "taking sides",
+  "accept": [
+   "partei ergreifen",
+   "ergreife keine partei",
+   "keine partei",
+   "auf keine seite",
+   "mich auf eine seite stellen",
+   "halte mich (da) raus",
+   "halt mich (da) raus",
+   "mische mich (da) nicht ein"
+  ]
+ },
+ "ENG_CHUNK_0855": {
+  "core_en": "see eye to eye",
+  "accept": [
+   "einer meinung sein",
+   "einer meinung",
+   "gleicher meinung",
+   "derselben meinung",
+   "einig",
+   "auf einer wellenlänge"
+  ]
+ },
+ "ENG_CHUNK_0856": {
+  "core_en": "on good terms with",
+  "accept": [
+   "mich gut mit [x] verstehen",
+   "verstehe mich (immer noch) (noch) gut mit",
+   "verstehe mich [x] gut mit",
+   "ein gutes verhältnis (zu) (mit)",
+   "guten kontakt (zu) (mit)",
+   "komme [x] gut mit [x] klar",
+   "komme gut mit [x] klar",
+   "verstehen uns (immer noch) (noch) gut"
+  ]
+ },
+ "ENG_CHUNK_0857": {
+  "core_en": "lost touch with",
+  "accept": [
+   "den kontakt zu [x] verloren",
+   "den kontakt [x] verloren",
+   "den kontakt verloren",
+   "kontakt verloren",
+   "aus den augen verloren",
+   "nichts mehr voneinander gehört",
+   "uns auseinandergelebt"
+  ]
+ },
+ "ENG_CHUNK_0858": {
+  "core_en": "meet me halfway",
+  "accept": [
+   "entgegenkommen",
+   "mir [x] entgegenkommen",
+   "kommen sie mir [x] entgegen",
+   "kommen sie mir entgegen",
+   "kommst du mir [x] entgegen",
+   "kommst du mir entgegen",
+   "in der mitte treffen",
+   "einen kompromiss"
+  ]
+ },
+ "ENG_CHUNK_0859": {
+  "core_en": "cheating on her",
+  "accept": [
+   "sie betrogen",
+   "betrogen",
+   "betrügt",
+   "fremdgegangen",
+   "fremdgeht",
+   "fremdging",
+   "eine affäre"
+  ]
+ },
+ "ENG_CHUNK_0860": {
+  "core_en": "settles down",
+  "accept": [
+   "sesshaft werden",
+   "sesshaft",
+   "zur ruhe kommt",
+   "zur ruhe kommen",
+   "sich niederlässt",
+   "sich niederlassen",
+   "häuslich wird"
+  ]
+ },
+ "ENG_CHUNK_0861": {
+  "core_en": "start a family",
+  "accept": [
+   "eine familie gründen",
+   "familie gründen",
+   "familie zu gründen",
+   "kinder bekommen",
+   "kinder kriegen",
+   "kinder haben"
+  ]
+ },
+ "ENG_CHUNK_0862": {
+  "core_en": "takes after",
+  "accept": [
+   "kommt nach",
+   "kommt [x] nach",
+   "ähnelt",
+   "ganz der vater",
+   "ganz die mutter",
+   "ganz der papa"
+  ]
+ },
+ "ENG_CHUNK_0863": {
+  "core_en": "It runs in the family",
+  "accept": [
+   "das liegt in der familie",
+   "liegt (bei uns) in der familie",
+   "in der familie",
+   "das ist erblich",
+   "liegt in den genen",
+   "familiär bedingt"
+  ]
+ },
+ "ENG_CHUNK_0864": {
+  "core_en": "looked out for",
+  "accept": [
+   "auf [x] aufgepasst",
+   "auf mich aufgepasst",
+   "auf [x] aufpassen",
+   "auf mich geachtet",
+   "mich beschützt",
+   "beschützt",
+   "sich um mich gekümmert",
+   "sich [x] um mich gekümmert"
+  ]
+ },
+ "ENG_CHUNK_0865": {
+  "core_en": "talked me into",
+  "accept": [
+   "mich [x] überredet",
+   "überredet",
+   "überreden",
+   "überredeten",
+   "mich [x] beschwatzt",
+   "beschwatzt",
+   "mich dazu gebracht"
+  ]
+ },
+ "ENG_CHUNK_0866": {
+  "core_en": "As far as I'm concerned",
+  "accept": [
+   "was mich betrifft",
+   "was mich angeht",
+   "für mich",
+   "meiner meinung nach",
+   "von mir aus",
+   "aus meiner sicht"
+  ]
+ },
+ "ENG_CHUNK_0867": {
+  "core_en": "Don't get me wrong",
+  "accept": [
+   "versteh mich (bitte) nicht falsch",
+   "verstehe mich (bitte) nicht falsch",
+   "verstehen sie mich (bitte) nicht falsch",
+   "versteht mich (bitte) nicht falsch",
+   "nicht falsch verstehen"
+  ]
+ },
+ "ENG_CHUNK_0868": {
+  "core_en": "Let me get this straight",
+  "accept": [
+   "moment (mal) damit ich (das) richtig verstehe",
+   "damit ich (das) (auch) richtig verstehe",
+   "hab ich (das) richtig verstanden",
+   "habe ich (das) richtig verstanden",
+   "verstehe ich (das) richtig",
+   "versteh ich (das) richtig",
+   "noch mal zum mitschreiben"
+  ]
+ },
+ "ENG_CHUNK_0869": {
+  "core_en": "Come again?",
+  "accept": [
+   "wie bitte",
+   "hä",
+   "was hast du gesagt",
+   "was haben sie gesagt",
+   "wie war das (noch) (mal)",
+   "noch mal bitte"
+  ]
+ },
+ "ENG_CHUNK_0870": {
+  "core_en": "I wouldn't go that far",
+  "accept": [
+   "so weit würde ich nicht gehen",
+   "so weit würd ich nicht gehen",
+   "soweit würde ich nicht gehen",
+   "ich würde nicht so weit gehen",
+   "das würde ich (so) nicht sagen",
+   "das würd ich (so) nicht sagen",
+   "das ist (ein bisschen) übertrieben",
+   "übertreib (mal) nicht"
+  ]
+ },
+ "ENG_CHUNK_0871": {
+  "core_en": "up to a point",
+  "accept": [
+   "bis zu einem gewissen punkt",
+   "bis zu einem gewissen grad",
+   "bis zu einem bestimmten punkt",
+   "teilweise",
+   "zum teil",
+   "in gewissem maße",
+   "bedingt"
+  ]
+ },
+ "ENG_CHUNK_0872": {
+  "core_en": "In a way",
+  "accept": [
+   "in gewisser weise",
+   "irgendwie",
+   "gewissermaßen",
+   "in gewissem sinne",
+   "auf eine art",
+   "sozusagen"
+  ]
+ },
+ "ENG_CHUNK_0873": {
+  "core_en": "Sounds about right",
+  "accept": [
+   "(das) kommt hin",
+   "klingt realistisch",
+   "klingt plausibel",
+   "klingt (ungefähr) richtig",
+   "das passt (schon) (so)",
+   "hört sich realistisch an",
+   "hört sich (ungefähr) richtig an",
+   "das kann hinkommen"
+  ]
+ },
+ "ENG_CHUNK_0874": {
+  "core_en": "point taken",
+  "accept": [
+   "(du) hast recht",
+   "punkt für dich",
+   "sie haben recht",
+   "ihr habt recht",
+   "guter punkt",
+   "verstanden",
+   "angekommen",
+   "ich hab's kapiert"
+  ]
+ },
+ "ENG_CHUNK_0875": {
+  "core_en": "I'll give you that",
+  "accept": [
+   "zugegeben",
+   "das muss man zugeben",
+   "das muss ich zugeben",
+   "das gebe ich zu",
+   "das geb ich zu",
+   "da haben sie recht",
+   "da hast du recht",
+   "das muss ich (dir) (ihnen) lassen"
+  ]
+ },
+ "ENG_CHUNK_0876": {
+  "core_en": "hear me out",
+  "accept": [
+   "hör mir (bitte) (erst) (mal) (einfach) zu",
+   "hören sie mir (bitte) (erst) (mal) (einfach) zu",
+   "hört mir (bitte) (erst) (mal) (einfach) zu",
+   "hör (bitte) (erst) (mal) zu",
+   "lass mich (bitte) (erst) (mal) ausreden",
+   "lassen sie mich (bitte) (erst) (mal) ausreden",
+   "lasst mich (bitte) (erst) (mal) ausreden"
+  ]
+ },
+ "ENG_CHUNK_0877": {
+  "core_en": "Where do we go from here?",
+  "accept": [
+   "wie geht's (jetzt) (nun) weiter",
+   "wie geht es (jetzt) (nun) weiter",
+   "was machen wir jetzt",
+   "was nun",
+   "wie machen wir (jetzt) weiter",
+   "und was jetzt"
+  ]
+ },
+ "ENG_CHUNK_0878": {
+  "core_en": "Hold that thought",
+  "accept": [
+   "merk dir das (mal) (kurz)",
+   "merke dir das (mal) (kurz)",
+   "merken sie sich das (mal) (kurz)",
+   "merkt euch das (mal) (kurz)",
+   "halt den gedanken fest",
+   "halte den gedanken fest",
+   "behalt den gedanken",
+   "moment"
+  ]
+ },
+ "ENG_CHUNK_0879": {
+  "core_en": "Over to you",
+  "accept": [
+   "jetzt bist du dran",
+   "du bist dran",
+   "sie sind dran",
+   "ihr seid dran",
+   "ich gebe (weiter) an",
+   "ich übergebe an",
+   "ich gebe ab an"
+  ]
+ },
+ "ENG_CHUNK_0880": {
+  "core_en": "Now you're talking",
+  "accept": [
+   "so gefällt mir das",
+   "das ist ein wort",
+   "so gefällt's mir",
+   "das klingt (schon) (doch) (sehr) gut",
+   "das hört sich (schon) (doch) gut an",
+   "da bin ich dabei",
+   "jetzt reden wir"
+  ]
+ },
+ "ENG_CHUNK_0881": {
+  "core_en": "Here we go again",
+  "accept": [
+   "nicht schon wieder",
+   "jetzt geht das (schon) wieder los",
+   "das geht (schon) wieder los",
+   "es geht (schon) wieder los",
+   "schon wieder"
+  ]
+ },
+ "ENG_CHUNK_0882": {
+  "core_en": "Tell me about it",
+  "accept": [
+   "wem sagst du das",
+   "wem sagen sie das",
+   "wem sagt ihr das",
+   "das kannst du laut sagen",
+   "das können sie laut sagen",
+   "da sagst du was",
+   "allerdings",
+   "und wie"
+  ]
+ },
+ "ENG_CHUNK_0883": {
+  "core_en": "It's not rocket science",
+  "accept": [
+   "das ist keine raketenwissenschaft",
+   "kein hexenwerk",
+   "keine raketenwissenschaft",
+   "keine hexerei",
+   "(das) ist (doch) nicht (so) schwer",
+   "(das) ist (doch) kinderleicht",
+   "kein kunststück"
+  ]
+ },
+ "ENG_CHUNK_0884": {
+  "core_en": "Speak of the devil",
+  "accept": [
+   "wenn man vom teufel spricht",
+   "wenn man vom teufel redet",
+   "wenn man vom esel spricht",
+   "wenn man vom esel redet"
+  ]
+ },
+ "ENG_CHUNK_0885": {
+  "core_en": "The more, the merrier",
+  "accept": [
+   "je mehr desto besser",
+   "je mehr umso besser",
+   "je mehr desto lustiger",
+   "je mehr umso lustiger",
+   "je mehr leute desto besser",
+   "je mehr desto fröhlicher"
+  ]
+ },
+ "ENG_CHUNK_0886": {
+  "core_en": "Break a leg",
+  "accept": [
+   "toi toi toi",
+   "hals- und beinbruch",
+   "hals und beinbruch",
+   "ich drück dir die daumen",
+   "ich drücke dir die daumen",
+   "viel erfolg"
+  ]
+ },
+ "ENG_CHUNK_0887": {
+  "core_en": "knock on wood",
+  "accept": [
+   "toi toi toi",
+   "klopf auf holz",
+   "auf holz klopfen",
+   "klopfen auf holz",
+   "unberufen"
+  ]
+ },
+ "ENG_CHUNK_0888": {
+  "core_en": "I'd like to propose a toast",
+  "accept": [
+   "ich möchte (gern) (gerne) einen toast ausbringen",
+   "einen toast ausbringen",
+   "einen toast (auf) [x] ausbringen",
+   "das glas [x] erheben",
+   "das glas erheben",
+   "lasst uns (auf) [x] anstoßen",
+   "lasst uns anstoßen",
+   "lassen sie uns anstoßen"
+  ]
+ },
+ "ENG_CHUNK_0889": {
+  "core_en": "I'll drink to that",
+  "accept": [
+   "darauf trinke ich",
+   "darauf trink ich",
+   "da trinke ich drauf",
+   "da trink ich drauf",
+   "da stoß ich (gern) (gerne) drauf an",
+   "da stoße ich (gern) (gerne) drauf an",
+   "darauf stoße ich (gern) (gerne) an",
+   "prost darauf"
+  ]
+ },
+ "ENG_CHUNK_0890": {
+  "core_en": "I'm sorry for your loss",
+  "accept": [
+   "mein herzliches beileid",
+   "herzliches beileid",
+   "mein beileid",
+   "aufrichtiges beileid",
+   "es tut mir (so) (sehr) leid",
+   "ich fühle mit dir",
+   "ich fühle mit ihnen"
+  ]
+ },
+ "ENG_CHUNK_0891": {
+  "core_en": "What's more",
+  "accept": [
+   "außerdem",
+   "dazu kommt (dass)",
+   "hinzu kommt (dass)",
+   "zudem",
+   "darüber hinaus",
+   "obendrein",
+   "und noch dazu",
+   "noch dazu"
+  ]
+ },
+ "ENG_CHUNK_0892": {
+  "core_en": "especially since",
+  "accept": [
+   "vor allem weil",
+   "zumal",
+   "besonders weil",
+   "gerade weil",
+   "vor allem da",
+   "insbesondere weil",
+   "erst recht weil"
+  ]
+ },
+ "ENG_CHUNK_0893": {
+  "core_en": "let alone",
+  "accept": [
+   "geschweige denn",
+   "ganz zu schweigen von",
+   "von [x] ganz zu schweigen",
+   "schon gar nicht",
+   "erst recht nicht"
+  ]
+ },
+ "ENG_CHUNK_0894": {
+  "core_en": "Seeing as",
+  "accept": [
+   "wo du schon (mal)",
+   "wo du gerade",
+   "da du schon (mal)",
+   "da du gerade",
+   "wenn du schon (mal)",
+   "wenn du gerade",
+   "wo sie schon (mal)",
+   "jetzt wo du"
+  ]
+ },
+ "ENG_CHUNK_0895": {
+  "core_en": "in the long run",
+  "accept": [
+   "auf lange sicht",
+   "langfristig",
+   "auf dauer",
+   "langfristig gesehen",
+   "auf die dauer",
+   "mit der zeit"
+  ]
+ },
+ "ENG_CHUNK_0896": {
+  "core_en": "If anything",
+  "accept": [
+   "eher im gegenteil",
+   "im gegenteil",
+   "wenn überhaupt",
+   "wenn dann",
+   "wenn schon"
+  ]
+ },
+ "ENG_CHUNK_0897": {
+  "core_en": "or rather",
+  "accept": [
+   "oder besser gesagt",
+   "beziehungsweise",
+   "bzw",
+   "besser gesagt",
+   "oder vielmehr",
+   "oder eher",
+   "ich meine"
+  ]
+ },
+ "ENG_CHUNK_0898": {
+  "core_en": "In any case",
+  "accept": [
+   "auf jeden fall",
+   "jedenfalls",
+   "auf alle fälle",
+   "wie auch immer",
+   "so oder so",
+   "in jedem fall",
+   "egal wie"
+  ]
+ },
+ "ENG_CHUNK_0899": {
+  "core_en": "whether or not",
+  "accept": [
+   "egal ob",
+   "ob [x] oder nicht",
+   "(ganz) egal ob",
+   "unabhängig davon ob",
+   "so oder so"
+  ]
+ },
+ "ENG_CHUNK_0900": {
+  "core_en": "and yet",
+  "accept": [
+   "und trotzdem",
+   "und dennoch",
+   "aber trotzdem",
+   "trotzdem",
+   "dennoch",
+   "und doch"
+  ]
+ },
+ "ENG_CHUNK_0901": {
+  "core_en": "Would you happen to have",
+  "accept": [
+   "hätten sie zufällig",
+   "hättest du zufällig",
+   "hättet ihr zufällig",
+   "hast du zufällig",
+   "haben sie zufällig",
+   "habt ihr zufällig",
+   "hast du vielleicht",
+   "haben sie vielleicht"
+  ]
+ },
+ "ENG_CHUNK_0902": {
+  "core_en": "I'd rather you didn't",
+  "accept": [
+   "mir wäre es lieber wenn du (nicht)",
+   "mir wäre es lieber wenn sie (nicht)",
+   "mir wäre es lieber wenn ihr (nicht)",
+   "mir wär's lieber wenn",
+   "es wäre mir lieber wenn",
+   "ich hätte es lieber wenn",
+   "ich fände es besser wenn",
+   "ich möchte nicht dass"
+  ]
+ },
+ "ENG_CHUNK_0903": {
+  "core_en": "I wish you wouldn't",
+  "accept": [
+   "ich fände es (gut) (besser) (schön) wenn du nicht",
+   "musst du (denn) (eigentlich) immer",
+   "musst du [x] immer",
+   "müssen sie (denn) immer",
+   "ich wünschte du würdest nicht",
+   "ich wünschte sie würden nicht",
+   "es wäre schön wenn du nicht",
+   "könntest du (bitte) aufhören"
+  ]
+ },
+ "ENG_CHUNK_0904": {
+  "core_en": "If it were up to me, I'd",
+  "accept": [
+   "wenn es nach mir ginge",
+   "wenn's nach mir ginge",
+   "wenn es nach mir gehen würde",
+   "ginge es nach mir",
+   "wenn ich (das) zu entscheiden hätte",
+   "wenn ich (das) zu sagen hätte",
+   "wenn ich (das) entscheiden könnte",
+   "wenn ich (das) sagen hätte"
+  ]
+ },
+ "ENG_CHUNK_0905": {
+  "core_en": "I'd take a quiet night in over a big party any day",
+  "accept": [
+   "ist mir tausendmal lieber als",
+   "ist mir [x] lieber als",
+   "ist mir lieber als",
+   "ich ziehe [x] vor",
+   "ziehe ich [x] vor",
+   "ich würde [x] jederzeit vorziehen",
+   "jederzeit lieber",
+   "ich nehme [x] jederzeit"
+  ]
+ },
+ "ENG_CHUNK_0906": {
+  "core_en": "Nothing beats",
+  "accept": [
+   "es geht nichts über",
+   "nichts geht über",
+   "nichts ist besser als",
+   "es gibt nichts besseres als",
+   "gibt nichts besseres als",
+   "nichts schlägt",
+   "nichts toppt"
+  ]
+ },
+ "ENG_CHUNK_0907": {
+  "core_en": "I'm leaning toward",
+  "accept": [
+   "ich tendiere (eher) (zu) (zur) (zum)",
+   "tendiere ich (eher) (zu) (zur) (zum)",
+   "ich neige (eher) (zu) (zur) (zum)",
+   "neige ich (eher) (zu) (zur) (zum)",
+   "ich bin eher für",
+   "ich würde (mich) eher für"
+  ]
+ },
+ "ENG_CHUNK_0908": {
+  "core_en": "I'm torn between",
+  "accept": [
+   "ich kann mich nicht zwischen [x] entscheiden",
+   "ich kann mich nicht zwischen [x] [x] entscheiden",
+   "ich kann mich nicht entscheiden",
+   "ich schwanke zwischen",
+   "hin- und hergerissen",
+   "hin und hergerissen",
+   "hin und her gerissen",
+   "ich weiß nicht ob [x] oder"
+  ]
+ },
+ "ENG_CHUNK_0909": {
+  "core_en": "I'm having second thoughts about",
+  "accept": [
+   "ich habe zweifel (wegen)",
+   "ich hab zweifel (wegen)",
+   "nicht mehr (so) sicher",
+   "nicht mehr sicher",
+   "ich habe bedenken",
+   "ich hab bedenken",
+   "ich zweifle",
+   "zweifel bekommen"
+  ]
+ },
+ "ENG_CHUNK_0910": {
+  "core_en": "Don't read too much into",
+  "accept": [
+   "interpretier (da) nicht zu viel (in) (hinein) (rein)",
+   "interpretiere (da) nicht zu viel",
+   "interpretieren sie (da) nicht zu viel",
+   "nicht zu viel (hinein) (rein) interpretieren",
+   "nicht zu viel reininterpretieren",
+   "nicht zu viel hineininterpretieren",
+   "mach dir (da) (deswegen) keinen kopf",
+   "denk nicht zu viel darüber nach"
+  ]
+ },
+ "ENG_CHUNK_0911": {
+  "core_en": "Did you end up",
+  "accept": [
+   "bist du am ende",
+   "hast du am ende",
+   "sind sie am ende",
+   "haben sie am ende",
+   "(bist) (hast) du letztendlich",
+   "(sind) (haben) sie letztendlich",
+   "(bist) (hast) du schließlich",
+   "(bist) (hast) du dann doch"
+  ]
+ },
+ "ENG_CHUNK_0912": {
+  "core_en": "I didn't get around to",
+  "accept": [
+   "ich bin (noch) nicht dazu gekommen",
+   "bin (noch) nicht dazu gekommen",
+   "ich kam (noch) nicht dazu",
+   "ich hatte (noch) keine zeit",
+   "ich habe es (noch) nicht geschafft",
+   "ich hab es (noch) nicht geschafft",
+   "ich hab's (noch) nicht geschafft"
+  ]
+ },
+ "ENG_CHUNK_0913": {
+  "core_en": "There's a bug going around",
+  "accept": [
+   "geht gerade [x] rum",
+   "geht [x] rum",
+   "geht [x] herum",
+   "geht [x] um",
+   "grassiert",
+   "macht die runde",
+   "es ist [x] im umlauf",
+   "im umlauf"
+  ]
+ },
+ "ENG_CHUNK_0914": {
+  "core_en": "I can't seem to",
+  "accept": [
+   "irgendwie schaffe ich (es) nicht",
+   "irgendwie schaff ich (es) nicht",
+   "irgendwie kriege ich",
+   "irgendwie krieg ich",
+   "irgendwie bekomme ich",
+   "ich schaffe es irgendwie nicht",
+   "ich krieg [x] irgendwie nicht",
+   "irgendwie klappt es nicht"
+  ]
+ },
+ "ENG_CHUNK_0915": {
+  "core_en": "not cut out for",
+  "accept": [
+   "ich bin nicht für [x] geschaffen",
+   "ich bin nicht dafür geschaffen",
+   "ich bin dafür nicht geschaffen",
+   "ist nichts für mich",
+   "das liegt mir nicht",
+   "liegt mir nicht",
+   "ich bin (einfach) nicht der typ dafür",
+   "ich bin dafür nicht gemacht"
+  ]
+ },
+ "ENG_CHUNK_0916": {
+  "core_en": "I'm swamped with",
+  "accept": [
+   "ich ersticke (gerade) (heute) in",
+   "ich ersticke [x] in",
+   "ich hab (total) (so) viel [x] zu tun",
+   "ich habe (total) (so) viel [x] zu tun",
+   "ich hab (total) (so) viel zu tun",
+   "ich habe (total) (so) viel zu tun",
+   "ich gehe [x] unter",
+   "ich bin (total) überlastet"
+  ]
+ },
+ "ENG_CHUNK_0917": {
+  "core_en": "I'm dreading",
+  "accept": [
+   "mir graut (schon) (davor)",
+   "mir graut (schon) vor",
+   "mir graut es (schon)",
+   "es graut mir",
+   "ich habe (echt) (so) keine lust",
+   "ich hab (echt) (so) keine lust",
+   "ich fürchte mich (schon) davor",
+   "ich hab angst davor"
+  ]
+ },
+ "ENG_CHUNK_0918": {
+  "core_en": "I can't bring myself to",
+  "accept": [
+   "ich bringe es nicht übers herz",
+   "nicht übers herz",
+   "ich kann mich nicht (dazu) überwinden",
+   "ich schaffe es (einfach) nicht",
+   "ich schaff es (einfach) nicht",
+   "ich bring's (einfach) nicht fertig",
+   "ich bringe es (einfach) nicht fertig"
+  ]
+ },
+ "ENG_CHUNK_0919": {
+  "core_en": "I'm tempted to",
+  "accept": [
+   "ich bin (echt) (schwer) versucht",
+   "ich hätte (echt) (große) (so) (richtig) lust",
+   "am liebsten würde ich",
+   "ich würde am liebsten",
+   "ich hab (echt) (große) lust",
+   "ich habe (echt) (große) lust",
+   "es reizt mich",
+   "ich bin in versuchung"
+  ]
+ },
+ "ENG_CHUNK_0920": {
+  "core_en": "I'm determined to",
+  "accept": [
+   "ich bin (fest) entschlossen",
+   "ich bin fest dazu entschlossen",
+   "ich will unbedingt",
+   "ich will auf jeden fall",
+   "ich habe mir fest vorgenommen",
+   "ich hab mir fest vorgenommen",
+   "ich werde auf jeden fall"
+  ]
+ },
+ "ENG_CHUNK_0921": {
+  "core_en": "I have no choice but to",
+  "accept": [
+   "mir bleibt nichts (anderes) übrig",
+   "bleibt mir nichts (anderes) übrig",
+   "ich habe keine (andere) wahl",
+   "ich hab keine (andere) wahl",
+   "habe ich keine (andere) wahl",
+   "hab ich keine (andere) wahl",
+   "ich muss wohl",
+   "ich komme nicht drum herum"
+  ]
+ },
+ "ENG_CHUNK_0922": {
+  "core_en": "There's nothing I can do about",
+  "accept": [
+   "ich kann nichts an [x] ändern",
+   "kann ich (leider) (da) nichts machen",
+   "ich kann (leider) (da) nichts machen",
+   "kann ich (leider) nichts tun",
+   "ich kann (leider) nichts dagegen tun",
+   "ich kann (leider) nichts [x] machen",
+   "da kann man nichts machen",
+   "da lässt sich nichts machen"
+  ]
+ },
+ "ENG_CHUNK_0923": {
+  "core_en": "I don't have the heart to",
+  "accept": [
+   "ich (habe) (hab) nicht den mut",
+   "ich bringe es nicht übers herz",
+   "nicht übers herz",
+   "ich trau mich nicht",
+   "ich traue mich nicht",
+   "ich hab nicht das herz",
+   "ich habe nicht das herz"
+  ]
+ },
+ "ENG_CHUNK_0924": {
+  "core_en": "The last thing I want to do is",
+  "accept": [
+   "das letzte was ich will (ist)",
+   "das letzte was ich möchte (ist)",
+   "das letzte was ich tun will",
+   "ich will auf keinen fall",
+   "ich möchte auf keinen fall",
+   "das will ich auf keinen fall",
+   "auf keinen fall will ich"
+  ]
+ },
+ "ENG_CHUNK_0925": {
+  "core_en": "I'm not in a position to",
+  "accept": [
+   "ich bin (leider) nicht befugt",
+   "dazu bin ich (leider) nicht befugt",
+   "das kann ich (leider) nicht entscheiden",
+   "das kann ich (leider) nicht genehmigen",
+   "das darf ich (leider) nicht",
+   "ich darf (das) (leider) nicht",
+   "ich bin (leider) nicht berechtigt",
+   "das liegt (leider) nicht in meiner hand"
+  ]
+ },
+ "ENG_CHUNK_0926": {
+  "core_en": "It's not my place to",
+  "accept": [
+   "es steht mir nicht zu",
+   "steht mir nicht zu",
+   "(das) ist nicht meine sache",
+   "es ist nicht meine sache",
+   "das geht mich nichts an",
+   "es ist nicht meine aufgabe",
+   "es ist nicht an mir"
+  ]
+ },
+ "ENG_CHUNK_0927": {
+  "core_en": "I'd be lying if I said",
+  "accept": [
+   "ich würde lügen wenn ich sagen würde",
+   "ich würde lügen",
+   "ich würd lügen",
+   "es wäre gelogen (wenn)",
+   "das wäre gelogen",
+   "ich müsste lügen",
+   "ich lüge wenn ich sage"
+  ]
+ },
+ "ENG_CHUNK_0928": {
+  "core_en": "I hate to say it, but",
+  "accept": [
+   "ich sag's (ja) (nur) ungern",
+   "ich sage es (ja) (nur) ungern",
+   "ich sag es (ja) (nur) ungern",
+   "ich sage das (ja) (nur) ungern",
+   "ich sag das (ja) (nur) ungern",
+   "es tut mir leid das zu sagen",
+   "leider muss ich sagen",
+   "es fällt mir schwer das zu sagen"
+  ]
+ },
+ "ENG_CHUNK_0929": {
+  "core_en": "I don't want to",
+  "accept": [
+   "ich will (ja) nicht",
+   "ich will (jetzt) nicht",
+   "ich möchte (ja) nicht",
+   "ich möchte (jetzt) nicht",
+   "ich will (dich) (sie) (ja) nicht [x] aber",
+   "ich möchte (dich) (sie) (ja) nicht [x] aber"
+  ]
+ },
+ "ENG_CHUNK_0930": {
+  "core_en": "I have nothing against",
+  "accept": [
+   "ich (habe) (hab) (ja) (eigentlich) nichts gegen",
+   "nichts gegen [x] aber",
+   "nicht dass ich was gegen [x] hätte",
+   "nicht dass ich etwas gegen [x] hätte"
+  ]
+ },
+ "ENG_CHUNK_0931": {
+  "core_en": "You can't seriously think",
+  "accept": [
+   "du glaubst (doch) nicht im ernst",
+   "du glaubst (doch) nicht ernsthaft",
+   "sie glauben (doch) nicht im ernst",
+   "sie glauben (doch) nicht ernsthaft",
+   "ihr glaubt (doch) nicht im ernst",
+   "du denkst (doch) nicht im ernst",
+   "du denkst (doch) nicht ernsthaft",
+   "glaubst du im ernst"
+  ]
+ },
+ "ENG_CHUNK_0932": {
+  "core_en": "I'm with Sarah on this one",
+  "accept": [
+   "da geb ich [x] recht",
+   "da gebe ich [x] recht",
+   "ich gebe [x] recht",
+   "ich geb [x] recht",
+   "ich bin (da) auf [x] seite",
+   "ich bin da bei",
+   "ich stimme [x] zu",
+   "ich bin (da) [x] meinung"
+  ]
+ },
+ "ENG_CHUNK_0933": {
+  "core_en": "I don't see why",
+  "accept": [
+   "ich verstehe nicht warum",
+   "ich versteh nicht warum",
+   "ich verstehe nicht wieso",
+   "ich versteh nicht wieso",
+   "ich sehe nicht ein warum",
+   "ich seh nicht ein warum",
+   "ich sehe nicht ein wieso"
+  ]
+ },
+ "ENG_CHUNK_0934": {
+  "core_en": "What I don't get is",
+  "accept": [
+   "was ich nicht kapiere (ist)",
+   "was ich nicht kapier (ist)",
+   "was ich nicht verstehe (ist)",
+   "was ich nicht versteh (ist)",
+   "was ich nicht begreife (ist)",
+   "ich kapiere nicht warum",
+   "ich verstehe nicht warum",
+   "ich kapier nicht warum"
+  ]
+ },
+ "ENG_CHUNK_0935": {
+  "core_en": "I'm all for",
+  "accept": [
+   "ich bin total dafür",
+   "ich bin (voll) (absolut) (sehr) (ganz) dafür",
+   "ich bin (total) (voll) (absolut) (sehr) (ganz) für",
+   "da bin ich (total) (voll) (sofort) dabei",
+   "ich finde es (total) (super) gut"
+  ]
+ },
+ "ENG_CHUNK_0936": {
+  "core_en": "jump at the chance",
+  "accept": [
+   "sofort zugreifen",
+   "zugreifen",
+   "sofort zuschlagen",
+   "zuschlagen",
+   "die gelegenheit beim schopf packen",
+   "sofort ja sagen",
+   "keine sekunde zögern",
+   "nicht zweimal überlegen"
+  ]
+ },
+ "ENG_CHUNK_0937": {
+  "core_en": "turned down",
+  "accept": [
+   "ablehnen",
+   "abgelehnt",
+   "lehnte [x] ab",
+   "lehne [x] ab",
+   "ausgeschlagen",
+   "abgesagt",
+   "nein gesagt"
+  ]
+ },
+ "ENG_CHUNK_0938": {
+  "core_en": "called off",
+  "accept": [
+   "absagen",
+   "abgesagt",
+   "abgeblasen",
+   "gestrichen",
+   "ausfallen lassen",
+   "ist ausgefallen",
+   "fiel [x] aus"
+  ]
+ },
+ "ENG_CHUNK_0939": {
+  "core_en": "put the kitchen remodel on hold",
+  "accept": [
+   "auf eis legen",
+   "auf eis gelegt",
+   "auf eis",
+   "verschoben",
+   "auf später verschoben",
+   "pausiert",
+   "zurückgestellt",
+   "auf pause"
+  ]
+ },
+ "ENG_CHUNK_0940": {
+  "core_en": "going through",
+  "accept": [
+   "macht [x] durch",
+   "durchmachen",
+   "durchgemacht",
+   "erlebt gerade",
+   "hat (gerade) eine schwere zeit",
+   "hat es gerade (echt) schwer",
+   "steckt gerade in",
+   "hat gerade eine schwierige phase"
+  ]
+ },
+ "ENG_CHUNK_0941": {
+  "core_en": "falling apart",
+  "accept": [
+   "auseinanderfallen",
+   "fallen [x] auseinander",
+   "fallen auseinander",
+   "gehen [x] kaputt",
+   "gehen kaputt",
+   "kaputtgehen",
+   "lösen sich [x] auf",
+   "lösen sich auf"
+  ]
+ },
+ "ENG_CHUNK_0942": {
+  "core_en": "gets away with",
+  "accept": [
+   "kommt mit [x] durch",
+   "mit [x] durchkommen",
+   "damit durchkommen",
+   "ungestraft davon",
+   "kommt [x] ungestraft davon",
+   "kommt (immer) davon",
+   "kommt mit [x] davon",
+   "darf alles"
+  ]
+ },
+ "ENG_CHUNK_0943": {
+  "core_en": "get out of",
+  "accept": [
+   "mich vor [x] (zu) drücken",
+   "drücke mich vor",
+   "drück mich vor",
+   "mich [x] zu drücken",
+   "um [x] herumzukommen",
+   "um [x] herumkommen",
+   "aus [x] rauszukommen",
+   "mich [x] zu entziehen"
+  ]
+ },
+ "ENG_CHUNK_0944": {
+  "core_en": "get in the way of",
+  "accept": [
+   "im weg stehen",
+   "im weg steht",
+   "im weg",
+   "in die quere kommt",
+   "in die quere kommen",
+   "in die quere",
+   "behindert",
+   "beeinträchtigt"
+  ]
+ },
+ "ENG_CHUNK_0945": {
+  "core_en": "make a fuss",
+  "accept": [
+   "ein theater machen",
+   "kein theater",
+   "einen aufstand machen",
+   "keinen aufstand",
+   "kein drama",
+   "keinen wirbel",
+   "kein fass auf",
+   "keine szene"
+  ]
+ },
+ "ENG_CHUNK_0946": {
+  "core_en": "got a bit carried away",
+  "accept": [
+   "mich hinreißen lassen",
+   "hinreißen lassen",
+   "übertrieben",
+   "mitreißen lassen",
+   "es zu weit getrieben",
+   "über die stränge geschlagen"
+  ]
+ },
+ "ENG_CHUNK_0947": {
+  "core_en": "make the most of",
+  "accept": [
+   "das beste aus [x] machen",
+   "das beste daraus machen",
+   "ausnutzen",
+   "nutzen",
+   "voll ausnutzen",
+   "auskosten",
+   "genießen"
+  ]
+ },
+ "ENG_CHUNK_0948": {
+  "core_en": "make a good impression",
+  "accept": [
+   "einen guten eindruck machen",
+   "einen guten eindruck hinterlassen",
+   "guten eindruck",
+   "gut ankommen",
+   "gut rüberkommen"
+  ]
+ },
+ "ENG_CHUNK_0949": {
+  "core_en": "made up",
+  "accept": [
+   "erfunden",
+   "ausgedacht",
+   "erfinden",
+   "ausdenken",
+   "erfand",
+   "dachte sich [x] aus"
+  ]
+ },
+ "ENG_CHUNK_0950": {
+  "core_en": "making progress",
+  "accept": [
+   "fortschritte machen",
+   "mache fortschritte",
+   "fortschritte",
+   "ich komme (langsam) (gut) voran",
+   "es geht (langsam) voran",
+   "es geht (langsam) vorwärts",
+   "ich werde (langsam) besser",
+   "es wird (langsam) besser"
+  ]
+ },
+ "ENG_CHUNK_0951": {
+  "core_en": "making small talk",
+  "accept": [
+   "small talk machen",
+   "small talk",
+   "smalltalk",
+   "small-talk",
+   "plaudern",
+   "plauderei",
+   "über belangloses reden"
+  ]
+ },
+ "ENG_CHUNK_0952": {
+  "core_en": "a big risk, but I'll take it",
+  "accept": [
+   "ein risiko eingehen",
+   "gehe es ein",
+   "gehe das risiko ein",
+   "gehe ich ein",
+   "das risiko nehme ich in kauf",
+   "nehme ich in kauf",
+   "ich wage es",
+   "ich riskiere es"
+  ]
+ },
+ "ENG_CHUNK_0953": {
+  "core_en": "take advantage of",
+  "accept": [
+   "nutzen",
+   "ausnutzen",
+   "nützen",
+   "ausnützen",
+   "profitieren von",
+   "auskosten"
+  ]
+ },
+ "ENG_CHUNK_0954": {
+  "core_en": "take this cough seriously",
+  "accept": [
+   "ernst nehmen",
+   "ernstnehmen",
+   "nimm [x] ernst",
+   "nehmen sie [x] ernst",
+   "nehmt [x] ernst",
+   "nicht auf die leichte schulter nehmen",
+   "nicht unterschätzen"
+  ]
+ },
+ "ENG_CHUNK_0955": {
+  "core_en": "take clean water for granted",
+  "accept": [
+   "für selbstverständlich halten",
+   "halten [x] für selbstverständlich",
+   "für selbstverständlich",
+   "als selbstverständlich",
+   "für uns selbstverständlich"
+  ]
+ },
+ "ENG_CHUNK_0956": {
+  "core_en": "take turns",
+  "accept": [
+   "sich beim [x] abwechseln",
+   "wechseln uns [x] ab",
+   "wechseln uns ab",
+   "abwechseln",
+   "abwechselnd",
+   "im wechsel",
+   "reihum"
+  ]
+ },
+ "ENG_CHUNK_0957": {
+  "core_en": "taken up",
+  "accept": [
+   "mit [x] angefangen",
+   "angefangen",
+   "mit [x] anfangen",
+   "begonnen",
+   "fange [x] an"
+  ]
+ },
+ "ENG_CHUNK_0958": {
+  "core_en": "took over",
+  "accept": [
+   "übernommen",
+   "übernehmen",
+   "übernahm",
+   "übernimmt"
+  ]
+ },
+ "ENG_CHUNK_0959": {
+  "core_en": "take responsibility for",
+  "accept": [
+   "die verantwortung für [x] übernehmen",
+   "übernehme die verantwortung",
+   "die verantwortung übernehmen",
+   "verantwortung übernehmen",
+   "auf meine kappe",
+   "das geht auf mich",
+   "ich stehe dafür gerade"
+  ]
+ },
+ "ENG_CHUNK_0960": {
+  "core_en": "have a word with",
+  "accept": [
+   "könnte ich (mal) (kurz) mit ihnen (reden) (sprechen)",
+   "könnte ich [x] mit ihnen reden",
+   "kann ich (mal) (kurz) mit dir (reden) (sprechen)",
+   "kann ich [x] mit dir reden",
+   "könnten wir (mal) (kurz) reden",
+   "können wir (mal) (kurz) reden",
+   "unter vier augen",
+   "(kurz) mit ihnen reden"
+  ]
+ },
+ "ENG_CHUNK_0961": {
+  "core_en": "cleared the air",
+  "accept": [
+   "die sache geklärt",
+   "die sache klären",
+   "uns ausgesprochen",
+   "ausgesprochen",
+   "alles geklärt",
+   "reinen tisch gemacht",
+   "die luft gereinigt",
+   "aus der welt geschafft"
+  ]
+ },
+ "ENG_CHUNK_0962": {
+  "core_en": "holding a grudge",
+  "accept": [
+   "trägt [x] nach",
+   "trägt [x] [x] nach",
+   "nachtragen",
+   "nachtragend",
+   "ist [x] sauer auf",
+   "ist noch sauer",
+   "hat [x] nicht verziehen",
+   "ist [x] beleidigt"
+  ]
+ },
+ "ENG_CHUNK_0963": {
+  "core_en": "have anything in mind",
+  "accept": [
+   "an [x] gedacht",
+   "an etwas bestimmtes gedacht",
+   "im sinn",
+   "schwebt dir [x] vor",
+   "schwebt ihnen [x] vor",
+   "woran hast du gedacht",
+   "woran haben sie gedacht",
+   "hast du [x] vorgestellt"
+  ]
+ },
+ "ENG_CHUNK_0964": {
+  "core_en": "do you good",
+  "accept": [
+   "guttun",
+   "gut tun",
+   "tut dir gut",
+   "tut ihnen gut",
+   "täte dir gut",
+   "täte ihnen gut"
+  ]
+ },
+ "ENG_CHUNK_0965": {
+  "core_en": "do without",
+  "accept": [
+   "ohne [x] auskommen",
+   "komme ich nicht aus",
+   "komme [x] nicht aus",
+   "kann nicht ohne",
+   "auf [x] verzichten",
+   "verzichten",
+   "nicht leben ohne",
+   "ohne [x] nicht leben"
+  ]
+ },
+ "ENG_CHUNK_0966": {
+  "core_en": "Just to be clear",
+  "accept": [
+   "nur damit das klar ist",
+   "nur zur sicherheit",
+   "damit das klar ist",
+   "(nur) um sicherzugehen",
+   "nur zur klarstellung",
+   "damit wir uns richtig verstehen",
+   "nur damit ich sicher bin",
+   "nur zur info"
+  ]
+ },
+ "ENG_CHUNK_0967": {
+  "core_en": "If I understand you correctly",
+  "accept": [
+   "wenn ich sie richtig verstanden habe",
+   "wenn ich (sie) (dich) (euch) (das) richtig verstanden habe",
+   "wenn ich (sie) (dich) (euch) (das) richtig verstehe",
+   "wenn ich (sie) (dich) (euch) (das) richtig verstanden hab",
+   "habe ich sie richtig verstanden",
+   "hab ich dich richtig verstanden",
+   "verstehe ich sie richtig",
+   "verstehe ich dich richtig"
+  ]
+ }
+}

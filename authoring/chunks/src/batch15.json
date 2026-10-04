@@ -1,0 +1,452 @@
+[
+{
+"id": "ENG_CHUNK_1401",
+"chunk": "I have a [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Describing an illness or pain",
+"register": "neutral",
+"natural_example": "I have a cold.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1402",
+"chunk": "My [body-part] hurts",
+"category": "sentence_frame",
+"pragmatic_function": "Saying where you feel pain",
+"register": "neutral",
+"natural_example": "My head hurts.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1403",
+"chunk": "I need some medicine for [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Asking at a pharmacy",
+"register": "neutral",
+"natural_example": "I need some medicine for a cough.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1404",
+"chunk": "I've lost my [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Reporting a lost item",
+"register": "neutral",
+"natural_example": "I've lost my passport.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1405",
+"chunk": "Someone stole my [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Reporting a theft",
+"register": "neutral",
+"natural_example": "Someone stole my wallet on the train.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1406",
+"chunk": "I like [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating a like",
+"register": "neutral",
+"natural_example": "I like pizza.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1407",
+"chunk": "I'm interested in [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Talking about interests",
+"register": "neutral",
+"natural_example": "I'm interested in history.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1408",
+"chunk": "I don't like [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating a dislike",
+"register": "neutral",
+"natural_example": "I don't like coffee.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1409",
+"chunk": "Do you like [noun]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking about likes",
+"register": "neutral",
+"natural_example": "Do you like Italian food?",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1410",
+"chunk": "What's your favorite [noun]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking about preferences",
+"register": "neutral",
+"natural_example": "What's your favorite color?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1411",
+"chunk": "My favorite [noun] is [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating a favorite",
+"register": "neutral",
+"natural_example": "My favorite color is blue.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1412",
+"chunk": "I want to [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating a wish",
+"register": "neutral",
+"natural_example": "I want to go home.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1413",
+"chunk": "I'd like to [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating a wish politely",
+"register": "polite",
+"natural_example": "I'd like to book a table.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1414",
+"chunk": "I need to [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating a necessity",
+"register": "neutral",
+"natural_example": "I need to go to the bank.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1415",
+"chunk": "I have to [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating an obligation",
+"register": "neutral",
+"natural_example": "I have to work tomorrow.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1416",
+"chunk": "I need [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating what you need",
+"register": "neutral",
+"natural_example": "I need a taxi.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1417",
+"chunk": "Can I [base-verb]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking permission",
+"register": "neutral",
+"natural_example": "Can I sit here?",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1418",
+"chunk": "Can you [base-verb], please?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking someone to do something",
+"register": "polite",
+"natural_example": "Can you help me, please?",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1419",
+"chunk": "I can't [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Saying you are unable",
+"register": "neutral",
+"natural_example": "I can't swim.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1420",
+"chunk": "Let's [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Making a suggestion",
+"register": "neutral",
+"natural_example": "Let's go to the beach.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1421",
+"chunk": "Don't forget to [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Reminding someone",
+"register": "neutral",
+"natural_example": "Don't forget to take your keys.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1422",
+"chunk": "How often do you [base-verb]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking about frequency",
+"register": "neutral",
+"natural_example": "How often do you go to the gym?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1423",
+"chunk": "What do you usually do on [time]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking about habits",
+"register": "neutral",
+"natural_example": "What do you usually do on weekends?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1424",
+"chunk": "What are you doing [time]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking about someone's plans",
+"register": "neutral",
+"natural_example": "What are you doing this weekend?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1425",
+"chunk": "I'm going to [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Talking about plans",
+"register": "neutral",
+"natural_example": "I'm going to visit my aunt this weekend.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1426",
+"chunk": "Let's meet at [place] at [time]",
+"category": "sentence_frame",
+"pragmatic_function": "Arranging where and when to meet",
+"register": "neutral",
+"natural_example": "Let's meet at the café at six.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1427",
+"chunk": "Can we meet [time] instead?",
+"category": "sentence_frame",
+"pragmatic_function": "Changing a plan",
+"register": "neutral",
+"natural_example": "Can we meet tomorrow instead?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1428",
+"chunk": "Sorry, I can't come on [day]",
+"category": "sentence_frame",
+"pragmatic_function": "Declining or canceling a plan",
+"register": "neutral",
+"natural_example": "Sorry, I can't come on Saturday.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1429",
+"chunk": "I'm busy on [day]",
+"category": "sentence_frame",
+"pragmatic_function": "Saying you're not available",
+"register": "neutral",
+"natural_example": "I'm busy on Monday. What about Tuesday?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1430",
+"chunk": "Is [time] okay for you?",
+"category": "sentence_frame",
+"pragmatic_function": "Checking a time works",
+"register": "neutral",
+"natural_example": "Is six o'clock okay for you?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1431",
+"chunk": "I'll be [number] minutes late",
+"category": "sentence_frame",
+"pragmatic_function": "Warning that you'll be late",
+"register": "neutral",
+"natural_example": "Sorry, I'll be ten minutes late.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1432",
+"chunk": "I'm feeling [adjective] today",
+"category": "sentence_frame",
+"pragmatic_function": "Describing how you feel",
+"register": "neutral",
+"natural_example": "I'm feeling tired today.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1433",
+"chunk": "How's your [person]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking about someone's family or friends",
+"register": "neutral",
+"natural_example": "How's your mother?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1434",
+"chunk": "What's [person] like?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking about someone's personality",
+"register": "neutral",
+"natural_example": "What's your new teacher like?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1435",
+"chunk": "It's [adjective] today",
+"category": "sentence_frame",
+"pragmatic_function": "Talking about the weather",
+"register": "neutral",
+"natural_example": "It's cold today.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1436",
+"chunk": "What's the weather like in [place]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking about weather somewhere",
+"register": "neutral",
+"natural_example": "What's the weather like in Toronto?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1437",
+"chunk": "It's going to rain [time]",
+"category": "sentence_frame",
+"pragmatic_function": "Weather forecast small talk",
+"register": "neutral",
+"natural_example": "It's going to rain this afternoon.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1438",
+"chunk": "Hello, this is [name]",
+"category": "sentence_frame",
+"pragmatic_function": "Saying who you are on the phone",
+"register": "neutral",
+"natural_example": "Hello, this is Maria.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1439",
+"chunk": "I'll call you [time]",
+"category": "sentence_frame",
+"pragmatic_function": "Promising to phone later",
+"register": "neutral",
+"natural_example": "I'll call you tomorrow.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1440",
+"chunk": "Text me when [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Asking for a message later",
+"register": "informal",
+"natural_example": "Text me when you get home.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1441",
+"chunk": "I think [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Giving a simple opinion",
+"register": "neutral",
+"natural_example": "I think it's a good idea.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1442",
+"chunk": "I agree with [person]",
+"category": "sentence_frame",
+"pragmatic_function": "Agreeing with someone",
+"register": "neutral",
+"natural_example": "I agree with you.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1443",
+"chunk": "[noun] is better than [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Simple comparison",
+"register": "neutral",
+"natural_example": "Tea is better than coffee.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1444",
+"chunk": "I've never been to [place]",
+"category": "sentence_frame",
+"pragmatic_function": "Talking about travel experience",
+"register": "neutral",
+"natural_example": "I've never been to Australia.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1445",
+"chunk": "Last [time], I [past-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Talking about the past",
+"register": "neutral",
+"natural_example": "Last weekend, I visited my grandparents.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1446",
+"chunk": "Did you have a good [noun]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking about a past event",
+"register": "neutral",
+"natural_example": "Did you have a good weekend?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1447",
+"chunk": "How was your [noun]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking about a past event",
+"register": "neutral",
+"natural_example": "How was your weekend?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1448",
+"chunk": "I'm [verb-ing] at the moment",
+"category": "sentence_frame",
+"pragmatic_function": "Talking about now",
+"register": "neutral",
+"natural_example": "I'm working at the moment.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1449",
+"chunk": "I'm sorry, but [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Politely giving bad news or refusing",
+"register": "neutral",
+"natural_example": "I'm sorry, but I can't help you.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1450",
+"chunk": "See you on [day]",
+"category": "sentence_frame",
+"pragmatic_function": "Goodbye with the next meeting day",
+"register": "neutral",
+"natural_example": "See you on Monday!",
+"cefr_level": "A2"
+}
+]

@@ -1,0 +1,902 @@
+[
+{
+"id": "ENG_CHUNK_1201",
+"chunk": "Hi!",
+"category": "fixed_formula",
+"pragmatic_function": "Casual greeting",
+"register": "informal",
+"natural_example": "Hi! How's your day going?",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1202",
+"chunk": "Good morning",
+"category": "fixed_formula",
+"pragmatic_function": "Greeting before noon",
+"register": "neutral",
+"natural_example": "Good morning! Did you sleep well?",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1203",
+"chunk": "Good afternoon",
+"category": "fixed_formula",
+"pragmatic_function": "Greeting from noon to early evening",
+"register": "neutral",
+"natural_example": "Good afternoon. Can I help you?",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1204",
+"chunk": "Good night",
+"category": "fixed_formula",
+"pragmatic_function": "Saying goodbye at night or before sleep",
+"register": "neutral",
+"natural_example": "Good night! Sleep well.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1205",
+"chunk": "How are you?",
+"category": "fixed_formula",
+"pragmatic_function": "Asking about someone's wellbeing when greeting",
+"register": "neutral",
+"natural_example": "Hi Sam, how are you?",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1206",
+"chunk": "I'm fine, thanks. And you?",
+"category": "fixed_formula",
+"pragmatic_function": "Standard reply to \"How are you?\"",
+"register": "neutral",
+"natural_example": "\"How are you?\" \"I'm fine, thanks. And you?\"",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1207",
+"chunk": "Not bad, thanks",
+"category": "fixed_formula",
+"pragmatic_function": "Casual positive reply to \"How are you?\"",
+"register": "neutral",
+"natural_example": "\"How are you doing?\" \"Not bad, thanks.\"",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1208",
+"chunk": "Nice to meet you",
+"category": "fixed_formula",
+"pragmatic_function": "Greeting someone you meet for the first time",
+"register": "neutral",
+"natural_example": "Hi, I'm Anna. Nice to meet you.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1209",
+"chunk": "You too",
+"category": "fixed_formula",
+"pragmatic_function": "Returning a wish or greeting",
+"register": "neutral",
+"natural_example": "\"Nice to meet you.\" \"You too.\"",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1210",
+"chunk": "Pleased to meet you",
+"category": "fixed_formula",
+"pragmatic_function": "Formal greeting on first meeting",
+"register": "formal",
+"natural_example": "Good morning, I'm David Lee. Pleased to meet you.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1211",
+"chunk": "How's it going?",
+"category": "fixed_formula",
+"pragmatic_function": "Casual \"how are you\"",
+"register": "informal",
+"natural_example": "Hey Tom, how's it going?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1212",
+"chunk": "Good to see you",
+"category": "fixed_formula",
+"pragmatic_function": "Friendly greeting to someone you know",
+"register": "neutral",
+"natural_example": "Hey Maria! Good to see you.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1213",
+"chunk": "Goodbye",
+"category": "fixed_formula",
+"pragmatic_function": "Standard way to end a meeting or conversation",
+"register": "neutral",
+"natural_example": "Goodbye, and thank you for everything.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1214",
+"chunk": "See you later",
+"category": "fixed_formula",
+"pragmatic_function": "Informal goodbye",
+"register": "informal",
+"natural_example": "OK, see you later!",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1215",
+"chunk": "Have a nice day",
+"category": "fixed_formula",
+"pragmatic_function": "Friendly goodbye, often to staff or customers",
+"register": "neutral",
+"natural_example": "Thank you. Have a nice day!",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1216",
+"chunk": "Thank you",
+"category": "fixed_formula",
+"pragmatic_function": "Basic thanks",
+"register": "neutral",
+"natural_example": "Thank you for the coffee.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1217",
+"chunk": "Thanks a lot",
+"category": "fixed_formula",
+"pragmatic_function": "Warm, informal thanks",
+"register": "informal",
+"natural_example": "Thanks a lot, you're very kind.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1218",
+"chunk": "You're welcome",
+"category": "fixed_formula",
+"pragmatic_function": "Reply to thanks",
+"register": "neutral",
+"natural_example": "\"Thank you!\" \"You're welcome.\"",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1219",
+"chunk": "No problem",
+"category": "fixed_formula",
+"pragmatic_function": "Reply to thanks or to an apology",
+"register": "neutral",
+"natural_example": "\"Thanks for waiting.\" \"No problem.\"",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1220",
+"chunk": "Yes, please",
+"category": "fixed_formula",
+"pragmatic_function": "Accepting an offer politely",
+"register": "polite",
+"natural_example": "\"Would you like some tea?\" \"Yes, please.\"",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1221",
+"chunk": "No, thank you",
+"category": "fixed_formula",
+"pragmatic_function": "Declining an offer politely",
+"register": "polite",
+"natural_example": "\"Would you like more cake?\" \"No, thank you.\"",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1222",
+"chunk": "Excuse me",
+"category": "fixed_formula",
+"pragmatic_function": "Getting attention or passing someone",
+"register": "polite",
+"natural_example": "Excuse me, is this the train to London?",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1223",
+"chunk": "I'm sorry",
+"category": "fixed_formula",
+"pragmatic_function": "Basic apology",
+"register": "neutral",
+"natural_example": "I'm sorry, it was my mistake.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1224",
+"chunk": "That's okay",
+"category": "fixed_formula",
+"pragmatic_function": "Accepting an apology",
+"register": "neutral",
+"natural_example": "\"Sorry I broke your cup.\" \"That's okay.\"",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1225",
+"chunk": "Sorry I'm late",
+"category": "fixed_formula",
+"pragmatic_function": "Apologizing for arriving late",
+"register": "neutral",
+"natural_example": "Sorry I'm late, the bus didn't come.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1226",
+"chunk": "Sorry, I don't understand",
+"category": "fixed_formula",
+"pragmatic_function": "Signaling that you did not understand",
+"register": "neutral",
+"natural_example": "Sorry, I don't understand. Can you say it again?",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1227",
+"chunk": "Could you speak more slowly, please?",
+"category": "fixed_formula",
+"pragmatic_function": "Asking someone to slow down",
+"register": "polite",
+"natural_example": "Could you speak more slowly, please? My English isn't very good.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1228",
+"chunk": "Can you repeat that, please?",
+"category": "fixed_formula",
+"pragmatic_function": "Asking someone to say something again",
+"register": "polite",
+"natural_example": "Sorry, can you repeat that, please?",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1229",
+"chunk": "Can you spell that, please?",
+"category": "fixed_formula",
+"pragmatic_function": "Asking for the spelling of a word or name",
+"register": "polite",
+"natural_example": "Your last name? Can you spell that, please?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1230",
+"chunk": "I don't speak much English",
+"category": "fixed_formula",
+"pragmatic_function": "Explaining limited language ability",
+"register": "neutral",
+"natural_example": "Sorry, I don't speak much English.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1231",
+"chunk": "What's your name?",
+"category": "fixed_formula",
+"pragmatic_function": "Asking someone's name",
+"register": "neutral",
+"natural_example": "Hi, I'm Tom. What's your name?",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1232",
+"chunk": "Where are you from?",
+"category": "fixed_formula",
+"pragmatic_function": "Asking about someone's origin",
+"register": "neutral",
+"natural_example": "Where are you from? Your accent is nice.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1233",
+"chunk": "How old are you?",
+"category": "fixed_formula",
+"pragmatic_function": "Asking someone's age",
+"register": "neutral",
+"natural_example": "How old are you, Emma?",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1234",
+"chunk": "Where do you live?",
+"category": "fixed_formula",
+"pragmatic_function": "Asking where someone lives",
+"register": "neutral",
+"natural_example": "Where do you live? Near here?",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1235",
+"chunk": "What do you do?",
+"category": "fixed_formula",
+"pragmatic_function": "Asking about someone's job",
+"register": "neutral",
+"natural_example": "What do you do? Are you a student?",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1236",
+"chunk": "Do you have any brothers or sisters?",
+"category": "fixed_formula",
+"pragmatic_function": "Asking about someone's family",
+"register": "neutral",
+"natural_example": "Do you have any brothers or sisters?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1237",
+"chunk": "How long have you lived here?",
+"category": "fixed_formula",
+"pragmatic_function": "Asking how long someone has lived somewhere",
+"register": "neutral",
+"natural_example": "How long have you lived here?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1238",
+"chunk": "What about you?",
+"category": "fixed_formula",
+"pragmatic_function": "Returning a question to the other person",
+"register": "neutral",
+"natural_example": "I'm from Italy. What about you?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1239",
+"chunk": "What time is it?",
+"category": "fixed_formula",
+"pragmatic_function": "Asking the time",
+"register": "neutral",
+"natural_example": "Excuse me, what time is it?",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1240",
+"chunk": "How much is it?",
+"category": "fixed_formula",
+"pragmatic_function": "Asking the price",
+"register": "neutral",
+"natural_example": "This bag is nice. How much is it?",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1241",
+"chunk": "Can I help you?",
+"category": "fixed_formula",
+"pragmatic_function": "Offering help, often by staff",
+"register": "neutral",
+"natural_example": "Good morning, can I help you?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1242",
+"chunk": "That's all, thanks",
+"category": "fixed_formula",
+"pragmatic_function": "Telling a server or shop assistant you are finished",
+"register": "neutral",
+"natural_example": "\"Anything else?\" \"No, that's all, thanks.\"",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1243",
+"chunk": "Could I see the menu, please?",
+"category": "fixed_formula",
+"pragmatic_function": "Asking for the menu in a restaurant",
+"register": "polite",
+"natural_example": "Hi, could I see the menu, please?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1244",
+"chunk": "What do you recommend?",
+"category": "fixed_formula",
+"pragmatic_function": "Asking a waiter or friend for a suggestion",
+"register": "neutral",
+"natural_example": "It's my first time here. What do you recommend?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1245",
+"chunk": "I'm vegetarian",
+"category": "fixed_formula",
+"pragmatic_function": "Stating a dietary need",
+"register": "neutral",
+"natural_example": "I'm vegetarian. Is there meat in this soup?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1246",
+"chunk": "I'm full",
+"category": "fixed_formula",
+"pragmatic_function": "Saying you can't eat more",
+"register": "neutral",
+"natural_example": "No more, thanks. I'm full.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1247",
+"chunk": "Where's the bathroom?",
+"category": "fixed_formula",
+"pragmatic_function": "Asking for the toilet",
+"register": "neutral",
+"natural_example": "Excuse me, where's the bathroom?",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1248",
+"chunk": "Go straight ahead",
+"category": "fixed_formula",
+"pragmatic_function": "Giving a basic direction",
+"register": "neutral",
+"natural_example": "Go straight ahead, and the bank is on the left.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1249",
+"chunk": "Where do I get off?",
+"category": "fixed_formula",
+"pragmatic_function": "Asking on public transport where to leave",
+"register": "neutral",
+"natural_example": "I want to go to the zoo. Where do I get off?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1250",
+"chunk": "What's the wifi password?",
+"category": "fixed_formula",
+"pragmatic_function": "Asking for the internet password",
+"register": "neutral",
+"natural_example": "Excuse me, what's the wifi password?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1251",
+"chunk": "Help!",
+"category": "fixed_formula",
+"pragmatic_function": "Shouting for help in an emergency",
+"register": "neutral",
+"natural_example": "Help! Someone help me!",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1252",
+"chunk": "Can you help me?",
+"category": "fixed_formula",
+"pragmatic_function": "Asking for help",
+"register": "neutral",
+"natural_example": "Excuse me, can you help me? I'm lost.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1253",
+"chunk": "I need a doctor",
+"category": "fixed_formula",
+"pragmatic_function": "Asking for medical help",
+"register": "neutral",
+"natural_example": "I need a doctor. My son is very sick.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1254",
+"chunk": "It hurts here",
+"category": "fixed_formula",
+"pragmatic_function": "Showing a doctor where the pain is",
+"register": "neutral",
+"natural_example": "It hurts here, in my stomach.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1255",
+"chunk": "I don't feel well",
+"category": "fixed_formula",
+"pragmatic_function": "Saying you are ill",
+"register": "neutral",
+"natural_example": "I don't feel well. I'm going home.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1256",
+"chunk": "Call an ambulance!",
+"category": "fixed_formula",
+"pragmatic_function": "Emergency request",
+"register": "neutral",
+"natural_example": "Call an ambulance! He isn't breathing.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1257",
+"chunk": "I'm lost",
+"category": "fixed_formula",
+"pragmatic_function": "Saying you don't know where you are",
+"register": "neutral",
+"natural_example": "Excuse me, I'm lost. Where's the station?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1258",
+"chunk": "Look out!",
+"category": "fixed_formula",
+"pragmatic_function": "Warning of danger",
+"register": "neutral",
+"natural_example": "Look out! A car!",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1259",
+"chunk": "What's the matter?",
+"category": "fixed_formula",
+"pragmatic_function": "Asking what is wrong",
+"register": "neutral",
+"natural_example": "You look sad. What's the matter?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1260",
+"chunk": "Are you okay?",
+"category": "fixed_formula",
+"pragmatic_function": "Asking if someone is all right",
+"register": "neutral",
+"natural_example": "Are you okay? You look pale.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1261",
+"chunk": "Happy birthday!",
+"category": "fixed_formula",
+"pragmatic_function": "Birthday wish",
+"register": "neutral",
+"natural_example": "Happy birthday! Here's a present for you.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1262",
+"chunk": "Well done!",
+"category": "fixed_formula",
+"pragmatic_function": "Praising someone's success",
+"register": "neutral",
+"natural_example": "You passed the test? Well done!",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1263",
+"chunk": "It's raining",
+"category": "fixed_formula",
+"pragmatic_function": "Weather small talk",
+"register": "neutral",
+"natural_example": "Take an umbrella. It's raining.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1264",
+"chunk": "Nice weather today, isn't it?",
+"category": "fixed_formula",
+"pragmatic_function": "Weather small talk to start a conversation",
+"register": "neutral",
+"natural_example": "Nice weather today, isn't it?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1265",
+"chunk": "What's your phone number?",
+"category": "fixed_formula",
+"pragmatic_function": "Asking for a phone number",
+"register": "neutral",
+"natural_example": "What's your phone number? I'll text you.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1266",
+"chunk": "I can't hear you",
+"category": "fixed_formula",
+"pragmatic_function": "Phone or noise problem",
+"register": "neutral",
+"natural_example": "Sorry, I can't hear you. It's very loud here.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1267",
+"chunk": "Sorry, I missed your call",
+"category": "fixed_formula",
+"pragmatic_function": "Replying after a missed phone call",
+"register": "neutral",
+"natural_example": "Hi, sorry, I missed your call. What's up?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1268",
+"chunk": "Can I ask you a question?",
+"category": "fixed_formula",
+"pragmatic_function": "Politely starting a question",
+"register": "neutral",
+"natural_example": "Excuse me, can I ask you a question?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1269",
+"chunk": "What time shall we meet?",
+"category": "fixed_formula",
+"pragmatic_function": "Arranging a meeting time",
+"register": "neutral",
+"natural_example": "OK, dinner on Friday. What time shall we meet?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1270",
+"chunk": "My phone is about to die",
+"category": "fixed_formula",
+"pragmatic_function": "Saying your battery is almost empty",
+"register": "neutral",
+"natural_example": "I have to go, my phone is about to die.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1271",
+"chunk": "Um, let me see",
+"category": "gambit_filler",
+"pragmatic_function": "Buying time while thinking",
+"register": "neutral",
+"natural_example": "Um, let me see... I think it's on Tuesday.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1272",
+"chunk": "Just a moment",
+"category": "gambit_filler",
+"pragmatic_function": "Asking someone to wait briefly",
+"register": "neutral",
+"natural_example": "Just a moment, I'll get my pen.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1273",
+"chunk": "Wait a minute",
+"category": "gambit_filler",
+"pragmatic_function": "Asking someone to wait or stop",
+"register": "informal",
+"natural_example": "Wait a minute, I'm coming!",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1274",
+"chunk": "Hold on",
+"category": "gambit_filler",
+"pragmatic_function": "Asking someone to wait, often on the phone",
+"register": "informal",
+"natural_example": "Hold on, I'll check.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1275",
+"chunk": "Pardon?",
+"category": "gambit_filler",
+"pragmatic_function": "Polite request to repeat",
+"register": "polite",
+"natural_example": "Pardon? I didn't hear you.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1276",
+"chunk": "Sorry?",
+"category": "gambit_filler",
+"pragmatic_function": "Short request to repeat something",
+"register": "neutral",
+"natural_example": "Sorry? Can you say that again?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1277",
+"chunk": "What's that?",
+"category": "gambit_filler",
+"pragmatic_function": "Asking about an unknown thing or word",
+"register": "neutral",
+"natural_example": "What's that? I don't know that word.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1278",
+"chunk": "Okay",
+"category": "gambit_filler",
+"pragmatic_function": "Showing agreement or understanding",
+"register": "neutral",
+"natural_example": "Okay, let's go.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1279",
+"chunk": "Of course",
+"category": "gambit_filler",
+"pragmatic_function": "Saying yes strongly or politely",
+"register": "neutral",
+"natural_example": "\"Can I sit here?\" \"Of course.\"",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1280",
+"chunk": "Sure",
+"category": "gambit_filler",
+"pragmatic_function": "Informal yes",
+"register": "neutral",
+"natural_example": "\"Can you pass the salt?\" \"Sure.\"",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1281",
+"chunk": "Me too",
+"category": "gambit_filler",
+"pragmatic_function": "Agreeing with a positive statement about yourself",
+"register": "neutral",
+"natural_example": "\"I love this song.\" \"Me too!\"",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1282",
+"chunk": "Me neither",
+"category": "gambit_filler",
+"pragmatic_function": "Agreeing with a negative statement about yourself",
+"register": "neutral",
+"natural_example": "\"I don't like coffee.\" \"Me neither.\"",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1283",
+"chunk": "Right",
+"category": "gambit_filler",
+"pragmatic_function": "Showing you follow or agree",
+"register": "neutral",
+"natural_example": "Right, so the bus leaves at nine.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1284",
+"chunk": "I don't know",
+"category": "gambit_filler",
+"pragmatic_function": "Saying you lack information",
+"register": "neutral",
+"natural_example": "Sorry, I don't know.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1285",
+"chunk": "Maybe",
+"category": "gambit_filler",
+"pragmatic_function": "Expressing possibility or hesitation",
+"register": "neutral",
+"natural_example": "\"Are you coming tonight?\" \"Maybe.\"",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1286",
+"chunk": "I'm not sure",
+"category": "gambit_filler",
+"pragmatic_function": "Expressing uncertainty",
+"register": "neutral",
+"natural_example": "\"Is it open on Sunday?\" \"I'm not sure.\"",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1287",
+"chunk": "Good idea",
+"category": "gambit_filler",
+"pragmatic_function": "Agreeing with a suggestion",
+"register": "neutral",
+"natural_example": "\"Let's take a taxi.\" \"Good idea.\"",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1288",
+"chunk": "That's great",
+"category": "gambit_filler",
+"pragmatic_function": "Reacting positively to news",
+"register": "neutral",
+"natural_example": "You got the job? That's great!",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1289",
+"chunk": "Oh no!",
+"category": "gambit_filler",
+"pragmatic_function": "Reacting to bad news or a problem",
+"register": "neutral",
+"natural_example": "Oh no! I forgot my keys.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1290",
+"chunk": "Well...",
+"category": "gambit_filler",
+"pragmatic_function": "Hesitating before an answer",
+"register": "neutral",
+"natural_example": "Well... I'm not sure.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1291",
+"chunk": "Actually",
+"category": "gambit_filler",
+"pragmatic_function": "Correcting or adding something",
+"register": "neutral",
+"natural_example": "Actually, I'm from Canada, not the US.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1292",
+"chunk": "Sounds good",
+"category": "gambit_filler",
+"pragmatic_function": "Accepting a plan",
+"register": "neutral",
+"natural_example": "\"Pizza at seven?\" \"Sounds good.\"",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1293",
+"chunk": "Cool",
+"category": "gambit_filler",
+"pragmatic_function": "Casual positive reaction",
+"register": "informal",
+"natural_example": "\"I'll see you there.\" \"Cool.\"",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1294",
+"chunk": "Wow!",
+"category": "gambit_filler",
+"pragmatic_function": "Showing surprise or admiration",
+"register": "informal",
+"natural_example": "Wow! Your house is beautiful.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1295",
+"chunk": "Is that okay?",
+"category": "gambit_filler",
+"pragmatic_function": "Checking that something is acceptable",
+"register": "neutral",
+"natural_example": "I'll come at eight. Is that okay?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1296",
+"chunk": "And then",
+"category": "discourse_connector",
+"pragmatic_function": "Sequencing events in a story",
+"register": "neutral",
+"natural_example": "I got up, and then I had breakfast.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1297",
+"chunk": "But",
+"category": "discourse_connector",
+"pragmatic_function": "Contrasting two ideas",
+"register": "neutral",
+"natural_example": "I like tea, but I don't like coffee.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1298",
+"chunk": "Because",
+"category": "discourse_connector",
+"pragmatic_function": "Giving a reason",
+"register": "neutral",
+"natural_example": "I'm tired because I worked late.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1299",
+"chunk": "Also",
+"category": "discourse_connector",
+"pragmatic_function": "Adding information",
+"register": "neutral",
+"natural_example": "I speak French. I also speak a little German.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1300",
+"chunk": "Then",
+"category": "discourse_connector",
+"pragmatic_function": "Next step in a sequence",
+"register": "neutral",
+"natural_example": "First I shower, then I get dressed.",
+"cefr_level": "A2"
+}
+]

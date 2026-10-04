@@ -1,0 +1,549 @@
+[
+ {
+  "id": "ENG_CHUNK_1301",
+  "t": "Primeiro",
+  "ex": "Primeiro, abre o aplicativo. Depois, faz o login."
+ },
+ {
+  "id": "ENG_CHUNK_1302",
+  "t": "Ou",
+  "ex": "Chá ou café?"
+ },
+ {
+  "id": "ENG_CHUNK_1303",
+  "t": "Finalmente / Por fim",
+  "ex": "Finalmente chegamos ao hotel.",
+  "n": "'Finalmente' = at last (relief); 'por fim' = last step in a list."
+ },
+ {
+  "id": "ENG_CHUNK_1304",
+  "t": "Em seguida / Depois",
+  "ex": "Em seguida, vire à direita no banco."
+ },
+ {
+  "id": "ENG_CHUNK_1305",
+  "t": "Mais tarde / Depois",
+  "ex": "Estou ocupado agora. Posso te ligar mais tarde?"
+ },
+ {
+  "id": "ENG_CHUNK_1306",
+  "t": "Por causa disso / Por isso",
+  "ex": "O trem atrasou. Por causa disso, perdi a reunião."
+ },
+ {
+  "id": "ENG_CHUNK_1307",
+  "t": "Depois / Mais tarde",
+  "ex": "A gente viu um filme. Depois, jantamos."
+ },
+ {
+  "id": "ENG_CHUNK_1308",
+  "t": "E também",
+  "ex": "Preciso de pão e também de leite."
+ },
+ {
+  "id": "ENG_CHUNK_1309",
+  "t": "Mas aí",
+  "ex": "Eu queria sair, mas aí começou a chover.",
+  "n": "'Aí' is the everyday spoken 'then' in Brazilian stories."
+ },
+ {
+  "id": "ENG_CHUNK_1310",
+  "t": "Ou quem sabe / Ou talvez",
+  "ex": "Vamos à praia. Ou quem sabe ao parque?"
+ },
+ {
+  "id": "ENG_CHUNK_1311",
+  "t": "No começo / No início",
+  "ex": "No começo, o português era muito difícil pra mim."
+ },
+ {
+  "id": "ENG_CHUNK_1312",
+  "t": "Enfim / Bom, mas enfim",
+  "ex": "Enfim, como foi seu fim de semana?"
+ },
+ {
+  "id": "ENG_CHUNK_1313",
+  "t": "Um dia",
+  "ex": "Um dia, eu quero conhecer o Japão.",
+  "n": "To start a fairy-tale story: 'Era uma vez'."
+ },
+ {
+  "id": "ENG_CHUNK_1314",
+  "t": "De repente",
+  "ex": "De repente, a luz acabou.",
+  "n": "'A luz acabou' = the power went out, very common in Brazil."
+ },
+ {
+  "id": "ENG_CHUNK_1315",
+  "t": "Por sorte / Ainda bem que",
+  "ex": "Perdi minha carteira, mas por sorte alguém achou.",
+  "n": "'Ainda bem que' (thank goodness) is very common: ainda bem que alguém achou."
+ },
+ {
+  "id": "ENG_CHUNK_1316",
+  "t": "levantar / se levantar",
+  "ex": "Eu levanto às sete todo dia.",
+  "n": "In speech the reflexive 'me' is often dropped: eu levanto."
+ },
+ {
+  "id": "ENG_CHUNK_1317",
+  "t": "acordar",
+  "ex": "Eu geralmente acordo às seis."
+ },
+ {
+  "id": "ENG_CHUNK_1318",
+  "t": "tomar café da manhã",
+  "ex": "Eu tomo café da manhã em casa.",
+  "n": "Just 'tomar café' often means breakfast too."
+ },
+ {
+  "id": "ENG_CHUNK_1319",
+  "t": "almoçar",
+  "ex": "Vamos almoçar juntos?",
+  "n": "One verb: no 'ter almoço'."
+ },
+ {
+  "id": "ENG_CHUNK_1320",
+  "t": "jantar",
+  "ex": "A gente janta às sete."
+ },
+ {
+  "id": "ENG_CHUNK_1321",
+  "t": "tomar banho",
+  "ex": "Eu tomo banho toda manhã.",
+  "n": "'Tomar banho' covers shower and bath; 'banho de banheira' for a bath specifically."
+ },
+ {
+  "id": "ENG_CHUNK_1322",
+  "t": "escovar os dentes",
+  "ex": "Escova os dentes antes de dormir."
+ },
+ {
+  "id": "ENG_CHUNK_1323",
+  "t": "se vestir / se trocar",
+  "ex": "Eu me visto e tomo café da manhã."
+ },
+ {
+  "id": "ENG_CHUNK_1324",
+  "t": "ir dormir / ir para a cama",
+  "ex": "Eu vou dormir às onze."
+ },
+ {
+  "id": "ENG_CHUNK_1325",
+  "t": "ir trabalhar / ir para o trabalho",
+  "ex": "Eu vou trabalhar de ônibus.",
+  "n": "Transport uses 'de': de ônibus, de carro, but 'a pé'."
+ },
+ {
+  "id": "ENG_CHUNK_1326",
+  "t": "ir para casa / ir embora",
+  "ex": "Estou cansado. Quero ir para casa.",
+  "n": "'Ir embora' = to leave (a place) and is very common: quero ir embora."
+ },
+ {
+  "id": "ENG_CHUNK_1327",
+  "t": "chegar em casa",
+  "ex": "Eu chego em casa às seis.",
+  "n": "'Chegar em casa' is standard in Brazil; grammars prefer 'chegar a casa'."
+ },
+ {
+  "id": "ENG_CHUNK_1328",
+  "t": "fazer compras",
+  "ex": "Vamos fazer compras no sábado?"
+ },
+ {
+  "id": "ENG_CHUNK_1329",
+  "t": "ver TV / assistir TV",
+  "ex": "Eu vejo TV à noite.",
+  "n": "'Assistir TV' is common speech; formal grammar wants 'assistir à TV'."
+ },
+ {
+  "id": "ENG_CHUNK_1330",
+  "t": "ouvir música / escutar música",
+  "ex": "Eu ouço música no ônibus."
+ },
+ {
+  "id": "ENG_CHUNK_1331",
+  "t": "fazer a lição de casa / fazer o dever de casa",
+  "ex": "Eu faço a lição de casa depois da escola."
+ },
+ {
+  "id": "ENG_CHUNK_1332",
+  "t": "fazer o jantar",
+  "ex": "Eu faço o jantar toda noite."
+ },
+ {
+  "id": "ENG_CHUNK_1333",
+  "t": "dar uma volta / dar uma caminhada",
+  "ex": "Vamos dar uma volta no parque?"
+ },
+ {
+  "id": "ENG_CHUNK_1334",
+  "t": "jogar [esporte]",
+  "ex": "Eu jogo futebol aos sábados.",
+  "n": "Sports and games: jogar. Instruments: tocar (tocar violão)."
+ },
+ {
+  "id": "ENG_CHUNK_1335",
+  "t": "fazer compras / fazer mercado",
+  "ex": "Eu faço mercado às segundas.",
+  "n": "'Fazer mercado' or 'ir ao mercado' is groceries specifically."
+ },
+ {
+  "id": "ENG_CHUNK_1336",
+  "t": "lavar roupa",
+  "ex": "Eu lavo roupa no domingo."
+ },
+ {
+  "id": "ENG_CHUNK_1337",
+  "t": "limpar a casa / fazer faxina",
+  "ex": "A gente faz faxina todo sábado."
+ },
+ {
+  "id": "ENG_CHUNK_1338",
+  "t": "lavar as mãos",
+  "ex": "Lava as mãos antes do jantar."
+ },
+ {
+  "id": "ENG_CHUNK_1339",
+  "t": "fazer café / passar um café",
+  "ex": "Vou fazer café. Quer um pouco?",
+  "n": "'Passar um café' refers to filter coffee, very Brazilian."
+ },
+ {
+  "id": "ENG_CHUNK_1340",
+  "t": "pegar o ônibus",
+  "ex": "Eu pego o ônibus para a escola.",
+  "n": "'Pegar' is the everyday verb for taking transport."
+ },
+ {
+  "id": "ENG_CHUNK_1341",
+  "t": "subir no ônibus / pegar o ônibus",
+  "ex": "Pega o ônibus aqui e desce no parque."
+ },
+ {
+  "id": "ENG_CHUNK_1342",
+  "t": "descer do ônibus",
+  "ex": "Desce do ônibus no próximo ponto.",
+  "n": "A bus stop is 'ponto (de ônibus)' in Brazil."
+ },
+ {
+  "id": "ENG_CHUNK_1343",
+  "t": "comprar uma passagem / comprar um ingresso",
+  "ex": "Onde posso comprar uma passagem?",
+  "n": "Travel ticket: passagem (bilhete in Portugal). Show/event: ingresso."
+ },
+ {
+  "id": "ENG_CHUNK_1344",
+  "t": "alugar um carro",
+  "ex": "A gente quer alugar um carro por três dias."
+ },
+ {
+  "id": "ENG_CHUNK_1345",
+  "t": "atravessar a rua",
+  "ex": "Cuidado quando for atravessar a rua."
+ },
+ {
+  "id": "ENG_CHUNK_1346",
+  "t": "virar à esquerda",
+  "ex": "Vira à esquerda no banco."
+ },
+ {
+  "id": "ENG_CHUNK_1347",
+  "t": "tirar uma foto",
+  "ex": "Posso tirar uma foto?",
+  "n": "'Tirar', not 'fazer', for photos."
+ },
+ {
+  "id": "ENG_CHUNK_1348",
+  "t": "estar com fome",
+  "ex": "Estou com fome. Vamos comer.",
+  "n": "Brazilians say 'estar com fome'; 'ter fome' is more general or Portugal."
+ },
+ {
+  "id": "ENG_CHUNK_1349",
+  "t": "estar com sede",
+  "ex": "Estou com sede. Tem água?"
+ },
+ {
+  "id": "ENG_CHUNK_1350",
+  "t": "estar cansado / cansada",
+  "ex": "Estou cansado. Vou dormir."
+ },
+ {
+  "id": "ENG_CHUNK_1351",
+  "t": "chegar atrasado / estar atrasado",
+  "ex": "Anda logo, a gente vai chegar atrasado!"
+ },
+ {
+  "id": "ENG_CHUNK_1352",
+  "t": "chegar na hora / estar no horário",
+  "ex": "O trem está no horário hoje."
+ },
+ {
+  "id": "ENG_CHUNK_1353",
+  "t": "se divertir",
+  "ex": "A gente se divertiu muito na praia."
+ },
+ {
+  "id": "ENG_CHUNK_1354",
+  "t": "estar com dor de cabeça",
+  "ex": "Estou com dor de cabeça. Você tem uma aspirina?"
+ },
+ {
+  "id": "ENG_CHUNK_1355",
+  "t": "estar com febre / ter febre",
+  "ex": "Meu filho está com febre."
+ },
+ {
+  "id": "ENG_CHUNK_1356",
+  "t": "tomar remédio",
+  "ex": "Toma esse remédio duas vezes por dia.",
+  "n": "'Tomar' for medicine, like drinks. 'Remédio' is the everyday word, not 'medicina'."
+ },
+ {
+  "id": "ENG_CHUNK_1357",
+  "t": "fazer uma ligação / ligar para alguém",
+  "ex": "Preciso fazer uma ligação."
+ },
+ {
+  "id": "ENG_CHUNK_1358",
+  "t": "mandar uma mensagem",
+  "ex": "Te mando uma mensagem mais tarde.",
+  "n": "'Mandar um zap' = send a WhatsApp, very common."
+ },
+ {
+  "id": "ENG_CHUNK_1359",
+  "t": "carregar o celular",
+  "ex": "Posso carregar meu celular aqui?"
+ },
+ {
+  "id": "ENG_CHUNK_1360",
+  "t": "aprender inglês",
+  "ex": "Estou aprendendo inglês para o trabalho."
+ },
+ {
+  "id": "ENG_CHUNK_1361",
+  "t": "Meu nome é [nome] / Eu sou o/a [nome]",
+  "ex": "Olá, meu nome é Carlos.",
+  "n": "'Eu sou o Carlos' (with article) is the usual spoken way."
+ },
+ {
+  "id": "ENG_CHUNK_1362",
+  "t": "Sou de [lugar] / Sou do/da [país]",
+  "ex": "Sou do México.",
+  "n": "Many countries take an article: do Brasil, da Alemanha, but de Portugal."
+ },
+ {
+  "id": "ENG_CHUNK_1363",
+  "t": "Moro em [lugar]",
+  "ex": "Moro em Chicago.",
+  "n": "em + article contracts: no Rio, na Bahia."
+ },
+ {
+  "id": "ENG_CHUNK_1364",
+  "t": "Tenho [número] anos",
+  "ex": "Tenho trinta anos.",
+  "n": "Use 'ter', not 'ser'."
+ },
+ {
+  "id": "ENG_CHUNK_1365",
+  "t": "Sou [profissão]",
+  "ex": "Sou professor.",
+  "n": "No article before the job: sou professora, not 'sou uma professora'."
+ },
+ {
+  "id": "ENG_CHUNK_1366",
+  "t": "Este é o meu / Esta é a minha [pessoa]",
+  "ex": "Esta é a minha esposa, Julia.",
+  "n": "Speech often uses 'Essa é a minha...'."
+ },
+ {
+  "id": "ENG_CHUNK_1367",
+  "t": "Você fala [língua]?",
+  "ex": "Com licença, você fala inglês?"
+ },
+ {
+  "id": "ENG_CHUNK_1368",
+  "t": "Falo um pouco de [língua]",
+  "ex": "Falo um pouco de inglês."
+ },
+ {
+  "id": "ENG_CHUNK_1369",
+  "t": "Estou aprendendo [língua]",
+  "ex": "Estou aprendendo inglês num curso noturno."
+ },
+ {
+  "id": "ENG_CHUNK_1370",
+  "t": "Como se diz [palavra] em [língua]?",
+  "ex": "Como se diz \"Danke\" em português?"
+ },
+ {
+  "id": "ENG_CHUNK_1371",
+  "t": "O que significa [palavra]? / O que quer dizer [palavra]?",
+  "ex": "O que significa \"saudade\"?"
+ },
+ {
+  "id": "ENG_CHUNK_1372",
+  "t": "Não entendo [substantivo]",
+  "ex": "Não entendo essa palavra."
+ },
+ {
+  "id": "ENG_CHUNK_1373",
+  "t": "São [hora] / É [uma hora]",
+  "ex": "São três horas.",
+  "n": "Plural 'são' except for one o'clock, noon and midnight: é uma hora, é meio-dia."
+ },
+ {
+  "id": "ENG_CHUNK_1374",
+  "t": "Meu aniversário é dia [data]",
+  "ex": "Meu aniversário é dia 3 de maio.",
+  "n": "Date format: dia + number + de + month, lowercase month."
+ },
+ {
+  "id": "ENG_CHUNK_1375",
+  "t": "Quando é [substantivo]?",
+  "ex": "Quando é o seu aniversário?"
+ },
+ {
+  "id": "ENG_CHUNK_1376",
+  "t": "Que horas é [substantivo]? / A que horas começa [substantivo]?",
+  "ex": "A que horas começa o filme?"
+ },
+ {
+  "id": "ENG_CHUNK_1377",
+  "t": "Que horas abre [lugar]? / A que horas abre [lugar]?",
+  "ex": "Que horas abre o banco?"
+ },
+ {
+  "id": "ENG_CHUNK_1378",
+  "t": "Quanto custa [substantivo]? / Quanto é [substantivo]?",
+  "ex": "Quanto custa essa camiseta?"
+ },
+ {
+  "id": "ENG_CHUNK_1379",
+  "t": "Dá [preço] / São [preço], por favor",
+  "ex": "Dá doze reais.",
+  "n": "'Dá' (it comes to) is the typical cashier phrasing."
+ },
+ {
+  "id": "ENG_CHUNK_1380",
+  "t": "Posso pagar com [forma de pagamento]?",
+  "ex": "Posso pagar com cartão?",
+  "n": "Brazil: com cartão, em dinheiro, no Pix. 'Débito ou crédito?' is the usual follow-up."
+ },
+ {
+  "id": "ENG_CHUNK_1381",
+  "t": "Você tem [substantivo]? / Tem [substantivo]?",
+  "ex": "Tem leite?",
+  "n": "Impersonal 'Tem...?' is the natural way to ask a shop."
+ },
+ {
+  "id": "ENG_CHUNK_1382",
+  "t": "Está um pouco [adjetivo] demais / Ficou meio [adjetivo]",
+  "ex": "Ficou um pouco grande. Tem um menor?",
+  "n": "'Ficou' (it turned out) is used for how clothes fit."
+ },
+ {
+  "id": "ENG_CHUNK_1383",
+  "t": "Pode me ver [substantivo], por favor? / Me vê [substantivo], por favor",
+  "ex": "Me vê um café, por favor.",
+  "n": "'Me vê um...' is typical Brazilian counter-speak; 'Eu queria um...' is also polite."
+ },
+ {
+  "id": "ENG_CHUNK_1384",
+  "t": "Eu queria [substantivo], por favor / Eu gostaria de [substantivo]",
+  "ex": "Eu queria um sanduíche, por favor.",
+  "n": "Imperfect 'queria' is the polite 'I'd like' in speech; 'gostaria de' is more formal."
+ },
+ {
+  "id": "ENG_CHUNK_1385",
+  "t": "Vou querer [substantivo]",
+  "ex": "Vou querer o peixe, por favor."
+ },
+ {
+  "id": "ENG_CHUNK_1386",
+  "t": "Um copo de [substantivo], por favor",
+  "ex": "Um copo de água, por favor.",
+  "n": "Wine/champagne come in 'taça': uma taça de vinho."
+ },
+ {
+  "id": "ENG_CHUNK_1387",
+  "t": "Quer mais [substantivo]? / Aceita [substantivo]?",
+  "ex": "Quer mais arroz?",
+  "n": "'Aceita um café?' is the polite offer; hosts often insist, so a firm 'não, obrigado' may be needed."
+ },
+ {
+  "id": "ENG_CHUNK_1388",
+  "t": "Você quer [infinitivo]? / Você gostaria de [infinitivo]?",
+  "ex": "Você quer vir na minha festa?",
+  "n": "'Vir na festa' is spoken; standard is 'vir à festa'."
+ },
+ {
+  "id": "ENG_CHUNK_1389",
+  "t": "Onde fica [lugar]? / Onde é [lugar]?",
+  "ex": "Onde fica a estação de trem?",
+  "n": "'Onde fica' for fixed places; 'onde está' for movable things (onde está meu celular?)."
+ },
+ {
+  "id": "ENG_CHUNK_1390",
+  "t": "Onde tem um/uma [lugar] aqui perto?",
+  "ex": "Onde tem um caixa eletrônico aqui perto?",
+  "n": "Brazilians rarely say 'o mais próximo'; they ask 'aqui perto'."
+ },
+ {
+  "id": "ENG_CHUNK_1391",
+  "t": "Vira à esquerda no/na [lugar]",
+  "ex": "Vira à esquerda na igreja."
+ },
+ {
+  "id": "ENG_CHUNK_1392",
+  "t": "Fica à [direção]",
+  "ex": "O banco fica à esquerda.",
+  "n": "à direita / à esquerda with crasis; 'do lado esquerdo' is also common."
+ },
+ {
+  "id": "ENG_CHUNK_1393",
+  "t": "Fica do lado do/da [lugar] / Fica ao lado de [lugar]",
+  "ex": "A padaria fica do lado do banco."
+ },
+ {
+  "id": "ENG_CHUNK_1394",
+  "t": "Uma passagem para [lugar], por favor",
+  "ex": "Uma passagem para Campinas, por favor.",
+  "n": "Speech often uses 'pra': uma passagem pra Campinas."
+ },
+ {
+  "id": "ENG_CHUNK_1395",
+  "t": "Qual ônibus vai para [lugar]?",
+  "ex": "Qual ônibus vai para o aeroporto?"
+ },
+ {
+  "id": "ENG_CHUNK_1396",
+  "t": "Que horas sai o próximo [substantivo] para [lugar]?",
+  "ex": "Que horas sai o próximo trem para Santos?"
+ },
+ {
+  "id": "ENG_CHUNK_1397",
+  "t": "Pode me levar para [lugar]?",
+  "ex": "Pode me levar para o aeroporto, por favor?",
+  "n": "In a taxi you can also just say the destination: 'Pro aeroporto, por favor.'"
+ },
+ {
+  "id": "ENG_CHUNK_1398",
+  "t": "Leva mais ou menos [duração] / Demora uns [duração]",
+  "ex": "Leva mais ou menos vinte minutos de ônibus."
+ },
+ {
+  "id": "ENG_CHUNK_1399",
+  "t": "Eu queria um quarto para [número] noites",
+  "ex": "Eu queria um quarto para duas noites, por favor.",
+  "n": "Double bed: cama de casal; twin beds: duas camas de solteiro."
+ },
+ {
+  "id": "ENG_CHUNK_1400",
+  "t": "O/A [substantivo] não está funcionando / não funciona",
+  "ex": "O chuveiro não está funcionando.",
+  "n": "'Está quebrado' (broken) is also common."
+ }
+]

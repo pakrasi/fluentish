@@ -1,0 +1,557 @@
+[
+{
+"id": "ENG_CHUNK_1301",
+"t": "Prima / Per prima cosa",
+"ex": "Per prima cosa apri l'app. Poi fai il login."
+},
+{
+"id": "ENG_CHUNK_1302",
+"t": "O / Oppure",
+"ex": "Tè o caffè?",
+"n": "'Oppure' is common between longer options or clauses."
+},
+{
+"id": "ENG_CHUNK_1303",
+"t": "Alla fine / Finalmente",
+"ex": "Finalmente siamo arrivati in albergo.",
+"n": "'Finalmente' = at last (relief); 'alla fine' / 'infine' = last in a list."
+},
+{
+"id": "ENG_CHUNK_1304",
+"t": "Poi / Dopo",
+"ex": "Poi giri a destra alla banca."
+},
+{
+"id": "ENG_CHUNK_1305",
+"t": "Più tardi / Dopo",
+"ex": "Adesso sono impegnato. Ti posso chiamare più tardi?"
+},
+{
+"id": "ENG_CHUNK_1306",
+"t": "Per questo / Quindi",
+"ex": "Il treno era in ritardo. Per questo ho perso la riunione."
+},
+{
+"id": "ENG_CHUNK_1307",
+"t": "Dopo / Poi",
+"ex": "Abbiamo visto un film. Dopo abbiamo cenato."
+},
+{
+"id": "ENG_CHUNK_1308",
+"t": "E anche",
+"ex": "Mi serve il pane e anche un po' di latte."
+},
+{
+"id": "ENG_CHUNK_1309",
+"t": "Ma poi",
+"ex": "Volevo uscire, ma poi ha cominciato a piovere."
+},
+{
+"id": "ENG_CHUNK_1310",
+"t": "O magari / Oppure",
+"ex": "Andiamo al mare. O magari al parco?"
+},
+{
+"id": "ENG_CHUNK_1311",
+"t": "All'inizio",
+"ex": "All'inizio l'italiano era molto difficile per me."
+},
+{
+"id": "ENG_CHUNK_1312",
+"t": "Comunque / Allora",
+"ex": "Comunque, com'è andato il fine settimana?"
+},
+{
+"id": "ENG_CHUNK_1313",
+"t": "Un giorno",
+"ex": "Un giorno voglio visitare il Giappone.",
+"n": "Also opens past stories: 'Un giorno ho incontrato...'"
+},
+{
+"id": "ENG_CHUNK_1314",
+"t": "All'improvviso / A un tratto",
+"ex": "All'improvviso è andata via la luce."
+},
+{
+"id": "ENG_CHUNK_1315",
+"t": "Per fortuna",
+"ex": "Ho perso il portafoglio, ma per fortuna qualcuno l'ha trovato.",
+"n": "'Fortunatamente' exists but 'per fortuna' is the everyday form."
+},
+{
+"id": "ENG_CHUNK_1316",
+"t": "alzarsi",
+"ex": "Mi alzo alle sette tutti i giorni.",
+"n": "Reflexive: mi alzo, ti alzi, si alza."
+},
+{
+"id": "ENG_CHUNK_1317",
+"t": "svegliarsi",
+"ex": "Di solito mi sveglio alle sei.",
+"n": "Reflexive: 'svegliarsi' = wake up; 'alzarsi' = get out of bed."
+},
+{
+"id": "ENG_CHUNK_1318",
+"t": "fare colazione",
+"ex": "Faccio colazione a casa.",
+"n": "Italian 'makes' meals: fare colazione, not 'avere'."
+},
+{
+"id": "ENG_CHUNK_1319",
+"t": "pranzare / mangiare a pranzo",
+"ex": "Pranziamo insieme!"
+},
+{
+"id": "ENG_CHUNK_1320",
+"t": "cenare / mangiare a cena",
+"ex": "Ceniamo alle otto.",
+"n": "Italians typically dine around 8 pm; time adapted."
+},
+{
+"id": "ENG_CHUNK_1321",
+"t": "fare la doccia",
+"ex": "Faccio la doccia ogni mattina.",
+"n": "'Fare', not 'prendere', la doccia."
+},
+{
+"id": "ENG_CHUNK_1322",
+"t": "lavarsi i denti",
+"ex": "Lavati i denti prima di andare a letto.",
+"n": "Reflexive with the article: 'mi lavo i denti', not 'i miei denti'."
+},
+{
+"id": "ENG_CHUNK_1323",
+"t": "vestirsi",
+"ex": "Mi vesto e faccio colazione."
+},
+{
+"id": "ENG_CHUNK_1324",
+"t": "andare a letto / andare a dormire",
+"ex": "Vado a letto alle undici."
+},
+{
+"id": "ENG_CHUNK_1325",
+"t": "andare al lavoro",
+"ex": "Vado al lavoro in autobus.",
+"n": "'In autobus', 'in macchina', but 'a piedi'."
+},
+{
+"id": "ENG_CHUNK_1326",
+"t": "andare a casa / tornare a casa",
+"ex": "Sono stanco. Voglio andare a casa.",
+"n": "'A casa' with no article."
+},
+{
+"id": "ENG_CHUNK_1327",
+"t": "tornare a casa / rientrare",
+"ex": "Torno a casa alle sei."
+},
+{
+"id": "ENG_CHUNK_1328",
+"t": "fare shopping / andare a fare spese",
+"ex": "Andiamo a fare shopping sabato?"
+},
+{
+"id": "ENG_CHUNK_1329",
+"t": "guardare la TV",
+"ex": "La sera guardo la TV.",
+"n": "'Guardare' takes a direct object: no 'a'."
+},
+{
+"id": "ENG_CHUNK_1330",
+"t": "ascoltare la musica",
+"ex": "Ascolto la musica sull'autobus.",
+"n": "No preposition: 'ascoltare' + direct object."
+},
+{
+"id": "ENG_CHUNK_1331",
+"t": "fare i compiti",
+"ex": "Faccio i compiti dopo la scuola."
+},
+{
+"id": "ENG_CHUNK_1332",
+"t": "preparare la cena / cucinare",
+"ex": "Preparo la cena ogni sera."
+},
+{
+"id": "ENG_CHUNK_1333",
+"t": "fare una passeggiata",
+"ex": "Facciamo una passeggiata al parco?"
+},
+{
+"id": "ENG_CHUNK_1334",
+"t": "giocare a [sport]",
+"ex": "Il sabato gioco a calcio.",
+"n": "'Giocare a' + sport, no article: gioco a tennis. Instruments use 'suonare'."
+},
+{
+"id": "ENG_CHUNK_1335",
+"t": "fare la spesa",
+"ex": "Faccio la spesa il lunedì.",
+"n": "'Fare la spesa' = groceries; 'fare spese' = shopping for fun."
+},
+{
+"id": "ENG_CHUNK_1336",
+"t": "fare il bucato / lavare i panni",
+"ex": "La domenica faccio il bucato."
+},
+{
+"id": "ENG_CHUNK_1337",
+"t": "pulire la casa / fare le pulizie",
+"ex": "Il sabato facciamo le pulizie di casa."
+},
+{
+"id": "ENG_CHUNK_1338",
+"t": "lavarsi le mani",
+"ex": "Lavatevi le mani prima di cena.",
+"n": "Reflexive + article, like 'lavarsi i denti'."
+},
+{
+"id": "ENG_CHUNK_1339",
+"t": "fare il caffè",
+"ex": "Faccio il caffè. Ne vuoi un po'?",
+"n": "'Ne vuoi?' = do you want some (of it)?"
+},
+{
+"id": "ENG_CHUNK_1340",
+"t": "prendere l'autobus",
+"ex": "Prendo l'autobus per andare a scuola."
+},
+{
+"id": "ENG_CHUNK_1341",
+"t": "salire sull'autobus",
+"ex": "Sali sull'autobus qui e scendi al parco.",
+"n": "'Salire su' = get on; 'scendere da' = get off. Both take essere."
+},
+{
+"id": "ENG_CHUNK_1342",
+"t": "scendere dall'autobus",
+"ex": "Scenda dall'autobus alla prossima fermata."
+},
+{
+"id": "ENG_CHUNK_1343",
+"t": "comprare il biglietto / fare il biglietto",
+"ex": "Dove posso fare il biglietto?",
+"n": "'Fare il biglietto' is the everyday phrase at stations."
+},
+{
+"id": "ENG_CHUNK_1344",
+"t": "noleggiare una macchina",
+"ex": "Vogliamo noleggiare una macchina per tre giorni.",
+"n": "'Affittare' is for flats; cars are 'noleggiate'."
+},
+{
+"id": "ENG_CHUNK_1345",
+"t": "attraversare la strada",
+"ex": "Fai attenzione quando attraversi la strada."
+},
+{
+"id": "ENG_CHUNK_1346",
+"t": "girare a sinistra",
+"ex": "Giri a sinistra alla banca.",
+"n": "Lei imperative 'giri'; tu form 'gira'."
+},
+{
+"id": "ENG_CHUNK_1347",
+"t": "fare una foto",
+"ex": "Posso fare una foto?",
+"n": "'Fare', not 'prendere', una foto."
+},
+{
+"id": "ENG_CHUNK_1348",
+"t": "avere fame",
+"ex": "Ho fame. Mangiamo!",
+"n": "Italian uses 'avere': ho fame, never 'sono affamato' in daily speech."
+},
+{
+"id": "ENG_CHUNK_1349",
+"t": "avere sete",
+"ex": "Ho sete. C'è dell'acqua?"
+},
+{
+"id": "ENG_CHUNK_1350",
+"t": "essere stanco / essere stanca",
+"ex": "Sono stanco. Vado a letto."
+},
+{
+"id": "ENG_CHUNK_1351",
+"t": "essere in ritardo / fare tardi",
+"ex": "Sbrigati, facciamo tardi!"
+},
+{
+"id": "ENG_CHUNK_1352",
+"t": "essere in orario / essere puntuale",
+"ex": "Oggi il treno è in orario."
+},
+{
+"id": "ENG_CHUNK_1353",
+"t": "divertirsi",
+"ex": "Ci siamo divertiti un sacco al mare.",
+"n": "Reflexive; 'passare una bella giornata' also works."
+},
+{
+"id": "ENG_CHUNK_1354",
+"t": "avere mal di testa",
+"ex": "Ho mal di testa. Hai un'aspirina?",
+"n": "No article: 'ho mal di testa', 'ho mal di pancia'."
+},
+{
+"id": "ENG_CHUNK_1355",
+"t": "avere la febbre",
+"ex": "Mio figlio ha la febbre."
+},
+{
+"id": "ENG_CHUNK_1356",
+"t": "prendere una medicina",
+"ex": "Prenda questa medicina due volte al giorno.",
+"n": "'Medicina' or 'farmaco'; 'medicinale' is formal."
+},
+{
+"id": "ENG_CHUNK_1357",
+"t": "fare una telefonata",
+"ex": "Devo fare una telefonata."
+},
+{
+"id": "ENG_CHUNK_1358",
+"t": "mandare un messaggio / scrivere",
+"ex": "Ti mando un messaggio più tardi.",
+"n": "'Ti scrivo' is the most natural way to say 'I'll text you'."
+},
+{
+"id": "ENG_CHUNK_1359",
+"t": "caricare il telefono",
+"ex": "Posso caricare il telefono qui?"
+},
+{
+"id": "ENG_CHUNK_1360",
+"t": "imparare l'italiano / studiare l'italiano",
+"ex": "Studio l'italiano per lavoro.",
+"n": "Language names take the article: l'italiano, l'inglese."
+},
+{
+"id": "ENG_CHUNK_1361",
+"t": "Mi chiamo [nome]",
+"ex": "Buongiorno, mi chiamo Carlo.",
+"n": "'Il mio nome è' exists but sounds bureaucratic."
+},
+{
+"id": "ENG_CHUNK_1362",
+"t": "Sono di [città] / Vengo da [paese]",
+"ex": "Vengo dal Messico.",
+"n": "'Sono di' + city (sono di Napoli); 'vengo da' + country with article."
+},
+{
+"id": "ENG_CHUNK_1363",
+"t": "Abito a [città] / Vivo a [città]",
+"ex": "Abito a Torino.",
+"n": "'A' + city, 'in' + country or region: abito in Italia."
+},
+{
+"id": "ENG_CHUNK_1364",
+"t": "Ho [numero] anni",
+"ex": "Ho trent'anni.",
+"n": "'Avere' + years, never 'sono'."
+},
+{
+"id": "ENG_CHUNK_1365",
+"t": "Faccio il [lavoro] / Sono [lavoro]",
+"ex": "Faccio l'insegnante.",
+"n": "'Faccio il/la' + job is very common; 'sono insegnante' takes no article."
+},
+{
+"id": "ENG_CHUNK_1366",
+"t": "Questo è il mio [persona] / Ti presento [nome]",
+"ex": "Questa è mia moglie, Giulia.",
+"n": "No article with singular close family: mia moglie, mio fratello."
+},
+{
+"id": "ENG_CHUNK_1367",
+"t": "Parla [lingua]? / Parli [lingua]?",
+"ex": "Scusi, parla inglese?",
+"n": "Here the article is usually dropped: parla inglese?"
+},
+{
+"id": "ENG_CHUNK_1368",
+"t": "Parlo un po' di [lingua] / Parlo poco [lingua]",
+"ex": "Parlo un po' d'italiano."
+},
+{
+"id": "ENG_CHUNK_1369",
+"t": "Sto imparando [lingua] / Studio [lingua]",
+"ex": "Sto imparando l'italiano a un corso serale."
+},
+{
+"id": "ENG_CHUNK_1370",
+"t": "Come si dice [parola]?",
+"ex": "Come si dice \"Danke\" in italiano?"
+},
+{
+"id": "ENG_CHUNK_1371",
+"t": "Che cosa vuol dire [parola]? / Che significa [parola]?",
+"ex": "Che cosa vuol dire \"impegnato\"?",
+"n": "'Vuol dire' is the everyday form of 'vuole dire'."
+},
+{
+"id": "ENG_CHUNK_1372",
+"t": "Non capisco [nome]",
+"ex": "Non capisco questa parola."
+},
+{
+"id": "ENG_CHUNK_1373",
+"t": "Sono le [ora] / È l'una",
+"ex": "Sono le tre.",
+"n": "Plural 'sono le' for every hour except 'è l'una', 'è mezzogiorno', 'è mezzanotte'."
+},
+{
+"id": "ENG_CHUNK_1374",
+"t": "Il mio compleanno è il [data]",
+"ex": "Il mio compleanno è il 3 maggio.",
+"n": "Cardinal numbers for dates (il tre maggio); only the 1st is 'il primo'."
+},
+{
+"id": "ENG_CHUNK_1375",
+"t": "Quando è [nome]? / Quand'è [nome]?",
+"ex": "Quand'è il tuo compleanno?"
+},
+{
+"id": "ENG_CHUNK_1376",
+"t": "A che ora è [nome]? / A che ora comincia [nome]?",
+"ex": "A che ora comincia il film?"
+},
+{
+"id": "ENG_CHUNK_1377",
+"t": "A che ora apre [luogo]?",
+"ex": "A che ora apre la banca?"
+},
+{
+"id": "ENG_CHUNK_1378",
+"t": "Quanto costa [nome]? / Quanto costano [nomi]?",
+"ex": "Quanto costa questa maglietta?",
+"n": "Plural verb for plural items: quanto costano le scarpe?"
+},
+{
+"id": "ENG_CHUNK_1379",
+"t": "Sono [prezzo], grazie",
+"ex": "Sono dodici euro, grazie.",
+"n": "Also 'Fanno dodici euro'; 'È un euro' only for one."
+},
+{
+"id": "ENG_CHUNK_1380",
+"t": "Posso pagare con [metodo]?",
+"ex": "Posso pagare con la carta?",
+"n": "'Con la carta', 'in contanti' (cash)."
+},
+{
+"id": "ENG_CHUNK_1381",
+"t": "Avete [nome]? / Hai [nome]?",
+"ex": "Avete il latte?",
+"n": "In shops use 'avete' (the business), not 'ha'."
+},
+{
+"id": "ENG_CHUNK_1382",
+"t": "È un po' troppo [aggettivo]",
+"ex": "È un po' troppo grande. Ce l'ha una taglia più piccola?",
+"n": "Adjective agrees: la gonna è un po' troppo corta."
+},
+{
+"id": "ENG_CHUNK_1383",
+"t": "Posso avere [nome], per favore? / Mi dà [nome]?",
+"ex": "Mi fa un caffè, per favore?",
+"n": "At a bar Italians say 'Mi fa un caffè?' or just 'Un caffè, per favore'."
+},
+{
+"id": "ENG_CHUNK_1384",
+"t": "Vorrei [nome], per favore",
+"ex": "Vorrei un panino, per favore."
+},
+{
+"id": "ENG_CHUNK_1385",
+"t": "Prendo [nome] / Per me [nome]",
+"ex": "Per me il pesce, grazie."
+},
+{
+"id": "ENG_CHUNK_1386",
+"t": "Un bicchiere di [nome], per favore",
+"ex": "Un bicchiere d'acqua, per favore.",
+"n": "For tap water ask for 'acqua del rubinetto'; else they bring bottled."
+},
+{
+"id": "ENG_CHUNK_1387",
+"t": "Vuoi ancora [nome]? / Ne vuole ancora un po'?",
+"ex": "Vuoi ancora un po' di riso?",
+"n": "Hosts often say 'Ne prendi ancora?' — 'ne' replaces the food."
+},
+{
+"id": "ENG_CHUNK_1388",
+"t": "Ti va di [infinito]? / Vuoi [infinito]?",
+"ex": "Ti va di venire alla mia festa?",
+"n": "'Le va di' + infinito in Lei form."
+},
+{
+"id": "ENG_CHUNK_1389",
+"t": "Dov'è [luogo]? / Dove si trova [luogo]?",
+"ex": "Dov'è la stazione?"
+},
+{
+"id": "ENG_CHUNK_1390",
+"t": "Dov'è il [luogo] più vicino?",
+"ex": "Dov'è il bancomat più vicino?",
+"n": "'Più vicino' follows the noun."
+},
+{
+"id": "ENG_CHUNK_1391",
+"t": "Giri a sinistra a [luogo] / Gira a sinistra a [luogo]",
+"ex": "Giri a sinistra alla chiesa.",
+"n": "Watch contractions: alla, al, all'."
+},
+{
+"id": "ENG_CHUNK_1392",
+"t": "È sulla [direzione] / È a [direzione]",
+"ex": "La banca è sulla sinistra.",
+"n": "'A sinistra' and 'sulla sinistra' are both fine."
+},
+{
+"id": "ENG_CHUNK_1393",
+"t": "È accanto a [luogo] / È vicino a [luogo]",
+"ex": "Il panificio è accanto alla banca."
+},
+{
+"id": "ENG_CHUNK_1394",
+"t": "Un biglietto per [luogo], per favore",
+"ex": "Un biglietto per Firenze, per favore.",
+"n": "For a return ticket: 'andata e ritorno'."
+},
+{
+"id": "ENG_CHUNK_1395",
+"t": "Quale autobus va a [luogo]? / Che autobus prendo per [luogo]?",
+"ex": "Quale autobus va all'aeroporto?"
+},
+{
+"id": "ENG_CHUNK_1396",
+"t": "Quando parte il prossimo [nome] per [luogo]?",
+"ex": "Quando parte il prossimo treno per Bologna?",
+"n": "Italian asks when it leaves: 'parte'."
+},
+{
+"id": "ENG_CHUNK_1397",
+"t": "Mi porta a [luogo], per favore?",
+"ex": "Mi porta all'aeroporto, per favore?"
+},
+{
+"id": "ENG_CHUNK_1398",
+"t": "Ci vogliono circa [durata] / Ci vuole circa [durata]",
+"ex": "In autobus ci vogliono circa venti minuti.",
+"n": "'Ci vuole' + singular (un'ora); 'ci vogliono' + plural (venti minuti)."
+},
+{
+"id": "ENG_CHUNK_1399",
+"t": "Vorrei una camera per [numero] notti",
+"ex": "Vorrei una camera per due notti, per favore."
+},
+{
+"id": "ENG_CHUNK_1400",
+"t": "[nome] non funziona",
+"ex": "La doccia non funziona.",
+"n": "The noun takes its article: il wifi non funziona."
+}
+]

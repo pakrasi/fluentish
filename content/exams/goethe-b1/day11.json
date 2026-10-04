@@ -1,0 +1,251 @@
+{
+  "day": 11,
+  "topic": "Kultur, Feste und Traditionen",
+  "lesen": {
+    "teil1": {
+      "title": "Mein erster Karneval in Köln",
+      "source": "Blog",
+      "text": "Als ich vor einem Jahr nach Köln gezogen bin, haben mich alle gewarnt: „Warte nur, bis Karneval kommt!“ Ich habe gelacht und gedacht, das wird schon nicht so schlimm. Ich komme aus Lissabon, bei uns gibt es auch Feste. Aber ehrlich gesagt hatte ich keine Ahnung, was auf mich zukommt.\n\nEs fängt schon im November an. Am elften November um elf Uhr elf beginnt die sogenannte fünfte Jahreszeit. Meine Kollegin Britta hat mir erklärt, dass ab diesem Tag überall Sitzungen stattfinden, das sind Abende mit Musik, Tanz und lustigen Reden. Im Februar wird es dann richtig ernst: An Weiberfastnacht, das ist der Donnerstag vor Rosenmontag, schneiden die Frauen den Männern die Krawatten ab. Mein Chef hat das erst gar nicht glauben wollen, bis es ihm passiert ist.\n\nDen Rosenmontagszug habe ich mit Britta und ihrer Familie gesehen. Wir standen um neun Uhr morgens an der Straße, obwohl der Zug erst um zwölf losging. Britta meinte, sonst bekommt man keinen guten Platz. Sie hatte recht. Vier Stunden lang fuhren riesige Wagen vorbei, und von den Wagen wurden Süßigkeiten und Blumen in die Menge geworfen. Man ruft „Kamelle!“, und dann fliegen einem Bonbons um die Ohren. Ich hatte am Ende eine ganze Tasche voll.\n\nWas mich am meisten überrascht hat: Die Kölner sind sonst eher zurückhaltend, aber im Karneval sprechen alle mit allen. Ein älterer Mann, den ich noch nie gesehen hatte, hat mit mir getanzt und mir seinen Hut geschenkt.\n\nNatürlich gibt es auch Leute, die den Karneval nicht mögen. Mein Nachbar fährt jedes Jahr in den Urlaub, weil ihm der Lärm zu viel ist. Ich verstehe das, aber für mich war es die schönste Woche des Jahres. Nächstes Jahr nähe ich mir ein eigenes Kostüm.",
+      "items": [
+        {"id": "L1-1", "statement": "Der Autor lebt seit mehreren Jahren in Köln.", "answer": false, "skill": "number-time"},
+        {"id": "L1-2", "statement": "Die Karnevalszeit beginnt schon im November.", "answer": true, "skill": "detail"},
+        {"id": "L1-3", "statement": "An Weiberfastnacht schneiden Männer den Frauen die Haare ab.", "answer": false, "skill": "detail"},
+        {"id": "L1-4", "statement": "Der Autor und Britta waren drei Stunden vor dem Beginn des Zuges an der Straße.", "answer": true, "skill": "number-time"},
+        {"id": "L1-5", "statement": "Der Autor findet, dass die Kölner im Karneval offener sind als sonst.", "answer": true, "skill": "paraphrase"},
+        {"id": "L1-6", "statement": "Der Nachbar des Autors feiert Karneval nur ungern zu Hause.", "answer": false, "skill": "inference"}
+      ]
+    },
+    "teil2": {
+      "texts": [
+        {
+          "title": "Ein Dorf rettet sein Fest",
+          "source": "Zeitung",
+          "text": "Seit über hundert Jahren feiert das Dorf Oberkirchen im Schwarzwald jeden Sommer sein Brunnenfest. Doch vor drei Jahren wäre das Fest beinahe verschwunden. Die Mitglieder des Festvereins waren fast alle über siebzig, und niemand aus der jungen Generation wollte die Organisation übernehmen. „Wir haben gedacht, das war's“, erinnert sich der Vorsitzende Hermann Fuchs.\n\nDann hatte die 24-jährige Lisa Kern eine Idee. Sie gründete eine Gruppe im Internet und lud alle jungen Leute aus dem Dorf ein, die zum Studium oder zur Arbeit in die Stadt gezogen waren. „Viele hatten Heimweh nach dem Fest, aber sie wussten nicht, dass Hilfe gebraucht wird“, sagt sie. Innerhalb von zwei Wochen meldeten sich vierzig Personen.\n\nHeute wird das Fest von Alt und Jung gemeinsam organisiert. Die Älteren kümmern sich um das traditionelle Programm, also den Umzug und die Blasmusik. Die Jüngeren haben dagegen Neues eingeführt: eine Bühne für junge Bands und einen Foodtruck mit vegetarischem Essen. Nicht alle waren am Anfang begeistert. „Ein Foodtruck beim Brunnenfest, das fand ich zuerst schrecklich“, gibt Fuchs zu. „Aber die Schlange davor war länger als die an der Wurstbude.“\n\nIm letzten Jahr kamen so viele Besucher wie nie zuvor. Und Lisa Kern ist inzwischen stellvertretende Vorsitzende des Vereins.",
+          "items": [
+            {"id": "L2-1", "question": "Vor drei Jahren …", "options": ["wollten die alten Mitglieder das Fest nicht mehr feiern.", "gab es niemanden, der die Organisation weiterführen wollte.", "gab es das Fest zum ersten Mal."], "answer": 1, "skill": "paraphrase"},
+            {"id": "L2-2", "question": "Lisa Kern …", "options": ["hat junge Leute, die weggezogen sind, über das Internet erreicht.", "ist selbst zum Studium in die Stadt gezogen.", "hat vierzig neue Familien ins Dorf geholt."], "answer": 0, "skill": "paraphrase"},
+            {"id": "L2-3", "question": "Herr Fuchs …", "options": ["ist mit dem neuen Programm von Anfang an zufrieden gewesen.", "findet den Foodtruck immer noch schrecklich.", "hat seine Meinung über den Foodtruck geändert."], "answer": 2, "skill": "attitude"}
+          ]
+        },
+        {
+          "title": "Museum um Mitternacht",
+          "source": "Zeitschrift",
+          "text": "Normalerweise schließen die Museen in Leipzig um achtzehn Uhr. Einmal im Jahr aber bleiben sie bis zwei Uhr nachts geöffnet: bei der Langen Nacht der Museen. Mit einem einzigen Ticket für zwölf Euro können die Besucher an diesem Abend über vierzig Museen und Galerien besuchen. Busse fahren kostenlos zwischen den Häusern hin und her.\n\nDie Idee kommt aus Berlin, wo die erste Lange Nacht 1997 stattfand. Heute gibt es sie in mehr als hundert Städten in ganz Europa. „Wir erreichen damit Menschen, die sonst nie ins Museum gehen würden“, sagt die Organisatorin Nadine Kowalczyk. Vor allem junge Erwachsene zwischen zwanzig und dreißig kommen, eine Gruppe, die den Museen tagsüber meistens fehlt.\n\nDafür bieten die Häuser ein besonderes Programm: Konzerte zwischen den Gemälden, Führungen mit Taschenlampe, Workshops für Kinder. Im Naturkundemuseum kann man sogar in der Ausstellung übernachten, allerdings nur mit Anmeldung.\n\nKritik gibt es jedoch auch. Manche Museumsleute sagen, dass die Besucher in dieser Nacht nur von Haus zu Haus laufen und nichts wirklich anschauen. Kowalczyk widerspricht: „Wer in dieser Nacht ein Museum entdeckt, der kommt später wieder – und dann in Ruhe.“ Die Zahlen geben ihr recht: Im Monat nach der Langen Nacht steigen die Besucherzahlen um fast ein Viertel.",
+          "items": [
+            {"id": "L2-4", "question": "Bei der Langen Nacht der Museen …", "options": ["muss man für jedes Museum ein eigenes Ticket kaufen.", "kann man mit einem Ticket viele Museen besuchen.", "sind nur die Busse kostenlos."], "answer": 1, "skill": "paraphrase"},
+            {"id": "L2-5", "question": "Welche Besucher kommen vor allem in dieser Nacht?", "options": ["Familien mit kleinen Kindern.", "Menschen, die auch tagsüber oft ins Museum gehen.", "Junge Erwachsene, die tagsüber selten kommen."], "answer": 2, "skill": "detail"},
+            {"id": "L2-6", "question": "Wie reagiert Frau Kowalczyk auf die Kritik?", "options": ["Sie sagt, dass viele Besucher später noch einmal in Ruhe kommen.", "Sie gibt zu, dass die Besucher nichts richtig anschauen.", "Sie will die Nacht in Zukunft kürzer machen."], "answer": 0, "skill": "attitude"}
+          ]
+        }
+      ]
+    },
+    "teil3": {
+      "intro": "Einige Personen aus Ihrem Deutschkurs suchen Angebote rund um Kultur und Feste. Lesen Sie die Situationen 1–7 und die Anzeigen A–J. Welche Anzeige passt zu welcher Situation? Eine Anzeige kann nur einmal gewählt werden. Für eine Situation gibt es keine passende Anzeige – markieren Sie dort 0.",
+      "situations": [
+        {"id": "L3-1", "text": "Carla möchte in einem Chor singen, kann aber keine Noten lesen.", "answer": "H", "skill": "matching"},
+        {"id": "L3-2", "text": "Familie Yilmaz sucht einen Weihnachtsmarkt, auf dem die Kinder selbst etwas basteln können.", "answer": "C", "skill": "matching"},
+        {"id": "L3-3", "text": "Diego studiert und möchte günstig ins Theater gehen.", "answer": "E", "skill": "matching"},
+        {"id": "L3-4", "text": "Hana möchte ihren Eltern, die kein Deutsch sprechen, eine Stadtführung auf Spanisch schenken.", "answer": null, "skill": "matching"},
+        {"id": "L3-5", "text": "Tom möchte lernen, wie man typische Gerichte aus der Region kocht.", "answer": "A", "skill": "matching"},
+        {"id": "L3-6", "text": "Amira interessiert sich für Tänze aus Bayern und möchte sie selbst lernen.", "answer": "J", "skill": "matching"},
+        {"id": "L3-7", "text": "Sergej möchte an einem lauen Sommerabend draußen einen Film sehen.", "answer": "F", "skill": "matching"}
+      ],
+      "ads": [
+        {"letter": "A", "title": "Kochkurs: Schwäbische Küche", "text": "Maultaschen, Spätzle, Zwiebelkuchen – lernen Sie an einem Samstag, wie man die Klassiker unserer Region kocht. Alle Zutaten inklusive, gemeinsames Essen am Ende. 10–15 Uhr, 65 € pro Person. Anmeldung: kochschule-linde.de"},
+        {"letter": "B", "title": "Stadtführung für Neubürger", "text": "Entdecken Sie Ihre neue Heimatstadt! Zwei Stunden Rundgang durch Altstadt und Rathaus, auf Deutsch oder Englisch. Jeden Samstag um 11 Uhr ab Marktbrunnen. Kostenlos für alle, die weniger als ein Jahr hier wohnen."},
+        {"letter": "C", "title": "Adventsmarkt im Bürgerpark", "text": "An allen vier Adventswochenenden: Kunsthandwerk, Glühwein, Musik. Für Kinder gibt es die Bastelhütte, in der jeden Tag Kerzen, Sterne und Lebkuchenhäuser gebastelt werden. Eintritt frei, Basteln 3 € pro Kind."},
+        {"letter": "D", "title": "Konzert: Bayerische Blasmusik", "text": "Die Musikkapelle Oberdorf spielt traditionelle und moderne Blasmusik. Freitag, 19:30 Uhr, Stadthalle. Karten 18 €, ermäßigt 12 €. Tanzen ist ausdrücklich erwünscht, eine Tanzfläche steht bereit."},
+        {"letter": "E", "title": "Theater am Fluss: Jugendtickets", "text": "Alle unter 27 mit Studierenden- oder Schülerausweis bezahlen für jede Vorstellung nur 8 €, egal welcher Platz. Karten an der Abendkasse ab eine Stunde vor Beginn oder online. Spielplan: theater-am-fluss.de"},
+        {"letter": "F", "title": "Open-Air-Kino am See", "text": "Von Juli bis August jeden Donnerstag und Freitag Filme unter freiem Himmel. Beginn bei Sonnenuntergang, etwa 21:30 Uhr. Decken mitbringen! Bei Regen fällt die Vorstellung aus. Tickets 9 € nur an der Abendkasse."},
+        {"letter": "G", "title": "Führungen im Rathaus", "text": "Das historische Rathaus öffnet seine Türen. Führungen jeden ersten Sonntag im Monat um 14 Uhr, Dauer 60 Minuten. Sprachen: Deutsch, Englisch, Französisch. Gruppen ab 10 Personen bitte anmelden. Eintritt 5 €."},
+        {"letter": "H", "title": "Chor „Klangfarben“ sucht Stimmen", "text": "Wir singen Pop, Gospel und Folklore aus aller Welt. Keine Notenkenntnisse nötig – wir lernen alles nach Gehör. Probe dienstags 19–21 Uhr im Gemeindehaus. Kommen Sie einfach zu einer Schnupperprobe vorbei!"},
+        {"letter": "I", "title": "Museumspädagogik: Ferienwerkstatt", "text": "In den Herbstferien können Kinder von 8 bis 12 Jahren im Kunstmuseum malen, drucken und töpfern. Fünf Tage, jeweils 9–13 Uhr, 80 € inklusive Material. Nur 15 Plätze, Anmeldung bis 30. September."},
+        {"letter": "J", "title": "Tanzkurs: Schuhplattler für Anfänger", "text": "Der Trachtenverein Almrausch lädt ein: Lernen Sie den traditionellen bayerischen Volkstanz in acht Abenden. Keine Vorkenntnisse, keine Tracht nötig. Mittwochs 20 Uhr im Vereinsheim. 30 € für den ganzen Kurs."}
+      ]
+    },
+    "teil4": {
+      "question": "Sind traditionelle Feste wie Karneval oder Schützenfest heute noch wichtig?",
+      "comments": [
+        {"id": "L4-1", "author": "Gudrun, Paderborn", "text": "Bei uns im Dorf ist das Schützenfest der einzige Tag, an dem sich wirklich alle treffen: die Jungen, die Alten, die Neuen und die, die schon immer hier wohnen. Ohne das Fest würde jeder nur noch vor seinem Fernseher sitzen. Natürlich ist es wichtig!", "answer": true, "skill": "attitude"},
+        {"id": "L4-2", "author": "Kemal, Düsseldorf", "text": "Ich habe nichts gegen Feiern. Aber was beim Karneval passiert, hat mit Tradition wenig zu tun: Es geht nur noch um Alkohol und Lärm. Die Stadt gibt Millionen für die Reinigung aus. Das Geld wäre in Schulen besser angelegt.", "answer": false, "skill": "attitude"},
+        {"id": "L4-3", "author": "Franziska, Mainz", "text": "Als ich Kind war, hat mein Großvater mir alle Lieder beigebracht. Heute singe ich sie mit meinen Kindern. So bleibt etwas von ihm lebendig. Man kann Traditionen nicht einfach abschaffen, ohne ein Stück Familie zu verlieren.", "answer": true, "skill": "attitude"},
+        {"id": "L4-4", "author": "Andreas, Leipzig", "text": "Ich verstehe, dass viele Menschen daran hängen. Trotzdem: Feste, bei denen nur Männer im Verein sein dürfen und Frauen die Getränke bringen, gehören nicht ins Jahr 2026. Entweder sie ändern sich, oder sie sollten verschwinden.", "answer": false, "skill": "inference"},
+        {"id": "L4-5", "author": "Sofia, Bremen", "text": "Ich bin vor fünf Jahren aus Griechenland hierhergekommen und kannte niemanden. Beim Stadtfest hat mich ein Verein einfach an seinen Tisch geholt. Heute bin ich dort Mitglied. Solche Feste sind die beste Integration, die es gibt.", "answer": true, "skill": "attitude"},
+        {"id": "L4-6", "author": "Martin, Nürnberg", "text": "Traditionen ändern sich, das ist normal. Aber die alten Feste sind nicht mehr unsere Feste. Meine Generation trifft sich auf Festivals und in der Stadt, nicht im Festzelt. Man muss nicht alles künstlich am Leben halten.", "answer": false, "skill": "attitude"},
+        {"id": "L4-7", "author": "Petra, Aachen", "text": "Sicher, manche Bräuche wirken altmodisch. Und ja, es wird zu viel getrunken. Doch wenn ich sehe, wie meine Nachbarn monatelang gemeinsam an einem Wagen für den Umzug bauen, dann weiß ich: So etwas verbindet Menschen. Darauf sollten wir nicht verzichten.", "answer": true, "skill": "inference"}
+      ]
+    },
+    "teil5": {
+      "title": "Besucherordnung – Altstadtfest Ravensburg",
+      "text": "§ 1 Öffnungszeiten und Eintritt\nDas Altstadtfest findet von Freitag bis Sonntag statt. Die Stände sind am Freitag von 17 bis 24 Uhr, am Samstag von 11 bis 24 Uhr und am Sonntag von 11 bis 20 Uhr geöffnet. Der Eintritt ist frei. Für die Konzerte auf der Hauptbühne am Samstagabend ist jedoch ein Bändchen nötig, das an den Eingängen für 5 € erhältlich ist.\n\n§ 2 Glas und Getränke\nAus Sicherheitsgründen ist das Mitbringen von Glasflaschen verboten. An den Getränkeständen werden nur Becher aus Plastik ausgegeben; für jeden Becher wird ein Pfand von 2 € berechnet, das bei der Rückgabe an jedem beliebigen Stand erstattet wird.\n\n§ 3 Kinder und Jugendliche\nKinder unter 14 Jahren dürfen sich nach 22 Uhr nur in Begleitung eines Erwachsenen auf dem Festgelände aufhalten. Der Ausschank von Alkohol an Personen unter 16 Jahren ist verboten; die Standbetreiber sind verpflichtet, im Zweifel den Ausweis zu verlangen.\n\n§ 4 Verkehr\nDie Altstadt ist während des Festes für Autos gesperrt. Besucher werden gebeten, die Parkplätze am Bahnhof zu nutzen. Von dort fährt alle 15 Minuten ein kostenloser Bus bis zum Festgelände, am Samstag bis 1 Uhr nachts. Fahrräder dürfen nur an den markierten Stellplätzen abgestellt werden.\n\n§ 5 Fundsachen und Notfälle\nVerlorene Gegenstände werden im Infozelt am Marienplatz gesammelt. Der Sanitätsdienst befindet sich neben der Hauptbühne. In dringenden Fällen wenden Sie sich bitte an das Personal in den orangefarbenen Westen.",
+      "items": [
+        {"id": "L5-1", "question": "Für die Konzerte am Samstagabend …", "options": ["ist der Eintritt frei.", "braucht man ein Bändchen für 5 €.", "muss man Karten im Infozelt kaufen."], "answer": 1, "skill": "detail"},
+        {"id": "L5-2", "question": "Das Pfand für den Becher …", "options": ["bekommt man nur an dem Stand zurück, an dem man gekauft hat.", "muss man nicht bezahlen, wenn man eine Glasflasche mitbringt.", "bekommt man an jedem Stand zurück."], "answer": 2, "skill": "paraphrase"},
+        {"id": "L5-3", "question": "Kinder unter 14 Jahren …", "options": ["dürfen nach 22 Uhr nicht mehr auf das Fest.", "dürfen ab 22 Uhr nur mit einem Erwachsenen auf dem Fest bleiben.", "brauchen immer einen Ausweis."], "answer": 1, "skill": "negation"},
+        {"id": "L5-4", "question": "Wer mit dem Auto kommt, …", "options": ["parkt am Bahnhof und fährt kostenlos mit dem Bus weiter.", "kann in der Altstadt parken.", "muss den Bus bezahlen."], "answer": 0, "skill": "detail"}
+      ]
+    }
+  },
+  "hoeren": {
+    "teil1": {
+      "texts": [
+        {
+          "id": "H1-1", "kind": "Anrufbeantworter",
+          "script": [{"speaker": "f2", "text": "Hallo Simon, hier ist Anne. Ich rufe wegen unserer Hochzeit an. Du weißt ja, wir wollten am zwanzigsten Juni feiern. Leider hat sich der Termin geändert, weil das Standesamt an dem Tag geschlossen ist. Jetzt heiraten wir am siebenundzwanzigsten Juni, also eine Woche später. Die Feier ist wie geplant im Gasthaus Sonne, ab sechzehn Uhr. Ach, und noch etwas: Wir hatten dich gefragt, ob du Fotos machen kannst. Das ist nicht mehr nötig, mein Bruder hat uns einen Fotografen geschenkt. Aber könntest du vielleicht am Abend ein paar Lieder auf der Gitarre spielen? Das wäre so schön. Melde dich bitte, wenn du den neuen Termin bestätigen kannst. Bis bald!"}],
+          "items": [
+            {"id": "H1-1a", "type": "rf", "statement": "Die Hochzeit findet am zwanzigsten Juni statt.", "answer": false, "skill": "number-time"},
+            {"id": "H1-1b", "type": "mc", "question": "Simon soll …", "options": ["bei der Hochzeit fotografieren.", "einen Fotografen suchen.", "am Abend Musik machen."], "answer": 2, "skill": "detail"}
+          ]
+        },
+        {
+          "id": "H1-2", "kind": "Radio",
+          "script": [{"speaker": "m1", "text": "Und hier noch ein Hinweis aus der Region: Der Weihnachtsmarkt auf dem Domplatz wird heute Abend um siebzehn Uhr eröffnet, mit einem Konzert des Kinderchores und der traditionellen Rede des Bürgermeisters. Die Buden sind danach täglich von elf bis einundzwanzig Uhr geöffnet, an Heiligabend nur bis vierzehn Uhr. Neu in diesem Jahr: Die Eisbahn neben dem Rathaus, auf der Kinder und Erwachsene kostenlos Schlittschuh laufen können, Schlittschuhe kann man sich für vier Euro ausleihen. Und wer den Markt ohne Gedränge erleben will, kommt am besten unter der Woche vormittags. Am Wochenende wird es erfahrungsgemäß sehr voll."}],
+          "items": [
+            {"id": "H1-2a", "type": "rf", "statement": "Der Weihnachtsmarkt wird am Vormittag eröffnet.", "answer": false, "skill": "number-time"},
+            {"id": "H1-2b", "type": "mc", "question": "Auf der Eisbahn …", "options": ["kostet das Schlittschuhlaufen vier Euro.", "kann man kostenlos laufen, aber die Schlittschuhe kosten Geld.", "dürfen nur Kinder laufen."], "answer": 1, "skill": "paraphrase"}
+          ]
+        },
+        {
+          "id": "H1-3", "kind": "Durchsage",
+          "script": [{"speaker": "f3", "text": "Sehr geehrte Damen und Herren, wir begrüßen Sie herzlich zur heutigen Vorstellung von „Der zerbrochene Krug“. Bitte beachten Sie: Wegen einer Erkrankung übernimmt heute Abend Herr Tobias Renz die Rolle des Dorfrichters. Wir bitten um Ihr Verständnis. Die Vorstellung dauert etwa zwei Stunden und zwanzig Minuten, mit einer Pause von zwanzig Minuten. In der Pause ist die Bar im Foyer geöffnet. Bitte schalten Sie Ihre Mobiltelefone jetzt aus, nicht nur leise, und beachten Sie, dass Fotografieren und Filmen während der Vorstellung nicht gestattet sind. Wir wünschen Ihnen einen schönen Theaterabend."}],
+          "items": [
+            {"id": "H1-3a", "type": "rf", "statement": "Heute spielt ein anderer Schauspieler die Rolle des Dorfrichters.", "answer": true, "skill": "paraphrase"},
+            {"id": "H1-3b", "type": "mc", "question": "Die Zuschauer sollen …", "options": ["ihre Handys leise stellen.", "in der Pause fotografieren.", "ihre Handys ganz ausschalten."], "answer": 2, "skill": "negation"}
+          ]
+        },
+        {
+          "id": "H1-4", "kind": "Radio",
+          "script": [{"speaker": "ch_f", "text": "Und nun das Wetter für die Silvesternacht. Wer draußen feiern möchte, sollte sich warm anziehen: In der Nacht sinken die Temperaturen auf minus fünf Grad, in den Bergen sogar auf minus zwölf. Der Himmel bleibt aber weitgehend klar, das Feuerwerk um Mitternacht kann man also gut sehen. Am Morgen des Neujahrstages zieht dann von Westen her Schnee auf, bis zum Mittag rechnen wir im Flachland mit fünf Zentimetern, in höheren Lagen mit zwanzig. Wer am ersten Januar mit dem Auto unterwegs ist, sollte deshalb Winterreifen haben und mehr Zeit einplanen. Am zweiten Januar wird es dann wieder trocken und sonnig."}],
+          "items": [
+            {"id": "H1-4a", "type": "rf", "statement": "In der Silvesternacht schneit es.", "answer": false, "skill": "detail"},
+            {"id": "H1-4b", "type": "mc", "question": "Am ersten Januar …", "options": ["ist es sonnig und trocken.", "ist der Himmel klar.", "gibt es Schnee."], "answer": 2, "skill": "number-time"}
+          ]
+        },
+        {
+          "id": "H1-5", "kind": "Werbung",
+          "script": [{"speaker": "m2", "text": "Sie lieben Musik, aber Konzertkarten sind Ihnen zu teuer? Dann ist die Kulturkarte genau das Richtige für Sie! Für nur neunundzwanzig Euro im Jahr bekommen Sie fünfzig Prozent Rabatt in allen Theatern, Konzerthäusern und Museen der Stadt. Und das Beste: Die Karte gilt nicht nur für Sie, sondern auch für eine Begleitperson. Die Kulturkarte gibt es in der Touristeninformation am Hauptbahnhof und in allen Buchhandlungen. Wer die Karte bis Ende März kauft, bekommt außerdem zwei Freikarten für das Stadttheater geschenkt. Die Kulturkarte – mehr Kultur für weniger Geld."}],
+          "items": [
+            {"id": "H1-5a", "type": "rf", "statement": "Mit der Kulturkarte bekommt man in Museen die Hälfte Rabatt.", "answer": true, "skill": "paraphrase"},
+            {"id": "H1-5b", "type": "mc", "question": "Wer die Karte bis Ende März kauft, …", "options": ["bezahlt nur die Hälfte für die Karte.", "bekommt zwei kostenlose Theaterkarten.", "kann eine zweite Person kostenlos mitnehmen."], "answer": 1, "skill": "detail"}
+          ]
+        }
+      ]
+    },
+    "teil2": {
+      "setting": "Sie besuchen ein Freilichtmuseum und hören die Begrüßung des Museumsführers.",
+      "script": [{"speaker": "m3", "text": "Herzlich willkommen im Freilichtmuseum Hessenpark! Mein Name ist Georg Sauer, ich bin hier seit zwölf Jahren Museumsführer, und ich freue mich, dass Sie heute so zahlreich gekommen sind. Bevor wir losgehen, ein paar Informationen. Unser Museum ist kein normales Museum mit Räumen und Vitrinen, sondern ein ganzes Dorf. Über hundert alte Häuser aus ganz Hessen wurden hier wieder aufgebaut, das älteste stammt aus dem Jahr 1580. Das Gelände ist ungefähr sechzig Hektar groß, also bitte ziehen Sie feste Schuhe an, wir laufen heute etwa drei Kilometer. Die Führung dauert zwei Stunden, danach können Sie das Gelände auf eigene Faust weiter erkunden, bis um achtzehn Uhr geschlossen wird. Wir beginnen gleich hier am Marktplatz mit dem alten Rathaus und gehen dann zu den Bauernhöfen. Dort sehen Sie, wie eine Familie vor zweihundert Jahren gelebt hat: ohne Strom, ohne fließendes Wasser, mit Tieren im Haus. In der Bäckerei wird heute übrigens gebacken, um dreizehn Uhr kommt das Brot aus dem Ofen, und Sie dürfen probieren. Um vierzehn Uhr zeigt unser Schmied in der Werkstatt, wie früher Hufeisen gemacht wurden. Bitte beachten Sie: In die Häuser dürfen Sie hineingehen, aber die Möbel und Gegenstände dürfen Sie nicht anfassen, vieles ist über hundert Jahre alt und sehr empfindlich. Fotografieren ist überall erlaubt, nur bitte ohne Blitz. Für die Kinder gibt es heute etwas Besonderes: Im alten Schulhaus findet um fünfzehn Uhr eine Schulstunde wie im Jahr 1900 statt, mit Schiefertafel und strengem Lehrer. Die Kinder müssen sich vorher an der Kasse anmelden, die Plätze sind begrenzt. Zum Schluss noch ein Hinweis: Das Restaurant am Eingang hat heute wegen einer Hochzeit geschlossen. Es gibt aber einen Imbiss beim Bauernhof, dort bekommen Sie Suppe und Würstchen. Und wer einen Regenschirm dabei hat, sollte ihn mitnehmen, für den Nachmittag ist Regen angesagt. So, dann folgen Sie mir bitte zum Rathaus."}],
+      "items": [
+        {"id": "H2-1", "question": "Das Museum …", "options": ["besteht aus alten Häusern aus ganz Hessen.", "hat über hundert Räume mit Vitrinen.", "ist erst seit 1580 geöffnet."], "answer": 0, "skill": "paraphrase"},
+        {"id": "H2-2", "question": "Die Führung …", "options": ["dauert bis achtzehn Uhr.", "dauert zwei Stunden.", "geht drei Stunden lang über das Gelände."], "answer": 1, "skill": "number-time"},
+        {"id": "H2-3", "question": "In den Häusern …", "options": ["darf man die alten Gegenstände nicht berühren.", "darf man nicht fotografieren.", "darf man nur mit Blitz fotografieren."], "answer": 0, "skill": "negation"},
+        {"id": "H2-4", "question": "Wer an der Schulstunde teilnehmen will, …", "options": ["muss sich an der Kasse anmelden.", "soll um dreizehn Uhr zur Bäckerei kommen.", "braucht eine eigene Schiefertafel."], "answer": 0, "skill": "detail"},
+        {"id": "H2-5", "question": "Das Restaurant am Eingang …", "options": ["ist heute geschlossen.", "bietet heute Suppe und Würstchen an.", "öffnet erst am Nachmittag."], "answer": 0, "skill": "detail"}
+      ]
+    },
+    "teil3": {
+      "setting": "Sie hören ein Gespräch zwischen zwei Kollegen, die sich nach der Arbeit unterhalten.",
+      "script": [
+        {"speaker": "m1", "text": "Sag mal, Jana, hast du Weihnachten eigentlich schon etwas vor?"},
+        {"speaker": "f2", "text": "Ja und nein, Oliver. Meine Eltern erwarten, dass ich wie jedes Jahr nach Hause komme, nach Schwerin. Aber mein Freund Rafael möchte, dass wir dieses Jahr zu seiner Familie nach Barcelona fliegen. Und ich weiß nicht, wie ich das entscheiden soll."},
+        {"speaker": "m1", "text": "Oh, das kenne ich. Meine Frau ist aus Polen, wir hatten die gleiche Diskussion jahrelang. Wie feiert man denn in Spanien? Ist das sehr anders?"},
+        {"speaker": "f2", "text": "Ziemlich. Bei uns ist ja der Heiligabend das Wichtigste, mit dem Baum, den Geschenken und dem Essen am Abend. Bei Rafaels Familie wird am vierundzwanzigsten auch gegessen, aber die Geschenke gibt es erst am sechsten Januar, an dem Tag, an dem die Heiligen Drei Könige kommen."},
+        {"speaker": "m1", "text": "Am sechsten Januar? Da arbeiten wir doch schon wieder."},
+        {"speaker": "f2", "text": "Eben. Und das Essen ist auch ganz anders. Bei meinen Eltern gibt es Kartoffelsalat mit Würstchen, das ist Tradition seit fünfzig Jahren. In Barcelona gibt es Meeresfrüchte und eine Suppe, und danach sitzt man bis zwei Uhr nachts am Tisch."},
+        {"speaker": "m1", "text": "Klingt aber gut, ehrlich gesagt. Und was hast du gegen Barcelona? Das Wetter ist besser, das Essen ist besser …"},
+        {"speaker": "f2", "text": "Nichts! Ich mag seine Familie sehr. Aber meine Oma ist sechsundachtzig, und ich habe Angst davor, dass es ihr letztes Weihnachten sein könnte. Deshalb fällt mir die Entscheidung so schwer."},
+        {"speaker": "m1", "text": "Verstehe. Weißt du, was wir am Ende gemacht haben? Wir wechseln jedes Jahr. Ein Jahr Polen, ein Jahr Deutschland. Und Silvester feiern wir mit Freunden, das gehört uns beiden."},
+        {"speaker": "f2", "text": "Das ist eigentlich eine gute Lösung. Aber Rafael hat gesagt, seine Mutter hat schon das Zimmer vorbereitet."},
+        {"speaker": "m1", "text": "Dann macht ihr es doch so: Heiligabend bei deiner Oma in Schwerin, und am sechsundzwanzigsten fliegt ihr nach Barcelona. Dann seid ihr zum sechsten Januar bei seiner Familie, wenn die Geschenke kommen. Ihr müsst ja nicht sofort am siebten wieder im Büro sein, nimm dir doch zwei Tage Urlaub."},
+        {"speaker": "f2", "text": "Hm, das wäre wirklich möglich. Die Flüge sind nach Weihnachten auch billiger als davor, das habe ich gestern gesehen. Ich rede heute Abend mit Rafael darüber."},
+        {"speaker": "m1", "text": "Mach das. Und sobald ihr euch entschieden habt, sag Bescheid, dann plane ich den Dienstplan für Januar."},
+        {"speaker": "f2", "text": "Danke, Oliver. Du hast mir wirklich geholfen. Und du? Polen oder Deutschland dieses Jahr?"},
+        {"speaker": "m1", "text": "Polen. Und ich freue mich schon, meine Schwiegermutter macht die besten Piroggen der Welt."}
+      ],
+      "items": [
+        {"id": "H3-1", "statement": "Janas Eltern wohnen in Schwerin.", "answer": true, "skill": "detail"},
+        {"id": "H3-2", "statement": "Olivers Frau kommt aus Spanien.", "answer": false, "skill": "detail"},
+        {"id": "H3-3", "statement": "In Rafaels Familie bekommt man die Geschenke am 24. Dezember.", "answer": false, "skill": "number-time"},
+        {"id": "H3-4", "statement": "Jana mag die Familie ihres Freundes nicht besonders.", "answer": false, "skill": "negation"},
+        {"id": "H3-5", "statement": "Jana macht sich Sorgen um die Gesundheit ihrer Großmutter.", "answer": true, "skill": "inference"},
+        {"id": "H3-6", "statement": "Oliver und seine Frau feiern Weihnachten abwechselnd in beiden Ländern.", "answer": true, "skill": "paraphrase"},
+        {"id": "H3-7", "statement": "Jana hat sich schon entschieden, wo sie feiert.", "answer": false, "skill": "inference"}
+      ]
+    },
+    "teil4": {
+      "setting": "Sie hören eine Diskussion im Radio. Die Moderatorin spricht mit einem Kulturhistoriker und einer Unternehmerin über das Thema „Brauchen wir mehr Feiertage?“",
+      "speakers": {"mod": "Moderatorin Birgit Hansen", "a": "Prof. Bernd Amann (Kulturhistoriker)", "b": "Anke Roth (Unternehmerin)"},
+      "voices": {"mod": "f3", "a": "m2", "b": "f1"},
+      "script": [
+        {"speaker": "mod", "text": "Guten Abend und herzlich willkommen zum „Kulturgespräch“. Ich bin Birgit Hansen. Heute geht es um eine Frage, die jedes Jahr neu diskutiert wird: Brauchen wir mehr Feiertage? Bei mir sind Professor Bernd Amann, Kulturhistoriker an der Universität Tübingen, und Anke Roth, die in Stuttgart eine Firma mit hundertzwanzig Mitarbeitern leitet. Herr Amann, wozu brauchen wir eigentlich Feiertage?"},
+        {"speaker": "a", "text": "Guten Abend. Feiertage sind viel älter als die Wirtschaft, über die wir gleich sicher sprechen werden. Menschen haben schon immer gemeinsame Tage gebraucht, an denen alle gleichzeitig Pause machen. Ein Feiertag ist nämlich etwas anderes als Urlaub. Im Urlaub bin ich allein oder mit meiner Familie. An einem Feiertag hat die ganze Gesellschaft frei, und deshalb kann man sich treffen, feiern, gemeinsam etwas erleben. Das schafft Gemeinschaft, und die fehlt uns heute mehr denn je."},
+        {"speaker": "mod", "text": "Frau Roth, Sie schauen skeptisch."},
+        {"speaker": "b", "text": "Ja, weil ich die Rechnung kenne. Ein zusätzlicher Feiertag kostet die deutsche Wirtschaft ungefähr vier Milliarden Euro. Bei uns in der Firma steht an einem Feiertag die Produktion still, aber die Kosten laufen weiter: Miete, Gehälter, Maschinen. Wir haben in Baden-Württemberg schon zwölf Feiertage, in manchen Bundesländern sind es nur neun. Das ist übrigens ungerecht, aber das ist ein anderes Thema."},
+        {"speaker": "a", "text": "Vier Milliarden, diese Zahl höre ich immer wieder. Allerdings zeigen Studien aus Dänemark, dass Menschen nach einem freien Tag produktiver arbeiten. Wer ausgeruht ist, macht weniger Fehler. Die vier Milliarden holt man zum Teil wieder rein."},
+        {"speaker": "b", "text": "Zum Teil, sagen Sie. Nicht ganz. Und was ich noch sagen möchte: Meine Mitarbeiter wünschen sich gar nicht mehr Feiertage. Sie wünschen sich flexible Tage. Wer muslimisch ist, möchte am Zuckerfest frei haben und arbeitet dafür gern an Ostern. Das lässt sich in einer Firma organisieren, ein fester Feiertag für alle dagegen nicht."},
+        {"speaker": "mod", "text": "Das ist ein interessanter Punkt. Ich habe gestern mit meiner Nachbarin gesprochen, sie ist Krankenschwester. Sie sagt, für sie sind Feiertage sowieso normale Arbeitstage, sie bekommt nur etwas mehr Geld. Herr Amann, was sagen Sie dazu?"},
+        {"speaker": "a", "text": "Das ist richtig, und darum sage ich auch nicht, dass jeder Feiertag eine Lösung ist. Ich bin aber gegen die Idee der Flexibilität, die Frau Roth vorschlägt. Wenn jeder an einem anderen Tag frei hat, dann hat am Ende niemand mehr gemeinsam frei. Dann ist der Feiertag nur noch ein Urlaubstag mit anderem Namen."},
+        {"speaker": "b", "text": "Aber die Gesellschaft ist doch heute vielfältiger als vor fünfzig Jahren! Warum sollen alle an Pfingsten frei haben, wenn die meisten gar nicht mehr wissen, was Pfingsten bedeutet? Ich habe meine Mitarbeiter gefragt: Zwei von drei konnten es nicht erklären."},
+        {"speaker": "a", "text": "Das stimmt leider, aber das ist ein Argument für mehr Bildung, nicht für weniger Feiertage. Und ich möchte einen Vorschlag machen: Ein neuer Feiertag, der nichts mit Religion zu tun hat. Zum Beispiel ein Tag der Nachbarschaft, an dem die Menschen in ihrer Straße zusammen feiern. In Frankreich gibt es so etwas, und es funktioniert wunderbar."},
+        {"speaker": "mod", "text": "Ein Tag der Nachbarschaft, das klingt sympathisch. Frau Roth, könnten Sie sich das vorstellen?"},
+        {"speaker": "b", "text": "Wenn er einen anderen Feiertag ersetzt, ja. Einen zusätzlichen Tag lehne ich ab. Aber die Idee an sich gefällt mir, ehrlich gesagt besser als so mancher alter Feiertag."},
+        {"speaker": "mod", "text": "Dann haben wir am Ende sogar einen kleinen Kompromiss gefunden. Vielen Dank, Herr Amann, vielen Dank, Frau Roth, und Ihnen zu Hause einen schönen Abend."}
+      ],
+      "items": [
+        {"id": "H4-1", "statement": "Ein Feiertag ist etwas anderes als Urlaub, weil alle gleichzeitig frei haben.", "answer": "a", "skill": "matching"},
+        {"id": "H4-2", "statement": "Ein zusätzlicher Feiertag kostet die Wirtschaft mehrere Milliarden Euro.", "answer": "b", "skill": "matching"},
+        {"id": "H4-3", "statement": "Nach einem freien Tag arbeiten die Menschen besser.", "answer": "a", "skill": "matching"},
+        {"id": "H4-4", "statement": "Die Beschäftigten möchten lieber selbst wählen, wann sie frei haben.", "answer": "b", "skill": "matching"},
+        {"id": "H4-5", "statement": "Für meine Nachbarin sind Feiertage normale Arbeitstage.", "answer": "mod", "skill": "matching"},
+        {"id": "H4-6", "statement": "Viele Menschen wissen nicht mehr, was ein Feiertag bedeutet.", "answer": "b", "skill": "matching"},
+        {"id": "H4-7", "statement": "Es sollte einen neuen Feiertag ohne religiösen Hintergrund geben.", "answer": "a", "skill": "matching"},
+        {"id": "H4-8", "statement": "Ein neuer Feiertag ist nur akzeptabel, wenn ein anderer dafür wegfällt.", "answer": "b", "skill": "matching"}
+      ]
+    }
+  },
+  "schreiben": {
+    "aufgabe1": {
+      "minutes": 20, "words": 80,
+      "situation": "Sie waren am Wochenende auf einem traditionellen Fest in Ihrer Stadt. Ihre Freundin Elif konnte nicht mitkommen und möchte wissen, wie es war. Schreiben Sie ihr eine E-Mail.",
+      "points": ["Beschreiben Sie, was Sie auf dem Fest gesehen und gemacht haben.", "Erklären Sie, was Ihnen besonders gefallen oder nicht gefallen hat.", "Schlagen Sie vor, was Sie beim nächsten Mal zusammen unternehmen könnten."]
+    },
+    "aufgabe2": {
+      "minutes": 25, "words": 80,
+      "situation": "Sie haben im Fernsehen eine Diskussionssendung zum Thema „Sollen Kinder in der Schule traditionelle Feste und Bräuche lernen?“ gesehen. Im Online-Gästebuch der Sendung finden Sie folgende Meinung:",
+      "quote": "„Alte Bräuche gehören ins Museum, nicht in die Schule. Kinder sollen Mathe und Englisch lernen, nicht Volkslieder singen. Wer Traditionen will, soll sie zu Hause pflegen.“ – Dennis, 35",
+      "instruction": "Schreiben Sie nun Ihre Meinung dazu (circa 80 Wörter)."
+    },
+    "aufgabe3": {
+      "minutes": 15, "words": 40,
+      "situation": "Ihr Chor hat am Samstag ein Konzert. Sie können leider nicht mitsingen, weil Sie an diesem Tag zu einer Familienfeier müssen. Schreiben Sie eine E-Mail an die Chorleiterin, Frau Weinert: Entschuldigen Sie sich höflich, nennen Sie den Grund und fragen Sie, wann die nächste Probe ist.",
+      "addressee": "Frau Weinert"
+    }
+  },
+  "sprechen": {
+    "teil1": {
+      "situation": "Ihr Deutschkurs möchte am Ende des Semesters ein internationales Fest feiern, bei dem alle etwas aus ihrem Heimatland vorstellen. Sie und Ihr Partner / Ihre Partnerin sollen das Fest organisieren. Planen Sie gemeinsam.",
+      "points": ["Wann und wo soll das Fest stattfinden?", "Was soll jeder mitbringen (Essen, Musik, Spiele)?", "Wie informieren Sie die anderen Kursteilnehmer?", "Wer kümmert sich um Dekoration und Aufräumen?"],
+      "partner_cues": [
+        "Ich denke, wir sollten das Fest am letzten Kurstag machen, also am Freitag. Oder lieber am Samstag, dann haben alle mehr Zeit?",
+        "Der Kursraum ist ziemlich klein. Kennst du einen besseren Ort?",
+        "Ich finde, jeder sollte ein Gericht aus seinem Land mitbringen. Sollen wir auch Musik von jedem Land spielen?",
+        "Wie sagen wir den anderen Bescheid? Ich könnte eine Nachricht in die Gruppe schreiben.",
+        "Für die Dekoration könnte ich Flaggen basteln. Kümmerst du dich um Teller und Becher?",
+        "Und wer räumt am Ende auf? Das will ja nie jemand machen."
+      ]
+    },
+    "teil2": {
+      "topics": ["Thema A: Sollte man Traditionen aus dem Heimatland auch im Ausland weiterführen?", "Thema B: Sind große Feste wie Karneval oder Oktoberfest heute noch zeitgemäß?"],
+      "folien": [
+        "Stellen Sie Ihr Thema vor. Erklären Sie den Inhalt und die Struktur Ihrer Präsentation.",
+        "Berichten Sie von Ihrer Situation oder einem Erlebnis im Zusammenhang mit dem Thema.",
+        "Berichten Sie, wie die Situation in Ihrem Heimatland ist, und geben Sie Beispiele.",
+        "Nennen Sie die Vor- und Nachteile und sagen Sie dazu Ihre Meinung. Geben Sie auch Beispiele.",
+        "Beenden Sie Ihre Präsentation und bedanken Sie sich bei den Zuhörern."
+      ]
+    },
+    "teil3": {
+      "questions": ["Welche Tradition aus Ihrem Heimatland vermissen Sie in Deutschland am meisten?", "Glauben Sie, dass Traditionen die Integration erschweren oder erleichtern?", "Gibt es eine deutsche Tradition, die Sie übernommen haben?"],
+      "questions_b": ["Sie haben gesagt, dass bei solchen Festen viel Alkohol getrunken wird. Sollte man das verbieten?", "Waren Sie schon einmal auf einem großen Volksfest in Deutschland? Wie war das?", "Was könnte man ändern, damit solche Feste auch junge Leute anziehen?"]
+    }
+  }
+}

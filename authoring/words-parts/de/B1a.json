@@ -1,0 +1,7923 @@
+[
+ {
+  "w": "Verwandten",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "relatives"
+  ],
+  "alt": [
+   "die Verwandtschaft"
+  ],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Am Wochenende besuchen wir unsere Verwandten.",
+  "exen": "At the weekend we visit our relatives."
+ },
+ {
+  "w": "Erwachsene",
+  "art": "der",
+  "pl": "Erwachsenen",
+  "pos": "noun",
+  "en": [
+   "adult (person)"
+  ],
+  "alt": [
+   "die Erwachsene"
+  ],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Der Eintritt kostet für Erwachsene zehn Euro.",
+  "exen": "Admission costs ten euros for adults."
+ },
+ {
+  "w": "aufwachsen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "grow up"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Ich bin auf dem Land aufgewachsen.",
+  "exen": "I grew up in the countryside.",
+  "forms": "wächst auf · wuchs auf · ist aufgewachsen"
+ },
+ {
+  "w": "Kindheit",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "childhood"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "people",
+  "ex": "In meiner Kindheit hatten wir einen Hund.",
+  "exen": "In my childhood we had a dog."
+ },
+ {
+  "w": "Ehe",
+  "art": "die",
+  "pl": "Ehen",
+  "pos": "noun",
+  "en": [
+   "marriage"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Ihre Ehe hat vierzig Jahre gehalten.",
+  "exen": "Their marriage lasted forty years."
+ },
+ {
+  "w": "Jugendliche",
+  "art": "der",
+  "pl": "Jugendlichen",
+  "pos": "noun",
+  "en": [
+   "teenager",
+   "young person"
+  ],
+  "alt": [
+   "die Jugendliche"
+  ],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Viele Jugendliche haben ein Handy.",
+  "exen": "Many teenagers have a mobile phone."
+ },
+ {
+  "w": "Rentner",
+  "art": "der",
+  "pl": "Rentner",
+  "pos": "noun",
+  "en": [
+   "pensioner",
+   "retiree"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Mein Opa ist seit zwei Jahren Rentner.",
+  "exen": "My grandpa has been retired for two years."
+ },
+ {
+  "w": "Bekannte",
+  "art": "der",
+  "pl": "Bekannten",
+  "pos": "noun",
+  "en": [
+   "acquaintance"
+  ],
+  "alt": [
+   "die Bekannte"
+  ],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Ein Bekannter hat mir die Wohnung empfohlen.",
+  "exen": "An acquaintance recommended the flat to me."
+ },
+ {
+  "w": "Kaution",
+  "art": "die",
+  "pl": "Kautionen",
+  "pos": "noun",
+  "en": [
+   "deposit (rent)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Die Kaution beträgt drei Monatsmieten.",
+  "exen": "The deposit is three months' rent."
+ },
+ {
+  "w": "Mieter",
+  "art": "der",
+  "pl": "Mieter",
+  "pos": "noun",
+  "en": [
+   "tenant"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Die Mieter beschweren sich über den Lärm.",
+  "exen": "The tenants are complaining about the noise."
+ },
+ {
+  "w": "Mietvertrag",
+  "art": "der",
+  "pl": "Mietverträge",
+  "pos": "noun",
+  "en": [
+   "lease",
+   "rental contract"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Wir haben den Mietvertrag unterschrieben.",
+  "exen": "We signed the lease."
+ },
+ {
+  "w": "Nebenkosten",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "additional costs (utilities)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Die Nebenkosten sind im Winter höher.",
+  "exen": "The utility costs are higher in winter."
+ },
+ {
+  "w": "WG",
+  "art": "die",
+  "pl": "WGs",
+  "pos": "noun",
+  "en": [
+   "flat-share"
+  ],
+  "alt": [
+   "die Wohngemeinschaft"
+  ],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Ich wohne in einer WG mit drei Leuten.",
+  "exen": "I live in a flat-share with three people."
+ },
+ {
+  "w": "Mitbewohner",
+  "art": "der",
+  "pl": "Mitbewohner",
+  "pos": "noun",
+  "en": [
+   "flatmate"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Mein Mitbewohner kocht jeden Abend.",
+  "exen": "My flatmate cooks every evening."
+ },
+ {
+  "w": "ausziehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "move out",
+   "take off (clothes)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Ich muss bis Ende Juni ausziehen.",
+  "exen": "I have to move out by the end of June.",
+  "forms": "zieht aus · zog aus · ist ausgezogen"
+ },
+ {
+  "w": "Lärm",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "noise"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Der Lärm von der Baustelle stört mich.",
+  "exen": "The noise from the building site bothers me."
+ },
+ {
+  "w": "Warmmiete",
+  "art": "die",
+  "pl": "Warmmieten",
+  "pos": "noun",
+  "en": [
+   "rent including heating"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Die Warmmiete beträgt 900 Euro.",
+  "exen": "The rent including heating is 900 euros."
+ },
+ {
+  "w": "Kaltmiete",
+  "art": "die",
+  "pl": "Kaltmieten",
+  "pos": "noun",
+  "en": [
+   "basic rent (without bills)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Die Kaltmiete ist relativ günstig.",
+  "exen": "The basic rent is fairly cheap."
+ },
+ {
+  "w": "Hausmeister",
+  "art": "der",
+  "pl": "Hausmeister",
+  "pos": "noun",
+  "en": [
+   "caretaker",
+   "janitor"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Der Hausmeister repariert die Heizung.",
+  "exen": "The caretaker is repairing the heating."
+ },
+ {
+  "w": "Besichtigung",
+  "art": "die",
+  "pl": "Besichtigungen",
+  "pos": "noun",
+  "en": [
+   "viewing (of a flat)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Die Besichtigung ist am Samstag um zehn.",
+  "exen": "The viewing is on Saturday at ten."
+ },
+ {
+  "w": "Makler",
+  "art": "der",
+  "pl": "Makler",
+  "pos": "noun",
+  "en": [
+   "estate agent"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Der Makler verlangt zwei Monatsmieten Provision.",
+  "exen": "The agent charges two months' rent in commission."
+ },
+ {
+  "w": "Geschirr",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "dishes",
+   "crockery"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Wer spült heute das Geschirr?",
+  "exen": "Who's washing the dishes today?"
+ },
+ {
+  "w": "Spülmaschine",
+  "art": "die",
+  "pl": "Spülmaschinen",
+  "pos": "noun",
+  "en": [
+   "dishwasher"
+  ],
+  "alt": [
+   "die Geschirrspülmaschine"
+  ],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Die Spülmaschine ist schon wieder kaputt.",
+  "exen": "The dishwasher is broken again."
+ },
+ {
+  "w": "Haushalt",
+  "art": "der",
+  "pl": "Haushalte",
+  "pos": "noun",
+  "en": [
+   "household",
+   "housework"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Wir teilen uns die Arbeit im Haushalt.",
+  "exen": "We share the housework."
+ },
+ {
+  "w": "einrichten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "furnish",
+   "set up"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Wir haben die Wohnung gemütlich eingerichtet.",
+  "exen": "We furnished the flat cosily.",
+  "forms": "richtet ein · richtete ein · hat eingerichtet"
+ },
+ {
+  "w": "möbliert",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "furnished"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Das Zimmer ist möbliert.",
+  "exen": "The room is furnished."
+ },
+ {
+  "w": "Hausordnung",
+  "art": "die",
+  "pl": "Hausordnungen",
+  "pos": "noun",
+  "en": [
+   "house rules"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Laut Hausordnung ist ab 22 Uhr Ruhe.",
+  "exen": "According to the house rules, it's quiet from 10 pm."
+ },
+ {
+  "w": "Reparatur",
+  "art": "die",
+  "pl": "Reparaturen",
+  "pos": "noun",
+  "en": [
+   "repair"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Die Reparatur dauert eine Woche.",
+  "exen": "The repair takes a week."
+ },
+ {
+  "w": "Handwerker",
+  "art": "der",
+  "pl": "Handwerker",
+  "pos": "noun",
+  "en": [
+   "tradesman",
+   "repairman"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Morgen kommt ein Handwerker.",
+  "exen": "A repairman is coming tomorrow."
+ },
+ {
+  "w": "renovieren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "renovate"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Die Küche wurde letztes Jahr renoviert.",
+  "exen": "The kitchen was renovated last year."
+ },
+ {
+  "w": "Wohnfläche",
+  "art": "die",
+  "pl": "Wohnflächen",
+  "pos": "noun",
+  "en": [
+   "living space"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Die Wohnung hat 60 Quadratmeter Wohnfläche.",
+  "exen": "The flat has 60 square metres of living space."
+ },
+ {
+  "w": "Quadratmeter",
+  "art": "der",
+  "pl": "Quadratmeter",
+  "pos": "noun",
+  "en": [
+   "square metre"
+  ],
+  "alt": [
+   "das Quadratmeter"
+  ],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Wie viel kostet der Quadratmeter?",
+  "exen": "How much is it per square metre?"
+ },
+ {
+  "w": "Zutat",
+  "art": "die",
+  "pl": "Zutaten",
+  "pos": "noun",
+  "en": [
+   "ingredient"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Für den Kuchen brauchst du nur vier Zutaten.",
+  "exen": "You only need four ingredients for the cake."
+ },
+ {
+  "w": "Mahlzeit",
+  "art": "die",
+  "pl": "Mahlzeiten",
+  "pos": "noun",
+  "en": [
+   "meal"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Das Frühstück ist die wichtigste Mahlzeit.",
+  "exen": "Breakfast is the most important meal."
+ },
+ {
+  "w": "Ernährung",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "diet",
+   "nutrition"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Eine gesunde Ernährung ist wichtig.",
+  "exen": "A healthy diet is important."
+ },
+ {
+  "w": "sich ernähren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "eat (a diet)",
+   "feed oneself"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Sie ernährt sich vegetarisch.",
+  "exen": "She follows a vegetarian diet."
+ },
+ {
+  "w": "Lebensmittel",
+  "art": "das",
+  "pl": "Lebensmittel",
+  "pos": "noun",
+  "en": [
+   "groceries (food items)",
+   "food item"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Lebensmittel sind teurer geworden.",
+  "exen": "Groceries have got more expensive."
+ },
+ {
+  "w": "vegetarisch",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "vegetarian"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Gibt es auch ein vegetarisches Gericht?",
+  "exen": "Is there a vegetarian dish too?"
+ },
+ {
+  "w": "vegan",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "vegan"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Mein Bruder isst seit einem Jahr vegan.",
+  "exen": "My brother has eaten vegan for a year."
+ },
+ {
+  "w": "Geschmack",
+  "art": "der",
+  "pl": "Geschmäcker",
+  "pos": "noun",
+  "en": [
+   "taste",
+   "flavour"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Die Suppe hat einen komischen Geschmack.",
+  "exen": "The soup has a strange taste."
+ },
+ {
+  "w": "Vorspeise",
+  "art": "die",
+  "pl": "Vorspeisen",
+  "pos": "noun",
+  "en": [
+   "starter",
+   "appetizer"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Als Vorspeise nehme ich den Salat.",
+  "exen": "I'll have the salad as a starter."
+ },
+ {
+  "w": "Hauptgericht",
+  "art": "das",
+  "pl": "Hauptgerichte",
+  "pos": "noun",
+  "en": [
+   "main course"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Das Hauptgericht war leider kalt.",
+  "exen": "Unfortunately the main course was cold."
+ },
+ {
+  "w": "Bedienung",
+  "art": "die",
+  "pl": "Bedienungen",
+  "pos": "noun",
+  "en": [
+   "service (restaurant)",
+   "waiter"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Die Bedienung war sehr freundlich.",
+  "exen": "The service was very friendly."
+ },
+ {
+  "w": "braten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "fry",
+   "roast"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Ich brate die Kartoffeln in der Pfanne.",
+  "exen": "I fry the potatoes in the pan.",
+  "forms": "brät · briet · hat gebraten"
+ },
+ {
+  "w": "Portion",
+  "art": "die",
+  "pl": "Portionen",
+  "pos": "noun",
+  "en": [
+   "portion",
+   "serving"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Die Portionen hier sind sehr groß.",
+  "exen": "The portions here are very big."
+ },
+ {
+  "w": "satt",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "full (after eating)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Danke, ich bin schon satt.",
+  "exen": "Thanks, I'm already full."
+ },
+ {
+  "w": "Krankschreibung",
+  "art": "die",
+  "pl": "Krankschreibungen",
+  "pos": "noun",
+  "en": [
+   "sick note"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Ich brauche eine Krankschreibung für meinen Arbeitgeber.",
+  "exen": "I need a sick note for my employer."
+ },
+ {
+  "w": "Allergie",
+  "art": "die",
+  "pl": "Allergien",
+  "pos": "noun",
+  "en": [
+   "allergy"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Haben Sie eine Allergie?",
+  "exen": "Do you have an allergy?"
+ },
+ {
+  "w": "allergisch",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "allergic"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Ich bin allergisch gegen Nüsse.",
+  "exen": "I'm allergic to nuts."
+ },
+ {
+  "w": "Verletzung",
+  "art": "die",
+  "pl": "Verletzungen",
+  "pos": "noun",
+  "en": [
+   "injury"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Die Verletzung ist nicht schlimm.",
+  "exen": "The injury isn't serious."
+ },
+ {
+  "w": "sich verletzen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "hurt oneself",
+   "get injured"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Er hat sich beim Fußball verletzt.",
+  "exen": "He hurt himself playing football."
+ },
+ {
+  "w": "Behandlung",
+  "art": "die",
+  "pl": "Behandlungen",
+  "pos": "noun",
+  "en": [
+   "treatment (medical)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Die Behandlung dauert drei Wochen.",
+  "exen": "The treatment takes three weeks."
+ },
+ {
+  "w": "behandeln",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "treat (medically)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Welcher Arzt hat Sie behandelt?",
+  "exen": "Which doctor treated you?"
+ },
+ {
+  "w": "Untersuchung",
+  "art": "die",
+  "pl": "Untersuchungen",
+  "pos": "noun",
+  "en": [
+   "examination",
+   "check-up"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Morgen habe ich eine Untersuchung beim Arzt.",
+  "exen": "Tomorrow I have a check-up at the doctor's."
+ },
+ {
+  "w": "Notfall",
+  "art": "der",
+  "pl": "Notfälle",
+  "pos": "noun",
+  "en": [
+   "emergency"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Im Notfall rufen Sie die 112.",
+  "exen": "In an emergency, call 112."
+ },
+ {
+  "w": "Krankenkasse",
+  "art": "die",
+  "pl": "Krankenkassen",
+  "pos": "noun",
+  "en": [
+   "health insurance (company)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Die Krankenkasse bezahlt die Behandlung.",
+  "exen": "The health insurer pays for the treatment."
+ },
+ {
+  "w": "Sprechstunde",
+  "art": "die",
+  "pl": "Sprechstunden",
+  "pos": "noun",
+  "en": [
+   "office hours (doctor)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Die Sprechstunde ist montags bis freitags.",
+  "exen": "Office hours are Monday to Friday."
+ },
+ {
+  "w": "Hausarzt",
+  "art": "der",
+  "pl": "Hausärzte",
+  "pos": "noun",
+  "en": [
+   "family doctor",
+   "GP"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Gehen Sie zuerst zu Ihrem Hausarzt.",
+  "exen": "Go to your family doctor first."
+ },
+ {
+  "w": "Patient",
+  "art": "der",
+  "pl": "Patienten",
+  "pos": "noun",
+  "en": [
+   "patient"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Der Patient muss im Bett bleiben.",
+  "exen": "The patient has to stay in bed."
+ },
+ {
+  "w": "einnehmen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "take (medicine)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Nehmen Sie die Tabletten nach dem Essen ein.",
+  "exen": "Take the tablets after meals.",
+  "forms": "nimmt ein · nahm ein · hat eingenommen"
+ },
+ {
+  "w": "verschreiben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "prescribe"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Der Arzt hat mir Tabletten verschrieben.",
+  "exen": "The doctor prescribed me tablets.",
+  "forms": "verschreibt · verschrieb · hat verschrieben"
+ },
+ {
+  "w": "Grippe",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "flu"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Ich liege mit Grippe im Bett.",
+  "exen": "I'm in bed with the flu."
+ },
+ {
+  "w": "Operation",
+  "art": "die",
+  "pl": "Operationen",
+  "pos": "noun",
+  "en": [
+   "operation",
+   "surgery"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Die Operation ist gut verlaufen.",
+  "exen": "The operation went well."
+ },
+ {
+  "w": "sich erholen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "recover",
+   "rest"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Sie muss sich nach der Operation erholen.",
+  "exen": "She has to recover after the operation."
+ },
+ {
+  "w": "abnehmen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "lose weight",
+   "decrease"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Er hat fünf Kilo abgenommen.",
+  "exen": "He lost five kilos.",
+  "forms": "nimmt ab · nahm ab · hat abgenommen"
+ },
+ {
+  "w": "zunehmen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "gain weight",
+   "increase"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Im Urlaub habe ich zwei Kilo zugenommen.",
+  "exen": "I gained two kilos on holiday.",
+  "forms": "nimmt zu · nahm zu · hat zugenommen"
+ },
+ {
+  "w": "Gewicht",
+  "art": "das",
+  "pl": "Gewichte",
+  "pos": "noun",
+  "en": [
+   "weight"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Achten Sie auf Ihr Gewicht.",
+  "exen": "Watch your weight."
+ },
+ {
+  "w": "Krankenwagen",
+  "art": "der",
+  "pl": "Krankenwagen",
+  "pos": "noun",
+  "en": [
+   "ambulance"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Wir müssen einen Krankenwagen rufen.",
+  "exen": "We have to call an ambulance."
+ },
+ {
+  "w": "Nebenwirkung",
+  "art": "die",
+  "pl": "Nebenwirkungen",
+  "pos": "noun",
+  "en": [
+   "side effect"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Das Medikament hat kaum Nebenwirkungen.",
+  "exen": "The medicine has hardly any side effects."
+ },
+ {
+  "w": "Blut",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "blood"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Der Arzt nimmt mir Blut ab.",
+  "exen": "The doctor is taking a blood sample."
+ },
+ {
+  "w": "übel",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "sick (nauseous)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Mir ist seit heute Morgen übel.",
+  "exen": "I've felt sick since this morning."
+ },
+ {
+  "w": "schwindlig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "dizzy"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Mir ist plötzlich schwindlig.",
+  "exen": "I suddenly feel dizzy."
+ },
+ {
+  "w": "Reklamation",
+  "art": "die",
+  "pl": "Reklamationen",
+  "pos": "noun",
+  "en": [
+   "complaint (about goods)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Ich habe eine Reklamation zu meiner Bestellung.",
+  "exen": "I have a complaint about my order."
+ },
+ {
+  "w": "reklamieren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "complain about (goods)",
+   "return as faulty"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Ich möchte diesen Toaster reklamieren.",
+  "exen": "I'd like to return this faulty toaster."
+ },
+ {
+  "w": "umtauschen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "exchange (goods)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Kann ich die Hose umtauschen?",
+  "exen": "Can I exchange the trousers?",
+  "forms": "tauscht um · tauschte um · hat umgetauscht"
+ },
+ {
+  "w": "Umtausch",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "exchange (of goods)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Ein Umtausch ist nur mit Kassenbon möglich.",
+  "exen": "Exchange is only possible with a receipt."
+ },
+ {
+  "w": "Garantie",
+  "art": "die",
+  "pl": "Garantien",
+  "pos": "noun",
+  "en": [
+   "guarantee",
+   "warranty"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Das Gerät hat zwei Jahre Garantie.",
+  "exen": "The device has a two-year warranty."
+ },
+ {
+  "w": "Kassenbon",
+  "art": "der",
+  "pl": "Kassenbons",
+  "pos": "noun",
+  "en": [
+   "receipt (till)"
+  ],
+  "alt": [
+   "der Kassenzettel"
+  ],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Bitte bewahren Sie den Kassenbon auf.",
+  "exen": "Please keep the receipt."
+ },
+ {
+  "w": "Rabatt",
+  "art": "der",
+  "pl": "Rabatte",
+  "pos": "noun",
+  "en": [
+   "discount"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Heute gibt es 20 Prozent Rabatt.",
+  "exen": "There's a 20 percent discount today."
+ },
+ {
+  "w": "Rückgabe",
+  "art": "die",
+  "pl": "Rückgaben",
+  "pos": "noun",
+  "en": [
+   "return (of goods)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Die Rückgabe ist innerhalb von 14 Tagen möglich.",
+  "exen": "Returns are possible within 14 days."
+ },
+ {
+  "w": "zurückschicken",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "send back"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Ich habe die Schuhe zurückgeschickt.",
+  "exen": "I sent the shoes back.",
+  "forms": "schickt zurück · schickte zurück · hat zurückgeschickt"
+ },
+ {
+  "w": "zurückgeben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "give back",
+   "return"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Kann ich das Kleid zurückgeben?",
+  "exen": "Can I return the dress?",
+  "forms": "gibt zurück · gab zurück · hat zurückgegeben"
+ },
+ {
+  "w": "defekt",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "faulty",
+   "broken"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Das Gerät war schon beim Kauf defekt.",
+  "exen": "The device was already faulty when I bought it."
+ },
+ {
+  "w": "beschädigt",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "damaged"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Das Paket kam beschädigt an.",
+  "exen": "The parcel arrived damaged."
+ },
+ {
+  "w": "erstatten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "refund",
+   "reimburse"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Wir erstatten Ihnen den vollen Preis.",
+  "exen": "We'll refund you the full price."
+ },
+ {
+  "w": "Auswahl",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "selection",
+   "choice"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Der Laden hat eine große Auswahl.",
+  "exen": "The shop has a large selection."
+ },
+ {
+  "w": "Marke",
+  "art": "die",
+  "pl": "Marken",
+  "pos": "noun",
+  "en": [
+   "brand"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Welche Marke ist das?",
+  "exen": "Which brand is that?"
+ },
+ {
+  "w": "reduziert",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "reduced (price)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Die Jacke ist um die Hälfte reduziert.",
+  "exen": "The jacket is reduced by half."
+ },
+ {
+  "w": "Gutschein",
+  "art": "der",
+  "pl": "Gutscheine",
+  "pos": "noun",
+  "en": [
+   "voucher",
+   "gift card"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Ich habe einen Gutschein für 50 Euro.",
+  "exen": "I have a voucher for 50 euros."
+ },
+ {
+  "w": "Versand",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "shipping",
+   "delivery"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Der Versand ist ab 30 Euro kostenlos.",
+  "exen": "Shipping is free from 30 euros."
+ },
+ {
+  "w": "Filiale",
+  "art": "die",
+  "pl": "Filialen",
+  "pos": "noun",
+  "en": [
+   "branch (shop)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Die Filiale in der Innenstadt hat länger geöffnet.",
+  "exen": "The city centre branch is open longer."
+ },
+ {
+  "w": "Mode",
+  "art": "die",
+  "pl": "Moden",
+  "pos": "noun",
+  "en": [
+   "fashion"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Sie interessiert sich sehr für Mode.",
+  "exen": "She is very interested in fashion."
+ },
+ {
+  "w": "Umkleidekabine",
+  "art": "die",
+  "pl": "Umkleidekabinen",
+  "pos": "noun",
+  "en": [
+   "fitting room"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Die Umkleidekabinen sind hinten links.",
+  "exen": "The fitting rooms are at the back on the left."
+ },
+ {
+  "w": "sich umziehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "get changed (clothes)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Ich muss mich noch schnell umziehen.",
+  "exen": "I still have to get changed quickly.",
+  "forms": "zieht sich um · zog sich um · hat sich umgezogen"
+ },
+ {
+  "w": "Gebühr",
+  "art": "die",
+  "pl": "Gebühren",
+  "pos": "noun",
+  "en": [
+   "fee",
+   "charge"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Für die Karte zahlt man keine Gebühr.",
+  "exen": "There's no fee for the card."
+ },
+ {
+  "w": "Überweisung",
+  "art": "die",
+  "pl": "Überweisungen",
+  "pos": "noun",
+  "en": [
+   "bank transfer"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Ich bezahle die Miete per Überweisung.",
+  "exen": "I pay the rent by bank transfer."
+ },
+ {
+  "w": "überweisen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "transfer (money)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Bitte überweisen Sie den Betrag bis Freitag.",
+  "exen": "Please transfer the amount by Friday.",
+  "forms": "überweist · überwies · hat überwiesen"
+ },
+ {
+  "w": "abheben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "withdraw (money)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Ich muss noch Geld abheben.",
+  "exen": "I still need to withdraw some money.",
+  "forms": "hebt ab · hob ab · hat abgehoben"
+ },
+ {
+  "w": "Versicherung",
+  "art": "die",
+  "pl": "Versicherungen",
+  "pos": "noun",
+  "en": [
+   "insurance"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Die Versicherung zahlt den Schaden.",
+  "exen": "The insurance pays for the damage."
+ },
+ {
+  "w": "Betrag",
+  "art": "der",
+  "pl": "Beträge",
+  "pos": "noun",
+  "en": [
+   "amount (of money)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Der Betrag wird von Ihrem Konto abgebucht.",
+  "exen": "The amount will be debited from your account."
+ },
+ {
+  "w": "Kosten",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "costs"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Die Kosten für die Reparatur trägt der Vermieter.",
+  "exen": "The landlord bears the repair costs."
+ },
+ {
+  "w": "Bargeld",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "cash"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Ich habe kein Bargeld dabei.",
+  "exen": "I don't have any cash on me."
+ },
+ {
+  "w": "Quittung",
+  "art": "die",
+  "pl": "Quittungen",
+  "pos": "noun",
+  "en": [
+   "receipt"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Kann ich bitte eine Quittung bekommen?",
+  "exen": "Can I have a receipt, please?"
+ },
+ {
+  "w": "berechnen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "charge (for)",
+   "calculate"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Für die Lieferung berechnen wir fünf Euro.",
+  "exen": "We charge five euros for delivery."
+ },
+ {
+  "w": "Geldautomat",
+  "art": "der",
+  "pl": "Geldautomaten",
+  "pos": "noun",
+  "en": [
+   "cash machine",
+   "ATM"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Gibt es hier in der Nähe einen Geldautomaten?",
+  "exen": "Is there a cash machine nearby?"
+ },
+ {
+  "w": "Einkommen",
+  "art": "das",
+  "pl": "Einkommen",
+  "pos": "noun",
+  "en": [
+   "income"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Sie hat ein gutes Einkommen.",
+  "exen": "She has a good income."
+ },
+ {
+  "w": "Schulden",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "debts"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Er hat hohe Schulden bei der Bank.",
+  "exen": "He has large debts with the bank."
+ },
+ {
+  "w": "Kredit",
+  "art": "der",
+  "pl": "Kredite",
+  "pos": "noun",
+  "en": [
+   "loan",
+   "credit"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Wir brauchen einen Kredit für das Auto.",
+  "exen": "We need a loan for the car."
+ },
+ {
+  "w": "sich leisten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "afford"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Diese Wohnung können wir uns nicht leisten.",
+  "exen": "We can't afford this flat."
+ },
+ {
+  "w": "leihen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "lend",
+   "borrow"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Kannst du mir zehn Euro leihen?",
+  "exen": "Can you lend me ten euros?",
+  "forms": "leiht · lieh · hat geliehen"
+ },
+ {
+  "w": "Ermäßigung",
+  "art": "die",
+  "pl": "Ermäßigungen",
+  "pos": "noun",
+  "en": [
+   "reduction",
+   "concession"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Studenten bekommen eine Ermäßigung.",
+  "exen": "Students get a reduction."
+ },
+ {
+  "w": "Kundendienst",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "customer service"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Rufen Sie bitte unseren Kundendienst an.",
+  "exen": "Please call our customer service."
+ },
+ {
+  "w": "Dienstleistung",
+  "art": "die",
+  "pl": "Dienstleistungen",
+  "pos": "noun",
+  "en": [
+   "service (paid)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Die Bank bietet viele Dienstleistungen an.",
+  "exen": "The bank offers many services."
+ },
+ {
+  "w": "finanziell",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "financial"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Sie hat finanzielle Probleme.",
+  "exen": "She has financial problems."
+ },
+ {
+  "w": "Vergangenheit",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "past"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "ex": "In der Vergangenheit war alles anders.",
+  "exen": "In the past everything was different."
+ },
+ {
+  "w": "Gegenwart",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "present (time)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "ex": "Wir leben in der Gegenwart.",
+  "exen": "We live in the present."
+ },
+ {
+  "w": "Zeitpunkt",
+  "art": "der",
+  "pl": "Zeitpunkte",
+  "pos": "noun",
+  "en": [
+   "point in time",
+   "moment"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "ex": "Das ist kein guter Zeitpunkt.",
+  "exen": "This isn't a good moment."
+ },
+ {
+  "w": "Zeitraum",
+  "art": "der",
+  "pl": "Zeiträume",
+  "pos": "noun",
+  "en": [
+   "period (of time)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "ex": "In diesem Zeitraum bin ich im Urlaub.",
+  "exen": "I'm on holiday during this period."
+ },
+ {
+  "w": "Dauer",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "duration",
+   "length (of time)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "ex": "Die Dauer des Kurses beträgt zehn Wochen.",
+  "exen": "The course lasts ten weeks."
+ },
+ {
+  "w": "damals",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "back then",
+   "at that time"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "ex": "Damals wohnten wir noch in Köln.",
+  "exen": "Back then we still lived in Cologne."
+ },
+ {
+  "w": "bisher",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "so far",
+   "until now"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "ex": "Bisher hat alles gut geklappt.",
+  "exen": "So far everything has gone well."
+ },
+ {
+  "w": "verschieben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "postpone"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "ex": "Wir müssen den Termin verschieben.",
+  "exen": "We have to postpone the appointment.",
+  "forms": "verschiebt · verschob · hat verschoben"
+ },
+ {
+  "w": "neulich",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "the other day"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "ex": "Neulich habe ich deinen Bruder getroffen.",
+  "exen": "I met your brother the other day."
+ },
+ {
+  "w": "vorhin",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "a little while ago"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "ex": "Vorhin hat jemand für dich angerufen.",
+  "exen": "Someone called for you a little while ago."
+ },
+ {
+  "w": "zunächst",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "first (of all)",
+   "initially"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "ex": "Zunächst möchte ich mich vorstellen.",
+  "exen": "First I'd like to introduce myself."
+ },
+ {
+  "w": "vorig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "previous",
+   "last"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "ex": "Voriges Jahr waren wir in Spanien.",
+  "exen": "Last year we were in Spain."
+ },
+ {
+  "w": "ehemalig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "former"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "ex": "Er ist ein ehemaliger Kollege.",
+  "exen": "He's a former colleague."
+ },
+ {
+  "w": "Einwohner",
+  "art": "der",
+  "pl": "Einwohner",
+  "pos": "noun",
+  "en": [
+   "inhabitant",
+   "resident"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "Die Stadt hat 200.000 Einwohner.",
+  "exen": "The city has 200,000 inhabitants."
+ },
+ {
+  "w": "Stadtteil",
+  "art": "der",
+  "pl": "Stadtteile",
+  "pos": "noun",
+  "en": [
+   "district",
+   "part of town"
+  ],
+  "alt": [
+   "das Viertel"
+  ],
+  "level": "B1",
+  "theme": "city",
+  "ex": "In welchem Stadtteil wohnst du?",
+  "exen": "Which part of town do you live in?"
+ },
+ {
+  "w": "Innenstadt",
+  "art": "die",
+  "pl": "Innenstädte",
+  "pos": "noun",
+  "en": [
+   "city centre",
+   "town centre"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "In der Innenstadt gibt es kaum Parkplätze.",
+  "exen": "There are hardly any parking spaces in the town centre."
+ },
+ {
+  "w": "Stadtrand",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "outskirts (of a town)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "Am Stadtrand sind die Mieten günstiger.",
+  "exen": "Rents are cheaper on the outskirts."
+ },
+ {
+  "w": "Vorort",
+  "art": "der",
+  "pl": "Vororte",
+  "pos": "noun",
+  "en": [
+   "suburb"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "Sie wohnen in einem ruhigen Vorort.",
+  "exen": "They live in a quiet suburb."
+ },
+ {
+  "w": "Umgebung",
+  "art": "die",
+  "pl": "Umgebungen",
+  "pos": "noun",
+  "en": [
+   "surroundings",
+   "area around"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "In der Umgebung gibt es viele Seen.",
+  "exen": "There are lots of lakes in the surrounding area."
+ },
+ {
+  "w": "Gegend",
+  "art": "die",
+  "pl": "Gegenden",
+  "pos": "noun",
+  "en": [
+   "area",
+   "region"
+  ],
+  "alt": [
+   "der Bereich"
+  ],
+  "level": "B1",
+  "theme": "city",
+  "ex": "Das ist eine schöne Gegend.",
+  "exen": "This is a nice area."
+ },
+ {
+  "w": "Nachbarschaft",
+  "art": "die",
+  "pl": "Nachbarschaften",
+  "pos": "noun",
+  "en": [
+   "neighbourhood"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "In unserer Nachbarschaft wohnen viele Familien.",
+  "exen": "Many families live in our neighbourhood."
+ },
+ {
+  "w": "Gebäude",
+  "art": "das",
+  "pl": "Gebäude",
+  "pos": "noun",
+  "en": [
+   "building"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "Das Gebäude ist über hundert Jahre alt.",
+  "exen": "The building is over a hundred years old."
+ },
+ {
+  "w": "Kreuzung",
+  "art": "die",
+  "pl": "Kreuzungen",
+  "pos": "noun",
+  "en": [
+   "crossroads",
+   "junction"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "An der Kreuzung biegen Sie links ab.",
+  "exen": "Turn left at the crossroads."
+ },
+ {
+  "w": "Fußgängerzone",
+  "art": "die",
+  "pl": "Fußgängerzonen",
+  "pos": "noun",
+  "en": [
+   "pedestrian zone"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "Die Geschäfte sind in der Fußgängerzone.",
+  "exen": "The shops are in the pedestrian zone."
+ },
+ {
+  "w": "Baustelle",
+  "art": "die",
+  "pl": "Baustellen",
+  "pos": "noun",
+  "en": [
+   "building site",
+   "roadworks"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "Wegen der Baustelle ist die Straße gesperrt.",
+  "exen": "The street is closed because of roadworks."
+ },
+ {
+  "w": "Großstadt",
+  "art": "die",
+  "pl": "Großstädte",
+  "pos": "noun",
+  "en": [
+   "city (large)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "Ich möchte lieber in einer Großstadt leben.",
+  "exen": "I'd rather live in a big city."
+ },
+ {
+  "w": "Kleinstadt",
+  "art": "die",
+  "pl": "Kleinstädte",
+  "pos": "noun",
+  "en": [
+   "small town"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "Sie kommt aus einer Kleinstadt in Bayern.",
+  "exen": "She comes from a small town in Bavaria."
+ },
+ {
+  "w": "ländlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "rural"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "Wir wohnen in einer ländlichen Gegend.",
+  "exen": "We live in a rural area."
+ },
+ {
+  "w": "Gemeinde",
+  "art": "die",
+  "pl": "Gemeinden",
+  "pos": "noun",
+  "en": [
+   "municipality",
+   "local council"
+  ],
+  "alt": [
+   "die Kommune"
+  ],
+  "level": "B1",
+  "theme": "city",
+  "ex": "Die Gemeinde baut eine neue Schule.",
+  "exen": "The municipality is building a new school."
+ },
+ {
+  "w": "Buchung",
+  "art": "die",
+  "pl": "Buchungen",
+  "pos": "noun",
+  "en": [
+   "booking"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Ich möchte meine Buchung ändern.",
+  "exen": "I'd like to change my booking."
+ },
+ {
+  "w": "stornieren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "cancel (a booking)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Kann ich die Reise kostenlos stornieren?",
+  "exen": "Can I cancel the trip free of charge?"
+ },
+ {
+  "w": "Reservierung",
+  "art": "die",
+  "pl": "Reservierungen",
+  "pos": "noun",
+  "en": [
+   "reservation"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Ich habe eine Reservierung auf den Namen Meyer.",
+  "exen": "I have a reservation in the name of Meyer."
+ },
+ {
+  "w": "Unterkunft",
+  "art": "die",
+  "pl": "Unterkünfte",
+  "pos": "noun",
+  "en": [
+   "accommodation"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Wir suchen noch eine Unterkunft für drei Nächte.",
+  "exen": "We're still looking for accommodation for three nights."
+ },
+ {
+  "w": "Übernachtung",
+  "art": "die",
+  "pl": "Übernachtungen",
+  "pos": "noun",
+  "en": [
+   "overnight stay"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Eine Übernachtung mit Frühstück kostet 80 Euro.",
+  "exen": "One night with breakfast costs 80 euros."
+ },
+ {
+  "w": "verpassen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "miss (a train, a chance)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Ich habe den Zug verpasst.",
+  "exen": "I missed the train."
+ },
+ {
+  "w": "Anschluss",
+  "art": "der",
+  "pl": "Anschlüsse",
+  "pos": "noun",
+  "en": [
+   "connection (train, flight)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "In Frankfurt habe ich nur zehn Minuten Anschluss.",
+  "exen": "I have only ten minutes to make my connection in Frankfurt."
+ },
+ {
+  "w": "Durchsage",
+  "art": "die",
+  "pl": "Durchsagen",
+  "pos": "noun",
+  "en": [
+   "announcement (public)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Achtung, eine wichtige Durchsage!",
+  "exen": "Attention, an important announcement!"
+ },
+ {
+  "w": "ausfallen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "be cancelled"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Der Zug fällt heute aus.",
+  "exen": "The train is cancelled today.",
+  "forms": "fällt aus · fiel aus · ist ausgefallen"
+ },
+ {
+  "w": "sich verspäten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "be late",
+   "be delayed"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Der Flug hat sich um eine Stunde verspätet.",
+  "exen": "The flight was delayed by an hour."
+ },
+ {
+  "w": "Aufenthalt",
+  "art": "der",
+  "pl": "Aufenthalte",
+  "pos": "noun",
+  "en": [
+   "stay (visit)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Wir wünschen Ihnen einen schönen Aufenthalt.",
+  "exen": "We wish you a pleasant stay."
+ },
+ {
+  "w": "sich aufhalten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "stay (somewhere)",
+   "spend time"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Er hält sich zurzeit in Italien auf.",
+  "exen": "He is currently staying in Italy.",
+  "forms": "hält sich auf · hielt sich auf · hat sich aufgehalten"
+ },
+ {
+  "w": "Rückfahrt",
+  "art": "die",
+  "pl": "Rückfahrten",
+  "pos": "noun",
+  "en": [
+   "return journey"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Die Rückfahrt dauert länger.",
+  "exen": "The return journey takes longer."
+ },
+ {
+  "w": "Abflug",
+  "art": "der",
+  "pl": "Abflüge",
+  "pos": "noun",
+  "en": [
+   "departure (flight)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Der Abflug ist um 7 Uhr.",
+  "exen": "The flight departs at 7."
+ },
+ {
+  "w": "Handgepäck",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "hand luggage"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Flüssigkeiten sind im Handgepäck verboten.",
+  "exen": "Liquids are banned in hand luggage."
+ },
+ {
+  "w": "einchecken",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "check in"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Sie können ab 15 Uhr einchecken.",
+  "exen": "You can check in from 3 pm.",
+  "forms": "checkt ein · checkte ein · hat eingecheckt"
+ },
+ {
+  "w": "Stau",
+  "art": "der",
+  "pl": "Staus",
+  "pos": "noun",
+  "en": [
+   "traffic jam"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Wir standen zwei Stunden im Stau.",
+  "exen": "We were stuck in traffic for two hours."
+ },
+ {
+  "w": "Verkehr",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "traffic"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Um diese Zeit ist viel Verkehr.",
+  "exen": "There's a lot of traffic at this time."
+ },
+ {
+  "w": "Verkehrsmittel",
+  "art": "das",
+  "pl": "Verkehrsmittel",
+  "pos": "noun",
+  "en": [
+   "means of transport"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Ich fahre meistens mit öffentlichen Verkehrsmitteln.",
+  "exen": "I mostly use public transport."
+ },
+ {
+  "w": "Grenze",
+  "art": "die",
+  "pl": "Grenzen",
+  "pos": "noun",
+  "en": [
+   "border"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "An der Grenze wurden wir kontrolliert.",
+  "exen": "We were checked at the border."
+ },
+ {
+  "w": "Fahrgast",
+  "art": "der",
+  "pl": "Fahrgäste",
+  "pos": "noun",
+  "en": [
+   "passenger"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Die Fahrgäste müssen umsteigen.",
+  "exen": "Passengers have to change trains."
+ },
+ {
+  "w": "Bahnsteig",
+  "art": "der",
+  "pl": "Bahnsteige",
+  "pos": "noun",
+  "en": [
+   "platform (station)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Der Zug fährt heute von einem anderen Bahnsteig.",
+  "exen": "Today the train leaves from a different platform."
+ },
+ {
+  "w": "Gewitter",
+  "art": "das",
+  "pl": "Gewitter",
+  "pos": "noun",
+  "en": [
+   "thunderstorm"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Heute Abend soll es ein Gewitter geben.",
+  "exen": "There's supposed to be a thunderstorm tonight."
+ },
+ {
+  "w": "Sturm",
+  "art": "der",
+  "pl": "Stürme",
+  "pos": "noun",
+  "en": [
+   "storm"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Der Sturm hat viele Bäume umgeworfen.",
+  "exen": "The storm knocked down many trees."
+ },
+ {
+  "w": "Hitze",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "heat"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Bei dieser Hitze kann ich nicht schlafen.",
+  "exen": "I can't sleep in this heat."
+ },
+ {
+  "w": "Kälte",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "cold (weather)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Die Kälte kommt aus dem Osten.",
+  "exen": "The cold is coming from the east."
+ },
+ {
+  "w": "Nebel",
+  "art": "der",
+  "pl": "Nebel",
+  "pos": "noun",
+  "en": [
+   "fog"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Wegen Nebel hatte der Flug Verspätung.",
+  "exen": "The flight was delayed because of fog."
+ },
+ {
+  "w": "Landschaft",
+  "art": "die",
+  "pl": "Landschaften",
+  "pos": "noun",
+  "en": [
+   "landscape",
+   "scenery"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Die Landschaft in Bayern ist wunderschön.",
+  "exen": "The scenery in Bavaria is beautiful."
+ },
+ {
+  "w": "Küste",
+  "art": "die",
+  "pl": "Küsten",
+  "pos": "noun",
+  "en": [
+   "coast"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Im Sommer fahren wir an die Küste.",
+  "exen": "In summer we go to the coast."
+ },
+ {
+  "w": "Pflanze",
+  "art": "die",
+  "pl": "Pflanzen",
+  "pos": "noun",
+  "en": [
+   "plant"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Kannst du im Urlaub meine Pflanzen gießen?",
+  "exen": "Can you water my plants while I'm on holiday?"
+ },
+ {
+  "w": "gießen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "water (plants)",
+   "pour"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Ich muss noch die Blumen gießen.",
+  "exen": "I still have to water the flowers.",
+  "forms": "gießt · goss · hat gegossen"
+ },
+ {
+  "w": "bewölkt",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "cloudy"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Morgen ist es bewölkt und kühl.",
+  "exen": "Tomorrow it will be cloudy and cool."
+ },
+ {
+  "w": "feucht",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "damp",
+   "humid"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Die Luft ist heute sehr feucht.",
+  "exen": "The air is very humid today."
+ },
+ {
+  "w": "Blitz",
+  "art": "der",
+  "pl": "Blitze",
+  "pos": "noun",
+  "en": [
+   "lightning"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Der Blitz hat in einen Baum eingeschlagen.",
+  "exen": "Lightning struck a tree."
+ },
+ {
+  "w": "Donner",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "thunder"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Der Hund hat Angst vor dem Donner.",
+  "exen": "The dog is afraid of thunder."
+ },
+ {
+  "w": "Tal",
+  "art": "das",
+  "pl": "Täler",
+  "pos": "noun",
+  "en": [
+   "valley"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Das Dorf liegt in einem Tal.",
+  "exen": "The village lies in a valley."
+ },
+ {
+  "w": "Gebirge",
+  "art": "das",
+  "pl": "Gebirge",
+  "pos": "noun",
+  "en": [
+   "mountains",
+   "mountain range"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Im Gebirge liegt schon Schnee.",
+  "exen": "There's already snow in the mountains."
+ },
+ {
+  "w": "Bauernhof",
+  "art": "der",
+  "pl": "Bauernhöfe",
+  "pos": "noun",
+  "en": [
+   "farm"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Die Kinder machen Ferien auf dem Bauernhof.",
+  "exen": "The children are holidaying on a farm."
+ },
+ {
+  "w": "Bewerbung",
+  "art": "die",
+  "pl": "Bewerbungen",
+  "pos": "noun",
+  "en": [
+   "job application"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Ich habe schon zwanzig Bewerbungen geschrieben.",
+  "exen": "I've already written twenty applications."
+ },
+ {
+  "w": "sich bewerben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "apply (for a job)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Ich möchte mich um die Stelle bewerben.",
+  "exen": "I'd like to apply for the position.",
+  "forms": "bewirbt sich · bewarb sich · hat sich beworben"
+ },
+ {
+  "w": "Leistung",
+  "art": "die",
+  "pl": "Leistungen",
+  "pos": "noun",
+  "en": [
+   "performance",
+   "achievement"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Ihre Leistung im Team war sehr gut.",
+  "exen": "Her performance in the team was very good."
+ },
+ {
+  "w": "Zusammenarbeit",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "cooperation",
+   "collaboration"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Vielen Dank für die gute Zusammenarbeit!",
+  "exen": "Thank you for the good cooperation!"
+ },
+ {
+  "w": "verlassen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to leave (a place or person)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Der Zug verlässt gleich den Bahnhof.",
+  "exen": "The train is about to leave the station.",
+  "forms": "verlässt · verließ · hat verlassen"
+ },
+ {
+  "w": "spät dran sein",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "to be running late"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "ex": "Beeil dich, wir sind spät dran!",
+  "exen": "Hurry up, we're running late!"
+ },
+ {
+  "w": "Lebenslauf",
+  "art": "der",
+  "pl": "Lebensläufe",
+  "pos": "noun",
+  "en": [
+   "CV",
+   "résumé"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Bitte schicken Sie uns Ihren Lebenslauf.",
+  "exen": "Please send us your CV."
+ },
+ {
+  "w": "Vorstellungsgespräch",
+  "art": "das",
+  "pl": "Vorstellungsgespräche",
+  "pos": "noun",
+  "en": [
+   "job interview"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Morgen habe ich ein Vorstellungsgespräch.",
+  "exen": "I have a job interview tomorrow."
+ },
+ {
+  "w": "Anschreiben",
+  "art": "das",
+  "pl": "Anschreiben",
+  "pos": "noun",
+  "en": [
+   "cover letter"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Das Anschreiben sollte nicht länger als eine Seite sein.",
+  "exen": "The cover letter shouldn't be longer than one page."
+ },
+ {
+  "w": "Stellenanzeige",
+  "art": "die",
+  "pl": "Stellenanzeigen",
+  "pos": "noun",
+  "en": [
+   "job advertisement"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Ich habe Ihre Stellenanzeige im Internet gelesen.",
+  "exen": "I read your job ad online."
+ },
+ {
+  "w": "Gehalt",
+  "art": "das",
+  "pl": "Gehälter",
+  "pos": "noun",
+  "en": [
+   "salary"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Das Gehalt ist leider nicht so hoch.",
+  "exen": "Unfortunately the salary isn't very high."
+ },
+ {
+  "w": "Arbeitgeber",
+  "art": "der",
+  "pl": "Arbeitgeber",
+  "pos": "noun",
+  "en": [
+   "employer"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Mein Arbeitgeber zahlt die Fahrkarte.",
+  "exen": "My employer pays for the ticket."
+ },
+ {
+  "w": "Arbeitnehmer",
+  "art": "der",
+  "pl": "Arbeitnehmer",
+  "pos": "noun",
+  "en": [
+   "employee (legal)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Arbeitnehmer haben ein Recht auf Urlaub.",
+  "exen": "Employees have a right to holiday."
+ },
+ {
+  "w": "Vertrag",
+  "art": "der",
+  "pl": "Verträge",
+  "pos": "noun",
+  "en": [
+   "contract"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Ich habe den Vertrag noch nicht unterschrieben.",
+  "exen": "I haven't signed the contract yet."
+ },
+ {
+  "w": "kündigen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "quit (a job)",
+   "give notice"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Sie hat letzte Woche gekündigt.",
+  "exen": "She handed in her notice last week."
+ },
+ {
+  "w": "Kündigung",
+  "art": "die",
+  "pl": "Kündigungen",
+  "pos": "noun",
+  "en": [
+   "notice (of termination)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Die Kündigung muss schriftlich sein.",
+  "exen": "Notice has to be given in writing."
+ },
+ {
+  "w": "Berufserfahrung",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "work experience"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Für die Stelle braucht man drei Jahre Berufserfahrung.",
+  "exen": "The job requires three years' work experience."
+ },
+ {
+  "w": "Kenntnisse",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "knowledge (skills, plural)",
+   "skills"
+  ],
+  "alt": [
+   "das Wissen"
+  ],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Sie hat gute Kenntnisse in Englisch.",
+  "exen": "She has a good knowledge of English."
+ },
+ {
+  "w": "Qualifikation",
+  "art": "die",
+  "pl": "Qualifikationen",
+  "pos": "noun",
+  "en": [
+   "qualification"
+  ],
+  "alt": [
+   "der Abschluss"
+  ],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Welche Qualifikationen haben Sie?",
+  "exen": "What qualifications do you have?"
+ },
+ {
+  "w": "Zeugnis",
+  "art": "das",
+  "pl": "Zeugnisse",
+  "pos": "noun",
+  "en": [
+   "reference (from employer)",
+   "certificate"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Mein alter Chef hat mir ein gutes Zeugnis geschrieben.",
+  "exen": "My old boss wrote me a good reference."
+ },
+ {
+  "w": "Teilzeit",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "part-time"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Sie arbeitet in Teilzeit.",
+  "exen": "She works part-time."
+ },
+ {
+  "w": "Vollzeit",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "full-time"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Die Stelle ist in Vollzeit.",
+  "exen": "The position is full-time."
+ },
+ {
+  "w": "Überstunde",
+  "art": "die",
+  "pl": "Überstunden",
+  "pos": "noun",
+  "en": [
+   "overtime (hour)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Diese Woche habe ich zehn Überstunden gemacht.",
+  "exen": "This week I did ten hours of overtime."
+ },
+ {
+  "w": "Schicht",
+  "art": "die",
+  "pl": "Schichten",
+  "pos": "noun",
+  "en": [
+   "shift (work)",
+   "layer"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Er arbeitet in drei Schichten.",
+  "exen": "He works in three shifts."
+ },
+ {
+  "w": "Arbeitszeit",
+  "art": "die",
+  "pl": "Arbeitszeiten",
+  "pos": "noun",
+  "en": [
+   "working hours"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Die Arbeitszeiten sind flexibel.",
+  "exen": "The working hours are flexible."
+ },
+ {
+  "w": "befristet",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "fixed-term",
+   "temporary"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Der Vertrag ist auf ein Jahr befristet.",
+  "exen": "The contract is limited to one year."
+ },
+ {
+  "w": "unbefristet",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "permanent (contract)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Ich habe endlich einen unbefristeten Vertrag.",
+  "exen": "I finally have a permanent contract."
+ },
+ {
+  "w": "Probezeit",
+  "art": "die",
+  "pl": "Probezeiten",
+  "pos": "noun",
+  "en": [
+   "probation period"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Die Probezeit dauert sechs Monate.",
+  "exen": "The probation period lasts six months."
+ },
+ {
+  "w": "einstellen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "hire",
+   "take on"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Die Firma stellt zehn neue Mitarbeiter ein.",
+  "exen": "The company is taking on ten new staff.",
+  "forms": "stellt ein · stellte ein · hat eingestellt"
+ },
+ {
+  "w": "entlassen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "dismiss",
+   "lay off"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Nach der Krise wurden viele Leute entlassen.",
+  "exen": "After the crisis many people were laid off.",
+  "forms": "entlässt · entließ · hat entlassen"
+ },
+ {
+  "w": "Abteilung",
+  "art": "die",
+  "pl": "Abteilungen",
+  "pos": "noun",
+  "en": [
+   "department"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "In welcher Abteilung arbeiten Sie?",
+  "exen": "Which department do you work in?"
+ },
+ {
+  "w": "Besprechung",
+  "art": "die",
+  "pl": "Besprechungen",
+  "pos": "noun",
+  "en": [
+   "meeting (work discussion)"
+  ],
+  "alt": [
+   "das Meeting"
+  ],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Um zehn haben wir eine Besprechung.",
+  "exen": "We have a meeting at ten."
+ },
+ {
+  "w": "Sitzung",
+  "art": "die",
+  "pl": "Sitzungen",
+  "pos": "noun",
+  "en": [
+   "meeting (formal)",
+   "session"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Die Sitzung dauert zwei Stunden.",
+  "exen": "The meeting lasts two hours."
+ },
+ {
+  "w": "Vorgesetzte",
+  "art": "der",
+  "pl": "Vorgesetzten",
+  "pos": "noun",
+  "en": [
+   "boss",
+   "superior"
+  ],
+  "alt": [
+   "die Vorgesetzte"
+  ],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Sprich mit deinem Vorgesetzten.",
+  "exen": "Talk to your superior."
+ },
+ {
+  "w": "Frist",
+  "art": "die",
+  "pl": "Fristen",
+  "pos": "noun",
+  "en": [
+   "deadline",
+   "time limit"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Die Frist endet am Freitag.",
+  "exen": "The deadline is Friday."
+ },
+ {
+  "w": "vereinbaren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "arrange",
+   "agree on"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Wir haben einen Termin vereinbart.",
+  "exen": "We arranged an appointment."
+ },
+ {
+  "w": "Unternehmen",
+  "art": "das",
+  "pl": "Unternehmen",
+  "pos": "noun",
+  "en": [
+   "enterprise (business)",
+   "company",
+   "business"
+  ],
+  "alt": [
+   "der Betrieb",
+   "die Firma"
+  ],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Sie arbeitet für ein großes Unternehmen.",
+  "exen": "She works for a big company."
+ },
+ {
+  "w": "Betrieb",
+  "art": "der",
+  "pl": "Betriebe",
+  "pos": "noun",
+  "en": [
+   "firm (workplace, plant)",
+   "company"
+  ],
+  "alt": [
+   "das Unternehmen",
+   "die Firma"
+  ],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Der Betrieb hat 30 Angestellte.",
+  "exen": "The firm has 30 employees."
+ },
+ {
+  "w": "selbstständig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "self-employed"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Er ist seit zwei Jahren selbstständig.",
+  "exen": "He has been self-employed for two years."
+ },
+ {
+  "w": "berufstätig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "working",
+   "in employment"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Beide Eltern sind berufstätig.",
+  "exen": "Both parents are working."
+ },
+ {
+  "w": "Lohn",
+  "art": "der",
+  "pl": "Löhne",
+  "pos": "noun",
+  "en": [
+   "wage",
+   "pay"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Die Löhne sind gestiegen.",
+  "exen": "Wages have gone up."
+ },
+ {
+  "w": "sich krankmelden",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "call in sick"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Ich muss mich heute krankmelden.",
+  "exen": "I have to call in sick today.",
+  "forms": "meldet sich krank · meldete sich krank · hat sich krankgemeldet"
+ },
+ {
+  "w": "Homeoffice",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "working from home"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Zweimal pro Woche bin ich im Homeoffice.",
+  "exen": "I work from home twice a week."
+ },
+ {
+  "w": "Angestellte",
+  "art": "die",
+  "pl": "Angestellten",
+  "pos": "noun",
+  "en": [
+   "employee (female, salaried)"
+  ],
+  "alt": [
+   "die Beschäftigte",
+   "die Mitarbeiterin"
+  ],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Sie ist Angestellte bei einer Bank.",
+  "exen": "She is an employee at a bank."
+ },
+ {
+  "w": "Jugend",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "youth (time of life)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "people",
+  "ex": "In seiner Jugend hat er viel Fußball gespielt.",
+  "exen": "In his youth he played a lot of football."
+ },
+ {
+  "w": "alleinerziehend",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "single (parent)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Sie ist alleinerziehend und arbeitet Teilzeit.",
+  "exen": "She is a single parent and works part-time."
+ },
+ {
+  "w": "Herkunft",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "background (origin)",
+   "origin"
+  ],
+  "alt": [
+   "der Ursprung"
+  ],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Seine Herkunft spielt keine Rolle.",
+  "exen": "His background doesn't matter."
+ },
+ {
+  "w": "Enkelkind",
+  "art": "das",
+  "pl": "Enkelkinder",
+  "pos": "noun",
+  "en": [
+   "grandchild"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Sie hat fünf Enkelkinder.",
+  "exen": "She has five grandchildren."
+ },
+ {
+  "w": "Neffe",
+  "art": "der",
+  "pl": "Neffen",
+  "pos": "noun",
+  "en": [
+   "nephew"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Mein Neffe wird morgen zehn.",
+  "exen": "My nephew turns ten tomorrow."
+ },
+ {
+  "w": "Nichte",
+  "art": "die",
+  "pl": "Nichten",
+  "pos": "noun",
+  "en": [
+   "niece"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Meine Nichte studiert in Wien.",
+  "exen": "My niece studies in Vienna."
+ },
+ {
+  "w": "Schwiegereltern",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "parents-in-law"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Wir fahren Weihnachten zu meinen Schwiegereltern.",
+  "exen": "We're going to my in-laws for Christmas."
+ },
+ {
+  "w": "Schwager",
+  "art": "der",
+  "pl": "Schwäger",
+  "pos": "noun",
+  "en": [
+   "brother-in-law"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Mein Schwager hilft uns beim Umzug.",
+  "exen": "My brother-in-law is helping us move."
+ },
+ {
+  "w": "Schwägerin",
+  "art": "die",
+  "pl": "Schwägerinnen",
+  "pos": "noun",
+  "en": [
+   "sister-in-law"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Meine Schwägerin kommt aus Polen.",
+  "exen": "My sister-in-law is from Poland."
+ },
+ {
+  "w": "Zwilling",
+  "art": "der",
+  "pl": "Zwillinge",
+  "pos": "noun",
+  "en": [
+   "twin"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Die beiden sind Zwillinge.",
+  "exen": "The two of them are twins."
+ },
+ {
+  "w": "sich scheiden lassen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "get divorced"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Sie haben sich letztes Jahr scheiden lassen.",
+  "exen": "They got divorced last year.",
+  "forms": "lässt sich scheiden · ließ sich scheiden · hat sich scheiden lassen"
+ },
+ {
+  "w": "verwitwet",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "widowed"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Meine Großmutter ist seit zehn Jahren verwitwet.",
+  "exen": "My grandmother has been widowed for ten years."
+ },
+ {
+  "w": "Geburt",
+  "art": "die",
+  "pl": "Geburten",
+  "pos": "noun",
+  "en": [
+   "birth"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Nach der Geburt blieb sie zu Hause.",
+  "exen": "After the birth she stayed at home."
+ },
+ {
+  "w": "Persönlichkeit",
+  "art": "die",
+  "pl": "Persönlichkeiten",
+  "pos": "noun",
+  "en": [
+   "personality"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Sie hat eine starke Persönlichkeit.",
+  "exen": "She has a strong personality."
+ },
+ {
+  "w": "Charakter",
+  "art": "der",
+  "pl": "Charaktere",
+  "pos": "noun",
+  "en": [
+   "character (personality)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Er hat einen guten Charakter.",
+  "exen": "He has a good character."
+ },
+ {
+  "w": "Aussehen",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "appearance",
+   "looks"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Das Aussehen ist nicht so wichtig.",
+  "exen": "Looks aren't that important."
+ },
+ {
+  "w": "Geschlecht",
+  "art": "das",
+  "pl": "Geschlechter",
+  "pos": "noun",
+  "en": [
+   "sex",
+   "gender"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Bitte geben Sie Ihr Geschlecht an.",
+  "exen": "Please state your gender."
+ },
+ {
+  "w": "Vorbild",
+  "art": "das",
+  "pl": "Vorbilder",
+  "pos": "noun",
+  "en": [
+   "role model"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Meine Mutter ist mein Vorbild.",
+  "exen": "My mother is my role model."
+ },
+ {
+  "w": "Wohnungssuche",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "flat hunting"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Die Wohnungssuche in München ist schwierig.",
+  "exen": "Looking for a flat in Munich is hard."
+ },
+ {
+  "w": "Einrichtung",
+  "art": "die",
+  "pl": "Einrichtungen",
+  "pos": "noun",
+  "en": [
+   "furnishings",
+   "furniture"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Die Einrichtung ist modern.",
+  "exen": "The furnishings are modern."
+ },
+ {
+  "w": "räumen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "clear",
+   "vacate"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Wir müssen den Keller räumen.",
+  "exen": "We have to clear out the cellar."
+ },
+ {
+  "w": "Stockwerk",
+  "art": "das",
+  "pl": "Stockwerke",
+  "pos": "noun",
+  "en": [
+   "storey (floor) - accept Stock/Etage",
+   "floor (storey)"
+  ],
+  "alt": [
+   "die Etage",
+   "der Stock"
+  ],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Wir wohnen im dritten Stockwerk.",
+  "exen": "We live on the third floor."
+ },
+ {
+  "w": "Treppenhaus",
+  "art": "das",
+  "pl": "Treppenhäuser",
+  "pos": "noun",
+  "en": [
+   "stairwell"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Im Treppenhaus ist das Licht kaputt.",
+  "exen": "The light in the stairwell is broken."
+ },
+ {
+  "w": "Dachboden",
+  "art": "der",
+  "pl": "Dachböden",
+  "pos": "noun",
+  "en": [
+   "attic",
+   "loft"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Die alten Sachen sind auf dem Dachboden.",
+  "exen": "The old things are in the attic."
+ },
+ {
+  "w": "Steckdose",
+  "art": "die",
+  "pl": "Steckdosen",
+  "pos": "noun",
+  "en": [
+   "socket (power)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Neben dem Bett gibt es keine Steckdose.",
+  "exen": "There's no socket next to the bed."
+ },
+ {
+  "w": "Glühbirne",
+  "art": "die",
+  "pl": "Glühbirnen",
+  "pos": "noun",
+  "en": [
+   "light bulb"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Kannst du die Glühbirne wechseln?",
+  "exen": "Can you change the light bulb?"
+ },
+ {
+  "w": "Wasserhahn",
+  "art": "der",
+  "pl": "Wasserhähne",
+  "pos": "noun",
+  "en": [
+   "tap",
+   "faucet"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Der Wasserhahn in der Küche tropft.",
+  "exen": "The kitchen tap is dripping."
+ },
+ {
+  "w": "tropfen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "drip"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Seit gestern tropft die Decke.",
+  "exen": "The ceiling has been dripping since yesterday."
+ },
+ {
+  "w": "Waschbecken",
+  "art": "das",
+  "pl": "Waschbecken",
+  "pos": "noun",
+  "en": [
+   "washbasin",
+   "sink"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Das Waschbecken ist verstopft.",
+  "exen": "The sink is blocked."
+ },
+ {
+  "w": "Badewanne",
+  "art": "die",
+  "pl": "Badewannen",
+  "pos": "noun",
+  "en": [
+   "bathtub"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Das Bad hat keine Badewanne, nur eine Dusche.",
+  "exen": "The bathroom has no bathtub, only a shower."
+ },
+ {
+  "w": "Teppich",
+  "art": "der",
+  "pl": "Teppiche",
+  "pos": "noun",
+  "en": [
+   "carpet",
+   "rug"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Der Teppich ist ziemlich schmutzig.",
+  "exen": "The rug is quite dirty."
+ },
+ {
+  "w": "Vorhang",
+  "art": "der",
+  "pl": "Vorhänge",
+  "pos": "noun",
+  "en": [
+   "curtain"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Mach bitte den Vorhang zu.",
+  "exen": "Please close the curtain."
+ },
+ {
+  "w": "Decke",
+  "art": "die",
+  "pl": "Decken",
+  "pos": "noun",
+  "en": [
+   "ceiling",
+   "blanket"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Die Decke im Bad hat einen Fleck.",
+  "exen": "The bathroom ceiling has a stain."
+ },
+ {
+  "w": "Boden",
+  "art": "der",
+  "pl": "Böden",
+  "pos": "noun",
+  "en": [
+   "floor (surface)",
+   "ground"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Das Handy ist auf den Boden gefallen.",
+  "exen": "The phone fell on the floor."
+ },
+ {
+  "w": "Kissen",
+  "art": "das",
+  "pl": "Kissen",
+  "pos": "noun",
+  "en": [
+   "pillow",
+   "cushion"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Ich brauche noch ein Kissen.",
+  "exen": "I need another pillow."
+ },
+ {
+  "w": "Staubsauger",
+  "art": "der",
+  "pl": "Staubsauger",
+  "pos": "noun",
+  "en": [
+   "vacuum cleaner"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Der Staubsauger steht im Flur.",
+  "exen": "The vacuum cleaner is in the hallway."
+ },
+ {
+  "w": "staubsaugen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "vacuum",
+   "hoover"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Ich muss noch staubsaugen.",
+  "exen": "I still have to vacuum."
+ },
+ {
+  "w": "bügeln",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "iron (clothes)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Er bügelt seine Hemden selbst.",
+  "exen": "He irons his shirts himself."
+ },
+ {
+  "w": "Backofen",
+  "art": "der",
+  "pl": "Backöfen",
+  "pos": "noun",
+  "en": [
+   "oven"
+  ],
+  "alt": [
+   "der Ofen"
+  ],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Der Kuchen ist im Backofen.",
+  "exen": "The cake is in the oven."
+ },
+ {
+  "w": "Mikrowelle",
+  "art": "die",
+  "pl": "Mikrowellen",
+  "pos": "noun",
+  "en": [
+   "microwave"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Ich mache die Suppe in der Mikrowelle warm.",
+  "exen": "I'm heating the soup in the microwave."
+ },
+ {
+  "w": "Mülleimer",
+  "art": "der",
+  "pl": "Mülleimer",
+  "pos": "noun",
+  "en": [
+   "rubbish bin"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Der Mülleimer ist voll.",
+  "exen": "The bin is full."
+ },
+ {
+  "w": "Klingel",
+  "art": "die",
+  "pl": "Klingeln",
+  "pos": "noun",
+  "en": [
+   "doorbell"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Die Klingel funktioniert nicht.",
+  "exen": "The doorbell doesn't work."
+ },
+ {
+  "w": "abschließen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "lock (up)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Hast du die Tür abgeschlossen?",
+  "exen": "Did you lock the door?",
+  "forms": "schließt ab · schloss ab · hat abgeschlossen"
+ },
+ {
+  "w": "lüften",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "air (a room)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Im Winter sollte man kurz lüften.",
+  "exen": "In winter you should air rooms briefly."
+ },
+ {
+  "w": "heizen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "heat (a room)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Wir heizen nur das Wohnzimmer.",
+  "exen": "We only heat the living room."
+ },
+ {
+  "w": "Schimmel",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "mould"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Im Bad ist Schimmel an der Wand.",
+  "exen": "There's mould on the bathroom wall."
+ },
+ {
+  "w": "Terrasse",
+  "art": "die",
+  "pl": "Terrassen",
+  "pos": "noun",
+  "en": [
+   "terrace",
+   "patio"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Im Sommer frühstücken wir auf der Terrasse.",
+  "exen": "In summer we have breakfast on the terrace."
+ },
+ {
+  "w": "Gewürz",
+  "art": "das",
+  "pl": "Gewürze",
+  "pos": "noun",
+  "en": [
+   "spice"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Welche Gewürze sind in der Soße?",
+  "exen": "Which spices are in the sauce?"
+ },
+ {
+  "w": "würzen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "season (food)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Du musst das Fleisch noch würzen.",
+  "exen": "You still need to season the meat."
+ },
+ {
+  "w": "Pfanne",
+  "art": "die",
+  "pl": "Pfannen",
+  "pos": "noun",
+  "en": [
+   "frying pan"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Die Pfanne ist sehr heiß.",
+  "exen": "The pan is very hot."
+ },
+ {
+  "w": "Topf",
+  "art": "der",
+  "pl": "Töpfe",
+  "pos": "noun",
+  "en": [
+   "pot",
+   "saucepan"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Das Wasser kocht im Topf.",
+  "exen": "The water is boiling in the pot."
+ },
+ {
+  "w": "schälen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "peel"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Kannst du die Kartoffeln schälen?",
+  "exen": "Can you peel the potatoes?"
+ },
+ {
+  "w": "rühren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "stir"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Du musst die Soße ständig rühren.",
+  "exen": "You have to stir the sauce constantly."
+ },
+ {
+  "w": "mischen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "mix"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Mischen Sie Mehl und Zucker.",
+  "exen": "Mix the flour and sugar."
+ },
+ {
+  "w": "Mehl",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "flour"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Für das Brot braucht man 500 Gramm Mehl.",
+  "exen": "You need 500 grams of flour for the bread."
+ },
+ {
+  "w": "Sahne",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "cream"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Möchtest du Sahne auf den Kuchen?",
+  "exen": "Would you like cream on the cake?"
+ },
+ {
+  "w": "Honig",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "honey"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Ich trinke Tee mit Honig.",
+  "exen": "I drink tea with honey."
+ },
+ {
+  "w": "Soße",
+  "art": "die",
+  "pl": "Soßen",
+  "pos": "noun",
+  "en": [
+   "sauce"
+  ],
+  "alt": [
+   "die Sauce"
+  ],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Die Soße ist mir zu scharf.",
+  "exen": "The sauce is too spicy for me."
+ },
+ {
+  "w": "Knoblauch",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "garlic"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "In das Gericht kommt viel Knoblauch.",
+  "exen": "The dish contains lots of garlic."
+ },
+ {
+  "w": "Zwiebel",
+  "art": "die",
+  "pl": "Zwiebeln",
+  "pos": "noun",
+  "en": [
+   "onion"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Schneide bitte zwei Zwiebeln.",
+  "exen": "Please chop two onions."
+ },
+ {
+  "w": "Nuss",
+  "art": "die",
+  "pl": "Nüsse",
+  "pos": "noun",
+  "en": [
+   "nut"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Er darf keine Nüsse essen.",
+  "exen": "He's not allowed to eat nuts."
+ },
+ {
+  "w": "roh",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "raw"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Tomaten esse ich am liebsten roh.",
+  "exen": "I like tomatoes best raw."
+ },
+ {
+  "w": "bitter",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "bitter"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Der Kaffee schmeckt bitter.",
+  "exen": "The coffee tastes bitter."
+ },
+ {
+  "w": "Vegetarier",
+  "art": "der",
+  "pl": "Vegetarier",
+  "pos": "noun",
+  "en": [
+   "vegetarian (person)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Meine Freundin ist Vegetarierin.",
+  "exen": "My girlfriend is a vegetarian."
+ },
+ {
+  "w": "Diät",
+  "art": "die",
+  "pl": "Diäten",
+  "pos": "noun",
+  "en": [
+   "diet (to lose weight)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Er macht gerade eine Diät.",
+  "exen": "He is on a diet at the moment."
+ },
+ {
+  "w": "Alkohol",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "alcohol"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Ich trinke keinen Alkohol.",
+  "exen": "I don't drink alcohol."
+ },
+ {
+  "w": "Leitungswasser",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "tap water"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Kann ich ein Glas Leitungswasser haben?",
+  "exen": "Can I have a glass of tap water?"
+ },
+ {
+  "w": "Kantine",
+  "art": "die",
+  "pl": "Kantinen",
+  "pos": "noun",
+  "en": [
+   "canteen (at work)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Mittags esse ich in der Kantine.",
+  "exen": "At lunchtime I eat in the canteen."
+ },
+ {
+  "w": "Imbiss",
+  "art": "der",
+  "pl": "Imbisse",
+  "pos": "noun",
+  "en": [
+   "snack bar"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Am Bahnhof gibt es einen Imbiss.",
+  "exen": "There's a snack bar at the station."
+ },
+ {
+  "w": "Packung",
+  "art": "die",
+  "pl": "Packungen",
+  "pos": "noun",
+  "en": [
+   "packet",
+   "pack"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Ich kaufe eine Packung Reis.",
+  "exen": "I'm buying a packet of rice."
+ },
+ {
+  "w": "Dose",
+  "art": "die",
+  "pl": "Dosen",
+  "pos": "noun",
+  "en": [
+   "can",
+   "tin"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Eine Dose Tomaten, bitte.",
+  "exen": "A can of tomatoes, please."
+ },
+ {
+  "w": "haltbar",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "long-life",
+   "keeps (well)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Die Milch ist bis Freitag haltbar.",
+  "exen": "The milk keeps until Friday."
+ },
+ {
+  "w": "abgelaufen",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "expired",
+   "past its date"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Der Joghurt ist schon abgelaufen.",
+  "exen": "The yoghurt has already expired."
+ },
+ {
+  "w": "Besteck",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "cutlery"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Das Besteck liegt in der Schublade.",
+  "exen": "The cutlery is in the drawer."
+ },
+ {
+  "w": "Wunde",
+  "art": "die",
+  "pl": "Wunden",
+  "pos": "noun",
+  "en": [
+   "wound"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Die Wunde muss genäht werden.",
+  "exen": "The wound needs stitches."
+ },
+ {
+  "w": "Pflaster",
+  "art": "das",
+  "pl": "Pflaster",
+  "pos": "noun",
+  "en": [
+   "plaster",
+   "band-aid"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Hast du ein Pflaster für mich?",
+  "exen": "Do you have a plaster for me?"
+ },
+ {
+  "w": "bluten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "bleed"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Dein Finger blutet!",
+  "exen": "Your finger is bleeding!"
+ },
+ {
+  "w": "operieren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "operate (on)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Das Knie muss operiert werden.",
+  "exen": "The knee needs surgery."
+ },
+ {
+  "w": "Notaufnahme",
+  "art": "die",
+  "pl": "Notaufnahmen",
+  "pos": "noun",
+  "en": [
+   "emergency department",
+   "A&E"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Wir waren die ganze Nacht in der Notaufnahme.",
+  "exen": "We were in A&E all night."
+ },
+ {
+  "w": "Wartezimmer",
+  "art": "das",
+  "pl": "Wartezimmer",
+  "pos": "noun",
+  "en": [
+   "waiting room"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Bitte nehmen Sie im Wartezimmer Platz.",
+  "exen": "Please take a seat in the waiting room."
+ },
+ {
+  "w": "Pflege",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "care",
+   "nursing"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Die Pflege von alten Menschen ist anstrengend.",
+  "exen": "Caring for old people is exhausting."
+ },
+ {
+  "w": "pflegen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "care for",
+   "nurse"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Sie pflegt ihre kranke Mutter.",
+  "exen": "She cares for her sick mother."
+ },
+ {
+  "w": "Krankenpfleger",
+  "art": "der",
+  "pl": "Krankenpfleger",
+  "pos": "noun",
+  "en": [
+   "nurse (male)"
+  ],
+  "alt": [
+   "der Pfleger"
+  ],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Der Krankenpfleger bringt das Essen.",
+  "exen": "The nurse brings the food."
+ },
+ {
+  "w": "Salbe",
+  "art": "die",
+  "pl": "Salben",
+  "pos": "noun",
+  "en": [
+   "ointment",
+   "cream"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Diese Salbe hilft gegen den Juckreiz.",
+  "exen": "This ointment helps with the itching."
+ },
+ {
+  "w": "Tropfen",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "drops (medicine)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Nehmen Sie dreimal täglich zehn Tropfen.",
+  "exen": "Take ten drops three times a day."
+ },
+ {
+  "w": "Spritze",
+  "art": "die",
+  "pl": "Spritzen",
+  "pos": "noun",
+  "en": [
+   "injection"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Der Arzt hat mir eine Spritze gegeben.",
+  "exen": "The doctor gave me an injection."
+ },
+ {
+  "w": "Impfung",
+  "art": "die",
+  "pl": "Impfungen",
+  "pos": "noun",
+  "en": [
+   "vaccination"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Brauche ich eine Impfung für die Reise?",
+  "exen": "Do I need a vaccination for the trip?"
+ },
+ {
+  "w": "impfen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "vaccinate"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Die Kinder wurden gegen Masern geimpft.",
+  "exen": "The children were vaccinated against measles."
+ },
+ {
+  "w": "Entzündung",
+  "art": "die",
+  "pl": "Entzündungen",
+  "pos": "noun",
+  "en": [
+   "inflammation",
+   "infection"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Sie hat eine Entzündung im Hals.",
+  "exen": "She has a throat infection."
+ },
+ {
+  "w": "Schnupfen",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "cold (runny nose)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Ich habe einen leichten Schnupfen.",
+  "exen": "I have a slight cold."
+ },
+ {
+  "w": "husten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "cough"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Er hustet schon seit einer Woche.",
+  "exen": "He's been coughing for a week."
+ },
+ {
+  "w": "niesen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "sneeze"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Sie muss ständig niesen.",
+  "exen": "She keeps sneezing."
+ },
+ {
+  "w": "sich übergeben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "vomit",
+   "be sick"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Das Kind hat sich zweimal übergeben.",
+  "exen": "The child was sick twice.",
+  "forms": "übergibt sich · übergab sich · hat sich übergeben"
+ },
+ {
+  "w": "Durchfall",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "diarrhoea"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Sie hat Durchfall und Fieber.",
+  "exen": "She has diarrhoea and a fever."
+ },
+ {
+  "w": "Blutdruck",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "blood pressure"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Mein Blutdruck ist zu hoch.",
+  "exen": "My blood pressure is too high."
+ },
+ {
+  "w": "Magen",
+  "art": "der",
+  "pl": "Mägen",
+  "pos": "noun",
+  "en": [
+   "stomach"
+  ],
+  "alt": [
+   "der Bauch"
+  ],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Mir tut der Magen weh.",
+  "exen": "My stomach hurts."
+ },
+ {
+  "w": "Haut",
+  "art": "die",
+  "pl": "Häute",
+  "pos": "noun",
+  "en": [
+   "skin"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Sie hat sehr empfindliche Haut.",
+  "exen": "She has very sensitive skin."
+ },
+ {
+  "w": "Knochen",
+  "art": "der",
+  "pl": "Knochen",
+  "pos": "noun",
+  "en": [
+   "bone"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Der Knochen ist gebrochen.",
+  "exen": "The bone is broken."
+ },
+ {
+  "w": "Muskel",
+  "art": "der",
+  "pl": "Muskeln",
+  "pos": "noun",
+  "en": [
+   "muscle"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Nach dem Sport tun mir die Muskeln weh.",
+  "exen": "My muscles hurt after exercise."
+ },
+ {
+  "w": "Lunge",
+  "art": "die",
+  "pl": "Lungen",
+  "pos": "noun",
+  "en": [
+   "lungs",
+   "lung"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Rauchen schadet der Lunge.",
+  "exen": "Smoking damages the lungs."
+ },
+ {
+  "w": "Gehirn",
+  "art": "das",
+  "pl": "Gehirne",
+  "pos": "noun",
+  "en": [
+   "brain"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Das Gehirn braucht viel Energie.",
+  "exen": "The brain needs a lot of energy."
+ },
+ {
+  "w": "Schulter",
+  "art": "die",
+  "pl": "Schultern",
+  "pos": "noun",
+  "en": [
+   "shoulder"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Meine Schulter tut seit Tagen weh.",
+  "exen": "My shoulder has hurt for days."
+ },
+ {
+  "w": "Knie",
+  "art": "das",
+  "pl": "Knie",
+  "pos": "noun",
+  "en": [
+   "knee"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Er hat Probleme mit dem Knie.",
+  "exen": "He has problems with his knee."
+ },
+ {
+  "w": "Nacken",
+  "art": "der",
+  "pl": "Nacken",
+  "pos": "noun",
+  "en": [
+   "neck (back of)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Vom Sitzen am Computer tut mir der Nacken weh.",
+  "exen": "My neck hurts from sitting at the computer."
+ },
+ {
+  "w": "Stirn",
+  "art": "die",
+  "pl": "Stirnen",
+  "pos": "noun",
+  "en": [
+   "forehead"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Sie hat eine Beule an der Stirn.",
+  "exen": "She has a bump on her forehead."
+ },
+ {
+  "w": "Handgelenk",
+  "art": "das",
+  "pl": "Handgelenke",
+  "pos": "noun",
+  "en": [
+   "wrist"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Ich habe mir das Handgelenk verstaucht.",
+  "exen": "I've sprained my wrist."
+ },
+ {
+  "w": "Ellbogen",
+  "art": "der",
+  "pl": "Ellbogen",
+  "pos": "noun",
+  "en": [
+   "elbow"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Er hat sich am Ellbogen verletzt.",
+  "exen": "He hurt his elbow."
+ },
+ {
+  "w": "Zehe",
+  "art": "die",
+  "pl": "Zehen",
+  "pos": "noun",
+  "en": [
+   "toe"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Nach der Wanderung tut mir eine Zehe weh.",
+  "exen": "After the hike one of my toes hurts."
+ },
+ {
+  "w": "Zunge",
+  "art": "die",
+  "pl": "Zungen",
+  "pos": "noun",
+  "en": [
+   "tongue"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Zeigen Sie mir bitte die Zunge.",
+  "exen": "Please show me your tongue."
+ },
+ {
+  "w": "Lippe",
+  "art": "die",
+  "pl": "Lippen",
+  "pos": "noun",
+  "en": [
+   "lip"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Meine Lippen sind ganz trocken.",
+  "exen": "My lips are very dry."
+ },
+ {
+  "w": "schwanger",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "pregnant"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Sie ist im fünften Monat schwanger.",
+  "exen": "She is five months pregnant."
+ },
+ {
+  "w": "erschöpft",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "exhausted"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Nach der Arbeit bin ich total erschöpft.",
+  "exen": "After work I'm totally exhausted."
+ },
+ {
+  "w": "sich ausruhen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "rest",
+   "have a rest"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Du solltest dich ein bisschen ausruhen.",
+  "exen": "You should rest a bit.",
+  "forms": "ruht sich aus · ruhte sich aus · hat sich ausgeruht"
+ },
+ {
+  "w": "schwitzen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "sweat"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Beim Joggen schwitze ich stark.",
+  "exen": "I sweat a lot when jogging."
+ },
+ {
+  "w": "frieren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "feel cold",
+   "freeze"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Ich friere, mach bitte das Fenster zu.",
+  "exen": "I'm cold, please close the window.",
+  "forms": "friert · fror · hat gefroren"
+ },
+ {
+  "w": "Übergewicht",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "excess weight",
+   "obesity"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Übergewicht ist schlecht für das Herz.",
+  "exen": "Being overweight is bad for the heart."
+ },
+ {
+  "w": "preiswert",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "good value",
+   "inexpensive"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Das Restaurant ist gut und preiswert.",
+  "exen": "The restaurant is good and good value."
+ },
+ {
+  "w": "Schnäppchen",
+  "art": "das",
+  "pl": "Schnäppchen",
+  "pos": "noun",
+  "en": [
+   "bargain"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Die Schuhe waren ein echtes Schnäppchen.",
+  "exen": "The shoes were a real bargain."
+ },
+ {
+  "w": "fehlerhaft",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "faulty",
+   "defective"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Fehlerhafte Ware können Sie zurückgeben.",
+  "exen": "You can return faulty goods."
+ },
+ {
+  "w": "Material",
+  "art": "das",
+  "pl": "Materialien",
+  "pos": "noun",
+  "en": [
+   "material"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Aus welchem Material ist die Tasche?",
+  "exen": "What material is the bag made of?"
+ },
+ {
+  "w": "Stoff",
+  "art": "der",
+  "pl": "Stoffe",
+  "pos": "noun",
+  "en": [
+   "fabric",
+   "cloth"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Der Stoff ist sehr weich.",
+  "exen": "The fabric is very soft."
+ },
+ {
+  "w": "Baumwolle",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "cotton"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Das T-Shirt ist aus Baumwolle.",
+  "exen": "The T-shirt is made of cotton."
+ },
+ {
+  "w": "Wolle",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "wool"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Der Pullover ist aus reiner Wolle.",
+  "exen": "The jumper is pure wool."
+ },
+ {
+  "w": "Leder",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "leather"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Ich suche eine Tasche aus Leder.",
+  "exen": "I'm looking for a leather bag."
+ },
+ {
+  "w": "Muster",
+  "art": "das",
+  "pl": "Muster",
+  "pos": "noun",
+  "en": [
+   "pattern"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Mir gefällt das Muster nicht.",
+  "exen": "I don't like the pattern."
+ },
+ {
+  "w": "gestreift",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "striped"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Er trägt ein gestreiftes Hemd.",
+  "exen": "He's wearing a striped shirt."
+ },
+ {
+  "w": "kariert",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "checked",
+   "plaid"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Der karierte Rock steht dir gut.",
+  "exen": "The checked skirt suits you."
+ },
+ {
+  "w": "eng",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "tight (clothes)",
+   "narrow"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Die Hose ist mir zu eng.",
+  "exen": "The trousers are too tight for me."
+ },
+ {
+  "w": "modisch",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "fashionable"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Sie ist immer modisch angezogen.",
+  "exen": "She is always fashionably dressed."
+ },
+ {
+  "w": "altmodisch",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "old-fashioned"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Der Mantel ist ziemlich altmodisch.",
+  "exen": "The coat is rather old-fashioned."
+ },
+ {
+  "w": "elegant",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "elegant",
+   "smart"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Für die Hochzeit brauche ich etwas Elegantes.",
+  "exen": "I need something smart for the wedding."
+ },
+ {
+  "w": "Anzug",
+  "art": "der",
+  "pl": "Anzüge",
+  "pos": "noun",
+  "en": [
+   "suit"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Zum Vorstellungsgespräch trägt er einen Anzug.",
+  "exen": "He wears a suit to the job interview."
+ },
+ {
+  "w": "Krawatte",
+  "art": "die",
+  "pl": "Krawatten",
+  "pos": "noun",
+  "en": [
+   "tie"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Muss ich eine Krawatte tragen?",
+  "exen": "Do I have to wear a tie?"
+ },
+ {
+  "w": "Gürtel",
+  "art": "der",
+  "pl": "Gürtel",
+  "pos": "noun",
+  "en": [
+   "belt"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Der Gürtel ist zu kurz.",
+  "exen": "The belt is too short."
+ },
+ {
+  "w": "Handschuh",
+  "art": "der",
+  "pl": "Handschuhe",
+  "pos": "noun",
+  "en": [
+   "glove"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Ich habe meine Handschuhe verloren.",
+  "exen": "I've lost my gloves."
+ },
+ {
+  "w": "Schal",
+  "art": "der",
+  "pl": "Schals",
+  "pos": "noun",
+  "en": [
+   "scarf"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Nimm einen Schal mit, es ist kalt.",
+  "exen": "Take a scarf, it's cold."
+ },
+ {
+  "w": "Stiefel",
+  "art": "der",
+  "pl": "Stiefel",
+  "pos": "noun",
+  "en": [
+   "boot"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Im Winter trage ich Stiefel.",
+  "exen": "I wear boots in winter."
+ },
+ {
+  "w": "Handtasche",
+  "art": "die",
+  "pl": "Handtaschen",
+  "pos": "noun",
+  "en": [
+   "handbag"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Ihre Handtasche wurde gestohlen.",
+  "exen": "Her handbag was stolen."
+ },
+ {
+  "w": "Schmuck",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "jewellery"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Sie trägt nicht gern Schmuck.",
+  "exen": "She doesn't like wearing jewellery."
+ },
+ {
+  "w": "Kette",
+  "art": "die",
+  "pl": "Ketten",
+  "pos": "noun",
+  "en": [
+   "necklace",
+   "chain"
+  ],
+  "alt": [
+   "die Halskette"
+  ],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Die Kette ist aus Silber.",
+  "exen": "The necklace is silver."
+ },
+ {
+  "w": "Ring",
+  "art": "der",
+  "pl": "Ringe",
+  "pos": "noun",
+  "en": [
+   "ring"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Er hat ihr einen Ring geschenkt.",
+  "exen": "He gave her a ring."
+ },
+ {
+  "w": "Unterwäsche",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "underwear"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Die Unterwäsche liegt im Schrank.",
+  "exen": "The underwear is in the wardrobe."
+ },
+ {
+  "w": "Schlafanzug",
+  "art": "der",
+  "pl": "Schlafanzüge",
+  "pos": "noun",
+  "en": [
+   "pyjamas"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Die Kinder sind schon im Schlafanzug.",
+  "exen": "The children are already in their pyjamas."
+ },
+ {
+  "w": "Badeanzug",
+  "art": "der",
+  "pl": "Badeanzüge",
+  "pos": "noun",
+  "en": [
+   "swimsuit"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "Vergiss deinen Badeanzug nicht!",
+  "exen": "Don't forget your swimsuit!"
+ },
+ {
+  "w": "einzahlen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "pay in",
+   "deposit"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Ich möchte 200 Euro einzahlen.",
+  "exen": "I'd like to pay in 200 euros.",
+  "forms": "zahlt ein · zahlte ein · hat eingezahlt"
+ },
+ {
+  "w": "Kontoauszug",
+  "art": "der",
+  "pl": "Kontoauszüge",
+  "pos": "noun",
+  "en": [
+   "bank statement"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Den Kontoauszug bekomme ich jeden Monat.",
+  "exen": "I get the bank statement every month."
+ },
+ {
+  "w": "Geheimzahl",
+  "art": "die",
+  "pl": "Geheimzahlen",
+  "pos": "noun",
+  "en": [
+   "PIN (number)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Ich habe meine Geheimzahl vergessen.",
+  "exen": "I've forgotten my PIN."
+ },
+ {
+  "w": "Münze",
+  "art": "die",
+  "pl": "Münzen",
+  "pos": "noun",
+  "en": [
+   "coin"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Hast du Münzen für den Automaten?",
+  "exen": "Do you have coins for the machine?"
+ },
+ {
+  "w": "Geldschein",
+  "art": "der",
+  "pl": "Geldscheine",
+  "pos": "noun",
+  "en": [
+   "banknote"
+  ],
+  "alt": [
+   "der Schein"
+  ],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Der Automat nimmt keine Geldscheine.",
+  "exen": "The machine doesn't take banknotes."
+ },
+ {
+  "w": "Zinsen",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "interest (on money)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Die Zinsen sind gerade sehr niedrig.",
+  "exen": "Interest rates are very low at the moment."
+ },
+ {
+  "w": "Rate",
+  "art": "die",
+  "pl": "Raten",
+  "pos": "noun",
+  "en": [
+   "instalment"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Wir zahlen das Sofa in Raten.",
+  "exen": "We're paying for the sofa in instalments."
+ },
+ {
+  "w": "Mahnung",
+  "art": "die",
+  "pl": "Mahnungen",
+  "pos": "noun",
+  "en": [
+   "payment reminder"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Ich habe eine Mahnung bekommen.",
+  "exen": "I got a payment reminder."
+ },
+ {
+  "w": "Summe",
+  "art": "die",
+  "pl": "Summen",
+  "pos": "noun",
+  "en": [
+   "sum",
+   "total"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Die Summe ist falsch berechnet.",
+  "exen": "The total was calculated wrongly."
+ },
+ {
+  "w": "Ausgaben",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "expenses",
+   "spending"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Wir müssen unsere Ausgaben reduzieren.",
+  "exen": "We need to reduce our spending."
+ },
+ {
+  "w": "Einnahmen",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "earnings",
+   "revenue"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Die Einnahmen reichen nicht für die Miete.",
+  "exen": "The earnings aren't enough for the rent."
+ },
+ {
+  "w": "finanzieren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "finance",
+   "fund"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Er finanziert sein Studium selbst.",
+  "exen": "He pays for his studies himself."
+ },
+ {
+  "w": "wert",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "worth"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Das Auto ist nicht mehr viel wert.",
+  "exen": "The car isn't worth much any more."
+ },
+ {
+  "w": "pleite",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "broke (no money)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Am Monatsende bin ich immer pleite.",
+  "exen": "I'm always broke at the end of the month."
+ },
+ {
+  "w": "Währung",
+  "art": "die",
+  "pl": "Währungen",
+  "pos": "noun",
+  "en": [
+   "currency"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "In der Schweiz ist die Währung der Franken.",
+  "exen": "In Switzerland the currency is the franc."
+ },
+ {
+  "w": "Wechselkurs",
+  "art": "der",
+  "pl": "Wechselkurse",
+  "pos": "noun",
+  "en": [
+   "exchange rate"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Der Wechselkurs ist heute günstig.",
+  "exen": "The exchange rate is good today."
+ },
+ {
+  "w": "versichern",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "insure"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Das Auto ist gegen Diebstahl versichert.",
+  "exen": "The car is insured against theft."
+ },
+ {
+  "w": "Absender",
+  "art": "der",
+  "pl": "Absender",
+  "pos": "noun",
+  "en": [
+   "sender"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Auf dem Brief steht kein Absender.",
+  "exen": "There's no sender on the letter."
+ },
+ {
+  "w": "Empfänger",
+  "art": "der",
+  "pl": "Empfänger",
+  "pos": "noun",
+  "en": [
+   "recipient",
+   "addressee"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Der Empfänger war nicht zu Hause.",
+  "exen": "The recipient wasn't at home."
+ },
+ {
+  "w": "Porto",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "postage"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Wie viel kostet das Porto nach Indien?",
+  "exen": "How much is postage to India?"
+ },
+ {
+  "w": "einwerfen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "post (a letter)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Kannst du den Brief einwerfen?",
+  "exen": "Can you post the letter?",
+  "forms": "wirft ein · warf ein · hat eingeworfen"
+ },
+ {
+  "w": "Reinigung",
+  "art": "die",
+  "pl": "Reinigungen",
+  "pos": "noun",
+  "en": [
+   "dry cleaner's",
+   "cleaning"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Ich bringe den Anzug in die Reinigung.",
+  "exen": "I'm taking the suit to the dry cleaner's."
+ },
+ {
+  "w": "Bezahlung",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "pay (payment for work)",
+   "payment"
+  ],
+  "alt": [
+   "die Zahlung"
+  ],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Die Bezahlung ist auch mit Karte möglich.",
+  "exen": "Payment by card is also possible."
+ },
+ {
+  "w": "kürzlich",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "recently"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "ex": "Sie ist kürzlich umgezogen.",
+  "exen": "She moved recently."
+ },
+ {
+  "w": "demnächst",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "shortly",
+   "soon"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "ex": "Die Ergebnisse kommen demnächst.",
+  "exen": "The results are coming shortly."
+ },
+ {
+  "w": "zuletzt",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "last (of all)",
+   "most recently"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "ex": "Wann hast du ihn zuletzt gesehen?",
+  "exen": "When did you last see him?"
+ },
+ {
+  "w": "zukünftig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "future"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "ex": "Das ist meine zukünftige Chefin.",
+  "exen": "That's my future boss."
+ },
+ {
+  "w": "Jahrhundert",
+  "art": "das",
+  "pl": "Jahrhunderte",
+  "pos": "noun",
+  "en": [
+   "century"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "ex": "Die Kirche ist aus dem 12. Jahrhundert.",
+  "exen": "The church is from the 12th century."
+ },
+ {
+  "w": "Jahrzehnt",
+  "art": "das",
+  "pl": "Jahrzehnte",
+  "pos": "noun",
+  "en": [
+   "decade"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "ex": "Seit Jahrzehnten wohnt er in Berlin.",
+  "exen": "He has lived in Berlin for decades."
+ },
+ {
+  "w": "Augenblick",
+  "art": "der",
+  "pl": "Augenblicke",
+  "pos": "noun",
+  "en": [
+   "moment"
+  ],
+  "alt": [
+   "der Moment"
+  ],
+  "level": "B1",
+  "theme": "time",
+  "ex": "Einen Augenblick, bitte!",
+  "exen": "One moment, please!"
+ },
+ {
+  "w": "wöchentlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "weekly"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "ex": "Das Treffen findet wöchentlich statt.",
+  "exen": "The meeting takes place weekly."
+ },
+ {
+  "w": "monatlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "monthly"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "ex": "Die monatliche Miete beträgt 800 Euro.",
+  "exen": "The monthly rent is 800 euros."
+ },
+ {
+  "w": "jährlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "annual",
+   "yearly"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "ex": "Die Versicherung kostet jährlich 300 Euro.",
+  "exen": "The insurance costs 300 euros a year."
+ },
+ {
+  "w": "jahrelang",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "for years"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "ex": "Er hat jahrelang in London gearbeitet.",
+  "exen": "He worked in London for years."
+ },
+ {
+  "w": "einteilen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "plan (time)",
+   "divide up"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "ex": "Du musst dir die Zeit besser einteilen.",
+  "exen": "You need to plan your time better.",
+  "forms": "teilt ein · teilte ein · hat eingeteilt"
+ },
+ {
+  "w": "Beginn",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "start",
+   "beginning"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "ex": "Vor Beginn der Prüfung bitte die Handys ausschalten.",
+  "exen": "Please turn off phones before the exam starts."
+ },
+ {
+  "w": "rund um die Uhr",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "around the clock"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "ex": "Die Apotheke ist rund um die Uhr geöffnet.",
+  "exen": "The pharmacy is open around the clock."
+ },
+ {
+  "w": "städtisch",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "urban",
+   "municipal"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "Das städtische Schwimmbad ist heute geschlossen.",
+  "exen": "The municipal pool is closed today."
+ },
+ {
+  "w": "Hochhaus",
+  "art": "das",
+  "pl": "Hochhäuser",
+  "pos": "noun",
+  "en": [
+   "high-rise",
+   "tower block"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "Sie wohnt im zehnten Stock eines Hochhauses.",
+  "exen": "She lives on the tenth floor of a tower block."
+ },
+ {
+  "w": "Parkhaus",
+  "art": "das",
+  "pl": "Parkhäuser",
+  "pos": "noun",
+  "en": [
+   "multi-storey car park"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "Wir parken im Parkhaus am Bahnhof.",
+  "exen": "We park in the car park at the station."
+ },
+ {
+  "w": "Tiefgarage",
+  "art": "die",
+  "pl": "Tiefgaragen",
+  "pos": "noun",
+  "en": [
+   "underground car park"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "Die Wohnung hat einen Platz in der Tiefgarage.",
+  "exen": "The flat comes with a space in the underground car park."
+ },
+ {
+  "w": "Bürgersteig",
+  "art": "der",
+  "pl": "Bürgersteige",
+  "pos": "noun",
+  "en": [
+   "pavement",
+   "sidewalk"
+  ],
+  "alt": [
+   "der Gehweg"
+  ],
+  "level": "B1",
+  "theme": "city",
+  "ex": "Fahr nicht auf dem Bürgersteig!",
+  "exen": "Don't ride on the pavement!"
+ },
+ {
+  "w": "Zebrastreifen",
+  "art": "der",
+  "pl": "Zebrastreifen",
+  "pos": "noun",
+  "en": [
+   "zebra crossing"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "Geh über den Zebrastreifen.",
+  "exen": "Cross at the zebra crossing."
+ },
+ {
+  "w": "Kreisverkehr",
+  "art": "der",
+  "pl": "Kreisverkehre",
+  "pos": "noun",
+  "en": [
+   "roundabout"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "Im Kreisverkehr nehmen Sie die zweite Ausfahrt.",
+  "exen": "At the roundabout take the second exit."
+ },
+ {
+  "w": "Brunnen",
+  "art": "der",
+  "pl": "Brunnen",
+  "pos": "noun",
+  "en": [
+   "fountain",
+   "well"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "Wir treffen uns am Brunnen.",
+  "exen": "We'll meet at the fountain."
+ },
+ {
+  "w": "Friedhof",
+  "art": "der",
+  "pl": "Friedhöfe",
+  "pos": "noun",
+  "en": [
+   "cemetery"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "Der Friedhof liegt neben der Kirche.",
+  "exen": "The cemetery is next to the church."
+ },
+ {
+  "w": "Feuerwehr",
+  "art": "die",
+  "pl": "Feuerwehren",
+  "pos": "noun",
+  "en": [
+   "fire brigade"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "Die Feuerwehr war sofort da.",
+  "exen": "The fire brigade was there immediately."
+ },
+ {
+  "w": "Fundbüro",
+  "art": "das",
+  "pl": "Fundbüros",
+  "pos": "noun",
+  "en": [
+   "lost property office"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "Fragen Sie im Fundbüro nach Ihrem Schirm.",
+  "exen": "Ask about your umbrella at the lost property office."
+ },
+ {
+  "w": "Kneipe",
+  "art": "die",
+  "pl": "Kneipen",
+  "pos": "noun",
+  "en": [
+   "pub",
+   "bar"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "Nach der Arbeit gehen wir in die Kneipe.",
+  "exen": "After work we go to the pub."
+ },
+ {
+  "w": "Kiosk",
+  "art": "der",
+  "pl": "Kioske",
+  "pos": "noun",
+  "en": [
+   "kiosk",
+   "newsstand"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "Zigaretten gibt es am Kiosk.",
+  "exen": "You can get cigarettes at the kiosk."
+ },
+ {
+  "w": "Mauer",
+  "art": "die",
+  "pl": "Mauern",
+  "pos": "noun",
+  "en": [
+   "wall (outside, of stone)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "Hinter der Mauer ist ein Garten.",
+  "exen": "There's a garden behind the wall."
+ },
+ {
+  "w": "sich verlaufen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "get lost (on foot)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "Wir haben uns in der Altstadt verlaufen.",
+  "exen": "We got lost in the old town.",
+  "forms": "verläuft sich · verlief sich · hat sich verlaufen"
+ },
+ {
+  "w": "sich zurechtfinden",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "find one's way (around)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "In der neuen Stadt finde ich mich gut zurecht.",
+  "exen": "I find my way around the new city well.",
+  "forms": "findet sich zurecht · fand sich zurecht · hat sich zurechtgefunden"
+ },
+ {
+  "w": "sperren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "close off",
+   "block"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "Die Brücke ist wegen Bauarbeiten gesperrt.",
+  "exen": "The bridge is closed for construction work."
+ },
+ {
+  "w": "Hinfahrt",
+  "art": "die",
+  "pl": "Hinfahrten",
+  "pos": "noun",
+  "en": [
+   "outward journey"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Auf der Hinfahrt hatten wir Verspätung.",
+  "exen": "We had a delay on the way there."
+ },
+ {
+  "w": "auschecken",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "check out"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Bis 11 Uhr müssen wir auschecken.",
+  "exen": "We have to check out by 11.",
+  "forms": "checkt aus · checkte aus · hat ausgecheckt"
+ },
+ {
+  "w": "Landung",
+  "art": "die",
+  "pl": "Landungen",
+  "pos": "noun",
+  "en": [
+   "landing (plane)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Nach der Landung bitte angeschnallt bleiben.",
+  "exen": "Please keep your seatbelt on after landing."
+ },
+ {
+  "w": "Passagier",
+  "art": "der",
+  "pl": "Passagiere",
+  "pos": "noun",
+  "en": [
+   "passenger (plane, ship)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Alle Passagiere bitte zum Ausgang B12.",
+  "exen": "All passengers please go to gate B12."
+ },
+ {
+  "w": "Pension",
+  "art": "die",
+  "pl": "Pensionen",
+  "pos": "noun",
+  "en": [
+   "guesthouse",
+   "pension"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Wir übernachten in einer kleinen Pension.",
+  "exen": "We're staying in a small guesthouse."
+ },
+ {
+  "w": "Jugendherberge",
+  "art": "die",
+  "pl": "Jugendherbergen",
+  "pos": "noun",
+  "en": [
+   "youth hostel"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Die Klasse übernachtet in einer Jugendherberge.",
+  "exen": "The class is staying at a youth hostel."
+ },
+ {
+  "w": "Halbpension",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "half board"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Das Zimmer ist mit Halbpension.",
+  "exen": "The room comes with half board."
+ },
+ {
+  "w": "Pauschalreise",
+  "art": "die",
+  "pl": "Pauschalreisen",
+  "pos": "noun",
+  "en": [
+   "package holiday"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Wir haben eine Pauschalreise nach Mallorca gebucht.",
+  "exen": "We booked a package holiday to Mallorca."
+ },
+ {
+  "w": "Stadtrundfahrt",
+  "art": "die",
+  "pl": "Stadtrundfahrten",
+  "pos": "noun",
+  "en": [
+   "sightseeing tour (by bus)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Die Stadtrundfahrt beginnt am Hauptbahnhof.",
+  "exen": "The sightseeing tour starts at the main station."
+ },
+ {
+  "w": "Reiseführer",
+  "art": "der",
+  "pl": "Reiseführer",
+  "pos": "noun",
+  "en": [
+   "guidebook",
+   "tour guide"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Im Reiseführer stehen gute Tipps.",
+  "exen": "The guidebook has good tips."
+ },
+ {
+  "w": "Reiseziel",
+  "art": "das",
+  "pl": "Reiseziele",
+  "pos": "noun",
+  "en": [
+   "destination"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Italien ist ein beliebtes Reiseziel.",
+  "exen": "Italy is a popular destination."
+ },
+ {
+  "w": "Tourismus",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "tourism"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Die Insel lebt vom Tourismus.",
+  "exen": "The island lives from tourism."
+ },
+ {
+  "w": "Saison",
+  "art": "die",
+  "pl": "Saisons",
+  "pos": "noun",
+  "en": [
+   "season (tourist)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "In der Saison sind die Hotels teuer.",
+  "exen": "Hotels are expensive in the season."
+ },
+ {
+  "w": "Zoll",
+  "art": "der",
+  "pl": "Zölle",
+  "pos": "noun",
+  "en": [
+   "customs"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Wir mussten am Zoll lange warten.",
+  "exen": "We had to wait a long time at customs."
+ },
+ {
+  "w": "entwerten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "validate (a ticket)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Vergessen Sie nicht, die Fahrkarte zu entwerten.",
+  "exen": "Don't forget to validate your ticket."
+ },
+ {
+  "w": "Schaffner",
+  "art": "der",
+  "pl": "Schaffner",
+  "pos": "noun",
+  "en": [
+   "conductor",
+   "ticket inspector"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Der Schaffner kontrolliert die Fahrkarten.",
+  "exen": "The conductor checks the tickets."
+ },
+ {
+  "w": "Abteil",
+  "art": "das",
+  "pl": "Abteile",
+  "pos": "noun",
+  "en": [
+   "compartment (train)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Ist in diesem Abteil noch ein Platz frei?",
+  "exen": "Is there a free seat in this compartment?"
+ },
+ {
+  "w": "Fähre",
+  "art": "die",
+  "pl": "Fähren",
+  "pos": "noun",
+  "en": [
+   "ferry"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Wir fahren mit der Fähre nach Schweden.",
+  "exen": "We're taking the ferry to Sweden."
+ },
+ {
+  "w": "Tankstelle",
+  "art": "die",
+  "pl": "Tankstellen",
+  "pos": "noun",
+  "en": [
+   "petrol station"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Wir müssen an der nächsten Tankstelle halten.",
+  "exen": "We need to stop at the next petrol station."
+ },
+ {
+  "w": "tanken",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "fill up (with fuel)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Ich muss noch tanken.",
+  "exen": "I still need to get petrol."
+ },
+ {
+  "w": "Panne",
+  "art": "die",
+  "pl": "Pannen",
+  "pos": "noun",
+  "en": [
+   "breakdown (car)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Wir hatten auf der Autobahn eine Panne.",
+  "exen": "We broke down on the motorway."
+ },
+ {
+  "w": "Werkstatt",
+  "art": "die",
+  "pl": "Werkstätten",
+  "pos": "noun",
+  "en": [
+   "garage (repairs)",
+   "workshop"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Das Auto ist in der Werkstatt.",
+  "exen": "The car is at the garage."
+ },
+ {
+  "w": "Umleitung",
+  "art": "die",
+  "pl": "Umleitungen",
+  "pos": "noun",
+  "en": [
+   "diversion",
+   "detour"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Wegen der Baustelle gibt es eine Umleitung.",
+  "exen": "There's a diversion because of the roadworks."
+ },
+ {
+  "w": "Geschwindigkeit",
+  "art": "die",
+  "pl": "Geschwindigkeiten",
+  "pos": "noun",
+  "en": [
+   "speed"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Die Geschwindigkeit ist hier auf 30 begrenzt.",
+  "exen": "The speed limit here is 30."
+ },
+ {
+  "w": "sich anschnallen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "fasten one's seatbelt"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Bitte schnallen Sie sich an.",
+  "exen": "Please fasten your seatbelts.",
+  "forms": "schnallt sich an · schnallte sich an · hat sich angeschnallt"
+ },
+ {
+  "w": "überholen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "overtake"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Hier darf man nicht überholen.",
+  "exen": "No overtaking here."
+ },
+ {
+  "w": "bremsen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "brake"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Der Fahrer konnte nicht mehr bremsen.",
+  "exen": "The driver couldn't brake in time."
+ },
+ {
+  "w": "Mietwagen",
+  "art": "der",
+  "pl": "Mietwagen",
+  "pos": "noun",
+  "en": [
+   "hire car",
+   "rental car"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Am Flughafen holen wir den Mietwagen ab.",
+  "exen": "We'll pick up the rental car at the airport."
+ },
+ {
+  "w": "Lkw",
+  "art": "der",
+  "pl": "Lkws",
+  "pos": "noun",
+  "en": [
+   "lorry",
+   "truck"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Auf der Autobahn fahren viele Lkws.",
+  "exen": "There are lots of lorries on the motorway."
+ },
+ {
+  "w": "Sonnencreme",
+  "art": "die",
+  "pl": "Sonnencremes",
+  "pos": "noun",
+  "en": [
+   "sun cream"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Vergiss die Sonnencreme nicht!",
+  "exen": "Don't forget the sun cream!"
+ },
+ {
+  "w": "auspacken",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "unpack"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Ich habe den Koffer noch nicht ausgepackt.",
+  "exen": "I haven't unpacked my suitcase yet.",
+  "forms": "packt aus · packte aus · hat ausgepackt"
+ },
+ {
+  "w": "Frost",
+  "art": "der",
+  "pl": "Fröste",
+  "pos": "noun",
+  "en": [
+   "frost"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "In der Nacht gibt es Frost.",
+  "exen": "There will be frost overnight."
+ },
+ {
+  "w": "neblig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "foggy"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Heute Morgen war es sehr neblig.",
+  "exen": "It was very foggy this morning."
+ },
+ {
+  "w": "Niederschlag",
+  "art": "der",
+  "pl": "Niederschläge",
+  "pos": "noun",
+  "en": [
+   "precipitation",
+   "rainfall"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Morgen gibt es viel Niederschlag.",
+  "exen": "There will be a lot of rain tomorrow."
+ },
+ {
+  "w": "Ufer",
+  "art": "das",
+  "pl": "Ufer",
+  "pos": "noun",
+  "en": [
+   "bank (of a river)",
+   "shore"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Wir picknicken am Ufer des Flusses.",
+  "exen": "We're having a picnic on the riverbank."
+ },
+ {
+  "w": "Wüste",
+  "art": "die",
+  "pl": "Wüsten",
+  "pos": "noun",
+  "en": [
+   "desert"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "In der Wüste regnet es selten.",
+  "exen": "It rarely rains in the desert."
+ },
+ {
+  "w": "Hügel",
+  "art": "der",
+  "pl": "Hügel",
+  "pos": "noun",
+  "en": [
+   "hill"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Hinter dem Haus ist ein kleiner Hügel.",
+  "exen": "There's a small hill behind the house."
+ },
+ {
+  "w": "Gipfel",
+  "art": "der",
+  "pl": "Gipfel",
+  "pos": "noun",
+  "en": [
+   "summit",
+   "peak"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Vom Gipfel hat man einen tollen Blick.",
+  "exen": "From the summit there's a great view."
+ },
+ {
+  "w": "Bach",
+  "art": "der",
+  "pl": "Bäche",
+  "pos": "noun",
+  "en": [
+   "stream",
+   "brook"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Durch den Wald fließt ein Bach.",
+  "exen": "A stream flows through the forest."
+ },
+ {
+  "w": "Wiese",
+  "art": "die",
+  "pl": "Wiesen",
+  "pos": "noun",
+  "en": [
+   "meadow"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Die Kühe stehen auf der Wiese.",
+  "exen": "The cows are standing in the meadow."
+ },
+ {
+  "w": "Feld",
+  "art": "das",
+  "pl": "Felder",
+  "pos": "noun",
+  "en": [
+   "field"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Auf dem Feld wächst Weizen.",
+  "exen": "Wheat is growing in the field."
+ },
+ {
+  "w": "Mond",
+  "art": "der",
+  "pl": "Monde",
+  "pos": "noun",
+  "en": [
+   "moon"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Heute ist Vollmond.",
+  "exen": "There's a full moon today."
+ },
+ {
+  "w": "Stern",
+  "art": "der",
+  "pl": "Sterne",
+  "pos": "noun",
+  "en": [
+   "star"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Auf dem Land sieht man viele Sterne.",
+  "exen": "In the countryside you see many stars."
+ },
+ {
+  "w": "Blatt",
+  "art": "das",
+  "pl": "Blätter",
+  "pos": "noun",
+  "en": [
+   "leaf",
+   "sheet (of paper)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Im Herbst fallen die Blätter.",
+  "exen": "In autumn the leaves fall."
+ },
+ {
+  "w": "Gras",
+  "art": "das",
+  "pl": "Gräser",
+  "pos": "noun",
+  "en": [
+   "grass"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Die Kinder spielen im Gras.",
+  "exen": "The children are playing in the grass."
+ },
+ {
+  "w": "Sonnenblume",
+  "art": "die",
+  "pl": "Sonnenblumen",
+  "pos": "noun",
+  "en": [
+   "sunflower"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Im Garten wachsen Sonnenblumen.",
+  "exen": "Sunflowers grow in the garden."
+ },
+ {
+  "w": "Insekt",
+  "art": "das",
+  "pl": "Insekten",
+  "pos": "noun",
+  "en": [
+   "insect"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Im Sommer gibt es viele Insekten.",
+  "exen": "There are lots of insects in summer."
+ },
+ {
+  "w": "Mücke",
+  "art": "die",
+  "pl": "Mücken",
+  "pos": "noun",
+  "en": [
+   "mosquito",
+   "midge"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Am See gibt es viele Mücken.",
+  "exen": "There are lots of mosquitoes at the lake."
+ },
+ {
+  "w": "Schlange",
+  "art": "die",
+  "pl": "Schlangen",
+  "pos": "noun",
+  "en": [
+   "snake",
+   "queue"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Im Zoo haben wir Schlangen gesehen.",
+  "exen": "We saw snakes at the zoo."
+ },
+ {
+  "w": "Bauer",
+  "art": "der",
+  "pl": "Bauern",
+  "pos": "noun",
+  "en": [
+   "farmer"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Der Bauer verkauft Eier auf dem Markt.",
+  "exen": "The farmer sells eggs at the market."
+ },
+ {
+  "w": "Ernte",
+  "art": "die",
+  "pl": "Ernten",
+  "pos": "noun",
+  "en": [
+   "harvest"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Die Ernte war dieses Jahr gut.",
+  "exen": "The harvest was good this year."
+ },
+ {
+  "w": "Sonnenaufgang",
+  "art": "der",
+  "pl": "Sonnenaufgänge",
+  "pos": "noun",
+  "en": [
+   "sunrise"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Wir sind früh aufgestanden, um den Sonnenaufgang zu sehen.",
+  "exen": "We got up early to see the sunrise."
+ },
+ {
+  "w": "Sonnenuntergang",
+  "art": "der",
+  "pl": "Sonnenuntergänge",
+  "pos": "noun",
+  "en": [
+   "sunset"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Der Sonnenuntergang am Meer war wunderschön.",
+  "exen": "The sunset by the sea was beautiful."
+ },
+ {
+  "w": "Erde",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "earth (planet)",
+   "soil"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Die Erde dreht sich um die Sonne.",
+  "exen": "The earth goes round the sun."
+ },
+ {
+  "w": "Stein",
+  "art": "der",
+  "pl": "Steine",
+  "pos": "noun",
+  "en": [
+   "stone",
+   "rock"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Die Kinder werfen Steine ins Wasser.",
+  "exen": "The children throw stones into the water."
+ },
+ {
+  "w": "Sand",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "sand"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "ex": "Der Sand am Strand ist sehr heiß.",
+  "exen": "The sand on the beach is very hot."
+ },
+ {
+  "w": "Zusage",
+  "art": "die",
+  "pl": "Zusagen",
+  "pos": "noun",
+  "en": [
+   "acceptance (offer, job)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Ich habe eine Zusage von der Firma bekommen!",
+  "exen": "I got an offer from the company!"
+ },
+ {
+  "w": "Absage",
+  "art": "die",
+  "pl": "Absagen",
+  "pos": "noun",
+  "en": [
+   "rejection",
+   "cancellation"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Leider habe ich eine Absage bekommen.",
+  "exen": "Unfortunately I got a rejection."
+ },
+ {
+  "w": "zusagen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "accept (an invitation, offer)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Ich habe für Samstag zugesagt.",
+  "exen": "I've said yes for Saturday.",
+  "forms": "sagt zu · sagte zu · hat zugesagt"
+ },
+ {
+  "w": "Beschäftigte",
+  "art": "die",
+  "pl": "Beschäftigten",
+  "pos": "noun",
+  "en": [
+   "worker (female)",
+   "employee (female)"
+  ],
+  "alt": [
+   "die Angestellte",
+   "die Mitarbeiterin"
+  ],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Die Beschäftigte arbeitet seit zehn Jahren hier.",
+  "exen": "The employee has worked here for ten years."
+ },
+ {
+  "w": "Führungskraft",
+  "art": "die",
+  "pl": "Führungskräfte",
+  "pos": "noun",
+  "en": [
+   "manager",
+   "executive"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Als Führungskraft trägt sie viel Verantwortung.",
+  "exen": "As a manager she carries a lot of responsibility."
+ },
+ {
+  "w": "leiten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "lead",
+   "manage (run)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Sie leitet die Abteilung seit drei Jahren.",
+  "exen": "She has run the department for three years."
+ },
+ {
+  "w": "betreuen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "look after (clients, children)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Er betreut unsere Kunden in Asien.",
+  "exen": "He looks after our customers in Asia."
+ },
+ {
+  "w": "Beratung",
+  "art": "die",
+  "pl": "Beratungen",
+  "pos": "noun",
+  "en": [
+   "consultation (advice session)",
+   "advice"
+  ],
+  "alt": [
+   "der Rat"
+  ],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Die Beratung ist kostenlos.",
+  "exen": "The consultation is free."
+ },
+ {
+  "w": "beraten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "advise"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Der Verkäufer hat mich gut beraten.",
+  "exen": "The salesperson gave me good advice.",
+  "forms": "berät · beriet · hat beraten"
+ },
+ {
+  "w": "Auftrag",
+  "art": "der",
+  "pl": "Aufträge",
+  "pos": "noun",
+  "en": [
+   "order",
+   "assignment"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Wir haben einen großen Auftrag bekommen.",
+  "exen": "We've got a big order."
+ },
+ {
+  "w": "Lieferung",
+  "art": "die",
+  "pl": "Lieferungen",
+  "pos": "noun",
+  "en": [
+   "delivery"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Die Lieferung kommt morgen.",
+  "exen": "The delivery is coming tomorrow."
+ },
+ {
+  "w": "liefern",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "deliver"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Wir liefern innerhalb von drei Tagen.",
+  "exen": "We deliver within three days."
+ },
+ {
+  "w": "Lieferdienst",
+  "art": "der",
+  "pl": "Lieferdienste",
+  "pos": "noun",
+  "en": [
+   "delivery service"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Der Lieferdienst bringt das Essen in 30 Minuten.",
+  "exen": "The delivery service brings the food in 30 minutes."
+ },
+ {
+  "w": "Gewinn",
+  "art": "der",
+  "pl": "Gewinne",
+  "pos": "noun",
+  "en": [
+   "profit",
+   "prize"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Die Firma hat dieses Jahr Gewinn gemacht.",
+  "exen": "The company made a profit this year."
+ },
+ {
+  "w": "Verlust",
+  "art": "der",
+  "pl": "Verluste",
+  "pos": "noun",
+  "en": [
+   "loss"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Das Unternehmen hat hohe Verluste.",
+  "exen": "The business has heavy losses."
+ },
+ {
+  "w": "Unternehmer",
+  "art": "der",
+  "pl": "Unternehmer",
+  "pos": "noun",
+  "en": [
+   "entrepreneur",
+   "business owner"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Mein Vater ist Unternehmer.",
+  "exen": "My father is an entrepreneur."
+ },
+ {
+  "w": "Fabrik",
+  "art": "die",
+  "pl": "Fabriken",
+  "pos": "noun",
+  "en": [
+   "factory"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Er arbeitet in einer Fabrik.",
+  "exen": "He works in a factory."
+ },
+ {
+  "w": "Branche",
+  "art": "die",
+  "pl": "Branchen",
+  "pos": "noun",
+  "en": [
+   "sector (industry)",
+   "industry"
+  ],
+  "alt": [
+   "die Industrie"
+  ],
+  "level": "B1",
+  "theme": "work",
+  "ex": "In welcher Branche arbeiten Sie?",
+  "exen": "Which industry do you work in?"
+ },
+ {
+  "w": "Industrie",
+  "art": "die",
+  "pl": "Industrien",
+  "pos": "noun",
+  "en": [
+   "industry"
+  ],
+  "alt": [
+   "die Branche"
+  ],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Die Industrie braucht Fachkräfte.",
+  "exen": "Industry needs skilled workers."
+ },
+ {
+  "w": "Produktion",
+  "art": "die",
+  "pl": "Produktionen",
+  "pos": "noun",
+  "en": [
+   "production"
+  ],
+  "alt": [
+   "die Inszenierung"
+  ],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Die Produktion wurde nach China verlegt.",
+  "exen": "Production was moved to China."
+ },
+ {
+  "w": "herstellen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "produce",
+   "manufacture"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Die Firma stellt Möbel her.",
+  "exen": "The company makes furniture.",
+  "forms": "stellt her · stellte her · hat hergestellt"
+ },
+ {
+  "w": "Produkt",
+  "art": "das",
+  "pl": "Produkte",
+  "pos": "noun",
+  "en": [
+   "product"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Unsere Produkte sind sehr beliebt.",
+  "exen": "Our products are very popular."
+ },
+ {
+  "w": "Arbeiter",
+  "art": "der",
+  "pl": "Arbeiter",
+  "pos": "noun",
+  "en": [
+   "worker (manual)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Die Arbeiter haben früh Feierabend.",
+  "exen": "The workers finish early."
+ },
+ {
+  "w": "Konferenz",
+  "art": "die",
+  "pl": "Konferenzen",
+  "pos": "noun",
+  "en": [
+   "conference"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Nächste Woche fahre ich zu einer Konferenz.",
+  "exen": "Next week I'm going to a conference."
+ },
+ {
+  "w": "Tagesordnung",
+  "art": "die",
+  "pl": "Tagesordnungen",
+  "pos": "noun",
+  "en": [
+   "agenda"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Was steht heute auf der Tagesordnung?",
+  "exen": "What's on the agenda today?"
+ },
+ {
+  "w": "Protokoll",
+  "art": "das",
+  "pl": "Protokolle",
+  "pos": "noun",
+  "en": [
+   "minutes (of a meeting)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Wer schreibt heute das Protokoll?",
+  "exen": "Who's taking the minutes today?"
+ },
+ {
+  "w": "Präsentation",
+  "art": "die",
+  "pl": "Präsentationen",
+  "pos": "noun",
+  "en": [
+   "presentation"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Meine Präsentation ist um 14 Uhr.",
+  "exen": "My presentation is at 2 pm."
+ },
+ {
+  "w": "Dienstreise",
+  "art": "die",
+  "pl": "Dienstreisen",
+  "pos": "noun",
+  "en": [
+   "business trip (official) - accept Geschäftsreise"
+  ],
+  "alt": [
+   "die Geschäftsreise"
+  ],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Mein Mann ist auf Dienstreise.",
+  "exen": "My husband is on a business trip."
+ },
+ {
+  "w": "verhandeln",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "negotiate"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Wir müssen über den Preis verhandeln.",
+  "exen": "We need to negotiate the price."
+ },
+ {
+  "w": "Verhandlung",
+  "art": "die",
+  "pl": "Verhandlungen",
+  "pos": "noun",
+  "en": [
+   "negotiation"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Die Verhandlungen waren schwierig.",
+  "exen": "The negotiations were difficult."
+ },
+ {
+  "w": "Gewerkschaft",
+  "art": "die",
+  "pl": "Gewerkschaften",
+  "pos": "noun",
+  "en": [
+   "trade union"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Die Gewerkschaft fordert mehr Lohn.",
+  "exen": "The union is demanding higher wages."
+ },
+ {
+  "w": "flexibel",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "flexible"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Ich habe flexible Arbeitszeiten.",
+  "exen": "I have flexible working hours."
+ },
+ {
+  "w": "Arbeitsplatz",
+  "art": "der",
+  "pl": "Arbeitsplätze",
+  "pos": "noun",
+  "en": [
+   "workplace",
+   "job"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Viele Arbeitsplätze sind in Gefahr.",
+  "exen": "Many jobs are at risk."
+ },
+ {
+  "w": "Azubi",
+  "art": "der",
+  "pl": "Azubis",
+  "pos": "noun",
+  "en": [
+   "trainee",
+   "apprentice"
+  ],
+  "alt": [
+   "der Auszubildende"
+  ],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Unser Azubi lernt schnell.",
+  "exen": "Our trainee learns fast."
+ },
+ {
+  "w": "Beförderung",
+  "art": "die",
+  "pl": "Beförderungen",
+  "pos": "noun",
+  "en": [
+   "promotion (at work)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Sie hat eine Beförderung bekommen.",
+  "exen": "She got a promotion."
+ },
+ {
+  "w": "Messe",
+  "art": "die",
+  "pl": "Messen",
+  "pos": "noun",
+  "en": [
+   "trade fair"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Auf der Messe stellen wir unsere Produkte vor.",
+  "exen": "We're presenting our products at the trade fair."
+ },
+ {
+  "w": "Jobmesse",
+  "art": "die",
+  "pl": "Jobmessen",
+  "pos": "noun",
+  "en": [
+   "job fair"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Auf der Jobmesse habe ich viele Firmen kennengelernt.",
+  "exen": "I got to know lots of companies at the job fair."
+ },
+ {
+  "w": "Mitarbeitergespräch",
+  "art": "das",
+  "pl": "Mitarbeitergespräche",
+  "pos": "noun",
+  "en": [
+   "performance review"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Nächste Woche habe ich mein Mitarbeitergespräch.",
+  "exen": "Next week I have my performance review."
+ },
+ {
+  "w": "Großraumbüro",
+  "art": "das",
+  "pl": "Großraumbüros",
+  "pos": "noun",
+  "en": [
+   "open-plan office"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Im Großraumbüro ist es oft laut.",
+  "exen": "It's often noisy in the open-plan office."
+ },
+ {
+  "w": "Besprechungsraum",
+  "art": "der",
+  "pl": "Besprechungsräume",
+  "pos": "noun",
+  "en": [
+   "meeting room"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Der Besprechungsraum ist im zweiten Stock.",
+  "exen": "The meeting room is on the second floor."
+ },
+ {
+  "w": "Empfang",
+  "art": "der",
+  "pl": "Empfänge",
+  "pos": "noun",
+  "en": [
+   "reception (desk)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Melden Sie sich bitte am Empfang.",
+  "exen": "Please report to reception."
+ },
+ {
+  "w": "Akte",
+  "art": "die",
+  "pl": "Akten",
+  "pos": "noun",
+  "en": [
+   "file (documents)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Die Akte liegt auf meinem Schreibtisch.",
+  "exen": "The file is on my desk."
+ },
+ {
+  "w": "Ordner",
+  "art": "der",
+  "pl": "Ordner",
+  "pos": "noun",
+  "en": [
+   "folder",
+   "binder"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Die Rechnungen sind in diesem Ordner.",
+  "exen": "The invoices are in this folder."
+ },
+ {
+  "w": "Quereinsteiger",
+  "art": "der",
+  "pl": "Quereinsteiger",
+  "pos": "noun",
+  "en": [
+   "career changer"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Die Firma sucht auch Quereinsteiger.",
+  "exen": "The company is also looking for career changers."
+ },
+ {
+  "w": "Gerät",
+  "art": "das",
+  "pl": "Geräte",
+  "pos": "noun",
+  "en": [
+   "appliance",
+   "device"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Das Gerät funktioniert nicht mehr.",
+  "exen": "The appliance doesn't work any more."
+ },
+ {
+  "w": "verstopft",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "blocked (pipe, drain)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Die Toilette ist schon wieder verstopft.",
+  "exen": "The toilet is blocked again."
+ },
+ {
+  "w": "Altstadt",
+  "art": "die",
+  "pl": "Altstädte",
+  "pos": "noun",
+  "en": [
+   "old town"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "ex": "Die Altstadt ist am Abend sehr schön.",
+  "exen": "The old town is lovely in the evening."
+ },
+ {
+  "w": "Zeitplan",
+  "art": "der",
+  "pl": "Zeitpläne",
+  "pos": "noun",
+  "en": [
+   "schedule",
+   "timetable"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "ex": "Wir liegen gut im Zeitplan.",
+  "exen": "We're well on schedule."
+ },
+ {
+  "w": "Ruhestand",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "retirement"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Mein Vater ist seit Mai im Ruhestand.",
+  "exen": "My father has been retired since May."
+ },
+ {
+  "w": "Leitung",
+  "art": "die",
+  "pl": "Leitungen",
+  "pos": "noun",
+  "en": [
+   "management",
+   "leadership"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Sie übernimmt die Leitung des Projekts.",
+  "exen": "She is taking over management of the project."
+ },
+ {
+  "w": "Kumpel",
+  "art": "der",
+  "pl": "Kumpel",
+  "pos": "noun",
+  "en": [
+   "mate",
+   "buddy"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Ich treffe heute meine Kumpels.",
+  "exen": "I'm meeting my mates today."
+ },
+ {
+  "w": "Spitzname",
+  "art": "der",
+  "pl": "Spitznamen",
+  "pos": "noun",
+  "en": [
+   "nickname"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Sein Spitzname ist Toni.",
+  "exen": "His nickname is Toni."
+ },
+ {
+  "w": "Lebenspartner",
+  "art": "der",
+  "pl": "Lebenspartner",
+  "pos": "noun",
+  "en": [
+   "partner (life partner)"
+  ],
+  "alt": [
+   "der Lebensgefährte"
+  ],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Sie wohnt mit ihrem Lebenspartner zusammen.",
+  "exen": "She lives with her partner."
+ },
+ {
+  "w": "Braut",
+  "art": "die",
+  "pl": "Bräute",
+  "pos": "noun",
+  "en": [
+   "bride"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Die Braut trug ein weißes Kleid.",
+  "exen": "The bride wore a white dress."
+ },
+ {
+  "w": "Bräutigam",
+  "art": "der",
+  "pl": "Bräutigame",
+  "pos": "noun",
+  "en": [
+   "bridegroom"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "people",
+  "ex": "Der Bräutigam war sehr nervös.",
+  "exen": "The groom was very nervous."
+ },
+ {
+  "w": "Reihenhaus",
+  "art": "das",
+  "pl": "Reihenhäuser",
+  "pos": "noun",
+  "en": [
+   "terraced house"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "ex": "Sie wohnen in einem Reihenhaus am Stadtrand.",
+  "exen": "They live in a terraced house on the outskirts."
+ },
+ {
+  "w": "Becher",
+  "art": "der",
+  "pl": "Becher",
+  "pos": "noun",
+  "en": [
+   "mug",
+   "cup (no handle)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Ich nehme einen Becher Kaffee zum Mitnehmen.",
+  "exen": "I'll take a cup of coffee to go."
+ },
+ {
+  "w": "Haltbarkeitsdatum",
+  "art": "das",
+  "pl": "Haltbarkeitsdaten",
+  "pos": "noun",
+  "en": [
+   "best-before date"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Achte auf das Haltbarkeitsdatum.",
+  "exen": "Check the best-before date."
+ },
+ {
+  "w": "Praline",
+  "art": "die",
+  "pl": "Pralinen",
+  "pos": "noun",
+  "en": [
+   "chocolate (filled)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Sie hat mir eine Schachtel Pralinen geschenkt.",
+  "exen": "She gave me a box of chocolates."
+ },
+ {
+  "w": "Quark",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "quark (soft cheese)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "food",
+  "ex": "Zum Frühstück esse ich Quark mit Obst.",
+  "exen": "For breakfast I eat quark with fruit."
+ },
+ {
+  "w": "Behinderung",
+  "art": "die",
+  "pl": "Behinderungen",
+  "pos": "noun",
+  "en": [
+   "disability"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Er hat eine leichte Behinderung.",
+  "exen": "He has a slight disability."
+ },
+ {
+  "w": "blind",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "blind"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Der Mann ist seit seiner Geburt blind.",
+  "exen": "The man has been blind since birth."
+ },
+ {
+  "w": "taub",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "deaf"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Mein Opa ist fast taub.",
+  "exen": "My grandpa is almost deaf."
+ },
+ {
+  "w": "Rollstuhl",
+  "art": "der",
+  "pl": "Rollstühle",
+  "pos": "noun",
+  "en": [
+   "wheelchair"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "body",
+  "ex": "Sie sitzt seit dem Unfall im Rollstuhl.",
+  "exen": "She has used a wheelchair since the accident."
+ },
+ {
+  "w": "Kittel",
+  "art": "der",
+  "pl": "Kittel",
+  "pos": "noun",
+  "en": [
+   "smock",
+   "lab coat"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "ex": "In der Fabrik muss man einen Kittel tragen.",
+  "exen": "You have to wear a smock in the factory."
+ },
+ {
+  "w": "Strafzettel",
+  "art": "der",
+  "pl": "Strafzettel",
+  "pos": "noun",
+  "en": [
+   "parking ticket",
+   "fine"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "ex": "Ich habe einen Strafzettel bekommen.",
+  "exen": "I got a parking ticket."
+ }
+]

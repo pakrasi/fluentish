@@ -1,0 +1,126 @@
+[
+ {
+  "time": "past",
+  "aspect": "simple",
+  "form": "eu fui",
+  "alt": "",
+  "status": "form",
+  "marker": [
+   "fui"
+  ],
+  "gloss": "I went",
+  "note": "Pretérito perfeito. fui is also the past of ser, so eu fui can mean I went or I was.",
+  "translit": "",
+  "markerTr": []
+ },
+ {
+  "time": "past",
+  "aspect": "progressive",
+  "form": "eu estava indo",
+  "alt": "eu ia",
+  "status": "form",
+  "marker": [
+   "estava indo"
+  ],
+  "gloss": "I was going",
+  "note": "estava + gerund for an action in progress; eu ia also works and doubles as I used to go.",
+  "translit": "",
+  "markerTr": []
+ },
+ {
+  "time": "past",
+  "aspect": "perfect",
+  "form": "eu tinha ido",
+  "alt": "",
+  "status": "form",
+  "marker": [
+   "tinha ido"
+  ],
+  "gloss": "I had gone",
+  "note": "ter in the imperfeito plus participle. The one-word form fora survives only in literature.",
+  "translit": "",
+  "markerTr": []
+ },
+ {
+  "time": "present",
+  "aspect": "simple",
+  "form": "eu vou",
+  "alt": "",
+  "status": "form",
+  "marker": [],
+  "gloss": "I go",
+  "note": "vou is irregular (vou, vai, vamos, vão) and is also the helper for the spoken future.",
+  "translit": "",
+  "markerTr": []
+ },
+ {
+  "time": "present",
+  "aspect": "progressive",
+  "form": "eu estou indo",
+  "alt": "eu tô indo",
+  "status": "form",
+  "marker": [
+   "estou indo"
+  ],
+  "gloss": "I am going",
+  "note": "Brazil uses estar + gerund (indo); Portugal says estou a ir. In speech estou shrinks to tô.",
+  "translit": "",
+  "markerTr": []
+ },
+ {
+  "time": "present",
+  "aspect": "perfect",
+  "form": "eu fui",
+  "alt": "eu já fui",
+  "status": "form",
+  "marker": [
+   "fui"
+  ],
+  "gloss": "I have gone",
+  "note": "Same form as I went. Trap: eu tenho ido means I have been going lately, not I have gone.",
+  "translit": "",
+  "markerTr": []
+ },
+ {
+  "time": "future",
+  "aspect": "simple",
+  "form": "eu vou amanhã",
+  "alt": "eu irei",
+  "status": "form",
+  "marker": [
+   "amanhã"
+  ],
+  "gloss": "I will go",
+  "note": "Present plus a time word is the norm; vou ir is heard but frowned upon, and irei sounds written.",
+  "translit": "",
+  "markerTr": []
+ },
+ {
+  "time": "future",
+  "aspect": "progressive",
+  "form": "eu vou estar indo",
+  "alt": "",
+  "status": "form",
+  "marker": [
+   "vou estar indo"
+  ],
+  "gloss": "I will be going",
+  "note": "Exists and is used, but overusing vou estar + gerund is mocked as call-centre talk.",
+  "translit": "",
+  "markerTr": []
+ },
+ {
+  "time": "future",
+  "aspect": "perfect",
+  "form": "eu vou ter ido",
+  "alt": "eu terei ido",
+  "status": "form",
+  "marker": [
+   "vou ter ido"
+  ],
+  "gloss": "I will have gone",
+  "note": "Speech builds it with vou ter + participle; terei ido is the written form. Often softened with já.",
+  "translit": "",
+  "markerTr": []
+ }
+]

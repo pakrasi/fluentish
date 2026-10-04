@@ -1,0 +1,534 @@
+[
+{
+"id": "ENG_CHUNK_0501",
+"t": "J'ai peur de [nom] / des [nom]",
+"ex": "J'ai peur des araignées, alors c'est toi qui vas t'occuper de celle-là."
+},
+{
+"id": "ENG_CHUNK_0502",
+"t": "Ça coûte combien de [infinitif] ? / Combien ça coûte pour... ?",
+"ex": "Ça coûte combien de réparer un pneu crevé ?"
+},
+{
+"id": "ENG_CHUNK_0503",
+"t": "Tu es sûr que [proposition] ?",
+"ex": "T'es sûr que t'as éteint la plaque ?"
+},
+{
+"id": "ENG_CHUNK_0504",
+"t": "Qu'est-ce qui te fait croire que [proposition] ? / Pourquoi tu dis ça ?",
+"ex": "Qu'est-ce qui te fait croire qu'elle t'en veut ?"
+},
+{
+"id": "ENG_CHUNK_0505",
+"t": "C'est vrai que [proposition] ?",
+"ex": "C'est vrai que tu déménages à Marseille ?"
+},
+{
+"id": "ENG_CHUNK_0506",
+"t": "Tu sais [question indirecte] ? / T'aurais pas vu [nom] ?",
+"ex": "Tu sais pas où j'ai laissé mon téléphone ?",
+"n": "T'aurais pas vu mes clés ? is the natural 'any idea where'."
+},
+{
+"id": "ENG_CHUNK_0507",
+"t": "Je peux vous demander pourquoi [proposition] ?",
+"ex": "Je peux vous demander pourquoi vous partez si tôt ?"
+},
+{
+"id": "ENG_CHUNK_0508",
+"t": "Ça sert à quoi, [nom] ? / [nom], c'est pour quoi faire ?",
+"ex": "Il sert à quoi, ce bouton ?"
+},
+{
+"id": "ENG_CHUNK_0509",
+"t": "Comment on dit [nom] en français ?",
+"ex": "Pardon, comment on dit ça en français ?",
+"n": "Adapted: the learner asks for the French word."
+},
+{
+"id": "ENG_CHUNK_0510",
+"t": "Vous pourriez me montrer comment [infinitif] ?",
+"ex": "Tu pourrais me montrer comment marche la machine à café ?"
+},
+{
+"id": "ENG_CHUNK_0511",
+"t": "Vous pourriez me conseiller [nom] ? / Vous connaîtriez [nom] ?",
+"ex": "Vous connaîtriez un bon endroit pour bruncher dans le coin ?"
+},
+{
+"id": "ENG_CHUNK_0512",
+"t": "Il y a un endroit où je peux [infinitif] ?",
+"ex": "Il y a un endroit où je peux recharger mon téléphone ?",
+"n": "Also Il y a un endroit où je puisse... (subjunctive, more formal)."
+},
+{
+"id": "ENG_CHUNK_0513",
+"t": "Il y a [nom] près d'ici ? / Il y a [nom] dans le coin ?",
+"ex": "Excusez-moi, il y a une pharmacie près d'ici ?"
+},
+{
+"id": "ENG_CHUNK_0514",
+"t": "C'est bien par là pour aller à [nom] ?",
+"ex": "Excusez-moi, c'est bien par là, le musée ?"
+},
+{
+"id": "ENG_CHUNK_0515",
+"t": "C'est loin, [nom] ? / Il y a combien jusqu'à [nom] ?",
+"ex": "La plage, c'est loin d'ici ?"
+},
+{
+"id": "ENG_CHUNK_0516",
+"t": "Ce bus va à [nom] ? / Il passe par [nom], ce bus ?",
+"ex": "Excusez-moi, ce bus va à la gare ?"
+},
+{
+"id": "ENG_CHUNK_0517",
+"t": "À quelle heure part [nom] ? / [nom] part à quelle heure ?",
+"ex": "Le dernier train part à quelle heure ?"
+},
+{
+"id": "ENG_CHUNK_0518",
+"t": "Je voudrais un aller-retour pour [nom]",
+"ex": "Je voudrais un aller-retour pour Lyon, s'il vous plaît.",
+"n": "One way: un aller simple."
+},
+{
+"id": "ENG_CHUNK_0519",
+"t": "J'ai une réservation au nom de [nom]",
+"ex": "Bonjour, j'ai une réservation au nom de Martin."
+},
+{
+"id": "ENG_CHUNK_0520",
+"t": "Je voudrais réserver pour [nom]",
+"ex": "Bonjour, je voudrais réserver une table pour deux à vingt heures."
+},
+{
+"id": "ENG_CHUNK_0521",
+"t": "Vous avez une table pour [nom] ?",
+"ex": "Bonjour, vous avez une table pour deux ?",
+"n": "Also C'est pour deux personnes."
+},
+{
+"id": "ENG_CHUNK_0522",
+"t": "Il y a [nom] dans [nom] ?",
+"ex": "Il y a de la viande dans la soupe ?"
+},
+{
+"id": "ENG_CHUNK_0523",
+"t": "Je suis allergique à [nom]",
+"ex": "Je suis allergique aux cacahuètes, alors je vais passer mon tour pour le dessert."
+},
+{
+"id": "ENG_CHUNK_0524",
+"t": "Je pourrais l'avoir sans [nom] ?",
+"ex": "Je pourrais l'avoir sans oignons ?"
+},
+{
+"id": "ENG_CHUNK_0525",
+"t": "[nom] est compris ? / C'est avec [nom] ?",
+"ex": "Le petit-déjeuner est compris ?"
+},
+{
+"id": "ENG_CHUNK_0526",
+"t": "Où est-ce que je peux trouver [nom] ? / Où sont [nom] ?",
+"ex": "Excusez-moi, où sont les céréales ?"
+},
+{
+"id": "ENG_CHUNK_0527",
+"t": "Je peux essayer [nom] ?",
+"ex": "Je peux essayer ce jean ?",
+"n": "No particle: essayer covers 'try on'. Cabines = fitting rooms."
+},
+{
+"id": "ENG_CHUNK_0528",
+"t": "[nom] est en promo ? / [nom] est soldé ?",
+"ex": "Cette veste est en promo ?",
+"n": "Les soldes = seasonal sales."
+},
+{
+"id": "ENG_CHUNK_0529",
+"t": "Vous n'auriez pas quelque chose de moins [adjectif] ?",
+"ex": "Vous n'auriez pas quelque chose de moins cher ?",
+"n": "quelque chose de + masculine adjective."
+},
+{
+"id": "ENG_CHUNK_0530",
+"t": "Tu vas adorer [nom]",
+"ex": "Tu vas adorer cet endroit."
+},
+{
+"id": "ENG_CHUNK_0531",
+"t": "Je vais prendre [nom] / Je prends [nom]",
+"ex": "Je vais prendre le bleu."
+},
+{
+"id": "ENG_CHUNK_0532",
+"t": "Vous acceptez [nom] ? / Je peux payer par [nom] ?",
+"ex": "Vous prenez la carte ?",
+"n": "La carte (bleue) = bank card; payments by card are standard."
+},
+{
+"id": "ENG_CHUNK_0533",
+"t": "Je voudrais rendre [nom] / échanger [nom]",
+"ex": "Bonjour, je voudrais rendre ce pull. Il est trop petit."
+},
+{
+"id": "ENG_CHUNK_0534",
+"t": "Je voudrais annuler [nom] / résilier [nom]",
+"ex": "Je voudrais résilier mon abonnement, s'il vous plaît.",
+"n": "Résilier for subscriptions and contracts; annuler for bookings."
+},
+{
+"id": "ENG_CHUNK_0535",
+"t": "Il y a des frais pour [infinitif] ?",
+"ex": "Il y a des frais pour changer la date ?"
+},
+{
+"id": "ENG_CHUNK_0536",
+"t": "essayer [nom] / tenter le coup",
+"ex": "J'ai jamais mangé de sushis, mais je vais essayer."
+},
+{
+"id": "ENG_CHUNK_0537",
+"t": "continuer / ne pas lâcher",
+"ex": "T'es presque en haut, lâche rien !",
+"n": "Lâche rien ! is the everyday cheer."
+},
+{
+"id": "ENG_CHUNK_0538",
+"t": "faire un vœu",
+"ex": "Souffle les bougies et fais un vœu !"
+},
+{
+"id": "ENG_CHUNK_0539",
+"t": "se voir / se retrouver",
+"ex": "Faudrait qu'on se voie la semaine prochaine.",
+"n": "Faudrait que + subjunctive (se voie)."
+},
+{
+"id": "ENG_CHUNK_0540",
+"t": "faire visiter [nom] à [personne]",
+"ex": "Passe demain, je te ferai visiter les bureaux."
+},
+{
+"id": "ENG_CHUNK_0541",
+"t": "s'installer avec [personne] / emménager avec [personne]",
+"ex": "Je m'installe avec ma copine le mois prochain."
+},
+{
+"id": "ENG_CHUNK_0542",
+"t": "déménager / partir de chez ses parents",
+"ex": "Je suis parti de chez mes parents à dix-huit ans."
+},
+{
+"id": "ENG_CHUNK_0543",
+"t": "être proche de [personne]",
+"ex": "Je suis très proche de ma grand-mère. On se parle tous les jours."
+},
+{
+"id": "ENG_CHUNK_0544",
+"t": "avoir un faible pour [personne] / craquer pour [personne]",
+"ex": "Je crois que Julien a un faible pour toi.",
+"n": "Kiffer quelqu'un is slangier."
+},
+{
+"id": "ENG_CHUNK_0545",
+"t": "se réconcilier avec [personne]",
+"ex": "Tu t'es réconciliée avec ta sœur ?"
+},
+{
+"id": "ENG_CHUNK_0546",
+"t": "rester en contact / garder le contact",
+"ex": "On reste en contact après ton déménagement ?"
+},
+{
+"id": "ENG_CHUNK_0547",
+"t": "avoir des nouvelles de [personne]",
+"ex": "T'as eu des nouvelles d'Anna récemment ?"
+},
+{
+"id": "ENG_CHUNK_0548",
+"t": "se plaindre de [nom] / râler à cause de [nom]",
+"ex": "Mon voisin passe son temps à se plaindre du bruit.",
+"n": "Râler is the stereotypically French casual grumble."
+},
+{
+"id": "ENG_CHUNK_0549",
+"t": "tenir à [nom] / faire attention à [nom]",
+"ex": "Je fais beaucoup plus attention à ma santé maintenant.",
+"n": "tenir à = value, care about (a person or thing)."
+},
+{
+"id": "ENG_CHUNK_0550",
+"t": "rappeler à [personne] de [infinitif]",
+"ex": "Tu peux me rappeler d'appeler le dentiste ?",
+"n": "rappeler à quelqu'un de + infinitive. 'Remind me' also: Fais-moi penser à..."
+},
+{
+"id": "ENG_CHUNK_0551",
+"t": "réussir un examen / avoir son examen",
+"ex": "J'ai eu mon permis du premier coup !",
+"n": "Passer un examen = TAKE an exam, a classic false friend."
+},
+{
+"id": "ENG_CHUNK_0552",
+"t": "préparer [nom] / se préparer pour [nom]",
+"ex": "Je prépare mes examens de fin d'année."
+},
+{
+"id": "ENG_CHUNK_0553",
+"t": "s'occuper de [nom] / se charger de [nom]",
+"ex": "T'inquiète, je m'occupe de l'addition."
+},
+{
+"id": "ENG_CHUNK_0554",
+"t": "participer à [nom]",
+"ex": "Plus de deux cents personnes ont participé à la course."
+},
+{
+"id": "ENG_CHUNK_0555",
+"t": "rendre [nom]",
+"ex": "Je dois rendre mon rapport avant vendredi."
+},
+{
+"id": "ENG_CHUNK_0556",
+"t": "faire une présentation / présenter [nom]",
+"ex": "Je dois faire une présentation demain et je suis hyper stressé."
+},
+{
+"id": "ENG_CHUNK_0557",
+"t": "faire des heures sup",
+"ex": "J'ai fait des heures sup toute la semaine.",
+"n": "Heures sup = heures supplémentaires."
+},
+{
+"id": "ENG_CHUNK_0558",
+"t": "être promu / avoir une promotion",
+"ex": "Ma sœur vient d'être promue responsable !"
+},
+{
+"id": "ENG_CHUNK_0559",
+"t": "perdre son travail / se faire licencier",
+"ex": "Mon oncle a perdu son boulot le mois dernier."
+},
+{
+"id": "ENG_CHUNK_0560",
+"t": "démissionner / quitter son travail",
+"ex": "Elle a démissionné pour voyager pendant un an."
+},
+{
+"id": "ENG_CHUNK_0561",
+"t": "un travail à temps partiel / un petit boulot",
+"ex": "J'ai un petit boulot dans un café le week-end.",
+"n": "Petit boulot = side or student job."
+},
+{
+"id": "ENG_CHUNK_0562",
+"t": "un entretien d'embauche",
+"ex": "J'ai un entretien d'embauche lundi matin."
+},
+{
+"id": "ENG_CHUNK_0563",
+"t": "finir le travail / sortir du boulot",
+"ex": "Tu sors du boulot à quelle heure ?"
+},
+{
+"id": "ENG_CHUNK_0564",
+"t": "y aller / filer",
+"ex": "Bon, j'y vais. À demain."
+},
+{
+"id": "ENG_CHUNK_0565",
+"t": "l'heure de pointe / les heures de pointe",
+"ex": "Partons tôt pour éviter l'heure de pointe."
+},
+{
+"id": "ENG_CHUNK_0566",
+"t": "Difficile à dire",
+"ex": "Ce sera prêt pour vendredi ? Difficile à dire."
+},
+{
+"id": "ENG_CHUNK_0567",
+"t": "Pas que je sache",
+"ex": "Il y a une réunion aujourd'hui ? Pas que je sache.",
+"n": "que je sache is a frozen subjunctive."
+},
+{
+"id": "ENG_CHUNK_0568",
+"t": "Carrément ! / Bien sûr !",
+"ex": "Tu viens à la soirée ? Carrément !"
+},
+{
+"id": "ENG_CHUNK_0569",
+"t": "Personnellement / Moi,",
+"ex": "Moi, je préfère la plage à la montagne.",
+"n": "Spoken French fronts Moi, ... to mark a personal view."
+},
+{
+"id": "ENG_CHUNK_0570",
+"t": "Je dois dire que / Franchement",
+"ex": "Franchement, c'est la meilleure pizza que j'aie jamais mangée.",
+"n": "la meilleure... que + subjunctive (aie) after a superlative."
+},
+{
+"id": "ENG_CHUNK_0571",
+"t": "Crois-moi / Fais-moi confiance",
+"ex": "Crois-moi, t'as pas envie de conduire à cette heure-ci."
+},
+{
+"id": "ENG_CHUNK_0572",
+"t": "C'est faux / N'importe quoi",
+"ex": "C'est faux, je t'ai appelé deux fois !",
+"n": "N'importe quoi ! is blunter."
+},
+{
+"id": "ENG_CHUNK_0573",
+"t": "Je ne suis pas du tout d'accord",
+"ex": "Je suis pas du tout d'accord, le premier film était bien meilleur."
+},
+{
+"id": "ENG_CHUNK_0574",
+"t": "Hors de question / Certainement pas",
+"ex": "Je peux emprunter ta voiture ce soir ? Hors de question."
+},
+{
+"id": "ENG_CHUNK_0575",
+"t": "Je n'y avais pas pensé",
+"ex": "Ah, bien vu. J'y avais pas pensé."
+},
+{
+"id": "ENG_CHUNK_0576",
+"t": "T'as gagné",
+"ex": "Bon, t'as gagné, on prend thaï."
+},
+{
+"id": "ENG_CHUNK_0577",
+"t": "Ah, c'est dur, ça / Question difficile",
+"ex": "Mon film préféré ? Ah, c'est dur, ça."
+},
+{
+"id": "ENG_CHUNK_0578",
+"t": "Je peux te poser une question ?",
+"ex": "Je peux te poser une question ? Tu l'aimes vraiment, ton boulot ?"
+},
+{
+"id": "ENG_CHUNK_0579",
+"t": "Et c'est pas fini / Et le pire, c'est que",
+"ex": "Donc j'ai raté le bus, et le pire, c'est qu'il s'est mis à pleuvoir."
+},
+{
+"id": "ENG_CHUNK_0580",
+"t": "Le plus drôle, c'est que",
+"ex": "Le plus drôle, c'est qu'on s'était déjà rencontrés et qu'aucun de nous deux ne s'en souvenait."
+},
+{
+"id": "ENG_CHUNK_0581",
+"t": "Souhaite-moi bonne chance",
+"ex": "Je rencontre ses parents ce soir. Souhaite-moi bonne chance !",
+"n": "Replies: Bonne chance ! or, to avoid jinxing, Merde ! (answered Merci)."
+},
+{
+"id": "ENG_CHUNK_0582",
+"t": "Ce sera pour la prochaine fois",
+"ex": "T'as pas gagné ? Bon, ce sera pour la prochaine fois."
+},
+{
+"id": "ENG_CHUNK_0583",
+"t": "Remets-toi vite / Bon rétablissement",
+"ex": "Désolé que tu sois malade. Remets-toi vite !",
+"n": "Désolé que + subjunctive (sois)."
+},
+{
+"id": "ENG_CHUNK_0584",
+"t": "Le monde est petit",
+"ex": "Tu connais mon cousin ? Le monde est petit."
+},
+{
+"id": "ENG_CHUNK_0585",
+"t": "C'est pas trop mon truc",
+"ex": "Le karaoké ? Merci, mais c'est pas trop mon truc."
+},
+{
+"id": "ENG_CHUNK_0586",
+"t": "Oh non, c'est pas vrai ! / Mais enfin !",
+"ex": "C'est pas vrai ! Encore un retard !"
+},
+{
+"id": "ENG_CHUNK_0587",
+"t": "Le temps passe vite / Ça passe vite",
+"ex": "Ton fils entre à la fac ? Ça passe vite."
+},
+{
+"id": "ENG_CHUNK_0588",
+"t": "Mieux vaut tard que jamais",
+"ex": "Tu m'appelles enfin ! Mieux vaut tard que jamais."
+},
+{
+"id": "ENG_CHUNK_0589",
+"t": "C'est simple comme bonjour / C'est fastoche",
+"ex": "T'inquiète pas pour l'exam, c'est fastoche.",
+"n": "Fastoche is casual for facile."
+},
+{
+"id": "ENG_CHUNK_0590",
+"t": "Je te l'avais bien dit",
+"ex": "Le resto était fermé ? Je te l'avais bien dit."
+},
+{
+"id": "ENG_CHUNK_0591",
+"t": "sinon",
+"ex": "Pars maintenant, sinon tu vas tomber dans les bouchons."
+},
+{
+"id": "ENG_CHUNK_0592",
+"t": "exactement comme / tout comme",
+"ex": "Elle ressemble trait pour trait à sa mère.",
+"n": "For looks: ressembler à; C'est sa mère tout craché."
+},
+{
+"id": "ENG_CHUNK_0593",
+"t": "par rapport à / comparé à",
+"ex": "Par rapport à l'hiver dernier, celui-ci est plutôt doux."
+},
+{
+"id": "ENG_CHUNK_0594",
+"t": "pour l'instant / pour le moment",
+"ex": "Laissons ça comme ça pour l'instant."
+},
+{
+"id": "ENG_CHUNK_0595",
+"t": "pour / afin de",
+"ex": "Je me lève à cinq heures pour éviter les bouchons.",
+"n": "afin de is more formal; afin que / pour que + subjunctive."
+},
+{
+"id": "ENG_CHUNK_0596",
+"t": "quoi qu'il arrive",
+"ex": "Je serai là, quoi qu'il arrive.",
+"n": "quoi que + subjunctive (arrive)."
+},
+{
+"id": "ENG_CHUNK_0597",
+"t": "seulement si / à condition que [subjonctif]",
+"ex": "Je viens, mais seulement si c'est toi qui conduis.",
+"n": "à condition que + subjunctive; seulement si + indicative."
+},
+{
+"id": "ENG_CHUNK_0598",
+"t": "du coup / par conséquent",
+"ex": "Notre vol a été annulé, du coup on a dormi à l'aéroport.",
+"n": "Du coup is ubiquitous in speech; par conséquent is written/formal."
+},
+{
+"id": "ENG_CHUNK_0599",
+"t": "au bout d'un moment / après un certain temps",
+"ex": "C'était bizarre au début, mais au bout d'un moment je m'y suis fait."
+},
+{
+"id": "ENG_CHUNK_0600",
+"t": "tôt ou tard",
+"ex": "Tôt ou tard, il faudra que tu lui dises.",
+"n": "il faudra que + subjunctive (dises)."
+}
+]

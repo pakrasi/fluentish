@@ -1,0 +1,1174 @@
+[
+ {
+  "id": "BG:v2-deshalb-komme-nicht",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "v2",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "v2",
+  "focus": [
+   "v2"
+  ],
+  "strict": [],
+  "plan": "transform",
+  "task": "Start the sentence with Deshalb.",
+  "prompt": "Ich komme heute nicht.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Deshalb",
+  "accept": [
+   "deshalb komme ich heute nicht"
+  ],
+  "anywhere": false,
+  "model": "Deshalb komme ich heute nicht.",
+  "wrong": [
+   "Deshalb ich komme heute nicht.",
+   "Deshalb, ich komme heute nicht."
+  ],
+  "rule": "After Deshalb, the verb comes next, then the subject: Deshalb komme ich heute nicht.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:v2-danach-gegessen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "v2",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "v2",
+  "focus": [
+   "v2"
+  ],
+  "strict": [],
+  "plan": "transform",
+  "task": "Start the sentence with Danach.",
+  "prompt": "Wir haben zusammen gegessen.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Danach",
+  "accept": [
+   "danach haben wir zusammen gegessen"
+  ],
+  "anywhere": false,
+  "model": "Danach haben wir zusammen gegessen.",
+  "wrong": [
+   "Danach wir haben zusammen gegessen.",
+   "Danach, wir haben zusammen gegessen."
+  ],
+  "rule": "After Danach, the verb comes next, then the subject: Danach haben wir zusammen gegessen.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:v2-heimatland-spaet",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "v2",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "v2",
+  "focus": [
+   "v2"
+  ],
+  "strict": [],
+  "plan": "transform",
+  "task": "Start the sentence with In meinem Heimatland.",
+  "prompt": "Die Leute essen sehr spät.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "In meinem Heimatland",
+  "accept": [
+   "in meinem heimatland essen die leute sehr spät"
+  ],
+  "anywhere": false,
+  "model": "In meinem Heimatland essen die Leute sehr spät.",
+  "wrong": [
+   "In meinem Heimatland die Leute essen sehr spät.",
+   "In meinem Heimatland, die Leute essen sehr spät."
+  ],
+  "rule": "After In meinem Heimatland, the verb comes next, then the subject: In meinem Heimatland essen die Leute sehr spät.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:v2-meinung-gute-idee",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "v2",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "v2",
+  "focus": [
+   "v2"
+  ],
+  "strict": [],
+  "plan": "transform",
+  "task": "Start the sentence with Meiner Meinung nach.",
+  "prompt": "Das ist keine gute Idee.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Meiner Meinung nach",
+  "accept": [
+   "meiner meinung nach ist das keine gute idee",
+   "meiner meinung nach ist es keine gute idee"
+  ],
+  "anywhere": false,
+  "model": "Meiner Meinung nach ist das keine gute Idee.",
+  "wrong": [
+   "Meiner Meinung nach das ist keine gute Idee.",
+   "Meiner Meinung nach, das ist keine gute Idee."
+  ],
+  "rule": "After Meiner Meinung nach, the verb comes next, then the subject: Meiner Meinung nach ist das keine gute Idee.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:v2-trotzdem-spazieren",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "v2",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "v2",
+  "focus": [
+   "v2"
+  ],
+  "strict": [],
+  "plan": "transform",
+  "task": "Start the sentence with Trotzdem.",
+  "prompt": "Wir sind spazieren gegangen.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Trotzdem",
+  "accept": [
+   "trotzdem sind wir spazieren gegangen"
+  ],
+  "anywhere": false,
+  "model": "Trotzdem sind wir spazieren gegangen.",
+  "wrong": [
+   "Trotzdem wir sind spazieren gegangen.",
+   "Trotzdem, wir sind spazieren gegangen."
+  ],
+  "rule": "After Trotzdem, the verb comes next, then the subject: Trotzdem sind wir spazieren gegangen.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:v2-en-leider-samstag",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "v2",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "v2",
+  "focus": [
+   "v2"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "Unfortunately I don't have time on Saturday.",
+  "prompt_lang": "en",
+  "hl": "Unfortunately I don't have time on Saturday",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "leider habe ich am samstag keine zeit",
+   "leider hab ich am samstag keine zeit",
+   "leider habe ich samstag keine zeit",
+   "am samstag habe ich leider keine zeit",
+   "ich habe am samstag leider keine zeit",
+   "ich habe leider am samstag keine zeit",
+   "ich hab am samstag leider keine zeit"
+  ],
+  "anywhere": true,
+  "model": "Leider habe ich am Samstag keine Zeit.",
+  "wrong": [
+   "Leider, ich habe am Samstag keine Zeit.",
+   "Leider ich habe am Samstag keine Zeit."
+  ],
+  "rule": "After Leider, the verb comes next, then the subject: Leider habe ich am Samstag keine Zeit.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:v2-en-zuerst-liste",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "v2",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "v2",
+  "focus": [
+   "v2"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "First we have to write a list.",
+  "prompt_lang": "en",
+  "hl": "First we have to write a list",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "zuerst müssen wir eine liste schreiben",
+   "zuerst müssen wir eine liste machen",
+   "wir müssen zuerst eine liste schreiben",
+   "wir müssen zuerst eine liste machen"
+  ],
+  "anywhere": true,
+  "model": "Zuerst müssen wir eine Liste schreiben.",
+  "wrong": [
+   "Zuerst wir müssen eine Liste schreiben.",
+   "Zuerst, wir müssen eine Liste machen."
+  ],
+  "rule": "After Zuerst, the verb comes next, then the subject: Zuerst müssen wir eine Liste schreiben.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:v2-en-deshalb-deutsch",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "v2",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "v2",
+  "focus": [
+   "v2"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "That's why I'm learning German.",
+  "prompt_lang": "en",
+  "hl": "That's why I'm learning German",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "deshalb lerne ich deutsch",
+   "deswegen lerne ich deutsch",
+   "darum lerne ich deutsch",
+   "ich lerne deshalb deutsch",
+   "ich lerne deswegen deutsch",
+   "ich lerne darum deutsch"
+  ],
+  "anywhere": true,
+  "model": "Deshalb lerne ich Deutsch.",
+  "wrong": [
+   "Deshalb ich lerne Deutsch.",
+   "Deswegen ich lerne Deutsch."
+  ],
+  "rule": "After Deshalb, the verb comes next, then the subject: Deshalb lerne ich Deutsch.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:v2-en-vor-zwei-jahren",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "v2",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "v2",
+  "focus": [
+   "v2"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "Two years ago I moved to Berlin.",
+  "prompt_lang": "en",
+  "hl": "Two years ago I moved to Berlin",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "vor zwei jahren bin ich nach berlin gezogen",
+   "vor zwei jahren bin ich nach berlin umgezogen",
+   "ich bin vor zwei jahren nach berlin gezogen",
+   "ich bin vor zwei jahren nach berlin umgezogen"
+  ],
+  "anywhere": true,
+  "model": "Vor zwei Jahren bin ich nach Berlin gezogen.",
+  "wrong": [
+   "Vor zwei Jahren ich bin nach Berlin gezogen.",
+   "Vor zwei Jahren, ich bin nach Berlin umgezogen."
+  ],
+  "rule": "After Vor zwei Jahren, the verb comes next, then the subject: Vor zwei Jahren bin ich nach Berlin gezogen.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:v2-en-ausserdem-teuer",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "v2",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "v2",
+  "focus": [
+   "v2"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "Besides, the flat is too expensive.",
+  "prompt_lang": "en",
+  "hl": "Besides, the flat is too expensive",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "außerdem ist die wohnung zu teuer",
+   "die wohnung ist außerdem zu teuer"
+  ],
+  "anywhere": true,
+  "model": "Außerdem ist die Wohnung zu teuer.",
+  "wrong": [
+   "Außerdem die Wohnung ist zu teuer.",
+   "Außerdem, die Wohnung ist zu teuer."
+  ],
+  "rule": "After Außerdem, the verb comes next, then the subject: Außerdem ist die Wohnung zu teuer.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:v2-en-danach-cafe",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "v2",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "v2",
+  "focus": [
+   "v2"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "Afterwards we went to a café.",
+  "prompt_lang": "en",
+  "hl": "Afterwards we went to a café",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "danach sind wir in ein café gegangen",
+   "danach sind wir ins café gegangen",
+   "danach gingen wir in ein café",
+   "danach gingen wir ins café",
+   "wir sind danach in ein café gegangen",
+   "wir sind danach ins café gegangen"
+  ],
+  "anywhere": true,
+  "model": "Danach sind wir in ein Café gegangen.",
+  "wrong": [
+   "Danach wir sind in ein Café gegangen.",
+   "Danach, wir sind ins Café gegangen."
+  ],
+  "rule": "After Danach, the verb comes next, then the subject: Danach sind wir in ein Café gegangen.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:nsf-wenn-zeit",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "v2",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "v2",
+  "focus": [
+   "inversion",
+   "v2"
+  ],
+  "strict": [],
+  "plan": "transform",
+  "task": "Finish the sentence with the words below.",
+  "prompt": "Ich lerne jeden Abend.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Wenn ich Zeit habe,",
+  "accept": [
+   "wenn ich zeit habe lerne ich jeden abend"
+  ],
+  "anywhere": false,
+  "model": "Wenn ich Zeit habe, lerne ich jeden Abend.",
+  "wrong": [
+   "Wenn ich Zeit habe, ich lerne jeden Abend."
+  ],
+  "rule": "When the sentence starts with the wenn-part, the main verb comes right after the comma.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "A2"
+ },
+ {
+  "id": "BG:nsf-weil-krank",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "v2",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "v2",
+  "focus": [
+   "inversion",
+   "v2"
+  ],
+  "strict": [],
+  "plan": "transform",
+  "task": "Finish the sentence with the words below.",
+  "prompt": "Ich bin zu Hause geblieben.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Weil ich krank war,",
+  "accept": [
+   "weil ich krank war bin ich zu hause geblieben",
+   "weil ich krank war bin ich zuhause geblieben",
+   "weil ich krank war bin ich daheim geblieben"
+  ],
+  "anywhere": false,
+  "model": "Weil ich krank war, bin ich zu Hause geblieben.",
+  "wrong": [
+   "Weil ich krank war, ich bin zu Hause geblieben."
+  ],
+  "rule": "When the sentence starts with the weil-part, the main verb comes right after the comma.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:nsf-obwohl-regnet",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "v2",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "v2",
+  "focus": [
+   "inversion",
+   "v2"
+  ],
+  "strict": [],
+  "plan": "transform",
+  "task": "Finish the sentence with the words below.",
+  "prompt": "Wir gehen spazieren.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Obwohl es regnet,",
+  "accept": [
+   "obwohl es regnet gehen wir spazieren"
+  ],
+  "anywhere": false,
+  "model": "Obwohl es regnet, gehen wir spazieren.",
+  "wrong": [
+   "Obwohl es regnet, wir gehen spazieren."
+  ],
+  "rule": "When the sentence starts with the obwohl-part, the main verb comes right after the comma.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:nsf-wenn-picknick",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "v2",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "v2",
+  "focus": [
+   "inversion",
+   "v2"
+  ],
+  "strict": [],
+  "plan": "transform",
+  "task": "Finish the sentence with the words below.",
+  "prompt": "Wir machen ein Picknick.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Wenn das Wetter schön ist,",
+  "accept": [
+   "wenn das wetter schön ist machen wir ein picknick"
+  ],
+  "anywhere": false,
+  "model": "Wenn das Wetter schön ist, machen wir ein Picknick.",
+  "wrong": [
+   "Wenn das Wetter schön ist, wir machen ein Picknick."
+  ],
+  "rule": "When the sentence starts with the wenn-part, the main verb comes right after the comma.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:nsf-sobald-essen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "v2",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "v2",
+  "focus": [
+   "inversion",
+   "v2"
+  ],
+  "strict": [],
+  "plan": "transform",
+  "task": "Finish the sentence with the words below.",
+  "prompt": "Wir gehen essen.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Sobald ich fertig bin,",
+  "accept": [
+   "sobald ich fertig bin gehen wir essen"
+  ],
+  "anywhere": false,
+  "model": "Sobald ich fertig bin, gehen wir essen.",
+  "wrong": [
+   "Sobald ich fertig bin, wir gehen essen."
+  ],
+  "rule": "When the sentence starts with the sobald-part, the main verb comes right after the comma.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:nsf-wenn-telefonieren",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "v2",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "v2",
+  "focus": [
+   "inversion",
+   "v2"
+  ],
+  "strict": [],
+  "plan": "transform",
+  "task": "Finish the sentence with the words below.",
+  "prompt": "Wir können morgen telefonieren.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Wenn du willst,",
+  "accept": [
+   "wenn du willst können wir morgen telefonieren"
+  ],
+  "anywhere": false,
+  "model": "Wenn du willst, können wir morgen telefonieren.",
+  "wrong": [
+   "Wenn du willst, wir können morgen telefonieren."
+  ],
+  "rule": "When the sentence starts with the wenn-part, the main verb comes right after the comma.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:vf-dass-thema-wichtig",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-final",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "verb-final"
+  ],
+  "strict": [
+   "ist",
+   "Thema"
+  ],
+  "plan": "transform",
+  "task": "Join the two sentences with dass.",
+  "prompt": "Ich finde. Das Thema ist sehr wichtig.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ich finde, dass",
+  "accept": [
+   "ich finde dass das thema sehr wichtig ist"
+  ],
+  "anywhere": false,
+  "model": "Ich finde, dass das Thema sehr wichtig ist.",
+  "wrong": [
+   "Ich finde, dass das Thema ist sehr wichtig."
+  ],
+  "rule": "After dass, the verb goes to the end.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:vf-dass-sport-muss",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-final",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "verb-final"
+  ],
+  "strict": [
+   "muss"
+  ],
+  "plan": "transform",
+  "task": "Join the two sentences with dass.",
+  "prompt": "Ich denke. Man muss mehr Sport machen.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ich denke, dass",
+  "accept": [
+   "ich denke dass man mehr sport machen muss",
+   "ich denke dass man mehr sport treiben muss"
+  ],
+  "anywhere": false,
+  "model": "Ich denke, dass man mehr Sport machen muss.",
+  "wrong": [
+   "Ich denke, dass man muss mehr Sport machen."
+  ],
+  "rule": "After dass, the verb goes to the end: dass man mehr Sport machen muss.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:vf-dass-bestanden",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-final",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "verb-final"
+  ],
+  "strict": [
+   "hat"
+  ],
+  "plan": "transform",
+  "task": "Join the two sentences with dass.",
+  "prompt": "Er sagt. Er hat die Prüfung bestanden.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Er sagt, dass",
+  "accept": [
+   "er sagt dass er die prüfung bestanden hat"
+  ],
+  "anywhere": false,
+  "model": "Er sagt, dass er die Prüfung bestanden hat.",
+  "wrong": [
+   "Er sagt, dass er hat die Prüfung bestanden."
+  ],
+  "rule": "After dass, the verb goes to the end: dass er die Prüfung bestanden hat.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:vf-dass-sehen-bald",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-final",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "verb-final"
+  ],
+  "strict": [
+   "sehen"
+  ],
+  "plan": "transform",
+  "task": "Join the two sentences with dass.",
+  "prompt": "Ich hoffe. Wir sehen uns bald.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ich hoffe, dass",
+  "accept": [
+   "ich hoffe dass wir uns bald sehen",
+   "ich hoffe dass wir uns bald wiedersehen"
+  ],
+  "anywhere": false,
+  "model": "Ich hoffe, dass wir uns bald sehen.",
+  "wrong": [
+   "Ich hoffe, dass wir sehen uns bald."
+  ],
+  "rule": "After dass, the verb goes to the end.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "A2"
+ },
+ {
+  "id": "BG:vf-weil-arbeiten-muss",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-final",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "verb-final"
+  ],
+  "strict": [
+   "muss"
+  ],
+  "plan": "transform",
+  "task": "Join the two sentences with weil.",
+  "prompt": "Ich komme nicht. Ich muss arbeiten.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ich komme nicht, weil",
+  "accept": [
+   "ich komme nicht weil ich arbeiten muss"
+  ],
+  "anywhere": false,
+  "model": "Ich komme nicht, weil ich arbeiten muss.",
+  "wrong": [
+   "Ich komme nicht, weil ich muss arbeiten."
+  ],
+  "rule": "After weil, the verb goes to the end: weil ich arbeiten muss.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "A2"
+ },
+ {
+  "id": "BG:vf-weil-bus-verpasst",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-final",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "verb-final"
+  ],
+  "strict": [
+   "habe"
+  ],
+  "plan": "transform",
+  "task": "Join the two sentences with weil.",
+  "prompt": "Ich bin zu spät. Ich habe den Bus verpasst.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ich bin zu spät, weil",
+  "accept": [
+   "ich bin zu spät weil ich den bus verpasst habe"
+  ],
+  "anywhere": false,
+  "model": "Ich bin zu spät, weil ich den Bus verpasst habe.",
+  "wrong": [
+   "Ich bin zu spät, weil ich habe den Bus verpasst."
+  ],
+  "rule": "After weil, the verb goes to the end: weil ich den Bus verpasst habe.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:vf-weil-deutschland-will",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-final",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "verb-final"
+  ],
+  "strict": [
+   "will"
+  ],
+  "plan": "transform",
+  "task": "Join the two sentences with weil.",
+  "prompt": "Ich lerne Deutsch. Ich will in Deutschland arbeiten.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ich lerne Deutsch, weil",
+  "accept": [
+   "ich lerne deutsch weil ich in deutschland arbeiten will",
+   "ich lerne deutsch weil ich in deutschland arbeiten möchte"
+  ],
+  "anywhere": false,
+  "model": "Ich lerne Deutsch, weil ich in Deutschland arbeiten will.",
+  "wrong": [
+   "Ich lerne Deutsch, weil ich will in Deutschland arbeiten."
+  ],
+  "rule": "After weil, the verb goes to the end.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:vf-wenn-problem",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-final",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "verb-final"
+  ],
+  "strict": [
+   "hast"
+  ],
+  "plan": "transform",
+  "task": "Join the two sentences with wenn.",
+  "prompt": "Ich helfe dir. Du hast ein Problem.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ich helfe dir, wenn",
+  "accept": [
+   "ich helfe dir wenn du ein problem hast"
+  ],
+  "anywhere": false,
+  "model": "Ich helfe dir, wenn du ein Problem hast.",
+  "wrong": [
+   "Ich helfe dir, wenn du hast ein Problem."
+  ],
+  "rule": "After wenn, the verb goes to the end.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "A2"
+ },
+ {
+  "id": "BG:vf-wenn-nicht-kommen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-final",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "verb-final"
+  ],
+  "strict": [
+   "kannst"
+  ],
+  "plan": "transform",
+  "task": "Join the two sentences with wenn.",
+  "prompt": "Ruf mich an. Du kannst nicht kommen.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ruf mich an, wenn",
+  "accept": [
+   "ruf mich an wenn du nicht kommen kannst"
+  ],
+  "anywhere": false,
+  "model": "Ruf mich an, wenn du nicht kommen kannst.",
+  "wrong": [
+   "Ruf mich an, wenn du kannst nicht kommen."
+  ],
+  "rule": "After wenn, the verb goes to the end.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:vf-ob-email-bekommen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-final",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "verb-final"
+  ],
+  "strict": [
+   "hat"
+  ],
+  "plan": "transform",
+  "task": "Join the two sentences with ob.",
+  "prompt": "Ich frage mich. Hat er die E-Mail bekommen?",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ich frage mich, ob",
+  "accept": [
+   "ich frage mich ob er die e-mail bekommen hat",
+   "ich frage mich ob er die mail bekommen hat"
+  ],
+  "anywhere": false,
+  "model": "Ich frage mich, ob er die E-Mail bekommen hat.",
+  "wrong": [
+   "Ich frage mich, ob er hat die E-Mail bekommen."
+  ],
+  "rule": "After ob, the verb goes to the end.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:vf-ob-parken-koennen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-final",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "verb-final"
+  ],
+  "strict": [
+   "können"
+  ],
+  "plan": "transform",
+  "task": "Join the two sentences with ob.",
+  "prompt": "Weißt du? Können wir hier parken?",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Weißt du, ob",
+  "accept": [
+   "weißt du ob wir hier parken können"
+  ],
+  "anywhere": false,
+  "model": "Weißt du, ob wir hier parken können?",
+  "wrong": [
+   "Weißt du, ob wir können hier parken?"
+  ],
+  "rule": "After ob, the verb goes to the end.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:vf-obwohl-krank",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-final",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "verb-final"
+  ],
+  "strict": [
+   "bin"
+  ],
+  "plan": "transform",
+  "task": "Join the two sentences with obwohl.",
+  "prompt": "Ich gehe zur Arbeit. Ich bin krank.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ich gehe zur Arbeit, obwohl",
+  "accept": [
+   "ich gehe zur arbeit obwohl ich krank bin"
+  ],
+  "anywhere": false,
+  "model": "Ich gehe zur Arbeit, obwohl ich krank bin.",
+  "wrong": [
+   "Ich gehe zur Arbeit, obwohl ich bin krank."
+  ],
+  "rule": "After obwohl, the verb goes to the end.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:vf-obwohl-wenig-gelernt",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-final",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "verb-final"
+  ],
+  "strict": [
+   "habe"
+  ],
+  "plan": "transform",
+  "task": "Join the two sentences with obwohl.",
+  "prompt": "Ich habe bestanden. Ich habe wenig gelernt.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ich habe bestanden, obwohl",
+  "accept": [
+   "ich habe bestanden obwohl ich wenig gelernt habe"
+  ],
+  "anywhere": false,
+  "model": "Ich habe bestanden, obwohl ich wenig gelernt habe.",
+  "wrong": [
+   "Ich habe bestanden, obwohl ich habe wenig gelernt."
+  ],
+  "rule": "After obwohl, the verb goes to the end.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:vf-damit-verstehen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-final",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "verb-final"
+  ],
+  "strict": [
+   "können"
+  ],
+  "plan": "transform",
+  "task": "Join the two sentences with damit.",
+  "prompt": "Ich spreche langsam. Alle können mich verstehen.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ich spreche langsam, damit",
+  "accept": [
+   "ich spreche langsam damit alle mich verstehen können",
+   "ich spreche langsam damit mich alle verstehen können"
+  ],
+  "anywhere": false,
+  "model": "Ich spreche langsam, damit alle mich verstehen können.",
+  "wrong": [
+   "Ich spreche langsam, damit alle können mich verstehen."
+  ],
+  "rule": "After damit, the verb goes to the end.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:vf-sobald-angekommen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-final",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "verb-final"
+  ],
+  "strict": [
+   "bin"
+  ],
+  "plan": "transform",
+  "task": "Join the two sentences with sobald.",
+  "prompt": "Ich schreibe dir. Ich bin zu Hause angekommen.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ich schreibe dir, sobald",
+  "accept": [
+   "ich schreibe dir sobald ich zu hause angekommen bin",
+   "ich schreibe dir sobald ich zuhause angekommen bin"
+  ],
+  "anywhere": false,
+  "model": "Ich schreibe dir, sobald ich zu Hause angekommen bin.",
+  "wrong": [
+   "Ich schreibe dir, sobald ich bin zu Hause angekommen."
+  ],
+  "rule": "After sobald, the verb goes to the end.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:vf-als-nachricht",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-final",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "verb-final"
+  ],
+  "strict": [
+   "habe"
+  ],
+  "plan": "transform",
+  "task": "Join the two sentences with als.",
+  "prompt": "Ich war sehr froh. Ich habe die Nachricht bekommen.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ich war sehr froh, als",
+  "accept": [
+   "ich war sehr froh als ich die nachricht bekommen habe",
+   "ich war sehr froh als ich die nachricht bekam"
+  ],
+  "anywhere": false,
+  "model": "Ich war sehr froh, als ich die Nachricht bekommen habe.",
+  "wrong": [
+   "Ich war sehr froh, als ich habe die Nachricht bekommen."
+  ],
+  "rule": "After als, the verb goes to the end.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ }
+]

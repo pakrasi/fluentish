@@ -1,0 +1,642 @@
+{
+ "L1-1": {
+  "evidence": "Als ich vor einem Jahr nach Köln gezogen bin",
+  "evidence_en": "When I moved to Cologne a year ago",
+  "why": "Der Autor ist vor einem Jahr nach Köln gezogen, also lebt er erst seit einem Jahr dort, nicht seit mehreren Jahren.",
+  "why_en": "The author moved to Cologne a year ago, so he has lived there for one year, not several.",
+  "trap": "„Jedes Jahr“ und „Nächstes Jahr“ stehen auch im Text, aber die Zeit in Köln ist nur ein Jahr.",
+  "trap_en": "'Every year' and 'next year' also appear in the text, but his time in Cologne is only one year.",
+  "question_en": "The author has been living in Cologne for several years."
+ },
+ "L1-2": {
+  "evidence": "Es fängt schon im November an.",
+  "evidence_en": "It already starts in November.",
+  "why": "„Es fängt an“ bedeutet „beginnt“: Die Karnevalszeit beginnt am 11. November.",
+  "why_en": "'Es fängt an' means 'it begins': the carnival season starts on 11 November.",
+  "trap": "Der Höhepunkt ist im Februar, aber der Beginn ist schon im November.",
+  "trap_en": "The high point is in February, but the start is already in November.",
+  "question_en": "The carnival season already begins in November."
+ },
+ "L1-3": {
+  "evidence": "schneiden die Frauen den Männern die Krawatten ab",
+  "evidence_en": "the women cut off the men's ties",
+  "why": "Es sind die Frauen, die schneiden, und sie schneiden Krawatten, keine Haare.",
+  "why_en": "It is the women who do the cutting, and they cut ties, not hair.",
+  "trap": "Das Verb „abschneiden“ stimmt, aber die Personen sind vertauscht und das Objekt ist falsch.",
+  "trap_en": "The verb 'cut off' matches, but the roles are swapped and the object is wrong.",
+  "question_en": "On Weiberfastnacht, men cut off the women's hair."
+ },
+ "L1-4": {
+  "evidence": "Wir standen um neun Uhr morgens an der Straße, obwohl der Zug erst um zwölf losging.",
+  "evidence_en": "We were standing by the street at nine in the morning, although the parade only started at twelve.",
+  "why": "Von neun bis zwölf Uhr sind es drei Stunden: Sie waren drei Stunden vor dem Beginn da.",
+  "why_en": "From nine to twelve is three hours: they were there three hours before the start.",
+  "trap": "Die Zahl „vier Stunden“ im Text ist die Dauer des Zuges, nicht die Wartezeit.",
+  "trap_en": "The 'four hours' in the text is how long the parade lasted, not the waiting time.",
+  "question_en": "The author and Britta were at the street three hours before the start of the parade."
+ },
+ "L1-5": {
+  "evidence": "Die Kölner sind sonst eher zurückhaltend, aber im Karneval sprechen alle mit allen.",
+  "evidence_en": "People in Cologne are usually rather reserved, but at carnival everyone talks to everyone.",
+  "why": "„Sonst zurückhaltend“ und „alle sprechen mit allen“ bedeutet: Im Karneval sind sie offener als sonst.",
+  "why_en": "'Usually reserved' plus 'everyone talks to everyone' means they are more open at carnival than usual.",
+  "trap": "Man könnte „zurückhaltend“ lesen und „falsch“ wählen, aber das gilt nur für die normale Zeit.",
+  "trap_en": "You might see 'reserved' and pick false, but that only describes normal times.",
+  "question_en": "The author finds that the people of Cologne are more open during carnival than usual."
+ },
+ "L1-6": {
+  "evidence": "Mein Nachbar fährt jedes Jahr in den Urlaub, weil ihm der Lärm zu viel ist.",
+  "evidence_en": "My neighbour goes on holiday every year because the noise is too much for him.",
+  "why": "Der Nachbar feiert gar nicht; er fährt weg, weil er den Karneval nicht mag.",
+  "why_en": "The neighbour doesn't celebrate at all; he leaves because he doesn't like carnival.",
+  "trap": "„Nur ungern zu Hause“ klingt ähnlich, aber die Aussage sagt, dass er feiert – das tut er nicht.",
+  "trap_en": "'Only reluctantly at home' sounds close, but the statement says he celebrates – he doesn't.",
+  "question_en": "The author's neighbour only reluctantly celebrates carnival at home."
+ },
+ "L2-1": {
+  "evidence": "niemand aus der jungen Generation wollte die Organisation übernehmen",
+  "evidence_en": "nobody from the younger generation wanted to take over the organisation",
+  "why": "„Niemand wollte übernehmen“ ist dasselbe wie „es gab niemanden, der die Organisation weiterführen wollte“.",
+  "why_en": "'Nobody wanted to take over' is the same as 'there was nobody who wanted to continue the organisation'.",
+  "trap": "Die alten Mitglieder waren über siebzig, aber es steht nicht, dass sie nicht mehr feiern wollten (a).",
+  "trap_en": "The old members were over seventy, but it doesn't say they no longer wanted to celebrate (a).",
+  "question_en": "Three years ago …",
+  "options_en": [
+   "the old members no longer wanted to celebrate the festival.",
+   "there was nobody who wanted to continue the organisation.",
+   "the festival took place for the first time."
+  ]
+ },
+ "L2-2": {
+  "evidence": "Sie gründete eine Gruppe im Internet und lud alle jungen Leute aus dem Dorf ein, die zum Studium oder zur Arbeit in die Stadt gezogen waren.",
+  "evidence_en": "She set up an online group and invited all the young people from the village who had moved to the city to study or work.",
+  "why": "Sie hat die weggezogenen jungen Leute über eine Internet-Gruppe erreicht.",
+  "why_en": "She reached the young people who had moved away through an online group.",
+  "trap": "„Zum Studium in die Stadt gezogen“ gilt für die anderen jungen Leute, nicht für Lisa selbst (b); vierzig sind Personen, keine Familien (c).",
+  "trap_en": "'Moved to the city to study' describes the other young people, not Lisa (b); the forty are people, not families (c).",
+  "question_en": "Lisa Kern …",
+  "options_en": [
+   "reached young people who had moved away via the internet.",
+   "herself moved to the city to study.",
+   "brought forty new families to the village."
+  ]
+ },
+ "L2-3": {
+  "evidence": "das fand ich zuerst schrecklich",
+  "evidence_en": "at first I found that terrible",
+  "why": "„Zuerst schrecklich“, aber dann war die Schlange länger als an der Wurstbude: Er hat seine Meinung geändert.",
+  "why_en": "'At first terrible', but then the queue was longer than at the sausage stand: he changed his mind.",
+  "trap": "Das Wort „schrecklich“ steht im Text, aber mit „zuerst“ – heute denkt er nicht mehr so (b).",
+  "trap_en": "The word 'terrible' is in the text, but with 'at first' – he no longer thinks so (b).",
+  "question_en": "Mr Fuchs …",
+  "options_en": [
+   "was satisfied with the new programme from the beginning.",
+   "still finds the food truck terrible.",
+   "has changed his opinion about the food truck."
+  ]
+ },
+ "L2-4": {
+  "evidence": "Mit einem einzigen Ticket für zwölf Euro können die Besucher an diesem Abend über vierzig Museen und Galerien besuchen.",
+  "evidence_en": "With a single ticket for twelve euros, visitors can visit more than forty museums and galleries that evening.",
+  "why": "„Ein einziges Ticket“ für „über vierzig Museen“ heißt: mit einem Ticket viele Museen.",
+  "why_en": "'One single ticket' for 'over forty museums' means many museums with one ticket.",
+  "trap": "Option a sagt das Gegenteil: Man braucht nicht für jedes Museum ein Ticket; die kostenlosen Busse (c) sind nur ein Extra, nicht die Hauptinformation.",
+  "trap_en": "Option a says the opposite: you don't need a ticket per museum; the free buses (c) are only an extra, not the main point.",
+  "question_en": "At the Long Night of Museums …",
+  "options_en": [
+   "you have to buy a separate ticket for each museum.",
+   "you can visit many museums with one ticket.",
+   "only the buses are free of charge."
+  ]
+ },
+ "L2-5": {
+  "evidence": "Vor allem junge Erwachsene zwischen zwanzig und dreißig kommen, eine Gruppe, die den Museen tagsüber meistens fehlt.",
+  "evidence_en": "Above all young adults between twenty and thirty come, a group that museums usually lack during the day.",
+  "why": "„Fehlt tagsüber“ bedeutet, dass diese jungen Erwachsenen am Tag selten kommen.",
+  "why_en": "'Missing during the day' means these young adults rarely come in the daytime.",
+  "trap": "Workshops für Kinder gibt es, aber Familien sind nicht die Hauptgruppe (a).",
+  "trap_en": "There are workshops for children, but families are not the main group (a).",
+  "question_en": "Which visitors mainly come on this night?",
+  "options_en": [
+   "Families with small children.",
+   "People who also often go to the museum during the day.",
+   "Young adults who rarely come during the day."
+  ]
+ },
+ "L2-6": {
+  "evidence": "Wer in dieser Nacht ein Museum entdeckt, der kommt später wieder – und dann in Ruhe.",
+  "evidence_en": "Anyone who discovers a museum on this night comes back later – and then takes their time.",
+  "why": "Sie widerspricht der Kritik: Die Besucher kommen später noch einmal in Ruhe.",
+  "why_en": "She disagrees with the criticism: visitors come back later and take their time.",
+  "trap": "„Nichts wirklich anschauen“ ist die Kritik der Museumsleute, nicht ihre Meinung (b).",
+  "trap_en": "'Not really looking at anything' is the museum staff's criticism, not her view (b).",
+  "question_en": "How does Ms Kowalczyk react to the criticism?",
+  "options_en": [
+   "She says that many visitors come back again later at a relaxed pace.",
+   "She admits that the visitors don't look at anything properly.",
+   "She wants to make the night shorter in future."
+  ]
+ },
+ "L3-1": {
+  "evidence": "Keine Notenkenntnisse nötig – wir lernen alles nach Gehör.",
+  "evidence_en": "No knowledge of sheet music needed – we learn everything by ear.",
+  "why": "Carla kann keine Noten lesen, und der Chor sagt: Noten sind nicht nötig.",
+  "why_en": "Carla can't read music, and the choir says reading music isn't necessary.",
+  "trap": "Anzeige D ist auch Musik, aber ein Konzert zum Zuhören, kein Chor zum Mitsingen.",
+  "trap_en": "Ad D is also about music, but it's a concert to listen to, not a choir to join.",
+  "question_en": "Carla would like to sing in a choir but can't read music."
+ },
+ "L3-2": {
+  "evidence": "Für Kinder gibt es die Bastelhütte, in der jeden Tag Kerzen, Sterne und Lebkuchenhäuser gebastelt werden.",
+  "evidence_en": "For children there is the craft hut, where candles, stars and gingerbread houses are made every day.",
+  "why": "Adventsmarkt = Weihnachtsmarkt, und die Kinder können in der Bastelhütte basteln.",
+  "why_en": "An Advent market is a Christmas market, and the children can do crafts in the craft hut.",
+  "trap": "Anzeige I hat auch Basteln für Kinder, aber im Museum in den Herbstferien, nicht auf einem Weihnachtsmarkt.",
+  "trap_en": "Ad I also has crafts for children, but in a museum during the autumn holidays, not at a Christmas market.",
+  "question_en": "The Yilmaz family is looking for a Christmas market where the children can make something themselves."
+ },
+ "L3-3": {
+  "evidence": "Alle unter 27 mit Studierenden- oder Schülerausweis bezahlen für jede Vorstellung nur 8 €",
+  "evidence_en": "Everyone under 27 with a student or school ID pays only €8 per performance",
+  "why": "Diego ist Student und will günstig ins Theater: Mit Studierendenausweis kostet es nur 8 €.",
+  "why_en": "Diego is a student and wants cheap theatre: with a student ID it's only €8.",
+  "trap": "Anzeige D hat auch einen ermäßigten Preis, aber es ist ein Konzert, kein Theater.",
+  "trap_en": "Ad D also has a reduced price, but it's a concert, not theatre.",
+  "question_en": "Diego is a student and would like to go to the theatre cheaply."
+ },
+ "L3-4": {
+  "evidence": "Sprachen: Deutsch, Englisch, Französisch.",
+  "evidence_en": "Languages: German, English, French.",
+  "why": "Keine Anzeige bietet eine Führung auf Spanisch an, also 0.",
+  "why_en": "No ad offers a tour in Spanish, so 0.",
+  "trap": "Anzeige G und B sind Stadtführungen, aber nur auf Deutsch, Englisch oder Französisch – nicht auf Spanisch.",
+  "trap_en": "Ads G and B are tours, but only in German, English or French – not Spanish.",
+  "question_en": "Hana would like to give her parents, who don't speak German, a city tour in Spanish as a present."
+ },
+ "L3-5": {
+  "evidence": "lernen Sie an einem Samstag, wie man die Klassiker unserer Region kocht",
+  "evidence_en": "learn on a Saturday how to cook our region's classics",
+  "why": "„Klassiker unserer Region“ sind typische regionale Gerichte, und es ist ein Kochkurs.",
+  "why_en": "'Our region's classics' are typical regional dishes, and it is a cooking class.",
+  "trap": "Anzeige C hat Lebkuchenhäuser, aber das ist Basteln für Kinder, kein Kochkurs.",
+  "trap_en": "Ad C mentions gingerbread houses, but that is crafts for children, not a cooking class.",
+  "question_en": "Tom would like to learn how to cook typical dishes from the region."
+ },
+ "L3-6": {
+  "evidence": "Lernen Sie den traditionellen bayerischen Volkstanz in acht Abenden.",
+  "evidence_en": "Learn the traditional Bavarian folk dance over eight evenings.",
+  "why": "Amira will bayerische Tänze selbst lernen, und das ist ein Tanzkurs für Anfänger.",
+  "why_en": "Amira wants to learn Bavarian dances herself, and this is a dance course for beginners.",
+  "trap": "Anzeige D ist bayerisch und man darf tanzen, aber man lernt dort keine Tänze – es ist ein Konzert.",
+  "trap_en": "Ad D is Bavarian and dancing is allowed, but you don't learn dances there – it's a concert.",
+  "question_en": "Amira is interested in dances from Bavaria and would like to learn them herself."
+ },
+ "L3-7": {
+  "evidence": "Von Juli bis August jeden Donnerstag und Freitag Filme unter freiem Himmel.",
+  "evidence_en": "From July to August every Thursday and Friday, films under the open sky.",
+  "why": "„Unter freiem Himmel“ im Sommer = draußen an einem Sommerabend einen Film sehen.",
+  "why_en": "'Under the open sky' in summer means watching a film outdoors on a summer evening.",
+  "trap": "Andere Anzeigen sind abends, aber nur F ist ein Film und draußen.",
+  "trap_en": "Other ads are in the evening, but only F is a film and outdoors.",
+  "question_en": "Sergej would like to watch a film outdoors on a mild summer evening."
+ },
+ "L4-1": {
+  "evidence": "Ohne das Fest würde jeder nur noch vor seinem Fernseher sitzen. Natürlich ist es wichtig!",
+  "evidence_en": "Without the festival everyone would just sit in front of their TV. Of course it's important!",
+  "why": "Gudrun sagt klar, dass das Fest wichtig ist, weil sich dort alle treffen.",
+  "why_en": "Gudrun clearly says the festival is important because everyone meets there.",
+  "trap": "Der Satz mit dem Fernseher ist nicht negativ über das Fest, sondern zeigt, was ohne Fest passieren würde.",
+  "trap_en": "The TV sentence isn't negative about the festival; it shows what would happen without it.",
+  "question_en": "Gudrun, Paderborn: In our village the marksmen's festival is the only day on which really everyone meets: the young, the old, the new ones and those who have always lived here. Without the festival everyone would just sit in front of their TV. Of course it's important!"
+ },
+ "L4-2": {
+  "evidence": "was beim Karneval passiert, hat mit Tradition wenig zu tun: Es geht nur noch um Alkohol und Lärm.",
+  "evidence_en": "what happens at carnival has little to do with tradition: it's only about alcohol and noise now.",
+  "why": "Kemal findet den Karneval heute nicht wichtig; das Geld wäre in Schulen besser.",
+  "why_en": "Kemal doesn't think carnival matters today; the money would be better spent on schools.",
+  "trap": "„Ich habe nichts gegen Feiern“ klingt positiv, aber danach kommt „Aber“ und seine Kritik.",
+  "trap_en": "'I have nothing against celebrating' sounds positive, but then comes 'but' and his criticism.",
+  "question_en": "Kemal, Düsseldorf: I have nothing against celebrations. But what happens at carnival has little to do with tradition: it's only about alcohol and noise now. The city spends millions on cleaning. The money would be better invested in schools."
+ },
+ "L4-3": {
+  "evidence": "Man kann Traditionen nicht einfach abschaffen, ohne ein Stück Familie zu verlieren.",
+  "evidence_en": "You can't just abolish traditions without losing a piece of family.",
+  "why": "Franziska will die Traditionen behalten, weil sie mit ihrer Familie verbunden sind.",
+  "why_en": "Franziska wants to keep traditions because they are tied to her family.",
+  "trap": "Die Negation „nicht abschaffen“ bedeutet hier Ja zu den Traditionen, nicht Nein.",
+  "trap_en": "The negation 'can't abolish' means yes to traditions here, not no.",
+  "question_en": "Franziska, Mainz: When I was a child, my grandfather taught me all the songs. Today I sing them with my children. That way something of him stays alive. You can't simply abolish traditions without losing a piece of family."
+ },
+ "L4-4": {
+  "evidence": "Entweder sie ändern sich, oder sie sollten verschwinden.",
+  "evidence_en": "Either they change, or they should disappear.",
+  "why": "Andreas findet diese Feste in ihrer heutigen Form nicht mehr passend.",
+  "why_en": "Andreas thinks these festivals in their current form no longer fit.",
+  "trap": "„Ich verstehe, dass viele Menschen daran hängen“ klingt nach Ja, aber mit „Trotzdem“ kommt seine echte Meinung.",
+  "trap_en": "'I understand many people are attached to them' sounds like yes, but 'nevertheless' introduces his real view.",
+  "question_en": "Andreas, Leipzig: I understand that many people are attached to it. Nevertheless: festivals where only men are allowed to be in the club and women bring the drinks don't belong in the year 2026. Either they change, or they should disappear."
+ },
+ "L4-5": {
+  "evidence": "Solche Feste sind die beste Integration, die es gibt.",
+  "evidence_en": "Festivals like that are the best integration there is.",
+  "why": "Sofia hat durch ein Fest Freunde gefunden, deshalb sind Feste für sie sehr wichtig.",
+  "why_en": "Sofia found friends through a festival, so festivals are very important to her.",
+  "trap": "„Kannte niemanden“ ist negativ, beschreibt aber nur ihre Situation vor dem Fest.",
+  "trap_en": "'Didn't know anyone' is negative, but only describes her situation before the festival.",
+  "question_en": "Sofia, Bremen: I came here from Greece five years ago and didn't know anyone. At the town festival a club simply brought me over to its table. Today I'm a member there. Festivals like that are the best integration there is."
+ },
+ "L4-6": {
+  "evidence": "Man muss nicht alles künstlich am Leben halten.",
+  "evidence_en": "You don't have to keep everything artificially alive.",
+  "why": "Martin sagt, die alten Feste sind nicht mehr seine Feste; man muss sie nicht behalten.",
+  "why_en": "Martin says the old festivals are no longer his; there's no need to keep them.",
+  "trap": "„Traditionen ändern sich, das ist normal“ klingt neutral, ist aber kein Ja zu den alten Festen.",
+  "trap_en": "'Traditions change, that's normal' sounds neutral, but it isn't a yes to the old festivals.",
+  "question_en": "Martin, Nürnberg: Traditions change, that's normal. But the old festivals are no longer our festivals. My generation meets at festivals and in the city, not in the beer tent. You don't have to keep everything alive artificially."
+ },
+ "L4-7": {
+  "evidence": "So etwas verbindet Menschen. Darauf sollten wir nicht verzichten.",
+  "evidence_en": "Something like that brings people together. We shouldn't do without it.",
+  "why": "Petra nennt Probleme, aber am Ende sagt sie: Wir sollten nicht darauf verzichten – also Ja.",
+  "why_en": "Petra names problems, but in the end says we shouldn't give it up – so yes.",
+  "trap": "„Altmodisch“ und „zu viel getrunken“ sind Kritik, aber mit „Doch“ kommt ihre positive Meinung.",
+  "trap_en": "'Old-fashioned' and 'too much drinking' are criticism, but 'doch' introduces her positive view.",
+  "question_en": "Petra, Aachen: Sure, some customs seem old-fashioned. And yes, people drink too much. But when I see how my neighbours build a float for the parade together for months, then I know: something like that brings people together. We shouldn't do without it."
+ },
+ "L5-1": {
+  "evidence": "Für die Konzerte auf der Hauptbühne am Samstagabend ist jedoch ein Bändchen nötig, das an den Eingängen für 5 € erhältlich ist.",
+  "evidence_en": "For the concerts on the main stage on Saturday evening, however, you need a wristband, available at the entrances for €5.",
+  "why": "Für die Konzerte braucht man ein Bändchen, das 5 € kostet.",
+  "why_en": "For the concerts you need a wristband costing €5.",
+  "trap": "„Der Eintritt ist frei“ gilt für das Fest allgemein, aber „jedoch“ macht eine Ausnahme für die Konzerte (a).",
+  "trap_en": "'Admission is free' applies to the festival in general, but 'however' makes an exception for the concerts (a).",
+  "question_en": "For the concerts on Saturday evening …",
+  "options_en": [
+   "entry is free.",
+   "you need a wristband for €5.",
+   "you have to buy tickets in the info tent."
+  ]
+ },
+ "L5-2": {
+  "evidence": "das bei der Rückgabe an jedem beliebigen Stand erstattet wird",
+  "evidence_en": "which is refunded when you return it at any stand",
+  "why": "„An jedem beliebigen Stand erstattet“ heißt: Man bekommt das Pfand an jedem Stand zurück.",
+  "why_en": "'Refunded at any stand' means you get the deposit back at every stand.",
+  "trap": "Option a sagt das Gegenteil: nur an dem eigenen Stand.",
+  "trap_en": "Option a says the opposite: only at the stand where you bought it.",
+  "question_en": "The deposit for the cup …",
+  "options_en": [
+   "you only get back at the stand where you bought it.",
+   "you don't have to pay if you bring a glass bottle.",
+   "you get back at any stand."
+  ]
+ },
+ "L5-3": {
+  "evidence": "Kinder unter 14 Jahren dürfen sich nach 22 Uhr nur in Begleitung eines Erwachsenen auf dem Festgelände aufhalten.",
+  "evidence_en": "Children under 14 may only be on the festival grounds after 10 pm if accompanied by an adult.",
+  "why": "„Nur in Begleitung eines Erwachsenen“ = nur mit einem Erwachsenen dürfen sie bleiben.",
+  "why_en": "'Only accompanied by an adult' means they may only stay with an adult.",
+  "trap": "Option a ist zu streng: Sie dürfen nach 22 Uhr bleiben, aber nicht allein.",
+  "trap_en": "Option a is too strict: they may stay after 10 pm, just not alone.",
+  "question_en": "Children under 14 …",
+  "options_en": [
+   "are no longer allowed at the festival after 10 pm.",
+   "may only stay at the festival after 10 pm with an adult.",
+   "always need an ID card."
+  ]
+ },
+ "L5-4": {
+  "evidence": "Besucher werden gebeten, die Parkplätze am Bahnhof zu nutzen. Von dort fährt alle 15 Minuten ein kostenloser Bus bis zum Festgelände",
+  "evidence_en": "Visitors are asked to use the car parks at the station. From there a free bus runs every 15 minutes to the festival grounds",
+  "why": "Man parkt am Bahnhof und fährt mit dem kostenlosen Bus zum Fest.",
+  "why_en": "You park at the station and take the free bus to the festival.",
+  "trap": "Die Altstadt ist für Autos gesperrt, also kann man dort nicht parken (b).",
+  "trap_en": "The old town is closed to cars, so you can't park there (b).",
+  "question_en": "Anyone who comes by car …",
+  "options_en": [
+   "parks at the station and continues by bus free of charge.",
+   "can park in the old town.",
+   "has to pay for the bus."
+  ]
+ },
+ "H1-1a": {
+  "evidence": "Jetzt heiraten wir am siebenundzwanzigsten Juni, also eine Woche später.",
+  "evidence_en": "Now we're getting married on the twenty-seventh of June, a week later.",
+  "why": "Der neue Termin ist der 27. Juni, nicht der 20. Juni.",
+  "why_en": "The new date is 27 June, not 20 June.",
+  "trap": "Der zwanzigste Juni wird zuerst genannt, aber das ist der alte Termin.",
+  "trap_en": "The twentieth of June is mentioned first, but that's the old date.",
+  "question_en": "The wedding takes place on the twentieth of June."
+ },
+ "H1-1b": {
+  "evidence": "könntest du vielleicht am Abend ein paar Lieder auf der Gitarre spielen?",
+  "evidence_en": "could you maybe play a few songs on the guitar in the evening?",
+  "why": "Lieder auf der Gitarre spielen = am Abend Musik machen.",
+  "why_en": "Playing songs on the guitar = making music in the evening.",
+  "trap": "Fotos machen war die alte Bitte – das ist „nicht mehr nötig“, weil es einen Fotografen gibt (a).",
+  "trap_en": "Taking photos was the old request – it's 'no longer necessary' because there's a photographer (a).",
+  "question_en": "Simon is supposed to …",
+  "options_en": [
+   "take photos at the wedding.",
+   "look for a photographer.",
+   "play music in the evening."
+  ]
+ },
+ "H1-2a": {
+  "evidence": "wird heute Abend um siebzehn Uhr eröffnet",
+  "evidence_en": "opens this evening at five o'clock",
+  "why": "Die Eröffnung ist am Abend um 17 Uhr, nicht am Vormittag.",
+  "why_en": "The opening is in the evening at 5 pm, not in the morning.",
+  "trap": "„Vormittags“ kommt vor, aber nur als Tipp, wann es weniger voll ist.",
+  "trap_en": "'In the morning' is mentioned, but only as a tip for when it's less crowded.",
+  "question_en": "The Christmas market is opened in the morning."
+ },
+ "H1-2b": {
+  "evidence": "auf der Kinder und Erwachsene kostenlos Schlittschuh laufen können, Schlittschuhe kann man sich für vier Euro ausleihen",
+  "evidence_en": "where children and adults can skate for free; skates can be hired for four euros",
+  "why": "Das Laufen ist kostenlos, nur das Ausleihen der Schlittschuhe kostet vier Euro.",
+  "why_en": "Skating is free; only hiring skates costs four euros.",
+  "trap": "Die vier Euro gelten für die Schlittschuhe, nicht für das Laufen (a).",
+  "trap_en": "The four euros is for the skates, not for skating itself (a).",
+  "question_en": "On the ice rink …",
+  "options_en": [
+   "ice skating costs four euros.",
+   "you can skate for free, but the skates cost money.",
+   "only children are allowed to skate."
+  ]
+ },
+ "H1-3a": {
+  "evidence": "Wegen einer Erkrankung übernimmt heute Abend Herr Tobias Renz die Rolle des Dorfrichters.",
+  "evidence_en": "Due to illness, Mr Tobias Renz is taking over the role of the village judge tonight.",
+  "why": "„Übernimmt die Rolle“ wegen Krankheit bedeutet: Heute spielt ein anderer Schauspieler.",
+  "why_en": "'Takes over the role' because of illness means a different actor is playing tonight.",
+  "trap": "Es wird nicht direkt „anderer Schauspieler“ gesagt, aber „übernimmt“ zeigt den Wechsel.",
+  "trap_en": "It doesn't literally say 'another actor', but 'takes over' shows the change.",
+  "question_en": "Today a different actor is playing the role of the village judge."
+ },
+ "H1-3b": {
+  "evidence": "Bitte schalten Sie Ihre Mobiltelefone jetzt aus, nicht nur leise",
+  "evidence_en": "Please switch your mobile phones off now, not just to silent",
+  "why": "Die Handys sollen ganz ausgeschaltet werden.",
+  "why_en": "Phones should be switched off completely.",
+  "trap": "„Leise“ wird genannt, aber mit „nicht nur“ – leise stellen reicht nicht (a).",
+  "trap_en": "'Silent' is mentioned, but with 'not just' – silent isn't enough (a).",
+  "question_en": "The audience should …",
+  "options_en": [
+   "put their phones on silent.",
+   "take photos during the interval.",
+   "switch their phones off completely."
+  ]
+ },
+ "H1-4a": {
+  "evidence": "Der Himmel bleibt aber weitgehend klar",
+  "evidence_en": "But the sky stays largely clear",
+  "why": "In der Silvesternacht ist es kalt, aber klar; der Schnee kommt erst am Morgen des Neujahrstages.",
+  "why_en": "On New Year's Eve it's cold but clear; the snow only comes on the morning of New Year's Day.",
+  "trap": "Schnee wird genannt, aber für den nächsten Morgen, nicht für die Nacht.",
+  "trap_en": "Snow is mentioned, but for the next morning, not the night.",
+  "question_en": "It snows on New Year's Eve night."
+ },
+ "H1-4b": {
+  "evidence": "Am Morgen des Neujahrstages zieht dann von Westen her Schnee auf",
+  "evidence_en": "On the morning of New Year's Day snow then moves in from the west",
+  "why": "Der Neujahrstag ist der erste Januar, und da gibt es Schnee.",
+  "why_en": "New Year's Day is the first of January, and there's snow then.",
+  "trap": "„Trocken und sonnig“ gilt für den zweiten Januar (a); der klare Himmel für die Silvesternacht (b).",
+  "trap_en": "'Dry and sunny' is for the second of January (a); the clear sky is for New Year's Eve (b).",
+  "question_en": "On the first of January …",
+  "options_en": [
+   "it is sunny and dry.",
+   "the sky is clear.",
+   "there is snow."
+  ]
+ },
+ "H1-5a": {
+  "evidence": "bekommen Sie fünfzig Prozent Rabatt in allen Theatern, Konzerthäusern und Museen der Stadt",
+  "evidence_en": "you get fifty percent off in all the city's theatres, concert halls and museums",
+  "why": "Fünfzig Prozent ist die Hälfte, und Museen sind dabei.",
+  "why_en": "Fifty percent is half, and museums are included.",
+  "trap": "Man könnte denken, der Rabatt gilt nur für Konzerte, aber Museen werden ausdrücklich genannt.",
+  "trap_en": "You might think the discount is only for concerts, but museums are named explicitly.",
+  "question_en": "With the culture card you get a 50 percent discount in museums."
+ },
+ "H1-5b": {
+  "evidence": "Wer die Karte bis Ende März kauft, bekommt außerdem zwei Freikarten für das Stadttheater geschenkt.",
+  "evidence_en": "Anyone who buys the card by the end of March also gets two free tickets for the city theatre.",
+  "why": "Freikarten = kostenlose Karten fürs Theater.",
+  "why_en": "Free tickets = tickets for the theatre at no cost.",
+  "trap": "Die Begleitperson bekommt auch Rabatt, aber nicht kostenlos und nicht nur bis März (c).",
+  "trap_en": "The companion also gets the discount, but not for free and not only until March (c).",
+  "question_en": "Anyone who buys the card by the end of March …",
+  "options_en": [
+   "only pays half for the card.",
+   "gets two free theatre tickets.",
+   "can take a second person along for free."
+  ]
+ },
+ "H2-1": {
+  "evidence": "Über hundert alte Häuser aus ganz Hessen wurden hier wieder aufgebaut",
+  "evidence_en": "Over a hundred old houses from all over Hesse were rebuilt here",
+  "why": "Das Museum ist ein Dorf aus alten Häusern aus ganz Hessen.",
+  "why_en": "The museum is a village made of old houses from all over Hesse.",
+  "trap": "„Räume und Vitrinen“ wird genannt, aber als das, was das Museum nicht ist (b); 1580 ist das Alter des ältesten Hauses (c).",
+  "trap_en": "'Rooms and display cases' is mentioned as what the museum is not (b); 1580 is the age of the oldest house (c).",
+  "question_en": "The museum …",
+  "options_en": [
+   "consists of old houses from all over Hesse.",
+   "has over a hundred rooms with display cases.",
+   "has only been open since 1580."
+  ]
+ },
+ "H2-2": {
+  "evidence": "Die Führung dauert zwei Stunden",
+  "evidence_en": "The tour lasts two hours",
+  "why": "Die Führung dauert genau zwei Stunden.",
+  "why_en": "The tour lasts exactly two hours.",
+  "trap": "Achtzehn Uhr ist die Schließzeit des Museums (a); drei ist die Zahl der Kilometer, nicht der Stunden (c).",
+  "trap_en": "Six pm is when the museum closes (a); three is the number of kilometres, not hours (c).",
+  "question_en": "The guided tour …",
+  "options_en": [
+   "lasts until six pm.",
+   "lasts two hours.",
+   "goes around the grounds for three hours."
+  ]
+ },
+ "H2-3": {
+  "evidence": "die Möbel und Gegenstände dürfen Sie nicht anfassen",
+  "evidence_en": "you may not touch the furniture and objects",
+  "why": "„Nicht anfassen“ = nicht berühren.",
+  "why_en": "'Not touch' (anfassen) = not touch (berühren).",
+  "trap": "Fotografieren ist erlaubt, nur ohne Blitz – also sind b und c falsch.",
+  "trap_en": "Photos are allowed, just without flash – so b and c are wrong.",
+  "question_en": "In the houses …",
+  "options_en": [
+   "you are not allowed to touch the old objects.",
+   "you are not allowed to take photos.",
+   "you may only take photos with a flash."
+  ]
+ },
+ "H2-4": {
+  "evidence": "Die Kinder müssen sich vorher an der Kasse anmelden",
+  "evidence_en": "The children have to register at the ticket desk beforehand",
+  "why": "Für die Schulstunde muss man sich an der Kasse anmelden.",
+  "why_en": "For the school lesson you have to register at the ticket desk.",
+  "trap": "Dreizehn Uhr ist die Zeit für das Brot in der Bäckerei, nicht für die Schulstunde (b).",
+  "trap_en": "One o'clock is the time for the bread at the bakery, not the school lesson (b).",
+  "question_en": "Anyone who wants to take part in the school lesson …",
+  "options_en": [
+   "has to register at the ticket desk.",
+   "should come to the bakery at one pm.",
+   "needs their own slate."
+  ]
+ },
+ "H2-5": {
+  "evidence": "Das Restaurant am Eingang hat heute wegen einer Hochzeit geschlossen.",
+  "evidence_en": "The restaurant at the entrance is closed today because of a wedding.",
+  "why": "Das Restaurant ist heute wegen einer Hochzeit geschlossen.",
+  "why_en": "The restaurant is closed today because of a wedding.",
+  "trap": "Suppe und Würstchen gibt es im Imbiss beim Bauernhof, nicht im Restaurant (b).",
+  "trap_en": "Soup and sausages are at the snack bar by the farm, not the restaurant (b).",
+  "question_en": "The restaurant at the entrance …",
+  "options_en": [
+   "is closed today.",
+   "is offering soup and sausages today.",
+   "only opens in the afternoon."
+  ]
+ },
+ "H3-1": {
+  "evidence": "Meine Eltern erwarten, dass ich wie jedes Jahr nach Hause komme, nach Schwerin.",
+  "evidence_en": "My parents expect me to come home as every year, to Schwerin.",
+  "why": "„Nach Hause, nach Schwerin“ zu den Eltern: Die Eltern wohnen in Schwerin.",
+  "why_en": "'Home, to Schwerin' to her parents: her parents live in Schwerin.",
+  "trap": "Barcelona wird auch genannt, aber dort wohnt Rafaels Familie.",
+  "trap_en": "Barcelona is also mentioned, but that's where Rafael's family lives.",
+  "question_en": "Jana's parents live in Schwerin."
+ },
+ "H3-2": {
+  "evidence": "Meine Frau ist aus Polen",
+  "evidence_en": "My wife is from Poland",
+  "why": "Olivers Frau kommt aus Polen, nicht aus Spanien.",
+  "why_en": "Oliver's wife is from Poland, not Spain.",
+  "trap": "Spanien ist das Land von Rafaels Familie, nicht von Olivers Frau.",
+  "trap_en": "Spain is Rafael's family's country, not Oliver's wife's.",
+  "question_en": "Oliver's wife comes from Spain."
+ },
+ "H3-3": {
+  "evidence": "die Geschenke gibt es erst am sechsten Januar",
+  "evidence_en": "the presents only come on the sixth of January",
+  "why": "In Rafaels Familie gibt es die Geschenke erst am 6. Januar.",
+  "why_en": "In Rafael's family the presents only come on 6 January.",
+  "trap": "Am 24. wird auch bei Rafaels Familie gegessen, aber es gibt noch keine Geschenke.",
+  "trap_en": "Rafael's family also eats together on the 24th, but there are no presents yet.",
+  "question_en": "In Rafael's family you get the presents on 24 December."
+ },
+ "H3-4": {
+  "evidence": "Nichts! Ich mag seine Familie sehr.",
+  "evidence_en": "Nothing! I like his family a lot.",
+  "why": "Jana mag Rafaels Familie sehr, das Problem ist nur ihre Oma.",
+  "why_en": "Jana likes Rafael's family a lot; the problem is only her grandma.",
+  "trap": "Sie zögert wegen Barcelona, aber nicht wegen der Familie, sondern wegen ihrer Oma.",
+  "trap_en": "She hesitates about Barcelona, but because of her grandma, not his family.",
+  "question_en": "Jana doesn't particularly like her boyfriend's family."
+ },
+ "H3-5": {
+  "evidence": "meine Oma ist sechsundachtzig, und ich habe Angst davor, dass es ihr letztes Weihnachten sein könnte",
+  "evidence_en": "my grandma is eighty-six, and I'm afraid it could be her last Christmas",
+  "why": "Sie hat Angst, dass die Oma bald sterben könnte – also macht sie sich Sorgen um ihre Gesundheit.",
+  "why_en": "She's afraid her grandma might die soon – so she's worried about her health.",
+  "trap": "Das Wort „Gesundheit“ fällt nicht, aber „letztes Weihnachten“ zeigt die Sorge.",
+  "trap_en": "The word 'health' isn't said, but 'last Christmas' shows the worry.",
+  "question_en": "Jana is worried about her grandmother's health."
+ },
+ "H3-6": {
+  "evidence": "Wir wechseln jedes Jahr. Ein Jahr Polen, ein Jahr Deutschland.",
+  "evidence_en": "We alternate every year. One year Poland, one year Germany.",
+  "why": "„Wir wechseln jedes Jahr“ = abwechselnd in beiden Ländern.",
+  "why_en": "'We alternate every year' = alternately in both countries.",
+  "trap": "Silvester feiern sie immer mit Freunden, aber die Aussage ist über Weihnachten.",
+  "trap_en": "They always spend New Year's Eve with friends, but the statement is about Christmas.",
+  "question_en": "Oliver and his wife celebrate Christmas alternately in both countries."
+ },
+ "H3-7": {
+  "evidence": "Ich rede heute Abend mit Rafael darüber.",
+  "evidence_en": "I'll talk to Rafael about it this evening.",
+  "why": "Jana findet die Idee gut, aber sie muss noch mit Rafael sprechen – die Entscheidung ist offen.",
+  "why_en": "Jana likes the idea but still has to talk to Rafael – the decision is still open.",
+  "trap": "„Das wäre wirklich möglich“ klingt wie eine Entscheidung, ist aber nur eine Möglichkeit.",
+  "trap_en": "'That would really be possible' sounds like a decision, but it's only a possibility.",
+  "question_en": "Jana has already decided where she will celebrate."
+ },
+ "H4-1": {
+  "evidence": "Ein Feiertag ist nämlich etwas anderes als Urlaub.",
+  "evidence_en": "A public holiday is something different from a vacation.",
+  "why": "Herr Amann sagt, an einem Feiertag hat die ganze Gesellschaft frei – das ist der Unterschied zum Urlaub.",
+  "why_en": "Mr Amann says that on a public holiday the whole society is off – that's the difference from a vacation.",
+  "trap": "Frau Roth will flexible freie Tage – sie sagt nicht, dass alle gleichzeitig frei haben sollen.",
+  "trap_en": "Ms Roth wants flexible days off – she never says everyone should be off at the same time.",
+  "question_en": "A public holiday is something different from a vacation, because everyone is off at the same time."
+ },
+ "H4-2": {
+  "evidence": "Ein zusätzlicher Feiertag kostet die deutsche Wirtschaft ungefähr vier Milliarden Euro.",
+  "evidence_en": "An extra public holiday costs the German economy about four billion euros.",
+  "why": "Frau Roth nennt die Zahl von vier Milliarden Euro.",
+  "why_en": "Ms Roth gives the figure of four billion euros.",
+  "trap": "Herr Amann wiederholt „vier Milliarden“, aber nur um die Zahl zu kritisieren.",
+  "trap_en": "Mr Amann repeats 'four billion', but only to question the figure.",
+  "question_en": "An additional public holiday costs the economy several billion euros."
+ },
+ "H4-3": {
+  "evidence": "Studien aus Dänemark, dass Menschen nach einem freien Tag produktiver arbeiten",
+  "evidence_en": "studies from Denmark that people work more productively after a day off",
+  "why": "„Produktiver arbeiten“ = besser arbeiten; das sagt Herr Amann.",
+  "why_en": "'Work more productively' = work better; Mr Amann says this.",
+  "trap": "Frau Roth antwortet „Zum Teil“, aber sie vertritt diese Meinung nicht.",
+  "trap_en": "Ms Roth replies 'partly', but it isn't her argument.",
+  "question_en": "After a day off, people work better."
+ },
+ "H4-4": {
+  "evidence": "Sie wünschen sich flexible Tage.",
+  "evidence_en": "They want flexible days.",
+  "why": "Frau Roth sagt, ihre Mitarbeiter wollen selbst wählen, z. B. frei am Zuckerfest statt an Ostern.",
+  "why_en": "Ms Roth says her employees want to choose, e.g. off at Eid instead of Easter.",
+  "trap": "Herr Amann spricht auch über Flexibilität, aber er ist dagegen.",
+  "trap_en": "Mr Amann also talks about flexibility, but he is against it.",
+  "question_en": "Employees would rather choose for themselves when they have time off."
+ },
+ "H4-5": {
+  "evidence": "Ich habe gestern mit meiner Nachbarin gesprochen, sie ist Krankenschwester.",
+  "evidence_en": "Yesterday I spoke to my neighbour, she's a nurse.",
+  "why": "Die Moderatorin erzählt von ihrer Nachbarin, für die Feiertage normale Arbeitstage sind.",
+  "why_en": "The presenter tells of her neighbour, for whom holidays are normal working days.",
+  "trap": "Herr Amann sagt danach „Das ist richtig“, aber die Nachbarin ist die der Moderatorin.",
+  "trap_en": "Mr Amann says 'that's right' afterwards, but it's the presenter's neighbour.",
+  "question_en": "For my neighbour, public holidays are normal working days."
+ },
+ "H4-6": {
+  "evidence": "die meisten gar nicht mehr wissen, was Pfingsten bedeutet",
+  "evidence_en": "most people no longer know what Pentecost means",
+  "why": "Frau Roth sagt, die meisten wissen nicht mehr, was Pfingsten bedeutet.",
+  "why_en": "Ms Roth says most people no longer know what Pentecost means.",
+  "trap": "Herr Amann sagt „Das stimmt leider“, aber das Argument kommt von Frau Roth.",
+  "trap_en": "Mr Amann says 'unfortunately that's true', but the argument comes from Ms Roth.",
+  "question_en": "Many people no longer know what a public holiday means."
+ },
+ "H4-7": {
+  "evidence": "Ein neuer Feiertag, der nichts mit Religion zu tun hat.",
+  "evidence_en": "A new public holiday that has nothing to do with religion.",
+  "why": "Herr Amann schlägt einen Tag der Nachbarschaft ohne Religion vor.",
+  "why_en": "Mr Amann proposes a neighbourhood day with no religious background.",
+  "trap": "Frau Roth findet die Idee gut, aber der Vorschlag kommt von Amann.",
+  "trap_en": "Ms Roth likes the idea, but the proposal is Amann's.",
+  "question_en": "There should be a new public holiday without a religious background."
+ },
+ "H4-8": {
+  "evidence": "Wenn er einen anderen Feiertag ersetzt, ja. Einen zusätzlichen Tag lehne ich ab.",
+  "evidence_en": "If it replaces another holiday, yes. I reject an additional day.",
+  "why": "Frau Roth akzeptiert den neuen Tag nur, wenn ein anderer Feiertag wegfällt.",
+  "why_en": "Ms Roth accepts the new day only if another holiday is dropped.",
+  "trap": "Die Moderatorin spricht vom Kompromiss, aber die Bedingung nennt Frau Roth.",
+  "trap_en": "The presenter mentions a compromise, but the condition is Ms Roth's.",
+  "question_en": "A new public holiday is only acceptable if another one is dropped in return."
+ }
+}

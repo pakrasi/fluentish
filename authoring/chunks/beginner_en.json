@@ -1,0 +1,3977 @@
+[
+  {
+    "id": "ENG_CHUNK_1201",
+    "chunk": "Hi!",
+    "category": "fixed_formula",
+    "pragmatic_function": "Casual greeting",
+    "register": "informal",
+    "variable_slots": [],
+    "natural_example": "Hi! How's your day going?",
+    "substitutable_examples": [
+      "Hi! Nice to see you.",
+      "Hi! Come in."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1202",
+    "chunk": "Good morning",
+    "category": "fixed_formula",
+    "pragmatic_function": "Greeting before noon",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Good morning! Did you sleep well?",
+    "substitutable_examples": [
+      "Good morning, everyone.",
+      "Good morning. Can I have a coffee, please?"
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1203",
+    "chunk": "Good afternoon",
+    "category": "fixed_formula",
+    "pragmatic_function": "Greeting from noon to early evening",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Good afternoon. Can I help you?",
+    "substitutable_examples": [
+      "Good afternoon! How was lunch?",
+      "Good afternoon, I have an appointment at three."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1204",
+    "chunk": "Good night",
+    "category": "fixed_formula",
+    "pragmatic_function": "Saying goodbye at night or before sleep",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Good night! Sleep well.",
+    "substitutable_examples": [
+      "Good night, see you tomorrow.",
+      "Good night, Mom."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1205",
+    "chunk": "How are you?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Asking about someone's wellbeing when greeting",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Hi Sam, how are you?",
+    "substitutable_examples": [
+      "Good morning! How are you today?",
+      "How are you? I haven't seen you all week."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1206",
+    "chunk": "I'm fine, thanks. And you?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Standard reply to \"How are you?\"",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "\"How are you?\" \"I'm fine, thanks. And you?\"",
+    "substitutable_examples": [
+      "\"Hi, how are you?\" \"I'm fine, thanks. And you?\"",
+      "\"How are things?\" \"I'm fine, thanks. And you?\""
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1207",
+    "chunk": "Not bad, thanks",
+    "category": "fixed_formula",
+    "pragmatic_function": "Casual positive reply to \"How are you?\"",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "\"How are you doing?\" \"Not bad, thanks.\"",
+    "substitutable_examples": [
+      "\"How's it going?\" \"Not bad, thanks. You?\"",
+      "\"How was your week?\" \"Not bad, thanks.\""
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1208",
+    "chunk": "Nice to meet you",
+    "category": "fixed_formula",
+    "pragmatic_function": "Greeting someone you meet for the first time",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Hi, I'm Anna. Nice to meet you.",
+    "substitutable_examples": [
+      "Nice to meet you, Mr. Brown.",
+      "\"This is my sister, Lucy.\" \"Nice to meet you.\""
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1209",
+    "chunk": "You too",
+    "category": "fixed_formula",
+    "pragmatic_function": "Returning a wish or greeting",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "\"Nice to meet you.\" \"You too.\"",
+    "substitutable_examples": [
+      "\"Have a nice weekend!\" \"You too!\"",
+      "\"Enjoy the party!\" \"Thanks, you too.\""
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1210",
+    "chunk": "Pleased to meet you",
+    "category": "fixed_formula",
+    "pragmatic_function": "Formal greeting on first meeting",
+    "register": "formal",
+    "variable_slots": [],
+    "natural_example": "Good morning, I'm David Lee. Pleased to meet you.",
+    "substitutable_examples": [
+      "Pleased to meet you, Ms. Garcia.",
+      "\"This is our new manager.\" \"Pleased to meet you.\""
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1211",
+    "chunk": "How's it going?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Casual \"how are you\"",
+    "register": "informal",
+    "variable_slots": [],
+    "natural_example": "Hey Tom, how's it going?",
+    "substitutable_examples": [
+      "How's it going at the new job?",
+      "Hi! How's it going?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1212",
+    "chunk": "Good to see you",
+    "category": "fixed_formula",
+    "pragmatic_function": "Friendly greeting to someone you know",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Hey Maria! Good to see you.",
+    "substitutable_examples": [
+      "It's good to see you again.",
+      "Good to see you! Come in."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1213",
+    "chunk": "Goodbye",
+    "category": "fixed_formula",
+    "pragmatic_function": "Standard way to end a meeting or conversation",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Goodbye, and thank you for everything.",
+    "substitutable_examples": [
+      "Goodbye! See you next week.",
+      "Say goodbye to Grandma."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1214",
+    "chunk": "See you later",
+    "category": "fixed_formula",
+    "pragmatic_function": "Informal goodbye",
+    "register": "informal",
+    "variable_slots": [],
+    "natural_example": "OK, see you later!",
+    "substitutable_examples": [
+      "Bye, see you later.",
+      "I have to go. See you later!"
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1215",
+    "chunk": "Have a nice day",
+    "category": "fixed_formula",
+    "pragmatic_function": "Friendly goodbye, often to staff or customers",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Thank you. Have a nice day!",
+    "substitutable_examples": [
+      "Here's your receipt. Have a nice day.",
+      "Bye, have a nice day!"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1216",
+    "chunk": "Thank you",
+    "category": "fixed_formula",
+    "pragmatic_function": "Basic thanks",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Thank you for the coffee.",
+    "substitutable_examples": [
+      "Thank you, that's very nice.",
+      "\"Here's your change.\" \"Thank you.\""
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1217",
+    "chunk": "Thanks a lot",
+    "category": "fixed_formula",
+    "pragmatic_function": "Warm, informal thanks",
+    "register": "informal",
+    "variable_slots": [],
+    "natural_example": "Thanks a lot, you're very kind.",
+    "substitutable_examples": [
+      "Thanks a lot for the ride.",
+      "\"I fixed your bike.\" \"Thanks a lot!\""
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1218",
+    "chunk": "You're welcome",
+    "category": "fixed_formula",
+    "pragmatic_function": "Reply to thanks",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "\"Thank you!\" \"You're welcome.\"",
+    "substitutable_examples": [
+      "\"Thanks for the help.\" \"You're welcome.\"",
+      "\"Thanks for dinner.\" \"You're welcome, come again.\""
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1219",
+    "chunk": "No problem",
+    "category": "fixed_formula",
+    "pragmatic_function": "Reply to thanks or to an apology",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "\"Thanks for waiting.\" \"No problem.\"",
+    "substitutable_examples": [
+      "\"Can you close the door?\" \"No problem.\"",
+      "\"Sorry I'm late.\" \"No problem.\""
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1220",
+    "chunk": "Yes, please",
+    "category": "fixed_formula",
+    "pragmatic_function": "Accepting an offer politely",
+    "register": "polite",
+    "variable_slots": [],
+    "natural_example": "\"Would you like some tea?\" \"Yes, please.\"",
+    "substitutable_examples": [
+      "\"Do you want a bag?\" \"Yes, please.\"",
+      "\"More water?\" \"Yes, please.\""
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1221",
+    "chunk": "No, thank you",
+    "category": "fixed_formula",
+    "pragmatic_function": "Declining an offer politely",
+    "register": "polite",
+    "variable_slots": [],
+    "natural_example": "\"Would you like more cake?\" \"No, thank you.\"",
+    "substitutable_examples": [
+      "\"Do you need a bag?\" \"No, thank you.\"",
+      "\"Coffee?\" \"No, thank you. I'm fine.\""
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1222",
+    "chunk": "Excuse me",
+    "category": "fixed_formula",
+    "pragmatic_function": "Getting attention or passing someone",
+    "register": "polite",
+    "variable_slots": [],
+    "natural_example": "Excuse me, is this the train to London?",
+    "substitutable_examples": [
+      "Excuse me, can I get past?",
+      "Excuse me! You dropped your wallet."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1223",
+    "chunk": "I'm sorry",
+    "category": "fixed_formula",
+    "pragmatic_function": "Basic apology",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I'm sorry, it was my mistake.",
+    "substitutable_examples": [
+      "I'm sorry, I didn't see you.",
+      "Oh, I'm sorry! Are you OK?"
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1224",
+    "chunk": "That's okay",
+    "category": "fixed_formula",
+    "pragmatic_function": "Accepting an apology",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "\"Sorry I broke your cup.\" \"That's okay.\"",
+    "substitutable_examples": [
+      "\"I forgot the book.\" \"That's okay, bring it tomorrow.\"",
+      "\"Sorry, I'm late.\" \"That's okay.\""
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1225",
+    "chunk": "Sorry I'm late",
+    "category": "fixed_formula",
+    "pragmatic_function": "Apologizing for arriving late",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Sorry I'm late, the bus didn't come.",
+    "substitutable_examples": [
+      "Hi, sorry I'm late!",
+      "Sorry I'm late, I got lost."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1226",
+    "chunk": "Sorry, I don't understand",
+    "category": "fixed_formula",
+    "pragmatic_function": "Signaling that you did not understand",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Sorry, I don't understand. Can you say it again?",
+    "substitutable_examples": [
+      "Sorry, I don't understand this word.",
+      "Sorry, I don't understand the question."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1227",
+    "chunk": "Could you speak more slowly, please?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Asking someone to slow down",
+    "register": "polite",
+    "variable_slots": [],
+    "natural_example": "Could you speak more slowly, please? My English isn't very good.",
+    "substitutable_examples": [
+      "Sorry, could you speak more slowly, please?",
+      "Could you speak more slowly, please? I'm still learning."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1228",
+    "chunk": "Can you repeat that, please?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Asking someone to say something again",
+    "register": "polite",
+    "variable_slots": [],
+    "natural_example": "Sorry, can you repeat that, please?",
+    "substitutable_examples": [
+      "Can you repeat that, please? It's very noisy here.",
+      "Can you repeat that, please? I didn't hear the number."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1229",
+    "chunk": "Can you spell that, please?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Asking for the spelling of a word or name",
+    "register": "polite",
+    "variable_slots": [],
+    "natural_example": "Your last name? Can you spell that, please?",
+    "substitutable_examples": [
+      "Can you spell that, please? I want to write it down.",
+      "\"The street is Wycombe Road.\" \"Can you spell that, please?\""
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1230",
+    "chunk": "I don't speak much English",
+    "category": "fixed_formula",
+    "pragmatic_function": "Explaining limited language ability",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Sorry, I don't speak much English.",
+    "substitutable_examples": [
+      "I don't speak much English, but I'm learning.",
+      "I don't speak much English. Do you speak Spanish?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1231",
+    "chunk": "What's your name?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Asking someone's name",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Hi, I'm Tom. What's your name?",
+    "substitutable_examples": [
+      "What's your name, please?",
+      "What's your dog's name?"
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1232",
+    "chunk": "Where are you from?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Asking about someone's origin",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Where are you from? Your accent is nice.",
+    "substitutable_examples": [
+      "So, where are you from?",
+      "\"Where are you from?\" \"I'm from Brazil.\""
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1233",
+    "chunk": "How old are you?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Asking someone's age",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "How old are you, Emma?",
+    "substitutable_examples": [
+      "How old is your son?",
+      "\"How old are you?\" \"I'm twenty-five.\""
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1234",
+    "chunk": "Where do you live?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Asking where someone lives",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Where do you live? Near here?",
+    "substitutable_examples": [
+      "\"Where do you live?\" \"In the city center.\"",
+      "Where do you live now?"
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1235",
+    "chunk": "What do you do?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Asking about someone's job",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "What do you do? Are you a student?",
+    "substitutable_examples": [
+      "\"What do you do?\" \"I'm a nurse.\"",
+      "So, what do you do?"
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1236",
+    "chunk": "Do you have any brothers or sisters?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Asking about someone's family",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Do you have any brothers or sisters?",
+    "substitutable_examples": [
+      "\"Do you have any brothers or sisters?\" \"Yes, one brother.\"",
+      "Tell me about your family. Do you have any brothers or sisters?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1237",
+    "chunk": "How long have you lived here?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Asking how long someone has lived somewhere",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "How long have you lived here?",
+    "substitutable_examples": [
+      "\"How long have you lived here?\" \"About two years.\"",
+      "You speak the language well. How long have you lived here?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1238",
+    "chunk": "What about you?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Returning a question to the other person",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I'm from Italy. What about you?",
+    "substitutable_examples": [
+      "I like pizza. What about you?",
+      "I'm tired. What about you?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1239",
+    "chunk": "What time is it?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Asking the time",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Excuse me, what time is it?",
+    "substitutable_examples": [
+      "What time is it? I think we're late.",
+      "\"What time is it?\" \"It's half past six.\""
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1240",
+    "chunk": "How much is it?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Asking the price",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "This bag is nice. How much is it?",
+    "substitutable_examples": [
+      "How much is it for one night?",
+      "\"I'd like a ticket.\" \"OK.\" \"How much is it?\""
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1241",
+    "chunk": "Can I help you?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Offering help, often by staff",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Good morning, can I help you?",
+    "substitutable_examples": [
+      "Can I help you? You look lost.",
+      "\"Can I help you?\" \"Yes, I'm looking for the bank.\""
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1242",
+    "chunk": "That's all, thanks",
+    "category": "fixed_formula",
+    "pragmatic_function": "Telling a server or shop assistant you are finished",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "\"Anything else?\" \"No, that's all, thanks.\"",
+    "substitutable_examples": [
+      "That's all, thanks. How much is it?",
+      "Just the bread. That's all, thanks."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1243",
+    "chunk": "Could I see the menu, please?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Asking for the menu in a restaurant",
+    "register": "polite",
+    "variable_slots": [],
+    "natural_example": "Hi, could I see the menu, please?",
+    "substitutable_examples": [
+      "Could I see the menu, please? We're ready to order.",
+      "Excuse me, could I see the menu, please?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1244",
+    "chunk": "What do you recommend?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Asking a waiter or friend for a suggestion",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "It's my first time here. What do you recommend?",
+    "substitutable_examples": [
+      "What do you recommend for dessert?",
+      "Everything looks good. What do you recommend?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1245",
+    "chunk": "I'm vegetarian",
+    "category": "fixed_formula",
+    "pragmatic_function": "Stating a dietary need",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I'm vegetarian. Is there meat in this soup?",
+    "substitutable_examples": [
+      "Sorry, I'm vegetarian.",
+      "I'm vegetarian, so no chicken for me, please."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1246",
+    "chunk": "I'm full",
+    "category": "fixed_formula",
+    "pragmatic_function": "Saying you can't eat more",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "No more, thanks. I'm full.",
+    "substitutable_examples": [
+      "That was great, but I'm full.",
+      "I'm full. Can we take the rest home?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1247",
+    "chunk": "Where's the bathroom?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Asking for the toilet",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Excuse me, where's the bathroom?",
+    "substitutable_examples": [
+      "Where's the bathroom, please?",
+      "Sorry, where's the bathroom?"
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1248",
+    "chunk": "Go straight ahead",
+    "category": "fixed_formula",
+    "pragmatic_function": "Giving a basic direction",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Go straight ahead, and the bank is on the left.",
+    "substitutable_examples": [
+      "Go straight ahead for two minutes.",
+      "Go straight ahead until the traffic lights."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1249",
+    "chunk": "Where do I get off?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Asking on public transport where to leave",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I want to go to the zoo. Where do I get off?",
+    "substitutable_examples": [
+      "Where do I get off for the hospital?",
+      "Excuse me, where do I get off?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1250",
+    "chunk": "What's the wifi password?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Asking for the internet password",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Excuse me, what's the wifi password?",
+    "substitutable_examples": [
+      "What's the wifi password here?",
+      "What's the wifi password? My phone isn't connecting."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1251",
+    "chunk": "Help!",
+    "category": "fixed_formula",
+    "pragmatic_function": "Shouting for help in an emergency",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Help! Someone help me!",
+    "substitutable_examples": [
+      "Help! My friend fell!",
+      "Help! Call an ambulance!"
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1252",
+    "chunk": "Can you help me?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Asking for help",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Excuse me, can you help me? I'm lost.",
+    "substitutable_examples": [
+      "Can you help me? My car won't start.",
+      "Can you help me with this bag?"
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1253",
+    "chunk": "I need a doctor",
+    "category": "fixed_formula",
+    "pragmatic_function": "Asking for medical help",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I need a doctor. My son is very sick.",
+    "substitutable_examples": [
+      "Please, I need a doctor.",
+      "I feel terrible. I need a doctor."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1254",
+    "chunk": "It hurts here",
+    "category": "fixed_formula",
+    "pragmatic_function": "Showing a doctor where the pain is",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "It hurts here, in my stomach.",
+    "substitutable_examples": [
+      "It hurts here when I walk.",
+      "\"Where does it hurt?\" \"It hurts here.\""
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1255",
+    "chunk": "I don't feel well",
+    "category": "fixed_formula",
+    "pragmatic_function": "Saying you are ill",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I don't feel well. I'm going home.",
+    "substitutable_examples": [
+      "Sorry, I don't feel well today.",
+      "I don't feel well. Can I sit down?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1256",
+    "chunk": "Call an ambulance!",
+    "category": "fixed_formula",
+    "pragmatic_function": "Emergency request",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Call an ambulance! He isn't breathing.",
+    "substitutable_examples": [
+      "Quick, call an ambulance!",
+      "Call an ambulance! There's been an accident."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1257",
+    "chunk": "I'm lost",
+    "category": "fixed_formula",
+    "pragmatic_function": "Saying you don't know where you are",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Excuse me, I'm lost. Where's the station?",
+    "substitutable_examples": [
+      "I think I'm lost.",
+      "I'm lost. Can you show me on the map?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1258",
+    "chunk": "Look out!",
+    "category": "fixed_formula",
+    "pragmatic_function": "Warning of danger",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Look out! A car!",
+    "substitutable_examples": [
+      "Look out! The floor is wet.",
+      "Look out, there's a bike behind you!"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1259",
+    "chunk": "What's the matter?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Asking what is wrong",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "You look sad. What's the matter?",
+    "substitutable_examples": [
+      "What's the matter? Are you sick?",
+      "\"What's the matter?\" \"I lost my keys.\""
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1260",
+    "chunk": "Are you okay?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Asking if someone is all right",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Are you okay? You look pale.",
+    "substitutable_examples": [
+      "Oh no, you fell! Are you okay?",
+      "Are you okay? You're very quiet today."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1261",
+    "chunk": "Happy birthday!",
+    "category": "fixed_formula",
+    "pragmatic_function": "Birthday wish",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Happy birthday! Here's a present for you.",
+    "substitutable_examples": [
+      "Happy birthday, Mom!",
+      "Happy birthday! How old are you now?"
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1262",
+    "chunk": "Well done!",
+    "category": "fixed_formula",
+    "pragmatic_function": "Praising someone's success",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "You passed the test? Well done!",
+    "substitutable_examples": [
+      "Well done, that was great.",
+      "Well done, everyone!"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1263",
+    "chunk": "It's raining",
+    "category": "fixed_formula",
+    "pragmatic_function": "Weather small talk",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Take an umbrella. It's raining.",
+    "substitutable_examples": [
+      "Oh no, it's raining again.",
+      "It's raining, so let's stay inside."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1264",
+    "chunk": "Nice weather today, isn't it?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Weather small talk to start a conversation",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Nice weather today, isn't it?",
+    "substitutable_examples": [
+      "Nice weather today, isn't it? Perfect for a walk.",
+      "\"Nice weather today, isn't it?\" \"Yes, finally some sun!\""
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1265",
+    "chunk": "What's your phone number?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Asking for a phone number",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "What's your phone number? I'll text you.",
+    "substitutable_examples": [
+      "Can I ask, what's your phone number?",
+      "\"What's your phone number?\" \"It's 555-0142.\""
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1266",
+    "chunk": "I can't hear you",
+    "category": "fixed_formula",
+    "pragmatic_function": "Phone or noise problem",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Sorry, I can't hear you. It's very loud here.",
+    "substitutable_examples": [
+      "I can't hear you. Can you call me back?",
+      "Hello? I can't hear you very well."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1267",
+    "chunk": "Sorry, I missed your call",
+    "category": "fixed_formula",
+    "pragmatic_function": "Replying after a missed phone call",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Hi, sorry, I missed your call. What's up?",
+    "substitutable_examples": [
+      "Sorry, I missed your call. I was in a meeting.",
+      "Sorry, I missed your call earlier."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1268",
+    "chunk": "Can I ask you a question?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Politely starting a question",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Excuse me, can I ask you a question?",
+    "substitutable_examples": [
+      "Can I ask you a question about the homework?",
+      "Can I ask you a question? It's a bit personal."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1269",
+    "chunk": "What time shall we meet?",
+    "category": "fixed_formula",
+    "pragmatic_function": "Arranging a meeting time",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "OK, dinner on Friday. What time shall we meet?",
+    "substitutable_examples": [
+      "What time shall we meet tomorrow?",
+      "What time shall we meet at the station?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1270",
+    "chunk": "My phone is about to die",
+    "category": "fixed_formula",
+    "pragmatic_function": "Saying your battery is almost empty",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I have to go, my phone is about to die.",
+    "substitutable_examples": [
+      "Can I use your charger? My phone is about to die.",
+      "Text me, my phone is about to die."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1271",
+    "chunk": "Um, let me see",
+    "category": "gambit_filler",
+    "pragmatic_function": "Buying time while thinking",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Um, let me see... I think it's on Tuesday.",
+    "substitutable_examples": [
+      "\"What's your address?\" \"Um, let me see...\"",
+      "Um, let me see, where did I put my keys?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1272",
+    "chunk": "Just a moment",
+    "category": "gambit_filler",
+    "pragmatic_function": "Asking someone to wait briefly",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Just a moment, I'll get my pen.",
+    "substitutable_examples": [
+      "Just a moment, please.",
+      "\"Are you ready?\" \"Just a moment!\""
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1273",
+    "chunk": "Wait a minute",
+    "category": "gambit_filler",
+    "pragmatic_function": "Asking someone to wait or stop",
+    "register": "informal",
+    "variable_slots": [],
+    "natural_example": "Wait a minute, I'm coming!",
+    "substitutable_examples": [
+      "Wait a minute, where's my phone?",
+      "Wait a minute, that's not right."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1274",
+    "chunk": "Hold on",
+    "category": "gambit_filler",
+    "pragmatic_function": "Asking someone to wait, often on the phone",
+    "register": "informal",
+    "variable_slots": [],
+    "natural_example": "Hold on, I'll check.",
+    "substitutable_examples": [
+      "Hold on, someone's at the door.",
+      "Hold on, let me find a pen."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1275",
+    "chunk": "Pardon?",
+    "category": "gambit_filler",
+    "pragmatic_function": "Polite request to repeat",
+    "register": "polite",
+    "variable_slots": [],
+    "natural_example": "Pardon? I didn't hear you.",
+    "substitutable_examples": [
+      "\"It's 15 euros.\" \"Pardon?\"",
+      "Pardon? Could you say the name again?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1276",
+    "chunk": "Sorry?",
+    "category": "gambit_filler",
+    "pragmatic_function": "Short request to repeat something",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Sorry? Can you say that again?",
+    "substitutable_examples": [
+      "\"Do you want sugar?\" \"Sorry?\"",
+      "Sorry? It's very loud in here."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1277",
+    "chunk": "What's that?",
+    "category": "gambit_filler",
+    "pragmatic_function": "Asking about an unknown thing or word",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "What's that? I don't know that word.",
+    "substitutable_examples": [
+      "What's that on the table?",
+      "\"It's a colander.\" \"What's that?\""
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1278",
+    "chunk": "Okay",
+    "category": "gambit_filler",
+    "pragmatic_function": "Showing agreement or understanding",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Okay, let's go.",
+    "substitutable_examples": [
+      "\"Meet me at six.\" \"Okay.\"",
+      "Okay, I understand now."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1279",
+    "chunk": "Of course",
+    "category": "gambit_filler",
+    "pragmatic_function": "Saying yes strongly or politely",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "\"Can I sit here?\" \"Of course.\"",
+    "substitutable_examples": [
+      "Of course I can help you.",
+      "\"Can I use your phone?\" \"Of course!\""
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1280",
+    "chunk": "Sure",
+    "category": "gambit_filler",
+    "pragmatic_function": "Informal yes",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "\"Can you pass the salt?\" \"Sure.\"",
+    "substitutable_examples": [
+      "Sure, no problem.",
+      "\"Do you want to come?\" \"Sure!\""
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1281",
+    "chunk": "Me too",
+    "category": "gambit_filler",
+    "pragmatic_function": "Agreeing with a positive statement about yourself",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "\"I love this song.\" \"Me too!\"",
+    "substitutable_examples": [
+      "\"I'm hungry.\" \"Me too.\"",
+      "\"I'm from Madrid.\" \"Really? Me too!\""
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1282",
+    "chunk": "Me neither",
+    "category": "gambit_filler",
+    "pragmatic_function": "Agreeing with a negative statement about yourself",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "\"I don't like coffee.\" \"Me neither.\"",
+    "substitutable_examples": [
+      "\"I can't swim.\" \"Me neither.\"",
+      "\"I didn't sleep well.\" \"Me neither.\""
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1283",
+    "chunk": "Right",
+    "category": "gambit_filler",
+    "pragmatic_function": "Showing you follow or agree",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Right, so the bus leaves at nine.",
+    "substitutable_examples": [
+      "\"First we go left.\" \"Right.\"",
+      "Right, let's start."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1284",
+    "chunk": "I don't know",
+    "category": "gambit_filler",
+    "pragmatic_function": "Saying you lack information",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Sorry, I don't know.",
+    "substitutable_examples": [
+      "I don't know where he is.",
+      "\"What time is it?\" \"I don't know, maybe five?\""
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1285",
+    "chunk": "Maybe",
+    "category": "gambit_filler",
+    "pragmatic_function": "Expressing possibility or hesitation",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "\"Are you coming tonight?\" \"Maybe.\"",
+    "substitutable_examples": [
+      "Maybe it's in your bag.",
+      "Maybe we can go tomorrow."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1286",
+    "chunk": "I'm not sure",
+    "category": "gambit_filler",
+    "pragmatic_function": "Expressing uncertainty",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "\"Is it open on Sunday?\" \"I'm not sure.\"",
+    "substitutable_examples": [
+      "I'm not sure. Let me check.",
+      "I'm not sure, but I think so."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1287",
+    "chunk": "Good idea",
+    "category": "gambit_filler",
+    "pragmatic_function": "Agreeing with a suggestion",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "\"Let's take a taxi.\" \"Good idea.\"",
+    "substitutable_examples": [
+      "Good idea! Let's do that.",
+      "\"Shall we eat now?\" \"Good idea, I'm hungry.\""
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1288",
+    "chunk": "That's great",
+    "category": "gambit_filler",
+    "pragmatic_function": "Reacting positively to news",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "You got the job? That's great!",
+    "substitutable_examples": [
+      "That's great, thank you.",
+      "\"I passed my exam.\" \"That's great!\""
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1289",
+    "chunk": "Oh no!",
+    "category": "gambit_filler",
+    "pragmatic_function": "Reacting to bad news or a problem",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Oh no! I forgot my keys.",
+    "substitutable_examples": [
+      "Oh no, it's raining.",
+      "\"The shop is closed.\" \"Oh no!\""
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1290",
+    "chunk": "Well...",
+    "category": "gambit_filler",
+    "pragmatic_function": "Hesitating before an answer",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Well... I'm not sure.",
+    "substitutable_examples": [
+      "Well, it's a bit expensive.",
+      "\"Do you like it?\" \"Well... it's okay.\""
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1291",
+    "chunk": "Actually",
+    "category": "gambit_filler",
+    "pragmatic_function": "Correcting or adding something",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Actually, I'm from Canada, not the US.",
+    "substitutable_examples": [
+      "Actually, can I have tea instead?",
+      "Actually, I don't eat meat."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1292",
+    "chunk": "Sounds good",
+    "category": "gambit_filler",
+    "pragmatic_function": "Accepting a plan",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "\"Pizza at seven?\" \"Sounds good.\"",
+    "substitutable_examples": [
+      "Sounds good to me.",
+      "\"Let's meet at the café.\" \"Sounds good!\""
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1293",
+    "chunk": "Cool",
+    "category": "gambit_filler",
+    "pragmatic_function": "Casual positive reaction",
+    "register": "informal",
+    "variable_slots": [],
+    "natural_example": "\"I'll see you there.\" \"Cool.\"",
+    "substitutable_examples": [
+      "Cool, thanks!",
+      "\"I got a new bike.\" \"Cool!\""
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1294",
+    "chunk": "Wow!",
+    "category": "gambit_filler",
+    "pragmatic_function": "Showing surprise or admiration",
+    "register": "informal",
+    "variable_slots": [],
+    "natural_example": "Wow! Your house is beautiful.",
+    "substitutable_examples": [
+      "Wow, that's expensive!",
+      "Wow! You speak five languages?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1295",
+    "chunk": "Is that okay?",
+    "category": "gambit_filler",
+    "pragmatic_function": "Checking that something is acceptable",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I'll come at eight. Is that okay?",
+    "substitutable_examples": [
+      "I opened the window. Is that okay?",
+      "Can I pay tomorrow? Is that okay?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1296",
+    "chunk": "And then",
+    "category": "discourse_connector",
+    "pragmatic_function": "Sequencing events in a story",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I got up, and then I had breakfast.",
+    "substitutable_examples": [
+      "We went to the park, and then we had lunch.",
+      "I finish work, and then I go to the gym."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1297",
+    "chunk": "But",
+    "category": "discourse_connector",
+    "pragmatic_function": "Contrasting two ideas",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I like tea, but I don't like coffee.",
+    "substitutable_examples": [
+      "It's small, but it's nice.",
+      "I want to come, but I'm busy."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1298",
+    "chunk": "Because",
+    "category": "discourse_connector",
+    "pragmatic_function": "Giving a reason",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I'm tired because I worked late.",
+    "substitutable_examples": [
+      "I'm learning English because I want to travel.",
+      "We took a taxi because it was raining."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1299",
+    "chunk": "Also",
+    "category": "discourse_connector",
+    "pragmatic_function": "Adding information",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I speak French. I also speak a little German.",
+    "substitutable_examples": [
+      "The hotel is cheap. It's also near the beach.",
+      "Also, can you buy some milk?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1300",
+    "chunk": "Then",
+    "category": "discourse_connector",
+    "pragmatic_function": "Next step in a sequence",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "First I shower, then I get dressed.",
+    "substitutable_examples": [
+      "Turn left, then go straight.",
+      "We ate, then we watched a movie."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1301",
+    "chunk": "First",
+    "category": "discourse_connector",
+    "pragmatic_function": "Starting a sequence",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "First, open the app. Then log in.",
+    "substitutable_examples": [
+      "First, we went to the museum.",
+      "First, cut the onions."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1302",
+    "chunk": "Or",
+    "category": "discourse_connector",
+    "pragmatic_function": "Giving a choice",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Tea or coffee?",
+    "substitutable_examples": [
+      "We can walk or take the bus.",
+      "Do you want pizza or pasta?"
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1303",
+    "chunk": "Finally",
+    "category": "discourse_connector",
+    "pragmatic_function": "Last step in a sequence",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Finally, we arrived at the hotel.",
+    "substitutable_examples": [
+      "Finally, add the cheese.",
+      "We waited an hour, and finally the bus came."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1304",
+    "chunk": "Next",
+    "category": "discourse_connector",
+    "pragmatic_function": "Moving to the next step",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Next, turn right at the bank.",
+    "substitutable_examples": [
+      "Next, we visited the old town.",
+      "Next, write your name here."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1305",
+    "chunk": "Later",
+    "category": "discourse_connector",
+    "pragmatic_function": "Referring to a time after now or after an event",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I'm busy now. Can I call you later?",
+    "substitutable_examples": [
+      "Later, we went for a walk.",
+      "See you later at the station."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1306",
+    "chunk": "Because of that",
+    "category": "discourse_connector",
+    "pragmatic_function": "Giving a result of a previous fact",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "The train was late. Because of that, I missed my meeting.",
+    "substitutable_examples": [
+      "It rained all day. Because of that, we stayed home.",
+      "I was sick. Because of that, I didn't go to school."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1307",
+    "chunk": "Afterwards",
+    "category": "discourse_connector",
+    "pragmatic_function": "After an event",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "We watched a movie. Afterwards, we had dinner.",
+    "substitutable_examples": [
+      "I'll finish work first and call you afterwards.",
+      "Afterwards, we went home."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1308",
+    "chunk": "And also",
+    "category": "discourse_connector",
+    "pragmatic_function": "Adding a second point",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I need bread and also some milk.",
+    "substitutable_examples": [
+      "She's kind and also very funny.",
+      "Bring your passport and also your ticket."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1309",
+    "chunk": "But then",
+    "category": "discourse_connector",
+    "pragmatic_function": "Introducing an unexpected change",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I wanted to go out, but then it started to rain.",
+    "substitutable_examples": [
+      "We were lost, but then a man helped us.",
+      "I was happy, but then I saw the price."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1310",
+    "chunk": "Or maybe",
+    "category": "discourse_connector",
+    "pragmatic_function": "Suggesting another option",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Let's go to the beach. Or maybe the park?",
+    "substitutable_examples": [
+      "We can meet on Monday, or maybe Tuesday.",
+      "I'll have the soup. Or maybe the salad."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1311",
+    "chunk": "At the beginning",
+    "category": "discourse_connector",
+    "pragmatic_function": "Talking about the start of something",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "At the beginning, English was very hard for me.",
+    "substitutable_examples": [
+      "At the beginning of the movie, he is a child.",
+      "At the beginning, I didn't know anyone."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1312",
+    "chunk": "Anyway",
+    "category": "discourse_connector",
+    "pragmatic_function": "Changing topic or returning to the main point",
+    "register": "informal",
+    "variable_slots": [],
+    "natural_example": "Anyway, how was your weekend?",
+    "substitutable_examples": [
+      "Anyway, I have to go now.",
+      "It was a long day. Anyway, I'm home now."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1313",
+    "chunk": "One day",
+    "category": "discourse_connector",
+    "pragmatic_function": "Starting a story",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "One day, I want to visit Japan.",
+    "substitutable_examples": [
+      "One day, I met a man on the train.",
+      "One day, we went to the lake."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1314",
+    "chunk": "Suddenly",
+    "category": "discourse_connector",
+    "pragmatic_function": "Introducing a surprise event in a story",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Suddenly, the lights went out.",
+    "substitutable_examples": [
+      "We were walking, and suddenly it started to rain.",
+      "Suddenly, my phone rang."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1315",
+    "chunk": "Luckily",
+    "category": "discourse_connector",
+    "pragmatic_function": "Introducing a good event",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I lost my wallet, but luckily someone found it.",
+    "substitutable_examples": [
+      "Luckily, the shop was still open.",
+      "It rained, but luckily we had an umbrella."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1316",
+    "chunk": "to get up",
+    "category": "collocation",
+    "pragmatic_function": "Daily routine: leaving bed",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I get up at seven every day.",
+    "substitutable_examples": [
+      "What time do you get up?",
+      "On Sundays I get up late."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1317",
+    "chunk": "to wake up",
+    "category": "collocation",
+    "pragmatic_function": "Daily routine: stopping sleeping",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I usually wake up at six.",
+    "substitutable_examples": [
+      "I woke up in the night.",
+      "Wake up! It's eight o'clock."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1318",
+    "chunk": "to have breakfast",
+    "category": "collocation",
+    "pragmatic_function": "Daily routine: eating the morning meal",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I have breakfast at home.",
+    "substitutable_examples": [
+      "Did you have breakfast?",
+      "We have breakfast at eight."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1319",
+    "chunk": "to have lunch",
+    "category": "collocation",
+    "pragmatic_function": "Daily routine: eating the midday meal",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Let's have lunch together.",
+    "substitutable_examples": [
+      "I have lunch at one.",
+      "Where do you usually have lunch?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1320",
+    "chunk": "to have dinner",
+    "category": "collocation",
+    "pragmatic_function": "Daily routine: eating the evening meal",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "We have dinner at seven.",
+    "substitutable_examples": [
+      "Do you want to have dinner with us?",
+      "I had dinner with my parents."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1321",
+    "chunk": "to take a shower",
+    "category": "collocation",
+    "pragmatic_function": "Daily routine: washing",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I take a shower every morning.",
+    "substitutable_examples": [
+      "Can I take a shower before we go?",
+      "He's taking a shower."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1322",
+    "chunk": "to brush your teeth",
+    "category": "collocation",
+    "pragmatic_function": "Daily routine: cleaning teeth",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Brush your teeth before bed.",
+    "substitutable_examples": [
+      "I brush my teeth twice a day.",
+      "Did you brush your teeth?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1323",
+    "chunk": "to get dressed",
+    "category": "collocation",
+    "pragmatic_function": "Daily routine: putting on clothes",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I get dressed and have breakfast.",
+    "substitutable_examples": [
+      "Get dressed, we're late!",
+      "She's getting dressed."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1324",
+    "chunk": "to go to bed",
+    "category": "collocation",
+    "pragmatic_function": "Daily routine: going to sleep",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I go to bed at eleven.",
+    "substitutable_examples": [
+      "It's late. Go to bed!",
+      "What time do you go to bed?"
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1325",
+    "chunk": "to go to work",
+    "category": "collocation",
+    "pragmatic_function": "Daily routine: traveling to your job",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I go to work by bus.",
+    "substitutable_examples": [
+      "She goes to work at eight.",
+      "I don't go to work on Fridays."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1326",
+    "chunk": "to go home",
+    "category": "collocation",
+    "pragmatic_function": "Leaving to return home",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I'm tired. I want to go home.",
+    "substitutable_examples": [
+      "What time do you go home?",
+      "Let's go home now."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1327",
+    "chunk": "to come home",
+    "category": "collocation",
+    "pragmatic_function": "Arriving at your home",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I come home at six.",
+    "substitutable_examples": [
+      "What time did you come home?",
+      "Come home early tonight."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1328",
+    "chunk": "to go shopping",
+    "category": "collocation",
+    "pragmatic_function": "Going to shops to buy things",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Let's go shopping on Saturday.",
+    "substitutable_examples": [
+      "I go shopping once a week.",
+      "She went shopping with her friends."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1329",
+    "chunk": "to watch TV",
+    "category": "collocation",
+    "pragmatic_function": "Free time activity",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I watch TV in the evening.",
+    "substitutable_examples": [
+      "Do you watch a lot of TV?",
+      "We watched TV all afternoon."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1330",
+    "chunk": "to listen to music",
+    "category": "collocation",
+    "pragmatic_function": "Free time activity",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I listen to music on the bus.",
+    "substitutable_examples": [
+      "What music do you listen to?",
+      "She likes to listen to music when she runs."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1331",
+    "chunk": "to do homework",
+    "category": "collocation",
+    "pragmatic_function": "Study task",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I do my homework after school.",
+    "substitutable_examples": [
+      "Did you do your homework?",
+      "I have to do my homework now."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1332",
+    "chunk": "to cook dinner",
+    "category": "collocation",
+    "pragmatic_function": "Preparing the evening meal",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I cook dinner every night.",
+    "substitutable_examples": [
+      "Can you cook dinner today?",
+      "He's cooking dinner for us."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1333",
+    "chunk": "to go for a walk",
+    "category": "collocation",
+    "pragmatic_function": "Walking for pleasure",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Let's go for a walk in the park.",
+    "substitutable_examples": [
+      "I go for a walk after dinner.",
+      "Do you want to go for a walk?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1334",
+    "chunk": "to play [sport]",
+    "category": "collocation",
+    "pragmatic_function": "Doing a sport or game",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[sport]",
+        "type": "sport_or_game"
+      }
+    ],
+    "natural_example": "I play football on Saturdays.",
+    "substitutable_examples": [
+      "Do you play tennis?",
+      "My kids play basketball at school."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1335",
+    "chunk": "to do the shopping",
+    "category": "collocation",
+    "pragmatic_function": "Buying food and household things",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I do the shopping on Mondays.",
+    "substitutable_examples": [
+      "Who does the shopping in your house?",
+      "Can you do the shopping today?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1336",
+    "chunk": "to do the laundry",
+    "category": "collocation",
+    "pragmatic_function": "Washing clothes",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I do the laundry on Sunday.",
+    "substitutable_examples": [
+      "I need to do the laundry.",
+      "Can you help me do the laundry?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1337",
+    "chunk": "to clean the house",
+    "category": "collocation",
+    "pragmatic_function": "Housework",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "We clean the house every Saturday.",
+    "substitutable_examples": [
+      "I have to clean the house before my parents come.",
+      "Who cleans the house?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1338",
+    "chunk": "to wash your hands",
+    "category": "collocation",
+    "pragmatic_function": "Hygiene routine",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Wash your hands before dinner.",
+    "substitutable_examples": [
+      "I need to wash my hands.",
+      "Where can I wash my hands?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1339",
+    "chunk": "to make coffee",
+    "category": "collocation",
+    "pragmatic_function": "Preparing a drink",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I'll make coffee. Do you want some?",
+    "substitutable_examples": [
+      "He makes coffee every morning.",
+      "Can you make coffee for the guests?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1340",
+    "chunk": "to take the bus",
+    "category": "collocation",
+    "pragmatic_function": "Using public transport",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I take the bus to school.",
+    "substitutable_examples": [
+      "Let's take the bus, it's cheaper.",
+      "Do you take the bus or the train?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1341",
+    "chunk": "to get on the bus",
+    "category": "collocation",
+    "pragmatic_function": "Entering a bus",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Get on the bus here and get off at the park.",
+    "substitutable_examples": [
+      "I got on the wrong bus.",
+      "Show your ticket when you get on the bus."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1342",
+    "chunk": "to get off the bus",
+    "category": "collocation",
+    "pragmatic_function": "Leaving a bus",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Get off the bus at the next stop.",
+    "substitutable_examples": [
+      "I got off the bus too early.",
+      "Where do I get off the bus for the museum?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1343",
+    "chunk": "to buy a ticket",
+    "category": "collocation",
+    "pragmatic_function": "Paying for travel or entry",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Where can I buy a ticket?",
+    "substitutable_examples": [
+      "I bought a ticket online.",
+      "You need to buy a ticket before you get on."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1344",
+    "chunk": "to rent a car",
+    "category": "collocation",
+    "pragmatic_function": "Hiring a car for a trip",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "We want to rent a car for three days.",
+    "substitutable_examples": [
+      "It's easy to rent a car at the airport.",
+      "Did you rent a car?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1345",
+    "chunk": "to cross the street",
+    "category": "collocation",
+    "pragmatic_function": "Walking to the other side of the road",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Be careful when you cross the street.",
+    "substitutable_examples": [
+      "Cross the street at the lights.",
+      "Don't cross the street here."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1346",
+    "chunk": "to turn left",
+    "category": "collocation",
+    "pragmatic_function": "Giving or following directions",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Turn left at the bank.",
+    "substitutable_examples": [
+      "Turn left after the bridge.",
+      "Then turn left and it's on your right."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1347",
+    "chunk": "to take a photo",
+    "category": "collocation",
+    "pragmatic_function": "Using a camera or phone",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Can I take a photo?",
+    "substitutable_examples": [
+      "Could you take a photo of us?",
+      "We took a lot of photos."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1348",
+    "chunk": "to be hungry",
+    "category": "collocation",
+    "pragmatic_function": "Physical state",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I'm hungry. Let's eat.",
+    "substitutable_examples": [
+      "Are you hungry?",
+      "The kids are always hungry after school."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1349",
+    "chunk": "to be thirsty",
+    "category": "collocation",
+    "pragmatic_function": "Physical state",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I'm thirsty. Is there any water?",
+    "substitutable_examples": [
+      "Are you thirsty?",
+      "After the run I was very thirsty."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1350",
+    "chunk": "to be tired",
+    "category": "collocation",
+    "pragmatic_function": "Physical state",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I'm tired. I'm going to bed.",
+    "substitutable_examples": [
+      "You look tired.",
+      "I was very tired after work."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1351",
+    "chunk": "to be late",
+    "category": "collocation",
+    "pragmatic_function": "Not arriving on time",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Hurry up, we're going to be late!",
+    "substitutable_examples": [
+      "Sorry, I was late for class.",
+      "Don't be late tomorrow."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1352",
+    "chunk": "to be on time",
+    "category": "collocation",
+    "pragmatic_function": "Arriving at the correct time",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "The train is on time today.",
+    "substitutable_examples": [
+      "Please be on time for the meeting.",
+      "I'm never on time."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1353",
+    "chunk": "to have a good time",
+    "category": "collocation",
+    "pragmatic_function": "Enjoying yourself",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "We had a good time at the beach.",
+    "substitutable_examples": [
+      "Have a good time at the concert!",
+      "Did you have a good time?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1354",
+    "chunk": "to have a headache",
+    "category": "collocation",
+    "pragmatic_function": "Health: pain in the head",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I have a headache. Do you have an aspirin?",
+    "substitutable_examples": [
+      "She has a headache, so she's in bed.",
+      "I often have a headache after work."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1355",
+    "chunk": "to have a fever",
+    "category": "collocation",
+    "pragmatic_function": "Health: high temperature",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "My son has a fever.",
+    "substitutable_examples": [
+      "I think I have a fever.",
+      "If you have a fever, stay home."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1356",
+    "chunk": "to take medicine",
+    "category": "collocation",
+    "pragmatic_function": "Health: using medicine",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Take this medicine twice a day.",
+    "substitutable_examples": [
+      "Did you take your medicine?",
+      "I don't like to take medicine."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1357",
+    "chunk": "to make a phone call",
+    "category": "collocation",
+    "pragmatic_function": "Calling someone",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I need to make a phone call.",
+    "substitutable_examples": [
+      "Can I make a phone call from here?",
+      "She's making a phone call."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1358",
+    "chunk": "to send a message",
+    "category": "collocation",
+    "pragmatic_function": "Texting or messaging",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I'll send you a message later.",
+    "substitutable_examples": [
+      "Send me a message when you arrive.",
+      "He sent a message to the group."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1359",
+    "chunk": "to charge your phone",
+    "category": "collocation",
+    "pragmatic_function": "Filling your phone battery",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "Can I charge my phone here?",
+    "substitutable_examples": [
+      "I forgot to charge my phone.",
+      "Where can I charge my phone?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1360",
+    "chunk": "to learn English",
+    "category": "collocation",
+    "pragmatic_function": "Studying a language",
+    "register": "neutral",
+    "variable_slots": [],
+    "natural_example": "I'm learning English for my job.",
+    "substitutable_examples": [
+      "How long have you been learning English?",
+      "It's fun to learn English with songs."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1361",
+    "chunk": "My name is [name]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Introducing yourself",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[name]",
+        "type": "name"
+      }
+    ],
+    "natural_example": "Hello, my name is Carlos.",
+    "substitutable_examples": [
+      "My name is Aiko, and I'm from Japan.",
+      "Hi everyone, my name is Sara."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1362",
+    "chunk": "I'm from [place]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Saying where you come from",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[place]",
+        "type": "place"
+      }
+    ],
+    "natural_example": "I'm from Mexico.",
+    "substitutable_examples": [
+      "I'm from a small town near Lyon.",
+      "\"Where are you from?\" \"I'm from India.\""
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1363",
+    "chunk": "I live in [place]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Saying where you live",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[place]",
+        "type": "place"
+      }
+    ],
+    "natural_example": "I live in Chicago.",
+    "substitutable_examples": [
+      "I live in a small apartment near the station.",
+      "I live in London with my family."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1364",
+    "chunk": "I'm [number] years old",
+    "category": "sentence_frame",
+    "pragmatic_function": "Saying your age",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[number]",
+        "type": "number"
+      }
+    ],
+    "natural_example": "I'm thirty years old.",
+    "substitutable_examples": [
+      "My daughter is six years old.",
+      "I'm twenty-two years old and I'm a student."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1365",
+    "chunk": "I'm a [job]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Saying your job",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[job]",
+        "type": "job"
+      }
+    ],
+    "natural_example": "I'm a teacher.",
+    "substitutable_examples": [
+      "I'm a nurse at the city hospital.",
+      "My brother is an engineer."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1366",
+    "chunk": "This is my [person]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Introducing someone else",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[person]",
+        "type": "person_reference"
+      }
+    ],
+    "natural_example": "This is my wife, Julia.",
+    "substitutable_examples": [
+      "This is my friend Ben.",
+      "This is my boss, Mr. Tanaka."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1367",
+    "chunk": "Do you speak [language]?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Asking about language ability",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[language]",
+        "type": "language"
+      }
+    ],
+    "natural_example": "Excuse me, do you speak English?",
+    "substitutable_examples": [
+      "Do you speak Spanish?",
+      "Do you speak any other languages?"
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1368",
+    "chunk": "I speak a little [language]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Describing limited language ability",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[language]",
+        "type": "language"
+      }
+    ],
+    "natural_example": "I speak a little English.",
+    "substitutable_examples": [
+      "I speak a little French, but not much.",
+      "I speak a little German from school."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1369",
+    "chunk": "I'm learning [language]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Talking about language study",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[language]",
+        "type": "language"
+      }
+    ],
+    "natural_example": "I'm learning English at night school.",
+    "substitutable_examples": [
+      "I'm learning Italian for my holiday.",
+      "I'm learning Korean with an app."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1370",
+    "chunk": "How do you say [word]?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Asking for a word in the language you are speaking",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[word]",
+        "type": "word_or_phrase"
+      }
+    ],
+    "natural_example": "How do you say \"Danke\" in English?",
+    "substitutable_examples": [
+      "How do you say this?",
+      "Sorry, how do you say \"tenedor\"?"
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1371",
+    "chunk": "What does [word] mean?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Asking the meaning of a word",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[word]",
+        "type": "word_or_phrase"
+      }
+    ],
+    "natural_example": "What does \"busy\" mean?",
+    "substitutable_examples": [
+      "Sorry, what does this word mean?",
+      "What does \"rush hour\" mean?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1372",
+    "chunk": "I don't understand [noun]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Saying what you don't understand",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[noun]",
+        "type": "noun_phrase"
+      }
+    ],
+    "natural_example": "I don't understand this word.",
+    "substitutable_examples": [
+      "I don't understand the question.",
+      "I don't understand the instructions."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1373",
+    "chunk": "It's [time]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Telling the time",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[time]",
+        "type": "time_expression"
+      }
+    ],
+    "natural_example": "It's three o'clock.",
+    "substitutable_examples": [
+      "It's half past ten.",
+      "It's a quarter to eight."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1374",
+    "chunk": "My birthday is on [date]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Saying your birthday",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[date]",
+        "type": "date"
+      }
+    ],
+    "natural_example": "My birthday is on May 3rd.",
+    "substitutable_examples": [
+      "My birthday is on the twelfth of June.",
+      "My birthday is on Christmas Day."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1375",
+    "chunk": "When is [noun]?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Asking when something happens",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[noun]",
+        "type": "noun_phrase"
+      }
+    ],
+    "natural_example": "When is your birthday?",
+    "substitutable_examples": [
+      "When is the next class?",
+      "When is the party?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1376",
+    "chunk": "What time is [noun]?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Asking the time of an event",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[noun]",
+        "type": "noun_phrase"
+      }
+    ],
+    "natural_example": "What time is the movie?",
+    "substitutable_examples": [
+      "What time is dinner?",
+      "What time is your flight?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1377",
+    "chunk": "What time does [place] open?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Asking opening times",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[place]",
+        "type": "place"
+      }
+    ],
+    "natural_example": "What time does the bank open?",
+    "substitutable_examples": [
+      "What time does the pool open on Sundays?",
+      "What time does the pharmacy open?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1378",
+    "chunk": "How much is [noun]?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Asking the price of one thing",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[noun]",
+        "type": "noun_phrase"
+      }
+    ],
+    "natural_example": "How much is this T-shirt?",
+    "substitutable_examples": [
+      "How much is a ticket to Boston?",
+      "How much is the room per night?"
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1379",
+    "chunk": "That's [price], please",
+    "category": "sentence_frame",
+    "pragmatic_function": "Telling a customer the price",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[price]",
+        "type": "price"
+      }
+    ],
+    "natural_example": "That's twelve dollars, please.",
+    "substitutable_examples": [
+      "That's 4.50, please.",
+      "That's twenty pounds, please."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1380",
+    "chunk": "Can I pay by [payment]?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Asking about payment method",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[payment]",
+        "type": "payment_method"
+      }
+    ],
+    "natural_example": "Can I pay by card?",
+    "substitutable_examples": [
+      "Can I pay by credit card?",
+      "Can I pay by phone?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1381",
+    "chunk": "Do you have [noun]?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Asking if a shop or person has something",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[noun]",
+        "type": "noun_phrase"
+      }
+    ],
+    "natural_example": "Do you have milk?",
+    "substitutable_examples": [
+      "Do you have a pen?",
+      "Do you have a map of the city?"
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1382",
+    "chunk": "It's a bit too [adjective]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Saying something is not quite right, e.g. clothes",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[adjective]",
+        "type": "adjective"
+      }
+    ],
+    "natural_example": "It's a bit too big. Do you have a smaller one?",
+    "substitutable_examples": [
+      "It's a bit too expensive for me.",
+      "The soup is a bit too salty."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1383",
+    "chunk": "Can I have [noun], please?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Asking for something politely",
+    "register": "polite",
+    "variable_slots": [
+      {
+        "slot": "[noun]",
+        "type": "noun_phrase"
+      }
+    ],
+    "natural_example": "Can I have a coffee, please?",
+    "substitutable_examples": [
+      "Can I have the bill, please?",
+      "Can I have some water, please?"
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1384",
+    "chunk": "I'd like [noun], please",
+    "category": "sentence_frame",
+    "pragmatic_function": "Ordering or requesting politely",
+    "register": "polite",
+    "variable_slots": [
+      {
+        "slot": "[noun]",
+        "type": "noun_phrase"
+      }
+    ],
+    "natural_example": "I'd like a sandwich, please.",
+    "substitutable_examples": [
+      "I'd like two tickets, please.",
+      "I'd like the chicken, please."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1385",
+    "chunk": "I'll have [noun]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Ordering food or drink",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[noun]",
+        "type": "noun_phrase"
+      }
+    ],
+    "natural_example": "I'll have the fish, please.",
+    "substitutable_examples": [
+      "I'll have a small coffee.",
+      "I'll have the same."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1386",
+    "chunk": "A glass of [noun], please",
+    "category": "sentence_frame",
+    "pragmatic_function": "Ordering a drink",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[noun]",
+        "type": "noun_phrase"
+      }
+    ],
+    "natural_example": "A glass of water, please.",
+    "substitutable_examples": [
+      "A glass of red wine, please.",
+      "Can I have a glass of orange juice, please?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1387",
+    "chunk": "Would you like some [noun]?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Offering food or drink",
+    "register": "polite",
+    "variable_slots": [
+      {
+        "slot": "[noun]",
+        "type": "noun_phrase"
+      }
+    ],
+    "natural_example": "Would you like some more rice?",
+    "substitutable_examples": [
+      "Would you like some water?",
+      "Would you like some cake?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1388",
+    "chunk": "Would you like to [base-verb]?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Inviting someone",
+    "register": "polite",
+    "variable_slots": [
+      {
+        "slot": "[base-verb]",
+        "type": "verb_infinitive_no_to"
+      }
+    ],
+    "natural_example": "Would you like to come to my party?",
+    "substitutable_examples": [
+      "Would you like to sit down?",
+      "Would you like to have dinner with us?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1389",
+    "chunk": "Where is [place]?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Asking where a place is",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[place]",
+        "type": "place"
+      }
+    ],
+    "natural_example": "Where is the train station?",
+    "substitutable_examples": [
+      "Excuse me, where is the post office?",
+      "Where is room 204?"
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1390",
+    "chunk": "Where's the nearest [place]?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Finding the closest place of a type",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[place]",
+        "type": "place"
+      }
+    ],
+    "natural_example": "Where's the nearest ATM?",
+    "substitutable_examples": [
+      "Where's the nearest hospital?",
+      "Excuse me, where's the nearest pharmacy?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1391",
+    "chunk": "Turn left at [place]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Giving directions",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[place]",
+        "type": "place"
+      }
+    ],
+    "natural_example": "Turn left at the church.",
+    "substitutable_examples": [
+      "Turn left at the second street.",
+      "Turn left at the traffic lights."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1392",
+    "chunk": "It's on the [direction]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Saying which side something is on",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[direction]",
+        "type": "direction"
+      }
+    ],
+    "natural_example": "The bank is on the left.",
+    "substitutable_examples": [
+      "It's on the right, next to the café.",
+      "Go straight, and it's on your left."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1393",
+    "chunk": "It's next to [place]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Describing location",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[place]",
+        "type": "place"
+      }
+    ],
+    "natural_example": "The bakery is next to the bank.",
+    "substitutable_examples": [
+      "It's next to the big supermarket.",
+      "My house is next to the school."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1394",
+    "chunk": "A ticket to [place], please",
+    "category": "sentence_frame",
+    "pragmatic_function": "Buying a travel ticket",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[place]",
+        "type": "place"
+      }
+    ],
+    "natural_example": "A ticket to Oxford, please.",
+    "substitutable_examples": [
+      "One ticket to the airport, please.",
+      "Two tickets to Paris, please."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1395",
+    "chunk": "Which bus goes to [place]?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Asking about public transport routes",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[place]",
+        "type": "place"
+      }
+    ],
+    "natural_example": "Which bus goes to the airport?",
+    "substitutable_examples": [
+      "Excuse me, which bus goes to the beach?",
+      "Which bus goes to the city center?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1396",
+    "chunk": "When is the next [noun] to [place]?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Asking about departure times",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[noun]",
+        "type": "noun_phrase"
+      },
+      {
+        "slot": "[place]",
+        "type": "place"
+      }
+    ],
+    "natural_example": "When is the next train to Leeds?",
+    "substitutable_examples": [
+      "When is the next bus to the airport?",
+      "When is the next ferry to the island?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1397",
+    "chunk": "Can you take me to [place]?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Telling a taxi driver where to go",
+    "register": "polite",
+    "variable_slots": [
+      {
+        "slot": "[place]",
+        "type": "place"
+      }
+    ],
+    "natural_example": "Can you take me to the airport, please?",
+    "substitutable_examples": [
+      "Can you take me to this address?",
+      "Can you take me to the Grand Hotel?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1398",
+    "chunk": "It takes about [duration]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Saying how long something lasts",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[duration]",
+        "type": "duration"
+      }
+    ],
+    "natural_example": "It takes about twenty minutes by bus.",
+    "substitutable_examples": [
+      "It takes about an hour to get there.",
+      "The flight takes about three hours."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1399",
+    "chunk": "I'd like a room for [number] nights",
+    "category": "sentence_frame",
+    "pragmatic_function": "Booking a hotel room",
+    "register": "polite",
+    "variable_slots": [
+      {
+        "slot": "[number]",
+        "type": "number"
+      }
+    ],
+    "natural_example": "I'd like a room for two nights, please.",
+    "substitutable_examples": [
+      "I'd like a room for three nights, from Friday.",
+      "I'd like a room for one night."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1400",
+    "chunk": "The [noun] doesn't work",
+    "category": "sentence_frame",
+    "pragmatic_function": "Reporting a problem",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[noun]",
+        "type": "noun_phrase"
+      }
+    ],
+    "natural_example": "The shower doesn't work.",
+    "substitutable_examples": [
+      "Excuse me, the TV in my room doesn't work.",
+      "The ticket machine doesn't work."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1401",
+    "chunk": "I have a [noun]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Describing an illness or pain",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[noun]",
+        "type": "noun_phrase"
+      }
+    ],
+    "natural_example": "I have a cold.",
+    "substitutable_examples": [
+      "I have a stomachache.",
+      "I have a bad cough."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1402",
+    "chunk": "My [body-part] hurts",
+    "category": "sentence_frame",
+    "pragmatic_function": "Saying where you feel pain",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[body-part]",
+        "type": "body_part"
+      }
+    ],
+    "natural_example": "My head hurts.",
+    "substitutable_examples": [
+      "My back hurts when I sit.",
+      "My foot hurts. I can't walk."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1403",
+    "chunk": "I need some medicine for [noun]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Asking at a pharmacy",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[noun]",
+        "type": "noun_phrase"
+      }
+    ],
+    "natural_example": "I need some medicine for a cough.",
+    "substitutable_examples": [
+      "I need some medicine for my headache.",
+      "I need some medicine for my son's fever."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1404",
+    "chunk": "I've lost my [noun]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Reporting a lost item",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[noun]",
+        "type": "noun_phrase"
+      }
+    ],
+    "natural_example": "I've lost my passport.",
+    "substitutable_examples": [
+      "I've lost my keys. Can you help me?",
+      "I've lost my phone somewhere in the park."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1405",
+    "chunk": "Someone stole my [noun]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Reporting a theft",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[noun]",
+        "type": "noun_phrase"
+      }
+    ],
+    "natural_example": "Someone stole my wallet on the train.",
+    "substitutable_examples": [
+      "Someone stole my bike.",
+      "Help, someone stole my bag!"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1406",
+    "chunk": "I like [noun]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Stating a like",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[noun]",
+        "type": "noun_phrase"
+      }
+    ],
+    "natural_example": "I like pizza.",
+    "substitutable_examples": [
+      "I like this song.",
+      "I like my new job."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1407",
+    "chunk": "I'm interested in [noun]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Talking about interests",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[noun]",
+        "type": "noun_phrase"
+      }
+    ],
+    "natural_example": "I'm interested in history.",
+    "substitutable_examples": [
+      "I'm interested in learning to cook.",
+      "Are you interested in art?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1408",
+    "chunk": "I don't like [noun]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Stating a dislike",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[noun]",
+        "type": "noun_phrase"
+      }
+    ],
+    "natural_example": "I don't like coffee.",
+    "substitutable_examples": [
+      "I don't like cold weather.",
+      "I don't like horror movies."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1409",
+    "chunk": "Do you like [noun]?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Asking about likes",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[noun]",
+        "type": "noun_phrase"
+      }
+    ],
+    "natural_example": "Do you like Italian food?",
+    "substitutable_examples": [
+      "Do you like your new school?",
+      "Do you like dogs?"
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1410",
+    "chunk": "What's your favorite [noun]?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Asking about preferences",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[noun]",
+        "type": "noun_phrase"
+      }
+    ],
+    "natural_example": "What's your favorite color?",
+    "substitutable_examples": [
+      "What's your favorite food?",
+      "What's your favorite movie?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1411",
+    "chunk": "My favorite [noun] is [noun]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Stating a favorite",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[noun]",
+        "type": "noun_phrase"
+      },
+      {
+        "slot": "[noun]",
+        "type": "noun_phrase"
+      }
+    ],
+    "natural_example": "My favorite color is blue.",
+    "substitutable_examples": [
+      "My favorite food is sushi.",
+      "My favorite day is Saturday."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1412",
+    "chunk": "I want to [base-verb]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Stating a wish",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[base-verb]",
+        "type": "verb_infinitive_no_to"
+      }
+    ],
+    "natural_example": "I want to go home.",
+    "substitutable_examples": [
+      "I want to learn to drive.",
+      "I want to buy a new phone."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1413",
+    "chunk": "I'd like to [base-verb]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Stating a wish politely",
+    "register": "polite",
+    "variable_slots": [
+      {
+        "slot": "[base-verb]",
+        "type": "verb_infinitive_no_to"
+      }
+    ],
+    "natural_example": "I'd like to book a table.",
+    "substitutable_examples": [
+      "I'd like to change some money.",
+      "I'd like to try this on."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1414",
+    "chunk": "I need to [base-verb]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Stating a necessity",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[base-verb]",
+        "type": "verb_infinitive_no_to"
+      }
+    ],
+    "natural_example": "I need to go to the bank.",
+    "substitutable_examples": [
+      "I need to call my mom.",
+      "I need to buy some bread."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1415",
+    "chunk": "I have to [base-verb]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Stating an obligation",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[base-verb]",
+        "type": "verb_infinitive_no_to"
+      }
+    ],
+    "natural_example": "I have to work tomorrow.",
+    "substitutable_examples": [
+      "I have to go now.",
+      "I have to finish my homework."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1416",
+    "chunk": "I need [noun]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Stating what you need",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[noun]",
+        "type": "noun_phrase"
+      }
+    ],
+    "natural_example": "I need a taxi.",
+    "substitutable_examples": [
+      "I need some help.",
+      "I need a new jacket."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1417",
+    "chunk": "Can I [base-verb]?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Asking permission",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[base-verb]",
+        "type": "verb_infinitive_no_to"
+      }
+    ],
+    "natural_example": "Can I sit here?",
+    "substitutable_examples": [
+      "Can I open the window?",
+      "Can I use your bathroom?"
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1418",
+    "chunk": "Can you [base-verb], please?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Asking someone to do something",
+    "register": "polite",
+    "variable_slots": [
+      {
+        "slot": "[base-verb]",
+        "type": "verb_infinitive_no_to"
+      }
+    ],
+    "natural_example": "Can you help me, please?",
+    "substitutable_examples": [
+      "Can you close the door, please?",
+      "Can you say it again, please?"
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1419",
+    "chunk": "I can't [base-verb]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Saying you are unable",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[base-verb]",
+        "type": "verb_infinitive_no_to"
+      }
+    ],
+    "natural_example": "I can't swim.",
+    "substitutable_examples": [
+      "I can't find my keys.",
+      "Sorry, I can't come tonight."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1420",
+    "chunk": "Let's [base-verb]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Making a suggestion",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[base-verb]",
+        "type": "verb_infinitive_no_to"
+      }
+    ],
+    "natural_example": "Let's go to the beach.",
+    "substitutable_examples": [
+      "Let's eat out tonight.",
+      "Let's take a break."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1421",
+    "chunk": "Don't forget to [base-verb]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Reminding someone",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[base-verb]",
+        "type": "verb_infinitive_no_to"
+      }
+    ],
+    "natural_example": "Don't forget to take your keys.",
+    "substitutable_examples": [
+      "Don't forget to call me.",
+      "Don't forget to buy milk."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1422",
+    "chunk": "How often do you [base-verb]?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Asking about frequency",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[base-verb]",
+        "type": "verb_infinitive_no_to"
+      }
+    ],
+    "natural_example": "How often do you go to the gym?",
+    "substitutable_examples": [
+      "How often do you see your family?",
+      "How often do you cook?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1423",
+    "chunk": "What do you usually do on [time]?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Asking about habits",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[time]",
+        "type": "time_expression"
+      }
+    ],
+    "natural_example": "What do you usually do on weekends?",
+    "substitutable_examples": [
+      "What do you usually do on Friday nights?",
+      "What do you usually do on holiday?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1424",
+    "chunk": "What are you doing [time]?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Asking about someone's plans",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[time]",
+        "type": "time_expression"
+      }
+    ],
+    "natural_example": "What are you doing this weekend?",
+    "substitutable_examples": [
+      "What are you doing tonight?",
+      "What are you doing on Saturday?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1425",
+    "chunk": "I'm going to [base-verb]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Talking about plans",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[base-verb]",
+        "type": "verb_infinitive_no_to"
+      }
+    ],
+    "natural_example": "I'm going to visit my aunt this weekend.",
+    "substitutable_examples": [
+      "I'm going to cook pasta tonight.",
+      "I'm going to start a new job."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1426",
+    "chunk": "Let's meet at [place] at [time]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Arranging where and when to meet",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[place]",
+        "type": "place"
+      },
+      {
+        "slot": "[time]",
+        "type": "time_expression"
+      }
+    ],
+    "natural_example": "Let's meet at the café at six.",
+    "substitutable_examples": [
+      "Let's meet at the station at nine.",
+      "Let's meet at my place at eight."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1427",
+    "chunk": "Can we meet [time] instead?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Changing a plan",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[time]",
+        "type": "time_expression"
+      }
+    ],
+    "natural_example": "Can we meet tomorrow instead?",
+    "substitutable_examples": [
+      "Sorry, can we meet at seven instead?",
+      "Can we meet on Friday instead?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1428",
+    "chunk": "Sorry, I can't come on [day]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Declining or canceling a plan",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[day]",
+        "type": "day_of_week"
+      }
+    ],
+    "natural_example": "Sorry, I can't come on Saturday.",
+    "substitutable_examples": [
+      "Sorry, I can't come on Monday. I have to work.",
+      "Sorry, I can't come on Friday, I'm sick."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1429",
+    "chunk": "I'm busy on [day]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Saying you're not available",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[day]",
+        "type": "day_of_week"
+      }
+    ],
+    "natural_example": "I'm busy on Monday. What about Tuesday?",
+    "substitutable_examples": [
+      "I'm busy on Friday night.",
+      "Sorry, I'm busy on Sunday."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1430",
+    "chunk": "Is [time] okay for you?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Checking a time works",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[time]",
+        "type": "time_expression"
+      }
+    ],
+    "natural_example": "Is six o'clock okay for you?",
+    "substitutable_examples": [
+      "Is Thursday okay for you?",
+      "Is tomorrow morning okay for you?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1431",
+    "chunk": "I'll be [number] minutes late",
+    "category": "sentence_frame",
+    "pragmatic_function": "Warning that you'll be late",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[number]",
+        "type": "number"
+      }
+    ],
+    "natural_example": "Sorry, I'll be ten minutes late.",
+    "substitutable_examples": [
+      "I'll be five minutes late, the bus is slow.",
+      "I'll be twenty minutes late. Start without me."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1432",
+    "chunk": "I'm feeling [adjective] today",
+    "category": "sentence_frame",
+    "pragmatic_function": "Describing how you feel",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[adjective]",
+        "type": "adjective"
+      }
+    ],
+    "natural_example": "I'm feeling tired today.",
+    "substitutable_examples": [
+      "I'm feeling much better today.",
+      "I'm feeling a bit sad today."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1433",
+    "chunk": "How's your [person]?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Asking about someone's family or friends",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[person]",
+        "type": "person_reference"
+      }
+    ],
+    "natural_example": "How's your mother?",
+    "substitutable_examples": [
+      "How's your brother? Is he still in Canada?",
+      "How's your new baby?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1434",
+    "chunk": "What's [person] like?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Asking about someone's personality",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[person]",
+        "type": "person_reference"
+      }
+    ],
+    "natural_example": "What's your new teacher like?",
+    "substitutable_examples": [
+      "What's your boyfriend like?",
+      "What's your boss like?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1435",
+    "chunk": "It's [adjective] today",
+    "category": "sentence_frame",
+    "pragmatic_function": "Talking about the weather",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[adjective]",
+        "type": "adjective"
+      }
+    ],
+    "natural_example": "It's cold today.",
+    "substitutable_examples": [
+      "It's very hot today.",
+      "It's sunny today. Let's go out."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1436",
+    "chunk": "What's the weather like in [place]?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Asking about weather somewhere",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[place]",
+        "type": "place"
+      }
+    ],
+    "natural_example": "What's the weather like in Toronto?",
+    "substitutable_examples": [
+      "What's the weather like in your country?",
+      "What's the weather like in London in May?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1437",
+    "chunk": "It's going to rain [time]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Weather forecast small talk",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[time]",
+        "type": "time_expression"
+      }
+    ],
+    "natural_example": "It's going to rain this afternoon.",
+    "substitutable_examples": [
+      "It's going to rain tomorrow, take an umbrella.",
+      "They say it's going to rain all weekend."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1438",
+    "chunk": "Hello, this is [name]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Saying who you are on the phone",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[name]",
+        "type": "name"
+      }
+    ],
+    "natural_example": "Hello, this is Maria.",
+    "substitutable_examples": [
+      "Hi, this is Jack. Is Amy there?",
+      "Hello, this is Dr. Patel's office."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1439",
+    "chunk": "I'll call you [time]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Promising to phone later",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[time]",
+        "type": "time_expression"
+      }
+    ],
+    "natural_example": "I'll call you tomorrow.",
+    "substitutable_examples": [
+      "I'll call you after work.",
+      "I'll call you in ten minutes."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1440",
+    "chunk": "Text me when [clause]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Asking for a message later",
+    "register": "informal",
+    "variable_slots": [
+      {
+        "slot": "[clause]",
+        "type": "finite_clause"
+      }
+    ],
+    "natural_example": "Text me when you get home.",
+    "substitutable_examples": [
+      "Text me when you're outside.",
+      "Text me when the train leaves."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1441",
+    "chunk": "I think [clause]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Giving a simple opinion",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[clause]",
+        "type": "finite_clause"
+      }
+    ],
+    "natural_example": "I think it's a good idea.",
+    "substitutable_examples": [
+      "I think she's right.",
+      "I think the shop is closed."
+    ],
+    "cefr_level": "A1"
+  },
+  {
+    "id": "ENG_CHUNK_1442",
+    "chunk": "I agree with [person]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Agreeing with someone",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[person]",
+        "type": "person_reference"
+      }
+    ],
+    "natural_example": "I agree with you.",
+    "substitutable_examples": [
+      "I agree with Tom. Let's go by train.",
+      "I don't agree with him."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1443",
+    "chunk": "[noun] is better than [noun]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Simple comparison",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[noun]",
+        "type": "noun_phrase"
+      },
+      {
+        "slot": "[noun]",
+        "type": "noun_phrase"
+      }
+    ],
+    "natural_example": "Tea is better than coffee.",
+    "substitutable_examples": [
+      "The train is better than the bus.",
+      "This phone is better than my old one."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1444",
+    "chunk": "I've never been to [place]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Talking about travel experience",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[place]",
+        "type": "place"
+      }
+    ],
+    "natural_example": "I've never been to Australia.",
+    "substitutable_examples": [
+      "I've never been to a baseball game.",
+      "I've never been to this restaurant."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1445",
+    "chunk": "Last [time], I [past-verb]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Talking about the past",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[time]",
+        "type": "time_expression"
+      },
+      {
+        "slot": "[past-verb]",
+        "type": "verb_past_simple"
+      }
+    ],
+    "natural_example": "Last weekend, I visited my grandparents.",
+    "substitutable_examples": [
+      "Last year, I went to Spain.",
+      "Last night, I watched a movie."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1446",
+    "chunk": "Did you have a good [noun]?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Asking about a past event",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[noun]",
+        "type": "noun_phrase"
+      }
+    ],
+    "natural_example": "Did you have a good weekend?",
+    "substitutable_examples": [
+      "Did you have a good trip?",
+      "Did you have a good day at work?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1447",
+    "chunk": "How was your [noun]?",
+    "category": "sentence_frame",
+    "pragmatic_function": "Asking about a past event",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[noun]",
+        "type": "noun_phrase"
+      }
+    ],
+    "natural_example": "How was your weekend?",
+    "substitutable_examples": [
+      "How was your trip to Rome?",
+      "How was your first day?"
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1448",
+    "chunk": "I'm [verb-ing] at the moment",
+    "category": "sentence_frame",
+    "pragmatic_function": "Talking about now",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[verb-ing]",
+        "type": "verb_gerund"
+      }
+    ],
+    "natural_example": "I'm working at the moment.",
+    "substitutable_examples": [
+      "I'm studying at the moment. Can I call you later?",
+      "I'm looking for a new flat at the moment."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1449",
+    "chunk": "I'm sorry, but [clause]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Politely giving bad news or refusing",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[clause]",
+        "type": "finite_clause"
+      }
+    ],
+    "natural_example": "I'm sorry, but I can't help you.",
+    "substitutable_examples": [
+      "I'm sorry, but the shop is closed.",
+      "I'm sorry, but I don't agree."
+    ],
+    "cefr_level": "A2"
+  },
+  {
+    "id": "ENG_CHUNK_1450",
+    "chunk": "See you on [day]",
+    "category": "sentence_frame",
+    "pragmatic_function": "Goodbye with the next meeting day",
+    "register": "neutral",
+    "variable_slots": [
+      {
+        "slot": "[day]",
+        "type": "day_of_week"
+      }
+    ],
+    "natural_example": "See you on Monday!",
+    "substitutable_examples": [
+      "OK, see you on Friday.",
+      "Bye, see you on Saturday at the party."
+    ],
+    "cefr_level": "A2"
+  }
+]

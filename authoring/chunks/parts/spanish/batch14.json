@@ -1,0 +1,549 @@
+[
+ {
+  "id": "ENG_CHUNK_1301",
+  "t": "Primero",
+  "ex": "Primero, abre la aplicación. Luego, inicia sesión."
+ },
+ {
+  "id": "ENG_CHUNK_1302",
+  "t": "O",
+  "ex": "¿Té o café?",
+  "n": "O becomes u before an o- sound: siete u ocho."
+ },
+ {
+  "id": "ENG_CHUNK_1303",
+  "t": "Por último / Al final / Finalmente",
+  "ex": "Al final, llegamos al hotel.",
+  "n": "Al final = in the end (of a story); por último = last in a list of steps."
+ },
+ {
+  "id": "ENG_CHUNK_1304",
+  "t": "Después / Luego",
+  "ex": "Luego, da vuelta a la derecha en el banco."
+ },
+ {
+  "id": "ENG_CHUNK_1305",
+  "t": "Más tarde / Luego",
+  "ex": "Ahorita estoy ocupado. ¿Te llamo más tarde?",
+  "n": "Mexico: ahorita can mean \"right now\" or \"in a bit\"; context decides."
+ },
+ {
+  "id": "ENG_CHUNK_1306",
+  "t": "Por eso",
+  "ex": "El tren llegó tarde. Por eso perdí la reunión."
+ },
+ {
+  "id": "ENG_CHUNK_1307",
+  "t": "Después / Más tarde",
+  "ex": "Vimos una película. Después, cenamos."
+ },
+ {
+  "id": "ENG_CHUNK_1308",
+  "t": "Y también",
+  "ex": "Necesito pan y también un poco de leche."
+ },
+ {
+  "id": "ENG_CHUNK_1309",
+  "t": "Pero entonces / Pero de repente",
+  "ex": "Quería salir, pero entonces empezó a llover."
+ },
+ {
+  "id": "ENG_CHUNK_1310",
+  "t": "O mejor / O tal vez",
+  "ex": "Vamos a la playa. ¿O mejor al parque?"
+ },
+ {
+  "id": "ENG_CHUNK_1311",
+  "t": "Al principio",
+  "ex": "Al principio, el español me costaba mucho.",
+  "n": "Me costaba = it was hard for me; costar works like gustar."
+ },
+ {
+  "id": "ENG_CHUNK_1312",
+  "t": "Bueno, en fin / Total",
+  "ex": "Bueno, ¿qué tal tu fin de semana?"
+ },
+ {
+  "id": "ENG_CHUNK_1313",
+  "t": "Algún día / Un día",
+  "ex": "Algún día quiero conocer Japón.",
+  "n": "Future dream: algún día. Story opener: un día (+ past tense)."
+ },
+ {
+  "id": "ENG_CHUNK_1314",
+  "t": "De repente",
+  "ex": "De repente, se fue la luz."
+ },
+ {
+  "id": "ENG_CHUNK_1315",
+  "t": "Por suerte / Menos mal que",
+  "ex": "Perdí la cartera, pero por suerte alguien la encontró.",
+  "n": "Menos mal que... = thank goodness that..."
+ },
+ {
+  "id": "ENG_CHUNK_1316",
+  "t": "levantarse",
+  "ex": "Me levanto a las siete todos los días.",
+  "n": "Reflexive: me levanto, te levantas."
+ },
+ {
+  "id": "ENG_CHUNK_1317",
+  "t": "despertarse",
+  "ex": "Normalmente me despierto a las seis.",
+  "n": "Despertarse = wake up; levantarse = get out of bed."
+ },
+ {
+  "id": "ENG_CHUNK_1318",
+  "t": "desayunar",
+  "ex": "Desayuno en casa.",
+  "n": "One verb, no \"tomar el desayuno\" needed."
+ },
+ {
+  "id": "ENG_CHUNK_1319",
+  "t": "almorzar / comer",
+  "ex": "Vamos a almorzar juntos.",
+  "n": "Spain and Mexico: comida is the main midday meal; cenar is the evening meal."
+ },
+ {
+  "id": "ENG_CHUNK_1320",
+  "t": "cenar",
+  "ex": "Cenamos a las siete."
+ },
+ {
+  "id": "ENG_CHUNK_1321",
+  "t": "bañarse / ducharse",
+  "ex": "Me baño todas las mañanas.",
+  "n": "Latin America: bañarse usually means shower; ducharse is common too."
+ },
+ {
+  "id": "ENG_CHUNK_1322",
+  "t": "lavarse los dientes",
+  "ex": "Lávate los dientes antes de dormir.",
+  "n": "Article, not possessive, for body parts: los dientes, not tus dientes."
+ },
+ {
+  "id": "ENG_CHUNK_1323",
+  "t": "vestirse",
+  "ex": "Me visto y desayuno."
+ },
+ {
+  "id": "ENG_CHUNK_1324",
+  "t": "acostarse / irse a dormir",
+  "ex": "Me acuesto a las once."
+ },
+ {
+  "id": "ENG_CHUNK_1325",
+  "t": "ir al trabajo / ir a trabajar",
+  "ex": "Voy al trabajo en autobús.",
+  "n": "Transport uses en: en autobús, en carro; but a pie."
+ },
+ {
+  "id": "ENG_CHUNK_1326",
+  "t": "irse a casa / irse a la casa",
+  "ex": "Estoy cansado. Me quiero ir a casa.",
+  "n": "No article in Spain (a casa); a la casa is common in Latin America."
+ },
+ {
+  "id": "ENG_CHUNK_1327",
+  "t": "llegar a casa",
+  "ex": "Llego a casa a las seis.",
+  "n": "Llegar a, never llegar en."
+ },
+ {
+  "id": "ENG_CHUNK_1328",
+  "t": "ir de compras",
+  "ex": "Vamos de compras el sábado."
+ },
+ {
+  "id": "ENG_CHUNK_1329",
+  "t": "ver la tele",
+  "ex": "En la noche veo la tele.",
+  "n": "Latin America: en la noche; Spain: por la noche."
+ },
+ {
+  "id": "ENG_CHUNK_1330",
+  "t": "escuchar música",
+  "ex": "Escucho música en el autobús.",
+  "n": "No preposition: escuchar música, not escuchar a música."
+ },
+ {
+  "id": "ENG_CHUNK_1331",
+  "t": "hacer la tarea",
+  "ex": "Hago la tarea después de la escuela.",
+  "n": "Spain: hacer los deberes."
+ },
+ {
+  "id": "ENG_CHUNK_1332",
+  "t": "hacer la cena / preparar la cena",
+  "ex": "Hago la cena todas las noches."
+ },
+ {
+  "id": "ENG_CHUNK_1333",
+  "t": "dar un paseo / salir a caminar",
+  "ex": "Vamos a dar un paseo por el parque."
+ },
+ {
+  "id": "ENG_CHUNK_1334",
+  "t": "jugar al [deporte] / jugar [deporte]",
+  "ex": "Los sábados juego fútbol.",
+  "n": "Jugar for sports and games; tocar for instruments. Latin America often drops al."
+ },
+ {
+  "id": "ENG_CHUNK_1335",
+  "t": "hacer las compras / hacer el súper",
+  "ex": "Hago las compras los lunes.",
+  "n": "Hacer el súper is Mexican; Spain: hacer la compra."
+ },
+ {
+  "id": "ENG_CHUNK_1336",
+  "t": "lavar la ropa",
+  "ex": "Lavo la ropa los domingos."
+ },
+ {
+  "id": "ENG_CHUNK_1337",
+  "t": "limpiar la casa / hacer el aseo",
+  "ex": "Limpiamos la casa todos los sábados."
+ },
+ {
+  "id": "ENG_CHUNK_1338",
+  "t": "lavarse las manos",
+  "ex": "Lávense las manos antes de cenar."
+ },
+ {
+  "id": "ENG_CHUNK_1339",
+  "t": "hacer café / preparar café",
+  "ex": "Voy a hacer café. ¿Quieres?"
+ },
+ {
+  "id": "ENG_CHUNK_1340",
+  "t": "tomar el autobús / agarrar el camión",
+  "ex": "Tomo el autobús para ir a la escuela.",
+  "n": "Bus words vary: camión (Mexico), colectivo (Argentina), guagua (Caribbean). Avoid coger in Latin America."
+ },
+ {
+  "id": "ENG_CHUNK_1341",
+  "t": "subirse al autobús",
+  "ex": "Súbete al autobús aquí y bájate en el parque."
+ },
+ {
+  "id": "ENG_CHUNK_1342",
+  "t": "bajarse del autobús",
+  "ex": "Bájate del autobús en la siguiente parada."
+ },
+ {
+  "id": "ENG_CHUNK_1343",
+  "t": "comprar un boleto",
+  "ex": "¿Dónde puedo comprar un boleto?",
+  "n": "Spain: billete (travel), entrada (events)."
+ },
+ {
+  "id": "ENG_CHUNK_1344",
+  "t": "rentar un carro / alquilar un coche",
+  "ex": "Queremos rentar un carro por tres días.",
+  "n": "Rentar/carro Latin America; alquilar/coche Spain."
+ },
+ {
+  "id": "ENG_CHUNK_1345",
+  "t": "cruzar la calle",
+  "ex": "Ten cuidado al cruzar la calle."
+ },
+ {
+  "id": "ENG_CHUNK_1346",
+  "t": "dar vuelta a la izquierda / girar a la izquierda",
+  "ex": "Da vuelta a la izquierda en el banco.",
+  "n": "Spain: gira a la izquierda."
+ },
+ {
+  "id": "ENG_CHUNK_1347",
+  "t": "tomar una foto / sacar una foto",
+  "ex": "¿Puedo tomar una foto?"
+ },
+ {
+  "id": "ENG_CHUNK_1348",
+  "t": "tener hambre",
+  "ex": "Tengo hambre. Vamos a comer.",
+  "n": "Tener, not estar: tengo hambre."
+ },
+ {
+  "id": "ENG_CHUNK_1349",
+  "t": "tener sed",
+  "ex": "Tengo sed. ¿Hay agua?"
+ },
+ {
+  "id": "ENG_CHUNK_1350",
+  "t": "estar cansado / estar cansada",
+  "ex": "Estoy cansada. Me voy a dormir."
+ },
+ {
+  "id": "ENG_CHUNK_1351",
+  "t": "llegar tarde",
+  "ex": "¡Apúrate, vamos a llegar tarde!",
+  "n": "Estar tarde is an anglicism."
+ },
+ {
+  "id": "ENG_CHUNK_1352",
+  "t": "llegar a tiempo / ser puntual",
+  "ex": "Hoy el tren llega a tiempo."
+ },
+ {
+  "id": "ENG_CHUNK_1353",
+  "t": "pasarla bien / pasarlo bien",
+  "ex": "La pasamos muy bien en la playa.",
+  "n": "La pasamos (Latin America) vs. lo pasamos (Spain)."
+ },
+ {
+  "id": "ENG_CHUNK_1354",
+  "t": "tener dolor de cabeza / dolerle la cabeza",
+  "ex": "Me duele la cabeza. ¿Tienes una aspirina?"
+ },
+ {
+  "id": "ENG_CHUNK_1355",
+  "t": "tener fiebre / tener calentura",
+  "ex": "Mi hijo tiene fiebre."
+ },
+ {
+  "id": "ENG_CHUNK_1356",
+  "t": "tomar medicina / tomarse la medicina",
+  "ex": "Tómese esta medicina dos veces al día."
+ },
+ {
+  "id": "ENG_CHUNK_1357",
+  "t": "hacer una llamada",
+  "ex": "Necesito hacer una llamada."
+ },
+ {
+  "id": "ENG_CHUNK_1358",
+  "t": "mandar un mensaje",
+  "ex": "Luego te mando un mensaje.",
+  "n": "Enviar is more formal; texting: mandar un WhatsApp."
+ },
+ {
+  "id": "ENG_CHUNK_1359",
+  "t": "cargar el celular",
+  "ex": "¿Puedo cargar mi celular aquí?",
+  "n": "Spain: móvil."
+ },
+ {
+  "id": "ENG_CHUNK_1360",
+  "t": "aprender español / aprender inglés",
+  "ex": "Estoy aprendiendo inglés por mi trabajo.",
+  "n": "Language names are lowercase in Spanish."
+ },
+ {
+  "id": "ENG_CHUNK_1361",
+  "t": "Me llamo [nombre] / Soy [nombre]",
+  "ex": "Hola, me llamo Carlos."
+ },
+ {
+  "id": "ENG_CHUNK_1362",
+  "t": "Soy de [lugar]",
+  "ex": "Soy de México."
+ },
+ {
+  "id": "ENG_CHUNK_1363",
+  "t": "Vivo en [lugar]",
+  "ex": "Vivo en Chicago."
+ },
+ {
+  "id": "ENG_CHUNK_1364",
+  "t": "Tengo [número] años",
+  "ex": "Tengo treinta años.",
+  "n": "Tener, not ser: tengo treinta años."
+ },
+ {
+  "id": "ENG_CHUNK_1365",
+  "t": "Soy [profesión]",
+  "ex": "Soy maestra.",
+  "n": "No article with jobs: soy maestra, not soy una maestra."
+ },
+ {
+  "id": "ENG_CHUNK_1366",
+  "t": "Te presento a [persona] / Este es mi [persona]",
+  "ex": "Te presento a mi esposa, Julia.",
+  "n": "Esta es for a woman: esta es mi esposa."
+ },
+ {
+  "id": "ENG_CHUNK_1367",
+  "t": "¿Habla [idioma]? / ¿Hablas [idioma]?",
+  "ex": "Disculpe, ¿habla inglés?"
+ },
+ {
+  "id": "ENG_CHUNK_1368",
+  "t": "Hablo un poco de [idioma]",
+  "ex": "Hablo un poco de inglés."
+ },
+ {
+  "id": "ENG_CHUNK_1369",
+  "t": "Estoy aprendiendo [idioma]",
+  "ex": "Estoy aprendiendo inglés en una escuela nocturna."
+ },
+ {
+  "id": "ENG_CHUNK_1370",
+  "t": "¿Cómo se dice [palabra]?",
+  "ex": "¿Cómo se dice \"Danke\" en español?"
+ },
+ {
+  "id": "ENG_CHUNK_1371",
+  "t": "¿Qué significa [palabra]? / ¿Qué quiere decir [palabra]?",
+  "ex": "¿Qué significa \"ocupado\"?"
+ },
+ {
+  "id": "ENG_CHUNK_1372",
+  "t": "No entiendo [sustantivo]",
+  "ex": "No entiendo esta palabra."
+ },
+ {
+  "id": "ENG_CHUNK_1373",
+  "t": "Es la [hora] / Son las [hora]",
+  "ex": "Son las tres.",
+  "n": "Es la una, but son las dos, son las tres..."
+ },
+ {
+  "id": "ENG_CHUNK_1374",
+  "t": "Mi cumpleaños es el [fecha]",
+  "ex": "Mi cumpleaños es el 3 de mayo.",
+  "n": "Day before month; months lowercase; no \"on\": es el 3 de mayo."
+ },
+ {
+  "id": "ENG_CHUNK_1375",
+  "t": "¿Cuándo es [sustantivo]?",
+  "ex": "¿Cuándo es tu cumpleaños?"
+ },
+ {
+  "id": "ENG_CHUNK_1376",
+  "t": "¿A qué hora es [sustantivo]?",
+  "ex": "¿A qué hora es la película?",
+  "n": "A qué hora for events; qué hora es only for the current time."
+ },
+ {
+  "id": "ENG_CHUNK_1377",
+  "t": "¿A qué hora abre [lugar]?",
+  "ex": "¿A qué hora abre el banco?"
+ },
+ {
+  "id": "ENG_CHUNK_1378",
+  "t": "¿Cuánto cuesta [sustantivo]? / ¿Cuánto vale [sustantivo]?",
+  "ex": "¿Cuánto cuesta esta playera?",
+  "n": "Plural: ¿cuánto cuestan...? Playera (Mexico) = camiseta."
+ },
+ {
+  "id": "ENG_CHUNK_1379",
+  "t": "Son [precio], por favor",
+  "ex": "Son doce dólares, por favor."
+ },
+ {
+  "id": "ENG_CHUNK_1380",
+  "t": "¿Puedo pagar con [forma de pago]?",
+  "ex": "¿Puedo pagar con tarjeta?",
+  "n": "Con tarjeta, but en efectivo (cash)."
+ },
+ {
+  "id": "ENG_CHUNK_1381",
+  "t": "¿Tiene [sustantivo]? / ¿Hay [sustantivo]?",
+  "ex": "¿Tiene leche?"
+ },
+ {
+  "id": "ENG_CHUNK_1382",
+  "t": "Me queda un poco [adjetivo]",
+  "ex": "Me queda un poco grande. ¿Tiene una más chica?",
+  "n": "Quedar for fit: me queda grande. Demasiado is stronger than \"a bit too\"."
+ },
+ {
+  "id": "ENG_CHUNK_1383",
+  "t": "¿Me da [sustantivo], por favor? / ¿Me regala [sustantivo]?",
+  "ex": "¿Me da un café, por favor?",
+  "n": "¿Me regala...? is a polite request in Colombia, not asking for a gift."
+ },
+ {
+  "id": "ENG_CHUNK_1384",
+  "t": "Quisiera [sustantivo], por favor",
+  "ex": "Quisiera un sándwich, por favor."
+ },
+ {
+  "id": "ENG_CHUNK_1385",
+  "t": "Para mí, [sustantivo] / Voy a querer [sustantivo]",
+  "ex": "Para mí, el pescado, por favor."
+ },
+ {
+  "id": "ENG_CHUNK_1386",
+  "t": "Un vaso de [sustantivo], por favor",
+  "ex": "Un vaso de agua, por favor.",
+  "n": "Wine: una copa de vino, not un vaso."
+ },
+ {
+  "id": "ENG_CHUNK_1387",
+  "t": "¿Quiere más [sustantivo]? / ¿Le sirvo [sustantivo]?",
+  "ex": "¿Quiere más arroz?",
+  "n": "Spanish drops \"some\": ¿quieres agua?"
+ },
+ {
+  "id": "ENG_CHUNK_1388",
+  "t": "¿Quieres [infinitivo]? / ¿Le gustaría [infinitivo]?",
+  "ex": "¿Quieres venir a mi fiesta?"
+ },
+ {
+  "id": "ENG_CHUNK_1389",
+  "t": "¿Dónde está [lugar]?",
+  "ex": "¿Dónde está la estación de tren?",
+  "n": "Estar for location; hay for existence: ¿hay un banco por aquí?"
+ },
+ {
+  "id": "ENG_CHUNK_1390",
+  "t": "¿Dónde hay [lugar] por aquí? / ¿Dónde queda el [lugar] más cercano?",
+  "ex": "¿Dónde hay un cajero por aquí?"
+ },
+ {
+  "id": "ENG_CHUNK_1391",
+  "t": "Da vuelta a la izquierda en [lugar] / Gire a la izquierda en [lugar]",
+  "ex": "Gire a la izquierda en la iglesia."
+ },
+ {
+  "id": "ENG_CHUNK_1392",
+  "t": "Está a la [dirección]",
+  "ex": "El banco está a la izquierda."
+ },
+ {
+  "id": "ENG_CHUNK_1393",
+  "t": "Está al lado de [lugar] / Está junto a [lugar]",
+  "ex": "La panadería está al lado del banco.",
+  "n": "De + el contracts: al lado del banco."
+ },
+ {
+  "id": "ENG_CHUNK_1394",
+  "t": "Un boleto a [lugar], por favor / Un boleto para [lugar], por favor",
+  "ex": "Un boleto para Puebla, por favor."
+ },
+ {
+  "id": "ENG_CHUNK_1395",
+  "t": "¿Qué autobús va a [lugar]?",
+  "ex": "¿Qué autobús va al aeropuerto?"
+ },
+ {
+  "id": "ENG_CHUNK_1396",
+  "t": "¿A qué hora sale el próximo [sustantivo] a [lugar]?",
+  "ex": "¿A qué hora sale el próximo tren a Monterrey?"
+ },
+ {
+  "id": "ENG_CHUNK_1397",
+  "t": "¿Me lleva a [lugar], por favor?",
+  "ex": "¿Me lleva al aeropuerto, por favor?"
+ },
+ {
+  "id": "ENG_CHUNK_1398",
+  "t": "Se hacen unos [duración] / Tarda unos [duración]",
+  "ex": "Se hacen unos veinte minutos en autobús.",
+  "n": "Hacerse (Latin America) or tardar: tarda unos veinte minutos."
+ },
+ {
+  "id": "ENG_CHUNK_1399",
+  "t": "Quisiera una habitación para [número] noches",
+  "ex": "Quisiera una habitación para dos noches, por favor.",
+  "n": "Mexico also: un cuarto."
+ },
+ {
+  "id": "ENG_CHUNK_1400",
+  "t": "[sustantivo] no funciona / [sustantivo] no sirve",
+  "ex": "La regadera no sirve.",
+  "n": "No sirve is very common in Latin America. Regadera (Mexico) = ducha."
+ }
+]

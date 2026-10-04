@@ -1,0 +1,254 @@
+{
+  "day": 14,
+  "topic": "Zukunft, Pläne und Träume",
+  "lesen": {
+    "teil1": {
+      "title": "Der Brief an mein zukünftiges Ich",
+      "source": "Blog",
+      "text": "Als ich zwanzig war, schrieb ich in einem Seminar an der Uni einen Brief an mich selbst, den ich erst mit dreißig öffnen sollte. Die Dozentin sammelte die Umschläge ein und versprach, sie uns zehn Jahre später zu schicken. Ehrlich gesagt hatte ich den Brief völlig vergessen, bis er letzte Woche tatsächlich in meinem Briefkasten lag.\n\nMit zwanzig war ich mir sehr sicher, wie mein Leben aussehen würde. Ich schrieb, dass ich mit dreißig ein eigenes Architekturbüro in Hamburg leiten, in einer Altbauwohnung mit Blick auf die Elbe wohnen und mindestens drei Kontinente bereist haben würde. Kinder wollte ich keine, und heiraten schien mir damals etwas für Leute ohne Fantasie.\n\nDie Wirklichkeit sieht anders aus. Das Architekturstudium brach ich nach vier Semestern ab, weil ich merkte, dass ich lieber mit Menschen als mit Plänen arbeitete. Heute bin ich Sozialarbeiterin in einem Jugendzentrum in Bremen, verdiene deutlich weniger, als ich mir damals vorgestellt hatte, und wohne in einer Neubauwohnung ohne jeden Blick auf Wasser. Verheiratet bin ich seit drei Jahren, und im Frühling kommt unser erstes Kind.\n\nWäre meine Zwanzigjährige enttäuscht von mir? Vermutlich zuerst schon. Aber sie wusste nicht, wie es sich anfühlt, wenn ein Sechzehnjähriger, der kaum noch zur Schule ging, nach einem Jahr im Jugendzentrum seinen Abschluss schafft. Sie hatte noch nie jemanden kennengelernt, mit dem sie alt werden wollte. Sie kannte nur ihre Pläne, nicht ihr Leben.\n\nGereist bin ich übrigens trotzdem, allerdings nur nach Südamerika, nicht auf drei Kontinente. Und das Büro mit Blick auf die Elbe? Darauf könnte ich heute gut verzichten. Was ich mir für die nächsten zehn Jahre wünsche, schreibe ich diesmal nicht auf. Ich habe gelernt, dass die besten Dinge in meinem Leben nie in einem Plan standen.",
+      "items": [
+        {"id": "L1-1", "statement": "Die Autorin hatte den Brief zehn Jahre lang aufbewahrt.", "answer": false, "skill": "detail"},
+        {"id": "L1-2", "statement": "Mit zwanzig wollte die Autorin keine Familie gründen.", "answer": true, "skill": "paraphrase"},
+        {"id": "L1-3", "statement": "Die Autorin hat das Architekturstudium abgeschlossen.", "answer": false, "skill": "negation"},
+        {"id": "L1-4", "statement": "Die Autorin verdient heute weniger, als sie früher erwartet hatte.", "answer": true, "skill": "detail"},
+        {"id": "L1-5", "statement": "Die Autorin hat bisher nur einen Kontinent außerhalb Europas bereist.", "answer": true, "skill": "number-time"},
+        {"id": "L1-6", "statement": "Die Autorin plant ihre nächsten zehn Jahre wieder ganz genau.", "answer": false, "skill": "inference"}
+      ]
+    },
+    "teil2": {
+      "texts": [
+        {
+          "title": "Die Stadt der Kinder",
+          "source": "Zeitung",
+          "text": "Wie soll Oldenburg im Jahr 2050 aussehen? Diese Frage stellte die Stadtverwaltung im vergangenen Jahr nicht den üblichen Experten, sondern zweihundert Kindern und Jugendlichen zwischen zehn und siebzehn Jahren. In sechs Werkstätten, die über das ganze Jahr verteilt waren, entwickelten sie Ideen, bauten Modelle und stellten ihre Ergebnisse schließlich dem Stadtrat vor.\n\nManche Vorschläge waren erwartbar: mehr Grün, weniger Autos, bessere Fahrradwege. Andere überraschten selbst erfahrene Planer. Die Zwölfjährige Merle Hansen forderte zum Beispiel, dass jede Schule einen Garten haben müsse, in dem die Schüler ihr eigenes Gemüse für die Mensa anbauen. Eine Gruppe von Sechzehnjährigen entwarf Haltestellen mit Dach, Licht und kostenlosem Internet, „damit man beim Warten nicht friert und nicht allein ist“, wie einer der Jugendlichen erklärte.\n\nAnfangs waren einige Ratsmitglieder skeptisch gewesen. „Ich dachte, die Kinder wünschen sich einen Freizeitpark und Eis umsonst“, gab Ratsherr Uwe Brinkmann zu. „Stattdessen kamen Vorschläge, die realistischer waren als manches, was Erwachsene uns vorlegen.“ Der Rat beschloss daraufhin, drei der Ideen sofort umzusetzen, darunter die Schulgärten.\n\nNicht alle Wünsche lassen sich allerdings erfüllen. Die Forderung nach einer Seilbahn über die Innenstadt wäre zu teuer, und den Wunsch nach einem autofreien Sonntag jede Woche lehnten die Händler ab. Trotzdem soll die Werkstatt in zwei Jahren wiederholt werden, dann mit den Kindern, die heute noch zu jung dafür sind.",
+          "items": [
+            {"id": "L2-1", "question": "Die Stadt Oldenburg …", "options": ["ließ Experten die Stadt der Zukunft planen.", "baute im letzten Jahr sechs neue Werkstätten.", "fragte junge Menschen nach ihren Ideen für die Zukunft der Stadt."], "answer": 2, "skill": "paraphrase"},
+            {"id": "L2-2", "question": "Herr Brinkmann …", "options": ["hatte etwas anderes von den Kindern erwartet.", "fand die Vorschläge unrealistisch.", "wünschte sich einen Freizeitpark."], "answer": 0, "skill": "attitude"},
+            {"id": "L2-3", "question": "Welcher Vorschlag wird umgesetzt?", "options": ["Eine Seilbahn über die Innenstadt.", "Ein autofreier Sonntag jede Woche.", "Gärten an den Schulen."], "answer": 2, "skill": "detail"}
+          ]
+        },
+        {
+          "title": "Mit 52 noch einmal von vorn",
+          "source": "Zeitschrift",
+          "text": "Dreißig Jahre lang arbeitete Thomas Vogel als Bankkaufmann in Frankfurt. Er hatte ein gutes Gehalt, ein Haus im Taunus und einen Terminkalender, der bis zum Jahresende gefüllt war. „Von außen sah mein Leben perfekt aus“, erzählt der heute 55-Jährige. „Aber ich wachte jeden Morgen auf und hatte keine Lust, ins Büro zu gehen.“\n\nDen Entschluss, alles zu ändern, fasste er nach einem Gespräch mit seinem Arzt, der ihn vor den Folgen des Dauerstresses warnte. Vogel kündigte, was seine Familie zunächst für einen Fehler hielt, und begann mit 52 Jahren eine Ausbildung zum Tischler. Statt im Anzug stand er nun in der Werkstatt neben Auszubildenden, die jünger waren als seine Kinder.\n\n„Die ersten Monate waren hart. Ich musste Dinge lernen, die die Achtzehnjährigen in einer Woche konnten, und ich verdiente weniger als ein Zehntel meines alten Gehalts“, erinnert er sich. Aufgegeben habe er trotzdem nie, weil er zum ersten Mal seit Jahren abends stolz auf etwas war, das er mit den Händen gemacht hatte.\n\nHeute hat Vogel eine kleine Werkstatt im Odenwald, in der er Möbel nach Maß baut. Reich wird er damit nicht, und das Haus im Taunus musste die Familie verkaufen. Seine Frau, die anfangs am meisten gezweifelt hatte, hilft inzwischen im Büro der Werkstatt. „Ich hätte das viel früher machen sollen“, sagt Vogel. „Aber vielleicht musste ich erst dreißig Jahre lang unglücklich sein, um zu verstehen, was ich wirklich will.“",
+          "items": [
+            {"id": "L2-4", "question": "Warum hat Herr Vogel seinen Beruf gewechselt?", "options": ["Er wurde von der Bank entlassen.", "Seine Familie wünschte sich ein anderes Leben.", "Er war unzufrieden, und sein Arzt warnte ihn vor dem Stress."], "answer": 2, "skill": "paraphrase"},
+            {"id": "L2-5", "question": "In der Ausbildung …", "options": ["lernte Herr Vogel schneller als die jungen Auszubildenden.", "verdiente Herr Vogel viel weniger als früher.", "gab Herr Vogel nach einigen Monaten auf."], "answer": 1, "skill": "detail"},
+            {"id": "L2-6", "question": "Wie steht seine Frau heute zu der Entscheidung?", "options": ["Sie unterstützt ihn und arbeitet in der Werkstatt mit.", "Sie zweifelt immer noch daran.", "Sie möchte das Haus im Taunus zurückkaufen."], "answer": 0, "skill": "attitude"}
+          ]
+        }
+      ]
+    },
+    "teil3": {
+      "intro": "Einige Personen aus Ihrem Deutschkurs suchen Angebote rund um Zukunft und Pläne. Lesen Sie die Situationen 1–7 und die Anzeigen A–J. Welche Anzeige passt zu welcher Situation? Eine Anzeige kann nur einmal gewählt werden. Für eine Situation gibt es keine passende Anzeige – markieren Sie dort 0.",
+      "situations": [
+        {"id": "L3-1", "text": "Hakan hat gerade die Schule beendet und weiß noch nicht, welcher Beruf zu ihm passt.", "answer": "C", "skill": "matching"},
+        {"id": "L3-2", "text": "Renata ist 45 und möchte wissen, wie viel Geld sie später im Alter haben wird und was sie jetzt tun sollte.", "answer": "H", "skill": "matching"},
+        {"id": "L3-3", "text": "Lin hat eine Geschäftsidee, braucht aber Geld und Beratung, um eine Firma zu gründen.", "answer": "A", "skill": "matching"},
+        {"id": "L3-4", "text": "Bernd ist Tischlergeselle, arbeitet Vollzeit und möchte am Wochenende den Meister machen.", "answer": null, "skill": "matching"},
+        {"id": "L3-5", "text": "Das Ehepaar Novak geht bald in Rente und möchte danach einige Monate im Ausland helfen.", "answer": "F", "skill": "matching"},
+        {"id": "L3-6", "text": "Ingrid und Malik wollen ein Haus bauen, das möglichst wenig Energie verbraucht.", "answer": "I", "skill": "matching"},
+        {"id": "L3-7", "text": "Sonja arbeitet im Büro und möchte abends programmieren lernen, um den Beruf zu wechseln.", "answer": "E", "skill": "matching"}
+      ],
+      "ads": [
+        {"letter": "A", "title": "Gründerzentrum Rheinland", "text": "Sie haben eine Idee, aber noch keine Firma? Wir beraten Sie kostenlos zu Businessplan, Steuern und Finanzierung und helfen bei der Suche nach Fördergeld. Ab dem ersten Jahr günstige Büros im Zentrum. Infoabend jeden Dienstag, 18 Uhr."},
+        {"letter": "B", "title": "Meisterschule Holz – Vollzeitkurs", "text": "Werden Sie Tischlermeister/in in nur zehn Monaten. Unterricht Montag bis Freitag, 8–16 Uhr, Beginn im September. Förderung über Aufstiegs-BAföG möglich. Voraussetzung: abgeschlossene Gesellenprüfung. Anmeldung bis 30. Juni."},
+        {"letter": "C", "title": "Berufsberatung für junge Erwachsene", "text": "Studium oder Ausbildung? Handwerk oder Büro? In drei Gesprächen und mit einem Interessentest finden wir gemeinsam heraus, welcher Weg zu Ihnen passt. Kostenlos für alle unter 25. Termine online oder unter 0221 / 91 91 00."},
+        {"letter": "D", "title": "Sprachreise 50plus", "text": "Englisch lernen und die Welt sehen: vier Wochen Sprachkurs in Kapstadt für Menschen ab 50, mit Ausflügen und Unterkunft bei Gastfamilien. Kleine Gruppen, erfahrene Lehrer. Nächste Termine im Februar und Oktober."},
+        {"letter": "E", "title": "Coding-Abendschule", "text": "Programmieren lernen neben dem Beruf: In sechs Monaten von null zum Web-Entwickler. Unterricht dreimal pro Woche von 19 bis 21:30 Uhr, online oder vor Ort. Am Ende ein Praxisprojekt und Hilfe bei der Jobsuche. Keine Vorkenntnisse nötig."},
+        {"letter": "F", "title": "Freiwilligendienst für Ältere", "text": "Mit 60 noch einmal etwas Neues wagen: Wir vermitteln Menschen ab 55 für drei bis zwölf Monate in Schulen, Krankenhäuser und Umweltprojekte in Südamerika, Afrika und Asien. Vorbereitungsseminar und Versicherung inklusive. Infos unter senioren-weltweit.org"},
+        {"letter": "G", "title": "Kredit für Selbstständige", "text": "Die Regionalbank bietet Unternehmern, die seit mindestens drei Jahren bestehen, Kredite bis 100.000 € zu günstigen Zinsen. Entscheidung innerhalb einer Woche. Für Neugründungen gelten andere Bedingungen – sprechen Sie uns an."},
+        {"letter": "H", "title": "Rentenberatung: Wie viel bleibt mir?", "text": "Unabhängige Beratung zur Altersvorsorge für alle zwischen 30 und 60: Wir rechnen aus, was Sie im Alter erwarten können, und zeigen, wie Sie die Lücke schließen. 90 Minuten, 80 €, keine Verkaufsgespräche, keine Produkte."},
+        {"letter": "I", "title": "Energieberatung Hausbau", "text": "Sie planen ein Haus? Unsere Energieberater zeigen Ihnen, wie Sie mit Dämmung, Wärmepumpe und Solaranlage die Heizkosten fast auf null bringen – und welche staatliche Förderung Sie bekommen. Erstgespräch 50 €, wird bei Auftrag verrechnet."},
+        {"letter": "J", "title": "Workshop: Lebensziele finden", "text": "Was will ich wirklich? An einem Wochenende im Kloster Ettal arbeiten Sie mit einem Coach an Ihren Wünschen und Zielen für die nächsten Jahre. Für Menschen in jeder Lebensphase. 290 € inklusive Unterkunft und Verpflegung."}
+      ]
+    },
+    "teil4": {
+      "question": "Sollten junge Menschen nach der Schule erst ein Jahr Pause machen, bevor sie studieren oder arbeiten?",
+      "comments": [
+        {"id": "L4-1", "author": "Julian, Bonn", "text": "Ich habe nach dem Abi ein Jahr in Neuseeland gearbeitet, und in diesem Jahr habe ich mehr über mich gelernt als in dreizehn Jahren Schule. Danach wusste ich genau, was ich studieren wollte. Ohne dieses Jahr hätte ich wahrscheinlich das Falsche gewählt.", "answer": true, "skill": "attitude"},
+        {"id": "L4-2", "author": "Gisela, Chemnitz", "text": "Ein Jahr Pause, das klingt schön, aber wer bezahlt das? Meine Tochter musste mit achtzehn Geld verdienen, wie ich damals auch. Solche Jahre sind ein Luxus für Kinder reicher Eltern, und darüber sollte man ehrlich reden.", "answer": false, "skill": "attitude"},
+        {"id": "L4-3", "author": "Amir, Stuttgart", "text": "Meine Eltern hatten Angst, dass ich nach einem Jahr Pause nie wieder anfange zu lernen. Sie hatten nicht ganz unrecht, ich habe tatsächlich erst nach zwei Jahren mit dem Studium begonnen. Aber ich bereue keinen Tag davon und würde es wieder so machen.", "answer": true, "skill": "inference"},
+        {"id": "L4-4", "author": "Susanne, Kiel", "text": "Als Personalchefin sehe ich viele Lebensläufe. Ein Jahr Reisen sagt mir wenig, ein Jahr im Krankenhaus oder in einem Betrieb dagegen viel. Es kommt darauf an, was man mit der Zeit macht. Einfach nur Pause, das reicht mir nicht, und deshalb bin ich gegen eine Pause als Regel.", "answer": false, "skill": "inference"},
+        {"id": "L4-5", "author": "Leo, Potsdam", "text": "Wer mit siebzehn schon weiß, was er will, soll sofort anfangen. Aber die meisten wissen es nicht, und ein abgebrochenes Studium kostet mehr Zeit und Geld als ein Jahr Pause. Lieber ein Jahr suchen als drei Jahre in der falschen Richtung laufen.", "answer": true, "skill": "attitude"},
+        {"id": "L4-6", "author": "Beate, Augsburg", "text": "Unsere Gesellschaft wird älter, und wir brauchen jeden jungen Menschen so früh wie möglich im Beruf. Ein verlorenes Jahr für jeden Jahrgang, das kann sich das Land nicht leisten. Reisen kann man auch später, im Urlaub.", "answer": false, "skill": "attitude"},
+        {"id": "L4-7", "author": "Mateo, Hamburg", "text": "Ich hätte gern eine Pause gemacht, aber ich habe mich nicht getraut, weil alle Freunde sofort studiert haben. Heute, mit dreißig, denke ich oft: Das eine Jahr hätte mir niemand genommen. Jungen Leuten würde ich sagen: Macht es, solange ihr könnt.", "answer": true, "skill": "inference"}
+      ]
+    },
+    "teil5": {
+      "title": "Richtlinien – Gründungsstipendium der Stadt Leipzig",
+      "text": "§ 1 Ziel und Zielgruppe\nDas Gründungsstipendium unterstützt Personen, die in Leipzig ein Unternehmen gründen wollen. Bewerben können sich Einzelpersonen und Teams von bis zu drei Personen, sofern mindestens ein Mitglied seinen Wohnsitz seit wenigstens sechs Monaten in Leipzig hat. Das Unternehmen darf zum Zeitpunkt der Bewerbung noch nicht gegründet sein.\n\n§ 2 Leistungen\nDas Stipendium beträgt 1.200 € monatlich pro Person für die Dauer von zwölf Monaten. Zusätzlich stellt die Stadt einen Arbeitsplatz im Gründerzentrum sowie zehn Beratungsstunden zur Verfügung. Die Auszahlung erfolgt jeweils zum Monatsanfang, erstmals im Monat nach der Zusage.\n\n§ 3 Pflichten der Stipendiaten\nDie Stipendiaten müssen mindestens 30 Stunden pro Woche an ihrem Vorhaben arbeiten; eine Nebentätigkeit von höchstens 10 Stunden pro Woche ist erlaubt. Alle drei Monate ist ein kurzer schriftlicher Bericht einzureichen. Wer den Bericht zweimal versäumt, verliert das Stipendium.\n\n§ 4 Bewerbung\nBewerbungen sind bis zum 31. März und bis zum 30. September online einzureichen. Erforderlich sind ein Businessplan von höchstens zehn Seiten, ein Lebenslauf und ein kurzes Video von maximal drei Minuten, in dem die Idee vorgestellt wird. Unvollständige Bewerbungen werden nicht berücksichtigt. Eine Jury lädt die besten Bewerber zu einem Gespräch ein; die Entscheidung wird innerhalb von sechs Wochen mitgeteilt.\n\n§ 5 Rückzahlung\nDas Stipendium muss nicht zurückgezahlt werden. Wird das Vorhaben jedoch innerhalb der zwölf Monate ohne wichtigen Grund aufgegeben, endet die Zahlung sofort.",
+      "items": [
+        {"id": "L5-1", "question": "Ein Team kann sich bewerben, wenn …", "options": ["alle Mitglieder in Leipzig wohnen.", "eines der Mitglieder seit mindestens einem halben Jahr in Leipzig wohnt.", "das Unternehmen schon gegründet ist."], "answer": 1, "skill": "number-time"},
+        {"id": "L5-2", "question": "Die Stipendiaten …", "options": ["dürfen nebenbei höchstens zehn Stunden pro Woche arbeiten.", "dürfen keine andere Arbeit haben.", "müssen 30 Stunden pro Woche im Gründerzentrum sein."], "answer": 0, "skill": "detail"},
+        {"id": "L5-3", "question": "Wer sich bewirbt, muss …", "options": ["einen Businessplan mit mindestens zehn Seiten schicken.", "die Idee persönlich vor der Jury vorstellen.", "unter anderem ein kurzes Video einreichen."], "answer": 2, "skill": "detail"},
+        {"id": "L5-4", "question": "Wer sein Projekt vorzeitig aufgibt, …", "options": ["muss das Geld zurückzahlen.", "kann sich im nächsten Jahr nicht mehr bewerben.", "bekommt kein weiteres Geld mehr."], "answer": 2, "skill": "negation"}
+      ]
+    }
+  },
+  "hoeren": {
+    "teil1": {
+      "texts": [
+        {
+          "id": "H1-1", "kind": "Anrufbeantworter",
+          "script": [{"speaker": "f2", "text": "Guten Tag, Herr Abramov, hier ist Petra Falk von der Berufsberatung der Agentur für Arbeit. Wir hatten für Donnerstag um neun Uhr einen Termin vereinbart. Leider muss ich den verschieben, weil ich an dem Tag zu einer Fortbildung muss. Ich könnte Ihnen stattdessen Freitag um elf oder Montag um vierzehn Uhr anbieten. Bitte bringen Sie zu dem Gespräch Ihre Zeugnisse mit, und wenn Sie schon eine Idee haben, welche Richtung Sie interessiert, notieren Sie sich das kurz, das spart uns Zeit. Den Interessentest, den ich Ihnen per Mail geschickt habe, sollten Sie vorher zu Hause machen, er dauert ungefähr vierzig Minuten. Rufen Sie mich bitte zurück, welcher Termin Ihnen passt. Danke und auf Wiederhören."}],
+          "items": [
+            {"id": "H1-1a", "type": "rf", "statement": "Der Termin am Donnerstag findet nicht statt.", "answer": true, "skill": "paraphrase"},
+            {"id": "H1-1b", "type": "mc", "question": "Den Interessentest soll Herr Abramov …", "options": ["im Gespräch machen.", "vor dem Gespräch zu Hause machen.", "in vierzig Minuten zurückschicken."], "answer": 1, "skill": "detail"}
+          ]
+        },
+        {
+          "id": "H1-2", "kind": "Radio",
+          "script": [{"speaker": "m1", "text": "Wovon träumen die Deutschen? Das wollte eine große Umfrage wissen, deren Ergebnisse heute veröffentlicht wurden. Befragt wurden dreitausend Menschen zwischen achtzehn und siebzig Jahren. Anders als noch vor zehn Jahren steht nicht mehr das eigene Haus an erster Stelle, sondern die Gesundheit, das sagten fast zwei Drittel der Befragten. Auf Platz zwei folgt der Wunsch nach mehr Zeit für Familie und Freunde, erst auf Platz drei kommt das eigene Haus. Interessant ist der Unterschied zwischen den Generationen: Junge Menschen unter dreißig wünschen sich vor allem Reisen und ein Leben im Ausland, während die über Fünfzigjährigen häufiger von einem ruhigen Leben auf dem Land träumen. Nur jeder Zehnte gab übrigens an, viel Geld sei ihm am wichtigsten."}],
+          "items": [
+            {"id": "H1-2a", "type": "rf", "statement": "Das eigene Haus ist heute der wichtigste Wunsch der Deutschen.", "answer": false, "skill": "detail"},
+            {"id": "H1-2b", "type": "mc", "question": "Menschen über fünfzig …", "options": ["wünschen sich vor allem Reisen ins Ausland.", "finden Geld am wichtigsten.", "träumen öfter vom Leben auf dem Land."], "answer": 2, "skill": "detail"}
+          ]
+        },
+        {
+          "id": "H1-3", "kind": "Durchsage",
+          "script": [{"speaker": "f3", "text": "Liebe Schülerinnen und Schüler, liebe Eltern, herzlich willkommen zum Informationstag „Wege nach dem Abitur“. Bitte beachten Sie eine Änderung im Programm: Der Vortrag der Universität über das Medizinstudium findet nicht wie angekündigt in der Aula statt, sondern im Raum zwei null vier im zweiten Stock, weil die Aula wegen eines Wasserschadens gesperrt ist. Der Vortrag der Handwerkskammer beginnt wie geplant um elf Uhr im Musikraum. Alle Beratungsgespräche mit Vertretern von Firmen und Hochschulen finden in der Mensa statt, dort liegen auch Listen aus, in die Sie sich für ein persönliches Gespräch eintragen können. Die Cafeteria bietet den ganzen Tag Getränke und belegte Brötchen an. Wir wünschen Ihnen einen informativen Tag."}],
+          "items": [
+            {"id": "H1-3a", "type": "rf", "statement": "Der Vortrag über das Medizinstudium findet in der Aula statt.", "answer": false, "skill": "detail"},
+            {"id": "H1-3b", "type": "mc", "question": "Wer ein persönliches Beratungsgespräch möchte, …", "options": ["muss in den zweiten Stock gehen.", "soll sich in der Mensa in eine Liste eintragen.", "kommt um elf Uhr in den Musikraum."], "answer": 1, "skill": "detail"}
+          ]
+        },
+        {
+          "id": "H1-4", "kind": "Werbung",
+          "script": [{"speaker": "at_m", "text": "Sie wollten schon immer studieren, aber Beruf und Familie ließen keine Zeit? Die Fernuniversität Alpenland macht es möglich. Bei uns studieren Sie, wann und wo Sie wollen, abends, am Wochenende, im Zug. Über vierzig Studiengänge, von Wirtschaft bis Psychologie, alle mit anerkanntem Abschluss. Sie brauchen keine Matura, drei Jahre Berufserfahrung reichen. Das Semester kostet dreihundertneunzig Euro, das erste Semester ist für alle, die sich bis Ende Oktober einschreiben, gratis. Und wer möchte, trifft seine Mitstudierenden einmal im Monat an einem unserer Standorte in Wien, Graz oder Innsbruck. Fernuniversität Alpenland, Ihr Studium, Ihr Tempo."}],
+          "items": [
+            {"id": "H1-4a", "type": "rf", "statement": "Für das Studium braucht man unbedingt das Abitur.", "answer": false, "skill": "negation"},
+            {"id": "H1-4b", "type": "mc", "question": "Wer sich bis Ende Oktober einschreibt, …", "options": ["zahlt für das erste Semester nichts.", "zahlt für jedes Semester dreihundertneunzig Euro.", "muss einmal im Monat nach Wien kommen."], "answer": 0, "skill": "number-time"}
+          ]
+        },
+        {
+          "id": "H1-5", "kind": "Anrufbeantworter",
+          "script": [{"speaker": "m2", "text": "Hi Emma, ich bin's, Paul. Du, unsere Weltreise, ich muss dir was sagen. Ich habe heute das Angebot von der Firma in Zürich bekommen, von dem ich dir erzählt hatte, und sie wollen, dass ich schon im Januar anfange. Wenn ich das annehme, könnten wir nicht wie geplant im Februar für sechs Monate losfahren. Ich habe aber nachgefragt: Sie würden mir im Sommer drei Monate unbezahlten Urlaub geben. Das wäre kürzer, aber wir könnten trotzdem nach Südostasien, nur eben ohne Australien. Ich weiß, du hast dich so auf die lange Reise gefreut, und ich will das nicht allein entscheiden. Lass uns heute Abend in Ruhe darüber reden, ja? Ich koche. Bis später."}],
+          "items": [
+            {"id": "H1-5a", "type": "rf", "statement": "Paul hat das Jobangebot schon angenommen.", "answer": false, "skill": "inference"},
+            {"id": "H1-5b", "type": "mc", "question": "Wenn Paul die Stelle annimmt, …", "options": ["könnten sie im Sommer drei Monate reisen.", "müssen Emma und er die Reise ganz absagen.", "fahren sie wie geplant sechs Monate nach Australien."], "answer": 0, "skill": "paraphrase"}
+          ]
+        }
+      ]
+    },
+    "teil2": {
+      "setting": "Sie besuchen mit Ihrer Familie einen Informationsabend an einer Schule und hören den Vortrag einer Berufsberaterin über die Zeit nach dem Schulabschluss.",
+      "script": [{"speaker": "f1", "text": "Guten Abend, liebe Eltern, liebe Schülerinnen und Schüler. Mein Name ist Dr. Susanne Berg, ich arbeite seit achtzehn Jahren in der Berufsberatung, und ich möchte heute mit Ihnen über eine Frage sprechen, die in vielen Familien gerade für Streit sorgt: Was kommt nach der Schule? Lassen Sie mich mit einer Zahl beginnen, die Sie vielleicht überrascht: Fast jeder dritte Studierende in Deutschland bricht sein Studium ab oder wechselt das Fach. Das ist keine Katastrophe, aber es kostet im Durchschnitt zwei Jahre. Und der häufigste Grund dafür ist nicht, dass das Studium zu schwer wäre, sondern dass die jungen Leute das Fach gewählt haben, weil die Eltern es wollten oder weil die Freunde es auch gemacht haben. Deshalb mein erster Rat, vor allem an die Eltern: Bitte entscheiden Sie nicht für Ihre Kinder. Sie dürfen Fragen stellen, Sie dürfen Ihre Meinung sagen, aber die Entscheidung muss das Kind treffen, denn es muss damit leben. Mein zweiter Rat betrifft die Ausbildung. Viele von Ihnen denken, wer Abitur hat, muss studieren. Das stimmt nicht. Ein Mechatroniker mit Meisterbrief verdient heute oft mehr als ein Geisteswissenschaftler mit Master, und er hat schon mit zwanzig sein eigenes Geld. Ich sage nicht, dass die Ausbildung besser ist, ich sage, dass sie gleich viel wert ist. Drittens: das sogenannte Orientierungsjahr. Ein Jahr Freiwilligendienst, ein Jahr im Ausland, ein Jahr in einem Betrieb. Ich habe in achtzehn Jahren niemanden getroffen, der so ein Jahr bereut hat, wenn er es mit einem Ziel gemacht hat. Wer allerdings nur zu Hause sitzt und wartet, der verliert tatsächlich ein Jahr. Für die Schülerinnen und Schüler habe ich noch einen praktischen Hinweis: Wir bieten an der Schule ab nächster Woche jeden Mittwoch von vierzehn bis sechzehn Uhr eine Sprechstunde an, Raum eins null zwei, ohne Anmeldung. Und am achtzehnten März gibt es einen Praxistag, an dem Sie einen Vormittag in einem Betrieb oder an der Universität verbringen können. Die Liste mit den Plätzen hängt ab morgen vor dem Sekretariat, es gilt: Wer sich zuerst einträgt, bekommt den Platz. Zum Schluss noch etwas Persönliches: Ich selbst habe zuerst Chemie studiert, abgebrochen, eine Ausbildung zur Bankkauffrau gemacht und dann mit dreißig Psychologie studiert. Es gibt keinen geraden Weg, und das ist völlig in Ordnung. Vielen Dank, und jetzt freue ich mich auf Ihre Fragen."}],
+      "items": [
+        {"id": "H2-1", "question": "Der häufigste Grund für einen Studienabbruch ist laut Frau Berg, dass …", "options": ["das Studium zu schwierig ist.", "die Studierenden das Fach nicht selbst gewählt haben.", "die Studierenden zwei Jahre verloren haben."], "answer": 1, "skill": "paraphrase"},
+        {"id": "H2-2", "question": "Was sagt Frau Berg über die Ausbildung?", "options": ["Sie ist genauso viel wert wie ein Studium.", "Sie ist besser als ein Studium.", "Sie ist nur für Schüler ohne Abitur geeignet."], "answer": 0, "skill": "attitude"},
+        {"id": "H2-3", "question": "Ein Orientierungsjahr ist sinnvoll, wenn man …", "options": ["es mit einem Ziel verbindet.", "es zu Hause verbringt.", "danach sofort studiert."], "answer": 0, "skill": "detail"},
+        {"id": "H2-4", "question": "Für den Praxistag …", "options": ["muss man sich in der Sprechstunde anmelden.", "trägt man sich in eine Liste vor dem Sekretariat ein.", "bekommt jeder Schüler automatisch einen Platz."], "answer": 1, "skill": "detail"},
+        {"id": "H2-5", "question": "Frau Berg selbst …", "options": ["hat Chemie studiert und abgeschlossen.", "hat ihr Studium nie unterbrochen.", "hat erst mit dreißig das Fach studiert, in dem sie heute arbeitet."], "answer": 2, "skill": "number-time"}
+      ]
+    },
+    "teil3": {
+      "setting": "Sie hören ein Gespräch zwischen zwei Freundinnen und Freunden, die sich in einem Café treffen.",
+      "script": [
+        {"speaker": "f1", "text": "Jonas, ich muss dir etwas erzählen, aber du darfst nicht lachen. Ich habe gestern gekündigt."},
+        {"speaker": "m3", "text": "Was? Lisa! Du hattest doch gerade erst die Beförderung bekommen. Was ist passiert?"},
+        {"speaker": "f1", "text": "Nichts ist passiert, das ist ja das Problem. Ich sitze seit acht Jahren in derselben Versicherung, und wenn ich ehrlich bin, hatte ich schon vor drei Jahren keine Lust mehr. Ich will das Café aufmachen, von dem ich immer geredet habe."},
+        {"speaker": "m3", "text": "Das Café. Du meinst das mit den Büchern und dem Kuchen, in Ottensen?"},
+        {"speaker": "f1", "text": "Genau das. Ich habe einen Laden gefunden, ehemalige Bäckerei, hundertzehn Quadratmeter, die Küche ist noch drin. Die Miete wäre zweitausendvierhundert im Monat."},
+        {"speaker": "m3", "text": "Zweitausendvierhundert? Und das willst du mit Kuchen verdienen? Lisa, ich will nicht der Spielverderber sein, aber hast du mal ausgerechnet, wie viele Stücke Kuchen das sind?"},
+        {"speaker": "f1", "text": "Habe ich. Ungefähr achthundert im Monat, nur für die Miete. Ich weiß, dass das viel ist. Aber ich habe einen Businessplan gemacht, mit dem Gründerzentrum zusammen, und die sagen, es könnte funktionieren, wenn ich auch Frühstück und kleine Veranstaltungen anbiete, Lesungen zum Beispiel."},
+        {"speaker": "m3", "text": "Und das Geld für den Anfang? Die Einrichtung, die Maschinen?"},
+        {"speaker": "f1", "text": "Ich habe vierzigtausend gespart, und die Bank würde mir noch dreißigtausend leihen, wenn ich einen Bürgen finde. Meine Eltern hätten das gemacht, aber die haben gerade das Haus renoviert."},
+        {"speaker": "m3", "text": "Hm. Und wenn es nicht klappt? Dann hast du keine Stelle mehr und siebzigtausend Euro Schulden."},
+        {"speaker": "f1", "text": "Dreißigtausend, die vierzig sind ja meine. Und ja, das Risiko ist da, ich habe auch Angst davor. Aber weißt du, was mir mehr Angst macht? Mit sechzig in der Versicherung zu sitzen und zu denken: Hättest du es doch probiert."},
+        {"speaker": "m3", "text": "Okay, das verstehe ich. Ich hätte mich vor fünf Jahren fast selbstständig gemacht, mit der Fotografie, und habe es dann nicht getan. Ich denke heute noch manchmal daran."},
+        {"speaker": "f1", "text": "Siehst du. Und wenn es nach zwei Jahren nicht läuft, dann suche ich mir wieder eine Stelle. Versicherungen brauchen immer Leute."},
+        {"speaker": "m3", "text": "Wie lange hast du denn noch in der Firma?"},
+        {"speaker": "f1", "text": "Bis Ende Juni. Bis dahin kann ich abends und am Wochenende alles vorbereiten. Und Jonas, ich wollte dich fragen: Würdest du die Fotos für die Website machen? Ich könnte dich noch nicht richtig bezahlen, aber du hättest ein Jahr lang freien Kaffee."},
+        {"speaker": "m3", "text": "Ein Jahr freien Kaffee, das ist ein hartes Angebot. Ich mache es, natürlich. Aber unter einer Bedingung: Ich lese den Businessplan vorher, und zwar kritisch."},
+        {"speaker": "f1", "text": "Abgemacht. Ich schicke ihn dir heute Abend. Und wenn wir in einem Jahr hier sitzen, dann in meinem Café."}
+      ],
+      "items": [
+        {"id": "H3-1", "statement": "Lisa hat ihre Stelle bei der Versicherung gekündigt.", "answer": true, "skill": "detail"},
+        {"id": "H3-2", "statement": "Lisa war in ihrem Beruf bis vor Kurzem sehr zufrieden.", "answer": false, "skill": "negation"},
+        {"id": "H3-3", "statement": "Die Miete für den Laden beträgt ungefähr achthundert Euro.", "answer": false, "skill": "number-time"},
+        {"id": "H3-4", "statement": "Lisa hat den Businessplan zusammen mit einer Beratungsstelle erstellt.", "answer": true, "skill": "paraphrase"},
+        {"id": "H3-5", "statement": "Lisas Eltern können zurzeit nicht für den Kredit bürgen.", "answer": true, "skill": "inference"},
+        {"id": "H3-6", "statement": "Jonas hat sich vor einigen Jahren als Fotograf selbstständig gemacht.", "answer": false, "skill": "detail"},
+        {"id": "H3-7", "statement": "Jonas will die Fotos nur machen, wenn er vorher den Businessplan lesen darf.", "answer": true, "skill": "detail"}
+      ]
+    },
+    "teil4": {
+      "setting": "Sie hören eine Diskussion im Radio. Die Moderatorin spricht mit einem Zukunftsforscher und einer Studentin aus dem Jugendrat der Stadt über das Thema „Wie werden wir in zwanzig Jahren leben?“",
+      "speakers": {"mod": "Moderatorin Anja Winter", "a": "Prof. Matthias Roth (Zukunftsforscher)", "b": "Lea Brandt (Studentin, Jugendrat)"},
+      "voices": {"mod": "f2", "a": "m1", "b": "f3"},
+      "script": [
+        {"speaker": "mod", "text": "Guten Abend und willkommen bei „Morgen“. Ich bin Anja Winter, und heute wagen wir einen Blick nach vorn: Wie werden wir in zwanzig Jahren leben, arbeiten, wohnen? Bei mir im Studio sind Professor Matthias Roth, der an der Universität Karlsruhe Zukunftsforschung betreibt, und Lea Brandt, zwanzig Jahre alt, Studentin und Mitglied im Jugendrat unserer Stadt. Herr Roth, was können Sie überhaupt über die Zukunft wissen?"},
+        {"speaker": "a", "text": "Guten Abend. Weniger, als die Leute glauben, und mehr, als sie befürchten. Wir können keine Ereignisse vorhersagen, aber wir können Entwicklungen erkennen, die schon begonnen haben. Drei davon sind ziemlich sicher: Wir werden älter, wir werden weniger, und wir werden mehr Maschinen um uns haben, die Arbeit übernehmen. Wie wir damit umgehen, das allerdings entscheiden wir selbst, und deshalb ist die Zukunft kein Schicksal, sondern eine Aufgabe."},
+        {"speaker": "mod", "text": "Frau Brandt, Sie sind zwanzig. Wenn Sie an das Jahr 2046 denken, was fühlen Sie?"},
+        {"speaker": "b", "text": "Ehrlich? Eine Mischung aus Angst und Wut. Angst, weil die Sommer immer heißer werden und ich nicht weiß, ob meine Kinder später noch in dieser Stadt leben können. Und Wut, weil die Entscheidungen, die jetzt getroffen werden, von Menschen getroffen werden, die 2046 gar nicht mehr da sind. Deshalb bin ich in den Jugendrat gegangen. Wenn man nur Angst hat, ändert sich nichts."},
+        {"speaker": "a", "text": "Das finde ich einen wichtigen Satz, Frau Brandt. Und ich möchte Ihrer Generation etwas Mut machen: Wer sich heute die Zahlen ansieht, der sieht auch, dass sich manche Dinge schneller verbessern als erwartet. Vor zehn Jahren hätte niemand geglaubt, dass Solarstrom einmal billiger wäre als Kohle. Heute ist es so. Technik allein löst das Problem nicht, aber sie macht die Lösung bezahlbar."},
+        {"speaker": "b", "text": "Bezahlbar für wen? Das ist doch die Frage. Meine Eltern könnten sich eine Solaranlage aufs Dach setzen, wenn sie ein Dach hätten. Sie wohnen zur Miete, wie die meisten Menschen in der Stadt. Ich glaube, in zwanzig Jahren geht es weniger um Technik und mehr um Gerechtigkeit: Wer bekommt die Vorteile, und wer trägt die Kosten?"},
+        {"speaker": "mod", "text": "Lassen Sie uns über die Arbeit sprechen. Ich habe letzte Woche zum ersten Mal ein Programm benutzt, das meine Sendung fast allein vorbereitet hat, in zehn Minuten. Ich war beeindruckt und ein bisschen erschrocken. Werde ich in zwanzig Jahren noch gebraucht, Herr Roth?"},
+        {"speaker": "a", "text": "Als Moderatorin, die mit Menschen spricht, ja. Als jemand, der Texte zusammenfasst, eher nicht. Das klingt hart, aber es ist nicht neu. Vor hundert Jahren arbeitete jeder Dritte in der Landwirtschaft, heute ist es einer von hundert, und trotzdem hat niemand verhungert. Die Berufe ändern sich, die Arbeit verschwindet nicht. Was wir allerdings brauchen, ist ein Bildungssystem, in dem man nicht mit zwanzig fertig ist, sondern mit fünfzig noch einmal etwas Neues lernt."},
+        {"speaker": "b", "text": "Da bin ich ganz bei Ihnen. Ich würde sogar weitergehen: Ich wünsche mir, dass wir in zwanzig Jahren weniger arbeiten. Wenn Maschinen so viel übernehmen, warum soll ich dann vierzig Stunden im Büro sitzen? Die Zeit könnte ich für meine Familie nutzen, für die Nachbarschaft, für Politik. Das wäre für mich eine gute Zukunft."},
+        {"speaker": "a", "text": "Das ist ein schöner Wunsch, und ich teile ihn. Nur muss jemand die Pflege der Alten bezahlen, von denen es 2046 doppelt so viele geben wird wie heute. Weniger arbeiten und mehr Rentner, das lässt sich nur mit sehr viel Produktivität bezahlen. Ich sage nicht, dass es unmöglich ist. Ich sage, dass es kein Geschenk ist, sondern etwas, das man sich erarbeiten muss."},
+        {"speaker": "mod", "text": "Zum Schluss eine persönliche Frage an beide: Was wünschen Sie sich ganz konkret für das Jahr 2046? Frau Brandt?"},
+        {"speaker": "b", "text": "Dass ich mit meinen Kindern im Sommer im Fluss schwimmen kann, hier in der Stadt, so wie meine Großmutter das noch konnte. Und dass die Stadt dann von Leuten regiert wird, die heute noch im Kindergarten sind."},
+        {"speaker": "a", "text": "Ich wäre 2046 achtundsiebzig. Ich wünsche mir, dass ich dann noch etwas Neues lernen darf, vielleicht ein Instrument, und dass mich niemand fragt, wozu das in meinem Alter noch gut sein soll."},
+        {"speaker": "mod", "text": "Ein Fluss zum Schwimmen und ein Instrument mit achtundsiebzig. Vielen Dank, Frau Brandt, vielen Dank, Herr Roth, und Ihnen zu Hause eine gute Nacht."}
+      ],
+      "items": [
+        {"id": "H4-1", "statement": "Die Zukunft ist keine Frage des Schicksals, sondern unserer Entscheidungen.", "answer": "a", "skill": "matching"},
+        {"id": "H4-2", "statement": "Wer nur Angst hat, verändert nichts.", "answer": "b", "skill": "matching"},
+        {"id": "H4-3", "statement": "Manche Entwicklungen verbessern sich schneller, als man erwartet hat.", "answer": "a", "skill": "matching"},
+        {"id": "H4-4", "statement": "In Zukunft geht es vor allem darum, wer die Vorteile bekommt und wer bezahlt.", "answer": "b", "skill": "matching"},
+        {"id": "H4-5", "statement": "Ein Programm hat einen großen Teil meiner Arbeit in kurzer Zeit erledigt.", "answer": "mod", "skill": "matching"},
+        {"id": "H4-6", "statement": "Man sollte auch im Alter noch neue Dinge lernen können.", "answer": "a", "skill": "matching"},
+        {"id": "H4-7", "statement": "Die Menschen sollten in Zukunft weniger Stunden arbeiten müssen.", "answer": "b", "skill": "matching"},
+        {"id": "H4-8", "statement": "Ich möchte in Zukunft in der Stadt im Fluss baden können.", "answer": "b", "skill": "matching"}
+      ]
+    }
+  },
+  "schreiben": {
+    "aufgabe1": {
+      "minutes": 20, "words": 80,
+      "situation": "Sie haben beschlossen, im nächsten Jahr etwas Neues zu beginnen (zum Beispiel eine Ausbildung, ein Studium, eine lange Reise oder einen Umzug). Ihr Freund Nikolaj möchte wissen, was Sie vorhaben. Schreiben Sie ihm eine E-Mail.",
+      "points": ["Beschreiben Sie, was Sie planen und wann Sie damit anfangen wollen.", "Erklären Sie, warum Sie diese Entscheidung getroffen haben und wovor Sie vielleicht Angst haben.", "Bitten Sie Nikolaj um einen Rat oder schlagen Sie vor, wie er Ihnen helfen könnte."]
+    },
+    "aufgabe2": {
+      "minutes": 25, "words": 80,
+      "situation": "Sie haben im Fernsehen eine Diskussionssendung zum Thema „Muss man sein Leben planen?“ gesehen. Im Online-Gästebuch der Sendung finden Sie folgende Meinung:",
+      "quote": "„Wer heute keinen Plan für die nächsten zehn Jahre hat, hat schon verloren. Träume sind etwas für Kinder. Erwachsene brauchen Ziele, einen Kalender und Disziplin – alles andere ist Zeitverschwendung.“ – Frank, 47",
+      "instruction": "Schreiben Sie nun Ihre Meinung dazu (circa 80 Wörter)."
+    },
+    "aufgabe3": {
+      "minutes": 15, "words": 40,
+      "situation": "Sie hatten für nächste Woche einen Termin bei der Berufsberatung. Sie haben inzwischen aber eine Ausbildungsstelle gefunden und brauchen den Termin nicht mehr. Schreiben Sie eine E-Mail an die Beraterin, Frau Falk: Sagen Sie den Termin höflich ab, nennen Sie den Grund und bedanken Sie sich für die bisherige Hilfe.",
+      "addressee": "Frau Falk"
+    }
+  },
+  "sprechen": {
+    "teil1": {
+      "situation": "Ihr Deutschkurs endet in vier Wochen. Sie und Ihr Partner / Ihre Partnerin wollen danach zusammen weiterlernen und einen gemeinsamen Lernplan bis zur B1-Prüfung im Oktober machen. Planen Sie gemeinsam.",
+      "points": ["Wie oft und wann treffen Sie sich?", "Wo lernen Sie (Bibliothek, Café, online)?", "Was üben Sie zusammen (Sprechen, Schreiben, Hören)?", "Wie belohnen Sie sich, wenn Sie die Prüfung bestanden haben?"],
+      "partner_cues": [
+        "Ich würde vorschlagen, dass wir uns zweimal pro Woche treffen. Wäre dir das zu viel?",
+        "Abends bin ich meistens müde. Könnten wir uns vielleicht am Samstagvormittag treffen?",
+        "Die Bibliothek ist ruhig, aber man darf dort nicht laut sprechen. Hättest du eine bessere Idee?",
+        "Mir fällt das Schreiben am schwersten. Was würdest du gern üben?",
+        "Sollen wir jede Woche einen Modelltest machen, oder ist das zu stressig?",
+        "Und wenn wir beide bestehen, wie feiern wir das? Ich hätte Lust auf ein Wochenende in Berlin."
+      ]
+    },
+    "teil2": {
+      "topics": ["Thema A: Sollte man sein Leben genau planen, oder ist es besser, spontan zu leben?", "Thema B: Ist es heute schwieriger als früher, seine Träume zu verwirklichen?"],
+      "folien": [
+        "Stellen Sie Ihr Thema vor. Erklären Sie den Inhalt und die Struktur Ihrer Präsentation.",
+        "Berichten Sie von Ihrer Situation oder einem Erlebnis im Zusammenhang mit dem Thema.",
+        "Berichten Sie, wie die Situation in Ihrem Heimatland ist, und geben Sie Beispiele.",
+        "Nennen Sie die Vor- und Nachteile und sagen Sie dazu Ihre Meinung. Geben Sie auch Beispiele.",
+        "Beenden Sie Ihre Präsentation und bedanken Sie sich bei den Zuhörern."
+      ]
+    },
+    "teil3": {
+      "questions": ["Sie haben gesagt, dass Pläne wichtig sind. Was würden Sie tun, wenn ein Plan nicht funktioniert?", "Gab es in Ihrem Leben eine Entscheidung, die Sie heute anders treffen würden?", "Wo sehen Sie sich selbst in zehn Jahren?"],
+      "questions_b": ["Welchen Traum hatten Sie als Kind, und was ist daraus geworden?", "Glauben Sie, dass Geld nötig ist, um seine Träume zu verwirklichen?", "Was würden Sie einem jungen Menschen raten, der Angst davor hat, etwas Neues zu beginnen?"]
+    }
+  }
+}

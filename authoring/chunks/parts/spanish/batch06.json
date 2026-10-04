@@ -1,0 +1,545 @@
+[
+ {
+  "id": "ENG_CHUNK_0501",
+  "t": "Me dan miedo [sustantivo] / Le tengo miedo a [sustantivo]",
+  "ex": "Me dan miedo las arañas, así que tú te vas a tener que deshacer de esa.",
+  "n": "\"Dar miedo\" works like \"gustar\": the feared thing is the subject."
+ },
+ {
+  "id": "ENG_CHUNK_0502",
+  "t": "¿Cuánto cuesta [infinitivo]? / ¿Cuánto sale [infinitivo]?",
+  "ex": "¿Cuánto cuesta arreglar una llanta ponchada?"
+ },
+ {
+  "id": "ENG_CHUNK_0503",
+  "t": "¿Estás seguro/a de que [indicativo]?",
+  "ex": "¿Estás segura de que apagaste la estufa?",
+  "n": "Stove: estufa (Mexico, Colombia), cocina (Southern Cone, Spain)."
+ },
+ {
+  "id": "ENG_CHUNK_0504",
+  "t": "¿Por qué crees que [indicativo]? / ¿Qué te hace pensar que [indicativo]?",
+  "ex": "¿Por qué crees que está enojada contigo?"
+ },
+ {
+  "id": "ENG_CHUNK_0505",
+  "t": "¿Es cierto que [indicativo]? / ¿Es verdad que [indicativo]?",
+  "ex": "¿Es cierto que te mudas a Texas?",
+  "n": "Indicative in a genuine question; \"no es cierto que\" takes subjunctive."
+ },
+ {
+  "id": "ENG_CHUNK_0506",
+  "t": "¿Tienes idea de [pregunta indirecta]? / ¿Sabes [pregunta indirecta]?",
+  "ex": "¿Tienes idea de dónde dejé el celular?"
+ },
+ {
+  "id": "ENG_CHUNK_0507",
+  "t": "¿Puedo preguntar por qué [oración]?",
+  "ex": "¿Puedo preguntarte por qué te vas tan pronto?"
+ },
+ {
+  "id": "ENG_CHUNK_0508",
+  "t": "¿Para qué sirve [sustantivo]? / ¿Para qué es [sustantivo]?",
+  "ex": "¿Para qué sirve este botón?"
+ },
+ {
+  "id": "ENG_CHUNK_0509",
+  "t": "¿Cómo se dice [sustantivo] en español?",
+  "ex": "Perdón, ¿cómo se dice esto en español?",
+  "n": "Adapted to the target language: learners ask for the Spanish word."
+ },
+ {
+  "id": "ENG_CHUNK_0510",
+  "t": "¿Me podría enseñar a [infinitivo]? / ¿Me muestras cómo [infinitivo]?",
+  "ex": "¿Me enseñas a usar la cafetera?",
+  "n": "\"Enseñar\" = both \"teach\" and \"show\"; takes \"a\" + infinitive."
+ },
+ {
+  "id": "ENG_CHUNK_0511",
+  "t": "¿Me podría recomendar [sustantivo]?",
+  "ex": "¿Me podría recomendar un buen lugar para desayunar por aquí?",
+  "n": "Brunch: \"brunch\" is used in cities; \"desayuno tardío\" otherwise."
+ },
+ {
+  "id": "ENG_CHUNK_0512",
+  "t": "¿Hay algún lugar donde pueda [infinitivo]?",
+  "ex": "¿Hay algún lugar donde pueda cargar el celular?",
+  "n": "Subjunctive trigger: unknown place after \"algún lugar donde\"."
+ },
+ {
+  "id": "ENG_CHUNK_0513",
+  "t": "¿Hay [sustantivo] por aquí? / ¿Hay [sustantivo] cerca?",
+  "ex": "Disculpe, ¿hay una farmacia por aquí?"
+ },
+ {
+  "id": "ENG_CHUNK_0514",
+  "t": "¿Voy bien para [lugar]? / ¿Por aquí se va a [lugar]?",
+  "ex": "Disculpe, ¿voy bien para el museo?"
+ },
+ {
+  "id": "ENG_CHUNK_0515",
+  "t": "¿Qué tan lejos queda [lugar]? / ¿A cuánto queda [lugar]?",
+  "ex": "¿Qué tan lejos queda la playa desde aquí?",
+  "n": "\"¿Qué tan...?\" is Latin American; Spain: ¿A qué distancia está...?"
+ },
+ {
+  "id": "ENG_CHUNK_0516",
+  "t": "¿Este autobús va a [lugar]? / ¿Este autobús pasa por [lugar]?",
+  "ex": "Disculpe, ¿este autobús va a la estación de tren?"
+ },
+ {
+  "id": "ENG_CHUNK_0517",
+  "t": "¿A qué hora sale [sustantivo]?",
+  "ex": "¿A qué hora sale el último tren?"
+ },
+ {
+  "id": "ENG_CHUNK_0518",
+  "t": "Quisiera un boleto de ida y vuelta a [lugar]",
+  "ex": "Quisiera un boleto de ida y vuelta a Chicago, por favor.",
+  "n": "Spain: un billete de ida y vuelta."
+ },
+ {
+  "id": "ENG_CHUNK_0519",
+  "t": "Tengo una reservación a nombre de [nombre]",
+  "ex": "Hola, tengo una reservación a nombre de Molina.",
+  "n": "Reservación (Mexico); reserva elsewhere."
+ },
+ {
+  "id": "ENG_CHUNK_0520",
+  "t": "Quisiera hacer una reservación para [sustantivo]",
+  "ex": "Hola, quisiera hacer una reservación para dos personas a las ocho."
+ },
+ {
+  "id": "ENG_CHUNK_0521",
+  "t": "¿Tiene mesa para [número]?",
+  "ex": "Hola, ¿tiene mesa para dos?"
+ },
+ {
+  "id": "ENG_CHUNK_0522",
+  "t": "¿[sustantivo] lleva [sustantivo]? / ¿[sustantivo] tiene [sustantivo]?",
+  "ex": "¿La sopa lleva carne?",
+  "n": "\"Llevar\" is the natural verb for ingredients."
+ },
+ {
+  "id": "ENG_CHUNK_0523",
+  "t": "Soy alérgico/a a [sustantivo]",
+  "ex": "Soy alérgica al cacahuate, así que no voy a pedir postre.",
+  "n": "Peanut: cacahuate (Mexico), maní (most of South America), cacahuete (Spain)."
+ },
+ {
+  "id": "ENG_CHUNK_0524",
+  "t": "¿Me lo puede dar sin [sustantivo]? / ¿Me lo trae sin [sustantivo]?",
+  "ex": "¿Me lo trae sin cebolla?"
+ },
+ {
+  "id": "ENG_CHUNK_0525",
+  "t": "¿Incluye [sustantivo]? / ¿[sustantivo] está incluido?",
+  "ex": "¿El desayuno está incluido?"
+ },
+ {
+  "id": "ENG_CHUNK_0526",
+  "t": "¿Dónde encuentro [sustantivo]?",
+  "ex": "Disculpe, ¿dónde encuentro los cereales?"
+ },
+ {
+  "id": "ENG_CHUNK_0527",
+  "t": "¿Me puedo probar [sustantivo]?",
+  "ex": "¿Me puedo probar estos jeans?",
+  "n": "\"Probarse\" (reflexive) = try on; \"probar\" = taste."
+ },
+ {
+  "id": "ENG_CHUNK_0528",
+  "t": "¿[sustantivo] está en oferta? / ¿Tiene descuento [sustantivo]?",
+  "ex": "¿Esta chaqueta tiene descuento?",
+  "n": "Also: en rebaja (Spain), en promoción."
+ },
+ {
+  "id": "ENG_CHUNK_0529",
+  "t": "¿Tiene algo más [adjetivo]? / ¿Tiene algo menos [adjetivo]?",
+  "ex": "¿Tiene algo más barato?",
+  "n": "Spanish prefers \"más barato\" over \"menos caro\"."
+ },
+ {
+  "id": "ENG_CHUNK_0530",
+  "t": "Te va a encantar [sustantivo]",
+  "ex": "Te va a encantar este lugar.",
+  "n": "\"Encantar\" like \"gustar\": plurals need \"Te van a encantar\"."
+ },
+ {
+  "id": "ENG_CHUNK_0531",
+  "t": "Me llevo [sustantivo]",
+  "ex": "Me llevo el azul.",
+  "n": "\"Llevarse\" = to take/buy in a shop."
+ },
+ {
+  "id": "ENG_CHUNK_0532",
+  "t": "¿Aceptan [sustantivo]?",
+  "ex": "¿Aceptan tarjeta de crédito?",
+  "n": "Mexico/Colombia also: ¿Reciben tarjeta?"
+ },
+ {
+  "id": "ENG_CHUNK_0533",
+  "t": "Quisiera devolver [sustantivo]",
+  "ex": "Hola, quisiera devolver este suéter. Me queda chico."
+ },
+ {
+  "id": "ENG_CHUNK_0534",
+  "t": "Quisiera cancelar [sustantivo]",
+  "ex": "Quisiera cancelar mi suscripción, por favor.",
+  "n": "Spain also: darse de baja de un servicio."
+ },
+ {
+  "id": "ENG_CHUNK_0535",
+  "t": "¿Se cobra algo por [infinitivo]? / ¿Tiene algún costo [infinitivo]?",
+  "ex": "¿Tiene algún costo cambiar la fecha?",
+  "n": "Costo is Latin American; Spain: coste."
+ },
+ {
+  "id": "ENG_CHUNK_0536",
+  "t": "probar [sustantivo] / darle una oportunidad a [sustantivo]",
+  "ex": "Nunca he comido sushi, pero lo voy a probar."
+ },
+ {
+  "id": "ENG_CHUNK_0537",
+  "t": "seguir adelante / no rendirse",
+  "ex": "Ya casi llegas arriba, ¡sigue, sigue!",
+  "n": "\"¡Dale!\" and \"¡Tú puedes!\" are common cheers."
+ },
+ {
+  "id": "ENG_CHUNK_0538",
+  "t": "pedir un deseo",
+  "ex": "¡Sopla las velas y pide un deseo!"
+ },
+ {
+  "id": "ENG_CHUNK_0539",
+  "t": "juntarse / verse / reunirse",
+  "ex": "Deberíamos vernos algún día de la próxima semana.",
+  "n": "Spain: quedar."
+ },
+ {
+  "id": "ENG_CHUNK_0540",
+  "t": "mostrarle [lugar] a [persona] / darle un recorrido a [persona]",
+  "ex": "Pasa mañana y te muestro la oficina."
+ },
+ {
+  "id": "ENG_CHUNK_0541",
+  "t": "irse a vivir con [persona]",
+  "ex": "El mes que viene me voy a vivir con mi novia."
+ },
+ {
+  "id": "ENG_CHUNK_0542",
+  "t": "mudarse / irse de casa",
+  "ex": "Me fui de casa de mis papás a los dieciocho."
+ },
+ {
+  "id": "ENG_CHUNK_0543",
+  "t": "ser muy unido/a con [persona] / estar muy apegado/a a [persona]",
+  "ex": "Soy muy unida con mi abuela. Hablamos todos los días."
+ },
+ {
+  "id": "ENG_CHUNK_0544",
+  "t": "gustarle [persona] a alguien / estar enamorado/a de [persona]",
+  "ex": "Creo que le gustas a Jacobo.",
+  "n": "\"Le gustas\" = he likes you (romantically); \"gustar\" reverses the English roles."
+ },
+ {
+  "id": "ENG_CHUNK_0545",
+  "t": "reconciliarse con [persona] / hacer las paces con [persona]",
+  "ex": "¿Ya hiciste las paces con tu hermana?"
+ },
+ {
+  "id": "ENG_CHUNK_0546",
+  "t": "seguir en contacto / no perder el contacto",
+  "ex": "No perdamos el contacto cuando te mudes.",
+  "n": "Subjunctive trigger: cuando + future event."
+ },
+ {
+  "id": "ENG_CHUNK_0547",
+  "t": "saber de [persona]",
+  "ex": "¿Has sabido algo de Ana últimamente?"
+ },
+ {
+  "id": "ENG_CHUNK_0548",
+  "t": "quejarse de [sustantivo]",
+  "ex": "Mi vecino siempre se está quejando del ruido."
+ },
+ {
+  "id": "ENG_CHUNK_0549",
+  "t": "importarle [sustantivo] a alguien / preocuparse por [sustantivo]",
+  "ex": "Ahora me importa mucho más mi salud.",
+  "n": "\"Importar\" like \"gustar\": me importa la salud."
+ },
+ {
+  "id": "ENG_CHUNK_0550",
+  "t": "recordarle a [persona] que [subjuntivo]",
+  "ex": "¿Me recuerdas que llame al dentista?",
+  "n": "Subjunctive trigger: recordar que = remind to."
+ },
+ {
+  "id": "ENG_CHUNK_0551",
+  "t": "pasar un examen / aprobar un examen",
+  "ex": "¡Pasé el examen de manejo a la primera!",
+  "n": "Aprobar is standard everywhere; \"pasar\" is common in Latin America."
+ },
+ {
+  "id": "ENG_CHUNK_0552",
+  "t": "prepararse para [sustantivo]",
+  "ex": "Me estoy preparando para los exámenes finales."
+ },
+ {
+  "id": "ENG_CHUNK_0553",
+  "t": "encargarse de [sustantivo]",
+  "ex": "Tranquilo, yo me encargo de la cuenta."
+ },
+ {
+  "id": "ENG_CHUNK_0554",
+  "t": "participar en [sustantivo]",
+  "ex": "Más de doscientas personas participaron en la carrera."
+ },
+ {
+  "id": "ENG_CHUNK_0555",
+  "t": "entregar [sustantivo]",
+  "ex": "Tengo que entregar el informe antes del viernes.",
+  "n": "Latin America also: el reporte."
+ },
+ {
+  "id": "ENG_CHUNK_0556",
+  "t": "dar una presentación / hacer una exposición",
+  "ex": "Mañana tengo que dar una presentación y estoy muy nerviosa.",
+  "n": "School: exposición; work: presentación."
+ },
+ {
+  "id": "ENG_CHUNK_0557",
+  "t": "hacer horas extra",
+  "ex": "He estado haciendo horas extra toda la semana."
+ },
+ {
+  "id": "ENG_CHUNK_0558",
+  "t": "ascender / recibir un ascenso",
+  "ex": "¡A mi hermana la acaban de ascender a gerente!"
+ },
+ {
+  "id": "ENG_CHUNK_0559",
+  "t": "perder el trabajo / quedarse sin trabajo",
+  "ex": "Mi tío se quedó sin trabajo el mes pasado."
+ },
+ {
+  "id": "ENG_CHUNK_0560",
+  "t": "renunciar / dejar el trabajo",
+  "ex": "Renunció a su trabajo para viajar un año."
+ },
+ {
+  "id": "ENG_CHUNK_0561",
+  "t": "un trabajo de medio tiempo",
+  "ex": "Tengo un trabajo de medio tiempo en un café los fines de semana.",
+  "n": "Spain: trabajo a tiempo parcial."
+ },
+ {
+  "id": "ENG_CHUNK_0562",
+  "t": "una entrevista de trabajo",
+  "ex": "Tengo una entrevista de trabajo el lunes en la mañana."
+ },
+ {
+  "id": "ENG_CHUNK_0563",
+  "t": "salir del trabajo",
+  "ex": "¿A qué hora sales del trabajo?",
+  "n": "Also: ¿A qué hora sales? alone."
+ },
+ {
+  "id": "ENG_CHUNK_0564",
+  "t": "irse / ir saliendo",
+  "ex": "Ya me voy yendo. Nos vemos mañana."
+ },
+ {
+  "id": "ENG_CHUNK_0565",
+  "t": "la hora pico",
+  "ex": "Salgamos temprano para evitar la hora pico.",
+  "n": "Spain: la hora punta."
+ },
+ {
+  "id": "ENG_CHUNK_0566",
+  "t": "Es difícil saber / Quién sabe",
+  "ex": "¿Va a estar listo para el viernes? Es difícil saber."
+ },
+ {
+  "id": "ENG_CHUNK_0567",
+  "t": "Que yo sepa, no",
+  "ex": "¿Hay reunión hoy? Que yo sepa, no.",
+  "n": "Fixed subjunctive: que yo sepa."
+ },
+ {
+  "id": "ENG_CHUNK_0568",
+  "t": "¡Claro! / ¡Por supuesto! / ¡Seguro!",
+  "ex": "¿Vienes a la fiesta? ¡Claro!",
+  "n": "Mexico: ¡Obvio! / ¡Va!"
+ },
+ {
+  "id": "ENG_CHUNK_0569",
+  "t": "Personalmente / A mí, en lo personal,",
+  "ex": "Personalmente, prefiero la playa a la montaña."
+ },
+ {
+  "id": "ENG_CHUNK_0570",
+  "t": "Tengo que decir que / La verdad es que",
+  "ex": "La verdad es que es la mejor pizza que he probado."
+ },
+ {
+  "id": "ENG_CHUNK_0571",
+  "t": "Créeme / Hazme caso",
+  "ex": "Hazme caso, no quieres manejar a esta hora."
+ },
+ {
+  "id": "ENG_CHUNK_0572",
+  "t": "Eso no es cierto / Eso no es verdad",
+  "ex": "Eso no es cierto, ¡te llamé dos veces!"
+ },
+ {
+  "id": "ENG_CHUNK_0573",
+  "t": "No estoy nada de acuerdo / Para nada",
+  "ex": "No estoy nada de acuerdo, la primera película era mucho mejor."
+ },
+ {
+  "id": "ENG_CHUNK_0574",
+  "t": "¡Ni loco/a! / ¡De ninguna manera!",
+  "ex": "¿Me prestas tu coche esta noche? ¡Ni loco!",
+  "n": "Mexico: ¡Ni de chiste! Spain: ¡Ni hablar!"
+ },
+ {
+  "id": "ENG_CHUNK_0575",
+  "t": "No lo había pensado",
+  "ex": "Ah, buen punto. No lo había pensado."
+ },
+ {
+  "id": "ENG_CHUNK_0576",
+  "t": "Tú ganas",
+  "ex": "Bueno, tú ganas, pedimos comida tailandesa."
+ },
+ {
+  "id": "ENG_CHUNK_0577",
+  "t": "Qué difícil / Esa sí está difícil",
+  "ex": "¿Mi película favorita? Uf, esa sí está difícil."
+ },
+ {
+  "id": "ENG_CHUNK_0578",
+  "t": "Déjame preguntarte algo / Oye, una pregunta",
+  "ex": "Déjame preguntarte algo. ¿De verdad te gusta tu trabajo?"
+ },
+ {
+  "id": "ENG_CHUNK_0579",
+  "t": "Y eso no es todo / Y para colmo",
+  "ex": "Perdí el autobús y, para colmo, se puso a llover a cántaros."
+ },
+ {
+  "id": "ENG_CHUNK_0580",
+  "t": "Lo curioso es que / Lo gracioso es que",
+  "ex": "Lo gracioso es que ya nos conocíamos y ninguno de los dos se acordaba."
+ },
+ {
+  "id": "ENG_CHUNK_0581",
+  "t": "Deséame suerte",
+  "ex": "Hoy conozco a sus papás. ¡Deséame suerte!"
+ },
+ {
+  "id": "ENG_CHUNK_0582",
+  "t": "Será la próxima / Suerte para la próxima",
+  "ex": "¿No ganaste? Bueno, será la próxima."
+ },
+ {
+  "id": "ENG_CHUNK_0583",
+  "t": "¡Que te mejores pronto!",
+  "ex": "Qué pena que estés enfermo. ¡Que te mejores pronto!",
+  "n": "\"Que\" + subjunctive = wish formula. Usted: ¡Que se mejore!"
+ },
+ {
+  "id": "ENG_CHUNK_0584",
+  "t": "¡El mundo es un pañuelo! / ¡Qué pequeño es el mundo!",
+  "ex": "¿Conoces a mi prima? ¡Qué pequeño es el mundo!"
+ },
+ {
+  "id": "ENG_CHUNK_0585",
+  "t": "No es lo mío",
+  "ex": "¿Karaoke? Gracias, pero no es lo mío."
+ },
+ {
+  "id": "ENG_CHUNK_0586",
+  "t": "¡No puede ser! / ¡Ay, no!",
+  "ex": "¡No puede ser! ¡Otro retraso!",
+  "n": "\"¡Ándale!\" (Mexico) and \"¡Dale!\" mean \"come on\" as encouragement, not protest."
+ },
+ {
+  "id": "ENG_CHUNK_0587",
+  "t": "¡Cómo pasa el tiempo! / El tiempo vuela",
+  "ex": "¿Tu hijo ya entra a la universidad? ¡Cómo pasa el tiempo!"
+ },
+ {
+  "id": "ENG_CHUNK_0588",
+  "t": "Más vale tarde que nunca",
+  "ex": "¡Por fin llamaste! Más vale tarde que nunca."
+ },
+ {
+  "id": "ENG_CHUNK_0589",
+  "t": "Es pan comido / Está facilísimo",
+  "ex": "No te preocupes por el examen, es pan comido."
+ },
+ {
+  "id": "ENG_CHUNK_0590",
+  "t": "¡Te lo dije!",
+  "ex": "¿Estaba cerrado el restaurante? ¡Te lo dije!"
+ },
+ {
+  "id": "ENG_CHUNK_0591",
+  "t": "si no / o si no",
+  "ex": "Sal ya, si no te va a agarrar el tráfico."
+ },
+ {
+  "id": "ENG_CHUNK_0592",
+  "t": "igual que / idéntico/a a",
+  "ex": "Es igualita a su mamá.",
+  "n": "Diminutive \"igualito/a\" is the natural spoken emphasis."
+ },
+ {
+  "id": "ENG_CHUNK_0593",
+  "t": "comparado con / en comparación con",
+  "ex": "Comparado con el invierno pasado, este ha estado bastante suave."
+ },
+ {
+  "id": "ENG_CHUNK_0594",
+  "t": "por ahora / de momento",
+  "ex": "Dejémoslo así por ahora."
+ },
+ {
+  "id": "ENG_CHUNK_0595",
+  "t": "para / con el fin de",
+  "ex": "Me levanto a las cinco para evitar el tráfico.",
+  "n": "Plain \"para\" + infinitive is the everyday form."
+ },
+ {
+  "id": "ENG_CHUNK_0596",
+  "t": "pase lo que pase",
+  "ex": "Ahí voy a estar, pase lo que pase.",
+  "n": "Fixed subjunctive formula (reduplicated): pase lo que pase, digan lo que digan."
+ },
+ {
+  "id": "ENG_CHUNK_0597",
+  "t": "solo si [indicativo] / siempre y cuando [subjuntivo]",
+  "ex": "Voy, pero solo si manejas tú.",
+  "n": "Subjunctive trigger: siempre y cuando; \"solo si\" takes indicative."
+ },
+ {
+  "id": "ENG_CHUNK_0598",
+  "t": "como resultado / por lo tanto / así que",
+  "ex": "Nos cancelaron el vuelo y, por lo tanto, dormimos en el aeropuerto.",
+  "n": "In speech \"así que\" is far more common."
+ },
+ {
+  "id": "ENG_CHUNK_0599",
+  "t": "al rato / después de un tiempo",
+  "ex": "Al principio fue raro, pero después de un tiempo me acostumbré.",
+  "n": "\"Al rato\" in Mexico can also mean \"later today\"."
+ },
+ {
+  "id": "ENG_CHUNK_0600",
+  "t": "tarde o temprano",
+  "ex": "Tarde o temprano vas a tener que decírselo."
+ }
+]

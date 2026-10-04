@@ -1,0 +1,502 @@
+[
+{
+"id": "ENG_CHUNK_0801",
+"level": "B2",
+"r": "counter-argument frame"
+},
+{
+"id": "ENG_CHUNK_0802",
+"level": "B2",
+"r": "concession before disagreeing"
+},
+{
+"id": "ENG_CHUNK_0803",
+"level": "B1",
+"r": "empathetic understanding frame"
+},
+{
+"id": "ENG_CHUNK_0804",
+"level": "B1",
+"r": "common perception check"
+},
+{
+"id": "ENG_CHUNK_0805",
+"level": "B2",
+"r": "failed-expectation stance"
+},
+{
+"id": "ENG_CHUNK_0806",
+"level": "B1",
+"r": "common inference phrase"
+},
+{
+"id": "ENG_CHUNK_0807",
+"level": "B2",
+"r": "anticipatory disbelief frame"
+},
+{
+"id": "ENG_CHUNK_0808",
+"level": "B1",
+"r": "incredulity question"
+},
+{
+"id": "ENG_CHUNK_0809",
+"level": "B2",
+"r": "polite register-sensitive correction"
+},
+{
+"id": "ENG_CHUNK_0810",
+"level": "B2",
+"r": "past modal idiom"
+},
+{
+"id": "ENG_CHUNK_0811",
+"level": "B2",
+"r": "inference check, subtle"
+},
+{
+"id": "ENG_CHUNK_0812",
+"level": "B1",
+"r": "growing suspicion frame"
+},
+{
+"id": "ENG_CHUNK_0813",
+"level": "B2",
+"r": "literary realization idiom"
+},
+{
+"id": "ENG_CHUNK_0814",
+"level": "B2",
+"r": "abstract nuance frame"
+},
+{
+"id": "ENG_CHUNK_0815",
+"level": "B2",
+"r": "conditional prediction hedge"
+},
+{
+"id": "ENG_CHUNK_0816",
+"level": "B2",
+"r": "certainty prediction idiom"
+},
+{
+"id": "ENG_CHUNK_0817",
+"level": "B2",
+"r": "participle clause prediction"
+},
+{
+"id": "ENG_CHUNK_0818",
+"level": "B2",
+"r": "idiomatic uncertainty"
+},
+{
+"id": "ENG_CHUNK_0819",
+"level": "B2",
+"r": "idiomatic unpredictability"
+},
+{
+"id": "ENG_CHUNK_0820",
+"level": "B2",
+"r": "challenging relevance"
+},
+{
+"id": "ENG_CHUNK_0821",
+"level": "B1",
+"r": "skepticism frame"
+},
+{
+"id": "ENG_CHUNK_0822",
+"level": "B2",
+"r": "sarcastic doubt frame"
+},
+{
+"id": "ENG_CHUNK_0823",
+"level": "B1",
+"r": "fallback suggestion"
+},
+{
+"id": "ENG_CHUNK_0824",
+"level": "B1",
+"r": "common resigned suggestion"
+},
+{
+"id": "ENG_CHUNK_0825",
+"level": "B2",
+"r": "self-disclaiming frame"
+},
+{
+"id": "ENG_CHUNK_0826",
+"level": "B1",
+"r": "soft recommendation"
+},
+{
+"id": "ENG_CHUNK_0827",
+"level": "B1",
+"r": "common recommendation idiom"
+},
+{
+"id": "ENG_CHUNK_0828",
+"level": "B2",
+"r": "condemnation frame"
+},
+{
+"id": "ENG_CHUNK_0829",
+"level": "B1",
+"r": "strong warning frame"
+},
+{
+"id": "ENG_CHUNK_0830",
+"level": "B2",
+"r": "emphatic, register-sensitive prohibition"
+},
+{
+"id": "ENG_CHUNK_0831",
+"level": "B1",
+"r": "advising against effort"
+},
+{
+"id": "ENG_CHUNK_0832",
+"level": "B1",
+"r": "hypothesis framing"
+},
+{
+"id": "ENG_CHUNK_0833",
+"level": "B2",
+"r": "confident generalization stance"
+},
+{
+"id": "ENG_CHUNK_0834",
+"level": "B1",
+"r": "tentative past-tense invitation"
+},
+{
+"id": "ENG_CHUNK_0835",
+"level": "B1",
+"r": "informal agreement to join"
+},
+{
+"id": "ENG_CHUNK_0836",
+"level": "B1",
+"r": "medical collocation"
+},
+{
+"id": "ENG_CHUNK_0837",
+"level": "B1",
+"r": "common medication term"
+},
+{
+"id": "ENG_CHUNK_0838",
+"level": "B1",
+"r": "exhaustion idiom"
+},
+{
+"id": "ENG_CHUNK_0839",
+"level": "B1",
+"r": "common recovery idiom"
+},
+{
+"id": "ENG_CHUNK_0840",
+"level": "B1",
+"r": "anger collocation"
+},
+{
+"id": "ENG_CHUNK_0841",
+"level": "B1",
+"r": "informal panic phrasal"
+},
+{
+"id": "ENG_CHUNK_0842",
+"level": "B1",
+"r": "common emotional collocation"
+},
+{
+"id": "ENG_CHUNK_0843",
+"level": "B1",
+"r": "everyday emotional collocation"
+},
+{
+"id": "ENG_CHUNK_0844",
+"level": "B1",
+"r": "exclusion phrase"
+},
+{
+"id": "ENG_CHUNK_0845",
+"level": "B1",
+"r": "sharing feelings phrasal"
+},
+{
+"id": "ENG_CHUNK_0846",
+"level": "B2",
+"r": "unburdening idiom"
+},
+{
+"id": "ENG_CHUNK_0847",
+"level": "B2",
+"r": "stress-release idiom"
+},
+{
+"id": "ENG_CHUNK_0848",
+"level": "B1",
+"r": "ambivalence collocation"
+},
+{
+"id": "ENG_CHUNK_0849",
+"level": "B2",
+"r": "anticipation idiom"
+},
+{
+"id": "ENG_CHUNK_0850",
+"level": "B1",
+"r": "common phrasal verb"
+},
+{
+"id": "ENG_CHUNK_0851",
+"level": "B1",
+"r": "admiration phrasal"
+},
+{
+"id": "ENG_CHUNK_0852",
+"level": "B1",
+"r": "tolerating phrasal verb"
+},
+{
+"id": "ENG_CHUNK_0853",
+"level": "B1",
+"r": "support phrasal"
+},
+{
+"id": "ENG_CHUNK_0854",
+"level": "B1",
+"r": "dispute collocation"
+},
+{
+"id": "ENG_CHUNK_0855",
+"level": "B2",
+"r": "agreement idiom"
+},
+{
+"id": "ENG_CHUNK_0856",
+"level": "B2",
+"r": "relationship idiom"
+},
+{
+"id": "ENG_CHUNK_0857",
+"level": "B1",
+"r": "drifting apart collocation"
+},
+{
+"id": "ENG_CHUNK_0858",
+"level": "B2",
+"r": "compromise idiom"
+},
+{
+"id": "ENG_CHUNK_0859",
+"level": "B1",
+"r": "relationship phrasal"
+},
+{
+"id": "ENG_CHUNK_0860",
+"level": "B1",
+"r": "life-stage phrasal"
+},
+{
+"id": "ENG_CHUNK_0861",
+"level": "B1",
+"r": "life-stage collocation"
+},
+{
+"id": "ENG_CHUNK_0862",
+"level": "B2",
+"r": "family resemblance phrasal"
+},
+{
+"id": "ENG_CHUNK_0863",
+"level": "B2",
+"r": "inherited-trait idiom"
+},
+{
+"id": "ENG_CHUNK_0864",
+"level": "B1",
+"r": "protective phrasal"
+},
+{
+"id": "ENG_CHUNK_0865",
+"level": "B2",
+"r": "persuasion frame"
+},
+{
+"id": "ENG_CHUNK_0866",
+"level": "B2",
+"r": "stance marker"
+},
+{
+"id": "ENG_CHUNK_0867",
+"level": "B1",
+"r": "common clarifying gambit"
+},
+{
+"id": "ENG_CHUNK_0868",
+"level": "B2",
+"r": "clarifying incredulity gambit"
+},
+{
+"id": "ENG_CHUNK_0869",
+"level": "B1",
+"r": "informal repair"
+},
+{
+"id": "ENG_CHUNK_0870",
+"level": "B2",
+"r": "rejecting overstatement"
+},
+{
+"id": "ENG_CHUNK_0871",
+"level": "B2",
+"r": "limited agreement"
+},
+{
+"id": "ENG_CHUNK_0872",
+"level": "B1",
+"r": "partial acceptance hedge"
+},
+{
+"id": "ENG_CHUNK_0873",
+"level": "B1",
+"r": "approximate confirmation"
+},
+{
+"id": "ENG_CHUNK_0874",
+"level": "B2",
+"r": "conceding criticism"
+},
+{
+"id": "ENG_CHUNK_0875",
+"level": "B2",
+"r": "concession in argument"
+},
+{
+"id": "ENG_CHUNK_0876",
+"level": "B2",
+"r": "requesting hearing, argument"
+},
+{
+"id": "ENG_CHUNK_0877",
+"level": "B2",
+"r": "discussion management"
+},
+{
+"id": "ENG_CHUNK_0878",
+"level": "B2",
+"r": "turn management idiom"
+},
+{
+"id": "ENG_CHUNK_0879",
+"level": "B2",
+"r": "meeting turn-handover"
+},
+{
+"id": "ENG_CHUNK_0880",
+"level": "B2",
+"r": "idiomatic approval"
+},
+{
+"id": "ENG_CHUNK_0881",
+"level": "B1",
+"r": "common weary exclamation"
+},
+{
+"id": "ENG_CHUNK_0882",
+"level": "B1",
+"r": "common agreement idiom"
+},
+{
+"id": "ENG_CHUNK_0883",
+"level": "B1",
+"r": "common idiom"
+},
+{
+"id": "ENG_CHUNK_0884",
+"level": "B1",
+"r": "common idiom"
+},
+{
+"id": "ENG_CHUNK_0885",
+"level": "B1",
+"r": "common welcoming idiom"
+},
+{
+"id": "ENG_CHUNK_0886",
+"level": "B2",
+"r": "culturally specific idiom"
+},
+{
+"id": "ENG_CHUNK_0887",
+"level": "B2",
+"r": "superstition idiom"
+},
+{
+"id": "ENG_CHUNK_0888",
+"level": "B2",
+"r": "formal ceremonial formula"
+},
+{
+"id": "ENG_CHUNK_0889",
+"level": "B2",
+"r": "toast response idiom"
+},
+{
+"id": "ENG_CHUNK_0890",
+"level": "B1",
+"r": "essential condolence formula"
+},
+{
+"id": "ENG_CHUNK_0891",
+"level": "B2",
+"r": "formal additive connector"
+},
+{
+"id": "ENG_CHUNK_0892",
+"level": "B1",
+"r": "reason-strengthening connector"
+},
+{
+"id": "ENG_CHUNK_0893",
+"level": "B2",
+"r": "complex exclusion connector"
+},
+{
+"id": "ENG_CHUNK_0894",
+"level": "B2",
+"r": "informal causal connector"
+},
+{
+"id": "ENG_CHUNK_0895",
+"level": "B1",
+"r": "common time-frame phrase"
+},
+{
+"id": "ENG_CHUNK_0896",
+"level": "B2",
+"r": "corrective stance connector"
+},
+{
+"id": "ENG_CHUNK_0897",
+"level": "B2",
+"r": "self-correction connector"
+},
+{
+"id": "ENG_CHUNK_0898",
+"level": "B1",
+"r": "common connector"
+},
+{
+"id": "ENG_CHUNK_0899",
+"level": "B1",
+"r": "condition-irrelevance connector"
+},
+{
+"id": "ENG_CHUNK_0900",
+"level": "B2",
+"r": "concessive contrast connector"
+}
+]

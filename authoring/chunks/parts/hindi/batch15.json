@@ -1,0 +1,391 @@
+[
+{
+"id": "ENG_CHUNK_1401",
+"t": "मुझे [संज्ञा] है",
+"tr": "mujhe [sangyaa] hai",
+"ex": "मुझे ज़ुकाम है।",
+"extr": "mujhe zukaam hai.",
+"n": "Illness takes को: मुझे / उसको बुख़ार है, never मेरे पास."
+},
+{
+"id": "ENG_CHUNK_1402",
+"t": "मेरे [अंग] में दर्द है / मेरा [अंग] दुख रहा है",
+"tr": "mere [ang] men dard hai / meraa [ang] dukh rahaa hai",
+"ex": "मेरे सिर में दर्द है।",
+"extr": "mere sir men dard hai."
+},
+{
+"id": "ENG_CHUNK_1403",
+"t": "मुझे [संज्ञा] की दवा चाहिए",
+"tr": "mujhe [sangyaa] kii davaa chaahie",
+"ex": "मुझे खाँसी की दवा चाहिए।",
+"extr": "mujhe khaansii kii davaa chaahie."
+},
+{
+"id": "ENG_CHUNK_1404",
+"t": "मेरा [संज्ञा] खो गया है",
+"tr": "meraa [sangyaa] kho gayaa hai",
+"ex": "मेरा पासपोर्ट खो गया है।",
+"extr": "meraa paasporT kho gayaa hai.",
+"n": "The thing is the subject (\"my passport got lost\"); feminine: मेरी चाबी खो गई है."
+},
+{
+"id": "ENG_CHUNK_1405",
+"t": "किसी ने मेरा [संज्ञा] चुरा लिया",
+"tr": "kisii ne meraa [sangyaa] churaa liyaa",
+"ex": "ट्रेन में किसी ने मेरा बटुआ चुरा लिया।",
+"extr": "Tren men kisii ne meraa baTuaa churaa liyaa.",
+"n": "Also मेरा [संज्ञा] चोरी हो गया (\"got stolen\")."
+},
+{
+"id": "ENG_CHUNK_1406",
+"t": "मुझे [संज्ञा] पसंद है",
+"tr": "mujhe [sangyaa] pasand hai",
+"ex": "मुझे पिज़्ज़ा पसंद है।",
+"extr": "mujhe pizzaa pasand hai.",
+"n": "The liker takes मुझे; plural object: पसंद हैं."
+},
+{
+"id": "ENG_CHUNK_1407",
+"t": "मुझे [संज्ञा] में दिलचस्पी है",
+"tr": "mujhe [sangyaa] men dilchaspii hai",
+"ex": "मुझे इतिहास में दिलचस्पी है।",
+"extr": "mujhe itihaas men dilchaspii hai.",
+"n": "Colloquially also मुझे [संज्ञा] का शौक़ है (\"I'm into\")."
+},
+{
+"id": "ENG_CHUNK_1408",
+"t": "मुझे [संज्ञा] पसंद नहीं",
+"tr": "mujhe [sangyaa] pasand nahiin",
+"ex": "मुझे कॉफ़ी पसंद नहीं।",
+"extr": "mujhe kaufii pasand nahiin.",
+"n": "है is usually dropped after नहीं."
+},
+{
+"id": "ENG_CHUNK_1409",
+"t": "क्या आपको [संज्ञा] पसंद है?",
+"tr": "kyaa aapko [sangyaa] pasand hai?",
+"ex": "क्या आपको इटालियन खाना पसंद है?",
+"extr": "kyaa aapko iTaaliyan khaanaa pasand hai?"
+},
+{
+"id": "ENG_CHUNK_1410",
+"t": "तुम्हारा फ़ेवरेट [संज्ञा] कौन सा है?",
+"tr": "tumhaaraa feveraT [sangyaa] kaun saa hai?",
+"ex": "तुम्हारा फ़ेवरेट रंग कौन सा है?",
+"extr": "tumhaaraa feveraT rang kaun saa hai?",
+"n": "Everyday speech uses फ़ेवरेट; formal: सबसे पसंदीदा. कौन सा, not क्या."
+},
+{
+"id": "ENG_CHUNK_1411",
+"t": "मेरा फ़ेवरेट [संज्ञा] [संज्ञा] है",
+"tr": "meraa feveraT [sangyaa] [sangyaa] hai",
+"ex": "मेरा फ़ेवरेट रंग नीला है।",
+"extr": "meraa feveraT rang niilaa hai."
+},
+{
+"id": "ENG_CHUNK_1412",
+"t": "मैं [क्रिया]ना चाहता हूँ / मुझे [क्रिया]ना है",
+"tr": "main [kriyaa]naa chaahtaa huun / mujhe [kriyaa]naa hai",
+"ex": "मुझे घर जाना है।",
+"extr": "mujhe ghar jaanaa hai.",
+"n": "मुझे ...ना है is the everyday \"I want to\"; चाहता हूँ sounds more deliberate."
+},
+{
+"id": "ENG_CHUNK_1413",
+"t": "मैं [क्रिया]ना चाहूँगा",
+"tr": "main [kriyaa]naa chaahuungaa",
+"ex": "मैं एक टेबल बुक करना चाहूँगा।",
+"extr": "main ek Tebal buk karnaa chaahuungaa.",
+"n": "Future चाहूँगा softens like English \"I'd like\". Women: चाहूँगी."
+},
+{
+"id": "ENG_CHUNK_1414",
+"t": "मुझे [क्रिया]ना है",
+"tr": "mujhe [kriyaa]naa hai",
+"ex": "मुझे बैंक जाना है।",
+"extr": "mujhe baink jaanaa hai.",
+"n": "Stronger need: मुझे [क्रिया]ना ही होगा."
+},
+{
+"id": "ENG_CHUNK_1415",
+"t": "मुझे [क्रिया]ना पड़ेगा / पड़ता है",
+"tr": "mujhe [kriyaa]naa paRegaa / paRtaa hai",
+"ex": "कल मुझे काम करना पड़ेगा।",
+"extr": "kal mujhe kaam karnaa paRegaa.",
+"n": "पड़ना = obligation you'd rather avoid; the subject takes मुझे."
+},
+{
+"id": "ENG_CHUNK_1416",
+"t": "मुझे [संज्ञा] चाहिए",
+"tr": "mujhe [sangyaa] chaahie",
+"ex": "मुझे टैक्सी चाहिए।",
+"extr": "mujhe Taiksii chaahie."
+},
+{
+"id": "ENG_CHUNK_1417",
+"t": "क्या मैं [क्रिया] सकता हूँ?",
+"tr": "kyaa main [kriyaa] saktaa huun?",
+"ex": "क्या मैं यहाँ बैठ सकता हूँ?",
+"extr": "kyaa main yahaan baiTh saktaa huun?",
+"n": "The subjunctive मैं यहाँ बैठ जाऊँ? is softer and very common."
+},
+{
+"id": "ENG_CHUNK_1418",
+"t": "ज़रा [क्रिया] दीजिए / क्या आप [क्रिया] सकते हैं?",
+"tr": "zaraa [kriyaa] diijie / kyaa aap [kriyaa] sakte hain?",
+"ex": "ज़रा मेरी मदद कर दीजिए।",
+"extr": "zaraa merii madad kar diijie.",
+"n": "ज़रा + compound verb with दीजिए is the polite request; सकते हैं? can sound like asking about ability."
+},
+{
+"id": "ENG_CHUNK_1419",
+"t": "मैं [क्रिया] नहीं सकता / मुझे [क्रिया]ना नहीं आता",
+"tr": "main [kriyaa] nahiin saktaa / mujhe [kriyaa]naa nahiin aataa",
+"ex": "मुझे तैरना नहीं आता।",
+"extr": "mujhe tairnaa nahiin aataa.",
+"n": "For skills use मुझे ...ना नहीं आता (\"doesn't come to me\"); सकता is for circumstances."
+},
+{
+"id": "ENG_CHUNK_1420",
+"t": "चलो [क्रिया]ते हैं",
+"tr": "chalo [kriyaa]te hain",
+"ex": "चलो बीच चलते हैं।",
+"extr": "chalo biich chalte hain."
+},
+{
+"id": "ENG_CHUNK_1421",
+"t": "[क्रिया]ना मत भूलना",
+"tr": "[kriyaa]naa mat bhuulnaa",
+"ex": "चाबियाँ लेना मत भूलना।",
+"extr": "chaabiyaan lenaa mat bhuulnaa.",
+"n": "Also the positive: चाबियाँ ले लेना, याद से!"
+},
+{
+"id": "ENG_CHUNK_1422",
+"t": "तुम कितनी बार [क्रिया]ते हो?",
+"tr": "tum kitnii baar [kriyaa]te ho?",
+"ex": "तुम हफ़्ते में कितनी बार जिम जाते हो?",
+"extr": "tum hafte men kitnii baar jim jaate ho?",
+"n": "Hindi usually adds the frame: हफ़्ते में / महीने में कितनी बार."
+},
+{
+"id": "ENG_CHUNK_1423",
+"t": "[समय] को आप आम तौर पर क्या करते हैं?",
+"tr": "[samay] ko aap aam taur par kyaa karte hain?",
+"ex": "वीकेंड पर तुम आम तौर पर क्या करते हो?",
+"extr": "viikenD par tum aam taur par kyaa karte ho?",
+"n": "Days take को (शनिवार को), weekends take पर."
+},
+{
+"id": "ENG_CHUNK_1424",
+"t": "[समय] क्या कर रहे हो?",
+"tr": "[samay] kyaa kar rahe ho?",
+"ex": "इस वीकेंड क्या कर रहे हो?",
+"extr": "is viikenD kyaa kar rahe ho?",
+"n": "Also: [समय] का क्या प्लान है?"
+},
+{
+"id": "ENG_CHUNK_1425",
+"t": "मैं [क्रिया]ने वाला हूँ / मेरा [क्रिया]ने का प्लान है",
+"tr": "main [kriyaa]ne vaalaa huun / meraa [kriyaa]ne kaa plaan hai",
+"ex": "इस वीकेंड मैं बुआ से मिलने जा रहा हूँ।",
+"extr": "is viikenD main buaa se milne jaa rahaa huun.",
+"n": "For near plans the continuous (जा रहा हूँ) works like English \"going to\"."
+},
+{
+"id": "ENG_CHUNK_1426",
+"t": "[समय] बजे [जगह] पर मिलते हैं",
+"tr": "[samay] baje [jagah] par milte hain",
+"ex": "छह बजे कैफ़े पर मिलते हैं।",
+"extr": "chhah baje kaife par milte hain.",
+"n": "Hindi order: time before place."
+},
+{
+"id": "ENG_CHUNK_1427",
+"t": "क्या हम [समय] मिल सकते हैं?",
+"tr": "kyaa ham [samay] mil sakte hain?",
+"ex": "क्या हम कल मिल सकते हैं?",
+"extr": "kyaa ham kal mil sakte hain?",
+"n": "No word for \"instead\"; add उसकी जगह only if needed. Also: कल मिलें?"
+},
+{
+"id": "ENG_CHUNK_1428",
+"t": "सॉरी, मैं [दिन] को नहीं आ पाऊँगा",
+"tr": "saurii, main [din] ko nahiin aa paauungaa",
+"ex": "सॉरी, मैं शनिवार को नहीं आ पाऊँगा।",
+"extr": "saurii, main shanivaar ko nahiin aa paauungaa.",
+"n": "पाना (\"manage\") makes refusals softer than नहीं आ सकता."
+},
+{
+"id": "ENG_CHUNK_1429",
+"t": "मैं [दिन] को बिज़ी हूँ",
+"tr": "main [din] ko bizii huun",
+"ex": "मैं सोमवार को बिज़ी हूँ। मंगलवार कैसा रहेगा?",
+"extr": "main somvaar ko bizii huun. mangalvaar kaisaa rahegaa?",
+"n": "बिज़ी is standard speech; व्यस्त is bookish."
+},
+{
+"id": "ENG_CHUNK_1430",
+"t": "[समय] आपके लिए ठीक रहेगा?",
+"tr": "[samay] aapke lie Thiik rahegaa?",
+"ex": "छह बजे तुम्हारे लिए ठीक रहेगा?",
+"extr": "chhah baje tumhaare lie Thiik rahegaa?",
+"n": "Also: [समय] चलेगा?"
+},
+{
+"id": "ENG_CHUNK_1431",
+"t": "मुझे [संख्या] मिनट की देर हो जाएगी",
+"tr": "mujhe [sankhyaa] minaT kii der ho jaaegii",
+"ex": "सॉरी, मुझे दस मिनट की देर हो जाएगी।",
+"extr": "saurii, mujhe das minaT kii der ho jaaegii.",
+"n": "Also informal: दस मिनट लेट हो जाऊँगा."
+},
+{
+"id": "ENG_CHUNK_1432",
+"t": "आज मुझे [विशेषण] लग रहा है / आज मैं [विशेषण] महसूस कर रहा हूँ",
+"tr": "aaj mujhe [visheshan] lag rahaa hai / aaj main [visheshan] mahsuus kar rahaa huun",
+"ex": "आज मैं बहुत थका हुआ हूँ।",
+"extr": "aaj main bahut thakaa huaa huun.",
+"n": "Most feelings are just stated with हूँ; महसूस करना is formal."
+},
+{
+"id": "ENG_CHUNK_1433",
+"t": "आपकी [व्यक्ति] कैसी हैं? / आपके [व्यक्ति] कैसे हैं?",
+"tr": "aapkii [vyakti] kaisii hain? / aapke [vyakti] kaise hain?",
+"ex": "आपकी मम्मी कैसी हैं?",
+"extr": "aapkii mammii kaisii hain?",
+"n": "Elders get respectful plural (हैं). Asking after family is expected small talk."
+},
+{
+"id": "ENG_CHUNK_1434",
+"t": "[व्यक्ति] कैसा है? / [व्यक्ति] कैसे हैं?",
+"tr": "[vyakti] kaisaa hai? / [vyakti] kaise hain?",
+"ex": "तुम्हारे नए टीचर कैसे हैं?",
+"extr": "tumhaare nae Tiichar kaise hain?",
+"n": "Same question as \"how is X?\"; context gives \"what's X like\". Also [व्यक्ति] किस तरह का है?"
+},
+{
+"id": "ENG_CHUNK_1435",
+"t": "आज [विशेषण] है",
+"tr": "aaj [visheshan] hai",
+"ex": "आज ठंड है।",
+"extr": "aaj ThanD hai.",
+"n": "Weather words are often nouns: ठंड है (cold), गर्मी है (hot), धूप है (sunny)."
+},
+{
+"id": "ENG_CHUNK_1436",
+"t": "[जगह] में मौसम कैसा है?",
+"tr": "[jagah] men mausam kaisaa hai?",
+"ex": "टोरंटो में मौसम कैसा है?",
+"extr": "Toranto men mausam kaisaa hai?"
+},
+{
+"id": "ENG_CHUNK_1437",
+"t": "[समय] बारिश होगी",
+"tr": "[samay] baarish hogii",
+"ex": "आज दोपहर को बारिश होगी।",
+"extr": "aaj dopahar ko baarish hogii.",
+"n": "Also for forecasts: बारिश होने वाली है (\"is about to rain\")."
+},
+{
+"id": "ENG_CHUNK_1438",
+"t": "हेलो, मैं [नाम] बोल रहा हूँ",
+"tr": "helo, main [naam] bol rahaa huun",
+"ex": "हेलो, मैं मारिया बोल रही हूँ।",
+"extr": "helo, main maariyaa bol rahii huun.",
+"n": "The standard phone opener: \"I, X, am speaking\"."
+},
+{
+"id": "ENG_CHUNK_1439",
+"t": "मैं आपको [समय] फ़ोन करूँगा",
+"tr": "main aapko [samay] fon karuungaa",
+"ex": "मैं तुम्हें कल फ़ोन करूँगा।",
+"extr": "main tumhen kal fon karuungaa."
+},
+{
+"id": "ENG_CHUNK_1440",
+"t": "[वाक्य] तो मैसेज कर देना",
+"tr": "[vaakya] to maisej kar denaa",
+"ex": "घर पहुँच जाओ तो मैसेज कर देना।",
+"extr": "ghar pahunch jaao to maisej kar denaa.",
+"n": "\"When\" here is conditional: subjunctive (पहुँच जाओ) + तो. पहुँचकर मैसेज करना also works."
+},
+{
+"id": "ENG_CHUNK_1441",
+"t": "मुझे लगता है [वाक्य]",
+"tr": "mujhe lagtaa hai [vaakya]",
+"ex": "मुझे लगता है ये अच्छा आइडिया है।",
+"extr": "mujhe lagtaa hai ye achchhaa aaiDiyaa hai.",
+"n": "कि after लगता है is optional in speech."
+},
+{
+"id": "ENG_CHUNK_1442",
+"t": "मैं [व्यक्ति] से सहमत हूँ / [व्यक्ति] सही कह रहे हैं",
+"tr": "main [vyakti] se sahmat huun / [vyakti] sahii kah rahe hain",
+"ex": "तुम सही कह रहे हो।",
+"extr": "tum sahii kah rahe ho.",
+"n": "सहमत हूँ is formal; in conversation people say सही कहा / सही बात है."
+},
+{
+"id": "ENG_CHUNK_1443",
+"t": "[संज्ञा] [संज्ञा] से अच्छा है / बेहतर है",
+"tr": "[sangyaa] [sangyaa] se achchhaa hai / behtar hai",
+"ex": "चाय कॉफ़ी से अच्छी है।",
+"extr": "chaay kaufii se achchhii hai.",
+"n": "Comparison = से + adjective; अच्छा agrees with the first noun (चाय → अच्छी)."
+},
+{
+"id": "ENG_CHUNK_1444",
+"t": "मैं कभी [जगह] नहीं गया",
+"tr": "main kabhii [jagah] nahiin gayaa",
+"ex": "मैं कभी ऑस्ट्रेलिया नहीं गया।",
+"extr": "main kabhii austreliyaa nahiin gayaa.",
+"n": "Women: नहीं गई. No postposition before the place."
+},
+{
+"id": "ENG_CHUNK_1445",
+"t": "पिछले [समय], मैंने [क्रिया]",
+"tr": "pichhle [samay], mainne [kriyaa]",
+"ex": "पिछले वीकेंड मैं दादा-दादी से मिलने गया।",
+"extr": "pichhle viikenD main daadaa-daadii se milne gayaa.",
+"n": "Transitive past verbs need ने (मैंने देखा); intransitive ones don't (मैं गया)."
+},
+{
+"id": "ENG_CHUNK_1446",
+"t": "आपका [संज्ञा] अच्छा रहा?",
+"tr": "aapkaa [sangyaa] achchhaa rahaa?",
+"ex": "तुम्हारा वीकेंड अच्छा रहा?",
+"extr": "tumhaaraa viikenD achchhaa rahaa?",
+"n": "रहा (\"remained\") is the natural verb for how a period went."
+},
+{
+"id": "ENG_CHUNK_1447",
+"t": "आपका [संज्ञा] कैसा रहा?",
+"tr": "aapkaa [sangyaa] kaisaa rahaa?",
+"ex": "तुम्हारा वीकेंड कैसा रहा?",
+"extr": "tumhaaraa viikenD kaisaa rahaa?",
+"n": "Feminine event: तुम्हारी छुट्टी कैसी रही?"
+},
+{
+"id": "ENG_CHUNK_1448",
+"t": "मैं अभी [क्रिया] रहा हूँ",
+"tr": "main abhii [kriyaa] rahaa huun",
+"ex": "मैं अभी काम कर रहा हूँ।",
+"extr": "main abhii kaam kar rahaa huun."
+},
+{
+"id": "ENG_CHUNK_1449",
+"t": "माफ़ कीजिए, लेकिन [वाक्य]",
+"tr": "maaf kiijie, lekin [vaakya]",
+"ex": "माफ़ कीजिए, लेकिन मैं आपकी मदद नहीं कर पाऊँगा।",
+"extr": "maaf kiijie, lekin main aapkii madad nahiin kar paauungaa."
+},
+{
+"id": "ENG_CHUNK_1450",
+"t": "[दिन] को मिलते हैं",
+"tr": "[din] ko milte hain",
+"ex": "सोमवार को मिलते हैं!",
+"extr": "somvaar ko milte hain!"
+}
+]

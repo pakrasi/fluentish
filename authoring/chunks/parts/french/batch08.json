@@ -1,0 +1,540 @@
+[
+ {
+  "id": "ENG_CHUNK_0701",
+  "t": "Je vais essayer de [verbe]",
+  "ex": "Je vais essayer d'y être pour sept heures, mais je te promets rien."
+ },
+ {
+  "id": "ENG_CHUNK_0702",
+  "t": "Je te / vous dis quand [proposition]",
+  "ex": "Je t'envoie un message quand je suis rentré.",
+  "n": "After quand, French uses future for future time (quand je serai là) where English uses present; spoken speech often keeps the present."
+ },
+ {
+  "id": "ENG_CHUNK_0703",
+  "t": "Je m'assure que [proposition] / Je veille à ce que [proposition]",
+  "ex": "T'inquiète, je m'assure que le chien ait à manger.",
+  "n": "veiller à ce que always takes the subjunctive; s'assurer que wavers, subjunctive common in speech."
+ },
+ {
+  "id": "ENG_CHUNK_0704",
+  "t": "Comment ça s'est passé, [nom] ?",
+  "ex": "Salut, alors, comment ça s'est passé, l'entretien ?",
+  "n": "Spoken French puts the topic at the end: Ça s'est bien passé, ton exam ?"
+ },
+ {
+  "id": "ENG_CHUNK_0705",
+  "t": "Vous avez eu le temps de [verbe] ?",
+  "ex": "Vous avez eu le temps de regarder mon mail ?"
+ },
+ {
+  "id": "ENG_CHUNK_0706",
+  "t": "Il faut combien de temps pour [verbe] ?",
+  "ex": "Il faut combien de temps pour aller à l'aéroport d'ici ?",
+  "n": "Also: Ça prend combien de temps pour...?"
+ },
+ {
+  "id": "ENG_CHUNK_0707",
+  "t": "Ça m'étonne que [proposition au subjonctif] / Je suis surpris que [proposition]",
+  "ex": "Ça m'étonne que tu sois encore debout.",
+  "n": "Subjunctive trigger: être surpris que / ça m'étonne que + subjunctive."
+ },
+ {
+  "id": "ENG_CHUNK_0708",
+  "t": "D'après [nom], [proposition] / Selon [nom], [proposition]",
+  "ex": "D'après la météo, il va neiger demain."
+ },
+ {
+  "id": "ENG_CHUNK_0709",
+  "t": "On dit que [proposition] / Il paraît que [proposition]",
+  "ex": "Il paraît que c'est la meilleure pizza de la ville.",
+  "n": "Il paraît que is the everyday hearsay marker; takes the indicative."
+ },
+ {
+  "id": "ENG_CHUNK_0710",
+  "t": "C'est un peu comme [nom] / C'est genre [nom]",
+  "ex": "C'est un peu comme un sandwich, mais avec du riz à la place du pain."
+ },
+ {
+  "id": "ENG_CHUNK_0711",
+  "t": "[nom] me rappelle [nom] / [nom] me fait penser à [nom]",
+  "ex": "Cette chanson me rappelle mes années lycée.",
+  "n": "rappelle takes a direct object in speech: ça me rappelle mon enfance."
+ },
+ {
+  "id": "ENG_CHUNK_0712",
+  "t": "[nom] n'est pas aussi [adjectif] que [nom] / [nom] est moins [adjectif] que [nom]",
+  "ex": "Cet appart n'est pas aussi grand que l'ancien.",
+  "n": "Formal negative comparison uses si: pas si grand que."
+ },
+ {
+  "id": "ENG_CHUNK_0713",
+  "t": "Quelle est la différence entre [nom] et [nom] ? / C'est quoi la différence entre [nom] et [nom] ?",
+  "ex": "C'est quoi la différence entre un latte et un flat white ?"
+ },
+ {
+  "id": "ENG_CHUNK_0714",
+  "t": "Il fait trop [adjectif] pour [verbe] / C'est trop [adjectif] pour [verbe]",
+  "ex": "Il fait trop froid pour aller à la plage aujourd'hui.",
+  "n": "Weather takes il fait: il fait froid, not *c'est froid."
+ },
+ {
+  "id": "ENG_CHUNK_0715",
+  "t": "Ce n'est pas assez [adjectif] pour [verbe] / Il ne fait pas encore assez [adjectif] pour [verbe]",
+  "ex": "Il ne fait pas encore assez chaud pour manger dehors.",
+  "n": "assez goes before the adjective, unlike English 'enough'."
+ },
+ {
+  "id": "ENG_CHUNK_0716",
+  "t": "C'était un(e) tellement [adjectif] [nom] / C'était vraiment un(e) [nom] [adjectif]",
+  "ex": "C'était vraiment un beau mariage.",
+  "n": "'Such a' = un tel / une telle in writing; speech says tellement or vraiment."
+ },
+ {
+  "id": "ENG_CHUNK_0717",
+  "t": "J'ai passé un super moment à [verbe]",
+  "ex": "J'ai passé un super moment avec vous hier soir.",
+  "n": "à + infinitive, not a gerund: *en traînant."
+ },
+ {
+  "id": "ENG_CHUNK_0718",
+  "t": "Il t'arrive de [verbe] ? / Il vous arrive de [verbe] ?",
+  "ex": "Il t'arrive d'aller courir le matin ?",
+  "n": "Il t'arrive de... is the natural 'do you ever'."
+ },
+ {
+  "id": "ENG_CHUNK_0719",
+  "t": "[verbe au passé] me manque / Ça me manque de [verbe]",
+  "ex": "Ça me manque d'habiter près de la mer.",
+  "n": "Reversed subject: X me manque = I miss X. Tu me manques = I miss you."
+ },
+ {
+  "id": "ENG_CHUNK_0720",
+  "t": "J'ai toujours voulu [verbe] / J'ai toujours rêvé de [verbe]",
+  "ex": "J'ai toujours voulu apprendre à surfer."
+ },
+ {
+  "id": "ENG_CHUNK_0721",
+  "t": "Ce serait bien de [verbe] / Ça serait sympa de [verbe]",
+  "ex": "Ça serait sympa de partir un week-end.",
+  "n": "Ce serait bien que + subjunctive if a subject follows: ce serait bien qu'on parte."
+ },
+ {
+  "id": "ENG_CHUNK_0722",
+  "t": "Si j'avais [nom], je [verbe au conditionnel]",
+  "ex": "Si j'avais plus de temps, je prendrais un cours de cuisine.",
+  "n": "si + imparfait, main clause conditionnel. Never conditionnel after si."
+ },
+ {
+  "id": "ENG_CHUNK_0723",
+  "t": "J'aurais bien besoin de [nom] / Je tuerais pour [nom]",
+  "ex": "J'aurais bien besoin d'un café, là."
+ },
+ {
+  "id": "ENG_CHUNK_0724",
+  "t": "Tu devrais peut-être [verbe] / Vous devriez peut-être [verbe]",
+  "ex": "Il va pleuvoir des cordes plus tard, tu devrais peut-être prendre un parapluie."
+ },
+ {
+  "id": "ENG_CHUNK_0725",
+  "t": "Tu ferais mieux de [verbe] / Vous feriez mieux de [verbe]",
+  "ex": "Franchement, tu ferais mieux de prendre le train."
+ },
+ {
+  "id": "ENG_CHUNK_0726",
+  "t": "Est-ce que vous pourriez éventuellement [verbe] ? / Ce serait possible de [verbe] ?",
+  "ex": "Est-ce que tu pourrais éventuellement venir me chercher à l'aéroport ?",
+  "n": "éventuellement = possibly, not 'eventually' (finalement): false friend."
+ },
+ {
+  "id": "ENG_CHUNK_0727",
+  "t": "Je vous serais reconnaissant de [verbe]",
+  "ex": "Je vous serais reconnaissant de baisser la musique après vingt-deux heures.",
+  "n": "Common alternative: Merci de bien vouloir + infinitive (firm, written notices)."
+ },
+ {
+  "id": "ENG_CHUNK_0728",
+  "t": "C'est pas comme si [proposition à l'imparfait]",
+  "ex": "Prends-le. C'est pas comme si j'allais m'en servir.",
+  "n": "c'est pas comme si takes the imparfait, not the subjunctive."
+ },
+ {
+  "id": "ENG_CHUNK_0729",
+  "t": "Ce n'est pas tous les jours que [proposition]",
+  "ex": "On fête ça ! C'est pas tous les jours qu'on a quarante ans."
+ },
+ {
+  "id": "ENG_CHUNK_0730",
+  "t": "Pour ce qui est de [nom], [proposition] / Question [nom], [proposition]",
+  "ex": "Question cuisine, c'est mon père l'expert.",
+  "n": "Question + noun with no article is very spoken."
+ },
+ {
+  "id": "ENG_CHUNK_0731",
+  "t": "En parlant de [nom], [proposition]",
+  "ex": "En parlant de bouffe, quelqu'un d'autre a faim ?"
+ },
+ {
+  "id": "ENG_CHUNK_0732",
+  "t": "Je dois avouer que [proposition] / Il faut avouer que [proposition]",
+  "ex": "Je dois avouer que j'étais un peu nerveux."
+ },
+ {
+  "id": "ENG_CHUNK_0733",
+  "t": "Si je te demande ça, c'est que [proposition]",
+  "ex": "Si je te demande ça, c'est que j'ai besoin qu'on me dépose samedi.",
+  "n": "Si..., c'est que is the natural French way to give your reason."
+ },
+ {
+  "id": "ENG_CHUNK_0734",
+  "t": "Je ne dis pas que [proposition au subjonctif], mais [proposition]",
+  "ex": "Je dis pas que c'est mauvais, mais ça pourrait être mieux.",
+  "n": "Subjunctive trigger: je ne dis pas que ce soit is formal; speech mostly keeps the indicative."
+ },
+ {
+  "id": "ENG_CHUNK_0735",
+  "t": "C'est pas une question de [nom], c'est une question de [nom]",
+  "ex": "C'est pas une question d'argent, c'est une question de respect."
+ },
+ {
+  "id": "ENG_CHUNK_0736",
+  "t": "prendre en charge [nom] / accepter [nom]",
+  "ex": "Je ne peux pas prendre plus de boulot ce mois-ci."
+ },
+ {
+  "id": "ENG_CHUNK_0737",
+  "t": "se faire porter pâle / appeler pour dire qu'on est malade",
+  "ex": "Je me suis réveillé avec de la fièvre, alors je me suis mis en arrêt maladie.",
+  "n": "In France you normally need an arrêt maladie from a doctor; se faire porter pâle is the slangy term."
+ },
+ {
+  "id": "ENG_CHUNK_0738",
+  "t": "tenir un commerce / gérer une entreprise",
+  "ex": "Mes parents tiennent un commerce de meubles d'occasion."
+ },
+ {
+  "id": "ENG_CHUNK_0739",
+  "t": "gagner sa vie",
+  "ex": "Il gagne sa vie en réparant de vieux vélos."
+ },
+ {
+  "id": "ENG_CHUNK_0740",
+  "t": "être sur la même longueur d'onde / être d'accord sur [nom]",
+  "ex": "Avant de commencer, vérifions qu'on est bien sur la même longueur d'onde."
+ },
+ {
+  "id": "ENG_CHUNK_0741",
+  "t": "bâcler le travail / faire les choses à l'économie",
+  "ex": "Ils ont bâclé la rénovation, et maintenant le toit fuit."
+ },
+ {
+  "id": "ENG_CHUNK_0742",
+  "t": "connaître [nom]",
+  "ex": "Tu connais ce coin de la ville ?",
+  "n": "No 'familiar' construction needed: connaître does it. Être familier avec is anglicism."
+ },
+ {
+  "id": "ENG_CHUNK_0743",
+  "t": "être au courant de [nom] / savoir [nom]",
+  "ex": "Pardon, je n'étais pas au courant des frais supplémentaires."
+ },
+ {
+  "id": "ENG_CHUNK_0744",
+  "t": "un emploi du temps chargé / un planning serré",
+  "ex": "Désolé, j'ai un emploi du temps très chargé aujourd'hui."
+ },
+ {
+  "id": "ENG_CHUNK_0745",
+  "t": "au dernier moment / à la dernière minute",
+  "ex": "Merci d'être venu au pied levé.",
+  "n": "au pied levé = at short notice, without preparation."
+ },
+ {
+  "id": "ENG_CHUNK_0746",
+  "t": "prendre du temps pour [nom] / trouver du temps pour [nom]",
+  "ex": "Il faut savoir prendre du temps pour soi de temps en temps."
+ },
+ {
+  "id": "ENG_CHUNK_0747",
+  "t": "ne pas voir le temps passer",
+  "ex": "Désolé pour le retard, j'ai complètement perdu la notion du temps.",
+  "n": "Also very common: j'ai pas vu l'heure."
+ },
+ {
+  "id": "ENG_CHUNK_0748",
+  "t": "tuer le temps",
+  "ex": "On a tué le temps à l'aéroport en faisant les boutiques."
+ },
+ {
+  "id": "ENG_CHUNK_0749",
+  "t": "improviser / voir sur le moment",
+  "ex": "On prévoit pas trop, on verra sur le moment.",
+  "n": "Also: on verra bien, on avisera."
+ },
+ {
+  "id": "ENG_CHUNK_0750",
+  "t": "tenir compagnie à [personne]",
+  "ex": "Je reste te tenir compagnie jusqu'à ce que le bus arrive.",
+  "n": "jusqu'à ce que + subjunctive."
+ },
+ {
+  "id": "ENG_CHUNK_0751",
+  "t": "faire attention à son budget / avoir un budget serré",
+  "ex": "On fait attention à notre budget ce mois-ci, alors on mange à la maison."
+ },
+ {
+  "id": "ENG_CHUNK_0752",
+  "t": "coûter une fortune / coûter les yeux de la tête",
+  "ex": "Réparer la voiture, ça va coûter les yeux de la tête."
+ },
+ {
+  "id": "ENG_CHUNK_0753",
+  "t": "joindre les deux bouts",
+  "ex": "Ils cumulent deux boulots chacun juste pour joindre les deux bouts."
+ },
+ {
+  "id": "ENG_CHUNK_0754",
+  "t": "rembourser [nom] / finir de rembourser [nom]",
+  "ex": "J'ai enfin fini de rembourser mon prêt étudiant !"
+ },
+ {
+  "id": "ENG_CHUNK_0755",
+  "t": "avoir des dettes / être endetté",
+  "ex": "Je ne veux pas être endetté toute ma vie."
+ },
+ {
+  "id": "ENG_CHUNK_0756",
+  "t": "réduire [nom] / limiter [nom]",
+  "ex": "J'essaie de réduire le sucre.",
+  "n": "Also: diminuer / lever le pied sur (informal)."
+ },
+ {
+  "id": "ENG_CHUNK_0757",
+  "t": "comparer les prix / faire le tour",
+  "ex": "N'accepte pas la première offre, compare un peu les prix."
+ },
+ {
+  "id": "ENG_CHUNK_0758",
+  "t": "couver [nom]",
+  "ex": "Je crois que je couve un rhume."
+ },
+ {
+  "id": "ENG_CHUNK_0759",
+  "t": "ne pas être dans son assiette / être patraque",
+  "ex": "Je suis un peu patraque, je reste à la maison."
+ },
+ {
+  "id": "ENG_CHUNK_0760",
+  "t": "prendre du poids / grossir",
+  "ex": "J'ai pris du poids depuis que j'ai arrêté la salle."
+ },
+ {
+  "id": "ENG_CHUNK_0761",
+  "t": "vomir / gerber",
+  "ex": "Le bébé a vomi partout sur mon t-shirt.",
+  "n": "gerber is vulgar slang; vomir is fine in all registers."
+ },
+ {
+  "id": "ENG_CHUNK_0762",
+  "t": "s'évanouir / tomber dans les pommes",
+  "ex": "Il faisait tellement chaud qu'un mec dans la queue est tombé dans les pommes."
+ },
+ {
+  "id": "ENG_CHUNK_0763",
+  "t": "avoir la gueule de bois",
+  "ex": "J'ai la gueule de bois, alors parlez moins fort, s'il vous plaît."
+ },
+ {
+  "id": "ENG_CHUNK_0764",
+  "t": "se remettre de [nom] / surmonter [nom]",
+  "ex": "J'ai mis des mois à me remettre de la rupture."
+ },
+ {
+  "id": "ENG_CHUNK_0765",
+  "t": "accepter [nom] / faire le deuil de [nom]",
+  "ex": "Il a encore du mal à accepter la perte de son boulot."
+ },
+ {
+  "id": "ENG_CHUNK_0766",
+  "t": "Parlons d'autre chose / On change de sujet ?",
+  "ex": "Pff, encore le boulot ? Parlons d'autre chose."
+ },
+ {
+  "id": "ENG_CHUNK_0767",
+  "t": "Assez parlé de moi",
+  "ex": "Assez parlé de moi. Et ton nouveau boulot, ça se passe comment ?"
+ },
+ {
+  "id": "ENG_CHUNK_0768",
+  "t": "C'est à peu près tout / Voilà, c'est tout",
+  "ex": "On est allés au musée, on a dîné, et voilà, c'est à peu près tout."
+ },
+ {
+  "id": "ENG_CHUNK_0769",
+  "t": "Passons à autre chose / Passons à la suite",
+  "ex": "Bon, on a fait le tour du budget, passons à la suite."
+ },
+ {
+  "id": "ENG_CHUNK_0770",
+  "t": "Si tu le dis",
+  "ex": "C'est complètement sans danger ? Bon, si tu le dis."
+ },
+ {
+  "id": "ENG_CHUNK_0771",
+  "t": "Qui sait ?",
+  "ex": "Peut-être qu'on partira vivre à l'étranger un jour. Qui sait ?"
+ },
+ {
+  "id": "ENG_CHUNK_0772",
+  "t": "Sans blague ! / Non, sérieux ?",
+  "ex": "T'as eu le poste ? Sans blague !"
+ },
+ {
+  "id": "ENG_CHUNK_0773",
+  "t": "Maintenant que j'y pense / Quand j'y pense",
+  "ex": "Maintenant que j'y pense, ça fait des semaines que je n'ai pas vu Mike."
+ },
+ {
+  "id": "ENG_CHUNK_0774",
+  "t": "À mon avis / Pour moi",
+  "ex": "Pour moi, on n'a pas vraiment le choix."
+ },
+ {
+  "id": "ENG_CHUNK_0775",
+  "t": "Corrige-moi si je me trompe / Corrigez-moi si je me trompe",
+  "ex": "Corrigez-moi si je me trompe, mais on n'a pas déjà payé ça ?"
+ },
+ {
+  "id": "ENG_CHUNK_0776",
+  "t": "Pour info / Je tiens à préciser que",
+  "ex": "Pour info, je n'ai jamais dit que je conduirais."
+ },
+ {
+  "id": "ENG_CHUNK_0777",
+  "t": "Pas forcément",
+  "ex": "Le vin cher, c'est toujours meilleur, non ? Pas forcément.",
+  "n": "Pas nécessairement is fine but more formal."
+ },
+ {
+  "id": "ENG_CHUNK_0778",
+  "t": "ou je sais pas quoi / ou n'importe",
+  "ex": "On pourrait prendre une pizza, des tacos, ou je sais pas quoi."
+ },
+ {
+  "id": "ENG_CHUNK_0779",
+  "t": "Je réfléchis à voix haute",
+  "ex": "Et si on déplaçait le canapé ? Je réfléchis à voix haute."
+ },
+ {
+  "id": "ENG_CHUNK_0780",
+  "t": "Comme ça, de tête / À vue de nez",
+  "ex": "Comme ça, de tête, je dirais une cinquantaine de personnes."
+ },
+ {
+  "id": "ENG_CHUNK_0781",
+  "t": "On fait aller / Je peux pas me plaindre",
+  "ex": "Ça va ? Oh, on fait aller.",
+  "n": "Ça va, tranquille also works."
+ },
+ {
+  "id": "ENG_CHUNK_0782",
+  "t": "Tiens-moi au courant / Tenez-moi au courant",
+  "ex": "Bonne chance pour l'exam, tiens-moi au courant !"
+ },
+ {
+  "id": "ENG_CHUNK_0783",
+  "t": "On arrête là pour aujourd'hui",
+  "ex": "Il est presque sept heures. On arrête là pour aujourd'hui."
+ },
+ {
+  "id": "ENG_CHUNK_0784",
+  "t": "C'est la moindre des choses",
+  "ex": "Merci pour les fleurs ! Oh, c'est la moindre des choses."
+ },
+ {
+  "id": "ENG_CHUNK_0785",
+  "t": "Je te laisse / Je vous laisse",
+  "ex": "Bon, je te laisse. À plus !",
+  "n": "je te laisse is the standard phone sign-off, not rude at all."
+ },
+ {
+  "id": "ENG_CHUNK_0786",
+  "t": "Donne des nouvelles ! / Ne disparais pas !",
+  "ex": "C'était super de te voir. Donne des nouvelles !"
+ },
+ {
+  "id": "ENG_CHUNK_0787",
+  "t": "C'est pas vrai ! / Tu te fous de moi ?",
+  "ex": "Le vol est encore annulé ? C'est pas vrai !",
+  "n": "Tu te fous de moi is vulgar-leaning; c'est pas vrai is safe."
+ },
+ {
+  "id": "ENG_CHUNK_0788",
+  "t": "Arrête ! / Faut pas pousser !",
+  "ex": "Tu veux que je bosse samedi aussi ? Faut pas pousser !",
+  "n": "Faut pas pousser (mémé dans les orties) = don't push it."
+ },
+ {
+  "id": "ENG_CHUNK_0789",
+  "t": "C'est la goutte d'eau qui fait déborder le vase",
+  "ex": "Il est encore en retard ? C'est la goutte d'eau qui fait déborder le vase.",
+  "n": "Shorter spoken: là, c'est la goutte d'eau."
+ },
+ {
+  "id": "ENG_CHUNK_0790",
+  "t": "C'est bien ma veine / C'est bien ma chance",
+  "ex": "Il s'est mis à pleuvoir dès que je suis sorti. C'est bien ma veine."
+ },
+ {
+  "id": "ENG_CHUNK_0791",
+  "t": "Comme d'habitude",
+  "ex": "Comme d'habitude, le bus était en retard."
+ },
+ {
+  "id": "ENG_CHUNK_0792",
+  "t": "Cela dit / En même temps",
+  "ex": "L'hôtel est cher. Cela dit, il est juste sur la plage."
+ },
+ {
+  "id": "ENG_CHUNK_0793",
+  "t": "Quand même / Malgré tout",
+  "ex": "C'est juste une petite coupure. Il faut quand même la nettoyer.",
+  "n": "quand même mid-sentence is the spoken 'even so'."
+ },
+ {
+  "id": "ENG_CHUNK_0794",
+  "t": "Sans parler de / Sans compter que",
+  "ex": "L'appart est immense, sans parler du fait qu'il est tout près du boulot."
+ },
+ {
+  "id": "ENG_CHUNK_0795",
+  "t": "Et effectivement / Et ça n'a pas manqué",
+  "ex": "J'avais dit qu'il pleuvrait, et ça n'a pas manqué, il a plu des cordes."
+ },
+ {
+  "id": "ENG_CHUNK_0796",
+  "t": "Raison de plus",
+  "ex": "C'est ton anniversaire ? Raison de plus pour faire la fête !"
+ },
+ {
+  "id": "ENG_CHUNK_0797",
+  "t": "Tout compte fait / Finalement",
+  "ex": "Je vais prendre la salade. Non, finalement, plutôt le burger."
+ },
+ {
+  "id": "ENG_CHUNK_0798",
+  "t": "Depuis que",
+  "ex": "Depuis que j'habite ici, je vais au boulot à pied.",
+  "n": "Present tense with depuis que for ongoing states."
+ },
+ {
+  "id": "ENG_CHUNK_0799",
+  "t": "Et ce n'est pas tout / En plus",
+  "ex": "L'hôtel était sale. Et ce n'est pas tout, le personnel était désagréable."
+ },
+ {
+  "id": "ENG_CHUNK_0800",
+  "t": "À ce moment-là / C'est là que",
+  "ex": "C'est là que je me suis rendu compte que j'avais oublié mon portefeuille."
+ }
+]

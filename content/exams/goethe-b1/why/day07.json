@@ -1,0 +1,642 @@
+{
+ "L1-1": {
+  "evidence": "Im März letzten Jahres haben wir unser Auto verkauft.",
+  "evidence_en": "In March last year we sold our car.",
+  "why": "März ist ein Frühlingsmonat. „Im Frühling“ ist also eine Umschreibung von „im März“.",
+  "why_en": "March is a spring month, so 'in spring' is a paraphrase of 'in March'.",
+  "trap": "Man sucht das Wort „Frühling“ im Text und findet es nicht. Man muss den Monat selbst der Jahreszeit zuordnen.",
+  "trap_en": "You look for the word 'Frühling' and don't find it. You have to map the month to the season yourself.",
+  "question_en": "The family sold their car in the spring."
+ },
+ "L1-2": {
+  "evidence": "Es war gebraucht und hat trotzdem 3000 Euro gekostet",
+  "evidence_en": "It was second-hand and still cost 3000 euros",
+  "why": "Das Rad war gebraucht, nicht neu. Nur der Preis stimmt.",
+  "why_en": "The bike was used, not new. Only the price is correct.",
+  "trap": "Die Zahl 3000 Euro stimmt genau, deshalb sagt man schnell „richtig“. Aber „neu“ ist falsch.",
+  "trap_en": "The figure 3000 euros matches exactly, so it is tempting to say 'true'. But 'new' is wrong.",
+  "question_en": "The cargo bike was new and cost 3,000 euros."
+ },
+ "L1-3": {
+  "evidence": "allerdings hat die Stadt 500 Euro dazugezahlt",
+  "evidence_en": "however, the city contributed 500 euros",
+  "why": "„Dazuzahlen“ heißt: einen Teil bezahlen. 500 von 3000 Euro ist ein Teil.",
+  "why_en": "'Dazuzahlen' means paying part of the cost. 500 of 3000 euros is a part.",
+  "trap": "Das „allerdings“ klingt wie eine Einschränkung, aber es bringt hier eine gute Nachricht.",
+  "trap_en": "'Allerdings' sounds like a restriction, but here it introduces good news.",
+  "question_en": "The city paid for part of the cargo bike."
+ },
+ "L1-4": {
+  "evidence": "dauert mit Zug und Bus jetzt zwei Stunden statt fünfzig Minuten",
+  "evidence_en": "now takes two hours by train and bus instead of fifty minutes",
+  "why": "Doppelt so lang wären 100 Minuten. Zwei Stunden sind 120 Minuten, also mehr als doppelt so lang.",
+  "why_en": "Twice as long would be 100 minutes. Two hours is 120 minutes, so more than twice as long.",
+  "trap": "Man muss rechnen: 50 × 2 = 100, und 120 ist mehr. Wer nicht rechnet, sagt vielleicht „falsch“.",
+  "trap_en": "You have to calculate: 50 × 2 = 100, and 120 is more. Without doing the maths you might say 'false'.",
+  "question_en": "The trip to the grandparents takes more than twice as long without a car."
+ },
+ "L1-5": {
+  "evidence": "mieten wir für ein paar Stunden ein Carsharing-Auto. Das passiert ungefähr einmal im Monat.",
+  "evidence_en": "we rent a car-sharing car for a few hours. That happens about once a month.",
+  "why": "Die Familie hat kein eigenes Auto mehr, aber sie benutzt ungefähr einmal im Monat ein Carsharing-Auto.",
+  "why_en": "The family no longer owns a car, but they use a car-sharing car about once a month.",
+  "trap": "Der Titel „Ein Jahr ohne Auto“ und der Mann („Welches Auto?“) passen zu „nie“. Aber ohne eigenes Auto heißt nicht ohne jedes Auto.",
+  "trap_en": "The title 'A year without a car' and the husband's 'What car?' fit 'never'. But not owning a car isn't the same as never using one.",
+  "question_en": "The family never uses a car anymore."
+ },
+ "L1-6": {
+  "evidence": "Mein Mann war am Anfang übrigens sehr skeptisch.",
+  "evidence_en": "By the way, my husband was very sceptical at first.",
+  "why": "Skeptisch sein heißt: nicht an die Idee glauben. Am Anfang fand er die Idee also nicht gut.",
+  "why_en": "Being sceptical means not believing in the idea, so at first he did not like it.",
+  "trap": "Heute fährt der Mann das Rad öfter als die Frau. Das gilt aber für jetzt, nicht für den Anfang.",
+  "trap_en": "Today the husband rides the bike more than she does. That is about now, not the beginning.",
+  "question_en": "The author's husband liked the idea from the start."
+ },
+ "L2-1": {
+  "evidence": "Zurückgeben kann man ihn in jedem der rund achtzig Cafés, Bäckereien und Kioske, die an dem System teilnehmen",
+  "evidence_en": "You can return it at any of the roughly eighty cafés, bakeries and kiosks that take part in the scheme",
+  "why": "„In jedem der … die teilnehmen“ bedeutet „in allen teilnehmenden Geschäften“.",
+  "why_en": "'At any of those that take part' means 'at all participating shops'.",
+  "trap": "Antwort a nimmt die Worte „dort, wo man ihn bekommen hat“ aus dem Text, aber der Text sagt „nicht nur dort“.",
+  "trap_en": "Option a reuses 'where you got it', but the text says 'not only there'.",
+  "question_en": "The city cup …",
+  "options_en": [
+   "can only be returned at the café where you got it.",
+   "must be returned after one year.",
+   "can be returned at all participating shops."
+  ]
+ },
+ "L2-2": {
+  "evidence": "war zunächst dagegen",
+  "evidence_en": "was against it at first",
+  "why": "Zuerst war sie dagegen, heute sieht sie es anders und spart sogar Geld. Sie hat ihre Meinung geändert.",
+  "why_en": "At first she was against it; now she sees it differently and even saves money. She changed her mind.",
+  "trap": "Antwort b benutzt das Wort „Spülen“, aber sie hatte Angst um ihre Zeit, nicht um das Geld – und das war nur am Anfang.",
+  "trap_en": "Option b reuses 'washing up', but she worried about time, not money, and only at the start.",
+  "question_en": "Ms Aydin …",
+  "options_en": [
+   "was in favour of the system from the start.",
+   "finds washing the cups too expensive.",
+   "has changed her opinion."
+  ]
+ },
+ "L2-3": {
+  "evidence": "Wer seinen eigenen Becher mitbringt, zahlt in den meisten Cafés zwanzig Cent weniger für den Kaffee.",
+  "evidence_en": "Anyone who brings their own cup pays twenty cents less for coffee in most cafés.",
+  "why": "Zwanzig Cent weniger zahlen heißt: weniger für den Kaffee zahlen.",
+  "why_en": "Paying twenty cents less means paying less for the coffee.",
+  "trap": "Zwei Euro Pfand und Freiburg kommen im Text vor, aber sie gehören zum neuen System in anderen Städten, nicht zum eigenen Becher.",
+  "trap_en": "The two-euro deposit and Freiburg are in the text, but they belong to the future scheme in other cities, not to bringing your own cup.",
+  "question_en": "Anyone who brings their own cup …",
+  "options_en": [
+   "pays less for the coffee.",
+   "has to pay a deposit of two euros.",
+   "gets the coffee for free in Freiburg."
+  ]
+ },
+ "L2-4": {
+  "evidence": "bei der man Jeans nicht kauft, sondern mietet. Die Kunden zahlen sieben Euro im Monat.",
+  "evidence_en": "where you don't buy jeans, you rent them. Customers pay seven euros a month.",
+  "why": "Sieben Euro im Monat ist eine monatliche Gebühr, und man mietet die Jeans.",
+  "why_en": "Seven euros a month is a monthly fee, and you rent the jeans.",
+  "trap": "Antwort c ist falsch: Nach einem Jahr kann man die Hose behalten oder zurückschicken – man muss nicht.",
+  "trap_en": "Option c is wrong: after a year you can keep the jeans or send them back; you don't have to return them.",
+  "question_en": "At Lukas Brandt's company …",
+  "options_en": [
+   "you rent a pair of jeans for a monthly fee.",
+   "you buy a pair of jeans for seven euros.",
+   "you have to return the jeans after one year."
+  ]
+ },
+ "L2-5": {
+  "evidence": "Der Stoff wird zerkleinert und zu neuem Garn verarbeitet.",
+  "evidence_en": "The fabric is shredded and made into new yarn.",
+  "why": "„Nicht mehr zu retten“ heißt „nicht mehr zu reparieren“. Diese Jeans werden zu neuem Garn.",
+  "why_en": "'Beyond saving' means 'can't be repaired any more'. These jeans are turned into new yarn.",
+  "trap": "„Weggeworfen“ steht im Text, aber verneint: „Bei uns wird nichts weggeworfen.“",
+  "trap_en": "'Thrown away' is in the text, but negated: 'Nothing gets thrown away here.'",
+  "question_en": "What happens to jeans that can no longer be repaired?",
+  "options_en": [
+   "They are thrown away.",
+   "They are processed into new yarn.",
+   "They are given away to other customers."
+  ]
+ },
+ "L2-6": {
+  "evidence": "Aber der Reparaturservice hat mich überzeugt.",
+  "evidence_en": "But the repair service won me over.",
+  "why": "Der Service hat sie überzeugt, die Reparatur war schnell und kostenlos. Sie ist also zufrieden.",
+  "why_en": "The service convinced her; the repair was quick and free. So she is satisfied.",
+  "trap": "Antwort b ist falsch, weil sie die Idee am Anfang „ziemlich seltsam“ fand. Antwort a ist falsch: „ohne zusätzliche Kosten“.",
+  "trap_en": "Option b is wrong because she first found the idea 'rather strange'. Option a is wrong: 'at no extra cost'.",
+  "question_en": "Nadine Koch …",
+  "options_en": [
+   "had to pay for the repair of her jeans.",
+   "liked the idea immediately.",
+   "is satisfied with the repair service."
+  ]
+ },
+ "L3-1": {
+  "evidence": "Wir sammeln Müll am Samstag von 10 bis 13 Uhr.",
+  "evidence_en": "We collect litter on Saturday from 10 to 1.",
+  "why": "Jonas will am Wochenende Müll sammeln. Anzeige E ist ein Müllsammeltag am Samstag.",
+  "why_en": "Jonas wants to help collect litter at the weekend. Ad E is a litter clean-up on Saturday.",
+  "trap": "Anzeige B ist auch am Wochenende und in der Natur, aber dort schneidet man Hecken und zählt Vögel – kein Müll.",
+  "trap_en": "Ad B is also at weekends and outdoors, but it is hedge-cutting and bird counting, not litter.",
+  "question_en": "Jonas wants to help out at the weekend at an event where litter is collected."
+ },
+ "L3-2": {
+  "evidence": "wir reparieren gemeinsam mit Ihnen, statt wegzuwerfen",
+  "evidence_en": "we repair things together with you instead of throwing them away",
+  "why": "Im Repair-Café wird ein Toaster repariert, und es gibt „keine Kosten“. Das passt zu Petra.",
+  "why_en": "The Repair Café fixes toasters and there are 'no costs'. That fits Petra.",
+  "trap": "Anzeige I ist auch eine Reparatur-Werkstatt, aber nur für Fahrräder und sie kostet 3 € pro Stunde.",
+  "trap_en": "Ad I is also a repair workshop, but only for bikes and it costs 3 euros an hour.",
+  "question_en": "Petra's toaster is broken. She doesn't want to throw it away, but to have it repaired, free of charge if possible."
+ },
+ "L3-3": {
+  "evidence": "vermieten wir 20-m²-Parzellen an alle, die ohne eigenen Garten gärtnern möchten",
+  "evidence_en": "we rent out 20 m² plots to anyone who wants to garden without their own garden",
+  "why": "Familie Öztürk hat keinen Garten und will Gemüse anbauen. Im Gemeinschaftsgarten kann sie ein Beet mieten.",
+  "why_en": "The Öztürks have no garden and want to grow vegetables. The community garden rents out a bed.",
+  "trap": "Anzeige D hat auch Gemüse, aber man kauft es in einer Kiste – man baut es nicht selbst an.",
+  "trap_en": "Ad D also has vegetables, but you buy them in a box; you don't grow them yourself.",
+  "question_en": "The Öztürk family wants to grow vegetables themselves but doesn't have a garden of their own."
+ },
+ "L3-4": {
+  "evidence": "Alles rund ums Kind aus zweiter Hand: Kleidung von Größe 50 bis 176",
+  "evidence_en": "Everything for children, second-hand: clothes from size 50 to 176",
+  "why": "„Aus zweiter Hand“ heißt „gebraucht“. Auf dem Flohmarkt gibt es gebrauchte Kinderkleidung.",
+  "why_en": "'Second-hand' means 'used'. The flea market sells used children's clothes.",
+  "trap": "Anzeige J nennt „günstig“, aber dort gibt es Möbel und Haushaltsgeräte, keine Kinderkleidung.",
+  "trap_en": "Ad J mentions 'cheap', but it is about furniture and appliances, not children's clothes.",
+  "question_en": "Miriam is looking for cheap second-hand children's clothing because her son is growing so fast."
+ },
+ "L3-5": {
+  "evidence": "prüfen Kühlschrank, Heizung und Beleuchtung und zeigen, wo Sie sparen können. Für Mieter und Eigentümer, kostenlos.",
+  "evidence_en": "check your fridge, heating and lighting and show you where you can save. For tenants and owners, free of charge.",
+  "why": "Karim will Strom sparen und sucht eine kostenlose Beratung. Der Energie-Check ist genau das.",
+  "why_en": "Karim wants to save electricity and needs free advice. The energy check is exactly that.",
+  "trap": "Anzeige F ist auch kostenlos und zum Thema Klima, aber es ist ein Vortrag über die Region, keine Beratung für die Wohnung.",
+  "trap_en": "Ad F is also free and about climate, but it is a lecture about the region, not advice for your flat.",
+  "question_en": "Karim wants to know how he can save electricity in his flat and is looking for free advice."
+ },
+ "L3-6": {
+  "evidence": "Jedes zweite Wochenende, Samstag 9–13 Uhr.",
+  "evidence_en": "Every other weekend, Saturday 9 to 1.",
+  "why": "Keine Anzeige bietet vier Wochen Naturschutz im Ausland an. Die Lösung ist 0.",
+  "why_en": "No ad offers four weeks of conservation work abroad. The answer is 0.",
+  "trap": "Anzeige B passt zum Naturschutz, aber sie ist hier vor Ort und nur für ein paar Stunden am Samstag – nicht vier Wochen im Ausland.",
+  "trap_en": "Ad B is about conservation, but it is local and only a few hours on Saturdays, not four weeks abroad.",
+  "question_en": "Lea wants to work abroad for nature conservation for four weeks during the summer holidays."
+ },
+ "L3-7": {
+  "evidence": "Das Sozialkaufhaus nimmt gut erhaltene Möbel, Lampen und Haushaltsgeräte und holt sie kostenlos bei Ihnen ab.",
+  "evidence_en": "The charity shop takes furniture, lamps and appliances in good condition and collects them from you for free.",
+  "why": "Dominik will gute alte Möbel verschenken. Das Sozialkaufhaus nimmt Möbelspenden und holt sie ab.",
+  "why_en": "Dominik wants to give away good used furniture. The charity shop accepts furniture donations and picks them up.",
+  "trap": "Anzeige C ist ein Flohmarkt mit gebrauchten Sachen, aber nur für Kindersachen, und dort verkauft man.",
+  "trap_en": "Ad C is a flea market for used goods, but only children's things, and there you sell.",
+  "question_en": "Dominik is moving. His old furniture is still good, and he wants to give it away."
+ },
+ "L4-1": {
+  "evidence": "Solche Flüge braucht kein Mensch.",
+  "evidence_en": "Nobody needs flights like that.",
+  "why": "Tobias fährt lieber Zug und findet Inlandsflüge unnötig. Er ist für ein Verbot.",
+  "why_en": "Tobias prefers the train and thinks domestic flights are pointless. He is in favour of a ban.",
+  "trap": "Er sagt nicht direkt „verbieten“. Man muss aus „braucht kein Mensch“ die Meinung erkennen.",
+  "trap_en": "He never says 'ban' directly. You have to read his opinion from 'nobody needs them'.",
+  "question_en": "Tobias, Hamburg: I regularly travel from Hamburg to Munich, six hours by train. During that time I work, eat and sleep a little. Why anyone gets on a plane for this route, I don't understand. Nobody needs flights like that."
+ },
+ "L4-2": {
+  "evidence": "Solange die Bahn so schlecht funktioniert, darf man den Menschen das Fliegen nicht verbieten.",
+  "evidence_en": "As long as the railway works so badly, you can't ban people from flying.",
+  "why": "Renate sagt klar: Man darf das Fliegen nicht verbieten. Sie ist gegen ein Verbot.",
+  "why_en": "Renate says clearly that flying must not be banned. She is against a ban.",
+  "trap": "„Solange“ klingt, als wäre sie später dafür. Aber heute ist sie klar dagegen.",
+  "trap_en": "'As long as' suggests she might agree later, but for now she is clearly against it.",
+  "question_en": "Renate, Rostock: My son lives in Munich. By train it takes me nine hours, I have to change twice and I often arrive late. As long as the railway works this badly, you must not forbid people from flying."
+ },
+ "L4-3": {
+  "evidence": "Aber ein Verbot ist der falsche Weg.",
+  "evidence_en": "But a ban is the wrong way.",
+  "why": "Fatih will die Flüge teurer machen, aber nicht verbieten. Er ist gegen ein Verbot.",
+  "why_en": "Fatih wants flights to be more expensive, not banned. He is against a ban.",
+  "trap": "Er versteht das Klima-Argument und fährt selbst Zug. Das klingt nach „Ja“, aber nach dem „Aber“ kommt seine echte Meinung.",
+  "trap_en": "He understands the climate argument and takes the train himself. That sounds like 'yes', but his real view comes after 'but'.",
+  "question_en": "Fatih, Stuttgart: I understand the climate argument, and yes, I mostly take the train myself. But a ban is the wrong way. Just make flights really expensive, then people will decide on their own."
+ },
+ "L4-4": {
+  "evidence": "Wir sollten das Gleiche machen.",
+  "evidence_en": "We should do the same.",
+  "why": "In Frankreich gibt es schon ein Verbot. Claudia will das auch in Deutschland. Sie ist dafür.",
+  "why_en": "France already has a ban. Claudia wants the same in Germany. She is in favour.",
+  "trap": "„Zusammengebrochen“ klingt negativ, aber es ist eine Frage, und die Antwort ist „Nein“.",
+  "trap_en": "'Collapsed' sounds negative, but it is a rhetorical question answered with 'No'.",
+  "question_en": "Claudia, Cologne: In France short domestic flights are already banned if there is a train connection under two and a half hours. Has the economy collapsed there because of that? No. We should do the same."
+ },
+ "L4-5": {
+  "evidence": "Verbote lösen keine Probleme, sie machen nur die Leute wütend.",
+  "evidence_en": "Bans don't solve problems, they only make people angry.",
+  "why": "Olaf meint, der Staat soll sich nicht einmischen. Er ist gegen ein Verbot.",
+  "why_en": "Olaf thinks the state shouldn't interfere. He is against a ban.",
+  "trap": "Das Wort „verboten“ steht im ersten Satz, aber er kritisiert gerade das Verbieten.",
+  "trap_en": "The word 'banned' is in his first sentence, but he is criticising bans.",
+  "question_en": "Olaf, Dresden: Something is constantly supposed to be banned. Whoever wants to fly should fly, whoever wants to take the train should take the train. The state has no business interfering there. Bans don't solve problems, they just make people angry."
+ },
+ "L4-6": {
+  "evidence": "Wenn wir den Klimaschutz ernst meinen, dann brauchen wir klare Regeln.",
+  "evidence_en": "If we are serious about climate protection, we need clear rules.",
+  "why": "„Klare Regeln“ bedeutet hier ein Verbot. Freiwillig ändert sich zu wenig. Hannah ist dafür.",
+  "why_en": "'Clear rules' means a ban here, since too little changes voluntarily. Hannah is in favour.",
+  "trap": "Sie fliegt selbst freiwillig nicht. Man denkt vielleicht, Freiwilligkeit reicht ihr – aber sie sagt das Gegenteil.",
+  "trap_en": "She avoids flying voluntarily, so you might think voluntary change is enough for her, but she says the opposite.",
+  "question_en": "Hannah, Freiburg: I'm 22 and haven't got on a plane for three years. But only few people change anything voluntarily, I see that in my circle of friends. If we are serious about climate protection, then we need clear rules."
+ },
+ "L4-7": {
+  "evidence": "Wenn ein Verbot dazu führt, dass die Bahn endlich besser und günstiger wird – dann bitte, gern.",
+  "evidence_en": "If a ban means the railway finally gets better and cheaper, then please, go ahead.",
+  "why": "„Dann bitte, gern“ heißt: Er ist für das Verbot.",
+  "why_en": "'Then please, go ahead' means he supports the ban.",
+  "trap": "Er ist früher selbst oft geflogen. Das ist aber Vergangenheit – heute findet er das „absurd“.",
+  "trap_en": "He used to fly a lot himself, but that is the past; now he calls it 'absurd'.",
+  "question_en": "Bernd, Nuremberg: To be honest, I used to fly to Berlin often because it was cheaper than the train. That's absurd. If a ban leads to the railway finally getting better and cheaper – then please, gladly."
+ },
+ "L5-1": {
+  "evidence": "Wird eine Parzelle länger als drei Monate nicht bearbeitet, geht sie an die nächste Person auf der Warteliste.",
+  "evidence_en": "If a plot is not worked for more than three months, it goes to the next person on the waiting list.",
+  "why": "„Geht an die nächste Person auf der Warteliste“ heißt: Jemand von der Warteliste bekommt die Parzelle.",
+  "why_en": "'Goes to the next person on the waiting list' means someone from the list gets the plot.",
+  "trap": "Die 60 Euro im Text sind der normale Jahresbeitrag, keine Strafe.",
+  "trap_en": "The 60 euros in the text is the normal annual fee, not a penalty.",
+  "question_en": "If a member does not work on their plot for three months, …",
+  "options_en": [
+   "they have to pay 60 euros.",
+   "someone from the waiting list gets the plot.",
+   "the plot is blocked for one year."
+  ]
+ },
+ "L5-2": {
+  "evidence": "In den Sommermonaten ist das Gießen nur morgens vor 10 Uhr oder abends nach 18 Uhr erlaubt.",
+  "evidence_en": "In the summer months watering is only allowed in the morning before 10 or in the evening after 6.",
+  "why": "Im Sommer darf man nur morgens oder abends gießen.",
+  "why_en": "In summer you may only water in the morning or evening.",
+  "trap": "Antwort b ist zu stark: Wasser aus dem Hahn ist in Trockenzeiten nach Absprache erlaubt, nicht ganz verboten.",
+  "trap_en": "Option b goes too far: tap water is allowed in dry spells after checking with the board, not banned outright.",
+  "question_en": "In summer …",
+  "options_en": [
+   "you may only water in the morning or evening.",
+   "you may not use water from the tap.",
+   "watering is forbidden."
+  ]
+ },
+ "L5-3": {
+  "evidence": "Auf den Kompost gehören Pflanzenreste und rohe Küchenabfälle.",
+  "evidence_en": "Plant remains and raw kitchen waste go on the compost.",
+  "why": "Gemüsereste aus der Küche sind rohe Küchenabfälle. Die dürfen auf den Kompost.",
+  "why_en": "Vegetable scraps from the kitchen are raw kitchen waste, which is allowed on the compost.",
+  "trap": "Gekochte Speisen, Fleisch und Fisch stehen auch im Text, aber im Satz mit „dürfen nicht“.",
+  "trap_en": "Cooked food, meat and fish are also in the text, but in the sentence with 'must not'.",
+  "question_en": "The following may go on the compost: …",
+  "options_en": [
+   "cooked food.",
+   "leftovers of meat and fish.",
+   "vegetable scraps from the kitchen."
+  ]
+ },
+ "L5-4": {
+  "evidence": "Wer diese Stunden nicht leisten kann, zahlt 10 € pro nicht geleisteter Stunde.",
+  "evidence_en": "Anyone who can't do these hours pays 10 euros per hour not worked.",
+  "why": "10 € pro fehlende Stunde heißt: Man zahlt für jede fehlende Stunde Geld.",
+  "why_en": "10 euros per missing hour means you pay money for each hour you miss.",
+  "trap": "Die Mitgliederversammlung steht direkt danach im Text, hat aber nichts mit der fehlenden Arbeit zu tun.",
+  "trap_en": "The members' meeting is mentioned right after, but it has nothing to do with missed work.",
+  "question_en": "Anyone who cannot do the communal work …",
+  "options_en": [
+   "has to leave the garden.",
+   "pays money for each missing hour.",
+   "has to come to the members' meeting."
+  ]
+ },
+ "H1-1a": {
+  "evidence": "Wir hatten ja neun Uhr ausgemacht, aber der Wetterbericht sagt für den Nachmittag Regen, deshalb fangen wir schon um halb neun an.",
+  "evidence_en": "We had agreed on nine, but the forecast says rain in the afternoon, so we're starting at half past eight.",
+  "why": "Die Zeit wurde geändert: Die Aktion beginnt um halb neun, nicht um neun.",
+  "why_en": "The time was changed: the event starts at 8:30, not 9:00.",
+  "trap": "„Neun Uhr“ hört man zuerst, aber das war der alte Plan. Nach „aber“ kommt die neue Zeit.",
+  "trap_en": "You hear 'nine o'clock' first, but that was the old plan. The new time comes after 'but'.",
+  "question_en": "The event starts on Saturday at nine o'clock."
+ },
+ "H1-1b": {
+  "evidence": "Bitte bringen Sie feste Schuhe oder Gummistiefel und Handschuhe mit.",
+  "evidence_en": "Please bring sturdy shoes or wellies and gloves.",
+  "why": "Frau Krause soll Handschuhe und feste Schuhe mitbringen.",
+  "why_en": "Ms Krause should bring gloves and sturdy shoes.",
+  "trap": "Spaten werden genannt, aber: „die müssen Sie nicht mitbringen“. Essen gibt der Verein.",
+  "trap_en": "Spades are mentioned, but 'you don't need to bring them'. Food is provided by the club.",
+  "question_en": "Ms Krause should …",
+  "options_en": [
+   "bring a spade.",
+   "bring gloves and sturdy shoes.",
+   "bring something to eat."
+  ]
+ },
+ "H1-2a": {
+  "evidence": "Morgen ist es dann mit vierundzwanzig Grad deutlich angenehmer.",
+  "evidence_en": "Tomorrow it will be much more pleasant at twenty-four degrees.",
+  "why": "Heute 34 Grad, morgen 24 Grad. Morgen ist es also kühler.",
+  "why_en": "34 degrees today, 24 tomorrow, so tomorrow is cooler.",
+  "trap": "Das Wort „kühler“ kommt nicht vor. „Angenehmer“ nach einem heißen Tag bedeutet hier „kühler“.",
+  "trap_en": "The word 'cooler' isn't used. 'More pleasant' after a hot day means cooler here.",
+  "question_en": "Tomorrow it will be cooler than today."
+ },
+ "H1-2b": {
+  "evidence": "Der Innenstadtring ist in dieser Zeit für Autos gesperrt.",
+  "evidence_en": "The inner ring road is closed to cars during this time.",
+  "why": "Die Demo ist am Sonntag von 14 bis 17 Uhr. In dieser Zeit ist der Ring für Autos gesperrt.",
+  "why_en": "The demo is on Sunday from 2 to 5 pm, and during that time the ring road is closed to cars.",
+  "trap": "Die Busse fahren doch, nur mit Umleitung. Das Gewitter kommt heute Abend, nicht am Sonntag.",
+  "trap_en": "Buses still run, just on a diversion. The thunderstorm is tonight, not Sunday.",
+  "question_en": "On Sunday afternoon …",
+  "options_en": [
+   "the inner-city ring road is closed to cars.",
+   "no buses run in the city centre.",
+   "there will be a thunderstorm."
+  ]
+ },
+ "H1-3a": {
+  "evidence": "Der Pfandautomat im Eingangsbereich ist heute leider außer Betrieb.",
+  "evidence_en": "The bottle-return machine at the entrance is unfortunately out of order today.",
+  "why": "„Außer Betrieb“ bedeutet „funktioniert nicht“.",
+  "why_en": "'Out of order' means 'not working'.",
+  "trap": "Man muss den festen Ausdruck „außer Betrieb“ kennen. Die Flaschen kann man trotzdem an der Information abgeben.",
+  "trap_en": "You need to know the fixed phrase 'außer Betrieb'. You can still return bottles at the information desk.",
+  "question_en": "The deposit machine is not working today."
+ },
+ "H1-3b": {
+  "evidence": "können Sie an jeder Kasse einen Stoffbeutel für einen Euro fünfzig kaufen",
+  "evidence_en": "you can buy a cloth bag for one euro fifty at any till",
+  "why": "Wer eine Tasche braucht, kann an der Kasse einen Stoffbeutel kaufen.",
+  "why_en": "If you need a bag, you can buy a cloth bag at the till.",
+  "trap": "Die Information wird genannt, aber für Pfandflaschen, nicht für Taschen. Plastiktüten gibt es gar nicht mehr.",
+  "trap_en": "The information desk is mentioned, but for bottle returns, not bags. Plastic bags are no longer available at all.",
+  "question_en": "Anyone who needs a bag …",
+  "options_en": [
+   "gets a plastic bag for free.",
+   "has to go to the information desk.",
+   "can buy a cloth bag."
+  ]
+ },
+ "H1-4a": {
+  "evidence": "Die Biotonne wird ab nächster Woche nicht mehr montags geleert, sondern donnerstags.",
+  "evidence_en": "From next week the organic bin will be emptied on Thursdays instead of Mondays.",
+  "why": "„Nicht mehr montags, sondern donnerstags“ – ab nächster Woche also donnerstags.",
+  "why_en": "'No longer Mondays but Thursdays', so from next week it's Thursday.",
+  "trap": "Es werden drei Tage genannt: Montag (alt), Mittwoch (gelbe Tonne) und Donnerstag (neu). Man darf sie nicht verwechseln.",
+  "trap_en": "Three days are mentioned: Monday (old), Wednesday (yellow bin) and Thursday (new). Don't mix them up.",
+  "question_en": "From next week the organic waste bin will be emptied on Thursdays."
+ },
+ "H1-4b": {
+  "evidence": "soll sie bis Freitagabend in den Hof stellen, nicht erst am Samstagmorgen",
+  "evidence_en": "should put it in the courtyard by Friday evening, not on Saturday morning",
+  "why": "Die Möbel müssen bis Freitagabend im Hof stehen, weil der Wagen früh kommt.",
+  "why_en": "The furniture must be in the courtyard by Friday evening because the truck comes early.",
+  "trap": "„Samstagmorgen“ hört man auch, aber mit „nicht erst“ – das ist zu spät.",
+  "trap_en": "You also hear 'Saturday morning', but with 'not only then', meaning that's too late.",
+  "question_en": "Old furniture should be …",
+  "options_en": [
+   "put in the courtyard by Friday evening.",
+   "put in the courtyard on Saturday morning.",
+   "taken to the property management."
+  ]
+ },
+ "H1-5a": {
+  "evidence": "sonntags ist geschlossen",
+  "evidence_en": "closed on Sundays",
+  "why": "Der Laden hat Montag bis Samstag geöffnet, am Sonntag ist er geschlossen.",
+  "why_en": "The shop is open Monday to Saturday and closed on Sunday.",
+  "trap": "Die Eröffnung ist am Samstag. Man hört viele Tage und denkt vielleicht, dass jeden Tag offen ist.",
+  "trap_en": "The opening is on Saturday. With so many days mentioned you might assume it's open every day.",
+  "question_en": "The shop is also open on Sunday."
+ },
+ "H1-5b": {
+  "evidence": "Am Eröffnungstag bekommen alle Kunden zehn Prozent Rabatt auf den ganzen Einkauf.",
+  "evidence_en": "On opening day all customers get ten per cent off their whole purchase.",
+  "why": "Am Eröffnungstag gibt es zehn Prozent Rabatt.",
+  "why_en": "On opening day there is a ten per cent discount.",
+  "trap": "Gläser werden genannt, aber die Kunden bringen sie selbst mit – sie bekommen keine geschenkt.",
+  "trap_en": "Jars are mentioned, but customers bring their own; nobody gets one free.",
+  "question_en": "On the opening day …",
+  "options_en": [
+   "every customer gets a jar as a gift.",
+   "there is a ten per cent discount.",
+   "the shop is open longer."
+  ]
+ },
+ "H2-1": {
+  "evidence": "Beides müssen Sie während der ganzen Führung tragen, auch wenn es warm ist.",
+  "evidence_en": "You must wear both during the whole tour, even if it's warm.",
+  "why": "Weste und Helm muss man die ganze Zeit tragen, also auch in der Halle.",
+  "why_en": "You have to wear the vest and helmet the whole time, including in the hall.",
+  "trap": "Antwort b dreht „auch wenn es warm ist“ um. Fotos sind nur draußen erlaubt, nicht in der Halle.",
+  "trap_en": "Option b twists 'even if it's warm'. Photos are only allowed outside, not in the hall.",
+  "question_en": "In the hall …",
+  "options_en": [
+   "all visitors must wear a vest and helmet.",
+   "you may go in without a vest if it is warm.",
+   "you may take photos."
+  ]
+ },
+ "H2-2": {
+  "evidence": "Jeden Tag kommen bei uns rund zweihundertfünfzig Tonnen Verpackungsmüll an",
+  "evidence_en": "Around two hundred and fifty tonnes of packaging waste arrive here every day",
+  "why": "250 sind Tonnen Müll pro Tag.",
+  "why_en": "The 250 refers to tonnes of waste per day.",
+  "trap": "Antwort a verbindet die Zahl 250 mit Menschen. Es arbeiten aber sechzig Mitarbeiter hier.",
+  "trap_en": "Option a links 250 to people, but sixty staff work here.",
+  "question_en": "Per day …",
+  "options_en": [
+   "two hundred and fifty people work here.",
+   "two hundred and fifty tonnes of waste arrive here.",
+   "sixty lorries arrive here."
+  ]
+ },
+ "H2-3": {
+  "evidence": "Unser größtes Problem sind Dinge, die gar nicht in den gelben Sack gehören.",
+  "evidence_en": "Our biggest problem is things that don't belong in the yellow bag at all.",
+  "why": "Die Sprecherin sagt es fast wörtlich: Das größte Problem sind falsche Dinge im gelben Sack.",
+  "why_en": "She says it almost word for word: the biggest problem is the wrong things in the yellow bag.",
+  "trap": "Maschinen und Besucher werden genannt, aber nicht als Problem.",
+  "trap_en": "Machines and visitors are mentioned, but not as the problem.",
+  "question_en": "The biggest problem of the facility is …",
+  "options_en": [
+   "the many visitors.",
+   "the old machines.",
+   "things that don't belong in the yellow bag."
+  ]
+ },
+ "H2-4": {
+  "evidence": "Im letzten Jahr hatten wir deshalb zwei Brände in der Halle.",
+  "evidence_en": "Last year we had two fires in the hall because of this.",
+  "why": "Zwei Brände bedeutet: Es hat zweimal gebrannt.",
+  "why_en": "Two fires means it burned twice.",
+  "trap": "Antwort c nimmt die Zahl zwei und „verletzt“, aber: „Zum Glück wurde niemand verletzt.“",
+  "trap_en": "Option c reuses 'two' and 'injured', but 'luckily nobody was hurt'.",
+  "question_en": "Last year …",
+  "options_en": [
+   "there were two fires.",
+   "the facility was newly built.",
+   "two employees were injured."
+  ]
+ },
+ "H2-5": {
+  "evidence": "Wer die meisten Fragen richtig beantwortet, gewinnt eine Stofftasche aus recyceltem Material.",
+  "evidence_en": "Whoever answers the most questions correctly wins a cloth bag made from recycled material.",
+  "why": "Am Ende gibt es ein Quiz, und man kann eine Stofftasche gewinnen.",
+  "why_en": "At the end there's a quiz and you can win a cloth bag.",
+  "trap": "Es gibt keine Cafeteria, und der Bus wartet um Viertel nach zwölf, nicht um zwölf.",
+  "trap_en": "There's no cafeteria, and the bus leaves at quarter past twelve, not twelve.",
+  "question_en": "At the end of the tour …",
+  "options_en": [
+   "there is lunch in the cafeteria.",
+   "the bus leaves at twelve o'clock.",
+   "you can win something in a quiz."
+  ]
+ },
+ "H3-1": {
+  "evidence": "muss dreihundertachtzig Euro nachzahlen",
+  "evidence_en": "have to pay three hundred and eighty euros extra",
+  "why": "Lukas sagt selbst, dass er 380 Euro nachzahlen muss.",
+  "why_en": "Lukas says himself that he has to pay an extra 380 euros.",
+  "trap": "Später hört man andere Zahlen (500, 200, 150 Euro). Die gehören zum Balkonkraftwerk.",
+  "trap_en": "Later you hear other figures (500, 200, 150 euros); they belong to the balcony solar panel.",
+  "question_en": "Lukas has to pay three hundred and eighty euros extra."
+ },
+ "H3-2": {
+  "evidence": "Ich wette, das ist dein größter Stromfresser.",
+  "evidence_en": "I bet that's your biggest power guzzler.",
+  "why": "„Ich wette“ zeigt eine Vermutung. „Stromfresser“ heißt: Gerät, das viel Strom verbraucht.",
+  "why_en": "'I bet' shows a guess. 'Stromfresser' means a device that uses a lot of power.",
+  "trap": "Lukas sagt „er funktioniert doch“. Das ist seine Meinung, nicht Janas.",
+  "trap_en": "Lukas says 'it still works'. That is his view, not Jana's.",
+  "question_en": "Jana suspects that the old fridge uses a lot of electricity."
+ },
+ "H3-3": {
+  "evidence": "Das kostet nichts, du musst nur deinen Ausweis zeigen.",
+  "evidence_en": "It costs nothing, you just have to show your ID.",
+  "why": "Das Messgerät kostet nichts. Man zeigt nur den Ausweis.",
+  "why_en": "The meter costs nothing; you just show your ID.",
+  "trap": "„Du musst …“ klingt nach einer Bedingung, aber man muss nur den Ausweis zeigen, nicht bezahlen.",
+  "trap_en": "'You have to…' sounds like a condition, but it's only showing ID, not paying.",
+  "question_en": "You have to pay for the consumer advice centre's measuring device."
+ },
+ "H3-4": {
+  "evidence": "Meistens bei sechzig Grad, dann wird alles richtig sauber.",
+  "evidence_en": "Mostly at sixty degrees, then everything gets really clean.",
+  "why": "Lukas wäscht meistens bei 60 Grad, nicht bei 30.",
+  "why_en": "Lukas mostly washes at 60 degrees, not 30.",
+  "trap": "Dreißig Grad sagt Jana. Das ist ihr Tipp, nicht was Lukas macht.",
+  "trap_en": "Thirty degrees is what Jana says. It's her tip, not what Lukas does.",
+  "question_en": "Lukas mostly washes his laundry at thirty degrees."
+ },
+ "H3-5": {
+  "evidence": "Aber die Stadt zahlt zweihundert dazu, wenn man einen Antrag stellt.",
+  "evidence_en": "But the city pays two hundred towards it if you apply.",
+  "why": "Die Stadt zahlt 200 von 500 Euro, also einen Teil der Kosten.",
+  "why_en": "The city pays 200 of the 500 euros, so part of the cost.",
+  "trap": "Die Stadt zahlt nicht alles. „Einen Teil“ ist richtig, „die Kosten“ komplett wäre falsch.",
+  "trap_en": "The city doesn't pay everything; 'part' is correct, the whole cost would be wrong.",
+  "question_en": "The city covers part of the cost of a balcony power plant."
+ },
+ "H3-6": {
+  "evidence": "Ich glaube nicht, dass er sofort Ja sagt.",
+  "evidence_en": "I don't think he'll say yes straight away.",
+  "why": "Lukas glaubt nicht, dass der Vermieter schnell zustimmt. Er findet ihn schwierig.",
+  "why_en": "Lukas doesn't believe the landlord will agree quickly; he finds him difficult.",
+  "trap": "Jana sagt, der Vermieter darf es nicht einfach verbieten. Das ist aber ihre Information, nicht Lukas' Meinung.",
+  "trap_en": "Jana says the landlord can't simply forbid it, but that's her information, not Lukas's belief.",
+  "question_en": "Lukas believes that his landlord will agree quickly."
+ },
+ "H3-7": {
+  "evidence": "Ich schicke dir heute Abend den Link zum Antrag der Stadt und einen Musterbrief für den Vermieter.",
+  "evidence_en": "I'll send you the link to the city's application form and a template letter for the landlord tonight.",
+  "why": "Einen Link und einen Musterbrief schicken – das sind Informationen, die man elektronisch schickt.",
+  "why_en": "Sending a link and a template letter means sending information electronically.",
+  "trap": "Das Wort „E-Mail“ fällt nicht. „Link schicken“ ist die Umschreibung dafür.",
+  "trap_en": "The word 'email' isn't said; 'sending a link' is the paraphrase.",
+  "question_en": "Jana wants to send Lukas information by e-mail."
+ },
+ "H4-1": {
+  "evidence": "Meine Kunden kommen vor allem mit dem Auto, das sehe ich jeden Tag.",
+  "evidence_en": "My customers mostly come by car, I see that every day.",
+  "why": "Herr Feld (a) sagt „vor allem mit dem Auto“ – das heißt „die meisten“.",
+  "why_en": "Mr Feld (a) says 'mostly by car', which means 'most of them'.",
+  "trap": "Frau Sander spricht auch über Autofahrer („Wer mit dem Auto kommt …“), aber allgemein, nicht über ihre Kunden.",
+  "trap_en": "Ms Sander also talks about drivers ('whoever comes by car…'), but in general, not about her own customers.",
+  "question_en": "Most of my customers come by car."
+ },
+ "H4-2": {
+  "evidence": "Dort geben die Menschen in der Innenstadt heute mehr Geld aus als vorher, nicht weniger.",
+  "evidence_en": "People there spend more money in the city centre today than before, not less.",
+  "why": "Frau Sander (b) nennt Studien aus autofreien Städten: Die Leute geben mehr Geld aus.",
+  "why_en": "Ms Sander (b) cites studies from car-free cities: people spend more.",
+  "trap": "Herr Feld spricht auch über Geld und Kunden, aber er befürchtet das Gegenteil.",
+  "trap_en": "Mr Feld also talks about money and customers, but he fears the opposite.",
+  "question_en": "In car-free city centres people spend more money than before."
+ },
+ "H4-3": {
+  "evidence": "Ich habe selbst kein Auto und wohne mitten in der Innenstadt.",
+  "evidence_en": "I don't have a car myself and I live right in the city centre.",
+  "why": "Das sagt die Moderatorin: Sie hat selbst kein Auto.",
+  "why_en": "The presenter says this: she doesn't own a car.",
+  "trap": "Man erwartet, dass die Stadtplanerin kein Auto hat. Aber es ist die Moderatorin, die das sagt.",
+  "trap_en": "You'd expect the urban planner to be car-free, but it's the presenter who says it.",
+  "question_en": "I don't own a car myself."
+ },
+ "H4-4": {
+  "evidence": "Die kann nicht mit dem Fahrrad kommen, und zu Fuß vom Parkhaus am Stadtrand schafft sie es auch nicht.",
+  "evidence_en": "She can't come by bike, and she can't manage on foot from the car park on the edge of town either.",
+  "why": "Herr Feld (a) nennt seine Kundin, Frau Berger, 80 Jahre: Ältere Menschen können nicht alle radeln oder laufen.",
+  "why_en": "Mr Feld (a) gives the example of his 80-year-old customer: not all older people can cycle or walk.",
+  "trap": "Frau Sander sagt „Wer zu Fuß geht, der bleibt länger“ – das Thema zu Fuß, aber mit positiver Bedeutung.",
+  "trap_en": "Ms Sander says 'people on foot stay longer', same topic of walking, but positive.",
+  "question_en": "Not all older people can come by bike or on foot."
+ },
+ "H4-5": {
+  "evidence": "Lieferungen für die Geschäfte müssen weiterhin möglich sein, zum Beispiel jeden Morgen zwischen sechs und zehn Uhr.",
+  "evidence_en": "Deliveries to the shops must still be possible, for example every morning between six and ten.",
+  "why": "Frau Sander (b) schlägt Lieferungen am Morgen vor.",
+  "why_en": "Ms Sander (b) proposes morning deliveries.",
+  "trap": "Herr Feld sagt später „wenn … die Lieferungen geregelt sind“. Er nennt nur die Bedingung, die Idee kommt von Frau Sander.",
+  "trap_en": "Mr Feld later says 'if deliveries are sorted', but he only names the condition; the idea is Ms Sander's.",
+  "question_en": "Shops should still be allowed to receive deliveries in the morning."
+ },
+ "H4-6": {
+  "evidence": "Wenn es am Stadtrand große Parkhäuser gibt und von dort alle zehn Minuten ein kostenloser Bus in die Mitte fährt, dann könnte ich mir das vorstellen.",
+  "evidence_en": "If there are big car parks on the edge of town and a free bus runs from there to the centre every ten minutes, then I could imagine it.",
+  "why": "Herr Feld (a) nennt diese Lösung selbst: Parkhäuser und kostenloser Bus.",
+  "why_en": "Mr Feld (a) proposes this solution himself: car parks plus a free bus.",
+  "trap": "Frau Sander antwortet „Da bin ich ganz bei Ihnen“ – sie stimmt zu, aber die Idee kommt von Herrn Feld.",
+  "trap_en": "Ms Sander replies 'I'm completely with you'; she agrees, but the idea is Mr Feld's.",
+  "question_en": "Car parks on the edge of town with a free bus would be a solution."
+ },
+ "H4-7": {
+  "evidence": "Und ich habe heute Morgen trotzdem vierzig Minuten im Stau gestanden, im Bus",
+  "evidence_en": "And this morning I still stood in a traffic jam for forty minutes, on the bus",
+  "why": "Die Moderatorin hat heute Morgen 40 Minuten im Stau gestanden.",
+  "why_en": "The presenter was stuck in traffic for 40 minutes this morning.",
+  "trap": "Man denkt an Autofahrer wie Herrn Feld, aber die Moderatorin stand im Bus im Stau.",
+  "trap_en": "You'd think of a driver like Mr Feld, but the presenter was stuck in a bus.",
+  "question_en": "I was stuck in a traffic jam for a long time today."
+ },
+ "H4-8": {
+  "evidence": "sondern erst einmal einen Monat lang ausprobieren, am besten im Sommer",
+  "evidence_en": "but first try it out for a month, ideally in summer",
+  "why": "Frau Sander (b) will die Idee zuerst einen Monat testen.",
+  "why_en": "Ms Sander (b) wants to test the idea for a month first.",
+  "trap": "Herr Feld sagt „Ein Test, das lässt sich diskutieren“ – er reagiert nur auf ihren Vorschlag.",
+  "trap_en": "Mr Feld says 'a test is worth discussing', but he's only reacting to her proposal.",
+  "question_en": "The car-free city centre should first be tested for a month."
+ }
+}

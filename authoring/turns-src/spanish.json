@@ -1,0 +1,126 @@
+[
+ {
+  "time": "past",
+  "aspect": "simple",
+  "form": "yo fui",
+  "alt": "",
+  "status": "form",
+  "marker": [
+   "fui"
+  ],
+  "gloss": "I went",
+  "note": "Preterite: one completed trip. Same form as the past of ser (I was).",
+  "translit": "",
+  "markerTr": []
+ },
+ {
+  "time": "past",
+  "aspect": "progressive",
+  "form": "yo iba",
+  "alt": "yo estaba yendo",
+  "status": "form",
+  "marker": [
+   "iba"
+  ],
+  "gloss": "I was going",
+  "note": "Imperfect: background or ongoing action in the past; estaba yendo stresses it was in progress.",
+  "translit": "",
+  "markerTr": []
+ },
+ {
+  "time": "past",
+  "aspect": "perfect",
+  "form": "yo había ido",
+  "alt": "",
+  "status": "form",
+  "marker": [
+   "había ido"
+  ],
+  "gloss": "I had gone",
+  "note": "Pluperfect: haber in the imperfect plus the fixed participle ido.",
+  "translit": "",
+  "markerTr": []
+ },
+ {
+  "time": "present",
+  "aspect": "simple",
+  "form": "yo voy",
+  "alt": "",
+  "status": "form",
+  "marker": [],
+  "gloss": "I go",
+  "note": "Irregular: voy looks nothing like the infinitive ir.",
+  "translit": "",
+  "markerTr": []
+ },
+ {
+  "time": "present",
+  "aspect": "progressive",
+  "form": "yo voy ahorita",
+  "alt": "yo estoy yendo",
+  "status": "periphrasis",
+  "marker": [
+   "ahorita"
+  ],
+  "gloss": "I am going",
+  "note": "Plain voy plus ahorita is normal for right now; estoy yendo exists but sounds odd for a trip.",
+  "translit": "",
+  "markerTr": []
+ },
+ {
+  "time": "present",
+  "aspect": "perfect",
+  "form": "yo fui",
+  "alt": "yo he ido",
+  "status": "form",
+  "marker": [
+   "fui"
+  ],
+  "gloss": "I have gone",
+  "note": "Latin America uses the preterite fui for most recent events; he ido is more common in Spain.",
+  "translit": "",
+  "markerTr": []
+ },
+ {
+  "time": "future",
+  "aspect": "simple",
+  "form": "yo voy a ir",
+  "alt": "yo iré",
+  "status": "form",
+  "marker": [
+   "voy a"
+  ],
+  "gloss": "I will go",
+  "note": "Spoken future is ir a + infinitive, so ir appears twice; iré is more formal or written.",
+  "translit": "",
+  "markerTr": []
+ },
+ {
+  "time": "future",
+  "aspect": "progressive",
+  "form": "yo voy a estar yendo",
+  "alt": "",
+  "status": "none",
+  "marker": [
+   "voy a estar yendo"
+  ],
+  "gloss": "I will be going",
+  "note": "Grammatical but rarely said; speakers use voy a ir or voy with a time word.",
+  "translit": "",
+  "markerTr": []
+ },
+ {
+  "time": "future",
+  "aspect": "perfect",
+  "form": "yo habré ido",
+  "alt": "yo ya voy a haber ido",
+  "status": "form",
+  "marker": [
+   "habré ido"
+  ],
+  "gloss": "I will have gone",
+  "note": "Future perfect exists; in speech habré ido more often means I have probably gone.",
+  "translit": "",
+  "markerTr": []
+ }
+]

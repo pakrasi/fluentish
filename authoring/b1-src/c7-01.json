@@ -1,0 +1,1111 @@
+[
+ {
+  "id": "BL:rules-verbindlich",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L5",
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "word-choice"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "binding (a booking you can't take back)",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "verbindlich"
+  ],
+  "anywhere": false,
+  "model": "Verbindlich",
+  "wrong": [],
+  "rule": "verbindlich = fixed: after a verbindliche Anmeldung you can't just cancel.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-gebuehr",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L5",
+  "fn": null,
+  "star": true,
+  "trap": "cap",
+  "focus": [
+   "word-choice",
+   "article",
+   "cap"
+  ],
+  "strict": [
+   "die",
+   "Gebühr"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "the fee",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "die gebühr"
+  ],
+  "anywhere": false,
+  "model": "Die Gebühr",
+  "wrong": [
+   "der Gebühr",
+   "die gebühr"
+  ],
+  "rule": "Gebühr is feminine: die Gebühr.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-ermaessigung",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L3",
+  "fn": null,
+  "star": true,
+  "trap": "cap",
+  "focus": [
+   "word-choice",
+   "article",
+   "cap"
+  ],
+  "strict": [
+   "die",
+   "Ermäßigung"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "the discount (for students)",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "die ermäßigung"
+  ],
+  "anywhere": false,
+  "model": "Die Ermäßigung",
+  "wrong": [
+   "der Ermäßigung",
+   "die ermäßigung"
+  ],
+  "rule": "Nouns ending in -ung are feminine: die Ermäßigung.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-zuschlag",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L5",
+  "fn": null,
+  "star": true,
+  "trap": "cap",
+  "focus": [
+   "word-choice",
+   "article",
+   "cap"
+  ],
+  "strict": [
+   "der",
+   "Zuschlag"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "the surcharge (extra cost)",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "der zuschlag"
+  ],
+  "anywhere": false,
+  "model": "Der Zuschlag",
+  "wrong": [
+   "die Zuschlag",
+   "der zuschlag"
+  ],
+  "rule": "Zuschlag is masculine: der Zuschlag, an extra amount on top of the price.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-ersatzperson",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L5",
+  "fn": null,
+  "star": true,
+  "trap": "cap",
+  "focus": [
+   "word-choice",
+   "article",
+   "cap"
+  ],
+  "strict": [
+   "die",
+   "Ersatzperson"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "the substitute (a person who goes in your place)",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "die ersatzperson"
+  ],
+  "anywhere": false,
+  "model": "Die Ersatzperson",
+  "wrong": [
+   "der Ersatzperson",
+   "die ersatzperson"
+  ],
+  "rule": "Compounds take the gender of the last noun: die Person, so die Ersatzperson.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-voraussetzung",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L3",
+  "fn": null,
+  "star": true,
+  "trap": "cap",
+  "focus": [
+   "word-choice",
+   "article",
+   "cap"
+  ],
+  "strict": [
+   "die",
+   "Voraussetzung"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "the prerequisite",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "die voraussetzung"
+  ],
+  "anywhere": false,
+  "model": "Die Voraussetzung",
+  "wrong": [
+   "der Voraussetzung",
+   "die voraussetzung"
+  ],
+  "rule": "Nouns ending in -ung are feminine: die Voraussetzung.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-bescheinigung",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L5",
+  "fn": null,
+  "star": true,
+  "trap": "cap",
+  "focus": [
+   "word-choice",
+   "article",
+   "cap"
+  ],
+  "strict": [
+   "die",
+   "Bescheinigung"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "the certificate (an official paper that proves something)",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "die bescheinigung"
+  ],
+  "anywhere": false,
+  "model": "Die Bescheinigung",
+  "wrong": [
+   "der Bescheinigung",
+   "die bescheinigung"
+  ],
+  "rule": "Nouns ending in -ung are feminine: die Bescheinigung.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-bestaetigung",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L5",
+  "fn": null,
+  "star": true,
+  "trap": "cap",
+  "focus": [
+   "word-choice",
+   "article",
+   "cap"
+  ],
+  "strict": [
+   "die",
+   "Bestätigung"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "the confirmation",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "die bestätigung"
+  ],
+  "anywhere": false,
+  "model": "Die Bestätigung",
+  "wrong": [
+   "der Bestätigung",
+   "die bestätigung"
+  ],
+  "rule": "Nouns ending in -ung are feminine: die Bestätigung.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-anmeldung",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L3",
+  "fn": null,
+  "star": true,
+  "trap": "cap",
+  "focus": [
+   "word-choice",
+   "article",
+   "cap"
+  ],
+  "strict": [
+   "die",
+   "Anmeldung"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "the registration",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "die anmeldung"
+  ],
+  "anywhere": false,
+  "model": "Die Anmeldung",
+  "wrong": [
+   "der Anmeldung",
+   "die anmeldung"
+  ],
+  "rule": "Nouns ending in -ung are feminine: die Anmeldung.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-zustimmung",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L5",
+  "fn": null,
+  "star": true,
+  "trap": "cap",
+  "focus": [
+   "word-choice",
+   "article",
+   "cap"
+  ],
+  "strict": [
+   "die",
+   "Zustimmung"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "the consent (of the parents)",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "die zustimmung"
+  ],
+  "anywhere": false,
+  "model": "Die Zustimmung",
+  "wrong": [
+   "der Zustimmung",
+   "die zustimmung"
+  ],
+  "rule": "Nouns ending in -ung are feminine: die Zustimmung.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-spaetestens",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L5",
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "word-choice"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "at the latest",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "spätestens"
+  ],
+  "anywhere": false,
+  "model": "Spätestens",
+  "wrong": [],
+  "rule": "spätestens = by this time and not later.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-innerhalb-von",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L5",
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "word-choice"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "within two weeks",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "innerhalb von zwei wochen",
+   "innerhalb von 2 wochen"
+  ],
+  "anywhere": false,
+  "model": "Innerhalb von zwei Wochen",
+  "wrong": [],
+  "rule": "innerhalb von = before this period is over: innerhalb von zwei Wochen.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-ab-montag",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L3",
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "word-choice"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "from Monday on",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "ab montag",
+   "ab dem montag"
+  ],
+  "anywhere": false,
+  "model": "Ab Montag",
+  "wrong": [],
+  "rule": "ab = starting from this point: ab Montag.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-bis-spaetestens",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L5",
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "word-choice"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "by Friday at the latest",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "spätestens bis freitag",
+   "bis spätestens freitag",
+   "spätestens am freitag",
+   "spätestens freitag"
+  ],
+  "anywhere": false,
+  "model": "Spätestens bis Freitag",
+  "wrong": [],
+  "rule": "bis = up to this day, spätestens = and not later.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-vor-ort",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L3",
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "word-choice"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "in person (not online)",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "vor ort",
+   "in präsenz",
+   "persönlich"
+  ],
+  "anywhere": false,
+  "model": "Vor Ort",
+  "wrong": [],
+  "rule": "vor Ort = at the place itself, so not online.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-gestattet",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L5",
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "paraphrase"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in everyday German.",
+  "prompt": "gestattet",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "erlaubt",
+   "man darf das"
+  ],
+  "anywhere": false,
+  "model": "Erlaubt",
+  "wrong": [],
+  "rule": "gestattet is the formal word for erlaubt.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-nicht-gestattet",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L5",
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "paraphrase"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in everyday German.",
+  "prompt": "nicht gestattet",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "verboten",
+   "nicht erlaubt",
+   "man darf das nicht"
+  ],
+  "anywhere": false,
+  "model": "Verboten",
+  "wrong": [],
+  "rule": "nicht gestattet = verboten, often in a Hausordnung.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-erforderlich",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L5",
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "paraphrase"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in everyday German.",
+  "prompt": "erforderlich",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "nötig",
+   "notwendig",
+   "man braucht es"
+  ],
+  "anywhere": false,
+  "model": "Nötig",
+  "wrong": [],
+  "rule": "erforderlich = nötig: you must have it.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-lediglich",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L5",
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "paraphrase"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in everyday German.",
+  "prompt": "lediglich",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "nur",
+   "bloß"
+  ],
+  "anywhere": false,
+  "model": "Nur",
+  "wrong": [],
+  "rule": "lediglich = nur: lediglich zwei Plätze means only two.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-ausschliesslich",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L5",
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "paraphrase"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in everyday German.",
+  "prompt": "ausschließlich für Mitglieder",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "nur für mitglieder",
+   "für niemanden außer mitgliedern"
+  ],
+  "anywhere": false,
+  "model": "Nur für Mitglieder",
+  "wrong": [],
+  "rule": "ausschließlich = nur, with no exceptions.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-mindestens",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L3",
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "paraphrase"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in everyday German.",
+  "prompt": "mindestens zehn Personen",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "nicht weniger als zehn personen",
+   "zehn personen oder mehr",
+   "zehn oder mehr personen"
+  ],
+  "anywhere": false,
+  "model": "Nicht weniger als zehn Personen",
+  "wrong": [],
+  "rule": "mindestens = this number or more, never fewer.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-hoechstens",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L5",
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "paraphrase"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in everyday German.",
+  "prompt": "höchstens zwei Taschen",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "nicht mehr als zwei taschen",
+   "maximal zwei taschen",
+   "zwei taschen oder weniger"
+  ],
+  "anywhere": false,
+  "model": "Nicht mehr als zwei Taschen",
+  "wrong": [],
+  "rule": "höchstens = this number or fewer, never more.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-kostenlos-absagen",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L5",
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "paraphrase"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in everyday German.",
+  "prompt": "kostenlos absagen",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "ohne kosten absagen",
+   "gratis absagen",
+   "umsonst absagen",
+   "absagen ohne zu bezahlen"
+  ],
+  "anywhere": false,
+  "model": "Ohne Kosten absagen",
+  "wrong": [],
+  "rule": "kostenlos absagen = you can cancel and pay nothing.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-berechnet-werden",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L5",
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "paraphrase"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in everyday German.",
+  "prompt": "berechnet werden",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "bezahlen müssen",
+   "zahlen müssen",
+   "bezahlt werden müssen",
+   "man muss bezahlen",
+   "man muss zahlen"
+  ],
+  "anywhere": false,
+  "model": "Bezahlen müssen",
+  "wrong": [],
+  "rule": "wird berechnet = you have to pay for it.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-zur-verfuegung",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L5",
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "paraphrase"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in everyday German.",
+  "prompt": "zur Verfügung stehen",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "verfügbar sein",
+   "da sein",
+   "benutzt werden können",
+   "vorhanden sein"
+  ],
+  "anywhere": false,
+  "model": "Verfügbar sein",
+  "wrong": [],
+  "rule": "zur Verfügung stehen = it is there and you can use it.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-begrenzte-zahl",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L3",
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "paraphrase"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in everyday German.",
+  "prompt": "in begrenzter Zahl",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "nur wenige",
+   "nicht viele",
+   "begrenzt",
+   "nur eine bestimmte anzahl"
+  ],
+  "anywhere": false,
+  "model": "Nur wenige",
+  "wrong": [],
+  "rule": "in begrenzter Zahl = there are only a few, so book early.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-voraussetzung-satz",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L3",
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "paraphrase"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in everyday German.",
+  "prompt": "Voraussetzung ist ein Führerschein.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "man braucht einen führerschein",
+   "man muss einen führerschein haben",
+   "ein führerschein ist nötig",
+   "ein führerschein ist notwendig"
+  ],
+  "anywhere": false,
+  "model": "Man braucht einen Führerschein",
+  "wrong": [],
+  "rule": "Voraussetzung = something you must have first.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-zustimmen",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L5",
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "paraphrase"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in everyday German.",
+  "prompt": "zustimmen",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "einverstanden sein",
+   "ja sagen",
+   "erlauben"
+  ],
+  "anywhere": false,
+  "model": "Einverstanden sein",
+  "wrong": [],
+  "rule": "zustimmen = ja sagen, einverstanden sein.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-im-voraus",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L5",
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "paraphrase"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in everyday German.",
+  "prompt": "im Voraus",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "vorher",
+   "vorab",
+   "schon vorher"
+  ],
+  "anywhere": false,
+  "model": "Vorher",
+  "wrong": [],
+  "rule": "im Voraus = vorher, before the event.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-rechtzeitig",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L5",
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "paraphrase"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in everyday German.",
+  "prompt": "rechtzeitig",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "früh genug",
+   "nicht zu spät",
+   "pünktlich"
+  ],
+  "anywhere": false,
+  "model": "Früh genug",
+  "wrong": [],
+  "rule": "rechtzeitig = früh genug, before it is too late.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-vorkenntnisse-erforderlich",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L3",
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "paraphrase"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in everyday German.",
+  "prompt": "Vorkenntnisse sind erforderlich.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "nicht für anfänger",
+   "man braucht vorkenntnisse",
+   "vorkenntnisse sind nötig",
+   "man muss schon etwas können"
+  ],
+  "anywhere": false,
+  "model": "Nicht für Anfänger",
+  "wrong": [],
+  "rule": "Vorkenntnisse erforderlich = you must already know something, so not for beginners.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BL:rules-praesenz",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L3",
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "paraphrase"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Say it in everyday German.",
+  "prompt": "in Präsenz",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "vor ort",
+   "persönlich",
+   "nicht online"
+  ],
+  "anywhere": false,
+  "model": "Vor Ort",
+  "wrong": [],
+  "rule": "in Präsenz = vor Ort, people meet in the same room.",
+  "src": "cheatsheet §10 Bedingungen and rules vocabulary",
+  "chunk": null,
+  "level": "B1"
+ }
+]

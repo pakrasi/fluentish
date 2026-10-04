@@ -1,0 +1,545 @@
+[
+{
+"id": "ENG_CHUNK_0601",
+"t": "Pedí [sustantivo], pero [oración]",
+"ex": "Disculpe, pedí la hamburguesa vegetariana, pero esta tiene pollo."
+},
+{
+"id": "ENG_CHUNK_0602",
+"t": "¿Podría hablar con [persona]?",
+"ex": "Hola, ¿podría hablar con María, por favor?",
+"n": "Also common: ¿Se encuentra [persona]? (Is [person] in?)"
+},
+{
+"id": "ENG_CHUNK_0603",
+"t": "Habla [persona], de [sustantivo] / Le habla [persona], de [sustantivo]",
+"ex": "Hola, habla Sam, del consultorio dental.",
+"n": "Not *Esto es [persona]. Spanish uses hablar: 'Habla Sam' / 'Soy Sam'."
+},
+{
+"id": "ENG_CHUNK_0604",
+"t": "Le llamo por [sustantivo] / Te llamo por [sustantivo]",
+"ex": "Hola, le llamo por el departamento que publicó.",
+"n": "Spain: el piso instead of el departamento."
+},
+{
+"id": "ENG_CHUNK_0605",
+"t": "¿Le puedo dejar un mensaje a [persona]?",
+"ex": "¿No está? No hay problema. ¿Le puedo dejar un mensaje?"
+},
+{
+"id": "ENG_CHUNK_0606",
+"t": "¿Le puedes decir a [persona] que me llame?",
+"ex": "¿Le puedes decir a Tom que me llame cuando esté libre?",
+"n": "decir que + subjunctive for a request: que me llame. Also: cuando + subjunctive for the future (cuando esté)."
+},
+{
+"id": "ENG_CHUNK_0607",
+"t": "Tengo [sustantivo] desde hace [tiempo] / Llevo [tiempo] con [sustantivo]",
+"ex": "Ya tengo dolor de cabeza desde hace dos días.",
+"n": "Present tense, not perfect: *He tenido ... por dos días is a classic learner error."
+},
+{
+"id": "ENG_CHUNK_0608",
+"t": "Me duele cuando [verbo]",
+"ex": "Me duele cuando me agacho para amarrarme los zapatos.",
+"n": "doler works like gustar: me duele la rodilla. Spain: atarme los zapatos."
+},
+{
+"id": "ENG_CHUNK_0609",
+"t": "Me está matando [el/la sustantivo] / Me duele un montón [el/la sustantivo]",
+"ex": "La rodilla me está matando después de esa caminata tan larga.",
+"n": "Use the article, not a possessive, with body parts: la rodilla, not mi rodilla."
+},
+{
+"id": "ENG_CHUNK_0610",
+"t": "Creo que tengo [sustantivo] / Me parece que me dio [sustantivo]",
+"ex": "Creo que me estoy resfriando, así que hoy me quedo en casa.",
+"n": "Latin America often says 'me dio gripa/gripe' for catching a cold."
+},
+{
+"id": "ENG_CHUNK_0611",
+"t": "¿Me puede dar algo para [sustantivo]?",
+"ex": "Hola, ¿me puede dar algo para el dolor de cabeza?"
+},
+{
+"id": "ENG_CHUNK_0612",
+"t": "¿Debería preocuparme por [sustantivo]?",
+"ex": "¿Debería preocuparme por esta tos, o es solo un resfriado?"
+},
+{
+"id": "ENG_CHUNK_0613",
+"t": "¿Cada cuánto tengo que [verbo]? / ¿Cada cuánto debo [verbo]?",
+"ex": "¿Cada cuánto tengo que tomar estas pastillas?",
+"n": "¿Cada cuánto? is the natural 'how often'; ¿Con qué frecuencia? sounds more formal."
+},
+{
+"id": "ENG_CHUNK_0614",
+"t": "¿Necesito receta para [sustantivo]?",
+"ex": "¿Necesito receta para estas pastillas para la alergia?"
+},
+{
+"id": "ENG_CHUNK_0615",
+"t": "No soy muy de [sustantivo/infinitivo]",
+"ex": "La verdad, no soy nada de madrugar.",
+"n": "No fixed equivalent of 'a morning person'; 'ser de' + noun/infinitive does the job: soy muy de playa."
+},
+{
+"id": "ENG_CHUNK_0616",
+"t": "Últimamente me he sentido [adjetivo] / Últimamente me siento [adjetivo]",
+"ex": "Últimamente me he sentido muy bien, gracias por preguntar.",
+"n": "Latin America often prefers the simple present or 'he estado sintiéndome' here."
+},
+{
+"id": "ENG_CHUNK_0617",
+"t": "Estoy trabajando en [sustantivo]",
+"ex": "Esta semana estoy trabajando en la nueva página web."
+},
+{
+"id": "ENG_CHUNK_0618",
+"t": "Estoy en plena [sustantivo] / Estoy [gerundio] justo ahora",
+"ex": "¿Te llamo después? Estoy cenando justo ahora.",
+"n": "Most natural to use the verb: estoy cenando, estoy manejando. 'En medio de' works for events: en medio de una reunión."
+},
+{
+"id": "ENG_CHUNK_0619",
+"t": "¿Tienes un minuto para [verbo]? / ¿Tiene un minuto para [verbo]?",
+"ex": "¿Tienes un minuto para revisar este correo?"
+},
+{
+"id": "ENG_CHUNK_0620",
+"t": "Te aviso lo de [sustantivo] / Le confirmo [sustantivo] más tarde",
+"ex": "Te aviso lo de las fechas el viernes.",
+"n": "'Te aviso' (I'll let you know) is the everyday deferral; 'volver a ti' is an anglicism."
+},
+{
+"id": "ENG_CHUNK_0621",
+"t": "¿Podemos pasar [sustantivo] al [sustantivo]? / ¿Podemos cambiar [sustantivo] para el [sustantivo]?",
+"ex": "¿Podemos pasar la reunión al jueves?"
+},
+{
+"id": "ENG_CHUNK_0622",
+"t": "Te explico [sustantivo] paso a paso",
+"ex": "Te explico la nueva app paso a paso, es bastante fácil."
+},
+{
+"id": "ENG_CHUNK_0623",
+"t": "Estoy a cargo de [sustantivo] / Me encargo de [sustantivo]",
+"ex": "Me encargo de la botana para la fiesta.",
+"n": "Snacks: botana (Mexico), picada/pasabocas elsewhere, picoteo (Spain)."
+},
+{
+"id": "ENG_CHUNK_0624",
+"t": "Sigo esperando [sustantivo]",
+"ex": "Sigo esperando mi paquete, tenía que llegar el lunes."
+},
+{
+"id": "ENG_CHUNK_0625",
+"t": "¿Alguna novedad con [sustantivo]? / ¿Qué se sabe de [sustantivo]?",
+"ex": "Oye, ¿alguna novedad con el arreglo de la cocina?"
+},
+{
+"id": "ENG_CHUNK_0626",
+"t": "Felicidades por [sustantivo] / Felicitaciones por [sustantivo]",
+"ex": "¡Felicidades por el nuevo trabajo! Te lo mereces totalmente."
+},
+{
+"id": "ENG_CHUNK_0627",
+"t": "Suerte con [sustantivo] / Mucha suerte en [sustantivo]",
+"ex": "¡Mucha suerte mañana en la entrevista!",
+"n": "Also: ¡Que te vaya bien! (que + subjunctive wish)."
+},
+{
+"id": "ENG_CHUNK_0628",
+"t": "Salúdame a [persona] / Mándale saludos a [persona]",
+"ex": "Salúdame a tu mamá, ¿sí?"
+},
+{
+"id": "ENG_CHUNK_0629",
+"t": "¿Vas a venir a [sustantivo]? / ¿Vas a ir a [sustantivo]?",
+"ex": "¿Vas a ir a la fiesta del viernes?",
+"n": "venir if you'll be there too / it's at your place; ir otherwise."
+},
+{
+"id": "ENG_CHUNK_0630",
+"t": "Vamos a hacer [sustantivo] el [día]",
+"ex": "Vamos a hacer una carne asada el sábado, ¡tienes que venir!",
+"n": "Barbecue: carne asada (Mexico), asado (Southern Cone), parrillada (Andes), barbacoa (Spain)."
+},
+{
+"id": "ENG_CHUNK_0631",
+"t": "¿Qué pasa con [sustantivo]? / ¿Qué onda con [sustantivo]?",
+"ex": "¿Qué pasa con el wifi? Se corta a cada rato.",
+"n": "¿Qué onda? is very informal and regional (Mexico/Central America)."
+},
+{
+"id": "ENG_CHUNK_0632",
+"t": "¿Me llevas a [sustantivo]? / ¿Me das un aventón a [sustantivo]?",
+"ex": "¿Me llevas al aeropuerto mañana en la mañana?",
+"n": "Ride: aventón (Mexico), jalón (Central Am.), 'me acercas' (Spain). ¿Me llevas? works everywhere."
+},
+{
+"id": "ENG_CHUNK_0633",
+"t": "Llego en [tiempo] / Estoy ahí en [tiempo]",
+"ex": "Me estoy estacionando, llego en cinco minutos.",
+"n": "Spain: aparcando instead of estacionando."
+},
+{
+"id": "ENG_CHUNK_0634",
+"t": "Voy camino a [sustantivo] / Voy de camino a [sustantivo]",
+"ex": "Voy camino al gimnasio, ¿te llamo más tarde?"
+},
+{
+"id": "ENG_CHUNK_0635",
+"t": "Gracias por el ofrecimiento, pero [oración] / Te lo agradezco, pero [oración]",
+"ex": "Te lo agradezco, pero creo que puedo solo."
+},
+{
+"id": "ENG_CHUNK_0636",
+"t": "contar un chiste",
+"ex": "A mi papá le encanta contar chistes en la cena.",
+"n": "Always contar, never *decir un chiste."
+},
+{
+"id": "ENG_CHUNK_0637",
+"t": "a decir verdad / la verdad (es que)",
+"ex": "A decir verdad, nunca he visto esa película."
+},
+{
+"id": "ENG_CHUNK_0638",
+"t": "burlarse de [persona] / reírse de [persona]",
+"ex": "Mis amigos siempre se burlan de mí por cómo bailo."
+},
+{
+"id": "ENG_CHUNK_0639",
+"t": "poner excusas / poner pretextos",
+"ex": "Bueno, se acabaron las excusas: hoy salgo a correr."
+},
+{
+"id": "ENG_CHUNK_0640",
+"t": "romper una promesa / no cumplir una promesa",
+"ex": "Te dije que te ayudaba con la mudanza, y no voy a romper mi promesa."
+},
+{
+"id": "ENG_CHUNK_0641",
+"t": "echarle la culpa a [persona] de [sustantivo] / culpar a [persona] de [sustantivo]",
+"ex": "¡No me eches la culpa de la lluvia, yo solo organicé el picnic!",
+"n": "Note the doubled pronoun: echarLE la culpa A alguien."
+},
+{
+"id": "ENG_CHUNK_0642",
+"t": "hacer [algo] a propósito",
+"ex": "Perdón, no lo hice a propósito, se me resbaló.",
+"n": "'se me resbaló': accidental se + indirect object takes the blame off you."
+},
+{
+"id": "ENG_CHUNK_0643",
+"t": "tomar aire fresco / salir a tomar aire",
+"ex": "Voy a salir un momento a tomar aire."
+},
+{
+"id": "ENG_CHUNK_0644",
+"t": "hacer una sugerencia / proponer algo",
+"ex": "¿Puedo hacer una sugerencia? Pidamos comida tailandesa hoy."
+},
+{
+"id": "ENG_CHUNK_0645",
+"t": "tener cuidado con [sustantivo] / ojo con [sustantivo]",
+"ex": "Ojo con el escalón al entrar."
+},
+{
+"id": "ENG_CHUNK_0646",
+"t": "un día largo / un día pesado",
+"ex": "Fue un día muy pesado, ya quiero tirarme en el sillón.",
+"n": "Latin America also: un día agotador. Spain: el sofá."
+},
+{
+"id": "ENG_CHUNK_0647",
+"t": "un mal hábito / una mala costumbre",
+"ex": "Revisar el celular en la cama es una mala costumbre que tengo.",
+"n": "Spain: el móvil."
+},
+{
+"id": "ENG_CHUNK_0648",
+"t": "buen sentido del humor",
+"ex": "Mi nuevo compañero de cuarto tiene muy buen sentido del humor.",
+"n": "Spain: compañero de piso."
+},
+{
+"id": "ENG_CHUNK_0649",
+"t": "ser muy fan de [sustantivo]",
+"ex": "Soy muy fan de la comida picante, así que probemos ese lugar."
+},
+{
+"id": "ENG_CHUNK_0650",
+"t": "nuevo de paquete / nuevecito",
+"ex": "¡Mira mi bici nuevecita!",
+"n": "Also: recién comprado. Spain: nuevo a estrenar."
+},
+{
+"id": "ENG_CHUNK_0651",
+"t": "perfectamente bien / está bien, en serio",
+"ex": "Tranquilo, la sopa está perfectamente bien."
+},
+{
+"id": "ENG_CHUNK_0652",
+"t": "agarrarle la onda a [sustantivo] / agarrarle el truco a [sustantivo]",
+"ex": "Por fin le estoy agarrando la onda a esta app nueva.",
+"n": "Spain: pillarle el truco a / cogerle el truco a. 'Coger' is vulgar in much of Latin America."
+},
+{
+"id": "ENG_CHUNK_0653",
+"t": "sacar conclusiones precipitadas / adelantarse a los hechos",
+"ex": "No saquemos conclusiones hasta que hablemos con ella.",
+"n": "hasta que + subjunctive when the event is still in the future."
+},
+{
+"id": "ENG_CHUNK_0654",
+"t": "revisar [sustantivo] / ver [sustantivo]",
+"ex": "Esta tarde reviso el problema.",
+"n": "Also: 'lo checo' (Mexico), 'lo miro' (Spain)."
+},
+{
+"id": "ENG_CHUNK_0655",
+"t": "sacar el tema de [sustantivo] / mencionar [sustantivo]",
+"ex": "No quería sacar el tema del dinero en la cena."
+},
+{
+"id": "ENG_CHUNK_0656",
+"t": "señalar [sustantivo] / hacer notar [sustantivo]",
+"ex": "Gracias por avisarme del error de dedo.",
+"n": "Everyday speech prefers 'avisar de' or 'decir' over 'señalar'."
+},
+{
+"id": "ENG_CHUNK_0657",
+"t": "repasar [sustantivo]",
+"ex": "Repasemos el plan una vez más."
+},
+{
+"id": "ENG_CHUNK_0658",
+"t": "dar seguimiento a [sustantivo]",
+"ex": "Solo le escribo para dar seguimiento a mi correo del lunes.",
+"n": "Spain: hacer un seguimiento de."
+},
+{
+"id": "ENG_CHUNK_0659",
+"t": "consultarle [sustantivo] a [persona] / comentarle [sustantivo] a [persona]",
+"ex": "¿Te puedo comentar una idea?"
+},
+{
+"id": "ENG_CHUNK_0660",
+"t": "poner al día a [persona] / ponerme al tanto",
+"ex": "No fui a la reunión. ¿Me pones al día?"
+},
+{
+"id": "ENG_CHUNK_0661",
+"t": "reportarse con [persona] / ponerse en contacto con [persona]",
+"ex": "Pongámonos en contacto con el equipo el viernes.",
+"n": "No neat equivalent of 'touch base'; 'hacer un check-in' is heard in offices but is Spanglish."
+},
+{
+"id": "ENG_CHUNK_0662",
+"t": "avisarle a [persona] / darle un aviso a [persona]",
+"ex": "Gracias por avisarme lo del tráfico."
+},
+{
+"id": "ENG_CHUNK_0663",
+"t": "ponerse al día con [sustantivo]",
+"ex": "Me pasé el domingo poniéndome al día con los correos."
+},
+{
+"id": "ENG_CHUNK_0664",
+"t": "cumplir con la fecha límite / cumplir con el plazo",
+"ex": "Trabajamos todo el fin de semana para cumplir con la fecha de entrega."
+},
+{
+"id": "ENG_CHUNK_0665",
+"t": "estar bajo presión / andar muy presionado",
+"ex": "Todos andan muy presionados este mes."
+},
+{
+"id": "ENG_CHUNK_0666",
+"t": "¿Por dónde empiezo?",
+"ex": "¿Qué tal el viaje? Ay, ¿por dónde empiezo?"
+},
+{
+"id": "ENG_CHUNK_0667",
+"t": "Entre tú y yo / Aquí entre nos",
+"ex": "Aquí entre nos, estoy pensando en cambiarme de trabajo.",
+"n": "'Entre nos' is Latin American; Spain: entre tú y yo."
+},
+{
+"id": "ENG_CHUNK_0668",
+"t": "Como te dije / Como te decía",
+"ex": "Como te dije, con gusto te ayudo."
+},
+{
+"id": "ENG_CHUNK_0669",
+"t": "Una cosa más / Ah, y otra cosa",
+"ex": "Ah, y otra cosa: trae tu identificación."
+},
+{
+"id": "ENG_CHUNK_0670",
+"t": "No sé tú, pero [oración] / No sé ustedes, pero [oración]",
+"ex": "No sé tú, pero yo me muero de hambre."
+},
+{
+"id": "ENG_CHUNK_0671",
+"t": "¿Sabes qué?",
+"ex": "¿Sabes qué? Mejor pidamos pizza."
+},
+{
+"id": "ENG_CHUNK_0672",
+"t": "Mira",
+"ex": "Mira, sé que estás ocupado, pero esto es importante.",
+"n": "Usted: Mire. Plural: Miren."
+},
+{
+"id": "ENG_CHUNK_0673",
+"t": "La pregunta es",
+"ex": "La pregunta es: ¿quién lo va a pagar?"
+},
+{
+"id": "ENG_CHUNK_0674",
+"t": "¿Entendí bien? / ¿Es así?",
+"ex": "Entonces nos vemos en la estación a las nueve. ¿Entendí bien?"
+},
+{
+"id": "ENG_CHUNK_0675",
+"t": "¿Podría hablar un poco más despacio?",
+"ex": "Perdón, ¿podría hablar un poco más despacio? Mi español no es perfecto."
+},
+{
+"id": "ENG_CHUNK_0676",
+"t": "¿Cómo se llamaba?",
+"ex": "Tu vecino, el del perrito lindo, ¿cómo se llamaba?",
+"n": "The imperfect (se llamaba) signals 'I've forgotten', like English 'again'."
+},
+{
+"id": "ENG_CHUNK_0677",
+"t": "Qué interesante",
+"ex": "¿Creciste en un rancho? Qué interesante."
+},
+{
+"id": "ENG_CHUNK_0678",
+"t": "Sí y no / Más o menos",
+"ex": "¿Te gustó la película? Más o menos, el final estuvo buenísimo."
+},
+{
+"id": "ENG_CHUNK_0679",
+"t": "y cosas así / y eso",
+"ex": "Más que nada jugamos juegos de mesa, cocinamos y cosas así."
+},
+{
+"id": "ENG_CHUNK_0680",
+"t": "Perdón, tú primero / Perdón, adelante",
+"ex": "Ay, perdón, tú primero."
+},
+{
+"id": "ENG_CHUNK_0681",
+"t": "Aquí tiene / Aquí tienes",
+"ex": "Aquí tiene, un café con leche extra."
+},
+{
+"id": "ENG_CHUNK_0682",
+"t": "Ni modo / Ya qué",
+"ex": "¿Ya cerró la panadería? Ni modo, volvemos mañana.",
+"n": "Ni modo is Mexico/Central America; elsewhere: Bueno, qué se le va a hacer. Spain: Pues nada."
+},
+{
+"id": "ENG_CHUNK_0683",
+"t": "Gracias de todos modos / Gracias igual",
+"ex": "Si estás ocupado, no te preocupes. ¡Gracias de todos modos!"
+},
+{
+"id": "ENG_CHUNK_0684",
+"t": "¿Está ocupado este asiento? / ¿Está libre?",
+"ex": "Disculpe, ¿está ocupado este asiento?"
+},
+{
+"id": "ENG_CHUNK_0685",
+"t": "Buen viaje / Que tengas buen viaje",
+"ex": "¡Que tengas buen viaje, y mándame un mensaje cuando aterrices!",
+"n": "que + subjunctive for wishes; cuando + subjunctive for the future (aterrices)."
+},
+{
+"id": "ENG_CHUNK_0686",
+"t": "Míralo por el lado bueno / Lo bueno es que [oración]",
+"ex": "Míralo por el lado bueno: ahora tienes el fin de semana libre."
+},
+{
+"id": "ENG_CHUNK_0687",
+"t": "Aguanta / Échale ganas / Ánimo",
+"ex": "¡Ánimo, que ya casi se acaba la semana!",
+"n": "Échale ganas is Mexican; ¡Ánimo! works everywhere."
+},
+{
+"id": "ENG_CHUNK_0688",
+"t": "No es el fin del mundo",
+"ex": "¿Perdiste el camión? No es el fin del mundo.",
+"n": "Bus: camión (Mexico), colectivo (Argentina), micro (Chile), autobús (neutral)."
+},
+{
+"id": "ENG_CHUNK_0689",
+"t": "Son cosas que pasan / Le pasa a cualquiera",
+"ex": "No te preocupes por el jugo, son cosas que pasan.",
+"n": "Spain: el zumo."
+},
+{
+"id": "ENG_CHUNK_0690",
+"t": "No te hubieras molestado / No te hubieras molestado",
+"ex": "¿Flores? ¡Ay, no te hubieras molestado!",
+"n": "Pluperfect subjunctive. Also: No era necesario. Usted: No se hubiera molestado."
+},
+{
+"id": "ENG_CHUNK_0691",
+"t": "Mientras tanto / Hasta entonces",
+"ex": "La fiesta es el sábado. Mientras tanto, guardo energía."
+},
+{
+"id": "ENG_CHUNK_0692",
+"t": "Al día siguiente",
+"ex": "Llegamos tarde, y al día siguiente nos fuimos directo a la playa."
+},
+{
+"id": "ENG_CHUNK_0693",
+"t": "Lo mismo va para / Lo mismo aplica para",
+"ex": "Deberías tomar más agua. Y lo mismo va para mí."
+},
+{
+"id": "ENG_CHUNK_0694",
+"t": "Todo el tiempo / Todo el rato",
+"ex": "El bebé durmió todo el vuelo."
+},
+{
+"id": "ENG_CHUNK_0695",
+"t": "Al mismo tiempo / A la vez",
+"ex": "La ciudad es cara, pero a la vez hay muchísimo que hacer."
+},
+{
+"id": "ENG_CHUNK_0696",
+"t": "En general",
+"ex": "En general, duermo mejor cuando no tomo café después de comer."
+},
+{
+"id": "ENG_CHUNK_0697",
+"t": "Justo antes de [sustantivo] / Justo antes de que [subjuntivo]",
+"ex": "Llamó justo antes de la cena.",
+"n": "antes de que always takes subjunctive: justo antes de que llegáramos."
+},
+{
+"id": "ENG_CHUNK_0698",
+"t": "En resumen / Total",
+"ex": "En resumen, fueron unas vacaciones increíbles."
+},
+{
+"id": "ENG_CHUNK_0699",
+"t": "Así fue como",
+"ex": "Nos sentábamos juntos en clase. Así fue como nos hicimos amigos."
+},
+{
+"id": "ENG_CHUNK_0700",
+"t": "Sobre todo / Más que nada",
+"ex": "Me encantó la comida, la gente y, sobre todo, las playas."
+}
+]

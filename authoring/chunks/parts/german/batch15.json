@@ -1,0 +1,286 @@
+[
+{
+"id": "ENG_CHUNK_1401",
+"t": "Ich habe [Nomen] / Ich bin [Adjektiv]",
+"ex": "Ich bin erkältet.",
+"n": "Often an adjective: ich bin erkältet (have a cold); pains take no article: Ich habe Halsschmerzen."
+},
+{
+"id": "ENG_CHUNK_1402",
+"t": "Mir tut [Körperteil] weh / Ich habe [Körperteil]schmerzen",
+"ex": "Mir tut der Kopf weh.",
+"n": "Dative \"mir\", with the article: mir tut der Rücken weh. Plural: mir tun die Füße weh."
+},
+{
+"id": "ENG_CHUNK_1403",
+"t": "Ich brauche etwas gegen [Nomen]",
+"ex": "Ich brauche etwas gegen Husten.",
+"n": "Medicine is \"gegen\" (against) an illness, not \"für\"."
+},
+{
+"id": "ENG_CHUNK_1404",
+"t": "Ich habe meinen/meine/mein [Nomen] verloren",
+"ex": "Ich habe meinen Pass verloren."
+},
+{
+"id": "ENG_CHUNK_1405",
+"t": "Jemand hat mir [Nomen] gestohlen / Mein(e) [Nomen] wurde geklaut",
+"ex": "Mir wurde im Zug das Portemonnaie geklaut.",
+"n": "\"klauen\" is everyday; \"stehlen\" in formal reports. Dative \"mir\" = from me."
+},
+{
+"id": "ENG_CHUNK_1406",
+"t": "Ich mag [Nomen] / [Nomen] esse ich gern",
+"ex": "Ich mag Pizza.",
+"n": "For activities use \"gern\": Ich schwimme gern."
+},
+{
+"id": "ENG_CHUNK_1407",
+"t": "Ich interessiere mich für [Nomen, Akk.]",
+"ex": "Ich interessiere mich für Geschichte.",
+"n": "Reflexive + für: not \"Ich bin interessiert in\"."
+},
+{
+"id": "ENG_CHUNK_1408",
+"t": "Ich mag [Nomen] nicht / Ich mag kein(e) [Nomen]",
+"ex": "Ich mag keinen Kaffee.",
+"n": "With nouns without article use \"kein\": Ich mag keinen Kaffee."
+},
+{
+"id": "ENG_CHUNK_1409",
+"t": "Magst du [Nomen]?",
+"ex": "Magst du italienisches Essen?"
+},
+{
+"id": "ENG_CHUNK_1410",
+"t": "Was ist dein Lieblings[Nomen]?",
+"ex": "Was ist deine Lieblingsfarbe?",
+"n": "\"Lieblings-\" joins the noun as one word: Lieblingsfarbe, Lieblingsessen."
+},
+{
+"id": "ENG_CHUNK_1411",
+"t": "Mein Lieblings[Nomen] ist [Nomen]",
+"ex": "Meine Lieblingsfarbe ist Blau."
+},
+{
+"id": "ENG_CHUNK_1412",
+"t": "Ich will [Infinitiv]",
+"ex": "Ich will nach Hause.",
+"n": "The infinitive goes to the end; with a direction the verb is often dropped: Ich will nach Hause."
+},
+{
+"id": "ENG_CHUNK_1413",
+"t": "Ich möchte [Infinitiv] / Ich würde gern [Infinitiv]",
+"ex": "Ich möchte gern einen Tisch reservieren."
+},
+{
+"id": "ENG_CHUNK_1414",
+"t": "Ich muss [Infinitiv]",
+"ex": "Ich muss zur Bank.",
+"n": "Motion verb often dropped: Ich muss zur Bank."
+},
+{
+"id": "ENG_CHUNK_1415",
+"t": "Ich muss [Infinitiv]",
+"ex": "Ich muss morgen arbeiten.",
+"n": "\"müssen\" covers both need to and have to. \"nicht müssen\" = don't have to, not \"mustn't\"."
+},
+{
+"id": "ENG_CHUNK_1416",
+"t": "Ich brauche [Nomen]",
+"ex": "Ich brauche ein Taxi."
+},
+{
+"id": "ENG_CHUNK_1417",
+"t": "Kann ich [Infinitiv]? / Darf ich [Infinitiv]?",
+"ex": "Kann ich mich hier hinsetzen?",
+"n": "\"Ist hier noch frei?\" is the usual way to ask about a free seat."
+},
+{
+"id": "ENG_CHUNK_1418",
+"t": "Können Sie bitte [Infinitiv]? / Kannst du bitte [Infinitiv]?",
+"ex": "Kannst du mir bitte helfen?"
+},
+{
+"id": "ENG_CHUNK_1419",
+"t": "Ich kann nicht [Infinitiv]",
+"ex": "Ich kann nicht schwimmen."
+},
+{
+"id": "ENG_CHUNK_1420",
+"t": "Lass uns [Infinitiv] / Komm, wir [Verb]!",
+"ex": "Lass uns an den Strand gehen.",
+"n": "Plural group: \"Lasst uns ...\"; also common: \"Gehen wir an den Strand!\"."
+},
+{
+"id": "ENG_CHUNK_1421",
+"t": "Vergiss nicht, [zu + Infinitiv]",
+"ex": "Vergiss nicht, deine Schlüssel mitzunehmen.",
+"n": "Separable verbs put zu inside: mitzunehmen."
+},
+{
+"id": "ENG_CHUNK_1422",
+"t": "Wie oft [Verb] du [...]?",
+"ex": "Wie oft gehst du ins Fitnessstudio?"
+},
+{
+"id": "ENG_CHUNK_1423",
+"t": "Was machst du normalerweise am [Zeit]?",
+"ex": "Was machst du normalerweise am Wochenende?"
+},
+{
+"id": "ENG_CHUNK_1424",
+"t": "Was machst du [Zeit]? / Was hast du [Zeit] vor?",
+"ex": "Was hast du am Wochenende vor?",
+"n": "Present tense works for plans: \"Was machst du morgen?\"."
+},
+{
+"id": "ENG_CHUNK_1425",
+"t": "Ich habe vor, [zu + Infinitiv] / Ich will [Infinitiv]",
+"ex": "Dieses Wochenende besuche ich meine Tante.",
+"n": "No need for \"werden\": the present tense + a time expression is the normal way to talk about plans."
+},
+{
+"id": "ENG_CHUNK_1426",
+"t": "Treffen wir uns um [Uhrzeit] an/in [Ort]",
+"ex": "Treffen wir uns um sechs im Café.",
+"n": "German order is usually time before place: um sechs im Café."
+},
+{
+"id": "ENG_CHUNK_1427",
+"t": "Können wir uns stattdessen [Zeit] treffen?",
+"ex": "Können wir uns stattdessen morgen treffen?",
+"n": "Casual: \"Geht auch morgen?\""
+},
+{
+"id": "ENG_CHUNK_1428",
+"t": "Sorry, am [Tag] kann ich nicht",
+"ex": "Sorry, am Samstag kann ich nicht.",
+"n": "\"kommen\" is often dropped: am Samstag kann ich nicht."
+},
+{
+"id": "ENG_CHUNK_1429",
+"t": "Am [Tag] habe ich keine Zeit",
+"ex": "Am Montag habe ich keine Zeit. Wie wäre es mit Dienstag?",
+"n": "\"beschäftigt\" sounds stiff; Germans say \"keine Zeit haben\"."
+},
+{
+"id": "ENG_CHUNK_1430",
+"t": "Passt dir [Uhrzeit]? / Geht [Uhrzeit] bei dir?",
+"ex": "Passt dir sechs Uhr?",
+"n": "Sie form: Passt Ihnen sechs Uhr?"
+},
+{
+"id": "ENG_CHUNK_1431",
+"t": "Ich komme [Zahl] Minuten später",
+"ex": "Sorry, ich komme zehn Minuten später."
+},
+{
+"id": "ENG_CHUNK_1432",
+"t": "Ich bin heute [Adjektiv] / Ich fühle mich heute [Adjektiv]",
+"ex": "Ich bin heute ziemlich müde."
+},
+{
+"id": "ENG_CHUNK_1433",
+"t": "Wie geht's deinem/deiner [Person]?",
+"ex": "Wie geht's deiner Mutter?",
+"n": "Dative after \"Wie geht's\": deinem Vater, deiner Mutter."
+},
+{
+"id": "ENG_CHUNK_1434",
+"t": "Wie ist [Person] so?",
+"ex": "Wie ist dein neuer Lehrer so?",
+"n": "\"so\" makes it a question about character, not appearance."
+},
+{
+"id": "ENG_CHUNK_1435",
+"t": "Heute ist es [Adjektiv] / Es ist [Adjektiv] heute",
+"ex": "Heute ist es kalt."
+},
+{
+"id": "ENG_CHUNK_1436",
+"t": "Wie ist das Wetter in [Ort]?",
+"ex": "Wie ist das Wetter in Hamburg?"
+},
+{
+"id": "ENG_CHUNK_1437",
+"t": "Es soll [Zeit] regnen / Es regnet [Zeit] bestimmt",
+"ex": "Heute Nachmittag soll es regnen.",
+"n": "\"soll\" = according to the forecast."
+},
+{
+"id": "ENG_CHUNK_1438",
+"t": "Hallo, hier ist [Name] / Ja, [Name] hier",
+"ex": "Hallo, hier ist Maria.",
+"n": "Germans often answer the phone with just their surname."
+},
+{
+"id": "ENG_CHUNK_1439",
+"t": "Ich rufe dich [Zeit] an",
+"ex": "Ich ruf dich morgen an.",
+"n": "Separable: ich rufe ... an; anrufen + Akkusativ (dich)."
+},
+{
+"id": "ENG_CHUNK_1440",
+"t": "Schreib mir, wenn [Satz, Verb am Ende]",
+"ex": "Schreib mir, wenn du zu Hause bist.",
+"n": "After \"wenn\" the verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_1441",
+"t": "Ich glaube, [Satz] / Ich finde, [Satz]",
+"ex": "Ich finde, das ist eine gute Idee.",
+"n": "\"Ich finde\" for opinions and judgements; \"Ich glaube\" when you're not sure of a fact."
+},
+{
+"id": "ENG_CHUNK_1442",
+"t": "Ich stimme [Person, Dativ] zu / Da hast du recht",
+"ex": "Da stimme ich dir zu.",
+"n": "Separable, with dative: ich stimme dir zu. In casual speech \"Da hast du recht\" or just \"Stimmt\"."
+},
+{
+"id": "ENG_CHUNK_1443",
+"t": "[Nomen] ist besser als [Nomen]",
+"ex": "Tee ist besser als Kaffee.",
+"n": "Comparisons use \"als\", not \"wie\"."
+},
+{
+"id": "ENG_CHUNK_1444",
+"t": "Ich war noch nie in [Ort]",
+"ex": "Ich war noch nie in Australien.",
+"n": "\"sein\" in Präteritum: Ich war noch nie in ..."
+},
+{
+"id": "ENG_CHUNK_1445",
+"t": "Letzte(n) [Zeit] habe ich [Partizip]",
+"ex": "Letztes Wochenende habe ich meine Großeltern besucht.",
+"n": "In speech the past is usually Perfekt; verb comes right after the time phrase."
+},
+{
+"id": "ENG_CHUNK_1446",
+"t": "Hattest du ein schönes [Nomen]? / War [Nomen] schön?",
+"ex": "Hattest du ein schönes Wochenende?"
+},
+{
+"id": "ENG_CHUNK_1447",
+"t": "Wie war [Nomen]?",
+"ex": "Wie war dein Wochenende?"
+},
+{
+"id": "ENG_CHUNK_1448",
+"t": "Ich [Verb] gerade",
+"ex": "Ich arbeite gerade.",
+"n": "No -ing form: present tense + \"gerade\"."
+},
+{
+"id": "ENG_CHUNK_1449",
+"t": "Tut mir leid, aber [Satz]",
+"ex": "Tut mir leid, aber da kann ich Ihnen nicht helfen."
+},
+{
+"id": "ENG_CHUNK_1450",
+"t": "Bis [Tag]!",
+"ex": "Bis Montag!",
+"n": "No \"am\" needed: Bis Montag! Bis morgen!"
+}
+]

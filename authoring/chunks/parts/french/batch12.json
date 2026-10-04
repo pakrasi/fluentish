@@ -1,0 +1,523 @@
+[
+ {
+  "id": "ENG_CHUNK_1101",
+  "t": "Il y a quelque chose dans [nom] qui [proposition] / [nom] a un petit quelque chose qui [proposition]",
+  "ex": "Ce quartier a un petit quelque chose qui fait que je m'y sens chez moi."
+ },
+ {
+  "id": "ENG_CHUNK_1102",
+  "t": "Tu serais surpris de voir combien de fois [proposition]",
+  "ex": "Tu serais surpris de voir combien de gens laissent leurs clés sur la porte."
+ },
+ {
+  "id": "ENG_CHUNK_1103",
+  "t": "Sans [nom], [proposition au conditionnel]",
+  "ex": "Sans ma sœur, je n'aurais jamais trouvé cet appart.",
+  "n": "Sans + noun is far more natural than s'il n'y avait pas eu..."
+ },
+ {
+  "id": "ENG_CHUNK_1104",
+  "t": "Si seulement [proposition à l'imparfait / au plus-que-parfait]",
+  "ex": "Si seulement j'étais parti dix minutes plus tôt.",
+  "n": "si seulement takes imparfait or plus-que-parfait, never the conditionnel."
+ },
+ {
+  "id": "ENG_CHUNK_1105",
+  "t": "J'aurais dû me douter que [proposition]",
+  "ex": "J'aurais dû me douter que le resto serait bondé un vendredi."
+ },
+ {
+  "id": "ENG_CHUNK_1106",
+  "t": "Je regrette de [verbe à l'infinitif passé] / Je regrette de ne pas [verbe]",
+  "ex": "Je regrette de ne pas être parti étudier à l'étranger quand j'en avais l'occasion.",
+  "n": "Regretter que + subjunctive when the subject changes."
+ },
+ {
+  "id": "ENG_CHUNK_1107",
+  "t": "Avec le recul, [proposition] / Rétrospectivement, [proposition]",
+  "ex": "Avec le recul, m'installer à Bordeaux, c'est la meilleure décision que j'aie jamais prise.",
+  "n": "Superlative + que triggers the subjunctive: la meilleure décision que j'aie prise."
+ },
+ {
+  "id": "ENG_CHUNK_1108",
+  "t": "Si c'était à refaire, je [verbe au conditionnel]",
+  "ex": "Si c'était à refaire, je ferais des études d'infirmière plutôt que de commerce."
+ },
+ {
+  "id": "ENG_CHUNK_1109",
+  "t": "C'est la dernière fois que je [verbe]",
+  "ex": "C'est la dernière fois que je prête ma voiture à mon frère."
+ },
+ {
+  "id": "ENG_CHUNK_1110",
+  "t": "Il était temps que [proposition au subjonctif] / Il serait temps que [proposition]",
+  "ex": "Il serait temps que tu changes de téléphone. Celui-là, il est préhistorique.",
+  "n": "Subjunctive trigger: il est temps que + subjunctive."
+ },
+ {
+  "id": "ENG_CHUNK_1111",
+  "t": "Depuis quand [proposition] ?",
+  "ex": "Depuis quand tu bois du café ? T'as toujours détesté ça."
+ },
+ {
+  "id": "ENG_CHUNK_1112",
+  "t": "Il n'est jamais trop tard pour [verbe]",
+  "ex": "Ma mère s'est mise à nager à soixante ans. Il n'est jamais trop tard pour apprendre."
+ },
+ {
+  "id": "ENG_CHUNK_1113",
+  "t": "J'ai pris l'habitude de [verbe]",
+  "ex": "J'ai pris l'habitude de regarder mon téléphone dès le réveil."
+ },
+ {
+  "id": "ENG_CHUNK_1114",
+  "t": "Je mets un point d'honneur à [verbe] / Je tiens à [verbe]",
+  "ex": "Je tiens à appeler ma grand-mère tous les dimanches."
+ },
+ {
+  "id": "ENG_CHUNK_1115",
+  "t": "Je n'ai pas pu m'empêcher de [verbe]",
+  "ex": "J'ai pas pu m'empêcher de rire quand le chien lui a piqué son sandwich."
+ },
+ {
+  "id": "ENG_CHUNK_1116",
+  "t": "Ce n'est pas pareil sans [personne]",
+  "ex": "Noël, c'était sympa, mais c'est pas pareil sans papi.",
+  "n": "Thanksgiving swapped for Noël: no French equivalent."
+ },
+ {
+  "id": "ENG_CHUNK_1117",
+  "t": "Ça m'embêterait que [personne] [verbe au subjonctif]",
+  "ex": "Appelons avant. Ça m'embêterait que tu fasses toute cette route pour rien.",
+  "n": "Subjunctive trigger: ça m'embêterait que + subjunctive."
+ },
+ {
+  "id": "ENG_CHUNK_1118",
+  "t": "Ça me ferait vraiment plaisir que [proposition au subjonctif] / si [proposition à l'imparfait]",
+  "ex": "Ça me ferait vraiment plaisir que tu viennes à ma remise de diplôme.",
+  "n": "Subjunctive trigger: ça me ferait plaisir que + subjunctive; with si use the imparfait."
+ },
+ {
+  "id": "ENG_CHUNK_1119",
+  "t": "Je ne reproche pas à [personne] d'avoir [participe passé] / Je la comprends de [verbe]",
+  "ex": "Je ne lui reproche pas d'avoir démissionné. Ce patron était horrible."
+ },
+ {
+  "id": "ENG_CHUNK_1120",
+  "t": "C'est bien fait pour [personne] / Ça lui apprendra à [verbe]",
+  "ex": "Il a raté l'avion ? C'est bien fait pour lui, il n'avait qu'à partir plus tôt.",
+  "n": "Ça lui apprendra à partir si tard carries the 'for doing' part."
+ },
+ {
+  "id": "ENG_CHUNK_1121",
+  "t": "C'est bien [personne], ça, de [verbe] / Ça ne m'étonne pas de [personne]",
+  "ex": "C'est bien Dave, ça, d'arriver avec une heure de retard."
+ },
+ {
+  "id": "ENG_CHUNK_1122",
+  "t": "Il ne vient jamais à l'idée de [personne] de [verbe]",
+  "ex": "Il ne vient jamais à l'idée de mon coloc d'acheter du papier toilette."
+ },
+ {
+  "id": "ENG_CHUNK_1123",
+  "t": "Il n'y a rien de pire que [de + verbe] / Rien de pire que [nom]",
+  "ex": "Il n'y a rien de pire que d'attendre un vol retardé sans aucune info."
+ },
+ {
+  "id": "ENG_CHUNK_1124",
+  "t": "C'est la troisième fois que [proposition]",
+  "ex": "C'est la troisième fois que j'appelle pour cette facture.",
+  "n": "Present or passé composé both work: que j'appelle / que j'ai appelé."
+ },
+ {
+  "id": "ENG_CHUNK_1125",
+  "t": "Je suis à deux doigts de [verbe]",
+  "ex": "Je suis à deux doigts de balancer mon ordi par la fenêtre."
+ },
+ {
+  "id": "ENG_CHUNK_1126",
+  "t": "Disons simplement que [proposition]",
+  "ex": "Le rencard, c'était comment ? Disons simplement qu'il n'y en aura pas de deuxième."
+ },
+ {
+  "id": "ENG_CHUNK_1127",
+  "t": "J'aurai fini [nom] d'ici [nom] / Tu auras [nom] pour [nom]",
+  "ex": "T'inquiète, tu auras le rapport pour vendredi.",
+  "n": "Futur antérieur: j'aurai fini = I'll have finished."
+ },
+ {
+  "id": "ENG_CHUNK_1128",
+  "t": "On revient sur [nom] plus tard / On en reparle après [nom]",
+  "ex": "Bonne question. On en reparle après la pause."
+ },
+ {
+  "id": "ENG_CHUNK_1129",
+  "t": "C'est un de ces [nom]",
+  "ex": "C'est un de ces jours où rien ne va.",
+  "n": "Also: c'est une journée sans."
+ },
+ {
+  "id": "ENG_CHUNK_1130",
+  "t": "Petit rappel : [proposition] / Pour rappel, [proposition]",
+  "ex": "Petit rappel : le bureau est fermé lundi."
+ },
+ {
+  "id": "ENG_CHUNK_1131",
+  "t": "Je voudrais déposer une réclamation au sujet de [nom] / une plainte pour [nom]",
+  "ex": "Bonjour, je voudrais faire une réclamation au sujet du bruit à l'étage du dessus.",
+  "n": "réclamation = complaint to a company/landlord; plainte is usually to the police."
+ },
+ {
+  "id": "ENG_CHUNK_1132",
+  "t": "Vous pourriez me passer [personne] ?",
+  "ex": "Bonjour, vous pourriez me passer le service facturation ?"
+ },
+ {
+  "id": "ENG_CHUNK_1133",
+  "t": "J'appelle de la part de [personne] / pour le compte de [personne]",
+  "ex": "Bonjour, j'appelle de la part de mon père. Il a rendez-vous demain."
+ },
+ {
+  "id": "ENG_CHUNK_1134",
+  "t": "On m'a débité deux fois pour [nom]",
+  "ex": "Bonjour, on m'a débité deux fois pour ma commande de la semaine dernière."
+ },
+ {
+  "id": "ENG_CHUNK_1135",
+  "t": "Je suis sous traitement pour [nom] / Je prends un traitement contre [nom]",
+  "ex": "Je suis sous traitement pour l'hypertension, donc je vais éviter le vin."
+ },
+ {
+  "id": "ENG_CHUNK_1136",
+  "t": "se concentrer sur [nom]",
+  "ex": "Je dois me concentrer sur mes exams ce mois-ci."
+ },
+ {
+  "id": "ENG_CHUNK_1137",
+  "t": "aller voir [nom] / tester [nom]",
+  "ex": "Tu devrais aller tester le nouveau resto de tacos dans la rue principale."
+ },
+ {
+  "id": "ENG_CHUNK_1138",
+  "t": "avoir le décalage horaire / être décalé",
+  "ex": "Désolé, je suis un peu lent aujourd'hui. Je suis complètement décalé."
+ },
+ {
+  "id": "ENG_CHUNK_1139",
+  "t": "complet",
+  "ex": "Désolé, on est complets ce soir. Et demain ?"
+ },
+ {
+  "id": "ENG_CHUNK_1140",
+  "t": "très recommandé / chaudement recommandé",
+  "ex": "Ce sentier de rando m'a été chaudement recommandé par un collègue."
+ },
+ {
+  "id": "ENG_CHUNK_1141",
+  "t": "très peu probable",
+  "ex": "C'est très peu probable qu'il neige si tôt.",
+  "n": "c'est peu probable que + subjunctive (qu'il neige)."
+ },
+ {
+  "id": "ENG_CHUNK_1142",
+  "t": "profondément endormi / dormir à poings fermés",
+  "ex": "Quand je suis rentré, les enfants dormaient à poings fermés."
+ },
+ {
+  "id": "ENG_CHUNK_1143",
+  "t": "On l'a échappé belle / C'était moins une",
+  "ex": "Ce camion a failli nous percuter. On l'a échappé belle."
+ },
+ {
+  "id": "ENG_CHUNK_1144",
+  "t": "avoir un faible pour [nom]",
+  "ex": "J'ai un faible pour les vieux diners."
+ },
+ {
+  "id": "ENG_CHUNK_1145",
+  "t": "rentrer dans ses frais",
+  "ex": "Avec tous les frais, on est à peine rentrés dans nos frais avec la vente de gâteaux."
+ },
+ {
+  "id": "ENG_CHUNK_1146",
+  "t": "être jaloux de [personne] / envier [personne]",
+  "ex": "Tu pars à Hawaï ? Je suis trop jaloux !"
+ },
+ {
+  "id": "ENG_CHUNK_1147",
+  "t": "être doué avec [nom] / être doué en [nom]",
+  "ex": "Mon neveu est vraiment doué en informatique."
+ },
+ {
+  "id": "ENG_CHUNK_1148",
+  "t": "avoir envie de [nom]",
+  "ex": "J'ai pas trop envie de pizza ce soir."
+ },
+ {
+  "id": "ENG_CHUNK_1149",
+  "t": "tomber à l'eau",
+  "ex": "Nos plans du week-end sont tombés à l'eau, alors on est libres."
+ },
+ {
+  "id": "ENG_CHUNK_1150",
+  "t": "couper la parole à [personne]",
+  "ex": "Pardon, je ne voulais pas te couper la parole."
+ },
+ {
+  "id": "ENG_CHUNK_1151",
+  "t": "poser un lapin à [personne]",
+  "ex": "J'ai attendu une heure, mais il m'a posé un lapin."
+ },
+ {
+  "id": "ENG_CHUNK_1152",
+  "t": "réaliser / se rendre compte",
+  "ex": "J'ai eu le poste, mais je ne réalise toujours pas.",
+  "n": "réaliser = to sink in (spoken); purists prefer se rendre compte."
+ },
+ {
+  "id": "ENG_CHUNK_1153",
+  "t": "se détendre / être cool",
+  "ex": "Détends-toi, c'est juste un jeu !"
+ },
+ {
+  "id": "ENG_CHUNK_1154",
+  "t": "s'en tenir à [nom]",
+  "ex": "Tenons-nous-en au plan et partons à sept heures."
+ },
+ {
+  "id": "ENG_CHUNK_1155",
+  "t": "rester / traîner un peu",
+  "ex": "Reste un peu après le dîner, on fait une partie de cartes."
+ },
+ {
+  "id": "ENG_CHUNK_1156",
+  "t": "abandonner [nom] / arrêter [nom] en cours de route",
+  "ex": "Il a arrêté la fac après sa première année.",
+  "n": "Also: décrocher (drop out of school)."
+ },
+ {
+  "id": "ENG_CHUNK_1157",
+  "t": "prendre du retard",
+  "ex": "J'ai été malade une semaine et j'ai pris du retard au boulot."
+ },
+ {
+  "id": "ENG_CHUNK_1158",
+  "t": "s'intégrer / trouver sa place",
+  "ex": "J'ai mis du temps à m'intégrer dans ma nouvelle école."
+ },
+ {
+  "id": "ENG_CHUNK_1159",
+  "t": "se démarquer / se faire remarquer",
+  "ex": "Mets la veste rouge. Tu vas te démarquer sur les photos."
+ },
+ {
+  "id": "ENG_CHUNK_1160",
+  "t": "frimer / se la péter",
+  "ex": "Il est encore en train de frimer avec sa nouvelle voiture.",
+  "n": "se la péter is very slangy."
+ },
+ {
+  "id": "ENG_CHUNK_1161",
+  "t": "dire ce qu'on pense / prendre la parole",
+  "ex": "Si t'es pas d'accord, dis-le."
+ },
+ {
+  "id": "ENG_CHUNK_1162",
+  "t": "accrocher / bien s'entendre tout de suite",
+  "ex": "Ma sœur et sa nouvelle coloc ont tout de suite accroché."
+ },
+ {
+  "id": "ENG_CHUNK_1163",
+  "t": "avoir beaucoup de choses sur le feu / être débordé",
+  "ex": "J'aimerais bien t'aider, mais j'ai beaucoup de choses sur le feu en ce moment."
+ },
+ {
+  "id": "ENG_CHUNK_1164",
+  "t": "user [personne] / peser sur [personne]",
+  "ex": "Les gardes de nuit l'usent vraiment."
+ },
+ {
+  "id": "ENG_CHUNK_1165",
+  "t": "lancer [nom] / lancer la machine",
+  "ex": "Lançons l'organisation de la fête."
+ },
+ {
+  "id": "ENG_CHUNK_1166",
+  "t": "On peut dire ça / C'est un peu ça",
+  "ex": "Alors, ton nouveau boulot te plaît ? Ouais, on peut dire ça."
+ },
+ {
+  "id": "ENG_CHUNK_1167",
+  "t": "Ça explique tout / Tout s'explique",
+  "ex": "Tu as oublié de le brancher ? Ça explique tout."
+ },
+ {
+  "id": "ENG_CHUNK_1168",
+  "t": "Première nouvelle",
+  "ex": "La réunion a été déplacée ? Première nouvelle."
+ },
+ {
+  "id": "ENG_CHUNK_1169",
+  "t": "J'ai perdu le fil",
+  "ex": "Pardon, je disais quoi ? J'ai perdu le fil."
+ },
+ {
+  "id": "ENG_CHUNK_1170",
+  "t": "Pardon, je m'égare / Désolé, je digresse",
+  "ex": "Pardon, je m'égare. On parlait de quoi ?"
+ },
+ {
+  "id": "ENG_CHUNK_1171",
+  "t": "Revenons à nos moutons / Recentrons-nous",
+  "ex": "Bon, tout le monde, revenons à nos moutons."
+ },
+ {
+  "id": "ENG_CHUNK_1172",
+  "t": "Question qui n'a rien à voir, mais / Rien à voir, mais",
+  "ex": "Rien à voir, mais tu connais un bon plombier ?"
+ },
+ {
+  "id": "ENG_CHUNK_1173",
+  "t": "Restons-en là",
+  "ex": "On n'est juste pas d'accord. Restons-en là."
+ },
+ {
+  "id": "ENG_CHUNK_1174",
+  "t": "Je ne suis pas expert, mais",
+  "ex": "Je ne suis pas expert, mais je crois que ton pneu est à plat."
+ },
+ {
+  "id": "ENG_CHUNK_1175",
+  "t": "Je dis ça, je dis rien",
+  "ex": "La dernière fois qu'on a pris ce raccourci, on s'est perdus. Je dis ça, je dis rien."
+ },
+ {
+  "id": "ENG_CHUNK_1176",
+  "t": "C'est juste une idée / Je propose, hein",
+  "ex": "On pourrait prendre le train à la place. C'est juste une idée."
+ },
+ {
+  "id": "ENG_CHUNK_1177",
+  "t": "Par curiosité",
+  "ex": "Par curiosité, tu l'as payé combien ?"
+ },
+ {
+  "id": "ENG_CHUNK_1178",
+  "t": "Si ce n'est pas indiscret",
+  "ex": "Si ce n'est pas indiscret, le loyer est de combien ici ?"
+ },
+ {
+  "id": "ENG_CHUNK_1179",
+  "t": "Il fallait être là",
+  "ex": "Sur le moment, c'était hilarant. Bon, il fallait être là."
+ },
+ {
+  "id": "ENG_CHUNK_1180",
+  "t": "C'est pas mon souvenir / C'est pas comme ça que je m'en souviens",
+  "ex": "C'est toi qui as payé le dîner ? C'est pas mon souvenir."
+ },
+ {
+  "id": "ENG_CHUNK_1181",
+  "t": "C'est maintenant ou jamais",
+  "ex": "Les soldes se terminent ce soir. C'est maintenant ou jamais."
+ },
+ {
+  "id": "ENG_CHUNK_1182",
+  "t": "On apprend de ses erreurs / C'est en forgeant qu'on devient forgeron",
+  "ex": "J'ai encore oublié d'enregistrer le fichier. Bon, on apprend de ses erreurs."
+ },
+ {
+  "id": "ENG_CHUNK_1183",
+  "t": "Les grands esprits se rencontrent",
+  "ex": "T'as pris le saumon aussi ? Les grands esprits se rencontrent."
+ },
+ {
+  "id": "ENG_CHUNK_1184",
+  "t": "On est plus malins à deux / Deux têtes valent mieux qu'une",
+  "ex": "Faisons la déclaration d'impôts ensemble. Deux têtes valent mieux qu'une."
+ },
+ {
+  "id": "ENG_CHUNK_1185",
+  "t": "Paris ne s'est pas fait en un jour",
+  "ex": "T'apprends depuis un mois seulement. Paris ne s'est pas fait en un jour.",
+  "n": "Paris, not Rome, in the French proverb."
+ },
+ {
+  "id": "ENG_CHUNK_1186",
+  "t": "Le plus tôt sera le mieux",
+  "ex": "T'en as besoin pour quand ? Le plus tôt sera le mieux."
+ },
+ {
+  "id": "ENG_CHUNK_1187",
+  "t": "Ne vendons pas la peau de l'ours avant de l'avoir tué",
+  "ex": "Un bon entretien, ça ne veut pas dire que le poste est à toi. Ne vendons pas la peau de l'ours."
+ },
+ {
+  "id": "ENG_CHUNK_1188",
+  "t": "La nuit porte conseil / Dors dessus",
+  "ex": "Ne décide pas ce soir. La nuit porte conseil, rappelle-moi demain."
+ },
+ {
+  "id": "ENG_CHUNK_1189",
+  "t": "Mieux vaut toi que moi / Très peu pour moi",
+  "ex": "Tu cours un marathon par cette chaleur ? Très peu pour moi."
+ },
+ {
+  "id": "ENG_CHUNK_1190",
+  "t": "Servez-vous / Bon appétit, allez-y",
+  "ex": "Le dîner est prêt, tout le monde. Servez-vous !"
+ },
+ {
+  "id": "ENG_CHUNK_1191",
+  "t": "Mieux encore",
+  "ex": "Appelle-la ce soir. Mieux encore, va la voir."
+ },
+ {
+  "id": "ENG_CHUNK_1192",
+  "t": "Et pour couronner le tout / Et comble de malchance",
+  "ex": "Ma voiture est tombée en panne, j'étais en retard, et pour couronner le tout, il a plu."
+ },
+ {
+  "id": "ENG_CHUNK_1193",
+  "t": "Entre [nom] et [nom]",
+  "ex": "Entre le bébé et le déménagement, on n'a pas beaucoup dormi.",
+  "n": "Entre X et Y is the natural 'what with'."
+ },
+ {
+  "id": "ENG_CHUNK_1194",
+  "t": "Malgré",
+  "ex": "On s'est super bien amusés malgré le temps.",
+  "n": "Malgré que + subjunctive exists but is frowned on; use bien que."
+ },
+ {
+  "id": "ENG_CHUNK_1195",
+  "t": "Au contraire",
+  "ex": "Tu ne me déranges pas. Au contraire, ça me fait plaisir que tu appelles.",
+  "n": "ça me fait plaisir que + subjunctive (appelles)."
+ },
+ {
+  "id": "ENG_CHUNK_1196",
+  "t": "En particulier / Surtout",
+  "ex": "J'ai adoré la cuisine, les tacos au poisson en particulier."
+ },
+ {
+  "id": "ENG_CHUNK_1197",
+  "t": "Entre autres",
+  "ex": "On a parlé du voyage et du budget, entre autres."
+ },
+ {
+  "id": "ENG_CHUNK_1198",
+  "t": "Juste pour te donner une idée",
+  "ex": "Les loyers sont délirants ici. Juste pour te donner une idée, un studio, c'est deux mille euros."
+ },
+ {
+  "id": "ENG_CHUNK_1199",
+  "t": "Pour ainsi dire / Si on peut dire",
+  "ex": "Je suis entre deux boulots en ce moment, pour ainsi dire."
+ },
+ {
+  "id": "ENG_CHUNK_1200",
+  "t": "Enfin et surtout / Et pour finir",
+  "ex": "Et enfin, et surtout, merci à ma mère pour toute son aide."
+ }
+]

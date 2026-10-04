@@ -1,0 +1,642 @@
+{
+ "L1-1": {
+  "evidence": "Der Grund für den Umzug war einfach: Geld.",
+  "evidence_en": "The reason for the move was simple: money.",
+  "why": "„Geld“ als Grund = aus finanziellen Gründen.",
+  "why_en": "'Money' as the reason = for financial reasons.",
+  "trap": "Ida kann draußen spielen, das ist ein Vorteil, aber der Hauptgrund war das Geld.",
+  "trap_en": "Ida being able to play outside is a benefit, but money was the main reason.",
+  "question_en": "The family moved to the countryside mainly for financial reasons."
+ },
+ "L1-2": {
+  "evidence": "Der Bus ins nächste Städtchen fährt nur viermal am Tag, am Wochenende gar nicht.",
+  "evidence_en": "The bus to the next small town only runs four times a day, and not at all at weekends.",
+  "why": "Am Wochenende fährt der Bus gar nicht.",
+  "why_en": "At weekends the bus doesn't run at all.",
+  "trap": "„Viermal am Tag“ stimmt nur für Werktage; „gar nicht“ gilt für das Wochenende.",
+  "trap_en": "'Four times a day' is only for weekdays; 'not at all' applies to weekends.",
+  "question_en": "The bus also runs four times a day at the weekend."
+ },
+ "L1-3": {
+  "evidence": "weil mein Mann Jakob dreimal pro Woche nach Berlin ins Büro muss",
+  "evidence_en": "because my husband Jakob has to go to the office in Berlin three times a week",
+  "why": "Jakob fährt dreimal pro Woche ins Büro, also arbeitet er nicht die ganze Woche zu Hause.",
+  "why_en": "Jakob goes to the office three times a week, so he doesn't work from home all week.",
+  "trap": "Die Autorin arbeitet von zu Hause, nicht Jakob.",
+  "trap_en": "It's the author who works from home, not Jakob.",
+  "question_en": "Jakob works from home the whole week."
+ },
+ "L1-4": {
+  "evidence": "in den ersten drei Monaten musste ich für Videokonferenzen ins Café in der Kreisstadt fahren",
+  "evidence_en": "in the first three months I had to drive to the café in the district town for video calls",
+  "why": "Wegen des schlechten Internets konnte sie anfangs nicht gut zu Hause arbeiten.",
+  "why_en": "Because of bad internet she couldn't work well from home at first.",
+  "trap": "Seit dem Frühling ist das Internet gut, aber die Aussage fragt nach dem Anfang.",
+  "trap_en": "Since spring the internet has been fine, but the statement asks about the beginning.",
+  "question_en": "At first the author had problems working from home."
+ },
+ "L1-5": {
+  "evidence": "In Berlin kannten wir nach fünf Jahren nicht einmal die Namen der Leute im Haus.",
+  "evidence_en": "In Berlin, after five years, we didn't even know the names of the people in our building.",
+  "why": "In Berlin kannten sie die Nachbarn nicht – also kein enger Kontakt.",
+  "why_en": "In Berlin they didn't know their neighbours – so no close contact.",
+  "trap": "Den engen Kontakt gibt es im Dorf (Frau Lehmann mit Kuchen), nicht in Berlin.",
+  "trap_en": "The close contact is in the village (Mrs Lehmann with cake), not in Berlin.",
+  "question_en": "In Berlin the family had close contact with the neighbours."
+ },
+ "L1-6": {
+  "evidence": "Aber dann kommt Ida mit schmutzigen Knien und einem Frosch in der Hand herein, und ich weiß, warum wir hier sind.",
+  "evidence_en": "But then Ida comes in with dirty knees and a frog in her hand, and I know why we're here.",
+  "why": "Am Ende weiß sie, warum sie dort sind – sie bereut den Umzug nicht.",
+  "why_en": "In the end she knows why they're there – she doesn't regret the move.",
+  "trap": "„Würde ich zurückziehen? … ja“ gilt nur für manche graue Sonntage, nicht insgesamt.",
+  "trap_en": "'Would I move back? … yes' only applies to some grey Sundays, not overall.",
+  "question_en": "Overall, the author doesn't regret the move."
+ },
+ "L2-1": {
+  "evidence": "Ausnahmen gibt es nur für Lieferwagen zwischen sechs und zehn Uhr morgens",
+  "evidence_en": "The only exceptions are for delivery vans between six and ten in the morning",
+  "why": "Sechs bis zehn Uhr morgens ist der Vormittag – Lieferwagen dürfen dann fahren.",
+  "why_en": "Six to ten in the morning is the morning – delivery vans may drive then.",
+  "trap": "Kostenlos ist der Elektrobus, nicht das Parken (c); private Elektroautos sind auch verboten (a).",
+  "trap_en": "It's the electric bus that is free, not parking (c); private electric cars are banned too (a).",
+  "question_en": "In Tübingen's city centre …",
+  "options_en": [
+   "only electric cars are allowed to drive now.",
+   "delivery vans are allowed to drive in the morning.",
+   "parking is free."
+  ]
+ },
+ "L2-2": {
+  "evidence": "Er fordert, dass Kunden mit großen Einkäufen wenigstens für dreißig Minuten in die Altstadt fahren dürfen.",
+  "evidence_en": "He demands that customers with large purchases be allowed to drive into the old town for at least thirty minutes.",
+  "why": "Kunden mit großen Einkäufen sollen kurz mit dem Auto kommen dürfen.",
+  "why_en": "Customers with large purchases should be allowed to come briefly by car.",
+  "trap": "Sein Umsatz ist um ein Fünftel gesunken, also verkauft er weniger, nicht mehr (a).",
+  "trap_en": "His sales fell by a fifth, so he sells less, not more (a).",
+  "question_en": "Mr Kohl …",
+  "options_en": [
+   "has been selling more than before since March.",
+   "wants customers with large purchases to be allowed to come briefly by car.",
+   "wants to move his shop to the old town."
+  ]
+ },
+ "L2-3": {
+  "evidence": "Im Herbst sollen die Bürger in einer Umfrage entscheiden, ob die Regel dauerhaft bleibt.",
+  "evidence_en": "In autumn the citizens are to decide in a survey whether the rule stays permanently.",
+  "why": "Die Bürger entscheiden im Herbst in einer Umfrage = sie stimmen ab.",
+  "why_en": "Citizens decide in a survey in autumn = they vote.",
+  "trap": "„Für ein Jahr beschlossen“ heißt nicht, dass es nach einem Jahr endet (b); dauerhaft ist noch nichts (c).",
+  "trap_en": "'Decided for one year' doesn't mean it ends after a year (b); nothing is permanent yet (c).",
+  "question_en": "What happens next with the project?",
+  "options_en": [
+   "The citizens are to vote on it in the autumn.",
+   "It will be ended after one year.",
+   "The mayor has already decided on it permanently."
+  ]
+ },
+ "L2-4": {
+  "evidence": "Seit die Buslinie 27 vor drei Jahren gestrichen wurde, gab es in Waldheim keine Verbindung mehr in die nächste Stadt.",
+  "evidence_en": "Since bus line 27 was cut three years ago, Waldheim had no connection to the nearest town.",
+  "why": "„Gestrichen“ = abgeschafft: Waldheim hat seine Busverbindung verloren.",
+  "why_en": "'Gestrichen' = cancelled: Waldheim lost its bus connection.",
+  "trap": "Der Bürgerbus ist neu, aber er kam erst später, nicht vor drei Jahren (a).",
+  "trap_en": "The citizens' bus is new, but it came later, not three years ago (a).",
+  "question_en": "Three years ago …",
+  "options_en": [
+   "a new bus was introduced in Waldheim.",
+   "Waldheim lost its bus connection to the town.",
+   "Renate Ahrens moved to Waldheim."
+  ]
+ },
+ "L2-5": {
+  "evidence": "Wer bei uns fährt, der braucht nur einen normalen Führerschein und ein bisschen Zeit",
+  "evidence_en": "Anyone who drives for us only needs a normal driving licence and a bit of time",
+  "why": "Ein normaler Führerschein und Zeit reichen.",
+  "why_en": "A normal licence and some time are enough.",
+  "trap": "„Normaler“ Führerschein – also kein spezieller (a); zahlen müssen die Fahrgäste, nicht die Fahrer (b).",
+  "trap_en": "A 'normal' licence – so not a special one (a); passengers pay, not drivers (b).",
+  "question_en": "Anyone who would like to drive the community bus …",
+  "options_en": [
+   "needs a special driving licence.",
+   "has to pay for it.",
+   "only needs a normal driving licence and time."
+  ]
+ },
+ "L2-6": {
+  "evidence": "Das Problem ist überall dasselbe: Es fehlen jüngere Fahrer.",
+  "evidence_en": "The problem is the same everywhere: there's a lack of younger drivers.",
+  "why": "„Es fehlen jüngere Fahrer“ = es gibt zu wenige junge Freiwillige.",
+  "why_en": "'Younger drivers are missing' = there are too few young volunteers.",
+  "trap": "Die Gemeinde hat den Bus gekauft (c), und zwei Euro pro Fahrt sind nicht teuer (b).",
+  "trap_en": "The municipality bought the bus (c), and two euros a trip isn't expensive (b).",
+  "question_en": "What problem do the community buses have?",
+  "options_en": [
+   "There are too few young volunteers.",
+   "The journeys are too expensive.",
+   "The municipalities don't want to buy buses."
+  ]
+ },
+ "L3-1": {
+  "evidence": "Wir bringen Sie zu jeder Tages- und Nachtzeit vom Haus zum Flughafen, auch sonntags",
+  "evidence_en": "We take you from your home to the airport at any time of day or night, including Sundays",
+  "why": "Beatriz braucht am Sonntag um fünf Uhr eine Fahrt zum Flughafen – der Shuttle fährt rund um die Uhr, auch sonntags.",
+  "why_en": "Beatriz needs a ride to the airport at 5 am on Sunday – the shuttle runs round the clock, Sundays too.",
+  "trap": "Carsharing (B) braucht einen Führerschein und sie müsste selbst fahren; der Fahrradverleih (F) öffnet erst um 7 Uhr.",
+  "trap_en": "Car sharing (B) means driving herself; the bike hire (F) only opens at 7 am.",
+  "question_en": "Beatriz has to be at the airport at five o'clock in the morning on Sunday and doesn't have a car."
+ },
+ "L3-2": {
+  "evidence": "Ein Auto, wenn Sie es brauchen",
+  "evidence_en": "A car when you need one",
+  "why": "Carsharing ist für Menschen, die nur manchmal ein Auto brauchen.",
+  "why_en": "Car sharing is for people who only need a car sometimes.",
+  "trap": "Anzeige J verkauft Autos, aber Leon will kein eigenes kaufen.",
+  "trap_en": "Ad J sells cars, but Leon doesn't want to buy one.",
+  "question_en": "Leon only needs a car sometimes and doesn't want to buy his own."
+ },
+ "L3-3": {
+  "evidence": "Aus hygienischen Gründen leider keine Haustiere.",
+  "evidence_en": "For hygiene reasons, unfortunately no pets.",
+  "why": "Die Wohnmobil-Anzeige C verbietet Haustiere, und die Familie will mit dem Hund reisen – also 0.",
+  "why_en": "Motorhome ad C bans pets, and the family wants to travel with the dog – so 0.",
+  "trap": "Anzeige C (Wohnmobil) und H (Hund) passen je halb, aber keine passt ganz.",
+  "trap_en": "Ad C (motorhome) and H (dog) each half fit, but neither fits fully.",
+  "question_en": "The Oduya family would like to travel with their dog in a camper van for two weeks in the summer."
+ },
+ "L3-4": {
+  "evidence": "Kostenlos, gebrauchte Ersatzteile gegen kleine Spende. Für Bremsen und Reifen haben wir fast immer etwas da.",
+  "evidence_en": "Free, used spare parts for a small donation. We almost always have something for brakes and tyres.",
+  "why": "Die Werkstatt ist kostenlos und hat Teile für Bremsen – ideal für Selma mit wenig Geld.",
+  "why_en": "The workshop is free and has brake parts – ideal for Selma with little money.",
+  "trap": "Anzeige F ist auch zum Thema Fahrrad, aber ein Verleih, keine Reparatur.",
+  "trap_en": "Ad F is also about bikes, but it's a rental, not a repair.",
+  "question_en": "Selma cycles to work every day; the brakes are broken, and she has little money."
+ },
+ "L3-5": {
+  "evidence": "Hamburg–München ab 25 €",
+  "evidence_en": "Hamburg–Munich from €25",
+  "why": "Die Mitfahrzentrale ist günstig und hat genau diese Strecke; Abfahrtszeit nach Absprache passt zu „flexibel“.",
+  "why_en": "The ride-share is cheap and covers this exact route; departure by arrangement suits 'flexible'.",
+  "trap": "Carsharing (B) wäre für so eine lange Strecke teuer und ist nicht „mitfahren“.",
+  "trap_en": "Car sharing (B) would be expensive for such a long trip and isn't a shared ride.",
+  "question_en": "Marco would like to travel cheaply from Hamburg to Munich on Friday and is flexible."
+ },
+ "L3-6": {
+  "evidence": "Autoankauf Fischer kommt zu Ihnen, bewertet das Fahrzeug kostenlos und zahlt sofort bar.",
+  "evidence_en": "Fischer car buyers come to you, value the vehicle for free and pay cash immediately.",
+  "why": "Frau Krüger will das Auto schnell verkaufen, ohne Anzeigen – die Firma kauft es sofort.",
+  "why_en": "Mrs Krüger wants to sell quickly without ads – the company buys it immediately.",
+  "trap": "Anzeige J nimmt alte Autos auch, aber nur „beim Kauf“ eines neuen Wagens.",
+  "trap_en": "Ad J also takes old cars, but only when you buy another car.",
+  "question_en": "Ms Krüger would like to get rid of her old car quickly without writing ads herself."
+ },
+ "L3-7": {
+  "evidence": "Für Berufstätige: Fahren Sie mit Bus, Bahn und Straßenbahn im ganzen Stadtgebiet für nur 39 € im Monat statt 69 €.",
+  "evidence_en": "For working people: travel by bus, train and tram throughout the city for only €39 a month instead of €69.",
+  "why": "Ein günstiges Monatsticket für den Arbeitsweg – das Jobticket.",
+  "why_en": "A cheap monthly ticket for the commute – the job ticket.",
+  "trap": "Der Fahrradverleih (F) nennt „Pendler“, aber das ist kein Monatsticket.",
+  "trap_en": "The bike hire (F) mentions 'commuters', but it isn't a monthly ticket.",
+  "question_en": "Ahmet is new in town and would like a cheap monthly ticket for his commute to work."
+ },
+ "L4-1": {
+  "evidence": "Eine Innenstadt ohne Autos wäre sicherer, leiser und sauberer.",
+  "evidence_en": "A city centre without cars would be safer, quieter and cleaner.",
+  "why": "Nina ist klar für autofreie Innenstädte.",
+  "why_en": "Nina is clearly in favour of car-free city centres.",
+  "trap": "Sie spricht negativ über Autos, das ist ein Ja zum Verbot.",
+  "trap_en": "She speaks negatively about cars, which is a yes to the ban.",
+  "question_en": "Nina, Münster: I've only been cycling for ten years, and every day I'm almost run over by cars. A city centre without cars would be safer, quieter and cleaner. Other cities in Europe are showing how it's done, and nobody there wants to go back."
+ },
+ "L4-2": {
+  "evidence": "Wenn ich nicht mehr mit dem Auto bis zum Arzt in der Innenstadt fahren darf, komme ich dort gar nicht mehr hin.",
+  "evidence_en": "If I'm no longer allowed to drive to the doctor in the city centre, I won't be able to get there at all.",
+  "why": "Werner braucht das Auto, weil er nicht gut laufen kann – er ist dagegen.",
+  "why_en": "Werner needs the car because he can't walk well – he's against it.",
+  "trap": "Er sagt nicht direkt „Nein“, aber seine Sorge zeigt, dass er das Verbot ablehnt.",
+  "trap_en": "He doesn't say 'no' directly, but his worry shows he rejects the ban.",
+  "question_en": "Werner, Bochum: I'm 74 and can't walk well any more. If I'm no longer allowed to drive to the doctor in the city centre, I won't be able to get there at all. Nobody thinks about people like that in this discussion."
+ },
+ "L4-3": {
+  "evidence": "Ja, es ist unbequem für Autofahrer. Aber die Kinder sind wichtiger.",
+  "evidence_en": "Yes, it's inconvenient for drivers. But children are more important.",
+  "why": "Elif findet die Kinder wichtiger als die Autofahrer – also Ja.",
+  "why_en": "Elif thinks children matter more than drivers – so yes.",
+  "trap": "„Unbequem für Autofahrer“ klingt nach Kritik, aber mit „Aber“ kommt ihr Ja.",
+  "trap_en": "'Inconvenient for drivers' sounds like criticism, but 'but' introduces her yes.",
+  "question_en": "Elif, Nürnberg: As a mother of three children, all I can say is: anyone who has ever stood with a pram at a six-lane road knows that things can't go on like this. Yes, it's inconvenient for drivers. But the children are more important."
+ },
+ "L4-4": {
+  "evidence": "Solange das fehlt, ist ein Verbot nur eine Strafe für die Leute aus dem Umland.",
+  "evidence_en": "As long as that's missing, a ban is just a punishment for people from the surrounding area.",
+  "why": "Christoph ist jetzt gegen das Verbot: zuerst Busse und Parkplätze.",
+  "why_en": "Christoph is against the ban for now: buses and car parks first.",
+  "trap": "„Schöne Idee“ klingt nach Ja, aber er sagt: Die Reihenfolge stimmt nicht.",
+  "trap_en": "'Nice idea' sounds like yes, but he says the order is wrong.",
+  "question_en": "Christoph, Erfurt: Nice idea, but the order is wrong. First we need buses that run every ten minutes, and car parks on the edge of town. As long as that's missing, a ban is just a punishment for the people from the surrounding area. So: first the expansion, then we'll talk further."
+ },
+ "L4-5": {
+  "evidence": "Wer sagt, dass Geschäfte ohne Autos sterben, der hat die Zahlen nicht gesehen.",
+  "evidence_en": "Anyone who says shops die without cars hasn't seen the numbers.",
+  "why": "Sarah hat in der Fußgängerzone mehr Kunden – sie ist für autofreie Zonen.",
+  "why_en": "Sarah has more customers in the pedestrian zone – she's for car-free zones.",
+  "trap": "„Geschäfte sterben“ ist die Meinung anderer, die sie kritisiert.",
+  "trap_en": "'Shops die' is other people's view, which she criticises.",
+  "question_en": "Sarah, Kiel: My shop is in the pedestrian zone, and I have more customers than my colleagues on the main road. Anyone who says that shops die without cars hasn't seen the figures. Pedestrians stop, drivers drive past."
+ },
+ "L4-6": {
+  "evidence": "Ein Verbot für alle ist Unsinn.",
+  "evidence_en": "A ban for everyone is nonsense.",
+  "why": "Dirk braucht als Handwerker das Auto – er ist dagegen.",
+  "why_en": "As a tradesman Dirk needs his van – he's against it.",
+  "trap": "Ausnahmen für Handwerker gibt es, aber in der Praxis funktionieren sie nicht.",
+  "trap_en": "There are exceptions for tradespeople, but in practice they don't work.",
+  "question_en": "Dirk, Regensburg: I'm a tradesman and have to get to the customer with tools and materials. Am I supposed to bring the washing machine by bike? A ban for everyone is nonsense. Exemptions for tradespeople exist on paper, but in practice the permit takes weeks."
+ },
+ "L4-7": {
+  "evidence": "Jede Stadt sollte das ausprobieren.",
+  "evidence_en": "Every city should try it.",
+  "why": "Hannah lebt in einer fast autofreien Stadt und empfiehlt es allen.",
+  "why_en": "Hannah lives in an almost car-free city and recommends it to all.",
+  "trap": "„Kann mir ein Leben mit Autos nicht mehr vorstellen“ ist eine Negation, aber positiv für das Verbot.",
+  "trap_en": "'Can't imagine life with cars anymore' is a negation, but positive for the ban.",
+  "question_en": "Hannah, Freiburg: With us the city centre has been almost car-free for years, and I can't imagine life with cars there at all any more. Children play in the squares, you hear birds instead of engines. Every city should try it."
+ },
+ "L5-1": {
+  "evidence": "ein Rad, das nicht an einer Station abgestellt wird, gilt als weiter ausgeliehen",
+  "evidence_en": "a bike not parked at a station counts as still rented",
+  "why": "„Gilt als weiter ausgeliehen“ = die Ausleihe ist nicht beendet, man bezahlt weiter.",
+  "why_en": "'Counts as still rented' = the rental hasn't ended, you keep paying.",
+  "trap": "Die 15 Minuten und die nächste Station gelten, wenn eine Station voll ist (a, c).",
+  "trap_en": "The 15 minutes and the next station apply when a station is full (a, c).",
+  "question_en": "Anyone who doesn't leave a bike at a station …",
+  "options_en": [
+   "has to pay for an extra 15 minutes.",
+   "keeps paying, because the rental hasn't ended.",
+   "is guided to the nearest station by the app."
+  ]
+ },
+ "L5-2": {
+  "evidence": "Die ersten 30 Minuten jeder Fahrt sind kostenlos.",
+  "evidence_en": "The first 30 minutes of every ride are free.",
+  "why": "30 Minuten = eine halbe Stunde, kostenlos ohne Abo.",
+  "why_en": "30 minutes = half an hour, free without a subscription.",
+  "trap": "60 Minuten gelten nur mit dem Jahresabo (b); 12 € ist das Maximum pro Tag (c).",
+  "trap_en": "60 minutes applies only with the annual pass (b); €12 is the daily maximum (c).",
+  "question_en": "Without a subscription …",
+  "options_en": [
+   "the first half hour is free.",
+   "the first 60 minutes are free.",
+   "every ride costs €12."
+  ]
+ },
+ "L5-3": {
+  "evidence": "Inhaber eines Monatstickets der Verkehrsbetriebe erhalten das Jahresabo zum halben Preis.",
+  "evidence_en": "Holders of a monthly public transport ticket get the annual pass at half price.",
+  "why": "Mit Monatsticket für Bus und Bahn kostet das Abo die Hälfte.",
+  "why_en": "With a monthly bus and train ticket the pass costs half.",
+  "trap": "16 Jahre ist das Mindestalter (a); 12 € ist der Höchstpreis pro Tag (b).",
+  "trap_en": "16 is the minimum age (a); €12 is the daily cap (b).",
+  "question_en": "The annual subscription is cheaper for people who …",
+  "options_en": [
+   "are under 16 years old.",
+   "pay more than €12 per day.",
+   "have a monthly ticket for bus and train."
+  ]
+ },
+ "L5-4": {
+  "evidence": "Ohne Anzeige wird eine Pauschale von 500 € berechnet.",
+  "evidence_en": "Without a police report a flat fee of €500 is charged.",
+  "why": "Man muss zur Polizei; nur ohne Anzeige zahlt man 500 €.",
+  "why_en": "You must go to the police; you only pay €500 without a report.",
+  "trap": "„Immer“ ist falsch – die 500 € gibt es nur ohne Anzeige (a); Kundenservice allein reicht nicht (b).",
+  "trap_en": "'Always' is wrong – the €500 only applies without a report (a); informing customer service alone isn't enough (b).",
+  "question_en": "If the bike is stolen, …",
+  "options_en": [
+   "you always have to pay €500.",
+   "you only have to inform customer service.",
+   "you have to go to the police, otherwise you pay €500."
+  ]
+ },
+ "H1-1a": {
+  "evidence": "fährt heute nicht von Gleis sieben, sondern von Gleis drei",
+  "evidence_en": "doesn't leave from platform seven today, but from platform three",
+  "why": "Der Zug fährt heute von Gleis drei.",
+  "why_en": "The train leaves from platform three today.",
+  "trap": "„Gleis sieben“ hört man zuerst, aber mit „nicht … sondern“.",
+  "trap_en": "You hear 'platform seven' first, but with 'not … but'.",
+  "question_en": "The train to Hamburg leaves from platform seven today."
+ },
+ "H1-1b": {
+  "evidence": "Reisende nach Bremen werden gebeten, in Hannover umzusteigen",
+  "evidence_en": "Passengers to Bremen are asked to change in Hanover",
+  "why": "Nach Bremen muss man in Hannover umsteigen.",
+  "why_en": "For Bremen you have to change in Hanover.",
+  "trap": "Das Bordrestaurant ist nicht besetzt, dort kann man nicht warten (c); Busse gibt es nicht (b).",
+  "trap_en": "The on-board restaurant isn't staffed, so you can't wait there (c); there are no buses (b).",
+  "question_en": "Travellers to Bremen …",
+  "options_en": [
+   "have to change in Hanover.",
+   "travel by bus today.",
+   "can wait in the dining car."
+  ]
+ },
+ "H1-2a": {
+  "evidence": "das ist jetzt nicht mehr der Fall, eine Spur ist wieder frei",
+  "evidence_en": "that's no longer the case, one lane is open again",
+  "why": "Eine Spur ist wieder frei, also ist die A7 nicht mehr komplett gesperrt.",
+  "why_en": "One lane is open again, so the A7 isn't fully closed anymore.",
+  "trap": "„Ganz gesperrt“ wurde vorhin gemeldet, stimmt aber nicht mehr.",
+  "trap_en": "'Fully closed' was reported earlier, but is no longer true.",
+  "question_en": "The A7 is currently closed completely."
+ },
+ "H1-2b": {
+  "evidence": "fahren am Wochenende zwischen Hildesheim und Braunschweig keine Züge, sondern Busse",
+  "evidence_en": "at the weekend no trains run between Hildesheim and Braunschweig, only buses",
+  "why": "Am Wochenende fahren Busse statt Züge.",
+  "why_en": "At the weekend buses run instead of trains.",
+  "trap": "Die Demonstration ist in Hannover (b); eine Stunde verliert man auf der A7, hier sind es dreißig Minuten (c).",
+  "trap_en": "The demonstration is in Hanover (b); the one hour is lost on the A7, here it's thirty minutes (c).",
+  "question_en": "Between Hildesheim and Braunschweig …",
+  "options_en": [
+   "buses run instead of trains at the weekend.",
+   "there is a demonstration.",
+   "the journey takes an hour longer."
+  ]
+ },
+ "H1-3a": {
+  "evidence": "deshalb müssten wir den Termin verschieben",
+  "evidence_en": "so we would have to postpone the appointment",
+  "why": "Der Termin am Samstag um acht Uhr muss verschoben werden.",
+  "why_en": "The Saturday 8 am appointment has to be moved.",
+  "trap": "Samstag bleibt möglich, aber erst um vierzehn Uhr, nicht am Morgen.",
+  "trap_en": "Saturday is still possible, but only at 2 pm, not in the morning.",
+  "question_en": "The move can't take place as planned on Saturday morning."
+ },
+ "H1-3b": {
+  "evidence": "Sonntag würde allerdings fünfzig Euro mehr kosten.",
+  "evidence_en": "Sunday would, however, cost fifty euros more.",
+  "why": "Am Sonntag kostet es fünfzig Euro mehr.",
+  "why_en": "On Sunday it costs fifty euros more.",
+  "trap": "Vierzehn Uhr ist die Zeit für den Samstag, nicht für den Sonntag (c).",
+  "trap_en": "Two o'clock is the Saturday time, not Sunday (c).",
+  "question_en": "The move on Sunday …",
+  "options_en": [
+   "is free of charge.",
+   "costs fifty euros more.",
+   "starts at two pm."
+  ]
+ },
+ "H1-4a": {
+  "evidence": "Sie können jedes eine ganze Woche kostenlos testen",
+  "evidence_en": "you can test each one free for a whole week",
+  "why": "„Kostenlos testen“ = kostenlos ausprobieren, eine Woche lang.",
+  "why_en": "'Test for free' = try out for free, for a week.",
+  "trap": "Kein Trick hier – die Zahl „Woche“ stimmt genau.",
+  "trap_en": "No trick here – 'a week' matches exactly.",
+  "question_en": "You can try out an e-bike for free for a week."
+ },
+ "H1-4b": {
+  "evidence": "Wir nehmen Ihr altes Fahrrad in Zahlung und schenken Ihnen bis zu dreihundert Euro.",
+  "evidence_en": "We take your old bike in part exchange and give you up to three hundred euros.",
+  "why": "Für das alte Rad bekommt man bis zu dreihundert Euro.",
+  "why_en": "You get up to three hundred euros for your old bike.",
+  "trap": "Neunundvierzig Euro ist die Monatsrate der Finanzierung, nicht der Preis (b); sonntags ist geschlossen (c).",
+  "trap_en": "Forty-nine euros is the monthly finance rate, not the price (b); it's closed on Sundays (c).",
+  "question_en": "Anyone who buys by the end of May …",
+  "options_en": [
+   "gets up to three hundred euros for their old bike.",
+   "gets the bike for forty-nine euros.",
+   "can come to the shop on Sunday."
+  ]
+ },
+ "H1-5a": {
+  "evidence": "er kann doch nicht um zehn, sondern erst um halb zwölf",
+  "evidence_en": "he can't do ten after all, only half past eleven",
+  "why": "Die Besichtigung ist um halb zwölf, nicht um zehn.",
+  "why_en": "The viewing is at half past eleven, not ten.",
+  "trap": "„Zehn“ war die alte Uhrzeit.",
+  "trap_en": "'Ten' was the old time.",
+  "question_en": "The viewing takes place at ten o'clock."
+ },
+ "H1-5b": {
+  "evidence": "mit dem Zug brauchst du das Auto doch gar nicht mehr",
+  "evidence_en": "with the train you won't need the car at all anymore",
+  "why": "Nadine meint, Tobias kann mit dem Zug nach Zürich zur Arbeit fahren.",
+  "why_en": "Nadine thinks Tobias can take the train to work in Zurich.",
+  "trap": "Der Parkplatz kostet extra, aber sie meint, er braucht ihn nicht (a); zwölf Minuten zu Fuß findet sie gut (c).",
+  "trap_en": "The parking space costs extra, but she thinks he doesn't need it (a); twelve minutes on foot is fine to her (c).",
+  "question_en": "Nadine thinks …",
+  "options_en": [
+   "Tobias definitely needs a parking space.",
+   "Tobias could go to work by train.",
+   "the flat is too far away from the station."
+  ]
+ },
+ "H2-1": {
+  "evidence": "Mit der Straßenbahn werden es nur noch achtzehn sein.",
+  "evidence_en": "With the tram it will only be eighteen.",
+  "why": "Mit der Straßenbahn dauert es achtzehn Minuten.",
+  "why_en": "By tram it takes eighteen minutes.",
+  "trap": "Vierzig Minuten ist die Fahrt mit dem Bus heute (a); zwanzig ist der Takt abends (c).",
+  "trap_en": "Forty minutes is the current bus journey (a); twenty is the evening frequency (c).",
+  "question_en": "With the new tram, the journey into the city centre takes …",
+  "options_en": [
+   "forty minutes.",
+   "eighteen minutes.",
+   "twenty minutes."
+  ]
+ },
+ "H2-2": {
+  "evidence": "Wir bauen aber nicht nachts und nicht am Sonntag, außer in Ausnahmefällen",
+  "evidence_en": "But we don't build at night or on Sundays, except in exceptional cases",
+  "why": "Nachts wird normalerweise nicht gebaut, nur in Ausnahmefällen.",
+  "why_en": "Normally there's no work at night, only in exceptional cases.",
+  "trap": "Die Hauptstraße wird gesperrt, also ist b falsch; a ist das Gegenteil.",
+  "trap_en": "The main road will be closed, so b is wrong; a is the opposite.",
+  "question_en": "During the construction period …",
+  "options_en": [
+   "work is also done at night and on Sundays.",
+   "the main road will not be closed.",
+   "normally no work is done at night."
+  ]
+ },
+ "H2-3": {
+  "evidence": "aus dem Verluste durch die Bauarbeiten teilweise ersetzt werden",
+  "evidence_en": "from which losses due to the construction work are partly compensated",
+  "why": "„Teilweise ersetzt“ = ein Teil der Verluste wird ersetzt.",
+  "why_en": "'Partly compensated' = part of the losses are covered.",
+  "trap": "Zwei Millionen ist der ganze Fonds, nicht pro Geschäft (c).",
+  "trap_en": "Two million is the whole fund, not per shop (c).",
+  "question_en": "The shops on the main road …",
+  "options_en": [
+   "get part of their losses compensated.",
+   "have to close during the construction.",
+   "receive two million euros per shop."
+  ]
+ },
+ "H2-4": {
+  "evidence": "in dem man mit einem gültigen Fahrschein kostenlos parken kann",
+  "evidence_en": "where you can park for free with a valid ticket",
+  "why": "Mit Fahrschein parkt man im Parkhaus kostenlos.",
+  "why_en": "With a ticket you park for free in the car park.",
+  "trap": "Zweihundert Parkplätze fallen weg; das Parkhaus hat vierhundert (a).",
+  "trap_en": "Two hundred spaces are lost; the car park has four hundred (a).",
+  "question_en": "In the new multi-storey car park …",
+  "options_en": [
+   "there are two hundred spaces.",
+   "only residents can park.",
+   "you park for free with a ticket."
+  ]
+ },
+ "H2-5": {
+  "evidence": "davon zahlt das Land zwei Drittel",
+  "evidence_en": "of which the state pays two thirds",
+  "why": "Zwei Drittel ist der größte Teil – das Land zahlt am meisten.",
+  "why_en": "Two thirds is the largest part – the state pays most.",
+  "trap": "Die Ticketpreise ändern sich nicht (b).",
+  "trap_en": "Ticket prices don't change (b).",
+  "question_en": "The costs of the project …",
+  "options_en": [
+   "are borne by the city alone.",
+   "are paid for through higher ticket prices.",
+   "are mostly covered by the state."
+  ]
+ },
+ "H3-1": {
+  "evidence": "Eine Stunde und zwanzig Minuten für fünfzehn Kilometer.",
+  "evidence_en": "An hour and twenty minutes for fifteen kilometres.",
+  "why": "Eine Stunde und zwanzig Minuten ist mehr als eine Stunde.",
+  "why_en": "An hour and twenty minutes is more than an hour.",
+  "trap": "Zwanzig Minuten braucht Frau Aydin mit dem Rad – das ist eine andere Zahl.",
+  "trap_en": "Twenty minutes is Ms Aydin's bike time – a different number.",
+  "question_en": "Mr Brandt was stuck in a traffic jam for more than an hour today."
+ },
+ "H3-2": {
+  "evidence": "ich müsste zweimal umsteigen",
+  "evidence_en": "I would have to change twice",
+  "why": "Er müsste zweimal umsteigen, also nicht ohne Umsteigen.",
+  "why_en": "He would have to change twice, so not without changing.",
+  "trap": "„Hält direkt bei Ihrer Firma“ klingt nach direkter Fahrt, aber er muss trotzdem umsteigen.",
+  "trap_en": "'Stops right by your company' sounds direct, but he'd still have to change.",
+  "question_en": "With the S-Bahn Mr Brandt could get to the company without changing."
+ },
+ "H3-3": {
+  "evidence": "Ich habe mein Auto vor einem Jahr verkauft",
+  "evidence_en": "I sold my car a year ago",
+  "why": "Sie hat das Auto verkauft = sie besitzt keins mehr.",
+  "why_en": "She sold her car = she no longer owns one.",
+  "trap": "Herr Brandt fährt Auto, nicht Frau Aydin.",
+  "trap_en": "Mr Brandt drives, not Ms Aydin.",
+  "question_en": "Ms Aydin no longer owns a car."
+ },
+ "H3-4": {
+  "evidence": "ich habe seit der Knieoperation Angst davor, längere Strecken zu fahren",
+  "evidence_en": "since my knee operation I've been afraid of cycling longer distances",
+  "why": "Wegen seiner Knieoperation hat er Bedenken – das ist ein gesundheitlicher Grund.",
+  "why_en": "Because of his knee operation he has concerns – that's a health reason.",
+  "trap": "Er nennt auch Diebstahl und Preis, aber die Knieoperation ist der gesundheitliche Punkt.",
+  "trap_en": "He also mentions theft and price, but the knee operation is the health point.",
+  "question_en": "Mr Brandt has health concerns about cycling."
+ },
+ "H3-5": {
+  "evidence": "Mein Bruder zahlt sechzig Euro im Monat.",
+  "evidence_en": "My brother pays sixty euros a month.",
+  "why": "Der Bruder zahlt in Raten über Leasing, nicht bar.",
+  "why_en": "The brother pays in instalments via leasing, not in cash.",
+  "trap": "Drei- oder viertausend Euro sagt Herr Brandt über den Preis, nicht über den Bruder.",
+  "trap_en": "Three or four thousand euros is Mr Brandt talking about the price, not the brother.",
+  "question_en": "Ms Aydin's brother paid for his e-bike in cash."
+ },
+ "H3-6": {
+  "evidence": "Für das Benzin und die Parkgebühren zahle ich im Moment fast dreihundert.",
+  "evidence_en": "For petrol and parking I'm currently paying almost three hundred.",
+  "why": "Er zahlt fast dreihundert Euro fürs Auto, nicht sechzig.",
+  "why_en": "He pays almost three hundred euros for the car, not sixty.",
+  "trap": "Sechzig Euro ist die Leasingrate des Bruders.",
+  "trap_en": "Sixty euros is the brother's leasing rate.",
+  "question_en": "Mr Brandt currently spends about sixty euros a month on the car."
+ },
+ "H3-7": {
+  "evidence": "Ich rede am Montag mit der Personalabteilung.",
+  "evidence_en": "I'll talk to HR on Monday.",
+  "why": "Er will in der Personalabteilung nach dem Leasing fragen.",
+  "why_en": "He wants to ask HR about leasing.",
+  "trap": "Am Ende hofft er auf die Brücke, aber mit der Firma will er trotzdem sprechen.",
+  "trap_en": "At the end he's hoping for the bridge, but he still plans to talk to his company.",
+  "question_en": "Mr Brandt wants to ask about bike leasing at his company."
+ },
+ "H4-1": {
+  "evidence": "seit zwei Jahren wieder mehr Zuzüge als Wegzüge",
+  "evidence_en": "for two years now more people moving in than moving out again",
+  "why": "Frau Lutz sagt, seit zwei Jahren ziehen mehr Leute zu als weg.",
+  "why_en": "Ms Lutz says for two years more people have moved in than out.",
+  "trap": "Herr Manz spricht über Dörfer, die Einwohner verlieren – das Gegenteil.",
+  "trap_en": "Mr Manz talks about villages losing residents – the opposite.",
+  "question_en": "In recent years more people have moved to the village than have moved away."
+ },
+ "H4-2": {
+  "evidence": "Sondern die Dörfer, die mehr als eine Stunde von der nächsten Stadt entfernt sind.",
+  "evidence_en": "Rather the villages that are more than an hour from the nearest town.",
+  "why": "Herr Manz sagt, vor allem weit entfernte Dörfer verlieren Einwohner.",
+  "why_en": "Mr Manz says mainly remote villages lose residents.",
+  "trap": "Frau Lutz widerspricht danach, aber nur bei den Gründen.",
+  "trap_en": "Ms Lutz disagrees afterwards, but only about the reasons.",
+  "question_en": "It's mainly villages far away from towns that are losing inhabitants."
+ },
+ "H4-3": {
+  "evidence": "Seitdem fahren dreimal so viele Leute mit wie vorher mit dem alten Linienbus.",
+  "evidence_en": "Since then three times as many people ride as did with the old scheduled bus.",
+  "why": "Frau Lutz nennt den Rufbus mit dreimal so vielen Fahrgästen.",
+  "why_en": "Ms Lutz mentions the on-demand bus with three times as many riders.",
+  "trap": "Herr Manz sagt „Ein Rufbus ist gut“, aber die Zahl nennt Lutz.",
+  "trap_en": "Mr Manz says 'an on-demand bus is good', but Lutz gives the figure.",
+  "question_en": "The on-demand bus is used much more than the former scheduled bus."
+ },
+ "H4-4": {
+  "evidence": "Die meisten Leute ziehen nicht wegen des Busses weg, sondern wegen der Arbeit.",
+  "evidence_en": "Most people don't move away because of the bus, but because of work.",
+  "why": "Herr Manz sagt, der Hauptgrund ist die Arbeit.",
+  "why_en": "Mr Manz says work is the main reason.",
+  "trap": "Frau Lutz nennt den Bus als Grund – das ist ihre andere Meinung.",
+  "trap_en": "Ms Lutz points to the bus – that's her different view.",
+  "question_en": "People move away mainly because of work."
+ },
+ "H4-5": {
+  "evidence": "Ich habe meine Eltern im Sauerland besucht, und dort konnte ich nicht einmal eine E-Mail schicken.",
+  "evidence_en": "I visited my parents in the Sauerland, and I couldn't even send an email there.",
+  "why": "Der Moderator erzählt von seinen Eltern ohne funktionierendes Internet.",
+  "why_en": "The presenter talks about his parents having no working internet.",
+  "trap": "Frau Lutz spricht danach über Glasfaser, aber die Eltern sind die des Moderators.",
+  "trap_en": "Ms Lutz then talks about fibre, but the parents are the presenter's.",
+  "question_en": "At my parents' place there was no working internet."
+ },
+ "H4-6": {
+  "evidence": "es war die wichtigste Entscheidung überhaupt",
+  "evidence_en": "it was the most important decision of all",
+  "why": "Frau Lutz nennt das Glasfaser-Internet die wichtigste Entscheidung.",
+  "why_en": "Ms Lutz calls fibre internet the most important decision.",
+  "trap": "Am Ende sagt sie auch „beste Entscheidung meines Lebens“ – das ist über ihre Rückkehr, nicht das Internet.",
+  "trap_en": "At the end she also says 'best decision of my life' – about her return, not the internet.",
+  "question_en": "Fast internet was the most important decision for the village."
+ },
+ "H4-7": {
+  "evidence": "Ich halte es für sinnvoller, das Geld auf die Dörfer zu konzentrieren",
+  "evidence_en": "I think it makes more sense to concentrate the money on the villages",
+  "why": "Herr Manz will das Geld auf bestimmte Dörfer konzentrieren, nicht auf alle verteilen.",
+  "why_en": "Mr Manz wants to focus the money on certain villages, not spread it over all.",
+  "trap": "Frau Lutz ist dagegen – sie fragt, wer entscheidet, welches Dorf sterben darf.",
+  "trap_en": "Ms Lutz is against this – she asks who decides which village may die.",
+  "question_en": "The money shouldn't be distributed equally across all villages."
+ },
+ "H4-8": {
+  "evidence": "Ich war selbst zwölf Jahre in München.",
+  "evidence_en": "I myself spent twelve years in Munich.",
+  "why": "Frau Lutz hat zwölf Jahre in München gelebt.",
+  "why_en": "Ms Lutz lived in Munich for twelve years.",
+  "trap": "Herr Manz arbeitet in Dortmund, aber er erzählt nicht von seinem eigenen Leben dort.",
+  "trap_en": "Mr Manz works in Dortmund, but doesn't talk about his own life there.",
+  "question_en": "I myself lived in a big city for a long time."
+ }
+}

@@ -1,0 +1,1406 @@
+[
+ {
+  "id": "BG:perfekt-entscheidung",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "perfekt",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "participle"
+  ],
+  "strict": [
+   "getroffen"
+  ],
+  "plan": "transform",
+  "task": "Put it in the Perfekt.",
+  "prompt": "Er trifft eine Entscheidung.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Er hat",
+  "accept": [
+   "er hat eine entscheidung getroffen"
+  ],
+  "anywhere": false,
+  "model": "Er hat eine Entscheidung getroffen.",
+  "wrong": [
+   "Er hat eine Entscheidung getrefft.",
+   "Er hat eine Entscheidung getreffen."
+  ],
+  "rule": "treffen is irregular: hat getroffen.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:perfekt-vorbereiten",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "perfekt",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "participle"
+  ],
+  "strict": [
+   "vorbereitet"
+  ],
+  "plan": "transform",
+  "task": "Put it in the Perfekt.",
+  "prompt": "Ich bereite die Präsentation vor.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ich habe",
+  "accept": [
+   "ich habe die präsentation vorbereitet",
+   "ich habe meine präsentation vorbereitet"
+  ],
+  "anywhere": false,
+  "model": "Ich habe die Präsentation vorbereitet.",
+  "wrong": [
+   "Ich habe die Präsentation gevorbereitet.",
+   "Ich habe die Präsentation vorgebereitet."
+  ],
+  "rule": "vorbereiten gets no ge-, because bereiten starts with be-: vorbereitet.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:perfekt-einordnen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "perfekt",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "participle"
+  ],
+  "strict": [
+   "eingeordnet"
+  ],
+  "plan": "transform",
+  "task": "Put it in the Perfekt.",
+  "prompt": "Sie ordnet die Ergebnisse ein.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Sie hat",
+  "accept": [
+   "sie hat die ergebnisse eingeordnet"
+  ],
+  "anywhere": false,
+  "model": "Sie hat die Ergebnisse eingeordnet.",
+  "wrong": [
+   "Sie hat die Ergebnisse geeinordnet.",
+   "Sie hat die Ergebnisse eingeordnen."
+  ],
+  "rule": "Separable verbs put ge- after the prefix: eingeordnet.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:perfekt-teilnehmen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "perfekt",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "participle"
+  ],
+  "strict": [
+   "teilgenommen"
+  ],
+  "plan": "transform",
+  "task": "Put it in the Perfekt.",
+  "prompt": "Er nimmt am Kurs teil.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Er hat",
+  "accept": [
+   "er hat am kurs teilgenommen"
+  ],
+  "anywhere": false,
+  "model": "Er hat am Kurs teilgenommen.",
+  "wrong": [
+   "Er hat am Kurs geteilnommen.",
+   "Er hat am Kurs teilgenehmt."
+  ],
+  "rule": "Separable verbs put ge- after the prefix: teilgenommen.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:perfekt-unterstuetzen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "perfekt",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "participle"
+  ],
+  "strict": [
+   "unterstützt"
+  ],
+  "plan": "transform",
+  "task": "Put it in the Perfekt.",
+  "prompt": "Meine Familie unterstützt mich.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Meine Familie hat",
+  "accept": [
+   "meine familie hat mich unterstützt",
+   "meine familie hat mich sehr unterstützt"
+  ],
+  "anywhere": false,
+  "model": "Meine Familie hat mich unterstützt.",
+  "wrong": [
+   "Meine Familie hat mich geunterstützt.",
+   "Meine Familie hat mich unterstützen."
+  ],
+  "rule": "unterstützen is inseparable, so it gets no ge-: hat unterstützt.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:perfekt-erhalten",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "perfekt",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "participle"
+  ],
+  "strict": [
+   "erhalten"
+  ],
+  "plan": "transform",
+  "task": "Put it in the Perfekt.",
+  "prompt": "Wir erhalten Ihren Brief.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Wir haben",
+  "accept": [
+   "wir haben ihren brief erhalten"
+  ],
+  "anywhere": false,
+  "model": "Wir haben Ihren Brief erhalten.",
+  "wrong": [
+   "Wir haben Ihren Brief geerhalten.",
+   "Wir haben Ihren Brief erhaltet."
+  ],
+  "rule": "No ge- after er-, and erhalten keeps its -en: hat erhalten.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:perfekt-besuchen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "perfekt",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "participle"
+  ],
+  "strict": [
+   "besucht"
+  ],
+  "plan": "transform",
+  "task": "Put it in the Perfekt.",
+  "prompt": "Wir besuchen unsere Großeltern.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Wir haben",
+  "accept": [
+   "wir haben unsere großeltern besucht"
+  ],
+  "anywhere": false,
+  "model": "Wir haben unsere Großeltern besucht.",
+  "wrong": [
+   "Wir haben unsere Großeltern gebesucht."
+  ],
+  "rule": "No ge- after be-, ver-, er- or on -ieren verbs: besucht, studiert.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:perfekt-verbringen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "perfekt",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "participle"
+  ],
+  "strict": [
+   "verbracht"
+  ],
+  "plan": "transform",
+  "task": "Put it in the Perfekt.",
+  "prompt": "Ich verbringe eine Woche in Wien.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ich habe",
+  "accept": [
+   "ich habe eine woche in wien verbracht"
+  ],
+  "anywhere": false,
+  "model": "Ich habe eine Woche in Wien verbracht.",
+  "wrong": [
+   "Ich habe eine Woche in Wien geverbracht.",
+   "Ich habe eine Woche in Wien verbringt."
+  ],
+  "rule": "No ge- after ver-, and verbringen is irregular: hat verbracht.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:perfekt-reagieren",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "perfekt",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "participle"
+  ],
+  "strict": [
+   "reagiert"
+  ],
+  "plan": "transform",
+  "task": "Put it in the Perfekt.",
+  "prompt": "Der Chef reagiert nicht.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Der Chef hat",
+  "accept": [
+   "der chef hat nicht reagiert"
+  ],
+  "anywhere": false,
+  "model": "Der Chef hat nicht reagiert.",
+  "wrong": [
+   "Der Chef hat nicht gereagiert."
+  ],
+  "rule": "No ge- on -ieren verbs: hat reagiert.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:perfekt-diskutieren",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "perfekt",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "participle"
+  ],
+  "strict": [
+   "diskutiert"
+  ],
+  "plan": "transform",
+  "task": "Put it in the Perfekt.",
+  "prompt": "Wir diskutieren das Thema.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Wir haben",
+  "accept": [
+   "wir haben das thema diskutiert",
+   "wir haben über das thema diskutiert"
+  ],
+  "anywhere": false,
+  "model": "Wir haben das Thema diskutiert.",
+  "wrong": [
+   "Wir haben das Thema gediskutiert."
+  ],
+  "rule": "No ge- on -ieren verbs: hat diskutiert.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:perfekt-bekommen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "perfekt",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "participle"
+  ],
+  "strict": [
+   "bekommen"
+  ],
+  "plan": "transform",
+  "task": "Put it in the Perfekt.",
+  "prompt": "Ich bekomme eine Antwort.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ich habe",
+  "accept": [
+   "ich habe eine antwort bekommen"
+  ],
+  "anywhere": false,
+  "model": "Ich habe eine Antwort bekommen.",
+  "wrong": [
+   "Ich habe eine Antwort gebekommen.",
+   "Ich habe eine Antwort bekommt."
+  ],
+  "rule": "No ge- after be-, and bekommen keeps its -en: hat bekommen.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:perfekt-fahren",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "perfekt",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "participle"
+  ],
+  "strict": [
+   "gefahren"
+  ],
+  "plan": "transform",
+  "task": "Put it in the Perfekt.",
+  "prompt": "Wir fahren nach München.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Wir sind",
+  "accept": [
+   "wir sind nach münchen gefahren"
+  ],
+  "anywhere": false,
+  "model": "Wir sind nach München gefahren.",
+  "wrong": [
+   "Wir sind nach München gefahrt.",
+   "Wir sind nach München gefahren worden."
+  ],
+  "rule": "fahren is irregular and keeps its -en: ist gefahren.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:perfekt-umziehen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "perfekt",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "participle"
+  ],
+  "strict": [
+   "umgezogen"
+  ],
+  "plan": "transform",
+  "task": "Put it in the Perfekt.",
+  "prompt": "Sie zieht nach Berlin um.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Sie ist",
+  "accept": [
+   "sie ist nach berlin umgezogen"
+  ],
+  "anywhere": false,
+  "model": "Sie ist nach Berlin umgezogen.",
+  "wrong": [
+   "Sie ist nach Berlin geumzogen.",
+   "Sie ist nach Berlin umgezieht."
+  ],
+  "rule": "Separable verbs put ge- after the prefix: umgezogen.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:perfekt-passieren",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "perfekt",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "participle"
+  ],
+  "strict": [
+   "passiert"
+  ],
+  "plan": "transform",
+  "task": "Put it in the Perfekt.",
+  "prompt": "Was passiert?",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Was ist",
+  "accept": [
+   "was ist passiert"
+  ],
+  "anywhere": false,
+  "model": "Was ist passiert?",
+  "wrong": [
+   "Was ist gepassiert?"
+  ],
+  "rule": "No ge- on -ieren verbs: ist passiert.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:perfekt-aux-fliegen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "perfekt",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "perfekt-aux",
+   "participle"
+  ],
+  "strict": [
+   "bin",
+   "geflogen"
+  ],
+  "plan": "transform",
+  "task": "Put it in the Perfekt.",
+  "prompt": "Ich fliege nach Spanien.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ich",
+  "accept": [
+   "ich bin nach spanien geflogen"
+  ],
+  "anywhere": false,
+  "model": "Ich bin nach Spanien geflogen.",
+  "wrong": [
+   "Ich habe nach Spanien geflogen.",
+   "Ich bin nach Spanien gefliegt."
+  ],
+  "rule": "Verbs of moving from A to B take sein: ist gefahren.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:perfekt-aux-werden",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "perfekt",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "perfekt-aux",
+   "participle"
+  ],
+  "strict": [
+   "ist",
+   "geworden"
+  ],
+  "plan": "transform",
+  "task": "Put it in the Perfekt.",
+  "prompt": "Er wird krank.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Er",
+  "accept": [
+   "er ist krank geworden"
+  ],
+  "anywhere": false,
+  "model": "Er ist krank geworden.",
+  "wrong": [
+   "Er hat krank geworden.",
+   "Er ist krank gewordet."
+  ],
+  "rule": "Verbs of change take sein: ist krank geworden.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:perfekt-aux-ankommen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "perfekt",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "perfekt-aux",
+   "participle"
+  ],
+  "strict": [
+   "ist",
+   "angekommen"
+  ],
+  "plan": "transform",
+  "task": "Put it in the Perfekt.",
+  "prompt": "Der Zug kommt pünktlich an.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Der Zug",
+  "accept": [
+   "der zug ist pünktlich angekommen"
+  ],
+  "anywhere": false,
+  "model": "Der Zug ist pünktlich angekommen.",
+  "wrong": [
+   "Der Zug hat pünktlich angekommen.",
+   "Der Zug ist pünktlich geankommen."
+  ],
+  "rule": "Arriving is moving from A to B, so it takes sein: ist angekommen.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:perfekt-aux-einladen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "perfekt",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "perfekt-aux",
+   "participle"
+  ],
+  "strict": [
+   "hat",
+   "eingeladen"
+  ],
+  "plan": "transform",
+  "task": "Put it in the Perfekt.",
+  "prompt": "Sie lädt uns ein.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Sie",
+  "accept": [
+   "sie hat uns eingeladen"
+  ],
+  "anywhere": false,
+  "model": "Sie hat uns eingeladen.",
+  "wrong": [
+   "Sie ist uns eingeladen.",
+   "Sie hat uns geeinladen."
+  ],
+  "rule": "Verbs with an object take haben: hat eingeladen.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gender-thema",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "gender-caps",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "neuter",
+  "focus": [
+   "neuter",
+   "article",
+   "cap"
+  ],
+  "strict": [
+   "Thema"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "the topic",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "das thema"
+  ],
+  "anywhere": false,
+  "model": "Das Thema",
+  "wrong": [
+   "Der Thema",
+   "Das thema"
+  ],
+  "rule": "Thema is neuter, like Klima and Problem: das Thema (but die Firma).",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gender-problem",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "gender-caps",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "neuter",
+  "focus": [
+   "neuter",
+   "ending",
+   "cap"
+  ],
+  "strict": [
+   "Problem"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "a big problem",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "ein großes problem"
+  ],
+  "anywhere": false,
+  "model": "Ein großes Problem",
+  "wrong": [
+   "Ein großer Problem",
+   "Ein großes problem"
+  ],
+  "rule": "Problem is neuter, like the -ma nouns: ein großes Problem.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gender-system",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "gender-caps",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "neuter",
+  "focus": [
+   "neuter",
+   "article",
+   "cap"
+  ],
+  "strict": [
+   "System"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "the system",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "das system"
+  ],
+  "anywhere": false,
+  "model": "Das System",
+  "wrong": [
+   "Der System",
+   "Das system"
+  ],
+  "rule": "System is neuter, like the -ma nouns: das System.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gender-klima",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "gender-caps",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "neuter",
+  "focus": [
+   "neuter",
+   "article",
+   "cap"
+  ],
+  "strict": [
+   "Klima"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "the climate",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "das klima"
+  ],
+  "anywhere": false,
+  "model": "Das Klima",
+  "wrong": [
+   "Die Klima",
+   "Der Klima",
+   "Das klima"
+  ],
+  "rule": "Klima is neuter, like Thema and Problem: das Klima (but die Firma).",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gender-programm",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "gender-caps",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "neuter",
+  "focus": [
+   "neuter",
+   "article",
+   "cap"
+  ],
+  "strict": [
+   "Programm"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "the programme (on TV)",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "das programm"
+  ],
+  "anywhere": false,
+  "model": "Das Programm",
+  "wrong": [
+   "Der Programm",
+   "Das programm"
+  ],
+  "rule": "Programm is neuter: das Programm.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gender-unternehmen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "gender-caps",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "neuter",
+  "focus": [
+   "neuter",
+   "article",
+   "cap"
+  ],
+  "strict": [
+   "Unternehmen"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "the company (not Firma)",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "das unternehmen"
+  ],
+  "anywhere": false,
+  "model": "Das Unternehmen",
+  "wrong": [
+   "Der Unternehmen",
+   "Das unternehmen"
+  ],
+  "rule": "Nouns made from verbs are neuter: das Essen.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gender-essen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "gender-caps",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "neuter",
+  "focus": [
+   "neuter",
+   "article",
+   "cap"
+  ],
+  "strict": [
+   "Essen"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "the food (at a party)",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "das essen"
+  ],
+  "anywhere": false,
+  "model": "Das Essen",
+  "wrong": [
+   "Der Essen",
+   "Das essen"
+  ],
+  "rule": "Nouns made from verbs are neuter: das Essen.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gender-lernen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "gender-caps",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "neuter",
+  "focus": [
+   "neuter",
+   "article",
+   "cap"
+  ],
+  "strict": [
+   "Lernen"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "Learning is fun.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "das lernen macht spaß",
+   "das lernen macht mir spaß"
+  ],
+  "anywhere": false,
+  "model": "Das Lernen macht Spaß.",
+  "wrong": [
+   "Der Lernen macht Spaß.",
+   "Das lernen macht Spaß."
+  ],
+  "rule": "Nouns made from verbs are neuter: das Essen.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gender-treffen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "gender-caps",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "neuter",
+  "focus": [
+   "neuter",
+   "article",
+   "cap"
+  ],
+  "strict": [
+   "Treffen"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "the meeting (with friends)",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "das treffen"
+  ],
+  "anywhere": false,
+  "model": "Das Treffen",
+  "wrong": [
+   "Der Treffen",
+   "Die Treffen",
+   "Das treffen"
+  ],
+  "rule": "Nouns made from verbs are neuter: das Essen.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gender-verhalten",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "gender-caps",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "neuter",
+  "focus": [
+   "neuter",
+   "article",
+   "cap"
+  ],
+  "strict": [
+   "Verhalten"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "the behaviour",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "das verhalten"
+  ],
+  "anywhere": false,
+  "model": "Das Verhalten",
+  "wrong": [
+   "Der Verhalten",
+   "Das verhalten"
+  ],
+  "rule": "Nouns made from verbs are neuter: das Essen.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gender-loesung",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "gender-caps",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "article",
+   "cap"
+  ],
+  "strict": [
+   "Lösung"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "the solution",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "die lösung"
+  ],
+  "anywhere": false,
+  "model": "Die Lösung",
+  "wrong": [
+   "Der Lösung",
+   "Das Lösung",
+   "Die lösung"
+  ],
+  "rule": "Nouns ending in -ung are feminine: die Lösung.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gender-moeglichkeit",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "gender-caps",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "article",
+   "cap"
+  ],
+  "strict": [
+   "Möglichkeit"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "the possibility",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "die möglichkeit"
+  ],
+  "anywhere": false,
+  "model": "Die Möglichkeit",
+  "wrong": [
+   "Das Möglichkeit",
+   "Die möglichkeit"
+  ],
+  "rule": "Nouns ending in -keit and -heit are feminine: die Möglichkeit.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gender-gesundheit",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "gender-caps",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "article",
+   "cap"
+  ],
+  "strict": [
+   "Gesundheit"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "health",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "die gesundheit"
+  ],
+  "anywhere": false,
+  "model": "Die Gesundheit",
+  "wrong": [
+   "Das Gesundheit",
+   "Die gesundheit"
+  ],
+  "rule": "Nouns ending in -heit and -keit are feminine: die Gesundheit.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gender-termin",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "gender-caps",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "article",
+   "cap"
+  ],
+  "strict": [
+   "Termin"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "the appointment",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "der termin"
+  ],
+  "anywhere": false,
+  "model": "Der Termin",
+  "wrong": [
+   "Das Termin",
+   "Die Termin",
+   "Der termin"
+  ],
+  "rule": "Termin is masculine: der Termin, einen Termin.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gender-vorteil",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "gender-caps",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "article",
+   "cap"
+  ],
+  "strict": [
+   "Vorteil"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "the advantage",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "der vorteil"
+  ],
+  "anywhere": false,
+  "model": "Der Vorteil",
+  "wrong": [
+   "Das Vorteil",
+   "Die Vorteil",
+   "Der vorteil"
+  ],
+  "rule": "Vorteil and Nachteil are masculine: der Vorteil.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gender-etwas-neues",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "gender-caps",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "cap",
+  "focus": [
+   "cap"
+  ],
+  "strict": [
+   "Neues"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "something new",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "etwas neues"
+  ],
+  "anywhere": false,
+  "model": "Etwas Neues",
+  "wrong": [
+   "Etwas neues"
+  ],
+  "rule": "Nouns take a capital, including made-up ones: etwas Neues.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gender-nichts-besonderes",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "gender-caps",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "cap",
+  "focus": [
+   "cap"
+  ],
+  "strict": [
+   "Besonderes"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "nothing special",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "nichts besonderes"
+  ],
+  "anywhere": false,
+  "model": "Nichts Besonderes",
+  "wrong": [
+   "Nichts besonderes"
+  ],
+  "rule": "Nouns take a capital, including made-up ones: nichts Besonderes.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gender-viel-interessantes",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "gender-caps",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "cap",
+  "focus": [
+   "cap"
+  ],
+  "strict": [
+   "Interessantes"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "lots of interesting things",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "viel interessantes",
+   "viele interessante dinge"
+  ],
+  "anywhere": false,
+  "model": "Viel Interessantes",
+  "wrong": [
+   "Viel interessantes"
+  ],
+  "rule": "Nouns take a capital, including made-up ones: viel Interessantes.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gender-alles-gute",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "gender-caps",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "cap",
+  "focus": [
+   "cap"
+  ],
+  "strict": [
+   "Gute"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "All the best! (end of a letter)",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "alles gute"
+  ],
+  "anywhere": false,
+  "model": "Alles Gute",
+  "wrong": [
+   "Alles gute"
+  ],
+  "rule": "Nouns take a capital, including made-up ones: Alles Gute.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gender-beim-lernen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "gender-caps",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "cap",
+  "focus": [
+   "cap"
+  ],
+  "strict": [
+   "Lernen"
+  ],
+  "plan": "recall",
+  "task": "Fill the gap.",
+  "prompt": "Ich höre ___ Musik. (while studying)",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "beim lernen",
+   "bei dem lernen"
+  ],
+  "anywhere": false,
+  "model": "Ich höre beim Lernen Musik.",
+  "wrong": [
+   "Ich höre beim lernen Musik.",
+   "Ich höre bei Lernen Musik."
+  ],
+  "rule": "After beim, a verb becomes a noun and takes a capital: beim Lernen.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ }
+]

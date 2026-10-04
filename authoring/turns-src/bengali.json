@@ -1,0 +1,144 @@
+[
+ {
+  "time": "past",
+  "aspect": "simple",
+  "form": "আমি গেলাম",
+  "alt": "আমি গেছিলাম",
+  "status": "form",
+  "marker": [
+   "গেলাম"
+  ],
+  "gloss": "I went",
+  "note": "Simple past গেলাম suits a just-finished or narrated event; for a specific earlier day people say গেছিলাম.",
+  "translit": "aami gelaam",
+  "markerTr": [
+   "gelaam"
+  ]
+ },
+ {
+  "time": "past",
+  "aspect": "progressive",
+  "form": "আমি যাচ্ছিলাম",
+  "alt": "",
+  "status": "form",
+  "marker": [
+   "যাচ্ছিলাম"
+  ],
+  "gloss": "I was going",
+  "note": "One word: progressive -চ্ছ- plus past -িলাম. Also means 'I was about to go' when a plan fell through.",
+  "translit": "aami jaachchhilaam",
+  "markerTr": [
+   "jaachchhilaam"
+  ]
+ },
+ {
+  "time": "past",
+  "aspect": "perfect",
+  "form": "আমি গিয়েছিলাম",
+  "alt": "আমি গেছিলাম",
+  "status": "form",
+  "marker": [
+   "গিয়েছিলাম"
+  ],
+  "gloss": "I had gone",
+  "note": "Also the everyday past for a definite earlier time (কাল গেছিলাম), not only 'had gone'; speech shortens it to গেছিলাম.",
+  "translit": "aami giyechhilaam",
+  "markerTr": [
+   "giyechhilaam"
+  ]
+ },
+ {
+  "time": "present",
+  "aspect": "simple",
+  "form": "আমি যাই",
+  "alt": "",
+  "status": "form",
+  "marker": [],
+  "gloss": "I go",
+  "note": "Habitual: what you do regularly. Never 'I am going right now'; that is যাচ্ছি.",
+  "translit": "aami jaai",
+  "markerTr": []
+ },
+ {
+  "time": "present",
+  "aspect": "progressive",
+  "form": "আমি যাচ্ছি",
+  "alt": "",
+  "status": "form",
+  "marker": [
+   "যাচ্ছি"
+  ],
+  "gloss": "I am going",
+  "note": "Also the normal way to state a fixed near-future plan: কাল যাচ্ছি, 'I'm going tomorrow'.",
+  "translit": "aami jaachchhi",
+  "markerTr": [
+   "jaachchhi"
+  ]
+ },
+ {
+  "time": "present",
+  "aspect": "perfect",
+  "form": "আমি গেছি",
+  "alt": "আমি গিয়েছি",
+  "status": "form",
+  "marker": [
+   "গেছি"
+  ],
+  "gloss": "I have gone",
+  "note": "Spoken গেছি, written গিয়েছি. Used for 'I've been (there)' and for a result still true now.",
+  "translit": "aami gechhi",
+  "markerTr": [
+   "gechhi"
+  ]
+ },
+ {
+  "time": "future",
+  "aspect": "simple",
+  "form": "আমি যাব",
+  "alt": "",
+  "status": "form",
+  "marker": [
+   "যাব"
+  ],
+  "gloss": "I will go",
+  "note": "Synthetic future: stem plus -ব. One form for plans, promises and predictions.",
+  "translit": "aami jaabo",
+  "markerTr": [
+   "jaabo"
+  ]
+ },
+ {
+  "time": "future",
+  "aspect": "progressive",
+  "form": "আমি তখন যাচ্ছি",
+  "alt": "আমি যেতে থাকব",
+  "status": "none",
+  "marker": [
+   "তখন যাচ্ছি"
+  ],
+  "gloss": "I will be going",
+  "note": "No real future progressive: present যাচ্ছি plus তখন 'then'. Textbook যেতে থাকব means 'will keep going'.",
+  "translit": "aami tokhon jaachchhi",
+  "markerTr": [
+   "tokhon jaachchhi"
+  ]
+ },
+ {
+  "time": "future",
+  "aspect": "perfect",
+  "form": "আমি ততক্ষণে চলে যাব",
+  "alt": "আমি গিয়ে থাকব",
+  "status": "periphrasis",
+  "marker": [
+   "ততক্ষণে",
+   "চলে যাব"
+  ],
+  "gloss": "I will have gone",
+  "note": "Speech uses ততক্ষণে 'by then' plus চলে যাব; গিয়ে থাকব is bookish and usually means 'I must have gone'.",
+  "translit": "aami totokkhone chole jaabo",
+  "markerTr": [
+   "totokkhone",
+   "chole jaabo"
+  ]
+ }
+]

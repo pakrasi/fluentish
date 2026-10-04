@@ -1,0 +1,566 @@
+[
+{
+"id": "ENG_CHUNK_0001",
+"t": "Je me demandais si vous pourriez [infinitif]",
+"ex": "Je me demandais si vous pourriez me donner un coup de main avec ça.",
+"n": "Imparfait + conditionnel stack the politeness. With tu: Je me demandais si tu pourrais..."
+},
+{
+"id": "ENG_CHUNK_0002",
+"t": "Ça vous dérangerait de [infinitif] ? / Ça te dérangerait de... ?",
+"ex": "Ça vous dérangerait de fermer la fenêtre ?",
+"n": "English -ing becomes de + infinitive."
+},
+{
+"id": "ENG_CHUNK_0003",
+"t": "Ça vous dérange si je [présent] ? / Ça te dérange si je... ?",
+"ex": "Ça vous dérange si j'ouvre la fenêtre ?",
+"n": "si takes the indicative present, never the subjunctive or conditional."
+},
+{
+"id": "ENG_CHUNK_0004",
+"t": "Je pense [infinitif] / J'envisage de [infinitif]",
+"ex": "Je pense déménager à Berlin l'année prochaine.",
+"n": "penser + bare infinitive = 'plan to'; no preposition. Not penser à (= think about)."
+},
+{
+"id": "ENG_CHUNK_0005",
+"t": "J'ai hâte de [infinitif]",
+"ex": "J'ai hâte de te revoir.",
+"n": "Also Je me réjouis de... (more formal). Avoid calquing 'regarder en avant'."
+},
+{
+"id": "ENG_CHUNK_0006",
+"t": "Je ne sais pas si [proposition]",
+"ex": "Je ne sais pas s'ils viennent ce soir.",
+"n": "Spoken: Je sais pas si... Indicative after si, not subjunctive."
+},
+{
+"id": "ENG_CHUNK_0007",
+"t": "J'allais justement [infinitif] / J'étais sur le point de [infinitif]",
+"ex": "Oh, j'allais justement t'appeler !"
+},
+{
+"id": "ENG_CHUNK_0008",
+"t": "Ça fait longtemps que je voulais [infinitif] / Je voulais [infinitif] depuis un moment",
+"ex": "Ça fait des semaines que je voulais t'appeler.",
+"n": "Ça fait X que + imparfait here, because the intention is still unfulfilled."
+},
+{
+"id": "ENG_CHUNK_0009",
+"t": "Ça ne sert à rien de [infinitif]",
+"ex": "Ça sert à rien d'attendre, ils ne viendront pas.",
+"n": "Spoken drops ne: Ça sert à rien de..."
+},
+{
+"id": "ENG_CHUNK_0010",
+"t": "Et si on [imparfait] ? / Pourquoi on ne [présent] pas ?",
+"ex": "Et si on prenait une pizza ce soir ?",
+"n": "Et si on + imparfait is the everyday suggestion frame; on = nous in speech."
+},
+{
+"id": "ENG_CHUNK_0011",
+"t": "Je préférerais [infinitif] / J'aimerais mieux [infinitif]",
+"ex": "Je préférerais rester à la maison ce soir, si ça te va."
+},
+{
+"id": "ENG_CHUNK_0012",
+"t": "À ta place, je [conditionnel] / À votre place, je...",
+"ex": "À ta place, j'en parlerais d'abord à ton chef.",
+"n": "'If I were you' is almost always À ta place in speech; Si j'étais toi is less common."
+},
+{
+"id": "ENG_CHUNK_0013",
+"t": "Ça dépend de [nom]",
+"ex": "Ça dépend du temps, en fait.",
+"n": "de + le = du, de + les = des."
+},
+{
+"id": "ENG_CHUNK_0014",
+"t": "Le truc, c'est que [proposition] / Le problème, c'est que...",
+"ex": "Le truc, c'est que j'ai déjà prévu quelque chose samedi."
+},
+{
+"id": "ENG_CHUNK_0015",
+"t": "Je ne voulais pas [infinitif] / Je n'ai pas fait exprès de [infinitif]",
+"ex": "Pardon, je ne voulais pas te couper.",
+"n": "Spoken: J'ai pas fait exprès = I didn't do it on purpose."
+},
+{
+"id": "ENG_CHUNK_0016",
+"t": "J'ai l'habitude de [infinitif]",
+"ex": "J'ai l'habitude de me lever tôt.",
+"n": "Être habitué à + infinitive also works. Not 'je suis utilisé à'."
+},
+{
+"id": "ENG_CHUNK_0017",
+"t": "Il faut [durée] pour [infinitif] / Ça prend [durée] pour...",
+"ex": "Il faut environ vingt minutes pour y aller."
+},
+{
+"id": "ENG_CHUNK_0018",
+"t": "Dis-moi si [proposition] / Tenez-moi au courant si...",
+"ex": "Dis-moi si tu as besoin de quoi que ce soit."
+},
+{
+"id": "ENG_CHUNK_0019",
+"t": "Merci de [infinitif] / Merci d'avoir [participe passé]",
+"ex": "Merci de m'avoir prévenu.",
+"n": "For something already done, use the past infinitive: merci d'avoir + participle."
+},
+{
+"id": "ENG_CHUNK_0020",
+"t": "Désolé de [infinitif] / Désolé d'avoir [participe passé]",
+"ex": "Désolé de t'avoir fait attendre.",
+"n": "Past infinitive when the thing is done. Désolée if the speaker is a woman."
+},
+{
+"id": "ENG_CHUNK_0021",
+"t": "Je n'arrive pas à croire que [subjonctif]",
+"ex": "Je n'arrive pas à croire qu'on soit déjà en octobre.",
+"n": "Subjunctive after ne pas croire que. Also informal: J'y crois pas, déjà octobre !"
+},
+{
+"id": "ENG_CHUNK_0022",
+"t": "Pourriez-vous me dire [proposition] ?",
+"ex": "Pourriez-vous me dire où se trouve la gare ?",
+"n": "Embedded question keeps statement order: où est la gare, not où est-ce que."
+},
+{
+"id": "ENG_CHUNK_0023",
+"t": "Qu'est-ce que tu penses de [nom] ? / Vous pensez quoi de... ?",
+"ex": "Qu'est-ce que tu penses du nouveau bureau ?",
+"n": "penser DE for opinions; penser À means 'think about'."
+},
+{
+"id": "ENG_CHUNK_0024",
+"t": "C'est comment de [infinitif] ? / Ça fait quoi de... ?",
+"ex": "C'est comment de vivre à Londres ?"
+},
+{
+"id": "ENG_CHUNK_0025",
+"t": "Je suis désolé, mais [proposition] / Malheureusement, [proposition]",
+"ex": "Je suis désolé, mais nous sommes complets ce soir.",
+"n": "'J'ai peur que' = I'm scared that (+ subjunctive), not a softener for bad news."
+},
+{
+"id": "ENG_CHUNK_0026",
+"t": "N'oublie pas de [infinitif] / Pense bien à [infinitif]",
+"ex": "N'oublie pas de fermer à clé en partant.",
+"n": "Faites attention à bien... for vous."
+},
+{
+"id": "ENG_CHUNK_0027",
+"t": "J'aimerais bien, mais [proposition]",
+"ex": "J'aimerais bien, mais je commence tôt demain."
+},
+{
+"id": "ENG_CHUNK_0028",
+"t": "En fait, [proposition] / Il s'avère que [proposition]",
+"ex": "En fait, le magasin était fermé toute la semaine.",
+"n": "Il s'avère que is written/formal; speech just says En fait or Finalement."
+},
+{
+"id": "ENG_CHUNK_0029",
+"t": "On dirait que [proposition]",
+"ex": "On dirait qu'il va pleuvoir.",
+"n": "Indicative after on dirait que."
+},
+{
+"id": "ENG_CHUNK_0030",
+"t": "Je n'ai aucune idée de [question indirecte] / J'en sais rien",
+"ex": "J'ai aucune idée d'où j'ai mis mes clés.",
+"n": "Spoken: Je sais pas du tout où..."
+},
+{
+"id": "ENG_CHUNK_0031",
+"t": "Je suis censé [infinitif]",
+"ex": "Je suis censé être au boulot à neuf heures.",
+"n": "Censée for a woman. Also Je dois... for plain obligation."
+},
+{
+"id": "ENG_CHUNK_0032",
+"t": "Je voulais juste [infinitif]",
+"ex": "Je voulais juste vérifier que vous aviez bien reçu mon mail.",
+"n": "Imparfait softens, as in English."
+},
+{
+"id": "ENG_CHUNK_0033",
+"t": "C'est toi qui décides / C'est à [personne] de voir",
+"ex": "Je m'en fiche où on mange. C'est toi qui décides.",
+"n": "Also Comme tu veux. Vous: C'est à vous de voir."
+},
+{
+"id": "ENG_CHUNK_0034",
+"t": "Ça a l'air [adjectif] / Ça me paraît [adjectif]",
+"ex": "Ça a l'air super. Je viens à quelle heure ?",
+"n": "For reacting to a plan speakers often just say Carrément ! or Trop bien !"
+},
+{
+"id": "ENG_CHUNK_0035",
+"t": "J'ai réussi à [infinitif]",
+"ex": "J'ai réussi à réparer l'imprimante tout seul."
+},
+{
+"id": "ENG_CHUNK_0036",
+"t": "prendre une décision",
+"ex": "Il faut qu'on prenne une décision d'ici vendredi.",
+"n": "Il faut que + subjunctive (prenne)."
+},
+{
+"id": "ENG_CHUNK_0037",
+"t": "faire une pause",
+"ex": "Faisons une pause et allons prendre un café.",
+"n": "'Prendre une pause' is Québécois; France says faire une pause."
+},
+{
+"id": "ENG_CHUNK_0038",
+"t": "jeter un œil à [nom] / regarder [nom]",
+"ex": "Tu peux jeter un œil à mon ordi ? Il n'arrête pas de planter."
+},
+{
+"id": "ENG_CHUNK_0039",
+"t": "ne plus avoir de [nom] / être à court de [nom]",
+"ex": "On n'a plus de lait, encore une fois.",
+"n": "Spoken: Y a plus de lait."
+},
+{
+"id": "ENG_CHUNK_0040",
+"t": "contacter [personne] / prendre contact avec [personne]",
+"ex": "Je contacterai le proprio demain.",
+"n": "Also informal: joindre, appeler."
+},
+{
+"id": "ENG_CHUNK_0041",
+"t": "faire une erreur / se tromper",
+"ex": "Désolé, je me suis trompé dans la réservation.",
+"n": "Se tromper is the more natural spoken choice."
+},
+{
+"id": "ENG_CHUNK_0042",
+"t": "faire attention à [nom]",
+"ex": "Je ne faisais pas attention à l'heure."
+},
+{
+"id": "ENG_CHUNK_0043",
+"t": "avoir du sens / être logique",
+"ex": "Ça n'a pas de sens pour moi.",
+"n": "Faire sens is a common anglicism some speakers dislike; Ça a du sens is safer."
+},
+{
+"id": "ENG_CHUNK_0044",
+"t": "rendre service à [personne]",
+"ex": "Tu pourrais me rendre un service et nourrir le chat ?",
+"n": "'Faire une faveur' is a calque; France says rendre (un) service."
+},
+{
+"id": "ENG_CHUNK_0045",
+"t": "donner un coup de main à [personne]",
+"ex": "Tu peux me donner un coup de main avec ces cartons ?"
+},
+{
+"id": "ENG_CHUNK_0046",
+"t": "faire un effort / faire des efforts",
+"ex": "Il fait vraiment des efforts en allemand."
+},
+{
+"id": "ENG_CHUNK_0047",
+"t": "trouver [nom] / avoir [nom]",
+"ex": "Elle a eu une idée géniale.",
+"n": "No phrasal verb: avoir une idée, trouver une solution."
+},
+{
+"id": "ENG_CHUNK_0048",
+"t": "se débarrasser de [nom]",
+"ex": "Il faut que je me débarrasse de vieux vêtements.",
+"n": "Il faut que + subjunctive."
+},
+{
+"id": "ENG_CHUNK_0049",
+"t": "bien s'entendre avec [personne]",
+"ex": "Je m'entends bien avec mes collègues."
+},
+{
+"id": "ENG_CHUNK_0050",
+"t": "changer d'avis",
+"ex": "Si tu changes d'avis, appelle-moi.",
+"n": "No possessive: changer d'avis, not changer ton avis."
+},
+{
+"id": "ENG_CHUNK_0051",
+"t": "surveiller [nom] / garder un œil sur [nom]",
+"ex": "Tu peux surveiller mon sac deux minutes ?"
+},
+{
+"id": "ENG_CHUNK_0052",
+"t": "prendre son temps",
+"ex": "Rien ne presse, prends ton temps.",
+"n": "Vous: Prenez votre temps."
+},
+{
+"id": "ENG_CHUNK_0053",
+"t": "passer du temps à [infinitif]",
+"ex": "Je passe beaucoup de temps dans les transports.",
+"n": "passer du temps à + infinitive; commuting is usually a noun phrase."
+},
+{
+"id": "ENG_CHUNK_0054",
+"t": "comprendre [nom] / piger [nom]",
+"ex": "J'arrive pas à comprendre cette nouvelle appli.",
+"n": "Piger is slangy. J'arrive pas à is the natural 'I can't manage to'."
+},
+{
+"id": "ENG_CHUNK_0055",
+"t": "régler [nom] / s'occuper de [nom]",
+"ex": "Il faut que je règle mon histoire de visa cette semaine."
+},
+{
+"id": "ENG_CHUNK_0056",
+"t": "s'occuper de [nom] / gérer [nom]",
+"ex": "Je m'en occuperai demain.",
+"n": "Gérer is very common in casual speech: Je gère !"
+},
+{
+"id": "ENG_CHUNK_0057",
+"t": "pouvoir venir",
+"ex": "Désolé, je ne pourrai pas venir ce soir.",
+"n": "No neat equivalent: speakers say pouvoir venir or arriver à temps."
+},
+{
+"id": "ENG_CHUNK_0058",
+"t": "avoir du mal à [infinitif]",
+"ex": "J'ai du mal à dormir en ce moment."
+},
+{
+"id": "ENG_CHUNK_0059",
+"t": "être en retard",
+"ex": "Désolé, je suis un peu en retard.",
+"n": "Say J'ai un peu de retard or J'arrive, j'ai dix minutes de retard."
+},
+{
+"id": "ENG_CHUNK_0060",
+"t": "repousser [nom] / remettre [nom] à plus tard",
+"ex": "Je n'arrête pas de repousser le rendez-vous chez le dentiste."
+},
+{
+"id": "ENG_CHUNK_0061",
+"t": "organiser [nom] / installer [nom]",
+"ex": "On peut organiser une réunion la semaine prochaine ?",
+"n": "Organiser/caler a meeting; installer software or furniture."
+},
+{
+"id": "ENG_CHUNK_0062",
+"t": "arrêter de [infinitif]",
+"ex": "J'ai arrêté de fumer l'année dernière.",
+"n": "Abandonner is for giving up an effort, not a habit."
+},
+{
+"id": "ENG_CHUNK_0063",
+"t": "faire la différence / changer beaucoup de choses",
+"ex": "Une bonne nuit de sommeil, ça change tout."
+},
+{
+"id": "ENG_CHUNK_0064",
+"t": "s'occuper de [personne] / garder [personne]",
+"ex": "Tu peux garder les enfants samedi ?",
+"n": "Garder les enfants = babysit."
+},
+{
+"id": "ENG_CHUNK_0065",
+"t": "avoir l'occasion de [infinitif]",
+"ex": "Je n'ai pas eu l'occasion de te rappeler.",
+"n": "Spoken: J'ai pas eu le temps de... is often what people mean."
+},
+{
+"id": "ENG_CHUNK_0066",
+"t": "Pour être honnête / Franchement",
+"ex": "Franchement, le film ne m'a pas trop plu."
+},
+{
+"id": "ENG_CHUNK_0067",
+"t": "Attends, je réfléchis / Laisse-moi réfléchir",
+"ex": "Attends, je réfléchis... c'était mardi dernier, je crois."
+},
+{
+"id": "ENG_CHUNK_0068",
+"t": "Comment dire ?",
+"ex": "Il est... comment dire ? Un peu intense."
+},
+{
+"id": "ENG_CHUNK_0069",
+"t": "Tu vois ce que je veux dire ?",
+"ex": "C'est juste pas pareil, tu vois ?",
+"n": "Often shortened to Tu vois ? or Tu vois le truc ?"
+},
+{
+"id": "ENG_CHUNK_0070",
+"t": "À ma connaissance / Pour autant que je sache",
+"ex": "Pour autant que je sache, la réunion est maintenue.",
+"n": "Pour autant que + subjunctive (sache). Casual: À ce que je sache."
+},
+{
+"id": "ENG_CHUNK_0071",
+"t": "Au fait",
+"ex": "Au fait, t'as entendu parler de Tom ?",
+"n": "Au fait = by the way; en fait = actually. Easy to confuse."
+},
+{
+"id": "ENG_CHUNK_0072",
+"t": "Bref, comme je disais",
+"ex": "Bref, comme je disais, l'hôtel était super."
+},
+{
+"id": "ENG_CHUNK_0073",
+"t": "Ça me fait penser que... / Au fait",
+"ex": "Ça me fait penser, il faut que j'appelle ma mère.",
+"n": "Il faut que + subjunctive (appelle)."
+},
+{
+"id": "ENG_CHUNK_0074",
+"t": "Je vois ce que tu veux dire",
+"ex": "Je vois ce que tu veux dire, mais je trouve quand même que c'est trop cher."
+},
+{
+"id": "ENG_CHUNK_0075",
+"t": "C'est vrai / C'est normal",
+"ex": "C'est normal, j'aurais fait pareil à ta place.",
+"n": "No fixed equivalent; speakers say D'accord, c'est vrai or Ok, c'est normal."
+},
+{
+"id": "ENG_CHUNK_0076",
+"t": "Attends une seconde / Deux secondes",
+"ex": "Attends deux secondes, je prends un stylo."
+},
+{
+"id": "ENG_CHUNK_0077",
+"t": "Enfin / Je veux dire",
+"ex": "C'était bien. Enfin, pas génial, mais bien.",
+"n": "Enfin as a self-correction marker is very common in speech."
+},
+{
+"id": "ENG_CHUNK_0078",
+"t": "Si tu veux mon avis / À mon avis",
+"ex": "Si tu veux mon avis, c'est de l'argent jeté par les fenêtres."
+},
+{
+"id": "ENG_CHUNK_0079",
+"t": "Je n'en suis pas si sûr",
+"ex": "Hmm, j'en suis pas si sûr."
+},
+{
+"id": "ENG_CHUNK_0080",
+"t": "En fait / Euh, en fait",
+"ex": "Euh, en fait, c'est l'inverse."
+},
+{
+"id": "ENG_CHUNK_0081",
+"t": "Laisse tomber / C'est pas grave",
+"ex": "Laisse tomber, je vais le faire moi-même."
+},
+{
+"id": "ENG_CHUNK_0082",
+"t": "Pas de souci / Pas de problème",
+"ex": "Pas de souci, ça arrive à tout le monde.",
+"n": "Also Y a pas de souci. After thanks: De rien."
+},
+{
+"id": "ENG_CHUNK_0083",
+"t": "Prends soin de toi / Bonne continuation",
+"ex": "Bon, à la semaine prochaine. Prends soin de toi !",
+"n": "Vous: Prenez soin de vous. Also casual: Bisous !"
+},
+{
+"id": "ENG_CHUNK_0084",
+"t": "C'est pas grave / C'est pas bien méchant",
+"ex": "T'inquiète, c'est pas grave."
+},
+{
+"id": "ENG_CHUNK_0085",
+"t": "Vas-y / Je t'en prie",
+"ex": "Je peux utiliser ton téléphone ? Oui, vas-y.",
+"n": "Vous: Allez-y / Je vous en prie."
+},
+{
+"id": "ENG_CHUNK_0086",
+"t": "Croisons les doigts / Je croise les doigts",
+"ex": "J'ai mon entretien demain, alors je croise les doigts."
+},
+{
+"id": "ENG_CHUNK_0087",
+"t": "C'est moi qui invite / C'est pour moi",
+"ex": "Range ton portefeuille, c'est moi qui invite."
+},
+{
+"id": "ENG_CHUNK_0088",
+"t": "Je vais y réfléchir",
+"ex": "Merci pour la proposition. Je vais y réfléchir."
+},
+{
+"id": "ENG_CHUNK_0089",
+"t": "Quel dommage / C'est dommage",
+"ex": "Tu ne peux pas venir ? C'est dommage.",
+"n": "C'est dommage que + subjunctive."
+},
+{
+"id": "ENG_CHUNK_0090",
+"t": "Ça fait longtemps !",
+"ex": "Salut, ça fait longtemps ! Comment tu vas ?",
+"n": "Also Ça fait une paye ! (casual)."
+},
+{
+"id": "ENG_CHUNK_0091",
+"t": "D'un autre côté / Par contre",
+"ex": "C'est cher. D'un autre côté, ça va durer des années.",
+"n": "Par contre is the everyday spoken contrast word."
+},
+{
+"id": "ENG_CHUNK_0092",
+"t": "Cela dit / Ceci dit",
+"ex": "L'hôtel était un peu vieux. Cela dit, le personnel était adorable."
+},
+{
+"id": "ENG_CHUNK_0093",
+"t": "Dans ce cas",
+"ex": "Tu n'as pas faim ? Dans ce cas, on prend juste un café."
+},
+{
+"id": "ENG_CHUNK_0094",
+"t": "du moment que [proposition] / à condition que [subjonctif]",
+"ex": "Tu peux l'emprunter du moment que tu me le rends.",
+"n": "du moment que + indicative; à condition que + subjunctive."
+},
+{
+"id": "ENG_CHUNK_0095",
+"t": "bien que [subjonctif] / même si [indicatif]",
+"ex": "On est sortis même s'il pleuvait.",
+"n": "Bien que triggers subjunctive; même si never does. Speech prefers même si."
+},
+{
+"id": "ENG_CHUNK_0096",
+"t": "C'est pour ça que",
+"ex": "Les trains étaient en grève. C'est pour ça que je suis en retard."
+},
+{
+"id": "ENG_CHUNK_0097",
+"t": "dès que [indicatif]",
+"ex": "Je t'appelle dès que je rentre.",
+"n": "Future tense in standard French: dès que je rentrerai; speech often uses present."
+},
+{
+"id": "ENG_CHUNK_0098",
+"t": "Au final / Finalement",
+"ex": "On en a parlé pendant des heures, mais finalement on est restés à la maison.",
+"n": "Finalement = in the end, not 'finally' (enfin)."
+},
+{
+"id": "ENG_CHUNK_0099",
+"t": "Après tout",
+"ex": "Laisse-le dormir. Après tout, il a bossé toute la nuit."
+},
+{
+"id": "ENG_CHUNK_0100",
+"t": "Au cas où",
+"ex": "Prends un parapluie, au cas où.",
+"n": "Au cas où + conditional when followed by a clause: au cas où il pleuvrait."
+}
+]

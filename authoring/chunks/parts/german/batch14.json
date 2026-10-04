@@ -1,0 +1,553 @@
+[
+{
+"id": "ENG_CHUNK_1301",
+"t": "zuerst / als Erstes",
+"ex": "Öffne zuerst die App. Dann meldest du dich an.",
+"n": "After \"zuerst\" at the start the verb comes next: Zuerst öffnest du ..."
+},
+{
+"id": "ENG_CHUNK_1302",
+"t": "oder",
+"ex": "Tee oder Kaffee?",
+"n": "\"oder\" does not change word order."
+},
+{
+"id": "ENG_CHUNK_1303",
+"t": "schließlich / am Ende / endlich",
+"ex": "Schließlich sind wir im Hotel angekommen.",
+"n": "\"endlich\" = finally, after a long wait; \"schließlich\" = in the end of a sequence."
+},
+{
+"id": "ENG_CHUNK_1304",
+"t": "danach / dann / als Nächstes",
+"ex": "Dann biegen Sie an der Bank rechts ab."
+},
+{
+"id": "ENG_CHUNK_1305",
+"t": "später",
+"ex": "Ich hab gerade keine Zeit. Kann ich dich später anrufen?"
+},
+{
+"id": "ENG_CHUNK_1306",
+"t": "deshalb / deswegen",
+"ex": "Der Zug hatte Verspätung. Deshalb habe ich mein Meeting verpasst.",
+"n": "Verb comes right after: Deshalb habe ich ..."
+},
+{
+"id": "ENG_CHUNK_1307",
+"t": "danach / hinterher",
+"ex": "Wir haben einen Film geschaut. Danach haben wir gegessen."
+},
+{
+"id": "ENG_CHUNK_1308",
+"t": "und auch / und noch",
+"ex": "Ich brauche Brot und noch etwas Milch."
+},
+{
+"id": "ENG_CHUNK_1309",
+"t": "aber dann",
+"ex": "Ich wollte rausgehen, aber dann hat es angefangen zu regnen."
+},
+{
+"id": "ENG_CHUNK_1310",
+"t": "oder vielleicht",
+"ex": "Lass uns an den Strand gehen. Oder vielleicht in den Park?"
+},
+{
+"id": "ENG_CHUNK_1311",
+"t": "am Anfang",
+"ex": "Am Anfang war Deutsch sehr schwer für mich."
+},
+{
+"id": "ENG_CHUNK_1312",
+"t": "egal / jedenfalls / na ja",
+"ex": "Egal, wie war dein Wochenende?",
+"n": "\"Jedenfalls\" returns to the main point; \"Egal\" / \"Na ja\" changes the subject casually."
+},
+{
+"id": "ENG_CHUNK_1313",
+"t": "eines Tages / irgendwann",
+"ex": "Irgendwann möchte ich nach Japan reisen.",
+"n": "Future wish: \"irgendwann\"; start of a story in the past: \"Eines Tages ...\"."
+},
+{
+"id": "ENG_CHUNK_1314",
+"t": "plötzlich / auf einmal",
+"ex": "Plötzlich ist das Licht ausgegangen."
+},
+{
+"id": "ENG_CHUNK_1315",
+"t": "zum Glück / glücklicherweise",
+"ex": "Ich habe mein Portemonnaie verloren, aber zum Glück hat es jemand gefunden."
+},
+{
+"id": "ENG_CHUNK_1316",
+"t": "aufstehen",
+"ex": "Ich stehe jeden Tag um sieben auf.",
+"n": "Separable: ich stehe ... auf; Perfekt: ich bin aufgestanden."
+},
+{
+"id": "ENG_CHUNK_1317",
+"t": "aufwachen",
+"ex": "Ich wache normalerweise um sechs auf.",
+"n": "Separable: ich wache ... auf; Perfekt with sein."
+},
+{
+"id": "ENG_CHUNK_1318",
+"t": "frühstücken",
+"ex": "Ich frühstücke zu Hause.",
+"n": "One verb: frühstücken, not \"Frühstück haben\"."
+},
+{
+"id": "ENG_CHUNK_1319",
+"t": "zu Mittag essen",
+"ex": "Lass uns zusammen zu Mittag essen."
+},
+{
+"id": "ENG_CHUNK_1320",
+"t": "zu Abend essen",
+"ex": "Wir essen um sieben zu Abend."
+},
+{
+"id": "ENG_CHUNK_1321",
+"t": "duschen",
+"ex": "Ich dusche jeden Morgen.",
+"n": "One verb: duschen (also \"sich duschen\")."
+},
+{
+"id": "ENG_CHUNK_1322",
+"t": "sich die Zähne putzen / Zähne putzen",
+"ex": "Putz dir vor dem Schlafen die Zähne.",
+"n": "Dative reflexive: ich putze mir die Zähne."
+},
+{
+"id": "ENG_CHUNK_1323",
+"t": "sich anziehen",
+"ex": "Ich ziehe mich an und frühstücke.",
+"n": "Reflexive and separable: ich ziehe mich an."
+},
+{
+"id": "ENG_CHUNK_1324",
+"t": "ins Bett gehen / schlafen gehen",
+"ex": "Ich gehe um elf ins Bett."
+},
+{
+"id": "ENG_CHUNK_1325",
+"t": "zur Arbeit gehen / fahren",
+"ex": "Ich fahre mit dem Bus zur Arbeit.",
+"n": "\"gehen\" = on foot; by bus or car use \"fahren\"."
+},
+{
+"id": "ENG_CHUNK_1326",
+"t": "nach Hause gehen",
+"ex": "Ich bin müde. Ich will nach Hause.",
+"n": "\"nach Hause\" = going home; \"zu Hause\" = at home."
+},
+{
+"id": "ENG_CHUNK_1327",
+"t": "nach Hause kommen",
+"ex": "Ich komme um sechs nach Hause."
+},
+{
+"id": "ENG_CHUNK_1328",
+"t": "einkaufen gehen / shoppen gehen",
+"ex": "Lass uns am Samstag shoppen gehen.",
+"n": "\"einkaufen\" = buy groceries/necessities; \"shoppen\" = shop for fun (clothes etc.)."
+},
+{
+"id": "ENG_CHUNK_1329",
+"t": "fernsehen",
+"ex": "Abends sehe ich fern.",
+"n": "Separable: ich sehe fern. Also common: \"Fernsehen gucken\"."
+},
+{
+"id": "ENG_CHUNK_1330",
+"t": "Musik hören",
+"ex": "Im Bus höre ich Musik.",
+"n": "No preposition: Musik hören, not \"zu Musik hören\"."
+},
+{
+"id": "ENG_CHUNK_1331",
+"t": "Hausaufgaben machen",
+"ex": "Ich mache meine Hausaufgaben nach der Schule."
+},
+{
+"id": "ENG_CHUNK_1332",
+"t": "Abendessen kochen / das Abendessen machen",
+"ex": "Ich koche jeden Abend."
+},
+{
+"id": "ENG_CHUNK_1333",
+"t": "spazieren gehen",
+"ex": "Lass uns im Park spazieren gehen."
+},
+{
+"id": "ENG_CHUNK_1334",
+"t": "[Sport] spielen",
+"ex": "Ich spiele samstags Fußball.",
+"n": "Only for ball and board games; otherwise use the verb: schwimmen, joggen, Yoga machen."
+},
+{
+"id": "ENG_CHUNK_1335",
+"t": "einkaufen / Einkäufe erledigen",
+"ex": "Ich gehe montags einkaufen."
+},
+{
+"id": "ENG_CHUNK_1336",
+"t": "Wäsche waschen",
+"ex": "Ich wasche am Sonntag Wäsche."
+},
+{
+"id": "ENG_CHUNK_1337",
+"t": "die Wohnung putzen / sauber machen",
+"ex": "Wir putzen jeden Samstag die Wohnung.",
+"n": "Most Germans live in a Wohnung; \"Haus\" only for an actual house."
+},
+{
+"id": "ENG_CHUNK_1338",
+"t": "sich die Hände waschen",
+"ex": "Wasch dir vor dem Essen die Hände.",
+"n": "Dative reflexive: ich wasche mir die Hände."
+},
+{
+"id": "ENG_CHUNK_1339",
+"t": "Kaffee kochen / Kaffee machen",
+"ex": "Ich mache Kaffee. Willst du auch einen?"
+},
+{
+"id": "ENG_CHUNK_1340",
+"t": "den Bus nehmen / mit dem Bus fahren",
+"ex": "Ich fahre mit dem Bus zur Schule."
+},
+{
+"id": "ENG_CHUNK_1341",
+"t": "in den Bus einsteigen",
+"ex": "Steig hier in den Bus ein und am Park wieder aus.",
+"n": "Separable: ich steige ein; \"in den Bus\" (Akkusativ)."
+},
+{
+"id": "ENG_CHUNK_1342",
+"t": "aus dem Bus aussteigen",
+"ex": "Steig an der nächsten Haltestelle aus.",
+"n": "Separable: ich steige aus; \"aus dem Bus\" (Dativ)."
+},
+{
+"id": "ENG_CHUNK_1343",
+"t": "eine Fahrkarte kaufen / ein Ticket kaufen",
+"ex": "Wo kann ich eine Fahrkarte kaufen?",
+"n": "\"Fahrkarte\" for transport; \"Eintrittskarte\" for events and museums."
+},
+{
+"id": "ENG_CHUNK_1344",
+"t": "ein Auto mieten",
+"ex": "Wir wollen für drei Tage ein Auto mieten."
+},
+{
+"id": "ENG_CHUNK_1345",
+"t": "über die Straße gehen",
+"ex": "Pass auf, wenn du über die Straße gehst.",
+"n": "After \"wenn\" the verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_1346",
+"t": "links abbiegen",
+"ex": "Biegen Sie an der Bank links ab.",
+"n": "Separable: ich biege links ab."
+},
+{
+"id": "ENG_CHUNK_1347",
+"t": "ein Foto machen",
+"ex": "Darf ich ein Foto machen?",
+"n": "Not \"nehmen\": ein Foto machen."
+},
+{
+"id": "ENG_CHUNK_1348",
+"t": "Hunger haben",
+"ex": "Ich hab Hunger. Lass uns essen.",
+"n": "\"haben\", not \"sein\": Ich habe Hunger."
+},
+{
+"id": "ENG_CHUNK_1349",
+"t": "Durst haben",
+"ex": "Ich hab Durst. Gibt es Wasser?",
+"n": "\"haben\", not \"sein\": Ich habe Durst."
+},
+{
+"id": "ENG_CHUNK_1350",
+"t": "müde sein",
+"ex": "Ich bin müde. Ich gehe ins Bett."
+},
+{
+"id": "ENG_CHUNK_1351",
+"t": "zu spät kommen / sich verspäten",
+"ex": "Beeil dich, wir kommen zu spät!"
+},
+{
+"id": "ENG_CHUNK_1352",
+"t": "pünktlich sein",
+"ex": "Der Zug ist heute pünktlich."
+},
+{
+"id": "ENG_CHUNK_1353",
+"t": "Spaß haben / eine schöne Zeit haben",
+"ex": "Wir hatten viel Spaß am Strand."
+},
+{
+"id": "ENG_CHUNK_1354",
+"t": "Kopfschmerzen haben",
+"ex": "Ich habe Kopfschmerzen. Hast du eine Tablette?",
+"n": "Usually plural and no article: Kopfschmerzen haben."
+},
+{
+"id": "ENG_CHUNK_1355",
+"t": "Fieber haben",
+"ex": "Mein Sohn hat Fieber.",
+"n": "No article: Fieber haben."
+},
+{
+"id": "ENG_CHUNK_1356",
+"t": "Medikamente nehmen / ein Medikament nehmen",
+"ex": "Nehmen Sie dieses Medikament zweimal am Tag."
+},
+{
+"id": "ENG_CHUNK_1357",
+"t": "telefonieren / jemanden anrufen",
+"ex": "Ich muss mal kurz telefonieren.",
+"n": "\"anrufen\" takes the accusative: ich rufe dich an."
+},
+{
+"id": "ENG_CHUNK_1358",
+"t": "eine Nachricht schicken / schreiben",
+"ex": "Ich schreib dir später.",
+"n": "In speech \"Ich schreib dir\" is the usual way to say you'll text."
+},
+{
+"id": "ENG_CHUNK_1359",
+"t": "das Handy aufladen / laden",
+"ex": "Kann ich hier mein Handy aufladen?"
+},
+{
+"id": "ENG_CHUNK_1360",
+"t": "Deutsch lernen",
+"ex": "Ich lerne Deutsch für meinen Job.",
+"n": "No article before languages: Deutsch lernen."
+},
+{
+"id": "ENG_CHUNK_1361",
+"t": "Ich heiße [Name] / Mein Name ist [Name]",
+"ex": "Hallo, ich heiße Carlos.",
+"n": "\"Ich heiße\" is the everyday form; \"Mein Name ist\" is more formal."
+},
+{
+"id": "ENG_CHUNK_1362",
+"t": "Ich komme aus [Ort]",
+"ex": "Ich komme aus Mexiko.",
+"n": "Some countries take an article: aus der Türkei, aus den USA."
+},
+{
+"id": "ENG_CHUNK_1363",
+"t": "Ich wohne in [Ort]",
+"ex": "Ich wohne in Köln."
+},
+{
+"id": "ENG_CHUNK_1364",
+"t": "Ich bin [Zahl] (Jahre alt)",
+"ex": "Ich bin dreißig.",
+"n": "In speech the number alone is enough: Ich bin dreißig."
+},
+{
+"id": "ENG_CHUNK_1365",
+"t": "Ich bin [Beruf]",
+"ex": "Ich bin Lehrer.",
+"n": "No article before jobs: Ich bin Lehrer(in), not \"ein Lehrer\"."
+},
+{
+"id": "ENG_CHUNK_1366",
+"t": "Das ist mein(e) [Person]",
+"ex": "Das ist meine Frau, Julia."
+},
+{
+"id": "ENG_CHUNK_1367",
+"t": "Sprechen Sie [Sprache]? / Sprichst du [Sprache]?",
+"ex": "Entschuldigung, sprechen Sie Englisch?"
+},
+{
+"id": "ENG_CHUNK_1368",
+"t": "Ich spreche ein bisschen [Sprache]",
+"ex": "Ich spreche ein bisschen Deutsch."
+},
+{
+"id": "ENG_CHUNK_1369",
+"t": "Ich lerne [Sprache]",
+"ex": "Ich lerne Deutsch an der Volkshochschule.",
+"n": "Present tense: German has no -ing form."
+},
+{
+"id": "ENG_CHUNK_1370",
+"t": "Wie sagt man [Wort] auf Deutsch?",
+"ex": "Wie sagt man „thank you“ auf Deutsch?"
+},
+{
+"id": "ENG_CHUNK_1371",
+"t": "Was heißt [Wort]? / Was bedeutet [Wort]?",
+"ex": "Was heißt „Feierabend“?"
+},
+{
+"id": "ENG_CHUNK_1372",
+"t": "Ich verstehe [Nomen] nicht",
+"ex": "Ich verstehe dieses Wort nicht."
+},
+{
+"id": "ENG_CHUNK_1373",
+"t": "Es ist [Uhrzeit]",
+"ex": "Es ist drei Uhr.",
+"n": "Watch out: \"halb vier\" = 3:30, not 4:30."
+},
+{
+"id": "ENG_CHUNK_1374",
+"t": "Ich habe am [Datum] Geburtstag",
+"ex": "Ich habe am dritten Mai Geburtstag.",
+"n": "Natural form: \"Ich habe am ... Geburtstag\"; \"Mein Geburtstag ist am ...\" also works."
+},
+{
+"id": "ENG_CHUNK_1375",
+"t": "Wann ist [Nomen]?",
+"ex": "Wann hast du Geburtstag?"
+},
+{
+"id": "ENG_CHUNK_1376",
+"t": "Um wie viel Uhr ist [Nomen]? / Wann fängt [Nomen] an?",
+"ex": "Wann fängt der Film an?"
+},
+{
+"id": "ENG_CHUNK_1377",
+"t": "Wann macht [Ort] auf? / Wann öffnet [Ort]?",
+"ex": "Wann macht die Bank auf?"
+},
+{
+"id": "ENG_CHUNK_1378",
+"t": "Was kostet [Nomen]? / Wie viel kostet [Nomen]?",
+"ex": "Was kostet dieses T-Shirt?"
+},
+{
+"id": "ENG_CHUNK_1379",
+"t": "Das macht [Preis], bitte",
+"ex": "Das macht zwölf Euro, bitte.",
+"n": "Cashiers say \"Das macht ...\" or \"Das wären dann ...\"."
+},
+{
+"id": "ENG_CHUNK_1380",
+"t": "Kann ich mit [Zahlungsmittel] zahlen?",
+"ex": "Kann ich mit Karte zahlen?",
+"n": "Many small shops and cafés in Germany still prefer cash (bar)."
+},
+{
+"id": "ENG_CHUNK_1381",
+"t": "Haben Sie [Nomen]? / Gibt es [Nomen]?",
+"ex": "Haben Sie Milch?"
+},
+{
+"id": "ENG_CHUNK_1382",
+"t": "Das ist ein bisschen zu [Adjektiv]",
+"ex": "Das ist ein bisschen zu groß. Haben Sie das eine Nummer kleiner?"
+},
+{
+"id": "ENG_CHUNK_1383",
+"t": "Kann ich bitte [Nomen] haben? / Ich hätte gern [Nomen]",
+"ex": "Kann ich bitte einen Kaffee haben?"
+},
+{
+"id": "ENG_CHUNK_1384",
+"t": "Ich hätte gern [Nomen] / Ich möchte [Nomen]",
+"ex": "Ich hätte gern ein Sandwich, bitte.",
+"n": "\"Ich will\" sounds rude when ordering; use \"hätte gern\" or \"möchte\"."
+},
+{
+"id": "ENG_CHUNK_1385",
+"t": "Ich nehme [Nomen]",
+"ex": "Ich nehme den Fisch, bitte."
+},
+{
+"id": "ENG_CHUNK_1386",
+"t": "Ein Glas [Nomen], bitte",
+"ex": "Ein Glas Wasser, bitte.",
+"n": "No \"von\": ein Glas Wasser. Tap water: \"Leitungswasser\"."
+},
+{
+"id": "ENG_CHUNK_1387",
+"t": "Möchten Sie noch [Nomen]? / Möchtest du [Nomen]?",
+"ex": "Möchtest du noch etwas Reis?"
+},
+{
+"id": "ENG_CHUNK_1388",
+"t": "Möchtest du [Infinitiv]? / Hast du Lust, [zu + Infinitiv]?",
+"ex": "Möchtest du zu meiner Party kommen?",
+"n": "Infinitive goes to the end; \"Hast du Lust ...?\" is the casual invitation."
+},
+{
+"id": "ENG_CHUNK_1389",
+"t": "Wo ist [Ort]?",
+"ex": "Wo ist der Bahnhof?"
+},
+{
+"id": "ENG_CHUNK_1390",
+"t": "Wo ist hier [Ort]? / Wo ist der/die/das nächste [Ort]?",
+"ex": "Wo ist hier der nächste Geldautomat?",
+"n": "\"hier\" signals nearest: Wo ist hier eine Apotheke?"
+},
+{
+"id": "ENG_CHUNK_1391",
+"t": "Biegen Sie an [Ort, Dativ] links ab",
+"ex": "Biegen Sie an der Kirche links ab.",
+"n": "du form: Bieg an der Kirche links ab."
+},
+{
+"id": "ENG_CHUNK_1392",
+"t": "Es ist auf der [Seite] / Es ist [links/rechts]",
+"ex": "Die Bank ist links."
+},
+{
+"id": "ENG_CHUNK_1393",
+"t": "Es ist neben [Ort, Dativ]",
+"ex": "Die Bäckerei ist neben der Bank.",
+"n": "neben + Dativ for location: neben dem Bahnhof."
+},
+{
+"id": "ENG_CHUNK_1394",
+"t": "Eine Fahrkarte nach [Ort], bitte",
+"ex": "Einmal nach Freiburg, bitte.",
+"n": "At the counter: \"Einmal nach ...\" (one ticket to), \"hin und zurück\" = return."
+},
+{
+"id": "ENG_CHUNK_1395",
+"t": "Welcher Bus fährt zu(m) [Ort]?",
+"ex": "Welcher Bus fährt zum Flughafen?",
+"n": "Cities take \"nach\" (nach Berlin); places in town take \"zu\" (zum Bahnhof)."
+},
+{
+"id": "ENG_CHUNK_1396",
+"t": "Wann fährt der nächste [Nomen] nach [Ort]?",
+"ex": "Wann fährt der nächste Zug nach Leipzig?"
+},
+{
+"id": "ENG_CHUNK_1397",
+"t": "Zu(m) [Ort], bitte / Können Sie mich zu(m) [Ort] bringen?",
+"ex": "Zum Flughafen, bitte.",
+"n": "In a taxi Germans usually just say the destination + bitte."
+},
+{
+"id": "ENG_CHUNK_1398",
+"t": "Das dauert ungefähr [Dauer]",
+"ex": "Mit dem Bus dauert das ungefähr zwanzig Minuten."
+},
+{
+"id": "ENG_CHUNK_1399",
+"t": "Ich hätte gern ein Zimmer für [Zahl] Nächte",
+"ex": "Ich hätte gern ein Zimmer für zwei Nächte, bitte."
+},
+{
+"id": "ENG_CHUNK_1400",
+"t": "Der/Die/Das [Nomen] funktioniert nicht / ist kaputt",
+"ex": "Die Dusche funktioniert nicht."
+}
+]

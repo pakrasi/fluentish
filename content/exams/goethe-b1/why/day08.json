@@ -1,0 +1,642 @@
+{
+ "L1-1": {
+  "evidence": "Vor acht Monaten hat mein Arzt zu mir gesagt: „Herr Winter, Sie müssen sich mehr bewegen.“ … Am nächsten Tag habe ich mich in einer Laufgruppe angemeldet",
+  "evidence_en": "Eight months ago my doctor told me: 'Mr Winter, you need to move more.' … The next day I signed up for a running group",
+  "why": "„Sie müssen sich mehr bewegen“ ist ein Rat vom Arzt = empfohlen. Am nächsten Tag hat er mit der Laufgruppe angefangen.",
+  "why_en": "'You need to move more' is the doctor's advice, i.e. a recommendation. The very next day he joined the running group.",
+  "trap": "Der Arzt sagt nicht direkt „laufen“, aber die Bewegung war sein Rat – deshalb ist die Aussage trotzdem richtig.",
+  "trap_en": "The doctor doesn't literally say 'run', but more exercise was his advice, so the statement is still true.",
+  "question_en": "The author started running because his doctor recommended it to him."
+ },
+ "L1-2": {
+  "evidence": "die sich dienstags und donnerstags um 19 Uhr im Stadtpark trifft",
+  "evidence_en": "which meets on Tuesdays and Thursdays at 7 pm in the city park",
+  "why": "Dienstags und donnerstags = zweimal pro Woche, nicht einmal.",
+  "why_en": "Tuesdays and Thursdays means twice a week, not once.",
+  "trap": "Die Uhrzeit (19 Uhr) wird nur einmal genannt, aber es gibt zwei Tage.",
+  "trap_en": "The time (7 pm) is mentioned only once, but there are two days.",
+  "question_en": "The running group meets once a week."
+ },
+ "L1-3": {
+  "evidence": "Beim ersten Training habe ich nach drei Kilometern aufgegeben. Ich konnte kaum noch atmen",
+  "evidence_en": "At the first training session I gave up after three kilometres. I could hardly breathe",
+  "why": "Er hat aufgegeben und konnte kaum atmen – das ist das Gegenteil von „problemlos“.",
+  "why_en": "He gave up and could hardly breathe, the opposite of 'without problems'.",
+  "trap": "Er ist drei Kilometer gelaufen, aber dann hat er aufgehört; die anderen sind weitergelaufen, nicht er.",
+  "trap_en": "He did run three kilometres, but then stopped; it was the others who kept going, not him.",
+  "question_en": "At the first training session the author was able to keep up without any problems."
+ },
+ "L1-4": {
+  "evidence": "Mein Ziel war, die 21 Kilometer in unter zwei Stunden und fünfzehn Minuten zu laufen.",
+  "evidence_en": "My goal was to run the 21 kilometres in under two hours and fifteen minutes.",
+  "why": "Sein Ziel war unter 2:15, am Ende hatte er 2:12 – also hat er das Ziel erreicht.",
+  "why_en": "His target was under 2:15 and he finished in 2:12, so he met his goal.",
+  "trap": "Bei Kilometer 15 wollte er aufhören, aber er ist weitergelaufen und war schneller als geplant.",
+  "trap_en": "He wanted to quit at kilometre 15, but he carried on and finished faster than planned.",
+  "question_en": "The author reached his time goal in the half marathon."
+ },
+ "L1-5": {
+  "evidence": "Ein älterer Läufer neben mir hat das gemerkt und gesagt: „Komm, wir laufen die letzten Kilometer zusammen.“",
+  "evidence_en": "An older runner next to me noticed and said: 'Come on, let's run the last kilometres together.'",
+  "why": "Ein anderer Läufer ist mit ihm zusammen gelaufen – das ist Hilfe. „Ohne ihn hätte ich es nicht geschafft.“",
+  "why_en": "Another runner ran alongside him, which is help: 'Without him I wouldn't have made it.'",
+  "trap": "Nicht die Trainerin Britta hat bei Kilometer 15 geholfen, sondern ein fremder älterer Läufer – die Aussage stimmt trotzdem.",
+  "trap_en": "It wasn't the coach Britta who helped at kilometre 15 but an older stranger; the statement is still true.",
+  "question_en": "At kilometre 15 another runner helped him."
+ },
+ "L1-6": {
+  "evidence": "Die Antwort ist: gar nicht, zumindest nicht in diesem Jahr. Ich möchte lieber die zehn Kilometer schneller laufen.",
+  "evidence_en": "The answer is: not at all, at least not this year. I'd rather run the ten kilometres faster.",
+  "why": "Er will keinen Marathon laufen, sondern lieber die zehn Kilometer schneller.",
+  "why_en": "He doesn't want to run a marathon; he'd rather get faster over ten kilometres.",
+  "trap": "Das Wort „Marathon“ steht im Text, aber nur in der Frage von anderen Leuten – seine Antwort ist „gar nicht“.",
+  "trap_en": "'Marathon' is in the text, but only in other people's question; his answer is 'not at all'.",
+  "question_en": "Next, the author wants to run a marathon."
+ },
+ "L2-1": {
+  "evidence": "Vor zwei Jahren hatte der Club 80 Mitglieder, heute sind es 160.",
+  "evidence_en": "Two years ago the club had 80 members; today it has 160.",
+  "why": "Von 80 auf 160 Mitglieder = doppelt so viele.",
+  "why_en": "From 80 to 160 members is twice as many.",
+  "trap": "„Sechzig“ war früher das Durchschnittsalter, heute sind die meisten unter 25; und „vor zwei Jahren“ gehört zu den Mitgliederzahlen, nicht zur Gründung.",
+  "trap_en": "Sixty was the average age in the past; now most are under 25. And 'two years ago' refers to membership numbers, not to when the club was founded.",
+  "question_en": "The chess club in Bielefeld …",
+  "options_en": [
+   "today has twice as many members as two years ago.",
+   "mainly has members over sixty.",
+   "was founded two years ago."
+  ]
+ },
+ "L2-2": {
+  "evidence": "Der Grund für den neuen Trend liegt im Internet.",
+  "evidence_en": "The reason for the new trend lies in the internet.",
+  "why": "Die Jugendlichen spielen online und haben eine Fernsehserie gesehen – also Internet und Fernsehen.",
+  "why_en": "Young people play online and saw a TV series, so it's the internet and television.",
+  "trap": "Die Schule kommt nur bei der Schach-AG vor, die freiwillig ist – kein Pflichtfach. Über Beiträge sagt der Text nichts.",
+  "trap_en": "School only comes up with the voluntary chess club, not a compulsory subject. The text says nothing about fees.",
+  "question_en": "Why are young people interested in chess again?",
+  "options_en": [
+   "Because it is a compulsory subject at school.",
+   "Because they got to know the game on the internet and on television.",
+   "Because the club doesn't charge any fees."
+  ]
+ },
+ "L2-3": {
+  "evidence": "Freitags trifft man sich nicht im Vereinsheim, sondern in einer Bar in der Innenstadt zum Blitzschach",
+  "evidence_en": "On Fridays they meet not at the clubhouse but in a bar in the city centre for speed chess",
+  "why": "Freitags spielen sie in einer Bar Blitzschach.",
+  "why_en": "On Fridays they play speed chess in a bar.",
+  "trap": "„Vereinsheim“ steht im Satz, aber mit „nicht“ – freitags eben nicht dort.",
+  "trap_en": "'Clubhouse' is in the sentence, but with 'not': on Fridays they are precisely not there.",
+  "question_en": "On Friday evening …",
+  "options_en": [
+   "the club meets in the clubhouse.",
+   "there is a tournament for primary school children.",
+   "the members play in a bar."
+  ]
+ },
+ "L2-4": {
+  "evidence": "Bouldern heißt Klettern ohne Seil – die Wände sind höchstens vier Meter hoch",
+  "evidence_en": "Bouldering means climbing without a rope; the walls are at most four metres high",
+  "why": "Ohne Seil und höchstens vier Meter = ohne Seil in geringer Höhe.",
+  "why_en": "No rope and at most four metres high means climbing without a rope at a low height.",
+  "trap": "Man braucht keine teure Ausrüstung, nur Kletterschuhe, und die kann man leihen – also nicht „viel eigene Ausrüstung“.",
+  "trap_en": "You don't need expensive gear, just climbing shoes, which you can rent, so not 'lots of your own equipment'.",
+  "question_en": "In bouldering …",
+  "options_en": [
+   "you climb with a rope.",
+   "you need a lot of your own equipment.",
+   "you climb without a rope at a low height."
+  ]
+ },
+ "L2-5": {
+  "evidence": "Vorher hat sie zehn Jahre lang als Sportlehrerin gearbeitet.",
+  "evidence_en": "Before that she worked as a PE teacher for ten years.",
+  "why": "„Vorher … als Sportlehrerin gearbeitet“ = sie war früher Sportlehrerin.",
+  "why_en": "'Before that … worked as a PE teacher' means she used to be a PE teacher.",
+  "trap": "„Zehn Jahre“ gehört zu ihrer Arbeit als Lehrerin, nicht zur Fabrik; die Halle ist erst vor einem Jahr eröffnet. Wer den Mittwochskurs gibt, steht nicht im Text.",
+  "trap_en": "'Ten years' refers to her teaching job, not the factory; the hall only opened a year ago. The text doesn't say who teaches the Wednesday course.",
+  "question_en": "Sarah Winkler …",
+  "options_en": [
+   "used to work as a PE teacher.",
+   "bought the factory ten years ago.",
+   "gives the beginners' course every Wednesday."
+  ]
+ },
+ "L2-6": {
+  "evidence": "„Wenn ich an der Wand hänge, denke ich an nichts anderes. Der ganze Stress vom Büro ist weg.“",
+  "evidence_en": "'When I'm on the wall, I don't think about anything else. All the stress from the office is gone.'",
+  "why": "Er denkt an nichts anderes und der Bürostress ist weg = er vergisst den Alltag.",
+  "why_en": "He thinks of nothing else and the office stress disappears, i.e. he forgets everyday life.",
+  "trap": "„Nur der Preis ist ein Thema“ sagt der Text allgemein, nicht Jonas; und er kommt dreimal pro Woche nach der Arbeit, nicht nur am Wochenende.",
+  "trap_en": "'Only the price is an issue' is the article's comment, not Jonas's; and he comes three times a week after work, not just at weekends.",
+  "question_en": "Jonas …",
+  "options_en": [
+   "finds the day ticket too expensive.",
+   "only goes climbing at the weekend.",
+   "can forget everyday life while climbing."
+  ]
+ },
+ "L3-1": {
+  "evidence": "Sie haben noch nie ein Instrument in der Hand gehabt? Perfekt!",
+  "evidence_en": "You've never held an instrument? Perfect!",
+  "why": "Elena hat noch nie Musik gemacht – der Gitarrenkurs ist für absolute Anfänger.",
+  "why_en": "Elena has never made music, and the guitar course is for complete beginners.",
+  "trap": "Der Chor (G) sucht auch Leute ohne Notenkenntnisse, aber Singen ist kein Musikinstrument.",
+  "trap_en": "The choir (G) also takes people who can't read music, but singing isn't learning an instrument.",
+  "question_en": "Elena wants to learn a musical instrument but has never made music before."
+ },
+ "L3-2": {
+  "evidence": "Kühe melken, Ziegen füttern, Ponyreiten – jeden Sonntag von 10 bis 17 Uhr auf Hof Lindenberg. Für Kinder von 3 bis 12 Jahren.",
+  "evidence_en": "Milking cows, feeding goats, pony rides, every Sunday from 10 to 5 at Lindenberg Farm. For children aged 3 to 12.",
+  "why": "Sonntag, Tiere und Kinder von 3 bis 12 – das passt zu Kindern mit 5 und 8 Jahren.",
+  "why_en": "Sunday, animals and ages 3 to 12 fit children aged 5 and 8.",
+  "trap": "Die Modellbahn-Börse (I) ist auch sonntags und für Kinder, aber dort gibt es keine Tiere.",
+  "trap_en": "The model railway fair (I) is also on Sunday and for kids, but there are no animals.",
+  "question_en": "The Nowak family is looking for an outing on Sunday where the children (5 and 8) can see animals."
+ },
+ "L3-3": {
+  "evidence": "Sanfte Bewegung für Gelenke und Rücken, ohne Druck und ohne Leistung.",
+  "evidence_en": "Gentle exercise for joints and back, no pressure and no performance.",
+  "why": "„Ab 60“ passt zu Martin (70), und „sanft, ohne Druck“ heißt nicht zu anstrengend.",
+  "why_en": "'From 60' fits Martin (70), and 'gentle, no pressure' means not too strenuous.",
+  "trap": "Yoga im Park (E) ist „für alle Levels“, aber nicht speziell für ältere Menschen.",
+  "trap_en": "Yoga in the park (E) is 'for all levels', but not specifically for older people.",
+  "question_en": "Martin (70) is looking for a sports course for older people that is not too strenuous."
+ },
+ "L3-4": {
+  "evidence": "Unsere Gruppe wandert jeden zweiten Samstag 10–15 km durch Wald und Feld – mit unseren Vierbeinern.",
+  "evidence_en": "Our group hikes 10–15 km through woods and fields every other Saturday, with our four-legged friends.",
+  "why": "Gruppe = nicht allein, Samstag = Wochenende, Vierbeiner = Hunde.",
+  "why_en": "A group means not alone, Saturday is the weekend, and four-legged friends are dogs.",
+  "trap": "„Jeden zweiten Samstag“ heißt nicht jedes Wochenende, aber es ist trotzdem am Wochenende – keine andere Anzeige passt.",
+  "trap_en": "'Every other Saturday' isn't every weekend, but it's still a weekend, and no other ad fits.",
+  "question_en": "Sara wants to go hiking with her dog at the weekend, but not alone."
+ },
+ "L3-5": {
+  "evidence": "Kein Verein, keine Liga, kein Stress – nur Spaß am Ball.",
+  "evidence_en": "No club, no league, no stress, just fun with the ball.",
+  "why": "„Keine Liga“ = keine Wettkämpfe, „nur Spaß“ = zum Spaß. Es ist eine Gruppe, also eine Mannschaft.",
+  "why_en": "'No league' means no competitions and 'just fun' means for fun. It's a group, so a team.",
+  "trap": "„Kein Verein“ klingt vielleicht wie „keine Mannschaft“, aber sie spielen trotzdem zusammen im Team.",
+  "trap_en": "'No club' might sound like 'no team', but they still play together as a team.",
+  "question_en": "Kemal wants to play football in a team, but just for fun, without competitions."
+ },
+ "L3-6": {
+  "evidence": "Jeden Sonntagmorgen um 9 Uhr auf der Wiese hinter dem Rosengarten.",
+  "evidence_en": "Every Sunday morning at 9 on the lawn behind the rose garden.",
+  "why": "Yoga draußen gibt es nur in Anzeige E, und die ist am Sonntag. Nadine hat nur samstags Zeit – also keine passende Anzeige (0).",
+  "why_en": "The only outdoor yoga is ad E, and it's on Sunday. Nadine is free on Saturday, so no ad fits (0).",
+  "trap": "Anzeige E hat Yoga und draußen – fast perfekt, aber der Tag ist falsch.",
+  "trap_en": "Ad E has yoga outdoors, almost perfect, but it's the wrong day.",
+  "question_en": "Nadine doesn't work on Saturdays and wants to do yoga outdoors on that day."
+ },
+ "L3-7": {
+  "evidence": "Dienstags 20–21:30 Uhr, acht Abende, Tanzschule Bella. 160 € pro Paar. Auch für Berufstätige gut zu erreichen",
+  "evidence_en": "Tuesdays 8–9:30 pm, eight evenings, Bella dance school. €160 per couple. Easy to reach for working people too",
+  "why": "Tanzkurs für Paare, abends um 20 Uhr, für Berufstätige – passt zu Anna und ihrem Freund nach der Arbeit.",
+  "why_en": "A dance course for couples at 8 pm, suitable for working people, fits Anna and her boyfriend after work.",
+  "trap": "Der Kochkurs (C) ist auch abends und gemeinsam, aber es ist kein Tanzkurs.",
+  "trap_en": "The cooking class (C) is also in the evening and social, but it isn't a dance course.",
+  "question_en": "Anna is looking for a dance course that she can attend with her boyfriend in the evening after work."
+ },
+ "L4-1": {
+  "evidence": "Noten machen die Freude an der Bewegung kaputt.",
+  "evidence_en": "Grades destroy the joy of exercise.",
+  "why": "Sandra sagt, Noten machen die Freude kaputt – sie ist gegen Noten im Sport.",
+  "why_en": "Sandra says grades ruin the joy, so she's against grades in PE.",
+  "trap": "Die Geschichte über ihren Sohn ist nur ein Beispiel; ihre Meinung steht im letzten Satz.",
+  "trap_en": "The story about her son is just an example; her opinion is in the last sentence.",
+  "question_en": "Sandra, Mainz: My son has hated sport since he got a 4 [a poor grade] in fifth grade. Before that he liked riding his bike, now he just sits indoors. Grades destroy the joy of exercise."
+ },
+ "L4-2": {
+  "evidence": "Ohne Note würde die Hälfte der Klasse nur noch auf der Bank sitzen.",
+  "evidence_en": "Without grades, half the class would just sit on the bench.",
+  "why": "Tarek meint, ohne Note machen die Schüler nicht mit – also ist er für Noten.",
+  "why_en": "Tarek thinks that without grades pupils wouldn't take part, so he's for grades.",
+  "trap": "„nicht, wer am schnellsten läuft“ klingt kritisch, aber er kritisiert nur eine falsche Art zu bewerten, nicht die Note.",
+  "trap_en": "'not who runs fastest' sounds critical, but he's only rejecting a wrong way of grading, not grades themselves.",
+  "question_en": "Tarek, Essen: I'm a PE teacher. My grade doesn't assess who runs the fastest, but who makes an effort and makes progress. Without a grade, half the class would just sit on the bench."
+ },
+ "L4-3": {
+  "evidence": "In Musik und Kunst gibt es auch Noten, und niemand regt sich auf. Warum sollte Sport eine Ausnahme sein?",
+  "evidence_en": "Music and art have grades too, and nobody gets upset. Why should PE be an exception?",
+  "why": "Lisa findet, Sport soll wie Musik und Kunst Noten haben – sie ist dafür.",
+  "why_en": "Lisa thinks PE should have grades like music and art, so she's in favour.",
+  "trap": "Sie hatte selbst schlechte Noten, deshalb erwartet man ein Nein – aber „so ungern ich es zugebe“ zeigt: sie ist trotzdem dafür.",
+  "trap_en": "She had bad grades herself, so you expect a no, but 'as much as I hate to admit it' shows she's in favour anyway.",
+  "question_en": "Lisa, Bonn: At school I was always the slowest and never had anything better than a 4 [a poor grade]. As much as I hate to admit it: in music and art there are grades too, and nobody gets upset. Why should sport be an exception?"
+ },
+ "L4-4": {
+  "evidence": "Wenn Sport keine Note hat, nimmt ihn niemand ernst",
+  "evidence_en": "If PE has no grade, nobody takes it seriously",
+  "why": "Michael will, dass Sport ernst genommen wird, und dafür braucht es Noten – er ist dafür.",
+  "why_en": "Michael wants PE taken seriously, and that needs grades, so he's in favour.",
+  "trap": "Der Satz ist negativ formuliert („keine Note … niemand“), aber die Meinung ist positiv für Noten.",
+  "trap_en": "The sentence is phrased negatively ('no grade … nobody'), but the opinion supports grades.",
+  "question_en": "Michael, Kiel: Exercise is just as important for health as maths is for your job. If sport has no grade, nobody takes it seriously – neither the pupils nor the parents nor the school itself."
+ },
+ "L4-5": {
+  "evidence": "Das ist ungerecht. Wenn überhaupt, dann sollte im Zeugnis nur „teilgenommen“ stehen.",
+  "evidence_en": "That's unfair. If anything, the report should just say 'took part'.",
+  "why": "Yasemin findet Noten ungerecht und will nur „teilgenommen“ – sie ist dagegen.",
+  "why_en": "Yasemin finds grades unfair and wants only 'took part', so she's against.",
+  "trap": "„Die bessere Note“ klingt positiv, aber sie kritisiert, dass große Kinder automatisch besser bewertet werden.",
+  "trap_en": "'The better grade' sounds positive, but she's criticising that bigger kids automatically get better marks.",
+  "question_en": "Yasemin, Ulm: Children are so different: tall, short, fat, thin. Anyone who already looks sixteen at twelve automatically gets the better grade. That's unfair. If anything, the report should just say 'took part'."
+ },
+ "L4-6": {
+  "evidence": "Die Note kann weg, der Sport soll bleiben.",
+  "evidence_en": "The grade can go; the sport should stay.",
+  "why": "Frank will keine Note mehr, nur den Sport – er ist dagegen.",
+  "why_en": "Frank wants to get rid of the grade but keep the sport, so he's against.",
+  "trap": "Er hatte immer eine Eins, aber die gute Note hat ihm nichts gebracht – das ist kein Argument für Noten.",
+  "trap_en": "He always got top marks, but they did nothing for him, so that's not an argument for grades.",
+  "question_en": "Frank, Leipzig: I used to be a competitive athlete and always had a 1 [top grade]. The grade did nothing for me, I was good anyway. For the others it was a punishment every week. The grade can go, the sport should stay."
+ },
+ "L4-7": {
+  "evidence": "Noten sind nicht schön, aber sie funktionieren.",
+  "evidence_en": "Grades aren't nice, but they work.",
+  "why": "Petra sagt, ohne Note kommen die Schüler nicht – Noten funktionieren, also ist sie dafür.",
+  "why_en": "Petra says without grades pupils don't show up; grades work, so she's in favour.",
+  "trap": "„nicht schön“ klingt negativ, aber nach „aber“ kommt ihre eigentliche Meinung.",
+  "trap_en": "'not nice' sounds negative, but her real opinion comes after 'but'.",
+  "question_en": "Petra, Erfurt: In the upper school you can choose music without a grade, and what happens? The pupils come late or not at all. Exactly that would happen with PE lessons. Grades aren't nice, but they work."
+ },
+ "L5-1": {
+  "evidence": "am Wochenende von 8 bis 20 Uhr geöffnet. Die Kasse schließt jeweils eine Stunde vor Ende der Öffnungszeit.",
+  "evidence_en": "open at weekends from 8 am to 8 pm. The ticket desk closes one hour before closing time.",
+  "why": "Samstag schließt das Bad um 20 Uhr, die Kasse eine Stunde früher = 19 Uhr.",
+  "why_en": "On Saturday the pool closes at 8 pm, and the desk an hour earlier, at 7 pm.",
+  "trap": "6 und 22 Uhr sind die Zeiten von Montag bis Freitag, nicht vom Wochenende.",
+  "trap_en": "6 am and 10 pm are the Monday-to-Friday hours, not the weekend ones.",
+  "question_en": "On Saturday …",
+  "options_en": [
+   "the pool closes at 10 p.m.",
+   "you can buy tickets until 7 p.m.",
+   "the pool is open from 6 a.m."
+  ]
+ },
+ "L5-2": {
+  "evidence": "Bei Verlust des Chips wird eine Gebühr von 15 € berechnet.",
+  "evidence_en": "If the chip is lost, a fee of €15 is charged.",
+  "why": "„Verlust“ = verlieren, „Gebühr von 15 €“ = man muss 15 Euro bezahlen.",
+  "why_en": "'Loss' means losing it, and 'a €15 fee' means you have to pay €15.",
+  "trap": "Die Safes an der Kasse sind für Wertsachen, nicht für Leute ohne Chip; und kostenlos ist nichts.",
+  "trap_en": "The safes at the desk are for valuables, not for people who lost the chip, and nothing is free.",
+  "question_en": "Anyone who loses the chip for the locker …",
+  "options_en": [
+   "has to pay 15 euros.",
+   "gets a new one free of charge at the till.",
+   "has to use the safe."
+  ]
+ },
+ "L5-3": {
+  "evidence": "Der Sprungturm ist nur geöffnet, wenn der Bademeister ihn per Durchsage freigibt.",
+  "evidence_en": "The diving tower is only open when the lifeguard releases it by announcement.",
+  "why": "Nur mit Freigabe vom Bademeister darf man auf den Sprungturm.",
+  "why_en": "You can only use the diving tower when the lifeguard allows it.",
+  "trap": "1,20 m ist die Mindestgröße für die Rutsche, nicht für den Sprungturm.",
+  "trap_en": "1.20 m is the minimum height for the slide, not the diving tower.",
+  "question_en": "You may use the diving tower …",
+  "options_en": [
+   "if you are taller than 1.20 m.",
+   "at any time if you can swim.",
+   "only when the lifeguard opens it."
+  ]
+ },
+ "L5-4": {
+  "evidence": "In der Sauna ist ein Handtuch als Unterlage Pflicht.",
+  "evidence_en": "In the sauna a towel to sit on is mandatory.",
+  "why": "„Pflicht“ = man muss ein Handtuch benutzen.",
+  "why_en": "'Mandatory' means you must use a towel.",
+  "trap": "Dienstags ist die Sauna nicht geschlossen, sondern von 9 bis 14 Uhr nur für Frauen; und das Mindestalter ist 16, nicht 12.",
+  "trap_en": "On Tuesdays the sauna isn't closed, it's women-only from 9 to 2; and the minimum age is 16, not 12.",
+  "question_en": "In the sauna …",
+  "options_en": [
+   "children from twelve years may be alone.",
+   "you have to use a towel.",
+   "it is closed on Tuesdays."
+  ]
+ },
+ "H1-1a": {
+  "evidence": "Der Kurs beginnt nicht um zehn, sondern erst um vierzehn Uhr",
+  "evidence_en": "The course starts not at ten but only at two pm",
+  "why": "Die Uhrzeit wurde geändert: jetzt um 14 Uhr, nicht um 10.",
+  "why_en": "The time has changed: it's now at 2 pm, not 10.",
+  "trap": "„zehn“ hört man, aber mit „nicht … sondern“ – das ist die alte Zeit.",
+  "trap_en": "You hear 'ten', but with 'not … but': that's the old time.",
+  "question_en": "The taster course starts on Saturday at ten o'clock."
+ },
+ "H1-1b": {
+  "evidence": "Bitte bringen Sie Sportschuhe mit flacher Sohle mit",
+  "evidence_en": "Please bring sports shoes with flat soles",
+  "why": "Er soll Schuhe mit flacher Sohle mitbringen, sonst darf er nicht auf den Platz.",
+  "why_en": "He has to bring flat-soled shoes, otherwise he can't go on the court.",
+  "trap": "Einen Schläger bekommt er vom Club; und anrufen muss er nur, wenn er nicht kommen kann.",
+  "trap_en": "The club provides a racket, and he only needs to call if he can't come.",
+  "question_en": "Mr Nowak should …",
+  "options_en": [
+   "bring a racket.",
+   "bring shoes with flat soles.",
+   "call beforehand if he is coming."
+  ]
+ },
+ "H1-2a": {
+  "evidence": "Wer das verpasst, kann sich auch noch am Sonntag vor dem Start anmelden, zahlt dann aber fünf Euro mehr.",
+  "evidence_en": "If you miss that, you can still register on Sunday before the start, but you pay five euros more.",
+  "why": "Man kann sich am Sonntag noch anmelden, nur teurer – die Aussage ist falsch.",
+  "why_en": "You can still register on Sunday, it just costs more, so the statement is false.",
+  "trap": "„bis Freitag im Internet“ klingt wie eine Frist, aber danach gibt es noch die Anmeldung am Start.",
+  "trap_en": "'Until Friday online' sounds like a deadline, but there's still on-site registration afterwards.",
+  "question_en": "On Sunday you can no longer register."
+ },
+ "H1-2b": {
+  "evidence": "Die Startnummern gibt es am Samstag von vierzehn bis achtzehn Uhr in der Stadthalle",
+  "evidence_en": "Start numbers are available on Saturday from 2 to 6 pm at the town hall",
+  "why": "Man kann die Startnummer am Samstag in der Stadthalle abholen.",
+  "why_en": "You can pick up your start number on Saturday at the town hall.",
+  "trap": "Am Sonntag gibt es sie auch, aber nicht „nur“ am Sonntag; von Post ist keine Rede.",
+  "trap_en": "They're also available on Sunday, but not 'only' then; post isn't mentioned.",
+  "question_en": "The start number …",
+  "options_en": [
+   "you get by post.",
+   "is only available on Sunday.",
+   "can be picked up on Saturday at the town hall."
+  ]
+ },
+ "H1-3a": {
+  "evidence": "deshalb beginnt das Spiel nicht um fünfzehn Uhr, sondern erst um halb vier",
+  "evidence_en": "so the match starts not at three but only at half past three",
+  "why": "Halb vier ist später als 15 Uhr – das Spiel beginnt später.",
+  "why_en": "Half past three is later than 3 pm, so the match starts late.",
+  "trap": "„halb vier“ = 15:30, nicht 16 Uhr oder früher – aber auf jeden Fall später als geplant.",
+  "trap_en": "'halb vier' means 3:30, not earlier; either way it's later than planned.",
+  "question_en": "The match starts later than planned."
+ },
+ "H1-3b": {
+  "evidence": "Nach dem Spiel fahren zusätzliche Züge vom Bahnhof Stadion in die Innenstadt, alle zehn Minuten.",
+  "evidence_en": "After the match, extra trains run from Stadion station to the city centre every ten minutes.",
+  "why": "Nach dem Spiel gibt es zusätzliche Züge.",
+  "why_en": "After the match there are extra trains.",
+  "trap": "Der Bus kommt nur vor, weil die Gastmannschaft im Stau steht; über Parkplätze sagt die Durchsage nichts.",
+  "trap_en": "A bus is only mentioned because the visiting team is stuck in traffic; parking isn't mentioned.",
+  "question_en": "After the match …",
+  "options_en": [
+   "additional trains run.",
+   "the car parks are closed.",
+   "no buses run."
+  ]
+ },
+ "H1-4a": {
+  "evidence": "Für Sonntag ist den ganzen Tag Regen angesagt, deshalb machen wir sie schon am Samstag.",
+  "evidence_en": "Rain is forecast all day Sunday, so we're doing it on Saturday instead.",
+  "why": "Wegen Regen am Sonntag wird die Wanderung auf Samstag verlegt.",
+  "why_en": "Because of Sunday's rain, the hike is moved to Saturday.",
+  "trap": "„Sonntag“ hört man zuerst, aber das ist der alte Termin.",
+  "trap_en": "You hear 'Sunday' first, but that's the old date.",
+  "question_en": "The hike is now taking place on Saturday."
+ },
+ "H1-4b": {
+  "evidence": "Wir gehen stattdessen den Weg um den See",
+  "evidence_en": "Instead we'll take the path around the lake",
+  "why": "Statt der Bergtour wandern sie um den See.",
+  "why_en": "Instead of the mountain tour they'll hike around the lake.",
+  "trap": "Die Bergtour wird genannt, aber „lassen wir weg“; und sie fahren mit dem Zug, nicht mit dem Bus.",
+  "trap_en": "The mountain tour is mentioned but dropped, and they're taking the train, not a bus.",
+  "question_en": "The group …",
+  "options_en": [
+   "does the mountain tour.",
+   "hikes around the lake.",
+   "goes by bus."
+  ]
+ },
+ "H1-5a": {
+  "evidence": "Dann kommen Sie zu einem kostenlosen Probetraining.",
+  "evidence_en": "Then come for a free trial session.",
+  "why": "„kostenlos“ = gratis, also ist das Probetraining kostenlos.",
+  "why_en": "'kostenlos' means free, so the trial is free.",
+  "trap": "Die fünfzig Euro sind die gesparte Anmeldegebühr, kein Preis für das Probetraining.",
+  "trap_en": "The fifty euros is the saved registration fee, not a price for the trial.",
+  "question_en": "The trial training is free of charge."
+ },
+ "H1-5b": {
+  "evidence": "Wer sich bis Ende Juni anmeldet, zahlt keine Anmeldegebühr und spart damit fünfzig Euro.",
+  "evidence_en": "Anyone who signs up by the end of June pays no registration fee and saves fifty euros.",
+  "why": "Bis Ende Juni gibt es keine Anmeldegebühr – genau Antwort a.",
+  "why_en": "Until the end of June there's no registration fee, exactly answer a.",
+  "trap": "Von einem Handtuch oder „nur einen Monat bezahlen“ ist in der Werbung keine Rede.",
+  "trap_en": "The ad says nothing about a free towel or paying for only one month.",
+  "question_en": "Anyone who registers by the end of June …",
+  "options_en": [
+   "pays no registration fee.",
+   "gets a towel as a gift.",
+   "only has to pay for one month."
+  ]
+ },
+ "H2-1": {
+  "evidence": "Der Anfängerkurs findet zweimal pro Woche statt, montags und mittwochs um achtzehn Uhr, und er dauert acht Wochen.",
+  "evidence_en": "The beginners' course takes place twice a week, Mondays and Wednesdays at 6 pm, and lasts eight weeks.",
+  "why": "Montags und mittwochs = zweimal pro Woche.",
+  "why_en": "Mondays and Wednesdays means twice a week.",
+  "trap": "Der Kurs dauert acht Wochen, nicht acht Monate, und beginnt um 18 Uhr, nicht um 17 Uhr.",
+  "trap_en": "The course lasts eight weeks, not months, and starts at 6 pm, not 5 pm.",
+  "question_en": "The beginners' course …",
+  "options_en": [
+   "takes place twice a week.",
+   "lasts eight months.",
+   "starts at five p.m."
+  ]
+ },
+ "H2-2": {
+  "evidence": "Bitte bringen Sie zur nächsten Stunde einen Nachweis mit, dass Sie mindestens fünfzehn Minuten am Stück schwimmen können.",
+  "evidence_en": "Please bring proof to the next session that you can swim for at least fifteen minutes non-stop.",
+  "why": "Man muss einen Nachweis bringen, dass man schwimmen kann.",
+  "why_en": "You have to bring proof that you can swim.",
+  "trap": "Einen eigenen Schwimmkurs muss man nicht machen – ein Abzeichen oder eine Bescheinigung reicht. Ein Alter wird nicht genannt.",
+  "trap_en": "You don't need to take a swimming course; a badge or certificate is enough. No age limit is mentioned.",
+  "question_en": "Anyone who wants to row …",
+  "options_en": [
+   "has to take their own swimming course.",
+   "has to prove that they can swim.",
+   "has to be older than eighteen."
+  ]
+ },
+ "H2-3": {
+  "evidence": "Bevor Sie mit einem Boot losfahren, tragen Sie sich ins Fahrtenbuch ein",
+  "evidence_en": "Before you set off in a boat, you sign in to the logbook",
+  "why": "Vor der Fahrt trägt man sich ins Fahrtenbuch ein.",
+  "why_en": "Before going out you sign the logbook.",
+  "trap": "Das Boot spült man ab, aber nach der Fahrt, nicht vorher.",
+  "trap_en": "You do rinse the boat, but after the trip, not before.",
+  "question_en": "Before you set off with the boat, …",
+  "options_en": [
+   "you have to call the coach.",
+   "you have to rinse the boat.",
+   "you have to sign in in the logbook."
+  ]
+ },
+ "H2-4": {
+  "evidence": "Dann trainieren wir in der Halle auf den Ruder-Ergometern.",
+  "evidence_en": "Then we train indoors on the rowing machines.",
+  "why": "Von November bis März rudert man nicht auf dem Fluss, sondern trainiert in der Halle.",
+  "why_en": "From November to March there's no rowing on the river; they train indoors instead.",
+  "trap": "„Wir rudern nicht auf dem Fluss“ heißt nicht, dass der Verein geschlossen ist – das Training geht weiter.",
+  "trap_en": "'We don't row on the river' doesn't mean the club is closed; training continues.",
+  "question_en": "In winter …",
+  "options_en": [
+   "the club is closed.",
+   "you only row at the weekend.",
+   "you train in the hall."
+  ]
+ },
+ "H2-5": {
+  "evidence": "Nach drei Monaten bekommen Sie einen eigenen Schlüssel zum Bootshaus, dafür zahlen Sie zwanzig Euro Pfand",
+  "evidence_en": "After three months you get your own key to the boathouse, for which you pay a twenty-euro deposit",
+  "why": "Den Schlüssel gibt es nach drei Monaten gegen zwanzig Euro Pfand.",
+  "why_en": "You get the key after three months against a twenty-euro deposit.",
+  "trap": "Nicht „sofort“, sondern erst nach drei Monaten; und jedes Mitglied bekommt ihn, nicht nur Trainer.",
+  "trap_en": "Not 'immediately' but only after three months, and every member gets one, not just coaches.",
+  "question_en": "The key to the boathouse …",
+  "options_en": [
+   "every member gets immediately.",
+   "you get after three months for a deposit.",
+   "is only for coaches."
+  ]
+ },
+ "H3-1": {
+  "evidence": "Wir sind ungefähr acht Leute.",
+  "evidence_en": "We're about eight people.",
+  "why": "Jonas sagt selbst: ungefähr acht Leute.",
+  "why_en": "Jonas says it himself: about eight people.",
+  "trap": "Die Sechs gehört zum Escape Room (nur sechs pro Raum), nicht zur Gruppengröße.",
+  "trap_en": "Six refers to the escape room (only six per room), not the size of the group.",
+  "question_en": "Jonas wants to celebrate his birthday with about eight people."
+ },
+ "H3-2": {
+  "evidence": "Ich kann nicht besonders gut schwimmen und habe ein bisschen Angst vor tiefem Wasser.",
+  "evidence_en": "I can't swim very well and I'm a bit afraid of deep water.",
+  "why": "Jonas sagt direkt, dass er ein bisschen Angst vor tiefem Wasser hat.",
+  "why_en": "Jonas says directly that he's a bit afraid of deep water.",
+  "trap": "Später sagt er „das beruhigt mich“, aber die Angst hat er trotzdem erwähnt.",
+  "trap_en": "Later he says 'that reassures me', but he did admit the fear.",
+  "question_en": "Jonas is a little afraid of deep water."
+ },
+ "H3-3": {
+  "evidence": "da passen nur sechs Leute in einen Raum. Bei acht müssten wir zwei Gruppen machen",
+  "evidence_en": "only six people fit in one room. With eight we'd have to split into two groups",
+  "why": "Nur sechs pro Raum – acht Leute müssten sich teilen, also nicht alle zusammen.",
+  "why_en": "Only six per room, so eight people would have to split up, not play together.",
+  "trap": "Mia sagt „Der ist auch gut“ – das klingt positiv, aber danach kommt das Problem mit der Größe.",
+  "trap_en": "Mia says 'that's good too', which sounds positive, but then comes the size problem.",
+  "question_en": "In the escape room all eight can play together."
+ },
+ "H3-4": {
+  "evidence": "Am Samstagvormittag muss ich leider arbeiten. Wie wäre es um vierzehn Uhr?",
+  "evidence_en": "Unfortunately I have to work on Saturday morning. How about 2 pm?",
+  "why": "Mia muss vormittags arbeiten, deshalb beginnt die Tour um 14 Uhr.",
+  "why_en": "Mia works in the morning, so the tour starts at 2 pm.",
+  "trap": "„Samstag um zehn“ ist nur Jonas' Vorschlag – Mia lehnt ihn ab.",
+  "trap_en": "'Saturday at ten' is only Jonas's suggestion, which Mia turns down.",
+  "question_en": "The canoe tour starts on Saturday at ten o'clock."
+ },
+ "H3-5": {
+  "evidence": "danach könnten wir am Fluss grillen",
+  "evidence_en": "afterwards we could have a barbecue by the river",
+  "why": "Nach der Tour grillen sie am Fluss; Jonas findet die Idee super.",
+  "why_en": "After the tour they'll barbecue by the river; Jonas calls it a great idea.",
+  "trap": "„könnten“ klingt unsicher, aber Jonas sagt „Super Idee!“ und kauft das Essen – der Plan steht.",
+  "trap_en": "'could' sounds tentative, but Jonas says 'great idea' and will buy the food, so it's the plan.",
+  "question_en": "After the canoe tour the friends want to have a barbecue by the river."
+ },
+ "H3-6": {
+  "evidence": "Ja, unter acht Jahren geht das nicht. Aber sie kann ja zum Grillen dazukommen, um fünf.",
+  "evidence_en": "Yes, under eight it's not possible. But she can join for the barbecue at five.",
+  "why": "Der Sohn ist fünf und zu klein für das Kanu; die Schwester kommt erst zum Grillen.",
+  "why_en": "The son is five and too young for the canoe; the sister only comes to the barbecue.",
+  "trap": "Die Schwester kommt wirklich, aber nicht zum Kanufahren, sondern später zum Grillen.",
+  "trap_en": "The sister does come, but to the barbecue later, not the canoeing.",
+  "question_en": "Jonas' sister is coming canoeing with her son."
+ },
+ "H3-7": {
+  "evidence": "Klar, mache ich heute Abend.",
+  "evidence_en": "Sure, I'll do it this evening.",
+  "why": "Jonas fragt „Übernimmst du die Reservierung?“ und Mia sagt „Klar“.",
+  "why_en": "Jonas asks 'Will you handle the booking?' and Mia says 'Sure'.",
+  "trap": "Jonas übernimmt andere Aufgaben (Essen, Getränke, Nachricht an die Gruppe), nicht die Reservierung.",
+  "trap_en": "Jonas takes on other jobs (food, drinks, messaging the group), not the booking.",
+  "question_en": "Mia is taking care of the reservation."
+ },
+ "H4-1": {
+  "evidence": "Unsere Spieler trainieren fünf Stunden am Tag am Computer, und dazu kommt jeden Morgen eine Stunde mit dem Fitnesstrainer.",
+  "evidence_en": "Our players train five hours a day at the computer, plus an hour with the fitness coach every morning.",
+  "why": "Lars Petersen (b), der E-Sport-Trainer, beschreibt das Training seiner Spieler.",
+  "why_en": "Lars Petersen (b), the esports coach, describes his players' training.",
+  "trap": "„Unsere Spieler“ kann nur der Trainer sagen – Frau Holz hat keine Mannschaft.",
+  "trap_en": "Only the coach can say 'our players'; Dr Holz has no team.",
+  "question_en": "Our players train several hours every day and also do fitness training."
+ },
+ "H4-2": {
+  "evidence": "Aber Sport bedeutet für mich, dass sich der ganze Körper bewegt, nicht nur die Finger.",
+  "evidence_en": "But for me, sport means the whole body moves, not just the fingers.",
+  "why": "Frau Holz (a) sagt, Sport heißt Bewegung des ganzen Körpers.",
+  "why_en": "Dr Holz (a) says sport means moving the whole body.",
+  "trap": "Petersen spricht auch über körperliche Fitness, aber nur als Hilfe für die Konzentration, nicht als Definition von Sport.",
+  "trap_en": "Petersen also talks about physical fitness, but only as an aid to concentration, not as a definition of sport.",
+  "question_en": "In sport the whole body has to move."
+ },
+ "H4-3": {
+  "evidence": "Mein Sohn ist vierzehn und sitzt jeden Tag drei Stunden vor dem Computer.",
+  "evidence_en": "My son is fourteen and sits in front of the computer three hours every day.",
+  "why": "Der Moderator erzählt von seinem Sohn.",
+  "why_en": "The host talks about his own son.",
+  "trap": "Petersen antwortet danach über „ihren Sohn“, aber er spricht über den Sohn des Moderators, nicht über seinen eigenen.",
+  "trap_en": "Petersen then talks about 'your son', but he means the host's son, not his own.",
+  "question_en": "My son spends three hours a day at the computer."
+ },
+ "H4-4": {
+  "evidence": "Und im Wettkampf muss man in Sekunden Entscheidungen treffen, unter enormem Druck",
+  "evidence_en": "And in competition you have to make decisions in seconds, under enormous pressure",
+  "why": "Petersen (b): „in Sekunden“ = sehr schnell.",
+  "why_en": "Petersen (b): 'in seconds' means very quickly.",
+  "trap": "Frau Holz nennt „Reaktion“, aber sie sagt nichts über schnelle Entscheidungen im Wettkampf.",
+  "trap_en": "Dr Holz mentions 'reaction', but says nothing about fast decisions in competition.",
+  "question_en": "In competition you have to make decisions very quickly."
+ },
+ "H4-5": {
+  "evidence": "Ich selbst habe zwanzig Jahre lang im Verein Fußball gespielt",
+  "evidence_en": "I myself played football in a club for twenty years",
+  "why": "Der Moderator sagt, er hat zwanzig Jahre im Verein Fußball gespielt.",
+  "why_en": "The host says he played club football for twenty years.",
+  "trap": "Petersen spricht auch über Fußball und Vereine, aber nicht über sich selbst als Spieler.",
+  "trap_en": "Petersen also talks about football and clubs, but not about himself as a player.",
+  "question_en": "I myself played in a football club for a long time."
+ },
+ "H4-6": {
+  "evidence": "Wenn Computerspielen offiziell Sport heißt, sagen die Kinder ihren Eltern: „Ich mache doch Sport.“ Und dann sitzen sie noch länger.",
+  "evidence_en": "If gaming is officially called sport, kids tell their parents: 'But I am doing sport.' And then they sit even longer.",
+  "why": "Frau Holz (a): „noch länger sitzen“ = sich noch weniger bewegen.",
+  "why_en": "Dr Holz (a): 'sit even longer' means move even less.",
+  "trap": "Der Moderator erzählt auch von einem Sohn am Computer, aber er macht keine allgemeine Aussage über Jugendliche.",
+  "trap_en": "The host also mentions a son at the computer, but he makes no general claim about young people.",
+  "question_en": "If computer gaming is called sport, young people will move even less."
+ },
+ "H4-7": {
+  "evidence": "Die Sportvereine sollten E-Sport anbieten.",
+  "evidence_en": "Sports clubs should offer esports.",
+  "why": "Petersen (b) schlägt vor, dass Sportvereine E-Sport anbieten.",
+  "why_en": "Petersen (b) proposes that sports clubs offer esports.",
+  "trap": "Frau Holz findet die Idee danach „klug“, aber der Vorschlag kommt von Petersen.",
+  "trap_en": "Dr Holz later calls the idea 'clever', but the proposal is Petersen's.",
+  "question_en": "Sports clubs should also offer e-sports."
+ },
+ "H4-8": {
+  "evidence": "Man kann E-Sport fördern, ohne ihn Sport zu nennen.",
+  "evidence_en": "You can promote esports without calling it sport.",
+  "why": "Frau Holz (a): „fördern“ = unterstützen, „nennen“ = bezeichnen.",
+  "why_en": "Dr Holz (a): 'fördern' means support and 'nennen' means call it.",
+  "trap": "Petersen sagt „Es geht uns nicht um das Wort“ – ähnlich, aber der genaue Satz ist von Frau Holz.",
+  "trap_en": "Petersen says 'it's not about the word for us', which is similar, but the exact point is made by Dr Holz.",
+  "question_en": "You can support e-sports without calling it a sport."
+ }
+}

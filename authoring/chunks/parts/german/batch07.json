@@ -1,0 +1,588 @@
+[
+{
+"id": "ENG_CHUNK_0601",
+"t": "Ich hatte [Nomen] bestellt, aber [Satz]",
+"ex": "Entschuldigung, ich hatte den Veggie-Burger bestellt, aber hier ist Hähnchen drauf.",
+"n": "Plusquamperfekt (hatte bestellt) is typical here; Perfekt (habe bestellt) also fine. aber does not change word order."
+},
+{
+"id": "ENG_CHUNK_0602",
+"t": "Könnte ich bitte mit [Person] sprechen?",
+"ex": "Hallo, könnte ich bitte mit Maria sprechen?",
+"n": "Sprechen mit + Dativ. Also common: Ist [Person] da?"
+},
+{
+"id": "ENG_CHUNK_0603",
+"t": "Hier ist [Person] von [Nomen] / [Name], [Firma]",
+"ex": "Hallo, hier ist Sam von der Zahnarztpraxis.",
+"n": "Not 'Das ist ...' on the phone: Germans say Hier ist ... or just give their surname."
+},
+{
+"id": "ENG_CHUNK_0604",
+"t": "Ich rufe wegen [Nomen] an",
+"ex": "Hallo, ich rufe wegen der Wohnung an, die Sie inseriert haben.",
+"n": "wegen + Genitiv in writing, Dativ often in speech. anrufen is separable: an goes to the end."
+},
+{
+"id": "ENG_CHUNK_0605",
+"t": "Kann ich [Person] eine Nachricht hinterlassen?",
+"ex": "Sie ist nicht da? Kein Problem. Kann ich ihr eine Nachricht hinterlassen?",
+"n": "Dativ for the person: ihr, ihm. Also: Kann ich etwas ausrichten lassen?"
+},
+{
+"id": "ENG_CHUNK_0606",
+"t": "Kannst du [Person] sagen, dass er/sie mich zurückrufen soll? / Kann [Person] mich zurückrufen?",
+"ex": "Kannst du Tom sagen, dass er mich zurückrufen soll, wenn er Zeit hat?",
+"n": "dass sends the verb to the end: dass er mich zurückrufen soll."
+},
+{
+"id": "ENG_CHUNK_0607",
+"t": "Ich habe seit [Zeitraum] [Nomen]",
+"ex": "Ich habe jetzt seit zwei Tagen Kopfschmerzen.",
+"n": "Present tense + seit, not Perfekt: Ich habe seit zwei Tagen ..., never *Ich habe ... gehabt."
+},
+{
+"id": "ENG_CHUNK_0608",
+"t": "Es tut weh, wenn ich [Verb am Ende]",
+"ex": "Es tut weh, wenn ich mich bücke, um meine Schuhe zuzubinden.",
+"n": "wenn sends the verb to the end: wenn ich mich bücke."
+},
+{
+"id": "ENG_CHUNK_0609",
+"t": "Mein(e) [Nomen] bringt mich um / tut höllisch weh",
+"ex": "Nach der langen Wanderung tut mein Knie höllisch weh.",
+"n": "bringt mich um works for pain but sounds dramatic; höllisch weh tun or tut total weh is the everyday version."
+},
+{
+"id": "ENG_CHUNK_0610",
+"t": "Ich glaube, ich habe [Nomen]",
+"ex": "Ich glaube, ich habe mich erkältet, also bleibe ich heute zu Hause.",
+"n": "Ich glaube, ... keeps main-clause order (no dass). For a cold, say Ich habe mich erkältet."
+},
+{
+"id": "ENG_CHUNK_0611",
+"t": "Haben Sie etwas gegen [Nomen]?",
+"ex": "Hallo, haben Sie etwas gegen Kopfschmerzen?",
+"n": "German uses gegen (against) for medicine, not für."
+},
+{
+"id": "ENG_CHUNK_0612",
+"t": "Muss ich mir wegen [Nomen] Sorgen machen?",
+"ex": "Muss ich mir wegen dieses Hustens Sorgen machen, oder ist das nur eine Erkältung?",
+"n": "sich Sorgen machen um/wegen. Also: Ist das etwas Ernstes?"
+},
+{
+"id": "ENG_CHUNK_0613",
+"t": "Wie oft soll ich [Verb im Infinitiv]?",
+"ex": "Wie oft soll ich die Tabletten nehmen?",
+"n": "sollen, not müssen, when asking for instructions."
+},
+{
+"id": "ENG_CHUNK_0614",
+"t": "Brauche ich für [Nomen] ein Rezept? / Ist [Nomen] rezeptpflichtig?",
+"ex": "Brauche ich für diese Allergietabletten ein Rezept?",
+"n": "Rezept = prescription (also recipe). rezeptfrei = over the counter."
+},
+{
+"id": "ENG_CHUNK_0615",
+"t": "Ich bin kein [Nomen]-Mensch / kein [Nomen]-Typ",
+"ex": "Ehrlich gesagt bin ich überhaupt kein Morgenmensch.",
+"n": "Compound noun: Morgenmensch, Partytyp. Negate with kein, not nicht."
+},
+{
+"id": "ENG_CHUNK_0616",
+"t": "Mir geht's in letzter Zeit [Adjektiv] / Ich fühle mich in letzter Zeit [Adjektiv]",
+"ex": "Mir geht's in letzter Zeit richtig gut, danke der Nachfrage.",
+"n": "No continuous tense: present + in letzter Zeit covers 'have been feeling'."
+},
+{
+"id": "ENG_CHUNK_0617",
+"t": "Ich arbeite gerade an [Nomen]",
+"ex": "Diese Woche arbeite ich an der neuen Website.",
+"n": "arbeiten an + Dativ. gerade marks 'right now' since German has no -ing form."
+},
+{
+"id": "ENG_CHUNK_0618",
+"t": "Ich bin gerade beim [Nomen] / mitten in [Nomen]",
+"ex": "Kann ich dich zurückrufen? Ich bin gerade beim Abendessen.",
+"n": "beim + nominalised verb (beim Kochen, beim Essen) is the everyday German progressive."
+},
+{
+"id": "ENG_CHUNK_0619",
+"t": "Hast du kurz Zeit, [zu + Infinitiv]? / Haben Sie kurz Zeit?",
+"ex": "Haben Sie kurz Zeit, sich diese E-Mail anzuschauen?",
+"n": "zu-infinitive goes to the end; with separable verbs zu sits inside: anzuschauen."
+},
+{
+"id": "ENG_CHUNK_0620",
+"t": "Ich melde mich wegen [Nomen] noch bei dir",
+"ex": "Ich melde mich bis Freitag wegen der Termine bei dir.",
+"n": "sich melden bei = get back to. Very common in work and private life."
+},
+{
+"id": "ENG_CHUNK_0621",
+"t": "Können wir [Nomen] auf [Tag] verschieben?",
+"ex": "Können wir das Meeting auf Donnerstag verschieben?",
+"n": "verschieben auf + Akk (later), vorziehen (earlier)."
+},
+{
+"id": "ENG_CHUNK_0622",
+"t": "Ich zeig dir mal Schritt für Schritt, wie [Nomen] funktioniert",
+"ex": "Ich zeig dir mal, wie die neue App funktioniert, ist ganz einfach.",
+"n": "wie opens a subordinate clause: verb to the end (wie ... funktioniert)."
+},
+{
+"id": "ENG_CHUNK_0623",
+"t": "Ich bin für [Nomen] zuständig / verantwortlich",
+"ex": "Ich bin für die Snacks auf der Party zuständig.",
+"n": "zuständig für + Akk. Also informal: Ich kümmere mich um ..."
+},
+{
+"id": "ENG_CHUNK_0624",
+"t": "Ich warte immer noch auf [Nomen]",
+"ex": "Ich warte immer noch auf mein Paket, es sollte am Montag kommen.",
+"n": "warten auf + Akk, never warten für."
+},
+{
+"id": "ENG_CHUNK_0625",
+"t": "Gibt's was Neues wegen [Nomen]?",
+"ex": "Hey, gibt's was Neues wegen der Küchenreparatur?",
+"n": "Also: Wie sieht's aus mit ...? Work register: Gibt es schon einen Stand zu ...?"
+},
+{
+"id": "ENG_CHUNK_0626",
+"t": "Herzlichen Glückwunsch zu [Nomen]!",
+"ex": "Herzlichen Glückwunsch zum neuen Job! Den hast du dir echt verdient.",
+"n": "zu + Dativ: zum Geburtstag, zur Hochzeit."
+},
+{
+"id": "ENG_CHUNK_0627",
+"t": "Viel Glück bei [Nomen]! / Viel Erfolg bei [Nomen]!",
+"ex": "Viel Glück morgen beim Vorstellungsgespräch!",
+"n": "bei + Dativ, not mit. Viel Erfolg sounds more serious than Viel Glück."
+},
+{
+"id": "ENG_CHUNK_0628",
+"t": "Grüß [Person] von mir!",
+"ex": "Grüß deine Mama von mir, ja?",
+"n": "Akkusativ: Grüß ihn/sie. Sie form: Grüßen Sie ... von mir."
+},
+{
+"id": "ENG_CHUNK_0629",
+"t": "Kommst du zu [Nomen]?",
+"ex": "Kommst du am Freitag zur Party?",
+"n": "zu + Dativ: zur Party, zum Konzert. Present tense for future."
+},
+{
+"id": "ENG_CHUNK_0630",
+"t": "Wir machen am [Tag] [Nomen]",
+"ex": "Wir grillen am Samstag, komm doch vorbei!",
+"n": "German often uses a verb (grillen, feiern) or eine Party machen, not 'haben'."
+},
+{
+"id": "ENG_CHUNK_0631",
+"t": "Was ist denn mit [Nomen] los?",
+"ex": "Was ist denn mit dem WLAN los? Es bricht ständig ab.",
+"n": "denn adds puzzlement. Wi-Fi = WLAN in Germany."
+},
+{
+"id": "ENG_CHUNK_0632",
+"t": "Kannst du mich zu [Nomen] fahren? / Nimmst du mich mit zu [Nomen]?",
+"ex": "Kannst du mich morgen früh zum Flughafen fahren?",
+"n": "Mitnehmen is separable: Nimmst du mich mit?"
+},
+{
+"id": "ENG_CHUNK_0633",
+"t": "Ich bin in [Zeitraum] da",
+"ex": "Ich parke gerade, ich bin in fünf Minuten da.",
+"n": "Present tense for the near future. in + Dativ: in zehn Minuten."
+},
+{
+"id": "ENG_CHUNK_0634",
+"t": "Ich bin gerade auf dem Weg zu [Nomen] / ins [Nomen]",
+"ex": "Ich bin gerade auf dem Weg ins Fitnessstudio, kann ich dich später anrufen?",
+"n": "zu + Dativ for people/places, in + Akk for buildings you enter."
+},
+{
+"id": "ENG_CHUNK_0635",
+"t": "Danke für das Angebot, aber [Satz]",
+"ex": "Danke für das Angebot, aber ich glaube, ich schaffe das allein.",
+"n": "aber keeps normal main-clause order."
+},
+{
+"id": "ENG_CHUNK_0636",
+"t": "einen Witz erzählen",
+"ex": "Mein Vater erzählt beim Abendessen total gern Witze.",
+"n": "Witze erzählen / machen; not *sagen."
+},
+{
+"id": "ENG_CHUNK_0637",
+"t": "ehrlich gesagt / um ehrlich zu sein",
+"ex": "Ehrlich gesagt habe ich den Film nie gesehen.",
+"n": "Ehrlich gesagt counts as position 1: the verb follows immediately (habe ich)."
+},
+{
+"id": "ENG_CHUNK_0638",
+"t": "sich über [Person] lustig machen",
+"ex": "Meine Freunde machen sich ständig über meine Tanzschritte lustig.",
+"n": "Reflexive, separable-like: lustig goes to the end."
+},
+{
+"id": "ENG_CHUNK_0639",
+"t": "Ausreden suchen / erfinden",
+"ex": "Okay, keine Ausreden mehr, ich gehe heute joggen.",
+"n": "Ausrede = excuse; Entschuldigung = apology. Don't mix them."
+},
+{
+"id": "ENG_CHUNK_0640",
+"t": "ein Versprechen brechen",
+"ex": "Ich hab versprochen, dir beim Umzug zu helfen, und ich breche mein Versprechen nicht.",
+"n": "Also: sein Wort halten / brechen."
+},
+{
+"id": "ENG_CHUNK_0641",
+"t": "[Person] die Schuld an [Nomen] geben",
+"ex": "Gib mir nicht die Schuld am Regen, ich hab nur das Picknick geplant!",
+"n": "Schuld an + Dativ. Also: Ich bin nicht schuld!"
+},
+{
+"id": "ENG_CHUNK_0642",
+"t": "[Nomen] mit Absicht / absichtlich machen",
+"ex": "Tut mir leid, das hab ich nicht mit Absicht gemacht, es ist mir einfach ausgerutscht.",
+"n": "Also: extra (colloquial): Das hab ich nicht extra gemacht."
+},
+{
+"id": "ENG_CHUNK_0643",
+"t": "frische Luft schnappen",
+"ex": "Ich geh kurz raus, frische Luft schnappen."
+},
+{
+"id": "ENG_CHUNK_0644",
+"t": "einen Vorschlag machen",
+"ex": "Darf ich einen Vorschlag machen? Lass uns heute Thai bestellen.",
+"n": "Not *eine Suggestion geben."
+},
+{
+"id": "ENG_CHUNK_0645",
+"t": "auf [Nomen] aufpassen / Vorsicht bei [Nomen]!",
+"ex": "Pass auf die Stufe auf, wenn du reinkommst.",
+"n": "aufpassen auf + Akk; the auf appears twice: Pass auf ... auf."
+},
+{
+"id": "ENG_CHUNK_0646",
+"t": "ein langer Tag",
+"ex": "Das war ein langer Tag, ich will nur noch aufs Sofa."
+},
+{
+"id": "ENG_CHUNK_0647",
+"t": "eine schlechte Angewohnheit",
+"ex": "Im Bett aufs Handy zu schauen ist eine schlechte Angewohnheit von mir.",
+"n": "Angewohnheit or Gewohnheit; Angewohnheit is typical for bad ones."
+},
+{
+"id": "ENG_CHUNK_0648",
+"t": "(einen guten) Humor haben",
+"ex": "Meine neue Mitbewohnerin hat echt Humor.",
+"n": "German usually drops 'sense of': Sie hat Humor."
+},
+{
+"id": "ENG_CHUNK_0649",
+"t": "ein großer Fan von [Nomen] sein / total auf [Nomen] stehen",
+"ex": "Ich stehe total auf scharfes Essen, lass uns da hingehen.",
+"n": "stehen auf + Akk is informal 'be into'."
+},
+{
+"id": "ENG_CHUNK_0650",
+"t": "brandneu / nagelneu",
+"ex": "Schau mal, mein nagelneues Fahrrad!"
+},
+{
+"id": "ENG_CHUNK_0651",
+"t": "völlig in Ordnung / total okay",
+"ex": "Keine Sorge, die Suppe ist völlig in Ordnung."
+},
+{
+"id": "ENG_CHUNK_0652",
+"t": "den Dreh bei [Nomen] raushaben / langsam reinkommen",
+"ex": "Ich hab endlich den Dreh bei dieser neuen App raus.",
+"n": "raushaben is separable: Ich habe den Dreh raus."
+},
+{
+"id": "ENG_CHUNK_0653",
+"t": "voreilige Schlüsse ziehen",
+"ex": "Lass uns keine voreiligen Schlüsse ziehen, bevor wir von ihr hören.",
+"n": "bevor sends the verb to the end: bevor wir von ihr hören."
+},
+{
+"id": "ENG_CHUNK_0654",
+"t": "sich [Nomen] ansehen / sich um [Nomen] kümmern",
+"ex": "Ich schaue mir das Problem heute Nachmittag an.",
+"n": "Separable: an goes to the end. Work register: einer Sache nachgehen."
+},
+{
+"id": "ENG_CHUNK_0655",
+"t": "[Nomen] ansprechen / zur Sprache bringen",
+"ex": "Ich wollte das mit dem Geld beim Abendessen nicht ansprechen.",
+"n": "ansprechen is separable, but with a modal the infinitive stays together at the end."
+},
+{
+"id": "ENG_CHUNK_0656",
+"t": "auf [Nomen] hinweisen",
+"ex": "Danke für den Hinweis auf den Tippfehler.",
+"n": "hinweisen auf + Akk. The noun Hinweis is often more natural."
+},
+{
+"id": "ENG_CHUNK_0657",
+"t": "[Nomen] durchgehen",
+"ex": "Lass uns den Plan noch mal durchgehen.",
+"n": "Separable: Wir gehen den Plan durch."
+},
+{
+"id": "ENG_CHUNK_0658",
+"t": "wegen [Nomen] nachhaken / sich wegen [Nomen] nochmal melden",
+"ex": "Ich wollte nur nochmal wegen meiner E-Mail vom Montag nachhaken.",
+"n": "Ich wollte nur ... is the polite past-tense softener in German emails and calls."
+},
+{
+"id": "ENG_CHUNK_0659",
+"t": "[Person] nach der Meinung zu [Nomen] fragen / [Nomen] mit [Person] abklopfen",
+"ex": "Kann ich dich mal nach deiner Meinung zu einer Idee fragen?",
+"n": "No fixed equivalent; Was hältst du von ...? is the everyday way in."
+},
+{
+"id": "ENG_CHUNK_0660",
+"t": "[Person] auf den neuesten Stand bringen / updaten",
+"ex": "Ich hab das Meeting verpasst. Kannst du mich auf den neuesten Stand bringen?",
+"n": "Colloquial: Kannst du mich kurz updaten?"
+},
+{
+"id": "ENG_CHUNK_0661",
+"t": "sich kurz mit [Person] abstimmen / kurzschließen",
+"ex": "Wir sollten uns am Freitag kurz mit dem Team abstimmen.",
+"n": "sich kurzschließen mit = touch base; common in offices."
+},
+{
+"id": "ENG_CHUNK_0662",
+"t": "[Person] vorwarnen / [Person] Bescheid sagen",
+"ex": "Danke, dass du mich wegen des Staus vorgewarnt hast.",
+"n": "dass sends the verb to the end: dass du mich vorgewarnt hast."
+},
+{
+"id": "ENG_CHUNK_0663",
+"t": "[Nomen] nachholen / mit [Nomen] hinterherkommen",
+"ex": "Ich hab den Sonntag damit verbracht, meine E-Mails abzuarbeiten.",
+"n": "nachholen = make up for; E-Mails abarbeiten = work through a backlog."
+},
+{
+"id": "ENG_CHUNK_0664",
+"t": "eine Frist einhalten / eine Deadline schaffen",
+"ex": "Wir haben das ganze Wochenende gearbeitet, um die Deadline zu schaffen.",
+"n": "um ... zu + infinitive at the end for purpose."
+},
+{
+"id": "ENG_CHUNK_0665",
+"t": "unter Druck stehen",
+"ex": "Diesen Monat stehen alle unter großem Druck.",
+"n": "stehen, not sein: unter Druck stehen."
+},
+{
+"id": "ENG_CHUNK_0666",
+"t": "Wo soll ich anfangen?",
+"ex": "Wie war die Reise? Oh, wo soll ich anfangen?"
+},
+{
+"id": "ENG_CHUNK_0667",
+"t": "Unter uns (gesagt)",
+"ex": "Unter uns gesagt, ich überlege, den Job zu wechseln.",
+"n": "Unter uns gesagt can stand outside the clause, so the verb can stay second after ich."
+},
+{
+"id": "ENG_CHUNK_0668",
+"t": "Wie gesagt",
+"ex": "Wie gesagt, ich helfe gern.",
+"n": "Wie gesagt is usually followed by a comma and normal order, or by inversion: Wie gesagt helfe ich gern."
+},
+{
+"id": "ENG_CHUNK_0669",
+"t": "Noch eine Sache / Ach, und noch was",
+"ex": "Ach, noch was: Bring deinen Ausweis mit."
+},
+{
+"id": "ENG_CHUNK_0670",
+"t": "Ich weiß nicht, wie's dir geht, aber",
+"ex": "Ich weiß nicht, wie's dir geht, aber ich hab einen Riesenhunger.",
+"n": "wie's dir geht is a subordinate clause (verb last)."
+},
+{
+"id": "ENG_CHUNK_0671",
+"t": "Weißt du was?",
+"ex": "Weißt du was? Lass uns einfach Pizza bestellen."
+},
+{
+"id": "ENG_CHUNK_0672",
+"t": "Hör mal / Schau mal",
+"ex": "Hör mal, ich weiß, du hast viel zu tun, aber das ist wichtig.",
+"n": "Sie form: Hören Sie mal / Schauen Sie mal."
+},
+{
+"id": "ENG_CHUNK_0673",
+"t": "Die Frage ist,",
+"ex": "Die Frage ist, wer das bezahlt.",
+"n": "Die Frage ist, + question word sends the verb to the end: wer das bezahlt."
+},
+{
+"id": "ENG_CHUNK_0674",
+"t": "Hab ich das richtig verstanden?",
+"ex": "Wir treffen uns also um neun am Bahnhof. Hab ich das richtig verstanden?"
+},
+{
+"id": "ENG_CHUNK_0675",
+"t": "Könnten Sie bitte etwas langsamer sprechen?",
+"ex": "Entschuldigung, könnten Sie bitte etwas langsamer sprechen? Mein Deutsch ist nicht perfekt.",
+"n": "Key exam phrase. Also: Können Sie das bitte wiederholen?"
+},
+{
+"id": "ENG_CHUNK_0676",
+"t": "Wie heißt er noch mal?",
+"ex": "Dein Nachbar mit dem süßen Hund, wie heißt der noch mal?",
+"n": "noch mal / noch gleich marks a forgotten name. der as pronoun is typical in speech."
+},
+{
+"id": "ENG_CHUNK_0677",
+"t": "Interessant! / Ach, interessant",
+"ex": "Du bist auf einem Bauernhof aufgewachsen? Interessant!"
+},
+{
+"id": "ENG_CHUNK_0678",
+"t": "Jein / Ja und nein",
+"ex": "Hat dir der Film gefallen? Jein, das Ende war super.",
+"n": "Jein (ja + nein) is common everyday German."
+},
+{
+"id": "ENG_CHUNK_0679",
+"t": "und so (was) / und so weiter",
+"ex": "Wir haben meistens Brettspiele gespielt, gekocht und so."
+},
+{
+"id": "ENG_CHUNK_0680",
+"t": "Oh, sorry, du zuerst / Nach Ihnen",
+"ex": "Oh, Entschuldigung, du zuerst.",
+"n": "Sie form: Bitte, Sie zuerst."
+},
+{
+"id": "ENG_CHUNK_0681",
+"t": "Bitte schön / Hier, bitte",
+"ex": "Bitte schön, ein Kaffee mit extra Milch.",
+"n": "Bitte (schön) is also what you say when handing things over."
+},
+{
+"id": "ENG_CHUNK_0682",
+"t": "Na ja / Tja, schade",
+"ex": "Die Bäckerei hat schon zu? Na ja, dann kommen wir morgen wieder.",
+"n": "dann triggers inversion: dann kommen wir."
+},
+{
+"id": "ENG_CHUNK_0683",
+"t": "Trotzdem danke!",
+"ex": "Kein Problem, wenn du keine Zeit hast. Trotzdem danke!",
+"n": "Not *Danke sowieso."
+},
+{
+"id": "ENG_CHUNK_0684",
+"t": "Ist hier noch frei?",
+"ex": "Entschuldigung, ist hier noch frei?",
+"n": "Also: Ist der Platz noch frei? The answer: Ja, bitte / Nein, da sitzt schon jemand."
+},
+{
+"id": "ENG_CHUNK_0685",
+"t": "Gute Reise! / Komm gut an!",
+"ex": "Gute Reise, und schreib mir, wenn du gelandet bist!",
+"n": "Komm gut an / Kommt gut heim are very common goodbyes."
+},
+{
+"id": "ENG_CHUNK_0686",
+"t": "Sieh es positiv / Sieh's doch mal von der positiven Seite",
+"ex": "Sieh's positiv, jetzt hast du ein freies Wochenende."
+},
+{
+"id": "ENG_CHUNK_0687",
+"t": "Halt durch!",
+"ex": "Halt durch, die Woche ist fast rum!"
+},
+{
+"id": "ENG_CHUNK_0688",
+"t": "Davon geht die Welt nicht unter",
+"ex": "Du hast den Bus verpasst? Davon geht die Welt nicht unter.",
+"n": "Also short: Ist doch nicht schlimm."
+},
+{
+"id": "ENG_CHUNK_0689",
+"t": "Das kann passieren / Kann ja mal passieren",
+"ex": "Mach dir keinen Kopf wegen des Safts, das kann passieren."
+},
+{
+"id": "ENG_CHUNK_0690",
+"t": "Das wäre doch nicht nötig gewesen!",
+"ex": "Blumen? Oh, das wäre doch nicht nötig gewesen!",
+"n": "Konjunktiv II past (wäre ... gewesen). Also: Das ist aber lieb!"
+},
+{
+"id": "ENG_CHUNK_0691",
+"t": "Bis dahin",
+"ex": "Die Party ist am Samstag. Bis dahin spare ich meine Energie.",
+"n": "Bis dahin takes position 1, so the verb comes next: Bis dahin spare ich ..."
+},
+{
+"id": "ENG_CHUNK_0692",
+"t": "Am nächsten Tag",
+"ex": "Wir sind spät angekommen, und am nächsten Tag sind wir direkt an den Strand gegangen.",
+"n": "Time phrase in position 1: verb follows (sind wir)."
+},
+{
+"id": "ENG_CHUNK_0693",
+"t": "Das Gleiche gilt für",
+"ex": "Du solltest mehr Wasser trinken. Das Gleiche gilt für mich.",
+"n": "Also short: Ich auch / Genauso wie ich."
+},
+{
+"id": "ENG_CHUNK_0694",
+"t": "die ganze Zeit",
+"ex": "Das Baby hat die ganze Zeit geschlafen, während wir im Flugzeug waren.",
+"n": "während (while) sends the verb to the end."
+},
+{
+"id": "ENG_CHUNK_0695",
+"t": "Gleichzeitig / Andererseits",
+"ex": "Die Stadt ist teuer, aber gleichzeitig kann man dort so viel machen.",
+"n": "After gleichzeitig, verb comes next if it starts the clause."
+},
+{
+"id": "ENG_CHUNK_0696",
+"t": "Im Allgemeinen / Generell",
+"ex": "Im Allgemeinen schlafe ich besser, wenn ich nach dem Mittagessen keinen Kaffee trinke.",
+"n": "Inversion after Im Allgemeinen; wenn sends its verb to the end."
+},
+{
+"id": "ENG_CHUNK_0697",
+"t": "kurz vor [Nomen] / kurz bevor [Satz]",
+"ex": "Sie hat kurz vor dem Abendessen angerufen.",
+"n": "vor + Dativ with nouns; bevor + clause with verb at the end."
+},
+{
+"id": "ENG_CHUNK_0698",
+"t": "Alles in allem",
+"ex": "Alles in allem war es ein toller Urlaub.",
+"n": "Inversion: Alles in allem war es ..."
+},
+{
+"id": "ENG_CHUNK_0699",
+"t": "So (haben wir ...)",
+"ex": "Wir saßen im Unterricht nebeneinander. So sind wir Freunde geworden.",
+"n": "So in position 1, verb second: So sind wir ..."
+},
+{
+"id": "ENG_CHUNK_0700",
+"t": "vor allem",
+"ex": "Mir haben das Essen, die Leute und vor allem die Strände gefallen."
+}
+]

@@ -1,0 +1,902 @@
+[
+{
+"id": "ENG_CHUNK_0501",
+"chunk": "I'm scared of [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Admitting a fear",
+"register": "neutral",
+"natural_example": "I'm scared of spiders, so you'll have to get rid of that one.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0502",
+"chunk": "How much does it cost to [base-verb]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking the price of a service",
+"register": "neutral",
+"natural_example": "How much does it cost to fix a flat tire?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0503",
+"chunk": "Are you sure [clause]?",
+"category": "sentence_frame",
+"pragmatic_function": "Questioning an assumption",
+"register": "neutral",
+"natural_example": "Are you sure you turned off the stove?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0504",
+"chunk": "What makes you think [clause]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking someone to justify a belief",
+"register": "neutral",
+"natural_example": "What makes you think she's mad at you?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0505",
+"chunk": "Is it true that [clause]?",
+"category": "sentence_frame",
+"pragmatic_function": "Checking a rumor",
+"register": "neutral",
+"natural_example": "Is it true that you're moving to Texas?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0506",
+"chunk": "Any idea [clause]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking a quick, casual question",
+"register": "informal",
+"natural_example": "Any idea where I left my phone?",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0507",
+"chunk": "Can I ask why [clause]?",
+"category": "sentence_frame",
+"pragmatic_function": "Politely asking for a reason",
+"register": "polite",
+"natural_example": "Can I ask why you're leaving so soon?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0508",
+"chunk": "What's [noun] for?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking the purpose of something",
+"register": "neutral",
+"natural_example": "What's this button for?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0509",
+"chunk": "How do you say [noun] in English?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking for a word you don't know",
+"register": "neutral",
+"natural_example": "Sorry, how do you say this in English?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0510",
+"chunk": "Could you show me how to [base-verb]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking for a demonstration",
+"register": "polite",
+"natural_example": "Could you show me how to use the coffee machine?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0511",
+"chunk": "Can you recommend [noun]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking for a recommendation",
+"register": "polite",
+"natural_example": "Can you recommend a good place for brunch around here?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0512",
+"chunk": "Is there anywhere I can [base-verb]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking where to do something",
+"register": "neutral",
+"natural_example": "Is there anywhere I can charge my phone?",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0513",
+"chunk": "Is there [noun] near here?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking about nearby services",
+"register": "neutral",
+"natural_example": "Excuse me, is there a pharmacy near here?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0514",
+"chunk": "Is this the right way to [noun]?",
+"category": "sentence_frame",
+"pragmatic_function": "Checking you are going the right way",
+"register": "neutral",
+"natural_example": "Excuse me, is this the right way to the museum?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0515",
+"chunk": "How far is it to [noun]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking about distance",
+"register": "neutral",
+"natural_example": "How far is it to the beach from here?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0516",
+"chunk": "Does this bus go to [noun]?",
+"category": "sentence_frame",
+"pragmatic_function": "Checking a route",
+"register": "neutral",
+"natural_example": "Excuse me, does this bus go to the train station?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0517",
+"chunk": "What time does [noun] leave?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking about departure times",
+"register": "neutral",
+"natural_example": "What time does the last train leave?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0518",
+"chunk": "I'd like a round-trip ticket to [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Buying a travel ticket",
+"register": "polite",
+"natural_example": "I'd like a round-trip ticket to Chicago, please.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0519",
+"chunk": "I have a reservation under [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Checking in at a hotel or restaurant",
+"register": "neutral",
+"natural_example": "Hi, I have a reservation under Miller.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0520",
+"chunk": "I'd like to make a reservation for [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Booking a table or room",
+"register": "polite",
+"natural_example": "Hi, I'd like to make a reservation for two at eight.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0521",
+"chunk": "Can we get a table for [noun]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking for a table at a restaurant",
+"register": "neutral",
+"natural_example": "Hi, can we get a table for two?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0522",
+"chunk": "Does [noun] have [noun] in it?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking about ingredients",
+"register": "neutral",
+"natural_example": "Does the soup have meat in it?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0523",
+"chunk": "I'm allergic to [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating an allergy",
+"register": "neutral",
+"natural_example": "I'm allergic to peanuts, so I'll skip the dessert.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0524",
+"chunk": "Can I get that without [noun]?",
+"category": "sentence_frame",
+"pragmatic_function": "Customizing an order",
+"register": "neutral",
+"natural_example": "Can I get that without onions?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0525",
+"chunk": "Is [noun] included?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking what the price covers",
+"register": "neutral",
+"natural_example": "Is breakfast included?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0526",
+"chunk": "Where can I find [noun]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking where something is in a store",
+"register": "neutral",
+"natural_example": "Excuse me, where can I find the cereal?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0527",
+"chunk": "Can I try [noun] on?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking to try on clothes",
+"register": "neutral",
+"natural_example": "Can I try these jeans on?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0528",
+"chunk": "Is [noun] on sale?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking about a discount",
+"register": "neutral",
+"natural_example": "Is this jacket on sale?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0529",
+"chunk": "Do you have anything less [adjective]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking a clerk for an alternative",
+"register": "neutral",
+"natural_example": "Do you have anything less expensive?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0530",
+"chunk": "You're going to love [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Enthusiastically recommending something",
+"register": "informal",
+"natural_example": "You're going to love this place.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0531",
+"chunk": "I'll take [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Deciding to buy",
+"register": "neutral",
+"natural_example": "I'll take the blue one.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0532",
+"chunk": "Do you take [noun]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking which payment is accepted",
+"register": "neutral",
+"natural_example": "Do you take credit cards?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0533",
+"chunk": "I'd like to return [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Returning an item to a store",
+"register": "polite",
+"natural_example": "Hi, I'd like to return this sweater. It's too small.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0534",
+"chunk": "I'd like to cancel [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Canceling a booking or subscription",
+"register": "polite",
+"natural_example": "I'd like to cancel my subscription, please.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0535",
+"chunk": "Is there a fee for [verb-ing]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking about extra charges",
+"register": "neutral",
+"natural_example": "Is there a fee for changing the date?",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0536",
+"chunk": "to give [noun] a try",
+"category": "collocation",
+"pragmatic_function": "Agreeing or urging someone to try something",
+"register": "neutral",
+"natural_example": "I've never had sushi, but I'll give it a try.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0537",
+"chunk": "to keep going",
+"category": "collocation",
+"pragmatic_function": "Encouraging persistence",
+"register": "neutral",
+"natural_example": "You're almost at the top, keep going!",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0538",
+"chunk": "to make a wish",
+"category": "collocation",
+"pragmatic_function": "Wishing at a birthday or special moment",
+"register": "neutral",
+"natural_example": "Blow out the candles and make a wish!",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0539",
+"chunk": "to get together",
+"category": "collocation",
+"pragmatic_function": "Proposing a meetup",
+"register": "informal",
+"natural_example": "We should get together sometime next week.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0540",
+"chunk": "to show [person] around",
+"category": "collocation",
+"pragmatic_function": "Offering a tour",
+"register": "neutral",
+"natural_example": "Come by tomorrow and I'll show you around the office.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0541",
+"chunk": "to move in with [person]",
+"category": "collocation",
+"pragmatic_function": "Talking about living together",
+"register": "neutral",
+"natural_example": "I'm moving in with my girlfriend next month.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0542",
+"chunk": "to move out",
+"category": "collocation",
+"pragmatic_function": "Talking about leaving a home",
+"register": "neutral",
+"natural_example": "I moved out when I was eighteen.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0543",
+"chunk": "to be close to [person]",
+"category": "collocation",
+"pragmatic_function": "Describing a close bond",
+"register": "neutral",
+"natural_example": "I'm close to my grandma. We talk every day.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0544",
+"chunk": "to have a crush on [person]",
+"category": "collocation",
+"pragmatic_function": "Admitting attraction",
+"register": "informal",
+"natural_example": "I think Jake has a crush on you.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0545",
+"chunk": "to make up with [person]",
+"category": "collocation",
+"pragmatic_function": "Reporting a reconciliation",
+"register": "informal",
+"natural_example": "Did you make up with your sister yet?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0546",
+"chunk": "to stay in touch",
+"category": "collocation",
+"pragmatic_function": "Promising to keep contact",
+"register": "neutral",
+"natural_example": "Let's stay in touch after you move.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0547",
+"chunk": "to hear from [person]",
+"category": "collocation",
+"pragmatic_function": "Talking about receiving news",
+"register": "neutral",
+"natural_example": "Have you heard from Anna lately?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0548",
+"chunk": "to complain about [noun]",
+"category": "collocation",
+"pragmatic_function": "Voicing dissatisfaction",
+"register": "neutral",
+"natural_example": "My neighbor's always complaining about the noise.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0549",
+"chunk": "to care about [noun]",
+"category": "collocation",
+"pragmatic_function": "Saying what matters to someone",
+"register": "neutral",
+"natural_example": "I care about my health a lot more these days.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0550",
+"chunk": "to remind [person] to [base-verb]",
+"category": "collocation",
+"pragmatic_function": "Asking for or giving a reminder",
+"register": "neutral",
+"natural_example": "Can you remind me to call the dentist?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0551",
+"chunk": "to pass a test",
+"category": "collocation",
+"pragmatic_function": "Reporting exam success",
+"register": "neutral",
+"natural_example": "I passed my driving test on the first try!",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0552",
+"chunk": "to prepare for [noun]",
+"category": "collocation",
+"pragmatic_function": "Getting ready for an event",
+"register": "neutral",
+"natural_example": "I'm preparing for my final exams.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0553",
+"chunk": "to take care of [noun]",
+"category": "collocation",
+"pragmatic_function": "Taking responsibility for a task",
+"register": "neutral",
+"natural_example": "Don't worry, I'll take care of the bill.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0554",
+"chunk": "to take part in [noun]",
+"category": "collocation",
+"pragmatic_function": "Describing participation",
+"register": "neutral",
+"natural_example": "Over two hundred people took part in the race.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0555",
+"chunk": "to hand in [noun]",
+"category": "collocation",
+"pragmatic_function": "Submitting work or returning something",
+"register": "neutral",
+"natural_example": "I have to hand in my report by Friday.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0556",
+"chunk": "to give a presentation",
+"category": "collocation",
+"pragmatic_function": "Talking about presenting",
+"register": "neutral",
+"natural_example": "I have to give a presentation tomorrow and I'm so nervous.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0557",
+"chunk": "to work overtime",
+"category": "collocation",
+"pragmatic_function": "Describing extra hours",
+"register": "neutral",
+"natural_example": "I've been working overtime all week.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0558",
+"chunk": "to get promoted",
+"category": "collocation",
+"pragmatic_function": "Reporting career progress",
+"register": "neutral",
+"natural_example": "My sister just got promoted to manager!",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0559",
+"chunk": "to lose your job",
+"category": "collocation",
+"pragmatic_function": "Reporting job loss",
+"register": "neutral",
+"natural_example": "My uncle lost his job last month.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0560",
+"chunk": "to quit your job",
+"category": "collocation",
+"pragmatic_function": "Reporting a resignation",
+"register": "neutral",
+"natural_example": "She quit her job to travel for a year.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0561",
+"chunk": "a part-time job",
+"category": "collocation",
+"pragmatic_function": "Describing a job with reduced hours",
+"register": "neutral",
+"natural_example": "I have a part-time job at a café on weekends.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0562",
+"chunk": "a job interview",
+"category": "collocation",
+"pragmatic_function": "Talking about job hunting",
+"register": "neutral",
+"natural_example": "I have a job interview on Monday morning.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0563",
+"chunk": "to get off work",
+"category": "collocation",
+"pragmatic_function": "Saying when work ends",
+"register": "informal",
+"natural_example": "What time do you get off work?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0564",
+"chunk": "to head out",
+"category": "collocation",
+"pragmatic_function": "Announcing departure",
+"register": "informal",
+"natural_example": "I'm going to head out. See you tomorrow.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0565",
+"chunk": "rush hour",
+"category": "collocation",
+"pragmatic_function": "Explaining crowded travel times",
+"register": "neutral",
+"natural_example": "Let's leave early to avoid rush hour.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0566",
+"chunk": "It's hard to say",
+"category": "gambit_filler",
+"pragmatic_function": "Hedging when unable to judge",
+"register": "neutral",
+"natural_example": "Will it be ready by Friday? It's hard to say.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0567",
+"chunk": "Not that I know of",
+"category": "gambit_filler",
+"pragmatic_function": "Hedged negative answer based on limited knowledge",
+"register": "neutral",
+"natural_example": "Is there a meeting today? Not that I know of.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0568",
+"chunk": "For sure",
+"category": "gambit_filler",
+"pragmatic_function": "Informal emphatic agreement or certainty",
+"register": "informal",
+"natural_example": "Are you coming to the party? For sure!",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0569",
+"chunk": "Personally",
+"category": "gambit_filler",
+"pragmatic_function": "Marking a view as one's own",
+"register": "neutral",
+"natural_example": "Personally, I prefer the beach to the mountains.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0570",
+"chunk": "I have to say",
+"category": "gambit_filler",
+"pragmatic_function": "Emphasizing a sincere opinion",
+"register": "neutral",
+"natural_example": "I have to say, this is the best pizza I've ever had.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0571",
+"chunk": "Trust me",
+"category": "gambit_filler",
+"pragmatic_function": "Insisting on the truth of a claim",
+"register": "informal",
+"natural_example": "Trust me, you don't want to drive at this hour.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0572",
+"chunk": "That's not true",
+"category": "gambit_filler",
+"pragmatic_function": "Directly contradicting a claim",
+"register": "neutral",
+"natural_example": "That's not true, I called you twice!",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0573",
+"chunk": "I completely disagree",
+"category": "gambit_filler",
+"pragmatic_function": "Strong disagreement",
+"register": "neutral",
+"natural_example": "I completely disagree, the first movie was much better.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0574",
+"chunk": "Absolutely not",
+"category": "gambit_filler",
+"pragmatic_function": "Emphatic denial or refusal",
+"register": "neutral",
+"natural_example": "Can I borrow your car tonight? Absolutely not.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0575",
+"chunk": "I hadn't thought of that",
+"category": "gambit_filler",
+"pragmatic_function": "Acknowledging a new point",
+"register": "neutral",
+"natural_example": "Oh, good point. I hadn't thought of that.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0576",
+"chunk": "You win",
+"category": "gambit_filler",
+"pragmatic_function": "Conceding an argument",
+"register": "informal",
+"natural_example": "Okay, you win, we'll get Thai food.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0577",
+"chunk": "That's a tough one",
+"category": "gambit_filler",
+"pragmatic_function": "Stalling on a hard question",
+"register": "neutral",
+"natural_example": "My favorite movie? That's a tough one.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0578",
+"chunk": "Let me ask you something",
+"category": "gambit_filler",
+"pragmatic_function": "Prefacing a pointed question",
+"register": "neutral",
+"natural_example": "Let me ask you something. Do you actually like your job?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0579",
+"chunk": "It gets worse",
+"category": "gambit_filler",
+"pragmatic_function": "Building tension in a story",
+"register": "informal",
+"natural_example": "So I missed the bus, and it gets worse, it started pouring.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0580",
+"chunk": "The funny thing is",
+"category": "gambit_filler",
+"pragmatic_function": "Highlighting the ironic part of a story",
+"register": "neutral",
+"natural_example": "The funny thing is, we'd met before and neither of us remembered.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0581",
+"chunk": "Wish me luck",
+"category": "fixed_formula",
+"pragmatic_function": "Asking for support before a challenge",
+"register": "informal",
+"natural_example": "I'm meeting her parents tonight. Wish me luck!",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0582",
+"chunk": "Better luck next time",
+"category": "fixed_formula",
+"pragmatic_function": "Consoling someone after a failure",
+"register": "informal",
+"natural_example": "You didn't win? Oh well, better luck next time.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0583",
+"chunk": "Hope you feel better soon",
+"category": "fixed_formula",
+"pragmatic_function": "Wishing a sick person a quick recovery",
+"register": "neutral",
+"natural_example": "Sorry you're sick. Hope you feel better soon!",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0584",
+"chunk": "It's a small world",
+"category": "fixed_formula",
+"pragmatic_function": "Reacting to a surprising shared connection",
+"register": "neutral",
+"natural_example": "You know my cousin? It's a small world.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0585",
+"chunk": "It's not really my thing",
+"category": "fixed_formula",
+"pragmatic_function": "Politely saying you don't enjoy something",
+"register": "neutral",
+"natural_example": "Karaoke? Thanks, but it's not really my thing.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0586",
+"chunk": "Oh, come on!",
+"category": "fixed_formula",
+"pragmatic_function": "Expressing annoyance or protest",
+"register": "informal",
+"natural_example": "Oh, come on! Not another delay!",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0587",
+"chunk": "Time flies",
+"category": "fixed_formula",
+"pragmatic_function": "Remarking on how quickly time has passed",
+"register": "neutral",
+"natural_example": "Your son's starting college? Time flies.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0588",
+"chunk": "Better late than never",
+"category": "fixed_formula",
+"pragmatic_function": "Accepting a late arrival or delayed action",
+"register": "neutral",
+"natural_example": "You finally called! Better late than never.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0589",
+"chunk": "It's a piece of cake",
+"category": "fixed_formula",
+"pragmatic_function": "Describing a task as very easy",
+"register": "informal",
+"natural_example": "Don't worry about the exam, it's a piece of cake.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0590",
+"chunk": "I told you so",
+"category": "fixed_formula",
+"pragmatic_function": "Reminding someone you predicted a bad outcome",
+"register": "informal",
+"natural_example": "The restaurant was closed? I told you so.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0591",
+"chunk": "Or else",
+"category": "discourse_connector",
+"pragmatic_function": "Warning of what happens otherwise",
+"register": "neutral",
+"natural_example": "Leave now, or else you'll hit traffic.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0592",
+"chunk": "Just like",
+"category": "discourse_connector",
+"pragmatic_function": "Drawing a close comparison",
+"register": "neutral",
+"natural_example": "She looks just like her mom.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0593",
+"chunk": "Compared to",
+"category": "discourse_connector",
+"pragmatic_function": "Measuring one thing against another",
+"register": "neutral",
+"natural_example": "Compared to last winter, this one's been pretty mild.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0594",
+"chunk": "For now",
+"category": "discourse_connector",
+"pragmatic_function": "Marking a temporary arrangement",
+"register": "neutral",
+"natural_example": "Let's leave it like this for now.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0595",
+"chunk": "In order to",
+"category": "discourse_connector",
+"pragmatic_function": "Stating an intended goal",
+"register": "neutral",
+"natural_example": "I get up at five in order to beat the traffic.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0596",
+"chunk": "No matter what",
+"category": "discourse_connector",
+"pragmatic_function": "Stating an unconditional commitment",
+"register": "neutral",
+"natural_example": "I'll be there, no matter what.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0597",
+"chunk": "Only if",
+"category": "discourse_connector",
+"pragmatic_function": "Setting a strict condition",
+"register": "neutral",
+"natural_example": "I'll come, but only if you're driving.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0598",
+"chunk": "As a result",
+"category": "discourse_connector",
+"pragmatic_function": "Stating the outcome of a cause",
+"register": "neutral",
+"natural_example": "Our flight was canceled, and as a result, we slept at the airport.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0599",
+"chunk": "After a while",
+"category": "discourse_connector",
+"pragmatic_function": "Marking the passing of some time",
+"register": "neutral",
+"natural_example": "It was weird at first, but after a while I got used to it.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0600",
+"chunk": "Sooner or later",
+"category": "discourse_connector",
+"pragmatic_function": "Predicting that something will eventually happen",
+"register": "neutral",
+"natural_example": "Sooner or later, you'll have to tell him.",
+"cefr_level": "B1"
+}
+]

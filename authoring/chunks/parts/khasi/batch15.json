@@ -1,0 +1,282 @@
+[
+ {
+  "id": "ENG_CHUNK_1401",
+  "t": "Nga pang [noun]",
+  "ex": "Nga pang ka cold.",
+  "n": "Khasi says 'I am sick with'; illness names are often English."
+ },
+ {
+  "id": "ENG_CHUNK_1402",
+  "t": "Ka [body-part] jong nga ka pang",
+  "ex": "Ka khlieh jong nga ka pang.",
+  "n": "The body part is the subject; ka pang hangne works while pointing."
+ },
+ {
+  "id": "ENG_CHUNK_1403",
+  "t": "Nga donkam dawai na ka bynta [noun]",
+  "ex": "Nga donkam dawai na ka bynta ka jyrhoh.",
+  "n": "Uncertain: jyrhoh for cough; the English word is understood."
+ },
+ {
+  "id": "ENG_CHUNK_1404",
+  "t": "Ka [noun] jong nga ka la jah",
+  "ex": "Ka passport jong nga ka la jah.",
+  "n": "The lost thing is the subject: jah is 'go missing'."
+ },
+ {
+  "id": "ENG_CHUNK_1405",
+  "t": "Uwei u la tuh ïa ka [noun] jong nga",
+  "ex": "Uwei u la tuh ïa ka wallet jong nga ha ka rel.",
+  "n": "tuh is steal; uwei is 'someone'."
+ },
+ {
+  "id": "ENG_CHUNK_1406",
+  "t": "Nga ieid ïa [noun]",
+  "ex": "Nga ieid ïa ka pizza."
+ },
+ {
+  "id": "ENG_CHUNK_1407",
+  "t": "Nga sngewtynnad ïa [noun]",
+  "ex": "Nga sngewtynnad ïa ka histori.",
+  "n": "sngewtynnad covers enjoy and find interesting."
+ },
+ {
+  "id": "ENG_CHUNK_1408",
+  "t": "Ngam ieid ïa [noun]",
+  "ex": "Ngam ieid ïa ka kophi."
+ },
+ {
+  "id": "ENG_CHUNK_1409",
+  "t": "Phi ieid ïa [noun]?",
+  "ex": "Phi ieid ïa ka jingbam Italy?"
+ },
+ {
+  "id": "ENG_CHUNK_1410",
+  "t": "Aiu ka [noun] kaba phi ieid tam?",
+  "ex": "Aiu ka rong kaba phi ieid tam?",
+  "n": "No word for favourite: 'the one you like most' (ieid tam). rong is colour."
+ },
+ {
+  "id": "ENG_CHUNK_1411",
+  "t": "Ka [noun] kaba nga ieid tam ka long [noun]",
+  "ex": "Ka rong kaba nga ieid tam ka long ka rong jyrngam.",
+  "n": "jyrngam covers blue and green."
+ },
+ {
+  "id": "ENG_CHUNK_1412",
+  "t": "Nga kwah ban [verb]",
+  "ex": "Nga kwah ban leit sha ïing."
+ },
+ {
+  "id": "ENG_CHUNK_1413",
+  "t": "Nga kwah ban [verb], sngewbha",
+  "ex": "Nga kwah ban book ïa ka miej kawei, sngewbha.",
+  "n": "No conditional: sngewbha does the politeness. miej is table."
+ },
+ {
+  "id": "ENG_CHUNK_1414",
+  "t": "Nga donkam ban [verb]",
+  "ex": "Nga donkam ban leit sha ka bank."
+ },
+ {
+  "id": "ENG_CHUNK_1415",
+  "t": "Nga hap ban [verb]",
+  "ex": "Nga hap ban trei lashai.",
+  "n": "hap ban is 'have to, be obliged'."
+ },
+ {
+  "id": "ENG_CHUNK_1416",
+  "t": "Nga donkam ïa [noun]",
+  "ex": "Nga donkam ïa ka taxi."
+ },
+ {
+  "id": "ENG_CHUNK_1417",
+  "t": "Nga lah ban [verb]?",
+  "ex": "Nga lah ban shong hangne?"
+ },
+ {
+  "id": "ENG_CHUNK_1418",
+  "t": "Phi lah ban [verb], sngewbha?",
+  "ex": "Phi lah ban ïarap ïa nga, sngewbha?"
+ },
+ {
+  "id": "ENG_CHUNK_1419",
+  "t": "Ngam lah ban [verb] / Ngam nang ban [verb]",
+  "ex": "Ngam nang ban lang.",
+  "n": "Skills take nang (know how), not lah. lang for swim is my best guess."
+ },
+ {
+  "id": "ENG_CHUNK_1420",
+  "t": "To ngi [verb]",
+  "ex": "To ngi leit sha ka duriaw."
+ },
+ {
+  "id": "ENG_CHUNK_1421",
+  "t": "Wat klet ban [verb]",
+  "ex": "Wat klet ban shim ki chabi jong phi.",
+  "n": "wat is 'don't', klet is forget."
+ },
+ {
+  "id": "ENG_CHUNK_1422",
+  "t": "Katno sien phi [verb]?",
+  "ex": "Katno sien ha ka taiew phi leit sha ka gym?",
+  "n": "Add the period (ha ka taiew, ha u bnai) to make it natural."
+ },
+ {
+  "id": "ENG_CHUNK_1423",
+  "t": "Aiu phi ju leh ha [time]?",
+  "ex": "Aiu phi ju leh ha ki weekend?",
+  "n": "ju marks the habit."
+ },
+ {
+  "id": "ENG_CHUNK_1424",
+  "t": "Aiu phin leh [time]?",
+  "ex": "Aiu phin leh kane ka weekend?",
+  "n": "phin is phi plus yn (future); plans take the future, not dang."
+ },
+ {
+  "id": "ENG_CHUNK_1425",
+  "t": "Ngan sa [verb]",
+  "ex": "Ngan sa leit ïohi ïa ka kmie jong nga kane ka weekend."
+ },
+ {
+  "id": "ENG_CHUNK_1426",
+  "t": "To ngi ïakynduh ha [place] ha [time]",
+  "ex": "To ngi ïakynduh ha ka café ha hynriew baje."
+ },
+ {
+  "id": "ENG_CHUNK_1427",
+  "t": "Ngin lah ban ïakynduh [time] pat?",
+  "ex": "Ngin lah ban ïakynduh lashai pat?",
+  "n": "pat (instead, rather) is my best guess here."
+ },
+ {
+  "id": "ENG_CHUNK_1428",
+  "t": "Map, ngam lah ban wan ha ka sngi [day]",
+  "ex": "Map, ngam lah ban wan ha ka sngi Saturday."
+ },
+ {
+  "id": "ENG_CHUNK_1429",
+  "t": "Nga don kam ha ka sngi [day]",
+  "ex": "Nga don kam ha ka sngi Monday. Bad ka sngi Tuesday?",
+  "n": "Literally 'I have work'."
+ },
+ {
+  "id": "ENG_CHUNK_1430",
+  "t": "[time] ka bha ïa phi?",
+  "ex": "Hynriew baje ka bha ïa phi?"
+ },
+ {
+  "id": "ENG_CHUNK_1431",
+  "t": "Ngan wan lait [number] minit",
+  "ex": "Map, ngan wan lait shiphew minit."
+ },
+ {
+  "id": "ENG_CHUNK_1432",
+  "t": "Mynta nga sngew [adjective]",
+  "ex": "Mynta nga sngew thait."
+ },
+ {
+  "id": "ENG_CHUNK_1433",
+  "t": "Kumno ka [person] jong phi?",
+  "ex": "Kumno ka kmie jong phi?",
+  "n": "u for a man: Kumno u kpa jong phi?"
+ },
+ {
+  "id": "ENG_CHUNK_1434",
+  "t": "U long u briew kumno, u [person]?",
+  "ex": "U long u briew kumno, u nonghikai thymmai jong phi?",
+  "n": "u briew (a person) keeps it about character; ka for a woman."
+ },
+ {
+  "id": "ENG_CHUNK_1435",
+  "t": "Ka [adjective] mynta",
+  "ex": "Ka khriat mynta.",
+  "n": "khriat is cold weather; ka is the dummy subject."
+ },
+ {
+  "id": "ENG_CHUNK_1436",
+  "t": "Kumno ka suiñbneng ha [place]?",
+  "ex": "Kumno ka suiñbneng ha Toronto?"
+ },
+ {
+  "id": "ENG_CHUNK_1437",
+  "t": "Kan slap [time]",
+  "ex": "Kan slap mynta ka sngi.",
+  "n": "kan is ka plus yn (future)."
+ },
+ {
+  "id": "ENG_CHUNK_1438",
+  "t": "Hello, nga dei [name]",
+  "ex": "Hello, nga dei ka Maria.",
+  "n": "Phone calls open with English hello; ka before a woman's name, u before a man's."
+ },
+ {
+  "id": "ENG_CHUNK_1439",
+  "t": "Ngan phone ïa phi [time]",
+  "ex": "Ngan phone ïa phi lashai."
+ },
+ {
+  "id": "ENG_CHUNK_1440",
+  "t": "Phah message ïa nga haba [clause]",
+  "ex": "Phah message ïa nga haba me poi ha ïing.",
+  "n": "haba is 'when'; me/pha to a friend."
+ },
+ {
+  "id": "ENG_CHUNK_1441",
+  "t": "Nga pyrkhat ba [clause]",
+  "ex": "Nga pyrkhat ba ka long ka jingpyrkhat kaba bha."
+ },
+ {
+  "id": "ENG_CHUNK_1442",
+  "t": "Nga mynjur bad [person]",
+  "ex": "Nga mynjur bad phi.",
+  "n": "mynjur (agree) is less certain; Ka dei, kumba phi ong (right, as you say) is a safe alternative."
+ },
+ {
+  "id": "ENG_CHUNK_1443",
+  "t": "[noun] ka kham bha ban [noun]",
+  "ex": "Ka sha ka kham bha ban ka kophi.",
+  "n": "kham X ban Y is the comparative: 'more X than Y'."
+ },
+ {
+  "id": "ENG_CHUNK_1444",
+  "t": "Ngam pat ju leit sha [place]",
+  "ex": "Ngam pat ju leit sha Australia.",
+  "n": "pat (yet) plus ju (ever) for 'never been' is my best guess."
+ },
+ {
+  "id": "ENG_CHUNK_1445",
+  "t": "[time] ba la leit, nga la [verb]",
+  "ex": "Ka weekend ba la leit, nga la leit ïohi ïa ki kmie ki kpa jong nga.",
+  "n": "ba la leit (that has gone) is 'last'."
+ },
+ {
+  "id": "ENG_CHUNK_1446",
+  "t": "Phi la sngewtynnad ha ka [noun]?",
+  "ex": "Phi la sngewtynnad ha ka weekend?",
+  "n": "No 'have a good X': ask if they enjoyed it."
+ },
+ {
+  "id": "ENG_CHUNK_1447",
+  "t": "Kumno ka la long ka [noun] jong phi?",
+  "ex": "Kumno ka la long ka weekend jong phi?",
+  "n": "la makes it past: 'how was'."
+ },
+ {
+  "id": "ENG_CHUNK_1448",
+  "t": "Nga dang [verb] mynta",
+  "ex": "Nga dang trei mynta.",
+  "n": "dang marks the ongoing action."
+ },
+ {
+  "id": "ENG_CHUNK_1449",
+  "t": "Map, hynrei [clause]",
+  "ex": "Map, hynrei ngam lah ban ïarap ïa phi."
+ },
+ {
+  "id": "ENG_CHUNK_1450",
+  "t": "Ngin sa ïakynduh ha ka sngi [day]",
+  "ex": "Ngin sa ïakynduh ha ka sngi Monday!"
+ }
+]

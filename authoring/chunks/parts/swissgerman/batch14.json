@@ -1,0 +1,538 @@
+[
+ {
+  "id": "ENG_CHUNK_1301",
+  "t": "Zerscht",
+  "ex": "Zerscht machsch d App uf. Dänn loggsch di ii.",
+  "n": "Takes the first slot, so the verb comes straight after."
+ },
+ {
+  "id": "ENG_CHUNK_1302",
+  "t": "oder",
+  "ex": "Tee oder Kafi?"
+ },
+ {
+  "id": "ENG_CHUNK_1303",
+  "t": "Ändlich / Schliesslich",
+  "ex": "Ändlich simmer im Hotel aacho.",
+  "n": "Ändlich = at long last (relief); Zum Schluss = as the last step in a list."
+ },
+ {
+  "id": "ENG_CHUNK_1304",
+  "t": "Dänn / Nächär",
+  "ex": "Dänn gönd Si bi de Bank rächts."
+ },
+ {
+  "id": "ENG_CHUNK_1305",
+  "t": "spöter",
+  "ex": "Ich ha grad kei Ziit. Chan ich di spöter aalüüte?"
+ },
+ {
+  "id": "ENG_CHUNK_1306",
+  "t": "Drum / Wäge dem",
+  "ex": "De Zug hät Verspätig gha. Drum han ich mini Sitzig verpasst.",
+  "n": "Drum takes the first slot, verb second."
+ },
+ {
+  "id": "ENG_CHUNK_1307",
+  "t": "Nächär / Dänach",
+  "ex": "Mer händ en Film gluegt. Nächär händ mer znacht ggässe."
+ },
+ {
+  "id": "ENG_CHUNK_1308",
+  "t": "und au",
+  "ex": "Ich bruuch Brot und au no chli Milch."
+ },
+ {
+  "id": "ENG_CHUNK_1309",
+  "t": "aber dänn",
+  "ex": "Ich ha wele usgaa, aber dänn hät s aagfange rägne."
+ },
+ {
+  "id": "ENG_CHUNK_1310",
+  "t": "Oder villicht",
+  "ex": "Gömmer a See. Oder villicht in Park?"
+ },
+ {
+  "id": "ENG_CHUNK_1311",
+  "t": "Am Aafang",
+  "ex": "Am Aafang isch Schwiizerdütsch mega schwiirig gsi für mich."
+ },
+ {
+  "id": "ENG_CHUNK_1312",
+  "t": "Item / Egal",
+  "ex": "Item, wie isch dis Wuchenänd gsi?",
+  "n": "Item is a very Swiss 'anyway, moving on'."
+ },
+ {
+  "id": "ENG_CHUNK_1313",
+  "t": "Irgendwänn / Eines Tages",
+  "ex": "Irgendwänn wott ich uf Japan."
+ },
+ {
+  "id": "ENG_CHUNK_1314",
+  "t": "Plötzlich / Uf eimal",
+  "ex": "Plötzlich isch s Liecht usgange."
+ },
+ {
+  "id": "ENG_CHUNK_1315",
+  "t": "Zum Glück",
+  "ex": "Ich ha mis Portemonnaie verlore, aber zum Glück hät s öpper gfunde."
+ },
+ {
+  "id": "ENG_CHUNK_1316",
+  "t": "ufstaa",
+  "ex": "Ich stah jede Tag am Sibni uf.",
+  "n": "Separable: ich stah ... uf."
+ },
+ {
+  "id": "ENG_CHUNK_1317",
+  "t": "verwache",
+  "ex": "Normalerwiis verwach ich am Sächsi.",
+  "n": "verwache is the Swiss word (Standard aufwachen)."
+ },
+ {
+  "id": "ENG_CHUNK_1318",
+  "t": "zmorge ässe",
+  "ex": "Ich ässe dihei zmorge.",
+  "n": "zmorge, zmittag, znacht = breakfast, lunch, dinner, used with ässe."
+ },
+ {
+  "id": "ENG_CHUNK_1319",
+  "t": "zmittag ässe",
+  "ex": "Gömmer zäme go zmittag ässe."
+ },
+ {
+  "id": "ENG_CHUNK_1320",
+  "t": "znacht ässe",
+  "ex": "Mer ässed am Sibni znacht.",
+  "n": "Znacht is dinner, not 'at night'."
+ },
+ {
+  "id": "ENG_CHUNK_1321",
+  "t": "dusche",
+  "ex": "Ich dusch jede Morge."
+ },
+ {
+  "id": "ENG_CHUNK_1322",
+  "t": "d Zää putze",
+  "ex": "Putz der d Zää, bevor d is Bett gasch.",
+  "n": "Dative reflexive: ich putz mer d Zää."
+ },
+ {
+  "id": "ENG_CHUNK_1323",
+  "t": "sich aalegge / sich aazieh",
+  "ex": "Ich leg mi aa und ässe zmorge.",
+  "n": "sich aalegge is the Swiss word for getting dressed."
+ },
+ {
+  "id": "ENG_CHUNK_1324",
+  "t": "is Bett gaa",
+  "ex": "Ich gang am Elfi is Bett."
+ },
+ {
+  "id": "ENG_CHUNK_1325",
+  "t": "go schaffe",
+  "ex": "Ich gang mit em Bus go schaffe.",
+  "n": "schaffe = work; 'go + verb' = go and do."
+ },
+ {
+  "id": "ENG_CHUNK_1326",
+  "t": "heigaa",
+  "ex": "Ich bi müed. Ich wott hei.",
+  "n": "'Ich wott hei' drops the verb, very common."
+ },
+ {
+  "id": "ENG_CHUNK_1327",
+  "t": "heicho",
+  "ex": "Ich chume am Sächsi hei."
+ },
+ {
+  "id": "ENG_CHUNK_1328",
+  "t": "go poschte",
+  "ex": "Gömmer am Samschtig go poschte.",
+  "n": "poschte = go shopping (Swiss)."
+ },
+ {
+  "id": "ENG_CHUNK_1329",
+  "t": "Fernseh luege",
+  "ex": "Am Abig lueg ich Fernseh.",
+  "n": "luege, not schaue."
+ },
+ {
+  "id": "ENG_CHUNK_1330",
+  "t": "Musig lose",
+  "ex": "Im Bus los ich Musig.",
+  "n": "lose = listen (Standard hören)."
+ },
+ {
+  "id": "ENG_CHUNK_1331",
+  "t": "d Ufzgi mache",
+  "ex": "Ich mach d Ufzgi nach de Schuel.",
+  "n": "Ufzgi = homework (Swiss)."
+ },
+ {
+  "id": "ENG_CHUNK_1332",
+  "t": "znacht choche",
+  "ex": "Ich choch jede Abig znacht."
+ },
+ {
+  "id": "ENG_CHUNK_1333",
+  "t": "go spaziere",
+  "ex": "Gömmer im Park go spaziere."
+ },
+ {
+  "id": "ENG_CHUNK_1334",
+  "t": "[Sport] spile / go [Sport]",
+  "ex": "Ich spile am Samschtig Fuessball."
+ },
+ {
+  "id": "ENG_CHUNK_1335",
+  "t": "iichaufe / go poschte",
+  "ex": "Ich gang am Mäntig go iichaufe."
+ },
+ {
+  "id": "ENG_CHUNK_1336",
+  "t": "d Wösch mache / wäsche",
+  "ex": "Ich mach am Sunntig d Wösch."
+ },
+ {
+  "id": "ENG_CHUNK_1337",
+  "t": "putze",
+  "ex": "Mer putzed jede Samschtig d Wohnig."
+ },
+ {
+  "id": "ENG_CHUNK_1338",
+  "t": "d Händ wäsche",
+  "ex": "Wäsch der d Händ vor em Znacht."
+ },
+ {
+  "id": "ENG_CHUNK_1339",
+  "t": "Kafi mache",
+  "ex": "Ich mach es Kafi. Wotsch au eis?"
+ },
+ {
+  "id": "ENG_CHUNK_1340",
+  "t": "mit em Bus gaa / de Bus näh",
+  "ex": "Ich gang mit em Bus i d Schuel."
+ },
+ {
+  "id": "ENG_CHUNK_1341",
+  "t": "in Bus iistiige",
+  "ex": "Stiig da in Bus ii und bim Park wider uus."
+ },
+ {
+  "id": "ENG_CHUNK_1342",
+  "t": "us em Bus uusstiige",
+  "ex": "Stiig bi de nächschte Haltestell uus."
+ },
+ {
+  "id": "ENG_CHUNK_1343",
+  "t": "es Billett chaufe",
+  "ex": "Wo chan ich es Billett chaufe?",
+  "n": "Billett = ticket (Standard Fahrkarte)."
+ },
+ {
+  "id": "ENG_CHUNK_1344",
+  "t": "es Auto miete",
+  "ex": "Mer wänd es Auto für drüü Täg miete."
+ },
+ {
+  "id": "ENG_CHUNK_1345",
+  "t": "über d Strass gaa",
+  "ex": "Pass uf, wänn d über d Strass gasch."
+ },
+ {
+  "id": "ENG_CHUNK_1346",
+  "t": "links abbiege",
+  "ex": "Gönd Si bi de Bank links."
+ },
+ {
+  "id": "ENG_CHUNK_1347",
+  "t": "es Foti mache",
+  "ex": "Dörf ich es Foti mache?",
+  "n": "Asking permission: dörf, not chan."
+ },
+ {
+  "id": "ENG_CHUNK_1348",
+  "t": "Hunger ha",
+  "ex": "Ich ha Hunger. Gömmer go ässe."
+ },
+ {
+  "id": "ENG_CHUNK_1349",
+  "t": "Durscht ha",
+  "ex": "Ich ha Durscht. Hät s Wasser?"
+ },
+ {
+  "id": "ENG_CHUNK_1350",
+  "t": "müed sii",
+  "ex": "Ich bi müed. Ich gang is Bett."
+ },
+ {
+  "id": "ENG_CHUNK_1351",
+  "t": "z spaat cho",
+  "ex": "Mach vorwärts, mer chömed z spaat!",
+  "n": "vorwärts mache = hurry up."
+ },
+ {
+  "id": "ENG_CHUNK_1352",
+  "t": "pünktlich sii",
+  "ex": "De Zug isch hüt pünktlich."
+ },
+ {
+  "id": "ENG_CHUNK_1353",
+  "t": "es schön ha",
+  "ex": "Mer händ s mega schön gha am See."
+ },
+ {
+  "id": "ENG_CHUNK_1354",
+  "t": "Chopfweh ha",
+  "ex": "Ich ha Chopfweh. Häsch e Tablette?"
+ },
+ {
+  "id": "ENG_CHUNK_1355",
+  "t": "Fieber ha",
+  "ex": "Min Bueb hät Fieber."
+ },
+ {
+  "id": "ENG_CHUNK_1356",
+  "t": "es Medikament näh",
+  "ex": "Nämed Si das Medikament zweimal am Tag."
+ },
+ {
+  "id": "ENG_CHUNK_1357",
+  "t": "telefoniere / aalüüte",
+  "ex": "Ich mues schnäll telefoniere."
+ },
+ {
+  "id": "ENG_CHUNK_1358",
+  "t": "e Nachricht schicke",
+  "ex": "Ich schick der spöter e Nachricht.",
+  "n": "A text is s SMS (neuter) or just 'Ich schriib der'."
+ },
+ {
+  "id": "ENG_CHUNK_1359",
+  "t": "s Handy lade",
+  "ex": "Chan ich da mis Handy lade?"
+ },
+ {
+  "id": "ENG_CHUNK_1360",
+  "t": "Dütsch lerne",
+  "ex": "Ich lerne Dütsch für min Job."
+ },
+ {
+  "id": "ENG_CHUNK_1361",
+  "t": "Ich bi de/d [Name] / Min Name isch [Name]",
+  "ex": "Hoi, ich bi de Carlos.",
+  "n": "Ich bi de/d + name is the everyday intro; Min Name isch ... is formal."
+ },
+ {
+  "id": "ENG_CHUNK_1362",
+  "t": "Ich chume us [Ort]",
+  "ex": "Ich chume us Mexiko."
+ },
+ {
+  "id": "ENG_CHUNK_1363",
+  "t": "Ich wohne z [Ort]",
+  "ex": "Ich wohne z Winterthur.",
+  "n": "z + town is typically Swiss: z Züri, z Bern."
+ },
+ {
+  "id": "ENG_CHUNK_1364",
+  "t": "Ich bi [Zahl]",
+  "ex": "Ich bi drissgi.",
+  "n": "Ages often take -i: drissgi, föifzgi. Also: Ich bi drissg Jahr alt."
+ },
+ {
+  "id": "ENG_CHUNK_1365",
+  "t": "Ich bi [Bruef]",
+  "ex": "Ich bi Lehrer.",
+  "n": "No article before the job."
+ },
+ {
+  "id": "ENG_CHUNK_1366",
+  "t": "Das isch min/mini [Person]",
+  "ex": "Das isch mini Frau, d Julia."
+ },
+ {
+  "id": "ENG_CHUNK_1367",
+  "t": "Reded Si [Sprach]? / Redsch [Sprach]?",
+  "ex": "Exgüsi, reded Si Änglisch?"
+ },
+ {
+  "id": "ENG_CHUNK_1368",
+  "t": "Ich red es bitzeli [Sprach]",
+  "ex": "Ich red es bitzeli Dütsch."
+ },
+ {
+  "id": "ENG_CHUNK_1369",
+  "t": "Ich lerne [Sprach]",
+  "ex": "Ich lerne Dütsch i de Abigschuel."
+ },
+ {
+  "id": "ENG_CHUNK_1370",
+  "t": "Wie seit mer [Wort]?",
+  "ex": "Wie seit mer «thank you» uf Schwiizerdütsch?"
+ },
+ {
+  "id": "ENG_CHUNK_1371",
+  "t": "Was heisst [Wort]?",
+  "ex": "Was heisst «poschte»?"
+ },
+ {
+  "id": "ENG_CHUNK_1372",
+  "t": "Ich verstaa [Nomen] nöd",
+  "ex": "Ich verstaa das Wort nöd.",
+  "n": "nöd comes after the object."
+ },
+ {
+  "id": "ENG_CHUNK_1373",
+  "t": "Es isch [Ziit]",
+  "ex": "Es isch drüü Uhr.",
+  "n": "Often just: Es isch drüü."
+ },
+ {
+  "id": "ENG_CHUNK_1374",
+  "t": "Ich ha am [Datum] Geburtstag",
+  "ex": "Ich ha am dritte Mai Geburtstag.",
+  "n": "Swiss say 'Ich ha Geburtstag', not 'Min Geburtstag isch'."
+ },
+ {
+  "id": "ENG_CHUNK_1375",
+  "t": "Wänn isch [Nomen]?",
+  "ex": "Wänn häsch du Geburtstag?"
+ },
+ {
+  "id": "ENG_CHUNK_1376",
+  "t": "Um wievil Uhr isch [Nomen]? / Wänn fangt [Nomen] aa?",
+  "ex": "Wänn fangt de Film aa?"
+ },
+ {
+  "id": "ENG_CHUNK_1377",
+  "t": "Wänn macht [Ort] uf?",
+  "ex": "Wänn macht d Bank uf?"
+ },
+ {
+  "id": "ENG_CHUNK_1378",
+  "t": "Was choscht [Nomen]?",
+  "ex": "Was choscht das T-Shirt?"
+ },
+ {
+  "id": "ENG_CHUNK_1379",
+  "t": "Das macht [Priis], bitte",
+  "ex": "Das macht zwölf Franke, bitte.",
+  "n": "Casual: Stutz = franc."
+ },
+ {
+  "id": "ENG_CHUNK_1380",
+  "t": "Chan ich mit [Zahligsart] zahle?",
+  "ex": "Chan ich mit Charte zahle?",
+  "n": "Also common: mit Twint (Swiss payment app)."
+ },
+ {
+  "id": "ENG_CHUNK_1381",
+  "t": "Händ Si [Nomen]?",
+  "ex": "Händ Si Milch?"
+ },
+ {
+  "id": "ENG_CHUNK_1382",
+  "t": "Es isch chli z [Adjektiv]",
+  "ex": "Es isch chli z gross. Händ Si s au chliiner?"
+ },
+ {
+  "id": "ENG_CHUNK_1383",
+  "t": "Chönnt ich bitte [Nomen] ha?",
+  "ex": "Chönnt ich bitte es Kafi ha?"
+ },
+ {
+  "id": "ENG_CHUNK_1384",
+  "t": "Ich hett gern [Nomen], bitte",
+  "ex": "Ich hett gern es Sandwich, bitte."
+ },
+ {
+  "id": "ENG_CHUNK_1385",
+  "t": "Ich nimm [Nomen]",
+  "ex": "Ich nimm de Fisch, bitte."
+ },
+ {
+  "id": "ENG_CHUNK_1386",
+  "t": "Es Glas [Nomen], bitte",
+  "ex": "Es Glas Wasser, bitte.",
+  "n": "Tap water: es Glas Hahnewasser."
+ },
+ {
+  "id": "ENG_CHUNK_1387",
+  "t": "Möchted Si no [Nomen]?",
+  "ex": "Möchted Si no chli Riis?"
+ },
+ {
+  "id": "ENG_CHUNK_1388",
+  "t": "Hetted Si Luscht, [z + Infinitiv]?",
+  "ex": "Hetted Si Luscht, a mis Fäscht z cho?",
+  "n": "du form: Häsch Luscht, ... z ...?"
+ },
+ {
+  "id": "ENG_CHUNK_1389",
+  "t": "Wo isch [Ort]?",
+  "ex": "Wo isch de Bahnhof?"
+ },
+ {
+  "id": "ENG_CHUNK_1390",
+  "t": "Wo isch de/d nächscht [Ort]?",
+  "ex": "Wo isch de nächscht Bankomat?",
+  "n": "Bankomat = ATM."
+ },
+ {
+  "id": "ENG_CHUNK_1391",
+  "t": "Bi [Ort] links",
+  "ex": "Gönd Si bi de Chile links."
+ },
+ {
+  "id": "ENG_CHUNK_1392",
+  "t": "Es isch uf de [linke/rächte] Siite",
+  "ex": "D Bank isch uf de linke Siite.",
+  "n": "Short: D Bank isch links."
+ },
+ {
+  "id": "ENG_CHUNK_1393",
+  "t": "Es isch näbe [Ort]",
+  "ex": "De Beck isch näbe de Bank.",
+  "n": "de Beck = the bakery (and the baker)."
+ },
+ {
+  "id": "ENG_CHUNK_1394",
+  "t": "Es Billett nach [Ort], bitte",
+  "ex": "Es Billett nach Luzern, bitte.",
+  "n": "Expect the reply: Einfach oder retour?"
+ },
+ {
+  "id": "ENG_CHUNK_1395",
+  "t": "Wele Bus gaat zum/nach [Ort]?",
+  "ex": "Wele Bus gaat zum Flughafe?"
+ },
+ {
+  "id": "ENG_CHUNK_1396",
+  "t": "Wänn gaat de nächscht [Nomen] nach [Ort]?",
+  "ex": "Wänn gaat de nächscht Zug nach Basel?"
+ },
+ {
+  "id": "ENG_CHUNK_1397",
+  "t": "Chönd Si mi zum/nach [Ort] bringe?",
+  "ex": "Chönd Si mi bitte zum Flughafe bringe?"
+ },
+ {
+  "id": "ENG_CHUNK_1398",
+  "t": "Mer bruucht öppe [Duur]",
+  "ex": "Mit em Bus bruucht mer öppe zwänzg Minute."
+ },
+ {
+  "id": "ENG_CHUNK_1399",
+  "t": "Ich hett gern es Zimmer für [Zahl] Nächt",
+  "ex": "Ich hett gern es Zimmer für zwei Nächt, bitte."
+ },
+ {
+  "id": "ENG_CHUNK_1400",
+  "t": "[Nomen] gaat nöd",
+  "ex": "D Dusche gaat nöd.",
+  "n": "'gaat nöd' is the everyday way to say something is broken."
+ }
+]

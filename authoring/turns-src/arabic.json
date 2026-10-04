@@ -1,0 +1,144 @@
+[
+ {
+  "time": "past",
+  "aspect": "simple",
+  "form": "ذهبت",
+  "alt": "",
+  "status": "form",
+  "marker": [
+   "ذهبت"
+  ],
+  "gloss": "I went",
+  "note": "A different verb shape: the -tu ending carries both 'I' and the past, so no pronoun is needed.",
+  "translit": "dhahabtu",
+  "markerTr": [
+   "dhahabtu"
+  ]
+ },
+ {
+  "time": "past",
+  "aspect": "progressive",
+  "form": "كنت ذاهبًا",
+  "alt": "كنت أذهب",
+  "status": "form",
+  "marker": [
+   "كنت",
+   "ذاهبًا"
+  ],
+  "gloss": "I was going",
+  "note": "كنت (kuntu, I was) plus the participle; kuntu with the present verb means 'I used to go'.",
+  "translit": "kuntu dhaahiban",
+  "markerTr": [
+   "kuntu",
+   "dhaahiban"
+  ]
+ },
+ {
+  "time": "past",
+  "aspect": "perfect",
+  "form": "كنت قد ذهبت",
+  "alt": "",
+  "status": "form",
+  "marker": [
+   "كنت قد ذهبت"
+  ],
+  "gloss": "I had gone",
+  "note": "kuntu + qad + past verb. Mostly written; in speech the plain past usually does the job.",
+  "translit": "kuntu qad dhahabtu",
+  "markerTr": [
+   "kuntu qad dhahabtu"
+  ]
+ },
+ {
+  "time": "present",
+  "aspect": "simple",
+  "form": "أذهب",
+  "alt": "",
+  "status": "form",
+  "marker": [],
+  "gloss": "I go",
+  "note": "The a- prefix marks 'I' on the present verb; it covers habits and plans.",
+  "translit": "adh-hab",
+  "markerTr": []
+ },
+ {
+  "time": "present",
+  "aspect": "progressive",
+  "form": "أنا ذاهب",
+  "alt": "أذهب الآن",
+  "status": "form",
+  "marker": [
+   "ذاهب"
+  ],
+  "gloss": "I am going",
+  "note": "No 'am': أنا plus the participle ذاهب means 'I'm on my way'. Levantine: أنا رايح.",
+  "translit": "ana dhaahib",
+  "markerTr": [
+   "dhaahib"
+  ]
+ },
+ {
+  "time": "present",
+  "aspect": "perfect",
+  "form": "قد ذهبت",
+  "alt": "ذهبت",
+  "status": "form",
+  "marker": [
+   "قد ذهبت"
+  ],
+  "gloss": "I have gone",
+  "note": "qad before the past verb means 'already'; without it the plain past covers 'have gone'.",
+  "translit": "qad dhahabtu",
+  "markerTr": [
+   "qad dhahabtu"
+  ]
+ },
+ {
+  "time": "future",
+  "aspect": "simple",
+  "form": "سأذهب",
+  "alt": "سوف أذهب",
+  "status": "form",
+  "marker": [
+   "سأذهب"
+  ],
+  "gloss": "I will go",
+  "note": "The prefix sa- (or the separate word sawfa) makes the present verb future. Levantine uses رح.",
+  "translit": "sa-adh-hab",
+  "markerTr": [
+   "sa-adh-hab"
+  ]
+ },
+ {
+  "time": "future",
+  "aspect": "progressive",
+  "form": "سأكون ذاهبًا",
+  "alt": "سأذهب",
+  "status": "none",
+  "marker": [
+   "سأكون ذاهبًا"
+  ],
+  "gloss": "I will be going",
+  "note": "sa-akuun + participle is grammatical but rarely said; people just use sa-adh-hab.",
+  "translit": "sa-akuun dhaahiban",
+  "markerTr": [
+   "sa-akuun dhaahiban"
+  ]
+ },
+ {
+  "time": "future",
+  "aspect": "perfect",
+  "form": "سأكون قد ذهبت",
+  "alt": "",
+  "status": "form",
+  "marker": [
+   "سأكون قد ذهبت"
+  ],
+  "gloss": "I will have gone",
+  "note": "A real MSA future perfect: sa-akuun + qad + past verb. It appears mainly in writing.",
+  "translit": "sa-akuun qad dhahabtu",
+  "markerTr": [
+   "sa-akuun qad dhahabtu"
+  ]
+ }
+]

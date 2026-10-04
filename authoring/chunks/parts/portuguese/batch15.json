@@ -1,0 +1,279 @@
+[
+ {
+  "id": "ENG_CHUNK_1401",
+  "t": "Estou com [substantivo]",
+  "ex": "Estou com gripe.",
+  "n": "Illnesses and symptoms take 'estar com': estou com tosse, com febre."
+ },
+ {
+  "id": "ENG_CHUNK_1402",
+  "t": "Meu/Minha [parte do corpo] está doendo / Estou com dor de/no [parte do corpo]",
+  "ex": "Minha cabeça está doendo. / Estou com dor de cabeça.",
+  "n": "Portuguese says 'my head hurts' or 'I'm with head pain': dor de cabeça, dor nas costas."
+ },
+ {
+  "id": "ENG_CHUNK_1403",
+  "t": "Preciso de um remédio para [substantivo]",
+  "ex": "Preciso de um remédio para tosse."
+ },
+ {
+  "id": "ENG_CHUNK_1404",
+  "t": "Perdi meu/minha [substantivo]",
+  "ex": "Perdi meu passaporte.",
+  "n": "Simple past 'perdi', not a perfect tense."
+ },
+ {
+  "id": "ENG_CHUNK_1405",
+  "t": "Roubaram meu/minha [substantivo]",
+  "ex": "Roubaram minha carteira no trem.",
+  "n": "Impersonal 3rd plural 'roubaram' is the natural way; 'Alguém roubou' is fine too."
+ },
+ {
+  "id": "ENG_CHUNK_1406",
+  "t": "Gosto de [substantivo]",
+  "ex": "Gosto de pizza.",
+  "n": "'Gostar' always takes 'de': gosto de pizza, never 'gosto pizza'."
+ },
+ {
+  "id": "ENG_CHUNK_1407",
+  "t": "Tenho interesse em [substantivo] / Me interesso por [substantivo]",
+  "ex": "Me interesso por história.",
+  "n": "'Estou interessado em' also exists; 'me interesso por' sounds most natural."
+ },
+ {
+  "id": "ENG_CHUNK_1408",
+  "t": "Não gosto de [substantivo]",
+  "ex": "Não gosto de café."
+ },
+ {
+  "id": "ENG_CHUNK_1409",
+  "t": "Você gosta de [substantivo]?",
+  "ex": "Você gosta de comida italiana?",
+  "n": "Short answer repeats the verb: Gosto! / Não gosto. No 'sim' needed."
+ },
+ {
+  "id": "ENG_CHUNK_1410",
+  "t": "Qual é o seu/sua [substantivo] favorito/a? / preferido/a?",
+  "ex": "Qual é a sua cor favorita?"
+ },
+ {
+  "id": "ENG_CHUNK_1411",
+  "t": "Meu/Minha [substantivo] favorito/a é [substantivo]",
+  "ex": "Minha cor favorita é azul."
+ },
+ {
+  "id": "ENG_CHUNK_1412",
+  "t": "Quero [infinitivo]",
+  "ex": "Quero ir para casa."
+ },
+ {
+  "id": "ENG_CHUNK_1413",
+  "t": "Eu gostaria de [infinitivo] / Queria [infinitivo]",
+  "ex": "Eu gostaria de reservar uma mesa."
+ },
+ {
+  "id": "ENG_CHUNK_1414",
+  "t": "Preciso [infinitivo]",
+  "ex": "Preciso ir ao banco.",
+  "n": "Before an infinitive, 'precisar' usually drops 'de' in speech: preciso ir."
+ },
+ {
+  "id": "ENG_CHUNK_1415",
+  "t": "Tenho que [infinitivo]",
+  "ex": "Tenho que trabalhar amanhã."
+ },
+ {
+  "id": "ENG_CHUNK_1416",
+  "t": "Preciso de [substantivo]",
+  "ex": "Preciso de um táxi.",
+  "n": "Before a noun, keep 'de': preciso de ajuda."
+ },
+ {
+  "id": "ENG_CHUNK_1417",
+  "t": "Posso [infinitivo]?",
+  "ex": "Posso sentar aqui?"
+ },
+ {
+  "id": "ENG_CHUNK_1418",
+  "t": "Você pode [infinitivo], por favor? / Pode [infinitivo]?",
+  "ex": "Você pode me ajudar, por favor?"
+ },
+ {
+  "id": "ENG_CHUNK_1419",
+  "t": "Não consigo [infinitivo] / Não sei [infinitivo]",
+  "ex": "Não sei nadar.",
+  "n": "Learned skills use 'saber': não sei nadar. 'Não consigo' = I'm unable (right now)."
+ },
+ {
+  "id": "ENG_CHUNK_1420",
+  "t": "Vamos [infinitivo]",
+  "ex": "Vamos à praia!"
+ },
+ {
+  "id": "ENG_CHUNK_1421",
+  "t": "Não esquece de [infinitivo]",
+  "ex": "Não esquece de levar as chaves.",
+  "n": "Written/formal: Não se esqueça de..."
+ },
+ {
+  "id": "ENG_CHUNK_1422",
+  "t": "Com que frequência você [verbo]? / Você [verbo] sempre?",
+  "ex": "Com que frequência você vai à academia?",
+  "n": "In speech: 'Você vai sempre à academia?' or 'Quantas vezes por semana...?'."
+ },
+ {
+  "id": "ENG_CHUNK_1423",
+  "t": "O que você costuma fazer [tempo]?",
+  "ex": "O que você costuma fazer no fim de semana?",
+  "n": "'Costumar + infinitive' = usually do."
+ },
+ {
+  "id": "ENG_CHUNK_1424",
+  "t": "O que você vai fazer [tempo]?",
+  "ex": "O que você vai fazer nesse fim de semana?"
+ },
+ {
+  "id": "ENG_CHUNK_1425",
+  "t": "Vou [infinitivo]",
+  "ex": "Vou visitar minha tia nesse fim de semana.",
+  "n": "'Ir + infinitive' is the everyday future; the synthetic future (visitarei) sounds formal."
+ },
+ {
+  "id": "ENG_CHUNK_1426",
+  "t": "Vamos nos encontrar no/na [lugar] às [hora] / A gente se encontra no/na [lugar] às [hora]",
+  "ex": "A gente se encontra no café às seis."
+ },
+ {
+  "id": "ENG_CHUNK_1427",
+  "t": "A gente pode se encontrar [tempo]?",
+  "ex": "A gente pode se encontrar amanhã, então?",
+  "n": "No direct 'instead'; 'então' or 'em vez disso' carries it."
+ },
+ {
+  "id": "ENG_CHUNK_1428",
+  "t": "Desculpa, não posso ir no/na [dia]",
+  "ex": "Desculpa, não posso ir no sábado.",
+  "n": "'Ir' where English says 'come': Brazilians say 'não posso ir' to your event."
+ },
+ {
+  "id": "ENG_CHUNK_1429",
+  "t": "Estou ocupado/a no/na [dia] / Tenho compromisso no/na [dia]",
+  "ex": "Na segunda eu estou ocupado. Que tal terça?"
+ },
+ {
+  "id": "ENG_CHUNK_1430",
+  "t": "[hora] está bom para você? / [hora] fica bom pra você?",
+  "ex": "Seis horas fica bom pra você?"
+ },
+ {
+  "id": "ENG_CHUNK_1431",
+  "t": "Vou atrasar uns [número] minutos",
+  "ex": "Desculpa, vou atrasar uns dez minutos.",
+  "n": "'Uns' = about; Brazilians rarely give exact lateness."
+ },
+ {
+  "id": "ENG_CHUNK_1432",
+  "t": "Estou me sentindo [adjetivo] hoje",
+  "ex": "Estou me sentindo cansado hoje."
+ },
+ {
+  "id": "ENG_CHUNK_1433",
+  "t": "Como vai o/a seu/sua [pessoa]? / E o/a seu/sua [pessoa], tudo bem?",
+  "ex": "Como vai a sua mãe?"
+ },
+ {
+  "id": "ENG_CHUNK_1434",
+  "t": "Como é o/a [pessoa]?",
+  "ex": "Como é o seu professor novo?",
+  "n": "'Como é' = what is he like; 'como está' = how is he doing."
+ },
+ {
+  "id": "ENG_CHUNK_1435",
+  "t": "Está [adjetivo] hoje / Hoje está [adjetivo]",
+  "ex": "Hoje está frio.",
+  "n": "Weather uses 'estar' or 'fazer': está frio, faz frio."
+ },
+ {
+  "id": "ENG_CHUNK_1436",
+  "t": "Como está o tempo em [lugar]?",
+  "ex": "Como está o tempo em Curitiba?"
+ },
+ {
+  "id": "ENG_CHUNK_1437",
+  "t": "Vai chover [tempo]",
+  "ex": "Vai chover hoje à tarde."
+ },
+ {
+  "id": "ENG_CHUNK_1438",
+  "t": "Alô, aqui é [nome] / Oi, é [nome]",
+  "ex": "Alô, aqui é a Maria.",
+  "n": "'Alô' is only for answering or opening a call."
+ },
+ {
+  "id": "ENG_CHUNK_1439",
+  "t": "Te ligo [tempo]",
+  "ex": "Te ligo amanhã.",
+  "n": "Clitic first in speech: te ligo, me liga."
+ },
+ {
+  "id": "ENG_CHUNK_1440",
+  "t": "Me manda uma mensagem quando [oração]",
+  "ex": "Me manda uma mensagem quando chegar em casa.",
+  "n": "'Quando' + future subjunctive for future events: quando chegar, quando puder."
+ },
+ {
+  "id": "ENG_CHUNK_1441",
+  "t": "Acho que [oração]",
+  "ex": "Acho que é uma boa ideia."
+ },
+ {
+  "id": "ENG_CHUNK_1442",
+  "t": "Concordo com [pessoa]",
+  "ex": "Concordo com você."
+ },
+ {
+  "id": "ENG_CHUNK_1443",
+  "t": "[substantivo] é melhor que [substantivo]",
+  "ex": "Chá é melhor que café.",
+  "n": "'Melhor', not 'mais bom'. 'Melhor do que' is also common."
+ },
+ {
+  "id": "ENG_CHUNK_1444",
+  "t": "Nunca fui a/para [lugar] / Nunca estive em [lugar]",
+  "ex": "Nunca fui para a Austrália.",
+  "n": "Portuguese uses simple past: nunca fui, not a perfect tense."
+ },
+ {
+  "id": "ENG_CHUNK_1445",
+  "t": "[tempo] passado/a, eu [verbo no pretérito]",
+  "ex": "No fim de semana passado, eu visitei meus avós.",
+  "n": "'Passado' follows the noun and agrees: semana passada, ano passado."
+ },
+ {
+  "id": "ENG_CHUNK_1446",
+  "t": "Foi bom o/a seu/sua [substantivo]? / Aproveitou o/a [substantivo]?",
+  "ex": "Foi bom o seu fim de semana?"
+ },
+ {
+  "id": "ENG_CHUNK_1447",
+  "t": "Como foi o/a seu/sua [substantivo]?",
+  "ex": "Como foi o seu fim de semana?"
+ },
+ {
+  "id": "ENG_CHUNK_1448",
+  "t": "Estou [verbo no gerúndio] agora",
+  "ex": "Estou trabalhando agora.",
+  "n": "Brazil uses estar + gerund (trabalhando); 'estar a trabalhar' is Portugal."
+ },
+ {
+  "id": "ENG_CHUNK_1449",
+  "t": "Desculpa, mas [oração] / Sinto muito, mas [oração]",
+  "ex": "Sinto muito, mas não posso te ajudar."
+ },
+ {
+  "id": "ENG_CHUNK_1450",
+  "t": "Até [dia]!",
+  "ex": "Até segunda!",
+  "n": "Days: segunda, terça... just 'até' + day, no 'na'."
+ }
+]

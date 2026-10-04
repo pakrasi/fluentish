@@ -1,0 +1,516 @@
+[
+ {
+  "id": "ENG_CHUNK_0901",
+  "t": "Por acaso você teria [substantivo]? / Você não teria [substantivo]?",
+  "ex": "Por acaso você teria um carregador de celular para me emprestar?"
+ },
+ {
+  "id": "ENG_CHUNK_0902",
+  "t": "Preferia que você não [verbo no subj.]",
+  "ex": "Preferia que você não fumasse no carro.",
+  "n": "Imperfect subjunctive after preferia que: fumasse, fizesse."
+ },
+ {
+  "id": "ENG_CHUNK_0903",
+  "t": "Queria que você parasse de [verbo] / Bem que você podia não [verbo]",
+  "ex": "Queria que você parasse de deixar os sapatos no corredor."
+ },
+ {
+  "id": "ENG_CHUNK_0904",
+  "t": "Se dependesse de mim, eu [verbo no condicional]",
+  "ex": "Se dependesse de mim, eu fecharia o escritório às sextas."
+ },
+ {
+  "id": "ENG_CHUNK_0905",
+  "t": "Troco [substantivo] por [substantivo] qualquer dia",
+  "ex": "Troco uma festa grande por uma noite tranquila em casa qualquer dia.",
+  "n": "Word order flips: 'troco X por Y' = I'd give up X for Y."
+ },
+ {
+  "id": "ENG_CHUNK_0906",
+  "t": "Nada como [substantivo] / Nada supera [substantivo]",
+  "ex": "Nada como um banho quente depois de uma corrida longa."
+ },
+ {
+  "id": "ENG_CHUNK_0907",
+  "t": "Estou mais inclinado/a para [substantivo] / Estou pendendo para [substantivo]",
+  "ex": "Para falar a verdade, estou mais inclinado para o apartamento mais barato."
+ },
+ {
+  "id": "ENG_CHUNK_0908",
+  "t": "Estou dividido/a entre [substantivo] e [substantivo]",
+  "ex": "Estou dividido entre o sofá azul e o cinza."
+ },
+ {
+  "id": "ENG_CHUNK_0909",
+  "t": "Estou repensando [substantivo] / Estou em dúvida sobre [substantivo]",
+  "ex": "Estou em dúvida sobre esse emprego novo."
+ },
+ {
+  "id": "ENG_CHUNK_0910",
+  "t": "Não fica procurando pelo em ovo com [substantivo] / Não pensa muito em [substantivo]",
+  "ex": "Ele não respondeu? Não fica pensando muito nisso.",
+  "n": "'Procurar pelo em ovo' = overanalyse, find problems where there are none."
+ },
+ {
+  "id": "ENG_CHUNK_0911",
+  "t": "Você acabou [verbo no gerúndio]? / No fim, você [verbo]?",
+  "ex": "No fim, você acabou indo ao casamento?",
+  "n": "'Acabar' + gerund = end up doing."
+ },
+ {
+  "id": "ENG_CHUNK_0912",
+  "t": "Não consegui [verbo] ainda / Não deu tempo de [verbo]",
+  "ex": "Desculpa, não deu tempo de ler o seu e-mail."
+ },
+ {
+  "id": "ENG_CHUNK_0913",
+  "t": "Tem um [substantivo] rolando por aí",
+  "ex": "Metade do escritório faltou. Tem uma virose rolando por aí.",
+  "n": "'Virose' is the Brazilian catch-all for 'a bug'."
+ },
+ {
+  "id": "ENG_CHUNK_0914",
+  "t": "Não consigo de jeito nenhum [verbo] / Por mais que eu tente, não consigo [verbo]",
+  "ex": "Não consigo de jeito nenhum fazer essa impressora funcionar."
+ },
+ {
+  "id": "ENG_CHUNK_0915",
+  "t": "Não nasci para [substantivo] / Não levo jeito para [substantivo]",
+  "ex": "Dei aula por um ano, mas não levo jeito para isso."
+ },
+ {
+  "id": "ENG_CHUNK_0916",
+  "t": "Estou atolado/a de [substantivo] / Estou até o pescoço de [substantivo]",
+  "ex": "A gente pode falar amanhã? Estou atolado de trabalho hoje."
+ },
+ {
+  "id": "ENG_CHUNK_0917",
+  "t": "Estou morrendo de medo de [verbo] / Só de pensar em [verbo] já me dá desânimo",
+  "ex": "Só de pensar em voltar a trabalhar na segunda já me dá desânimo."
+ },
+ {
+  "id": "ENG_CHUNK_0918",
+  "t": "Não tenho coragem de [verbo]",
+  "ex": "Não tenho coragem de jogar fora as cartas antigas dele."
+ },
+ {
+  "id": "ENG_CHUNK_0919",
+  "t": "Estou tentado/a a [verbo] / Dá vontade de [verbo]",
+  "ex": "Dá vontade de pedir uma pizza e não cozinhar."
+ },
+ {
+  "id": "ENG_CHUNK_0920",
+  "t": "Estou decidido/a a [verbo]",
+  "ex": "Estou decidido a terminar essa maratona, custe o que custar."
+ },
+ {
+  "id": "ENG_CHUNK_0921",
+  "t": "Não tenho outra escolha a não ser [verbo] / Não tenho saída, vou ter que [verbo]",
+  "ex": "O aluguel subiu de novo, então não tenho escolha a não ser me mudar."
+ },
+ {
+  "id": "ENG_CHUNK_0922",
+  "t": "Não há nada que eu possa fazer sobre [substantivo] / Não depende de mim",
+  "ex": "Não há nada que eu possa fazer sobre o atraso, desculpa."
+ },
+ {
+  "id": "ENG_CHUNK_0923",
+  "t": "Não tenho coragem de [verbo] / Não tenho estômago para [verbo]",
+  "ex": "Não tenho coragem de dizer que a comida dele é ruim.",
+  "n": "Same Portuguese as 'can't bring myself'; context shows it's about sparing him."
+ },
+ {
+  "id": "ENG_CHUNK_0924",
+  "t": "A última coisa que eu quero é [verbo]",
+  "ex": "A última coisa que eu quero é chatear os seus pais."
+ },
+ {
+  "id": "ENG_CHUNK_0925",
+  "t": "Não estou em condições de [verbo] / Não cabe a mim [verbo]",
+  "ex": "Infelizmente, não estou em condições de aprovar isso."
+ },
+ {
+  "id": "ENG_CHUNK_0926",
+  "t": "Não cabe a mim [verbo] / Não sou eu quem deve [verbo]",
+  "ex": "Não cabe a mim dizer como ela deve criar os filhos."
+ },
+ {
+  "id": "ENG_CHUNK_0927",
+  "t": "Eu estaria mentindo se dissesse que [oração]",
+  "ex": "Eu estaria mentindo se dissesse que não estava nervoso."
+ },
+ {
+  "id": "ENG_CHUNK_0928",
+  "t": "Odeio ter que dizer isso, mas [oração] / Sinto dizer, mas [oração]",
+  "ex": "Odeio ter que dizer isso, mas acho que a gente se perdeu."
+ },
+ {
+  "id": "ENG_CHUNK_0929",
+  "t": "Não quero [verbo], mas [oração]",
+  "ex": "Não quero ser chato, mas já está ficando tarde.",
+  "n": "'Não quero ser chato/a' is the stock Brazilian softener."
+ },
+ {
+  "id": "ENG_CHUNK_0930",
+  "t": "Não tenho nada contra [substantivo], mas [oração]",
+  "ex": "Não tenho nada contra gatos, mas sou alérgico."
+ },
+ {
+  "id": "ENG_CHUNK_0931",
+  "t": "Você não pode estar achando sério que [oração] / Você acha mesmo que [oração]?",
+  "ex": "Você acha mesmo que a gente vai chegar lá às seis?"
+ },
+ {
+  "id": "ENG_CHUNK_0932",
+  "t": "Concordo com [pessoa] sobre [substantivo] / Estou com [pessoa] nessa",
+  "ex": "Estou com a Sara nessa. Vamos comer primeiro."
+ },
+ {
+  "id": "ENG_CHUNK_0933",
+  "t": "Não vejo por que [oração]",
+  "ex": "Não vejo por que a gente não pode simplesmente ir de trem."
+ },
+ {
+  "id": "ENG_CHUNK_0934",
+  "t": "O que eu não entendo é [oração]",
+  "ex": "O que eu não entendo é por que ele não ligou e pronto."
+ },
+ {
+  "id": "ENG_CHUNK_0935",
+  "t": "Sou totalmente a favor de [verbo/substantivo]",
+  "ex": "Sou totalmente a favor de economizar, mas não na comida."
+ },
+ {
+  "id": "ENG_CHUNK_0936",
+  "t": "agarrar a oportunidade / não pensar duas vezes",
+  "ex": "Se me oferecessem um emprego em Tóquio, eu não pensaria duas vezes."
+ },
+ {
+  "id": "ENG_CHUNK_0937",
+  "t": "recusar [substantivo]",
+  "ex": "Recusei o emprego porque o trajeto era longo demais."
+ },
+ {
+  "id": "ENG_CHUNK_0938",
+  "t": "cancelar [substantivo]",
+  "ex": "Cancelaram o jogo por causa da chuva."
+ },
+ {
+  "id": "ENG_CHUNK_0939",
+  "t": "deixar [substantivo] em espera / dar uma pausa em [substantivo]",
+  "ex": "Deixamos a reforma da cozinha em espera por enquanto."
+ },
+ {
+  "id": "ENG_CHUNK_0940",
+  "t": "passar por [substantivo]",
+  "ex": "Ela está passando por um momento difícil."
+ },
+ {
+  "id": "ENG_CHUNK_0941",
+  "t": "desmanchar / cair aos pedaços",
+  "ex": "Esses tênis já estão caindo aos pedaços."
+ },
+ {
+  "id": "ENG_CHUNK_0942",
+  "t": "sair impune de [substantivo] / se safar de [substantivo]",
+  "ex": "Meu irmão mais novo se safa de tudo."
+ },
+ {
+  "id": "ENG_CHUNK_0943",
+  "t": "escapar de [substantivo] / dar um jeito de fugir de [substantivo]",
+  "ex": "Estou tentando dar um jeito de escapar da reunião de segunda."
+ },
+ {
+  "id": "ENG_CHUNK_0944",
+  "t": "atrapalhar [substantivo]",
+  "ex": "Não deixa o trabalho atrapalhar a sua saúde.",
+  "n": "One verb, 'atrapalhar', covers 'get in the way of'."
+ },
+ {
+  "id": "ENG_CHUNK_0945",
+  "t": "fazer drama / fazer escândalo",
+  "ex": "É só um arranhão, não faz drama."
+ },
+ {
+  "id": "ENG_CHUNK_0946",
+  "t": "se empolgar demais / exagerar",
+  "ex": "Desculpa, me empolguei um pouco com a decoração."
+ },
+ {
+  "id": "ENG_CHUNK_0947",
+  "t": "aproveitar [substantivo] ao máximo",
+  "ex": "Vamos aproveitar o sol ao máximo enquanto dura."
+ },
+ {
+  "id": "ENG_CHUNK_0948",
+  "t": "causar uma boa impressão",
+  "ex": "Quero muito causar uma boa impressão nos pais dela."
+ },
+ {
+  "id": "ENG_CHUNK_0949",
+  "t": "inventar [substantivo]",
+  "ex": "Ele inventou uma desculpa de que o carro tinha quebrado."
+ },
+ {
+  "id": "ENG_CHUNK_0950",
+  "t": "progredir / fazer progresso / evoluir",
+  "ex": "Meu espanhol está devagar, mas estou evoluindo."
+ },
+ {
+  "id": "ENG_CHUNK_0951",
+  "t": "jogar conversa fora / puxar papo",
+  "ex": "Eu sou péssimo para puxar papo em festa.",
+  "n": "No exact 'small talk' term; 'conversa fiada' and 'papo furado' lean negative."
+ },
+ {
+  "id": "ENG_CHUNK_0952",
+  "t": "correr um risco / arriscar",
+  "ex": "Abrir um restaurante é um risco grande, mas vou arriscar."
+ },
+ {
+  "id": "ENG_CHUNK_0953",
+  "t": "aproveitar [substantivo]",
+  "ex": "A gente devia aproveitar o tempo bom e fazer uma trilha.",
+  "n": "'Aproveitar' has no negative 'exploit' sense here; for exploiting a person: 'aproveitar-se de'."
+ },
+ {
+  "id": "ENG_CHUNK_0954",
+  "t": "levar [substantivo] a sério",
+  "ex": "Você precisa levar essa tosse a sério e ir ao médico."
+ },
+ {
+  "id": "ENG_CHUNK_0955",
+  "t": "não dar valor a [substantivo] / achar [substantivo] normal",
+  "ex": "A gente não dá valor à água limpa."
+ },
+ {
+  "id": "ENG_CHUNK_0956",
+  "t": "revezar para [verbo] / fazer [substantivo] cada vez um",
+  "ex": "Eu e o meu colega de apartamento revezamos para fazer o jantar."
+ },
+ {
+  "id": "ENG_CHUNK_0957",
+  "t": "começar a fazer [substantivo] / entrar em [substantivo]",
+  "ex": "Comecei a fazer ioga para ajudar com as costas."
+ },
+ {
+  "id": "ENG_CHUNK_0958",
+  "t": "assumir [substantivo]",
+  "ex": "Minha irmã assumiu a padaria da família no ano passado."
+ },
+ {
+  "id": "ENG_CHUNK_0959",
+  "t": "assumir a responsabilidade por [substantivo]",
+  "ex": "Eu assumo a responsabilidade pela confusão com os ingressos."
+ },
+ {
+  "id": "ENG_CHUNK_0960",
+  "t": "dar uma palavrinha com [pessoa]",
+  "ex": "Posso dar uma palavrinha com você depois da aula?"
+ },
+ {
+  "id": "ENG_CHUNK_0961",
+  "t": "esclarecer as coisas / pôr os pingos nos is",
+  "ex": "A gente conversou bastante e esclareceu as coisas."
+ },
+ {
+  "id": "ENG_CHUNK_0962",
+  "t": "guardar rancor",
+  "ex": "Ela ainda guarda rancor por causa do casamento."
+ },
+ {
+  "id": "ENG_CHUNK_0963",
+  "t": "ter [substantivo] em mente / pensar em [substantivo]",
+  "ex": "Você pensou em alguma coisa para o jantar?"
+ },
+ {
+  "id": "ENG_CHUNK_0964",
+  "t": "fazer bem a [pessoa]",
+  "ex": "Uma semana na praia ia te fazer bem."
+ },
+ {
+  "id": "ENG_CHUNK_0965",
+  "t": "viver sem [substantivo] / ficar sem [substantivo]",
+  "ex": "Não consigo viver sem o meu café da manhã."
+ },
+ {
+  "id": "ENG_CHUNK_0966",
+  "t": "Só para deixar claro / Só para confirmar",
+  "ex": "Só para confirmar: a gente se encontra na estação, né?"
+ },
+ {
+  "id": "ENG_CHUNK_0967",
+  "t": "Se eu entendi bem",
+  "ex": "Se eu entendi bem, você quer ir embora na quinta."
+ },
+ {
+  "id": "ENG_CHUNK_0968",
+  "t": "Mudando de assunto",
+  "ex": "Mudando de assunto, você acabou achando um apartamento novo?"
+ },
+ {
+  "id": "ENG_CHUNK_0969",
+  "t": "Voltando ao que você disse antes",
+  "ex": "Voltando ao que você disse antes, por que você pediu demissão?"
+ },
+ {
+  "id": "ENG_CHUNK_0970",
+  "t": "Se serve de consolo / Se quer saber minha opinião",
+  "ex": "Se serve de consolo, acho que você tomou a decisão certa."
+ },
+ {
+  "id": "ENG_CHUNK_0971",
+  "t": "Sem querer ofender, mas",
+  "ex": "Sem querer ofender, mas o seu carro está com cheiro de batata frita velha."
+ },
+ {
+  "id": "ENG_CHUNK_0972",
+  "t": "Vai parecer estranho, mas",
+  "ex": "Vai parecer estranho, mas a gente já se conheceu?"
+ },
+ {
+  "id": "ENG_CHUNK_0973",
+  "t": "Te entendo / Eu sei como é",
+  "ex": "Te entendo, o trânsito está horrível ultimamente."
+ },
+ {
+  "id": "ENG_CHUNK_0974",
+  "t": "Resumindo, / Em uma palavra:",
+  "ex": "Dá para bancar? Resumindo: não."
+ },
+ {
+  "id": "ENG_CHUNK_0975",
+  "t": "Aí eu estava lá / Então lá estava eu",
+  "ex": "E lá estava eu, trancado do lado de fora de pijama."
+ },
+ {
+  "id": "ENG_CHUNK_0976",
+  "t": "Vamos ser sinceros / Vamos combinar",
+  "ex": "Vamos combinar: a gente nunca vai usar aquela esteira.",
+  "n": "'Vamos combinar' used this way is distinctly Brazilian."
+ },
+ {
+  "id": "ENG_CHUNK_0977",
+  "t": "Eu não vejo assim / Não acho bem isso",
+  "ex": "Hmm, eu não vejo assim. Acho que ele só estava cansado."
+ },
+ {
+  "id": "ENG_CHUNK_0978",
+  "t": "mais ou menos / por aí",
+  "ex": "É cerca de uma hora de carro, mais ou menos."
+ },
+ {
+  "id": "ENG_CHUNK_0979",
+  "t": "Não me cobra depois / Não tenho certeza, hein",
+  "ex": "Acho que a loja abre às nove, mas não me cobra depois."
+ },
+ {
+  "id": "ENG_CHUNK_0980",
+  "t": "Deixa eu fazer o advogado do diabo",
+  "ex": "Tá, deixa eu fazer o advogado do diabo. E se chover?"
+ },
+ {
+  "id": "ENG_CHUNK_0981",
+  "t": "Sem ressentimentos / Tudo certo entre a gente",
+  "ex": "Você ficou com a vaga no meu lugar? Tudo certo, sem ressentimentos."
+ },
+ {
+  "id": "ENG_CHUNK_0982",
+  "t": "Tudo bem, não me ofendi",
+  "ex": "Sem querer ofender, mas a sua comida está meio sem sal. Tudo bem, não me ofendi."
+ },
+ {
+  "id": "ENG_CHUNK_0983",
+  "t": "Eu te devo desculpas",
+  "ex": "Eu te devo desculpas pelo que eu disse ontem."
+ },
+ {
+  "id": "ENG_CHUNK_0984",
+  "t": "Você ganhou o meu dia",
+  "ex": "Obrigado pelas flores, você ganhou o meu dia!"
+ },
+ {
+  "id": "ENG_CHUNK_0985",
+  "t": "Guarda o seu dinheiro / Deixa que eu pago",
+  "ex": "Guarda o seu dinheiro, essa é por minha conta."
+ },
+ {
+  "id": "ENG_CHUNK_0986",
+  "t": "A próxima é por minha conta",
+  "ex": "Valeu pelo café. A próxima é por minha conta."
+ },
+ {
+  "id": "ENG_CHUNK_0987",
+  "t": "Fica para a próxima? / Podemos deixar para outro dia?",
+  "ex": "Estou morto hoje. Fica para a próxima?"
+ },
+ {
+  "id": "ENG_CHUNK_0988",
+  "t": "Vou passar, obrigado/a / Não, valeu",
+  "ex": "Mais bolo? Ah, não, valeu."
+ },
+ {
+  "id": "ENG_CHUNK_0989",
+  "t": "Não cabe mais nada / Estou cheio/a",
+  "ex": "Estava delicioso, mas não cabe mais nada."
+ },
+ {
+  "id": "ENG_CHUNK_0990",
+  "t": "É cortesia da casa / É por conta da casa",
+  "ex": "Desculpa a demora. O seu café é cortesia da casa."
+ },
+ {
+  "id": "ENG_CHUNK_0991",
+  "t": "Mesmo assim / Nem assim",
+  "ex": "Reiniciei o notebook duas vezes e nem assim ele conectou.",
+  "n": "After a negative: 'nem assim'."
+ },
+ {
+  "id": "ENG_CHUNK_0992",
+  "t": "Bem na hora que / Assim que",
+  "ex": "Bem na hora que eu sentei para comer, o telefone tocou."
+ },
+ {
+  "id": "ENG_CHUNK_0993",
+  "t": "Em pouco tempo / Logo, logo",
+  "ex": "A gente começou a conversar e, em pouco tempo, virou melhor amigo."
+ },
+ {
+  "id": "ENG_CHUNK_0994",
+  "t": "Quando eu vi / Quando me dei conta",
+  "ex": "Sentei para ver um episódio e, quando vi, já eram duas da manhã.",
+  "n": "'Quando vi' is the idiomatic Brazilian 'before I knew it'."
+ },
+ {
+  "id": "ENG_CHUNK_0995",
+  "t": "Para começar / Primeiro que",
+  "ex": "Não vou me mudar para lá. Para começar, é caro demais."
+ },
+ {
+  "id": "ENG_CHUNK_0996",
+  "t": "No fundo",
+  "ex": "Ele banca o durão, mas no fundo é muito sensível."
+ },
+ {
+  "id": "ENG_CHUNK_0997",
+  "t": "Ou isso, ou / Ou então",
+  "ex": "Ela deve estar presa no trânsito. Ou então esqueceu."
+ },
+ {
+  "id": "ENG_CHUNK_0998",
+  "t": "Se for o caso / Se sim",
+  "ex": "Você vai de carro amanhã? Se for o caso, me dá uma carona?"
+ },
+ {
+  "id": "ENG_CHUNK_0999",
+  "t": "Como se [verbo no imperfeito do subj.]",
+  "ex": "Ele me olhou como se eu fosse louco.",
+  "n": "'Como se' always takes the imperfect subjunctive: fosse, tivesse."
+ },
+ {
+  "id": "ENG_CHUNK_1000",
+  "t": "Em vez de / Ao contrário de",
+  "ex": "Prefiro alugar agora, em vez de comprar."
+ }
+]

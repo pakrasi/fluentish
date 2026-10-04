@@ -1,0 +1,528 @@
+[
+{
+"id": "ENG_CHUNK_1101",
+"t": "[nome] ha qualcosa che [frase] / C'è qualcosa in [nome] che [frase]",
+"ex": "Questo quartiere ha qualcosa che mi fa sentire a casa."
+},
+{
+"id": "ENG_CHUNK_1102",
+"t": "Non immagini quante volte [frase]",
+"ex": "Non immagini quante volte la gente lascia le chiavi nella porta."
+},
+{
+"id": "ENG_CHUNK_1103",
+"t": "Se non fosse per [nome], [condizionale] / Se non fosse stato per [nome]",
+"ex": "Se non fosse stato per mia sorella, non avrei mai trovato questo appartamento.",
+"n": "Past reference: se non fosse stato per + condizionale passato (avrei trovato)."
+},
+{
+"id": "ENG_CHUNK_1104",
+"t": "Se solo [congiuntivo]",
+"ex": "Se solo fossi uscito di casa dieci minuti prima.",
+"n": "Se solo + congiuntivo imperfetto/trapassato: fossi uscito."
+},
+{
+"id": "ENG_CHUNK_1105",
+"t": "Avrei dovuto immaginare che [frase] / Dovevo immaginarlo",
+"ex": "Avrei dovuto immaginare che il ristorante fosse pieno di venerdì.",
+"n": "Immaginare che + congiuntivo: fosse."
+},
+{
+"id": "ENG_CHUNK_1106",
+"t": "Mi pento di [verbo] / Rimpiango di [verbo]",
+"ex": "Mi pento di non aver studiato all'estero quando potevo.",
+"n": "Past action: pentirsi di + infinito passato (aver studiato)."
+},
+{
+"id": "ENG_CHUNK_1107",
+"t": "Col senno di poi, [frase] / Ripensandoci, [frase]",
+"ex": "Ripensandoci, trasferirmi a Torino è stata la decisione migliore che abbia mai preso.",
+"n": "Superlative + che triggers congiuntivo: abbia preso."
+},
+{
+"id": "ENG_CHUNK_1108",
+"t": "Se potessi tornare indietro, [condizionale]",
+"ex": "Se potessi tornare indietro, studierei infermieristica invece di economia.",
+"n": "se + congiuntivo imperfetto (potessi) + condizionale."
+},
+{
+"id": "ENG_CHUNK_1109",
+"t": "È l'ultima volta che [verbo]",
+"ex": "È l'ultima volta che presto la macchina a mio fratello.",
+"n": "Present indicativo in the vow; congiuntivo is used when looking back (l'ultima volta che l'abbia vista)."
+},
+{
+"id": "ENG_CHUNK_1110",
+"t": "Era ora che [congiuntivo imperfetto]",
+"ex": "Era ora che ti comprassi un telefono nuovo. Quello è preistorico.",
+"n": "Era ora che + congiuntivo imperfetto: comprassi."
+},
+{
+"id": "ENG_CHUNK_1111",
+"t": "Da quando [frase]?",
+"ex": "Da quando bevi il caffè? L'hai sempre odiato."
+},
+{
+"id": "ENG_CHUNK_1112",
+"t": "Non è mai troppo tardi per [verbo]",
+"ex": "Mia madre ha iniziato a nuotare a sessant'anni. Non è mai troppo tardi per imparare."
+},
+{
+"id": "ENG_CHUNK_1113",
+"t": "Ho preso l'abitudine di [verbo]",
+"ex": "Ho preso l'abitudine di guardare il telefono appena sveglio."
+},
+{
+"id": "ENG_CHUNK_1114",
+"t": "Ci tengo a [verbo]",
+"ex": "Ci tengo a chiamare la nonna ogni domenica.",
+"n": "'Ci tengo' = it matters to me; very idiomatic."
+},
+{
+"id": "ENG_CHUNK_1115",
+"t": "Non ho potuto fare a meno di [verbo]",
+"ex": "Non ho potuto fare a meno di ridere quando il cane gli ha rubato il panino."
+},
+{
+"id": "ENG_CHUNK_1116",
+"t": "Non è la stessa cosa senza [persona]",
+"ex": "Natale è stato bello, ma non è la stessa cosa senza il nonno."
+},
+{
+"id": "ENG_CHUNK_1117",
+"t": "Mi dispiacerebbe se [persona] [congiuntivo imperfetto]",
+"ex": "Chiamiamo prima. Mi dispiacerebbe se facessi tutta quella strada per niente.",
+"n": "Condizionale + se + congiuntivo imperfetto: facessi."
+},
+{
+"id": "ENG_CHUNK_1118",
+"t": "Ci terrei tanto se [congiuntivo imperfetto] / Significherebbe molto per me se [frase]",
+"ex": "Ci terrei tanto se venissi alla mia laurea.",
+"n": "se + congiuntivo imperfetto: venissi."
+},
+{
+"id": "ENG_CHUNK_1119",
+"t": "Non do torto a [persona] per [verbo] / Non biasimo [persona]",
+"ex": "Non le do torto per essersene andata. Quel capo era terribile."
+},
+{
+"id": "ENG_CHUNK_1120",
+"t": "Ben gli sta, così impara a [verbo]",
+"ex": "Ha perso l'aereo? Ben gli sta, così impara a partire così tardi.",
+"n": "Gli (him) / le (her) / ti (you). 'Se l'è cercata' = he asked for it."
+},
+{
+"id": "ENG_CHUNK_1121",
+"t": "È tipico di [persona] [verbo]",
+"ex": "È tipico di Dario arrivare con un'ora di ritardo."
+},
+{
+"id": "ENG_CHUNK_1122",
+"t": "A [persona] non viene mai in mente di [verbo]",
+"ex": "Al mio coinquilino non viene mai in mente di comprare la carta igienica."
+},
+{
+"id": "ENG_CHUNK_1123",
+"t": "Non c'è niente di peggio che [verbo]",
+"ex": "Non c'è niente di peggio che aspettare un volo in ritardo senza informazioni."
+},
+{
+"id": "ENG_CHUNK_1124",
+"t": "È la terza volta che [frase]",
+"ex": "È la terza volta che chiamo per questa bolletta.",
+"n": "Present tense in Italian: 'è la terza volta che chiamo' (not 'ho chiamato')."
+},
+{
+"id": "ENG_CHUNK_1125",
+"t": "Manca poco che [congiuntivo] / Sto per [verbo]",
+"ex": "Manca poco che butto il portatile dalla finestra.",
+"n": "'Manca poco che' formally takes congiuntivo (butti); speech often uses indicativo."
+},
+{
+"id": "ENG_CHUNK_1126",
+"t": "Diciamo che [frase]",
+"ex": "Com'è andato l'appuntamento? Diciamo che non ci sarà un secondo."
+},
+{
+"id": "ENG_CHUNK_1127",
+"t": "Ti faccio avere [nome] entro [nome] / Finisco [nome] entro [nome]",
+"ex": "Tranquillo, ti faccio avere il rapporto entro venerdì."
+},
+{
+"id": "ENG_CHUNK_1128",
+"t": "Riprendiamo [nome] più tardi / Ci torniamo su dopo",
+"ex": "Bella domanda. Ci torniamo su dopo la pausa."
+},
+{
+"id": "ENG_CHUNK_1129",
+"t": "È una di quelle [nome]",
+"ex": "È una di quelle giornate. Non me ne va bene una."
+},
+{
+"id": "ENG_CHUNK_1130",
+"t": "Ricordo che [frase] / Solo per ricordare che [frase]",
+"ex": "Ricordo a tutti che lunedì l'ufficio è chiuso."
+},
+{
+"id": "ENG_CHUNK_1131",
+"t": "Vorrei presentare un reclamo per [nome]",
+"ex": "Buongiorno, vorrei presentare un reclamo per il rumore del piano di sopra."
+},
+{
+"id": "ENG_CHUNK_1132",
+"t": "Mi può passare [persona]?",
+"ex": "Buongiorno, mi può passare l'ufficio fatturazione?"
+},
+{
+"id": "ENG_CHUNK_1133",
+"t": "Chiamo per conto di [persona] / Chiamo da parte di [persona]",
+"ex": "Buongiorno, chiamo per conto di mio padre. Ha un appuntamento domani."
+},
+{
+"id": "ENG_CHUNK_1134",
+"t": "Mi avete addebitato due volte [nome]",
+"ex": "Buongiorno, mi avete addebitato due volte l'ordine della settimana scorsa."
+},
+{
+"id": "ENG_CHUNK_1135",
+"t": "Prendo dei farmaci per [nome] / Sono in cura per [nome]",
+"ex": "Prendo dei farmaci per la pressione alta, quindi niente vino."
+},
+{
+"id": "ENG_CHUNK_1136",
+"t": "concentrarsi su [nome]",
+"ex": "Questo mese devo concentrarmi sugli esami."
+},
+{
+"id": "ENG_CHUNK_1137",
+"t": "provare [nome] / andare a vedere [nome]",
+"ex": "Devi provare quel nuovo posto di tacos in via Roma."
+},
+{
+"id": "ENG_CHUNK_1138",
+"t": "avere il jet lag / essere sfasato",
+"ex": "Scusa, oggi sono un po' lento. Ho un jet lag terribile."
+},
+{
+"id": "ENG_CHUNK_1139",
+"t": "al completo / tutto pieno",
+"ex": "Mi dispiace, stasera siamo al completo. Che ne dice di domani?"
+},
+{
+"id": "ENG_CHUNK_1140",
+"t": "vivamente consigliato / super consigliato",
+"ex": "Quel sentiero me l'ha consigliato vivamente un collega."
+},
+{
+"id": "ENG_CHUNK_1141",
+"t": "altamente improbabile / molto difficile che [congiuntivo]",
+"ex": "È molto difficile che nevichi così presto.",
+"n": "'È difficile/improbabile che' triggers congiuntivo: nevichi."
+},
+{
+"id": "ENG_CHUNK_1142",
+"t": "profondamente addormentato / nel sonno profondo",
+"ex": "Quando sono tornato a casa, i bambini dormivano già profondamente.",
+"n": "Usually said with the verb: 'dormire profondamente / come sassi'."
+},
+{
+"id": "ENG_CHUNK_1143",
+"t": "per un pelo / c'è mancato poco",
+"ex": "Quel camion ci stava per prendere. C'è mancato poco."
+},
+{
+"id": "ENG_CHUNK_1144",
+"t": "avere un debole per [nome]",
+"ex": "Ho un debole per le vecchie trattorie."
+},
+{
+"id": "ENG_CHUNK_1145",
+"t": "andare in pari / rientrare delle spese",
+"ex": "Con tutte le spese, siamo a malapena rientrati delle spese con la vendita di dolci."
+},
+{
+"id": "ENG_CHUNK_1146",
+"t": "essere geloso di [persona] / invidiare [persona]",
+"ex": "Vai alle Hawaii? Ti invidio da morire!",
+"n": "'Geloso' is for romantic jealousy; envy of a trip is 'invidia'."
+},
+{
+"id": "ENG_CHUNK_1147",
+"t": "essere bravo con [nome] / cavarsela con [nome]",
+"ex": "Mio nipote è bravissimo con i computer."
+},
+{
+"id": "ENG_CHUNK_1148",
+"t": "avere voglia di [nome]",
+"ex": "Stasera non ho tanta voglia di pizza."
+},
+{
+"id": "ENG_CHUNK_1149",
+"t": "saltare / andare a monte",
+"ex": "I programmi per il weekend sono saltati, quindi siamo liberi."
+},
+{
+"id": "ENG_CHUNK_1150",
+"t": "interrompere [persona]",
+"ex": "Scusa, non volevo interromperti."
+},
+{
+"id": "ENG_CHUNK_1151",
+"t": "dare buca a [persona] / fare un bidone a [persona]",
+"ex": "Ho aspettato un'ora, ma mi ha dato buca."
+},
+{
+"id": "ENG_CHUNK_1152",
+"t": "realizzare / rendersi conto",
+"ex": "Mi hanno preso, ma non l'ho ancora realizzato.",
+"n": "'Realizzare' = realize is an accepted anglicism in speech; purists prefer 'rendersi conto'."
+},
+{
+"id": "ENG_CHUNK_1153",
+"t": "sdrammatizzare / prenderla con leggerezza",
+"ex": "Dai, prendila con leggerezza, è solo un gioco!"
+},
+{
+"id": "ENG_CHUNK_1154",
+"t": "attenersi a [nome] / rispettare [nome]",
+"ex": "Atteniamoci al piano e partiamo alle sette."
+},
+{
+"id": "ENG_CHUNK_1155",
+"t": "restare / fermarsi",
+"ex": "Fermati dopo cena, giochiamo a carte."
+},
+{
+"id": "ENG_CHUNK_1156",
+"t": "abbandonare [nome] / mollare [nome]",
+"ex": "Ha mollato l'università dopo il primo anno."
+},
+{
+"id": "ENG_CHUNK_1157",
+"t": "rimanere indietro",
+"ex": "Sono stato malato una settimana e sono rimasto indietro con il lavoro."
+},
+{
+"id": "ENG_CHUNK_1158",
+"t": "ambientarsi / integrarsi",
+"ex": "Ci ho messo un po' ad ambientarmi nella nuova scuola."
+},
+{
+"id": "ENG_CHUNK_1159",
+"t": "farsi notare / spiccare",
+"ex": "Metti la giacca rossa. Ti farai notare nelle foto."
+},
+{
+"id": "ENG_CHUNK_1160",
+"t": "mettersi in mostra / tirarsela",
+"ex": "Si sta di nuovo tirando con la macchina nuova.",
+"n": "'Tirarsela' is slangy; 'fare lo sbruffone' also common."
+},
+{
+"id": "ENG_CHUNK_1161",
+"t": "farsi sentire / dire la propria",
+"ex": "Se non sei d'accordo, dillo."
+},
+{
+"id": "ENG_CHUNK_1162",
+"t": "trovarsi subito bene / andare subito d'accordo",
+"ex": "Mia sorella e la sua nuova coinquilina si sono trovate subito benissimo."
+},
+{
+"id": "ENG_CHUNK_1163",
+"t": "avere tante cose da fare / avere mille cose per la testa",
+"ex": "Ti aiuterei volentieri, ma adesso ho mille cose per la testa."
+},
+{
+"id": "ENG_CHUNK_1164",
+"t": "pesare su [persona] / mettere a dura prova [persona]",
+"ex": "I turni di notte lo stanno mettendo a dura prova."
+},
+{
+"id": "ENG_CHUNK_1165",
+"t": "dare il via a [nome] / mettersi in moto",
+"ex": "Diamo il via all'organizzazione della festa."
+},
+{
+"id": "ENG_CHUNK_1166",
+"t": "Diciamo di sì / Si può dire",
+"ex": "Quindi il nuovo lavoro ti piace? Eh, diciamo di sì."
+},
+{
+"id": "ENG_CHUNK_1167",
+"t": "Ecco perché! / Allora si spiega",
+"ex": "Ti sei dimenticato di attaccarlo alla presa? Ecco perché!"
+},
+{
+"id": "ENG_CHUNK_1168",
+"t": "Questa mi giunge nuova / Prima volta che lo sento",
+"ex": "La riunione è stata spostata? Questa mi giunge nuova."
+},
+{
+"id": "ENG_CHUNK_1169",
+"t": "Ho perso il filo",
+"ex": "Scusa, cosa stavo dicendo? Ho perso il filo."
+},
+{
+"id": "ENG_CHUNK_1170",
+"t": "Scusa, sono andato fuori tema / mi sono perso",
+"ex": "Scusa, mi sono perso. Di cosa stavamo parlando?"
+},
+{
+"id": "ENG_CHUNK_1171",
+"t": "Torniamo a noi / Torniamo in argomento",
+"ex": "Ok, ragazzi, torniamo a noi."
+},
+{
+"id": "ENG_CHUNK_1172",
+"t": "Domanda a caso, ma",
+"ex": "Domanda a caso: conosci un idraulico bravo?"
+},
+{
+"id": "ENG_CHUNK_1173",
+"t": "Chiudiamola qui / Lasciamo stare",
+"ex": "Non siamo d'accordo e basta. Chiudiamola qui."
+},
+{
+"id": "ENG_CHUNK_1174",
+"t": "Non sono un esperto, ma",
+"ex": "Non sono un esperto, ma mi sa che hai una gomma a terra."
+},
+{
+"id": "ENG_CHUNK_1175",
+"t": "Lo dico e basta / Dico solo",
+"ex": "L'ultima volta che abbiamo preso quella scorciatoia ci siamo persi. Dico solo.",
+"n": "No real equivalent; often 'eh, io lo dico...' or a pointed 'ecco'."
+},
+{
+"id": "ENG_CHUNK_1176",
+"t": "Era solo un'idea / Butto lì",
+"ex": "Potremmo prendere il treno. Butto lì."
+},
+{
+"id": "ENG_CHUNK_1177",
+"t": "Per curiosità",
+"ex": "Per curiosità, quanto l'hai pagato?"
+},
+{
+"id": "ENG_CHUNK_1178",
+"t": "Se posso chiedere / Se non sono indiscreto",
+"ex": "Se non sono indiscreto, quanto paga d'affitto qui?"
+},
+{
+"id": "ENG_CHUNK_1179",
+"t": "Dovevi esserci",
+"ex": "Sul momento è stato esilarante. Forse dovevi esserci."
+},
+{
+"id": "ENG_CHUNK_1180",
+"t": "Non me la ricordo così",
+"ex": "Hai pagato tu la cena? Io non me la ricordo così."
+},
+{
+"id": "ENG_CHUNK_1181",
+"t": "Ora o mai più",
+"ex": "I saldi finiscono stasera. Ora o mai più."
+},
+{
+"id": "ENG_CHUNK_1182",
+"t": "Sbagliando s'impara",
+"ex": "Mi sono di nuovo dimenticato di salvare il file. Vabbè, sbagliando s'impara."
+},
+{
+"id": "ENG_CHUNK_1183",
+"t": "Le grandi menti pensano allo stesso modo",
+"ex": "Anche tu il salmone? Le grandi menti pensano allo stesso modo."
+},
+{
+"id": "ENG_CHUNK_1184",
+"t": "Due teste sono meglio di una",
+"ex": "Facciamo la dichiarazione dei redditi insieme. Due teste sono meglio di una."
+},
+{
+"id": "ENG_CHUNK_1185",
+"t": "Roma non è stata costruita in un giorno",
+"ex": "Studi da un mese appena. Roma non è stata costruita in un giorno."
+},
+{
+"id": "ENG_CHUNK_1186",
+"t": "Prima è, meglio è / Prima possibile",
+"ex": "Quando ti serve? Prima è, meglio è."
+},
+{
+"id": "ENG_CHUNK_1187",
+"t": "Non corriamo troppo / Non vendiamo la pelle dell'orso prima di averlo ucciso",
+"ex": "Un buon colloquio non vuol dire che il posto è tuo. Non corriamo troppo.",
+"n": "'Non vuol dire che' formally takes congiuntivo: sia tuo."
+},
+{
+"id": "ENG_CHUNK_1188",
+"t": "Dormici sopra",
+"ex": "Non decidere stasera. Dormici sopra e chiamami domani."
+},
+{
+"id": "ENG_CHUNK_1189",
+"t": "Meglio tu che io / Contento tu...",
+"ex": "Corri una maratona con questo caldo? Meglio tu che io."
+},
+{
+"id": "ENG_CHUNK_1190",
+"t": "Buon appetito! / Servitevi!",
+"ex": "La cena è pronta, ragazzi. Buon appetito!"
+},
+{
+"id": "ENG_CHUNK_1191",
+"t": "Anzi, meglio ancora",
+"ex": "Chiamala stasera. Anzi, meglio ancora, vai a trovarla."
+},
+{
+"id": "ENG_CHUNK_1192",
+"t": "Per giunta / E come se non bastasse",
+"ex": "Mi si è rotta la macchina, ero in ritardo, e come se non bastasse pioveva.",
+"n": "'Come se' requires congiuntivo: bastasse."
+},
+{
+"id": "ENG_CHUNK_1193",
+"t": "Tra [nome] e [nome]",
+"ex": "Tra il bambino appena nato e il trasloco, abbiamo dormito pochissimo.",
+"n": "Italian uses 'tra X e Y' for 'what with'."
+},
+{
+"id": "ENG_CHUNK_1194",
+"t": "Nonostante [nome] / Malgrado [nome]",
+"ex": "Ci siamo divertiti un sacco nonostante il tempo.",
+"n": "Nonostante + clause triggers congiuntivo: nonostante piovesse."
+},
+{
+"id": "ENG_CHUNK_1195",
+"t": "Al contrario / Anzi",
+"ex": "Non mi disturbi affatto. Anzi, sono contento che hai chiamato.",
+"n": "Careful speech: contento che tu abbia chiamato (congiuntivo after emotion)."
+},
+{
+"id": "ENG_CHUNK_1196",
+"t": "In particolare",
+"ex": "Il cibo mi è piaciuto tantissimo, in particolare i tacos di pesce."
+},
+{
+"id": "ENG_CHUNK_1197",
+"t": "Tra le altre cose",
+"ex": "Abbiamo parlato del viaggio e del budget, tra le altre cose."
+},
+{
+"id": "ENG_CHUNK_1198",
+"t": "Giusto per darti un'idea",
+"ex": "Gli affitti qui sono folli. Giusto per darti un'idea, un monolocale costa duemila euro."
+},
+{
+"id": "ENG_CHUNK_1199",
+"t": "Per così dire",
+"ex": "Al momento sono tra un lavoro e l'altro, per così dire."
+},
+{
+"id": "ENG_CHUNK_1200",
+"t": "Ultimo ma non meno importante",
+"ex": "E per ultima, ma non meno importante, grazie a mia madre per tutto il suo aiuto.",
+"n": "Also common: 'dulcis in fundo' (last and sweetest)."
+}
+]

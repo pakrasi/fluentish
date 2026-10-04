@@ -1,0 +1,642 @@
+{
+ "L1-1": {
+  "evidence": "Ich wollte Geld verdienen, nicht lernen. Ich habe eine Ausbildung als Verkäuferin gemacht",
+  "evidence_en": "I wanted to earn money, not study. I did vocational training as a saleswoman.",
+  "why": "Nach der Schule hat sie eine Ausbildung gemacht, kein Studium. Studieren will sie erst in der Zukunft.",
+  "why_en": "After school she did vocational training, not a degree. She only plans to study in the future.",
+  "trap": "Das Wort 'studieren' kommt im Text vor, aber es geht um den Plan nach dem Abitur, nicht um die Zeit nach der zehnten Klasse.",
+  "trap_en": "The word 'studieren' appears in the text, but it refers to her plan after the Abitur, not to what she did after year ten.",
+  "question_en": "After school the author first went to university."
+ },
+ "L1-2": {
+  "evidence": "Ich habe deshalb meine Stelle auf 30 Stunden reduziert",
+  "evidence_en": "So I reduced my job to 30 hours.",
+  "why": "'Die Stelle reduzieren' bedeutet: weniger Stunden arbeiten als früher.",
+  "why_en": "'Reducing the job' means working fewer hours than before.",
+  "trap": "Man denkt vielleicht, sie arbeitet tagsüber normal weiter, weil der Unterricht abends ist, aber sie hat ihre Stunden reduziert.",
+  "trap_en": "You might think she still works full days because classes are in the evening, but she cut her hours.",
+  "question_en": "The author now works fewer hours than before."
+ },
+ "L1-3": {
+  "evidence": "Mein Lehrer hat mir dann eine App empfohlen, mit der man Aufgaben üben kann. Jeden Morgen im Bus habe ich eine halbe Stunde gerechnet.",
+  "evidence_en": "My teacher then recommended an app you can practise exercises with. Every morning on the bus I did maths for half an hour.",
+  "why": "Sie rechnet jeden Morgen mit der App, also übt sie Mathe mit einer App.",
+  "why_en": "She does sums with the app every morning, so she practises maths with an app.",
+  "trap": "Die App kommt vom Lehrer, aber das ändert nichts: Sie benutzt sie selbst zum Üben.",
+  "trap_en": "The app was the teacher's suggestion, but that changes nothing: she uses it herself to practise.",
+  "question_en": "The author practises maths with an app."
+ },
+ "L1-4": {
+  "evidence": "kocht jetzt an vier Abenden pro Woche",
+  "evidence_en": "now cooks four evenings a week",
+  "why": "Vier Abende pro Woche sind 'mehrere Abende'.",
+  "why_en": "Four evenings a week counts as 'several evenings'.",
+  "trap": "Die Zahl vier steht nicht in der Aussage; 'mehrere' passt trotzdem genau.",
+  "trap_en": "The number four isn't in the statement; 'several' still matches exactly.",
+  "question_en": "Her husband takes over the cooking on several evenings."
+ },
+ "L1-5": {
+  "evidence": "Meine Mutter dagegen hat gefragt, wozu ich das überhaupt brauche.",
+  "evidence_en": "My mother, on the other hand, asked why I even needed it.",
+  "why": "Am Anfang war die Mutter skeptisch. Erst inzwischen ist sie stolz.",
+  "why_en": "At first the mother was sceptical. Only now is she proud.",
+  "trap": "'Inzwischen ist sie stolz' ist die Falle: Das gilt jetzt, nicht 'von Anfang an' – von Anfang an unterstützt hat nur der Mann.",
+  "trap_en": "'She is proud now' is the trap: that's true now, not 'from the start' – only her husband supported her from the start.",
+  "question_en": "Her mother thought the decision was good from the start."
+ },
+ "L1-6": {
+  "evidence": "Im nächsten Frühjahr sind die Prüfungen.",
+  "evidence_en": "The exams are next spring.",
+  "why": "Die Prüfungen kommen erst noch, also hat sie das Abitur noch nicht.",
+  "why_en": "The exams are still to come, so she doesn't have the Abitur yet.",
+  "trap": "Sie hat gute Noten (eine Eins) und plant schon das Studium, aber das bedeutet nicht, dass sie die Prüfung bestanden hat.",
+  "trap_en": "She has good marks (a 1) and is already planning her degree, but that doesn't mean she has passed the exam.",
+  "question_en": "The author has already passed the Abitur."
+ },
+ "L2-1": {
+  "evidence": "Smartphones müssen den ganzen Schultag ausgeschaltet in der Tasche bleiben, auch in den Pausen.",
+  "evidence_en": "Smartphones must stay switched off in the bag the whole school day, even during breaks.",
+  "why": "Das ist fast wörtlich Antwort b: den ganzen Schultag ausgeschaltet.",
+  "why_en": "This is almost word for word option b: switched off the whole school day.",
+  "trap": "c ist falsch: In der Oberstufe dürfen Lehrer das Handy erlauben, es ist also nicht 'immer verboten'.",
+  "trap_en": "c is wrong: in the upper school teachers may allow phones, so they are not 'always forbidden'.",
+  "question_en": "At the schools in Hesse …",
+  "options_en": [
+   "mobile phones may be used during breaks.",
+   "mobile phones have to stay switched off the whole school day.",
+   "mobile phones are always banned in upper-school lessons."
+  ]
+ },
+ "L2-2": {
+  "evidence": "Jetzt ist es auf dem Schulhof wieder laut, und das ist gut so.",
+  "evidence_en": "Now the schoolyard is loud again, and that's a good thing.",
+  "why": "Laut bedeutet hier: Die Kinder reden und spielen wieder miteinander. Das findet sie gut.",
+  "why_en": "Loud here means the children are talking and playing with each other again. She thinks that's good.",
+  "trap": "a sagt 'ruhiger' – das Gegenteil: Der Schulhof ist lauter geworden.",
+  "trap_en": "a says 'quieter' – the opposite: the schoolyard has become louder.",
+  "question_en": "Ms Hofmann thinks it is good that …",
+  "options_en": [
+   "it has become quieter in the schoolyard.",
+   "the pupils look at their phones during the break.",
+   "the pupils talk to each other more again during the break."
+  ]
+ },
+ "L2-3": {
+  "evidence": "Elternvertreter fordern deshalb, dass Schüler das Handy in der Mittagspause kurz benutzen dürfen. Das Ministerium will darüber im Herbst entscheiden.",
+  "evidence_en": "Parent representatives therefore demand that pupils may briefly use their phones at lunch. The ministry wants to decide on this in autumn.",
+  "why": "'Darüber' meint die Ausnahme in der Mittagspause. Darüber entscheidet das Ministerium im Herbst.",
+  "why_en": "'On this' refers to the lunch-break exception. The ministry will decide on it in autumn.",
+  "trap": "b nimmt 'im Herbst' und 'abschaffen', aber der Text sagt: Ganz abgeschafft wird das Verbot nicht.",
+  "trap_en": "b reuses 'autumn' and 'abolish', but the text says the ban will not be abolished entirely.",
+  "question_en": "The ministry …",
+  "options_en": [
+   "wants to decide in autumn on an exception for the lunch break.",
+   "wants to abolish the ban completely in autumn.",
+   "has forbidden parents to call the school."
+  ]
+ },
+ "L2-4": {
+  "evidence": "27 Prozent der Abiturienten in Deutschland eine Ausbildung begonnen statt eines Studiums, fünf Prozentpunkte mehr als vor zehn Jahren",
+  "evidence_en": "27 percent of school-leavers with the Abitur began vocational training instead of a degree, five percentage points more than ten years ago",
+  "why": "'Fünf Prozentpunkte mehr als vor zehn Jahren' heißt: Der Anteil ist gestiegen.",
+  "why_en": "'Five percentage points more than ten years ago' means the share has risen.",
+  "trap": "b nimmt die Zahl fünf, aber fünf ist der Anstieg; der Anteil liegt bei 27 Prozent.",
+  "trap_en": "b takes the number five, but five is the increase; the share is 27 percent.",
+  "question_en": "The proportion of Abitur graduates who do an apprenticeship …",
+  "options_en": [
+   "has risen in the last ten years.",
+   "is five percent.",
+   "has become smaller."
+  ]
+ },
+ "L2-5": {
+  "evidence": "hat er zwei Semester Maschinenbau studiert und dann abgebrochen … Ich wollte etwas mit den Händen machen",
+  "evidence_en": "he studied mechanical engineering for two semesters and then dropped out. I wanted to do something with my hands",
+  "why": "'Etwas mit den Händen machen' bedeutet praktisch arbeiten. Deshalb hat er abgebrochen.",
+  "why_en": "'Doing something with your hands' means working practically. That's why he dropped out.",
+  "trap": "c: Einen eigenen Betrieb möchte er erst später vielleicht gründen – er hat ihn noch nicht.",
+  "trap_en": "c: he only wants to maybe start his own business later – he doesn't have one yet.",
+  "question_en": "Leon Baumann …",
+  "options_en": [
+   "has completed his degree.",
+   "dropped out of university because he wanted to do practical work.",
+   "already has his own business."
+  ]
+ },
+ "L2-6": {
+  "evidence": "Wer unsicher ist, sollte vorher ein Praktikum machen.",
+  "evidence_en": "Anyone who is unsure should do an internship first.",
+  "why": "'Vorher' bedeutet: vor der Entscheidung. Sie empfiehlt ein Praktikum.",
+  "why_en": "'First' means before deciding. She recommends an internship.",
+  "trap": "b nimmt das Wort 'Broschüren', aber sie sagt, zwei Wochen im Betrieb zeigen mehr als zehn Broschüren.",
+  "trap_en": "b reuses 'brochures', but she says two weeks in a company show more than ten brochures.",
+  "question_en": "Ms Walter recommends …",
+  "options_en": [
+   "deciding on a career quickly.",
+   "reading as many brochures as possible.",
+   "doing an internship before deciding."
+  ]
+ },
+ "L3-1": {
+  "evidence": "Gezielte Vorbereitung auf Klassenarbeiten, auch kurzfristig.",
+  "evidence_en": "Targeted preparation for class tests, even at short notice.",
+  "why": "Amir ist 14 (Klasse 5–13 passt), braucht Mathe und schnelle Hilfe: 'kurzfristig'.",
+  "why_en": "Amir is 14 (years 5–13 fits), needs maths and quick help: 'at short notice'.",
+  "trap": "Andere Anzeigen sind für Erwachsene oder andere Fächer; nur B hat Mathe und Klassenarbeiten.",
+  "trap_en": "The other ads are for adults or other subjects; only B has maths and class tests.",
+  "question_en": "Amir (14) has problems in maths and needs help quickly before the next class test."
+ },
+ "L3-2": {
+  "evidence": "Für Teilnehmer mit abgeschlossenem B1: Montag und Mittwoch 18:30–20:45 Uhr",
+  "evidence_en": "For participants who have completed B1: Monday and Wednesday 6:30–8:45 pm",
+  "why": "Sie hat B1 bestanden und arbeitet tagsüber – der Kurs ist abends und für Leute mit B1.",
+  "why_en": "She has passed B1 and works during the day – the course is in the evening and for people with B1.",
+  "trap": "J (Tandem) ist auch Deutsch, aber es ist ein Sprachentausch für Spanisch, kein Abendkurs nach B1.",
+  "trap_en": "J (tandem) is also German, but it's a language exchange for Spanish speakers, not an evening course after B1.",
+  "question_en": "Ms Lindqvist works during the day and wants to improve her German in the evenings. She has just passed B1."
+ },
+ "L3-3": {
+  "evidence": "E-Mails schreiben, im Internet suchen, Fotos verschicken",
+  "evidence_en": "Writing emails, searching the internet, sending photos",
+  "why": "Der Kurs ist für Leute ab 60, und E-Mails schreiben ist genau sein Wunsch.",
+  "why_en": "The course is for people over 60, and writing emails is exactly what he wants.",
+  "trap": "Keine andere Anzeige bietet Computerkurse; F (Erste Hilfe) ist auch für Erwachsene, aber ein anderes Thema.",
+  "trap_en": "No other ad offers computer courses; F (first aid) is also for adults but a different topic.",
+  "question_en": "Mr Grabowski is 68 and wants to learn how to write emails on the computer."
+ },
+ "L3-4": {
+  "evidence": "Ruhige Arbeitsplätze mit Steckdose und WLAN, täglich bis 24 Uhr geöffnet",
+  "evidence_en": "Quiet workspaces with sockets and Wi-Fi, open daily until midnight",
+  "why": "Ruhige Plätze und abends lange offen – das löst Selins Problem mit der lauten WG.",
+  "why_en": "Quiet spaces open late in the evening – that solves Selin's problem with her noisy flat.",
+  "trap": "E ist auch abends, aber es ist ein Kurs, kein Ort zum selbst Lernen.",
+  "trap_en": "E is also in the evening, but it's a course, not a place to study on your own.",
+  "question_en": "Selin is looking for a quiet place to study because it's too loud in her shared flat in the evenings."
+ },
+ "L3-5": {
+  "evidence": "Studieren und Geld verdienen: drei Monate Hochschule, drei Monate Betrieb, im Wechsel.",
+  "evidence_en": "Study and earn money: three months at university, three months at the company, alternating.",
+  "why": "Duales Studium heißt: Studium und Arbeit in einer Firma gleichzeitig. Voraussetzung Abitur hat Tomás.",
+  "why_en": "A dual degree means studying and working in a company at the same time. Tomás has the required Abitur.",
+  "trap": "A ist auch eine Ausbildung mit Geld, aber ohne Studium.",
+  "trap_en": "A is also paid training, but without a degree.",
+  "question_en": "Tomás has his Abitur and wants to study and work in a company at the same time."
+ },
+ "L3-6": {
+  "evidence": "Englisch für Kinder ab 8 Jahren",
+  "evidence_en": "English for children aged 8 and up",
+  "why": "H passt fast (spielerisch Englisch), aber die Tochter ist erst fünf. Also keine Anzeige: 0.",
+  "why_en": "H nearly fits (playful English), but the daughter is only five. So no ad: 0.",
+  "trap": "C nimmt Kinder ab 5 Jahren, aber das ist eine Musikschule, kein Englisch.",
+  "trap_en": "C takes children from 5, but it's a music school, not English.",
+  "question_en": "Julia wants her five-year-old daughter to learn English in a playful way."
+ },
+ "L3-7": {
+  "evidence": "keine Vorkenntnisse nötig",
+  "evidence_en": "no previous knowledge needed",
+  "why": "Pflege-Ausbildung ohne Vorkenntnisse – genau richtig für Herrn Öz ohne Erfahrung.",
+  "why_en": "Nursing training with no previous knowledge needed – just right for Mr Öz, who has no experience.",
+  "trap": "F (Erste Hilfe) klingt nach Medizin, ist aber nur ein Tageskurs, keine Berufsausbildung.",
+  "trap_en": "F (first aid) sounds medical, but it's only a one-day course, not vocational training.",
+  "question_en": "Mr Öz wants to train for a job in nursing/care but has no experience in this field yet."
+ },
+ "L4-1": {
+  "evidence": "Ein Gespräch mit den Eltern und ein Text darüber, was das Kind schon kann und was es üben soll, helfen viel mehr.",
+  "evidence_en": "A talk with the parents and a text about what the child can already do and what it should practise help much more.",
+  "why": "Sie findet Gespräche und Texte besser als Noten, also ist sie für die Abschaffung: Ja.",
+  "why_en": "She thinks talks and written reports are better than marks, so she is for abolishing them: yes.",
+  "trap": "Sie ist Lehrerin, man könnte denken, sie verteidigt Noten – aber sie kritisiert sie.",
+  "trap_en": "She's a teacher, so you might expect her to defend marks – but she criticises them.",
+  "question_en": "Vera, Lübeck: I have been teaching at a primary school for 20 years. A 4 on the report tells an eight-year-old nothing except: you're bad. A conversation with the parents and a text about what the child can already do and what it should practise help much more."
+ },
+ "L4-2": {
+  "evidence": "Noten gehören von Anfang an dazu.",
+  "evidence_en": "Marks belong from the very beginning.",
+  "why": "Er will Noten schon in der Grundschule: Nein zur Abschaffung.",
+  "why_en": "He wants marks already in primary school: no to abolishing them.",
+  "trap": "'Schock' klingt negativ, aber er meint den Schock, wenn Noten zu spät kommen.",
+  "trap_en": "'Shock' sounds negative, but he means the shock when marks come too late.",
+  "question_en": "Roland, Chemnitz: Life consists of assessments, whether we like it or not. Children have to learn early to deal with that. Anyone who only gets their first grade at twelve gets a shock. Grades belong from the very beginning."
+ },
+ "L4-3": {
+  "evidence": "Man kann sich denken, was ich von Noten in diesem Alter halte.",
+  "evidence_en": "You can guess what I think of marks at this age.",
+  "why": "Die Fünf hat ihrem Sohn geschadet, Ziele ohne Noten haben geholfen. Sie ist also gegen Noten: Ja.",
+  "why_en": "The 5 harmed her son, goals without marks helped. So she is against marks: yes.",
+  "trap": "Sie sagt ihre Meinung nicht direkt; man muss sie aus der Geschichte schließen.",
+  "trap_en": "She doesn't state her opinion directly; you have to infer it from the story.",
+  "question_en": "Nina, Mainz: My son got a 5 in German in third grade and didn't want to read any more for weeks afterwards. Luckily he then had a teacher who agreed small goals with him instead of grades. Today he reads every evening voluntarily. You can imagine what I think of grades at this age."
+ },
+ "L4-4": {
+  "evidence": "Ohne Noten weiß doch niemand, wo das Kind steht.",
+  "evidence_en": "Without marks nobody knows where the child stands.",
+  "why": "Er findet Noten klar und Berichte unklar: Nein zur Abschaffung.",
+  "why_en": "He finds marks clear and reports unclear: no to abolishing them.",
+  "trap": "Er erwähnt Berichte als Alternative, aber nur, um sie zu kritisieren.",
+  "trap_en": "He mentions reports as an alternative, but only to criticise them.",
+  "question_en": "Paul, Bremen: Without grades nobody knows where the child stands. The reports that some schools write instead are long and unclear. A 2 is a 2; everyone understands that, even parents who don't speak German well."
+ },
+ "L4-5": {
+  "evidence": "Also kann man sie auch behalten.",
+  "evidence_en": "So you might as well keep them.",
+  "why": "Der Druck kommt von den Eltern, nicht von den Noten – also behalten: Nein.",
+  "why_en": "The pressure comes from parents, not from marks – so keep them: no.",
+  "trap": "Sie beginnt mit 'Ich verstehe die Sorge', das klingt nach Zustimmung, aber mit 'Aber' kommt ihre echte Meinung.",
+  "trap_en": "She starts with 'I understand the worry', which sounds like agreement, but her real view comes after 'but'.",
+  "question_en": "Helga, Passau: I understand the worry that grades put children under pressure. But the pressure doesn't come from the grade but from parents who expect a 1. If you abolish grades, that changes nothing at all. So you might as well keep them."
+ },
+ "L4-6": {
+  "evidence": "Kinder brauchen in den ersten Jahren Mut, keine Zahlen.",
+  "evidence_en": "In the first years children need courage, not numbers.",
+  "why": "'Zahlen' bedeutet hier Noten. Er ist gegen Noten in den ersten Jahren: Ja.",
+  "why_en": "'Numbers' here means marks. He is against marks in the early years: yes.",
+  "trap": "Er spricht über seine eigene Schulzeit, aber die Meinung ist klar am Ende.",
+  "trap_en": "He talks about his own school days, but his opinion is clear at the end.",
+  "question_en": "Cem, Duisburg: As a child I was a bad pupil, and the grades showed me that every day. Only at vocational school did I notice that I can do something. In the first years children need courage, not numbers."
+ },
+ "L4-7": {
+  "evidence": "Das zeigt doch, dass es ohne geht.",
+  "evidence_en": "That shows it works without them.",
+  "why": "Finnland ist ihr Beispiel dafür, dass Schule ohne Noten funktioniert: Ja.",
+  "why_en": "Finland is her example that school works without marks: yes.",
+  "trap": "'Noten sind bequem' klingt positiv, aber sie sagt: nicht gut für die Kinder.",
+  "trap_en": "'Marks are convenient' sounds positive, but she says they're not good for children.",
+  "question_en": "Annika, Erfurt: In Finland there are no grades in the first classes, and the pupils there are among the best in Europe. That surely shows it works without them. Grades are convenient for the school but not good for the children."
+ },
+ "L5-1": {
+  "evidence": "Bei einer späteren Absage berechnen wir 50 % der Kursgebühr.",
+  "evidence_en": "If you cancel later, we charge 50% of the course fee.",
+  "why": "Zehn Tage ist später als 14 Tage vor Beginn, also zahlt man 50 %, die Hälfte.",
+  "why_en": "Ten days is later than 14 days before the start, so you pay 50%, half.",
+  "trap": "a gilt nur bis 14 Tage vorher; c (Gutschein) gibt es nur bei Krankheit mit Attest.",
+  "trap_en": "a only applies up to 14 days before; c (voucher) is only for illness with a doctor's note.",
+  "question_en": "Anyone who cancels the course ten days before it starts …",
+  "options_en": [
+   "gets all the money back.",
+   "has to pay half the course fee.",
+   "gets a voucher."
+  ]
+ },
+ "L5-2": {
+  "evidence": "Eine Teilnahmebescheinigung erhält nur, wer mindestens 80 % der Unterrichtsstunden besucht hat.",
+  "evidence_en": "Only those who attended at least 80% of lessons receive a certificate of attendance.",
+  "why": "Das ist direkt Antwort a: mindestens 80 Prozent.",
+  "why_en": "That is exactly option a: at least 80 percent.",
+  "trap": "c ist zu streng: Man darf fehlen, nur nicht mehr als dreimal unentschuldigt.",
+  "trap_en": "c is too strict: you may miss lessons, just not more than three times without excuse.",
+  "question_en": "A certificate of attendance is given to …",
+  "options_en": [
+   "anyone who attended at least 80 percent of the lessons.",
+   "anyone who passed the exam.",
+   "anyone who didn't miss a single lesson."
+  ]
+ },
+ "L5-3": {
+  "evidence": "Die Prüfungsgebühr ist nicht in der Kursgebühr enthalten.",
+  "evidence_en": "The exam fee is not included in the course fee.",
+  "why": "'Nicht enthalten' heißt: Man bezahlt sie extra, zusätzlich.",
+  "why_en": "'Not included' means you pay it separately, on top.",
+  "trap": "a übersieht das 'nicht'; b nimmt die sechs Wochen, aber die gehören zu den Ergebnissen.",
+  "trap_en": "a misses the 'not'; b takes the six weeks, but they belong to the results.",
+  "question_en": "The exam fee …",
+  "options_en": [
+   "is included in the course fee.",
+   "is paid six weeks after the exam.",
+   "has to be paid in addition to the course fee."
+  ]
+ },
+ "L5-4": {
+  "evidence": "Das Zertifikat ist persönlich gegen Vorlage eines Ausweises im Sekretariat abzuholen; ein Versand ist nicht möglich.",
+  "evidence_en": "The certificate must be collected in person from the office on showing ID; it cannot be sent.",
+  "why": "Man muss es persönlich im Sekretariat abholen.",
+  "why_en": "You have to collect it in person at the office.",
+  "trap": "c: Online stehen nur die Ergebnisse, nicht das Zertifikat.",
+  "trap_en": "c: only the results are online, not the certificate.",
+  "question_en": "The certificate …",
+  "options_en": [
+   "is sent home by post.",
+   "has to be collected in person.",
+   "can be downloaded online."
+  ]
+ },
+ "H1-1a": {
+  "evidence": "Der Elternabend findet deshalb erst am Donnerstag, dem 16., statt",
+  "evidence_en": "So the parents' evening won't take place until Thursday the 16th",
+  "why": "Dienstag war der alte Plan; der neue Termin ist Donnerstag.",
+  "why_en": "Tuesday was the old plan; the new date is Thursday.",
+  "trap": "Dienstag wird zuerst genannt, aber nur als ursprünglicher Termin, der sich geändert hat.",
+  "trap_en": "Tuesday is mentioned first, but only as the original date that has changed.",
+  "question_en": "The parents' evening takes place on Tuesday."
+ },
+ "H1-1b": {
+  "evidence": "aber nicht im Klassenzimmer, sondern in der Aula",
+  "evidence_en": "but not in the classroom, but in the hall",
+  "why": "'Nicht …, sondern in der Aula' – der Ort ist die Aula.",
+  "why_en": "'Not … but in the hall' – the place is the hall.",
+  "trap": "a nimmt 'Klassenzimmer', aber das wird mit 'nicht' ausgeschlossen.",
+  "trap_en": "a reuses 'classroom', but it is ruled out with 'not'.",
+  "question_en": "The parents' evening …",
+  "options_en": [
+   "takes place in the classroom.",
+   "takes place in the assembly hall.",
+   "is cancelled completely."
+  ]
+ },
+ "H1-2a": {
+  "evidence": "Am Freitag ist die Messe von 9 bis 15 Uhr nur für Schulklassen reserviert",
+  "evidence_en": "On Friday the fair is reserved for school classes only from 9 to 3",
+  "why": "Am Freitag dürfen nur Schulklassen kommen; für alle ist die Messe erst am Samstag.",
+  "why_en": "On Friday only school classes may come; the fair is open to everyone only on Saturday.",
+  "trap": "'Für alle geöffnet' kommt vor, aber es gehört zum Samstag.",
+  "trap_en": "'Open to everyone' is said, but it belongs to Saturday.",
+  "question_en": "On Friday anyone interested can visit the fair."
+ },
+ "H1-2b": {
+  "evidence": "Dafür brauchen Sie keinen Termin, kommen Sie einfach zum Stand 45.",
+  "evidence_en": "You don't need an appointment for this, just come to stand 45.",
+  "why": "Kein Termin nötig, einfach zum Stand 45: Antwort a.",
+  "why_en": "No appointment needed, just go to stand 45: option a.",
+  "trap": "c: Der Check ist kostenlos, es gibt keine Gebühr.",
+  "trap_en": "c: the check is free, there's no fee.",
+  "question_en": "Anyone who wants to have their application checked …",
+  "options_en": [
+   "goes to stand 45 without an appointment.",
+   "has to make an appointment beforehand.",
+   "pays a small fee."
+  ]
+ },
+ "H1-3a": {
+  "evidence": "Julia hat vorgeschlagen, dass wir uns stattdessen bei ihr treffen",
+  "evidence_en": "Julia suggested we meet at her place instead",
+  "why": "Die Bibliothek war der alte Plan; jetzt treffen sie sich bei Julia.",
+  "why_en": "The library was the old plan; now they meet at Julia's.",
+  "trap": "Die Uhrzeit bleibt gleich, aber der Ort ist nicht mehr die Bibliothek.",
+  "trap_en": "The time stays the same, but the place is no longer the library.",
+  "question_en": "The study group is meeting in the library tomorrow."
+ },
+ "H1-3b": {
+  "evidence": "Bring bitte die alten Prüfungen mit, die du vom Professor bekommen hast",
+  "evidence_en": "Please bring the old exams you got from the professor",
+  "why": "Marie soll die alten Prüfungen (und Kaffee) mitbringen.",
+  "why_en": "Marie should bring the old exams (and coffee).",
+  "trap": "a: Kuchen bringt Tobias selbst mit, nicht Marie.",
+  "trap_en": "a: Tobias is bringing the cake himself, not Marie.",
+  "question_en": "Marie is supposed to …",
+  "options_en": [
+   "bring cake.",
+   "bring the old exams.",
+   "reserve a group room."
+  ]
+ },
+ "H1-4a": {
+  "evidence": "schließt die Bibliothek heute ausnahmsweise schon um 18 Uhr statt um 22 Uhr",
+  "evidence_en": "the library is closing today, exceptionally, at 6 pm instead of 10 pm",
+  "why": "Von 22 bis 18 Uhr sind es vier Stunden: Sie schließt vier Stunden früher.",
+  "why_en": "From 10 pm to 6 pm is four hours: it closes four hours earlier.",
+  "trap": "Man muss rechnen; die Zahl vier wird nicht gesagt.",
+  "trap_en": "You have to calculate; the number four isn't said.",
+  "question_en": "The library closes four hours earlier than usual today."
+ },
+ "H1-4b": {
+  "evidence": "Die Einführung in die Literaturrecherche für Erstsemester findet heute trotzdem statt",
+  "evidence_en": "The introduction to literature research for first-years is still taking place today",
+  "why": "'Trotzdem' heißt: trotz der Störung wie geplant.",
+  "why_en": "'Still' means as planned despite the problem.",
+  "trap": "b nimmt '8 Uhr morgen', aber das ist die normale Öffnung der Bibliothek.",
+  "trap_en": "b reuses '8 am tomorrow', but that's when the library reopens normally.",
+  "question_en": "The introduction for first-year students …",
+  "options_en": [
+   "is cancelled today.",
+   "takes place tomorrow at 8.",
+   "takes place today as planned."
+  ]
+ },
+ "H1-5a": {
+  "evidence": "in kurzen Videos, jedes höchstens zehn Minuten lang",
+  "evidence_en": "in short videos, each no more than ten minutes long",
+  "why": "Die Aussage wiederholt das fast wörtlich: höchstens zehn Minuten.",
+  "why_en": "The statement repeats this almost word for word: at most ten minutes.",
+  "trap": "Die Zahl drei (Wochen) gehört zur Prüfung, nicht zu den Videos.",
+  "trap_en": "The number three (weeks) belongs to the exam, not to the videos.",
+  "question_en": "The learning videos last ten minutes at most."
+ },
+ "H1-5b": {
+  "evidence": "Die ersten 30 Tage sind kostenlos",
+  "evidence_en": "The first 30 days are free",
+  "why": "30 Tage sind ungefähr ein Monat: Die App ist einen Monat kostenlos.",
+  "why_en": "30 days is about one month: the app is free for a month.",
+  "trap": "b: 6,99 Euro kostet sie pro Monat, nicht pro Jahr.",
+  "trap_en": "b: it costs 6.99 euros per month, not per year.",
+  "question_en": "The app …",
+  "options_en": [
+   "is free for a month.",
+   "costs 6.99 euros a year.",
+   "is only for teachers and parents."
+  ]
+ },
+ "H2-1": {
+  "evidence": "Ab Mittwoch arbeiten Sie dann in Ihren Abteilungen mit.",
+  "evidence_en": "From Wednesday you'll then work in your departments.",
+  "why": "Heute und morgen sind sie im Schulungsraum, ab Mittwoch in den Abteilungen.",
+  "why_en": "Today and tomorrow they're in the training room, from Wednesday in the departments.",
+  "trap": "a: Heute lernen sie die Abteilungen nur kennen, sie arbeiten dort noch nicht.",
+  "trap_en": "a: today they only get to know the departments, they don't work there yet.",
+  "question_en": "The new apprentices work in the departments from … .",
+  "options_en": [
+   "today",
+   "Wednesday",
+   "next week"
+  ]
+ },
+ "H2-2": {
+  "evidence": "im zweiten Lehrjahr wechselt das auf Donnerstag und Freitag",
+  "evidence_en": "in the second year it changes to Thursday and Friday",
+  "why": "Im zweiten Lehrjahr: Donnerstag und Freitag.",
+  "why_en": "In the second year: Thursday and Friday.",
+  "trap": "b (Montag und Dienstag) gilt nur für das erste Lehrjahr.",
+  "trap_en": "b (Monday and Tuesday) only applies to the first year.",
+  "question_en": "In the second year of training, vocational school is …",
+  "options_en": [
+   "on Thursday and Friday.",
+   "on Monday and Tuesday.",
+   "on three days a week."
+  ]
+ },
+ "H2-3": {
+  "evidence": "rufen Sie bitte bis 7 Uhr 30 hier an, nicht bei Ihren Kollegen, sondern direkt bei mir oder im Sekretariat",
+  "evidence_en": "please call here by 7:30, not your colleagues but me directly or the office",
+  "why": "Man ruft bis 7:30 beim Ausbildungsleiter oder im Sekretariat an: Antwort c.",
+  "why_en": "You call the training manager or the office by 7:30: option c.",
+  "trap": "a nimmt 'Kollegen', aber er sagt 'nicht bei Ihren Kollegen'; b: Das Attest braucht man erst ab dem dritten Tag.",
+  "trap_en": "a reuses 'colleagues', but he says 'not your colleagues'; b: a doctor's note is only needed from the third day.",
+  "question_en": "Anyone who is ill …",
+  "options_en": [
+   "informs their colleagues.",
+   "needs a doctor's sick note immediately.",
+   "calls the training manager or the office by 7:30."
+  ]
+ },
+ "H2-4": {
+  "evidence": "das ist ein Auszubildender aus dem dritten Lehrjahr",
+  "evidence_en": "that's a trainee in their third year",
+  "why": "Die Paten sind Azubis aus dem dritten Lehrjahr.",
+  "why_en": "The mentors are third-year trainees.",
+  "trap": "c: 'In drei Monaten' ist das Gespräch mit dem Chef; die Paten lernt man heute kennen.",
+  "trap_en": "c: 'in three months' is the review talk with the manager; you meet the mentors today.",
+  "question_en": "The mentors …",
+  "options_en": [
+   "are apprentices from the third year.",
+   "are the heads of the departments.",
+   "you only get to know in three months."
+  ]
+ },
+ "H2-5": {
+  "evidence": "nicht wegen der Ablenkung, sondern weil die Maschinen gefährlich sind",
+  "evidence_en": "not because of the distraction, but because the machines are dangerous",
+  "why": "Der Grund ist die Sicherheit: Die Maschinen sind gefährlich.",
+  "why_en": "The reason is safety: the machines are dangerous.",
+  "trap": "a nimmt 'Ablenkung', aber er sagt ausdrücklich 'nicht wegen der Ablenkung'.",
+  "trap_en": "a reuses 'distraction', but he explicitly says 'not because of the distraction'.",
+  "question_en": "In production, mobile phones are banned …",
+  "options_en": [
+   "because they distract from work.",
+   "because the machines are dangerous.",
+   "except during the lunch break."
+  ]
+ },
+ "H3-1": {
+  "evidence": "In zwei Wochen ist die Bewerbungsfrist für die Uni, und ich weiß immer noch nicht, ob ich überhaupt studieren will.",
+  "evidence_en": "The university application deadline is in two weeks, and I still don't know if I even want to study.",
+  "why": "Er hat sich noch nicht beworben und will gar nicht Medizin studieren.",
+  "why_en": "He hasn't applied yet and doesn't even want to study medicine.",
+  "trap": "Medizin ist der Wunsch der Mutter, nicht sein Plan.",
+  "trap_en": "Medicine is his mother's wish, not his plan.",
+  "question_en": "Deniz has already applied to study medicine."
+ },
+ "H3-2": {
+  "evidence": "das hat mir richtig Spaß gemacht",
+  "evidence_en": "I really enjoyed it",
+  "why": "'Richtig Spaß gemacht' heißt: Es hat ihm gut gefallen.",
+  "why_en": "'Really enjoyed it' means he liked it a lot.",
+  "trap": "Er klingt insgesamt gestresst, aber über das Praktikum spricht er positiv.",
+  "trap_en": "He sounds stressed overall, but he speaks positively about the internship.",
+  "question_en": "Deniz liked the internship in physiotherapy."
+ },
+ "H3-3": {
+  "evidence": "Bei der Schule, die ich mir angeschaut habe, sind es 180 Euro im Monat.",
+  "evidence_en": "At the school I looked at, it's 180 euros a month.",
+  "why": "180 Euro im Monat Schulgeld – also jeden Monat.",
+  "why_en": "180 euros a month in school fees – so every month.",
+  "trap": "'An manchen Schulen' klingt unsicher, aber für seine Schule nennt er klar die 180 Euro.",
+  "trap_en": "'At some schools' sounds vague, but for his school he clearly names 180 euros.",
+  "question_en": "At the vocational school Deniz would have to pay school fees every month."
+ },
+ "H3-4": {
+  "evidence": "Aber das dauert vier Jahre statt drei",
+  "evidence_en": "But that takes four years instead of three",
+  "why": "Das Studium dauert vier Jahre, die Ausbildung drei: Das Studium ist länger.",
+  "why_en": "The degree takes four years, the training three: the degree is longer.",
+  "trap": "Beide Zahlen kommen vor; man muss sie richtig zuordnen.",
+  "trap_en": "Both numbers appear; you have to match them correctly.",
+  "question_en": "The degree in Bochum takes less time than the apprenticeship."
+ },
+ "H3-5": {
+  "evidence": "Ich habe damals 500 Euro im Monat bekommen",
+  "evidence_en": "Back then I got 500 euros a month",
+  "why": "Elif erzählt von ihrem eigenen BAföG: Sie hat es bekommen.",
+  "why_en": "Elif talks about her own BAföG: she received it.",
+  "trap": "Die Hälfte muss man zurückzahlen, aber das ändert nichts daran, dass sie es bekommen hat.",
+  "trap_en": "Half has to be paid back, but that doesn't change the fact that she received it.",
+  "question_en": "Elif received BAföG (student grant) during her studies."
+ },
+ "H3-6": {
+  "evidence": "Nein. Das machst du allein, du bist erwachsen.",
+  "evidence_en": "No. You'll do that alone, you're an adult.",
+  "why": "Deniz fragt, ob sie mitkommt, und Elif sagt Nein.",
+  "why_en": "Deniz asks if she'll come along, and Elif says no.",
+  "trap": "Sie hilft ihm (sie kocht danach), aber sie geht nicht mit zur Mutter.",
+  "trap_en": "She supports him (she'll cook afterwards), but she won't go with him to their mother.",
+  "question_en": "Elif wants to talk to their mother together with Deniz."
+ },
+ "H3-7": {
+  "evidence": "Dann bewerbe ich mich in Bochum und zur Sicherheit auch bei der Berufsfachschule hier.",
+  "evidence_en": "Then I'll apply in Bochum and, to be safe, also at the vocational school here.",
+  "why": "'In Bochum und auch bei der Berufsfachschule' = sowohl … als auch.",
+  "why_en": "'In Bochum and also at the vocational school' = both … and.",
+  "trap": "Vorher hatte er Zweifel wegen Bochum, aber am Ende entscheidet er sich für beide.",
+  "trap_en": "Earlier he had doubts about Bochum, but in the end he chooses both.",
+  "question_en": "Deniz wants to apply both in Bochum and at the vocational school."
+ },
+ "H4-1": {
+  "evidence": "Bei mir dürfen die Schüler die KI zum Beispiel benutzen, um einen ersten Entwurf zu schreiben.",
+  "evidence_en": "In my class pupils may use AI, for example, to write a first draft.",
+  "why": "Herr Roth (a) beschreibt seinen Unterricht: Entwurf mit KI, dann selbst verbessern.",
+  "why_en": "Mr Roth (a) describes his lessons: draft with AI, then improve it themselves.",
+  "trap": "Frau Kramer spricht auch über Hausaufgaben mit KI, aber kritisch und ohne diese Methode.",
+  "trap_en": "Ms Kramer also talks about homework with AI, but critically and without this method.",
+  "question_en": "Pupils may write a first draft with AI, which they then have to improve themselves."
+ },
+ "H4-2": {
+  "evidence": "Aber in der Klassenarbeit, ohne Computer, schneiden diese Schüler schlechter ab als die Gruppe ohne KI.",
+  "evidence_en": "But in the class test, without a computer, these pupils do worse than the group without AI.",
+  "why": "Das ist das Ergebnis von Frau Kramers (b) Studie.",
+  "why_en": "This is the result of Ms Kramer's (b) study.",
+  "trap": "Herr Roth sagt das Gegenteil: Seine Schüler sind besser geworden.",
+  "trap_en": "Mr Roth says the opposite: his pupils have got better.",
+  "question_en": "Pupils who learn with AI do worse in class tests."
+ },
+ "H4-3": {
+  "evidence": "sich jeden Abend zehn Minuten abfragen lassen",
+  "evidence_en": "have themselves quizzed for ten minutes every evening",
+  "why": "Herr Roth (a) erzählt von seinen Schülern, die die KI als Trainer benutzen.",
+  "why_en": "Mr Roth (a) talks about his pupils who use AI as a trainer.",
+  "trap": "Frau Kramer antwortet darauf, aber sie sagt nur, das seien motivierte Schüler.",
+  "trap_en": "Ms Kramer responds to this, but only says these are already motivated pupils.",
+  "question_en": "Some pupils have the AI quiz them every evening."
+ },
+ "H4-4": {
+  "evidence": "Die Schere zwischen guten und schwachen Schülern wird noch größer, das ist meine große Sorge.",
+  "evidence_en": "The gap between good and weak pupils will get even bigger, that's my big worry.",
+  "why": "'Die Schere wird größer' bedeutet: Der Unterschied wächst. Das sagt Frau Kramer (b).",
+  "why_en": "'The scissors open wider' means the gap grows. Ms Kramer (b) says this.",
+  "trap": "Herr Roth spricht auch über gute Schüler, aber nicht über den Unterschied.",
+  "trap_en": "Mr Roth also talks about good pupils, but not about the gap.",
+  "question_en": "The gap between good and weak pupils could become even bigger."
+ },
+ "H4-5": {
+  "evidence": "ich habe ehrlich gesagt keine Ahnung, ob ihre Referate von ihr sind oder vom Computer",
+  "evidence_en": "honestly I have no idea whether her presentations are hers or the computer's",
+  "why": "Die Moderatorin erzählt von ihrer eigenen Tochter.",
+  "why_en": "The presenter talks about her own daughter.",
+  "trap": "Die Gäste antworten auf die Frage, aber die Aussage kommt von der Moderatorin.",
+  "trap_en": "The guests answer the question, but the statement comes from the presenter.",
+  "question_en": "I don't know whether my daughter writes her presentations herself."
+ },
+ "H4-6": {
+  "evidence": "Wir bräuchten kleinere Klassen, und die haben wir nicht.",
+  "evidence_en": "We would need smaller classes, and we don't have them.",
+  "why": "Frau Kramer (b) stimmt Gesprächen zu, sagt aber: Dafür braucht man kleinere Klassen.",
+  "why_en": "Ms Kramer (b) agrees about conversations but says you'd need smaller classes for that.",
+  "trap": "Die Idee 'mehr fragen, weniger lesen' kommt von Herrn Roth, aber die kleineren Klassen nennt nur Frau Kramer.",
+  "trap_en": "The idea of 'asking more, reading less' is Mr Roth's, but only Ms Kramer mentions smaller classes.",
+  "question_en": "For more conversations with the pupils you would need smaller classes."
+ },
+ "H4-7": {
+  "evidence": "Ein Kind, das mit acht Jahren lernt, dass der Computer auch Unsinn erzählt, ist mit zwölf viel kritischer.",
+  "evidence_en": "A child who learns at eight that the computer also talks nonsense is much more critical at twelve.",
+  "why": "'Unsinn erzählen' = Fehler machen. Herr Roth (a) ist gegen das Verbot in der Grundschule.",
+  "why_en": "'Talking nonsense' = making mistakes. Mr Roth (a) is against the ban in primary school.",
+  "trap": "Frau Kramer spricht auch über Fehler der Programme, aber erst ab der siebten Klasse; in der Grundschule will sie keine KI.",
+  "trap_en": "Ms Kramer also mentions the programs' errors, but only from year seven; she wants no AI in primary school.",
+  "question_en": "Even primary school children should already learn that the computer makes mistakes."
+ },
+ "H4-8": {
+  "evidence": "Die KI ist da, und die Frage ist nicht ob, sondern wie.",
+  "evidence_en": "AI is here, and the question isn't whether but how.",
+  "why": "Das ist die Zusammenfassung der Moderatorin am Ende.",
+  "why_en": "This is the presenter's summary at the end.",
+  "trap": "Herr Roth denkt ähnlich, aber diesen Satz sagt die Moderatorin.",
+  "trap_en": "Mr Roth thinks similarly, but it's the presenter who says this sentence.",
+  "question_en": "The important question is not whether you use AI, but how."
+ }
+}

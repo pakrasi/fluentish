@@ -1,0 +1,902 @@
+[
+{
+"id": "ENG_CHUNK_0701",
+"chunk": "I'll try to [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Making a noncommittal promise",
+"register": "neutral",
+"natural_example": "I'll try to get there by seven, but no promises.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0702",
+"chunk": "I'll let you know when [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Promising an update",
+"register": "neutral",
+"natural_example": "I'll let you know when I get home.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0703",
+"chunk": "I'll make sure [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Promising to take care of something",
+"register": "neutral",
+"natural_example": "Don't worry, I'll make sure the dog gets fed.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0704",
+"chunk": "How did [noun] go?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking about the outcome of an event",
+"register": "neutral",
+"natural_example": "Hey, how did the interview go?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0705",
+"chunk": "Have you had a chance to [base-verb]?",
+"category": "sentence_frame",
+"pragmatic_function": "Politely checking progress",
+"register": "polite",
+"natural_example": "Have you had a chance to look at my email?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0706",
+"chunk": "How long does it take to [base-verb]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking how much time something needs",
+"register": "neutral",
+"natural_example": "How long does it take to get to the airport from here?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0707",
+"chunk": "I'm surprised [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Expressing surprise",
+"register": "neutral",
+"natural_example": "I'm surprised you're still awake.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0708",
+"chunk": "According to [noun], [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Citing a source",
+"register": "neutral",
+"natural_example": "According to the forecast, it's going to snow tomorrow.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0709",
+"chunk": "They say [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Citing common wisdom",
+"register": "neutral",
+"natural_example": "They say it's the best pizza in town.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0710",
+"chunk": "It's kind of like [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Making a rough comparison",
+"register": "informal",
+"natural_example": "It's kind of like a sandwich, but with rice instead of bread.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0711",
+"chunk": "[noun] reminds me of [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Making an association",
+"register": "neutral",
+"natural_example": "This song reminds me of my high school days.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0712",
+"chunk": "[noun] isn't as [adjective] as [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Making a negative comparison",
+"register": "neutral",
+"natural_example": "This apartment isn't as big as our old one.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0713",
+"chunk": "What's the difference between [noun] and [noun]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking how two things differ",
+"register": "neutral",
+"natural_example": "What's the difference between a latte and a flat white?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0714",
+"chunk": "It's too [adjective] to [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Saying something is excessive for a purpose",
+"register": "neutral",
+"natural_example": "It's too cold to go to the beach today.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0715",
+"chunk": "It's not [adjective] enough to [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Saying something falls short",
+"register": "neutral",
+"natural_example": "It's not warm enough to eat outside yet.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0716",
+"chunk": "It was such a [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Emphasizing a description",
+"register": "neutral",
+"natural_example": "It was such a beautiful wedding.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0717",
+"chunk": "I had a great time [verb-ing]",
+"category": "sentence_frame",
+"pragmatic_function": "Describing an enjoyable experience",
+"register": "neutral",
+"natural_example": "I had a great time hanging out with you guys last night.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0718",
+"chunk": "Do you ever [base-verb]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking about someone's habits",
+"register": "neutral",
+"natural_example": "Do you ever go running in the morning?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0719",
+"chunk": "I miss [verb-ing]",
+"category": "sentence_frame",
+"pragmatic_function": "Expressing nostalgia",
+"register": "neutral",
+"natural_example": "I miss living near the ocean.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0720",
+"chunk": "I've always wanted to [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Sharing a long-held wish",
+"register": "neutral",
+"natural_example": "I've always wanted to learn how to surf.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0721",
+"chunk": "It would be nice to [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Expressing a mild wish",
+"register": "neutral",
+"natural_example": "It would be nice to get away for a weekend.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0722",
+"chunk": "If I had [noun], I'd [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Imagining a hypothetical",
+"register": "neutral",
+"natural_example": "If I had more time, I'd take a cooking class.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0723",
+"chunk": "I could really use [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Expressing a strong need",
+"register": "informal",
+"natural_example": "I could really use a coffee right now.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0724",
+"chunk": "You might want to [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Giving soft advice",
+"register": "neutral",
+"natural_example": "It's pouring later, so you might want to bring an umbrella.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0725",
+"chunk": "You'd be better off [verb-ing]",
+"category": "sentence_frame",
+"pragmatic_function": "Advising a better option",
+"register": "neutral",
+"natural_example": "Honestly, you'd be better off taking the train.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0726",
+"chunk": "Is there any chance you could [base-verb]?",
+"category": "sentence_frame",
+"pragmatic_function": "Making a tentative request",
+"register": "polite",
+"natural_example": "Is there any chance you could pick me up from the airport?",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0727",
+"chunk": "I'd appreciate it if you could [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Making a firm, polite request",
+"register": "polite",
+"natural_example": "I'd appreciate it if you could turn the music down after ten.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0728",
+"chunk": "It's not like [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Dismissing an exaggerated claim",
+"register": "informal",
+"natural_example": "Just take it. It's not like I'm going to use it.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0729",
+"chunk": "It's not every day [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Marking a rare occasion",
+"register": "neutral",
+"natural_example": "Let's celebrate! It's not every day you turn forty.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0730",
+"chunk": "When it comes to [noun], [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Framing a topic",
+"register": "neutral",
+"natural_example": "When it comes to cooking, my dad's the expert.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0731",
+"chunk": "Speaking of [noun], [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Linking to a related topic",
+"register": "neutral",
+"natural_example": "Speaking of food, is anyone else hungry?",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0732",
+"chunk": "I have to admit [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Conceding something reluctantly",
+"register": "neutral",
+"natural_example": "I have to admit I was a little nervous.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0733",
+"chunk": "The reason I'm asking is [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Explaining why you asked",
+"register": "neutral",
+"natural_example": "The reason I'm asking is I need a ride on Saturday.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0734",
+"chunk": "I'm not saying [clause], but [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Qualifying a claim",
+"register": "neutral",
+"natural_example": "I'm not saying it's bad, but it could be better.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0735",
+"chunk": "It's not about [noun], it's about [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Reframing what really matters",
+"register": "neutral",
+"natural_example": "It's not about the money, it's about respect.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0736",
+"chunk": "to take on [noun]",
+"category": "collocation",
+"pragmatic_function": "Accepting extra work or responsibility",
+"register": "neutral",
+"natural_example": "I can't take on any more work this month.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0737",
+"chunk": "to call in sick",
+"category": "collocation",
+"pragmatic_function": "Reporting absence from work",
+"register": "neutral",
+"natural_example": "I woke up with a fever, so I called in sick.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0738",
+"chunk": "to run a business",
+"category": "collocation",
+"pragmatic_function": "Talking about owning and managing a company",
+"register": "neutral",
+"natural_example": "My parents run a business selling used furniture.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0739",
+"chunk": "to make a living",
+"category": "collocation",
+"pragmatic_function": "Talking about how someone earns money",
+"register": "neutral",
+"natural_example": "He makes a living fixing old bikes.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0740",
+"chunk": "to be on the same page",
+"category": "collocation",
+"pragmatic_function": "Checking or confirming shared understanding",
+"register": "neutral",
+"natural_example": "Before we start, let's make sure we're on the same page.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0741",
+"chunk": "to cut corners",
+"category": "collocation",
+"pragmatic_function": "Criticizing a careless shortcut",
+"register": "neutral",
+"natural_example": "They cut corners on the renovation, and now the roof leaks.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0742",
+"chunk": "to be familiar with [noun]",
+"category": "collocation",
+"pragmatic_function": "Stating prior knowledge",
+"register": "neutral",
+"natural_example": "Are you familiar with this part of town?",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0743",
+"chunk": "to be aware of [noun]",
+"category": "collocation",
+"pragmatic_function": "Showing or checking awareness",
+"register": "neutral",
+"natural_example": "Sorry, I wasn't aware of the extra fee.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0744",
+"chunk": "a tight schedule",
+"category": "collocation",
+"pragmatic_function": "Explaining limited time",
+"register": "neutral",
+"natural_example": "Sorry, I'm on a tight schedule today.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0745",
+"chunk": "on short notice",
+"category": "collocation",
+"pragmatic_function": "Flagging a late request",
+"register": "neutral",
+"natural_example": "Thanks for coming in on short notice.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0746",
+"chunk": "to make time for [noun]",
+"category": "collocation",
+"pragmatic_function": "Prioritizing something",
+"register": "neutral",
+"natural_example": "You have to make time for yourself sometimes.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0747",
+"chunk": "to lose track of time",
+"category": "collocation",
+"pragmatic_function": "Explaining lateness",
+"register": "neutral",
+"natural_example": "Sorry I'm late, I totally lost track of time.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0748",
+"chunk": "to kill time",
+"category": "collocation",
+"pragmatic_function": "Filling waiting time",
+"register": "informal",
+"natural_example": "We killed time at the airport by walking around the shops.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0749",
+"chunk": "to play it by ear",
+"category": "collocation",
+"pragmatic_function": "Keeping plans flexible",
+"register": "informal",
+"natural_example": "Let's not plan too much, we'll just play it by ear.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0750",
+"chunk": "to keep [person] company",
+"category": "collocation",
+"pragmatic_function": "Staying with someone so they aren't alone",
+"register": "neutral",
+"natural_example": "I'll stay and keep you company until the bus comes.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0751",
+"chunk": "to be on a budget",
+"category": "collocation",
+"pragmatic_function": "Explaining spending limits",
+"register": "neutral",
+"natural_example": "We're on a budget this month, so let's eat in.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0752",
+"chunk": "to cost a fortune",
+"category": "collocation",
+"pragmatic_function": "Complaining about price",
+"register": "informal",
+"natural_example": "Fixing the car is going to cost a fortune.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0753",
+"chunk": "to make ends meet",
+"category": "collocation",
+"pragmatic_function": "Describing financial strain",
+"register": "neutral",
+"natural_example": "They're both working two jobs just to make ends meet.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0754",
+"chunk": "to pay off [noun]",
+"category": "collocation",
+"pragmatic_function": "Clearing a debt",
+"register": "neutral",
+"natural_example": "I finally paid off my student loans!",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0755",
+"chunk": "to be in debt",
+"category": "collocation",
+"pragmatic_function": "Talking about owing money",
+"register": "neutral",
+"natural_example": "I don't want to be in debt for the rest of my life.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0756",
+"chunk": "to cut back on [noun]",
+"category": "collocation",
+"pragmatic_function": "Reducing consumption",
+"register": "neutral",
+"natural_example": "I'm trying to cut back on sugar.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0757",
+"chunk": "to shop around",
+"category": "collocation",
+"pragmatic_function": "Comparing prices before buying",
+"register": "neutral",
+"natural_example": "Don't take the first offer, shop around a bit.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0758",
+"chunk": "to come down with [noun]",
+"category": "collocation",
+"pragmatic_function": "Reporting an illness that is starting",
+"register": "neutral",
+"natural_example": "I think I'm coming down with a cold.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0759",
+"chunk": "to feel under the weather",
+"category": "collocation",
+"pragmatic_function": "Mildly reporting illness",
+"register": "neutral",
+"natural_example": "I'm feeling under the weather, so I'll stay home.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0760",
+"chunk": "to put on weight",
+"category": "collocation",
+"pragmatic_function": "Talking about weight gain",
+"register": "neutral",
+"natural_example": "I've put on weight since I stopped going to the gym.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0761",
+"chunk": "to throw up",
+"category": "collocation",
+"pragmatic_function": "Reporting vomiting",
+"register": "informal",
+"natural_example": "The baby threw up all over my shirt.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0762",
+"chunk": "to pass out",
+"category": "collocation",
+"pragmatic_function": "Reporting fainting",
+"register": "neutral",
+"natural_example": "It was so hot that a guy in line passed out.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0763",
+"chunk": "to have a hangover",
+"category": "collocation",
+"pragmatic_function": "Reporting after-effects of drinking",
+"register": "informal",
+"natural_example": "I have a hangover, so please keep it down.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0764",
+"chunk": "to get over [noun]",
+"category": "collocation",
+"pragmatic_function": "Recovering from a setback",
+"register": "neutral",
+"natural_example": "It took me months to get over the breakup.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0765",
+"chunk": "to come to terms with [noun]",
+"category": "collocation",
+"pragmatic_function": "Accepting a painful reality",
+"register": "neutral",
+"natural_example": "He's still coming to terms with losing his job.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0766",
+"chunk": "Let's talk about something else",
+"category": "gambit_filler",
+"pragmatic_function": "Steering away from a topic",
+"register": "neutral",
+"natural_example": "Ugh, work again? Let's talk about something else.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0767",
+"chunk": "Enough about me",
+"category": "gambit_filler",
+"pragmatic_function": "Shifting focus to the other person",
+"register": "neutral",
+"natural_example": "Enough about me. How's your new job going?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0768",
+"chunk": "That's about it",
+"category": "gambit_filler",
+"pragmatic_function": "Signaling the end of an account",
+"register": "neutral",
+"natural_example": "We went to the museum, had dinner, and that's about it.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0769",
+"chunk": "Let's move on",
+"category": "gambit_filler",
+"pragmatic_function": "Closing a topic and moving on",
+"register": "neutral",
+"natural_example": "Okay, we've covered the budget, so let's move on.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0770",
+"chunk": "If you say so",
+"category": "gambit_filler",
+"pragmatic_function": "Accepting a claim with doubt",
+"register": "informal",
+"natural_example": "It's totally safe? Well, if you say so.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0771",
+"chunk": "Who knows?",
+"category": "gambit_filler",
+"pragmatic_function": "Speculating about an uncertain outcome",
+"register": "informal",
+"natural_example": "Maybe we'll move abroad one day. Who knows?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0772",
+"chunk": "No kidding",
+"category": "gambit_filler",
+"pragmatic_function": "Back-channel confirming the obvious or showing surprise",
+"register": "informal",
+"natural_example": "You got the job? No kidding!",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0773",
+"chunk": "Come to think of it",
+"category": "gambit_filler",
+"pragmatic_function": "Introducing an afterthought",
+"register": "neutral",
+"natural_example": "Come to think of it, I haven't seen Mike in weeks.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0774",
+"chunk": "The way I see it",
+"category": "gambit_filler",
+"pragmatic_function": "Framing a personal perspective",
+"register": "neutral",
+"natural_example": "The way I see it, we don't have much choice.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0775",
+"chunk": "Correct me if I'm wrong",
+"category": "gambit_filler",
+"pragmatic_function": "Hedging and inviting correction",
+"register": "neutral",
+"natural_example": "Correct me if I'm wrong, but didn't we already pay for this?",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0776",
+"chunk": "For the record",
+"category": "gambit_filler",
+"pragmatic_function": "Stating your position clearly",
+"register": "neutral",
+"natural_example": "For the record, I never said I'd drive.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0777",
+"chunk": "Not necessarily",
+"category": "gambit_filler",
+"pragmatic_function": "Partially disagreeing",
+"register": "neutral",
+"natural_example": "Expensive wine is always better, right? Not necessarily.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0778",
+"chunk": "Or whatever",
+"category": "gambit_filler",
+"pragmatic_function": "Trailing off with a vague, casual ending",
+"register": "informal",
+"natural_example": "We could get pizza or tacos or whatever.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0779",
+"chunk": "I'm just thinking out loud",
+"category": "gambit_filler",
+"pragmatic_function": "Marking an idea as unfinished",
+"register": "informal",
+"natural_example": "What if we moved the couch? I'm just thinking out loud.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0780",
+"chunk": "Off the top of my head",
+"category": "gambit_filler",
+"pragmatic_function": "Hedging an unprepared answer",
+"register": "neutral",
+"natural_example": "Off the top of my head, I'd say about fifty people.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0781",
+"chunk": "Can't complain",
+"category": "fixed_formula",
+"pragmatic_function": "Giving a modest positive answer to \"how are you\"",
+"register": "informal",
+"natural_example": "How's it going? Oh, can't complain.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0782",
+"chunk": "Keep me posted",
+"category": "fixed_formula",
+"pragmatic_function": "Asking for updates on a developing situation",
+"register": "informal",
+"natural_example": "Good luck with the test, keep me posted!",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0783",
+"chunk": "Let's call it a day",
+"category": "fixed_formula",
+"pragmatic_function": "Proposing to stop working for now",
+"register": "neutral",
+"natural_example": "It's almost seven. Let's call it a day.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0784",
+"chunk": "It's the least I could do",
+"category": "fixed_formula",
+"pragmatic_function": "Modestly responding to thanks",
+"register": "neutral",
+"natural_example": "Thanks for the flowers! Oh, it's the least I could do.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0785",
+"chunk": "I'll let you go",
+"category": "fixed_formula",
+"pragmatic_function": "Politely wrapping up a phone call",
+"register": "neutral",
+"natural_example": "Anyway, I'll let you go. Talk soon!",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0786",
+"chunk": "Don't be a stranger",
+"category": "fixed_formula",
+"pragmatic_function": "Warmly inviting someone to stay in contact",
+"register": "informal",
+"natural_example": "It was great seeing you. Don't be a stranger!",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0787",
+"chunk": "You've got to be kidding me",
+"category": "fixed_formula",
+"pragmatic_function": "Expressing exasperated disbelief",
+"register": "informal",
+"natural_example": "The flight's canceled again? You've got to be kidding me.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0788",
+"chunk": "Give me a break",
+"category": "fixed_formula",
+"pragmatic_function": "Protesting that something is unfair or ridiculous",
+"register": "informal",
+"natural_example": "You want me to work Saturday too? Give me a break.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0789",
+"chunk": "That's the last straw",
+"category": "fixed_formula",
+"pragmatic_function": "Declaring that your patience has run out",
+"register": "neutral",
+"natural_example": "He's late again? That's the last straw.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0790",
+"chunk": "Just my luck",
+"category": "fixed_formula",
+"pragmatic_function": "Complaining ironically about bad luck",
+"register": "informal",
+"natural_example": "It started raining as soon as I left. Just my luck.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0791",
+"chunk": "As usual",
+"category": "discourse_connector",
+"pragmatic_function": "Marking something as typical",
+"register": "neutral",
+"natural_example": "As usual, the bus was late.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0792",
+"chunk": "Then again",
+"category": "discourse_connector",
+"pragmatic_function": "Raising a counter-consideration",
+"register": "neutral",
+"natural_example": "The hotel's expensive. Then again, it's right on the beach.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0793",
+"chunk": "Even so",
+"category": "discourse_connector",
+"pragmatic_function": "Accepting a fact but keeping a contrast",
+"register": "neutral",
+"natural_example": "It's only a small cut. Even so, you should clean it.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0794",
+"chunk": "Not to mention",
+"category": "discourse_connector",
+"pragmatic_function": "Adding an even stronger point in passing",
+"register": "neutral",
+"natural_example": "The apartment's huge, not to mention really close to work.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0795",
+"chunk": "Sure enough",
+"category": "discourse_connector",
+"pragmatic_function": "Confirming that an expectation came true",
+"register": "neutral",
+"natural_example": "I said it would rain, and sure enough, it poured.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0796",
+"chunk": "All the more reason",
+"category": "discourse_connector",
+"pragmatic_function": "Turning a point into a stronger reason",
+"register": "neutral",
+"natural_example": "It's your birthday? All the more reason to celebrate!",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0797",
+"chunk": "On second thought",
+"category": "discourse_connector",
+"pragmatic_function": "Changing your mind mid-conversation",
+"register": "neutral",
+"natural_example": "I'll have the salad. On second thought, make that the burger.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0798",
+"chunk": "Ever since",
+"category": "discourse_connector",
+"pragmatic_function": "Linking an ongoing situation to its starting point",
+"register": "neutral",
+"natural_example": "Ever since I moved here, I've been walking to work.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0799",
+"chunk": "Not only that",
+"category": "discourse_connector",
+"pragmatic_function": "Escalating with an extra point",
+"register": "neutral",
+"natural_example": "The hotel was dirty. Not only that, the staff were rude.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0800",
+"chunk": "At that point",
+"category": "discourse_connector",
+"pragmatic_function": "Pinpointing a turning moment in a story",
+"register": "neutral",
+"natural_example": "At that point, I realized I'd left my wallet at home.",
+"cefr_level": "B2"
+}
+]

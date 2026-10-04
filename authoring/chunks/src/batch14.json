@@ -1,0 +1,902 @@
+[
+{
+"id": "ENG_CHUNK_1301",
+"chunk": "First",
+"category": "discourse_connector",
+"pragmatic_function": "Starting a sequence",
+"register": "neutral",
+"natural_example": "First, open the app. Then log in.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1302",
+"chunk": "Or",
+"category": "discourse_connector",
+"pragmatic_function": "Giving a choice",
+"register": "neutral",
+"natural_example": "Tea or coffee?",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1303",
+"chunk": "Finally",
+"category": "discourse_connector",
+"pragmatic_function": "Last step in a sequence",
+"register": "neutral",
+"natural_example": "Finally, we arrived at the hotel.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1304",
+"chunk": "Next",
+"category": "discourse_connector",
+"pragmatic_function": "Moving to the next step",
+"register": "neutral",
+"natural_example": "Next, turn right at the bank.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1305",
+"chunk": "Later",
+"category": "discourse_connector",
+"pragmatic_function": "Referring to a time after now or after an event",
+"register": "neutral",
+"natural_example": "I'm busy now. Can I call you later?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1306",
+"chunk": "Because of that",
+"category": "discourse_connector",
+"pragmatic_function": "Giving a result of a previous fact",
+"register": "neutral",
+"natural_example": "The train was late. Because of that, I missed my meeting.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1307",
+"chunk": "Afterwards",
+"category": "discourse_connector",
+"pragmatic_function": "After an event",
+"register": "neutral",
+"natural_example": "We watched a movie. Afterwards, we had dinner.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1308",
+"chunk": "And also",
+"category": "discourse_connector",
+"pragmatic_function": "Adding a second point",
+"register": "neutral",
+"natural_example": "I need bread and also some milk.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1309",
+"chunk": "But then",
+"category": "discourse_connector",
+"pragmatic_function": "Introducing an unexpected change",
+"register": "neutral",
+"natural_example": "I wanted to go out, but then it started to rain.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1310",
+"chunk": "Or maybe",
+"category": "discourse_connector",
+"pragmatic_function": "Suggesting another option",
+"register": "neutral",
+"natural_example": "Let's go to the beach. Or maybe the park?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1311",
+"chunk": "At the beginning",
+"category": "discourse_connector",
+"pragmatic_function": "Talking about the start of something",
+"register": "neutral",
+"natural_example": "At the beginning, English was very hard for me.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1312",
+"chunk": "Anyway",
+"category": "discourse_connector",
+"pragmatic_function": "Changing topic or returning to the main point",
+"register": "informal",
+"natural_example": "Anyway, how was your weekend?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1313",
+"chunk": "One day",
+"category": "discourse_connector",
+"pragmatic_function": "Starting a story",
+"register": "neutral",
+"natural_example": "One day, I want to visit Japan.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1314",
+"chunk": "Suddenly",
+"category": "discourse_connector",
+"pragmatic_function": "Introducing a surprise event in a story",
+"register": "neutral",
+"natural_example": "Suddenly, the lights went out.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1315",
+"chunk": "Luckily",
+"category": "discourse_connector",
+"pragmatic_function": "Introducing a good event",
+"register": "neutral",
+"natural_example": "I lost my wallet, but luckily someone found it.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1316",
+"chunk": "to get up",
+"category": "collocation",
+"pragmatic_function": "Daily routine: leaving bed",
+"register": "neutral",
+"natural_example": "I get up at seven every day.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1317",
+"chunk": "to wake up",
+"category": "collocation",
+"pragmatic_function": "Daily routine: stopping sleeping",
+"register": "neutral",
+"natural_example": "I usually wake up at six.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1318",
+"chunk": "to have breakfast",
+"category": "collocation",
+"pragmatic_function": "Daily routine: eating the morning meal",
+"register": "neutral",
+"natural_example": "I have breakfast at home.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1319",
+"chunk": "to have lunch",
+"category": "collocation",
+"pragmatic_function": "Daily routine: eating the midday meal",
+"register": "neutral",
+"natural_example": "Let's have lunch together.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1320",
+"chunk": "to have dinner",
+"category": "collocation",
+"pragmatic_function": "Daily routine: eating the evening meal",
+"register": "neutral",
+"natural_example": "We have dinner at seven.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1321",
+"chunk": "to take a shower",
+"category": "collocation",
+"pragmatic_function": "Daily routine: washing",
+"register": "neutral",
+"natural_example": "I take a shower every morning.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1322",
+"chunk": "to brush your teeth",
+"category": "collocation",
+"pragmatic_function": "Daily routine: cleaning teeth",
+"register": "neutral",
+"natural_example": "Brush your teeth before bed.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1323",
+"chunk": "to get dressed",
+"category": "collocation",
+"pragmatic_function": "Daily routine: putting on clothes",
+"register": "neutral",
+"natural_example": "I get dressed and have breakfast.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1324",
+"chunk": "to go to bed",
+"category": "collocation",
+"pragmatic_function": "Daily routine: going to sleep",
+"register": "neutral",
+"natural_example": "I go to bed at eleven.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1325",
+"chunk": "to go to work",
+"category": "collocation",
+"pragmatic_function": "Daily routine: traveling to your job",
+"register": "neutral",
+"natural_example": "I go to work by bus.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1326",
+"chunk": "to go home",
+"category": "collocation",
+"pragmatic_function": "Leaving to return home",
+"register": "neutral",
+"natural_example": "I'm tired. I want to go home.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1327",
+"chunk": "to come home",
+"category": "collocation",
+"pragmatic_function": "Arriving at your home",
+"register": "neutral",
+"natural_example": "I come home at six.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1328",
+"chunk": "to go shopping",
+"category": "collocation",
+"pragmatic_function": "Going to shops to buy things",
+"register": "neutral",
+"natural_example": "Let's go shopping on Saturday.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1329",
+"chunk": "to watch TV",
+"category": "collocation",
+"pragmatic_function": "Free time activity",
+"register": "neutral",
+"natural_example": "I watch TV in the evening.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1330",
+"chunk": "to listen to music",
+"category": "collocation",
+"pragmatic_function": "Free time activity",
+"register": "neutral",
+"natural_example": "I listen to music on the bus.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1331",
+"chunk": "to do homework",
+"category": "collocation",
+"pragmatic_function": "Study task",
+"register": "neutral",
+"natural_example": "I do my homework after school.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1332",
+"chunk": "to cook dinner",
+"category": "collocation",
+"pragmatic_function": "Preparing the evening meal",
+"register": "neutral",
+"natural_example": "I cook dinner every night.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1333",
+"chunk": "to go for a walk",
+"category": "collocation",
+"pragmatic_function": "Walking for pleasure",
+"register": "neutral",
+"natural_example": "Let's go for a walk in the park.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1334",
+"chunk": "to play [sport]",
+"category": "collocation",
+"pragmatic_function": "Doing a sport or game",
+"register": "neutral",
+"natural_example": "I play football on Saturdays.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1335",
+"chunk": "to do the shopping",
+"category": "collocation",
+"pragmatic_function": "Buying food and household things",
+"register": "neutral",
+"natural_example": "I do the shopping on Mondays.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1336",
+"chunk": "to do the laundry",
+"category": "collocation",
+"pragmatic_function": "Washing clothes",
+"register": "neutral",
+"natural_example": "I do the laundry on Sunday.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1337",
+"chunk": "to clean the house",
+"category": "collocation",
+"pragmatic_function": "Housework",
+"register": "neutral",
+"natural_example": "We clean the house every Saturday.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1338",
+"chunk": "to wash your hands",
+"category": "collocation",
+"pragmatic_function": "Hygiene routine",
+"register": "neutral",
+"natural_example": "Wash your hands before dinner.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1339",
+"chunk": "to make coffee",
+"category": "collocation",
+"pragmatic_function": "Preparing a drink",
+"register": "neutral",
+"natural_example": "I'll make coffee. Do you want some?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1340",
+"chunk": "to take the bus",
+"category": "collocation",
+"pragmatic_function": "Using public transport",
+"register": "neutral",
+"natural_example": "I take the bus to school.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1341",
+"chunk": "to get on the bus",
+"category": "collocation",
+"pragmatic_function": "Entering a bus",
+"register": "neutral",
+"natural_example": "Get on the bus here and get off at the park.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1342",
+"chunk": "to get off the bus",
+"category": "collocation",
+"pragmatic_function": "Leaving a bus",
+"register": "neutral",
+"natural_example": "Get off the bus at the next stop.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1343",
+"chunk": "to buy a ticket",
+"category": "collocation",
+"pragmatic_function": "Paying for travel or entry",
+"register": "neutral",
+"natural_example": "Where can I buy a ticket?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1344",
+"chunk": "to rent a car",
+"category": "collocation",
+"pragmatic_function": "Hiring a car for a trip",
+"register": "neutral",
+"natural_example": "We want to rent a car for three days.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1345",
+"chunk": "to cross the street",
+"category": "collocation",
+"pragmatic_function": "Walking to the other side of the road",
+"register": "neutral",
+"natural_example": "Be careful when you cross the street.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1346",
+"chunk": "to turn left",
+"category": "collocation",
+"pragmatic_function": "Giving or following directions",
+"register": "neutral",
+"natural_example": "Turn left at the bank.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1347",
+"chunk": "to take a photo",
+"category": "collocation",
+"pragmatic_function": "Using a camera or phone",
+"register": "neutral",
+"natural_example": "Can I take a photo?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1348",
+"chunk": "to be hungry",
+"category": "collocation",
+"pragmatic_function": "Physical state",
+"register": "neutral",
+"natural_example": "I'm hungry. Let's eat.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1349",
+"chunk": "to be thirsty",
+"category": "collocation",
+"pragmatic_function": "Physical state",
+"register": "neutral",
+"natural_example": "I'm thirsty. Is there any water?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1350",
+"chunk": "to be tired",
+"category": "collocation",
+"pragmatic_function": "Physical state",
+"register": "neutral",
+"natural_example": "I'm tired. I'm going to bed.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1351",
+"chunk": "to be late",
+"category": "collocation",
+"pragmatic_function": "Not arriving on time",
+"register": "neutral",
+"natural_example": "Hurry up, we're going to be late!",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1352",
+"chunk": "to be on time",
+"category": "collocation",
+"pragmatic_function": "Arriving at the correct time",
+"register": "neutral",
+"natural_example": "The train is on time today.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1353",
+"chunk": "to have a good time",
+"category": "collocation",
+"pragmatic_function": "Enjoying yourself",
+"register": "neutral",
+"natural_example": "We had a good time at the beach.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1354",
+"chunk": "to have a headache",
+"category": "collocation",
+"pragmatic_function": "Health: pain in the head",
+"register": "neutral",
+"natural_example": "I have a headache. Do you have an aspirin?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1355",
+"chunk": "to have a fever",
+"category": "collocation",
+"pragmatic_function": "Health: high temperature",
+"register": "neutral",
+"natural_example": "My son has a fever.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1356",
+"chunk": "to take medicine",
+"category": "collocation",
+"pragmatic_function": "Health: using medicine",
+"register": "neutral",
+"natural_example": "Take this medicine twice a day.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1357",
+"chunk": "to make a phone call",
+"category": "collocation",
+"pragmatic_function": "Calling someone",
+"register": "neutral",
+"natural_example": "I need to make a phone call.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1358",
+"chunk": "to send a message",
+"category": "collocation",
+"pragmatic_function": "Texting or messaging",
+"register": "neutral",
+"natural_example": "I'll send you a message later.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1359",
+"chunk": "to charge your phone",
+"category": "collocation",
+"pragmatic_function": "Filling your phone battery",
+"register": "neutral",
+"natural_example": "Can I charge my phone here?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1360",
+"chunk": "to learn English",
+"category": "collocation",
+"pragmatic_function": "Studying a language",
+"register": "neutral",
+"natural_example": "I'm learning English for my job.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1361",
+"chunk": "My name is [name]",
+"category": "sentence_frame",
+"pragmatic_function": "Introducing yourself",
+"register": "neutral",
+"natural_example": "Hello, my name is Carlos.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1362",
+"chunk": "I'm from [place]",
+"category": "sentence_frame",
+"pragmatic_function": "Saying where you come from",
+"register": "neutral",
+"natural_example": "I'm from Mexico.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1363",
+"chunk": "I live in [place]",
+"category": "sentence_frame",
+"pragmatic_function": "Saying where you live",
+"register": "neutral",
+"natural_example": "I live in Chicago.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1364",
+"chunk": "I'm [number] years old",
+"category": "sentence_frame",
+"pragmatic_function": "Saying your age",
+"register": "neutral",
+"natural_example": "I'm thirty years old.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1365",
+"chunk": "I'm a [job]",
+"category": "sentence_frame",
+"pragmatic_function": "Saying your job",
+"register": "neutral",
+"natural_example": "I'm a teacher.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1366",
+"chunk": "This is my [person]",
+"category": "sentence_frame",
+"pragmatic_function": "Introducing someone else",
+"register": "neutral",
+"natural_example": "This is my wife, Julia.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1367",
+"chunk": "Do you speak [language]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking about language ability",
+"register": "neutral",
+"natural_example": "Excuse me, do you speak English?",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1368",
+"chunk": "I speak a little [language]",
+"category": "sentence_frame",
+"pragmatic_function": "Describing limited language ability",
+"register": "neutral",
+"natural_example": "I speak a little English.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1369",
+"chunk": "I'm learning [language]",
+"category": "sentence_frame",
+"pragmatic_function": "Talking about language study",
+"register": "neutral",
+"natural_example": "I'm learning English at night school.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1370",
+"chunk": "How do you say [word]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking for a word in the language you are speaking",
+"register": "neutral",
+"natural_example": "How do you say \"Danke\" in English?",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1371",
+"chunk": "What does [word] mean?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking the meaning of a word",
+"register": "neutral",
+"natural_example": "What does \"busy\" mean?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1372",
+"chunk": "I don't understand [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Saying what you don't understand",
+"register": "neutral",
+"natural_example": "I don't understand this word.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1373",
+"chunk": "It's [time]",
+"category": "sentence_frame",
+"pragmatic_function": "Telling the time",
+"register": "neutral",
+"natural_example": "It's three o'clock.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1374",
+"chunk": "My birthday is on [date]",
+"category": "sentence_frame",
+"pragmatic_function": "Saying your birthday",
+"register": "neutral",
+"natural_example": "My birthday is on May 3rd.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1375",
+"chunk": "When is [noun]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking when something happens",
+"register": "neutral",
+"natural_example": "When is your birthday?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1376",
+"chunk": "What time is [noun]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking the time of an event",
+"register": "neutral",
+"natural_example": "What time is the movie?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1377",
+"chunk": "What time does [place] open?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking opening times",
+"register": "neutral",
+"natural_example": "What time does the bank open?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1378",
+"chunk": "How much is [noun]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking the price of one thing",
+"register": "neutral",
+"natural_example": "How much is this T-shirt?",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1379",
+"chunk": "That's [price], please",
+"category": "sentence_frame",
+"pragmatic_function": "Telling a customer the price",
+"register": "neutral",
+"natural_example": "That's twelve dollars, please.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1380",
+"chunk": "Can I pay by [payment]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking about payment method",
+"register": "neutral",
+"natural_example": "Can I pay by card?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1381",
+"chunk": "Do you have [noun]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking if a shop or person has something",
+"register": "neutral",
+"natural_example": "Do you have milk?",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1382",
+"chunk": "It's a bit too [adjective]",
+"category": "sentence_frame",
+"pragmatic_function": "Saying something is not quite right, e.g. clothes",
+"register": "neutral",
+"natural_example": "It's a bit too big. Do you have a smaller one?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1383",
+"chunk": "Can I have [noun], please?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking for something politely",
+"register": "polite",
+"natural_example": "Can I have a coffee, please?",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1384",
+"chunk": "I'd like [noun], please",
+"category": "sentence_frame",
+"pragmatic_function": "Ordering or requesting politely",
+"register": "polite",
+"natural_example": "I'd like a sandwich, please.",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1385",
+"chunk": "I'll have [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Ordering food or drink",
+"register": "neutral",
+"natural_example": "I'll have the fish, please.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1386",
+"chunk": "A glass of [noun], please",
+"category": "sentence_frame",
+"pragmatic_function": "Ordering a drink",
+"register": "neutral",
+"natural_example": "A glass of water, please.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1387",
+"chunk": "Would you like some [noun]?",
+"category": "sentence_frame",
+"pragmatic_function": "Offering food or drink",
+"register": "polite",
+"natural_example": "Would you like some more rice?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1388",
+"chunk": "Would you like to [base-verb]?",
+"category": "sentence_frame",
+"pragmatic_function": "Inviting someone",
+"register": "polite",
+"natural_example": "Would you like to come to my party?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1389",
+"chunk": "Where is [place]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking where a place is",
+"register": "neutral",
+"natural_example": "Where is the train station?",
+"cefr_level": "A1"
+},
+{
+"id": "ENG_CHUNK_1390",
+"chunk": "Where's the nearest [place]?",
+"category": "sentence_frame",
+"pragmatic_function": "Finding the closest place of a type",
+"register": "neutral",
+"natural_example": "Where's the nearest ATM?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1391",
+"chunk": "Turn left at [place]",
+"category": "sentence_frame",
+"pragmatic_function": "Giving directions",
+"register": "neutral",
+"natural_example": "Turn left at the church.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1392",
+"chunk": "It's on the [direction]",
+"category": "sentence_frame",
+"pragmatic_function": "Saying which side something is on",
+"register": "neutral",
+"natural_example": "The bank is on the left.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1393",
+"chunk": "It's next to [place]",
+"category": "sentence_frame",
+"pragmatic_function": "Describing location",
+"register": "neutral",
+"natural_example": "The bakery is next to the bank.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1394",
+"chunk": "A ticket to [place], please",
+"category": "sentence_frame",
+"pragmatic_function": "Buying a travel ticket",
+"register": "neutral",
+"natural_example": "A ticket to Oxford, please.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1395",
+"chunk": "Which bus goes to [place]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking about public transport routes",
+"register": "neutral",
+"natural_example": "Which bus goes to the airport?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1396",
+"chunk": "When is the next [noun] to [place]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking about departure times",
+"register": "neutral",
+"natural_example": "When is the next train to Leeds?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1397",
+"chunk": "Can you take me to [place]?",
+"category": "sentence_frame",
+"pragmatic_function": "Telling a taxi driver where to go",
+"register": "polite",
+"natural_example": "Can you take me to the airport, please?",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1398",
+"chunk": "It takes about [duration]",
+"category": "sentence_frame",
+"pragmatic_function": "Saying how long something lasts",
+"register": "neutral",
+"natural_example": "It takes about twenty minutes by bus.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1399",
+"chunk": "I'd like a room for [number] nights",
+"category": "sentence_frame",
+"pragmatic_function": "Booking a hotel room",
+"register": "polite",
+"natural_example": "I'd like a room for two nights, please.",
+"cefr_level": "A2"
+},
+{
+"id": "ENG_CHUNK_1400",
+"chunk": "The [noun] doesn't work",
+"category": "sentence_frame",
+"pragmatic_function": "Reporting a problem",
+"register": "neutral",
+"natural_example": "The shower doesn't work.",
+"cefr_level": "A2"
+}
+]

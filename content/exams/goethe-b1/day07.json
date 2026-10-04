@@ -1,0 +1,866 @@
+{
+  "day": 7,
+  "topic": "Umwelt und Nachhaltigkeit",
+  "lesen": {
+    "teil1": {
+      "title": "Ein Jahr ohne Auto",
+      "source": "Blog",
+      "text": "Im März letzten Jahres haben wir unser Auto verkauft. Viele Freunde haben uns damals gefragt, ob wir verrückt sind – eine Familie mit zwei Kindern, ohne Auto, in einer Stadt mit ziemlich vielen Hügeln. Heute, ein Jahr später, kann ich sagen: Es war eine der besten Entscheidungen, die wir je getroffen haben.\n\nStatt des Autos haben wir uns ein Lastenrad gekauft. Es war gebraucht und hat trotzdem 3000 Euro gekostet, allerdings hat die Stadt 500 Euro dazugezahlt, weil sie Lastenräder fördert. Mit dem Rad bringe ich morgens beide Kinder in die Kita und fahre danach weiter ins Büro. Für den Wocheneinkauf reicht der Platz vorne im Rad völlig aus.\n\nNatürlich ist nicht alles einfacher geworden. Wenn es im November drei Tage lang regnet, macht das Radfahren wenig Spaß. Und der Besuch bei den Großeltern im Dorf dauert mit Zug und Bus jetzt zwei Stunden statt fünfzig Minuten. Wenn wir etwas Großes kaufen, zum Beispiel ein Regal, mieten wir für ein paar Stunden ein Carsharing-Auto. Das passiert ungefähr einmal im Monat.\n\nDas Beste ist aber das Geld: Wir sparen jeden Monat etwa 250 Euro, weil wir keine Versicherung, keinen Parkplatz und kein Benzin mehr bezahlen. Davon fahren wir im Sommer in den Urlaub – mit dem Zug natürlich.\n\nMein Mann war am Anfang übrigens sehr skeptisch. Er dachte, dass wir nach drei Monaten wieder ein Auto kaufen würden. Inzwischen fährt er das Lastenrad öfter als ich, und wenn ihn jemand nach dem Auto fragt, sagt er nur: „Welches Auto?“",
+      "items": [
+        {
+          "id": "L1-1",
+          "statement": "Die Familie hat ihr Auto im Frühling verkauft.",
+          "answer": true,
+          "skill": "number-time"
+        },
+        {
+          "id": "L1-2",
+          "statement": "Das Lastenrad war neu und hat 3000 Euro gekostet.",
+          "answer": false,
+          "skill": "detail"
+        },
+        {
+          "id": "L1-3",
+          "statement": "Die Stadt hat einen Teil des Lastenrads bezahlt.",
+          "answer": true,
+          "skill": "paraphrase"
+        },
+        {
+          "id": "L1-4",
+          "statement": "Der Weg zu den Großeltern dauert ohne Auto mehr als doppelt so lang.",
+          "answer": true,
+          "skill": "number-time"
+        },
+        {
+          "id": "L1-5",
+          "statement": "Die Familie benutzt nie mehr ein Auto.",
+          "answer": false,
+          "skill": "negation"
+        },
+        {
+          "id": "L1-6",
+          "statement": "Der Mann der Autorin fand die Idee von Anfang an gut.",
+          "answer": false,
+          "skill": "attitude"
+        }
+      ]
+    },
+    "teil2": {
+      "texts": [
+        {
+          "title": "Ein Euro für den Becher",
+          "source": "Zeitung",
+          "text": "Wer in Tübingen einen Kaffee zum Mitnehmen kauft, bekommt ihn seit einem Jahr nicht mehr im Pappbecher, sondern im „Stadtbecher“. Der Becher aus festem Kunststoff kostet einen Euro Pfand. Zurückgeben kann man ihn in jedem der rund achtzig Cafés, Bäckereien und Kioske, die an dem System teilnehmen – nicht nur dort, wo man ihn bekommen hat.\n\nDie Stadt zieht nach zwölf Monaten eine positive Bilanz: In den öffentlichen Mülleimern liegen etwa vierzig Prozent weniger Einwegbecher als vorher. Nicht alle Cafébesitzer waren allerdings von Anfang an begeistert. Meltem Aydin, die ein kleines Café am Marktplatz führt, war zunächst dagegen. „Ich dachte, das Spülen kostet mich zu viel Zeit“, sagt sie. Heute sieht sie es anders: „Ich muss keine Pappbecher mehr kaufen, und die waren teuer. Am Ende spare ich sogar Geld.“\n\nWer seinen eigenen Becher mitbringt, zahlt in den meisten Cafés zwanzig Cent weniger für den Kaffee. Andere Städte beobachten das Modell genau. Freiburg und Heidelberg wollen im nächsten Jahr ein ähnliches System einführen, allerdings mit einem Pfand von zwei Euro, damit die Becher schneller zurückkommen.",
+          "items": [
+            {
+              "id": "L2-1",
+              "question": "Den Stadtbecher …",
+              "options": [
+                "kann man nur in dem Café zurückgeben, in dem man ihn bekommen hat.",
+                "muss man nach einem Jahr zurückgeben.",
+                "kann man in allen teilnehmenden Geschäften zurückgeben."
+              ],
+              "answer": 2,
+              "skill": "paraphrase"
+            },
+            {
+              "id": "L2-2",
+              "question": "Frau Aydin …",
+              "options": [
+                "war von Anfang an für das System.",
+                "findet das Spülen der Becher zu teuer.",
+                "hat ihre Meinung geändert."
+              ],
+              "answer": 2,
+              "skill": "attitude"
+            },
+            {
+              "id": "L2-3",
+              "question": "Wer seinen eigenen Becher mitbringt, …",
+              "options": [
+                "zahlt weniger für den Kaffee.",
+                "muss ein Pfand von zwei Euro zahlen.",
+                "bekommt in Freiburg den Kaffee kostenlos."
+              ],
+              "answer": 0,
+              "skill": "detail"
+            }
+          ]
+        },
+        {
+          "title": "Die Jeans, die nie im Müll landet",
+          "source": "Zeitschrift",
+          "text": "Weltweit werden jedes Jahr rund zwei Milliarden Jeans produziert, und die meisten davon landen nach zwei oder drei Jahren im Müll. Lukas Brandt aus Bremen wollte das nicht akzeptieren. Vor drei Jahren hat er eine Firma gegründet, bei der man Jeans nicht kauft, sondern mietet. Die Kunden zahlen sieben Euro im Monat. Nach einem Jahr können sie die Hose behalten oder zurückschicken.\n\nZurückgegebene Jeans werden gewaschen und repariert und dann weitervermietet. Wer eine Hose zurückschickt, die wirklich nicht mehr zu retten ist, muss sich keine Sorgen machen: Der Stoff wird zerkleinert und zu neuem Garn verarbeitet. „Bei uns wird nichts weggeworfen“, sagt Brandt. Kritiker meinen jedoch, dass sich das Mieten nur für Menschen lohnt, die ihre Jeans sowieso lange tragen.\n\nNadine Koch, 29, ist seit einem Jahr Kundin. „Am Anfang fand ich die Idee ziemlich seltsam. Eine Hose mieten? Aber der Reparaturservice hat mich überzeugt.“ Als ihre Jeans am Knie gerissen war, hat sie sie eingeschickt. Nach einer Woche war die Hose repariert wieder da – ohne zusätzliche Kosten. „So etwas hätte ich früher einfach weggeworfen“, sagt sie.",
+          "items": [
+            {
+              "id": "L2-4",
+              "question": "Bei der Firma von Lukas Brandt …",
+              "options": [
+                "mietet man eine Jeans gegen eine monatliche Gebühr.",
+                "kauft man eine Jeans für sieben Euro.",
+                "muss man die Jeans nach einem Jahr zurückgeben."
+              ],
+              "answer": 0,
+              "skill": "paraphrase"
+            },
+            {
+              "id": "L2-5",
+              "question": "Was passiert mit Jeans, die man nicht mehr reparieren kann?",
+              "options": [
+                "Sie werden weggeworfen.",
+                "Sie werden zu neuem Garn verarbeitet.",
+                "Sie werden an andere Kunden verschenkt."
+              ],
+              "answer": 1,
+              "skill": "detail"
+            },
+            {
+              "id": "L2-6",
+              "question": "Nadine Koch …",
+              "options": [
+                "musste die Reparatur ihrer Jeans bezahlen.",
+                "fand die Idee sofort gut.",
+                "ist mit dem Reparaturservice zufrieden."
+              ],
+              "answer": 2,
+              "skill": "attitude"
+            }
+          ]
+        }
+      ]
+    },
+    "teil3": {
+      "intro": "Einige Personen aus Ihrem Deutschkurs suchen Angebote rund um Umwelt und Nachhaltigkeit. Lesen Sie die Situationen 1–7 und die Anzeigen A–J. Welche Anzeige passt zu welcher Situation? Eine Anzeige kann nur einmal gewählt werden. Für eine Situation gibt es keine passende Anzeige – markieren Sie dort 0.",
+      "situations": [
+        {
+          "id": "L3-1",
+          "text": "Jonas möchte am Wochenende bei einer Aktion mithelfen, bei der Müll gesammelt wird.",
+          "answer": "E",
+          "skill": "matching"
+        },
+        {
+          "id": "L3-2",
+          "text": "Petras Toaster ist kaputt. Sie möchte ihn nicht wegwerfen, sondern möglichst kostenlos reparieren lassen.",
+          "answer": "A",
+          "skill": "matching"
+        },
+        {
+          "id": "L3-3",
+          "text": "Familie Öztürk möchte Gemüse selbst anbauen, hat aber keinen eigenen Garten.",
+          "answer": "H",
+          "skill": "matching"
+        },
+        {
+          "id": "L3-4",
+          "text": "Miriam sucht günstige gebrauchte Kinderkleidung, weil ihr Sohn so schnell wächst.",
+          "answer": "C",
+          "skill": "matching"
+        },
+        {
+          "id": "L3-5",
+          "text": "Karim möchte wissen, wie er in seiner Wohnung Strom sparen kann, und sucht eine kostenlose Beratung.",
+          "answer": "G",
+          "skill": "matching"
+        },
+        {
+          "id": "L3-6",
+          "text": "Lea möchte in den Sommerferien vier Wochen lang im Ausland für den Naturschutz arbeiten.",
+          "answer": null,
+          "skill": "matching"
+        },
+        {
+          "id": "L3-7",
+          "text": "Dominik zieht um. Seine alten Möbel sind noch gut, und er möchte sie verschenken.",
+          "answer": "J",
+          "skill": "matching"
+        }
+      ],
+      "ads": [
+        {
+          "letter": "A",
+          "title": "Repair-Café im Stadtteilzentrum",
+          "text": "Toaster, Radio, Fahrrad, Lieblingspulli – wir reparieren gemeinsam mit Ihnen, statt wegzuwerfen. Jeden ersten Samstag im Monat, 14–18 Uhr. Keine Kosten, Spende willkommen. Ersatzteile bitte selbst mitbringen."
+        },
+        {
+          "letter": "B",
+          "title": "Helfer/innen für das Naturschutzgebiet",
+          "text": "Der Verein Naturfreunde sucht Freiwillige für Pflegearbeiten am Weiher: Hecken schneiden, Wege freihalten, Vögel zählen. Jedes zweite Wochenende, Samstag 9–13 Uhr. Für alle ab 16. Info: naturfreunde-sued@web.de"
+        },
+        {
+          "letter": "C",
+          "title": "Kinder-Flohmarkt in der Turnhalle",
+          "text": "Alles rund ums Kind aus zweiter Hand: Kleidung von Größe 50 bis 176, Spielzeug, Kinderwagen, Bücher. Sonntag 10–14 Uhr, Grundschule am Park. Eintritt frei, Café mit Kuchen vom Elternverein."
+        },
+        {
+          "letter": "D",
+          "title": "Bio-Kiste vom Hof Sonnenfeld",
+          "text": "Frisches Gemüse und Obst aus der Region, jede Woche direkt an Ihre Haustür. Kleine Kiste 15 €, große Kiste 25 €. Jederzeit pausieren oder kündigen. Erste Lieferung zum halben Preis!"
+        },
+        {
+          "letter": "E",
+          "title": "Clean-up-Day im Stadtpark",
+          "text": "Gemeinsam für einen sauberen Park! Wir sammeln Müll am Samstag von 10 bis 13 Uhr. Handschuhe, Zangen und Säcke werden gestellt. Danach Grillen für alle Helfer. Treffpunkt: Haupteingang am Kiosk."
+        },
+        {
+          "letter": "F",
+          "title": "Vortrag: Klimawandel vor unserer Haustür",
+          "text": "Was bedeutet die Erwärmung für unsere Region? Prof. Dr. Hanna Ritter erklärt es verständlich und beantwortet Fragen. Donnerstag, 19:30 Uhr, Volkshochschule, Raum 12. Eintritt frei, keine Anmeldung nötig."
+        },
+        {
+          "letter": "G",
+          "title": "Energie-Check der Verbraucherzentrale",
+          "text": "Hohe Stromrechnung? Unsere Beraterinnen kommen zu Ihnen nach Hause, prüfen Kühlschrank, Heizung und Beleuchtung und zeigen, wo Sie sparen können. Für Mieter und Eigentümer, kostenlos. Termin: 0800 / 33 44 55."
+        },
+        {
+          "letter": "H",
+          "title": "Gemeinschaftsgarten „Grüne Insel“",
+          "text": "Beet frei! Auf unserem Gelände am Bahndamm vermieten wir 20-m²-Parzellen an alle, die ohne eigenen Garten gärtnern möchten. 60 € pro Jahr, Werkzeug und Wasser vorhanden. Familien besonders willkommen."
+        },
+        {
+          "letter": "I",
+          "title": "Selbsthilfe-Fahrradwerkstatt",
+          "text": "Reparieren Sie Ihr Rad selbst – mit unserem Werkzeug und unserer Hilfe. Dienstag und Donnerstag 17–20 Uhr im Hinterhof der Kulturfabrik. 3 € pro Stunde, Ersatzteile zum Selbstkostenpreis."
+        },
+        {
+          "letter": "J",
+          "title": "Möbelspende? Wir holen ab!",
+          "text": "Das Sozialkaufhaus nimmt gut erhaltene Möbel, Lampen und Haushaltsgeräte und holt sie kostenlos bei Ihnen ab. Die Sachen gehen günstig an Menschen mit wenig Geld. Termin: 0221 / 98 76 54."
+        }
+      ]
+    },
+    "teil4": {
+      "question": "Sollten Flüge innerhalb Deutschlands verboten werden?",
+      "comments": [
+        {
+          "id": "L4-1",
+          "author": "Tobias, Hamburg",
+          "text": "Ich fahre regelmäßig von Hamburg nach München, sechs Stunden mit dem Zug. In der Zeit arbeite ich, esse und schlafe ein bisschen. Warum jemand für diese Strecke ins Flugzeug steigt, verstehe ich nicht. Solche Flüge braucht kein Mensch.",
+          "answer": true,
+          "skill": "attitude"
+        },
+        {
+          "id": "L4-2",
+          "author": "Renate, Rostock",
+          "text": "Mein Sohn lebt in München. Mit dem Zug brauche ich neun Stunden, muss zweimal umsteigen und komme oft zu spät an. Solange die Bahn so schlecht funktioniert, darf man den Menschen das Fliegen nicht verbieten.",
+          "answer": false,
+          "skill": "attitude"
+        },
+        {
+          "id": "L4-3",
+          "author": "Fatih, Stuttgart",
+          "text": "Ich verstehe das Argument mit dem Klima, und ja, ich nehme selbst meistens den Zug. Aber ein Verbot ist der falsche Weg. Macht die Flüge einfach richtig teuer, dann entscheiden die Leute von allein.",
+          "answer": false,
+          "skill": "inference"
+        },
+        {
+          "id": "L4-4",
+          "author": "Claudia, Köln",
+          "text": "In Frankreich sind kurze Inlandsflüge schon verboten, wenn es eine Zugverbindung unter zweieinhalb Stunden gibt. Ist deshalb dort die Wirtschaft zusammengebrochen? Nein. Wir sollten das Gleiche machen.",
+          "answer": true,
+          "skill": "attitude"
+        },
+        {
+          "id": "L4-5",
+          "author": "Olaf, Dresden",
+          "text": "Ständig soll irgendetwas verboten werden. Wer fliegen will, soll fliegen, wer Zug fahren will, soll Zug fahren. Der Staat hat sich da nicht einzumischen. Verbote lösen keine Probleme, sie machen nur die Leute wütend.",
+          "answer": false,
+          "skill": "attitude"
+        },
+        {
+          "id": "L4-6",
+          "author": "Hannah, Freiburg",
+          "text": "Ich bin 22 und seit drei Jahren in kein Flugzeug mehr gestiegen. Freiwillig ändern aber nur wenige etwas, das sehe ich in meinem Freundeskreis. Wenn wir den Klimaschutz ernst meinen, dann brauchen wir klare Regeln.",
+          "answer": true,
+          "skill": "attitude"
+        },
+        {
+          "id": "L4-7",
+          "author": "Bernd, Nürnberg",
+          "text": "Ehrlich gesagt bin ich früher oft nach Berlin geflogen, weil es billiger war als der Zug. Das ist doch absurd. Wenn ein Verbot dazu führt, dass die Bahn endlich besser und günstiger wird – dann bitte, gern.",
+          "answer": true,
+          "skill": "inference"
+        }
+      ]
+    },
+    "teil5": {
+      "title": "Gartenordnung – Gemeinschaftsgarten „Grüne Insel“",
+      "text": "§ 1 Parzellen\nJedes Mitglied erhält eine Parzelle von 20 m². Der Jahresbeitrag beträgt 60 € und ist bis zum 31. März zu zahlen. Wird eine Parzelle länger als drei Monate nicht bearbeitet, geht sie an die nächste Person auf der Warteliste.\n\n§ 2 Wasser\nZum Gießen ist in erster Linie das Wasser aus den Regentonnen zu verwenden. Trinkwasser aus dem Hahn darf nur in Trockenzeiten und nach Absprache mit dem Vorstand benutzt werden. In den Sommermonaten ist das Gießen nur morgens vor 10 Uhr oder abends nach 18 Uhr erlaubt.\n\n§ 3 Pflanzenschutz und Kompost\nChemische Pflanzenschutzmittel sind im gesamten Garten verboten. Auf den Kompost gehören Pflanzenreste und rohe Küchenabfälle. Fleisch, Fisch und gekochte Speisen dürfen nicht kompostiert werden, weil sie Ratten anlocken.\n\n§ 4 Gemeinschaftsarbeit\nJedes Mitglied leistet vier Stunden Gemeinschaftsarbeit pro Monat, zum Beispiel für Wege, Hecken und den Geräteschuppen. Wer diese Stunden nicht leisten kann, zahlt 10 € pro nicht geleisteter Stunde. Die Mitgliederversammlung findet an jedem ersten Donnerstag im Monat statt.\n\n§ 5 Geräte und Gäste\nDie gemeinsamen Geräte im Schuppen sind am selben Tag gereinigt zurückzubringen. Gäste sind willkommen, Grillen ist jedoch nur auf dem Gemeinschaftsplatz erlaubt. Hunde müssen angeleint sein. Ab 22 Uhr ist Ruhe zu halten.",
+      "items": [
+        {
+          "id": "L5-1",
+          "question": "Wenn ein Mitglied seine Parzelle drei Monate lang nicht bearbeitet, …",
+          "options": [
+            "muss es 60 Euro zahlen.",
+            "bekommt jemand von der Warteliste die Parzelle.",
+            "wird die Parzelle ein Jahr lang gesperrt."
+          ],
+          "answer": 1,
+          "skill": "detail"
+        },
+        {
+          "id": "L5-2",
+          "question": "Im Sommer …",
+          "options": [
+            "darf man nur morgens oder abends gießen.",
+            "darf man kein Wasser aus dem Hahn benutzen.",
+            "ist das Gießen verboten."
+          ],
+          "answer": 0,
+          "skill": "number-time"
+        },
+        {
+          "id": "L5-3",
+          "question": "Auf den Kompost dürfen …",
+          "options": [
+            "gekochte Speisen.",
+            "Reste von Fleisch und Fisch.",
+            "Gemüsereste aus der Küche."
+          ],
+          "answer": 2,
+          "skill": "negation"
+        },
+        {
+          "id": "L5-4",
+          "question": "Wer die Gemeinschaftsarbeit nicht leisten kann, …",
+          "options": [
+            "muss den Garten verlassen.",
+            "zahlt für jede fehlende Stunde Geld.",
+            "muss zur Mitgliederversammlung kommen."
+          ],
+          "answer": 1,
+          "skill": "paraphrase"
+        }
+      ]
+    }
+  },
+  "hoeren": {
+    "teil1": {
+      "texts": [
+        {
+          "id": "H1-1",
+          "kind": "Anrufbeantworter",
+          "script": [
+            {
+              "speaker": "m1",
+              "text": "Hallo Frau Krause, hier ist Stefan Mertens vom Verein Naturfreunde. Es geht um unsere Baumpflanzaktion am Samstag. Wir hatten ja neun Uhr ausgemacht, aber der Wetterbericht sagt für den Nachmittag Regen, deshalb fangen wir schon um halb neun an. Und noch etwas: Treffpunkt ist nicht am Bahnhof, sondern direkt am Parkplatz am Waldrand. Bitte bringen Sie feste Schuhe oder Gummistiefel und Handschuhe mit. Spaten und Gießkannen haben wir genug, die müssen Sie nicht mitbringen. Zum Mittag gibt es Suppe vom Verein, das ist für alle Helfer kostenlos. Ich freue mich auf Samstag. Tschüss!"
+            }
+          ],
+          "items": [
+            {
+              "id": "H1-1a",
+              "type": "rf",
+              "statement": "Die Aktion beginnt am Samstag um neun Uhr.",
+              "answer": false,
+              "skill": "number-time"
+            },
+            {
+              "id": "H1-1b",
+              "type": "mc",
+              "question": "Frau Krause soll …",
+              "options": [
+                "einen Spaten mitbringen.",
+                "Handschuhe und feste Schuhe mitbringen.",
+                "etwas zu essen mitbringen."
+              ],
+              "answer": 1,
+              "skill": "detail"
+            }
+          ]
+        },
+        {
+          "id": "H1-2",
+          "kind": "Radio",
+          "script": [
+            {
+              "speaker": "f3",
+              "text": "Und jetzt das Wetter und der Verkehr. Heute wird es mit bis zu vierunddreißig Grad noch einmal sehr heiß. Trinken Sie genug und bleiben Sie zwischen zwölf und sechzehn Uhr möglichst im Schatten. Am Abend kann es im Westen zu Gewittern kommen. Morgen ist es dann mit vierundzwanzig Grad deutlich angenehmer. Zum Verkehr: Am Sonntag findet von vierzehn bis siebzehn Uhr die große Fahrrad-Demonstration in der Innenstadt statt. Der Innenstadtring ist in dieser Zeit für Autos gesperrt. Die Busse der Linien drei und sieben fahren eine Umleitung über den Hauptbahnhof. Radfahrer treffen sich um halb zwei auf dem Rathausplatz."
+            }
+          ],
+          "items": [
+            {
+              "id": "H1-2a",
+              "type": "rf",
+              "statement": "Morgen wird es kühler als heute.",
+              "answer": true,
+              "skill": "number-time"
+            },
+            {
+              "id": "H1-2b",
+              "type": "mc",
+              "question": "Am Sonntagnachmittag …",
+              "options": [
+                "ist der Innenstadtring für Autos gesperrt.",
+                "fahren keine Busse in der Innenstadt.",
+                "gibt es ein Gewitter."
+              ],
+              "answer": 0,
+              "skill": "detail"
+            }
+          ]
+        },
+        {
+          "id": "H1-3",
+          "kind": "Durchsage",
+          "script": [
+            {
+              "speaker": "at_m",
+              "text": "Sehr geehrte Kundinnen und Kunden, eine Information für Sie: Ab heute gibt es an unseren Kassen keine Plastiktüten mehr, auch nicht gegen Bezahlung. Wenn Sie eine Tasche brauchen, können Sie an jeder Kasse einen Stoffbeutel für einen Euro fünfzig kaufen. Der Pfandautomat im Eingangsbereich ist heute leider außer Betrieb. Bitte geben Sie Ihre Pfandflaschen an der Information ab, dort bekommen Sie Ihren Bon. Und noch ein Tipp: Diese Woche ist unser gesamtes Bio-Obst um zwanzig Prozent günstiger. Wir wünschen Ihnen einen angenehmen Einkauf."
+            }
+          ],
+          "items": [
+            {
+              "id": "H1-3a",
+              "type": "rf",
+              "statement": "Der Pfandautomat funktioniert heute nicht.",
+              "answer": true,
+              "skill": "paraphrase"
+            },
+            {
+              "id": "H1-3b",
+              "type": "mc",
+              "question": "Wer eine Tasche braucht, …",
+              "options": [
+                "bekommt eine Plastiktüte kostenlos.",
+                "muss zur Information gehen.",
+                "kann einen Stoffbeutel kaufen."
+              ],
+              "answer": 2,
+              "skill": "detail"
+            }
+          ]
+        },
+        {
+          "id": "H1-4",
+          "kind": "Anrufbeantworter",
+          "script": [
+            {
+              "speaker": "f2",
+              "text": "Hallo Tim, hier ist Sandra aus dem dritten Stock. Ich wollte dir kurz Bescheid sagen, die Hausverwaltung hat einen Zettel aufgehängt: Die Biotonne wird ab nächster Woche nicht mehr montags geleert, sondern donnerstags. Die gelbe Tonne bleibt beim Mittwoch, das ändert sich nicht. Und am Samstag ist Sperrmüll. Wer alte Möbel loswerden will, soll sie bis Freitagabend in den Hof stellen, nicht erst am Samstagmorgen, weil der Wagen sehr früh kommt. Ach ja, ich habe noch ein kleines Regal, das ich nicht mehr brauche. Wenn du es willst, ruf mich einfach zurück. Tschüss!"
+            }
+          ],
+          "items": [
+            {
+              "id": "H1-4a",
+              "type": "rf",
+              "statement": "Die Biotonne wird ab nächster Woche donnerstags geleert.",
+              "answer": true,
+              "skill": "number-time"
+            },
+            {
+              "id": "H1-4b",
+              "type": "mc",
+              "question": "Alte Möbel soll man …",
+              "options": [
+                "bis Freitagabend in den Hof stellen.",
+                "am Samstagmorgen in den Hof stellen.",
+                "zur Hausverwaltung bringen."
+              ],
+              "answer": 0,
+              "skill": "detail"
+            }
+          ]
+        },
+        {
+          "id": "H1-5",
+          "kind": "Werbung",
+          "script": [
+            {
+              "speaker": "m2",
+              "text": "Einkaufen ohne Verpackung? Das geht! Am Samstag eröffnet in der Marktstraße acht der neue Unverpackt-Laden „Fülle und Frisch“. Bringen Sie einfach Ihre eigenen Gläser und Dosen mit und füllen Sie Nudeln, Reis, Müsli, Nüsse und vieles mehr selbst ab. Sie zahlen nur, was Sie wirklich brauchen. Am Eröffnungstag bekommen alle Kunden zehn Prozent Rabatt auf den ganzen Einkauf. Wir sind Montag bis Samstag von neun bis neunzehn Uhr für Sie da, sonntags ist geschlossen. „Fülle und Frisch“ – gut für Sie, gut für die Umwelt."
+            }
+          ],
+          "items": [
+            {
+              "id": "H1-5a",
+              "type": "rf",
+              "statement": "Der Laden ist auch am Sonntag geöffnet.",
+              "answer": false,
+              "skill": "negation"
+            },
+            {
+              "id": "H1-5b",
+              "type": "mc",
+              "question": "Am Eröffnungstag …",
+              "options": [
+                "bekommt jeder Kunde ein Glas geschenkt.",
+                "gibt es zehn Prozent Rabatt.",
+                "ist der Laden länger geöffnet."
+              ],
+              "answer": 1,
+              "skill": "detail"
+            }
+          ]
+        }
+      ]
+    },
+    "teil2": {
+      "setting": "Sie besuchen mit einer Gruppe eine Sortieranlage für Verpackungsmüll und hören die Begrüßung durch die Mitarbeiterin.",
+      "script": [
+        {
+          "speaker": "f1",
+          "text": "Guten Morgen und herzlich willkommen in der Sortieranlage Westpark! Mein Name ist Meike Lorenz, ich bin hier für die Besuchergruppen zuständig. Die Führung dauert ungefähr neunzig Minuten. Bevor wir losgehen, ein paar wichtige Regeln, denn wir sind hier in einem Betrieb mit großen Maschinen. Jeder bekommt gleich eine gelbe Weste und einen Helm. Beides müssen Sie während der ganzen Führung tragen, auch wenn es warm ist. In der Halle bleiben Sie bitte immer hinter der gelben Linie am Boden. Und bitte stecken Sie Ihre Handys weg. Fotografieren ist in der Halle nicht erlaubt, weil man dabei nicht auf den Weg achtet, und das ist hier gefährlich. Draußen vor dem Gebäude dürfen Sie natürlich Fotos machen. So, was passiert hier eigentlich? Jeden Tag kommen bei uns rund zweihundertfünfzig Tonnen Verpackungsmüll an, das ist der Inhalt der gelben Säcke und gelben Tonnen aus der ganzen Region. Sechzig Mitarbeiterinnen und Mitarbeiter sortieren diesen Müll in drei Schichten, rund um die Uhr. Die Maschinen trennen Plastik, Metall und Papier automatisch, aber am Ende kontrollieren immer noch Menschen per Hand. Unser größtes Problem sind Dinge, die gar nicht in den gelben Sack gehören. Vor allem Batterien und Akkus sind gefährlich, weil sie in den Maschinen Feuer fangen können. Im letzten Jahr hatten wir deshalb zwei Brände in der Halle. Zum Glück wurde niemand verletzt. Also, wenn Sie eines aus dem heutigen Tag mitnehmen, dann bitte das: Batterien niemals in den Müll, sondern zurück in den Supermarkt. Am Ende der Führung machen wir ein kleines Quiz. Wer die meisten Fragen richtig beantwortet, gewinnt eine Stofftasche aus recyceltem Material. Eine Cafeteria haben wir leider nicht, aber Wasser steht im Besucherraum bereit. Die Toiletten sind gleich hier links. Ihr Bus wartet um Viertel nach zwölf auf dem Parkplatz. Und jetzt holen Sie sich bitte Weste und Helm, dann geht es los."
+        }
+      ],
+      "items": [
+        {
+          "id": "H2-1",
+          "question": "In der Halle …",
+          "options": [
+            "müssen alle Besucher Weste und Helm tragen.",
+            "darf man ohne Weste hineingehen, wenn es warm ist.",
+            "darf man fotografieren."
+          ],
+          "answer": 0,
+          "skill": "detail"
+        },
+        {
+          "id": "H2-2",
+          "question": "Pro Tag …",
+          "options": [
+            "arbeiten hier zweihundertfünfzig Menschen.",
+            "kommen hier zweihundertfünfzig Tonnen Müll an.",
+            "kommen hier sechzig Lastwagen an."
+          ],
+          "answer": 1,
+          "skill": "number-time"
+        },
+        {
+          "id": "H2-3",
+          "question": "Das größte Problem der Anlage sind …",
+          "options": [
+            "die vielen Besucher.",
+            "die alten Maschinen.",
+            "Dinge, die nicht in den gelben Sack gehören."
+          ],
+          "answer": 2,
+          "skill": "paraphrase"
+        },
+        {
+          "id": "H2-4",
+          "question": "Im letzten Jahr …",
+          "options": [
+            "hat es zweimal gebrannt.",
+            "wurde die Anlage neu gebaut.",
+            "wurden zwei Mitarbeiter verletzt."
+          ],
+          "answer": 0,
+          "skill": "detail"
+        },
+        {
+          "id": "H2-5",
+          "question": "Am Ende der Führung …",
+          "options": [
+            "gibt es ein Mittagessen in der Cafeteria.",
+            "fährt der Bus um zwölf Uhr ab.",
+            "kann man bei einem Quiz etwas gewinnen."
+          ],
+          "answer": 2,
+          "skill": "detail"
+        }
+      ]
+    },
+    "teil3": {
+      "setting": "Sie hören ein Gespräch zwischen zwei Nachbarn über die Stromrechnung.",
+      "script": [
+        {
+          "speaker": "m3",
+          "text": "Hallo Jana, hast du kurz Zeit? Ich habe gerade meine Stromrechnung bekommen und muss dreihundertachtzig Euro nachzahlen. Ich verstehe das nicht, ich wohne doch allein!"
+        },
+        {
+          "speaker": "f3",
+          "text": "Oh je, dreihundertachtzig? Das ist viel. Was hast du denn für Geräte? Ist dein Kühlschrank noch der alte, der schon drin war, als du eingezogen bist?"
+        },
+        {
+          "speaker": "m3",
+          "text": "Ja, der ist bestimmt von 2005 oder so. Aber er funktioniert doch."
+        },
+        {
+          "speaker": "f3",
+          "text": "Funktionieren ja, aber so ein altes Gerät verbraucht oft doppelt so viel Strom wie ein neues. Ich wette, das ist dein größter Stromfresser."
+        },
+        {
+          "speaker": "m3",
+          "text": "Kann sein. Aber woher weiß ich das genau?"
+        },
+        {
+          "speaker": "f3",
+          "text": "Die Verbraucherzentrale verleiht Messgeräte. Die steckst du zwischen Steckdose und Kühlschrank, und nach einer Woche siehst du, wie viel er verbraucht hat. Das kostet nichts, du musst nur deinen Ausweis zeigen."
+        },
+        {
+          "speaker": "m3",
+          "text": "Ach so, das wusste ich gar nicht. Das mache ich diese Woche noch."
+        },
+        {
+          "speaker": "f3",
+          "text": "Und wie wäschst du? Bei welcher Temperatur?"
+        },
+        {
+          "speaker": "m3",
+          "text": "Meistens bei sechzig Grad, dann wird alles richtig sauber."
+        },
+        {
+          "speaker": "f3",
+          "text": "Das ist viel zu heiß für normale Wäsche. Dreißig Grad reichen völlig, außer bei Handtüchern und Bettwäsche. Und benutzt du einen Trockner?"
+        },
+        {
+          "speaker": "m3",
+          "text": "Nein, ich hänge alles auf den Balkon. Aber ich lasse abends den Fernseher und die Spielkonsole im Standby, das gebe ich zu."
+        },
+        {
+          "speaker": "f3",
+          "text": "Siehst du, das summiert sich. Eine Steckdosenleiste mit Schalter, und das Problem ist gelöst. Aber ich habe noch eine bessere Idee: Wie wäre es mit einem Balkonkraftwerk? Also kleine Solarmodule, die du einfach ans Balkongeländer hängst."
+        },
+        {
+          "speaker": "m3",
+          "text": "Ist das nicht wahnsinnig teuer?"
+        },
+        {
+          "speaker": "f3",
+          "text": "Ungefähr fünfhundert Euro. Aber die Stadt zahlt zweihundert dazu, wenn man einen Antrag stellt. Meine Schwester hat das gemacht und spart jetzt etwa hundertfünfzig Euro im Jahr."
+        },
+        {
+          "speaker": "m3",
+          "text": "Hm, das klingt gut. Aber ich muss vorher den Vermieter fragen, oder? Und der ist bei allem, was mit dem Haus zu tun hat, ziemlich schwierig. Ich glaube nicht, dass er sofort Ja sagt."
+        },
+        {
+          "speaker": "f3",
+          "text": "Ja, zustimmen muss er. Aber seit letztem Jahr darf er es eigentlich nicht mehr einfach verbieten. Ich schicke dir heute Abend den Link zum Antrag der Stadt und einen Musterbrief für den Vermieter. Dann schreiben wir ihm zusammen, wenn du willst."
+        },
+        {
+          "speaker": "m3",
+          "text": "Das wäre super, danke, Jana. Dann fange ich mit dem Messgerät an, und wenn der Kühlschrank wirklich so schlimm ist, kaufe ich einen neuen."
+        }
+      ],
+      "items": [
+        {
+          "id": "H3-1",
+          "statement": "Lukas muss dreihundertachtzig Euro nachzahlen.",
+          "answer": true,
+          "skill": "number-time"
+        },
+        {
+          "id": "H3-2",
+          "statement": "Jana vermutet, dass der alte Kühlschrank sehr viel Strom verbraucht.",
+          "answer": true,
+          "skill": "paraphrase"
+        },
+        {
+          "id": "H3-3",
+          "statement": "Für das Messgerät der Verbraucherzentrale muss man bezahlen.",
+          "answer": false,
+          "skill": "negation"
+        },
+        {
+          "id": "H3-4",
+          "statement": "Lukas wäscht seine Wäsche meistens bei dreißig Grad.",
+          "answer": false,
+          "skill": "number-time"
+        },
+        {
+          "id": "H3-5",
+          "statement": "Die Stadt übernimmt einen Teil der Kosten für ein Balkonkraftwerk.",
+          "answer": true,
+          "skill": "paraphrase"
+        },
+        {
+          "id": "H3-6",
+          "statement": "Lukas glaubt, dass sein Vermieter schnell zustimmt.",
+          "answer": false,
+          "skill": "inference"
+        },
+        {
+          "id": "H3-7",
+          "statement": "Jana will Lukas Informationen per E-Mail schicken.",
+          "answer": true,
+          "skill": "detail"
+        }
+      ]
+    },
+    "teil4": {
+      "setting": "Sie hören eine Diskussion im Radio. Die Moderatorin spricht mit einem Geschäftsinhaber und einer Stadtplanerin über das Thema „Autofreie Innenstadt – Chance oder Risiko?“",
+      "speakers": {
+        "mod": "Moderatorin Nadine Krüger",
+        "a": "Markus Feld (Inhaber eines Schuhgeschäfts)",
+        "b": "Prof. Dr. Ute Sander (Stadtplanerin)"
+      },
+      "voices": {
+        "mod": "f2",
+        "a": "m1",
+        "b": "f1"
+      },
+      "script": [
+        {
+          "speaker": "mod",
+          "text": "Guten Abend und willkommen zu „Stadtgespräch“. Ich bin Nadine Krüger. Unsere Stadt diskutiert seit Monaten darüber, ob die Innenstadt autofrei werden soll. Heute reden wir mit zwei Menschen, die das Thema sehr unterschiedlich sehen: Markus Feld führt seit zwanzig Jahren ein Schuhgeschäft in der Fußgängerzone, und Ute Sander ist Professorin für Stadtplanung. Herr Feld, Sie haben Angst vor der autofreien Innenstadt. Warum?"
+        },
+        {
+          "speaker": "a",
+          "text": "Guten Abend. Angst ist vielleicht das falsche Wort, aber ich mache mir große Sorgen. Meine Kunden kommen vor allem mit dem Auto, das sehe ich jeden Tag. Viele wohnen in den Dörfern rund um die Stadt, da fährt abends kein Bus mehr. Wenn die nicht mehr in die Stadt fahren können, kaufen sie ihre Schuhe im Internet. Und dann kann ich meinen Laden zumachen."
+        },
+        {
+          "speaker": "mod",
+          "text": "Frau Sander, ist diese Sorge berechtigt?"
+        },
+        {
+          "speaker": "b",
+          "text": "Ich verstehe die Sorge, aber die Zahlen sagen etwas anderes. Es gibt inzwischen viele Untersuchungen aus Städten, die ihre Zentren autofrei gemacht haben, zum Beispiel in Belgien oder Spanien. Dort geben die Menschen in der Innenstadt heute mehr Geld aus als vorher, nicht weniger. Wer zu Fuß geht, der bleibt länger, setzt sich ins Café und geht in mehr Geschäfte. Wer mit dem Auto kommt, will nur schnell parken und wieder weg."
+        },
+        {
+          "speaker": "a",
+          "text": "Das mag in Spanien so sein. Aber denken Sie an die älteren Menschen. Meine Kundin, Frau Berger, ist achtzig. Die kann nicht mit dem Fahrrad kommen, und zu Fuß vom Parkhaus am Stadtrand schafft sie es auch nicht. Solche Kunden verliere ich sicher."
+        },
+        {
+          "speaker": "mod",
+          "text": "Ich muss an dieser Stelle kurz etwas sagen: Ich habe selbst kein Auto und wohne mitten in der Innenstadt. Und ich habe heute Morgen trotzdem vierzig Minuten im Stau gestanden, im Bus, weil auf dem Ring gar nichts mehr ging. Frau Sander, was schlagen Sie konkret vor?"
+        },
+        {
+          "speaker": "b",
+          "text": "Zwei Dinge. Erstens: Lieferungen für die Geschäfte müssen weiterhin möglich sein, zum Beispiel jeden Morgen zwischen sechs und zehn Uhr. Und zweitens: Man sollte die Idee nicht sofort für immer einführen, sondern erst einmal einen Monat lang ausprobieren, am besten im Sommer. Dann sehen wir, was passiert, und können reagieren."
+        },
+        {
+          "speaker": "a",
+          "text": "Ein Test, das lässt sich diskutieren. Und ich sage Ihnen auch, was mich überzeugen würde: Wenn es am Stadtrand große Parkhäuser gibt und von dort alle zehn Minuten ein kostenloser Bus in die Mitte fährt, dann könnte ich mir das vorstellen. Aber das muss vorher da sein, nicht erst zwei Jahre später."
+        },
+        {
+          "speaker": "b",
+          "text": "Da bin ich ganz bei Ihnen. Die Alternative muss zuerst funktionieren, sonst wird das Projekt scheitern. Das hat man in einigen Städten leider auch gesehen. Allerdings darf man vor lauter Bedingungen nicht ewig warten. Die Innenstädte verlieren jetzt schon Kunden, mit oder ohne Autos."
+        },
+        {
+          "speaker": "mod",
+          "text": "Herr Feld, wenn der Test kommt, machen Sie mit?"
+        },
+        {
+          "speaker": "a",
+          "text": "Wenn die Busse fahren und die Lieferungen geregelt sind, ja. Ich will ja auch, dass die Stadt lebendig bleibt. Ich bin nur dagegen, dass man den Menschen erst das Auto wegnimmt und dann überlegt, wie sie herkommen sollen."
+        },
+        {
+          "speaker": "b",
+          "text": "Dann sind wir uns ja einig, dass die Reihenfolge entscheidend ist. Vielleicht sollten Sie im Rathaus mit uns zusammen an dem Konzept arbeiten. Wir brauchen die Händler dafür."
+        },
+        {
+          "speaker": "mod",
+          "text": "Das klingt nach einer Einladung. Vielen Dank, Herr Feld, vielen Dank, Frau Sander, und Ihnen zu Hause einen schönen Abend."
+        }
+      ],
+      "items": [
+        {
+          "id": "H4-1",
+          "statement": "Die meisten meiner Kunden kommen mit dem Auto.",
+          "answer": "a",
+          "skill": "matching"
+        },
+        {
+          "id": "H4-2",
+          "statement": "In autofreien Innenstädten geben die Leute mehr Geld aus als vorher.",
+          "answer": "b",
+          "skill": "matching"
+        },
+        {
+          "id": "H4-3",
+          "statement": "Ich besitze selbst kein Auto.",
+          "answer": "mod",
+          "skill": "matching"
+        },
+        {
+          "id": "H4-4",
+          "statement": "Ältere Menschen können nicht alle mit dem Rad oder zu Fuß kommen.",
+          "answer": "a",
+          "skill": "matching"
+        },
+        {
+          "id": "H4-5",
+          "statement": "Geschäfte sollten weiterhin am Morgen beliefert werden dürfen.",
+          "answer": "b",
+          "skill": "matching"
+        },
+        {
+          "id": "H4-6",
+          "statement": "Parkhäuser am Stadtrand mit einem kostenlosen Bus wären eine Lösung.",
+          "answer": "a",
+          "skill": "matching"
+        },
+        {
+          "id": "H4-7",
+          "statement": "Ich habe heute lange im Stau gestanden.",
+          "answer": "mod",
+          "skill": "matching"
+        },
+        {
+          "id": "H4-8",
+          "statement": "Man sollte die autofreie Innenstadt zuerst einen Monat lang testen.",
+          "answer": "b",
+          "skill": "matching"
+        }
+      ]
+    }
+  },
+  "schreiben": {
+    "aufgabe1": {
+      "minutes": 20,
+      "words": 80,
+      "situation": "Sie haben am Wochenende an einer Müllsammelaktion in Ihrer Stadt teilgenommen. Ihr Freund Paul interessiert sich für Umweltschutz und hat Sie gefragt, wie es war. Schreiben Sie ihm eine E-Mail.",
+      "points": [
+        "Beschreiben Sie, was Sie bei der Aktion gemacht haben.",
+        "Erklären Sie, was Sie dabei überrascht hat.",
+        "Machen Sie einen Vorschlag, was Sie beide beim nächsten Mal zusammen machen könnten."
+      ]
+    },
+    "aufgabe2": {
+      "minutes": 25,
+      "words": 80,
+      "situation": "Sie haben im Fernsehen eine Diskussionssendung zum Thema „Verbote für den Klimaschutz?“ gesehen. Im Online-Gästebuch der Sendung finden Sie folgende Meinung:",
+      "quote": "„Der Staat soll mir nicht vorschreiben, wie ich lebe. Ich esse Fleisch, ich fahre Auto, und ich fliege in den Urlaub. Das Klima retten wir sowieso nicht, solange die großen Länder nicht mitmachen.“ – Werner, 55",
+      "instruction": "Schreiben Sie nun Ihre Meinung dazu (circa 80 Wörter)."
+    },
+    "aufgabe3": {
+      "minutes": 15,
+      "words": 40,
+      "situation": "Sie haben sich für den Workshop „Kompostieren auf dem Balkon“ am Samstag im Umweltzentrum angemeldet. Die Leiterin ist Frau Wagner. Sie können an diesem Tag nicht kommen. Schreiben Sie ihr eine E-Mail: Entschuldigen Sie sich höflich, nennen Sie den Grund und fragen Sie, ob es einen anderen Termin gibt.",
+      "addressee": "Frau Wagner"
+    }
+  },
+  "sprechen": {
+    "teil1": {
+      "situation": "Ihr Deutschkurs möchte einen Flohmarkt organisieren, bei dem gebrauchte Kleidung, Bücher und Spielzeug verkauft werden. Das Geld soll an ein Umweltprojekt gehen. Planen Sie den Flohmarkt gemeinsam mit Ihrem Partner / Ihrer Partnerin.",
+      "points": [
+        "Wann und wo soll der Flohmarkt stattfinden?",
+        "Was wollen Sie verkaufen, und wer bringt was mit?",
+        "Wie machen Sie Werbung?",
+        "An welches Projekt geht das Geld?"
+      ],
+      "partner_cues": [
+        "Ich dachte an einen Sonntag im Mai, draußen auf dem Schulhof. Oder findest du drinnen besser?",
+        "Was könnten wir denn alles verkaufen? Ich habe zu Hause viele Bücher, die ich nicht mehr lese.",
+        "Sollen wir auch Kuchen und Kaffee anbieten? Dann verdienen wir mehr Geld.",
+        "Wie sagen wir den Leuten Bescheid? Plakate in der Stadt oder lieber im Internet?",
+        "Ich könnte die Tische von der Schule organisieren. Kümmerst du dich um die Preisschilder?",
+        "Und an welches Projekt soll das Geld gehen? Ich kenne einen Verein, der Bäume pflanzt."
+      ]
+    },
+    "teil2": {
+      "topics": [
+        "Thema A: Sollte man auf Fleisch verzichten, um die Umwelt zu schützen?",
+        "Thema B: Fahrrad oder Auto – wie sollte man sich in der Stadt fortbewegen?"
+      ],
+      "folien": [
+        "Stellen Sie Ihr Thema vor. Erklären Sie den Inhalt und die Struktur Ihrer Präsentation.",
+        "Berichten Sie von Ihrer Situation oder einem Erlebnis im Zusammenhang mit dem Thema.",
+        "Berichten Sie, wie die Situation in Ihrem Heimatland ist, und geben Sie Beispiele.",
+        "Nennen Sie die Vor- und Nachteile und sagen Sie dazu Ihre Meinung. Geben Sie auch Beispiele.",
+        "Beenden Sie Ihre Präsentation und bedanken Sie sich bei den Zuhörern."
+      ]
+    },
+    "teil3": {
+      "questions": [
+        "Sie haben gesagt, dass Fleisch schlecht für die Umwelt ist. Essen Sie selbst Fleisch?",
+        "Glauben Sie, dass Fleisch teurer werden sollte? Warum?",
+        "Wie reagieren Ihre Freunde oder Ihre Familie, wenn jemand kein Fleisch mehr isst?"
+      ],
+      "questions_b": [
+        "Wie kommen Sie selbst normalerweise zur Arbeit oder zum Kurs?",
+        "Was müsste sich in Ihrer Stadt ändern, damit mehr Menschen Fahrrad fahren?",
+        "Sollte das Parken in der Innenstadt teurer werden? Was meinen Sie?"
+      ]
+    }
+  }
+}

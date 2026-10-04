@@ -1,0 +1,291 @@
+[
+{
+"id": "ENG_CHUNK_1401",
+"t": "Ho [nome]",
+"ex": "Ho il raffreddore.",
+"n": "Illnesses often take the article: ho il raffreddore, ho la tosse, ho l'influenza."
+},
+{
+"id": "ENG_CHUNK_1402",
+"t": "Mi fa male [parte del corpo] / Ho mal di [parte del corpo]",
+"ex": "Mi fa male la testa.",
+"n": "'Mi fa male' + article + body part; plural: mi fanno male i piedi."
+},
+{
+"id": "ENG_CHUNK_1403",
+"t": "Vorrei qualcosa per [nome]",
+"ex": "Vorrei qualcosa per la tosse.",
+"n": "At an Italian pharmacy 'qualcosa per' + problem is the standard ask."
+},
+{
+"id": "ENG_CHUNK_1404",
+"t": "Ho perso [nome]",
+"ex": "Ho perso il passaporto.",
+"n": "Article, not possessive: 'ho perso il passaporto'."
+},
+{
+"id": "ENG_CHUNK_1405",
+"t": "Mi hanno rubato [nome]",
+"ex": "Mi hanno rubato il portafoglio sul treno.",
+"n": "Impersonal 3rd plural 'mi hanno rubato' = someone stole my; the possession shows via 'mi'."
+},
+{
+"id": "ENG_CHUNK_1406",
+"t": "Mi piace [nome] / Mi piacciono [nomi]",
+"ex": "Mi piace la pizza.",
+"n": "The thing liked is the subject: mi piace la pizza, mi piacciono i gatti."
+},
+{
+"id": "ENG_CHUNK_1407",
+"t": "Mi interessa [nome] / Mi interesso di [nome]",
+"ex": "Mi interessa la storia.",
+"n": "Works like 'piacere': mi interessano le lingue."
+},
+{
+"id": "ENG_CHUNK_1408",
+"t": "Non mi piace [nome]",
+"ex": "Non mi piace il caffè."
+},
+{
+"id": "ENG_CHUNK_1409",
+"t": "Ti piace [nome]? / Le piace [nome]?",
+"ex": "Ti piace la cucina italiana?"
+},
+{
+"id": "ENG_CHUNK_1410",
+"t": "Qual è il tuo [nome] preferito?",
+"ex": "Qual è il tuo colore preferito?",
+"n": "'Preferito' agrees: la tua canzone preferita."
+},
+{
+"id": "ENG_CHUNK_1411",
+"t": "Il mio [nome] preferito è [nome]",
+"ex": "Il mio colore preferito è il blu.",
+"n": "Colours used as nouns take the article: il blu, il rosso."
+},
+{
+"id": "ENG_CHUNK_1412",
+"t": "Voglio [infinito]",
+"ex": "Voglio andare a casa.",
+"n": "Can sound demanding to strangers; use 'vorrei' when asking for things."
+},
+{
+"id": "ENG_CHUNK_1413",
+"t": "Vorrei [infinito]",
+"ex": "Vorrei prenotare un tavolo."
+},
+{
+"id": "ENG_CHUNK_1414",
+"t": "Devo [infinito] / Ho bisogno di [infinito]",
+"ex": "Devo andare in banca."
+},
+{
+"id": "ENG_CHUNK_1415",
+"t": "Devo [infinito]",
+"ex": "Domani devo lavorare.",
+"n": "'Dovere' covers both 'have to' and 'need to' in daily speech."
+},
+{
+"id": "ENG_CHUNK_1416",
+"t": "Ho bisogno di [nome] / Mi serve [nome]",
+"ex": "Mi serve un taxi.",
+"n": "'Mi serve/servono' is very common: mi servono due biglietti."
+},
+{
+"id": "ENG_CHUNK_1417",
+"t": "Posso [infinito]?",
+"ex": "Posso sedermi qui?",
+"n": "Pronouns can attach to the infinitive: posso sedermi / mi posso sedere."
+},
+{
+"id": "ENG_CHUNK_1418",
+"t": "Puoi [infinito], per favore? / Può [infinito], per favore?",
+"ex": "Mi può aiutare, per favore?"
+},
+{
+"id": "ENG_CHUNK_1419",
+"t": "Non so [infinito] / Non posso [infinito]",
+"ex": "Non so nuotare.",
+"n": "Skills use 'sapere' (non so nuotare); 'non posso' = not allowed / not possible."
+},
+{
+"id": "ENG_CHUNK_1420",
+"t": "[verbo, noi]! / Dai, [verbo, noi]!",
+"ex": "Andiamo al mare!",
+"n": "The noi form is the 'let's' form: andiamo, mangiamo, facciamo."
+},
+{
+"id": "ENG_CHUNK_1421",
+"t": "Non dimenticare di [infinito] / Ricordati di [infinito]",
+"ex": "Non dimenticare di prendere le chiavi.",
+"n": "Negative tu imperative = non + infinitive: non dimenticare."
+},
+{
+"id": "ENG_CHUNK_1422",
+"t": "Quanto spesso [verbo]? / Ogni quanto [verbo]?",
+"ex": "Ogni quanto vai in palestra?"
+},
+{
+"id": "ENG_CHUNK_1423",
+"t": "Cosa fai di solito [tempo]?",
+"ex": "Cosa fai di solito nel fine settimana?",
+"n": "'Il sabato' (with article) = on Saturdays in general."
+},
+{
+"id": "ENG_CHUNK_1424",
+"t": "Cosa fai [tempo]?",
+"ex": "Cosa fai questo fine settimana?",
+"n": "Italian uses the simple present for near plans."
+},
+{
+"id": "ENG_CHUNK_1425",
+"t": "[presente] / Ho intenzione di [infinito]",
+"ex": "Questo fine settimana vado a trovare mia zia.",
+"n": "No 'going to' future: the present tense does the job; 'ho intenzione di' stresses the plan."
+},
+{
+"id": "ENG_CHUNK_1426",
+"t": "Ci vediamo a [luogo] alle [ora]",
+"ex": "Ci vediamo al bar alle sei.",
+"n": "'Alle' + hour: alle sei, but 'all'una'."
+},
+{
+"id": "ENG_CHUNK_1427",
+"t": "Possiamo vederci [tempo] invece?",
+"ex": "Possiamo vederci domani invece?",
+"n": "'Facciamo domani?' is a very common short form."
+},
+{
+"id": "ENG_CHUNK_1428",
+"t": "Scusa, [giorno] non posso venire",
+"ex": "Scusa, sabato non posso venire.",
+"n": "No preposition before days: 'sabato', not 'di sabato' / 'on Saturday'."
+},
+{
+"id": "ENG_CHUNK_1429",
+"t": "[giorno] sono impegnato / impegnata",
+"ex": "Lunedì sono impegnato. Martedì ti va?"
+},
+{
+"id": "ENG_CHUNK_1430",
+"t": "[ora] ti va bene? / Le va bene [ora]?",
+"ex": "Alle sei ti va bene?"
+},
+{
+"id": "ENG_CHUNK_1431",
+"t": "Arrivo con [numero] minuti di ritardo / Faccio [numero] minuti di ritardo",
+"ex": "Scusa, arrivo con dieci minuti di ritardo.",
+"n": "Also casual: 'Arrivo tra dieci minuti'."
+},
+{
+"id": "ENG_CHUNK_1432",
+"t": "Oggi mi sento [aggettivo]",
+"ex": "Oggi mi sento stanco.",
+"n": "Adjective agrees with the speaker: stanca for a woman."
+},
+{
+"id": "ENG_CHUNK_1433",
+"t": "Come sta [persona]?",
+"ex": "Come sta tua madre?",
+"n": "Family members: 'tua madre' without article; 'come stanno i tuoi?' for parents."
+},
+{
+"id": "ENG_CHUNK_1434",
+"t": "Com'è [persona]?",
+"ex": "Com'è il tuo nuovo insegnante?",
+"n": "'Com'è?' asks about character or looks; 'Come sta?' about health."
+},
+{
+"id": "ENG_CHUNK_1435",
+"t": "Oggi fa [aggettivo] / Oggi è [aggettivo]",
+"ex": "Oggi fa freddo.",
+"n": "Weather uses 'fare': fa freddo, fa caldo; but 'è nuvoloso', 'c'è il sole'."
+},
+{
+"id": "ENG_CHUNK_1436",
+"t": "Che tempo fa a [luogo]?",
+"ex": "Che tempo fa a Palermo?"
+},
+{
+"id": "ENG_CHUNK_1437",
+"t": "[tempo] pioverà / Dicono che pioverà [tempo]",
+"ex": "Oggi pomeriggio pioverà.",
+"n": "Future tense is natural for forecasts; 'sta per piovere' = about to rain."
+},
+{
+"id": "ENG_CHUNK_1438",
+"t": "Pronto, sono [nome]",
+"ex": "Pronto, sono Maria.",
+"n": "'Pronto' answers the phone; say 'sono Maria', not 'questa è'."
+},
+{
+"id": "ENG_CHUNK_1439",
+"t": "Ti chiamo [tempo]",
+"ex": "Ti chiamo domani.",
+"n": "Present tense for a promise: 'ti chiamo', not future."
+},
+{
+"id": "ENG_CHUNK_1440",
+"t": "Scrivimi quando [frase] / Mandami un messaggio quando [frase]",
+"ex": "Scrivimi quando arrivi a casa.",
+"n": "Italian uses the present (quando arrivi) or future (quando arriverai), both fine."
+},
+{
+"id": "ENG_CHUNK_1441",
+"t": "Penso che [congiuntivo] / Secondo me [indicativo]",
+"ex": "Secondo me è una buona idea.",
+"n": "'Penso che' triggers congiuntivo (penso che sia); 'secondo me' avoids it."
+},
+{
+"id": "ENG_CHUNK_1442",
+"t": "Sono d'accordo con [persona]",
+"ex": "Sono d'accordo con te.",
+"n": "Never 'io accordo': 'essere d'accordo'."
+},
+{
+"id": "ENG_CHUNK_1443",
+"t": "[nome] è meglio di [nome]",
+"ex": "Il tè è meglio del caffè.",
+"n": "'Di' contracts with the article: del, della, dello."
+},
+{
+"id": "ENG_CHUNK_1444",
+"t": "Non sono mai stato a [luogo] / Non sono mai stata in [luogo]",
+"ex": "Non sono mai stato in Australia.",
+"n": "'In' + country, 'a' + city; 'stata' for a female speaker."
+},
+{
+"id": "ENG_CHUNK_1445",
+"t": "[tempo] scorso, [passato prossimo]",
+"ex": "Lo scorso fine settimana sono andato a trovare i nonni.",
+"n": "'Scorso' agrees: la settimana scorsa, l'anno scorso."
+},
+{
+"id": "ENG_CHUNK_1446",
+"t": "Hai passato un buon [nome]? / Com'è andato [nome]?",
+"ex": "Hai passato un bel fine settimana?"
+},
+{
+"id": "ENG_CHUNK_1447",
+"t": "Com'è andato [nome]? / Com'è andata [nome]?",
+"ex": "Com'è andato il fine settimana?",
+"n": "'Andato/andata' agrees with the event: com'è andata la vacanza?"
+},
+{
+"id": "ENG_CHUNK_1448",
+"t": "Sto [gerundio] / In questo momento [presente]",
+"ex": "In questo momento sto lavorando.",
+"n": "'Stare' + gerundio for right now; the simple present also works."
+},
+{
+"id": "ENG_CHUNK_1449",
+"t": "Mi dispiace, ma [frase]",
+"ex": "Mi dispiace, ma non posso aiutarla."
+},
+{
+"id": "ENG_CHUNK_1450",
+"t": "Ci vediamo [giorno]!",
+"ex": "Ci vediamo lunedì!",
+"n": "No preposition before the day: 'a lunedì!' is a common short form."
+}
+]

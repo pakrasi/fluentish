@@ -1,0 +1,252 @@
+{
+  "day": 10,
+  "topic": "Einkaufen, Konsum und Geld",
+  "lesen": {
+    "teil1": {
+      "title": "Ein Monat ohne Online-Shopping",
+      "source": "Blog",
+      "text": "Im Januar habe ich mir etwas vorgenommen: einen ganzen Monat lang nichts im Internet bestellen. Kein Paket, keine Klingel um acht Uhr morgens, kein Karton im Flur. Meine Freundin Sara hat gelacht und gesagt, dass ich das keine Woche durchhalte. Ehrlich gesagt hatte ich selbst Angst davor, denn im letzten Jahr habe ich fast jede Woche etwas online gekauft.\n\nDie ersten Tage waren tatsächlich schwierig. Am dritten Tag ging meine Kaffeemaschine kaputt, und normalerweise hätte ich sofort eine neue bestellt. Stattdessen bin ich in ein kleines Elektrogeschäft in unserer Straße gegangen. Der Verkäufer hat sich die Maschine angeschaut und sie in zwanzig Minuten repariert. Das hat mich nur fünfzehn Euro gekostet, eine neue Maschine hätte über achtzig gekostet.\n\nIn der zweiten Woche wollte ich ein Geschenk für meine Mutter kaufen. Ich bin durch die Innenstadt gelaufen und habe in einem Buchladen eine Stunde lang gestöbert. Die Buchhändlerin hat mir drei Bücher empfohlen, die ich im Internet nie gefunden hätte. Meine Mutter war begeistert.\n\nNatürlich gab es auch Nachteile. Manche Dinge sind im Laden teurer, vor allem Kleidung. Und für den Einkauf braucht man mehr Zeit, weil man nicht abends auf dem Sofa bestellen kann. Allerdings habe ich am Ende des Monats gemerkt, dass ich insgesamt viel weniger Geld ausgegeben habe als sonst. Ich habe nämlich nur gekauft, was ich wirklich gebraucht habe.\n\nWerde ich nie wieder online bestellen? Das glaube ich nicht. Aber ich habe eine Entscheidung getroffen: Bevor ich etwas bestelle, schaue ich zuerst, ob es das auch in einem Geschäft in der Nähe gibt. Sara macht inzwischen übrigens mit.",
+      "items": [
+        {"id": "L1-1", "statement": "Die Autorin hat früher selten im Internet eingekauft.", "answer": false, "skill": "paraphrase"},
+        {"id": "L1-2", "statement": "Die Reparatur der Kaffeemaschine war günstiger als eine neue Maschine.", "answer": true, "skill": "number-time"},
+        {"id": "L1-3", "statement": "Die Autorin hat das Geschenk für ihre Mutter in einem Buchladen gekauft.", "answer": true, "skill": "detail"},
+        {"id": "L1-4", "statement": "Kleidung ist im Laden nicht teurer als im Internet.", "answer": false, "skill": "negation"},
+        {"id": "L1-5", "statement": "In diesem Monat hat die Autorin weniger Geld ausgegeben als normalerweise.", "answer": true, "skill": "detail"},
+        {"id": "L1-6", "statement": "Die Autorin will in Zukunft nie mehr online bestellen.", "answer": false, "skill": "inference"}
+      ]
+    },
+    "teil2": {
+      "texts": [
+        {
+          "title": "Einkaufen ohne Verpackung",
+          "source": "Zeitung",
+          "text": "In der Nürnberger Innenstadt gibt es seit zwei Jahren einen Laden, in dem nichts verpackt ist. Nudeln, Reis, Müsli oder Waschmittel liegen in großen Behältern, und die Kunden füllen sich selbst so viel ab, wie sie brauchen. Wer keine eigene Dose mitbringt, kann im Laden Gläser kaufen oder leihen.\n\nDie Besitzerin Carla Winter hat den Laden gegründet, weil sie sich über den vielen Müll geärgert hat. „Ein normaler Haushalt wirft jede Woche einen ganzen Sack Plastik weg. Das lässt sich vermeiden“, sagt sie. Am Anfang kamen vor allem junge Leute, inzwischen kaufen auch viele Familien und ältere Kunden bei ihr ein.\n\nAllerdings ist das Konzept nicht billig. Weil Winter kleine Mengen bei regionalen Produzenten bestellt, kosten manche Produkte mehr als im Supermarkt. Ein Kilo Nudeln ist bei ihr etwa fünfzig Cent teurer. „Dafür kaufen die Leute nur so viel, wie sie wirklich brauchen, und werfen weniger weg“, erklärt sie. Am Ende gebe man deshalb oft nicht mehr Geld aus.\n\nEin Problem bleibt jedoch: Viele Kunden vergessen ihre Behälter zu Hause und kaufen dann doch im Supermarkt ein. Winter hat deshalb eine Idee: Ab Herbst kann man bei ihr Dosen abgeben, die andere Kunden dann kostenlos benutzen dürfen.",
+          "items": [
+            {"id": "L2-1", "question": "In dem Laden von Carla Winter …", "options": ["werden alle Produkte in Gläsern verkauft.", "nehmen die Kunden selbst die Menge, die sie brauchen.", "muss man eigene Behälter kaufen."], "answer": 1, "skill": "paraphrase"},
+            {"id": "L2-2", "question": "Was sagt Frau Winter über die Preise?", "options": ["Ihre Produkte sind billiger als im Supermarkt.", "Regionale Produkte kosten weniger als andere.", "Die Kunden geben oft nicht mehr Geld aus, weil sie weniger wegwerfen."], "answer": 2, "skill": "paraphrase"},
+            {"id": "L2-3", "question": "Ab Herbst …", "options": ["können Kunden Behälter benutzen, die andere abgegeben haben.", "verkauft der Laden auch Produkte in Verpackungen.", "öffnet ein zweiter Laden im Supermarkt."], "answer": 0, "skill": "detail"}
+          ]
+        },
+        {
+          "title": "Nur noch mit Karte? Ein Café sagt Nein zum Bargeld",
+          "source": "Zeitschrift",
+          "text": "Wer im Café „Bohne“ in Hamburg einen Kaffee bestellt, kann nicht mit Münzen oder Scheinen bezahlen. Seit März nimmt der Besitzer Tim Lorenz nur noch Karten oder Handy-Zahlungen an. „Das Zählen der Kasse am Abend hat jeden Tag eine halbe Stunde gedauert. Und zweimal wurde bei uns eingebrochen, weil Bargeld im Laden war“, erklärt der 41-Jährige.\n\nDie meisten Gäste reagieren gelassen auf die neue Regel. Vor allem jüngere Kunden bezahlen sowieso fast nur noch mit dem Handy. Ältere Gäste sind dagegen manchmal verärgert. Eine Stammkundin kommt seit März nicht mehr, weil sie keine Karte besitzt. „Das tut mir leid, aber ich kann keine Ausnahme machen“, sagt Lorenz.\n\nVerbraucherschützer warnen davor, dass Bargeld ganz verschwindet. Nicht jeder hat ein Konto, und bei einer Störung im Internet funktioniert die Kartenzahlung nicht. Außerdem geben Menschen mit Karte oft mehr Geld aus, weil sie nicht sehen, wie viel sie schon bezahlt haben.\n\nLorenz hält das für übertrieben. „Wer sein Geld im Blick behalten will, der kann das auch in der Banking-App.“ Trotzdem denkt er über einen Kompromiss nach: Vielleicht wird es bald einen Automaten geben, an dem man Bargeld auf eine Gutscheinkarte laden kann.",
+          "items": [
+            {"id": "L2-4", "question": "Warum nimmt das Café kein Bargeld mehr an?", "options": ["Der Besitzer will Zeit sparen und sich vor Einbrüchen schützen.", "Die Gäste haben sich das gewünscht.", "Die Bank verlangt zu hohe Gebühren für Münzen."], "answer": 0, "skill": "paraphrase"},
+            {"id": "L2-5", "question": "Die Stammkundin …", "options": ["bezahlt jetzt mit dem Handy.", "hat eine Ausnahme bekommen.", "kommt nicht mehr, weil sie nicht mit Karte zahlen kann."], "answer": 2, "skill": "detail"},
+            {"id": "L2-6", "question": "Was meinen die Verbraucherschützer?", "options": ["Mit Karte gibt man oft mehr aus, weil man den Überblick verliert.", "Die Banking-App hilft dabei, das Geld im Blick zu behalten.", "Ohne Bargeld funktioniert das Internet nicht."], "answer": 0, "skill": "paraphrase"}
+          ]
+        }
+      ]
+    },
+    "teil3": {
+      "intro": "Einige Personen aus Ihrem Deutschkurs suchen Angebote rund um Einkaufen und Geld. Lesen Sie die Situationen 1–7 und die Anzeigen A–J. Welche Anzeige passt zu welcher Situation? Eine Anzeige kann nur einmal gewählt werden. Für eine Situation gibt es keine passende Anzeige – markieren Sie dort 0.",
+      "situations": [
+        {"id": "L3-1", "text": "Laura zieht um und möchte ihre alten Möbel schnell verkaufen.", "answer": "F", "skill": "matching"},
+        {"id": "L3-2", "text": "Ömer gibt zu viel Geld aus und möchte lernen, wie man mit seinem Geld besser umgeht.", "answer": "B", "skill": "matching"},
+        {"id": "L3-3", "text": "Ana studiert und sucht ein Konto, für das sie nichts bezahlen muss.", "answer": "I", "skill": "matching"},
+        {"id": "L3-4", "text": "Jonas möchte am Wochenende frisches Gemüse direkt vom Bauern kaufen.", "answer": "D", "skill": "matching"},
+        {"id": "L3-5", "text": "Mei hat ein Geschenk bekommen, das ihr nicht gefällt, und möchte es ohne Kassenbon umtauschen.", "answer": null, "skill": "matching"},
+        {"id": "L3-6", "text": "Piotr sucht günstige Kleidung für seine kleine Tochter.", "answer": "G", "skill": "matching"},
+        {"id": "L3-7", "text": "Nadia hat zu Hause viele Dinge, die sie nicht mehr braucht, und möchte sie selbst auf einem Markt verkaufen.", "answer": "A", "skill": "matching"}
+      ],
+      "ads": [
+        {"letter": "A", "title": "Großer Flohmarkt am Hafen", "text": "Jeden ersten Sonntag im Monat, 8–16 Uhr. Private Verkäufer willkommen! Standgebühr 15 € für drei Meter, Tische bitte selbst mitbringen. Anmeldung bis Donnerstag unter flohmarkt-hafen@mail.de. Keine Händler."},
+        {"letter": "B", "title": "Kurs: Mein Geld im Griff", "text": "Haushaltsplan, Sparen, Verträge kündigen – an vier Abenden lernen Sie, wie Sie Ihre Ausgaben kontrollieren und am Monatsende noch Geld übrig haben. Volkshochschule Nord, dienstags 18–20 Uhr, 40 €."},
+        {"letter": "C", "title": "Umtausch leicht gemacht", "text": "Im Modehaus Krämer können Sie gekaufte Kleidung innerhalb von 30 Tagen umtauschen. Bitte bringen Sie den Kassenbon mit – ohne Bon ist leider kein Umtausch möglich. Ausgenommen sind reduzierte Artikel."},
+        {"letter": "D", "title": "Bauernmarkt Lindenplatz", "text": "Samstags 7–13 Uhr: Obst, Gemüse, Eier und Käse aus der Region, direkt von den Erzeugern. Alles frisch geerntet, keine Zwischenhändler. Im Winter in der Markthalle. Kommen Sie früh, die besten Sachen sind schnell weg!"},
+        {"letter": "E", "title": "Reparatur statt Neukauf", "text": "Wir reparieren Toaster, Staubsauger, Lampen und Fahrräder – gemeinsam mit Ihnen. Jeden Mittwoch 17–20 Uhr im Stadtteilzentrum. Kostenlos, Spenden willkommen. Ersatzteile müssen Sie selbst mitbringen."},
+        {"letter": "F", "title": "Wir kaufen Ihre Möbel", "text": "Sofa, Schrank, Tisch – wir holen gebrauchte Möbel bei Ihnen ab und zahlen sofort bar. Termin innerhalb von 48 Stunden, auch am Wochenende. Kostenlose Abholung im ganzen Stadtgebiet. Tel. 030 / 44 66 88."},
+        {"letter": "G", "title": "Kinderkleiderbörse", "text": "Am Samstag, 10–14 Uhr, in der Grundschule Am Park: gebrauchte Kinderkleidung, Schuhe und Spielzeug zu kleinen Preisen. Größen 50 bis 164. Eintritt frei, Kaffee und Kuchen im Foyer."},
+        {"letter": "H", "title": "Möbelhaus Wohnwelt – Räumungsverkauf", "text": "Alles muss raus! Bis zu 60 % Rabatt auf Sofas, Betten und Küchen. Nur noch bis Ende des Monats. Lieferung innerhalb einer Woche, Aufbau gegen Aufpreis. Montag bis Samstag 10–20 Uhr."},
+        {"letter": "I", "title": "Studierendenkonto der Stadtbank", "text": "Für alle unter 27 mit Studienbescheinigung: keine Kontogebühren, kostenlose Karte, Geld abheben an allen Automaten in Deutschland gratis. Eröffnung online in zehn Minuten. Nach dem Studium wechseln Sie einfach ins normale Konto."},
+        {"letter": "J", "title": "Secondhand-Laden „Zweite Chance“", "text": "Damen- und Herrenmode aus zweiter Hand, geprüft und gewaschen. Markenkleidung ab 5 €. Sie können auch eigene Kleidung abgeben: Wir verkaufen sie für Sie und Sie bekommen die Hälfte des Preises. Di–Sa 11–18 Uhr."}
+      ]
+    },
+    "teil4": {
+      "question": "Sollten Geschäfte auch am Sonntag öffnen dürfen?",
+      "comments": [
+        {"id": "L4-1", "author": "Sabine, Essen", "text": "Ich arbeite unter der Woche bis 19 Uhr und komme nie in Ruhe zum Einkaufen. Am Samstag sind die Läden voll. Ein offener Sonntag wäre für Berufstätige wie mich eine echte Erleichterung.", "answer": true, "skill": "attitude"},
+        {"id": "L4-2", "author": "Tarek, Köln", "text": "Ich habe selbst zehn Jahre im Einzelhandel gearbeitet. Wer glaubt, dass die Verkäufer dann freiwillig am Sonntag arbeiten, der irrt sich. Der Sonntag ist der einzige Tag, an dem die ganze Familie zusammen ist. Das darf man ihnen nicht nehmen.", "answer": false, "skill": "attitude"},
+        {"id": "L4-3", "author": "Ines, Rostock", "text": "In vielen Ländern sind die Geschäfte sonntags offen, und die Welt geht davon nicht unter. Im Internet kann man sowieso rund um die Uhr bestellen. Warum sollen die Läden in der Stadt schlechtere Chancen haben als Online-Shops?", "answer": true, "skill": "attitude"},
+        {"id": "L4-4", "author": "Bernd, Ulm", "text": "Als Kunde fände ich es natürlich praktisch. Aber ich habe mit meiner Nachbarin gesprochen, die an der Kasse arbeitet, und sie hat mir erzählt, wie müde sie jetzt schon ist. Seitdem sehe ich das anders. Nein, sechs Tage reichen.", "answer": false, "skill": "inference"},
+        {"id": "L4-5", "author": "Yasemin, Berlin", "text": "Wir haben schon jetzt viermal im Jahr einen verkaufsoffenen Sonntag, und die Innenstadt ist dann voller Leben. Cafés, Straßenmusik, Familien mit Kindern. Das könnte doch jede Woche so sein!", "answer": true, "skill": "attitude"},
+        {"id": "L4-6", "author": "Holger, Kassel", "text": "Wer braucht das wirklich? Niemand verhungert, weil der Supermarkt am Sonntag zu ist. Die großen Ketten würden profitieren, die kleinen Läden könnten sich einen siebten Tag gar nicht leisten. Am Ende gewinnen nur die Großen.", "answer": false, "skill": "attitude"},
+        {"id": "L4-7", "author": "Claudia, Trier", "text": "Ich verstehe die Sorgen der Angestellten. Trotzdem: Wer sonntags arbeitet, könnte dafür einen anderen freien Tag bekommen, wie im Krankenhaus oder bei der Bahn. Das lässt sich organisieren, und die Vorteile für die Kunden sind groß.", "answer": true, "skill": "inference"}
+      ]
+    },
+    "teil5": {
+      "title": "Allgemeine Geschäftsbedingungen – Online-Shop „Kleinstadtmarkt“",
+      "text": "§ 1 Bestellung\nEine Bestellung ist erst gültig, wenn Sie von uns eine Bestätigung per E-Mail erhalten haben. Bestellungen, die bis 14 Uhr eingehen, werden noch am selben Tag bearbeitet. Nach der Bestätigung können Sie die Bestellung nicht mehr über die Website ändern, sondern nur telefonisch über unseren Kundenservice.\n\n§ 2 Lieferung\nDie Lieferung innerhalb Deutschlands dauert in der Regel zwei bis vier Werktage. Ab einem Bestellwert von 50 € ist der Versand kostenlos, darunter berechnen wir 4,90 €. Lieferungen nach Österreich und in die Schweiz kosten immer 9,90 €, unabhängig vom Bestellwert.\n\n§ 3 Widerruf und Rücksendung\nSie können die Ware innerhalb von 14 Tagen nach Erhalt ohne Angabe von Gründen zurückschicken. Die Ware muss unbenutzt und in der Originalverpackung sein. Die Kosten für die Rücksendung übernehmen wir, wenn Sie das beiliegende Rücksende-Etikett verwenden. Lebensmittel und personalisierte Artikel sind vom Widerruf ausgeschlossen.\n\n§ 4 Bezahlung\nSie können per Kreditkarte, Überweisung oder Rechnung bezahlen. Bei Zahlung auf Rechnung muss der Betrag innerhalb von 14 Tagen nach Lieferung bei uns eingehen. Für die erste Bestellung ist die Zahlung auf Rechnung nicht möglich.\n\n§ 5 Reklamation\nIst die Ware beschädigt oder falsch, melden Sie sich bitte innerhalb von sieben Tagen bei unserem Kundenservice und schicken Sie ein Foto mit. Sie erhalten dann Ersatz oder Ihr Geld zurück.",
+      "items": [
+        {"id": "L5-1", "question": "Wer seine Bestellung nach der Bestätigung ändern möchte, …", "options": ["kann das auf der Website machen.", "muss den Kundenservice anrufen.", "muss eine neue Bestellung aufgeben."], "answer": 1, "skill": "detail"},
+        {"id": "L5-2", "question": "Der Versand nach Österreich …", "options": ["ist ab 50 € kostenlos.", "kostet 4,90 €.", "kostet immer 9,90 €."], "answer": 2, "skill": "number-time"},
+        {"id": "L5-3", "question": "Die Rücksendung ist kostenlos, …", "options": ["wenn man das mitgeschickte Etikett benutzt.", "wenn man einen Grund angibt.", "wenn man Lebensmittel zurückschickt."], "answer": 0, "skill": "detail"},
+        {"id": "L5-4", "question": "Wer zum ersten Mal bestellt, …", "options": ["muss per Kreditkarte bezahlen.", "hat 14 Tage Zeit für die Bezahlung.", "kann nicht auf Rechnung bezahlen."], "answer": 2, "skill": "negation"}
+      ]
+    }
+  },
+  "hoeren": {
+    "teil1": {
+      "texts": [
+        {
+          "id": "H1-1", "kind": "Anrufbeantworter",
+          "script": [{"speaker": "m3", "text": "Guten Tag, Frau Novak, hier ist Peter Lang vom Fahrradladen Lang in der Bahnhofstraße. Ihr Fahrrad ist fertig, Sie können es abholen. Am Telefon hatte ich Ihnen ja gesagt, dass die Reparatur ungefähr sechzig Euro kostet. Wir mussten aber auch die Kette wechseln, deshalb sind es jetzt fünfundachtzig Euro. Ich hoffe, das ist in Ordnung. Wir haben heute bis achtzehn Uhr geöffnet, morgen ist Mittwoch, da haben wir nachmittags geschlossen. Also am besten kommen Sie heute noch vorbei oder am Donnerstag. Bezahlen können Sie bar oder mit Karte. Bis dann, auf Wiederhören!"}],
+          "items": [
+            {"id": "H1-1a", "type": "rf", "statement": "Die Reparatur kostet sechzig Euro.", "answer": false, "skill": "number-time"},
+            {"id": "H1-1b", "type": "mc", "question": "Frau Novak soll das Fahrrad …", "options": ["morgen Nachmittag abholen.", "heute oder am Donnerstag abholen.", "am Mittwoch bezahlen."], "answer": 1, "skill": "detail"}
+          ]
+        },
+        {
+          "id": "H1-2", "kind": "Radio",
+          "script": [{"speaker": "f1", "text": "Und jetzt noch ein Tipp für alle Schnäppchenjäger: Der große Nachtflohmarkt in der alten Fabrikhalle sollte ursprünglich am Freitag stattfinden. Wegen eines Konzerts in der Halle wurde er aber auf Samstag verschoben. Los geht es um achtzehn Uhr, und die Stände bleiben bis Mitternacht offen. Über zweihundert private Verkäufer bieten Kleidung, Bücher, Möbel und Elektronik an. Der Eintritt kostet drei Euro, Kinder bis zwölf Jahre kommen kostenlos rein. Denken Sie an Bargeld, denn die meisten Verkäufer nehmen keine Karten. Und wer selbst verkaufen möchte, kann sich noch bis heute Abend online anmelden."}],
+          "items": [
+            {"id": "H1-2a", "type": "rf", "statement": "Der Flohmarkt findet am Freitag statt.", "answer": false, "skill": "number-time"},
+            {"id": "H1-2b", "type": "mc", "question": "Die Besucher sollen …", "options": ["mit Karte bezahlen.", "sich online anmelden.", "Bargeld mitnehmen."], "answer": 2, "skill": "detail"}
+          ]
+        },
+        {
+          "id": "H1-3", "kind": "Durchsage",
+          "script": [{"speaker": "f2", "text": "Liebe Kundinnen und Kunden, herzlich willkommen im Kaufhaus Bergmann. Wir möchten Sie auf unsere Angebote hinweisen: Heute erhalten Sie in der Sportabteilung im zweiten Stock zwanzig Prozent Rabatt auf alle Laufschuhe. Das Angebot gilt nur heute bis Ladenschluss. Außerdem bitten wir den Besitzer eines silbernen Autos mit dem Kennzeichen M – KL 2 3 4 5, zu seinem Fahrzeug zu kommen. Es steht in der Einfahrt und blockiert die Lieferung. Und noch ein Hinweis: Unsere Kundentoiletten im vierten Stock sind heute wegen Reinigung geschlossen, bitte benutzen Sie die Toiletten im Erdgeschoss. Wir wünschen Ihnen einen angenehmen Einkauf."}],
+          "items": [
+            {"id": "H1-3a", "type": "rf", "statement": "Der Rabatt auf Laufschuhe gilt die ganze Woche.", "answer": false, "skill": "number-time"},
+            {"id": "H1-3b", "type": "mc", "question": "Der Besitzer des Autos soll …", "options": ["in die Sportabteilung kommen.", "sein Auto wegfahren.", "im vierten Stock parken."], "answer": 1, "skill": "paraphrase"}
+          ]
+        },
+        {
+          "id": "H1-4", "kind": "Werbung",
+          "script": [{"speaker": "at_m", "text": "Sie brauchen ein neues Sofa, aber Ihr Konto sagt Nein? Dann kommen Sie zu Möbel Huber! Nur in dieser Woche: Bei uns zahlen Sie erst in sechs Monaten, ohne Zinsen, ohne versteckte Kosten. Und wer bis Samstag kauft, bekommt die Lieferung gratis dazu. Unsere Berater helfen Ihnen gern bei der Auswahl, und mit unserer App sehen Sie schon zu Hause, ob das Sofa in Ihr Wohnzimmer passt. Möbel Huber, direkt an der Autobahnausfahrt Linz-West, Montag bis Freitag von neun bis neunzehn Uhr, Samstag bis siebzehn Uhr. Möbel Huber – gut wohnen, später zahlen."}],
+          "items": [
+            {"id": "H1-4a", "type": "rf", "statement": "Bei Möbel Huber kann man erst nach einem halben Jahr bezahlen.", "answer": true, "skill": "paraphrase"},
+            {"id": "H1-4b", "type": "mc", "question": "Die Lieferung ist kostenlos, wenn man …", "options": ["die App benutzt.", "sofort bezahlt.", "bis Samstag kauft."], "answer": 2, "skill": "detail"}
+          ]
+        },
+        {
+          "id": "H1-5", "kind": "Anrufbeantworter",
+          "script": [{"speaker": "f3", "text": "Hallo Daniel, hier ist Mama. Du, ich habe gerade deine Nachricht gehört. Ja, ich kann dir das Geld für die Kaution leihen, das ist kein Problem. Aber ich überweise es lieber, als dass ich dir Bargeld gebe, dann haben wir beide einen Beleg. Schick mir bitte deine Kontonummer, ich hab die alte nicht mehr. Und noch was: Achthundert Euro hast du gesagt, oder? Auf dem Vertrag, den du mir geschickt hast, stehen aber neunhundertfünfzig. Schau bitte noch mal nach, bevor ich überweise. Ruf mich heute Abend an, ich bin ab sieben zu Hause. Tschüss, mein Schatz."}],
+          "items": [
+            {"id": "H1-5a", "type": "rf", "statement": "Die Mutter will Daniel das Geld bar geben.", "answer": false, "skill": "negation"},
+            {"id": "H1-5b", "type": "mc", "question": "Daniel soll …", "options": ["die Höhe der Kaution im Vertrag prüfen.", "das Geld heute Abend abholen.", "einen neuen Vertrag schicken."], "answer": 0, "skill": "paraphrase"}
+          ]
+        }
+      ]
+    },
+    "teil2": {
+      "setting": "Sie beginnen einen Ferienjob in einem großen Supermarkt und hören die Einweisung durch die Marktleiterin.",
+      "script": [{"speaker": "f1", "text": "Guten Morgen zusammen und herzlich willkommen im Frischmarkt Weber! Ich bin Karin Weber, die Marktleiterin, und ich möchte Ihnen heute die wichtigsten Dinge für Ihre ersten Tage erklären. Zuerst zu den Arbeitszeiten: Der Markt öffnet um sieben Uhr, aber die Frühschicht beginnt schon um sechs, weil dann die Lieferung mit dem frischen Obst und Gemüse kommt. Die Spätschicht endet um zwanzig Uhr dreißig, eine halbe Stunde nach Ladenschluss. Ihre Schichten finden Sie jede Woche freitags im Dienstplan im Pausenraum. Wer tauschen möchte, muss das vorher mit mir besprechen, nicht nur mit dem Kollegen. Dann zur Kleidung: Sie bekommen gleich zwei Poloshirts und eine Schürze. Bitte tragen Sie geschlossene Schuhe, das ist Vorschrift wegen der schweren Kisten. Ihr Namensschild bekommen Sie am Mittwoch, bis dahin tragen Sie bitte das Schild mit der Aufschrift Team. Ein wichtiges Thema ist die Kasse. In den ersten zwei Wochen arbeiten Sie nicht allein an der Kasse, sondern immer zusammen mit einer erfahrenen Kollegin. Danach machen Sie eine kurze Prüfung, und dann dürfen Sie selbstständig kassieren. Bei Kunden, die Alkohol oder Zigaretten kaufen und jung aussehen, müssen Sie immer den Ausweis verlangen, auch wenn der Kunde sich ärgert. Da gibt es keine Ausnahme. Was Sie noch wissen sollten: Als Mitarbeiter bekommen Sie zehn Prozent Rabatt auf Ihren Einkauf, allerdings nicht auf Tabak und Zeitschriften. Ihre Pause dauert bei einer Schicht von acht Stunden dreißig Minuten, und Sie dürfen im Pausenraum kostenlos Kaffee und Wasser trinken. Wenn ein Kunde eine Beschwerde hat oder etwas umtauschen möchte, dann diskutieren Sie bitte nicht, sondern holen Sie mich oder meinen Stellvertreter, Herrn Öztürk. Und ganz wichtig: Das Handy bleibt während der Arbeit im Spind, nicht in der Hosentasche. So, gibt es Fragen? Wenn nicht, dann zeige ich Ihnen jetzt das Lager und die Kühlräume."}],
+      "items": [
+        {"id": "H2-1", "question": "Die Frühschicht beginnt …", "options": ["um sieben Uhr, wenn der Markt öffnet.", "um sechs Uhr, weil dann die Lieferung kommt.", "eine halbe Stunde nach Ladenschluss."], "answer": 1, "skill": "number-time"},
+        {"id": "H2-2", "question": "Wer eine Schicht tauschen möchte, …", "options": ["muss vorher mit der Marktleiterin sprechen.", "trägt sich freitags in den Dienstplan ein.", "muss nur den Kollegen fragen."], "answer": 0, "skill": "detail"},
+        {"id": "H2-3", "question": "In den ersten zwei Wochen …", "options": ["dürfen die neuen Mitarbeiter nicht an die Kasse.", "müssen die neuen Mitarbeiter jeden Tag eine Prüfung machen.", "arbeiten die neuen Mitarbeiter mit einer erfahrenen Kollegin an der Kasse."], "answer": 2, "skill": "paraphrase"},
+        {"id": "H2-4", "question": "Der Mitarbeiterrabatt …", "options": ["gilt für den ganzen Einkauf.", "gilt nicht für Tabak und Zeitschriften.", "beträgt dreißig Prozent."], "answer": 1, "skill": "negation"},
+        {"id": "H2-5", "question": "Bei einer Beschwerde sollen die neuen Mitarbeiter …", "options": ["die Marktleiterin oder ihren Stellvertreter holen.", "mit dem Kunden diskutieren.", "die Ware sofort umtauschen."], "answer": 0, "skill": "paraphrase"}
+      ]
+    },
+    "teil3": {
+      "setting": "Sie hören ein Gespräch zwischen zwei Freunden, die sich in einem Elektronikgeschäft treffen.",
+      "script": [
+        {"speaker": "m2", "text": "Hey Lea, was machst du denn hier? Ich dachte, du wolltest dein Geld sparen."},
+        {"speaker": "f3", "text": "Hallo Felix! Ja, eigentlich schon. Aber mein Laptop ist am Wochenende endgültig kaputtgegangen, und ich brauche einen für die Uni. Ohne geht es einfach nicht."},
+        {"speaker": "m2", "text": "Ach so. Und, hast du schon was gefunden?"},
+        {"speaker": "f3", "text": "Der Verkäufer hat mir den hier empfohlen, elfhundert Euro. Das ist mir viel zu teuer. Ich hatte an maximal sechshundert gedacht."},
+        {"speaker": "m2", "text": "Elfhundert, für einen Studenten-Laptop? Das ist verrückt. Hast du mal überlegt, einen gebrauchten zu kaufen? Mein Bruder hat seinen im Internet gekauft, ein Jahr alt, für die Hälfte des Preises."},
+        {"speaker": "f3", "text": "Ja, aber ich habe Angst davor, dass ich dann ein Gerät bekomme, das nach drei Monaten kaputt ist. Und dann habe ich keine Garantie."},
+        {"speaker": "m2", "text": "Das stimmt so nicht. Es gibt Händler, die gebrauchte Geräte prüfen und dann mit einem Jahr Garantie verkaufen. Das nennt sich generalüberholt. Das ist etwas teurer als privat, aber sicherer."},
+        {"speaker": "f3", "text": "Hm, davon habe ich noch nie gehört. Wo findet man so etwas?"},
+        {"speaker": "m2", "text": "Ich schick dir nachher einen Link. Da gibt es auch Ratenzahlung, wenn du willst. Aber ehrlich gesagt würde ich das nicht machen."},
+        {"speaker": "f3", "text": "Warum nicht? Fünfzig Euro im Monat klingt doch ganz entspannt."},
+        {"speaker": "m2", "text": "Klingt entspannt, ja. Aber wenn man drei oder vier Sachen auf Raten kauft, verliert man schnell den Überblick. Meine Cousine hatte am Ende jeden Monat vierhundert Euro Raten und wusste gar nicht mehr, wofür. Wer einmal in so eine Situation kommt, der kommt nur schwer wieder raus."},
+        {"speaker": "f3", "text": "Okay, das ist ein Argument. Ich habe noch etwas gespart, ungefähr siebenhundert Euro. Aber das war eigentlich für den Sommer, für die Reise nach Portugal."},
+        {"speaker": "m2", "text": "Tja, dann musst du eine Entscheidung treffen. Laptop oder Portugal."},
+        {"speaker": "f3", "text": "Vielleicht beides, wenn der gebrauchte wirklich nur fünfhundert kostet. Dann bleiben mir noch zweihundert, und bis Juli kann ich noch etwas dazulegen. Ich arbeite ja im Café."},
+        {"speaker": "m2", "text": "Siehst du, geht doch. Und wenn du Hilfe beim Aussuchen brauchst, sag Bescheid. Ich kenne mich mit den Modellen ganz gut aus."},
+        {"speaker": "f3", "text": "Danke, Felix. Das nehme ich gern an. Dann kaufe ich hier heute jedenfalls nichts. Komm, ich lade dich auf einen Kaffee ein – das kann ich mir noch leisten."},
+        {"speaker": "m2", "text": "Na dann, los!"}
+      ],
+      "items": [
+        {"id": "H3-1", "statement": "Lea braucht den Laptop für ihr Studium.", "answer": true, "skill": "detail"},
+        {"id": "H3-2", "statement": "Lea möchte höchstens sechshundert Euro ausgeben.", "answer": true, "skill": "number-time"},
+        {"id": "H3-3", "statement": "Felix hat seinen eigenen Laptop gebraucht gekauft.", "answer": false, "skill": "detail"},
+        {"id": "H3-4", "statement": "Generalüberholte Geräte werden ohne Garantie verkauft.", "answer": false, "skill": "negation"},
+        {"id": "H3-5", "statement": "Felix findet Ratenzahlung eine gute Lösung.", "answer": false, "skill": "attitude"},
+        {"id": "H3-6", "statement": "Lea hat Geld für eine Reise gespart.", "answer": true, "skill": "detail"},
+        {"id": "H3-7", "statement": "Lea kauft den Laptop noch heute im Geschäft.", "answer": false, "skill": "inference"}
+      ]
+    },
+    "teil4": {
+      "setting": "Sie hören eine Diskussion im Radio. Der Moderator spricht mit einer Konsumforscherin und dem Inhaber eines Elektrogeschäfts über das Thema „Kaufen wir zu viel?“",
+      "speakers": {"mod": "Moderator Jan Feldmann", "a": "Dr. Ulrike Sommer (Konsumforscherin)", "b": "Ralf Bauer (Inhaber eines Elektrogeschäfts)"},
+      "voices": {"mod": "m1", "a": "f2", "b": "m2"},
+      "script": [
+        {"speaker": "mod", "text": "Guten Abend und willkommen bei „Standpunkte“. Mein Name ist Jan Feldmann. Heute geht es um eine Frage, die uns alle betrifft: Kaufen wir zu viel? Bei mir im Studio sind Dr. Ulrike Sommer, sie erforscht an der Universität Münster das Verhalten von Konsumenten, und Ralf Bauer, der seit zwanzig Jahren ein Elektrogeschäft in Dortmund führt. Frau Sommer, fangen wir mit Ihnen an. Kaufen wir wirklich zu viel?"},
+        {"speaker": "a", "text": "Guten Abend. Die Zahlen sind eindeutig: Ein Mensch in Deutschland besitzt heute im Durchschnitt zehntausend Gegenstände. Vor fünfzig Jahren waren es nur etwa die Hälfte. Wir kaufen Kleidung, die wir nie tragen, und Geräte, die wir kaum benutzen. Das Problem ist nicht, dass die Leute dumm sind. Das Problem ist, dass Kaufen heute so leicht ist. Ein Klick am Abend, und am nächsten Morgen steht das Paket vor der Tür."},
+        {"speaker": "mod", "text": "Herr Bauer, Sie leben davon, dass die Leute kaufen. Sehen Sie das anders?"},
+        {"speaker": "b", "text": "Natürlich sehe ich das anders, aber nicht ganz. Ich verkaufe Waschmaschinen, Fernseher, Kühlschränke. Die braucht man, die kauft niemand aus Langeweile. Was mich ärgert, ist etwas anderes: Viele Geräte gehen nach vier oder fünf Jahren kaputt, und eine Reparatur lohnt sich nicht, weil die Ersatzteile zu teuer sind. Dann muss der Kunde neu kaufen, ob er will oder nicht. Das ist keine Schuld der Kunden, das ist die Schuld der Hersteller."},
+        {"speaker": "a", "text": "Da gebe ich Ihnen recht, Herr Bauer. Wir fordern deshalb, dass Hersteller Ersatzteile mindestens zehn Jahre lang anbieten müssen. Allerdings kaufen die Leute eben nicht nur Waschmaschinen. Der Durchschnittsmensch kauft sechzig neue Kleidungsstücke pro Jahr. Sechzig! Und jedes fünfte davon wird nie getragen."},
+        {"speaker": "mod", "text": "Ich muss gestehen, ich habe letzte Woche ein Handy gekauft, obwohl mein altes noch funktioniert hat. Der Rabatt war einfach zu gut. Ist das schon ein Problem?"},
+        {"speaker": "b", "text": "Nein, das ist normal, und ich sage Ihnen auch warum: Der Handel macht das mit Absicht. Rabatte, Aktionen, „nur heute“, das ist alles Psychologie. Ich mache das in meinem Laden übrigens nicht mehr. Bei mir gibt es feste Preise, dafür eine ehrliche Beratung. Und die Kunden kommen trotzdem, vor allem die älteren."},
+        {"speaker": "a", "text": "Das ist sehr lobenswert, aber Sie sind eine Ausnahme. Die großen Online-Händler arbeiten genau mit diesen Tricks. Mein Rat ist deshalb ganz einfach: Wer etwas kaufen will, der sollte eine Nacht darüber schlafen. Am nächsten Tag ist der Wunsch oft schon weg."},
+        {"speaker": "mod", "text": "Eine Nacht schlafen, das klingt einfach. Aber reicht das? Müsste nicht auch die Politik reagieren?"},
+        {"speaker": "b", "text": "Ich bin skeptisch, was die Politik angeht. Verbote helfen nicht. Was helfen würde: Reparaturen billiger machen, zum Beispiel durch weniger Steuern auf Handwerksleistungen. Dann bringt der Kunde sein Gerät zu mir, statt es wegzuwerfen. Das wäre gut für die Umwelt und gut für kleine Läden wie meinen."},
+        {"speaker": "a", "text": "Das unterstütze ich voll und ganz. In Österreich gibt es so etwas bereits, dort bekommt man einen Teil der Reparaturkosten vom Staat zurück, und die Zahl der Reparaturen ist deutlich gestiegen. Ich möchte aber noch etwas ergänzen: Wir müssen schon in der Schule anfangen. Kinder sollten lernen, wie Werbung funktioniert und wie man mit Geld umgeht. Das fehlt heute völlig."},
+        {"speaker": "mod", "text": "Konsumunterricht in der Schule und billigere Reparaturen. Das sind zwei konkrete Vorschläge, mit denen wir diese Sendung beenden. Vielen Dank, Frau Sommer, vielen Dank, Herr Bauer. Und Ihnen zu Hause: Schlafen Sie eine Nacht darüber, bevor Sie das nächste Paket bestellen."}
+      ],
+      "items": [
+        {"id": "H4-1", "statement": "Die Menschen besitzen heute doppelt so viele Dinge wie vor fünfzig Jahren.", "answer": "a", "skill": "matching"},
+        {"id": "H4-2", "statement": "Viele Geräte kann man nicht reparieren, weil die Ersatzteile zu viel kosten.", "answer": "b", "skill": "matching"},
+        {"id": "H4-3", "statement": "Ich habe mir ein neues Handy gekauft, obwohl ich keins gebraucht hätte.", "answer": "mod", "skill": "matching"},
+        {"id": "H4-4", "statement": "In meinem Geschäft gibt es keine Rabattaktionen mehr.", "answer": "b", "skill": "matching"},
+        {"id": "H4-5", "statement": "Vor einem Kauf sollte man bis zum nächsten Tag warten.", "answer": "a", "skill": "matching"},
+        {"id": "H4-6", "statement": "Reparaturen sollten weniger Steuern kosten.", "answer": "b", "skill": "matching"},
+        {"id": "H4-7", "statement": "In einem Nachbarland zahlt der Staat einen Teil der Reparaturkosten.", "answer": "a", "skill": "matching"},
+        {"id": "H4-8", "statement": "Schon Kinder sollten lernen, wie man mit Geld umgeht.", "answer": "a", "skill": "matching"}
+      ]
+    }
+  },
+  "schreiben": {
+    "aufgabe1": {
+      "minutes": 20, "words": 80,
+      "situation": "Sie haben sich letzte Woche ein neues Fahrrad gekauft. Ihre Freundin Mira möchte sich auch eins kaufen und hat Sie nach Ihren Erfahrungen gefragt. Schreiben Sie ihr eine E-Mail.",
+      "points": ["Beschreiben Sie, wo und wie Sie das Fahrrad gekauft haben.", "Erklären Sie, warum Sie sich für dieses Fahrrad entschieden haben.", "Schlagen Sie vor, wann Sie zusammen in ein Geschäft gehen könnten."]
+    },
+    "aufgabe2": {
+      "minutes": 25, "words": 80,
+      "situation": "Sie haben im Fernsehen eine Diskussionssendung zum Thema „Bezahlen nur noch mit Karte und Handy?“ gesehen. Im Online-Gästebuch der Sendung finden Sie folgende Meinung:",
+      "quote": "„Bargeld ist von gestern. Wer noch mit Münzen bezahlt, hält an der Kasse nur alle auf. Man sollte das Bargeld einfach abschaffen, dann gibt es auch weniger Kriminalität.“ – Lukas, 24",
+      "instruction": "Schreiben Sie nun Ihre Meinung dazu (circa 80 Wörter)."
+    },
+    "aufgabe3": {
+      "minutes": 15, "words": 40,
+      "situation": "Sie haben bei einem Online-Shop einen Tisch bestellt, der beschädigt angekommen ist. Schreiben Sie eine E-Mail an den Kundenservice, Herrn Schulz: Beschreiben Sie höflich das Problem und bitten Sie um eine Lösung (Ersatz oder Geld zurück).",
+      "addressee": "Herr Schulz"
+    }
+  },
+  "sprechen": {
+    "teil1": {
+      "situation": "Eine Freundin aus Ihrem Deutschkurs hat bald Geburtstag. Sie und Ihr Partner / Ihre Partnerin wollen zusammen ein Geschenk kaufen. Planen Sie gemeinsam.",
+      "points": ["Was soll das Geschenk sein?", "Wie viel Geld wollen Sie ausgeben?", "Wo kaufen Sie das Geschenk – im Laden oder online?", "Wer kauft ein, und wann übergeben Sie das Geschenk?"],
+      "partner_cues": [
+        "Ich habe überlegt, wir könnten ihr einen Gutschein schenken. Aber ist das nicht ein bisschen unpersönlich?",
+        "Wie viel wollen wir denn ausgeben? Ich dachte an ungefähr dreißig Euro pro Person.",
+        "Sollen wir das online bestellen? Da ist es meistens billiger. Oder gehen wir lieber in die Stadt?",
+        "Ich weiß, dass sie gern kocht und viel Tee trinkt. Fällt dir dazu etwas ein?",
+        "Ich habe am Samstagvormittag Zeit, zum Einkaufen. Passt dir das, oder soll ich allein gehen?",
+        "Und wann geben wir ihr das Geschenk – im Kurs oder bei ihrer Party am Freitag?"
+      ]
+    },
+    "teil2": {
+      "topics": ["Thema A: Online einkaufen oder im Geschäft – was ist besser?", "Thema B: Sollten Kinder schon früh Taschengeld bekommen?"],
+      "folien": [
+        "Stellen Sie Ihr Thema vor. Erklären Sie den Inhalt und die Struktur Ihrer Präsentation.",
+        "Berichten Sie von Ihrer Situation oder einem Erlebnis im Zusammenhang mit dem Thema.",
+        "Berichten Sie, wie die Situation in Ihrem Heimatland ist, und geben Sie Beispiele.",
+        "Nennen Sie die Vor- und Nachteile und sagen Sie dazu Ihre Meinung. Geben Sie auch Beispiele.",
+        "Beenden Sie Ihre Präsentation und bedanken Sie sich bei den Zuhörern."
+      ]
+    },
+    "teil3": {
+      "questions": ["Sie haben gesagt, dass Online-Shopping praktisch ist. Was passiert dann mit den kleinen Läden in der Stadt?", "Haben Sie schon einmal etwas online bestellt und dann zurückgeschickt? Erzählen Sie davon.", "Glauben Sie, dass man online mehr Geld ausgibt als im Geschäft? Warum?"],
+      "questions_b": ["Wie viel Taschengeld halten Sie für ein zehnjähriges Kind für angemessen?", "Sollten Eltern kontrollieren, wofür ihre Kinder das Geld ausgeben?", "Haben Sie als Kind Taschengeld bekommen, und was haben Sie damit gemacht?"]
+    }
+  }
+}

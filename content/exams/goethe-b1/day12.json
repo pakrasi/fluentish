@@ -1,0 +1,252 @@
+{
+  "day": 12,
+  "topic": "Sprachen lernen und Leben im Ausland",
+  "lesen": {
+    "teil1": {
+      "title": "Mein erstes Jahr in Deutschland",
+      "source": "Blog",
+      "text": "Heute vor genau einem Jahr bin ich in Frankfurt gelandet, mit zwei Koffern und einem Deutsch, das ungefähr auf dem Niveau A2 war. Ich bin Krankenpflegerin aus São Paulo, und ein Krankenhaus in Wiesbaden hatte mir eine Stelle angeboten, unter einer Bedingung: Ich musste innerhalb von sechs Monaten die B2-Prüfung bestehen.\n\nDie ersten Wochen waren hart. Ich hatte in Brasilien zwei Jahre lang Deutsch gelernt und dachte, ich könnte mich gut verständigen. Aber im Krankenhaus sprachen alle so schnell, und dann noch der hessische Dialekt! Wenn eine Patientin „Isch hab Kopfweh“ sagte, habe ich zuerst gar nichts verstanden. Meine Kollegin Sandra hat mir dann jeden Tag drei neue Wörter auf einen Zettel geschrieben. Diese Zettel habe ich immer noch.\n\nWas mir am meisten geholfen hat, war nicht der Sprachkurs, sondern mein Fußballverein. Ich habe mich gleich im zweiten Monat bei einer Frauenmannschaft angemeldet, obwohl ich kaum etwas verstanden habe. Auf dem Platz muss man schnell reagieren, da bleibt keine Zeit, im Kopf zu übersetzen. Nach drei Monaten habe ich gemerkt, dass ich auf Deutsch träume.\n\nDie B2-Prüfung habe ich im fünften Monat bestanden, mit einem Monat Reserve. Beim Sprechen hatte ich fast die volle Punktzahl, beim Schreiben dagegen nur knapp die Hälfte. Grammatik ist immer noch meine Schwäche, vor allem die Artikel. Aber meine Patienten verstehen mich, und das ist das Wichtigste.\n\nWas ich vermisse? Meine Familie natürlich, das Meer und das Essen. Was ich nicht vermisse: den Verkehr in São Paulo. Hier fahre ich jeden Tag mit dem Fahrrad zur Arbeit. Ob ich für immer bleibe, weiß ich nicht. Aber das zweite Jahr fängt jetzt an, und ich freue mich darauf.",
+      "items": [
+        {"id": "L1-1", "statement": "Die Autorin musste die B2-Prüfung innerhalb eines halben Jahres bestehen.", "answer": true, "skill": "number-time"},
+        {"id": "L1-2", "statement": "Die Autorin hatte vor ihrer Ankunft noch nie Deutsch gelernt.", "answer": false, "skill": "negation"},
+        {"id": "L1-3", "statement": "Am Anfang hatte die Autorin Probleme mit dem Dialekt.", "answer": true, "skill": "detail"},
+        {"id": "L1-4", "statement": "Der Sprachkurs hat der Autorin am meisten geholfen.", "answer": false, "skill": "paraphrase"},
+        {"id": "L1-5", "statement": "In der Prüfung war das Schreiben ihr schwächster Teil.", "answer": true, "skill": "detail"},
+        {"id": "L1-6", "statement": "Die Autorin hat schon entschieden, dass sie für immer in Deutschland bleibt.", "answer": false, "skill": "inference"}
+      ]
+    },
+    "teil2": {
+      "texts": [
+        {
+          "title": "Zehn Minuten am Tag – reicht das?",
+          "source": "Zeitschrift",
+          "text": "Über zwanzig Millionen Menschen in Deutschland lernen eine Sprache mit einer App. Jeden Morgen in der Bahn, jeden Abend vor dem Schlafen: ein paar Vokabeln, ein kurzer Dialog, ein grünes Häkchen. Die Apps versprechen, dass man mit zehn Minuten am Tag eine neue Sprache lernt. Doch stimmt das?\n\nDie Sprachwissenschaftlerin Prof. Heike Brandt von der Universität Kiel hat zwei Jahre lang untersucht, wie gut Menschen mit Apps lernen. Ihr Ergebnis ist gemischt. „Wer regelmäßig übt, lernt tatsächlich viele Wörter und versteht einfache Texte“, sagt sie. „Sprechen lernt man damit aber kaum.“ Von hundert Teilnehmern ihrer Studie konnte nach einem Jahr nur jeder zehnte ein einfaches Gespräch führen.\n\nDas Problem liegt laut Brandt nicht in der Technik, sondern im Lernen selbst. Eine App fragt immer die gleichen Sätze ab. Ein echter Mensch dagegen reagiert auf das, was man sagt, und das lässt sich nicht programmieren. „Die App ist ein gutes Werkzeug für den Anfang. Aber irgendwann muss man den Mut haben, mit Menschen zu sprechen, auch wenn man Fehler macht.“\n\nIhr Rat: die App mit einem Tandem oder einem Kurs kombinieren. Und vor allem: die Erwartungen realistisch halten. Zehn Minuten am Tag sind besser als nichts, allerdings kann niemand in einem Jahr fließend sprechen, wenn er nur mit dem Handy übt.",
+          "items": [
+            {"id": "L2-1", "question": "Was hat die Studie von Prof. Brandt gezeigt?", "options": ["Mit Apps lernt man vor allem Wörter, aber kaum Sprechen.", "Die meisten Teilnehmer konnten nach einem Jahr ein Gespräch führen.", "Die Apps funktionieren technisch nicht gut."], "answer": 0, "skill": "paraphrase"},
+            {"id": "L2-2", "question": "Der Unterschied zwischen App und Mensch ist, dass …", "options": ["die App auf das reagiert, was man sagt.", "ein Mensch immer die gleichen Sätze fragt.", "ein Mensch auf das antwortet, was man wirklich sagt."], "answer": 2, "skill": "paraphrase"},
+            {"id": "L2-3", "question": "Prof. Brandt empfiehlt, …", "options": ["die App nur am Anfang zu benutzen und dann aufzuhören.", "die App zusammen mit echten Gesprächen zu nutzen.", "mindestens eine Stunde am Tag mit dem Handy zu üben."], "answer": 1, "skill": "detail"}
+          ]
+        },
+        {
+          "title": "Mit 68 Jahren zurück in die Schule",
+          "source": "Zeitung",
+          "text": "Jeden Dienstagvormittag sitzt Gerhard Lindner in einem Klassenzimmer der Volkshochschule Augsburg und lernt Italienisch. Der 68-jährige Rentner hat sein ganzes Leben als Elektriker gearbeitet und nie eine Fremdsprache gesprochen. „In der Schule hatte ich Englisch, aber davon ist nichts übrig geblieben“, sagt er lachend.\n\nDer Grund für den späten Start ist seine Tochter, die vor vier Jahren nach Bologna gezogen ist. Ihre Kinder wachsen zweisprachig auf, sprechen aber lieber Italienisch. „Mein Enkel hat mir am Telefon etwas erzählt, und ich habe kein Wort verstanden. Da habe ich eine Entscheidung getroffen.“\n\nDie Kursleiterin Paola Ricci hat viele ältere Teilnehmer. Sie widerspricht der Meinung, dass man im Alter keine Sprache mehr lernen kann. „Ältere lernen anders, nicht schlechter. Sie brauchen mehr Wiederholung, dafür sind sie geduldiger und kommen nie unvorbereitet.“ Nur beim Hören hätten viele Schwierigkeiten, weil sie das schnelle Sprechen nicht gewohnt seien.\n\nLindner übt inzwischen jeden Tag eine halbe Stunde und telefoniert einmal pro Woche mit seinem Enkel, nur auf Italienisch. Im Sommer will er drei Wochen nach Bologna fahren. „Ich werde Fehler machen, klar. Aber mein Enkel lacht dann, und das ist doch das Schönste.“",
+          "items": [
+            {"id": "L2-4", "question": "Warum lernt Herr Lindner Italienisch?", "options": ["Er möchte nach Italien ziehen.", "Er will seine Enkel verstehen können.", "Er hat in der Schule Italienisch gelernt und will es auffrischen."], "answer": 1, "skill": "paraphrase"},
+            {"id": "L2-5", "question": "Was sagt Frau Ricci über ältere Lernende?", "options": ["Sie lernen langsamer und schlechter als junge Menschen.", "Sie haben vor allem beim Sprechen Probleme.", "Sie sind geduldig und immer gut vorbereitet."], "answer": 2, "skill": "detail"},
+            {"id": "L2-6", "question": "Herr Lindner …", "options": ["spricht jede Woche am Telefon Italienisch mit seinem Enkel.", "übt jede Woche eine halbe Stunde.", "hat Angst davor, in Italien Fehler zu machen."], "answer": 0, "skill": "number-time"}
+          ]
+        }
+      ]
+    },
+    "teil3": {
+      "intro": "Einige Personen aus Ihrem Deutschkurs suchen Angebote rund um Sprachen und Auslandsaufenthalte. Lesen Sie die Situationen 1–7 und die Anzeigen A–J. Welche Anzeige passt zu welcher Situation? Eine Anzeige kann nur einmal gewählt werden. Für eine Situation gibt es keine passende Anzeige – markieren Sie dort 0.",
+      "situations": [
+        {"id": "L3-1", "text": "Ravi arbeitet tagsüber und möchte sich abends auf die B1-Prüfung vorbereiten.", "answer": "D", "skill": "matching"},
+        {"id": "L3-2", "text": "Lucía möchte ihr Japanisch verbessern und sucht jemanden, mit dem sie sich regelmäßig austauschen kann.", "answer": "H", "skill": "matching"},
+        {"id": "L3-3", "text": "Familie Ahmadi braucht eine offizielle Übersetzung ihrer Heiratsurkunde für das Amt.", "answer": "B", "skill": "matching"},
+        {"id": "L3-4", "text": "Nils hat gerade Abitur gemacht und möchte ein Jahr in Australien arbeiten und reisen.", "answer": "F", "skill": "matching"},
+        {"id": "L3-5", "text": "Der zehnjährige Sohn von Familie Costa braucht Hilfe bei den deutschen Hausaufgaben.", "answer": "I", "skill": "matching"},
+        {"id": "L3-6", "text": "Monika möchte morgens vor der Arbeit online Spanisch lernen.", "answer": null, "skill": "matching"},
+        {"id": "L3-7", "text": "Karim spricht schon gut Deutsch, hat aber wenig Gelegenheit zum Reden und möchte nichts bezahlen.", "answer": "E", "skill": "matching"}
+      ],
+      "ads": [
+        {"letter": "A", "title": "Spanisch am Abend", "text": "Lernen Sie Spanisch in kleinen Gruppen an der Sprachschule Lingua. Kurse für A1 bis B2, montags und donnerstags 18:30–20:00 Uhr. Auch Online-Teilnahme möglich. Probestunde kostenlos, danach 120 € pro Monat."},
+        {"letter": "B", "title": "Übersetzungsbüro Kralj", "text": "Beglaubigte Übersetzungen von Urkunden, Zeugnissen und Verträgen für Behörden und Gerichte. Über 30 Sprachen, auch Persisch, Arabisch und Ukrainisch. Fertig in drei Werktagen, Express in 24 Stunden. Tel. 089 / 21 40 33."},
+        {"letter": "C", "title": "Sommerschule Deutsch für Jugendliche", "text": "Für Schüler von 14 bis 18 Jahren aus aller Welt: drei Wochen Deutschunterricht am Vormittag, Sport und Ausflüge am Nachmittag. Unterkunft bei Gastfamilien. Juli und August, Preis auf Anfrage."},
+        {"letter": "D", "title": "Prüfungstraining B1 – Abendkurs", "text": "In sechs Wochen fit für die Goethe-Prüfung B1: Alle vier Teile werden geübt, mit zwei kompletten Probeprüfungen. Dienstag und Donnerstag 19–21 Uhr, Volkshochschule West. 180 €, Prüfungsgebühr nicht enthalten."},
+        {"letter": "E", "title": "Sprachcafé im Stadtteilzentrum", "text": "Jeden Mittwoch 17–19 Uhr treffen sich Menschen aus vielen Ländern, um bei Kaffee und Tee Deutsch zu sprechen. Keine Anmeldung, keine Kosten, keine Grammatik – nur reden. Freiwillige Muttersprachler sind immer dabei."},
+        {"letter": "F", "title": "Work & Travel Australien", "text": "Ein Jahr Down Under: Wir organisieren Visum, Flug, die erste Unterkunft und helfen bei der Jobsuche auf Farmen und in Hotels. Für alle zwischen 18 und 30 Jahren. Infoabend jeden ersten Montag im Monat, 19 Uhr."},
+        {"letter": "G", "title": "Au-pair in Kanada", "text": "Leben Sie ein Jahr in einer kanadischen Familie, betreuen Sie die Kinder und verbessern Sie Ihr Englisch oder Französisch. Voraussetzung: Erfahrung mit Kindern und Führerschein. Bewerbung ab 18 Jahren unter aupair-kanada.de"},
+        {"letter": "H", "title": "Tandempartner/in gesucht", "text": "Ich bin Yuki (26) aus Osaka, seit Januar in Deutschland. Ich suche jemanden, der mit mir Deutsch übt – dafür helfe ich gern beim Japanischlernen. Einmal pro Woche, Café oder Park. Nachricht an yuki.tandem@mail.de"},
+        {"letter": "I", "title": "Nachhilfe Deutsch für Grundschüler", "text": "Lehramtsstudentin gibt Nachhilfe in Deutsch für Kinder von 6 bis 12 Jahren: Lesen, Schreiben, Hausaufgaben. Auch für Kinder, deren Muttersprache nicht Deutsch ist. 15 € pro Stunde, bei Ihnen zu Hause. Tel. 0176 / 55 88 12 09."},
+        {"letter": "J", "title": "Sprachreise Malta – Englisch intensiv", "text": "Zwei Wochen Englisch lernen, wo andere Urlaub machen: 20 Stunden Unterricht pro Woche, Unterkunft im Studentenwohnheim, Strand fünf Minuten entfernt. Für Erwachsene ab 18. Termine im Mai, Juni und September."}
+      ]
+    },
+    "teil4": {
+      "question": "Sollten Kinder schon im Kindergarten eine Fremdsprache lernen?",
+      "comments": [
+        {"id": "L4-1", "author": "Melanie, Freiburg", "text": "Meine Tochter geht in einen deutsch-französischen Kindergarten und spricht mit vier Jahren beide Sprachen ohne Akzent. Ich habe zehn Jahre Französisch in der Schule gelernt und kann kaum ein Brot bestellen. Je früher, desto besser – das ist doch offensichtlich.", "answer": true, "skill": "attitude"},
+        {"id": "L4-2", "author": "Rainer, Hannover", "text": "Kinder sollen im Kindergarten spielen, klettern und Freunde finden. Wir machen aus ihnen schon mit drei Jahren kleine Schüler. Die Fremdsprache läuft nicht weg, in der Schule ist noch genug Zeit dafür.", "answer": false, "skill": "attitude"},
+        {"id": "L4-3", "author": "Ayşe, Duisburg", "text": "Ich bin mit Türkisch und Deutsch aufgewachsen und habe nie darunter gelitten, im Gegenteil. Aber ich frage mich, wer das machen soll. Bei uns fehlen schon jetzt die Erzieherinnen. Solange die Gruppen so groß sind, halte ich das für keine gute Idee.", "answer": false, "skill": "inference"},
+        {"id": "L4-4", "author": "Tobias, Mainz", "text": "Im Kindergarten lernen Kinder eine Sprache wie von selbst, durch Lieder und Spiele, ohne Grammatik und ohne Druck. Das ist genau das Gegenteil von Schule. Man muss es nur richtig machen.", "answer": true, "skill": "attitude"},
+        {"id": "L4-5", "author": "Ingrid, Dresden", "text": "Viele Kinder sprechen mit sechs Jahren noch nicht einmal gut Deutsch. Da sollen wir noch Englisch dazupacken? Erst die eine Sprache richtig, dann die nächste. Alles andere führt zu Verwirrung.", "answer": false, "skill": "attitude"},
+        {"id": "L4-6", "author": "Pablo, Berlin", "text": "Ich verstehe die Angst vor Verwirrung, aber die Forschung sagt etwas anderes: Kinder können mehrere Sprachen problemlos trennen. Meine Zwillinge sprechen Spanisch mit mir, Deutsch mit ihrer Mutter und im Kindergarten Englisch. Es funktioniert wunderbar.", "answer": true, "skill": "inference"},
+        {"id": "L4-7", "author": "Verena, Salzburg", "text": "Warum soll es nur Englisch sein? Bei uns im Kindergarten singen die Kinder Lieder auf Polnisch, Arabisch und Italienisch, weil die Kinder aus diesen Ländern kommen. Das ist Sprachenlernen, wie ich es mir wünsche: neugierig und ohne Lehrbuch. Unbedingt ja!", "answer": true, "skill": "attitude"}
+      ]
+    },
+    "teil5": {
+      "title": "Prüfungsordnung – Sprachinstitut Nordlicht",
+      "text": "§ 1 Anmeldung\nDie Anmeldung zur Prüfung erfolgt online oder persönlich im Sekretariat, spätestens vier Wochen vor dem Prüfungstermin. Die Anmeldung ist erst gültig, wenn die Prüfungsgebühr bezahlt wurde. Teilnehmer, die im Institut einen Kurs besuchen, erhalten auf die Gebühr einen Rabatt von 20 %.\n\n§ 2 Rücktritt\nWer bis 14 Tage vor der Prüfung zurücktritt, erhält die Gebühr abzüglich 30 € Bearbeitungsgebühr zurück. Bei einem späteren Rücktritt wird die Gebühr nur bei Krankheit erstattet; dafür ist ein ärztliches Attest innerhalb von drei Tagen nach dem Prüfungstermin einzureichen.\n\n§ 3 Prüfungstag\nDie Teilnehmer müssen 30 Minuten vor Beginn im Prüfungsraum sein und einen gültigen Ausweis mit Foto vorlegen. Wer später als 15 Minuten nach Beginn erscheint, wird nicht mehr zugelassen. Handys und Smartwatches sind vor der Prüfung bei der Aufsicht abzugeben. Wörterbücher sind in keinem Prüfungsteil erlaubt.\n\n§ 4 Ergebnisse und Zertifikat\nDie Ergebnisse werden innerhalb von vier Wochen per E-Mail mitgeteilt. Das Zertifikat kann danach im Sekretariat abgeholt oder gegen eine Gebühr von 8 € per Post zugeschickt werden. Wer nicht bestanden hat, kann die Prüfung frühestens beim nächsten Termin wiederholen; einzelne Teile können nur innerhalb eines Jahres wiederholt werden.\n\n§ 5 Beschwerden\nEinsprüche gegen das Ergebnis sind schriftlich innerhalb von zwei Wochen nach Mitteilung möglich. Eine Einsicht in die Prüfungsunterlagen ist nach Terminvereinbarung im Sekretariat möglich.",
+      "items": [
+        {"id": "L5-1", "question": "Wer einen Kurs im Institut besucht, …", "options": ["muss sich nicht anmelden.", "zahlt weniger für die Prüfung.", "kann sich bis zum Prüfungstag anmelden."], "answer": 1, "skill": "detail"},
+        {"id": "L5-2", "question": "Wer eine Woche vor der Prüfung krank wird, …", "options": ["bekommt die Gebühr nur zurück, wenn er ein Attest vorlegt.", "bekommt die Gebühr abzüglich 30 € zurück.", "bekommt kein Geld zurück."], "answer": 0, "skill": "number-time"},
+        {"id": "L5-3", "question": "Am Prüfungstag …", "options": ["darf man ein Wörterbuch im Schreibteil benutzen.", "darf man bis zu 30 Minuten zu spät kommen.", "muss man das Handy vor der Prüfung abgeben."], "answer": 2, "skill": "detail"},
+        {"id": "L5-4", "question": "Das Zertifikat …", "options": ["wird immer kostenlos per Post geschickt.", "kann man im Sekretariat abholen.", "kommt zusammen mit dem Ergebnis per E-Mail."], "answer": 1, "skill": "negation"}
+      ]
+    }
+  },
+  "hoeren": {
+    "teil1": {
+      "texts": [
+        {
+          "id": "H1-1", "kind": "Anrufbeantworter",
+          "script": [{"speaker": "f1", "text": "Guten Tag, Herr Okafor, hier spricht Monika Stein von der Sprachschule Horizont. Ich rufe wegen Ihres Deutschkurses an, der am Montag beginnt. Der Kurs findet leider nicht wie geplant im Raum zwölf statt, sondern im Raum vier, im Erdgeschoss neben der Bibliothek. Die Uhrzeit bleibt gleich, achtzehn Uhr. Und bitte bringen Sie am ersten Tag kein Lehrbuch mit, das bekommen Sie von uns, es ist im Kurspreis enthalten. Nur ein Heft und einen Stift brauchen Sie. Ach ja, die Kursleiterin ist nicht Frau Behrens, wie im Programm steht, sondern Herr Kaya. Frau Behrens ist noch bis Ende des Monats krank. Bei Fragen erreichen Sie mich unter null vier null, drei drei, zwei zwei, eins eins. Schönen Tag noch!"}],
+          "items": [
+            {"id": "H1-1a", "type": "rf", "statement": "Der Kurs findet im Raum zwölf statt.", "answer": false, "skill": "detail"},
+            {"id": "H1-1b", "type": "mc", "question": "Herr Okafor soll …", "options": ["ein Lehrbuch kaufen.", "nur Heft und Stift mitbringen.", "Frau Behrens anrufen."], "answer": 1, "skill": "negation"}
+          ]
+        },
+        {
+          "id": "H1-2", "kind": "Radio",
+          "script": [{"speaker": "m3", "text": "Für alle, die eine Sprache lernen oder ins Ausland wollen, haben wir heute einen Tipp: Am Wochenende findet in der Messehalle Nord die Bildungsmesse „Sprachen und Welt“ statt. Über sechzig Sprachschulen, Universitäten und Organisationen aus zwanzig Ländern beraten zu Sprachkursen, Auslandsstudium und Praktika. Am Samstag um vierzehn Uhr gibt es einen Vortrag zum Thema „Ein Jahr im Ausland – wie finanziere ich das?“. Die Messe ist an beiden Tagen von zehn bis achtzehn Uhr geöffnet. Der Eintritt kostet normalerweise acht Euro, Schüler und Studierende zahlen mit Ausweis nichts. Und wer sich vorher online registriert, spart auch als Erwachsener die Hälfte."}],
+          "items": [
+            {"id": "H1-2a", "type": "rf", "statement": "Der Vortrag zur Finanzierung findet am Sonntag statt.", "answer": false, "skill": "number-time"},
+            {"id": "H1-2b", "type": "mc", "question": "Studierende …", "options": ["zahlen die Hälfte des Eintritts.", "zahlen keinen Eintritt.", "müssen sich online registrieren."], "answer": 1, "skill": "detail"}
+          ]
+        },
+        {
+          "id": "H1-3", "kind": "Durchsage",
+          "script": [{"speaker": "f2", "text": "Achtung, eine Durchsage für alle Passagiere des Fluges LH 4 5 2 nach Madrid. Der Flug wurde von Gate B 12 nach Gate C 7 verlegt. Bitte begeben Sie sich jetzt zu Gate C 7, das Boarding beginnt in etwa zwanzig Minuten. Wegen der Verlegung startet der Flug mit einer Verspätung von ungefähr dreißig Minuten, die neue Abflugzeit ist sechzehn Uhr fünfzig. Passagiere mit Anschlussflügen in Madrid werden gebeten, sich am Gate beim Personal zu melden. Wir entschuldigen uns für die Unannehmlichkeiten und wünschen Ihnen einen angenehmen Flug."}],
+          "items": [
+            {"id": "H1-3a", "type": "rf", "statement": "Der Flug nach Madrid startet pünktlich.", "answer": false, "skill": "detail"},
+            {"id": "H1-3b", "type": "mc", "question": "Die Passagiere sollen …", "options": ["zu Gate B 12 gehen.", "zu Gate C 7 gehen.", "in Madrid am Gate warten."], "answer": 1, "skill": "detail"}
+          ]
+        },
+        {
+          "id": "H1-4", "kind": "Anrufbeantworter",
+          "script": [{"speaker": "at_m", "text": "Servus Lena, hier ist Matthias. Ich bin jetzt seit drei Wochen in Innsbruck, und es ist echt super hier. Die Uni ist klein, aber die Leute sind nett, und die Berge, wow! Du, ich wollte fragen: Du kommst doch im Dezember zu Besuch, oder? Ich habe nachgeschaut, der Zug von München hierher braucht nur zwei Stunden, nicht vier, wie ich dir gesagt hatte. Ein Ticket kostet ungefähr dreißig Euro, wenn du früh buchst. Du kannst bei mir im Wohnheim schlafen, mein Mitbewohner ist über Weihnachten nicht da. Also, sag mir bald Bescheid, welches Wochenende dir passt, dann plane ich was. Servus, bis bald!"}],
+          "items": [
+            {"id": "H1-4a", "type": "rf", "statement": "Matthias studiert seit drei Wochen in Innsbruck.", "answer": true, "skill": "detail"},
+            {"id": "H1-4b", "type": "mc", "question": "Die Zugfahrt von München nach Innsbruck …", "options": ["dauert zwei Stunden.", "dauert vier Stunden.", "kostet dreißig Euro pro Stunde."], "answer": 0, "skill": "number-time"}
+          ]
+        },
+        {
+          "id": "H1-5", "kind": "Werbung",
+          "script": [{"speaker": "m1", "text": "Sie wollen endlich Englisch sprechen, nicht nur verstehen? Dann probieren Sie „Sprich mit“! Bei uns lernen Sie nicht mit einem Programm, sondern mit echten Lehrern aus England, Irland und den USA, per Video, wann immer Sie Zeit haben. Sie buchen einfach eine Stunde, morgens um sechs oder abends um elf, ganz wie es Ihnen passt. Die erste Stunde ist kostenlos. Danach kosten zehn Stunden nur neunundneunzig Euro. Und wer bis Ende des Monats bucht, bekommt zwei Stunden geschenkt. „Sprich mit“ – Sprachen lernen mit Menschen, nicht mit Maschinen. Jetzt anmelden unter sprichmit punkt de."}],
+          "items": [
+            {"id": "H1-5a", "type": "rf", "statement": "Bei „Sprich mit“ lernt man mit einem Computerprogramm.", "answer": false, "skill": "negation"},
+            {"id": "H1-5b", "type": "mc", "question": "Wer bis Ende des Monats bucht, …", "options": ["bekommt die erste Stunde kostenlos.", "zahlt für zehn Stunden nur die Hälfte.", "bekommt zwei zusätzliche Stunden."], "answer": 2, "skill": "detail"}
+          ]
+        }
+      ]
+    },
+    "teil2": {
+      "setting": "Sie sind neu an einer deutschen Universität und hören die Begrüßung für internationale Studierende.",
+      "script": [{"speaker": "f2", "text": "Liebe Studierende, herzlich willkommen an der Universität Göttingen! Mein Name ist Claudia Menzel, ich leite das International Office, und ich freue mich, heute über hundertfünfzig neue Gesichter aus fast vierzig Ländern zu sehen. In den nächsten dreißig Minuten möchte ich Ihnen die wichtigsten Dinge für Ihren Start erklären. Zuerst das Wichtigste: Ihre Anmeldung bei der Stadt. Jeder, der in Deutschland wohnt, muss sich innerhalb von zwei Wochen nach dem Einzug beim Bürgeramt anmelden. Dafür brauchen Sie Ihren Pass und eine Bestätigung von Ihrem Vermieter. Ohne diese Anmeldung können Sie kein Bankkonto eröffnen, also bitte nicht aufschieben. Termine beim Bürgeramt bekommt man online, und in dieser Woche gibt es extra Termine nur für Studierende, jeden Tag von neun bis zwölf. Zweitens: die Krankenversicherung. Sie müssen bis zum Ende des Monats eine Bescheinigung Ihrer Versicherung im Studierendensekretariat abgeben, sonst wird Ihre Einschreibung nicht gültig. Wer aus einem EU-Land kommt, kann meistens die Versicherung von zu Hause benutzen. Alle anderen müssen sich hier versichern, das kostet ungefähr hundertzwanzig Euro im Monat. Drittens: die Sprache. Wir bieten kostenlose Deutschkurse an, von A1 bis C1, jeweils zweimal pro Woche am Abend. Die Einstufungstests finden am Donnerstag und Freitag im Sprachenzentrum statt, Sie müssen sich vorher nicht anmelden, kommen Sie einfach vorbei. Und noch etwas: Wir haben ein Buddy-Programm. Das heißt, jeder von Ihnen bekommt einen deutschen Studenten oder eine deutsche Studentin als Partner, der oder die Ihnen in den ersten Monaten hilft, beim Papierkram, bei der Wohnungssuche, oder einfach beim Kaffeetrinken. Die Anmeldung dafür läuft über unsere Website, bis Sonntag. Am Samstag machen wir übrigens einen Ausflug in den Harz, mit Wanderung und Picknick, die Teilnahme kostet zehn Euro inklusive Busfahrt. Die Liste hängt draußen an der Tür. So, gibt es bis hierher Fragen? Wenn nicht, dann erklärt Ihnen jetzt meine Kollegin, wie Sie sich für Ihre Seminare anmelden."}],
+      "items": [
+        {"id": "H2-1", "question": "Die Anmeldung beim Bürgeramt …", "options": ["muss innerhalb von zwei Wochen erfolgen.", "ist erst nach der Kontoeröffnung möglich.", "kann man nur im International Office machen."], "answer": 0, "skill": "number-time"},
+        {"id": "H2-2", "question": "Ohne Bescheinigung der Krankenversicherung …", "options": ["kann man keinen Deutschkurs besuchen.", "ist die Einschreibung nicht gültig.", "muss man hundertzwanzig Euro Strafe zahlen."], "answer": 1, "skill": "paraphrase"},
+        {"id": "H2-3", "question": "Für den Einstufungstest …", "options": ["muss man sich online anmelden.", "muss man am Donnerstag ins Studierendensekretariat gehen.", "braucht man keine Anmeldung."], "answer": 2, "skill": "negation"},
+        {"id": "H2-4", "question": "Im Buddy-Programm …", "options": ["helfen sich internationale Studierende gegenseitig.", "bekommt man einen deutschen Studenten als Helfer.", "lernt man Deutsch mit einem Lehrer."], "answer": 1, "skill": "paraphrase"},
+        {"id": "H2-5", "question": "Der Ausflug am Samstag …", "options": ["ist kostenlos.", "kostet zehn Euro mit Bus.", "findet im Sprachenzentrum statt."], "answer": 1, "skill": "detail"}
+      ]
+    },
+    "teil3": {
+      "setting": "Sie hören ein Gespräch zwischen zwei Freunden, die sich in einer Küche unterhalten.",
+      "script": [
+        {"speaker": "f1", "text": "Du, David, ich muss dir was erzählen. Ich habe heute eine E-Mail von der Organisation bekommen. Sie haben mir eine Stelle als Au-pair in Montreal angeboten, ab September."},
+        {"speaker": "m3", "text": "Montreal? Echt? Das ist ja toll, Sophie! Aber ich dachte, du wolltest nach Irland, wegen des Englischen."},
+        {"speaker": "f1", "text": "Ja, das war der Plan. Aber in Irland gab es keine passende Familie. In Montreal sprechen die Leute Französisch und Englisch, ich könnte also beides lernen. Die Familie hat zwei Kinder, fünf und acht Jahre alt."},
+        {"speaker": "m3", "text": "Klingt gut. Und wie lange?"},
+        {"speaker": "f1", "text": "Zwölf Monate. Das ist auch mein Problem. Ein Jahr ist lang, und ich habe ein bisschen Angst davor, dass ich dann mit dem Studium ein Jahr später fertig bin."},
+        {"speaker": "m3", "text": "Ach, ein Jahr später, das ist doch egal. Ich habe nach dem Abi ein Jahr in Neuseeland gearbeitet, und das war die beste Zeit meines Lebens. Und wer ein Jahr im Ausland war, der bekommt später auch leichter einen Job."},
+        {"speaker": "f1", "text": "Meine Eltern sehen das anders. Mein Vater meint, ich soll zuerst das Studium beenden und dann reisen."},
+        {"speaker": "m3", "text": "Klar, Eltern sagen so was. Aber du bist zweiundzwanzig, nicht zwölf. Was sagt die Familie denn zum Geld? Bekommst du etwas?"},
+        {"speaker": "f1", "text": "Ja, Unterkunft und Essen sind frei, und ich bekomme ungefähr vierhundert Euro Taschengeld im Monat. Den Flug muss ich aber selbst bezahlen, und die Versicherung auch. Das sind zusammen etwa fünfzehnhundert Euro."},
+        {"speaker": "m3", "text": "Das schaffst du bis September, wenn du weiter im Restaurant arbeitest. Und dein Französisch? Reicht das?"},
+        {"speaker": "f1", "text": "Naja, ich hatte fünf Jahre Französisch in der Schule, aber das ist lange her. Die Familie hat gesagt, das ist kein Problem, die Kinder sprechen sowieso lieber Englisch. Trotzdem will ich vorher einen Kurs machen, so zwei Monate."},
+        {"speaker": "m3", "text": "Gute Idee. Und was ist mit deiner Wohnung hier? Kündigst du?"},
+        {"speaker": "f1", "text": "Nein, ich habe mit Mia gesprochen, sie würde das Zimmer ein Jahr lang übernehmen. Dann habe ich es, wenn ich zurückkomme."},
+        {"speaker": "m3", "text": "Siehst du, du hast doch schon alles geplant. Du willst das, oder?"},
+        {"speaker": "f1", "text": "Ja. Ja, ich glaube schon. Ich muss der Organisation bis Freitag antworten. Ich rede heute Abend noch mal mit meinen Eltern, aber ich denke, ich sage zu."},
+        {"speaker": "m3", "text": "Super. Und ich komme dich besuchen, versprochen. Im Winter, ich will unbedingt mal richtig viel Schnee sehen."},
+        {"speaker": "f1", "text": "Dann bring dicke Socken mit. Minus zwanzig Grad, hat die Familie geschrieben."}
+      ],
+      "items": [
+        {"id": "H3-1", "statement": "Sophie wollte ursprünglich nach Irland gehen.", "answer": true, "skill": "detail"},
+        {"id": "H3-2", "statement": "Die Familie in Montreal hat drei Kinder.", "answer": false, "skill": "number-time"},
+        {"id": "H3-3", "statement": "David hat selbst ein Jahr im Ausland verbracht.", "answer": true, "skill": "detail"},
+        {"id": "H3-4", "statement": "Sophies Vater findet, dass sie erst nach dem Studium reisen soll.", "answer": true, "skill": "paraphrase"},
+        {"id": "H3-5", "statement": "Die Familie bezahlt Sophie den Flug nach Kanada.", "answer": false, "skill": "negation"},
+        {"id": "H3-6", "statement": "Sophie will ihr Zimmer kündigen.", "answer": false, "skill": "detail"},
+        {"id": "H3-7", "statement": "Sophie hat sich noch nicht endgültig entschieden.", "answer": true, "skill": "inference"}
+      ]
+    },
+    "teil4": {
+      "setting": "Sie hören eine Diskussion im Radio. Der Moderator spricht mit einer Deutschlehrerin und einem App-Entwickler über das Thema „Sprachen lernen – mit Lehrer oder mit App?“",
+      "speakers": {"mod": "Moderator Tim Berger", "a": "Sabine Holzer (Deutschlehrerin)", "b": "Nico Lange (App-Entwickler)"},
+      "voices": {"mod": "m2", "a": "f3", "b": "m1"},
+      "script": [
+        {"speaker": "mod", "text": "Herzlich willkommen zu „Nachgefragt“, ich bin Tim Berger. Millionen Menschen lernen heute Sprachen mit dem Handy. Brauchen wir also überhaupt noch Sprachlehrer? Darüber spreche ich mit Sabine Holzer, die seit zwanzig Jahren Deutsch als Fremdsprache unterrichtet, und mit Nico Lange, dessen Firma eine Sprachlern-App mit drei Millionen Nutzern entwickelt hat. Herr Lange, was kann Ihre App, was ein Lehrer nicht kann?"},
+        {"speaker": "b", "text": "Guten Abend. Ganz einfach: Sie hat immer Zeit. Ein Lehrer ist zweimal pro Woche für neunzig Minuten da. Unsere App ist morgens um sechs in der U-Bahn da und abends um elf im Bett. Und sie merkt sich, welche Wörter Sie vergessen, und fragt genau diese Wörter am nächsten Tag wieder ab. Das kann kein Mensch bei dreißig Schülern gleichzeitig."},
+        {"speaker": "mod", "text": "Frau Holzer, das klingt überzeugend."},
+        {"speaker": "a", "text": "Es klingt überzeugend, ja. Und für Vokabeln stimmt es sogar. Ich empfehle meinen Schülern selbst, Wörter mit einer App zu wiederholen. Aber eine Sprache ist mehr als Wörter. Wenn ein Schüler etwas Falsches sagt, dann sehe ich an seinem Gesicht, ob er nur einen Fehler gemacht hat oder ob er die Regel gar nicht verstanden hat. Und dann erkläre ich es anders. Eine App zeigt ein rotes Kreuz, mehr nicht."},
+        {"speaker": "b", "text": "Das war vielleicht vor fünf Jahren so. Heute haben wir Spracherkennung, die App hört Ihnen zu und korrigiert die Aussprache. Und es gibt Dialoge mit künstlicher Intelligenz, bei denen man frei sprechen kann."},
+        {"speaker": "a", "text": "Frei sprechen mit einer Maschine. Ich habe das ausprobiert. Es funktioniert, solange man über das Wetter redet. Sobald man etwas Persönliches sagt, einen Witz macht oder traurig ist, versteht die Maschine nichts mehr. Und genau darum lernt man doch eine Sprache: um mit Menschen zu reden, nicht mit einem Programm."},
+        {"speaker": "mod", "text": "Ich muss zugeben, ich habe selbst zwei Jahre lang jeden Tag Spanisch mit einer App geübt. Und dann stand ich in Sevilla in einer Bäckerei und habe kein Wort herausgebracht. Herr Lange, warum passiert das?"},
+        {"speaker": "b", "text": "Das passiert, weil Sie nur mit der App gelernt haben. Das empfehlen wir übrigens auch nicht. Wir sagen unseren Nutzern ganz klar: Die App ist die tägliche Übung, so wie das Training beim Sport. Das Spiel, also das echte Gespräch, müssen Sie draußen suchen. Deshalb haben wir jetzt auch Gruppen eingebaut, in denen sich Nutzer per Video zum Sprechen treffen."},
+        {"speaker": "a", "text": "Da sind wir uns dann ja fast einig. Was mich allerdings wirklich stört, ist das Versprechen in der Werbung: „Fließend in drei Monaten“. Das ist einfach nicht wahr, und es frustriert die Leute. Nach drei Monaten geben viele auf, weil sie glauben, sie seien zu dumm. Dabei war nur das Versprechen falsch."},
+        {"speaker": "b", "text": "Okay, die Werbung, das ist nicht meine Abteilung. Aber ich gebe zu, dass manche Anbieter übertreiben. Was ich aber wichtig finde: Für viele Menschen ist ein Kurs zu teuer oder zu weit weg. Eine Krankenschwester, die Schichtdienst hat, kann nicht jeden Dienstag um achtzehn Uhr in der Volkshochschule sitzen. Für sie ist die App die einzige Möglichkeit."},
+        {"speaker": "a", "text": "Das ist ein fairer Punkt, und dafür bin ich auch dankbar. Mein Wunsch wäre, dass Apps und Lehrer zusammenarbeiten, statt sich als Konkurrenz zu sehen. Die App macht die Vokabeln, ich mache das Gespräch."},
+        {"speaker": "mod", "text": "App für die Wörter, Lehrer für das Gespräch, und keine falschen Versprechen. Vielen Dank, Frau Holzer, vielen Dank, Herr Lange. Und ich gehe jetzt nach Sevilla zurück und versuche es noch einmal mit dem Brot."}
+      ],
+      "items": [
+        {"id": "H4-1", "statement": "Die App merkt sich, welche Wörter man nicht behalten hat.", "answer": "b", "skill": "matching"},
+        {"id": "H4-2", "statement": "Zum Wiederholen von Vokabeln ist eine App durchaus sinnvoll.", "answer": "a", "skill": "matching"},
+        {"id": "H4-3", "statement": "Ein Lehrer merkt, ob ein Schüler eine Regel wirklich verstanden hat.", "answer": "a", "skill": "matching"},
+        {"id": "H4-4", "statement": "Trotz täglichen Übens konnte ich im Ausland nicht sprechen.", "answer": "mod", "skill": "matching"},
+        {"id": "H4-5", "statement": "Die App sollte man wie ein Training sehen, das echte Gespräch kommt dazu.", "answer": "b", "skill": "matching"},
+        {"id": "H4-6", "statement": "Die Werbung verspricht Dinge, die nicht stimmen, und die Lernenden geben auf.", "answer": "a", "skill": "matching"},
+        {"id": "H4-7", "statement": "Für Menschen mit unregelmäßigen Arbeitszeiten ist ein Kurs oft nicht möglich.", "answer": "b", "skill": "matching"},
+        {"id": "H4-8", "statement": "Ich möchte es in Spanien noch einmal versuchen.", "answer": "mod", "skill": "matching"}
+      ]
+    }
+  },
+  "schreiben": {
+    "aufgabe1": {
+      "minutes": 20, "words": 80,
+      "situation": "Sie leben seit drei Monaten in Deutschland. Ihr Freund Amir aus Ihrem Heimatland überlegt, auch nach Deutschland zu kommen, und fragt nach Ihren Erfahrungen. Schreiben Sie ihm eine E-Mail.",
+      "points": ["Beschreiben Sie, wie Ihre ersten Wochen in Deutschland waren.", "Erklären Sie, was beim Deutschlernen für Sie am schwierigsten ist.", "Geben Sie ihm einen Tipp, was er vor der Abreise machen sollte."]
+    },
+    "aufgabe2": {
+      "minutes": 25, "words": 80,
+      "situation": "Sie haben im Fernsehen eine Diskussionssendung zum Thema „Muss man in Deutschland perfekt Deutsch sprechen?“ gesehen. Im Online-Gästebuch der Sendung finden Sie folgende Meinung:",
+      "quote": "„Englisch reicht völlig. In jeder Firma und in jedem Café versteht man Englisch. Wer Deutsch lernt, verschwendet seine Zeit mit einer Sprache, die außerhalb Deutschlands niemand braucht.“ – Chris, 29",
+      "instruction": "Schreiben Sie nun Ihre Meinung dazu (circa 80 Wörter)."
+    },
+    "aufgabe3": {
+      "minutes": 15, "words": 40,
+      "situation": "Sie besuchen einen Deutschkurs an der Volkshochschule. Nächste Woche können Sie zwei Tage nicht kommen, weil Sie einen Termin bei der Ausländerbehörde haben. Schreiben Sie eine E-Mail an Ihren Kursleiter, Herrn Kaya: Entschuldigen Sie sich, nennen Sie den Grund und bitten Sie um die Materialien.",
+      "addressee": "Herr Kaya"
+    }
+  },
+  "sprechen": {
+    "teil1": {
+      "situation": "Ein neuer Teilnehmer aus Brasilien kommt in Ihren Deutschkurs. Er kennt die Stadt noch nicht. Sie und Ihr Partner / Ihre Partnerin wollen ihm am Wochenende die Stadt zeigen. Planen Sie gemeinsam.",
+      "points": ["Wann treffen Sie sich?", "Was zeigen Sie ihm?", "Wie kommen Sie von Ort zu Ort?", "Wo essen Sie zusammen?"],
+      "partner_cues": [
+        "Ich habe am Samstag erst ab Mittag Zeit. Passt dir das, oder lieber Sonntag?",
+        "Ich würde ihm zuerst die Altstadt zeigen und dann den Park am Fluss. Was meinst du?",
+        "Ich könnte ihn am Bahnhof abholen. Wo treffen wir uns dann?",
+        "Sollen wir zu Fuß gehen oder Fahrräder ausleihen? Er hat vielleicht kein Fahrrad.",
+        "Er isst kein Fleisch, hat er gesagt. Kennst du ein gutes vegetarisches Restaurant?",
+        "Gut, dann schreibe ich ihm die Uhrzeit. Kannst du ihm den Treffpunkt auf einer Karte schicken?"
+      ]
+    },
+    "teil2": {
+      "topics": ["Thema A: Sollte man eine Sprache am besten im Land selbst lernen?", "Thema B: Ist es gut, für längere Zeit im Ausland zu leben?"],
+      "folien": [
+        "Stellen Sie Ihr Thema vor. Erklären Sie den Inhalt und die Struktur Ihrer Präsentation.",
+        "Berichten Sie von Ihrer Situation oder einem Erlebnis im Zusammenhang mit dem Thema.",
+        "Berichten Sie, wie die Situation in Ihrem Heimatland ist, und geben Sie Beispiele.",
+        "Nennen Sie die Vor- und Nachteile und sagen Sie dazu Ihre Meinung. Geben Sie auch Beispiele.",
+        "Beenden Sie Ihre Präsentation und bedanken Sie sich bei den Zuhörern."
+      ]
+    },
+    "teil3": {
+      "questions": ["Wie haben Sie selbst angefangen, Deutsch zu lernen?", "Sie haben gesagt, dass man im Land schneller lernt. Was ist mit Menschen, die nicht reisen können?", "Was hilft Ihnen mehr: ein Kurs, eine App oder Gespräche mit Freunden?"],
+      "questions_b": ["Was war für Sie am schwierigsten, als Sie in ein anderes Land gezogen sind?", "Glauben Sie, dass man im Ausland seine eigene Kultur verliert?", "Würden Sie Ihren Kindern raten, eine Zeit lang im Ausland zu leben?"]
+    }
+  }
+}

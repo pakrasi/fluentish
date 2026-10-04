@@ -1,0 +1,724 @@
+{
+ "lang": "spanish",
+ "variants": {
+  "dog.now": {
+   "tokens": [
+    [
+     "Mi casero",
+     "subj"
+    ],
+    [
+     "quiere",
+     "door"
+    ],
+    [
+     "venir",
+     "verb"
+    ],
+    [
+     "mañana,",
+     "adv"
+    ],
+    [
+     "así que",
+     "glue"
+    ],
+    [
+     "tengo que",
+     "subj2|door2"
+    ],
+    [
+     "esconder",
+     "verb2"
+    ],
+    [
+     "al perro.",
+     "obj2"
+    ]
+   ],
+   "why": "Personal a: a known animal as object takes a, so the dog is al perro. No yo: the -o on tengo que already says I."
+  },
+  "dog.past": {
+   "tokens": [
+    [
+     "Mi casero",
+     "subj"
+    ],
+    [
+     "quería",
+     "door|aux"
+    ],
+    [
+     "venir",
+     "verb"
+    ],
+    [
+     "ayer,",
+     "adv"
+    ],
+    [
+     "así que",
+     "glue"
+    ],
+    [
+     "tuve que",
+     "subj2|door2|aux"
+    ],
+    [
+     "esconder",
+     "verb2"
+    ],
+    [
+     "al perro.",
+     "obj2"
+    ]
+   ],
+   "why": "Two different pasts: quería (imperfect) for the wish, tuve que (preterite) because the hiding really happened."
+  },
+  "dog.neg": {
+   "tokens": [
+    [
+     "Mi casero",
+     "subj"
+    ],
+    [
+     "no",
+     "neg"
+    ],
+    [
+     "quiere",
+     "door"
+    ],
+    [
+     "venir,",
+     "verb"
+    ],
+    [
+     "así que",
+     "glue"
+    ],
+    [
+     "no",
+     "neg"
+    ],
+    [
+     "tengo que",
+     "subj2|door2"
+    ],
+    [
+     "esconder",
+     "verb2"
+    ],
+    [
+     "al perro.",
+     "obj2"
+    ]
+   ],
+   "why": "No do-support: each no sits right before its verb. No tengo que means no need, exactly like don't have to."
+  },
+  "dog.q": {
+   "tokens": [
+    [
+     "Tu casero",
+     "subj"
+    ],
+    [
+     "quiere",
+     "door"
+    ],
+    [
+     "venir",
+     "verb"
+    ],
+    [
+     "mañana,",
+     "adv"
+    ],
+    [
+     "así que",
+     "glue"
+    ],
+    [
+     "¿tienes que",
+     "q|subj2|door2"
+    ],
+    [
+     "esconder",
+     "verb2"
+    ],
+    [
+     "al perro?",
+     "obj2"
+    ]
+   ],
+   "why": "The ¿ opens mid-sentence, right where the question part starts. Same order as a statement; the -es on tienes marks tú."
+  },
+  "cant.now": {
+   "tokens": [
+    [
+     "No",
+     "neg"
+    ],
+    [
+     "podemos",
+     "subj|door"
+    ],
+    [
+     "ir",
+     "verb"
+    ],
+    [
+     "porque",
+     "glue"
+    ],
+    [
+     "los niños",
+     "subj2"
+    ],
+    [
+     "escondieron",
+     "verb2|aux"
+    ],
+    [
+     "las llaves del carro.",
+     "obj2"
+    ]
+   ],
+   "why": "Car keys becomes las llaves del carro (keys of the car): Spanish does not stack nouns. Ir, not venir, for going to their place."
+  },
+  "cant.past": {
+   "tokens": [
+    [
+     "No",
+     "neg"
+    ],
+    [
+     "pudimos",
+     "subj|door|aux"
+    ],
+    [
+     "ir",
+     "verb"
+    ],
+    [
+     "porque",
+     "glue"
+    ],
+    [
+     "los niños",
+     "subj2"
+    ],
+    [
+     "escondieron",
+     "verb2|aux"
+    ],
+    [
+     "las llaves del carro.",
+     "obj2"
+    ]
+   ],
+   "why": "pudimos (preterite) holds we, can and past in one word, so couldn't needs no helper: just no in front."
+  },
+  "cant.fut": {
+   "tokens": [
+    [
+     "No",
+     "neg"
+    ],
+    [
+     "vamos a",
+     "subj|aux"
+    ],
+    [
+     "poder",
+     "door"
+    ],
+    [
+     "ir",
+     "verb"
+    ],
+    [
+     "mañana",
+     "adv"
+    ],
+    [
+     "porque",
+     "glue"
+    ],
+    [
+     "los niños",
+     "subj2"
+    ],
+    [
+     "escondieron",
+     "verb2|aux"
+    ],
+    [
+     "las llaves del carro.",
+     "obj2"
+    ]
+   ],
+   "why": "Like English, the future splits can: vamos a poder (going to be able to). No podremos ir is the more written option."
+  },
+  "cant.although": {
+   "tokens": [
+    [
+     "Igual",
+     "adv"
+    ],
+    [
+     "podemos",
+     "subj|door"
+    ],
+    [
+     "ir,",
+     "verb"
+    ],
+    [
+     "aunque",
+     "glue"
+    ],
+    [
+     "los niños",
+     "subj2"
+    ],
+    [
+     "escondieron",
+     "verb2|aux"
+    ],
+    [
+     "las llaves del carro.",
+     "obj2"
+    ]
+   ],
+   "why": "Still becomes fronted igual (anyway), everyday Latin American speech. aunque + indicative escondieron states a real fact."
+  },
+  "like.now": {
+   "tokens": [
+    [
+     "A mi hermana",
+     "subj"
+    ],
+    [
+     "le",
+     "subj|x"
+    ],
+    [
+     "gusta",
+     "door"
+    ],
+    [
+     "el café.",
+     "obj"
+    ]
+   ],
+   "why": "Flipped: literally coffee pleases my sister. A mi hermana names the liker, le repeats it, and gusta agrees with el café."
+  },
+  "like.neg": {
+   "tokens": [
+    [
+     "A ella",
+     "subj"
+    ],
+    [
+     "no",
+     "neg"
+    ],
+    [
+     "le",
+     "subj|x"
+    ],
+    [
+     "gusta",
+     "door"
+    ],
+    [
+     "el café.",
+     "obj"
+    ]
+   ],
+   "why": "no goes right before le, never between le and gusta. A ella is optional, but le alone could also mean him or usted."
+  },
+  "like.they": {
+   "tokens": [
+    [
+     "A mis papás",
+     "subj"
+    ],
+    [
+     "les",
+     "subj|x"
+    ],
+    [
+     "gusta",
+     "door"
+    ],
+    [
+     "el café.",
+     "obj"
+    ]
+   ],
+   "why": "Two parents, yet gusta stays singular because coffee is the subject; only le becomes les. Papás is the everyday word for parents."
+  },
+  "like.q": {
+   "tokens": [
+    [
+     "¿Te",
+     "q|subj"
+    ],
+    [
+     "gusta",
+     "door"
+    ],
+    [
+     "el café?",
+     "obj"
+    ]
+   ],
+   "why": "te marks tú as the liker; the words match a statement and only intonation and ¿? make it a question. No do."
+  },
+  "go.habit": {
+   "tokens": [
+    [
+     "Mis abuelos",
+     "subj"
+    ],
+    [
+     "van",
+     "verb"
+    ],
+    [
+     "al mercado",
+     "obj"
+    ],
+    [
+     "todos los domingos.",
+     "adv"
+    ]
+   ],
+   "why": "a + el fuses into al, so al mercado moves as one unit. Every Sunday is todos los domingos: all the Sundays, plural."
+  },
+  "go.prog": {
+   "tokens": [
+    [
+     "Van",
+     "subj|verb|aux"
+    ],
+    [
+     "al mercado",
+     "obj"
+    ],
+    [
+     "ahora mismo.",
+     "adv"
+    ]
+   ],
+   "why": "Plain present van covers are going; ahora mismo pins it to now. Ahorita is avoided: in Mexico it can mean in a while."
+  },
+  "go.past": {
+   "tokens": [
+    [
+     "Ayer",
+     "adv"
+    ],
+    [
+     "fueron",
+     "subj|verb|aux"
+    ],
+    [
+     "al mercado.",
+     "obj"
+    ]
+   ],
+   "why": "fueron packs they, go and past into one word. It is also the preterite of ser, so alone it can mean they were."
+  },
+  "go.fut": {
+   "tokens": [
+    [
+     "Mañana",
+     "adv"
+    ],
+    [
+     "van a",
+     "subj|aux"
+    ],
+    [
+     "ir",
+     "verb"
+    ],
+    [
+     "al mercado.",
+     "obj"
+    ]
+   ],
+   "why": "van a ir, go-to-go: the future sits on van a and ir repeats as the infinitive. Mañana van al mercado is just as common."
+  },
+  "go.neg": {
+   "tokens": [
+    [
+     "Hoy",
+     "adv"
+    ],
+    [
+     "no",
+     "neg"
+    ],
+    [
+     "van",
+     "subj|verb|aux"
+    ],
+    [
+     "al mercado.",
+     "obj"
+    ]
+   ],
+   "why": "No aux, no -ing: no before plain present van says they aren't going. English aren't does two jobs; Spanish splits them."
+  },
+  "live.now": {
+   "tokens": [
+    [
+     "Mi hermano",
+     "subj"
+    ],
+    [
+     "vive",
+     "verb"
+    ],
+    [
+     "en Shillong",
+     "adv"
+    ],
+    [
+     "desde hace dos años.",
+     "dur|aux"
+    ]
+   ],
+   "why": "Present vive, not a perfect: desde hace dos años (since it makes two years) carries the still-true meaning."
+  },
+  "live.past": {
+   "tokens": [
+    [
+     "Vivió",
+     "subj|verb|aux"
+    ],
+    [
+     "en Delhi",
+     "adv"
+    ],
+    [
+     "dos años.",
+     "dur"
+    ]
+   ],
+   "why": "No él: the -ó ending says he and past. The finished stretch is bare dos años, with no word for for."
+  },
+  "live.fut": {
+   "tokens": [
+    [
+     "En junio",
+     "adv"
+    ],
+    [
+     "va a cumplir",
+     "subj|aux"
+    ],
+    [
+     "tres años",
+     "dur"
+    ],
+    [
+     "viviendo",
+     "verb"
+    ],
+    [
+     "en Shillong.",
+     "adv"
+    ]
+   ],
+   "why": "No future perfect in speech: va a cumplir (going to complete) carries the tense, viviendo the verb. Habrá vivido sounds written."
+  },
+  "live.q": {
+   "tokens": [
+    [
+     "¿Cuánto tiempo",
+     "q"
+    ],
+    [
+     "llevas",
+     "subj|aux"
+    ],
+    [
+     "viviendo",
+     "verb|aux"
+    ],
+    [
+     "aquí?",
+     "adv"
+    ]
+   ],
+   "why": "llevar + gerund is the spoken have-been-ing: llevas holds tú and the ongoing time, viviendo the verb."
+  },
+  "rain.now": {
+   "tokens": [
+    [
+     "Está",
+     "aux"
+    ],
+    [
+     "lloviendo,",
+     "verb"
+    ],
+    [
+     "así que",
+     "glue"
+    ],
+    [
+     "llévate",
+     "verb2"
+    ],
+    [
+     "un paraguas.",
+     "obj2"
+    ]
+   ],
+   "why": "No it: weather verbs take no subject, so está lloviendo starts bare. llévate is the tú command with -te glued on."
+  },
+  "rain.fut": {
+   "tokens": [
+    [
+     "Más tarde",
+     "adv"
+    ],
+    [
+     "va a",
+     "door|aux"
+    ],
+    [
+     "llover,",
+     "verb"
+    ],
+    [
+     "así que",
+     "glue"
+    ],
+    [
+     "llévate",
+     "verb2"
+    ],
+    [
+     "un paraguas.",
+     "obj2"
+    ]
+   ],
+   "why": "va a llover mirrors going to rain, minus the it. Más tarde moves to the front, which sounds more natural than at the end."
+  },
+  "rain.neg": {
+   "tokens": [
+    [
+     "No",
+     "neg"
+    ],
+    [
+     "está",
+     "aux"
+    ],
+    [
+     "lloviendo,",
+     "verb"
+    ],
+    [
+     "así que",
+     "glue"
+    ],
+    [
+     "no",
+     "neg"
+    ],
+    [
+     "lleves",
+     "verb2"
+    ],
+    [
+     "paraguas.",
+     "obj2"
+    ]
+   ],
+   "why": "The negative order changes form: llévate becomes no lleves (subjunctive), and -te drops. Paraguas goes bare, with no un."
+  },
+  "if.real": {
+   "tokens": [
+    [
+     "Si",
+     "glue"
+    ],
+    [
+     "tenemos",
+     "subj|verb"
+    ],
+    [
+     "tiempo,",
+     "obj"
+    ],
+    [
+     "vamos a",
+     "subj2|aux"
+    ],
+    [
+     "viajar.",
+     "verb2"
+    ]
+   ],
+   "why": "si + present, then ir a + infinitive. Viajaremos or plain viajamos are also heard. Never a future right after si."
+  },
+  "if.unreal": {
+   "tokens": [
+    [
+     "Si",
+     "glue"
+    ],
+    [
+     "tuviéramos",
+     "subj|verb|aux"
+    ],
+    [
+     "tiempo,",
+     "obj"
+    ],
+    [
+     "viajaríamos.",
+     "subj2|verb2|aux"
+    ]
+   ],
+   "why": "Four words: tuviéramos (imperfect subjunctive) after si, and the -íamos ending on viajaríamos does the job of we would."
+  },
+  "if.past": {
+   "tokens": [
+    [
+     "Si",
+     "glue"
+    ],
+    [
+     "hubiéramos",
+     "subj|aux"
+    ],
+    [
+     "tenido",
+     "verb"
+    ],
+    [
+     "tiempo,",
+     "obj"
+    ],
+    [
+     "habríamos",
+     "subj2|aux"
+    ],
+    [
+     "viajado.",
+     "verb2"
+    ]
+   ],
+   "why": "Both halves use haber + participle. In speech hubiéramos viajado often replaces habríamos in the second half too."
+  }
+ }
+}

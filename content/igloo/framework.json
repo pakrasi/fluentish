@@ -1,0 +1,2818 @@
+{
+ "levels": [
+  "A1",
+  "A2",
+  "B1",
+  "B2",
+  "C1"
+ ],
+ "layers": [
+  {
+   "id": "function",
+   "name": "Functions",
+   "desc": "What you are doing with the sentence"
+  },
+  {
+   "id": "door",
+   "name": "Doors",
+   "desc": "Verb frames with one open slot"
+  },
+  {
+   "id": "turn",
+   "name": "Turns",
+   "desc": "The same door rotated through time, polarity and mood"
+  },
+  {
+   "id": "glue",
+   "name": "Glue",
+   "desc": "Connectors and prepositions, and the word-order rule each triggers"
+  },
+  {
+   "id": "slot",
+   "name": "Slot grammar",
+   "desc": "What happens inside the slot: pronouns, articles, case, agreement"
+  },
+  {
+   "id": "lexicon",
+   "name": "Lexicon",
+   "desc": "The words that fill the slots, by topic"
+  },
+  {
+   "id": "sound",
+   "name": "Sound",
+   "desc": "Pronunciation, stress, intonation, listening"
+  },
+  {
+   "id": "chunk",
+   "name": "Chunks",
+   "desc": "Fixed phrases with no slot"
+  }
+ ],
+ "languages": [
+  {
+   "id": "khasi",
+   "name": "Khasi",
+   "native": "Ka Ktien Khasi",
+   "script": "latin",
+   "rtl": false,
+   "translit": false,
+   "full": true,
+   "variety": "Standard Khasi (Sohra/Cherrapunji dialect as used in writing and Shillong), Latin script"
+  },
+  {
+   "id": "german",
+   "name": "German",
+   "native": "Deutsch",
+   "script": "latin",
+   "rtl": false,
+   "translit": false,
+   "full": true,
+   "variety": "Standard German (Germany), du and Sie both shown"
+  },
+  {
+   "id": "hindi",
+   "name": "Hindi",
+   "native": "हिन्दी",
+   "script": "devanagari",
+   "rtl": false,
+   "translit": true,
+   "full": true,
+   "variety": "Standard spoken Hindi (Hindustani register used in daily speech), Devanagari with simple roman transliteration"
+  },
+  {
+   "id": "french",
+   "name": "French",
+   "native": "Français",
+   "script": "latin",
+   "rtl": false,
+   "translit": false,
+   "full": true,
+   "variety": "Standard French (France), tu and vous both shown"
+  },
+  {
+   "id": "swissgerman",
+   "name": "Swiss German",
+   "native": "Schwiizerdütsch",
+   "script": "latin",
+   "rtl": false,
+   "translit": false,
+   "full": true,
+   "variety": "Zürich German (Züritüütsch) in the common informal spelling used in messages; Bernese and Basel differences noted only where large"
+  },
+  {
+   "id": "bengali",
+   "name": "Bengali",
+   "native": "বাংলা",
+   "script": "bengali",
+   "rtl": false,
+   "translit": true,
+   "full": false,
+   "variety": "Colloquial Kolkata Bengali (cholito bhasha), Bengali script with transliteration"
+  },
+  {
+   "id": "spanish",
+   "name": "Spanish",
+   "native": "Español",
+   "script": "latin",
+   "rtl": false,
+   "translit": false,
+   "full": false,
+   "variety": "Neutral Latin American Spanish, tú and usted"
+  },
+  {
+   "id": "italian",
+   "name": "Italian",
+   "native": "Italiano",
+   "script": "latin",
+   "rtl": false,
+   "translit": false,
+   "full": false,
+   "variety": "Standard spoken Italian, tu and Lei"
+  },
+  {
+   "id": "portuguese",
+   "name": "Portuguese",
+   "native": "Português",
+   "script": "latin",
+   "rtl": false,
+   "translit": false,
+   "full": false,
+   "variety": "Brazilian Portuguese, você"
+  },
+  {
+   "id": "arabic",
+   "name": "Arabic",
+   "native": "العربية",
+   "script": "arabic",
+   "rtl": true,
+   "translit": true,
+   "full": false,
+   "variety": "Modern Standard Arabic, Levantine spoken forms noted"
+  }
+ ],
+ "items": [
+  {
+   "id": "F-GREET",
+   "layer": "function",
+   "level": "A1",
+   "en": "Greet someone and say goodbye",
+   "slot": "-",
+   "note": "Formal and informal versions"
+  },
+  {
+   "id": "F-INTRO",
+   "layer": "function",
+   "level": "A1",
+   "en": "Introduce yourself: name, where you are from, what you do",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-THANK",
+   "layer": "function",
+   "level": "A1",
+   "en": "Thank someone and respond to thanks",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-ASK-PRICE",
+   "layer": "function",
+   "level": "A1",
+   "en": "Ask how much something costs",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-ASK-WAY",
+   "layer": "function",
+   "level": "A1",
+   "en": "Ask where something is and understand a simple answer",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-NOT-UNDERSTAND",
+   "layer": "function",
+   "level": "A1",
+   "en": "Say you don't understand, ask someone to repeat or slow down",
+   "slot": "-",
+   "note": "The most important A1 function: it keeps the conversation alive"
+  },
+  {
+   "id": "F-LIKE",
+   "layer": "function",
+   "level": "A1",
+   "en": "Say what you like and don't like",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-WANT",
+   "layer": "function",
+   "level": "A1",
+   "en": "Say what you want, order food and drink",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "D-BE",
+   "layer": "door",
+   "level": "A1",
+   "en": "I am ___",
+   "slot": "N",
+   "note": "Identity, origin, job, state. The first door in every language"
+  },
+  {
+   "id": "D-HAVE",
+   "layer": "door",
+   "level": "A1",
+   "en": "I have ___",
+   "slot": "N",
+   "note": "Possession; in many languages also age, hunger, fear"
+  },
+  {
+   "id": "D-THERE-IS",
+   "layer": "door",
+   "level": "A1",
+   "en": "There is / there are ___",
+   "slot": "N",
+   "note": "Existence"
+  },
+  {
+   "id": "D-LIKE",
+   "layer": "door",
+   "level": "A1",
+   "en": "I like ___",
+   "slot": "N",
+   "note": "In many languages the liked thing is the subject"
+  },
+  {
+   "id": "D-WANT",
+   "layer": "door",
+   "level": "A1",
+   "en": "I want ___ / I want to ___",
+   "slot": "TO",
+   "note": "Blunt in most languages; pair with D-WOULD-LIKE"
+  },
+  {
+   "id": "D-WOULD-LIKE",
+   "layer": "door",
+   "level": "A1",
+   "en": "I'd like ___ / I'd like to ___",
+   "slot": "TO",
+   "note": "The polite version of D-WANT, used for ordering"
+  },
+  {
+   "id": "D-NEED",
+   "layer": "door",
+   "level": "A1",
+   "en": "I need ___ / I need to ___",
+   "slot": "TO",
+   "note": ""
+  },
+  {
+   "id": "D-CAN",
+   "layer": "door",
+   "level": "A1",
+   "en": "I can ___",
+   "slot": "V",
+   "note": "Ability and permission"
+  },
+  {
+   "id": "D-GOING-TO",
+   "layer": "door",
+   "level": "A1",
+   "en": "I'm going to ___",
+   "slot": "V",
+   "note": "Intention and near future"
+  },
+  {
+   "id": "D-WILL",
+   "layer": "door",
+   "level": "A1",
+   "en": "I will ___",
+   "slot": "V",
+   "note": "Some languages use present tense plus a time word instead"
+  },
+  {
+   "id": "T-PRES",
+   "layer": "turn",
+   "level": "A1",
+   "en": "Present simple",
+   "slot": "-",
+   "note": "Habits, facts, and in many languages the default for now"
+  },
+  {
+   "id": "T-PROG",
+   "layer": "turn",
+   "level": "A1",
+   "en": "Present continuous (right now)",
+   "slot": "-",
+   "note": "Many languages have no separate form; note what is used instead"
+  },
+  {
+   "id": "T-PAST",
+   "layer": "turn",
+   "level": "A1",
+   "en": "Past simple, first verbs (was, went, had, did)",
+   "slot": "-",
+   "note": "Just enough to say what you did yesterday"
+  },
+  {
+   "id": "T-FUT",
+   "layer": "turn",
+   "level": "A1",
+   "en": "Future (going to / will)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "T-NEG",
+   "layer": "turn",
+   "level": "A1",
+   "en": "Negative",
+   "slot": "-",
+   "note": "Where the negation word goes and what it attaches to"
+  },
+  {
+   "id": "T-Q",
+   "layer": "turn",
+   "level": "A1",
+   "en": "Yes/no question",
+   "slot": "-",
+   "note": "Word order, particle, or intonation only"
+  },
+  {
+   "id": "T-WH",
+   "layer": "turn",
+   "level": "A1",
+   "en": "Wh-question (who, what, where, when, how much)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-AND",
+   "layer": "glue",
+   "level": "A1",
+   "en": "and",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-BUT",
+   "layer": "glue",
+   "level": "A1",
+   "en": "but",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-OR",
+   "layer": "glue",
+   "level": "A1",
+   "en": "or",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-BECAUSE",
+   "layer": "glue",
+   "level": "A1",
+   "en": "because",
+   "slot": "-",
+   "note": "First subordinator; note any word-order change"
+  },
+  {
+   "id": "G-THEN",
+   "layer": "glue",
+   "level": "A1",
+   "en": "then / after that",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-ALSO",
+   "layer": "glue",
+   "level": "A1",
+   "en": "also / too",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-IN",
+   "layer": "glue",
+   "level": "A1",
+   "en": "in (place, month)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-ON",
+   "layer": "glue",
+   "level": "A1",
+   "en": "on (day, surface)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-AT",
+   "layer": "glue",
+   "level": "A1",
+   "en": "at (time, point)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-FROM",
+   "layer": "glue",
+   "level": "A1",
+   "en": "from",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-TO",
+   "layer": "glue",
+   "level": "A1",
+   "en": "to (direction)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-WITH",
+   "layer": "glue",
+   "level": "A1",
+   "en": "with",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "S-PRON-SUBJ",
+   "layer": "slot",
+   "level": "A1",
+   "en": "Subject pronouns (I, you, he, she, we, they)",
+   "slot": "-",
+   "note": "Include formal you if the language has one"
+  },
+  {
+   "id": "S-PRON-OBJ",
+   "layer": "slot",
+   "level": "A1",
+   "en": "Object pronouns (me, you, him, her, us, them)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "S-ARTICLE",
+   "layer": "slot",
+   "level": "A1",
+   "en": "Articles (a, the) or their absence",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "S-GENDER",
+   "layer": "slot",
+   "level": "A1",
+   "en": "Noun gender and agreement, if any",
+   "slot": "-",
+   "note": "Mark not applicable if the language has none"
+  },
+  {
+   "id": "S-PLURAL",
+   "layer": "slot",
+   "level": "A1",
+   "en": "Plural formation",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "S-DEMONSTR",
+   "layer": "slot",
+   "level": "A1",
+   "en": "this / that / these / those",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "S-NUMBERS",
+   "layer": "slot",
+   "level": "A1",
+   "en": "Numbers 1 to 100, ordinals to 10th",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "L-SELF",
+   "layer": "lexicon",
+   "level": "A1",
+   "en": "Self: name, nationality, job, age",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "L-FAMILY",
+   "layer": "lexicon",
+   "level": "A1",
+   "en": "Family and people",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "L-FOOD",
+   "layer": "lexicon",
+   "level": "A1",
+   "en": "Food and drink, ordering",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "L-TIME",
+   "layer": "lexicon",
+   "level": "A1",
+   "en": "Time, days, months, clock",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "L-PLACES",
+   "layer": "lexicon",
+   "level": "A1",
+   "en": "Places in town, directions",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "L-VERBS-CORE",
+   "layer": "lexicon",
+   "level": "A1",
+   "en": "The 25 core verbs",
+   "slot": "-",
+   "note": "go, come, eat, drink, see, do, make, say, know, give, take, live, work, buy, speak, read, write, sleep, play, learn, want, like, need, have, be"
+  },
+  {
+   "id": "P-SOUNDS",
+   "layer": "sound",
+   "level": "A1",
+   "en": "Sounds that do not exist in English",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "P-WORD-STRESS",
+   "layer": "sound",
+   "level": "A1",
+   "en": "Word stress and the script, if new",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-HELLO-BYE",
+   "layer": "chunk",
+   "level": "A1",
+   "en": "Hello / goodbye",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-PLEASE-THANKS",
+   "layer": "chunk",
+   "level": "A1",
+   "en": "Please / thank you / you're welcome",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-SORRY",
+   "layer": "chunk",
+   "level": "A1",
+   "en": "Sorry / excuse me",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-HOW-MUCH",
+   "layer": "chunk",
+   "level": "A1",
+   "en": "How much is it?",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-WHERE-IS",
+   "layer": "chunk",
+   "level": "A1",
+   "en": "Where is ___?",
+   "slot": "N",
+   "note": ""
+  },
+  {
+   "id": "C-DONT-UNDERSTAND",
+   "layer": "chunk",
+   "level": "A1",
+   "en": "I don't understand",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-REPEAT-PLEASE",
+   "layer": "chunk",
+   "level": "A1",
+   "en": "Could you repeat that, please? / More slowly, please",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-MY-NAME",
+   "layer": "chunk",
+   "level": "A1",
+   "en": "My name is ___ / Nice to meet you",
+   "slot": "N",
+   "note": ""
+  },
+  {
+   "id": "F-INVITE",
+   "layer": "function",
+   "level": "A2",
+   "en": "Invite someone to do something",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-ACCEPT-DECLINE",
+   "layer": "function",
+   "level": "A2",
+   "en": "Accept or decline an invitation, with a reason",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-SUGGEST",
+   "layer": "function",
+   "level": "A2",
+   "en": "Suggest a plan, time or place",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-APOLOGISE",
+   "layer": "function",
+   "level": "A2",
+   "en": "Apologise and explain",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-ORDER",
+   "layer": "function",
+   "level": "A2",
+   "en": "Order in a restaurant, ask for the bill, ask about a dish",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-ASK-REPEAT",
+   "layer": "function",
+   "level": "A2",
+   "en": "Ask what a word means, ask someone to spell or explain",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-DESCRIBE-PAST",
+   "layer": "function",
+   "level": "A2",
+   "en": "Say what you did yesterday or last weekend, in order",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-MAKE-PLAN",
+   "layer": "function",
+   "level": "A2",
+   "en": "Arrange to meet: when, where, confirm",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "D-HAVE-TO",
+   "layer": "door",
+   "level": "A2",
+   "en": "I have to ___",
+   "slot": "V",
+   "note": "External obligation"
+  },
+  {
+   "id": "D-MUST",
+   "layer": "door",
+   "level": "A2",
+   "en": "I must ___ / you mustn't ___",
+   "slot": "V",
+   "note": "Note whether the negative means prohibition or no need"
+  },
+  {
+   "id": "D-SHOULD",
+   "layer": "door",
+   "level": "A2",
+   "en": "I should ___ / you should ___",
+   "slot": "V",
+   "note": "Advice"
+  },
+  {
+   "id": "D-COULD",
+   "layer": "door",
+   "level": "A2",
+   "en": "Could you ___? / I could ___ (past ability)",
+   "slot": "V",
+   "note": "Polite request and past of can"
+  },
+  {
+   "id": "D-MIGHT",
+   "layer": "door",
+   "level": "A2",
+   "en": "It might ___ / maybe",
+   "slot": "V",
+   "note": "Many languages use an adverb, not a verb"
+  },
+  {
+   "id": "D-USED-TO",
+   "layer": "door",
+   "level": "A2",
+   "en": "I used to ___",
+   "slot": "V",
+   "note": "Past habit; often the imperfect tense"
+  },
+  {
+   "id": "D-HAVE-DONE",
+   "layer": "door",
+   "level": "A2",
+   "en": "I have done ___ / I've never ___",
+   "slot": "V",
+   "note": "Experience; in some languages the plain spoken past"
+  },
+  {
+   "id": "D-WAS-DOING",
+   "layer": "door",
+   "level": "A2",
+   "en": "I was doing ___ when ___",
+   "slot": "V",
+   "note": "Background action; imperfect or progressive past"
+  },
+  {
+   "id": "D-VERB-TO",
+   "layer": "door",
+   "level": "A2",
+   "en": "I hope / plan / decide / try / forget / promise to ___",
+   "slot": "TO",
+   "note": "The verb-plus-verb pattern"
+  },
+  {
+   "id": "D-VERB-ING",
+   "layer": "door",
+   "level": "A2",
+   "en": "I enjoy / don't mind / finish / keep ___-ing",
+   "slot": "ING",
+   "note": ""
+  },
+  {
+   "id": "D-THINK-THAT",
+   "layer": "door",
+   "level": "A2",
+   "en": "I think (that) ___ / I know that ___",
+   "slot": "CL",
+   "note": "First clause door"
+  },
+  {
+   "id": "D-LETS",
+   "layer": "door",
+   "level": "A2",
+   "en": "Let's ___ / Shall we ___?",
+   "slot": "V",
+   "note": ""
+  },
+  {
+   "id": "T-PAST-PROG",
+   "layer": "turn",
+   "level": "A2",
+   "en": "Past continuous or imperfect (was doing)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "T-PRES-PERF",
+   "layer": "turn",
+   "level": "A2",
+   "en": "Present perfect (have done)",
+   "slot": "-",
+   "note": "Say what this tense actually does in this language"
+  },
+  {
+   "id": "T-COND1",
+   "layer": "turn",
+   "level": "A2",
+   "en": "First conditional (if it rains, I'll stay)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "T-PROG-FUT",
+   "layer": "turn",
+   "level": "A2",
+   "en": "Present tense for arranged future (I'm meeting her tomorrow)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "T-IMPERATIVE",
+   "layer": "turn",
+   "level": "A2",
+   "en": "Imperative, formal and informal",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-SO",
+   "layer": "glue",
+   "level": "A2",
+   "en": "so (result)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-WHEN",
+   "layer": "glue",
+   "level": "A2",
+   "en": "when",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-BEFORE-AFTER",
+   "layer": "glue",
+   "level": "A2",
+   "en": "before / after",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-IF",
+   "layer": "glue",
+   "level": "A2",
+   "en": "if",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-THAT",
+   "layer": "glue",
+   "level": "A2",
+   "en": "that (I think that ___)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-WHO-WHICH",
+   "layer": "glue",
+   "level": "A2",
+   "en": "who / which / that (relative)",
+   "slot": "-",
+   "note": "First relative clause"
+  },
+  {
+   "id": "G-FOR-SINCE",
+   "layer": "glue",
+   "level": "A2",
+   "en": "for (a year) / since (Monday)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-UNTIL",
+   "layer": "glue",
+   "level": "A2",
+   "en": "until",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-ABOUT",
+   "layer": "glue",
+   "level": "A2",
+   "en": "about",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-SEQUENCE",
+   "layer": "glue",
+   "level": "A2",
+   "en": "first / then / after that / finally",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "S-POSSESSIVE",
+   "layer": "slot",
+   "level": "A2",
+   "en": "Possessives (my, your, his, her, our, their)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "S-QUANTIFIERS",
+   "layer": "slot",
+   "level": "A2",
+   "en": "some / any / much / many / a lot of / a little",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "S-COMPARATIVE",
+   "layer": "slot",
+   "level": "A2",
+   "en": "Comparatives (bigger than, more expensive than)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "S-TOO-ENOUGH",
+   "layer": "slot",
+   "level": "A2",
+   "en": "too / enough / very",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "S-OBJECT-CASE",
+   "layer": "slot",
+   "level": "A2",
+   "en": "Indirect object marking (to me, for him): dative or preposition",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "L-TRAVEL",
+   "layer": "lexicon",
+   "level": "A2",
+   "en": "Travel, transport, tickets, hotel",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "L-SHOPPING",
+   "layer": "lexicon",
+   "level": "A2",
+   "en": "Shopping, clothes, money",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "L-HEALTH",
+   "layer": "lexicon",
+   "level": "A2",
+   "en": "Health, body, at the doctor",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "L-WORK",
+   "layer": "lexicon",
+   "level": "A2",
+   "en": "Work and study",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "L-WEATHER",
+   "layer": "lexicon",
+   "level": "A2",
+   "en": "Weather and seasons",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "L-ROUTINE",
+   "layer": "lexicon",
+   "level": "A2",
+   "en": "Daily routine, house, chores",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "P-SENTENCE-STRESS",
+   "layer": "sound",
+   "level": "A2",
+   "en": "Sentence stress and rhythm",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "P-Q-INTONATION",
+   "layer": "sound",
+   "level": "A2",
+   "en": "Question intonation",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-WOULD-YOU-LIKE",
+   "layer": "chunk",
+   "level": "A2",
+   "en": "Would you like to ___?",
+   "slot": "V",
+   "note": ""
+  },
+  {
+   "id": "C-THANKS-BUT",
+   "layer": "chunk",
+   "level": "A2",
+   "en": "Thanks, but ___ / That's kind, but ___",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-HOW-ABOUT",
+   "layer": "chunk",
+   "level": "A2",
+   "en": "How about ___? / What about ___?",
+   "slot": "N",
+   "note": ""
+  },
+  {
+   "id": "C-SORRY-LATE",
+   "layer": "chunk",
+   "level": "A2",
+   "en": "Sorry I'm late",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-BILL",
+   "layer": "chunk",
+   "level": "A2",
+   "en": "The bill, please",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-WHAT-MEAN",
+   "layer": "chunk",
+   "level": "A2",
+   "en": "What does ___ mean?",
+   "slot": "N",
+   "note": ""
+  },
+  {
+   "id": "C-SEE-YOU",
+   "layer": "chunk",
+   "level": "A2",
+   "en": "See you then / see you tomorrow",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-SOUNDS-GOOD",
+   "layer": "chunk",
+   "level": "A2",
+   "en": "Sounds good / OK, fine",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-OPINION",
+   "layer": "function",
+   "level": "B1",
+   "en": "Give an opinion and ask for one",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-AGREE-DISAGREE",
+   "layer": "function",
+   "level": "B1",
+   "en": "Agree, disagree, partly agree",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-GIVE-REASONS",
+   "layer": "function",
+   "level": "B1",
+   "en": "Give reasons and examples",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-NARRATE",
+   "layer": "function",
+   "level": "B1",
+   "en": "Tell a story with background and sequence",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-COMPLAIN",
+   "layer": "function",
+   "level": "B1",
+   "en": "Complain politely and ask for a solution",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-ARRANGE",
+   "layer": "function",
+   "level": "B1",
+   "en": "Plan something together: propose, reject, compromise, confirm",
+   "slot": "-",
+   "note": "The Goethe B1 Sprechen Teil 1 task"
+  },
+  {
+   "id": "F-ADVISE",
+   "layer": "function",
+   "level": "B1",
+   "en": "Give advice and warnings",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-REPORT",
+   "layer": "function",
+   "level": "B1",
+   "en": "Report what someone said or asked",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "D-HAD-DONE",
+   "layer": "door",
+   "level": "B1",
+   "en": "I had already ___ when ___",
+   "slot": "V",
+   "note": "Past before the past"
+  },
+  {
+   "id": "D-HAVE-BEEN-ING",
+   "layer": "door",
+   "level": "B1",
+   "en": "I have been ___-ing for ___",
+   "slot": "ING",
+   "note": "Many languages use present tense plus since/for"
+  },
+  {
+   "id": "D-MUST-BE",
+   "layer": "door",
+   "level": "B1",
+   "en": "He must be ___ / it can't be ___ (deduction)",
+   "slot": "N",
+   "note": ""
+  },
+  {
+   "id": "D-SHOULD-HAVE",
+   "layer": "door",
+   "level": "B1",
+   "en": "I should have ___",
+   "slot": "V",
+   "note": "Regret"
+  },
+  {
+   "id": "D-COULD-HAVE",
+   "layer": "door",
+   "level": "B1",
+   "en": "I could have ___ / might have ___",
+   "slot": "V",
+   "note": ""
+  },
+  {
+   "id": "D-WOULD-RATHER",
+   "layer": "door",
+   "level": "B1",
+   "en": "I'd rather ___ / I'd prefer to ___",
+   "slot": "V",
+   "note": ""
+  },
+  {
+   "id": "D-IF-I-WERE",
+   "layer": "door",
+   "level": "B1",
+   "en": "If I were ___, I would ___",
+   "slot": "CL",
+   "note": "Second conditional"
+  },
+  {
+   "id": "D-WISH",
+   "layer": "door",
+   "level": "B1",
+   "en": "I wish I had ___ / I wish I could ___",
+   "slot": "CL",
+   "note": ""
+  },
+  {
+   "id": "D-TOLD-TO",
+   "layer": "door",
+   "level": "B1",
+   "en": "She told me to ___ / asked me to ___",
+   "slot": "TO",
+   "note": ""
+  },
+  {
+   "id": "D-SAID-THAT",
+   "layer": "door",
+   "level": "B1",
+   "en": "He said (that) ___ / asked if ___",
+   "slot": "CL",
+   "note": "Reported speech"
+  },
+  {
+   "id": "D-COULD-YOU-TELL",
+   "layer": "door",
+   "level": "B1",
+   "en": "Could you tell me where ___?",
+   "slot": "CL",
+   "note": "Indirect question"
+  },
+  {
+   "id": "D-PASSIVE",
+   "layer": "door",
+   "level": "B1",
+   "en": "It was built ___ / it is made of ___",
+   "slot": "N",
+   "note": ""
+  },
+  {
+   "id": "D-BE-USED-TO",
+   "layer": "door",
+   "level": "B1",
+   "en": "I'm used to ___-ing / getting used to ___",
+   "slot": "ING",
+   "note": ""
+  },
+  {
+   "id": "D-LET-MAKE",
+   "layer": "door",
+   "level": "B1",
+   "en": "She let me ___ / made me ___",
+   "slot": "V",
+   "note": ""
+  },
+  {
+   "id": "D-SUPPOSED-TO",
+   "layer": "door",
+   "level": "B1",
+   "en": "I'm supposed to ___ / you'd better ___",
+   "slot": "V",
+   "note": ""
+  },
+  {
+   "id": "D-ABLE-TO",
+   "layer": "door",
+   "level": "B1",
+   "en": "I'll be able to ___ / I was able to ___",
+   "slot": "V",
+   "note": "Turns of D-CAN that need a substitute"
+  },
+  {
+   "id": "T-PAST-PERF",
+   "layer": "turn",
+   "level": "B1",
+   "en": "Past perfect (had done)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "T-PERF-PROG",
+   "layer": "turn",
+   "level": "B1",
+   "en": "Present perfect continuous (have been doing)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "T-PASSIVE",
+   "layer": "turn",
+   "level": "B1",
+   "en": "Passive, present and past",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "T-COND2",
+   "layer": "turn",
+   "level": "B1",
+   "en": "Second conditional (if I had, I would)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "T-REPORTED",
+   "layer": "turn",
+   "level": "B1",
+   "en": "Reported speech: the tense shift",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-ALTHOUGH",
+   "layer": "glue",
+   "level": "B1",
+   "en": "although / even though",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-WHILE",
+   "layer": "glue",
+   "level": "B1",
+   "en": "while / whereas (contrast)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-SINCE-AS",
+   "layer": "glue",
+   "level": "B1",
+   "en": "since / as (reason)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-SO-THAT",
+   "layer": "glue",
+   "level": "B1",
+   "en": "so that (purpose)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-IN-ORDER-TO",
+   "layer": "glue",
+   "level": "B1",
+   "en": "in order to / to (purpose)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-WHOSE-WHERE",
+   "layer": "glue",
+   "level": "B1",
+   "en": "whose / where / when (relative)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-VERB-PREP",
+   "layer": "glue",
+   "level": "B1",
+   "en": "Verb plus preposition sets: wait for, think about, depend on, interested in",
+   "slot": "-",
+   "note": "Belongs on the door card; list the ten most common"
+  },
+  {
+   "id": "G-EITHER-NEITHER",
+   "layer": "glue",
+   "level": "B1",
+   "en": "either ... or / neither ... nor",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-AS-SOON-AS",
+   "layer": "glue",
+   "level": "B1",
+   "en": "as soon as / by the time",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-INSTEAD-OF",
+   "layer": "glue",
+   "level": "B1",
+   "en": "instead of / apart from",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "S-RELATIVE",
+   "layer": "slot",
+   "level": "B1",
+   "en": "Relative pronouns in all roles",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "S-REFLEXIVE",
+   "layer": "slot",
+   "level": "B1",
+   "en": "Reflexive pronouns and reflexive verbs",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "S-QUANT-ADV",
+   "layer": "slot",
+   "level": "B1",
+   "en": "Quantity adverbs: a few, a bit, quite, rather, hardly",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "S-SUPERLATIVE",
+   "layer": "slot",
+   "level": "B1",
+   "en": "Superlatives and 'as ... as'",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "S-GENITIVE",
+   "layer": "slot",
+   "level": "B1",
+   "en": "Possession between nouns (the door of the house, John's car)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "L-OPINION",
+   "layer": "lexicon",
+   "level": "B1",
+   "en": "Opinion, argument, media",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "L-FEELINGS",
+   "layer": "lexicon",
+   "level": "B1",
+   "en": "Feelings and relationships",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "L-ENVIRONMENT",
+   "layer": "lexicon",
+   "level": "B1",
+   "en": "Environment, city, nature",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "L-EDUCATION",
+   "layer": "lexicon",
+   "level": "B1",
+   "en": "Education, learning, career",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "L-HOUSING",
+   "layer": "lexicon",
+   "level": "B1",
+   "en": "Housing, renting, neighbours",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "L-TECH",
+   "layer": "lexicon",
+   "level": "B1",
+   "en": "Technology and the internet",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "P-CONNECTED",
+   "layer": "sound",
+   "level": "B1",
+   "en": "Connected speech, weak forms, contractions",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "P-NATIVE-SPEED",
+   "layer": "sound",
+   "level": "B1",
+   "en": "Following native speed: what gets swallowed",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-IN-MY-OPINION",
+   "layer": "chunk",
+   "level": "B1",
+   "en": "In my opinion / I think that",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-I-AGREE",
+   "layer": "chunk",
+   "level": "B1",
+   "en": "I agree / exactly / you're right",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-SEE-POINT-BUT",
+   "layer": "chunk",
+   "level": "B1",
+   "en": "I see your point, but ___",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-THE-THING-IS",
+   "layer": "chunk",
+   "level": "B1",
+   "en": "The thing is, ___",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-WHAT-DO-YOU-THINK",
+   "layer": "chunk",
+   "level": "B1",
+   "en": "What do you think?",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-IF-I-WERE-YOU",
+   "layer": "chunk",
+   "level": "B1",
+   "en": "If I were you, I'd ___",
+   "slot": "V",
+   "note": ""
+  },
+  {
+   "id": "C-TO-BE-HONEST",
+   "layer": "chunk",
+   "level": "B1",
+   "en": "To be honest, ___",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-IT-DEPENDS",
+   "layer": "chunk",
+   "level": "B1",
+   "en": "It depends (on ___)",
+   "slot": "N",
+   "note": ""
+  },
+  {
+   "id": "F-ARGUE",
+   "layer": "function",
+   "level": "B2",
+   "en": "Argue a case with structured points",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-HEDGE",
+   "layer": "function",
+   "level": "B2",
+   "en": "Hedge: soften a claim, show uncertainty",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-CONCEDE",
+   "layer": "function",
+   "level": "B2",
+   "en": "Concede a point and then counter it",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-PERSUADE",
+   "layer": "function",
+   "level": "B2",
+   "en": "Persuade and reassure",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-SUMMARISE",
+   "layer": "function",
+   "level": "B2",
+   "en": "Summarise two sides and give a balanced view",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-SPECULATE",
+   "layer": "function",
+   "level": "B2",
+   "en": "Speculate about present and past",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-REGRET",
+   "layer": "function",
+   "level": "B2",
+   "en": "Express regret and hypothesise about the past",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-FORMAL-REQUEST",
+   "layer": "function",
+   "level": "B2",
+   "en": "Make a formal request or complaint in writing",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "D-IF-HAD-KNOWN",
+   "layer": "door",
+   "level": "B2",
+   "en": "If I had known, I would have ___",
+   "slot": "CL",
+   "note": "Third conditional"
+  },
+  {
+   "id": "D-MUST-HAVE",
+   "layer": "door",
+   "level": "B2",
+   "en": "She must have ___ / can't have ___",
+   "slot": "V",
+   "note": "Past deduction"
+  },
+  {
+   "id": "D-WILL-HAVE-DONE",
+   "layer": "door",
+   "level": "B2",
+   "en": "I'll have finished by ___",
+   "slot": "V",
+   "note": "Future perfect"
+  },
+  {
+   "id": "D-WILL-BE-ING",
+   "layer": "door",
+   "level": "B2",
+   "en": "I'll be working at ___",
+   "slot": "ING",
+   "note": "Future continuous"
+  },
+  {
+   "id": "D-HAD-BEEN-ING",
+   "layer": "door",
+   "level": "B2",
+   "en": "I had been ___-ing for ___",
+   "slot": "ING",
+   "note": ""
+  },
+  {
+   "id": "D-HAVE-IT-DONE",
+   "layer": "door",
+   "level": "B2",
+   "en": "I had it fixed / got it done",
+   "slot": "N",
+   "note": "Causative"
+  },
+  {
+   "id": "D-WISH-HAD",
+   "layer": "door",
+   "level": "B2",
+   "en": "I wish I had ___ / if only I had ___",
+   "slot": "CL",
+   "note": ""
+  },
+  {
+   "id": "D-WOULD-HABIT",
+   "layer": "door",
+   "level": "B2",
+   "en": "When I was young, we would ___",
+   "slot": "V",
+   "note": ""
+  },
+  {
+   "id": "D-REPORT-ING",
+   "layer": "door",
+   "level": "B2",
+   "en": "He denied / admitted / suggested ___-ing",
+   "slot": "ING",
+   "note": ""
+  },
+  {
+   "id": "D-ADVISED-TO",
+   "layer": "door",
+   "level": "B2",
+   "en": "She advised me to ___ / warned me not to ___",
+   "slot": "TO",
+   "note": ""
+  },
+  {
+   "id": "D-IS-SAID-TO",
+   "layer": "door",
+   "level": "B2",
+   "en": "It is said that ___ / he is thought to ___",
+   "slot": "CL",
+   "note": ""
+  },
+  {
+   "id": "D-CLEFT",
+   "layer": "door",
+   "level": "B2",
+   "en": "What I want is ___ / It was X that ___",
+   "slot": "CL",
+   "note": ""
+  },
+  {
+   "id": "D-INVERSION",
+   "layer": "door",
+   "level": "B2",
+   "en": "Not only did I ___, but ___",
+   "slot": "V",
+   "note": ""
+  },
+  {
+   "id": "D-NEEDNT-HAVE",
+   "layer": "door",
+   "level": "B2",
+   "en": "You needn't have ___ / didn't need to ___",
+   "slot": "V",
+   "note": ""
+  },
+  {
+   "id": "T-FUT-PERF",
+   "layer": "turn",
+   "level": "B2",
+   "en": "Future perfect (will have done)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "T-FUT-PROG",
+   "layer": "turn",
+   "level": "B2",
+   "en": "Future continuous (will be doing)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "T-PAST-PERF-PROG",
+   "layer": "turn",
+   "level": "B2",
+   "en": "Past perfect continuous (had been doing)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "T-COND3",
+   "layer": "turn",
+   "level": "B2",
+   "en": "Third conditional (if I had, I would have)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "T-COND-MIXED",
+   "layer": "turn",
+   "level": "B2",
+   "en": "Mixed conditionals",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "T-PASSIVE-ALL",
+   "layer": "turn",
+   "level": "B2",
+   "en": "Passive in all tenses, get-passive",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-HOWEVER",
+   "layer": "glue",
+   "level": "B2",
+   "en": "however / nevertheless",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-DESPITE",
+   "layer": "glue",
+   "level": "B2",
+   "en": "despite / in spite of",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-WHEREAS",
+   "layer": "glue",
+   "level": "B2",
+   "en": "whereas / while (formal contrast)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-OTHER-HAND",
+   "layer": "glue",
+   "level": "B2",
+   "en": "on the one hand / on the other hand",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-UNLESS",
+   "layer": "glue",
+   "level": "B2",
+   "en": "unless",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-AS-LONG-AS",
+   "layer": "glue",
+   "level": "B2",
+   "en": "as long as / provided that",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-IN-CASE",
+   "layer": "glue",
+   "level": "B2",
+   "en": "in case",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-WHOEVER",
+   "layer": "glue",
+   "level": "B2",
+   "en": "whoever / whatever / wherever",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-NOT-ONLY",
+   "layer": "glue",
+   "level": "B2",
+   "en": "not only ... but also",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-EVEN-IF",
+   "layer": "glue",
+   "level": "B2",
+   "en": "even if",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "S-ARTICLE-ABSTRACT",
+   "layer": "slot",
+   "level": "B2",
+   "en": "Articles with abstract and generic nouns",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "S-DETERMINERS",
+   "layer": "slot",
+   "level": "B2",
+   "en": "each / every / either / neither / both / all",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "S-COLLOCATION",
+   "layer": "slot",
+   "level": "B2",
+   "en": "Verb-noun and adjective-noun collocations",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "S-PHRASAL",
+   "layer": "slot",
+   "level": "B2",
+   "en": "Phrasal or particle verbs, separable prefixes",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "L-ABSTRACT",
+   "layer": "lexicon",
+   "level": "B2",
+   "en": "Abstract nouns and argument vocabulary",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "L-BUSINESS",
+   "layer": "lexicon",
+   "level": "B2",
+   "en": "Work, business, negotiation",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "L-SOCIETY",
+   "layer": "lexicon",
+   "level": "B2",
+   "en": "Politics, society, news",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "L-SCIENCE",
+   "layer": "lexicon",
+   "level": "B2",
+   "en": "Science and technology",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "L-CULTURE",
+   "layer": "lexicon",
+   "level": "B2",
+   "en": "Arts, culture, books, film",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "P-ACCENTS",
+   "layer": "sound",
+   "level": "B2",
+   "en": "Regional accents and varieties",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "P-ATTITUDE",
+   "layer": "sound",
+   "level": "B2",
+   "en": "Intonation for attitude: doubt, sarcasm, enthusiasm",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-COULD-BE-ARGUED",
+   "layer": "chunk",
+   "level": "B2",
+   "en": "It could be argued that ___",
+   "slot": "CL",
+   "note": ""
+  },
+  {
+   "id": "C-ADMITTEDLY",
+   "layer": "chunk",
+   "level": "B2",
+   "en": "Admittedly, ___ / Granted, ___",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-THAT-SAID",
+   "layer": "chunk",
+   "level": "B2",
+   "en": "That said, ___ / Having said that, ___",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-IN-SHORT",
+   "layer": "chunk",
+   "level": "B2",
+   "en": "In short / to sum up",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-TAKE-YOUR-POINT",
+   "layer": "chunk",
+   "level": "B2",
+   "en": "I take your point, but ___",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-WOULD-YOU-MIND",
+   "layer": "chunk",
+   "level": "B2",
+   "en": "Would you mind ___-ing?",
+   "slot": "ING",
+   "note": ""
+  },
+  {
+   "id": "C-I-WONDER-IF",
+   "layer": "chunk",
+   "level": "B2",
+   "en": "I wonder if you could ___",
+   "slot": "V",
+   "note": ""
+  },
+  {
+   "id": "C-ON-BALANCE",
+   "layer": "chunk",
+   "level": "B2",
+   "en": "On balance, ___",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-QUALIFY",
+   "layer": "function",
+   "level": "C1",
+   "en": "Qualify a claim precisely",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-REGISTER",
+   "layer": "function",
+   "level": "C1",
+   "en": "Shift register: the same thing formal, neutral, and casual",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-IRONY",
+   "layer": "function",
+   "level": "C1",
+   "en": "Understate, signal irony",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-CHAIR",
+   "layer": "function",
+   "level": "C1",
+   "en": "Chair a discussion: open, cut off, redirect, close",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-CRITIQUE",
+   "layer": "function",
+   "level": "C1",
+   "en": "Criticise diplomatically",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-NEGOTIATE",
+   "layer": "function",
+   "level": "C1",
+   "en": "Negotiate formally: conditions, consequences",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "F-EVALUATE",
+   "layer": "function",
+   "level": "C1",
+   "en": "Evaluate and weigh evidence",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "D-WOULD-HAVE-THOUGHT",
+   "layer": "door",
+   "level": "C1",
+   "en": "I would have thought that ___",
+   "slot": "CL",
+   "note": "Hedged disagreement"
+  },
+  {
+   "id": "D-ARGUABLE",
+   "layer": "door",
+   "level": "C1",
+   "en": "It's arguable that ___ / there's a case for ___",
+   "slot": "CL",
+   "note": ""
+  },
+  {
+   "id": "D-MIGHT-AS-WELL",
+   "layer": "door",
+   "level": "C1",
+   "en": "I might as well ___ / it may well ___",
+   "slot": "V",
+   "note": ""
+  },
+  {
+   "id": "D-CLAIMS-TO-HAVE",
+   "layer": "door",
+   "level": "C1",
+   "en": "She claims to have ___ / seems to have ___",
+   "slot": "V",
+   "note": "Perfect infinitive"
+  },
+  {
+   "id": "D-EMPHATIC",
+   "layer": "door",
+   "level": "C1",
+   "en": "I do think ___ / I did try ___",
+   "slot": "V",
+   "note": "Emphatic form"
+  },
+  {
+   "id": "D-HAD-I-KNOWN",
+   "layer": "door",
+   "level": "C1",
+   "en": "Had I known, ___ / Were I to ___ / Should you need ___",
+   "slot": "CL",
+   "note": "Inverted conditional"
+  },
+  {
+   "id": "D-SUBJUNCTIVE",
+   "layer": "door",
+   "level": "C1",
+   "en": "I insist that he ___ / it is vital that she ___",
+   "slot": "V",
+   "note": "Subjunctive or its equivalent"
+  },
+  {
+   "id": "D-WAS-TO-HAVE",
+   "layer": "door",
+   "level": "C1",
+   "en": "I was to have ___ / was going to ___",
+   "slot": "V",
+   "note": "Future in the past"
+  },
+  {
+   "id": "D-HAVING-DONE",
+   "layer": "door",
+   "level": "C1",
+   "en": "Having ___, I ___",
+   "slot": "V",
+   "note": "Participle clause"
+  },
+  {
+   "id": "D-LITTLE-DID",
+   "layer": "door",
+   "level": "C1",
+   "en": "Little did I know ___ / Far from being ___",
+   "slot": "CL",
+   "note": ""
+  },
+  {
+   "id": "D-SO-MUCH-FOR",
+   "layer": "door",
+   "level": "C1",
+   "en": "So much for ___ / Never mind ___",
+   "slot": "N",
+   "note": ""
+  },
+  {
+   "id": "D-NO-SOONER",
+   "layer": "door",
+   "level": "C1",
+   "en": "No sooner had I ___ than ___ / Hardly had ___ when ___",
+   "slot": "V",
+   "note": ""
+  },
+  {
+   "id": "T-REGISTER",
+   "layer": "turn",
+   "level": "C1",
+   "en": "Register pairs: formal versus informal forms of the same turn",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "T-PERF-INF",
+   "layer": "turn",
+   "level": "C1",
+   "en": "Perfect infinitive (to have done)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "T-INVERSION",
+   "layer": "turn",
+   "level": "C1",
+   "en": "Inversion after negative adverbials",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "T-SUBJUNCTIVE",
+   "layer": "turn",
+   "level": "C1",
+   "en": "Subjunctive mood, where it survives",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "T-FUT-IN-PAST",
+   "layer": "turn",
+   "level": "C1",
+   "en": "Future in the past (was going to, would)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-NEVERTHELESS",
+   "layer": "glue",
+   "level": "C1",
+   "en": "nevertheless / nonetheless",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-ALBEIT",
+   "layer": "glue",
+   "level": "C1",
+   "en": "albeit",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-INSOFAR",
+   "layer": "glue",
+   "level": "C1",
+   "en": "insofar as / to the extent that",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-GIVEN-THAT",
+   "layer": "glue",
+   "level": "C1",
+   "en": "given that / in view of",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-NOTWITHSTANDING",
+   "layer": "glue",
+   "level": "C1",
+   "en": "notwithstanding / regardless of",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-HENCE",
+   "layer": "glue",
+   "level": "C1",
+   "en": "hence / thereby / thus",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-LEST",
+   "layer": "glue",
+   "level": "C1",
+   "en": "lest / for fear that",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "G-PROVIDED",
+   "layer": "glue",
+   "level": "C1",
+   "en": "provided that / on condition that",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "S-NOMINALISATION",
+   "layer": "slot",
+   "level": "C1",
+   "en": "Nominalisation (decide to decision, the fact that)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "S-FORMAL-NP",
+   "layer": "slot",
+   "level": "C1",
+   "en": "Formal noun phrases and pre-modification",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "S-ELLIPSIS",
+   "layer": "slot",
+   "level": "C1",
+   "en": "Ellipsis and substitution (so do I, I hope not)",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "S-FRONTING",
+   "layer": "slot",
+   "level": "C1",
+   "en": "Fronting and emphasis by word order",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "L-IDIOM",
+   "layer": "lexicon",
+   "level": "C1",
+   "en": "Idioms and fixed metaphors in daily use",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "L-REGISTER-PAIRS",
+   "layer": "lexicon",
+   "level": "C1",
+   "en": "Register pairs: casual and formal words for the same thing",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "L-PRECISE",
+   "layer": "lexicon",
+   "level": "C1",
+   "en": "Low-frequency precise words",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "L-HUMOUR",
+   "layer": "lexicon",
+   "level": "C1",
+   "en": "Humour, irony, understatement",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "L-ACADEMIC",
+   "layer": "lexicon",
+   "level": "C1",
+   "en": "Academic and professional discourse",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "P-PROSODY",
+   "layer": "sound",
+   "level": "C1",
+   "en": "Prosody for emphasis and contrast",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "P-IRONY-TONE",
+   "layer": "sound",
+   "level": "C1",
+   "en": "The tone that marks irony",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-BE-THAT-AS-IT-MAY",
+   "layer": "chunk",
+   "level": "C1",
+   "en": "Be that as it may, ___",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-PUT-IT-MILDLY",
+   "layer": "chunk",
+   "level": "C1",
+   "en": "To put it mildly, ___",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-WITH-RESPECT",
+   "layer": "chunk",
+   "level": "C1",
+   "en": "With respect, ___ / With all due respect, ___",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-MOVE-ON",
+   "layer": "chunk",
+   "level": "C1",
+   "en": "Let's move on / Can we come back to that?",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-IF-I-MAY",
+   "layer": "chunk",
+   "level": "C1",
+   "en": "If I may, ___",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-CORRECT-ME",
+   "layer": "chunk",
+   "level": "C1",
+   "en": "Correct me if I'm wrong, but ___",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-ALL-THINGS",
+   "layer": "chunk",
+   "level": "C1",
+   "en": "All things considered, ___",
+   "slot": "-",
+   "note": ""
+  },
+  {
+   "id": "C-FOR-WHAT-ITS-WORTH",
+   "layer": "chunk",
+   "level": "C1",
+   "en": "For what it's worth, ___",
+   "slot": "-",
+   "note": ""
+  }
+ ],
+ "scenarios": [
+  {
+   "id": "SC-A1-01",
+   "level": "A1",
+   "situation": "You are at a language meetup. Someone asks who you are.",
+   "task": "Say your name, where you are from, and what you do.",
+   "function": "F-INTRO",
+   "recipe": [
+    "C-MY-NAME",
+    "D-BE",
+    "G-AND",
+    "D-BE"
+   ],
+   "turn": "T-PRES"
+  },
+  {
+   "id": "SC-A1-02",
+   "level": "A1",
+   "situation": "You are at a café counter.",
+   "task": "Order a coffee and a sandwich politely.",
+   "function": "F-WANT",
+   "recipe": [
+    "D-WOULD-LIKE",
+    "G-AND",
+    "C-PLEASE-THANKS"
+   ],
+   "turn": "T-PRES"
+  },
+  {
+   "id": "SC-A1-03",
+   "level": "A1",
+   "situation": "You are lost near the centre of town.",
+   "task": "Ask where the station is, then ask how much a ticket costs.",
+   "function": "F-ASK-WAY",
+   "recipe": [
+    "C-SORRY",
+    "C-WHERE-IS",
+    "C-HOW-MUCH"
+   ],
+   "turn": "T-WH"
+  },
+  {
+   "id": "SC-A1-04",
+   "level": "A1",
+   "situation": "A friend asks about food.",
+   "task": "Say one thing you like eating and one thing you don't.",
+   "function": "F-LIKE",
+   "recipe": [
+    "D-LIKE",
+    "G-BUT",
+    "D-LIKE"
+   ],
+   "turn": "T-NEG"
+  },
+  {
+   "id": "SC-A1-05",
+   "level": "A1",
+   "situation": "A colleague asks about your weekend plans.",
+   "task": "Say what you are going to do and who with.",
+   "function": "F-WANT",
+   "recipe": [
+    "D-GOING-TO",
+    "G-WITH"
+   ],
+   "turn": "T-FUT"
+  },
+  {
+   "id": "SC-A1-06",
+   "level": "A1",
+   "situation": "Someone is speaking too fast.",
+   "task": "Say you don't understand and ask them to repeat more slowly.",
+   "function": "F-NOT-UNDERSTAND",
+   "recipe": [
+    "C-SORRY",
+    "C-DONT-UNDERSTAND",
+    "C-REPEAT-PLEASE"
+   ],
+   "turn": "T-PRES"
+  },
+  {
+   "id": "SC-A2-01",
+   "level": "A2",
+   "situation": "A friend invites you to dinner on Friday. You have to work late.",
+   "task": "Decline politely and give the reason.",
+   "function": "F-ACCEPT-DECLINE",
+   "recipe": [
+    "C-THANKS-BUT",
+    "D-CAN",
+    "G-BECAUSE",
+    "D-HAVE-TO"
+   ],
+   "turn": "T-NEG"
+  },
+  {
+   "id": "SC-A2-02",
+   "level": "A2",
+   "situation": "You and a friend want to meet this week.",
+   "task": "Suggest a day, a time and a place, and ask if that works.",
+   "function": "F-SUGGEST",
+   "recipe": [
+    "C-HOW-ABOUT",
+    "G-AT",
+    "D-LETS"
+   ],
+   "turn": "T-Q"
+  },
+  {
+   "id": "SC-A2-03",
+   "level": "A2",
+   "situation": "Monday morning, a colleague asks about your weekend.",
+   "task": "Say two things you did, in order.",
+   "function": "F-DESCRIBE-PAST",
+   "recipe": [
+    "G-SEQUENCE",
+    "D-HAVE-DONE",
+    "G-BEFORE-AFTER"
+   ],
+   "turn": "T-PAST"
+  },
+  {
+   "id": "SC-A2-04",
+   "level": "A2",
+   "situation": "You arrive twenty minutes late to meet someone.",
+   "task": "Apologise and explain what happened.",
+   "function": "F-APOLOGISE",
+   "recipe": [
+    "C-SORRY-LATE",
+    "G-BECAUSE",
+    "D-WAS-DOING"
+   ],
+   "turn": "T-PAST-PROG"
+  },
+  {
+   "id": "SC-A2-05",
+   "level": "A2",
+   "situation": "At the doctor with a bad cold. You have an important meeting tomorrow.",
+   "task": "Ask what you should do, and say you have to work tomorrow.",
+   "function": "F-ASK-REPEAT",
+   "recipe": [
+    "D-SHOULD",
+    "G-BUT",
+    "D-HAVE-TO"
+   ],
+   "turn": "T-Q"
+  },
+  {
+   "id": "SC-A2-06",
+   "level": "A2",
+   "situation": "You are in a restaurant and don't know a word on the menu.",
+   "task": "Ask what it means, then order it and ask for the bill later.",
+   "function": "F-ORDER",
+   "recipe": [
+    "C-WHAT-MEAN",
+    "D-WOULD-LIKE",
+    "C-BILL"
+   ],
+   "turn": "T-Q"
+  },
+  {
+   "id": "SC-B1-01",
+   "level": "B1",
+   "situation": "Your partner suggests a beach holiday. You would prefer the mountains.",
+   "task": "Say what you'd rather do, give a reason, and propose a compromise.",
+   "function": "F-ARRANGE",
+   "recipe": [
+    "D-WOULD-RATHER",
+    "G-BECAUSE",
+    "C-HOW-ABOUT"
+   ],
+   "turn": "T-COND2"
+  },
+  {
+   "id": "SC-B1-02",
+   "level": "B1",
+   "situation": "A discussion about working from home.",
+   "task": "Give your opinion with one reason and one concession.",
+   "function": "F-OPINION",
+   "recipe": [
+    "C-IN-MY-OPINION",
+    "G-ALTHOUGH",
+    "D-THINK-THAT"
+   ],
+   "turn": "T-PRES"
+  },
+  {
+   "id": "SC-B1-03",
+   "level": "B1",
+   "situation": "You missed your train this morning.",
+   "task": "Tell the story: what had happened before, and what you did next.",
+   "function": "F-NARRATE",
+   "recipe": [
+    "G-WHEN",
+    "D-HAD-DONE",
+    "G-SO"
+   ],
+   "turn": "T-PAST-PERF"
+  },
+  {
+   "id": "SC-B1-04",
+   "level": "B1",
+   "situation": "Your hotel room is noisy and the wifi doesn't work.",
+   "task": "Complain politely and ask to change rooms.",
+   "function": "F-COMPLAIN",
+   "recipe": [
+    "C-THE-THING-IS",
+    "G-AND",
+    "D-COULD"
+   ],
+   "turn": "T-Q"
+  },
+  {
+   "id": "SC-B1-05",
+   "level": "B1",
+   "situation": "A friend failed an exam because they didn't study.",
+   "task": "Say what they should have done and what you'd do in their place.",
+   "function": "F-ADVISE",
+   "recipe": [
+    "D-SHOULD-HAVE",
+    "C-IF-I-WERE-YOU"
+   ],
+   "turn": "T-COND2"
+  },
+  {
+   "id": "SC-B1-06",
+   "level": "B1",
+   "situation": "Your boss moved the deadline to Thursday and asked you to tell the team.",
+   "task": "Report what your boss said and what she asked you to do.",
+   "function": "F-REPORT",
+   "recipe": [
+    "D-SAID-THAT",
+    "G-AND",
+    "D-TOLD-TO"
+   ],
+   "turn": "T-REPORTED"
+  },
+  {
+   "id": "SC-B2-01",
+   "level": "B2",
+   "situation": "A debate about a four-day working week.",
+   "task": "Argue for it, concede one drawback, then counter the drawback.",
+   "function": "F-ARGUE",
+   "recipe": [
+    "C-ADMITTEDLY",
+    "G-HOWEVER",
+    "D-IF-I-WERE"
+   ],
+   "turn": "T-COND2"
+  },
+  {
+   "id": "SC-B2-02",
+   "level": "B2",
+   "situation": "A colleague didn't show up to an important meeting and isn't answering.",
+   "task": "Speculate about what must have happened and what might have happened.",
+   "function": "F-SPECULATE",
+   "recipe": [
+    "D-MUST-HAVE",
+    "G-OR",
+    "D-COULD-HAVE"
+   ],
+   "turn": "T-COND3"
+  },
+  {
+   "id": "SC-B2-03",
+   "level": "B2",
+   "situation": "You turned down a job last year and now regret it.",
+   "task": "Say what you would have done if you had known, and what you wish.",
+   "function": "F-REGRET",
+   "recipe": [
+    "D-IF-HAD-KNOWN",
+    "D-WISH-HAD"
+   ],
+   "turn": "T-COND3"
+  },
+  {
+   "id": "SC-B2-04",
+   "level": "B2",
+   "situation": "The heating in your flat has been broken for a week.",
+   "task": "Write a formal request to the landlord to have it repaired, with a deadline.",
+   "function": "F-FORMAL-REQUEST",
+   "recipe": [
+    "C-I-WONDER-IF",
+    "D-HAVE-IT-DONE",
+    "G-AS-LONG-AS"
+   ],
+   "turn": "T-PASSIVE-ALL"
+  },
+  {
+   "id": "SC-B2-05",
+   "level": "B2",
+   "situation": "A friend asks what you think about banning cars from city centres.",
+   "task": "Summarise both sides, then give your balanced view.",
+   "function": "F-SUMMARISE",
+   "recipe": [
+    "G-OTHER-HAND",
+    "G-WHEREAS",
+    "C-ON-BALANCE"
+   ],
+   "turn": "T-PRES"
+  },
+  {
+   "id": "SC-B2-06",
+   "level": "B2",
+   "situation": "Someone asks about your goals.",
+   "task": "Say what you will have achieved by this time next year, and what you'll be doing then.",
+   "function": "F-PERSUADE",
+   "recipe": [
+    "D-WILL-HAVE-DONE",
+    "G-AND",
+    "D-WILL-BE-ING"
+   ],
+   "turn": "T-FUT-PERF"
+  },
+  {
+   "id": "SC-C1-01",
+   "level": "C1",
+   "situation": "In a meeting, a senior colleague proposes a plan you think is flawed.",
+   "task": "Disagree diplomatically and suggest what you would have expected instead.",
+   "function": "F-CRITIQUE",
+   "recipe": [
+    "C-WITH-RESPECT",
+    "D-WOULD-HAVE-THOUGHT",
+    "G-ALBEIT"
+   ],
+   "turn": "T-REGISTER"
+  },
+  {
+   "id": "SC-C1-02",
+   "level": "C1",
+   "situation": "You are chairing. Someone has gone off on a tangent.",
+   "task": "Cut them off politely, park the point, and return to the agenda.",
+   "function": "F-CHAIR",
+   "recipe": [
+    "C-IF-I-MAY",
+    "C-MOVE-ON",
+    "G-GIVEN-THAT"
+   ],
+   "turn": "T-REGISTER"
+  },
+  {
+   "id": "SC-C1-03",
+   "level": "C1",
+   "situation": "A trip you had planned for months collapsed the day before.",
+   "task": "Describe it with some irony: what was to have happened and what you didn't know.",
+   "function": "F-IRONY",
+   "recipe": [
+    "D-WAS-TO-HAVE",
+    "D-LITTLE-DID",
+    "D-SO-MUCH-FOR"
+   ],
+   "turn": "T-FUT-IN-PAST"
+  },
+  {
+   "id": "SC-C1-04",
+   "level": "C1",
+   "situation": "Someone claims AI will replace all translators within five years.",
+   "task": "Qualify the claim: to what extent it holds and where it fails.",
+   "function": "F-QUALIFY",
+   "recipe": [
+    "D-ARGUABLE",
+    "G-INSOFAR",
+    "G-NEVERTHELESS"
+   ],
+   "turn": "T-PRES"
+  },
+  {
+   "id": "SC-C1-05",
+   "level": "C1",
+   "situation": "A supplier has delivered late twice.",
+   "task": "Insist formally that they deliver on time, on condition that otherwise the contract be reviewed.",
+   "function": "F-NEGOTIATE",
+   "recipe": [
+    "D-SUBJUNCTIVE",
+    "G-PROVIDED",
+    "D-HAD-I-KNOWN"
+   ],
+   "turn": "T-SUBJUNCTIVE"
+  },
+  {
+   "id": "SC-C1-06",
+   "level": "C1",
+   "situation": "You finished a project and only then learned the requirements had changed.",
+   "task": "Tell it with a participle clause and an inverted opener.",
+   "function": "F-EVALUATE",
+   "recipe": [
+    "D-HAVING-DONE",
+    "D-NO-SOONER",
+    "G-HENCE"
+   ],
+   "turn": "T-INVERSION"
+  }
+ ]
+}

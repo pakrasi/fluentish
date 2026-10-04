@@ -1,0 +1,554 @@
+[
+{
+"id": "ENG_CHUNK_0301",
+"t": "Woher kennst du [Person, Akk.]?",
+"ex": "Und woher kennst du Sarah? Von der Arbeit?"
+},
+{
+"id": "ENG_CHUNK_0302",
+"t": "Ich gewöhne mich langsam daran, [zu + Infinitiv] / Ich gewöhne mich an [Nomen, Akk.]",
+"ex": "Ich gewöhne mich langsam daran, mit der U-Bahn zur Arbeit zu fahren."
+},
+{
+"id": "ENG_CHUNK_0303",
+"t": "Wetten, dass [Satz]? / Ich wette, [Satz]",
+"ex": "Wetten, dass sie schon im Restaurant sitzt?",
+"n": "After \"dass\" the verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_0304",
+"t": "Ich habe das Gefühl, dass [Satz] / Ich hab so das Gefühl, [Satz]",
+"ex": "Ich hab so das Gefühl, dass er nicht auftaucht.",
+"n": "After \"dass\" the verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_0305",
+"t": "Ich frage mich, ob [Satz]",
+"ex": "Ich frage mich, ob die Bäckerei noch aufhat.",
+"n": "After \"ob\" the verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_0306",
+"t": "Dann [Satz] wohl / Ich schätze, [Satz]",
+"ex": "Der Bus kommt nicht. Dann laufen wir wohl.",
+"n": "\"wohl\" marks the guess. \"Dann\" takes position 1: verb follows."
+},
+{
+"id": "ENG_CHUNK_0307",
+"t": "Du hast jedes Recht, [zu + Infinitiv] / Du hast allen Grund, [zu + Infinitiv]",
+"ex": "Du hast allen Grund, sauer zu sein."
+},
+{
+"id": "ENG_CHUNK_0308",
+"t": "Auf keinen Fall [Satz] / Das schaffen wir nie, [Satz]",
+"ex": "Auf keinen Fall sind wir bis sechs da.",
+"n": "\"Auf keinen Fall\" takes position 1: verb follows (Auf keinen Fall sind wir ...)."
+},
+{
+"id": "ENG_CHUNK_0309",
+"t": "Ich bezweifle, dass [Satz] / Ich glaube kaum, dass [Satz]",
+"ex": "Ich glaube kaum, dass die am Sonntag aufhaben.",
+"n": "After \"dass\" the verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_0310",
+"t": "Es soll [Infinitiv]",
+"ex": "Am Wochenende soll es schneien.",
+"n": "\"sollen\" marks hearsay or a forecast."
+},
+{
+"id": "ENG_CHUNK_0311",
+"t": "Vielleicht liegt es daran, dass [Satz]",
+"ex": "Die Pflanze geht ein. Vielleicht liegt es daran, dass sie nicht genug Licht bekommt.",
+"n": "After \"dass\" the verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_0312",
+"t": "Gut möglich, dass [Satz] / Wahrscheinlich [Satz]",
+"ex": "Gut möglich, dass wir heute früher fertig werden.",
+"n": "After \"dass\" the verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_0313",
+"t": "Was ist, wenn [Satz]? / Und wenn [Satz]?",
+"ex": "Und was ist, wenn keiner kommt?",
+"n": "After \"wenn\" the verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_0314",
+"t": "Ich habe keine Lust mehr, [zu + Infinitiv] / Ich hab [Nomen] satt",
+"ex": "Ich hab's satt, jeden Abend Nudeln zu essen."
+},
+{
+"id": "ENG_CHUNK_0315",
+"t": "[Nomen] [Verb] ständig / [Nomen] [Verb] immer wieder",
+"ex": "Mein Laptop stürzt bei Videocalls ständig ab.",
+"n": "No \"keep\" verb: use \"ständig / dauernd / immer wieder\"."
+},
+{
+"id": "ENG_CHUNK_0316",
+"t": "Mit [Nomen, Dativ] stimmt etwas nicht",
+"ex": "Mit der Waschmaschine stimmt irgendwas nicht."
+},
+{
+"id": "ENG_CHUNK_0317",
+"t": "[Person] [Verb] ständig [...] / [Person] muss immer [Infinitiv]",
+"ex": "Mein Mitbewohner lässt ständig sein Geschirr in der Spüle stehen.",
+"n": "No progressive; \"ständig / dauernd\" carries the irritation."
+},
+{
+"id": "ENG_CHUNK_0318",
+"t": "Es nervt total, wenn [Satz]",
+"ex": "Es nervt total, wenn Leute im Kino reden.",
+"n": "After \"wenn\" the verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_0319",
+"t": "Sorry, ich wusste nicht, dass [Satz] / Oh, ich hab nicht gemerkt, dass [Satz]",
+"ex": "Sorry, ich hab nicht gemerkt, dass du telefonierst.",
+"n": "After \"dass\" the verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_0320",
+"t": "Entschuldigen Sie die Störung, aber [Satz]",
+"ex": "Entschuldigen Sie die Störung, aber hätten Sie kurz Zeit?"
+},
+{
+"id": "ENG_CHUNK_0321",
+"t": "Ich habe total vergessen, [zu + Infinitiv]",
+"ex": "Ich habe total vergessen, meine Mutter zurückzurufen."
+},
+{
+"id": "ENG_CHUNK_0322",
+"t": "Ich wollte eigentlich [Infinitiv], aber [Satz]",
+"ex": "Ich wollte eigentlich joggen gehen, aber dann hat es angefangen zu schütten.",
+"n": "\"eigentlich\" signals the plan fell through."
+},
+{
+"id": "ENG_CHUNK_0323",
+"t": "Ich bin bei [Nomen, Dativ] aufgehalten worden / Ich bin bei [Nomen] nicht weggekommen",
+"ex": "Sorry, dass ich zu spät bin, ich bin auf der Arbeit nicht weggekommen.",
+"n": "After \"dass\" the verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_0324",
+"t": "Warst du schon mal in [Ort]?",
+"ex": "Warst du schon mal in Mexiko?",
+"n": "Präteritum \"warst\" is the spoken form for sein. Countries with article: in der Schweiz, in den USA."
+},
+{
+"id": "ENG_CHUNK_0325",
+"t": "Ich [Verb] zum ersten Mal / Das ist das erste Mal, dass ich [Satz]",
+"ex": "Ich fahre zum ersten Mal Ski, also sei nett zu mir.",
+"n": "After \"dass\" the verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_0326",
+"t": "Ich bin in [Ort] aufgewachsen",
+"ex": "Ich bin in einer Kleinstadt in der Nähe von Denver aufgewachsen.",
+"n": "Perfekt with \"sein\"."
+},
+{
+"id": "ENG_CHUNK_0327",
+"t": "Weißt du noch, als [Satz]?",
+"ex": "Weißt du noch, als wir uns beim Campen verlaufen haben?",
+"n": "\"als\" for a single past event; verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_0328",
+"t": "Einmal, da [Satz] / Da war mal so eine Sache: [Satz]",
+"ex": "Einmal haben wir den letzten Zug nach Hause verpasst.",
+"n": "\"Einmal\" takes position 1: verb follows."
+},
+{
+"id": "ENG_CHUNK_0329",
+"t": "Du glaubst nie, [W-Wort + Satz] / Rate mal, [W-Wort + Satz]",
+"ex": "Rate mal, wen ich im Supermarkt getroffen habe!",
+"n": "Indirect question: verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_0330",
+"t": "Ich hatte keine Ahnung, dass [Satz]",
+"ex": "Ich hatte keine Ahnung, dass du so gut kochen kannst.",
+"n": "After \"dass\" the verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_0331",
+"t": "Ich hätte nie gedacht, dass ich [Satz]",
+"ex": "Ich hätte nie gedacht, dass mir Laufen so viel Spaß macht.",
+"n": "After \"dass\" the verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_0332",
+"t": "Du siehst [Adjektiv] aus",
+"ex": "Du siehst total fertig aus. Langer Tag?",
+"n": "aussehen is separable: \"aus\" goes to the end."
+},
+{
+"id": "ENG_CHUNK_0333",
+"t": "Lass uns [Nomen] holen / Lass uns [Infinitiv] gehen",
+"ex": "Lass uns nach dem Meeting was essen gehen."
+},
+{
+"id": "ENG_CHUNK_0334",
+"t": "Hast du daran gedacht, [zu + Infinitiv]?",
+"ex": "Hast du daran gedacht, die Hintertür abzuschließen?"
+},
+{
+"id": "ENG_CHUNK_0335",
+"t": "Könnten Sie [Infinitiv]? / Wäre es möglich, dass Sie [Satz]?",
+"ex": "Könntest du am Freitag meine Schicht übernehmen?",
+"n": "After \"dass\" the verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_0336",
+"t": "einen Flug buchen",
+"ex": "Ich muss noch einen Flug für Weihnachten buchen.",
+"n": "Thanksgiving adapted to Weihnachten."
+},
+{
+"id": "ENG_CHUNK_0337",
+"t": "Trinkgeld geben",
+"ex": "Hast du der Kellnerin Trinkgeld gegeben?",
+"n": "No article: Trinkgeld geben. Usually rounded up and said aloud when paying."
+},
+{
+"id": "ENG_CHUNK_0338",
+"t": "einchecken",
+"ex": "Wir können ab drei Uhr im Hotel einchecken."
+},
+{
+"id": "ENG_CHUNK_0339",
+"t": "im Homeoffice arbeiten / von zu Hause arbeiten",
+"ex": "Montags und freitags arbeite ich im Homeoffice.",
+"n": "\"Homeoffice\" is the everyday German word (pseudo-anglicism)."
+},
+{
+"id": "ENG_CHUNK_0340",
+"t": "ein Meeting mit [Person, Dativ] haben / einen Termin mit [Person] haben",
+"ex": "Ich habe um zwei einen Termin mit meiner Chefin."
+},
+{
+"id": "ENG_CHUNK_0341",
+"t": "eine Stelle finden / einen Job bekommen",
+"ex": "Mein Sohn hat gerade eine Stelle im Krankenhaus bekommen."
+},
+{
+"id": "ENG_CHUNK_0342",
+"t": "sich um [Nomen, Akk.] bewerben / [Nomen] beantragen",
+"ex": "Ich bewerbe mich um eine Stelle in der Bibliothek.",
+"n": "Job: sich bewerben (um/bei). Visa or loan: beantragen."
+},
+{
+"id": "ENG_CHUNK_0343",
+"t": "Gehalt bekommen",
+"ex": "Ich bekomme mein Gehalt am Monatsende.",
+"n": "German pay is usually monthly; example adapted."
+},
+{
+"id": "ENG_CHUNK_0344",
+"t": "Geld verdienen",
+"ex": "Nebenbei verdient er Geld mit Fahrradreparaturen.",
+"n": "Not \"machen\": Geld verdienen."
+},
+{
+"id": "ENG_CHUNK_0345",
+"t": "[Nomen] erledigen / [Nomen] machen lassen",
+"ex": "Ich muss am Wochenende meine Steuererklärung erledigen.",
+"n": "\"machen lassen\" = have someone else do it: Ich lasse mir die Haare schneiden."
+},
+{
+"id": "ENG_CHUNK_0346",
+"t": "sich Notizen machen / mitschreiben",
+"ex": "Kannst du im Meeting mitschreiben?"
+},
+{
+"id": "ENG_CHUNK_0347",
+"t": "[Nomen] ausfüllen",
+"ex": "Sie müssen zuerst dieses Formular ausfüllen."
+},
+{
+"id": "ENG_CHUNK_0348",
+"t": "auflegen",
+"ex": "Leg nicht auf, ich bin noch dran!"
+},
+{
+"id": "ENG_CHUNK_0349",
+"t": "[Person, Akk.] anrufen / sich bei [Person] melden",
+"ex": "Ich ruf dich an, wenn ich gelandet bin.",
+"n": "After \"wenn\" the verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_0350",
+"t": "sich für [Nomen, Akk.] anmelden",
+"ex": "Ich habe mich gerade für einen Yogakurs angemeldet."
+},
+{
+"id": "ENG_CHUNK_0351",
+"t": "schiefgehen",
+"ex": "Bei der Zahlung ist irgendwas schiefgegangen.",
+"n": "Perfekt with \"sein\"."
+},
+{
+"id": "ENG_CHUNK_0352",
+"t": "eine Panne haben / kaputtgehen",
+"ex": "Wir hatten auf der Autobahn eine Panne.",
+"n": "Car: Panne. Appliance: kaputtgehen."
+},
+{
+"id": "ENG_CHUNK_0353",
+"t": "schlimmer werden",
+"ex": "Mein Husten wird immer schlimmer."
+},
+{
+"id": "ENG_CHUNK_0354",
+"t": "alles nur noch schlimmer machen",
+"ex": "Sag lieber nichts, du machst alles nur noch schlimmer."
+},
+{
+"id": "ENG_CHUNK_0355",
+"t": "Ärger bekommen",
+"ex": "Du kriegst Ärger, wenn der Chef dich sieht.",
+"n": "After \"wenn\" the verb goes to the end. \"kriegen\" = colloquial bekommen."
+},
+{
+"id": "ENG_CHUNK_0356",
+"t": "[Nomen] vermasseln / [Nomen] verbocken",
+"ex": "Ich habe die Präsentation total vermasselt."
+},
+{
+"id": "ENG_CHUNK_0357",
+"t": "ein Problem lösen",
+"ex": "Der Neustart vom Router hat das Problem gelöst."
+},
+{
+"id": "ENG_CHUNK_0358",
+"t": "einen Platten haben",
+"ex": "Ich hatte auf dem Weg zur Arbeit einen Platten."
+},
+{
+"id": "ENG_CHUNK_0359",
+"t": "einen Parkplatz finden",
+"ex": "Ich habe zwanzig Minuten gebraucht, um einen Parkplatz zu finden."
+},
+{
+"id": "ENG_CHUNK_0360",
+"t": "abwaschen / spülen",
+"ex": "Ich wasch ab, wenn du kochst.",
+"n": "\"abwaschen\" and \"spülen\" are both common; \"die Spülmaschine einräumen\" if there is one."
+},
+{
+"id": "ENG_CHUNK_0361",
+"t": "den Müll rausbringen",
+"ex": "Kannst du beim Rausgehen den Müll mitnehmen?"
+},
+{
+"id": "ENG_CHUNK_0362",
+"t": "Chaos machen / Unordnung machen",
+"ex": "Die Kinder haben im Wohnzimmer ein totales Chaos gemacht."
+},
+{
+"id": "ENG_CHUNK_0363",
+"t": "zum Friseur gehen / sich die Haare schneiden lassen",
+"ex": "Ich muss dringend mal zum Friseur.",
+"n": "The motion verb is often dropped after müssen: Ich muss zum Friseur."
+},
+{
+"id": "ENG_CHUNK_0364",
+"t": "eine kurze Frage",
+"ex": "Kann ich dich mal kurz was fragen?",
+"n": "\"kurz\" does the work: Ich hab mal 'ne kurze Frage."
+},
+{
+"id": "ENG_CHUNK_0365",
+"t": "Platz nehmen",
+"ex": "Nehmen Sie bitte Platz, die Ärztin kommt gleich."
+},
+{
+"id": "ENG_CHUNK_0366",
+"t": "Gute Frage",
+"ex": "Wo haben wir geparkt? Gute Frage."
+},
+{
+"id": "ENG_CHUNK_0367",
+"t": "So ziemlich / Fast",
+"ex": "Bist du fertig mit Packen? So ziemlich."
+},
+{
+"id": "ENG_CHUNK_0368",
+"t": "Warte, lass mich raten",
+"ex": "Warte, lass mich raten. Du hast deine Schlüssel schon wieder vergessen."
+},
+{
+"id": "ENG_CHUNK_0369",
+"t": "Alles klar / Verstanden",
+"ex": "An der Tankstelle links. Alles klar."
+},
+{
+"id": "ENG_CHUNK_0370",
+"t": "Sorry, da komme ich nicht ganz mit",
+"ex": "Sorry, da komm ich nicht mit. Welchen Bus soll ich nehmen?"
+},
+{
+"id": "ENG_CHUNK_0371",
+"t": "Lass mich bitte ausreden",
+"ex": "Lass mich bitte ausreden, dann kannst du was sagen."
+},
+{
+"id": "ENG_CHUNK_0372",
+"t": "Ach, bevor ich's vergesse",
+"ex": "Ach, bevor ich's vergesse, deine Mutter hat angerufen.",
+"n": "After \"bevor\" the verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_0373",
+"t": "Kurz gesagt / Lange Rede, kurzer Sinn",
+"ex": "Lange Rede, kurzer Sinn: Wir haben unseren Flug verpasst."
+},
+{
+"id": "ENG_CHUNK_0374",
+"t": "Ob du's glaubst oder nicht",
+"ex": "Ob du's glaubst oder nicht, ich habe noch nie das Meer gesehen."
+},
+{
+"id": "ENG_CHUNK_0375",
+"t": "Also / Und",
+"ex": "Und, wie war dein Wochenende?",
+"n": "\"Und?\" is the usual casual opener; \"Also\" for getting to the point."
+},
+{
+"id": "ENG_CHUNK_0376",
+"t": "Weißt du, [Satz] / Also, [Satz]",
+"ex": "Weißt du, sonntags macht der Laden früher zu."
+},
+{
+"id": "ENG_CHUNK_0377",
+"t": "Im Grunde / Eigentlich",
+"ex": "Im Grunde brauchen wir einfach mehr Zeit.",
+"n": "Takes position 1: verb follows. \"Basically\" as filler is often just \"Also\"."
+},
+{
+"id": "ENG_CHUNK_0378",
+"t": "Guter Punkt / Da hast du recht",
+"ex": "Guter Punkt. Daran hab ich gar nicht gedacht."
+},
+{
+"id": "ENG_CHUNK_0379",
+"t": "Du hast völlig recht",
+"ex": "Du hast völlig recht, ich hätte anrufen sollen.",
+"n": "\"recht haben\", not \"richtig sein\", for people."
+},
+{
+"id": "ENG_CHUNK_0380",
+"t": "Geht mir genauso / Ich auch",
+"ex": "Ich hab so einen Hunger. Ich auch."
+},
+{
+"id": "ENG_CHUNK_0381",
+"t": "Ich schulde dir was / Da hast du was gut bei mir",
+"ex": "Danke, dass du mich abgeholt hast. Ich schulde dir was."
+},
+{
+"id": "ENG_CHUNK_0382",
+"t": "Jederzeit / Gerne wieder",
+"ex": "Danke fürs Mitnehmen. Jederzeit!"
+},
+{
+"id": "ENG_CHUNK_0383",
+"t": "Das ist sehr nett von Ihnen / Wie lieb von dir!",
+"ex": "Du hast Suppe mitgebracht? Wie lieb von dir!"
+},
+{
+"id": "ENG_CHUNK_0384",
+"t": "Sorry, mein Fehler",
+"ex": "Oh, sorry, mein Fehler, ich dachte, das ist meine Tasse."
+},
+{
+"id": "ENG_CHUNK_0385",
+"t": "Das kommt nicht wieder vor",
+"ex": "Tut mir leid wegen heute Morgen. Das kommt nicht wieder vor."
+},
+{
+"id": "ENG_CHUNK_0386",
+"t": "Ich weiß genau, wie du dich fühlst / Kenn ich",
+"ex": "Mein Flug wurde auch gestrichen. Ich weiß genau, wie du dich fühlst.",
+"n": "Indirect question: verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_0387",
+"t": "Gesundheit!",
+"ex": "Gesundheit! Wirst du krank?"
+},
+{
+"id": "ENG_CHUNK_0388",
+"t": "Du schaffst das!",
+"ex": "Mach dir wegen des Vorstellungsgesprächs keine Sorgen. Du schaffst das!"
+},
+{
+"id": "ENG_CHUNK_0389",
+"t": "Ich freue mich so für dich!",
+"ex": "Ihr habt euch verlobt? Ich freu mich so für dich!"
+},
+{
+"id": "ENG_CHUNK_0390",
+"t": "Du hast es verdient",
+"ex": "Glückwunsch zur Beförderung. Du hast es dir wirklich verdient."
+},
+{
+"id": "ENG_CHUNK_0391",
+"t": "außer [Nomen, Dativ] / bis auf [Nomen, Akk.]",
+"ex": "Alles war super, bis auf das Wetter."
+},
+{
+"id": "ENG_CHUNK_0392",
+"t": "Außerdem / Und obendrein",
+"ex": "Der Flug hatte Verspätung, und obendrein haben sie meinen Koffer verloren.",
+"n": "\"Außerdem/obendrein\" take position 1: verb follows."
+},
+{
+"id": "ENG_CHUNK_0393",
+"t": "Als [Satz], [Verb] schon ... / Bis [Satz]",
+"ex": "Als wir ankamen, hatte der Film schon angefangen.",
+"n": "\"als\" is a subordinator: verb to the end; the main clause then starts with its verb. Plusquamperfekt for the earlier event."
+},
+{
+"id": "ENG_CHUNK_0394",
+"t": "In der Zwischenzeit / Inzwischen",
+"ex": "Das Essen ist gleich fertig. Kannst du in der Zwischenzeit den Tisch decken?"
+},
+{
+"id": "ENG_CHUNK_0395",
+"t": "Jetzt, wo [Satz] / Seitdem [Satz]",
+"ex": "Jetzt, wo die Kinder älter sind, reisen wir mehr.",
+"n": "\"wo\" here is a subordinator: verb to the end; then the main verb comes first."
+},
+{
+"id": "ENG_CHUNK_0396",
+"t": "Ab jetzt / Von jetzt an",
+"ex": "Ab jetzt bringe ich mir mein Mittagessen selbst mit.",
+"n": "Takes position 1: verb follows."
+},
+{
+"id": "ENG_CHUNK_0397",
+"t": "So oder so",
+"ex": "Wir können den Bus nehmen oder laufen. So oder so sind es zwanzig Minuten.",
+"n": "Takes position 1: verb follows."
+},
+{
+"id": "ENG_CHUNK_0398",
+"t": "Letzten Endes / Am Ende des Tages",
+"ex": "Letzten Endes ist es deine Entscheidung.",
+"n": "\"Am Ende des Tages\" is a common anglicism; \"letzten Endes\" is safer."
+},
+{
+"id": "ENG_CHUNK_0399",
+"t": "Damals",
+"ex": "Damals hatten wir noch keine Handys.",
+"n": "Takes position 1: verb follows."
+},
+{
+"id": "ENG_CHUNK_0400",
+"t": "Damals / Zu dem Zeitpunkt",
+"ex": "Zu dem Zeitpunkt fand ich das eine super Idee."
+}
+]

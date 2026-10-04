@@ -1,0 +1,858 @@
+[
+ {
+  "id": "BP:w1-anrede-liebe-clara",
+  "kind": "phrase",
+  "area": "speaking",
+  "group": "write",
+  "teil": "W1",
+  "fn": "inf_open",
+  "star": true,
+  "trap": null,
+  "focus": [
+   "chunk",
+   "ending"
+  ],
+  "strict": [
+   "Liebe"
+  ],
+  "plan": "recall",
+  "task": null,
+  "prompt": "Write the first line of an email to your friend Clara (warm, not just hi).",
+  "prompt_lang": "en",
+  "hl": "Write the first line of an email to your friend Clara",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "liebe clara",
+   "meine liebe clara"
+  ],
+  "anywhere": true,
+  "model": "Liebe Clara,",
+  "wrong": [
+   "Lieber Clara,"
+  ],
+  "rule": "Use Liebe for a woman and Lieber for a man: Liebe Clara, Lieber Jonas.",
+  "src": "cheatsheet §7",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BP:w1-hoffe-alles-gut",
+  "kind": "phrase",
+  "area": "speaking",
+  "group": "write",
+  "teil": "W1",
+  "fn": "inf_open",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "chunk",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": null,
+  "prompt": "I hope everything is fine with you. (email to a friend)",
+  "prompt_lang": "en",
+  "hl": "I hope everything is fine with you",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "ich hoffe bei dir ist alles gut",
+   "ich hoffe dass bei dir alles gut ist",
+   "ich hoffe es geht dir gut",
+   "ich hoffe dass es dir gut geht",
+   "ich hoffe bei dir ist alles in ordnung",
+   "ich hoffe dass bei dir alles in ordnung ist"
+  ],
+  "anywhere": true,
+  "model": "Ich hoffe, bei dir ist alles gut.",
+  "wrong": [
+   "Ich hoffe, dass es geht dir gut."
+  ],
+  "rule": "After dass, the verb goes to the end: Ich hoffe, dass es dir gut geht.",
+  "src": "cheatsheet §7",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BP:w1-entschuldige-erst-jetzt",
+  "kind": "phrase",
+  "area": "speaking",
+  "group": "write",
+  "teil": "W1",
+  "fn": "inf_apologise",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "chunk",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": null,
+  "prompt": "Sorry I am only getting back to you now. (email to a friend)",
+  "prompt_lang": "en",
+  "hl": "Sorry I am only getting back to you now",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "entschuldige (bitte) dass ich mich erst jetzt melde",
+   "tut mir leid dass ich mich erst jetzt melde",
+   "sorry dass ich mich erst jetzt melde",
+   "entschuldigung dass ich mich erst jetzt melde",
+   "es tut mir leid dass ich mich erst jetzt melde",
+   "entschuldige (bitte) die späte antwort",
+   "entschuldige (bitte) meine späte antwort"
+  ],
+  "anywhere": true,
+  "model": "Entschuldige bitte, dass ich mich erst jetzt melde.",
+  "wrong": [
+   "Entschuldige bitte, dass ich melde mich erst jetzt."
+  ],
+  "rule": "After dass, the verb goes to the end: dass ich mich erst jetzt melde.",
+  "src": "cheatsheet §7",
+  "chunk": "ENG_CHUNK_0020",
+  "level": "B1"
+ },
+ {
+  "id": "BP:w1-wochenende-zeit",
+  "kind": "phrase",
+  "area": "speaking",
+  "group": "write",
+  "teil": "W1",
+  "fn": "inf_invite",
+  "star": true,
+  "trap": "cap",
+  "focus": [
+   "chunk",
+   "cap"
+  ],
+  "strict": [
+   "Wochenende",
+   "Zeit"
+  ],
+  "plan": "recall",
+  "task": null,
+  "prompt": "Do you have time this weekend? (to a friend)",
+  "prompt_lang": "en",
+  "hl": "Do you have time this weekend",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "hast du dieses wochenende zeit",
+   "hast du am wochenende zeit",
+   "hättest du dieses wochenende zeit",
+   "hättest du am wochenende zeit",
+   "hast du an diesem wochenende zeit"
+  ],
+  "anywhere": true,
+  "model": "Hast du dieses Wochenende Zeit?",
+  "wrong": [
+   "Hast du dieses wochenende zeit?"
+  ],
+  "rule": "Nouns take a capital, even short ones: das Wochenende, die Zeit.",
+  "src": "cheatsheet §7",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BP:w1-samstag-um-sieben",
+  "kind": "phrase",
+  "area": "speaking",
+  "group": "write",
+  "teil": "W1",
+  "fn": "inf_invite",
+  "star": true,
+  "trap": null,
+  "focus": [
+   "chunk",
+   "word-choice"
+  ],
+  "strict": [
+   "am",
+   "um"
+  ],
+  "plan": "recall",
+  "task": null,
+  "prompt": "Shall we meet on Saturday at seven? (to a friend)",
+  "prompt_lang": "en",
+  "hl": "Shall we meet on Saturday at seven",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "sollen wir uns am samstag um sieben (uhr) treffen",
+   "wollen wir uns am samstag um sieben (uhr) treffen",
+   "treffen wir uns am samstag um sieben (uhr)",
+   "können wir uns am samstag um sieben (uhr) treffen",
+   "sollen wir uns am samstag um 19 uhr treffen",
+   "hast du am samstag um sieben (uhr) zeit"
+  ],
+  "anywhere": true,
+  "model": "Sollen wir uns am Samstag um sieben treffen?",
+  "wrong": [
+   "Sollen wir uns am Samstag am sieben treffen?",
+   "Sollen wir uns um Samstag um sieben treffen?"
+  ],
+  "rule": "Days take am, clock times take um: am Samstag um sieben.",
+  "src": "cheatsheet §7",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BP:w1-freue-mich-deine-antwort",
+  "kind": "phrase",
+  "area": "speaking",
+  "group": "write",
+  "teil": "W1",
+  "fn": "inf_close",
+  "star": true,
+  "trap": null,
+  "focus": [
+   "chunk",
+   "prep-case"
+  ],
+  "strict": [
+   "auf"
+  ],
+  "plan": "recall",
+  "task": null,
+  "prompt": "I am looking forward to your reply. (email to a friend)",
+  "prompt_lang": "en",
+  "hl": "I am looking forward to your reply",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "ich freue mich (schon) auf deine antwort",
+   "ich freu mich (schon) auf deine antwort",
+   "ich freue mich (schon) darauf von dir zu hören",
+   "ich freue mich (schon) von dir zu hören"
+  ],
+  "anywhere": true,
+  "model": "Ich freue mich auf deine Antwort.",
+  "wrong": [
+   "Ich freue mich für deine Antwort."
+  ],
+  "rule": "Looking forward to something is sich freuen auf: Ich freue mich auf deine Antwort.",
+  "src": "cheatsheet §7",
+  "chunk": "ENG_CHUNK_0005",
+  "level": "B1"
+ },
+ {
+  "id": "BP:w1-gruss-liebe-gruesse",
+  "kind": "phrase",
+  "area": "speaking",
+  "group": "write",
+  "teil": "W1",
+  "fn": "inf_close",
+  "star": true,
+  "trap": "cap",
+  "focus": [
+   "chunk",
+   "register",
+   "cap"
+  ],
+  "strict": [
+   "Grüße"
+  ],
+  "plan": "recall",
+  "task": null,
+  "prompt": "Sign off the email to your friend, just before your name.",
+  "prompt_lang": "en",
+  "hl": "Sign off the email to your friend",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "liebe grüße",
+   "viele grüße",
+   "herzliche grüße",
+   "ganz liebe grüße"
+  ],
+  "anywhere": true,
+  "model": "Liebe Grüße",
+  "wrong": [
+   "Liebe grüße",
+   "Mit freundlichen Grüßen"
+  ],
+  "rule": "To a friend, sign off with Liebe Grüße or Viele Grüße; Mit freundlichen Grüßen is for formal emails.",
+  "src": "cheatsheet §7",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BP:w1-melde-dich-zeit",
+  "kind": "phrase",
+  "area": "speaking",
+  "group": "write",
+  "teil": "W1",
+  "fn": "inf_close",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "chunk",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": null,
+  "prompt": "Get in touch when you have time. (to a friend)",
+  "prompt_lang": "en",
+  "hl": "Get in touch when you have time",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "melde dich (einfach) wenn du zeit hast",
+   "meld dich (einfach) wenn du zeit hast",
+   "schreib mir (einfach) wenn du zeit hast",
+   "ruf mich an wenn du zeit hast"
+  ],
+  "anywhere": true,
+  "model": "Melde dich, wenn du Zeit hast.",
+  "wrong": [
+   "Melde dich, wenn du hast Zeit."
+  ],
+  "rule": "After wenn, the verb goes to the end: wenn du Zeit hast.",
+  "src": "cheatsheet §7",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BP:w2-meiner-meinung-nach-idee",
+  "kind": "phrase",
+  "area": "speaking",
+  "group": "write",
+  "teil": "W2",
+  "fn": "forum_opinion",
+  "star": true,
+  "trap": "v2",
+  "focus": [
+   "chunk",
+   "v2"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": null,
+  "prompt": "In my opinion, that is a good idea. (forum post)",
+  "prompt_lang": "en",
+  "hl": "In my opinion, that is a good idea",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "meiner meinung nach ist das eine gute idee",
+   "meiner meinung nach ist es eine gute idee",
+   "ich finde das ist eine gute idee",
+   "ich finde dass das eine gute idee ist",
+   "ich denke das ist eine gute idee",
+   "ich denke dass das eine gute idee ist",
+   "das ist meiner meinung nach eine gute idee"
+  ],
+  "anywhere": true,
+  "model": "Meiner Meinung nach ist das eine gute Idee.",
+  "wrong": [
+   "Meiner Meinung nach, das ist eine gute Idee.",
+   "Meiner Meinung nach das ist eine gute Idee."
+  ],
+  "rule": "After Meiner Meinung nach, the verb comes next, then the subject: Meiner Meinung nach ist das gut.",
+  "src": "cheatsheet §7",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BP:w3-anrede-damen-herren",
+  "kind": "phrase",
+  "area": "speaking",
+  "group": "write",
+  "teil": "W3",
+  "fn": "f_reference",
+  "star": true,
+  "trap": null,
+  "focus": [
+   "chunk",
+   "ending",
+   "register"
+  ],
+  "strict": [
+   "geehrte"
+  ],
+  "plan": "recall",
+  "task": null,
+  "prompt": "Write the first line of a formal email to a company when you do not know the name.",
+  "prompt_lang": "en",
+  "hl": "Write the first line of a formal email to a company",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "sehr geehrte damen und herren"
+  ],
+  "anywhere": true,
+  "model": "Sehr geehrte Damen und Herren,",
+  "wrong": [
+   "Sehr geehrter Damen und Herren,"
+  ],
+  "rule": "Before Damen und Herren, write geehrte: Sehr geehrte Damen und Herren.",
+  "src": "cheatsheet §7",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BP:w3-anrede-herr-wagner",
+  "kind": "phrase",
+  "area": "speaking",
+  "group": "write",
+  "teil": "W3",
+  "fn": "f_reference",
+  "star": true,
+  "trap": null,
+  "focus": [
+   "chunk",
+   "ending",
+   "register"
+  ],
+  "strict": [
+   "geehrter"
+  ],
+  "plan": "recall",
+  "task": null,
+  "prompt": "Write the first line of an email to your landlord, Mr Wagner.",
+  "prompt_lang": "en",
+  "hl": "Write the first line of an email to your landlord, Mr Wagner",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "sehr geehrter herr wagner",
+   "lieber herr wagner"
+  ],
+  "anywhere": true,
+  "model": "Sehr geehrter Herr Wagner,",
+  "wrong": [
+   "Sehr geehrte Herr Wagner,",
+   "Liebe Herr Wagner,"
+  ],
+  "rule": "For a man write geehrter, for a woman geehrte: Sehr geehrter Herr Wagner.",
+  "src": "cheatsheet §7",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BP:w3-danke-ihre-einladung",
+  "kind": "phrase",
+  "area": "speaking",
+  "group": "write",
+  "teil": "W3",
+  "fn": "f_reference",
+  "star": true,
+  "trap": "cap",
+  "focus": [
+   "chunk",
+   "register",
+   "cap"
+  ],
+  "strict": [
+   "Ihre"
+  ],
+  "plan": "recall",
+  "task": null,
+  "prompt": "Thank you very much for your invitation. (email to your boss)",
+  "prompt_lang": "en",
+  "hl": "Thank you very much for your invitation",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "vielen dank für ihre einladung",
+   "herzlichen dank für ihre einladung",
+   "danke für ihre einladung",
+   "ich danke ihnen (sehr) für ihre einladung"
+  ],
+  "anywhere": true,
+  "model": "Vielen Dank für Ihre Einladung.",
+  "wrong": [
+   "Vielen Dank für ihre Einladung.",
+   "Vielen Dank für deine Einladung."
+  ],
+  "rule": "In a formal email, Sie, Ihr and Ihnen always take a capital: Ihre Einladung.",
+  "src": "cheatsheet §7",
+  "chunk": "ENG_CHUNK_0019",
+  "level": "B1"
+ },
+ {
+  "id": "BP:w3-freue-mich-ihre-antwort",
+  "kind": "phrase",
+  "area": "speaking",
+  "group": "write",
+  "teil": "W3",
+  "fn": "f_request",
+  "star": true,
+  "trap": "cap",
+  "focus": [
+   "chunk",
+   "register",
+   "cap"
+  ],
+  "strict": [
+   "Ihre"
+  ],
+  "plan": "recall",
+  "task": null,
+  "prompt": "I look forward to your reply. (email to your landlord)",
+  "prompt_lang": "en",
+  "hl": "I look forward to your reply",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "ich freue mich (schon) auf ihre antwort",
+   "ich freue mich (schon) darauf von ihnen zu hören",
+   "ich freue mich (schon) von ihnen zu hören",
+   "ich würde mich über ihre antwort freuen",
+   "ich würde mich über eine antwort freuen"
+  ],
+  "anywhere": true,
+  "model": "Ich freue mich auf Ihre Antwort.",
+  "wrong": [
+   "Ich freue mich auf ihre Antwort.",
+   "Ich freue mich auf deine Antwort."
+  ],
+  "rule": "In a formal email, Sie, Ihr and Ihnen always take a capital: Ihre Antwort.",
+  "src": "cheatsheet §7",
+  "chunk": "ENG_CHUNK_0005",
+  "level": "B1"
+ },
+ {
+  "id": "BP:w3-koennten-sie-unterlagen",
+  "kind": "phrase",
+  "area": "speaking",
+  "group": "write",
+  "teil": "W3",
+  "fn": "f_request",
+  "star": true,
+  "trap": "cap",
+  "focus": [
+   "chunk",
+   "register",
+   "cap",
+   "umlaut"
+  ],
+  "strict": [
+   "Sie"
+  ],
+  "plan": "recall",
+  "task": null,
+  "prompt": "Could you please send me the documents? (email to your landlord)",
+  "prompt_lang": "en",
+  "hl": "Could you please send me the documents",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "könnten sie mir (bitte) die unterlagen schicken",
+   "können sie mir (bitte) die unterlagen schicken",
+   "würden sie mir (bitte) die unterlagen schicken",
+   "schicken sie mir bitte die unterlagen",
+   "bitte schicken sie mir die unterlagen",
+   "könnten sie mir (bitte) die unterlagen senden",
+   "könnten sie mir (bitte) die dokumente schicken"
+  ],
+  "anywhere": true,
+  "model": "Könnten Sie mir bitte die Unterlagen schicken?",
+  "wrong": [
+   "Könnten sie mir bitte die Unterlagen schicken?",
+   "Konnten Sie mir bitte die Unterlagen schicken?",
+   "Kannst du mir bitte die Unterlagen schicken?"
+  ],
+  "rule": "In a formal email, Sie always takes a capital: Könnten Sie mir helfen?",
+  "src": "cheatsheet §7",
+  "chunk": "ENG_CHUNK_0001",
+  "level": "B1"
+ },
+ {
+  "id": "BP:w3-danke-ihnen-hilfe",
+  "kind": "phrase",
+  "area": "speaking",
+  "group": "write",
+  "teil": "W3",
+  "fn": "f_reference",
+  "star": true,
+  "trap": "cap",
+  "focus": [
+   "chunk",
+   "register",
+   "cap"
+  ],
+  "strict": [
+   "Ihnen",
+   "Ihre"
+  ],
+  "plan": "recall",
+  "task": null,
+  "prompt": "Thank you for your help. (email to your teacher)",
+  "prompt_lang": "en",
+  "hl": "Thank you for your help",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "ich danke ihnen (sehr) für ihre hilfe",
+   "vielen dank für ihre hilfe",
+   "herzlichen dank für ihre hilfe",
+   "danke für ihre hilfe"
+  ],
+  "anywhere": true,
+  "model": "Ich danke Ihnen für Ihre Hilfe.",
+  "wrong": [
+   "Ich danke ihnen für ihre Hilfe.",
+   "Ich danke Sie für Ihre Hilfe."
+  ],
+  "rule": "In a formal email, Sie, Ihr and Ihnen always take a capital: Ich danke Ihnen.",
+  "src": "cheatsheet §7",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BP:w3-leider-montag-arzttermin",
+  "kind": "phrase",
+  "area": "speaking",
+  "group": "write",
+  "teil": "W3",
+  "fn": "f_cancel",
+  "star": true,
+  "trap": "v2",
+  "focus": [
+   "chunk",
+   "v2",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": null,
+  "prompt": "Unfortunately I can't come on Monday because I have a doctor's appointment. (email to your boss)",
+  "prompt_lang": "en",
+  "hl": "Unfortunately I can't come on Monday because I have a doctor's appointment",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "leider kann ich am montag nicht kommen weil ich einen arzttermin habe",
+   "leider kann ich am montag nicht kommen denn ich habe einen arzttermin",
+   "ich kann am montag leider nicht kommen weil ich einen arzttermin habe",
+   "am montag kann ich leider nicht kommen weil ich einen arzttermin habe",
+   "leider kann ich am montag nicht kommen da ich einen arzttermin habe",
+   "leider kann ich am montag nicht kommen weil ich einen termin beim arzt habe",
+   "leider kann ich am montag nicht kommen denn ich habe einen termin beim arzt"
+  ],
+  "anywhere": true,
+  "model": "Leider kann ich am Montag nicht kommen, weil ich einen Arzttermin habe.",
+  "wrong": [
+   "Leider ich kann am Montag nicht kommen, weil ich einen Arzttermin habe.",
+   "Leider kann ich am Montag nicht kommen, weil ich habe einen Arzttermin."
+  ],
+  "rule": "After Leider, the verb comes next, then the subject: Leider kann ich nicht kommen.",
+  "src": "cheatsheet §7",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BP:w3-termin-verschieben-dienstag",
+  "kind": "phrase",
+  "area": "speaking",
+  "group": "write",
+  "teil": "W3",
+  "fn": "f_cancel",
+  "star": true,
+  "trap": null,
+  "focus": [
+   "chunk",
+   "umlaut",
+   "word-choice"
+  ],
+  "strict": [
+   "Könnten",
+   "um"
+  ],
+  "plan": "recall",
+  "task": null,
+  "prompt": "Could we move the appointment to Tuesday at 10? (email to your boss)",
+  "prompt_lang": "en",
+  "hl": "Could we move the appointment to Tuesday at 10",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "könnten wir den termin auf (den) dienstag um 10 (uhr) verschieben",
+   "können wir den termin auf (den) dienstag um 10 (uhr) verschieben",
+   "könnten wir den termin auf (den) dienstag um zehn (uhr) verschieben",
+   "können wir den termin auf (den) dienstag um zehn (uhr) verschieben",
+   "wäre es möglich den termin auf (den) dienstag um 10 (uhr) zu verschieben",
+   "könnten wir den termin auf dienstag um 10 (uhr) legen"
+  ],
+  "anywhere": true,
+  "model": "Könnten wir den Termin auf Dienstag um 10 Uhr verschieben?",
+  "wrong": [
+   "Konnten wir den Termin auf Dienstag um 10 Uhr verschieben?",
+   "Könnten wir den Termin auf Dienstag am 10 Uhr verschieben?"
+  ],
+  "rule": "A polite request uses könnten with the umlaut: Könnten wir den Termin verschieben?",
+  "src": "cheatsheet §7",
+  "chunk": "ENG_CHUNK_0621",
+  "level": "B1"
+ },
+ {
+  "id": "BP:w3-hoffe-verstaendnis",
+  "kind": "phrase",
+  "area": "speaking",
+  "group": "write",
+  "teil": "W3",
+  "fn": "f_apologise",
+  "star": true,
+  "trap": "cap",
+  "focus": [
+   "chunk",
+   "register",
+   "cap"
+  ],
+  "strict": [
+   "Ihr"
+  ],
+  "plan": "recall",
+  "task": null,
+  "prompt": "I hope you understand. (formal email, after an apology)",
+  "prompt_lang": "en",
+  "hl": "I hope you understand",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "ich hoffe auf ihr verständnis",
+   "ich bitte um ihr verständnis",
+   "ich bitte sie um verständnis",
+   "vielen dank für ihr verständnis",
+   "danke für ihr verständnis"
+  ],
+  "anywhere": true,
+  "model": "Ich hoffe auf Ihr Verständnis.",
+  "wrong": [
+   "Ich hoffe auf ihr Verständnis.",
+   "Ich hoffe für Ihr Verständnis."
+  ],
+  "rule": "In a formal email, Ihr always takes a capital: Ich hoffe auf Ihr Verständnis.",
+  "src": "cheatsheet §7",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BP:w3-wegen-ihrer-anzeige",
+  "kind": "phrase",
+  "area": "speaking",
+  "group": "write",
+  "teil": "W3",
+  "fn": "f_reference",
+  "star": true,
+  "trap": "cap",
+  "focus": [
+   "chunk",
+   "register",
+   "cap",
+   "ending"
+  ],
+  "strict": [
+   "Ihnen",
+   "Ihrer"
+  ],
+  "plan": "recall",
+  "task": null,
+  "prompt": "I am writing to you about your ad. (formal email)",
+  "prompt_lang": "en",
+  "hl": "I am writing to you about your ad",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "ich schreibe ihnen wegen ihrer anzeige",
+   "ich schreibe wegen ihrer anzeige",
+   "ich schreibe ihnen bezüglich ihrer anzeige",
+   "ich schreibe ihnen zu ihrer anzeige"
+  ],
+  "anywhere": true,
+  "model": "Ich schreibe Ihnen wegen Ihrer Anzeige.",
+  "wrong": [
+   "Ich schreibe ihnen wegen ihrer Anzeige.",
+   "Ich schreibe Ihnen wegen Ihre Anzeige."
+  ],
+  "rule": "In a formal email, Sie, Ihr and Ihnen always take a capital: wegen Ihrer Anzeige.",
+  "src": "cheatsheet §7",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BP:w3-sagen-ob-plaetze",
+  "kind": "phrase",
+  "area": "speaking",
+  "group": "write",
+  "teil": "W3",
+  "fn": "f_request",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "chunk",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": null,
+  "prompt": "Could you please tell me whether there are still places free? (email to a language school)",
+  "prompt_lang": "en",
+  "hl": "Could you please tell me whether there are still places free",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "könnten sie mir (bitte) sagen ob es noch (freie) plätze gibt",
+   "können sie mir (bitte) sagen ob es noch (freie) plätze gibt",
+   "könnten sie mir (bitte) sagen ob noch plätze frei sind",
+   "können sie mir (bitte) sagen ob noch plätze frei sind",
+   "ich möchte (gern) wissen ob es noch (freie) plätze gibt"
+  ],
+  "anywhere": true,
+  "model": "Könnten Sie mir bitte sagen, ob es noch freie Plätze gibt?",
+  "wrong": [
+   "Könnten Sie mir bitte sagen, ob es gibt noch freie Plätze?"
+  ],
+  "rule": "After ob, the verb goes to the end: ob es noch freie Plätze gibt.",
+  "src": "cheatsheet §7",
+  "chunk": "ENG_CHUNK_0022",
+  "level": "B1"
+ },
+ {
+  "id": "BP:w3-entschuldigen-sie-erst-jetzt",
+  "kind": "phrase",
+  "area": "speaking",
+  "group": "write",
+  "teil": "W3",
+  "fn": "f_apologise",
+  "star": true,
+  "trap": "cap",
+  "focus": [
+   "chunk",
+   "register",
+   "cap"
+  ],
+  "strict": [
+   "Sie"
+  ],
+  "plan": "recall",
+  "task": null,
+  "prompt": "Please excuse me for only getting back to you now. (email to your landlord)",
+  "prompt_lang": "en",
+  "hl": "Please excuse me for only getting back to you now",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "entschuldigen sie (bitte) dass ich mich erst jetzt melde",
+   "bitte entschuldigen sie dass ich mich erst jetzt melde",
+   "es tut mir leid dass ich mich erst jetzt melde",
+   "entschuldigen sie (bitte) die späte antwort",
+   "entschuldigen sie (bitte) meine späte antwort"
+  ],
+  "anywhere": true,
+  "model": "Entschuldigen Sie bitte, dass ich mich erst jetzt melde.",
+  "wrong": [
+   "Entschuldige bitte, dass ich mich erst jetzt melde.",
+   "Entschuldigen sie bitte, dass ich mich erst jetzt melde."
+  ],
+  "rule": "To a landlord or boss, apologise with Sie: Entschuldigen Sie bitte.",
+  "src": "cheatsheet §7",
+  "chunk": "ENG_CHUNK_0020",
+  "level": "B1"
+ }
+]

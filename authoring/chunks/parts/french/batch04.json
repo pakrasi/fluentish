@@ -1,0 +1,540 @@
+[
+{
+"id": "ENG_CHUNK_0301",
+"t": "Tu connais [personne] comment ? / Vous vous connaissez d'où ?",
+"ex": "Alors, tu connais Sarah comment ? Du boulot ?"
+},
+{
+"id": "ENG_CHUNK_0302",
+"t": "Je commence à m'habituer à [infinitif]",
+"ex": "Je commence à m'habituer à prendre le métro pour aller au boulot.",
+"n": "s'habituer à + infinitive or noun."
+},
+{
+"id": "ENG_CHUNK_0303",
+"t": "Je parie que [proposition] / Je suis sûr que...",
+"ex": "Je parie qu'elle est déjà au resto."
+},
+{
+"id": "ENG_CHUNK_0304",
+"t": "J'ai l'impression que [proposition] / Je le sens mal",
+"ex": "J'ai l'impression qu'il ne va pas venir."
+},
+{
+"id": "ENG_CHUNK_0305",
+"t": "Je me demande si [proposition]",
+"ex": "Je me demande si la boulangerie est encore ouverte."
+},
+{
+"id": "ENG_CHUNK_0306",
+"t": "Bon, je suppose que [proposition] / Bon, ben...",
+"ex": "Le bus ne vient pas. Bon ben, on va marcher.",
+"n": "Bon ben is the spoken 'I guess then'."
+},
+{
+"id": "ENG_CHUNK_0307",
+"t": "Tu as tout à fait le droit de [infinitif]",
+"ex": "Tu as tout à fait le droit d'être contrarié."
+},
+{
+"id": "ENG_CHUNK_0308",
+"t": "Il n'y a aucune chance que [subjonctif] / Jamais on [futur]",
+"ex": "Il y a aucune chance qu'on arrive pour six heures.",
+"n": "aucune chance que + subjunctive (arrive)."
+},
+{
+"id": "ENG_CHUNK_0309",
+"t": "Je doute que [subjonctif] / Ça m'étonnerait que [subjonctif]",
+"ex": "Ça m'étonnerait qu'ils soient ouverts un dimanche.",
+"n": "Both trigger the subjunctive. Ça m'étonnerait que is the everyday form."
+},
+{
+"id": "ENG_CHUNK_0310",
+"t": "Il paraît que [proposition] / Ils annoncent [nom]",
+"ex": "Il paraît qu'il va neiger ce week-end.",
+"n": "For weather: Ils annoncent de la neige (they = the forecasters)."
+},
+{
+"id": "ENG_CHUNK_0311",
+"t": "C'est peut-être parce que [proposition]",
+"ex": "La plante est en train de mourir. C'est peut-être parce qu'elle n'a pas assez de lumière."
+},
+{
+"id": "ENG_CHUNK_0312",
+"t": "Il y a de fortes chances que [subjonctif]",
+"ex": "Il y a de fortes chances qu'on finisse tôt aujourd'hui.",
+"n": "Subjunctive after chances que."
+},
+{
+"id": "ENG_CHUNK_0313",
+"t": "Et si [imparfait] ?",
+"ex": "Et si personne ne venait ?",
+"n": "Et si + imparfait for a hypothetical worry."
+},
+{
+"id": "ENG_CHUNK_0314",
+"t": "J'en ai marre de [infinitif]",
+"ex": "J'en ai marre de manger des pâtes tous les soirs.",
+"n": "Very common; J'en ai ras-le-bol is stronger."
+},
+{
+"id": "ENG_CHUNK_0315",
+"t": "[nom] n'arrête pas de [infinitif]",
+"ex": "Mon ordi n'arrête pas de planter pendant les visios."
+},
+{
+"id": "ENG_CHUNK_0316",
+"t": "Il y a un problème avec [nom] / [nom] ne marche pas bien",
+"ex": "Il y a un problème avec la machine à laver."
+},
+{
+"id": "ENG_CHUNK_0317",
+"t": "[personne] passe son temps à [infinitif]",
+"ex": "Mon coloc passe son temps à laisser la vaisselle dans l'évier.",
+"n": "Also [personne] est toujours en train de..."
+},
+{
+"id": "ENG_CHUNK_0318",
+"t": "Ça m'énerve quand [proposition] / C'est pénible quand...",
+"ex": "Ça m'énerve quand les gens parlent pendant un film."
+},
+{
+"id": "ENG_CHUNK_0319",
+"t": "Pardon, je ne savais pas que [proposition] / je n'avais pas vu que...",
+"ex": "Pardon, j'avais pas vu que tu étais au téléphone."
+},
+{
+"id": "ENG_CHUNK_0320",
+"t": "Excusez-moi de vous déranger, mais [proposition]",
+"ex": "Excusez-moi de vous déranger, mais vous auriez une minute ?"
+},
+{
+"id": "ENG_CHUNK_0321",
+"t": "J'ai complètement oublié de [infinitif]",
+"ex": "J'ai complètement oublié de rappeler ma mère."
+},
+{
+"id": "ENG_CHUNK_0322",
+"t": "Je voulais [infinitif], mais [proposition] / J'allais [infinitif], mais...",
+"ex": "J'allais aller courir, mais il s'est mis à pleuvoir des cordes."
+},
+{
+"id": "ENG_CHUNK_0323",
+"t": "J'ai été retenu à [nom]",
+"ex": "Désolé du retard, j'ai été retenu au boulot."
+},
+{
+"id": "ENG_CHUNK_0324",
+"t": "Tu es déjà allé à / au / en [nom] ?",
+"ex": "T'es déjà allé au Mexique ?",
+"n": "déjà = ever in questions. à for cities, en/au for countries."
+},
+{
+"id": "ENG_CHUNK_0325",
+"t": "C'est la première fois que je [présent]",
+"ex": "C'est la première fois que je fais du ski, alors vas-y doucement.",
+"n": "Present tense here, unlike English."
+},
+{
+"id": "ENG_CHUNK_0326",
+"t": "J'ai grandi à / dans [nom]",
+"ex": "J'ai grandi dans une petite ville près de Lyon."
+},
+{
+"id": "ENG_CHUNK_0327",
+"t": "Tu te souviens quand [imparfait / passé composé] ?",
+"ex": "Tu te souviens quand on s'était perdus en camping ?",
+"n": "Plus-que-parfait often used for reminiscing: on s'était perdus."
+},
+{
+"id": "ENG_CHUNK_0328",
+"t": "Une fois, [passé composé]",
+"ex": "Une fois, on a raté le dernier train pour rentrer.",
+"n": "Also Je me rappelle une fois où..."
+},
+{
+"id": "ENG_CHUNK_0329",
+"t": "Tu ne devineras jamais [proposition]",
+"ex": "Tu devineras jamais qui j'ai vu au supermarché."
+},
+{
+"id": "ENG_CHUNK_0330",
+"t": "Je ne savais pas que [proposition]",
+"ex": "Je savais pas que tu cuisinais aussi bien."
+},
+{
+"id": "ENG_CHUNK_0331",
+"t": "Je n'aurais jamais cru que je [conditionnel]",
+"ex": "J'aurais jamais cru que j'aimerais autant courir."
+},
+{
+"id": "ENG_CHUNK_0332",
+"t": "Tu as l'air [adjectif]",
+"ex": "T'as l'air crevé. Grosse journée ?"
+},
+{
+"id": "ENG_CHUNK_0333",
+"t": "On va [infinitif] ? / On se fait [nom] ?",
+"ex": "On va déjeuner après la réunion ?",
+"n": "Casual: On se fait un resto / un café ?"
+},
+{
+"id": "ENG_CHUNK_0334",
+"t": "Tu as pensé à [infinitif] ?",
+"ex": "T'as pensé à fermer la porte de derrière à clé ?",
+"n": "penser à + infinitive = remember to."
+},
+{
+"id": "ENG_CHUNK_0335",
+"t": "Est-ce que vous pourriez [infinitif] ?",
+"ex": "Est-ce que tu pourrais me remplacer vendredi ?"
+},
+{
+"id": "ENG_CHUNK_0336",
+"t": "réserver un vol / prendre un billet d'avion",
+"ex": "Il faut encore que je réserve un vol pour Noël.",
+"n": "Il faut que + subjunctive (réserve)."
+},
+{
+"id": "ENG_CHUNK_0337",
+"t": "laisser un pourboire",
+"ex": "Tu as laissé un pourboire au serveur ?",
+"n": "Tipping is optional in France; service is included."
+},
+{
+"id": "ENG_CHUNK_0338",
+"t": "faire le check-in / s'enregistrer",
+"ex": "On peut prendre la chambre à partir de quinze heures.",
+"n": "At a hotel speakers say prendre la chambre; at the airport s'enregistrer."
+},
+{
+"id": "ENG_CHUNK_0339",
+"t": "télétravailler / être en télétravail",
+"ex": "Je suis en télétravail le lundi et le vendredi.",
+"n": "Casual: Je suis en télétravail / je fais du télétravail."
+},
+{
+"id": "ENG_CHUNK_0340",
+"t": "avoir une réunion avec [personne]",
+"ex": "J'ai une réunion avec ma cheffe à quatorze heures."
+},
+{
+"id": "ENG_CHUNK_0341",
+"t": "trouver du travail / trouver un boulot",
+"ex": "Mon fils vient de trouver un boulot à l'hôpital."
+},
+{
+"id": "ENG_CHUNK_0342",
+"t": "postuler à [nom] / faire une demande de [nom]",
+"ex": "Je postule pour un poste à la bibliothèque.",
+"n": "postuler for jobs; faire une demande de for loans and permits."
+},
+{
+"id": "ENG_CHUNK_0343",
+"t": "être payé",
+"ex": "Je suis payé une fois par mois.",
+"n": "Monthly pay is the norm in France."
+},
+{
+"id": "ENG_CHUNK_0344",
+"t": "gagner de l'argent",
+"ex": "Il se fait un peu d'argent en réparant des vélos.",
+"n": "se faire de l'argent = make money on the side."
+},
+{
+"id": "ENG_CHUNK_0345",
+"t": "faire [nom] / régler [nom]",
+"ex": "Il faut que je fasse ma déclaration d'impôts ce week-end.",
+"n": "faire faire [nom] when someone else does it for you."
+},
+{
+"id": "ENG_CHUNK_0346",
+"t": "prendre des notes",
+"ex": "Tu peux prendre des notes pendant la réunion ?"
+},
+{
+"id": "ENG_CHUNK_0347",
+"t": "remplir [nom]",
+"ex": "Il faut d'abord remplir ce formulaire."
+},
+{
+"id": "ENG_CHUNK_0348",
+"t": "raccrocher",
+"ex": "Raccroche pas, je suis encore là !"
+},
+{
+"id": "ENG_CHUNK_0349",
+"t": "passer un coup de fil à [personne]",
+"ex": "Je t'appelle quand j'atterris.",
+"n": "passer un coup de fil = give a call; appeler is simpler."
+},
+{
+"id": "ENG_CHUNK_0350",
+"t": "s'inscrire à [nom]",
+"ex": "Je viens de m'inscrire à un cours de yoga."
+},
+{
+"id": "ENG_CHUNK_0351",
+"t": "mal tourner / ne pas marcher",
+"ex": "Il y a eu un problème avec le paiement.",
+"n": "Speech: Ça a pas marché / Y a eu un bug."
+},
+{
+"id": "ENG_CHUNK_0352",
+"t": "tomber en panne",
+"ex": "Notre voiture est tombée en panne sur l'autoroute."
+},
+{
+"id": "ENG_CHUNK_0353",
+"t": "empirer / s'aggraver",
+"ex": "Ma toux s'aggrave.",
+"n": "Casual: Ça va de pire en pire."
+},
+{
+"id": "ENG_CHUNK_0354",
+"t": "aggraver les choses / envenimer les choses",
+"ex": "Dis rien, tu vas ne faire qu'envenimer les choses."
+},
+{
+"id": "ENG_CHUNK_0355",
+"t": "avoir des ennuis",
+"ex": "Tu vas avoir des ennuis si le patron te voit.",
+"n": "Casual: se faire engueuler = get told off."
+},
+{
+"id": "ENG_CHUNK_0356",
+"t": "rater [nom] / foirer [nom]",
+"ex": "J'ai complètement raté la présentation.",
+"n": "Foirer is slangy: J'ai tout foiré."
+},
+{
+"id": "ENG_CHUNK_0357",
+"t": "résoudre un problème / régler un problème",
+"ex": "Redémarrer la box a réglé le problème."
+},
+{
+"id": "ENG_CHUNK_0358",
+"t": "crever",
+"ex": "J'ai crevé en allant au boulot.",
+"n": "crever alone = get a flat. Also avoir un pneu crevé."
+},
+{
+"id": "ENG_CHUNK_0359",
+"t": "trouver une place",
+"ex": "J'ai mis vingt minutes à trouver une place.",
+"n": "mettre [durée] à + infinitive = take X time to."
+},
+{
+"id": "ENG_CHUNK_0360",
+"t": "faire la vaisselle",
+"ex": "Je fais la vaisselle si tu cuisines."
+},
+{
+"id": "ENG_CHUNK_0361",
+"t": "sortir les poubelles",
+"ex": "Tu peux sortir les poubelles en partant ?"
+},
+{
+"id": "ENG_CHUNK_0362",
+"t": "mettre le bazar / mettre le désordre",
+"ex": "Les enfants ont mis le bazar dans le salon."
+},
+{
+"id": "ENG_CHUNK_0363",
+"t": "se faire couper les cheveux",
+"ex": "Il faut vraiment que j'aille chez le coiffeur.",
+"n": "se faire + infinitive = have something done."
+},
+{
+"id": "ENG_CHUNK_0364",
+"t": "une petite question",
+"ex": "Je peux te poser une petite question ?"
+},
+{
+"id": "ENG_CHUNK_0365",
+"t": "Asseyez-vous / Prenez place",
+"ex": "Asseyez-vous, je vous en prie, le docteur arrive tout de suite."
+},
+{
+"id": "ENG_CHUNK_0366",
+"t": "Bonne question",
+"ex": "On s'est garés où ? Bonne question."
+},
+{
+"id": "ENG_CHUNK_0367",
+"t": "À peu près / Presque",
+"ex": "T'as fini ta valise ? À peu près."
+},
+{
+"id": "ENG_CHUNK_0368",
+"t": "Attends, laisse-moi deviner",
+"ex": "Attends, laisse-moi deviner. T'as encore oublié tes clés."
+},
+{
+"id": "ENG_CHUNK_0369",
+"t": "Compris / D'accord / Ça marche",
+"ex": "Tourner à gauche à la station-service. Ça marche."
+},
+{
+"id": "ENG_CHUNK_0370",
+"t": "Pardon, je ne suis pas / je te suis pas",
+"ex": "Pardon, je te suis pas. Je prends quel bus ?"
+},
+{
+"id": "ENG_CHUNK_0371",
+"t": "Laisse-moi finir",
+"ex": "Laisse-moi finir, après tu parleras."
+},
+{
+"id": "ENG_CHUNK_0372",
+"t": "Ah, avant que j'oublie",
+"ex": "Ah, avant que j'oublie, ta mère a appelé.",
+"n": "avant que + subjunctive (oublie)."
+},
+{
+"id": "ENG_CHUNK_0373",
+"t": "Bref / Pour faire court",
+"ex": "Bref, on a raté notre avion."
+},
+{
+"id": "ENG_CHUNK_0374",
+"t": "Crois-le ou non / Aussi incroyable que ça paraisse",
+"ex": "Crois-le ou non, j'ai jamais vu la mer."
+},
+{
+"id": "ENG_CHUNK_0375",
+"t": "Alors / Bon",
+"ex": "Alors, c'était comment ton week-end ?"
+},
+{
+"id": "ENG_CHUNK_0376",
+"t": "Tu vois, / En fait,",
+"ex": "En fait, le magasin ferme tôt le dimanche."
+},
+{
+"id": "ENG_CHUNK_0377",
+"t": "En gros / Bref",
+"ex": "En gros, il nous faut plus de temps."
+},
+{
+"id": "ENG_CHUNK_0378",
+"t": "C'est pas faux / Bien vu",
+"ex": "C'est pas faux. J'y avais pas pensé.",
+"n": "C'est pas faux is a very common spoken concession."
+},
+{
+"id": "ENG_CHUNK_0379",
+"t": "Tu as tout à fait raison",
+"ex": "Tu as tout à fait raison, j'aurais dû appeler."
+},
+{
+"id": "ENG_CHUNK_0380",
+"t": "Moi aussi / Pareil",
+"ex": "Je meurs de faim. Pareil.",
+"n": "Negative agreement: Moi non plus."
+},
+{
+"id": "ENG_CHUNK_0381",
+"t": "Je te dois une fière chandelle / Je t'en dois une",
+"ex": "Merci d'être venu me chercher. Je t'en dois une."
+},
+{
+"id": "ENG_CHUNK_0382",
+"t": "Quand tu veux",
+"ex": "Merci de m'avoir ramené. Quand tu veux."
+},
+{
+"id": "ENG_CHUNK_0383",
+"t": "C'est très gentil de votre part",
+"ex": "Vous m'avez apporté de la soupe ? C'est très gentil de votre part."
+},
+{
+"id": "ENG_CHUNK_0384",
+"t": "Autant pour moi / Oups, pardon",
+"ex": "Oups, pardon, je croyais que c'était ma tasse.",
+"n": "Also spelled Au temps pour moi; both are seen."
+},
+{
+"id": "ENG_CHUNK_0385",
+"t": "Ça ne se reproduira pas",
+"ex": "Désolé pour mon retard ce matin. Ça ne se reproduira pas."
+},
+{
+"id": "ENG_CHUNK_0386",
+"t": "Je sais ce que c'est / Je comprends",
+"ex": "Mon vol a été annulé aussi. Je sais ce que c'est."
+},
+{
+"id": "ENG_CHUNK_0387",
+"t": "À tes souhaits ! / À vos souhaits !",
+"ex": "À tes souhaits ! Tu t'enrhumes ?",
+"n": "Reply after the second sneeze: À tes amours !"
+},
+{
+"id": "ENG_CHUNK_0388",
+"t": "Tu vas y arriver / Tu vas assurer",
+"ex": "T'inquiète pas pour l'entretien. Tu vas assurer."
+},
+{
+"id": "ENG_CHUNK_0389",
+"t": "Je suis trop content pour toi",
+"ex": "Vous vous êtes fiancés ? Je suis trop contente pour vous !"
+},
+{
+"id": "ENG_CHUNK_0390",
+"t": "Tu l'as bien mérité",
+"ex": "Félicitations pour la promotion. Tu l'as bien mérité."
+},
+{
+"id": "ENG_CHUNK_0391",
+"t": "sauf / à part",
+"ex": "Tout était super, sauf la météo."
+},
+{
+"id": "ENG_CHUNK_0392",
+"t": "En plus / Et en plus",
+"ex": "Le vol a été retardé et, en plus, ils ont perdu ma valise."
+},
+{
+"id": "ENG_CHUNK_0393",
+"t": "Le temps que [subjonctif] / Quand [proposition], [plus-que-parfait]",
+"ex": "Le temps qu'on arrive, le film avait commencé.",
+"n": "Le temps que + subjunctive (arrive)."
+},
+{
+"id": "ENG_CHUNK_0394",
+"t": "En attendant",
+"ex": "Le dîner est presque prêt. En attendant, tu peux mettre la table ?"
+},
+{
+"id": "ENG_CHUNK_0395",
+"t": "Maintenant que [indicatif]",
+"ex": "Maintenant que les enfants sont plus grands, on voyage plus."
+},
+{
+"id": "ENG_CHUNK_0396",
+"t": "Désormais / À partir de maintenant",
+"ex": "À partir de maintenant, j'apporte mon déjeuner."
+},
+{
+"id": "ENG_CHUNK_0397",
+"t": "De toute façon / Dans les deux cas",
+"ex": "On peut prendre le bus ou marcher. De toute façon, c'est vingt minutes."
+},
+{
+"id": "ENG_CHUNK_0398",
+"t": "Au bout du compte / Au final",
+"ex": "Au final, c'est toi qui décides."
+},
+{
+"id": "ENG_CHUNK_0399",
+"t": "À l'époque",
+"ex": "À l'époque, on n'avait pas de portables.",
+"n": "Imparfait follows naturally."
+},
+{
+"id": "ENG_CHUNK_0400",
+"t": "Sur le moment / À ce moment-là",
+"ex": "Sur le moment, j'ai trouvé que c'était une super idée."
+}
+]

@@ -1,0 +1,690 @@
+{
+ "about": "B1 trainer plan (Goethe-Zertifikat B1). topics = ranked grammar topics (group ids for kind:grammar); traps = the five sticky-error classes; functions = Sprechen/Schreiben functions with their Teil, used as fn ids and as Situations; scenarios = content for situations. Hand-written; scripts/validate_b1.py reads it.",
+ "topics": [
+  {
+   "rank": 1,
+   "id": "verb-final",
+   "name": "Verb at the end: dass, weil, wenn, ob",
+   "trap": "verb-final",
+   "concepts": [
+    "nebensatz-verbletzt",
+    "dass-saetze"
+   ],
+   "confusable": [
+    "connectors",
+    "v2"
+   ]
+  },
+  {
+   "rank": 2,
+   "id": "v2",
+   "name": "Verb second: Am Ende machen wir",
+   "trap": "v2",
+   "concepts": [
+    "hauptsatz-verbzweit",
+    "te-ka-mo-lo"
+   ],
+   "confusable": [
+    "connectors",
+    "verb-final"
+   ]
+  },
+  {
+   "rank": 3,
+   "id": "connectors",
+   "name": "weil, denn, deshalb: word order",
+   "trap": null,
+   "concepts": [
+    "weil-denn-deshalb",
+    "obwohl-trotzdem",
+    "konnektoren-advanced"
+   ],
+   "confusable": [
+    "verb-final",
+    "v2"
+   ]
+  },
+  {
+   "rank": 4,
+   "id": "verb-prep",
+   "name": "Verb + preposition, für or vor",
+   "trap": "fuer-vor",
+   "concepts": [
+    "verben-mit-praepositionen",
+    "fuer-vor"
+   ],
+   "confusable": []
+  },
+  {
+   "rank": 5,
+   "id": "perfekt",
+   "name": "Perfekt: haben or sein, ge-",
+   "trap": null,
+   "concepts": [
+    "perfekt",
+    "trennbare-verben"
+   ],
+   "confusable": []
+  },
+  {
+   "rank": 6,
+   "id": "umlauts",
+   "name": "Umlauts that change the meaning: könnten, konnten",
+   "trap": null,
+   "concepts": [
+    "umlauts"
+   ],
+   "confusable": [
+    "konj2"
+   ]
+  },
+  {
+   "rank": 7,
+   "id": "gender-caps",
+   "name": "der, die, das and noun capitals",
+   "trap": "neuter",
+   "concepts": [
+    "neutrum-ma-nomen",
+    "artikel-genus",
+    "noun-capitalization"
+   ],
+   "confusable": []
+  },
+  {
+   "rank": 8,
+   "id": "konj2",
+   "name": "Könnten Sie, wäre, hätte (Konjunktiv II)",
+   "trap": null,
+   "concepts": [
+    "konjunktiv-2-haette-waere",
+    "konjunktiv-2-wuerde"
+   ],
+   "confusable": [
+    "umlauts"
+   ]
+  },
+  {
+   "rank": 9,
+   "id": "indirect-q",
+   "name": "Indirect questions: ob, wie, was",
+   "trap": null,
+   "concepts": [
+    "indirekte-fragen"
+   ],
+   "confusable": [
+    "verb-final"
+   ]
+  },
+  {
+   "rank": 10,
+   "id": "two-part",
+   "name": "zwar … aber, je … desto",
+   "trap": null,
+   "concepts": [
+    "zweiteilige-konnektoren",
+    "je-desto"
+   ],
+   "confusable": []
+  },
+  {
+   "rank": 11,
+   "id": "inf-zu",
+   "name": "um … zu, damit, zu + infinitive",
+   "trap": null,
+   "concepts": [
+    "infinitiv-mit-zu",
+    "um-zu-damit"
+   ],
+   "confusable": []
+  },
+  {
+   "rank": 12,
+   "id": "register",
+   "name": "Sie, Ihr, Ihnen: formal letters",
+   "trap": null,
+   "concepts": [
+    "register-formal-email"
+   ],
+   "confusable": []
+  },
+  {
+   "rank": 13,
+   "id": "relative",
+   "name": "Relative clauses",
+   "trap": null,
+   "concepts": [
+    "relativsaetze",
+    "relativpronomen"
+   ],
+   "confusable": []
+  },
+  {
+   "rank": 14,
+   "id": "adj-endings",
+   "name": "Adjective endings in set phrases",
+   "trap": null,
+   "concepts": [
+    "adjektivdeklination"
+   ],
+   "confusable": []
+  },
+  {
+   "rank": 15,
+   "id": "passive",
+   "name": "Passive and lässt sich",
+   "trap": null,
+   "concepts": [
+    "passiv-praesens",
+    "passiv-praeteritum"
+   ],
+   "confusable": []
+  },
+  {
+   "rank": 16,
+   "id": "time",
+   "name": "wenn, als, wann · time words",
+   "trap": null,
+   "concepts": [
+    "wenn-als-wann",
+    "bevor-nachdem-waehrend"
+   ],
+   "confusable": [
+    "verb-final"
+   ]
+  },
+  {
+   "rank": 17,
+   "id": "reflexive",
+   "name": "Reflexive verbs: mich or mir",
+   "trap": null,
+   "concepts": [
+    "reflexive-verben"
+   ],
+   "confusable": []
+  },
+  {
+   "rank": 18,
+   "id": "praeteritum",
+   "name": "Präteritum (reading only)",
+   "trap": null,
+   "concepts": [
+    "praeteritum"
+   ],
+   "confusable": [],
+   "recognition_only": true
+  },
+  {
+   "rank": 19,
+   "id": "komparativ",
+   "name": "Comparatives: -er",
+   "trap": null,
+   "concepts": [
+    "komparativ-superlativ"
+   ],
+   "confusable": []
+  },
+  {
+   "rank": 20,
+   "id": "wo-wohin",
+   "name": "wo or wohin: in, auf, an + case",
+   "trap": null,
+   "concepts": [
+    "wechselpraepositionen"
+   ],
+   "confusable": []
+  },
+  {
+   "rank": 21,
+   "id": "misc",
+   "name": "Genitiv, Plusquamperfekt, Futur",
+   "trap": null,
+   "concepts": [
+    "genitiv",
+    "plusquamperfekt",
+    "futur-1"
+   ],
+   "confusable": [],
+   "never_new_before_exam": true
+  }
+ ],
+ "traps": [
+  {
+   "id": "verb-final",
+   "name": "Verb at the end after dass, weil, wenn, ob",
+   "hint": "Check where the verb goes after {S}.",
+   "rule": "After dass, the verb goes to the end: …, dass das eine gute Idee ist.",
+   "wrong_example": "Ich glaube, dass das ist eine gute Idee."
+  },
+  {
+   "id": "v2",
+   "name": "Verb second after a fronted phrase",
+   "hint": "Check the word order after {X}.",
+   "rule": "After Am Ende, the verb comes next, then the subject: Am Ende machen wir eine Party.",
+   "wrong_example": "Am Ende, wir machen eine Party.",
+   "fronted": [
+    "am ende",
+    "am anfang",
+    "leider",
+    "deshalb",
+    "deswegen",
+    "darum",
+    "dann",
+    "danach",
+    "zuerst",
+    "zuletzt",
+    "schließlich",
+    "heute",
+    "morgen",
+    "gestern",
+    "jetzt",
+    "trotzdem",
+    "außerdem",
+    "vielleicht",
+    "natürlich",
+    "meiner meinung nach",
+    "zum schluss",
+    "in meinem heimatland",
+    "bei uns",
+    "seitdem",
+    "inzwischen",
+    "früher",
+    "am wochenende",
+    "am samstag",
+    "am sonntag",
+    "am montag",
+    "am freitag",
+    "im sommer",
+    "im winter",
+    "vor zwei jahren",
+    "aus diesem grund",
+    "auf der einen seite",
+    "auf der anderen seite",
+    "tatsächlich",
+    "eigentlich",
+    "zum glück",
+    "normalerweise",
+    "letztes jahr",
+    "letzte woche",
+    "nächste woche",
+    "einerseits",
+    "andererseits",
+    "manchmal",
+    "meistens",
+    "oft",
+    "im moment",
+    "zurzeit",
+    "dafür",
+    "dagegen",
+    "allerdings",
+    "sonst"
+   ],
+   "note": "A comma after Leider or Aber is a Hard-level note, not a miss. After the comma_ok words (Natürlich, …) a comma starts a new clause, so no hint.",
+   "comma_ok": [
+    "natürlich",
+    "vielleicht",
+    "allerdings"
+   ]
+  },
+  {
+   "id": "fuer-vor",
+   "name": "für or vor",
+   "hint": "Check the preposition after {prev}.",
+   "rule": "Angst vor, warnen vor, sich schämen vor: fear and warning take vor.",
+   "wrong_example": "Ich habe Angst für der Prüfung."
+  },
+  {
+   "id": "cap",
+   "name": "Noun capitals",
+   "hint": "Check the capital letters.",
+   "rule": "Nouns take a capital, including made-up ones: etwas Neues, das Lernen.",
+   "wrong_example": "Ich habe etwas neues gelernt."
+  },
+  {
+   "id": "neuter",
+   "name": "Neuter -ma nouns and nouns made from verbs",
+   "hint": "Check the article on {Noun}.",
+   "rule": "Nouns ending in -ma are neuter: das Thema, das Problem.",
+   "wrong_example": "Der Thema ist interessant."
+  }
+ ],
+ "teile": {
+  "S1": "Sprechen Teil 1 · plan something together",
+  "S2": "Sprechen Teil 2 · presentation",
+  "S3": "Sprechen Teil 3 · feedback, question, opinion",
+  "L2": "Lesen Teil 2",
+  "L3": "Lesen Teil 3",
+  "L5": "Lesen Teil 5",
+  "W1": "Schreiben Teil 1 · email to a friend",
+  "W2": "Schreiben Teil 2 · forum opinion",
+  "W3": "Schreiben Teil 3 · formal email"
+ },
+ "groups": {
+  "speaking": [
+   {
+    "id": "S1",
+    "name": "Teil 1: plan together"
+   },
+   {
+    "id": "S2",
+    "name": "Teil 2: presentation"
+   },
+   {
+    "id": "S3",
+    "name": "Teil 3: feedback and questions"
+   },
+   {
+    "id": "opinion",
+    "name": "Opinion kit"
+   },
+   {
+    "id": "write",
+    "name": "Letters: greetings, Sie and Ihr",
+    "extra": true
+   }
+  ],
+  "reading": [
+   {
+    "id": "rules",
+    "name": "Rules words"
+   },
+   {
+    "id": "paraphrase",
+    "name": "Paraphrase pairs"
+   },
+   {
+    "id": "signal",
+    "name": "Signal words",
+    "last": true
+   }
+  ]
+ },
+ "functions": [
+  {
+   "id": "t1_open",
+   "teil": "S1",
+   "group": "S1",
+   "en": "Open the planning and ask what your partner thinks",
+   "star": true,
+   "situations": 3
+  },
+  {
+   "id": "t1_suggest",
+   "teil": "S1",
+   "group": "S1",
+   "en": "Make a suggestion",
+   "star": true,
+   "situations": 3
+  },
+  {
+   "id": "t1_accept",
+   "teil": "S1",
+   "group": "S1",
+   "en": "Agree to a suggestion",
+   "star": true,
+   "situations": 3
+  },
+  {
+   "id": "t1_reject",
+   "teil": "S1",
+   "group": "S1",
+   "en": "Turn down a suggestion and give a reason",
+   "star": true,
+   "situations": 3
+  },
+  {
+   "id": "t1_counter",
+   "teil": "S1",
+   "group": "S1",
+   "en": "Suggest something else instead",
+   "star": true,
+   "situations": 3
+  },
+  {
+   "id": "t1_tasks",
+   "teil": "S1",
+   "group": "S1",
+   "en": "Share out the tasks",
+   "star": true,
+   "situations": 3
+  },
+  {
+   "id": "t1_confirm",
+   "teil": "S1",
+   "group": "S1",
+   "en": "Settle a point and confirm the plan",
+   "star": true,
+   "situations": 3
+  },
+  {
+   "id": "t1_react",
+   "teil": "S1",
+   "group": "S1",
+   "en": "Answer your partner's suggestion (reply items)",
+   "star": true,
+   "situations": 0,
+   "reply": true
+  },
+  {
+   "id": "t2_open",
+   "teil": "S2",
+   "group": "S2",
+   "en": "Folie 1: name the topic and how the talk is built",
+   "star": true,
+   "situations": 0
+  },
+  {
+   "id": "t2_structure",
+   "teil": "S2",
+   "group": "S2",
+   "en": "Move from one point to the next",
+   "star": true,
+   "situations": 3
+  },
+  {
+   "id": "t2_experience",
+   "teil": "S2",
+   "group": "S2",
+   "en": "Folie 2: talk about your own experience",
+   "star": true,
+   "situations": 3
+  },
+  {
+   "id": "t2_home",
+   "teil": "S2",
+   "group": "S2",
+   "en": "Folie 3: describe the situation in your home country",
+   "star": true,
+   "situations": 3
+  },
+  {
+   "id": "t2_proscons",
+   "teil": "S2",
+   "group": "S2",
+   "en": "Folie 4: name advantages and disadvantages",
+   "star": true,
+   "situations": 3
+  },
+  {
+   "id": "t2_reasons",
+   "teil": "S2",
+   "group": "S2",
+   "en": "Give a reason or an example",
+   "star": true,
+   "situations": 3
+  },
+  {
+   "id": "t2_conclude",
+   "teil": "S2",
+   "group": "S2",
+   "en": "Folie 4 and 5: give your opinion and close",
+   "star": true,
+   "situations": 3
+  },
+  {
+   "id": "t2_close",
+   "teil": "S2",
+   "group": "S2",
+   "en": "Folie 5: end the presentation",
+   "star": true,
+   "situations": 0
+  },
+  {
+   "id": "t2_glue",
+   "teil": "S2",
+   "group": "S2",
+   "en": "Buy time and keep talking",
+   "star": false,
+   "situations": 0
+  },
+  {
+   "id": "t3_feedback",
+   "teil": "S3",
+   "group": "S3",
+   "en": "Give feedback on your partner's presentation",
+   "star": false,
+   "situations": 3
+  },
+  {
+   "id": "t3_question",
+   "teil": "S3",
+   "group": "S3",
+   "en": "Ask your partner a question about the presentation",
+   "star": false,
+   "situations": 3
+  },
+  {
+   "id": "t3_answer",
+   "teil": "S3",
+   "group": "S3",
+   "en": "Answer a question about your presentation",
+   "star": false,
+   "situations": 3
+  },
+  {
+   "id": "t3_clarify",
+   "teil": "S3",
+   "group": "S3",
+   "en": "Say you didn't understand, or ask again",
+   "star": false,
+   "situations": 3
+  },
+  {
+   "id": "forum_opinion",
+   "teil": "S3",
+   "group": "opinion",
+   "en": "Say what you think",
+   "star": true,
+   "situations": 0
+  },
+  {
+   "id": "forum_agree",
+   "teil": "S3",
+   "group": "opinion",
+   "en": "Your partner says something you agree with",
+   "star": true,
+   "situations": 4
+  },
+  {
+   "id": "forum_disagree",
+   "teil": "S3",
+   "group": "opinion",
+   "en": "Your partner says something you don't agree with",
+   "star": true,
+   "situations": 4
+  },
+  {
+   "id": "forum_weigh",
+   "teil": "S3",
+   "group": "opinion",
+   "en": "Your partner's point is half right: weigh both sides",
+   "star": true,
+   "situations": 4
+  },
+  {
+   "id": "inf_open",
+   "teil": "W1",
+   "group": "write",
+   "en": "Open an email to a friend",
+   "star": true,
+   "situations": 0
+  },
+  {
+   "id": "inf_apologise",
+   "teil": "W1",
+   "group": "write",
+   "en": "Say sorry and explain",
+   "star": true,
+   "situations": 0
+  },
+  {
+   "id": "inf_close",
+   "teil": "W1",
+   "group": "write",
+   "en": "Close an email to a friend",
+   "star": true,
+   "situations": 0
+  },
+  {
+   "id": "f_reference",
+   "teil": "W3",
+   "group": "write",
+   "en": "Say what the formal email is about",
+   "star": true,
+   "situations": 0
+  },
+  {
+   "id": "f_request",
+   "teil": "W3",
+   "group": "write",
+   "en": "Ask politely (formal)",
+   "star": true,
+   "situations": 0
+  },
+  {
+   "id": "f_cancel",
+   "teil": "W3",
+   "group": "write",
+   "en": "Cancel or move an appointment (formal)",
+   "star": true,
+   "situations": 0
+  },
+  {
+   "id": "f_apologise",
+   "teil": "W3",
+   "group": "write",
+   "en": "Apologise to someone you write to formally",
+   "star": true,
+   "situations": 0
+  }
+ ],
+ "scenarios": {
+  "teil1": [
+   "a party for Friday",
+   "a picnic",
+   "a farewell for a colleague",
+   "a birthday present for a friend",
+   "a weekend trip",
+   "helping a friend move",
+   "a course evening",
+   "visiting a sick classmate"
+  ],
+  "teil2": [
+   "Homeoffice",
+   "Handy in der Schule",
+   "Stadt oder Land",
+   "Fast Food",
+   "Online-Lernen",
+   "allein reisen",
+   "Haustiere"
+  ],
+  "opinions": [
+   "Ich finde, Homeoffice ist für alle besser.",
+   "Kinder sollten in der Schule kein Handy haben.",
+   "Auf dem Land lebt man viel besser als in der Stadt.",
+   "Online-Lernen ist genauso gut wie ein Kurs.",
+   "Fast Food ist immer ungesund.",
+   "Allein reisen ist langweilig.",
+   "Jede Familie sollte ein Haustier haben."
+  ]
+ }
+}

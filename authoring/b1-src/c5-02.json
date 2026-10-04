@@ -1,0 +1,1071 @@
+[
+ {
+  "id": "BG:rot-termin-denn",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "connectors",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "connector-order"
+  ],
+  "strict": [],
+  "plan": "transform",
+  "task": "Join the two sentences with denn.",
+  "prompt": "Ich komme heute nicht. Ich habe einen Termin.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ich komme heute nicht, denn",
+  "accept": [
+   "ich komme heute nicht denn ich habe einen termin",
+   "ich komme heute nicht denn ich hab einen termin"
+  ],
+  "anywhere": false,
+  "model": "Ich komme heute nicht, denn ich habe einen Termin.",
+  "wrong": [
+   "Ich komme heute nicht, denn ich einen Termin habe."
+  ],
+  "rule": "After denn, the word order doesn't change.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "A2"
+ },
+ {
+  "id": "BG:rot-termin-weil",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "connectors",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": "verb-final",
+  "focus": [
+   "verb-final",
+   "connector-order"
+  ],
+  "strict": [
+   "habe"
+  ],
+  "plan": "transform",
+  "task": "Join the two sentences with weil.",
+  "prompt": "Ich komme heute nicht. Ich habe einen Termin.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ich komme heute nicht, weil",
+  "accept": [
+   "ich komme heute nicht weil ich einen termin habe"
+  ],
+  "anywhere": false,
+  "model": "Ich komme heute nicht, weil ich einen Termin habe.",
+  "wrong": [
+   "Ich komme heute nicht, weil ich habe einen Termin."
+  ],
+  "rule": "After weil, the verb goes to the end.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "A2"
+ },
+ {
+  "id": "BG:rot-termin-deshalb",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "connectors",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": "v2",
+  "focus": [
+   "v2",
+   "connector-order"
+  ],
+  "strict": [],
+  "plan": "transform",
+  "task": "Join the two sentences with deshalb.",
+  "prompt": "Ich habe einen Termin. Ich komme heute nicht.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ich habe einen Termin. Deshalb",
+  "accept": [
+   "ich habe einen termin deshalb komme ich heute nicht"
+  ],
+  "anywhere": false,
+  "model": "Ich habe einen Termin. Deshalb komme ich heute nicht.",
+  "wrong": [
+   "Ich habe einen Termin. Deshalb ich komme heute nicht."
+  ],
+  "rule": "After deshalb, the verb comes next, then the subject.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "A2"
+ },
+ {
+  "id": "BG:rot-pruefung-denn",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "connectors",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "connector-order"
+  ],
+  "strict": [],
+  "plan": "transform",
+  "task": "Join the two sentences with denn.",
+  "prompt": "Ich lerne jeden Tag. Ich will die Prüfung bestehen.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ich lerne jeden Tag, denn",
+  "accept": [
+   "ich lerne jeden tag denn ich will die prüfung bestehen",
+   "ich lerne jeden tag denn ich möchte die prüfung bestehen"
+  ],
+  "anywhere": false,
+  "model": "Ich lerne jeden Tag, denn ich will die Prüfung bestehen.",
+  "wrong": [
+   "Ich lerne jeden Tag, denn ich die Prüfung bestehen will."
+  ],
+  "rule": "After denn, the word order doesn't change.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:rot-pruefung-weil",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "connectors",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": "verb-final",
+  "focus": [
+   "verb-final",
+   "connector-order"
+  ],
+  "strict": [
+   "will"
+  ],
+  "plan": "transform",
+  "task": "Join the two sentences with weil.",
+  "prompt": "Ich lerne jeden Tag. Ich will die Prüfung bestehen.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ich lerne jeden Tag, weil",
+  "accept": [
+   "ich lerne jeden tag weil ich die prüfung bestehen will",
+   "ich lerne jeden tag weil ich die prüfung bestehen möchte"
+  ],
+  "anywhere": false,
+  "model": "Ich lerne jeden Tag, weil ich die Prüfung bestehen will.",
+  "wrong": [
+   "Ich lerne jeden Tag, weil ich will die Prüfung bestehen."
+  ],
+  "rule": "After weil, the verb goes to the end.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:rot-pruefung-deshalb",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "connectors",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": "v2",
+  "focus": [
+   "v2",
+   "connector-order"
+  ],
+  "strict": [],
+  "plan": "transform",
+  "task": "Join the two sentences with deshalb.",
+  "prompt": "Ich will die Prüfung bestehen. Ich lerne jeden Tag.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ich will die Prüfung bestehen. Deshalb",
+  "accept": [
+   "ich will die prüfung bestehen deshalb lerne ich jeden tag"
+  ],
+  "anywhere": false,
+  "model": "Ich will die Prüfung bestehen. Deshalb lerne ich jeden Tag.",
+  "wrong": [
+   "Ich will die Prüfung bestehen. Deshalb ich lerne jeden Tag."
+  ],
+  "rule": "After deshalb, the verb comes next, then the subject.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:rot-muede-denn",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "connectors",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "connector-order"
+  ],
+  "strict": [],
+  "plan": "transform",
+  "task": "Join the two sentences with denn.",
+  "prompt": "Ich bin müde. Ich habe schlecht geschlafen.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ich bin müde, denn",
+  "accept": [
+   "ich bin müde denn ich habe schlecht geschlafen",
+   "ich bin müde denn ich hab schlecht geschlafen"
+  ],
+  "anywhere": false,
+  "model": "Ich bin müde, denn ich habe schlecht geschlafen.",
+  "wrong": [
+   "Ich bin müde, denn ich schlecht geschlafen habe."
+  ],
+  "rule": "After denn, the word order doesn't change.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:rot-muede-weil",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "connectors",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": "verb-final",
+  "focus": [
+   "verb-final",
+   "connector-order"
+  ],
+  "strict": [
+   "habe"
+  ],
+  "plan": "transform",
+  "task": "Join the two sentences with weil.",
+  "prompt": "Ich bin müde. Ich habe schlecht geschlafen.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ich bin müde, weil",
+  "accept": [
+   "ich bin müde weil ich schlecht geschlafen habe"
+  ],
+  "anywhere": false,
+  "model": "Ich bin müde, weil ich schlecht geschlafen habe.",
+  "wrong": [
+   "Ich bin müde, weil ich habe schlecht geschlafen."
+  ],
+  "rule": "After weil, the verb goes to the end.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:rot-muede-deshalb",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "connectors",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": "v2",
+  "focus": [
+   "v2",
+   "connector-order"
+  ],
+  "strict": [],
+  "plan": "transform",
+  "task": "Join the two sentences with deshalb.",
+  "prompt": "Ich habe schlecht geschlafen. Ich bin müde.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ich habe schlecht geschlafen. Deshalb",
+  "accept": [
+   "ich habe schlecht geschlafen deshalb bin ich müde"
+  ],
+  "anywhere": false,
+  "model": "Ich habe schlecht geschlafen. Deshalb bin ich müde.",
+  "wrong": [
+   "Ich habe schlecht geschlafen. Deshalb ich bin müde."
+  ],
+  "rule": "After deshalb, the verb comes next, then the subject.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:rot-wetter-denn",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "connectors",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "connector-order"
+  ],
+  "strict": [],
+  "plan": "transform",
+  "task": "Join the two sentences with denn.",
+  "prompt": "Wir bleiben zu Hause. Das Wetter ist schlecht.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Wir bleiben zu Hause, denn",
+  "accept": [
+   "wir bleiben zu hause denn das wetter ist schlecht"
+  ],
+  "anywhere": false,
+  "model": "Wir bleiben zu Hause, denn das Wetter ist schlecht.",
+  "wrong": [
+   "Wir bleiben zu Hause, denn das Wetter schlecht ist."
+  ],
+  "rule": "After denn, the word order doesn't change.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "A2"
+ },
+ {
+  "id": "BG:rot-wetter-weil",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "connectors",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": "verb-final",
+  "focus": [
+   "verb-final",
+   "connector-order"
+  ],
+  "strict": [
+   "ist"
+  ],
+  "plan": "transform",
+  "task": "Join the two sentences with weil.",
+  "prompt": "Wir bleiben zu Hause. Das Wetter ist schlecht.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Wir bleiben zu Hause, weil",
+  "accept": [
+   "wir bleiben zu hause weil das wetter schlecht ist"
+  ],
+  "anywhere": false,
+  "model": "Wir bleiben zu Hause, weil das Wetter schlecht ist.",
+  "wrong": [
+   "Wir bleiben zu Hause, weil das Wetter ist schlecht."
+  ],
+  "rule": "After weil, the verb goes to the end.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "A2"
+ },
+ {
+  "id": "BG:rot-wetter-deshalb",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "connectors",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": "v2",
+  "focus": [
+   "v2",
+   "connector-order"
+  ],
+  "strict": [],
+  "plan": "transform",
+  "task": "Join the two sentences with deshalb.",
+  "prompt": "Das Wetter ist schlecht. Wir bleiben zu Hause.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Das Wetter ist schlecht. Deshalb",
+  "accept": [
+   "das wetter ist schlecht deshalb bleiben wir zu hause",
+   "das wetter ist schlecht deshalb bleiben wir zuhause",
+   "das wetter ist schlecht deshalb bleiben wir daheim"
+  ],
+  "anywhere": false,
+  "model": "Das Wetter ist schlecht. Deshalb bleiben wir zu Hause.",
+  "wrong": [
+   "Das Wetter ist schlecht. Deshalb wir bleiben zu Hause."
+  ],
+  "rule": "After deshalb, the verb comes next, then the subject.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "A2"
+ },
+ {
+  "id": "BG:gap-angst-vor-zukunft",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-prep",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "fuer-vor",
+  "focus": [
+   "fuer-vor",
+   "prep-case"
+  ],
+  "strict": [
+   "vor",
+   "der"
+  ],
+  "plan": "recall",
+  "task": "Fill the gap.",
+  "prompt": "Viele Leute haben Angst ___ Zukunft. (die)",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "vor der"
+  ],
+  "anywhere": false,
+  "model": "Viele Leute haben Angst vor der Zukunft.",
+  "wrong": [
+   "für die",
+   "vor die"
+  ],
+  "rule": "Angst vor, warnen vor, sich fürchten vor: fear and warning take vor.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gap-warnen-vor-rauchen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-prep",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "fuer-vor",
+  "focus": [
+   "fuer-vor",
+   "prep-case"
+  ],
+  "strict": [
+   "vor",
+   "dem"
+  ],
+  "plan": "recall",
+  "task": "Fill the gap.",
+  "prompt": "Der Arzt warnt ___ Rauchen. (das)",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "vor dem"
+  ],
+  "anywhere": false,
+  "model": "Der Arzt warnt vor dem Rauchen.",
+  "wrong": [
+   "für das",
+   "vor das"
+  ],
+  "rule": "Angst vor, warnen vor, sich fürchten vor: fear and warning take vor.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gap-schaemen-vor-chef",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-prep",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "fuer-vor",
+  "focus": [
+   "fuer-vor",
+   "prep-case"
+  ],
+  "strict": [
+   "vor",
+   "dem"
+  ],
+  "plan": "recall",
+  "task": "Fill the gap.",
+  "prompt": "Die Kinder fürchten sich ___ Gewitter. (das)",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "vor dem",
+   "vorm"
+  ],
+  "anywhere": false,
+  "model": "Die Kinder fürchten sich vor dem Gewitter.",
+  "wrong": [
+   "für das",
+   "vor das"
+  ],
+  "rule": "sich fürchten vor + dative: vor dem Gewitter.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gap-warnen-vor-hund",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-prep",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "fuer-vor",
+  "focus": [
+   "fuer-vor",
+   "prep-case"
+  ],
+  "strict": [
+   "vor",
+   "dem"
+  ],
+  "plan": "recall",
+  "task": "Fill the gap.",
+  "prompt": "Ich warne dich ___ Hund. (der)",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "vor dem"
+  ],
+  "anywhere": false,
+  "model": "Ich warne dich vor dem Hund.",
+  "wrong": [
+   "für den",
+   "vor den"
+  ],
+  "rule": "Angst vor, warnen vor, sich fürchten vor: fear and warning take vor.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gap-danke-fuer-einladung",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-prep",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "fuer-vor",
+  "focus": [
+   "fuer-vor",
+   "prep-case"
+  ],
+  "strict": [
+   "für",
+   "die"
+  ],
+  "plan": "recall",
+  "task": "Fill the gap.",
+  "prompt": "Danke ___ Einladung! (die)",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "für die"
+  ],
+  "anywhere": false,
+  "model": "Danke für die Einladung!",
+  "wrong": [
+   "vor die",
+   "für der"
+  ],
+  "rule": "Thanks takes für + accusative: danke für die Einladung.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "A2"
+ },
+ {
+  "id": "BG:gap-interessieren-fuer-thema",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-prep",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "fuer-vor",
+  "focus": [
+   "fuer-vor",
+   "prep-case"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Fill the gap.",
+  "prompt": "Ich interessiere mich sehr ___ Thema. (das)",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "für das",
+   "fürs"
+  ],
+  "anywhere": false,
+  "model": "Ich interessiere mich sehr für das Thema.",
+  "wrong": [
+   "vor das",
+   "für dem"
+  ],
+  "rule": "sich interessieren für + accusative: für das Thema.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gap-freuen-auf-wochenende",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-prep",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "prep-case"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Fill the gap.",
+  "prompt": "Ich freue mich schon ___ Wochenende. (das)",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "auf das",
+   "aufs"
+  ],
+  "anywhere": false,
+  "model": "Ich freue mich schon auf das Wochenende.",
+  "wrong": [
+   "für das",
+   "auf dem"
+  ],
+  "rule": "sich freuen auf + accusative is for something still to come: auf das Wochenende.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gap-freuen-ueber-geschenk",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-prep",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "prep-case"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Fill the gap.",
+  "prompt": "Danke! Ich freue mich sehr ___ Geschenk. (dein)",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "über dein"
+  ],
+  "anywhere": false,
+  "model": "Danke! Ich freue mich sehr über dein Geschenk.",
+  "wrong": [
+   "für dein",
+   "über deinem"
+  ],
+  "rule": "sich freuen über + accusative is for something you already have: über dein Geschenk.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gap-kuemmern-um-kinder",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-prep",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "prep-case"
+  ],
+  "strict": [
+   "um",
+   "die"
+  ],
+  "plan": "recall",
+  "task": "Fill the gap.",
+  "prompt": "Sie kümmert sich ___ Kinder. (die)",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "um die"
+  ],
+  "anywhere": false,
+  "model": "Sie kümmert sich um die Kinder.",
+  "wrong": [
+   "für die",
+   "um den"
+  ],
+  "rule": "sich kümmern um + accusative: um die Kinder.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gap-teilnehmen-an-kurs",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-prep",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "prep-case"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Fill the gap.",
+  "prompt": "Ich möchte ___ Kurs teilnehmen. (der)",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "am",
+   "an dem"
+  ],
+  "anywhere": false,
+  "model": "Ich möchte am Kurs teilnehmen.",
+  "wrong": [
+   "in dem",
+   "an den"
+  ],
+  "rule": "teilnehmen an + dative: am Kurs.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gap-abhaengen-von-wetter",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-prep",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "prep-case"
+  ],
+  "strict": [],
+  "plan": "recall",
+  "task": "Fill the gap.",
+  "prompt": "Das hängt ___ Wetter ab. (das)",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "vom",
+   "von dem"
+  ],
+  "anywhere": false,
+  "model": "Das hängt vom Wetter ab.",
+  "wrong": [
+   "von das",
+   "an dem"
+  ],
+  "rule": "abhängen von + dative: vom Wetter.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:gap-vorbereiten-auf-pruefung",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-prep",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "prep-case"
+  ],
+  "strict": [
+   "auf",
+   "die"
+  ],
+  "plan": "recall",
+  "task": "Fill the gap.",
+  "prompt": "Ich bereite mich ___ Prüfung vor. (die)",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "auf die"
+  ],
+  "anywhere": false,
+  "model": "Ich bereite mich auf die Prüfung vor.",
+  "wrong": [
+   "für die",
+   "auf der"
+  ],
+  "rule": "sich vorbereiten auf + accusative: auf die Prüfung.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:da-angst-davor",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-prep",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "fuer-vor",
+  "focus": [
+   "fuer-vor",
+   "prep-case"
+  ],
+  "strict": [],
+  "plan": "transform",
+  "task": "Answer yes, with one word for vor der Prüfung.",
+  "prompt": "Hast du Angst vor der Prüfung?",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ja, ich habe",
+  "accept": [
+   "ja ich habe angst davor",
+   "ja ich habe davor angst"
+  ],
+  "anywhere": false,
+  "model": "Ja, ich habe Angst davor.",
+  "wrong": [
+   "Ja, ich habe Angst dafür.",
+   "Ja, ich habe Angst darauf."
+  ],
+  "rule": "For a thing, vor + it becomes davor: Ich habe Angst davor.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:da-freuen-darauf",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-prep",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "prep-case"
+  ],
+  "strict": [],
+  "plan": "transform",
+  "task": "Answer yes, with one word for auf den Urlaub.",
+  "prompt": "Freust du dich auf den Urlaub?",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ja, ich freue mich",
+  "accept": [
+   "ja ich freue mich (schon) (sehr) darauf"
+  ],
+  "anywhere": false,
+  "model": "Ja, ich freue mich schon darauf.",
+  "wrong": [
+   "Ja, ich freue mich schon dafür.",
+   "Ja, ich freue mich schon darüber."
+  ],
+  "rule": "For a thing, auf + it becomes darauf: Ich freue mich darauf.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:da-denken-daran",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-prep",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "prep-case"
+  ],
+  "strict": [],
+  "plan": "transform",
+  "task": "Answer yes, with one word for an den Termin.",
+  "prompt": "Denkst du an den Termin?",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Ja, ich denke",
+  "accept": [
+   "ja ich denke (schon) daran",
+   "ja ich denke dran"
+  ],
+  "anywhere": false,
+  "model": "Ja, ich denke daran.",
+  "wrong": [
+   "Ja, ich denke dafür.",
+   "Ja, ich denke darüber."
+  ],
+  "rule": "For a thing, an + it becomes daran: Ich denke daran.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:wo-wofuer-kunst",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-prep",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "fuer-vor",
+  "focus": [
+   "fuer-vor",
+   "prep-case"
+  ],
+  "strict": [],
+  "plan": "transform",
+  "task": "Ask about für Kunst.",
+  "prompt": "Er interessiert sich für Kunst.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "wofür interessiert er sich"
+  ],
+  "anywhere": false,
+  "model": "Wofür interessiert er sich?",
+  "wrong": [
+   "Wovor interessiert er sich?",
+   "Wofür er interessiert sich?"
+  ],
+  "rule": "To ask about a thing, use wo + the preposition: Wofür interessiert er sich?",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:wo-wovor-angst",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-prep",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "fuer-vor",
+  "focus": [
+   "fuer-vor",
+   "prep-case"
+  ],
+  "strict": [],
+  "plan": "transform",
+  "task": "Ask about vor Spinnen.",
+  "prompt": "Sie hat Angst vor Spinnen.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "wovor hat sie angst"
+  ],
+  "anywhere": false,
+  "model": "Wovor hat sie Angst?",
+  "wrong": [
+   "Wofür hat sie Angst?",
+   "Wovor sie hat Angst?"
+  ],
+  "rule": "To ask about a thing, use wo + the preposition: Wovor hat sie Angst?",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:wo-worauf-antwort",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-prep",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "prep-case"
+  ],
+  "strict": [
+   "worauf"
+  ],
+  "plan": "transform",
+  "task": "Ask about auf eine Antwort.",
+  "prompt": "Er wartet auf eine Antwort.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "worauf wartet er"
+  ],
+  "anywhere": false,
+  "model": "Worauf wartet er?",
+  "wrong": [
+   "Wofür wartet er?",
+   "Woauf wartet er?"
+  ],
+  "rule": "Before a vowel, wo- takes an r: worauf, woran, worüber.",
+  "src": "brief C5",
+  "chunk": null,
+  "level": "B1"
+ }
+]

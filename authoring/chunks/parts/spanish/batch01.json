@@ -1,0 +1,554 @@
+[
+ {
+  "id": "ENG_CHUNK_0001",
+  "t": "Quería saber si podría [infinitivo] / ¿Me podría [infinitivo]?",
+  "ex": "Quería saber si me podría echar una mano con esto.",
+  "n": "Imperfect \"quería\" softens like \"I was wondering\"; usted form. Tú: ¿Me podrías...?"
+ },
+ {
+  "id": "ENG_CHUNK_0002",
+  "t": "¿Le importaría [infinitivo]? / ¿Te importaría [infinitivo]?",
+  "ex": "¿Le importaría cerrar la ventana?",
+  "n": "Takes an infinitive, not a gerund: never \"importaría cerrando\"."
+ },
+ {
+  "id": "ENG_CHUNK_0003",
+  "t": "¿Le molesta si [presente]? / ¿Te molesta si [presente]?",
+  "ex": "¿Le molesta si abro la ventana?",
+  "n": "\"Si\" + present indicative here, not subjunctive."
+ },
+ {
+  "id": "ENG_CHUNK_0004",
+  "t": "Estoy pensando en [infinitivo]",
+  "ex": "Estoy pensando en mudarme a Berlín el año que viene.",
+  "n": "Preposition \"en\", not \"de\": pensar en + infinitive."
+ },
+ {
+  "id": "ENG_CHUNK_0005",
+  "t": "Tengo muchas ganas de [infinitivo]",
+  "ex": "Tengo muchas ganas de volver a verte.",
+  "n": "Formal/written: Espero con interés... \"Tengo ganas\" is the everyday form."
+ },
+ {
+  "id": "ENG_CHUNK_0006",
+  "t": "No sé si [oración]",
+  "ex": "No sé si vienen esta noche."
+ },
+ {
+  "id": "ENG_CHUNK_0007",
+  "t": "Justo iba a [infinitivo] / Estaba a punto de [infinitivo]",
+  "ex": "¡Ay, justo te iba a llamar!"
+ },
+ {
+  "id": "ENG_CHUNK_0008",
+  "t": "Hace tiempo que quiero [infinitivo]",
+  "ex": "Hace semanas que quiero llamarte.",
+  "n": "No perfect-progressive in Spanish: hace + time + que + present tense."
+ },
+ {
+  "id": "ENG_CHUNK_0009",
+  "t": "No tiene sentido [infinitivo] / No vale la pena [infinitivo]",
+  "ex": "No vale la pena esperar, no van a venir."
+ },
+ {
+  "id": "ENG_CHUNK_0010",
+  "t": "¿Por qué no [verbo en nosotros]? / ¿Y si [verbo en nosotros]?",
+  "ex": "¿Y si pedimos una pizza esta noche?"
+ },
+ {
+  "id": "ENG_CHUNK_0011",
+  "t": "Prefiero [infinitivo] / Preferiría [infinitivo]",
+  "ex": "Prefiero quedarme en casa esta noche, si no te molesta."
+ },
+ {
+  "id": "ENG_CHUNK_0012",
+  "t": "Yo que tú, [condicional] / Yo en tu lugar, [condicional]",
+  "ex": "Yo que tú, hablaría primero con tu jefe.",
+  "n": "Natural shortcut for \"Si yo fuera tú\". Usted: Yo que usted..."
+ },
+ {
+  "id": "ENG_CHUNK_0013",
+  "t": "Depende de [sustantivo]",
+  "ex": "Depende del tiempo, la verdad.",
+  "n": "de + el contracts to \"del\"."
+ },
+ {
+  "id": "ENG_CHUNK_0014",
+  "t": "Lo que pasa es que [oración]",
+  "ex": "Lo que pasa es que ya tengo planes para el sábado."
+ },
+ {
+  "id": "ENG_CHUNK_0015",
+  "t": "No quise [infinitivo] / No era mi intención [infinitivo]",
+  "ex": "Perdón, no quise interrumpir."
+ },
+ {
+  "id": "ENG_CHUNK_0016",
+  "t": "Estoy acostumbrado/a a [infinitivo]",
+  "ex": "Estoy acostumbrada a levantarme temprano.",
+  "n": "Infinitive after \"a\", not a gerund. Agrees in gender."
+ },
+ {
+  "id": "ENG_CHUNK_0017",
+  "t": "Se tarda [tiempo] en [infinitivo] / Toma [tiempo] [infinitivo]",
+  "ex": "Se tarda unos veinte minutos en llegar.",
+  "n": "\"Toma veinte minutos\" is common in Latin America but a calque in Spain."
+ },
+ {
+  "id": "ENG_CHUNK_0018",
+  "t": "Avísame si [oración] / Me avisas si [oración]",
+  "ex": "Avísame si necesitas algo.",
+  "n": "Usted: Avíseme si..."
+ },
+ {
+  "id": "ENG_CHUNK_0019",
+  "t": "Gracias por [infinitivo]",
+  "ex": "Gracias por avisarme.",
+  "n": "Infinitive, not gerund. Past action: Gracias por haber venido."
+ },
+ {
+  "id": "ENG_CHUNK_0020",
+  "t": "Perdón por [infinitivo] / Disculpa por [infinitivo]",
+  "ex": "Perdón por hacerte esperar."
+ },
+ {
+  "id": "ENG_CHUNK_0021",
+  "t": "No puedo creer que [subjuntivo] / No me lo puedo creer",
+  "ex": "No puedo creer que ya sea octubre.",
+  "n": "Subjunctive trigger: \"no creer que\" takes subjunctive."
+ },
+ {
+  "id": "ENG_CHUNK_0022",
+  "t": "¿Me podría decir [pregunta indirecta]?",
+  "ex": "¿Me podría decir dónde está la estación?",
+  "n": "Keep the accent on question words in indirect questions: dónde, cuándo, qué."
+ },
+ {
+  "id": "ENG_CHUNK_0023",
+  "t": "¿Qué piensas de [sustantivo]? / ¿Qué te parece [sustantivo]?",
+  "ex": "¿Qué te parece la nueva oficina?",
+  "n": "\"Parecer\" works like \"gustar\": ¿Qué te parecen los nuevos horarios? for plurals."
+ },
+ {
+  "id": "ENG_CHUNK_0024",
+  "t": "¿Qué tal es [infinitivo]? / ¿Cómo es [infinitivo]?",
+  "ex": "¿Cómo es vivir en Londres?",
+  "n": "Infinitive, not gerund, as the subject."
+ },
+ {
+  "id": "ENG_CHUNK_0025",
+  "t": "Me temo que [oración] / Lamentablemente, [oración]",
+  "ex": "Me temo que no nos quedan mesas esta noche.",
+  "n": "\"Me temo que\" takes indicative; \"temer que\" meaning fear takes subjunctive."
+ },
+ {
+  "id": "ENG_CHUNK_0026",
+  "t": "Asegúrate de [infinitivo] / No te olvides de [infinitivo]",
+  "ex": "No te olvides de cerrar con llave cuando salgas.",
+  "n": "\"Cuando\" referring to the future triggers subjunctive: cuando salgas."
+ },
+ {
+  "id": "ENG_CHUNK_0027",
+  "t": "Me encantaría, pero [oración]",
+  "ex": "Me encantaría, pero mañana entro temprano a trabajar."
+ },
+ {
+  "id": "ENG_CHUNK_0028",
+  "t": "Resulta que [oración]",
+  "ex": "Resulta que la tienda estuvo cerrada toda la semana."
+ },
+ {
+  "id": "ENG_CHUNK_0029",
+  "t": "Parece que [oración]",
+  "ex": "Parece que va a llover.",
+  "n": "Affirmative \"parece que\" takes indicative; \"no parece que\" takes subjunctive."
+ },
+ {
+  "id": "ENG_CHUNK_0030",
+  "t": "Ni idea de [pregunta indirecta] / No tengo ni idea de [pregunta indirecta]",
+  "ex": "No tengo ni idea de dónde dejé las llaves."
+ },
+ {
+  "id": "ENG_CHUNK_0031",
+  "t": "Se supone que [oración] / Tengo que [infinitivo]",
+  "ex": "Se supone que tengo que estar en el trabajo a las nueve."
+ },
+ {
+  "id": "ENG_CHUNK_0032",
+  "t": "Solo quería [infinitivo]",
+  "ex": "Solo quería confirmar que te llegó mi correo."
+ },
+ {
+  "id": "ENG_CHUNK_0033",
+  "t": "Depende de [persona] / Tú decides",
+  "ex": "Me da igual dónde comamos. Tú decides.",
+  "n": "\"Donde\" + subjunctive (comamos) for an undecided place."
+ },
+ {
+  "id": "ENG_CHUNK_0034",
+  "t": "Suena [adjetivo]",
+  "ex": "Suena genial. ¿A qué hora vengo?"
+ },
+ {
+  "id": "ENG_CHUNK_0035",
+  "t": "Logré [infinitivo] / Conseguí [infinitivo]",
+  "ex": "Logré arreglar la impresora yo solo."
+ },
+ {
+  "id": "ENG_CHUNK_0036",
+  "t": "tomar una decisión",
+  "ex": "Tenemos que tomar una decisión antes del viernes.",
+  "n": "\"Tomar\", not \"hacer\", una decisión."
+ },
+ {
+  "id": "ENG_CHUNK_0037",
+  "t": "tomar(se) un descanso / hacer una pausa",
+  "ex": "Hagamos una pausa y tomemos un café."
+ },
+ {
+  "id": "ENG_CHUNK_0038",
+  "t": "echarle un vistazo a [sustantivo] / revisar [sustantivo]",
+  "ex": "¿Le puedes echar un vistazo a mi laptop? Se congela a cada rato.",
+  "n": "Spain: ordenador instead of laptop/computadora."
+ },
+ {
+  "id": "ENG_CHUNK_0039",
+  "t": "quedarse sin [sustantivo] / acabarse [sustantivo]",
+  "ex": "Otra vez nos quedamos sin leche. / Se acabó la leche otra vez."
+ },
+ {
+  "id": "ENG_CHUNK_0040",
+  "t": "ponerse en contacto con [persona] / comunicarse con [persona]",
+  "ex": "Mañana me pongo en contacto con el dueño del departamento.",
+  "n": "Spain: piso and casero instead of departamento and dueño."
+ },
+ {
+  "id": "ENG_CHUNK_0041",
+  "t": "equivocarse / cometer un error",
+  "ex": "Perdón, me equivoqué con la reserva.",
+  "n": "\"Equivocarse\" is the everyday verb; \"cometer un error\" is more formal."
+ },
+ {
+  "id": "ENG_CHUNK_0042",
+  "t": "prestar atención a [sustantivo] / fijarse en [sustantivo]",
+  "ex": "No me fijé en la hora."
+ },
+ {
+  "id": "ENG_CHUNK_0043",
+  "t": "tener sentido",
+  "ex": "Eso no tiene sentido para mí.",
+  "n": "\"Hacer sentido\" is an anglicism; use \"tener sentido\"."
+ },
+ {
+  "id": "ENG_CHUNK_0044",
+  "t": "hacerle un favor a [persona]",
+  "ex": "¿Me haces un favor y le das de comer al gato?"
+ },
+ {
+  "id": "ENG_CHUNK_0045",
+  "t": "echarle una mano a [persona]",
+  "ex": "¿Me echas una mano con estas cajas?"
+ },
+ {
+  "id": "ENG_CHUNK_0046",
+  "t": "esforzarse / hacer un esfuerzo",
+  "ex": "Se está esforzando mucho con el alemán."
+ },
+ {
+  "id": "ENG_CHUNK_0047",
+  "t": "ocurrírsele [sustantivo] a alguien / idear [sustantivo]",
+  "ex": "Se le ocurrió una idea brillante.",
+  "n": "\"Ocurrírsele\" works like \"gustar\": the idea is the subject, the person an indirect object."
+ },
+ {
+  "id": "ENG_CHUNK_0048",
+  "t": "deshacerse de [sustantivo]",
+  "ex": "Tengo que deshacerme de ropa vieja."
+ },
+ {
+  "id": "ENG_CHUNK_0049",
+  "t": "llevarse bien con [persona]",
+  "ex": "Me llevo bien con mis compañeros de trabajo."
+ },
+ {
+  "id": "ENG_CHUNK_0050",
+  "t": "cambiar de opinión / cambiar de idea",
+  "ex": "Si cambias de opinión, llámame.",
+  "n": "Needs \"de\": cambiar de opinión, not \"cambiar tu opinión\"."
+ },
+ {
+  "id": "ENG_CHUNK_0051",
+  "t": "echarle un ojo a [sustantivo] / cuidar [sustantivo]",
+  "ex": "¿Me cuidas la mochila un momento?"
+ },
+ {
+  "id": "ENG_CHUNK_0052",
+  "t": "tomarse su tiempo",
+  "ex": "No hay apuro, tómate tu tiempo.",
+  "n": "Spain: No hay prisa. Usted: tómese su tiempo."
+ },
+ {
+  "id": "ENG_CHUNK_0053",
+  "t": "pasar tiempo [gerundio] / pasarse [tiempo] [gerundio]",
+  "ex": "Paso mucho tiempo en el transporte.",
+  "n": "Here Spanish does use the gerund: paso horas leyendo."
+ },
+ {
+  "id": "ENG_CHUNK_0054",
+  "t": "entender [sustantivo] / descifrar [sustantivo] / averiguar [sustantivo]",
+  "ex": "No logro entender esta nueva aplicación."
+ },
+ {
+  "id": "ENG_CHUNK_0055",
+  "t": "arreglar [sustantivo] / resolver [sustantivo]",
+  "ex": "Tengo que arreglar lo de la visa esta semana.",
+  "n": "\"Lo de\" + noun = \"the matter of\", very common."
+ },
+ {
+  "id": "ENG_CHUNK_0056",
+  "t": "encargarse de [sustantivo] / lidiar con [sustantivo]",
+  "ex": "Mañana me encargo de eso."
+ },
+ {
+  "id": "ENG_CHUNK_0057",
+  "t": "poder ir / llegar a tiempo",
+  "ex": "Perdón, no puedo ir esta noche.",
+  "n": "No single verb; \"make it\" = poder ir (attend) or llegar a tiempo (arrive)."
+ },
+ {
+  "id": "ENG_CHUNK_0058",
+  "t": "costarle [infinitivo] a alguien / tener problemas para [infinitivo]",
+  "ex": "Últimamente me cuesta dormir.",
+  "n": "\"Costar\" works like \"gustar\": me cuesta, te cuesta."
+ },
+ {
+  "id": "ENG_CHUNK_0059",
+  "t": "ir tarde / ir con retraso",
+  "ex": "Perdón, voy un poco tarde.",
+  "n": "Latin America also: estoy atrasado/a."
+ },
+ {
+  "id": "ENG_CHUNK_0060",
+  "t": "posponer [sustantivo] / dejar para después [sustantivo]",
+  "ex": "Sigo dejando para después lo de llamar al dentista."
+ },
+ {
+  "id": "ENG_CHUNK_0061",
+  "t": "organizar [sustantivo] / configurar [sustantivo]",
+  "ex": "¿Podemos organizar una reunión la semana que viene?",
+  "n": "For devices and software: configurar or instalar."
+ },
+ {
+  "id": "ENG_CHUNK_0062",
+  "t": "dejar de [infinitivo]",
+  "ex": "Dejé de fumar el año pasado."
+ },
+ {
+  "id": "ENG_CHUNK_0063",
+  "t": "hacer una gran diferencia / notarse mucho",
+  "ex": "Dormir bien hace una gran diferencia."
+ },
+ {
+  "id": "ENG_CHUNK_0064",
+  "t": "cuidar a [persona]",
+  "ex": "¿Puedes cuidar a los niños el sábado?",
+  "n": "Personal \"a\" before people."
+ },
+ {
+  "id": "ENG_CHUNK_0065",
+  "t": "tener la oportunidad de [infinitivo] / alcanzar a [infinitivo]",
+  "ex": "No alcancé a devolverte la llamada.",
+  "n": "\"Alcanzar a\" (managed in time) is typical of Latin America."
+ },
+ {
+  "id": "ENG_CHUNK_0066",
+  "t": "La verdad / Para serte sincero",
+  "ex": "La verdad, no me gustó mucho la película."
+ },
+ {
+  "id": "ENG_CHUNK_0067",
+  "t": "Déjame pensar / A ver...",
+  "ex": "A ver... fue el martes pasado, creo."
+ },
+ {
+  "id": "ENG_CHUNK_0068",
+  "t": "¿Cómo te diría? / ¿Cómo decirlo?",
+  "ex": "Es... ¿cómo te diría? Un poco intenso."
+ },
+ {
+  "id": "ENG_CHUNK_0069",
+  "t": "¿Me entiendes? / ¿Sabes?",
+  "ex": "No es lo mismo, ¿me entiendes?"
+ },
+ {
+  "id": "ENG_CHUNK_0070",
+  "t": "Que yo sepa",
+  "ex": "Que yo sepa, la reunión sigue en pie.",
+  "n": "Fixed subjunctive formula: never \"que yo sé\"."
+ },
+ {
+  "id": "ENG_CHUNK_0071",
+  "t": "Por cierto / A propósito",
+  "ex": "Por cierto, ¿te enteraste de lo de Tomás?"
+ },
+ {
+  "id": "ENG_CHUNK_0072",
+  "t": "En fin, como te decía",
+  "ex": "En fin, como te decía, el hotel era precioso."
+ },
+ {
+  "id": "ENG_CHUNK_0073",
+  "t": "Eso me recuerda que... / Hablando de eso...",
+  "ex": "Eso me recuerda que tengo que llamar a mi mamá."
+ },
+ {
+  "id": "ENG_CHUNK_0074",
+  "t": "Entiendo lo que dices / Te entiendo",
+  "ex": "Te entiendo, pero igual me parece demasiado caro."
+ },
+ {
+  "id": "ENG_CHUNK_0075",
+  "t": "Me parece bien / Es lógico",
+  "ex": "Es lógico, yo haría lo mismo en tu lugar.",
+  "n": "No fixed equivalent; also \"Tiene sentido\" or simply \"Vale\" (Spain) / \"Okey\"."
+ },
+ {
+  "id": "ENG_CHUNK_0076",
+  "t": "Espera un segundo / Un momentito",
+  "ex": "Espera un segundo, voy por una pluma.",
+  "n": "Pen: pluma (Mexico), lapicera (Río de la Plata), bolígrafo (Spain, formal)."
+ },
+ {
+  "id": "ENG_CHUNK_0077",
+  "t": "O sea / Bueno",
+  "ex": "Estuvo bien. O sea, no increíble, pero bien.",
+  "n": "\"O sea\" is the go-to filler for rephrasing."
+ },
+ {
+  "id": "ENG_CHUNK_0078",
+  "t": "Para mí / Si me preguntas a mí",
+  "ex": "Para mí, es una pérdida de dinero."
+ },
+ {
+  "id": "ENG_CHUNK_0079",
+  "t": "No estoy tan seguro/a",
+  "ex": "Mmm, no estoy tan seguro de eso."
+ },
+ {
+  "id": "ENG_CHUNK_0080",
+  "t": "Bueno, en realidad",
+  "ex": "Bueno, en realidad es al revés.",
+  "n": "False friend: \"actualmente\" means \"currently\", not \"actually\"."
+ },
+ {
+  "id": "ENG_CHUNK_0081",
+  "t": "No importa / Olvídalo / Déjalo",
+  "ex": "No importa, lo hago yo."
+ },
+ {
+  "id": "ENG_CHUNK_0082",
+  "t": "No te preocupes / Tranquilo/a",
+  "ex": "No te preocupes, le pasa a todo el mundo.",
+  "n": "Mexico: No pasa nada; Spain: Tranquilo, no pasa nada."
+ },
+ {
+  "id": "ENG_CHUNK_0083",
+  "t": "Cuídate",
+  "ex": "Bueno, nos vemos la próxima semana. ¡Cuídate!",
+  "n": "Usted: Cuídese. Plural: Cuídense."
+ },
+ {
+  "id": "ENG_CHUNK_0084",
+  "t": "No es para tanto / No pasa nada",
+  "ex": "Tranquilo, no es para tanto."
+ },
+ {
+  "id": "ENG_CHUNK_0085",
+  "t": "Adelante / Claro, dale",
+  "ex": "¿Puedo usar tu teléfono? Claro, adelante.",
+  "n": "\"Dale\" is very common in much of Latin America; Mexico also \"Órale\"."
+ },
+ {
+  "id": "ENG_CHUNK_0086",
+  "t": "Crucemos los dedos / Ojalá",
+  "ex": "Mañana tengo la entrevista, así que crucemos los dedos.",
+  "n": "\"Ojalá\" + subjunctive: Ojalá me vaya bien."
+ },
+ {
+  "id": "ENG_CHUNK_0087",
+  "t": "Yo invito / Invito yo",
+  "ex": "Guarda la cartera, yo invito.",
+  "n": "Wallet: cartera (Mexico, Spain), billetera (much of South America)."
+ },
+ {
+  "id": "ENG_CHUNK_0088",
+  "t": "Lo voy a pensar",
+  "ex": "Gracias por la oferta. Lo voy a pensar.",
+  "n": "Often a polite no, same as in English."
+ },
+ {
+  "id": "ENG_CHUNK_0089",
+  "t": "¡Qué lástima! / ¡Qué pena!",
+  "ex": "¿No puedes venir? ¡Qué lástima!",
+  "n": "\"Qué pena\" in Mexico/Colombia can also mean \"how embarrassing\"."
+ },
+ {
+  "id": "ENG_CHUNK_0090",
+  "t": "¡Cuánto tiempo sin verte! / ¡Tanto tiempo!",
+  "ex": "¡Hola, cuánto tiempo sin verte! ¿Cómo has estado?"
+ },
+ {
+  "id": "ENG_CHUNK_0091",
+  "t": "Por otro lado / En cambio",
+  "ex": "Es caro. Por otro lado, te va a durar años."
+ },
+ {
+  "id": "ENG_CHUNK_0092",
+  "t": "Dicho esto / Aun así",
+  "ex": "El hotel era un poco viejo. Dicho esto, el personal fue encantador."
+ },
+ {
+  "id": "ENG_CHUNK_0093",
+  "t": "En ese caso",
+  "ex": "¿No tienes hambre? En ese caso, tomemos solo un café."
+ },
+ {
+  "id": "ENG_CHUNK_0094",
+  "t": "Siempre que [subjuntivo] / Con tal de que [subjuntivo] / Mientras [subjuntivo]",
+  "ex": "Te lo presto siempre que me lo devuelvas.",
+  "n": "Subjunctive trigger: conditional \"siempre que\", \"mientras\", \"con tal de que\"."
+ },
+ {
+  "id": "ENG_CHUNK_0095",
+  "t": "Aunque",
+  "ex": "Salimos aunque estaba lloviendo.",
+  "n": "Indicative for a known fact; subjunctive for hypothetical: aunque llueva, salimos."
+ },
+ {
+  "id": "ENG_CHUNK_0096",
+  "t": "Por eso",
+  "ex": "Había huelga de trenes. Por eso llego tarde."
+ },
+ {
+  "id": "ENG_CHUNK_0097",
+  "t": "En cuanto / Apenas",
+  "ex": "Te llamo en cuanto llegue a casa.",
+  "n": "Future reference triggers subjunctive: en cuanto llegue, not llego."
+ },
+ {
+  "id": "ENG_CHUNK_0098",
+  "t": "Al final",
+  "ex": "Lo hablamos durante horas, pero al final nos quedamos en casa."
+ },
+ {
+  "id": "ENG_CHUNK_0099",
+  "t": "Después de todo / Al fin y al cabo",
+  "ex": "Déjalo dormir. Al fin y al cabo, estuvo trabajando toda la noche."
+ },
+ {
+  "id": "ENG_CHUNK_0100",
+  "t": "Por si acaso / Por las dudas",
+  "ex": "Llévate un paraguas, por si acaso.",
+  "n": "\"Por las dudas\" is Río de la Plata; \"por si acaso\" works everywhere."
+ }
+]

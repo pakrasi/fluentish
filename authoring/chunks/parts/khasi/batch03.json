@@ -1,0 +1,527 @@
+[
+ {
+  "id": "ENG_CHUNK_0201",
+  "t": "[noun] ka bha ïa phi?",
+  "ex": "Ka sngi Thursday ha hynriew baje ka bha ïa phi?"
+ },
+ {
+  "id": "ENG_CHUNK_0202",
+  "t": "Phi don por ha [noun]?",
+  "ex": "Phi don por ha ka sngi Saturday? Ngi shna ka barbecue."
+ },
+ {
+  "id": "ENG_CHUNK_0203",
+  "t": "Phi don jingthmu na ka bynta [noun]?",
+  "ex": "Phi don jingthmu na ka bynta ka Saturday bad Sunday?"
+ },
+ {
+  "id": "ENG_CHUNK_0204",
+  "t": "Me kwah ban wan [noun] sha ïing?",
+  "ex": "Me kwah ban wan bam ja janmiet sha ïing ha ka sngi Friday?",
+  "n": "Use pha to a woman; phi to an elder."
+ },
+ {
+  "id": "ENG_CHUNK_0205",
+  "t": "Balei [clause]?",
+  "ex": "Balei phim bam?",
+  "n": "Casual speech has no separate 'how come': balei (why) with a rising, surprised tone."
+ },
+ {
+  "id": "ENG_CHUNK_0206",
+  "t": "Lehse kata ka daw ba [clause]",
+  "ex": "Phim shym la bam ja mynsngi? Lehse kata ka daw ba ka khlieh jong phi ka sih."
+ },
+ {
+  "id": "ENG_CHUNK_0207",
+  "t": "Balei phi la thmu ban [verb]?",
+  "ex": "Balei phi la thmu ban leit shong ha Chicago?",
+  "n": "Khasi asks balei (why); a causative 'what made you' sounds stiff."
+ },
+ {
+  "id": "ENG_CHUNK_0208",
+  "t": "Tang ba [clause]",
+  "ex": "Nga ieid ïa ka ïing. Tang ba ka jngai khyndiat na ka jaka trei."
+ },
+ {
+  "id": "ENG_CHUNK_0209",
+  "t": "Ka dei, hynrei [clause]",
+  "ex": "Ka dei, hynrei hangta ngin dang donkam ïa ka kali."
+ },
+ {
+  "id": "ENG_CHUNK_0210",
+  "t": "Aiu ka bakla ban [verb]?",
+  "ex": "Aiu ka bakla ban bam cornflakes ha ka por janmiet?"
+ },
+ {
+  "id": "ENG_CHUNK_0211",
+  "t": "Ngan peit lada [clause]",
+  "ex": "Ngan peit lada ki don ka miej na ka bynta saw ngut."
+ },
+ {
+  "id": "ENG_CHUNK_0212",
+  "t": "Te phi ong ba [clause]?",
+  "ex": "Te phi ong ba ngim lah shisha ban buh ka kali hangne?"
+ },
+ {
+  "id": "ENG_CHUNK_0213",
+  "t": "Map, phi la ong ba [clause]?",
+  "ex": "Map, phi la ong ba ka meeting ka long ha lai baje?"
+ },
+ {
+  "id": "ENG_CHUNK_0214",
+  "t": "[clause], ne em?",
+  "ex": "Me wan sha ka barbecue ha ka sngi Sunday, ne em?",
+  "n": "ne em (or not) is the all-purpose tag; it never changes shape."
+ },
+ {
+  "id": "ENG_CHUNK_0215",
+  "t": "Phim pyrkhat ba [clause]?",
+  "ex": "Phim pyrkhat ba ka khriat khyndiat eh na ka bynta ka duriaw?"
+ },
+ {
+  "id": "ENG_CHUNK_0216",
+  "t": "Ngam ieid eh ïa [noun]",
+  "ex": "Ngam ieid eh ïa ka jingbam kaba don bun sohmynken.",
+  "n": "eh after a negative softens it to 'not much'."
+ },
+ {
+  "id": "ENG_CHUNK_0217",
+  "t": "Nga ieid shibun ïa [noun]",
+  "ex": "Ha kine ki sngi nga ieid shibun ïa ka jingkiew maw."
+ },
+ {
+  "id": "ENG_CHUNK_0218",
+  "t": "Ngam lah ban shah ban [verb]",
+  "ex": "Ngam lah ban shah ban ïeng ap ha ka lain.",
+  "n": "shah is endure; ngam ieid eh (really don't like) is the safer everyday option."
+ },
+ {
+  "id": "ENG_CHUNK_0219",
+  "t": "Ngam sngewsih ban [verb]",
+  "ex": "Ngam sngewsih ban pyniaid kali, lada phi kwah ban thiah.",
+  "n": "Literally 'I don't feel bad to'."
+ },
+ {
+  "id": "ENG_CHUNK_0220",
+  "t": "Nga kham ieid ban [verb] ban ïa ban [verb]",
+  "ex": "Nga kham ieid ban shet ja ha ïing ban ïa ban bam sha shabar.",
+  "n": "ban ïa (than) introduces the loser; kham makes the preference."
+ },
+ {
+  "id": "ENG_CHUNK_0221",
+  "t": "Ngam nang bha ban [verb]",
+  "ex": "Ngam nang bha ban kynmaw ïa ki kyrteng.",
+  "n": "nang is 'know how'."
+ },
+ {
+  "id": "ENG_CHUNK_0222",
+  "t": "Phi nang shibun ban [verb]",
+  "ex": "Phi nang shibun ban batai ïa ki kam."
+ },
+ {
+  "id": "ENG_CHUNK_0223",
+  "t": "Ka pisa kam biang ban [verb]",
+  "ex": "Ka pisa kam biang ban mih man ka Saturday bad Sunday.",
+  "n": "No 'afford' verb: 'the money is not enough to'."
+ },
+ {
+  "id": "ENG_CHUNK_0224",
+  "t": "Ngam lah ban [verb] naduh [noun]",
+  "ex": "Ngam lah ban thiah bha naduh ba ngi la pynkylla ïing."
+ },
+ {
+  "id": "ENG_CHUNK_0225",
+  "t": "Nga la shim ka jingpyrkhat ban [verb]",
+  "ex": "Nga la shim ka jingpyrkhat ban shim ka kam ha Denver."
+ },
+ {
+  "id": "ENG_CHUNK_0226",
+  "t": "Nga kyrmen ban [verb]",
+  "ex": "Nga kyrmen ban leit kai sha ïing ka meikha jong nga kane ka por shit."
+ },
+ {
+  "id": "ENG_CHUNK_0227",
+  "t": "Lehse ngan [verb]",
+  "ex": "Lehse ngan shu sah ha ïing bad shongthiah."
+ },
+ {
+  "id": "ENG_CHUNK_0228",
+  "t": "To ngi buh ha [noun]",
+  "ex": "Hynñiew baje ka shwa eh. To ngi buh ha phra baje."
+ },
+ {
+  "id": "ENG_CHUNK_0229",
+  "t": "Nga hap ban [verb]",
+  "ex": "Nga hap ban leit shim ïa ki khynnah ha lai baje."
+ },
+ {
+  "id": "ENG_CHUNK_0230",
+  "t": "Phim donkam ban [verb]",
+  "ex": "Phim donkam ban wanrah ei ei, tang wan.",
+  "n": "phim donkam ban is 'no need'; phim dei ban would mean 'must not'."
+ },
+ {
+  "id": "ENG_CHUNK_0231",
+  "t": "Nga donkam ban [verb]?",
+  "ex": "Nga donkam ban buh shwa ka miej, ne ngi lah ban shu rung?"
+ },
+ {
+  "id": "ENG_CHUNK_0232",
+  "t": "Ka dei ka riti ban [verb]?",
+  "ex": "Ka dei ka riti ban ai tip ha ka dukan ot shniuh hangne?",
+  "n": "riti is custom; 'normal' in the sense of what people do."
+ },
+ {
+  "id": "ENG_CHUNK_0233",
+  "t": "Phim lah ban [verb]",
+  "ex": "Phim lah ban buh kali hangne hadien hynriew baje.",
+  "n": "ym ai lad (not permitted) is the notice-board form."
+ },
+ {
+  "id": "ENG_CHUNK_0234",
+  "t": "Ngan hap ban [verb]",
+  "ex": "Map, ngan hap ban ym wan mynta ka miet."
+ },
+ {
+  "id": "ENG_CHUNK_0235",
+  "t": "Nga ju [verb]",
+  "ex": "Nga ju bam bun eh haba nga don bun ka jingpyrkhat.",
+  "n": "ju (habitually) covers 'tend to'."
+ },
+ {
+  "id": "ENG_CHUNK_0236",
+  "t": "bitar ïa [person]",
+  "ex": "Ka dang bitar ïa nga namar ba nga la klet ïa ka sngi kha jong ka."
+ },
+ {
+  "id": "ENG_CHUNK_0237",
+  "t": "sngewsih shibun shaphang [noun]",
+  "ex": "U sngewsih shibun namar ba u la duh ïa ka kam jong u."
+ },
+ {
+  "id": "ENG_CHUNK_0238",
+  "t": "sngewkmen shibun ïa [person]",
+  "ex": "Phi la pass ïa ka test pyniaid kali? Nga sngewkmen shibun ïa phi!",
+  "n": "sngewsarong is 'proud' but can read as arrogant; shared happiness is the safe choice."
+ },
+ {
+  "id": "ENG_CHUNK_0239",
+  "t": "thiah",
+  "ex": "Nga la thiah ha ka sofa hapdeng ka phlim."
+ },
+ {
+  "id": "ENG_CHUNK_0240",
+  "t": "Wat sheptieng, shong suk",
+  "ex": "Wat sheptieng, ka long tang ka jingsniew rit.",
+  "n": "No set 'calm down'; wat sheptieng (don't worry) is the everyday soothing line."
+ },
+ {
+  "id": "ENG_CHUNK_0241",
+  "t": "don bun ka jingpyrkhat",
+  "ex": "Nga don bun eh ka jingpyrkhat shaphang ka jingpynkylla ïing.",
+  "n": "No slang 'stressed'; 'have much worry' carries it."
+ },
+ {
+  "id": "ENG_CHUNK_0242",
+  "t": "sngewkmen",
+  "ex": "Mynta ka sngi phi ïthuh kumba phi sngewkmen shibun. Aiu ka la jia?"
+ },
+ {
+  "id": "ENG_CHUNK_0243",
+  "t": "pynsngewkmen ïa [person]",
+  "ex": "To ngi rah ïa ka sha bam sha shabar khnang ban pynsngewkmen ïa ka.",
+  "n": "pyn- (cause) plus sngewkmen (be happy)."
+ },
+ {
+  "id": "ENG_CHUNK_0244",
+  "t": "sngewsih ïa [person]",
+  "ex": "Nga sngewsih ïa u, u la pang lut ka taiew."
+ },
+ {
+  "id": "ENG_CHUNK_0245",
+  "t": "tip bha ïa [person]",
+  "ex": "Ka bha shibun haba phi tip bha ïa ka."
+ },
+ {
+  "id": "ENG_CHUNK_0246",
+  "t": "ïoh lok",
+  "ex": "Ka eh ban ïoh ki lok ha ka nongbah thymmai."
+ },
+ {
+  "id": "ENG_CHUNK_0247",
+  "t": "ïasyriem shibun bad [person]",
+  "ex": "Nga ïasyriem shibun bad u lok uba shong lem bad nga.",
+  "n": "Literally 'resemble each other a lot'; an approximation."
+ },
+ {
+  "id": "ENG_CHUNK_0248",
+  "t": "ïeh noh ïa [person]",
+  "ex": "Ka la ïeh noh ïa u lok shynrang jong ka u bnai ba la leit."
+ },
+ {
+  "id": "ENG_CHUNK_0249",
+  "t": "leit ïaid lang",
+  "ex": "Ngi la leit ïaid lang mynhynnin janmiet, bad ka la bha shibun.",
+  "n": "Shillong speakers often just say 'go on a date' in English."
+ },
+ {
+  "id": "ENG_CHUNK_0250",
+  "t": "kylli ïa [person] ban leit ïaid lang",
+  "ex": "Ha kaba kut u la kylli ïa ka ban leit ïaid lang, hadien lai bnai."
+ },
+ {
+  "id": "ENG_CHUNK_0251",
+  "t": "ïaieid bad [person]",
+  "ex": "Ki la sdang ban ïaieid haba ki la leit kai sha Italy.",
+  "n": "ïa- makes it mutual: love each other."
+ },
+ {
+  "id": "ENG_CHUNK_0252",
+  "t": "ïakajia bad [person]",
+  "ex": "Nga la ïakajia bad ka para jong nga shaphang ki sngi shongthiah."
+ },
+ {
+  "id": "ENG_CHUNK_0253",
+  "t": "pynbitar ïa [person]",
+  "ex": "Kata ka jingsawa na shaneng ka pynbitar shibun ïa nga."
+ },
+ {
+  "id": "ENG_CHUNK_0254",
+  "t": "shaniah ïa [person]",
+  "ex": "Phi lah ban shaniah ïa nga man ka por."
+ },
+ {
+  "id": "ENG_CHUNK_0255",
+  "t": "ïakynduh bad [person]",
+  "ex": "Nga la ïakynduh bad u nonghikai barim jong nga ha ka dukan."
+ },
+ {
+  "id": "ENG_CHUNK_0256",
+  "t": "wan kai",
+  "ex": "Ngan wan kai hadien kam ban ai ïa ki chabi jong me."
+ },
+ {
+  "id": "ENG_CHUNK_0257",
+  "t": "thoh ka list",
+  "ex": "To ngi thoh ka list shwa ba ngin leit sha dukan."
+ },
+ {
+  "id": "ENG_CHUNK_0258",
+  "t": "ki chabi ki sah hapoh",
+  "ex": "Nga la khang biang ïa ka kali bad ki chabi ki sah hapoh.",
+  "n": "No verb for 'lock yourself out': say that the keys stayed inside."
+ },
+ {
+  "id": "ENG_CHUNK_0259",
+  "t": "ïeh ïa [person] ha [noun]",
+  "ex": "Phi lah ban ïeh ïa nga ha ka steshon?"
+ },
+ {
+  "id": "ENG_CHUNK_0260",
+  "t": "sah ha ka jam",
+  "ex": "Map ba nga la wan lait, nga la sah ha ka jam."
+ },
+ {
+  "id": "ENG_CHUNK_0261",
+  "t": "lait ïa ka bas",
+  "ex": "Nga la lait ïa ka bas, kumta nga la hap ban ïaid kjat.",
+  "n": "lait ïa is 'miss' a vehicle."
+ },
+ {
+  "id": "ENG_CHUNK_0262",
+  "t": "shim ka flight",
+  "ex": "Nga hap ban shim ka flight ha hynriew baje lashai mynstep."
+ },
+ {
+  "id": "ENG_CHUNK_0263",
+  "t": "jah lynti",
+  "ex": "Ngi la jah lynti ha ka lynti sha ka hotel."
+ },
+ {
+  "id": "ENG_CHUNK_0264",
+  "t": "leit kai",
+  "ex": "Ngin leit kai sha Mexico ha u bnai July."
+ },
+ {
+  "id": "ENG_CHUNK_0265",
+  "t": "shim shi sngi shongthiah",
+  "ex": "Nga shim shi sngi shongthiah ha ka sngi Friday ban ïarap ïa ki kmie ki kpa ban pynkylla ïing."
+ },
+ {
+  "id": "ENG_CHUNK_0266",
+  "t": "Ha ka jingpeit jong nga",
+  "ex": "Ha ka jingpeit jong nga, ka jaka barim ka don ka jingbam kaba kham bha."
+ },
+ {
+  "id": "ENG_CHUNK_0267",
+  "t": "Me tip",
+  "ex": "Ka dei kata ka jaka rit, me tip, jan ka dukan kpu."
+ },
+ {
+  "id": "ENG_CHUNK_0268",
+  "t": "Nga shu lehkai",
+  "ex": "Nga la bam baroh ka cake. Nga shu lehkai, ka dang sah."
+ },
+ {
+  "id": "ENG_CHUNK_0269",
+  "t": "Hynrei ban ong kaba dei, ...",
+  "ex": "U ju wan lait, hynrei ban ong kaba dei, ka jam ka la eh shibun."
+ },
+ {
+  "id": "ENG_CHUNK_0270",
+  "t": "Map ba nga kren hapdeng",
+  "ex": "Map ba nga kren hapdeng, hynrei ka taxi jong phi ka la poi."
+ },
+ {
+  "id": "ENG_CHUNK_0271",
+  "t": "Aiu ka ktien?",
+  "ex": "Ka la long... aiu ka ktien? Sngewrem."
+ },
+ {
+  "id": "ENG_CHUNK_0272",
+  "t": "Aiu ka kyrteng?",
+  "ex": "Ai ïa nga ka... aiu ka kyrteng... ka can opener."
+ },
+ {
+  "id": "ENG_CHUNK_0273",
+  "t": "Kumta hi nga la pyrkhat",
+  "ex": "Te ka dukan ka khang ha ka sngi Monday? Kumta hi nga la pyrkhat."
+ },
+ {
+  "id": "ENG_CHUNK_0274",
+  "t": "Ym shibun",
+  "ex": "Phi thngan? — Ym shibun, nga la bam bun mynsngi."
+ },
+ {
+  "id": "ENG_CHUNK_0275",
+  "t": "Nga mynjur shisha",
+  "ex": "Nga mynjur shisha, ka jrong eh."
+ },
+ {
+  "id": "ENG_CHUNK_0276",
+  "t": "Na hangno phi la sngew kata?",
+  "ex": "Ki khang ïa ka gym? Na hangno phi la sngew kata?"
+ },
+ {
+  "id": "ENG_CHUNK_0277",
+  "t": "Phi lah ban ong biang, sngewbha?",
+  "ex": "Map, phi lah ban ong biang, sngewbha? Don bun eh ka jingsawa hangne."
+ },
+ {
+  "id": "ENG_CHUNK_0278",
+  "t": "Ban ong da kawei pat ka rukom",
+  "ex": "Ban ong da kawei pat ka rukom: ka pisa kam biang kane u snem."
+ },
+ {
+  "id": "ENG_CHUNK_0279",
+  "t": "Nga dang ong aiu?",
+  "ex": "Map, ka phone. Nga dang ong aiu?"
+ },
+ {
+  "id": "ENG_CHUNK_0280",
+  "t": "Ka long ka jingïathuh kaba jrong",
+  "ex": "Balei phi la phai biang? — Ka long ka jingïathuh kaba jrong."
+ },
+ {
+  "id": "ENG_CHUNK_0281",
+  "t": "Kham bha ban khreh shwa",
+  "ex": "Nga la rah ka sweater kawei pat. Kham bha ban khreh shwa.",
+  "n": "No proverb; 'better to prepare beforehand' is the plain equivalent."
+ },
+ {
+  "id": "ENG_CHUNK_0282",
+  "t": "Ka suk ban ong, hynrei ka eh ban leh",
+  "ex": "Wat pyrkhat shuh? Ka suk ban ong, hynrei ka eh ban leh."
+ },
+ {
+  "id": "ENG_CHUNK_0283",
+  "t": "Bha ïa nga",
+  "ex": "Saturday ha shiphew baje? — Bha ïa nga."
+ },
+ {
+  "id": "ENG_CHUNK_0284",
+  "t": "Nga wan lem!",
+  "ex": "Me leit kiew lum ha ka sngi Sunday? Nga wan lem!"
+ },
+ {
+  "id": "ENG_CHUNK_0285",
+  "t": "Shim noh ïa kaba sah",
+  "ex": "Kane arphew tyngka. Shim noh ïa kaba sah."
+ },
+ {
+  "id": "ENG_CHUNK_0286",
+  "t": "Nga shu peit, khublei",
+  "ex": "Nga lah ban ïarap ïa phi? — Nga shu peit, khublei."
+ },
+ {
+  "id": "ENG_CHUNK_0287",
+  "t": "Shong suk / Leit suk",
+  "ex": "Khublei na ka bynta ka kophi. Shong suk!",
+  "n": "The leaver says shong suk; the one staying answers leit suk."
+ },
+ {
+  "id": "ENG_CHUNK_0288",
+  "t": "Nga la sngewkmen ban ïakren bad phi",
+  "ex": "Nga hap ban leit, hynrei nga la sngewkmen ban ïakren bad phi."
+ },
+ {
+  "id": "ENG_CHUNK_0289",
+  "t": "Kumno phi ha kine ki sngi?",
+  "ex": "Hei, Mike! Kumno phi ha kine ki sngi?"
+ },
+ {
+  "id": "ENG_CHUNK_0290",
+  "t": "Aiu me la leh ha kine ki sngi?",
+  "ex": "Te, aiu me la leh naduh ba me la dep ka jingpule?"
+ },
+ {
+  "id": "ENG_CHUNK_0291",
+  "t": "Nyngkong",
+  "ex": "Nyngkong ngam ieid ïa ka kam thymmai, hynrei mynta nga ieid shibun."
+ },
+ {
+  "id": "ENG_CHUNK_0292",
+  "t": "Lait na kata",
+  "ex": "Ka kamra ka rit khyndiat. Lait na kata, ka bha baroh."
+ },
+ {
+  "id": "ENG_CHUNK_0293",
+  "t": "Ba nyngkong",
+  "ex": "Ba nyngkong, khublei ba phi la wan."
+ },
+ {
+  "id": "ENG_CHUNK_0294",
+  "t": "Hadien",
+  "ex": "Ngi la bam ja mynsngi ha Police Bazar, bad hadien ngi la leit peit phlim."
+ },
+ {
+  "id": "ENG_CHUNK_0295",
+  "t": "Haduh mynta",
+  "ex": "Kumno ka kam thymmai? — Haduh mynta, ka bha shibun."
+ },
+ {
+  "id": "ENG_CHUNK_0296",
+  "t": "Lada lah",
+  "ex": "Nga kwah ka jaka shong jan ka window, lada lah."
+ },
+ {
+  "id": "ENG_CHUNK_0297",
+  "t": "Kata namar ba",
+  "ex": "Ki khynnah ki shong suk. Kata namar ba ki dang peit cartoon."
+ },
+ {
+  "id": "ENG_CHUNK_0298",
+  "t": "kumta ka mut ba",
+  "ex": "Ka jingkieng ka khang, kumta ka mut ba ngin hap ban leit da kawei pat ka lynti."
+ },
+ {
+  "id": "ENG_CHUNK_0299",
+  "t": "Khublei ïa [person], ... / da ka jingïarap jong [person]",
+  "ex": "Khublei ïa phi, ngi la poi ha por."
+ },
+ {
+  "id": "ENG_CHUNK_0300",
+  "t": "kum",
+  "ex": "Rah khyndiat ki jingbam rit, kum ki soh ne ki biscuit."
+ }
+]

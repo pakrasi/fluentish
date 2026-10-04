@@ -1,0 +1,642 @@
+{
+ "L1-1": {
+  "evidence": "Seit genau einem Jahr wohnen wir im Haus meiner Eltern.",
+  "evidence_en": "We have been living in my parents' house for exactly one year.",
+  "why": "„Seit genau einem Jahr“ = „seit einem Jahr“, und „Haus meiner Eltern“ = Haus der Eltern der Autorin. Also richtig.",
+  "why_en": "\"For exactly one year\" matches \"for a year\", and \"my parents' house\" is the author's parents' house. So it is true.",
+  "trap": "Die „zwei Jahre“ im Text beziehen sich auf die Krankheit des Vaters, nicht auf den Umzug.",
+  "trap_en": "The \"two years\" in the text refer to when the father got ill, not to the move.",
+  "question_en": "The family has been living in the house of the author's parents for a year."
+ },
+ "L1-2": {
+  "evidence": "Meine Eltern haben sich im Erdgeschoss eine kleine Wohnung eingerichtet, wir wohnen oben im ersten Stock.",
+  "evidence_en": "My parents set up a small flat on the ground floor; we live upstairs on the first floor.",
+  "why": "Die Eltern wohnen im Erdgeschoss. Im ersten Stock wohnt die Familie der Autorin. Also falsch.",
+  "why_en": "The parents live on the ground floor. The author's family lives on the first floor. So it is false.",
+  "trap": "„Erster Stock“ steht im Text, aber es geht um die Autorin und ihre Familie, nicht um die Eltern.",
+  "trap_en": "\"First floor\" is in the text, but it refers to the author's family, not her parents.",
+  "question_en": "The author's parents live on the first floor."
+ },
+ "L1-3": {
+  "evidence": "Sie ist sechs und geht nach der Schule direkt zu ihrer Oma",
+  "evidence_en": "She is six and goes straight to her grandma after school",
+  "why": "„Oma“ = „Großmutter“. Emma geht nach der Schule direkt zu ihr. Also richtig.",
+  "why_en": "\"Oma\" means grandmother. Emma goes straight to her after school. So it is true.",
+  "trap": "Man könnte an Betreuung durch eine bezahlte Person denken, aber der Text sagt: „Wir müssen niemanden mehr für die Betreuung bezahlen.“",
+  "trap_en": "You might think of paid childcare, but the text says they no longer pay anyone for childcare.",
+  "question_en": "Emma goes to her grandmother after school."
+ },
+ "L1-4": {
+  "evidence": "Meine Mutter hat Emma anfangs jeden Tag Süßigkeiten gegeben, obwohl wir das nicht wollten.",
+  "evidence_en": "At first my mother gave Emma sweets every day, although we didn't want that.",
+  "why": "Es gab einen Konflikt über Süßigkeiten für Emma, also über ihre Erziehung. „Nie Streit“ ist falsch.",
+  "why_en": "There was a conflict about sweets for Emma, i.e. about how she is raised. \"Never an argument\" is false.",
+  "trap": "Das Problem wurde gelöst („seitdem gibt es die Schokolade nur noch am Wochenende“), aber am Anfang gab es den Konflikt trotzdem.",
+  "trap_en": "The problem was solved (chocolate only at weekends now), but there was still a conflict at first.",
+  "question_en": "There was never an argument about Emma's upbringing."
+ },
+ "L1-5": {
+  "evidence": "einmal pro Woche essen wir gemeinsam zu Abend",
+  "evidence_en": "once a week we have dinner together",
+  "why": "Sie essen nur einmal pro Woche zusammen zu Abend, nicht jeden Abend. Also falsch.",
+  "why_en": "They have dinner together only once a week, not every evening. So it is false.",
+  "trap": "Gemeinsames Essen gibt es wirklich (Sonntagsfrühstück, ein Abendessen pro Woche), aber die Häufigkeit „jeden Abend“ stimmt nicht.",
+  "trap_en": "They really do eat together (Sunday breakfast, one dinner a week), but \"every evening\" is the wrong frequency.",
+  "question_en": "The two families eat together every evening."
+ },
+ "L1-6": {
+  "evidence": "dann weiß ich, dass wir das Richtige getan haben. Zurück in die alte Wohnung möchte niemand von uns.",
+  "evidence_en": "then I know that we did the right thing. None of us wants to go back to the old flat.",
+  "why": "„Das Richtige getan“ und niemand will zurück: Die Autorin ist zufrieden. Also richtig.",
+  "why_en": "\"We did the right thing\" and nobody wants to go back: the author is satisfied. So it is true.",
+  "trap": "Sie gibt zu, dass ihr manchmal die Privatsphäre fehlt, aber das ändert ihre positive Meinung nicht.",
+  "trap_en": "She admits she sometimes misses her privacy, but that does not change her positive overall view.",
+  "question_en": "The author is satisfied with the decision."
+ },
+ "L2-1": {
+  "evidence": "Ältere Menschen, die Zeit haben und Kinder mögen, helfen Familien, deren Großeltern weit weg wohnen oder nicht mehr leben.",
+  "evidence_en": "Older people who have time and like children help families whose grandparents live far away or are no longer alive.",
+  "why": "Der Verein vermittelt Kontakte zwischen Senioren und Familien ohne Großeltern in der Nähe. Das ist Antwort a.",
+  "why_en": "The association connects older people with families whose grandparents are not nearby. That is answer a.",
+  "trap": "b ist falsch: „Geld gibt es dafür nicht, nur die Fahrtkosten werden ersetzt.“",
+  "trap_en": "b is wrong: there is no money for it, only travel costs are reimbursed.",
+  "question_en": "The association in Münster …",
+  "options_en": [
+   "brings older people together with families whose grandparents live far away.",
+   "is looking for grandparents who want to earn money.",
+   "offers courses for grandparents."
+  ]
+ },
+ "L2-2": {
+  "evidence": "Jeden Dienstag um halb drei steht Hildegard Meier vor der Kita „Pusteblume“ in Münster und holt zwei Kinder ab",
+  "evidence_en": "Every Tuesday at half past two Hildegard Meier stands outside the Pusteblume daycare in Münster and picks up two children",
+  "why": "„Jeden Dienstag“ = einmal pro Woche. Sie holt die Kinder von der Kita ab. Also b.",
+  "why_en": "\"Every Tuesday\" means once a week, and she picks the children up from daycare. So b.",
+  "trap": "c ist falsch: Ihre eigenen Enkel wohnen in Kanada, sie sieht sie nur „einmal im Jahr“, nicht jede Woche.",
+  "trap_en": "c is wrong: her own grandchildren live in Canada and she sees them only once a year, not every week.",
+  "question_en": "Ms Meier …",
+  "options_en": [
+   "gets a salary for her help.",
+   "picks the children up from nursery once a week.",
+   "sees her own grandchildren every week."
+  ]
+ },
+ "L2-3": {
+  "evidence": "Familien müssen zurzeit etwa ein halbes Jahr warten, bis sich eine passende Person findet.",
+  "evidence_en": "Families currently have to wait about six months until a suitable person is found.",
+  "why": "Die Familien warten etwa ein halbes Jahr. Das ist Antwort c.",
+  "why_en": "Families wait about six months. That is answer c.",
+  "trap": "a ist falsch: Das Führungszeugnis müssen die Leihomas und Leihopas vorlegen, nicht die Familien.",
+  "trap_en": "a is wrong: the police certificate is required from the volunteer grandparents, not from the families.",
+  "question_en": "Families who want to take part …",
+  "options_en": [
+   "have to present a certificate of good conduct.",
+   "get a 'rent-a-granny' immediately.",
+   "often have to wait half a year."
+  ]
+ },
+ "L2-4": {
+  "evidence": "Ab dem dreißigsten Lebensjahr wird es deutlich schwieriger, Freundschaften zu pflegen.",
+  "evidence_en": "From the age of thirty it becomes much harder to maintain friendships.",
+  "why": "„Ab dem dreißigsten Lebensjahr“ = „nach dem dreißigsten Lebensjahr“. Also b.",
+  "why_en": "\"From the age of thirty\" matches \"after the thirtieth year\". So b.",
+  "trap": "a ist falsch: Der Durchschnitt ist 3,7 enge Freunde, nicht mehr als fünf.",
+  "trap_en": "a is wrong: the average is 3.7 close friends, not more than five.",
+  "question_en": "According to the survey …",
+  "options_en": [
+   "most adults have more than five close friends.",
+   "after the age of thirty it becomes harder to maintain friendships.",
+   "people with children have the most friends."
+  ]
+ },
+ "L2-5": {
+  "evidence": "Vereinbaren Sie feste Termine, so wie beim Sport oder beim Zahnarzt.",
+  "evidence_en": "Arrange fixed appointments, as you would for sport or the dentist.",
+  "why": "Frau Berg rät zu festen Terminen mit Freunden. Das ist Antwort c.",
+  "why_en": "Dr Berg advises fixed appointments with friends. That is answer c.",
+  "trap": "b ist falsch: Sie sagt nicht, nur zu besonderen Anlässen; sie will regelmäßige Termine statt spontaner Treffen.",
+  "trap_en": "b is wrong: she doesn't say only on special occasions; she wants regular fixed dates instead of waiting for spontaneous meetings.",
+  "question_en": "Ms Berg recommends …",
+  "options_en": [
+   "getting to know as many new people as possible.",
+   "meeting friends only on special occasions.",
+   "arranging fixed appointments with friends."
+  ]
+ },
+ "L2-6": {
+  "evidence": "Trotzdem telefonieren sie seit zwölf Jahren jeden Sonntag um 20 Uhr.",
+  "evidence_en": "Nevertheless, for twelve years they have phoned every Sunday at 8 pm.",
+  "why": "„Jeden Sonntag um 20 Uhr“ = jede Woche zur gleichen Zeit. Also a.",
+  "why_en": "\"Every Sunday at 8 pm\" means every week at the same time. So a.",
+  "trap": "c ist falsch: Das Krankenhaus kommt vor, aber nur als Grund für ein ausgefallenes Gespräch. Kennengelernt haben sie sich im Fußballverein.",
+  "trap_en": "c is wrong: the hospital is mentioned only as the reason one call was missed. They met at the football club.",
+  "question_en": "Sven and Ali …",
+  "options_en": [
+   "have been phoning every week at the same time for years.",
+   "live in the same city.",
+   "got to know each other in hospital."
+  ]
+ },
+ "L3-1": {
+  "evidence": "Du bist gerade hergezogen und kennst noch niemanden?",
+  "evidence_en": "You've just moved here and don't know anyone yet?",
+  "why": "Der Stammtisch ist für Leute, die neu in der Stadt sind, und für 20 bis 35 Jahre. Julia ist 28. Also C.",
+  "why_en": "The regulars' meetup is for people new in town aged 20 to 35. Julia is 28. So C.",
+  "trap": "E (Sonntagstisch) ist auch zum Leute-Treffen, aber für Menschen, die nicht allein essen wollen, nicht speziell für junge Leute, die neu sind.",
+  "trap_en": "E (Sunday lunch) is also about company, but it is for people who don't want to eat alone, not specifically for young newcomers.",
+  "question_en": "Julia (28) is new in the city and wants to get to know people her age."
+ },
+ "L3-2": {
+  "evidence": "passt auf Ihre Kinder auf – nachmittags und am Wochenende, auch regelmäßig",
+  "evidence_en": "looks after your children – in the afternoons and at weekends, regularly too",
+  "why": "Die Babysitterin kommt nachmittags und regelmäßig, also auch zweimal pro Woche. Das passt zu den Webers. Also G.",
+  "why_en": "The babysitter works afternoons and on a regular basis, so twice a week is possible. That fits the Webers. So G.",
+  "trap": "H (Tagespflege) bietet auch Betreuung tagsüber, aber für Senioren, nicht für Kinder.",
+  "trap_en": "H (day care) also offers daytime care, but for senior citizens, not children.",
+  "question_en": "Mr and Mrs Weber are looking for someone who looks after their daughter (4) twice a week in the afternoon."
+ },
+ "L3-3": {
+  "evidence": "Unsere Psychologinnen helfen Paaren, wieder miteinander zu reden.",
+  "evidence_en": "Our psychologists help couples to talk to each other again.",
+  "why": "Selma und ihr Mann streiten und wollen mit einem Fachmann sprechen. Psychologinnen für Paare = Paarberatung. Also A.",
+  "why_en": "Selma and her husband argue and want to talk to a professional. Psychologists for couples means couples counselling. So A.",
+  "trap": "F hat auch eine Beraterin, aber der Kurs ist für Eltern von Teenagern, nicht für Paarprobleme.",
+  "trap_en": "F also has a counsellor, but the course is for parents of teenagers, not for couple problems.",
+  "question_en": "Selma and her husband have been arguing very often lately and want to talk to a professional about it."
+ },
+ "L3-4": {
+  "evidence": "das perfekte Geschenk zu Hochzeitstag, Geburtstag oder Jubiläum",
+  "evidence_en": "the perfect gift for a wedding anniversary, birthday or jubilee",
+  "why": "Die goldene Hochzeit ist ein Hochzeitstag. Ein Film aus Familienfotos ist ein persönliches Geschenk. Also I.",
+  "why_en": "A golden wedding is a wedding anniversary, and a film made from family photos is a personal gift. So I.",
+  "trap": "J (Hochzeitsfotografie) hat das Wort „Hochzeit“, aber es geht um Fotos am Hochzeitstag selbst, nicht um ein Geschenk für die Großeltern.",
+  "trap_en": "J (wedding photography) shares the word \"wedding\", but it is about photos on the wedding day itself, not a gift for grandparents.",
+  "question_en": "Timo wants to give his grandparents a personal present for their golden wedding anniversary."
+ },
+ "L3-5": {
+  "evidence": "Jeden Sonntag um 12:30 Uhr kochen Freiwillige ein Drei-Gänge-Menü für alle, die Gesellschaft suchen.",
+  "evidence_en": "Every Sunday at 12:30 volunteers cook a three-course meal for everyone looking for company.",
+  "why": "Karin will sonntags nicht allein essen. Der Sonntagstisch ist genau für Menschen, die Gesellschaft suchen. Also E.",
+  "why_en": "Karin doesn't want to eat alone on Sundays. The Sunday table is exactly for people looking for company. So E.",
+  "trap": "H (Tagespflege) hat auch Mittagessen für Senioren, aber nur Montag bis Freitag, nicht am Sonntag.",
+  "trap_en": "H (day care) also serves lunch to seniors, but only Monday to Friday, not on Sunday.",
+  "question_en": "Karin (68) lives alone and doesn't want to always eat alone on Sundays."
+ },
+ "L3-6": {
+  "evidence": "Für Seniorinnen und Senioren, die tagsüber Betreuung brauchen, abends aber zu Hause sein möchten.",
+  "evidence_en": "For senior citizens who need care during the day but want to be at home in the evening.",
+  "why": "Keine Anzeige passt (0). Aylins Vater braucht ein Heim mit Betreuung auch nachts.",
+  "why_en": "No ad fits (0). Aylin's father needs a care home with care at night too.",
+  "trap": "H ist fast richtig, aber die Tagespflege ist nur 8–16 Uhr; abends und nachts sind die Senioren zu Hause.",
+  "trap_en": "H is a near miss: the day care runs only 8 am to 4 pm, and in the evening and at night the seniors are at home.",
+  "question_en": "Aylin's father (80) can no longer live alone. She is looking for a nearby care home where he is also looked after at night."
+ },
+ "L3-7": {
+  "evidence": "Drei Tage Natur mit anderen Familien",
+  "evidence_en": "Three days in nature with other families",
+  "why": "Das Zeltwochenende ist mit anderen Familien, für Kinder von 6 bis 14, in den Herbstferien. Daniels Kinder sind 7 und 10. Also D.",
+  "why_en": "The camping weekend is with other families, for children aged 6 to 14, in the autumn holidays. Daniel's children are 7 and 10. So D.",
+  "trap": "B (Kindergeburtstag im Zoo) ist für Kinder, aber es ist eine Geburtstagsfeier, keine Ferienaktivität mit anderen Familien.",
+  "trap_en": "B (zoo birthday party) is for children, but it is a birthday party, not a holiday activity with other families.",
+  "question_en": "Daniel wants to do something with his children (7 and 10) together with other families during the holidays."
+ },
+ "L4-1": {
+  "evidence": "Es war die beste Entscheidung meines Lebens.",
+  "evidence_en": "It was the best decision of my life.",
+  "why": "Lars ist mit 18 ausgezogen und hat dabei viel gelernt. Er findet frühes Ausziehen gut: Ja.",
+  "why_en": "Lars moved out at 18 and learned a lot. He thinks moving out early is good: yes.",
+  "trap": "„winziges Zimmer“ klingt negativ, aber das ist nur ein Detail; seine Meinung ist klar positiv.",
+  "trap_en": "\"Tiny room\" sounds negative, but it is just a detail; his opinion is clearly positive.",
+  "question_en": "Lars, Bochum: I moved out at 18, into a tiny room in a shared flat. There I learned to cook, handle money and pay bills. My parents would have done all that for me. It was the best decision of my life."
+ },
+ "L4-2": {
+  "evidence": "Warum sollte er ausziehen, nur weil man das angeblich so macht?",
+  "evidence_en": "Why should he move out just because that's supposedly what people do?",
+  "why": "Beate findet es gut, dass ihr Sohn mit 24 noch zu Hause wohnt. Sie ist dagegen: Nein.",
+  "why_en": "Beate is happy that her 24-year-old son still lives at home. She is against it: no.",
+  "trap": "Die Frage „Warum sollte er ausziehen?“ ist rhetorisch und bedeutet: Er muss nicht ausziehen.",
+  "trap_en": "\"Why should he move out?\" is a rhetorical question meaning he doesn't need to.",
+  "question_en": "Beate, Passau: My son is 24, studies and still lives with us. He saves on rent, we have a good relationship, and he helps with the housework. Why should he move out just because that's supposedly what you do? Rents are unaffordable anyway."
+ },
+ "L4-3": {
+  "evidence": "Sobald ich etwas Bezahlbares finde, bin ich weg.",
+  "evidence_en": "As soon as I find something affordable, I'm gone.",
+  "why": "Nadia will so schnell wie möglich ausziehen, sie findet nur keine Wohnung. Also Ja.",
+  "why_en": "Nadia wants to move out as soon as possible; she just can't find a flat. So yes.",
+  "trap": "Sie wohnt noch zu Hause, aber „nicht freiwillig“ – das ist keine Meinung gegen das Ausziehen.",
+  "trap_en": "She still lives at home, but \"not voluntarily\" – that is not an opinion against moving out.",
+  "question_en": "Nadia, Hanover: I'm 22 and still live at home, but not voluntarily – I simply can't find a flat. I admit I argue with my mother every day about little things. As soon as I find something affordable, I'm gone."
+ },
+ "L4-4": {
+  "evidence": "Diese deutsche Idee vom schnellen Ausziehen halte ich für überholt.",
+  "evidence_en": "I think this German idea of moving out quickly is outdated.",
+  "why": "„Überholt“ = altmodisch, nicht mehr richtig. Georg ist gegen schnelles Ausziehen: Nein.",
+  "why_en": "\"Outdated\" means old-fashioned, no longer valid. Georg is against moving out quickly: no.",
+  "trap": "„Selbstständig wird man“ klingt positiv, aber er sagt: durch Verantwortung, nicht durch eine eigene Wohnung.",
+  "trap_en": "\"You become independent\" sounds positive, but he says through responsibility, not through your own flat.",
+  "question_en": "Georg, Trier: In many countries three generations live together, and nobody finds that strange. You become independent through responsibility, not through having your own flat. I consider this German idea of moving out quickly outdated."
+ },
+ "L4-5": {
+  "evidence": "Also: raus, so früh wie möglich.",
+  "evidence_en": "So: out, as early as possible.",
+  "why": "Simone sagt direkt, man soll so früh wie möglich ausziehen. Also Ja.",
+  "why_en": "Simone says directly that you should move out as early as possible. So yes.",
+  "trap": "Sie spricht über junge Leute, die zu Hause bleiben, aber als negatives Beispiel, nicht als Empfehlung.",
+  "trap_en": "She talks about young people who stay at home, but as a negative example, not a recommendation.",
+  "question_en": "Simone, Halle: As a psychologist I see young adults who at 28 have never made a decision of their own because their parents always sorted everything out. Anyone who stays at home too long often lacks courage later. So: out, as early as possible."
+ },
+ "L4-6": {
+  "evidence": "Jeder braucht seinen eigenen Zeitpunkt, und schnell ist nicht automatisch besser.",
+  "evidence_en": "Everyone needs their own moment, and fast isn't automatically better.",
+  "why": "Kevin sagt, schnell ist nicht automatisch besser. Er ist gegen die Idee „so schnell wie möglich“: Nein.",
+  "why_en": "Kevin says fast is not automatically better. He is against \"as quickly as possible\": no.",
+  "trap": "Er ist mit 19 früh ausgezogen, aber das hat nicht geklappt; darum ist seine Meinung Nein.",
+  "trap_en": "He did move out early at 19, but it didn't work out; that is why his answer is no.",
+  "question_en": "Kevin, Bremen: I moved out at 19 and after a year went back to my parents because I couldn't cope with money. Today, at 27, I live alone again and it works. Everyone needs their own timing, and fast is not automatically better."
+ },
+ "L4-7": {
+  "evidence": "Heute bin ich ihnen dankbar, denn ich habe viel früher als meine Freunde auf eigenen Beinen gestanden.",
+  "evidence_en": "Today I'm grateful to them, because I stood on my own two feet much earlier than my friends.",
+  "why": "Ines ist dankbar, dass sie früh ausziehen musste. Also Ja.",
+  "why_en": "Ines is grateful that she had to move out early. So yes.",
+  "trap": "„Damals war ich wütend“ ist ihre alte Reaktion; ihre heutige Meinung ist positiv.",
+  "trap_en": "\"Back then I was angry\" was her old reaction; her opinion today is positive.",
+  "question_en": "Ines, Görlitz: At 18 my parents told me clearly: after your Abitur you find yourself a flat. I was angry at the time. Today I'm grateful to them, because I stood on my own two feet much earlier than my friends."
+ },
+ "L5-1": {
+  "evidence": "Ein Kind kann pro Tag höchstens drei Stunden betreut werden.",
+  "evidence_en": "A child can be looked after for a maximum of three hours per day.",
+  "why": "„Höchstens drei Stunden“ steht wörtlich im Text. Also b.",
+  "why_en": "\"A maximum of three hours\" is stated directly. So b.",
+  "trap": "a ist falsch: Das Spielzimmer ist 14 bis 18 Uhr offen, aber ein Kind darf nicht die ganzen vier Stunden bleiben.",
+  "trap_en": "a is wrong: the playroom is open 2–6 pm, but a child may not stay the whole four hours.",
+  "question_en": "Children in the playroom …",
+  "options_en": [
+   "may stay the whole afternoon.",
+   "may stay for three hours at most.",
+   "must be older than eight."
+  ]
+ },
+ "L5-2": {
+  "evidence": "Die Eltern müssen sich während der Betreuung im Haus aufhalten",
+  "evidence_en": "Parents must stay in the building during the childcare",
+  "why": "„Sich im Haus aufhalten“ = im Haus bleiben. Also a.",
+  "why_en": "\"Stay in the building\" matches answer a.",
+  "trap": "c ist falsch: Die Eltern müssen im Haus sein, zum Beispiel im Café oder in einem Kurs, nicht im Spielzimmer.",
+  "trap_en": "c is wrong: parents must be in the building, e.g. in the café or a course, not in the playroom.",
+  "question_en": "During the childcare …",
+  "options_en": [
+   "the parents must stay in the building.",
+   "the parents can go shopping in town.",
+   "the parents must sit in the playroom."
+  ]
+ },
+ "L5-3": {
+  "evidence": "Die Räume sind gereinigt zurückzugeben; andernfalls wird die Kaution einbehalten.",
+  "evidence_en": "The rooms must be returned clean; otherwise the deposit is kept.",
+  "why": "Nur wenn der Raum sauber ist, bekommt man die Kaution zurück. Also c.",
+  "why_en": "You only get the deposit back if the room is clean. So c.",
+  "trap": "a ist falsch: 50 € ist die Kaution; die Miete ist 80 € pro Tag. b ist falsch: Musik nur bis 22 Uhr.",
+  "trap_en": "a is wrong: €50 is the deposit; the rent is €80 per day. b is wrong: music only until 10 pm.",
+  "question_en": "Anyone who rents a room for a party …",
+  "options_en": [
+   "pays 50 euros rent per day.",
+   "may play music until midnight.",
+   "only gets the deposit back if the room is clean."
+  ]
+ },
+ "L5-4": {
+  "evidence": "Ein Kurs findet nur statt, wenn sich mindestens fünf Personen angemeldet haben.",
+  "evidence_en": "A course only takes place if at least five people have registered.",
+  "why": "Mindestens fünf sind nötig; bei weniger als fünf fällt der Kurs aus. Also a.",
+  "why_en": "At least five are needed; with fewer than five the course is cancelled. So a.",
+  "trap": "b klingt logisch, aber eine kranke Kursleitung wird im Text nicht erwähnt.",
+  "trap_en": "b sounds plausible, but an ill course leader is never mentioned in the text.",
+  "question_en": "A course does not take place if …",
+  "options_en": [
+   "fewer than five people have registered.",
+   "the course leader is ill.",
+   "it falls on the weekend."
+  ]
+ },
+ "H1-1a": {
+  "evidence": "Wir hatten ja den Sonntag geplant, aber Tante Rosi kann nur am Samstag, deshalb feiern wir jetzt am Samstag.",
+  "evidence_en": "We had planned Sunday, but Aunt Rosi can only do Saturday, so we're now celebrating on Saturday.",
+  "why": "Die Feier ist jetzt am Samstag, nicht am Sonntag. Also falsch.",
+  "why_en": "The party is now on Saturday, not Sunday. So false.",
+  "trap": "„Sonntag“ wird zuerst genannt, aber nur als alter Plan, der geändert wurde.",
+  "trap_en": "\"Sunday\" is said first, but only as the old plan that was changed.",
+  "question_en": "The birthday party takes place on Sunday."
+ },
+ "H1-1b": {
+  "evidence": "Könntest du außerdem die Oma abholen?",
+  "evidence_en": "Could you also pick up Grandma?",
+  "why": "„Oma“ = „Großmutter“. Nina soll sie abholen. Also a.",
+  "why_en": "\"Oma\" means grandmother, and Nina is asked to pick her up. So a.",
+  "trap": "b ist falsch: Der Vater hat das Restaurant schon reserviert („Ich habe … reserviert“).",
+  "trap_en": "b is wrong: the father has already booked the restaurant himself.",
+  "question_en": "Nina should …",
+  "options_en": [
+   "pick up her grandmother.",
+   "book the restaurant.",
+   "bake a cake."
+  ]
+ },
+ "H1-2a": {
+  "evidence": "Der Eintritt ist frei",
+  "evidence_en": "Admission is free",
+  "why": "„Eintritt frei“ = man muss keinen Eintritt bezahlen. Also richtig.",
+  "why_en": "\"Admission is free\" means you don't pay to get in. So true.",
+  "trap": "Bezahlen muss man eventuell für Essen und Getränke, aber nicht für den Eintritt.",
+  "trap_en": "You may pay for food and drinks, but not for entry.",
+  "question_en": "You don't have to pay an entrance fee for the family festival."
+ },
+ "H1-2b": {
+  "evidence": "sie beginnt jetzt aber schon um vierzehn Uhr",
+  "evidence_en": "but it now starts at two o'clock already",
+  "why": "Die Zaubershow beginnt jetzt um vierzehn Uhr. Also b.",
+  "why_en": "The magic show now starts at 2 pm. So b.",
+  "trap": "a ist falsch: Fünfzehn Uhr war nur der ursprüngliche Plan. c: Elf Uhr ist der Beginn des ganzen Festes.",
+  "trap_en": "a is wrong: 3 pm was only the original plan. c: 11 am is when the whole festival starts.",
+  "question_en": "The magic show starts …",
+  "options_en": [
+   "at three p.m.",
+   "at two p.m.",
+   "at eleven o'clock."
+  ]
+ },
+ "H1-3a": {
+  "evidence": "nicht am Eingang Ost, sondern an der Information neben dem Eingang West",
+  "evidence_en": "not at the East entrance, but at the information desk next to the West entrance",
+  "why": "Leon wartet an der Information neben dem Eingang West. Also falsch.",
+  "why_en": "Leon is waiting at the information desk by the West entrance. So false.",
+  "trap": "„Eingang Ost“ wird gesagt, aber mit „nicht“ davor.",
+  "trap_en": "\"East entrance\" is said, but with \"not\" in front of it.",
+  "question_en": "The child is waiting at the east entrance."
+ },
+ "H1-3b": {
+  "evidence": "die Spielecke im zweiten Stock heute wegen Reinigungsarbeiten geschlossen bleibt",
+  "evidence_en": "the play corner on the second floor stays closed today because of cleaning work",
+  "why": "Die Spielecke bleibt heute geschlossen. Also c.",
+  "why_en": "The play corner stays closed today. So c.",
+  "trap": "a ist falsch: Im ersten Stock ist die Leseecke in der Buchhandlung als Alternative, die Spielecke ist nicht umgezogen.",
+  "trap_en": "a is wrong: the first floor has the reading corner in the bookshop as an alternative; the play corner has not moved.",
+  "question_en": "The play corner …",
+  "options_en": [
+   "has moved to the first floor.",
+   "only opens in the afternoon.",
+   "is closed today."
+  ]
+ },
+ "H1-4a": {
+  "evidence": "Meine Mutter ist heute Morgen ins Krankenhaus gekommen",
+  "evidence_en": "My mother was taken to hospital this morning",
+  "why": "Maras Mutter ist im Krankenhaus, weil sie sich das Bein gebrochen hat. Also richtig.",
+  "why_en": "Mara's mother is in hospital because she broke her leg. So true.",
+  "trap": "„Nichts Schlimmes“ bedeutet nicht, dass sie nicht im Krankenhaus ist.",
+  "trap_en": "\"Nothing serious\" doesn't mean she isn't in hospital.",
+  "question_en": "Mara's mother is in hospital."
+ },
+ "H1-4b": {
+  "evidence": "Am Samstagnachmittag hätte ich aber Zeit",
+  "evidence_en": "But I would have time on Saturday afternoon",
+  "why": "Mara hat am Samstagnachmittag Zeit. Also b.",
+  "why_en": "Mara is free on Saturday afternoon. So b.",
+  "trap": "a ist falsch: Am Freitagabend kann sie „doch nicht“. Frau Kern wäre am Freitag frei, nicht Mara.",
+  "trap_en": "a is wrong: on Friday evening she can't after all. It's the neighbour Frau Kern who would be free on Friday, not Mara.",
+  "question_en": "Mara can …",
+  "options_en": [
+   "look after the children on Friday evening.",
+   "look after the children on Saturday afternoon.",
+   "not help at all this week."
+  ]
+ },
+ "H1-5a": {
+  "evidence": "Kinder unter sechs Jahren übernachten kostenlos",
+  "evidence_en": "Children under six stay free",
+  "why": "Das wird genau so gesagt. Also richtig.",
+  "why_en": "This is said exactly like that. So true.",
+  "trap": "Nicht verwechseln: Kinder bis zwölf zahlen die Hälfte, aber unter sechs ist es kostenlos.",
+  "trap_en": "Don't mix it up: children up to twelve pay half, but under six it's free.",
+  "question_en": "Children under six stay for free."
+ },
+ "H1-5b": {
+  "evidence": "Wer sieben Nächte bucht, zahlt nur sechs.",
+  "evidence_en": "Book seven nights, pay only for six.",
+  "why": "„Zahlt nur sechs“ = zahlt nur für sechs Nächte. Also a.",
+  "why_en": "\"Pays only six\" means pays for only six nights. So a.",
+  "trap": "c ist falsch: Kostenlos sind nur Kinder unter sechs, und das hat nichts mit sieben Nächten zu tun.",
+  "trap_en": "c is wrong: only children under six are free, and that has nothing to do with booking seven nights.",
+  "question_en": "Anyone who books seven nights …",
+  "options_en": [
+   "only pays for six nights.",
+   "gets a room with a balcony.",
+   "pays nothing for the children."
+  ]
+ },
+ "H2-1": {
+  "evidence": "Sie können Ihr Kind zwischen halb acht und neun Uhr bringen. Bitte nicht später als neun",
+  "evidence_en": "You can bring your child between half past seven and nine. Please no later than nine",
+  "why": "„Nicht später als neun“ = bis neun Uhr. Also a.",
+  "why_en": "\"No later than nine\" means by nine o'clock. So a.",
+  "trap": "c ist falsch: Halb acht ist die früheste Zeit, nicht eine Pflichtzeit.",
+  "trap_en": "c is wrong: half past seven is the earliest time, not a required time.",
+  "question_en": "The children have to …",
+  "options_en": [
+   "be brought by nine o'clock.",
+   "be brought by eight o'clock.",
+   "be at the nursery at half past seven."
+  ]
+ },
+ "H2-2": {
+  "evidence": "Wenn Ihr Kind krank ist, rufen Sie uns bitte bis neun Uhr an. Eine E-Mail reicht nicht",
+  "evidence_en": "If your child is ill, please call us by nine o'clock. An email is not enough",
+  "why": "Die Eltern sollen bis neun Uhr anrufen. Also b.",
+  "why_en": "Parents should phone by nine. So b.",
+  "trap": "a ist falsch: „Eine E-Mail reicht nicht“ – E-Mail wird genannt, aber negativ.",
+  "trap_en": "a is wrong: email is mentioned, but only to say it is not enough.",
+  "question_en": "If a child is ill, …",
+  "options_en": [
+   "the parents should write an e-mail.",
+   "the parents should call by nine o'clock.",
+   "a doctor's certificate must be brought."
+  ]
+ },
+ "H2-3": {
+  "evidence": "Bitte keine Süßigkeiten, und ganz wichtig: keine Nüsse",
+  "evidence_en": "Please no sweets, and very important: no nuts",
+  "why": "Beim Frühstück von zu Hause sind Nüsse verboten, wegen einer Allergie. Also c.",
+  "why_en": "Nuts are not allowed in breakfast from home because of an allergy. So c.",
+  "trap": "a ist falsch: Das Frühstück bringen die Kinder von zu Hause mit; aus der Kita-Küche kommt nur das Mittagessen.",
+  "trap_en": "a is wrong: children bring breakfast from home; only lunch comes from the daycare kitchen.",
+  "question_en": "For breakfast …",
+  "options_en": [
+   "the children get food from the nursery.",
+   "the children may bring sweets.",
+   "the children may not bring nuts."
+  ]
+ },
+ "H2-4": {
+  "evidence": "In der ersten Woche bleibt ein Elternteil mit in der Gruppe",
+  "evidence_en": "In the first week one parent stays in the group",
+  "why": "Genau so wird es gesagt. Also a.",
+  "why_en": "This is said exactly. So a.",
+  "trap": "c ist falsch: Waldtag ist jeden Donnerstag; dass er in der ersten Woche ausfällt, wird nicht gesagt.",
+  "trap_en": "c is wrong: forest day is every Thursday; nothing says it is skipped in the first week.",
+  "question_en": "In the first week …",
+  "options_en": [
+   "one parent stays in the group.",
+   "the children only go to nursery until ten o'clock.",
+   "there is no forest day."
+  ]
+ },
+ "H2-5": {
+  "evidence": "Die Kita ist drei Wochen im August geschlossen",
+  "evidence_en": "The daycare is closed for three weeks in August",
+  "why": "Die Schließzeit ist drei Wochen im August. Also b.",
+  "why_en": "The closure is three weeks in August. So b.",
+  "trap": "c ist falsch: Freitags kann man nur bis fünfzehn Uhr abholen, aber das ist eine kürzere Öffnungszeit, keine Schließzeit im Sinne der Frage.",
+  "trap_en": "c is wrong: on Fridays pick-up is only until 3 pm, but that is shorter opening hours, not the closure period asked about.",
+  "question_en": "The nursery is closed …",
+  "options_en": [
+   "in July.",
+   "for three weeks in August.",
+   "every Friday afternoon."
+  ]
+ },
+ "H3-1": {
+  "evidence": "Und jetzt antwortet sie seit drei Wochen nicht mehr auf meine Nachrichten.",
+  "evidence_en": "And now she hasn't answered my messages for three weeks.",
+  "why": "Hanna sagt, Lena antwortet seit drei Wochen nicht. Also richtig.",
+  "why_en": "Hanna says Lena hasn't replied for three weeks. So true.",
+  "trap": "Die kurze Geburtstagsnachricht ist keine echte Antwort auf Hannas Nachrichten.",
+  "trap_en": "The short birthday message isn't a real reply to Hanna's messages.",
+  "question_en": "Lena hasn't answered Hanna for three weeks."
+ },
+ "H3-2": {
+  "evidence": "Alle anderen waren da, nur sie nicht.",
+  "evidence_en": "Everyone else was there, just not her.",
+  "why": "Lena war nicht auf der Feier. Also falsch.",
+  "why_en": "Lena was not at the party. So false.",
+  "trap": "Lena hat eine Nachricht zum Geburtstag geschickt, aber sie war nicht da: „schade, dass ich nicht kommen kann“.",
+  "trap_en": "Lena sent a birthday message, but she didn't come: \"shame I can't come\".",
+  "question_en": "Lena was at Hanna's birthday party."
+ },
+ "H3-3": {
+  "evidence": "Vielleicht hat sie gerade Probleme, von denen du nichts weißt.",
+  "evidence_en": "Maybe she has problems right now that you don't know about.",
+  "why": "Das sagt Paul fast wörtlich. Also richtig.",
+  "why_en": "Paul says this almost word for word. So true.",
+  "trap": "Hanna glaubt, es liegt am neuen Freund, aber die Aussage fragt nach Pauls Meinung.",
+  "trap_en": "Hanna thinks the boyfriend is the reason, but the statement is about Paul's view.",
+  "question_en": "Paul thinks that Lena may have problems Hanna knows nothing about."
+ },
+ "H3-4": {
+  "evidence": "Nein. Ich habe nur geschrieben, vielleicht zehnmal. Anrufen traue ich mich nicht.",
+  "evidence_en": "No. I've only written, maybe ten times. I don't dare to call.",
+  "why": "Hanna hat nur geschrieben, nie angerufen. Also falsch.",
+  "why_en": "Hanna has only written, never called. So false.",
+  "trap": "„Zehnmal“ passt zu „mehrmals“, aber das waren Nachrichten, keine Anrufe.",
+  "trap_en": "\"Ten times\" fits \"several times\", but those were messages, not calls.",
+  "question_en": "Hanna has already tried several times to call Lena."
+ },
+ "H3-5": {
+  "evidence": "Als ich nach Berlin gezogen bin, habe ich den Kontakt zu meinem besten Freund verloren.",
+  "evidence_en": "When I moved to Berlin, I lost touch with my best friend.",
+  "why": "„Nach Berlin gezogen“ = Umzug. Paul hat den Kontakt verloren. Also richtig.",
+  "why_en": "\"Moved to Berlin\" is the move. Paul lost touch. So true.",
+  "trap": "Man könnte denken, es geht um Hanna, aber diese Geschichte erzählt Paul über sich selbst.",
+  "trap_en": "You might think this is about Hanna, but Paul tells this story about himself.",
+  "question_en": "Paul lost contact with a friend after his move."
+ },
+ "H3-6": {
+  "evidence": "Du rufst Lena an, und ich rufe Tobias an. Beide heute Abend.",
+  "evidence_en": "You call Lena and I'll call Tobias. Both tonight.",
+  "why": "Hanna sagt „Okay, das mache ich“ zu dem Deal: Sie ruft heute Abend an. Also richtig.",
+  "why_en": "Hanna answers \"Okay, I'll do it\" to the deal: she'll call tonight. So true.",
+  "trap": "Das Frühstück ist am Sonntag, aber der Anruf ist heute Abend.",
+  "trap_en": "The breakfast is on Sunday, but the call is tonight.",
+  "question_en": "Hanna wants to call Lena today."
+ },
+ "H3-7": {
+  "evidence": "Nein, das solltet ihr zu zweit machen.",
+  "evidence_en": "No, you two should do that alone.",
+  "why": "Paul sagt Nein; Hanna und Lena sollen allein frühstücken. Also falsch.",
+  "why_en": "Paul says no; Hanna and Lena should have breakfast just the two of them. So false.",
+  "trap": "Hanna fragt „Kommst du am Sonntag mit?“ – die Frage klingt nach Ja, aber Paul lehnt ab.",
+  "trap_en": "Hanna asks \"Will you come on Sunday?\", which sounds like a yes, but Paul says no.",
+  "question_en": "Paul is coming along to breakfast on Sunday."
+ },
+ "H4-1": {
+  "evidence": "Einzelkinder sind nicht egoistischer als andere Kinder",
+  "evidence_en": "Only children are no more selfish than other children",
+  "why": "Das sagt der Forscher Dr. Ostermann (a) fast wörtlich.",
+  "why_en": "The researcher Dr Ostermann (a) says this almost word for word.",
+  "trap": "Die Moderatorin nennt das Vorurteil „verwöhnt und egoistisch“ nur als Frage; die Antwort gibt Ostermann.",
+  "trap_en": "The host only mentions the \"spoiled and selfish\" prejudice as a question; Ostermann gives the answer.",
+  "question_en": "Only children are not more selfish than children with siblings."
+ },
+ "H4-2": {
+  "evidence": "Meine Kinder lernen jeden Tag, zu teilen, zu warten und Streit zu lösen",
+  "evidence_en": "My children learn every day to share, to wait and to settle arguments",
+  "why": "Frau Lehmann (b) spricht über ihre vier Kinder. „Streit lösen“ = Konflikte lösen.",
+  "why_en": "Ms Lehmann (b) is talking about her four children. \"Settle arguments\" means resolve conflicts.",
+  "trap": "Die Moderatorin sagt auch „meine Kinder … streiten“, aber sie sagt nicht, dass sie Konflikte lösen lernen.",
+  "trap_en": "The host also mentions her children arguing, but she doesn't say they learn to resolve conflicts.",
+  "question_en": "My children practise every day sharing and solving conflicts."
+ },
+ "H4-3": {
+  "evidence": "ich bin selbst Einzelkind und habe mir als Kind immer eine Schwester gewünscht",
+  "evidence_en": "I'm an only child myself and always wished for a sister as a child",
+  "why": "Das sagt die Moderatorin (mod) über sich selbst.",
+  "why_en": "The host (mod) says this about herself.",
+  "trap": "Das Thema Einzelkind passt zu Ostermann, aber er ist Forscher und spricht nicht über seine Kindheit.",
+  "trap_en": "The only-child topic fits Ostermann, but he's the researcher and doesn't talk about his own childhood.",
+  "question_en": "As a child I would have liked to have a sister."
+ },
+ "H4-4": {
+  "evidence": "wichtiger als die Zahl der Kinder ist, wie viel Zeit die Eltern haben",
+  "evidence_en": "more important than the number of children is how much time the parents have",
+  "why": "„Wichtiger als …“ = entscheidend. Das sagt Ostermann (a).",
+  "why_en": "\"More important than…\" means decisive. Ostermann (a) says this.",
+  "trap": "Frau Lehmann spricht auch über Zeit („weniger Zeit“ für jedes Kind), aber sie sagt nicht, dass Zeit das Wichtigste ist.",
+  "trap_en": "Ms Lehmann also talks about time (less time per child), but she doesn't say time is what matters most.",
+  "question_en": "What matters is how much time the parents have for their children."
+ },
+ "H4-5": {
+  "evidence": "Mit vier Kindern bleibt für jedes einzelne weniger Zeit, das ist einfach so.",
+  "evidence_en": "With four children there is less time left for each one, that's just how it is.",
+  "why": "Frau Lehmann (b) gibt zu, dass sie für jedes Kind weniger Zeit hat.",
+  "why_en": "Ms Lehmann (b) admits she has less time for each child.",
+  "trap": "Ostermann spricht über die Zeit der Eltern allgemein, aber diesen Satz über viele Kinder sagt Lehmann.",
+  "trap_en": "Ostermann talks about parents' time in general, but this point about many children comes from Lehmann.",
+  "question_en": "With many children you have less time for each individual child."
+ },
+ "H4-6": {
+  "evidence": "Ich habe übrigens heute zwei Kinder, und die streiten ständig.",
+  "evidence_en": "By the way, I have two children today, and they argue constantly.",
+  "why": "„Ständig“ = sehr oft. Die Moderatorin (mod) hat zwei Kinder.",
+  "why_en": "\"Constantly\" means very often. The host (mod) has two children.",
+  "trap": "Frau Lehmann spricht auch über Streit, aber sie hat vier Kinder, nicht zwei.",
+  "trap_en": "Ms Lehmann also talks about arguing, but she has four children, not two.",
+  "question_en": "My two children argue with each other very often."
+ },
+ "H4-7": {
+  "evidence": "Wenn die Eltern alt werden, können sich Geschwister die Verantwortung teilen.",
+  "evidence_en": "When the parents get old, siblings can share the responsibility.",
+  "why": "Das sagt Frau Lehmann (b) wörtlich.",
+  "why_en": "Ms Lehmann (b) says this word for word.",
+  "trap": "Ostermann spricht danach auch über die Pflege der Eltern, aber er widerspricht: „Geschwister sind keine Garantie für Hilfe.“",
+  "trap_en": "Ostermann then also talks about caring for parents, but he disagrees: siblings are no guarantee of help.",
+  "question_en": "Later on, siblings can share the responsibility for their elderly parents."
+ },
+ "H4-8": {
+  "evidence": "Und Freunde können für ein Einzelkind das ersetzen, was Geschwister geben",
+  "evidence_en": "And friends can replace for an only child what siblings give",
+  "why": "Das sagt Ostermann (a).",
+  "why_en": "Ostermann (a) says this.",
+  "trap": "Frau Lehmann sagt, Einzelkinder lernen Dinge „später und woanders“, aber sie sagt nicht, dass Freunde Geschwister ersetzen.",
+  "trap_en": "Ms Lehmann says only children learn things \"later and elsewhere\", but she doesn't say friends replace siblings.",
+  "question_en": "Good friends can replace siblings for an only child."
+ }
+}

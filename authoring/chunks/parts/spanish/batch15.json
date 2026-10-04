@@ -1,0 +1,284 @@
+[
+ {
+  "id": "ENG_CHUNK_1401",
+  "t": "Tengo [sustantivo] / Estoy [adjetivo]",
+  "ex": "Tengo gripa.",
+  "n": "Illnesses often use tener (tengo tos, tengo gripa) or estar + adjective (estoy resfriado). Gripa (LatAm) = gripe."
+ },
+ {
+  "id": "ENG_CHUNK_1402",
+  "t": "Me duele [la parte del cuerpo] / Me duelen [las partes del cuerpo]",
+  "ex": "Me duele la cabeza.",
+  "n": "Like gustar: the body part is the subject, with the article. Plural: me duelen los pies."
+ },
+ {
+  "id": "ENG_CHUNK_1403",
+  "t": "Necesito algo para [sustantivo] / ¿Tiene algo para [sustantivo]?",
+  "ex": "Necesito algo para la tos."
+ },
+ {
+  "id": "ENG_CHUNK_1404",
+  "t": "Perdí [sustantivo] / Se me perdió [sustantivo]",
+  "ex": "Se me perdió el pasaporte.",
+  "n": "Se me perdió frames it as an accident; article, not mi: el pasaporte."
+ },
+ {
+  "id": "ENG_CHUNK_1405",
+  "t": "Me robaron [sustantivo]",
+  "ex": "Me robaron la cartera en el tren.",
+  "n": "Impersonal 3rd plural: me robaron = someone stole from me."
+ },
+ {
+  "id": "ENG_CHUNK_1406",
+  "t": "Me gusta [sustantivo] / Me gustan [sustantivo plural]",
+  "ex": "Me gusta la pizza.",
+  "n": "Verb agrees with the thing liked; use the article: me gusta la pizza."
+ },
+ {
+  "id": "ENG_CHUNK_1407",
+  "t": "Me interesa [sustantivo] / Me interesan [sustantivo plural]",
+  "ex": "Me interesa la historia.",
+  "n": "Like gustar. \"Estoy interesado en\" is correct but stiffer."
+ },
+ {
+  "id": "ENG_CHUNK_1408",
+  "t": "No me gusta [sustantivo]",
+  "ex": "No me gusta el café."
+ },
+ {
+  "id": "ENG_CHUNK_1409",
+  "t": "¿Te gusta [sustantivo]? / ¿Le gusta [sustantivo]?",
+  "ex": "¿Te gusta la comida italiana?"
+ },
+ {
+  "id": "ENG_CHUNK_1410",
+  "t": "¿Cuál es tu [sustantivo] favorito?",
+  "ex": "¿Cuál es tu color favorito?",
+  "n": "Cuál, not qué, before es. Favorito/favorita agrees with the noun."
+ },
+ {
+  "id": "ENG_CHUNK_1411",
+  "t": "Mi [sustantivo] favorito es [sustantivo]",
+  "ex": "Mi color favorito es el azul.",
+  "n": "Color names take el here: es el azul."
+ },
+ {
+  "id": "ENG_CHUNK_1412",
+  "t": "Quiero [infinitivo]",
+  "ex": "Quiero irme a casa."
+ },
+ {
+  "id": "ENG_CHUNK_1413",
+  "t": "Quisiera [infinitivo] / Me gustaría [infinitivo]",
+  "ex": "Quisiera reservar una mesa."
+ },
+ {
+  "id": "ENG_CHUNK_1414",
+  "t": "Necesito [infinitivo]",
+  "ex": "Necesito ir al banco."
+ },
+ {
+  "id": "ENG_CHUNK_1415",
+  "t": "Tengo que [infinitivo]",
+  "ex": "Mañana tengo que trabajar.",
+  "n": "Tener que = must/have to; don't drop the que."
+ },
+ {
+  "id": "ENG_CHUNK_1416",
+  "t": "Necesito [sustantivo]",
+  "ex": "Necesito un taxi."
+ },
+ {
+  "id": "ENG_CHUNK_1417",
+  "t": "¿Puedo [infinitivo]? / ¿Se puede [infinitivo]?",
+  "ex": "¿Me puedo sentar aquí?",
+  "n": "Reflexive verbs put me before puedo or after: ¿puedo sentarme?"
+ },
+ {
+  "id": "ENG_CHUNK_1418",
+  "t": "¿Puede [infinitivo], por favor? / ¿Me puedes [infinitivo]?",
+  "ex": "¿Me puede ayudar, por favor?"
+ },
+ {
+  "id": "ENG_CHUNK_1419",
+  "t": "No puedo [infinitivo] / No sé [infinitivo]",
+  "ex": "No sé nadar.",
+  "n": "Skills use saber: no sé nadar. No puedo nadar = unable right now (injury, rules)."
+ },
+ {
+  "id": "ENG_CHUNK_1420",
+  "t": "Vamos a [infinitivo] / Vamos a [lugar]",
+  "ex": "Vamos a la playa.",
+  "n": "Vamos a + infinitive is the everyday form; comamos, salgamos sound more formal."
+ },
+ {
+  "id": "ENG_CHUNK_1421",
+  "t": "No te olvides de [infinitivo] / No se te olvide [infinitivo]",
+  "ex": "No se te olviden las llaves.",
+  "n": "No se te olvide is very common in Latin America."
+ },
+ {
+  "id": "ENG_CHUNK_1422",
+  "t": "¿Cada cuánto [verbo]? / ¿Con qué frecuencia [verbo]?",
+  "ex": "¿Cada cuánto vas al gimnasio?"
+ },
+ {
+  "id": "ENG_CHUNK_1423",
+  "t": "¿Qué haces normalmente [momento]?",
+  "ex": "¿Qué haces normalmente los fines de semana?",
+  "n": "Days and weekends take the article, no preposition: los sábados, el fin de semana."
+ },
+ {
+  "id": "ENG_CHUNK_1424",
+  "t": "¿Qué vas a hacer [momento]?",
+  "ex": "¿Qué vas a hacer este fin de semana?",
+  "n": "Present continuous is not used for plans: ¿qué vas a hacer?, not ¿qué estás haciendo?"
+ },
+ {
+  "id": "ENG_CHUNK_1425",
+  "t": "Voy a [infinitivo]",
+  "ex": "Este fin de semana voy a visitar a mi tía.",
+  "n": "Personal a before people: visitar a mi tía."
+ },
+ {
+  "id": "ENG_CHUNK_1426",
+  "t": "Nos vemos en [lugar] a [hora]",
+  "ex": "Nos vemos en el café a las seis."
+ },
+ {
+  "id": "ENG_CHUNK_1427",
+  "t": "¿Mejor nos vemos [momento]? / ¿Y si nos vemos [momento]?",
+  "ex": "¿Mejor nos vemos mañana?"
+ },
+ {
+  "id": "ENG_CHUNK_1428",
+  "t": "Perdón, el [día] no puedo",
+  "ex": "Perdón, el sábado no puedo.",
+  "n": "Days take el, no preposition: el sábado, not en sábado."
+ },
+ {
+  "id": "ENG_CHUNK_1429",
+  "t": "El [día] estoy ocupado / El [día] tengo cosas",
+  "ex": "El lunes estoy ocupada. ¿Qué tal el martes?"
+ },
+ {
+  "id": "ENG_CHUNK_1430",
+  "t": "¿Te parece bien [hora]? / ¿Te queda bien [hora]?",
+  "ex": "¿Te parece bien a las seis?"
+ },
+ {
+  "id": "ENG_CHUNK_1431",
+  "t": "Llego unos [número] minutos tarde / Voy [número] minutos tarde",
+  "ex": "Perdón, llego unos diez minutos tarde.",
+  "n": "Present tense is normal for near-future: llego tarde."
+ },
+ {
+  "id": "ENG_CHUNK_1432",
+  "t": "Hoy me siento [adjetivo] / Hoy estoy [adjetivo]",
+  "ex": "Hoy me siento cansado."
+ },
+ {
+  "id": "ENG_CHUNK_1433",
+  "t": "¿Cómo está tu [persona]?",
+  "ex": "¿Cómo está tu mamá?"
+ },
+ {
+  "id": "ENG_CHUNK_1434",
+  "t": "¿Cómo es [persona]?",
+  "ex": "¿Cómo es tu nuevo maestro?",
+  "n": "Ser for personality: ¿cómo es? ¿Cómo está? asks how they are feeling."
+ },
+ {
+  "id": "ENG_CHUNK_1435",
+  "t": "Hoy hace [sustantivo] / Hoy está [adjetivo]",
+  "ex": "Hoy hace frío.",
+  "n": "Hace + noun (frío, calor, sol, viento); está + adjective (nublado)."
+ },
+ {
+  "id": "ENG_CHUNK_1436",
+  "t": "¿Qué tal el clima en [lugar]? / ¿Cómo está el clima en [lugar]?",
+  "ex": "¿Qué tal el clima en Toronto?",
+  "n": "Spain: el tiempo; Latin America mostly el clima."
+ },
+ {
+  "id": "ENG_CHUNK_1437",
+  "t": "Va a llover [momento]",
+  "ex": "Va a llover en la tarde.",
+  "n": "Latin America: en la tarde; Spain: por la tarde."
+ },
+ {
+  "id": "ENG_CHUNK_1438",
+  "t": "Hola, habla [nombre] / Hola, soy [nombre]",
+  "ex": "Hola, habla María.",
+  "n": "Answering the phone: ¿Bueno? (Mexico), ¿Aló? (much of South America), ¿Diga? (Spain)."
+ },
+ {
+  "id": "ENG_CHUNK_1439",
+  "t": "Te llamo [momento]",
+  "ex": "Te llamo mañana.",
+  "n": "Present tense for a promise: te llamo, not te llamaré."
+ },
+ {
+  "id": "ENG_CHUNK_1440",
+  "t": "Mándame un mensaje cuando [subjuntivo]",
+  "ex": "Mándame un mensaje cuando llegues a casa.",
+  "n": "Cuando + subjunctive for the future: cuando llegues, not cuando llegas."
+ },
+ {
+  "id": "ENG_CHUNK_1441",
+  "t": "Creo que [oración]",
+  "ex": "Creo que es buena idea.",
+  "n": "No creo que takes the subjunctive: no creo que sea buena idea."
+ },
+ {
+  "id": "ENG_CHUNK_1442",
+  "t": "Estoy de acuerdo con [persona]",
+  "ex": "Estoy de acuerdo contigo.",
+  "n": "Estar de acuerdo, never \"soy de acuerdo\" or \"acuerdo\". Con + ti = contigo."
+ },
+ {
+  "id": "ENG_CHUNK_1443",
+  "t": "[sustantivo] es mejor que [sustantivo]",
+  "ex": "El té es mejor que el café.",
+  "n": "Mejor, never \"más bueno\" in this sense."
+ },
+ {
+  "id": "ENG_CHUNK_1444",
+  "t": "Nunca he ido a [lugar] / Nunca he estado en [lugar]",
+  "ex": "Nunca he estado en Australia.",
+  "n": "Many Latin Americans use the preterite here: nunca fui a Australia."
+ },
+ {
+  "id": "ENG_CHUNK_1445",
+  "t": "El [tiempo] pasado, [verbo en pretérito]",
+  "ex": "El fin de semana pasado visité a mis abuelos.",
+  "n": "Pasado follows the noun: la semana pasada, el año pasado."
+ },
+ {
+  "id": "ENG_CHUNK_1446",
+  "t": "¿Qué tal tu [sustantivo]? / ¿La pasaste bien en [sustantivo]?",
+  "ex": "¿Qué tal tu fin de semana?"
+ },
+ {
+  "id": "ENG_CHUNK_1447",
+  "t": "¿Cómo te fue en [sustantivo]? / ¿Qué tal estuvo [sustantivo]?",
+  "ex": "¿Cómo te fue el fin de semana?"
+ },
+ {
+  "id": "ENG_CHUNK_1448",
+  "t": "Ahorita estoy [gerundio] / Ahora mismo estoy [gerundio]",
+  "ex": "Ahorita estoy trabajando.",
+  "n": "Ahorita is Latin American (esp. Mexico); ahora mismo is universal."
+ },
+ {
+  "id": "ENG_CHUNK_1449",
+  "t": "Lo siento, pero [oración] / Perdón, pero [oración]",
+  "ex": "Lo siento, pero no le puedo ayudar."
+ },
+ {
+  "id": "ENG_CHUNK_1450",
+  "t": "Nos vemos el [día]",
+  "ex": "¡Nos vemos el lunes!",
+  "n": "El + day, no preposition: nos vemos el lunes."
+ }
+]

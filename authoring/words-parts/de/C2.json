@@ -1,0 +1,3216 @@
+[
+ {
+  "w": "erachten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to deem",
+   "to consider"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "core",
+  "ex": "Wir erachten diese Maßnahme für notwendig.",
+  "exen": "We deem this measure necessary."
+ },
+ {
+  "w": "Tragweite",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "scope (of consequences)",
+   "significance"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "abstract",
+  "ex": "Die Tragweite dieser Entscheidung ist kaum abzuschätzen.",
+  "exen": "The consequences of this decision can hardly be assessed."
+ },
+ {
+  "w": "Unterfangen",
+  "art": "das",
+  "pl": "Unterfangen",
+  "pos": "noun",
+  "en": [
+   "undertaking (risky)",
+   "venture"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "abstract",
+  "ex": "Die Expedition war ein gewagtes Unterfangen.",
+  "exen": "The expedition was a daring undertaking."
+ },
+ {
+  "w": "beschwichtigen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to placate",
+   "to appease"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "communication",
+  "ex": "Sie versuchte, die wütenden Kunden zu beschwichtigen.",
+  "exen": "She tried to placate the angry customers."
+ },
+ {
+  "w": "bagatellisieren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to trivialize",
+   "to downplay"
+  ],
+  "alt": [
+   "verharmlosen"
+  ],
+  "level": "C2",
+  "theme": "communication",
+  "ex": "Man sollte das Problem nicht bagatellisieren.",
+  "exen": "One shouldn't downplay the problem."
+ },
+ {
+  "w": "Wehmut",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "wistfulness",
+   "melancholy (nostalgic)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "feelings",
+  "ex": "Mit Wehmut denkt sie an ihre Kindheit.",
+  "exen": "She thinks of her childhood with wistfulness."
+ },
+ {
+  "w": "Häme",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "malicious glee",
+   "gloating"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "feelings",
+  "ex": "Nach der Niederlage erntete er viel Häme.",
+  "exen": "After the defeat he faced a lot of gloating."
+ },
+ {
+  "w": "etwas unter den Teppich kehren",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "to sweep something under the rug"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "society",
+  "ex": "Der Skandal wurde unter den Teppich gekehrt.",
+  "exen": "The scandal was swept under the rug."
+ },
+ {
+  "w": "Zeitgenosse",
+  "art": "der",
+  "pl": "Zeitgenossen",
+  "pos": "noun",
+  "en": [
+   "contemporary (person)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "people",
+  "ex": "Goethe und Schiller waren Zeitgenossen.",
+  "exen": "Goethe and Schiller were contemporaries."
+ },
+ {
+  "w": "Weggefährte",
+  "art": "der",
+  "pl": "Weggefährten",
+  "pos": "noun",
+  "en": [
+   "companion (longtime)",
+   "fellow traveller"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "people",
+  "ex": "Alte Weggefährten erinnerten an ihn.",
+  "exen": "Longtime companions remembered him."
+ },
+ {
+  "w": "Handhabe",
+  "art": "die",
+  "pl": "Handhaben",
+  "pos": "noun",
+  "en": [
+   "legal grounds (to act)",
+   "leverage"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "law",
+  "ex": "Die Behörde hat keine rechtliche Handhabe.",
+  "exen": "The authority has no legal grounds to act."
+ },
+ {
+  "w": "Pensum",
+  "art": "das",
+  "pl": "Pensen",
+  "pos": "noun",
+  "en": [
+   "workload (quota)",
+   "set amount"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "work",
+  "ex": "Heute habe ich mein Pensum geschafft.",
+  "exen": "Today I got through my workload."
+ },
+ {
+  "w": "Feuilleton",
+  "art": "das",
+  "pl": "Feuilletons",
+  "pos": "noun",
+  "en": [
+   "arts section (newspaper)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "media",
+  "ex": "Die Kritik erschien im Feuilleton der Zeitung.",
+  "exen": "The review appeared in the paper's arts section."
+ },
+ {
+  "w": "Rendite",
+  "art": "die",
+  "pl": "Renditen",
+  "pos": "noun",
+  "en": [
+   "return (on investment)",
+   "yield"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "money",
+  "ex": "Die Anlage bringt kaum Rendite.",
+  "exen": "The investment yields hardly any return."
+ },
+ {
+  "w": "Prämisse",
+  "art": "die",
+  "pl": "Prämissen",
+  "pos": "noun",
+  "en": [
+   "premise"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "science",
+  "ex": "Die ganze Argumentation beruht auf einer falschen Prämisse.",
+  "exen": "The whole argument rests on a false premise."
+ },
+ {
+  "w": "Gepflogenheit",
+  "art": "die",
+  "pl": "Gepflogenheiten",
+  "pos": "noun",
+  "en": [
+   "custom (practice)",
+   "convention"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "culture",
+  "ex": "Er kennt die örtlichen Gepflogenheiten nicht.",
+  "exen": "He doesn't know the local customs."
+ },
+ {
+  "w": "unlängst",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "recently (not long ago)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "time",
+  "ex": "Ich habe ihn unlängst in Berlin getroffen.",
+  "exen": "I met him in Berlin not long ago."
+ },
+ {
+  "w": "flanieren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to stroll",
+   "to saunter"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "city",
+  "ex": "Abends flanieren die Leute am Ufer entlang.",
+  "exen": "In the evening people stroll along the riverside."
+ },
+ {
+  "w": "Behausung",
+  "art": "die",
+  "pl": "Behausungen",
+  "pos": "noun",
+  "en": [
+   "dwelling",
+   "abode"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "home",
+  "ex": "Die Hütte war eine einfache Behausung.",
+  "exen": "The hut was a simple dwelling."
+ },
+ {
+  "w": "Muße",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "leisure (unhurried time)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "leisure",
+  "ex": "Für Bücher fehlt mir die Muße.",
+  "exen": "I lack the leisure for books."
+ },
+ {
+  "w": "Einöde",
+  "art": "die",
+  "pl": "Einöden",
+  "pos": "noun",
+  "en": [
+   "wilderness (desolate place)",
+   "wasteland"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "nature",
+  "ex": "Sie lebten in einer völligen Einöde.",
+  "exen": "They lived in a complete wilderness."
+ },
+ {
+  "w": "Gaumen",
+  "art": "der",
+  "pl": "Gaumen",
+  "pos": "noun",
+  "en": [
+   "palate"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "body",
+  "ex": "Der Wein schmeichelt dem Gaumen.",
+  "exen": "The wine flatters the palate."
+ },
+ {
+  "w": "deftig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "hearty (food)",
+   "substantial"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "food",
+  "ex": "Im Winter esse ich gern etwas Deftiges.",
+  "exen": "In winter I like to eat something hearty."
+ },
+ {
+  "w": "Abstecher",
+  "art": "der",
+  "pl": "Abstecher",
+  "pos": "noun",
+  "en": [
+   "side trip",
+   "detour (short visit)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "travel",
+  "ex": "Auf dem Rückweg machten wir einen Abstecher nach Prag.",
+  "exen": "On the way back we made a side trip to Prague."
+ },
+ {
+  "w": "Gelehrte",
+  "art": "der",
+  "pl": "Gelehrten",
+  "pos": "noun",
+  "en": [
+   "scholar"
+  ],
+  "alt": [
+   "die Gelehrte"
+  ],
+  "level": "C2",
+  "theme": "school",
+  "ex": "Er war ein angesehener Gelehrter.",
+  "exen": "He was a respected scholar."
+ },
+ {
+  "w": "Gewand",
+  "art": "das",
+  "pl": "Gewänder",
+  "pos": "noun",
+  "en": [
+   "robe",
+   "garment"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "clothes",
+  "ex": "Der Priester trug ein weißes Gewand.",
+  "exen": "The priest wore a white robe."
+ },
+ {
+  "w": "gleichwohl",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "nonetheless",
+   "nevertheless"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "core",
+  "ex": "Die Lage ist ernst, gleichwohl bleiben wir zuversichtlich.",
+  "exen": "The situation is serious; nonetheless we remain confident."
+ },
+ {
+  "w": "Zäsur",
+  "art": "die",
+  "pl": "Zäsuren",
+  "pos": "noun",
+  "en": [
+   "watershed",
+   "turning point"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "abstract",
+  "ex": "Die Pandemie war eine tiefe Zäsur.",
+  "exen": "The pandemic was a deep watershed."
+ },
+ {
+  "w": "Gratwanderung",
+  "art": "die",
+  "pl": "Gratwanderungen",
+  "pos": "noun",
+  "en": [
+   "balancing act",
+   "tightrope walk"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "abstract",
+  "ex": "Humor im Beruf ist oft eine Gratwanderung.",
+  "exen": "Humour at work is often a balancing act."
+ },
+ {
+  "w": "beschönigen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to gloss over",
+   "to whitewash"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "communication",
+  "ex": "Der Bericht beschönigt die Zahlen.",
+  "exen": "The report glosses over the figures."
+ },
+ {
+  "w": "relativieren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to qualify (a statement)",
+   "to put into perspective"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "communication",
+  "ex": "Später relativierte er seine Aussage.",
+  "exen": "Later he qualified his statement."
+ },
+ {
+  "w": "Groll",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "resentment",
+   "grudge"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "feelings",
+  "ex": "Er hegt noch immer einen Groll gegen sie.",
+  "exen": "He still harbours a grudge against her."
+ },
+ {
+  "w": "argwöhnisch",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "suspicious (distrustful)",
+   "wary"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "feelings",
+  "ex": "Die Nachbarn beobachteten uns argwöhnisch.",
+  "exen": "The neighbours watched us suspiciously."
+ },
+ {
+  "w": "Gemeinwohl",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "common good",
+   "public welfare"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "society",
+  "ex": "Eigentum verpflichtet auch zum Gemeinwohl.",
+  "exen": "Property also carries a duty to the common good."
+ },
+ {
+  "w": "Gönner",
+  "art": "der",
+  "pl": "Gönner",
+  "pos": "noun",
+  "en": [
+   "benefactor"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "people",
+  "ex": "Ein anonymer Gönner spendete eine Million.",
+  "exen": "An anonymous benefactor donated a million."
+ },
+ {
+  "w": "Querulant",
+  "art": "der",
+  "pl": "Querulanten",
+  "pos": "noun",
+  "en": [
+   "troublemaker (constant complainer)",
+   "malcontent"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "people",
+  "ex": "Im Amt gilt er als Querulant.",
+  "exen": "At the office he's seen as a troublemaker."
+ },
+ {
+  "w": "Ermessen",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "discretion"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "law",
+  "ex": "Das liegt im Ermessen des Richters.",
+  "exen": "That is at the judge's discretion."
+ },
+ {
+  "w": "Plackerei",
+  "art": "die",
+  "pl": "Plackereien",
+  "pos": "noun",
+  "en": [
+   "drudgery",
+   "slog"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "work",
+  "ex": "Der Umzug war eine einzige Plackerei.",
+  "exen": "The move was one long slog."
+ },
+ {
+  "w": "Verriss",
+  "art": "der",
+  "pl": "Verrisse",
+  "pos": "noun",
+  "en": [
+   "scathing review",
+   "hatchet job"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "media",
+  "ex": "Der Film bekam einen vernichtenden Verriss.",
+  "exen": "The film got a scathing review."
+ },
+ {
+  "w": "Tilgung",
+  "art": "die",
+  "pl": "Tilgungen",
+  "pos": "noun",
+  "en": [
+   "repayment (of a loan)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "money",
+  "ex": "Die Tilgung des Kredits dauert zehn Jahre.",
+  "exen": "Repayment of the loan takes ten years."
+ },
+ {
+  "w": "Trugschluss",
+  "art": "der",
+  "pl": "Trugschlüsse",
+  "pos": "noun",
+  "en": [
+   "fallacy",
+   "false conclusion"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "science",
+  "ex": "Es ist ein Trugschluss, dass Geld glücklich macht.",
+  "exen": "It's a fallacy that money makes you happy."
+ },
+ {
+  "w": "Vermächtnis",
+  "art": "das",
+  "pl": "Vermächtnisse",
+  "pos": "noun",
+  "en": [
+   "legacy",
+   "bequest"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "culture",
+  "ex": "Sein Werk ist ein bleibendes Vermächtnis.",
+  "exen": "His work is a lasting legacy."
+ },
+ {
+  "w": "fortan",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "henceforth",
+   "from then on"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "time",
+  "ex": "Fortan sprach er kein Wort mehr mit ihr.",
+  "exen": "From then on he didn't say another word to her."
+ },
+ {
+  "w": "Flaniermeile",
+  "art": "die",
+  "pl": "Flaniermeilen",
+  "pos": "noun",
+  "en": [
+   "promenade",
+   "boulevard (for strolling)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "city",
+  "ex": "Die Königsallee ist eine bekannte Flaniermeile.",
+  "exen": "The Königsallee is a famous promenade."
+ },
+ {
+  "w": "Refugium",
+  "art": "das",
+  "pl": "Refugien",
+  "pos": "noun",
+  "en": [
+   "retreat",
+   "refuge"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "home",
+  "ex": "Der Garten ist ihr Refugium.",
+  "exen": "The garden is her retreat."
+ },
+ {
+  "w": "Geselligkeit",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "conviviality",
+   "sociability"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "leisure",
+  "ex": "Das Fest lebt von der Geselligkeit.",
+  "exen": "The festival thrives on conviviality."
+ },
+ {
+  "w": "Dickicht",
+  "art": "das",
+  "pl": "Dickichte",
+  "pos": "noun",
+  "en": [
+   "thicket",
+   "jungle (fig.)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "nature",
+  "ex": "Das Reh verschwand im Dickicht.",
+  "exen": "The deer vanished into the thicket."
+ },
+ {
+  "w": "Statur",
+  "art": "die",
+  "pl": "Staturen",
+  "pos": "noun",
+  "en": [
+   "build (physique)",
+   "stature"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "body",
+  "ex": "Er ist von kräftiger Statur.",
+  "exen": "He is of sturdy build."
+ },
+ {
+  "w": "fade",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "bland",
+   "insipid"
+  ],
+  "alt": [
+   "fad"
+  ],
+  "level": "C2",
+  "theme": "food",
+  "ex": "Die Suppe schmeckt ziemlich fade.",
+  "exen": "The soup tastes rather bland."
+ },
+ {
+  "w": "Stippvisite",
+  "art": "die",
+  "pl": "Stippvisiten",
+  "pos": "noun",
+  "en": [
+   "flying visit",
+   "quick visit"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "travel",
+  "ex": "Der Minister machte eine kurze Stippvisite.",
+  "exen": "The minister paid a flying visit."
+ },
+ {
+  "w": "belesen",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "well-read"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "school",
+  "ex": "Meine Großmutter war sehr belesen.",
+  "exen": "My grandmother was very well-read."
+ },
+ {
+  "w": "Aufmachung",
+  "art": "die",
+  "pl": "Aufmachungen",
+  "pos": "noun",
+  "en": [
+   "get-up",
+   "presentation (appearance)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "clothes",
+  "ex": "In dieser Aufmachung kannst du nicht zur Hochzeit!",
+  "exen": "You can't go to the wedding in that get-up!"
+ },
+ {
+  "w": "mitnichten",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "by no means",
+   "not at all"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "core",
+  "ex": "Das Problem ist mitnichten gelöst.",
+  "exen": "The problem is by no means solved."
+ },
+ {
+  "w": "Unwägbarkeit",
+  "art": "die",
+  "pl": "Unwägbarkeiten",
+  "pos": "noun",
+  "en": [
+   "imponderable",
+   "uncertainty"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "abstract",
+  "ex": "Jede Planung hat ihre Unwägbarkeiten.",
+  "exen": "Every plan has its imponderables."
+ },
+ {
+  "w": "Makel",
+  "art": "der",
+  "pl": "Makel",
+  "pos": "noun",
+  "en": [
+   "blemish",
+   "flaw"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "abstract",
+  "ex": "Die Niederlage ist ein Makel in seiner Karriere.",
+  "exen": "The defeat is a blemish on his career."
+ },
+ {
+  "w": "beipflichten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to concur",
+   "to agree (formal)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "communication",
+  "ex": "Da muss ich Ihnen beipflichten.",
+  "exen": "I have to concur with you there.",
+  "forms": "pflichtet bei · pflichtete bei · hat beigepflichtet"
+ },
+ {
+  "w": "beteuern",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to protest (innocence)",
+   "to assure solemnly"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "communication",
+  "ex": "Er beteuerte immer wieder seine Unschuld.",
+  "exen": "He protested his innocence again and again."
+ },
+ {
+  "w": "Überdruss",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "weariness (of too much)",
+   "surfeit"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "feelings",
+  "ex": "Er hörte die Musik bis zum Überdruss.",
+  "exen": "He listened to the music ad nauseam."
+ },
+ {
+  "w": "Genugtuung",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "satisfaction (vindication)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "feelings",
+  "ex": "Das Urteil erfüllte sie mit Genugtuung.",
+  "exen": "The verdict filled her with satisfaction."
+ },
+ {
+  "w": "Teilhabe",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "participation (inclusion)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "society",
+  "ex": "Es geht um die Teilhabe aller am öffentlichen Leben.",
+  "exen": "It's about everyone's participation in public life."
+ },
+ {
+  "w": "Eigenbrötler",
+  "art": "der",
+  "pl": "Eigenbrötler",
+  "pos": "noun",
+  "en": [
+   "loner (eccentric)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "people",
+  "ex": "Der Nachbar ist ein Eigenbrötler.",
+  "exen": "The neighbour is an eccentric loner."
+ },
+ {
+  "w": "Sprössling",
+  "art": "der",
+  "pl": "Sprösslinge",
+  "pos": "noun",
+  "en": [
+   "offspring (child)",
+   "scion"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "people",
+  "ex": "Sie brachte ihre Sprösslinge zur Schule.",
+  "exen": "She took her offspring to school."
+ },
+ {
+  "w": "Verjährung",
+  "art": "die",
+  "pl": "Verjährungen",
+  "pos": "noun",
+  "en": [
+   "statute of limitations"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "law",
+  "ex": "Die Tat fällt nicht unter die Verjährung.",
+  "exen": "The crime is not subject to the statute of limitations."
+ },
+ {
+  "w": "Pfusch",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "botched job",
+   "shoddy work"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "work",
+  "ex": "Die Reparatur war reiner Pfusch.",
+  "exen": "The repair was a botched job."
+ },
+ {
+  "w": "Lobeshymne",
+  "art": "die",
+  "pl": "Lobeshymnen",
+  "pos": "noun",
+  "en": [
+   "rave review",
+   "eulogy (praise)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "media",
+  "ex": "Die Presse sang Lobeshymnen auf das Buch.",
+  "exen": "The press sang the book's praises."
+ },
+ {
+  "w": "Wucher",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "extortionate prices",
+   "usury"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "money",
+  "ex": "Zehn Euro für ein Bier ist Wucher!",
+  "exen": "Ten euros for a beer is daylight robbery!"
+ },
+ {
+  "w": "Ungereimtheit",
+  "art": "die",
+  "pl": "Ungereimtheiten",
+  "pos": "noun",
+  "en": [
+   "inconsistency",
+   "discrepancy (odd detail)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "science",
+  "ex": "Der Bericht enthält einige Ungereimtheiten.",
+  "exen": "The report contains some inconsistencies."
+ },
+ {
+  "w": "Mäzen",
+  "art": "der",
+  "pl": "Mäzene",
+  "pos": "noun",
+  "en": [
+   "patron (of the arts)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "culture",
+  "ex": "Ein reicher Mäzen finanzierte das Museum.",
+  "exen": "A wealthy patron financed the museum."
+ },
+ {
+  "w": "zeitlebens",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "all one's life"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "time",
+  "ex": "Sie hat zeitlebens hart gearbeitet.",
+  "exen": "She worked hard all her life."
+ },
+ {
+  "w": "Gemäuer",
+  "art": "das",
+  "pl": "Gemäuer",
+  "pos": "noun",
+  "en": [
+   "old walls (ancient building)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "city",
+  "ex": "In dem alten Gemäuer soll es spuken.",
+  "exen": "The old walls are said to be haunted."
+ },
+ {
+  "w": "Mansarde",
+  "art": "die",
+  "pl": "Mansarden",
+  "pos": "noun",
+  "en": [
+   "attic room",
+   "garret"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "home",
+  "ex": "Als Student wohnte er in einer Mansarde.",
+  "exen": "As a student he lived in an attic room."
+ },
+ {
+  "w": "Steckenpferd",
+  "art": "das",
+  "pl": "Steckenpferde",
+  "pos": "noun",
+  "en": [
+   "pet hobby",
+   "hobbyhorse"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "leisure",
+  "ex": "Alte Uhren sind sein Steckenpferd.",
+  "exen": "Old clocks are his pet hobby."
+ },
+ {
+  "w": "Brache",
+  "art": "die",
+  "pl": "Brachen",
+  "pos": "noun",
+  "en": [
+   "fallow land",
+   "wasteland (urban)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "nature",
+  "ex": "Auf der Brache wachsen wilde Blumen.",
+  "exen": "Wild flowers grow on the fallow land."
+ },
+ {
+  "w": "Gebrechen",
+  "art": "das",
+  "pl": "Gebrechen",
+  "pos": "noun",
+  "en": [
+   "infirmity",
+   "ailment"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "body",
+  "ex": "Trotz ihrer Gebrechen lebt sie allein.",
+  "exen": "Despite her infirmities she lives alone."
+ },
+ {
+  "w": "bekömmlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "easily digestible",
+   "wholesome"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "food",
+  "ex": "Leichte Kost ist abends bekömmlicher.",
+  "exen": "Light food is easier to digest in the evening."
+ },
+ {
+  "w": "Odyssee",
+  "art": "die",
+  "pl": "Odysseen",
+  "pos": "noun",
+  "en": [
+   "odyssey"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "travel",
+  "ex": "Die Heimreise wurde zur Odyssee.",
+  "exen": "The journey home turned into an odyssey."
+ },
+ {
+  "w": "bewandert",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "well-versed (in a subject)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "school",
+  "ex": "In Geschichte ist sie gut bewandert.",
+  "exen": "She is well-versed in history."
+ },
+ {
+  "w": "Tracht",
+  "art": "die",
+  "pl": "Trachten",
+  "pos": "noun",
+  "en": [
+   "traditional costume"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "clothes",
+  "ex": "Auf dem Volksfest tragen viele Tracht.",
+  "exen": "At the fair many people wear traditional costume."
+ },
+ {
+  "w": "ungeachtet",
+  "art": "",
+  "pl": null,
+  "pos": "prep",
+  "en": [
+   "notwithstanding",
+   "regardless of"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "core",
+  "ex": "Ungeachtet aller Warnungen fuhr er weiter.",
+  "exen": "Regardless of all warnings, he drove on."
+ },
+ {
+  "w": "vereiteln",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to foil",
+   "to thwart"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "abstract",
+  "ex": "Die Polizei vereitelte den Anschlag.",
+  "exen": "The police foiled the attack."
+ },
+ {
+  "w": "heraufbeschwören",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to provoke (a danger)",
+   "to conjure up"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "abstract",
+  "ex": "Diese Politik könnte eine Krise heraufbeschwören.",
+  "exen": "This policy could provoke a crisis.",
+  "forms": "beschwört herauf · beschwor herauf · hat heraufbeschworen"
+ },
+ {
+  "w": "brüskieren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to snub",
+   "to affront"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "communication",
+  "ex": "Mit dieser Absage brüskierte er seine Gastgeber.",
+  "exen": "With this refusal he snubbed his hosts."
+ },
+ {
+  "w": "sich anmaßen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to presume (to do)",
+   "to arrogate"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "communication",
+  "ex": "Ich maße mir kein Urteil an.",
+  "exen": "I don't presume to judge.",
+  "forms": "maßt sich an · maßte sich an · hat sich angemaßt"
+ },
+ {
+  "w": "Ehrfurcht",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "awe",
+   "reverence"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "feelings",
+  "ex": "Voller Ehrfurcht betraten wir den Dom.",
+  "exen": "Full of awe, we entered the cathedral."
+ },
+ {
+  "w": "Missgunst",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "envy (begrudging)",
+   "resentment of others' success"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "feelings",
+  "ex": "Sein Erfolg stieß auf Missgunst.",
+  "exen": "His success was met with begrudging envy."
+ },
+ {
+  "w": "Gefälle",
+  "art": "das",
+  "pl": "Gefälle",
+  "pos": "noun",
+  "en": [
+   "disparity (gap)",
+   "gradient"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "society",
+  "ex": "Das soziale Gefälle wird größer.",
+  "exen": "The social disparity is growing."
+ },
+ {
+  "w": "Zerwürfnis",
+  "art": "das",
+  "pl": "Zerwürfnisse",
+  "pos": "noun",
+  "en": [
+   "rift",
+   "falling-out"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "people",
+  "ex": "Nach dem Zerwürfnis sprachen sie nicht mehr.",
+  "exen": "After the falling-out they no longer spoke."
+ },
+ {
+  "w": "anmaßend",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "presumptuous",
+   "arrogant"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "people",
+  "ex": "Ich finde seine Forderung anmaßend.",
+  "exen": "I find his demand presumptuous."
+ },
+ {
+  "w": "Unterschlagung",
+  "art": "die",
+  "pl": "Unterschlagungen",
+  "pos": "noun",
+  "en": [
+   "embezzlement"
+  ],
+  "alt": [
+   "die Veruntreuung"
+  ],
+  "level": "C2",
+  "theme": "law",
+  "ex": "Der Kassierer wurde wegen Unterschlagung angeklagt.",
+  "exen": "The cashier was charged with embezzlement."
+ },
+ {
+  "w": "Schlendrian",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "sloppiness (slack routine)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "work",
+  "ex": "In der Abteilung ist der Schlendrian eingezogen.",
+  "exen": "Sloppiness has crept into the department."
+ },
+ {
+  "w": "Eklat",
+  "art": "der",
+  "pl": "Eklats",
+  "pos": "noun",
+  "en": [
+   "scandal (public uproar)",
+   "row"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "media",
+  "ex": "Die Rede führte zu einem Eklat.",
+  "exen": "The speech caused an uproar."
+ },
+ {
+  "w": "Ramsch",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "cheap junk (goods)",
+   "trash"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "money",
+  "ex": "Auf dem Markt gab es nur Ramsch.",
+  "exen": "There was only cheap junk at the market."
+ },
+ {
+  "w": "Koryphäe",
+  "art": "die",
+  "pl": "Koryphäen",
+  "pos": "noun",
+  "en": [
+   "leading authority (expert)",
+   "luminary"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "science",
+  "ex": "Er ist eine Koryphäe auf dem Gebiet der Genetik.",
+  "exen": "He is a leading authority in genetics."
+ },
+ {
+  "w": "Sinnbild",
+  "art": "das",
+  "pl": "Sinnbilder",
+  "pos": "noun",
+  "en": [
+   "emblem (epitome)",
+   "symbol",
+   "epitome"
+  ],
+  "alt": [
+   "das Symbol"
+  ],
+  "level": "C2",
+  "theme": "culture",
+  "ex": "Die Mauer wurde zum Sinnbild der Teilung.",
+  "exen": "The Wall became the symbol of division."
+ },
+ {
+  "w": "unversehens",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "all of a sudden",
+   "unexpectedly"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "time",
+  "ex": "Unversehens stand er vor der Tür.",
+  "exen": "All of a sudden he was at the door."
+ },
+ {
+  "w": "Kopfsteinpflaster",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "cobblestones"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "city",
+  "ex": "Mit Absätzen läuft man schlecht auf Kopfsteinpflaster.",
+  "exen": "Walking on cobblestones in heels is difficult."
+ },
+ {
+  "w": "Gerümpel",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "clutter (old junk)",
+   "lumber"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "home",
+  "ex": "Der Keller ist voller Gerümpel.",
+  "exen": "The cellar is full of junk."
+ },
+ {
+  "w": "Zeitvertreib",
+  "art": "der",
+  "pl": "Zeitvertreibe",
+  "pos": "noun",
+  "en": [
+   "pastime"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "leisure",
+  "ex": "Stricken ist ihr liebster Zeitvertreib.",
+  "exen": "Knitting is her favourite pastime."
+ },
+ {
+  "w": "Raubbau",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "overexploitation"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "nature",
+  "ex": "Das ist Raubbau an der Natur.",
+  "exen": "That is overexploitation of nature."
+ },
+ {
+  "w": "Blessur",
+  "art": "die",
+  "pl": "Blessuren",
+  "pos": "noun",
+  "en": [
+   "minor injury",
+   "scrape"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "body",
+  "ex": "Er kam mit leichten Blessuren davon.",
+  "exen": "He got away with minor injuries."
+ },
+ {
+  "w": "Völlerei",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "gluttony"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "food",
+  "ex": "An Weihnachten neigen viele zur Völlerei.",
+  "exen": "At Christmas many people tend towards gluttony."
+ },
+ {
+  "w": "Gefilde",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "realms",
+   "parts (regions)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "travel",
+  "ex": "Endlich waren wir wieder in heimischen Gefilden.",
+  "exen": "At last we were back in familiar parts."
+ },
+ {
+  "w": "büffeln",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to cram (study)",
+   "to swot"
+  ],
+  "alt": [
+   "pauken"
+  ],
+  "level": "C2",
+  "theme": "school",
+  "ex": "Vor der Prüfung büffelt er jeden Abend.",
+  "exen": "Before the exam he crams every evening."
+ },
+ {
+  "w": "salopp",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "casual (sloppy)",
+   "slangy"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "clothes",
+  "ex": "Er war für den Anlass zu salopp gekleidet.",
+  "exen": "He was too casually dressed for the occasion."
+ },
+ {
+  "w": "allenfalls",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "at most",
+   "if anything"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "core",
+  "ex": "Das dauert allenfalls eine Stunde.",
+  "exen": "That will take an hour at most."
+ },
+ {
+  "w": "ermessen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to gauge",
+   "to fathom"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "abstract",
+  "ex": "Das Ausmaß lässt sich kaum ermessen.",
+  "exen": "The extent can hardly be gauged.",
+  "forms": "ermisst · ermaß · hat ermessen"
+ },
+ {
+  "w": "dämmern",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to dawn on (someone)",
+   "to grow light"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "abstract",
+  "ex": "Langsam dämmerte ihm, was passiert war.",
+  "exen": "Slowly it dawned on him what had happened."
+ },
+ {
+  "w": "Floskel",
+  "art": "die",
+  "pl": "Floskeln",
+  "pos": "noun",
+  "en": [
+   "stock phrase",
+   "empty phrase"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "communication",
+  "ex": "Seine Rede bestand nur aus Floskeln.",
+  "exen": "His speech consisted only of empty phrases."
+ },
+ {
+  "w": "Seitenhieb",
+  "art": "der",
+  "pl": "Seitenhiebe",
+  "pos": "noun",
+  "en": [
+   "dig (snide remark)",
+   "swipe"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "communication",
+  "ex": "Das war ein Seitenhieb auf seinen Chef.",
+  "exen": "That was a dig at his boss."
+ },
+ {
+  "w": "Befindlichkeit",
+  "art": "die",
+  "pl": "Befindlichkeiten",
+  "pos": "noun",
+  "en": [
+   "sensitivities",
+   "state of mind"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "feelings",
+  "ex": "Wir können nicht auf alle Befindlichkeiten Rücksicht nehmen.",
+  "exen": "We can't take everyone's sensitivities into account."
+ },
+ {
+  "w": "beklommen",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "uneasy",
+   "apprehensive"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "feelings",
+  "ex": "Mit beklommenem Gefühl öffnete sie den Brief.",
+  "exen": "With an uneasy feeling she opened the letter."
+ },
+ {
+  "w": "Kluft",
+  "art": "die",
+  "pl": "Klüfte",
+  "pos": "noun",
+  "en": [
+   "gulf",
+   "chasm"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "society",
+  "ex": "Die Kluft zwischen Arm und Reich wächst.",
+  "exen": "The gulf between rich and poor is growing."
+ },
+ {
+  "w": "herablassend",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "condescending"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "people",
+  "ex": "Sie sprach herablassend mit dem Kellner.",
+  "exen": "She spoke condescendingly to the waiter."
+ },
+ {
+  "w": "unverfroren",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "brazen",
+   "impudent"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "people",
+  "ex": "Das ist eine unverfrorene Lüge.",
+  "exen": "That's a brazen lie."
+ },
+ {
+  "w": "Vorsatz",
+  "art": "der",
+  "pl": "Vorsätze",
+  "pos": "noun",
+  "en": [
+   "intent (criminal)",
+   "premeditation"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "law",
+  "ex": "Das Gericht ging von Vorsatz aus.",
+  "exen": "The court assumed intent."
+ },
+ {
+  "w": "versiert",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "seasoned (experienced)",
+   "skilled"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "work",
+  "ex": "Wir suchen eine versierte Buchhalterin.",
+  "exen": "We are looking for an experienced bookkeeper."
+ },
+ {
+  "w": "Polemik",
+  "art": "die",
+  "pl": "Polemiken",
+  "pos": "noun",
+  "en": [
+   "polemic",
+   "inflammatory attack"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "media",
+  "ex": "Der Artikel ist reine Polemik.",
+  "exen": "The article is pure polemic."
+ },
+ {
+  "w": "Pfennigfuchser",
+  "art": "der",
+  "pl": "Pfennigfuchser",
+  "pos": "noun",
+  "en": [
+   "penny-pincher"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "money",
+  "ex": "Mein Onkel ist ein echter Pfennigfuchser.",
+  "exen": "My uncle is a real penny-pincher."
+ },
+ {
+  "w": "stichhaltig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "sound (argument)",
+   "valid"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "science",
+  "ex": "Dafür gibt es keine stichhaltigen Beweise.",
+  "exen": "There's no sound evidence for that."
+ },
+ {
+  "w": "Brauchtum",
+  "art": "das",
+  "pl": "Brauchtümer",
+  "pos": "noun",
+  "en": [
+   "folk customs",
+   "traditions"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "culture",
+  "ex": "Im Dorf wird das Brauchtum noch gepflegt.",
+  "exen": "Folk customs are still kept alive in the village."
+ },
+ {
+  "w": "zusehends",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "visibly (noticeably)",
+   "by the day"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "time",
+  "ex": "Ihr Zustand verbesserte sich zusehends.",
+  "exen": "Her condition improved visibly."
+ },
+ {
+  "w": "marode",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "dilapidated",
+   "crumbling (infrastructure)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "city",
+  "ex": "Viele Brücken sind marode.",
+  "exen": "Many bridges are crumbling."
+ },
+ {
+  "w": "entrümpeln",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to declutter",
+   "to clear out"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "home",
+  "ex": "Am Wochenende entrümpeln wir den Dachboden.",
+  "exen": "At the weekend we're clearing out the attic."
+ },
+ {
+  "w": "kurzweilig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "entertaining (time flies)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "leisure",
+  "ex": "Der Abend war sehr kurzweilig.",
+  "exen": "The evening was very entertaining."
+ },
+ {
+  "w": "lodern",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to blaze",
+   "to flare"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "nature",
+  "ex": "Im Kamin loderte ein Feuer.",
+  "exen": "A fire blazed in the fireplace."
+ },
+ {
+  "w": "gebrechlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "frail",
+   "infirm"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "body",
+  "ex": "Die gebrechliche Frau brauchte Hilfe.",
+  "exen": "The frail woman needed help."
+ },
+ {
+  "w": "schlemmen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to feast",
+   "to indulge (in food)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "food",
+  "ex": "Im Urlaub haben wir richtig geschlemmt.",
+  "exen": "On holiday we really feasted."
+ },
+ {
+  "w": "unwegsam",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "impassable",
+   "rough (terrain)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "travel",
+  "ex": "Das Gelände war steil und unwegsam.",
+  "exen": "The terrain was steep and rough."
+ },
+ {
+  "w": "dozieren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to lecture (pompously)",
+   "to hold forth"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "school",
+  "ex": "Er dozierte über die Vorzüge des Weins.",
+  "exen": "He held forth on the virtues of wine."
+ },
+ {
+  "w": "abgetragen",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "worn-out (clothes)",
+   "shabby"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "clothes",
+  "ex": "Er trug einen abgetragenen Mantel.",
+  "exen": "He wore a worn-out coat."
+ },
+ {
+  "w": "mithin",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "consequently",
+   "hence"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "core",
+  "ex": "Die Frist ist abgelaufen, mithin ist der Antrag ungültig.",
+  "exen": "The deadline has passed; hence the application is invalid."
+ },
+ {
+  "w": "sich zuspitzen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to come to a head",
+   "to escalate"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "abstract",
+  "ex": "Die Lage spitzt sich zu.",
+  "exen": "The situation is coming to a head.",
+  "forms": "spitzt sich zu · spitzte sich zu · hat sich zugespitzt"
+ },
+ {
+  "w": "ausufern",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to get out of hand"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "abstract",
+  "ex": "Die Kosten sind völlig ausgeufert.",
+  "exen": "The costs have got completely out of hand.",
+  "forms": "ufert aus · uferte aus · ist ausgeufert"
+ },
+ {
+  "w": "Unterton",
+  "art": "der",
+  "pl": "Untertöne",
+  "pos": "noun",
+  "en": [
+   "undertone"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "communication",
+  "ex": "In ihrer Stimme lag ein spöttischer Unterton.",
+  "exen": "There was a mocking undertone in her voice."
+ },
+ {
+  "w": "Fingerspitzengefühl",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "tact (sure instinct)",
+   "sensitivity"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "communication",
+  "ex": "Das Gespräch erfordert viel Fingerspitzengefühl.",
+  "exen": "The conversation requires a lot of tact."
+ },
+ {
+  "w": "verbittert",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "embittered",
+   "bitter"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "feelings",
+  "ex": "Nach der Scheidung war er verbittert.",
+  "exen": "After the divorce he was embittered."
+ },
+ {
+  "w": "zwiespältig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "mixed (feelings)",
+   "conflicted"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "feelings",
+  "ex": "Ich habe zwiespältige Gefühle dabei.",
+  "exen": "I have mixed feelings about it."
+ },
+ {
+  "w": "Missstand",
+  "art": "der",
+  "pl": "Missstände",
+  "pos": "noun",
+  "en": [
+   "abuse (bad state of affairs)",
+   "grievance"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "society",
+  "ex": "Die Journalistin deckte zahlreiche Missstände auf.",
+  "exen": "The journalist uncovered numerous abuses."
+ },
+ {
+  "w": "borniert",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "narrow-minded",
+   "bigoted"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "people",
+  "ex": "Seine Ansichten sind ziemlich borniert.",
+  "exen": "His views are rather narrow-minded."
+ },
+ {
+  "w": "verschroben",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "eccentric",
+   "quirky"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "people",
+  "ex": "Der alte Professor war etwas verschroben.",
+  "exen": "The old professor was somewhat eccentric."
+ },
+ {
+  "w": "Indiz",
+  "art": "das",
+  "pl": "Indizien",
+  "pos": "noun",
+  "en": [
+   "piece of circumstantial evidence",
+   "indication"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "law",
+  "ex": "Es gibt nur Indizien, keine Beweise.",
+  "exen": "There's only circumstantial evidence, no proof."
+ },
+ {
+  "w": "sich profilieren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to make one's mark",
+   "to distinguish oneself"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "work",
+  "ex": "Sie will sich als Expertin profilieren.",
+  "exen": "She wants to make her mark as an expert."
+ },
+ {
+  "w": "Sprachrohr",
+  "art": "das",
+  "pl": "Sprachrohre",
+  "pos": "noun",
+  "en": [
+   "mouthpiece"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "media",
+  "ex": "Die Zeitung ist das Sprachrohr der Regierung.",
+  "exen": "The newspaper is the government's mouthpiece."
+ },
+ {
+  "w": "betucht",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "well-off",
+   "well-heeled"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "money",
+  "ex": "Die Kunden sind meist gut betucht.",
+  "exen": "The customers are mostly well-heeled."
+ },
+ {
+  "w": "akribisch",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "meticulous"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "science",
+  "ex": "Sie hat alles akribisch dokumentiert.",
+  "exen": "She documented everything meticulously."
+ },
+ {
+  "w": "Schöngeist",
+  "art": "der",
+  "pl": "Schöngeister",
+  "pos": "noun",
+  "en": [
+   "aesthete"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "culture",
+  "ex": "Als Schöngeist liebt er Oper und Poesie.",
+  "exen": "As an aesthete he loves opera and poetry."
+ },
+ {
+  "w": "vergänglich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "transient",
+   "ephemeral"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "time",
+  "ex": "Alles Schöne ist vergänglich.",
+  "exen": "All beautiful things are transient."
+ },
+ {
+  "w": "verwahrlost",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "neglected",
+   "derelict"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "city",
+  "ex": "Der Park ist völlig verwahrlost.",
+  "exen": "The park is completely neglected."
+ },
+ {
+  "w": "heimelig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "homely (cosy and familiar)",
+   "snug"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "home",
+  "ex": "Die kleine Stube war sehr heimelig.",
+  "exen": "The little parlour was very homely."
+ },
+ {
+  "w": "ausgelassen",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "exuberant",
+   "boisterous"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "leisure",
+  "ex": "Die Gäste feierten ausgelassen bis zum Morgen.",
+  "exen": "The guests celebrated exuberantly until morning."
+ },
+ {
+  "w": "sprießen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to sprout",
+   "to shoot up"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "nature",
+  "ex": "Überall sprießen die ersten Blumen.",
+  "exen": "The first flowers are sprouting everywhere.",
+  "forms": "sprießt · spross · ist gesprossen"
+ },
+ {
+  "w": "rüstig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "sprightly (of the elderly)",
+   "hale"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "body",
+  "ex": "Mit achtzig ist er noch sehr rüstig.",
+  "exen": "At eighty he's still very sprightly."
+ },
+ {
+  "w": "kredenzen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to serve (with ceremony)",
+   "to proffer"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "food",
+  "ex": "Der Gastgeber kredenzte einen edlen Wein.",
+  "exen": "The host served a fine wine."
+ },
+ {
+  "w": "pilgern",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to make a pilgrimage",
+   "to flock (to)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "travel",
+  "ex": "Tausende pilgern jedes Jahr nach Santiago.",
+  "exen": "Thousands make the pilgrimage to Santiago every year.",
+  "forms": "pilgert · pilgerte · ist gepilgert"
+ },
+ {
+  "w": "abkupfern",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to crib",
+   "to copy (plagiarize)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "school",
+  "ex": "Er hat die Hausarbeit einfach abgekupfert.",
+  "exen": "He simply cribbed the term paper.",
+  "forms": "kupfert ab · kupferte ab · hat abgekupfert"
+ },
+ {
+  "w": "geschniegelt",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "spruced up",
+   "dapper"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "clothes",
+  "ex": "Er kam geschniegelt und gebügelt zum Termin.",
+  "exen": "He came to the appointment all spruced up."
+ },
+ {
+  "w": "entbehren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to lack (entirely)",
+   "to do without"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "core",
+  "ex": "Diese Behauptung entbehrt jeder Grundlage.",
+  "exen": "This claim lacks any basis."
+ },
+ {
+  "w": "verkennen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to misjudge",
+   "to fail to recognize"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "abstract",
+  "ex": "Man sollte den Ernst der Lage nicht verkennen.",
+  "exen": "One should not misjudge the seriousness of the situation.",
+  "forms": "verkennt · verkannte · hat verkannt"
+ },
+ {
+  "w": "hanebüchen",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "preposterous",
+   "outrageous"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "abstract",
+  "ex": "Das ist eine hanebüchene Ausrede.",
+  "exen": "That is a preposterous excuse."
+ },
+ {
+  "w": "lapidar",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "terse",
+   "succinct"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "communication",
+  "ex": "Seine Antwort war lapidar: Nein.",
+  "exen": "His answer was terse: no."
+ },
+ {
+  "w": "weitschweifig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "long-winded",
+   "rambling"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "communication",
+  "ex": "Die Erklärung war mir zu weitschweifig.",
+  "exen": "The explanation was too long-winded for me."
+ },
+ {
+  "w": "zermürben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to wear down",
+   "to grind down"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "feelings",
+  "ex": "Das lange Warten zermürbt mich.",
+  "exen": "The long wait is wearing me down."
+ },
+ {
+  "w": "hadern",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to struggle with (not accept)",
+   "to be at odds with"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "feelings",
+  "ex": "Sie hadert noch mit ihrem Schicksal.",
+  "exen": "She is still struggling to accept her fate."
+ },
+ {
+  "w": "Vetternwirtschaft",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "nepotism",
+   "cronyism"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "society",
+  "ex": "Im Rathaus herrscht Vetternwirtschaft.",
+  "exen": "Nepotism is rife at the town hall."
+ },
+ {
+  "w": "umgänglich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "affable",
+   "easy to get along with"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "people",
+  "ex": "Der neue Kollege ist sehr umgänglich.",
+  "exen": "The new colleague is very easy to get along with."
+ },
+ {
+  "w": "gewieft",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "shrewd",
+   "savvy"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "people",
+  "ex": "Sie ist eine gewiefte Verhandlerin.",
+  "exen": "She is a shrewd negotiator."
+ },
+ {
+  "w": "Gesetzeslücke",
+  "art": "die",
+  "pl": "Gesetzeslücken",
+  "pos": "noun",
+  "en": [
+   "legal loophole (gap in the law)",
+   "loophole"
+  ],
+  "alt": [
+   "das Schlupfloch"
+  ],
+  "level": "C2",
+  "theme": "law",
+  "ex": "Die Firma nutzte eine Gesetzeslücke.",
+  "exen": "The company exploited a loophole."
+ },
+ {
+  "w": "obliegen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to be incumbent on",
+   "to be the responsibility of"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "work",
+  "ex": "Die Entscheidung obliegt der Geschäftsführung.",
+  "exen": "The decision is the responsibility of management.",
+  "forms": "obliegt · oblag · hat oblegen"
+ },
+ {
+  "w": "reißerisch",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "sensationalist",
+   "lurid"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "media",
+  "ex": "Die Schlagzeile war sehr reißerisch.",
+  "exen": "The headline was very sensationalist."
+ },
+ {
+  "w": "verprassen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to squander",
+   "to blow (money)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "money",
+  "ex": "Er hat sein Erbe in einem Jahr verprasst.",
+  "exen": "He squandered his inheritance in a year."
+ },
+ {
+  "w": "untermauern",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to substantiate",
+   "to underpin"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "science",
+  "ex": "Die Daten untermauern unsere These.",
+  "exen": "The data substantiate our thesis."
+ },
+ {
+  "w": "Abgesang",
+  "art": "der",
+  "pl": "Abgesänge",
+  "pos": "noun",
+  "en": [
+   "swan song",
+   "farewell"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "culture",
+  "ex": "Der Roman ist ein Abgesang auf eine Epoche.",
+  "exen": "The novel is a swan song for an era."
+ },
+ {
+  "w": "Morgengrauen",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "dawn (first light)",
+   "daybreak"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "time",
+  "ex": "Wir brachen im Morgengrauen auf.",
+  "exen": "We set off at dawn."
+ },
+ {
+  "w": "verwinkelt",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "winding (full of nooks)",
+   "twisty"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "city",
+  "ex": "Die Altstadt hat viele verwinkelte Gassen.",
+  "exen": "The old town has many winding alleys."
+ },
+ {
+  "w": "frönen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to indulge (a passion)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "leisure",
+  "ex": "Im Ruhestand frönt er seiner Leidenschaft fürs Angeln.",
+  "exen": "In retirement he indulges his passion for fishing."
+ },
+ {
+  "w": "versiegen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to dry up (source)",
+   "to run dry"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "nature",
+  "ex": "Die Quelle ist versiegt.",
+  "exen": "The spring has dried up.",
+  "forms": "versiegt · versiegte · ist versiegt"
+ },
+ {
+  "w": "hager",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "gaunt",
+   "lean"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "body",
+  "ex": "Der hagere Mann trug einen langen Mantel.",
+  "exen": "The gaunt man wore a long coat."
+ },
+ {
+  "w": "sich erübrigen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to be unnecessary",
+   "to be superfluous"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "core",
+  "ex": "Damit erübrigt sich jede weitere Diskussion.",
+  "exen": "That makes any further discussion unnecessary."
+ },
+ {
+  "w": "eklatant",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "glaring",
+   "blatant"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "abstract",
+  "ex": "Das ist ein eklatanter Verstoß gegen die Regeln.",
+  "exen": "That is a blatant violation of the rules."
+ },
+ {
+  "w": "trügerisch",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "deceptive",
+   "treacherous"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "abstract",
+  "ex": "Die Ruhe ist trügerisch.",
+  "exen": "The calm is deceptive."
+ },
+ {
+  "w": "fadenscheinig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "flimsy (excuse)",
+   "threadbare"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "communication",
+  "ex": "Das ist doch eine fadenscheinige Begründung.",
+  "exen": "That's a flimsy justification."
+ },
+ {
+  "w": "aus dem Stegreif",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "off the cuff",
+   "impromptu"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "communication",
+  "ex": "Er hielt die Rede aus dem Stegreif.",
+  "exen": "He gave the speech off the cuff."
+ },
+ {
+  "w": "schwelgen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to wallow (in memories)",
+   "to revel in"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "feelings",
+  "ex": "Wir schwelgten in Erinnerungen an den Sommer.",
+  "exen": "We wallowed in memories of the summer."
+ },
+ {
+  "w": "ein Dorn im Auge sein",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "to be a thorn in someone's side"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "feelings",
+  "ex": "Die laute Bar ist den Anwohnern ein Dorn im Auge.",
+  "exen": "The noisy bar is a thorn in the residents' side."
+ },
+ {
+  "w": "Gesinnung",
+  "art": "die",
+  "pl": "Gesinnungen",
+  "pos": "noun",
+  "en": [
+   "convictions (political)",
+   "mindset"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "society",
+  "ex": "Man erkennt seine Gesinnung an seinen Worten.",
+  "exen": "You can tell his convictions from his words."
+ },
+ {
+  "w": "unbedarft",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "naive (inexperienced)",
+   "green"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "people",
+  "ex": "Er stellte eine ziemlich unbedarfte Frage.",
+  "exen": "He asked a rather naive question."
+ },
+ {
+  "w": "nachtragend",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "unforgiving (holding grudges)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "people",
+  "ex": "Sei nicht so nachtragend!",
+  "exen": "Don't be so unforgiving!"
+ },
+ {
+  "w": "ahnden",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to punish (an offence)",
+   "to penalize"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "law",
+  "ex": "Verstöße werden streng geahndet.",
+  "exen": "Violations are strictly punished."
+ },
+ {
+  "w": "anberaumen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to schedule (officially)",
+   "to set (a date)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "work",
+  "ex": "Für Freitag wurde eine Sitzung anberaumt.",
+  "exen": "A meeting was scheduled for Friday.",
+  "forms": "beraumt an · beraumte an · hat anberaumt"
+ },
+ {
+  "w": "tendenziös",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "slanted (biased)",
+   "tendentious"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "media",
+  "ex": "Die Berichterstattung war tendenziös.",
+  "exen": "The reporting was slanted."
+ },
+ {
+  "w": "veräußern",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to sell off",
+   "to dispose of"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "money",
+  "ex": "Das Unternehmen veräußert mehrere Tochterfirmen.",
+  "exen": "The company is selling off several subsidiaries."
+ },
+ {
+  "w": "ergründen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to get to the bottom of",
+   "to fathom (cause)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "science",
+  "ex": "Wir versuchen, die Ursache zu ergründen.",
+  "exen": "We're trying to get to the bottom of the cause."
+ },
+ {
+  "w": "seit eh und je",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "for as long as anyone can remember"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "time",
+  "ex": "Das machen wir seit eh und je so.",
+  "exen": "We've always done it this way."
+ },
+ {
+  "w": "beschaulich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "tranquil",
+   "peaceful (quiet life)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "city",
+  "ex": "Wir wohnen in einem beschaulichen Städtchen.",
+  "exen": "We live in a tranquil little town."
+ },
+ {
+  "w": "auskosten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to savour (to the full)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "leisure",
+  "ex": "Wir wollen jeden Urlaubstag auskosten.",
+  "exen": "We want to savour every day of the holiday.",
+  "forms": "kostet aus · kostete aus · hat ausgekostet"
+ },
+ {
+  "w": "geflissentlich",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "deliberately (ignoring)",
+   "studiously"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "core",
+  "ex": "Er überhörte die Frage geflissentlich.",
+  "exen": "He studiously ignored the question."
+ },
+ {
+  "w": "unabdingbar",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "indispensable",
+   "essential"
+  ],
+  "alt": [
+   "unerlässlich"
+  ],
+  "level": "C2",
+  "theme": "abstract",
+  "ex": "Vertrauen ist dafür unabdingbar.",
+  "exen": "Trust is indispensable for this."
+ },
+ {
+  "w": "Hand und Fuß haben",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "to be well thought out",
+   "to hold water"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "abstract",
+  "ex": "Dein Plan hat Hand und Fuß.",
+  "exen": "Your plan is well thought out."
+ },
+ {
+  "w": "ins Fettnäpfchen treten",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "to put one's foot in it"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "communication",
+  "ex": "Mit der Frage bin ich voll ins Fettnäpfchen getreten.",
+  "exen": "I really put my foot in it with that question."
+ },
+ {
+  "w": "jemandem reinen Wein einschenken",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "to tell someone the plain truth"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "communication",
+  "ex": "Ich muss dir reinen Wein einschenken.",
+  "exen": "I have to tell you the plain truth."
+ },
+ {
+  "w": "Verdrossenheit",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "disenchantment",
+   "disaffection"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "society",
+  "ex": "Die Verdrossenheit mit der Politik nimmt zu.",
+  "exen": "Disenchantment with politics is growing."
+ },
+ {
+  "w": "anfechten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to contest (legally)",
+   "to challenge"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "law",
+  "ex": "Sie will das Testament anfechten.",
+  "exen": "She wants to contest the will.",
+  "forms": "ficht an · focht an · hat angefochten"
+ },
+ {
+  "w": "beanstanden",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to complain about (a defect)",
+   "to object to"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "money",
+  "ex": "Der Kunde beanstandete die Lieferung.",
+  "exen": "The customer complained about the delivery.",
+  "forms": "beanstandet · beanstandete · hat beanstandet"
+ },
+ {
+  "w": "tüfteln",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to tinker",
+   "to puzzle over"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "science",
+  "ex": "Er tüftelt seit Monaten an seiner Erfindung.",
+  "exen": "He's been tinkering with his invention for months."
+ },
+ {
+  "w": "mit Fug und Recht",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "with every justification",
+   "rightly"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "core",
+  "ex": "Das kann man mit Fug und Recht behaupten.",
+  "exen": "One can claim that with every justification."
+ },
+ {
+  "w": "mündig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "responsible (of age, autonomous)",
+   "mature"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "society",
+  "ex": "Wir brauchen mündige Bürger.",
+  "exen": "We need responsible, independent-minded citizens."
+ },
+ {
+  "w": "unterbinden",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to put a stop to",
+   "to prevent"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "law",
+  "ex": "Die Regierung will solche Praktiken unterbinden.",
+  "exen": "The government wants to put a stop to such practices.",
+  "forms": "unterbindet · unterband · hat unterbunden"
+ },
+ {
+  "w": "auf der Hut sein",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "to be on one's guard"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "core",
+  "ex": "Bei solchen Angeboten sollte man auf der Hut sein.",
+  "exen": "With offers like these, you should be on your guard."
+ },
+ {
+  "w": "prekär",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "precarious"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "society",
+  "ex": "Viele Künstler leben in prekären Verhältnissen.",
+  "exen": "Many artists live in precarious circumstances."
+ },
+ {
+  "w": "sich erschleichen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to obtain by deception",
+   "to wangle"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "law",
+  "ex": "Er hat sich die Rente erschlichen.",
+  "exen": "He obtained the pension by deception.",
+  "forms": "erschleicht sich · erschlich sich · hat sich erschlichen"
+ },
+ {
+  "w": "sang- und klanglos",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "without fanfare",
+   "unceremoniously"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "core",
+  "ex": "Das Projekt wurde sang- und klanglos eingestellt.",
+  "exen": "The project was dropped without fanfare."
+ },
+ {
+  "w": "schüren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to stoke (fears)",
+   "to fuel"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "society",
+  "ex": "Die Partei schürt gezielt Ängste.",
+  "exen": "The party deliberately stokes fears."
+ },
+ {
+  "w": "befangen",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "biased (of a judge)",
+   "self-conscious"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "law",
+  "ex": "Der Richter wurde für befangen erklärt.",
+  "exen": "The judge was declared biased."
+ },
+ {
+  "w": "schwelen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to smoulder (conflict)"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "society",
+  "ex": "Der Konflikt schwelt schon seit Jahren.",
+  "exen": "The conflict has been smouldering for years."
+ },
+ {
+  "w": "unterwandern",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to infiltrate",
+   "to subvert"
+  ],
+  "alt": [],
+  "level": "C2",
+  "theme": "society",
+  "ex": "Extremisten versuchten, den Verein zu unterwandern.",
+  "exen": "Extremists tried to infiltrate the club."
+ }
+]

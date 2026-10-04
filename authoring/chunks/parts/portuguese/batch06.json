@@ -1,0 +1,536 @@
+[
+ {
+  "id": "ENG_CHUNK_0501",
+  "t": "Tenho medo de [substantivo]",
+  "ex": "Tenho medo de aranha, então você vai ter que tirar essa daí."
+ },
+ {
+  "id": "ENG_CHUNK_0502",
+  "t": "Quanto custa para [infinitivo]? / Quanto sai para [infinitivo]?",
+  "ex": "Quanto sai para consertar um pneu furado?",
+  "n": "'Quanto sai?' is the everyday Brazilian price question."
+ },
+ {
+  "id": "ENG_CHUNK_0503",
+  "t": "Tem certeza de que [oração]?",
+  "ex": "Tem certeza de que desligou o fogão?",
+  "n": "Speech often drops 'de': tem certeza que...?"
+ },
+ {
+  "id": "ENG_CHUNK_0504",
+  "t": "Por que você acha que [oração]? / Da onde você tirou que [oração]?",
+  "ex": "Por que você acha que ela está brava com você?",
+  "n": "'Da onde você tirou isso?' is blunter, informal."
+ },
+ {
+  "id": "ENG_CHUNK_0505",
+  "t": "É verdade que [oração]?",
+  "ex": "É verdade que você vai se mudar para o Texas?"
+ },
+ {
+  "id": "ENG_CHUNK_0506",
+  "t": "Sabe [onde/se/quem...]? / Você faz ideia [de onde...]?",
+  "ex": "Sabe onde eu deixei meu celular?"
+ },
+ {
+  "id": "ENG_CHUNK_0507",
+  "t": "Posso perguntar por que [oração]?",
+  "ex": "Posso perguntar por que você já vai embora?"
+ },
+ {
+  "id": "ENG_CHUNK_0508",
+  "t": "Para que serve [substantivo]?",
+  "ex": "Para que serve este botão?"
+ },
+ {
+  "id": "ENG_CHUNK_0509",
+  "t": "Como se diz [substantivo] em português?",
+  "ex": "Desculpa, como se diz isto em português?",
+  "n": "Adapted: the learner is asking in Portuguese about Portuguese."
+ },
+ {
+  "id": "ENG_CHUNK_0510",
+  "t": "Você pode me mostrar como [infinitivo]? / Você me ensina a [infinitivo]?",
+  "ex": "Você me ensina a usar a máquina de café?"
+ },
+ {
+  "id": "ENG_CHUNK_0511",
+  "t": "Você pode me indicar [substantivo]? / Você recomenda [substantivo]?",
+  "ex": "Você pode me indicar um bom lugar para um brunch aqui perto?",
+  "n": "'Indicar' = recommend, very common in Brazil."
+ },
+ {
+  "id": "ENG_CHUNK_0512",
+  "t": "Tem algum lugar onde eu possa [infinitivo]?",
+  "ex": "Tem algum lugar onde eu possa carregar o celular?",
+  "n": "Subjunctive after an unknown place: onde eu possa."
+ },
+ {
+  "id": "ENG_CHUNK_0513",
+  "t": "Tem [substantivo] aqui perto?",
+  "ex": "Com licença, tem alguma farmácia aqui perto?",
+  "n": "'Tem' replaces 'há' in Brazilian speech."
+ },
+ {
+  "id": "ENG_CHUNK_0514",
+  "t": "Esse é o caminho para [lugar]? / É por aqui que se vai para [lugar]?",
+  "ex": "Com licença, é por aqui que se vai para o museu?"
+ },
+ {
+  "id": "ENG_CHUNK_0515",
+  "t": "Fica a que distância [lugar]? / É longe até [lugar]?",
+  "ex": "A praia fica muito longe daqui?",
+  "n": "Most people ask 'É longe?' or 'Dá para ir a pé?'."
+ },
+ {
+  "id": "ENG_CHUNK_0516",
+  "t": "Esse ônibus vai para [lugar]? / Esse ônibus passa em [lugar]?",
+  "ex": "Com licença, esse ônibus passa na rodoviária?",
+  "n": "'Passar em' = stop at/go past, the usual bus question in Brazil."
+ },
+ {
+  "id": "ENG_CHUNK_0517",
+  "t": "A que horas sai [substantivo]?",
+  "ex": "A que horas sai o último trem?"
+ },
+ {
+  "id": "ENG_CHUNK_0518",
+  "t": "Queria uma passagem de ida e volta para [lugar]",
+  "ex": "Queria uma passagem de ida e volta para Chicago, por favor.",
+  "n": "Polite ordering uses the imperfect 'queria', not 'quero'."
+ },
+ {
+  "id": "ENG_CHUNK_0519",
+  "t": "Tenho uma reserva no nome de [nome]",
+  "ex": "Oi, tenho uma reserva no nome de Miller."
+ },
+ {
+  "id": "ENG_CHUNK_0520",
+  "t": "Queria fazer uma reserva para [número/hora]",
+  "ex": "Oi, queria fazer uma reserva para duas pessoas às oito."
+ },
+ {
+  "id": "ENG_CHUNK_0521",
+  "t": "Tem mesa para [número]?",
+  "ex": "Oi, tem mesa para dois?"
+ },
+ {
+  "id": "ENG_CHUNK_0522",
+  "t": "[substantivo] tem [substantivo]? / [substantivo] leva [substantivo]?",
+  "ex": "A sopa leva carne?",
+  "n": "'Levar' = contain (as an ingredient)."
+ },
+ {
+  "id": "ENG_CHUNK_0523",
+  "t": "Sou alérgico a [substantivo] / Tenho alergia a [substantivo]",
+  "ex": "Tenho alergia a amendoim, então vou pular a sobremesa."
+ },
+ {
+  "id": "ENG_CHUNK_0524",
+  "t": "Pode vir sem [substantivo]? / Dá para tirar [substantivo]?",
+  "ex": "Pode vir sem cebola?"
+ },
+ {
+  "id": "ENG_CHUNK_0525",
+  "t": "[substantivo] está incluído?",
+  "ex": "O café da manhã está incluído?"
+ },
+ {
+  "id": "ENG_CHUNK_0526",
+  "t": "Onde fica [substantivo]? / Onde eu encontro [substantivo]?",
+  "ex": "Com licença, onde ficam os cereais?"
+ },
+ {
+  "id": "ENG_CHUNK_0527",
+  "t": "Posso experimentar [substantivo]?",
+  "ex": "Posso experimentar essa calça jeans?",
+  "n": "'Provar' is also used (and is standard in EP)."
+ },
+ {
+  "id": "ENG_CHUNK_0528",
+  "t": "[substantivo] está em promoção?",
+  "ex": "Essa jaqueta está em promoção?",
+  "n": "'Em liquidação' = clearance sale."
+ },
+ {
+  "id": "ENG_CHUNK_0529",
+  "t": "Tem alguma coisa menos [adjetivo]?",
+  "ex": "Tem alguma coisa mais barata?",
+  "n": "For 'less expensive' Brazilians say 'mais barato', not 'menos caro'."
+ },
+ {
+  "id": "ENG_CHUNK_0530",
+  "t": "Você vai amar [substantivo] / Você vai adorar [substantivo]",
+  "ex": "Você vai adorar esse lugar."
+ },
+ {
+  "id": "ENG_CHUNK_0531",
+  "t": "Vou levar [substantivo]",
+  "ex": "Vou levar o azul."
+ },
+ {
+  "id": "ENG_CHUNK_0532",
+  "t": "Vocês aceitam [substantivo]?",
+  "ex": "Vocês aceitam cartão de crédito?",
+  "n": "Brazil: Aceita cartão? / Aceita Pix? / Passa no débito?"
+ },
+ {
+  "id": "ENG_CHUNK_0533",
+  "t": "Queria devolver [substantivo] / Queria trocar [substantivo]",
+  "ex": "Oi, queria trocar esta blusa. Ficou pequena.",
+  "n": "Brazilian stores more often do 'troca' (exchange) than refunds."
+ },
+ {
+  "id": "ENG_CHUNK_0534",
+  "t": "Queria cancelar [substantivo]",
+  "ex": "Queria cancelar minha assinatura, por favor."
+ },
+ {
+  "id": "ENG_CHUNK_0535",
+  "t": "Tem alguma taxa para [infinitivo]? / Cobra alguma coisa para [infinitivo]?",
+  "ex": "Tem alguma taxa para mudar a data?"
+ },
+ {
+  "id": "ENG_CHUNK_0536",
+  "t": "experimentar [substantivo] / provar [substantivo] / arriscar",
+  "ex": "Nunca comi sushi, mas vou experimentar."
+ },
+ {
+  "id": "ENG_CHUNK_0537",
+  "t": "continuar / não desistir",
+  "ex": "Você está quase no topo, continua! Não desiste!"
+ },
+ {
+  "id": "ENG_CHUNK_0538",
+  "t": "fazer um pedido",
+  "ex": "Assopra as velas e faz um pedido!",
+  "n": "'Pedido' = wish here; a 'desejo' is not used for birthday wishes."
+ },
+ {
+  "id": "ENG_CHUNK_0539",
+  "t": "se encontrar / se ver",
+  "ex": "A gente devia se ver algum dia na semana que vem.",
+  "n": "'Marcar alguma coisa' = set up a meetup: Vamos marcar!"
+ },
+ {
+  "id": "ENG_CHUNK_0540",
+  "t": "mostrar [lugar] para [pessoa] / apresentar [lugar] para [pessoa]",
+  "ex": "Passa aqui amanhã que eu te mostro o escritório."
+ },
+ {
+  "id": "ENG_CHUNK_0541",
+  "t": "ir morar com [pessoa]",
+  "ex": "Vou morar com a minha namorada mês que vem."
+ },
+ {
+  "id": "ENG_CHUNK_0542",
+  "t": "sair de casa / se mudar",
+  "ex": "Saí de casa quando tinha dezoito anos."
+ },
+ {
+  "id": "ENG_CHUNK_0543",
+  "t": "ser próximo de [pessoa] / ser muito ligado a [pessoa]",
+  "ex": "Sou muito ligado à minha avó. A gente conversa todo dia."
+ },
+ {
+  "id": "ENG_CHUNK_0544",
+  "t": "estar a fim de [pessoa] / ter uma queda por [pessoa]",
+  "ex": "Acho que o Jake está a fim de você."
+ },
+ {
+  "id": "ENG_CHUNK_0545",
+  "t": "fazer as pazes com [pessoa]",
+  "ex": "Já fez as pazes com a sua irmã?"
+ },
+ {
+  "id": "ENG_CHUNK_0546",
+  "t": "manter contato",
+  "ex": "Vamos manter contato depois que você se mudar."
+ },
+ {
+  "id": "ENG_CHUNK_0547",
+  "t": "ter notícias de [pessoa] / saber de [pessoa]",
+  "ex": "Você tem tido notícias da Anna?"
+ },
+ {
+  "id": "ENG_CHUNK_0548",
+  "t": "reclamar de [substantivo]",
+  "ex": "Meu vizinho vive reclamando do barulho.",
+  "n": "'Reclamar' = complain; 'queixar-se' is more formal."
+ },
+ {
+  "id": "ENG_CHUNK_0549",
+  "t": "se preocupar com [substantivo] / ligar para [substantivo]",
+  "ex": "Hoje em dia eu me preocupo muito mais com a minha saúde.",
+  "n": "'Não ligo para isso' = I don't care about it."
+ },
+ {
+  "id": "ENG_CHUNK_0550",
+  "t": "lembrar [pessoa] de [infinitivo]",
+  "ex": "Você me lembra de ligar para o dentista?"
+ },
+ {
+  "id": "ENG_CHUNK_0551",
+  "t": "passar numa prova / passar no exame",
+  "ex": "Passei na prova de direção de primeira!",
+  "n": "False friend: 'passar' = pass, but 'fazer uma prova' = take a test."
+ },
+ {
+  "id": "ENG_CHUNK_0552",
+  "t": "se preparar para [substantivo]",
+  "ex": "Estou me preparando para as provas finais."
+ },
+ {
+  "id": "ENG_CHUNK_0553",
+  "t": "cuidar de [substantivo] / deixar [substantivo] comigo",
+  "ex": "Não se preocupa, deixa a conta comigo."
+ },
+ {
+  "id": "ENG_CHUNK_0554",
+  "t": "participar de [substantivo]",
+  "ex": "Mais de duzentas pessoas participaram da corrida."
+ },
+ {
+  "id": "ENG_CHUNK_0555",
+  "t": "entregar [substantivo]",
+  "ex": "Tenho que entregar meu relatório até sexta."
+ },
+ {
+  "id": "ENG_CHUNK_0556",
+  "t": "fazer uma apresentação / apresentar",
+  "ex": "Tenho que fazer uma apresentação amanhã e estou muito nervoso."
+ },
+ {
+  "id": "ENG_CHUNK_0557",
+  "t": "fazer hora extra",
+  "ex": "Fiz hora extra a semana toda."
+ },
+ {
+  "id": "ENG_CHUNK_0558",
+  "t": "ser promovido",
+  "ex": "Minha irmã acabou de ser promovida a gerente!"
+ },
+ {
+  "id": "ENG_CHUNK_0559",
+  "t": "perder o emprego / ser demitido",
+  "ex": "Meu tio perdeu o emprego mês passado.",
+  "n": "Informal: ser mandado embora."
+ },
+ {
+  "id": "ENG_CHUNK_0560",
+  "t": "pedir demissão / largar o emprego",
+  "ex": "Ela pediu demissão para viajar por um ano.",
+  "n": "'Pedir demissão' = quit; 'ser demitido' = be fired. Easy to confuse."
+ },
+ {
+  "id": "ENG_CHUNK_0561",
+  "t": "um emprego de meio período / um bico",
+  "ex": "Tenho um emprego de meio período num café nos fins de semana.",
+  "n": "'Bico' = informal side gig."
+ },
+ {
+  "id": "ENG_CHUNK_0562",
+  "t": "uma entrevista de emprego",
+  "ex": "Tenho uma entrevista de emprego segunda de manhã."
+ },
+ {
+  "id": "ENG_CHUNK_0563",
+  "t": "sair do trabalho",
+  "ex": "Que horas você sai do trabalho?"
+ },
+ {
+  "id": "ENG_CHUNK_0564",
+  "t": "ir embora / ir nessa",
+  "ex": "Vou nessa. Até amanhã."
+ },
+ {
+  "id": "ENG_CHUNK_0565",
+  "t": "horário de pico / hora do rush",
+  "ex": "Vamos sair cedo para fugir do horário de pico."
+ },
+ {
+  "id": "ENG_CHUNK_0566",
+  "t": "Difícil dizer / Não dá para saber",
+  "ex": "Vai ficar pronto até sexta? Difícil dizer."
+ },
+ {
+  "id": "ENG_CHUNK_0567",
+  "t": "Que eu saiba, não",
+  "ex": "Tem reunião hoje? Que eu saiba, não."
+ },
+ {
+  "id": "ENG_CHUNK_0568",
+  "t": "Com certeza! / Claro!",
+  "ex": "Você vai à festa? Com certeza!"
+ },
+ {
+  "id": "ENG_CHUNK_0569",
+  "t": "Pessoalmente / Eu, particularmente",
+  "ex": "Eu, particularmente, prefiro praia a montanha."
+ },
+ {
+  "id": "ENG_CHUNK_0570",
+  "t": "Tenho que admitir / Tenho que dizer",
+  "ex": "Tenho que admitir, essa é a melhor pizza que eu já comi."
+ },
+ {
+  "id": "ENG_CHUNK_0571",
+  "t": "Confia em mim / Pode acreditar",
+  "ex": "Pode acreditar, você não quer dirigir a essa hora."
+ },
+ {
+  "id": "ENG_CHUNK_0572",
+  "t": "Não é verdade / Mentira",
+  "ex": "Não é verdade, eu te liguei duas vezes!"
+ },
+ {
+  "id": "ENG_CHUNK_0573",
+  "t": "Discordo totalmente",
+  "ex": "Discordo totalmente, o primeiro filme era muito melhor."
+ },
+ {
+  "id": "ENG_CHUNK_0574",
+  "t": "De jeito nenhum / Nem pensar",
+  "ex": "Posso pegar seu carro hoje à noite? Nem pensar."
+ },
+ {
+  "id": "ENG_CHUNK_0575",
+  "t": "Não tinha pensado nisso",
+  "ex": "Ah, bem lembrado. Não tinha pensado nisso."
+ },
+ {
+  "id": "ENG_CHUNK_0576",
+  "t": "Tá bom, você venceu",
+  "ex": "Tá bom, você venceu, vamos de comida tailandesa."
+ },
+ {
+  "id": "ENG_CHUNK_0577",
+  "t": "Essa é difícil",
+  "ex": "Meu filme favorito? Essa é difícil."
+ },
+ {
+  "id": "ENG_CHUNK_0578",
+  "t": "Deixa eu te perguntar uma coisa",
+  "ex": "Deixa eu te perguntar uma coisa. Você gosta mesmo do seu trabalho?"
+ },
+ {
+  "id": "ENG_CHUNK_0579",
+  "t": "E não para por aí / E o pior",
+  "ex": "Aí eu perdi o ônibus e, o pior, começou a cair um toró."
+ },
+ {
+  "id": "ENG_CHUNK_0580",
+  "t": "O engraçado é que",
+  "ex": "O engraçado é que a gente já se conhecia e nenhum dos dois lembrava."
+ },
+ {
+  "id": "ENG_CHUNK_0581",
+  "t": "Me deseja sorte / Torce por mim",
+  "ex": "Vou conhecer os pais dela hoje. Torce por mim!",
+  "n": "'Torcer' = root for, as in football."
+ },
+ {
+  "id": "ENG_CHUNK_0582",
+  "t": "Fica pra próxima",
+  "ex": "Não ganhou? Ah, fica pra próxima."
+ },
+ {
+  "id": "ENG_CHUNK_0583",
+  "t": "Melhoras!",
+  "ex": "Poxa, você está doente. Melhoras!",
+  "n": "'Melhoras!' is the standard fixed get-well wish in Brazil."
+ },
+ {
+  "id": "ENG_CHUNK_0584",
+  "t": "O mundo é pequeno / Que mundo pequeno!",
+  "ex": "Você conhece meu primo? Que mundo pequeno!"
+ },
+ {
+  "id": "ENG_CHUNK_0585",
+  "t": "Não é muito a minha praia / Não é muito a minha",
+  "ex": "Karaokê? Obrigado, mas não é muito a minha praia.",
+  "n": "'Não é minha praia' = not my thing, idiomatic."
+ },
+ {
+  "id": "ENG_CHUNK_0586",
+  "t": "Ah, qual é! / Ah, não!",
+  "ex": "Ah, não! Mais um atraso!",
+  "n": "'Qual é!' is a Brazilian protest; 'fala sério!' is similar."
+ },
+ {
+  "id": "ENG_CHUNK_0587",
+  "t": "O tempo voa",
+  "ex": "Seu filho vai começar a faculdade? O tempo voa."
+ },
+ {
+  "id": "ENG_CHUNK_0588",
+  "t": "Antes tarde do que nunca",
+  "ex": "Finalmente você ligou! Antes tarde do que nunca."
+ },
+ {
+  "id": "ENG_CHUNK_0589",
+  "t": "É moleza / É fichinha",
+  "ex": "Não se preocupa com a prova, é moleza.",
+  "n": "'Moleza' = piece of cake, very common."
+ },
+ {
+  "id": "ENG_CHUNK_0590",
+  "t": "Eu te avisei / Não falei?",
+  "ex": "O restaurante estava fechado? Eu te avisei."
+ },
+ {
+  "id": "ENG_CHUNK_0591",
+  "t": "Senão",
+  "ex": "Sai agora, senão você vai pegar trânsito.",
+  "n": "One word 'senão' = otherwise."
+ },
+ {
+  "id": "ENG_CHUNK_0592",
+  "t": "Igualzinho a / Que nem",
+  "ex": "Ela é igualzinha à mãe.",
+  "n": "'Que nem' = just like, informal Brazilian."
+ },
+ {
+  "id": "ENG_CHUNK_0593",
+  "t": "Comparado a / Comparado com",
+  "ex": "Comparado com o inverno passado, este está bem ameno."
+ },
+ {
+  "id": "ENG_CHUNK_0594",
+  "t": "Por enquanto / Por ora",
+  "ex": "Vamos deixar assim por enquanto."
+ },
+ {
+  "id": "ENG_CHUNK_0595",
+  "t": "Para / A fim de",
+  "ex": "Acordo às cinco para fugir do trânsito.",
+  "n": "'A fim de' (in order to) is formal; do not confuse with 'afim' (one word), meaning 'akin, related'."
+ },
+ {
+  "id": "ENG_CHUNK_0596",
+  "t": "Aconteça o que acontecer / De qualquer jeito",
+  "ex": "Eu vou estar lá, aconteça o que acontecer."
+ },
+ {
+  "id": "ENG_CHUNK_0597",
+  "t": "Só se [subjuntivo]",
+  "ex": "Eu vou, mas só se você for dirigindo.",
+  "n": "'Só se' + future subjunctive for future conditions: só se você for."
+ },
+ {
+  "id": "ENG_CHUNK_0598",
+  "t": "Por isso / Como resultado",
+  "ex": "Nosso voo foi cancelado e, por isso, a gente dormiu no aeroporto.",
+  "n": "'Como resultado' is formal; speech says 'por isso' or 'aí'."
+ },
+ {
+  "id": "ENG_CHUNK_0599",
+  "t": "Depois de um tempo / Com o tempo",
+  "ex": "No começo foi estranho, mas depois de um tempo me acostumei."
+ },
+ {
+  "id": "ENG_CHUNK_0600",
+  "t": "Mais cedo ou mais tarde",
+  "ex": "Mais cedo ou mais tarde, você vai ter que contar para ele."
+ }
+]

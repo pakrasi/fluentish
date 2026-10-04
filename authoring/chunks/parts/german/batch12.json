@@ -1,0 +1,562 @@
+[
+{
+"id": "ENG_CHUNK_1101",
+"t": "[Nomen] hat irgendetwas, das [Verb am Ende]",
+"ex": "Dieses Viertel hat irgendwas, das mir das Gefühl gibt, zu Hause zu sein.",
+"n": "Relative clause: verb last (gibt)."
+},
+{
+"id": "ENG_CHUNK_1102",
+"t": "Du würdest dich wundern, wie oft [Satz]",
+"ex": "Du würdest dich wundern, wie oft Leute ihren Schlüssel in der Tür stecken lassen.",
+"n": "wie oft: verb last (stecken lassen)."
+},
+{
+"id": "ENG_CHUNK_1103",
+"t": "Wenn [Nomen] nicht gewesen wäre, [Satz] / Ohne [Nomen] [Satz]",
+"ex": "Ohne meine Schwester hätte ich diese Wohnung nie gefunden.",
+"n": "Ohne + Akk replaces the whole wenn-clause; then Konjunktiv II past: hätte ich ... gefunden."
+},
+{
+"id": "ENG_CHUNK_1104",
+"t": "Wenn ich doch nur [Satz]! / Hätte ich doch nur [Partizip]!",
+"ex": "Wäre ich doch nur zehn Minuten früher aus dem Haus gegangen!",
+"n": "Verb-first Konjunktiv II + doch nur. With wenn: Wenn ich doch nur ... gegangen wäre (verb last)."
+},
+{
+"id": "ENG_CHUNK_1105",
+"t": "Ich hätte wissen müssen, dass [Satz]",
+"ex": "Ich hätte wissen müssen, dass das Restaurant am Freitag total voll ist.",
+"n": "Double infinitive (wissen müssen) after hätte. dass: verb last."
+},
+{
+"id": "ENG_CHUNK_1106",
+"t": "Ich bereue es, dass ich [Satz] / Ich bereue es, nicht [zu + Infinitiv]",
+"ex": "Ich bereue es, dass ich nicht im Ausland studiert habe, als ich die Chance hatte.",
+"n": "dass and als both send verbs to the end."
+},
+{
+"id": "ENG_CHUNK_1107",
+"t": "Im Nachhinein [Satz] / Rückblickend [Satz]",
+"ex": "Im Nachhinein war der Umzug nach Leipzig die beste Entscheidung meines Lebens.",
+"n": "Im Nachhinein takes position 1: verb follows (war)."
+},
+{
+"id": "ENG_CHUNK_1108",
+"t": "Wenn ich es noch mal machen könnte, würde ich [Infinitiv]",
+"ex": "Wenn ich es noch mal machen könnte, würde ich Pflege statt BWL studieren.",
+"n": "wenn: modal könnte last; then würde ich (verb first)."
+},
+{
+"id": "ENG_CHUNK_1109",
+"t": "Das war das letzte Mal, dass ich [Verb am Ende]",
+"ex": "Das war das letzte Mal, dass ich meinem Bruder mein Auto leihe.",
+"n": "dass: verb last. Also: Nie wieder leihe ich ..."
+},
+{
+"id": "ENG_CHUNK_1110",
+"t": "Wird auch Zeit, dass [Satz]",
+"ex": "Wird auch Zeit, dass du dir ein neues Handy kaufst. Das alte ist uralt.",
+"n": "dass: verb last. Wird auch Zeit! alone is common."
+},
+{
+"id": "ENG_CHUNK_1111",
+"t": "Seit wann [Verb] du [...]?",
+"ex": "Seit wann trinkst du Kaffee? Den hast du doch immer gehasst.",
+"n": "Question word + verb second: Seit wann trinkst du."
+},
+{
+"id": "ENG_CHUNK_1112",
+"t": "Es ist nie zu spät, [zu + Infinitiv]",
+"ex": "Meine Mutter hat mit sechzig angefangen zu schwimmen. Es ist nie zu spät, etwas Neues zu lernen."
+},
+{
+"id": "ENG_CHUNK_1113",
+"t": "Ich habe mir angewöhnt, [zu + Infinitiv]",
+"ex": "Ich habe mir angewöhnt, morgens als Erstes aufs Handy zu schauen.",
+"n": "sich (Dativ) angewöhnen; separable (angewöhnt)."
+},
+{
+"id": "ENG_CHUNK_1114",
+"t": "Ich lege Wert darauf, [zu + Infinitiv]",
+"ex": "Ich lege Wert darauf, jeden Sonntag meine Oma anzurufen.",
+"n": "Wert legen auf; darauf + zu-infinitive. Also: Ich rufe grundsätzlich ..."
+},
+{
+"id": "ENG_CHUNK_1115",
+"t": "Ich musste einfach [Infinitiv] / Ich konnte nicht anders, als [zu + Infinitiv]",
+"ex": "Ich musste einfach lachen, als der Hund ihm das Sandwich geklaut hat.",
+"n": "als: verb last (geklaut hat)."
+},
+{
+"id": "ENG_CHUNK_1116",
+"t": "Ohne [Person] ist es einfach nicht dasselbe",
+"ex": "Weihnachten war schön, aber ohne Opa ist es einfach nicht dasselbe.",
+"n": "Thanksgiving adapted to Weihnachten."
+},
+{
+"id": "ENG_CHUNK_1117",
+"t": "Ich will nicht, dass [Person] [Verb am Ende]",
+"ex": "Lass uns vorher anrufen. Ich will nicht, dass du den ganzen Weg umsonst fährst.",
+"n": "dass: verb last. English 'for X to' becomes a dass-clause."
+},
+{
+"id": "ENG_CHUNK_1118",
+"t": "Es würde mir viel bedeuten, wenn [Satz]",
+"ex": "Es würde mir viel bedeuten, wenn du zu meiner Abschlussfeier kommen würdest.",
+"n": "wenn: verb last; Konjunktiv II (kommen würdest) or plain present (kommst)."
+},
+{
+"id": "ENG_CHUNK_1119",
+"t": "Ich kann verstehen, dass [Person] [Verb am Ende] / Ich nehme es [Person] nicht übel",
+"ex": "Ich kann verstehen, dass sie gekündigt hat. Der Chef war furchtbar.",
+"n": "dass: verb last. übelnehmen + Dativ person."
+},
+{
+"id": "ENG_CHUNK_1120",
+"t": "Das geschieht [Person] recht, wenn [Satz]",
+"ex": "Er hat den Flug verpasst? Geschieht ihm recht, wenn er so spät losfährt.",
+"n": "Dativ: ihm, ihr. wenn: verb last."
+},
+{
+"id": "ENG_CHUNK_1121",
+"t": "Typisch [Person], [Satz] / Es ist typisch für [Person], [zu + Infinitiv]",
+"ex": "Typisch Dave, eine Stunde zu spät zu kommen.",
+"n": "typisch für + Akk; or just Typisch Dave!"
+},
+{
+"id": "ENG_CHUNK_1122",
+"t": "[Person] kommt nie auf die Idee, [zu + Infinitiv]",
+"ex": "Mein Mitbewohner kommt nie auf die Idee, Klopapier zu kaufen."
+},
+{
+"id": "ENG_CHUNK_1123",
+"t": "Es gibt nichts Schlimmeres, als [zu + Infinitiv]",
+"ex": "Es gibt nichts Schlimmeres, als auf einen verspäteten Flug zu warten, ohne irgendeine Info.",
+"n": "nichts + capitalised adjective: nichts Schlimmeres."
+},
+{
+"id": "ENG_CHUNK_1124",
+"t": "Das ist jetzt schon das dritte Mal, dass [Satz]",
+"ex": "Das ist jetzt schon das dritte Mal, dass ich wegen dieser Rechnung anrufe.",
+"n": "dass: verb last."
+},
+{
+"id": "ENG_CHUNK_1125",
+"t": "Ich bin kurz davor, [zu + Infinitiv]",
+"ex": "Ich bin kurz davor, meinen Laptop aus dem Fenster zu werfen."
+},
+{
+"id": "ENG_CHUNK_1126",
+"t": "Sagen wir mal so: [Satz]",
+"ex": "Wie war das Date? Sagen wir mal so: Ein zweites wird's nicht geben."
+},
+{
+"id": "ENG_CHUNK_1127",
+"t": "Ich habe [Nomen] bis [Zeitpunkt] fertig",
+"ex": "Keine Sorge, bis Freitag habe ich den Bericht fertig.",
+"n": "fertig haben = have done. bis Freitag in position 1: habe ich."
+},
+{
+"id": "ENG_CHUNK_1128",
+"t": "Lass uns später noch mal auf [Nomen] zurückkommen",
+"ex": "Gute Frage. Lass uns nach der Pause noch mal darauf zurückkommen.",
+"n": "zurückkommen auf + Akk; separable."
+},
+{
+"id": "ENG_CHUNK_1129",
+"t": "Das ist so ein(e) [Nomen]",
+"ex": "Das ist so ein Tag, an dem einfach nichts klappt.",
+"n": "Also fixed: Heute ist einfach nicht mein Tag."
+},
+{
+"id": "ENG_CHUNK_1130",
+"t": "Nur zur Erinnerung: [Satz]",
+"ex": "Nur zur Erinnerung: Das Büro ist am Montag geschlossen.",
+"n": "Written: Wir möchten Sie daran erinnern, dass ... (verb last)."
+},
+{
+"id": "ENG_CHUNK_1131",
+"t": "Ich möchte mich über [Nomen] beschweren",
+"ex": "Guten Tag, ich möchte mich über den Lärm aus der Wohnung über mir beschweren.",
+"n": "sich beschweren über + Akk. B1 Schreiben (Beschwerde) staple."
+},
+{
+"id": "ENG_CHUNK_1132",
+"t": "Könnten Sie mich bitte mit [Person] verbinden?",
+"ex": "Guten Tag, könnten Sie mich bitte mit der Buchhaltung verbinden?"
+},
+{
+"id": "ENG_CHUNK_1133",
+"t": "Ich rufe im Auftrag von [Person] an / für [Person] an",
+"ex": "Guten Tag, ich rufe für meinen Vater an. Er hat morgen einen Termin.",
+"n": "im Auftrag von = on behalf of (formal); für is everyday."
+},
+{
+"id": "ENG_CHUNK_1134",
+"t": "Mir wurde [Nomen] doppelt berechnet / Sie haben mir [Nomen] doppelt abgebucht",
+"ex": "Guten Tag, mir wurde meine Bestellung von letzter Woche doppelt berechnet.",
+"n": "Passive with Dativ person: mir wurde ... berechnet."
+},
+{
+"id": "ENG_CHUNK_1135",
+"t": "Ich nehme Medikamente gegen [Nomen]",
+"ex": "Ich nehme Medikamente gegen Bluthochdruck, deshalb lasse ich den Wein weg.",
+"n": "gegen, not für. deshalb triggers inversion: deshalb lasse ich."
+},
+{
+"id": "ENG_CHUNK_1136",
+"t": "sich auf [Nomen] konzentrieren",
+"ex": "Diesen Monat muss ich mich auf meine Prüfungen konzentrieren.",
+"n": "sich konzentrieren auf + Akk."
+},
+{
+"id": "ENG_CHUNK_1137",
+"t": "sich [Nomen] anschauen / [Nomen] ausprobieren",
+"ex": "Du solltest mal den neuen Taco-Laden in der Hauptstraße ausprobieren.",
+"n": "Separable: probier ... aus / schau dir ... an."
+},
+{
+"id": "ENG_CHUNK_1138",
+"t": "Jetlag haben",
+"ex": "Sorry, ich bin heute etwas langsam. Ich hab einen schlimmen Jetlag."
+},
+{
+"id": "ENG_CHUNK_1139",
+"t": "ausgebucht",
+"ex": "Tut mir leid, heute Abend sind wir ausgebucht. Wie wäre es mit morgen?"
+},
+{
+"id": "ENG_CHUNK_1140",
+"t": "sehr zu empfehlen / wärmstens empfohlen",
+"ex": "Den Wanderweg hat mir mein Kollege wärmstens empfohlen."
+},
+{
+"id": "ENG_CHUNK_1141",
+"t": "höchst unwahrscheinlich",
+"ex": "Es ist höchst unwahrscheinlich, dass es so früh schneit.",
+"n": "dass: verb last."
+},
+{
+"id": "ENG_CHUNK_1142",
+"t": "tief und fest schlafen",
+"ex": "Als ich nach Hause kam, schliefen die Kinder schon tief und fest.",
+"n": "als: verb last; then the main verb follows (schliefen)."
+},
+{
+"id": "ENG_CHUNK_1143",
+"t": "Das war knapp!",
+"ex": "Der Lkw hätte uns fast erwischt. Das war knapp!"
+},
+{
+"id": "ENG_CHUNK_1144",
+"t": "eine Schwäche für [Nomen] haben",
+"ex": "Ich habe eine Schwäche für alte Diners.",
+"n": "Schwäche für + Akk. Adapt: alte Kneipen."
+},
+{
+"id": "ENG_CHUNK_1145",
+"t": "ohne Verlust rauskommen / plus minus null rauskommen",
+"ex": "Nach allen Kosten sind wir beim Kuchenverkauf gerade so plus minus null rausgekommen."
+},
+{
+"id": "ENG_CHUNK_1146",
+"t": "neidisch auf [Person] sein",
+"ex": "Du fliegst nach Hawaii? Ich bin so neidisch auf dich.",
+"n": "neidisch auf + Akk. Playful: Ich bin so neidisch!"
+},
+{
+"id": "ENG_CHUNK_1147",
+"t": "gut mit [Nomen] umgehen können / sich gut mit [Nomen] auskennen",
+"ex": "Mein Neffe kennt sich richtig gut mit Computern aus.",
+"n": "auskennen is separable: aus at the end."
+},
+{
+"id": "ENG_CHUNK_1148",
+"t": "Lust auf [Nomen] haben",
+"ex": "Ich habe heute Abend nicht so richtig Lust auf Pizza.",
+"n": "Lust auf + Akk."
+},
+{
+"id": "ENG_CHUNK_1149",
+"t": "ins Wasser fallen / platzen",
+"ex": "Unsere Wochenendpläne sind ins Wasser gefallen, also haben wir Zeit.",
+"n": "Perfekt with sein. also in position 1: haben wir."
+},
+{
+"id": "ENG_CHUNK_1150",
+"t": "[Person] unterbrechen / [Person] ins Wort fallen",
+"ex": "Sorry, ich wollte dich nicht unterbrechen.",
+"n": "ins Wort fallen + Dativ."
+},
+{
+"id": "ENG_CHUNK_1151",
+"t": "[Person] versetzen",
+"ex": "Ich hab eine Stunde gewartet, aber er hat mich versetzt."
+},
+{
+"id": "ENG_CHUNK_1152",
+"t": "sacken lassen / Ich kann's noch gar nicht fassen",
+"ex": "Ich hab den Job bekommen, aber ich kann es noch gar nicht richtig fassen.",
+"n": "Ich kann's noch gar nicht fassen is the natural spoken version."
+},
+{
+"id": "ENG_CHUNK_1153",
+"t": "locker bleiben / chill mal",
+"ex": "Bleib locker, ist doch nur ein Spiel!"
+},
+{
+"id": "ENG_CHUNK_1154",
+"t": "sich an [Nomen] halten / bei [Nomen] bleiben",
+"ex": "Lass uns beim Plan bleiben und um sieben losfahren.",
+"n": "sich halten an + Akk; bleiben bei + Dativ."
+},
+{
+"id": "ENG_CHUNK_1155",
+"t": "noch dableiben",
+"ex": "Bleib nach dem Essen noch da, wir spielen Karten.",
+"n": "Separable: bleib ... da."
+},
+{
+"id": "ENG_CHUNK_1156",
+"t": "[Nomen] abbrechen",
+"ex": "Er hat sein Studium nach dem ersten Jahr abgebrochen.",
+"n": "Studienabbrecher = dropout."
+},
+{
+"id": "ENG_CHUNK_1157",
+"t": "in Rückstand geraten / hinterherhinken",
+"ex": "Ich war eine Woche krank und bin bei der Arbeit in Rückstand geraten."
+},
+{
+"id": "ENG_CHUNK_1158",
+"t": "sich einleben / dazugehören",
+"ex": "Es hat eine Weile gedauert, bis ich mich an der neuen Schule eingelebt hatte.",
+"n": "bis: verb last. sich einleben is separable + reflexive."
+},
+{
+"id": "ENG_CHUNK_1159",
+"t": "auffallen / herausstechen",
+"ex": "Zieh die rote Jacke an. Auf den Fotos fällst du damit auf.",
+"n": "Separable: fällst ... auf."
+},
+{
+"id": "ENG_CHUNK_1160",
+"t": "angeben",
+"ex": "Er gibt schon wieder mit seinem neuen Auto an.",
+"n": "angeben mit + Dativ; separable."
+},
+{
+"id": "ENG_CHUNK_1161",
+"t": "den Mund aufmachen / sich zu Wort melden",
+"ex": "Wenn du nicht einverstanden bist, sag was.",
+"n": "wenn: verb last."
+},
+{
+"id": "ENG_CHUNK_1162",
+"t": "sich auf Anhieb verstehen",
+"ex": "Meine Schwester und ihre neue Mitbewohnerin haben sich auf Anhieb verstanden."
+},
+{
+"id": "ENG_CHUNK_1163",
+"t": "viel um die Ohren haben",
+"ex": "Ich würde gern helfen, aber ich hab gerade viel um die Ohren."
+},
+{
+"id": "ENG_CHUNK_1164",
+"t": "[Person] zusetzen / an [Person] zehren",
+"ex": "Die Nachtschichten setzen ihm richtig zu.",
+"n": "zusetzen + Dativ; separable."
+},
+{
+"id": "ENG_CHUNK_1165",
+"t": "den Stein ins Rollen bringen / loslegen",
+"ex": "Lass uns mit der Partyplanung loslegen."
+},
+{
+"id": "ENG_CHUNK_1166",
+"t": "Kann man so sagen",
+"ex": "Der neue Job gefällt dir also? Ja, kann man so sagen."
+},
+{
+"id": "ENG_CHUNK_1167",
+"t": "Ach, deshalb! / Das erklärt einiges",
+"ex": "Du hast vergessen, es einzustecken? Ach, deshalb!"
+},
+{
+"id": "ENG_CHUNK_1168",
+"t": "Davon weiß ich ja gar nichts / Das ist mir neu",
+"ex": "Das Meeting wurde verschoben? Das ist mir neu."
+},
+{
+"id": "ENG_CHUNK_1169",
+"t": "Jetzt hab ich den Faden verloren",
+"ex": "Sorry, was wollte ich sagen? Jetzt hab ich den Faden verloren."
+},
+{
+"id": "ENG_CHUNK_1170",
+"t": "Sorry, ich bin abgeschweift",
+"ex": "Sorry, ich bin abgeschweift. Worüber haben wir gerade geredet?",
+"n": "abschweifen takes sein in the Perfekt."
+},
+{
+"id": "ENG_CHUNK_1171",
+"t": "Lasst uns zum Thema zurückkommen",
+"ex": "Okay, Leute, lasst uns zum Thema zurückkommen.",
+"n": "ihr-form lasst for a group; lass uns for one person."
+},
+{
+"id": "ENG_CHUNK_1172",
+"t": "Ganz andere Frage:",
+"ex": "Ganz andere Frage: Kennst du einen guten Klempner?"
+},
+{
+"id": "ENG_CHUNK_1173",
+"t": "Belassen wir es dabei",
+"ex": "Wir sind uns einfach nicht einig. Belassen wir es dabei."
+},
+{
+"id": "ENG_CHUNK_1174",
+"t": "Ich bin kein Experte, aber",
+"ex": "Ich bin kein Experte, aber ich glaube, dein Reifen ist platt."
+},
+{
+"id": "ENG_CHUNK_1175",
+"t": "Ich mein ja nur",
+"ex": "Das letzte Mal, als wir die Abkürzung genommen haben, haben wir uns verlaufen. Ich mein ja nur."
+},
+{
+"id": "ENG_CHUNK_1176",
+"t": "Nur so eine Idee",
+"ex": "Wir könnten auch den Zug nehmen. Nur so eine Idee."
+},
+{
+"id": "ENG_CHUNK_1177",
+"t": "Nur aus Neugier",
+"ex": "Nur aus Neugier: Wie viel hast du dafür bezahlt?"
+},
+{
+"id": "ENG_CHUNK_1178",
+"t": "Wenn ich fragen darf",
+"ex": "Wenn ich fragen darf, wie hoch ist hier die Miete?"
+},
+{
+"id": "ENG_CHUNK_1179",
+"t": "Das muss man erlebt haben / Man musste dabei gewesen sein",
+"ex": "Das war in dem Moment total lustig. Man musste wohl dabei gewesen sein."
+},
+{
+"id": "ENG_CHUNK_1180",
+"t": "So hab ich das aber nicht in Erinnerung",
+"ex": "Du hast das Essen bezahlt? So hab ich das aber nicht in Erinnerung."
+},
+{
+"id": "ENG_CHUNK_1181",
+"t": "Jetzt oder nie",
+"ex": "Der Sale endet heute Abend. Jetzt oder nie."
+},
+{
+"id": "ENG_CHUNK_1182",
+"t": "Man lernt nie aus",
+"ex": "Ich hab schon wieder vergessen, die Datei zu speichern. Na ja, man lernt nie aus."
+},
+{
+"id": "ENG_CHUNK_1183",
+"t": "Zwei Dumme, ein Gedanke",
+"ex": "Du hast auch den Lachs bestellt? Zwei Dumme, ein Gedanke!",
+"n": "Self-deprecating German twist: 'two fools, one thought'."
+},
+{
+"id": "ENG_CHUNK_1184",
+"t": "Vier Augen sehen mehr als zwei",
+"ex": "Lass uns die Steuererklärung zusammen machen. Vier Augen sehen mehr als zwei."
+},
+{
+"id": "ENG_CHUNK_1185",
+"t": "Rom wurde auch nicht an einem Tag erbaut",
+"ex": "Du lernst erst seit einem Monat. Rom wurde auch nicht an einem Tag erbaut."
+},
+{
+"id": "ENG_CHUNK_1186",
+"t": "Je früher, desto besser",
+"ex": "Wann brauchst du es? Je früher, desto besser."
+},
+{
+"id": "ENG_CHUNK_1187",
+"t": "Mal langsam! / Freu dich nicht zu früh",
+"ex": "Ein gutes Vorstellungsgespräch heißt noch nicht, dass du den Job hast. Mal langsam."
+},
+{
+"id": "ENG_CHUNK_1188",
+"t": "Schlaf eine Nacht drüber",
+"ex": "Entscheide das nicht heute Abend. Schlaf eine Nacht drüber und ruf mich morgen an."
+},
+{
+"id": "ENG_CHUNK_1189",
+"t": "Lieber du als ich",
+"ex": "Du läufst bei dieser Hitze einen Marathon? Lieber du als ich."
+},
+{
+"id": "ENG_CHUNK_1190",
+"t": "Greift zu! / Lasst es euch schmecken!",
+"ex": "Essen ist fertig, Leute. Greift zu!",
+"n": "Guten Appetit! is also said before eating."
+},
+{
+"id": "ENG_CHUNK_1191",
+"t": "Oder noch besser",
+"ex": "Ruf sie heute Abend an. Oder noch besser, besuch sie."
+},
+{
+"id": "ENG_CHUNK_1192",
+"t": "Und zu allem Überfluss",
+"ex": "Mein Auto ist liegen geblieben, ich kam zu spät, und zu allem Überfluss hat es auch noch geregnet.",
+"n": "Inversion after the fronted phrase: hat es."
+},
+{
+"id": "ENG_CHUNK_1193",
+"t": "Bei [Nomen] und [Nomen] / Zwischen [Nomen] und [Nomen]",
+"ex": "Zwischen dem Baby und dem Umzug haben wir kaum geschlafen.",
+"n": "No exact equivalent; bei or zwischen + Dativ do the job."
+},
+{
+"id": "ENG_CHUNK_1194",
+"t": "trotz [Nomen]",
+"ex": "Trotz des Wetters hatten wir eine tolle Zeit.",
+"n": "trotz + Genitiv in writing (des Wetters), Dativ in speech (dem Wetter). Inversion: hatten wir."
+},
+{
+"id": "ENG_CHUNK_1195",
+"t": "Im Gegenteil",
+"ex": "Du störst mich nicht. Im Gegenteil, ich freue mich, dass du anrufst.",
+"n": "dass: verb last."
+},
+{
+"id": "ENG_CHUNK_1196",
+"t": "vor allem / insbesondere",
+"ex": "Mir hat das Essen geschmeckt, vor allem die Fisch-Tacos."
+},
+{
+"id": "ENG_CHUNK_1197",
+"t": "unter anderem",
+"ex": "Wir haben unter anderem über die Reise und das Budget gesprochen.",
+"n": "u. a. in writing."
+},
+{
+"id": "ENG_CHUNK_1198",
+"t": "Nur damit du eine Vorstellung hast",
+"ex": "Die Mieten hier sind verrückt. Nur damit du eine Vorstellung hast: Ein Einzimmerapartment kostet zweitausend.",
+"n": "damit: verb last (hast)."
+},
+{
+"id": "ENG_CHUNK_1199",
+"t": "sozusagen",
+"ex": "Ich bin im Moment sozusagen zwischen zwei Jobs."
+},
+{
+"id": "ENG_CHUNK_1200",
+"t": "Zu guter Letzt / Last but not least",
+"ex": "Und zu guter Letzt danke ich meiner Mutter für all ihre Hilfe.",
+"n": "Inversion after Zu guter Letzt: danke ich."
+}
+]

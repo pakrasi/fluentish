@@ -1,0 +1,642 @@
+{
+ "L1-1": {
+  "evidence": "Ehrlich gesagt hatte ich den Brief völlig vergessen",
+  "evidence_en": "To be honest, I had completely forgotten the letter",
+  "why": "Die Dozentin hat die Briefe eingesammelt und geschickt – die Autorin hatte ihn nicht selbst.",
+  "why_en": "The lecturer collected and sent the letters – the author didn't keep it herself.",
+  "trap": "„Zehn Jahre“ stimmt als Zeit, aber aufbewahrt hat ihn die Dozentin, nicht die Autorin.",
+  "trap_en": "'Ten years' matches as a time span, but the lecturer kept it, not the author.",
+  "question_en": "The author had kept the letter for ten years."
+ },
+ "L1-2": {
+  "evidence": "Kinder wollte ich keine, und heiraten schien mir damals etwas für Leute ohne Fantasie.",
+  "evidence_en": "I didn't want children, and marrying seemed to me back then something for people without imagination.",
+  "why": "Keine Kinder und keine Heirat = keine Familie gründen.",
+  "why_en": "No children and no marriage = not starting a family.",
+  "trap": "Heute ist sie verheiratet und bekommt ein Kind, aber die Aussage fragt nach „mit zwanzig“.",
+  "trap_en": "Today she's married and expecting, but the statement asks about age twenty.",
+  "question_en": "At twenty, the author didn't want to start a family."
+ },
+ "L1-3": {
+  "evidence": "Das Architekturstudium brach ich nach vier Semestern ab",
+  "evidence_en": "I dropped out of architecture after four semesters",
+  "why": "„Abbrechen“ heißt, sie hat das Studium nicht beendet.",
+  "why_en": "'Abbrechen' means she didn't finish her degree.",
+  "trap": "Sie wollte ein Architekturbüro leiten – das war der Plan, nicht die Wirklichkeit.",
+  "trap_en": "Running an architecture office was the plan, not reality.",
+  "question_en": "The author completed her architecture degree."
+ },
+ "L1-4": {
+  "evidence": "verdiene deutlich weniger, als ich mir damals vorgestellt hatte",
+  "evidence_en": "I earn considerably less than I had imagined back then",
+  "why": "„Weniger, als ich mir vorgestellt hatte“ = weniger als erwartet.",
+  "why_en": "'Less than I had imagined' = less than expected.",
+  "trap": "Man könnte „deutlich“ als positiv lesen, aber es verstärkt nur „weniger“.",
+  "trap_en": "You might read 'deutlich' as positive, but it only strengthens 'less'.",
+  "question_en": "Today the author earns less than she had expected earlier."
+ },
+ "L1-5": {
+  "evidence": "allerdings nur nach Südamerika, nicht auf drei Kontinente",
+  "evidence_en": "though only to South America, not to three continents",
+  "why": "Sie war nur in Südamerika – das ist ein Kontinent außerhalb Europas.",
+  "why_en": "She has only been to South America – one continent outside Europe.",
+  "trap": "„Drei Kontinente“ steht im Text, aber mit „nicht“ – das war nur der alte Plan.",
+  "trap_en": "'Three continents' is in the text, but with 'not' – that was only the old plan.",
+  "question_en": "So far, the author has only travelled to one continent outside Europe."
+ },
+ "L1-6": {
+  "evidence": "Was ich mir für die nächsten zehn Jahre wünsche, schreibe ich diesmal nicht auf.",
+  "evidence_en": "What I wish for the next ten years, I'm not writing down this time.",
+  "why": "Sie plant diesmal nicht; die besten Dinge standen nie in einem Plan.",
+  "why_en": "She isn't planning this time; the best things were never in a plan.",
+  "trap": "Mit zwanzig hat sie genau geplant – „wieder“ passt deshalb nicht zu heute.",
+  "trap_en": "At twenty she planned precisely – so 'again' doesn't fit her now.",
+  "question_en": "The author is again planning her next ten years very precisely."
+ },
+ "L2-1": {
+  "evidence": "nicht den üblichen Experten, sondern zweihundert Kindern und Jugendlichen",
+  "evidence_en": "not the usual experts, but two hundred children and young people",
+  "why": "Die Stadt hat Kinder und Jugendliche nach ihren Ideen gefragt.",
+  "why_en": "The city asked children and young people for their ideas.",
+  "trap": "„Experten“ steht mit „nicht … sondern“ (a); die sechs Werkstätten waren Treffen, keine Gebäude (b).",
+  "trap_en": "'Experts' comes with 'not … but' (a); the six workshops were sessions, not buildings (b).",
+  "question_en": "The city of Oldenburg …",
+  "options_en": [
+   "had experts plan the city of the future.",
+   "built six new workshops last year.",
+   "asked young people for their ideas for the city's future."
+  ]
+ },
+ "L2-2": {
+  "evidence": "Ich dachte, die Kinder wünschen sich einen Freizeitpark und Eis umsonst",
+  "evidence_en": "I thought the children would want an amusement park and free ice cream",
+  "why": "Er hatte etwas anderes erwartet und war dann positiv überrascht.",
+  "why_en": "He had expected something different and was then pleasantly surprised.",
+  "trap": "Den Freizeitpark hat er von den Kindern erwartet, nicht selbst gewünscht (c); die Vorschläge fand er realistisch (b).",
+  "trap_en": "He expected the children to want an amusement park, he didn't want one himself (c); he found the ideas realistic (b).",
+  "question_en": "Mr Brinkmann …",
+  "options_en": [
+   "had expected something different from the children.",
+   "found the suggestions unrealistic.",
+   "wished for an amusement park."
+  ]
+ },
+ "L2-3": {
+  "evidence": "Der Rat beschloss daraufhin, drei der Ideen sofort umzusetzen, darunter die Schulgärten.",
+  "evidence_en": "The council then decided to implement three of the ideas immediately, including the school gardens.",
+  "why": "Die Schulgärten werden umgesetzt.",
+  "why_en": "The school gardens are being implemented.",
+  "trap": "Die Seilbahn ist zu teuer, und den autofreien Sonntag lehnten die Händler ab (a, b).",
+  "trap_en": "The cable car is too expensive, and the retailers rejected the car-free Sunday (a, b).",
+  "question_en": "Which suggestion is being put into practice?",
+  "options_en": [
+   "A cable car over the city centre.",
+   "A car-free Sunday every week.",
+   "Gardens at the schools."
+  ]
+ },
+ "L2-4": {
+  "evidence": "Den Entschluss, alles zu ändern, fasste er nach einem Gespräch mit seinem Arzt, der ihn vor den Folgen des Dauerstresses warnte.",
+  "evidence_en": "He made the decision to change everything after a conversation with his doctor, who warned him about the effects of constant stress.",
+  "why": "Er hatte keine Lust auf das Büro, und der Arzt warnte vor Stress.",
+  "why_en": "He didn't want to go to the office, and his doctor warned him about stress.",
+  "trap": "Er hat selbst gekündigt, er wurde nicht entlassen (a); die Familie hielt die Kündigung zuerst für einen Fehler (b).",
+  "trap_en": "He resigned himself, he wasn't fired (a); his family first thought quitting was a mistake (b).",
+  "question_en": "Why did Mr Vogel change his profession?",
+  "options_en": [
+   "He was dismissed by the bank.",
+   "His family wanted a different life.",
+   "He was dissatisfied, and his doctor warned him about the stress."
+  ]
+ },
+ "L2-5": {
+  "evidence": "ich verdiente weniger als ein Zehntel meines alten Gehalts",
+  "evidence_en": "I earned less than a tenth of my old salary",
+  "why": "Weniger als ein Zehntel = viel weniger als früher.",
+  "why_en": "Less than a tenth = much less than before.",
+  "trap": "Die Achtzehnjährigen lernten schneller, nicht er (a); er hat nie aufgegeben (c).",
+  "trap_en": "The eighteen-year-olds learned faster, not him (a); he never gave up (c).",
+  "question_en": "During the apprenticeship …",
+  "options_en": [
+   "Mr Vogel learned faster than the young apprentices.",
+   "Mr Vogel earned much less than before.",
+   "Mr Vogel gave up after a few months."
+  ]
+ },
+ "L2-6": {
+  "evidence": "Seine Frau, die anfangs am meisten gezweifelt hatte, hilft inzwischen im Büro der Werkstatt.",
+  "evidence_en": "His wife, who had the most doubts at first, now helps in the workshop office.",
+  "why": "Sie hilft im Büro der Werkstatt – sie unterstützt ihn.",
+  "why_en": "She helps in the workshop office – she supports him.",
+  "trap": "„Gezweifelt“ gilt für den Anfang („anfangs“), nicht für heute (b).",
+  "trap_en": "'Doubted' refers to the beginning ('at first'), not today (b).",
+  "question_en": "How does his wife feel about the decision today?",
+  "options_en": [
+   "She supports him and works in the workshop too.",
+   "She still has doubts about it.",
+   "She would like to buy back the house in the Taunus."
+  ]
+ },
+ "L3-1": {
+  "evidence": "finden wir gemeinsam heraus, welcher Weg zu Ihnen passt",
+  "evidence_en": "together we find out which path suits you",
+  "why": "Hakan weiß nicht, welcher Beruf passt – die Berufsberatung hilft genau dabei.",
+  "why_en": "Hakan doesn't know which job suits him – career advice helps with exactly that.",
+  "trap": "Anzeige J (Lebensziele) klingt ähnlich, ist aber allgemein und nicht für die Berufswahl.",
+  "trap_en": "Ad J (life goals) sounds similar, but is general, not about choosing a career.",
+  "question_en": "Hakan has just finished school and doesn't know yet which profession suits him."
+ },
+ "L3-2": {
+  "evidence": "Wir rechnen aus, was Sie im Alter erwarten können, und zeigen, wie Sie die Lücke schließen.",
+  "evidence_en": "We calculate what you can expect in old age and show how to close the gap.",
+  "why": "Renata ist 45 und will wissen, wie viel Geld sie im Alter hat – die Rentenberatung passt (30 bis 60).",
+  "why_en": "Renata is 45 and wants to know her retirement income – the pension advice fits (ages 30 to 60).",
+  "trap": "Anzeige G ist auch über Geld, aber Kredite für Firmen.",
+  "trap_en": "Ad G is also about money, but business loans.",
+  "question_en": "Renata is 45 and would like to know how much money she will have later in old age and what she should do now."
+ },
+ "L3-3": {
+  "evidence": "Wir beraten Sie kostenlos zu Businessplan, Steuern und Finanzierung und helfen bei der Suche nach Fördergeld.",
+  "evidence_en": "We advise you for free on business plans, taxes and financing and help you find funding.",
+  "why": "Lin braucht Geld und Beratung für eine Gründung – das Gründerzentrum bietet beides.",
+  "why_en": "Lin needs money and advice to start a company – the start-up centre offers both.",
+  "trap": "Anzeige G gibt Kredite, aber nur für Firmen, die seit drei Jahren bestehen – nicht für Neugründungen.",
+  "trap_en": "Ad G offers loans, but only for firms at least three years old – not new start-ups.",
+  "question_en": "Lin has a business idea, but needs money and advice to found a company."
+ },
+ "L3-4": {
+  "evidence": "Unterricht Montag bis Freitag, 8–16 Uhr",
+  "evidence_en": "Classes Monday to Friday, 8 am–4 pm",
+  "why": "Die Meisterschule ist ein Vollzeitkurs unter der Woche; Bernd arbeitet und will am Wochenende lernen – also 0.",
+  "why_en": "The master school is full-time on weekdays; Bernd works and wants to study at weekends – so 0.",
+  "trap": "Anzeige B hat das richtige Thema (Tischlermeister), aber die falsche Zeit.",
+  "trap_en": "Ad B has the right topic (master carpenter), but the wrong times.",
+  "question_en": "Bernd is a journeyman carpenter, works full-time and would like to do his master craftsman qualification at weekends."
+ },
+ "L3-5": {
+  "evidence": "Wir vermitteln Menschen ab 55 für drei bis zwölf Monate in Schulen, Krankenhäuser und Umweltprojekte",
+  "evidence_en": "We place people aged 55+ for three to twelve months in schools, hospitals and environmental projects",
+  "why": "Rentner, die einige Monate im Ausland helfen wollen – der Freiwilligendienst passt.",
+  "why_en": "Retirees who want to help abroad for a few months – the volunteer service fits.",
+  "trap": "Anzeige D ist auch für Ältere im Ausland, aber ein Sprachkurs, keine Hilfe.",
+  "trap_en": "Ad D is also for older people abroad, but it's a language course, not helping.",
+  "question_en": "The Novak couple will retire soon and would like to help abroad for a few months afterwards."
+ },
+ "L3-6": {
+  "evidence": "wie Sie mit Dämmung, Wärmepumpe und Solaranlage die Heizkosten fast auf null bringen",
+  "evidence_en": "how to bring heating costs almost to zero with insulation, a heat pump and solar panels",
+  "why": "Ein Haus mit wenig Energieverbrauch – die Energieberatung für Hausbau.",
+  "why_en": "A house using little energy – energy advice for building a house.",
+  "trap": "Keine andere Anzeige ist zum Thema Hausbau.",
+  "trap_en": "No other ad is about building a house.",
+  "question_en": "Ingrid and Malik want to build a house that uses as little energy as possible."
+ },
+ "L3-7": {
+  "evidence": "Programmieren lernen neben dem Beruf",
+  "evidence_en": "Learn to code alongside your job",
+  "why": "Abends programmieren lernen, um den Beruf zu wechseln – die Coding-Abendschule mit Hilfe bei der Jobsuche.",
+  "why_en": "Learning to code in the evenings to change careers – the coding evening school, with job-search help.",
+  "trap": "Anzeige C ist auch über Berufswechsel, aber nur für unter 25 und ohne Programmieren.",
+  "trap_en": "Ad C is also about career choices, but only for under-25s and without coding.",
+  "question_en": "Sonja works in an office and would like to learn programming in the evenings in order to change careers."
+ },
+ "L4-1": {
+  "evidence": "Ohne dieses Jahr hätte ich wahrscheinlich das Falsche gewählt.",
+  "evidence_en": "Without that year I probably would have chosen the wrong thing.",
+  "why": "Julian ist für die Pause: Danach wusste er, was er studieren will.",
+  "why_en": "Julian is for the gap year: afterwards he knew what to study.",
+  "trap": "„Ohne“ ist negativ formuliert, aber bedeutet: Das Jahr war wichtig.",
+  "trap_en": "'Without' is phrased negatively, but it means the year mattered.",
+  "question_en": "Julian, Bonn: After my Abitur I worked in New Zealand for a year, and in that year I learned more about myself than in thirteen years of school. Afterwards I knew exactly what I wanted to study. Without that year I would probably have chosen the wrong thing."
+ },
+ "L4-2": {
+  "evidence": "Solche Jahre sind ein Luxus für Kinder reicher Eltern",
+  "evidence_en": "Years like that are a luxury for children of rich parents",
+  "why": "Gisela ist dagegen: Nicht alle können sich eine Pause leisten.",
+  "why_en": "Gisela is against it: not everyone can afford a break.",
+  "trap": "„Das klingt schön“ ist kein Ja, danach kommt „aber“.",
+  "trap_en": "'That sounds nice' isn't a yes; 'but' follows.",
+  "question_en": "Gisela, Chemnitz: A year's break, that sounds nice, but who pays for it? My daughter had to earn money at eighteen, as I did back then too. Years like that are a luxury for children of rich parents, and we should talk about that honestly."
+ },
+ "L4-3": {
+  "evidence": "Aber ich bereue keinen Tag davon und würde es wieder so machen.",
+  "evidence_en": "But I don't regret a single day and would do it again.",
+  "why": "Amir würde es wieder machen – also Ja.",
+  "why_en": "Amir would do it again – so yes.",
+  "trap": "Die Angst der Eltern „hatte nicht ganz unrecht“, aber am Ende ist er positiv.",
+  "trap_en": "His parents' fear 'wasn't entirely wrong', but in the end he's positive.",
+  "question_en": "Amir, Stuttgart: My parents were afraid that after a year's break I would never start studying again. They weren't entirely wrong – I actually only started university after two years. But I don't regret a single day of it and would do it the same way again."
+ },
+ "L4-4": {
+  "evidence": "Einfach nur Pause, das reicht mir nicht, und deshalb bin ich gegen eine Pause als Regel.",
+  "evidence_en": "Just a break isn't enough for me, and that's why I'm against a break as a rule.",
+  "why": "Susanne ist gegen eine Pause als Regel.",
+  "why_en": "Susanne is against a gap year as a rule.",
+  "trap": "Ein Jahr im Krankenhaus findet sie gut, aber sie ist gegen die Pause allgemein.",
+  "trap_en": "She likes a year in a hospital, but she's against the gap year in general.",
+  "question_en": "Susanne, Kiel: As head of HR I see a lot of CVs. A year of travelling tells me little, whereas a year in a hospital or in a company tells me a lot. It depends on what you do with the time. Just a break, that's not enough for me, and that's why I'm against a break as the rule."
+ },
+ "L4-5": {
+  "evidence": "Lieber ein Jahr suchen als drei Jahre in der falschen Richtung laufen.",
+  "evidence_en": "Better to search for a year than walk in the wrong direction for three years.",
+  "why": "Leo findet ein Jahr Pause besser als ein falsches Studium.",
+  "why_en": "Leo thinks a gap year is better than the wrong degree.",
+  "trap": "„Soll sofort anfangen“ gilt nur für die wenigen, die schon wissen, was sie wollen.",
+  "trap_en": "'Should start immediately' only applies to the few who already know what they want.",
+  "question_en": "Leo, Potsdam: Anyone who already knows at seventeen what they want should start right away. But most people don't know, and a dropped-out degree costs more time and money than a year's break. Better to spend a year searching than to run in the wrong direction for three years."
+ },
+ "L4-6": {
+  "evidence": "Ein verlorenes Jahr für jeden Jahrgang, das kann sich das Land nicht leisten.",
+  "evidence_en": "A lost year for every year group – the country can't afford that.",
+  "why": "Beate ist dagegen: Junge Menschen sollen früh arbeiten.",
+  "why_en": "Beate is against it: young people should start work early.",
+  "trap": "„Reisen kann man auch später“ klingt freundlich, ist aber ein Nein zur Pause jetzt.",
+  "trap_en": "'You can travel later' sounds friendly, but it's a no to the gap year now.",
+  "question_en": "Beate, Augsburg: Our society is getting older, and we need every young person in work as early as possible. A lost year for every age group – the country can't afford that. You can also travel later, on holiday."
+ },
+ "L4-7": {
+  "evidence": "Jungen Leuten würde ich sagen: Macht es, solange ihr könnt.",
+  "evidence_en": "I'd tell young people: do it while you can.",
+  "why": "Mateo hat es nicht gemacht und bereut es – er empfiehlt die Pause.",
+  "why_en": "Mateo didn't do it and regrets it – he recommends the gap year.",
+  "trap": "„Ich habe mich nicht getraut“ ist negativ, aber es zeigt, dass er die Pause heute gut findet.",
+  "trap_en": "'I didn't dare' is negative, but shows he now thinks the gap year is good.",
+  "question_en": "Mateo, Hamburg: I would have liked to take a break, but I didn't dare, because all my friends started studying straight away. Today, at thirty, I often think: nobody would have taken that one year from me. To young people I would say: do it while you can."
+ },
+ "L5-1": {
+  "evidence": "sofern mindestens ein Mitglied seinen Wohnsitz seit wenigstens sechs Monaten in Leipzig hat",
+  "evidence_en": "provided at least one member has lived in Leipzig for at least six months",
+  "why": "Sechs Monate = ein halbes Jahr; ein Mitglied reicht.",
+  "why_en": "Six months = half a year; one member is enough.",
+  "trap": "Nicht alle Mitglieder müssen dort wohnen (a); das Unternehmen darf noch nicht gegründet sein (c).",
+  "trap_en": "Not all members need to live there (a); the company must not be founded yet (c).",
+  "question_en": "A team can apply if …",
+  "options_en": [
+   "all members live in Leipzig.",
+   "one of the members has lived in Leipzig for at least half a year.",
+   "the company has already been founded."
+  ]
+ },
+ "L5-2": {
+  "evidence": "eine Nebentätigkeit von höchstens 10 Stunden pro Woche ist erlaubt",
+  "evidence_en": "a side job of at most 10 hours a week is allowed",
+  "why": "Nebenbei dürfen sie höchstens zehn Stunden arbeiten.",
+  "why_en": "They may work at most ten hours on the side.",
+  "trap": "Andere Arbeit ist erlaubt, nur begrenzt (b); die 30 Stunden sind für das Projekt, nicht im Gründerzentrum (c).",
+  "trap_en": "Other work is allowed, just limited (b); the 30 hours are for the project, not at the centre (c).",
+  "question_en": "The scholarship holders …",
+  "options_en": [
+   "may work a maximum of ten hours per week on the side.",
+   "may not have any other job.",
+   "have to be at the start-up centre for 30 hours per week."
+  ]
+ },
+ "L5-3": {
+  "evidence": "ein kurzes Video von maximal drei Minuten, in dem die Idee vorgestellt wird",
+  "evidence_en": "a short video of at most three minutes presenting the idea",
+  "why": "Das Video ist einer von drei Teilen der Bewerbung („unter anderem“).",
+  "why_en": "The video is one of three parts of the application ('among other things').",
+  "trap": "Zehn Seiten sind das Maximum, nicht das Minimum (a); zum Gespräch kommen nur die besten (b).",
+  "trap_en": "Ten pages is the maximum, not the minimum (a); only the best are invited to an interview (b).",
+  "question_en": "Anyone who applies has to …",
+  "options_en": [
+   "send a business plan of at least ten pages.",
+   "present the idea in person to the jury.",
+   "submit, among other things, a short video."
+  ]
+ },
+ "L5-4": {
+  "evidence": "Wird das Vorhaben jedoch innerhalb der zwölf Monate ohne wichtigen Grund aufgegeben, endet die Zahlung sofort.",
+  "evidence_en": "However, if the project is abandoned within the twelve months without good reason, payments stop immediately.",
+  "why": "„Die Zahlung endet“ = man bekommt kein weiteres Geld.",
+  "why_en": "'Payment ends' = you get no more money.",
+  "trap": "Zurückzahlen muss man nicht – das steht direkt davor (a).",
+  "trap_en": "You don't have to pay it back – that's stated just before (a).",
+  "question_en": "Anyone who gives up their project early …",
+  "options_en": [
+   "has to pay the money back.",
+   "can no longer apply next year.",
+   "gets no further money."
+  ]
+ },
+ "H1-1a": {
+  "evidence": "Leider muss ich den verschieben",
+  "evidence_en": "Unfortunately I have to postpone it",
+  "why": "Der Termin wird verschoben, also findet er am Donnerstag nicht statt.",
+  "why_en": "The appointment is postponed, so it doesn't happen on Thursday.",
+  "trap": "„Donnerstag um neun“ wird genannt, aber das ist der alte Termin.",
+  "trap_en": "'Thursday at nine' is mentioned, but that's the old appointment.",
+  "question_en": "The appointment on Thursday isn't taking place."
+ },
+ "H1-1b": {
+  "evidence": "sollten Sie vorher zu Hause machen",
+  "evidence_en": "you should do beforehand at home",
+  "why": "Den Test macht er vor dem Gespräch zu Hause.",
+  "why_en": "He does the test at home before the appointment.",
+  "trap": "Vierzig Minuten ist die Dauer des Tests, keine Frist zum Zurückschicken (c).",
+  "trap_en": "Forty minutes is how long the test takes, not a deadline for sending it (c).",
+  "question_en": "Mr Abramov is supposed to do the interest test …",
+  "options_en": [
+   "during the meeting.",
+   "at home before the meeting.",
+   "and send it back within forty minutes."
+  ]
+ },
+ "H1-2a": {
+  "evidence": "nicht mehr das eigene Haus an erster Stelle, sondern die Gesundheit",
+  "evidence_en": "no longer one's own house in first place, but health",
+  "why": "Heute ist die Gesundheit auf Platz eins; das Haus ist nur auf Platz drei.",
+  "why_en": "Today health is number one; the house is only third.",
+  "trap": "Vor zehn Jahren war das Haus auf Platz eins, aber nicht heute.",
+  "trap_en": "Ten years ago the house was number one, but not today.",
+  "question_en": "Owning a house is the most important wish of Germans today."
+ },
+ "H1-2b": {
+  "evidence": "während die über Fünfzigjährigen häufiger von einem ruhigen Leben auf dem Land träumen",
+  "evidence_en": "while those over fifty more often dream of a quiet life in the country",
+  "why": "Über Fünfzigjährige träumen öfter vom Leben auf dem Land.",
+  "why_en": "People over fifty more often dream of country life.",
+  "trap": "Reisen wünschen sich die Jungen unter dreißig (a); Geld ist nur jedem Zehnten wichtig (b).",
+  "trap_en": "Travel is what under-thirties want (a); money matters to only one in ten (b).",
+  "question_en": "People over fifty …",
+  "options_en": [
+   "mainly wish for trips abroad.",
+   "find money most important.",
+   "dream more often of living in the countryside."
+  ]
+ },
+ "H1-3a": {
+  "evidence": "findet nicht wie angekündigt in der Aula statt, sondern im Raum zwei null vier",
+  "evidence_en": "doesn't take place in the hall as announced, but in room two-oh-four",
+  "why": "Der Vortrag ist in Raum 204, weil die Aula gesperrt ist.",
+  "why_en": "The talk is in room 204 because the hall is closed.",
+  "trap": "„Aula“ hört man, aber mit „nicht … sondern“.",
+  "trap_en": "You hear 'hall', but with 'not … but'.",
+  "question_en": "The talk about studying medicine takes place in the assembly hall."
+ },
+ "H1-3b": {
+  "evidence": "dort liegen auch Listen aus, in die Sie sich für ein persönliches Gespräch eintragen können",
+  "evidence_en": "lists are also there where you can sign up for a personal consultation",
+  "why": "Für ein Gespräch trägt man sich in der Mensa in eine Liste ein.",
+  "why_en": "For a consultation you sign up on a list in the cafeteria.",
+  "trap": "Der zweite Stock ist für den Medizinvortrag (a), der Musikraum für die Handwerkskammer (c).",
+  "trap_en": "The second floor is for the medicine talk (a), the music room for the chamber of crafts (c).",
+  "question_en": "Anyone who would like a personal advice session …",
+  "options_en": [
+   "has to go to the second floor.",
+   "should put their name on a list in the cafeteria.",
+   "comes to the music room at eleven o'clock."
+  ]
+ },
+ "H1-4a": {
+  "evidence": "Sie brauchen keine Matura, drei Jahre Berufserfahrung reichen.",
+  "evidence_en": "You don't need the Matura; three years' work experience is enough.",
+  "why": "Matura ist das österreichische Abitur – man braucht es nicht.",
+  "why_en": "Matura is the Austrian school-leaving exam – you don't need it.",
+  "trap": "Das Wort „Abitur“ fällt nicht; „Matura“ bedeutet dasselbe und wird verneint.",
+  "trap_en": "The word 'Abitur' isn't said; 'Matura' means the same and is negated.",
+  "question_en": "You definitely need the Abitur for the degree course."
+ },
+ "H1-4b": {
+  "evidence": "das erste Semester ist für alle, die sich bis Ende Oktober einschreiben, gratis",
+  "evidence_en": "the first semester is free for everyone who enrols by the end of October",
+  "why": "Gratis = kostenlos: Das erste Semester kostet nichts.",
+  "why_en": "Gratis = free: the first semester costs nothing.",
+  "trap": "390 Euro ist der normale Preis (b); die Treffen in Wien sind freiwillig („wer möchte“) (c).",
+  "trap_en": "390 euros is the normal price (b); the Vienna meetings are optional ('if you like') (c).",
+  "question_en": "Anyone who enrols by the end of October …",
+  "options_en": [
+   "pays nothing for the first semester.",
+   "pays three hundred and ninety euros for each semester.",
+   "has to come to Vienna once a month."
+  ]
+ },
+ "H1-5a": {
+  "evidence": "ich will das nicht allein entscheiden",
+  "evidence_en": "I don't want to decide this alone",
+  "why": "Paul will zuerst mit Emma reden – er hat noch nicht angenommen.",
+  "why_en": "Paul wants to talk to Emma first – he hasn't accepted yet.",
+  "trap": "„Sie wollen, dass ich im Januar anfange“ klingt fest, ist aber nur der Wunsch der Firma.",
+  "trap_en": "'They want me to start in January' sounds settled, but it's only the company's wish.",
+  "question_en": "Paul has already accepted the job offer."
+ },
+ "H1-5b": {
+  "evidence": "Sie würden mir im Sommer drei Monate unbezahlten Urlaub geben.",
+  "evidence_en": "They would give me three months' unpaid leave in the summer.",
+  "why": "Mit dem Job könnten sie im Sommer drei Monate reisen.",
+  "why_en": "With the job they could travel for three months in summer.",
+  "trap": "Sechs Monate war der alte Plan, und Australien fällt weg (c); ganz absagen müssen sie nicht (b).",
+  "trap_en": "Six months was the old plan, and Australia is dropped (c); they don't have to cancel entirely (b).",
+  "question_en": "If Paul takes the job, …",
+  "options_en": [
+   "they could travel for three months in the summer.",
+   "Emma and he have to cancel the trip completely.",
+   "they will go to Australia for six months as planned."
+  ]
+ },
+ "H2-1": {
+  "evidence": "dass die jungen Leute das Fach gewählt haben, weil die Eltern es wollten oder weil die Freunde es auch gemacht haben",
+  "evidence_en": "that young people chose the subject because their parents wanted it or because their friends did it too",
+  "why": "Sie haben das Fach wegen der Eltern oder Freunde gewählt, nicht selbst.",
+  "why_en": "They chose the subject because of parents or friends, not by themselves.",
+  "trap": "„Zu schwer“ wird genannt, aber mit „nicht“ (a); zwei Jahre sind die Folge, nicht der Grund (c).",
+  "trap_en": "'Too hard' is mentioned, but with 'not' (a); two years is the consequence, not the reason (c).",
+  "question_en": "According to Ms Berg, the most common reason for dropping out of university is that …",
+  "options_en": [
+   "the degree is too difficult.",
+   "the students didn't choose the subject themselves.",
+   "the students have lost two years."
+  ]
+ },
+ "H2-2": {
+  "evidence": "Ich sage nicht, dass die Ausbildung besser ist, ich sage, dass sie gleich viel wert ist.",
+  "evidence_en": "I'm not saying training is better, I'm saying it's worth the same.",
+  "why": "„Gleich viel wert“ = genauso viel wert wie ein Studium.",
+  "why_en": "'Worth the same' = just as valuable as a degree.",
+  "trap": "„Besser“ wird gesagt, aber verneint (b).",
+  "trap_en": "'Better' is said, but negated (b).",
+  "question_en": "What does Ms Berg say about vocational training?",
+  "options_en": [
+   "It is worth just as much as a degree.",
+   "It is better than a degree.",
+   "It is only suitable for pupils without the Abitur."
+  ]
+ },
+ "H2-3": {
+  "evidence": "wenn er es mit einem Ziel gemacht hat",
+  "evidence_en": "if they did it with a goal",
+  "why": "Das Jahr ist sinnvoll, wenn man ein Ziel hat.",
+  "why_en": "The year is worthwhile if you have a goal.",
+  "trap": "Wer nur zu Hause sitzt, verliert ein Jahr – das Gegenteil von b.",
+  "trap_en": "Anyone who just sits at home loses a year – the opposite of b.",
+  "question_en": "An orientation year makes sense if you …",
+  "options_en": [
+   "combine it with a goal.",
+   "spend it at home.",
+   "start university straight afterwards."
+  ]
+ },
+ "H2-4": {
+  "evidence": "Die Liste mit den Plätzen hängt ab morgen vor dem Sekretariat",
+  "evidence_en": "The list of places will be up outside the office from tomorrow",
+  "why": "Man trägt sich in die Liste vor dem Sekretariat ein.",
+  "why_en": "You sign up on the list outside the office.",
+  "trap": "Die Sprechstunde ist ohne Anmeldung und ein anderes Angebot (a); wer zuerst kommt, bekommt den Platz, nicht jeder (c).",
+  "trap_en": "The consultation hour is a different service (a); first come, first served, not everyone (c).",
+  "question_en": "For the practical day …",
+  "options_en": [
+   "you have to register during office hours.",
+   "you put your name on a list in front of the school office.",
+   "every pupil automatically gets a place."
+  ]
+ },
+ "H2-5": {
+  "evidence": "dann mit dreißig Psychologie studiert",
+  "evidence_en": "then studied psychology at thirty",
+  "why": "Mit dreißig hat sie Psychologie studiert – passend zu ihrer Arbeit in der Beratung.",
+  "why_en": "At thirty she studied psychology – which fits her work in counselling.",
+  "trap": "Chemie hat sie studiert, aber abgebrochen (a).",
+  "trap_en": "She studied chemistry, but dropped out (a).",
+  "question_en": "Ms Berg herself …",
+  "options_en": [
+   "studied chemistry and graduated.",
+   "never interrupted her studies.",
+   "only studied the subject she works in today at thirty."
+  ]
+ },
+ "H3-1": {
+  "evidence": "Ich habe gestern gekündigt.",
+  "evidence_en": "I quit yesterday.",
+  "why": "Lisa hat gestern gekündigt, und sie arbeitet bei einer Versicherung.",
+  "why_en": "Lisa quit yesterday, and she works at an insurance company.",
+  "trap": "Die Beförderung klingt so, als wollte sie bleiben – aber sie hat trotzdem gekündigt.",
+  "trap_en": "The promotion suggests she'd stay – but she quit anyway.",
+  "question_en": "Lisa has quit her job at the insurance company."
+ },
+ "H3-2": {
+  "evidence": "hatte ich schon vor drei Jahren keine Lust mehr",
+  "evidence_en": "I'd already lost interest three years ago",
+  "why": "Sie war schon seit drei Jahren unzufrieden, nicht erst seit Kurzem.",
+  "why_en": "She'd been unhappy for three years, not just recently.",
+  "trap": "Die Beförderung klingt nach Zufriedenheit, aber sie sagt: keine Lust mehr.",
+  "trap_en": "The promotion sounds like satisfaction, but she says she'd lost interest.",
+  "question_en": "Until recently, Lisa was very satisfied in her job."
+ },
+ "H3-3": {
+  "evidence": "Die Miete wäre zweitausendvierhundert im Monat.",
+  "evidence_en": "The rent would be two thousand four hundred a month.",
+  "why": "Die Miete ist 2.400 Euro.",
+  "why_en": "The rent is €2,400.",
+  "trap": "Achthundert sind die Kuchenstücke pro Monat für die Miete, keine Euro.",
+  "trap_en": "Eight hundred is the number of cake slices a month to cover rent, not euros.",
+  "question_en": "The rent for the shop is about eight hundred euros."
+ },
+ "H3-4": {
+  "evidence": "ich habe einen Businessplan gemacht, mit dem Gründerzentrum zusammen",
+  "evidence_en": "I made a business plan together with the start-up centre",
+  "why": "Das Gründerzentrum ist eine Beratungsstelle.",
+  "why_en": "The start-up centre is an advisory service.",
+  "trap": "Jonas will den Plan lesen, aber er hat ihn nicht mit ihr gemacht.",
+  "trap_en": "Jonas wants to read the plan, but he didn't write it with her.",
+  "question_en": "Lisa drew up the business plan together with an advice centre."
+ },
+ "H3-5": {
+  "evidence": "Meine Eltern hätten das gemacht, aber die haben gerade das Haus renoviert.",
+  "evidence_en": "My parents would have done it, but they've just renovated the house.",
+  "why": "„Hätten“ und „gerade renoviert“ zeigen: Im Moment können die Eltern nicht bürgen.",
+  "why_en": "'Would have' and 'just renovated' show the parents can't be guarantors right now.",
+  "trap": "„Hätten das gemacht“ klingt positiv, ist aber Konjunktiv – es passiert nicht.",
+  "trap_en": "'Would have done it' sounds positive, but it's conditional – it isn't happening.",
+  "question_en": "Lisa's parents can't currently act as guarantors for the loan."
+ },
+ "H3-6": {
+  "evidence": "Ich hätte mich vor fünf Jahren fast selbstständig gemacht, mit der Fotografie, und habe es dann nicht getan.",
+  "evidence_en": "Five years ago I almost went freelance with photography, and then didn't.",
+  "why": "Jonas hat es fast gemacht, aber nicht getan.",
+  "why_en": "Jonas almost did it, but didn't.",
+  "trap": "„Fast“ und „nicht getan“ – er ist nicht selbstständig geworden.",
+  "trap_en": "'Almost' and 'didn't' – he never went freelance.",
+  "question_en": "Jonas became self-employed as a photographer a few years ago."
+ },
+ "H3-7": {
+  "evidence": "Aber unter einer Bedingung: Ich lese den Businessplan vorher, und zwar kritisch.",
+  "evidence_en": "But on one condition: I read the business plan first, and critically.",
+  "why": "Seine Bedingung ist, dass er vorher den Businessplan liest.",
+  "why_en": "His condition is reading the business plan first.",
+  "trap": "Der freie Kaffee ist Lisas Angebot, nicht seine Bedingung.",
+  "trap_en": "The free coffee is Lisa's offer, not his condition.",
+  "question_en": "Jonas only wants to take the photos if he's allowed to read the business plan beforehand."
+ },
+ "H4-1": {
+  "evidence": "deshalb ist die Zukunft kein Schicksal, sondern eine Aufgabe",
+  "evidence_en": "that's why the future isn't fate but a task",
+  "why": "Herr Roth sagt, wir entscheiden selbst, wie wir mit der Zukunft umgehen.",
+  "why_en": "Mr Roth says we decide ourselves how to deal with the future.",
+  "trap": "Frau Brandt spricht über Entscheidungen alter Menschen, aber nicht über Schicksal.",
+  "trap_en": "Ms Brandt talks about decisions made by older people, but not about fate.",
+  "question_en": "The future is not a question of fate, but of our decisions."
+ },
+ "H4-2": {
+  "evidence": "Wenn man nur Angst hat, ändert sich nichts.",
+  "evidence_en": "If you only feel fear, nothing changes.",
+  "why": "Das sagt Frau Brandt; deshalb ist sie in den Jugendrat gegangen.",
+  "why_en": "Ms Brandt says this; that's why she joined the youth council.",
+  "trap": "Herr Roth wiederholt: „ein wichtiger Satz“, aber der Satz ist von Brandt.",
+  "trap_en": "Mr Roth calls it 'an important sentence', but it's Brandt's.",
+  "question_en": "Anyone who is only afraid changes nothing."
+ },
+ "H4-3": {
+  "evidence": "dass sich manche Dinge schneller verbessern als erwartet",
+  "evidence_en": "that some things are improving faster than expected",
+  "why": "Herr Roth nennt Solarstrom als Beispiel für schnellen Fortschritt.",
+  "why_en": "Mr Roth gives solar power as an example of rapid progress.",
+  "trap": "Frau Brandt fragt danach „Bezahlbar für wen?“ – sie ist skeptischer.",
+  "trap_en": "Ms Brandt then asks 'Affordable for whom?' – she's more sceptical.",
+  "question_en": "Some developments improve faster than expected."
+ },
+ "H4-4": {
+  "evidence": "Wer bekommt die Vorteile, und wer trägt die Kosten?",
+  "evidence_en": "Who gets the benefits, and who bears the costs?",
+  "why": "Frau Brandt sagt, in Zukunft geht es um Gerechtigkeit.",
+  "why_en": "Ms Brandt says the future is about fairness.",
+  "trap": "Herr Roth spricht über Technik und Kosten, aber nicht über diese Frage.",
+  "trap_en": "Mr Roth talks about technology and cost, but not this question.",
+  "question_en": "In future, it's mainly about who gets the benefits and who pays."
+ },
+ "H4-5": {
+  "evidence": "ein Programm benutzt, das meine Sendung fast allein vorbereitet hat, in zehn Minuten",
+  "evidence_en": "used a program that prepared my show almost by itself, in ten minutes",
+  "why": "Die Moderatorin erzählt von dem Programm, das ihre Sendung vorbereitet hat.",
+  "why_en": "The presenter talks about the program that prepared her show.",
+  "trap": "Herr Roth antwortet über Berufe, aber die Erfahrung ist die der Moderatorin.",
+  "trap_en": "Mr Roth answers about jobs, but the experience is the presenter's.",
+  "question_en": "A program did a large part of my work in a short time."
+ },
+ "H4-6": {
+  "evidence": "mit fünfzig noch einmal etwas Neues lernt",
+  "evidence_en": "learns something new again at fifty",
+  "why": "Herr Roth will ein Bildungssystem für das ganze Leben – und selbst mit 78 ein Instrument lernen.",
+  "why_en": "Mr Roth wants lifelong education – and to learn an instrument himself at 78.",
+  "trap": "Frau Brandt sagt „Da bin ich ganz bei Ihnen“, aber die Idee kommt von Roth.",
+  "trap_en": "Ms Brandt says 'I'm completely with you', but the idea is Roth's.",
+  "question_en": "You should still be able to learn new things in old age."
+ },
+ "H4-7": {
+  "evidence": "Ich wünsche mir, dass wir in zwanzig Jahren weniger arbeiten.",
+  "evidence_en": "I wish that in twenty years we'll work less.",
+  "why": "Frau Brandt wünscht sich weniger Arbeitsstunden.",
+  "why_en": "Ms Brandt wishes for fewer working hours.",
+  "trap": "Herr Roth sagt „ich teile ihn“, aber er zweifelt, ob das bezahlbar ist.",
+  "trap_en": "Mr Roth says 'I share it', but doubts it's affordable.",
+  "question_en": "In future, people should have to work fewer hours."
+ },
+ "H4-8": {
+  "evidence": "Dass ich mit meinen Kindern im Sommer im Fluss schwimmen kann, hier in der Stadt",
+  "evidence_en": "That I can swim in the river with my children in summer, here in the city",
+  "why": "Frau Brandt wünscht sich, im Fluss in der Stadt zu schwimmen.",
+  "why_en": "Ms Brandt wishes to swim in the river in the city.",
+  "trap": "Die Moderatorin wiederholt „Ein Fluss zum Schwimmen“, aber der Wunsch ist von Brandt.",
+  "trap_en": "The presenter repeats 'a river to swim in', but the wish is Brandt's.",
+  "question_en": "In future I would like to be able to swim in the river in the city."
+ }
+}

@@ -1,0 +1,870 @@
+{
+  "day": 6,
+  "topic": "Medien und Technik",
+  "lesen": {
+    "teil1": {
+      "title": "Eine Woche ohne Smartphone",
+      "source": "Blog",
+      "text": "Vor zwei Wochen habe ich ein Experiment gemacht: sieben Tage ohne Smartphone. Die Idee kam von meiner Schwester. Sie hat mir beim Abendessen gesagt, dass ich ständig auf mein Handy schaue und gar nicht mehr zuhöre. Zuerst habe ich gelacht, aber dann habe ich in den Einstellungen nachgesehen: fast fünf Stunden pro Tag! Das hat mich wirklich erschreckt.\n\nAm Montagmorgen habe ich das Smartphone also in eine Schublade gelegt und ein altes Telefon ohne Internet benutzt, das ich noch im Keller hatte. Damit konnte ich nur telefonieren und SMS schreiben. Die ersten zwei Tage waren schlimm. Ich habe bestimmt fünfzig Mal in die Tasche gegriffen, obwohl da nichts war. Auf dem Weg zur Arbeit wusste ich nicht, was ich tun sollte. Ich habe dann einfach aus dem Fenster der Straßenbahn geschaut, was ich seit Jahren nicht mehr gemacht hatte.\n\nAb Mittwoch wurde es besser. Ich habe abends ein Buch gelesen, das seit einem Jahr auf meinem Nachttisch lag, und ich habe deutlich besser geschlafen. Allerdings gab es auch Probleme: Ohne Navigation habe ich mich am Donnerstag in einem fremden Stadtteil verlaufen und bin zu spät zu einem Termin gekommen. Und meine Freunde waren genervt, weil ich in unserer Gruppe tagelang nichts geantwortet habe.\n\nAm Sonntag habe ich das Smartphone wieder aus der Schublade geholt. Ich habe es aber nicht sofort eingeschaltet, sondern zuerst alle Apps gelöscht, die ich nicht wirklich brauche. Jetzt liegt das Handy nachts in der Küche und nicht mehr neben dem Bett. Ganz ohne Smartphone möchte ich nicht leben, dafür ist es einfach zu praktisch. Aber ich habe gemerkt, dass ich selbst entscheiden kann, wann ich es benutze – und nicht das Handy.",
+      "items": [
+        {
+          "id": "L1-1",
+          "statement": "Die Idee für das Experiment hatte die Autorin selbst.",
+          "answer": false,
+          "skill": "paraphrase"
+        },
+        {
+          "id": "L1-2",
+          "statement": "Vor dem Experiment hat die Autorin fast fünf Stunden täglich am Handy verbracht.",
+          "answer": true,
+          "skill": "number-time"
+        },
+        {
+          "id": "L1-3",
+          "statement": "In dieser Woche hat sie gar kein Telefon benutzt.",
+          "answer": false,
+          "skill": "negation"
+        },
+        {
+          "id": "L1-4",
+          "statement": "Nach einigen Tagen hat die Autorin besser geschlafen.",
+          "answer": true,
+          "skill": "detail"
+        },
+        {
+          "id": "L1-5",
+          "statement": "Das Handy liegt nachts jetzt in einem anderen Zimmer.",
+          "answer": true,
+          "skill": "paraphrase"
+        },
+        {
+          "id": "L1-6",
+          "statement": "Die Autorin möchte in Zukunft ganz ohne Smartphone leben.",
+          "answer": false,
+          "skill": "attitude"
+        }
+      ]
+    },
+    "teil2": {
+      "texts": [
+        {
+          "title": "Enkel als Lehrer",
+          "source": "Zeitung",
+          "text": "Jeden Mittwochnachmittag wird die Stadtbibliothek in Erfurt zum Klassenzimmer – allerdings mit vertauschten Rollen. Zwölf Schülerinnen und Schüler der zehnten Klasse erklären älteren Menschen, wie man ein Smartphone bedient. Das Projekt „Digital-Paten“ gibt es seit einem Jahr, und die Warteliste wird immer länger.\n\nDie Teilnehmer bringen ihr eigenes Gerät mit. Die häufigsten Fragen: Wie schicke ich ein Foto? Wie funktioniert ein Videoanruf mit den Enkeln? „Ich hatte richtig Angst vor dem Internet“, erzählt Ingrid Sommer, 74. „Jetzt telefoniere ich jede Woche mit meiner Enkelin in Kanada und sehe sie dabei.“ Nur Online-Banking macht sie weiterhin nicht. „Das ist mir zu unsicher, da gehe ich lieber in die Filiale.“\n\nOrganisiert wird das Projekt von der Bibliothek und einer Gesamtschule. Die Teilnahme kostet nichts, die Schüler bekommen am Ende des Schuljahres ein Zertifikat. „Die Jugendlichen lernen hier etwas, das man in keinem Schulfach lernt: Geduld“, sagt Bibliothekarin Karin Fuchs. „Manche Fragen müssen sie fünfmal beantworten, und das machen sie erstaunlich freundlich.“ Wer mitmachen möchte, muss sich allerdings gedulden: Neue Plätze gibt es frühestens nach den Sommerferien.",
+          "items": [
+            {
+              "id": "L2-1",
+              "question": "Das Projekt in Erfurt …",
+              "options": [
+                "wird von Lehrern der Schule geleitet.",
+                "findet in der Schule statt.",
+                "bringt Jugendliche und ältere Menschen zusammen."
+              ],
+              "answer": 2,
+              "skill": "global"
+            },
+            {
+              "id": "L2-2",
+              "question": "Frau Sommer …",
+              "options": [
+                "macht jetzt ihr Online-Banking allein.",
+                "hatte am Anfang Angst vor dem Internet.",
+                "telefoniert nicht gern mit ihrer Enkelin."
+              ],
+              "answer": 1,
+              "skill": "paraphrase"
+            },
+            {
+              "id": "L2-3",
+              "question": "Was sagt Frau Fuchs über die Schüler?",
+              "options": [
+                "Sie lernen, geduldig zu sein.",
+                "Sie bekommen Geld für ihre Arbeit.",
+                "Sie beantworten manche Fragen unfreundlich."
+              ],
+              "answer": 0,
+              "skill": "paraphrase"
+            }
+          ]
+        },
+        {
+          "title": "Handy im Schließfach",
+          "source": "Website",
+          "text": "Seit dem Sommer gilt an der Gesamtschule Kiel-Nord eine neue Regel: Von acht bis fünfzehn Uhr bleiben alle Handys in einem Schließfach. Schulleiter Peter Hansen zieht nach einem halben Jahr eine positive Bilanz. „Auf dem Pausenhof gibt es weniger Streit, und die Schüler reden wieder miteinander, statt nur auf den Bildschirm zu schauen.“ Auch die Lehrer müssten im Unterricht seltener ermahnen.\n\nNicht alle Eltern sind allerdings begeistert. Manche möchten ihre Kinder auch während des Schultags erreichen können, zum Beispiel wenn sich ein Termin ändert. Die Schule reagiert darauf mit einem einfachen Angebot: In dringenden Fällen können Eltern im Sekretariat anrufen, und die Nachricht wird sofort weitergegeben.\n\nUnter den Schülern ist die Meinung geteilt. Klassensprecherin Lea, 15, war am Anfang genervt. „Ich dachte, die Pausen werden total langweilig. Jetzt spielen wir Tischtennis oder quatschen einfach. Ehrlich gesagt macht das mehr Spaß als früher.“ Eine Ausnahme gibt es jedoch: In der Oberstufe dürfen die Schüler das Handy im Unterricht benutzen, sobald der Lehrer es für eine Recherche erlaubt. Im Sommer will die Schule alle Beteiligten befragen und dann entscheiden, ob die Regel bleibt.",
+          "items": [
+            {
+              "id": "L2-4",
+              "question": "An der Schule in Kiel …",
+              "options": [
+                "dürfen Schüler ihr Handy nur in der Pause benutzen.",
+                "müssen die Handys während des Schultags weggeschlossen werden.",
+                "gibt es seit dem Sommer keine Schließfächer mehr."
+              ],
+              "answer": 1,
+              "skill": "paraphrase"
+            },
+            {
+              "id": "L2-5",
+              "question": "Manche Eltern …",
+              "options": [
+                "finden die Regel gut, weil es weniger Streit gibt.",
+                "rufen jeden Tag im Sekretariat an.",
+                "möchten ihre Kinder auch in der Schule erreichen können."
+              ],
+              "answer": 2,
+              "skill": "detail"
+            },
+            {
+              "id": "L2-6",
+              "question": "Lea …",
+              "options": [
+                "war von Anfang an für die neue Regel.",
+                "darf ihr Handy im Unterricht benutzen.",
+                "findet die Pausen jetzt besser als früher."
+              ],
+              "answer": 2,
+              "skill": "attitude"
+            }
+          ]
+        }
+      ]
+    },
+    "teil3": {
+      "intro": "Einige Personen aus Ihrem Deutschkurs suchen Angebote rund um Medien und Technik. Lesen Sie die Situationen 1–7 und die Anzeigen A–J. Welche Anzeige passt zu welcher Situation? Eine Anzeige kann nur einmal gewählt werden. Für eine Situation gibt es keine passende Anzeige – markieren Sie dort 0.",
+      "situations": [
+        {
+          "id": "L3-1",
+          "text": "Ayşes Laptop ist sehr langsam geworden. Sie möchte ihn reparieren lassen, hat aber wenig Geld.",
+          "answer": "A",
+          "skill": "matching"
+        },
+        {
+          "id": "L3-2",
+          "text": "Tom möchte einen eigenen Podcast starten, hat aber keine Ahnung von Aufnahmetechnik.",
+          "answer": "C",
+          "skill": "matching"
+        },
+        {
+          "id": "L3-3",
+          "text": "Nadias Großmutter möchte lernen, wie man mit dem Smartphone Videoanrufe macht.",
+          "answer": "F",
+          "skill": "matching"
+        },
+        {
+          "id": "L3-4",
+          "text": "Lukas will seine alte Spielkonsole verkaufen und möchte schnell Geld dafür bekommen.",
+          "answer": "G",
+          "skill": "matching"
+        },
+        {
+          "id": "L3-5",
+          "text": "Carla schaut unterwegs viele Videos und sucht einen günstigen Handyvertrag mit viel Datenvolumen.",
+          "answer": "D",
+          "skill": "matching"
+        },
+        {
+          "id": "L3-6",
+          "text": "Mehmet (32) möchte in einem Kurs lernen, wie man eine eigene Website programmiert.",
+          "answer": null,
+          "skill": "matching"
+        },
+        {
+          "id": "L3-7",
+          "text": "Sophie hat im Keller viele alte Kabel und Handys gefunden und möchte sie kostenlos loswerden.",
+          "answer": "E",
+          "skill": "matching"
+        }
+      ],
+      "ads": [
+        {
+          "letter": "A",
+          "title": "Computerhilfe Meyer",
+          "text": "Laptop langsam? PC startet nicht? Wir reparieren alle Marken, oft noch am selben Tag. Kostenlose Diagnose, faire Preise, Studentenrabatt. Auch Datenrettung. Bahnhofstraße 12, Mo–Fr 10–18 Uhr."
+        },
+        {
+          "letter": "B",
+          "title": "Programmieren für Kinder",
+          "text": "Erste Schritte mit Scratch: Kinder von 8 bis 12 Jahren programmieren ihr eigenes Spiel. Samstags 10–12 Uhr, sechs Termine, 60 €. Keine Vorkenntnisse nötig. Anmeldung: kids@codeclub-mitte.de"
+        },
+        {
+          "letter": "C",
+          "title": "Workshop: Dein eigener Podcast",
+          "text": "Von der Idee bis zur ersten Folge – aufnehmen, schneiden, veröffentlichen. Zwei Abende an der Volkshochschule, Mikrofone werden gestellt. Für Anfänger ohne Technikkenntnisse. 55 €. Anmeldung online."
+        },
+        {
+          "letter": "D",
+          "title": "FlatMobil – der ehrliche Tarif",
+          "text": "40 GB für 12,99 € im Monat, EU-weit surfen, monatlich kündbar, keine Anschlussgebühr. Bestellen Sie online, die SIM-Karte kommt in zwei Tagen per Post. www.flatmobil.de"
+        },
+        {
+          "letter": "E",
+          "title": "Sammelaktion Elektroschrott",
+          "text": "Die Stadtwerke sammeln am Samstag von 9 bis 14 Uhr auf dem Marktplatz alte Handys, Kabel, Ladegeräte und kleine Elektrogeräte. Abgabe kostenlos, Recycling garantiert. Bitte keine Kühlschränke oder Fernseher."
+        },
+        {
+          "letter": "F",
+          "title": "Smartphone-Sprechstunde 60+",
+          "text": "WhatsApp, Fotos, Videoanrufe mit den Enkeln – wir erklären es in Ruhe. Jeden Dienstag 15–17 Uhr in der Stadtbibliothek, kostenlos, eigenes Gerät bitte mitbringen. Keine Anmeldung nötig."
+        },
+        {
+          "letter": "G",
+          "title": "Second Byte – An- und Verkauf",
+          "text": "Wir kaufen gebrauchte Konsolen, Handys, Tablets und Spiele – sofort Bargeld, faire Bewertung vor Ort. Auch defekte Geräte. Kommen Sie einfach vorbei: Neue Straße 5, Mo–Sa 11–19 Uhr."
+        },
+        {
+          "letter": "H",
+          "title": "Fotokurs mit dem Smartphone",
+          "text": "Bessere Fotos ohne teure Kamera: Licht, Bildaufbau, einfache Bearbeitung. Ein Samstag, 10–16 Uhr, mit Spaziergang durch die Altstadt. 45 € inkl. Getränke. Max. 10 Teilnehmer."
+        },
+        {
+          "letter": "I",
+          "title": "Copy & Surf Internet-Café",
+          "text": "Drucken, Scannen, Kopieren, schnelles Internet an 12 Arbeitsplätzen. Bewerbungsfotos in 10 Minuten. Täglich 8–22 Uhr, auch sonntags. Am Hauptbahnhof, Ausgang Nord."
+        },
+        {
+          "letter": "J",
+          "title": "Elternabend: Mein Kind und das Smartphone",
+          "text": "Ab wann ein eigenes Handy? Welche Apps sind sinnvoll? Eine Medienpädagogin gibt Tipps und beantwortet Fragen. Donnerstag, 19 Uhr, Aula der Grundschule Süd. Eintritt frei."
+        }
+      ]
+    },
+    "teil4": {
+      "question": "Sollte es für soziale Medien ein Mindestalter von 16 Jahren geben?",
+      "comments": [
+        {
+          "id": "L4-1",
+          "author": "Birgit, Kassel",
+          "text": "Ich bin Lehrerin und sehe jeden Morgen zwölfjährige Kinder, die völlig müde in die Klasse kommen, weil sie bis Mitternacht Videos geschaut haben. Viele Eltern schaffen es allein nicht, Grenzen zu setzen. Ein klares Gesetz würde ihnen helfen.",
+          "answer": true,
+          "skill": "attitude"
+        },
+        {
+          "id": "L4-2",
+          "author": "Emre, Köln",
+          "text": "Ich bin 17 und habe über YouTube Englisch gelernt und Leute mit denselben Hobbys gefunden. Ein Verbot bestraft alle, die soziale Medien vernünftig nutzen, nur weil ein paar Leute Probleme haben. Das ist nicht fair.",
+          "answer": false,
+          "skill": "attitude"
+        },
+        {
+          "id": "L4-3",
+          "author": "Sabine, Rostock",
+          "text": "Ein Gesetz ist schnell gemacht, aber wer kontrolliert das? Die Kinder geben einfach ein falsches Alter an. Trotzdem: Ein klares Signal an die Firmen ist besser als gar nichts. Von allein ändern die nämlich nichts.",
+          "answer": true,
+          "skill": "inference"
+        },
+        {
+          "id": "L4-4",
+          "author": "Holger, Nürnberg",
+          "text": "Ob mein Kind eine App benutzen darf, entscheide ich als Vater, nicht der Staat. Bei uns zu Hause gibt es feste Regeln, und das funktioniert gut. Wer sein Kind nicht erzieht, dem hilft auch ein Gesetz nicht.",
+          "answer": false,
+          "skill": "attitude"
+        },
+        {
+          "id": "L4-5",
+          "author": "Miriam, Augsburg",
+          "text": "Diese Apps sind so gebaut, dass man nicht aufhören kann. Erwachsene schaffen das kaum, wie sollen es dann Kinder schaffen? Bei Alkohol und Zigaretten haben wir auch ein Mindestalter, und niemand findet das seltsam.",
+          "answer": true,
+          "skill": "attitude"
+        },
+        {
+          "id": "L4-6",
+          "author": "Jannik, Potsdam",
+          "text": "Ich verstehe die Sorgen, und ja, die Apps sind wirklich so gemacht, dass man hängen bleibt. Aber mit 16 ist dann plötzlich alles erlaubt, und niemand hat gelernt, damit umzugehen. Besser wäre Medienunterricht ab der Grundschule statt eines Verbots.",
+          "answer": false,
+          "skill": "inference"
+        },
+        {
+          "id": "L4-7",
+          "author": "Anke, Wuppertal",
+          "text": "Andere Länder machen es schon vor. Seit meine Tochter (14) ihr Instagram gelöscht hat, ist sie viel entspannter. Ich hätte mir gewünscht, dass mir jemand diese Entscheidung früher abgenommen hätte.",
+          "answer": true,
+          "skill": "inference"
+        }
+      ]
+    },
+    "teil5": {
+      "title": "Benutzungsordnung – Computerarbeitsplätze und WLAN der Stadtbibliothek",
+      "text": "§ 1 Zugang\nDie Computerarbeitsplätze stehen allen Personen mit gültigem Bibliotheksausweis zur Verfügung. Gäste ohne Ausweis erhalten am Servicepunkt ein Tagesticket für 2 €. Kinder unter zehn Jahren dürfen die Computer nur in Begleitung eines Erwachsenen nutzen.\n\n§ 2 Nutzungsdauer\nPro Person und Tag ist eine Nutzung von 60 Minuten möglich. Wartet niemand auf den Platz, kann die Zeit am Servicepunkt verlängert werden. Arbeitsplätze lassen sich online bis zu drei Tage im Voraus reservieren. Reservierte Plätze, die nicht innerhalb von 15 Minuten belegt werden, werden wieder freigegeben.\n\n§ 3 Drucken und Speichern\nAusdrucke kosten 10 Cent pro Seite in Schwarz-Weiß und 50 Cent in Farbe. Eigene Dateien können nicht auf den Computern gespeichert werden. Bitte benutzen Sie einen USB-Stick oder schicken Sie sich die Datei per E-Mail. USB-Sticks sind am Servicepunkt erhältlich.\n\n§ 4 WLAN\nDas WLAN der Bibliothek ist kostenlos und kann auch ohne Ausweis genutzt werden. Nach dem Akzeptieren der Nutzungsbedingungen ist der Zugang 24 Stunden gültig. Das Herunterladen von Filmen und Musik ist aus rechtlichen Gründen nicht erlaubt.\n\n§ 5 Verhalten\nEssen und Trinken sind an den Computerarbeitsplätzen verboten. Telefonieren Sie bitte nur im Foyer. Technische Probleme melden Sie bitte dem Personal; Reparaturversuche durch Nutzer sind nicht gestattet.",
+      "items": [
+        {
+          "id": "L5-1",
+          "question": "Wer keinen Bibliotheksausweis hat, …",
+          "options": [
+            "darf die Computer nicht benutzen.",
+            "kann ein Tagesticket kaufen.",
+            "muss sich vorher online anmelden."
+          ],
+          "answer": 1,
+          "skill": "detail"
+        },
+        {
+          "id": "L5-2",
+          "question": "Man darf länger als 60 Minuten am Computer bleiben, wenn …",
+          "options": [
+            "man den Platz drei Tage vorher reserviert hat.",
+            "man dafür bezahlt.",
+            "niemand auf den Platz wartet."
+          ],
+          "answer": 2,
+          "skill": "paraphrase"
+        },
+        {
+          "id": "L5-3",
+          "question": "Eigene Dateien …",
+          "options": [
+            "kann man auf einem USB-Stick speichern.",
+            "kann man auf dem Computer speichern.",
+            "dürfen nur ausgedruckt werden."
+          ],
+          "answer": 0,
+          "skill": "detail"
+        },
+        {
+          "id": "L5-4",
+          "question": "Im WLAN der Bibliothek …",
+          "options": [
+            "muss man sich mit dem Ausweis anmelden.",
+            "darf man keine Filme herunterladen.",
+            "kann man nur eine Stunde surfen."
+          ],
+          "answer": 1,
+          "skill": "negation"
+        }
+      ]
+    }
+  },
+  "hoeren": {
+    "teil1": {
+      "texts": [
+        {
+          "id": "H1-1",
+          "kind": "Anrufbeantworter",
+          "script": [
+            {
+              "speaker": "f1",
+              "text": "Guten Tag, Frau Lindner, hier ist Petra Hoffmann von Elektro Kramer. Ich rufe wegen Ihres Laptops an. Gute Nachrichten: Wir dachten ja zuerst, der Bildschirm ist kaputt, das hätte ungefähr hundertachtzig Euro gekostet. Es war aber nur ein Kabel locker, deshalb kostet die Reparatur nur fünfundvierzig Euro. Das Gerät ist fertig und Sie können es ab morgen abholen. Wir haben werktags bis achtzehn Uhr geöffnet, samstags bis vierzehn Uhr. Bitte bringen Sie den Abholschein mit, den Sie von uns bekommen haben, sonst dürfen wir das Gerät nicht herausgeben. Bis bald und schönen Tag noch!"
+            }
+          ],
+          "items": [
+            {
+              "id": "H1-1a",
+              "type": "rf",
+              "statement": "Die Reparatur kostet hundertachtzig Euro.",
+              "answer": false,
+              "skill": "number-time"
+            },
+            {
+              "id": "H1-1b",
+              "type": "mc",
+              "question": "Frau Lindner soll …",
+              "options": [
+                "den Laptop noch heute abholen.",
+                "einen neuen Bildschirm kaufen.",
+                "den Abholschein mitbringen."
+              ],
+              "answer": 2,
+              "skill": "detail"
+            }
+          ]
+        },
+        {
+          "id": "H1-2",
+          "kind": "Radio",
+          "script": [
+            {
+              "speaker": "m1",
+              "text": "Und noch ein Hinweis für alle, die sich im Internet sicherer fühlen möchten: Die Stadtbibliothek veranstaltet auch dieses Jahr einen Digitaltag. Ursprünglich war der fünfundzwanzigste Mai geplant, wegen des Umbaus in der Bibliothek findet er jetzt aber am achten Juni statt. Es gibt kurze Workshops zu sicheren Passwörtern, zu falschen E-Mails und zum Schutz der eigenen Daten. Alle Angebote sind kostenlos. Nur für den Workshop zum Online-Banking müssen Sie sich vorher anmelden, weil dort die Plätze begrenzt sind. Zu allen anderen Workshops kommen Sie einfach vorbei. Los geht es um zehn Uhr, das Programm endet gegen sechzehn Uhr."
+            }
+          ],
+          "items": [
+            {
+              "id": "H1-2a",
+              "type": "rf",
+              "statement": "Der Digitaltag findet am fünfundzwanzigsten Mai statt.",
+              "answer": false,
+              "skill": "number-time"
+            },
+            {
+              "id": "H1-2b",
+              "type": "mc",
+              "question": "Wofür muss man sich anmelden?",
+              "options": [
+                "Für den Workshop zum Online-Banking.",
+                "Für alle Workshops.",
+                "Für den Workshop zu sicheren Passwörtern."
+              ],
+              "answer": 0,
+              "skill": "detail"
+            }
+          ]
+        },
+        {
+          "id": "H1-3",
+          "kind": "Durchsage",
+          "script": [
+            {
+              "speaker": "ch_f",
+              "text": "Liebe Kundinnen und Kunden, eine kurze Information: Wegen einer technischen Störung ist an unseren Kassen im Moment leider nur Barzahlung möglich. Wenn Sie mit Karte bezahlen möchten, gehen Sie bitte zur Kasse eins im Erdgeschoss, dort funktioniert die Kartenzahlung. Die Techniker sind schon da, und in etwa dreißig Minuten sollte das Problem behoben sein. Wir bitten um Ihr Verständnis. Und noch unser Angebot des Tages: Die kabellosen Kopfhörer der Marke Sono gibt es nur heute für neunundzwanzig statt neunundvierzig Euro. Sie finden sie im zweiten Stock in der Audio-Abteilung. Wir wünschen Ihnen noch einen angenehmen Einkauf."
+            }
+          ],
+          "items": [
+            {
+              "id": "H1-3a",
+              "type": "rf",
+              "statement": "Im Moment kann man an allen Kassen nur mit Karte bezahlen.",
+              "answer": false,
+              "skill": "negation"
+            },
+            {
+              "id": "H1-3b",
+              "type": "mc",
+              "question": "Die Kopfhörer …",
+              "options": [
+                "kosten heute neunundvierzig Euro.",
+                "sind nur heute billiger.",
+                "gibt es nur im Erdgeschoss."
+              ],
+              "answer": 1,
+              "skill": "number-time"
+            }
+          ]
+        },
+        {
+          "id": "H1-4",
+          "kind": "Anrufbeantworter",
+          "script": [
+            {
+              "speaker": "m2",
+              "text": "Hi Lisa, hier ist Daniel. Es geht um unseren Serienabend am Freitag. Also, mein Beamer ist leider kaputt, der zeigt nur noch ein blaues Bild. Kannst du bitte deinen Laptop mitbringen und das HDMI-Kabel? Dann schließen wir den einfach an meinen Fernseher an. Ach ja, und ich habe das Passwort für den Streaming-Account geändert, das schicke ich dir gleich per Nachricht. Wichtig: Wir fangen nicht um acht an, sondern schon um sieben, weil Paul früher gehen muss. Essen brauchst du nichts mitzubringen, ich habe schon Chips und Getränke besorgt. Bis Freitag, freu mich!"
+            }
+          ],
+          "items": [
+            {
+              "id": "H1-4a",
+              "type": "rf",
+              "statement": "Der Serienabend beginnt eine Stunde früher als geplant.",
+              "answer": true,
+              "skill": "number-time"
+            },
+            {
+              "id": "H1-4b",
+              "type": "mc",
+              "question": "Lisa soll …",
+              "options": [
+                "ihren Laptop mitbringen.",
+                "etwas zu essen mitbringen.",
+                "einen neuen Beamer besorgen."
+              ],
+              "answer": 0,
+              "skill": "detail"
+            }
+          ]
+        },
+        {
+          "id": "H1-5",
+          "kind": "Werbung",
+          "script": [
+            {
+              "speaker": "f3",
+              "text": "Endlich ist es so weit: Der neue Online-Shop von TechnoMarkt ist da! Zur Eröffnung schenken wir Ihnen zwanzig Prozent Rabatt auf alle Tablets und Laptops. Das Angebot gilt bis Sonntag, also nicht lange warten! Geben Sie einfach den Code START zwanzig ein. Ab einem Einkaufswert von fünfzig Euro liefern wir kostenlos, darunter kostet der Versand vier Euro neunzig. Und wenn Ihnen etwas nicht gefällt, schicken Sie es innerhalb von dreißig Tagen einfach zurück, ohne Angabe von Gründen. TechnoMarkt – Technik, die ankommt. Jetzt auf technomarkt punkt de."
+            }
+          ],
+          "items": [
+            {
+              "id": "H1-5a",
+              "type": "rf",
+              "statement": "Die Lieferung ist bei jeder Bestellung kostenlos.",
+              "answer": false,
+              "skill": "negation"
+            },
+            {
+              "id": "H1-5b",
+              "type": "mc",
+              "question": "Der Rabatt gilt …",
+              "options": [
+                "nur am Sonntag.",
+                "einen Monat lang.",
+                "bis Sonntag."
+              ],
+              "answer": 2,
+              "skill": "number-time"
+            }
+          ]
+        }
+      ]
+    },
+    "teil2": {
+      "setting": "Sie besuchen mit einer Gruppe das Funkhaus eines Radiosenders und hören die Begrüßung durch einen Redakteur.",
+      "script": [
+        {
+          "speaker": "m3",
+          "text": "Herzlich willkommen im Funkhaus von Radio Nordwelle! Mein Name ist Oliver Brandt, ich bin hier Redakteur in der Nachrichtenredaktion und führe Sie heute durch unser Haus. Die Führung dauert ungefähr fünfundsiebzig Minuten, also eine Stunde und eine Viertelstunde. Wir fangen gleich hier im Erdgeschoss in der Nachrichtenredaktion an. Dort sehen Sie, wie meine Kolleginnen und Kollegen die Nachrichten vorbereiten, die Sie jede volle Stunde hören. Danach gehen wir in den ersten Stock ins Studio eins. Dort läuft gerade die Vormittagssendung live. Das heißt: Sobald wir das Studio betreten, müssen Sie absolut leise sein, denn alles, was Sie sagen, wäre sofort im Radio zu hören. Sie müssen Ihr Handy nicht ausschalten, aber bitte stellen Sie es auf lautlos. Fotografieren ist in der Redaktion und im Flur erlaubt, im Studio während der Sendung allerdings nicht. Nach dem Studio fahren wir mit dem Aufzug in den Keller. Dort befindet sich unser Archiv mit über vierzigtausend Schallplatten und CDs. Einige davon sind älter als der Sender selbst, der 1987 gegründet wurde. Heute arbeiten hier rund hundert Menschen, die ersten kommen schon um vier Uhr morgens. Zum Schluss haben wir eine kleine Überraschung: Im Studio zwei darf eine Person aus Ihrer Gruppe den Wetterbericht sprechen. Wir nehmen das auf, und diese Person bekommt die Aufnahme danach per E-Mail. Wer Lust hat, sagt mir einfach Bescheid. Noch ein paar praktische Hinweise: Die Toiletten finden Sie rechts neben der Garderobe. Ihre Jacken und Taschen können Sie dort lassen, der Raum wird abgeschlossen. Unsere Cafeteria im zweiten Stock ist bis fünfzehn Uhr geöffnet. Mit dem Besucherausweis, den Sie am Eingang bekommen haben, zahlen Sie dort zwanzig Prozent weniger. Bitte tragen Sie den Ausweis während der ganzen Führung sichtbar, und bleiben Sie bitte immer bei der Gruppe, denn allein dürfen Besucher im Haus nicht herumgehen. So, dann folgen Sie mir bitte in die Redaktion."
+        }
+      ],
+      "items": [
+        {
+          "id": "H2-1",
+          "question": "Die Führung …",
+          "options": [
+            "dauert ungefähr eineinviertel Stunden.",
+            "beginnt im Studio.",
+            "wird von der Chefin des Senders geleitet."
+          ],
+          "answer": 0,
+          "skill": "number-time"
+        },
+        {
+          "id": "H2-2",
+          "question": "Im Studio …",
+          "options": [
+            "muss man das Handy ausschalten.",
+            "darf man während der Sendung nicht sprechen.",
+            "darf man fotografieren."
+          ],
+          "answer": 1,
+          "skill": "detail"
+        },
+        {
+          "id": "H2-3",
+          "question": "Im Keller …",
+          "options": [
+            "befindet sich die Nachrichtenredaktion.",
+            "arbeiten die Moderatoren.",
+            "werden alte Schallplatten aufbewahrt."
+          ],
+          "answer": 2,
+          "skill": "detail"
+        },
+        {
+          "id": "H2-4",
+          "question": "Am Ende der Führung …",
+          "options": [
+            "bekommen alle Besucher eine Aufnahme per E-Mail.",
+            "kann jemand aus der Gruppe den Wetterbericht sprechen.",
+            "gibt es ein Gespräch mit einer Moderatorin."
+          ],
+          "answer": 1,
+          "skill": "paraphrase"
+        },
+        {
+          "id": "H2-5",
+          "question": "Mit dem Besucherausweis …",
+          "options": [
+            "isst man in der Cafeteria günstiger.",
+            "darf man allein durch das Haus gehen.",
+            "kann man kostenlos parken."
+          ],
+          "answer": 0,
+          "skill": "paraphrase"
+        }
+      ]
+    },
+    "teil3": {
+      "setting": "Sie hören ein Gespräch zwischen zwei Freunden über den Kauf eines neuen Handys.",
+      "script": [
+        {
+          "speaker": "f2",
+          "text": "Hallo Felix! Was ist denn mit deinem Handy passiert? Das Display ist ja total kaputt."
+        },
+        {
+          "speaker": "m1",
+          "text": "Hallo Anna. Ja, es ist mir gestern auf dem Bahnsteig aus der Hand gefallen. Ich kann fast nichts mehr lesen. Ich glaube, ich kaufe mir jetzt endlich das neue Modell, das alle haben."
+        },
+        {
+          "speaker": "f2",
+          "text": "Das neueste? Das kostet doch fast neunhundert Euro! Hast du mal überlegt, ein gebrauchtes zu kaufen? Mein Bruder hat sich vor einem Jahr ein generalüberholtes Handy gekauft, für dreihundertfünfzig Euro."
+        },
+        {
+          "speaker": "m1",
+          "text": "Und? Funktioniert das noch?"
+        },
+        {
+          "speaker": "f2",
+          "text": "Ja, ohne Probleme. Es sieht aus wie neu, und er hat sogar ein Jahr Garantie bekommen. Wenn etwas kaputtgeht, tauscht der Laden es um."
+        },
+        {
+          "speaker": "m1",
+          "text": "Hm, ich hätte ehrlich gesagt Angst vor dem Akku. Bei gebrauchten Geräten ist der doch oft schon schwach."
+        },
+        {
+          "speaker": "f2",
+          "text": "Das habe ich auch gedacht. Aber in dem Laden wird der Akku vorher getauscht, wenn er nicht mehr gut ist. Das steht sogar auf der Rechnung."
+        },
+        {
+          "speaker": "m1",
+          "text": "Okay, das klingt vernünftig. Aber ich brauche auf jeden Fall eine gute Kamera. Ich filme ja ständig für meinen Kochkanal, und da muss das Bild einfach gut sein."
+        },
+        {
+          "speaker": "f2",
+          "text": "Die Kamera vom Modell aus dem letzten Jahr ist fast genauso gut. Der Unterschied fällt bei Videos kaum auf, das habe ich in einem Test gelesen."
+        },
+        {
+          "speaker": "m1",
+          "text": "Na gut. Und was mache ich mit meinem Vertrag? Ich zahle jeden Monat fünfundvierzig Euro, weil das Handy im Vertrag drin ist."
+        },
+        {
+          "speaker": "f2",
+          "text": "Wie lange läuft der noch?"
+        },
+        {
+          "speaker": "m1",
+          "text": "Noch acht Monate, glaube ich. Danach könnte ich kündigen."
+        },
+        {
+          "speaker": "f2",
+          "text": "Dann würde ich sofort kündigen, sobald das geht, und einen Tarif ohne Handy nehmen. Ich zahle nur zwölf Euro im Monat und habe mehr Datenvolumen als du."
+        },
+        {
+          "speaker": "m1",
+          "text": "Zwölf Euro? Das ist ja fast nichts. Weißt du was, ich mache es so: Zuerst frage ich im Laden, was eine Reparatur vom Display kostet. Wenn das unter hundertfünfzig Euro liegt, lasse ich es reparieren. Wenn nicht, kaufe ich ein gebrauchtes."
+        },
+        {
+          "speaker": "f2",
+          "text": "Gute Idee. Soll ich mitkommen? Der Laden in der Innenstadt hat samstags geöffnet."
+        },
+        {
+          "speaker": "m1",
+          "text": "Gern! Sagen wir um zehn?"
+        },
+        {
+          "speaker": "f2",
+          "text": "Um zehn habe ich noch Yoga. Elf Uhr würde mir besser passen, direkt vor dem Laden."
+        },
+        {
+          "speaker": "m1",
+          "text": "Okay, dann elf Uhr am Samstag. Und bis dahin muss ich eben mit dem kaputten Display leben."
+        }
+      ],
+      "items": [
+        {
+          "id": "H3-1",
+          "statement": "Das Display von Felix' Handy ist kaputt.",
+          "answer": true,
+          "skill": "detail"
+        },
+        {
+          "id": "H3-2",
+          "statement": "Felix möchte am liebsten das neueste Modell kaufen.",
+          "answer": true,
+          "skill": "detail"
+        },
+        {
+          "id": "H3-3",
+          "statement": "Annas Bruder hat Probleme mit seinem gebrauchten Handy.",
+          "answer": false,
+          "skill": "negation"
+        },
+        {
+          "id": "H3-4",
+          "statement": "Für ein gebrauchtes Handy bekommt man in dem Laden keine Garantie.",
+          "answer": false,
+          "skill": "negation"
+        },
+        {
+          "id": "H3-5",
+          "statement": "Felix braucht eine gute Kamera für seine Videos.",
+          "answer": true,
+          "skill": "paraphrase"
+        },
+        {
+          "id": "H3-6",
+          "statement": "Felix will zuerst herausfinden, was eine Reparatur kostet.",
+          "answer": true,
+          "skill": "inference"
+        },
+        {
+          "id": "H3-7",
+          "statement": "Anna und Felix treffen sich am Samstag um zehn Uhr.",
+          "answer": false,
+          "skill": "number-time"
+        }
+      ]
+    },
+    "teil4": {
+      "setting": "Sie hören eine Diskussion im Radio. Der Moderator spricht mit einer Informatikerin und einem Lehrer über das Thema „Künstliche Intelligenz im Alltag – brauchen wir mehr Regeln?“",
+      "speakers": {
+        "mod": "Moderator Jan Beckmann",
+        "a": "Dr. Sabine Roth (Informatikerin)",
+        "b": "Thomas Ebert (Lehrer)"
+      },
+      "voices": {
+        "mod": "m2",
+        "a": "f1",
+        "b": "m3"
+      },
+      "script": [
+        {
+          "speaker": "mod",
+          "text": "Guten Abend und herzlich willkommen zu „Netzgespräch“. Mein Name ist Jan Beckmann. Heute geht es um Künstliche Intelligenz, also um Programme, die Texte schreiben, Bilder erzeugen oder Fragen beantworten. Brauchen wir dafür mehr Regeln? Bei mir im Studio sind Dr. Sabine Roth, Informatikerin an der Technischen Universität, und Thomas Ebert, Lehrer an einem Gymnasium. Frau Roth, Sie forschen seit Jahren an diesen Programmen. Was können sie heute schon?"
+        },
+        {
+          "speaker": "a",
+          "text": "Guten Abend. Sehr viel, ehrlich gesagt. In der Medizin zum Beispiel helfen solche Programme Ärztinnen und Ärzten, Krankheiten auf Röntgenbildern früher zu erkennen. In Fabriken erkennen sie Fehler, bevor eine Maschine kaputtgeht. Und im Alltag übersetzen sie Texte in Sekunden. Ich finde es wichtig, dass wir nicht nur über Gefahren sprechen, sondern auch über den Nutzen."
+        },
+        {
+          "speaker": "mod",
+          "text": "Herr Ebert, Sie erleben das Thema jeden Tag in der Schule. Wie sieht es dort aus?"
+        },
+        {
+          "speaker": "b",
+          "text": "Also, in der Schule ist das im Moment ziemlich schwierig. Viele Schüler lassen ihre Hausaufgaben einfach von einem Programm schreiben. Ich bekomme Aufsätze, die perfekt klingen, und im Unterricht kann derselbe Schüler dann keinen einzigen Satz dazu sagen. Und die Programme machen auch Fehler. Neulich hat mir ein Schüler ein Buch als Quelle genannt, das gar nicht existiert. Das Programm hatte es einfach erfunden."
+        },
+        {
+          "speaker": "a",
+          "text": "Das stimmt, diese Fehler gibt es, und man muss darauf reagieren. Aber die Antwort kann doch nicht sein, dass wir die Technik aus der Schule verbannen. Die Schüler werden später in Berufen arbeiten, in denen diese Programme selbstverständlich sind. Wer den Umgang damit nicht lernt, der hat später einen Nachteil. Schulen sollten den Umgang mit KI im Unterricht üben, statt ihn zu verbieten."
+        },
+        {
+          "speaker": "b",
+          "text": "Da bin ich gar nicht so weit weg von Ihnen. Ich benutze die Programme ja selbst, zum Beispiel, wenn ich Arbeitsblätter vorbereite oder Übungen in drei Schwierigkeitsstufen brauche. Das spart mir jede Woche Stunden. Mein Problem ist ein anderes: Es gibt keine Regeln. Jeder Lehrer entscheidet allein, was erlaubt ist, und die Schüler wissen gar nicht mehr, was gilt."
+        },
+        {
+          "speaker": "mod",
+          "text": "Ich muss an dieser Stelle etwas gestehen. Ich habe letzte Woche versucht, den Anfang dieser Sendung von so einem Programm schreiben zu lassen. Das Ergebnis war korrekt, aber furchtbar langweilig. Frau Roth, welche Regeln bräuchten wir denn Ihrer Meinung nach?"
+        },
+        {
+          "speaker": "a",
+          "text": "Vor allem eine: Man muss immer erkennen können, ob ein Text oder ein Bild von einem Menschen oder von einer Maschine stammt. Eine Kennzeichnung, so wie bei Lebensmitteln. Wenn ich ein Video sehe, in dem ein Politiker etwas sagt, muss ich wissen, ob das echt ist. Diese Regel lässt sich einfach umsetzen, und sie würde sehr viel Vertrauen schaffen."
+        },
+        {
+          "speaker": "b",
+          "text": "Das würde uns in der Schule auch helfen. Ich warne meine Schüler ständig davor, alles zu glauben, was auf dem Bildschirm steht. Aber wenn das Programm selbst sagen würde: „Achtung, das habe ich erfunden“, wäre das ein großer Schritt."
+        },
+        {
+          "speaker": "mod",
+          "text": "Sind Sie beide denn optimistisch, was die Zukunft angeht?"
+        },
+        {
+          "speaker": "a",
+          "text": "Ja, allerdings nur, wenn wir die Regeln jetzt machen und nicht erst in zehn Jahren. Die Technik entwickelt sich sehr schnell, die Politik dagegen sehr langsam."
+        },
+        {
+          "speaker": "b",
+          "text": "Ich bin vorsichtig optimistisch. Die Jugendlichen sind klüger, als wir denken. Wenn man mit ihnen ehrlich über die Grenzen dieser Programme spricht, verstehen sie das. Aber man muss es eben tun."
+        },
+        {
+          "speaker": "mod",
+          "text": "Dann bleibt mir nur noch ein Geständnis: Bei mir zu Hause erklärt mir meine dreizehnjährige Tochter, wie diese Programme funktionieren, nicht umgekehrt. Vielen Dank, Frau Roth, vielen Dank, Herr Ebert, für dieses Gespräch."
+        }
+      ],
+      "items": [
+        {
+          "id": "H4-1",
+          "statement": "Viele Schüler lassen ihre Hausaufgaben von einem Programm erledigen.",
+          "answer": "b",
+          "skill": "matching"
+        },
+        {
+          "id": "H4-2",
+          "statement": "KI hilft in der Medizin, Krankheiten früher zu erkennen.",
+          "answer": "a",
+          "skill": "matching"
+        },
+        {
+          "id": "H4-3",
+          "statement": "Ich habe versucht, meine Sendung von einem Programm schreiben zu lassen.",
+          "answer": "mod",
+          "skill": "matching"
+        },
+        {
+          "id": "H4-4",
+          "statement": "Man sollte immer erkennen können, ob etwas von einer Maschine gemacht wurde.",
+          "answer": "a",
+          "skill": "matching"
+        },
+        {
+          "id": "H4-5",
+          "statement": "Ich benutze KI, um meinen Unterricht vorzubereiten.",
+          "answer": "b",
+          "skill": "matching"
+        },
+        {
+          "id": "H4-6",
+          "statement": "Die Programme erfinden manchmal Informationen, die es gar nicht gibt.",
+          "answer": "b",
+          "skill": "matching"
+        },
+        {
+          "id": "H4-7",
+          "statement": "Schulen sollten den Umgang mit KI üben statt ihn zu verbieten.",
+          "answer": "a",
+          "skill": "matching"
+        },
+        {
+          "id": "H4-8",
+          "statement": "Meine Tochter erklärt mir, wie die Programme funktionieren.",
+          "answer": "mod",
+          "skill": "matching"
+        }
+      ]
+    }
+  },
+  "schreiben": {
+    "aufgabe1": {
+      "minutes": 20,
+      "words": 80,
+      "situation": "Sie haben sich vor Kurzem ein neues Smartphone gekauft. Ihre Freundin Mara möchte sich auch ein neues Handy kaufen und fragt Sie in einer E-Mail um Rat. Schreiben Sie ihr eine E-Mail.",
+      "points": [
+        "Beschreiben Sie, welches Handy Sie gekauft haben und warum.",
+        "Erklären Sie, was Ihnen daran gut oder nicht so gut gefällt.",
+        "Machen Sie einen Vorschlag, wie Sie Mara beim Kauf helfen können."
+      ]
+    },
+    "aufgabe2": {
+      "minutes": 25,
+      "words": 80,
+      "situation": "Sie haben im Fernsehen eine Diskussionssendung zum Thema „Soziale Medien – Fluch oder Segen?“ gesehen. Im Online-Gästebuch der Sendung finden Sie folgende Meinung:",
+      "quote": "„Soziale Medien machen unsere Kinder dumm und einsam. Früher hat man sich draußen getroffen, heute starrt jeder nur noch auf sein Handy. Am besten schaltet man das Internet abends einfach ab.“ – Gerlinde, 63",
+      "instruction": "Schreiben Sie nun Ihre Meinung dazu (circa 80 Wörter)."
+    },
+    "aufgabe3": {
+      "minutes": 15,
+      "words": 40,
+      "situation": "Sie haben bei der Firma Netzwelt einen Internetanschluss bestellt. Der Techniker soll am Dienstag zwischen 14 und 16 Uhr kommen. Sie können an diesem Tag nicht zu Hause sein. Schreiben Sie an Herrn Kaiser vom Kundenservice: Entschuldigen Sie sich höflich, nennen Sie den Grund und bitten Sie um einen neuen Termin.",
+      "addressee": "Herr Kaiser"
+    }
+  },
+  "sprechen": {
+    "teil1": {
+      "situation": "Ihr Deutschkurs möchte ein kurzes Video über Ihre Stadt drehen und im Internet veröffentlichen. Sie und Ihr Partner / Ihre Partnerin sollen das Video planen. Planen Sie gemeinsam.",
+      "points": [
+        "Wann und wo wollen Sie drehen?",
+        "Wer filmt, wer spricht?",
+        "Welche Technik brauchen Sie?",
+        "Wo veröffentlichen Sie das Video?"
+      ],
+      "partner_cues": [
+        "Ich finde, wir sollten am Samstag drehen, dann ist das Wetter besser. Was meinst du?",
+        "Wollen wir in der Altstadt anfangen oder lieber am Fluss?",
+        "Ich kann gut filmen, aber ich rede nicht gern vor der Kamera. Könntest du sprechen?",
+        "Reicht ein Handy zum Filmen, oder brauchen wir eine richtige Kamera und ein Mikrofon?",
+        "Mein Cousin hat ein Stativ, das könnte ich ausleihen. Kannst du dich um den Schnitt kümmern?",
+        "Und wo laden wir das Video am Ende hoch? Auf die Seite der Sprachschule oder auf YouTube?"
+      ]
+    },
+    "teil2": {
+      "topics": [
+        "Thema A: Zeitung oder Internet – wo sollte man sich über Nachrichten informieren?",
+        "Thema B: Ist Online-Shopping besser als Einkaufen im Geschäft?"
+      ],
+      "folien": [
+        "Stellen Sie Ihr Thema vor. Erklären Sie den Inhalt und die Struktur Ihrer Präsentation.",
+        "Berichten Sie von Ihrer Situation oder einem Erlebnis im Zusammenhang mit dem Thema.",
+        "Berichten Sie, wie die Situation in Ihrem Heimatland ist, und geben Sie Beispiele.",
+        "Nennen Sie die Vor- und Nachteile und sagen Sie dazu Ihre Meinung. Geben Sie auch Beispiele.",
+        "Beenden Sie Ihre Präsentation und bedanken Sie sich bei den Zuhörern."
+      ]
+    },
+    "teil3": {
+      "questions": [
+        "Sie haben gesagt, dass Nachrichten im Internet schneller sind. Sind sie auch genauso zuverlässig?",
+        "Wie prüfen Sie, ob eine Nachricht im Internet wahr ist?",
+        "Lesen junge Leute in Ihrem Heimatland noch Zeitung? Warum oder warum nicht?"
+      ],
+      "questions_b": [
+        "Was haben Sie zuletzt online gekauft, und waren Sie zufrieden?",
+        "Glauben Sie, dass es in zwanzig Jahren noch Geschäfte in der Innenstadt gibt?",
+        "Welche Nachteile hat Online-Shopping für die Umwelt?"
+      ]
+    }
+  }
+}

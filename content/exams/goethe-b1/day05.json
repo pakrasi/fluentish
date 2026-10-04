@@ -1,0 +1,254 @@
+{
+  "day": 5,
+  "topic": "Schule, Ausbildung und Lernen",
+  "lesen": {
+    "teil1": {
+      "title": "Mit 35 zurück auf die Schulbank",
+      "source": "Blog",
+      "text": "Als ich sechzehn war, habe ich die Schule nach der zehnten Klasse verlassen. Ich wollte Geld verdienen, nicht lernen. Ich habe eine Ausbildung als Verkäuferin gemacht und fast zwanzig Jahre in einem Elektromarkt gearbeitet. Es war okay. Aber irgendwann habe ich gemerkt, dass ich mehr will.\n\nVor zwei Jahren habe ich mich am Abendgymnasium angemeldet. Dort kann man das Abitur nachholen, während man tagsüber arbeitet. Der Unterricht findet von Montag bis Freitag von 17 Uhr 30 bis 21 Uhr statt. Ich habe deshalb meine Stelle auf 30 Stunden reduziert, sonst hätte ich es nicht geschafft.\n\nDie erste Zeit war hart. Ich saß neben Leuten, die zehn Jahre jünger waren als ich, und in Mathe habe ich am Anfang fast nichts verstanden. Mein Lehrer hat mir dann eine App empfohlen, mit der man Aufgaben üben kann. Jeden Morgen im Bus habe ich eine halbe Stunde gerechnet. Nach drei Monaten hatte ich die erste Drei, nach einem Jahr die erste Eins.\n\nMeine Familie hat unterschiedlich reagiert. Mein Mann hat mich von Anfang an unterstützt und kocht jetzt an vier Abenden pro Woche. Meine Mutter dagegen hat gefragt, wozu ich das überhaupt brauche. „Du hast doch einen Job“, hat sie gesagt. Inzwischen ist sie stolz auf mich, das weiß ich, auch wenn sie es nicht sagt.\n\nIm nächsten Frühjahr sind die Prüfungen. Danach möchte ich Soziale Arbeit studieren, an der Fachhochschule, drei Jahre lang. Ich werde über vierzig sein, wenn ich fertig bin. Na und? Wer etwas ändern will, der sollte nicht warten, bis es zu spät ist. Das Einzige, was ich bereue, ist, dass ich nicht früher angefangen habe.",
+      "items": [
+        {"id": "L1-1", "statement": "Die Autorin hat nach der Schule zuerst studiert.", "answer": false, "skill": "detail"},
+        {"id": "L1-2", "statement": "Die Autorin arbeitet jetzt weniger Stunden als früher.", "answer": true, "skill": "paraphrase"},
+        {"id": "L1-3", "statement": "Die Autorin übt Mathematik mit einer App.", "answer": true, "skill": "detail"},
+        {"id": "L1-4", "statement": "Ihr Mann übernimmt an mehreren Abenden das Kochen.", "answer": true, "skill": "number-time"},
+        {"id": "L1-5", "statement": "Ihre Mutter fand die Entscheidung von Anfang an gut.", "answer": false, "skill": "inference"},
+        {"id": "L1-6", "statement": "Die Autorin hat das Abitur schon bestanden.", "answer": false, "skill": "number-time"}
+      ]
+    },
+    "teil2": {
+      "texts": [
+        {
+          "title": "Handyverbot an Schulen – die erste Bilanz",
+          "source": "Zeitung",
+          "text": "Seit einem Jahr gilt an allen Schulen in Hessen ein Handyverbot: Smartphones müssen den ganzen Schultag ausgeschaltet in der Tasche bleiben, auch in den Pausen. Nur in der Oberstufe dürfen Lehrkräfte das Handy im Unterricht erlauben, wenn es für eine Aufgabe gebraucht wird. Jetzt hat das Kultusministerium eine erste Bilanz gezogen.\n\nDas Ergebnis ist überwiegend positiv. Zwei Drittel der Schulleitungen berichten, dass die Schüler in den Pausen wieder mehr miteinander reden und spielen. Auch Streit über Fotos oder Nachrichten, die während der Schulzeit verschickt wurden, sei seltener geworden. „Früher haben in der Pause alle auf ihr Handy gestarrt“, sagt Schulleiterin Beate Hofmann aus Kassel. „Jetzt ist es auf dem Schulhof wieder laut, und das ist gut so.“\n\nAllerdings gibt es auch Kritik. Viele Schüler finden es ungerecht, dass sie ihre Eltern nicht erreichen können, wenn zum Beispiel der Unterricht ausfällt. Und einige Lehrer beklagen, dass sie viel Zeit mit Kontrollen verbringen. Elternvertreter fordern deshalb, dass Schüler das Handy in der Mittagspause kurz benutzen dürfen. Das Ministerium will darüber im Herbst entscheiden. Fest steht schon jetzt: Ganz abgeschafft wird das Verbot nicht.",
+          "items": [
+            {"id": "L2-1", "question": "An den Schulen in Hessen …", "options": ["dürfen Handys in den Pausen benutzt werden.", "müssen die Handys den ganzen Schultag ausgeschaltet bleiben.", "sind Handys im Unterricht der Oberstufe immer verboten."], "answer": 1, "skill": "detail"},
+            {"id": "L2-2", "question": "Frau Hofmann findet es gut, dass …", "options": ["es auf dem Schulhof ruhiger geworden ist.", "die Schüler in der Pause auf das Handy schauen.", "die Schüler in der Pause wieder mehr miteinander reden."], "answer": 2, "skill": "attitude"},
+            {"id": "L2-3", "question": "Das Ministerium …", "options": ["will im Herbst über eine Ausnahme in der Mittagspause entscheiden.", "will das Verbot im Herbst ganz abschaffen.", "hat den Eltern verboten, in der Schule anzurufen."], "answer": 0, "skill": "detail"}
+          ]
+        },
+        {
+          "title": "Lieber in den Betrieb als an die Uni",
+          "source": "Zeitschrift",
+          "text": "Jahrelang galt: Wer Abitur hat, studiert. Doch dieser Trend ändert sich. Im vergangenen Jahr haben 27 Prozent der Abiturienten in Deutschland eine Ausbildung begonnen statt eines Studiums, fünf Prozentpunkte mehr als vor zehn Jahren. Besonders beliebt sind Berufe im Handwerk und in der IT.\n\nEiner von ihnen ist Leon Baumann, 20, aus Augsburg. Nach dem Abitur hat er zwei Semester Maschinenbau studiert und dann abgebrochen. „Ich saß nur in Vorlesungen und habe Formeln gelernt. Ich wollte etwas mit den Händen machen“, erzählt er. Heute ist er im zweiten Lehrjahr bei einem Betrieb, der Solaranlagen installiert. Er verdient 1050 Euro im Monat und hat nach der Ausbildung gute Chancen, übernommen zu werden. Später möchte er den Meister machen und vielleicht einen eigenen Betrieb gründen.\n\nDie Betriebe freuen sich über die Entwicklung, denn seit Jahren fehlen ihnen Auszubildende. Viele bieten Abiturienten deshalb besondere Programme an: eine kürzere Ausbildung von zwei statt drei Jahren oder eine Kombination aus Ausbildung und Studium. Berufsberaterin Ines Walter warnt jedoch davor, sich zu früh festzulegen: „Wer unsicher ist, sollte vorher ein Praktikum machen. Zwei Wochen im Betrieb zeigen mehr als zehn Broschüren.“",
+          "items": [
+            {"id": "L2-4", "question": "Der Anteil der Abiturienten, die eine Ausbildung machen, …", "options": ["ist in den letzten zehn Jahren gestiegen.", "liegt bei fünf Prozent.", "ist kleiner geworden."], "answer": 0, "skill": "number-time"},
+            {"id": "L2-5", "question": "Leon Baumann …", "options": ["hat sein Studium abgeschlossen.", "hat das Studium abgebrochen, weil er praktisch arbeiten wollte.", "hat schon einen eigenen Betrieb."], "answer": 1, "skill": "paraphrase"},
+            {"id": "L2-6", "question": "Frau Walter empfiehlt, …", "options": ["sich schnell für einen Beruf zu entscheiden.", "möglichst viele Broschüren zu lesen.", "vor der Entscheidung ein Praktikum zu machen."], "answer": 2, "skill": "paraphrase"}
+          ]
+        }
+      ]
+    },
+    "teil3": {
+      "intro": "Einige Personen aus Ihrem Deutschkurs suchen Angebote rund um Schule, Ausbildung und Lernen. Lesen Sie die Situationen 1–7 und die Anzeigen A–J. Welche Anzeige passt zu welcher Situation? Eine Anzeige kann nur einmal gewählt werden. Für eine Situation gibt es keine passende Anzeige – markieren Sie dort 0.",
+      "situations": [
+        {"id": "L3-1", "text": "Amir (14) hat Probleme in Mathe und braucht schnell Hilfe vor der nächsten Klassenarbeit.", "answer": "B", "skill": "matching"},
+        {"id": "L3-2", "text": "Frau Lindqvist arbeitet tagsüber und möchte abends ihr Deutsch verbessern. Sie hat gerade B1 bestanden.", "answer": "E", "skill": "matching"},
+        {"id": "L3-3", "text": "Herr Grabowski ist 68 und möchte lernen, wie man am Computer E-Mails schreibt.", "answer": "G", "skill": "matching"},
+        {"id": "L3-4", "text": "Selin sucht einen ruhigen Ort zum Lernen, weil es in ihrer WG abends zu laut ist.", "answer": "I", "skill": "matching"},
+        {"id": "L3-5", "text": "Tomás hat Abitur und möchte gleichzeitig studieren und in einer Firma arbeiten.", "answer": "D", "skill": "matching"},
+        {"id": "L3-6", "text": "Julia möchte, dass ihre fünfjährige Tochter spielerisch Englisch lernt.", "answer": null, "skill": "matching"},
+        {"id": "L3-7", "text": "Herr Öz möchte einen Beruf in der Pflege lernen, hat aber noch keine Erfahrung in diesem Bereich.", "answer": "A", "skill": "matching"}
+      ],
+      "ads": [
+        {"letter": "A", "title": "Ausbildung zur Pflegefachkraft", "text": "Das Klinikum Süd bildet aus! Start 1. September, drei Jahre, Vergütung ab 1.230 € im Monat. Voraussetzung: Realschulabschluss oder gleichwertiger Abschluss, keine Vorkenntnisse nötig. Bewerbung online unter www.klinikum-sued.de/ausbildung"},
+        {"letter": "B", "title": "Nachhilfe Mathematik, Klasse 5–13", "text": "Lehramtsstudent gibt Einzelnachhilfe bei Ihnen zu Hause oder online. Gezielte Vorbereitung auf Klassenarbeiten, auch kurzfristig. 20 € pro Stunde, erste Stunde kostenlos. Tel. 0176 / 23 45 678."},
+        {"letter": "C", "title": "Musikschule Klangwerk", "text": "Gitarre, Klavier, Geige, Schlagzeug – für Kinder ab 5 Jahren und Erwachsene. Einzel- und Gruppenunterricht, Instrumente können geliehen werden. Schnupperstunde gratis. Anmeldung: info@klangwerk-musik.de"},
+        {"letter": "D", "title": "Duales Studium Wirtschaftsinformatik", "text": "Studieren und Geld verdienen: drei Monate Hochschule, drei Monate Betrieb, im Wechsel. Abschluss Bachelor nach drei Jahren, Gehalt ab 1.100 € monatlich. Voraussetzung: Abitur. Bewerbung bis 31. März an die TechNord GmbH."},
+        {"letter": "E", "title": "Deutsch B2 – Abendkurs für Berufstätige", "text": "Für Teilnehmer mit abgeschlossenem B1: Montag und Mittwoch 18:30–20:45 Uhr, 12 Wochen, maximal 14 Personen. Prüfungsvorbereitung inklusive. 380 €, Ratenzahlung möglich. Sprachinstitut Lingua, Marktplatz 7."},
+        {"letter": "F", "title": "Erste-Hilfe-Kurs", "text": "Für Führerschein, Beruf oder einfach für den Notfall: neun Stunden an einem Samstag, 9–18 Uhr. Die Bescheinigung wird überall anerkannt. 55 €. Jeden Samstag beim Roten Kreuz, Anmeldung online."},
+        {"letter": "G", "title": "Computer für Anfänger 60+", "text": "E-Mails schreiben, im Internet suchen, Fotos verschicken – in kleinen Schritten und ohne Stress. Acht Vormittage, dienstags 10–12 Uhr, Seniorentreff Am Park. 40 €, ein eigener Laptop ist nicht nötig."},
+        {"letter": "H", "title": "Englisch für Kinder ab 8 Jahren", "text": "Spielerisch Englisch lernen mit Liedern, Spielen und Geschichten. Gruppen für 8- bis 10-Jährige und 11- bis 13-Jährige, freitags 15 Uhr. Muttersprachliche Lehrerin. 45 € im Monat. Lernstudio Kunterbunt."},
+        {"letter": "I", "title": "Lernräume in der Stadtbibliothek", "text": "Ruhige Arbeitsplätze mit Steckdose und WLAN, täglich bis 24 Uhr geöffnet, auch am Wochenende. Reservierung nicht nötig, Bibliotheksausweis genügt (kostenlos für Studierende). Gruppenräume auf Anfrage."},
+        {"letter": "J", "title": "Sprachtandem Deutsch – Spanisch", "text": "Ich (Anna, 26, Muttersprache Deutsch) suche eine spanischsprachige Person zum Sprachentausch: eine Stunde Deutsch, eine Stunde Spanisch. Einmal pro Woche, kostenlos, im Café oder online. tandem-anna@web.de"}
+      ]
+    },
+    "teil4": {
+      "question": "Sollten Noten in der Grundschule abgeschafft werden?",
+      "comments": [
+        {"id": "L4-1", "author": "Vera, Lübeck", "text": "Ich unterrichte seit 20 Jahren an einer Grundschule. Eine Vier auf dem Zeugnis sagt einem Achtjährigen nichts, außer: Du bist schlecht. Ein Gespräch mit den Eltern und ein Text darüber, was das Kind schon kann und was es üben soll, helfen viel mehr.", "answer": true, "skill": "attitude"},
+        {"id": "L4-2", "author": "Roland, Chemnitz", "text": "Das Leben besteht aus Bewertungen, ob wir wollen oder nicht. Kinder müssen früh lernen, damit umzugehen. Wer erst mit zwölf die erste Note bekommt, erlebt einen Schock. Noten gehören von Anfang an dazu.", "answer": false, "skill": "attitude"},
+        {"id": "L4-3", "author": "Nina, Mainz", "text": "Mein Sohn hatte in der dritten Klasse eine Fünf in Deutsch und wollte danach wochenlang nicht mehr lesen. Zum Glück hatte er dann eine Lehrerin, die statt Noten kleine Ziele mit ihm vereinbart hat. Heute liest er jeden Abend freiwillig. Man kann sich denken, was ich von Noten in diesem Alter halte.", "answer": true, "skill": "inference"},
+        {"id": "L4-4", "author": "Paul, Bremen", "text": "Ohne Noten weiß doch niemand, wo das Kind steht. Die Berichte, die manche Schulen stattdessen schreiben, sind lang und unklar. Eine Zwei ist eine Zwei, das versteht jeder, auch Eltern, die nicht gut Deutsch sprechen.", "answer": false, "skill": "attitude"},
+        {"id": "L4-5", "author": "Helga, Passau", "text": "Ich verstehe die Sorge, dass Noten Kinder unter Druck setzen. Aber der Druck kommt nicht von der Note, sondern von Eltern, die eine Eins erwarten. Wenn man Noten abschafft, ändert sich daran gar nichts. Also kann man sie auch behalten.", "answer": false, "skill": "inference"},
+        {"id": "L4-6", "author": "Cem, Duisburg", "text": "Ich war als Kind ein schlechter Schüler, und die Noten haben mir das jeden Tag gezeigt. Erst in der Berufsschule habe ich gemerkt, dass ich etwas kann. Kinder brauchen in den ersten Jahren Mut, keine Zahlen.", "answer": true, "skill": "attitude"},
+        {"id": "L4-7", "author": "Annika, Erfurt", "text": "In Finnland gibt es in den ersten Klassen keine Noten, und die Schüler dort gehören zu den besten in Europa. Das zeigt doch, dass es ohne geht. Noten sind bequem für die Schule, aber nicht gut für die Kinder.", "answer": true, "skill": "attitude"}
+      ]
+    },
+    "teil5": {
+      "title": "Kursordnung – Sprachinstitut Lingua",
+      "text": "§ 1 Anmeldung und Zahlung\nDie Anmeldung erfolgt online oder persönlich im Sekretariat. Die Kursgebühr ist spätestens eine Woche vor Kursbeginn zu zahlen. Bei Kursen ab 300 € ist eine Zahlung in drei Raten möglich. Vor der Anmeldung zu einem Kurs ab Niveau A2 ist ein kostenloser Einstufungstest Pflicht.\n\n§ 2 Rücktritt\nBis 14 Tage vor Kursbeginn kann die Anmeldung kostenlos storniert werden. Bei einer späteren Absage berechnen wir 50 % der Kursgebühr. Nach Kursbeginn ist keine Erstattung mehr möglich. Wer wegen Krankheit ausfällt und ein ärztliches Attest vorlegt, erhält einen Gutschein für einen späteren Kurs.\n\n§ 3 Anwesenheit\nEine Teilnahmebescheinigung erhält nur, wer mindestens 80 % der Unterrichtsstunden besucht hat. Wer mehr als dreimal unentschuldigt fehlt, verliert den Anspruch auf die Bescheinigung. Fehlzeiten sind vorher per E-Mail an die Kursleitung zu melden.\n\n§ 4 Prüfungen\nDie Anmeldung zur Prüfung erfolgt getrennt von der Kursanmeldung, spätestens vier Wochen vor dem Prüfungstermin. Die Prüfungsgebühr ist nicht in der Kursgebühr enthalten. Die Ergebnisse stehen etwa sechs Wochen nach der Prüfung online zur Verfügung. Das Zertifikat ist persönlich gegen Vorlage eines Ausweises im Sekretariat abzuholen; ein Versand ist nicht möglich.\n\n§ 5 Unterricht\nDer Unterricht findet ausschließlich auf Deutsch statt. Handys sind während des Unterrichts stumm zu schalten. Arbeitsblätter sind im Preis enthalten, das Lehrbuch ist selbst zu kaufen. Ein Wechsel in einen anderen Kurs ist innerhalb der ersten zwei Wochen möglich, sofern dort ein Platz frei ist.",
+      "items": [
+        {"id": "L5-1", "question": "Wer den Kurs zehn Tage vor Beginn absagt, …", "options": ["bekommt das ganze Geld zurück.", "muss die Hälfte der Kursgebühr bezahlen.", "bekommt einen Gutschein."], "answer": 1, "skill": "number-time"},
+        {"id": "L5-2", "question": "Eine Teilnahmebescheinigung bekommt, …", "options": ["wer mindestens 80 Prozent der Stunden besucht hat.", "wer die Prüfung bestanden hat.", "wer keine einzige Stunde gefehlt hat."], "answer": 0, "skill": "detail"},
+        {"id": "L5-3", "question": "Die Prüfungsgebühr …", "options": ["ist in der Kursgebühr enthalten.", "wird sechs Wochen nach der Prüfung bezahlt.", "muss man zusätzlich zur Kursgebühr bezahlen."], "answer": 2, "skill": "negation"},
+        {"id": "L5-4", "question": "Das Zertifikat …", "options": ["wird per Post nach Hause geschickt.", "muss man persönlich abholen.", "kann man online herunterladen."], "answer": 1, "skill": "detail"}
+      ]
+    }
+  },
+  "hoeren": {
+    "teil1": {
+      "texts": [
+        {
+          "id": "H1-1", "kind": "Anrufbeantworter",
+          "script": [{"speaker": "f1", "text": "Guten Tag, Frau Petersen, hier ist das Sekretariat der Goethe-Grundschule. Ich rufe wegen des Elternabends der Klasse 3b an. Der war ja für Dienstag, den 14., um 19 Uhr geplant. Leider ist die Klassenlehrerin, Frau Mahler, an dem Tag auf einer Fortbildung. Der Elternabend findet deshalb erst am Donnerstag, dem 16., statt, wieder um 19 Uhr, aber nicht im Klassenzimmer, sondern in der Aula, weil dort auch der Schulleiter kurz die neue Nachmittagsbetreuung vorstellen möchte. Bitte bringen Sie den Anmeldebogen für die Klassenfahrt mit, den Ihre Tochter letzte Woche bekommen hat. Bei Fragen erreichen Sie uns täglich von 7 Uhr 30 bis 13 Uhr. Auf Wiederhören."}],
+          "items": [
+            {"id": "H1-1a", "type": "rf", "statement": "Der Elternabend findet am Dienstag statt.", "answer": false, "skill": "number-time"},
+            {"id": "H1-1b", "type": "mc", "question": "Der Elternabend …", "options": ["findet im Klassenzimmer statt.", "findet in der Aula statt.", "fällt ganz aus."], "answer": 1, "skill": "detail"}
+          ]
+        },
+        {
+          "id": "H1-2", "kind": "Radio",
+          "script": [{"speaker": "m3", "text": "Sie suchen einen Ausbildungsplatz oder wissen noch nicht, was Sie nach der Schule machen sollen? Dann kommen Sie am Freitag und Samstag zur Ausbildungsmesse „Deine Zukunft“ in der Messehalle 2. Über 120 Betriebe, Berufsschulen und Hochschulen aus der Region stellen sich vor. Am Freitag ist die Messe von 9 bis 15 Uhr nur für Schulklassen reserviert, am Samstag von 10 bis 17 Uhr ist sie für alle geöffnet. Der Eintritt ist frei. Neu in diesem Jahr: der Bewerbungs-Check. Bringen Sie Ihre Bewerbungsmappe mit, Experten schauen sie kostenlos durch. Dafür brauchen Sie keinen Termin, kommen Sie einfach zum Stand 45. Und wer mit Bus oder Bahn anreist, zeigt an der Garderobe sein Ticket und bekommt ein Getränk gratis."}],
+          "items": [
+            {"id": "H1-2a", "type": "rf", "statement": "Am Freitag können alle Interessierten die Messe besuchen.", "answer": false, "skill": "negation"},
+            {"id": "H1-2b", "type": "mc", "question": "Wer seine Bewerbung prüfen lassen will, …", "options": ["geht ohne Termin zum Stand 45.", "muss vorher einen Termin ausmachen.", "zahlt eine kleine Gebühr."], "answer": 0, "skill": "paraphrase"}
+          ]
+        },
+        {
+          "id": "H1-3", "kind": "Anrufbeantworter",
+          "script": [{"speaker": "at_m", "text": "Hallo Marie, hier ist Tobias. Du, wegen unserer Lerngruppe für die Statistik-Prüfung: Wir hatten ja gesagt, wir treffen uns morgen um zehn in der Bibliothek. Aber die Gruppenräume sind alle belegt, ich habe gerade nachgeschaut. Julia hat vorgeschlagen, dass wir uns stattdessen bei ihr treffen, sie wohnt gleich neben der Uni, Bergstraße 4. Gleiche Zeit, also zehn Uhr. Bring bitte die alten Prüfungen mit, die du vom Professor bekommen hast, die will Julia unbedingt sehen. Und könntest du für alle Kaffee mitbringen? Julia hat keine Kaffeemaschine. Ich bringe Kuchen. Ach ja, und sag bitte Leon Bescheid, den erreiche ich nicht. Bis morgen!"}],
+          "items": [
+            {"id": "H1-3a", "type": "rf", "statement": "Die Lerngruppe trifft sich morgen in der Bibliothek.", "answer": false, "skill": "detail"},
+            {"id": "H1-3b", "type": "mc", "question": "Marie soll …", "options": ["Kuchen mitbringen.", "die alten Prüfungen mitbringen.", "einen Gruppenraum reservieren."], "answer": 1, "skill": "detail"}
+          ]
+        },
+        {
+          "id": "H1-4", "kind": "Durchsage",
+          "script": [{"speaker": "f3", "text": "Liebe Studierende, eine Durchsage der Universitätsbibliothek: Wegen einer Störung an der Heizung schließt die Bibliothek heute ausnahmsweise schon um 18 Uhr statt um 22 Uhr. Bitte bringen Sie ausgeliehene Bücher bis dahin zurück oder verlängern Sie die Leihfrist online, das geht bis Mitternacht ohne Gebühr. Der Lesesaal im zweiten Stock ist bereits jetzt gesperrt, bitte nutzen Sie die Arbeitsplätze im Erdgeschoss. Ab morgen früh um 8 Uhr sind wir wieder ganz normal für Sie da. Und noch ein Hinweis: Die Einführung in die Literaturrecherche für Erstsemester findet heute trotzdem statt, um 16 Uhr im Schulungsraum, eine Anmeldung ist nicht erforderlich. Vielen Dank."}],
+          "items": [
+            {"id": "H1-4a", "type": "rf", "statement": "Die Bibliothek schließt heute vier Stunden früher als sonst.", "answer": true, "skill": "number-time"},
+            {"id": "H1-4b", "type": "mc", "question": "Die Einführung für Erstsemester …", "options": ["fällt heute aus.", "findet morgen um 8 Uhr statt.", "findet heute wie geplant statt."], "answer": 2, "skill": "detail"}
+          ]
+        },
+        {
+          "id": "H1-5", "kind": "Werbung",
+          "script": [{"speaker": "m2", "text": "Prüfung in drei Wochen und noch nichts gelernt? Mit Lernfix schaffst du das! Unsere App erklärt dir Mathe, Physik und Sprachen in kurzen Videos, jedes höchstens zehn Minuten lang. Danach übst du mit Aufgaben, die genau zu deinem Niveau passen. Über 400.000 Schüler und Studierende lernen schon mit Lernfix. Und das Beste: Die ersten 30 Tage sind kostenlos, danach zahlst du nur 6,99 Euro im Monat, jederzeit kündbar. Lehrer und Eltern können sogar ein Familienpaket für bis zu vier Personen buchen. Lade die App jetzt herunter, in jedem App-Store. Lernfix – Lernen, das Spaß macht."}],
+          "items": [
+            {"id": "H1-5a", "type": "rf", "statement": "Die Lernvideos dauern höchstens zehn Minuten.", "answer": true, "skill": "detail"},
+            {"id": "H1-5b", "type": "mc", "question": "Die App …", "options": ["ist einen Monat lang kostenlos.", "kostet 6,99 Euro pro Jahr.", "ist nur für Lehrer und Eltern."], "answer": 0, "skill": "number-time"}
+          ]
+        }
+      ]
+    },
+    "teil2": {
+      "setting": "Sie beginnen Ihre Ausbildung in einem großen Betrieb. Der Ausbildungsleiter begrüßt die neuen Auszubildenden.",
+      "script": [{"speaker": "m2", "text": "Guten Morgen und herzlich willkommen bei der Firma Möbel Hansen! Ich bin Ralf Brinkmann, Ihr Ausbildungsleiter, und ich freue mich, dass Sie alle da sind – achtzehn neue Auszubildende, so viele hatten wir noch nie. Ich erkläre Ihnen jetzt kurz, wie die nächsten Wochen aussehen. Heute und morgen sind Sie hier im Schulungsraum. Sie bekommen Ihre Arbeitskleidung, wir machen die Sicherheitsunterweisung, und Sie lernen die Abteilungen kennen. Ab Mittwoch arbeiten Sie dann in Ihren Abteilungen mit. Die Arbeitszeit ist von 7 bis 15 Uhr 30, mit einer halben Stunde Mittagspause. Für die Auszubildenden unter 18 gilt das Jugendarbeitsschutzgesetz, Sie hören also spätestens um 15 Uhr auf. Die Berufsschule ist an zwei Tagen pro Woche, aber Achtung: Im ersten Lehrjahr sind Sie am Montag und Dienstag in der Schule, im zweiten Lehrjahr wechselt das auf Donnerstag und Freitag. In der Schule gilt: Sie sind bei uns angestellt, also gelten auch dort unsere Regeln. Wer in der Berufsschule fehlt, ohne krank zu sein, bekommt eine Abmahnung. Wenn Sie krank sind, rufen Sie bitte bis 7 Uhr 30 hier an, nicht bei Ihren Kollegen, sondern direkt bei mir oder im Sekretariat. Eine Krankmeldung vom Arzt brauchen wir ab dem dritten Tag. Ihre Ausbildungsvergütung wird immer am 25. eines Monats überwiesen, im ersten Jahr sind das 1.050 Euro. Jeder von Ihnen bekommt einen Paten oder eine Patin, das ist ein Auszubildender aus dem dritten Lehrjahr, der Ihnen bei allen Fragen hilft, auch bei ganz dummen Fragen – es gibt keine dummen Fragen. Die Paten lernen Sie heute nach der Mittagspause kennen. Noch ein wichtiger Punkt: Handys sind in der Produktion aus Sicherheitsgründen verboten, nicht wegen der Ablenkung, sondern weil die Maschinen gefährlich sind. In den Pausen und im Büro dürfen Sie es natürlich benutzen. In drei Monaten, also Anfang Dezember, gibt es ein erstes Gespräch mit mir, in dem wir gemeinsam schauen, wie es läuft. Bis dahin: Fragen Sie viel, machen Sie Fehler, aber machen Sie jeden Fehler nur einmal. So, jetzt gehen wir erst mal zur Kleiderausgabe."}],
+      "items": [
+        {"id": "H2-1", "question": "Die neuen Auszubildenden arbeiten ab … in den Abteilungen.", "options": ["heute", "Mittwoch", "nächster Woche"], "answer": 1, "skill": "number-time"},
+        {"id": "H2-2", "question": "Im zweiten Lehrjahr ist die Berufsschule …", "options": ["am Donnerstag und Freitag.", "am Montag und Dienstag.", "an drei Tagen pro Woche."], "answer": 0, "skill": "number-time"},
+        {"id": "H2-3", "question": "Wer krank ist, …", "options": ["informiert seine Kollegen.", "braucht sofort eine Krankmeldung vom Arzt.", "ruft bis 7 Uhr 30 beim Ausbildungsleiter oder im Sekretariat an."], "answer": 2, "skill": "detail"},
+        {"id": "H2-4", "question": "Die Paten …", "options": ["sind Auszubildende aus dem dritten Lehrjahr.", "sind die Leiter der Abteilungen.", "lernt man erst in drei Monaten kennen."], "answer": 0, "skill": "detail"},
+        {"id": "H2-5", "question": "In der Produktion sind Handys verboten, …", "options": ["weil sie von der Arbeit ablenken.", "weil die Maschinen gefährlich sind.", "außer in der Mittagspause."], "answer": 1, "skill": "paraphrase"}
+      ]
+    },
+    "teil3": {
+      "setting": "Sie hören ein Gespräch zwischen Deniz und seiner älteren Schwester Elif.",
+      "script": [
+        {"speaker": "m1", "text": "Elif, hast du mal fünf Minuten? Ich muss mit dir über etwas reden."},
+        {"speaker": "f2", "text": "Klar, was ist los? Du siehst gestresst aus."},
+        {"speaker": "m1", "text": "Bin ich auch. In zwei Wochen ist die Bewerbungsfrist für die Uni, und ich weiß immer noch nicht, ob ich überhaupt studieren will."},
+        {"speaker": "f2", "text": "Ich dachte, das wäre klar? Mama redet seit Jahren davon, dass du Medizin studierst."},
+        {"speaker": "m1", "text": "Mama, genau. Nicht ich. Mein Abi-Schnitt reicht sowieso nicht für Medizin, ich habe 2,4. Und ehrlich gesagt will ich nicht noch sechs Jahre nur lernen. Ich hatte im Sommer das Praktikum in der Physiotherapie-Praxis, das hat mir richtig Spaß gemacht."},
+        {"speaker": "f2", "text": "Physiotherapie, ja, das ist eine Ausbildung, oder? Drei Jahre?"},
+        {"speaker": "m1", "text": "Genau, drei Jahre an einer Berufsfachschule. Das Problem ist, dass man in der Ausbildung fast nichts verdient, an manchen Schulen zahlt man sogar noch Schulgeld. Bei der Schule, die ich mir angeschaut habe, sind es 180 Euro im Monat."},
+        {"speaker": "f2", "text": "Hm, das ist schon viel. Aber es gibt doch inzwischen auch Studiengänge für Physiotherapie, an der Fachhochschule. Da hast du am Ende einen Bachelor und kannst später leichter etwas anderes machen, zum Beispiel in die Forschung gehen oder eine eigene Praxis leiten."},
+        {"speaker": "m1", "text": "Das habe ich gesehen. Aber das dauert vier Jahre statt drei, und der Studiengang ist in Bochum, ich müsste ausziehen."},
+        {"speaker": "f2", "text": "Und? Ich bin mit 19 ausgezogen, das war das Beste, was mir passieren konnte. Du bist 20."},
+        {"speaker": "m1", "text": "Ich weiß. Aber die Miete in Bochum, ohne Gehalt …"},
+        {"speaker": "f2", "text": "Dafür gibt es BAföG. Ich habe damals 500 Euro im Monat bekommen, und die Hälfte muss man erst Jahre später zurückzahlen. Frag beim Studentenwerk nach, die rechnen dir das aus."},
+        {"speaker": "m1", "text": "Okay. Und was sage ich Mama?"},
+        {"speaker": "f2", "text": "Die Wahrheit. Dass du nicht Medizin studierst, weil du es nicht willst, nicht weil du es nicht kannst. Sie wird eine Woche beleidigt sein und dann stolz. Kennst du sie nicht?"},
+        {"speaker": "m1", "text": "Doch, schon. Würdest du mitkommen, wenn ich es ihr sage?"},
+        {"speaker": "f2", "text": "Nein. Das machst du allein, du bist erwachsen. Aber ich koche danach dein Lieblingsessen, versprochen."},
+        {"speaker": "m1", "text": "Na gut. Dann bewerbe ich mich in Bochum und zur Sicherheit auch bei der Berufsfachschule hier. Und im September sehe ich, was klappt."},
+        {"speaker": "f2", "text": "Genau so. Und Deniz – egal, was Mama sagt: Ich finde, du triffst die richtige Entscheidung."}
+      ],
+      "items": [
+        {"id": "H3-1", "statement": "Deniz hat sich schon für ein Medizinstudium beworben.", "answer": false, "skill": "detail"},
+        {"id": "H3-2", "statement": "Das Praktikum in der Physiotherapie hat Deniz gut gefallen.", "answer": true, "skill": "attitude"},
+        {"id": "H3-3", "statement": "An der Berufsfachschule müsste Deniz jeden Monat Schulgeld bezahlen.", "answer": true, "skill": "number-time"},
+        {"id": "H3-4", "statement": "Das Studium in Bochum dauert kürzer als die Ausbildung.", "answer": false, "skill": "number-time"},
+        {"id": "H3-5", "statement": "Elif hat während ihres Studiums BAföG bekommen.", "answer": true, "skill": "detail"},
+        {"id": "H3-6", "statement": "Elif will zusammen mit Deniz mit der Mutter sprechen.", "answer": false, "skill": "negation"},
+        {"id": "H3-7", "statement": "Deniz will sich sowohl in Bochum als auch an der Berufsfachschule bewerben.", "answer": true, "skill": "paraphrase"}
+      ]
+    },
+    "teil4": {
+      "setting": "Sie hören eine Diskussion im Radio. Die Moderatorin spricht mit einem Informatiklehrer und einer Bildungsforscherin über das Thema „Lernen mit künstlicher Intelligenz – Hilfe oder Gefahr?“",
+      "speakers": {"mod": "Moderatorin Sarah Lindner", "a": "Jan Roth (Informatiklehrer)", "b": "Prof. Ute Kramer (Bildungsforscherin)"},
+      "voices": {"mod": "f1", "a": "m3", "b": "f2"},
+      "script": [
+        {"speaker": "mod", "text": "Guten Abend und willkommen bei „Bildung heute“. Mein Name ist Sarah Lindner. Immer mehr Schüler lassen sich ihre Hausaufgaben von künstlicher Intelligenz schreiben, von Programmen, die in Sekunden Aufsätze, Referate und Mathe-Lösungen liefern. Ist das das Ende des Lernens, oder eine Chance? Bei mir sind Jan Roth, Informatiklehrer an einem Gymnasium in Bonn, und Professorin Ute Kramer, Bildungsforscherin an der Universität Tübingen. Herr Roth, Sie setzen KI im Unterricht ein. Warum?"},
+        {"speaker": "a", "text": "Guten Abend. Weil meine Schüler sie sowieso benutzen. Ich kann so tun, als gäbe es das nicht, oder ich kann ihnen zeigen, wie man es richtig macht. Bei mir dürfen die Schüler die KI zum Beispiel benutzen, um einen ersten Entwurf zu schreiben. Danach müssen sie ihn kontrollieren, verbessern und erklären, was sie geändert haben. Das ist viel anspruchsvoller als früher, denn man muss den Text wirklich verstehen, um ihn zu korrigieren."},
+        {"speaker": "mod", "text": "Frau Kramer, Sie sehen das kritischer."},
+        {"speaker": "b", "text": "Ja, allerdings nicht, weil ich gegen Technik bin. Wir haben in einer Studie mit 800 Schülern untersucht, was passiert, wenn sie mit KI lernen. Das Ergebnis: Kurzfristig werden die Hausaufgaben besser. Aber in der Klassenarbeit, ohne Computer, schneiden diese Schüler schlechter ab als die Gruppe ohne KI. Sie haben das Gefühl, etwas verstanden zu haben, aber sie haben es nicht selbst erarbeitet. Lernen ist anstrengend, das lässt sich nicht abkürzen."},
+        {"speaker": "a", "text": "Das stimmt, wenn man die KI als Abkürzung benutzt. Aber man kann sie auch als Trainer benutzen. Ich habe Schüler, die sich von der KI Aufgaben stellen lassen und sich jeden Abend zehn Minuten abfragen lassen. Die sind in der Klassenarbeit nicht schlechter, sondern besser geworden."},
+        {"speaker": "b", "text": "Das sind aber die Schüler, die sowieso motiviert sind. Die Schwächeren nehmen den einfachen Weg. Und genau diese Schüler verlieren wir dann. Die Schere zwischen guten und schwachen Schülern wird noch größer, das ist meine große Sorge."},
+        {"speaker": "mod", "text": "Ich habe eine Tochter in der neunten Klasse, und ich habe ehrlich gesagt keine Ahnung, ob ihre Referate von ihr sind oder vom Computer. Wie soll ich das als Mutter kontrollieren?"},
+        {"speaker": "a", "text": "Gar nicht, das ist der falsche Ansatz. Reden Sie mit ihr über das Referat. Wenn sie es erklären kann, hat sie es verstanden, egal wer es geschrieben hat. Genau so mache ich es in der Schule: Ich lese weniger, ich frage mehr."},
+        {"speaker": "b", "text": "Da bin ich ausnahmsweise einer Meinung mit Herrn Roth. Mündliche Prüfungen und Gespräche werden wichtiger. Nur: Ein Lehrer mit 30 Schülern hat dafür keine Zeit. Wir bräuchten kleinere Klassen, und die haben wir nicht."},
+        {"speaker": "mod", "text": "Was fordern Sie konkret, Frau Kramer?"},
+        {"speaker": "b", "text": "Erstens: keine KI in der Grundschule, gar nicht. Kinder müssen erst lesen, schreiben und rechnen lernen, ohne Hilfe. Zweitens: ab der siebten Klasse ein Pflichtfach, in dem man lernt, wie diese Programme funktionieren und wo sie Fehler machen. Und drittens: Fortbildungen für Lehrer, denn die meisten Lehrer wissen weniger über KI als ihre Schüler."},
+        {"speaker": "a", "text": "Den letzten Punkt unterschreibe ich sofort. An meiner Schule bin ich der Einzige, der sich damit beschäftigt. Beim Verbot in der Grundschule bin ich dagegen anderer Meinung: Ein Kind, das mit acht Jahren lernt, dass der Computer auch Unsinn erzählt, ist mit zwölf viel kritischer."},
+        {"speaker": "mod", "text": "Wir müssen leider zum Ende kommen. Ich nehme mit: Die KI ist da, und die Frage ist nicht ob, sondern wie. Vielen Dank, Herr Roth, vielen Dank, Frau Kramer."}
+      ],
+      "items": [
+        {"id": "H4-1", "statement": "Schüler dürfen mit der KI einen ersten Entwurf schreiben, den sie danach selbst verbessern müssen.", "answer": "a", "skill": "matching"},
+        {"id": "H4-2", "statement": "Schüler, die mit KI lernen, schneiden in Klassenarbeiten schlechter ab.", "answer": "b", "skill": "matching"},
+        {"id": "H4-3", "statement": "Manche Schüler lassen sich jeden Abend von der KI abfragen.", "answer": "a", "skill": "matching"},
+        {"id": "H4-4", "statement": "Der Unterschied zwischen guten und schwachen Schülern könnte noch größer werden.", "answer": "b", "skill": "matching"},
+        {"id": "H4-5", "statement": "Ich weiß nicht, ob meine Tochter ihre Referate selbst schreibt.", "answer": "mod", "skill": "matching"},
+        {"id": "H4-6", "statement": "Für mehr Gespräche mit den Schülern bräuchte man kleinere Klassen.", "answer": "b", "skill": "matching"},
+        {"id": "H4-7", "statement": "Auch Grundschulkinder sollten schon lernen, dass der Computer Fehler macht.", "answer": "a", "skill": "matching"},
+        {"id": "H4-8", "statement": "Die wichtige Frage ist nicht, ob man KI nutzt, sondern wie.", "answer": "mod", "skill": "matching"}
+      ]
+    }
+  },
+  "schreiben": {
+    "aufgabe1": {
+      "minutes": 20, "words": 80,
+      "situation": "Sie haben vor einem Monat einen Abendkurs angefangen (zum Beispiel eine Sprache, ein Instrument oder einen Computerkurs). Ihr Freund Lukas möchte wissen, wie es läuft. Schreiben Sie ihm eine E-Mail.",
+      "points": ["Beschreiben Sie den Kurs und die anderen Teilnehmer.", "Erklären Sie, was Ihnen leichtfällt und was Ihnen schwerfällt.", "Schlagen Sie Lukas vor, gemeinsam zu lernen, und nennen Sie einen Termin."]
+    },
+    "aufgabe2": {
+      "minutes": 25, "words": 80,
+      "situation": "Sie haben im Fernsehen eine Diskussionssendung zum Thema „Schule heute – zu leicht oder zu schwer?“ gesehen. Im Online-Gästebuch der Sendung finden Sie folgende Meinung:",
+      "quote": "„Heute macht fast jeder Zweite Abitur, und trotzdem können viele nicht richtig schreiben. Früher war die Schule strenger, und die Abschlüsse waren mehr wert. Wir brauchen wieder mehr Druck und weniger Verständnis.“ – Gerhard, 61",
+      "instruction": "Schreiben Sie nun Ihre Meinung dazu (circa 80 Wörter)."
+    },
+    "aufgabe3": {
+      "minutes": 15, "words": 40,
+      "situation": "Sie besuchen einen Deutschkurs bei Frau Dr. Hartmann. Nächste Woche können Sie an zwei Tagen nicht zum Unterricht kommen, weil Sie einen wichtigen Termin haben. Schreiben Sie ihr eine E-Mail: Entschuldigen Sie sich, nennen Sie den Grund und bitten Sie um die Unterlagen für die versäumten Stunden.",
+      "addressee": "Frau Dr. Hartmann"
+    }
+  },
+  "sprechen": {
+    "teil1": {
+      "situation": "In Ihrem Deutschkurs steht in vier Wochen die B1-Prüfung an. Sie und Ihr Partner / Ihre Partnerin möchten eine Lerngruppe gründen, um sich gemeinsam vorzubereiten. Planen Sie gemeinsam.",
+      "points": ["Wann und wie oft treffen Sie sich?", "Wo lernen Sie?", "Was üben Sie (Lesen, Hören, Schreiben, Sprechen)?", "Wer bereitet was vor?"],
+      "partner_cues": [
+        "Ich finde, wir sollten uns zweimal pro Woche treffen, sonst reicht die Zeit nicht. Was meinst du?",
+        "Bei mir zu Hause ist es oft laut. Kennst du einen ruhigen Ort, wo wir lernen könnten?",
+        "Ich habe die meisten Probleme beim Hören. Womit hast du Schwierigkeiten?",
+        "Sollen wir auch E-Mails schreiben und sie uns gegenseitig korrigieren?",
+        "Ich könnte alte Prüfungen aus dem Internet ausdrucken. Kannst du dich um die Hörtexte kümmern?",
+        "Und was machen wir, wenn jemand keine Zeit hat? Verschieben wir dann, oder lernt der Rest ohne ihn?"
+      ]
+    },
+    "teil2": {
+      "topics": ["Thema A: Sollte man auch als Erwachsener noch weiterlernen?", "Thema B: Sind Noten in der Schule wichtig?"],
+      "folien": [
+        "Stellen Sie Ihr Thema vor. Erklären Sie den Inhalt und die Struktur Ihrer Präsentation.",
+        "Berichten Sie von Ihrer Situation oder einem Erlebnis im Zusammenhang mit dem Thema.",
+        "Berichten Sie, wie die Situation in Ihrem Heimatland ist, und geben Sie Beispiele.",
+        "Nennen Sie die Vor- und Nachteile und sagen Sie dazu Ihre Meinung. Geben Sie auch Beispiele.",
+        "Beenden Sie Ihre Präsentation und bedanken Sie sich bei den Zuhörern."
+      ]
+    },
+    "teil3": {
+      "questions": ["Sie haben gesagt, dass Weiterbildung wichtig ist. Wer sollte sie bezahlen – der Staat, die Firma oder man selbst?", "Was haben Sie zuletzt Neues gelernt, und wie haben Sie es gelernt?", "Fällt es Erwachsenen schwerer zu lernen als Kindern? Warum?"],
+      "questions_b": ["Sie haben gesagt, dass Noten motivieren. Was ist mit Schülern, die immer schlechte Noten bekommen?", "Welche Rolle haben Noten in Ihrer eigenen Schulzeit gespielt?", "Wie könnte man Leistung in der Schule anders bewerten als mit Noten?"]
+    }
+  }
+}

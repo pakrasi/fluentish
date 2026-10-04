@@ -1,0 +1,750 @@
+[
+{
+"id": "ENG_CHUNK_1201",
+"t": "हाय! / नमस्ते!",
+"tr": "haay! / namaste!",
+"ex": "हाय! आज का दिन कैसा जा रहा है?",
+"extr": "haay! aaj kaa din kaisaa jaa rahaa hai?",
+"n": "हाय/हेलो is casual among urban friends; नमस्ते works with anyone."
+},
+{
+"id": "ENG_CHUNK_1202",
+"t": "सुप्रभात / गुड मॉर्निंग",
+"tr": "suprabhaat / guD maurning",
+"ex": "गुड मॉर्निंग! रात को ठीक से नींद आई?",
+"extr": "guD maurning! raat ko Thiik se niind aaii?",
+"n": "सुप्रभात is bookish; in speech people say गुड मॉर्निंग or simply नमस्ते."
+},
+{
+"id": "ENG_CHUNK_1203",
+"t": "नमस्ते / नमस्कार",
+"tr": "namaste / namaskaar",
+"ex": "नमस्ते। बताइए, मैं आपकी क्या मदद कर सकता हूँ?",
+"extr": "namaste. bataaie, main aapkii kyaa madad kar saktaa huun?",
+"n": "No everyday \"good afternoon\" in Hindi; नमस्ते covers any time of day."
+},
+{
+"id": "ENG_CHUNK_1204",
+"t": "शुभ रात्रि / गुड नाइट",
+"tr": "shubh raatri / guD naaiT",
+"ex": "गुड नाइट! आराम से सोना।",
+"extr": "guD naaiT! aaraam se sonaa.",
+"n": "शुभ रात्रि is formal or written; गुड नाइट is what most people say."
+},
+{
+"id": "ENG_CHUNK_1205",
+"t": "आप कैसे हैं? / तुम कैसे हो?",
+"tr": "aap kaise hain? / tum kaise ho?",
+"ex": "हाय सैम, कैसे हो?",
+"extr": "haay saim, kaise ho?",
+"n": "Adjective agrees with the listener: कैसी हैं / कैसी हो to a woman."
+},
+{
+"id": "ENG_CHUNK_1206",
+"t": "मैं ठीक हूँ, शुक्रिया। आप सुनाइए?",
+"tr": "main Thiik huun, shukriyaa. aap sunaaie?",
+"ex": "\"कैसे हैं?\" \"मैं ठीक हूँ, शुक्रिया। आप सुनाइए?\"",
+"extr": "\"kaise hain?\" \"main Thiik huun, shukriyaa. aap sunaaie?\"",
+"n": "आप सुनाइए / और आप? returns the question; तुम सुनाओ with friends."
+},
+{
+"id": "ENG_CHUNK_1207",
+"t": "ठीक-ठाक / बढ़िया, शुक्रिया",
+"tr": "Thiik-Thaak / baRhiyaa, shukriyaa",
+"ex": "\"क्या हाल है?\" \"ठीक-ठाक, शुक्रिया।\"",
+"extr": "\"kyaa haal hai?\" \"Thiik-Thaak, shukriyaa.\""
+},
+{
+"id": "ENG_CHUNK_1208",
+"t": "आपसे मिलकर अच्छा लगा",
+"tr": "aapse milkar achchhaa lagaa",
+"ex": "हाय, मैं अन्ना हूँ। आपसे मिलकर अच्छा लगा।",
+"extr": "haay, main annaa huun. aapse milkar achchhaa lagaa.",
+"n": "Hindi uses the past लगा even at the start of a meeting."
+},
+{
+"id": "ENG_CHUNK_1209",
+"t": "मुझे भी",
+"tr": "mujhe bhii",
+"ex": "\"आपसे मिलकर अच्छा लगा।\" \"मुझे भी।\"",
+"extr": "\"aapse milkar achchhaa lagaa.\" \"mujhe bhii.\"",
+"n": "Mirrors the मुझे of अच्छा लगा; for wishes (\"have a nice day\") say आपको भी."
+},
+{
+"id": "ENG_CHUNK_1210",
+"t": "आपसे मिलकर ख़ुशी हुई",
+"tr": "aapse milkar khushii huii",
+"ex": "नमस्कार, मैं डेविड ली हूँ। आपसे मिलकर ख़ुशी हुई।",
+"extr": "namaskaar, main DeviD lii huun. aapse milkar khushii huii."
+},
+{
+"id": "ENG_CHUNK_1211",
+"t": "क्या हाल है? / और, क्या चल रहा है?",
+"tr": "kyaa haal hai? / aur, kyaa chal rahaa hai?",
+"ex": "अरे टॉम, क्या हाल है?",
+"extr": "are Taum, kyaa haal hai?"
+},
+{
+"id": "ENG_CHUNK_1212",
+"t": "तुम्हें देखकर अच्छा लगा",
+"tr": "tumhen dekhkar achchhaa lagaa",
+"ex": "अरे मारिया! तुम्हें देखकर अच्छा लगा।",
+"extr": "are maariyaa! tumhen dekhkar achchhaa lagaa.",
+"n": "Also बड़े दिनों बाद! (\"after so long!\") when it's been a while."
+},
+{
+"id": "ENG_CHUNK_1213",
+"t": "नमस्ते / अलविदा",
+"tr": "namaste / alvidaa",
+"ex": "अच्छा, नमस्ते, और हर चीज़ के लिए शुक्रिया।",
+"extr": "achchhaa, namaste, aur har chiiz ke lie shukriyaa.",
+"n": "अलविदा sounds final and dramatic; नमस्ते or अच्छा, चलता हूँ is the normal goodbye."
+},
+{
+"id": "ENG_CHUNK_1214",
+"t": "फिर मिलते हैं / बाद में मिलते हैं",
+"tr": "phir milte hain / baad men milte hain",
+"ex": "ठीक है, फिर मिलते हैं!",
+"extr": "Thiik hai, phir milte hain!"
+},
+{
+"id": "ENG_CHUNK_1215",
+"t": "आपका दिन अच्छा रहे",
+"tr": "aapkaa din achchhaa rahe",
+"ex": "धन्यवाद। आपका दिन अच्छा रहे!",
+"extr": "dhanyavaad. aapkaa din achchhaa rahe!",
+"n": "Less routine than in English; to shop staff a simple धन्यवाद is enough."
+},
+{
+"id": "ENG_CHUNK_1216",
+"t": "धन्यवाद / शुक्रिया",
+"tr": "dhanyavaad / shukriyaa",
+"ex": "कॉफ़ी के लिए शुक्रिया।",
+"extr": "kaufii ke lie shukriyaa.",
+"n": "Between close friends and family, thanks can sound distant; थैंक्स is common in cities."
+},
+{
+"id": "ENG_CHUNK_1217",
+"t": "बहुत-बहुत शुक्रिया / थैंक्स यार",
+"tr": "bahut-bahut shukriyaa / thainks yaar",
+"ex": "बहुत-बहुत शुक्रिया, तुम बहुत अच्छे हो।",
+"extr": "bahut-bahut shukriyaa, tum bahut achchhe ho."
+},
+{
+"id": "ENG_CHUNK_1218",
+"t": "कोई बात नहीं / आपका स्वागत है",
+"tr": "koii baat nahiin / aapkaa svaagat hai",
+"ex": "\"शुक्रिया!\" \"कोई बात नहीं।\"",
+"extr": "\"shukriyaa!\" \"koii baat nahiin.\"",
+"n": "आपका स्वागत है is a calque that mainly means \"welcome (to a place)\"; कोई बात नहीं is the natural reply."
+},
+{
+"id": "ENG_CHUNK_1219",
+"t": "कोई बात नहीं / कोई दिक़्क़त नहीं",
+"tr": "koii baat nahiin / koii diqqat nahiin",
+"ex": "\"इंतज़ार करने के लिए शुक्रिया।\" \"कोई बात नहीं।\"",
+"extr": "\"intazaar karne ke lie shukriyaa.\" \"koii baat nahiin.\""
+},
+{
+"id": "ENG_CHUNK_1220",
+"t": "जी हाँ, ज़रूर",
+"tr": "jii haan, zaruur",
+"ex": "\"चाय लेंगे?\" \"जी हाँ, ज़रूर।\"",
+"extr": "\"chaay lenge?\" \"jii haan, zaruur.\"",
+"n": "जी softens and makes the yes polite; no word for \"please\" is needed."
+},
+{
+"id": "ENG_CHUNK_1221",
+"t": "जी नहीं, शुक्रिया",
+"tr": "jii nahiin, shukriyaa",
+"ex": "\"और केक लेंगे?\" \"जी नहीं, शुक्रिया।\"",
+"extr": "\"aur kek lenge?\" \"jii nahiin, shukriyaa.\"",
+"n": "Hosts often insist; a firm बस, बहुत हो गया (\"that's enough\") may be needed."
+},
+{
+"id": "ENG_CHUNK_1222",
+"t": "सुनिए / माफ़ कीजिए",
+"tr": "sunie / maaf kiijie",
+"ex": "सुनिए, क्या ये लंदन वाली ट्रेन है?",
+"extr": "sunie, kyaa ye landan vaalii Tren hai?",
+"n": "To get attention say सुनिए (\"listen\"); to pass someone say ज़रा साइड दीजिए / एक्सक्यूज़ मी."
+},
+{
+"id": "ENG_CHUNK_1223",
+"t": "माफ़ कीजिए / सॉरी",
+"tr": "maaf kiijie / saurii",
+"ex": "सॉरी, ग़लती मेरी थी।",
+"extr": "saurii, galtii merii thii."
+},
+{
+"id": "ENG_CHUNK_1224",
+"t": "कोई बात नहीं",
+"tr": "koii baat nahiin",
+"ex": "\"सॉरी, मुझसे तुम्हारा कप टूट गया।\" \"कोई बात नहीं।\"",
+"extr": "\"saurii, mujhse tumhaaraa kap TuuT gayaa.\" \"koii baat nahiin.\""
+},
+{
+"id": "ENG_CHUNK_1225",
+"t": "देर से आने के लिए माफ़ी / सॉरी, देर हो गई",
+"tr": "der se aane ke lie maafii / saurii, der ho gaii",
+"ex": "सॉरी, देर हो गई, बस ही नहीं आई।",
+"extr": "saurii, der ho gaii, bas hii nahiin aaii.",
+"n": "देर हो गई (\"lateness happened\") avoids saying \"I\" is late."
+},
+{
+"id": "ENG_CHUNK_1226",
+"t": "माफ़ कीजिए, मैं समझा नहीं",
+"tr": "maaf kiijie, main samjhaa nahiin",
+"ex": "माफ़ कीजिए, मैं समझा नहीं। फिर से बोलेंगे?",
+"extr": "maaf kiijie, main samjhaa nahiin. phir se bolenge?",
+"n": "Hindi uses the past: समझा नहीं (\"didn't get it\"). Women: समझी नहीं."
+},
+{
+"id": "ENG_CHUNK_1227",
+"t": "ज़रा धीरे बोलिए / थोड़ा धीरे बोलेंगे?",
+"tr": "zaraa dhiire bolie / thoRaa dhiire bolenge?",
+"ex": "ज़रा धीरे बोलेंगे? मेरी हिंदी ज़्यादा अच्छी नहीं है।",
+"extr": "zaraa dhiire bolenge? merii hindii zyaadaa achchhii nahiin hai."
+},
+{
+"id": "ENG_CHUNK_1228",
+"t": "एक बार फिर से बोलिए / दोबारा बोलेंगे?",
+"tr": "ek baar phir se bolie / dobaaraa bolenge?",
+"ex": "माफ़ कीजिए, एक बार फिर से बोलेंगे?",
+"extr": "maaf kiijie, ek baar phir se bolenge?"
+},
+{
+"id": "ENG_CHUNK_1229",
+"t": "इसकी स्पेलिंग बताएँगे?",
+"tr": "iskii speling bataaenge?",
+"ex": "आपका सरनेम? इसकी स्पेलिंग बताएँगे?",
+"extr": "aapkaa saranem? iskii speling bataaenge?",
+"n": "English \"spelling\" is used as-is for names; Devanagari words aren't spelled letter by letter."
+},
+{
+"id": "ENG_CHUNK_1230",
+"t": "मुझे ज़्यादा हिंदी नहीं आती",
+"tr": "mujhe zyaadaa hindii nahiin aatii",
+"ex": "माफ़ कीजिए, मुझे ज़्यादा हिंदी नहीं आती।",
+"extr": "maaf kiijie, mujhe zyaadaa hindii nahiin aatii.",
+"n": "Languages \"come to\" you: मुझे हिंदी आती है, not मैं हिंदी बोलता हूँ."
+},
+{
+"id": "ENG_CHUNK_1231",
+"t": "आपका नाम क्या है? / तुम्हारा नाम क्या है?",
+"tr": "aapkaa naam kyaa hai? / tumhaaraa naam kyaa hai?",
+"ex": "हाय, मैं टॉम हूँ। तुम्हारा नाम क्या है?",
+"extr": "haay, main Taum huun. tumhaaraa naam kyaa hai?"
+},
+{
+"id": "ENG_CHUNK_1232",
+"t": "आप कहाँ से हैं?",
+"tr": "aap kahaan se hain?",
+"ex": "आप कहाँ से हैं? आपका लहजा बहुत अच्छा है।",
+"extr": "aap kahaan se hain? aapkaa lahjaa bahut achchhaa hai."
+},
+{
+"id": "ENG_CHUNK_1233",
+"t": "तुम्हारी उम्र क्या है? / कितने साल की हो?",
+"tr": "tumhaarii umr kyaa hai? / kitne saal kii ho?",
+"ex": "एमा, तुम कितने साल की हो?",
+"extr": "emaa, tum kitne saal kii ho?",
+"n": "Asking adults their age is more acceptable in India than in the West; to kids use तुम."
+},
+{
+"id": "ENG_CHUNK_1234",
+"t": "आप कहाँ रहते हैं?",
+"tr": "aap kahaan rahte hain?",
+"ex": "आप कहाँ रहते हैं? यहीं पास में?",
+"extr": "aap kahaan rahte hain? yahiin paas men?"
+},
+{
+"id": "ENG_CHUNK_1235",
+"t": "आप क्या करते हैं?",
+"tr": "aap kyaa karte hain?",
+"ex": "आप क्या करते हैं? स्टूडेंट हैं?",
+"extr": "aap kyaa karte hain? sTuuDenT hain?"
+},
+{
+"id": "ENG_CHUNK_1236",
+"t": "आपके भाई-बहन हैं?",
+"tr": "aapke bhaaii-bahan hain?",
+"ex": "आपके कोई भाई-बहन हैं?",
+"extr": "aapke koii bhaaii-bahan hain?",
+"n": "Possession of relatives uses के + हैं: मेरे दो भाई हैं. भाई-बहन = siblings."
+},
+{
+"id": "ENG_CHUNK_1237",
+"t": "आप यहाँ कब से रह रहे हैं?",
+"tr": "aap yahaan kab se rah rahe hain?",
+"ex": "आप यहाँ कब से रह रहे हैं?",
+"extr": "aap yahaan kab se rah rahe hain?",
+"n": "\"Have lived\" = present continuous + कब से / कितने साल से."
+},
+{
+"id": "ENG_CHUNK_1238",
+"t": "और आप? / आप बताइए?",
+"tr": "aur aap? / aap bataaie?",
+"ex": "मैं इटली से हूँ। और आप?",
+"extr": "main iTalii se huun. aur aap?"
+},
+{
+"id": "ENG_CHUNK_1239",
+"t": "कितने बजे हैं? / टाइम क्या हुआ है?",
+"tr": "kitne baje hain? / Taaim kyaa huaa hai?",
+"ex": "सुनिए, कितने बजे हैं?",
+"extr": "sunie, kitne baje hain?"
+},
+{
+"id": "ENG_CHUNK_1240",
+"t": "कितने का है? / ये कितने का है?",
+"tr": "kitne kaa hai? / ye kitne kaa hai?",
+"ex": "ये बैग अच्छा है। कितने का है?",
+"extr": "ye baig achchhaa hai. kitne kaa hai?",
+"n": "Agrees with the item: कितने की है for feminine nouns (साड़ी, कमीज़)."
+},
+{
+"id": "ENG_CHUNK_1241",
+"t": "बताइए, क्या चाहिए? / मैं आपकी क्या मदद कर सकता हूँ?",
+"tr": "bataaie, kyaa chaahie? / main aapkii kyaa madad kar saktaa huun?",
+"ex": "नमस्ते, बताइए, क्या चाहिए?",
+"extr": "namaste, bataaie, kyaa chaahie?",
+"n": "Shopkeepers say बताइए or हाँ जी; the मदद sentence sounds like a call centre."
+},
+{
+"id": "ENG_CHUNK_1242",
+"t": "बस, इतना ही, शुक्रिया",
+"tr": "bas, itnaa hii, shukriyaa",
+"ex": "\"और कुछ?\" \"नहीं, बस इतना ही, शुक्रिया।\"",
+"extr": "\"aur kuchh?\" \"nahiin, bas itnaa hii, shukriyaa.\""
+},
+{
+"id": "ENG_CHUNK_1243",
+"t": "ज़रा मेन्यू दिखाइए / मेन्यू मिलेगा?",
+"tr": "zaraa menyuu dikhaaie / menyuu milegaa?",
+"ex": "भैया, ज़रा मेन्यू दिखाइए।",
+"extr": "bhaiyaa, zaraa menyuu dikhaaie.",
+"n": "भैया (\"brother\") is the normal way to address a waiter."
+},
+{
+"id": "ENG_CHUNK_1244",
+"t": "आप क्या सुझाएँगे? / यहाँ क्या अच्छा मिलता है?",
+"tr": "aap kyaa sujhaaenge? / yahaan kyaa achchhaa miltaa hai?",
+"ex": "मैं पहली बार आया हूँ। यहाँ क्या अच्छा मिलता है?",
+"extr": "main pahlii baar aayaa huun. yahaan kyaa achchhaa miltaa hai?",
+"n": "The second form is what people actually ask in a restaurant."
+},
+{
+"id": "ENG_CHUNK_1245",
+"t": "मैं शाकाहारी हूँ / मैं वेज हूँ",
+"tr": "main shaakaahaarii huun / main vej huun",
+"ex": "मैं वेज हूँ। इस सूप में नॉनवेज तो नहीं है?",
+"extr": "main vej huun. is suup men naunvej to nahiin hai?",
+"n": "वेज / नॉनवेज are everyday Indian English loans; eggs count as नॉनवेज for many."
+},
+{
+"id": "ENG_CHUNK_1246",
+"t": "पेट भर गया",
+"tr": "peT bhar gayaa",
+"ex": "बस, शुक्रिया। मेरा पेट भर गया।",
+"extr": "bas, shukriyaa. meraa peT bhar gayaa.",
+"n": "Literally \"my stomach got filled\"."
+},
+{
+"id": "ENG_CHUNK_1247",
+"t": "बाथरूम कहाँ है? / वॉशरूम कहाँ है?",
+"tr": "baathruum kahaan hai? / vaushruum kahaan hai?",
+"ex": "सुनिए, वॉशरूम कहाँ है?",
+"extr": "sunie, vaushruum kahaan hai?",
+"n": "वॉशरूम is the polite word in offices and restaurants; शौचालय is only on signs."
+},
+{
+"id": "ENG_CHUNK_1248",
+"t": "सीधे जाइए / सीधे चले जाइए",
+"tr": "siidhe jaaie / siidhe chale jaaie",
+"ex": "सीधे चले जाइए, बैंक बाईं तरफ़ है।",
+"extr": "siidhe chale jaaie, baink baaiin taraf hai."
+},
+{
+"id": "ENG_CHUNK_1249",
+"t": "मुझे कहाँ उतरना है?",
+"tr": "mujhe kahaan utarnaa hai?",
+"ex": "मुझे चिड़ियाघर जाना है। कहाँ उतरना होगा?",
+"extr": "mujhe chiRiyaaghar jaanaa hai. kahaan utarnaa hogaa?"
+},
+{
+"id": "ENG_CHUNK_1250",
+"t": "वाई-फ़ाई का पासवर्ड क्या है?",
+"tr": "vaaii-faaii kaa paasvarD kyaa hai?",
+"ex": "सुनिए, वाई-फ़ाई का पासवर्ड क्या है?",
+"extr": "sunie, vaaii-faaii kaa paasvarD kyaa hai?"
+},
+{
+"id": "ENG_CHUNK_1251",
+"t": "बचाओ!",
+"tr": "bachaao!",
+"ex": "बचाओ! कोई मेरी मदद करो!",
+"extr": "bachaao! koii merii madad karo!"
+},
+{
+"id": "ENG_CHUNK_1252",
+"t": "मेरी मदद कर सकते हैं?",
+"tr": "merii madad kar sakte hain?",
+"ex": "सुनिए, मेरी मदद कर सकते हैं? मैं रास्ता भटक गया हूँ।",
+"extr": "sunie, merii madad kar sakte hain? main raastaa bhaTak gayaa huun."
+},
+{
+"id": "ENG_CHUNK_1253",
+"t": "मुझे डॉक्टर चाहिए",
+"tr": "mujhe DaukTar chaahie",
+"ex": "मुझे डॉक्टर चाहिए। मेरा बेटा बहुत बीमार है।",
+"extr": "mujhe DaukTar chaahie. meraa beTaa bahut biimaar hai."
+},
+{
+"id": "ENG_CHUNK_1254",
+"t": "यहाँ दर्द हो रहा है",
+"tr": "yahaan dard ho rahaa hai",
+"ex": "यहाँ दर्द हो रहा है, पेट में।",
+"extr": "yahaan dard ho rahaa hai, peT men.",
+"n": "Pain \"is happening\": दर्द हो रहा है, never मुझे दुखता है for the general case."
+},
+{
+"id": "ENG_CHUNK_1255",
+"t": "मेरी तबीयत ठीक नहीं है",
+"tr": "merii tabiiyat Thiik nahiin hai",
+"ex": "मेरी तबीयत ठीक नहीं है। मैं घर जा रहा हूँ।",
+"extr": "merii tabiiyat Thiik nahiin hai. main ghar jaa rahaa huun."
+},
+{
+"id": "ENG_CHUNK_1256",
+"t": "एम्बुलेंस बुलाओ!",
+"tr": "embulens bulaao!",
+"ex": "एम्बुलेंस बुलाओ! ये साँस नहीं ले रहे।",
+"extr": "embulens bulaao! ye saans nahiin le rahe.",
+"n": "Emergency commands use तुम form (बुलाओ) even to strangers."
+},
+{
+"id": "ENG_CHUNK_1257",
+"t": "मैं रास्ता भटक गया हूँ",
+"tr": "main raastaa bhaTak gayaa huun",
+"ex": "सुनिए, मैं रास्ता भटक गया हूँ। स्टेशन कहाँ है?",
+"extr": "sunie, main raastaa bhaTak gayaa huun. sTeshan kahaan hai?",
+"n": "Women: भटक गई हूँ. Also मैं खो गया हूँ."
+},
+{
+"id": "ENG_CHUNK_1258",
+"t": "बचके! / देखके!",
+"tr": "bachke! / dekhke!",
+"ex": "बचके! गाड़ी!",
+"extr": "bachke! gaaRii!"
+},
+{
+"id": "ENG_CHUNK_1259",
+"t": "क्या हुआ?",
+"tr": "kyaa huaa?",
+"ex": "उदास लग रहे हो। क्या हुआ?",
+"extr": "udaas lag rahe ho. kyaa huaa?"
+},
+{
+"id": "ENG_CHUNK_1260",
+"t": "आप ठीक हैं? / तुम ठीक हो?",
+"tr": "aap Thiik hain? / tum Thiik ho?",
+"ex": "तुम ठीक हो? चेहरा पीला पड़ गया है।",
+"extr": "tum Thiik ho? chehraa piilaa paR gayaa hai."
+},
+{
+"id": "ENG_CHUNK_1261",
+"t": "जन्मदिन मुबारक! / हैप्पी बर्थडे!",
+"tr": "janmadin mubaarak! / haippii barthDe!",
+"ex": "हैप्पी बर्थडे! ये रहा तुम्हारा तोहफ़ा।",
+"extr": "haippii barthDe! ye rahaa tumhaaraa tohfaa."
+},
+{
+"id": "ENG_CHUNK_1262",
+"t": "शाबाश! / बहुत बढ़िया!",
+"tr": "shaabaash! / bahut baRhiyaa!",
+"ex": "टेस्ट पास कर लिया? शाबाश!",
+"extr": "TesT paas kar liyaa? shaabaash!",
+"n": "शाबाश is praise from above (parent, teacher); among peers say बहुत बढ़िया! or बधाई हो!"
+},
+{
+"id": "ENG_CHUNK_1263",
+"t": "बारिश हो रही है",
+"tr": "baarish ho rahii hai",
+"ex": "छाता ले जाओ। बारिश हो रही है।",
+"extr": "chhaataa le jaao. baarish ho rahii hai."
+},
+{
+"id": "ENG_CHUNK_1264",
+"t": "आज मौसम बढ़िया है, है ना?",
+"tr": "aaj mausam baRhiyaa hai, hai naa?",
+"ex": "आज मौसम कितना अच्छा है, है ना?",
+"extr": "aaj mausam kitnaa achchhaa hai, hai naa?",
+"n": "है ना? is the all-purpose tag question."
+},
+{
+"id": "ENG_CHUNK_1265",
+"t": "आपका फ़ोन नंबर क्या है?",
+"tr": "aapkaa fon nambar kyaa hai?",
+"ex": "तुम्हारा नंबर क्या है? मैं मैसेज कर दूँगा।",
+"extr": "tumhaaraa nambar kyaa hai? main maisej kar duungaa."
+},
+{
+"id": "ENG_CHUNK_1266",
+"t": "आवाज़ नहीं आ रही",
+"tr": "aavaaz nahiin aa rahii",
+"ex": "सॉरी, आवाज़ नहीं आ रही। यहाँ बहुत शोर है।",
+"extr": "saurii, aavaaz nahiin aa rahii. yahaan bahut shor hai.",
+"n": "Literally \"the voice isn't coming\"; the standard phone phrase."
+},
+{
+"id": "ENG_CHUNK_1267",
+"t": "सॉरी, मैं आपका फ़ोन नहीं उठा पाया",
+"tr": "saurii, main aapkaa fon nahiin uThaa paayaa",
+"ex": "हाय, सॉरी, तुम्हारा फ़ोन नहीं उठा पाया। बोलो, क्या हुआ?",
+"extr": "haay, saurii, tumhaaraa fon nahiin uThaa paayaa. bolo, kyaa huaa?",
+"n": "पाया (\"managed to\") softens it: \"couldn't pick up\"."
+},
+{
+"id": "ENG_CHUNK_1268",
+"t": "क्या मैं एक बात पूछ सकता हूँ?",
+"tr": "kyaa main ek baat puuchh saktaa huun?",
+"ex": "सुनिए, क्या मैं एक बात पूछ सकता हूँ?",
+"extr": "sunie, kyaa main ek baat puuchh saktaa huun?",
+"n": "Women: सकती हूँ."
+},
+{
+"id": "ENG_CHUNK_1269",
+"t": "कितने बजे मिलें?",
+"tr": "kitne baje milen?",
+"ex": "ठीक है, शुक्रवार को डिनर। कितने बजे मिलें?",
+"extr": "Thiik hai, shukravaar ko Dinar. kitne baje milen?",
+"n": "Subjunctive मिलें = \"shall we meet\"."
+},
+{
+"id": "ENG_CHUNK_1270",
+"t": "मेरा फ़ोन बंद होने वाला है",
+"tr": "meraa fon band hone vaalaa hai",
+"ex": "मुझे जाना होगा, मेरा फ़ोन बंद होने वाला है।",
+"extr": "mujhe jaanaa hogaa, meraa fon band hone vaalaa hai.",
+"n": "Also बैटरी ख़त्म होने वाली है."
+},
+{
+"id": "ENG_CHUNK_1271",
+"t": "अम्म, देखता हूँ... / रुको, सोचने दो",
+"tr": "amm, dekhtaa huun... / ruko, sochne do",
+"ex": "अम्म, देखता हूँ... शायद मंगलवार को है।",
+"extr": "amm, dekhtaa huun... shaayad mangalvaar ko hai."
+},
+{
+"id": "ENG_CHUNK_1272",
+"t": "एक मिनट / ज़रा रुकिए",
+"tr": "ek minaT / zaraa rukie",
+"ex": "एक मिनट, मैं पेन लेकर आता हूँ।",
+"extr": "ek minaT, main pen lekar aataa huun."
+},
+{
+"id": "ENG_CHUNK_1273",
+"t": "रुको ज़रा / एक सेकंड",
+"tr": "ruko zaraa / ek sekanD",
+"ex": "रुको ज़रा, आ रहा हूँ!",
+"extr": "ruko zaraa, aa rahaa huun!"
+},
+{
+"id": "ENG_CHUNK_1274",
+"t": "होल्ड करो / एक सेकंड रुको",
+"tr": "hold karo / ek sekanD ruko",
+"ex": "एक सेकंड रुको, मैं चेक करता हूँ।",
+"extr": "ek sekanD ruko, main chek kartaa huun."
+},
+{
+"id": "ENG_CHUNK_1275",
+"t": "जी? / माफ़ कीजिए?",
+"tr": "jii? / maaf kiijie?",
+"ex": "जी? मैंने सुना नहीं।",
+"extr": "jii? mainne sunaa nahiin.",
+"n": "A rising जी? is the polite \"pardon?\"."
+},
+{
+"id": "ENG_CHUNK_1276",
+"t": "क्या? / हाँ?",
+"tr": "kyaa? / haan?",
+"ex": "क्या? फिर से बोलना?",
+"extr": "kyaa? phir se bolnaa?",
+"n": "A bare क्या? can sound blunt; add जी or सॉरी with elders."
+},
+{
+"id": "ENG_CHUNK_1277",
+"t": "ये क्या है? / इसका क्या मतलब है?",
+"tr": "ye kyaa hai? / iskaa kyaa matlab hai?",
+"ex": "ये क्या है? मुझे ये शब्द नहीं पता।",
+"extr": "ye kyaa hai? mujhe ye shabd nahiin pataa."
+},
+{
+"id": "ENG_CHUNK_1278",
+"t": "ठीक है / ओके",
+"tr": "Thiik hai / oke",
+"ex": "ठीक है, चलो चलते हैं।",
+"extr": "Thiik hai, chalo chalte hain."
+},
+{
+"id": "ENG_CHUNK_1279",
+"t": "ज़रूर / हाँ, बिल्कुल",
+"tr": "zaruur / haan, bilkul",
+"ex": "\"क्या मैं यहाँ बैठ सकता हूँ?\" \"ज़रूर।\"",
+"extr": "\"kyaa main yahaan baiTh saktaa huun?\" \"zaruur.\""
+},
+{
+"id": "ENG_CHUNK_1280",
+"t": "हाँ, लो / हाँ, क्यों नहीं",
+"tr": "haan, lo / haan, kyon nahiin",
+"ex": "\"ज़रा नमक देना?\" \"हाँ, लो।\"",
+"extr": "\"zaraa namak denaa?\" \"haan, lo.\"",
+"n": "When handing something over, हाँ, लो (\"here, take\") is the natural \"sure\"."
+},
+{
+"id": "ENG_CHUNK_1281",
+"t": "मुझे भी / मैं भी",
+"tr": "mujhe bhii / main bhii",
+"ex": "\"मुझे ये गाना बहुत पसंद है।\" \"मुझे भी!\"",
+"extr": "\"mujhe ye gaanaa bahut pasand hai.\" \"mujhe bhii!\"",
+"n": "Copy the subject case: मुझे पसंद है → मुझे भी; मैं जा रहा हूँ → मैं भी."
+},
+{
+"id": "ENG_CHUNK_1282",
+"t": "मुझे भी नहीं / मैं भी नहीं",
+"tr": "mujhe bhii nahiin / main bhii nahiin",
+"ex": "\"मुझे कॉफ़ी पसंद नहीं।\" \"मुझे भी नहीं।\"",
+"extr": "\"mujhe kaufii pasand nahiin.\" \"mujhe bhii nahiin.\""
+},
+{
+"id": "ENG_CHUNK_1283",
+"t": "अच्छा / हाँ",
+"tr": "achchhaa / haan",
+"ex": "अच्छा, तो बस नौ बजे निकलती है।",
+"extr": "achchhaa, to bas nau baje nikaltii hai.",
+"n": "अच्छा is the all-purpose \"right / I see\" backchannel."
+},
+{
+"id": "ENG_CHUNK_1284",
+"t": "पता नहीं / मुझे नहीं पता",
+"tr": "pataa nahiin / mujhe nahiin pataa",
+"ex": "सॉरी, मुझे नहीं पता।",
+"extr": "saurii, mujhe nahiin pataa."
+},
+{
+"id": "ENG_CHUNK_1285",
+"t": "शायद",
+"tr": "shaayad",
+"ex": "\"आज रात आ रहे हो?\" \"शायद।\"",
+"extr": "\"aaj raat aa rahe ho?\" \"shaayad.\""
+},
+{
+"id": "ENG_CHUNK_1286",
+"t": "पक्का नहीं पता",
+"tr": "pakkaa nahiin pataa",
+"ex": "\"क्या रविवार को खुला रहता है?\" \"पक्का नहीं पता।\"",
+"extr": "\"kyaa ravivaar ko khulaa rahtaa hai?\" \"pakkaa nahiin pataa.\""
+},
+{
+"id": "ENG_CHUNK_1287",
+"t": "अच्छा आइडिया है / ठीक है",
+"tr": "achchhaa aaiDiyaa hai / Thiik hai",
+"ex": "\"टैक्सी ले लेते हैं।\" \"अच्छा आइडिया है।\"",
+"extr": "\"Taiksii le lete hain.\" \"achchhaa aaiDiyaa hai.\""
+},
+{
+"id": "ENG_CHUNK_1288",
+"t": "अरे वाह! / बहुत बढ़िया!",
+"tr": "are vaah! / bahut baRhiyaa!",
+"ex": "नौकरी मिल गई? अरे वाह!",
+"extr": "naukrii mil gaii? are vaah!"
+},
+{
+"id": "ENG_CHUNK_1289",
+"t": "अरे नहीं! / ओह नो!",
+"tr": "are nahiin! / oh no!",
+"ex": "अरे नहीं! मैं चाबियाँ भूल गया।",
+"extr": "are nahiin! main chaabiyaan bhuul gayaa."
+},
+{
+"id": "ENG_CHUNK_1290",
+"t": "वैसे... / देखो...",
+"tr": "vaise... / dekho...",
+"ex": "वैसे... पक्का नहीं पता।",
+"extr": "vaise... pakkaa nahiin pataa.",
+"n": "देखो... / देखिए... also opens a careful or hesitant answer."
+},
+{
+"id": "ENG_CHUNK_1291",
+"t": "दरअसल / असल में",
+"tr": "darasal / asal men",
+"ex": "दरअसल, मैं कनाडा से हूँ, अमेरिका से नहीं।",
+"extr": "darasal, main kanaaDaa se huun, amerikaa se nahiin."
+},
+{
+"id": "ENG_CHUNK_1292",
+"t": "ठीक है / बढ़िया",
+"tr": "Thiik hai / baRhiyaa",
+"ex": "\"सात बजे पिज़्ज़ा?\" \"बढ़िया।\"",
+"extr": "\"saat baje pizzaa?\" \"baRhiyaa.\""
+},
+{
+"id": "ENG_CHUNK_1293",
+"t": "बढ़िया / सही है",
+"tr": "baRhiyaa / sahii hai",
+"ex": "\"वहीं मिलते हैं।\" \"सही है।\"",
+"extr": "\"vahiin milte hain.\" \"sahii hai.\""
+},
+{
+"id": "ENG_CHUNK_1294",
+"t": "वाह! / अरे वाह!",
+"tr": "vaah! / are vaah!",
+"ex": "वाह! तुम्हारा घर कितना सुंदर है।",
+"extr": "vaah! tumhaaraa ghar kitnaa sundar hai."
+},
+{
+"id": "ENG_CHUNK_1295",
+"t": "चलेगा? / ठीक है ना?",
+"tr": "chalegaa? / Thiik hai naa?",
+"ex": "मैं आठ बजे आऊँगा। चलेगा?",
+"extr": "main aaTh baje aauungaa. chalegaa?",
+"n": "चलेगा? (\"will it do?\") is very common and friendly."
+},
+{
+"id": "ENG_CHUNK_1296",
+"t": "और फिर",
+"tr": "aur phir",
+"ex": "मैं उठा, और फिर नाश्ता किया।",
+"extr": "main uThaa, aur phir naashtaa kiyaa."
+},
+{
+"id": "ENG_CHUNK_1297",
+"t": "लेकिन / पर",
+"tr": "lekin / par",
+"ex": "मुझे चाय पसंद है, लेकिन कॉफ़ी पसंद नहीं।",
+"extr": "mujhe chaay pasand hai, lekin kaufii pasand nahiin."
+},
+{
+"id": "ENG_CHUNK_1298",
+"t": "क्योंकि",
+"tr": "kyonki",
+"ex": "मैं थका हुआ हूँ क्योंकि देर तक काम किया।",
+"extr": "main thakaa huaa huun kyonki der tak kaam kiyaa."
+},
+{
+"id": "ENG_CHUNK_1299",
+"t": "भी",
+"tr": "bhii",
+"ex": "मैं फ़्रेंच बोलता हूँ। थोड़ी जर्मन भी बोलता हूँ।",
+"extr": "main french boltaa huun. thoRii jarman bhii boltaa huun.",
+"n": "भी goes right after the word it adds to, not at the start of the sentence."
+},
+{
+"id": "ENG_CHUNK_1300",
+"t": "फिर",
+"tr": "phir",
+"ex": "पहले मैं नहाता हूँ, फिर कपड़े पहनता हूँ।",
+"extr": "pahle main nahaataa huun, phir kapRe pahantaa huun."
+}
+]

@@ -1,0 +1,744 @@
+[
+ {
+  "id": "ENG_CHUNK_1201",
+  "t": "হাই! / কী খবর!",
+  "tr": "haai! / kii khobor!",
+  "ex": "হাই! দিনটা কেমন যাচ্ছে?",
+  "extr": "haai! dintaa kemon jaachchhe?"
+ },
+ {
+  "id": "ENG_CHUNK_1202",
+  "t": "গুড মর্নিং / সুপ্রভাত",
+  "tr": "gud morning / suprobhaat",
+  "ex": "গুড মর্নিং! রাতে ভালো ঘুম হয়েছে?",
+  "extr": "gud morning! raate bhaalo ghum hoyechhe?",
+  "n": "সুপ্রভাত is bookish or for cards; in speech people say গুড মর্নিং."
+ },
+ {
+  "id": "ENG_CHUNK_1203",
+  "t": "নমস্কার / গুড আফটারনুন",
+  "tr": "nomoskaar / gud aaphtaarnun",
+  "ex": "নমস্কার, বলুন, কী সাহায্য করতে পারি?",
+  "extr": "nomoskaar, bolun, kii saahaajyo korte paari?",
+  "n": "No time-of-day greeting in Bengali: নমস্কার (or আসসালামু আলাইকুম among Muslims) works at any hour."
+ },
+ {
+  "id": "ENG_CHUNK_1204",
+  "t": "গুড নাইট / শুভরাত্রি",
+  "tr": "gud naait / shubhoraatri",
+  "ex": "গুড নাইট! ভালো করে ঘুমিও।",
+  "extr": "gud naait! bhaalo kore ghumio."
+ },
+ {
+  "id": "ENG_CHUNK_1205",
+  "t": "কেমন আছ? / কেমন আছেন?",
+  "tr": "kemon aachho? / kemon aachhen?",
+  "ex": "হাই রাহুল, কেমন আছ?",
+  "extr": "haai raahul, kemon aachho?",
+  "n": "আছ with তুমি, আছেন with আপনি, আছিস with তুই."
+ },
+ {
+  "id": "ENG_CHUNK_1206",
+  "t": "ভালো আছি। তুমি? / ভালো আছি। আপনি?",
+  "tr": "bhaalo aachhi. tumi? / bhaalo aachhi. aapni?",
+  "ex": "\"কেমন আছ?\" \"ভালো আছি। তুমি?\"",
+  "extr": "\"kemon aachho?\" \"bhaalo aachhi. tumi?\"",
+  "n": "No 'thanks' in the reply; adding ধন্যবাদ sounds translated."
+ },
+ {
+  "id": "ENG_CHUNK_1207",
+  "t": "এই চলছে / মোটামুটি",
+  "tr": "ei cholchhe / motaamuti",
+  "ex": "\"কেমন চলছে?\" \"এই, চলছে।\"",
+  "extr": "\"kemon cholchhe?\" \"ei, cholchhe.\""
+ },
+ {
+  "id": "ENG_CHUNK_1208",
+  "t": "আলাপ হয়ে ভালো লাগল",
+  "tr": "aalaap hoye bhaalo laaglo",
+  "ex": "হাই, আমি অনু। আলাপ হয়ে ভালো লাগল।",
+  "extr": "haai, aami onu. aalaap hoye bhaalo laaglo.",
+  "n": "Past tense লাগল, even at the very start of the meeting."
+ },
+ {
+  "id": "ENG_CHUNK_1209",
+  "t": "আমারও / তোমাকেও",
+  "tr": "aamaaro / tomaakeo",
+  "ex": "\"আলাপ হয়ে ভালো লাগল।\" \"আমারও।\"",
+  "extr": "\"aalaap hoye bhaalo laaglo.\" \"aamaaro.\"",
+  "n": "Mirror the grammar: আমারও after 'ভালো লাগল'; তোমাকেও when returning a wish."
+ },
+ {
+  "id": "ENG_CHUNK_1210",
+  "t": "আপনার সঙ্গে পরিচিত হয়ে খুশি হলাম",
+  "tr": "aapnaar songe porichito hoye khushi holaam",
+  "ex": "নমস্কার, আমি দেবাশিস সেন। আপনার সঙ্গে পরিচিত হয়ে খুশি হলাম।",
+  "extr": "nomoskaar, aami debaashis sen. aapnaar songe porichito hoye khushi holaam."
+ },
+ {
+  "id": "ENG_CHUNK_1211",
+  "t": "কী খবর? / কী রে, কেমন চলছে?",
+  "tr": "kii khobor? / kii re, kemon cholchhe?",
+  "ex": "এই অর্ক, কী খবর?",
+  "extr": "ei orko, kii khobor?",
+  "n": "কী রে is তুই-level, for close friends only."
+ },
+ {
+  "id": "ENG_CHUNK_1212",
+  "t": "তোমাকে দেখে ভালো লাগল / অনেকদিন পর দেখা!",
+  "tr": "tomaake dekhe bhaalo laaglo / onekdin por dekhaa!",
+  "ex": "আরে মারিয়া! তোমাকে দেখে খুব ভালো লাগল।",
+  "extr": "aare maariyaa! tomaake dekhe khub bhaalo laaglo."
+ },
+ {
+  "id": "ENG_CHUNK_1213",
+  "t": "আসি / আসছি তাহলে",
+  "tr": "aasi / aaschhi taahole",
+  "ex": "আসি তাহলে, সব কিছুর জন্য অনেক ধন্যবাদ।",
+  "extr": "aasi taahole, sob kichhur jonyo onek dhonyobaad.",
+  "n": "Bengalis leave with আসি ('I'll come [back]'); বিদায় is a final farewell, and যাই is avoided as inauspicious."
+ },
+ {
+  "id": "ENG_CHUNK_1214",
+  "t": "পরে দেখা হবে / পরে কথা হবে",
+  "tr": "pore dekhaa hobe / pore kothaa hobe",
+  "ex": "আচ্ছা, পরে দেখা হবে!",
+  "extr": "aachchhaa, pore dekhaa hobe!"
+ },
+ {
+  "id": "ENG_CHUNK_1215",
+  "t": "ভালো থাকবেন / ভালো থেকো",
+  "tr": "bhaalo thaakben / bhaalo theko",
+  "ex": "ধন্যবাদ। ভালো থাকবেন!",
+  "extr": "dhonyobaad. bhaalo thaakben!",
+  "n": "No 'have a nice day' formula; ভালো থাকবেন ('stay well') is the warm send-off."
+ },
+ {
+  "id": "ENG_CHUNK_1216",
+  "t": "ধন্যবাদ / থ্যাংক ইউ",
+  "tr": "dhonyobaad / thyaank iu",
+  "ex": "কফিটার জন্য ধন্যবাদ।",
+  "extr": "kophitaar jonyo dhonyobaad.",
+  "n": "Among family and close friends, formal thanks can sound distant; a smile or থ্যাংক ইউ is usual."
+ },
+ {
+  "id": "ENG_CHUNK_1217",
+  "t": "অনেক ধন্যবাদ / থ্যাংক ইউ সো মাচ",
+  "tr": "onek dhonyobaad / thyaank iu so maach",
+  "ex": "থ্যাংক ইউ সো মাচ, তুমি সত্যি খুব ভালো।",
+  "extr": "thyaank iu so maach, tumi sotti khub bhaalo."
+ },
+ {
+  "id": "ENG_CHUNK_1218",
+  "t": "আরে, ঠিক আছে / কোনো ব্যাপার না",
+  "tr": "aare, thik aachhe / kono byaapaar naa",
+  "ex": "\"ধন্যবাদ!\" \"আরে, ঠিক আছে।\"",
+  "extr": "\"dhonyobaad!\" \"aare, thik aachhe.\"",
+  "n": "স্বাগতম means 'welcome (to a place)'; never use it to answer thanks."
+ },
+ {
+  "id": "ENG_CHUNK_1219",
+  "t": "কোনো ব্যাপার না / কোনো অসুবিধা নেই",
+  "tr": "kono byaapaar naa / kono osubidhaa nei",
+  "ex": "\"অপেক্ষা করার জন্য ধন্যবাদ।\" \"কোনো ব্যাপার না।\"",
+  "extr": "\"opekkhaa koraar jonyo dhonyobaad.\" \"kono byaapaar naa.\""
+ },
+ {
+  "id": "ENG_CHUNK_1220",
+  "t": "হ্যাঁ, দিন / হ্যাঁ, দিলে ভালো হয়",
+  "tr": "hyaan, din / hyaan, dile bhaalo hoy",
+  "ex": "\"একটু চা খাবেন?\" \"হ্যাঁ, দিন।\"",
+  "extr": "\"ektu chaa khaaben?\" \"hyaan, din.\"",
+  "n": "No 'please' word needed: the polite imperative দিন ('give') does the accepting."
+ },
+ {
+  "id": "ENG_CHUNK_1221",
+  "t": "না, থাক / না না, ঠিক আছে",
+  "tr": "naa, thaak / naa naa, thik aachhe",
+  "ex": "\"আর একটু কেক নেবেন?\" \"না, থাক, ধন্যবাদ।\"",
+  "extr": "\"aar ektu kek neben?\" \"naa, thaak, dhonyobaad.\"",
+  "n": "থাক ('let it be') is the natural decline; hosts often offer again, so repeat it."
+ },
+ {
+  "id": "ENG_CHUNK_1222",
+  "t": "শুনছেন? / মাফ করবেন",
+  "tr": "shunchhen? / maaph korben",
+  "ex": "শুনছেন, এটা কি হাওড়া যাওয়ার ট্রেন?",
+  "extr": "shunchhen, etaa ki haaoraa jaaoyaar tren?",
+  "n": "শুনছেন ('are you listening?') gets attention; to get past someone say একটু সরবেন?"
+ },
+ {
+  "id": "ENG_CHUNK_1223",
+  "t": "সরি / দুঃখিত",
+  "tr": "sori / dukkhito",
+  "ex": "সরি, ভুলটা আমারই।",
+  "extr": "sori, bhultaa aamaari."
+ },
+ {
+  "id": "ENG_CHUNK_1224",
+  "t": "ঠিক আছে / ও কিছু না",
+  "tr": "thik aachhe / o kichhu naa",
+  "ex": "\"সরি, তোমার কাপটা ভেঙে ফেলেছি।\" \"ও কিছু না।\"",
+  "extr": "\"sori, tomaar kaaptaa bhenge phelechhi.\" \"o kichhu naa.\""
+ },
+ {
+  "id": "ENG_CHUNK_1225",
+  "t": "সরি, দেরি হয়ে গেল",
+  "tr": "sori, deri hoye gelo",
+  "ex": "সরি, দেরি হয়ে গেল, বাসটাই আসেনি।",
+  "extr": "sori, deri hoye gelo, baastaai aaseni."
+ },
+ {
+  "id": "ENG_CHUNK_1226",
+  "t": "সরি, বুঝতে পারলাম না",
+  "tr": "sori, bujhte paarlaam naa",
+  "ex": "সরি, বুঝতে পারলাম না। আরেকবার বলবেন?",
+  "extr": "sori, bujhte paarlaam naa. aarekbaar bolben?",
+  "n": "Past tense পারলাম না is the natural 'I didn't get that'."
+ },
+ {
+  "id": "ENG_CHUNK_1227",
+  "t": "আর একটু আস্তে বলবেন, প্লিজ?",
+  "tr": "aar ektu aaste bolben, plij?",
+  "ex": "আর একটু আস্তে বলবেন, প্লিজ? আমার বাংলা খুব একটা ভালো নয়।",
+  "extr": "aar ektu aaste bolben, plij? aamaar baanglaa khub ektaa bhaalo noy."
+ },
+ {
+  "id": "ENG_CHUNK_1228",
+  "t": "আরেকবার বলবেন, প্লিজ?",
+  "tr": "aarekbaar bolben, plij?",
+  "ex": "সরি, আরেকবার বলবেন, প্লিজ?",
+  "extr": "sori, aarekbaar bolben, plij?"
+ },
+ {
+  "id": "ENG_CHUNK_1229",
+  "t": "বানানটা একটু বলবেন?",
+  "tr": "baanaantaa ektu bolben?",
+  "ex": "আপনার পদবি? বানানটা একটু বলবেন?",
+  "extr": "aapnaar podobi? baanaantaa ektu bolben?"
+ },
+ {
+  "id": "ENG_CHUNK_1230",
+  "t": "আমি খুব একটা বাংলা বলতে পারি না",
+  "tr": "aami khub ektaa baanglaa bolte paari naa",
+  "ex": "সরি, আমি খুব একটা বাংলা বলতে পারি না।",
+  "extr": "sori, aami khub ektaa baanglaa bolte paari naa.",
+  "n": "Adapted: the learner's version is about Bengali, not English."
+ },
+ {
+  "id": "ENG_CHUNK_1231",
+  "t": "তোমার নাম কী? / আপনার নাম কী?",
+  "tr": "tomaar naam kii? / aapnaar naam kii?",
+  "ex": "হাই, আমি অর্ক। তোমার নাম কী?",
+  "extr": "haai, aami orko. tomaar naam kii?"
+ },
+ {
+  "id": "ENG_CHUNK_1232",
+  "t": "তোমার বাড়ি কোথায়? / তুমি কোথা থেকে এসেছ?",
+  "tr": "tomaar baari kothaay? / tumi kothaa theke esechho?",
+  "ex": "তোমার বাড়ি কোথায়? তোমার উচ্চারণটা খুব সুন্দর।",
+  "extr": "tomaar baari kothaay? tomaar uchchaarontaa khub sundor.",
+  "n": "বাড়ি কোথায় asks where your roots are, not your current flat."
+ },
+ {
+  "id": "ENG_CHUNK_1233",
+  "t": "তোমার বয়স কত?",
+  "tr": "tomaar boyos koto?",
+  "ex": "তোমার বয়স কত, মিমি?",
+  "extr": "tomaar boyos koto, mimi?",
+  "n": "Fine with children; asking an adult (আপনার বয়স কত?) is blunt."
+ },
+ {
+  "id": "ENG_CHUNK_1234",
+  "t": "তুমি কোথায় থাকো?",
+  "tr": "tumi kothaay thaako?",
+  "ex": "তুমি কোথায় থাকো? এদিকেই?",
+  "extr": "tumi kothaay thaako? edikei?"
+ },
+ {
+  "id": "ENG_CHUNK_1235",
+  "t": "তুমি কী করো?",
+  "tr": "tumi kii koro?",
+  "ex": "তুমি কী করো? পড়াশোনা?",
+  "extr": "tumi kii koro? poraashonaa?"
+ },
+ {
+  "id": "ENG_CHUNK_1236",
+  "t": "তোমার ভাইবোন আছে?",
+  "tr": "tomaar bhaaibon aachhe?",
+  "ex": "তোমার কোনো ভাইবোন আছে?",
+  "extr": "tomaar kono bhaaibon aachhe?",
+  "n": "ভাইবোন covers brothers and sisters in one word."
+ },
+ {
+  "id": "ENG_CHUNK_1237",
+  "t": "কতদিন হল এখানে আছ?",
+  "tr": "kotodin holo ekhaane aachho?",
+  "ex": "তুমি কতদিন হল এখানে আছ?",
+  "extr": "tumi kotodin holo ekhaane aachho?",
+  "n": "Present tense আছ + কতদিন হল; no perfect tense needed."
+ },
+ {
+  "id": "ENG_CHUNK_1238",
+  "t": "আর তুমি? / তোমার?",
+  "tr": "aar tumi? / tomaar?",
+  "ex": "আমি ইতালির। আর তুমি?",
+  "extr": "aami itaalir. aar tumi?"
+ },
+ {
+  "id": "ENG_CHUNK_1239",
+  "t": "কটা বাজে?",
+  "tr": "kotaa baaje?",
+  "ex": "শুনছেন, কটা বাজে?",
+  "extr": "shunchhen, kotaa baaje?"
+ },
+ {
+  "id": "ENG_CHUNK_1240",
+  "t": "কত দাম? / এটা কত?",
+  "tr": "koto daam? / etaa koto?",
+  "ex": "ব্যাগটা তো সুন্দর। কত দাম?",
+  "extr": "byaagtaa to sundor. koto daam?"
+ },
+ {
+  "id": "ENG_CHUNK_1241",
+  "t": "বলুন, কী লাগবে? / কী সাহায্য করতে পারি?",
+  "tr": "bolun, kii laagbe? / kii saahaajyo korte paari?",
+  "ex": "নমস্কার, বলুন, কী লাগবে?",
+  "extr": "nomoskaar, bolun, kii laagbe?",
+  "n": "Shop staff say বলুন or কী লাগবে; the সাহায্য line is for offices and help desks."
+ },
+ {
+  "id": "ENG_CHUNK_1242",
+  "t": "ব্যস, এইটুকুই, ধন্যবাদ / আর কিছু লাগবে না",
+  "tr": "bas, eitukui, dhonyobaad / aar kichhu laagbe naa",
+  "ex": "\"আর কিছু?\" \"না, ব্যস, এইটুকুই। ধন্যবাদ।\"",
+  "extr": "\"aar kichhu?\" \"naa, bas, eitukui. dhonyobaad.\""
+ },
+ {
+  "id": "ENG_CHUNK_1243",
+  "t": "মেনুটা একটু দেবেন?",
+  "tr": "menutaa ektu deben?",
+  "ex": "শুনছেন, মেনুটা একটু দেবেন?",
+  "extr": "shunchhen, menutaa ektu deben?"
+ },
+ {
+  "id": "ENG_CHUNK_1244",
+  "t": "এখানে কী ভালো? / কী খাব, বলুন তো?",
+  "tr": "ekhaane kii bhaalo? / kii khaabo, bolun to?",
+  "ex": "এখানে প্রথমবার এলাম। এখানকার কী ভালো, বলুন তো?",
+  "extr": "ekhaane prothombaar elaam. ekhaankaar kii bhaalo, bolun to?"
+ },
+ {
+  "id": "ENG_CHUNK_1245",
+  "t": "আমি নিরামিষ খাই / আমি ভেজিটেরিয়ান",
+  "tr": "aami niraamish khaai / aami bhejiteriyaan",
+  "ex": "আমি নিরামিষ খাই। এই স্যুপে কি মাংস আছে?",
+  "extr": "aami niraamish khaai. ei syupe ki maangsho aachhe?",
+  "n": "Say it clearly: fish is the default in Bengal, and নিরামিষ excludes fish and egg too."
+ },
+ {
+  "id": "ENG_CHUNK_1246",
+  "t": "পেট ভরে গেছে",
+  "tr": "pet bhore gechhe",
+  "ex": "আর না, থাক। পেট ভরে গেছে।",
+  "extr": "aar naa, thaak. pet bhore gechhe."
+ },
+ {
+  "id": "ENG_CHUNK_1247",
+  "t": "বাথরুমটা কোথায়? / টয়লেটটা কোথায়?",
+  "tr": "baathrumtaa kothaay? / toylettaa kothaay?",
+  "ex": "শুনছেন, বাথরুমটা কোথায়?",
+  "extr": "shunchhen, baathrumtaa kothaay?"
+ },
+ {
+  "id": "ENG_CHUNK_1248",
+  "t": "সোজা চলে যান / সোজা যাও",
+  "tr": "sojaa chole jaan / sojaa jaao",
+  "ex": "সোজা চলে যান, ব্যাংকটা বাঁদিকে পড়বে।",
+  "extr": "sojaa chole jaan, byaanktaa baandike porbe.",
+  "n": "পড়বে ('will fall') is how you say a place will be on your left/right."
+ },
+ {
+  "id": "ENG_CHUNK_1249",
+  "t": "আমি কোথায় নামব?",
+  "tr": "aami kothaay naambo?",
+  "ex": "আমি চিড়িয়াখানা যাব। কোথায় নামব?",
+  "extr": "aami chiriyaakhaanaa jaabo. kothaay naambo?"
+ },
+ {
+  "id": "ENG_CHUNK_1250",
+  "t": "ওয়াইফাইয়ের পাসওয়ার্ডটা কী?",
+  "tr": "waaiphaaiyer paaswaardtaa kii?",
+  "ex": "শুনছেন, ওয়াইফাইয়ের পাসওয়ার্ডটা কী?",
+  "extr": "shunchhen, waaiphaaiyer paaswaardtaa kii?"
+ },
+ {
+  "id": "ENG_CHUNK_1251",
+  "t": "বাঁচাও!",
+  "tr": "baanchaao!",
+  "ex": "বাঁচাও! কেউ বাঁচাও!",
+  "extr": "baanchaao! keu baanchaao!",
+  "n": "বাঁচাও ('save [me]') is the cry; সাহায্য করুন is too calm for an emergency."
+ },
+ {
+  "id": "ENG_CHUNK_1252",
+  "t": "একটু সাহায্য করবেন? / একটু হেল্প করবে?",
+  "tr": "ektu saahaajyo korben? / ektu help korbe?",
+  "ex": "শুনছেন, একটু সাহায্য করবেন? আমি রাস্তা হারিয়ে ফেলেছি।",
+  "extr": "shunchhen, ektu saahaajyo korben? aami raastaa haariye phelechhi."
+ },
+ {
+  "id": "ENG_CHUNK_1253",
+  "t": "একজন ডাক্তার লাগবে",
+  "tr": "ekjon daaktaar laagbe",
+  "ex": "একজন ডাক্তার লাগবে। আমার ছেলের খুব শরীর খারাপ।",
+  "extr": "ekjon daaktaar laagbe. aamaar chheler khub shoriir khaaraap.",
+  "n": "'Need' is expressed with লাগবে ('will be needed'), the thing as subject."
+ },
+ {
+  "id": "ENG_CHUNK_1254",
+  "t": "এখানে ব্যথা করছে",
+  "tr": "ekhaane byaathaa korchhe",
+  "ex": "এখানে ব্যথা করছে, পেটে।",
+  "extr": "ekhaane byaathaa korchhe, pete."
+ },
+ {
+  "id": "ENG_CHUNK_1255",
+  "t": "শরীরটা ভালো লাগছে না",
+  "tr": "shoriirtaa bhaalo laagchhe naa",
+  "ex": "শরীরটা ভালো লাগছে না। বাড়ি যাচ্ছি।",
+  "extr": "shoriirtaa bhaalo laagchhe naa. baari jaachchhi."
+ },
+ {
+  "id": "ENG_CHUNK_1256",
+  "t": "অ্যাম্বুলেন্স ডাকুন! / অ্যাম্বুলেন্স ডাকো!",
+  "tr": "yaambulens daakun! / yaambulens daako!",
+  "ex": "অ্যাম্বুলেন্স ডাকুন! উনি শ্বাস নিচ্ছেন না।",
+  "extr": "yaambulens daakun! uni shaas nichchhen naa.",
+  "n": "ডাকুন to strangers, ডাকো to someone you know."
+ },
+ {
+  "id": "ENG_CHUNK_1257",
+  "t": "আমি রাস্তা হারিয়ে ফেলেছি",
+  "tr": "aami raastaa haariye phelechhi",
+  "ex": "শুনছেন, আমি রাস্তা হারিয়ে ফেলেছি। স্টেশনটা কোথায়?",
+  "extr": "shunchhen, aami raastaa haariye phelechhi. steshontaa kothaay?",
+  "n": "আমি হারিয়ে গেছি sounds like a lost child; adults 'lose the road'."
+ },
+ {
+  "id": "ENG_CHUNK_1258",
+  "t": "সাবধান! / দেখে!",
+  "tr": "saabdhaan! / dekhe!",
+  "ex": "দেখে! গাড়ি আসছে!",
+  "extr": "dekhe! gaari aaschhe!"
+ },
+ {
+  "id": "ENG_CHUNK_1259",
+  "t": "কী হয়েছে?",
+  "tr": "kii hoyechhe?",
+  "ex": "তোমাকে মনমরা লাগছে। কী হয়েছে?",
+  "extr": "tomaake monmoraa laagchhe. kii hoyechhe?"
+ },
+ {
+  "id": "ENG_CHUNK_1260",
+  "t": "তুমি ঠিক আছ?",
+  "tr": "tumi thik aachho?",
+  "ex": "তুমি ঠিক আছ? মুখটা ফ্যাকাশে লাগছে।",
+  "extr": "tumi thik aachho? mukhtaa phyaakaashe laagchhe."
+ },
+ {
+  "id": "ENG_CHUNK_1261",
+  "t": "শুভ জন্মদিন! / হ্যাপি বার্থডে!",
+  "tr": "shubho jonmodin! / hyaapi baarthde!",
+  "ex": "শুভ জন্মদিন! এই নাও, তোমার উপহার।",
+  "extr": "shubho jonmodin! ei naao, tomaar upohaar."
+ },
+ {
+  "id": "ENG_CHUNK_1262",
+  "t": "দারুণ! / সাবাশ!",
+  "tr": "daarun! / saabaash!",
+  "ex": "পরীক্ষায় পাশ করেছ? দারুণ!",
+  "extr": "poriikkhaay paash korechho? daarun!",
+  "n": "সাবাশ is praise from an elder or teacher; between peers say দারুণ."
+ },
+ {
+  "id": "ENG_CHUNK_1263",
+  "t": "বৃষ্টি পড়ছে",
+  "tr": "brishti porchhe",
+  "ex": "ছাতাটা নিয়ে যাও। বৃষ্টি পড়ছে।",
+  "extr": "chhaataataa niye jaao. brishti porchhe."
+ },
+ {
+  "id": "ENG_CHUNK_1264",
+  "t": "আজ দিনটা বেশ সুন্দর, তাই না?",
+  "tr": "aaj dintaa besh sundor, taai naa?",
+  "ex": "আজ দিনটা বেশ সুন্দর, তাই না?",
+  "extr": "aaj dintaa besh sundor, taai naa?",
+  "n": "তাই না? (or just না?) at the end is the all-purpose tag question."
+ },
+ {
+  "id": "ENG_CHUNK_1265",
+  "t": "তোমার ফোন নম্বরটা কী?",
+  "tr": "tomaar phon nombortaa kii?",
+  "ex": "তোমার ফোন নম্বরটা কী? মেসেজ করে দেব।",
+  "extr": "tomaar phon nombortaa kii? mesej kore debo."
+ },
+ {
+  "id": "ENG_CHUNK_1266",
+  "t": "তোমার কথা শুনতে পাচ্ছি না",
+  "tr": "tomaar kothaa shunte paachchhi naa",
+  "ex": "সরি, তোমার কথা শুনতে পাচ্ছি না। এখানে খুব আওয়াজ।",
+  "extr": "sori, tomaar kothaa shunte paachchhi naa. ekhaane khub aaoyaaj."
+ },
+ {
+  "id": "ENG_CHUNK_1267",
+  "t": "সরি, ফোনটা ধরতে পারিনি",
+  "tr": "sori, phontaa dhorte paarini",
+  "ex": "হ্যালো, সরি, ফোনটা ধরতে পারিনি। বলো, কী ব্যাপার?",
+  "extr": "hyaalo, sori, phontaa dhorte paarini. bolo, kii byaapaar?"
+ },
+ {
+  "id": "ENG_CHUNK_1268",
+  "t": "একটা কথা জিজ্ঞেস করতে পারি?",
+  "tr": "ektaa kothaa jiggesh korte paari?",
+  "ex": "শুনছেন, একটা কথা জিজ্ঞেস করতে পারি?",
+  "extr": "shunchhen, ektaa kothaa jiggesh korte paari?",
+  "n": "Bengali asks 'one thing' (একটা কথা), not 'a question'."
+ },
+ {
+  "id": "ENG_CHUNK_1269",
+  "t": "কটায় দেখা করব?",
+  "tr": "kotaay dekhaa korbo?",
+  "ex": "ঠিক আছে, শুক্রবার ডিনার। কটায় দেখা করব?",
+  "extr": "thik aachhe, shukrobaar dinaar. kotaay dekhaa korbo?",
+  "n": "Plain future (করব) carries 'shall we'."
+ },
+ {
+  "id": "ENG_CHUNK_1270",
+  "t": "ফোনের চার্জ প্রায় শেষ",
+  "tr": "phoner chaarj praay shesh",
+  "ex": "এবার রাখতে হবে, ফোনের চার্জ প্রায় শেষ।",
+  "extr": "ebaar raakhte hobe, phoner chaarj praay shesh."
+ },
+ {
+  "id": "ENG_CHUNK_1271",
+  "t": "উমম, দাঁড়াও, দেখি",
+  "tr": "umm, daanraao, dekhi",
+  "ex": "উমম, দাঁড়াও দেখি... মনে হয় মঙ্গলবার।",
+  "extr": "umm, daanraao dekhi... mone hoy mongolbaar."
+ },
+ {
+  "id": "ENG_CHUNK_1272",
+  "t": "এক মিনিট / এক সেকেন্ড",
+  "tr": "ek minit / ek sekend",
+  "ex": "এক মিনিট, পেনটা নিয়ে আসি।",
+  "extr": "ek minit, pentaa niye aasi."
+ },
+ {
+  "id": "ENG_CHUNK_1273",
+  "t": "দাঁড়াও / দাঁড়া",
+  "tr": "daanraao / daanraa",
+  "ex": "দাঁড়াও, আসছি!",
+  "extr": "daanraao, aaschhi!",
+  "n": "দাঁড়া is the তুই form, for close friends."
+ },
+ {
+  "id": "ENG_CHUNK_1274",
+  "t": "এক সেকেন্ড / ধরো",
+  "tr": "ek sekend / dhoro",
+  "ex": "এক সেকেন্ড, দেখে বলছি।",
+  "extr": "ek sekend, dekhe bolchhi.",
+  "n": "On the phone: ধরো ('hold') or একটু লাইনে থাকো."
+ },
+ {
+  "id": "ENG_CHUNK_1275",
+  "t": "কী বললেন? / আজ্ঞে?",
+  "tr": "kii bollen? / aggye?",
+  "ex": "কী বললেন? শুনতে পাইনি।",
+  "extr": "kii bollen? shunte paaini.",
+  "n": "আজ্ঞে? is very polite and a little old-fashioned."
+ },
+ {
+  "id": "ENG_CHUNK_1276",
+  "t": "কী? / কী বললে?",
+  "tr": "kii? / kii bolle?",
+  "ex": "কী বললে? আরেকবার বলো তো।",
+  "extr": "kii bolle? aarekbaar bolo to.",
+  "n": "A bare অ্যাঁ? is common in the family but rude to strangers."
+ },
+ {
+  "id": "ENG_CHUNK_1277",
+  "t": "ওটা কী? / এর মানে কী?",
+  "tr": "otaa kii? / er maane kii?",
+  "ex": "এর মানে কী? শব্দটা জানি না।",
+  "extr": "er maane kii? shobdotaa jaani naa."
+ },
+ {
+  "id": "ENG_CHUNK_1278",
+  "t": "আচ্ছা / ঠিক আছে / ওকে",
+  "tr": "aachchhaa / thik aachhe / oke",
+  "ex": "আচ্ছা, চলো যাই।",
+  "extr": "aachchhaa, cholo jaai.",
+  "n": "আচ্ছা also means 'I see' or, with rising tone, 'really?'."
+ },
+ {
+  "id": "ENG_CHUNK_1279",
+  "t": "নিশ্চয়ই / হ্যাঁ হ্যাঁ",
+  "tr": "nishchoyi / hyaan hyaan",
+  "ex": "\"এখানে বসতে পারি?\" \"হ্যাঁ হ্যাঁ, বসুন।\"",
+  "extr": "\"ekhaane boste paari?\" \"hyaan hyaan, bosun.\"",
+  "n": "Doubled হ্যাঁ হ্যাঁ plus the imperative is warmer than a stiff অবশ্যই."
+ },
+ {
+  "id": "ENG_CHUNK_1280",
+  "t": "হ্যাঁ, এই নাও / হ্যাঁ, শিওর",
+  "tr": "hyaan, ei naao / hyaan, shiyor",
+  "ex": "\"নুনটা একটু দেবে?\" \"হ্যাঁ, এই নাও।\"",
+  "extr": "\"nuntaa ektu debe?\" \"hyaan, ei naao.\""
+ },
+ {
+  "id": "ENG_CHUNK_1281",
+  "t": "আমারও / আমিও",
+  "tr": "aamaaro / aamio",
+  "ex": "\"গানটা আমার দারুণ লাগে।\" \"আমারও!\"",
+  "extr": "\"gaantaa aamaar daarun laage.\" \"aamaaro!\"",
+  "n": "Match the case: আমারও after আমার ... লাগে, আমিও after আমি ... করি."
+ },
+ {
+  "id": "ENG_CHUNK_1282",
+  "t": "আমারও না / আমিও না",
+  "tr": "aamaaro naa / aamio naa",
+  "ex": "\"আমার কফি ভালো লাগে না।\" \"আমারও না।\"",
+  "extr": "\"aamaar kophi bhaalo laage naa.\" \"aamaaro naa.\""
+ },
+ {
+  "id": "ENG_CHUNK_1283",
+  "t": "আচ্ছা / হুঁ, ঠিক",
+  "tr": "aachchhaa / hun, thik",
+  "ex": "আচ্ছা, তাহলে বাস ছাড়ছে ন'টায়।",
+  "extr": "aachchhaa, taahole baas chhaarchhe notaay."
+ },
+ {
+  "id": "ENG_CHUNK_1284",
+  "t": "জানি না",
+  "tr": "jaani naa",
+  "ex": "সরি, জানি না।",
+  "extr": "sori, jaani naa."
+ },
+ {
+  "id": "ENG_CHUNK_1285",
+  "t": "হয়তো / দেখি",
+  "tr": "hoyto / dekhi",
+  "ex": "\"আজ রাতে আসছ?\" \"দেখি, হয়তো।\"",
+  "extr": "\"aaj raate aaschho?\" \"dekhi, hoyto.\"",
+  "n": "দেখি ('let's see') is the everyday non-committal answer."
+ },
+ {
+  "id": "ENG_CHUNK_1286",
+  "t": "ঠিক জানি না",
+  "tr": "thik jaani naa",
+  "ex": "\"রবিবার খোলা থাকে?\" \"ঠিক জানি না।\"",
+  "extr": "\"robibaar kholaa thaake?\" \"thik jaani naa.\""
+ },
+ {
+  "id": "ENG_CHUNK_1287",
+  "t": "ভালো আইডিয়া / ঠিক বলেছ",
+  "tr": "bhaalo aaidiyaa / thik bolechho",
+  "ex": "\"চলো, ট্যাক্সি নিই।\" \"ভালো আইডিয়া।\"",
+  "extr": "\"cholo, tyaaksi nii.\" \"bhaalo aaidiyaa.\""
+ },
+ {
+  "id": "ENG_CHUNK_1288",
+  "t": "বাহ, দারুণ! / দারুণ ব্যাপার!",
+  "tr": "baah, daarun! / daarun byaapaar!",
+  "ex": "চাকরিটা পেয়েছ? বাহ, দারুণ!",
+  "extr": "chaakritaa peyechho? baah, daarun!"
+ },
+ {
+  "id": "ENG_CHUNK_1289",
+  "t": "এই রে! / যাহ!",
+  "tr": "ei re! / jaah!",
+  "ex": "এই রে! চাবিটা ভুলে এসেছি।",
+  "extr": "ei re! chaabitaa bhule esechhi.",
+  "n": "এই রে is the everyday 'oh no' for small mishaps."
+ },
+ {
+  "id": "ENG_CHUNK_1290",
+  "t": "মানে... / আসলে...",
+  "tr": "maane... / aasole...",
+  "ex": "মানে... ঠিক জানি না।",
+  "extr": "maane... thik jaani naa."
+ },
+ {
+  "id": "ENG_CHUNK_1291",
+  "t": "আসলে",
+  "tr": "aasole",
+  "ex": "আসলে আমি কানাডার, আমেরিকার নই।",
+  "extr": "aasole aami kaanaadaar, aamerikaar noi."
+ },
+ {
+  "id": "ENG_CHUNK_1292",
+  "t": "বেশ তো / ঠিক আছে",
+  "tr": "besh to / thik aachhe",
+  "ex": "\"সাতটায় পিৎজা?\" \"বেশ তো।\"",
+  "extr": "\"saattaay pitzaa?\" \"besh to.\""
+ },
+ {
+  "id": "ENG_CHUNK_1293",
+  "t": "কুল / ঠিক আছে",
+  "tr": "kul / thik aachhe",
+  "ex": "\"ওখানেই দেখা হবে।\" \"ঠিক আছে, কুল।\"",
+  "extr": "\"okhaanei dekhaa hobe.\" \"thik aachhe, kul.\""
+ },
+ {
+  "id": "ENG_CHUNK_1294",
+  "t": "বাহ! / ওয়াও!",
+  "tr": "baah! / waao!",
+  "ex": "বাহ! তোমার বাড়িটা তো দারুণ সুন্দর!",
+  "extr": "baah! tomaar baaritaa to daarun sundor!"
+ },
+ {
+  "id": "ENG_CHUNK_1295",
+  "t": "চলবে? / ঠিক আছে তো?",
+  "tr": "cholbe? / thik aachhe to?",
+  "ex": "আমি আটটায় আসব। চলবে?",
+  "extr": "aami aattaay aasbo. cholbe?"
+ },
+ {
+  "id": "ENG_CHUNK_1296",
+  "t": "তারপর",
+  "tr": "taarpor",
+  "ex": "ঘুম থেকে উঠলাম, তারপর জলখাবার খেলাম।",
+  "extr": "ghum theke uthlaam, taarpor jolkhaabaar khelaam."
+ },
+ {
+  "id": "ENG_CHUNK_1297",
+  "t": "কিন্তু",
+  "tr": "kintu",
+  "ex": "আমার চা ভালো লাগে, কিন্তু কফি ভালো লাগে না।",
+  "extr": "aamaar chaa bhaalo laage, kintu kophi bhaalo laage naa."
+ },
+ {
+  "id": "ENG_CHUNK_1298",
+  "t": "কারণ / [clause] বলে",
+  "tr": "kaaron / [clause] bole",
+  "ex": "অনেক রাত অবধি কাজ করেছি বলে ক্লান্ত লাগছে।",
+  "extr": "onek raat obodhi kaaj korechhi bole klaanto laagchhe.",
+  "n": "Speech prefers reason + বলে before the result; কারণ after the result is also fine."
+ },
+ {
+  "id": "ENG_CHUNK_1299",
+  "t": "-ও / আর",
+  "tr": "-o / aar",
+  "ex": "আমি ফরাসি বলতে পারি। একটু-আধটু জার্মানও বলতে পারি।",
+  "extr": "aami phoraasi bolte paari. ektu-aadhtu jaarmaano bolte paari.",
+  "n": "'Also' is usually the suffix -ও on the added word (জার্মানও), not a separate word."
+ },
+ {
+  "id": "ENG_CHUNK_1300",
+  "t": "তারপর / তারপরে",
+  "tr": "taarpor / taarpore",
+  "ex": "আগে চান করি, তারপর জামাকাপড় পরি।",
+  "extr": "aage chaan kori, taarpor jaamaakaapor pori."
+ }
+]

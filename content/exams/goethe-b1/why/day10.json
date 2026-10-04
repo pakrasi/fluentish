@@ -1,0 +1,642 @@
+{
+ "L1-1": {
+  "evidence": "im letzten Jahr habe ich fast jede Woche etwas online gekauft",
+  "evidence_en": "last year I bought something online almost every week",
+  "why": "„Fast jede Woche“ ist das Gegenteil von „selten“. Die Autorin hat also oft online eingekauft.",
+  "why_en": "\"Almost every week\" is the opposite of \"rarely\". She shopped online often.",
+  "trap": "Das Wort „früher“ passt zu „im letzten Jahr“, aber die Häufigkeit ist falsch: nicht selten, sondern sehr oft.",
+  "trap_en": "\"Before\" matches \"last year\", but the frequency is wrong: not rarely, but very often.",
+  "question_en": "The author used to rarely shop on the internet."
+ },
+ "L1-2": {
+  "evidence": "Das hat mich nur fünfzehn Euro gekostet, eine neue Maschine hätte über achtzig gekostet.",
+  "evidence_en": "It only cost me fifteen euros; a new machine would have cost over eighty.",
+  "why": "15 Euro für die Reparatur ist viel weniger als über 80 Euro für eine neue Maschine. Also war die Reparatur günstiger.",
+  "why_en": "15 euros for the repair is much less than over 80 for a new machine, so the repair was cheaper.",
+  "trap": "Man könnte die Zahl 80 mit der Reparatur verbinden, aber 80 Euro ist der Preis einer neuen Maschine (Konjunktiv „hätte“).",
+  "trap_en": "You might link 80 to the repair, but 80 euros is what a new machine would have cost (subjunctive \"hätte\").",
+  "question_en": "The repair of the coffee machine was cheaper than a new machine."
+ },
+ "L1-3": {
+  "evidence": "habe in einem Buchladen eine Stunde lang gestöbert. Die Buchhändlerin hat mir drei Bücher empfohlen",
+  "evidence_en": "I browsed in a bookshop for an hour. The bookseller recommended three books to me",
+  "why": "Das Geschenk für die Mutter waren Bücher aus dem Buchladen, und die Mutter war begeistert.",
+  "why_en": "The present for her mother was books from the bookshop, and her mother was delighted.",
+  "trap": "Der Satz „die ich im Internet nie gefunden hätte“ nennt das Internet, aber gekauft hat sie im Laden.",
+  "trap_en": "\"Which I would never have found online\" mentions the internet, but she bought them in the shop.",
+  "question_en": "The author bought the present for her mother in a bookshop."
+ },
+ "L1-4": {
+  "evidence": "Manche Dinge sind im Laden teurer, vor allem Kleidung.",
+  "evidence_en": "Some things are more expensive in the shop, especially clothes.",
+  "why": "„Vor allem Kleidung“ heißt: Kleidung ist im Laden besonders teuer. Die Aussage „nicht teurer“ ist also falsch.",
+  "why_en": "\"Especially clothes\" means clothes are particularly expensive in shops, so \"not more expensive\" is false.",
+  "trap": "Die Autorin hat am Ende weniger Geld ausgegeben – aber das liegt daran, dass sie weniger gekauft hat, nicht an billiger Kleidung.",
+  "trap_en": "She spent less money overall, but because she bought less, not because clothes were cheaper.",
+  "question_en": "Clothes are not more expensive in the shop than on the internet."
+ },
+ "L1-5": {
+  "evidence": "dass ich insgesamt viel weniger Geld ausgegeben habe als sonst",
+  "evidence_en": "that overall I had spent much less money than usual",
+  "why": "„Als sonst“ bedeutet „als normalerweise“. Sie hat in diesem Monat weniger ausgegeben.",
+  "why_en": "\"Als sonst\" means \"than normally\". She spent less this month.",
+  "trap": "Weil manche Dinge im Laden teurer sind, denkt man vielleicht, sie hat mehr ausgegeben. Aber insgesamt war es weniger.",
+  "trap_en": "Because some things cost more in shops, you might think she spent more, but in total it was less.",
+  "question_en": "This month the author spent less money than usual."
+ },
+ "L1-6": {
+  "evidence": "Werde ich nie wieder online bestellen? Das glaube ich nicht.",
+  "evidence_en": "Will I never order online again? I don't think so.",
+  "why": "Sie glaubt nicht, dass sie nie wieder online bestellt. Sie will nur zuerst in Geschäften in der Nähe schauen.",
+  "why_en": "She doesn't think she'll never order online again; she just wants to check local shops first.",
+  "trap": "Die Wörter „nie wieder online bestellen“ stehen im Text, aber als Frage, und die Antwort ist „Das glaube ich nicht“.",
+  "trap_en": "The words \"never order online again\" appear, but as a question, answered with \"I don't think so\".",
+  "question_en": "The author never wants to order online again in future."
+ },
+ "L2-1": {
+  "evidence": "die Kunden füllen sich selbst so viel ab, wie sie brauchen",
+  "evidence_en": "the customers fill up as much as they need themselves",
+  "why": "„Selbst abfüllen, so viel wie sie brauchen“ ist dasselbe wie „die Menge selbst nehmen“. Also b.",
+  "why_en": "\"Fill up themselves as much as they need\" = \"take the amount they need themselves\". So b.",
+  "trap": "Gläser gibt es nur für Kunden ohne eigene Dose, und man kann sie kaufen oder leihen – also nicht a und nicht c.",
+  "trap_en": "Jars are only for customers without their own container, and can be bought or borrowed, so not a or c.",
+  "question_en": "In Carla Winter's shop …",
+  "options_en": [
+   "all products are sold in jars.",
+   "the customers take the amount they need themselves.",
+   "you have to buy your own containers."
+  ]
+ },
+ "L2-2": {
+  "evidence": "Am Ende gebe man deshalb oft nicht mehr Geld aus.",
+  "evidence_en": "In the end, therefore, people often don't spend more money.",
+  "why": "Die Kunden kaufen nur, was sie brauchen, und werfen weniger weg. Deshalb geben sie oft nicht mehr aus. Also c.",
+  "why_en": "Customers buy only what they need and throw less away, so they often don't spend more. So c.",
+  "trap": "a ist falsch: Manche Produkte kosten mehr als im Supermarkt, Nudeln etwa fünfzig Cent mehr. Regionale Produkte sind nicht billiger (b).",
+  "trap_en": "a is wrong: some products cost more than at the supermarket, pasta about 50 cents more. Regional products aren't cheaper (b).",
+  "question_en": "What does Ms Winter say about the prices?",
+  "options_en": [
+   "Her products are cheaper than in the supermarket.",
+   "Regional products cost less than others.",
+   "The customers often don't spend more money because they throw away less."
+  ]
+ },
+ "L2-3": {
+  "evidence": "Ab Herbst kann man bei ihr Dosen abgeben, die andere Kunden dann kostenlos benutzen dürfen.",
+  "evidence_en": "From autumn you can leave containers with her, which other customers can then use for free.",
+  "why": "Dosen = Behälter. Kunden geben Dosen ab, und andere benutzen sie. Also a.",
+  "why_en": "Tins = containers. Customers drop them off and others use them. So a.",
+  "trap": "Der Supermarkt wird nur genannt, weil Kunden dort einkaufen, wenn sie ihre Behälter vergessen. Es gibt keinen zweiten Laden (c).",
+  "trap_en": "The supermarket is only mentioned because people shop there when they forget their containers; there's no second shop (c).",
+  "question_en": "From autumn …",
+  "options_en": [
+   "customers can use containers that others have handed in.",
+   "the shop will also sell products in packaging.",
+   "a second shop will open in the supermarket."
+  ]
+ },
+ "L2-4": {
+  "evidence": "Das Zählen der Kasse am Abend hat jeden Tag eine halbe Stunde gedauert. Und zweimal wurde bei uns eingebrochen, weil Bargeld im Laden war",
+  "evidence_en": "Counting the till in the evening took half an hour every day. And we were broken into twice because there was cash in the shop",
+  "why": "Die halbe Stunde Zählen = Zeit. Die Einbrüche = Sicherheit. Beides passt zu a.",
+  "why_en": "The half hour of counting = time; the break-ins = security. Both match a.",
+  "trap": "Die Gäste haben sich das nicht gewünscht (b), und von Bankgebühren (c) sagt der Text nichts.",
+  "trap_en": "The guests didn't ask for it (b), and the text says nothing about bank fees (c).",
+  "question_en": "Why does the café no longer accept cash?",
+  "options_en": [
+   "The owner wants to save time and protect himself from break-ins.",
+   "The guests wanted it.",
+   "The bank charges too high fees for coins."
+  ]
+ },
+ "L2-5": {
+  "evidence": "Eine Stammkundin kommt seit März nicht mehr, weil sie keine Karte besitzt.",
+  "evidence_en": "One regular hasn't come since March because she doesn't have a card.",
+  "why": "„Keine Karte besitzen“ bedeutet, sie kann nicht mit Karte zahlen. Deshalb kommt sie nicht mehr. Also c.",
+  "why_en": "Not owning a card means she can't pay by card, so she no longer comes. So c.",
+  "trap": "Das Wort „Ausnahme“ steht im Text, aber mit Negation: „ich kann keine Ausnahme machen“ – also nicht b.",
+  "trap_en": "\"Exception\" appears, but negated: \"I can't make an exception\" - so not b.",
+  "question_en": "The regular customer …",
+  "options_en": [
+   "now pays with her mobile phone.",
+   "has been given an exception.",
+   "no longer comes because she can't pay by card."
+  ]
+ },
+ "L2-6": {
+  "evidence": "geben Menschen mit Karte oft mehr Geld aus, weil sie nicht sehen, wie viel sie schon bezahlt haben",
+  "evidence_en": "people with cards often spend more because they don't see how much they've already paid",
+  "why": "„Nicht sehen, wie viel sie schon bezahlt haben“ = „den Überblick verlieren“. Also a.",
+  "why_en": "\"Not seeing how much they've already paid\" = \"losing track\". So a.",
+  "trap": "Die Banking-App (b) ist die Meinung von Lorenz, nicht von den Verbraucherschützern. c ist verdreht: Ohne Internet funktioniert die Kartenzahlung nicht, nicht umgekehrt.",
+  "trap_en": "The banking app (b) is Lorenz's view, not the consumer advocates'. And c twists the point: card payment fails without internet, not the reverse.",
+  "question_en": "What do the consumer advocates think?",
+  "options_en": [
+   "With a card you often spend more because you lose track.",
+   "The banking app helps you keep an eye on your money.",
+   "Without cash the internet doesn't work."
+  ]
+ },
+ "L3-1": {
+  "evidence": "wir holen gebrauchte Möbel bei Ihnen ab und zahlen sofort bar. Termin innerhalb von 48 Stunden",
+  "evidence_en": "we collect used furniture from you and pay cash immediately. Appointment within 48 hours",
+  "why": "Laura will alte Möbel schnell verkaufen. F kauft gebrauchte Möbel und kommt innerhalb von 48 Stunden.",
+  "why_en": "Laura wants to sell old furniture fast. F buys used furniture and comes within 48 hours.",
+  "trap": "H ist auch ein Möbel-Angebot, aber dort verkauft ein Möbelhaus neue Möbel – Laura will verkaufen, nicht kaufen.",
+  "trap_en": "H is also about furniture, but it's a store selling new furniture; Laura wants to sell, not buy.",
+  "question_en": "Laura is moving and wants to sell her old furniture quickly."
+ },
+ "L3-2": {
+  "evidence": "lernen Sie, wie Sie Ihre Ausgaben kontrollieren und am Monatsende noch Geld übrig haben",
+  "evidence_en": "you learn how to control your spending and still have money left at the end of the month",
+  "why": "Ömer will lernen, besser mit Geld umzugehen. B ist ein Kurs, in dem man lernt, die Ausgaben zu kontrollieren.",
+  "why_en": "Ömer wants to learn to handle money better. B is a course on controlling spending.",
+  "trap": "I (Konto) hat auch mit Geld zu tun, aber ein Konto ist kein Kurs – man lernt dort nichts.",
+  "trap_en": "I (bank account) is also about money, but an account isn't a course; you don't learn anything there.",
+  "question_en": "Ömer spends too much money and wants to learn how to handle his money better."
+ },
+ "L3-3": {
+  "evidence": "Für alle unter 27 mit Studienbescheinigung: keine Kontogebühren",
+  "evidence_en": "For everyone under 27 with proof of enrolment: no account fees",
+  "why": "Ana studiert und will ein Konto ohne Kosten. „Keine Kontogebühren“ bedeutet: Sie muss nichts bezahlen.",
+  "why_en": "Ana is a student and wants a free account. \"No account fees\" means she pays nothing.",
+  "trap": "B nennt auch Geld und einen Preis (40 €), aber das ist ein Kurs und kein Konto.",
+  "trap_en": "B also involves money and a price (40 €), but it's a course, not an account.",
+  "question_en": "Ana is a student and is looking for an account that she doesn't have to pay anything for."
+ },
+ "L3-4": {
+  "evidence": "Samstags 7–13 Uhr: Obst, Gemüse, Eier und Käse aus der Region, direkt von den Erzeugern.",
+  "evidence_en": "Saturdays 7-1: fruit, vegetables, eggs and cheese from the region, direct from the producers.",
+  "why": "Samstag = Wochenende, „direkt von den Erzeugern“ = direkt vom Bauern, und das Gemüse ist frisch. Also D.",
+  "why_en": "Saturday = weekend, \"direct from the producers\" = direct from the farmer, and it's fresh. So D.",
+  "trap": "A ist auch ein Markt am Sonntag, aber ein Flohmarkt mit privaten Verkäufern – dort gibt es kein frisches Gemüse.",
+  "trap_en": "A is also a Sunday market, but a flea market with private sellers; no fresh vegetables.",
+  "question_en": "Jonas wants to buy fresh vegetables directly from the farmer at the weekend."
+ },
+ "L3-5": {
+  "evidence": "Bitte bringen Sie den Kassenbon mit – ohne Bon ist leider kein Umtausch möglich.",
+  "evidence_en": "Please bring the receipt - unfortunately no exchange is possible without it.",
+  "why": "Mei will ohne Kassenbon umtauschen. Keine Anzeige bietet das an, also 0.",
+  "why_en": "Mei wants to exchange without a receipt. No ad offers that, so 0.",
+  "trap": "C spricht genau von Umtausch, aber nur mit Kassenbon – ohne Bon geht es nicht.",
+  "trap_en": "C is exactly about exchanges, but only with a receipt; without one it's not possible.",
+  "question_en": "Mei has received a present that she doesn't like and wants to exchange it without a receipt."
+ },
+ "L3-6": {
+  "evidence": "gebrauchte Kinderkleidung, Schuhe und Spielzeug zu kleinen Preisen",
+  "evidence_en": "used children's clothes, shoes and toys at low prices",
+  "why": "Piotr sucht billige Kleidung für seine Tochter. „Kinderkleidung zu kleinen Preisen“ passt genau. Also G.",
+  "why_en": "Piotr wants cheap clothes for his daughter. \"Children's clothes at low prices\" fits exactly. So G.",
+  "trap": "J ist auch günstige Secondhand-Kleidung, aber nur Damen- und Herrenmode, nicht für Kinder.",
+  "trap_en": "J also has cheap second-hand clothing, but only women's and men's fashion, not children's.",
+  "question_en": "Piotr is looking for cheap clothes for his little daughter."
+ },
+ "L3-7": {
+  "evidence": "Private Verkäufer willkommen! Standgebühr 15 € für drei Meter",
+  "evidence_en": "Private sellers welcome! Stall fee 15 € for three metres",
+  "why": "Nadia will selbst auf einem Markt verkaufen. Beim Flohmarkt A können private Verkäufer einen Stand mieten.",
+  "why_en": "Nadia wants to sell things herself at a market. At flea market A, private sellers can rent a stall.",
+  "trap": "Bei J kann man auch Sachen abgeben, aber der Laden verkauft sie für sie – nicht selbst und nicht auf einem Markt.",
+  "trap_en": "At J you can also hand in items, but the shop sells them for you, not yourself and not at a market.",
+  "question_en": "Nadia has lots of things at home that she no longer needs and wants to sell them herself at a market."
+ },
+ "L4-1": {
+  "evidence": "Ein offener Sonntag wäre für Berufstätige wie mich eine echte Erleichterung.",
+  "evidence_en": "An open Sunday would be a real relief for working people like me.",
+  "why": "Sabine arbeitet lange und findet einen offenen Sonntag eine Erleichterung. Sie ist dafür: Ja.",
+  "why_en": "Sabine works long hours and sees an open Sunday as a relief. She's in favour: Yes.",
+  "trap": "Sie beginnt mit Problemen (volle Läden am Samstag), aber das ist ein Argument für den Sonntag, nicht dagegen.",
+  "trap_en": "She starts with problems (full shops on Saturday), but that's an argument for Sunday, not against.",
+  "question_en": "Sabine, Essen: I work until 7 p.m. during the week and never get to shop in peace. On Saturday the shops are full. An open Sunday would be a real relief for working people like me."
+ },
+ "L4-2": {
+  "evidence": "Der Sonntag ist der einzige Tag, an dem die ganze Familie zusammen ist. Das darf man ihnen nicht nehmen.",
+  "evidence_en": "Sunday is the only day the whole family is together. You mustn't take that away from them.",
+  "why": "Tarek will den Sonntag für die Familien der Verkäufer schützen. Er ist dagegen: Nein.",
+  "why_en": "Tarek wants to protect Sunday for shop workers' families. He's against: No.",
+  "trap": "„Freiwillig am Sonntag arbeiten“ klingt positiv, aber er sagt: Wer das glaubt, „der irrt sich“.",
+  "trap_en": "\"Voluntarily work on Sunday\" sounds positive, but he says anyone who believes that \"is wrong\".",
+  "question_en": "Tarek, Cologne: I worked in retail myself for ten years. Anyone who believes that the sales staff would then voluntarily work on Sunday is mistaken. Sunday is the only day when the whole family is together. You must not take that away from them."
+ },
+ "L4-3": {
+  "evidence": "Warum sollen die Läden in der Stadt schlechtere Chancen haben als Online-Shops?",
+  "evidence_en": "Why should shops in town have worse chances than online shops?",
+  "why": "Ines vergleicht mit anderen Ländern und dem Internet und will gleiche Chancen für Läden. Sie ist dafür: Ja.",
+  "why_en": "Ines compares with other countries and online shopping and wants equal chances for shops. Yes.",
+  "trap": "„Die Welt geht davon nicht unter“ hat eine Negation, bedeutet aber: Sonntagsöffnung ist kein Problem.",
+  "trap_en": "\"The world doesn't end\" contains a negation but means Sunday opening is no problem.",
+  "question_en": "Ines, Rostock: In many countries the shops are open on Sundays, and the world doesn't end because of it. On the internet you can order around the clock anyway. Why should the shops in town have worse chances than online shops?"
+ },
+ "L4-4": {
+  "evidence": "Seitdem sehe ich das anders. Nein, sechs Tage reichen.",
+  "evidence_en": "Since then I see it differently. No, six days are enough.",
+  "why": "Bernd hat seine Meinung geändert. „Sechs Tage reichen“ heißt: kein Sonntag. Nein.",
+  "why_en": "Bernd changed his mind. \"Six days are enough\" means no Sunday. No.",
+  "trap": "Am Anfang sagt er „praktisch“, aber das ist nur seine alte Sicht als Kunde – danach kommt „Aber“.",
+  "trap_en": "He first says \"practical\", but that's only his old view as a customer; then comes \"but\".",
+  "question_en": "Bernd, Ulm: As a customer I would of course find it practical. But I talked to my neighbour, who works at the till, and she told me how tired she already is. Since then I see it differently. No, six days is enough."
+ },
+ "L4-5": {
+  "evidence": "Das könnte doch jede Woche so sein!",
+  "evidence_en": "It could be like that every week!",
+  "why": "Yasemin findet die verkaufsoffenen Sonntage lebendig und will sie jede Woche. Ja.",
+  "why_en": "Yasemin finds shopping Sundays lively and wants them every week. Yes.",
+  "trap": "„Viermal im Jahr“ gibt es schon – das ist kein Argument dagegen, sie will mehr davon.",
+  "trap_en": "\"Four times a year\" already exists; that isn't an objection, she wants more.",
+  "question_en": "Yasemin, Berlin: We already have a shopping Sunday four times a year, and the city centre is full of life then. Cafés, street music, families with children. It could be like that every week!"
+ },
+ "L4-6": {
+  "evidence": "Am Ende gewinnen nur die Großen.",
+  "evidence_en": "In the end only the big ones win.",
+  "why": "Holger meint, nur große Ketten profitieren und kleine Läden verlieren. Er ist dagegen: Nein.",
+  "why_en": "Holger thinks only big chains profit and small shops lose. He's against: No.",
+  "trap": "Das Wort „profitieren“ klingt positiv, aber er meint: Das ist unfair für kleine Läden.",
+  "trap_en": "\"Profit\" sounds positive, but he means it's unfair on small shops.",
+  "question_en": "Holger, Kassel: Who really needs that? Nobody starves because the supermarket is closed on Sunday. The big chains would profit, the small shops couldn't even afford a seventh day. In the end only the big ones win."
+ },
+ "L4-7": {
+  "evidence": "Das lässt sich organisieren, und die Vorteile für die Kunden sind groß.",
+  "evidence_en": "That can be organised, and the advantages for customers are big.",
+  "why": "Claudia sieht eine Lösung (ein anderer freier Tag) und große Vorteile. Sie ist dafür: Ja.",
+  "why_en": "Claudia sees a solution (another day off) and big benefits. She's in favour: Yes.",
+  "trap": "Sie beginnt mit „Ich verstehe die Sorgen der Angestellten“, aber dann kommt „Trotzdem“.",
+  "trap_en": "She starts with \"I understand the employees' worries\", but then comes \"nevertheless\".",
+  "question_en": "Claudia, Trier: I understand the employees' worries. Nevertheless: whoever works on Sundays could get another day off in return, as in hospitals or on the railway. That can be organised, and the advantages for customers are big."
+ },
+ "L5-1": {
+  "evidence": "Nach der Bestätigung können Sie die Bestellung nicht mehr über die Website ändern, sondern nur telefonisch über unseren Kundenservice.",
+  "evidence_en": "After confirmation you can no longer change the order on the website, only by phone via customer service.",
+  "why": "„Nur telefonisch über den Kundenservice“ = man muss den Kundenservice anrufen. Also b.",
+  "why_en": "\"Only by phone via customer service\" = you have to call customer service. So b.",
+  "trap": "Die Website steht im Text, aber mit „nicht mehr“ – also nicht a.",
+  "trap_en": "The website is mentioned, but with \"no longer\" - so not a.",
+  "question_en": "Anyone who wants to change their order after the confirmation …",
+  "options_en": [
+   "can do so on the website.",
+   "has to call customer service.",
+   "has to place a new order."
+  ]
+ },
+ "L5-2": {
+  "evidence": "Lieferungen nach Österreich und in die Schweiz kosten immer 9,90 €, unabhängig vom Bestellwert.",
+  "evidence_en": "Deliveries to Austria and Switzerland always cost 9.90 €, regardless of order value.",
+  "why": "„Immer“ und „unabhängig vom Bestellwert“: Nach Österreich kostet es immer 9,90 €. Also c.",
+  "why_en": "\"Always\" and \"regardless of order value\": Austria always costs 9.90 €. So c.",
+  "trap": "Ab 50 € kostenlos und 4,90 € gelten nur für Deutschland, nicht für Österreich.",
+  "trap_en": "Free from 50 € and 4.90 € apply only to Germany, not Austria.",
+  "question_en": "Shipping to Austria …",
+  "options_en": [
+   "is free from €50.",
+   "costs €4.90.",
+   "always costs €9.90."
+  ]
+ },
+ "L5-3": {
+  "evidence": "Die Kosten für die Rücksendung übernehmen wir, wenn Sie das beiliegende Rücksende-Etikett verwenden.",
+  "evidence_en": "We cover the return costs if you use the enclosed return label.",
+  "why": "„Beiliegend“ = mitgeschickt, „verwenden“ = benutzen. Also a.",
+  "why_en": "\"Enclosed\" = sent with it, \"use\" = use. So a.",
+  "trap": "Man muss keinen Grund angeben („ohne Angabe von Gründen“), und Lebensmittel sind vom Widerruf ausgeschlossen.",
+  "trap_en": "No reason is needed (\"without giving reasons\"), and food is excluded from returns.",
+  "question_en": "The return is free of charge …",
+  "options_en": [
+   "if you use the label that was sent with it.",
+   "if you give a reason.",
+   "if you send back food."
+  ]
+ },
+ "L5-4": {
+  "evidence": "Für die erste Bestellung ist die Zahlung auf Rechnung nicht möglich.",
+  "evidence_en": "Payment by invoice is not possible for the first order.",
+  "why": "Erste Bestellung = zum ersten Mal bestellen. Auf Rechnung geht dann nicht. Also c.",
+  "why_en": "First order = ordering for the first time; invoice isn't possible then. So c.",
+  "trap": "Die 14 Tage gelten nur für die Zahlung auf Rechnung – und die gibt es bei der ersten Bestellung nicht. Kreditkarte ist nicht Pflicht, auch Überweisung geht.",
+  "trap_en": "The 14 days apply only to invoice payment, which isn't available for a first order. Credit card isn't required; bank transfer works too.",
+  "question_en": "Anyone ordering for the first time …",
+  "options_en": [
+   "has to pay by credit card.",
+   "has 14 days to pay.",
+   "cannot pay by invoice."
+  ]
+ },
+ "H1-1a": {
+  "evidence": "Wir mussten aber auch die Kette wechseln, deshalb sind es jetzt fünfundachtzig Euro.",
+  "evidence_en": "But we also had to change the chain, so it's now eighty-five euros.",
+  "why": "Die Reparatur kostet jetzt 85 Euro, nicht 60. Also falsch.",
+  "why_en": "The repair now costs 85 euros, not 60. So false.",
+  "trap": "Sechzig Euro hört man im Text, aber das war nur der alte Preis am Telefon („ungefähr“).",
+  "trap_en": "You hear sixty euros, but that was only the earlier estimate given on the phone.",
+  "question_en": "The repair costs sixty euros."
+ },
+ "H1-1b": {
+  "evidence": "Also am besten kommen Sie heute noch vorbei oder am Donnerstag.",
+  "evidence_en": "So it's best if you come by today or on Thursday.",
+  "why": "Er sagt direkt: heute oder am Donnerstag. Also b.",
+  "why_en": "He says directly: today or Thursday. So b.",
+  "trap": "Morgen ist Mittwoch, und da ist der Laden nachmittags geschlossen – also nicht a und nicht c.",
+  "trap_en": "Tomorrow is Wednesday, when the shop is closed in the afternoon - so not a or c.",
+  "question_en": "Ms Novak should … the bike",
+  "options_en": [
+   "pick up tomorrow afternoon.",
+   "pick up today or on Thursday.",
+   "pay for on Wednesday."
+  ]
+ },
+ "H1-2a": {
+  "evidence": "Wegen eines Konzerts in der Halle wurde er aber auf Samstag verschoben.",
+  "evidence_en": "But because of a concert in the hall it was moved to Saturday.",
+  "why": "Der Flohmarkt ist jetzt am Samstag. Also falsch.",
+  "why_en": "The flea market is now on Saturday. So false.",
+  "trap": "Freitag wird genannt, aber nur als ursprünglicher Plan („sollte ursprünglich“).",
+  "trap_en": "Friday is mentioned, but only as the original plan (\"was originally supposed to\").",
+  "question_en": "The flea market takes place on Friday."
+ },
+ "H1-2b": {
+  "evidence": "Denken Sie an Bargeld, denn die meisten Verkäufer nehmen keine Karten.",
+  "evidence_en": "Remember to bring cash, because most sellers don't take cards.",
+  "why": "„Denken Sie an Bargeld“ = Bargeld mitnehmen. Also c.",
+  "why_en": "\"Remember cash\" = bring cash. So c.",
+  "trap": "Online anmelden müssen sich nur Leute, die selbst verkaufen wollen, nicht die Besucher.",
+  "trap_en": "Only people who want to sell need to register online, not visitors.",
+  "question_en": "The visitors should …",
+  "options_en": [
+   "pay by card.",
+   "register online.",
+   "bring cash."
+  ]
+ },
+ "H1-3a": {
+  "evidence": "Das Angebot gilt nur heute bis Ladenschluss.",
+  "evidence_en": "The offer is valid only today until closing time.",
+  "why": "Der Rabatt gilt nur heute, nicht die ganze Woche. Also falsch.",
+  "why_en": "The discount is only for today, not the whole week. So false.",
+  "trap": "Der Rabatt ist richtig (20 % auf Laufschuhe), aber die Zeit stimmt nicht.",
+  "trap_en": "The discount itself is right (20% on running shoes), but the time period is wrong.",
+  "question_en": "The discount on running shoes applies all week."
+ },
+ "H1-3b": {
+  "evidence": "Es steht in der Einfahrt und blockiert die Lieferung.",
+  "evidence_en": "It's standing in the entrance and blocking the delivery.",
+  "why": "Das Auto blockiert die Lieferung, also soll der Besitzer es wegfahren. Also b.",
+  "why_en": "The car is blocking the delivery, so the owner should move it. So b.",
+  "trap": "Die Sportabteilung und der vierte Stock kommen in anderen Teilen der Durchsage vor (Rabatt, Toiletten).",
+  "trap_en": "The sports department and fourth floor belong to other parts of the announcement (discount, toilets).",
+  "question_en": "The owner of the car should …",
+  "options_en": [
+   "come to the sports department.",
+   "move his car.",
+   "park on the fourth floor."
+  ]
+ },
+ "H1-4a": {
+  "evidence": "Bei uns zahlen Sie erst in sechs Monaten, ohne Zinsen",
+  "evidence_en": "With us you only pay in six months, without interest",
+  "why": "Sechs Monate = ein halbes Jahr. Also richtig.",
+  "why_en": "Six months = half a year. So true.",
+  "trap": "Man hört Zahlen wie „bis Samstag“ und Öffnungszeiten, aber die Bezahlung ist klar: erst in sechs Monaten.",
+  "trap_en": "Other times like \"until Saturday\" and opening hours are mentioned, but payment is clear: in six months.",
+  "question_en": "At Möbel Huber you only have to pay after half a year."
+ },
+ "H1-4b": {
+  "evidence": "wer bis Samstag kauft, bekommt die Lieferung gratis dazu",
+  "evidence_en": "whoever buys by Saturday gets delivery free",
+  "why": "„Gratis“ = kostenlos. Die Bedingung ist: bis Samstag kaufen. Also c.",
+  "why_en": "\"Gratis\" = free. The condition is buying by Saturday. So c.",
+  "trap": "Die App hilft nur zu sehen, ob das Sofa passt. „Sofort bezahlen“ ist falsch – man zahlt sogar später.",
+  "trap_en": "The app only shows whether the sofa fits. \"Pay immediately\" is wrong - you actually pay later.",
+  "question_en": "Delivery is free if you …",
+  "options_en": [
+   "use the app.",
+   "pay immediately.",
+   "buy by Saturday."
+  ]
+ },
+ "H1-5a": {
+  "evidence": "Aber ich überweise es lieber, als dass ich dir Bargeld gebe",
+  "evidence_en": "But I'd rather transfer it than give you cash",
+  "why": "Die Mutter will das Geld überweisen, nicht bar geben. Also falsch.",
+  "why_en": "The mother wants to transfer the money, not give cash. So false.",
+  "trap": "Das Wort „Bargeld“ kommt vor, aber im Vergleich mit „lieber … als“ – sie will es nicht.",
+  "trap_en": "\"Cash\" is said, but in \"rather ... than\" - it's what she doesn't want.",
+  "question_en": "The mother wants to give Daniel the money in cash."
+ },
+ "H1-5b": {
+  "evidence": "Auf dem Vertrag, den du mir geschickt hast, stehen aber neunhundertfünfzig. Schau bitte noch mal nach",
+  "evidence_en": "But the contract you sent me says nine hundred and fifty. Please check again",
+  "why": "Daniel sagt 800, der Vertrag sagt 950. Er soll die Höhe der Kaution prüfen. Also a.",
+  "why_en": "Daniel said 800, the contract says 950. He should check the deposit amount. So a.",
+  "trap": "„Heute Abend“ soll er anrufen, nicht Geld abholen. Den Vertrag hat er schon geschickt; er soll die Kontonummer schicken.",
+  "trap_en": "\"This evening\" he should call, not collect money. He already sent the contract; he should send his account number.",
+  "question_en": "Daniel should …",
+  "options_en": [
+   "check the amount of the deposit in the contract.",
+   "pick up the money this evening.",
+   "send a new contract."
+  ]
+ },
+ "H2-1": {
+  "evidence": "die Frühschicht beginnt schon um sechs, weil dann die Lieferung mit dem frischen Obst und Gemüse kommt",
+  "evidence_en": "the early shift starts at six, because that's when the delivery of fresh fruit and vegetables arrives",
+  "why": "Beginn um sechs, Grund: die Lieferung. Also b.",
+  "why_en": "Start at six, reason: the delivery. So b.",
+  "trap": "Sieben Uhr ist die Öffnung des Marktes, nicht der Schichtbeginn. „Halbe Stunde nach Ladenschluss“ ist das Ende der Spätschicht.",
+  "trap_en": "Seven is when the shop opens, not when the shift starts. \"Half an hour after closing\" is the end of the late shift.",
+  "question_en": "The early shift starts …",
+  "options_en": [
+   "at seven o'clock, when the supermarket opens.",
+   "at six o'clock, because that's when the delivery comes.",
+   "half an hour after closing time."
+  ]
+ },
+ "H2-2": {
+  "evidence": "Wer tauschen möchte, muss das vorher mit mir besprechen, nicht nur mit dem Kollegen.",
+  "evidence_en": "Anyone who wants to swap must discuss it with me beforehand, not just with the colleague.",
+  "why": "„Mit mir“ = mit der Marktleiterin. Man muss vorher mit ihr sprechen. Also a.",
+  "why_en": "\"With me\" = with the manager. You must talk to her first. So a.",
+  "trap": "c recycelt „mit dem Kollegen“, aber sie sagt „nicht nur“. Freitags steht nur der Dienstplan im Pausenraum.",
+  "trap_en": "c reuses \"with the colleague\", but she says \"not only\". Friday is just when the rota is posted.",
+  "question_en": "Anyone who wants to swap a shift …",
+  "options_en": [
+   "has to talk to the store manager beforehand.",
+   "puts their name in the rota on Fridays.",
+   "only has to ask the colleague."
+  ]
+ },
+ "H2-3": {
+  "evidence": "In den ersten zwei Wochen arbeiten Sie nicht allein an der Kasse, sondern immer zusammen mit einer erfahrenen Kollegin.",
+  "evidence_en": "In the first two weeks you won't work alone at the till, but always together with an experienced colleague.",
+  "why": "Sie arbeiten an der Kasse, aber mit einer erfahrenen Kollegin. Also c.",
+  "why_en": "They work at the till, but with an experienced colleague. So c.",
+  "trap": "„Nicht allein“ heißt nicht „nicht an die Kasse“ (a). Die Prüfung kommt einmal danach, nicht jeden Tag (b).",
+  "trap_en": "\"Not alone\" doesn't mean \"not at the till\" (a). The test comes once afterwards, not daily (b).",
+  "question_en": "In the first two weeks …",
+  "options_en": [
+   "the new employees may not work at the till.",
+   "the new employees have to take a test every day.",
+   "the new employees work at the till with an experienced colleague."
+  ]
+ },
+ "H2-4": {
+  "evidence": "zehn Prozent Rabatt auf Ihren Einkauf, allerdings nicht auf Tabak und Zeitschriften",
+  "evidence_en": "ten percent discount on your shopping, but not on tobacco and magazines",
+  "why": "„Allerdings nicht auf Tabak und Zeitschriften“ – der Rabatt gilt dafür nicht. Also b.",
+  "why_en": "\"But not on tobacco and magazines\" - the discount doesn't apply to them. So b.",
+  "trap": "Dreißig hört man bei der Pause (dreißig Minuten), der Rabatt ist zehn Prozent.",
+  "trap_en": "Thirty refers to the break (thirty minutes); the discount is ten percent.",
+  "question_en": "The staff discount …",
+  "options_en": [
+   "applies to the whole purchase.",
+   "does not apply to tobacco and magazines.",
+   "is thirty per cent."
+  ]
+ },
+ "H2-5": {
+  "evidence": "dann diskutieren Sie bitte nicht, sondern holen Sie mich oder meinen Stellvertreter, Herrn Öztürk",
+  "evidence_en": "then please don't argue, but fetch me or my deputy, Mr Öztürk",
+  "why": "Sie sollen die Marktleiterin oder Herrn Öztürk holen. Also a.",
+  "why_en": "They should fetch the manager or Mr Öztürk. So a.",
+  "trap": "„Diskutieren“ und „umtauschen“ kommen vor, aber sie sagt: „diskutieren Sie bitte nicht“.",
+  "trap_en": "\"Argue\" and \"exchange\" are mentioned, but she says \"please don't argue\".",
+  "question_en": "If there is a complaint, the new employees should …",
+  "options_en": [
+   "fetch the store manager or her deputy.",
+   "argue with the customer.",
+   "exchange the goods immediately."
+  ]
+ },
+ "H3-1": {
+  "evidence": "ich brauche einen für die Uni",
+  "evidence_en": "I need one for university",
+  "why": "Uni = Studium. Lea braucht den Laptop für die Uni. Also richtig.",
+  "why_en": "Uni = studies. Lea needs the laptop for university. So true.",
+  "trap": "Felix denkt, sie will Geld sparen – aber der Laptop ist für die Uni nötig.",
+  "trap_en": "Felix thinks she wants to save money, but she needs the laptop for university.",
+  "question_en": "Lea needs the laptop for her studies."
+ },
+ "H3-2": {
+  "evidence": "Ich hatte an maximal sechshundert gedacht.",
+  "evidence_en": "I was thinking of six hundred at most.",
+  "why": "„Maximal“ = höchstens. Also richtig.",
+  "why_en": "\"Maximal\" = at most. So true.",
+  "trap": "Man hört auch elfhundert und siebenhundert, aber 1100 ist der Preis des Laptops und 700 ihr Erspartes.",
+  "trap_en": "You also hear 1,100 and 700, but 1,100 is the laptop price and 700 her savings.",
+  "question_en": "Lea wants to spend six hundred euros at most."
+ },
+ "H3-3": {
+  "evidence": "Mein Bruder hat seinen im Internet gekauft, ein Jahr alt",
+  "evidence_en": "My brother bought his online, a year old",
+  "why": "Nicht Felix, sondern sein Bruder hat einen gebrauchten Laptop gekauft. Also falsch.",
+  "why_en": "Not Felix but his brother bought a used laptop. So false.",
+  "trap": "Felix erzählt davon, aber es geht um eine andere Person: seinen Bruder.",
+  "trap_en": "Felix tells the story, but it's about another person: his brother.",
+  "question_en": "Felix bought his own laptop second-hand."
+ },
+ "H3-4": {
+  "evidence": "Es gibt Händler, die gebrauchte Geräte prüfen und dann mit einem Jahr Garantie verkaufen. Das nennt sich generalüberholt.",
+  "evidence_en": "There are dealers who check used devices and then sell them with a one-year warranty. It's called refurbished.",
+  "why": "Generalüberholte Geräte haben ein Jahr Garantie. Also falsch.",
+  "why_en": "Refurbished devices come with a one-year warranty. So false.",
+  "trap": "Lea sagt „dann habe ich keine Garantie“, aber Felix antwortet: „Das stimmt so nicht.“",
+  "trap_en": "Lea says \"then I have no warranty\", but Felix replies \"that's not right\".",
+  "question_en": "Refurbished devices are sold without a guarantee."
+ },
+ "H3-5": {
+  "evidence": "Aber ehrlich gesagt würde ich das nicht machen.",
+  "evidence_en": "But honestly, I wouldn't do that.",
+  "why": "Felix rät von Ratenzahlung ab, weil man schnell den Überblick verliert. Also falsch.",
+  "why_en": "Felix advises against instalments because you quickly lose track. So false.",
+  "trap": "„Klingt entspannt, ja“ sagt Felix, aber gleich danach kommt „Aber“ und das Beispiel der Cousine.",
+  "trap_en": "Felix says \"sounds relaxed, yes\", but then comes \"but\" and his cousin's example.",
+  "question_en": "Felix thinks paying in instalments is a good solution."
+ },
+ "H3-6": {
+  "evidence": "Aber das war eigentlich für den Sommer, für die Reise nach Portugal.",
+  "evidence_en": "But that was actually for the summer, for the trip to Portugal.",
+  "why": "Lea hat etwa 700 Euro für die Reise nach Portugal gespart. Also richtig.",
+  "why_en": "Lea saved about 700 euros for the trip to Portugal. So true.",
+  "trap": "„Laptop oder Portugal“ klingt, als ob das Geld für den Laptop ist, aber es war für die Reise gespart.",
+  "trap_en": "\"Laptop or Portugal\" makes it sound like laptop money, but it was saved for the trip.",
+  "question_en": "Lea has saved money for a trip."
+ },
+ "H3-7": {
+  "evidence": "Dann kaufe ich hier heute jedenfalls nichts.",
+  "evidence_en": "Then I'm definitely not buying anything here today.",
+  "why": "Lea kauft heute nichts im Geschäft, sie will einen gebrauchten Laptop. Also falsch.",
+  "why_en": "Lea buys nothing in the shop today; she wants a used laptop. So false.",
+  "trap": "Sie sagt „heute“, aber mit „nichts“. Heute kauft sie nur einen Kaffee.",
+  "trap_en": "She says \"today\", but with \"nothing\". Today she only buys a coffee.",
+  "question_en": "Lea is buying the laptop in the shop today."
+ },
+ "H4-1": {
+  "evidence": "Ein Mensch in Deutschland besitzt heute im Durchschnitt zehntausend Gegenstände. Vor fünfzig Jahren waren es nur etwa die Hälfte.",
+  "evidence_en": "A person in Germany today owns ten thousand items on average. Fifty years ago it was only about half.",
+  "why": "Frau Sommer (a) sagt: vor fünfzig Jahren die Hälfte, heute also doppelt so viel.",
+  "why_en": "Ms Sommer (a) says: half fifty years ago, so twice as much today.",
+  "trap": "Die Zahl kommt nur von der Forscherin; Herr Bauer spricht über Geräte, nicht über die Zahl der Dinge.",
+  "trap_en": "Only the researcher gives this figure; Mr Bauer talks about appliances, not how many items people own.",
+  "question_en": "People today own twice as many things as fifty years ago."
+ },
+ "H4-2": {
+  "evidence": "eine Reparatur lohnt sich nicht, weil die Ersatzteile zu teuer sind",
+  "evidence_en": "a repair isn't worth it because the spare parts are too expensive",
+  "why": "Herr Bauer (b) sagt, Ersatzteile sind zu teuer. „Zu teuer“ = „zu viel kosten“.",
+  "why_en": "Mr Bauer (b) says spare parts are too expensive. \"Too expensive\" = \"cost too much\".",
+  "trap": "Frau Sommer spricht danach auch über Ersatzteile, aber sie fordert nur, dass es sie zehn Jahre lang gibt.",
+  "trap_en": "Ms Sommer then also mentions spare parts, but only demands they be available for ten years.",
+  "question_en": "Many devices can't be repaired because the spare parts cost too much."
+ },
+ "H4-3": {
+  "evidence": "ich habe letzte Woche ein Handy gekauft, obwohl mein altes noch funktioniert hat",
+  "evidence_en": "last week I bought a phone although my old one still worked",
+  "why": "Der Moderator erzählt das selbst. „Das alte funktioniert noch“ = er hätte kein neues gebraucht.",
+  "why_en": "The moderator says this himself. \"The old one still worked\" = he didn't need a new one.",
+  "trap": "Herr Bauer antwortet auf das Handy-Thema, aber gekauft hat es der Moderator.",
+  "trap_en": "Mr Bauer responds to the phone story, but the moderator is the one who bought it.",
+  "question_en": "I bought myself a new mobile phone although I wouldn't have needed one."
+ },
+ "H4-4": {
+  "evidence": "Ich mache das in meinem Laden übrigens nicht mehr. Bei mir gibt es feste Preise",
+  "evidence_en": "By the way, I don't do that in my shop any more. With me there are fixed prices",
+  "why": "Herr Bauer (b) hat ein Geschäft und macht keine Rabatte mehr, er hat feste Preise.",
+  "why_en": "Mr Bauer (b) owns a shop and no longer runs discounts; he has fixed prices.",
+  "trap": "Frau Sommer spricht auch über Tricks mit Rabatten, aber bei den Online-Händlern, nicht in ihrem Geschäft.",
+  "trap_en": "Ms Sommer also mentions discount tricks, but by online retailers, not in her own shop.",
+  "question_en": "There are no more discount promotions in my shop."
+ },
+ "H4-5": {
+  "evidence": "Wer etwas kaufen will, der sollte eine Nacht darüber schlafen.",
+  "evidence_en": "Anyone who wants to buy something should sleep on it for a night.",
+  "why": "„Eine Nacht darüber schlafen“ = bis zum nächsten Tag warten. Das ist der Rat von Frau Sommer (a).",
+  "why_en": "\"Sleep on it for a night\" = wait until the next day. That's Ms Sommer's (a) advice.",
+  "trap": "Der Moderator wiederholt den Satz am Ende, aber der Rat kommt von Frau Sommer.",
+  "trap_en": "The moderator repeats it at the end, but the advice is Ms Sommer's.",
+  "question_en": "Before a purchase you should wait until the next day."
+ },
+ "H4-6": {
+  "evidence": "Reparaturen billiger machen, zum Beispiel durch weniger Steuern auf Handwerksleistungen",
+  "evidence_en": "make repairs cheaper, for example through lower taxes on trade services",
+  "why": "Herr Bauer (b) schlägt weniger Steuern auf Reparaturen vor.",
+  "why_en": "Mr Bauer (b) proposes lower taxes on repairs.",
+  "trap": "Frau Sommer sagt „Das unterstütze ich“, aber die Idee kommt von Herrn Bauer.",
+  "trap_en": "Ms Sommer says \"I support that\", but the idea comes from Mr Bauer.",
+  "question_en": "Repairs should be taxed less."
+ },
+ "H4-7": {
+  "evidence": "In Österreich gibt es so etwas bereits, dort bekommt man einen Teil der Reparaturkosten vom Staat zurück",
+  "evidence_en": "Austria already has something like this; there you get part of the repair costs back from the state",
+  "why": "Österreich = Nachbarland. Frau Sommer (a) erzählt das.",
+  "why_en": "Austria = neighbouring country. Ms Sommer (a) says this.",
+  "trap": "Das Thema Reparaturen kommt von Herrn Bauer, aber das Beispiel Österreich bringt Frau Sommer.",
+  "trap_en": "Repairs were Mr Bauer's topic, but the Austria example comes from Ms Sommer.",
+  "question_en": "In a neighbouring country the state pays part of the repair costs."
+ },
+ "H4-8": {
+  "evidence": "Kinder sollten lernen, wie Werbung funktioniert und wie man mit Geld umgeht.",
+  "evidence_en": "Children should learn how advertising works and how to handle money.",
+  "why": "Frau Sommer (a) will Konsumunterricht in der Schule.",
+  "why_en": "Ms Sommer (a) wants consumer education in schools.",
+  "trap": "Der Moderator nennt „Konsumunterricht in der Schule“ am Ende, aber er fasst nur ihren Vorschlag zusammen.",
+  "trap_en": "The moderator mentions school consumer lessons at the end, but he's only summarising her proposal.",
+  "question_en": "Even children should learn how to handle money."
+ }
+}

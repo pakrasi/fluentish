@@ -1,0 +1,126 @@
+[
+ {
+  "time": "past",
+  "aspect": "simple",
+  "form": "io sono andato",
+  "alt": "io andai",
+  "status": "form",
+  "marker": [
+   "sono andato"
+  ],
+  "gloss": "I went",
+  "note": "Passato prossimo with essere; andato agrees with the speaker (andata for a woman). The passato remoto andai is mostly written or southern.",
+  "translit": "",
+  "markerTr": []
+ },
+ {
+  "time": "past",
+  "aspect": "progressive",
+  "form": "io andavo",
+  "alt": "io stavo andando",
+  "status": "form",
+  "marker": [
+   "andavo"
+  ],
+  "gloss": "I was going / I used to go",
+  "note": "Imperfetto: ongoing or habitual past in one word. stavo andando stresses being mid-way, e.g. when something interrupted.",
+  "translit": "",
+  "markerTr": []
+ },
+ {
+  "time": "past",
+  "aspect": "perfect",
+  "form": "io ero andato",
+  "alt": "",
+  "status": "form",
+  "marker": [
+   "ero andato"
+  ],
+  "gloss": "I had gone",
+  "note": "Trapassato prossimo: imperfetto of essere plus participle, used just like English had gone.",
+  "translit": "",
+  "markerTr": []
+ },
+ {
+  "time": "present",
+  "aspect": "simple",
+  "form": "io vado",
+  "alt": "",
+  "status": "form",
+  "marker": [],
+  "gloss": "I go",
+  "note": "Irregular present vado. In speech io is usually dropped because the -o ending already says who.",
+  "translit": "",
+  "markerTr": []
+ },
+ {
+  "time": "present",
+  "aspect": "progressive",
+  "form": "io sto andando",
+  "alt": "io vado",
+  "status": "form",
+  "marker": [
+   "sto andando"
+  ],
+  "gloss": "I am going",
+  "note": "stare + gerund is a real progressive, but optional: plain vado also works for right now.",
+  "translit": "",
+  "markerTr": []
+ },
+ {
+  "time": "present",
+  "aspect": "perfect",
+  "form": "io sono andato",
+  "alt": "",
+  "status": "form",
+  "marker": [
+   "sono andato"
+  ],
+  "gloss": "I have gone",
+  "note": "Same form as the past simple: the passato prossimo covers both I went and I have gone.",
+  "translit": "",
+  "markerTr": []
+ },
+ {
+  "time": "future",
+  "aspect": "simple",
+  "form": "io andrò",
+  "alt": "io vado domani",
+  "status": "form",
+  "marker": [
+   "andrò"
+  ],
+  "gloss": "I will go",
+  "note": "Synthetic future: andr- + -ò. For plans, the present plus a time word (vado domani) is just as common in speech.",
+  "translit": "",
+  "markerTr": []
+ },
+ {
+  "time": "future",
+  "aspect": "progressive",
+  "form": "io starò andando",
+  "alt": "",
+  "status": "none",
+  "marker": [
+   "starò andando"
+  ],
+  "gloss": "I will be going",
+  "note": "Grammatical, but starò + gerund mostly signals a guess (starà dormendo: he's probably asleep), not a future in progress.",
+  "translit": "",
+  "markerTr": []
+ },
+ {
+  "time": "future",
+  "aspect": "perfect",
+  "form": "io sarò andato",
+  "alt": "",
+  "status": "form",
+  "marker": [
+   "sarò andato"
+  ],
+  "gloss": "I will have gone",
+  "note": "Futuro anteriore is used, often after quando: quando sarò andato... It also marks guesses about the past: sarà andato.",
+  "translit": "",
+  "markerTr": []
+ }
+]

@@ -1,0 +1,733 @@
+[
+ {
+  "id": "ENG_CHUNK_1001",
+  "t": "[verb] के भी अपने फ़ायदे हैं",
+  "tr": "[verb] ke bhii apne faayde hain",
+  "ex": "नए साल की रात घर पर रहने के भी अपने फ़ायदे हैं।",
+  "extr": "nae saal kii raat ghar par rahne ke bhii apne faayde hain."
+ },
+ {
+  "id": "ENG_CHUNK_1002",
+  "t": "आख़िर में बात [noun] पर आकर रुकती है",
+  "tr": "aakhir men baat [noun] par aakar ruktii hai",
+  "ex": "मेरे लिए तो आख़िर में बात क़ीमत पर आकर रुकती है।",
+  "extr": "mere lie to aakhir men baat qiimat par aakar ruktii hai.",
+  "n": "Shorter: मेरे लिए तो सब क़ीमत पर निर्भर है."
+ },
+ {
+  "id": "ENG_CHUNK_1003",
+  "t": "अपना ग़ुस्सा [person] पर मत निकालो",
+  "tr": "apnaa gussaa [person] par mat nikaalo",
+  "ex": "पता है तुम्हारा दिन ख़राब था, पर अपना ग़ुस्सा मुझ पर मत निकालो।",
+  "extr": "pataa hai tumhaaraa din kharaab thaa, par apnaa gussaa mujh par mat nikaalo."
+ },
+ {
+  "id": "ENG_CHUNK_1004",
+  "t": "[verb] को बदतमीज़ी माना जाता है",
+  "tr": "[verb] ko badtamiizii maanaa jaataa hai",
+  "ex": "कुछ देशों में चलते-चलते खाने को बदतमीज़ी माना जाता है।",
+  "extr": "kuchh deshon men chalte-chalte khaane ko badtamiizii maanaa jaataa hai.",
+  "n": "Everyday: ... अच्छा नहीं माना जाता. Relevant in India too: eating with the left hand."
+ },
+ {
+  "id": "ENG_CHUNK_1005",
+  "t": "मैं मानना चाहूँगा कि [clause]",
+  "tr": "main maannaa chaahuungaa ki [clause]",
+  "ex": "मैं मानना चाहूँगा कि मैं काफ़ी अच्छा खाना बनाता हूँ।",
+  "extr": "main maannaa chaahuungaa ki main kaafii achchhaa khaanaa banaataa huun.",
+  "n": "More natural in speech: मेरे ख़याल से तो ... (in my own opinion at least), said with a smile."
+ },
+ {
+  "id": "ENG_CHUNK_1006",
+  "t": "[noun] जैसी कोई चीज़ नहीं होती",
+  "tr": "[noun] jaisii koii chiiz nahiin hotii",
+  "ex": "परफ़ेक्ट फ़्लैट जैसी कोई चीज़ नहीं होती।",
+  "extr": "parfekT flaiT jaisii koii chiiz nahiin hotii.",
+  "n": "होती (habitual), not है: it's a general truth."
+ },
+ {
+  "id": "ENG_CHUNK_1007",
+  "t": "[noun] को दिल पर मत लो",
+  "tr": "[noun] ko dil par mat lo",
+  "ex": "एक ख़राब रिव्यू को दिल पर मत लो।",
+  "extr": "ek kharaab rivyuu ko dil par mat lo."
+ },
+ {
+  "id": "ENG_CHUNK_1008",
+  "t": "[person] भला क्यों [verb]?",
+  "tr": "[person] bhalaa kyon [verb]?",
+  "ex": "वो भला इतनी छोटी-सी बात पर झूठ क्यों बोलेगी?",
+  "extr": "vo bhalaa itnii chhoTii-sii baat par jhuuTh kyon bolegii?",
+  "n": "भला marks a rhetorical \"why on earth\"; the verb goes future (बोलेगी)."
+ },
+ {
+  "id": "ENG_CHUNK_1009",
+  "t": "[verb] से तुम्हें कौन रोक रहा है?",
+  "tr": "[verb] se tumhen kaun rok rahaa hai?",
+  "ex": "तुम्हें अपनी नौकरी से नफ़रत है। नई ढूँढने से तुम्हें कौन रोक रहा है?",
+  "extr": "tumhen apnii naukarii se nafrat hai. naii DhuunDhne se tumhen kaun rok rahaa hai?"
+ },
+ {
+  "id": "ENG_CHUNK_1010",
+  "t": "[noun] का क्या हुआ?",
+  "tr": "[noun] kaa kyaa huaa?",
+  "ex": "उस लड़के का क्या हुआ जिसके साथ तुम काम करते थे?",
+  "extr": "us laRke kaa kyaa huaa jiske saath tum kaam karte the?"
+ },
+ {
+  "id": "ENG_CHUNK_1011",
+  "t": "वो [noun] याद है जिसके बारे में मैंने बताया था?",
+  "tr": "vo [noun] yaad hai jiske baare men mainne bataayaa thaa?",
+  "ex": "वो कॉफ़ी शॉप याद है जिसके बारे में मैंने बताया था? वो बंद हो गई।",
+  "extr": "vo kaufii shaup yaad hai jiske baare men mainne bataayaa thaa? vo band ho gaii."
+ },
+ {
+  "id": "ENG_CHUNK_1012",
+  "t": "और रही बात [noun] की, [clause]",
+  "tr": "aur rahii baat [noun] kii, [clause]",
+  "ex": "और रही बात खाने की, मैं सोच रहा था बाहर से मँगा लें।",
+  "extr": "aur rahii baat khaane kii, main soch rahaa thaa baahar se mangaa len.",
+  "n": "Also: जहाँ तक [noun] का सवाल है ..."
+ },
+ {
+  "id": "ENG_CHUNK_1013",
+  "t": "अजीब बात है, तुमने [noun] का ज़िक्र किया",
+  "tr": "ajiib baat hai, tumne [noun] kaa zikr kiyaa",
+  "ex": "अजीब बात है, तुमने पोर्टलैंड का ज़िक्र किया। मैं अगले हफ़्ते वहीं जा रहा हूँ।",
+  "extr": "ajiib baat hai, tumne porTlainD kaa zikr kiyaa. main agle hafte vahiin jaa rahaa huun.",
+  "n": "Casual: अरे वाह, क्या इत्तफ़ाक़ है!"
+ },
+ {
+  "id": "ENG_CHUNK_1014",
+  "t": "अगर कभी [noun] आओ, तो [clause]",
+  "tr": "agar kabhii [noun] aao, to [clause]",
+  "ex": "अगर कभी जयपुर आओ, तो हमारे यहाँ ही रुकना।",
+  "extr": "agar kabhii jaypur aao, to hamaare yahaan hii ruknaa.",
+  "n": "Indian hospitality: ... ज़रूर घर आना is a real invitation, not politeness."
+ },
+ {
+  "id": "ENG_CHUNK_1015",
+  "t": "कमाल है कि [clause]",
+  "tr": "kamaal hai ki [clause]",
+  "ex": "कमाल है कि बच्चे कितनी जल्दी बड़े हो जाते हैं।",
+  "extr": "kamaal hai ki bachche kitnii jaldii baRe ho jaate hain."
+ },
+ {
+  "id": "ENG_CHUNK_1016",
+  "t": "मैं ये नहीं कह रहा कि तुम [verb]",
+  "tr": "main ye nahiin kah rahaa ki tum [verb]",
+  "ex": "मैं ये नहीं कह रहा कि तुम रोज़ रात खाना बनाओ, बस हफ़्ते में एक बार।",
+  "extr": "main ye nahiin kah rahaa ki tum roz raat khaanaa banaao, bas hafte men ek baar.",
+  "n": "The ki-clause takes the subjunctive (बनाओ)."
+ },
+ {
+  "id": "ENG_CHUNK_1017",
+  "t": "क्या इत्तफ़ाक़ है कि [clause]!",
+  "tr": "kyaa ittafaaq hai ki [clause]!",
+  "ex": "क्या इत्तफ़ाक़ है कि हम एक ही फ़्लाइट में निकले!",
+  "extr": "kyaa ittafaaq hai ki ham ek hii flaaiT men nikle!"
+ },
+ {
+  "id": "ENG_CHUNK_1018",
+  "t": "[noun] तो कमाल है, अभी तक यक़ीन नहीं हो रहा",
+  "tr": "[noun] to kamaal hai, abhii tak yaqiin nahiin ho rahaa",
+  "ex": "तुम्हारी बालकनी का नज़ारा तो कमाल है, अभी तक यक़ीन नहीं हो रहा।",
+  "extr": "tumhaarii baalkanii kaa nazaaraa to kamaal hai, abhii tak yaqiin nahiin ho rahaa."
+ },
+ {
+  "id": "ENG_CHUNK_1019",
+  "t": "तुम्हें [noun] देखना चाहिए था",
+  "tr": "tumhen [noun] dekhnaa chaahie thaa",
+  "ex": "तुम्हें उसका चेहरा देखना चाहिए था!",
+  "extr": "tumhen uskaa chehraa dekhnaa chaahie thaa!",
+  "n": "चाहिए था = \"should have\"; the infinitive agrees with the object: चेहरा देखना, शक्ल देखनी."
+ },
+ {
+  "id": "ENG_CHUNK_1020",
+  "t": "कितना [adjective] है ना! / है ना [adjective]?",
+  "tr": "kitnaa [adjective] hai naa! / hai naa [adjective]?",
+  "ex": "उन्होंने हमें फ़्री में अपग्रेड कर दिया। है ना मस्त?",
+  "extr": "unhonne hamen frii men apgreD kar diyaa. hai naa mast?"
+ },
+ {
+  "id": "ENG_CHUNK_1021",
+  "t": "[verb] के लिए तो पागल होना पड़ेगा",
+  "tr": "[verb] ke lie to paagal honaa paRegaa",
+  "ex": "इस बर्फ़ में गाड़ी चलाने के लिए तो पागल होना पड़ेगा।",
+  "extr": "is barf men gaaRii chalaane ke lie to paagal honaa paRegaa.",
+  "n": "Also: कोई पागल ही इस बर्फ़ में गाड़ी चलाएगा."
+ },
+ {
+  "id": "ENG_CHUNK_1022",
+  "t": "[person] के बारे में कोई कुछ भी कहे, [clause]",
+  "tr": "[person] ke baare men koii kuchh bhii kahe, [clause]",
+  "ex": "मेरे मामा के बारे में कोई कुछ भी कहे, ज़रूरत पड़ने पर वो हमेशा साथ होते हैं।",
+  "extr": "mere maamaa ke baare men koii kuchh bhii kahe, zaruurat paRne par vo hameshaa saath hote hain.",
+  "n": "Hindi specifies which uncle: मामा (mother's brother), चाचा (father's younger brother)."
+ },
+ {
+  "id": "ENG_CHUNK_1023",
+  "t": "बात यहाँ तक पहुँच गई कि [clause]",
+  "tr": "baat yahaan tak pahunch gaii ki [clause]",
+  "ex": "बात यहाँ तक पहुँच गई कि मुझे नींद ही नहीं आती थी।",
+  "extr": "baat yahaan tak pahunch gaii ki mujhe niind hii nahiin aatii thii."
+ },
+ {
+  "id": "ENG_CHUNK_1024",
+  "t": "मैं [verb] ही रहा था कि [clause]",
+  "tr": "main [verb] hii rahaa thaa ki [clause]",
+  "ex": "मैं खाना बना ही रहा था कि बिजली चली गई।",
+  "extr": "main khaanaa banaa hii rahaa thaa ki bijlii chalii gaii.",
+  "n": "Progressive + ही ... कि is the classic \"I was in the middle of X when\" frame."
+ },
+ {
+  "id": "ENG_CHUNK_1025",
+  "t": "मैंने [noun] के बारे में अच्छा सुना है",
+  "tr": "mainne [noun] ke baare men achchhaa sunaa hai",
+  "ex": "मैंने मेन स्ट्रीट वाले उस थाई रेस्टोरेंट के बारे में अच्छा सुना है।",
+  "extr": "mainne men sTriiT vaale us thaaii resToranT ke baare men achchhaa sunaa hai."
+ },
+ {
+  "id": "ENG_CHUNK_1026",
+  "t": "क्या [noun] माँगना भी बहुत ज़्यादा है?",
+  "tr": "kyaa [noun] maangnaa bhii bahut zyaadaa hai?",
+  "ex": "क्या शाम को थोड़ी शांति माँगना भी बहुत ज़्यादा है?",
+  "extr": "kyaa shaam ko thoRii shaanti maangnaa bhii bahut zyaadaa hai?"
+ },
+ {
+  "id": "ENG_CHUNK_1027",
+  "t": "[person] पूछ रहे थे कि [clause]",
+  "tr": "[person] puuchh rahe the ki [clause]",
+  "ex": "मम्मी पूछ रही थीं कि तुम कब मिलने आ रहे हो।",
+  "extr": "mammii puuchh rahii thiin ki tum kab milne aa rahe ho.",
+  "n": "Plural (थीं/थे) shows respect for parents and elders."
+ },
+ {
+  "id": "ENG_CHUNK_1028",
+  "t": "[person] बोला, [clause]",
+  "tr": "[person] bolaa, [clause]",
+  "ex": "तो मैंने उसे बताया, और वो बोला, पहले क्यों नहीं बताया?",
+  "extr": "to mainne use bataayaa, aur vo bolaa, pahle kyon nahiin bataayaa?",
+  "n": "Also: वो कहता है ... (historic present); Hindi quotes directly with no tense shift."
+ },
+ {
+  "id": "ENG_CHUNK_1029",
+  "t": "सुनने में आया है कि [clause]",
+  "tr": "sunne men aayaa hai ki [clause]",
+  "ex": "सुनने में आया है कि शुक्रवार को ऑफ़िस जल्दी बंद हो रहा है।",
+  "extr": "sunne men aayaa hai ki shukravaar ko aufis jaldii band ho rahaa hai.",
+  "n": "Also: सुना है ... (heard that ...)."
+ },
+ {
+  "id": "ENG_CHUNK_1030",
+  "t": "मैंने [person] को [verb] के लिए राज़ी कर लिया",
+  "tr": "mainne [person] ko [verb] ke lie raazii kar liyaa",
+  "ex": "मैंने पापा को कमर के लिए डॉक्टर को दिखाने के लिए राज़ी कर लिया।",
+  "extr": "mainne paapaa ko kamar ke lie DaukTar ko dikhaane ke lie raazii kar liyaa."
+ },
+ {
+  "id": "ENG_CHUNK_1031",
+  "t": "मुझे उम्मीद नहीं थी कि [person] [verb]",
+  "tr": "mujhe ummiid nahiin thii ki [person] [verb]",
+  "ex": "मुझे उम्मीद नहीं थी कि इतने सारे लोग आएँगे।",
+  "extr": "mujhe ummiid nahiin thii ki itne saare log aaenge."
+ },
+ {
+  "id": "ENG_CHUNK_1032",
+  "t": "मैं [verb] की सोच भी नहीं सकता",
+  "tr": "main [verb] kii soch bhii nahiin saktaa",
+  "ex": "यहाँ बिना गाड़ी के रहने की मैं सोच भी नहीं सकता।",
+  "extr": "yahaan binaa gaaRii ke rahne kii main soch bhii nahiin saktaa."
+ },
+ {
+  "id": "ENG_CHUNK_1033",
+  "t": "[noun] का [noun] से कोई मुक़ाबला नहीं",
+  "tr": "[noun] kaa [noun] se koii muqaabalaa nahiin",
+  "ex": "घर के बने पास्ता का डिब्बे वाले से कोई मुक़ाबला नहीं।",
+  "extr": "ghar ke bane paastaa kaa Dibbe vaale se koii muqaabalaa nahiin."
+ },
+ {
+  "id": "ENG_CHUNK_1034",
+  "t": "जितना [verb], उतना [verb]",
+  "tr": "jitnaa [verb], utnaa [verb]",
+  "ex": "जितना मैं इसके बारे में पढ़ता हूँ, उतनी ही चिंता होती है।",
+  "extr": "jitnaa main iske baare men paRhtaa huun, utnii hii chintaa hotii hai.",
+  "n": "उतना agrees with what follows: उतनी चिंता, उतना डर."
+ },
+ {
+  "id": "ENG_CHUNK_1035",
+  "t": "[verb] एक बात है, [verb] दूसरी बात",
+  "tr": "[verb] ek baat hai, [verb] duusrii baat",
+  "ex": "ट्रेडमिल ख़रीदना एक बात है, उसे सच में इस्तेमाल करना दूसरी बात।",
+  "extr": "TreDmil khariidnaa ek baat hai, use sach men istemaal karnaa duusrii baat."
+ },
+ {
+  "id": "ENG_CHUNK_1036",
+  "t": "लक्ष्य रखना / टारगेट बनाना",
+  "tr": "lakshy rakhnaa / TaargeT banaanaa",
+  "ex": "मैंने हफ़्ते में तीन बार दौड़ने का टारगेट रखा है।",
+  "extr": "mainne hafte men tiin baar dauRne kaa TaargeT rakhaa hai."
+ },
+ {
+  "id": "ENG_CHUNK_1037",
+  "t": "मिसाल क़ायम करना / उदाहरण बनना",
+  "tr": "misaal qaayam karnaa / udaaharan bannaa",
+  "ex": "तुम सबसे बड़े हो, तो तुम्हें उदाहरण बनना होगा।",
+  "extr": "tum sabse baRe ho, to tumhen udaaharan bannaa hogaa."
+ },
+ {
+  "id": "ENG_CHUNK_1038",
+  "t": "[person] पर दबाव डालना",
+  "tr": "[person] par dabaav Daalnaa",
+  "ex": "मम्मी-पापा मुझ पर घर ख़रीदने का दबाव डालते रहते हैं।",
+  "extr": "mammii-paapaa mujh par ghar khariidne kaa dabaav Daalte rahte hain."
+ },
+ {
+  "id": "ENG_CHUNK_1039",
+  "t": "[person] को सबके सामने फँसा देना / धर्मसंकट में डालना",
+  "tr": "[person] ko sabke saamne phansaa denaa / dharmsankaT men Daalnaa",
+  "ex": "प्लीज़, मुझे सबके सामने ऐसे मत फँसाओ।",
+  "extr": "pliiz, mujhe sabke saamne aise mat phansaao."
+ },
+ {
+  "id": "ENG_CHUNK_1040",
+  "t": "[person] को थोड़ी छूट देना / [person] पर इतनी सख़्ती मत करो",
+  "tr": "[person] ko thoRii chhuuT denaa / [person] par itnii sakhtii mat karo",
+  "ex": "उस पर इतनी सख़्ती मत करो, ये उसका पहला हफ़्ता है।",
+  "extr": "us par itnii sakhtii mat karo, ye uskaa pahlaa haftaa hai."
+ },
+ {
+  "id": "ENG_CHUNK_1041",
+  "t": "[person] की खिंचाई करना",
+  "tr": "[person] kii khinchaaii karnaa",
+  "ex": "नए हेयरकट को लेकर दोस्तों ने मेरी ख़ूब खिंचाई की।",
+  "extr": "nae heyarkaT ko lekar doston ne merii khuub khinchaaii kii.",
+  "n": "खिंचाई = teasing; for harsh criticism use किसी को सुनाना."
+ },
+ {
+  "id": "ENG_CHUNK_1042",
+  "t": "हार मान लेना / मान जाना",
+  "tr": "haar maan lenaa / maan jaanaa",
+  "ex": "बच्चे कुत्ते के लिए ज़िद करते रहे, और आख़िर में हम मान गए।",
+  "extr": "bachche kutte ke lie zid karte rahe, aur aakhir men ham maan gae."
+ },
+ {
+  "id": "ENG_CHUNK_1043",
+  "t": "[person] पर शक न करना / [person] को एक मौक़ा देना",
+  "tr": "[person] par shak na karnaa / [person] ko ek mauqaa denaa",
+  "ex": "वो आम तौर पर टाइम पर आता है, तो उस पर शक नहीं करते।",
+  "extr": "vo aam taur par Taaim par aataa hai, to us par shak nahiin karte."
+ },
+ {
+  "id": "ENG_CHUNK_1044",
+  "t": "[person] की तारीफ़ करना",
+  "tr": "[person] kii taariif karnaa",
+  "ex": "आज एक अजनबी ने मेरी जैकेट की तारीफ़ की।",
+  "extr": "aaj ek ajnabii ne merii jaikeT kii taariif kii."
+ },
+ {
+  "id": "ENG_CHUNK_1045",
+  "t": "[noun] का ध्यान रखना / [noun] को ध्यान में रखना",
+  "tr": "[noun] kaa dhyaan rakhnaa / [noun] ko dhyaan men rakhnaa",
+  "ex": "होटल चुनते वक़्त बजट का ध्यान रखना।",
+  "extr": "hoTal chunte vaqt bajaT kaa dhyaan rakhnaa."
+ },
+ {
+  "id": "ENG_CHUNK_1046",
+  "t": "राज़ रखना / बात अपने तक रखना",
+  "tr": "raaz rakhnaa / baat apne tak rakhnaa",
+  "ex": "एक बात अपने तक रखोगे? मैं प्रेग्नेंट हूँ।",
+  "extr": "ek baat apne tak rakhoge? main pregnenT huun."
+ },
+ {
+  "id": "ENG_CHUNK_1047",
+  "t": "[noun] के साथ क़दम मिलाकर चलना / [noun] पर नज़र रख पाना",
+  "tr": "[noun] ke saath qadam milaakar chalnaa / [noun] par nazar rakh paanaa",
+  "ex": "मुझसे इतने सारे ग्रुप चैट पढ़े ही नहीं जाते।",
+  "extr": "mujhse itne saare grup chaiT paRhe hii nahiin jaate.",
+  "n": "For \"can't keep up with\" people mostly use the passive of inability: मुझसे ... नहीं होता/जाता."
+ },
+ {
+  "id": "ENG_CHUNK_1048",
+  "t": "राज़ खोल देना / भांडा फोड़ देना",
+  "tr": "raaz khol denaa / bhaanDaa phoR denaa",
+  "ex": "सरप्राइज़ पार्टी का भांडा किसने फोड़ा?",
+  "extr": "sarpraaiz paarTii kaa bhaanDaa kisne phoRaa?",
+  "n": "भांडा फोड़ना = to break the pot; the exact spill-the-beans idiom."
+ },
+ {
+  "id": "ENG_CHUNK_1049",
+  "t": "[noun] का हिसाब रखना",
+  "tr": "[noun] kaa hisaab rakhnaa",
+  "ex": "अपने ख़र्चे का हिसाब रखने के लिए मैं एक ऐप इस्तेमाल करता हूँ।",
+  "extr": "apne kharche kaa hisaab rakhne ke lie main ek aip istemaal kartaa huun."
+ },
+ {
+  "id": "ENG_CHUNK_1050",
+  "t": "अपनी बात का पक्का होना / ज़ुबान रखना",
+  "tr": "apnii baat kaa pakkaa honaa / zubaan rakhnaa",
+  "ex": "उसने कहा था पैसे लौटा देगा, और वो अपनी बात का पक्का निकला।",
+  "extr": "usne kahaa thaa paise lauTaa degaa, aur vo apnii baat kaa pakkaa niklaa."
+ },
+ {
+  "id": "ENG_CHUNK_1051",
+  "t": "[verb] के लिए अपनी तरफ़ से पूरी कोशिश करना / हद से ज़्यादा करना",
+  "tr": "[verb] ke lie apnii taraf se puurii koshish karnaa / had se zyaadaa karnaa",
+  "ex": "होटल के स्टाफ़ ने हमारी मदद के लिए हद से ज़्यादा किया।",
+  "extr": "hoTal ke sTaaf ne hamaarii madad ke lie had se zyaadaa kiyaa."
+ },
+ {
+  "id": "ENG_CHUNK_1052",
+  "t": "[noun] ले लेना / [noun] पर जाना",
+  "tr": "[noun] le lenaa / [noun] par jaanaa",
+  "ex": "मुझे लगता है मैं चिकन ले लूँगा।",
+  "extr": "mujhe lagtaa hai main chikan le luungaa."
+ },
+ {
+  "id": "ENG_CHUNK_1053",
+  "t": "काम आना",
+  "tr": "kaam aanaa",
+  "ex": "एक्स्ट्रा केबल रख लो, काम आ सकती है।",
+  "extr": "eksTraa kebal rakh lo, kaam aa saktii hai."
+ },
+ {
+  "id": "ENG_CHUNK_1054",
+  "t": "कुछ आ जाना / कुछ काम निकल आना",
+  "tr": "kuchh aa jaanaa / kuchh kaam nikal aanaa",
+  "ex": "सॉरी, ऑफ़िस में कुछ काम निकल आया, तो मुझे देर हो जाएगी।",
+  "extr": "saurii, aufis men kuchh kaam nikal aayaa, to mujhe der ho jaaegii."
+ },
+ {
+  "id": "ENG_CHUNK_1055",
+  "t": "[noun] हाथ लग जाना / [noun] मिल जाना",
+  "tr": "[noun] haath lag jaanaa / [noun] mil jaanaa",
+  "ex": "सफ़ाई करते वक़्त मेरे हाथ कुछ पुरानी तस्वीरें लग गईं।",
+  "extr": "safaaii karte vaqt mere haath kuchh puraanii tasviiren lag gaiin."
+ },
+ {
+  "id": "ENG_CHUNK_1056",
+  "t": "[person] को चौंका देना / हक्का-बक्का कर देना",
+  "tr": "[person] ko chaunkaa denaa / hakkaa-bakkaa kar denaa",
+  "ex": "उस सवाल ने मुझे चौंका दिया।",
+  "extr": "us savaal ne mujhe chaunkaa diyaa."
+ },
+ {
+  "id": "ENG_CHUNK_1057",
+  "t": "[person] को ख़बर देना / बताना",
+  "tr": "[person] ko khabar denaa / bataanaa",
+  "ex": "दादी को ये बात कौन बताएगा?",
+  "extr": "daadii ko ye baat kaun bataaegaa?",
+  "n": "Hindi uses plain बताना; the weight comes from context."
+ },
+ {
+  "id": "ENG_CHUNK_1058",
+  "t": "बर्फ़ तोड़ना / माहौल हल्का करना",
+  "tr": "barf toRnaa / maahaul halkaa karnaa",
+  "ex": "माहौल हल्का करने के लिए मैंने एक बेतुका-सा जोक सुनाया।",
+  "extr": "maahaul halkaa karne ke lie mainne ek betukaa-saa jok sunaayaa.",
+  "n": "बर्फ़ तोड़ना is a calque some use; माहौल हल्का करना is the native phrase."
+ },
+ {
+  "id": "ENG_CHUNK_1059",
+  "t": "बात घुमाना / गोल-गोल बातें करना",
+  "tr": "baat ghumaanaa / gol-gol baaten karnaa",
+  "ex": "बात घुमाना बंद करो और बताओ क्या हुआ।",
+  "extr": "baat ghumaanaa band karo aur bataao kyaa huaa."
+ },
+ {
+  "id": "ENG_CHUNK_1060",
+  "t": "[noun] से चूक जाना / [noun] हाथ से निकल जाना",
+  "tr": "[noun] se chuuk jaanaa / [noun] haath se nikal jaanaa",
+  "ex": "मैं नहीं चाहता कि कॉन्सर्ट के टिकट हाथ से निकल जाएँ।",
+  "extr": "main nahiin chaahtaa ki kaunsarT ke TikaT haath se nikal jaaen."
+ },
+ {
+  "id": "ENG_CHUNK_1061",
+  "t": "[person] के लिए सीट रखना",
+  "tr": "[person] ke lie siiT rakhnaa",
+  "ex": "मेरे लिए एक सीट रख लोगे? बस गाड़ी पार्क कर रहा हूँ।",
+  "extr": "mere lie ek siiT rakh loge? bas gaaRii paark kar rahaa huun."
+ },
+ {
+  "id": "ENG_CHUNK_1062",
+  "t": "[noun] में फ़र्क़ कर पाना",
+  "tr": "[noun] men farq kar paanaa",
+  "ex": "मैं जुड़वाँ बच्चों में फ़र्क़ नहीं कर पाता।",
+  "extr": "main juRvaan bachchon men farq nahiin kar paataa."
+ },
+ {
+  "id": "ENG_CHUNK_1063",
+  "t": "इशारा समझना",
+  "tr": "ishaaraa samajhnaa",
+  "ex": "मैं बार-बार घड़ी देखता रहा, पर वो इशारा समझा ही नहीं।",
+  "extr": "main baar-baar ghaRii dekhtaa rahaa, par vo ishaaraa samjhaa hii nahiin."
+ },
+ {
+  "id": "ENG_CHUNK_1064",
+  "t": "काम की बात पर आना",
+  "tr": "kaam kii baat par aanaa",
+  "ex": "ठीक है, सब आ गए, तो काम की बात पर आते हैं।",
+  "extr": "Thiik hai, sab aa gae, to kaam kii baat par aate hain."
+ },
+ {
+  "id": "ENG_CHUNK_1065",
+  "t": "[verb] की ज़िद करना",
+  "tr": "[verb] kii zid karnaa",
+  "ex": "पापा ने खाने के पैसे देने की ज़िद की।",
+  "extr": "paapaa ne khaane ke paise dene kii zid kii.",
+  "n": "ज़िद has a stubborn flavour; for polite insistence also: पापा नहीं माने, पैसे उन्होंने ही दिए."
+ },
+ {
+  "id": "ENG_CHUNK_1066",
+  "t": "ज़रा रुकिए / एक मिनट दीजिए",
+  "tr": "zaraa rukie / ek minaT diijie",
+  "ex": "ज़रा रुकिए, बस फ़ाइल ढूँढ रहा हूँ।",
+  "extr": "zaraa rukie, bas faail DhuunDh rahaa huun."
+ },
+ {
+  "id": "ENG_CHUNK_1067",
+  "t": "उसी पर आ रहा हूँ",
+  "tr": "usii par aa rahaa huun",
+  "ex": "हाँ, उसी पर आ रहा हूँ। पहले मुझे बात पूरी करने दो।",
+  "extr": "haan, usii par aa rahaa huun. pahle mujhe baat puurii karne do."
+ },
+ {
+  "id": "ENG_CHUNK_1068",
+  "t": "वो कैसे? / मतलब?",
+  "tr": "vo kaise? / matlab?",
+  "ex": "तुम्हें लगता है ये बुरा आइडिया है? वो कैसे?",
+  "extr": "tumhen lagtaa hai ye buraa aaiDiyaa hai? vo kaise?"
+ },
+ {
+  "id": "ENG_CHUNK_1069",
+  "t": "थोड़ा खुलकर बताएँगे?",
+  "tr": "thoRaa khulkar bataaenge?",
+  "ex": "थोड़ा खुलकर बताएँगे? कौन-सा हिस्सा काम नहीं कर रहा?",
+  "extr": "thoRaa khulkar bataaenge? kaun-saa hissaa kaam nahiin kar rahaa?"
+ },
+ {
+  "id": "ENG_CHUNK_1070",
+  "t": "कहना क्या चाहते हो?",
+  "tr": "kahnaa kyaa chaahte ho?",
+  "ex": "कहना क्या चाहते हो? सीधे बोलो।",
+  "extr": "kahnaa kyaa chaahte ho? siidhe bolo."
+ },
+ {
+  "id": "ENG_CHUNK_1071",
+  "t": "समझ रहे हो? / समझे?",
+  "tr": "samajh rahe ho? / samjhe?",
+  "ex": "तो पेट्रोल पंप से लेफ़्ट, फिर राइट। समझ रहे हो?",
+  "extr": "to peTrol pamp se left, phir raaiT. samajh rahe ho?",
+  "n": "Directions in India use English लेफ़्ट/राइट as often as बाएँ/दाएँ."
+ },
+ {
+  "id": "ENG_CHUNK_1072",
+  "t": "अब हुई ना बात / अब बात बन रही है",
+  "tr": "ab huii naa baat / ab baat ban rahii hai",
+  "ex": "ठीक है, अब बात बन रही है।",
+  "extr": "Thiik hai, ab baat ban rahii hai."
+ },
+ {
+  "id": "ENG_CHUNK_1073",
+  "t": "मतलब / यार",
+  "tr": "matlab / yaar",
+  "ex": "वो, मतलब, मेरी ज़िंदगी का सबसे अच्छा पिज़्ज़ा था।",
+  "extr": "vo, matlab, merii zindagii kaa sabse achchhaa pizzaa thaa.",
+  "n": "Hindi fillers: मतलब, वो, यार, ना. For quoting, use बोला/कहता है instead."
+ },
+ {
+  "id": "ENG_CHUNK_1074",
+  "t": "चलो, अपनी-अपनी राय रखते हैं",
+  "tr": "chalo, apnii-apnii raay rakhte hain",
+  "ex": "ये बहस कभी ख़त्म नहीं होगी, तो चलो, अपनी-अपनी राय रखते हैं।",
+  "extr": "ye bahas kabhii khatm nahiin hogii, to chalo, apnii-apnii raay rakhte hain."
+ },
+ {
+  "id": "ENG_CHUNK_1075",
+  "t": "बात वो नहीं है",
+  "tr": "baat vo nahiin hai",
+  "ex": "पता है सस्ता था, पर बात वो नहीं है।",
+  "extr": "pataa hai sastaa thaa, par baat vo nahiin hai."
+ },
+ {
+  "id": "ENG_CHUNK_1076",
+  "t": "हाँ, ऐसे भी देख सकते हैं",
+  "tr": "haan, aise bhii dekh sakte hain",
+  "ex": "नौकरी जाना घूमने का मौक़ा था? हाँ, ऐसे भी देख सकते हैं।",
+  "extr": "naukarii jaanaa ghuumne kaa mauqaa thaa? haan, aise bhii dekh sakte hain."
+ },
+ {
+  "id": "ENG_CHUNK_1077",
+  "t": "माफ़ कीजिए, पर / पूरे सम्मान के साथ",
+  "tr": "maaf kiijie, par / puure sammaan ke saath",
+  "ex": "माफ़ कीजिए, पर मुझे नहीं लगता आपने पूरी रिपोर्ट पढ़ी है।",
+  "extr": "maaf kiijie, par mujhe nahiin lagtaa aapne puurii riporT paRhii hai.",
+  "n": "पूरे सम्मान के साथ is a calque used in formal meetings; माफ़ कीजिए, पर is the everyday version."
+ },
+ {
+  "id": "ENG_CHUNK_1078",
+  "t": "इतना आसान नहीं है",
+  "tr": "itnaa aasaan nahiin hai",
+  "ex": "बस छोड़ दूँ? इतना आसान नहीं है, मुझे किराया भरना है।",
+  "extr": "bas chhoR duun? itnaa aasaan nahiin hai, mujhe kiraayaa bharnaa hai."
+ },
+ {
+  "id": "ENG_CHUNK_1079",
+  "t": "तुम्हारे लिए कहना आसान है",
+  "tr": "tumhaare lie kahnaa aasaan hai",
+  "ex": "आराम करूँ? तुम्हारे लिए कहना आसान है, तुम्हारा कल एग्ज़ाम नहीं है।",
+  "extr": "aaraam karuun? tumhaare lie kahnaa aasaan hai, tumhaaraa kal egzaam nahiin hai."
+ },
+ {
+  "id": "ENG_CHUNK_1080",
+  "t": "अच्छा, मैं ग़लत था",
+  "tr": "achchhaa, main galat thaa",
+  "ex": "अरे, नौ बजे खुलता है? अच्छा, मैं ग़लत था।",
+  "extr": "are, nau baje khultaa hai? achchhaa, main galat thaa."
+ },
+ {
+  "id": "ENG_CHUNK_1081",
+  "t": "बोलो, मैं सुन रहा हूँ",
+  "tr": "bolo, main sun rahaa huun",
+  "ex": "तुम्हारे पास इससे अच्छा प्लान है? बोलो, मैं सुन रहा हूँ।",
+  "extr": "tumhaare paas isse achchhaa plaan hai? bolo, main sun rahaa huun."
+ },
+ {
+  "id": "ENG_CHUNK_1082",
+  "t": "मेरे मुँह पर ताला है",
+  "tr": "mere munh par taalaa hai",
+  "ex": "चिंता मत करो, मेरे मुँह पर ताला है।",
+  "extr": "chintaa mat karo, mere munh par taalaa hai.",
+  "n": "Also: किसी को नहीं बताऊँगा, पक्का."
+ },
+ {
+  "id": "ENG_CHUNK_1083",
+  "t": "जो है सो है / अब क्या कर सकते हैं",
+  "tr": "jo hai so hai / ab kyaa kar sakte hain",
+  "ex": "फ़्लाइट फिर लेट है, पर जो है सो है।",
+  "extr": "flaaiT phir leT hai, par jo hai so hai."
+ },
+ {
+  "id": "ENG_CHUNK_1084",
+  "t": "तुम्हारी मर्ज़ी",
+  "tr": "tumhaarii marzii",
+  "ex": "केक नहीं चाहिए? तुम्हारी मर्ज़ी।",
+  "extr": "kek nahiin chaahie? tumhaarii marzii."
+ },
+ {
+  "id": "ENG_CHUNK_1085",
+  "t": "ये हुई ना बात! / शाबाश!",
+  "tr": "ye huii naa baat! / shaabaash!",
+  "ex": "अगले हफ़्ते फिर कोशिश करोगे? ये हुई ना बात!",
+  "extr": "agle hafte phir koshish karoge? ye huii naa baat!"
+ },
+ {
+  "id": "ENG_CHUNK_1086",
+  "t": "ज़्यादा उम्मीद मत रखना",
+  "tr": "zyaadaa ummiid mat rakhnaa",
+  "ex": "उसने कहा वापस फ़ोन करेगा, पर ज़्यादा उम्मीद मत रखना।",
+  "extr": "usne kahaa vaapas fon karegaa, par zyaadaa ummiid mat rakhnaa."
+ },
+ {
+  "id": "ENG_CHUNK_1087",
+  "t": "बातें कम, काम ज़्यादा / कथनी और करनी में फ़र्क़ होता है",
+  "tr": "baaten kam, kaam zyaadaa / kathnii aur karnii men farq hotaa hai",
+  "ex": "वो बस कहता रहता है कि मदद करेगा। कथनी और करनी में फ़र्क़ होता है।",
+  "extr": "vo bas kahtaa rahtaa hai ki madad karegaa. kathnii aur karnii men farq hotaa hai."
+ },
+ {
+  "id": "ENG_CHUNK_1088",
+  "t": "भावना देखो / नीयत देखनी चाहिए",
+  "tr": "bhaavnaa dekho / niiyat dekhnii chaahie",
+  "ex": "केक टूट गया, पर भावना देखो।",
+  "extr": "kek TuuT gayaa, par bhaavnaa dekho."
+ },
+ {
+  "id": "ENG_CHUNK_1089",
+  "t": "शक्ल देखकर मत जाओ / सूरत पर मत जाओ",
+  "tr": "shakl dekhkar mat jaao / suurat par mat jaao",
+  "ex": "रेस्टोरेंट पुराना-सा दिखता है, पर सूरत पर मत जाओ।",
+  "extr": "resToranT puraanaa-saa dikhtaa hai, par suurat par mat jaao."
+ },
+ {
+  "id": "ENG_CHUNK_1090",
+  "t": "मुसीबत अकेले नहीं आती",
+  "tr": "musiibat akele nahiin aatii",
+  "ex": "पहले गाड़ी ख़राब हुई, फिर डिशवॉशर। मुसीबत अकेले नहीं आती।",
+  "extr": "pahle gaaRii kharaab huii, phir Dishvaushar. musiibat akele nahiin aatii."
+ },
+ {
+  "id": "ENG_CHUNK_1091",
+  "t": "ऊपर से / और साथ में ये भी कि",
+  "tr": "uupar se / aur saath men ye bhii ki",
+  "ex": "बहुत दूर है, ऊपर से बहुत महँगा भी है।",
+  "extr": "bahut duur hai, uupar se bahut mahangaa bhii hai."
+ },
+ {
+  "id": "ENG_CHUNK_1092",
+  "t": "लगे हाथ / साथ-साथ",
+  "tr": "lage haath / saath-saath",
+  "ex": "चलो गैराज साफ़ करते हैं, और लगे हाथ औज़ार भी छाँट लेंगे।",
+  "extr": "chalo gairaaj saaf karte hain, aur lage haath auzaar bhii chhaanT lenge.",
+  "n": "लगे हाथ = \"while the hand is already on it\"; exactly this idiom."
+ },
+ {
+  "id": "ENG_CHUNK_1093",
+  "t": "पहले तो / शुरू में ही",
+  "tr": "pahle to / shuruu men hii",
+  "ex": "तुमने जाने के लिए हाँ ही क्यों की थी?",
+  "extr": "tumne jaane ke lie haan hii kyon kii thii?",
+  "n": "Hindi puts the \"in the first place\" force on ही after the key word."
+ },
+ {
+  "id": "ENG_CHUNK_1094",
+  "t": "यह मानकर कि / अगर",
+  "tr": "yah maankar ki / agar",
+  "ex": "अगर मौसम ठीक रहा, तो हम आठ बजे निकलेंगे।",
+  "extr": "agar mausam Thiik rahaa, to ham aaTh baje niklenge.",
+  "n": "A plain अगर is what people say; यह मानकर कि is formal."
+ },
+ {
+  "id": "ENG_CHUNK_1095",
+  "t": "इसी रफ़्तार से / ऐसे तो",
+  "tr": "isii raftaar se / aise to",
+  "ex": "ऐसे तो हम अंधेरा होने से पहले कभी नहीं पहुँचेंगे।",
+  "extr": "aise to ham andheraa hone se pahle kabhii nahiin pahunchenge."
+ },
+ {
+  "id": "ENG_CHUNK_1096",
+  "t": "फ़िलहाल / अभी के हालात में",
+  "tr": "filhaal / abhii ke haalaat men",
+  "ex": "फ़िलहाल, इस साल हम छुट्टी पर जाने का ख़र्चा नहीं उठा सकते।",
+  "extr": "filhaal, is saal ham chhuTTii par jaane kaa kharchaa nahiin uThaa sakte."
+ },
+ {
+  "id": "ENG_CHUNK_1097",
+  "t": "ज़्यादातर / कुल मिलाकर",
+  "tr": "zyaadaatar / kul milaakar",
+  "ex": "ज़्यादातर पड़ोसी बहुत मिलनसार हैं।",
+  "extr": "zyaadaatar paRosii bahut milansaar hain."
+ },
+ {
+  "id": "ENG_CHUNK_1098",
+  "t": "इस हिसाब से / इस मायने में",
+  "tr": "is hisaab se / is maayne men",
+  "ex": "नौकरी में पैसे कम हैं, पर घर के पास है। इस हिसाब से बेहतर है।",
+  "extr": "naukarii men paise kam hain, par ghar ke paas hai. is hisaab se behtar hai."
+ },
+ {
+  "id": "ENG_CHUNK_1099",
+  "t": "ज़्यादा से ज़्यादा / बुरे से बुरा",
+  "tr": "zyaadaa se zyaadaa / bure se buraa",
+  "ex": "ज़्यादा से ज़्यादा, टैक्सी से घर चले जाएँगे।",
+  "extr": "zyaadaa se zyaadaa, Taiksii se ghar chale jaaenge.",
+  "n": "ज़्यादा से ज़्यादा (\"at most\") is the everyday way to name the fallback."
+ },
+ {
+  "id": "ENG_CHUNK_1100",
+  "t": "कुछ इसलिए कि / थोड़ा इस वजह से भी कि",
+  "tr": "kuchh islie ki / thoRaa is vajah se bhii ki",
+  "ex": "मैंने जिम जाना छोड़ दिया, कुछ इसलिए कि वो बहुत महँगा हो गया था।",
+  "extr": "mainne jim jaanaa chhoR diyaa, kuchh islie ki vo bahut mahangaa ho gayaa thaa."
+ }
+]

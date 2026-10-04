@@ -1,0 +1,533 @@
+[
+ {
+  "id": "ENG_CHUNK_0801",
+  "t": "C'est pas parce que [proposition] que [proposition]",
+  "ex": "C'est pas parce que c'est cher que c'est meilleur.",
+  "n": "Fixed frame: ce n'est pas parce que X que Y. Both clauses indicative."
+ },
+ {
+  "id": "ENG_CHUNK_0802",
+  "t": "Je comprends ton / votre point de vue, mais [proposition]",
+  "ex": "Je comprends ton point de vue, mais je pense toujours qu'on devrait attendre."
+ },
+ {
+  "id": "ENG_CHUNK_0803",
+  "t": "Je comprends que [proposition au subjonctif] / Je comprends pourquoi [proposition]",
+  "ex": "Je comprends que tu sois contrarié. C'était vraiment injuste.",
+  "n": "Subjunctive trigger: comprendre que (= accept a feeling) takes the subjunctive."
+ },
+ {
+  "id": "ENG_CHUNK_0804",
+  "t": "C'est moi ou [proposition] ?",
+  "ex": "C'est moi ou il fait un froid de canard ici ?"
+ },
+ {
+  "id": "ENG_CHUNK_0805",
+  "t": "On pourrait croire que [proposition] / Tu penses bien que [proposition]",
+  "ex": "Pour un hôtel aussi cher, on pourrait s'attendre à avoir un wifi correct.",
+  "n": "No fixed equivalent; on s'attendrait à ce que + subjunctive is the closest."
+ },
+ {
+  "id": "ENG_CHUNK_0806",
+  "t": "Pas étonnant que [proposition au subjonctif] / Je comprends mieux",
+  "ex": "T'as dormi trois heures ? Pas étonnant que tu sois crevé.",
+  "n": "Subjunctive trigger: pas étonnant que + subjunctive."
+ },
+ {
+  "id": "ENG_CHUNK_0807",
+  "t": "Ne me dis pas que [proposition]",
+  "ex": "Ne me dis pas que t'as encore perdu tes clés."
+ },
+ {
+  "id": "ENG_CHUNK_0808",
+  "t": "Tu veux dire que [proposition] ? / Attends, [proposition] ?",
+  "ex": "Tu veux dire que t'as jamais vu la neige ?"
+ },
+ {
+  "id": "ENG_CHUNK_0809",
+  "t": "J'avais cru comprendre que [proposition]",
+  "ex": "Pardon, j'avais cru comprendre que la réunion était à quinze heures.",
+  "n": "Standard polite way to flag a misunderstanding without blame."
+ },
+ {
+  "id": "ENG_CHUNK_0810",
+  "t": "J'aurais juré que [proposition]",
+  "ex": "J'aurais juré que j'avais laissé mon téléphone sur la table."
+ },
+ {
+  "id": "ENG_CHUNK_0811",
+  "t": "Si je comprends bien, [proposition] / J'imagine que [proposition]",
+  "ex": "J'imagine que le film ne t'a pas plu."
+ },
+ {
+  "id": "ENG_CHUNK_0812",
+  "t": "Je commence à croire que [proposition]",
+  "ex": "Je commence à croire qu'il ne viendra pas."
+ },
+ {
+  "id": "ENG_CHUNK_0813",
+  "t": "Je me suis rendu compte que [proposition] / Ça m'a frappé que [proposition]",
+  "ex": "À mi-chemin de l'aéroport, je me suis rendu compte que j'avais oublié mon passeport."
+ },
+ {
+  "id": "ENG_CHUNK_0814",
+  "t": "Il n'y a pas que [nom] dans [nom] / Il y a plus à [nom] que [nom]",
+  "ex": "Il n'y a pas que le travail dans la vie, tu sais.",
+  "n": "Il n'y a pas que X dans la vie is the set phrase."
+ },
+ {
+  "id": "ENG_CHUNK_0815",
+  "t": "Ça ne m'étonnerait pas que [proposition au subjonctif]",
+  "ex": "Ça ne m'étonnerait pas qu'il neige ce soir.",
+  "n": "Subjunctive trigger: ça m'étonnerait que / ça ne m'étonnerait pas que + subjunctive."
+ },
+ {
+  "id": "ENG_CHUNK_0816",
+  "t": "Ça va forcément [verbe] / Ça ne peut que [verbe]",
+  "ex": "T'inquiète pas pour la pluie. Ça va forcément se dégager d'ici midi."
+ },
+ {
+  "id": "ENG_CHUNK_0817",
+  "t": "Connaissant [personne], [proposition]",
+  "ex": "Connaissant mon frère, il va se pointer avec une heure de retard."
+ },
+ {
+  "id": "ENG_CHUNK_0818",
+  "t": "Ça se trouve, [proposition] / Pour ce que j'en sais, [proposition]",
+  "ex": "Ça se trouve, il dort encore.",
+  "n": "Ça se trouve is very spoken; also si ça se trouve."
+ },
+ {
+  "id": "ENG_CHUNK_0819",
+  "t": "Impossible de savoir [proposition] / On ne peut pas savoir [proposition]",
+  "ex": "Impossible de savoir combien de temps on va faire la queue."
+ },
+ {
+  "id": "ENG_CHUNK_0820",
+  "t": "Qu'est-ce que [nom] a à voir avec [nom] ? / Quel rapport avec [nom] ?",
+  "ex": "Qu'est-ce que mon âge vient faire là-dedans ?",
+  "n": "Short spoken form: Quel rapport ?"
+ },
+ {
+  "id": "ENG_CHUNK_0821",
+  "t": "Je ne suis pas convaincu que [proposition au subjonctif]",
+  "ex": "Je ne suis pas convaincu que ce soit le meilleur moment pour acheter une maison.",
+  "n": "Subjunctive trigger: negative opinion verbs (pas sûr que, pas convaincu que) take the subjunctive."
+ },
+ {
+  "id": "ENG_CHUNK_0822",
+  "t": "J'y croirai quand [proposition au futur]",
+  "ex": "Il dit qu'il va arrêter de fumer ? J'y croirai quand je le verrai.",
+  "n": "quand + future here: quand je le verrai, not *quand je le vois."
+ },
+ {
+  "id": "ENG_CHUNK_0823",
+  "t": "On peut toujours [verbe]",
+  "ex": "Si le resto est complet, on peut toujours se faire livrer."
+ },
+ {
+  "id": "ENG_CHUNK_0824",
+  "t": "Autant [verbe] / On ferait aussi bien de [verbe]",
+  "ex": "Le bus ne vient pas. Autant y aller à pied.",
+  "n": "autant + infinitive, no verb needed: autant rentrer."
+ },
+ {
+  "id": "ENG_CHUNK_0825",
+  "t": "C'est pas mon genre de [verbe], mais [proposition]",
+  "ex": "C'est pas mon genre de me plaindre, mais cette soupe est froide."
+ },
+ {
+  "id": "ENG_CHUNK_0826",
+  "t": "Ça ne coûte rien de [verbe] / Ça ne ferait pas de mal de [verbe]",
+  "ex": "Ça coûte rien d'appeler avant pour vérifier qu'ils sont ouverts."
+ },
+ {
+  "id": "ENG_CHUNK_0827",
+  "t": "Avec [nom], tu ne peux pas te tromper / [nom], c'est une valeur sûre",
+  "ex": "Si tu sais pas quoi prendre, les pâtes, c'est une valeur sûre."
+ },
+ {
+  "id": "ENG_CHUNK_0828",
+  "t": "Rien n'excuse [nom / de + infinitif] / Il n'y a aucune excuse pour [verbe]",
+  "ex": "Rien n'excuse d'être désagréable avec le serveur."
+ },
+ {
+  "id": "ENG_CHUNK_0829",
+  "t": "Surtout, ne [verbe] pas / Quoi que tu fasses, ne [verbe] pas",
+  "ex": "Surtout, ne parle pas de la fête à papa.",
+  "n": "Surtout pas is the natural spoken warning. Quoi que + subjunctive is heavier."
+ },
+ {
+  "id": "ENG_CHUNK_0830",
+  "t": "Je t'interdis de [verbe] ! / T'as pas intérêt à [verbe] !",
+  "ex": "T'as pas intérêt à manger la dernière part de gâteau !"
+ },
+ {
+  "id": "ENG_CHUNK_0831",
+  "t": "C'est pas la peine de [verbe] / Pas la peine de [verbe]",
+  "ex": "Pas la peine de l'appeler. Il décroche jamais."
+ },
+ {
+  "id": "ENG_CHUNK_0832",
+  "t": "Disons que [proposition] / Mettons que [proposition]",
+  "ex": "Disons qu'on part à huit heures. Ça te va ?",
+  "n": "Mettons que can take subjunctive (mettons qu'on parte) but indicative is common."
+ },
+ {
+  "id": "ENG_CHUNK_0833",
+  "t": "On peut dire que [proposition] / Il est clair que [proposition]",
+  "ex": "On peut dire que la soirée a été une réussite."
+ },
+ {
+  "id": "ENG_CHUNK_0834",
+  "t": "Je voulais te demander si tu voulais [verbe]",
+  "ex": "Je voulais te demander si tu voulais qu'on déjeune ensemble vendredi.",
+  "n": "Imparfait (je voulais) softens the invitation."
+ },
+ {
+  "id": "ENG_CHUNK_0835",
+  "t": "Je suis partant pour [nom] / Chaud pour [nom]",
+  "ex": "Je suis partant pour un film ce soir, si ça te dit.",
+  "n": "Chaud pour... = up for it (young, very informal)."
+ },
+ {
+  "id": "ENG_CHUNK_0836",
+  "t": "demander un deuxième avis",
+  "ex": "Le dentiste dit que j'ai besoin d'une couronne, mais je veux demander un deuxième avis."
+ },
+ {
+  "id": "ENG_CHUNK_0837",
+  "t": "les effets secondaires / les effets indésirables",
+  "ex": "Est-ce qu'il y a des effets secondaires que je devrais connaître ?"
+ },
+ {
+  "id": "ENG_CHUNK_0838",
+  "t": "être crevé / être épuisé / être lessivé",
+  "ex": "Je suis complètement lessivé après ce déménagement."
+ },
+ {
+  "id": "ENG_CHUNK_0839",
+  "t": "reprendre son souffle",
+  "ex": "Attends, laisse-moi reprendre mon souffle."
+ },
+ {
+  "id": "ENG_CHUNK_0840",
+  "t": "s'énerver / perdre son sang-froid",
+  "ex": "Je suis désolé de m'être énervé contre toi hier."
+ },
+ {
+  "id": "ENG_CHUNK_0841",
+  "t": "paniquer / flipper",
+  "ex": "Flippe pas, mais j'ai rayé ta voiture.",
+  "n": "flipper (from 'freak out'/flip) is informal."
+ },
+ {
+  "id": "ENG_CHUNK_0842",
+  "t": "prendre [nom] personnellement / le prendre mal",
+  "ex": "Le prends pas mal. Il est comme ça avec tout le monde."
+ },
+ {
+  "id": "ENG_CHUNK_0843",
+  "t": "blesser [personne] / vexer [personne]",
+  "ex": "Désolé si je t'ai blessé.",
+  "n": "vexer = offend lightly; blesser is deeper hurt."
+ },
+ {
+  "id": "ENG_CHUNK_0844",
+  "t": "se sentir exclu / se sentir mis à l'écart",
+  "ex": "Invite aussi ta cousine, sinon elle va se sentir exclue."
+ },
+ {
+  "id": "ENG_CHUNK_0845",
+  "t": "s'ouvrir à [personne] / se confier à [personne]",
+  "ex": "Il a fallu des mois avant qu'il se confie à moi.",
+  "n": "avant que + subjunctive."
+ },
+ {
+  "id": "ENG_CHUNK_0846",
+  "t": "vider son sac / avoir [nom] sur le cœur",
+  "ex": "J'ai besoin de vider mon sac."
+ },
+ {
+  "id": "ENG_CHUNK_0847",
+  "t": "se défouler / décompresser",
+  "ex": "Je vais courir après le boulot pour décompresser."
+ },
+ {
+  "id": "ENG_CHUNK_0848",
+  "t": "avoir des sentiments mitigés sur [nom] / être partagé sur [nom]",
+  "ex": "Je suis partagé à l'idée de revenir vivre chez mes parents."
+ },
+ {
+  "id": "ENG_CHUNK_0849",
+  "t": "voir venir [nom] / s'attendre à [nom]",
+  "ex": "Ouah, je l'avais pas vu venir, celle-là."
+ },
+ {
+  "id": "ENG_CHUNK_0850",
+  "t": "décevoir [personne] / laisser tomber [personne]",
+  "ex": "J'ai promis de l'aider, et je ne veux pas la décevoir.",
+  "n": "laisser tomber = to let down / abandon; also 'drop it' (laisse tomber)."
+ },
+ {
+  "id": "ENG_CHUNK_0851",
+  "t": "admirer [personne] / prendre [personne] pour modèle",
+  "ex": "J'ai toujours admiré ma grande sœur."
+ },
+ {
+  "id": "ENG_CHUNK_0852",
+  "t": "supporter [nom]",
+  "ex": "Je sais pas comment tu supportes ce bruit tous les soirs.",
+  "n": "supporter = put up with, not 'support' (soutenir): false friend."
+ },
+ {
+  "id": "ENG_CHUNK_0853",
+  "t": "soutenir [personne] / appuyer [personne]",
+  "ex": "Si le chef demande, tu me soutiendras ?"
+ },
+ {
+  "id": "ENG_CHUNK_0854",
+  "t": "prendre parti",
+  "ex": "Ce sont mes deux amis, alors je ne prends pas parti."
+ },
+ {
+  "id": "ENG_CHUNK_0855",
+  "t": "être d'accord / voir les choses du même œil",
+  "ex": "Mon père et moi, on ne voit pas toujours les choses du même œil pour l'argent."
+ },
+ {
+  "id": "ENG_CHUNK_0856",
+  "t": "être en bons termes avec [personne]",
+  "ex": "Je suis toujours en bons termes avec mon ex."
+ },
+ {
+  "id": "ENG_CHUNK_0857",
+  "t": "perdre [personne] de vue / perdre contact avec [personne]",
+  "ex": "On s'est perdus de vue après la fac."
+ },
+ {
+  "id": "ENG_CHUNK_0858",
+  "t": "couper la poire en deux avec [personne] / faire un geste",
+  "ex": "Je peux pas payer le prix plein, mais on peut couper la poire en deux ?"
+ },
+ {
+  "id": "ENG_CHUNK_0859",
+  "t": "tromper [personne]",
+  "ex": "Elle a découvert qu'il la trompait.",
+  "n": "tromper quelqu'un = cheat on; se tromper = be wrong."
+ },
+ {
+  "id": "ENG_CHUNK_0860",
+  "t": "se poser / se ranger",
+  "ex": "Il veut voyager quelques années avant de se poser."
+ },
+ {
+  "id": "ENG_CHUNK_0861",
+  "t": "fonder une famille / avoir des enfants",
+  "ex": "On espère fonder une famille d'ici deux ou trois ans."
+ },
+ {
+  "id": "ENG_CHUNK_0862",
+  "t": "tenir de [personne] / ressembler à [personne]",
+  "ex": "Elle tient vraiment de son père. Le même rire."
+ },
+ {
+  "id": "ENG_CHUNK_0863",
+  "t": "être de famille / c'est de famille",
+  "ex": "Tout le monde est grand. C'est de famille."
+ },
+ {
+  "id": "ENG_CHUNK_0864",
+  "t": "veiller sur [personne] / protéger [personne]",
+  "ex": "Mon grand frère veillait toujours sur moi à l'école."
+ },
+ {
+  "id": "ENG_CHUNK_0865",
+  "t": "convaincre [personne] de [verbe] / embarquer [personne] dans [nom]",
+  "ex": "Mes potes m'ont convaincu de faire du saut en parachute."
+ },
+ {
+  "id": "ENG_CHUNK_0866",
+  "t": "En ce qui me concerne / Pour moi",
+  "ex": "En ce qui me concerne, l'affaire est close."
+ },
+ {
+  "id": "ENG_CHUNK_0867",
+  "t": "Comprends-moi bien / Entends-moi bien",
+  "ex": "Comprends-moi bien, j'adore mon boulot. Je suis juste crevé."
+ },
+ {
+  "id": "ENG_CHUNK_0868",
+  "t": "Attends, si je comprends bien",
+  "ex": "Attends, si je comprends bien, t'as démissionné hier ?"
+ },
+ {
+  "id": "ENG_CHUNK_0869",
+  "t": "Pardon ? / Quoi ? / Tu peux répéter ?",
+  "ex": "Pardon ? J'ai pas bien entendu.",
+  "n": "Quoi ? alone can sound rude; hein ? is very casual."
+ },
+ {
+  "id": "ENG_CHUNK_0870",
+  "t": "Je n'irais pas jusque-là / Faut pas exagérer",
+  "ex": "La meilleure pizza de la ville ? Je n'irais pas jusque-là."
+ },
+ {
+  "id": "ENG_CHUNK_0871",
+  "t": "Jusqu'à un certain point",
+  "ex": "Je suis d'accord avec toi jusqu'à un certain point."
+ },
+ {
+  "id": "ENG_CHUNK_0872",
+  "t": "D'une certaine façon / Quelque part",
+  "ex": "D'une certaine façon, perdre ce boulot, c'est ce qui m'est arrivé de mieux.",
+  "n": "Quelque part (in a way) is spoken filler-ish."
+ },
+ {
+  "id": "ENG_CHUNK_0873",
+  "t": "Ça me paraît correct / Ça doit être à peu près ça",
+  "ex": "La réparation a coûté deux cents euros ? Ça me paraît à peu près normal."
+ },
+ {
+  "id": "ENG_CHUNK_0874",
+  "t": "Message reçu / C'est noté",
+  "ex": "OK, message reçu. Je ferai plus attention la prochaine fois."
+ },
+ {
+  "id": "ENG_CHUNK_0875",
+  "t": "Je te l'accorde",
+  "ex": "C'est long en voiture, je te l'accorde, mais la vue en vaut la peine."
+ },
+ {
+  "id": "ENG_CHUNK_0876",
+  "t": "Écoute-moi jusqu'au bout / Laisse-moi finir",
+  "ex": "Je sais que ça a l'air dingue, mais écoute-moi jusqu'au bout."
+ },
+ {
+  "id": "ENG_CHUNK_0877",
+  "t": "Et maintenant, on fait quoi ?",
+  "ex": "Bon, la banque a dit non. Et maintenant, on fait quoi ?"
+ },
+ {
+  "id": "ENG_CHUNK_0878",
+  "t": "Garde ça en tête / Attends, on y revient",
+  "ex": "Attends, on y revient. On sonne à la porte."
+ },
+ {
+  "id": "ENG_CHUNK_0879",
+  "t": "À toi / À vous / Je te / vous passe la parole",
+  "ex": "C'est tout pour moi. Je te passe la parole, Sarah."
+ },
+ {
+  "id": "ENG_CHUNK_0880",
+  "t": "Ah, là tu parles ! / Là, ça me plaît !",
+  "ex": "Pizza et film ? Ah, là tu parles !"
+ },
+ {
+  "id": "ENG_CHUNK_0881",
+  "t": "C'est reparti / Et c'est reparti pour un tour",
+  "ex": "Oh, le wifi est coupé. Et c'est reparti."
+ },
+ {
+  "id": "ENG_CHUNK_0882",
+  "t": "À qui le dis-tu ! / M'en parle pas",
+  "ex": "Le lundi, c'est le pire. M'en parle pas !"
+ },
+ {
+  "id": "ENG_CHUNK_0883",
+  "t": "C'est pas sorcier / C'est pas compliqué",
+  "ex": "Suis juste les instructions. C'est pas sorcier."
+ },
+ {
+  "id": "ENG_CHUNK_0884",
+  "t": "Quand on parle du loup",
+  "ex": "Quand on parle du loup... la voilà justement.",
+  "n": "Full form: Quand on parle du loup, on en voit la queue."
+ },
+ {
+  "id": "ENG_CHUNK_0885",
+  "t": "Plus on est de fous, plus on rit",
+  "ex": "Amène tes potes. Plus on est de fous, plus on rit !"
+ },
+ {
+  "id": "ENG_CHUNK_0886",
+  "t": "Merde ! / Bonne chance !",
+  "ex": "Grosse représentation ce soir ? Merde !",
+  "n": "Theatre folk say merde; the reply is merci, never 'bonne chance' back."
+ },
+ {
+  "id": "ENG_CHUNK_0887",
+  "t": "Je touche du bois",
+  "ex": "J'ai pas été malade de l'année, je touche du bois."
+ },
+ {
+  "id": "ENG_CHUNK_0888",
+  "t": "J'aimerais porter un toast",
+  "ex": "Tout le monde, j'aimerais porter un toast aux jeunes mariés.",
+  "n": "Also: Je lève mon verre à..."
+ },
+ {
+  "id": "ENG_CHUNK_0889",
+  "t": "J'y bois ! / Tchin, à ça !",
+  "ex": "Vive les week-ends prolongés ! Tchin, à ça !",
+  "n": "Standard toast: À la tienne / À la vôtre / Santé !"
+ },
+ {
+  "id": "ENG_CHUNK_0890",
+  "t": "Toutes mes condoléances / Je suis désolé pour ta perte",
+  "ex": "Je viens d'apprendre pour ton grand-père. Toutes mes condoléances."
+ },
+ {
+  "id": "ENG_CHUNK_0891",
+  "t": "En plus / De plus / Qui plus est",
+  "ex": "L'appart est immense. En plus, le loyer est vraiment bas."
+ },
+ {
+  "id": "ENG_CHUNK_0892",
+  "t": "D'autant plus que",
+  "ex": "Prends une veste, d'autant plus qu'il doit pleuvoir."
+ },
+ {
+  "id": "ENG_CHUNK_0893",
+  "t": "Encore moins / Alors [nom], n'en parlons pas",
+  "ex": "J'arrive à peine à faire des pâtes, alors une dinde entière, n'en parlons pas.",
+  "n": "encore moins after a negative: je ne sais pas cuire des pâtes, encore moins une dinde."
+ },
+ {
+  "id": "ENG_CHUNK_0894",
+  "t": "Puisque / Vu que",
+  "ex": "Puisque t'es debout, tu peux m'apporter de l'eau ?",
+  "n": "puisque = reason the listener already knows; parce que introduces new info."
+ },
+ {
+  "id": "ENG_CHUNK_0895",
+  "t": "À long terme / Sur le long terme",
+  "ex": "Acheter de bonnes chaussures, ça fait faire des économies à long terme."
+ },
+ {
+  "id": "ENG_CHUNK_0896",
+  "t": "Au contraire / Si ça se trouve, c'est même",
+  "ex": "Le nouveau boulot n'est pas plus stressant. Au contraire, c'est plus facile."
+ },
+ {
+  "id": "ENG_CHUNK_0897",
+  "t": "Ou plutôt",
+  "ex": "On se voit mardi, ou plutôt mercredi."
+ },
+ {
+  "id": "ENG_CHUNK_0898",
+  "t": "En tout cas / De toute façon",
+  "ex": "Je sais pas si je pourrai venir. En tout cas, je t'appelle."
+ },
+ {
+  "id": "ENG_CHUNK_0899",
+  "t": "Que [proposition au subjonctif] ou non",
+  "ex": "On va à la plage, qu'il pleuve ou non.",
+  "n": "Subjunctive trigger: que ... ou non / que ... ou que ... always take the subjunctive."
+ },
+ {
+  "id": "ENG_CHUNK_0900",
+  "t": "Et pourtant",
+  "ex": "Il mange de la malbouffe tous les jours, et pourtant il ne grossit jamais."
+ }
+]

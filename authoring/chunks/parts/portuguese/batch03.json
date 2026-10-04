@@ -1,0 +1,535 @@
+[
+ {
+  "id": "ENG_CHUNK_0201",
+  "t": "[dia/hora] fica bom para você? / Pode ser [dia/hora]?",
+  "ex": "Quinta às seis fica bom para você?"
+ },
+ {
+  "id": "ENG_CHUNK_0202",
+  "t": "Você está livre [dia]? / Você tem compromisso [dia]?",
+  "ex": "Você está livre no sábado? Vamos fazer um churrasco."
+ },
+ {
+  "id": "ENG_CHUNK_0203",
+  "t": "Você tem algum plano para [substantivo]? / O que você vai fazer [período]?",
+  "ex": "O que você vai fazer no fim de semana?",
+  "n": "The 'O que você vai fazer...?' form is far more common in speech."
+ },
+ {
+  "id": "ENG_CHUNK_0204",
+  "t": "Quer vir [para o jantar/almoçar] aqui em casa?",
+  "ex": "Quer vir jantar aqui em casa na sexta?"
+ },
+ {
+  "id": "ENG_CHUNK_0205",
+  "t": "Por que [oração]? / Como assim [oração]?",
+  "ex": "Por que você não está comendo?",
+  "n": "No neutral casual equivalent of 'how come'; 'Por que é que...?' or 'Cadê...?' fill the role."
+ },
+ {
+  "id": "ENG_CHUNK_0206",
+  "t": "Deve ser por isso que [oração]",
+  "ex": "Você pulou o almoço? Deve ser por isso que está com dor de cabeça."
+ },
+ {
+  "id": "ENG_CHUNK_0207",
+  "t": "O que fez você [infinitivo]? / Por que você resolveu [infinitivo]?",
+  "ex": "Por que você resolveu se mudar para Chicago?"
+ },
+ {
+  "id": "ENG_CHUNK_0208",
+  "t": "É que [oração]",
+  "ex": "Gosto do apartamento. É que ele é um pouco longe do trabalho.",
+  "n": "'É que...' is the all-purpose hesitant reason in Brazilian speech."
+ },
+ {
+  "id": "ENG_CHUNK_0209",
+  "t": "É verdade, mas [oração]",
+  "ex": "É verdade, mas a gente ainda ia precisar de carro lá."
+ },
+ {
+  "id": "ENG_CHUNK_0210",
+  "t": "Qual o problema de [infinitivo]?",
+  "ex": "Qual o problema de jantar cereal?"
+ },
+ {
+  "id": "ENG_CHUNK_0211",
+  "t": "Vou ver se [oração]",
+  "ex": "Vou ver se eles têm mesa para quatro."
+ },
+ {
+  "id": "ENG_CHUNK_0212",
+  "t": "Então você está dizendo que [oração]?",
+  "ex": "Então você está dizendo que não dá para estacionar aqui de jeito nenhum?"
+ },
+ {
+  "id": "ENG_CHUNK_0213",
+  "t": "Desculpa, você disse que [oração]?",
+  "ex": "Desculpa, você disse que a reunião é às três?"
+ },
+ {
+  "id": "ENG_CHUNK_0214",
+  "t": "[oração], né? / [oração], não é?",
+  "ex": "Você vem pro churrasco no domingo, né?",
+  "n": "'Né' (não é) is the universal tag in Brazil; EP prefers 'não é?' or 'pois não?'."
+ },
+ {
+  "id": "ENG_CHUNK_0215",
+  "t": "Você não acha que [oração]?",
+  "ex": "Você não acha que está meio frio para ir à praia?"
+ },
+ {
+  "id": "ENG_CHUNK_0216",
+  "t": "Não sou muito fã de [substantivo]",
+  "ex": "Na verdade, não sou muito fã de comida apimentada."
+ },
+ {
+  "id": "ENG_CHUNK_0217",
+  "t": "Estou muito ligado em [substantivo] / Curto muito [substantivo]",
+  "ex": "Ultimamente eu curto muito escalada.",
+  "n": "'Curtir' = to be into/enjoy, informal Brazilian."
+ },
+ {
+  "id": "ENG_CHUNK_0218",
+  "t": "Não suporto [infinitivo] / Detesto [infinitivo]",
+  "ex": "Não suporto ficar na fila.",
+  "n": "Informal: Não aguento... / Odeio..."
+ },
+ {
+  "id": "ENG_CHUNK_0219",
+  "t": "Não me importo de [infinitivo] / Para mim tanto faz [infinitivo]",
+  "ex": "Não me importo de dirigir, se você quiser dormir."
+ },
+ {
+  "id": "ENG_CHUNK_0220",
+  "t": "Prefiro [infinitivo] a [infinitivo] / Prefiro [infinitivo] do que [infinitivo]",
+  "ex": "Prefiro cozinhar em casa a comer fora.",
+  "n": "Norm: preferir X a Y. Speech often says 'prefiro X do que Y', considered nonstandard."
+ },
+ {
+  "id": "ENG_CHUNK_0221",
+  "t": "Não sou muito bom em [infinitivo] / Não sou muito bom de [substantivo]",
+  "ex": "Não sou muito bom em lembrar nomes."
+ },
+ {
+  "id": "ENG_CHUNK_0222",
+  "t": "Você é muito bom em [infinitivo]",
+  "ex": "Você é muito bom em explicar as coisas.",
+  "n": "Also: Você manda muito bem em... (informal)."
+ },
+ {
+  "id": "ENG_CHUNK_0223",
+  "t": "Não tenho dinheiro para [infinitivo] / Não posso me dar ao luxo de [infinitivo]",
+  "ex": "Não tenho grana para sair todo fim de semana."
+ },
+ {
+  "id": "ENG_CHUNK_0224",
+  "t": "Não tenho conseguido [infinitivo]",
+  "ex": "Não tenho conseguido dormir desde a mudança.",
+  "n": "The Portuguese present perfect (tenho + particípio) is only for repeated/ongoing situations like this."
+ },
+ {
+  "id": "ENG_CHUNK_0225",
+  "t": "Decidi [infinitivo] / Resolvi [infinitivo]",
+  "ex": "Resolvi aceitar o emprego em Denver."
+ },
+ {
+  "id": "ENG_CHUNK_0226",
+  "t": "Espero [infinitivo] / Estou querendo [infinitivo]",
+  "ex": "Espero visitar meus avós neste verão."
+ },
+ {
+  "id": "ENG_CHUNK_0227",
+  "t": "Provavelmente vou [infinitivo] / Acho que vou [infinitivo]",
+  "ex": "Acho que vou só ficar em casa e descansar."
+ },
+ {
+  "id": "ENG_CHUNK_0228",
+  "t": "Vamos marcar [hora/lugar] / Melhor [hora]",
+  "ex": "Sete é muito cedo. Vamos marcar às oito, então."
+ },
+ {
+  "id": "ENG_CHUNK_0229",
+  "t": "Tenho que [infinitivo]",
+  "ex": "Tenho que buscar as crianças às três."
+ },
+ {
+  "id": "ENG_CHUNK_0230",
+  "t": "Não precisa [infinitivo] / Você não precisa [infinitivo]",
+  "ex": "Não precisa trazer nada, é só vir."
+ },
+ {
+  "id": "ENG_CHUNK_0231",
+  "t": "Preciso [infinitivo]? / É preciso [infinitivo]?",
+  "ex": "Precisa reservar mesa, ou dá para chegar direto?",
+  "n": "Impersonal 'Precisa...?' is very common in Brazil."
+ },
+ {
+  "id": "ENG_CHUNK_0232",
+  "t": "É normal [infinitivo]? / Aqui costuma [infinitivo]?",
+  "ex": "Aqui é normal dar gorjeta para o cabeleireiro?"
+ },
+ {
+  "id": "ENG_CHUNK_0233",
+  "t": "É proibido [infinitivo] / Não pode [infinitivo]",
+  "ex": "Não pode estacionar aqui depois das seis.",
+  "n": "Signs say 'Proibido estacionar'; speech says 'não pode'."
+ },
+ {
+  "id": "ENG_CHUNK_0234",
+  "t": "Vou ter que [infinitivo]",
+  "ex": "Desculpa, vou ter que cancelar hoje."
+ },
+ {
+  "id": "ENG_CHUNK_0235",
+  "t": "Costumo [infinitivo] / Eu tendo a [infinitivo]",
+  "ex": "Costumo comer demais quando estou estressado.",
+  "n": "'Costumar' is the everyday choice; 'tender a' is more formal."
+ },
+ {
+  "id": "ENG_CHUNK_0236",
+  "t": "estar bravo com [pessoa] / estar chateado com [pessoa]",
+  "ex": "Ela ainda está brava comigo por eu ter esquecido o aniversário dela.",
+  "n": "Brazil: bravo = angry (not brave!). EP: zangado."
+ },
+ {
+  "id": "ENG_CHUNK_0237",
+  "t": "estar chateado com [substantivo]",
+  "ex": "Ele está muito chateado por ter perdido o emprego.",
+  "n": "'Chateado' covers both upset and annoyed in Brazil."
+ },
+ {
+  "id": "ENG_CHUNK_0238",
+  "t": "ter orgulho de [pessoa] / estar orgulhoso de [pessoa]",
+  "ex": "Você passou na prova de direção? Que orgulho de você!"
+ },
+ {
+  "id": "ENG_CHUNK_0239",
+  "t": "pegar no sono / cair no sono",
+  "ex": "Peguei no sono no sofá no meio do filme."
+ },
+ {
+  "id": "ENG_CHUNK_0240",
+  "t": "se acalmar / ficar calmo",
+  "ex": "Calma, é só um arranhão.",
+  "n": "The bare 'Calma!' is the standard way to say 'calm down'."
+ },
+ {
+  "id": "ENG_CHUNK_0241",
+  "t": "estar estressado",
+  "ex": "Estou muito estressado com a mudança."
+ },
+ {
+  "id": "ENG_CHUNK_0242",
+  "t": "estar de bom humor",
+  "ex": "Você está de bom humor hoje. O que aconteceu?"
+ },
+ {
+  "id": "ENG_CHUNK_0243",
+  "t": "animar [pessoa] / levantar o astral de [pessoa]",
+  "ex": "Vamos levar ela para jantar para animá-la.",
+  "n": "Speech: pra animar ela. Norm: animá-la."
+ },
+ {
+  "id": "ENG_CHUNK_0244",
+  "t": "ter pena de [pessoa] / ficar com dó de [pessoa]",
+  "ex": "Fico com dó dele, está doente a semana toda.",
+  "n": "'Dó' (masculine: o dó) is common in São Paulo speech."
+ },
+ {
+  "id": "ENG_CHUNK_0245",
+  "t": "conhecer [pessoa] melhor",
+  "ex": "Ela é muito legal quando você conhece melhor.",
+  "n": "'Conhecer' covers both 'meet' and 'get to know'."
+ },
+ {
+  "id": "ENG_CHUNK_0246",
+  "t": "fazer amigos / fazer amizade",
+  "ex": "É difícil fazer amigos numa cidade nova."
+ },
+ {
+  "id": "ENG_CHUNK_0247",
+  "t": "ter muito em comum com [pessoa]",
+  "ex": "Tenho muito em comum com a minha colega de apartamento."
+ },
+ {
+  "id": "ENG_CHUNK_0248",
+  "t": "terminar com [pessoa]",
+  "ex": "Ela terminou com o namorado mês passado."
+ },
+ {
+  "id": "ENG_CHUNK_0249",
+  "t": "sair com [pessoa] / ter um encontro",
+  "ex": "A gente saiu ontem à noite, e foi muito bom.",
+  "n": "'Encontro' is date; 'marcar um encontro' can sound old-fashioned; people just say 'sair'."
+ },
+ {
+  "id": "ENG_CHUNK_0250",
+  "t": "chamar [pessoa] para sair",
+  "ex": "Ele finalmente chamou ela pra sair depois de três meses."
+ },
+ {
+  "id": "ENG_CHUNK_0251",
+  "t": "se apaixonar por [pessoa]",
+  "ex": "Eles se apaixonaram numa viagem para a Itália."
+ },
+ {
+  "id": "ENG_CHUNK_0252",
+  "t": "discutir com [pessoa] / brigar com [pessoa]",
+  "ex": "Briguei com a minha irmã por causa das festas de fim de ano.",
+  "n": "'Discutir' = argue (heated); 'brigar' = quarrel/fight, very common in speech."
+ },
+ {
+  "id": "ENG_CHUNK_0253",
+  "t": "dar nos nervos / me irritar",
+  "ex": "Esse barulho do andar de cima está me dando nos nervos.",
+  "n": "Informal: Esse barulho está me tirando do sério."
+ },
+ {
+  "id": "ENG_CHUNK_0254",
+  "t": "contar com [pessoa]",
+  "ex": "Pode sempre contar comigo."
+ },
+ {
+  "id": "ENG_CHUNK_0255",
+  "t": "encontrar [pessoa] por acaso / dar de cara com [pessoa]",
+  "ex": "Dei de cara com meu antigo professor no supermercado."
+ },
+ {
+  "id": "ENG_CHUNK_0256",
+  "t": "dar uma passada / passar aí",
+  "ex": "Vou dar uma passada aí depois do trabalho para deixar suas chaves."
+ },
+ {
+  "id": "ENG_CHUNK_0257",
+  "t": "fazer uma lista",
+  "ex": "Vamos fazer uma lista antes de ir ao mercado."
+ },
+ {
+  "id": "ENG_CHUNK_0258",
+  "t": "ficar trancado do lado de fora",
+  "ex": "Esqueci a chave dentro do carro de novo.",
+  "n": "No neat equivalent: speakers say 'esqueci a chave dentro' or 'fiquei trancado para fora'."
+ },
+ {
+  "id": "ENG_CHUNK_0259",
+  "t": "deixar [pessoa] em [lugar]",
+  "ex": "Você pode me deixar na estação?"
+ },
+ {
+  "id": "ENG_CHUNK_0260",
+  "t": "pegar trânsito / ficar preso no trânsito",
+  "ex": "Desculpa o atraso, peguei trânsito."
+ },
+ {
+  "id": "ENG_CHUNK_0261",
+  "t": "perder o ônibus",
+  "ex": "Perdi o ônibus, então tive que ir a pé.",
+  "n": "EP: autocarro."
+ },
+ {
+  "id": "ENG_CHUNK_0262",
+  "t": "pegar um voo / pegar um avião",
+  "ex": "Tenho que pegar um voo às seis da manhã amanhã."
+ },
+ {
+  "id": "ENG_CHUNK_0263",
+  "t": "se perder",
+  "ex": "A gente se perdeu no caminho para o hotel."
+ },
+ {
+  "id": "ENG_CHUNK_0264",
+  "t": "sair de férias / viajar de férias",
+  "ex": "Vamos sair de férias para o México em julho.",
+  "n": "'Férias' is always plural."
+ },
+ {
+  "id": "ENG_CHUNK_0265",
+  "t": "tirar um dia de folga",
+  "ex": "Vou tirar folga na sexta para ajudar meus pais na mudança."
+ },
+ {
+  "id": "ENG_CHUNK_0266",
+  "t": "Na minha opinião / Eu acho que",
+  "ex": "Na minha opinião, o lugar antigo tinha comida melhor."
+ },
+ {
+  "id": "ENG_CHUNK_0267",
+  "t": "Sabe / Tipo",
+  "ex": "É aquele lugarzinho, sabe, do lado da padaria.",
+  "n": "'Tipo' is the ubiquitous young-speaker filler, like 'like'."
+ },
+ {
+  "id": "ENG_CHUNK_0268",
+  "t": "Brincadeira! / Tô brincando",
+  "ex": "Comi o bolo todo. Brincadeira, sobrou um pedaço."
+ },
+ {
+  "id": "ENG_CHUNK_0269",
+  "t": "Verdade seja dita / Pra ser justo",
+  "ex": "Ele sempre se atrasa, mas verdade seja dita, o trânsito estava terrível."
+ },
+ {
+  "id": "ENG_CHUNK_0270",
+  "t": "Desculpa interromper",
+  "ex": "Desculpa interromper, mas seu táxi chegou.",
+  "n": "Formal: Com licença, desculpe interromper."
+ },
+ {
+  "id": "ENG_CHUNK_0271",
+  "t": "Como é que se diz?",
+  "ex": "Foi tão... como é que se diz? Constrangedor."
+ },
+ {
+  "id": "ENG_CHUNK_0272",
+  "t": "Como é que chama? / Aquele negócio",
+  "ex": "Me passa o, como é que chama, o abridor de lata?",
+  "n": "'Negócio' / 'treco' / 'coisa' = thingummy."
+ },
+ {
+  "id": "ENG_CHUNK_0273",
+  "t": "Foi o que eu pensei / Bem que eu imaginei",
+  "ex": "Então a loja fecha às segundas? Bem que eu imaginei."
+ },
+ {
+  "id": "ENG_CHUNK_0274",
+  "t": "Não muito / Não exatamente",
+  "ex": "Está com fome? Não muito, almocei bem."
+ },
+ {
+  "id": "ENG_CHUNK_0275",
+  "t": "Concordo totalmente",
+  "ex": "Concordo totalmente, é caro demais.",
+  "n": "Informal: Com certeza! / Nem me fala!"
+ },
+ {
+  "id": "ENG_CHUNK_0276",
+  "t": "Quem te falou isso? / Onde você ouviu isso?",
+  "ex": "Vão fechar a academia? Quem te falou isso?"
+ },
+ {
+  "id": "ENG_CHUNK_0277",
+  "t": "Pode repetir, por favor?",
+  "ex": "Desculpa, pode repetir? Está muito barulho aqui.",
+  "n": "Formal: O senhor poderia repetir?"
+ },
+ {
+  "id": "ENG_CHUNK_0278",
+  "t": "Deixa eu explicar de outro jeito",
+  "ex": "Deixa eu explicar de outro jeito: este ano não dá para bancar isso."
+ },
+ {
+  "id": "ENG_CHUNK_0279",
+  "t": "Onde é que eu estava?",
+  "ex": "Desculpa, o telefone. Onde é que eu estava?",
+  "n": "Also: Do que eu estava falando mesmo?"
+ },
+ {
+  "id": "ENG_CHUNK_0280",
+  "t": "É uma longa história",
+  "ex": "Por que você voltou? É uma longa história."
+ },
+ {
+  "id": "ENG_CHUNK_0281",
+  "t": "Melhor prevenir do que remediar",
+  "ex": "Coloquei um suéter a mais na mala. Melhor prevenir do que remediar.",
+  "n": "This proverb is fully current in everyday speech."
+ },
+ {
+  "id": "ENG_CHUNK_0282",
+  "t": "Falar é fácil / É mais fácil falar do que fazer",
+  "ex": "Só parar de me preocupar? Falar é fácil."
+ },
+ {
+  "id": "ENG_CHUNK_0283",
+  "t": "Por mim, tudo bem / Fechado",
+  "ex": "Sábado às dez? Por mim, fechado.",
+  "n": "'Fechado!' = deal, it's settled."
+ },
+ {
+  "id": "ENG_CHUNK_0284",
+  "t": "Tô dentro",
+  "ex": "Vocês vão fazer trilha no domingo? Tô dentro."
+ },
+ {
+  "id": "ENG_CHUNK_0285",
+  "t": "Pode ficar com o troco",
+  "ex": "Aqui estão vinte. Pode ficar com o troco."
+ },
+ {
+  "id": "ENG_CHUNK_0286",
+  "t": "Só estou dando uma olhada, obrigado",
+  "ex": "Posso ajudar a encontrar alguma coisa? Só estou dando uma olhadinha, obrigada."
+ },
+ {
+  "id": "ENG_CHUNK_0287",
+  "t": "Bom dia/Boa tarde para você / Até mais",
+  "ex": "Valeu pelo café. Boa tarde pra você!",
+  "n": "No fixed equivalent; Brazilians use time-of-day wishes: Bom trabalho! / Bom fim de semana!"
+ },
+ {
+  "id": "ENG_CHUNK_0288",
+  "t": "Foi um prazer conversar com você",
+  "ex": "Tenho que ir, mas foi um prazer conversar com você."
+ },
+ {
+  "id": "ENG_CHUNK_0289",
+  "t": "Como você tem passado? / E aí, tudo bem?",
+  "ex": "Oi, Mike! Quanto tempo, como você tem passado?"
+ },
+ {
+  "id": "ENG_CHUNK_0290",
+  "t": "E aí, quais as novidades? / O que você tem feito?",
+  "ex": "E aí, o que você tem feito desde a formatura?"
+ },
+ {
+  "id": "ENG_CHUNK_0291",
+  "t": "No começo / No início",
+  "ex": "No começo eu odiava o emprego novo, mas agora gosto muito."
+ },
+ {
+  "id": "ENG_CHUNK_0292",
+  "t": "Fora isso / Tirando isso",
+  "ex": "O quarto era um pouco pequeno. Fora isso, estava perfeito."
+ },
+ {
+  "id": "ENG_CHUNK_0293",
+  "t": "Em primeiro lugar / Antes de tudo",
+  "ex": "Antes de tudo, obrigado por terem vindo."
+ },
+ {
+  "id": "ENG_CHUNK_0294",
+  "t": "Mais tarde / Depois",
+  "ex": "A gente almoçou no centro e mais tarde foi ao cinema."
+ },
+ {
+  "id": "ENG_CHUNK_0295",
+  "t": "Até agora / Por enquanto",
+  "ex": "Como está o emprego novo? Até agora, está ótimo."
+ },
+ {
+  "id": "ENG_CHUNK_0296",
+  "t": "Se possível",
+  "ex": "Eu queria um lugar na janela, se possível."
+ },
+ {
+  "id": "ENG_CHUNK_0297",
+  "t": "É porque",
+  "ex": "As crianças estão quietas. É porque estão vendo desenho."
+ },
+ {
+  "id": "ENG_CHUNK_0298",
+  "t": "O que significa que / Ou seja",
+  "ex": "A ponte está fechada, ou seja, vamos ter que dar a volta."
+ },
+ {
+  "id": "ENG_CHUNK_0299",
+  "t": "Graças a",
+  "ex": "Graças a você, a gente chegou na hora."
+ },
+ {
+  "id": "ENG_CHUNK_0300",
+  "t": "Como / Tipo",
+  "ex": "Traz uns lanchinhos, como fruta ou barrinha de cereal."
+ }
+]

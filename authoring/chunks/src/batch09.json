@@ -1,0 +1,902 @@
+[
+{
+"id": "ENG_CHUNK_0801",
+"chunk": "Just because [clause] doesn't mean [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Rejecting faulty reasoning",
+"register": "neutral",
+"natural_example": "Just because it's expensive doesn't mean it's better.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0802",
+"chunk": "I see where you're coming from, but [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Acknowledging someone's view before disagreeing",
+"register": "neutral",
+"natural_example": "I see where you're coming from, but I still think we should wait.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0803",
+"chunk": "I can see why [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Showing you understand someone's reaction or choice",
+"register": "neutral",
+"natural_example": "I can see why you're upset. That was really unfair.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0804",
+"chunk": "Is it just me, or [clause]?",
+"category": "sentence_frame",
+"pragmatic_function": "Checking if others share a perception",
+"register": "informal",
+"natural_example": "Is it just me, or is it freezing in here?",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0805",
+"chunk": "You'd think [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Pointing out a failed expectation",
+"register": "informal",
+"natural_example": "You'd think a hotel this expensive would have decent Wi-Fi.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0806",
+"chunk": "No wonder [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Saying something is no longer surprising",
+"register": "informal",
+"natural_example": "You only slept three hours? No wonder you're tired.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0807",
+"chunk": "Don't tell me [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Anticipating bad news with disbelief",
+"register": "informal",
+"natural_example": "Don't tell me you lost your keys again.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0808",
+"chunk": "Are you telling me [clause]?",
+"category": "sentence_frame",
+"pragmatic_function": "Expressing incredulity",
+"register": "informal",
+"natural_example": "Are you telling me you've never seen snow?",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0809",
+"chunk": "I was under the impression [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Politely signaling a misunderstanding",
+"register": "polite",
+"natural_example": "Sorry, I was under the impression the meeting was at three.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0810",
+"chunk": "I could have sworn [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Insisting on a memory that proved wrong",
+"register": "neutral",
+"natural_example": "I could have sworn I left my phone on the table.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0811",
+"chunk": "I take it [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Checking an inference from context",
+"register": "neutral",
+"natural_example": "I take it you didn't enjoy the movie.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0812",
+"chunk": "I'm starting to think [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Revealing a growing suspicion",
+"register": "neutral",
+"natural_example": "I'm starting to think he's not coming.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0813",
+"chunk": "It dawned on me that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Reporting a sudden realization",
+"register": "neutral",
+"natural_example": "Halfway to the airport, it dawned on me that I'd forgotten my passport.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0814",
+"chunk": "There's more to [noun] than [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Saying something is deeper than it looks",
+"register": "neutral",
+"natural_example": "There's more to life than work, you know.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0815",
+"chunk": "I wouldn't be surprised if [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Predicting a likely outcome",
+"register": "neutral",
+"natural_example": "I wouldn't be surprised if it snowed tonight.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0816",
+"chunk": "It's bound to [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Predicting with certainty",
+"register": "neutral",
+"natural_example": "Don't worry about the rain. It's bound to clear up by noon.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0817",
+"chunk": "Knowing [person], [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Predicting based on someone's character",
+"register": "informal",
+"natural_example": "Knowing my brother, he'll show up an hour late.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0818",
+"chunk": "For all I know, [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Admitting you can't rule something out",
+"register": "informal",
+"natural_example": "For all I know, he's still asleep.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0819",
+"chunk": "There's no telling [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Saying something is unpredictable",
+"register": "neutral",
+"natural_example": "There's no telling how long the line will be.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0820",
+"chunk": "What does [noun] have to do with [noun]?",
+"category": "sentence_frame",
+"pragmatic_function": "Challenging the relevance of something",
+"register": "informal",
+"natural_example": "What does my age have to do with anything?",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0821",
+"chunk": "I'm not convinced [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Expressing skepticism",
+"register": "neutral",
+"natural_example": "I'm not convinced this is the best time to buy a house.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0822",
+"chunk": "I'll believe it when [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Doubting a promise until it happens",
+"register": "informal",
+"natural_example": "He says he'll quit smoking? I'll believe it when I see it.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0823",
+"chunk": "We could always [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Offering a fallback option",
+"register": "neutral",
+"natural_example": "If the restaurant's full, we could always order in.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0824",
+"chunk": "We might as well [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Suggesting action for lack of alternatives",
+"register": "neutral",
+"natural_example": "The bus isn't coming. We might as well walk.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0825",
+"chunk": "I'm not one to [base-verb], but [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Disclaiming a habit before doing it",
+"register": "informal",
+"natural_example": "I'm not one to complain, but this soup is cold.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0826",
+"chunk": "It wouldn't hurt to [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Recommending a low-cost precaution",
+"register": "neutral",
+"natural_example": "It wouldn't hurt to call ahead and check they're open.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0827",
+"chunk": "You can't go wrong with [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Recommending a safe choice",
+"register": "neutral",
+"natural_example": "If you're not sure what to order, you can't go wrong with the pasta.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0828",
+"chunk": "There's no excuse for [verb-ing]",
+"category": "sentence_frame",
+"pragmatic_function": "Condemning behavior as inexcusable",
+"register": "neutral",
+"natural_example": "There's no excuse for being rude to the waiter.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0829",
+"chunk": "Whatever you do, don't [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Giving a strong warning",
+"register": "neutral",
+"natural_example": "Whatever you do, don't tell Dad about the party.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0830",
+"chunk": "Don't you dare [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Forbidding something emphatically",
+"register": "informal",
+"natural_example": "Don't you dare eat the last slice of cake!",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0831",
+"chunk": "Don't bother [verb-ing]",
+"category": "sentence_frame",
+"pragmatic_function": "Advising against a pointless effort",
+"register": "informal",
+"natural_example": "Don't bother calling him. He never picks up.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0832",
+"chunk": "Let's say [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Proposing a working assumption",
+"register": "neutral",
+"natural_example": "Let's say we leave at eight. Would that work?",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0833",
+"chunk": "It's safe to say [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Making a confident generalization",
+"register": "neutral",
+"natural_example": "It's safe to say the party was a success.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0834",
+"chunk": "I was going to ask if you wanted to [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Making a tentative invitation",
+"register": "neutral",
+"natural_example": "I was going to ask if you wanted to grab lunch on Friday.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0835",
+"chunk": "I'm up for [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Agreeing to join an activity",
+"register": "informal",
+"natural_example": "I'm up for a movie tonight, if you are.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0836",
+"chunk": "to get a second opinion",
+"category": "collocation",
+"pragmatic_function": "Seeking another expert's view",
+"register": "neutral",
+"natural_example": "The dentist says I need a crown, but I want to get a second opinion.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0837",
+"chunk": "side effects",
+"category": "collocation",
+"pragmatic_function": "Discussing unwanted effects of medication or a change",
+"register": "neutral",
+"natural_example": "Are there any side effects I should know about?",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0838",
+"chunk": "to be worn out",
+"category": "collocation",
+"pragmatic_function": "Reporting exhaustion",
+"register": "informal",
+"natural_example": "I'm completely worn out after that move.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0839",
+"chunk": "to catch your breath",
+"category": "collocation",
+"pragmatic_function": "Pausing to recover",
+"register": "neutral",
+"natural_example": "Hang on, let me catch my breath.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0840",
+"chunk": "to lose your temper",
+"category": "collocation",
+"pragmatic_function": "Reporting an outburst of anger",
+"register": "neutral",
+"natural_example": "I'm sorry I lost my temper with you yesterday.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0841",
+"chunk": "to freak out",
+"category": "collocation",
+"pragmatic_function": "Reporting panic or a strong reaction",
+"register": "informal",
+"natural_example": "Don't freak out, but I scratched your car.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0842",
+"chunk": "to take [noun] personally",
+"category": "collocation",
+"pragmatic_function": "Reacting to criticism as a personal attack",
+"register": "neutral",
+"natural_example": "Don't take it personally. He's like that with everyone.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0843",
+"chunk": "to hurt someone's feelings",
+"category": "collocation",
+"pragmatic_function": "Reporting emotional harm",
+"register": "neutral",
+"natural_example": "I'm sorry if I hurt your feelings.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0844",
+"chunk": "to feel left out",
+"category": "collocation",
+"pragmatic_function": "Reporting exclusion",
+"register": "neutral",
+"natural_example": "Invite your cousin too, or she'll feel left out.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0845",
+"chunk": "to open up to [person]",
+"category": "collocation",
+"pragmatic_function": "Sharing personal feelings with someone",
+"register": "neutral",
+"natural_example": "It took months before he opened up to me.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0846",
+"chunk": "to get [noun] off your chest",
+"category": "collocation",
+"pragmatic_function": "Unburdening yourself by saying something",
+"register": "informal",
+"natural_example": "I need to get something off my chest.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0847",
+"chunk": "to blow off steam",
+"category": "collocation",
+"pragmatic_function": "Releasing stress",
+"register": "informal",
+"natural_example": "I go for a run after work to blow off steam.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0848",
+"chunk": "to have mixed feelings about [noun]",
+"category": "collocation",
+"pragmatic_function": "Expressing ambivalence",
+"register": "neutral",
+"natural_example": "I have mixed feelings about moving back home.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0849",
+"chunk": "to see [noun] coming",
+"category": "collocation",
+"pragmatic_function": "Anticipating an outcome",
+"register": "informal",
+"natural_example": "Wow, I didn't see that coming.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0850",
+"chunk": "to let [person] down",
+"category": "collocation",
+"pragmatic_function": "Disappointing someone who relied on you",
+"register": "neutral",
+"natural_example": "I promised to help, and I don't want to let her down.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0851",
+"chunk": "to look up to [person]",
+"category": "collocation",
+"pragmatic_function": "Expressing admiration",
+"register": "neutral",
+"natural_example": "I've always looked up to my older sister.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0852",
+"chunk": "to put up with [noun]",
+"category": "collocation",
+"pragmatic_function": "Tolerating something unpleasant",
+"register": "neutral",
+"natural_example": "I don't know how you put up with that noise every night.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0853",
+"chunk": "to back [person] up",
+"category": "collocation",
+"pragmatic_function": "Supporting someone in a dispute",
+"register": "neutral",
+"natural_example": "If the boss asks, will you back me up?",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0854",
+"chunk": "to take sides",
+"category": "collocation",
+"pragmatic_function": "Choosing or refusing to support one side in a dispute",
+"register": "neutral",
+"natural_example": "They're both my friends, so I'm not taking sides.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0855",
+"chunk": "to see eye to eye",
+"category": "collocation",
+"pragmatic_function": "Describing agreement",
+"register": "neutral",
+"natural_example": "My dad and I don't always see eye to eye on money.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0856",
+"chunk": "to be on good terms with [person]",
+"category": "collocation",
+"pragmatic_function": "Describing a friendly relationship",
+"register": "neutral",
+"natural_example": "I'm still on good terms with my ex.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0857",
+"chunk": "to lose touch with [person]",
+"category": "collocation",
+"pragmatic_function": "Reporting drifting apart",
+"register": "neutral",
+"natural_example": "We lost touch with each other after college.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0858",
+"chunk": "to meet [person] halfway",
+"category": "collocation",
+"pragmatic_function": "Offering a compromise",
+"register": "neutral",
+"natural_example": "I can't pay the full price, but can you meet me halfway?",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0859",
+"chunk": "to cheat on [person]",
+"category": "collocation",
+"pragmatic_function": "Reporting infidelity",
+"register": "informal",
+"natural_example": "She found out he'd been cheating on her.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0860",
+"chunk": "to settle down",
+"category": "collocation",
+"pragmatic_function": "Talking about starting a stable life",
+"register": "neutral",
+"natural_example": "He wants to travel for a few years before he settles down.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0861",
+"chunk": "to start a family",
+"category": "collocation",
+"pragmatic_function": "Talking about having children",
+"register": "neutral",
+"natural_example": "We're hoping to start a family in a couple of years.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0862",
+"chunk": "to take after [person]",
+"category": "collocation",
+"pragmatic_function": "Noting family resemblance",
+"register": "neutral",
+"natural_example": "She really takes after her dad. Same laugh.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0863",
+"chunk": "to run in the family",
+"category": "collocation",
+"pragmatic_function": "Noting inherited traits",
+"register": "neutral",
+"natural_example": "Everyone's tall. It runs in the family.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0864",
+"chunk": "to look out for [person]",
+"category": "collocation",
+"pragmatic_function": "Protecting someone",
+"register": "neutral",
+"natural_example": "My older brother always looked out for me at school.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0865",
+"chunk": "to talk [person] into [verb-ing]",
+"category": "collocation",
+"pragmatic_function": "Persuading someone",
+"register": "informal",
+"natural_example": "My friends talked me into going skydiving.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0866",
+"chunk": "As far as I'm concerned",
+"category": "gambit_filler",
+"pragmatic_function": "Framing a firm personal view",
+"register": "neutral",
+"natural_example": "As far as I'm concerned, the matter is closed.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0867",
+"chunk": "Don't get me wrong",
+"category": "gambit_filler",
+"pragmatic_function": "Preventing misinterpretation",
+"register": "informal",
+"natural_example": "Don't get me wrong, I love my job. I'm just exhausted.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0868",
+"chunk": "Let me get this straight",
+"category": "gambit_filler",
+"pragmatic_function": "Clarifying a surprising claim",
+"register": "informal",
+"natural_example": "Let me get this straight. You quit your job yesterday?",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0869",
+"chunk": "Come again?",
+"category": "gambit_filler",
+"pragmatic_function": "Informal request for repetition",
+"register": "informal",
+"natural_example": "Come again? I didn't catch that.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0870",
+"chunk": "I wouldn't go that far",
+"category": "gambit_filler",
+"pragmatic_function": "Rejecting an overstatement",
+"register": "neutral",
+"natural_example": "Best pizza in the city? I wouldn't go that far.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0871",
+"chunk": "Up to a point",
+"category": "gambit_filler",
+"pragmatic_function": "Limited agreement",
+"register": "neutral",
+"natural_example": "I agree with you up to a point.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0872",
+"chunk": "In a way",
+"category": "gambit_filler",
+"pragmatic_function": "Partially accepting a statement",
+"register": "neutral",
+"natural_example": "In a way, losing that job was the best thing that happened to me.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0873",
+"chunk": "Sounds about right",
+"category": "gambit_filler",
+"pragmatic_function": "Approximate confirmation",
+"register": "informal",
+"natural_example": "The repair was two hundred dollars? Sounds about right.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0874",
+"chunk": "Point taken",
+"category": "gambit_filler",
+"pragmatic_function": "Accepting criticism or an argument",
+"register": "neutral",
+"natural_example": "Okay, point taken. I'll be more careful next time.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0875",
+"chunk": "I'll give you that",
+"category": "gambit_filler",
+"pragmatic_function": "Conceding one point in an argument",
+"register": "informal",
+"natural_example": "It's a long drive, I'll give you that, but the view is worth it.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0876",
+"chunk": "Hear me out",
+"category": "gambit_filler",
+"pragmatic_function": "Asking to be listened to fully",
+"register": "informal",
+"natural_example": "I know it sounds crazy, but hear me out.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0877",
+"chunk": "Where do we go from here?",
+"category": "gambit_filler",
+"pragmatic_function": "Moving a discussion toward next steps",
+"register": "neutral",
+"natural_example": "Okay, the bank said no. Where do we go from here?",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0878",
+"chunk": "Hold that thought",
+"category": "gambit_filler",
+"pragmatic_function": "Pausing someone's point to return to it later",
+"register": "informal",
+"natural_example": "Hold that thought. Someone's at the door.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0879",
+"chunk": "Over to you",
+"category": "gambit_filler",
+"pragmatic_function": "Handing the turn to someone else",
+"register": "neutral",
+"natural_example": "That's all from me. Over to you, Sarah.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0880",
+"chunk": "Now you're talking",
+"category": "gambit_filler",
+"pragmatic_function": "Approving a better suggestion",
+"register": "informal",
+"natural_example": "Pizza and a movie? Now you're talking!",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0881",
+"chunk": "Here we go again",
+"category": "fixed_formula",
+"pragmatic_function": "Expressing weariness at a repeated problem",
+"register": "informal",
+"natural_example": "Oh, the Wi-Fi's down. Here we go again.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0882",
+"chunk": "Tell me about it",
+"category": "fixed_formula",
+"pragmatic_function": "Strongly agreeing with a complaint from experience",
+"register": "informal",
+"natural_example": "Mondays are the worst. Tell me about it.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0883",
+"chunk": "It's not rocket science",
+"category": "fixed_formula",
+"pragmatic_function": "Saying that something is not hard to understand",
+"register": "informal",
+"natural_example": "Just follow the instructions. It's not rocket science.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0884",
+"chunk": "Speak of the devil",
+"category": "fixed_formula",
+"pragmatic_function": "Greeting someone who appears just as they were mentioned",
+"register": "informal",
+"natural_example": "Speak of the devil, here she comes now.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0885",
+"chunk": "The more, the merrier",
+"category": "fixed_formula",
+"pragmatic_function": "Welcoming extra people to join",
+"register": "informal",
+"natural_example": "Bring your friends. The more, the merrier!",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0886",
+"chunk": "Break a leg",
+"category": "fixed_formula",
+"pragmatic_function": "Wishing a performer good luck",
+"register": "informal",
+"natural_example": "Big show tonight? Break a leg!",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0887",
+"chunk": "Knock on wood",
+"category": "fixed_formula",
+"pragmatic_function": "Hoping good luck continues after mentioning it",
+"register": "informal",
+"natural_example": "I haven't been sick all year, knock on wood.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0888",
+"chunk": "I'd like to propose a toast",
+"category": "fixed_formula",
+"pragmatic_function": "Opening a toast at a gathering",
+"register": "formal",
+"natural_example": "Everyone, I'd like to propose a toast to the happy couple.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0889",
+"chunk": "I'll drink to that",
+"category": "fixed_formula",
+"pragmatic_function": "Enthusiastically agreeing with a wish or toast",
+"register": "informal",
+"natural_example": "Here's to a long weekend! I'll drink to that.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0890",
+"chunk": "I'm sorry for your loss",
+"category": "fixed_formula",
+"pragmatic_function": "Offering condolences after a death",
+"register": "polite",
+"natural_example": "I just heard about your grandfather. I'm sorry for your loss.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0891",
+"chunk": "What's more",
+"category": "discourse_connector",
+"pragmatic_function": "Adding a stronger supporting point",
+"register": "neutral",
+"natural_example": "The apartment is huge. What's more, the rent is really low.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0892",
+"chunk": "Especially since",
+"category": "discourse_connector",
+"pragmatic_function": "Adding a reason that makes a point stronger",
+"register": "neutral",
+"natural_example": "You should take a jacket, especially since it's supposed to rain.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0893",
+"chunk": "Let alone",
+"category": "discourse_connector",
+"pragmatic_function": "Ruling out something even less likely",
+"register": "neutral",
+"natural_example": "I can barely cook pasta, let alone a whole turkey.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0894",
+"chunk": "Seeing as",
+"category": "discourse_connector",
+"pragmatic_function": "Giving a reason both speakers already know",
+"register": "informal",
+"natural_example": "Seeing as you're up, could you grab me some water?",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0895",
+"chunk": "In the long run",
+"category": "discourse_connector",
+"pragmatic_function": "Referring to the eventual outcome over time",
+"register": "neutral",
+"natural_example": "Buying good shoes saves you money in the long run.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0896",
+"chunk": "If anything",
+"category": "discourse_connector",
+"pragmatic_function": "Correcting an assumption toward the opposite",
+"register": "neutral",
+"natural_example": "The new job isn't more stressful. If anything, it's easier.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0897",
+"chunk": "Or rather",
+"category": "discourse_connector",
+"pragmatic_function": "Correcting oneself mid-sentence",
+"register": "neutral",
+"natural_example": "I'll see you Tuesday, or rather Wednesday.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0898",
+"chunk": "In any case",
+"category": "discourse_connector",
+"pragmatic_function": "Setting uncertainty aside to reach the main point",
+"register": "neutral",
+"natural_example": "I'm not sure I can make it. In any case, I'll call you.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0899",
+"chunk": "Whether or not",
+"category": "discourse_connector",
+"pragmatic_function": "Saying a condition makes no difference",
+"register": "neutral",
+"natural_example": "We're going to the beach whether or not it rains.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0900",
+"chunk": "And yet",
+"category": "discourse_connector",
+"pragmatic_function": "Introducing a surprising contrast",
+"register": "neutral",
+"natural_example": "He eats junk food every day, and yet he never gains weight.",
+"cefr_level": "B2"
+}
+]

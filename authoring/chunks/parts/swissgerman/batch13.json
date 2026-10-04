@@ -1,0 +1,553 @@
+[
+ {
+  "id": "ENG_CHUNK_1201",
+  "t": "Hoi! / Sali!",
+  "ex": "Hoi! Wie gaat s der hüt?",
+  "n": "Hoi, Sali, Salü for du; Grüezi for Sie and strangers. To a group: Hoi zäme / Grüezi mitenand."
+ },
+ {
+  "id": "ENG_CHUNK_1202",
+  "t": "Guete Morge",
+  "ex": "Guete Morge! Häsch guet gschlafe?"
+ },
+ {
+  "id": "ENG_CHUNK_1203",
+  "t": "Grüezi / Guete Namittag",
+  "ex": "Grüezi, chan ich Ine hälfe?",
+  "n": "'Guete Namittag' exists, but the everyday greeting at any hour is Grüezi (Sie) or Hoi (du)."
+ },
+ {
+  "id": "ENG_CHUNK_1204",
+  "t": "Guet Nacht",
+  "ex": "Guet Nacht! Schlaf guet."
+ },
+ {
+  "id": "ENG_CHUNK_1205",
+  "t": "Wie gaat s? / Wie gaat s der?",
+  "ex": "Hoi Sam, wie gaat s der?",
+  "n": "Sie form: Wie gaat s Ine?"
+ },
+ {
+  "id": "ENG_CHUNK_1206",
+  "t": "Guet, merci. Und dir?",
+  "ex": "«Wie gaat s der?» «Guet, merci. Und dir?»",
+  "n": "Sie form: Und Ine?"
+ },
+ {
+  "id": "ENG_CHUNK_1207",
+  "t": "Nöd schlächt, merci",
+  "ex": "«Wie gaat s?» «Nöd schlächt, merci.»"
+ },
+ {
+  "id": "ENG_CHUNK_1208",
+  "t": "Freut mi",
+  "ex": "Hoi, ich bi d Anna. Freut mi.",
+  "n": "Names take an article: d Anna, de Tom."
+ },
+ {
+  "id": "ENG_CHUNK_1209",
+  "t": "Mich au / Gliichfalls",
+  "ex": "«Freut mi.» «Mich au.»",
+  "n": "Mich au answers 'Freut mi'; Gliichfalls returns a wish (Schöne Tag! Gliichfalls!)."
+ },
+ {
+  "id": "ENG_CHUNK_1210",
+  "t": "Freut mi sehr / Freut mi, Sie kännezlehre",
+  "ex": "Guete Morge, min Name isch David Lee. Freut mi sehr."
+ },
+ {
+  "id": "ENG_CHUNK_1211",
+  "t": "Wie lauft s? / Wie gaat s so?",
+  "ex": "Hoi Tom, wie lauft s?"
+ },
+ {
+  "id": "ENG_CHUNK_1212",
+  "t": "Schön, di z gseh",
+  "ex": "Hoi Maria! Schön, di z gseh.",
+  "n": "Sie form: Schön, Sie z gseh."
+ },
+ {
+  "id": "ENG_CHUNK_1213",
+  "t": "Uf Widerluege / Tschüss",
+  "ex": "Uf Widerluege, und merci für alles.",
+  "n": "Uf Widerluege to Sie; Tschüss, Ciao or Adie to du."
+ },
+ {
+  "id": "ENG_CHUNK_1214",
+  "t": "Bis spöter / Bis dänn",
+  "ex": "Okay, bis spöter!"
+ },
+ {
+  "id": "ENG_CHUNK_1215",
+  "t": "En schöne Tag no",
+  "ex": "Merci vilmal. En schöne Tag no!",
+  "n": "The 'no' is what makes it a goodbye. Same pattern: Schöns Wuchenänd no!"
+ },
+ {
+  "id": "ENG_CHUNK_1216",
+  "t": "Merci / Danke",
+  "ex": "Merci für s Kafi.",
+  "n": "Merci is the everyday Swiss word, stressed on the first syllable."
+ },
+ {
+  "id": "ENG_CHUNK_1217",
+  "t": "Merci vilmal",
+  "ex": "Merci vilmal, das isch sehr lieb vo dir."
+ },
+ {
+  "id": "ENG_CHUNK_1218",
+  "t": "Gern gscheh / Bitte",
+  "ex": "«Merci!» «Gern gscheh.»"
+ },
+ {
+  "id": "ENG_CHUNK_1219",
+  "t": "Kei Problem",
+  "ex": "«Merci fürs Warte.» «Kei Problem.»"
+ },
+ {
+  "id": "ENG_CHUNK_1220",
+  "t": "Ja, gern",
+  "ex": "«Möchted Si en Tee?» «Ja, gern.»",
+  "n": "'Ja, bitte' also works; 'Ja, gern' is the warmer default."
+ },
+ {
+  "id": "ENG_CHUNK_1221",
+  "t": "Nei, merci",
+  "ex": "«Möchted Si no Chueche?» «Nei, merci.»"
+ },
+ {
+  "id": "ENG_CHUNK_1222",
+  "t": "Exgüsi / Entschuldigung",
+  "ex": "Exgüsi, isch das de Zug uf Bern?",
+  "n": "Exgüsi (from French excusez) is the everyday Swiss word; Entschuldigung is more formal."
+ },
+ {
+  "id": "ENG_CHUNK_1223",
+  "t": "Es tuet mer leid / Sorry",
+  "ex": "Es tuet mer leid, das isch min Fähler gsi."
+ },
+ {
+  "id": "ENG_CHUNK_1224",
+  "t": "Macht nüt / Isch scho guet",
+  "ex": "«Sorry, ich ha dini Tasse kaputt gmacht.» «Macht nüt.»"
+ },
+ {
+  "id": "ENG_CHUNK_1225",
+  "t": "Sorry, dass ich z spaat bi",
+  "ex": "Sorry, dass ich z spaat bi, de Bus isch nöd cho.",
+  "n": "Also: Sorry für d Verspätig."
+ },
+ {
+  "id": "ENG_CHUNK_1226",
+  "t": "Sorry, ich verstaa nöd",
+  "ex": "Sorry, ich verstaa nöd. Chasch das nomal säge?"
+ },
+ {
+  "id": "ENG_CHUNK_1227",
+  "t": "Chönnted Si bitte langsamer rede?",
+  "ex": "Chönnted Si bitte langsamer rede? Mis Schwiizerdütsch isch nöd so guet.",
+  "n": "Handy follow-up: Chönnted Si Hochdütsch rede?"
+ },
+ {
+  "id": "ENG_CHUNK_1228",
+  "t": "Chönd Si das bitte nomal säge? / Chasch das widerhole?",
+  "ex": "Sorry, chönd Si das bitte nomal säge?"
+ },
+ {
+  "id": "ENG_CHUNK_1229",
+  "t": "Chönd Si das bitte buechstabiere?",
+  "ex": "Ire Nachname? Chönd Si das bitte buechstabiere?"
+ },
+ {
+  "id": "ENG_CHUNK_1230",
+  "t": "Ich red nöd vil Schwiizerdütsch",
+  "ex": "Sorry, ich red nöd vil Schwiizerdütsch.",
+  "n": "Also: Ich verstaa nume es bitzeli."
+ },
+ {
+  "id": "ENG_CHUNK_1231",
+  "t": "Wie heissisch?",
+  "ex": "Hoi, ich bi de Tom. Wie heissisch du?",
+  "n": "Sie form: Wie heissed Si?"
+ },
+ {
+  "id": "ENG_CHUNK_1232",
+  "t": "Vo wo chunsch? / Woher chunsch?",
+  "ex": "Vo wo chunsch? Din Akzänt isch schön.",
+  "n": "Sie form: Vo wo chömed Si?"
+ },
+ {
+  "id": "ENG_CHUNK_1233",
+  "t": "Wie alt bisch?",
+  "ex": "Wie alt bisch, Emma?"
+ },
+ {
+  "id": "ENG_CHUNK_1234",
+  "t": "Wo wohnsch?",
+  "ex": "Wo wohnsch? Da i de Nöchi?"
+ },
+ {
+  "id": "ENG_CHUNK_1235",
+  "t": "Was machsch beruflich?",
+  "ex": "Was machsch beruflich? Studiersch no?",
+  "n": "Sie form: Was mached Si beruflich?"
+ },
+ {
+  "id": "ENG_CHUNK_1236",
+  "t": "Häsch Gschwüschterti?",
+  "ex": "Häsch Gschwüschterti?",
+  "n": "Gschwüschterti = brothers and sisters in one word."
+ },
+ {
+  "id": "ENG_CHUNK_1237",
+  "t": "Wie lang wohnsch scho da?",
+  "ex": "Wie lang wohnsch scho da?",
+  "n": "Present tense + scho, not Perfekt."
+ },
+ {
+  "id": "ENG_CHUNK_1238",
+  "t": "Und du?",
+  "ex": "Ich chume us Italie. Und du?",
+  "n": "Sie form: Und Sie?"
+ },
+ {
+  "id": "ENG_CHUNK_1239",
+  "t": "Wie spaat isch es?",
+  "ex": "Exgüsi, wie spaat isch es?",
+  "n": "Literally 'how late is it'. Also: Wievil Uhr isch es?"
+ },
+ {
+  "id": "ENG_CHUNK_1240",
+  "t": "Was choscht das?",
+  "ex": "Die Täsche isch schön. Was choscht die?"
+ },
+ {
+  "id": "ENG_CHUNK_1241",
+  "t": "Chan ich Ine hälfe?",
+  "ex": "Grüezi, chan ich Ine hälfe?",
+  "n": "Staff default to Sie. In shops also: Sueched Si öppis Bestimmts?"
+ },
+ {
+  "id": "ENG_CHUNK_1242",
+  "t": "Das wär s, merci / Das isch alles, merci",
+  "ex": "«Susch no öppis?» «Nei, das wär s, merci.»",
+  "n": "'Das wär s' is the everyday shop and café reply."
+ },
+ {
+  "id": "ENG_CHUNK_1243",
+  "t": "Chönnt ich bitte d Charte ha?",
+  "ex": "Grüezi, chönnt ich bitte d Charte ha?",
+  "n": "False friend: s Menü is the set dish of the day; the menu is d Charte / d Spiischarte."
+ },
+ {
+  "id": "ENG_CHUNK_1244",
+  "t": "Was chönd Si empfehle?",
+  "ex": "Ich bi s erscht Mal da. Was chönd Si empfehle?",
+  "n": "du form: Was empfiehlsch?"
+ },
+ {
+  "id": "ENG_CHUNK_1245",
+  "t": "Ich bi Vegetarier / Vegetarierin",
+  "ex": "Ich bi Vegetarierin. Hät s Fleisch i dere Suppe?"
+ },
+ {
+  "id": "ENG_CHUNK_1246",
+  "t": "Ich bi satt / Ich mag nüme",
+  "ex": "Nüt meh, merci. Ich mag nüme.",
+  "n": "'Ich mag nüme' (I can't manage more) is the natural table phrase."
+ },
+ {
+  "id": "ENG_CHUNK_1247",
+  "t": "Wo isch s WC?",
+  "ex": "Exgüsi, wo isch s WC?",
+  "n": "WC (said Weh-Zeh) is the normal word; Toilette is fine too."
+ },
+ {
+  "id": "ENG_CHUNK_1248",
+  "t": "Gönd Si graduus / Gang graduus",
+  "ex": "Gönd Si graduus, und d Bank isch uf de linke Siite."
+ },
+ {
+  "id": "ENG_CHUNK_1249",
+  "t": "Wo mues ich uusstiige?",
+  "ex": "Ich wott zum Zoo. Wo mues ich uusstiige?"
+ },
+ {
+  "id": "ENG_CHUNK_1250",
+  "t": "Was isch s WLAN-Passwort?",
+  "ex": "Exgüsi, was isch s WLAN-Passwort?",
+  "n": "Swiss say WLAN (Weh-Lan) more than wifi."
+ },
+ {
+  "id": "ENG_CHUNK_1251",
+  "t": "Hilfe!",
+  "ex": "Hilfe! Chan mer öpper hälfe?!"
+ },
+ {
+  "id": "ENG_CHUNK_1252",
+  "t": "Chönd Si mer hälfe? / Chasch mer hälfe?",
+  "ex": "Exgüsi, chönd Si mer hälfe? Ich ha mi verlaufe."
+ },
+ {
+  "id": "ENG_CHUNK_1253",
+  "t": "Ich bruuch en Arzt",
+  "ex": "Ich bruuch en Arzt. Min Bueb isch sehr chrank.",
+  "n": "Also: en Dokter."
+ },
+ {
+  "id": "ENG_CHUNK_1254",
+  "t": "Da tuet s weh",
+  "ex": "Da tuet s weh, im Buuch."
+ },
+ {
+  "id": "ENG_CHUNK_1255",
+  "t": "Ich fühl mi nöd guet / Mir isch nöd guet",
+  "ex": "Ich fühl mi nöd guet. Ich gang hei.",
+  "n": "'Mir isch nöd guet' often means feeling sick to the stomach."
+ },
+ {
+  "id": "ENG_CHUNK_1256",
+  "t": "Rüefed Si e Ambulanz!",
+  "ex": "Rüefed Si e Ambulanz! Er schnuufet nüme.",
+  "n": "Ambulance number in Switzerland: 144. du form: Rüef e Ambulanz!"
+ },
+ {
+  "id": "ENG_CHUNK_1257",
+  "t": "Ich ha mi verlaufe",
+  "ex": "Exgüsi, ich ha mi verlaufe. Wo isch de Bahnhof?",
+  "n": "verlaufe on foot, verfahre by car."
+ },
+ {
+  "id": "ENG_CHUNK_1258",
+  "t": "Achtung! / Pass uf!",
+  "ex": "Pass uf! Es Auto!"
+ },
+ {
+  "id": "ENG_CHUNK_1259",
+  "t": "Was isch los?",
+  "ex": "Du gsehsch truurig uus. Was isch los?"
+ },
+ {
+  "id": "ENG_CHUNK_1260",
+  "t": "Isch alles guet? / Gaat s?",
+  "ex": "Isch alles guet? Du bisch ganz bleich."
+ },
+ {
+  "id": "ENG_CHUNK_1261",
+  "t": "Alles Gueti zum Geburtstag!",
+  "ex": "Alles Gueti zum Geburi! Da isch es Gschänk für dich.",
+  "n": "Geburi = casual Geburtstag. Happy Birthday is also common."
+ },
+ {
+  "id": "ENG_CHUNK_1262",
+  "t": "Guet gmacht! / Bravo!",
+  "ex": "Du häsch d Prüefig bestande? Guet gmacht!"
+ },
+ {
+  "id": "ENG_CHUNK_1263",
+  "t": "Es rägnet",
+  "ex": "Nimm en Schirm mit. Es rägnet."
+ },
+ {
+  "id": "ENG_CHUNK_1264",
+  "t": "Schöns Wätter hüt, gäll?",
+  "ex": "Schöns Wätter hüt, gäll?",
+  "n": "gäll is the Swiss tag question; Sie form: gälled Si?"
+ },
+ {
+  "id": "ENG_CHUNK_1265",
+  "t": "Was isch dini Nummere?",
+  "ex": "Was isch dini Nummere? Ich schriib der.",
+  "n": "Also: dini Handynummere."
+ },
+ {
+  "id": "ENG_CHUNK_1266",
+  "t": "Ich ghör di nöd",
+  "ex": "Sorry, ich ghör di nöd. Es isch mega luut da."
+ },
+ {
+  "id": "ENG_CHUNK_1267",
+  "t": "Sorry, ich ha din Aaruef verpasst",
+  "ex": "Hoi, sorry, ich ha din Aaruef verpasst. Was isch?",
+  "n": "Was isch? / Was gaat? = what's up?"
+ },
+ {
+  "id": "ENG_CHUNK_1268",
+  "t": "Dörf ich Ine e Frag stelle? / Chan ich di öppis frage?",
+  "ex": "Exgüsi, dörf ich Ine e Frag stelle?"
+ },
+ {
+  "id": "ENG_CHUNK_1269",
+  "t": "Um wievil Uhr träffed mer üs?",
+  "ex": "Okay, Znacht am Friitig. Um wievil Uhr träffed mer üs?"
+ },
+ {
+  "id": "ENG_CHUNK_1270",
+  "t": "Min Akku isch glii läär",
+  "ex": "Ich mues gaa, min Akku isch glii läär."
+ },
+ {
+  "id": "ENG_CHUNK_1271",
+  "t": "Äh, wart schnäll",
+  "ex": "Äh, wart schnäll ... ich glaub, am Ziischtig."
+ },
+ {
+  "id": "ENG_CHUNK_1272",
+  "t": "En Momänt / Momäntli",
+  "ex": "Momäntli, ich hol schnäll min Chugelschriiber.",
+  "n": "Momäntli is the classic Swiss diminutive, fine on the phone too."
+ },
+ {
+  "id": "ENG_CHUNK_1273",
+  "t": "Wart schnäll!",
+  "ex": "Wart schnäll, ich chume!",
+  "n": "schnäll softens it, like 'a sec'. Sie form: Warted Si schnäll."
+ },
+ {
+  "id": "ENG_CHUNK_1274",
+  "t": "Moment / Bliib dra",
+  "ex": "Moment, ich lueg schnäll.",
+  "n": "On the phone: Bliib schnäll dra."
+ },
+ {
+  "id": "ENG_CHUNK_1275",
+  "t": "Wie bitte?",
+  "ex": "Wie bitte? Ich ha Si nöd ghört."
+ },
+ {
+  "id": "ENG_CHUNK_1276",
+  "t": "Sorry? / Wie?",
+  "ex": "Sorry? Chasch das nomal säge?",
+  "n": "'Hä?' is common but rude outside close friends."
+ },
+ {
+  "id": "ENG_CHUNK_1277",
+  "t": "Was isch das?",
+  "ex": "Was isch das? Das Wort känn ich nöd."
+ },
+ {
+  "id": "ENG_CHUNK_1278",
+  "t": "Okay / Guet",
+  "ex": "Okay, gömmer.",
+  "n": "gömmer = gönd mer, let's go."
+ },
+ {
+  "id": "ENG_CHUNK_1279",
+  "t": "Natürli / Klar",
+  "ex": "«Dörf ich da sitze?» «Natürli.»"
+ },
+ {
+  "id": "ENG_CHUNK_1280",
+  "t": "Klar",
+  "ex": "«Chasch mer s Salz gää?» «Klar.»"
+ },
+ {
+  "id": "ENG_CHUNK_1281",
+  "t": "Ich au",
+  "ex": "«Ich ha dä Song mega gern.» «Ich au!»"
+ },
+ {
+  "id": "ENG_CHUNK_1282",
+  "t": "Ich au nöd",
+  "ex": "«Ich trink nöd gern Kafi.» «Ich au nöd.»",
+  "n": "No separate 'neither' word: just add nöd."
+ },
+ {
+  "id": "ENG_CHUNK_1283",
+  "t": "Genau",
+  "ex": "Genau, also de Bus gaat am Nüüni.",
+  "n": "Genau is the all-purpose Swiss 'right, exactly'."
+ },
+ {
+  "id": "ENG_CHUNK_1284",
+  "t": "Ich weiss nöd / Kei Ahnig",
+  "ex": "Sorry, ich weiss es nöd."
+ },
+ {
+  "id": "ENG_CHUNK_1285",
+  "t": "Villicht",
+  "ex": "«Chunsch hüt znacht?» «Villicht.»"
+ },
+ {
+  "id": "ENG_CHUNK_1286",
+  "t": "Ich bi nöd sicher",
+  "ex": "«Isch das am Sunntig offe?» «Ich bi nöd sicher.»"
+ },
+ {
+  "id": "ENG_CHUNK_1287",
+  "t": "Gueti Idee",
+  "ex": "«Nämed mer es Taxi.» «Gueti Idee.»"
+ },
+ {
+  "id": "ENG_CHUNK_1288",
+  "t": "Das isch super! / Mega!",
+  "ex": "Du häsch de Job übercho? Das isch super!"
+ },
+ {
+  "id": "ENG_CHUNK_1289",
+  "t": "Oh nei!",
+  "ex": "Oh nei! Ich ha mini Schlüssel vergässe."
+ },
+ {
+  "id": "ENG_CHUNK_1290",
+  "t": "Also ...",
+  "ex": "Also ... ich bi nöd sicher.",
+  "n": "False friend: also = well/so; 'also' in English is au."
+ },
+ {
+  "id": "ENG_CHUNK_1291",
+  "t": "Eigentlich",
+  "ex": "Eigentlich chum ich us Kanada, nöd us de USA."
+ },
+ {
+  "id": "ENG_CHUNK_1292",
+  "t": "Tönt guet",
+  "ex": "«Pizza am Sibni?» «Tönt guet.»",
+  "n": "Swiss say tönt, not klingt."
+ },
+ {
+  "id": "ENG_CHUNK_1293",
+  "t": "Cool",
+  "ex": "«Mer gsehnd üs det.» «Cool.»"
+ },
+ {
+  "id": "ENG_CHUNK_1294",
+  "t": "Wow! / Hammer!",
+  "ex": "Wow! Dis Huus isch wunderschön."
+ },
+ {
+  "id": "ENG_CHUNK_1295",
+  "t": "Isch das okay? / Passt das?",
+  "ex": "Ich chume am Achti. Passt das?",
+  "n": "'Passt s?' is the everyday check."
+ },
+ {
+  "id": "ENG_CHUNK_1296",
+  "t": "Und dänn",
+  "ex": "Ich bi ufgstande, und dänn han ich zmorge ggässe.",
+  "n": "zmorge = breakfast."
+ },
+ {
+  "id": "ENG_CHUNK_1297",
+  "t": "Aber",
+  "ex": "Ich trink gern Tee, aber Kafi han ich nöd gern."
+ },
+ {
+  "id": "ENG_CHUNK_1298",
+  "t": "wil [Satz]",
+  "ex": "Ich bi müed, wil ich lang gschaffet ha.",
+  "n": "wil sends the verb to the end."
+ },
+ {
+  "id": "ENG_CHUNK_1299",
+  "t": "au",
+  "ex": "Ich red Französisch. Ich red au es bitzeli Dütsch.",
+  "n": "au = also. Swiss 'also' means 'well, so'."
+ },
+ {
+  "id": "ENG_CHUNK_1300",
+  "t": "dänn",
+  "ex": "Zerscht dusch ich, dänn zieh ich mi aa.",
+  "n": "dänn takes the first slot, so the verb comes straight after."
+ }
+]

@@ -1,0 +1,539 @@
+[
+{
+"id": "ENG_CHUNK_0301",
+"t": "Come vi conoscete, tu e [persona]? / Come hai conosciuto [persona]?",
+"ex": "Allora, come vi conoscete tu e Sara? Dal lavoro?"
+},
+{
+"id": "ENG_CHUNK_0302",
+"t": "Mi sto abituando a [infinito]",
+"ex": "Mi sto abituando a prendere la metro per andare al lavoro."
+},
+{
+"id": "ENG_CHUNK_0303",
+"t": "Scommetto che [clausola]",
+"ex": "Scommetto che è già al ristorante."
+},
+{
+"id": "ENG_CHUNK_0304",
+"t": "Ho la sensazione che [congiuntivo] / Mi sa che [indicativo]",
+"ex": "Ho la sensazione che non si farà vedere.",
+"n": "'Ho la sensazione che' normally takes congiuntivo; with future meaning the futuro is common."
+},
+{
+"id": "ENG_CHUNK_0305",
+"t": "Chissà se [clausola] / Mi chiedo se [clausola]",
+"ex": "Chissà se il panificio è ancora aperto.",
+"n": "'Chissà se' is the natural spoken way to wonder aloud."
+},
+{
+"id": "ENG_CHUNK_0306",
+"t": "Mi sa che [clausola] / Allora [clausola]",
+"ex": "L'autobus non arriva. Mi sa che andiamo a piedi."
+},
+{
+"id": "ENG_CHUNK_0307",
+"t": "Hai tutto il diritto di [infinito]",
+"ex": "Hai tutto il diritto di essere arrabbiato."
+},
+{
+"id": "ENG_CHUNK_0308",
+"t": "È impossibile che [congiuntivo] / Non c'è modo di [infinito]",
+"ex": "Non ce la faremo mai ad arrivare per le sei.",
+"n": "'È impossibile che' triggers congiuntivo; 'non ce la faremo mai' is the natural spoken version."
+},
+{
+"id": "ENG_CHUNK_0309",
+"t": "Dubito che [congiuntivo]",
+"ex": "Dubito che siano aperti di domenica.",
+"n": "Dubitare che always triggers congiuntivo."
+},
+{
+"id": "ENG_CHUNK_0310",
+"t": "Dovrebbe [infinito] / Dicono che [clausola]",
+"ex": "Questo fine settimana dovrebbe nevicare.",
+"n": "Condizionale 'dovrebbe' = is expected to."
+},
+{
+"id": "ENG_CHUNK_0311",
+"t": "Forse è perché [clausola] / Sarà perché [clausola]",
+"ex": "La pianta sta morendo. Forse è perché non prende abbastanza luce."
+},
+{
+"id": "ENG_CHUNK_0312",
+"t": "È molto probabile che [congiuntivo]",
+"ex": "È molto probabile che oggi finiamo prima.",
+"n": "'È probabile che' triggers congiuntivo; spoken often uses futuro or present."
+},
+{
+"id": "ENG_CHUNK_0313",
+"t": "E se [clausola]?",
+"ex": "E se non viene nessuno?",
+"n": "Real worry: 'e se' + indicative; hypothetical: 'e se' + congiuntivo imperfetto (e se non venisse nessuno?)."
+},
+{
+"id": "ENG_CHUNK_0314",
+"t": "Sono stufo di [infinito] / Mi sono stufato di [infinito]",
+"ex": "Sono stufo di mangiare pasta tutte le sere.",
+"n": "stufo/stufa agrees; 'ne ho le scatole piene' is stronger."
+},
+{
+"id": "ENG_CHUNK_0315",
+"t": "[nome] continua a [infinito]",
+"ex": "Il mio portatile continua a bloccarsi durante le videochiamate."
+},
+{
+"id": "ENG_CHUNK_0316",
+"t": "[nome] ha qualcosa che non va / C'è qualcosa che non va con [nome]",
+"ex": "La lavatrice ha qualcosa che non va."
+},
+{
+"id": "ENG_CHUNK_0317",
+"t": "[persona] [presente] sempre / [persona] non fa che [infinito]",
+"ex": "Il mio coinquilino lascia sempre i piatti nel lavandino.",
+"n": "Italian uses plain present + sempre; 'non fa altro che' = keeps on (annoyance)."
+},
+{
+"id": "ENG_CHUNK_0318",
+"t": "Mi dà molto fastidio quando [clausola] / Odio quando [clausola]",
+"ex": "Mi dà molto fastidio quando la gente parla durante il film.",
+"n": "'Mi dà fastidio che' + congiuntivo; 'quando' + indicative."
+},
+{
+"id": "ENG_CHUNK_0319",
+"t": "Scusa, non mi ero accorto che [clausola]",
+"ex": "Scusa, non mi ero accorto che eri al telefono.",
+"n": "Trapassato prossimo 'non mi ero accorto'; 'realizzare' as 'realize' is a debated anglicism."
+},
+{
+"id": "ENG_CHUNK_0320",
+"t": "Scusi il disturbo, ma [clausola] / Scusa se ti disturbo, ma...",
+"ex": "Scusi il disturbo, ma ha un minuto?"
+},
+{
+"id": "ENG_CHUNK_0321",
+"t": "Mi sono completamente dimenticato di [infinito]",
+"ex": "Mi sono completamente dimenticato di richiamare mia madre.",
+"n": "'dimenticarsi di' + infinitive; also 'mi è passato di mente'."
+},
+{
+"id": "ENG_CHUNK_0322",
+"t": "Volevo [infinito], ma [clausola] / Dovevo [infinito], però...",
+"ex": "Volevo andare a correre, ma si è messo a diluviare.",
+"n": "Imperfetto 'volevo/dovevo' marks the plan that fell through."
+},
+{
+"id": "ENG_CHUNK_0323",
+"t": "Sono rimasto bloccato a [nome] / Mi hanno trattenuto a [nome]",
+"ex": "Scusa il ritardo, sono rimasto bloccato al lavoro."
+},
+{
+"id": "ENG_CHUNK_0324",
+"t": "Sei mai stato in [nome]? / Sei mai stato a [città]?",
+"ex": "Sei mai stato in Messico?",
+"n": "in + country, a + city: in Messico, a Roma."
+},
+{
+"id": "ENG_CHUNK_0325",
+"t": "È la prima volta che [presente]",
+"ex": "È la prima volta che scio, quindi andateci piano con me.",
+"n": "'È la prima volta che' + present (not the future or passato)."
+},
+{
+"id": "ENG_CHUNK_0326",
+"t": "Sono cresciuto a [luogo] / in [luogo]",
+"ex": "Sono cresciuto in un paesino vicino a Denver."
+},
+{
+"id": "ENG_CHUNK_0327",
+"t": "Ti ricordi quando [imperfetto/passato prossimo]?",
+"ex": "Ti ricordi quando ci siamo persi in campeggio?"
+},
+{
+"id": "ENG_CHUNK_0328",
+"t": "Una volta [passato prossimo]",
+"ex": "Una volta abbiamo perso l'ultimo treno per tornare a casa."
+},
+{
+"id": "ENG_CHUNK_0329",
+"t": "Non indovinerai mai [clausola]",
+"ex": "Non indovinerai mai chi ho visto al supermercato."
+},
+{
+"id": "ENG_CHUNK_0330",
+"t": "Non sapevo che [clausola] / Non avevo idea che...",
+"ex": "Non sapevo che sapessi cucinare così.",
+"n": "'Non sapevo che' often triggers congiuntivo in careful speech: sapessi."
+},
+{
+"id": "ENG_CHUNK_0331",
+"t": "Non avrei mai pensato di [infinito passato/presente]",
+"ex": "Non avrei mai pensato che mi sarebbe piaciuto così tanto correre.",
+"n": "Different subject: 'non avrei mai pensato che' + condizionale passato or congiuntivo."
+},
+{
+"id": "ENG_CHUNK_0332",
+"t": "Sembri [aggettivo] / Hai l'aria [aggettivo]",
+"ex": "Sembri distrutto. Giornata lunga?"
+},
+{
+"id": "ENG_CHUNK_0333",
+"t": "Andiamo a prendere [nome] / Ci prendiamo [nome]?",
+"ex": "Dopo la riunione andiamo a mangiare qualcosa."
+},
+{
+"id": "ENG_CHUNK_0334",
+"t": "Ti sei ricordato di [infinito]?",
+"ex": "Ti sei ricordato di chiudere a chiave la porta sul retro?",
+"n": "ricordarsi di + infinitive."
+},
+{
+"id": "ENG_CHUNK_0335",
+"t": "Riusciresti a [infinito]? / Potresti [infinito]?",
+"ex": "Riusciresti a sostituirmi al turno di venerdì?"
+},
+{
+"id": "ENG_CHUNK_0336",
+"t": "prenotare un volo",
+"ex": "Devo ancora prenotare il volo per Natale.",
+"n": "Thanksgiving adapted to Christmas (Natale)."
+},
+{
+"id": "ENG_CHUNK_0337",
+"t": "lasciare la mancia",
+"ex": "Hai lasciato la mancia al cameriere?"
+},
+{
+"id": "ENG_CHUNK_0338",
+"t": "fare il check-in",
+"ex": "Possiamo fare il check-in in albergo dopo le tre."
+},
+{
+"id": "ENG_CHUNK_0339",
+"t": "lavorare da casa / fare smart working",
+"ex": "Il lunedì e il venerdì lavoro da casa.",
+"n": "'Smart working' is the Italian term for remote work."
+},
+{
+"id": "ENG_CHUNK_0340",
+"t": "avere una riunione con [persona]",
+"ex": "Alle due ho una riunione con il mio responsabile."
+},
+{
+"id": "ENG_CHUNK_0341",
+"t": "trovare lavoro",
+"ex": "Mio figlio ha appena trovato lavoro in ospedale."
+},
+{
+"id": "ENG_CHUNK_0342",
+"t": "fare domanda per [nome] / candidarsi per [nome]",
+"ex": "Sto facendo domanda per un posto in biblioteca."
+},
+{
+"id": "ENG_CHUNK_0343",
+"t": "essere pagato / prendere lo stipendio",
+"ex": "Prendo lo stipendio un venerdì sì e uno no.",
+"n": "In Italy salaries are normally monthly: 'a fine mese'."
+},
+{
+"id": "ENG_CHUNK_0344",
+"t": "guadagnare",
+"ex": "Guadagna qualcosa in più aggiustando biciclette.",
+"n": "'fare soldi' exists but sounds greedy."
+},
+{
+"id": "ENG_CHUNK_0345",
+"t": "sbrigare [nome] / fare [nome]",
+"ex": "Questo fine settimana devo sbrigare la dichiarazione dei redditi."
+},
+{
+"id": "ENG_CHUNK_0346",
+"t": "prendere appunti",
+"ex": "Puoi prendere appunti durante la riunione?"
+},
+{
+"id": "ENG_CHUNK_0347",
+"t": "compilare [nome]",
+"ex": "Prima deve compilare questo modulo."
+},
+{
+"id": "ENG_CHUNK_0348",
+"t": "riattaccare / chiudere",
+"ex": "Non riattaccare, sono ancora qui!",
+"n": "'Non chiudere' is equally common."
+},
+{
+"id": "ENG_CHUNK_0349",
+"t": "fare uno squillo a [persona] / chiamare [persona]",
+"ex": "Ti faccio uno squillo quando atterro.",
+"n": "'uno squillo' can mean a missed-call ring; 'ti chiamo' is the safe choice."
+},
+{
+"id": "ENG_CHUNK_0350",
+"t": "iscriversi a [nome]",
+"ex": "Mi sono appena iscritto a un corso di yoga."
+},
+{
+"id": "ENG_CHUNK_0351",
+"t": "andare storto / non andare a buon fine",
+"ex": "Qualcosa è andato storto con il pagamento."
+},
+{
+"id": "ENG_CHUNK_0352",
+"t": "guastarsi / rimanere in panne",
+"ex": "Siamo rimasti in panne in autostrada."
+},
+{
+"id": "ENG_CHUNK_0353",
+"t": "peggiorare",
+"ex": "La tosse mi sta peggiorando."
+},
+{
+"id": "ENG_CHUNK_0354",
+"t": "peggiorare le cose",
+"ex": "Non dire niente, peggioreresti solo le cose."
+},
+{
+"id": "ENG_CHUNK_0355",
+"t": "mettersi nei guai",
+"ex": "Ti metti nei guai se ti vede il capo."
+},
+{
+"id": "ENG_CHUNK_0356",
+"t": "fare un casino con [nome] / rovinare [nome]",
+"ex": "Ho fatto un casino con la presentazione.",
+"n": "'casino' = mess (colloquial); keep out of formal settings."
+},
+{
+"id": "ENG_CHUNK_0357",
+"t": "risolvere un problema",
+"ex": "Riavviare il router ha risolto il problema."
+},
+{
+"id": "ENG_CHUNK_0358",
+"t": "bucare una gomma",
+"ex": "Ho bucato una gomma andando al lavoro."
+},
+{
+"id": "ENG_CHUNK_0359",
+"t": "trovare parcheggio",
+"ex": "Ci ho messo venti minuti a trovare parcheggio.",
+"n": "No article: 'trovare parcheggio'."
+},
+{
+"id": "ENG_CHUNK_0360",
+"t": "lavare i piatti",
+"ex": "Se cucini tu, lavo io i piatti."
+},
+{
+"id": "ENG_CHUNK_0361",
+"t": "portare fuori la spazzatura / buttare la spazzatura",
+"ex": "Puoi buttare la spazzatura quando esci?"
+},
+{
+"id": "ENG_CHUNK_0362",
+"t": "fare disordine / fare un casino",
+"ex": "I bambini hanno fatto un gran disordine in soggiorno."
+},
+{
+"id": "ENG_CHUNK_0363",
+"t": "tagliarsi i capelli / andare dal parrucchiere",
+"ex": "Devo proprio tagliarmi i capelli.",
+"n": "'tagliarsi i capelli' implies at the barber, not necessarily yourself."
+},
+{
+"id": "ENG_CHUNK_0364",
+"t": "una domanda veloce",
+"ex": "Posso farti una domanda veloce?"
+},
+{
+"id": "ENG_CHUNK_0365",
+"t": "accomodarsi",
+"ex": "Prego, si accomodi, il dottore arriva subito.",
+"n": "Lei imperative: si accomodi."
+},
+{
+"id": "ENG_CHUNK_0366",
+"t": "Bella domanda",
+"ex": "Dove abbiamo parcheggiato? Bella domanda."
+},
+{
+"id": "ENG_CHUNK_0367",
+"t": "Più o meno / Praticamente",
+"ex": "Hai finito di fare la valigia? – Praticamente sì."
+},
+{
+"id": "ENG_CHUNK_0368",
+"t": "Aspetta, fammi indovinare",
+"ex": "Aspetta, fammi indovinare. Hai dimenticato di nuovo le chiavi."
+},
+{
+"id": "ENG_CHUNK_0369",
+"t": "Ok, capito / Chiaro",
+"ex": "Giro a sinistra al distributore. Ok, capito."
+},
+{
+"id": "ENG_CHUNK_0370",
+"t": "Scusa, non ti seguo",
+"ex": "Scusa, non ti seguo. Che autobus devo prendere?"
+},
+{
+"id": "ENG_CHUNK_0371",
+"t": "Fammi finire",
+"ex": "Fammi finire, poi parli tu.",
+"n": "Lei: 'Mi lasci finire'."
+},
+{
+"id": "ENG_CHUNK_0372",
+"t": "Ah, prima che me ne dimentichi",
+"ex": "Ah, prima che me ne dimentichi, ha chiamato tua madre.",
+"n": "'Prima che' triggers congiuntivo: me ne dimentichi."
+},
+{
+"id": "ENG_CHUNK_0373",
+"t": "Per farla breve / Insomma",
+"ex": "Per farla breve, abbiamo perso il volo."
+},
+{
+"id": "ENG_CHUNK_0374",
+"t": "Che tu ci creda o no",
+"ex": "Che tu ci creda o no, non ho mai visto il mare.",
+"n": "Fixed congiuntivo: che tu ci creda."
+},
+{
+"id": "ENG_CHUNK_0375",
+"t": "Allora / Dunque",
+"ex": "Allora, com'è andato il fine settimana?"
+},
+{
+"id": "ENG_CHUNK_0376",
+"t": "Vedi / Il fatto è che",
+"ex": "Vedi, la domenica il negozio chiude presto."
+},
+{
+"id": "ENG_CHUNK_0377",
+"t": "In pratica / Praticamente",
+"ex": "In pratica, ci serve più tempo."
+},
+{
+"id": "ENG_CHUNK_0378",
+"t": "Giusta osservazione / Hai ragione, non ci avevo pensato",
+"ex": "Hai ragione. Non ci avevo pensato."
+},
+{
+"id": "ENG_CHUNK_0379",
+"t": "Hai perfettamente ragione",
+"ex": "Hai perfettamente ragione, avrei dovuto chiamare."
+},
+{
+"id": "ENG_CHUNK_0380",
+"t": "Anch'io / Idem",
+"ex": "Sto morendo di fame. – Anch'io.",
+"n": "Negative agreement: 'Neanch'io'."
+},
+{
+"id": "ENG_CHUNK_0381",
+"t": "Ti devo un favore / Te ne devo una",
+"ex": "Grazie per essere venuto a prendermi. Te ne devo una."
+},
+{
+"id": "ENG_CHUNK_0382",
+"t": "Figurati, quando vuoi",
+"ex": "Grazie del passaggio. – Figurati, quando vuoi."
+},
+{
+"id": "ENG_CHUNK_0383",
+"t": "Molto gentile da parte tua / È molto gentile da parte Sua",
+"ex": "Mi hai portato la minestra? Che gentile!"
+},
+{
+"id": "ENG_CHUNK_0384",
+"t": "Colpa mia / Scusa, errore mio",
+"ex": "Oh, scusa, colpa mia, pensavo fosse il mio bicchiere.",
+"n": "'Pensavo che fosse' – congiuntivo after pensare."
+},
+{
+"id": "ENG_CHUNK_0385",
+"t": "Non succederà più",
+"ex": "Scusi per il ritardo di stamattina. Non succederà più."
+},
+{
+"id": "ENG_CHUNK_0386",
+"t": "Ti capisco",
+"ex": "Hanno cancellato anche il mio volo. Ti capisco."
+},
+{
+"id": "ENG_CHUNK_0387",
+"t": "Salute!",
+"ex": "Salute! Ti stai raffreddando?",
+"n": "Same word as a toast is 'Salute!' or 'Cin cin!'."
+},
+{
+"id": "ENG_CHUNK_0388",
+"t": "Ce la farai! / Ce la puoi fare!",
+"ex": "Non preoccuparti per il colloquio. Ce la farai!"
+},
+{
+"id": "ENG_CHUNK_0389",
+"t": "Sono proprio contento per te",
+"ex": "Vi siete fidanzati? Sono proprio contento per voi!",
+"n": "contento/contenta agrees with speaker."
+},
+{
+"id": "ENG_CHUNK_0390",
+"t": "Te lo meriti",
+"ex": "Complimenti per la promozione. Te lo meriti."
+},
+{
+"id": "ENG_CHUNK_0391",
+"t": "tranne / a parte",
+"ex": "È stato tutto perfetto, tranne il tempo."
+},
+{
+"id": "ENG_CHUNK_0392",
+"t": "per di più / come se non bastasse",
+"ex": "Il volo era in ritardo e, come se non bastasse, mi hanno perso la valigia."
+},
+{
+"id": "ENG_CHUNK_0393",
+"t": "quando [passato prossimo], [trapassato] già",
+"ex": "Quando siamo arrivati, il film era già iniziato.",
+"n": "No exact equivalent; 'quando... già' with trapassato; 'entro il momento in cui' sounds translated."
+},
+{
+"id": "ENG_CHUNK_0394",
+"t": "Nel frattempo / Intanto",
+"ex": "La cena è quasi pronta. Intanto, apparecchi la tavola?"
+},
+{
+"id": "ENG_CHUNK_0395",
+"t": "Adesso che / Ora che",
+"ex": "Ora che i bambini sono più grandi, viaggiamo di più."
+},
+{
+"id": "ENG_CHUNK_0396",
+"t": "D'ora in poi / Da adesso in poi",
+"ex": "D'ora in poi mi porto il pranzo da casa."
+},
+{
+"id": "ENG_CHUNK_0397",
+"t": "In ogni caso / Comunque",
+"ex": "Possiamo prendere l'autobus o andare a piedi. In ogni caso sono venti minuti."
+},
+{
+"id": "ENG_CHUNK_0398",
+"t": "Alla fine dei conti / In fin dei conti",
+"ex": "In fin dei conti, la decisione è tua."
+},
+{
+"id": "ENG_CHUNK_0399",
+"t": "A quei tempi / Allora",
+"ex": "A quei tempi non avevamo i cellulari."
+},
+{
+"id": "ENG_CHUNK_0400",
+"t": "Lì per lì / All'epoca",
+"ex": "Lì per lì mi sembrava un'ottima idea.",
+"n": "'Lì per lì' = in the moment; 'all'epoca' = back in that period."
+}
+]

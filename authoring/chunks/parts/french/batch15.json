@@ -1,0 +1,288 @@
+[
+{
+"id": "ENG_CHUNK_1401",
+"t": "J'ai [nom]",
+"ex": "J'ai un rhume.",
+"n": "Illnesses often take partitive or un: j'ai de la fièvre, j'ai la grippe, j'ai un rhume."
+},
+{
+"id": "ENG_CHUNK_1402",
+"t": "J'ai mal à/au [partie du corps]",
+"ex": "J'ai mal à la tête.",
+"n": "avoir mal à + article: au dos, à la gorge, aux dents. Not 'ma tête me fait mal'."
+},
+{
+"id": "ENG_CHUNK_1403",
+"t": "Je voudrais quelque chose contre [nom] / pour [nom]",
+"ex": "Je voudrais quelque chose contre la toux.",
+"n": "Pharmacy French uses contre: un sirop contre la toux."
+},
+{
+"id": "ENG_CHUNK_1404",
+"t": "J'ai perdu mon/ma [nom]",
+"ex": "J'ai perdu mon passeport."
+},
+{
+"id": "ENG_CHUNK_1405",
+"t": "On m'a volé mon/ma [nom]",
+"ex": "On m'a volé mon portefeuille dans le train.",
+"n": "Impersonal on + indirect object: on m'a volé..., the usual way to report theft."
+},
+{
+"id": "ENG_CHUNK_1406",
+"t": "J'aime [nom] / J'aime bien [nom]",
+"ex": "J'aime la pizza.",
+"n": "Likes take the definite article: j'aime le café, not j'aime café. J'aime bien is lighter."
+},
+{
+"id": "ENG_CHUNK_1407",
+"t": "Je m'intéresse à [nom] / [nom], ça m'intéresse",
+"ex": "Je m'intéresse à l'histoire.",
+"n": "Not 'je suis intéressé par' for hobbies; that sounds like a sales context."
+},
+{
+"id": "ENG_CHUNK_1408",
+"t": "Je n'aime pas [nom]",
+"ex": "Je n'aime pas le café.",
+"n": "Keep le after the negative: je n'aime pas le café (not 'de café'). Spoken: J'aime pas..."
+},
+{
+"id": "ENG_CHUNK_1409",
+"t": "Tu aimes [nom] ? / Vous aimez [nom] ?",
+"ex": "Tu aimes la cuisine italienne ?"
+},
+{
+"id": "ENG_CHUNK_1410",
+"t": "C'est quoi, ton/ta [nom] préféré(e) ? / Quel est ton [nom] préféré ?",
+"ex": "C'est quoi, ta couleur préférée ?",
+"n": "préféré agrees and follows the noun: ta couleur préférée."
+},
+{
+"id": "ENG_CHUNK_1411",
+"t": "Mon/Ma [nom] préféré(e), c'est [nom]",
+"ex": "Ma couleur préférée, c'est le bleu.",
+"n": "Colours used as nouns take le: le bleu."
+},
+{
+"id": "ENG_CHUNK_1412",
+"t": "Je veux [infinitif]",
+"ex": "Je veux rentrer.",
+"n": "Je veux can sound blunt to strangers; use Je voudrais there."
+},
+{
+"id": "ENG_CHUNK_1413",
+"t": "Je voudrais [infinitif] / J'aimerais [infinitif]",
+"ex": "Je voudrais réserver une table."
+},
+{
+"id": "ENG_CHUNK_1414",
+"t": "Je dois [infinitif] / J'ai besoin de [infinitif]",
+"ex": "Je dois aller à la banque."
+},
+{
+"id": "ENG_CHUNK_1415",
+"t": "Je dois [infinitif] / Il faut que je [subjonctif]",
+"ex": "Je dois travailler demain.",
+"n": "Il faut que triggers the subjunctive: il faut que j'aille."
+},
+{
+"id": "ENG_CHUNK_1416",
+"t": "J'ai besoin de/d' [nom] / Il me faut [nom]",
+"ex": "J'ai besoin d'un taxi."
+},
+{
+"id": "ENG_CHUNK_1417",
+"t": "Je peux [infinitif] ?",
+"ex": "Je peux m'asseoir ici ?",
+"n": "Est-ce que je peux... is slightly more careful."
+},
+{
+"id": "ENG_CHUNK_1418",
+"t": "Vous pouvez [infinitif], s'il vous plaît ? / Tu peux [infinitif], s'il te plaît ?",
+"ex": "Vous pouvez m'aider, s'il vous plaît ?"
+},
+{
+"id": "ENG_CHUNK_1419",
+"t": "Je ne peux pas [infinitif] / Je ne sais pas [infinitif]",
+"ex": "Je ne sais pas nager.",
+"n": "Learned skill = savoir (je ne sais pas nager); circumstance = pouvoir."
+},
+{
+"id": "ENG_CHUNK_1420",
+"t": "On [présent] ? / Allons [infinitif] !",
+"ex": "On va à la plage ?",
+"n": "On + question is the everyday suggestion; Allons... is more emphatic."
+},
+{
+"id": "ENG_CHUNK_1421",
+"t": "N'oublie pas de [infinitif] / N'oubliez pas de [infinitif]",
+"ex": "N'oublie pas de prendre tes clés."
+},
+{
+"id": "ENG_CHUNK_1422",
+"t": "Tu [présent] tous les combien ? / Tu [présent] souvent ?",
+"ex": "Tu vas à la salle tous les combien ?",
+"n": "Careful form: À quelle fréquence... ? Answer: deux fois par semaine."
+},
+{
+"id": "ENG_CHUNK_1423",
+"t": "Qu'est-ce que tu fais d'habitude [moment] ?",
+"ex": "Qu'est-ce que tu fais d'habitude le week-end ?",
+"n": "le + day/week-end = every: le samedi = on Saturdays."
+},
+{
+"id": "ENG_CHUNK_1424",
+"t": "Tu fais quoi [moment] ? / Qu'est-ce que tu fais [moment] ?",
+"ex": "Tu fais quoi ce week-end ?",
+"n": "Present tense for near plans, as in English."
+},
+{
+"id": "ENG_CHUNK_1425",
+"t": "Je vais [infinitif]",
+"ex": "Je vais rendre visite à ma tante ce week-end.",
+"n": "rendre visite à + person; visiter + place."
+},
+{
+"id": "ENG_CHUNK_1426",
+"t": "On se retrouve à/au [lieu] à [heure]",
+"ex": "On se retrouve au café à six heures."
+},
+{
+"id": "ENG_CHUNK_1427",
+"t": "On peut plutôt se voir [moment] ?",
+"ex": "On peut plutôt se voir demain ?",
+"n": "plutôt carries the 'instead'."
+},
+{
+"id": "ENG_CHUNK_1428",
+"t": "Désolé(e), je ne peux pas venir [jour]",
+"ex": "Désolé, je ne peux pas venir samedi.",
+"n": "No preposition before days: samedi, not 'sur samedi'."
+},
+{
+"id": "ENG_CHUNK_1429",
+"t": "Je suis pris(e) [jour] / Je ne suis pas libre [jour]",
+"ex": "Lundi, je suis pris. Et mardi ?",
+"n": "pris(e) = booked up; occupé(e) also works."
+},
+{
+"id": "ENG_CHUNK_1430",
+"t": "[heure], ça te va ? / [heure], ça vous va ?",
+"ex": "Six heures, ça te va ?"
+},
+{
+"id": "ENG_CHUNK_1431",
+"t": "J'aurai [nombre] minutes de retard",
+"ex": "Désolé, j'aurai dix minutes de retard.",
+"n": "avoir X minutes de retard, not 'être X minutes en retard'."
+},
+{
+"id": "ENG_CHUNK_1432",
+"t": "Je me sens [adjectif] aujourd'hui / Je suis [adjectif] aujourd'hui",
+"ex": "Je suis fatigué aujourd'hui."
+},
+{
+"id": "ENG_CHUNK_1433",
+"t": "Comment va [personne] ? / Ça va, [personne] ?",
+"ex": "Comment va ta mère ?",
+"n": "Casual: Et ta mère, ça va ?"
+},
+{
+"id": "ENG_CHUNK_1434",
+"t": "Il/Elle est comment, [personne] ?",
+"ex": "Il est comment, ton nouveau prof ?",
+"n": "Comment est... asks about character or looks; context decides."
+},
+{
+"id": "ENG_CHUNK_1435",
+"t": "Il fait [adjectif] aujourd'hui",
+"ex": "Il fait froid aujourd'hui.",
+"n": "Weather uses il fait: il fait chaud, beau, froid. Not c'est froid."
+},
+{
+"id": "ENG_CHUNK_1436",
+"t": "Quel temps fait-il à [lieu] ? / Il fait quel temps à [lieu] ?",
+"ex": "Il fait quel temps à Montréal ?"
+},
+{
+"id": "ENG_CHUNK_1437",
+"t": "Il va pleuvoir [moment]",
+"ex": "Il va pleuvoir cet après-midi."
+},
+{
+"id": "ENG_CHUNK_1438",
+"t": "Allô, c'est [prénom]",
+"ex": "Allô, c'est Maria.",
+"n": "Allô is only for the phone. Formal: Bonjour, Maria Dupont à l'appareil."
+},
+{
+"id": "ENG_CHUNK_1439",
+"t": "Je t'appelle [moment] / Je te rappelle [moment]",
+"ex": "Je t'appelle demain.",
+"n": "Present tense is normal for promises: je t'appelle demain."
+},
+{
+"id": "ENG_CHUNK_1440",
+"t": "Envoie-moi un texto quand [proposition au futur]",
+"ex": "Envoie-moi un texto quand tu seras rentré.",
+"n": "quand + future (or futur antérieur) where English uses present."
+},
+{
+"id": "ENG_CHUNK_1441",
+"t": "Je pense que [proposition] / Je trouve que [proposition]",
+"ex": "Je pense que c'est une bonne idée.",
+"n": "Negative je ne pense pas que triggers the subjunctive."
+},
+{
+"id": "ENG_CHUNK_1442",
+"t": "Je suis d'accord avec [personne]",
+"ex": "Je suis d'accord avec toi.",
+"n": "être d'accord, never 'j'agrée'. Use stressed pronouns: toi, lui, elle."
+},
+{
+"id": "ENG_CHUNK_1443",
+"t": "[nom] est meilleur que [nom] / [nom], c'est mieux que [nom]",
+"ex": "Le thé, c'est meilleur que le café.",
+"n": "meilleur = better (adjective); mieux = better (adverb, and after c'est)."
+},
+{
+"id": "ENG_CHUNK_1444",
+"t": "Je ne suis jamais allé(e) à/en [lieu]",
+"ex": "Je ne suis jamais allé en Australie.",
+"n": "aller uses être in passé composé; en + feminine country."
+},
+{
+"id": "ENG_CHUNK_1445",
+"t": "[moment] dernier, j'ai [participe passé]",
+"ex": "Le week-end dernier, j'ai rendu visite à mes grands-parents.",
+"n": "dernier follows the noun: la semaine dernière, l'an dernier."
+},
+{
+"id": "ENG_CHUNK_1446",
+"t": "Tu as passé un bon [nom] ?",
+"ex": "Tu as passé un bon week-end ?",
+"n": "passer un bon week-end / de bonnes vacances."
+},
+{
+"id": "ENG_CHUNK_1447",
+"t": "C'était comment, ton/ta [nom] ? / Ton [nom], ça s'est bien passé ?",
+"ex": "C'était comment, ton week-end ?"
+},
+{
+"id": "ENG_CHUNK_1448",
+"t": "En ce moment, je [présent] / Je suis en train de [infinitif]",
+"ex": "Là, je suis en train de travailler.",
+"n": "French has no -ing tense: plain present or être en train de for 'right now'."
+},
+{
+"id": "ENG_CHUNK_1449",
+"t": "Je suis désolé(e), mais [proposition]",
+"ex": "Je suis désolé, mais je ne peux pas vous aider."
+},
+{
+"id": "ENG_CHUNK_1450",
+"t": "À [jour] !",
+"ex": "À lundi !",
+"n": "No article: À lundi ! À demain ! À la semaine prochaine !"
+}
+]

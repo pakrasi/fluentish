@@ -1,0 +1,253 @@
+{
+  "day": 9,
+  "topic": "Familie und Freundschaft",
+  "lesen": {
+    "teil1": {
+      "title": "Drei Generationen unter einem Dach",
+      "source": "Blog",
+      "text": "Seit genau einem Jahr wohnen wir im Haus meiner Eltern. Als mein Vater vor zwei Jahren krank wurde, haben wir lange darüber gesprochen, wie es weitergehen soll. Das Haus war für meine Eltern allein zu groß geworden, und wir – mein Mann, unsere Tochter Emma und ich – wohnten in einer teuren Dreizimmerwohnung am anderen Ende der Stadt. Die Entscheidung war am Ende einfach: Meine Eltern haben sich im Erdgeschoss eine kleine Wohnung eingerichtet, wir wohnen oben im ersten Stock.\n\nDer größte Vorteil ist Emma. Sie ist sechs und geht nach der Schule direkt zu ihrer Oma, die mit ihr Hausaufgaben macht und Kuchen backt. Wir müssen niemanden mehr für die Betreuung bezahlen. Mein Vater hat mit meinem Mann im Sommer ein Baumhaus im Garten gebaut. Die beiden verstehen sich besser, als ich erwartet hatte.\n\nNatürlich gab es auch Konflikte. Meine Mutter hat Emma anfangs jeden Tag Süßigkeiten gegeben, obwohl wir das nicht wollten. Irgendwann haben wir ein langes Gespräch geführt, und seitdem gibt es die Schokolade nur noch am Wochenende. Wir haben außerdem eine Regel gefunden: Jede Familie hat ihren eigenen Eingang, und man klingelt, bevor man hineingeht. Nur am Sonntag frühstücken wir alle zusammen, und einmal pro Woche essen wir gemeinsam zu Abend – meistens kocht mein Vater.\n\nMeine Freundinnen fragen oft, ob mir die Privatsphäre nicht fehlt. Manchmal schon, das gebe ich zu. Aber wenn ich abends höre, wie Emma unten mit ihrer Oma lacht, dann weiß ich, dass wir das Richtige getan haben. Zurück in die alte Wohnung möchte niemand von uns.",
+      "items": [
+        {"id": "L1-1", "statement": "Die Familie wohnt seit einem Jahr im Haus der Eltern der Autorin.", "answer": true, "skill": "number-time"},
+        {"id": "L1-2", "statement": "Die Eltern der Autorin wohnen im ersten Stock.", "answer": false, "skill": "detail"},
+        {"id": "L1-3", "statement": "Emma geht nach der Schule zu ihrer Großmutter.", "answer": true, "skill": "detail"},
+        {"id": "L1-4", "statement": "Über die Erziehung von Emma gab es nie Streit.", "answer": false, "skill": "negation"},
+        {"id": "L1-5", "statement": "Die beiden Familien essen jeden Abend zusammen.", "answer": false, "skill": "number-time"},
+        {"id": "L1-6", "statement": "Die Autorin ist mit der Entscheidung zufrieden.", "answer": true, "skill": "attitude"}
+      ]
+    },
+    "teil2": {
+      "texts": [
+        {
+          "title": "Oma auf Zeit",
+          "source": "Zeitung",
+          "text": "Jeden Dienstag um halb drei steht Hildegard Meier vor der Kita „Pusteblume“ in Münster und holt zwei Kinder ab, die nicht ihre Enkel sind. Die 72-Jährige ist „Leihoma“ bei Familie Ruiz. Die echten Großeltern der Kinder leben in Spanien und in Hamburg, und die Eltern arbeiten beide Vollzeit. Vermittelt hat den Kontakt der Verein „Generationen verbinden“, der in Münster inzwischen über 120 solcher Partnerschaften organisiert hat.\n\nDie Idee ist einfach: Ältere Menschen, die Zeit haben und Kinder mögen, helfen Familien, deren Großeltern weit weg wohnen oder nicht mehr leben. Geld gibt es dafür nicht, nur die Fahrtkosten werden ersetzt. „Ich mache das nicht für Geld“, sagt Frau Meier. „Meine eigenen Enkel wohnen in Kanada, ich sehe sie einmal im Jahr. Hier habe ich wieder Kinderlachen im Alltag.“\n\nWer als Leihoma oder Leihopa mitmachen will, muss ein polizeiliches Führungszeugnis vorlegen und an einem Gespräch mit dem Verein teilnehmen. Danach werden Familie und Senioren behutsam zusammengebracht: erst ein Kaffee, dann ein gemeinsamer Nachmittag. Die Nachfrage ist allerdings größer als das Angebot. Familien müssen zurzeit etwa ein halbes Jahr warten, bis sich eine passende Person findet. Der Verein sucht deshalb dringend weitere Freiwillige ab sechzig.",
+          "items": [
+            {"id": "L2-1", "question": "Der Verein in Münster …", "options": ["bringt ältere Menschen mit Familien zusammen, deren Großeltern weit weg wohnen.", "sucht Großeltern, die Geld verdienen möchten.", "bietet Kurse für Großeltern an."], "answer": 0, "skill": "global"},
+            {"id": "L2-2", "question": "Frau Meier …", "options": ["bekommt für ihre Hilfe ein Gehalt.", "holt die Kinder einmal pro Woche von der Kita ab.", "sieht ihre eigenen Enkel jede Woche."], "answer": 1, "skill": "detail"},
+            {"id": "L2-3", "question": "Familien, die mitmachen möchten, …", "options": ["müssen ein Führungszeugnis vorlegen.", "bekommen sofort eine Leihoma.", "müssen oft ein halbes Jahr warten."], "answer": 2, "skill": "number-time"}
+          ]
+        },
+        {
+          "title": "Freundschaft braucht Termine",
+          "source": "Zeitschrift",
+          "text": "Wie viele enge Freunde hat ein Erwachsener in Deutschland? Im Durchschnitt 3,7 – das zeigt eine neue Umfrage mit über 2000 Teilnehmern. Interessant ist ein anderes Ergebnis: Ab dem dreißigsten Lebensjahr wird es deutlich schwieriger, Freundschaften zu pflegen. Beruf, Umzüge und Kinder lassen wenig Zeit, und viele Kontakte schlafen langsam ein.\n\n„Freundschaft ist wie eine Pflanze, die man gießen muss“, sagt die Psychologin Dr. Anja Berg. Studien zeigen, dass man ungefähr 200 gemeinsame Stunden braucht, bis aus einem Bekannten ein enger Freund wird. Ihr Rat klingt unromantisch, funktioniert aber: „Vereinbaren Sie feste Termine, so wie beim Sport oder beim Zahnarzt. Wer wartet, bis beide spontan Zeit haben, der wartet oft ein ganzes Jahr.“\n\nSven und Ali haben sich mit sechzehn im Fußballverein kennengelernt. Heute wohnen sie 300 Kilometer voneinander entfernt, beide haben Familie und wenig Zeit. Trotzdem telefonieren sie seit zwölf Jahren jeden Sonntag um 20 Uhr. „Nur zweimal ist das Gespräch ausgefallen, einmal war ich im Krankenhaus“, erzählt Ali. „Ohne den festen Termin hätten wir uns bestimmt aus den Augen verloren.“ Einmal im Jahr fahren die beiden außerdem zusammen zum Angeln, und zwar seit fünfzehn Jahren immer an denselben See.",
+          "items": [
+            {"id": "L2-4", "question": "Laut der Umfrage …", "options": ["haben die meisten Erwachsenen mehr als fünf enge Freunde.", "wird es nach dem dreißigsten Lebensjahr schwieriger, Freundschaften zu pflegen.", "haben Menschen mit Kindern die meisten Freunde."], "answer": 1, "skill": "paraphrase"},
+            {"id": "L2-5", "question": "Frau Berg empfiehlt, …", "options": ["möglichst viele neue Leute kennenzulernen.", "Freunde nur zu besonderen Anlässen zu treffen.", "feste Termine mit Freunden zu vereinbaren."], "answer": 2, "skill": "paraphrase"},
+            {"id": "L2-6", "question": "Sven und Ali …", "options": ["telefonieren seit Jahren jede Woche zur gleichen Zeit.", "wohnen in derselben Stadt.", "haben sich im Krankenhaus kennengelernt."], "answer": 0, "skill": "detail"}
+          ]
+        }
+      ]
+    },
+    "teil3": {
+      "intro": "Einige Personen aus Ihrem Deutschkurs suchen Angebote rund um Familie und Freundschaft. Lesen Sie die Situationen 1–7 und die Anzeigen A–J. Welche Anzeige passt zu welcher Situation? Eine Anzeige kann nur einmal gewählt werden. Für eine Situation gibt es keine passende Anzeige – markieren Sie dort 0.",
+      "situations": [
+        {"id": "L3-1", "text": "Julia (28) ist neu in der Stadt und möchte Leute in ihrem Alter kennenlernen.", "answer": "C", "skill": "matching"},
+        {"id": "L3-2", "text": "Herr und Frau Weber suchen jemanden, der zweimal pro Woche nachmittags auf ihre Tochter (4) aufpasst.", "answer": "G", "skill": "matching"},
+        {"id": "L3-3", "text": "Selma und ihr Mann streiten in letzter Zeit sehr oft und möchten mit einem Fachmann darüber sprechen.", "answer": "A", "skill": "matching"},
+        {"id": "L3-4", "text": "Timo möchte seinen Großeltern zur goldenen Hochzeit ein persönliches Geschenk machen.", "answer": "I", "skill": "matching"},
+        {"id": "L3-5", "text": "Karin (68) lebt allein und möchte am Sonntag nicht immer allein essen.", "answer": "E", "skill": "matching"},
+        {"id": "L3-6", "text": "Aylins Vater (80) kann nicht mehr allein wohnen. Sie sucht ein Seniorenheim in der Nähe, in dem er auch nachts betreut wird.", "answer": null, "skill": "matching"},
+        {"id": "L3-7", "text": "Daniel möchte in den Ferien mit seinen Kindern (7 und 10) etwas zusammen mit anderen Familien unternehmen.", "answer": "D", "skill": "matching"}
+      ],
+      "ads": [
+        {"letter": "A", "title": "Paarberatung – bevor es zu spät ist", "text": "Streit, Schweigen, Missverständnisse? Unsere Psychologinnen helfen Paaren, wieder miteinander zu reden. Erstgespräch kostenlos, danach 60 € pro Stunde. Termine auch abends. Beratungsstelle Familie & Partnerschaft, Tel. 0251 / 44 55 66."},
+        {"letter": "B", "title": "Kindergeburtstag im Zoo", "text": "Feiern zwischen Affen und Pinguinen! Zwei Stunden Führung, Tierfütterung und Geburtstagstisch im Zoo-Café. Für Kinder von 5 bis 12 Jahren, max. 10 Kinder. 180 € inkl. Eintritt. Buchung: feiern@zoo-nord.de"},
+        {"letter": "C", "title": "Stammtisch „Neu in der Stadt“", "text": "Du bist gerade hergezogen und kennst noch niemanden? Wir treffen uns jeden Donnerstag um 19:30 Uhr im Café Nordstern. Offene Runde, 20 bis 35 Jahre, jeder ist willkommen. Einfach vorbeikommen!"},
+        {"letter": "D", "title": "Familien-Zeltwochenende am See", "text": "Drei Tage Natur mit anderen Familien: Lagerfeuer, Kanufahren, Nachtwanderung. Für Eltern mit Kindern von 6 bis 14 Jahren. 90 € pro Familie inkl. Verpflegung, Zelte vorhanden. In den Herbstferien, Anmeldung beim Jugendwerk."},
+        {"letter": "E", "title": "Sonntagstisch im Gemeindezentrum", "text": "Niemand soll allein essen! Jeden Sonntag um 12:30 Uhr kochen Freiwillige ein Drei-Gänge-Menü für alle, die Gesellschaft suchen. 5 € pro Person, Anmeldung bis Freitag unter 0251 / 77 88 99. Fahrdienst auf Anfrage."},
+        {"letter": "F", "title": "Elternkurs: Pubertät – Hilfe, mein Kind ist 13!", "text": "Warum Jugendliche so reagieren und wie Eltern ruhig bleiben. Vier Abende mit einer Familienberaterin, Volkshochschule, Raum 8. Dienstags 19 Uhr, 40 €. Für Eltern von Kindern zwischen 11 und 16."},
+        {"letter": "G", "title": "Zuverlässige Babysitterin", "text": "Studentin (Lehramt, 23) mit viel Erfahrung passt auf Ihre Kinder auf – nachmittags und am Wochenende, auch regelmäßig. Gern auch Abholen von der Kita. 12 € pro Stunde. Referenzen vorhanden. 0176 / 55 66 77 88."},
+        {"letter": "H", "title": "Tagespflege „Lindenhof“", "text": "Für Seniorinnen und Senioren, die tagsüber Betreuung brauchen, abends aber zu Hause sein möchten. Montag bis Freitag 8–16 Uhr, mit Mittagessen, Gymnastik und Gedächtnistraining. Fahrdienst inklusive. Probetag kostenlos."},
+        {"letter": "I", "title": "Ihr Familienfilm aus alten Fotos", "text": "Wir machen aus Ihren Fotos, Dias und Videos einen persönlichen Film mit Musik – das perfekte Geschenk zu Hochzeitstag, Geburtstag oder Jubiläum. Fertig in zwei Wochen, ab 150 €. Fotostudio Blick, Marktstraße 3."},
+        {"letter": "J", "title": "Hochzeitsfotografie mit Herz", "text": "Vom Anziehen bis zum letzten Tanz: Wir begleiten Ihren großen Tag und halten die schönsten Momente fest. Pakete ab 900 €, inklusive Online-Galerie. Termine für dieses Jahr fast ausgebucht – jetzt anfragen!"}
+      ]
+    },
+    "teil4": {
+      "question": "Sollten junge Erwachsene nach der Schule so schnell wie möglich von zu Hause ausziehen?",
+      "comments": [
+        {"id": "L4-1", "author": "Lars, Bochum", "text": "Ich bin mit 18 ausgezogen, in ein winziges Zimmer in einer WG. Da habe ich gelernt, zu kochen, mit Geld umzugehen und Rechnungen zu bezahlen. Meine Eltern hätten mir das alles abgenommen. Es war die beste Entscheidung meines Lebens.", "answer": true, "skill": "attitude"},
+        {"id": "L4-2", "author": "Beate, Passau", "text": "Mein Sohn ist 24, studiert und wohnt noch bei uns. Er spart sich die Miete, wir haben ein gutes Verhältnis, und er hilft im Haushalt. Warum sollte er ausziehen, nur weil man das angeblich so macht? Die Mieten sind sowieso unbezahlbar.", "answer": false, "skill": "attitude"},
+        {"id": "L4-3", "author": "Nadia, Hannover", "text": "Ich bin 22 und wohne noch zu Hause, aber nicht freiwillig – ich finde einfach keine Wohnung. Ich gebe zu, mit meiner Mutter streite ich täglich über Kleinigkeiten. Sobald ich etwas Bezahlbares finde, bin ich weg.", "answer": true, "skill": "inference"},
+        {"id": "L4-4", "author": "Georg, Trier", "text": "In vielen Ländern leben drei Generationen zusammen, und niemand findet das seltsam. Selbstständig wird man durch Verantwortung, nicht durch eine eigene Wohnung. Diese deutsche Idee vom schnellen Ausziehen halte ich für überholt.", "answer": false, "skill": "attitude"},
+        {"id": "L4-5", "author": "Simone, Halle", "text": "Als Psychologin sehe ich junge Erwachsene, die mit 28 noch nie eine eigene Entscheidung getroffen haben, weil die Eltern immer alles geregelt haben. Wer zu lange zu Hause bleibt, dem fehlt später oft der Mut. Also: raus, so früh wie möglich.", "answer": true, "skill": "attitude"},
+        {"id": "L4-6", "author": "Kevin, Bremen", "text": "Ich bin mit 19 ausgezogen und nach einem Jahr zurück zu meinen Eltern, weil ich mit dem Geld nicht klargekommen bin. Heute, mit 27, wohne ich wieder allein und es klappt. Jeder braucht seinen eigenen Zeitpunkt, und schnell ist nicht automatisch besser.", "answer": false, "skill": "inference"},
+        {"id": "L4-7", "author": "Ines, Görlitz", "text": "Meine Eltern haben mir mit 18 klar gesagt: Nach dem Abitur suchst du dir eine Wohnung. Damals war ich wütend. Heute bin ich ihnen dankbar, denn ich habe viel früher als meine Freunde auf eigenen Beinen gestanden.", "answer": true, "skill": "attitude"}
+      ]
+    },
+    "teil5": {
+      "title": "Nutzungsordnung – Mehrgenerationenhaus „Miteinander“",
+      "text": "§ 1 Öffnungszeiten\nDas Haus ist Montag bis Freitag von 8 bis 20 Uhr und samstags von 10 bis 16 Uhr geöffnet. Das Café im Erdgeschoss schließt täglich um 18 Uhr. An Sonn- und Feiertagen ist das Haus nur für gemietete Veranstaltungen zugänglich.\n\n§ 2 Kinderbetreuung im Spielzimmer\nDas Spielzimmer ist Montag bis Freitag von 14 bis 18 Uhr geöffnet und richtet sich an Kinder von 2 bis 8 Jahren. Ein Kind kann pro Tag höchstens drei Stunden betreut werden. Die Eltern müssen sich während der Betreuung im Haus aufhalten, zum Beispiel im Café oder in einem Kurs. Die Anmeldung erfolgt am Empfang. Die Betreuung kostet 2 € pro Stunde; für Familien mit Sozialpass ist sie kostenlos.\n\n§ 3 Vermietung von Räumen\nDie Gruppenräume im ersten Stock können am Wochenende für Familienfeiern mit bis zu 40 Personen gemietet werden. Die Miete beträgt 80 € pro Tag, dazu kommt eine Kaution von 50 €. Die Räume sind gereinigt zurückzugeben; andernfalls wird die Kaution einbehalten. Musik ist bis 22 Uhr erlaubt.\n\n§ 4 Kurse und Angebote\nFür alle Kurse ist eine Anmeldung über die Website erforderlich. Ein Kurs findet nur statt, wenn sich mindestens fünf Personen angemeldet haben. Über eine Absage werden die Teilnehmer spätestens zwei Tage vorher per E-Mail informiert.\n\n§ 5 Sonstiges\nFahrräder sind im Hof abzustellen. Kinderwagen dürfen im Flur des Erdgeschosses stehen. Hunde sind im Haus nicht erlaubt, ausgenommen sind Assistenzhunde.",
+      "items": [
+        {"id": "L5-1", "question": "Kinder im Spielzimmer …", "options": ["dürfen den ganzen Nachmittag bleiben.", "dürfen höchstens drei Stunden bleiben.", "müssen älter als acht Jahre sein."], "answer": 1, "skill": "number-time"},
+        {"id": "L5-2", "question": "Während der Betreuung …", "options": ["müssen die Eltern im Haus bleiben.", "können die Eltern in der Stadt einkaufen.", "müssen die Eltern im Spielzimmer sitzen."], "answer": 0, "skill": "paraphrase"},
+        {"id": "L5-3", "question": "Wer einen Raum für eine Feier mietet, …", "options": ["zahlt 50 Euro Miete pro Tag.", "darf bis Mitternacht Musik machen.", "bekommt die Kaution nur zurück, wenn der Raum sauber ist."], "answer": 2, "skill": "detail"},
+        {"id": "L5-4", "question": "Ein Kurs findet nicht statt, wenn …", "options": ["sich weniger als fünf Personen angemeldet haben.", "die Kursleitung krank ist.", "er am Wochenende liegt."], "answer": 0, "skill": "negation"}
+      ]
+    }
+  },
+  "hoeren": {
+    "teil1": {
+      "texts": [
+        {
+          "id": "H1-1", "kind": "Anrufbeantworter",
+          "script": [{"speaker": "m2", "text": "Hallo Nina, hier ist Papa. Es geht um Mamas sechzigsten Geburtstag. Wir hatten ja den Sonntag geplant, aber Tante Rosi kann nur am Samstag, deshalb feiern wir jetzt am Samstag. Ich habe im Restaurant Seeblick für achtzehn Uhr reserviert, für zwölf Personen. Bring bitte das Fotoalbum mit, das du gemacht hast, das schenken wir ihr beim Essen. Und ganz wichtig: Mama weiß von nichts, es soll eine Überraschung bleiben, also kein Wort! Könntest du außerdem die Oma abholen? Sie ist um Viertel nach fünf fertig. Ich kann nicht, weil ich mit Mama komme. Danke, mein Schatz, bis Samstag!"}],
+          "items": [
+            {"id": "H1-1a", "type": "rf", "statement": "Die Geburtstagsfeier findet am Sonntag statt.", "answer": false, "skill": "number-time"},
+            {"id": "H1-1b", "type": "mc", "question": "Nina soll …", "options": ["ihre Großmutter abholen.", "das Restaurant reservieren.", "einen Kuchen backen."], "answer": 0, "skill": "detail"}
+          ]
+        },
+        {
+          "id": "H1-2", "kind": "Radio",
+          "script": [{"speaker": "f3", "text": "Und ein Tipp für das Wochenende: Am Sonntag findet im Stadtpark das große Familienfest statt, von elf bis achtzehn Uhr. Es gibt eine Hüpfburg, Ponyreiten und einen Kinderflohmarkt. Die Zaubershow mit Magic Marco war ursprünglich für fünfzehn Uhr geplant, sie beginnt jetzt aber schon um vierzehn Uhr. Der Eintritt ist frei, für Essen und Getränke sorgen die Vereine aus dem Stadtteil. Wer beim Flohmarkt einen Tisch haben möchte, muss sich bis Freitag beim Stadtteilbüro anmelden. Parkplätze gibt es rund um den Park nur wenige, kommen Sie deshalb am besten mit der Buslinie fünf, die direkt am Haupteingang hält."}],
+          "items": [
+            {"id": "H1-2a", "type": "rf", "statement": "Für das Familienfest muss man keinen Eintritt bezahlen.", "answer": true, "skill": "detail"},
+            {"id": "H1-2b", "type": "mc", "question": "Die Zaubershow beginnt …", "options": ["um fünfzehn Uhr.", "um vierzehn Uhr.", "um elf Uhr."], "answer": 1, "skill": "number-time"}
+          ]
+        },
+        {
+          "id": "H1-3", "kind": "Durchsage",
+          "script": [{"speaker": "at_m", "text": "Liebe Besucherinnen und Besucher, eine wichtige Durchsage: Wir haben ein Kind gefunden. Der kleine Leon, ungefähr vier Jahre alt, trägt eine rote Jacke und wartet auf seine Eltern an der Information im Erdgeschoss – bitte beachten Sie, nicht am Eingang Ost, sondern an der Information neben dem Eingang West. Die Eltern werden gebeten, sofort dorthin zu kommen. Außerdem möchten wir Sie informieren, dass die Spielecke im zweiten Stock heute wegen Reinigungsarbeiten geschlossen bleibt. Kinder können stattdessen die Leseecke in der Buchhandlung im ersten Stock benutzen. Wir danken für Ihr Verständnis und wünschen Ihnen einen schönen Tag."}],
+          "items": [
+            {"id": "H1-3a", "type": "rf", "statement": "Das Kind wartet am Eingang Ost.", "answer": false, "skill": "detail"},
+            {"id": "H1-3b", "type": "mc", "question": "Die Spielecke …", "options": ["ist in den ersten Stock umgezogen.", "öffnet erst am Nachmittag.", "ist heute geschlossen."], "answer": 2, "skill": "detail"}
+          ]
+        },
+        {
+          "id": "H1-4", "kind": "Anrufbeantworter",
+          "script": [{"speaker": "f1", "text": "Hallo Katja, hier ist Mara. Du, es tut mir wahnsinnig leid, aber am Freitagabend kann ich doch nicht auf deine Kinder aufpassen. Meine Mutter ist heute Morgen ins Krankenhaus gekommen, sie ist gestürzt und hat sich das Bein gebrochen. Es ist nichts Schlimmes, aber ich muss abends bei ihr sein. Am Samstagnachmittag hätte ich aber Zeit, wenn dir das hilft. Oder ich frage meine Nachbarin, Frau Kern, die passt auch manchmal auf Kinder auf und wäre am Freitag frei. Ruf mich bitte kurz zurück, dann besprechen wir das. Ach ja, dein Buch liegt noch bei mir, das bringe ich dann mit. Bis später!"}],
+          "items": [
+            {"id": "H1-4a", "type": "rf", "statement": "Maras Mutter liegt im Krankenhaus.", "answer": true, "skill": "detail"},
+            {"id": "H1-4b", "type": "mc", "question": "Mara kann …", "options": ["am Freitagabend auf die Kinder aufpassen.", "am Samstagnachmittag auf die Kinder aufpassen.", "in dieser Woche gar nicht helfen."], "answer": 1, "skill": "number-time"}
+          ]
+        },
+        {
+          "id": "H1-5", "kind": "Werbung",
+          "script": [{"speaker": "m3", "text": "Herbstferien im Familienhotel Sonnenhof – Erholung für die Eltern, Abenteuer für die Kinder! Bei uns ist die Kinderbetreuung täglich von neun bis sechzehn Uhr im Preis enthalten, mit Reiten, Basteln und Waldspielen. Kinder unter sechs Jahren übernachten kostenlos, Kinder bis zwölf zahlen die Hälfte. Und unser Ferienangebot: Wer sieben Nächte bucht, zahlt nur sechs. Das Angebot gilt für alle Buchungen bis zum dreißigsten September. Rufen Sie uns an unter null acht null null, zwei drei vier fünf sechs, oder buchen Sie online. Familienhotel Sonnenhof im Allgäu – wo Familien Urlaub machen."}],
+          "items": [
+            {"id": "H1-5a", "type": "rf", "statement": "Kinder unter sechs Jahren übernachten kostenlos.", "answer": true, "skill": "number-time"},
+            {"id": "H1-5b", "type": "mc", "question": "Wer sieben Nächte bucht, …", "options": ["zahlt nur für sechs Nächte.", "bekommt ein Zimmer mit Balkon.", "zahlt für die Kinder nichts."], "answer": 0, "skill": "paraphrase"}
+          ]
+        }
+      ]
+    },
+    "teil2": {
+      "setting": "Ihr Kind kommt neu in eine Kita. Sie sind beim ersten Elternabend und hören die Begrüßung durch die Leiterin.",
+      "script": [{"speaker": "f2", "text": "Guten Abend, liebe Eltern, und herzlich willkommen in der Kita Regenbogen! Ich bin Sylvia Brandt, die Leiterin, und ich freue mich, dass Sie alle gekommen sind. Ich möchte Ihnen heute die wichtigsten Regeln erklären, damit der Start für Ihre Kinder gut klappt. Fangen wir mit den Zeiten an: Sie können Ihr Kind zwischen halb acht und neun Uhr bringen. Bitte nicht später als neun, denn dann beginnt der Morgenkreis, und die Kinder mögen es nicht, wenn jemand mitten hinein kommt. Abholen können Sie bis halb fünf, freitags bis fünfzehn Uhr. Wenn Ihr Kind krank ist, rufen Sie uns bitte bis neun Uhr an. Eine E-Mail reicht nicht, die lesen wir morgens oft erst spät. Zum Essen: Das Frühstück bringen die Kinder von zu Hause mit. Bitte keine Süßigkeiten, und ganz wichtig: keine Nüsse, weil wir zwei Kinder mit einer schweren Allergie haben. Das Mittagessen kommt aus unserer Küche und kostet drei Euro fünfzig pro Tag, das wird monatlich abgebucht. Jetzt zur Eingewöhnung. In der ersten Woche bleibt ein Elternteil mit in der Gruppe, am Anfang eine Stunde, dann jeden Tag ein bisschen länger. In der zweiten Woche verabschieden Sie sich dann und gehen, sobald Ihr Kind sich wohlfühlt. Manche Kinder brauchen drei Tage, andere drei Wochen, beides ist normal. Bitte planen Sie also in dieser Zeit nicht zu viel. Jeden Donnerstag ist Waldtag, da sind wir bei jedem Wetter draußen. Lassen Sie deshalb Gummistiefel und eine Regenhose im Fach Ihres Kindes. Zu den Schließzeiten: Die Kita ist drei Wochen im August geschlossen und zwischen Weihnachten und Neujahr. Die genauen Termine hängen am Eingang. Ein letzter Punkt, der uns wichtig ist: Bitte stellen Sie keine Fotos von anderen Kindern ins Internet, auch nicht vom Sommerfest. Heute Abend wählen wir noch den Elternbeirat, dafür brauchen wir zwei Freiwillige. So, und jetzt haben Sie sicher Fragen."}],
+      "items": [
+        {"id": "H2-1", "question": "Die Kinder müssen …", "options": ["bis neun Uhr gebracht werden.", "bis acht Uhr gebracht werden.", "um halb acht in der Kita sein."], "answer": 0, "skill": "number-time"},
+        {"id": "H2-2", "question": "Wenn ein Kind krank ist, …", "options": ["sollen die Eltern eine E-Mail schreiben.", "sollen die Eltern bis neun Uhr anrufen.", "muss ein Attest vom Arzt gebracht werden."], "answer": 1, "skill": "detail"},
+        {"id": "H2-3", "question": "Zum Frühstück …", "options": ["bekommen die Kinder Essen von der Kita.", "dürfen die Kinder Süßigkeiten mitbringen.", "dürfen die Kinder keine Nüsse mitbringen."], "answer": 2, "skill": "negation"},
+        {"id": "H2-4", "question": "In der ersten Woche …", "options": ["bleibt ein Elternteil in der Gruppe.", "gehen die Kinder nur bis zehn Uhr in die Kita.", "gibt es keinen Waldtag."], "answer": 0, "skill": "detail"},
+        {"id": "H2-5", "question": "Die Kita ist geschlossen …", "options": ["im Juli.", "drei Wochen im August.", "an jedem Freitagnachmittag."], "answer": 1, "skill": "number-time"}
+      ]
+    },
+    "teil3": {
+      "setting": "Sie hören ein Gespräch zwischen zwei Freunden über eine Freundschaft, die schwierig geworden ist.",
+      "script": [
+        {"speaker": "m3", "text": "Hey Hanna, du siehst nicht gut aus. Ist was passiert?"},
+        {"speaker": "f2", "text": "Ach, Paul. Es geht um Lena. Du weißt doch, wir sind seit der Schule beste Freundinnen. Und jetzt antwortet sie seit drei Wochen nicht mehr auf meine Nachrichten."},
+        {"speaker": "m3", "text": "Gar nicht? Auch nicht auf deinen Geburtstag? Der war doch letzten Samstag."},
+        {"speaker": "f2", "text": "Sie hat nur eine Nachricht geschickt: „Alles Gute, schade, dass ich nicht kommen kann.“ Mehr nicht. Alle anderen waren da, nur sie nicht. Seit sie mit ihrem neuen Freund zusammen ist, hat sie für nichts mehr Zeit."},
+        {"speaker": "m3", "text": "Hm. Bist du sicher, dass es am Freund liegt? Vielleicht hat sie gerade Probleme, von denen du nichts weißt. Mit der Arbeit, mit ihrer Familie, was weiß ich."},
+        {"speaker": "f2", "text": "Daran habe ich ehrlich gesagt gar nicht gedacht. Ihre Mutter war im Frühjahr ziemlich krank, das stimmt."},
+        {"speaker": "m3", "text": "Siehst du. Hast du sie mal angerufen, statt nur zu schreiben?"},
+        {"speaker": "f2", "text": "Nein. Ich habe nur geschrieben, vielleicht zehnmal. Anrufen traue ich mich nicht. Was ist, wenn sie nicht rangeht? Oder wenn sie sagt, dass sie keine Lust mehr auf mich hat?"},
+        {"speaker": "m3", "text": "Dann weißt du wenigstens Bescheid. Aber ich glaube das nicht. Nach fünfzehn Jahren Freundschaft ist so etwas nicht einfach vorbei. Weißt du, ich habe das selbst erlebt. Als ich nach Berlin gezogen bin, habe ich den Kontakt zu meinem besten Freund verloren. Wir haben beide gewartet, dass der andere sich meldet. Jetzt haben wir seit zwei Jahren nicht mehr gesprochen, und ich bereue das jeden Tag."},
+        {"speaker": "f2", "text": "Das wusste ich gar nicht. Warum rufst du ihn nicht an?"},
+        {"speaker": "m3", "text": "Gute Frage. Vielleicht machen wir einen Deal: Du rufst Lena an, und ich rufe Tobias an. Beide heute Abend."},
+        {"speaker": "f2", "text": "Okay. Okay, das mache ich. Und wenn das Gespräch gut läuft, lade ich sie zum Frühstück ein, am Sonntag ins Café Blume. Da waren wir früher jeden Monat."},
+        {"speaker": "m3", "text": "Perfekt. Und rede nicht sofort über die drei Wochen, frag sie erst mal, wie es ihr geht."},
+        {"speaker": "f2", "text": "Kommst du am Sonntag mit? Dann ist es vielleicht weniger komisch."},
+        {"speaker": "m3", "text": "Nein, das solltet ihr zu zweit machen. Zu dritt redet man nicht über die wichtigen Dinge. Aber erzähl mir danach, wie es war."},
+        {"speaker": "f2", "text": "Versprochen. Danke, Paul. Und viel Glück mit Tobias."}
+      ],
+      "items": [
+        {"id": "H3-1", "statement": "Lena hat Hanna seit drei Wochen nicht geantwortet.", "answer": true, "skill": "number-time"},
+        {"id": "H3-2", "statement": "Lena war auf Hannas Geburtstagsfeier.", "answer": false, "skill": "detail"},
+        {"id": "H3-3", "statement": "Paul meint, dass Lena vielleicht Probleme hat, von denen Hanna nichts weiß.", "answer": true, "skill": "paraphrase"},
+        {"id": "H3-4", "statement": "Hanna hat schon mehrmals versucht, Lena anzurufen.", "answer": false, "skill": "negation"},
+        {"id": "H3-5", "statement": "Paul hat nach seinem Umzug den Kontakt zu einem Freund verloren.", "answer": true, "skill": "detail"},
+        {"id": "H3-6", "statement": "Hanna will Lena noch heute anrufen.", "answer": true, "skill": "detail"},
+        {"id": "H3-7", "statement": "Paul kommt am Sonntag mit zum Frühstück.", "answer": false, "skill": "inference"}
+      ]
+    },
+    "teil4": {
+      "setting": "Sie hören eine Diskussion im Radio. Die Moderatorin spricht mit einem Familienforscher und einer Mutter von vier Kindern über das Thema „Einzelkind oder Geschwister – was ist besser für ein Kind?“",
+      "speakers": {"mod": "Moderatorin Lea Brandt", "a": "Dr. Frank Ostermann (Familienforscher)", "b": "Ute Lehmann (Mutter von vier Kindern)"},
+      "voices": {"mod": "f3", "a": "m1", "b": "f1"},
+      "script": [
+        {"speaker": "mod", "text": "Guten Abend und willkommen zu „Familienzeit“. Mein Name ist Lea Brandt. In Deutschland wächst heute etwa jedes vierte Kind ohne Geschwister auf. Ist das ein Problem, oder ist das völlig egal? Darüber spreche ich mit Dr. Frank Ostermann, der an der Universität Bremen über Familien forscht, und mit Ute Lehmann, Mutter von vier Kindern, die über das Leben mit großer Familie ein Buch geschrieben hat. Herr Ostermann, es heißt oft, Einzelkinder seien verwöhnt und egoistisch. Stimmt das?"},
+        {"speaker": "a", "text": "Guten Abend. Nein, das stimmt nicht, und das wissen wir seit vielen Jahren aus großen Untersuchungen. Einzelkinder sind nicht egoistischer als andere Kinder, sie sind nicht einsamer und in der Schule sogar oft ein bisschen besser. Das Vorurteil ist alt, aber es lässt sich mit Zahlen einfach nicht belegen."},
+        {"speaker": "mod", "text": "Frau Lehmann, Sie haben vier Kinder. Was lernen die voneinander, was ein Einzelkind nicht lernt?"},
+        {"speaker": "b", "text": "Also, bei uns zu Hause ist jeder Tag ein Trainingslager. Meine Kinder lernen jeden Tag, zu teilen, zu warten und Streit zu lösen, ohne dass ich eingreife. Wenn drei Kinder ein Stück Kuchen wollen, müssen sie eine Lösung finden. Das kann man nicht in einem Buch lernen, das muss man erleben. Ich sage nicht, dass Einzelkinder das nie lernen, aber sie lernen es später und woanders."},
+        {"speaker": "mod", "text": "Ich muss zugeben, ich bin selbst Einzelkind und habe mir als Kind immer eine Schwester gewünscht. Vor allem, wenn meine Eltern gestritten haben, hätte ich gern jemanden gehabt, der das versteht. Herr Ostermann, ist das nur ein Gefühl?"},
+        {"speaker": "a", "text": "Das ist ein sehr menschliches Gefühl, und ich will es nicht kleinreden. Aber wichtiger als die Zahl der Kinder ist, wie viel Zeit die Eltern haben und wie sie mit ihren Kindern umgehen. Ein Einzelkind mit Eltern, die abends zuhören, ist besser dran als ein Kind mit vier Geschwistern und Eltern, die nie zu Hause sind. Und Freunde können für ein Einzelkind das ersetzen, was Geschwister geben, das zeigt sich immer wieder."},
+        {"speaker": "b", "text": "Da muss ich Ihnen ehrlich recht geben. Mit vier Kindern bleibt für jedes einzelne weniger Zeit, das ist einfach so. Meine Älteste hat mir mit vierzehn einmal gesagt: „Du hörst mir nie richtig zu.“ Das hat wehgetan, und sie hatte nicht ganz unrecht. Trotzdem: Wenn ich sehe, wie meine Kinder zusammenhalten, dann weiß ich, warum wir das so gemacht haben."},
+        {"speaker": "mod", "text": "Ich habe übrigens heute zwei Kinder, und die streiten ständig. Manchmal denke ich, mit einem wäre es ruhiger."},
+        {"speaker": "b", "text": "Streit ist doch gut! Streiten heißt, dass sie sich wichtig sind. Und noch etwas, das oft vergessen wird: Geschwister sind für das ganze Leben da. Wenn die Eltern alt werden, können sich Geschwister die Verantwortung teilen. Ein Einzelkind muss das alles allein tragen, die Pflege, die Entscheidungen, alles."},
+        {"speaker": "a", "text": "Das ist ein Punkt, den ich ernst nehme. Allerdings sehe ich in meiner Forschung auch viele Familien, in denen die Geschwister sich über die Pflege der Eltern streiten, und am Ende macht es doch einer allein. Geschwister sind keine Garantie für Hilfe. Manchmal sind sie eine Garantie für Konflikte."},
+        {"speaker": "mod", "text": "Wenn Sie einem Paar einen Rat geben müssten, das gerade über ein zweites Kind nachdenkt – was würden Sie sagen?"},
+        {"speaker": "b", "text": "Hört nicht auf die Statistik, hört auf euer Gefühl. Aber seid ehrlich, ob ihr die Kraft habt. Ein zweites Kind macht nicht doppelt so viel Arbeit, sondern dreimal so viel."},
+        {"speaker": "a", "text": "Ich würde sagen: Beide Wege sind gut. Ein Kind braucht Eltern, die Zeit haben und die es ernst nehmen. Ob es Geschwister hat, ist dafür viel weniger wichtig, als viele glauben."},
+        {"speaker": "mod", "text": "Vielen Dank, Frau Lehmann, vielen Dank, Herr Ostermann. Und Ihnen zu Hause einen schönen Abend – mit oder ohne Geschwister."}
+      ],
+      "items": [
+        {"id": "H4-1", "statement": "Einzelkinder sind nicht egoistischer als Kinder mit Geschwistern.", "answer": "a", "skill": "matching"},
+        {"id": "H4-2", "statement": "Meine Kinder üben jeden Tag, zu teilen und Konflikte zu lösen.", "answer": "b", "skill": "matching"},
+        {"id": "H4-3", "statement": "Ich hätte als Kind gern eine Schwester gehabt.", "answer": "mod", "skill": "matching"},
+        {"id": "H4-4", "statement": "Entscheidend ist, wie viel Zeit die Eltern für ihre Kinder haben.", "answer": "a", "skill": "matching"},
+        {"id": "H4-5", "statement": "Bei vielen Kindern hat man für jedes einzelne Kind weniger Zeit.", "answer": "b", "skill": "matching"},
+        {"id": "H4-6", "statement": "Meine beiden Kinder streiten sich sehr oft.", "answer": "mod", "skill": "matching"},
+        {"id": "H4-7", "statement": "Geschwister können sich später die Verantwortung für die alten Eltern teilen.", "answer": "b", "skill": "matching"},
+        {"id": "H4-8", "statement": "Gute Freunde können für ein Einzelkind Geschwister ersetzen.", "answer": "a", "skill": "matching"}
+      ]
+    }
+  },
+  "schreiben": {
+    "aufgabe1": {
+      "minutes": 20, "words": 80,
+      "situation": "Sie waren am Wochenende bei einem großen Familientreffen. Ihr Freund Marco hat Sie gefragt, wie es war. Schreiben Sie ihm eine E-Mail.",
+      "points": ["Beschreiben Sie, wer gekommen ist und was Sie gemacht haben.", "Erklären Sie, was Ihnen besonders gut gefallen hat oder was schwierig war.", "Machen Sie Marco einen Vorschlag für ein Treffen."]
+    },
+    "aufgabe2": {
+      "minutes": 25, "words": 80,
+      "situation": "Sie haben im Fernsehen eine Diskussionssendung zum Thema „Familie heute – muss man noch heiraten?“ gesehen. Im Online-Gästebuch der Sendung finden Sie folgende Meinung:",
+      "quote": "„Wer Kinder hat, sollte heiraten. Eine Familie ohne Trauschein ist keine richtige Familie. Die jungen Leute heute wollen sich einfach nicht mehr festlegen und denken nur an sich.“ – Helga, 67",
+      "instruction": "Schreiben Sie nun Ihre Meinung dazu (circa 80 Wörter)."
+    },
+    "aufgabe3": {
+      "minutes": 15, "words": 40,
+      "situation": "Frau Pohl, die Mutter einer Freundin Ihrer Tochter, hat Ihre Tochter zum Kindergeburtstag am Samstag eingeladen. Ihre Tochter kann leider nicht kommen, weil Sie an diesem Tag eine Familienfeier haben. Schreiben Sie Frau Pohl eine E-Mail: Bedanken Sie sich für die Einladung, sagen Sie höflich ab und schlagen Sie vor, dass sich die Kinder an einem anderen Tag treffen.",
+      "addressee": "Frau Pohl"
+    }
+  },
+  "sprechen": {
+    "teil1": {
+      "situation": "Ihre gemeinsame Freundin Nora bekommt bald ihr erstes Kind. Sie und Ihr Partner / Ihre Partnerin möchten eine kleine Feier für sie organisieren. Planen Sie gemeinsam.",
+      "points": ["Wann und wo soll die Feier stattfinden?", "Wen laden Sie ein?", "Was schenken Sie Nora?", "Wer kümmert sich um Essen und Dekoration?"],
+      "partner_cues": [
+        "Ich dachte an einen Samstagnachmittag bei mir zu Hause, ich habe einen großen Balkon. Was meinst du?",
+        "Sollen wir nur die engsten Freundinnen einladen oder auch Noras Familie?",
+        "Nora weiß noch nichts davon. Soll es eine Überraschung sein, oder sagen wir es ihr lieber?",
+        "Was schenken wir ihr? Ein Kinderwagen ist zu teuer, aber vielleicht sammeln wir Geld?",
+        "Ich könnte einen Kuchen backen und Getränke besorgen. Kannst du dich um die Dekoration kümmern?",
+        "Und wer holt Nora ab? Sie darf ja nicht mehr so lange stehen."
+      ]
+    },
+    "teil2": {
+      "topics": ["Thema A: Sollten Großeltern regelmäßig auf ihre Enkel aufpassen?", "Thema B: Sind Freunde wichtiger als Familie?"],
+      "folien": [
+        "Stellen Sie Ihr Thema vor. Erklären Sie den Inhalt und die Struktur Ihrer Präsentation.",
+        "Berichten Sie von Ihrer Situation oder einem Erlebnis im Zusammenhang mit dem Thema.",
+        "Berichten Sie, wie die Situation in Ihrem Heimatland ist, und geben Sie Beispiele.",
+        "Nennen Sie die Vor- und Nachteile und sagen Sie dazu Ihre Meinung. Geben Sie auch Beispiele.",
+        "Beenden Sie Ihre Präsentation und bedanken Sie sich bei den Zuhörern."
+      ]
+    },
+    "teil3": {
+      "questions": ["Haben Ihre Großeltern früher auf Sie aufgepasst? Wie war das?", "Sie haben gesagt, dass Großeltern helfen sollten. Was ist, wenn sie keine Lust dazu haben?", "Wie ist das in Ihrem Heimatland: Wohnen die Großeltern oft mit der Familie zusammen?"],
+      "questions_b": ["Wem erzählen Sie zuerst, wenn Sie ein Problem haben – einem Freund oder jemandem aus der Familie?", "Kann eine Freundschaft ein ganzes Leben lang halten? Was braucht man dafür?", "Wie haben Sie in Deutschland neue Freunde gefunden?"]
+    }
+  }
+}

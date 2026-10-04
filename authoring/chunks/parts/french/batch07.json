@@ -1,0 +1,541 @@
+[
+{
+"id": "ENG_CHUNK_0601",
+"t": "J'avais commandé [nom], mais [proposition]",
+"ex": "Pardon, j'avais commandé le burger végétarien, mais celui-ci est au poulet.",
+"n": "Plus-que-parfait (j'avais commandé) is the natural choice here: the order came before the mistake."
+},
+{
+"id": "ENG_CHUNK_0602",
+"t": "Est-ce que je pourrais parler à [personne] ?",
+"ex": "Bonjour, est-ce que je pourrais parler à Maria, s'il vous plaît ?"
+},
+{
+"id": "ENG_CHUNK_0603",
+"t": "C'est [personne] de [nom] / [personne], du [nom]",
+"ex": "Bonjour, c'est Sam, du cabinet dentaire.",
+"n": "On the phone French says c'est..., never *ceci est."
+},
+{
+"id": "ENG_CHUNK_0604",
+"t": "Je vous appelle au sujet de [nom] / pour [nom]",
+"ex": "Bonjour, je vous appelle au sujet de l'appartement que vous avez mis en ligne."
+},
+{
+"id": "ENG_CHUNK_0605",
+"t": "Est-ce que je peux laisser un message pour [personne] ?",
+"ex": "Elle n'est pas là ? Pas de problème. Est-ce que je peux lui laisser un message ?"
+},
+{
+"id": "ENG_CHUNK_0606",
+"t": "Tu peux / Vous pouvez demander à [personne] de me rappeler ?",
+"ex": "Tu peux demander à Tom de me rappeler quand il est libre ?",
+"n": "demander à quelqu'un de + infinitive."
+},
+{
+"id": "ENG_CHUNK_0607",
+"t": "J'ai [nom] depuis [durée]",
+"ex": "J'ai mal à la tête depuis deux jours.",
+"n": "Present tense + depuis for something still going on; never *j'ai eu ... pour deux jours."
+},
+{
+"id": "ENG_CHUNK_0608",
+"t": "J'ai mal quand je [verbe]",
+"ex": "J'ai mal quand je me penche pour faire mes lacets."
+},
+{
+"id": "ENG_CHUNK_0609",
+"t": "J'ai super mal [au / à la + partie du corps] / Mon [nom] me tue",
+"ex": "J'ai super mal au genou après cette longue marche.",
+"n": "'Mon genou me tue' exists but j'ai trop mal / j'ai super mal à... is the everyday way."
+},
+{
+"id": "ENG_CHUNK_0610",
+"t": "Je crois que j'ai [nom] / Je dois avoir [nom]",
+"ex": "Je crois que je couve un rhume, je reste à la maison aujourd'hui.",
+"n": "couver un rhume = to be coming down with a cold."
+},
+{
+"id": "ENG_CHUNK_0611",
+"t": "Vous auriez quelque chose contre [nom] ?",
+"ex": "Bonjour, vous auriez quelque chose contre le mal de tête ?",
+"n": "At the pharmacy it's contre (against), not pour: quelque chose contre la toux."
+},
+{
+"id": "ENG_CHUNK_0612",
+"t": "Est-ce que je dois m'inquiéter pour [nom] ?",
+"ex": "Est-ce que je dois m'inquiéter pour cette toux, ou c'est juste un rhume ?"
+},
+{
+"id": "ENG_CHUNK_0613",
+"t": "Je dois [verbe] tous les combien ? / À quelle fréquence je dois [verbe] ?",
+"ex": "Je dois prendre ces comprimés tous les combien ?",
+"n": "tous les combien is spoken; à quelle fréquence is neutral."
+},
+{
+"id": "ENG_CHUNK_0614",
+"t": "Il faut une ordonnance pour [nom] ?",
+"ex": "Il faut une ordonnance pour ces comprimés contre l'allergie ?"
+},
+{
+"id": "ENG_CHUNK_0615",
+"t": "Je ne suis pas trop [nom] / Moi, [nom], c'est pas mon truc",
+"ex": "Franchement, je ne suis pas du tout du matin.",
+"n": "No fixed equivalent. For times of day: être du matin / du soir; otherwise c'est pas mon truc."
+},
+{
+"id": "ENG_CHUNK_0616",
+"t": "Je me sens [adjectif] ces temps-ci / ces derniers temps",
+"ex": "Je me sens vraiment bien ces derniers temps, merci de demander.",
+"n": "Present tense, not a perfect: French has no 'have been feeling'."
+},
+{
+"id": "ENG_CHUNK_0617",
+"t": "Je travaille sur [nom]",
+"ex": "Cette semaine, je travaille sur le nouveau site."
+},
+{
+"id": "ENG_CHUNK_0618",
+"t": "Je suis en plein [nom] / en train de [verbe]",
+"ex": "Je peux te rappeler ? Je suis en plein dîner."
+},
+{
+"id": "ENG_CHUNK_0619",
+"t": "Tu as / Vous avez une minute pour [verbe] ?",
+"ex": "Vous auriez une minute pour jeter un œil à ce mail ?"
+},
+{
+"id": "ENG_CHUNK_0620",
+"t": "Je te / vous redis ça pour [nom]",
+"ex": "Je te redis ça pour les dates d'ici vendredi.",
+"n": "Also: je reviens vers vous (office French, a bit corporate)."
+},
+{
+"id": "ENG_CHUNK_0621",
+"t": "On peut décaler [nom] à [nom] ?",
+"ex": "On peut décaler la réunion à jeudi ?",
+"n": "décaler / déplacer = reschedule. Reporter = postpone to later."
+},
+{
+"id": "ENG_CHUNK_0622",
+"t": "Je vais te / vous montrer [nom] étape par étape",
+"ex": "Je vais te montrer la nouvelle appli étape par étape, c'est assez simple."
+},
+{
+"id": "ENG_CHUNK_0623",
+"t": "Je m'occupe de [nom] / Je suis responsable de [nom]",
+"ex": "C'est moi qui m'occupe des amuse-gueules pour la fête.",
+"n": "je m'occupe de is everyday; je suis responsable de / en charge de is work talk."
+},
+{
+"id": "ENG_CHUNK_0624",
+"t": "J'attends toujours [nom]",
+"ex": "J'attends toujours mon colis, il devait arriver lundi.",
+"n": "No preposition: attendre quelque chose. *attendre pour is a classic English-speaker error."
+},
+{
+"id": "ENG_CHUNK_0625",
+"t": "Du nouveau pour [nom] ? / Des nouvelles de [nom] ?",
+"ex": "Salut, du nouveau pour les travaux de la cuisine ?"
+},
+{
+"id": "ENG_CHUNK_0626",
+"t": "Félicitations pour [nom]",
+"ex": "Félicitations pour ton nouveau poste ! Tu le mérites vraiment."
+},
+{
+"id": "ENG_CHUNK_0627",
+"t": "Bonne chance pour [nom]",
+"ex": "Bonne chance pour ton entretien demain !",
+"n": "pour, not avec. Also very common: bon courage pour..."
+},
+{
+"id": "ENG_CHUNK_0628",
+"t": "Passe le bonjour à [personne] de ma part / Embrasse [personne] pour moi",
+"ex": "Passe le bonjour à ta mère de ma part, d'accord ?",
+"n": "Embrasse-la pour moi is warmer, for family and close friends."
+},
+{
+"id": "ENG_CHUNK_0629",
+"t": "Tu viens à [nom] ?",
+"ex": "Tu viens à la soirée vendredi ?"
+},
+{
+"id": "ENG_CHUNK_0630",
+"t": "On fait [nom] [jour]",
+"ex": "On fait un barbecue samedi, viens !",
+"n": "No preposition before days: samedi, not *sur samedi."
+},
+{
+"id": "ENG_CHUNK_0631",
+"t": "Qu'est-ce qui se passe avec [nom] ? / Il a quoi, [nom] ?",
+"ex": "Il a quoi, le wifi ? Ça coupe tout le temps."
+},
+{
+"id": "ENG_CHUNK_0632",
+"t": "Tu peux me déposer à [nom] ? / Tu peux m'emmener à [nom] ?",
+"ex": "Tu peux m'emmener à l'aéroport demain matin ?",
+"n": "déposer = drop off; emmener = take (someone) there."
+},
+{
+"id": "ENG_CHUNK_0633",
+"t": "J'arrive dans [durée] / J'y suis dans [durée]",
+"ex": "Je me gare, j'arrive dans cinq minutes.",
+"n": "French says j'arrive (present), not a future."
+},
+{
+"id": "ENG_CHUNK_0634",
+"t": "Je suis en route pour [nom] / Je vais à [nom]",
+"ex": "Je vais à la salle, je peux te rappeler plus tard ?"
+},
+{
+"id": "ENG_CHUNK_0635",
+"t": "Merci pour la proposition, mais [proposition] / C'est gentil, mais [proposition]",
+"ex": "C'est gentil, mais je pense que je vais me débrouiller."
+},
+{
+"id": "ENG_CHUNK_0636",
+"t": "raconter une blague",
+"ex": "Mon père adore raconter des blagues à table.",
+"n": "raconter, not dire, for jokes and stories."
+},
+{
+"id": "ENG_CHUNK_0637",
+"t": "à vrai dire / pour être honnête",
+"ex": "À vrai dire, je n'ai jamais vu ce film."
+},
+{
+"id": "ENG_CHUNK_0638",
+"t": "se moquer de [personne] / charrier [personne]",
+"ex": "Mes potes se moquent toujours de moi à cause de ma façon de danser.",
+"n": "charrier = to tease (friendly, informal)."
+},
+{
+"id": "ENG_CHUNK_0639",
+"t": "chercher des excuses",
+"ex": "Bon, fini les excuses, je vais courir aujourd'hui.",
+"n": "Faire des excuses means to apologise, not to make excuses: false friend."
+},
+{
+"id": "ENG_CHUNK_0640",
+"t": "ne pas tenir sa promesse / manquer à sa parole",
+"ex": "J'ai dit que je t'aiderais à déménager, et je vais tenir ma promesse."
+},
+{
+"id": "ENG_CHUNK_0641",
+"t": "reprocher [nom] à [personne] / en vouloir à [personne] pour [nom]",
+"ex": "Ne m'en veux pas pour la pluie, moi j'ai juste organisé le pique-nique !",
+"n": "Note the word order: reprocher quelque chose à quelqu'un."
+},
+{
+"id": "ENG_CHUNK_0642",
+"t": "faire [nom] exprès",
+"ex": "Pardon, je ne l'ai pas fait exprès, ça m'a glissé des mains."
+},
+{
+"id": "ENG_CHUNK_0643",
+"t": "prendre l'air",
+"ex": "Je sors juste prendre l'air."
+},
+{
+"id": "ENG_CHUNK_0644",
+"t": "faire une proposition / faire une suggestion",
+"ex": "Je peux faire une proposition ? On commande thaï ce soir."
+},
+{
+"id": "ENG_CHUNK_0645",
+"t": "faire attention à [nom]",
+"ex": "Fais attention à la marche en entrant."
+},
+{
+"id": "ENG_CHUNK_0646",
+"t": "une longue journée / une grosse journée",
+"ex": "Quelle journée ! Je n'ai qu'une envie, le canapé.",
+"n": "Spoken French often says une grosse journée or just quelle journée !"
+},
+{
+"id": "ENG_CHUNK_0647",
+"t": "une mauvaise habitude",
+"ex": "Regarder mon téléphone au lit, c'est une de mes mauvaises habitudes."
+},
+{
+"id": "ENG_CHUNK_0648",
+"t": "avoir de l'humour / avoir beaucoup d'humour",
+"ex": "Mon nouveau coloc a beaucoup d'humour.",
+"n": "No 'sense': avoir de l'humour does the whole job."
+},
+{
+"id": "ENG_CHUNK_0649",
+"t": "être fan de [nom] / être un grand fan de [nom]",
+"ex": "Je suis fan de cuisine épicée, alors essayons ce resto."
+},
+{
+"id": "ENG_CHUNK_0650",
+"t": "tout neuf / flambant neuf",
+"ex": "Regarde mon vélo tout neuf !",
+"n": "neuf agrees: toute neuve, tout neufs, toutes neuves."
+},
+{
+"id": "ENG_CHUNK_0651",
+"t": "très bien / tout à fait correct",
+"ex": "T'inquiète, la soupe est très bien comme ça."
+},
+{
+"id": "ENG_CHUNK_0652",
+"t": "prendre le coup de main pour [nom] / piger [nom]",
+"ex": "Je commence enfin à prendre le coup de main avec cette nouvelle appli."
+},
+{
+"id": "ENG_CHUNK_0653",
+"t": "tirer des conclusions hâtives / aller trop vite en besogne",
+"ex": "Ne tirons pas de conclusions hâtives avant d'avoir de ses nouvelles."
+},
+{
+"id": "ENG_CHUNK_0654",
+"t": "regarder [nom] / se pencher sur [nom]",
+"ex": "Je regarde le problème cet après-midi."
+},
+{
+"id": "ENG_CHUNK_0655",
+"t": "aborder [nom] / mettre [nom] sur le tapis",
+"ex": "Je ne voulais pas aborder la question de l'argent pendant le dîner."
+},
+{
+"id": "ENG_CHUNK_0656",
+"t": "signaler [nom] / faire remarquer [nom]",
+"ex": "Merci de m'avoir signalé la faute de frappe."
+},
+{
+"id": "ENG_CHUNK_0657",
+"t": "revoir [nom] / reprendre [nom]",
+"ex": "Reprenons le plan encore une fois."
+},
+{
+"id": "ENG_CHUNK_0658",
+"t": "relancer au sujet de [nom] / faire suite à [nom]",
+"ex": "Je me permets de vous relancer au sujet de mon mail de lundi.",
+"n": "je me permets de vous relancer is the stock polite follow-up in French work email."
+},
+{
+"id": "ENG_CHUNK_0659",
+"t": "demander l'avis de [personne] sur [nom]",
+"ex": "Je peux te demander ton avis sur une idée ?",
+"n": "No fixed equivalent; speakers say je peux avoir ton avis sur...?"
+},
+{
+"id": "ENG_CHUNK_0660",
+"t": "mettre [personne] au courant / briefer [personne]",
+"ex": "J'ai raté la réunion. Tu peux me mettre au courant ?"
+},
+{
+"id": "ENG_CHUNK_0661",
+"t": "faire un point avec [personne]",
+"ex": "Faisons un point avec l'équipe vendredi.",
+"n": "faire un point is the standard office check-in."
+},
+{
+"id": "ENG_CHUNK_0662",
+"t": "prévenir [personne]",
+"ex": "Merci de m'avoir prévenu pour les bouchons.",
+"n": "prévenir = warn in advance, not 'prevent' (empêcher): false friend."
+},
+{
+"id": "ENG_CHUNK_0663",
+"t": "rattraper son retard sur [nom] / rattraper [nom]",
+"ex": "J'ai passé mon dimanche à rattraper mes mails en retard."
+},
+{
+"id": "ENG_CHUNK_0664",
+"t": "respecter une échéance / tenir les délais",
+"ex": "On a bossé tout le week-end pour tenir les délais."
+},
+{
+"id": "ENG_CHUNK_0665",
+"t": "être sous pression",
+"ex": "Tout le monde est sous pression ce mois-ci."
+},
+{
+"id": "ENG_CHUNK_0666",
+"t": "Par où commencer ?",
+"ex": "C'était comment, le voyage ? Oh là là, par où commencer ?"
+},
+{
+"id": "ENG_CHUNK_0667",
+"t": "Entre nous",
+"ex": "Entre nous, je pense à changer de boulot."
+},
+{
+"id": "ENG_CHUNK_0668",
+"t": "Comme je disais / Comme je te l'ai dit",
+"ex": "Comme je te l'ai dit, je veux bien t'aider."
+},
+{
+"id": "ENG_CHUNK_0669",
+"t": "Encore une chose / Autre chose",
+"ex": "Ah, encore une chose : prends ta carte d'identité."
+},
+{
+"id": "ENG_CHUNK_0670",
+"t": "Je sais pas toi, mais",
+"ex": "Je sais pas toi, mais moi, je meurs de faim.",
+"n": "Spoken French drops ne here: je sais pas. Vous form: je ne sais pas vous, mais..."
+},
+{
+"id": "ENG_CHUNK_0671",
+"t": "Tu sais quoi ?",
+"ex": "Tu sais quoi ? On commande une pizza, c'est tout."
+},
+{
+"id": "ENG_CHUNK_0672",
+"t": "Écoute / Écoutez",
+"ex": "Écoute, je sais que t'es occupé, mais c'est important.",
+"n": "Écoute, not Regarde, opens a frank point."
+},
+{
+"id": "ENG_CHUNK_0673",
+"t": "Toute la question, c'est",
+"ex": "Toute la question, c'est : qui va payer ?",
+"n": "Also: la question, c'est de savoir qui..."
+},
+{
+"id": "ENG_CHUNK_0674",
+"t": "J'ai bien compris ?",
+"ex": "Donc on se retrouve à la gare à neuf heures. J'ai bien compris ?"
+},
+{
+"id": "ENG_CHUNK_0675",
+"t": "Vous pourriez parler un peu plus lentement ?",
+"ex": "Pardon, vous pourriez parler un peu plus lentement ? Mon français n'est pas parfait."
+},
+{
+"id": "ENG_CHUNK_0676",
+"t": "Il s'appelle comment déjà ?",
+"ex": "Ton voisin avec le chien trop mignon, il s'appelle comment déjà ?",
+"n": "déjà at the end = 'again' when searching memory."
+},
+{
+"id": "ENG_CHUNK_0677",
+"t": "C'est intéressant / Ah bon ?",
+"ex": "Tu as grandi dans une ferme ? Ah, c'est intéressant."
+},
+{
+"id": "ENG_CHUNK_0678",
+"t": "Oui et non / Bof, moyen",
+"ex": "Le film t'a plu ? Oui et non, la fin était géniale."
+},
+{
+"id": "ENG_CHUNK_0679",
+"t": "et tout ça / et ce genre de trucs",
+"ex": "On a surtout joué à des jeux de société, cuisiné, et tout ça.",
+"n": "Also: et tout, et compagnie (very informal)."
+},
+{
+"id": "ENG_CHUNK_0680",
+"t": "Pardon, vas-y / allez-y",
+"ex": "Oh, pardon, allez-y."
+},
+{
+"id": "ENG_CHUNK_0681",
+"t": "Tenez / Tiens / Voilà",
+"ex": "Voilà, un café avec beaucoup de lait.",
+"n": "tiens (tu) / tenez (vous) when handing over; voilà works for both."
+},
+{
+"id": "ENG_CHUNK_0682",
+"t": "Tant pis",
+"ex": "La boulangerie est déjà fermée ? Tant pis, on reviendra demain."
+},
+{
+"id": "ENG_CHUNK_0683",
+"t": "Merci quand même",
+"ex": "Pas de souci si t'es occupé. Merci quand même !"
+},
+{
+"id": "ENG_CHUNK_0684",
+"t": "Cette place est prise ? / C'est libre ?",
+"ex": "Excusez-moi, c'est libre ?"
+},
+{
+"id": "ENG_CHUNK_0685",
+"t": "Bon voyage / Fais bon voyage",
+"ex": "Bon voyage, et envoie-moi un texto quand tu atterris !",
+"n": "Also: bonne route (by car)."
+},
+{
+"id": "ENG_CHUNK_0686",
+"t": "Vois le bon côté des choses / Voyez le bon côté des choses",
+"ex": "Vois le bon côté des choses : du coup, t'as un week-end libre."
+},
+{
+"id": "ENG_CHUNK_0687",
+"t": "Tiens bon / Courage",
+"ex": "Courage, la semaine est presque finie !"
+},
+{
+"id": "ENG_CHUNK_0688",
+"t": "C'est pas la fin du monde",
+"ex": "T'as raté le bus ? C'est pas la fin du monde."
+},
+{
+"id": "ENG_CHUNK_0689",
+"t": "Ça arrive / Ce sont des choses qui arrivent",
+"ex": "T'inquiète pas pour le jus renversé, ça arrive."
+},
+{
+"id": "ENG_CHUNK_0690",
+"t": "Il ne fallait pas !",
+"ex": "Des fleurs ? Oh, il ne fallait pas !"
+},
+{
+"id": "ENG_CHUNK_0691",
+"t": "D'ici là / En attendant",
+"ex": "La fête, c'est samedi. D'ici là, j'économise mon énergie."
+},
+{
+"id": "ENG_CHUNK_0692",
+"t": "Le lendemain",
+"ex": "On est arrivés tard, et le lendemain on est allés directement à la plage.",
+"n": "le lendemain for past stories; demain only from today."
+},
+{
+"id": "ENG_CHUNK_0693",
+"t": "C'est pareil pour / Il en va de même pour",
+"ex": "Tu devrais boire plus d'eau. C'est pareil pour moi.",
+"n": "Il en va de même pour is formal/written."
+},
+{
+"id": "ENG_CHUNK_0694",
+"t": "Tout le temps / Pendant tout [nom]",
+"ex": "Le bébé a dormi pendant tout le vol."
+},
+{
+"id": "ENG_CHUNK_0695",
+"t": "En même temps",
+"ex": "La ville est chère, mais en même temps, il y a plein de choses à faire."
+},
+{
+"id": "ENG_CHUNK_0696",
+"t": "En général",
+"ex": "En général, je dors mieux quand je ne bois pas de café après le déjeuner."
+},
+{
+"id": "ENG_CHUNK_0697",
+"t": "Juste avant",
+"ex": "Elle a appelé juste avant le dîner."
+},
+{
+"id": "ENG_CHUNK_0698",
+"t": "Dans l'ensemble / Somme toute",
+"ex": "Dans l'ensemble, c'étaient de super vacances."
+},
+{
+"id": "ENG_CHUNK_0699",
+"t": "C'est comme ça que",
+"ex": "On était assis l'un à côté de l'autre en cours. C'est comme ça qu'on est devenus amis."
+},
+{
+"id": "ENG_CHUNK_0700",
+"t": "Surtout / Par-dessus tout",
+"ex": "J'ai adoré la cuisine, les gens, et surtout les plages."
+}
+]

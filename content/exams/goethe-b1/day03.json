@@ -1,0 +1,256 @@
+{
+  "day": 3,
+  "topic": "Gesundheit und Ernährung",
+  "lesen": {
+    "teil1": {
+      "title": "Vier Wochen ohne Zucker – mein Selbstversuch",
+      "source": "Blog",
+      "text": "Alles begann mit einem Besuch bei meiner Zahnärztin. Zwei neue Löcher, und dazu der Satz: „Sie sollten weniger Süßes essen.“ Ich wusste, dass sie recht hat. Jeden Nachmittag im Büro ein Schokoriegel, abends Cola vor dem Fernseher. Also habe ich beschlossen, vier Wochen lang komplett auf Zucker zu verzichten. Kein Kuchen, keine Limonade, keine Süßigkeiten.\n\nDie erste Woche war furchtbar. Ich hatte Kopfschmerzen und schlechte Laune, und meine Kollegen haben sich über mich lustig gemacht, weil ich beim Geburtstagskuchen Nein gesagt habe. Am dritten Tag stand ich abends vor dem Kühlschrank und hätte fast aufgegeben. Meine Schwester hat mir dann geraten, statt Süßigkeiten Nüsse und Obst ins Büro mitzunehmen. Das hat tatsächlich geholfen.\n\nÜberrascht hat mich, wo überall Zucker drin ist. Im Supermarkt habe ich zum ersten Mal die Etiketten gelesen: im Ketchup, im Joghurt, sogar im Brot. Ich habe deshalb angefangen, mehr selbst zu kochen. Das dauert länger, aber es schmeckt besser, und ich weiß, was ich esse.\n\nNach zwei Wochen wurde es leichter. Ich habe besser geschlafen und war nachmittags nicht mehr so müde. Auf der Waage hat sich allerdings kaum etwas verändert: nur ein Kilo weniger. Das hatte ich mir ehrlich gesagt anders vorgestellt.\n\nJetzt ist der Monat vorbei. Werde ich wieder Zucker essen? Ja, aber viel weniger. Ein Stück Kuchen am Sonntag ist in Ordnung, die tägliche Cola dagegen nicht mehr. Wer es auch versuchen will, dem rate ich: Fangt nicht in der Weihnachtszeit an, und sagt euren Freunden vorher Bescheid, damit sie euch nicht ständig etwas anbieten.",
+      "items": [
+        {"id": "L1-1", "statement": "Die Autorin hat den Versuch begonnen, weil ihre Zahnärztin ihr dazu geraten hat.", "answer": true, "skill": "paraphrase"},
+        {"id": "L1-2", "statement": "Die Kollegen haben die Autorin von Anfang an unterstützt.", "answer": false, "skill": "detail"},
+        {"id": "L1-3", "statement": "Die Autorin hat statt Süßigkeiten Obst und Nüsse gegessen.", "answer": true, "skill": "detail"},
+        {"id": "L1-4", "statement": "Die Autorin hat in den vier Wochen mehrere Kilo abgenommen.", "answer": false, "skill": "number-time"},
+        {"id": "L1-5", "statement": "Nach dem Versuch will die Autorin nie wieder Zucker essen.", "answer": false, "skill": "negation"},
+        {"id": "L1-6", "statement": "Die Autorin empfiehlt, Freunde vorher über den Versuch zu informieren.", "answer": true, "skill": "detail"}
+      ]
+    },
+    "teil2": {
+      "texts": [
+        {
+          "title": "Die Ärztin kommt per Video",
+          "source": "Zeitung",
+          "text": "Wer in Deutschland krank ist, muss oft lange warten: auf einen Termin, im Wartezimmer, auf den Facharzt. Die Hausärztin Dr. Miriam Kohl aus Rostock bietet deshalb seit einem Jahr Videosprechstunden an. Die Patienten sitzen zu Hause vor dem Computer oder dem Handy, die Ärztin in ihrer Praxis. „Für viele Fragen reicht das völlig“, sagt Kohl. „Ein Ausschlag, eine Erkältung, ein Gespräch über Blutwerte – dafür muss niemand eine Stunde im Wartezimmer sitzen und sich dort womöglich noch anstecken.“\n\nEtwa ein Drittel ihrer Termine findet inzwischen per Video statt. Vor allem ältere Patienten waren am Anfang skeptisch, erzählt die Ärztin. Inzwischen nutzen aber gerade sie das Angebot gern, weil sie nicht mehr mit dem Bus in die Stadt fahren müssen. Die Krankenkasse bezahlt die Videosprechstunde genauso wie einen normalen Besuch.\n\nNatürlich hat das System Grenzen. Wenn Kohl den Bauch abtasten oder das Herz abhören muss, geht das nur in der Praxis. Und wer starke Schmerzen hat, sollte nicht auf einen Videotermin warten, sondern sofort kommen. Kritiker warnen außerdem davor, dass die Beziehung zwischen Arzt und Patient leidet, wenn man sich nur noch auf dem Bildschirm sieht. Kohl sieht das gelassen: „Meine Patienten kenne ich seit Jahren. Der Bildschirm ändert daran nichts.“",
+          "items": [
+            {"id": "L2-1", "question": "Dr. Kohl findet, dass …", "options": ["Videosprechstunden für viele Fragen ausreichen.", "alle Patienten weiterhin in die Praxis kommen sollten.", "man sich bei Videosprechstunden leicht ansteckt."], "answer": 0, "skill": "paraphrase"},
+            {"id": "L2-2", "question": "Ältere Patienten …", "options": ["lehnen die Videosprechstunde bis heute ab.", "nutzen die Videosprechstunde inzwischen gern.", "müssen die Videosprechstunde selbst bezahlen."], "answer": 1, "skill": "detail"},
+            {"id": "L2-3", "question": "Wer starke Schmerzen hat, …", "options": ["soll einen Videotermin buchen.", "soll zuerst die Krankenkasse anrufen.", "soll direkt in die Praxis kommen."], "answer": 2, "skill": "detail"}
+          ]
+        },
+        {
+          "title": "Weniger Fleisch in der Mensa",
+          "source": "Website",
+          "text": "Seit diesem Semester gibt es in den Mensen der Universität Göttingen nur noch an zwei Tagen pro Woche Fleisch. An den anderen Tagen stehen ausschließlich vegetarische und vegane Gerichte auf dem Speiseplan. Das Studentenwerk begründet die Entscheidung mit dem Klimaschutz: Die Produktion von Fleisch verursacht deutlich mehr CO2 als die von Gemüse oder Hülsenfrüchten. Außerdem seien die vegetarischen Gerichte günstiger, ein Mittagessen koste im Durchschnitt 40 Cent weniger als vorher.\n\nBei den Studierenden ist die Reaktion geteilt. Eine Umfrage der Studierendenvertretung zeigt: 58 Prozent finden die Änderung gut, 30 Prozent lehnen sie ab, der Rest hat keine Meinung. „Ich esse sowieso kaum Fleisch, für mich ändert sich nichts“, sagt die Biologiestudentin Hanna Voss. Ihr Kommilitone Ben Aktas dagegen ärgert sich: „Ich kann selbst entscheiden, was ich esse. Die Mensa soll mich nicht erziehen.“ Er geht jetzt öfter zum Imbiss neben der Uni.\n\nDas Studentenwerk will das Modell nach einem Jahr überprüfen. Sollten deutlich weniger Studierende in die Mensa kommen, werde man reagieren, sagt die Leiterin Karin Busch. Bisher sei die Zahl der Gäste jedoch nicht gesunken, sondern sogar leicht gestiegen. Vor allem das neue Linsencurry sei ein Erfolg – es wird inzwischen häufiger bestellt als früher das Schnitzel.",
+          "items": [
+            {"id": "L2-4", "question": "In der Mensa in Göttingen …", "options": ["gibt es gar kein Fleisch mehr.", "gibt es nur noch zweimal pro Woche Fleisch.", "sind die Gerichte teurer geworden."], "answer": 1, "skill": "number-time"},
+            {"id": "L2-5", "question": "Ben Aktas …", "options": ["möchte selbst entscheiden, was er isst.", "isst sowieso kaum Fleisch.", "findet das neue Angebot gut."], "answer": 0, "skill": "attitude"},
+            {"id": "L2-6", "question": "Seit der Änderung …", "options": ["kommen weniger Studierende in die Mensa.", "wird das Schnitzel häufiger bestellt als früher.", "essen etwas mehr Studierende in der Mensa als vorher."], "answer": 2, "skill": "detail"}
+          ]
+        }
+      ]
+    },
+    "teil3": {
+      "intro": "Einige Personen aus Ihrem Deutschkurs suchen Angebote rund um Gesundheit und Ernährung. Lesen Sie die Situationen 1–7 und die Anzeigen A–J. Welche Anzeige passt zu welcher Situation? Eine Anzeige kann nur einmal gewählt werden. Für eine Situation gibt es keine passende Anzeige – markieren Sie dort 0.",
+      "situations": [
+        {"id": "L3-1", "text": "Nora möchte abends nach der Arbeit mit Yoga anfangen, hat aber noch nie Yoga gemacht.", "answer": "C", "skill": "matching"},
+        {"id": "L3-2", "text": "Herr Schmidt ist neu in der Stadt und sucht einen Hausarzt, der noch Patienten aufnimmt.", "answer": "G", "skill": "matching"},
+        {"id": "L3-3", "text": "Emre möchte lernen, wie man schnell und gesund für die ganze Familie kocht.", "answer": "A", "skill": "matching"},
+        {"id": "L3-4", "text": "Frau Okafor hat oft Rückenschmerzen, weil sie den ganzen Tag am Computer sitzt.", "answer": "I", "skill": "matching"},
+        {"id": "L3-5", "text": "Pia will mit dem Rauchen aufhören und sucht Unterstützung in einer Gruppe.", "answer": "E", "skill": "matching"},
+        {"id": "L3-6", "text": "Tobias läuft gern, sucht aber Leute, mit denen er am Wochenende zusammen laufen kann.", "answer": null, "skill": "matching"},
+        {"id": "L3-7", "text": "Familie Berger braucht am Sonntag dringend Medikamente und sucht eine geöffnete Apotheke.", "answer": "H", "skill": "matching"}
+      ],
+      "ads": [
+        {"letter": "A", "title": "Kochkurs: Gesund und schnell – Familienküche", "text": "In vier Abenden lernen Sie Gerichte, die in 30 Minuten fertig sind und auch Kindern schmecken. Wenig Zucker, viel Gemüse. Donnerstags 18–21 Uhr, Volkshochschule Süd, 95 € inklusive Zutaten."},
+        {"letter": "B", "title": "Bio-Markt Grünkorn – jetzt auch Lieferservice", "text": "Frisches Obst und Gemüse aus der Region, direkt an Ihre Haustür. Bestellung bis 12 Uhr, Lieferung am selben Tag. Ab 40 € Einkaufswert ohne Lieferkosten. www.gruenkorn-liefert.de"},
+        {"letter": "C", "title": "Yoga für Anfängerinnen und Anfänger", "text": "Sanfter Einstieg ohne Vorkenntnisse. Dienstag und Donnerstag 19:00–20:15 Uhr, kleine Gruppen, Matten vorhanden. Probestunde kostenlos. Yogastudio Lotus, Bahnhofstraße 5, Tel. 0421 / 33 21 00."},
+        {"letter": "D", "title": "Individuelle Ernährungsberatung", "text": "Diplom-Ökotrophologin erstellt Ihren persönlichen Ernährungsplan: bei Übergewicht, Allergien oder Diabetes. Erstgespräch 60 Minuten, 80 €. Viele Krankenkassen übernehmen einen Teil der Kosten."},
+        {"letter": "E", "title": "Endlich rauchfrei – Kurs in der Gruppe", "text": "In sechs Wochen gemeinsam aufhören. Wir treffen uns montags um 18:30 Uhr im Gesundheitszentrum Mitte, maximal zwölf Teilnehmer. Leitung: Psychologin. Die Kosten erstattet Ihre Krankenkasse."},
+        {"letter": "F", "title": "Fitnessstudio Aktiv – 24 Stunden geöffnet", "text": "Trainieren, wann Sie wollen: Geräte, Laufbänder, Kurse. Monatsbeitrag 29,90 €, im Oktober keine Aufnahmegebühr. Persönliche Einweisung durch unsere Trainer inklusive. Am Markt 3."},
+        {"letter": "G", "title": "Hausarztpraxis Dr. Lena Berg", "text": "Wir nehmen wieder neue Patientinnen und Patienten auf! Allgemeinmedizin, Vorsorge, Impfungen. Sprechzeiten Mo–Fr 8–12 Uhr, Di und Do auch 15–18 Uhr. Termine online oder unter 0421 / 77 88 99."},
+        {"letter": "H", "title": "Apotheken-Notdienst", "text": "Welche Apotheke hat nachts, am Wochenende oder an Feiertagen geöffnet? Rufen Sie kostenlos an: 0800 / 00 22 833. Oder schicken Sie eine SMS mit Ihrer Postleitzahl an die 22 833."},
+        {"letter": "I", "title": "Rückenschule für Büromenschen", "text": "Sie sitzen viel? Wir zeigen Ihnen Übungen, die Sie auch am Schreibtisch machen können. Acht Termine, mittwochs 17:30 Uhr, Physiotherapie Hartmann. 120 €, Zuschuss von der Krankenkasse möglich."},
+        {"letter": "J", "title": "Laufgruppe „Bremer Füße“", "text": "Wir laufen gemeinsam, egal ob langsam oder schnell. Treffpunkt Montag und Mittwoch um 18 Uhr am Eingang des Bürgerparks. Kostenlos, einfach vorbeikommen! Am Wochenende machen wir Pause."}
+      ]
+    },
+    "teil4": {
+      "question": "Sollte der Staat ungesunde Lebensmittel höher besteuern?",
+      "comments": [
+        {"id": "L4-1", "author": "Frank, Dortmund", "text": "Der Staat soll mir nicht sagen, was ich esse. Ich bin erwachsen. Wenn ich am Samstag eine Pizza will, dann esse ich eine Pizza. Eine solche Steuer trifft am Ende nur die Leute, die sowieso wenig Geld haben.", "answer": false, "skill": "attitude"},
+        {"id": "L4-2", "author": "Lena, Potsdam", "text": "Bei Zigaretten hat es funktioniert: Seit sie teurer sind, rauchen deutlich weniger Jugendliche. Warum sollte das bei Cola und Chips anders sein? Das Geld aus der Steuer könnte man in Sport an Schulen investieren.", "answer": true, "skill": "attitude"},
+        {"id": "L4-3", "author": "Ömer, Frankfurt", "text": "Ich habe drei Kinder und sehe jeden Tag, wie sie von Werbung für Süßigkeiten beeinflusst werden. Ich allein kann dagegen wenig tun. Wenn eine Steuer dazu führt, dass die Limonade an der Kasse teurer ist als Wasser, dann nehme ich das in Kauf, auch wenn ich selbst mehr bezahle.", "answer": true, "skill": "inference"},
+        {"id": "L4-4", "author": "Sabine, Hannover", "text": "Was ist überhaupt ungesund? Ein Stück Butter? Ein Glas Wein? Wer entscheidet das? Am Ende sitzen Politiker in Berlin und machen Listen. Viel besser wäre es, wenn Kinder in der Schule richtig kochen lernen.", "answer": false, "skill": "attitude"},
+        {"id": "L4-5", "author": "Jonas, Rostock", "text": "Ich verstehe das Argument mit den Zigaretten, es klingt logisch. Aber Essen ist etwas anderes: Man kann nicht einfach aufhören zu essen. In vielen Familien reicht das Geld schon jetzt kaum. Eine Steuer würde sie zusätzlich bestrafen, ohne dass sich etwas ändert.", "answer": false, "skill": "inference"},
+        {"id": "L4-6", "author": "Mareike, Augsburg", "text": "Als Krankenschwester sehe ich jeden Tag die Folgen: Diabetes, Herzprobleme, Übergewicht schon bei Zwanzigjährigen. Die Behandlung bezahlen wir alle über die Krankenkasse. Es ist nur fair, wenn ungesunde Produkte einen Teil dieser Kosten tragen.", "answer": true, "skill": "attitude"},
+        {"id": "L4-7", "author": "David, Bonn", "text": "In Großbritannien gibt es die Zuckersteuer seit Jahren, und die Hersteller haben einfach weniger Zucker in die Getränke gemischt. Niemand zahlt mehr, aber alle trinken gesünder. Genau das brauchen wir hier auch.", "answer": true, "skill": "attitude"}
+      ]
+    },
+    "teil5": {
+      "title": "Praxisordnung – Hausarztpraxis Dr. Weiß & Kollegen",
+      "text": "§ 1 Termine\nDie Behandlung erfolgt nur mit Termin, ausgenommen sind Notfälle. Termine vereinbaren Sie online oder telefonisch Montag bis Freitag von 8 bis 11 Uhr. Wer mehr als 15 Minuten zu spät kommt, muss einen neuen Termin vereinbaren, damit die anderen Patienten nicht warten müssen.\n\n§ 2 Absagen\nBitte sagen Sie Termine mindestens 24 Stunden vorher ab. Bei späteren Absagen oder wenn Sie nicht erscheinen, berechnen wir eine Gebühr von 20 €. Das gilt nicht, wenn Sie plötzlich akut erkrankt sind.\n\n§ 3 Rezepte und Überweisungen\nWiederholungsrezepte können Sie telefonisch oder online bestellen. Sie liegen frühestens am nächsten Werktag am Empfang bereit. Bitte kommen Sie nicht ohne Bestellung, um ein Rezept abzuholen. Überweisungen zu Fachärzten stellen wir nur nach einem Gespräch mit der Ärztin oder dem Arzt aus.\n\n§ 4 Akute Beschwerden und Notfälle\nFür akute Beschwerden gibt es täglich von 8 bis 9 Uhr eine Sprechstunde ohne Termin. Bitte rechnen Sie dort mit Wartezeiten. Außerhalb der Sprechzeiten erreichen Sie den ärztlichen Bereitschaftsdienst unter der 116 117. Bei lebensbedrohlichen Notfällen wählen Sie bitte sofort die 112.\n\n§ 5 Wartezimmer\nBitte stellen Sie Ihr Handy im Wartezimmer auf lautlos. Telefonate sind im Wartezimmer nicht erlaubt, bitte gehen Sie dafür in den Flur. Kinder dürfen nicht unbeaufsichtigt bleiben. Legen Sie Ihre Versichertenkarte beim ersten Besuch im Quartal am Empfang vor.",
+      "items": [
+        {"id": "L5-1", "question": "Wer 20 Minuten zu spät zum Termin kommt, …", "options": ["wird trotzdem behandelt, muss aber warten.", "muss einen neuen Termin ausmachen.", "muss 20 Euro bezahlen."], "answer": 1, "skill": "detail"},
+        {"id": "L5-2", "question": "Ein Wiederholungsrezept …", "options": ["kann man telefonisch oder online bestellen.", "bekommt man sofort, wenn man in die Praxis kommt.", "bekommt man nur nach einem Gespräch mit dem Arzt."], "answer": 0, "skill": "paraphrase"},
+        {"id": "L5-3", "question": "Wer plötzlich krank wird, …", "options": ["muss zuerst online einen Termin buchen.", "soll immer die 112 anrufen.", "kann morgens zwischen 8 und 9 Uhr ohne Termin kommen."], "answer": 2, "skill": "detail"},
+        {"id": "L5-4", "question": "Im Wartezimmer …", "options": ["darf man leise telefonieren.", "sind Telefonate nicht erlaubt.", "muss man das Handy ausschalten."], "answer": 1, "skill": "negation"}
+      ]
+    }
+  },
+  "hoeren": {
+    "teil1": {
+      "texts": [
+        {
+          "id": "H1-1", "kind": "Anrufbeantworter",
+          "script": [{"speaker": "f2", "text": "Guten Tag, Herr Lindner, hier ist die Zahnarztpraxis Dr. Sommer. Ihr Termin zur Kontrolle wäre ja am Montag um 8 Uhr 30 gewesen. Leider ist Frau Dr. Sommer nächste Woche krank, deshalb müssen wir den Termin verschieben. Wir hätten am Donnerstag um 8 Uhr 30 einen Platz frei, oder in der Woche danach am Dienstag um 16 Uhr. Bitte rufen Sie uns an und sagen Sie, welcher Termin Ihnen besser passt. Und denken Sie bitte daran, Ihre Versichertenkarte mitzubringen, beim letzten Mal hatten Sie sie vergessen. Falls Sie in der Zwischenzeit Schmerzen bekommen, kommen Sie einfach morgens zwischen acht und neun vorbei, dann behandelt Sie unser Kollege Dr. Frank. Vielen Dank, auf Wiederhören."}],
+          "items": [
+            {"id": "H1-1a", "type": "rf", "statement": "Der Termin am Montag fällt aus, weil die Zahnärztin krank ist.", "answer": true, "skill": "detail"},
+            {"id": "H1-1b", "type": "mc", "question": "Herr Lindner soll …", "options": ["einen von zwei neuen Terminen wählen.", "am Montag um 8 Uhr 30 in die Praxis kommen.", "sofort zu Dr. Frank gehen."], "answer": 0, "skill": "paraphrase"}
+          ]
+        },
+        {
+          "id": "H1-2", "kind": "Werbung",
+          "script": [{"speaker": "m2", "text": "Am Samstag ist es so weit: Der neue Biomarkt „Feldfrisch“ eröffnet in der Rathausstraße! Wir feiern von 9 bis 18 Uhr mit Musik, Kinderprogramm und vielen Kostproben. Am Eröffnungstag bekommen Sie zehn Prozent Rabatt auf Obst, Gemüse und Brot – Getränke sind vom Rabatt leider ausgenommen. Und die ersten hundert Kunden erhalten eine Stofftasche gratis. Ab Montag sind wir dann ganz normal für Sie da: Montag bis Samstag von 8 bis 20 Uhr, sonntags bleibt der Markt geschlossen. Übrigens: Wer mit dem Rad kommt, findet direkt vor dem Eingang neue Fahrradständer. Feldfrisch – regional, frisch, bio. Wir freuen uns auf Sie!"}],
+          "items": [
+            {"id": "H1-2a", "type": "rf", "statement": "Der Biomarkt ist auch am Sonntag geöffnet.", "answer": false, "skill": "negation"},
+            {"id": "H1-2b", "type": "mc", "question": "Am Eröffnungstag …", "options": ["gibt es auf alle Produkte zehn Prozent Rabatt.", "bekommen die ersten hundert Kunden ein Geschenk.", "ist der Markt bis 20 Uhr geöffnet."], "answer": 1, "skill": "detail"}
+          ]
+        },
+        {
+          "id": "H1-3", "kind": "Anrufbeantworter",
+          "script": [{"speaker": "ch_f", "text": "Hoi Tim, hier ist Leni. Du, wegen Sonntag: Ich war heute beim Arzt, und ich habe mir den Fuß verstaucht. Nichts Schlimmes, aber ich darf zwei Wochen lang nicht laufen. Der Halbmarathon am Sonntag fällt für mich also aus. Du kannst aber gern meine Startnummer übernehmen, wenn du willst. Ich habe schon beim Veranstalter angerufen, das geht ohne Probleme. Du müsstest sie nur bis Freitag um 18 Uhr im Sportgeschäft am Bahnhof abholen. Ach ja, und unser Training am Mittwoch: Da komme ich trotzdem, aber nur zum Schwimmen, nicht zum Laufen. Melde dich, okay? Tschüss!"}],
+          "items": [
+            {"id": "H1-3a", "type": "rf", "statement": "Leni darf zwei Wochen lang nicht laufen.", "answer": true, "skill": "number-time"},
+            {"id": "H1-3b", "type": "mc", "question": "Tim kann …", "options": ["Leni am Sonntag zum Arzt begleiten.", "am Mittwoch nicht trainieren.", "Lenis Startnummer bis Freitag abholen."], "answer": 2, "skill": "paraphrase"}
+          ]
+        },
+        {
+          "id": "H1-4", "kind": "Durchsage",
+          "script": [{"speaker": "m3", "text": "Liebe Badegäste, bitte beachten Sie: Das große Sportbecken wird heute um 16 Uhr geschlossen, weil dort ab halb fünf das Training des Schwimmvereins stattfindet. Das Nichtschwimmerbecken und die Sauna bleiben bis 21 Uhr für Sie geöffnet. Außerdem bitten wir alle Eltern, Kinder unter acht Jahren nicht allein im Wasser zu lassen. Der Kiosk im Erdgeschoss hat heute wegen Krankheit geschlossen, Getränke bekommen Sie am Automaten neben dem Eingang. Und noch ein Hinweis: Ab nächster Woche gelten die Winter-Öffnungszeiten, das Bad öffnet dann erst um 7 Uhr statt um 6 Uhr. Wir wünschen Ihnen weiterhin viel Spaß."}],
+          "items": [
+            {"id": "H1-4a", "type": "rf", "statement": "Das Sportbecken ist heute bis 21 Uhr geöffnet.", "answer": false, "skill": "number-time"},
+            {"id": "H1-4b", "type": "mc", "question": "Ab nächster Woche …", "options": ["öffnet das Bad eine Stunde später.", "ist der Kiosk wieder geöffnet.", "schließt das Bad schon um 16 Uhr."], "answer": 0, "skill": "number-time"}
+          ]
+        },
+        {
+          "id": "H1-5", "kind": "Radio",
+          "script": [{"speaker": "f3", "text": "Und zum Schluss noch ein Hinweis von unserer Gesundheitsredaktion: Für morgen und übermorgen erwarten wir Temperaturen bis zu 36 Grad. Der Wetterdienst warnt vor allem ältere Menschen und Familien mit kleinen Kindern vor der Hitze. Trinken Sie mindestens zwei Liter Wasser am Tag, besser drei, und verschieben Sie Sport auf den frühen Morgen oder den späten Abend. Zwischen elf und siebzehn Uhr sollte man möglichst nicht in der Sonne bleiben. Die Stadt Karlsruhe öffnet deshalb ab morgen alle Freibäder schon um sieben Uhr, und der Eintritt kostet an beiden Tagen nur zwei Euro statt vier. Ab Donnerstag wird es dann mit Gewittern wieder deutlich kühler."}],
+          "items": [
+            {"id": "H1-5a", "type": "rf", "statement": "Die Freibäder in Karlsruhe sind an den heißen Tagen kostenlos.", "answer": false, "skill": "negation"},
+            {"id": "H1-5b", "type": "mc", "question": "Sport sollte man bei der Hitze …", "options": ["am besten mittags machen.", "ganz vermeiden.", "morgens oder abends machen."], "answer": 2, "skill": "paraphrase"}
+          ]
+        }
+      ]
+    },
+    "teil2": {
+      "setting": "Sie nehmen an einem Kochkurs an der Volkshochschule teil und hören die Einführung der Kursleiterin.",
+      "script": [{"speaker": "f1", "text": "Guten Abend und herzlich willkommen zum Kochkurs „Gesund und lecker“! Ich bin Claudia Neumann, ich bin Ernährungsberaterin und koche seit zwanzig Jahren, beruflich und privat. Bevor wir anfangen, ein paar organisatorische Dinge. Der Kurs hat sechs Termine, immer mittwochs von 18 bis 21 Uhr. Achtung: Nächste Woche fällt der Kurs aus, da ist die Küche wegen einer Reparatur geschlossen, wir treffen uns also erst in zwei Wochen wieder. Dafür hängen wir am Ende einen Termin an. Die Zutaten sind im Kurspreis enthalten, Sie müssen also nichts mitbringen – außer einer Schürze und, wenn Sie möchten, ein paar Dosen, damit Sie die Reste mit nach Hause nehmen können. Wir kochen heute in vier Gruppen, jede Gruppe macht einen Gang, und um halb neun essen wir alles zusammen an dem großen Tisch dort hinten. Wichtig für Ihre Sicherheit: Lange Haare bitte zusammenbinden. Und bevor Sie anfangen, waschen Sie sich bitte die Hände am Waschbecken links neben der Tür, nicht in den Spülbecken, die sind nur für das Gemüse. Wer eine Allergie hat, zum Beispiel gegen Nüsse oder Gluten, sagt mir bitte jetzt gleich Bescheid, dann ändern wir die Rezepte. Heute geht es um Frühstück und Mittagessen. Viele Leute denken, gesund kochen dauert lange und ist teuer. Das stimmt nicht. Unser Hauptgericht heute kostet pro Person weniger als drei Euro und ist in fünfundzwanzig Minuten fertig. Es geht vor allem um drei Regeln: mehr Gemüse, weniger Zucker, und selbst würzen statt fertige Soßen zu kaufen. Die Rezepte bekommen Sie nicht auf Papier, sondern ich schicke sie Ihnen nach jedem Abend per E-Mail, dann können Sie sie zu Hause ausdrucken. Wer bei der Anmeldung keine E-Mail-Adresse angegeben hat, trägt sie bitte in die Liste am Eingang ein. Und noch etwas: Beim letzten Termin machen wir ein gemeinsames Abendessen, zu dem Sie gern eine Person mitbringen dürfen, Partner, Kinder, Freunde. So, dann teilen wir uns jetzt in die Gruppen auf. Wer gern schneidet, geht bitte an den Tisch am Fenster."}],
+      "items": [
+        {"id": "H2-1", "question": "Der nächste Kurstermin ist …", "options": ["in einer Woche.", "in zwei Wochen.", "am Ende des Kurses."], "answer": 1, "skill": "number-time"},
+        {"id": "H2-2", "question": "Die Teilnehmer sollen … mitbringen.", "options": ["eine Schürze", "die Zutaten", "eigenes Geschirr"], "answer": 0, "skill": "detail"},
+        {"id": "H2-3", "question": "Die Hände wäscht man …", "options": ["im Spülbecken für das Gemüse.", "am Waschbecken neben der Tür.", "am großen Tisch hinten."], "answer": 1, "skill": "detail"},
+        {"id": "H2-4", "question": "Die Kursleiterin meint, dass gesundes Kochen …", "options": ["viel Zeit braucht.", "meistens teuer ist.", "günstig und schnell sein kann."], "answer": 2, "skill": "paraphrase"},
+        {"id": "H2-5", "question": "Die Rezepte …", "options": ["werden nach jedem Abend per E-Mail verschickt.", "bekommt man am Anfang auf Papier.", "muss man sich selbst notieren."], "answer": 0, "skill": "detail"}
+      ]
+    },
+    "teil3": {
+      "setting": "Sie hören ein Gespräch zwischen zwei Freunden in einem Café.",
+      "script": [
+        {"speaker": "f3", "text": "Paul, du siehst müde aus. Alles okay?"},
+        {"speaker": "m1", "text": "Ach, geht so. Ich schlafe schlecht, und mein Arzt hat gestern gesagt, ich hätte zu hohen Blutdruck. Ich soll abnehmen und mich mehr bewegen. Mit 34!"},
+        {"speaker": "f3", "text": "Na ja, das ist kein Weltuntergang. Was hat er dir denn konkret geraten?"},
+        {"speaker": "m1", "text": "Weniger Salz, weniger Alkohol, und dreimal pro Woche Sport. Er hat mir sogar Tabletten angeboten, aber ich wollte es erst mal ohne versuchen. In drei Monaten soll ich wiederkommen."},
+        {"speaker": "f3", "text": "Finde ich richtig. Und was für Sport willst du machen? Du hast doch mal Fußball gespielt."},
+        {"speaker": "m1", "text": "Ja, aber der Verein trainiert um sieben Uhr abends, da bin ich oft noch im Büro. Ich dachte an Laufen. Da bin ich flexibel."},
+        {"speaker": "f3", "text": "Laufen ist gut, aber fang langsam an. Ich habe am Anfang den Fehler gemacht, gleich zehn Kilometer zu laufen, und dann hatte ich zwei Wochen Knieschmerzen. Nimm dir lieber eine App, die dir einen Plan macht: erst drei Minuten laufen, dann eine Minute gehen, und so weiter."},
+        {"speaker": "m1", "text": "Ach so, das klingt vernünftig. Hast du eine Empfehlung?"},
+        {"speaker": "f3", "text": "Ich schicke dir nachher den Link. Und such dir jemanden, der mitläuft. Allein gibt man schneller auf. Ich laufe sonntags um neun im Park, komm doch einfach mit."},
+        {"speaker": "m1", "text": "Sonntag um neun? Puh. Aber gut, ich versuche es. Und beim Essen? Ich koche ehrlich gesagt fast nie, ich hole mir meistens was vom Imbiss."},
+        {"speaker": "f3", "text": "Genau da ist das ganze Salz drin. Fang mit dem Frühstück an, das ist am einfachsten. Haferflocken, Obst, Joghurt – das dauert fünf Minuten. Und mittags nimmst du dir was von zu Hause mit, statt jeden Tag Currywurst zu essen."},
+        {"speaker": "m1", "text": "Du klingst wie mein Arzt."},
+        {"speaker": "f3", "text": "Weil er recht hat! Und was ist mit dem Schlafen? Wann gehst du ins Bett?"},
+        {"speaker": "m1", "text": "Meistens erst nach Mitternacht. Ich schaue im Bett noch Serien auf dem Handy."},
+        {"speaker": "f3", "text": "Das ist das Problem. Das Handy bleibt ab jetzt in der Küche. Lies ein Buch, wenn du nicht schlafen kannst, aber kein Bildschirm."},
+        {"speaker": "m1", "text": "Okay, okay. Also: Laufen mit App, Frühstück selbst machen, Handy raus aus dem Schlafzimmer. Und in drei Monaten weiß ich, ob es was gebracht hat."},
+        {"speaker": "f3", "text": "Genau. Und ich frage dich jede Woche, ob du gelaufen bist. Das ist der Preis für meine Beratung."},
+        {"speaker": "m1", "text": "Na super. Dann lass uns wenigstens noch ein Stück Kuchen bestellen, solange ich noch darf."},
+        {"speaker": "f3", "text": "Eins. Wir teilen."}
+      ],
+      "items": [
+        {"id": "H3-1", "statement": "Paul nimmt jetzt Tabletten gegen den hohen Blutdruck.", "answer": false, "skill": "negation"},
+        {"id": "H3-2", "statement": "Paul soll in drei Monaten wieder zum Arzt gehen.", "answer": true, "skill": "number-time"},
+        {"id": "H3-3", "statement": "Paul kann nicht zum Fußballtraining, weil er abends oft noch arbeitet.", "answer": true, "skill": "detail"},
+        {"id": "H3-4", "statement": "Julia hatte am Anfang Probleme, weil sie zu schnell zu viel gelaufen ist.", "answer": true, "skill": "paraphrase"},
+        {"id": "H3-5", "statement": "Julia läuft sonntags am Nachmittag im Park.", "answer": false, "skill": "number-time"},
+        {"id": "H3-6", "statement": "Paul kocht jeden Tag selbst.", "answer": false, "skill": "detail"},
+        {"id": "H3-7", "statement": "Julia rät Paul, im Bett nicht mehr aufs Handy zu schauen.", "answer": true, "skill": "paraphrase"}
+      ]
+    },
+    "teil4": {
+      "setting": "Sie hören eine Diskussion im Radio. Die Moderatorin spricht mit einem Ernährungswissenschaftler und einer Elternvertreterin über das Thema „Süßigkeiten-Verbot an Grundschulen?“",
+      "speakers": {"mod": "Moderatorin Julia Steinbach", "a": "Dr. Markus Hell (Ernährungswissenschaftler)", "b": "Petra Winkler (Elternvertreterin)"},
+      "voices": {"mod": "f2", "a": "m3", "b": "f1"},
+      "script": [
+        {"speaker": "mod", "text": "Herzlich willkommen zu „Nachgefragt“, unserer Diskussionssendung am Mittwochabend. Ich bin Julia Steinbach. Die Stadt Mainz will ab dem nächsten Schuljahr Süßigkeiten und Limonade an allen Grundschulen verbieten – auch in den Brotdosen der Kinder. Ist das richtig? Darüber diskutiere ich mit dem Ernährungswissenschaftler Dr. Markus Hell und mit Petra Winkler, sie ist Elternvertreterin und hat drei Kinder. Herr Hell, Sie haben die Stadt beraten. Warum so streng?"},
+        {"speaker": "a", "text": "Guten Abend. Weil die Zahlen erschreckend sind. Jedes sechste Kind in Deutschland ist heute übergewichtig, und in der Grundschule entstehen die Gewohnheiten, die man später kaum noch ändert. Wenn ein Kind jeden Tag mit Schokoriegel und Cola in die Schule kommt, dann lernt es: Das ist normal. Ich sage nicht, dass Kinder nie Süßes essen dürfen. Aber die Schule muss ein Ort sein, an dem man gesundes Essen als selbstverständlich erlebt."},
+        {"speaker": "mod", "text": "Frau Winkler, Sie haben gegen das Verbot eine Unterschriftenliste gestartet."},
+        {"speaker": "b", "text": "Ja, und in zwei Wochen haben über dreitausend Eltern unterschrieben. Ich finde: Was mein Kind isst, entscheide ich, nicht die Stadt. Meine Tochter bekommt eine gesunde Brotdose, aber am Freitag ist ein kleiner Keks drin, das ist ihr Highlight. Soll die Lehrerin ihr den jetzt wegnehmen? Das ist doch absurd. Und vor allem: Es trifft die Falschen. Die Familien, die sich wirklich nicht um Ernährung kümmern, erreicht man mit einem Verbot sowieso nicht."},
+        {"speaker": "a", "text": "Da muss ich widersprechen. Gerade diese Familien erreicht man. Denn wenn in der Schule alle das Gleiche essen, nämlich das Schulfrühstück, das die Stadt kostenlos anbietet, dann spielt es keine Rolle mehr, was zu Hause im Kühlschrank steht. Das Verbot ist nur die eine Hälfte. Die andere Hälfte ist, dass jedes Kind morgens Obst, Brot und Milch bekommt."},
+        {"speaker": "mod", "text": "Das kostenlose Frühstück wird also gleichzeitig eingeführt?"},
+        {"speaker": "a", "text": "Genau, ab August, an allen Grundschulen. Die Stadt bezahlt das."},
+        {"speaker": "b", "text": "Das Frühstück finde ich übrigens gut, das habe ich immer gesagt. Aber warum dann noch das Verbot? Man kann Kindern nicht beibringen, mit Süßigkeiten umzugehen, wenn man sie einfach verbietet. Bei uns zu Hause gibt es feste Regeln: Süßes nur nach dem Essen, und nie vor dem Fernseher. Das funktioniert, weil die Kinder es verstehen. Ein Verbot verstehen sie nicht, sie finden es nur ungerecht."},
+        {"speaker": "mod", "text": "Ich habe selbst zwei Kinder in der Grundschule, und ich muss zugeben: Ich habe schon oft Süßigkeiten in die Brotdose gepackt, einfach weil es morgens schnell gehen musste."},
+        {"speaker": "b", "text": "Sehen Sie, so geht es den meisten. Und deshalb hilft Information mehr als Kontrolle. Ich wünsche mir Kochkurse für Eltern, Elternabende zum Thema Ernährung, meinetwegen auch ein Zuckerlimit für den Schulkiosk. Aber die Brotdose ist privat."},
+        {"speaker": "a", "text": "Ein Kompromiss wäre für mich denkbar: Das Verbot gilt für den Kiosk und die Automaten, und für die Brotdosen gibt es klare Empfehlungen, aber keine Kontrolle. Allerdings müssen dann die Eltern auch mitmachen. Wenn ich nach einem Jahr sehe, dass die Hälfte der Kinder weiter mit Limonade kommt, dann brauchen wir doch die strenge Regel."},
+        {"speaker": "mod", "text": "Frau Winkler, könnten Sie mit diesem Kompromiss leben?"},
+        {"speaker": "b", "text": "Mit dem Kompromiss ja. Dann würde ich sogar helfen, die Elternabende zu organisieren. Ich bin nicht gegen gesunde Ernährung, ich bin gegen Bevormundung."},
+        {"speaker": "mod", "text": "Dann hat diese Sendung vielleicht mehr erreicht als der Stadtrat. Ich danke Ihnen beiden, Herr Hell, Frau Winkler, und Ihnen zu Hause einen schönen Abend."}
+      ],
+      "items": [
+        {"id": "H4-1", "statement": "Ungefähr jedes sechste Kind in Deutschland wiegt zu viel.", "answer": "a", "skill": "matching"},
+        {"id": "H4-2", "statement": "Innerhalb von zwei Wochen haben mehr als dreitausend Eltern gegen das Verbot unterschrieben.", "answer": "b", "skill": "matching"},
+        {"id": "H4-3", "statement": "Familien, die sich nicht um Ernährung kümmern, erreicht man mit einem Verbot nicht.", "answer": "b", "skill": "matching"},
+        {"id": "H4-4", "statement": "Die Stadt bietet den Grundschulkindern ein kostenloses Frühstück an.", "answer": "a", "skill": "matching"},
+        {"id": "H4-5", "statement": "Ich habe meinen Kindern schon oft Süßes mitgegeben, weil es morgens schnell gehen musste.", "answer": "mod", "skill": "matching"},
+        {"id": "H4-6", "statement": "Kinder lernen den Umgang mit Süßigkeiten durch Regeln, die sie verstehen, nicht durch Verbote.", "answer": "b", "skill": "matching"},
+        {"id": "H4-7", "statement": "Am Kiosk und an den Automaten sollte es keine Süßigkeiten mehr geben.", "answer": "a", "skill": "matching"},
+        {"id": "H4-8", "statement": "Meine beiden Kinder gehen in die Grundschule.", "answer": "mod", "skill": "matching"}
+      ]
+    }
+  },
+  "schreiben": {
+    "aufgabe1": {
+      "minutes": 20, "words": 80,
+      "situation": "Sie waren letzte Woche krank und konnten deshalb nicht zur Geburtstagsfeier Ihres Freundes Felix kommen. Schreiben Sie ihm eine E-Mail.",
+      "points": ["Beschreiben Sie, was passiert ist und wie es Ihnen jetzt geht.", "Erklären Sie, warum Sie sich nicht früher gemeldet haben.", "Schlagen Sie vor, wie Sie den Geburtstag gemeinsam nachfeiern können."]
+    },
+    "aufgabe2": {
+      "minutes": 25, "words": 80,
+      "situation": "Sie haben im Fernsehen eine Diskussionssendung zum Thema „Fast Food – Problem oder Privatsache?“ gesehen. Im Online-Gästebuch der Sendung finden Sie folgende Meinung:",
+      "quote": "„Jeder weiß, dass Fast Food ungesund ist. Wer trotzdem jeden Tag Burger isst, ist selbst schuld. Der Staat soll sich da raushalten und keine Steuern oder Verbote einführen.“ – Dennis, 29",
+      "instruction": "Schreiben Sie nun Ihre Meinung dazu (circa 80 Wörter)."
+    },
+    "aufgabe3": {
+      "minutes": 15, "words": 40,
+      "situation": "Sie haben am Freitag um 15 Uhr einen Termin bei Ihrer Physiotherapeutin, Frau Hansen. Sie können den Termin nicht wahrnehmen, weil Sie beruflich verreisen müssen. Schreiben Sie ihr eine E-Mail: Sagen Sie den Termin höflich ab, nennen Sie den Grund und bitten Sie um einen neuen Termin in der Woche danach.",
+      "addressee": "Frau Hansen"
+    }
+  },
+  "sprechen": {
+    "teil1": {
+      "situation": "Ein Freund aus Ihrem Deutschkurs hatte eine Operation und liegt eine Woche im Krankenhaus. Sie und Ihr Partner / Ihre Partnerin möchten ihn besuchen. Planen Sie gemeinsam.",
+      "points": ["Wann besuchen Sie ihn?", "Wie kommen Sie zum Krankenhaus?", "Was bringen Sie mit?", "Wer informiert die anderen aus dem Kurs?"],
+      "partner_cues": [
+        "Ich könnte am Dienstagnachmittag, da habe ich frei. Wann passt es dir?",
+        "Die Besuchszeiten sind von 14 bis 19 Uhr, glaube ich. Sollen wir vorher im Krankenhaus anrufen?",
+        "Fahren wir mit dem Bus, oder nimmst du das Auto? Parken ist dort bestimmt schwierig.",
+        "Blumen darf man auf vielen Stationen nicht mitbringen. Was nehmen wir stattdessen mit?",
+        "Vielleicht könnten wir eine Karte vom ganzen Kurs unterschreiben lassen. Kümmerst du dich darum?",
+        "Und sollen wir den anderen aus dem Kurs Bescheid sagen, oder will er vielleicht lieber seine Ruhe?"
+      ]
+    },
+    "teil2": {
+      "topics": ["Thema A: Sollte man auf Fleisch verzichten?", "Thema B: Ist Sport im Verein besser als Sport allein?"],
+      "folien": [
+        "Stellen Sie Ihr Thema vor. Erklären Sie den Inhalt und die Struktur Ihrer Präsentation.",
+        "Berichten Sie von Ihrer Situation oder einem Erlebnis im Zusammenhang mit dem Thema.",
+        "Berichten Sie, wie die Situation in Ihrem Heimatland ist, und geben Sie Beispiele.",
+        "Nennen Sie die Vor- und Nachteile und sagen Sie dazu Ihre Meinung. Geben Sie auch Beispiele.",
+        "Beenden Sie Ihre Präsentation und bedanken Sie sich bei den Zuhörern."
+      ]
+    },
+    "teil3": {
+      "questions": ["Sie haben gesagt, dass weniger Fleisch gesünder ist. Ist vegetarisches Essen nicht auch teurer?", "Wie hat sich Ihre eigene Ernährung in den letzten Jahren verändert?", "Sollten Kinder in der Schule lernen, wie man gesund kocht?"],
+      "questions_b": ["Sie haben gesagt, dass man im Verein mehr Motivation hat. Was ist, wenn man wenig Zeit hat?", "Welchen Sport machen Sie selbst, und warum gerade diesen?", "Sollte der Arbeitgeber Sportangebote für die Mitarbeiter bezahlen?"]
+    }
+  }
+}

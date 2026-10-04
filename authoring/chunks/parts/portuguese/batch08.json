@@ -1,0 +1,529 @@
+[
+ {
+  "id": "ENG_CHUNK_0701",
+  "t": "Vou tentar [verbo]",
+  "ex": "Vou tentar chegar até as sete, mas não prometo nada."
+ },
+ {
+  "id": "ENG_CHUNK_0702",
+  "t": "Te aviso quando [oração]",
+  "ex": "Te aviso quando chegar em casa.",
+  "n": "'Quando' + future subjunctive for future events: quando eu chegar, quando der."
+ },
+ {
+  "id": "ENG_CHUNK_0703",
+  "t": "Pode deixar que eu [verbo] / Vou garantir que [oração]",
+  "ex": "Relaxa, pode deixar que eu dou comida para o cachorro.",
+  "n": "'Pode deixar (que eu ...)' is the everyday 'I'll take care of it'; 'garantir que' + subjunctive is more formal."
+ },
+ {
+  "id": "ENG_CHUNK_0704",
+  "t": "Como foi [substantivo]?",
+  "ex": "E aí, como foi a entrevista?"
+ },
+ {
+  "id": "ENG_CHUNK_0705",
+  "t": "Você já conseguiu [verbo]? / Você chegou a [verbo]?",
+  "ex": "Você chegou a dar uma olhada no meu e-mail?",
+  "n": "'Chegar a' + infinitive = 'get round to'; polite and non-pushy."
+ },
+ {
+  "id": "ENG_CHUNK_0706",
+  "t": "Quanto tempo leva para [verbo]? / Quanto tempo demora para [verbo]?",
+  "ex": "Quanto tempo leva para chegar ao aeroporto daqui?"
+ },
+ {
+  "id": "ENG_CHUNK_0707",
+  "t": "Estou surpreso/a que [oração] / Me surpreende que [oração]",
+  "ex": "Estou surpreso que você ainda esteja acordado.",
+  "n": "Triggers the subjunctive: que você esteja, not está."
+ },
+ {
+  "id": "ENG_CHUNK_0708",
+  "t": "Segundo [substantivo], [oração] / De acordo com [substantivo], [oração]",
+  "ex": "Segundo a previsão do tempo, vai nevar amanhã.",
+  "n": "In a Brazilian context: 'vai chover forte amanhã' is more realistic than snow."
+ },
+ {
+  "id": "ENG_CHUNK_0709",
+  "t": "Dizem que [oração] / Falam que [oração]",
+  "ex": "Dizem que é a melhor pizza da cidade."
+ },
+ {
+  "id": "ENG_CHUNK_0710",
+  "t": "É tipo [substantivo] / É meio que [substantivo]",
+  "ex": "É tipo um sanduíche, só que com arroz no lugar do pão."
+ },
+ {
+  "id": "ENG_CHUNK_0711",
+  "t": "[substantivo] me lembra [substantivo]",
+  "ex": "Essa música me lembra a época do colégio.",
+  "n": "'Lembrar' here takes a direct object; 'lembrar de' is for 'remember'."
+ },
+ {
+  "id": "ENG_CHUNK_0712",
+  "t": "[substantivo] não é tão [adjetivo] quanto [substantivo]",
+  "ex": "Este apartamento não é tão grande quanto o nosso antigo.",
+  "n": "'Quanto' and 'como' both work after tão."
+ },
+ {
+  "id": "ENG_CHUNK_0713",
+  "t": "Qual é a diferença entre [substantivo] e [substantivo]?",
+  "ex": "Qual é a diferença entre um latte e um flat white?"
+ },
+ {
+  "id": "ENG_CHUNK_0714",
+  "t": "Está [adjetivo] demais para [verbo] / Está muito [adjetivo] para [verbo]",
+  "ex": "Está frio demais para ir à praia hoje."
+ },
+ {
+  "id": "ENG_CHUNK_0715",
+  "t": "Ainda não está [adjetivo] o suficiente para [verbo]",
+  "ex": "Ainda não está quente o suficiente para comer lá fora."
+ },
+ {
+  "id": "ENG_CHUNK_0716",
+  "t": "Foi um/uma [substantivo] tão [adjetivo] / Que [substantivo] [adjetivo]!",
+  "ex": "Foi um casamento tão lindo! / Que casamento lindo!"
+ },
+ {
+  "id": "ENG_CHUNK_0717",
+  "t": "Adorei [verbo no infinitivo] / Foi muito bom [verbo no infinitivo]",
+  "ex": "Foi muito bom sair com vocês ontem à noite.",
+  "n": "English -ing becomes an infinitive in Portuguese."
+ },
+ {
+  "id": "ENG_CHUNK_0718",
+  "t": "Você costuma [verbo]? / Você às vezes [verbo]?",
+  "ex": "Você costuma correr de manhã?",
+  "n": "'Costumar' + infinitive is the go-to habit verb."
+ },
+ {
+  "id": "ENG_CHUNK_0719",
+  "t": "Sinto falta de [verbo/substantivo] / Que saudade de [verbo/substantivo]",
+  "ex": "Que saudade de morar perto do mar.",
+  "n": "'Saudade' is the warm, idiomatic choice; 'sentir falta' is neutral."
+ },
+ {
+  "id": "ENG_CHUNK_0720",
+  "t": "Sempre quis [verbo]",
+  "ex": "Sempre quis aprender a surfar."
+ },
+ {
+  "id": "ENG_CHUNK_0721",
+  "t": "Seria bom [verbo] / Seria legal [verbo]",
+  "ex": "Seria bom dar uma escapada num fim de semana."
+ },
+ {
+  "id": "ENG_CHUNK_0722",
+  "t": "Se eu tivesse [substantivo], eu [verbo no condicional]",
+  "ex": "Se eu tivesse mais tempo, faria uma aula de culinária.",
+  "n": "Speech often uses imperfect for conditional: 'eu fazia'."
+ },
+ {
+  "id": "ENG_CHUNK_0723",
+  "t": "Estou precisando muito de [substantivo] / Bem que eu queria [substantivo]",
+  "ex": "Estou precisando muito de um café agora."
+ },
+ {
+  "id": "ENG_CHUNK_0724",
+  "t": "Talvez seja bom [verbo] / É melhor você [verbo]",
+  "ex": "Vai cair um toró mais tarde, então talvez seja bom levar guarda-chuva."
+ },
+ {
+  "id": "ENG_CHUNK_0725",
+  "t": "Seria melhor você [verbo] / Você faria melhor se [verbo no subj.]",
+  "ex": "Sinceramente, seria melhor você ir de trem."
+ },
+ {
+  "id": "ENG_CHUNK_0726",
+  "t": "Será que você poderia [verbo]? / Teria como você [verbo]?",
+  "ex": "Será que você poderia me buscar no aeroporto?",
+  "n": "'Será que' hedges the request; 'teria como' is very common and soft."
+ },
+ {
+  "id": "ENG_CHUNK_0727",
+  "t": "Eu agradeceria se você pudesse [verbo]",
+  "ex": "Eu agradeceria se você pudesse abaixar a música depois das dez.",
+  "n": "Formal: se o senhor/a senhora pudesse. Imperfect subjunctive after agradeceria se."
+ },
+ {
+  "id": "ENG_CHUNK_0728",
+  "t": "Não é como se [oração no subjuntivo] / Até parece que [oração]",
+  "ex": "Pode pegar. Não é como se eu fosse usar.",
+  "n": "'Não é como se' + imperfect subjunctive; 'até parece que' is sarcastic."
+ },
+ {
+  "id": "ENG_CHUNK_0729",
+  "t": "Não é todo dia que [oração]",
+  "ex": "Vamos comemorar! Não é todo dia que a gente faz quarenta anos."
+ },
+ {
+  "id": "ENG_CHUNK_0730",
+  "t": "Quando se trata de [substantivo], [oração] / Em matéria de [substantivo], [oração]",
+  "ex": "Quando se trata de cozinhar, meu pai é o especialista."
+ },
+ {
+  "id": "ENG_CHUNK_0731",
+  "t": "Por falar em [substantivo], [oração] / Falando em [substantivo], [oração]",
+  "ex": "Por falar em comida, mais alguém está com fome?"
+ },
+ {
+  "id": "ENG_CHUNK_0732",
+  "t": "Tenho que admitir que [oração] / Confesso que [oração]",
+  "ex": "Confesso que eu estava um pouco nervoso."
+ },
+ {
+  "id": "ENG_CHUNK_0733",
+  "t": "Estou perguntando porque [oração]",
+  "ex": "Estou perguntando porque preciso de uma carona no sábado."
+ },
+ {
+  "id": "ENG_CHUNK_0734",
+  "t": "Não estou dizendo que [oração], mas [oração]",
+  "ex": "Não estou dizendo que é ruim, mas podia ser melhor.",
+  "n": "Speech usually keeps the indicative after 'não estou dizendo que'; careful writing uses subjunctive (seja)."
+ },
+ {
+  "id": "ENG_CHUNK_0735",
+  "t": "Não é pelo/pela [substantivo], é pelo/pela [substantivo] / Não é questão de [substantivo], é questão de [substantivo]",
+  "ex": "Não é pelo dinheiro, é pelo respeito."
+ },
+ {
+  "id": "ENG_CHUNK_0736",
+  "t": "assumir [substantivo] / pegar [substantivo]",
+  "ex": "Não consigo pegar mais nenhum trabalho este mês."
+ },
+ {
+  "id": "ENG_CHUNK_0737",
+  "t": "ligar avisando que está doente / faltar por doença",
+  "ex": "Acordei com febre, então liguei avisando que estava doente.",
+  "n": "No single verb; people also just say 'faltei, estava doente' or 'peguei atestado'."
+ },
+ {
+  "id": "ENG_CHUNK_0738",
+  "t": "ter um negócio / tocar um negócio",
+  "ex": "Meus pais têm um negócio de móveis usados.",
+  "n": "'Tocar' = run/manage, informal."
+ },
+ {
+  "id": "ENG_CHUNK_0739",
+  "t": "ganhar a vida",
+  "ex": "Ele ganha a vida consertando bicicletas antigas."
+ },
+ {
+  "id": "ENG_CHUNK_0740",
+  "t": "estar alinhado / falar a mesma língua",
+  "ex": "Antes de começar, vamos ver se estamos todos alinhados."
+ },
+ {
+  "id": "ENG_CHUNK_0741",
+  "t": "fazer as coisas nas coxas / economizar onde não devia",
+  "ex": "Fizeram a reforma nas coxas, e agora o telhado está vazando.",
+  "n": "'Nas coxas' is informal Brazilian; neutral: 'fazer de qualquer jeito'."
+ },
+ {
+  "id": "ENG_CHUNK_0742",
+  "t": "conhecer [substantivo] / estar familiarizado com [substantivo]",
+  "ex": "Você conhece esta parte da cidade?",
+  "n": "'Conhecer' is the natural verb; 'familiarizado' is formal."
+ },
+ {
+  "id": "ENG_CHUNK_0743",
+  "t": "estar ciente de [substantivo] / saber de [substantivo]",
+  "ex": "Desculpa, eu não sabia da taxa extra."
+ },
+ {
+  "id": "ENG_CHUNK_0744",
+  "t": "uma agenda apertada / uma agenda cheia",
+  "ex": "Desculpa, estou com a agenda apertada hoje."
+ },
+ {
+  "id": "ENG_CHUNK_0745",
+  "t": "em cima da hora / de última hora",
+  "ex": "Obrigado por ter vindo em cima da hora."
+ },
+ {
+  "id": "ENG_CHUNK_0746",
+  "t": "arranjar tempo para [substantivo]",
+  "ex": "Às vezes você tem que arranjar tempo para você mesmo."
+ },
+ {
+  "id": "ENG_CHUNK_0747",
+  "t": "perder a noção do tempo",
+  "ex": "Desculpa o atraso, perdi totalmente a noção do tempo."
+ },
+ {
+  "id": "ENG_CHUNK_0748",
+  "t": "matar o tempo / fazer hora",
+  "ex": "A gente fez hora no aeroporto andando pelas lojas.",
+  "n": "'Fazer hora' is very Brazilian; 'matar o tempo' also works."
+ },
+ {
+  "id": "ENG_CHUNK_0749",
+  "t": "ver na hora / ir vendo",
+  "ex": "Não vamos planejar demais, a gente vai vendo.",
+  "n": "'A gente vê na hora' / 'vamos improvisando'."
+ },
+ {
+  "id": "ENG_CHUNK_0750",
+  "t": "fazer companhia para [pessoa]",
+  "ex": "Eu fico e te faço companhia até o ônibus chegar."
+ },
+ {
+  "id": "ENG_CHUNK_0751",
+  "t": "estar com o orçamento apertado / estar economizando",
+  "ex": "Estamos com o orçamento apertado este mês, então vamos comer em casa."
+ },
+ {
+  "id": "ENG_CHUNK_0752",
+  "t": "custar uma fortuna / custar os olhos da cara",
+  "ex": "Consertar o carro vai custar os olhos da cara."
+ },
+ {
+  "id": "ENG_CHUNK_0753",
+  "t": "pagar as contas / fechar o mês",
+  "ex": "Os dois têm dois empregos só para conseguir pagar as contas.",
+  "n": "'Fechar o mês' / 'chegar ao fim do mês' are common too."
+ },
+ {
+  "id": "ENG_CHUNK_0754",
+  "t": "quitar [substantivo]",
+  "ex": "Finalmente quitei meu financiamento estudantil!"
+ },
+ {
+  "id": "ENG_CHUNK_0755",
+  "t": "estar endividado / estar devendo",
+  "ex": "Não quero ficar endividado o resto da vida."
+ },
+ {
+  "id": "ENG_CHUNK_0756",
+  "t": "diminuir [substantivo] / cortar [substantivo]",
+  "ex": "Estou tentando diminuir o açúcar."
+ },
+ {
+  "id": "ENG_CHUNK_0757",
+  "t": "pesquisar preço / comparar preços",
+  "ex": "Não aceita a primeira oferta, pesquisa preço um pouco."
+ },
+ {
+  "id": "ENG_CHUNK_0758",
+  "t": "estar ficando com [substantivo] / estar pegando [substantivo]",
+  "ex": "Acho que estou ficando gripado.",
+  "n": "Often expressed with an adjective: 'ficando resfriado/gripado'."
+ },
+ {
+  "id": "ENG_CHUNK_0759",
+  "t": "não estar muito bem / estar meio indisposto",
+  "ex": "Estou meio indisposto, então vou ficar em casa."
+ },
+ {
+  "id": "ENG_CHUNK_0760",
+  "t": "engordar / ganhar peso",
+  "ex": "Engordei desde que parei de ir à academia.",
+  "n": "One verb 'engordar' is the default; 'ganhar peso' is more clinical."
+ },
+ {
+  "id": "ENG_CHUNK_0761",
+  "t": "vomitar / botar para fora",
+  "ex": "O bebê vomitou na minha camisa inteira."
+ },
+ {
+  "id": "ENG_CHUNK_0762",
+  "t": "desmaiar",
+  "ex": "Estava tão quente que um cara na fila desmaiou."
+ },
+ {
+  "id": "ENG_CHUNK_0763",
+  "t": "estar de ressaca",
+  "ex": "Estou de ressaca, então fala baixo, por favor."
+ },
+ {
+  "id": "ENG_CHUNK_0764",
+  "t": "superar [substantivo]",
+  "ex": "Levei meses para superar o término."
+ },
+ {
+  "id": "ENG_CHUNK_0765",
+  "t": "aceitar [substantivo] / conformar-se com [substantivo]",
+  "ex": "Ele ainda está tentando aceitar que perdeu o emprego."
+ },
+ {
+  "id": "ENG_CHUNK_0766",
+  "t": "Vamos falar de outra coisa / Vamos mudar de assunto",
+  "ex": "Ai, trabalho de novo? Vamos mudar de assunto."
+ },
+ {
+  "id": "ENG_CHUNK_0767",
+  "t": "Chega de falar de mim",
+  "ex": "Chega de falar de mim. Como está o trabalho novo?"
+ },
+ {
+  "id": "ENG_CHUNK_0768",
+  "t": "É basicamente isso / Foi isso",
+  "ex": "A gente foi ao museu, jantou, e foi basicamente isso."
+ },
+ {
+  "id": "ENG_CHUNK_0769",
+  "t": "Vamos em frente / Vamos para o próximo",
+  "ex": "Bom, já falamos do orçamento, então vamos para o próximo ponto."
+ },
+ {
+  "id": "ENG_CHUNK_0770",
+  "t": "Se você diz... / Se você está dizendo...",
+  "ex": "Totalmente seguro? Bom, se você está dizendo..."
+ },
+ {
+  "id": "ENG_CHUNK_0771",
+  "t": "Quem sabe?",
+  "ex": "Talvez a gente se mude para fora um dia. Quem sabe?"
+ },
+ {
+  "id": "ENG_CHUNK_0772",
+  "t": "Jura? / Sério? / Não brinca!",
+  "ex": "Você conseguiu o emprego? Não brinca!",
+  "n": "'Jura?' is the everyday Brazilian back-channel."
+ },
+ {
+  "id": "ENG_CHUNK_0773",
+  "t": "Pensando bem / Agora que você falou",
+  "ex": "Pensando bem, não vejo o Miguel há semanas."
+ },
+ {
+  "id": "ENG_CHUNK_0774",
+  "t": "Do meu ponto de vista / A meu ver",
+  "ex": "A meu ver, não temos muita escolha."
+ },
+ {
+  "id": "ENG_CHUNK_0775",
+  "t": "Me corrija se eu estiver errado/a",
+  "ex": "Me corrija se eu estiver errado, mas a gente já não pagou isso?"
+ },
+ {
+  "id": "ENG_CHUNK_0776",
+  "t": "Só para constar / Para deixar claro",
+  "ex": "Só para constar, eu nunca disse que ia dirigir."
+ },
+ {
+  "id": "ENG_CHUNK_0777",
+  "t": "Não necessariamente",
+  "ex": "Vinho caro é sempre melhor, né? Não necessariamente."
+ },
+ {
+  "id": "ENG_CHUNK_0778",
+  "t": "ou sei lá / ou qualquer coisa",
+  "ex": "A gente podia pedir pizza, taco, sei lá."
+ },
+ {
+  "id": "ENG_CHUNK_0779",
+  "t": "Só estou pensando alto",
+  "ex": "E se a gente mudasse o sofá de lugar? Só estou pensando alto."
+ },
+ {
+  "id": "ENG_CHUNK_0780",
+  "t": "Assim de cabeça / De cabeça",
+  "ex": "Assim de cabeça, eu diria umas cinquenta pessoas."
+ },
+ {
+  "id": "ENG_CHUNK_0781",
+  "t": "Não posso reclamar / Tudo tranquilo",
+  "ex": "Como vão as coisas? Ah, não posso reclamar."
+ },
+ {
+  "id": "ENG_CHUNK_0782",
+  "t": "Me mantém informado/a / Depois me conta",
+  "ex": "Boa sorte na prova, depois me conta!"
+ },
+ {
+  "id": "ENG_CHUNK_0783",
+  "t": "Vamos parar por hoje / Por hoje é só",
+  "ex": "Já são quase sete. Vamos parar por hoje."
+ },
+ {
+  "id": "ENG_CHUNK_0784",
+  "t": "Não foi nada / Era o mínimo",
+  "ex": "Obrigado pelas flores! Ah, era o mínimo que eu podia fazer."
+ },
+ {
+  "id": "ENG_CHUNK_0785",
+  "t": "Bom, vou te deixar ir / Não vou mais te segurar",
+  "ex": "Enfim, não vou mais te segurar. A gente se fala!"
+ },
+ {
+  "id": "ENG_CHUNK_0786",
+  "t": "Não some! / Aparece!",
+  "ex": "Foi ótimo te ver. Não some, hein!"
+ },
+ {
+  "id": "ENG_CHUNK_0787",
+  "t": "Só pode ser brincadeira / Você está de brincadeira",
+  "ex": "O voo foi cancelado de novo? Só pode ser brincadeira."
+ },
+ {
+  "id": "ENG_CHUNK_0788",
+  "t": "Ah, faça-me o favor / Me poupe",
+  "ex": "Você quer que eu trabalhe no sábado também? Ah, faça-me o favor."
+ },
+ {
+  "id": "ENG_CHUNK_0789",
+  "t": "Foi a gota d'água",
+  "ex": "Ele se atrasou de novo? Foi a gota d'água."
+ },
+ {
+  "id": "ENG_CHUNK_0790",
+  "t": "Que azar o meu / Típico",
+  "ex": "Começou a chover assim que eu saí. Típico!",
+  "n": "Brazilians also say 'É muita urucubaca' jokingly."
+ },
+ {
+  "id": "ENG_CHUNK_0791",
+  "t": "Como sempre",
+  "ex": "Como sempre, o ônibus atrasou."
+ },
+ {
+  "id": "ENG_CHUNK_0792",
+  "t": "Por outro lado / Mas também",
+  "ex": "O hotel é caro. Mas também, fica bem na praia."
+ },
+ {
+  "id": "ENG_CHUNK_0793",
+  "t": "Mesmo assim / Ainda assim",
+  "ex": "É só um corte pequeno. Mesmo assim, você devia limpar."
+ },
+ {
+  "id": "ENG_CHUNK_0794",
+  "t": "Sem falar que / Sem contar que",
+  "ex": "O apartamento é enorme, sem falar que fica pertinho do trabalho."
+ },
+ {
+  "id": "ENG_CHUNK_0795",
+  "t": "Dito e feito / Não deu outra",
+  "ex": "Eu disse que ia chover e, dito e feito, caiu um temporal."
+ },
+ {
+  "id": "ENG_CHUNK_0796",
+  "t": "Mais um motivo",
+  "ex": "É seu aniversário? Mais um motivo para comemorar!"
+ },
+ {
+  "id": "ENG_CHUNK_0797",
+  "t": "Pensando bem / Melhor",
+  "ex": "Vou querer a salada. Pensando bem, me vê o hambúrguer."
+ },
+ {
+  "id": "ENG_CHUNK_0798",
+  "t": "Desde que",
+  "ex": "Desde que me mudei para cá, vou a pé para o trabalho.",
+  "n": "Careful: 'desde que' + subjunctive means 'provided that'."
+ },
+ {
+  "id": "ENG_CHUNK_0799",
+  "t": "E não é só isso / Além disso",
+  "ex": "O hotel estava sujo. E não é só isso: os funcionários eram grossos."
+ },
+ {
+  "id": "ENG_CHUNK_0800",
+  "t": "Nessa hora / Foi aí que",
+  "ex": "Foi aí que eu percebi que tinha deixado a carteira em casa."
+ }
+]

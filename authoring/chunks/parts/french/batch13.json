@@ -1,0 +1,565 @@
+[
+{
+"id": "ENG_CHUNK_1201",
+"t": "Salut !",
+"ex": "Salut ! Ta journée se passe bien ?",
+"n": "Informal only; to strangers or in shops say Bonjour."
+},
+{
+"id": "ENG_CHUNK_1202",
+"t": "Bonjour",
+"ex": "Bonjour ! Tu as bien dormi ?",
+"n": "Bonjour covers the whole day until evening; there is no separate 'good morning'."
+},
+{
+"id": "ENG_CHUNK_1203",
+"t": "Bonjour",
+"ex": "Bonjour, je peux vous aider ?",
+"n": "Bon après-midi is only said when leaving (= have a nice afternoon), never as a greeting."
+},
+{
+"id": "ENG_CHUNK_1204",
+"t": "Bonne nuit",
+"ex": "Bonne nuit ! Dors bien.",
+"n": "Only before going to bed; to say goodbye in the evening use Bonne soirée."
+},
+{
+"id": "ENG_CHUNK_1205",
+"t": "Comment ça va ? / Comment allez-vous ?",
+"ex": "Salut Sam, comment ça va ?",
+"n": "Ça va ? is the everyday form; Comment allez-vous ? is formal."
+},
+{
+"id": "ENG_CHUNK_1206",
+"t": "Ça va bien, merci. Et toi ? / Et vous ?",
+"ex": "« Comment ça va ? » « Ça va bien, merci. Et toi ? »"
+},
+{
+"id": "ENG_CHUNK_1207",
+"t": "Pas mal, merci",
+"ex": "« Ça va ? » « Pas mal, merci. »"
+},
+{
+"id": "ENG_CHUNK_1208",
+"t": "Enchanté(e)",
+"ex": "Salut, moi c'est Anna. Enchantée.",
+"n": "Add -e in writing if you are a woman; pronunciation is the same."
+},
+{
+"id": "ENG_CHUNK_1209",
+"t": "Moi aussi / Pareillement",
+"ex": "« Enchanté. » « Moi aussi. »",
+"n": "For returned wishes (Bonne journée !) say Vous aussi / Toi aussi or À vous aussi."
+},
+{
+"id": "ENG_CHUNK_1210",
+"t": "Ravi(e) de faire votre connaissance",
+"ex": "Bonjour, je suis David Lee. Ravi de faire votre connaissance."
+},
+{
+"id": "ENG_CHUNK_1211",
+"t": "Ça va ? / Ça roule ?",
+"ex": "Salut Tom, ça va ?",
+"n": "Ça roule ? is slangy; Quoi de neuf ? = what's new."
+},
+{
+"id": "ENG_CHUNK_1212",
+"t": "Ça fait plaisir de te voir / Content(e) de te voir",
+"ex": "Salut Maria ! Ça fait plaisir de te voir."
+},
+{
+"id": "ENG_CHUNK_1213",
+"t": "Au revoir",
+"ex": "Au revoir, et merci pour tout."
+},
+{
+"id": "ENG_CHUNK_1214",
+"t": "À plus tard / À plus !",
+"ex": "Bon, à plus tard !",
+"n": "À plus (tard) is informal; À tout à l'heure = see you later today."
+},
+{
+"id": "ENG_CHUNK_1215",
+"t": "Bonne journée",
+"ex": "Merci. Bonne journée !",
+"n": "In the evening: Bonne soirée."
+},
+{
+"id": "ENG_CHUNK_1216",
+"t": "Merci",
+"ex": "Merci pour le café."
+},
+{
+"id": "ENG_CHUNK_1217",
+"t": "Merci beaucoup / Merci mille fois",
+"ex": "Merci beaucoup, tu es vraiment gentil.",
+"n": "Never 'Merci très beaucoup'; beaucoup takes no intensifier."
+},
+{
+"id": "ENG_CHUNK_1218",
+"t": "De rien / Je vous en prie",
+"ex": "« Merci ! » « De rien. »",
+"n": "De rien is everyday; Je vous en prie (Je t'en prie) is more polite."
+},
+{
+"id": "ENG_CHUNK_1219",
+"t": "Pas de problème / Pas de souci",
+"ex": "« Merci d'avoir attendu. » « Pas de souci. »",
+"n": "Pas de souci is extremely common in speech."
+},
+{
+"id": "ENG_CHUNK_1220",
+"t": "Oui, s'il vous plaît / Oui, s'il te plaît",
+"ex": "« Vous voulez du thé ? » « Oui, s'il vous plaît. »",
+"n": "Also Volontiers ! (gladly), very natural when accepting food or drink."
+},
+{
+"id": "ENG_CHUNK_1221",
+"t": "Non merci",
+"ex": "« Tu veux encore du gâteau ? » « Non merci. »",
+"n": "Merci alone, said while declining with a gesture, can also mean no thanks."
+},
+{
+"id": "ENG_CHUNK_1222",
+"t": "Excusez-moi / Pardon",
+"ex": "Excusez-moi, c'est bien le train pour Lyon ?",
+"n": "Pardon is enough to squeeze past someone; Excusez-moi to get attention."
+},
+{
+"id": "ENG_CHUNK_1223",
+"t": "Je suis désolé(e) / Pardon",
+"ex": "Je suis désolé, c'était ma faute."
+},
+{
+"id": "ENG_CHUNK_1224",
+"t": "Ce n'est pas grave",
+"ex": "« Pardon, j'ai cassé ta tasse. » « C'est pas grave. »",
+"n": "Spoken drops ne: C'est pas grave. Literally 'it's not serious'."
+},
+{
+"id": "ENG_CHUNK_1225",
+"t": "Désolé(e) pour le retard",
+"ex": "Désolé pour le retard, le bus n'est pas venu."
+},
+{
+"id": "ENG_CHUNK_1226",
+"t": "Pardon, je ne comprends pas",
+"ex": "Pardon, je ne comprends pas. Vous pouvez répéter ?"
+},
+{
+"id": "ENG_CHUNK_1227",
+"t": "Vous pourriez parler plus lentement, s'il vous plaît ?",
+"ex": "Vous pourriez parler plus lentement, s'il vous plaît ? Mon français n'est pas très bon."
+},
+{
+"id": "ENG_CHUNK_1228",
+"t": "Vous pouvez répéter, s'il vous plaît ?",
+"ex": "Pardon, vous pouvez répéter, s'il vous plaît ?"
+},
+{
+"id": "ENG_CHUNK_1229",
+"t": "Vous pouvez épeler, s'il vous plaît ?",
+"ex": "Votre nom de famille ? Vous pouvez l'épeler, s'il vous plaît ?"
+},
+{
+"id": "ENG_CHUNK_1230",
+"t": "Je ne parle pas bien français / Je parle un peu français",
+"ex": "Désolé, je ne parle pas bien français.",
+"n": "Language names take no article after parler: parler français."
+},
+{
+"id": "ENG_CHUNK_1231",
+"t": "Comment tu t'appelles ? / Comment vous appelez-vous ?",
+"ex": "Salut, moi c'est Tom. Comment tu t'appelles ?",
+"n": "Literally 'how do you call yourself'; Quel est ton nom ? sounds stiff."
+},
+{
+"id": "ENG_CHUNK_1232",
+"t": "Tu viens d'où ? / D'où venez-vous ?",
+"ex": "Tu viens d'où ? Ton accent est joli."
+},
+{
+"id": "ENG_CHUNK_1233",
+"t": "Tu as quel âge ? / Quel âge avez-vous ?",
+"ex": "Tu as quel âge, Emma ?",
+"n": "Age uses avoir: J'ai vingt ans, never je suis."
+},
+{
+"id": "ENG_CHUNK_1234",
+"t": "Tu habites où ? / Où habitez-vous ?",
+"ex": "Tu habites où ? Près d'ici ?"
+},
+{
+"id": "ENG_CHUNK_1235",
+"t": "Qu'est-ce que tu fais dans la vie ?",
+"ex": "Qu'est-ce que tu fais dans la vie ? Tu es étudiant ?",
+"n": "Tu fais quoi ? alone is ambiguous (= what are you doing now); add dans la vie."
+},
+{
+"id": "ENG_CHUNK_1236",
+"t": "Tu as des frères et sœurs ?",
+"ex": "Tu as des frères et sœurs ?",
+"n": "Answer negatively with de: Je n'ai pas de frères."
+},
+{
+"id": "ENG_CHUNK_1237",
+"t": "Tu habites ici depuis combien de temps ? / Ça fait combien de temps que tu habites ici ?",
+"ex": "Tu habites ici depuis combien de temps ?",
+"n": "Present tense + depuis, not passé composé: the living is ongoing."
+},
+{
+"id": "ENG_CHUNK_1238",
+"t": "Et toi ? / Et vous ?",
+"ex": "Je suis italien. Et toi ?"
+},
+{
+"id": "ENG_CHUNK_1239",
+"t": "Quelle heure est-il ? / Il est quelle heure ?",
+"ex": "Excusez-moi, quelle heure est-il ?"
+},
+{
+"id": "ENG_CHUNK_1240",
+"t": "C'est combien ? / Ça coûte combien ?",
+"ex": "Il est joli, ce sac. C'est combien ?"
+},
+{
+"id": "ENG_CHUNK_1241",
+"t": "Je peux vous aider ? / Vous désirez ?",
+"ex": "Bonjour, je peux vous aider ?",
+"n": "Vous désirez ? is the classic shop and café opener."
+},
+{
+"id": "ENG_CHUNK_1242",
+"t": "Ce sera tout, merci / C'est tout, merci",
+"ex": "« Et avec ceci ? » « Non, ce sera tout, merci. »",
+"n": "Staff ask Et avec ceci ? or Ce sera tout ? (anything else?)."
+},
+{
+"id": "ENG_CHUNK_1243",
+"t": "Je pourrais avoir la carte, s'il vous plaît ?",
+"ex": "Bonjour, je pourrais avoir la carte, s'il vous plaît ?",
+"n": "Le menu is usually a set-price meal; the list of dishes is la carte."
+},
+{
+"id": "ENG_CHUNK_1244",
+"t": "Qu'est-ce que vous me conseillez ?",
+"ex": "C'est la première fois que je viens. Qu'est-ce que vous me conseillez ?"
+},
+{
+"id": "ENG_CHUNK_1245",
+"t": "Je suis végétarien(ne)",
+"ex": "Je suis végétarienne. Il y a de la viande dans cette soupe ?",
+"n": "No article: je suis végétarien, like professions."
+},
+{
+"id": "ENG_CHUNK_1246",
+"t": "J'ai bien mangé / Je n'ai plus faim",
+"ex": "Non merci, ça ira. J'ai bien mangé.",
+"n": "Avoid Je suis plein(e): it can mean drunk or (for animals) pregnant."
+},
+{
+"id": "ENG_CHUNK_1247",
+"t": "Où sont les toilettes ?",
+"ex": "Excusez-moi, où sont les toilettes ?",
+"n": "Always plural: les toilettes. La salle de bain is where you wash."
+},
+{
+"id": "ENG_CHUNK_1248",
+"t": "Allez tout droit / Va tout droit",
+"ex": "Allez tout droit, et la banque est sur la gauche."
+},
+{
+"id": "ENG_CHUNK_1249",
+"t": "Je dois descendre où ? / À quel arrêt je descends ?",
+"ex": "Je voudrais aller au zoo. Je dois descendre où ?",
+"n": "descendre = get off; monter = get on."
+},
+{
+"id": "ENG_CHUNK_1250",
+"t": "C'est quoi, le code wifi ? / Quel est le mot de passe du wifi ?",
+"ex": "Excusez-moi, c'est quoi le code wifi ?",
+"n": "Wifi is pronounced 'wi-fi' and is masculine: le wifi."
+},
+{
+"id": "ENG_CHUNK_1251",
+"t": "Au secours !",
+"ex": "Au secours ! Aidez-moi !",
+"n": "À l'aide ! also works."
+},
+{
+"id": "ENG_CHUNK_1252",
+"t": "Vous pouvez m'aider ? / Tu peux m'aider ?",
+"ex": "Excusez-moi, vous pouvez m'aider ? Je suis perdu."
+},
+{
+"id": "ENG_CHUNK_1253",
+"t": "J'ai besoin d'un médecin",
+"ex": "J'ai besoin d'un médecin. Mon fils est très malade.",
+"n": "Emergency number in France: 15 (SAMU) or 112."
+},
+{
+"id": "ENG_CHUNK_1254",
+"t": "J'ai mal ici",
+"ex": "J'ai mal ici, au ventre.",
+"n": "Pain uses avoir mal à: j'ai mal à la tête, au dos."
+},
+{
+"id": "ENG_CHUNK_1255",
+"t": "Je ne me sens pas bien",
+"ex": "Je ne me sens pas bien. Je rentre chez moi.",
+"n": "Spoken: Je me sens pas bien. Also Je suis pas bien."
+},
+{
+"id": "ENG_CHUNK_1256",
+"t": "Appelez une ambulance ! / Appelez le SAMU !",
+"ex": "Appelez une ambulance ! Il ne respire plus.",
+"n": "Appelez les secours ! is also common."
+},
+{
+"id": "ENG_CHUNK_1257",
+"t": "Je suis perdu(e) / Je me suis perdu(e)",
+"ex": "Excusez-moi, je suis perdue. Où est la gare ?"
+},
+{
+"id": "ENG_CHUNK_1258",
+"t": "Attention !",
+"ex": "Attention ! Une voiture !",
+"n": "Fais gaffe ! is the slangy version."
+},
+{
+"id": "ENG_CHUNK_1259",
+"t": "Qu'est-ce qui ne va pas ? / Qu'est-ce qu'il y a ?",
+"ex": "Tu as l'air triste. Qu'est-ce qui ne va pas ?"
+},
+{
+"id": "ENG_CHUNK_1260",
+"t": "Ça va ? / Tu vas bien ?",
+"ex": "Ça va ? Tu es tout pâle.",
+"n": "Same words as the greeting; tone and context mark concern."
+},
+{
+"id": "ENG_CHUNK_1261",
+"t": "Joyeux anniversaire ! / Bon anniversaire !",
+"ex": "Joyeux anniversaire ! Voilà un cadeau pour toi.",
+"n": "anniversaire = birthday; a wedding anniversary is also anniversaire de mariage."
+},
+{
+"id": "ENG_CHUNK_1262",
+"t": "Bravo ! / Bien joué !",
+"ex": "Tu as réussi l'examen ? Bravo !",
+"n": "Bien joué ! is more casual."
+},
+{
+"id": "ENG_CHUNK_1263",
+"t": "Il pleut",
+"ex": "Prends un parapluie. Il pleut.",
+"n": "Weather verbs take impersonal il: il pleut, il neige, il fait beau."
+},
+{
+"id": "ENG_CHUNK_1264",
+"t": "Il fait beau aujourd'hui, hein ? / Il fait beau, non ?",
+"ex": "Il fait beau aujourd'hui, hein ?",
+"n": "French tags are invariable: hein ?, non ?, n'est-ce pas ? (formal)."
+},
+{
+"id": "ENG_CHUNK_1265",
+"t": "C'est quoi, ton numéro ? / Quel est ton numéro de téléphone ?",
+"ex": "C'est quoi, ton numéro ? Je t'envoie un texto."
+},
+{
+"id": "ENG_CHUNK_1266",
+"t": "Je ne t'entends pas / Je vous entends mal",
+"ex": "Désolé, je ne t'entends pas. Il y a beaucoup de bruit ici.",
+"n": "Entendre = hear; comprendre = understand."
+},
+{
+"id": "ENG_CHUNK_1267",
+"t": "Désolé(e), j'ai raté ton appel",
+"ex": "Salut, désolé, j'ai raté ton appel. Qu'est-ce qui se passe ?",
+"n": "Also J'ai loupé ton appel (informal)."
+},
+{
+"id": "ENG_CHUNK_1268",
+"t": "Je peux vous poser une question ? / Je peux te poser une question ?",
+"ex": "Excusez-moi, je peux vous poser une question ?",
+"n": "poser une question, not 'demander une question'."
+},
+{
+"id": "ENG_CHUNK_1269",
+"t": "On se retrouve à quelle heure ?",
+"ex": "D'accord, dîner vendredi. On se retrouve à quelle heure ?",
+"n": "on + se retrouver = we meet up; the everyday replacement for nous."
+},
+{
+"id": "ENG_CHUNK_1270",
+"t": "Je n'ai presque plus de batterie",
+"ex": "Je dois y aller, je n'ai presque plus de batterie.",
+"n": "Also Mon téléphone va bientôt s'éteindre / Je vais plus avoir de batterie."
+},
+{
+"id": "ENG_CHUNK_1271",
+"t": "Euh, voyons voir / Euh, attends",
+"ex": "Euh, voyons voir... je crois que c'est mardi.",
+"n": "Euh is the standard French hesitation sound."
+},
+{
+"id": "ENG_CHUNK_1272",
+"t": "Un instant / Un moment",
+"ex": "Un instant, je vais chercher mon stylo."
+},
+{
+"id": "ENG_CHUNK_1273",
+"t": "Attends une minute / Attends !",
+"ex": "Attends une minute, j'arrive !",
+"n": "Attendez with vous."
+},
+{
+"id": "ENG_CHUNK_1274",
+"t": "Attends / Ne quittez pas",
+"ex": "Attends, je vais vérifier.",
+"n": "On the phone, formal: Ne quittez pas (= hold the line)."
+},
+{
+"id": "ENG_CHUNK_1275",
+"t": "Pardon ? / Comment ?",
+"ex": "Pardon ? Je ne vous ai pas entendu.",
+"n": "Quoi ? is informal and can sound rude."
+},
+{
+"id": "ENG_CHUNK_1276",
+"t": "Pardon ? / Quoi ?",
+"ex": "Pardon ? Tu peux répéter ?",
+"n": "Quoi ? is fine with friends only."
+},
+{
+"id": "ENG_CHUNK_1277",
+"t": "C'est quoi, ça ? / Qu'est-ce que c'est ?",
+"ex": "C'est quoi, ça ? Je ne connais pas ce mot."
+},
+{
+"id": "ENG_CHUNK_1278",
+"t": "D'accord / OK",
+"ex": "D'accord, on y va.",
+"n": "Spoken shortening: D'ac."
+},
+{
+"id": "ENG_CHUNK_1279",
+"t": "Bien sûr",
+"ex": "« Je peux m'asseoir ici ? » « Bien sûr. »"
+},
+{
+"id": "ENG_CHUNK_1280",
+"t": "Bien sûr / Pas de souci",
+"ex": "« Tu peux me passer le sel ? » « Bien sûr. »",
+"n": "Tiens ! (here you go) often replaces the yes when handing something over."
+},
+{
+"id": "ENG_CHUNK_1281",
+"t": "Moi aussi",
+"ex": "« J'adore cette chanson. » « Moi aussi ! »"
+},
+{
+"id": "ENG_CHUNK_1282",
+"t": "Moi non plus",
+"ex": "« Je n'aime pas le café. » « Moi non plus. »",
+"n": "Never moi aussi after a negative statement."
+},
+{
+"id": "ENG_CHUNK_1283",
+"t": "D'accord / Bon",
+"ex": "Bon, donc le bus part à neuf heures.",
+"n": "Bon and alors mark 'right, so...' when moving on."
+},
+{
+"id": "ENG_CHUNK_1284",
+"t": "Je ne sais pas",
+"ex": "Désolé, je ne sais pas.",
+"n": "Spoken: Je sais pas, often slurred to 'chais pas'."
+},
+{
+"id": "ENG_CHUNK_1285",
+"t": "Peut-être",
+"ex": "« Tu viens ce soir ? » « Peut-être. »"
+},
+{
+"id": "ENG_CHUNK_1286",
+"t": "Je ne suis pas sûr(e)",
+"ex": "« C'est ouvert le dimanche ? » « Je ne suis pas sûr. »",
+"n": "Spoken: Je suis pas sûr."
+},
+{
+"id": "ENG_CHUNK_1287",
+"t": "Bonne idée",
+"ex": "« On prend un taxi ? » « Bonne idée. »"
+},
+{
+"id": "ENG_CHUNK_1288",
+"t": "C'est génial ! / Super !",
+"ex": "Tu as eu le poste ? C'est génial !"
+},
+{
+"id": "ENG_CHUNK_1289",
+"t": "Oh non !",
+"ex": "Oh non ! J'ai oublié mes clés.",
+"n": "Mince ! is a common mild alternative."
+},
+{
+"id": "ENG_CHUNK_1290",
+"t": "Ben... / Eh bien...",
+"ex": "Ben... je ne suis pas sûr.",
+"n": "Ben is the spoken form of bien; Eh bien is more careful."
+},
+{
+"id": "ENG_CHUNK_1291",
+"t": "En fait",
+"ex": "En fait, je suis canadien, pas américain.",
+"n": "Actuellement is a false friend: it means 'currently'."
+},
+{
+"id": "ENG_CHUNK_1292",
+"t": "Ça marche / Ça me va",
+"ex": "« Pizza à sept heures ? » « Ça marche. »"
+},
+{
+"id": "ENG_CHUNK_1293",
+"t": "Cool / Super",
+"ex": "« On se voit là-bas. » « Cool. »"
+},
+{
+"id": "ENG_CHUNK_1294",
+"t": "Waouh ! / Oh là là !",
+"ex": "Waouh ! Ta maison est magnifique.",
+"n": "Oh là là expresses surprise, admiration or dismay, depending on tone."
+},
+{
+"id": "ENG_CHUNK_1295",
+"t": "Ça te va ? / Ça vous va ?",
+"ex": "Je viens à huit heures. Ça te va ?"
+},
+{
+"id": "ENG_CHUNK_1296",
+"t": "Et puis / Et après",
+"ex": "Je me suis levé, et puis j'ai pris le petit-déjeuner."
+},
+{
+"id": "ENG_CHUNK_1297",
+"t": "Mais",
+"ex": "J'aime le thé, mais je n'aime pas le café."
+},
+{
+"id": "ENG_CHUNK_1298",
+"t": "Parce que",
+"ex": "Je suis fatigué parce que j'ai travaillé tard."
+},
+{
+"id": "ENG_CHUNK_1299",
+"t": "Aussi",
+"ex": "Je parle anglais. Je parle aussi un peu allemand.",
+"n": "aussi goes after the verb, never at the start of the sentence (there it means 'so')."
+},
+{
+"id": "ENG_CHUNK_1300",
+"t": "Ensuite / Puis",
+"ex": "D'abord je prends une douche, ensuite je m'habille."
+}
+]

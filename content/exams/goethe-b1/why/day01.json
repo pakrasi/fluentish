@@ -1,0 +1,642 @@
+{
+ "L1-1": {
+  "evidence": "Ich hatte fast zwei Monate nach einer neuen Stelle gesucht, und nach drei Bewerbungsgesprächen hat es endlich geklappt.",
+  "evidence_en": "I had been looking for a new job for almost two months, and after three interviews it finally worked out.",
+  "why": "Zwei Monate und drei Gespräche sind nicht schnell. „Endlich“ zeigt, dass es lange gedauert hat. Also falsch.",
+  "why_en": "Two months and three interviews is not quick. 'Endlich' (finally) shows it took a long time, so the statement is false.",
+  "trap": "„Hat es endlich geklappt“ klingt positiv, aber es heißt nicht „schnell“.",
+  "trap_en": "'It finally worked out' sounds positive, but it doesn't mean 'quickly'.",
+  "question_en": "The author found a new job quickly."
+ },
+ "L1-2": {
+  "evidence": "Um acht Uhr stand ich vor dem Büro, aber die Tür war noch geschlossen. Erst um halb neun kam meine neue Chefin",
+  "evidence_en": "At eight I was standing outside the office, but the door was still locked. My new boss only arrived at half past eight.",
+  "why": "Die Autorin war um acht da, die Chefin erst um halb neun. Die Chefin kam also später. Richtig.",
+  "why_en": "The author was there at eight, the boss only at 8:30, so the boss came later. True.",
+  "trap": "Man denkt vielleicht, die Chefin ist immer zuerst da – aber „erst um halb neun“ heißt: später als die Autorin.",
+  "trap_en": "You might assume the boss arrives first, but 'erst um halb neun' means later than the author.",
+  "question_en": "The boss came into the office later than the author."
+ },
+ "L1-3": {
+  "evidence": "die meisten Kollegen erst um neun anfangen, weil viele Kinder haben und sie morgens zur Schule bringen",
+  "evidence_en": "most colleagues only start at nine, because many have children and take them to school in the morning.",
+  "why": "Der Text sagt genau das: Sie beginnen um neun, weil sie Kinder zur Schule bringen. Richtig.",
+  "why_en": "The text says exactly this: they start at nine because they take their children to school. True.",
+  "trap": "„Die meisten“ und „viele“ sind nicht „alle“ – aber die Aussage sagt auch nur „viele Kollegen“, also passt es.",
+  "trap_en": "'Most' and 'many' are not 'all', but the statement only says 'many colleagues', so it still fits.",
+  "question_en": "Many colleagues only start at nine o'clock because they have children."
+ },
+ "L1-4": {
+  "evidence": "Die Firma bezahlt die Hälfte, den Rest zahlen die Mitarbeiter selbst.",
+  "evidence_en": "The company pays half; the employees pay the rest themselves.",
+  "why": "Die Mitarbeiter zahlen die Hälfte selbst. Das Essen ist also nicht kostenlos. Falsch.",
+  "why_en": "The employees pay half themselves, so the lunch is not free. False.",
+  "trap": "„Kostenlos“ steht im Text, aber bei der Kaffeemaschine, nicht beim Mittagessen. Und „man muss sich nichts kaufen“ heißt nicht „gratis“.",
+  "trap_en": "'Kostenlos' does appear in the text, but for the coffee machine, not lunch. And 'you don't have to buy anything' doesn't mean it's free.",
+  "question_en": "Lunch is free for the employees."
+ },
+ "L1-5": {
+  "evidence": "Ich habe vor allem zugehört, weil ich das Projekt noch nicht kannte.",
+  "evidence_en": "I mainly listened, because I didn't know the project yet.",
+  "why": "„Vor allem zugehört“ heißt: Sie hat wenig gesprochen. Falsch.",
+  "why_en": "'Mainly listened' means she spoke little. False.",
+  "trap": "Die Chefin hat sie nach ihrer Meinung gefragt – aber das heißt nicht, dass sie viel gesprochen hat.",
+  "trap_en": "The boss asked for her opinion, but that doesn't mean she talked a lot.",
+  "question_en": "The author spoke a lot in the meeting."
+ },
+ "L1-6": {
+  "evidence": "Ich glaube, ich habe die richtige Entscheidung getroffen.",
+  "evidence_en": "I think I made the right decision.",
+  "why": "„Die richtige Entscheidung“ zeigt, dass sie zufrieden ist. Richtig.",
+  "why_en": "'The right decision' shows she is satisfied. True.",
+  "trap": "„Abends war ich müde“ klingt negativ, aber direkt danach steht „aber glücklich“.",
+  "trap_en": "'In the evening I was tired' sounds negative, but it's followed straight away by 'but happy'.",
+  "question_en": "The author is satisfied with her decision."
+ },
+ "L2-1": {
+  "evidence": "Eine Firma aus Hannover, die Software entwickelt, hat das Modell ein Jahr lang ausprobiert.",
+  "evidence_en": "A company from Hanover that develops software tried the model for a year.",
+  "why": "„Das Modell ausprobiert“ = ein Jahr lang nur vier Tage pro Woche gearbeitet. Also b.",
+  "why_en": "'Tried the model' = worked only four days a week for a year. So b.",
+  "trap": "c benutzt „Software entwickelt“ aus dem Text, aber die Firma macht keine Software für die Vier-Tage-Woche. a ist falsch: „das gleiche Gehalt wie vorher“.",
+  "trap_en": "c recycles 'develops software', but the company doesn't make software for the four-day week. a is wrong: 'the same salary as before'.",
+  "question_en": "The company from Hannover …",
+  "options_en": [
+   "has been paying its employees a lower salary for a year.",
+   "worked only four days a week for a year.",
+   "develops software for the four-day week."
+  ]
+ },
+ "L2-2": {
+  "evidence": "Die Angestellten haben in vier Tagen genauso viel geschafft wie früher in fünf.",
+  "evidence_en": "The employees got just as much done in four days as they used to in five.",
+  "why": "„Genauso viel geschafft“ = genauso viel gearbeitet. Das ist Antwort a.",
+  "why_en": "'Got just as much done' = worked just as much. That's answer a.",
+  "trap": "c ist das Gegenteil: „fast niemand hat in diesem Jahr gekündigt“. b ist auch falsch: Sie sprechen jetzt „kürzer“.",
+  "trap_en": "c is the opposite: 'almost nobody quit this year'. b is also wrong: they now talk 'more briefly'.",
+  "question_en": "What did the company find out?",
+  "options_en": [
+   "The employees get as much done in four days as they used to in five.",
+   "The meetings now last longer than before.",
+   "More employees than before have left the company."
+  ]
+ },
+ "L2-3": {
+  "evidence": "„Jede Firma muss selbst herausfinden, was für sie funktioniert.“",
+  "evidence_en": "'Every company has to find out for itself what works for it.'",
+  "why": "„Selbst herausfinden, was funktioniert“ = ihr eigenes Modell finden. Also c.",
+  "why_en": "'Find out for itself what works' = find its own model. So c.",
+  "trap": "a ist die Meinung, vor der die Kritiker warnen – und Kowalski „sieht das ähnlich“ wie die Kritiker. Er ist also gegen a.",
+  "trap_en": "a is exactly what the critics warn against, and Kowalski 'sees it similarly' to the critics, so he rejects a.",
+  "question_en": "Mr Kowalski thinks …",
+  "options_en": [
+   "the four-day week should be introduced in all industries.",
+   "in hospitals the four-day week works especially well.",
+   "every company should find its own model."
+  ]
+ },
+ "L2-4": {
+  "evidence": "Ihre Firma erlaubt es, bis zu sechs Monate im Jahr aus dem Ausland zu arbeiten.",
+  "evidence_en": "Her company allows her to work from abroad for up to six months a year.",
+  "why": "„Bis zu sechs Monate im Jahr“ = einen Teil des Jahres. Also b.",
+  "why_en": "'Up to six months a year' = part of the year. So b.",
+  "trap": "a: Sie ist seit drei Monaten in Portugal, aber sie arbeitet dort, sie macht keinen Urlaub. c: Sie muss nur „zwischen zehn und vier Uhr“ erreichbar sein.",
+  "trap_en": "a: she has been in Portugal for three months, but she's working there, not on holiday. c: she only has to be reachable 'between ten and four'.",
+  "question_en": "Lena Hartmann …",
+  "options_en": [
+   "has been on holiday in Portugal for three months.",
+   "is allowed to work abroad for part of the year.",
+   "has to be reachable for her company all day."
+  ]
+ },
+ "L2-5": {
+  "evidence": "Wenn im Büro etwas Lustiges passiert, erfahre ich das erst Tage später.",
+  "evidence_en": "When something funny happens in the office, I only hear about it days later.",
+  "why": "„Erst Tage später erfahren“ = manche Dinge erst spät erfahren. Also c.",
+  "why_en": "'Only hear about it days later' = learns some things late. So c.",
+  "trap": "a benutzt „Café“ und „Internet“: Das Internet ist in der Wohnung langsam, deshalb arbeitet sie im Café – sie findet also ein Café.",
+  "trap_en": "a recycles 'café' and 'internet': the internet is slow in her flat, so she works in a café – she does find one.",
+  "question_en": "What problem does Lena have?",
+  "options_en": [
+   "She can't find a café with internet.",
+   "Her colleagues don't want to do video conferences.",
+   "She finds out some things from the office only late."
+  ]
+ },
+ "L2-6": {
+  "evidence": "macht klare Regeln, wann ihr erreichbar seid",
+  "evidence_en": "set clear rules about when you can be reached",
+  "why": "„Klare Regeln, wann ihr erreichbar seid“ = feste Zeiten vereinbaren. Also b.",
+  "why_en": "'Clear rules about when you can be reached' = agree on fixed times. So b.",
+  "trap": "a dreht die Aussage um: Sie sagt „Sprecht früh mit eurem Chef“, nicht „nicht zu früh“.",
+  "trap_en": "a flips her advice: she says 'talk to your boss early', not 'not too early'.",
+  "question_en": "What does Lena recommend?",
+  "options_en": [
+   "You shouldn't inform the boss too early.",
+   "You should agree on fixed times when you are reachable.",
+   "You should stay in Germany in winter."
+  ]
+ },
+ "L3-1": {
+  "evidence": "Bäckerei Krüger sucht freundliche Verkäufer/innen nur für das Wochenende",
+  "evidence_en": "Krüger bakery is looking for friendly sales staff for weekends only",
+  "why": "Marta hat nur am Wochenende Zeit, und Anzeige D sucht Leute „nur für das Wochenende“.",
+  "why_en": "Marta only has time at weekends, and ad D is looking for people 'for weekends only'.",
+  "trap": "E (Restaurant) geht bis Sonntag, aber ab Dienstag und in Vollzeit. J ist Montag bis Freitag – genau Martas Problem.",
+  "trap_en": "E (restaurant) includes Sunday but starts Tuesday and is full-time. J is Monday to Friday – exactly when Marta can't work.",
+  "question_en": "Marta wants to earn money at the weekend but has no time during the week."
+ },
+ "L3-2": {
+  "evidence": "sucht Absolventen/innen mit abgeschlossenem Studium für eine unbefristete Stelle. Keine Berufserfahrung nötig.",
+  "evidence_en": "is looking for graduates who have completed their degree, for a permanent position. No work experience needed.",
+  "why": "Ahmed ist fertig mit dem Studium (Absolvent) und sucht eine feste (unbefristete) erste Stelle. Das passt zu G.",
+  "why_en": "Ahmed has finished his degree (a graduate) and wants a first permanent (unbefristet) job. That matches G.",
+  "trap": "B ist ein Praktikum nur für eingeschriebene Studenten – Ahmed studiert nicht mehr, und ein Praktikum ist keine feste Stelle.",
+  "trap_en": "B is an internship only for enrolled students – Ahmed has finished studying, and an internship isn't a permanent job.",
+  "question_en": "Ahmed has finished his degree and is looking for a first permanent job as an engineer."
+ },
+ "L3-3": {
+  "evidence": "in zwei Abenden lernen Sie, wie man sich in Deutschland richtig bewirbt. Speziell für Nicht-Muttersprachler.",
+  "evidence_en": "in two evenings you'll learn how to apply for jobs properly in Germany. Especially for non-native speakers.",
+  "why": "Yuki will eine Bewerbung auf Deutsch schreiben lernen. Der Workshop A zeigt, wie man sich richtig bewirbt, speziell für Nicht-Muttersprachler.",
+  "why_en": "Yuki wants to learn to write a job application in German. Workshop A teaches how to apply properly, especially for non-native speakers.",
+  "trap": "C (Sprachtandem) ist zum Sprachenlernen, aber nicht für Bewerbungen.",
+  "trap_en": "C (language tandem) is for learning a language, but not for job applications.",
+  "question_en": "Yuki wants to learn how to write a good job application in German."
+ },
+ "L3-4": {
+  "evidence": "Abendkurs: Excel für den Beruf",
+  "evidence_en": "Evening course: Excel for work",
+  "why": "Paolo will nach der Arbeit einen Excel-Kurs machen. I ist ein Abendkurs (18:30 Uhr) für Excel.",
+  "why_en": "Paolo wants an Excel course after work. I is an evening course (6:30 pm) in Excel.",
+  "trap": "A ist auch am Abend, aber zum Thema Bewerbung, nicht Excel.",
+  "trap_en": "A is also in the evening, but it's about job applications, not Excel.",
+  "question_en": "Paolo wants to attend a course after work to get better at Excel."
+ },
+ "L3-5": {
+  "evidence": "Quereinsteiger willkommen – Sie lernen bei uns alles, was Sie brauchen.",
+  "evidence_en": "Career changers welcome – you'll learn everything you need with us.",
+  "why": "Gastronomie = Restaurant. „Quereinsteiger willkommen“ heißt: Man braucht keine Erfahrung. Also E.",
+  "why_en": "Gastronomie = restaurant/catering. 'Career changers welcome' means no experience is needed. So E.",
+  "trap": "D sagt auch „Keine Erfahrung nötig“, aber eine Bäckerei-Verkäuferin ist nicht Gastronomie, und D passt schon zu Marta.",
+  "trap_en": "D also says 'no experience needed', but a bakery sales job isn't catering, and D already belongs to Marta.",
+  "question_en": "Elena is looking for a job in the restaurant/hospitality trade but has no experience."
+ },
+ "L3-6": {
+  "evidence": "Heller Raum (20 m²) in Bürogemeinschaft in Ehrenfeld, ideal für Selbstständige.",
+  "evidence_en": "Bright room (20 m²) in a shared office in Ehrenfeld, ideal for self-employed people.",
+  "why": "Sven braucht eine Beratung, um sich selbstständig zu machen. Keine Anzeige bietet Beratung. Also 0.",
+  "why_en": "Sven needs advice on becoming self-employed. No ad offers advice, so 0.",
+  "trap": "F nennt „Selbstständige“, aber es vermietet nur einen Büroraum – das ist keine Beratung.",
+  "trap_en": "F mentions 'self-employed', but it only rents out an office room – that's not advice.",
+  "question_en": "Sven wants to become self-employed and needs advice."
+ },
+ "L3-7": {
+  "evidence": "auch für berufstätige Eltern in Schichtarbeit geeignet",
+  "evidence_en": "also suitable for working parents who do shift work",
+  "why": "Fatima braucht Betreuung für ihre Kinder, während sie arbeitet. Die Kita H hat Plätze für Kinder von berufstätigen Eltern.",
+  "why_en": "Fatima needs childcare while she works. Kita H has places for children of working parents.",
+  "trap": "Keine andere Anzeige bietet Kinderbetreuung. A und I sind abends, aber das sind Kurse für Erwachsene.",
+  "trap_en": "No other ad offers childcare. A and I are in the evening, but they are courses for adults.",
+  "question_en": "Fatima wants to have her children looked after while she works."
+ },
+ "L4-1": {
+  "evidence": "Jeder sollte selbst entscheiden dürfen, wo er arbeitet.",
+  "evidence_en": "Everyone should be allowed to decide for themselves where they work.",
+  "why": "Katrin will, dass jeder selbst entscheidet – also auch so oft Homeoffice, wie man will. Ja.",
+  "why_en": "Katrin wants everyone to decide for themselves – so as much home office as they want. Yes.",
+  "trap": "Es gibt keinen Haken: Alle ihre Argumente (mehr schaffen, Zeit sparen) sind für Homeoffice.",
+  "trap_en": "No catch here: all her arguments (getting more done, saving time) support home office.",
+  "question_en": "Katrin, Bremen: I've been working almost only at home for two years and get much more done than in the office. Nobody disturbs me, and I save two hours on the train every day. Everyone should be allowed to decide for themselves where they work."
+ },
+ "L4-2": {
+  "evidence": "Deshalb bin ich froh, dass meine Firma wieder Präsenztage verlangt.",
+  "evidence_en": "That's why I'm glad my company requires office days again.",
+  "why": "Markus ist froh über Pflicht-Tage im Büro. Er ist also gegen „so oft man will“. Nein.",
+  "why_en": "Markus is glad about mandatory office days, so he's against 'as often as you like'. No.",
+  "trap": "„Am Anfang fand ich Homeoffice toll“ klingt nach Ja, aber das war nur am Anfang – seine Meinung hat sich geändert.",
+  "trap_en": "'At first I thought home office was great' sounds like a yes, but that was only at first – his view changed.",
+  "question_en": "Markus, Stuttgart: At first I thought working from home was great. But after a few months I noticed that I need my colleagues. The best ideas come up over coffee, not in a video conference. That's why I'm glad my company is requiring days in the office again."
+ },
+ "L4-3": {
+  "evidence": "Wenn Firmen das wieder verbieten, verlieren sie viele gute Mitarbeiterinnen.",
+  "evidence_en": "If companies ban it again, they'll lose a lot of good employees.",
+  "why": "Selin braucht Homeoffice für ihre Kinder und ist gegen ein Verbot. Ja.",
+  "why_en": "Selin needs home office because of her children and opposes banning it. Yes.",
+  "trap": "„Verbieten“ und „verlieren“ klingen negativ, aber sie kritisiert das Verbot, nicht das Homeoffice.",
+  "trap_en": "'Ban' and 'lose' sound negative, but she's criticising the ban, not home office.",
+  "question_en": "Selin, Hamburg: My children are still small. Without home office I couldn't work full-time at all. If companies ban it again, they will lose a lot of good (female) employees. The bosses finally have to understand that."
+ },
+ "L4-4": {
+  "evidence": "Freiwillig ja, aber niemand sollte dazu gezwungen werden, zu Hause zu bleiben.",
+  "evidence_en": "Voluntarily yes, but nobody should be forced to stay at home.",
+  "why": "Jonas selbst arbeitet lieber im Büro, aber er findet: Jeder soll frei wählen. Das ist ein Ja.",
+  "why_en": "Jonas personally prefers the office, but he thinks everyone should be free to choose. That's a yes.",
+  "trap": "„Für mich ist das Büro der bessere Ort“ ist nur seine persönliche Wahl – er ist nicht gegen Homeoffice für andere.",
+  "trap_en": "'For me the office is the better place' is only his personal choice – he isn't against home office for others.",
+  "question_en": "Jonas, Dresden: I live in a small flat and don't have a quiet place to work. For me the office is the better place. But I understand that it's different for others. Voluntary, yes, but nobody should be forced to stay at home."
+ },
+ "L4-5": {
+  "evidence": "Ein oder zwei Tage zu Hause sind in Ordnung, aber nicht mehr.",
+  "evidence_en": "One or two days at home are fine, but no more.",
+  "why": "Petra will eine Grenze: maximal zwei Tage. Nicht „so oft man will“. Nein.",
+  "why_en": "Petra wants a limit: two days at most. Not 'as often as you like'. No.",
+  "trap": "„Sind in Ordnung“ klingt positiv, aber „nicht mehr“ ist eine klare Grenze.",
+  "trap_en": "'Are fine' sounds positive, but 'no more' is a clear limit.",
+  "question_en": "Petra, München: I'm a team leader and see every day that new colleagues learn much more slowly in home office. You can't just quickly ask. One or two days at home are fine, but not more."
+ },
+ "L4-6": {
+  "evidence": "Wer seine Aufgaben erledigt, sollte arbeiten, wo er will – auch jeden Tag zu Hause.",
+  "evidence_en": "Anyone who gets their work done should be able to work where they want – even at home every day.",
+  "why": "„Arbeiten, wo er will – auch jeden Tag zu Hause“ = so oft man will. Ja.",
+  "why_en": "'Work where they want – even at home every day' = as often as you like. Yes.",
+  "trap": "„Die Frage ist doch falsch gestellt“ klingt wie ein Nein, aber er kritisiert nur die Frage, nicht das Homeoffice.",
+  "trap_en": "'The question is wrongly framed' sounds like a no, but he only criticises the question, not home office.",
+  "question_en": "Daniel, Leipzig: The question is asked the wrong way. It's not about where you sit, but whether the work is good. Whoever gets their tasks done should work where they want – even at home every day."
+ },
+ "L4-7": {
+  "evidence": "Ich finde, Homeoffice sollte die Ausnahme sein, nicht die Regel.",
+  "evidence_en": "I think home office should be the exception, not the rule.",
+  "why": "„Die Ausnahme“ heißt: nur selten. Anna ist dagegen. Nein.",
+  "why_en": "'The exception' means only rarely. Anna is against it. No.",
+  "trap": "„Ehrlich gesagt“ ist kein Hinweis auf Zustimmung; ihre Kollegen „arbeiten zu Hause deutlich weniger“ – ein Argument dagegen.",
+  "trap_en": "'Ehrlich gesagt' (honestly) isn't agreement; her colleagues 'work much less at home' – an argument against.",
+  "question_en": "Anna, Freiburg: To be honest: many of my colleagues work noticeably less at home. You can see it in the results. I think home office should be the exception, not the rule."
+ },
+ "L5-1": {
+  "evidence": "Am Wochenende haben nur Mitglieder mit einer Jahreskarte Zutritt",
+  "evidence_en": "At weekends only members with an annual pass have access",
+  "why": "Samstag ist Wochenende. Nur Mitglieder mit Jahreskarte dürfen rein. Also b.",
+  "why_en": "Saturday is the weekend. Only members with an annual pass can get in. So b.",
+  "trap": "c ist falsch, weil „Montag bis Freitag“ nur die normalen Öffnungszeiten sind – am Wochenende ist es nicht ganz geschlossen.",
+  "trap_en": "c is wrong: 'Monday to Friday' is only the normal opening hours – at weekends it's not completely closed.",
+  "question_en": "On Saturday …",
+  "options_en": [
+   "the workshop room is open to all members.",
+   "only members with an annual pass can use the workshop room.",
+   "the workshop room is closed."
+  ]
+ },
+ "L5-2": {
+  "evidence": "Wer seinen Platz länger als 60 Minuten verlässt, muss ihn räumen.",
+  "evidence_en": "Anyone who leaves their desk for more than 60 minutes has to clear it.",
+  "why": "60 Minuten = eine Stunde. Wer länger weg ist, verliert den Platz. Also a.",
+  "why_en": "60 minutes = one hour. If you're away longer, you lose the desk. So a.",
+  "trap": "b: Flexible Plätze „können nicht reserviert werden“. c: Namensschilder gibt es nur für feste Plätze.",
+  "trap_en": "b: flexible desks 'cannot be reserved'. c: name tags are only for fixed desks.",
+  "question_en": "Anyone who has a flexible workspace …",
+  "options_en": [
+   "may not leave it for longer than an hour.",
+   "can reserve it online.",
+   "gets a name tag."
+  ]
+ },
+ "L5-3": {
+  "evidence": "Nicht genutzte Buchungen sind spätestens zwei Stunden vorher zu stornieren",
+  "evidence_en": "Bookings that won't be used must be cancelled at least two hours in advance",
+  "why": "„Spätestens zwei Stunden vorher stornieren“ = mindestens zwei Stunden vorher absagen. Also b.",
+  "why_en": "'Cancel at the latest two hours before' = cancel at least two hours in advance. So b.",
+  "trap": "a: Die 10 € muss man nur zahlen, wenn man NICHT rechtzeitig absagt („sonst“).",
+  "trap_en": "a: you only pay the €10 if you DON'T cancel in time ('sonst' = otherwise).",
+  "question_en": "If you don't need a booked meeting room, …",
+  "options_en": [
+   "you have to pay €10.",
+   "you have to cancel the booking at least two hours in advance.",
+   "you can pass it on to another member."
+  ]
+ },
+ "L5-4": {
+  "evidence": "Gäste müssen am Empfang angemeldet werden",
+  "evidence_en": "Guests must be registered at reception",
+  "why": "Das ist genau Antwort c.",
+  "why_en": "That is exactly answer c.",
+  "trap": "a: Gäste dürfen nur vier Stunden bleiben, danach gilt der Tagestarif – nicht kostenlos. b: Der Flur ist für Telefonate, nicht für Gäste.",
+  "trap_en": "a: guests may only stay four hours, after that the day rate applies – not free. b: the hallway is for phone calls, not guests.",
+  "question_en": "Guests …",
+  "options_en": [
+   "may stay all day for free.",
+   "have to work in the hallway.",
+   "have to sign in at reception."
+  ]
+ },
+ "H1-1a": {
+  "evidence": "Wir hatten zuerst an Dienstag gedacht, aber da ist unser Abteilungsleiter leider nicht im Haus. Passt es Ihnen am Donnerstag um zehn Uhr?",
+  "evidence_en": "We first thought of Tuesday, but unfortunately our head of department isn't in then. Does Thursday at ten suit you?",
+  "why": "Dienstag war nur die erste Idee. Der Termin ist am Donnerstag. Falsch.",
+  "why_en": "Tuesday was only the first idea. The appointment is on Thursday. False.",
+  "trap": "„Dienstag“ hört man zuerst, aber mit „aber“ wird es verworfen.",
+  "trap_en": "You hear 'Tuesday' first, but it's rejected with 'aber'.",
+  "question_en": "The interview is supposed to take place on Tuesday."
+ },
+ "H1-1b": {
+  "evidence": "Bitte bringen Sie Ihre Zeugnisse im Original mit, die Kopien haben wir schon.",
+  "evidence_en": "Please bring your certificates in the original; we already have the copies.",
+  "why": "„Im Original mitbringen“ = die Originale mitbringen. Also b.",
+  "why_en": "'Bring in the original' = bring the originals. So b.",
+  "trap": "a nimmt das Wort „Kopien“, aber die Kopien hat die Firma schon.",
+  "trap_en": "a uses the word 'copies', but the company already has them.",
+  "question_en": "Mr Demir is supposed to …",
+  "options_en": [
+   "bring copies of his certificates.",
+   "bring the originals of his certificates.",
+   "send his application again."
+  ]
+ },
+ "H1-2a": {
+  "evidence": "Der Eintritt ist frei.",
+  "evidence_en": "Admission is free.",
+  "why": "„Eintritt frei“ = kostet keinen Eintritt. Richtig.",
+  "why_en": "'Admission is free' = there's no entrance fee. True.",
+  "trap": "„Die Plätze sind begrenzt“ und „anmelden“ betreffen nur den Lebenslauf-Check, nicht den Eintritt.",
+  "trap_en": "'Places are limited' and 'register' are about the CV check, not admission.",
+  "question_en": "The job fair has no entrance fee."
+ },
+ "H1-2b": {
+  "evidence": "dafür sollte man sich aber vorher auf der Website anmelden",
+  "evidence_en": "for that you should register on the website beforehand",
+  "why": "„Auf der Website anmelden“ = im Internet anmelden. Also b.",
+  "why_en": "'Register on the website' = register online. So b.",
+  "trap": "a ist falsch: Der Check ist „kostenlos“. c: „Früh“ hört man nicht; wichtig ist „vorher anmelden“.",
+  "trap_en": "a is wrong: the check is 'free'. c: 'early' isn't mentioned; the point is 'register beforehand'.",
+  "question_en": "Anyone who wants to have their CV checked …",
+  "options_en": [
+   "has to pay for it.",
+   "should register online beforehand.",
+   "should come to the fair early."
+  ]
+ },
+ "H1-3a": {
+  "evidence": "Ich bin heute Morgen mit dem Fahrrad gestürzt",
+  "evidence_en": "I fell off my bike this morning",
+  "why": "Ben hatte einen Unfall mit dem Fahrrad, nicht mit dem Auto. Falsch.",
+  "why_en": "Ben had an accident on his bike, not in a car. False.",
+  "trap": "Es gab wirklich einen Unfall – nur das Fahrzeug ist falsch.",
+  "trap_en": "There really was an accident – only the vehicle is wrong.",
+  "question_en": "Ben had a car accident."
+ },
+ "H1-3b": {
+  "evidence": "Kannst du bitte um elf die Besprechung mit dem Kunden aus Dortmund übernehmen?",
+  "evidence_en": "Can you please take over the meeting with the client from Dortmund at eleven?",
+  "why": "„Die Besprechung übernehmen“ = die Besprechung leiten. Also b.",
+  "why_en": "'Take over the meeting' = lead the meeting. So b.",
+  "trap": "a: Die Präsentation hat Ben schon fertig und „per E-Mail geschickt“. c: Ben ist beim Arzt, nicht Julia.",
+  "trap_en": "a: Ben has already done the presentation and 'sent it by email'. c: Ben is at the doctor's, not Julia.",
+  "question_en": "Julia is supposed to …",
+  "options_en": [
+   "prepare the presentation.",
+   "lead the meeting with the client.",
+   "drive to the doctor."
+  ]
+ },
+ "H1-4a": {
+  "evidence": "Wegen einer Störung im Aufzug bitten wir Sie, heute die Treppe zu benutzen.",
+  "evidence_en": "Because of a fault in the lift, please use the stairs today.",
+  "why": "„Störung im Aufzug“ = der Aufzug funktioniert nicht. Richtig.",
+  "why_en": "'Fault in the lift' = the lift isn't working. True.",
+  "trap": "Der Techniker kommt erst um vierzehn Uhr – bis dahin ist der Aufzug noch kaputt.",
+  "trap_en": "The technician only comes at two – until then the lift is still out of order.",
+  "question_en": "The lift is not working at the moment."
+ },
+ "H1-4b": {
+  "evidence": "die Kantine heute wegen einer Veranstaltung nur bis dreizehn Uhr geöffnet ist",
+  "evidence_en": "the canteen is only open until 1 pm today because of an event",
+  "why": "„Nur bis dreizehn Uhr geöffnet“ = sie schließt früher. Also b.",
+  "why_en": "'Only open until 1 pm' = it closes earlier. So b.",
+  "trap": "c: Im dritten Stock gibt es nur Brötchen im Konferenzraum – die Kantine ist nicht dort.",
+  "trap_en": "c: the third floor only has sandwiches in the conference room – the canteen isn't there.",
+  "question_en": "The canteen …",
+  "options_en": [
+   "is closed today.",
+   "closes earlier today.",
+   "is on the third floor today."
+  ]
+ },
+ "H1-5a": {
+  "evidence": "Im Süden dagegen scheint die Sonne, bei angenehmen 22 Grad.",
+  "evidence_en": "In the south, on the other hand, the sun is shining at a pleasant 22 degrees.",
+  "why": "Im Süden scheint die Sonne. Regen gibt es im Norden. Falsch.",
+  "why_en": "In the south the sun is shining. The rain is in the north. False.",
+  "trap": "Man hört „regnen“, aber das gilt für den Norden, nicht den Süden.",
+  "trap_en": "You hear 'rain', but it's for the north, not the south.",
+  "question_en": "In the south it will rain tomorrow."
+ },
+ "H1-5b": {
+  "evidence": "In der Nacht zum Freitag wird die A3 zwischen Köln und Bonn wegen Bauarbeiten gesperrt.",
+  "evidence_en": "On the night before Friday the A3 between Cologne and Bonn will be closed for roadworks.",
+  "why": "„In der Nacht zum Freitag“ = in der Nacht auf Freitag. Also b.",
+  "why_en": "'In der Nacht zum Freitag' = the night before Friday. So b.",
+  "trap": "a: Die Sperrung endet schon „Freitagmorgen sechs Uhr“ – nicht den ganzen Tag. c: Das Wochenende kommt nur beim Wetter vor.",
+  "trap_en": "a: the closure ends at 'six on Friday morning' – not all day. c: the weekend is only mentioned for the weather.",
+  "question_en": "The motorway is closed …",
+  "options_en": [
+   "all day on Friday.",
+   "during the night before Friday.",
+   "at the weekend."
+  ]
+ },
+ "H2-1": {
+  "evidence": "Die Führung dauert ungefähr neunzig Minuten.",
+  "evidence_en": "The tour lasts about ninety minutes.",
+  "why": "Neunzig Minuten = anderthalb Stunden. Also b.",
+  "why_en": "Ninety minutes = an hour and a half. So b.",
+  "trap": "a: Die Führung beginnt im Museum, erst danach geht es in die Produktion. c: Der Führer ist ein Mitarbeiter, Thomas Reuter.",
+  "trap_en": "a: the tour starts in the museum; production comes after. c: the guide is an employee, Thomas Reuter.",
+  "question_en": "The tour …",
+  "options_en": [
+   "begins in production.",
+   "lasts about an hour and a half.",
+   "is led by the head of the company."
+  ]
+ },
+ "H2-2": {
+  "evidence": "Im Museum und im Verkaufsraum ist Fotografieren natürlich erlaubt.",
+  "evidence_en": "In the museum and the shop, taking photos is of course allowed.",
+  "why": "Fotos sind nur in der Produktion verboten, im Museum und im Verkaufsraum erlaubt. Also b.",
+  "why_en": "Photos are only banned in production; they're allowed in the museum and shop. So b.",
+  "trap": "a ist zu stark: Verboten ist es nur „in der Produktion“, nicht „überall“. c: Die Haube ist für die Hygiene, nicht für Fotos.",
+  "trap_en": "a is too strong: it's only banned 'in production', not 'everywhere'. c: the hair cap is for hygiene, not photos.",
+  "question_en": "Taking photos is …",
+  "options_en": [
+   "forbidden everywhere in the factory.",
+   "only allowed in the museum and the shop.",
+   "only allowed with a hairnet."
+  ]
+ },
+ "H2-3": {
+  "evidence": "Wer eine Allergie gegen Nüsse hat, sagt mir bitte vorher Bescheid",
+  "evidence_en": "Anyone with a nut allergy, please let me know beforehand",
+  "why": "Das ist fast wörtlich Antwort a.",
+  "why_en": "That's almost word for word answer a.",
+  "trap": "b: Niemand wird ausgeschlossen – es geht nur um die Pralinen am Ende. c: Kittel bekommen alle, das hat nichts mit Allergie zu tun.",
+  "trap_en": "b: nobody is excluded – it's only about the chocolates at the end. c: everyone gets a coat; it has nothing to do with allergies.",
+  "question_en": "Anyone who has a nut allergy …",
+  "options_en": [
+   "should tell the guide beforehand.",
+   "may not take part in the tour.",
+   "gets a different coat."
+  ]
+ },
+ "H2-4": {
+  "evidence": "in der Weihnachtszeit sind es fast doppelt so viele, weil dann die meisten Bestellungen kommen",
+  "evidence_en": "at Christmas time there are almost twice as many, because that's when most orders come in",
+  "why": "„In der Weihnachtszeit … fast doppelt so viele“ = vor Weihnachten arbeiten fast doppelt so viele. Also c.",
+  "why_en": "'At Christmas time … almost twice as many' = before Christmas nearly twice as many people work. So c.",
+  "trap": "b ist das Gegenteil: nicht weniger, sondern mehr Personen.",
+  "trap_en": "b is the opposite: not fewer people, but more.",
+  "question_en": "Before Christmas …",
+  "options_en": [
+   "the factory is closed.",
+   "fewer people work in production.",
+   "almost twice as many people work as usual."
+  ]
+ },
+ "H2-5": {
+  "evidence": "Mit dem Ticket der Führung bekommen Sie dort zehn Prozent Rabatt.",
+  "evidence_en": "With the tour ticket you get a ten percent discount there.",
+  "why": "„Dort“ = im Verkaufsraum. Mit dem Ticket gibt es Rabatt. Also a.",
+  "why_en": "'There' = in the shop. The ticket gives a discount. So a.",
+  "trap": "b: Die Pralinen probiert man während der Führung, man nimmt sie nicht gratis mit. c: Ausbildungsinfos gibt es am Ausgang, nicht mit dem Ticket.",
+  "trap_en": "b: you taste chocolates during the tour but don't take any free. c: apprenticeship info is at the exit, not tied to the ticket.",
+  "question_en": "With the tour ticket …",
+  "options_en": [
+   "you get a discount in the shop.",
+   "you can take chocolates for free.",
+   "you can apply for an apprenticeship."
+  ]
+ },
+ "H3-1": {
+  "evidence": "Sie hat mir angeboten, ab Januar das neue Team in Berlin zu leiten.",
+  "evidence_en": "She offered me the chance to lead the new team in Berlin from January.",
+  "why": "Die Chefin hat ihm genau das angeboten. Richtig.",
+  "why_en": "The boss offered him exactly this. True.",
+  "trap": "Er hat noch nicht zugesagt – aber die Aussage sagt nur „soll“, also: Das ist der Plan der Chefin.",
+  "trap_en": "He hasn't accepted yet, but the statement only says 'is supposed to' – that's the boss's plan.",
+  "question_en": "Markus is supposed to lead a team in Berlin from January."
+ },
+ "H3-2": {
+  "evidence": "Nein, noch nicht. Ich habe bis Ende des Monats Zeit, mich zu entscheiden.",
+  "evidence_en": "No, not yet. I have until the end of the month to decide.",
+  "why": "„Noch nicht“ = er hat noch nicht angenommen. Falsch.",
+  "why_en": "'Not yet' = he hasn't accepted. False.",
+  "trap": "Nina sagt „große Chance“ und fragt „Hast du schon zugesagt?“ – das klingt nach Ja, aber Markus sagt Nein.",
+  "trap_en": "Nina says 'big chance' and asks 'Have you already accepted?' – it sounds like yes, but Markus says no.",
+  "question_en": "Markus has already accepted the offer."
+ },
+ "H3-3": {
+  "evidence": "Das Problem ist, dass meine Freundin hier in Köln arbeitet. Sie hat gerade erst eine feste Stelle bekommen.",
+  "evidence_en": "The problem is that my girlfriend works here in Cologne. She's only just got a permanent job.",
+  "why": "Die Freundin hat schon eine feste Stelle in Köln. Sie sucht nichts in Berlin. Falsch.",
+  "why_en": "His girlfriend already has a permanent job in Cologne. She isn't looking in Berlin. False.",
+  "trap": "„Stelle“ und „Berlin“ kommen vor, aber die Stelle ist in Köln und schon gefunden.",
+  "trap_en": "'Job' and 'Berlin' both come up, but the job is in Cologne and she already has it.",
+  "question_en": "His girlfriend is currently looking for a job in Berlin."
+ },
+ "H3-4": {
+  "evidence": "Vielleicht drei Tage in Berlin und zwei Tage Homeoffice. Die Chefin meinte, das wäre möglich.",
+  "evidence_en": "Maybe three days in Berlin and two days working from home. The boss said that would be possible.",
+  "why": "„Zwei Tage Homeoffice“ = ein Teil der Woche zu Hause. Und die Chefin sagt, das geht. Richtig.",
+  "why_en": "'Two days of home office' = part of the week at home, and the boss says that's possible. True.",
+  "trap": "„Vielleicht“ klingt unsicher, aber die Aussage sagt auch nur „könnte“.",
+  "trap_en": "'Maybe' sounds uncertain, but the statement only says 'could'.",
+  "question_en": "Markus could work from home for part of the week."
+ },
+ "H3-5": {
+  "evidence": "Aber die Mieten in Berlin sind inzwischen fast so hoch wie hier. Viel bleibt da nicht übrig.",
+  "evidence_en": "But rents in Berlin are now almost as high as here. There's not much left over.",
+  "why": "Er bekommt mehr Gehalt, aber die Miete frisst es auf: „Viel bleibt da nicht übrig.“ Also nicht deutlich mehr Geld. Falsch.",
+  "why_en": "He gets a higher salary, but rent eats it up: 'not much left over'. So not much more money. False.",
+  "trap": "„Dreihundert Euro mehr“ klingt nach mehr Geld, aber das „Aber“ danach ist entscheidend.",
+  "trap_en": "'Three hundred euros more' sounds like more money, but the 'Aber' that follows is what counts.",
+  "question_en": "In Berlin Markus would have considerably more money to live on."
+ },
+ "H3-6": {
+  "evidence": "Ich habe es letztes Jahr gemacht, das war wirklich hilfreich.",
+  "evidence_en": "I did it last year; it was really helpful.",
+  "why": "Nina spricht über das Führungsseminar: Sie hat es letztes Jahr gemacht. Richtig.",
+  "why_en": "Nina is talking about the leadership seminar: she did it last year. True.",
+  "trap": "Markus hat das Seminar noch nicht gemacht – er will erst fragen. Aber die Aussage ist über Nina.",
+  "trap_en": "Markus hasn't done the seminar yet – he'll ask about it. But the statement is about Nina.",
+  "question_en": "Nina has already attended a seminar for managers."
+ },
+ "H3-7": {
+  "evidence": "Am Ende müssen wir das zusammen entscheiden.",
+  "evidence_en": "In the end we have to decide this together.",
+  "why": "„Zusammen entscheiden“ (mit Laura) ist das Gegenteil von „allein“. Falsch.",
+  "why_en": "'Decide together' (with Laura) is the opposite of 'alone'. False.",
+  "trap": "„Ich habe bis Ende des Monats Zeit, mich zu entscheiden“ klingt nach einer Einzelentscheidung, aber am Schluss sagt er „zusammen“.",
+  "trap_en": "'I have until the end of the month to decide' sounds like his decision alone, but at the end he says 'together'.",
+  "question_en": "Markus wants to make the decision alone."
+ },
+ "H4-1": {
+  "evidence": "seit einem Jahr arbeiten bei uns wieder alle im Büro, mindestens vier Tage pro Woche",
+  "evidence_en": "for a year now everyone at our company has been back in the office, at least four days a week",
+  "why": "Herr Kraus (a) spricht über seine Firma: alle mindestens vier Tage im Büro.",
+  "why_en": "Mr Kraus (a) is describing his company: everyone in the office at least four days.",
+  "trap": "Die Moderatorin fragt danach („Sie haben … zurück ins Büro geholt“), aber die Aussage selbst kommt von Kraus.",
+  "trap_en": "The presenter asks about it ('you brought everyone back to the office'), but the statement itself comes from Kraus.",
+  "question_en": "In his company everyone is back to working at least four days in the office."
+ },
+ "H4-2": {
+  "evidence": "die meisten Beschäftigten zwei bis drei Tage Homeoffice pro Woche wollen",
+  "evidence_en": "most employees want two to three days of home office a week",
+  "why": "Frau Vogt (b) nennt das Ergebnis ihrer Umfrage.",
+  "why_en": "Ms Vogt (b) gives this as the result of her survey.",
+  "trap": "Kraus spricht auch über Mitarbeiterwünsche („zu Hause einsam“), aber die Zahl zwei bis drei Tage kommt von Vogt.",
+  "trap_en": "Kraus also talks about staff feelings ('lonely at home'), but the figure of two to three days comes from Vogt.",
+  "question_en": "Most employees would like two to three days of home office."
+ },
+ "H4-3": {
+  "evidence": "neue Kollegen haben viel länger gebraucht, bis sie richtig mitarbeiten konnten",
+  "evidence_en": "new colleagues took much longer before they could really contribute",
+  "why": "Das ist ein Argument von Kraus (a) gegen Homeoffice.",
+  "why_en": "This is one of Kraus's (a) arguments against home office.",
+  "trap": "Vogt spricht auch über „neue Mitarbeiter“, aber darüber, wie Firmen sie leichter finden – nicht wie schnell sie lernen.",
+  "trap_en": "Vogt also mentions 'new employees', but about how firms find them more easily – not how fast they learn.",
+  "question_en": "New colleagues take longer in home office until they contribute well."
+ },
+ "H4-4": {
+  "evidence": "der verliert die besten Leute an die Konkurrenz",
+  "evidence_en": "they'll lose their best people to the competition",
+  "why": "„An die Konkurrenz verlieren“ = an andere Firmen verlieren. Das sagt Vogt (b).",
+  "why_en": "'Lose to the competition' = lose to other companies. Vogt (b) says this.",
+  "trap": "Kraus spricht über Motivation und Einsamkeit, nicht darüber, dass Mitarbeiter weggehen.",
+  "trap_en": "Kraus talks about motivation and loneliness, not about staff leaving.",
+  "question_en": "Companies without home office lose good employees to other companies."
+ },
+ "H4-5": {
+  "evidence": "Nach einem Jahr habe ich aber gemerkt, dass ich abends nicht mehr abschalten konnte.",
+  "evidence_en": "But after a year I noticed I couldn't switch off in the evenings any more.",
+  "why": "Das erzählt die Moderatorin über sich selbst („Ich muss hier kurz einwerfen“).",
+  "why_en": "The presenter says this about herself ('I have to cut in here').",
+  "trap": "Vogt reagiert mit Regeln für den Feierabend – aber das Erlebnis ist von der Moderatorin.",
+  "trap_en": "Vogt responds with rules about evenings off – but the experience is the presenter's.",
+  "question_en": "I couldn't switch off in the evenings any more."
+ },
+ "H4-6": {
+  "evidence": "Aber es muss ein Recht darauf geben, einen Teil der Woche zu Hause zu arbeiten",
+  "evidence_en": "But there has to be a right to work part of the week from home",
+  "why": "Vogt (b) fordert ein Recht auf Homeoffice.",
+  "why_en": "Vogt (b) demands a right to home office.",
+  "trap": "Kraus sagt auch „Ein Recht per Gesetz“ – aber er sagt: „das halte ich für falsch“. Er ist dagegen.",
+  "trap_en": "Kraus also says 'a right by law' – but adds 'I think that's wrong'. He's against it.",
+  "question_en": "There should be a legal right to home office."
+ },
+ "H4-7": {
+  "evidence": "Freitag ist bei uns Homeoffice-Tag, und die anderen Tage sind alle da.",
+  "evidence_en": "Friday is our home-office day, and on the other days everyone is in.",
+  "why": "„Bei uns“ = in der Firma von Kraus (a).",
+  "why_en": "'Bei uns' = at Kraus's (a) company.",
+  "trap": "Vogt will auch eine Mischung, aber die konkrete Freitagsregel kommt von Kraus.",
+  "trap_en": "Vogt also wants a mix, but the specific Friday rule comes from Kraus.",
+  "question_en": "On Fridays the employees work from home."
+ },
+ "H4-8": {
+  "evidence": "Ich habe selbst drei Jahre lang von zu Hause gearbeitet",
+  "evidence_en": "I myself worked from home for three years",
+  "why": "Die Moderatorin erzählt von ihrer eigenen Erfahrung.",
+  "why_en": "The presenter is describing her own experience.",
+  "trap": "Kraus sagt „seit einem Jahr“ – eine andere Zahl und über seine Firma, nicht über sich.",
+  "trap_en": "Kraus says 'for a year' – a different number, and about his company, not himself.",
+  "question_en": "I myself worked in home office for three years."
+ }
+}

@@ -1,0 +1,533 @@
+[
+ {
+  "id": "ENG_CHUNK_1101",
+  "t": "[substantivo] tem alguma coisa que [oração] / Tem algo em [substantivo] que [oração]",
+  "ex": "Esse bairro tem alguma coisa que me faz sentir em casa."
+ },
+ {
+  "id": "ENG_CHUNK_1102",
+  "t": "Você nem imagina quantas vezes [oração] / Você ficaria surpreso/a com a frequência com que [oração]",
+  "ex": "Você nem imagina quantas vezes as pessoas deixam a chave na porta."
+ },
+ {
+  "id": "ENG_CHUNK_1103",
+  "t": "Se não fosse [substantivo], [oração] / Se não fosse por [substantivo], [oração]",
+  "ex": "Se não fosse a minha irmã, eu nunca teria achado esse apartamento."
+ },
+ {
+  "id": "ENG_CHUNK_1104",
+  "t": "Se ao menos [oração no subj.] / Quem dera [oração no subj.]",
+  "ex": "Se ao menos eu tivesse saído de casa dez minutos antes.",
+  "n": "Past regret: 'se ao menos' + pluperfect subjunctive (tivesse saído)."
+ },
+ {
+  "id": "ENG_CHUNK_1105",
+  "t": "Eu devia ter imaginado que [oração]",
+  "ex": "Eu devia ter imaginado que o restaurante ia estar lotado numa sexta."
+ },
+ {
+  "id": "ENG_CHUNK_1106",
+  "t": "Me arrependo de [verbo]",
+  "ex": "Me arrependo de não ter feito intercâmbio quando tive a chance.",
+  "n": "Use the perfect infinitive for past actions: 'de não ter feito'."
+ },
+ {
+  "id": "ENG_CHUNK_1107",
+  "t": "Olhando para trás, [oração] / Hoje em dia, vendo de fora, [oração]",
+  "ex": "Olhando para trás, mudar para Curitiba foi a melhor decisão que eu já tomei."
+ },
+ {
+  "id": "ENG_CHUNK_1108",
+  "t": "Se eu pudesse fazer tudo de novo, eu [verbo no condicional]",
+  "ex": "Se eu pudesse fazer tudo de novo, estudaria enfermagem em vez de administração."
+ },
+ {
+  "id": "ENG_CHUNK_1109",
+  "t": "Nunca mais eu [verbo] / Essa foi a última vez que eu [verbo]",
+  "ex": "Nunca mais eu empresto o carro para o meu irmão.",
+  "n": "'Nunca mais' + present tense is the natural vow."
+ },
+ {
+  "id": "ENG_CHUNK_1110",
+  "t": "Já estava na hora de [verbo] / Até que enfim [oração]",
+  "ex": "Já estava na hora de você comprar um celular novo. Esse aí é jurássico.",
+  "n": "'Já era hora de' + infinitive also works."
+ },
+ {
+  "id": "ENG_CHUNK_1111",
+  "t": "Desde quando [oração]?",
+  "ex": "Desde quando você toma café? Você sempre odiou."
+ },
+ {
+  "id": "ENG_CHUNK_1112",
+  "t": "Nunca é tarde para [verbo] / Nunca é tarde demais para [verbo]",
+  "ex": "Minha mãe começou a nadar aos sessenta. Nunca é tarde para aprender."
+ },
+ {
+  "id": "ENG_CHUNK_1113",
+  "t": "Peguei o hábito de [verbo] / Criei o hábito de [verbo]",
+  "ex": "Peguei o hábito de olhar o celular assim que acordo."
+ },
+ {
+  "id": "ENG_CHUNK_1114",
+  "t": "Faço questão de [verbo]",
+  "ex": "Faço questão de ligar para a minha avó todo domingo.",
+  "n": "'Fazer questão de' = make a point of / insist on; very common, useful for B1."
+ },
+ {
+  "id": "ENG_CHUNK_1115",
+  "t": "Não consegui segurar [substantivo] / Não pude deixar de [verbo]",
+  "ex": "Não consegui segurar o riso quando o cachorro roubou o sanduíche dele.",
+  "n": "'Não aguentei e ri' is another natural rendering."
+ },
+ {
+  "id": "ENG_CHUNK_1116",
+  "t": "Não é a mesma coisa sem [pessoa]",
+  "ex": "O Natal foi bom, mas não é a mesma coisa sem o vovô.",
+  "n": "Thanksgiving isn't Brazilian; Christmas is the natural swap."
+ },
+ {
+  "id": "ENG_CHUNK_1117",
+  "t": "Não queria que [pessoa] [verbo no subj.] / Seria chato se [pessoa] [verbo no subj.]",
+  "ex": "Vamos ligar antes. Seria chato se você fosse até lá à toa."
+ },
+ {
+  "id": "ENG_CHUNK_1118",
+  "t": "Significaria muito para mim se [oração]",
+  "ex": "Significaria muito para mim se você fosse na minha formatura.",
+  "n": "Imperfect subjunctive after 'se': fosse, viesse."
+ },
+ {
+  "id": "ENG_CHUNK_1119",
+  "t": "Não culpo [pessoa] por [verbo] / Entendo [pessoa] ter [verbo no particípio]",
+  "ex": "Não culpo ela por ter pedido demissão. Aquele chefe era horrível."
+ },
+ {
+  "id": "ENG_CHUNK_1120",
+  "t": "Bem feito para [pessoa] / Bem feito, quem mandou [verbo]",
+  "ex": "Ele perdeu o voo? Bem feito, quem mandou sair tão tarde.",
+  "n": "'Quem mandou + infinitive' is the idiomatic 'serves you right for'."
+ },
+ {
+  "id": "ENG_CHUNK_1121",
+  "t": "É bem típico de [pessoa] [verbo] / É a cara de [pessoa] [verbo]",
+  "ex": "É a cara do Davi aparecer uma hora atrasado."
+ },
+ {
+  "id": "ENG_CHUNK_1122",
+  "t": "Nunca passa pela cabeça de [pessoa] [verbo]",
+  "ex": "Nunca passa pela cabeça do meu colega de apartamento comprar papel higiênico."
+ },
+ {
+  "id": "ENG_CHUNK_1123",
+  "t": "Não tem nada pior do que [verbo]",
+  "ex": "Não tem nada pior do que esperar um voo atrasado sem nenhuma informação."
+ },
+ {
+  "id": "ENG_CHUNK_1124",
+  "t": "É a terceira vez que [oração]",
+  "ex": "É a terceira vez que eu ligo por causa dessa conta.",
+  "n": "Present tense ('ligo'), not perfect, after 'é a terceira vez que'."
+ },
+ {
+  "id": "ENG_CHUNK_1125",
+  "t": "Estou por um triz de [verbo] / Estou quase [verbo no gerúndio]",
+  "ex": "Estou por um triz de jogar o notebook pela janela.",
+  "n": "'Estou a um passo de' also works."
+ },
+ {
+  "id": "ENG_CHUNK_1126",
+  "t": "Digamos que [oração] / Vamos dizer que [oração]",
+  "ex": "Como foi o encontro? Digamos que não vai ter um segundo.",
+  "n": "Takes present subjunctive when hypothetical, indicative when hinting at fact."
+ },
+ {
+  "id": "ENG_CHUNK_1127",
+  "t": "Vou deixar [substantivo] pronto até [prazo] / Até [prazo] eu termino [substantivo]",
+  "ex": "Relaxa, até sexta eu termino o relatório."
+ },
+ {
+  "id": "ENG_CHUNK_1128",
+  "t": "Vamos retomar [substantivo] depois / Voltamos a [substantivo] mais tarde",
+  "ex": "Boa pergunta. Vamos retomar isso depois do intervalo."
+ },
+ {
+  "id": "ENG_CHUNK_1129",
+  "t": "É um daqueles [substantivo]",
+  "ex": "É um daqueles dias. Nada dá certo."
+ },
+ {
+  "id": "ENG_CHUNK_1130",
+  "t": "Só lembrando que [oração]",
+  "ex": "Só lembrando que o escritório fecha na segunda."
+ },
+ {
+  "id": "ENG_CHUNK_1131",
+  "t": "Gostaria de fazer uma reclamação sobre [substantivo] / Queria registrar uma reclamação sobre [substantivo]",
+  "ex": "Oi, gostaria de fazer uma reclamação sobre o barulho do vizinho de cima."
+ },
+ {
+  "id": "ENG_CHUNK_1132",
+  "t": "Você poderia me transferir para [pessoa/setor]?",
+  "ex": "Oi, você poderia me transferir para o setor de cobrança?",
+  "n": "Formal: O senhor/A senhora poderia me transferir...?"
+ },
+ {
+  "id": "ENG_CHUNK_1133",
+  "t": "Estou ligando em nome de [pessoa] / Estou ligando da parte de [pessoa]",
+  "ex": "Oi, estou ligando em nome do meu pai. Ele tem uma consulta amanhã."
+ },
+ {
+  "id": "ENG_CHUNK_1134",
+  "t": "Fui cobrado/a duas vezes por [substantivo] / Veio uma cobrança duplicada de [substantivo]",
+  "ex": "Oi, fui cobrado duas vezes pelo meu pedido da semana passada."
+ },
+ {
+  "id": "ENG_CHUNK_1135",
+  "t": "Estou tomando remédio para [substantivo]",
+  "ex": "Estou tomando remédio para pressão alta, então vou passar o vinho.",
+  "n": "'Remédio' is everyday; 'medicamento' is formal/medical."
+ },
+ {
+  "id": "ENG_CHUNK_1136",
+  "t": "focar em [substantivo] / me concentrar em [substantivo]",
+  "ex": "Preciso focar nas minhas provas este mês."
+ },
+ {
+  "id": "ENG_CHUNK_1137",
+  "t": "conhecer [substantivo] / dar uma conferida em [substantivo]",
+  "ex": "Você tem que conhecer aquele lugar de tacos novo na rua principal."
+ },
+ {
+  "id": "ENG_CHUNK_1138",
+  "t": "estar com jet lag / estar com o fuso trocado",
+  "ex": "Desculpa, estou meio lento hoje. Estou com um jet lag terrível."
+ },
+ {
+  "id": "ENG_CHUNK_1139",
+  "t": "lotado / sem vagas",
+  "ex": "Desculpa, estamos lotados hoje. Pode ser amanhã?"
+ },
+ {
+  "id": "ENG_CHUNK_1140",
+  "t": "super recomendado / muito recomendado",
+  "ex": "Um colega de trabalho me recomendou muito essa trilha."
+ },
+ {
+  "id": "ENG_CHUNK_1141",
+  "t": "muito improvável / pouco provável",
+  "ex": "É muito improvável que chova granizo tão cedo.",
+  "n": "Triggers the subjunctive: 'improvável que + subj.'."
+ },
+ {
+  "id": "ENG_CHUNK_1142",
+  "t": "dormindo profundamente / num sono pesado",
+  "ex": "Quando cheguei em casa, as crianças já estavam dormindo profundamente.",
+  "n": "Also 'apagadas' (informal: out cold)."
+ },
+ {
+  "id": "ENG_CHUNK_1143",
+  "t": "foi por pouco / foi por um triz",
+  "ex": "Aquele caminhão quase bateu na gente. Foi por pouco!"
+ },
+ {
+  "id": "ENG_CHUNK_1144",
+  "t": "ter um fraco por [substantivo]",
+  "ex": "Eu tenho um fraco por lanchonetes antigas."
+ },
+ {
+  "id": "ENG_CHUNK_1145",
+  "t": "empatar / não ter lucro nem prejuízo / zerar",
+  "ex": "Depois de todos os custos, a gente mal empatou com a venda de bolos.",
+  "n": "'Empatar' literally = tie a game; 'sair no zero a zero' also used."
+ },
+ {
+  "id": "ENG_CHUNK_1146",
+  "t": "ter inveja de [pessoa]",
+  "ex": "Você vai para o Havaí? Que inveja!",
+  "n": "'Que inveja!' is the natural playful form; 'ciúmes' is romantic/possessive jealousy."
+ },
+ {
+  "id": "ENG_CHUNK_1147",
+  "t": "ser bom/boa com [substantivo] / levar jeito com [substantivo]",
+  "ex": "Meu sobrinho leva muito jeito com computador."
+ },
+ {
+  "id": "ENG_CHUNK_1148",
+  "t": "estar a fim de [substantivo]",
+  "ex": "Não estou muito a fim de pizza hoje.",
+  "n": "'Estar a fim de alguém' = to fancy someone."
+ },
+ {
+  "id": "ENG_CHUNK_1149",
+  "t": "furar / não dar certo / miar",
+  "ex": "Nossos planos para o fim de semana furaram, então estamos livres.",
+  "n": "'Furar' and slang 'miar' = plans fall through."
+ },
+ {
+  "id": "ENG_CHUNK_1150",
+  "t": "interromper [pessoa] / cortar [pessoa]",
+  "ex": "Desculpa, não quis te interromper."
+ },
+ {
+  "id": "ENG_CHUNK_1151",
+  "t": "dar um bolo em [pessoa] / dar o cano em [pessoa]",
+  "ex": "Esperei uma hora, mas ele me deu um bolo.",
+  "n": "'Levar um bolo' = be stood up."
+ },
+ {
+  "id": "ENG_CHUNK_1152",
+  "t": "cair a ficha",
+  "ex": "Consegui o emprego, mas ainda não caiu a ficha."
+ },
+ {
+  "id": "ENG_CHUNK_1153",
+  "t": "relaxar / pegar leve",
+  "ex": "Relaxa, é só um jogo!"
+ },
+ {
+  "id": "ENG_CHUNK_1154",
+  "t": "seguir [substantivo] / manter [substantivo]",
+  "ex": "Vamos seguir o plano e sair às sete."
+ },
+ {
+  "id": "ENG_CHUNK_1155",
+  "t": "ficar mais um pouco",
+  "ex": "Fica mais um pouco depois do jantar, a gente vai jogar baralho."
+ },
+ {
+  "id": "ENG_CHUNK_1156",
+  "t": "largar [substantivo] / abandonar [substantivo]",
+  "ex": "Ele largou a faculdade depois do primeiro ano.",
+  "n": "'Trancar a matrícula' = suspend studies (not quit)."
+ },
+ {
+  "id": "ENG_CHUNK_1157",
+  "t": "ficar para trás / atrasar",
+  "ex": "Fiquei doente uma semana e fiquei para trás no trabalho."
+ },
+ {
+  "id": "ENG_CHUNK_1158",
+  "t": "se enturmar / se adaptar",
+  "ex": "Demorei um pouco para me enturmar na escola nova.",
+  "n": "'Enturmar-se' is the everyday Brazilian 'fit in'."
+ },
+ {
+  "id": "ENG_CHUNK_1159",
+  "t": "se destacar / chamar atenção",
+  "ex": "Usa a jaqueta vermelha. Você vai se destacar nas fotos."
+ },
+ {
+  "id": "ENG_CHUNK_1160",
+  "t": "se exibir / se mostrar / contar vantagem",
+  "ex": "Ele só está se exibindo com o carro novo de novo."
+ },
+ {
+  "id": "ENG_CHUNK_1161",
+  "t": "falar / se manifestar",
+  "ex": "Se você não concorda, fala.",
+  "n": "Formal meetings: 'se manifestar' / 'se posicionar'."
+ },
+ {
+  "id": "ENG_CHUNK_1162",
+  "t": "se dar bem de cara / bater o santo",
+  "ex": "Minha irmã e a nova colega de apartamento se deram muito bem de cara.",
+  "n": "'Bateu o santo' = instant chemistry; colloquial Brazilian."
+ },
+ {
+  "id": "ENG_CHUNK_1163",
+  "t": "estar com muita coisa / estar cheio/a de coisa",
+  "ex": "Eu adoraria ajudar, mas estou com muita coisa agora."
+ },
+ {
+  "id": "ENG_CHUNK_1164",
+  "t": "desgastar [pessoa] / cobrar seu preço de [pessoa]",
+  "ex": "Os plantões noturnos estão desgastando muito ele."
+ },
+ {
+  "id": "ENG_CHUNK_1165",
+  "t": "dar o pontapé inicial / começar a mexer em [substantivo]",
+  "ex": "Vamos dar o pontapé inicial no planejamento da festa."
+ },
+ {
+  "id": "ENG_CHUNK_1166",
+  "t": "Pode-se dizer que sim / Dá para dizer que sim",
+  "ex": "Então você gosta do trabalho novo? É, pode-se dizer que sim."
+ },
+ {
+  "id": "ENG_CHUNK_1167",
+  "t": "Ah, então é isso / Isso explica tudo",
+  "ex": "Você esqueceu de ligar na tomada? Ah, então é isso."
+ },
+ {
+  "id": "ENG_CHUNK_1168",
+  "t": "Isso é novidade para mim / Primeira vez que ouço falar",
+  "ex": "A reunião mudou de horário? Isso é novidade para mim."
+ },
+ {
+  "id": "ENG_CHUNK_1169",
+  "t": "Perdi o fio da meada / Perdi o raciocínio",
+  "ex": "Desculpa, o que eu estava falando? Perdi o fio da meada."
+ },
+ {
+  "id": "ENG_CHUNK_1170",
+  "t": "Desculpa, me perdi / Desculpa, viajei",
+  "ex": "Desculpa, viajei. Do que a gente estava falando?",
+  "n": "'Viajar' = zone out/digress (informal)."
+ },
+ {
+  "id": "ENG_CHUNK_1171",
+  "t": "Vamos voltar ao assunto / Vamos focar",
+  "ex": "Bom, pessoal, vamos voltar ao assunto."
+ },
+ {
+  "id": "ENG_CHUNK_1172",
+  "t": "Nada a ver, mas / Mudando totalmente de assunto,",
+  "ex": "Nada a ver, mas você conhece um bom encanador?"
+ },
+ {
+  "id": "ENG_CHUNK_1173",
+  "t": "Vamos deixar assim / Vamos parar por aqui",
+  "ex": "A gente simplesmente não concorda. Vamos deixar assim."
+ },
+ {
+  "id": "ENG_CHUNK_1174",
+  "t": "Não sou especialista, mas",
+  "ex": "Não sou especialista, mas acho que o seu pneu está murcho."
+ },
+ {
+  "id": "ENG_CHUNK_1175",
+  "t": "Só estou falando / Só comentando",
+  "ex": "A última vez que a gente pegou esse atalho, se perdeu. Só estou falando."
+ },
+ {
+  "id": "ENG_CHUNK_1176",
+  "t": "É só uma ideia / Só uma sugestão",
+  "ex": "A gente podia ir de trem. É só uma ideia."
+ },
+ {
+  "id": "ENG_CHUNK_1177",
+  "t": "Por curiosidade / Só por curiosidade",
+  "ex": "Só por curiosidade, quanto você pagou nisso?"
+ },
+ {
+  "id": "ENG_CHUNK_1178",
+  "t": "Se não for indiscrição / Se você não se importa que eu pergunte",
+  "ex": "Se não for indiscrição, quanto é o aluguel aqui?",
+  "n": "'Se não for indiscrição' is the polished Brazilian preface to a personal question."
+ },
+ {
+  "id": "ENG_CHUNK_1179",
+  "t": "Só estando lá para entender / Você tinha que estar lá",
+  "ex": "Na hora foi hilário. Acho que só estando lá para entender."
+ },
+ {
+  "id": "ENG_CHUNK_1180",
+  "t": "Não é assim que eu me lembro",
+  "ex": "Você pagou o jantar? Não é assim que eu me lembro."
+ },
+ {
+  "id": "ENG_CHUNK_1181",
+  "t": "É agora ou nunca",
+  "ex": "A promoção acaba hoje à noite. É agora ou nunca."
+ },
+ {
+  "id": "ENG_CHUNK_1182",
+  "t": "Vivendo e aprendendo",
+  "ex": "Esqueci de salvar o arquivo de novo. Enfim, vivendo e aprendendo."
+ },
+ {
+  "id": "ENG_CHUNK_1183",
+  "t": "Grandes mentes pensam igual",
+  "ex": "Você também pediu o salmão? Grandes mentes pensam igual."
+ },
+ {
+  "id": "ENG_CHUNK_1184",
+  "t": "Duas cabeças pensam melhor que uma",
+  "ex": "Vamos fazer o imposto de renda juntos. Duas cabeças pensam melhor que uma."
+ },
+ {
+  "id": "ENG_CHUNK_1185",
+  "t": "Roma não foi feita em um dia / Devagar se vai ao longe",
+  "ex": "Você só está aprendendo há um mês. Roma não foi feita em um dia."
+ },
+ {
+  "id": "ENG_CHUNK_1186",
+  "t": "Quanto antes, melhor",
+  "ex": "Para quando você precisa? Quanto antes, melhor."
+ },
+ {
+  "id": "ENG_CHUNK_1187",
+  "t": "Calma, vamos com calma / Não vamos colocar a carroça na frente dos bois",
+  "ex": "Uma boa entrevista não significa que a vaga é sua. Não vamos colocar a carroça na frente dos bois."
+ },
+ {
+  "id": "ENG_CHUNK_1188",
+  "t": "Dorme sobre o assunto / Pensa com calma",
+  "ex": "Não decide hoje. Dorme sobre o assunto e me liga amanhã.",
+  "n": "Also 'pensa com o travesseiro' (consult the pillow)."
+ },
+ {
+  "id": "ENG_CHUNK_1189",
+  "t": "Antes você do que eu / Melhor você do que eu",
+  "ex": "Vai correr uma maratona nesse calor? Antes você do que eu."
+ },
+ {
+  "id": "ENG_CHUNK_1190",
+  "t": "Podem se servir! / Bom apetite!",
+  "ex": "O jantar está pronto, pessoal. Podem se servir!",
+  "n": "'Vamos comer!' / 'Ataquem!' are playful informal options."
+ },
+ {
+  "id": "ENG_CHUNK_1191",
+  "t": "Melhor ainda",
+  "ex": "Liga para ela hoje. Melhor ainda: vai lá ver ela."
+ },
+ {
+  "id": "ENG_CHUNK_1192",
+  "t": "E para completar / E para piorar",
+  "ex": "Meu carro quebrou, cheguei atrasado e, para completar, choveu."
+ },
+ {
+  "id": "ENG_CHUNK_1193",
+  "t": "Com [substantivo] e [substantivo]... / Entre [substantivo] e [substantivo]...",
+  "ex": "Entre o bebê novo e a mudança, a gente quase não dormiu.",
+  "n": "No exact equivalent; 'entre X e Y' or 'com tudo isso de X e Y' carries it."
+ },
+ {
+  "id": "ENG_CHUNK_1194",
+  "t": "Apesar de",
+  "ex": "A gente se divertiu muito, apesar do tempo."
+ },
+ {
+  "id": "ENG_CHUNK_1195",
+  "t": "Pelo contrário / Muito pelo contrário",
+  "ex": "Você não está me incomodando. Pelo contrário, fico feliz que você ligou."
+ },
+ {
+  "id": "ENG_CHUNK_1196",
+  "t": "Em especial / Principalmente",
+  "ex": "Adorei a comida, em especial os tacos de peixe."
+ },
+ {
+  "id": "ENG_CHUNK_1197",
+  "t": "Entre outras coisas",
+  "ex": "A gente conversou sobre a viagem e o orçamento, entre outras coisas."
+ },
+ {
+  "id": "ENG_CHUNK_1198",
+  "t": "Só para você ter uma ideia",
+  "ex": "O aluguel aqui é um absurdo. Só para você ter uma ideia, uma quitinete custa dois mil.",
+  "n": "'Quitinete' = studio flat in Brazil; PT-PT: estúdio / T0."
+ },
+ {
+  "id": "ENG_CHUNK_1199",
+  "t": "Por assim dizer / Digamos assim",
+  "ex": "Estou entre um emprego e outro, por assim dizer."
+ },
+ {
+  "id": "ENG_CHUNK_1200",
+  "t": "Por último, mas não menos importante",
+  "ex": "E, por último, mas não menos importante, obrigado à minha mãe por toda a ajuda."
+ }
+]

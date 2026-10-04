@@ -1,0 +1,552 @@
+[
+ {
+  "id": "ENG_CHUNK_1201",
+  "t": "¡Hola!",
+  "ex": "¡Hola! ¿Qué tal tu día?"
+ },
+ {
+  "id": "ENG_CHUNK_1202",
+  "t": "Buenos días",
+  "ex": "¡Buenos días! ¿Dormiste bien?",
+  "n": "Used until about noon; always plural: buenos días."
+ },
+ {
+  "id": "ENG_CHUNK_1203",
+  "t": "Buenas tardes",
+  "ex": "Buenas tardes. ¿En qué le puedo ayudar?",
+  "n": "From noon until dark. Casual clipped form for any time of day: ¡Buenas!"
+ },
+ {
+  "id": "ENG_CHUNK_1204",
+  "t": "Buenas noches",
+  "ex": "¡Buenas noches! Que descanses.",
+  "n": "Also a greeting on arrival after dark, not only a goodbye."
+ },
+ {
+  "id": "ENG_CHUNK_1205",
+  "t": "¿Cómo estás? / ¿Cómo está?",
+  "ex": "Hola, Sam, ¿cómo estás?",
+  "n": "Estás = tú; está = usted."
+ },
+ {
+  "id": "ENG_CHUNK_1206",
+  "t": "Bien, gracias. ¿Y tú? / ¿Y usted?",
+  "ex": "—¿Cómo estás? —Bien, gracias. ¿Y tú?"
+ },
+ {
+  "id": "ENG_CHUNK_1207",
+  "t": "No me quejo / Nada mal, gracias",
+  "ex": "—¿Cómo te va? —Nada mal, gracias."
+ },
+ {
+  "id": "ENG_CHUNK_1208",
+  "t": "Mucho gusto / Encantado (Encantada)",
+  "ex": "Hola, soy Ana. Mucho gusto.",
+  "n": "Encantado/encantada agrees with the speaker's gender."
+ },
+ {
+  "id": "ENG_CHUNK_1209",
+  "t": "Igualmente",
+  "ex": "—Mucho gusto. —Igualmente.",
+  "n": "Not \"tú también\": igualmente returns a wish or greeting."
+ },
+ {
+  "id": "ENG_CHUNK_1210",
+  "t": "Es un placer conocerlo / Mucho gusto en conocerla",
+  "ex": "Buenos días, soy David Lee. Es un placer conocerlo.",
+  "n": "Formal usted: conocerlo to a man, conocerla to a woman."
+ },
+ {
+  "id": "ENG_CHUNK_1211",
+  "t": "¿Qué tal? / ¿Cómo va todo?",
+  "ex": "Oye, Tomás, ¿qué tal?",
+  "n": "Regional casual forms: ¿Qué onda? (Mexico), ¿Qué más? (Colombia)."
+ },
+ {
+  "id": "ENG_CHUNK_1212",
+  "t": "¡Qué gusto verte! / ¡Qué bueno verte!",
+  "ex": "¡Hola, María! ¡Qué gusto verte!"
+ },
+ {
+  "id": "ENG_CHUNK_1213",
+  "t": "Adiós",
+  "ex": "Adiós, y gracias por todo.",
+  "n": "Many Latin Americans say \"chao\" casually; adiós can sound final."
+ },
+ {
+  "id": "ENG_CHUNK_1214",
+  "t": "Nos vemos / Hasta luego",
+  "ex": "¡Bueno, nos vemos!",
+  "n": "Hasta luego is used even if you won't see them again today."
+ },
+ {
+  "id": "ENG_CHUNK_1215",
+  "t": "Que tenga un buen día / Que te vaya bien",
+  "ex": "Gracias. ¡Que tenga un buen día!",
+  "n": "Que + subjunctive for wishes; usted form to staff."
+ },
+ {
+  "id": "ENG_CHUNK_1216",
+  "t": "Gracias",
+  "ex": "Gracias por el café."
+ },
+ {
+  "id": "ENG_CHUNK_1217",
+  "t": "Muchas gracias / Mil gracias",
+  "ex": "Mil gracias, eres muy amable."
+ },
+ {
+  "id": "ENG_CHUNK_1218",
+  "t": "De nada / Con gusto",
+  "ex": "—¡Gracias! —De nada.",
+  "n": "Con gusto and a la orden are common replies in Colombia and Central America."
+ },
+ {
+  "id": "ENG_CHUNK_1219",
+  "t": "No hay problema / No te preocupes",
+  "ex": "—Gracias por esperar. —No hay problema."
+ },
+ {
+  "id": "ENG_CHUNK_1220",
+  "t": "Sí, por favor",
+  "ex": "—¿Quieres un té? —Sí, por favor."
+ },
+ {
+  "id": "ENG_CHUNK_1221",
+  "t": "No, gracias",
+  "ex": "—¿Quieres más pastel? —No, gracias."
+ },
+ {
+  "id": "ENG_CHUNK_1222",
+  "t": "Disculpe / Con permiso",
+  "ex": "Disculpe, ¿este es el tren a Guadalajara?",
+  "n": "Disculpe gets attention; con permiso is for squeezing past someone."
+ },
+ {
+  "id": "ENG_CHUNK_1223",
+  "t": "Lo siento / Perdón",
+  "ex": "Perdón, fue mi error.",
+  "n": "Lo siento also expresses sympathy; perdón is for small mistakes."
+ },
+ {
+  "id": "ENG_CHUNK_1224",
+  "t": "No pasa nada / Está bien",
+  "ex": "—Perdón, rompí tu taza. —No pasa nada."
+ },
+ {
+  "id": "ENG_CHUNK_1225",
+  "t": "Perdón por llegar tarde / Disculpa la demora",
+  "ex": "Perdón por llegar tarde, no pasó el autobús."
+ },
+ {
+  "id": "ENG_CHUNK_1226",
+  "t": "Perdón, no entiendo",
+  "ex": "Perdón, no entiendo. ¿Lo puede repetir?"
+ },
+ {
+  "id": "ENG_CHUNK_1227",
+  "t": "¿Podría hablar más despacio, por favor?",
+  "ex": "¿Podría hablar más despacio, por favor? No hablo muy bien español."
+ },
+ {
+  "id": "ENG_CHUNK_1228",
+  "t": "¿Puede repetirlo, por favor? / ¿Me lo repite, por favor?",
+  "ex": "Perdón, ¿puede repetirlo, por favor?"
+ },
+ {
+  "id": "ENG_CHUNK_1229",
+  "t": "¿Cómo se escribe? / ¿Me lo deletrea, por favor?",
+  "ex": "¿Su apellido? ¿Me lo deletrea, por favor?"
+ },
+ {
+  "id": "ENG_CHUNK_1230",
+  "t": "Hablo poco español / No hablo mucho español",
+  "ex": "Perdón, hablo poco español."
+ },
+ {
+  "id": "ENG_CHUNK_1231",
+  "t": "¿Cómo te llamas? / ¿Cómo se llama?",
+  "ex": "Hola, soy Tomás. ¿Cómo te llamas?",
+  "n": "Literally \"how do you call yourself\"; ¿Cuál es tu nombre? is correct but stiffer."
+ },
+ {
+  "id": "ENG_CHUNK_1232",
+  "t": "¿De dónde eres? / ¿De dónde es?",
+  "ex": "¿De dónde eres? Me gusta tu acento."
+ },
+ {
+  "id": "ENG_CHUNK_1233",
+  "t": "¿Cuántos años tienes?",
+  "ex": "Emma, ¿cuántos años tienes?",
+  "n": "Age uses tener, not ser: tengo 30 años."
+ },
+ {
+  "id": "ENG_CHUNK_1234",
+  "t": "¿Dónde vives?",
+  "ex": "¿Dónde vives? ¿Cerca de aquí?"
+ },
+ {
+  "id": "ENG_CHUNK_1235",
+  "t": "¿A qué te dedicas? / ¿En qué trabajas?",
+  "ex": "¿A qué te dedicas? ¿Eres estudiante?",
+  "n": "¿Qué haces? means \"what are you doing (now)?\", not your job."
+ },
+ {
+  "id": "ENG_CHUNK_1236",
+  "t": "¿Tienes hermanos?",
+  "ex": "¿Tienes hermanos?",
+  "n": "Hermanos covers brothers and sisters together; no \"any\" needed."
+ },
+ {
+  "id": "ENG_CHUNK_1237",
+  "t": "¿Cuánto tiempo llevas viviendo aquí? / ¿Hace cuánto vives aquí?",
+  "ex": "¿Hace cuánto vives aquí?",
+  "n": "Present tense, not perfect: hace dos años que vivo aquí."
+ },
+ {
+  "id": "ENG_CHUNK_1238",
+  "t": "¿Y tú? / ¿Y usted?",
+  "ex": "Yo soy de Italia. ¿Y tú?"
+ },
+ {
+  "id": "ENG_CHUNK_1239",
+  "t": "¿Qué hora es?",
+  "ex": "Disculpe, ¿qué hora es?",
+  "n": "Answer: es la una, son las dos (plural from two on)."
+ },
+ {
+  "id": "ENG_CHUNK_1240",
+  "t": "¿Cuánto cuesta? / ¿Cuánto es?",
+  "ex": "Esta bolsa está bonita. ¿Cuánto cuesta?",
+  "n": "¿Cuánto es? is for the total at the register."
+ },
+ {
+  "id": "ENG_CHUNK_1241",
+  "t": "¿En qué le puedo ayudar? / ¿Le puedo ayudar en algo?",
+  "ex": "Buenos días, ¿en qué le puedo ayudar?"
+ },
+ {
+  "id": "ENG_CHUNK_1242",
+  "t": "Es todo, gracias / Nada más, gracias",
+  "ex": "—¿Algo más? —No, es todo, gracias."
+ },
+ {
+  "id": "ENG_CHUNK_1243",
+  "t": "¿Me trae la carta, por favor? / ¿Me da el menú, por favor?",
+  "ex": "Hola, ¿me trae la carta, por favor?",
+  "n": "Ordering uses plain present: ¿me trae...?, ¿me da...? It is polite, not rude."
+ },
+ {
+  "id": "ENG_CHUNK_1244",
+  "t": "¿Qué me recomienda? / ¿Qué me recomiendas?",
+  "ex": "Es mi primera vez aquí. ¿Qué me recomienda?"
+ },
+ {
+  "id": "ENG_CHUNK_1245",
+  "t": "Soy vegetariano / Soy vegetariana",
+  "ex": "Soy vegetariana. ¿Esta sopa lleva carne?",
+  "n": "Many count chicken or ham broth as not \"meat\": ask ¿lleva pollo o jamón?"
+ },
+ {
+  "id": "ENG_CHUNK_1246",
+  "t": "Estoy lleno / Estoy llena",
+  "ex": "Ya no, gracias. Estoy lleno."
+ },
+ {
+  "id": "ENG_CHUNK_1247",
+  "t": "¿Dónde está el baño?",
+  "ex": "Disculpe, ¿dónde está el baño?",
+  "n": "Estar for location, never ser. Signs may say sanitarios or servicios."
+ },
+ {
+  "id": "ENG_CHUNK_1248",
+  "t": "Siga derecho / Siga todo recto",
+  "ex": "Siga derecho y el banco está a la izquierda.",
+  "n": "Usted command for strangers; tú: sigue derecho."
+ },
+ {
+  "id": "ENG_CHUNK_1249",
+  "t": "¿Dónde me bajo?",
+  "ex": "Quiero ir al zoológico. ¿Dónde me bajo?"
+ },
+ {
+  "id": "ENG_CHUNK_1250",
+  "t": "¿Cuál es la contraseña del wifi? / ¿Cuál es la clave del wifi?",
+  "ex": "Disculpe, ¿cuál es la clave del wifi?",
+  "n": "¿Cuál es...?, not ¿Qué es...?, when asking for a specific item of information."
+ },
+ {
+  "id": "ENG_CHUNK_1251",
+  "t": "¡Auxilio! / ¡Ayuda!",
+  "ex": "¡Auxilio! ¡Alguien que me ayude!",
+  "n": "Socorro is also used, more in Spain."
+ },
+ {
+  "id": "ENG_CHUNK_1252",
+  "t": "¿Me puede ayudar? / ¿Me puedes ayudar?",
+  "ex": "Disculpe, ¿me puede ayudar? Estoy perdido."
+ },
+ {
+  "id": "ENG_CHUNK_1253",
+  "t": "Necesito un médico",
+  "ex": "Necesito un médico. Mi hijo está muy enfermo.",
+  "n": "Many Latin Americans say doctor in speech."
+ },
+ {
+  "id": "ENG_CHUNK_1254",
+  "t": "Me duele aquí",
+  "ex": "Me duele aquí, en el estómago.",
+  "n": "Doler works like gustar: me duele la cabeza, me duelen los pies."
+ },
+ {
+  "id": "ENG_CHUNK_1255",
+  "t": "Me siento mal / No me siento bien",
+  "ex": "No me siento bien. Me voy a la casa."
+ },
+ {
+  "id": "ENG_CHUNK_1256",
+  "t": "¡Llamen a una ambulancia!",
+  "ex": "¡Llamen a una ambulancia! No está respirando.",
+  "n": "Llamen (ustedes) addresses the crowd; to one person: ¡llama! / ¡llame!"
+ },
+ {
+  "id": "ENG_CHUNK_1257",
+  "t": "Estoy perdido / Estoy perdida",
+  "ex": "Disculpe, estoy perdido. ¿Dónde está la estación?"
+ },
+ {
+  "id": "ENG_CHUNK_1258",
+  "t": "¡Cuidado! / ¡Aguas!",
+  "ex": "¡Cuidado! ¡Un carro!",
+  "n": "¡Aguas! is Mexican slang for a warning."
+ },
+ {
+  "id": "ENG_CHUNK_1259",
+  "t": "¿Qué te pasa? / ¿Qué pasa?",
+  "ex": "Te ves triste. ¿Qué te pasa?"
+ },
+ {
+  "id": "ENG_CHUNK_1260",
+  "t": "¿Estás bien?",
+  "ex": "¿Estás bien? Te ves pálido."
+ },
+ {
+  "id": "ENG_CHUNK_1261",
+  "t": "¡Feliz cumpleaños!",
+  "ex": "¡Feliz cumpleaños! Te traje un regalo."
+ },
+ {
+  "id": "ENG_CHUNK_1262",
+  "t": "¡Bien hecho! / ¡Muy bien!",
+  "ex": "¿Pasaste el examen? ¡Muy bien!",
+  "n": "Felicidades is also the usual reaction to good news."
+ },
+ {
+  "id": "ENG_CHUNK_1263",
+  "t": "Está lloviendo / Está lloviznando",
+  "ex": "Llévate un paraguas. Está lloviendo."
+ },
+ {
+  "id": "ENG_CHUNK_1264",
+  "t": "Qué buen día hace hoy, ¿no?",
+  "ex": "Qué buen día hace hoy, ¿no?",
+  "n": "Tag question with ¿no? or ¿verdad? Weather uses hacer: hace calor, hace sol."
+ },
+ {
+  "id": "ENG_CHUNK_1265",
+  "t": "¿Cuál es tu número de teléfono? / ¿Me das tu número?",
+  "ex": "¿Me das tu número? Te mando un mensaje."
+ },
+ {
+  "id": "ENG_CHUNK_1266",
+  "t": "No te oigo / No te escucho",
+  "ex": "Perdón, no te escucho. Hay mucho ruido aquí.",
+  "n": "On the phone, many say escuchar where Spain says oír."
+ },
+ {
+  "id": "ENG_CHUNK_1267",
+  "t": "Perdón, no vi tu llamada / Perdón, no te contesté",
+  "ex": "Hola, perdón, no vi tu llamada. ¿Qué pasó?",
+  "n": "No fixed \"missed call\" verb in speech; perdí tu llamada exists but sounds literal."
+ },
+ {
+  "id": "ENG_CHUNK_1268",
+  "t": "¿Te puedo hacer una pregunta? / ¿Le puedo hacer una pregunta?",
+  "ex": "Disculpe, ¿le puedo hacer una pregunta?",
+  "n": "Hacer una pregunta, never preguntar una pregunta."
+ },
+ {
+  "id": "ENG_CHUNK_1269",
+  "t": "¿A qué hora nos vemos? / ¿A qué hora quedamos?",
+  "ex": "Bueno, cena el viernes. ¿A qué hora nos vemos?",
+  "n": "Quedar = arrange to meet (Spain and parts of Latin America)."
+ },
+ {
+  "id": "ENG_CHUNK_1270",
+  "t": "Se me está acabando la batería / Me estoy quedando sin pila",
+  "ex": "Me tengo que ir, se me está acabando la batería."
+ },
+ {
+  "id": "ENG_CHUNK_1271",
+  "t": "Eh, a ver... / Mmm, déjame ver",
+  "ex": "Eh, a ver... creo que es el martes."
+ },
+ {
+  "id": "ENG_CHUNK_1272",
+  "t": "Un momento / Un momentito",
+  "ex": "Un momento, voy por mi pluma.",
+  "n": "Diminutive -ito softens the request."
+ },
+ {
+  "id": "ENG_CHUNK_1273",
+  "t": "Espera un momento / Espérame tantito",
+  "ex": "¡Espérame tantito, ya voy!",
+  "n": "Tantito is Mexican; elsewhere: espérame un ratito."
+ },
+ {
+  "id": "ENG_CHUNK_1274",
+  "t": "Espera / Aguanta / No cuelgues",
+  "ex": "Espera, déjame revisar.",
+  "n": "On the phone: no cuelgues (don't hang up)."
+ },
+ {
+  "id": "ENG_CHUNK_1275",
+  "t": "¿Perdón? / ¿Cómo dice?",
+  "ex": "¿Perdón? No lo escuché.",
+  "n": "¿Mande? is the polite Mexican form."
+ },
+ {
+  "id": "ENG_CHUNK_1276",
+  "t": "¿Qué? / ¿Cómo?",
+  "ex": "¿Cómo? ¿Me lo puedes repetir?",
+  "n": "Bare ¿Qué? can sound blunt; ¿Cómo? is safer."
+ },
+ {
+  "id": "ENG_CHUNK_1277",
+  "t": "¿Qué es eso?",
+  "ex": "¿Qué es eso? No conozco esa palabra."
+ },
+ {
+  "id": "ENG_CHUNK_1278",
+  "t": "Vale / Está bien / Okey",
+  "ex": "Está bien, vámonos.",
+  "n": "Vale is Spain; Latin America: okey, está bien, dale, sale (Mexico)."
+ },
+ {
+  "id": "ENG_CHUNK_1279",
+  "t": "Claro / Por supuesto",
+  "ex": "—¿Me puedo sentar aquí? —Claro."
+ },
+ {
+  "id": "ENG_CHUNK_1280",
+  "t": "Claro / Sí, cómo no",
+  "ex": "—¿Me pasas la sal? —Sí, cómo no."
+ },
+ {
+  "id": "ENG_CHUNK_1281",
+  "t": "Yo también",
+  "ex": "—Me encanta esta canción. —¡Yo también!"
+ },
+ {
+  "id": "ENG_CHUNK_1282",
+  "t": "Yo tampoco",
+  "ex": "—No me gusta el café. —Yo tampoco.",
+  "n": "After a negative: tampoco, never también."
+ },
+ {
+  "id": "ENG_CHUNK_1283",
+  "t": "Bueno / Ajá",
+  "ex": "Bueno, entonces el autobús sale a las nueve."
+ },
+ {
+  "id": "ENG_CHUNK_1284",
+  "t": "No sé",
+  "ex": "Perdón, no sé."
+ },
+ {
+  "id": "ENG_CHUNK_1285",
+  "t": "Tal vez / A lo mejor / Quizás",
+  "ex": "—¿Vienes esta noche? —A lo mejor.",
+  "n": "A lo mejor takes the indicative: a lo mejor voy."
+ },
+ {
+  "id": "ENG_CHUNK_1286",
+  "t": "No estoy seguro / No estoy segura",
+  "ex": "—¿Abre el domingo? —No estoy seguro."
+ },
+ {
+  "id": "ENG_CHUNK_1287",
+  "t": "Buena idea",
+  "ex": "—Tomemos un taxi. —Buena idea."
+ },
+ {
+  "id": "ENG_CHUNK_1288",
+  "t": "¡Qué bien! / ¡Qué padre! / ¡Qué bueno!",
+  "ex": "¿Conseguiste el trabajo? ¡Qué bien!",
+  "n": "¡Qué padre! is Mexican; ¡Qué chévere! Caribbean and Colombia."
+ },
+ {
+  "id": "ENG_CHUNK_1289",
+  "t": "¡Ay, no!",
+  "ex": "¡Ay, no! Se me olvidaron las llaves."
+ },
+ {
+  "id": "ENG_CHUNK_1290",
+  "t": "Pues... / Bueno...",
+  "ex": "Pues... no estoy seguro."
+ },
+ {
+  "id": "ENG_CHUNK_1291",
+  "t": "En realidad / La verdad",
+  "ex": "En realidad, soy de Canadá, no de Estados Unidos.",
+  "n": "False friend: actualmente = currently, not actually."
+ },
+ {
+  "id": "ENG_CHUNK_1292",
+  "t": "Me parece bien / Perfecto",
+  "ex": "—¿Pizza a las siete? —Me parece bien."
+ },
+ {
+  "id": "ENG_CHUNK_1293",
+  "t": "Va / Dale / Sale",
+  "ex": "—Nos vemos allá. —Dale.",
+  "n": "Dale (Southern Cone, Caribbean, Colombia), sale / va (Mexico)."
+ },
+ {
+  "id": "ENG_CHUNK_1294",
+  "t": "¡Guau! / ¡Qué bonito!",
+  "ex": "¡Guau! Tu casa está preciosa.",
+  "n": "Spanish often reacts with ¡Qué + adjective!: ¡Qué bonita!"
+ },
+ {
+  "id": "ENG_CHUNK_1295",
+  "t": "¿Está bien? / ¿Te parece bien?",
+  "ex": "Llego a las ocho. ¿Te parece bien?"
+ },
+ {
+  "id": "ENG_CHUNK_1296",
+  "t": "Y luego / Y después",
+  "ex": "Me levanté y luego desayuné."
+ },
+ {
+  "id": "ENG_CHUNK_1297",
+  "t": "Pero",
+  "ex": "Me gusta el té, pero no me gusta el café."
+ },
+ {
+  "id": "ENG_CHUNK_1298",
+  "t": "Porque",
+  "ex": "Estoy cansado porque trabajé hasta tarde.",
+  "n": "Porque (reason) vs. ¿por qué? (why?)."
+ },
+ {
+  "id": "ENG_CHUNK_1299",
+  "t": "También",
+  "ex": "Hablo francés. También hablo un poco de alemán."
+ },
+ {
+  "id": "ENG_CHUNK_1300",
+  "t": "Luego / Después",
+  "ex": "Primero me baño, luego me visto."
+ }
+]

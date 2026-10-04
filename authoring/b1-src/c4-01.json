@@ -1,0 +1,2313 @@
+[
+ {
+  "id": "BT:t1-open-01",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_open",
+  "star": true,
+  "trap": null,
+  "focus": [
+   "word-choice"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "Teil 1: you two are planning a party for Friday. Open the planning and ask your partner where to start.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Hallo! Na, wollen wir anfangen?",
+  "prefill": null,
+  "accept": [
+   "wir sollen ja [x] planen",
+   "sollen wir mit [x] anfangen",
+   "womit fangen wir an",
+   "was meinst du",
+   "was denkst du",
+   "was schlägst du vor",
+   "wo fangen wir an",
+   "hast du schon eine idee"
+  ],
+  "anywhere": true,
+  "model": "Wir sollen ja die Party am Freitag planen. Sollen wir mit dem Termin anfangen?",
+  "wrong": [],
+  "rule": "To open Teil 1, name the task and hand over a question: Wir sollen ja eine Party planen, was meinst du?",
+  "src": "cheatsheet §4 Einstieg und Vorschläge",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:t1-open-02",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_open",
+  "star": true,
+  "trap": null,
+  "focus": [
+   "word-choice"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "You're planning a farewell for a colleague. Start the planning and ask your partner when it should be.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Hallo! Was müssen wir denn alles planen?",
+  "prefill": null,
+  "accept": [
+   "was meinst du wann [x]",
+   "wann sollen wir [x]",
+   "wann wollen wir [x]",
+   "wir sollen ja [x] planen",
+   "sollen wir mit dem termin anfangen",
+   "was denkst du",
+   "was schlägst du vor",
+   "wann passt es dir"
+  ],
+  "anywhere": true,
+  "model": "Was meinst du, wann sollen wir die Feier machen?",
+  "wrong": [],
+  "rule": "To open Teil 1, name the task and hand over a question: Wir sollen ja eine Party planen, was meinst du?",
+  "src": "cheatsheet §4 Einstieg und Vorschläge",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:t1-open-03",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_open",
+  "star": true,
+  "trap": null,
+  "focus": [
+   "word-choice"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "You're planning a weekend trip together. Hand the first decision to your partner: where should you go?",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Also, ein Ausflug am Wochenende. Hast du eine Idee?",
+  "prefill": null,
+  "accept": [
+   "was meinst du wohin [x]",
+   "wohin sollen wir [x]",
+   "wohin wollen wir [x]",
+   "wo sollen wir [x]",
+   "was schlägst du vor",
+   "was meinst du",
+   "was denkst du",
+   "hast du (schon) eine idee"
+  ],
+  "anywhere": true,
+  "model": "Was meinst du, wohin sollen wir fahren?",
+  "wrong": [],
+  "rule": "To open Teil 1, name the task and hand over a question: Wir sollen ja eine Party planen, was meinst du?",
+  "src": "cheatsheet §4 Einstieg und Vorschläge",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:t1-suggest-01",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_suggest",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "Your flat is big enough for the party. Suggest celebrating at your place.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Wo sollen wir die Party am Freitag machen?",
+  "prefill": null,
+  "accept": [
+   "ich schlage vor dass wir [x]",
+   "ich schlage vor wir [x]",
+   "wie wäre es wenn wir [x]",
+   "wir könnten (doch) (auch) [x]",
+   "was hältst du davon wenn wir [x]",
+   "wollen wir [x]",
+   "sollen wir [x]",
+   "lass uns [x]"
+  ],
+  "anywhere": true,
+  "model": "Ich schlage vor, dass wir bei mir feiern.",
+  "wrong": [
+   "Ich schlage vor, dass wir feiern bei mir."
+  ],
+  "rule": "To make a suggestion: Ich schlage vor, dass wir … / Wie wäre es, wenn wir …?",
+  "src": "cheatsheet §4 Einstieg und Vorschläge",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:t1-suggest-02",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_suggest",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "You know a nice park by the lake. Suggest having the picnic there.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Wo könnten wir das Picknick machen?",
+  "prefill": null,
+  "accept": [
+   "wie wäre es wenn wir [x]",
+   "wir könnten (doch) (auch) [x]",
+   "ich schlage vor dass wir [x]",
+   "ich schlage vor wir [x]",
+   "wie wäre es mit [x]",
+   "wollen wir [x]",
+   "sollen wir [x]",
+   "lass uns [x]"
+  ],
+  "anywhere": true,
+  "model": "Wie wäre es, wenn wir in den Park am See gehen?",
+  "wrong": [
+   "Wie wäre es, wenn wir gehen in den Park am See?"
+  ],
+  "rule": "To make a suggestion: Ich schlage vor, dass wir … / Wie wäre es, wenn wir …?",
+  "src": "cheatsheet §4 Einstieg und Vorschläge",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:t1-suggest-03",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_suggest",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "For the course evening, suggest that everyone cooks something from their country.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Was machen wir beim Kursabend?",
+  "prefill": null,
+  "accept": [
+   "wir könnten (doch) (auch) [x]",
+   "ich schlage vor dass [x]",
+   "ich schlage vor [x]",
+   "wie wäre es wenn [x]",
+   "was hältst du davon wenn [x]",
+   "wollen wir [x]",
+   "sollen wir [x]",
+   "lass uns [x]"
+  ],
+  "anywhere": true,
+  "model": "Wir könnten doch alle etwas aus unserem Land kochen.",
+  "wrong": [
+   "Wie wäre es, wenn jeder kann etwas aus seinem Land kochen?"
+  ],
+  "rule": "To make a suggestion: Ich schlage vor, dass wir … / Wie wäre es, wenn wir …?",
+  "src": "cheatsheet §4 Einstieg und Vorschläge",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:t1-accept-01",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_accept",
+  "star": true,
+  "trap": null,
+  "focus": [
+   "word-choice"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "You like the idea. Say yes to it.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Wir könnten doch bei mir feiern. Ich habe einen großen Garten.",
+  "prefill": null,
+  "accept": [
+   "gute idee",
+   "finde ich gut",
+   "ich finde das gut",
+   "einverstanden",
+   "das klingt gut",
+   "das hört sich gut an",
+   "das gefällt mir",
+   "tolle idee"
+  ],
+  "anywhere": true,
+  "model": "Gute Idee! Ein Garten ist perfekt für eine Party.",
+  "wrong": [],
+  "rule": "To accept a suggestion: Gute Idee! / Das finde ich gut. / Einverstanden.",
+  "src": "cheatsheet §4 Reagieren: ja, jein, nein",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:t1-accept-02",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_accept",
+  "star": true,
+  "trap": null,
+  "focus": [
+   "word-choice"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "A voucher is a great present for your friend. Agree.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Wie wäre es mit einem Gutschein für Lena? Dann kann sie selbst etwas aussuchen.",
+  "prefill": null,
+  "accept": [
+   "das finde ich gut",
+   "ich finde das gut",
+   "gute idee",
+   "einverstanden",
+   "das klingt gut",
+   "das hört sich gut an",
+   "das ist eine schöne idee",
+   "super idee"
+  ],
+  "anywhere": true,
+  "model": "Das finde ich gut. Lena kauft gern selbst ein.",
+  "wrong": [],
+  "rule": "To accept a suggestion: Gute Idee! / Das finde ich gut. / Einverstanden.",
+  "src": "cheatsheet §4 Reagieren: ja, jein, nein",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:t1-accept-03",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_accept",
+  "star": true,
+  "trap": null,
+  "focus": [
+   "word-choice"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "Ten o'clock at your friend's flat works for you. Say so.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Ich schlage vor, dass wir uns um zehn Uhr bei Tom treffen.",
+  "prefill": null,
+  "accept": [
+   "das passt mir (gut)",
+   "ja das passt",
+   "einverstanden",
+   "geht klar",
+   "das geht",
+   "gute idee",
+   "das klingt gut",
+   "abgemacht"
+  ],
+  "anywhere": true,
+  "model": "Ja, das passt mir gut.",
+  "wrong": [],
+  "rule": "To accept a suggestion: Gute Idee! / Das finde ich gut. / Einverstanden.",
+  "src": "cheatsheet §4 Reagieren: ja, jein, nein",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:t1-reject-01",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_reject",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "The forecast for Sunday is bad. Turn the idea down politely and give the reason.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Wir könnten am Sonntag im Park picknicken.",
+  "prefill": null,
+  "accept": [
+   "das ist zwar eine gute idee aber [x]",
+   "ich weiß nicht ob das klappt weil [x]",
+   "das geht leider nicht weil [x]",
+   "da bin ich mir nicht (so) sicher",
+   "ich bin mir nicht sicher ob [x]",
+   "tut mir leid aber [x]",
+   "ich weiß nicht ob [x]",
+   "leider soll es [x] regnen"
+  ],
+  "anywhere": true,
+  "model": "Das ist zwar eine gute Idee, aber am Sonntag soll es regnen.",
+  "wrong": [
+   "Ich weiß nicht, ob das klappt, weil es soll am Sonntag regnen."
+  ],
+  "rule": "To turn down a suggestion politely: Das ist zwar eine gute Idee, aber … / Das geht leider nicht, weil …",
+  "src": "cheatsheet §4 Reagieren: ja, jein, nein",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:t1-reject-02",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_reject",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "A bike is far too expensive for the two of you. Say no and explain why.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Wir könnten Lena ein neues Fahrrad schenken.",
+  "prefill": null,
+  "accept": [
+   "das geht leider nicht weil [x]",
+   "das ist zwar eine gute idee aber [x]",
+   "ich weiß nicht ob das klappt weil [x]",
+   "da bin ich mir nicht (so) sicher",
+   "ich finde das zu teuer",
+   "das ist (leider) zu teuer",
+   "tut mir leid aber [x]",
+   "ich weiß nicht ob [x]"
+  ],
+  "anywhere": true,
+  "model": "Das geht leider nicht, weil ein Fahrrad zu teuer ist.",
+  "wrong": [
+   "Das geht leider nicht, weil ein Fahrrad ist zu teuer."
+  ],
+  "rule": "To turn down a suggestion politely: Das ist zwar eine gute Idee, aber … / Das geht leider nicht, weil …",
+  "src": "cheatsheet §4 Reagieren: ja, jein, nein",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:t1-reject-03",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_reject",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "You have a doctor's appointment at eight on Saturday. Say you can't make it and why.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Wir fangen am Samstag um acht Uhr mit dem Umzug an, okay?",
+  "prefill": null,
+  "accept": [
+   "das geht leider nicht weil [x]",
+   "tut mir leid aber [x]",
+   "das ist zwar eine gute idee aber [x]",
+   "um acht kann ich (leider) nicht",
+   "ich kann (leider) nicht um acht",
+   "ich würde gern aber [x]",
+   "ich würde gerne aber [x]",
+   "leider habe ich [x] einen arzttermin"
+  ],
+  "anywhere": true,
+  "model": "Das geht leider nicht, weil ich um acht einen Arzttermin habe.",
+  "wrong": [
+   "Das geht leider nicht, weil ich habe um acht einen Arzttermin."
+  ],
+  "rule": "To turn down a suggestion politely: Das ist zwar eine gute Idee, aber … / Das geht leider nicht, weil …",
+  "src": "cheatsheet §4 Reagieren: ja, jein, nein",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:t1-counter-01",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_counter",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "A restaurant costs too much. Offer a different idea: celebrating at your place.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Wir könnten die Party im Restaurant machen.",
+  "prefill": null,
+  "accept": [
+   "einen anderen vorschlag",
+   "vielleicht lieber [x]",
+   "wie wäre es wenn wir [x]",
+   "wir könnten (doch) (auch) [x]",
+   "sollen wir lieber [x]",
+   "eine andere idee",
+   "ich würde lieber [x]",
+   "was hältst du davon wenn wir [x]"
+  ],
+  "anywhere": true,
+  "model": "Ich hätte einen anderen Vorschlag: Wir könnten bei mir feiern.",
+  "wrong": [
+   "Ich würde lieber bei mir feiern, weil das Restaurant ist zu teuer."
+  ],
+  "rule": "To offer another idea: Ich hätte einen anderen Vorschlag: … / Vielleicht lieber …?",
+  "src": "cheatsheet §4 Reagieren: ja, jein, nein",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:t1-counter-02",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_counter",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "You're not sure about pizza. Suggest a buffet instead, where everyone brings something.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Wir könnten für den Kursabend Pizza bestellen.",
+  "prefill": null,
+  "accept": [
+   "vielleicht lieber [x]",
+   "einen anderen vorschlag",
+   "da bin ich mir nicht (so) sicher",
+   "wie wäre es (lieber) mit [x]",
+   "wie wäre es wenn [x]",
+   "wir könnten (doch) (auch) [x]",
+   "sollen wir lieber [x]",
+   "ich würde lieber [x]"
+  ],
+  "anywhere": true,
+  "model": "Da bin ich mir nicht sicher. Vielleicht lieber ein Buffet?",
+  "wrong": [
+   "Wie wäre es, wenn jeder kann etwas mitbringen?"
+  ],
+  "rule": "To offer another idea: Ich hätte einen anderen Vorschlag: … / Vielleicht lieber …?",
+  "src": "cheatsheet §4 Reagieren: ja, jein, nein",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:t1-counter-03",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_counter",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "The morning doesn't work for you. Suggest going in the afternoon instead.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Lass uns morgen früh ins Krankenhaus zu Tom fahren.",
+  "prefill": null,
+  "accept": [
+   "wie wäre es wenn wir [x]",
+   "lieber am nachmittag",
+   "einen anderen vorschlag",
+   "wir könnten (doch) (auch) [x]",
+   "sollen wir lieber [x]",
+   "geht es (auch) am nachmittag",
+   "können wir [x] am nachmittag [x]",
+   "ich würde lieber [x]"
+  ],
+  "anywhere": true,
+  "model": "Wie wäre es, wenn wir lieber am Nachmittag fahren?",
+  "wrong": [
+   "Wie wäre es, wenn wir fahren lieber am Nachmittag?"
+  ],
+  "rule": "To offer another idea: Ich hätte einen anderen Vorschlag: … / Vielleicht lieber …?",
+  "src": "cheatsheet §4 Reagieren: ja, jein, nein",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:t1-tasks-01",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_tasks",
+  "star": true,
+  "trap": null,
+  "focus": [
+   "word-choice"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "Share out the jobs: you'll do the music, and your partner takes care of the drinks.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Wer macht jetzt was? Es gibt viel zu tun.",
+  "prefill": null,
+  "accept": [
+   "ich könnte [x] übernehmen",
+   "ich kümmere mich um [x]",
+   "ich kümmer mich um [x]",
+   "du kümmerst dich um [x]",
+   "ich übernehme [x]",
+   "ich mache [x]",
+   "kannst du [x] besorgen",
+   "kannst du [x] mitbringen"
+  ],
+  "anywhere": true,
+  "model": "Ich könnte die Musik übernehmen, und du kümmerst dich um die Getränke.",
+  "wrong": [],
+  "rule": "To share out jobs: Ich könnte … übernehmen, und du kümmerst dich um …",
+  "src": "cheatsheet §4 Aufgaben verteilen",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:t1-tasks-02",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_tasks",
+  "star": true,
+  "trap": null,
+  "focus": [
+   "word-choice"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "Offer to buy the farewell present yourself.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Und wer besorgt das Geschenk für Frau Berger?",
+  "prefill": null,
+  "accept": [
+   "ich kümmere mich (gern) um [x]",
+   "ich kümmere mich (gern) darum",
+   "ich kümmer mich (gern) darum",
+   "soll ich das machen",
+   "ich kann [x] besorgen",
+   "ich besorge [x]",
+   "das übernehme ich",
+   "das mache ich"
+  ],
+  "anywhere": true,
+  "model": "Ich kümmere mich um das Geschenk.",
+  "wrong": [],
+  "rule": "To share out jobs: Ich könnte … übernehmen, und du kümmerst dich um …",
+  "src": "cheatsheet §4 Aufgaben verteilen",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:t1-tasks-03",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_tasks",
+  "star": true,
+  "trap": null,
+  "focus": [
+   "word-choice"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "Ask your partner to bring boxes, and say you'll organise a car.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Was brauchen wir alles für den Umzug?",
+  "prefill": null,
+  "accept": [
+   "kannst du [x] mitbringen",
+   "könntest du [x] mitbringen",
+   "bringst du [x] mit",
+   "kannst du [x] besorgen",
+   "ich organisiere [x]",
+   "ich kümmere mich um [x]",
+   "ich besorge [x]",
+   "soll ich [x]"
+  ],
+  "anywhere": true,
+  "model": "Kannst du Kartons mitbringen? Ich organisiere ein Auto.",
+  "wrong": [],
+  "rule": "To share out jobs: Ich könnte … übernehmen, und du kümmerst dich um …",
+  "src": "cheatsheet §4 Aufgaben verteilen",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:t1-confirm-01",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_confirm",
+  "star": true,
+  "trap": null,
+  "focus": [
+   "word-choice"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "Agree and settle the point so you can move on.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Also, dann feiern wir bei dir, okay?",
+  "prefill": null,
+  "accept": [
+   "(okay) dann machen wir das so",
+   "dann machen wir es so",
+   "abgemacht",
+   "dann ist das klar",
+   "dann ist alles klar",
+   "das machen wir so",
+   "einverstanden",
+   "gut so machen wir das"
+  ],
+  "anywhere": true,
+  "model": "Okay, dann machen wir das so.",
+  "wrong": [],
+  "rule": "To settle a point and move on: Okay, dann machen wir das so.",
+  "src": "cheatsheet §4 Einigung und Abschluss",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:t1-confirm-02",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_confirm",
+  "star": true,
+  "trap": null,
+  "focus": [
+   "word-choice"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "Sum up the plan: you meet on Friday at 6 pm in front of the school.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Und wann und wo treffen wir uns?",
+  "prefill": null,
+  "accept": [
+   "(also) wir treffen uns ([x]) vor der schule",
+   "treffen wir uns ([x]) vor der schule",
+   "(also) wir treffen uns am freitag [x]",
+   "treffen wir uns am freitag [x]",
+   "wir sehen uns ([x]) vor der schule",
+   "abgemacht"
+  ],
+  "anywhere": true,
+  "model": "Also, wir treffen uns am Freitag um 18 Uhr vor der Schule.",
+  "wrong": [],
+  "rule": "To sum up the plan, use um for the time, am for the day and vor for the place: am Freitag um 18 Uhr vor der Schule.",
+  "src": "cheatsheet §4 Einigung und Abschluss",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:t1-confirm-03",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_confirm",
+  "star": true,
+  "trap": null,
+  "focus": [
+   "word-choice"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "Wrap up: say you think you've covered everything and you're looking forward to it.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Gut, ich glaube, das war's.",
+  "prefill": null,
+  "accept": [
+   "ich glaube wir haben alles besprochen",
+   "ich glaube dass wir alles besprochen haben",
+   "wir haben alles besprochen",
+   "dann ist alles klar",
+   "ich freue mich (schon) (darauf)",
+   "ich freu mich (schon) (drauf)",
+   "ich freue mich schon drauf",
+   "das wird (bestimmt) toll"
+  ],
+  "anywhere": true,
+  "model": "Ich glaube, wir haben alles besprochen. Ich freue mich schon!",
+  "wrong": [],
+  "rule": "To close Teil 1: Ich glaube, wir haben alles besprochen.",
+  "src": "cheatsheet §4 Einigung und Abschluss",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BR:t1-reply-01",
+  "kind": "reply",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_react",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "How do you want to answer?",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Wir könnten die Party am Freitag bei mir machen.",
+  "prefill": null,
+  "accept": [],
+  "anywhere": true,
+  "model": null,
+  "wrong": [
+   "Das ist zwar eine gute Idee, aber das klappt nicht, weil deine Wohnung ist zu klein."
+  ],
+  "rule": "Agree, doubt with a reason, or offer another idea: all three are good Teil 1 moves.",
+  "src": "cheatsheet §4 Reagieren: ja, jein, nein",
+  "chunk": null,
+  "level": "B1",
+  "wrong_move": "doubt",
+  "moves": [
+   {
+    "key": "agree",
+    "label": "Agree",
+    "fn": "t1_accept",
+    "accept": [
+     "gute idee",
+     "finde ich gut",
+     "einverstanden",
+     "das passt mir (gut)",
+     "das klingt gut",
+     "das hört sich gut an",
+     "tolle idee",
+     "ich finde das gut"
+    ],
+    "model": "Gute Idee! Bei dir ist genug Platz."
+   },
+   {
+    "key": "doubt",
+    "label": "Doubt + reason",
+    "fn": "t1_reject",
+    "accept": [
+     "das ist zwar eine gute idee aber [x]",
+     "ich weiß nicht ob das klappt weil [x]",
+     "das geht leider nicht weil [x]",
+     "da bin ich mir nicht (so) sicher",
+     "ich bin mir nicht sicher ob [x]",
+     "tut mir leid aber [x]",
+     "ich weiß nicht ob [x]",
+     "ich würde gern aber [x]"
+    ],
+    "model": "Das ist zwar eine gute Idee, aber deine Nachbarn sind sehr streng."
+   },
+   {
+    "key": "other",
+    "label": "Other idea",
+    "fn": "t1_counter",
+    "accept": [
+     "einen anderen vorschlag",
+     "wie wäre es wenn wir [x]",
+     "wir könnten (doch) (auch) [x]",
+     "sollen wir lieber [x]",
+     "vielleicht lieber [x]",
+     "wie wäre es (lieber) mit [x]",
+     "ich würde lieber [x]",
+     "eine andere idee"
+    ],
+    "model": "Ich hätte einen anderen Vorschlag: Wir könnten im Jugendzentrum feiern."
+   }
+  ]
+ },
+ {
+  "id": "BR:t1-reply-02",
+  "kind": "reply",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_react",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "How do you want to answer?",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Wie wäre es mit einem Picknick am See?",
+  "prefill": null,
+  "accept": [],
+  "anywhere": true,
+  "model": null,
+  "wrong": [
+   "Ich weiß nicht, ob das klappt, weil es soll morgen regnen."
+  ],
+  "rule": "Agree, doubt with a reason, or offer another idea: all three are good Teil 1 moves.",
+  "src": "cheatsheet §4 Reagieren: ja, jein, nein",
+  "chunk": null,
+  "level": "B1",
+  "wrong_move": "doubt",
+  "moves": [
+   {
+    "key": "agree",
+    "label": "Agree",
+    "fn": "t1_accept",
+    "accept": [
+     "gute idee",
+     "finde ich gut",
+     "einverstanden",
+     "das passt mir (gut)",
+     "das klingt gut",
+     "das hört sich gut an",
+     "tolle idee",
+     "ich finde das gut"
+    ],
+    "model": "Gute Idee! Am See ist es im Sommer sehr schön."
+   },
+   {
+    "key": "doubt",
+    "label": "Doubt + reason",
+    "fn": "t1_reject",
+    "accept": [
+     "ich weiß nicht ob das klappt weil [x]",
+     "das ist zwar eine gute idee aber [x]",
+     "das geht leider nicht weil [x]",
+     "da bin ich mir nicht (so) sicher",
+     "ich bin mir nicht sicher ob [x]",
+     "tut mir leid aber [x]",
+     "ich weiß nicht ob [x]",
+     "ich würde gern aber [x]"
+    ],
+    "model": "Ich weiß nicht, ob das klappt, weil es morgen regnen soll."
+   },
+   {
+    "key": "other",
+    "label": "Other idea",
+    "fn": "t1_counter",
+    "accept": [
+     "sollen wir lieber [x]",
+     "einen anderen vorschlag",
+     "wie wäre es wenn wir [x]",
+     "wir könnten (doch) (auch) [x]",
+     "vielleicht lieber [x]",
+     "wie wäre es (lieber) mit [x]",
+     "ich würde lieber [x]",
+     "eine andere idee"
+    ],
+    "model": "Sollen wir lieber in den Stadtpark gehen? Der ist näher."
+   }
+  ]
+ },
+ {
+  "id": "BR:t1-reply-03",
+  "kind": "reply",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_react",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "How do you want to answer?",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Ich schlage vor, dass wir für Frau Berger einen Kuchen backen.",
+  "prefill": null,
+  "accept": [],
+  "anywhere": true,
+  "model": null,
+  "wrong": [
+   "Da bin ich mir nicht so sicher, weil sie darf keinen Zucker essen."
+  ],
+  "rule": "Agree, doubt with a reason, or offer another idea: all three are good Teil 1 moves.",
+  "src": "cheatsheet §4 Reagieren: ja, jein, nein",
+  "chunk": null,
+  "level": "B1",
+  "wrong_move": "doubt",
+  "moves": [
+   {
+    "key": "agree",
+    "label": "Agree",
+    "fn": "t1_accept",
+    "accept": [
+     "einverstanden",
+     "gute idee",
+     "finde ich gut",
+     "das passt mir (gut)",
+     "das klingt gut",
+     "das hört sich gut an",
+     "tolle idee",
+     "ich finde das gut"
+    ],
+    "model": "Einverstanden. Ich backe gern."
+   },
+   {
+    "key": "doubt",
+    "label": "Doubt + reason",
+    "fn": "t1_reject",
+    "accept": [
+     "da bin ich mir nicht (so) sicher",
+     "das ist zwar eine gute idee aber [x]",
+     "ich weiß nicht ob das klappt weil [x]",
+     "das geht leider nicht weil [x]",
+     "ich bin mir nicht sicher ob [x]",
+     "tut mir leid aber [x]",
+     "ich weiß nicht ob [x]",
+     "ich würde gern aber [x]"
+    ],
+    "model": "Da bin ich mir nicht so sicher. Frau Berger isst keinen Zucker."
+   },
+   {
+    "key": "other",
+    "label": "Other idea",
+    "fn": "t1_counter",
+    "accept": [
+     "vielleicht lieber [x]",
+     "einen anderen vorschlag",
+     "wie wäre es wenn wir [x]",
+     "wir könnten (doch) (auch) [x]",
+     "sollen wir lieber [x]",
+     "wie wäre es (lieber) mit [x]",
+     "ich würde lieber [x]",
+     "eine andere idee"
+    ],
+    "model": "Vielleicht lieber Blumen und eine Karte?"
+   }
+  ]
+ },
+ {
+  "id": "BR:t1-reply-04",
+  "kind": "reply",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_react",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "How do you want to answer?",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Wir könnten Lena einen Gutschein schenken.",
+  "prefill": null,
+  "accept": [],
+  "anywhere": true,
+  "model": null,
+  "wrong": [
+   "Ich hätte einen anderen Vorschlag: Wie wäre es, wenn wir können ihr ein Buch schenken?"
+  ],
+  "rule": "Agree, doubt with a reason, or offer another idea: all three are good Teil 1 moves.",
+  "src": "cheatsheet §4 Reagieren: ja, jein, nein",
+  "chunk": null,
+  "level": "B1",
+  "wrong_move": "other",
+  "moves": [
+   {
+    "key": "agree",
+    "label": "Agree",
+    "fn": "t1_accept",
+    "accept": [
+     "finde ich gut",
+     "gute idee",
+     "einverstanden",
+     "das passt mir (gut)",
+     "das klingt gut",
+     "das hört sich gut an",
+     "tolle idee",
+     "ich finde das gut"
+    ],
+    "model": "Das finde ich gut. Dann kann sie selbst etwas aussuchen."
+   },
+   {
+    "key": "doubt",
+    "label": "Doubt + reason",
+    "fn": "t1_reject",
+    "accept": [
+     "das ist zwar eine gute idee aber [x]",
+     "ich weiß nicht ob das klappt weil [x]",
+     "das geht leider nicht weil [x]",
+     "da bin ich mir nicht (so) sicher",
+     "ich bin mir nicht sicher ob [x]",
+     "tut mir leid aber [x]",
+     "ich weiß nicht ob [x]",
+     "ich würde gern aber [x]"
+    ],
+    "model": "Das ist zwar eine gute Idee, aber ein Gutschein ist ein bisschen langweilig."
+   },
+   {
+    "key": "other",
+    "label": "Other idea",
+    "fn": "t1_counter",
+    "accept": [
+     "einen anderen vorschlag",
+     "wie wäre es wenn wir [x]",
+     "wir könnten (doch) (auch) [x]",
+     "sollen wir lieber [x]",
+     "vielleicht lieber [x]",
+     "wie wäre es (lieber) mit [x]",
+     "ich würde lieber [x]",
+     "eine andere idee"
+    ],
+    "model": "Ich hätte einen anderen Vorschlag: Wir könnten ihr ein Buch schenken."
+   }
+  ]
+ },
+ {
+  "id": "BR:t1-reply-05",
+  "kind": "reply",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_react",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "How do you want to answer?",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Lass uns am Wochenende nach Hamburg fahren.",
+  "prefill": null,
+  "accept": [],
+  "anywhere": true,
+  "model": null,
+  "wrong": [
+   "Das geht leider nicht, weil ich muss am Samstag arbeiten."
+  ],
+  "rule": "Agree, doubt with a reason, or offer another idea: all three are good Teil 1 moves.",
+  "src": "cheatsheet §4 Reagieren: ja, jein, nein",
+  "chunk": null,
+  "level": "B1",
+  "wrong_move": "doubt",
+  "moves": [
+   {
+    "key": "agree",
+    "label": "Agree",
+    "fn": "t1_accept",
+    "accept": [
+     "das klingt gut",
+     "gute idee",
+     "finde ich gut",
+     "einverstanden",
+     "das passt mir (gut)",
+     "das hört sich gut an",
+     "tolle idee",
+     "ich finde das gut"
+    ],
+    "model": "Das klingt gut! Ich war noch nie in Hamburg."
+   },
+   {
+    "key": "doubt",
+    "label": "Doubt + reason",
+    "fn": "t1_reject",
+    "accept": [
+     "das geht leider nicht weil [x]",
+     "das ist zwar eine gute idee aber [x]",
+     "ich weiß nicht ob das klappt weil [x]",
+     "da bin ich mir nicht (so) sicher",
+     "ich bin mir nicht sicher ob [x]",
+     "tut mir leid aber [x]",
+     "ich weiß nicht ob [x]",
+     "ich würde gern aber [x]"
+    ],
+    "model": "Das geht leider nicht, weil ich am Samstag arbeiten muss."
+   },
+   {
+    "key": "other",
+    "label": "Other idea",
+    "fn": "t1_counter",
+    "accept": [
+     "wie wäre es wenn wir [x]",
+     "einen anderen vorschlag",
+     "wir könnten (doch) (auch) [x]",
+     "sollen wir lieber [x]",
+     "vielleicht lieber [x]",
+     "wie wäre es (lieber) mit [x]",
+     "ich würde lieber [x]",
+     "eine andere idee"
+    ],
+    "model": "Wie wäre es, wenn wir lieber nach Bremen fahren? Das ist billiger."
+   }
+  ]
+ },
+ {
+  "id": "BR:t1-reply-06",
+  "kind": "reply",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_react",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "How do you want to answer?",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Wir könnten am Samstag schon um sieben Uhr mit dem Umzug anfangen.",
+  "prefill": null,
+  "accept": [],
+  "anywhere": true,
+  "model": null,
+  "wrong": [
+   "Ich bin mir nicht sicher, ob alle können so früh kommen."
+  ],
+  "rule": "Agree, doubt with a reason, or offer another idea: all three are good Teil 1 moves.",
+  "src": "cheatsheet §4 Reagieren: ja, jein, nein",
+  "chunk": null,
+  "level": "B1",
+  "wrong_move": "doubt",
+  "moves": [
+   {
+    "key": "agree",
+    "label": "Agree",
+    "fn": "t1_accept",
+    "accept": [
+     "einverstanden",
+     "gute idee",
+     "finde ich gut",
+     "das passt mir (gut)",
+     "das klingt gut",
+     "das hört sich gut an",
+     "tolle idee",
+     "ich finde das gut"
+    ],
+    "model": "Einverstanden. Dann sind wir mittags fertig."
+   },
+   {
+    "key": "doubt",
+    "label": "Doubt + reason",
+    "fn": "t1_reject",
+    "accept": [
+     "ich bin mir nicht sicher ob [x]",
+     "das ist zwar eine gute idee aber [x]",
+     "ich weiß nicht ob das klappt weil [x]",
+     "das geht leider nicht weil [x]",
+     "da bin ich mir nicht (so) sicher",
+     "tut mir leid aber [x]",
+     "ich weiß nicht ob [x]",
+     "ich würde gern aber [x]"
+    ],
+    "model": "Ich bin mir nicht sicher, ob alle so früh kommen können."
+   },
+   {
+    "key": "other",
+    "label": "Other idea",
+    "fn": "t1_counter",
+    "accept": [
+     "wir könnten (doch) (auch) [x]",
+     "einen anderen vorschlag",
+     "wie wäre es wenn wir [x]",
+     "sollen wir lieber [x]",
+     "vielleicht lieber [x]",
+     "wie wäre es (lieber) mit [x]",
+     "ich würde lieber [x]",
+     "eine andere idee"
+    ],
+    "model": "Wir könnten auch um neun anfangen. Das ist nicht so früh."
+   }
+  ]
+ },
+ {
+  "id": "BR:t1-reply-07",
+  "kind": "reply",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_react",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "How do you want to answer?",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Für den Kursabend könnten wir doch ein Restaurant reservieren.",
+  "prefill": null,
+  "accept": [],
+  "anywhere": true,
+  "model": null,
+  "wrong": [
+   "Das ist zwar eine gute Idee, aber ich glaube, dass ein Restaurant ist zu teuer."
+  ],
+  "rule": "Agree, doubt with a reason, or offer another idea: all three are good Teil 1 moves.",
+  "src": "cheatsheet §4 Reagieren: ja, jein, nein",
+  "chunk": null,
+  "level": "B1",
+  "wrong_move": "doubt",
+  "moves": [
+   {
+    "key": "agree",
+    "label": "Agree",
+    "fn": "t1_accept",
+    "accept": [
+     "gute idee",
+     "finde ich gut",
+     "einverstanden",
+     "das passt mir (gut)",
+     "das klingt gut",
+     "das hört sich gut an",
+     "tolle idee",
+     "ich finde das gut"
+    ],
+    "model": "Gute Idee! Dann müssen wir nicht kochen."
+   },
+   {
+    "key": "doubt",
+    "label": "Doubt + reason",
+    "fn": "t1_reject",
+    "accept": [
+     "das ist zwar eine gute idee aber [x]",
+     "ich weiß nicht ob das klappt weil [x]",
+     "das geht leider nicht weil [x]",
+     "da bin ich mir nicht (so) sicher",
+     "ich bin mir nicht sicher ob [x]",
+     "tut mir leid aber [x]",
+     "ich weiß nicht ob [x]",
+     "ich würde gern aber [x]"
+    ],
+    "model": "Das ist zwar eine gute Idee, aber ein Restaurant ist für viele zu teuer."
+   },
+   {
+    "key": "other",
+    "label": "Other idea",
+    "fn": "t1_counter",
+    "accept": [
+     "wie wäre es (lieber) mit [x]",
+     "einen anderen vorschlag",
+     "wie wäre es wenn wir [x]",
+     "wir könnten (doch) (auch) [x]",
+     "sollen wir lieber [x]",
+     "vielleicht lieber [x]",
+     "ich würde lieber [x]",
+     "eine andere idee"
+    ],
+    "model": "Wie wäre es mit einem Buffet im Kursraum? Jeder bringt etwas mit."
+   }
+  ]
+ },
+ {
+  "id": "BR:t1-reply-08",
+  "kind": "reply",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_react",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "How do you want to answer?",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Sollen wir Tom am Mittwoch im Krankenhaus besuchen?",
+  "prefill": null,
+  "accept": [],
+  "anywhere": true,
+  "model": null,
+  "wrong": [
+   "Tut mir leid, aber ich kann nicht, weil ich habe am Mittwoch einen Kurs."
+  ],
+  "rule": "Agree, doubt with a reason, or offer another idea: all three are good Teil 1 moves.",
+  "src": "cheatsheet §4 Reagieren: ja, jein, nein",
+  "chunk": null,
+  "level": "B1",
+  "wrong_move": "doubt",
+  "moves": [
+   {
+    "key": "agree",
+    "label": "Agree",
+    "fn": "t1_accept",
+    "accept": [
+     "das passt mir (gut)",
+     "gute idee",
+     "finde ich gut",
+     "einverstanden",
+     "das klingt gut",
+     "das hört sich gut an",
+     "tolle idee",
+     "ich finde das gut"
+    ],
+    "model": "Ja, das passt mir gut. Am Mittwoch habe ich frei."
+   },
+   {
+    "key": "doubt",
+    "label": "Doubt + reason",
+    "fn": "t1_reject",
+    "accept": [
+     "tut mir leid aber [x]",
+     "das ist zwar eine gute idee aber [x]",
+     "ich weiß nicht ob das klappt weil [x]",
+     "das geht leider nicht weil [x]",
+     "da bin ich mir nicht (so) sicher",
+     "ich bin mir nicht sicher ob [x]",
+     "ich weiß nicht ob [x]",
+     "ich würde gern aber [x]"
+    ],
+    "model": "Tut mir leid, aber am Mittwoch habe ich einen Kurs bis acht."
+   },
+   {
+    "key": "other",
+    "label": "Other idea",
+    "fn": "t1_counter",
+    "accept": [
+     "ich würde lieber [x]",
+     "einen anderen vorschlag",
+     "wie wäre es wenn wir [x]",
+     "wir könnten (doch) (auch) [x]",
+     "sollen wir lieber [x]",
+     "vielleicht lieber [x]",
+     "wie wäre es (lieber) mit [x]",
+     "eine andere idee"
+    ],
+    "model": "Ich würde lieber am Donnerstag gehen. Da habe ich mehr Zeit."
+   }
+  ]
+ },
+ {
+  "id": "BR:t1-reply-09",
+  "kind": "reply",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_react",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "How do you want to answer?",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Wir könnten für die Party eine Band organisieren.",
+  "prefill": null,
+  "accept": [],
+  "anywhere": true,
+  "model": null,
+  "wrong": [
+   "Ich weiß nicht, ob das klappt, weil eine Band ist sehr teuer."
+  ],
+  "rule": "Agree, doubt with a reason, or offer another idea: all three are good Teil 1 moves.",
+  "src": "cheatsheet §4 Reagieren: ja, jein, nein",
+  "chunk": null,
+  "level": "B1",
+  "wrong_move": "doubt",
+  "moves": [
+   {
+    "key": "agree",
+    "label": "Agree",
+    "fn": "t1_accept",
+    "accept": [
+     "das hört sich gut an",
+     "gute idee",
+     "finde ich gut",
+     "einverstanden",
+     "das passt mir (gut)",
+     "das klingt gut",
+     "tolle idee",
+     "ich finde das gut"
+    ],
+    "model": "Das hört sich gut an! Live-Musik ist toll."
+   },
+   {
+    "key": "doubt",
+    "label": "Doubt + reason",
+    "fn": "t1_reject",
+    "accept": [
+     "ich weiß nicht ob das klappt weil [x]",
+     "das ist zwar eine gute idee aber [x]",
+     "das geht leider nicht weil [x]",
+     "da bin ich mir nicht (so) sicher",
+     "ich bin mir nicht sicher ob [x]",
+     "tut mir leid aber [x]",
+     "ich weiß nicht ob [x]",
+     "ich würde gern aber [x]"
+    ],
+    "model": "Ich weiß nicht, ob das klappt, weil eine Band sehr teuer ist."
+   },
+   {
+    "key": "other",
+    "label": "Other idea",
+    "fn": "t1_counter",
+    "accept": [
+     "einen anderen vorschlag",
+     "wie wäre es wenn wir [x]",
+     "wir könnten (doch) (auch) [x]",
+     "sollen wir lieber [x]",
+     "vielleicht lieber [x]",
+     "wie wäre es (lieber) mit [x]",
+     "ich würde lieber [x]",
+     "eine andere idee"
+    ],
+    "model": "Ich hätte einen anderen Vorschlag: Mein Bruder kann Musik auflegen."
+   }
+  ]
+ },
+ {
+  "id": "BR:t1-reply-10",
+  "kind": "reply",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_react",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "How do you want to answer?",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Wie wäre es, wenn wir mit dem Zug nach München fahren?",
+  "prefill": null,
+  "accept": [],
+  "anywhere": true,
+  "model": null,
+  "wrong": [
+   "Das ist zwar eine gute Idee, aber ich weiß nicht, ob der Zug ist billig genug."
+  ],
+  "rule": "Agree, doubt with a reason, or offer another idea: all three are good Teil 1 moves.",
+  "src": "cheatsheet §4 Reagieren: ja, jein, nein",
+  "chunk": null,
+  "level": "B1",
+  "wrong_move": "doubt",
+  "moves": [
+   {
+    "key": "agree",
+    "label": "Agree",
+    "fn": "t1_accept",
+    "accept": [
+     "gute idee",
+     "finde ich gut",
+     "einverstanden",
+     "das passt mir (gut)",
+     "das klingt gut",
+     "das hört sich gut an",
+     "tolle idee",
+     "ich finde das gut"
+    ],
+    "model": "Gute Idee! Mit dem Zug ist es entspannter."
+   },
+   {
+    "key": "doubt",
+    "label": "Doubt + reason",
+    "fn": "t1_reject",
+    "accept": [
+     "das ist zwar eine gute idee aber [x]",
+     "ich weiß nicht ob das klappt weil [x]",
+     "das geht leider nicht weil [x]",
+     "da bin ich mir nicht (so) sicher",
+     "ich bin mir nicht sicher ob [x]",
+     "tut mir leid aber [x]",
+     "ich weiß nicht ob [x]",
+     "ich würde gern aber [x]"
+    ],
+    "model": "Das ist zwar eine gute Idee, aber der Zug ist am Wochenende sehr voll."
+   },
+   {
+    "key": "other",
+    "label": "Other idea",
+    "fn": "t1_counter",
+    "accept": [
+     "sollen wir lieber [x]",
+     "einen anderen vorschlag",
+     "wie wäre es wenn wir [x]",
+     "wir könnten (doch) (auch) [x]",
+     "vielleicht lieber [x]",
+     "wie wäre es (lieber) mit [x]",
+     "ich würde lieber [x]",
+     "eine andere idee"
+    ],
+    "model": "Sollen wir lieber mit dem Auto fahren? Das ist für zwei Leute billiger."
+   }
+  ]
+ },
+ {
+  "id": "BR:t1-reply-11",
+  "kind": "reply",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_react",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "How do you want to answer?",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Jeder aus dem Kurs könnte zehn Euro für das Geschenk geben.",
+  "prefill": null,
+  "accept": [],
+  "anywhere": true,
+  "model": null,
+  "wrong": [
+   "Ich weiß nicht, ob das klappt, weil viele Leute haben nicht so viel Geld."
+  ],
+  "rule": "Agree, doubt with a reason, or offer another idea: all three are good Teil 1 moves.",
+  "src": "cheatsheet §4 Reagieren: ja, jein, nein",
+  "chunk": null,
+  "level": "B1",
+  "wrong_move": "doubt",
+  "moves": [
+   {
+    "key": "agree",
+    "label": "Agree",
+    "fn": "t1_accept",
+    "accept": [
+     "einverstanden",
+     "gute idee",
+     "finde ich gut",
+     "das passt mir (gut)",
+     "das klingt gut",
+     "das hört sich gut an",
+     "tolle idee",
+     "ich finde das gut"
+    ],
+    "model": "Einverstanden. Zehn Euro sind fair."
+   },
+   {
+    "key": "doubt",
+    "label": "Doubt + reason",
+    "fn": "t1_reject",
+    "accept": [
+     "ich weiß nicht ob das klappt weil [x]",
+     "das ist zwar eine gute idee aber [x]",
+     "das geht leider nicht weil [x]",
+     "da bin ich mir nicht (so) sicher",
+     "ich bin mir nicht sicher ob [x]",
+     "tut mir leid aber [x]",
+     "ich weiß nicht ob [x]",
+     "ich würde gern aber [x]"
+    ],
+    "model": "Ich weiß nicht, ob das klappt, weil nicht alle so viel Geld haben."
+   },
+   {
+    "key": "other",
+    "label": "Other idea",
+    "fn": "t1_counter",
+    "accept": [
+     "vielleicht lieber [x]",
+     "einen anderen vorschlag",
+     "wie wäre es wenn wir [x]",
+     "wir könnten (doch) (auch) [x]",
+     "sollen wir lieber [x]",
+     "wie wäre es (lieber) mit [x]",
+     "ich würde lieber [x]",
+     "eine andere idee"
+    ],
+    "model": "Vielleicht lieber fünf Euro? Dann können alle mitmachen."
+   }
+  ]
+ },
+ {
+  "id": "BR:t1-reply-12",
+  "kind": "reply",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_react",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "How do you want to answer?",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Wir könnten Tom Blumen ins Krankenhaus mitbringen.",
+  "prefill": null,
+  "accept": [],
+  "anywhere": true,
+  "model": null,
+  "wrong": [
+   "Wie wäre es, wenn wir bringen ihm ein Buch mit?"
+  ],
+  "rule": "Agree, doubt with a reason, or offer another idea: all three are good Teil 1 moves.",
+  "src": "cheatsheet §4 Reagieren: ja, jein, nein",
+  "chunk": null,
+  "level": "B1",
+  "wrong_move": "other",
+  "moves": [
+   {
+    "key": "agree",
+    "label": "Agree",
+    "fn": "t1_accept",
+    "accept": [
+     "finde ich gut",
+     "gute idee",
+     "einverstanden",
+     "das passt mir (gut)",
+     "das klingt gut",
+     "das hört sich gut an",
+     "tolle idee",
+     "ich finde das gut"
+    ],
+    "model": "Das finde ich gut. Blumen freuen ihn bestimmt."
+   },
+   {
+    "key": "doubt",
+    "label": "Doubt + reason",
+    "fn": "t1_reject",
+    "accept": [
+     "da bin ich mir nicht (so) sicher",
+     "das ist zwar eine gute idee aber [x]",
+     "ich weiß nicht ob das klappt weil [x]",
+     "das geht leider nicht weil [x]",
+     "ich bin mir nicht sicher ob [x]",
+     "tut mir leid aber [x]",
+     "ich weiß nicht ob [x]",
+     "ich würde gern aber [x]"
+    ],
+    "model": "Da bin ich mir nicht so sicher. Im Krankenhaus sind Blumen oft nicht erlaubt."
+   },
+   {
+    "key": "other",
+    "label": "Other idea",
+    "fn": "t1_counter",
+    "accept": [
+     "wie wäre es wenn wir [x]",
+     "einen anderen vorschlag",
+     "wir könnten (doch) (auch) [x]",
+     "sollen wir lieber [x]",
+     "vielleicht lieber [x]",
+     "wie wäre es (lieber) mit [x]",
+     "ich würde lieber [x]",
+     "eine andere idee"
+    ],
+    "model": "Wie wäre es, wenn wir ihm ein Buch mitbringen?"
+   }
+  ]
+ },
+ {
+  "id": "BT:forum-disagree-01",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "opinion",
+  "teil": "S3",
+  "fn": "forum_disagree",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "You don't agree: in the office you can talk to colleagues. Say so politely and give that reason.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Ich finde, Homeoffice ist für alle besser.",
+  "prefill": null,
+  "accept": [
+   "ich sehe das (etwas) (ganz) anders",
+   "das sehe ich (etwas) (ganz) anders",
+   "anderer meinung",
+   "nicht deiner meinung",
+   "das stimmt (zwar) aber [x]",
+   "das finde ich nicht",
+   "das überzeugt mich nicht",
+   "das kann man so nicht sagen"
+  ],
+  "anywhere": true,
+  "model": "Ich sehe das etwas anders, weil man im Büro mit den Kollegen sprechen kann.",
+  "wrong": [
+   "Ich sehe das etwas anders, weil man kann im Büro mit den Kollegen sprechen."
+  ],
+  "rule": "To disagree politely: Ich sehe das etwas anders, weil …",
+  "src": "cheatsheet §3 Zustimmen / teilweise / widersprechen",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:forum-disagree-02",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "opinion",
+  "teil": "S3",
+  "fn": "forum_disagree",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "You don't agree: travelling alone you meet new people. Say so politely and give that reason.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Allein reisen ist langweilig.",
+  "prefill": null,
+  "accept": [
+   "das sehe ich (etwas) (ganz) anders",
+   "ich sehe das (etwas) (ganz) anders",
+   "anderer meinung",
+   "nicht deiner meinung",
+   "das stimmt (zwar) aber [x]",
+   "das finde ich nicht",
+   "das überzeugt mich nicht",
+   "das kann man so nicht sagen"
+  ],
+  "anywhere": true,
+  "model": "Das sehe ich anders, weil man allein viele neue Leute kennenlernt.",
+  "wrong": [
+   "Das sehe ich anders, weil man kann allein viele neue Leute kennenlernen."
+  ],
+  "rule": "To disagree politely: Ich sehe das etwas anders, weil …",
+  "src": "cheatsheet §3 Zustimmen / teilweise / widersprechen",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:forum-disagree-03",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "opinion",
+  "teil": "S3",
+  "fn": "forum_disagree",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "You don't agree: not every family has the time for a pet. Say so politely and give that reason.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Jede Familie sollte ein Haustier haben.",
+  "prefill": null,
+  "accept": [
+   "da bin ich anderer meinung",
+   "anderer meinung",
+   "ich sehe das (etwas) (ganz) anders",
+   "das sehe ich (etwas) (ganz) anders",
+   "nicht deiner meinung",
+   "das stimmt (zwar) aber [x]",
+   "das finde ich nicht",
+   "das überzeugt mich nicht"
+  ],
+  "anywhere": true,
+  "model": "Da bin ich anderer Meinung. Nicht jede Familie hat Zeit für ein Tier.",
+  "wrong": [
+   "Da bin ich anderer Meinung, weil viele Familien haben keine Zeit."
+  ],
+  "rule": "To disagree politely: Ich sehe das etwas anders, weil …",
+  "src": "cheatsheet §3 Zustimmen / teilweise / widersprechen",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:forum-disagree-04",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "opinion",
+  "teil": "S3",
+  "fn": "forum_disagree",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "You don't agree: books help children to concentrate. Say so politely and give that reason.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Kinder brauchen heute keine Bücher mehr. Sie haben ja das Internet.",
+  "prefill": null,
+  "accept": [
+   "das überzeugt mich nicht",
+   "ich sehe das (etwas) (ganz) anders",
+   "das sehe ich (etwas) (ganz) anders",
+   "anderer meinung",
+   "nicht deiner meinung",
+   "das stimmt (zwar) aber [x]",
+   "das finde ich nicht",
+   "das kann man so nicht sagen"
+  ],
+  "anywhere": true,
+  "model": "Das überzeugt mich nicht. Mit Büchern können Kinder sich besser konzentrieren.",
+  "wrong": [
+   "Das überzeugt mich nicht, weil mit Büchern Kinder können sich besser konzentrieren."
+  ],
+  "rule": "To disagree politely: Ich sehe das etwas anders, weil …",
+  "src": "cheatsheet §3 Zustimmen / teilweise / widersprechen",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:forum-agree-01",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "opinion",
+  "teil": "S3",
+  "fn": "forum_agree",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "You agree: phones distract children in class. Say so and add that reason.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Kinder sollten in der Schule kein Handy haben.",
+  "prefill": null,
+  "accept": [
+   "da hast du recht",
+   "das sehe ich auch so",
+   "ganz deiner meinung",
+   "ich bin deiner meinung",
+   "ich stimme dir (voll) zu",
+   "stimme ich dir (voll) zu",
+   "das finde ich auch",
+   "ich finde auch [x]"
+  ],
+  "anywhere": true,
+  "model": "Da hast du Recht. Das Handy lenkt die Kinder im Unterricht ab.",
+  "wrong": [
+   "Da hast du Recht, weil das Handy lenkt die Kinder ab."
+  ],
+  "rule": "To agree and add your own reason: Da hast du Recht, … / Das sehe ich auch so, weil …",
+  "src": "cheatsheet §3 Zustimmen / teilweise / widersprechen",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:forum-agree-02",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "opinion",
+  "teil": "S3",
+  "fn": "forum_agree",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "You agree: cycling is healthy and cheap. Say so and add that reason.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Man sollte viel mehr mit dem Fahrrad fahren.",
+  "prefill": null,
+  "accept": [
+   "das sehe ich auch so",
+   "da hast du recht",
+   "ganz deiner meinung",
+   "ich bin deiner meinung",
+   "ich stimme dir (voll) zu",
+   "stimme ich dir (voll) zu",
+   "das finde ich auch",
+   "ich finde auch [x]"
+  ],
+  "anywhere": true,
+  "model": "Das sehe ich auch so, weil Radfahren gesund und billig ist.",
+  "wrong": [
+   "Das sehe ich auch so, weil es ist gesund und billig."
+  ],
+  "rule": "To agree and add your own reason: Da hast du recht, … / Das sehe ich auch so, weil …",
+  "src": "cheatsheet §3 Zustimmen / teilweise / widersprechen",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:forum-agree-03",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "opinion",
+  "teil": "S3",
+  "fn": "forum_agree",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "You agree: you learn the most from your mistakes. Say so and add that reason.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Fehler machen gehört zum Lernen dazu.",
+  "prefill": null,
+  "accept": [
+   "ganz deiner meinung",
+   "da hast du recht",
+   "das sehe ich auch so",
+   "ich bin deiner meinung",
+   "ich stimme dir (voll) zu",
+   "stimme ich dir (voll) zu",
+   "das finde ich auch",
+   "ich finde auch [x]"
+  ],
+  "anywhere": true,
+  "model": "Da bin ich ganz deiner Meinung. Aus Fehlern lernt man am meisten.",
+  "wrong": [
+   "Da bin ich ganz deiner Meinung, weil man kann aus Fehlern viel lernen."
+  ],
+  "rule": "To agree and add your own reason: Da hast du recht, … / Das sehe ich auch so, weil …",
+  "src": "cheatsheet §3 Zustimmen / teilweise / widersprechen",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:forum-agree-04",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "opinion",
+  "teil": "S3",
+  "fn": "forum_agree",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "You agree: you pay half your salary for your flat. Say so and add that reason.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Die Mieten in der Stadt sind viel zu hoch.",
+  "prefill": null,
+  "accept": [
+   "ich stimme dir (voll) zu",
+   "da hast du recht",
+   "das sehe ich auch so",
+   "ganz deiner meinung",
+   "ich bin deiner meinung",
+   "stimme ich dir (voll) zu",
+   "das finde ich auch",
+   "ich finde auch [x]"
+  ],
+  "anywhere": true,
+  "model": "Ich stimme dir zu. Ich bezahle die Hälfte von meinem Gehalt für die Wohnung.",
+  "wrong": [
+   "Ich stimme dir zu, weil ich muss die Hälfte von meinem Gehalt bezahlen."
+  ],
+  "rule": "To agree and add your own reason: Da hast du recht, … / Das sehe ich auch so, weil …",
+  "src": "cheatsheet §3 Zustimmen / teilweise / widersprechen",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:forum-weigh-01",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "opinion",
+  "teil": "S3",
+  "fn": "forum_weigh",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "Your partner is partly right. Say it's quieter there, but without a car you can hardly get anywhere.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Auf dem Land lebt man viel besser als in der Stadt.",
+  "prefill": null,
+  "accept": [
+   "das stimmt zwar aber [x]",
+   "das stimmt teilweise",
+   "einerseits [x] andererseits [x]",
+   "da hast du (zwar) recht aber [x]",
+   "das ist zwar richtig aber [x]",
+   "teilweise hast du recht",
+   "ich stimme dir teilweise zu",
+   "stimmt schon aber [x]"
+  ],
+  "anywhere": true,
+  "model": "Das stimmt zwar, aber ohne Auto kommt man kaum weg.",
+  "wrong": [
+   "Das stimmt zwar, aber ich glaube, dass man kann ohne Auto kaum wegkommen."
+  ],
+  "rule": "To agree only partly: Das stimmt zwar, aber …",
+  "src": "cheatsheet §3 Zustimmen / teilweise / widersprechen",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:forum-weigh-02",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "opinion",
+  "teil": "S3",
+  "fn": "forum_weigh",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "Your partner is partly right. Agree that it's unhealthy, but say once in a while is okay.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Fast Food ist immer ungesund.",
+  "prefill": null,
+  "accept": [
+   "das stimmt teilweise",
+   "das stimmt zwar aber [x]",
+   "einerseits [x] andererseits [x]",
+   "da hast du (zwar) recht aber [x]",
+   "das ist zwar richtig aber [x]",
+   "teilweise hast du recht",
+   "ich stimme dir teilweise zu",
+   "stimmt schon aber [x]"
+  ],
+  "anywhere": true,
+  "model": "Das stimmt teilweise, allerdings ist ein Burger ab und zu kein Problem.",
+  "wrong": [
+   "Das stimmt teilweise, aber ich finde, dass ein Burger ist ab und zu okay."
+  ],
+  "rule": "To agree only partly: Das stimmt zwar, aber …",
+  "src": "cheatsheet §3 Zustimmen / teilweise / widersprechen",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:forum-weigh-03",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "opinion",
+  "teil": "S3",
+  "fn": "forum_weigh",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "Your partner is partly right. Online learning is flexible, but you can't talk to the others in the course.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Online-Lernen ist genauso gut wie ein Kurs.",
+  "prefill": null,
+  "accept": [
+   "einerseits [x] andererseits [x]",
+   "das stimmt zwar aber [x]",
+   "das stimmt teilweise",
+   "da hast du (zwar) recht aber [x]",
+   "das ist zwar richtig aber [x]",
+   "teilweise hast du recht",
+   "ich stimme dir teilweise zu",
+   "stimmt schon aber [x]"
+  ],
+  "anywhere": true,
+  "model": "Einerseits ist Online-Lernen flexibel, andererseits fehlt der Kontakt zu den anderen.",
+  "wrong": [
+   "Da hast du zwar recht, aber ich glaube, dass man kann online nicht gut sprechen."
+  ],
+  "rule": "To agree only partly: Das stimmt zwar, aber …",
+  "src": "cheatsheet §3 Zustimmen / teilweise / widersprechen",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BT:forum-weigh-04",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "opinion",
+  "teil": "S3",
+  "fn": "forum_weigh",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "strict": [],
+  "plan": "choice",
+  "task": null,
+  "prompt": "Your partner is partly right. They cost a lot of time, but they also connect people.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": "Soziale Netzwerke machen einsam.",
+  "prefill": null,
+  "accept": [
+   "da hast du (zwar) recht aber [x]",
+   "das stimmt zwar aber [x]",
+   "das stimmt teilweise",
+   "einerseits [x] andererseits [x]",
+   "das ist zwar richtig aber [x]",
+   "teilweise hast du recht",
+   "ich stimme dir teilweise zu",
+   "stimmt schon aber [x]"
+  ],
+  "anywhere": true,
+  "model": "Da hast du zwar Recht, aber soziale Netzwerke verbinden auch Menschen.",
+  "wrong": [
+   "Da hast du zwar Recht, aber ich finde, dass sie können auch Menschen verbinden."
+  ],
+  "rule": "To agree only partly: Das stimmt zwar, aber …",
+  "src": "cheatsheet §3 Zustimmen / teilweise / widersprechen",
+  "chunk": null,
+  "level": "B1"
+ }
+]

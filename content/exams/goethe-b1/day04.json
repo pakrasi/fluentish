@@ -1,0 +1,253 @@
+{
+  "day": 4,
+  "topic": "Reisen und Verkehr",
+  "lesen": {
+    "teil1": {
+      "title": "Mit dem Nachtzug durch Europa",
+      "source": "Blog",
+      "text": "Ich fliege nicht gern. Nicht aus Angst, sondern weil ich es hasse, drei Stunden vor dem Abflug am Flughafen zu stehen. Deshalb habe ich dieses Jahr etwas Neues ausprobiert: Ich bin mit dem Nachtzug von Hamburg nach Wien gefahren, und von dort weiter nach Venedig.\n\nDer Zug fährt um 20 Uhr 45 in Hamburg ab und kommt am nächsten Morgen kurz nach neun in Wien an. Ich hatte ein Bett im Liegewagen gebucht, zusammen mit fünf anderen Personen im Abteil. Das klingt eng, war aber gemütlicher, als ich dachte. Eine ältere Dame aus Salzburg hat allen Kekse angeboten, und ein Student aus Dänemark hat mir erklärt, warum er seit drei Jahren nicht mehr fliegt. Um elf hat der Schaffner das Licht ausgemacht.\n\nGeschlafen habe ich ehrlich gesagt schlecht. Der Zug hat in der Nacht mehrmals gehalten, und mein Nachbar hat geschnarcht. Aber als ich morgens den Vorhang aufgemacht habe, sah ich die Berge in der Sonne. Das hat mich für alles entschädigt. Zum Frühstück gab es Kaffee und ein Brötchen, das war im Preis enthalten.\n\nDie Fahrkarte hat 89 Euro gekostet, ich hatte sie zwei Monate vorher gebucht. Wer erst eine Woche vorher bucht, zahlt oft das Doppelte. Ein Flug wäre vielleicht billiger gewesen, aber dann hätte ich noch ein Hotel für eine Nacht gebraucht. So hatte ich Fahrt und Übernachtung in einem.\n\nIn Wien bin ich zwei Tage geblieben, dann ging es weiter nach Venedig, wieder über Nacht. Mein Tipp: Nehmt Ohrstöpsel mit, bucht früh und packt leicht, denn im Liegewagen gibt es wenig Platz für Koffer. Und redet mit den Leuten im Abteil – das ist das Beste am Zugfahren.",
+      "items": [
+        {"id": "L1-1", "statement": "Der Autor fliegt nicht gern, weil er Angst vor dem Fliegen hat.", "answer": false, "skill": "negation"},
+        {"id": "L1-2", "statement": "Der Autor hatte im Zug ein Abteil für sich allein.", "answer": false, "skill": "detail"},
+        {"id": "L1-3", "statement": "Das Frühstück im Zug war im Fahrpreis enthalten.", "answer": true, "skill": "detail"},
+        {"id": "L1-4", "statement": "Wer die Fahrkarte kurz vor der Fahrt kauft, zahlt meistens mehr.", "answer": true, "skill": "number-time"},
+        {"id": "L1-5", "statement": "Von Wien nach Venedig ist der Autor tagsüber gefahren.", "answer": false, "skill": "detail"},
+        {"id": "L1-6", "statement": "Der Autor empfiehlt, mit wenig Gepäck zu reisen.", "answer": true, "skill": "paraphrase"}
+      ]
+    },
+    "teil2": {
+      "texts": [
+        {
+          "title": "Ein Jahr Deutschlandticket",
+          "source": "Zeitung",
+          "text": "Seit einem Jahr gibt es das Deutschlandticket: Für 49 Euro im Monat kann man in ganz Deutschland alle Busse, Straßenbahnen und Regionalzüge benutzen. Nur die schnellen Fernzüge sind ausgenommen. Rund elf Millionen Menschen haben das Ticket inzwischen abonniert. Die Verkehrsministerin spricht von einem großen Erfolg: Viele Menschen, die früher mit dem Auto gefahren sind, würden heute Bus und Bahn nutzen.\n\nGanz so einfach ist es allerdings nicht. Eine Studie der Universität Kassel zeigt, dass nur etwa jeder zehnte Käufer vorher regelmäßig Auto gefahren ist. Die meisten hatten schon vorher eine Monatskarte und zahlen jetzt einfach weniger. Vor allem auf dem Land bringt das Ticket wenig, denn dort fährt der Bus oft nur dreimal am Tag. „Ein billiges Ticket nützt nichts, wenn kein Bus kommt“, sagt der Verkehrsforscher Dr. Tim Ahrens.\n\nDazu kommt ein weiteres Problem: Die Regionalzüge sind seit der Einführung des Tickets deutlich voller, besonders am Wochenende und in den Ferien. Auf beliebten Strecken wie zwischen München und den Alpen müssen Fahrgäste manchmal stehen. Die Bahn hat angekündigt, mehr Wagen einzusetzen, sobald neue Züge geliefert werden. Das kann jedoch noch zwei Jahre dauern. Wer im Sommer zum Wandern fährt, dem raten die Verkehrsbetriebe deshalb, früh am Morgen loszufahren.",
+          "items": [
+            {"id": "L2-1", "question": "Mit dem Deutschlandticket …", "options": ["kann man auch mit den schnellen Fernzügen fahren.", "kann man Regionalzüge und Busse in ganz Deutschland nutzen.", "fährt man einen Monat lang kostenlos."], "answer": 1, "skill": "paraphrase"},
+            {"id": "L2-2", "question": "Die Studie der Universität Kassel zeigt, dass …", "options": ["die meisten Käufer früher mit dem Auto gefahren sind.", "das Ticket auf dem Land besonders gut funktioniert.", "die meisten Käufer schon vorher Bus und Bahn genutzt haben."], "answer": 2, "skill": "paraphrase"},
+            {"id": "L2-3", "question": "Wer im Sommer mit dem Zug in die Berge fährt, …", "options": ["sollte früh am Morgen losfahren.", "bekommt neue Züge mit mehr Wagen.", "muss ein zusätzliches Ticket kaufen."], "answer": 0, "skill": "detail"}
+          ]
+        },
+        {
+          "title": "Ein Dorf wehrt sich gegen zu viele Touristen",
+          "source": "Zeitschrift",
+          "text": "Seebach hat 780 Einwohner, einen See, eine kleine Kirche und ein Problem: Im Sommer kommen bis zu zehntausend Besucher am Tag. Seit ein Foto des Dorfes vor drei Jahren im Internet berühmt wurde, stehen Reisebusse aus ganz Europa auf der einzigen Straße. Die Besucher fotografieren die Häuser, manche öffnen sogar Gartentore, um ein besseres Bild zu bekommen.\n\nFür die Einwohner ist das inzwischen zu viel. „Ich kann morgens nicht zum Bäcker gehen, ohne auf zwanzig Fotos zu landen“, sagt Anna Moser, die seit 60 Jahren hier lebt. Deshalb hat der Gemeinderat im Frühjahr reagiert. Reisebusse müssen sich jetzt online anmelden, und pro Tag dürfen höchstens 40 Busse ins Dorf. Wer keine Anmeldung hat, muss draußen bleiben. Außerdem kostet das Parken jetzt 30 Euro pro Bus, das Geld fließt in die Reinigung der Straßen.\n\nNicht alle finden das gut. Der Besitzer des Hotels am See, Georg Lindner, warnt davor, die Touristen zu vertreiben: „Ohne die Gäste gibt es hier keine Arbeit. Meine Angestellten kommen alle aus dem Dorf.“ Die Bürgermeisterin sieht das anders: Die meisten Tagesgäste würden nur eine Stunde bleiben, ein Foto machen und nichts kaufen. Sie will vor allem die Besucher gewinnen, die mehrere Tage bleiben und im Ort übernachten.",
+          "items": [
+            {"id": "L2-4", "question": "Seebach ist bekannt geworden, …", "options": ["weil das Dorf nur 780 Einwohner hat.", "weil ein Bild des Dorfes im Internet berühmt wurde.", "weil es dort ein neues Hotel am See gibt."], "answer": 1, "skill": "detail"},
+            {"id": "L2-5", "question": "Reisebusse …", "options": ["dürfen nur noch nach einer Anmeldung ins Dorf fahren.", "müssen 40 Euro Parkgebühr bezahlen.", "dürfen gar nicht mehr ins Dorf fahren."], "answer": 0, "skill": "detail"},
+            {"id": "L2-6", "question": "Die Bürgermeisterin …", "options": ["möchte gar keine Touristen mehr im Dorf haben.", "ist derselben Meinung wie der Hotelbesitzer.", "möchte vor allem Gäste, die länger bleiben."], "answer": 2, "skill": "attitude"}
+          ]
+        }
+      ]
+    },
+    "teil3": {
+      "intro": "Einige Personen aus Ihrem Deutschkurs suchen Angebote rund um Reisen und Verkehr. Lesen Sie die Situationen 1–7 und die Anzeigen A–J. Welche Anzeige passt zu welcher Situation? Eine Anzeige kann nur einmal gewählt werden. Für eine Situation gibt es keine passende Anzeige – markieren Sie dort 0.",
+      "situations": [
+        {"id": "L3-1", "text": "Familie Kaya möchte im Sommer eine Woche an der Nordsee verbringen und braucht eine Unterkunft mit eigener Küche.", "answer": "F", "skill": "matching"},
+        {"id": "L3-2", "text": "Lukas fährt nächsten Freitag nach Berlin und möchte möglichst günstig mit anderen zusammen fahren.", "answer": "A", "skill": "matching"},
+        {"id": "L3-3", "text": "Frau Dietrich (72) reist gern, möchte aber nicht allein unterwegs sein.", "answer": "H", "skill": "matching"},
+        {"id": "L3-4", "text": "Mehmet muss um 5 Uhr morgens am Flughafen sein, wenn noch keine Bahn fährt.", "answer": "C", "skill": "matching"},
+        {"id": "L3-5", "text": "Sonja möchte in den Ferien ihr Englisch verbessern und dabei ein anderes Land kennenlernen.", "answer": "J", "skill": "matching"},
+        {"id": "L3-6", "text": "Anja hat ein altes Fahrrad und möchte lernen, es selbst zu reparieren.", "answer": null, "skill": "matching"},
+        {"id": "L3-7", "text": "Herr und Frau Weber wollen ein Wochenende in den Alpen wandern und in einer Hütte übernachten.", "answer": "I", "skill": "matching"}
+      ],
+      "ads": [
+        {"letter": "A", "title": "Mitfahrgelegenheit Köln – Berlin", "text": "Fahre jeden Freitag um 14 Uhr von Köln nach Berlin, zurück am Sonntag. Drei Plätze frei, 25 € pro Person und Strecke. Kleines Gepäck okay, Nichtraucherauto. Nachricht an mitfahren-koeln@mail.de"},
+        {"letter": "B", "title": "Autovermietung Schnell & Günstig", "text": "Kleinwagen ab 29 € pro Tag, Transporter ab 59 €. Alle Fahrzeuge mit Navi und Klimaanlage. Mindestalter 21 Jahre, Führerschein seit mindestens zwei Jahren. Station direkt am Hauptbahnhof."},
+        {"letter": "C", "title": "Flughafentransfer rund um die Uhr", "text": "Wir bringen Sie zu jeder Tages- und Nachtzeit zum Flughafen, auch wenn kein Zug mehr fährt. Festpreis 35 € aus dem Stadtgebiet, Abholung an der Haustür. Buchung bis 2 Stunden vorher: 0221 / 12 12 12."},
+        {"letter": "D", "title": "Fahrradwerkstatt Zweirad-Meier", "text": "Reparaturen aller Art, meistens am selben Tag fertig: Bremsen, Licht, Reifen. Kostenloser Sicherheitscheck im April. Mo–Fr 9–18 Uhr, Sa 9–13 Uhr. Wir reparieren – Sie fahren!"},
+        {"letter": "E", "title": "Stadträder – leihen und losfahren", "text": "500 Leihräder an 60 Stationen in der ganzen Stadt. Die ersten 30 Minuten jeder Fahrt sind kostenlos, danach 1 € pro halbe Stunde. Registrierung in der App, Zahlung per Karte."},
+        {"letter": "F", "title": "Ferienhaus an der Nordsee", "text": "Gemütliches Reetdachhaus für bis zu 6 Personen, 500 m zum Deich. Voll ausgestattete Küche, Garten, zwei Fahrräder inklusive. Ab 95 € pro Nacht, im Juli und August nur wochenweise. www.nordsee-reethaus.de"},
+        {"letter": "G", "title": "Städtereise Prag mit dem Bus", "text": "3 Tage Prag: Hin- und Rückfahrt im modernen Reisebus, 2 Übernachtungen im 3-Sterne-Hotel mit Frühstück, Stadtführung inklusive. 249 € pro Person. Abfahrt jeden zweiten Freitag ab Busbahnhof."},
+        {"letter": "H", "title": "Gemeinsam statt einsam – Reisen für Senioren", "text": "Gruppenreisen für Menschen ab 65: Bodensee, Ostsee, Südtirol. Reiseleitung von der Abfahrt bis zur Rückkehr, Einzelzimmer ohne Aufpreis. Katalog kostenlos anfordern: Tel. 0800 / 55 66 77."},
+        {"letter": "I", "title": "Wanderwochenende im Allgäu", "text": "Samstag und Sonntag in den Bergen: zwei geführte Touren (je 5–6 Stunden), Übernachtung mit Abendessen in einer Berghütte. Mittlere Kondition erforderlich. 139 € pro Person. Termine von Juni bis September."},
+        {"letter": "J", "title": "Sprachreise nach Malta", "text": "Englisch lernen, wo andere Urlaub machen: 2 Wochen Sprachkurs (20 Stunden pro Woche) plus Unterkunft in einer Gastfamilie. Für Jugendliche und Erwachsene, alle Niveaus. Ab 890 € inklusive Flug."}
+      ]
+    },
+    "teil4": {
+      "question": "Sollten Flüge innerhalb Deutschlands verboten werden?",
+      "comments": [
+        {"id": "L4-1", "author": "Klara, Hamburg", "text": "Von Hamburg nach München fliegt man eine Stunde, mit dem Zug braucht man sechs. Trotzdem: Der Zug ist da, und er fährt jede Stunde. Für das Klima ist jeder Inlandsflug einer zu viel. In Frankreich hat man kurze Flüge schon verboten, und die Welt ist nicht untergegangen.", "answer": true, "skill": "attitude"},
+        {"id": "L4-2", "author": "Stefan, Nürnberg", "text": "Ich muss beruflich oft nach Berlin. Mit dem Zug bin ich einen ganzen Tag unterwegs, weil ständig etwas ausfällt. Solange die Bahn nicht funktioniert, kann man das Flugzeug nicht verbieten. Erst die Alternative bauen, dann verbieten.", "answer": false, "skill": "attitude"},
+        {"id": "L4-3", "author": "Yara, Köln", "text": "Ich fliege selbst nie innerhalb Deutschlands, das ist mir zu teuer und zu umständlich. Aber ein Verbot? Das sollte doch jeder selbst entscheiden. Wenn der Zug besser und billiger wird, fliegt sowieso niemand mehr. Dafür braucht es keine Verbote.", "answer": false, "skill": "inference"},
+        {"id": "L4-4", "author": "Henning, Rostock", "text": "Meine Tochter ist 16 und hat mich gefragt, warum wir für zwei Tage Urlaub nach Stuttgart fliegen. Ich hatte keine Antwort. Wir haben es dann mit dem Zug gemacht, und es war toll. Ich bin für ein Verbot, für alle Strecken unter 600 Kilometern.", "answer": true, "skill": "attitude"},
+        {"id": "L4-5", "author": "Beatrix, München", "text": "Wer auf einer Insel wohnt oder in einer abgelegenen Region, hat oft keine gute Zugverbindung. Und was ist mit Kranken, die schnell in eine Spezialklinik müssen? Ein generelles Verbot ist zu einfach gedacht.", "answer": false, "skill": "attitude"},
+        {"id": "L4-6", "author": "Tarek, Leipzig", "text": "Klar, die Bahn ist im Moment ein Ärgernis, das gebe ich zu. Aber sie wird nur besser, wenn mehr Leute sie benutzen müssen. Das Flugzeug ist eine bequeme Ausrede. Nehmt sie weg, und plötzlich investiert die Politik in Schienen.", "answer": true, "skill": "inference"},
+        {"id": "L4-7", "author": "Ines, Freiburg", "text": "Ich arbeite am Flughafen und sehe jeden Tag Leute, die für ein Meeting von zwei Stunden nach Düsseldorf fliegen. Das ist absurd. Videokonferenz oder Zug – beides geht. Ein Verbot würde vielen Firmen helfen, endlich umzudenken.", "answer": true, "skill": "attitude"}
+      ]
+    },
+    "teil5": {
+      "title": "Beförderungsbedingungen – Verkehrsbetriebe Neustadt (Auszug)",
+      "text": "§ 1 Fahrkarten\nFahrkarten sind vor Fahrtantritt zu kaufen und beim Einsteigen zu entwerten. In Bussen können beim Fahrer nur Einzelfahrkarten gekauft werden, bitte halten Sie dafür passendes Geld bereit. Handy-Tickets müssen vor dem Einsteigen gekauft sein. Wer bei einer Kontrolle keine gültige Fahrkarte vorzeigen kann, zahlt ein erhöhtes Beförderungsentgelt von 60 €.\n\n§ 2 Fahrräder\nFahrräder können in Straßenbahnen und Zügen mitgenommen werden, jedoch nicht Montag bis Freitag zwischen 6 und 9 Uhr sowie zwischen 15 und 18 Uhr. In Bussen sind nur Klappräder erlaubt. Für die Mitnahme ist eine Fahrradkarte (2,50 €) erforderlich; Kinderräder und Klappräder fahren kostenlos mit.\n\n§ 3 Tiere\nKleine Tiere in einer geschlossenen Box fahren kostenlos. Für Hunde ist eine Kinderfahrkarte zu lösen. Hunde müssen an der Leine geführt werden und einen Maulkorb tragen. Blindenhunde fahren kostenlos und ohne Maulkorb.\n\n§ 4 Verspätungen\nWenn Sie wegen einer Verspätung von mehr als 20 Minuten Ihr Ziel mit unseren Verkehrsmitteln nicht erreichen können, dürfen Sie ein Taxi nehmen. Wir erstatten Ihnen bis zu 25 €. Dafür benötigen wir die Taxiquittung; der Antrag muss innerhalb von 14 Tagen gestellt werden.\n\n§ 5 Fundsachen\nGegenstände, die in unseren Fahrzeugen gefunden werden, bringen wir ins Fundbüro am Hauptbahnhof (Montag bis Freitag 9–17 Uhr). Dort werden sie drei Monate aufbewahrt. Zum Abholen ist ein Ausweis vorzulegen. Ein Versand nach Hause ist nicht möglich.",
+      "items": [
+        {"id": "L5-1", "question": "Wer im Bus eine Fahrkarte kaufen möchte, …", "options": ["kann alle Fahrkartenarten beim Fahrer bekommen.", "braucht passendes Geld für eine Einzelfahrkarte.", "muss 60 Euro bezahlen."], "answer": 1, "skill": "detail"},
+        {"id": "L5-2", "question": "Fahrräder …", "options": ["dürfen in Bussen nur mitfahren, wenn man sie zusammenklappen kann.", "dürfen zu jeder Zeit in der Straßenbahn mitfahren.", "fahren in allen Verkehrsmitteln kostenlos mit."], "answer": 0, "skill": "paraphrase"},
+        {"id": "L5-3", "question": "Wenn die Bahn mehr als 20 Minuten Verspätung hat, …", "options": ["bekommt man den Fahrpreis zurück.", "kann man kostenlos mit dem Taxi weiterfahren.", "erstattet das Unternehmen bis zu 25 Euro für ein Taxi."], "answer": 2, "skill": "detail"},
+        {"id": "L5-4", "question": "Fundsachen …", "options": ["kann man auch am Wochenende abholen.", "werden drei Monate lang aufbewahrt.", "werden dem Besitzer nach Hause geschickt."], "answer": 1, "skill": "number-time"}
+      ]
+    }
+  },
+  "hoeren": {
+    "teil1": {
+      "texts": [
+        {
+          "id": "H1-1", "kind": "Anrufbeantworter",
+          "script": [{"speaker": "f3", "text": "Guten Tag, Frau Novak, hier ist Sandra Beck vom Reisebüro Sonnenklar. Ich rufe wegen Ihrer Reise nach Lissabon an. Die Fluggesellschaft hat den Abflug geändert: Ihr Flug am Samstag geht jetzt nicht um 11 Uhr 20, sondern erst um 15 Uhr 40. Sie kommen dann gegen 18 Uhr in Lissabon an. Der Rückflug bleibt wie gebucht. Das Hotel habe ich schon informiert, die wissen, dass Sie später einchecken. Ihre neuen Flugtickets schicke ich Ihnen heute noch per E-Mail, bitte drucken Sie sie aus oder speichern Sie sie auf dem Handy. Wenn Sie Fragen haben, erreichen Sie mich bis 18 Uhr unter 089 – 23 45 67. Schöne Reise!"}],
+          "items": [
+            {"id": "H1-1a", "type": "rf", "statement": "Der Flug nach Lissabon startet am Samstag später als geplant.", "answer": true, "skill": "number-time"},
+            {"id": "H1-1b", "type": "mc", "question": "Frau Novak …", "options": ["muss ein neues Hotel buchen.", "bekommt die Tickets per E-Mail.", "soll das Reisebüro bis 18 Uhr zurückrufen."], "answer": 1, "skill": "detail"}
+          ]
+        },
+        {
+          "id": "H1-2", "kind": "Durchsage",
+          "script": [{"speaker": "m2", "text": "Achtung an Gleis 7: Der ICE 573 nach Frankfurt Hauptbahnhof, planmäßige Abfahrt 14 Uhr 12, fährt heute nicht von Gleis 7, sondern von Gleis 3. Ich wiederhole: Gleis 3. Wegen einer Störung an einem anderen Zug hat der ICE außerdem etwa 15 Minuten Verspätung. Reisende nach Mannheim werden gebeten, in Frankfurt umzusteigen, der Anschlusszug wartet dort. Bitte beachten Sie: Der Zug fährt heute in umgekehrter Wagenreihung, die erste Klasse befindet sich also am Ende des Zuges. Wir bitten um Entschuldigung für die Unannehmlichkeiten."}],
+          "items": [
+            {"id": "H1-2a", "type": "rf", "statement": "Der Zug nach Frankfurt fährt heute von Gleis 7.", "answer": false, "skill": "number-time"},
+            {"id": "H1-2b", "type": "mc", "question": "Der ICE …", "options": ["fährt pünktlich ab.", "fährt heute nicht nach Frankfurt.", "hat ungefähr eine Viertelstunde Verspätung."], "answer": 2, "skill": "number-time"}
+          ]
+        },
+        {
+          "id": "H1-3", "kind": "Anrufbeantworter",
+          "script": [{"speaker": "ch_f", "text": "Hallo Nils, hier ist Leni aus Zürich. Du, ich habe gute Nachrichten: Ich habe für uns das Ferienhaus im Tessin gebucht, vom 12. bis zum 19. August. Ursprünglich wollte ich ja das kleinere nehmen, aber das war schon weg, also habe ich das größere mit drei Zimmern genommen, es kostet nur 40 Franken mehr pro Woche. Kannst du mir bis Mittwoch deinen Anteil überweisen? Das wären 210 Franken. Ach, und ich würde gern mit dem Zug fahren, nicht mit dem Auto, da sind wir entspannter, und die Strecke geht direkt durch die Berge. Sag mir Bescheid, ob das für dich okay ist. Bis bald, tschüss!"}],
+          "items": [
+            {"id": "H1-3a", "type": "rf", "statement": "Leni hat das kleinere Ferienhaus gebucht.", "answer": false, "skill": "detail"},
+            {"id": "H1-3b", "type": "mc", "question": "Leni möchte …", "options": ["mit dem Zug ins Tessin fahren.", "mit dem Auto ins Tessin fahren.", "bis Mittwoch das Geld an Nils schicken."], "answer": 0, "skill": "detail"}
+          ]
+        },
+        {
+          "id": "H1-4", "kind": "Radio",
+          "script": [{"speaker": "f1", "text": "Und hier die Verkehrsmeldungen. Auf der A7 zwischen Kassel und Göttingen gibt es nach einem Unfall in Richtung Norden acht Kilometer Stau, rechnen Sie mit etwa 45 Minuten Verzögerung. Die Autobahn war zuerst komplett gesperrt, inzwischen ist aber eine Spur wieder frei. In Hannover ist der Messeschnellweg wegen einer Demonstration bis 16 Uhr gesperrt, Umleitungen sind ausgeschildert. Für Bahnreisende: Zwischen Bremen und Hamburg fahren wegen Bauarbeiten am Wochenende keine Züge, Busse ersetzen die Verbindung, die Fahrt dauert dann etwa eine Stunde länger. Und ein Hinweis für alle, die in den Urlaub starten: Am Flughafen Hannover müssen Sie derzeit an der Sicherheitskontrolle mit bis zu einer Stunde Wartezeit rechnen."}],
+          "items": [
+            {"id": "H1-4a", "type": "rf", "statement": "Die A7 ist im Moment komplett gesperrt.", "answer": false, "skill": "negation"},
+            {"id": "H1-4b", "type": "mc", "question": "Zwischen Bremen und Hamburg …", "options": ["fahren am Wochenende Busse statt Züge.", "fahren die Züge eine Stunde später ab.", "ist die Autobahn gesperrt."], "answer": 0, "skill": "paraphrase"}
+          ]
+        },
+        {
+          "id": "H1-5", "kind": "Werbung",
+          "script": [{"speaker": "m3", "text": "Lust auf Meer? Mit der Ostseefähre „Nordwind“ kommen Sie in nur sechs Stunden von Rostock nach Trelleborg in Schweden. Zweimal täglich, morgens um 8 und abends um 22 Uhr. Auf der Nachtfahrt schlafen Sie in einer Kabine und wachen in Schweden auf. Jetzt im September: Kinder bis 14 Jahre fahren kostenlos, wenn sie mit einem Erwachsenen reisen. Das Auto nehmen Sie einfach mit – ab 79 Euro pro Strecke inklusive Fahrer. Buchen Sie bis Ende des Monats online und sparen Sie zusätzlich 15 Prozent. Nordwind – Ihr kürzester Weg nach Skandinavien."}],
+          "items": [
+            {"id": "H1-5a", "type": "rf", "statement": "Kinder bis 14 Jahre fahren im September kostenlos mit.", "answer": true, "skill": "number-time"},
+            {"id": "H1-5b", "type": "mc", "question": "Wer bis Ende des Monats online bucht, …", "options": ["bekommt eine Kabine gratis.", "spart 15 Prozent.", "kann das Auto kostenlos mitnehmen."], "answer": 1, "skill": "detail"}
+          ]
+        }
+      ]
+    },
+    "teil2": {
+      "setting": "Sie machen eine Busreise nach Dresden. Die Reiseleiterin begrüßt die Gruppe im Bus.",
+      "script": [{"speaker": "f2", "text": "Guten Morgen, liebe Reisegäste, und herzlich willkommen an Bord! Mein Name ist Katrin Behrens, ich bin Ihre Reiseleiterin für die nächsten drei Tage, und das hier vorne ist unser Fahrer, Herr Ludwig. Wir fahren jetzt um kurz nach acht los und sind, wenn alles gut geht, gegen 13 Uhr in Dresden. Unterwegs machen wir eine Pause an einer Raststätte, ungefähr um halb elf, dort können Sie etwas essen oder Kaffee trinken. Im Bus gibt es hinten eine Toilette, bitte benutzen Sie sie aber nur, wenn es wirklich nötig ist, an der Raststätte ist es bequemer. Zum Programm: Heute Nachmittag machen wir eine zweistündige Stadtführung zu Fuß durch die Altstadt – Frauenkirche, Zwinger, Semperoper, Sie kennen die Namen. Ziehen Sie sich bitte bequeme Schuhe an. Der Abend ist frei. Morgen fahren wir mit dem Schiff auf der Elbe. Eigentlich war das für Sonntag geplant, aber das Wetter soll am Sonntag schlecht werden, deshalb haben wir getauscht: Schiff am Samstag, Museum am Sonntag. Das Hotel liegt direkt in der Altstadt, das Frühstück gibt es von 7 bis 10 Uhr. Das Abendessen ist im Reisepreis nicht enthalten, aber ich kann Ihnen gern Restaurants empfehlen. Für den Museumsbesuch am Sonntag brauche ich bis heute Abend eine Liste, wer mitkommen möchte, weil ich die Karten vorher bestellen muss. Die kosten 12 Euro pro Person, das ist der Gruppenpreis. Noch etwas Wichtiges: Bitte halten Sie Ihren Ausweis bereit, das Hotel braucht ihn beim Einchecken. Und mein Tipp: Nehmen Sie eine Jacke mit, in Dresden ist es im Moment etwa fünf Grad kühler als bei uns. Meine Handynummer finden Sie auf dem Zettel, den ich gleich verteile. Rufen Sie mich an, wenn Sie sich in der Stadt verlaufen oder Fragen haben. Und jetzt lehnen Sie sich zurück, wir sehen uns an der Raststätte."}],
+      "items": [
+        {"id": "H2-1", "question": "Die Gruppe kommt … in Dresden an.", "options": ["gegen halb elf", "gegen 13 Uhr", "am Abend"], "answer": 1, "skill": "number-time"},
+        {"id": "H2-2", "question": "Die Stadtführung …", "options": ["findet heute Nachmittag zu Fuß statt.", "dauert den ganzen Tag.", "findet am Sonntag statt."], "answer": 0, "skill": "detail"},
+        {"id": "H2-3", "question": "Die Schifffahrt auf der Elbe …", "options": ["fällt wegen des Wetters aus.", "findet wie geplant am Sonntag statt.", "wurde auf Samstag verlegt."], "answer": 2, "skill": "paraphrase"},
+        {"id": "H2-4", "question": "Das Abendessen …", "options": ["ist im Hotel im Preis enthalten.", "müssen die Gäste selbst bezahlen.", "gibt es von 7 bis 10 Uhr."], "answer": 1, "skill": "detail"},
+        {"id": "H2-5", "question": "Wer am Sonntag ins Museum möchte, …", "options": ["muss sich bis heute Abend melden.", "kauft die Karte am Eingang.", "zahlt keinen Eintritt."], "answer": 0, "skill": "detail"}
+      ]
+    },
+    "teil3": {
+      "setting": "Sie hören ein Gespräch zwischen Mia und Jonas, die ihren Sommerurlaub planen.",
+      "script": [
+        {"speaker": "f1", "text": "Jonas, wir müssen endlich den Urlaub buchen. In sechs Wochen ist August, und alles wird teurer."},
+        {"speaker": "m3", "text": "Ich weiß, ich weiß. Also, du wolltest ja nach Kroatien. Ich habe mal geschaut: Mit dem Auto sind das von hier etwa elf Stunden."},
+        {"speaker": "f1", "text": "Elf Stunden? Das ist mir zu lang für einen Tag. Und du hasst es doch, im Stau zu stehen."},
+        {"speaker": "m3", "text": "Stimmt. Aber mit dem Zug musst du dreimal umsteigen, und die Fahrt dauert fast genauso lange. Ich habe die Verbindung gefunden: München, Villach, Zagreb, dann weiter an die Küste. Fünfzehn Stunden."},
+        {"speaker": "f1", "text": "Hm. Und fliegen? Von Stuttgart nach Split gibt es Direktflüge."},
+        {"speaker": "m3", "text": "Gibt es, aber schau dir die Preise an: über 300 Euro pro Person, hin und zurück. Und dann brauchen wir vor Ort noch ein Auto. Sonst kommen wir nie zu den Stränden."},
+        {"speaker": "f1", "text": "Okay, dann vielleicht doch mit dem Auto, aber mit einer Übernachtung unterwegs? In Österreich, irgendwo in den Bergen. Dann sind es zwei entspannte Tage."},
+        {"speaker": "m3", "text": "Das gefällt mir. Dann könnten wir auch Bruno mitnehmen, statt ihn wieder zu deiner Mutter zu geben."},
+        {"speaker": "f1", "text": "Mit Hund im Hotel, das wird schwierig. Aber auf dem Campingplatz geht es. Ich habe einen gefunden, direkt am Meer, mit Hundestrand. Sechs Nächte im Bungalow, 780 Euro."},
+        {"speaker": "m3", "text": "Bungalow ist gut, ein Zelt bei 35 Grad hätte ich nicht überlebt. Und die Fähre auf die Insel? Du wolltest doch unbedingt nach Hvar."},
+        {"speaker": "f1", "text": "Die Fähre nimmt Autos mit, aber sie ist im August oft voll. Wir müssten sie vorher online buchen. Ich habe gelesen, im August sollte man das mindestens zwei Wochen vorher machen."},
+        {"speaker": "m3", "text": "Dann mach das gleich mit, sobald du den Campingplatz buchst. Wie viel haben wir insgesamt? Ich hatte 2000 Euro geschätzt."},
+        {"speaker": "f1", "text": "Bungalow 780, Benzin und Maut etwa 350, die Übernachtung in Österreich vielleicht 120, Fähre 90. Dann bleiben noch gut 600 fürs Essen und für Ausflüge. Das reicht, wenn wir öfter selbst kochen."},
+        {"speaker": "m3", "text": "Okay. Ach, eins noch: Mein Reisepass ist im Juli abgelaufen. Brauche ich für Kroatien einen neuen?"},
+        {"speaker": "f1", "text": "Nein, der Personalausweis reicht, Kroatien ist ja in der EU. Aber schau nach, ob der noch gültig ist, das wäre typisch für dich."},
+        {"speaker": "m3", "text": "Sehr witzig. Ich schaue heute Abend nach. Und du buchst den Bungalow?"},
+        {"speaker": "f1", "text": "Mache ich sofort. Sobald ich die Bestätigung habe, schreibe ich meiner Mutter, dass Bruno diesmal mitkommt."}
+      ],
+      "items": [
+        {"id": "H3-1", "statement": "Mit dem Zug nach Kroatien müsste man mehrmals umsteigen.", "answer": true, "skill": "detail"},
+        {"id": "H3-2", "statement": "Jonas findet die Flüge nach Split günstig.", "answer": false, "skill": "attitude"},
+        {"id": "H3-3", "statement": "Die beiden wollen die Fahrt mit einer Übernachtung in Österreich unterbrechen.", "answer": true, "skill": "paraphrase"},
+        {"id": "H3-4", "statement": "Der Hund soll wieder bei Mias Mutter bleiben.", "answer": false, "skill": "negation"},
+        {"id": "H3-5", "statement": "In Kroatien übernachten die beiden im Zelt.", "answer": false, "skill": "detail"},
+        {"id": "H3-6", "statement": "Die Fähre sollte man im August rechtzeitig vorher buchen.", "answer": true, "skill": "detail"},
+        {"id": "H3-7", "statement": "Jonas braucht für die Reise einen neuen Reisepass.", "answer": false, "skill": "inference"}
+      ]
+    },
+    "teil4": {
+      "setting": "Sie hören eine Diskussion im Radio. Der Moderator spricht mit einer Verkehrsplanerin und einem Geschäftsinhaber über das Thema „Autofreie Innenstadt?“",
+      "speakers": {"mod": "Moderator Martin Weber", "a": "Dr. Nina Falk (Verkehrsplanerin)", "b": "Thomas Brandt (Geschäftsinhaber, Einzelhandelsverband)"},
+      "voices": {"mod": "m1", "a": "f3", "b": "m2"},
+      "script": [
+        {"speaker": "mod", "text": "Guten Tag und willkommen bei „Stadtgespräch“. Ich bin Martin Weber. Die Stadt Freiburg will ab nächstem Jahr die komplette Innenstadt für private Autos sperren. Nur Busse, Taxis, Lieferwagen und Anwohner dürfen dann noch hinein. Ist das der richtige Weg? Darüber diskutieren heute die Verkehrsplanerin Dr. Nina Falk, die das Konzept für die Stadt entwickelt hat, und Thomas Brandt, der ein Elektrogeschäft in der Innenstadt führt und für den Einzelhandelsverband spricht. Frau Falk, warum brauchen wir das?"},
+        {"speaker": "a", "text": "Guten Tag. Ganz einfach: Weil die Innenstadt für Menschen da ist, nicht für Autos. Im Moment stehen auf jedem zweiten Quadratmeter parkende Fahrzeuge. Wenn wir die Autos rausnehmen, gewinnen wir Platz für breitere Gehwege, für Bäume, für Cafés. Und wir wissen aus anderen Städten, zum Beispiel aus Gent in Belgien, dass die Luft besser wird, dass es leiser wird und dass sogar mehr Menschen in die Stadt kommen, nicht weniger."},
+        {"speaker": "mod", "text": "Herr Brandt, mehr Menschen – das müsste Sie doch freuen."},
+        {"speaker": "b", "text": "Das würde mich freuen, wenn es stimmen würde. Aber ich verkaufe Waschmaschinen und Fernseher. Wer kauft eine Waschmaschine und trägt sie dann zur Straßenbahn? Meine Kunden kommen aus dem Umland, mit dem Auto, und sie wollen vor der Tür parken. Wenn das nicht mehr geht, fahren sie zum Einkaufszentrum an der Autobahn. Ich habe schon jetzt zwanzig Prozent weniger Umsatz als vor fünf Jahren, weil die Parkplätze immer weniger geworden sind."},
+        {"speaker": "a", "text": "Herr Brandt, dafür haben wir eine Lösung. Es wird einen Lieferservice geben: Sie kaufen die Waschmaschine im Geschäft, und sie wird am selben Tag nach Hause gebracht, kostenlos. Das bezahlt die Stadt in den ersten zwei Jahren. Und an den Rändern der Innenstadt bauen wir drei neue Parkhäuser, von dort sind es höchstens zehn Minuten zu Fuß."},
+        {"speaker": "b", "text": "Zehn Minuten zu Fuß, das sagen Sie so leicht. Meine Kunden sind zum Teil über siebzig. Die gehen keine zehn Minuten mit einer schweren Einkaufstasche. Und die Parkhäuser sind noch nicht gebaut, das Verbot kommt aber schon nächstes Jahr. Das ist die falsche Reihenfolge."},
+        {"speaker": "mod", "text": "Ich muss sagen, ich wohne selbst am Rand der Innenstadt und bin letzte Woche zum ersten Mal seit Jahren mit dem Fahrrad zur Arbeit gefahren. Es war schneller als mit dem Auto, aber auf der Hauptstraße hatte ich ehrlich gesagt Angst."},
+        {"speaker": "a", "text": "Genau das ist der Punkt! Solange die Straßen voller Autos sind, traut sich niemand aufs Rad. Sobald die Autos weg sind, ändert sich das. In Gent hat sich der Radverkehr in drei Jahren verdoppelt."},
+        {"speaker": "b", "text": "Ich habe nichts gegen Fahrräder. Aber ich vertrete 140 Geschäfte, und mindestens ein Drittel davon lebt von Kunden, die mit dem Auto kommen. Wir schlagen etwas anderes vor: Sperren Sie die Innenstadt nur am Wochenende, testen Sie das ein Jahr lang, und dann entscheiden wir mit Zahlen, nicht mit Gefühlen."},
+        {"speaker": "a", "text": "Ein Test am Wochenende zeigt wenig, weil die Leute am Samstag sowieso anders einkaufen als am Dienstag. Allerdings kann ich mir vorstellen, das Verbot in zwei Schritten einzuführen: erst die Fußgängerzone erweitern, ein Jahr später die ganze Innenstadt."},
+        {"speaker": "mod", "text": "Herr Brandt, wäre das ein Kompromiss?"},
+        {"speaker": "b", "text": "Wenn die Parkhäuser vor dem zweiten Schritt fertig sind, ja. Und wenn der Lieferservice nicht nach zwei Jahren wieder verschwindet."},
+        {"speaker": "mod", "text": "Das klingt, als wäre ein Gespräch zwischen Ihnen beiden hilfreicher als die Debatte im Stadtrat. Vielen Dank, Frau Falk, vielen Dank, Herr Brandt."}
+      ],
+      "items": [
+        {"id": "H4-1", "statement": "Parkende Autos nehmen in der Innenstadt sehr viel Platz weg.", "answer": "a", "skill": "matching"},
+        {"id": "H4-2", "statement": "Kunden, die etwas Großes kaufen, wollen direkt vor dem Geschäft parken.", "answer": "b", "skill": "matching"},
+        {"id": "H4-3", "statement": "Die Stadt will die Lieferung gekaufter Waren zwei Jahre lang bezahlen.", "answer": "a", "skill": "matching"},
+        {"id": "H4-4", "statement": "Das Verbot kommt, bevor die neuen Parkhäuser fertig sind.", "answer": "b", "skill": "matching"},
+        {"id": "H4-5", "statement": "Ich habe mich auf dem Fahrrad auf der Hauptstraße nicht sicher gefühlt.", "answer": "mod", "skill": "matching"},
+        {"id": "H4-6", "statement": "In einer belgischen Stadt fahren heute doppelt so viele Menschen Rad wie vor drei Jahren.", "answer": "a", "skill": "matching"},
+        {"id": "H4-7", "statement": "Man sollte das Verbot zuerst ein Jahr lang nur am Wochenende ausprobieren.", "answer": "b", "skill": "matching"},
+        {"id": "H4-8", "statement": "Ich wohne in der Nähe der Innenstadt.", "answer": "mod", "skill": "matching"}
+      ]
+    }
+  },
+  "schreiben": {
+    "aufgabe1": {
+      "minutes": 20, "words": 80,
+      "situation": "Sie sind gerade von einer Reise zurückgekommen, bei der einiges schiefgegangen ist (zum Beispiel ein verpasster Zug oder verlorenes Gepäck). Ihre Freundin Sina möchte wissen, wie es war. Schreiben Sie ihr eine E-Mail.",
+      "points": ["Beschreiben Sie, was auf der Reise passiert ist.", "Erklären Sie, was Sie beim nächsten Mal anders machen würden.", "Schlagen Sie Sina vor, im nächsten Jahr zusammen zu verreisen, und nennen Sie ein Ziel."]
+    },
+    "aufgabe2": {
+      "minutes": 25, "words": 80,
+      "situation": "Sie haben im Fernsehen eine Diskussionssendung zum Thema „Fliegen für 20 Euro – darf das sein?“ gesehen. Im Online-Gästebuch der Sendung finden Sie folgende Meinung:",
+      "quote": "„Billigflüge sind das Beste, was uns passieren konnte. Endlich können sich auch normale Leute Reisen leisten. Wer das verbieten will, hat selbst genug Geld für die erste Klasse im Zug.“ – Marco, 34",
+      "instruction": "Schreiben Sie nun Ihre Meinung dazu (circa 80 Wörter)."
+    },
+    "aufgabe3": {
+      "minutes": 15, "words": 40,
+      "situation": "Sie haben bei Frau Lehmann von der Autovermietung „Mobil24“ für Samstag ein Auto reserviert. Sie brauchen das Auto nun doch nicht. Schreiben Sie ihr eine E-Mail: Sagen Sie die Reservierung höflich ab, nennen Sie den Grund und fragen Sie, ob Sie Ihre Anzahlung zurückbekommen.",
+      "addressee": "Frau Lehmann"
+    }
+  },
+  "sprechen": {
+    "teil1": {
+      "situation": "Ihr Deutschkurs möchte am Ende des Semesters einen Tagesausflug in eine Stadt in der Nähe machen. Sie und Ihr Partner / Ihre Partnerin sollen den Ausflug organisieren. Planen Sie gemeinsam.",
+      "points": ["Wohin fahren Sie?", "Wie reisen Sie (Zug, Bus, Auto)?", "Was machen Sie dort?", "Was kostet der Ausflug, und wer bezahlt was?"],
+      "partner_cues": [
+        "Ich hätte Lust auf Heidelberg, das ist nur eine Stunde mit dem Zug. Was meinst du?",
+        "Mit dem Zug ist es entspannter, aber mit zwei Autos wären wir flexibler. Was ist dir lieber?",
+        "Wir könnten vormittags eine Stadtführung machen, und nachmittags haben alle frei. Oder lieber alle zusammen ins Museum?",
+        "Wie viel darf der Ausflug pro Person kosten? Manche im Kurs haben nicht so viel Geld.",
+        "Sollen wir mittags zusammen ins Restaurant gehen, oder isst jeder für sich?",
+        "Wer kümmert sich um die Gruppentickets? Ich kann das machen, wenn du die Stadtführung buchst."
+      ]
+    },
+    "teil2": {
+      "topics": ["Thema A: Sollte man im Urlaub lieber in die Ferne reisen oder das eigene Land entdecken?", "Thema B: Braucht man in der Stadt noch ein eigenes Auto?"],
+      "folien": [
+        "Stellen Sie Ihr Thema vor. Erklären Sie den Inhalt und die Struktur Ihrer Präsentation.",
+        "Berichten Sie von Ihrer Situation oder einem Erlebnis im Zusammenhang mit dem Thema.",
+        "Berichten Sie, wie die Situation in Ihrem Heimatland ist, und geben Sie Beispiele.",
+        "Nennen Sie die Vor- und Nachteile und sagen Sie dazu Ihre Meinung. Geben Sie auch Beispiele.",
+        "Beenden Sie Ihre Präsentation und bedanken Sie sich bei den Zuhörern."
+      ]
+    },
+    "teil3": {
+      "questions": ["Sie haben gesagt, dass Fernreisen viel Geld kosten. Sind sie das nicht trotzdem wert?", "Wie reisen Sie selbst am liebsten, und warum?", "Welche Rolle spielt das Klima bei Ihrer Reiseplanung?"],
+      "questions_b": ["Sie haben gesagt, dass man in der Stadt kein Auto braucht. Was ist mit Familien mit kleinen Kindern?", "Wie kommen Sie selbst jeden Tag zur Arbeit oder zum Kurs?", "Was müsste sich ändern, damit mehr Menschen auf das Auto verzichten?"]
+    }
+  }
+}

@@ -1,0 +1,552 @@
+[
+ {
+  "id": "ENG_CHUNK_1201",
+  "t": "Oi!",
+  "ex": "Oi! Como está sendo o seu dia?",
+  "n": "'Olá' is more neutral/written; 'oi' is the everyday spoken hi."
+ },
+ {
+  "id": "ENG_CHUNK_1202",
+  "t": "Bom dia",
+  "ex": "Bom dia! Dormiu bem?"
+ },
+ {
+  "id": "ENG_CHUNK_1203",
+  "t": "Boa tarde",
+  "ex": "Boa tarde. Posso ajudar?",
+  "n": "Used from noon until dark; after that, 'boa noite' for hello too."
+ },
+ {
+  "id": "ENG_CHUNK_1204",
+  "t": "Boa noite",
+  "ex": "Boa noite! Durma bem.",
+  "n": "'Boa noite' is both hello and goodbye in the evening, not only before bed."
+ },
+ {
+  "id": "ENG_CHUNK_1205",
+  "t": "Tudo bem? / Como vai?",
+  "ex": "Oi, Sam, tudo bem?",
+  "n": "'Tudo bem?' is the default; the usual answer is 'Tudo (bem), e você?'. 'Como vai?' is slightly more formal."
+ },
+ {
+  "id": "ENG_CHUNK_1206",
+  "t": "Tudo bem, obrigado. E você?",
+  "ex": "\"Tudo bem?\" \"Tudo bem, obrigado. E você?\"",
+  "n": "Women say 'obrigada'. Agreement follows the speaker, not the listener."
+ },
+ {
+  "id": "ENG_CHUNK_1207",
+  "t": "Tudo certo, obrigado / Nada mal, obrigado",
+  "ex": "\"Como é que você está?\" \"Tudo certo, obrigado.\""
+ },
+ {
+  "id": "ENG_CHUNK_1208",
+  "t": "Prazer / Muito prazer",
+  "ex": "Oi, eu sou a Anna. Prazer!"
+ },
+ {
+  "id": "ENG_CHUNK_1209",
+  "t": "Igualmente",
+  "ex": "\"Prazer!\" \"Igualmente.\"",
+  "n": "'Você também' works for wishes (Bom fim de semana! – Você também!); after 'prazer', say 'igualmente'."
+ },
+ {
+  "id": "ENG_CHUNK_1210",
+  "t": "Muito prazer em conhecê-lo / conhecê-la",
+  "ex": "Bom dia, sou o David Lee. Muito prazer em conhecê-lo.",
+  "n": "Formal: -lo to a man, -la to a woman. Plain 'Muito prazer' is safe for anyone."
+ },
+ {
+  "id": "ENG_CHUNK_1211",
+  "t": "E aí, beleza? / E aí, tudo bom?",
+  "ex": "E aí, Tom, beleza?",
+  "n": "Very casual; answer 'Beleza!' or 'Tudo bom, e você?'."
+ },
+ {
+  "id": "ENG_CHUNK_1212",
+  "t": "Que bom te ver!",
+  "ex": "Oi, Maria! Que bom te ver!"
+ },
+ {
+  "id": "ENG_CHUNK_1213",
+  "t": "Tchau / Até logo",
+  "ex": "Até logo, e obrigado por tudo.",
+  "n": "'Adeus' sounds final or dramatic (farewell forever); Brazilians say 'tchau' or 'até logo'."
+ },
+ {
+  "id": "ENG_CHUNK_1214",
+  "t": "Até mais! / Até depois!",
+  "ex": "Tá bom, até mais!"
+ },
+ {
+  "id": "ENG_CHUNK_1215",
+  "t": "Tenha um bom dia! / Bom dia pra você!",
+  "ex": "Obrigado. Tenha um bom dia!"
+ },
+ {
+  "id": "ENG_CHUNK_1216",
+  "t": "Obrigado / Obrigada",
+  "ex": "Obrigado pelo café.",
+  "n": "Men say obrigado, women obrigada, regardless of who they thank."
+ },
+ {
+  "id": "ENG_CHUNK_1217",
+  "t": "Muito obrigado! / Valeu!",
+  "ex": "Muito obrigado, você é muito gentil.",
+  "n": "'Valeu!' is the casual everyday thanks among friends."
+ },
+ {
+  "id": "ENG_CHUNK_1218",
+  "t": "De nada",
+  "ex": "\"Obrigado!\" \"De nada.\"",
+  "n": "Also common: 'Imagina!' or 'Por nada'."
+ },
+ {
+  "id": "ENG_CHUNK_1219",
+  "t": "Sem problema / Imagina",
+  "ex": "\"Obrigado por esperar.\" \"Imagina, sem problema.\"",
+  "n": "'Imagina!' (lit. imagine!) is a warm Brazilian 'don't mention it'."
+ },
+ {
+  "id": "ENG_CHUNK_1220",
+  "t": "Sim, por favor / Aceito, obrigado",
+  "ex": "\"Quer um chá?\" \"Sim, por favor.\"",
+  "n": "Brazilians often accept with 'Quero, obrigado' or 'Aceito'."
+ },
+ {
+  "id": "ENG_CHUNK_1221",
+  "t": "Não, obrigado",
+  "ex": "\"Quer mais bolo?\" \"Não, obrigada.\""
+ },
+ {
+  "id": "ENG_CHUNK_1222",
+  "t": "Com licença / Por favor",
+  "ex": "Com licença, este é o trem para Londres?",
+  "n": "'Com licença' for passing or interrupting; to get a stranger's attention 'Por favor' or 'Moço/Moça' is common."
+ },
+ {
+  "id": "ENG_CHUNK_1223",
+  "t": "Desculpa / Me desculpe",
+  "ex": "Desculpa, foi erro meu.",
+  "n": "'Me desculpe' or 'Peço desculpas' is more formal. 'Sinto muito' is for sympathy, like 'I'm sorry for your loss'."
+ },
+ {
+  "id": "ENG_CHUNK_1224",
+  "t": "Tudo bem / Não tem problema",
+  "ex": "\"Desculpa, quebrei sua xícara.\" \"Tudo bem, não tem problema.\""
+ },
+ {
+  "id": "ENG_CHUNK_1225",
+  "t": "Desculpa o atraso",
+  "ex": "Desculpa o atraso, o ônibus não veio."
+ },
+ {
+  "id": "ENG_CHUNK_1226",
+  "t": "Desculpa, não entendi",
+  "ex": "Desculpa, não entendi. Pode repetir?",
+  "n": "Use the past 'não entendi' (I didn't get that), not 'não entendo', for something just said."
+ },
+ {
+  "id": "ENG_CHUNK_1227",
+  "t": "Você poderia falar mais devagar, por favor?",
+  "ex": "Você poderia falar mais devagar, por favor? Meu português não é muito bom."
+ },
+ {
+  "id": "ENG_CHUNK_1228",
+  "t": "Pode repetir, por favor?",
+  "ex": "Desculpa, pode repetir, por favor?"
+ },
+ {
+  "id": "ENG_CHUNK_1229",
+  "t": "Como se escreve? / Pode soletrar, por favor?",
+  "ex": "Seu sobrenome? Pode soletrar, por favor?"
+ },
+ {
+  "id": "ENG_CHUNK_1230",
+  "t": "Não falo muito português",
+  "ex": "Desculpa, eu não falo muito português."
+ },
+ {
+  "id": "ENG_CHUNK_1231",
+  "t": "Qual é o seu nome? / Como você se chama?",
+  "ex": "Oi, eu sou o Tom. Qual é o seu nome?"
+ },
+ {
+  "id": "ENG_CHUNK_1232",
+  "t": "De onde você é?",
+  "ex": "De onde você é? Seu sotaque é bonito."
+ },
+ {
+  "id": "ENG_CHUNK_1233",
+  "t": "Quantos anos você tem?",
+  "ex": "Quantos anos você tem, Emma?",
+  "n": "Age uses 'ter': Tenho trinta anos, never 'sou trinta'."
+ },
+ {
+  "id": "ENG_CHUNK_1234",
+  "t": "Onde você mora?",
+  "ex": "Onde você mora? Aqui perto?"
+ },
+ {
+  "id": "ENG_CHUNK_1235",
+  "t": "O que você faz? / Você trabalha com quê?",
+  "ex": "O que você faz? Você é estudante?",
+  "n": "'Trabalha com quê?' is the natural way to ask someone's job in Brazil."
+ },
+ {
+  "id": "ENG_CHUNK_1236",
+  "t": "Você tem irmãos?",
+  "ex": "Você tem irmãos?",
+  "n": "'Irmãos' covers brothers and sisters together; no need to name both."
+ },
+ {
+  "id": "ENG_CHUNK_1237",
+  "t": "Há quanto tempo você mora aqui? / Faz quanto tempo que você mora aqui?",
+  "ex": "Faz quanto tempo que você mora aqui?",
+  "n": "Present tense 'mora' with 'faz/há quanto tempo', not a perfect tense."
+ },
+ {
+  "id": "ENG_CHUNK_1238",
+  "t": "E você?",
+  "ex": "Eu sou da Itália. E você?"
+ },
+ {
+  "id": "ENG_CHUNK_1239",
+  "t": "Que horas são?",
+  "ex": "Com licença, que horas são?",
+  "n": "Reply: 'São três horas', but 'É uma hora', 'É meio-dia'."
+ },
+ {
+  "id": "ENG_CHUNK_1240",
+  "t": "Quanto custa? / Quanto é?",
+  "ex": "Essa bolsa é bonita. Quanto custa?",
+  "n": "'Quanto é?' is used at the till for the total."
+ },
+ {
+  "id": "ENG_CHUNK_1241",
+  "t": "Posso ajudar?",
+  "ex": "Bom dia, posso ajudar?",
+  "n": "Staff often say 'Pois não?' too, meaning 'How can I help?'."
+ },
+ {
+  "id": "ENG_CHUNK_1242",
+  "t": "Só isso, obrigado",
+  "ex": "\"Mais alguma coisa?\" \"Não, só isso, obrigado.\""
+ },
+ {
+  "id": "ENG_CHUNK_1243",
+  "t": "Pode me trazer o cardápio, por favor?",
+  "ex": "Oi, pode me trazer o cardápio, por favor?",
+  "n": "Brazil says 'cardápio'; 'menu' is understood, 'ementa' is Portugal."
+ },
+ {
+  "id": "ENG_CHUNK_1244",
+  "t": "O que você recomenda? / O que você sugere?",
+  "ex": "É minha primeira vez aqui. O que você recomenda?"
+ },
+ {
+  "id": "ENG_CHUNK_1245",
+  "t": "Sou vegetariano / vegetariana",
+  "ex": "Sou vegetariana. Essa sopa tem carne?"
+ },
+ {
+  "id": "ENG_CHUNK_1246",
+  "t": "Estou satisfeito / Estou cheio",
+  "ex": "Não, obrigado, já estou satisfeito.",
+  "n": "'Satisfeito' is the polite way; 'cheio' is casual. Women: satisfeita, cheia."
+ },
+ {
+  "id": "ENG_CHUNK_1247",
+  "t": "Onde fica o banheiro?",
+  "ex": "Com licença, onde fica o banheiro?",
+  "n": "Brazil: banheiro. 'Casa de banho' is Portugal."
+ },
+ {
+  "id": "ENG_CHUNK_1248",
+  "t": "Siga em frente / Vai reto",
+  "ex": "Siga em frente, e o banco fica à esquerda.",
+  "n": "'Vai reto' or 'segue reto' is the everyday spoken version."
+ },
+ {
+  "id": "ENG_CHUNK_1249",
+  "t": "Onde eu desço?",
+  "ex": "Quero ir ao zoológico. Onde eu desço?"
+ },
+ {
+  "id": "ENG_CHUNK_1250",
+  "t": "Qual é a senha do wi-fi?",
+  "ex": "Com licença, qual é a senha do wi-fi?",
+  "n": "Wi-fi is said 'uai-fai'. 'Senha' = password."
+ },
+ {
+  "id": "ENG_CHUNK_1251",
+  "t": "Socorro!",
+  "ex": "Socorro! Alguém me ajuda!"
+ },
+ {
+  "id": "ENG_CHUNK_1252",
+  "t": "Você pode me ajudar?",
+  "ex": "Com licença, você pode me ajudar? Estou perdido."
+ },
+ {
+  "id": "ENG_CHUNK_1253",
+  "t": "Preciso de um médico",
+  "ex": "Preciso de um médico. Meu filho está muito doente.",
+  "n": "'Precisar' takes 'de' before a noun: preciso de ajuda."
+ },
+ {
+  "id": "ENG_CHUNK_1254",
+  "t": "Dói aqui",
+  "ex": "Dói aqui, na barriga."
+ },
+ {
+  "id": "ENG_CHUNK_1255",
+  "t": "Não estou me sentindo bem",
+  "ex": "Não estou me sentindo bem. Vou pra casa.",
+  "n": "Also 'Estou passando mal', very common for sudden sickness."
+ },
+ {
+  "id": "ENG_CHUNK_1256",
+  "t": "Chama uma ambulância!",
+  "ex": "Chama uma ambulância! Ele não está respirando!",
+  "n": "Brazil's ambulance number is 192 (SAMU)."
+ },
+ {
+  "id": "ENG_CHUNK_1257",
+  "t": "Estou perdido / perdida",
+  "ex": "Com licença, estou perdida. Onde fica a estação?"
+ },
+ {
+  "id": "ENG_CHUNK_1258",
+  "t": "Cuidado!",
+  "ex": "Cuidado! Um carro!"
+ },
+ {
+  "id": "ENG_CHUNK_1259",
+  "t": "O que foi? / O que aconteceu?",
+  "ex": "Você está triste. O que foi?"
+ },
+ {
+  "id": "ENG_CHUNK_1260",
+  "t": "Você está bem? / Tá tudo bem?",
+  "ex": "Você está bem? Você está pálido."
+ },
+ {
+  "id": "ENG_CHUNK_1261",
+  "t": "Feliz aniversário! / Parabéns!",
+  "ex": "Parabéns! Aqui está um presente pra você.",
+  "n": "'Aniversário' = birthday (not anniversary). 'Parabéns!' alone is the usual birthday wish."
+ },
+ {
+  "id": "ENG_CHUNK_1262",
+  "t": "Parabéns! / Muito bem!",
+  "ex": "Você passou na prova? Parabéns!"
+ },
+ {
+  "id": "ENG_CHUNK_1263",
+  "t": "Está chovendo",
+  "ex": "Leva um guarda-chuva. Está chovendo."
+ },
+ {
+  "id": "ENG_CHUNK_1264",
+  "t": "Que dia bonito, né?",
+  "ex": "Que dia bonito hoje, né?",
+  "n": "'Né?' (= não é?) is the all-purpose tag question in Brazil."
+ },
+ {
+  "id": "ENG_CHUNK_1265",
+  "t": "Qual é o seu telefone? / Me passa seu número?",
+  "ex": "Qual é o seu telefone? Te mando uma mensagem.",
+  "n": "'Me passa seu zap?' is common: Brazilians mostly use WhatsApp."
+ },
+ {
+  "id": "ENG_CHUNK_1266",
+  "t": "Não estou te ouvindo",
+  "ex": "Desculpa, não estou te ouvindo. Está muito barulho aqui."
+ },
+ {
+  "id": "ENG_CHUNK_1267",
+  "t": "Desculpa, não vi sua ligação",
+  "ex": "Oi, desculpa, não vi sua ligação. O que houve?",
+  "n": "Brazilians say 'não vi' (didn't see) or 'não atendi' for a missed call."
+ },
+ {
+  "id": "ENG_CHUNK_1268",
+  "t": "Posso te fazer uma pergunta?",
+  "ex": "Com licença, posso te fazer uma pergunta?",
+  "n": "Formal: Posso fazer uma pergunta ao senhor/à senhora?"
+ },
+ {
+  "id": "ENG_CHUNK_1269",
+  "t": "Que horas a gente se encontra?",
+  "ex": "Então, jantar na sexta. Que horas a gente se encontra?"
+ },
+ {
+  "id": "ENG_CHUNK_1270",
+  "t": "Meu celular está quase sem bateria / Meu celular vai morrer",
+  "ex": "Tenho que ir, meu celular está quase sem bateria."
+ },
+ {
+  "id": "ENG_CHUNK_1271",
+  "t": "Hum, deixa eu ver",
+  "ex": "Hum, deixa eu ver... acho que é na terça.",
+  "n": "'Deixa eu ver' is standard speech; 'deixe-me ver' sounds bookish."
+ },
+ {
+  "id": "ENG_CHUNK_1272",
+  "t": "Só um momento / Só um minutinho",
+  "ex": "Só um minutinho, vou pegar minha caneta.",
+  "n": "Diminutives like 'minutinho' soften requests."
+ },
+ {
+  "id": "ENG_CHUNK_1273",
+  "t": "Espera aí! / Peraí!",
+  "ex": "Peraí, já estou indo!"
+ },
+ {
+  "id": "ENG_CHUNK_1274",
+  "t": "Espera um pouco / Um instante",
+  "ex": "Espera um pouco, vou ver."
+ },
+ {
+  "id": "ENG_CHUNK_1275",
+  "t": "Como? / Perdão?",
+  "ex": "Como? Não ouvi.",
+  "n": "'Como?' is the natural polite 'pardon?'; 'O quê?' is blunter."
+ },
+ {
+  "id": "ENG_CHUNK_1276",
+  "t": "Oi? / Hã?",
+  "ex": "Oi? Pode repetir?",
+  "n": "'Oi?' with rising tone means 'sorry, what?' in Brazil; 'hã?' is casual."
+ },
+ {
+  "id": "ENG_CHUNK_1277",
+  "t": "O que é isso?",
+  "ex": "O que é isso? Não conheço essa palavra."
+ },
+ {
+  "id": "ENG_CHUNK_1278",
+  "t": "Tá bom / Ok",
+  "ex": "Tá bom, vamos.",
+  "n": "'Tá' is the spoken form of 'está'; 'tá bom' is everywhere."
+ },
+ {
+  "id": "ENG_CHUNK_1279",
+  "t": "Claro",
+  "ex": "\"Posso sentar aqui?\" \"Claro.\"",
+  "n": "'Claro!' or 'Fica à vontade' (make yourself at home)."
+ },
+ {
+  "id": "ENG_CHUNK_1280",
+  "t": "Claro / Pode deixar",
+  "ex": "\"Me passa o sal?\" \"Claro.\"",
+  "n": "'Pode deixar' = 'leave it to me', for agreeing to do something."
+ },
+ {
+  "id": "ENG_CHUNK_1281",
+  "t": "Eu também",
+  "ex": "\"Adoro essa música.\" \"Eu também!\""
+ },
+ {
+  "id": "ENG_CHUNK_1282",
+  "t": "Eu também não / Nem eu",
+  "ex": "\"Não gosto de café.\" \"Eu também não.\"",
+  "n": "Not 'eu também' after a negative; say 'eu também não' or 'nem eu'."
+ },
+ {
+  "id": "ENG_CHUNK_1283",
+  "t": "Certo / Tá",
+  "ex": "Certo, então o ônibus sai às nove."
+ },
+ {
+  "id": "ENG_CHUNK_1284",
+  "t": "Não sei",
+  "ex": "Desculpa, não sei."
+ },
+ {
+  "id": "ENG_CHUNK_1285",
+  "t": "Talvez",
+  "ex": "\"Você vem hoje à noite?\" \"Talvez.\"",
+  "n": "Talvez + present subjunctive: Talvez eu vá."
+ },
+ {
+  "id": "ENG_CHUNK_1286",
+  "t": "Não tenho certeza",
+  "ex": "\"Abre no domingo?\" \"Não tenho certeza.\""
+ },
+ {
+  "id": "ENG_CHUNK_1287",
+  "t": "Boa ideia",
+  "ex": "\"Vamos pegar um táxi.\" \"Boa ideia.\""
+ },
+ {
+  "id": "ENG_CHUNK_1288",
+  "t": "Que ótimo! / Que legal!",
+  "ex": "Você conseguiu o emprego? Que ótimo!"
+ },
+ {
+  "id": "ENG_CHUNK_1289",
+  "t": "Ah, não!",
+  "ex": "Ah, não! Esqueci minhas chaves."
+ },
+ {
+  "id": "ENG_CHUNK_1290",
+  "t": "Bom... / Olha...",
+  "ex": "Bom... não tenho certeza."
+ },
+ {
+  "id": "ENG_CHUNK_1291",
+  "t": "Na verdade",
+  "ex": "Na verdade, eu sou do Canadá, não dos Estados Unidos.",
+  "n": "'Atualmente' is a false friend: it means 'currently', not 'actually'."
+ },
+ {
+  "id": "ENG_CHUNK_1292",
+  "t": "Fechado! / Beleza!",
+  "ex": "\"Pizza às sete?\" \"Fechado!\""
+ },
+ {
+  "id": "ENG_CHUNK_1293",
+  "t": "Legal / Beleza",
+  "ex": "\"Te vejo lá.\" \"Beleza.\""
+ },
+ {
+  "id": "ENG_CHUNK_1294",
+  "t": "Nossa! / Uau!",
+  "ex": "Nossa! Sua casa é linda!",
+  "n": "'Nossa!' (from Nossa Senhora) is the typical Brazilian wow."
+ },
+ {
+  "id": "ENG_CHUNK_1295",
+  "t": "Tudo bem? / Pode ser?",
+  "ex": "Eu chego às oito. Pode ser?"
+ },
+ {
+  "id": "ENG_CHUNK_1296",
+  "t": "E depois",
+  "ex": "Eu levantei e depois tomei café da manhã.",
+  "n": "'Aí' is very common in spoken stories: 'aí eu tomei café'."
+ },
+ {
+  "id": "ENG_CHUNK_1297",
+  "t": "Mas",
+  "ex": "Eu gosto de chá, mas não gosto de café."
+ },
+ {
+  "id": "ENG_CHUNK_1298",
+  "t": "Porque",
+  "ex": "Estou cansado porque trabalhei até tarde.",
+  "n": "In questions it is 'por que' (two words): Por que você está cansado?"
+ },
+ {
+  "id": "ENG_CHUNK_1299",
+  "t": "Também",
+  "ex": "Eu falo francês. Também falo um pouco de alemão."
+ },
+ {
+  "id": "ENG_CHUNK_1300",
+  "t": "Depois / Aí",
+  "ex": "Primeiro eu tomo banho, depois me visto."
+ }
+]

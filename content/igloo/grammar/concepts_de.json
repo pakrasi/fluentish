@@ -1,0 +1,476 @@
+[
+ {
+  "id": "akkusativ",
+  "name": "Akkusativ",
+  "category": "cases",
+  "level": "A1",
+  "description": ""
+ },
+ {
+  "id": "nominativ",
+  "name": "Nominativ",
+  "category": "cases",
+  "level": "A1",
+  "description": ""
+ },
+ {
+  "id": "artikel-genus",
+  "name": "Artikel & Genus",
+  "category": "nouns-articles",
+  "level": "A1",
+  "description": ""
+ },
+ {
+  "id": "praesens",
+  "name": "Präsens",
+  "category": "verbs-tenses",
+  "level": "A1",
+  "description": ""
+ },
+ {
+  "id": "hauptsatz-verbzweit",
+  "name": "Hauptsatz: Verb an Position 2",
+  "category": "word-order",
+  "level": "A1",
+  "description": ""
+ },
+ {
+  "id": "komparativ-superlativ",
+  "name": "Komparativ & Superlativ",
+  "category": "adjectives",
+  "level": "A2",
+  "description": ""
+ },
+ {
+  "id": "dativ",
+  "name": "Dativ",
+  "category": "cases",
+  "level": "A2",
+  "description": ""
+ },
+ {
+  "id": "wechselpraepositionen",
+  "name": "Wechselpräpositionen",
+  "category": "cases",
+  "level": "A2",
+  "description": ""
+ },
+ {
+  "id": "dass-saetze",
+  "name": "dass-Sätze",
+  "category": "clauses",
+  "level": "A2",
+  "description": "",
+  "sticky": true
+ },
+ {
+  "id": "weil-denn-deshalb",
+  "name": "Kausalsätze (weil/denn/deshalb)",
+  "category": "clauses",
+  "level": "A2",
+  "description": ""
+ },
+ {
+  "id": "pluralformen",
+  "name": "Pluralformen",
+  "category": "nouns-articles",
+  "level": "A2",
+  "description": ""
+ },
+ {
+  "id": "praepositionen-akkusativ",
+  "name": "Präpositionen mit Akkusativ",
+  "category": "prepositions",
+  "level": "A2",
+  "description": ""
+ },
+ {
+  "id": "praepositionen-dativ",
+  "name": "Präpositionen mit Dativ",
+  "category": "prepositions",
+  "level": "A2",
+  "description": ""
+ },
+ {
+  "id": "indefinitpronomen",
+  "name": "Indefinitpronomen (man, jemand, ...)",
+  "category": "pronouns",
+  "level": "A2",
+  "description": ""
+ },
+ {
+  "id": "personalpronomen",
+  "name": "Personalpronomen (alle Kasus)",
+  "category": "pronouns",
+  "level": "A2",
+  "description": ""
+ },
+ {
+  "id": "possessivpronomen",
+  "name": "Possessivpronomen",
+  "category": "pronouns",
+  "level": "A2",
+  "description": ""
+ },
+ {
+  "id": "futur-1",
+  "name": "Futur I",
+  "category": "verbs-tenses",
+  "level": "A2",
+  "description": ""
+ },
+ {
+  "id": "imperativ",
+  "name": "Imperativ",
+  "category": "verbs-tenses",
+  "level": "A2",
+  "description": ""
+ },
+ {
+  "id": "modalverben",
+  "name": "Modalverben",
+  "category": "verbs-tenses",
+  "level": "A2",
+  "description": ""
+ },
+ {
+  "id": "perfekt",
+  "name": "Perfekt (haben/sein + Partizip II)",
+  "category": "verbs-tenses",
+  "level": "A2",
+  "description": ""
+ },
+ {
+  "id": "reflexive-verben",
+  "name": "Reflexive Verben",
+  "category": "verbs-tenses",
+  "level": "A2",
+  "description": ""
+ },
+ {
+  "id": "trennbare-verben",
+  "name": "Trennbare Verben",
+  "category": "verbs-tenses",
+  "level": "A2",
+  "description": ""
+ },
+ {
+  "id": "nebensatz-verbletzt",
+  "name": "Nebensatz: Verb am Ende",
+  "category": "word-order",
+  "level": "A2",
+  "description": "",
+  "sticky": true
+ },
+ {
+  "id": "position-nicht",
+  "name": "Position von „nicht\"",
+  "category": "word-order",
+  "level": "A2",
+  "description": ""
+ },
+ {
+  "id": "verbklammer",
+  "name": "Verbklammer / Satzklammer",
+  "category": "word-order",
+  "level": "A2",
+  "description": ""
+ },
+ {
+  "id": "adjektivdeklination",
+  "name": "Adjektivdeklination",
+  "category": "adjectives",
+  "level": "B1",
+  "description": ""
+ },
+ {
+  "id": "genitiv",
+  "name": "Genitiv",
+  "category": "cases",
+  "level": "B1",
+  "description": ""
+ },
+ {
+  "id": "bevor-nachdem-waehrend",
+  "name": "Temporalsätze (bevor/nachdem/während)",
+  "category": "clauses",
+  "level": "B1",
+  "description": ""
+ },
+ {
+  "id": "indirekte-fragen",
+  "name": "Indirekte Fragen",
+  "category": "clauses",
+  "level": "B1",
+  "description": ""
+ },
+ {
+  "id": "obwohl-trotzdem",
+  "name": "Konzessivsätze (obwohl/trotzdem)",
+  "category": "clauses",
+  "level": "B1",
+  "description": ""
+ },
+ {
+  "id": "relativsaetze",
+  "name": "Relativsätze",
+  "category": "clauses",
+  "level": "B1",
+  "description": ""
+ },
+ {
+  "id": "um-zu-damit",
+  "name": "Finalsätze (um...zu / damit)",
+  "category": "clauses",
+  "level": "B1",
+  "description": ""
+ },
+ {
+  "id": "wenn-als-wann",
+  "name": "wenn vs. als vs. wann",
+  "category": "clauses",
+  "level": "B1",
+  "description": ""
+ },
+ {
+  "id": "konjunktiv-2-haette-waere",
+  "name": "Konjunktiv II (hätte/wäre/könnte)",
+  "category": "konjunktiv",
+  "level": "B1",
+  "description": ""
+ },
+ {
+  "id": "konjunktiv-2-wuerde",
+  "name": "Konjunktiv II mit würde",
+  "category": "konjunktiv",
+  "level": "B1",
+  "description": ""
+ },
+ {
+  "id": "n-deklination",
+  "name": "N-Deklination",
+  "category": "nouns-articles",
+  "level": "B1",
+  "description": ""
+ },
+ {
+  "id": "passiv-praesens",
+  "name": "Passiv Präsens",
+  "category": "passiv",
+  "level": "B1",
+  "description": ""
+ },
+ {
+  "id": "passiv-praeteritum",
+  "name": "Passiv Präteritum/Perfekt",
+  "category": "passiv",
+  "level": "B1",
+  "description": ""
+ },
+ {
+  "id": "verben-mit-praepositionen",
+  "name": "Verben mit Präpositionen",
+  "category": "prepositions",
+  "level": "B1",
+  "description": ""
+ },
+ {
+  "id": "relativpronomen",
+  "name": "Relativpronomen",
+  "category": "pronouns",
+  "level": "B1",
+  "description": ""
+ },
+ {
+  "id": "infinitiv-mit-zu",
+  "name": "Infinitiv mit zu",
+  "category": "verbs-tenses",
+  "level": "B1",
+  "description": ""
+ },
+ {
+  "id": "plusquamperfekt",
+  "name": "Plusquamperfekt",
+  "category": "verbs-tenses",
+  "level": "B1",
+  "description": ""
+ },
+ {
+  "id": "praeteritum",
+  "name": "Präteritum",
+  "category": "verbs-tenses",
+  "level": "B1",
+  "description": ""
+ },
+ {
+  "id": "te-ka-mo-lo",
+  "name": "Angaben-Reihenfolge (TeKaMoLo)",
+  "category": "word-order",
+  "level": "B1",
+  "description": ""
+ },
+ {
+  "id": "partizip-als-adjektiv",
+  "name": "Partizip I/II als Adjektiv",
+  "category": "adjectives",
+  "level": "B2",
+  "description": ""
+ },
+ {
+  "id": "je-desto",
+  "name": "je...desto",
+  "category": "clauses",
+  "level": "B2",
+  "description": ""
+ },
+ {
+  "id": "konnektoren-advanced",
+  "name": "Konnektoren II (dennoch, allerdings, indem, sodass)",
+  "category": "clauses",
+  "level": "B2",
+  "description": ""
+ },
+ {
+  "id": "zweiteilige-konnektoren",
+  "name": "Zweiteilige Konnektoren (entweder...oder, ...)",
+  "category": "clauses",
+  "level": "B2",
+  "description": ""
+ },
+ {
+  "id": "konjunktiv-1",
+  "name": "Konjunktiv I (indirekte Rede)",
+  "category": "konjunktiv",
+  "level": "B2",
+  "description": ""
+ },
+ {
+  "id": "konjunktiv-2-vergangenheit",
+  "name": "Konjunktiv II der Vergangenheit",
+  "category": "konjunktiv",
+  "level": "B2",
+  "description": ""
+ },
+ {
+  "id": "nomen-verb-verbindungen",
+  "name": "Nomen-Verb-Verbindungen",
+  "category": "nouns-articles",
+  "level": "B2",
+  "description": ""
+ },
+ {
+  "id": "modalpartikeln",
+  "name": "Modalpartikeln (doch, ja, eigentlich, zwar, immerhin)",
+  "category": "other",
+  "level": "B2",
+  "description": ""
+ },
+ {
+  "id": "passiv-mit-modalverben",
+  "name": "Passiv mit Modalverben",
+  "category": "passiv",
+  "level": "B2",
+  "description": ""
+ },
+ {
+  "id": "zustandspassiv",
+  "name": "Zustandspassiv (sein + Partizip II)",
+  "category": "passiv",
+  "level": "B2",
+  "description": ""
+ },
+ {
+  "id": "praepositionen-genitiv",
+  "name": "Präpositionen mit Genitiv",
+  "category": "prepositions",
+  "level": "B2",
+  "description": ""
+ },
+ {
+  "id": "pronomen-es",
+  "name": "Pronomen „es\"",
+  "category": "pronouns",
+  "level": "B2",
+  "description": ""
+ },
+ {
+  "id": "noun-capitalization",
+  "name": "Noun Capitalization",
+  "category": "other",
+  "level": "A1",
+  "description": "",
+  "sticky": true
+ },
+ {
+  "id": "register-formal-email",
+  "name": "Register Formal Email",
+  "category": "other",
+  "level": "B1",
+  "description": ""
+ },
+ {
+  "id": "umlauts",
+  "name": "Umlauts",
+  "category": "other",
+  "level": "A1",
+  "description": ""
+ },
+ {
+  "id": "fuer-vor",
+  "name": "für vs. vor",
+  "category": "prepositions",
+  "level": "B1",
+  "description": "für = for the benefit or purpose of; vor = in front of, before, and with fear/warning verbs (Angst vor, warnen vor, sich schämen vor).",
+  "sticky": true
+ },
+ {
+  "id": "neutrum-ma-nomen",
+  "name": "Neutrum: -ma-Nomen und nominalisierte Verben",
+  "category": "nouns-articles",
+  "level": "A2",
+  "description": "Nouns ending in -ma and similar Greek loans (das Thema, das Problem, das System) and nouns made from infinitives (das Essen, das Lernen) are neuter.",
+  "sticky": true
+ },
+ {
+  "id": "nominalstil",
+  "name": "Nominalstil",
+  "category": "other",
+  "level": "C1",
+  "description": "Turning verb clauses into noun phrases, typical of formal writing: weil er krank war → wegen seiner Krankheit."
+ },
+ {
+  "id": "erweiterte-partizipialattribute",
+  "name": "Erweiterte Partizipialattribute",
+  "category": "adjectives",
+  "level": "C1",
+  "description": "A participle with its own complements placed before the noun: das seit Jahren geplante Projekt."
+ },
+ {
+  "id": "subjektive-modalverben",
+  "name": "Subjektive Modalverben",
+  "category": "verbs-tenses",
+  "level": "C1",
+  "description": "Modal verbs expressing how sure the speaker is or reporting a claim: Er muss krank sein. Sie soll reich sein. Er will es gesehen haben."
+ },
+ {
+  "id": "konnektoren-mit-korrelat",
+  "name": "Konnektoren mit Korrelat",
+  "category": "clauses",
+  "level": "C1",
+  "description": "Clauses announced by a da-word or es in the main clause: Ich freue mich darauf, dass ... / Es kommt darauf an, ob ..."
+ },
+ {
+  "id": "passiversatzformen",
+  "name": "Passiversatzformen",
+  "category": "passiv",
+  "level": "C1",
+  "description": "Alternatives to the passive: sich lassen + Infinitiv, sein + zu + Infinitiv, adjectives in -bar."
+ },
+ {
+  "id": "irreale-vergleichssaetze",
+  "name": "Irreale Vergleichssätze (als ob / als)",
+  "category": "konjunktiv",
+  "level": "C1",
+  "description": "Unreal comparisons with Konjunktiv II: Er tut so, als ob er nichts wüsste / als wüsste er nichts."
+ }
+]

@@ -1,0 +1,642 @@
+{
+ "L1-1": {
+  "evidence": "Alles begann mit einem Besuch bei meiner Zahnärztin.",
+  "evidence_en": "It all started with a visit to my dentist.",
+  "why": "Die Zahnärztin sagt: „Sie sollten weniger Süßes essen.“ Danach beschließt die Autorin den Versuch. „Geraten“ = „Sie sollten …“.",
+  "why_en": "The dentist says 'You should eat fewer sweets', and after that the author decides to try it. 'Advised' is the paraphrase of 'you should'.",
+  "trap": "Man könnte denken, die Löcher allein waren der Grund, aber der Satz der Ärztin ist genau ein Rat.",
+  "trap_en": "You might think the cavities alone were the reason, but the dentist's sentence is exactly a piece of advice.",
+  "question_en": "The author started the experiment because her dentist advised her to."
+ },
+ "L1-2": {
+  "evidence": "meine Kollegen haben sich über mich lustig gemacht, weil ich beim Geburtstagskuchen Nein gesagt habe",
+  "evidence_en": "my colleagues made fun of me because I said no to the birthday cake",
+  "why": "Sich lustig machen ist das Gegenteil von unterstützen. Also falsch.",
+  "why_en": "Making fun of someone is the opposite of supporting them, so the statement is false.",
+  "trap": "Unterstützung kommt im Text vor, aber von der Schwester, nicht von den Kollegen.",
+  "trap_en": "Support does appear in the text, but it comes from her sister, not her colleagues.",
+  "question_en": "The colleagues supported the author from the start."
+ },
+ "L1-3": {
+  "evidence": "Meine Schwester hat mir dann geraten, statt Süßigkeiten Nüsse und Obst ins Büro mitzunehmen. Das hat tatsächlich geholfen.",
+  "evidence_en": "My sister then advised me to take nuts and fruit to the office instead of sweets. That actually helped.",
+  "why": "Sie hat den Rat befolgt („Das hat tatsächlich geholfen“), also hat sie Obst und Nüsse statt Süßigkeiten gegessen.",
+  "why_en": "She followed the advice ('That actually helped'), so she ate fruit and nuts instead of sweets.",
+  "trap": "Der Rat kommt von der Schwester – aber das ändert nichts daran, dass die Autorin es gemacht hat.",
+  "trap_en": "The advice came from her sister, but that doesn't change the fact that the author did it.",
+  "question_en": "The author ate fruit and nuts instead of sweets."
+ },
+ "L1-4": {
+  "evidence": "Auf der Waage hat sich allerdings kaum etwas verändert: nur ein Kilo weniger.",
+  "evidence_en": "On the scale, however, hardly anything changed: only one kilo less.",
+  "why": "Sie hat nur ein Kilo abgenommen, nicht mehrere.",
+  "why_en": "She only lost one kilo, not several.",
+  "trap": "„Abgenommen“ stimmt, aber die Zahl ist falsch: „nur ein Kilo“ statt „mehrere Kilo“.",
+  "trap_en": "She did lose weight, but the number is wrong: 'only one kilo', not 'several kilos'.",
+  "question_en": "The author lost several kilos in the four weeks."
+ },
+ "L1-5": {
+  "evidence": "Werde ich wieder Zucker essen? Ja, aber viel weniger.",
+  "evidence_en": "Will I eat sugar again? Yes, but much less.",
+  "why": "Sie wird wieder Zucker essen, nur weniger, z. B. ein Stück Kuchen am Sonntag.",
+  "why_en": "She will eat sugar again, just less, e.g. a piece of cake on Sunday.",
+  "trap": "„Die tägliche Cola dagegen nicht mehr“ klingt nach „nie wieder“, gilt aber nur für die Cola, nicht für Zucker allgemein.",
+  "trap_en": "'No more daily cola' sounds like 'never again', but it only applies to cola, not to sugar in general.",
+  "question_en": "After the experiment the author never wants to eat sugar again."
+ },
+ "L1-6": {
+  "evidence": "sagt euren Freunden vorher Bescheid, damit sie euch nicht ständig etwas anbieten",
+  "evidence_en": "tell your friends beforehand so they don't keep offering you things",
+  "why": "„Bescheid sagen“ = informieren. Das ist ihr Rat an die Leser.",
+  "why_en": "'Bescheid sagen' means 'to inform'. This is her advice to readers.",
+  "trap": "Der andere Rat („nicht in der Weihnachtszeit anfangen“) lenkt ab, aber beide Ratschläge stehen im Text.",
+  "trap_en": "The other tip ('don't start at Christmas time') is a distraction, but both tips are in the text.",
+  "question_en": "The author recommends telling friends about the experiment beforehand."
+ },
+ "L2-1": {
+  "evidence": "Für viele Fragen reicht das völlig",
+  "evidence_en": "For many questions that's completely enough",
+  "why": "„Reicht völlig“ = „ausreichen“. Das ist genau Antwort a.",
+  "why_en": "'Reicht völlig' (is completely enough) matches 'ausreichen' in option a.",
+  "trap": "„Anstecken“ steht im Text, aber im Wartezimmer, nicht bei der Videosprechstunde (c).",
+  "trap_en": "'Infection' is in the text, but it refers to the waiting room, not the video consultation (c).",
+  "question_en": "Dr Kohl thinks that …",
+  "options_en": [
+   "video consultations are enough for many questions.",
+   "all patients should keep coming to the practice.",
+   "you easily catch infections in video consultations."
+  ]
+ },
+ "L2-2": {
+  "evidence": "Inzwischen nutzen aber gerade sie das Angebot gern, weil sie nicht mehr mit dem Bus in die Stadt fahren müssen.",
+  "evidence_en": "By now, though, they in particular like using the service because they no longer have to take the bus into town.",
+  "why": "„Inzwischen … gern“ – die älteren Patienten nutzen die Videosprechstunde jetzt gern.",
+  "why_en": "'By now … like using it': the older patients now enjoy the video consultation.",
+  "trap": "Sie waren „am Anfang skeptisch“ – aber nicht „bis heute“ (a). Und die Krankenkasse bezahlt, nicht die Patienten (c).",
+  "trap_en": "They were 'sceptical at first', but not 'to this day' (a). And the health insurer pays, not the patients (c).",
+  "question_en": "Older patients …",
+  "options_en": [
+   "still reject the video consultation today.",
+   "now like using the video consultation.",
+   "have to pay for the video consultation themselves."
+  ]
+ },
+ "L2-3": {
+  "evidence": "wer starke Schmerzen hat, sollte nicht auf einen Videotermin warten, sondern sofort kommen",
+  "evidence_en": "anyone in severe pain shouldn't wait for a video appointment but come straight away",
+  "why": "„Sofort kommen“ = direkt in die Praxis kommen.",
+  "why_en": "'Come straight away' means come directly to the practice.",
+  "trap": "Das Wort „Videotermin“ kommt vor, aber mit „nicht“ – also ist a falsch.",
+  "trap_en": "The word 'video appointment' appears, but with 'not', so a is wrong.",
+  "question_en": "Anyone who is in severe pain …",
+  "options_en": [
+   "should book a video appointment.",
+   "should call the health insurance first.",
+   "should come straight to the practice."
+  ]
+ },
+ "L2-4": {
+  "evidence": "nur noch an zwei Tagen pro Woche Fleisch",
+  "evidence_en": "meat only on two days a week",
+  "why": "„An zwei Tagen pro Woche“ = „zweimal pro Woche“.",
+  "why_en": "'On two days a week' equals 'twice a week'.",
+  "trap": "An den anderen Tagen gibt es kein Fleisch, aber nicht „gar kein Fleisch mehr“ (a); und das Essen ist 40 Cent billiger, nicht teurer (c).",
+  "trap_en": "There's no meat on the other days, but not 'no meat at all' (a); and meals are 40 cents cheaper, not more expensive (c).",
+  "question_en": "In the canteen in Göttingen …",
+  "options_en": [
+   "there is no meat at all any more.",
+   "there is meat only twice a week now.",
+   "the dishes have become more expensive."
+  ]
+ },
+ "L2-5": {
+  "evidence": "Ich kann selbst entscheiden, was ich esse.",
+  "evidence_en": "I can decide for myself what I eat.",
+  "why": "Ben sagt fast wörtlich, dass er selbst entscheiden will.",
+  "why_en": "Ben says almost word for word that he wants to decide for himself.",
+  "trap": "„Isst sowieso kaum Fleisch“ sagt Hanna Voss, nicht Ben (b).",
+  "trap_en": "'Hardly eats meat anyway' is what Hanna Voss says, not Ben (b).",
+  "question_en": "Ben Aktas …",
+  "options_en": [
+   "wants to decide for himself what he eats.",
+   "hardly eats meat anyway.",
+   "likes the new offer."
+  ]
+ },
+ "L2-6": {
+  "evidence": "Bisher sei die Zahl der Gäste jedoch nicht gesunken, sondern sogar leicht gestiegen.",
+  "evidence_en": "So far, however, the number of guests has not fallen but has even risen slightly.",
+  "why": "„Leicht gestiegen“ = etwas mehr Studierende essen in der Mensa.",
+  "why_en": "'Risen slightly' means slightly more students are eating in the canteen.",
+  "trap": "Das Schnitzel wird jetzt seltener bestellt als das Linsencurry – b dreht das um.",
+  "trap_en": "The schnitzel is now ordered less often than the lentil curry; option b flips this.",
+  "question_en": "Since the change …",
+  "options_en": [
+   "fewer students come to the canteen.",
+   "the schnitzel is ordered more often than before.",
+   "slightly more students eat in the canteen than before."
+  ]
+ },
+ "L3-1": {
+  "evidence": "Sanfter Einstieg ohne Vorkenntnisse. Dienstag und Donnerstag 19:00–20:15 Uhr",
+  "evidence_en": "Gentle introduction, no previous experience needed. Tuesday and Thursday 7:00–8:15 pm",
+  "why": "Nora ist Anfängerin („ohne Vorkenntnisse“) und kann abends („19 Uhr“) kommen.",
+  "why_en": "Nora is a beginner ('no previous experience') and can come in the evening (7 pm).",
+  "trap": "Das Fitnessstudio F hat auch Kurse, aber kein Yoga für Anfänger.",
+  "trap_en": "Gym F also has classes, but no beginners' yoga.",
+  "question_en": "Nora wants to start yoga in the evenings after work but has never done yoga before."
+ },
+ "L3-2": {
+  "evidence": "Wir nehmen wieder neue Patientinnen und Patienten auf!",
+  "evidence_en": "We are accepting new patients again!",
+  "why": "Herr Schmidt sucht einen Hausarzt, der Patienten aufnimmt – genau das sagt Anzeige G.",
+  "why_en": "Mr Schmidt is looking for a GP accepting patients, which is exactly what ad G says.",
+  "trap": "Anzeige D (Ernährungsberatung) ist auch medizinisch, aber keine Hausarztpraxis.",
+  "trap_en": "Ad D (nutrition advice) is also health-related, but it isn't a GP practice.",
+  "question_en": "Mr Schmidt is new in town and is looking for a family doctor who is still taking on patients."
+ },
+ "L3-3": {
+  "evidence": "Gerichte, die in 30 Minuten fertig sind und auch Kindern schmecken",
+  "evidence_en": "dishes that are ready in 30 minutes and that children like too",
+  "why": "„In 30 Minuten“ = schnell, „Kindern schmecken“ = für die Familie, „viel Gemüse“ = gesund.",
+  "why_en": "'In 30 minutes' = quick, 'children like it' = for the family, 'lots of vegetables' = healthy.",
+  "trap": "Anzeige B (Bio-Markt) hat gesundes Essen, aber man lernt dort nicht kochen.",
+  "trap_en": "Ad B (organic market) offers healthy food, but you don't learn to cook there.",
+  "question_en": "Emre wants to learn how to cook quickly and healthily for the whole family."
+ },
+ "L3-4": {
+  "evidence": "Sie sitzen viel? Wir zeigen Ihnen Übungen, die Sie auch am Schreibtisch machen können.",
+  "evidence_en": "Do you sit a lot? We'll show you exercises you can do at your desk.",
+  "why": "Frau Okafor sitzt am Computer und hat Rückenschmerzen – die Rückenschule ist für „Büromenschen“.",
+  "why_en": "Ms Okafor sits at the computer and has back pain; the back school is for 'office people'.",
+  "trap": "Das Fitnessstudio F bietet Training, aber nichts speziell gegen Rückenschmerzen vom Sitzen.",
+  "trap_en": "Gym F offers training, but nothing specifically for back pain from sitting.",
+  "question_en": "Ms Okafor often has back pain because she sits at the computer all day."
+ },
+ "L3-5": {
+  "evidence": "In sechs Wochen gemeinsam aufhören.",
+  "evidence_en": "Quit together in six weeks.",
+  "why": "„Rauchfrei“ und „Kurs in der Gruppe“, „gemeinsam aufhören“ – genau Pias Wunsch.",
+  "why_en": "'Smoke-free', 'group course', 'quit together' match exactly what Pia wants.",
+  "trap": "Andere Gruppen (Yoga C, Laufgruppe J) sind auch Gruppen, haben aber nichts mit Rauchen zu tun.",
+  "trap_en": "Other groups (yoga C, running group J) are groups too, but have nothing to do with smoking.",
+  "question_en": "Pia wants to stop smoking and is looking for support in a group."
+ },
+ "L3-6": {
+  "evidence": "Treffpunkt Montag und Mittwoch um 18 Uhr am Eingang des Bürgerparks. Kostenlos, einfach vorbeikommen! Am Wochenende machen wir Pause.",
+  "evidence_en": "Meeting point Monday and Wednesday at 6 pm at the entrance to the Bürgerpark. Free, just drop by! We take a break at the weekend.",
+  "why": "Tobias will am Wochenende laufen. Die Laufgruppe J läuft nur montags und mittwochs, also passt keine Anzeige: 0.",
+  "why_en": "Tobias wants to run at weekends. Running group J only runs on Mondays and Wednesdays, so no ad fits: 0.",
+  "trap": "J sieht perfekt aus (Laufgruppe!), aber „Am Wochenende machen wir Pause“ schließt sie aus.",
+  "trap_en": "J looks perfect (a running group!), but 'we take a break at the weekend' rules it out.",
+  "question_en": "Tobias likes running but is looking for people he can run with at the weekend."
+ },
+ "L3-7": {
+  "evidence": "Welche Apotheke hat nachts, am Wochenende oder an Feiertagen geöffnet?",
+  "evidence_en": "Which pharmacy is open at night, at the weekend or on public holidays?",
+  "why": "Sonntag = Wochenende. Der Notdienst sagt, welche Apotheke geöffnet hat.",
+  "why_en": "Sunday is the weekend. The emergency service tells you which pharmacy is open.",
+  "trap": "Die Hausarztpraxis G ist nur Mo–Fr geöffnet und ist keine Apotheke.",
+  "trap_en": "GP practice G is only open Mon–Fri and isn't a pharmacy.",
+  "question_en": "The Berger family urgently needs medicine on Sunday and is looking for an open pharmacy."
+ },
+ "L4-1": {
+  "evidence": "Der Staat soll mir nicht sagen, was ich esse.",
+  "evidence_en": "The state shouldn't tell me what to eat.",
+  "why": "Frank ist gegen die Steuer: Er will frei entscheiden, und die Steuer trifft Leute mit wenig Geld. Also Nein.",
+  "why_en": "Frank is against the tax: he wants to decide freely, and the tax hits people with little money. So No.",
+  "trap": "Er spricht über Pizza, aber nicht positiv über die Steuer.",
+  "trap_en": "He talks about pizza, but not positively about the tax.",
+  "question_en": "Frank, Dortmund: The state shouldn't tell me what I eat. I'm an adult. If I want a pizza on Saturday, then I eat a pizza. In the end a tax like that only hits the people who have little money anyway."
+ },
+ "L4-2": {
+  "evidence": "Bei Zigaretten hat es funktioniert",
+  "evidence_en": "It worked with cigarettes",
+  "why": "Lena vergleicht mit Zigaretten und will das Steuergeld für Schulsport nutzen – sie ist dafür.",
+  "why_en": "Lena compares it to cigarettes and wants to spend the tax money on school sport; she is in favour.",
+  "trap": "Die Frage „Warum sollte das … anders sein?“ klingt kritisch, meint aber: Es funktioniert auch hier.",
+  "trap_en": "The question 'Why should it be different?' sounds critical, but it means: it will work here too.",
+  "question_en": "Lena, Potsdam: It worked with cigarettes: since they've been more expensive, noticeably fewer young people smoke. Why should it be different with cola and crisps? The money from the tax could be invested in sport at schools."
+ },
+ "L4-3": {
+  "evidence": "dann nehme ich das in Kauf, auch wenn ich selbst mehr bezahle",
+  "evidence_en": "then I'll accept that, even if I pay more myself",
+  "why": "„In Kauf nehmen“ = akzeptieren. Ömer ist für die Steuer, obwohl sie ihn Geld kostet.",
+  "why_en": "'In Kauf nehmen' means to accept a downside. Ömer supports the tax even though it costs him money.",
+  "trap": "„Ich selbst mehr bezahle“ klingt negativ, aber er akzeptiert es trotzdem.",
+  "trap_en": "'I pay more myself' sounds negative, but he accepts it anyway.",
+  "question_en": "Ömer, Frankfurt: I have three children and see every day how they are influenced by advertising for sweets. On my own I can do little against it. If a tax means that the lemonade at the checkout is more expensive than water, then I'll accept that, even if I pay more myself."
+ },
+ "L4-4": {
+  "evidence": "Viel besser wäre es, wenn Kinder in der Schule richtig kochen lernen.",
+  "evidence_en": "It would be much better if children learned to cook properly at school.",
+  "why": "Sabine kritisiert, dass Politiker entscheiden, was ungesund ist, und will lieber Kochunterricht. Also Nein.",
+  "why_en": "Sabine criticises politicians deciding what's unhealthy and prefers cooking lessons. So No.",
+  "trap": "Sie ist für gesunde Ernährung, aber nicht für die Steuer als Weg dahin.",
+  "trap_en": "She's for healthy eating, but not for the tax as the way to get there.",
+  "question_en": "Sabine, Hannover: What is unhealthy anyway? A piece of butter? A glass of wine? Who decides that? In the end politicians sit in Berlin and make lists. It would be much better if children learned to cook properly at school."
+ },
+ "L4-5": {
+  "evidence": "Eine Steuer würde sie zusätzlich bestrafen, ohne dass sich etwas ändert.",
+  "evidence_en": "A tax would punish them even more without anything changing.",
+  "why": "Jonas meint, die Steuer bestraft arme Familien und bringt nichts. Also Nein.",
+  "why_en": "Jonas thinks the tax punishes poor families and achieves nothing. So No.",
+  "trap": "Er beginnt mit „Ich verstehe das Argument … es klingt logisch“, aber nach „Aber“ kommt seine echte Meinung.",
+  "trap_en": "He starts with 'I understand the argument … it sounds logical', but his real opinion comes after 'But'.",
+  "question_en": "Jonas, Rostock: I understand the argument with the cigarettes, it sounds logical. But food is something different: you can't just stop eating. In many families the money is already barely enough. A tax would punish them additionally without anything changing."
+ },
+ "L4-6": {
+  "evidence": "Es ist nur fair, wenn ungesunde Produkte einen Teil dieser Kosten tragen.",
+  "evidence_en": "It's only fair if unhealthy products bear part of these costs.",
+  "why": "Mareike findet es fair, dass ungesunde Produkte mitbezahlen – also ist sie für die Steuer.",
+  "why_en": "Mareike thinks it's fair that unhealthy products pay a share, so she supports the tax.",
+  "trap": "Die vielen Krankheiten klingen negativ, sind aber ihr Argument für die Steuer.",
+  "trap_en": "The list of illnesses sounds negative, but it's her argument for the tax.",
+  "question_en": "Mareike, Augsburg: As a nurse I see the consequences every day: diabetes, heart problems, obesity even in twenty-year-olds. We all pay for the treatment through health insurance. It's only fair if unhealthy products carry part of these costs."
+ },
+ "L4-7": {
+  "evidence": "Genau das brauchen wir hier auch.",
+  "evidence_en": "That's exactly what we need here too.",
+  "why": "David findet die britische Zuckersteuer gut und will sie auch in Deutschland.",
+  "why_en": "David likes the British sugar tax and wants it in Germany too.",
+  "trap": "„Niemand zahlt mehr“ klingt wie ein Argument gegen eine Steuer, zeigt aber, dass sie funktioniert.",
+  "trap_en": "'Nobody pays more' sounds like an argument against a tax, but it shows the tax works.",
+  "question_en": "David, Bonn: In Great Britain there has been a sugar tax for years, and the manufacturers simply mixed less sugar into the drinks. Nobody pays more, but everyone drinks more healthily. That's exactly what we need here too."
+ },
+ "L5-1": {
+  "evidence": "Wer mehr als 15 Minuten zu spät kommt, muss einen neuen Termin vereinbaren",
+  "evidence_en": "Anyone more than 15 minutes late has to make a new appointment",
+  "why": "20 Minuten sind mehr als 15 Minuten, also braucht man einen neuen Termin. „Vereinbaren“ = „ausmachen“.",
+  "why_en": "20 minutes is more than 15, so you need a new appointment. 'Vereinbaren' = 'ausmachen' (arrange).",
+  "trap": "Die 20 € gibt es nur bei späten Absagen oder wenn man nicht kommt (§ 2), nicht bei Verspätung.",
+  "trap_en": "The €20 fee is only for late cancellations or no-shows (§ 2), not for being late.",
+  "question_en": "Anyone who comes to the appointment 20 minutes late …",
+  "options_en": [
+   "will still be treated but has to wait.",
+   "has to make a new appointment.",
+   "has to pay 20 euros."
+  ]
+ },
+ "L5-2": {
+  "evidence": "Wiederholungsrezepte können Sie telefonisch oder online bestellen.",
+  "evidence_en": "You can order repeat prescriptions by phone or online.",
+  "why": "Der Satz steht fast wörtlich so im Text.",
+  "why_en": "The sentence is in the text almost word for word.",
+  "trap": "Das Gespräch mit dem Arzt ist für Überweisungen nötig, nicht für Rezepte (c); und das Rezept liegt erst am nächsten Werktag bereit (b).",
+  "trap_en": "A talk with the doctor is required for referrals, not prescriptions (c); and the prescription is only ready the next working day (b).",
+  "question_en": "A repeat prescription …",
+  "options_en": [
+   "can be ordered by phone or online.",
+   "you get immediately when you come to the practice.",
+   "you only get after a conversation with the doctor."
+  ]
+ },
+ "L5-3": {
+  "evidence": "Für akute Beschwerden gibt es täglich von 8 bis 9 Uhr eine Sprechstunde ohne Termin.",
+  "evidence_en": "For acute complaints there is a daily consultation hour without appointment from 8 to 9 am.",
+  "why": "„Plötzlich krank“ = akute Beschwerden. Dann kann man von 8 bis 9 Uhr ohne Termin kommen.",
+  "why_en": "'Suddenly ill' = acute complaints. Then you can come from 8 to 9 am without an appointment.",
+  "trap": "Die 112 ist nur für lebensbedrohliche Notfälle, nicht „immer“ (b).",
+  "trap_en": "112 is only for life-threatening emergencies, not 'always' (b).",
+  "question_en": "Anyone who suddenly falls ill …",
+  "options_en": [
+   "first has to book an appointment online.",
+   "should always call 112.",
+   "can come in the morning between 8 and 9 without an appointment."
+  ]
+ },
+ "L5-4": {
+  "evidence": "Telefonate sind im Wartezimmer nicht erlaubt",
+  "evidence_en": "Phone calls are not allowed in the waiting room",
+  "why": "Der Text sagt es direkt: Telefonieren ist im Wartezimmer verboten.",
+  "why_en": "The text says it directly: phone calls are forbidden in the waiting room.",
+  "trap": "Das Handy soll auf „lautlos“, nicht ausgeschaltet sein (c).",
+  "trap_en": "The phone should be on 'silent', not switched off (c).",
+  "question_en": "In the waiting room …",
+  "options_en": [
+   "you may make quiet phone calls.",
+   "phone calls are not allowed.",
+   "you have to switch off your mobile."
+  ]
+ },
+ "H1-1a": {
+  "evidence": "Leider ist Frau Dr. Sommer nächste Woche krank, deshalb müssen wir den Termin verschieben.",
+  "evidence_en": "Unfortunately Dr Sommer is ill next week, so we have to reschedule the appointment.",
+  "why": "Die Zahnärztin ist krank, deshalb findet der Montagstermin nicht statt.",
+  "why_en": "The dentist is ill, so the Monday appointment doesn't take place.",
+  "trap": "Dr. Frank ist da, aber nur für Schmerzpatienten – der normale Termin fällt trotzdem aus.",
+  "trap_en": "Dr Frank is there, but only for patients in pain; the regular appointment is still cancelled.",
+  "question_en": "The appointment on Monday is cancelled because the dentist is ill."
+ },
+ "H1-1b": {
+  "evidence": "Bitte rufen Sie uns an und sagen Sie, welcher Termin Ihnen besser passt.",
+  "evidence_en": "Please call us and tell us which appointment suits you better.",
+  "why": "Die Praxis bietet Donnerstag oder Dienstag an. Herr Lindner soll einen davon wählen.",
+  "why_en": "The practice offers Thursday or Tuesday; Mr Lindner should choose one.",
+  "trap": "Zu Dr. Frank soll er nur gehen, „falls Sie … Schmerzen bekommen“ – nicht sofort (c).",
+  "trap_en": "He should only go to Dr Frank 'if you get pain', not straight away (c).",
+  "question_en": "Mr Lindner is supposed to …",
+  "options_en": [
+   "choose one of two new appointments.",
+   "come to the practice on Monday at 8:30.",
+   "go to Dr Frank immediately."
+  ]
+ },
+ "H1-2a": {
+  "evidence": "sonntags bleibt der Markt geschlossen",
+  "evidence_en": "the market stays closed on Sundays",
+  "why": "Am Sonntag ist der Markt zu. Also falsch.",
+  "why_en": "The market is closed on Sundays, so the statement is false.",
+  "trap": "Die Öffnung ist „am Samstag“ – ein Wochenendtag, aber nicht Sonntag.",
+  "trap_en": "The opening is 'on Saturday', a weekend day, but not Sunday.",
+  "question_en": "The organic market is also open on Sunday."
+ },
+ "H1-2b": {
+  "evidence": "die ersten hundert Kunden erhalten eine Stofftasche gratis",
+  "evidence_en": "the first hundred customers get a free cloth bag",
+  "why": "Eine Gratis-Stofftasche ist ein Geschenk.",
+  "why_en": "A free cloth bag is a gift.",
+  "trap": "Die zehn Prozent gelten nicht für alle Produkte, Getränke sind ausgenommen (a). Bis 20 Uhr gilt erst ab Montag (c).",
+  "trap_en": "The ten percent doesn't apply to everything, drinks are excluded (a). Open until 8 pm only from Monday (c).",
+  "question_en": "On the opening day …",
+  "options_en": [
+   "there is a ten percent discount on all products.",
+   "the first hundred customers get a present.",
+   "the market is open until 8 pm."
+  ]
+ },
+ "H1-3a": {
+  "evidence": "ich darf zwei Wochen lang nicht laufen",
+  "evidence_en": "I'm not allowed to run for two weeks",
+  "why": "Leni sagt es wörtlich.",
+  "why_en": "Leni says it word for word.",
+  "trap": "„Nichts Schlimmes“ könnte man als „sie darf laufen“ verstehen, aber das Verbot gilt trotzdem.",
+  "trap_en": "'Nothing serious' might suggest she can run, but the ban still applies.",
+  "question_en": "Leni isn't allowed to run for two weeks."
+ },
+ "H1-3b": {
+  "evidence": "Du müsstest sie nur bis Freitag um 18 Uhr im Sportgeschäft am Bahnhof abholen.",
+  "evidence_en": "You'd just have to pick it up by Friday at 6 pm at the sports shop by the station.",
+  "why": "Tim kann Lenis Startnummer übernehmen und muss sie bis Freitag abholen.",
+  "why_en": "Tim can take over Leni's race number and has to pick it up by Friday.",
+  "trap": "Am Mittwoch gibt es Training – Leni kommt, nur zum Schwimmen; nichts sagt, dass Tim nicht trainieren kann (b).",
+  "trap_en": "There's training on Wednesday; Leni is coming, just to swim. Nothing says Tim can't train (b).",
+  "question_en": "Tim can …",
+  "options_en": [
+   "go with Leni to the doctor on Sunday.",
+   "not train on Wednesday.",
+   "pick up Leni's start number by Friday."
+  ]
+ },
+ "H1-4a": {
+  "evidence": "Das große Sportbecken wird heute um 16 Uhr geschlossen",
+  "evidence_en": "The large sports pool closes today at 4 pm",
+  "why": "Das Sportbecken schließt um 16 Uhr, nicht um 21 Uhr.",
+  "why_en": "The sports pool closes at 4 pm, not 9 pm.",
+  "trap": "21 Uhr gilt für das Nichtschwimmerbecken und die Sauna, nicht für das Sportbecken.",
+  "trap_en": "9 pm applies to the non-swimmers' pool and the sauna, not the sports pool.",
+  "question_en": "The sports pool is open until 9 pm today."
+ },
+ "H1-4b": {
+  "evidence": "das Bad öffnet dann erst um 7 Uhr statt um 6 Uhr",
+  "evidence_en": "the pool will then open at 7 instead of 6",
+  "why": "7 Uhr statt 6 Uhr = eine Stunde später.",
+  "why_en": "7 instead of 6 means one hour later.",
+  "trap": "16 Uhr gilt nur heute für das Sportbecken, nicht ab nächster Woche (c).",
+  "trap_en": "4 pm only applies to the sports pool today, not from next week (c).",
+  "question_en": "From next week …",
+  "options_en": [
+   "the pool opens an hour later.",
+   "the kiosk is open again.",
+   "the pool closes already at 4 pm."
+  ]
+ },
+ "H1-5a": {
+  "evidence": "der Eintritt kostet an beiden Tagen nur zwei Euro statt vier",
+  "evidence_en": "admission costs only two euros instead of four on both days",
+  "why": "Der Eintritt ist billiger, aber nicht kostenlos: zwei Euro.",
+  "why_en": "Admission is cheaper, but not free: two euros.",
+  "trap": "„Nur zwei Euro“ klingt fast gratis, aber man muss trotzdem bezahlen.",
+  "trap_en": "'Only two euros' sounds almost free, but you still have to pay.",
+  "question_en": "The outdoor pools in Karlsruhe are free on the hot days."
+ },
+ "H1-5b": {
+  "evidence": "verschieben Sie Sport auf den frühen Morgen oder den späten Abend",
+  "evidence_en": "move sport to early morning or late evening",
+  "why": "Früher Morgen / später Abend = morgens oder abends.",
+  "why_en": "Early morning / late evening = in the morning or evening.",
+  "trap": "Man soll Sport verschieben, nicht ganz vermeiden (b); mittags (11–17 Uhr) soll man nicht in die Sonne (a).",
+  "trap_en": "You should move sport, not avoid it completely (b); at midday (11–5) you should stay out of the sun (a).",
+  "question_en": "In the heat you should do sport …",
+  "options_en": [
+   "ideally at midday.",
+   "not at all.",
+   "in the morning or evening."
+  ]
+ },
+ "H2-1": {
+  "evidence": "wir treffen uns also erst in zwei Wochen wieder",
+  "evidence_en": "so we won't meet again until two weeks from now",
+  "why": "Nächste Woche fällt der Kurs aus, deshalb ist der nächste Termin in zwei Wochen.",
+  "why_en": "Next week's class is cancelled, so the next session is in two weeks.",
+  "trap": "„Nächste Woche“ wird genannt, aber da fällt der Kurs aus (a). „Am Ende“ wird ein Extratermin angehängt (c).",
+  "trap_en": "'Next week' is mentioned, but that class is cancelled (a). An extra session is added 'at the end' (c).",
+  "question_en": "The next course session is …",
+  "options_en": [
+   "in one week.",
+   "in two weeks.",
+   "at the end of the course."
+  ]
+ },
+ "H2-2": {
+  "evidence": "Sie müssen also nichts mitbringen – außer einer Schürze",
+  "evidence_en": "so you don't need to bring anything – except an apron",
+  "why": "Nur die Schürze muss man mitbringen.",
+  "why_en": "The only thing you have to bring is an apron.",
+  "trap": "Die Zutaten sind im Kurspreis enthalten (b); Dosen darf man mitbringen, „wenn Sie möchten“ – es ist freiwillig (c).",
+  "trap_en": "The ingredients are included in the price (b); containers are optional, 'if you like' (c).",
+  "question_en": "The participants are supposed to bring … .",
+  "options_en": [
+   "an apron",
+   "the ingredients",
+   "their own dishes"
+  ]
+ },
+ "H2-3": {
+  "evidence": "waschen Sie sich bitte die Hände am Waschbecken links neben der Tür, nicht in den Spülbecken",
+  "evidence_en": "please wash your hands at the sink to the left of the door, not in the washing-up sinks",
+  "why": "Das Waschbecken neben der Tür ist für die Hände.",
+  "why_en": "The sink next to the door is for washing hands.",
+  "trap": "Die Spülbecken sind „nur für das Gemüse“ – mit „nicht“ ausgeschlossen (a).",
+  "trap_en": "The washing-up sinks are 'only for vegetables' and ruled out with 'not' (a).",
+  "question_en": "You wash your hands …",
+  "options_en": [
+   "in the sink for the vegetables.",
+   "at the washbasin next to the door.",
+   "at the big table at the back."
+  ]
+ },
+ "H2-4": {
+  "evidence": "Unser Hauptgericht heute kostet pro Person weniger als drei Euro und ist in fünfundzwanzig Minuten fertig.",
+  "evidence_en": "Our main course today costs less than three euros per person and is ready in twenty-five minutes.",
+  "why": "Unter drei Euro = günstig, 25 Minuten = schnell.",
+  "why_en": "Under three euros = cheap, 25 minutes = quick.",
+  "trap": "„Dauert lange und ist teuer“ denken „viele Leute“ – die Kursleiterin sagt: „Das stimmt nicht.“",
+  "trap_en": "'Takes long and is expensive' is what 'many people' think; the instructor says 'That's not true.'",
+  "question_en": "The course leader thinks that healthy cooking …",
+  "options_en": [
+   "takes a lot of time.",
+   "is mostly expensive.",
+   "can be cheap and quick."
+  ]
+ },
+ "H2-5": {
+  "evidence": "ich schicke sie Ihnen nach jedem Abend per E-Mail",
+  "evidence_en": "I'll send them to you by email after each evening",
+  "why": "Die Rezepte kommen nach jedem Kursabend per E-Mail.",
+  "why_en": "The recipes are emailed after each class evening.",
+  "trap": "„Auf Papier“ wird genannt, aber mit „nicht“ (b); ausdrucken soll man sie selbst zu Hause.",
+  "trap_en": "'On paper' is mentioned, but with 'not' (b); you print them yourself at home.",
+  "question_en": "The recipes …",
+  "options_en": [
+   "are sent by email after each evening.",
+   "you get on paper at the beginning.",
+   "you have to write down yourself."
+  ]
+ },
+ "H3-1": {
+  "evidence": "Er hat mir sogar Tabletten angeboten, aber ich wollte es erst mal ohne versuchen.",
+  "evidence_en": "He even offered me tablets, but I wanted to try without them first.",
+  "why": "Paul nimmt keine Tabletten, er will es zuerst ohne versuchen.",
+  "why_en": "Paul isn't taking tablets; he wants to try without them first.",
+  "trap": "Das Wort „Tabletten“ kommt vor, aber Paul hat sie abgelehnt.",
+  "trap_en": "The word 'tablets' appears, but Paul turned them down.",
+  "question_en": "Paul is now taking tablets for his high blood pressure."
+ },
+ "H3-2": {
+  "evidence": "In drei Monaten soll ich wiederkommen.",
+  "evidence_en": "I'm supposed to come back in three months.",
+  "why": "„Wiederkommen“ zum Arzt = wieder zum Arzt gehen.",
+  "why_en": "'Come back' to the doctor = go to the doctor again.",
+  "trap": "Die anderen Zahlen (dreimal pro Woche Sport) sind etwas anderes – hier stimmt „drei Monate“.",
+  "trap_en": "The other number (sport three times a week) is something else; 'three months' is correct here.",
+  "question_en": "Paul is supposed to go back to the doctor in three months."
+ },
+ "H3-3": {
+  "evidence": "der Verein trainiert um sieben Uhr abends, da bin ich oft noch im Büro",
+  "evidence_en": "the club trains at 7 in the evening, when I'm often still at the office",
+  "why": "„Noch im Büro“ = er arbeitet noch. Deshalb kann er nicht zum Fußball.",
+  "why_en": "'Still at the office' = he's still working. That's why he can't go to football.",
+  "trap": "Man könnte denken, er mag Fußball nicht mehr – aber der Grund ist die Uhrzeit.",
+  "trap_en": "You might think he no longer likes football, but the reason is the time.",
+  "question_en": "Paul can't go to football training because he often still works in the evenings."
+ },
+ "H3-4": {
+  "evidence": "Ich habe am Anfang den Fehler gemacht, gleich zehn Kilometer zu laufen, und dann hatte ich zwei Wochen Knieschmerzen.",
+  "evidence_en": "At the start I made the mistake of running ten kilometres straight away, and then I had knee pain for two weeks.",
+  "why": "„Gleich zehn Kilometer“ = zu schnell zu viel; „Knieschmerzen“ = Probleme.",
+  "why_en": "'Ten kilometres straight away' = too much too soon; 'knee pain' = problems.",
+  "trap": "Die Probleme hatte Julia (die Freundin), nicht Paul.",
+  "trap_en": "It was Julia (the friend) who had the problems, not Paul.",
+  "question_en": "Julia had problems at the beginning because she ran too much too quickly."
+ },
+ "H3-5": {
+  "evidence": "Ich laufe sonntags um neun im Park",
+  "evidence_en": "I run in the park on Sundays at nine",
+  "why": "Um neun am Sonntag ist morgens, nicht nachmittags. Paul sagt ja auch: „Sonntag um neun? Puh.“",
+  "why_en": "Nine on Sunday means the morning, not the afternoon. Paul even groans: 'Sunday at nine? Ugh.'",
+  "trap": "Sonntag und Park stimmen – nur die Tageszeit ist falsch.",
+  "trap_en": "Sunday and the park are correct; only the time of day is wrong.",
+  "question_en": "Julia runs in the park on Sunday afternoons."
+ },
+ "H3-6": {
+  "evidence": "Ich koche ehrlich gesagt fast nie, ich hole mir meistens was vom Imbiss.",
+  "evidence_en": "To be honest I almost never cook; I usually get something from a snack bar.",
+  "why": "„Fast nie“ ist das Gegenteil von „jeden Tag“.",
+  "why_en": "'Almost never' is the opposite of 'every day'.",
+  "trap": "Julia rät ihm, Frühstück selbst zu machen – das ist ein Plan, nicht die Realität.",
+  "trap_en": "Julia advises him to make breakfast himself; that's a plan, not what he does now.",
+  "question_en": "Paul cooks for himself every day."
+ },
+ "H3-7": {
+  "evidence": "Das Handy bleibt ab jetzt in der Küche. Lies ein Buch, wenn du nicht schlafen kannst, aber kein Bildschirm.",
+  "evidence_en": "From now on the phone stays in the kitchen. Read a book if you can't sleep, but no screen.",
+  "why": "Das Handy soll in der Küche bleiben – also nicht mehr im Bett aufs Handy schauen.",
+  "why_en": "The phone should stay in the kitchen, so no more looking at it in bed.",
+  "trap": "„Serien auf dem Handy“ sagt Paul über seine Gewohnheit – der Rat kommt danach von Julia.",
+  "trap_en": "'Series on the phone' is Paul describing his habit; the advice comes afterwards from Julia.",
+  "question_en": "Julia advises Paul to stop looking at his phone in bed."
+ },
+ "H4-1": {
+  "evidence": "Jedes sechste Kind in Deutschland ist heute übergewichtig",
+  "evidence_en": "One in six children in Germany is overweight today",
+  "why": "Dr. Hell (a) nennt die Zahl. „Übergewichtig“ = wiegt zu viel.",
+  "why_en": "Dr Hell (a) gives the figure. 'Overweight' = weighs too much.",
+  "trap": "Die Moderatorin fragt nur „Warum so streng?“ – die Zahl kommt von Hell.",
+  "trap_en": "The host only asks 'Why so strict?'; the figure comes from Hell.",
+  "question_en": "Roughly every sixth child in Germany weighs too much."
+ },
+ "H4-2": {
+  "evidence": "in zwei Wochen haben über dreitausend Eltern unterschrieben",
+  "evidence_en": "over three thousand parents signed in two weeks",
+  "why": "Frau Winkler (b) hat die Unterschriftenliste gestartet und nennt die Zahl.",
+  "why_en": "Ms Winkler (b) started the petition and gives the number.",
+  "trap": "Die Moderatorin erwähnt die Liste zuerst, aber die Zahl sagt Winkler.",
+  "trap_en": "The host mentions the petition first, but Winkler gives the number.",
+  "question_en": "Within two weeks more than three thousand parents signed against the ban."
+ },
+ "H4-3": {
+  "evidence": "Die Familien, die sich wirklich nicht um Ernährung kümmern, erreicht man mit einem Verbot sowieso nicht.",
+  "evidence_en": "The families who really don't care about nutrition won't be reached by a ban anyway.",
+  "why": "Das sagt Frau Winkler (b) fast wörtlich.",
+  "why_en": "Ms Winkler (b) says this almost word for word.",
+  "trap": "Hell (a) spricht auch über „diese Familien“, sagt aber das Gegenteil: „Gerade diese Familien erreicht man.“",
+  "trap_en": "Hell (a) also talks about 'these families' but says the opposite: 'It's exactly these families you reach.'",
+  "question_en": "Families who don't pay attention to nutrition can't be reached with a ban."
+ },
+ "H4-4": {
+  "evidence": "das Schulfrühstück, das die Stadt kostenlos anbietet",
+  "evidence_en": "the school breakfast that the city offers free of charge",
+  "why": "Dr. Hell (a) erklärt das kostenlose Frühstück.",
+  "why_en": "Dr Hell (a) explains the free breakfast.",
+  "trap": "Winkler (b) findet das Frühstück gut, aber sie informiert nicht darüber; die Moderatorin fragt nur nach.",
+  "trap_en": "Winkler (b) likes the breakfast but isn't the one explaining it; the host only asks a follow-up question.",
+  "question_en": "The city offers the primary school children a free breakfast."
+ },
+ "H4-5": {
+  "evidence": "Ich habe schon oft Süßigkeiten in die Brotdose gepackt, einfach weil es morgens schnell gehen musste.",
+  "evidence_en": "I've often packed sweets in the lunchbox, simply because things had to be quick in the morning.",
+  "why": "Das gibt die Moderatorin selbst zu.",
+  "why_en": "The host admits this herself.",
+  "trap": "Winkler hat drei Kinder und einen Keks in der Brotdose, aber nur am Freitag und nicht aus Zeitnot.",
+  "trap_en": "Winkler has three children and puts a biscuit in the lunchbox, but only on Fridays and not because of time pressure.",
+  "question_en": "I've often given my children sweet things to take along because mornings had to be quick."
+ },
+ "H4-6": {
+  "evidence": "Man kann Kindern nicht beibringen, mit Süßigkeiten umzugehen, wenn man sie einfach verbietet.",
+  "evidence_en": "You can't teach children to deal with sweets if you simply ban them.",
+  "why": "Winkler (b) erklärt ihre festen Regeln zu Hause: Die Kinder verstehen sie, ein Verbot nicht.",
+  "why_en": "Winkler (b) explains her fixed rules at home: children understand them, but not a ban.",
+  "trap": "Hell (a) spricht auch über Regeln („die strenge Regel“), meint aber ein Verbot.",
+  "trap_en": "Hell (a) also talks about rules ('the strict rule'), but he means a ban.",
+  "question_en": "Children learn how to handle sweets through rules they understand, not through bans."
+ },
+ "H4-7": {
+  "evidence": "Das Verbot gilt für den Kiosk und die Automaten",
+  "evidence_en": "The ban applies to the kiosk and the vending machines",
+  "why": "Das ist Hells (a) Kompromissvorschlag.",
+  "why_en": "This is Hell's (a) compromise proposal.",
+  "trap": "Winkler (b) will nur ein „Zuckerlimit für den Schulkiosk“, kein Verbot – und sie stimmt erst danach zu.",
+  "trap_en": "Winkler (b) only wanted a 'sugar limit for the school kiosk', not a ban, and she only agrees afterwards.",
+  "question_en": "There should no longer be sweets at the kiosk and in the vending machines."
+ },
+ "H4-8": {
+  "evidence": "Ich habe selbst zwei Kinder in der Grundschule",
+  "evidence_en": "I have two children at primary school myself",
+  "why": "Die Moderatorin sagt, dass sie zwei Kinder in der Grundschule hat.",
+  "why_en": "The host says she has two children at primary school.",
+  "trap": "Winkler (b) hat drei Kinder, nicht zwei.",
+  "trap_en": "Winkler (b) has three children, not two.",
+  "question_en": "Both my children go to primary school."
+ }
+}

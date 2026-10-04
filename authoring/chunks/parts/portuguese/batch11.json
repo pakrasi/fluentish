@@ -1,0 +1,524 @@
+[
+ {
+  "id": "ENG_CHUNK_1001",
+  "t": "[verbo] tem lá suas vantagens",
+  "ex": "Passar o Réveillon em casa tem lá suas vantagens.",
+  "n": "'Ter lá suas vantagens' concedes merit; the infinitive becomes the subject."
+ },
+ {
+  "id": "ENG_CHUNK_1002",
+  "t": "No fim, tudo se resume a [substantivo] / O que pesa é [substantivo]",
+  "ex": "Para mim, no fim tudo se resume ao preço."
+ },
+ {
+  "id": "ENG_CHUNK_1003",
+  "t": "Não desconta em [pessoa]",
+  "ex": "Eu sei que o seu dia foi ruim, mas não desconta em mim."
+ },
+ {
+  "id": "ENG_CHUNK_1004",
+  "t": "É falta de educação [verbo] / É considerado falta de educação [verbo]",
+  "ex": "Em alguns países, é falta de educação comer andando.",
+  "n": "'Rude' in this sense = 'falta de educação' (not 'rude', which means rough/crude)."
+ },
+ {
+  "id": "ENG_CHUNK_1005",
+  "t": "Gosto de pensar que [oração]",
+  "ex": "Gosto de pensar que eu cozinho bem."
+ },
+ {
+  "id": "ENG_CHUNK_1006",
+  "t": "Não existe [substantivo]",
+  "ex": "Não existe apartamento perfeito.",
+  "n": "No article: 'não existe apartamento perfeito', not 'um apartamento'."
+ },
+ {
+  "id": "ENG_CHUNK_1007",
+  "t": "Não deixa [substantivo] te abalar / Não esquenta com [substantivo]",
+  "ex": "Não deixa uma avaliação ruim te abalar."
+ },
+ {
+  "id": "ENG_CHUNK_1008",
+  "t": "Por que [pessoa] iria [verbo]?",
+  "ex": "Por que ela iria mentir sobre uma coisa tão pequena?"
+ },
+ {
+  "id": "ENG_CHUNK_1009",
+  "t": "O que te impede de [verbo]?",
+  "ex": "Você odeia o seu trabalho. O que te impede de procurar outro?"
+ },
+ {
+  "id": "ENG_CHUNK_1010",
+  "t": "Que fim levou [substantivo]? / Por onde anda [pessoa]?",
+  "ex": "Que fim levou aquele cara que trabalhava com você?"
+ },
+ {
+  "id": "ENG_CHUNK_1011",
+  "t": "Sabe aquele/aquela [substantivo] que eu te falei?",
+  "ex": "Sabe aquela cafeteria que eu te falei? Fechou."
+ },
+ {
+  "id": "ENG_CHUNK_1012",
+  "t": "Quanto a [substantivo], [oração] / Já [substantivo], [oração]",
+  "ex": "Quanto ao jantar, eu estava pensando em pedir comida."
+ },
+ {
+  "id": "ENG_CHUNK_1013",
+  "t": "Engraçado você falar de [substantivo]",
+  "ex": "Engraçado você falar de Porto Alegre. Vou lá semana que vem."
+ },
+ {
+  "id": "ENG_CHUNK_1014",
+  "t": "Se um dia você vier a [lugar], [oração] / Se passar por [lugar], [oração]",
+  "ex": "Se um dia você vier a Salvador, fica aqui em casa com a gente.",
+  "n": "'Vier' is the future subjunctive of vir, triggered by 'se' about the future."
+ },
+ {
+  "id": "ENG_CHUNK_1015",
+  "t": "É impressionante como [oração]",
+  "ex": "É impressionante como as crianças crescem rápido."
+ },
+ {
+  "id": "ENG_CHUNK_1016",
+  "t": "Não estou pedindo para você [verbo]",
+  "ex": "Não estou pedindo para você cozinhar toda noite, só uma vez por semana."
+ },
+ {
+  "id": "ENG_CHUNK_1017",
+  "t": "Qual é a chance de [oração]? / Que coincidência [oração]!",
+  "ex": "Qual é a chance de a gente pegar o mesmo voo?",
+  "n": "Brazilians more often exclaim: 'Que mundo pequeno!'."
+ },
+ {
+  "id": "ENG_CHUNK_1018",
+  "t": "Não me conformo com [substantivo] / Ainda estou impressionado/a com [substantivo]",
+  "ex": "Ainda estou impressionado com a vista da sua varanda.",
+  "n": "'Não me conformo' = can't get over, but usually negative; use 'impressionado' for positive awe."
+ },
+ {
+  "id": "ENG_CHUNK_1019",
+  "t": "Você tinha que ver [substantivo] / Precisava ver [substantivo]",
+  "ex": "Você precisava ver a cara dele."
+ },
+ {
+  "id": "ENG_CHUNK_1020",
+  "t": "Que [adjetivo], né? / Não é muito [adjetivo]?",
+  "ex": "Deram um upgrade de graça para a gente. Que demais, né?"
+ },
+ {
+  "id": "ENG_CHUNK_1021",
+  "t": "Só sendo muito [adjetivo] para [verbo]",
+  "ex": "Só sendo muito doido para dirigir nessa neve."
+ },
+ {
+  "id": "ENG_CHUNK_1022",
+  "t": "Pode falar o que quiser de [pessoa], mas [oração]",
+  "ex": "Pode falar o que quiser do meu tio, mas ele sempre está lá quando a gente precisa."
+ },
+ {
+  "id": "ENG_CHUNK_1023",
+  "t": "Chegou a um ponto em que [oração]",
+  "ex": "Chegou a um ponto em que eu não conseguia dormir de jeito nenhum."
+ },
+ {
+  "id": "ENG_CHUNK_1024",
+  "t": "Eu estava no meio de [verbo] quando [oração]",
+  "ex": "Eu estava no meio de fazer o jantar quando acabou a luz.",
+  "n": "'Acabar a luz' / 'faltar luz' = power cut in Brazil."
+ },
+ {
+  "id": "ENG_CHUNK_1025",
+  "t": "Ouvi falar bem de [substantivo] / Falam bem de [substantivo]",
+  "ex": "Ouvi falar bem daquele restaurante tailandês da rua principal."
+ },
+ {
+  "id": "ENG_CHUNK_1026",
+  "t": "É pedir demais [substantivo]? / Será que é pedir muito [substantivo]?",
+  "ex": "É pedir demais um pouco de silêncio à noite?"
+ },
+ {
+  "id": "ENG_CHUNK_1027",
+  "t": "[pessoa] queria saber [oração]",
+  "ex": "Minha mãe queria saber quando você vem visitar."
+ },
+ {
+  "id": "ENG_CHUNK_1028",
+  "t": "[pessoa] falou tipo: [oração] / Aí [pessoa] virou e falou: [oração]",
+  "ex": "Aí eu contei, e ele virou e falou: por que você não disse antes?",
+  "n": "'Virar e falar' is a staple of Brazilian storytelling."
+ },
+ {
+  "id": "ENG_CHUNK_1029",
+  "t": "Dizem por aí que [oração] / Tá rolando um boato de que [oração]",
+  "ex": "Dizem por aí que o escritório vai fechar mais cedo na sexta."
+ },
+ {
+  "id": "ENG_CHUNK_1030",
+  "t": "Consegui convencer [pessoa] a [verbo]",
+  "ex": "Consegui convencer o meu pai a ir ao médico por causa das costas."
+ },
+ {
+  "id": "ENG_CHUNK_1031",
+  "t": "Não esperava que [pessoa] [verbo no subj.]",
+  "ex": "Não esperava que tanta gente fosse aparecer.",
+  "n": "Subjunctive after 'não esperava que'."
+ },
+ {
+  "id": "ENG_CHUNK_1032",
+  "t": "Não consigo me imaginar [verbo no gerúndio/infinitivo]",
+  "ex": "Não consigo me imaginar morando aqui sem carro."
+ },
+ {
+  "id": "ENG_CHUNK_1033",
+  "t": "[substantivo] não tem nada a ver com [substantivo]",
+  "ex": "Massa caseira não tem nada a ver com a de pacote."
+ },
+ {
+  "id": "ENG_CHUNK_1034",
+  "t": "Quanto mais eu [verbo], mais eu [verbo]",
+  "ex": "Quanto mais eu leio sobre isso, mais eu me preocupo.",
+  "n": "No article: 'quanto mais..., mais...' (not 'o mais')."
+ },
+ {
+  "id": "ENG_CHUNK_1035",
+  "t": "Uma coisa é [verbo], outra (bem diferente) é [verbo]",
+  "ex": "Uma coisa é comprar uma esteira, outra é usar de verdade."
+ },
+ {
+  "id": "ENG_CHUNK_1036",
+  "t": "estabelecer uma meta / colocar uma meta",
+  "ex": "Coloquei a meta de correr três vezes por semana."
+ },
+ {
+  "id": "ENG_CHUNK_1037",
+  "t": "dar o exemplo",
+  "ex": "Você é o mais velho, então tem que dar o exemplo."
+ },
+ {
+  "id": "ENG_CHUNK_1038",
+  "t": "pressionar [pessoa] / pôr pressão em [pessoa]",
+  "ex": "Meus pais vivem me pressionando para comprar uma casa."
+ },
+ {
+  "id": "ENG_CHUNK_1039",
+  "t": "colocar [pessoa] numa saia justa",
+  "ex": "Por favor, não me coloca numa saia justa na frente de todo mundo.",
+  "n": "'Saia justa' = awkward spot; very common."
+ },
+ {
+  "id": "ENG_CHUNK_1040",
+  "t": "pegar leve com [pessoa] / dar um desconto para [pessoa]",
+  "ex": "Pega leve com ele, é a primeira semana dele."
+ },
+ {
+  "id": "ENG_CHUNK_1041",
+  "t": "pegar no pé de [pessoa] / zoar [pessoa]",
+  "ex": "Meus amigos pegaram no meu pé por causa do corte de cabelo novo."
+ },
+ {
+  "id": "ENG_CHUNK_1042",
+  "t": "ceder / dar o braço a torcer",
+  "ex": "As crianças viviam pedindo um cachorro, e a gente acabou cedendo.",
+  "n": "'Dar o braço a torcer' = admit defeat, often in an argument."
+ },
+ {
+  "id": "ENG_CHUNK_1043",
+  "t": "dar o benefício da dúvida a [pessoa]",
+  "ex": "Ele costuma ser pontual, então vamos dar o benefício da dúvida a ele."
+ },
+ {
+  "id": "ENG_CHUNK_1044",
+  "t": "elogiar [pessoa] / fazer um elogio a [pessoa]",
+  "ex": "Uma desconhecida elogiou a minha jaqueta hoje."
+ },
+ {
+  "id": "ENG_CHUNK_1045",
+  "t": "ter [substantivo] em mente / levar [substantivo] em conta",
+  "ex": "Leva o orçamento em conta na hora de escolher o hotel."
+ },
+ {
+  "id": "ENG_CHUNK_1046",
+  "t": "guardar um segredo",
+  "ex": "Você sabe guardar segredo? Estou grávida."
+ },
+ {
+  "id": "ENG_CHUNK_1047",
+  "t": "acompanhar [substantivo] / dar conta de [substantivo]",
+  "ex": "Não dou conta de acompanhar todos os grupos de WhatsApp."
+ },
+ {
+  "id": "ENG_CHUNK_1048",
+  "t": "dar com a língua nos dentes / abrir o bico",
+  "ex": "Quem deu com a língua nos dentes sobre a festa surpresa?"
+ },
+ {
+  "id": "ENG_CHUNK_1049",
+  "t": "controlar [substantivo] / acompanhar [substantivo]",
+  "ex": "Uso um aplicativo para controlar os meus gastos."
+ },
+ {
+  "id": "ENG_CHUNK_1050",
+  "t": "cumprir a palavra / cumprir o prometido",
+  "ex": "Ele disse que ia me pagar de volta, e cumpriu a palavra."
+ },
+ {
+  "id": "ENG_CHUNK_1051",
+  "t": "fazer de tudo para [verbo] / se desdobrar para [verbo]",
+  "ex": "Os funcionários do hotel fizeram de tudo para ajudar a gente."
+ },
+ {
+  "id": "ENG_CHUNK_1052",
+  "t": "ficar com [substantivo] / ir de [substantivo]",
+  "ex": "Acho que vou de frango.",
+  "n": "Ordering: 'vou de' / 'vou querer' / 'me vê um ...'."
+ },
+ {
+  "id": "ENG_CHUNK_1053",
+  "t": "vir a calhar / ser útil",
+  "ex": "Fica com o cabo extra, pode vir a calhar."
+ },
+ {
+  "id": "ENG_CHUNK_1054",
+  "t": "surgir / aparecer",
+  "ex": "Desculpa, surgiu um imprevisto no trabalho, vou me atrasar."
+ },
+ {
+  "id": "ENG_CHUNK_1055",
+  "t": "encontrar [substantivo] por acaso / dar com [substantivo]",
+  "ex": "Encontrei umas fotos antigas enquanto arrumava a casa."
+ },
+ {
+  "id": "ENG_CHUNK_1056",
+  "t": "pegar [pessoa] de surpresa / pegar [pessoa] desprevenido/a",
+  "ex": "A pergunta me pegou desprevenido."
+ },
+ {
+  "id": "ENG_CHUNK_1057",
+  "t": "dar a notícia para [pessoa]",
+  "ex": "Quem vai dar a notícia para a vovó?"
+ },
+ {
+  "id": "ENG_CHUNK_1058",
+  "t": "quebrar o gelo",
+  "ex": "Contei uma piada boba para quebrar o gelo."
+ },
+ {
+  "id": "ENG_CHUNK_1059",
+  "t": "fazer rodeio / enrolar",
+  "ex": "Para de enrolar e me conta o que aconteceu.",
+  "n": "'Enrolar' is the everyday verb; 'fazer rodeio' / 'dar voltas' also work."
+ },
+ {
+  "id": "ENG_CHUNK_1060",
+  "t": "perder [substantivo] / ficar de fora de [substantivo]",
+  "ex": "Não quero perder os ingressos do show."
+ },
+ {
+  "id": "ENG_CHUNK_1061",
+  "t": "guardar um lugar para [pessoa]",
+  "ex": "Você guarda um lugar para mim? Só estou estacionando."
+ },
+ {
+  "id": "ENG_CHUNK_1062",
+  "t": "saber diferenciar [substantivo] / ver a diferença entre [substantivo]",
+  "ex": "Não consigo diferenciar os gêmeos."
+ },
+ {
+  "id": "ENG_CHUNK_1063",
+  "t": "se tocar / entender a indireta",
+  "ex": "Eu ficava olhando o relógio, mas ele não se tocava.",
+  "n": "'Se tocar' = take the hint; very Brazilian."
+ },
+ {
+  "id": "ENG_CHUNK_1064",
+  "t": "ir direto ao assunto / partir para o que interessa",
+  "ex": "Bom, todo mundo chegou, então vamos direto ao assunto."
+ },
+ {
+  "id": "ENG_CHUNK_1065",
+  "t": "insistir em [verbo]",
+  "ex": "Meu pai insistiu em pagar o jantar."
+ },
+ {
+  "id": "ENG_CHUNK_1066",
+  "t": "Só um minutinho / Paciência comigo",
+  "ex": "Só um minutinho, estou achando o arquivo."
+ },
+ {
+  "id": "ENG_CHUNK_1067",
+  "t": "Já chego lá / Já vou falar disso",
+  "ex": "Sim, já vou falar disso. Deixa só eu terminar."
+ },
+ {
+  "id": "ENG_CHUNK_1068",
+  "t": "Como assim? / Por quê?",
+  "ex": "Você acha que é uma má ideia? Como assim?"
+ },
+ {
+  "id": "ENG_CHUNK_1069",
+  "t": "Você poderia ser mais específico/a?",
+  "ex": "Você poderia ser mais específico? Que parte não está funcionando?"
+ },
+ {
+  "id": "ENG_CHUNK_1070",
+  "t": "Aonde você quer chegar? / O que você está querendo dizer?",
+  "ex": "Aonde você quer chegar? Fala logo."
+ },
+ {
+  "id": "ENG_CHUNK_1071",
+  "t": "Está me acompanhando? / Entendeu?",
+  "ex": "Aí você vira à esquerda no posto e depois à direita. Está me acompanhando?"
+ },
+ {
+  "id": "ENG_CHUNK_1072",
+  "t": "Agora sim, estamos avançando / Agora a coisa andou",
+  "ex": "Bom, agora sim estamos avançando."
+ },
+ {
+  "id": "ENG_CHUNK_1073",
+  "t": "tipo / assim",
+  "ex": "Foi, tipo, a melhor pizza que eu já comi."
+ },
+ {
+  "id": "ENG_CHUNK_1074",
+  "t": "Vamos concordar em discordar",
+  "ex": "A gente nunca vai resolver isso, então vamos concordar em discordar."
+ },
+ {
+  "id": "ENG_CHUNK_1075",
+  "t": "A questão não é essa / Não é essa a questão",
+  "ex": "Eu sei que foi barato, mas a questão não é essa."
+ },
+ {
+  "id": "ENG_CHUNK_1076",
+  "t": "É um jeito de ver as coisas",
+  "ex": "Perder o emprego foi uma chance de viajar? Bom, é um jeito de ver as coisas."
+ },
+ {
+  "id": "ENG_CHUNK_1077",
+  "t": "Com todo o respeito",
+  "ex": "Com todo o respeito, acho que o senhor não leu o relatório inteiro.",
+  "n": "Often addressed to o senhor/a senhora; with você it can sound sarcastic."
+ },
+ {
+  "id": "ENG_CHUNK_1078",
+  "t": "Não é tão simples assim",
+  "ex": "Pedir demissão e pronto? Não é tão simples assim, tenho aluguel para pagar."
+ },
+ {
+  "id": "ENG_CHUNK_1079",
+  "t": "Falar é fácil",
+  "ex": "Relaxar? Falar é fácil, não é você que tem prova amanhã."
+ },
+ {
+  "id": "ENG_CHUNK_1080",
+  "t": "Retiro o que eu disse / Eu estava enganado/a",
+  "ex": "Ah, abre às nove? Retiro o que eu disse."
+ },
+ {
+  "id": "ENG_CHUNK_1081",
+  "t": "Sou todo ouvidos / Sou toda ouvidos",
+  "ex": "Você tem um plano melhor? Sou todo ouvidos.",
+  "n": "Agrees with the speaker's gender."
+ },
+ {
+  "id": "ENG_CHUNK_1082",
+  "t": "Boca de siri / Minha boca é um túmulo",
+  "ex": "Relaxa, boca de siri.",
+  "n": "'Boca de siri' (crab mouth) is the playful Brazilian 'my lips are sealed'."
+ },
+ {
+  "id": "ENG_CHUNK_1083",
+  "t": "É o que é / Fazer o quê",
+  "ex": "O voo atrasou de novo, mas fazer o quê."
+ },
+ {
+  "id": "ENG_CHUNK_1084",
+  "t": "Você que sabe",
+  "ex": "Não quer bolo? Você que sabe."
+ },
+ {
+  "id": "ENG_CHUNK_1085",
+  "t": "Isso aí! / É assim que se fala!",
+  "ex": "Vai tentar de novo semana que vem? É assim que se fala!"
+ },
+ {
+  "id": "ENG_CHUNK_1086",
+  "t": "Não conta com isso / Senta que lá vem",
+  "ex": "Ele disse que ia retornar, mas não conta com isso.",
+  "n": "'Senta e espera' (sit and wait) is a jokey equivalent."
+ },
+ {
+  "id": "ENG_CHUNK_1087",
+  "t": "Ações falam mais alto que palavras",
+  "ex": "Ele vive dizendo que vai ajudar. Ações falam mais alto que palavras."
+ },
+ {
+  "id": "ENG_CHUNK_1088",
+  "t": "O que vale é a intenção",
+  "ex": "O bolo desmontou, mas o que vale é a intenção."
+ },
+ {
+  "id": "ENG_CHUNK_1089",
+  "t": "Não julgue um livro pela capa / Quem vê cara não vê coração",
+  "ex": "O restaurante parece meio caído, mas quem vê cara não vê coração.",
+  "n": "'Quem vê cara não vê coração' is the native proverb."
+ },
+ {
+  "id": "ENG_CHUNK_1090",
+  "t": "Desgraça pouca é bobagem / Uma desgraça nunca vem sozinha",
+  "ex": "Primeiro quebrou o carro, depois a lava-louça. Desgraça pouca é bobagem."
+ },
+ {
+  "id": "ENG_CHUNK_1091",
+  "t": "Sem contar que / Fora que",
+  "ex": "É longe demais, fora que é caríssimo.",
+  "n": "'Fora que' is very common in casual Brazilian speech."
+ },
+ {
+  "id": "ENG_CHUNK_1092",
+  "t": "Já que estamos nessa / Aproveitando",
+  "ex": "Vamos limpar a garagem e, aproveitando, a gente organiza as ferramentas."
+ },
+ {
+  "id": "ENG_CHUNK_1093",
+  "t": "Para começo de conversa / Afinal",
+  "ex": "Por que você topou ir, para começo de conversa?"
+ },
+ {
+  "id": "ENG_CHUNK_1094",
+  "t": "Supondo que / Desde que",
+  "ex": "Supondo que o tempo esteja bom, a gente sai às oito.",
+  "n": "Both take the subjunctive (esteja)."
+ },
+ {
+  "id": "ENG_CHUNK_1095",
+  "t": "Nesse ritmo / Desse jeito",
+  "ex": "Nesse ritmo, a gente nunca vai chegar antes de escurecer."
+ },
+ {
+  "id": "ENG_CHUNK_1096",
+  "t": "Do jeito que as coisas estão / No momento",
+  "ex": "Do jeito que as coisas estão, não dá para viajar de férias este ano."
+ },
+ {
+  "id": "ENG_CHUNK_1097",
+  "t": "Em geral / Na maior parte",
+  "ex": "Em geral, os vizinhos são muito simpáticos."
+ },
+ {
+  "id": "ENG_CHUNK_1098",
+  "t": "Nesse sentido",
+  "ex": "O trabalho paga menos, mas é perto de casa. Nesse sentido, é melhor."
+ },
+ {
+  "id": "ENG_CHUNK_1099",
+  "t": "Na pior das hipóteses",
+  "ex": "Na pior das hipóteses, a gente pega um táxi para casa."
+ },
+ {
+  "id": "ENG_CHUNK_1100",
+  "t": "Em parte porque",
+  "ex": "Parei de ir à academia, em parte porque ficou muito caro."
+ }
+]

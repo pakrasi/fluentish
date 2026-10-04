@@ -1,0 +1,502 @@
+[
+{
+"id": "ENG_CHUNK_0501",
+"level": "A2",
+"r": "simple feeling statement"
+},
+{
+"id": "ENG_CHUNK_0502",
+"level": "A1",
+"r": "basic price question"
+},
+{
+"id": "ENG_CHUNK_0503",
+"level": "A2",
+"r": "simple checking question"
+},
+{
+"id": "ENG_CHUNK_0504",
+"level": "B1",
+"r": "asking for justification"
+},
+{
+"id": "ENG_CHUNK_0505",
+"level": "B1",
+"r": "checking a rumor with clause"
+},
+{
+"id": "ENG_CHUNK_0506",
+"level": "B1",
+"r": "casual elliptical question"
+},
+{
+"id": "ENG_CHUNK_0507",
+"level": "B1",
+"r": "polite indirect question"
+},
+{
+"id": "ENG_CHUNK_0508",
+"level": "A2",
+"r": "simple purpose question"
+},
+{
+"id": "ENG_CHUNK_0509",
+"level": "A1",
+"r": "essential learner repair"
+},
+{
+"id": "ENG_CHUNK_0510",
+"level": "A2",
+"r": "asking for a demonstration"
+},
+{
+"id": "ENG_CHUNK_0511",
+"level": "A2",
+"r": "everyday recommendation ask"
+},
+{
+"id": "ENG_CHUNK_0512",
+"level": "A2",
+"r": "asking where to do something"
+},
+{
+"id": "ENG_CHUNK_0513",
+"level": "A1",
+"r": "survival question about places"
+},
+{
+"id": "ENG_CHUNK_0514",
+"level": "A2",
+"r": "directions check"
+},
+{
+"id": "ENG_CHUNK_0515",
+"level": "A2",
+"r": "asking distance"
+},
+{
+"id": "ENG_CHUNK_0516",
+"level": "A1",
+"r": "survival transport question"
+},
+{
+"id": "ENG_CHUNK_0517",
+"level": "A1",
+"r": "basic time question for travel"
+},
+{
+"id": "ENG_CHUNK_0518",
+"level": "A2",
+"r": "buying a ticket"
+},
+{
+"id": "ENG_CHUNK_0519",
+"level": "A2",
+"r": "hotel/restaurant check-in"
+},
+{
+"id": "ENG_CHUNK_0520",
+"level": "A2",
+"r": "booking formula"
+},
+{
+"id": "ENG_CHUNK_0521",
+"level": "A2",
+"r": "restaurant request"
+},
+{
+"id": "ENG_CHUNK_0522",
+"level": "A2",
+"r": "asking about ingredients"
+},
+{
+"id": "ENG_CHUNK_0523",
+"level": "A1",
+"r": "safety-critical survival statement"
+},
+{
+"id": "ENG_CHUNK_0524",
+"level": "A2",
+"r": "customizing order"
+},
+{
+"id": "ENG_CHUNK_0525",
+"level": "A2",
+"r": "asking what price covers"
+},
+{
+"id": "ENG_CHUNK_0526",
+"level": "A1",
+"r": "survival question in shops"
+},
+{
+"id": "ENG_CHUNK_0527",
+"level": "A2",
+"r": "shopping request"
+},
+{
+"id": "ENG_CHUNK_0528",
+"level": "A2",
+"r": "shopping question"
+},
+{
+"id": "ENG_CHUNK_0529",
+"level": "A2",
+"r": "asking for an alternative"
+},
+{
+"id": "ENG_CHUNK_0530",
+"level": "B1",
+"r": "enthusiastic recommendation"
+},
+{
+"id": "ENG_CHUNK_0531",
+"level": "A1",
+"r": "basic purchase decision"
+},
+{
+"id": "ENG_CHUNK_0532",
+"level": "A2",
+"r": "payment question"
+},
+{
+"id": "ENG_CHUNK_0533",
+"level": "A2",
+"r": "store return"
+},
+{
+"id": "ENG_CHUNK_0534",
+"level": "A2",
+"r": "cancelling booking"
+},
+{
+"id": "ENG_CHUNK_0535",
+"level": "B1",
+"r": "fee question with gerund"
+},
+{
+"id": "ENG_CHUNK_0536",
+"level": "B1",
+"r": "idiomatic trying phrase"
+},
+{
+"id": "ENG_CHUNK_0537",
+"level": "B1",
+"r": "encouraging persistence"
+},
+{
+"id": "ENG_CHUNK_0538",
+"level": "B1",
+"r": "cultural collocation"
+},
+{
+"id": "ENG_CHUNK_0539",
+"level": "B1",
+"r": "informal meetup phrasal"
+},
+{
+"id": "ENG_CHUNK_0540",
+"level": "B1",
+"r": "phrasal tour offer"
+},
+{
+"id": "ENG_CHUNK_0541",
+"level": "B1",
+"r": "relationship phrasal"
+},
+{
+"id": "ENG_CHUNK_0542",
+"level": "A2",
+"r": "housing phrasal"
+},
+{
+"id": "ENG_CHUNK_0543",
+"level": "B1",
+"r": "describing close bonds"
+},
+{
+"id": "ENG_CHUNK_0544",
+"level": "B1",
+"r": "informal attraction idiom"
+},
+{
+"id": "ENG_CHUNK_0545",
+"level": "B1",
+"r": "reconciliation phrasal"
+},
+{
+"id": "ENG_CHUNK_0546",
+"level": "B1",
+"r": "keeping contact collocation"
+},
+{
+"id": "ENG_CHUNK_0547",
+"level": "B1",
+"r": "receiving news phrasal"
+},
+{
+"id": "ENG_CHUNK_0548",
+"level": "A2",
+"r": "common complaint verb"
+},
+{
+"id": "ENG_CHUNK_0549",
+"level": "B1",
+"r": "stating what matters"
+},
+{
+"id": "ENG_CHUNK_0550",
+"level": "B1",
+"r": "reminder with object+infinitive"
+},
+{
+"id": "ENG_CHUNK_0551",
+"level": "A2",
+"r": "school collocation"
+},
+{
+"id": "ENG_CHUNK_0552",
+"level": "A2",
+"r": "getting ready collocation"
+},
+{
+"id": "ENG_CHUNK_0553",
+"level": "A2",
+"r": "very common responsibility phrase"
+},
+{
+"id": "ENG_CHUNK_0554",
+"level": "B1",
+"r": "participation collocation"
+},
+{
+"id": "ENG_CHUNK_0555",
+"level": "B1",
+"r": "submitting phrasal"
+},
+{
+"id": "ENG_CHUNK_0556",
+"level": "B1",
+"r": "work presentation collocation"
+},
+{
+"id": "ENG_CHUNK_0557",
+"level": "B1",
+"r": "work conditions collocation"
+},
+{
+"id": "ENG_CHUNK_0558",
+"level": "B1",
+"r": "career progress passive"
+},
+{
+"id": "ENG_CHUNK_0559",
+"level": "B1",
+"r": "job loss collocation"
+},
+{
+"id": "ENG_CHUNK_0560",
+"level": "B1",
+"r": "resignation collocation"
+},
+{
+"id": "ENG_CHUNK_0561",
+"level": "A2",
+"r": "basic job description"
+},
+{
+"id": "ENG_CHUNK_0562",
+"level": "A2",
+"r": "job hunting collocation"
+},
+{
+"id": "ENG_CHUNK_0563",
+"level": "B1",
+"r": "informal work phrasal"
+},
+{
+"id": "ENG_CHUNK_0564",
+"level": "B1",
+"r": "informal departure phrasal"
+},
+{
+"id": "ENG_CHUNK_0565",
+"level": "B1",
+"r": "commuting compound"
+},
+{
+"id": "ENG_CHUNK_0566",
+"level": "B1",
+"r": "hedging gambit"
+},
+{
+"id": "ENG_CHUNK_0567",
+"level": "B1",
+"r": "hedged negative answer"
+},
+{
+"id": "ENG_CHUNK_0568",
+"level": "A2",
+"r": "frequent informal agreement"
+},
+{
+"id": "ENG_CHUNK_0569",
+"level": "B1",
+"r": "stance marker"
+},
+{
+"id": "ENG_CHUNK_0570",
+"level": "B1",
+"r": "emphatic opinion gambit"
+},
+{
+"id": "ENG_CHUNK_0571",
+"level": "A2",
+"r": "common insistence"
+},
+{
+"id": "ENG_CHUNK_0572",
+"level": "A2",
+"r": "simple contradiction"
+},
+{
+"id": "ENG_CHUNK_0573",
+"level": "B1",
+"r": "strong disagreement formula"
+},
+{
+"id": "ENG_CHUNK_0574",
+"level": "A2",
+"r": "emphatic refusal"
+},
+{
+"id": "ENG_CHUNK_0575",
+"level": "B1",
+"r": "past perfect acknowledgment"
+},
+{
+"id": "ENG_CHUNK_0576",
+"level": "B1",
+"r": "informal concession"
+},
+{
+"id": "ENG_CHUNK_0577",
+"level": "B1",
+"r": "stalling gambit"
+},
+{
+"id": "ENG_CHUNK_0578",
+"level": "B1",
+"r": "prefacing gambit"
+},
+{
+"id": "ENG_CHUNK_0579",
+"level": "B1",
+"r": "storytelling tension marker"
+},
+{
+"id": "ENG_CHUNK_0580",
+"level": "B2",
+"r": "irony marker; stance in narration"
+},
+{
+"id": "ENG_CHUNK_0581",
+"level": "A2",
+"r": "simple request for support"
+},
+{
+"id": "ENG_CHUNK_0582",
+"level": "B1",
+"r": "idiomatic consolation"
+},
+{
+"id": "ENG_CHUNK_0583",
+"level": "A2",
+"r": "simple get-well wish"
+},
+{
+"id": "ENG_CHUNK_0584",
+"level": "B1",
+"r": "common idiom"
+},
+{
+"id": "ENG_CHUNK_0585",
+"level": "B1",
+"r": "polite dislike idiom"
+},
+{
+"id": "ENG_CHUNK_0586",
+"level": "B1",
+"r": "informal protest"
+},
+{
+"id": "ENG_CHUNK_0587",
+"level": "B1",
+"r": "common idiom"
+},
+{
+"id": "ENG_CHUNK_0588",
+"level": "B2",
+"r": "proverb; fixed idiomatic formula"
+},
+{
+"id": "ENG_CHUNK_0589",
+"level": "B1",
+"r": "common idiom"
+},
+{
+"id": "ENG_CHUNK_0590",
+"level": "B1",
+"r": "informal idiom"
+},
+{
+"id": "ENG_CHUNK_0591",
+"level": "B2",
+"r": "elliptical threat connector"
+},
+{
+"id": "ENG_CHUNK_0592",
+"level": "A2",
+"r": "simple comparison"
+},
+{
+"id": "ENG_CHUNK_0593",
+"level": "B1",
+"r": "comparison connector"
+},
+{
+"id": "ENG_CHUNK_0594",
+"level": "A2",
+"r": "simple temporary marker"
+},
+{
+"id": "ENG_CHUNK_0595",
+"level": "B1",
+"r": "purpose connector"
+},
+{
+"id": "ENG_CHUNK_0596",
+"level": "B2",
+"r": "unconditional concessive"
+},
+{
+"id": "ENG_CHUNK_0597",
+"level": "B1",
+"r": "strict condition"
+},
+{
+"id": "ENG_CHUNK_0598",
+"level": "B1",
+"r": "result connector"
+},
+{
+"id": "ENG_CHUNK_0599",
+"level": "B1",
+"r": "time-passing narrative marker"
+},
+{
+"id": "ENG_CHUNK_0600",
+"level": "B1",
+"r": "idiomatic prediction"
+}
+]

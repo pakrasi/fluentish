@@ -1,0 +1,254 @@
+{
+  "day": 13,
+  "topic": "Stadt, Land und Mobilität",
+  "lesen": {
+    "teil1": {
+      "title": "Raus aus Berlin – ein Jahr auf dem Dorf",
+      "source": "Blog",
+      "text": "Vor genau einem Jahr haben wir unsere Wohnung in Berlin-Neukölln gekündigt und sind nach Grünow gezogen, ein Dorf mit vierhundert Einwohnern, anderthalb Stunden nördlich von Berlin. Unsere Freunde haben uns für verrückt erklärt. Heute, zwölf Monate später, will ich ehrlich Bilanz ziehen.\n\nDer Grund für den Umzug war einfach: Geld. Für die Miete unserer Dreizimmerwohnung in Berlin zahlen wir hier ein ganzes Haus mit Garten ab. Und unsere Tochter Ida kann vor der Tür spielen, ohne dass wir Angst vor dem Verkehr haben müssen. Im Sommer haben wir zum ersten Mal eigene Tomaten geerntet.\n\nAllerdings gibt es Dinge, die uns in Berlin niemand erzählt hat. Der Bus ins nächste Städtchen fährt nur viermal am Tag, am Wochenende gar nicht. Ohne Auto geht hier nichts, und wir haben uns tatsächlich ein zweites gekauft, weil mein Mann Jakob dreimal pro Woche nach Berlin ins Büro muss. Ida hat einen Schulweg von zwanzig Kilometern, der Schulbus holt sie um sieben Uhr ab.\n\nAuch das Internet war am Anfang eine Katastrophe. Ich arbeite von zu Hause als Übersetzerin, und in den ersten drei Monaten musste ich für Videokonferenzen ins Café in der Kreisstadt fahren. Seit dem Frühling haben wir endlich einen schnellen Anschluss.\n\nWas uns überrascht hat: die Nachbarn. In Berlin kannten wir nach fünf Jahren nicht einmal die Namen der Leute im Haus. Hier stand am zweiten Tag Frau Lehmann mit einem Kuchen vor der Tür, und im Dezember haben wir mit dem ganzen Dorf den Weihnachtsbaum auf dem Platz geschmückt. Jakob ist inzwischen bei der Freiwilligen Feuerwehr.\n\nWürde ich zurückziehen? Manchmal, an einem grauen Sonntag im November, wenn das einzige Café geschlossen hat, ja. Aber dann kommt Ida mit schmutzigen Knien und einem Frosch in der Hand herein, und ich weiß, warum wir hier sind.",
+      "items": [
+        {"id": "L1-1", "statement": "Die Familie ist vor allem aus finanziellen Gründen aufs Land gezogen.", "answer": true, "skill": "paraphrase"},
+        {"id": "L1-2", "statement": "Der Bus fährt auch am Wochenende viermal täglich.", "answer": false, "skill": "negation"},
+        {"id": "L1-3", "statement": "Jakob arbeitet die ganze Woche von zu Hause.", "answer": false, "skill": "detail"},
+        {"id": "L1-4", "statement": "Die Autorin hatte anfangs Probleme, von zu Hause zu arbeiten.", "answer": true, "skill": "inference"},
+        {"id": "L1-5", "statement": "In Berlin hatte die Familie engen Kontakt zu den Nachbarn.", "answer": false, "skill": "detail"},
+        {"id": "L1-6", "statement": "Die Autorin bereut den Umzug insgesamt nicht.", "answer": true, "skill": "attitude"}
+      ]
+    },
+    "teil2": {
+      "texts": [
+        {
+          "title": "Eine Innenstadt ohne Autos",
+          "source": "Zeitung",
+          "text": "Seit dem ersten März dürfen in der Innenstadt von Tübingen keine privaten Autos mehr fahren. Wer in die Altstadt will, muss am Rand parken und zu Fuß, mit dem Rad oder mit dem kostenlosen Elektrobus weiterfahren. Ausnahmen gibt es nur für Lieferwagen zwischen sechs und zehn Uhr morgens, für Taxis und für Menschen mit Behinderung.\n\nDie Stadt hat das Projekt zunächst für ein Jahr beschlossen. Nach den ersten drei Monaten zieht Bürgermeisterin Sandra Weil eine positive Bilanz: „Die Luft ist messbar sauberer, und es gab keinen einzigen Unfall mit Verletzten.“ Auch die Zahl der Radfahrer ist um fast vierzig Prozent gestiegen.\n\nDie Händler in der Altstadt sehen das jedoch unterschiedlich. Während Cafés und Restaurants von den vielen Fußgängern profitieren, klagen vor allem Geschäfte, die schwere Waren verkaufen. „Wer einen Fernseher kauft, will ihn nicht mit dem Bus nach Hause tragen“, sagt Elektrohändler Bernd Kohl. Sein Umsatz ist seit März um ein Fünftel gesunken. Er fordert, dass Kunden mit großen Einkäufen wenigstens für dreißig Minuten in die Altstadt fahren dürfen.\n\nDie Bürgermeisterin will darüber nachdenken, hält aber an dem Projekt fest. „Wir wollen, dass die Innenstadt ein Ort zum Leben wird, nicht nur zum Durchfahren.“ Im Herbst sollen die Bürger in einer Umfrage entscheiden, ob die Regel dauerhaft bleibt.",
+          "items": [
+            {"id": "L2-1", "question": "In der Innenstadt von Tübingen …", "options": ["dürfen nur noch Elektroautos fahren.", "dürfen Lieferwagen am Vormittag fahren.", "ist das Parken kostenlos."], "answer": 1, "skill": "detail"},
+            {"id": "L2-2", "question": "Herr Kohl …", "options": ["verkauft seit März mehr als früher.", "möchte, dass Kunden mit großen Einkäufen kurz mit dem Auto kommen dürfen.", "will sein Geschäft in die Altstadt verlegen."], "answer": 1, "skill": "paraphrase"},
+            {"id": "L2-3", "question": "Wie geht es mit dem Projekt weiter?", "options": ["Die Bürger sollen im Herbst darüber abstimmen.", "Es wird nach einem Jahr beendet.", "Die Bürgermeisterin hat es schon dauerhaft beschlossen."], "answer": 0, "skill": "detail"}
+          ]
+        },
+        {
+          "title": "Der Bus, den die Nachbarn fahren",
+          "source": "Zeitschrift",
+          "text": "Seit die Buslinie 27 vor drei Jahren gestrichen wurde, gab es in Waldheim keine Verbindung mehr in die nächste Stadt. Für die vielen älteren Einwohner des 800-Seelen-Dorfes bedeutete das: kein Arzt, kein Supermarkt, keine Apotheke ohne Hilfe von Verwandten. Bis Renate Ahrens, 71, die Sache selbst in die Hand nahm.\n\nHeute fährt in Waldheim ein Bürgerbus, ein kleiner weißer Bus mit acht Sitzen, den zwanzig Freiwillige aus dem Dorf abwechselnd fahren. Von Montag bis Freitag gibt es sechs Fahrten am Tag, eine Fahrt kostet zwei Euro. Das Geld reicht für Benzin und Versicherung, den Bus hat die Gemeinde gekauft. „Wer bei uns fährt, der braucht nur einen normalen Führerschein und ein bisschen Zeit“, erklärt Ahrens, die selbst zweimal pro Woche am Steuer sitzt.\n\nBesonders wichtig ist der Bus für Menschen wie Erwin Krause, 84, der nach einem Schlaganfall nicht mehr selbst fahren darf. „Früher musste ich meine Tochter fragen, wenn ich zum Arzt wollte. Jetzt gehe ich einfach zur Haltestelle.“ Dass die Fahrer Nachbarn sind, hat einen weiteren Vorteil: Wer eine Woche nicht mitfährt, bekommt einen Anruf, ob alles in Ordnung ist.\n\nInzwischen gibt es in Deutschland über 400 solcher Bürgerbusse. Das Problem ist überall dasselbe: Es fehlen jüngere Fahrer. Die meisten Freiwilligen sind selbst schon Rentner.",
+          "items": [
+            {"id": "L2-4", "question": "Vor drei Jahren …", "options": ["wurde in Waldheim ein neuer Bus eingeführt.", "verlor Waldheim seine Busverbindung in die Stadt.", "zog Renate Ahrens nach Waldheim."], "answer": 1, "skill": "paraphrase"},
+            {"id": "L2-5", "question": "Wer den Bürgerbus fahren möchte, …", "options": ["braucht einen speziellen Führerschein.", "muss dafür bezahlen.", "braucht nur einen normalen Führerschein und Zeit."], "answer": 2, "skill": "detail"},
+            {"id": "L2-6", "question": "Welches Problem haben die Bürgerbusse?", "options": ["Es gibt zu wenige junge Freiwillige.", "Die Fahrten sind zu teuer.", "Die Gemeinden wollen keine Busse kaufen."], "answer": 0, "skill": "paraphrase"}
+          ]
+        }
+      ]
+    },
+    "teil3": {
+      "intro": "Einige Personen aus Ihrem Deutschkurs suchen Angebote rund um Wohnen und Mobilität. Lesen Sie die Situationen 1–7 und die Anzeigen A–J. Welche Anzeige passt zu welcher Situation? Eine Anzeige kann nur einmal gewählt werden. Für eine Situation gibt es keine passende Anzeige – markieren Sie dort 0.",
+      "situations": [
+        {"id": "L3-1", "text": "Beatriz muss am Sonntag um fünf Uhr morgens am Flughafen sein und hat kein Auto.", "answer": "G", "skill": "matching"},
+        {"id": "L3-2", "text": "Leon braucht nur manchmal ein Auto und möchte kein eigenes kaufen.", "answer": "B", "skill": "matching"},
+        {"id": "L3-3", "text": "Familie Oduya möchte im Sommer mit ihrem Hund zwei Wochen mit einem Wohnmobil verreisen.", "answer": null, "skill": "matching"},
+        {"id": "L3-4", "text": "Selma fährt jeden Tag mit dem Fahrrad zur Arbeit; die Bremsen sind kaputt, und sie hat wenig Geld.", "answer": "I", "skill": "matching"},
+        {"id": "L3-5", "text": "Marco möchte am Freitag günstig von Hamburg nach München fahren und ist flexibel.", "answer": "D", "skill": "matching"},
+        {"id": "L3-6", "text": "Frau Krüger möchte ihren alten Wagen schnell loswerden, ohne selbst Anzeigen zu schreiben.", "answer": "E", "skill": "matching"},
+        {"id": "L3-7", "text": "Ahmet ist neu in der Stadt und möchte für seinen Arbeitsweg ein günstiges Monatsticket.", "answer": "A", "skill": "matching"}
+      ],
+      "ads": [
+        {"letter": "A", "title": "Das Jobticket der Verkehrsbetriebe", "text": "Für Berufstätige: Fahren Sie mit Bus, Bahn und Straßenbahn im ganzen Stadtgebiet für nur 39 € im Monat statt 69 €. Voraussetzung: Ihr Arbeitgeber nimmt am Programm teil – fragen Sie in der Personalabteilung. Abends und am Wochenende gilt das Ticket auch für eine Begleitperson."},
+        {"letter": "B", "title": "Carsharing StadtMobil", "text": "Ein Auto, wenn Sie es brauchen: über 300 Fahrzeuge in der Stadt, buchbar per App ab einer Stunde. Grundgebühr 5 € im Monat, dann 3 € pro Stunde und 25 Cent pro Kilometer. Benzin und Versicherung inklusive. Anmeldung online mit Führerschein."},
+        {"letter": "C", "title": "Wohnmobil-Vermietung Reisefreund", "text": "Moderne Wohnmobile für 2 bis 6 Personen, ab 95 € pro Tag, mindestens eine Woche. Küche, Dusche, Fahrradträger inklusive. Aus hygienischen Gründen leider keine Haustiere. Reservierung für die Sommermonate bis Ende April."},
+        {"letter": "D", "title": "Mitfahrzentrale Nordsüd", "text": "Fahren Sie mit, statt allein zu fahren! Täglich Angebote auf allen großen Strecken, z. B. Hamburg–München ab 25 €. Einfach Datum eingeben, Fahrer auswählen, mitfahren. Abfahrtszeiten nach Absprache mit dem Fahrer."},
+        {"letter": "E", "title": "Wir kaufen Ihr Auto – sofort", "text": "Egal wie alt, egal welche Marke: Autoankauf Fischer kommt zu Ihnen, bewertet das Fahrzeug kostenlos und zahlt sofort bar. Auch ohne TÜV, auch mit Schäden. Abmeldung übernehmen wir. Tel. 0800 / 33 44 55 (gebührenfrei)."},
+        {"letter": "F", "title": "Fahrradverleih am Hauptbahnhof", "text": "Citybikes, E-Bikes und Lastenräder ab 12 € pro Tag, Wochenpreis auf Anfrage. Helm und Schloss inklusive. Ideal für Touristen und Pendler. Geöffnet täglich 7–20 Uhr, auch am Wochenende. Reservierung online empfohlen."},
+        {"letter": "G", "title": "Flughafen-Shuttle rund um die Uhr", "text": "Wir bringen Sie zu jeder Tages- und Nachtzeit vom Haus zum Flughafen, auch sonntags und an Feiertagen. Ab 22 € pro Person, Kinder unter 12 die Hälfte. Buchung bis 18 Uhr am Vortag unter 0221 / 77 00 77."},
+        {"letter": "H", "title": "Hundepension „Vier Pfoten“", "text": "Sie verreisen, Ihr Hund bleibt in guten Händen: große Wiese, eigene Boxen, drei Spaziergänge täglich. 28 € pro Tag inklusive Futter. Impfpass erforderlich. In den Sommerferien bitte frühzeitig reservieren."},
+        {"letter": "I", "title": "Fahrradwerkstatt Selbsthilfe", "text": "Reparieren Sie Ihr Rad selbst – wir helfen mit Werkzeug und Rat. Jeden Dienstag und Samstag 14–18 Uhr im Nachbarschaftshaus. Kostenlos, gebrauchte Ersatzteile gegen kleine Spende. Für Bremsen und Reifen haben wir fast immer etwas da."},
+        {"letter": "J", "title": "Autohaus Berg: Gebrauchtwagen mit Garantie", "text": "Über 100 geprüfte Gebrauchtwagen, alle mit einem Jahr Garantie und neuem TÜV. Finanzierung ab 99 € im Monat möglich. Ihr altes Auto nehmen wir beim Kauf in Zahlung. Mo–Sa 9–18 Uhr, Probefahrt jederzeit."}
+      ]
+    },
+    "teil4": {
+      "question": "Sollten Autos aus den Innenstädten verbannt werden?",
+      "comments": [
+        {"id": "L4-1", "author": "Nina, Münster", "text": "Ich fahre seit zehn Jahren nur Fahrrad, und jeden Tag werde ich von Autos fast umgefahren. Eine Innenstadt ohne Autos wäre sicherer, leiser und sauberer. Andere Städte in Europa machen es vor, und niemand will dort zurück.", "answer": true, "skill": "attitude"},
+        {"id": "L4-2", "author": "Werner, Bochum", "text": "Ich bin 74 und kann nicht mehr gut laufen. Wenn ich nicht mehr mit dem Auto bis zum Arzt in der Innenstadt fahren darf, komme ich dort gar nicht mehr hin. Über solche Menschen denkt bei dieser Diskussion niemand nach.", "answer": false, "skill": "attitude"},
+        {"id": "L4-3", "author": "Elif, Nürnberg", "text": "Als Mutter von drei Kindern kann ich nur sagen: Wer einmal mit einem Kinderwagen an einer sechsspurigen Straße gestanden hat, der weiß, dass es so nicht weitergeht. Ja, es ist unbequem für Autofahrer. Aber die Kinder sind wichtiger.", "answer": true, "skill": "attitude"},
+        {"id": "L4-4", "author": "Christoph, Erfurt", "text": "Schöne Idee, aber die Reihenfolge stimmt nicht. Zuerst braucht es Busse, die alle zehn Minuten fahren, und Parkplätze am Stadtrand. Solange das fehlt, ist ein Verbot nur eine Strafe für die Leute aus dem Umland. Also: erst der Ausbau, dann reden wir weiter.", "answer": false, "skill": "inference"},
+        {"id": "L4-5", "author": "Sarah, Kiel", "text": "Mein Laden liegt in der Fußgängerzone, und ich habe mehr Kunden als die Kollegen an der Hauptstraße. Wer sagt, dass Geschäfte ohne Autos sterben, der hat die Zahlen nicht gesehen. Fußgänger bleiben stehen, Autofahrer fahren vorbei.", "answer": true, "skill": "inference"},
+        {"id": "L4-6", "author": "Dirk, Regensburg", "text": "Ich bin Handwerker und muss mit Werkzeug und Material zum Kunden. Soll ich die Waschmaschine mit dem Fahrrad bringen? Ein Verbot für alle ist Unsinn. Ausnahmen für Handwerker gibt es auf dem Papier, aber in der Praxis dauert die Genehmigung Wochen.", "answer": false, "skill": "attitude"},
+        {"id": "L4-7", "author": "Hannah, Freiburg", "text": "Bei uns ist die Innenstadt seit Jahren fast autofrei, und ich kann mir ein Leben mit Autos dort gar nicht mehr vorstellen. Kinder spielen auf den Plätzen, man hört Vögel statt Motoren. Jede Stadt sollte das ausprobieren.", "answer": true, "skill": "attitude"}
+      ]
+    },
+    "teil5": {
+      "title": "Nutzungsbedingungen – Leihfahrräder „StadtRad“",
+      "text": "§ 1 Registrierung\nZur Nutzung der Leihfahrräder ist eine einmalige Registrierung in der App oder auf der Website nötig. Nutzer müssen mindestens 16 Jahre alt sein. Bei der Registrierung wird eine Kreditkarte oder ein Bankkonto hinterlegt; eine Gebühr fällt dafür nicht an.\n\n§ 2 Ausleihe und Rückgabe\nDie Räder können an allen Stationen im Stadtgebiet ausgeliehen und zurückgegeben werden. Die Rückgabe außerhalb einer Station ist nicht möglich; ein Rad, das nicht an einer Station abgestellt wird, gilt als weiter ausgeliehen. Ist eine Station voll, zeigt die App die nächste freie Station an; in diesem Fall werden 15 Minuten Fahrzeit nicht berechnet.\n\n§ 3 Preise\nDie ersten 30 Minuten jeder Fahrt sind kostenlos. Danach kostet jede angefangene halbe Stunde 1 €, maximal 12 € pro Tag. Mit dem Jahresabo für 49 € sind die ersten 60 Minuten jeder Fahrt kostenlos. Inhaber eines Monatstickets der Verkehrsbetriebe erhalten das Jahresabo zum halben Preis.\n\n§ 4 Pflichten der Nutzer\nVor der Fahrt ist das Rad auf Schäden zu prüfen, insbesondere Bremsen und Licht. Schäden sind sofort über die App zu melden. Für Schäden, die während der Ausleihe entstehen und nicht gemeldet werden, haftet der Nutzer bis zu 200 €. Das Rad darf nicht an Dritte weitergegeben werden.\n\n§ 5 Verlust\nBei Verlust des Rades ist unverzüglich der Kundenservice zu informieren und Anzeige bei der Polizei zu erstatten. Ohne Anzeige wird eine Pauschale von 500 € berechnet.",
+      "items": [
+        {"id": "L5-1", "question": "Wer ein Rad nicht an einer Station abstellt, …", "options": ["muss 15 Minuten zusätzlich bezahlen.", "bezahlt weiter, weil die Ausleihe nicht beendet ist.", "wird von der App zur nächsten Station geführt."], "answer": 1, "skill": "paraphrase"},
+        {"id": "L5-2", "question": "Ohne Abo …", "options": ["ist die erste halbe Stunde kostenlos.", "sind die ersten 60 Minuten kostenlos.", "kostet jede Fahrt 12 €."], "answer": 0, "skill": "number-time"},
+        {"id": "L5-3", "question": "Das Jahresabo ist billiger für Personen, die …", "options": ["unter 16 Jahre alt sind.", "mehr als 12 € pro Tag zahlen.", "ein Monatsticket für Bus und Bahn haben."], "answer": 2, "skill": "detail"},
+        {"id": "L5-4", "question": "Wenn das Rad gestohlen wird, …", "options": ["muss man immer 500 € bezahlen.", "muss man nur den Kundenservice informieren.", "muss man zur Polizei gehen, sonst zahlt man 500 €."], "answer": 2, "skill": "negation"}
+      ]
+    }
+  },
+  "hoeren": {
+    "teil1": {
+      "texts": [
+        {
+          "id": "H1-1", "kind": "Durchsage",
+          "script": [{"speaker": "m1", "text": "Achtung an Gleis sieben. Der Intercity 2 0 4 8 nach Hamburg-Altona, planmäßige Abfahrt vierzehn Uhr zwölf, fährt heute nicht von Gleis sieben, sondern von Gleis drei. Ich wiederhole: Gleis drei. Der Zug hat außerdem etwa zwanzig Minuten Verspätung, Grund dafür ist eine Störung an der Strecke. Reisende nach Bremen werden gebeten, in Hannover umzusteigen, der Zugteil nach Bremen entfällt heute. Das Bordrestaurant ist in diesem Zug nicht besetzt. Wir bitten um Entschuldigung für die Unannehmlichkeiten."}],
+          "items": [
+            {"id": "H1-1a", "type": "rf", "statement": "Der Zug nach Hamburg fährt heute von Gleis sieben.", "answer": false, "skill": "detail"},
+            {"id": "H1-1b", "type": "mc", "question": "Reisende nach Bremen …", "options": ["müssen in Hannover umsteigen.", "fahren heute mit dem Bus.", "können im Bordrestaurant warten."], "answer": 0, "skill": "detail"}
+          ]
+        },
+        {
+          "id": "H1-2", "kind": "Radio",
+          "script": [{"speaker": "f1", "text": "Und jetzt der Verkehr. Auf der A7 zwischen Kassel und Göttingen gibt es nach einem Unfall mit zwei Lastwagen einen Stau von acht Kilometern, Sie verlieren dort etwa eine Stunde. Wir hatten vorhin gemeldet, dass die Autobahn ganz gesperrt ist, das ist jetzt nicht mehr der Fall, eine Spur ist wieder frei. In der Innenstadt von Hannover ist die Berliner Allee wegen einer Demonstration bis siebzehn Uhr gesperrt, die Straßenbahnlinien vier und fünf fahren Umleitung. Und noch ein Hinweis für Bahnfahrer: Wegen Bauarbeiten fahren am Wochenende zwischen Hildesheim und Braunschweig keine Züge, sondern Busse. Planen Sie dort dreißig Minuten mehr ein."}],
+          "items": [
+            {"id": "H1-2a", "type": "rf", "statement": "Die A7 ist zurzeit komplett gesperrt.", "answer": false, "skill": "negation"},
+            {"id": "H1-2b", "type": "mc", "question": "Zwischen Hildesheim und Braunschweig …", "options": ["fahren am Wochenende Busse statt Züge.", "gibt es eine Demonstration.", "dauert die Fahrt eine Stunde länger."], "answer": 0, "skill": "detail"}
+          ]
+        },
+        {
+          "id": "H1-3", "kind": "Anrufbeantworter",
+          "script": [{"speaker": "m2", "text": "Guten Tag, Frau Sato, hier ist Ralf Hoffmann von der Umzugsfirma Hoffmann und Söhne. Wir hatten Ihren Umzug für Samstag, den zwölften, um acht Uhr geplant. Leider ist einer unserer Lastwagen kaputt, deshalb müssten wir den Termin verschieben, entweder auf Samstag um vierzehn Uhr oder auf Sonntag um acht. Sonntag würde allerdings fünfzig Euro mehr kosten. Bitte rufen Sie mich zurück und sagen Sie mir, was Ihnen besser passt. Und denken Sie bitte daran, die Kartons zu beschriften, vor allem die mit Geschirr. Ach ja, die Halteverbotsschilder vor Ihrem Haus stellen wir schon am Freitag auf. Vielen Dank und bis bald!"}],
+          "items": [
+            {"id": "H1-3a", "type": "rf", "statement": "Der Umzug kann nicht wie geplant am Samstagmorgen stattfinden.", "answer": true, "skill": "paraphrase"},
+            {"id": "H1-3b", "type": "mc", "question": "Der Umzug am Sonntag …", "options": ["ist kostenlos.", "kostet fünfzig Euro mehr.", "beginnt um vierzehn Uhr."], "answer": 1, "skill": "number-time"}
+          ]
+        },
+        {
+          "id": "H1-4", "kind": "Werbung",
+          "script": [{"speaker": "f3", "text": "Jeden Morgen im Stau, jeden Abend die Parkplatzsuche? Das muss nicht sein. Mit einem E-Bike von Radhaus Meier sind Sie in der Stadt schneller als jedes Auto, und Sie kommen ohne Schwitzen im Büro an. Bei uns finden Sie über zweihundert Modelle, und Sie können jedes eine ganze Woche kostenlos testen, bevor Sie sich entscheiden. Nur bis Ende Mai: Wir nehmen Ihr altes Fahrrad in Zahlung und schenken Ihnen bis zu dreihundert Euro. Finanzierung ab neunundvierzig Euro im Monat. Radhaus Meier, direkt am Westbahnhof, montags bis samstags von neun bis neunzehn Uhr. Radhaus Meier, wir bringen Sie in Bewegung."}],
+          "items": [
+            {"id": "H1-4a", "type": "rf", "statement": "Man kann ein E-Bike eine Woche lang kostenlos ausprobieren.", "answer": true, "skill": "detail"},
+            {"id": "H1-4b", "type": "mc", "question": "Wer bis Ende Mai kauft, …", "options": ["bekommt bis zu dreihundert Euro für sein altes Rad.", "bekommt das Rad für neunundvierzig Euro.", "kann am Sonntag in den Laden kommen."], "answer": 0, "skill": "paraphrase"}
+          ]
+        },
+        {
+          "id": "H1-5", "kind": "Anrufbeantworter",
+          "script": [{"speaker": "ch_f", "text": "Hoi Tobias, hier ist Nadine. Du, wegen der Wohnungsbesichtigung morgen in Winterthur: Der Vermieter hat angerufen, er kann doch nicht um zehn, sondern erst um halb zwölf. Ich habe gesagt, das ist okay, ich hoffe, für dich auch. Ich habe noch mal auf die Karte geschaut: Von der Wohnung bis zum Bahnhof sind es zu Fuß zwölf Minuten, und der Zug nach Zürich fährt alle fünfzehn Minuten, das wäre für deine Arbeit also super. Ein Parkplatz ist leider nicht dabei, der würde extra hundertzwanzig Franken im Monat kosten. Aber ehrlich, mit dem Zug brauchst du das Auto doch gar nicht mehr. Wir treffen uns direkt vor dem Haus, ja? Bis morgen!"}],
+          "items": [
+            {"id": "H1-5a", "type": "rf", "statement": "Die Besichtigung findet um zehn Uhr statt.", "answer": false, "skill": "number-time"},
+            {"id": "H1-5b", "type": "mc", "question": "Nadine meint, …", "options": ["Tobias braucht unbedingt einen Parkplatz.", "Tobias könnte mit dem Zug zur Arbeit fahren.", "die Wohnung ist zu weit vom Bahnhof entfernt."], "answer": 1, "skill": "inference"}
+          ]
+        }
+      ]
+    },
+    "teil2": {
+      "setting": "Sie nehmen an einer Informationsveranstaltung der Stadt über eine neue Straßenbahnlinie teil und hören den Vortrag des Stadtplaners.",
+      "script": [{"speaker": "m3", "text": "Guten Abend, meine Damen und Herren, und vielen Dank, dass Sie so zahlreich gekommen sind. Mein Name ist Andreas Kühn, ich bin bei der Stadt für die Verkehrsplanung zuständig, und ich möchte Ihnen heute die neue Straßenbahnlinie 9 vorstellen. Danach haben Sie natürlich Zeit für Fragen. Die Linie 9 wird den Bahnhof mit dem neuen Wohngebiet im Süden verbinden, also mit dem Stadtteil, in dem viele von Ihnen wohnen. Bisher brauchen Sie mit dem Bus vierzig Minuten in die Innenstadt. Mit der Straßenbahn werden es nur noch achtzehn sein. Die Strecke ist sieben Kilometer lang und hat zwölf Haltestellen, darunter das Krankenhaus, die Universität und das Einkaufszentrum. Die Bahn fährt tagsüber alle zehn Minuten, abends und am Sonntag alle zwanzig. Jetzt zum Zeitplan: Der Bau beginnt im März nächsten Jahres und dauert etwa zweieinhalb Jahre. Das ist lang, das weiß ich, und ich will ehrlich sein: In dieser Zeit wird die Hauptstraße in mehreren Abschnitten gesperrt sein, und es wird laut. Wir bauen aber nicht nachts und nicht am Sonntag, außer in Ausnahmefällen, über die wir Sie vorher informieren. Für die Geschäfte an der Hauptstraße gibt es einen Fonds von zwei Millionen Euro, aus dem Verluste durch die Bauarbeiten teilweise ersetzt werden. Viele von Ihnen haben in den Briefen gefragt, was mit den Parkplätzen passiert. Ja, entlang der Strecke fallen etwa zweihundert Parkplätze weg. Dafür bauen wir am Ende der Linie ein Parkhaus mit vierhundert Plätzen, in dem man mit einem gültigen Fahrschein kostenlos parken kann. Und die Bäume, die auf der Hauptstraße gefällt werden müssen, werden durch doppelt so viele neue Bäume ersetzt. Die Kosten für das gesamte Projekt liegen bei hundertzwanzig Millionen Euro, davon zahlt das Land zwei Drittel. Für Sie als Fahrgäste ändert sich beim Ticketpreis nichts, die Linie 9 gehört zum normalen Stadttarif. So, das war der Überblick. Wenn Sie noch Fragen haben, kommen Sie bitte nach vorn zum Mikrofon, und nennen Sie bitte kurz Ihren Namen."}],
+      "items": [
+        {"id": "H2-1", "question": "Mit der neuen Straßenbahn dauert die Fahrt in die Innenstadt …", "options": ["vierzig Minuten.", "achtzehn Minuten.", "zwanzig Minuten."], "answer": 1, "skill": "number-time"},
+        {"id": "H2-2", "question": "Während der Bauzeit …", "options": ["wird auch nachts und sonntags gebaut.", "wird die Hauptstraße nicht gesperrt.", "wird normalerweise nicht nachts gearbeitet."], "answer": 2, "skill": "negation"},
+        {"id": "H2-3", "question": "Die Geschäfte an der Hauptstraße …", "options": ["bekommen einen Teil ihrer Verluste ersetzt.", "müssen während des Baus schließen.", "erhalten zwei Millionen Euro pro Geschäft."], "answer": 0, "skill": "paraphrase"},
+        {"id": "H2-4", "question": "Im neuen Parkhaus …", "options": ["gibt es zweihundert Plätze.", "können nur Anwohner parken.", "parkt man mit Fahrschein kostenlos."], "answer": 2, "skill": "detail"},
+        {"id": "H2-5", "question": "Die Kosten für das Projekt …", "options": ["trägt die Stadt allein.", "werden durch höhere Ticketpreise bezahlt.", "übernimmt zum größten Teil das Land."], "answer": 2, "skill": "paraphrase"}
+      ]
+    },
+    "teil3": {
+      "setting": "Sie hören ein Gespräch zwischen zwei Nachbarn im Treppenhaus.",
+      "script": [
+        {"speaker": "f2", "text": "Hallo Herr Brandt! Sie sehen aus, als hätten Sie schlechte Laune."},
+        {"speaker": "m2", "text": "Ach, Frau Aydin, ja. Ich komme gerade aus dem Stau. Eine Stunde und zwanzig Minuten für fünfzehn Kilometer. Jeden Tag das Gleiche, seit sie die Brücke reparieren."},
+        {"speaker": "f2", "text": "Das ist ja schlimm. Warum fahren Sie denn nicht mit der Bahn? Die S-Bahn hält doch direkt bei Ihrer Firma."},
+        {"speaker": "m2", "text": "Ja, aber ich müsste zweimal umsteigen, und morgens ist die Bahn so voll, dass man nicht mal einen Stehplatz bekommt. Mit dem Auto habe ich wenigstens meine Ruhe."},
+        {"speaker": "f2", "text": "Ihre Ruhe im Stau, na ja. Ich habe mein Auto vor einem Jahr verkauft und fahre seitdem mit dem Rad. Zwanzig Minuten, egal ob Stau oder nicht."},
+        {"speaker": "m2", "text": "Bei jedem Wetter? Auch jetzt im November?"},
+        {"speaker": "f2", "text": "Bei jedem Wetter. Man braucht nur die richtige Jacke. Und ehrlich gesagt bin ich seitdem viel fitter, ich habe fünf Kilo abgenommen, ohne Diät."},
+        {"speaker": "m2", "text": "Hm, das ist ein Argument. Aber ich habe seit der Knieoperation Angst davor, längere Strecken zu fahren. Fünfzehn Kilometer, das schaffe ich nicht."},
+        {"speaker": "f2", "text": "Dann nehmen Sie doch ein E-Bike. Mein Bruder hat eins, er ist sechzig und fährt damit jeden Tag fünfundzwanzig Kilometer. Der Motor hilft, man tritt nur leicht mit."},
+        {"speaker": "m2", "text": "Die Dinger kosten aber drei- oder viertausend Euro."},
+        {"speaker": "f2", "text": "Nicht unbedingt. Fragen Sie mal in Ihrer Firma, viele Arbeitgeber bieten Fahrrad-Leasing an. Dann zahlen Sie das Rad in kleinen Raten über das Gehalt, und die Firma gibt etwas dazu. Mein Bruder zahlt sechzig Euro im Monat."},
+        {"speaker": "m2", "text": "Sechzig Euro. Für das Benzin und die Parkgebühren zahle ich im Moment fast dreihundert. Das wäre ja eine echte Ersparnis."},
+        {"speaker": "f2", "text": "Sehen Sie. Und wenn es im Winter mal richtig schneit, nehmen Sie an dem Tag eben die Bahn."},
+        {"speaker": "m2", "text": "Ich weiß nicht. Und wo stelle ich das Rad bei der Firma ab? Da wird ständig etwas gestohlen."},
+        {"speaker": "f2", "text": "Gibt es bei Ihnen keine Fahrradgarage? Sonst fragen Sie den Chef. Wenn drei oder vier Kollegen mitmachen, baut die Firma vielleicht eine. So war es bei uns."},
+        {"speaker": "m2", "text": "Also gut, Sie haben mich fast überzeugt. Ich rede am Montag mit der Personalabteilung. Aber die Brücke soll im Januar fertig sein, dann geht es mit dem Auto ja vielleicht wieder schneller."},
+        {"speaker": "f2", "text": "Das haben sie letztes Jahr auch gesagt, Herr Brandt. Gute Nacht!"}
+      ],
+      "items": [
+        {"id": "H3-1", "statement": "Herr Brandt hat heute mehr als eine Stunde im Stau gestanden.", "answer": true, "skill": "number-time"},
+        {"id": "H3-2", "statement": "Mit der S-Bahn könnte Herr Brandt ohne Umsteigen zur Firma fahren.", "answer": false, "skill": "negation"},
+        {"id": "H3-3", "statement": "Frau Aydin besitzt kein Auto mehr.", "answer": true, "skill": "paraphrase"},
+        {"id": "H3-4", "statement": "Herr Brandt hat gesundheitliche Bedenken beim Radfahren.", "answer": true, "skill": "inference"},
+        {"id": "H3-5", "statement": "Der Bruder von Frau Aydin hat sein E-Bike bar bezahlt.", "answer": false, "skill": "detail"},
+        {"id": "H3-6", "statement": "Herr Brandt gibt zurzeit ungefähr sechzig Euro im Monat fürs Auto aus.", "answer": false, "skill": "number-time"},
+        {"id": "H3-7", "statement": "Herr Brandt will sich in seiner Firma nach dem Fahrrad-Leasing erkundigen.", "answer": true, "skill": "detail"}
+      ]
+    },
+    "teil4": {
+      "setting": "Sie hören eine Diskussion im Radio. Der Moderator spricht mit einer Bürgermeisterin und einem Stadtforscher über das Thema „Leben auf dem Land – hat das Dorf noch Zukunft?“",
+      "speakers": {"mod": "Moderator Jonas Weber", "a": "Karin Lutz (Bürgermeisterin von Hollenbach)", "b": "Dr. Felix Manz (Stadtforscher)"},
+      "voices": {"mod": "m3", "a": "f1", "b": "m2"},
+      "script": [
+        {"speaker": "mod", "text": "Guten Abend und willkommen bei „Land und Leute“. Mein Name ist Jonas Weber. Jedes Jahr ziehen Zehntausende junge Menschen vom Dorf in die Stadt. Hat das Dorf noch eine Zukunft? Darüber spreche ich mit Karin Lutz, Bürgermeisterin von Hollenbach, einem Dorf mit tausendzweihundert Einwohnern, und mit Dr. Felix Manz, der an der Universität Dortmund erforscht, wie Menschen in Zukunft wohnen werden. Frau Lutz, wie geht es Ihrem Dorf?"},
+        {"speaker": "a", "text": "Guten Abend. Besser als vor zehn Jahren, das kann ich sagen. Damals hatten wir keinen Laden mehr, keine Kneipe, und die Schule sollte geschlossen werden. Heute haben wir einen Dorfladen, den die Einwohner selbst betreiben, ein Café im alten Bahnhof und seit zwei Jahren wieder mehr Zuzüge als Wegzüge. Vor allem junge Familien aus der Stadt kommen, weil sie sich dort keine Wohnung mehr leisten können."},
+        {"speaker": "mod", "text": "Herr Manz, ist Hollenbach die Ausnahme oder die Regel?"},
+        {"speaker": "b", "text": "Leider die Ausnahme. Frau Lutz macht eine hervorragende Arbeit, aber die Zahlen für Deutschland insgesamt sind eindeutig: Von den etwa elftausend Gemeinden verlieren zwei Drittel Einwohner. Und zwar nicht die Dörfer in der Nähe der Städte, die wachsen. Sondern die Dörfer, die mehr als eine Stunde von der nächsten Stadt entfernt sind. Dort schließt der Arzt, dann die Schule, dann der Bus, und dann gehen die Jungen."},
+        {"speaker": "a", "text": "Da muss ich widersprechen, Herr Manz. Das ist kein Naturgesetz. Der Bus fährt nicht mehr, weil die Politik ihn gestrichen hat, nicht weil die Leute weggezogen sind. Bei uns haben wir das umgedreht: Wir haben einen Rufbus eingeführt, den man per App bestellt. Seitdem fahren dreimal so viele Leute mit wie vorher mit dem alten Linienbus."},
+        {"speaker": "b", "text": "Ein Rufbus ist gut, aber er ersetzt keinen Arbeitsplatz. Die meisten Leute ziehen nicht wegen des Busses weg, sondern wegen der Arbeit. Und da hat sich allerdings etwas geändert, das gebe ich zu: Seit viele Menschen von zu Hause arbeiten können, ist das Dorf für sie wieder interessant. Vorausgesetzt, das Internet funktioniert."},
+        {"speaker": "mod", "text": "Das Internet, ja. Ich habe meine Eltern im Sauerland besucht, und dort konnte ich nicht einmal eine E-Mail schicken. Frau Lutz, wie ist das bei Ihnen?"},
+        {"speaker": "a", "text": "Wir haben seit letztem Jahr Glasfaser in jedem Haus. Das hat vier Jahre gedauert und viele Sitzungen mit dem Landkreis, aber es war die wichtigste Entscheidung überhaupt. Zwei Familien sind nur deshalb zu uns gezogen, weil beide Eltern im Homeoffice arbeiten können."},
+        {"speaker": "b", "text": "Sehen Sie, das ist der Punkt: Dörfer wie Hollenbach, mit einer aktiven Bürgermeisterin und schnellem Internet, haben eine Zukunft. Aber wir müssen ehrlich sein: Nicht jedes Dorf kann gerettet werden. Ich halte es für sinnvoller, das Geld auf die Dörfer zu konzentrieren, in denen es noch eine Schule und einen Laden gibt, statt es auf alle zu verteilen."},
+        {"speaker": "a", "text": "Das klingt logisch, wenn man in Dortmund am Schreibtisch sitzt. Aber wer entscheidet, welches Dorf sterben darf? Die Leute, die dort seit Generationen leben, haben das gleiche Recht auf einen Arzt wie die Leute in der Stadt. Wir zahlen dieselben Steuern."},
+        {"speaker": "mod", "text": "Lassen Sie uns zum Schluss nach vorn schauen. Was wünschen Sie sich, Herr Manz?"},
+        {"speaker": "b", "text": "Dass Stadt und Land nicht mehr als Gegner gesehen werden. Die Stadt braucht das Land für Lebensmittel, Energie und Erholung, und das Land braucht die Stadt für Krankenhäuser, Universitäten und Kultur. Beide müssen zusammen geplant werden."},
+        {"speaker": "a", "text": "Und ich wünsche mir, dass junge Leute, die weggehen, wissen, dass sie zurückkommen können. Ich war selbst zwölf Jahre in München. Dass ich zurückgekommen bin, war die beste Entscheidung meines Lebens."},
+        {"speaker": "mod", "text": "Ein schönes Schlusswort. Vielen Dank, Frau Lutz, vielen Dank, Herr Manz."}
+      ],
+      "items": [
+        {"id": "H4-1", "statement": "In den letzten Jahren sind mehr Menschen ins Dorf gezogen als weggezogen.", "answer": "a", "skill": "matching"},
+        {"id": "H4-2", "statement": "Vor allem Dörfer weit weg von Städten verlieren Einwohner.", "answer": "b", "skill": "matching"},
+        {"id": "H4-3", "statement": "Der Rufbus wird viel stärker genutzt als der frühere Linienbus.", "answer": "a", "skill": "matching"},
+        {"id": "H4-4", "statement": "Die Menschen ziehen hauptsächlich wegen der Arbeit weg.", "answer": "b", "skill": "matching"},
+        {"id": "H4-5", "statement": "Bei meinen Eltern gab es kein funktionierendes Internet.", "answer": "mod", "skill": "matching"},
+        {"id": "H4-6", "statement": "Das schnelle Internet war die wichtigste Entscheidung für das Dorf.", "answer": "a", "skill": "matching"},
+        {"id": "H4-7", "statement": "Man sollte das Geld nicht auf alle Dörfer gleich verteilen.", "answer": "b", "skill": "matching"},
+        {"id": "H4-8", "statement": "Ich habe selbst lange in einer Großstadt gelebt.", "answer": "a", "skill": "matching"}
+      ]
+    }
+  },
+  "schreiben": {
+    "aufgabe1": {
+      "minutes": 20, "words": 80,
+      "situation": "Sie sind vor einem Monat vom Land in eine Großstadt gezogen. Ihre Freundin Carla, die noch in Ihrem alten Dorf wohnt, möchte wissen, wie es Ihnen geht. Schreiben Sie ihr eine E-Mail.",
+      "points": ["Beschreiben Sie, wie Sie in der Stadt zur Arbeit oder zur Uni kommen.", "Erklären Sie, was Ihnen in der Stadt besser oder schlechter gefällt als auf dem Land.", "Laden Sie Carla ein und schlagen Sie vor, was Sie zusammen machen könnten."]
+    },
+    "aufgabe2": {
+      "minutes": 25, "words": 80,
+      "situation": "Sie haben im Fernsehen eine Diskussionssendung zum Thema „Kostenloser Nahverkehr für alle?“ gesehen. Im Online-Gästebuch der Sendung finden Sie folgende Meinung:",
+      "quote": "„Busse und Bahnen sollten nichts kosten, dann lässt jeder sein Auto stehen. Das Geld dafür ist da, man muss es nur nehmen, statt neue Autobahnen zu bauen.“ – Miriam, 31",
+      "instruction": "Schreiben Sie nun Ihre Meinung dazu (circa 80 Wörter)."
+    },
+    "aufgabe3": {
+      "minutes": 15, "words": 40,
+      "situation": "Sie haben bei der Autovermietung „Mobil24“ für das Wochenende ein Auto reserviert. Nun können Sie nicht wie geplant verreisen. Schreiben Sie eine E-Mail an die Mitarbeiterin, Frau Lehmann: Sagen Sie die Reservierung höflich ab, nennen Sie den Grund und fragen Sie, ob Sie die Anzahlung zurückbekommen.",
+      "addressee": "Frau Lehmann"
+    }
+  },
+  "sprechen": {
+    "teil1": {
+      "situation": "Ihr Deutschkurs möchte am Samstag einen Ausflug in eine Stadt in der Nähe machen. Sie und Ihr Partner / Ihre Partnerin sollen die Fahrt organisieren. Planen Sie gemeinsam.",
+      "points": ["Wie fahren Sie hin (Zug, Bus, Auto, Fahrrad)?", "Wann fahren Sie los und wann kommen Sie zurück?", "Was kostet die Fahrt, und wer kauft die Tickets?", "Was machen Sie in der Stadt?"],
+      "partner_cues": [
+        "Ich finde, wir sollten mit dem Zug fahren. Mit dem Auto finden wir in der Stadt doch keinen Parkplatz. Was denkst du?",
+        "Wenn wir um neun losfahren, sind wir um zehn da. Ist das zu früh für die anderen?",
+        "Es gibt ein Gruppenticket für fünf Personen. Wir sind aber zwölf. Wie machen wir das?",
+        "Ich kann die Tickets online kaufen. Sammelst du dann das Geld ein?",
+        "In der Stadt könnten wir zuerst den Dom besichtigen. Oder lieber gleich in den Park?",
+        "Und wann fahren wir zurück? Ich muss am Abend noch arbeiten."
+      ]
+    },
+    "teil2": {
+      "topics": ["Thema A: Leben in der Stadt oder auf dem Land – was ist besser?", "Thema B: Braucht man in einer Großstadt noch ein eigenes Auto?"],
+      "folien": [
+        "Stellen Sie Ihr Thema vor. Erklären Sie den Inhalt und die Struktur Ihrer Präsentation.",
+        "Berichten Sie von Ihrer Situation oder einem Erlebnis im Zusammenhang mit dem Thema.",
+        "Berichten Sie, wie die Situation in Ihrem Heimatland ist, und geben Sie Beispiele.",
+        "Nennen Sie die Vor- und Nachteile und sagen Sie dazu Ihre Meinung. Geben Sie auch Beispiele.",
+        "Beenden Sie Ihre Präsentation und bedanken Sie sich bei den Zuhörern."
+      ]
+    },
+    "teil3": {
+      "questions": ["Sie haben gesagt, dass das Land ruhiger ist. Was machen junge Leute dort in ihrer Freizeit?", "Könnten Sie sich vorstellen, in einem kleinen Dorf zu leben? Warum oder warum nicht?", "Was sollte der Staat tun, damit Dörfer nicht aussterben?"],
+      "questions_b": ["Wie kommen Sie selbst jeden Tag zur Arbeit oder zum Kurs?", "Was müsste passieren, damit mehr Leute auf das Auto verzichten?", "Sollten Autos in der Innenstadt mehr kosten, zum Beispiel durch höhere Parkgebühren?"]
+    }
+  }
+}

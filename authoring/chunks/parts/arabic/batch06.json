@@ -1,0 +1,798 @@
+[
+ {
+  "id": "ENG_CHUNK_0501",
+  "t": "أخاف من [noun]",
+  "tr": "akhaafu min [noun]",
+  "ex": "أخاف من العناكب، لذلك عليك أن تتخلّص من ذلك العنكبوت.",
+  "extr": "akhaafu min al-3anaakib, li-dhaalik 3alayka an tatakhallasa min dhaalika al-3ankabuut.",
+  "n": "Levantine: بخاف من العناكب (bkhaaf min...)."
+ },
+ {
+  "id": "ENG_CHUNK_0502",
+  "t": "كم يكلّف [noun]؟",
+  "tr": "kam yukallif [noun]?",
+  "ex": "كم يكلّف تصليح إطار مثقوب؟",
+  "extr": "kam yukallif taslii7 itaar mathquub?",
+  "n": "Levantine: قدّيش بيكلّف تصليح البنشر؟ (2addeish bikallef...?)"
+ },
+ {
+  "id": "ENG_CHUNK_0503",
+  "t": "هل أنت متأكد أنّ [clause]؟",
+  "tr": "hal anta muta2akkid anna [clause]?",
+  "ex": "هل أنت متأكد أنّك أطفأت الموقد؟",
+  "extr": "hal anta muta2akkid annaka atfa2ta al-mawqid?",
+  "n": "Levantine: متأكد إنّك طفيت الغاز؟ (mit2akked ennak tafeit il-ghaaz?)"
+ },
+ {
+  "id": "ENG_CHUNK_0504",
+  "t": "لماذا تظنّ أنّ [clause]؟",
+  "tr": "limaadhaa tazunnu anna [clause]?",
+  "ex": "لماذا تظنّ أنّها غاضبة منك؟",
+  "extr": "limaadhaa tazunnu annahaa ghaadiba mink?",
+  "n": "Levantine: ليش مفكّر إنّها زعلانة منك؟ (leish mfakker...?)"
+ },
+ {
+  "id": "ENG_CHUNK_0505",
+  "t": "هل صحيح أنّ [clause]؟",
+  "tr": "hal sa7ii7 anna [clause]?",
+  "ex": "هل صحيح أنّك ستنتقل إلى تكساس؟",
+  "extr": "hal sa7ii7 annaka sa-tantaqil ilaa teksaas?",
+  "n": "Levantine: صحيح إنّك رح تنتقل...؟ / عنجد؟"
+ },
+ {
+  "id": "ENG_CHUNK_0506",
+  "t": "هل عندك فكرة [clause]؟",
+  "tr": "hal 3indaka fikra [clause]?",
+  "ex": "هل عندك فكرة أين تركت هاتفي؟",
+  "extr": "hal 3indaka fikra ayna taraktu haatifii?",
+  "n": "Levantine: بتعرف وين تركت تلفوني؟ (bta3ref wein...)"
+ },
+ {
+  "id": "ENG_CHUNK_0507",
+  "t": "هل لي أن أسأل لماذا [clause]؟",
+  "tr": "hal lii an as2ala limaadhaa [clause]?",
+  "ex": "هل لي أن أسأل لماذا ستغادر بهذه السرعة؟",
+  "extr": "hal lii an as2ala limaadhaa sa-tughaadir bi-haadhihi as-sur3a?",
+  "n": "Hosts protest early departure: Levantine: ليش مستعجل؟ لسّا بكّير! (lessa bakkiir!)"
+ },
+ {
+  "id": "ENG_CHUNK_0508",
+  "t": "لماذا [noun]؟ / ما فائدة [noun]؟",
+  "tr": "limaadhaa [noun]? / maa faa2idat [noun]?",
+  "ex": "ما فائدة هذا الزر؟",
+  "extr": "maa faa2idat haadhaa az-zirr?",
+  "n": "Levantine: هالزر لشو؟ (hal-zirr la-shu?)"
+ },
+ {
+  "id": "ENG_CHUNK_0509",
+  "t": "كيف تقول [noun] بالعربية؟",
+  "tr": "kayfa taquul [noun] bil-3arabiyya?",
+  "ex": "عفوًا، كيف تقول هذا بالعربية؟",
+  "extr": "3afwan, kayfa taquul haadhaa bil-3arabiyya?",
+  "n": "Adapted to the target language. Levantine: كيف بتقول هيدا بالعربي؟ (bil-3arabi)."
+ },
+ {
+  "id": "ENG_CHUNK_0510",
+  "t": "هل يمكنك أن تريني كيف [verb]؟",
+  "tr": "hal yumkinuka an turiyanii kayfa [verb]?",
+  "ex": "هل يمكنك أن تريني كيف أستخدم آلة القهوة؟",
+  "extr": "hal yumkinuka an turiyanii kayfa astakhdim aalat al-qahwa?",
+  "n": "Levantine: فيك تفرجيني كيف بتشتغل ماكينة القهوة؟ (tfarjiini)."
+ },
+ {
+  "id": "ENG_CHUNK_0511",
+  "t": "هل يمكنك أن تنصحني بـ[noun]؟",
+  "tr": "hal yumkinuka an tansa7anii bi-[noun]?",
+  "ex": "هل يمكنك أن تنصحني بمكان جيد للفطور المتأخّر هنا؟",
+  "extr": "hal yumkinuka an tansa7anii bi-makaan jayyid lil-futuur al-muta2akhkhir hunaa?",
+  "n": "Levantine: بتعرف محل منيح للفطور هون؟ — brunch → فطور."
+ },
+ {
+  "id": "ENG_CHUNK_0512",
+  "t": "هل يوجد مكان يمكنني فيه أن [verb]؟",
+  "tr": "hal yuujad makaan yumkinunii fiihi an [verb]?",
+  "ex": "هل يوجد مكان يمكنني فيه أن أشحن هاتفي؟",
+  "extr": "hal yuujad makaan yumkinunii fiihi an ash7ana haatifii?",
+  "n": "Levantine: في محل فيني إشحن فيه تلفوني؟ (fii ma7all fiini esh7an...)"
+ },
+ {
+  "id": "ENG_CHUNK_0513",
+  "t": "هل يوجد [noun] قريب من هنا؟",
+  "tr": "hal yuujad [noun] qariib min hunaa?",
+  "ex": "عفوًا، هل توجد صيدلية قريبة من هنا؟",
+  "extr": "3afwan, hal tuujad saydaliyya qariiba min hunaa?",
+  "n": "Levantine: في صيدلية قريبة من هون؟ (fii saydaliyye...)"
+ },
+ {
+  "id": "ENG_CHUNK_0514",
+  "t": "هل هذا طريق [noun]؟",
+  "tr": "hal haadhaa tariiq [noun]?",
+  "ex": "عفوًا، هل هذا طريق المتحف؟",
+  "extr": "3afwan, hal haadhaa tariiq al-mat7af?",
+  "n": "Levantine: هيدا الطريق عالمتحف؟ (heida it-tarii2 3al-mat7af?)"
+ },
+ {
+  "id": "ENG_CHUNK_0515",
+  "t": "كم يبعد [noun]؟",
+  "tr": "kam yab3ud [noun]?",
+  "ex": "كم يبعد الشاطئ عن هنا؟",
+  "extr": "kam yab3ud ash-shaati2 3an hunaa?",
+  "n": "Levantine: قدّيش بعيد البحر من هون؟ (2addeish ba3iid...)"
+ },
+ {
+  "id": "ENG_CHUNK_0516",
+  "t": "هل يذهب هذا الباص إلى [noun]؟",
+  "tr": "hal yadh-hab haadhaa al-baas ilaa [noun]?",
+  "ex": "عفوًا، هل يذهب هذا الباص إلى محطة القطار؟",
+  "extr": "3afwan, hal yadh-hab haadhaa al-baas ilaa ma7attat al-qitaar?",
+  "n": "Levantine: هالباص بيروح عالمحطة؟ (birou7 3al-ma7atta?)"
+ },
+ {
+  "id": "ENG_CHUNK_0517",
+  "t": "متى يغادر [noun]؟",
+  "tr": "mataa yughaadir [noun]?",
+  "ex": "متى يغادر آخر قطار؟",
+  "extr": "mataa yughaadir aakhir qitaar?",
+  "n": "Levantine: أيمتى بيطلع آخر قطار؟ (aymta biitla3...)"
+ },
+ {
+  "id": "ENG_CHUNK_0518",
+  "t": "أريد تذكرة ذهاب وإياب إلى [noun]",
+  "tr": "uriid tadhkarat dhahaab wa-iyaab ilaa [noun]",
+  "ex": "أريد تذكرة ذهاب وإياب إلى شيكاغو، من فضلك.",
+  "extr": "uriid tadhkarat dhahaab wa-iyaab ilaa shiikaaghuu, min fadlak.",
+  "n": "Levantine: بدّي تذكرة رايح جاي (raaye7 jaaye) = round trip."
+ },
+ {
+  "id": "ENG_CHUNK_0519",
+  "t": "عندي حجز باسم [noun]",
+  "tr": "3indii 7ajz bi-ism [noun]",
+  "ex": "مرحبًا، عندي حجز باسم ميلر.",
+  "extr": "mar7aban, 3indii 7ajz bi-ism miilar."
+ },
+ {
+  "id": "ENG_CHUNK_0520",
+  "t": "أريد أن أحجز [noun]",
+  "tr": "uriid an a7jiza [noun]",
+  "ex": "مرحبًا، أريد أن أحجز طاولة لشخصين الساعة الثامنة.",
+  "extr": "mar7aban, uriid an a7jiza taawila li-shakhsayn as-saa3a ath-thaamina.",
+  "n": "Levantine: بدّي إحجز طاولة لتنين عالتمانة."
+ },
+ {
+  "id": "ENG_CHUNK_0521",
+  "t": "هل عندكم طاولة لـ[noun]؟",
+  "tr": "hal 3indakum taawila li-[noun]?",
+  "ex": "مرحبًا، هل عندكم طاولة لشخصين؟",
+  "extr": "mar7aban, hal 3indakum taawila li-shakhsayn?",
+  "n": "Levantine: في طاولة لتنين؟ (fii taawle la-tneen?)"
+ },
+ {
+  "id": "ENG_CHUNK_0522",
+  "t": "هل في [noun] [noun]؟",
+  "tr": "hal fii [noun] [noun]?",
+  "ex": "هل في الشوربة لحم؟",
+  "extr": "hal fii ash-shuurba la7m?",
+  "n": "Word order: 'is there in [dish] [ingredient]'. Levantine: في لحمة بالشوربة؟"
+ },
+ {
+  "id": "ENG_CHUNK_0523",
+  "t": "عندي حساسية من [noun]",
+  "tr": "3indii 7assaasiyya min [noun]",
+  "ex": "عندي حساسية من الفول السوداني، لذلك لن آكل الحلوى.",
+  "extr": "3indii 7assaasiyya min al-fuul as-suudaanii, li-dhaalik lan aakula al-7alwaa.",
+  "n": "Levantine: عندي حساسية من الفستق (fistu2) — peanuts are فستق عبيد."
+ },
+ {
+  "id": "ENG_CHUNK_0524",
+  "t": "ممكن بدون [noun]؟",
+  "tr": "mumkin biduun [noun]?",
+  "ex": "ممكن بدون بصل؟",
+  "extr": "mumkin biduun basal?",
+  "n": "Levantine: بلا بصل لو سمحت (bala basal)."
+ },
+ {
+  "id": "ENG_CHUNK_0525",
+  "t": "هل [noun] مشمول؟ / هل السعر يشمل [noun]؟",
+  "tr": "hal [noun] mashmuul? / hal as-si3r yashmal [noun]?",
+  "ex": "هل الفطور مشمول؟",
+  "extr": "hal al-futuur mashmuul?",
+  "n": "Levantine: الفطور معو؟ / مع الفطور؟ (ma3 il-ftuur?)"
+ },
+ {
+  "id": "ENG_CHUNK_0526",
+  "t": "أين أجد [noun]؟",
+  "tr": "ayna ajid [noun]?",
+  "ex": "عفوًا، أين أجد رقائق الحبوب؟",
+  "extr": "3afwan, ayna ajid raqaa2iq al-7ubuub?",
+  "n": "Levantine: وين بلاقي الكورن فليكس؟ (wein blaa2i...)"
+ },
+ {
+  "id": "ENG_CHUNK_0527",
+  "t": "هل يمكنني أن أجرّب [noun]؟",
+  "tr": "hal yumkinunii an ujarriba [noun]?",
+  "ex": "هل يمكنني أن أجرّب هذا الجينز؟",
+  "extr": "hal yumkinunii an ujarriba haadhaa al-jiinz?",
+  "n": "Levantine: فيني قيس هالجينز؟ (fiini 2iis...) — قاس = try on."
+ },
+ {
+  "id": "ENG_CHUNK_0528",
+  "t": "هل [noun] عليه تخفيض؟",
+  "tr": "hal [noun] 3alayhi takhfiid?",
+  "ex": "هل هذه السترة عليها تخفيض؟",
+  "extr": "hal haadhihi as-sutra 3alayhaa takhfiid?",
+  "n": "Levantine: عليها حسم؟ / في عليها سولد؟ (7asm / solde)."
+ },
+ {
+  "id": "ENG_CHUNK_0529",
+  "t": "هل عندكم شيء أقلّ [adjective]؟",
+  "tr": "hal 3indakum shay2 aqall [adjective]?",
+  "ex": "هل عندكم شيء أقلّ سعرًا؟",
+  "extr": "hal 3indakum shay2 aqall si3ran?",
+  "n": "Arabic prefers the comparative: أرخص (arkhas) = cheaper. Levantine: في شي أرخص؟"
+ },
+ {
+  "id": "ENG_CHUNK_0530",
+  "t": "ستحبّ [noun]",
+  "tr": "sa-tu7ibb [noun]",
+  "ex": "ستحبّ هذا المكان كثيرًا.",
+  "extr": "sa-tu7ibb haadhaa al-makaan kathiiran.",
+  "n": "Levantine: رح يعجبك كتير هالمحل (ra7 ya3jbak ktiir)."
+ },
+ {
+  "id": "ENG_CHUNK_0531",
+  "t": "سآخذ [noun]",
+  "tr": "sa-aakhudh [noun]",
+  "ex": "سآخذ الأزرق.",
+  "extr": "sa-aakhudh al-azraq.",
+  "n": "Levantine: باخد الأزرق (baakhod il-azra2)."
+ },
+ {
+  "id": "ENG_CHUNK_0532",
+  "t": "هل تقبلون [noun]؟",
+  "tr": "hal taqbaluun [noun]?",
+  "ex": "هل تقبلون بطاقات الائتمان؟",
+  "extr": "hal taqbaluun bitaaqaat al-i2timaan?",
+  "n": "Levantine: بتاخدوا فيزا؟ (btaakhdu viiza?)"
+ },
+ {
+  "id": "ENG_CHUNK_0533",
+  "t": "أريد أن أرجع [noun]",
+  "tr": "uriid an urji3a [noun]",
+  "ex": "مرحبًا، أريد أن أرجع هذه الكنزة. إنّها صغيرة جدًا.",
+  "extr": "mar7aban, uriid an urji3a haadhihi al-kanza. innahaa saghiira jiddan.",
+  "n": "Levantine: بدّي رجّع هالكنزة، زغيرة عليّ (zghiire 3alayy)."
+ },
+ {
+  "id": "ENG_CHUNK_0534",
+  "t": "أريد أن ألغي [noun]",
+  "tr": "uriid an ulghiya [noun]",
+  "ex": "أريد أن ألغي اشتراكي، من فضلك.",
+  "extr": "uriid an ulghiya ishtiraakii, min fadlak.",
+  "n": "Levantine: بدّي إلغي الاشتراك (baddi elghi...)."
+ },
+ {
+  "id": "ENG_CHUNK_0535",
+  "t": "هل هناك رسوم على [noun]؟",
+  "tr": "hal hunaaka rusuum 3alaa [noun]?",
+  "ex": "هل هناك رسوم على تغيير التاريخ؟",
+  "extr": "hal hunaaka rusuum 3alaa taghyiir at-taariikh?",
+  "n": "Levantine: في شي بندفعه إذا غيّرنا التاريخ؟"
+ },
+ {
+  "id": "ENG_CHUNK_0536",
+  "t": "جرّب [noun]",
+  "tr": "jarraba [noun]",
+  "ex": "لم آكل السوشي أبدًا، لكنّي سأجرّبه.",
+  "extr": "lam aakul as-suushii abadan, laakinnii sa-ujarribuh.",
+  "n": "Levantine: ولا مرّة أكلت سوشي، بس رح جرّب (ra7 jarreb)."
+ },
+ {
+  "id": "ENG_CHUNK_0537",
+  "t": "استمرّ / كمّل",
+  "tr": "istamarra / kammala",
+  "ex": "أنت قريب من القمة، استمرّ!",
+  "extr": "anta qariib min al-qimma, istamirr!",
+  "n": "Levantine: كمّل! يلّا! (kammel! yalla!)"
+ },
+ {
+  "id": "ENG_CHUNK_0538",
+  "t": "تمنّى أمنية",
+  "tr": "tamannaa umniya",
+  "ex": "أطفئ الشموع وتمنّ أمنية!",
+  "extr": "atfi2 ash-shumuu3 wa-tamanna umniya!",
+  "n": "Levantine: طفّي الشمع واتمنّى شي (taffi ish-sham3...)."
+ },
+ {
+  "id": "ENG_CHUNK_0539",
+  "t": "اجتمع / التقى",
+  "tr": "ijtama3a / iltaqaa",
+  "ex": "يجب أن نلتقي في وقت ما الأسبوع القادم.",
+  "extr": "yajib an naltaqiya fii waqt maa al-usbuu3 al-qaadim.",
+  "n": "Levantine: لازم نشوف بعض الجمعة الجاية (nshuuf ba3d)."
+ },
+ {
+  "id": "ENG_CHUNK_0540",
+  "t": "عرّف [person] على المكان / فرّج [person]",
+  "tr": "3arrafa [person] 3alaa al-makaan / farraja [person]",
+  "ex": "تعال غدًا وسأعرّفك على المكتب.",
+  "extr": "ta3aal ghadan wa-sa-u3arrifuka 3alaa al-maktab.",
+  "n": "Levantine: تعا بكرا وبفرجيك المكتب (bfarjiik il-maktab)."
+ },
+ {
+  "id": "ENG_CHUNK_0541",
+  "t": "سكن مع [person]",
+  "tr": "sakana ma3a [person]",
+  "ex": "سأسكن مع صديقتي الشهر القادم.",
+  "extr": "sa-askun ma3a sadiiqatii ash-shahr al-qaadim.",
+  "n": "Unmarried cohabiting is uncommon/taboo in much of the region; more natural with a flatmate."
+ },
+ {
+  "id": "ENG_CHUNK_0542",
+  "t": "ترك البيت / خرج من البيت",
+  "tr": "taraka al-bayt / kharaja min al-bayt",
+  "ex": "تركت بيت أهلي عندما كان عمري ثمانية عشر عامًا.",
+  "extr": "taraktu bayt ahlii 3indamaa kaana 3umrii thamaaniyata 3ashar 3aaman.",
+  "n": "Levantine: طلعت من بيت أهلي (tle3t min beit ahli)."
+ },
+ {
+  "id": "ENG_CHUNK_0543",
+  "t": "قريب من [person]",
+  "tr": "qariib min [person]",
+  "ex": "أنا قريب من جدّتي. نتكلّم كل يوم.",
+  "extr": "anaa qariib min jaddatii. natakallam kull yawm.",
+  "n": "Levantine: أنا كتير قريب من ستّي (sitti = grandma)."
+ },
+ {
+  "id": "ENG_CHUNK_0544",
+  "t": "معجب بـ[person]",
+  "tr": "mu3jab bi-[person]",
+  "ex": "أظنّ أنّ جاك معجب بك.",
+  "extr": "azunnu anna jaak mu3jab biki.",
+  "n": "Levantine: شكلو حاطط عينو عليكي (7aatet 3eino 3aleiki)."
+ },
+ {
+  "id": "ENG_CHUNK_0545",
+  "t": "تصالح مع [person]",
+  "tr": "tasaala7a ma3a [person]",
+  "ex": "هل تصالحت مع أختك؟",
+  "extr": "hal tasaala7ta ma3a ukhtik?",
+  "n": "Levantine: تصالحت مع أختك ولا لسّا؟ (wala lessa?)"
+ },
+ {
+  "id": "ENG_CHUNK_0546",
+  "t": "بقي على تواصل",
+  "tr": "baqiya 3alaa tawaasul",
+  "ex": "لنبقَ على تواصل بعد انتقالك.",
+  "extr": "li-nabqa 3alaa tawaasul ba3da intiqaalik.",
+  "n": "Levantine: خلّينا نضلّ على تواصل / لا تنقطع (la tin2ate3)."
+ },
+ {
+  "id": "ENG_CHUNK_0547",
+  "t": "سمع أخبار [person]",
+  "tr": "sami3a akhbaar [person]",
+  "ex": "هل سمعت أخبار آنا مؤخرًا؟",
+  "extr": "hal sami3ta akhbaar aanaa mu2akhkharan?",
+  "n": "Levantine: شي خبر عن آنا؟ (shi khabar 3an...)"
+ },
+ {
+  "id": "ENG_CHUNK_0548",
+  "t": "اشتكى من [noun]",
+  "tr": "ishtakaa min [noun]",
+  "ex": "جاري دائمًا يشتكي من الضجيج.",
+  "extr": "jaarii daa2iman yashtakii min ad-dajiij.",
+  "n": "Levantine: جاري دايمًا بينقّ عالصوت (bin22 3as-sot) — نقّ = moan."
+ },
+ {
+  "id": "ENG_CHUNK_0549",
+  "t": "اهتمّ بـ[noun]",
+  "tr": "ihtamma bi-[noun]",
+  "ex": "أهتمّ بصحتي أكثر بكثير هذه الأيام.",
+  "extr": "ahtamm bi-sa77atii akthar bi-kathiir haadhihi al-ayyaam.",
+  "n": "Levantine: صرت إهتمّ بصحتي أكتر (sirt ehtamm...)."
+ },
+ {
+  "id": "ENG_CHUNK_0550",
+  "t": "ذكّر [person] أن [verb]",
+  "tr": "dhakkara [person] an [verb]",
+  "ex": "هل يمكنك أن تذكّرني أن أتصل بطبيب الأسنان؟",
+  "extr": "hal yumkinuka an tudhakkiranii an attasila bi-tabiib al-asnaan?",
+  "n": "Levantine: فيك تذكّرني إحكي طبيب السنان؟ (tzakkerni)."
+ },
+ {
+  "id": "ENG_CHUNK_0551",
+  "t": "نجح في امتحان",
+  "tr": "naja7a fii imti7aan",
+  "ex": "نجحت في امتحان القيادة من أول مرة!",
+  "extr": "naja7tu fii imti7aan al-qiyaada min awwal marra!",
+  "n": "Reaction: مبروك! (mabruuk)."
+ },
+ {
+  "id": "ENG_CHUNK_0552",
+  "t": "استعدّ لـ[noun]",
+  "tr": "ista3adda li-[noun]",
+  "ex": "أستعدّ لامتحاناتي النهائية.",
+  "extr": "asta3idd li-mti7aanaatii an-nihaa2iyya.",
+  "n": "Levantine: عم إدرس للفاينل (3am edros...)."
+ },
+ {
+  "id": "ENG_CHUNK_0553",
+  "t": "تولّى [noun] / اهتمّ بـ[noun]",
+  "tr": "tawallaa [noun] / ihtamma bi-[noun]",
+  "ex": "لا تقلق، سأتولّى الحساب.",
+  "extr": "laa taqlaq, sa-atawallaa al-7isaab.",
+  "n": "Levantine: خلّيها عليّ (khalliiha 3alayy)."
+ },
+ {
+  "id": "ENG_CHUNK_0554",
+  "t": "شارك في [noun]",
+  "tr": "shaaraka fii [noun]",
+  "ex": "شارك أكثر من مئتي شخص في السباق.",
+  "extr": "shaaraka akthar min mi2atay shakhs fii as-sibaaq."
+ },
+ {
+  "id": "ENG_CHUNK_0555",
+  "t": "سلّم [noun]",
+  "tr": "sallama [noun]",
+  "ex": "يجب أن أسلّم تقريري قبل يوم الجمعة.",
+  "extr": "yajib an usallima taqriirii qabla yawm al-jum3a."
+ },
+ {
+  "id": "ENG_CHUNK_0556",
+  "t": "قدّم عرضًا",
+  "tr": "qaddama 3ardan",
+  "ex": "يجب أن أقدّم عرضًا غدًا وأنا متوتّر جدًا.",
+  "extr": "yajib an uqaddima 3ardan ghadan wa-anaa mutawattir jiddan.",
+  "n": "Levantine: عندي بريزنتيشن بكرا (3indi presentation bukra)."
+ },
+ {
+  "id": "ENG_CHUNK_0557",
+  "t": "عمل ساعات إضافية",
+  "tr": "3amila saa3aat idaafiyya",
+  "ex": "أعمل ساعات إضافية طوال الأسبوع.",
+  "extr": "a3mal saa3aat idaafiyya tiwaal al-usbuu3.",
+  "n": "Levantine: عم إشتغل أوفرتايم (overtime)."
+ },
+ {
+  "id": "ENG_CHUNK_0558",
+  "t": "حصل على ترقية / ترقّى",
+  "tr": "7asala 3alaa tarqiya / taraqqaa",
+  "ex": "أختي حصلت للتو على ترقية إلى مديرة!",
+  "extr": "ukhtii 7asalat lit-tawwi 3alaa tarqiya ilaa mudiira!",
+  "n": "Levantine: أختي ترفّعت لمديرة! (traffa3et)."
+ },
+ {
+  "id": "ENG_CHUNK_0559",
+  "t": "خسر وظيفته",
+  "tr": "khasira waziifatahu",
+  "ex": "خسر عمّي وظيفته الشهر الماضي.",
+  "extr": "khasira 3ammii waziifatahu ash-shahr al-maadii.",
+  "n": "Levantine: عمّي انطرد من الشغل (ntarad) = got fired."
+ },
+ {
+  "id": "ENG_CHUNK_0560",
+  "t": "ترك عمله / استقال",
+  "tr": "taraka 3amalahu / istaqaala",
+  "ex": "استقالت من عملها لتسافر لمدة سنة.",
+  "extr": "istaqaalat min 3amalihaa li-tusaafira li-muddat sana.",
+  "n": "Levantine: تركت شغلها (tarket shughla)."
+ },
+ {
+  "id": "ENG_CHUNK_0561",
+  "t": "عمل بدوام جزئي",
+  "tr": "3amal bi-dawaam juz2ii",
+  "ex": "عندي عمل بدوام جزئي في مقهى في عطلة نهاية الأسبوع.",
+  "extr": "3indii 3amal bi-dawaam juz2ii fii maqhaa fii 3utlat nihaayat al-usbuu3.",
+  "n": "Levantine: بشتغل بارت تايم (part-time)."
+ },
+ {
+  "id": "ENG_CHUNK_0562",
+  "t": "مقابلة عمل",
+  "tr": "muqaabalat 3amal",
+  "ex": "عندي مقابلة عمل صباح الاثنين.",
+  "extr": "3indii muqaabalat 3amal sabaa7 al-ithnayn.",
+  "n": "Levantine: عندي إنترفيو (interview)."
+ },
+ {
+  "id": "ENG_CHUNK_0563",
+  "t": "خلص الدوام / طلع من الشغل",
+  "tr": "khalas ad-dawaam / tili3 min ash-shughl",
+  "ex": "متى ينتهي دوامك؟",
+  "extr": "mataa yantahii dawaamuk?",
+  "n": "Levantine: أيمتى بتخلص شغل؟ (aymta btikhlas shughl?)"
+ },
+ {
+  "id": "ENG_CHUNK_0564",
+  "t": "انصرف / مشى",
+  "tr": "insarafa / mashaa",
+  "ex": "سأنصرف الآن. أراك غدًا.",
+  "extr": "sa-ansarif al-aan. araaka ghadan.",
+  "n": "Levantine: يلّا أنا ماشي / رح فلّ (yalla ana maashi)."
+ },
+ {
+  "id": "ENG_CHUNK_0565",
+  "t": "ساعة الذروة / وقت الزحمة",
+  "tr": "saa3at adh-dhirwa / waqt az-za7ma",
+  "ex": "لنخرج مبكرًا لنتجنّب ساعة الذروة.",
+  "extr": "li-nakhruj mubakkiran li-natajannaba saa3at adh-dhirwa.",
+  "n": "Levantine: وقت العجقة (wa2t il-3aj2a)."
+ },
+ {
+  "id": "ENG_CHUNK_0566",
+  "t": "من الصعب أن أقول",
+  "tr": "min as-sa3b an aquul",
+  "ex": "هل سيكون جاهزًا يوم الجمعة؟ من الصعب أن أقول.",
+  "extr": "hal sa-yakuun jaahizan yawm al-jum3a? min as-sa3b an aquul.",
+  "n": "Levantine: ما بعرف، صعب قول (sa3b 2uul) / الله أعلم."
+ },
+ {
+  "id": "ENG_CHUNK_0567",
+  "t": "ليس على حدّ علمي",
+  "tr": "laysa 3alaa 7add 3ilmii",
+  "ex": "هل هناك اجتماع اليوم؟ ليس على حدّ علمي.",
+  "extr": "hal hunaaka ijtimaa3 al-yawm? laysa 3alaa 7add 3ilmii.",
+  "n": "Levantine: مش إنّو بعرف / ما بظنّ (ma bzunn)."
+ },
+ {
+  "id": "ENG_CHUNK_0568",
+  "t": "أكيد",
+  "tr": "akiid",
+  "ex": "هل ستأتي إلى الحفلة؟ أكيد!",
+  "extr": "hal sa-ta2tii ilaa al-7afla? akiid!",
+  "n": "Levantine: أكيد! / طبعًا! (akiid! / tab3an!)"
+ },
+ {
+  "id": "ENG_CHUNK_0569",
+  "t": "شخصيًا",
+  "tr": "shakhsiyyan",
+  "ex": "شخصيًا، أفضّل البحر على الجبال.",
+  "extr": "shakhsiyyan, ufaddil al-ba7r 3alaa al-jibaal.",
+  "n": "Levantine: أنا شخصيًا بفضّل البحر (ana shakhsiyyan...)."
+ },
+ {
+  "id": "ENG_CHUNK_0570",
+  "t": "لا بدّ أن أقول / والله",
+  "tr": "laa budda an aquul / wallaahi",
+  "ex": "لا بدّ أن أقول، هذه أفضل بيتزا أكلتها في حياتي.",
+  "extr": "laa budda an aquul, haadhihi afdal biitzaa akaltuhaa fii 7ayaatii.",
+  "n": "Levantine: والله (wallah) does the sincerity work: والله أطيب بيتزا أكلتها."
+ },
+ {
+  "id": "ENG_CHUNK_0571",
+  "t": "صدّقني",
+  "tr": "saddiqnii",
+  "ex": "صدّقني، لا تريد أن تقود في هذه الساعة.",
+  "extr": "saddiqnii, laa turiid an taquuda fii haadhihi as-saa3a.",
+  "n": "Levantine: صدّقني / والله (sadde2ni)."
+ },
+ {
+  "id": "ENG_CHUNK_0572",
+  "t": "هذا غير صحيح",
+  "tr": "haadhaa ghayr sa7ii7",
+  "ex": "هذا غير صحيح، اتصلت بك مرتين!",
+  "extr": "haadhaa ghayr sa7ii7, ittasaltu bika marratayn!",
+  "n": "Levantine: مش صحيح! / مش مزبوط! (mish mazbuut)."
+ },
+ {
+  "id": "ENG_CHUNK_0573",
+  "t": "أختلف معك تمامًا",
+  "tr": "akhtalifu ma3aka tamaaman",
+  "ex": "أختلف معك تمامًا، الفيلم الأول كان أفضل بكثير.",
+  "extr": "akhtalifu ma3aka tamaaman, al-film al-awwal kaana afdal bi-kathiir.",
+  "n": "Levantine: أبدًا، مش متّفق معك (abadan, mish mittefe2 ma3ak)."
+ },
+ {
+  "id": "ENG_CHUNK_0574",
+  "t": "طبعًا لا / مستحيل",
+  "tr": "tab3an laa / musta7iil",
+  "ex": "هل يمكنني استعارة سيارتك الليلة؟ طبعًا لا.",
+  "extr": "hal yumkinunii isti3aarat sayyaaratik al-layla? tab3an laa.",
+  "n": "Levantine: ولا بالحلم! / أكيد لأ (akiid la2)."
+ },
+ {
+  "id": "ENG_CHUNK_0575",
+  "t": "لم أفكّر في ذلك",
+  "tr": "lam ufakkir fii dhaalik",
+  "ex": "آه، نقطة جيدة. لم أفكّر في ذلك.",
+  "extr": "aah, nuqta jayyida. lam ufakkir fii dhaalik.",
+  "n": "Levantine: ما خطرت عبالي (ma khatret 3a-baali)."
+ },
+ {
+  "id": "ENG_CHUNK_0576",
+  "t": "غلبتني / كما تريد",
+  "tr": "ghalabtanii / kamaa turiid",
+  "ex": "حسنًا، غلبتني، سنطلب أكلًا تايلنديًا.",
+  "extr": "7asanan, ghalabtanii, sa-natlub aklan taaylandiyyan.",
+  "n": "Levantine: ماشي، متل ما بدّك (mitl ma baddak)."
+ },
+ {
+  "id": "ENG_CHUNK_0577",
+  "t": "سؤال صعب",
+  "tr": "su2aal sa3b",
+  "ex": "فيلمي المفضّل؟ هذا سؤال صعب.",
+  "extr": "filmii al-mufaddal? haadhaa su2aal sa3b.",
+  "n": "Levantine: صعبة هيدي! (sa3be heidi!)"
+ },
+ {
+  "id": "ENG_CHUNK_0578",
+  "t": "دعني أسألك شيئًا",
+  "tr": "da3nii as2aluka shay2an",
+  "ex": "دعني أسألك شيئًا. هل تحبّ عملك فعلًا؟",
+  "extr": "da3nii as2aluka shay2an. hal tu7ibbu 3amalaka fi3lan?",
+  "n": "Levantine: خلّيني إسألك سؤال (khalliini es2alak su2aal)."
+ },
+ {
+  "id": "ENG_CHUNK_0579",
+  "t": "والأسوأ من ذلك",
+  "tr": "wal-aswa2 min dhaalik",
+  "ex": "فاتني الباص، والأسوأ من ذلك أنّها بدأت تمطر بغزارة.",
+  "extr": "faatanii al-baas, wal-aswa2 min dhaalik annahaa bada2at tumtir bi-ghazaara.",
+  "n": "Levantine: والأنكى من هيك (wil-anka min heik)."
+ },
+ {
+  "id": "ENG_CHUNK_0580",
+  "t": "المضحك في الأمر أنّ",
+  "tr": "al-mud7ik fii al-amr anna",
+  "ex": "المضحك في الأمر أنّنا التقينا من قبل ولم يتذكّر أيّ منا.",
+  "extr": "al-mud7ik fii al-amr annanaa iltaqaynaa min qabl wa-lam yatadhakkar ayy minnaa.",
+  "n": "Levantine: والمضحك إنّو... (wil-mud7ek ennu...)"
+ },
+ {
+  "id": "ENG_CHUNK_0581",
+  "t": "ادعُ لي",
+  "tr": "ud3u lii",
+  "ex": "سألتقي بأهلها الليلة. ادعُ لي!",
+  "extr": "sa-altaqii bi-ahlihaa al-layla. ud3u lii!",
+  "n": "Levantine: إدعيلي! (id3iili) — 'pray for me' is the everyday 'wish me luck'."
+ },
+ {
+  "id": "ENG_CHUNK_0582",
+  "t": "حظًّا أوفر في المرة القادمة",
+  "tr": "7azzan awfar fii al-marra al-qaadima",
+  "ex": "لم تربح؟ لا بأس، حظًّا أوفر في المرة القادمة.",
+  "extr": "lam tarba7? laa ba2s, 7azzan awfar fii al-marra al-qaadima.",
+  "n": "Levantine: معلش، بتتعوّض (ma3lesh, btit3awwad)."
+ },
+ {
+  "id": "ENG_CHUNK_0583",
+  "t": "سلامتك / أتمنّى لك الشفاء العاجل",
+  "tr": "salaamtak / atamannaa laka ash-shifaa2 al-3aajil",
+  "ex": "آسف لأنّك مريض. سلامتك!",
+  "extr": "aasif li-annaka mariid. salaamtak!",
+  "n": "سلامتك is the reflex; reply: الله يسلمك (allah ysallmak)."
+ },
+ {
+  "id": "ENG_CHUNK_0584",
+  "t": "الدنيا صغيرة",
+  "tr": "ad-dunyaa saghiira",
+  "ex": "تعرف ابن عمّي؟ الدنيا صغيرة.",
+  "extr": "ta3rif ibn 3ammii? ad-dunyaa saghiira.",
+  "n": "Levantine: الدني زغيرة! (id-dinye zghiire)."
+ },
+ {
+  "id": "ENG_CHUNK_0585",
+  "t": "ليس من اهتماماتي / مش جوّي",
+  "tr": "laysa min ihtimaamaatii / mish jawwii",
+  "ex": "كاريوكي؟ شكرًا، لكنّه ليس من اهتماماتي.",
+  "extr": "kaariyookii? shukran, laakinnahu laysa min ihtimaamaatii.",
+  "n": "Levantine: مش جوّي (mish jawwi) = not my scene."
+ },
+ {
+  "id": "ENG_CHUNK_0586",
+  "t": "يا رجل! / يا الله!",
+  "tr": "yaa rajul! / yaa allaah!",
+  "ex": "يا الله! تأخير آخر!",
+  "extr": "yaa allaah! ta2khiir aakhar!",
+  "n": "Levantine: لا بقى! / يا ربّي! (la ba2a! / ya rabbi!)"
+ },
+ {
+  "id": "ENG_CHUNK_0587",
+  "t": "الوقت يمرّ بسرعة",
+  "tr": "al-waqt yamurr bi-sur3a",
+  "ex": "ابنك سيبدأ الجامعة؟ الوقت يمرّ بسرعة.",
+  "extr": "ibnuka sa-yabda2 al-jaami3a? al-waqt yamurr bi-sur3a.",
+  "n": "Levantine: الأيام بتركض! (il-ayyaam btirkod)."
+ },
+ {
+  "id": "ENG_CHUNK_0588",
+  "t": "أن تأتي متأخرًا خير من ألّا تأتي",
+  "tr": "an ta2tiya muta2akhkhiran khayr min allaa ta2tii",
+  "ex": "اتصلت أخيرًا! أن تأتي متأخرًا خير من ألّا تأتي.",
+  "extr": "ittasalta akhiiran! an ta2tiya muta2akhkhiran khayr min allaa ta2tii."
+ },
+ {
+  "id": "ENG_CHUNK_0589",
+  "t": "سهلة جدًا / لعب أولاد",
+  "tr": "sahla jiddan / la3ib awlaad",
+  "ex": "لا تقلق بشأن الامتحان، إنّه سهل جدًا.",
+  "extr": "laa taqlaq bi-sha2n al-imti7aan, innahu sahl jiddan.",
+  "n": "Levantine: سهلة كتير / متل شربة المي (mitl shirbet il-mayy)."
+ },
+ {
+  "id": "ENG_CHUNK_0590",
+  "t": "ألم أقل لك؟",
+  "tr": "a-lam aqul lak?",
+  "ex": "المطعم كان مغلقًا؟ ألم أقل لك؟",
+  "extr": "al-mat3am kaana mughlaqan? a-lam aqul lak?",
+  "n": "Levantine: مش قلتلك؟ (mish 2ilitlak?)"
+ },
+ {
+  "id": "ENG_CHUNK_0591",
+  "t": "وإلّا",
+  "tr": "wa-illaa",
+  "ex": "اخرج الآن، وإلّا ستعلق في الزحمة.",
+  "extr": "ukhruj al-aan, wa-illaa sa-ta3laq fii az-za7ma.",
+  "n": "Levantine: وإلّا بتعلق بالعجقة."
+ },
+ {
+  "id": "ENG_CHUNK_0592",
+  "t": "تمامًا مثل [noun]",
+  "tr": "tamaaman mithl [noun]",
+  "ex": "تشبه أمها تمامًا.",
+  "extr": "tushbih ummahaa tamaaman.",
+  "n": "Levantine: طالعة لإمها (taal3a la-emma) = takes after her mum."
+ },
+ {
+  "id": "ENG_CHUNK_0593",
+  "t": "مقارنةً بـ[noun]",
+  "tr": "muqaaranatan bi-[noun]",
+  "ex": "مقارنةً بالشتاء الماضي، هذا الشتاء معتدل نوعًا ما.",
+  "extr": "muqaaranatan bish-shitaa2 al-maadii, haadhaa ash-shitaa2 mu3tadil naw3an maa.",
+  "n": "Levantine: إذا قارنّا بالشتوية الماضية (ish-shatwiyye)."
+ },
+ {
+  "id": "ENG_CHUNK_0594",
+  "t": "في الوقت الحالي / حاليًا",
+  "tr": "fii al-waqt al-7aalii / 7aaliyyan",
+  "ex": "لنتركها هكذا في الوقت الحالي.",
+  "extr": "li-natrukhaa haakadhaa fii al-waqt al-7aalii.",
+  "n": "Levantine: هلّق خلّيها هيك (halla2 khalliiha heik)."
+ },
+ {
+  "id": "ENG_CHUNK_0595",
+  "t": "من أجل أن [verb] / لكي [verb]",
+  "tr": "min ajl an [verb] / likay [verb]",
+  "ex": "أستيقظ الساعة الخامسة من أجل أن أتجنّب الزحمة.",
+  "extr": "astayqiz as-saa3a al-khaamisa min ajl an atajannaba az-za7ma.",
+  "n": "Levantine: عشان (3ashaan)."
+ },
+ {
+  "id": "ENG_CHUNK_0596",
+  "t": "مهما حدث",
+  "tr": "mahmaa 7adath",
+  "ex": "سأكون هناك مهما حدث.",
+  "extr": "sa-akuun hunaak mahmaa 7adath.",
+  "n": "Levantine: شو ما صار (shu ma saar)."
+ },
+ {
+  "id": "ENG_CHUNK_0597",
+  "t": "فقط إذا [clause] / بشرط أن [clause]",
+  "tr": "faqat idhaa [clause] / bi-shart an [clause]",
+  "ex": "سآتي، لكن فقط إذا كنت أنت من سيقود.",
+  "extr": "sa-aatii, laakin faqat idhaa kunta anta man sa-yaquud.",
+  "n": "Levantine: بس إذا إنت سايق (bass iza inte saayi2)."
+ },
+ {
+  "id": "ENG_CHUNK_0598",
+  "t": "ونتيجة لذلك",
+  "tr": "wa-natiijatan li-dhaalik",
+  "ex": "أُلغيت رحلتنا، ونتيجة لذلك نمنا في المطار.",
+  "extr": "ulghiyat ri7latunaa, wa-natiijatan li-dhaalik nimnaa fii al-mataar.",
+  "n": "Levantine: فـ / وهيك (w-heik): فنمنا بالمطار."
+ },
+ {
+  "id": "ENG_CHUNK_0599",
+  "t": "بعد فترة",
+  "tr": "ba3da fatra",
+  "ex": "كان الأمر غريبًا في البداية، لكن بعد فترة تعوّدت عليه.",
+  "extr": "kaana al-amr ghariiban fii al-bidaaya, laakin ba3da fatra ta3awwadtu 3alayh.",
+  "n": "Levantine: بعد شوي (ba3d shwayy)."
+ },
+ {
+  "id": "ENG_CHUNK_0600",
+  "t": "عاجلًا أم آجلًا",
+  "tr": "3aajilan am aajilan",
+  "ex": "عاجلًا أم آجلًا، ستضطرّ إلى أن تخبره.",
+  "extr": "3aajilan am aajilan, sa-tadtarru ilaa an tukhbirah.",
+  "n": "Levantine: اليوم أو بكرا (il-yoom aw bukra), لازم تقلّه."
+ }
+]

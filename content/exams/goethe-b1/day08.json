@@ -1,0 +1,862 @@
+{
+  "day": 8,
+  "topic": "Freizeit, Sport und Hobbys",
+  "lesen": {
+    "teil1": {
+      "title": "Mein erster Halbmarathon",
+      "source": "Blog",
+      "text": "Vor acht Monaten hat mein Arzt zu mir gesagt: „Herr Winter, Sie müssen sich mehr bewegen.“ Ich war 38, saß den ganzen Tag im Büro und hatte seit der Schulzeit keinen Sport mehr gemacht. Am nächsten Tag habe ich mich in einer Laufgruppe angemeldet, die sich dienstags und donnerstags um 19 Uhr im Stadtpark trifft. Beim ersten Training habe ich nach drei Kilometern aufgegeben. Ich konnte kaum noch atmen, und die anderen sind einfach weitergelaufen.\n\nZum Glück war unsere Trainerin Britta sehr geduldig. Sie hat mir erklärt, dass ich viel zu schnell anfange. „Wer langsam läuft, der kommt weiter“, hat sie gesagt. Nach vier Wochen habe ich meine ersten fünf Kilometer geschafft, nach drei Monaten zehn. Irgendwann hat Britta gefragt, ob ich beim Halbmarathon in Hannover mitlaufen möchte. Ich habe erst gelacht und dann Ja gesagt.\n\nLetzten Sonntag war es so weit. Mein Ziel war, die 21 Kilometer in unter zwei Stunden und fünfzehn Minuten zu laufen. Die ersten zehn Kilometer liefen gut, aber bei Kilometer 15 wollte ich aufhören. Meine Beine taten weh, und ich hatte plötzlich große Zweifel. Ein älterer Läufer neben mir hat das gemerkt und gesagt: „Komm, wir laufen die letzten Kilometer zusammen.“ Ohne ihn hätte ich es nicht geschafft. Am Ende standen zwei Stunden und zwölf Minuten auf der Uhr, und meine Eltern haben im Ziel geweint.\n\nViele fragen mich jetzt, wann ich einen Marathon laufe. Die Antwort ist: gar nicht, zumindest nicht in diesem Jahr. Ich möchte lieber die zehn Kilometer schneller laufen. Und ich habe noch etwas gemerkt: Seit ich laufe, trinke ich fast keinen Alkohol mehr und schlafe viel besser. Das war die beste Entscheidung seit Jahren – auch wenn die neuen Laufschuhe 140 Euro gekostet haben.",
+      "items": [
+        {
+          "id": "L1-1",
+          "statement": "Der Autor hat mit dem Laufen angefangen, weil sein Arzt es ihm empfohlen hat.",
+          "answer": true,
+          "skill": "paraphrase"
+        },
+        {
+          "id": "L1-2",
+          "statement": "Die Laufgruppe trifft sich einmal pro Woche.",
+          "answer": false,
+          "skill": "number-time"
+        },
+        {
+          "id": "L1-3",
+          "statement": "Beim ersten Training konnte der Autor problemlos mitlaufen.",
+          "answer": false,
+          "skill": "detail"
+        },
+        {
+          "id": "L1-4",
+          "statement": "Der Autor hat sein Zeitziel beim Halbmarathon erreicht.",
+          "answer": true,
+          "skill": "inference"
+        },
+        {
+          "id": "L1-5",
+          "statement": "Bei Kilometer 15 hat ihm ein anderer Läufer geholfen.",
+          "answer": true,
+          "skill": "detail"
+        },
+        {
+          "id": "L1-6",
+          "statement": "Als Nächstes möchte der Autor einen Marathon laufen.",
+          "answer": false,
+          "skill": "negation"
+        }
+      ]
+    },
+    "teil2": {
+      "texts": [
+        {
+          "title": "Schach ist wieder cool",
+          "source": "Zeitung",
+          "text": "Dienstagabend im Vereinsheim des Schachclubs Bielefeld: An zwanzig Tischen wird konzentriert geschwiegen. Was auffällt: Die meisten Spieler sind unter 25. Vor zwei Jahren hatte der Club 80 Mitglieder, heute sind es 160. „Früher lag das Durchschnittsalter bei sechzig“, sagt der Vorsitzende Rainer Lutz, 67. „Jetzt kommen Schüler, Studenten, sogar ganze Freundesgruppen.“\n\nDer Grund für den neuen Trend liegt im Internet. Auf Online-Plattformen kann man rund um die Uhr gegen Menschen aus der ganzen Welt spielen, und eine erfolgreiche Fernsehserie über eine junge Schachspielerin hat das Spiel zusätzlich bekannt gemacht. „Die Jugendlichen lernen die Regeln online und wollen dann gegen echte Menschen spielen“, erklärt Lutz. „Das ist etwas ganz anderes als am Bildschirm.“\n\nDer Club reagiert auf die neuen Mitglieder mit neuen Angeboten. Freitags trifft man sich nicht im Vereinsheim, sondern in einer Bar in der Innenstadt zum Blitzschach: fünf Minuten pro Spieler und Partie, dazu Musik und Getränke. Die Grundschullehrerin Nina Kaya hat außerdem eine Schach-AG an ihrer Schule gegründet. „Die Kinder lernen, vor einer Entscheidung nachzudenken“, sagt sie. „Das hilft ihnen auch in Mathe.“ Ein Problem hat der Club allerdings: Das Vereinsheim wird langsam zu klein.",
+          "items": [
+            {
+              "id": "L2-1",
+              "question": "Der Schachclub in Bielefeld …",
+              "options": [
+                "hat heute doppelt so viele Mitglieder wie vor zwei Jahren.",
+                "hat vor allem Mitglieder über sechzig.",
+                "wurde vor zwei Jahren gegründet."
+              ],
+              "answer": 0,
+              "skill": "number-time"
+            },
+            {
+              "id": "L2-2",
+              "question": "Warum interessieren sich junge Leute wieder für Schach?",
+              "options": [
+                "Weil es in der Schule ein Pflichtfach ist.",
+                "Weil sie das Spiel im Internet und im Fernsehen kennengelernt haben.",
+                "Weil der Club keine Beiträge verlangt."
+              ],
+              "answer": 1,
+              "skill": "paraphrase"
+            },
+            {
+              "id": "L2-3",
+              "question": "Am Freitagabend …",
+              "options": [
+                "trifft sich der Club im Vereinsheim.",
+                "gibt es ein Turnier für Grundschulkinder.",
+                "spielen die Mitglieder in einer Bar."
+              ],
+              "answer": 2,
+              "skill": "detail"
+            }
+          ]
+        },
+        {
+          "title": "Klettern in der alten Fabrik",
+          "source": "Zeitschrift",
+          "text": "Wo früher Stoffe gewebt wurden, hängen heute bunte Griffe an den Wänden. In einer alten Textilfabrik in Chemnitz hat vor einem Jahr eine Boulderhalle eröffnet. Bouldern heißt Klettern ohne Seil – die Wände sind höchstens vier Meter hoch, und wer fällt, landet auf dicken Matten. „Man braucht keine teure Ausrüstung, nur Kletterschuhe, und die kann man bei uns für vier Euro leihen“, sagt Sarah Winkler, 35, die die Halle betreibt. Vorher hat sie zehn Jahre lang als Sportlehrerin gearbeitet.\n\nAm Wochenende kommen bis zu dreihundert Besucher am Tag. Mittwochabends gibt es einen Kurs für Anfänger, der oft schon Wochen vorher ausgebucht ist. „Viele kommen allein und finden hier neue Freunde“, sagt Winkler. „Beim Bouldern redet man automatisch miteinander, weil man sich gegenseitig Tipps gibt.“\n\nJonas, 28, kommt dreimal pro Woche direkt nach der Arbeit. „Wenn ich an der Wand hänge, denke ich an nichts anderes. Der ganze Stress vom Büro ist weg.“ Nur der Preis ist ein Thema: Eine Tageskarte kostet vierzehn Euro. Studenten und Schüler zahlen die Hälfte, und wer eine Jahreskarte kauft, spart noch einmal deutlich. Ende des Jahres will Winkler die Halle vergrößern, denn samstags muss man manchmal warten, bis eine Wand frei ist.",
+          "items": [
+            {
+              "id": "L2-4",
+              "question": "Beim Bouldern …",
+              "options": [
+                "klettert man mit einem Seil.",
+                "braucht man viel eigene Ausrüstung.",
+                "klettert man ohne Seil in geringer Höhe."
+              ],
+              "answer": 2,
+              "skill": "paraphrase"
+            },
+            {
+              "id": "L2-5",
+              "question": "Sarah Winkler …",
+              "options": [
+                "hat früher als Sportlehrerin gearbeitet.",
+                "hat die Fabrik vor zehn Jahren gekauft.",
+                "gibt jeden Mittwoch den Anfängerkurs."
+              ],
+              "answer": 0,
+              "skill": "detail"
+            },
+            {
+              "id": "L2-6",
+              "question": "Jonas …",
+              "options": [
+                "findet die Tageskarte zu teuer.",
+                "geht nur am Wochenende klettern.",
+                "kann beim Klettern den Alltag vergessen."
+              ],
+              "answer": 2,
+              "skill": "paraphrase"
+            }
+          ]
+        }
+      ]
+    },
+    "teil3": {
+      "intro": "Einige Personen aus Ihrem Deutschkurs suchen Angebote für ihre Freizeit. Lesen Sie die Situationen 1–7 und die Anzeigen A–J. Welche Anzeige passt zu welcher Situation? Eine Anzeige kann nur einmal gewählt werden. Für eine Situation gibt es keine passende Anzeige – markieren Sie dort 0.",
+      "situations": [
+        {
+          "id": "L3-1",
+          "text": "Elena möchte ein Musikinstrument lernen, hat aber noch nie Musik gemacht.",
+          "answer": "B",
+          "skill": "matching"
+        },
+        {
+          "id": "L3-2",
+          "text": "Familie Nowak sucht für Sonntag einen Ausflug, bei dem die Kinder (5 und 8) Tiere sehen können.",
+          "answer": "F",
+          "skill": "matching"
+        },
+        {
+          "id": "L3-3",
+          "text": "Martin (70) sucht einen Sportkurs für ältere Menschen, der nicht zu anstrengend ist.",
+          "answer": "D",
+          "skill": "matching"
+        },
+        {
+          "id": "L3-4",
+          "text": "Sara möchte am Wochenende mit ihrem Hund wandern, aber nicht allein.",
+          "answer": "H",
+          "skill": "matching"
+        },
+        {
+          "id": "L3-5",
+          "text": "Kemal möchte in einer Mannschaft Fußball spielen, aber nur zum Spaß, ohne Wettkämpfe.",
+          "answer": "A",
+          "skill": "matching"
+        },
+        {
+          "id": "L3-6",
+          "text": "Nadine arbeitet samstags nicht und möchte an diesem Tag draußen Yoga machen.",
+          "answer": null,
+          "skill": "matching"
+        },
+        {
+          "id": "L3-7",
+          "text": "Anna sucht einen Tanzkurs, den sie mit ihrem Freund abends nach der Arbeit besuchen kann.",
+          "answer": "J",
+          "skill": "matching"
+        }
+      ],
+      "ads": [
+        {
+          "letter": "A",
+          "title": "Hobbykicker gesucht",
+          "text": "Wir sind eine Gruppe von Männern und Frauen zwischen 25 und 50 und kicken jeden Mittwoch um 19 Uhr auf dem Platz an der Waldschule. Kein Verein, keine Liga, kein Stress – nur Spaß am Ball. Einfach vorbeikommen!"
+        },
+        {
+          "letter": "B",
+          "title": "Gitarre für absolute Anfänger",
+          "text": "Sie haben noch nie ein Instrument in der Hand gehabt? Perfekt! In zehn Wochen spielen Sie Ihre ersten Lieder. Kleine Gruppen, Leihgitarren vorhanden. Montags 18:30 Uhr, Musikschule am Markt, 120 €."
+        },
+        {
+          "letter": "C",
+          "title": "Kochkurs: Pasta wie in Italien",
+          "text": "Nudeln selbst machen, drei Saucen, ein Dessert – und dann gemeinsam essen. Samstag, 17–21 Uhr, Kochstudio Löffel & Gabel. 65 € inkl. Zutaten und Wein. Max. 12 Personen."
+        },
+        {
+          "letter": "D",
+          "title": "Fit ab 60 – Gymnastik im Wasser",
+          "text": "Sanfte Bewegung für Gelenke und Rücken, ohne Druck und ohne Leistung. Dienstag und Freitag, 10 Uhr, Hallenbad Nord. Schwimmen können ist nicht nötig. 8 € pro Termin, erste Stunde gratis."
+        },
+        {
+          "letter": "E",
+          "title": "Yoga im Park",
+          "text": "Jeden Sonntagmorgen um 9 Uhr auf der Wiese hinter dem Rosengarten. Für alle Levels, eigene Matte mitbringen. Bei Regen fällt der Kurs aus. 8 € pro Stunde, Zehnerkarte 60 €."
+        },
+        {
+          "letter": "F",
+          "title": "Familientag auf dem Erlebnisbauernhof",
+          "text": "Kühe melken, Ziegen füttern, Ponyreiten – jeden Sonntag von 10 bis 17 Uhr auf Hof Lindenberg. Für Kinder von 3 bis 12 Jahren. Eintritt: Erwachsene 6 €, Kinder 3 €. Traktorfahrt um 14 Uhr."
+        },
+        {
+          "letter": "G",
+          "title": "Chor sucht neue Stimmen",
+          "text": "Der Chor „Stimmwerk“ singt Pop und Gospel und sucht Sängerinnen und Sänger. Notenkenntnisse nicht erforderlich. Probe donnerstags 19:30 Uhr im Gemeindehaus. Erste drei Proben kostenlos."
+        },
+        {
+          "letter": "H",
+          "title": "Wandern mit Hund",
+          "text": "Unsere Gruppe wandert jeden zweiten Samstag 10–15 km durch Wald und Feld – mit unseren Vierbeinern. Alle Hunde willkommen, wenn sie verträglich sind. Treffpunkt und Route jeweils per WhatsApp. Kontakt: 0176 / 22 33 44 55."
+        },
+        {
+          "letter": "I",
+          "title": "Modellbahn-Börse",
+          "text": "Kaufen, verkaufen, tauschen: Lokomotiven, Wagen, Zubehör aller Marken. Sonntag 10–16 Uhr, Stadthalle, Eintritt 4 €. Kinder bis 14 frei. Mit großer Spielanlage für die kleinen Besucher."
+        },
+        {
+          "letter": "J",
+          "title": "Tanzkurs für Paare",
+          "text": "Walzer, Discofox, Salsa – lernen Sie mit Ihrem Partner die wichtigsten Tänze. Dienstags 20–21:30 Uhr, acht Abende, Tanzschule Bella. 160 € pro Paar. Auch für Berufstätige gut zu erreichen, direkt am Bahnhof."
+        }
+      ]
+    },
+    "teil4": {
+      "question": "Sollte es im Schulfach Sport Noten geben?",
+      "comments": [
+        {
+          "id": "L4-1",
+          "author": "Sandra, Mainz",
+          "text": "Mein Sohn hasst Sport, seit er in der fünften Klasse eine Vier bekommen hat. Vorher ist er gern Fahrrad gefahren, jetzt sitzt er nur noch drinnen. Noten machen die Freude an der Bewegung kaputt.",
+          "answer": false,
+          "skill": "attitude"
+        },
+        {
+          "id": "L4-2",
+          "author": "Tarek, Essen",
+          "text": "Ich bin Sportlehrer. Meine Note bewertet nicht, wer am schnellsten läuft, sondern wer sich anstrengt und Fortschritte macht. Ohne Note würde die Hälfte der Klasse nur noch auf der Bank sitzen.",
+          "answer": true,
+          "skill": "attitude"
+        },
+        {
+          "id": "L4-3",
+          "author": "Lisa, Bonn",
+          "text": "Ich war in der Schule immer die Langsamste und hatte nie etwas Besseres als eine Vier. So ungern ich es zugebe: In Musik und Kunst gibt es auch Noten, und niemand regt sich auf. Warum sollte Sport eine Ausnahme sein?",
+          "answer": true,
+          "skill": "inference"
+        },
+        {
+          "id": "L4-4",
+          "author": "Michael, Kiel",
+          "text": "Bewegung ist für die Gesundheit genauso wichtig wie Mathe für den Beruf. Wenn Sport keine Note hat, nimmt ihn niemand ernst – weder die Schüler noch die Eltern noch die Schule selbst.",
+          "answer": true,
+          "skill": "attitude"
+        },
+        {
+          "id": "L4-5",
+          "author": "Yasemin, Ulm",
+          "text": "Kinder sind so unterschiedlich: groß, klein, dick, dünn. Wer mit zwölf schon aussieht wie sechzehn, bekommt automatisch die bessere Note. Das ist ungerecht. Wenn überhaupt, dann sollte im Zeugnis nur „teilgenommen“ stehen.",
+          "answer": false,
+          "skill": "attitude"
+        },
+        {
+          "id": "L4-6",
+          "author": "Frank, Leipzig",
+          "text": "Ich war früher Leistungssportler und hatte immer eine Eins. Mir hat die Note nichts gebracht, ich war sowieso gut. Für die anderen war sie jede Woche eine Strafe. Die Note kann weg, der Sport soll bleiben.",
+          "answer": false,
+          "skill": "inference"
+        },
+        {
+          "id": "L4-7",
+          "author": "Petra, Erfurt",
+          "text": "In der Oberstufe kann man Musik ohne Note wählen, und was passiert? Die Schüler kommen zu spät oder gar nicht. Genau das würde mit dem Sportunterricht passieren. Noten sind nicht schön, aber sie funktionieren.",
+          "answer": true,
+          "skill": "attitude"
+        }
+      ]
+    },
+    "teil5": {
+      "title": "Hausordnung – Freizeitbad „Wellenreiter“",
+      "text": "§ 1 Öffnungszeiten und Eintritt\nDas Bad ist Montag bis Freitag von 6 bis 22 Uhr und am Wochenende von 8 bis 20 Uhr geöffnet. Die Kasse schließt jeweils eine Stunde vor Ende der Öffnungszeit. Kinder unter acht Jahren dürfen das Bad nur in Begleitung eines Erwachsenen besuchen. Die Familienkarte gilt für zwei Erwachsene und bis zu drei Kinder.\n\n§ 2 Umkleiden und Schränke\nDie Schränke werden mit dem Chip am Eintrittsband geschlossen. Bei Verlust des Chips wird eine Gebühr von 15 € berechnet. Für Wertsachen stehen an der Kasse kleine Safes zur Verfügung. Das Bad haftet nicht für Gegenstände in den Schränken.\n\n§ 3 Sicherheit\nDie Rutsche darf nur einzeln benutzt werden; die Mindestgröße beträgt 1,20 m. Das Springen vom Beckenrand ist verboten. Der Sprungturm ist nur geöffnet, wenn der Bademeister ihn per Durchsage freigibt. Nichtschwimmer dürfen sich nur im Nichtschwimmerbecken aufhalten.\n\n§ 4 Sauna\nDie Sauna kann ab 16 Jahren besucht werden. In der Sauna ist ein Handtuch als Unterlage Pflicht. Dienstags ist die Sauna von 9 bis 14 Uhr nur für Frauen geöffnet.\n\n§ 5 Essen, Trinken und Rauchen\nEssen ist nur im Restaurant und auf der Liegewiese erlaubt. Glasflaschen sind im gesamten Bad verboten. Rauchen ist nur außerhalb des Gebäudes auf dem markierten Platz gestattet.",
+      "items": [
+        {
+          "id": "L5-1",
+          "question": "Am Samstag …",
+          "options": [
+            "schließt das Bad um 22 Uhr.",
+            "kann man bis 19 Uhr Eintrittskarten kaufen.",
+            "ist das Bad ab 6 Uhr geöffnet."
+          ],
+          "answer": 1,
+          "skill": "number-time"
+        },
+        {
+          "id": "L5-2",
+          "question": "Wer den Chip für den Schrank verliert, …",
+          "options": [
+            "muss 15 Euro bezahlen.",
+            "bekommt an der Kasse kostenlos einen neuen.",
+            "muss den Safe benutzen."
+          ],
+          "answer": 0,
+          "skill": "detail"
+        },
+        {
+          "id": "L5-3",
+          "question": "Den Sprungturm darf man benutzen, …",
+          "options": [
+            "wenn man größer als 1,20 m ist.",
+            "jederzeit, wenn man schwimmen kann.",
+            "nur wenn der Bademeister ihn freigibt."
+          ],
+          "answer": 2,
+          "skill": "detail"
+        },
+        {
+          "id": "L5-4",
+          "question": "In der Sauna …",
+          "options": [
+            "dürfen Kinder ab zwölf Jahren allein sein.",
+            "muss man ein Handtuch benutzen.",
+            "ist dienstags geschlossen."
+          ],
+          "answer": 1,
+          "skill": "paraphrase"
+        }
+      ]
+    }
+  },
+  "hoeren": {
+    "teil1": {
+      "texts": [
+        {
+          "id": "H1-1",
+          "kind": "Anrufbeantworter",
+          "script": [
+            {
+              "speaker": "f2",
+              "text": "Guten Tag, Herr Nowak, hier ist Bettina Seidel vom Tennisclub Grün-Weiß. Sie hatten sich für unseren Schnupperkurs am Samstag angemeldet. Leider müssen wir die Uhrzeit ändern: Der Kurs beginnt nicht um zehn, sondern erst um vierzehn Uhr, weil am Vormittag der Platz repariert wird. Bitte bringen Sie Sportschuhe mit flacher Sohle mit, sonst dürfen Sie den Platz nicht betreten. Einen Schläger brauchen Sie nicht, den bekommen Sie von uns. Der Kurs kostet fünf Euro, das zahlen Sie bitte bar vor Ort. Sie müssen nicht zurückrufen – nur, wenn Sie doch nicht kommen können. Bis Samstag!"
+            }
+          ],
+          "items": [
+            {
+              "id": "H1-1a",
+              "type": "rf",
+              "statement": "Der Schnupperkurs beginnt am Samstag um zehn Uhr.",
+              "answer": false,
+              "skill": "number-time"
+            },
+            {
+              "id": "H1-1b",
+              "type": "mc",
+              "question": "Herr Nowak soll …",
+              "options": [
+                "einen Schläger mitbringen.",
+                "Schuhe mit flacher Sohle mitbringen.",
+                "vorher anrufen, wenn er kommt."
+              ],
+              "answer": 1,
+              "skill": "detail"
+            }
+          ]
+        },
+        {
+          "id": "H1-2",
+          "kind": "Radio",
+          "script": [
+            {
+              "speaker": "m3",
+              "text": "Und hier noch ein Hinweis für alle Läuferinnen und Läufer: Am Sonntag findet der zwanzigste Stadtlauf statt. Start ist um neun Uhr vor dem Rathaus, Sie können zwischen fünf und zehn Kilometern wählen. Anmelden können Sie sich noch bis Freitag im Internet. Wer das verpasst, kann sich auch noch am Sonntag vor dem Start anmelden, zahlt dann aber fünf Euro mehr. Die Startnummern gibt es am Samstag von vierzehn bis achtzehn Uhr in der Stadthalle oder am Sonntag ab sieben Uhr direkt am Start. Autofahrer bitte beachten: Die Innenstadt ist am Sonntag von acht bis zwölf Uhr gesperrt."
+            }
+          ],
+          "items": [
+            {
+              "id": "H1-2a",
+              "type": "rf",
+              "statement": "Am Sonntag kann man sich nicht mehr anmelden.",
+              "answer": false,
+              "skill": "negation"
+            },
+            {
+              "id": "H1-2b",
+              "type": "mc",
+              "question": "Die Startnummer …",
+              "options": [
+                "bekommt man per Post.",
+                "gibt es nur am Sonntag.",
+                "kann man am Samstag in der Stadthalle abholen."
+              ],
+              "answer": 2,
+              "skill": "detail"
+            }
+          ]
+        },
+        {
+          "id": "H1-3",
+          "kind": "Durchsage",
+          "script": [
+            {
+              "speaker": "m1",
+              "text": "Liebe Fußballfreunde, herzlich willkommen im Waldstadion! Eine wichtige Information: Der Bus der Gastmannschaft steht im Stau auf der Autobahn, deshalb beginnt das Spiel nicht um fünfzehn Uhr, sondern erst um halb vier. Nutzen Sie die Zeit und besuchen Sie unsere Getränkestände hinter Block C. Bitte beachten Sie, dass Regenschirme im Stadion nicht erlaubt sind – Sie können sie kostenlos an der Garderobe am Eingang Nord abgeben. Nach dem Spiel fahren zusätzliche Züge vom Bahnhof Stadion in die Innenstadt, alle zehn Minuten. Wir wünschen Ihnen ein spannendes Spiel!"
+            }
+          ],
+          "items": [
+            {
+              "id": "H1-3a",
+              "type": "rf",
+              "statement": "Das Spiel beginnt später als geplant.",
+              "answer": true,
+              "skill": "number-time"
+            },
+            {
+              "id": "H1-3b",
+              "type": "mc",
+              "question": "Nach dem Spiel …",
+              "options": [
+                "fahren zusätzliche Züge.",
+                "sind die Parkplätze gesperrt.",
+                "fahren keine Busse."
+              ],
+              "answer": 0,
+              "skill": "detail"
+            }
+          ]
+        },
+        {
+          "id": "H1-4",
+          "kind": "Anrufbeantworter",
+          "script": [
+            {
+              "speaker": "ch_f",
+              "text": "Hallo Sabine, hier ist Leni. Es geht um unsere Wanderung. Für Sonntag ist den ganzen Tag Regen angesagt, deshalb machen wir sie schon am Samstag. Wir treffen uns um Viertel nach acht am Bahnhof, der Zug fährt um acht Uhr einunddreißig. Und noch eine Änderung: Die Bergtour lassen wir weg, die Wege sind nach dem Regen der letzten Tage zu nass. Wir gehen stattdessen den Weg um den See, das sind zwölf Kilometer und fast alles flach. Nimm eine Regenjacke mit, sicher ist sicher, und etwas zu essen für ein Picknick. Die Karte habe ich. Bis Samstag!"
+            }
+          ],
+          "items": [
+            {
+              "id": "H1-4a",
+              "type": "rf",
+              "statement": "Die Wanderung findet jetzt am Samstag statt.",
+              "answer": true,
+              "skill": "number-time"
+            },
+            {
+              "id": "H1-4b",
+              "type": "mc",
+              "question": "Die Gruppe …",
+              "options": [
+                "macht die Bergtour.",
+                "wandert um den See.",
+                "fährt mit dem Bus."
+              ],
+              "answer": 1,
+              "skill": "detail"
+            }
+          ]
+        },
+        {
+          "id": "H1-5",
+          "kind": "Werbung",
+          "script": [
+            {
+              "speaker": "f1",
+              "text": "Der Sommer kommt – und Sie? Werden Sie fit mit Fitness Vital! Wer sich bis Ende Juni anmeldet, zahlt keine Anmeldegebühr und spart damit fünfzig Euro. Bei uns trainieren Sie rund um die Uhr, sieben Tage die Woche. Alle Kurse sind im Preis enthalten: Yoga, Spinning, Zumba und vieles mehr. Sie sind noch unsicher? Dann kommen Sie zu einem kostenlosen Probetraining. Einfach online oder telefonisch einen Termin vereinbaren. Fitness Vital – dreimal in Ihrer Stadt. Wir freuen uns auf Sie!"
+            }
+          ],
+          "items": [
+            {
+              "id": "H1-5a",
+              "type": "rf",
+              "statement": "Das Probetraining ist kostenlos.",
+              "answer": true,
+              "skill": "paraphrase"
+            },
+            {
+              "id": "H1-5b",
+              "type": "mc",
+              "question": "Wer sich bis Ende Juni anmeldet, …",
+              "options": [
+                "zahlt keine Anmeldegebühr.",
+                "bekommt ein Handtuch geschenkt.",
+                "muss nur einen Monat bezahlen."
+              ],
+              "answer": 0,
+              "skill": "number-time"
+            }
+          ]
+        }
+      ]
+    },
+    "teil2": {
+      "setting": "Sie sind neues Mitglied in einem Ruderverein und hören die Begrüßung durch den Trainer.",
+      "script": [
+        {
+          "speaker": "m2",
+          "text": "Guten Abend und herzlich willkommen beim Ruderverein Neptun! Mein Name ist Jörg Hansen, ich bin hier Trainer für die Anfänger. Schön, dass Sie da sind. Unser Verein wurde 1923 gegründet und hat heute rund vierhundert Mitglieder. Bevor wir aufs Wasser gehen, gibt es ein paar Dinge, die Sie wissen müssen. Der Anfängerkurs findet zweimal pro Woche statt, montags und mittwochs um achtzehn Uhr, und er dauert acht Wochen. In dieser Zeit lernen Sie alles, was Sie brauchen, um allein mit dem Boot fahren zu dürfen. Ganz wichtig: Wer bei uns rudert, muss schwimmen können. Bitte bringen Sie zur nächsten Stunde einen Nachweis mit, dass Sie mindestens fünfzehn Minuten am Stück schwimmen können. Das kann ein Schwimmabzeichen sein oder eine Bescheinigung vom Schwimmbad. Ohne diesen Nachweis dürfen wir Sie leider nicht ins Boot lassen. In den ersten Wochen tragen alle Anfänger eine Rettungsweste, das ist keine Frage des Könnens, sondern eine Regel. Im Bootshaus gilt: Bevor Sie mit einem Boot losfahren, tragen Sie sich ins Fahrtenbuch ein, mit Namen, Bootsnummer und Uhrzeit. Wenn Sie zurückkommen, tragen Sie sich wieder aus. So wissen wir immer, wer auf dem Wasser ist. Die Boote werden nach jeder Fahrt abgespült und ins Regal gelegt. Von November bis März rudern wir nicht auf dem Fluss, weil das Wasser zu kalt ist. Dann trainieren wir in der Halle auf den Ruder-Ergometern. Zum Beitrag: Er liegt bei fünfundzwanzig Euro im Monat, Studenten und Schüler zahlen fünfzehn. Nach drei Monaten bekommen Sie einen eigenen Schlüssel zum Bootshaus, dafür zahlen Sie zwanzig Euro Pfand, die Sie beim Austritt zurückbekommen. Übrigens: Am zwölften Juli feiern wir unser Sommerfest mit einer kleinen Regatta, da können Sie schon mitmachen. Die Umkleiden sind im ersten Stock, Getränke gibt es am Automaten neben der Tür. Wenn Sie Fragen haben, sprechen Sie mich einfach an. So, und jetzt schauen wir uns die Boote an."
+        }
+      ],
+      "items": [
+        {
+          "id": "H2-1",
+          "question": "Der Anfängerkurs …",
+          "options": [
+            "findet zweimal pro Woche statt.",
+            "dauert acht Monate.",
+            "beginnt um siebzehn Uhr."
+          ],
+          "answer": 0,
+          "skill": "number-time"
+        },
+        {
+          "id": "H2-2",
+          "question": "Wer rudern will, …",
+          "options": [
+            "muss einen eigenen Schwimmkurs machen.",
+            "muss nachweisen, dass er schwimmen kann.",
+            "muss älter als achtzehn sein."
+          ],
+          "answer": 1,
+          "skill": "paraphrase"
+        },
+        {
+          "id": "H2-3",
+          "question": "Bevor man mit dem Boot losfährt, …",
+          "options": [
+            "muss man den Trainer anrufen.",
+            "muss man das Boot abspülen.",
+            "muss man sich ins Fahrtenbuch eintragen."
+          ],
+          "answer": 2,
+          "skill": "detail"
+        },
+        {
+          "id": "H2-4",
+          "question": "Im Winter …",
+          "options": [
+            "ist der Verein geschlossen.",
+            "rudert man nur am Wochenende.",
+            "trainiert man in der Halle."
+          ],
+          "answer": 2,
+          "skill": "detail"
+        },
+        {
+          "id": "H2-5",
+          "question": "Den Schlüssel zum Bootshaus …",
+          "options": [
+            "bekommt jedes Mitglied sofort.",
+            "bekommt man nach drei Monaten gegen Pfand.",
+            "gibt es nur für Trainer."
+          ],
+          "answer": 1,
+          "skill": "number-time"
+        }
+      ]
+    },
+    "teil3": {
+      "setting": "Sie hören ein Gespräch zwischen zwei Freunden, die eine Geburtstagsfeier planen.",
+      "script": [
+        {
+          "speaker": "f1",
+          "text": "Hey Jonas, hast du dir schon überlegt, was du an deinem Geburtstag machen willst? Das ist ja schon in zwei Wochen."
+        },
+        {
+          "speaker": "m2",
+          "text": "Hallo Mia. Ja, ich habe ein paar Ideen, aber ich kann mich nicht entscheiden. Wir sind ungefähr acht Leute. Ich hätte Lust auf etwas draußen, nicht schon wieder Restaurant."
+        },
+        {
+          "speaker": "f1",
+          "text": "Wie wäre es mit einer Kanutour auf der Lahn? Ich habe das letztes Jahr gemacht. Drei Stunden auf dem Wasser, fünfundzwanzig Euro pro Person, das Boot ist inklusive."
+        },
+        {
+          "speaker": "m2",
+          "text": "Kanu … Hm. Ich muss dir was gestehen: Ich kann nicht besonders gut schwimmen und habe ein bisschen Angst vor tiefem Wasser."
+        },
+        {
+          "speaker": "f1",
+          "text": "Das ist kein Problem, alle bekommen eine Rettungsweste, und die Lahn ist dort ganz ruhig und nicht tief. Man sitzt zu zweit im Boot, du kannst mit mir fahren."
+        },
+        {
+          "speaker": "m2",
+          "text": "Okay, das beruhigt mich. Was wäre die Alternative? Ich dachte an einen Escape Room."
+        },
+        {
+          "speaker": "f1",
+          "text": "Der ist auch gut, aber da passen nur sechs Leute in einen Raum. Bei acht müssten wir zwei Gruppen machen, und dann feiert man ja nicht zusammen."
+        },
+        {
+          "speaker": "m2",
+          "text": "Stimmt, das wäre blöd. Dann lieber die Kanutour. Wann könnten wir das machen? Samstag um zehn?"
+        },
+        {
+          "speaker": "f1",
+          "text": "Am Samstagvormittag muss ich leider arbeiten. Wie wäre es um vierzehn Uhr? Dann sind wir um fünf wieder zurück, und danach könnten wir am Fluss grillen. Es gibt dort eine Wiese mit Grillplätzen."
+        },
+        {
+          "speaker": "m2",
+          "text": "Super Idee! Meine Schwester wollte auch kommen, aber sie hat ihren Sohn dabei, der ist erst fünf. Für das Kanu ist er zu klein, oder?"
+        },
+        {
+          "speaker": "f1",
+          "text": "Ja, unter acht Jahren geht das nicht. Aber sie kann ja zum Grillen dazukommen, um fünf."
+        },
+        {
+          "speaker": "m2",
+          "text": "Genau, das schlage ich ihr vor. Und was ist, wenn es regnet?"
+        },
+        {
+          "speaker": "f1",
+          "text": "Bei leichtem Regen fährt man trotzdem, das macht sogar Spaß. Nur bei Gewitter sagt der Verleih ab, und dann bekommt man das Geld zurück."
+        },
+        {
+          "speaker": "m2",
+          "text": "Gut. Dann machen wir es so. Übernimmst du die Reservierung? Du kennst den Verleih ja schon."
+        },
+        {
+          "speaker": "f1",
+          "text": "Klar, mache ich heute Abend. Ich bringe auch den Grill mit, der passt in mein Auto. Kannst du dann das Essen und die Getränke besorgen?"
+        },
+        {
+          "speaker": "m2",
+          "text": "Mache ich. Und ich schreibe heute noch allen in der Gruppe, damit sie sich den Samstag freihalten. Danke, Mia, ohne dich hätte ich wieder nur ein Restaurant gebucht."
+        }
+      ],
+      "items": [
+        {
+          "id": "H3-1",
+          "statement": "Jonas möchte seinen Geburtstag mit ungefähr acht Personen feiern.",
+          "answer": true,
+          "skill": "number-time"
+        },
+        {
+          "id": "H3-2",
+          "statement": "Jonas hat ein bisschen Angst vor tiefem Wasser.",
+          "answer": true,
+          "skill": "paraphrase"
+        },
+        {
+          "id": "H3-3",
+          "statement": "Im Escape Room können alle acht zusammen spielen.",
+          "answer": false,
+          "skill": "negation"
+        },
+        {
+          "id": "H3-4",
+          "statement": "Die Kanutour beginnt am Samstag um zehn Uhr.",
+          "answer": false,
+          "skill": "number-time"
+        },
+        {
+          "id": "H3-5",
+          "statement": "Nach der Kanutour wollen die Freunde am Fluss grillen.",
+          "answer": true,
+          "skill": "detail"
+        },
+        {
+          "id": "H3-6",
+          "statement": "Jonas' Schwester kommt mit ihrem Sohn zum Kanufahren.",
+          "answer": false,
+          "skill": "inference"
+        },
+        {
+          "id": "H3-7",
+          "statement": "Mia kümmert sich um die Reservierung.",
+          "answer": true,
+          "skill": "detail"
+        }
+      ]
+    },
+    "teil4": {
+      "setting": "Sie hören eine Diskussion im Radio. Der Moderator spricht mit einer Sportwissenschaftlerin und einem E-Sport-Trainer über das Thema „Ist Computerspielen Sport?“",
+      "speakers": {
+        "mod": "Moderator Tobias Winkler",
+        "a": "Dr. Karin Holz (Sportwissenschaftlerin)",
+        "b": "Lars Petersen (E-Sport-Trainer)"
+      },
+      "voices": {
+        "mod": "m1",
+        "a": "f3",
+        "b": "m3"
+      },
+      "script": [
+        {
+          "speaker": "mod",
+          "text": "Guten Abend und willkommen zu „Sportplatz“. Mein Name ist Tobias Winkler. Heute geht es um eine Frage, über die sich viele streiten: Ist E-Sport, also Computerspielen im Wettkampf, wirklich Sport? Bei mir im Studio sind Dr. Karin Holz, Sportwissenschaftlerin an der Universität Köln, und Lars Petersen, der eine E-Sport-Mannschaft trainiert. Herr Petersen, fangen wir mit Ihnen an. Wie sieht ein Trainingstag bei Ihnen aus?"
+        },
+        {
+          "speaker": "b",
+          "text": "Guten Abend. Also, viele Leute stellen sich vor, dass unsere Spieler den ganzen Tag mit Chips auf dem Sofa sitzen. Das ist völlig falsch. Unsere Spieler trainieren fünf Stunden am Tag am Computer, und dazu kommt jeden Morgen eine Stunde mit dem Fitnesstrainer. Wer körperlich nicht fit ist, kann sich nach zwei Stunden nicht mehr konzentrieren. Und im Wettkampf muss man in Sekunden Entscheidungen treffen, unter enormem Druck, vor tausenden Zuschauern."
+        },
+        {
+          "speaker": "mod",
+          "text": "Frau Holz, überzeugt Sie das?"
+        },
+        {
+          "speaker": "a",
+          "text": "Teilweise. Ich sehe durchaus, dass man beim E-Sport Konzentration, Reaktion und Teamarbeit lernt, das will ich gar nicht bestreiten. Aber Sport bedeutet für mich, dass sich der ganze Körper bewegt, nicht nur die Finger. Wenn wir alles Sport nennen, was anstrengend ist und Wettkämpfe hat, dann ist Schach auch Sport, und Poker vielleicht auch. Irgendwo muss man eine Grenze ziehen."
+        },
+        {
+          "speaker": "b",
+          "text": "Schach wird aber vom Deutschen Olympischen Sportbund anerkannt, seit Jahrzehnten. Warum also nicht E-Sport?"
+        },
+        {
+          "speaker": "a",
+          "text": "Das ist ein Argument, das ich oft höre, und ehrlich gesagt finde ich die Entscheidung beim Schach auch fragwürdig. Mein größeres Problem ist ein anderes: Viele Jugendliche bewegen sich heute viel zu wenig, und E-Sport verstärkt dieses Problem. Wenn Computerspielen offiziell Sport heißt, sagen die Kinder ihren Eltern: „Ich mache doch Sport.“ Und dann sitzen sie noch länger."
+        },
+        {
+          "speaker": "mod",
+          "text": "Da muss ich kurz einhaken, weil ich das von zu Hause kenne. Mein Sohn ist vierzehn und sitzt jeden Tag drei Stunden vor dem Computer. Ich selbst habe zwanzig Jahre lang im Verein Fußball gespielt, und ich verstehe ehrlich gesagt nicht, was ihn daran so fasziniert. Herr Petersen, was sagen Sie solchen Eltern?"
+        },
+        {
+          "speaker": "b",
+          "text": "Dass ihr Sohn wahrscheinlich Freunde hat, mit denen er dort spielt, und dass das Spiel für ihn ein Team ist, so wie für Sie damals die Fußballmannschaft. Und ich sage noch etwas: Die Sportvereine sollten E-Sport anbieten. Dann kommen die Jugendlichen in den Verein, lernen die Leute vom Fußball kennen, und viele probieren dann auch den Rasen aus. Wir haben das in Hamburg gemacht, und es funktioniert."
+        },
+        {
+          "speaker": "a",
+          "text": "Das finde ich tatsächlich einen klugen Weg. Wenn ein Verein E-Sport mit Bewegung verbindet, mit Fitnesstraining und Regeln für die Spielzeit, dann habe ich damit kein Problem. Man kann E-Sport fördern, ohne ihn Sport zu nennen. Das Wort ist mir am Ende weniger wichtig als die Frage, ob die Jugendlichen gesund bleiben."
+        },
+        {
+          "speaker": "mod",
+          "text": "Also doch eine Annäherung? Herr Petersen, können Sie damit leben, dass E-Sport vielleicht nie offiziell Sport heißt?"
+        },
+        {
+          "speaker": "b",
+          "text": "Es geht uns nicht um das Wort, sondern um die Anerkennung. Wenn wir als Verein Trainingsräume bekommen und Jugendliche mit Trainern arbeiten können, die auf Gesundheit achten, dann ist das für mich das Wichtigste. Allerdings wäre es fair, wenn unsere Spieler genauso ernst genommen würden wie andere Sportler."
+        },
+        {
+          "speaker": "a",
+          "text": "Ernst nehmen, ja. Das kann ich unterschreiben."
+        },
+        {
+          "speaker": "mod",
+          "text": "Dann haben wir am Ende doch mehr Gemeinsamkeiten gefunden, als ich erwartet hatte. Vielen Dank, Frau Holz, vielen Dank, Herr Petersen. Und ich werde heute Abend mal versuchen, mit meinem Sohn zu spielen."
+        }
+      ],
+      "items": [
+        {
+          "id": "H4-1",
+          "statement": "Unsere Spieler trainieren jeden Tag mehrere Stunden und machen auch Fitnesstraining.",
+          "answer": "b",
+          "skill": "matching"
+        },
+        {
+          "id": "H4-2",
+          "statement": "Beim Sport muss sich der ganze Körper bewegen.",
+          "answer": "a",
+          "skill": "matching"
+        },
+        {
+          "id": "H4-3",
+          "statement": "Mein Sohn verbringt täglich drei Stunden am Computer.",
+          "answer": "mod",
+          "skill": "matching"
+        },
+        {
+          "id": "H4-4",
+          "statement": "Im Wettkampf muss man sehr schnell Entscheidungen treffen.",
+          "answer": "b",
+          "skill": "matching"
+        },
+        {
+          "id": "H4-5",
+          "statement": "Ich habe selbst lange in einem Fußballverein gespielt.",
+          "answer": "mod",
+          "skill": "matching"
+        },
+        {
+          "id": "H4-6",
+          "statement": "Wenn Computerspielen Sport heißt, bewegen sich Jugendliche noch weniger.",
+          "answer": "a",
+          "skill": "matching"
+        },
+        {
+          "id": "H4-7",
+          "statement": "Sportvereine sollten auch E-Sport anbieten.",
+          "answer": "b",
+          "skill": "matching"
+        },
+        {
+          "id": "H4-8",
+          "statement": "Man kann E-Sport unterstützen, ohne ihn als Sport zu bezeichnen.",
+          "answer": "a",
+          "skill": "matching"
+        }
+      ]
+    }
+  },
+  "schreiben": {
+    "aufgabe1": {
+      "minutes": 20,
+      "words": 80,
+      "situation": "Sie haben vor einem Monat mit einem neuen Hobby angefangen. Ihre Freundin Elif hat Sie gefragt, was Sie in Ihrer Freizeit machen. Schreiben Sie ihr eine E-Mail.",
+      "points": [
+        "Beschreiben Sie Ihr neues Hobby und wie Sie dazu gekommen sind.",
+        "Erklären Sie, warum es Ihnen gefällt.",
+        "Machen Sie Elif einen Vorschlag, wann sie einmal mitkommen könnte."
+      ]
+    },
+    "aufgabe2": {
+      "minutes": 25,
+      "words": 80,
+      "situation": "Sie haben im Fernsehen eine Diskussionssendung zum Thema „Freizeit – Zeit zum Erholen oder Zeit zum Lernen?“ gesehen. Im Online-Gästebuch der Sendung finden Sie folgende Meinung:",
+      "quote": "„Hobbys sind reine Zeitverschwendung. Wer in seiner Freizeit nur Fußball spielt oder Bilder malt, kommt im Beruf nicht weiter. Diese Zeit sollte man lieber in Weiterbildung investieren.“ – Sabine, 44",
+      "instruction": "Schreiben Sie nun Ihre Meinung dazu (circa 80 Wörter)."
+    },
+    "aufgabe3": {
+      "minutes": 15,
+      "words": 40,
+      "situation": "Sie spielen in einer Volleyballgruppe. Am Samstag findet ein Turnier statt, aber Sie können nicht teilnehmen. Schreiben Sie eine E-Mail an Ihren Trainer, Herrn Schmidt: Entschuldigen Sie sich höflich, nennen Sie den Grund und fragen Sie, wann das nächste Training ist.",
+      "addressee": "Herr Schmidt"
+    }
+  },
+  "sprechen": {
+    "teil1": {
+      "situation": "Ihr Deutschkurs möchte am Wochenende einen gemeinsamen Ausflug in die Natur machen. Sie und Ihr Partner / Ihre Partnerin sollen den Ausflug organisieren. Planen Sie gemeinsam.",
+      "points": [
+        "Wohin soll der Ausflug gehen?",
+        "Wann und wie fahren Sie hin?",
+        "Was machen Sie dort?",
+        "Was muss jeder mitbringen?"
+      ],
+      "partner_cues": [
+        "Ich würde gern zum See fahren, da kann man schwimmen und grillen. Oder möchtest du lieber in die Berge?",
+        "Wollen wir mit dem Zug fahren oder fragen wir, wer ein Auto hat?",
+        "Samstag oder Sonntag – was passt dir besser?",
+        "Was machen wir, wenn das Wetter schlecht ist? Hast du eine Idee?",
+        "Ich kann einen Ball und Spiele mitbringen. Kümmerst du dich um das Essen?",
+        "Sollen wir eine Liste in der Gruppe schreiben, wer was mitbringt?"
+      ]
+    },
+    "teil2": {
+      "topics": [
+        "Thema A: Sollten alle Kinder ein Musikinstrument lernen?",
+        "Thema B: Fitnessstudio oder Sportverein – wo treibt man besser Sport?"
+      ],
+      "folien": [
+        "Stellen Sie Ihr Thema vor. Erklären Sie den Inhalt und die Struktur Ihrer Präsentation.",
+        "Berichten Sie von Ihrer Situation oder einem Erlebnis im Zusammenhang mit dem Thema.",
+        "Berichten Sie, wie die Situation in Ihrem Heimatland ist, und geben Sie Beispiele.",
+        "Nennen Sie die Vor- und Nachteile und sagen Sie dazu Ihre Meinung. Geben Sie auch Beispiele.",
+        "Beenden Sie Ihre Präsentation und bedanken Sie sich bei den Zuhörern."
+      ]
+    },
+    "teil3": {
+      "questions": [
+        "Haben Sie selbst als Kind ein Instrument gelernt? Wie war das für Sie?",
+        "Sie haben gesagt, dass Musik wichtig ist. Sollten Eltern ihre Kinder dazu zwingen, wenn sie keine Lust haben?",
+        "Ist Musikunterricht in Ihrem Heimatland teuer? Wer kann ihn sich leisten?"
+      ],
+      "questions_b": [
+        "Treiben Sie selbst Sport, und wo machen Sie das?",
+        "Was ist für Sie wichtiger beim Sport: andere Menschen zu treffen oder allein zu trainieren?",
+        "Glauben Sie, dass Sportvereine in Zukunft noch eine Rolle spielen werden?"
+      ]
+    }
+  }
+}

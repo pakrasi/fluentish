@@ -1,0 +1,557 @@
+[
+{
+"id": "ENG_CHUNK_0001",
+"t": "Könnten Sie vielleicht [Infinitiv]? / Ich wollte fragen, ob Sie [Satz]",
+"ex": "Könnten Sie mir vielleicht kurz dabei helfen?",
+"n": "Konjunktiv II carries the politeness. After \"ob\" the verb goes to the end: ..., ob Sie mir helfen könnten."
+},
+{
+"id": "ENG_CHUNK_0002",
+"t": "Würden Sie bitte [Infinitiv]? / Würde es Ihnen etwas ausmachen, [zu + Infinitiv]?",
+"ex": "Würden Sie bitte das Fenster zumachen?",
+"n": "\"Würden Sie bitte\" is the everyday form; \"Würde es Ihnen etwas ausmachen\" sounds very formal."
+},
+{
+"id": "ENG_CHUNK_0003",
+"t": "Stört es Sie, wenn ich [Satz]? / Darf ich [Infinitiv]?",
+"ex": "Stört es Sie, wenn ich das Fenster aufmache?",
+"n": "After \"wenn\" the verb goes to the end: wenn ich das Fenster aufmache."
+},
+{
+"id": "ENG_CHUNK_0004",
+"t": "Ich überlege, [zu + Infinitiv] / Ich habe vor, [zu + Infinitiv]",
+"ex": "Ich überlege, nächstes Jahr nach Berlin zu ziehen.",
+"n": "zu + infinitive goes at the end; with separable verbs zu sits inside: umzuziehen."
+},
+{
+"id": "ENG_CHUNK_0005",
+"t": "Ich freue mich (schon) auf [Nomen]",
+"ex": "Ich freue mich schon darauf, dich wiederzusehen.",
+"n": "\"sich freuen auf\" = look forward to; \"sich freuen über\" = be glad about something that happened. With a verb: darauf, ... zu + Infinitiv."
+},
+{
+"id": "ENG_CHUNK_0006",
+"t": "Ich bin mir nicht sicher, ob [Satz]",
+"ex": "Ich bin mir nicht sicher, ob sie heute Abend kommen.",
+"n": "After \"ob\" the verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_0007",
+"t": "Ich wollte gerade [Infinitiv]",
+"ex": "Oh, ich wollte dich gerade anrufen!"
+},
+{
+"id": "ENG_CHUNK_0008",
+"t": "Ich wollte schon lange [Infinitiv]",
+"ex": "Ich wollte dich schon seit Wochen anrufen.",
+"n": "No perfect continuous in German: modal in Präteritum + \"schon lange/seit Wochen\"."
+},
+{
+"id": "ENG_CHUNK_0009",
+"t": "Es hat keinen Sinn, [zu + Infinitiv] / Es bringt nichts, [zu + Infinitiv]",
+"ex": "Es hat keinen Sinn zu warten, die kommen nicht mehr.",
+"n": "\"Es macht keinen Sinn\" is common in speech but criticised as an anglicism; \"Es hat keinen Sinn\" is safe."
+},
+{
+"id": "ENG_CHUNK_0010",
+"t": "Wollen wir [Infinitiv]? / Lass uns [Infinitiv]!",
+"ex": "Wollen wir heute Abend eine Pizza holen?",
+"n": "\"Warum ... nicht?\" can sound like criticism; \"Wollen wir ...?\" is the natural suggestion."
+},
+{
+"id": "ENG_CHUNK_0011",
+"t": "Ich würde lieber [Infinitiv]",
+"ex": "Ich würde heute Abend lieber zu Hause bleiben, wenn das okay ist.",
+"n": "lieber = rather; the infinitive goes to the end."
+},
+{
+"id": "ENG_CHUNK_0012",
+"t": "Wenn ich du wäre, würde ich [Infinitiv] / An deiner Stelle würde ich [Infinitiv]",
+"ex": "An deiner Stelle würde ich zuerst mit deiner Chefin sprechen.",
+"n": "After the wenn-clause the main verb comes first: Wenn ich du wäre, würde ich ..."
+},
+{
+"id": "ENG_CHUNK_0013",
+"t": "Das hängt von [Nomen, Dativ] ab / Kommt drauf an",
+"ex": "Das hängt eigentlich vom Wetter ab.",
+"n": "abhängen von + Dativ; \"ab\" goes to the end of the clause."
+},
+{
+"id": "ENG_CHUNK_0014",
+"t": "Das Problem ist, [Satz] / Die Sache ist die: [Satz]",
+"ex": "Das Problem ist, ich habe für Samstag schon was vor.",
+"n": "Main-clause word order follows, not verb-final."
+},
+{
+"id": "ENG_CHUNK_0015",
+"t": "Ich wollte nicht [Infinitiv]",
+"ex": "Sorry, ich wollte dich nicht unterbrechen."
+},
+{
+"id": "ENG_CHUNK_0016",
+"t": "Ich bin es gewohnt, [zu + Infinitiv] / Ich bin [Nomen] gewohnt",
+"ex": "Ich bin es gewohnt, früh aufzustehen.",
+"n": "gewohnt = used to; \"gewöhnt an\" = got used to (process): Ich habe mich daran gewöhnt."
+},
+{
+"id": "ENG_CHUNK_0017",
+"t": "Man braucht [Zeit/Nomen], um [zu + Infinitiv]",
+"ex": "Man braucht ungefähr zwanzig Minuten, um dorthin zu kommen.",
+"n": "Colloquially simpler: \"Bis dahin braucht man zwanzig Minuten.\""
+},
+{
+"id": "ENG_CHUNK_0018",
+"t": "Sag Bescheid, wenn [Satz]",
+"ex": "Sag Bescheid, wenn du was brauchst.",
+"n": "Sie form: Sagen Sie Bescheid. After \"wenn\" the verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_0019",
+"t": "Danke, dass du [Satz] / Danke für [Nomen]",
+"ex": "Danke, dass du mir Bescheid gesagt hast.",
+"n": "After \"dass\" the verb goes to the end; for a noun: Danke für die Info."
+},
+{
+"id": "ENG_CHUNK_0020",
+"t": "Entschuldigung, dass [Satz] / Sorry für [Nomen]",
+"ex": "Entschuldigung, dass du warten musstest.",
+"n": "After \"dass\" the verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_0021",
+"t": "Ich kann nicht glauben, dass [Satz] / Unglaublich, dass [Satz]",
+"ex": "Ich kann gar nicht glauben, dass schon Oktober ist.",
+"n": "After \"dass\" the verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_0022",
+"t": "Können Sie mir sagen, [W-Wort + Satz]?",
+"ex": "Können Sie mir sagen, wo der Bahnhof ist?",
+"n": "Indirect question: the verb goes to the end (wo der Bahnhof ist, not \"wo ist der Bahnhof\")."
+},
+{
+"id": "ENG_CHUNK_0023",
+"t": "Was hältst du von [Nomen, Dativ]? / Wie findest du [Nomen]?",
+"ex": "Wie findest du das neue Büro?",
+"n": "halten von + Dativ: Was hältst du vom neuen Büro?"
+},
+{
+"id": "ENG_CHUNK_0024",
+"t": "Wie ist es, [zu + Infinitiv]? / Wie ist es so in [Ort]?",
+"ex": "Wie ist es so, in London zu leben?"
+},
+{
+"id": "ENG_CHUNK_0025",
+"t": "Leider [Satz] / Ich fürchte, [Satz]",
+"ex": "Leider sind wir heute Abend komplett ausgebucht.",
+"n": "\"Leider\" is the everyday softener; after \"Leider\" the verb comes next (inversion): Leider sind wir ..."
+},
+{
+"id": "ENG_CHUNK_0026",
+"t": "Denk daran, [zu + Infinitiv] / Pass auf, dass du [Satz]",
+"ex": "Denk daran, die Tür abzuschließen, wenn du gehst."
+},
+{
+"id": "ENG_CHUNK_0027",
+"t": "Ich würde gern, aber [Satz]",
+"ex": "Ich würde gern, aber ich muss morgen früh arbeiten.",
+"n": "After \"aber\" normal main-clause order (no inversion)."
+},
+{
+"id": "ENG_CHUNK_0028",
+"t": "Es hat sich herausgestellt, dass [Satz] / Wie sich herausstellte, [Satz]",
+"ex": "Es hat sich herausgestellt, dass der Laden die ganze Woche zu war.",
+"n": "After \"dass\" the verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_0029",
+"t": "Sieht so aus, als ob [Satz] / Es sieht nach [Nomen] aus",
+"ex": "Sieht so aus, als ob es gleich regnet.",
+"n": "After \"als ob\" the verb goes to the end. Shorter: Es sieht nach Regen aus."
+},
+{
+"id": "ENG_CHUNK_0030",
+"t": "Ich habe keine Ahnung, [W-Wort + Satz]",
+"ex": "Ich hab keine Ahnung, wo ich meine Schlüssel hingelegt habe.",
+"n": "Indirect question: verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_0031",
+"t": "Ich soll [Infinitiv]",
+"ex": "Ich soll um neun bei der Arbeit sein.",
+"n": "\"sollen\" = supposed to (someone else expects it)."
+},
+{
+"id": "ENG_CHUNK_0032",
+"t": "Ich wollte nur kurz [Infinitiv]",
+"ex": "Ich wollte nur kurz nachfragen, ob du meine Mail bekommen hast.",
+"n": "The Präteritum \"wollte\" softens the request, like English \"just wanted to\"."
+},
+{
+"id": "ENG_CHUNK_0033",
+"t": "Das liegt bei [Person, Dativ] / Das kannst du entscheiden",
+"ex": "Mir ist egal, wo wir essen. Das liegt ganz bei dir."
+},
+{
+"id": "ENG_CHUNK_0034",
+"t": "Das klingt [Adjektiv] / Hört sich [Adjektiv] an",
+"ex": "Klingt super! Wann soll ich kommen?"
+},
+{
+"id": "ENG_CHUNK_0035",
+"t": "Ich habe es geschafft, [zu + Infinitiv]",
+"ex": "Ich habe es geschafft, den Drucker selbst zu reparieren."
+},
+{
+"id": "ENG_CHUNK_0036",
+"t": "eine Entscheidung treffen",
+"ex": "Wir müssen bis Freitag eine Entscheidung treffen.",
+"n": "Not \"machen\": eine Entscheidung treffen. Simpler: sich entscheiden."
+},
+{
+"id": "ENG_CHUNK_0037",
+"t": "eine Pause machen",
+"ex": "Lass uns eine Pause machen und einen Kaffee holen."
+},
+{
+"id": "ENG_CHUNK_0038",
+"t": "sich [Nomen, Akk.] (mal) ansehen / sich [Nomen] anschauen",
+"ex": "Kannst du dir mal meinen Laptop ansehen? Der hängt sich ständig auf.",
+"n": "Reflexive in the dative: Kannst du dir ... ansehen."
+},
+{
+"id": "ENG_CHUNK_0039",
+"t": "kein [Nomen] mehr haben / [Nomen] ist alle",
+"ex": "Wir haben schon wieder keine Milch mehr.",
+"n": "\"Die Milch ist alle\" is colloquial northern/central German."
+},
+{
+"id": "ENG_CHUNK_0040",
+"t": "sich bei [Person, Dativ] melden / [Person] kontaktieren",
+"ex": "Ich melde mich morgen beim Vermieter.",
+"n": "\"sich melden bei\" is the everyday verb for getting in touch."
+},
+{
+"id": "ENG_CHUNK_0041",
+"t": "einen Fehler machen",
+"ex": "Sorry, ich habe bei der Buchung einen Fehler gemacht."
+},
+{
+"id": "ENG_CHUNK_0042",
+"t": "auf [Nomen, Akk.] achten",
+"ex": "Ich habe nicht auf die Zeit geachtet."
+},
+{
+"id": "ENG_CHUNK_0043",
+"t": "Sinn ergeben / Sinn machen",
+"ex": "Das ergibt für mich keinen Sinn.",
+"n": "\"Sinn machen\" is everywhere in speech; \"Sinn ergeben\" is the safer choice in the exam."
+},
+{
+"id": "ENG_CHUNK_0044",
+"t": "[Person, Dativ] einen Gefallen tun",
+"ex": "Kannst du mir einen Gefallen tun und die Katze füttern?"
+},
+{
+"id": "ENG_CHUNK_0045",
+"t": "[Person, Dativ] helfen / mit anpacken",
+"ex": "Kannst du mir mal mit den Kisten helfen?",
+"n": "No fixed idiom; \"mit anpacken\" = pitch in with physical work."
+},
+{
+"id": "ENG_CHUNK_0046",
+"t": "sich Mühe geben",
+"ex": "Er gibt sich echt Mühe mit seinem Deutsch."
+},
+{
+"id": "ENG_CHUNK_0047",
+"t": "auf [Nomen, Akk.] kommen / sich [Nomen] einfallen lassen",
+"ex": "Sie ist auf eine geniale Idee gekommen."
+},
+{
+"id": "ENG_CHUNK_0048",
+"t": "[Nomen] loswerden / [Nomen] aussortieren",
+"ex": "Ich muss ein paar alte Klamotten loswerden."
+},
+{
+"id": "ENG_CHUNK_0049",
+"t": "sich gut mit [Person, Dativ] verstehen",
+"ex": "Ich verstehe mich gut mit meinen Kollegen."
+},
+{
+"id": "ENG_CHUNK_0050",
+"t": "es sich anders überlegen",
+"ex": "Wenn du es dir anders überlegst, ruf mich einfach an.",
+"n": "Reflexive dative: ich überlege es mir, du überlegst es dir."
+},
+{
+"id": "ENG_CHUNK_0051",
+"t": "auf [Nomen, Akk.] aufpassen",
+"ex": "Kannst du mal kurz auf meine Tasche aufpassen?"
+},
+{
+"id": "ENG_CHUNK_0052",
+"t": "sich Zeit lassen",
+"ex": "Kein Stress, lass dir Zeit.",
+"n": "Sie form: Lassen Sie sich Zeit."
+},
+{
+"id": "ENG_CHUNK_0053",
+"t": "viel Zeit mit [Nomen, Dativ] verbringen",
+"ex": "Ich verbringe viel Zeit mit Pendeln.",
+"n": "German uses a noun (mit Pendeln) or a clause, not an -ing form."
+},
+{
+"id": "ENG_CHUNK_0054",
+"t": "[Nomen] rausfinden / mit [Nomen] klarkommen",
+"ex": "Ich komme mit dieser neuen App einfach nicht klar.",
+"n": "\"rausfinden\" = find out a fact; \"klarkommen mit\" = cope with / figure out how to use."
+},
+{
+"id": "ENG_CHUNK_0055",
+"t": "[Nomen] regeln / sich um [Nomen, Akk.] kümmern",
+"ex": "Ich muss mich diese Woche um mein Visum kümmern."
+},
+{
+"id": "ENG_CHUNK_0056",
+"t": "sich um [Nomen, Akk.] kümmern / mit [Nomen] umgehen",
+"ex": "Ich kümmere mich morgen darum."
+},
+{
+"id": "ENG_CHUNK_0057",
+"t": "es schaffen",
+"ex": "Sorry, ich schaffe es heute Abend nicht."
+},
+{
+"id": "ENG_CHUNK_0058",
+"t": "Probleme mit [Nomen, Dativ] haben / Probleme haben, [zu + Infinitiv]",
+"ex": "Ich kann in letzter Zeit schlecht schlafen.",
+"n": "Most natural: \"ich kann schlecht [Infinitiv]\" rather than a literal \"Probleme haben\"."
+},
+{
+"id": "ENG_CHUNK_0059",
+"t": "sich verspäten / später kommen",
+"ex": "Sorry, ich komme ein bisschen später."
+},
+{
+"id": "ENG_CHUNK_0060",
+"t": "[Nomen] vor sich herschieben / [Nomen] aufschieben",
+"ex": "Ich schiebe den Zahnarzttermin schon ewig vor mir her."
+},
+{
+"id": "ENG_CHUNK_0061",
+"t": "[Nomen] vereinbaren / [Nomen] einrichten",
+"ex": "Können wir nächste Woche ein Meeting vereinbaren?",
+"n": "Meeting/Termin: vereinbaren, ausmachen. Device/account: einrichten."
+},
+{
+"id": "ENG_CHUNK_0062",
+"t": "mit [Nomen, Dativ] aufhören",
+"ex": "Ich habe letztes Jahr mit dem Rauchen aufgehört.",
+"n": "\"aufgeben\" means to give up hope or a plan, not a habit."
+},
+{
+"id": "ENG_CHUNK_0063",
+"t": "viel ausmachen / einen Unterschied machen",
+"ex": "Eine Nacht guter Schlaf macht einen großen Unterschied."
+},
+{
+"id": "ENG_CHUNK_0064",
+"t": "auf [Person, Akk.] aufpassen / sich um [Person, Akk.] kümmern",
+"ex": "Kannst du am Samstag auf die Kinder aufpassen?"
+},
+{
+"id": "ENG_CHUNK_0065",
+"t": "dazu kommen, [zu + Infinitiv]",
+"ex": "Ich bin nicht dazu gekommen, dich zurückzurufen.",
+"n": "\"Chance\" is not used this way; \"dazu kommen\" = find the time to."
+},
+{
+"id": "ENG_CHUNK_0066",
+"t": "Ehrlich gesagt",
+"ex": "Ehrlich gesagt hat mir der Film nicht so gefallen.",
+"n": "Counts as position 1: the verb follows directly (Ehrlich gesagt hat mir ...)."
+},
+{
+"id": "ENG_CHUNK_0067",
+"t": "Moment, lass mich überlegen",
+"ex": "Moment, lass mich überlegen ... das war letzten Dienstag, glaube ich."
+},
+{
+"id": "ENG_CHUNK_0068",
+"t": "Wie soll ich sagen?",
+"ex": "Er ist ... wie soll ich sagen? Ein bisschen anstrengend."
+},
+{
+"id": "ENG_CHUNK_0069",
+"t": "Weißt du, was ich meine?",
+"ex": "Es ist einfach nicht dasselbe, weißt du, was ich meine?"
+},
+{
+"id": "ENG_CHUNK_0070",
+"t": "Soweit ich weiß",
+"ex": "Soweit ich weiß, findet das Meeting noch statt.",
+"n": "The soweit-clause fills position 1, so the main verb comes next."
+},
+{
+"id": "ENG_CHUNK_0071",
+"t": "Übrigens",
+"ex": "Übrigens, hast du das von Tom gehört?"
+},
+{
+"id": "ENG_CHUNK_0072",
+"t": "Wie gesagt / Na ja, wo war ich?",
+"ex": "Na ja, wie gesagt, das Hotel war richtig schön."
+},
+{
+"id": "ENG_CHUNK_0073",
+"t": "Da fällt mir ein",
+"ex": "Da fällt mir ein, ich muss noch meine Mutter anrufen."
+},
+{
+"id": "ENG_CHUNK_0074",
+"t": "Ich verstehe, was du meinst",
+"ex": "Ich verstehe, was du meinst, aber ich finde es trotzdem zu teuer."
+},
+{
+"id": "ENG_CHUNK_0075",
+"t": "Na gut / Verständlich",
+"ex": "Verständlich, ich würde an deiner Stelle dasselbe machen."
+},
+{
+"id": "ENG_CHUNK_0076",
+"t": "Moment mal / Warte kurz",
+"ex": "Moment mal, ich hol schnell einen Stift."
+},
+{
+"id": "ENG_CHUNK_0077",
+"t": "Ich meine / Also",
+"ex": "Es war gut. Also, nicht umwerfend, aber gut."
+},
+{
+"id": "ENG_CHUNK_0078",
+"t": "Wenn du mich fragst",
+"ex": "Wenn du mich fragst, ist das rausgeschmissenes Geld.",
+"n": "The wenn-clause fills position 1, so the verb comes next: ... fragst, ist das ..."
+},
+{
+"id": "ENG_CHUNK_0079",
+"t": "Da bin ich mir nicht so sicher",
+"ex": "Hm, da bin ich mir nicht so sicher."
+},
+{
+"id": "ENG_CHUNK_0080",
+"t": "Na ja, eigentlich / Also, genau genommen",
+"ex": "Na ja, eigentlich ist es genau andersrum."
+},
+{
+"id": "ENG_CHUNK_0081",
+"t": "Egal / Schon gut / Vergiss es",
+"ex": "Schon gut, ich mach's selbst."
+},
+{
+"id": "ENG_CHUNK_0082",
+"t": "Kein Problem / Alles gut",
+"ex": "Alles gut, das passiert jedem mal."
+},
+{
+"id": "ENG_CHUNK_0083",
+"t": "Mach's gut! / Pass auf dich auf!",
+"ex": "Okay, bis nächste Woche. Mach's gut!"
+},
+{
+"id": "ENG_CHUNK_0084",
+"t": "Das ist nicht so schlimm / Halb so wild",
+"ex": "Keine Sorge, das ist nicht so schlimm."
+},
+{
+"id": "ENG_CHUNK_0085",
+"t": "Klar, mach ruhig / Bitte schön",
+"ex": "Kann ich kurz dein Handy benutzen? Klar, mach ruhig.",
+"n": "Sie form: Bitte, gern."
+},
+{
+"id": "ENG_CHUNK_0086",
+"t": "Daumen drücken",
+"ex": "Ich hab morgen mein Vorstellungsgespräch, also drück mir die Daumen.",
+"n": "Germans press thumbs rather than cross fingers: Ich drücke dir die Daumen."
+},
+{
+"id": "ENG_CHUNK_0087",
+"t": "Das geht auf mich / Ich lade dich ein",
+"ex": "Steck dein Portemonnaie weg, das geht auf mich."
+},
+{
+"id": "ENG_CHUNK_0088",
+"t": "Ich überlege es mir",
+"ex": "Danke für das Angebot. Ich überlege es mir."
+},
+{
+"id": "ENG_CHUNK_0089",
+"t": "Wie schade! / Schade!",
+"ex": "Du kannst nicht kommen? Schade!"
+},
+{
+"id": "ENG_CHUNK_0090",
+"t": "Lange nicht gesehen!",
+"ex": "Hey, lange nicht gesehen! Wie geht's dir so?"
+},
+{
+"id": "ENG_CHUNK_0091",
+"t": "Andererseits",
+"ex": "Es ist teuer. Andererseits hält es jahrelang.",
+"n": "Takes position 1: verb follows immediately (Andererseits hält es ...)."
+},
+{
+"id": "ENG_CHUNK_0092",
+"t": "Allerdings / Wobei man sagen muss",
+"ex": "Das Hotel war etwas alt. Allerdings war das Personal total nett.",
+"n": "\"Allerdings\" takes position 1, so the verb follows (Allerdings war ...). \"Wobei\" is a subordinator: verb-final."
+},
+{
+"id": "ENG_CHUNK_0093",
+"t": "In dem Fall / Dann",
+"ex": "Du hast keinen Hunger? Dann lass uns einfach einen Kaffee trinken."
+},
+{
+"id": "ENG_CHUNK_0094",
+"t": "Solange",
+"ex": "Du kannst es dir ausleihen, solange du es zurückbringst.",
+"n": "Subordinator: verb goes to the end (solange du es zurückbringst)."
+},
+{
+"id": "ENG_CHUNK_0095",
+"t": "Obwohl",
+"ex": "Wir sind rausgegangen, obwohl es geregnet hat.",
+"n": "Subordinator: verb to the end. Compare \"trotzdem\" (adverb, position 1 + verb)."
+},
+{
+"id": "ENG_CHUNK_0096",
+"t": "Deshalb / Deswegen",
+"ex": "Die Bahn hat gestreikt. Deshalb komme ich zu spät.",
+"n": "Adverb in position 1: verb follows (Deshalb komme ich). Compare \"weil\" = verb-final."
+},
+{
+"id": "ENG_CHUNK_0097",
+"t": "Sobald",
+"ex": "Ich ruf dich an, sobald ich zu Hause bin.",
+"n": "Subordinator: verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_0098",
+"t": "Am Ende / Letztendlich",
+"ex": "Wir haben stundenlang darüber geredet, aber am Ende sind wir zu Hause geblieben.",
+"n": "After \"aber\" main-clause order; \"am Ende\" then triggers inversion: am Ende sind wir ..."
+},
+{
+"id": "ENG_CHUNK_0099",
+"t": "Schließlich / Immerhin",
+"ex": "Lass ihn schlafen. Er hat schließlich die ganze Nacht gearbeitet.",
+"n": "\"schließlich\" in mid-sentence = after all; at the start of a story it means \"finally\"."
+},
+{
+"id": "ENG_CHUNK_0100",
+"t": "Für alle Fälle / Sicherheitshalber",
+"ex": "Nimm einen Regenschirm mit, für alle Fälle."
+}
+]

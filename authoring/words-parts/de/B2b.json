@@ -1,0 +1,7698 @@
+[
+ {
+  "w": "Maßnahme",
+  "art": "die",
+  "pl": "Maßnahmen",
+  "pos": "noun",
+  "en": [
+   "measure (step)",
+   "step"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Die Regierung plant neue Maßnahmen.",
+  "exen": "The government is planning new measures."
+ },
+ {
+  "w": "Gerechtigkeit",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "justice",
+   "fairness"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Wir kämpfen für soziale Gerechtigkeit.",
+  "exen": "We fight for social justice."
+ },
+ {
+  "w": "jedoch",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "however"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Das ist jedoch nicht alles.",
+  "exen": "That is not everything, however."
+ },
+ {
+  "w": "Standpunkt",
+  "art": "der",
+  "pl": "Standpunkte",
+  "pos": "noun",
+  "en": [
+   "point of view",
+   "standpoint"
+  ],
+  "alt": [
+   "die Sichtweise"
+  ],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Ich verstehe deinen Standpunkt.",
+  "exen": "I understand your point of view."
+ },
+ {
+  "w": "Erkenntnis",
+  "art": "die",
+  "pl": "Erkenntnisse",
+  "pos": "noun",
+  "en": [
+   "finding",
+   "insight"
+  ],
+  "alt": [
+   "der Befund"
+  ],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Das ist eine wichtige Erkenntnis.",
+  "exen": "That is an important finding."
+ },
+ {
+  "w": "Urteil",
+  "art": "das",
+  "pl": "Urteile",
+  "pos": "noun",
+  "en": [
+   "verdict",
+   "judgement"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Das Urteil fällt morgen.",
+  "exen": "The verdict comes tomorrow."
+ },
+ {
+  "w": "Verhältnis",
+  "art": "das",
+  "pl": "Verhältnisse",
+  "pos": "noun",
+  "en": [
+   "relationship (between people)",
+   "ratio"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Wir haben ein gutes Verhältnis.",
+  "exen": "We have a good relationship."
+ },
+ {
+  "w": "Digitalisierung",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "digitalisation"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Die Digitalisierung verändert die Arbeit.",
+  "exen": "Digitalisation is changing work."
+ },
+ {
+  "w": "Herausforderung",
+  "art": "die",
+  "pl": "Herausforderungen",
+  "pos": "noun",
+  "en": [
+   "challenge"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Das ist eine echte Herausforderung.",
+  "exen": "That is a real challenge."
+ },
+ {
+  "w": "Werk",
+  "art": "das",
+  "pl": "Werke",
+  "pos": "noun",
+  "en": [
+   "work (of art)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Das ist sein bekanntestes Werk.",
+  "exen": "That's his best-known work."
+ },
+ {
+  "w": "Zusammenfassung",
+  "art": "die",
+  "pl": "Zusammenfassungen",
+  "pos": "noun",
+  "en": [
+   "summary"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Schreib eine kurze Zusammenfassung.",
+  "exen": "Write a short summary."
+ },
+ {
+  "w": "Migration",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "migration"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Migration ist ein großes Thema.",
+  "exen": "Migration is a big topic."
+ },
+ {
+  "w": "Auswirkung",
+  "art": "die",
+  "pl": "Auswirkungen",
+  "pos": "noun",
+  "en": [
+   "impact",
+   "effect"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Das hat Auswirkungen auf alle.",
+  "exen": "That has an impact on everyone."
+ },
+ {
+  "w": "dennoch",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "nevertheless",
+   "still (yet)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Es war kalt, dennoch gingen wir raus.",
+  "exen": "It was cold, yet we went out."
+ },
+ {
+  "w": "Ausgleich",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "balance (counterbalance)",
+   "compensation"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "leisure",
+  "ex": "Sport ist ein guter Ausgleich zur Arbeit.",
+  "exen": "Sport is a good balance to work."
+ },
+ {
+  "w": "Kompromiss",
+  "art": "der",
+  "pl": "Kompromisse",
+  "pos": "noun",
+  "en": [
+   "compromise"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Wir haben einen Kompromiss gefunden.",
+  "exen": "We found a compromise."
+ },
+ {
+  "w": "nachhaltig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "sustainable"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Wir brauchen nachhaltige Lösungen.",
+  "exen": "We need sustainable solutions."
+ },
+ {
+  "w": "verurteilen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to sentence",
+   "to condemn"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Er wurde zu zwei Jahren verurteilt.",
+  "exen": "He was sentenced to two years."
+ },
+ {
+  "w": "Erleichterung",
+  "art": "die",
+  "pl": "Erleichterungen",
+  "pos": "noun",
+  "en": [
+   "relief"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Das ist eine große Erleichterung.",
+  "exen": "That's a big relief."
+ },
+ {
+  "w": "Aspekt",
+  "art": "der",
+  "pl": "Aspekte",
+  "pos": "noun",
+  "en": [
+   "aspect"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Diesen Aspekt haben wir vergessen.",
+  "exen": "We forgot this aspect."
+ },
+ {
+  "w": "Einwanderung",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "immigration - accept Zuwanderung",
+   "immigration"
+  ],
+  "alt": [
+   "die Zuwanderung"
+  ],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Das Land braucht Einwanderung.",
+  "exen": "The country needs immigration."
+ },
+ {
+  "w": "Schlagzeile",
+  "art": "die",
+  "pl": "Schlagzeilen",
+  "pos": "noun",
+  "en": [
+   "headline"
+  ],
+  "alt": [
+   "die Überschrift"
+  ],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Das Thema macht Schlagzeilen.",
+  "exen": "The topic is making headlines."
+ },
+ {
+  "w": "zudem",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "moreover",
+   "in addition"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Zudem ist es sehr teuer.",
+  "exen": "Moreover, it's very expensive."
+ },
+ {
+  "w": "Konsequenz",
+  "art": "die",
+  "pl": "Konsequenzen",
+  "pos": "noun",
+  "en": [
+   "consequence"
+  ],
+  "alt": [
+   "die Folge"
+  ],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Das hat Konsequenzen.",
+  "exen": "That has consequences."
+ },
+ {
+  "w": "Epoche",
+  "art": "die",
+  "pl": "Epochen",
+  "pos": "noun",
+  "en": [
+   "era",
+   "period (epoch)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Das war eine spannende Epoche.",
+  "exen": "That was an exciting era."
+ },
+ {
+  "w": "zusammenfassen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to summarise"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Kannst du den Text zusammenfassen?",
+  "exen": "Can you summarise the text?",
+  "forms": "fasst zusammen · fasste zusammen · hat zusammengefasst"
+ },
+ {
+  "w": "Nachhaltigkeit",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "sustainability"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Nachhaltigkeit ist heute sehr wichtig.",
+  "exen": "Sustainability is very important today."
+ },
+ {
+  "w": "Täter",
+  "art": "der",
+  "pl": "Täter",
+  "pos": "noun",
+  "en": [
+   "perpetrator",
+   "offender"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Der Täter ist geflohen.",
+  "exen": "The offender has fled."
+ },
+ {
+  "w": "erleichtert",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "relieved"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Ich bin so erleichtert!",
+  "exen": "I'm so relieved!"
+ },
+ {
+  "w": "wesentlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "essential",
+   "significant"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Das ist ein wesentlicher Unterschied.",
+  "exen": "That is an essential difference."
+ },
+ {
+  "w": "Wohlstand",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "prosperity",
+   "affluence"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Der Wohlstand ist ungleich verteilt.",
+  "exen": "Prosperity is unequally distributed."
+ },
+ {
+  "w": "Widerspruch",
+  "art": "der",
+  "pl": "Widersprüche",
+  "pos": "noun",
+  "en": [
+   "contradiction",
+   "objection"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Das ist ein Widerspruch.",
+  "exen": "That is a contradiction."
+ },
+ {
+  "w": "entscheidend",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "crucial",
+   "decisive"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Das ist der entscheidende Punkt.",
+  "exen": "That is the crucial point."
+ },
+ {
+  "w": "analysieren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to analyse"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Die Forscher analysieren die Proben.",
+  "exen": "The researchers are analysing the samples."
+ },
+ {
+  "w": "Pressefreiheit",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "freedom of the press"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Pressefreiheit ist ein Grundrecht.",
+  "exen": "Freedom of the press is a basic right."
+ },
+ {
+  "w": "Ungleichheit",
+  "art": "die",
+  "pl": "Ungleichheiten",
+  "pos": "noun",
+  "en": [
+   "inequality"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Die soziale Ungleichheit wächst.",
+  "exen": "Social inequality is growing."
+ },
+ {
+  "w": "Grundlage",
+  "art": "die",
+  "pl": "Grundlagen",
+  "pos": "noun",
+  "en": [
+   "basis",
+   "foundation"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Das ist die Grundlage für alles.",
+  "exen": "That is the basis for everything."
+ },
+ {
+  "w": "Auseinandersetzung",
+  "art": "die",
+  "pl": "Auseinandersetzungen",
+  "pos": "noun",
+  "en": [
+   "dispute",
+   "argument (clash)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Es gab eine heftige Auseinandersetzung.",
+  "exen": "There was a fierce argument."
+ },
+ {
+  "w": "zumindest",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "at least (minimum)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Zumindest hat er angerufen.",
+  "exen": "At least he called."
+ },
+ {
+  "w": "Kunstwerk",
+  "art": "das",
+  "pl": "Kunstwerke",
+  "pos": "noun",
+  "en": [
+   "work of art"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Das Kunstwerk ist sehr wertvoll.",
+  "exen": "The work of art is very valuable."
+ },
+ {
+  "w": "Wortschatz",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "vocabulary"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Mein Wortschatz wird immer größer.",
+  "exen": "My vocabulary keeps growing."
+ },
+ {
+  "w": "Meisterschaft",
+  "art": "die",
+  "pl": "Meisterschaften",
+  "pos": "noun",
+  "en": [
+   "championship"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "leisure",
+  "ex": "Die Meisterschaft beginnt im Juni.",
+  "exen": "The championship starts in June."
+ },
+ {
+  "w": "betonen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to emphasise",
+   "to stress"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Ich möchte betonen, dass es freiwillig ist.",
+  "exen": "I want to stress that it's voluntary."
+ },
+ {
+  "w": "erheblich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "considerable",
+   "significant"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Die Kosten sind erheblich gestiegen.",
+  "exen": "The costs have risen considerably."
+ },
+ {
+  "w": "Diskriminierung",
+  "art": "die",
+  "pl": "Diskriminierungen",
+  "pos": "noun",
+  "en": [
+   "discrimination"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Diskriminierung ist verboten.",
+  "exen": "Discrimination is prohibited."
+ },
+ {
+  "w": "Analyse",
+  "art": "die",
+  "pl": "Analysen",
+  "pos": "noun",
+  "en": [
+   "analysis"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Die Analyse dauert eine Woche.",
+  "exen": "The analysis takes a week."
+ },
+ {
+  "w": "Anzeige erstatten",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "to report (to the police)",
+   "to press charges"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Ich möchte Anzeige erstatten.",
+  "exen": "I'd like to press charges."
+ },
+ {
+  "w": "durchaus",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "quite (definitely)",
+   "entirely"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Das ist durchaus möglich.",
+  "exen": "That's quite possible."
+ },
+ {
+  "w": "Eigenschaft",
+  "art": "die",
+  "pl": "Eigenschaften",
+  "pos": "noun",
+  "en": [
+   "characteristic",
+   "quality (trait)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Geduld ist eine gute Eigenschaft.",
+  "exen": "Patience is a good quality."
+ },
+ {
+  "w": "Bedürfnis",
+  "art": "das",
+  "pl": "Bedürfnisse",
+  "pos": "noun",
+  "en": [
+   "need (personal)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Jeder hat andere Bedürfnisse.",
+  "exen": "Everyone has different needs."
+ },
+ {
+  "w": "Zensur",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "censorship"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "In vielen Ländern gibt es Zensur.",
+  "exen": "There is censorship in many countries."
+ },
+ {
+  "w": "hinweisen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to point out",
+   "to refer to"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Ich möchte auf einen Fehler hinweisen.",
+  "exen": "I'd like to point out a mistake.",
+  "forms": "weist hin · wies hin · hat hingewiesen"
+ },
+ {
+  "w": "Toleranz",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "tolerance"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Toleranz ist in einer Demokratie wichtig.",
+  "exen": "Tolerance is important in a democracy."
+ },
+ {
+  "w": "Anforderung",
+  "art": "die",
+  "pl": "Anforderungen",
+  "pos": "noun",
+  "en": [
+   "requirement",
+   "demand"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Die Anforderungen im Job sind hoch.",
+  "exen": "The requirements in the job are high."
+ },
+ {
+  "w": "Architektur",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "architecture"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Die Architektur der Stadt ist toll.",
+  "exen": "The city's architecture is great."
+ },
+ {
+  "w": "Studiengang",
+  "art": "der",
+  "pl": "Studiengänge",
+  "pos": "noun",
+  "en": [
+   "degree programme"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Welchen Studiengang hast du gewählt?",
+  "exen": "Which degree programme did you choose?"
+ },
+ {
+  "w": "Innovation",
+  "art": "die",
+  "pl": "Innovationen",
+  "pos": "noun",
+  "en": [
+   "innovation"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Die Firma lebt von Innovation.",
+  "exen": "The company thrives on innovation."
+ },
+ {
+  "w": "Ermittlung",
+  "art": "die",
+  "pl": "Ermittlungen",
+  "pos": "noun",
+  "en": [
+   "investigation (police)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Die Ermittlungen laufen noch.",
+  "exen": "The investigation is still ongoing."
+ },
+ {
+  "w": "keineswegs",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "by no means",
+   "not at all"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Das ist keineswegs sicher.",
+  "exen": "That's by no means certain."
+ },
+ {
+  "w": "Perspektive",
+  "art": "die",
+  "pl": "Perspektiven",
+  "pos": "noun",
+  "en": [
+   "perspective"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Aus meiner Perspektive ist das anders.",
+  "exen": "From my perspective it's different."
+ },
+ {
+  "w": "Leidenschaft",
+  "art": "die",
+  "pl": "Leidenschaften",
+  "pos": "noun",
+  "en": [
+   "passion"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Musik ist meine Leidenschaft.",
+  "exen": "Music is my passion."
+ },
+ {
+  "w": "äußern",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to express (voice)",
+   "to state"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Er äußerte seine Kritik offen.",
+  "exen": "He voiced his criticism openly."
+ },
+ {
+  "w": "Solidarität",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "solidarity"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Wir zeigen Solidarität mit den Opfern.",
+  "exen": "We show solidarity with the victims."
+ },
+ {
+  "w": "umgehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to deal with",
+   "to handle"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Er kann gut mit Stress umgehen.",
+  "exen": "He handles stress well.",
+  "forms": "geht um · ging um · ist umgegangen"
+ },
+ {
+  "w": "Redaktion",
+  "art": "die",
+  "pl": "Redaktionen",
+  "pos": "noun",
+  "en": [
+   "editorial team (newsroom)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Die Redaktion prüft den Artikel.",
+  "exen": "The editorial team checks the article."
+ },
+ {
+  "w": "ohnehin",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "anyway (in any case)"
+  ],
+  "alt": [
+   "sowieso"
+  ],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Ich muss ohnehin in die Stadt.",
+  "exen": "I have to go into town anyway."
+ },
+ {
+  "w": "theoretisch",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "theoretical",
+   "in theory"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Theoretisch ist das möglich.",
+  "exen": "Theoretically that's possible."
+ },
+ {
+  "w": "ermitteln",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to investigate"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Die Polizei ermittelt gegen ihn.",
+  "exen": "The police are investigating him."
+ },
+ {
+  "w": "Turnier",
+  "art": "das",
+  "pl": "Turniere",
+  "pos": "noun",
+  "en": [
+   "tournament"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "leisure",
+  "ex": "Wir spielen am Wochenende ein Turnier.",
+  "exen": "We're playing a tournament at the weekend."
+ },
+ {
+  "w": "Struktur",
+  "art": "die",
+  "pl": "Strukturen",
+  "pos": "noun",
+  "en": [
+   "structure"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Der Text hat eine klare Struktur.",
+  "exen": "The text has a clear structure."
+ },
+ {
+  "w": "Zusammenhalt",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "cohesion",
+   "togetherness"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Der Zusammenhalt in der Familie ist stark.",
+  "exen": "Family cohesion is strong."
+ },
+ {
+  "w": "Debatte",
+  "art": "die",
+  "pl": "Debatten",
+  "pos": "noun",
+  "en": [
+   "debate"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Die Debatte dauerte Stunden.",
+  "exen": "The debate lasted hours."
+ },
+ {
+  "w": "Glaube",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "faith",
+   "belief (religious)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Ihr Glaube gibt ihr Kraft.",
+  "exen": "Her faith gives her strength."
+ },
+ {
+  "w": "Stipendium",
+  "art": "das",
+  "pl": "Stipendien",
+  "pos": "noun",
+  "en": [
+   "scholarship"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Sie hat ein Stipendium bekommen.",
+  "exen": "She got a scholarship."
+ },
+ {
+  "w": "leidenschaftlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "passionate"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Sie ist eine leidenschaftliche Köchin.",
+  "exen": "She's a passionate cook."
+ },
+ {
+  "w": "Faktor",
+  "art": "der",
+  "pl": "Faktoren",
+  "pos": "noun",
+  "en": [
+   "factor"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Zeit ist ein wichtiger Faktor.",
+  "exen": "Time is an important factor."
+ },
+ {
+  "w": "mittlerweile",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "by now",
+   "meanwhile"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Mittlerweile wohne ich in Berlin.",
+  "exen": "By now I live in Berlin."
+ },
+ {
+  "w": "Statistik",
+  "art": "die",
+  "pl": "Statistiken",
+  "pos": "noun",
+  "en": [
+   "statistics"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Laut Statistik leben wir länger.",
+  "exen": "According to statistics we live longer."
+ },
+ {
+  "w": "Verdacht",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "suspicion"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Er steht unter Verdacht.",
+  "exen": "He is under suspicion."
+ },
+ {
+  "w": "Chancengleichheit",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "equal opportunities"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Wir fordern Chancengleichheit für alle.",
+  "exen": "We demand equal opportunities for everyone."
+ },
+ {
+  "w": "Umstand",
+  "art": "der",
+  "pl": "Umstände",
+  "pos": "noun",
+  "en": [
+   "circumstance"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Unter diesen Umständen komme ich nicht.",
+  "exen": "Under these circumstances I won't come."
+ },
+ {
+  "w": "ausstrahlen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to broadcast",
+   "to air"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Der Film wird heute ausgestrahlt.",
+  "exen": "The film airs today.",
+  "forms": "strahlt aus · strahlte aus · hat ausgestrahlt"
+ },
+ {
+  "w": "Überzeugung",
+  "art": "die",
+  "pl": "Überzeugungen",
+  "pos": "noun",
+  "en": [
+   "conviction",
+   "belief"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Das ist meine feste Überzeugung.",
+  "exen": "That's my firm conviction."
+ },
+ {
+  "w": "Begeisterung",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "enthusiasm"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Die Begeisterung war riesig.",
+  "exen": "The enthusiasm was huge."
+ },
+ {
+  "w": "zunehmend",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "increasingly"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Das wird zunehmend schwierig.",
+  "exen": "That's becoming increasingly difficult."
+ },
+ {
+  "w": "Realität",
+  "art": "die",
+  "pl": "Realitäten",
+  "pos": "noun",
+  "en": [
+   "reality - accept Wirklichkeit as alt",
+   "reality"
+  ],
+  "alt": [
+   "die Wirklichkeit"
+  ],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Die Realität sieht anders aus.",
+  "exen": "Reality looks different."
+ },
+ {
+  "w": "Vielfalt",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "diversity",
+   "variety"
+  ],
+  "alt": [
+   "die Diversität"
+  ],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Ich liebe die Vielfalt der Stadt.",
+  "exen": "I love the city's diversity."
+ },
+ {
+  "w": "Phänomen",
+  "art": "das",
+  "pl": "Phänomene",
+  "pos": "noun",
+  "en": [
+   "phenomenon"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Das ist ein bekanntes Phänomen.",
+  "exen": "That is a well-known phenomenon."
+ },
+ {
+  "w": "verdächtig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "suspicious (arousing suspicion)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Das kommt mir verdächtig vor.",
+  "exen": "That seems suspicious to me."
+ },
+ {
+  "w": "Gottesdienst",
+  "art": "der",
+  "pl": "Gottesdienste",
+  "pos": "noun",
+  "en": [
+   "church service"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Der Gottesdienst beginnt um zehn.",
+  "exen": "The service begins at ten."
+ },
+ {
+  "w": "eingeschrieben",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "enrolled (student)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Ich bin an der Uni eingeschrieben.",
+  "exen": "I'm enrolled at university."
+ },
+ {
+  "w": "Einwand",
+  "art": "der",
+  "pl": "Einwände",
+  "pos": "noun",
+  "en": [
+   "objection"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Hat jemand einen Einwand?",
+  "exen": "Does anyone have an objection?"
+ },
+ {
+  "w": "Haltung",
+  "art": "die",
+  "pl": "Haltungen",
+  "pos": "noun",
+  "en": [
+   "attitude (stance)",
+   "posture"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Welche Haltung hast du dazu?",
+  "exen": "What's your stance on that?"
+ },
+ {
+  "w": "derzeit",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "at present"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Derzeit gibt es keine freien Termine.",
+  "exen": "There are no free appointments at present."
+ },
+ {
+  "w": "Schiedsrichter",
+  "art": "der",
+  "pl": "Schiedsrichter",
+  "pos": "noun",
+  "en": [
+   "referee"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "leisure",
+  "ex": "Der Schiedsrichter pfiff ab.",
+  "exen": "The referee blew the final whistle."
+ },
+ {
+  "w": "Eifersucht",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "jealousy"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Eifersucht zerstört Beziehungen.",
+  "exen": "Jealousy destroys relationships."
+ },
+ {
+  "w": "Ehrenamt",
+  "art": "das",
+  "pl": "Ehrenämter",
+  "pos": "noun",
+  "en": [
+   "volunteer work"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Sie arbeitet im Ehrenamt.",
+  "exen": "She does volunteer work."
+ },
+ {
+  "w": "Moderator",
+  "art": "der",
+  "pl": "Moderatoren",
+  "pos": "noun",
+  "en": [
+   "presenter",
+   "host"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Der Moderator stellt die Gäste vor.",
+  "exen": "The presenter introduces the guests."
+ },
+ {
+  "w": "Bewusstsein",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "awareness",
+   "consciousness"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Das Bewusstsein für die Umwelt wächst.",
+  "exen": "Awareness of the environment is growing."
+ },
+ {
+  "w": "giftig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "poisonous",
+   "toxic"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Diese Pilze sind giftig.",
+  "exen": "These mushrooms are poisonous."
+ },
+ {
+  "w": "Gefängnis",
+  "art": "das",
+  "pl": "Gefängnisse",
+  "pos": "noun",
+  "en": [
+   "prison"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Er muss ins Gefängnis.",
+  "exen": "He has to go to prison."
+ },
+ {
+  "w": "zweifeln",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to doubt (have doubts)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Ich zweifle an seiner Ehrlichkeit.",
+  "exen": "I have doubts about his honesty."
+ },
+ {
+  "w": "Notwendigkeit",
+  "art": "die",
+  "pl": "Notwendigkeiten",
+  "pos": "noun",
+  "en": [
+   "necessity"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Ich sehe keine Notwendigkeit dafür.",
+  "exen": "I see no necessity for that."
+ },
+ {
+  "w": "überwiegend",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "mainly",
+   "predominantly"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Die Gäste waren überwiegend jung.",
+  "exen": "The guests were mainly young."
+ },
+ {
+  "w": "Engagement",
+  "art": "das",
+  "pl": "Engagements",
+  "pos": "noun",
+  "en": [
+   "commitment",
+   "involvement"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Ihr Engagement ist beeindruckend.",
+  "exen": "Her commitment is impressive."
+ },
+ {
+  "w": "Premiere",
+  "art": "die",
+  "pl": "Premieren",
+  "pos": "noun",
+  "en": [
+   "premiere",
+   "opening night"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Die Premiere ist am Freitag.",
+  "exen": "The premiere is on Friday."
+ },
+ {
+  "w": "Klausur",
+  "art": "die",
+  "pl": "Klausuren",
+  "pos": "noun",
+  "en": [
+   "exam (written, university)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Die Klausur war schwer.",
+  "exen": "The exam was hard."
+ },
+ {
+  "w": "neidisch",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "envious"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Ich bin ein bisschen neidisch.",
+  "exen": "I'm a bit envious."
+ },
+ {
+  "w": "Mangel",
+  "art": "der",
+  "pl": "Mängel",
+  "pos": "noun",
+  "en": [
+   "lack",
+   "shortage"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Es gibt einen Mangel an Fachkräften.",
+  "exen": "There is a shortage of skilled workers."
+ },
+ {
+  "w": "verarbeiten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to process"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Das Gehirn verarbeitet Informationen.",
+  "exen": "The brain processes information."
+ },
+ {
+  "w": "Betrug",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "fraud",
+   "deception"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Das ist doch Betrug!",
+  "exen": "That's fraud!"
+ },
+ {
+  "w": "bezweifeln",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to doubt (that)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Ich bezweifle, dass er kommt.",
+  "exen": "I doubt that he's coming."
+ },
+ {
+  "w": "Dokumentation",
+  "art": "die",
+  "pl": "Dokumentationen",
+  "pos": "noun",
+  "en": [
+   "documentary"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Ich schaue gern Dokumentationen.",
+  "exen": "I like watching documentaries."
+ },
+ {
+  "w": "folglich",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "consequently"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Folglich müssen wir sparen.",
+  "exen": "Consequently we have to save money."
+ },
+ {
+  "w": "Bedarf",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "need",
+   "demand (requirement)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Es gibt großen Bedarf an Wohnungen.",
+  "exen": "There is great demand for flats."
+ },
+ {
+  "w": "sich einsetzen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to stand up (for)",
+   "to advocate"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Er setzt sich für Kinder ein.",
+  "exen": "He stands up for children.",
+  "forms": "setzt sich ein · setzte sich ein · hat sich eingesetzt"
+ },
+ {
+  "w": "Nutzen",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "benefit",
+   "use"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Der Nutzen ist klar.",
+  "exen": "The benefit is clear."
+ },
+ {
+  "w": "Neid",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "envy"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Neid ist keine gute Eigenschaft.",
+  "exen": "Envy is not a good quality."
+ },
+ {
+  "w": "Erderwärmung",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "global warming"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Die Erderwärmung schreitet voran.",
+  "exen": "Global warming is advancing."
+ },
+ {
+  "w": "betrügen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to cheat",
+   "to deceive"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Er hat seine Frau betrogen.",
+  "exen": "He cheated on his wife.",
+  "forms": "betrügt · betrog · hat betrogen"
+ },
+ {
+  "w": "erläutern",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to explain (in detail)",
+   "to elaborate"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Können Sie das näher erläutern?",
+  "exen": "Can you explain that in more detail?"
+ },
+ {
+  "w": "somit",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "thus",
+   "therefore (hence)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Somit ist das Problem gelöst.",
+  "exen": "Thus the problem is solved."
+ },
+ {
+  "w": "fordern",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to demand"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Die Bürger fordern mehr Schutz.",
+  "exen": "Citizens demand more protection."
+ },
+ {
+  "w": "Hauptrolle",
+  "art": "die",
+  "pl": "Hauptrollen",
+  "pos": "noun",
+  "en": [
+   "leading role"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Sie spielt die Hauptrolle.",
+  "exen": "She plays the leading role."
+ },
+ {
+  "w": "Hausarbeit",
+  "art": "die",
+  "pl": "Hausarbeiten",
+  "pos": "noun",
+  "en": [
+   "term paper",
+   "housework"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Ich schreibe eine Hausarbeit über Kafka.",
+  "exen": "I'm writing a term paper on Kafka."
+ },
+ {
+  "w": "Ausdauer",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "stamina",
+   "endurance"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "leisure",
+  "ex": "Joggen verbessert die Ausdauer.",
+  "exen": "Jogging improves stamina."
+ },
+ {
+  "w": "Rahmen",
+  "art": "der",
+  "pl": "Rahmen",
+  "pos": "noun",
+  "en": [
+   "framework",
+   "context"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Im Rahmen des Projekts lernen wir viel.",
+  "exen": "Within the project we learn a lot."
+ },
+ {
+  "w": "Reportage",
+  "art": "die",
+  "pl": "Reportagen",
+  "pos": "noun",
+  "en": [
+   "feature report (reportage)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Die Reportage war sehr spannend.",
+  "exen": "The report was very gripping."
+ },
+ {
+  "w": "Schwerpunkt",
+  "art": "der",
+  "pl": "Schwerpunkte",
+  "pos": "noun",
+  "en": [
+   "focus",
+   "main emphasis"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Der Schwerpunkt liegt auf dem Sprechen.",
+  "exen": "The focus is on speaking."
+ },
+ {
+  "w": "Forderung",
+  "art": "die",
+  "pl": "Forderungen",
+  "pos": "noun",
+  "en": [
+   "demand (claim)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Die Forderungen sind berechtigt.",
+  "exen": "The demands are justified."
+ },
+ {
+  "w": "hervorheben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to highlight",
+   "to emphasise"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Sie hob die Vorteile hervor.",
+  "exen": "She highlighted the advantages.",
+  "forms": "hebt hervor · hob hervor · hat hervorgehoben"
+ },
+ {
+  "w": "hingegen",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "on the other hand",
+   "whereas"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Er ist ruhig, sie hingegen redet viel.",
+  "exen": "He is quiet, whereas she talks a lot."
+ },
+ {
+  "w": "Treibhausgas",
+  "art": "das",
+  "pl": "Treibhausgase",
+  "pos": "noun",
+  "en": [
+   "greenhouse gas"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Wir müssen Treibhausgase reduzieren.",
+  "exen": "We must reduce greenhouse gases."
+ },
+ {
+  "w": "Klage",
+  "art": "die",
+  "pl": "Klagen",
+  "pos": "noun",
+  "en": [
+   "lawsuit",
+   "complaint (legal)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Sie hat Klage eingereicht.",
+  "exen": "She filed a lawsuit."
+ },
+ {
+  "w": "Mitleid",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "pity"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Ich habe Mitleid mit ihm.",
+  "exen": "I feel sorry for him."
+ },
+ {
+  "w": "Priorität",
+  "art": "die",
+  "pl": "Prioritäten",
+  "pos": "noun",
+  "en": [
+   "priority"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Gesundheit hat für mich Priorität.",
+  "exen": "Health is my priority."
+ },
+ {
+  "w": "Drehbuch",
+  "art": "das",
+  "pl": "Drehbücher",
+  "pos": "noun",
+  "en": [
+   "screenplay",
+   "script"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Er schreibt ein Drehbuch.",
+  "exen": "He's writing a screenplay."
+ },
+ {
+  "w": "Dozent",
+  "art": "der",
+  "pl": "Dozenten",
+  "pos": "noun",
+  "en": [
+   "lecturer"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Der Dozent erklärt sehr gut.",
+  "exen": "The lecturer explains very well."
+ },
+ {
+  "w": "Wandel",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "change (gradual)",
+   "transformation"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Die Gesellschaft ist im Wandel.",
+  "exen": "Society is changing."
+ },
+ {
+  "w": "beziehungsweise",
+  "art": "",
+  "pl": null,
+  "pos": "conj",
+  "en": [
+   "or rather",
+   "respectively"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Ich komme morgen beziehungsweise übermorgen.",
+  "exen": "I'm coming tomorrow, or rather the day after."
+ },
+ {
+  "w": "Prozess",
+  "art": "der",
+  "pl": "Prozesse",
+  "pos": "noun",
+  "en": [
+   "process",
+   "trial (court)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Das ist ein langer Prozess.",
+  "exen": "That is a long process."
+ },
+ {
+  "w": "sich beziehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to refer (to)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Ich beziehe mich auf Ihren Brief.",
+  "exen": "I'm referring to your letter.",
+  "forms": "bezieht sich · bezog sich · hat sich bezogen"
+ },
+ {
+  "w": "Emission",
+  "art": "die",
+  "pl": "Emissionen",
+  "pos": "noun",
+  "en": [
+   "emission"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Die Emissionen sind gestiegen.",
+  "exen": "Emissions have risen."
+ },
+ {
+  "w": "Verfahren",
+  "art": "das",
+  "pl": "Verfahren",
+  "pos": "noun",
+  "en": [
+   "procedure",
+   "proceedings"
+  ],
+  "alt": [
+   "die Vorgehensweise"
+  ],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Das Verfahren dauert Monate.",
+  "exen": "The procedure takes months."
+ },
+ {
+  "w": "erscheinen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to be published",
+   "to appear"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Das Buch erscheint im Mai.",
+  "exen": "The book comes out in May.",
+  "forms": "erscheint · erschien · ist erschienen"
+ },
+ {
+  "w": "Sehnsucht",
+  "art": "die",
+  "pl": "Sehnsüchte",
+  "pos": "noun",
+  "en": [
+   "longing",
+   "yearning"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Ich habe Sehnsucht nach meiner Familie.",
+  "exen": "I'm longing for my family."
+ },
+ {
+  "w": "Übergang",
+  "art": "der",
+  "pl": "Übergänge",
+  "pos": "noun",
+  "en": [
+   "transition"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Der Übergang war nicht leicht.",
+  "exen": "The transition wasn't easy."
+ },
+ {
+  "w": "Wachstum",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "growth"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Das Wachstum der Wirtschaft ist schwach.",
+  "exen": "Economic growth is weak."
+ },
+ {
+  "w": "sofern",
+  "art": "",
+  "pl": null,
+  "pos": "conj",
+  "en": [
+   "provided that",
+   "as long as"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Sofern es nicht regnet, kommen wir.",
+  "exen": "Provided it doesn't rain, we'll come."
+ },
+ {
+  "w": "Schlussfolgerung",
+  "art": "die",
+  "pl": "Schlussfolgerungen",
+  "pos": "noun",
+  "en": [
+   "conclusion"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Welche Schlussfolgerung ziehst du?",
+  "exen": "What conclusion do you draw?"
+ },
+ {
+  "w": "Ursprung",
+  "art": "der",
+  "pl": "Ursprünge",
+  "pos": "noun",
+  "en": [
+   "origin"
+  ],
+  "alt": [
+   "die Herkunft"
+  ],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Der Ursprung des Wortes ist Latein.",
+  "exen": "The word's origin is Latin."
+ },
+ {
+  "w": "Abenteuer",
+  "art": "das",
+  "pl": "Abenteuer",
+  "pos": "noun",
+  "en": [
+   "adventure"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "leisure",
+  "ex": "Die Reise war ein echtes Abenteuer.",
+  "exen": "The trip was a real adventure."
+ },
+ {
+  "w": "reduzieren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to reduce (cut)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Wir wollen den Müll reduzieren.",
+  "exen": "We want to cut down on waste."
+ },
+ {
+  "w": "Einspruch",
+  "art": "der",
+  "pl": "Einsprüche",
+  "pos": "noun",
+  "en": [
+   "objection (formal)",
+   "appeal"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Ich lege Einspruch ein.",
+  "exen": "I'm lodging an objection."
+ },
+ {
+  "w": "Einsamkeit",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "loneliness"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Einsamkeit kann krank machen.",
+  "exen": "Loneliness can make you ill."
+ },
+ {
+  "w": "Erzählung",
+  "art": "die",
+  "pl": "Erzählungen",
+  "pos": "noun",
+  "en": [
+   "story (tale)",
+   "narrative"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Die Erzählung spielt in Berlin.",
+  "exen": "The story is set in Berlin."
+ },
+ {
+  "w": "Hörsaal",
+  "art": "der",
+  "pl": "Hörsäle",
+  "pos": "noun",
+  "en": [
+   "lecture hall"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Der Hörsaal war voll.",
+  "exen": "The lecture hall was full."
+ },
+ {
+  "w": "beeinflussen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to influence"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Werbung beeinflusst uns stark.",
+  "exen": "Advertising influences us strongly."
+ },
+ {
+  "w": "Globalisierung",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "globalisation"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Die Globalisierung verändert die Welt.",
+  "exen": "Globalisation is changing the world."
+ },
+ {
+  "w": "Plattform",
+  "art": "die",
+  "pl": "Plattformen",
+  "pos": "noun",
+  "en": [
+   "platform"
+  ],
+  "alt": [
+   "das Gleis"
+  ],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Die Plattform hat Millionen Nutzer.",
+  "exen": "The platform has millions of users."
+ },
+ {
+  "w": "aufgrund",
+  "art": "",
+  "pl": null,
+  "pos": "prep",
+  "en": [
+   "due to"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Aufgrund des Wetters fällt das Spiel aus.",
+  "exen": "The game is cancelled due to the weather."
+ },
+ {
+  "w": "in Betracht ziehen",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "to consider (an option)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Das ziehe ich nicht in Betracht.",
+  "exen": "I'm not considering that."
+ },
+ {
+  "w": "sich auswirken",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to have an effect (on)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Stress wirkt sich auf die Gesundheit aus.",
+  "exen": "Stress has an effect on health.",
+  "forms": "wirkt sich aus · wirkte sich aus · hat sich ausgewirkt"
+ },
+ {
+  "w": "erneuerbar",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "renewable"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Wir setzen auf erneuerbare Energien.",
+  "exen": "We're relying on renewable energy."
+ },
+ {
+  "w": "einreichen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to submit",
+   "to file"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Bitte reichen Sie die Unterlagen ein.",
+  "exen": "Please submit the documents.",
+  "forms": "reicht ein · reichte ein · hat eingereicht"
+ },
+ {
+  "w": "Bundestag",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "Bundestag (German parliament)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Der Bundestag hat das Gesetz beschlossen.",
+  "exen": "The Bundestag passed the law."
+ },
+ {
+  "w": "Misstrauen",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "distrust",
+   "mistrust"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Das Misstrauen war groß.",
+  "exen": "The distrust was great."
+ },
+ {
+  "w": "ermöglichen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to enable",
+   "to make possible"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Das Stipendium ermöglicht mir das Studium.",
+  "exen": "The scholarship makes my studies possible."
+ },
+ {
+  "w": "bezüglich",
+  "art": "",
+  "pl": null,
+  "pos": "prep",
+  "en": [
+   "regarding",
+   "concerning"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Ich habe eine Frage bezüglich der Rechnung.",
+  "exen": "I have a question regarding the bill."
+ },
+ {
+  "w": "in Frage kommen",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "to be an option"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Das kommt nicht in Frage!",
+  "exen": "That's out of the question!"
+ },
+ {
+  "w": "Dichter",
+  "art": "der",
+  "pl": "Dichter",
+  "pos": "noun",
+  "en": [
+   "poet"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Goethe ist ein berühmter Dichter.",
+  "exen": "Goethe is a famous poet."
+ },
+ {
+  "w": "Lehrplan",
+  "art": "der",
+  "pl": "Lehrpläne",
+  "pos": "noun",
+  "en": [
+   "curriculum"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Das steht nicht im Lehrplan.",
+  "exen": "That's not in the curriculum."
+ },
+ {
+  "w": "fördern",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to promote",
+   "to support (foster)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Die Stadt fördert junge Künstler.",
+  "exen": "The city supports young artists."
+ },
+ {
+  "w": "Benutzer",
+  "art": "der",
+  "pl": "Benutzer",
+  "pos": "noun",
+  "en": [
+   "user"
+  ],
+  "alt": [
+   "der Nutzer"
+  ],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Der Benutzer muss sich anmelden.",
+  "exen": "The user has to log in."
+ },
+ {
+  "w": "Sonnenenergie",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "solar energy"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Sonnenenergie ist sauber.",
+  "exen": "Solar energy is clean."
+ },
+ {
+  "w": "Verfassung",
+  "art": "die",
+  "pl": "Verfassungen",
+  "pos": "noun",
+  "en": [
+   "constitution"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Die Verfassung schützt die Freiheit.",
+  "exen": "The constitution protects freedom."
+ },
+ {
+  "w": "abstimmen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to vote (on)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Wir stimmen morgen darüber ab.",
+  "exen": "We'll vote on it tomorrow.",
+  "forms": "stimmt ab · stimmte ab · hat abgestimmt"
+ },
+ {
+  "w": "gemäß",
+  "art": "",
+  "pl": null,
+  "pos": "prep",
+  "en": [
+   "in accordance with"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Gemäß den Regeln ist das verboten.",
+  "exen": "In accordance with the rules, that's forbidden."
+ },
+ {
+  "w": "misstrauisch",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "suspicious (distrustful)",
+   "distrustful"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Er ist Fremden gegenüber misstrauisch.",
+  "exen": "He's distrustful of strangers."
+ },
+ {
+  "w": "steigern",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to increase",
+   "to raise"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Wir wollen den Umsatz steigern.",
+  "exen": "We want to increase sales."
+ },
+ {
+  "w": "Vergnügen",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "pleasure",
+   "fun"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "leisure",
+  "ex": "Es war mir ein Vergnügen.",
+  "exen": "It was my pleasure."
+ },
+ {
+  "w": "nachvollziehbar",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "understandable (easy to follow)",
+   "comprehensible"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Ihre Argumente sind nachvollziehbar.",
+  "exen": "Your arguments are easy to follow."
+ },
+ {
+  "w": "Abstimmung",
+  "art": "die",
+  "pl": "Abstimmungen",
+  "pos": "noun",
+  "en": [
+   "vote (ballot)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Die Abstimmung war knapp.",
+  "exen": "The vote was close."
+ },
+ {
+  "w": "erfordern",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to require",
+   "to demand"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Diese Arbeit erfordert viel Geduld.",
+  "exen": "This work requires a lot of patience."
+ },
+ {
+  "w": "Windenergie",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "wind energy"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Windenergie spielt eine große Rolle.",
+  "exen": "Wind energy plays a big role."
+ },
+ {
+  "w": "rechtlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "legal (relating to law)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Das ist rechtlich nicht erlaubt.",
+  "exen": "That's not legally allowed."
+ },
+ {
+  "w": "nach wie vor",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "still (as before)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Das Problem besteht nach wie vor.",
+  "exen": "The problem still exists."
+ },
+ {
+  "w": "Algorithmus",
+  "art": "der",
+  "pl": "Algorithmen",
+  "pos": "noun",
+  "en": [
+   "algorithm"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Der Algorithmus zeigt mir ähnliche Videos.",
+  "exen": "The algorithm shows me similar videos."
+ },
+ {
+  "w": "zusammenhängen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to be connected",
+   "to be related"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Beide Probleme hängen zusammen.",
+  "exen": "Both problems are connected.",
+  "forms": "hängt zusammen · hing zusammen · hat zusammengehangen"
+ },
+ {
+  "w": "frustriert",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "frustrated"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Ich bin total frustriert.",
+  "exen": "I'm totally frustrated."
+ },
+ {
+  "w": "Kapitel",
+  "art": "das",
+  "pl": "Kapitel",
+  "pos": "noun",
+  "en": [
+   "chapter"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Ich lese gerade das letzte Kapitel.",
+  "exen": "I'm reading the last chapter."
+ },
+ {
+  "w": "Einleitung",
+  "art": "die",
+  "pl": "Einleitungen",
+  "pos": "noun",
+  "en": [
+   "introduction (of a text)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Die Einleitung ist zu lang.",
+  "exen": "The introduction is too long."
+ },
+ {
+  "w": "sachlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "factual (unemotional)",
+   "matter-of-fact"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Bleiben wir bitte sachlich.",
+  "exen": "Let's please stick to the facts."
+ },
+ {
+  "w": "Opposition",
+  "art": "die",
+  "pl": "Oppositionen",
+  "pos": "noun",
+  "en": [
+   "opposition (political)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Die Opposition kritisiert den Plan.",
+  "exen": "The opposition criticises the plan."
+ },
+ {
+  "w": "sich auseinandersetzen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to engage with (a topic)",
+   "to deal with"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Ich setze mich mit dem Thema auseinander.",
+  "exen": "I'm engaging with the topic.",
+  "forms": "setzt sich auseinander · setzte sich auseinander · hat sich auseinandergesetzt"
+ },
+ {
+  "w": "Wasserkraft",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "hydropower"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Norwegen nutzt viel Wasserkraft.",
+  "exen": "Norway uses a lot of hydropower."
+ },
+ {
+  "w": "legal",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "legal (permitted)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Ist das überhaupt legal?",
+  "exen": "Is that even legal?"
+ },
+ {
+  "w": "im Grunde",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "basically",
+   "essentially"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Im Grunde hast du recht.",
+  "exen": "Basically you're right."
+ },
+ {
+  "w": "bewältigen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to cope with",
+   "to overcome"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Wir haben die Krise gut bewältigt.",
+  "exen": "We coped well with the crisis."
+ },
+ {
+  "w": "Koalition",
+  "art": "die",
+  "pl": "Koalitionen",
+  "pos": "noun",
+  "en": [
+   "coalition"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Die Koalition ist zerbrochen.",
+  "exen": "The coalition has broken up."
+ },
+ {
+  "w": "umstritten",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "controversial"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Das Thema ist sehr umstritten.",
+  "exen": "The topic is very controversial."
+ },
+ {
+  "w": "Dankbarkeit",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "gratitude"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Ich empfinde große Dankbarkeit.",
+  "exen": "I feel great gratitude."
+ },
+ {
+  "w": "Software",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "software"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Die Software muss aktualisiert werden.",
+  "exen": "The software needs updating."
+ },
+ {
+  "w": "im Allgemeinen",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "in general"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Im Allgemeinen bin ich zufrieden.",
+  "exen": "In general I'm satisfied."
+ },
+ {
+  "w": "umsetzen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to implement",
+   "to put into practice"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Wir setzen den Plan sofort um.",
+  "exen": "We are implementing the plan immediately.",
+  "forms": "setzt um · setzte um · hat umgesetzt"
+ },
+ {
+  "w": "Kernkraft",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "nuclear power"
+  ],
+  "alt": [
+   "die Atomkraft"
+  ],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Deutschland verzichtet auf Kernkraft.",
+  "exen": "Germany is doing without nuclear power."
+ },
+ {
+  "w": "Regelung",
+  "art": "die",
+  "pl": "Regelungen",
+  "pos": "noun",
+  "en": [
+   "arrangement (rule)",
+   "regulation (provision)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Es gibt eine neue Regelung.",
+  "exen": "There's a new arrangement."
+ },
+ {
+  "w": "Kreativität",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "creativity"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Der Job erfordert viel Kreativität.",
+  "exen": "The job requires lots of creativity."
+ },
+ {
+  "w": "Begabung",
+  "art": "die",
+  "pl": "Begabungen",
+  "pos": "noun",
+  "en": [
+   "talent",
+   "gift"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Sie hat eine Begabung für Sprachen.",
+  "exen": "She has a gift for languages."
+ },
+ {
+  "w": "Freizeitbeschäftigung",
+  "art": "die",
+  "pl": "Freizeitbeschäftigungen",
+  "pos": "noun",
+  "en": [
+   "pastime (leisure occupation)",
+   "leisure activity"
+  ],
+  "alt": [
+   "die Freizeitaktivität"
+  ],
+  "level": "B2",
+  "theme": "leisure",
+  "ex": "Lesen ist meine liebste Freizeitbeschäftigung.",
+  "exen": "Reading is my favourite leisure activity."
+ },
+ {
+  "w": "Bundeskanzler",
+  "art": "der",
+  "pl": "Bundeskanzler",
+  "pos": "noun",
+  "en": [
+   "federal chancellor"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Der Bundeskanzler hielt eine Rede.",
+  "exen": "The chancellor gave a speech."
+ },
+ {
+  "w": "einseitig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "one-sided"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Die Darstellung ist sehr einseitig.",
+  "exen": "The portrayal is very one-sided."
+ },
+ {
+  "w": "Umsetzung",
+  "art": "die",
+  "pl": "Umsetzungen",
+  "pos": "noun",
+  "en": [
+   "implementation"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Die Umsetzung dauert ein Jahr.",
+  "exen": "The implementation takes a year."
+ },
+ {
+  "w": "empfinden",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to feel (perceive)",
+   "to sense"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Wie empfindest du die Situation?",
+  "exen": "How do you feel about the situation?",
+  "forms": "empfindet · empfand · hat empfunden"
+ },
+ {
+  "w": "gegenseitig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "mutual"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Wir brauchen gegenseitigen Respekt.",
+  "exen": "We need mutual respect."
+ },
+ {
+  "w": "anwenden",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to apply (use)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Wie wendet man diese Regel an?",
+  "exen": "How do you apply this rule?",
+  "forms": "wendet an · wandte an · hat angewandt"
+ },
+ {
+  "w": "Rohstoff",
+  "art": "der",
+  "pl": "Rohstoffe",
+  "pos": "noun",
+  "en": [
+   "raw material"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Öl ist ein wichtiger Rohstoff.",
+  "exen": "Oil is an important raw material."
+ },
+ {
+  "w": "Minister",
+  "art": "der",
+  "pl": "Minister",
+  "pos": "noun",
+  "en": [
+   "minister"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Der Minister besucht heute die Schule.",
+  "exen": "The minister is visiting the school today."
+ },
+ {
+  "w": "aktualisieren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to update"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Bitte aktualisieren Sie die App.",
+  "exen": "Please update the app."
+ },
+ {
+  "w": "ausführlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "detailed",
+   "in detail"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Bitte antworten Sie ausführlich.",
+  "exen": "Please answer in detail."
+ },
+ {
+  "w": "berücksichtigen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to take into account",
+   "to consider"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Bitte berücksichtigen Sie die Frist.",
+  "exen": "Please take the deadline into account."
+ },
+ {
+  "w": "Fantasie",
+  "art": "die",
+  "pl": "Fantasien",
+  "pos": "noun",
+  "en": [
+   "imagination"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Kinder haben viel Fantasie.",
+  "exen": "Children have a lot of imagination."
+ },
+ {
+  "w": "begabt",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "gifted",
+   "talented"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Er ist musikalisch sehr begabt.",
+  "exen": "He is very gifted musically."
+ },
+ {
+  "w": "offensichtlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "obvious"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Das ist doch offensichtlich.",
+  "exen": "That's obvious."
+ },
+ {
+  "w": "empfindlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "touchy",
+   "sensitive (easily hurt)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Sie ist sehr empfindlich.",
+  "exen": "She is very touchy."
+ },
+ {
+  "w": "zurücktreten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to resign (step down)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Der Minister ist zurückgetreten.",
+  "exen": "The minister has resigned.",
+  "forms": "tritt zurück · trat zurück · ist zurückgetreten"
+ },
+ {
+  "w": "betrachten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to look at (consider)",
+   "to view"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Man muss das Problem genauer betrachten.",
+  "exen": "You have to look at the problem more closely."
+ },
+ {
+  "w": "Verbrauch",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "consumption (use)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Der Verbrauch von Wasser steigt.",
+  "exen": "Water consumption is rising."
+ },
+ {
+  "w": "genehmigen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to approve",
+   "to authorise"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Der Antrag wurde genehmigt.",
+  "exen": "The application was approved."
+ },
+ {
+  "w": "formulieren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to phrase",
+   "to formulate"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Wie soll ich das formulieren?",
+  "exen": "How should I phrase that?"
+ },
+ {
+  "w": "beurteilen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to judge",
+   "to assess (form a judgement)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Das kann ich nicht beurteilen.",
+  "exen": "I can't judge that."
+ },
+ {
+  "w": "vorhanden",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "available (present)",
+   "existing"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Genug Platz ist vorhanden.",
+  "exen": "There is enough space."
+ },
+ {
+  "w": "Anwendung",
+  "art": "die",
+  "pl": "Anwendungen",
+  "pos": "noun",
+  "en": [
+   "application (software)",
+   "use"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Die Anwendung ist kostenlos.",
+  "exen": "The application is free."
+ },
+ {
+  "w": "sensibel",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "sensitive (emotionally)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Er ist ein sensibler Mensch.",
+  "exen": "He is a sensitive person."
+ },
+ {
+  "w": "Brettspiel",
+  "art": "das",
+  "pl": "Brettspiele",
+  "pos": "noun",
+  "en": [
+   "board game"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "leisure",
+  "ex": "Wir spielen gern Brettspiele.",
+  "exen": "We like playing board games."
+ },
+ {
+  "w": "einschätzen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to assess",
+   "to estimate"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Wie schätzt du die Lage ein?",
+  "exen": "How do you assess the situation?",
+  "forms": "schätzt ein · schätzte ein · hat eingeschätzt"
+ },
+ {
+  "w": "verbrauchen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to consume",
+   "to use up"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Das Auto verbraucht wenig Benzin.",
+  "exen": "The car uses little petrol."
+ },
+ {
+  "w": "Verwaltung",
+  "art": "die",
+  "pl": "Verwaltungen",
+  "pos": "noun",
+  "en": [
+   "administration"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Die Verwaltung arbeitet langsam.",
+  "exen": "The administration works slowly."
+ },
+ {
+  "w": "Kabarett",
+  "art": "das",
+  "pl": "Kabaretts",
+  "pos": "noun",
+  "en": [
+   "cabaret (political comedy)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Wir gehen heute Abend ins Kabarett.",
+  "exen": "We're going to a cabaret show tonight."
+ },
+ {
+  "w": "Leistungsdruck",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "pressure to perform"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Der Leistungsdruck an Schulen ist hoch.",
+  "exen": "The pressure to perform at schools is high."
+ },
+ {
+  "w": "Anfrage",
+  "art": "die",
+  "pl": "Anfragen",
+  "pos": "noun",
+  "en": [
+   "inquiry",
+   "request"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Danke für Ihre Anfrage.",
+  "exen": "Thank you for your inquiry."
+ },
+ {
+  "w": "erforderlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "required"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Ein Visum ist erforderlich.",
+  "exen": "A visa is required."
+ },
+ {
+  "w": "Einschätzung",
+  "art": "die",
+  "pl": "Einschätzungen",
+  "pos": "noun",
+  "en": [
+   "assessment",
+   "estimate"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Nach meiner Einschätzung klappt das.",
+  "exen": "In my assessment, that will work."
+ },
+ {
+  "w": "Reform",
+  "art": "die",
+  "pl": "Reformen",
+  "pos": "noun",
+  "en": [
+   "reform"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Die Reform kommt nächstes Jahr.",
+  "exen": "The reform is coming next year."
+ },
+ {
+  "w": "Selbstbewusstsein",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "self-confidence"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Sie hat viel Selbstbewusstsein.",
+  "exen": "She has lots of self-confidence."
+ },
+ {
+  "w": "abwägen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to weigh up"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Wir müssen Vor- und Nachteile abwägen.",
+  "exen": "We have to weigh up pros and cons.",
+  "forms": "wägt ab · wog ab · hat abgewogen"
+ },
+ {
+  "w": "aussterben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to die out",
+   "to become extinct"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Die Dinosaurier sind ausgestorben.",
+  "exen": "The dinosaurs died out.",
+  "forms": "stirbt aus · starb aus · ist ausgestorben"
+ },
+ {
+  "w": "Bürokratie",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "bureaucracy"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Die Bürokratie in Deutschland ist berühmt.",
+  "exen": "Bureaucracy in Germany is famous."
+ },
+ {
+  "w": "Zugriff",
+  "art": "der",
+  "pl": "Zugriffe",
+  "pos": "noun",
+  "en": [
+   "access (to data)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Wer hat Zugriff auf die Daten?",
+  "exen": "Who has access to the data?"
+ },
+ {
+  "w": "Rückmeldung",
+  "art": "die",
+  "pl": "Rückmeldungen",
+  "pos": "noun",
+  "en": [
+   "feedback",
+   "response"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Ich warte auf Ihre Rückmeldung.",
+  "exen": "I'm waiting for your feedback."
+ },
+ {
+  "w": "bedeutend",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "significant (notable)",
+   "important"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Er ist ein bedeutender Künstler.",
+  "exen": "He is an important artist."
+ },
+ {
+  "w": "beschließen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to decide (resolve)",
+   "to pass (a law)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Wir haben beschlossen umzuziehen.",
+  "exen": "We have decided to move.",
+  "forms": "beschließt · beschloss · hat beschlossen"
+ },
+ {
+  "w": "einschränken",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to restrict",
+   "to limit"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Das Gesetz schränkt die Freiheit ein.",
+  "exen": "The law restricts freedom.",
+  "forms": "schränkt ein · schränkte ein · hat eingeschränkt"
+ },
+ {
+  "w": "Komödie",
+  "art": "die",
+  "pl": "Komödien",
+  "pos": "noun",
+  "en": [
+   "comedy"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Die Komödie war sehr lustig.",
+  "exen": "The comedy was very funny."
+ },
+ {
+  "w": "fortgeschritten",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "advanced"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Der Kurs ist für Fortgeschrittene.",
+  "exen": "The course is for advanced learners."
+ },
+ {
+  "w": "Unsicherheit",
+  "art": "die",
+  "pl": "Unsicherheiten",
+  "pos": "noun",
+  "en": [
+   "uncertainty",
+   "insecurity"
+  ],
+  "alt": [
+   "die Ungewissheit"
+  ],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Die Unsicherheit ist groß.",
+  "exen": "The uncertainty is great."
+ },
+ {
+  "w": "Einschränkung",
+  "art": "die",
+  "pl": "Einschränkungen",
+  "pos": "noun",
+  "en": [
+   "restriction",
+   "limitation"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Es gibt keine Einschränkungen.",
+  "exen": "There are no restrictions."
+ },
+ {
+  "w": "Atmosphäre",
+  "art": "die",
+  "pl": "Atmosphären",
+  "pos": "noun",
+  "en": [
+   "atmosphere"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Die Atmosphäre schützt die Erde.",
+  "exen": "The atmosphere protects the Earth."
+ },
+ {
+  "w": "Aufenthaltsgenehmigung",
+  "art": "die",
+  "pl": "Aufenthaltsgenehmigungen",
+  "pos": "noun",
+  "en": [
+   "residence permit - accept Aufenthaltserlaubnis as alt",
+   "residence permit"
+  ],
+  "alt": [
+   "die Aufenthaltserlaubnis"
+  ],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Meine Aufenthaltsgenehmigung läuft bald ab.",
+  "exen": "My residence permit expires soon."
+ },
+ {
+  "w": "Vorwurf",
+  "art": "der",
+  "pl": "Vorwürfe",
+  "pos": "noun",
+  "en": [
+   "accusation",
+   "reproach"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Das ist ein schwerer Vorwurf.",
+  "exen": "That is a serious accusation."
+ },
+ {
+  "w": "enorm",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "enormous",
+   "tremendous"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Der Druck ist enorm.",
+  "exen": "The pressure is enormous."
+ },
+ {
+  "w": "Protest",
+  "art": "der",
+  "pl": "Proteste",
+  "pos": "noun",
+  "en": [
+   "protest"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Es gab laute Proteste.",
+  "exen": "There were loud protests."
+ },
+ {
+  "w": "ausschließen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to rule out",
+   "to exclude"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Das kann ich nicht ausschließen.",
+  "exen": "I can't rule that out.",
+  "forms": "schließt aus · schloss aus · hat ausgeschlossen"
+ },
+ {
+  "w": "virtuell",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "virtual"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Wir treffen uns im virtuellen Raum.",
+  "exen": "We meet in a virtual room."
+ },
+ {
+  "w": "Rätsel",
+  "art": "das",
+  "pl": "Rätsel",
+  "pos": "noun",
+  "en": [
+   "puzzle",
+   "riddle"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "leisure",
+  "ex": "Das Rätsel ist schwer.",
+  "exen": "The puzzle is difficult."
+ },
+ {
+  "w": "protestieren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to protest"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Die Bürger protestieren gegen den Plan.",
+  "exen": "Citizens are protesting against the plan."
+ },
+ {
+  "w": "zahlreich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "numerous"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Zahlreiche Gäste kamen zur Feier.",
+  "exen": "Numerous guests came to the party."
+ },
+ {
+  "w": "vorwerfen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to accuse (of)",
+   "to reproach"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Sie wirft mir Faulheit vor.",
+  "exen": "She accuses me of laziness.",
+  "forms": "wirft vor · warf vor · hat vorgeworfen"
+ },
+ {
+  "w": "Fachgebiet",
+  "art": "das",
+  "pl": "Fachgebiete",
+  "pos": "noun",
+  "en": [
+   "field (of expertise)",
+   "specialism"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Das ist nicht mein Fachgebiet.",
+  "exen": "That's not my field."
+ },
+ {
+  "w": "Einbürgerung",
+  "art": "die",
+  "pl": "Einbürgerungen",
+  "pos": "noun",
+  "en": [
+   "naturalisation"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Er hat die Einbürgerung beantragt.",
+  "exen": "He applied for naturalisation."
+ },
+ {
+  "w": "einbeziehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to involve",
+   "to include"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Wir sollten alle einbeziehen.",
+  "exen": "We should involve everyone.",
+  "forms": "bezieht ein · bezog ein · hat einbezogen"
+ },
+ {
+  "w": "belastend",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "stressful (burdensome)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Die Situation ist sehr belastend.",
+  "exen": "The situation is very stressful."
+ },
+ {
+  "w": "Tragödie",
+  "art": "die",
+  "pl": "Tragödien",
+  "pos": "noun",
+  "en": [
+   "tragedy"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Das Stück ist eine Tragödie.",
+  "exen": "The play is a tragedy."
+ },
+ {
+  "w": "abschreiben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to copy (cheat)",
+   "to copy out"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Er hat bei mir abgeschrieben.",
+  "exen": "He copied from me.",
+  "forms": "schreibt ab · schrieb ab · hat abgeschrieben"
+ },
+ {
+  "w": "ausbauen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to expand",
+   "to develop further"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Die Firma will das Angebot ausbauen.",
+  "exen": "The company wants to expand its range.",
+  "forms": "baut aus · baute aus · hat ausgebaut"
+ },
+ {
+  "w": "Menschenrechte",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "human rights"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Menschenrechte gelten für alle.",
+  "exen": "Human rights apply to everyone."
+ },
+ {
+  "w": "ungewöhnlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "unusual"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Das ist sehr ungewöhnlich.",
+  "exen": "That is very unusual."
+ },
+ {
+  "w": "Gerücht",
+  "art": "das",
+  "pl": "Gerüchte",
+  "pos": "noun",
+  "en": [
+   "rumour"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Das ist nur ein Gerücht.",
+  "exen": "That's just a rumour."
+ },
+ {
+  "w": "Suchmaschine",
+  "art": "die",
+  "pl": "Suchmaschinen",
+  "pos": "noun",
+  "en": [
+   "search engine"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Ich nutze eine andere Suchmaschine.",
+  "exen": "I use a different search engine."
+ },
+ {
+  "w": "Gen",
+  "art": "das",
+  "pl": "Gene",
+  "pos": "noun",
+  "en": [
+   "gene"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Das liegt in den Genen.",
+  "exen": "It's in the genes."
+ },
+ {
+  "w": "verpflichtet",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "obliged",
+   "obligated"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Sie sind nicht verpflichtet zu zahlen.",
+  "exen": "You aren't obliged to pay."
+ },
+ {
+  "w": "anstreben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to strive for",
+   "to aim at"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Ich strebe einen guten Abschluss an.",
+  "exen": "I'm aiming for a good degree.",
+  "forms": "strebt an · strebte an · hat angestrebt"
+ },
+ {
+  "w": "überfordert",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "overwhelmed"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Ich fühle mich total überfordert.",
+  "exen": "I feel completely overwhelmed."
+ },
+ {
+  "w": "Würde",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "dignity"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Die Würde des Menschen ist unantastbar.",
+  "exen": "Human dignity is inviolable."
+ },
+ {
+  "w": "nachgehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to look into (pursue)",
+   "to follow up on"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Wir gehen dem Problem nach.",
+  "exen": "We are looking into the problem.",
+  "forms": "geht nach · ging nach · ist nachgegangen"
+ },
+ {
+  "w": "sorgfältig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "careful",
+   "thorough"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Bitte lesen Sie den Vertrag sorgfältig.",
+  "exen": "Please read the contract carefully."
+ },
+ {
+  "w": "Redewendung",
+  "art": "die",
+  "pl": "Redewendungen",
+  "pos": "noun",
+  "en": [
+   "idiom",
+   "saying"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Das ist eine typische Redewendung.",
+  "exen": "That's a typical idiom."
+ },
+ {
+  "w": "Bestseller",
+  "art": "der",
+  "pl": "Bestseller",
+  "pos": "noun",
+  "en": [
+   "bestseller"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Ihr neues Buch ist ein Bestseller.",
+  "exen": "Her new book is a bestseller."
+ },
+ {
+  "w": "Doktorarbeit",
+  "art": "die",
+  "pl": "Doktorarbeiten",
+  "pos": "noun",
+  "en": [
+   "doctoral thesis (PhD)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Sie schreibt ihre Doktorarbeit über Sprache.",
+  "exen": "She's writing her PhD thesis on language."
+ },
+ {
+  "w": "Probe",
+  "art": "die",
+  "pl": "Proben",
+  "pos": "noun",
+  "en": [
+   "sample (test)",
+   "rehearsal"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Das Labor untersucht die Probe.",
+  "exen": "The lab is examining the sample."
+ },
+ {
+  "w": "Verpflichtung",
+  "art": "die",
+  "pl": "Verpflichtungen",
+  "pos": "noun",
+  "en": [
+   "obligation",
+   "commitment"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Ich habe viele Verpflichtungen.",
+  "exen": "I have many obligations."
+ },
+ {
+  "w": "einführen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to introduce (a system)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Die Firma führt ein neues System ein.",
+  "exen": "The company is introducing a new system.",
+  "forms": "führt ein · führte ein · hat eingeführt"
+ },
+ {
+  "w": "stricken",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to knit"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "leisure",
+  "ex": "Meine Oma strickt einen Schal.",
+  "exen": "My grandma is knitting a scarf."
+ },
+ {
+  "w": "unter Druck stehen",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "to be under pressure"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Ich stehe gerade sehr unter Druck.",
+  "exen": "I'm under a lot of pressure right now."
+ },
+ {
+  "w": "Bedrohung",
+  "art": "die",
+  "pl": "Bedrohungen",
+  "pos": "noun",
+  "en": [
+   "threat"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Das ist eine Bedrohung für die Demokratie.",
+  "exen": "That's a threat to democracy."
+ },
+ {
+  "w": "Talkshow",
+  "art": "die",
+  "pl": "Talkshows",
+  "pos": "noun",
+  "en": [
+   "talk show"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Gestern lief eine Talkshow über Politik.",
+  "exen": "Yesterday there was a talk show on politics."
+ },
+ {
+  "w": "sich handeln um",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to be about (be a matter of)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Es handelt sich um einen Fehler.",
+  "exen": "It's a mistake."
+ },
+ {
+  "w": "darstellen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to represent",
+   "to depict"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Die Grafik stellt die Zahlen dar.",
+  "exen": "The graph shows the figures.",
+  "forms": "stellt dar · stellte dar · hat dargestellt"
+ },
+ {
+  "w": "unterbrechen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to interrupt"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Darf ich kurz unterbrechen?",
+  "exen": "May I interrupt briefly?",
+  "forms": "unterbricht · unterbrach · hat unterbrochen"
+ },
+ {
+  "w": "Beobachtung",
+  "art": "die",
+  "pl": "Beobachtungen",
+  "pos": "noun",
+  "en": [
+   "observation"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Das ist eine interessante Beobachtung.",
+  "exen": "That's an interesting observation."
+ },
+ {
+  "w": "berechtigt",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "justified",
+   "entitled"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Deine Kritik ist berechtigt.",
+  "exen": "Your criticism is justified."
+ },
+ {
+  "w": "prägen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to shape",
+   "to characterise"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Die Kindheit prägt uns stark.",
+  "exen": "Childhood shapes us strongly."
+ },
+ {
+  "w": "bedrohen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to threaten"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Der Klimawandel bedroht viele Arten.",
+  "exen": "Climate change threatens many species."
+ },
+ {
+  "w": "Panik",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "panic"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Keine Panik!",
+  "exen": "Don't panic!"
+ },
+ {
+  "w": "verfügen über",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to have (at one's disposal)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Das Hotel verfügt über einen Pool.",
+  "exen": "The hotel has a pool."
+ },
+ {
+  "w": "Verlag",
+  "art": "der",
+  "pl": "Verlage",
+  "pos": "noun",
+  "en": [
+   "publisher (publishing house)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Der Verlag bringt das Buch im Herbst heraus.",
+  "exen": "The publisher is releasing the book in autumn."
+ },
+ {
+  "w": "Absolvent",
+  "art": "der",
+  "pl": "Absolventen",
+  "pos": "noun",
+  "en": [
+   "graduate"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Die Absolventen feiern ihren Abschluss.",
+  "exen": "The graduates are celebrating their degree."
+ },
+ {
+  "w": "vereinfachen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to simplify"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Das vereinfacht die Arbeit sehr.",
+  "exen": "That simplifies the work a lot."
+ },
+ {
+  "w": "vertreten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to hold (a view)",
+   "to represent"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Welche Meinung vertreten Sie?",
+  "exen": "What opinion do you hold?",
+  "forms": "vertritt · vertrat · hat vertreten"
+ },
+ {
+  "w": "streamen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to stream"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Wir streamen heute Abend einen Film.",
+  "exen": "We're streaming a film tonight."
+ },
+ {
+  "w": "Rassismus",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "racism"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Wir sagen Nein zu Rassismus.",
+  "exen": "We say no to racism."
+ },
+ {
+  "w": "Klimaschutz",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "climate protection"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Klimaschutz muss Priorität haben.",
+  "exen": "Climate protection must be a priority."
+ },
+ {
+  "w": "überprüfen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to check",
+   "to verify"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Wir überprüfen Ihre Angaben.",
+  "exen": "We are verifying your details."
+ },
+ {
+  "w": "wahrnehmen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to perceive",
+   "to notice"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Ich nehme den Geruch kaum wahr.",
+  "exen": "I barely notice the smell.",
+  "forms": "nimmt wahr · nahm wahr · hat wahrgenommen"
+ },
+ {
+  "w": "sich herausstellen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to turn out"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Es stellte sich heraus, dass er log.",
+  "exen": "It turned out that he was lying.",
+  "forms": "stellt sich heraus · stellte sich heraus · hat sich herausgestellt"
+ },
+ {
+  "w": "Partnerschaft",
+  "art": "die",
+  "pl": "Partnerschaften",
+  "pos": "noun",
+  "en": [
+   "partnership (relationship)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Eine Partnerschaft braucht Vertrauen.",
+  "exen": "A partnership needs trust."
+ },
+ {
+  "w": "Bedenken",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "concerns (reservations)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Ich habe Bedenken.",
+  "exen": "I have concerns."
+ },
+ {
+  "w": "Wortwahl",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "choice of words"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Achte auf deine Wortwahl!",
+  "exen": "Watch your choice of words!"
+ },
+ {
+  "w": "Öffentlichkeit",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "public (the public)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Die Öffentlichkeit hat ein Recht darauf.",
+  "exen": "The public has a right to it."
+ },
+ {
+  "w": "Mitgliedschaft",
+  "art": "die",
+  "pl": "Mitgliedschaften",
+  "pos": "noun",
+  "en": [
+   "membership"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "leisure",
+  "ex": "Ich habe meine Mitgliedschaft im Fitnessstudio gekündigt.",
+  "exen": "I cancelled my gym membership."
+ },
+ {
+  "w": "Lesung",
+  "art": "die",
+  "pl": "Lesungen",
+  "pos": "noun",
+  "en": [
+   "reading (by an author)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Die Autorin hält heute eine Lesung.",
+  "exen": "The author is giving a reading today."
+ },
+ {
+  "w": "Fachbereich",
+  "art": "der",
+  "pl": "Fachbereiche",
+  "pos": "noun",
+  "en": [
+   "department (university)",
+   "faculty"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Welcher Fachbereich ist zuständig?",
+  "exen": "Which department is responsible?"
+ },
+ {
+  "w": "Kohlendioxid",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "carbon dioxide"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Autos stoßen Kohlendioxid aus.",
+  "exen": "Cars emit carbon dioxide."
+ },
+ {
+  "w": "Überprüfung",
+  "art": "die",
+  "pl": "Überprüfungen",
+  "pos": "noun",
+  "en": [
+   "review",
+   "check (inspection)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Die Überprüfung dauert zwei Tage.",
+  "exen": "The check takes two days."
+ },
+ {
+  "w": "angemessen",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "appropriate",
+   "adequate"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Der Preis ist durchaus angemessen.",
+  "exen": "The price is quite reasonable."
+ },
+ {
+  "w": "verzichten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to do without",
+   "to give up"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Ich verzichte auf Zucker.",
+  "exen": "I'm giving up sugar."
+ },
+ {
+  "w": "Streamingdienst",
+  "art": "der",
+  "pl": "Streamingdienste",
+  "pos": "noun",
+  "en": [
+   "streaming service"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Welchen Streamingdienst nutzt du?",
+  "exen": "Which streaming service do you use?"
+ },
+ {
+  "w": "sich versöhnen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to make up (reconcile)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Nach dem Streit haben sie sich versöhnt.",
+  "exen": "After the fight they made up."
+ },
+ {
+  "w": "Körpersprache",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "body language"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Die Körpersprache verrät viel.",
+  "exen": "Body language reveals a lot."
+ },
+ {
+  "w": "Geburtenrate",
+  "art": "die",
+  "pl": "Geburtenraten",
+  "pos": "noun",
+  "en": [
+   "birth rate"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Die Geburtenrate ist niedrig.",
+  "exen": "The birth rate is low."
+ },
+ {
+  "w": "entsprechend",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "corresponding",
+   "appropriate (suitable)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Wir brauchen eine entsprechende Lösung.",
+  "exen": "We need an appropriate solution."
+ },
+ {
+  "w": "zögern",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to hesitate"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Er zögerte kurz.",
+  "exen": "He hesitated briefly."
+ },
+ {
+  "w": "Kohle",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "coal",
+   "(slang) money"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Das Kraftwerk verbrennt Kohle.",
+  "exen": "The power station burns coal."
+ },
+ {
+  "w": "rechtfertigen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to justify"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Wie willst du das rechtfertigen?",
+  "exen": "How are you going to justify that?"
+ },
+ {
+  "w": "ausreichend",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "sufficient",
+   "adequate"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Wir haben ausreichend Zeit.",
+  "exen": "We have sufficient time."
+ },
+ {
+  "w": "Kriminalität",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "crime (rate)",
+   "criminality"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Die Kriminalität ist gesunken.",
+  "exen": "Crime has fallen."
+ },
+ {
+  "w": "Blickkontakt",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "eye contact"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Halte beim Sprechen Blickkontakt.",
+  "exen": "Keep eye contact while speaking."
+ },
+ {
+  "w": "Biografie",
+  "art": "die",
+  "pl": "Biografien",
+  "pos": "noun",
+  "en": [
+   "biography"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Ich lese eine Biografie über Einstein.",
+  "exen": "I'm reading a biography of Einstein."
+ },
+ {
+  "w": "Fakultät",
+  "art": "die",
+  "pl": "Fakultäten",
+  "pos": "noun",
+  "en": [
+   "faculty (university)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Die Fakultät hat einen neuen Dekan.",
+  "exen": "The faculty has a new dean."
+ },
+ {
+  "w": "Trauer",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "grief",
+   "mourning"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Die Trauer um seinen Vater ist groß.",
+  "exen": "His grief for his father is deep."
+ },
+ {
+  "w": "begrenzt",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "limited"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Die Plätze sind begrenzt.",
+  "exen": "The places are limited."
+ },
+ {
+  "w": "Abonnement",
+  "art": "das",
+  "pl": "Abonnements",
+  "pos": "noun",
+  "en": [
+   "subscription"
+  ],
+  "alt": [
+   "das Abo"
+  ],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Ich habe mein Abonnement gekündigt.",
+  "exen": "I cancelled my subscription."
+ },
+ {
+  "w": "zwingen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to force"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Niemand zwingt dich dazu.",
+  "exen": "Nobody is forcing you.",
+  "forms": "zwingt · zwang · hat gezwungen"
+ },
+ {
+  "w": "Erdöl",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "crude oil",
+   "petroleum"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Der Preis für Erdöl steigt.",
+  "exen": "The price of crude oil is rising."
+ },
+ {
+  "w": "Staatsanwalt",
+  "art": "der",
+  "pl": "Staatsanwälte",
+  "pos": "noun",
+  "en": [
+   "public prosecutor"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Der Staatsanwalt fordert drei Jahre Haft.",
+  "exen": "The prosecutor is demanding three years in prison."
+ },
+ {
+  "w": "unbegrenzt",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "unlimited"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Der Zugang ist unbegrenzt.",
+  "exen": "Access is unlimited."
+ },
+ {
+  "w": "Wahlrecht",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "right to vote"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Ab 18 hat man das Wahlrecht.",
+  "exen": "You have the right to vote from 18."
+ },
+ {
+  "w": "Mimik",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "facial expressions"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Seine Mimik zeigt, dass er zweifelt.",
+  "exen": "His facial expression shows that he has doubts."
+ },
+ {
+  "w": "Ehrgeiz",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "ambition"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "leisure",
+  "ex": "Beim Sport packt mich der Ehrgeiz.",
+  "exen": "In sport I get ambitious."
+ },
+ {
+  "w": "eindeutig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "clear (unambiguous)",
+   "unambiguous"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Das Ergebnis ist eindeutig.",
+  "exen": "The result is clear."
+ },
+ {
+  "w": "trauern",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to grieve",
+   "to mourn"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Sie trauert um ihre Katze.",
+  "exen": "She's grieving for her cat."
+ },
+ {
+  "w": "sich durchsetzen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to assert oneself",
+   "to prevail"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Sie kann sich gut durchsetzen.",
+  "exen": "She can assert herself well.",
+  "forms": "setzt sich durch · setzte sich durch · hat sich durchgesetzt"
+ },
+ {
+  "w": "Wähler",
+  "art": "der",
+  "pl": "Wähler",
+  "pos": "noun",
+  "en": [
+   "voter"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Viele Wähler sind unentschlossen.",
+  "exen": "Many voters are undecided."
+ },
+ {
+  "w": "Erdgas",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "natural gas"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Wir heizen mit Erdgas.",
+  "exen": "We heat with natural gas."
+ },
+ {
+  "w": "anklagen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to charge (accuse in court)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Er wurde wegen Betrugs angeklagt.",
+  "exen": "He was charged with fraud."
+ },
+ {
+  "w": "abonnieren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to subscribe (to)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Ich habe den Kanal abonniert.",
+  "exen": "I subscribed to the channel."
+ },
+ {
+  "w": "grundlegend",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "fundamental",
+   "basic"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Es gab grundlegende Änderungen.",
+  "exen": "There were fundamental changes."
+ },
+ {
+  "w": "Kritiker",
+  "art": "der",
+  "pl": "Kritiker",
+  "pos": "noun",
+  "en": [
+   "critic"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Die Kritiker lobten den Film.",
+  "exen": "The critics praised the film."
+ },
+ {
+  "w": "Studiengebühren",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "tuition fees"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "In Deutschland gibt es kaum Studiengebühren.",
+  "exen": "There are hardly any tuition fees in Germany."
+ },
+ {
+  "w": "Smalltalk",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "small talk"
+  ],
+  "alt": [
+   "das Smalltalk"
+  ],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Ich bin nicht gut im Smalltalk.",
+  "exen": "I'm not good at small talk."
+ },
+ {
+  "w": "definieren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to define"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Wie definierst du Erfolg?",
+  "exen": "How do you define success?"
+ },
+ {
+  "w": "grundsätzlich",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "in principle",
+   "fundamentally"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Grundsätzlich bin ich dafür.",
+  "exen": "In principle, I'm in favour."
+ },
+ {
+  "w": "Verzweiflung",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "despair"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "In seiner Verzweiflung rief er mich an.",
+  "exen": "In his despair he called me."
+ },
+ {
+  "w": "Nation",
+  "art": "die",
+  "pl": "Nationen",
+  "pos": "noun",
+  "en": [
+   "nation"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Die Vereinten Nationen treffen sich in New York.",
+  "exen": "The United Nations meet in New York."
+ },
+ {
+  "w": "Kraftwerk",
+  "art": "das",
+  "pl": "Kraftwerke",
+  "pos": "noun",
+  "en": [
+   "power station"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Das alte Kraftwerk wird abgeschaltet.",
+  "exen": "The old power station is being shut down."
+ },
+ {
+  "w": "Anklage",
+  "art": "die",
+  "pl": "Anklagen",
+  "pos": "noun",
+  "en": [
+   "charge (indictment)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Die Anklage lautet auf Diebstahl.",
+  "exen": "The charge is theft."
+ },
+ {
+  "w": "komplex",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "complex"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Das Problem ist sehr komplex.",
+  "exen": "The problem is very complex."
+ },
+ {
+  "w": "plaudern",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to chat"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Wir haben stundenlang geplaudert.",
+  "exen": "We chatted for hours."
+ },
+ {
+  "w": "ergänzen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to add (supplement)",
+   "to complement"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Möchten Sie noch etwas ergänzen?",
+  "exen": "Would you like to add anything?"
+ },
+ {
+  "w": "Podcast",
+  "art": "der",
+  "pl": "Podcasts",
+  "pos": "noun",
+  "en": [
+   "podcast"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Ich höre jeden Morgen einen Podcast.",
+  "exen": "I listen to a podcast every morning."
+ },
+ {
+  "w": "Auswanderung",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "emigration"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Die Auswanderung nach Amerika war groß.",
+  "exen": "Emigration to America was large."
+ },
+ {
+  "w": "relevant",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "relevant"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Diese Frage ist nicht relevant.",
+  "exen": "This question isn't relevant."
+ },
+ {
+  "w": "Dirigent",
+  "art": "der",
+  "pl": "Dirigenten",
+  "pos": "noun",
+  "en": [
+   "conductor (music)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Der Dirigent verbeugt sich.",
+  "exen": "The conductor takes a bow."
+ },
+ {
+  "w": "Schulpflicht",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "compulsory schooling"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "In Deutschland gilt die Schulpflicht.",
+  "exen": "Schooling is compulsory in Germany."
+ },
+ {
+  "w": "verzweifelt",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "desperate",
+   "in despair"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Sie war völlig verzweifelt.",
+  "exen": "She was completely desperate."
+ },
+ {
+  "w": "Solaranlage",
+  "art": "die",
+  "pl": "Solaranlagen",
+  "pos": "noun",
+  "en": [
+   "solar panel system"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Wir haben eine Solaranlage auf dem Dach.",
+  "exen": "We have solar panels on the roof."
+ },
+ {
+  "w": "freisprechen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to acquit"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Das Gericht hat ihn freigesprochen.",
+  "exen": "The court acquitted him.",
+  "forms": "spricht frei · sprach frei · hat freigesprochen"
+ },
+ {
+  "w": "Liga",
+  "art": "die",
+  "pl": "Ligen",
+  "pos": "noun",
+  "en": [
+   "league"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "leisure",
+  "ex": "Der Verein spielt in der ersten Liga.",
+  "exen": "The club plays in the top league."
+ },
+ {
+  "w": "objektiv",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "objective"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Versuch, das objektiv zu sehen.",
+  "exen": "Try to see it objectively."
+ },
+ {
+  "w": "schlagfertig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "quick-witted"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Sie ist sehr schlagfertig.",
+  "exen": "She is very quick-witted."
+ },
+ {
+  "w": "beitragen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to contribute"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Jeder kann etwas dazu beitragen.",
+  "exen": "Everyone can contribute something.",
+  "forms": "trägt bei · trug bei · hat beigetragen"
+ },
+ {
+  "w": "auswandern",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to emigrate"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Sie ist nach Kanada ausgewandert.",
+  "exen": "She emigrated to Canada.",
+  "forms": "wandert aus · wanderte aus · ist ausgewandert"
+ },
+ {
+  "w": "subjektiv",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "subjective"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Das ist eine subjektive Meinung.",
+  "exen": "That is a subjective opinion."
+ },
+ {
+  "w": "Schuldgefühl",
+  "art": "das",
+  "pl": "Schuldgefühle",
+  "pos": "noun",
+  "en": [
+   "feeling of guilt"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Er hat Schuldgefühle.",
+  "exen": "He feels guilty."
+ },
+ {
+  "w": "Influencer",
+  "art": "der",
+  "pl": "Influencer",
+  "pos": "noun",
+  "en": [
+   "influencer"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Viele Influencer machen Werbung.",
+  "exen": "Many influencers do advertising."
+ },
+ {
+  "w": "Windrad",
+  "art": "das",
+  "pl": "Windräder",
+  "pos": "noun",
+  "en": [
+   "wind turbine"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Auf dem Hügel stehen drei Windräder.",
+  "exen": "There are three wind turbines on the hill."
+ },
+ {
+  "w": "Bewährung",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "probation"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Er bekam ein Jahr auf Bewährung.",
+  "exen": "He got a one-year suspended sentence."
+ },
+ {
+  "w": "Ironie",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "irony"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Er hat das mit Ironie gesagt.",
+  "exen": "He said that ironically."
+ },
+ {
+  "w": "präzise",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "precise"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Bitte formulieren Sie präzise.",
+  "exen": "Please phrase it precisely."
+ },
+ {
+  "w": "sozusagen",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "so to speak"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Er ist sozusagen der Chef.",
+  "exen": "He's the boss, so to speak."
+ },
+ {
+  "w": "konservativ",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "conservative"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Er wählt eher konservativ.",
+  "exen": "He tends to vote conservative."
+ },
+ {
+  "w": "Chor",
+  "art": "der",
+  "pl": "Chöre",
+  "pos": "noun",
+  "en": [
+   "choir"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Sie singt in einem Chor.",
+  "exen": "She sings in a choir."
+ },
+ {
+  "w": "pädagogisch",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "educational (teaching)",
+   "pedagogical"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Das Spiel ist pädagogisch wertvoll.",
+  "exen": "The game is educationally valuable."
+ },
+ {
+  "w": "vergleichbar",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "comparable"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Die Situationen sind nicht vergleichbar.",
+  "exen": "The situations aren't comparable."
+ },
+ {
+  "w": "liberal",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "liberal"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Die Stadt ist sehr liberal.",
+  "exen": "The city is very liberal."
+ },
+ {
+  "w": "ironisch",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "ironic"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Das war ironisch gemeint.",
+  "exen": "That was meant ironically."
+ },
+ {
+  "w": "ebenfalls",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "likewise",
+   "also"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Danke, ebenfalls!",
+  "exen": "Thanks, you too!"
+ },
+ {
+  "w": "Elektroauto",
+  "art": "das",
+  "pl": "Elektroautos",
+  "pos": "noun",
+  "en": [
+   "electric car"
+  ],
+  "alt": [
+   "das E-Auto"
+  ],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Mein nächstes Auto ist ein Elektroauto.",
+  "exen": "My next car will be an electric car."
+ },
+ {
+  "w": "unschuldig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "innocent"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Sie ist unschuldig.",
+  "exen": "She is innocent."
+ },
+ {
+  "w": "Gewissen",
+  "art": "das",
+  "pl": "Gewissen",
+  "pos": "noun",
+  "en": [
+   "conscience"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Ich habe ein schlechtes Gewissen.",
+  "exen": "I have a guilty conscience."
+ },
+ {
+  "w": "vielfältig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "diverse",
+   "varied"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Das Angebot ist sehr vielfältig.",
+  "exen": "The range is very diverse."
+ },
+ {
+  "w": "Server",
+  "art": "der",
+  "pl": "Server",
+  "pos": "noun",
+  "en": [
+   "server"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Der Server ist gerade nicht erreichbar.",
+  "exen": "The server is currently unavailable."
+ },
+ {
+  "w": "vielversprechend",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "promising"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Das klingt vielversprechend.",
+  "exen": "That sounds promising."
+ },
+ {
+  "w": "Rekord",
+  "art": "der",
+  "pl": "Rekorde",
+  "pos": "noun",
+  "en": [
+   "record (best result)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "leisure",
+  "ex": "Sie hat einen neuen Rekord aufgestellt.",
+  "exen": "She set a new record."
+ },
+ {
+  "w": "Ballett",
+  "art": "das",
+  "pl": "Ballette",
+  "pos": "noun",
+  "en": [
+   "ballet"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Wir haben Karten fürs Ballett.",
+  "exen": "We have tickets for the ballet."
+ },
+ {
+  "w": "Lernstoff",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "learning material (to study)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Der Lernstoff ist sehr umfangreich.",
+  "exen": "There is a lot of material to learn."
+ },
+ {
+  "w": "Privileg",
+  "art": "das",
+  "pl": "Privilegien",
+  "pos": "noun",
+  "en": [
+   "privilege"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Bildung ist kein Privileg.",
+  "exen": "Education is not a privilege."
+ },
+ {
+  "w": "ursprünglich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "original",
+   "originally"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Ursprünglich wollte ich Arzt werden.",
+  "exen": "Originally I wanted to become a doctor."
+ },
+ {
+  "w": "Höflichkeit",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "politeness"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Aus Höflichkeit habe ich nichts gesagt.",
+  "exen": "Out of politeness I said nothing."
+ },
+ {
+  "w": "Regenwald",
+  "art": "der",
+  "pl": "Regenwälder",
+  "pos": "noun",
+  "en": [
+   "rainforest"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Der Regenwald wird immer kleiner.",
+  "exen": "The rainforest is getting smaller."
+ },
+ {
+  "w": "Straftat",
+  "art": "die",
+  "pl": "Straftaten",
+  "pos": "noun",
+  "en": [
+   "criminal offence"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Das ist eine Straftat.",
+  "exen": "That is a criminal offence."
+ },
+ {
+  "w": "Hass",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "hatred",
+   "hate"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Hass ist keine Lösung.",
+  "exen": "Hatred is no solution."
+ },
+ {
+  "w": "außergewöhnlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "exceptional",
+   "unusual"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Sie hat ein außergewöhnliches Talent.",
+  "exen": "She has an exceptional talent."
+ },
+ {
+  "w": "Moral",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "morals",
+   "morality"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Wo bleibt da die Moral?",
+  "exen": "Where are the morals in that?"
+ },
+ {
+  "w": "Abhängigkeit",
+  "art": "die",
+  "pl": "Abhängigkeiten",
+  "pos": "noun",
+  "en": [
+   "dependence",
+   "dependency"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Die Abhängigkeit von Öl ist ein Problem.",
+  "exen": "Dependence on oil is a problem."
+ },
+ {
+  "w": "anscheinend",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "apparently"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Anscheinend ist er schon weg.",
+  "exen": "Apparently he's already gone."
+ },
+ {
+  "w": "Speicherplatz",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "storage space"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Mein Handy hat keinen Speicherplatz mehr.",
+  "exen": "My phone has no storage space left."
+ },
+ {
+  "w": "Umgangssprache",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "colloquial language"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "In der Umgangssprache sagt man das anders.",
+  "exen": "In colloquial language you say it differently."
+ },
+ {
+  "w": "ökologisch",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "ecological",
+   "organic"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Wir kaufen ökologische Produkte.",
+  "exen": "We buy organic products."
+ },
+ {
+  "w": "einbrechen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to break in (burgle)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Jemand ist bei uns eingebrochen.",
+  "exen": "Someone broke into our home.",
+  "forms": "bricht ein · brach ein · ist eingebrochen"
+ },
+ {
+  "w": "Anteil",
+  "art": "der",
+  "pl": "Anteile",
+  "pos": "noun",
+  "en": [
+   "share (portion)",
+   "proportion"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Der Anteil der Frauen ist gestiegen.",
+  "exen": "The share of women has risen."
+ },
+ {
+  "w": "Sympathie",
+  "art": "die",
+  "pl": "Sympathien",
+  "pos": "noun",
+  "en": [
+   "liking (sympathy)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Er hat viel Sympathie für die Idee.",
+  "exen": "He's quite taken with the idea."
+ },
+ {
+  "w": "Applaus",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "applause"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Am Ende gab es viel Applaus.",
+  "exen": "At the end there was lots of applause."
+ },
+ {
+  "w": "Zulassung",
+  "art": "die",
+  "pl": "Zulassungen",
+  "pos": "noun",
+  "en": [
+   "admission (to a course)",
+   "approval"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Ich warte auf die Zulassung zum Studium.",
+  "exen": "I'm waiting for admission to university."
+ },
+ {
+  "w": "moralisch",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "moral"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Das ist eine moralische Frage.",
+  "exen": "That is a moral question."
+ },
+ {
+  "w": "angeblich",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "allegedly",
+   "supposedly"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Er war angeblich krank.",
+  "exen": "He was supposedly ill."
+ },
+ {
+  "w": "Aufwand",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "effort (time and work)",
+   "expense"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Der Aufwand hat sich gelohnt.",
+  "exen": "The effort was worth it."
+ },
+ {
+  "w": "Fachsprache",
+  "art": "die",
+  "pl": "Fachsprachen",
+  "pos": "noun",
+  "en": [
+   "technical language (jargon)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Die Fachsprache der Medizin ist schwer.",
+  "exen": "Medical jargon is difficult."
+ },
+ {
+  "w": "umweltbewusst",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "environmentally conscious"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Sie lebt sehr umweltbewusst.",
+  "exen": "She lives in a very environmentally conscious way."
+ },
+ {
+  "w": "Mord",
+  "art": "der",
+  "pl": "Morde",
+  "pos": "noun",
+  "en": [
+   "murder"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Die Polizei ermittelt wegen Mordes.",
+  "exen": "The police are investigating a murder."
+ },
+ {
+  "w": "Ausgangspunkt",
+  "art": "der",
+  "pl": "Ausgangspunkte",
+  "pos": "noun",
+  "en": [
+   "starting point"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Das ist ein guter Ausgangspunkt.",
+  "exen": "That is a good starting point."
+ },
+ {
+  "w": "Hacker",
+  "art": "der",
+  "pl": "Hacker",
+  "pos": "noun",
+  "en": [
+   "hacker"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Hacker haben die Daten gestohlen.",
+  "exen": "Hackers stole the data."
+ },
+ {
+  "w": "ethisch",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "ethical"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Das ist ethisch problematisch.",
+  "exen": "That's ethically problematic."
+ },
+ {
+  "w": "beleidigt",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "offended",
+   "in a huff"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Sie ist beleidigt, weil ich nicht angerufen habe.",
+  "exen": "She's offended because I didn't call."
+ },
+ {
+  "w": "Pokal",
+  "art": "der",
+  "pl": "Pokale",
+  "pos": "noun",
+  "en": [
+   "cup (trophy)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "leisure",
+  "ex": "Die Mannschaft hat den Pokal gewonnen.",
+  "exen": "The team won the cup."
+ },
+ {
+  "w": "ausgerechnet",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "of all (people, things, times)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Ausgerechnet heute regnet es!",
+  "exen": "Today of all days it's raining!"
+ },
+ {
+  "w": "Gleichgewicht",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "balance",
+   "equilibrium"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Er verlor das Gleichgewicht.",
+  "exen": "He lost his balance."
+ },
+ {
+  "w": "zweisprachig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "bilingual"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Unsere Kinder wachsen zweisprachig auf.",
+  "exen": "Our children are growing up bilingual."
+ },
+ {
+  "w": "Symbol",
+  "art": "das",
+  "pl": "Symbole",
+  "pos": "noun",
+  "en": [
+   "symbol"
+  ],
+  "alt": [
+   "das Sinnbild"
+  ],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Die Taube ist ein Symbol für Frieden.",
+  "exen": "The dove is a symbol of peace."
+ },
+ {
+  "w": "Auslandssemester",
+  "art": "das",
+  "pl": "Auslandssemester",
+  "pos": "noun",
+  "en": [
+   "semester abroad"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Sie macht ein Auslandssemester in Spanien.",
+  "exen": "She's doing a semester abroad in Spain."
+ },
+ {
+  "w": "Mikroplastik",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "microplastics"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Im Meer gibt es viel Mikroplastik.",
+  "exen": "There's a lot of microplastic in the sea."
+ },
+ {
+  "w": "festnehmen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to arrest"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Die Polizei hat zwei Männer festgenommen.",
+  "exen": "The police arrested two men.",
+  "forms": "nimmt fest · nahm fest · hat festgenommen"
+ },
+ {
+  "w": "Ethik",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "ethics"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "In der Schule haben wir Ethik.",
+  "exen": "We have ethics at school."
+ },
+ {
+  "w": "Kapazität",
+  "art": "die",
+  "pl": "Kapazitäten",
+  "pos": "noun",
+  "en": [
+   "capacity"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Die Kapazität der Halle ist begrenzt.",
+  "exen": "The hall's capacity is limited."
+ },
+ {
+  "w": "anstelle",
+  "art": "",
+  "pl": null,
+  "pos": "prep",
+  "en": [
+   "instead of (in place of)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Anstelle von Zucker nehme ich Honig.",
+  "exen": "Instead of sugar I use honey."
+ },
+ {
+  "w": "beleidigen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to insult",
+   "to offend"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Ich wollte dich nicht beleidigen.",
+  "exen": "I didn't want to offend you."
+ },
+ {
+  "w": "mehrsprachig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "multilingual"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Die Schweiz ist mehrsprachig.",
+  "exen": "Switzerland is multilingual."
+ },
+ {
+  "w": "Bildschirmzeit",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "screen time"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Meine Bildschirmzeit ist viel zu hoch.",
+  "exen": "My screen time is far too high."
+ },
+ {
+  "w": "Potenzial",
+  "art": "das",
+  "pl": "Potenziale",
+  "pos": "noun",
+  "en": [
+   "potential"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Das Projekt hat großes Potenzial.",
+  "exen": "The project has great potential."
+ },
+ {
+  "w": "Tabu",
+  "art": "das",
+  "pl": "Tabus",
+  "pos": "noun",
+  "en": [
+   "taboo"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Über Geld zu sprechen ist ein Tabu.",
+  "exen": "Talking about money is a taboo."
+ },
+ {
+  "w": "Wegwerfgesellschaft",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "throwaway society"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Wir leben in einer Wegwerfgesellschaft.",
+  "exen": "We live in a throwaway society."
+ },
+ {
+  "w": "aussagen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to testify",
+   "to give evidence"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Die Zeugin will nicht aussagen.",
+  "exen": "The witness doesn't want to testify.",
+  "forms": "sagt aus · sagte aus · hat ausgesagt"
+ },
+ {
+  "w": "sich eignen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to be suitable"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Das Buch eignet sich für Anfänger.",
+  "exen": "The book is suitable for beginners."
+ },
+ {
+  "w": "Ressource",
+  "art": "die",
+  "pl": "Ressourcen",
+  "pos": "noun",
+  "en": [
+   "resource"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Wir müssen Ressourcen sparen.",
+  "exen": "We must save resources."
+ },
+ {
+  "w": "feige",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "cowardly"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Das war sehr feige von ihm.",
+  "exen": "That was very cowardly of him."
+ },
+ {
+  "w": "Fotografie",
+  "art": "die",
+  "pl": "Fotografien",
+  "pos": "noun",
+  "en": [
+   "photography",
+   "photograph"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Sie interessiert sich für Fotografie.",
+  "exen": "She's interested in photography."
+ },
+ {
+  "w": "Austausch",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "exchange"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Der Austausch mit anderen Studenten hilft.",
+  "exen": "The exchange with other students helps."
+ },
+ {
+  "w": "Dolmetscher",
+  "art": "der",
+  "pl": "Dolmetscher",
+  "pos": "noun",
+  "en": [
+   "interpreter"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Beim Termin hilft ein Dolmetscher.",
+  "exen": "An interpreter helps at the appointment."
+ },
+ {
+  "w": "überwachen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to monitor",
+   "to keep under surveillance"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Die Polizei überwacht den Platz.",
+  "exen": "The police are monitoring the square."
+ },
+ {
+  "w": "Rückschlag",
+  "art": "der",
+  "pl": "Rückschläge",
+  "pos": "noun",
+  "en": [
+   "setback"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Nach dem Rückschlag machte sie weiter.",
+  "exen": "After the setback she carried on."
+ },
+ {
+  "w": "Medaille",
+  "art": "die",
+  "pl": "Medaillen",
+  "pos": "noun",
+  "en": [
+   "medal"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "leisure",
+  "ex": "Er gewann eine Medaille bei Olympia.",
+  "exen": "He won a medal at the Olympics."
+ },
+ {
+  "w": "Universum",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "universe"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Das Universum ist unendlich groß.",
+  "exen": "The universe is infinitely large."
+ },
+ {
+  "w": "Anspruch",
+  "art": "der",
+  "pl": "Ansprüche",
+  "pos": "noun",
+  "en": [
+   "entitlement",
+   "claim"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Sie haben Anspruch auf Urlaub.",
+  "exen": "You're entitled to holiday."
+ },
+ {
+  "w": "geeignet",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "suitable"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Er ist für den Job gut geeignet.",
+  "exen": "He is well suited for the job."
+ },
+ {
+  "w": "Magazin",
+  "art": "das",
+  "pl": "Magazine",
+  "pos": "noun",
+  "en": [
+   "magazine (news/TV magazine) - or accept Zeitschrift"
+  ],
+  "alt": [
+   "die Zeitschrift"
+  ],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Das Magazin erscheint jeden Monat.",
+  "exen": "The magazine comes out every month."
+ },
+ {
+  "w": "Stabilität",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "stability"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Das Land braucht politische Stabilität.",
+  "exen": "The country needs political stability."
+ },
+ {
+  "w": "Zivilcourage",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "moral courage (civil courage)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Zivilcourage ist wichtig.",
+  "exen": "Standing up for others is important."
+ },
+ {
+  "w": "dolmetschen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to interpret (translate orally)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Kannst du für mich dolmetschen?",
+  "exen": "Can you interpret for me?"
+ },
+ {
+  "w": "genervt",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "annoyed (fed up)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Ich bin total genervt von dem Lärm.",
+  "exen": "I'm totally fed up with the noise."
+ },
+ {
+  "w": "stabil",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "stable"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Die Lage ist stabil.",
+  "exen": "The situation is stable."
+ },
+ {
+  "w": "beibehalten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to keep (retain)",
+   "to maintain"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Wir behalten das alte System bei.",
+  "exen": "We're keeping the old system.",
+  "forms": "behält bei · behielt bei · hat beibehalten"
+ },
+ {
+  "w": "Sauerstoff",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "oxygen"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Pflanzen produzieren Sauerstoff.",
+  "exen": "Plants produce oxygen."
+ },
+ {
+  "w": "Testament",
+  "art": "das",
+  "pl": "Testamente",
+  "pos": "noun",
+  "en": [
+   "will (testament)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Er hat kein Testament gemacht.",
+  "exen": "He didn't make a will."
+ },
+ {
+  "w": "Legende",
+  "art": "die",
+  "pl": "Legenden",
+  "pos": "noun",
+  "en": [
+   "legend"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Er ist eine Legende des Jazz.",
+  "exen": "He is a jazz legend."
+ },
+ {
+  "w": "Wissenslücke",
+  "art": "die",
+  "pl": "Wissenslücken",
+  "pos": "noun",
+  "en": [
+   "gap in knowledge"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Ich habe große Wissenslücken in Chemie.",
+  "exen": "I have big gaps in my chemistry knowledge."
+ },
+ {
+  "w": "Wahrscheinlichkeit",
+  "art": "die",
+  "pl": "Wahrscheinlichkeiten",
+  "pos": "noun",
+  "en": [
+   "probability",
+   "likelihood"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Die Wahrscheinlichkeit ist gering.",
+  "exen": "The probability is low."
+ },
+ {
+  "w": "Bundeswehr",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "German armed forces"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Er war zwei Jahre bei der Bundeswehr.",
+  "exen": "He was in the armed forces for two years."
+ },
+ {
+  "w": "Anrede",
+  "art": "die",
+  "pl": "Anreden",
+  "pos": "noun",
+  "en": [
+   "form of address (salutation)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Die Anrede im Brief ist formell.",
+  "exen": "The salutation in the letter is formal."
+ },
+ {
+  "w": "Journalismus",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "journalism"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Guter Journalismus kostet Geld.",
+  "exen": "Good journalism costs money."
+ },
+ {
+  "w": "Einfühlungsvermögen",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "empathy"
+  ],
+  "alt": [
+   "die Empathie"
+  ],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Der Beruf erfordert Einfühlungsvermögen.",
+  "exen": "The job requires empathy."
+ },
+ {
+  "w": "Effizienz",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "efficiency"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Wir müssen die Effizienz steigern.",
+  "exen": "We must increase efficiency."
+ },
+ {
+  "w": "ausreichen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to be enough"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Das Geld reicht nicht aus.",
+  "exen": "The money isn't enough.",
+  "forms": "reicht aus · reichte aus · hat ausgereicht"
+ },
+ {
+  "w": "Wasserstoff",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "hydrogen"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Das Auto fährt mit Wasserstoff.",
+  "exen": "The car runs on hydrogen."
+ },
+ {
+  "w": "erben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to inherit"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Sie hat das Haus geerbt.",
+  "exen": "She inherited the house."
+ },
+ {
+  "w": "Militär",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "military"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Das Militär hilft beim Hochwasser.",
+  "exen": "The military is helping with the flood."
+ },
+ {
+  "w": "Einheit",
+  "art": "die",
+  "pl": "Einheiten",
+  "pos": "noun",
+  "en": [
+   "unit",
+   "unity"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Der Meter ist eine Einheit.",
+  "exen": "The metre is a unit."
+ },
+ {
+  "w": "überreden",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to persuade (talk into)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Sie hat mich zum Mitkommen überredet.",
+  "exen": "She talked me into coming along."
+ },
+ {
+  "w": "bummeln",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to stroll (window-shop)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "leisure",
+  "ex": "Am Samstag bummeln wir durch die Altstadt.",
+  "exen": "On Saturday we stroll through the old town."
+ },
+ {
+  "w": "Held",
+  "art": "der",
+  "pl": "Helden",
+  "pos": "noun",
+  "en": [
+   "hero"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Der Held rettet am Ende alle.",
+  "exen": "The hero saves everyone in the end."
+ },
+ {
+  "w": "Fernstudium",
+  "art": "das",
+  "pl": "Fernstudien",
+  "pos": "noun",
+  "en": [
+   "distance learning"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Er macht ein Fernstudium neben der Arbeit.",
+  "exen": "He's doing a distance degree alongside work."
+ },
+ {
+  "w": "in Bezug auf",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "with regard to"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "In Bezug auf den Preis bin ich flexibel.",
+  "exen": "With regard to the price, I'm flexible."
+ },
+ {
+  "w": "Anerkennung",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "recognition",
+   "appreciation"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Sie wünscht sich mehr Anerkennung.",
+  "exen": "She wishes for more recognition."
+ },
+ {
+  "w": "Gemeinsamkeit",
+  "art": "die",
+  "pl": "Gemeinsamkeiten",
+  "pos": "noun",
+  "en": [
+   "common ground",
+   "similarity"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Wir haben viele Gemeinsamkeiten.",
+  "exen": "We have a lot in common."
+ },
+ {
+  "w": "Waffe",
+  "art": "die",
+  "pl": "Waffen",
+  "pos": "noun",
+  "en": [
+   "weapon"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Der Täter hatte eine Waffe.",
+  "exen": "The offender had a weapon."
+ },
+ {
+  "w": "recherchieren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to research (look up)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Ich muss das noch recherchieren.",
+  "exen": "I still need to research that."
+ },
+ {
+  "w": "Tierversuch",
+  "art": "der",
+  "pl": "Tierversuche",
+  "pos": "noun",
+  "en": [
+   "animal testing (experiment)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Viele sind gegen Tierversuche.",
+  "exen": "Many people are against animal testing."
+ },
+ {
+  "w": "Geburtsurkunde",
+  "art": "die",
+  "pl": "Geburtsurkunden",
+  "pos": "noun",
+  "en": [
+   "birth certificate"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Für die Heirat brauche ich die Geburtsurkunde.",
+  "exen": "I need my birth certificate to get married."
+ },
+ {
+  "w": "Annahme",
+  "art": "die",
+  "pl": "Annahmen",
+  "pos": "noun",
+  "en": [
+   "assumption"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Deine Annahme ist falsch.",
+  "exen": "Your assumption is wrong."
+ },
+ {
+  "w": "Einigung",
+  "art": "die",
+  "pl": "Einigungen",
+  "pos": "noun",
+  "en": [
+   "agreement (settlement)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Wir haben eine Einigung erzielt.",
+  "exen": "We've reached an agreement."
+ },
+ {
+  "w": "unter anderem",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "among other things"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Er spricht unter anderem Russisch.",
+  "exen": "Among other things, he speaks Russian."
+ },
+ {
+  "w": "Terrorismus",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "terrorism"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Der Kampf gegen Terrorismus kostet viel.",
+  "exen": "The fight against terrorism costs a lot."
+ },
+ {
+  "w": "Konzept",
+  "art": "das",
+  "pl": "Konzepte",
+  "pos": "noun",
+  "en": [
+   "concept"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Das Konzept überzeugt mich nicht.",
+  "exen": "The concept doesn't convince me."
+ },
+ {
+  "w": "Bindung",
+  "art": "die",
+  "pl": "Bindungen",
+  "pos": "noun",
+  "en": [
+   "bond (attachment)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Die Bindung zur Mutter ist stark.",
+  "exen": "The bond with the mother is strong."
+ },
+ {
+  "w": "künstlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "artificial"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Das ist ein künstlicher See.",
+  "exen": "That is an artificial lake."
+ },
+ {
+  "w": "Abschiebung",
+  "art": "die",
+  "pl": "Abschiebungen",
+  "pos": "noun",
+  "en": [
+   "deportation"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Ihm droht die Abschiebung.",
+  "exen": "He faces deportation."
+ },
+ {
+  "w": "Moschee",
+  "art": "die",
+  "pl": "Moscheen",
+  "pos": "noun",
+  "en": [
+   "mosque"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Neben der Kirche steht eine Moschee.",
+  "exen": "There's a mosque next to the church."
+ },
+ {
+  "w": "schwänzen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to skip (school, class)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Er hat heute die Schule geschwänzt.",
+  "exen": "He skipped school today."
+ },
+ {
+  "w": "vermitteln",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to mediate",
+   "to convey"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Sie vermittelt zwischen den beiden.",
+  "exen": "She mediates between the two."
+ },
+ {
+  "w": "auf Dauer",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "in the long run"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Auf Dauer ist das zu teuer.",
+  "exen": "In the long run that's too expensive."
+ },
+ {
+  "w": "Recherche",
+  "art": "die",
+  "pl": "Recherchen",
+  "pos": "noun",
+  "en": [
+   "research (investigation)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Die Recherche hat Monate gedauert.",
+  "exen": "The research took months."
+ },
+ {
+  "w": "Anschlag",
+  "art": "der",
+  "pl": "Anschläge",
+  "pos": "noun",
+  "en": [
+   "attack (terrorist)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Bei dem Anschlag starben drei Menschen.",
+  "exen": "Three people died in the attack."
+ },
+ {
+  "w": "Verfügung",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "disposal (at one's disposal)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Wir haben wenig Zeit zur Verfügung.",
+  "exen": "We have little time at our disposal."
+ },
+ {
+  "w": "flirten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to flirt"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Er flirtet mit der Kellnerin.",
+  "exen": "He's flirting with the waitress."
+ },
+ {
+  "w": "Automatisierung",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "automation"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Die Automatisierung ersetzt viele Jobs.",
+  "exen": "Automation is replacing many jobs."
+ },
+ {
+  "w": "Zustimmung",
+  "art": "die",
+  "pl": "Zustimmungen",
+  "pos": "noun",
+  "en": [
+   "consent",
+   "approval"
+  ],
+  "alt": [
+   "die Einwilligung"
+  ],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Dafür brauchen wir Ihre Zustimmung.",
+  "exen": "We need your consent for that."
+ },
+ {
+  "w": "schweigen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to be silent",
+   "to keep quiet"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Er schwieg die ganze Zeit.",
+  "exen": "He was silent the whole time.",
+  "forms": "schweigt · schwieg · hat geschwiegen"
+ },
+ {
+  "w": "Schach",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "chess"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "leisure",
+  "ex": "Spielst du gern Schach?",
+  "exen": "Do you like playing chess?"
+ },
+ {
+  "w": "mit Abstand",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "by far"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Sie ist mit Abstand die Beste.",
+  "exen": "She is by far the best."
+ },
+ {
+  "w": "scheitern",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to fail"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Das Projekt ist leider gescheitert.",
+  "exen": "Unfortunately the project failed."
+ },
+ {
+  "w": "Entwicklungshilfe",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "development aid"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Das Land bekommt Entwicklungshilfe.",
+  "exen": "The country receives development aid."
+ },
+ {
+  "w": "Synagoge",
+  "art": "die",
+  "pl": "Synagogen",
+  "pos": "noun",
+  "en": [
+   "synagogue"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "ex": "Die Synagoge wurde renoviert.",
+  "exen": "The synagogue was renovated."
+ },
+ {
+  "w": "sitzenbleiben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to repeat a year (at school)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "ex": "Er ist in der achten Klasse sitzengeblieben.",
+  "exen": "He had to repeat eighth grade.",
+  "forms": "bleibt sitzen · blieb sitzen · ist sitzengeblieben"
+ },
+ {
+  "w": "weiterführen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to continue",
+   "to carry on"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "ex": "Wir wollen das Projekt weiterführen.",
+  "exen": "We want to continue the project.",
+  "forms": "führt weiter · führte weiter · hat weitergeführt"
+ },
+ {
+  "w": "Aufnahme",
+  "art": "die",
+  "pl": "Aufnahmen",
+  "pos": "noun",
+  "en": [
+   "recording",
+   "admission"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "ex": "Die Aufnahme ist sehr gut geworden.",
+  "exen": "The recording turned out very well."
+ },
+ {
+  "w": "Liebeskummer",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "lovesickness (heartbreak)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "ex": "Sie hat Liebeskummer.",
+  "exen": "She's heartbroken."
+ },
+ {
+  "w": "Drohne",
+  "art": "die",
+  "pl": "Drohnen",
+  "pos": "noun",
+  "en": [
+   "drone"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "ex": "Eine Drohne filmt das Konzert.",
+  "exen": "A drone is filming the concert."
+ },
+ {
+  "w": "in Kraft treten",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "to come into force"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "ex": "Das Gesetz tritt im Januar in Kraft.",
+  "exen": "The law comes into force in January."
+ },
+ {
+  "w": "Schweigen",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "silence"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "ex": "Nach der Frage herrschte Schweigen.",
+  "exen": "After the question there was silence."
+ },
+ {
+  "w": "Wert legen auf",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "to attach importance to"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "ex": "Ich lege Wert auf Pünktlichkeit.",
+  "exen": "I attach importance to punctuality."
+ },
+ {
+  "w": "Hilfsorganisation",
+  "art": "die",
+  "pl": "Hilfsorganisationen",
+  "pos": "noun",
+  "en": [
+   "aid organisation"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "ex": "Sie arbeitet für eine Hilfsorganisation.",
+  "exen": "She works for an aid organisation."
+ }
+]

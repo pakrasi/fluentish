@@ -1,0 +1,541 @@
+[
+{
+"id": "ENG_CHUNK_0601",
+"t": "Avevo ordinato [nome], ma [frase]",
+"ex": "Scusi, avevo ordinato il burger vegetariano, ma questo ha il pollo.",
+"n": "Trapassato 'avevo ordinato' is the natural tense here, softer than 'ho ordinato'."
+},
+{
+"id": "ENG_CHUNK_0602",
+"t": "Potrei parlare con [persona]?",
+"ex": "Buongiorno, potrei parlare con Maria, per favore?",
+"n": "Condizionale = politeness. On the phone also: 'C'è [persona]?'"
+},
+{
+"id": "ENG_CHUNK_0603",
+"t": "Sono [persona] di/dello [nome]",
+"ex": "Salve, sono Sam dello studio dentistico.",
+"n": "Italians say 'Sono X' or 'Parla X', never 'Questo è X' on the phone."
+},
+{
+"id": "ENG_CHUNK_0604",
+"t": "Chiamo per [nome] / La chiamo per [nome]",
+"ex": "Buongiorno, chiamo per l'appartamento che avete messo in affitto."
+},
+{
+"id": "ENG_CHUNK_0605",
+"t": "Posso lasciare un messaggio per [persona]?",
+"ex": "Non c'è? Nessun problema. Posso lasciarle un messaggio?",
+"n": "Pronoun attaches: lasciarle (for her), lasciargli (for him)."
+},
+{
+"id": "ENG_CHUNK_0606",
+"t": "Puoi dire a [persona] di richiamarmi?",
+"ex": "Puoi dire a Tom di richiamarmi quando è libero?",
+"n": "dire a qualcuno DI + infinitive for indirect requests."
+},
+{
+"id": "ENG_CHUNK_0607",
+"t": "Ho [nome] da [durata]",
+"ex": "Ho mal di testa da due giorni ormai.",
+"n": "Present tense + da for ongoing states: never 'ho avuto ... per'."
+},
+{
+"id": "ENG_CHUNK_0608",
+"t": "Mi fa male quando [verbo]",
+"ex": "Mi fa male quando mi piego per allacciarmi le scarpe."
+},
+{
+"id": "ENG_CHUNK_0609",
+"t": "Ho [un/il nome] a pezzi / Mi fa un male cane [il nome]",
+"ex": "Ho il ginocchio a pezzi dopo quella lunga camminata.",
+"n": "'Un male cane' is colloquial for terrible pain."
+},
+{
+"id": "ENG_CHUNK_0610",
+"t": "Credo di avere [nome] / Mi sa che ho [nome]",
+"ex": "Mi sa che ho il raffreddore, quindi oggi resto a casa.",
+"n": "Credo di + infinitive when same subject; 'mi sa che' is very spoken."
+},
+{
+"id": "ENG_CHUNK_0611",
+"t": "Mi può dare qualcosa per [nome]?",
+"ex": "Buongiorno, mi può dare qualcosa per il mal di testa?",
+"n": "Lei form at the pharmacy is standard."
+},
+{
+"id": "ENG_CHUNK_0612",
+"t": "Devo preoccuparmi per [nome]?",
+"ex": "Devo preoccuparmi per questa tosse, o è solo un raffreddore?"
+},
+{
+"id": "ENG_CHUNK_0613",
+"t": "Ogni quanto devo [verbo]?",
+"ex": "Ogni quanto devo prendere queste pastiglie?",
+"n": "'Ogni quanto' = how often; 'quante volte al giorno' for daily dosage."
+},
+{
+"id": "ENG_CHUNK_0614",
+"t": "Ci vuole la ricetta per [nome]?",
+"ex": "Ci vuole la ricetta per queste pastiglie per l'allergia?",
+"n": "'Ci vuole' (it takes/is needed) is the natural frame, not 'Ho bisogno di'."
+},
+{
+"id": "ENG_CHUNK_0615",
+"t": "Non sono un tipo da [nome]",
+"ex": "Sinceramente, non sono proprio un tipo mattiniero.",
+"n": "For 'morning person' Italian uses an adjective: mattiniero / nottambulo."
+},
+{
+"id": "ENG_CHUNK_0616",
+"t": "Ultimamente mi sento [aggettivo]",
+"ex": "Ultimamente mi sento proprio bene, grazie per avermelo chiesto."
+},
+{
+"id": "ENG_CHUNK_0617",
+"t": "Sto lavorando a [nome]",
+"ex": "Questa settimana sto lavorando al nuovo sito.",
+"n": "lavorare A (a project), not 'su'."
+},
+{
+"id": "ENG_CHUNK_0618",
+"t": "Sono nel bel mezzo di [nome] / Sto [gerundio]",
+"ex": "Ti posso richiamare? Sto cenando.",
+"n": "Italians usually just say 'sto + gerundio' here."
+},
+{
+"id": "ENG_CHUNK_0619",
+"t": "Ha un minuto per [verbo]? / Hai un attimo per [verbo]?",
+"ex": "Hai un attimo per dare un'occhiata a questa mail?"
+},
+{
+"id": "ENG_CHUNK_0620",
+"t": "Ti faccio sapere per [nome]",
+"ex": "Ti faccio sapere per le date entro venerdì.",
+"n": "'Ti faccio sapere' is the everyday equivalent of 'I'll get back to you'."
+},
+{
+"id": "ENG_CHUNK_0621",
+"t": "Possiamo spostare [nome] a [nome]?",
+"ex": "Possiamo spostare la riunione a giovedì?"
+},
+{
+"id": "ENG_CHUNK_0622",
+"t": "Ti spiego [nome] passo passo",
+"ex": "Ti spiego la nuova app passo passo, è facilissima.",
+"n": "No fixed equivalent of 'walk through'; 'ti faccio vedere' also works."
+},
+{
+"id": "ENG_CHUNK_0623",
+"t": "Mi occupo io di [nome] / Sono responsabile di [nome]",
+"ex": "Mi occupo io degli snack per la festa.",
+"n": "'Mi occupo di' is far more common than 'sono responsabile' in speech."
+},
+{
+"id": "ENG_CHUNK_0624",
+"t": "Sto ancora aspettando [nome]",
+"ex": "Sto ancora aspettando il pacco, doveva arrivare lunedì."
+},
+{
+"id": "ENG_CHUNK_0625",
+"t": "Novità su [nome]?",
+"ex": "Ehi, novità sui lavori in cucina?",
+"n": "'Ci sono novità?' as a full question."
+},
+{
+"id": "ENG_CHUNK_0626",
+"t": "Complimenti per [nome] / Congratulazioni per [nome]",
+"ex": "Complimenti per il nuovo lavoro! Te lo meriti proprio."
+},
+{
+"id": "ENG_CHUNK_0627",
+"t": "In bocca al lupo per [nome]",
+"ex": "In bocca al lupo per il colloquio di domani!",
+"n": "Reply 'Crepi!' (not 'grazie'). 'Buona fortuna' exists but sounds flatter."
+},
+{
+"id": "ENG_CHUNK_0628",
+"t": "Salutami [persona]",
+"ex": "Salutami tua mamma, eh?"
+},
+{
+"id": "ENG_CHUNK_0629",
+"t": "Vieni a [nome]?",
+"ex": "Vieni alla festa venerdì?"
+},
+{
+"id": "ENG_CHUNK_0630",
+"t": "Facciamo [nome] [giorno]",
+"ex": "Sabato facciamo una grigliata, devi venire!",
+"n": "No 'on' before days: 'sabato' alone, or 'il sabato' for habitually."
+},
+{
+"id": "ENG_CHUNK_0631",
+"t": "Che succede con [nome]? / Che ha [nome]?",
+"ex": "Che ha il Wi-Fi? Continua a staccarsi."
+},
+{
+"id": "ENG_CHUNK_0632",
+"t": "Mi dai un passaggio a/fino a [nome]?",
+"ex": "Mi dai un passaggio all'aeroporto domani mattina?",
+"n": "'Dare un passaggio' = give a ride."
+},
+{
+"id": "ENG_CHUNK_0633",
+"t": "Arrivo fra [durata] / Sono lì fra [durata]",
+"ex": "Sto parcheggiando, arrivo fra cinque minuti.",
+"n": "'Arrivo' in the present is the go-to form."
+},
+{
+"id": "ENG_CHUNK_0634",
+"t": "Sto andando a/in [nome]",
+"ex": "Sto andando in palestra, ti posso chiamare dopo?"
+},
+{
+"id": "ENG_CHUNK_0635",
+"t": "Grazie per l'offerta, ma [frase] / Gentile, ma [frase]",
+"ex": "Grazie per l'offerta, ma credo di farcela da solo."
+},
+{
+"id": "ENG_CHUNK_0636",
+"t": "raccontare una barzelletta",
+"ex": "Mio padre adora raccontare barzellette a cena.",
+"n": "barzelletta = a joke story; 'fare una battuta' = crack a quip."
+},
+{
+"id": "ENG_CHUNK_0637",
+"t": "a dire la verità",
+"ex": "A dire la verità, quel film non l'ho mai visto."
+},
+{
+"id": "ENG_CHUNK_0638",
+"t": "prendere in giro [persona]",
+"ex": "I miei amici mi prendono sempre in giro per come ballo."
+},
+{
+"id": "ENG_CHUNK_0639",
+"t": "cercare scuse / trovare scuse",
+"ex": "Ok, basta scuse, oggi vado a correre."
+},
+{
+"id": "ENG_CHUNK_0640",
+"t": "non mantenere una promessa / mancare a una promessa",
+"ex": "Ho detto che ti aiuto col trasloco, e non manco alla parola data.",
+"n": "'Rompere una promessa' is a calque; say 'non mantenere' or 'mancare a'."
+},
+{
+"id": "ENG_CHUNK_0641",
+"t": "dare la colpa a [persona] per [nome]",
+"ex": "Non dare la colpa a me per la pioggia, io ho solo organizzato il picnic!"
+},
+{
+"id": "ENG_CHUNK_0642",
+"t": "fare [nome] apposta",
+"ex": "Scusa, non l'ho fatto apposta, mi è scivolato."
+},
+{
+"id": "ENG_CHUNK_0643",
+"t": "prendere una boccata d'aria",
+"ex": "Esco un attimo a prendere una boccata d'aria."
+},
+{
+"id": "ENG_CHUNK_0644",
+"t": "dare un suggerimento / fare una proposta",
+"ex": "Posso darti un suggerimento? Stasera ordiniamo thailandese."
+},
+{
+"id": "ENG_CHUNK_0645",
+"t": "fare attenzione a [nome] / attento a [nome]",
+"ex": "Attento al gradino quando entri.",
+"n": "Imperative 'Attento/a a...' is the natural warning."
+},
+{
+"id": "ENG_CHUNK_0646",
+"t": "una giornata pesante / una lunga giornata",
+"ex": "È stata una giornata pesante, non vedo l'ora di buttarmi sul divano."
+},
+{
+"id": "ENG_CHUNK_0647",
+"t": "un vizio / una brutta abitudine",
+"ex": "Guardare il telefono a letto è un mio brutto vizio."
+},
+{
+"id": "ENG_CHUNK_0648",
+"t": "un bel senso dell'umorismo",
+"ex": "Il mio nuovo coinquilino ha un bel senso dell'umorismo."
+},
+{
+"id": "ENG_CHUNK_0649",
+"t": "andare matto per [nome] / essere un grande fan di [nome]",
+"ex": "Vado matto per il piccante, proviamo quel posto."
+},
+{
+"id": "ENG_CHUNK_0650",
+"t": "nuovo di zecca",
+"ex": "Guarda la mia bici nuova di zecca!",
+"n": "Agrees: nuovo/nuova/nuovi/nuove di zecca."
+},
+{
+"id": "ENG_CHUNK_0651",
+"t": "va benissimo / è perfettamente a posto",
+"ex": "Tranquillo, la zuppa va benissimo."
+},
+{
+"id": "ENG_CHUNK_0652",
+"t": "prenderci la mano con [nome]",
+"ex": "Finalmente ci sto prendendo la mano con questa nuova app."
+},
+{
+"id": "ENG_CHUNK_0653",
+"t": "saltare alle conclusioni",
+"ex": "Non saltiamo alle conclusioni finché non la sentiamo.",
+"n": "Also 'trarre conclusioni affrettate'."
+},
+{
+"id": "ENG_CHUNK_0654",
+"t": "controllare [nome] / vedere [nome]",
+"ex": "Oggi pomeriggio controllo il problema.",
+"n": "'Ci guardo io' is a very common short form."
+},
+{
+"id": "ENG_CHUNK_0655",
+"t": "tirare fuori [nome]",
+"ex": "Non volevo tirare fuori la questione dei soldi a cena."
+},
+{
+"id": "ENG_CHUNK_0656",
+"t": "far notare [nome]",
+"ex": "Grazie per avermi fatto notare l'errore di battitura."
+},
+{
+"id": "ENG_CHUNK_0657",
+"t": "rivedere [nome] / ripassare [nome]",
+"ex": "Ripassiamo il piano ancora una volta."
+},
+{
+"id": "ENG_CHUNK_0658",
+"t": "tornare su [nome] / dare seguito a [nome]",
+"ex": "Le scrivo per dare seguito alla mia mail di lunedì.",
+"n": "'Dare seguito' is email register; in speech 'volevo sapere se...'."
+},
+{
+"id": "ENG_CHUNK_0659",
+"t": "sentire cosa ne pensa [persona] di [nome]",
+"ex": "Posso sentire cosa ne pensi di un'idea?",
+"n": "No fixed equivalent; also 'ti posso proporre un'idea?'"
+},
+{
+"id": "ENG_CHUNK_0660",
+"t": "aggiornare [persona] / mettere [persona] al corrente",
+"ex": "Mi sono perso la riunione. Mi aggiorni?"
+},
+{
+"id": "ENG_CHUNK_0661",
+"t": "sentirsi con [persona] / fare il punto con [persona]",
+"ex": "Facciamo il punto con il team venerdì."
+},
+{
+"id": "ENG_CHUNK_0662",
+"t": "avvisare [persona] / avvertire [persona]",
+"ex": "Grazie per avermi avvisato del traffico."
+},
+{
+"id": "ENG_CHUNK_0663",
+"t": "mettersi in pari con [nome] / recuperare [nome]",
+"ex": "Domenica mi sono messo in pari con le mail."
+},
+{
+"id": "ENG_CHUNK_0664",
+"t": "rispettare una scadenza",
+"ex": "Abbiamo lavorato tutto il weekend per rispettare la scadenza."
+},
+{
+"id": "ENG_CHUNK_0665",
+"t": "essere sotto pressione",
+"ex": "Questo mese sono tutti sotto pressione."
+},
+{
+"id": "ENG_CHUNK_0666",
+"t": "Da dove comincio?",
+"ex": "Com'è andato il viaggio? Oddio, da dove comincio?"
+},
+{
+"id": "ENG_CHUNK_0667",
+"t": "Detto tra noi",
+"ex": "Detto tra noi, sto pensando di cambiare lavoro."
+},
+{
+"id": "ENG_CHUNK_0668",
+"t": "Come ho detto / Come dicevo",
+"ex": "Come dicevo, ti aiuto volentieri."
+},
+{
+"id": "ENG_CHUNK_0669",
+"t": "Un'ultima cosa / Ah, un'altra cosa",
+"ex": "Ah, un'ultima cosa: porta un documento."
+},
+{
+"id": "ENG_CHUNK_0670",
+"t": "Non so tu, ma",
+"ex": "Non so tu, ma io sto morendo di fame.",
+"n": "'Non so voi' for a group."
+},
+{
+"id": "ENG_CHUNK_0671",
+"t": "Sai che c'è?",
+"ex": "Sai che c'è? Ordiniamo una pizza e basta."
+},
+{
+"id": "ENG_CHUNK_0672",
+"t": "Senti / Guarda",
+"ex": "Senti, lo so che sei impegnato, ma questa cosa è importante.",
+"n": "Senta/Guardi in Lei form."
+},
+{
+"id": "ENG_CHUNK_0673",
+"t": "Il punto è",
+"ex": "Il punto è: chi lo paga?",
+"n": "'Il problema è che...' also common."
+},
+{
+"id": "ENG_CHUNK_0674",
+"t": "Ho capito bene?",
+"ex": "Quindi ci vediamo alla stazione alle nove. Ho capito bene?"
+},
+{
+"id": "ENG_CHUNK_0675",
+"t": "Potrebbe parlare un po' più piano?",
+"ex": "Scusi, potrebbe parlare un po' più piano? Il mio italiano non è perfetto.",
+"n": "'Più piano' = more slowly (also more quietly); 'più lentamente' is unambiguous."
+},
+{
+"id": "ENG_CHUNK_0676",
+"t": "Come si chiama, già?",
+"ex": "Il tuo vicino con quel cane carino, come si chiama, già?",
+"n": "Tag 'già' signals 'I knew it once'."
+},
+{
+"id": "ENG_CHUNK_0677",
+"t": "Interessante",
+"ex": "Sei cresciuto in una fattoria? Interessante."
+},
+{
+"id": "ENG_CHUNK_0678",
+"t": "Sì e no / Così così",
+"ex": "Ti è piaciuto il film? Sì e no, il finale era bellissimo."
+},
+{
+"id": "ENG_CHUNK_0679",
+"t": "e cose così / e roba del genere",
+"ex": "Più che altro abbiamo giocato a giochi da tavolo, cucinato, e cose così."
+},
+{
+"id": "ENG_CHUNK_0680",
+"t": "Scusa, prima tu / Prego, dica pure",
+"ex": "Oh, scusa, prima tu.",
+"n": "Lei form: 'Prego, dica pure'."
+},
+{
+"id": "ENG_CHUNK_0681",
+"t": "Ecco a te / Ecco a Lei / Tieni",
+"ex": "Ecco a Lei, un caffè con molto latte.",
+"n": "'Tieni/Tenga' when physically handing over."
+},
+{
+"id": "ENG_CHUNK_0682",
+"t": "Pazienza",
+"ex": "Il forno è già chiuso? Pazienza, torniamo domani.",
+"n": "'Pazienza' is the standard shrug, not a call for patience."
+},
+{
+"id": "ENG_CHUNK_0683",
+"t": "Grazie lo stesso",
+"ex": "Tranquillo se sei impegnato. Grazie lo stesso!"
+},
+{
+"id": "ENG_CHUNK_0684",
+"t": "È libero questo posto? / È occupato?",
+"ex": "Mi scusi, è libero questo posto?"
+},
+{
+"id": "ENG_CHUNK_0685",
+"t": "Buon viaggio",
+"ex": "Buon viaggio, e scrivimi quando atterri!"
+},
+{
+"id": "ENG_CHUNK_0686",
+"t": "Guarda il lato positivo",
+"ex": "Guarda il lato positivo: così hai un weekend libero."
+},
+{
+"id": "ENG_CHUNK_0687",
+"t": "Tieni duro / Forza",
+"ex": "Tieni duro, la settimana è quasi finita!"
+},
+{
+"id": "ENG_CHUNK_0688",
+"t": "Non è la fine del mondo",
+"ex": "Hai perso l'autobus? Non è la fine del mondo."
+},
+{
+"id": "ENG_CHUNK_0689",
+"t": "Sono cose che capitano / Capita",
+"ex": "Non preoccuparti per il succo rovesciato, sono cose che capitano."
+},
+{
+"id": "ENG_CHUNK_0690",
+"t": "Ma non dovevi! / Non dovevi disturbarti",
+"ex": "Dei fiori? Ma non dovevi!"
+},
+{
+"id": "ENG_CHUNK_0691",
+"t": "Nel frattempo / Fino ad allora",
+"ex": "La festa è sabato. Nel frattempo, risparmio le energie."
+},
+{
+"id": "ENG_CHUNK_0692",
+"t": "Il giorno dopo",
+"ex": "Siamo arrivati tardi, e il giorno dopo siamo andati dritti in spiaggia."
+},
+{
+"id": "ENG_CHUNK_0693",
+"t": "Lo stesso vale per",
+"ex": "Dovresti bere più acqua. Lo stesso vale per me.",
+"n": "Also 'Vale anche per me'."
+},
+{
+"id": "ENG_CHUNK_0694",
+"t": "Per tutto il tempo",
+"ex": "Il bambino ha dormito per tutto il tempo del volo."
+},
+{
+"id": "ENG_CHUNK_0695",
+"t": "Allo stesso tempo / Però",
+"ex": "La città è cara, ma allo stesso tempo c'è tantissimo da fare."
+},
+{
+"id": "ENG_CHUNK_0696",
+"t": "In generale",
+"ex": "In generale, dormo meglio se evito il caffè dopo pranzo."
+},
+{
+"id": "ENG_CHUNK_0697",
+"t": "Poco prima di / Proprio prima di",
+"ex": "Ha chiamato poco prima di cena."
+},
+{
+"id": "ENG_CHUNK_0698",
+"t": "Tutto sommato",
+"ex": "Tutto sommato, è stata una bellissima vacanza."
+},
+{
+"id": "ENG_CHUNK_0699",
+"t": "È così che",
+"ex": "Eravamo compagni di banco. È così che siamo diventati amici."
+},
+{
+"id": "ENG_CHUNK_0700",
+"t": "Soprattutto",
+"ex": "Mi sono piaciuti il cibo, la gente e soprattutto le spiagge."
+}
+]

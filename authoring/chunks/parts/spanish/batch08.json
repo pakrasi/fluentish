@@ -1,0 +1,539 @@
+[
+{
+"id": "ENG_CHUNK_0701",
+"t": "Voy a intentar [verbo] / Trataré de [verbo]",
+"ex": "Voy a intentar llegar a las siete, pero no prometo nada."
+},
+{
+"id": "ENG_CHUNK_0702",
+"t": "Te aviso cuando [subjuntivo]",
+"ex": "Te aviso cuando llegue a casa.",
+"n": "cuando + subjunctive for a future event: cuando llegue, not *cuando llego."
+},
+{
+"id": "ENG_CHUNK_0703",
+"t": "Me aseguro de que [subjuntivo] / Yo me encargo de que [subjuntivo]",
+"ex": "Tranquilo, yo me encargo de que el perro coma.",
+"n": "de que + subjunctive: me aseguro de que coma."
+},
+{
+"id": "ENG_CHUNK_0704",
+"t": "¿Cómo te fue en [sustantivo]? / ¿Qué tal [sustantivo]?",
+"ex": "Oye, ¿cómo te fue en la entrevista?",
+"n": "Spanish asks how it went for YOU: ¿cómo te fue?"
+},
+{
+"id": "ENG_CHUNK_0705",
+"t": "¿Ya pudiste [verbo]? / ¿Ya tuvo oportunidad de [verbo]?",
+"ex": "¿Ya tuvo oportunidad de ver mi correo?"
+},
+{
+"id": "ENG_CHUNK_0706",
+"t": "¿Cuánto se tarda en [verbo]? / ¿Cuánto tiempo se hace a [lugar]?",
+"ex": "¿Cuánto se tarda en llegar al aeropuerto desde aquí?",
+"n": "Also: ¿Cuánto (tiempo) se hace? (Spain: ¿Cuánto se tarda?)."
+},
+{
+"id": "ENG_CHUNK_0707",
+"t": "Me sorprende que [subjuntivo]",
+"ex": "Me sorprende que sigas despierto.",
+"n": "Emotion trigger: me sorprende que + subjunctive."
+},
+{
+"id": "ENG_CHUNK_0708",
+"t": "Según [sustantivo], [oración]",
+"ex": "Según el pronóstico, mañana va a nevar."
+},
+{
+"id": "ENG_CHUNK_0709",
+"t": "Dicen que [oración]",
+"ex": "Dicen que es la mejor pizza de la ciudad."
+},
+{
+"id": "ENG_CHUNK_0710",
+"t": "Es como [sustantivo] / Es tipo [sustantivo]",
+"ex": "Es como un sándwich, pero con arroz en vez de pan.",
+"n": "'Tipo' is very casual, used across Latin America and Spain."
+},
+{
+"id": "ENG_CHUNK_0711",
+"t": "[sustantivo] me recuerda a [sustantivo]",
+"ex": "Esta canción me recuerda a la prepa.",
+"n": "Mexico: la prepa; elsewhere: el colegio / el liceo / el instituto (Spain)."
+},
+{
+"id": "ENG_CHUNK_0712",
+"t": "[sustantivo] no es tan [adjetivo] como [sustantivo]",
+"ex": "Este departamento no es tan grande como el anterior."
+},
+{
+"id": "ENG_CHUNK_0713",
+"t": "¿Cuál es la diferencia entre [sustantivo] y [sustantivo]?",
+"ex": "¿Cuál es la diferencia entre un latte y un flat white?",
+"n": "¿Cuál es la diferencia?, not *¿Qué es la diferencia?"
+},
+{
+"id": "ENG_CHUNK_0714",
+"t": "Hace demasiado [sustantivo] para [verbo] / Es demasiado [adjetivo] para [verbo]",
+"ex": "Hace demasiado frío para ir a la playa hoy.",
+"n": "Weather uses hacer + noun: hace frío, not *es frío."
+},
+{
+"id": "ENG_CHUNK_0715",
+"t": "No está lo bastante [adjetivo] para [verbo] / Todavía no hace suficiente [sustantivo] para [verbo]",
+"ex": "Todavía no hace suficiente calor para comer afuera."
+},
+{
+"id": "ENG_CHUNK_0716",
+"t": "Fue un(a) [sustantivo] tan [adjetivo] / ¡Qué [sustantivo] tan [adjetivo]!",
+"ex": "¡Fue una boda tan bonita!",
+"n": "Also: ¡Qué boda tan bonita!"
+},
+{
+"id": "ENG_CHUNK_0717",
+"t": "La pasé muy bien [gerundio] / Me la pasé genial [gerundio]",
+"ex": "Anoche me la pasé genial con ustedes.",
+"n": "Spain: Lo pasé genial. Latin America: la pasé / me la pasé."
+},
+{
+"id": "ENG_CHUNK_0718",
+"t": "¿Alguna vez [verbo]? / ¿Sueles [verbo]?",
+"ex": "¿Sueles salir a correr en la mañana?",
+"n": "soler + infinitive is the natural habit question."
+},
+{
+"id": "ENG_CHUNK_0719",
+"t": "Extraño [infinitivo] / Echo de menos [infinitivo]",
+"ex": "Extraño vivir cerca del mar.",
+"n": "Extrañar in Latin America; echar de menos in Spain."
+},
+{
+"id": "ENG_CHUNK_0720",
+"t": "Siempre he querido [verbo]",
+"ex": "Siempre he querido aprender a surfear."
+},
+{
+"id": "ENG_CHUNK_0721",
+"t": "Estaría bien [verbo] / Qué rico sería [verbo]",
+"ex": "Estaría bien escaparnos un fin de semana."
+},
+{
+"id": "ENG_CHUNK_0722",
+"t": "Si tuviera [sustantivo], [verbo en condicional]",
+"ex": "Si tuviera más tiempo, tomaría una clase de cocina.",
+"n": "Si + imperfect subjunctive, then conditional. Never *si tendría."
+},
+{
+"id": "ENG_CHUNK_0723",
+"t": "Me vendría muy bien [sustantivo] / Necesito urgente [sustantivo]",
+"ex": "Me vendría muy bien un café ahorita.",
+"n": "ahorita (Latin America) = right now; Spain: ahora mismo."
+},
+{
+"id": "ENG_CHUNK_0724",
+"t": "Tal vez deberías [verbo] / Mejor [verbo]",
+"ex": "Más tarde va a llover fuerte, así que mejor lleva paraguas."
+},
+{
+"id": "ENG_CHUNK_0725",
+"t": "Te conviene más [infinitivo] / Mejor [verbo]",
+"ex": "La verdad, te conviene más ir en tren."
+},
+{
+"id": "ENG_CHUNK_0726",
+"t": "¿Habría alguna posibilidad de que [subjuntivo]? / ¿Crees que podrías [verbo]?",
+"ex": "¿Habría alguna posibilidad de que me recogieras en el aeropuerto?",
+"n": "posibilidad de que + subjunctive (imperfect here, for politeness)."
+},
+{
+"id": "ENG_CHUNK_0727",
+"t": "Le agradecería que [subjuntivo] / Te agradecería que [subjuntivo]",
+"ex": "Le agradecería que bajara la música después de las diez.",
+"n": "agradecería que + imperfect subjunctive: que bajara."
+},
+{
+"id": "ENG_CHUNK_0728",
+"t": "Ni que [subjuntivo] / No es que [subjuntivo]",
+"ex": "Llévatelo. Ni que lo fuera a usar.",
+"n": "Ni que + imperfect subjunctive is the dismissive 'it's not like'."
+},
+{
+"id": "ENG_CHUNK_0729",
+"t": "No todos los días [oración]",
+"ex": "¡Hay que celebrar! No todos los días se cumplen cuarenta."
+},
+{
+"id": "ENG_CHUNK_0730",
+"t": "En cuanto a [sustantivo], [oración] / Para [sustantivo], [oración]",
+"ex": "Para la cocina, el experto es mi papá."
+},
+{
+"id": "ENG_CHUNK_0731",
+"t": "Hablando de [sustantivo], [oración]",
+"ex": "Hablando de comida, ¿alguien más tiene hambre?"
+},
+{
+"id": "ENG_CHUNK_0732",
+"t": "Tengo que admitir que [oración] / La verdad es que [oración]",
+"ex": "Tengo que admitir que estaba un poco nervioso."
+},
+{
+"id": "ENG_CHUNK_0733",
+"t": "Te pregunto porque [oración] / Lo pregunto porque [oración]",
+"ex": "Te pregunto porque necesito que alguien me lleve el sábado."
+},
+{
+"id": "ENG_CHUNK_0734",
+"t": "No digo que [subjuntivo], pero [oración]",
+"ex": "No digo que esté mal, pero podría estar mejor.",
+"n": "Negated 'decir que' takes subjunctive: no digo que sea malo."
+},
+{
+"id": "ENG_CHUNK_0735",
+"t": "No se trata de [sustantivo], se trata de [sustantivo]",
+"ex": "No se trata del dinero, se trata de respeto.",
+"n": "se trata de is impersonal: never *el problema se trata de."
+},
+{
+"id": "ENG_CHUNK_0736",
+"t": "asumir [sustantivo] / echarse [sustantivo] encima",
+"ex": "Este mes no puedo echarme más trabajo encima."
+},
+{
+"id": "ENG_CHUNK_0737",
+"t": "reportarse enfermo / avisar que uno está enfermo",
+"ex": "Amanecí con fiebre, así que avisé que estaba enfermo.",
+"n": "Spain: llamar para decir que estás de baja / coger la baja."
+},
+{
+"id": "ENG_CHUNK_0738",
+"t": "tener un negocio / llevar un negocio",
+"ex": "Mis papás tienen un negocio de muebles usados."
+},
+{
+"id": "ENG_CHUNK_0739",
+"t": "ganarse la vida",
+"ex": "Se gana la vida arreglando bicis viejas."
+},
+{
+"id": "ENG_CHUNK_0740",
+"t": "estar en la misma página / estar de acuerdo",
+"ex": "Antes de empezar, asegurémonos de que estamos en sintonía.",
+"n": "'Estar en sintonía' is the idiomatic option; 'en la misma página' is a common calque in offices."
+},
+{
+"id": "ENG_CHUNK_0741",
+"t": "hacer las cosas a medias / hacer las cosas a la ligera",
+"ex": "Hicieron la remodelación a la ligera, y ahora el techo gotea."
+},
+{
+"id": "ENG_CHUNK_0742",
+"t": "conocer [sustantivo] / estar familiarizado con [sustantivo]",
+"ex": "¿Conoces esta parte de la ciudad?",
+"n": "Everyday speech just uses conocer; 'familiarizado' is formal."
+},
+{
+"id": "ENG_CHUNK_0743",
+"t": "estar al tanto de [sustantivo] / saber de [sustantivo]",
+"ex": "Perdón, no sabía lo del cargo extra.",
+"n": "'Estar consciente de' is also used; avoid *realizar (false friend for 'realize')."
+},
+{
+"id": "ENG_CHUNK_0744",
+"t": "tener la agenda llena / andar con el tiempo justo",
+"ex": "Perdón, hoy ando con el tiempo justo."
+},
+{
+"id": "ENG_CHUNK_0745",
+"t": "con poca anticipación / de último momento",
+"ex": "Gracias por venir con tan poca anticipación.",
+"n": "Spain: de última hora."
+},
+{
+"id": "ENG_CHUNK_0746",
+"t": "hacerse tiempo para [sustantivo] / sacar tiempo para [sustantivo]",
+"ex": "A veces tienes que sacar tiempo para ti."
+},
+{
+"id": "ENG_CHUNK_0747",
+"t": "perder la noción del tiempo / se me pasó el tiempo",
+"ex": "Perdón por llegar tarde, se me fue el tiempo por completo."
+},
+{
+"id": "ENG_CHUNK_0748",
+"t": "matar el tiempo / hacer tiempo",
+"ex": "Matamos el tiempo en el aeropuerto recorriendo las tiendas."
+},
+{
+"id": "ENG_CHUNK_0749",
+"t": "improvisar sobre la marcha / ver cómo se dan las cosas",
+"ex": "No planeemos tanto, vamos viendo sobre la marcha."
+},
+{
+"id": "ENG_CHUNK_0750",
+"t": "hacerle compañía a [persona]",
+"ex": "Me quedo a hacerte compañía hasta que venga el camión.",
+"n": "hasta que + subjunctive for a future point."
+},
+{
+"id": "ENG_CHUNK_0751",
+"t": "andar con el presupuesto justo / estar corto de dinero",
+"ex": "Este mes andamos cortos de dinero, así que comamos en casa."
+},
+{
+"id": "ENG_CHUNK_0752",
+"t": "costar un dineral / costar un ojo de la cara",
+"ex": "Arreglar el coche va a costar un ojo de la cara.",
+"n": "Car: carro (most of Latin America), auto (Southern Cone), coche (Mexico, Spain)."
+},
+{
+"id": "ENG_CHUNK_0753",
+"t": "llegar a fin de mes",
+"ex": "Los dos tienen dos trabajos solo para llegar a fin de mes."
+},
+{
+"id": "ENG_CHUNK_0754",
+"t": "terminar de pagar [sustantivo] / saldar [sustantivo]",
+"ex": "¡Por fin terminé de pagar mi crédito estudiantil!"
+},
+{
+"id": "ENG_CHUNK_0755",
+"t": "estar endeudado / tener deudas",
+"ex": "No quiero estar endeudado toda la vida."
+},
+{
+"id": "ENG_CHUNK_0756",
+"t": "reducir [sustantivo] / bajarle a [sustantivo]",
+"ex": "Estoy tratando de bajarle al azúcar.",
+"n": "'Bajarle a' is colloquial Latin American; 'reducir el azúcar' is neutral."
+},
+{
+"id": "ENG_CHUNK_0757",
+"t": "comparar precios / cotizar",
+"ex": "No aceptes la primera oferta, compara precios un poco."
+},
+{
+"id": "ENG_CHUNK_0758",
+"t": "estar agarrando [sustantivo] / enfermarse de [sustantivo]",
+"ex": "Creo que me estoy resfriando.",
+"n": "Spain: estar pillando un resfriado. Avoid 'coger' in much of Latin America."
+},
+{
+"id": "ENG_CHUNK_0759",
+"t": "sentirse mal / andar medio enfermo",
+"ex": "Ando medio enfermo, así que me quedo en casa."
+},
+{
+"id": "ENG_CHUNK_0760",
+"t": "subir de peso / engordar",
+"ex": "Subí de peso desde que dejé de ir al gimnasio."
+},
+{
+"id": "ENG_CHUNK_0761",
+"t": "vomitar / devolver",
+"ex": "El bebé me vomitó toda la camisa."
+},
+{
+"id": "ENG_CHUNK_0762",
+"t": "desmayarse",
+"ex": "Hacía tanto calor que un señor en la fila se desmayó."
+},
+{
+"id": "ENG_CHUNK_0763",
+"t": "tener cruda / tener resaca",
+"ex": "Tengo una cruda terrible, así que no hagan ruido, por favor.",
+"n": "Hangover: cruda (Mexico), guayabo (Colombia), ratón (Venezuela), resaca (neutral, Spain)."
+},
+{
+"id": "ENG_CHUNK_0764",
+"t": "superar [sustantivo]",
+"ex": "Me tomó meses superar la ruptura."
+},
+{
+"id": "ENG_CHUNK_0765",
+"t": "aceptar [sustantivo] / asimilar [sustantivo]",
+"ex": "Todavía está asimilando que perdió el trabajo."
+},
+{
+"id": "ENG_CHUNK_0766",
+"t": "Hablemos de otra cosa / Cambiemos de tema",
+"ex": "Uf, ¿otra vez el trabajo? Cambiemos de tema."
+},
+{
+"id": "ENG_CHUNK_0767",
+"t": "Bueno, ya basta de mí / Pero ya hablé mucho de mí",
+"ex": "Bueno, ya hablé mucho de mí. ¿Cómo te va en el trabajo nuevo?"
+},
+{
+"id": "ENG_CHUNK_0768",
+"t": "Y eso es todo / Y ya",
+"ex": "Fuimos al museo, cenamos, y ya."
+},
+{
+"id": "ENG_CHUNK_0769",
+"t": "Sigamos / Pasemos a otra cosa",
+"ex": "Bueno, ya vimos el presupuesto, así que sigamos."
+},
+{
+"id": "ENG_CHUNK_0770",
+"t": "Si tú lo dices",
+"ex": "¿Totalmente seguro? Bueno, si tú lo dices."
+},
+{
+"id": "ENG_CHUNK_0771",
+"t": "¿Quién sabe?",
+"ex": "Tal vez algún día nos vayamos a vivir al extranjero. ¿Quién sabe?",
+"n": "Tal vez / quizás + subjunctive for open possibilities: tal vez nos vayamos."
+},
+{
+"id": "ENG_CHUNK_0772",
+"t": "¿En serio? / ¡No me digas!",
+"ex": "¿Te dieron el trabajo? ¡No me digas!"
+},
+{
+"id": "ENG_CHUNK_0773",
+"t": "Ahora que lo pienso",
+"ex": "Ahora que lo pienso, hace semanas que no veo a Mike."
+},
+{
+"id": "ENG_CHUNK_0774",
+"t": "Yo lo veo así / Como yo lo veo",
+"ex": "Como yo lo veo, no tenemos mucha opción."
+},
+{
+"id": "ENG_CHUNK_0775",
+"t": "Corrígeme si me equivoco / Corríjame si me equivoco",
+"ex": "Corrígeme si me equivoco, pero ¿no pagamos esto ya?"
+},
+{
+"id": "ENG_CHUNK_0776",
+"t": "Para que conste / Que quede claro",
+"ex": "Que quede claro: yo nunca dije que iba a manejar.",
+"n": "Spain: conducir instead of manejar."
+},
+{
+"id": "ENG_CHUNK_0777",
+"t": "No necesariamente",
+"ex": "El vino caro siempre es mejor, ¿no? No necesariamente."
+},
+{
+"id": "ENG_CHUNK_0778",
+"t": "o lo que sea / o algo así",
+"ex": "Podríamos pedir pizza o tacos o lo que sea."
+},
+{
+"id": "ENG_CHUNK_0779",
+"t": "Nomás estoy pensando en voz alta / Solo estoy pensando en voz alta",
+"ex": "¿Y si movemos el sillón? Solo estoy pensando en voz alta.",
+"n": "nomás = solo in much of Latin America."
+},
+{
+"id": "ENG_CHUNK_0780",
+"t": "Así de pronto / Así, sin pensarlo mucho",
+"ex": "Así de pronto, diría que unas cincuenta personas."
+},
+{
+"id": "ENG_CHUNK_0781",
+"t": "No me quejo / Ahí vamos",
+"ex": "¿Cómo va todo? Pues, no me quejo."
+},
+{
+"id": "ENG_CHUNK_0782",
+"t": "Me cuentas / Mantenme al tanto",
+"ex": "¡Suerte en el examen, luego me cuentas!"
+},
+{
+"id": "ENG_CHUNK_0783",
+"t": "Dejémoslo por hoy / Ya estuvo por hoy",
+"ex": "Ya casi son las siete. Dejémoslo por hoy."
+},
+{
+"id": "ENG_CHUNK_0784",
+"t": "Es lo menos que podía hacer",
+"ex": "¡Gracias por las flores! Ay, es lo menos que podía hacer."
+},
+{
+"id": "ENG_CHUNK_0785",
+"t": "Bueno, te dejo",
+"ex": "Bueno, te dejo. ¡Hablamos pronto!",
+"n": "The standard phone sign-off: 'Te dejo' (I'll let you go). Usted: Lo/La dejo."
+},
+{
+"id": "ENG_CHUNK_0786",
+"t": "No te pierdas / No desaparezcas",
+"ex": "Qué gusto verte. ¡No te pierdas!"
+},
+{
+"id": "ENG_CHUNK_0787",
+"t": "¿Es en serio? / ¡No puede ser!",
+"ex": "¿Otra vez cancelaron el vuelo? ¡No puede ser!"
+},
+{
+"id": "ENG_CHUNK_0788",
+"t": "¡No manches! / ¡Por favor! / ¡No me friegues!",
+"ex": "¿También quieres que trabaje el sábado? ¡Por favor!",
+"n": "'No manches' and 'no me friegues' are Mexican and very casual; '¡Por favor!' in this tone works everywhere."
+},
+{
+"id": "ENG_CHUNK_0789",
+"t": "Es la gota que derramó el vaso",
+"ex": "¿Otra vez llegó tarde? Esa es la gota que derramó el vaso.",
+"n": "Spain: la gota que colmó el vaso."
+},
+{
+"id": "ENG_CHUNK_0790",
+"t": "Qué suerte la mía / Para variar",
+"ex": "Empezó a llover en cuanto salí. Qué suerte la mía."
+},
+{
+"id": "ENG_CHUNK_0791",
+"t": "Como siempre",
+"ex": "Como siempre, el camión llegó tarde."
+},
+{
+"id": "ENG_CHUNK_0792",
+"t": "Aunque, pensándolo bien / Por otro lado",
+"ex": "El hotel es caro. Aunque, por otro lado, está justo en la playa."
+},
+{
+"id": "ENG_CHUNK_0793",
+"t": "Aun así",
+"ex": "Es solo una cortadita. Aun así, deberías limpiarla."
+},
+{
+"id": "ENG_CHUNK_0794",
+"t": "Sin mencionar que / Por no decir que",
+"ex": "El departamento es enorme, sin mencionar que queda muy cerca del trabajo."
+},
+{
+"id": "ENG_CHUNK_0795",
+"t": "Y efectivamente / Y claro",
+"ex": "Dije que iba a llover, y efectivamente, cayó un aguacero."
+},
+{
+"id": "ENG_CHUNK_0796",
+"t": "Razón de más / Con más razón",
+"ex": "¿Es tu cumpleaños? ¡Con más razón hay que celebrar!"
+},
+{
+"id": "ENG_CHUNK_0797",
+"t": "Pensándolo bien / Mejor no",
+"ex": "Voy a pedir la ensalada. Pensándolo bien, mejor la hamburguesa."
+},
+{
+"id": "ENG_CHUNK_0798",
+"t": "Desde que",
+"ex": "Desde que me mudé aquí, camino al trabajo.",
+"n": "desde que + indicative for past starting points; present tense for the ongoing part."
+},
+{
+"id": "ENG_CHUNK_0799",
+"t": "No solo eso / Y encima",
+"ex": "El hotel estaba sucio. Y encima, el personal fue grosero."
+},
+{
+"id": "ENG_CHUNK_0800",
+"t": "En ese momento",
+"ex": "En ese momento me di cuenta de que había dejado la cartera en casa."
+}
+]

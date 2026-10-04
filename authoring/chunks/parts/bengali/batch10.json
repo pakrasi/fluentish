@@ -1,0 +1,724 @@
+[
+ {
+  "id": "ENG_CHUNK_0901",
+  "t": "আপনার কাছে কি [noun] হবে?",
+  "tr": "aapnaar kaachhe ki [noun] hobe?",
+  "ex": "আপনার কাছে কি একটা ফোনের চার্জার হবে? একটু দরকার ছিল।",
+  "extr": "aapnaar kaachhe ki ektaa phoner chaarjaar hobe? ektu dorkaar chhilo.",
+  "n": "'Hobe?' (will there be?) is the soft way to ask whether someone has something."
+ },
+ {
+  "id": "ENG_CHUNK_0902",
+  "t": "[verb] না করলেই ভালো হয়",
+  "tr": "[verb] naa korlei bhaalo hoy",
+  "ex": "গাড়ির ভেতরে সিগারেট না খেলেই ভালো হয়।",
+  "extr": "gaarir bhetore sigaret naa khelei bhaalo hoy.",
+  "n": "Negative conditional + -i (naa khelei, naa korlei) = 'better if you didn't'. Cigarettes are 'eaten' too."
+ },
+ {
+  "id": "ENG_CHUNK_0903",
+  "t": "[verb] না করলে পারো না?",
+  "tr": "[verb] naa korle paaro naa?",
+  "ex": "জুতোগুলো দরজার সামনে না রাখলে পারো না?",
+  "extr": "jutogulo dorojaar saamne naa raakhle paaro naa?",
+  "n": "The rhetorical 'can't you not ...?' carries the mild irritation of 'I wish you wouldn't'."
+ },
+ {
+  "id": "ENG_CHUNK_0904",
+  "t": "আমার হাতে থাকলে [verb]-তাম",
+  "tr": "aamaar haate thaakle [verb]-taam",
+  "ex": "আমার হাতে থাকলে শুক্রবার অফিস বন্ধ রাখতাম।",
+  "extr": "aamaar haate thaakle shukrobaar ophis bondho raakhtaam."
+ },
+ {
+  "id": "ENG_CHUNK_0905",
+  "t": "[noun]-এর চেয়ে [noun] আমার ঢের ভালো লাগে",
+  "tr": "[noun]-er cheye [noun] aamaar dher bhaalo laage",
+  "ex": "বড় পার্টির চেয়ে বাড়িতে শান্ত একটা সন্ধে আমার ঢের ভালো লাগে।",
+  "extr": "boro paartir cheye baarite shaanto ektaa sondhe aamaar dher bhaalo laage.",
+  "n": "Order flips: the less-preferred thing comes first with -er cheye."
+ },
+ {
+  "id": "ENG_CHUNK_0906",
+  "t": "[noun]-এর কোনো তুলনা হয় না",
+  "tr": "[noun]-er kono tulonaa hoy naa",
+  "ex": "লম্বা দৌড়ের পর গরম জলে স্নানের কোনো তুলনা হয় না।",
+  "extr": "lombaa dourer por gorom jole snaaner kono tulonaa hoy naa."
+ },
+ {
+  "id": "ENG_CHUNK_0907",
+  "t": "আমি [noun]-এর দিকেই ঝুঁকছি",
+  "tr": "aami [noun]-er dikei jhunkchhi",
+  "ex": "সত্যি বলতে, আমি সস্তা ফ্ল্যাটটার দিকেই ঝুঁকছি।",
+  "extr": "sotti bolte, aami sostaa phlyaattaar dikei jhunkchhi."
+ },
+ {
+  "id": "ENG_CHUNK_0908",
+  "t": "[noun] না [noun], ঠিক করতে পারছি না",
+  "tr": "[noun] naa [noun], thik korte paarchhi naa",
+  "ex": "নীল সোফাটা না ধূসরটা, ঠিক করতে পারছি না।",
+  "extr": "niil sophaataa naa dhuusortaa, thik korte paarchhi naa.",
+  "n": "'X naa Y' = X or Y (in a question of choice)."
+ },
+ {
+  "id": "ENG_CHUNK_0909",
+  "t": "[noun] নিয়ে দ্বিধায় পড়ে গেছি",
+  "tr": "[noun] niye dwidhaay pore gechhi",
+  "ex": "নতুন চাকরিটা নিয়ে এখন দ্বিধায় পড়ে গেছি।",
+  "extr": "notun chaakritaa niye ekhon dwidhaay pore gechhi."
+ },
+ {
+  "id": "ENG_CHUNK_0910",
+  "t": "[noun] নিয়ে অত মাথা ঘামিয়ো না",
+  "tr": "[noun] niye oto maathaa ghaamiyo naa",
+  "ex": "উত্তর দেয়নি? ওটা নিয়ে অত মাথা ঘামিয়ো না।",
+  "extr": "uttor deyni? otaa niye oto maathaa ghaamiyo naa."
+ },
+ {
+  "id": "ENG_CHUNK_0911",
+  "t": "শেষমেশ [verb]-লে?",
+  "tr": "sheshmesh [verb]-le?",
+  "ex": "শেষমেশ বিয়েতে গেলে?",
+  "extr": "sheshmesh biyete gele?"
+ },
+ {
+  "id": "ENG_CHUNK_0912",
+  "t": "[verb-noun]-র সময় হয়ে ওঠেনি",
+  "tr": "[verb-noun]-r somoy hoye otheni",
+  "ex": "সরি, তোমার ইমেলটা পড়ার সময় হয়ে ওঠেনি।",
+  "extr": "sori, tomaar imeltaa poraar somoy hoye otheni."
+ },
+ {
+  "id": "ENG_CHUNK_0913",
+  "t": "এখন [noun] ছড়াচ্ছে",
+  "tr": "ekhon [noun] chhoraachchhe",
+  "ex": "অফিসের অর্ধেক লোক ছুটিতে। একটা ভাইরাল জ্বর ছড়াচ্ছে।",
+  "extr": "ophiser ordhek lok chhutite. ektaa bhaairaal jor chhoraachchhe.",
+  "n": "In Kolkata the seasonal bug is 'bhaairaal jor' (viral fever)."
+ },
+ {
+  "id": "ENG_CHUNK_0914",
+  "t": "কিছুতেই [verb]-তে পারছি না",
+  "tr": "kichhutei [verb]-te paarchhi naa",
+  "ex": "প্রিন্টারটা কিছুতেই চালু করতে পারছি না।",
+  "extr": "printaartaa kichhutei chaalu korte paarchhi naa."
+ },
+ {
+  "id": "ENG_CHUNK_0915",
+  "t": "[noun] আমার কম্ম নয় / আমার দ্বারা হবে না",
+  "tr": "[noun] aamaar kommo noy / aamaar dwaaraa hobe naa",
+  "ex": "এক বছর পড়ালাম, কিন্তু মাস্টারি আমার কম্ম নয়।",
+  "extr": "ek bochhor poraalaam, kintu maastaari aamaar kommo noy."
+ },
+ {
+  "id": "ENG_CHUNK_0916",
+  "t": "[noun]-এ ডুবে আছি",
+  "tr": "[noun]-e dube aachhi",
+  "ex": "কাল কথা বলি? আজ কাজে একদম ডুবে আছি।",
+  "extr": "kaal kothaa boli? aaj kaaje ekdom dube aachhi."
+ },
+ {
+  "id": "ENG_CHUNK_0917",
+  "t": "[verb-noun]-র কথা ভাবলেই গায়ে জ্বর আসছে",
+  "tr": "[verb-noun]-r kothaa bhaablei gaaye jor aaschhe",
+  "ex": "সোমবার অফিসে ফেরার কথা ভাবলেই গায়ে জ্বর আসছে।",
+  "extr": "sombaar ophise pheraar kothaa bhaablei gaaye jor aaschhe.",
+  "n": "'Gaaye jor aasaa' (to run a fever) is the idiom for dread."
+ },
+ {
+  "id": "ENG_CHUNK_0918",
+  "t": "কিছুতেই [verb]-তে মন চাইছে না",
+  "tr": "kichhutei [verb]-te mon chaaichhe naa",
+  "ex": "ওর পুরোনো চিঠিগুলো কিছুতেই ফেলে দিতে মন চাইছে না।",
+  "extr": "or purono chithigulo kichhutei phele dite mon chaaichhe naa."
+ },
+ {
+  "id": "ENG_CHUNK_0919",
+  "t": "ইচ্ছে করছে [verb]",
+  "tr": "ichchhe korchhe [verb]",
+  "ex": "ইচ্ছে করছে রান্না বাদ দিয়ে পিৎজা অর্ডার করে দিই।",
+  "extr": "ichchhe korchhe raannaa baad diye pitzaa ordaar kore dii."
+ },
+ {
+  "id": "ENG_CHUNK_0920",
+  "t": "যে করেই হোক [verb]",
+  "tr": "je korei hok [verb]",
+  "ex": "যে করেই হোক এই ম্যারাথনটা শেষ করবই।",
+  "extr": "je korei hok ei myaaraathontaa shesh korboi.",
+  "n": "Emphatic -i on the future verb (korboi) adds the determination."
+ },
+ {
+  "id": "ENG_CHUNK_0921",
+  "t": "[verb-noun] ছাড়া আর উপায় নেই",
+  "tr": "[verb-noun] chhaaraa aar upaay nei",
+  "ex": "ভাড়া আবার বেড়েছে, তাই বাড়ি বদলানো ছাড়া আর উপায় নেই।",
+  "extr": "bhaaraa aabaar berechhe, taai baari bodlaano chhaaraa aar upaay nei."
+ },
+ {
+  "id": "ENG_CHUNK_0922",
+  "t": "[noun]-এর ব্যাপারে আমার কিছু করার নেই",
+  "tr": "[noun]-er byaapaare aamaar kichhu koraar nei",
+  "ex": "দেরির ব্যাপারে আমার কিছু করার নেই, সরি।",
+  "extr": "derir byaapaare aamaar kichhu koraar nei, sori."
+ },
+ {
+  "id": "ENG_CHUNK_0923",
+  "t": "[verb]-তে মন সায় দেয় না",
+  "tr": "[verb]-te mon saay dey naa",
+  "ex": "ওকে ওর রান্না খারাপ বলতে মন সায় দেয় না।",
+  "extr": "oke or raannaa khaaraap bolte mon saay dey naa."
+ },
+ {
+  "id": "ENG_CHUNK_0924",
+  "t": "[verb-noun] আমি কিছুতেই চাই না",
+  "tr": "[verb-noun] aami kichhutei chaai naa",
+  "ex": "তোমার মা-বাবাকে কষ্ট দেওয়া আমি কিছুতেই চাই না।",
+  "extr": "tomaar maa-baabaake koshto deyaa aami kichhutei chaai naa."
+ },
+ {
+  "id": "ENG_CHUNK_0925",
+  "t": "[verb-noun]-র এক্তিয়ার আমার নেই",
+  "tr": "[verb-noun]-r ektiyaar aamaar nei",
+  "ex": "দুঃখিত, এটা অনুমোদন করার এক্তিয়ার আমার নেই।",
+  "extr": "dukkhito, etaa onumodon koraar ektiyaar aamaar nei."
+ },
+ {
+  "id": "ENG_CHUNK_0926",
+  "t": "[verb-noun] আমার কাজ নয় / সেটা বলার আমি কে?",
+  "tr": "[verb-noun] aamaar kaaj noy / setaa bolaar aami ke?",
+  "ex": "ও বাচ্চাদের কীভাবে মানুষ করবে, সেটা বলার আমি কে?",
+  "extr": "o baachchaader kiibhaabe maanush korbe, setaa bolaar aami ke?",
+  "n": "'Maanush koraa' (make human) = raise a child."
+ },
+ {
+  "id": "ENG_CHUNK_0927",
+  "t": "[clause] বললে মিথ্যে বলা হবে",
+  "tr": "[clause] bolle mithye bolaa hobe",
+  "ex": "নার্ভাস ছিলাম না বললে মিথ্যে বলা হবে।",
+  "extr": "naarbhaas chhilaam naa bolle mithye bolaa hobe."
+ },
+ {
+  "id": "ENG_CHUNK_0928",
+  "t": "বলতে খারাপ লাগছে, কিন্তু [clause]",
+  "tr": "bolte khaaraap laagchhe, kintu [clause]",
+  "ex": "বলতে খারাপ লাগছে, কিন্তু মনে হয় আমরা রাস্তা হারিয়েছি।",
+  "extr": "bolte khaaraap laagchhe, kintu mone hoy aamraa raastaa haariyechhi."
+ },
+ {
+  "id": "ENG_CHUNK_0929",
+  "t": "[verb]-তে চাই না, কিন্তু [clause]",
+  "tr": "[verb]-te chaai naa, kintu [clause]",
+  "ex": "অভদ্রতা করতে চাই না, কিন্তু অনেক রাত হয়ে যাচ্ছে।",
+  "extr": "obhodrotaa korte chaai naa, kintu onek raat hoye jaachchhe."
+ },
+ {
+  "id": "ENG_CHUNK_0930",
+  "t": "[noun]-এর বিরুদ্ধে আমার কিছু নেই, কিন্তু [clause]",
+  "tr": "[noun]-er biruddhe aamaar kichhu nei, kintu [clause]",
+  "ex": "বেড়ালের বিরুদ্ধে আমার কিছু নেই, কিন্তু আমার অ্যালার্জি আছে।",
+  "extr": "beraaler biruddhe aamaar kichhu nei, kintu aamaar yaalaarji aachhe."
+ },
+ {
+  "id": "ENG_CHUNK_0931",
+  "t": "তুমি সত্যিই ভাবছ [clause]?",
+  "tr": "tumi sottii bhaabchho [clause]?",
+  "ex": "তুমি সত্যিই ভাবছ আমরা ছ'টার মধ্যে পৌঁছে যাব?",
+  "extr": "tumi sottii bhaabchho aamraa chhotaar modhye pounchhe jaabo?"
+ },
+ {
+  "id": "ENG_CHUNK_0932",
+  "t": "[noun]-এ আমি [person]-এর দলে",
+  "tr": "[noun]-e aami [person]-er dole",
+  "ex": "এ ব্যাপারে আমি সুদীপার দলে। আগে খেয়ে নিই চলো।",
+  "extr": "e byaapaare aami Sudiipaar dole. aage kheye nii cholo.",
+  "n": "'X-er dole' (on X's team) is the casual way to side with someone."
+ },
+ {
+  "id": "ENG_CHUNK_0933",
+  "t": "বুঝছি না কেন [clause]",
+  "tr": "bujhchhi naa keno [clause]",
+  "ex": "বুঝছি না আমরা কেন ট্রেনে যেতে পারি না।",
+  "extr": "bujhchhi naa aamraa keno trene jete paari naa."
+ },
+ {
+  "id": "ENG_CHUNK_0934",
+  "t": "যেটা বুঝছি না সেটা হল, [clause]",
+  "tr": "jetaa bujhchhi naa setaa holo, [clause]",
+  "ex": "যেটা বুঝছি না সেটা হল, ও একটা ফোন করল না কেন।",
+  "extr": "jetaa bujhchhi naa setaa holo, o ektaa phon korlo naa keno."
+ },
+ {
+  "id": "ENG_CHUNK_0935",
+  "t": "[verb-noun]-র পক্ষে আমি একশোবার",
+  "tr": "[verb-noun]-r pokkhe aami ekshobaar",
+  "ex": "টাকা বাঁচানোর পক্ষে আমি একশোবার, কিন্তু খাবারে নয়।",
+  "extr": "taakaa baanchaanor pokkhe aami ekshobaar, kintu khaabaare noy.",
+  "n": "'Ekshobaar' (a hundred times) = absolutely."
+ },
+ {
+  "id": "ENG_CHUNK_0936",
+  "t": "সুযোগ পেলে লুফে নেওয়া",
+  "tr": "sujog pele luphe neyaa",
+  "ex": "টোকিওতে চাকরির অফার পেলে লুফে নেব।",
+  "extr": "tokiote chaakrir ophaar pele luphe nebo.",
+  "n": "'Luphe neyaa' = to catch in mid-air."
+ },
+ {
+  "id": "ENG_CHUNK_0937",
+  "t": "[noun] ফিরিয়ে দেওয়া",
+  "tr": "[noun] phiriye deyaa",
+  "ex": "যাতায়াতে বড্ড সময় লাগত বলে চাকরিটা ফিরিয়ে দিলাম।",
+  "extr": "jaataayaate boddo somoy laagto bole chaakritaa phiriye dilaam."
+ },
+ {
+  "id": "ENG_CHUNK_0938",
+  "t": "[noun] বাতিল করা",
+  "tr": "[noun] baatil koraa",
+  "ex": "বৃষ্টির জন্য খেলাটা বাতিল হয়ে গেল।",
+  "extr": "brishtir jonyo khelaataa baatil hoye gelo."
+ },
+ {
+  "id": "ENG_CHUNK_0939",
+  "t": "[noun] আপাতত থামিয়ে রাখা",
+  "tr": "[noun] aapaatoto thaamiye raakhaa",
+  "ex": "রান্নাঘর সারানোর কাজটা আপাতত থামিয়ে রেখেছি।",
+  "extr": "raannaaghor saaraanor kaajtaa aapaatoto thaamiye rekhechhi."
+ },
+ {
+  "id": "ENG_CHUNK_0940",
+  "t": "[noun]-এর মধ্য দিয়ে যাওয়া",
+  "tr": "[noun]-er modhyo diye jaaoyaa",
+  "ex": "ও এখন খুব কঠিন একটা সময়ের মধ্য দিয়ে যাচ্ছে।",
+  "extr": "o ekhon khub kothin ektaa somoyer modhyo diye jaachchhe."
+ },
+ {
+  "id": "ENG_CHUNK_0941",
+  "t": "ভেঙে পড়া / ছিঁড়ে যাওয়া",
+  "tr": "bhenge poraa / chhinre jaaoyaa",
+  "ex": "এই জুতোজোড়া এর মধ্যেই ছিঁড়ে যাচ্ছে।",
+  "extr": "ei jutojoraa er modhyei chhinre jaachchhe."
+ },
+ {
+  "id": "ENG_CHUNK_0942",
+  "t": "[noun] করেও পার পেয়ে যাওয়া",
+  "tr": "[noun] koreo paar peye jaaoyaa",
+  "ex": "আমার ছোট ভাই সব কিছু করেও পার পেয়ে যায়।",
+  "extr": "aamaar chhoto bhaai sob kichhu koreo paar peye jaay."
+ },
+ {
+  "id": "ENG_CHUNK_0943",
+  "t": "[noun] থেকে কাটানো",
+  "tr": "[noun] theke kaataano",
+  "ex": "সোমবারের মিটিংটা থেকে কাটানোর চেষ্টা করছি।",
+  "extr": "sombaarer mitingtaa theke kaataanor cheshtaa korchhi.",
+  "n": "'Kaataano' / 'kete poraa' = to dodge something; slangy."
+ },
+ {
+  "id": "ENG_CHUNK_0944",
+  "t": "[noun]-এর পথে বাধা হয়ে দাঁড়ানো",
+  "tr": "[noun]-er pothe baadhaa hoye daanraano",
+  "ex": "কাজের চাপে শরীরটাকে অবহেলা কোরো না।",
+  "extr": "kaajer chaape shoriirtaake obohelaa koro naa.",
+  "n": "In everyday speech Bengali rephrases: 'don't neglect X because of Y' rather than 'let Y get in the way'."
+ },
+ {
+  "id": "ENG_CHUNK_0945",
+  "t": "বাড়াবাড়ি করা / হইচই করা",
+  "tr": "baaraabaari koraa / hoichoi koraa",
+  "ex": "একটু আঁচড় লেগেছে শুধু, বাড়াবাড়ি কোরো না।",
+  "extr": "ektu aanchor legechhe shudhu, baaraabaari koro naa."
+ },
+ {
+  "id": "ENG_CHUNK_0946",
+  "t": "মেতে ওঠা / একটু বেশিই হয়ে যাওয়া",
+  "tr": "mete othaa / ektu beshii hoye jaaoyaa",
+  "ex": "সরি, সাজাতে গিয়ে একটু বেশিই মেতে উঠেছিলাম।",
+  "extr": "sori, saajaate giye ektu beshii mete uthechhilaam."
+ },
+ {
+  "id": "ENG_CHUNK_0947",
+  "t": "[noun] যতটা পারা যায় উপভোগ করে নেওয়া",
+  "tr": "[noun] jototaa paaraa jaay upobhog kore neyaa",
+  "ex": "রোদ থাকতে থাকতে যতটা পারি উপভোগ করে নিই চলো।",
+  "extr": "rod thaakte thaakte jototaa paari upobhog kore nii cholo."
+ },
+ {
+  "id": "ENG_CHUNK_0948",
+  "t": "ভালো ইমপ্রেশন দেওয়া / মন জয় করা",
+  "tr": "bhaalo impreshon deyaa / mon joy koraa",
+  "ex": "ওর মা-বাবার মন জয় করতে চাই।",
+  "extr": "or maa-baabaar mon joy korte chaai."
+ },
+ {
+  "id": "ENG_CHUNK_0949",
+  "t": "[noun] বানিয়ে বলা",
+  "tr": "[noun] baaniye bolaa",
+  "ex": "গাড়ি খারাপ হয়েছে বলে একটা অজুহাত বানিয়ে দিল।",
+  "extr": "gaari khaaraap hoyechhe bole ektaa ojuhaat baaniye dilo."
+ },
+ {
+  "id": "ENG_CHUNK_0950",
+  "t": "উন্নতি করা / এগোনো",
+  "tr": "unnoti koraa / egono",
+  "ex": "আমার স্প্যানিশ ধীরে এগোচ্ছে, তবে উন্নতি হচ্ছে।",
+  "extr": "aamaar spyaanish dhiire egochchhe, tobe unnoti hochchhe."
+ },
+ {
+  "id": "ENG_CHUNK_0951",
+  "t": "টুকটাক গল্প করা",
+  "tr": "tuktaak golpo koraa",
+  "ex": "পার্টিতে অচেনা লোকের সাথে টুকটাক গল্প করতে আমি একদম পারি না।",
+  "extr": "paartite ochenaa loker saathe tuktaak golpo korte aami ekdom paari naa."
+ },
+ {
+  "id": "ENG_CHUNK_0952",
+  "t": "ঝুঁকি নেওয়া",
+  "tr": "jhunki neyaa",
+  "ex": "রেস্টুরেন্ট খোলা বড় ঝুঁকি, কিন্তু আমি নেব।",
+  "extr": "resturent kholaa boro jhunki, kintu aami nebo."
+ },
+ {
+  "id": "ENG_CHUNK_0953",
+  "t": "[noun] কাজে লাগানো / [noun]-এর সুযোগ নেওয়া",
+  "tr": "[noun] kaaje laagaano / [noun]-er sujog neyaa",
+  "ex": "আবহাওয়াটা ভালো আছে, এটা কাজে লাগিয়ে চলো হাইকিংয়ে যাই।",
+  "extr": "aabohaaoyaataa bhaalo aachhe, etaa kaaje laagiye cholo haaikinge jaai.",
+  "n": "'Sujog neyaa' can also mean exploiting someone; 'kaaje laagaano' is always neutral."
+ },
+ {
+  "id": "ENG_CHUNK_0954",
+  "t": "[noun]-টা হালকাভাবে না নেওয়া / গুরুত্ব দেওয়া",
+  "tr": "[noun]-taa haalkaabhaabe naa neyaa / gurutto deyaa",
+  "ex": "কাশিটাকে হালকাভাবে নিয়ো না, ডাক্তার দেখাও।",
+  "extr": "kaashitaake haalkaabhaabe niyo naa, daaktaar dekhaao.",
+  "n": "'Daaktaar dekhaano' (show a doctor) = see a doctor."
+ },
+ {
+  "id": "ENG_CHUNK_0955",
+  "t": "[noun]-কে স্বাভাবিক বলে ধরে নেওয়া",
+  "tr": "[noun]-ke swaabhaabik bole dhore neyaa",
+  "ex": "পরিষ্কার জল পাওয়াটা আমরা স্বাভাবিক বলে ধরে নিই।",
+  "extr": "porishkaar jol paaoyaataa aamraa swaabhaabik bole dhore nii."
+ },
+ {
+  "id": "ENG_CHUNK_0956",
+  "t": "পালা করে [verb-noun]",
+  "tr": "paalaa kore [verb-noun]",
+  "ex": "আমি আর আমার রুমমেট পালা করে রাতের রান্না করি।",
+  "extr": "aami aar aamaar rummet paalaa kore raater raannaa kori."
+ },
+ {
+  "id": "ENG_CHUNK_0957",
+  "t": "[noun] ধরা / শুরু করা",
+  "tr": "[noun] dhoraa / shuru koraa",
+  "ex": "পিঠের ব্যথার জন্য যোগব্যায়াম ধরেছি।",
+  "extr": "pither byathaar jonyo jogbyaayaam dhorechhi."
+ },
+ {
+  "id": "ENG_CHUNK_0958",
+  "t": "[noun]-এর হাল ধরা",
+  "tr": "[noun]-er haal dhoraa",
+  "ex": "গত বছর দিদি পারিবারিক বেকারিটার হাল ধরেছে।",
+  "extr": "goto bochhor didi paaribaarik bekaaritaar haal dhorechhe.",
+  "n": "'Haal dhoraa' = to take the rudder."
+ },
+ {
+  "id": "ENG_CHUNK_0959",
+  "t": "[noun]-এর দায় নেওয়া",
+  "tr": "[noun]-er daay neyaa",
+  "ex": "টিকিটের গোলমালের দায় আমি নিচ্ছি।",
+  "extr": "tikiter golmaaler daay aami nichchhi."
+ },
+ {
+  "id": "ENG_CHUNK_0960",
+  "t": "[person]-এর সাথে একটু কথা বলা",
+  "tr": "[person]-er saathe ektu kothaa bolaa",
+  "ex": "ক্লাসের পর আপনার সাথে একটু কথা বলা যাবে?",
+  "extr": "klaaser por aapnaar saathe ektu kothaa bolaa jaabe?"
+ },
+ {
+  "id": "ENG_CHUNK_0961",
+  "t": "ভুল বোঝাবুঝি মিটিয়ে নেওয়া",
+  "tr": "bhul bojhaabujhi mitiye neyaa",
+  "ex": "অনেকক্ষণ কথা বলে আমরা ভুল বোঝাবুঝিটা মিটিয়ে নিলাম।",
+  "extr": "onekkhon kothaa bole aamraa bhul bojhaabujhitaa mitiye nilaam."
+ },
+ {
+  "id": "ENG_CHUNK_0962",
+  "t": "রাগ পুষে রাখা",
+  "tr": "raag pushe raakhaa",
+  "ex": "বিয়ের ব্যাপারটা নিয়ে ও এখনও রাগ পুষে রেখেছে।",
+  "extr": "biyer byaapaartaa niye o ekhono raag pushe rekhechhe.",
+  "n": "'Pushe raakhaa' = to keep (like a pet)."
+ },
+ {
+  "id": "ENG_CHUNK_0963",
+  "t": "[noun] মাথায় থাকা",
+  "tr": "[noun] maathaay thaakaa",
+  "ex": "রাতের খাবারের জন্য কিছু মাথায় আছে?",
+  "extr": "raater khaabaarer jonyo kichhu maathaay aachhe?"
+ },
+ {
+  "id": "ENG_CHUNK_0964",
+  "t": "[person]-এর ভালো হবে",
+  "tr": "[person]-er bhaalo hobe",
+  "ex": "এক সপ্তাহ সমুদ্রের ধারে কাটালে তোমার ভালো হবে।",
+  "extr": "ek soptaaho somudrer dhaare kaataale tomaar bhaalo hobe."
+ },
+ {
+  "id": "ENG_CHUNK_0965",
+  "t": "[noun] ছাড়া চলে না",
+  "tr": "[noun] chhaaraa chole naa",
+  "ex": "সকালের চা ছাড়া আমার চলে না।",
+  "extr": "sokaaler chaa chhaaraa aamaar chole naa."
+ },
+ {
+  "id": "ENG_CHUNK_0966",
+  "t": "একবার মিলিয়ে নিই",
+  "tr": "ekbaar miliye nii",
+  "ex": "একবার মিলিয়ে নিই, আমরা স্টেশনে দেখা করছি, তাই তো?",
+  "extr": "ekbaar miliye nii, aamraa steshone dekhaa korchhi, taai to?"
+ },
+ {
+  "id": "ENG_CHUNK_0967",
+  "t": "আমি যদি ঠিক বুঝে থাকি",
+  "tr": "aami jodi thik bujhe thaaki",
+  "ex": "আমি যদি ঠিক বুঝে থাকি, আপনি বৃহস্পতিবার রওনা দিতে চান।",
+  "extr": "aami jodi thik bujhe thaaki, aapni brihospotibaar rownaa dite chaan."
+ },
+ {
+  "id": "ENG_CHUNK_0968",
+  "t": "অন্য প্রসঙ্গে আসি / ভালো কথা",
+  "tr": "onno prosonge aasi / bhaalo kothaa",
+  "ex": "অন্য প্রসঙ্গে আসি, নতুন ফ্ল্যাট পেলে শেষ পর্যন্ত?",
+  "extr": "onno prosonge aasi, notun phlyaat pele shesh porjonto?"
+ },
+ {
+  "id": "ENG_CHUNK_0969",
+  "t": "তখন যেটা বলছিলে, সেখানে ফিরি",
+  "tr": "tokhon jetaa bolchhile, sekhaane phiri",
+  "ex": "তখন যেটা বলছিলে, সেখানে ফিরি। চাকরিটা ছাড়লে কেন?",
+  "extr": "tokhon jetaa bolchhile, sekhaane phiri. chaakritaa chhaarle keno?"
+ },
+ {
+  "id": "ENG_CHUNK_0970",
+  "t": "আমার কথার যদি কোনো দাম থাকে",
+  "tr": "aamaar kothaar jodi kono daam thaake",
+  "ex": "আমার কথার যদি কোনো দাম থাকে, আমার মনে হয় তুমি ঠিক সিদ্ধান্তই নিয়েছ।",
+  "extr": "aamaar kothaar jodi kono daam thaake, aamaar mone hoy tumi thik shiddhaantoi niyechho."
+ },
+ {
+  "id": "ENG_CHUNK_0971",
+  "t": "কিছু মনে কোরো না, কিন্তু",
+  "tr": "kichhu mone koro naa, kintu",
+  "ex": "কিছু মনে কোরো না, কিন্তু তোমার গাড়িতে পুরোনো চিপসের গন্ধ।",
+  "extr": "kichhu mone koro naa, kintu tomaar gaarite purono chipser gondho."
+ },
+ {
+  "id": "ENG_CHUNK_0972",
+  "t": "শুনতে অদ্ভুত লাগবে, কিন্তু",
+  "tr": "shunte odbhut laagbe, kintu",
+  "ex": "শুনতে অদ্ভুত লাগবে, কিন্তু আমাদের কি আগে কোথাও দেখা হয়েছে?",
+  "extr": "shunte odbhut laagbe, kintu aamaader ki aage kothaao dekhaa hoyechhe?"
+ },
+ {
+  "id": "ENG_CHUNK_0973",
+  "t": "বুঝতে পারছি / একদম",
+  "tr": "bujhte paarchhi / ekdom",
+  "ex": "বুঝতে পারছি, ইদানীং যাতায়াতটা জঘন্য হয়ে গেছে।",
+  "extr": "bujhte paarchhi, idaaniing jaataayaattaa joghonyo hoye gechhe."
+ },
+ {
+  "id": "ENG_CHUNK_0974",
+  "t": "সোজা কথায়",
+  "tr": "sojaa kothaay",
+  "ex": "আমাদের সামর্থ্য আছে? সোজা কথায়, না।",
+  "extr": "aamaader saamorthyo aachhe? sojaa kothaay, naa."
+ },
+ {
+  "id": "ENG_CHUNK_0975",
+  "t": "তো, আমি তখন",
+  "tr": "to, aami tokhon",
+  "ex": "তো, আমি তখন পাজামা পরে দরজার বাইরে আটকে।",
+  "extr": "to, aami tokhon paajaamaa pore dorojaar baaire aatke."
+ },
+ {
+  "id": "ENG_CHUNK_0976",
+  "t": "সত্যি কথা বলতে কী",
+  "tr": "sotti kothaa bolte kii",
+  "ex": "সত্যি কথা বলতে কী, ওই ট্রেডমিলটা আমরা কোনোদিন ব্যবহার করব না।",
+  "extr": "sotti kothaa bolte kii, oi tredmiltaa aamraa konodin byabohaar korbo naa."
+ },
+ {
+  "id": "ENG_CHUNK_0977",
+  "t": "আমি ব্যাপারটা সেভাবে দেখি না",
+  "tr": "aami byaapaartaa sebhaabe dekhi naa",
+  "ex": "হুম, আমি ব্যাপারটা সেভাবে দেখি না। আমার মনে হয় ও শুধু ক্লান্ত ছিল।",
+  "extr": "hum, aami byaapaartaa sebhaabe dekhi naa. aamaar mone hoy o shudhu klaanto chhilo."
+ },
+ {
+  "id": "ENG_CHUNK_0978",
+  "t": "মোটামুটি / কমবেশি",
+  "tr": "motaamuti / kombeshi",
+  "ex": "গাড়িতে মোটামুটি এক ঘণ্টা, কমবেশি।",
+  "extr": "gaarite motaamuti ek ghontaa, kombeshi."
+ },
+ {
+  "id": "ENG_CHUNK_0979",
+  "t": "আমাকে ধরো না কিন্তু",
+  "tr": "aamaake dhoro naa kintu",
+  "ex": "মনে হয় দোকানটা ন'টায় খোলে, তবে আমাকে ধরো না কিন্তু।",
+  "extr": "mone hoy dokaantaa notaay khole, tobe aamaake dhoro naa kintu.",
+  "n": "Lit. 'don't hold me (to it)'."
+ },
+ {
+  "id": "ENG_CHUNK_0980",
+  "t": "উল্টো দিকটা একটু ভেবে দেখি",
+  "tr": "ulto diktaa ektu bhebe dekhi",
+  "ex": "আচ্ছা, উল্টো দিকটা একটু ভেবে দেখি। যদি বৃষ্টি হয়?",
+  "extr": "aachchhaa, ulto diktaa ektu bhebe dekhi. jodi brishti hoy?"
+ },
+ {
+  "id": "ENG_CHUNK_0981",
+  "t": "কোনো রাগ নেই / মনে কিছু রাখিনি",
+  "tr": "kono raag nei / mone kichhu raakhini",
+  "ex": "আমার বদলে তুমি চাকরিটা পেয়েছ? কোনো রাগ নেই।",
+  "extr": "aamaar bodole tumi chaakritaa peyechho? kono raag nei."
+ },
+ {
+  "id": "ENG_CHUNK_0982",
+  "t": "না না, কিছু মনে করিনি",
+  "tr": "naa naa, kichhu mone korini",
+  "ex": "কিছু মনে কোরো না, তোমার রান্নাটা একটু পানসে। না না, কিছু মনে করিনি।",
+  "extr": "kichhu mone koro naa, tomaar raannaataa ektu paanse. naa naa, kichhu mone korini."
+ },
+ {
+  "id": "ENG_CHUNK_0983",
+  "t": "তোমার কাছে আমার ক্ষমা চাওয়া উচিত",
+  "tr": "tomaar kaachhe aamaar khomaa chaaoyaa uchit",
+  "ex": "কাল যা বলেছি তার জন্য তোমার কাছে আমার ক্ষমা চাওয়া উচিত।",
+  "extr": "kaal jaa bolechhi taar jonyo tomaar kaachhe aamaar khomaa chaaoyaa uchit."
+ },
+ {
+  "id": "ENG_CHUNK_0984",
+  "t": "তুমি আমার দিনটাই ভালো করে দিলে",
+  "tr": "tumi aamaar dintaai bhaalo kore dile",
+  "ex": "ফুলের জন্য ধন্যবাদ, আমার দিনটাই ভালো করে দিলে!",
+  "extr": "phuler jonyo dhonyobaad, aamaar dintaai bhaalo kore dile!"
+ },
+ {
+  "id": "ENG_CHUNK_0985",
+  "t": "টাকাটা রাখো তো",
+  "tr": "taakaataa raakho to",
+  "ex": "টাকাটা রাখো তো, এটা আমি খাওয়াচ্ছি।",
+  "extr": "taakaataa raakho to, etaa aami khaaoyaachchhi.",
+  "n": "'Aami khaaoyaachchhi' (I'm feeding you) = my treat."
+ },
+ {
+  "id": "ENG_CHUNK_0986",
+  "t": "পরেরটা আমার",
+  "tr": "porertaa aamaar",
+  "ex": "কফির জন্য থ্যাংকস। পরেরটা আমার।",
+  "extr": "kophir jonyo thyaanks. porertaa aamaar."
+ },
+ {
+  "id": "ENG_CHUNK_0987",
+  "t": "আজ থাক, অন্য দিন?",
+  "tr": "aaj thaak, onno din?",
+  "ex": "আজ রাতে খুব ক্লান্ত। আজ থাক, অন্য দিন হবে?",
+  "extr": "aaj raate khub klaanto. aaj thaak, onno din hobe?"
+ },
+ {
+  "id": "ENG_CHUNK_0988",
+  "t": "না থাক, ধন্যবাদ",
+  "tr": "naa thaak, dhonyobaad",
+  "ex": "আরও কেক? না থাক, ধন্যবাদ।",
+  "extr": "aaro kek? naa thaak, dhonyobaad."
+ },
+ {
+  "id": "ENG_CHUNK_0989",
+  "t": "আর এক গ্রাসও পারব না / পেট ভরে গেছে",
+  "tr": "aar ek graaso paarbo naa / pet bhore gechhe",
+  "ex": "দারুণ হয়েছিল, কিন্তু আর এক গ্রাসও খেতে পারব না।",
+  "extr": "daarun hoyechhilo, kintu aar ek graaso khete paarbo naa.",
+  "n": "A Bengali host will insist anyway; say it twice."
+ },
+ {
+  "id": "ENG_CHUNK_0990",
+  "t": "এটা আমাদের তরফ থেকে",
+  "tr": "etaa aamaader toroph theke",
+  "ex": "অনেকক্ষণ অপেক্ষা করালাম, সরি। কফিটা আমাদের তরফ থেকে।",
+  "extr": "onekkhon opekkhaa koraalaam, sori. kophitaa aamaader toroph theke."
+ },
+ {
+  "id": "ENG_CHUNK_0991",
+  "t": "তাতেও",
+  "tr": "taateo",
+  "ex": "ল্যাপটপটা দু'বার রিস্টার্ট করলাম, তাতেও কানেক্ট হল না।",
+  "extr": "lyaaptoptaa du'baar ristaart korlaam, taateo kaanekt holo naa."
+ },
+ {
+  "id": "ENG_CHUNK_0992",
+  "t": "যেই না ... অমনি / ঠিক যখন",
+  "tr": "jei naa ... omni / thik jokhon",
+  "ex": "যেই না খেতে বসলাম, অমনি ফোনটা বেজে উঠল।",
+  "extr": "jei naa khete boslaam, omni phontaa beje uthlo."
+ },
+ {
+  "id": "ENG_CHUNK_0993",
+  "t": "দেখতে দেখতে / কিছুদিনের মধ্যেই",
+  "tr": "dekhte dekhte / kichhudiner modhyei",
+  "ex": "আমরা গল্প শুরু করলাম, আর দেখতে দেখতে সবচেয়ে ভালো বন্ধু হয়ে গেলাম।",
+  "extr": "aamraa golpo shuru korlaam, aar dekhte dekhte sobcheye bhaalo bondhu hoye gelaam."
+ },
+ {
+  "id": "ENG_CHUNK_0994",
+  "t": "কখন যে ... টেরই পেলাম না",
+  "tr": "kokhon je ... teri pelaam naa",
+  "ex": "একটা এপিসোড দেখব বলে বসলাম, কখন যে রাত দুটো বেজে গেল টেরই পেলাম না।",
+  "extr": "ektaa episod dekhbo bole boslaam, kokhon je raat duto beje gelo teri pelaam naa."
+ },
+ {
+  "id": "ENG_CHUNK_0995",
+  "t": "একে তো / প্রথম কথা",
+  "tr": "eke to / prothom kothaa",
+  "ex": "আমি ওখানে যাচ্ছি না। একে তো বড্ড খরচ।",
+  "extr": "aami okhaane jaachchhi naa. eke to boddo khoroch.",
+  "n": "Full pattern: 'eke to ..., taar upor ...' (for one thing ..., on top of that ...)."
+ },
+ {
+  "id": "ENG_CHUNK_0996",
+  "t": "ভেতরে ভেতরে / মনে মনে",
+  "tr": "bhetore bhetore / mone mone",
+  "ex": "ও বাইরে শক্ত ভাব দেখায়, কিন্তু ভেতরে ভেতরে খুব নরম মনের।",
+  "extr": "o baaire shokto bhaab dekhaay, kintu bhetore bhetore khub norom moner."
+ },
+ {
+  "id": "ENG_CHUNK_0997",
+  "t": "নয়তো / তা নাহলে",
+  "tr": "noyto / taa naahole",
+  "ex": "নিশ্চয়ই জ্যামে আটকে আছে। নয়তো ভুলে গেছে।",
+  "extr": "nishchoyi jyaame aatke aachhe. noyto bhule gechhe."
+ },
+ {
+  "id": "ENG_CHUNK_0998",
+  "t": "তাহলে / যদি তাই হয়",
+  "tr": "taahole / jodi taai hoy",
+  "ex": "কাল গাড়ি চালাচ্ছ? তাহলে আমাকে একটা লিফট দেবে?",
+  "extr": "kaal gaari chaalaachchho? taahole aamaake ektaa lipht debe?"
+ },
+ {
+  "id": "ENG_CHUNK_0999",
+  "t": "যেন",
+  "tr": "jeno",
+  "ex": "ও আমার দিকে এমনভাবে তাকাল যেন আমি পাগল।",
+  "extr": "o aamaar dike emonbhaabe taakaalo jeno aami paagol."
+ },
+ {
+  "id": "ENG_CHUNK_1000",
+  "t": "...-এর বদলে / ... না করে",
+  "tr": "...-er bodole / ... naa kore",
+  "ex": "এখন কেনার বদলে ভাড়া থাকাই ভালো।",
+  "extr": "ekhon kenaar bodole bhaaraa thaakaai bhaalo."
+ }
+]

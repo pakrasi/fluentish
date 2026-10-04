@@ -1,0 +1,1129 @@
+[
+ {
+  "id": "BG:time-um-neun",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "time",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "prep-case"
+  ],
+  "strict": [
+   "um"
+  ],
+  "plan": "recall",
+  "task": "Fill the gap.",
+  "prompt": "Der Kurs beginnt ___ neun Uhr.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "um"
+  ],
+  "anywhere": false,
+  "model": "Der Kurs beginnt um neun Uhr.",
+  "wrong": [
+   "am",
+   "an"
+  ],
+  "rule": "Clock times take um: um neun Uhr.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "A2"
+ },
+ {
+  "id": "BG:time-am-samstag",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "time",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "prep-case"
+  ],
+  "strict": [
+   "am"
+  ],
+  "plan": "recall",
+  "task": "Fill the gap.",
+  "prompt": "Wir treffen uns ___ Samstag. (on)",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "am"
+  ],
+  "anywhere": false,
+  "model": "Wir treffen uns am Samstag.",
+  "wrong": [
+   "im",
+   "um",
+   "an"
+  ],
+  "rule": "Days and dates take am: am Samstag.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "A2"
+ },
+ {
+  "id": "BG:time-im-juli",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "time",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "prep-case"
+  ],
+  "strict": [
+   "im"
+  ],
+  "plan": "recall",
+  "task": "Fill the gap.",
+  "prompt": "Ich habe ___ Juli Geburtstag.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "im"
+  ],
+  "anywhere": false,
+  "model": "Ich habe im Juli Geburtstag.",
+  "wrong": [
+   "am",
+   "in"
+  ],
+  "rule": "Months and seasons take im: im Juli, im Winter.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "A2"
+ },
+ {
+  "id": "BG:time-im-winter",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "time",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "prep-case"
+  ],
+  "strict": [
+   "im"
+  ],
+  "plan": "recall",
+  "task": "Fill the gap.",
+  "prompt": "___ Winter ist es hier sehr kalt.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "im"
+  ],
+  "anywhere": false,
+  "model": "Im Winter ist es hier sehr kalt.",
+  "wrong": [
+   "am",
+   "in"
+  ],
+  "rule": "Months and seasons take im: im Juli, im Winter.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "A2"
+ },
+ {
+  "id": "BG:time-in-der-nacht",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "time",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "prep-case"
+  ],
+  "strict": [
+   "in",
+   "der"
+  ],
+  "plan": "recall",
+  "task": "Fill the gap.",
+  "prompt": "Ich kann ___ Nacht nicht schlafen. (at)",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "in der"
+  ],
+  "anywhere": false,
+  "model": "Ich kann in der Nacht nicht schlafen.",
+  "wrong": [
+   "am",
+   "an der",
+   "in die"
+  ],
+  "rule": "Nacht is the exception to am: in der Nacht.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:time-vor",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "time",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "prep-case"
+  ],
+  "strict": [
+   "vor"
+  ],
+  "plan": "recall",
+  "task": "Fill the gap.",
+  "prompt": "Ich habe ihn ___ zwei Wochen gesehen. (ago)",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "vor"
+  ],
+  "anywhere": false,
+  "model": "Ich habe ihn vor zwei Wochen gesehen.",
+  "wrong": [
+   "seit",
+   "für"
+  ],
+  "rule": "For ago, German puts vor in front: vor zwei Wochen.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:time-seit-gap",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "time",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "prep-case",
+   "ending"
+  ],
+  "strict": [
+   "seit",
+   "Jahren"
+  ],
+  "plan": "recall",
+  "task": "Fill the gap.",
+  "prompt": "Ich wohne ___ in Berlin. (for three years, and still do)",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "seit drei jahren"
+  ],
+  "anywhere": false,
+  "model": "Ich wohne seit drei Jahren in Berlin.",
+  "wrong": [
+   "für drei Jahre",
+   "vor drei Jahren",
+   "seit drei Jahre"
+  ],
+  "rule": "Something that started in the past and still goes on takes seit + present: Ich wohne seit drei Jahren hier.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:time-nach-dem-essen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "time",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "prep-case"
+  ],
+  "strict": [
+   "nach"
+  ],
+  "plan": "recall",
+  "task": "Fill the gap.",
+  "prompt": "___ dem Essen putze ich mir die Zähne. (after)",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "nach"
+  ],
+  "anywhere": false,
+  "model": "Nach dem Essen putze ich mir die Zähne.",
+  "wrong": [
+   "nachdem",
+   "danach"
+  ],
+  "rule": "Before a noun, after is nach: nach dem Essen.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:time-bis",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "time",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "prep-case"
+  ],
+  "strict": [
+   "bis"
+  ],
+  "plan": "recall",
+  "task": "Fill the gap.",
+  "prompt": "Der Laden hat ___ geöffnet. (until 6 p.m.)",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "bis 18 uhr",
+   "bis sechs uhr",
+   "bis 6 uhr",
+   "bis 18.00 uhr"
+  ],
+  "anywhere": false,
+  "model": "Der Laden hat bis 18 Uhr geöffnet.",
+  "wrong": [
+   "um 18 Uhr",
+   "seit 18 Uhr"
+  ],
+  "rule": "Until is bis: bis 18 Uhr.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:time-seit-lerne",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "time",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "prep-case",
+   "word-choice"
+  ],
+  "strict": [
+   "seit"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "I've been learning German for two years.",
+  "prompt_lang": "en",
+  "hl": "I've been learning German for two years",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "ich lerne (schon) seit zwei jahren deutsch",
+   "seit zwei jahren lerne ich deutsch",
+   "ich lerne deutsch (schon) seit zwei jahren"
+  ],
+  "anywhere": true,
+  "model": "Ich lerne seit zwei Jahren Deutsch.",
+  "wrong": [
+   "Ich habe seit zwei Jahren Deutsch gelernt.",
+   "Ich lerne Deutsch für zwei Jahre."
+  ],
+  "rule": "Something that started in the past and still goes on takes seit + present: Ich lerne seit zwei Jahren Deutsch.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:time-seit-mai",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "time",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "prep-case",
+   "word-choice"
+  ],
+  "strict": [
+   "seit"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "She has lived in Hamburg since May.",
+  "prompt_lang": "en",
+  "hl": null,
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "sie wohnt seit mai in hamburg",
+   "sie wohnt in hamburg seit mai",
+   "sie lebt seit mai in hamburg",
+   "sie lebt in hamburg seit mai",
+   "seit mai wohnt sie in hamburg"
+  ],
+  "anywhere": false,
+  "model": "Sie wohnt seit Mai in Hamburg.",
+  "wrong": [
+   "Sie hat seit Mai in Hamburg gewohnt.",
+   "Sie wohnt in Hamburg für Mai."
+  ],
+  "rule": "Something that started in the past and still goes on takes seit + present: Sie wohnt seit Mai in Hamburg.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:passive-loesen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "passive",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "paraphrase"
+  ],
+  "strict": [
+   "lässt",
+   "sich",
+   "lösen"
+  ],
+  "plan": "transform",
+  "task": "Say it with lässt sich.",
+  "prompt": "Das Problem kann leicht gelöst werden.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Das Problem",
+  "accept": [
+   "das problem lässt sich leicht lösen"
+  ],
+  "anywhere": false,
+  "model": "Das Problem lässt sich leicht lösen.",
+  "wrong": [
+   "Das Problem lässt sich leicht gelöst.",
+   "Das Problem lässt leicht lösen."
+  ],
+  "rule": "kann … werden becomes lässt sich + infinitive: Das Problem lässt sich lösen.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:passive-oeffnen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "passive",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "paraphrase"
+  ],
+  "strict": [
+   "lässt",
+   "sich",
+   "öffnen"
+  ],
+  "plan": "transform",
+  "task": "Say it with lässt sich.",
+  "prompt": "Das Fenster kann nicht geöffnet werden.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Das Fenster",
+  "accept": [
+   "das fenster lässt sich nicht öffnen"
+  ],
+  "anywhere": false,
+  "model": "Das Fenster lässt sich nicht öffnen.",
+  "wrong": [
+   "Das Fenster lässt sich nicht geöffnet.",
+   "Das Fenster lässt nicht sich öffnen."
+  ],
+  "rule": "kann … werden becomes lässt sich + infinitive: Das Problem lässt sich lösen.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:passive-uebersetzen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "passive",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "paraphrase"
+  ],
+  "strict": [
+   "lässt",
+   "sich",
+   "übersetzen"
+  ],
+  "plan": "transform",
+  "task": "Say it with lässt sich.",
+  "prompt": "Der Text kann gut übersetzt werden.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Der Text",
+  "accept": [
+   "der text lässt sich gut übersetzen"
+  ],
+  "anywhere": false,
+  "model": "Der Text lässt sich gut übersetzen.",
+  "wrong": [
+   "Der Text lässt sich gut übersetzt.",
+   "Der Text lasst sich gut übersetzen."
+  ],
+  "rule": "kann … werden becomes lässt sich + infinitive: Das Problem lässt sich lösen.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:passive-aendern",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "passive",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "paraphrase"
+  ],
+  "strict": [
+   "lässt",
+   "sich",
+   "ändern"
+  ],
+  "plan": "transform",
+  "task": "Say it with lässt sich.",
+  "prompt": "Das kann nicht geändert werden.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Das",
+  "accept": [
+   "das lässt sich nicht ändern"
+  ],
+  "anywhere": false,
+  "model": "Das lässt sich nicht ändern.",
+  "wrong": [
+   "Das lässt sich nicht geändert.",
+   "Das lässt nicht ändern."
+  ],
+  "rule": "kann … werden becomes lässt sich + infinitive: Das Problem lässt sich lösen.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:passive-back-beantworten",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "passive",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "paraphrase",
+   "participle"
+  ],
+  "strict": [
+   "beantwortet",
+   "werden"
+  ],
+  "plan": "transform",
+  "task": "Say it with kann … werden.",
+  "prompt": "Die Frage lässt sich schwer beantworten.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Die Frage",
+  "accept": [
+   "die frage kann schwer beantwortet werden",
+   "die frage kann nur schwer beantwortet werden"
+  ],
+  "anywhere": false,
+  "model": "Die Frage kann schwer beantwortet werden.",
+  "wrong": [
+   "Die Frage kann schwer beantworten werden.",
+   "Die Frage kann schwer beantwortet."
+  ],
+  "rule": "lässt sich + infinitive becomes kann + participle + werden: Der Termin kann verschoben werden.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:passive-back-verschieben",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "passive",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "paraphrase",
+   "participle"
+  ],
+  "strict": [
+   "verschoben",
+   "werden"
+  ],
+  "plan": "transform",
+  "task": "Say it with kann … werden.",
+  "prompt": "Der Termin lässt sich verschieben.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Der Termin",
+  "accept": [
+   "der termin kann verschoben werden"
+  ],
+  "anywhere": false,
+  "model": "Der Termin kann verschoben werden.",
+  "wrong": [
+   "Der Termin kann verschiebt werden.",
+   "Der Termin kann verschieben werden."
+  ],
+  "rule": "lässt sich + infinitive becomes kann + participle + werden: Der Termin kann verschoben werden.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:verb-final-wer-fragen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-final",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "verb-final"
+  ],
+  "strict": [
+   "hat"
+  ],
+  "plan": "transform",
+  "task": "Join the two sentences with wer.",
+  "prompt": "Jemand hat Fragen. Er kann mich anrufen.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Wer",
+  "accept": [
+   "wer fragen hat kann mich anrufen",
+   "wer fragen hat der kann mich anrufen"
+  ],
+  "anywhere": false,
+  "model": "Wer Fragen hat, kann mich anrufen.",
+  "wrong": [
+   "Wer hat Fragen, kann mich anrufen.",
+   "Wer Fragen hat, er kann mich anrufen."
+  ],
+  "rule": "After wer, the verb goes to the end: Wer Fragen hat, kann mich anrufen.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:verb-final-wer-lernt",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-final",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "verb-final"
+  ],
+  "strict": [
+   "lernt"
+  ],
+  "plan": "transform",
+  "task": "Join the two sentences with wer.",
+  "prompt": "Jemand lernt viel. Er besteht die Prüfung.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Wer",
+  "accept": [
+   "wer viel lernt besteht die prüfung",
+   "wer viel lernt der besteht die prüfung"
+  ],
+  "anywhere": false,
+  "model": "Wer viel lernt, besteht die Prüfung.",
+  "wrong": [
+   "Wer lernt viel, besteht die Prüfung.",
+   "Wer viel lernt, er besteht die Prüfung."
+  ],
+  "rule": "After wer, the verb goes to the end: Wer Fragen hat, kann mich anrufen.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:verb-final-wer-mitkommen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-final",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "verb-final"
+  ],
+  "strict": [
+   "will"
+  ],
+  "plan": "transform",
+  "task": "Join the two sentences with wer.",
+  "prompt": "Jemand will mitkommen. Er soll mir schreiben.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Wer",
+  "accept": [
+   "wer mitkommen will soll mir schreiben",
+   "wer mitkommen will der soll mir schreiben"
+  ],
+  "anywhere": false,
+  "model": "Wer mitkommen will, soll mir schreiben.",
+  "wrong": [
+   "Wer will mitkommen, soll mir schreiben.",
+   "Wer mitkommen will, er soll mir schreiben."
+  ],
+  "rule": "After wer, the verb goes to the end: Wer Fragen hat, kann mich anrufen.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:verb-final-wer-krank",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-final",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "verb-final"
+  ],
+  "strict": [
+   "ist"
+  ],
+  "plan": "transform",
+  "task": "Join the two sentences with wer.",
+  "prompt": "Jemand ist krank. Er sollte zu Hause bleiben.",
+  "prompt_lang": "de",
+  "hl": null,
+  "partner": null,
+  "prefill": "Wer",
+  "accept": [
+   "wer krank ist sollte zu hause bleiben",
+   "wer krank ist der sollte zu hause bleiben"
+  ],
+  "anywhere": false,
+  "model": "Wer krank ist, sollte zu Hause bleiben.",
+  "wrong": [
+   "Wer ist krank, sollte zu Hause bleiben.",
+   "Wer krank ist, er sollte zu Hause bleiben."
+  ],
+  "rule": "After wer, the verb goes to the end: Wer Fragen hat, kann mich anrufen.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:umlaut-koennten",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "umlauts",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "umlaut",
+   "konj2"
+  ],
+  "strict": [
+   "Könnten"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "Could you help me? (polite request, to the examiner)",
+  "prompt_lang": "en",
+  "hl": "Could you help me",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "könnten sie mir (bitte) helfen"
+  ],
+  "anywhere": true,
+  "model": "Könnten Sie mir helfen?",
+  "wrong": [
+   "Konnten Sie mir helfen?"
+  ],
+  "rule": "Polite could is könnten with ö; konnten means was able to.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:umlaut-wuerde",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "umlauts",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "umlaut",
+   "konj2"
+  ],
+  "strict": [
+   "würde"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "I would come along.",
+  "prompt_lang": "en",
+  "hl": "I would come along",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "ich würde (gern) mitkommen",
+   "ich würde (gern) mitgehen"
+  ],
+  "anywhere": true,
+  "model": "Ich würde mitkommen.",
+  "wrong": [
+   "Ich wurde mitkommen."
+  ],
+  "rule": "Would is würde with ü; wurde means became.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:umlaut-muessten",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "umlauts",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "umlaut",
+   "konj2"
+  ],
+  "strict": [
+   "müssten"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "We would have to leave earlier.",
+  "prompt_lang": "en",
+  "hl": "We would have to leave earlier",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "wir müssten früher losfahren",
+   "wir müssten früher losgehen",
+   "wir müssten früher gehen",
+   "wir müssten früher fahren",
+   "wir müssten früher los"
+  ],
+  "anywhere": true,
+  "model": "Wir müssten früher losfahren.",
+  "wrong": [
+   "Wir mussten früher losfahren."
+  ],
+  "rule": "Would have to is müssten with ü; mussten means had to.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:umlaut-haette",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "umlauts",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "umlaut",
+   "konj2"
+  ],
+  "strict": [
+   "hätte"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "I would have time on Saturday.",
+  "prompt_lang": "en",
+  "hl": "I would have time on Saturday",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "ich hätte am samstag zeit",
+   "am samstag hätte ich zeit"
+  ],
+  "anywhere": true,
+  "model": "Ich hätte am Samstag Zeit.",
+  "wrong": [
+   "Ich hatte am Samstag Zeit."
+  ],
+  "rule": "Would have is hätte with ä; hatte means had.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:umlaut-waere",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "umlauts",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "umlaut",
+   "konj2"
+  ],
+  "strict": [
+   "wäre"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "That would be great!",
+  "prompt_lang": "en",
+  "hl": "That would be great",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "das wäre toll",
+   "das wäre super",
+   "das wäre großartig",
+   "das wäre klasse",
+   "das wäre prima",
+   "das wäre echt toll"
+  ],
+  "anywhere": true,
+  "model": "Das wäre toll!",
+  "wrong": [
+   "Das war toll!"
+  ],
+  "rule": "Would be is wäre with ä; war means was.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:umlaut-duerfen",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "umlauts",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "umlaut"
+  ],
+  "strict": [
+   "Dürfen"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "Are we allowed to take photos here?",
+  "prompt_lang": "en",
+  "hl": "Are we allowed to take photos here",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "dürfen wir hier fotografieren",
+   "dürfen wir hier fotos machen",
+   "darf man hier fotografieren",
+   "darf man hier fotos machen"
+  ],
+  "anywhere": true,
+  "model": "Dürfen wir hier fotografieren?",
+  "wrong": [
+   "Durften wir hier fotografieren?"
+  ],
+  "rule": "Are we allowed is dürfen with ü; durften means were allowed.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "B1"
+ },
+ {
+  "id": "BG:umlaut-moechte",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "umlauts",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "umlaut",
+   "konj2"
+  ],
+  "strict": [
+   "möchte"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "I'd like a coffee, please.",
+  "prompt_lang": "en",
+  "hl": "I'd like a coffee",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "ich möchte (bitte) einen kaffee",
+   "ich hätte gern einen kaffee"
+  ],
+  "anywhere": true,
+  "model": "Ich möchte einen Kaffee.",
+  "wrong": [
+   "Ich mochte einen Kaffee."
+  ],
+  "rule": "I'd like is möchte with ö; mochte means liked.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "A2"
+ },
+ {
+  "id": "BG:umlaut-brueder",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "umlauts",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "umlaut"
+  ],
+  "strict": [
+   "Brüder"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "I have two brothers.",
+  "prompt_lang": "en",
+  "hl": "I have two brothers",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "ich habe zwei brüder"
+  ],
+  "anywhere": true,
+  "model": "Ich habe zwei Brüder.",
+  "wrong": [
+   "Ich habe zwei Bruder."
+  ],
+  "rule": "The plural of Bruder takes an umlaut: zwei Brüder.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "A2"
+ },
+ {
+  "id": "BG:umlaut-pruefung",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "umlauts",
+  "teil": null,
+  "fn": null,
+  "star": false,
+  "trap": null,
+  "focus": [
+   "umlaut"
+  ],
+  "strict": [
+   "Prüfung"
+  ],
+  "plan": "recall",
+  "task": "Say it in German.",
+  "prompt": "The exam is on Friday.",
+  "prompt_lang": "en",
+  "hl": "The exam is on Friday",
+  "partner": null,
+  "prefill": null,
+  "accept": [
+   "die prüfung ist am freitag",
+   "am freitag ist die prüfung"
+  ],
+  "anywhere": true,
+  "model": "Die Prüfung ist am Freitag.",
+  "wrong": [
+   "Die Prufung ist am Freitag."
+  ],
+  "rule": "Prüfung is spelt with ü: die Prüfung.",
+  "src": "c6 · B1 grammar",
+  "chunk": null,
+  "level": "A2"
+ }
+]

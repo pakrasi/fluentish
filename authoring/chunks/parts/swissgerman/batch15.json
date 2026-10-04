@@ -1,0 +1,281 @@
+[
+ {
+  "id": "ENG_CHUNK_1401",
+  "t": "Ich ha [Nomen]",
+  "ex": "Ich ha en Pfnüsel.",
+  "n": "Pfnüsel = a cold (Swiss). Also: Ich bi verchältet."
+ },
+ {
+  "id": "ENG_CHUNK_1402",
+  "t": "Mir tuet [Körperteil] weh",
+  "ex": "Mir tuet de Chopf weh.",
+  "n": "Dative mir, not ich. Also compounds: Ich ha Chopfweh / Buuchweh."
+ },
+ {
+  "id": "ENG_CHUNK_1403",
+  "t": "Ich bruuch öppis gäge [Nomen]",
+  "ex": "Ich bruuch öppis gäge de Hueschte.",
+  "n": "Medicine is 'gäge' an illness, not 'für'."
+ },
+ {
+  "id": "ENG_CHUNK_1404",
+  "t": "Ich ha [Nomen] verlore",
+  "ex": "Ich ha min Pass verlore."
+ },
+ {
+  "id": "ENG_CHUNK_1405",
+  "t": "Öpper hät mer [Nomen] gstole",
+  "ex": "Öpper hät mer im Zug s Portemonnaie gstole.",
+  "n": "Dative mer marks the victim: hät mer ... gstole."
+ },
+ {
+  "id": "ENG_CHUNK_1406",
+  "t": "Ich ha [Nomen] gern / Ich mag [Nomen]",
+  "ex": "Ich ha Pizza gern.",
+  "n": "'gern ha' is the usual 'like'."
+ },
+ {
+  "id": "ENG_CHUNK_1407",
+  "t": "Ich interessier mi für [Nomen]",
+  "ex": "Ich interessier mi für Gschicht."
+ },
+ {
+  "id": "ENG_CHUNK_1408",
+  "t": "Ich ha [Nomen] nöd gern",
+  "ex": "Ich ha Kafi nöd gern."
+ },
+ {
+  "id": "ENG_CHUNK_1409",
+  "t": "Häsch [Nomen] gern?",
+  "ex": "Häsch italienischs Ässe gern?"
+ },
+ {
+  "id": "ENG_CHUNK_1410",
+  "t": "Was isch din/dini Lieblings[Nomen]?",
+  "ex": "Was isch dini Lieblingsfarb?",
+  "n": "Lieblings- + noun is one word; din/dini follows the noun's gender."
+ },
+ {
+  "id": "ENG_CHUNK_1411",
+  "t": "Min/Mini Lieblings[Nomen] isch [Nomen]",
+  "ex": "Mini Lieblingsfarb isch blau."
+ },
+ {
+  "id": "ENG_CHUNK_1412",
+  "t": "Ich wott [Infinitiv]",
+  "ex": "Ich wott hei.",
+  "n": "With a direction the verb is usually dropped: Ich wott hei, Ich mues uf d Bank."
+ },
+ {
+  "id": "ENG_CHUNK_1413",
+  "t": "Ich möcht gern [Infinitiv]",
+  "ex": "Ich möcht gern en Tisch reserviere."
+ },
+ {
+  "id": "ENG_CHUNK_1414",
+  "t": "Ich mues [Infinitiv]",
+  "ex": "Ich mues no uf d Bank."
+ },
+ {
+  "id": "ENG_CHUNK_1415",
+  "t": "Ich mues [Infinitiv]",
+  "ex": "Ich mues morn schaffe.",
+  "n": "No separate 'have to' vs 'need to': both are müese."
+ },
+ {
+  "id": "ENG_CHUNK_1416",
+  "t": "Ich bruuch [Nomen]",
+  "ex": "Ich bruuch es Taxi."
+ },
+ {
+  "id": "ENG_CHUNK_1417",
+  "t": "Dörf ich [Infinitiv]? / Chan ich [Infinitiv]?",
+  "ex": "Dörf ich da sitze?",
+  "n": "For permission dörf is more polite. For a seat also: Isch da no frei?"
+ },
+ {
+  "id": "ENG_CHUNK_1418",
+  "t": "Chönd Si bitte [Infinitiv]? / Chasch bitte [Infinitiv]?",
+  "ex": "Chönd Si mer bitte hälfe?"
+ },
+ {
+  "id": "ENG_CHUNK_1419",
+  "t": "Ich cha nöd [Infinitiv]",
+  "ex": "Ich cha nöd schwümme."
+ },
+ {
+  "id": "ENG_CHUNK_1420",
+  "t": "Gömmer [Ort] / Lömer [Infinitiv]",
+  "ex": "Gömmer a See.",
+  "n": "Gömmer = let's go; for other verbs: Lömer ... or Wämmer ...?"
+ },
+ {
+  "id": "ENG_CHUNK_1421",
+  "t": "Vergiss nöd, [z + Infinitiv]",
+  "ex": "Vergiss nöd, dini Schlüssel mitznäh."
+ },
+ {
+  "id": "ENG_CHUNK_1422",
+  "t": "Wie oft [Verb]sch du ...?",
+  "ex": "Wie oft gasch is Fitness?",
+  "n": "s Fitness = the gym."
+ },
+ {
+  "id": "ENG_CHUNK_1423",
+  "t": "Was machsch normalerwiis am [Ziit]?",
+  "ex": "Was machsch normalerwiis am Wuchenänd?"
+ },
+ {
+  "id": "ENG_CHUNK_1424",
+  "t": "Was machsch [Ziit]?",
+  "ex": "Was machsch das Wuchenänd?",
+  "n": "Present tense covers plans."
+ },
+ {
+  "id": "ENG_CHUNK_1425",
+  "t": "Ich gang go [Infinitiv] / [Ziit] [Verb] ich ...",
+  "ex": "Das Wuchenänd gang ich mini Tante go bsueche.",
+  "n": "No 'going to' future: present + time word, or 'go + infinitive'."
+ },
+ {
+  "id": "ENG_CHUNK_1426",
+  "t": "Träffed mer üs am [Ziit] im/bim [Ort]",
+  "ex": "Träffed mer üs am Sächsi im Kafi.",
+  "n": "s Kafi = coffee and also café."
+ },
+ {
+  "id": "ENG_CHUNK_1427",
+  "t": "Chönnted mer üs lieber [Ziit] träffe?",
+  "ex": "Chönnted mer üs lieber morn träffe?",
+  "n": "lieber does the job of 'instead'."
+ },
+ {
+  "id": "ENG_CHUNK_1428",
+  "t": "Sorry, am [Tag] chan ich nöd",
+  "ex": "Sorry, am Samschtig chan ich nöd.",
+  "n": "Time goes first, so the verb comes next: am Samschtig chan ich."
+ },
+ {
+  "id": "ENG_CHUNK_1429",
+  "t": "Am [Tag] han ich kei Ziit",
+  "ex": "Am Mäntig han ich kei Ziit. Wie wär s am Ziischtig?",
+  "n": "'busy' = kei Ziit ha; beschäftigt sounds stiff."
+ },
+ {
+  "id": "ENG_CHUNK_1430",
+  "t": "Passt dir [Ziit]?",
+  "ex": "Passt dir sächsi Uhr?",
+  "n": "Sie form: Passt Ine ...?"
+ },
+ {
+  "id": "ENG_CHUNK_1431",
+  "t": "Ich chume [Zahl] Minute z spaat",
+  "ex": "Sorry, ich chume zäh Minute z spaat."
+ },
+ {
+  "id": "ENG_CHUNK_1432",
+  "t": "Ich bi hüt [Adjektiv] / Ich fühl mi hüt [Adjektiv]",
+  "ex": "Ich bi hüt müed."
+ },
+ {
+  "id": "ENG_CHUNK_1433",
+  "t": "Wie gaat s [Person]?",
+  "ex": "Wie gaat s dinere Mueter?",
+  "n": "Dative: dim Vater, dinere Mueter."
+ },
+ {
+  "id": "ENG_CHUNK_1434",
+  "t": "Wie isch [Person] so?",
+  "ex": "Wie isch din neue Lehrer so?"
+ },
+ {
+  "id": "ENG_CHUNK_1435",
+  "t": "Hüt isch es [Adjektiv]",
+  "ex": "Hüt isch es chalt."
+ },
+ {
+  "id": "ENG_CHUNK_1436",
+  "t": "Wie isch s Wätter in [Ort]?",
+  "ex": "Wie isch s Wätter in Toronto?"
+ },
+ {
+  "id": "ENG_CHUNK_1437",
+  "t": "[Ziit] git s Räge",
+  "ex": "Hüt am Namittag git s Räge.",
+  "n": "Future via present: git s Räge / rägnet s."
+ },
+ {
+  "id": "ENG_CHUNK_1438",
+  "t": "Hoi, da isch [Name] / Grüezi, da isch [Name]",
+  "ex": "Hoi, da isch d Maria.",
+  "n": "On the phone Swiss say 'da isch', not 'hier ist'."
+ },
+ {
+  "id": "ENG_CHUNK_1439",
+  "t": "Ich lüüt der [Ziit] aa",
+  "ex": "Ich lüüt der morn aa.",
+  "n": "aalüüte takes the dative: der, not dich."
+ },
+ {
+  "id": "ENG_CHUNK_1440",
+  "t": "Schriib mer, wänn [Satz]",
+  "ex": "Schriib mer, wänn d dihei bisch.",
+  "n": "wänn sends the verb to the end."
+ },
+ {
+  "id": "ENG_CHUNK_1441",
+  "t": "Ich find, [Satz] / Ich glaub, [Satz]",
+  "ex": "Ich find, das isch e gueti Idee.",
+  "n": "Ich find for opinions; Ich glaub for facts you're unsure of."
+ },
+ {
+  "id": "ENG_CHUNK_1442",
+  "t": "Ich bi gliicher Meinig wie [Person] / [Person] hät rächt",
+  "ex": "Da häsch rächt.",
+  "n": "Everyday agreement is 'Da häsch rächt' or just 'Genau'."
+ },
+ {
+  "id": "ENG_CHUNK_1443",
+  "t": "[Nomen] isch besser als [Nomen]",
+  "ex": "Tee isch besser als Kafi.",
+  "n": "Colloquially also 'besser wie'."
+ },
+ {
+  "id": "ENG_CHUNK_1444",
+  "t": "Ich bi no nie in [Ort] gsi",
+  "ex": "Ich bi no nie in Auschtralie gsi.",
+  "n": "With towns: no nie z Basel gsi."
+ },
+ {
+  "id": "ENG_CHUNK_1445",
+  "t": "Letscht [Ziit] han ich [Partizip]",
+  "ex": "Letscht Wuchenänd han ich mini Grosseltere bsuecht.",
+  "n": "Past = Perfekt; dialect has no simple past."
+ },
+ {
+  "id": "ENG_CHUNK_1446",
+  "t": "Häsch es schöns [Nomen] gha?",
+  "ex": "Häsch es schöns Wuchenänd gha?"
+ },
+ {
+  "id": "ENG_CHUNK_1447",
+  "t": "Wie isch [Nomen] gsi?",
+  "ex": "Wie isch dis Wuchenänd gsi?"
+ },
+ {
+  "id": "ENG_CHUNK_1448",
+  "t": "Ich bi grad am [Infinitiv]",
+  "ex": "Ich bi grad am Schaffe.",
+  "n": "am + infinitive is the '-ing' form."
+ },
+ {
+  "id": "ENG_CHUNK_1449",
+  "t": "Es tuet mer leid, aber [Satz]",
+  "ex": "Es tuet mer leid, aber ich cha Ine nöd hälfe."
+ },
+ {
+  "id": "ENG_CHUNK_1450",
+  "t": "Bis am [Tag]",
+  "ex": "Bis am Mäntig!"
+ }
+]

@@ -1,0 +1,642 @@
+{
+ "L1-1": {
+  "evidence": "Die Idee kam von meiner Schwester.",
+  "evidence_en": "The idea came from my sister.",
+  "why": "Die Schwester hatte die Idee, nicht die Autorin. Also ist die Aussage falsch.",
+  "why_en": "The sister had the idea, not the author, so the statement is false.",
+  "trap": "Die Autorin macht das Experiment selbst, aber „machen“ ist nicht dasselbe wie „die Idee haben“.",
+  "trap_en": "The author does the experiment herself, but doing it is not the same as having the idea.",
+  "question_en": "The idea for the experiment was the author's own."
+ },
+ "L1-2": {
+  "evidence": "fast fünf Stunden pro Tag!",
+  "evidence_en": "almost five hours a day!",
+  "why": "„Pro Tag“ bedeutet „täglich“. Die Zahl ist genau gleich.",
+  "why_en": "\"Pro Tag\" means \"daily\". The number matches exactly.",
+  "trap": "Man könnte an „sieben Tage“ oder „zwei Wochen“ denken, aber diese Zahlen gehören zum Experiment, nicht zur Handyzeit.",
+  "trap_en": "You might think of \"seven days\" or \"two weeks\", but those numbers are about the experiment, not the phone time.",
+  "question_en": "Before the experiment the author spent almost five hours a day on her phone."
+ },
+ "L1-3": {
+  "evidence": "ein altes Telefon ohne Internet benutzt",
+  "evidence_en": "used an old phone without internet",
+  "why": "Sie hatte ein altes Telefon und konnte telefonieren und SMS schreiben. Sie hat also ein Telefon benutzt, nur kein Smartphone.",
+  "why_en": "She used an old phone to call and text. So she did use a phone, just not a smartphone.",
+  "trap": "„Ohne Smartphone“ heißt nicht „ohne Telefon“ – das Wort „gar kein“ macht die Aussage falsch.",
+  "trap_en": "\"Without a smartphone\" doesn't mean \"without any phone\" – \"gar kein\" makes the statement false.",
+  "question_en": "That week she didn't use a phone at all."
+ },
+ "L1-4": {
+  "evidence": "Ab Mittwoch wurde es besser. Ich habe abends ein Buch gelesen, das seit einem Jahr auf meinem Nachttisch lag, und ich habe deutlich besser geschlafen.",
+  "evidence_en": "From Wednesday on it got better. In the evenings I read a book that had been on my bedside table for a year, and I slept noticeably better.",
+  "why": "„Ab Mittwoch“ ist nach einigen Tagen (Start war Montag). „Deutlich besser geschlafen“ passt genau.",
+  "why_en": "\"From Wednesday\" is a few days in (she started on Monday). \"Slept noticeably better\" matches directly.",
+  "trap": "Die ersten zwei Tage waren schlimm – das gilt aber nur für den Anfang, nicht für später.",
+  "trap_en": "The first two days were bad – but that only applies to the start, not later.",
+  "question_en": "After a few days the author slept better."
+ },
+ "L1-5": {
+  "evidence": "Jetzt liegt das Handy nachts in der Küche und nicht mehr neben dem Bett.",
+  "evidence_en": "Now the phone stays in the kitchen at night and no longer next to the bed.",
+  "why": "Die Küche ist ein anderes Zimmer als das Schlafzimmer. Das ist eine Umschreibung.",
+  "why_en": "The kitchen is a different room from the bedroom. It's a paraphrase.",
+  "trap": "Die Schublade kommt auch im Text vor, aber dort lag das Handy nur während des Experiments.",
+  "trap_en": "The drawer is also mentioned, but the phone was only there during the experiment.",
+  "question_en": "At night the phone now lies in a different room."
+ },
+ "L1-6": {
+  "evidence": "Ganz ohne Smartphone möchte ich nicht leben, dafür ist es einfach zu praktisch.",
+  "evidence_en": "I don't want to live completely without a smartphone; it's just too practical for that.",
+  "why": "Die Autorin sagt direkt, dass sie nicht ganz ohne Smartphone leben will. Sie will es nur bewusster benutzen.",
+  "why_en": "She says directly that she doesn't want to live entirely without a smartphone. She just wants to use it more consciously.",
+  "trap": "Die Wörter „ganz ohne Smartphone“ stehen im Text, aber mit „nicht“ – die Negation dreht die Bedeutung um.",
+  "trap_en": "The words \"ganz ohne Smartphone\" are in the text, but with \"nicht\" – the negation flips the meaning.",
+  "question_en": "The author wants to live completely without a smartphone in future."
+ },
+ "L2-1": {
+  "evidence": "Zwölf Schülerinnen und Schüler der zehnten Klasse erklären älteren Menschen, wie man ein Smartphone bedient.",
+  "evidence_en": "Twelve tenth-grade students explain to older people how to use a smartphone.",
+  "why": "Schüler helfen älteren Menschen – das Projekt bringt also Jugendliche und Senioren zusammen.",
+  "why_en": "Students help older people – so the project brings young and old together.",
+  "trap": "Eine Schule ist beteiligt, aber das Projekt findet in der Stadtbibliothek statt, nicht in der Schule.",
+  "trap_en": "A school is involved, but the project takes place in the city library, not at the school.",
+  "question_en": "The project in Erfurt …",
+  "options_en": [
+   "is led by teachers at the school.",
+   "takes place at the school.",
+   "brings young people and older people together."
+  ]
+ },
+ "L2-2": {
+  "evidence": "Ich hatte richtig Angst vor dem Internet",
+  "evidence_en": "I was really afraid of the internet",
+  "why": "„Ich hatte Angst“ (Vergangenheit) bedeutet: am Anfang, vor dem Projekt, hatte sie Angst.",
+  "why_en": "\"Ich hatte Angst\" (past tense) means she was afraid at the beginning, before the project.",
+  "trap": "Online-Banking wird genannt, aber sie macht es „weiterhin nicht“ – also nicht allein.",
+  "trap_en": "Online banking is mentioned, but she still doesn't do it – so not on her own.",
+  "question_en": "Ms Sommer …",
+  "options_en": [
+   "now does her online banking on her own.",
+   "was afraid of the internet at the beginning.",
+   "doesn't like phoning her granddaughter."
+  ]
+ },
+ "L2-3": {
+  "evidence": "Die Jugendlichen lernen hier etwas, das man in keinem Schulfach lernt: Geduld",
+  "evidence_en": "The young people learn something here that you don't learn in any school subject: patience",
+  "why": "„Geduld lernen“ ist dasselbe wie „lernen, geduldig zu sein“.",
+  "why_en": "\"Learning patience\" is the same as \"learning to be patient\".",
+  "trap": "Das Wort „freundlich“ kommt vor, aber die Schüler antworten „erstaunlich freundlich“, nicht unfreundlich.",
+  "trap_en": "\"Freundlich\" appears, but the students answer \"surprisingly kindly\", not unkindly.",
+  "question_en": "What does Ms Fuchs say about the pupils?",
+  "options_en": [
+   "They learn to be patient.",
+   "They get money for their work.",
+   "They answer some questions unkindly."
+  ]
+ },
+ "L2-4": {
+  "evidence": "Von acht bis fünfzehn Uhr bleiben alle Handys in einem Schließfach.",
+  "evidence_en": "From eight to three o'clock all phones stay in a locker.",
+  "why": "Von acht bis fünfzehn Uhr ist der Schultag, und im Schließfach sind die Handys weggeschlossen.",
+  "why_en": "Eight to three is the school day, and in a locker the phones are locked away.",
+  "trap": "Die Pausen werden erwähnt, aber auch in der Pause bleibt das Handy im Schließfach.",
+  "trap_en": "Breaks are mentioned, but the phone stays in the locker during breaks too.",
+  "question_en": "At the school in Kiel …",
+  "options_en": [
+   "pupils may only use their phones during the break.",
+   "the phones have to be locked away during the school day.",
+   "there have been no lockers since the summer."
+  ]
+ },
+ "L2-5": {
+  "evidence": "Manche möchten ihre Kinder auch während des Schultags erreichen können",
+  "evidence_en": "Some want to be able to reach their children during the school day as well",
+  "why": "„Während des Schultags“ ist „in der Schule“. Die Aussage ist fast wörtlich gleich.",
+  "why_en": "\"During the school day\" means \"at school\". The statement is almost word for word.",
+  "trap": "Eltern können im Sekretariat anrufen, aber nur in dringenden Fällen, nicht jeden Tag.",
+  "trap_en": "Parents can call the office, but only in urgent cases, not every day.",
+  "question_en": "Some parents …",
+  "options_en": [
+   "like the rule because there are fewer arguments.",
+   "call the school office every day.",
+   "want to be able to reach their children at school too."
+  ]
+ },
+ "L2-6": {
+  "evidence": "Ehrlich gesagt macht das mehr Spaß als früher.",
+  "evidence_en": "To be honest, it's more fun than before.",
+  "why": "Lea findet die Pausen jetzt lustiger als früher, also besser.",
+  "why_en": "Lea finds the breaks more fun now than before, so better.",
+  "trap": "Sie war am Anfang genervt, also nicht von Anfang an für die Regel; und das Handy im Unterricht gilt nur für die Oberstufe.",
+  "trap_en": "She was annoyed at first, so not in favour from the start; and phone use in class is only for the upper school.",
+  "question_en": "Lea …",
+  "options_en": [
+   "was in favour of the new rule from the start.",
+   "is allowed to use her phone in lessons.",
+   "finds the breaks better now than before."
+  ]
+ },
+ "L3-1": {
+  "evidence": "Laptop langsam? PC startet nicht? Wir reparieren alle Marken, oft noch am selben Tag. Kostenlose Diagnose, faire Preise, Studentenrabatt.",
+  "evidence_en": "Laptop slow? PC won't start? We repair all brands, often on the same day. Free diagnosis, fair prices, student discount.",
+  "why": "Die Anzeige nennt genau „Laptop langsam“ und „Reparatur“. Kostenlose Diagnose und faire Preise passen zu „wenig Geld“.",
+  "why_en": "The ad names exactly \"slow laptop\" and repair. Free diagnosis and fair prices fit \"little money\".",
+  "trap": "Das Internet-Café (I) hat Computer, aber es repariert nichts.",
+  "trap_en": "The internet café (I) has computers, but it doesn't repair anything.",
+  "question_en": "Ayşe's laptop has become very slow. She wants to have it repaired but has little money."
+ },
+ "L3-2": {
+  "evidence": "Für Anfänger ohne Technikkenntnisse.",
+  "evidence_en": "For beginners with no technical knowledge.",
+  "why": "Ein Podcast-Workshop für Anfänger – „ohne Technikkenntnisse“ passt zu „keine Ahnung von Aufnahmetechnik“.",
+  "why_en": "A podcast workshop for beginners – \"no technical knowledge\" fits \"no idea about recording technology\".",
+  "trap": "Der Fotokurs (H) ist auch für Laien, aber es geht um Fotos, nicht um Aufnahmen für einen Podcast.",
+  "trap_en": "The photo course (H) is also for amateurs, but it's about photos, not podcast recording.",
+  "question_en": "Tom wants to start his own podcast but has no idea about recording technology."
+ },
+ "L3-3": {
+  "evidence": "WhatsApp, Fotos, Videoanrufe mit den Enkeln – wir erklären es in Ruhe.",
+  "evidence_en": "WhatsApp, photos, video calls with the grandchildren – we explain it calmly.",
+  "why": "Die Sprechstunde ist für Menschen ab 60 und erklärt Videoanrufe – genau das braucht die Großmutter.",
+  "why_en": "The drop-in session is for people 60+ and explains video calls – exactly what the grandmother needs.",
+  "trap": "Der Elternabend (J) handelt auch vom Smartphone, aber er ist für Eltern von Kindern, nicht für Senioren.",
+  "trap_en": "The parents' evening (J) is also about smartphones, but it's for parents of children, not for seniors.",
+  "question_en": "Nadia's grandmother wants to learn how to make video calls on the smartphone."
+ },
+ "L3-4": {
+  "evidence": "Wir kaufen gebrauchte Konsolen, Handys, Tablets und Spiele – sofort Bargeld",
+  "evidence_en": "We buy used consoles, phones, tablets and games – cash immediately",
+  "why": "Der Laden kauft Konsolen, und „sofort Bargeld“ bedeutet „schnell Geld bekommen“.",
+  "why_en": "The shop buys consoles, and \"cash immediately\" means getting money quickly.",
+  "trap": "Die Sammelaktion (E) nimmt auch alte Geräte, aber dort bekommt man kein Geld.",
+  "trap_en": "The collection drive (E) also takes old devices, but you get no money there.",
+  "question_en": "Lukas wants to sell his old games console and wants to get money for it quickly."
+ },
+ "L3-5": {
+  "evidence": "40 GB für 12,99 € im Monat",
+  "evidence_en": "40 GB for €12.99 a month",
+  "why": "40 GB sind viel Datenvolumen für Videos, und 12,99 € im Monat ist günstig.",
+  "why_en": "40 GB is a lot of data for videos, and €12.99 a month is cheap.",
+  "trap": "Das Internet-Café (I) hat schnelles Internet, aber nur vor Ort, nicht unterwegs auf dem Handy.",
+  "trap_en": "The internet café (I) has fast internet, but only on site, not on the go on your phone.",
+  "question_en": "Carla watches lots of videos while out and about and is looking for a cheap mobile contract with lots of data."
+ },
+ "L3-6": {
+  "evidence": "Kinder von 8 bis 12 Jahren programmieren ihr eigenes Spiel.",
+  "evidence_en": "Children aged 8 to 12 program their own game.",
+  "why": "Keine Anzeige bietet einen Kurs für Websites für Erwachsene. Also: 0.",
+  "why_en": "No ad offers a website course for adults. So: 0.",
+  "trap": "Anzeige B ist ein Programmierkurs, aber nur für Kinder von 8 bis 12 und für Spiele – Mehmet ist 32 und will eine Website.",
+  "trap_en": "Ad B is a programming course, but only for kids aged 8–12 and for games – Mehmet is 32 and wants a website.",
+  "question_en": "Mehmet (32) wants to learn in a course how to program his own website."
+ },
+ "L3-7": {
+  "evidence": "alte Handys, Kabel, Ladegeräte und kleine Elektrogeräte. Abgabe kostenlos",
+  "evidence_en": "old phones, cables, chargers and small electrical devices. Drop-off free of charge",
+  "why": "Die Sammelaktion nimmt alte Handys und Kabel, und die Abgabe kostet nichts.",
+  "why_en": "The collection takes old phones and cables, and dropping them off costs nothing.",
+  "trap": "Second Byte (G) kauft auch Handys, aber keine Kabel – und Sophie will sie nur loswerden, nicht verkaufen.",
+  "trap_en": "Second Byte (G) also buys phones, but not cables – and Sophie just wants to get rid of them, not sell them.",
+  "question_en": "Sophie has found lots of old cables and phones in the basement and wants to get rid of them for free."
+ },
+ "L4-1": {
+  "evidence": "Viele Eltern schaffen es allein nicht, Grenzen zu setzen. Ein klares Gesetz würde ihnen helfen.",
+  "evidence_en": "Many parents can't manage to set limits on their own. A clear law would help them.",
+  "why": "Birgit will ein Gesetz, weil Eltern allein keine Grenzen setzen können. Sie ist also für das Mindestalter.",
+  "why_en": "Birgit wants a law because parents can't set limits alone. So she is for the minimum age.",
+  "trap": "Sie kritisiert die Eltern, aber sie ist nicht gegen das Gesetz – sie will es gerade für die Eltern.",
+  "trap_en": "She criticises parents, but she isn't against the law – she wants it precisely for the parents.",
+  "question_en": "Birgit, Kassel: I'm a teacher and every morning I see twelve-year-old children who come into class completely tired because they watched videos until midnight. Many parents can't manage to set limits on their own. A clear law would help them."
+ },
+ "L4-2": {
+  "evidence": "Ein Verbot bestraft alle, die soziale Medien vernünftig nutzen",
+  "evidence_en": "A ban punishes everyone who uses social media sensibly",
+  "why": "Emre findet ein Verbot unfair. Er ist gegen das Mindestalter.",
+  "why_en": "Emre thinks a ban is unfair. He is against the minimum age.",
+  "trap": "Er sagt, dass „ein paar Leute Probleme haben“ – das gibt er zu, aber er zieht daraus kein Ja.",
+  "trap_en": "He admits \"a few people have problems\", but that doesn't make him say yes.",
+  "question_en": "Emre, Köln: I'm 17 and learned English via YouTube and found people with the same hobbies. A ban punishes everyone who uses social media sensibly, just because a few people have problems. That's not fair."
+ },
+ "L4-3": {
+  "evidence": "Trotzdem: Ein klares Signal an die Firmen ist besser als gar nichts.",
+  "evidence_en": "Still: a clear signal to the companies is better than nothing at all.",
+  "why": "Nach „Trotzdem“ kommt ihre Meinung: Das Gesetz ist besser als nichts. Also ist sie dafür.",
+  "why_en": "After \"Trotzdem\" comes her real opinion: the law is better than nothing. So she is for it.",
+  "trap": "Am Anfang zweifelt sie an der Kontrolle – das klingt wie Nein, aber „Trotzdem“ dreht es um.",
+  "trap_en": "At first she doubts it can be enforced – that sounds like no, but \"Trotzdem\" turns it around.",
+  "question_en": "Sabine, Rostock: A law is quickly made, but who checks it? The children simply enter a false age. Nevertheless: a clear signal to the companies is better than nothing at all. Because on their own they won't change anything."
+ },
+ "L4-4": {
+  "evidence": "Ob mein Kind eine App benutzen darf, entscheide ich als Vater, nicht der Staat.",
+  "evidence_en": "Whether my child may use an app is for me as a father to decide, not the state.",
+  "why": "Holger will keine Regel vom Staat. Er ist gegen das Mindestalter.",
+  "why_en": "Holger doesn't want a rule from the state. He is against the minimum age.",
+  "trap": "Er spricht von „festen Regeln“, aber das sind Regeln zu Hause, kein Gesetz.",
+  "trap_en": "He mentions \"fixed rules\", but those are house rules, not a law.",
+  "question_en": "Holger, Nürnberg: Whether my child may use an app is something I decide as the father, not the state. At home we have fixed rules, and that works well. If someone doesn't bring up their child, a law won't help them either."
+ },
+ "L4-5": {
+  "evidence": "Bei Alkohol und Zigaretten haben wir auch ein Mindestalter, und niemand findet das seltsam.",
+  "evidence_en": "We have a minimum age for alcohol and cigarettes too, and nobody finds that strange.",
+  "why": "Miriam vergleicht soziale Medien mit Alkohol und Zigaretten. Sie findet ein Mindestalter normal – also Ja.",
+  "why_en": "Miriam compares social media to alcohol and cigarettes. She finds a minimum age normal – so yes.",
+  "trap": "Sie sagt, auch Erwachsene schaffen es kaum – das ist kein Argument gegen das Gesetz, sondern für Schutz der Kinder.",
+  "trap_en": "She says even adults barely manage – that's not an argument against the law but for protecting children.",
+  "question_en": "Miriam, Augsburg: These apps are built so that you can't stop. Adults hardly manage it, so how are children supposed to manage it? For alcohol and cigarettes we also have a minimum age, and nobody finds that strange."
+ },
+ "L4-6": {
+  "evidence": "Besser wäre Medienunterricht ab der Grundschule statt eines Verbots.",
+  "evidence_en": "Media education from primary school on would be better than a ban.",
+  "why": "Jannik will Unterricht „statt eines Verbots“. Er ist gegen das Mindestalter.",
+  "why_en": "Jannik wants lessons \"instead of a ban\". He is against the minimum age.",
+  "trap": "Er gibt zu, dass die Apps süchtig machen („ja, die Apps sind wirklich so gemacht“), aber nach „Aber“ kommt sein Nein.",
+  "trap_en": "He admits the apps are addictive, but after \"Aber\" comes his no.",
+  "question_en": "Jannik, Potsdam: I understand the worries, and yes, the apps really are made so that you get hooked. But at 16 suddenly everything is allowed, and nobody has learned to deal with it. Media lessons from primary school on would be better than a ban."
+ },
+ "L4-7": {
+  "evidence": "Ich hätte mir gewünscht, dass mir jemand diese Entscheidung früher abgenommen hätte.",
+  "evidence_en": "I wish someone had taken this decision off my hands earlier.",
+  "why": "Anke wünscht sich, dass ein Gesetz früher entschieden hätte. Sie ist also für das Mindestalter.",
+  "why_en": "Anke wishes a law had made the decision earlier. So she is for the minimum age.",
+  "trap": "Sie sagt nicht direkt „Ja“; man muss den Wunsch im Konjunktiv verstehen.",
+  "trap_en": "She never says \"yes\" directly; you have to read the wish in the subjunctive.",
+  "question_en": "Anke, Wuppertal: Other countries are already showing how it's done. Since my daughter (14) deleted her Instagram, she's much more relaxed. I would have wished that someone had taken this decision off my hands earlier."
+ },
+ "L5-1": {
+  "evidence": "Gäste ohne Ausweis erhalten am Servicepunkt ein Tagesticket für 2 €.",
+  "evidence_en": "Guests without a card get a day ticket at the service point for €2.",
+  "why": "Ohne Ausweis kann man für 2 € ein Tagesticket bekommen, also kaufen.",
+  "why_en": "Without a card you can get a day ticket for €2, i.e. buy one.",
+  "trap": "„Online“ kommt im Text vor, aber nur beim Reservieren von Plätzen, nicht beim Ausweis.",
+  "trap_en": "\"Online\" appears in the text, but only for reserving seats, not for the card.",
+  "question_en": "Anyone who doesn't have a library card …",
+  "options_en": [
+   "may not use the computers.",
+   "can buy a day ticket.",
+   "has to register online beforehand."
+  ]
+ },
+ "L5-2": {
+  "evidence": "Wartet niemand auf den Platz, kann die Zeit am Servicepunkt verlängert werden.",
+  "evidence_en": "If nobody is waiting for the seat, the time can be extended at the service point.",
+  "why": "Verlängern geht nur, wenn niemand wartet. Das ist genau Option c.",
+  "why_en": "You can only extend if nobody is waiting. That's exactly option c.",
+  "trap": "„Drei Tage im Voraus“ steht auch im Text, aber das betrifft die Reservierung, nicht die Verlängerung.",
+  "trap_en": "\"Three days in advance\" is also in the text, but it's about reserving, not extending.",
+  "question_en": "You may stay at the computer for longer than 60 minutes if …",
+  "options_en": [
+   "you reserved the place three days in advance.",
+   "you pay for it.",
+   "nobody is waiting for the place."
+  ]
+ },
+ "L5-3": {
+  "evidence": "Eigene Dateien können nicht auf den Computern gespeichert werden. Bitte benutzen Sie einen USB-Stick",
+  "evidence_en": "Your own files cannot be saved on the computers. Please use a USB stick",
+  "why": "Man soll einen USB-Stick benutzen, also kann man die Dateien dort speichern.",
+  "why_en": "You're told to use a USB stick, so you can save the files there.",
+  "trap": "„Auf den Computern gespeichert“ steht im Text, aber mit „nicht“.",
+  "trap_en": "\"Saved on the computers\" is in the text, but with \"nicht\".",
+  "question_en": "Your own files …",
+  "options_en": [
+   "can be saved on a USB stick.",
+   "can be saved on the computer.",
+   "may only be printed out."
+  ]
+ },
+ "L5-4": {
+  "evidence": "Das Herunterladen von Filmen und Musik ist aus rechtlichen Gründen nicht erlaubt.",
+  "evidence_en": "Downloading films and music is not permitted for legal reasons.",
+  "why": "„Nicht erlaubt“ bedeutet „man darf nicht“. Filme herunterladen ist verboten.",
+  "why_en": "\"Not permitted\" means \"you may not\". Downloading films is forbidden.",
+  "trap": "Das WLAN geht „auch ohne Ausweis“, und der Zugang gilt 24 Stunden, nicht eine Stunde.",
+  "trap_en": "Wi-Fi works \"even without a card\", and access lasts 24 hours, not one hour.",
+  "question_en": "On the library Wi-Fi …",
+  "options_en": [
+   "you have to log in with your card.",
+   "you may not download films.",
+   "you can only surf for one hour."
+  ]
+ },
+ "H1-1a": {
+  "evidence": "deshalb kostet die Reparatur nur fünfundvierzig Euro",
+  "evidence_en": "so the repair only costs forty-five euros",
+  "why": "Die Reparatur kostet 45 Euro, nicht 180 Euro.",
+  "why_en": "The repair costs 45 euros, not 180.",
+  "trap": "Hundertachtzig Euro wird genannt, aber nur als Preis für einen neuen Bildschirm – das war die erste Vermutung.",
+  "trap_en": "180 euros is mentioned, but only as the price of a new screen – the first guess.",
+  "question_en": "The repair costs one hundred and eighty euros."
+ },
+ "H1-1b": {
+  "evidence": "Bitte bringen Sie den Abholschein mit",
+  "evidence_en": "Please bring the pickup slip",
+  "why": "Sie soll den Abholschein mitbringen, sonst bekommt sie den Laptop nicht.",
+  "why_en": "She has to bring the pickup slip, otherwise she won't get the laptop.",
+  "trap": "Sie kann den Laptop „ab morgen“ abholen, nicht heute.",
+  "trap_en": "She can collect the laptop \"from tomorrow\", not today.",
+  "question_en": "Ms Lindner is supposed to …",
+  "options_en": [
+   "collect the laptop today.",
+   "buy a new screen.",
+   "bring the collection slip."
+  ]
+ },
+ "H1-2a": {
+  "evidence": "Ursprünglich war der fünfundzwanzigste Mai geplant, wegen des Umbaus in der Bibliothek findet er jetzt aber am achten Juni statt.",
+  "evidence_en": "It was originally planned for the 25th of May, but because of the renovation it now takes place on the 8th of June.",
+  "why": "Der Termin wurde verschoben. Jetzt ist der Digitaltag am 8. Juni.",
+  "why_en": "The date was moved. The digital day is now on 8 June.",
+  "trap": "Der 25. Mai war nur der alte Plan – „ursprünglich“ zeigt das.",
+  "trap_en": "25 May was only the old plan – \"ursprünglich\" signals that.",
+  "question_en": "The digital day takes place on the twenty-fifth of May."
+ },
+ "H1-2b": {
+  "evidence": "Nur für den Workshop zum Online-Banking müssen Sie sich vorher anmelden",
+  "evidence_en": "Only for the online banking workshop do you need to register in advance",
+  "why": "Nur für Online-Banking braucht man eine Anmeldung, weil die Plätze begrenzt sind.",
+  "why_en": "Only online banking needs registration, because places are limited.",
+  "trap": "Der Workshop zu Passwörtern wird auch genannt, aber dort kann man „einfach vorbeikommen“.",
+  "trap_en": "The password workshop is mentioned too, but you can just drop in.",
+  "question_en": "What do you have to register for?",
+  "options_en": [
+   "For the workshop on online banking.",
+   "For all workshops.",
+   "For the workshop on secure passwords."
+  ]
+ },
+ "H1-3a": {
+  "evidence": "an unseren Kassen im Moment leider nur Barzahlung möglich",
+  "evidence_en": "at our tills currently only cash payment is possible",
+  "why": "Im Moment geht fast überall nur Bargeld, nicht Karte. Die Aussage ist umgekehrt.",
+  "why_en": "Right now almost everywhere only cash works, not card. The statement is the reverse.",
+  "trap": "Karte geht nur an Kasse eins – nicht an allen Kassen, und dort nicht „nur“ Karte.",
+  "trap_en": "Card works only at till one – not at all tills, and not card \"only\".",
+  "question_en": "At the moment you can only pay by card at all tills."
+ },
+ "H1-3b": {
+  "evidence": "gibt es nur heute für neunundzwanzig statt neunundvierzig Euro",
+  "evidence_en": "are available today only for twenty-nine instead of forty-nine euros",
+  "why": "„Nur heute für 29 statt 49 Euro“ heißt: Nur heute sind sie billiger.",
+  "why_en": "\"Today only for 29 instead of 49\" means they're cheaper only today.",
+  "trap": "49 Euro ist der normale Preis, nicht der Preis heute; und die Kopfhörer sind im zweiten Stock, nicht im Erdgeschoss.",
+  "trap_en": "49 euros is the normal price, not today's; and they're on the second floor, not the ground floor.",
+  "question_en": "The headphones …",
+  "options_en": [
+   "cost forty-nine euros today.",
+   "are only cheaper today.",
+   "are only available on the ground floor."
+  ]
+ },
+ "H1-4a": {
+  "evidence": "Wir fangen nicht um acht an, sondern schon um sieben",
+  "evidence_en": "We're not starting at eight but already at seven",
+  "why": "Von acht auf sieben Uhr ist eine Stunde früher.",
+  "why_en": "From eight to seven is one hour earlier.",
+  "trap": "Man hört zuerst „acht“, aber „nicht … sondern“ korrigiert die Zeit.",
+  "trap_en": "You hear \"eight\" first, but \"nicht … sondern\" corrects the time.",
+  "question_en": "The series evening starts an hour earlier than planned."
+ },
+ "H1-4b": {
+  "evidence": "Kannst du bitte deinen Laptop mitbringen und das HDMI-Kabel?",
+  "evidence_en": "Can you please bring your laptop and the HDMI cable?",
+  "why": "Daniel bittet Lisa direkt, ihren Laptop mitzubringen.",
+  "why_en": "Daniel asks Lisa directly to bring her laptop.",
+  "trap": "Essen wird erwähnt, aber „Essen brauchst du nichts mitzubringen“ – Daniel hat schon Chips.",
+  "trap_en": "Food is mentioned, but she doesn't need to bring any – Daniel already has chips.",
+  "question_en": "Lisa is supposed to …",
+  "options_en": [
+   "bring her laptop.",
+   "bring something to eat.",
+   "get a new projector."
+  ]
+ },
+ "H1-5a": {
+  "evidence": "Ab einem Einkaufswert von fünfzig Euro liefern wir kostenlos, darunter kostet der Versand vier Euro neunzig.",
+  "evidence_en": "From an order value of fifty euros we deliver free; below that shipping costs four ninety.",
+  "why": "Kostenlos ist die Lieferung nur ab 50 Euro. Unter 50 Euro zahlt man 4,90 Euro.",
+  "why_en": "Delivery is free only from 50 euros. Below that you pay 4.90.",
+  "trap": "„Kostenlos“ hört man, aber mit einer Bedingung – „bei jeder Bestellung“ stimmt nicht.",
+  "trap_en": "You hear \"free\", but with a condition – \"every order\" is wrong.",
+  "question_en": "Delivery is free with every order."
+ },
+ "H1-5b": {
+  "evidence": "Das Angebot gilt bis Sonntag",
+  "evidence_en": "The offer is valid until Sunday",
+  "why": "Der Rabatt gilt bis Sonntag, also bis zu diesem Tag.",
+  "why_en": "The discount is valid until Sunday.",
+  "trap": "„Nur am Sonntag“ ist falsch: „bis“ heißt „bis zu diesem Tag“; die 30 Tage gelten für die Rückgabe, nicht für den Rabatt.",
+  "trap_en": "\"Only on Sunday\" is wrong: \"bis\" means \"up to\"; the 30 days are for returns, not the discount.",
+  "question_en": "The discount is valid …",
+  "options_en": [
+   "only on Sunday.",
+   "for one month.",
+   "until Sunday."
+  ]
+ },
+ "H2-1": {
+  "evidence": "Die Führung dauert ungefähr fünfundsiebzig Minuten, also eine Stunde und eine Viertelstunde.",
+  "evidence_en": "The tour lasts about seventy-five minutes, so an hour and a quarter.",
+  "why": "75 Minuten sind eineinviertel Stunden.",
+  "why_en": "75 minutes is an hour and a quarter.",
+  "trap": "Die Führung beginnt in der Nachrichtenredaktion, nicht im Studio; und Herr Brandt ist Redakteur, keine Chefin.",
+  "trap_en": "The tour starts in the newsroom, not the studio; and Mr Brandt is an editor, not a female boss.",
+  "question_en": "The tour …",
+  "options_en": [
+   "lasts about an hour and a quarter.",
+   "begins in the studio.",
+   "is led by the head of the station."
+  ]
+ },
+ "H2-2": {
+  "evidence": "Sobald wir das Studio betreten, müssen Sie absolut leise sein",
+  "evidence_en": "As soon as we enter the studio, you must be absolutely quiet",
+  "why": "„Absolut leise sein“ bedeutet „nicht sprechen“, weil die Sendung live läuft.",
+  "why_en": "\"Absolutely quiet\" means not talking, because the show is live.",
+  "trap": "Das Handy muss man nicht ausschalten, nur auf lautlos stellen; fotografieren ist im Studio während der Sendung verboten.",
+  "trap_en": "You don't have to switch the phone off, just to silent; photos are not allowed in the studio during the show.",
+  "question_en": "In the studio …",
+  "options_en": [
+   "you have to switch off your phone.",
+   "you may not speak during the broadcast.",
+   "you may take photos."
+  ]
+ },
+ "H2-3": {
+  "evidence": "Dort befindet sich unser Archiv mit über vierzigtausend Schallplatten und CDs.",
+  "evidence_en": "That's where our archive with over forty thousand records and CDs is.",
+  "why": "Im Keller ist das Archiv mit Schallplatten, einige sind sehr alt.",
+  "why_en": "The archive of records, some very old, is in the basement.",
+  "trap": "Die Nachrichtenredaktion ist im Erdgeschoss, nicht im Keller.",
+  "trap_en": "The newsroom is on the ground floor, not in the basement.",
+  "question_en": "In the basement …",
+  "options_en": [
+   "is the news room.",
+   "the presenters work.",
+   "old records are stored."
+  ]
+ },
+ "H2-4": {
+  "evidence": "Im Studio zwei darf eine Person aus Ihrer Gruppe den Wetterbericht sprechen.",
+  "evidence_en": "In studio two, one person from your group may read the weather report.",
+  "why": "„Eine Person aus Ihrer Gruppe“ ist „jemand aus der Gruppe“.",
+  "why_en": "\"One person from your group\" is \"someone from the group\".",
+  "trap": "Die Aufnahme per E-Mail bekommt nur diese eine Person, nicht alle Besucher.",
+  "trap_en": "Only that one person gets the recording by email, not all visitors.",
+  "question_en": "At the end of the tour …",
+  "options_en": [
+   "all visitors get a recording by email.",
+   "someone from the group can read the weather report.",
+   "there is a conversation with a presenter."
+  ]
+ },
+ "H2-5": {
+  "evidence": "Mit dem Besucherausweis, den Sie am Eingang bekommen haben, zahlen Sie dort zwanzig Prozent weniger.",
+  "evidence_en": "With the visitor pass you got at the entrance, you pay twenty percent less there.",
+  "why": "Zwanzig Prozent weniger in der Cafeteria heißt: Man isst dort günstiger.",
+  "why_en": "Twenty percent less in the cafeteria means eating there is cheaper.",
+  "trap": "Den Ausweis soll man tragen, aber allein herumgehen dürfen Besucher trotzdem nicht.",
+  "trap_en": "You must wear the pass, but visitors still may not walk around alone.",
+  "question_en": "With the visitor pass …",
+  "options_en": [
+   "you eat more cheaply in the cafeteria.",
+   "you may walk through the building alone.",
+   "you can park for free."
+  ]
+ },
+ "H3-1": {
+  "evidence": "Das Display ist ja total kaputt.",
+  "evidence_en": "The display is totally broken.",
+  "why": "Anna sagt es direkt, und Felix bestätigt: Das Handy ist ihm aus der Hand gefallen.",
+  "why_en": "Anna says it directly, and Felix confirms the phone fell out of his hand.",
+  "trap": "Man könnte denken, das ganze Handy geht nicht mehr – aber nur das Display ist kaputt, das reicht für „richtig“.",
+  "trap_en": "You might think the whole phone is dead – but only the display is broken, which is enough for \"true\".",
+  "question_en": "The display of Felix's phone is broken."
+ },
+ "H3-2": {
+  "evidence": "Ich glaube, ich kaufe mir jetzt endlich das neue Modell, das alle haben.",
+  "evidence_en": "I think I'll finally buy the new model that everyone has.",
+  "why": "Felix will zuerst das neue Modell kaufen – das ist sein Wunsch.",
+  "why_en": "Felix's first wish is to buy the new model.",
+  "trap": "Später denkt er an ein gebrauchtes Handy, aber die Aussage fragt nach seinem Wunsch, und der war das neueste Modell.",
+  "trap_en": "Later he considers a used phone, but the statement asks what he'd prefer, and that was the newest model.",
+  "question_en": "Felix would most like to buy the newest model."
+ },
+ "H3-3": {
+  "evidence": "Ja, ohne Probleme. Es sieht aus wie neu",
+  "evidence_en": "Yes, without problems. It looks like new",
+  "why": "Das Handy des Bruders funktioniert ohne Probleme.",
+  "why_en": "The brother's phone works without any problems.",
+  "trap": "Das Wort „Probleme“ hört man, aber mit „ohne“.",
+  "trap_en": "You hear \"Probleme\", but with \"ohne\".",
+  "question_en": "Anna's brother has problems with his second-hand phone."
+ },
+ "H3-4": {
+  "evidence": "er hat sogar ein Jahr Garantie bekommen",
+  "evidence_en": "he even got a one-year warranty",
+  "why": "Es gibt ein Jahr Garantie für das gebrauchte Handy.",
+  "why_en": "The used phone came with a one-year warranty.",
+  "trap": "Felix hat Angst vor dem Akku, aber das heißt nicht, dass es keine Garantie gibt.",
+  "trap_en": "Felix worries about the battery, but that doesn't mean there's no warranty.",
+  "question_en": "In the shop you get no guarantee for a second-hand phone."
+ },
+ "H3-5": {
+  "evidence": "Ich filme ja ständig für meinen Kochkanal, und da muss das Bild einfach gut sein.",
+  "evidence_en": "I'm always filming for my cooking channel, and the picture just has to be good.",
+  "why": "Er filmt Videos für seinen Kochkanal und braucht dafür eine gute Kamera.",
+  "why_en": "He films videos for his cooking channel and needs a good camera for that.",
+  "trap": "Anna sagt, der Unterschied fällt kaum auf – aber das ändert nicht, dass Felix eine gute Kamera braucht.",
+  "trap_en": "Anna says the difference is barely noticeable – but that doesn't change that Felix needs a good camera.",
+  "question_en": "Felix needs a good camera for his videos."
+ },
+ "H3-6": {
+  "evidence": "Zuerst frage ich im Laden, was eine Reparatur vom Display kostet.",
+  "evidence_en": "First I'll ask in the shop what a display repair costs.",
+  "why": "„Zuerst fragen, was es kostet“ ist „zuerst herausfinden, was es kostet“.",
+  "why_en": "\"First ask what it costs\" is \"first find out what it costs\".",
+  "trap": "Er spricht auch vom Kauf eines Gebrauchten, aber das kommt erst danach, nur wenn die Reparatur zu teuer ist.",
+  "trap_en": "He also talks about buying a used phone, but that comes after, only if the repair is too expensive.",
+  "question_en": "Felix first wants to find out what a repair costs."
+ },
+ "H3-7": {
+  "evidence": "Okay, dann elf Uhr am Samstag.",
+  "evidence_en": "Okay, eleven o'clock on Saturday then.",
+  "why": "Sie treffen sich um elf Uhr, nicht um zehn.",
+  "why_en": "They meet at eleven, not ten.",
+  "trap": "Felix schlägt zehn Uhr vor, aber Anna hat dann Yoga – die Zeit wird geändert.",
+  "trap_en": "Felix suggests ten, but Anna has yoga then – the time is changed.",
+  "question_en": "Anna and Felix are meeting on Saturday at ten o'clock."
+ },
+ "H4-1": {
+  "evidence": "Viele Schüler lassen ihre Hausaufgaben einfach von einem Programm schreiben.",
+  "evidence_en": "Many students simply have a program write their homework.",
+  "why": "Herr Ebert, der Lehrer, sagt das über seine Schüler.",
+  "why_en": "Mr Ebert, the teacher, says this about his students.",
+  "trap": "Frau Roth spricht auch über Schule, aber sie sagt, man soll KI üben – über Hausaufgaben spricht sie nicht.",
+  "trap_en": "Dr Roth also talks about school, but she says to practise with AI – she doesn't talk about homework.",
+  "question_en": "Many pupils have their homework done by a program."
+ },
+ "H4-2": {
+  "evidence": "helfen solche Programme Ärztinnen und Ärzten, Krankheiten auf Röntgenbildern früher zu erkennen",
+  "evidence_en": "such programs help doctors detect illnesses on X-rays earlier",
+  "why": "Frau Roth, die Informatikerin, nennt das Beispiel aus der Medizin.",
+  "why_en": "Dr Roth, the computer scientist, gives the medical example.",
+  "trap": "Der Lehrer spricht nur über Schule, nicht über Medizin.",
+  "trap_en": "The teacher only talks about school, not medicine.",
+  "question_en": "AI helps in medicine to detect illnesses earlier."
+ },
+ "H4-3": {
+  "evidence": "Ich habe letzte Woche versucht, den Anfang dieser Sendung von so einem Programm schreiben zu lassen.",
+  "evidence_en": "Last week I tried to have one of these programs write the start of this show.",
+  "why": "Nur der Moderator hat eine Sendung – er sagt das als Geständnis.",
+  "why_en": "Only the host has a show – he says this as a confession.",
+  "trap": "Herr Ebert benutzt KI auch selbst, aber für Arbeitsblätter, nicht für eine Sendung.",
+  "trap_en": "Mr Ebert also uses AI himself, but for worksheets, not a show.",
+  "question_en": "I tried to have my programme written by a program."
+ },
+ "H4-4": {
+  "evidence": "Man muss immer erkennen können, ob ein Text oder ein Bild von einem Menschen oder von einer Maschine stammt.",
+  "evidence_en": "You must always be able to tell whether a text or image comes from a person or a machine.",
+  "why": "Frau Roth fordert diese Kennzeichnung als wichtigste Regel.",
+  "why_en": "Dr Roth demands this labelling as the most important rule.",
+  "trap": "Herr Ebert findet die Idee gut („Das würde uns auch helfen“), aber die Idee kommt von Frau Roth.",
+  "trap_en": "Mr Ebert likes the idea, but it comes from Dr Roth.",
+  "question_en": "You should always be able to tell whether something was made by a machine."
+ },
+ "H4-5": {
+  "evidence": "Ich benutze die Programme ja selbst, zum Beispiel, wenn ich Arbeitsblätter vorbereite",
+  "evidence_en": "I use the programs myself, for example when I prepare worksheets",
+  "why": "Arbeitsblätter vorbereiten heißt Unterricht vorbereiten – das sagt der Lehrer.",
+  "why_en": "Preparing worksheets means preparing lessons – the teacher says this.",
+  "trap": "Der Moderator hat KI auch ausprobiert, aber für seine Sendung, nicht für Unterricht.",
+  "trap_en": "The host also tried AI, but for his show, not for lessons.",
+  "question_en": "I use AI to prepare my lessons."
+ },
+ "H4-6": {
+  "evidence": "Neulich hat mir ein Schüler ein Buch als Quelle genannt, das gar nicht existiert. Das Programm hatte es einfach erfunden.",
+  "evidence_en": "Recently a student gave me a book as a source that doesn't exist. The program had simply made it up.",
+  "why": "Herr Ebert erzählt von dem erfundenen Buch – das Programm erfindet Informationen.",
+  "why_en": "Mr Ebert tells of the invented book – the program makes up information.",
+  "trap": "Frau Roth antwortet „Das stimmt, diese Fehler gibt es“, aber sie bestätigt nur; das Beispiel bringt der Lehrer.",
+  "trap_en": "Dr Roth replies \"that's true, these errors exist\", but she only agrees; the teacher brings the example.",
+  "question_en": "The programs sometimes invent information that doesn't exist at all."
+ },
+ "H4-7": {
+  "evidence": "Schulen sollten den Umgang mit KI im Unterricht üben, statt ihn zu verbieten.",
+  "evidence_en": "Schools should practise using AI in class instead of banning it.",
+  "why": "Das sagt Frau Roth fast wörtlich.",
+  "why_en": "Dr Roth says this almost word for word.",
+  "trap": "Der Lehrer arbeitet in der Schule, aber er sagt, sein Problem ist, dass es keine Regeln gibt.",
+  "trap_en": "The teacher works at a school, but he says his problem is the lack of rules.",
+  "question_en": "Schools should practise dealing with AI instead of banning it."
+ },
+ "H4-8": {
+  "evidence": "Bei mir zu Hause erklärt mir meine dreizehnjährige Tochter, wie diese Programme funktionieren",
+  "evidence_en": "At home my thirteen-year-old daughter explains to me how these programs work",
+  "why": "Der Moderator sagt das am Ende als zweites Geständnis.",
+  "why_en": "The host says this at the end as his second confession.",
+  "trap": "Herr Ebert spricht über Jugendliche, die klüger sind, als wir denken – aber nicht über seine Tochter.",
+  "trap_en": "Mr Ebert says young people are smarter than we think – but not about his own daughter.",
+  "question_en": "My daughter explains to me how the programs work."
+ }
+}

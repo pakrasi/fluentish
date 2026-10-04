@@ -1,0 +1,585 @@
+[
+ {
+  "id": "ENG_CHUNK_1201",
+  "t": "Khublei! / Kumno!",
+  "ex": "Khublei! Kumno ka sngi jong me?",
+  "n": "Khublei is hello, thanks and bye at once. Kumno? on its own is the casual Shillong 'hi'."
+ },
+ {
+  "id": "ENG_CHUNK_1202",
+  "t": "Khublei (mynstep)",
+  "ex": "Khublei! Phi la thiah bha?",
+  "n": "No fixed time-of-day greeting; Khublei works all day. Khublei mynstep is heard but sounds translated."
+ },
+ {
+  "id": "ENG_CHUNK_1203",
+  "t": "Khublei",
+  "ex": "Khublei. Nga lah ban ïarap ïa phi?",
+  "n": "No 'good afternoon': Khublei is used at any hour."
+ },
+ {
+  "id": "ENG_CHUNK_1204",
+  "t": "Thiah suk",
+  "ex": "Thiah suk! Khublei.",
+  "n": "Literally 'sleep peacefully'; said at bedtime. When parting at night, Leit suk / Shong suk as usual."
+ },
+ {
+  "id": "ENG_CHUNK_1205",
+  "t": "Phi long kumno?",
+  "ex": "Khublei Sam, phi long kumno?",
+  "n": "me long kumno? to a close male friend, pha long kumno? to a female one."
+ },
+ {
+  "id": "ENG_CHUNK_1206",
+  "t": "Nga khlaiñ, khublei. Bad phi?",
+  "ex": "Phi long kumno? — Nga khlaiñ, khublei. Bad phi?",
+  "n": "khlaiñ is strong, healthy: the standard 'fine'."
+ },
+ {
+  "id": "ENG_CHUNK_1207",
+  "t": "Ym sniew, khublei",
+  "ex": "Phi long kumno? — Ym sniew, khublei.",
+  "n": "sniew is bad; Ym sniew is 'not bad'. Nga biang (I'm alright) also works. Less certain this is a set phrase."
+ },
+ {
+  "id": "ENG_CHUNK_1208",
+  "t": "Nga kmen ban ïakynduh bad phi",
+  "ex": "Khublei, nga dei ka Anna. Nga kmen ban ïakynduh bad phi.",
+  "n": "kmen is glad, ïakynduh is meet. Polite but a bit bookish; many just smile and say Khublei."
+ },
+ {
+  "id": "ENG_CHUNK_1209",
+  "t": "Nga ruh / Bad phi ruh",
+  "ex": "Nga kmen ban ïakynduh bad phi. — Nga ruh.",
+  "n": "Nga ruh (me too) is the natural return; ruh follows the word it stresses."
+ },
+ {
+  "id": "ENG_CHUNK_1210",
+  "t": "Nga sngewkmen ban ïakynduh bad phi",
+  "ex": "Khublei, nga dei u David Lee. Nga sngewkmen ban ïakynduh bad phi.",
+  "n": "sngewkmen (feel glad) is the more formal form; use with titles Bah or Kong."
+ },
+ {
+  "id": "ENG_CHUNK_1211",
+  "t": "Kumno? / Me long kumno?",
+  "ex": "Hei Tom, kumno? Me long kumno?",
+  "n": "me to a male friend, pha to a female. Kumno alone is the casual greeting."
+ },
+ {
+  "id": "ENG_CHUNK_1212",
+  "t": "Nga kmen ban ïohi ïa phi",
+  "ex": "Hei Maria! Nga kmen ban ïohi ïa pha.",
+  "n": "ïohi is see; pha to a female friend, me to a male."
+ },
+ {
+  "id": "ENG_CHUNK_1213",
+  "t": "Khublei / Leit suk / Shong suk",
+  "ex": "Khublei, bad khublei shibun na ka bynta baroh.",
+  "n": "The one leaving says Shong suk, the one staying says Leit suk; Khublei covers both."
+ },
+ {
+  "id": "ENG_CHUNK_1214",
+  "t": "Ngin sa ïakynduh",
+  "ex": "Bha, ngin sa ïakynduh!",
+  "n": "sa marks 'later'; the shorter Sa ïakynduh! is common among friends."
+ },
+ {
+  "id": "ENG_CHUNK_1215",
+  "t": "Leit suk",
+  "ex": "Khublei. Leit suk!",
+  "n": "No 'have a nice day': Leit suk (go well) is what a shopkeeper says to a leaving customer."
+ },
+ {
+  "id": "ENG_CHUNK_1216",
+  "t": "Khublei",
+  "ex": "Khublei na ka bynta ka kophi.",
+  "n": "na ka bynta (for) plus a noun gives the reason for the thanks."
+ },
+ {
+  "id": "ENG_CHUNK_1217",
+  "t": "Khublei shibun",
+  "ex": "Khublei shibun, me bha eh ka mynsiem.",
+  "n": "bha ka mynsiem (good of heart) is 'kind'; pha to a female friend."
+ },
+ {
+  "id": "ENG_CHUNK_1218",
+  "t": "Khublei, ym don eiei / Ym don eiei",
+  "ex": "Khublei! — Ym don eiei.",
+  "n": "Literally 'it is nothing'. The reply often repeats Khublei first."
+ },
+ {
+  "id": "ENG_CHUNK_1219",
+  "t": "Ym don eiei",
+  "ex": "Khublei ba phi la ap. — Ym don eiei."
+ },
+ {
+  "id": "ENG_CHUNK_1220",
+  "t": "Hooid, khublei",
+  "ex": "Phi kwah ka sha? — Hooid, khublei.",
+  "n": "Accepting takes khublei, not sngewbha: sngewbha is for asking, not for yes."
+ },
+ {
+  "id": "ENG_CHUNK_1221",
+  "t": "Em, khublei",
+  "ex": "Phi kwah biang ka cake? — Em, khublei.",
+  "n": "biang here is 'again, another'; Em, khublei is polite enough on its own."
+ },
+ {
+  "id": "ENG_CHUNK_1222",
+  "t": "Map",
+  "ex": "Map, kane ka rel kaba leit sha London?",
+  "n": "Map (pardon) does the job of 'excuse me' for attention and for passing."
+ },
+ {
+  "id": "ENG_CHUNK_1223",
+  "t": "Map ïa nga / Nga sngewsih",
+  "ex": "Map ïa nga, ka long ka bakla jong nga.",
+  "n": "Map ïa nga (forgive me) is the real apology; Nga sngewsih is 'I feel bad'."
+ },
+ {
+  "id": "ENG_CHUNK_1224",
+  "t": "Ym don eiei / Ka bha",
+  "ex": "Map, nga la pynpait ïa ka cup jong phi. — Ym don eiei.",
+  "n": "pynpait (make broken) for breaking is my best guess; confirm with a speaker."
+ },
+ {
+  "id": "ENG_CHUNK_1225",
+  "t": "Map ïa nga ba nga wan lait",
+  "ex": "Map ïa nga ba nga wan lait, ka bas kam shym la wan.",
+  "n": "wan lait is 'come late'; kam shym la is 'it did not' (past negative)."
+ },
+ {
+  "id": "ENG_CHUNK_1226",
+  "t": "Map, ngam sngewthuh",
+  "ex": "Map, ngam sngewthuh. Phi lah ban ong biang?"
+ },
+ {
+  "id": "ENG_CHUNK_1227",
+  "t": "Phi lah ban kren kham suki, sngewbha?",
+  "ex": "Phi lah ban kren kham suki, sngewbha? Ka ktien Khasi jong nga kam bha eh.",
+  "n": "kham suki is 'more slowly'; sngewbha at the end softens."
+ },
+ {
+  "id": "ENG_CHUNK_1228",
+  "t": "Phi lah ban ong biang, sngewbha?",
+  "ex": "Map, phi lah ban ong biang ïa kata, sngewbha?",
+  "n": "ong biang is 'say again'."
+ },
+ {
+  "id": "ENG_CHUNK_1229",
+  "t": "Phi lah ban ong ïa ki dak, sngewbha?",
+  "ex": "Ka kyrteng jait jong phi? Phi lah ban ong ïa ki dak, sngewbha?",
+  "n": "No everyday 'spell' verb: ask to say the letters (dak), or thoh (write) it. kyrteng jait is the clan surname."
+ },
+ {
+  "id": "ENG_CHUNK_1230",
+  "t": "Ngam nang kren bun ka ktien English",
+  "ex": "Map, ngam nang kren bun ka ktien English.",
+  "n": "nang is 'know how to'; ka ktien is 'the language'."
+ },
+ {
+  "id": "ENG_CHUNK_1231",
+  "t": "Aiu ka kyrteng jong phi?",
+  "ex": "Khublei, nga dei u Tom. Aiu ka kyrteng jong phi?",
+  "n": "Kaei ka kyrteng jong phi? is equally common."
+ },
+ {
+  "id": "ENG_CHUNK_1232",
+  "t": "Phi wan nangno?",
+  "ex": "Phi wan nangno? Ka rukom kren jong phi ka itynnad.",
+  "n": "nangno is 'from where'. rukom kren (way of speaking) is accent. Less certain of nangno vs na shano."
+ },
+ {
+  "id": "ENG_CHUNK_1233",
+  "t": "Katno snem pha? / Katno ka rta jong pha?",
+  "ex": "Emma, katno snem pha?",
+  "n": "Literally 'how many years you'; rta is age. pha to a girl, me to a boy, phi to an adult."
+ },
+ {
+  "id": "ENG_CHUNK_1234",
+  "t": "Phi shong hangno?",
+  "ex": "Phi shong hangno? Hajan hangne?",
+  "n": "shong is live, stay; hajan is near."
+ },
+ {
+  "id": "ENG_CHUNK_1235",
+  "t": "Phi trei aiu? / Aiu ka kam jong phi?",
+  "ex": "Phi trei aiu? Phi dei u nongpule?",
+  "n": "nongpule is student; ka nongpule for a woman."
+ },
+ {
+  "id": "ENG_CHUNK_1236",
+  "t": "Phi don ki para?",
+  "ex": "Phi don ki para shynrang ne ki para kynthei?",
+  "n": "para alone is sibling; shynrang (male) and kynthei (female) narrow it."
+ },
+ {
+  "id": "ENG_CHUNK_1237",
+  "t": "Naduh lano phi shong hangne?",
+  "ex": "Naduh lano phi shong hangne?",
+  "n": "Khasi asks 'since when', not 'how long'; no perfect needed."
+ },
+ {
+  "id": "ENG_CHUNK_1238",
+  "t": "Bad phi?",
+  "ex": "Nga wan na Italy. Bad phi?"
+ },
+ {
+  "id": "ENG_CHUNK_1239",
+  "t": "Katno baje?",
+  "ex": "Map, katno baje mynta?",
+  "n": "baje is o'clock; the answer is Ka long lai baje (it's three)."
+ },
+ {
+  "id": "ENG_CHUNK_1240",
+  "t": "Katno kane? / Katno ka dor?",
+  "ex": "Kane ka bag ka itynnad. Katno ka dor?",
+  "n": "dor is price."
+ },
+ {
+  "id": "ENG_CHUNK_1241",
+  "t": "Nga lah ban ïarap ïa phi?",
+  "ex": "Khublei, nga lah ban ïarap ïa phi?"
+ },
+ {
+  "id": "ENG_CHUNK_1242",
+  "t": "Ka la biang, khublei",
+  "ex": "Phi kwah kiwei pat? — Em, ka la biang, khublei.",
+  "n": "biang here is 'enough'; kiwei pat is 'anything else'."
+ },
+ {
+  "id": "ENG_CHUNK_1243",
+  "t": "Nga lah ban peit ïa ka menu, sngewbha?",
+  "ex": "Khublei, nga lah ban peit ïa ka menu, sngewbha?",
+  "n": "menu is said as in English."
+ },
+ {
+  "id": "ENG_CHUNK_1244",
+  "t": "Aiu ka bha ban bam hangne?",
+  "ex": "Kane ka sien ba nyngkong ba nga wan hangne. Aiu ka bha ban bam?",
+  "n": "No 'recommend' verb in daily speech: ask 'what is good to eat here'."
+ },
+ {
+  "id": "ENG_CHUNK_1245",
+  "t": "Ngam bam doh",
+  "ex": "Ngam bam doh. Don doh ha kane ka soup?",
+  "n": "No common word for vegetarian; say 'I don't eat meat' (doh)."
+ },
+ {
+  "id": "ENG_CHUNK_1246",
+  "t": "Nga la dap",
+  "ex": "Em shuh, khublei. Nga la dap.",
+  "n": "dap is full; shuh after em is 'no more'."
+ },
+ {
+  "id": "ENG_CHUNK_1247",
+  "t": "Hangno ka bathroom? / Hangno ka toilet?",
+  "ex": "Map, hangno ka bathroom?",
+  "n": "Shillong speakers use the English words."
+ },
+ {
+  "id": "ENG_CHUNK_1248",
+  "t": "Leit beit",
+  "ex": "Leit beit, bad ka bank ka don sha kti diang.",
+  "n": "kti diang is left, kti mon is right."
+ },
+ {
+  "id": "ENG_CHUNK_1249",
+  "t": "Hangno nga dei ban hiar?",
+  "ex": "Nga kwah ban leit sha ka zoo. Hangno nga dei ban hiar?",
+  "n": "hiar is 'get down', used for leaving a bus or taxi."
+ },
+ {
+  "id": "ENG_CHUNK_1250",
+  "t": "Aiu ka password jong ka wifi?",
+  "ex": "Map, aiu ka password jong ka wifi?"
+ },
+ {
+  "id": "ENG_CHUNK_1251",
+  "t": "Ïarap! / Ïarap ïa nga!",
+  "ex": "Ïarap! Ïarap ïa nga, sngewbha!",
+  "n": "Shouted ïarap (help) is my best rendering; people may also just yell Ko Blei!"
+ },
+ {
+  "id": "ENG_CHUNK_1252",
+  "t": "Phi lah ban ïarap ïa nga?",
+  "ex": "Map, phi lah ban ïarap ïa nga? Ngam tip shuh ïa ka lynti.",
+  "n": "Ngam tip shuh ïa ka lynti is 'I don't know the way any more', the plain way to say lost."
+ },
+ {
+  "id": "ENG_CHUNK_1253",
+  "t": "Nga donkam ïa u doktor",
+  "ex": "Nga donkam ïa u doktor. U khun jong nga u pang shibun.",
+  "n": "pang is sick; u khun (masc.) for a son."
+ },
+ {
+  "id": "ENG_CHUNK_1254",
+  "t": "Ka pang hangne",
+  "ex": "Ka pang hangne, ha ka kpoh.",
+  "n": "kpoh is belly, stomach; ka is the dummy subject for the pain."
+ },
+ {
+  "id": "ENG_CHUNK_1255",
+  "t": "Ngam sngew khlaiñ",
+  "ex": "Ngam sngew khlaiñ. Ngan leit sha ïing.",
+  "n": "Don't say Ngam sngew bha: sngewbha is 'please'. khlaiñ (well) avoids the clash."
+ },
+ {
+  "id": "ENG_CHUNK_1256",
+  "t": "Khot ïa ka ambulance!",
+  "ex": "Khot ïa ka ambulance! Um ring mynsiem!",
+  "n": "khot is call; ring mynsiem (draw breath) for breathing is my best guess."
+ },
+ {
+  "id": "ENG_CHUNK_1257",
+  "t": "Nga la jah lynti",
+  "ex": "Map, nga la jah lynti. Hangno ka steshon?",
+  "n": "jah lynti (lose the way) is my best rendering; Ngam tip ïa ka lynti is safer."
+ },
+ {
+  "id": "ENG_CHUNK_1258",
+  "t": "Khmih! / Sumar!",
+  "ex": "Khmih! Ka kali!",
+  "n": "khmih is look, sumar is take care; less certain which is shouted more."
+ },
+ {
+  "id": "ENG_CHUNK_1259",
+  "t": "Aiu ka jia?",
+  "ex": "Phi paw sngewsih. Aiu ka jia?",
+  "n": "jia is happen: 'what happened?'. paw is look, seem."
+ },
+ {
+  "id": "ENG_CHUNK_1260",
+  "t": "Phi khlaiñ?",
+  "ex": "Phi khlaiñ? Phi paw kumba phi pang.",
+  "n": "Literally 'are you well'; rises at the end."
+ },
+ {
+  "id": "ENG_CHUNK_1261",
+  "t": "Kmen ka sngi kha!",
+  "ex": "Kmen ka sngi kha! Kane ka jingai na ka bynta jong phi.",
+  "n": "sngi kha is birthday; many say Happy birthday in English. jingai is gift."
+ },
+ {
+  "id": "ENG_CHUNK_1262",
+  "t": "Bha eh! / Bha shibun!",
+  "ex": "Phi la pass ka test? Bha eh!",
+  "n": "pass (an exam) is used as in English."
+ },
+ {
+  "id": "ENG_CHUNK_1263",
+  "t": "Ka dang slap",
+  "ex": "Shim ka syrbaïn. Ka dang slap.",
+  "n": "ka is the dummy subject; dang makes it 'is raining now'."
+ },
+ {
+  "id": "ENG_CHUNK_1264",
+  "t": "Ka suiñbneng ka bha mynta, ne em?",
+  "ex": "Ka suiñbneng ka bha mynta, ne em?",
+  "n": "ne em (or not) is the Khasi tag question."
+ },
+ {
+  "id": "ENG_CHUNK_1265",
+  "t": "Aiu ka nombor phone jong phi?",
+  "ex": "Aiu ka nombor phone jong phi? Ngan phah message ïa phi.",
+  "n": "phah is send."
+ },
+ {
+  "id": "ENG_CHUNK_1266",
+  "t": "Ngam sngew ïa phi",
+  "ex": "Map, ngam sngew ïa phi. Don bun ka jingsawa hangne.",
+  "n": "sngew is both hear and feel; jingsawa is noise, sound."
+ },
+ {
+  "id": "ENG_CHUNK_1267",
+  "t": "Map, ngam shym la shim ïa ka phone jong phi",
+  "ex": "Map, ngam shym la shim ïa ka phone jong phi. Aiu ka jia?",
+  "n": "No 'miss a call' verb: say 'I didn't take your phone (call)'."
+ },
+ {
+  "id": "ENG_CHUNK_1268",
+  "t": "Nga lah ban kylli ïa phi kawei?",
+  "ex": "Map, nga lah ban kylli ïa phi kawei?",
+  "n": "kylli is ask; kawei (one) stands for 'a question'."
+ },
+ {
+  "id": "ENG_CHUNK_1269",
+  "t": "Katno baje ngin ïakynduh?",
+  "ex": "Bha, bam janmiet ha ka sngi Friday. Katno baje ngin ïakynduh?"
+ },
+ {
+  "id": "ENG_CHUNK_1270",
+  "t": "Ka phone jong nga ka jan lut ka charge",
+  "ex": "Nga hap ban leit, ka phone jong nga ka jan lut ka charge.",
+  "n": "jan is 'almost'; lut is 'run out'. charge is the English word."
+ },
+ {
+  "id": "ENG_CHUNK_1271",
+  "t": "Hmm, ap khyndiat, nga pyrkhat",
+  "ex": "Hmm, ap khyndiat, nga pyrkhat... ka long ha ka sngi Tuesday."
+ },
+ {
+  "id": "ENG_CHUNK_1272",
+  "t": "Ap khyndiat",
+  "ex": "Ap khyndiat, ngan sa shim ka pen."
+ },
+ {
+  "id": "ENG_CHUNK_1273",
+  "t": "Ap shi minit!",
+  "ex": "Ap shi minit, nga dang wan!",
+  "n": "nga dang wan (I'm coming) uses dang for the in-progress sense."
+ },
+ {
+  "id": "ENG_CHUNK_1274",
+  "t": "Ap khyndiat",
+  "ex": "Ap khyndiat, ngan peit.",
+  "n": "Same phrase on the phone; ap is wait."
+ },
+ {
+  "id": "ENG_CHUNK_1275",
+  "t": "Map?",
+  "ex": "Map? Ngam shym la sngew.",
+  "n": "Map with a rising tone is the polite 'pardon?'."
+ },
+ {
+  "id": "ENG_CHUNK_1276",
+  "t": "Map? / Aiu?",
+  "ex": "Aiu? Phi lah ban ong biang?",
+  "n": "Bare Aiu? (what?) is fine with friends, blunt with elders."
+ },
+ {
+  "id": "ENG_CHUNK_1277",
+  "t": "Aiu kata?",
+  "ex": "Aiu kata? Ngam tip ïa kata ka ktien.",
+  "n": "ktien is both word and language."
+ },
+ {
+  "id": "ENG_CHUNK_1278",
+  "t": "Bha / Hooid",
+  "ex": "Bha, to ngi leit.",
+  "n": "Bha (good) is the everyday 'okay'."
+ },
+ {
+  "id": "ENG_CHUNK_1279",
+  "t": "Hooid hi / Hooid, shisha",
+  "ex": "Nga lah ban shong hangne? — Hooid hi, shong noh.",
+  "n": "hi adds emphasis; less certain this is the most common 'of course'."
+ },
+ {
+  "id": "ENG_CHUNK_1280",
+  "t": "Hooid / Bha",
+  "ex": "Phi lah ban ai ïa ka mluh? — Hooid.",
+  "n": "mluh is salt."
+ },
+ {
+  "id": "ENG_CHUNK_1281",
+  "t": "Nga ruh!",
+  "ex": "Nga ieid ïa kane ka jingrwai. — Nga ruh!"
+ },
+ {
+  "id": "ENG_CHUNK_1282",
+  "t": "Nga ruh em",
+  "ex": "Ngam ieid ïa ka kophi. — Nga ruh em.",
+  "n": "Literally 'me also not'; Nga ruh ngam ieid (I don't like it either) is the fuller form."
+ },
+ {
+  "id": "ENG_CHUNK_1283",
+  "t": "Bha / Hooid",
+  "ex": "Bha, kumta ka bas kan leit ha khyndai baje.",
+  "n": "kumta (so) often follows to sum up what was agreed."
+ },
+ {
+  "id": "ENG_CHUNK_1284",
+  "t": "Ngam tip",
+  "ex": "Map, ngam tip."
+ },
+ {
+  "id": "ENG_CHUNK_1285",
+  "t": "Lehse",
+  "ex": "Phin wan mynta ka miet? — Lehse."
+ },
+ {
+  "id": "ENG_CHUNK_1286",
+  "t": "Ngam tip shisha",
+  "ex": "Ka plie ha ka sngi Sunday? — Ngam tip shisha."
+ },
+ {
+  "id": "ENG_CHUNK_1287",
+  "t": "Kata ka jingpyrkhat kaba bha / Bha",
+  "ex": "To ngi shim ka taxi. — Bha, kata ka jingpyrkhat kaba bha.",
+  "n": "Plain Bha! is the everyday short form."
+ },
+ {
+  "id": "ENG_CHUNK_1288",
+  "t": "Kata ka bha shibun!",
+  "ex": "Phi la ïoh ka kam? Kata ka bha shibun!"
+ },
+ {
+  "id": "ENG_CHUNK_1289",
+  "t": "Ko Blei! / Ah!",
+  "ex": "Ko Blei! Nga la klet ïa ki chabi.",
+  "n": "Ko Blei (O God) is the common alarm cry; klet is forget."
+ },
+ {
+  "id": "ENG_CHUNK_1290",
+  "t": "Te... / Hmm...",
+  "ex": "Te... ngam tip shisha.",
+  "n": "te (then, so) is the stalling word."
+ },
+ {
+  "id": "ENG_CHUNK_1291",
+  "t": "Ha ka jingshisha",
+  "ex": "Ha ka jingshisha, nga wan na Canada, ym na US."
+ },
+ {
+  "id": "ENG_CHUNK_1292",
+  "t": "Bha / Kata ka bha",
+  "ex": "Pizza ha hynñiew baje? — Bha!"
+ },
+ {
+  "id": "ENG_CHUNK_1293",
+  "t": "Bha / Cool",
+  "ex": "Ngan ïohi ïa me hangta. — Cool.",
+  "n": "Young Shillong speakers use English cool; Bha is the plain Khasi."
+ },
+ {
+  "id": "ENG_CHUNK_1294",
+  "t": "Wow! / Ko Blei!",
+  "ex": "Wow! Ka ïing jong me ka itynnad shibun.",
+  "n": "itynnad is beautiful; English wow is common in speech."
+ },
+ {
+  "id": "ENG_CHUNK_1295",
+  "t": "Ka bha? / Ka biang?",
+  "ex": "Ngan wan ha phra baje. Ka bha?"
+ },
+ {
+  "id": "ENG_CHUNK_1296",
+  "t": "bad hadien kata",
+  "ex": "Nga la khie, bad hadien kata nga la bam ka jingbam mynstep.",
+  "n": "khie is get up; jingbam mynstep is breakfast."
+ },
+ {
+  "id": "ENG_CHUNK_1297",
+  "t": "hynrei",
+  "ex": "Nga ieid ïa ka sha, hynrei ngam ieid ïa ka kophi."
+ },
+ {
+  "id": "ENG_CHUNK_1298",
+  "t": "namar ba",
+  "ex": "Nga thait namar ba nga la trei slem.",
+  "n": "thait is tired; slem is long, late."
+ },
+ {
+  "id": "ENG_CHUNK_1299",
+  "t": "ruh",
+  "ex": "Nga kren ka ktien French. Nga kren khyndiat ka ktien German ruh.",
+  "n": "ruh follows the word it stresses: Nga ruh would mean 'I too'."
+ },
+ {
+  "id": "ENG_CHUNK_1300",
+  "t": "hadien kata / te",
+  "ex": "Nyngkong nga sum, hadien kata nga kup jain.",
+  "n": "sum is bathe; kup jain for getting dressed is my best guess."
+ }
+]

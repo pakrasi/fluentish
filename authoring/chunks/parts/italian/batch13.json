@@ -1,0 +1,562 @@
+[
+{
+"id": "ENG_CHUNK_1201",
+"t": "Ciao!",
+"ex": "Ciao! Come va la giornata?"
+},
+{
+"id": "ENG_CHUNK_1202",
+"t": "Buongiorno",
+"ex": "Buongiorno! Hai dormito bene?",
+"n": "Used all morning and often into early afternoon; also works as a shop greeting."
+},
+{
+"id": "ENG_CHUNK_1203",
+"t": "Buonasera / Buon pomeriggio",
+"ex": "Buonasera. Posso aiutarla?",
+"n": "In practice Italians switch to 'buonasera' after lunch; 'buon pomeriggio' is mostly a goodbye wish."
+},
+{
+"id": "ENG_CHUNK_1204",
+"t": "Buonanotte",
+"ex": "Buonanotte! Dormi bene.",
+"n": "Only for bedtime or late leave-taking; to greet someone in the evening say 'buonasera'."
+},
+{
+"id": "ENG_CHUNK_1205",
+"t": "Come stai? / Come sta?",
+"ex": "Ciao Sara, come stai?",
+"n": "'Come stai' with tu, 'come sta' with Lei."
+},
+{
+"id": "ENG_CHUNK_1206",
+"t": "Bene, grazie. E tu? / E Lei?",
+"ex": "\"Come stai?\" \"Bene, grazie. E tu?\""
+},
+{
+"id": "ENG_CHUNK_1207",
+"t": "Non c'è male, grazie",
+"ex": "\"Come va?\" \"Non c'è male, grazie.\"",
+"n": "Also common: 'Abbastanza bene' or 'Si tira avanti'."
+},
+{
+"id": "ENG_CHUNK_1208",
+"t": "Piacere / Piacere di conoscerti",
+"ex": "Ciao, sono Anna. Piacere!",
+"n": "A plain 'Piacere!' with a handshake is the everyday form."
+},
+{
+"id": "ENG_CHUNK_1209",
+"t": "Anche a te / Altrettanto",
+"ex": "\"Piacere di conoscerti.\" \"Anche a te.\"",
+"n": "'Altrettanto' returns any wish (Buon appetito! Altrettanto!); 'Anche a Lei' in Lei form."
+},
+{
+"id": "ENG_CHUNK_1210",
+"t": "Molto lieto / Molto lieta",
+"ex": "Buongiorno, sono Davide Leone. Molto lieto.",
+"n": "'Lieto' for a male speaker, 'lieta' for a female speaker."
+},
+{
+"id": "ENG_CHUNK_1211",
+"t": "Come va? / Tutto bene?",
+"ex": "Ehi Tommaso, come va?"
+},
+{
+"id": "ENG_CHUNK_1212",
+"t": "Che bello vederti! / Che piacere vederti!",
+"ex": "Ehi Maria! Che bello vederti!"
+},
+{
+"id": "ENG_CHUNK_1213",
+"t": "Arrivederci / ArrivederLa",
+"ex": "Arrivederci, e grazie di tutto.",
+"n": "'ArrivederLa' is the very formal Lei version; 'arrivederci' is fine for everyone."
+},
+{
+"id": "ENG_CHUNK_1214",
+"t": "A dopo! / Ci vediamo!",
+"ex": "Va bene, a dopo!",
+"n": "'A dopo' = later today; 'ci vediamo' is open-ended."
+},
+{
+"id": "ENG_CHUNK_1215",
+"t": "Buona giornata",
+"ex": "Grazie. Buona giornata!",
+"n": "After about 5 pm switch to 'Buona serata'."
+},
+{
+"id": "ENG_CHUNK_1216",
+"t": "Grazie",
+"ex": "Grazie per il caffè.",
+"n": "'Grazie per' + noun; also 'grazie del caffè'."
+},
+{
+"id": "ENG_CHUNK_1217",
+"t": "Grazie mille",
+"ex": "Grazie mille, sei molto gentile."
+},
+{
+"id": "ENG_CHUNK_1218",
+"t": "Prego",
+"ex": "\"Grazie!\" \"Prego.\"",
+"n": "'Prego' also means 'go ahead / after you' and 'can I help you?' in shops."
+},
+{
+"id": "ENG_CHUNK_1219",
+"t": "Figurati! / Si figuri! / Nessun problema",
+"ex": "\"Grazie di aver aspettato.\" \"Figurati!\"",
+"n": "'Figurati' (tu) / 'si figuri' (Lei) is the natural reply to thanks; 'nessun problema' fits apologies."
+},
+{
+"id": "ENG_CHUNK_1220",
+"t": "Sì, grazie",
+"ex": "\"Vuoi un tè?\" \"Sì, grazie.\"",
+"n": "Italian says 'grazie' for yes; 'sì, per favore' sounds translated."
+},
+{
+"id": "ENG_CHUNK_1221",
+"t": "No, grazie",
+"ex": "\"Vuoi ancora un po' di torta?\" \"No, grazie.\""
+},
+{
+"id": "ENG_CHUNK_1222",
+"t": "Scusi / Permesso",
+"ex": "Scusi, è questo il treno per Milano?",
+"n": "'Scusi' to get attention; 'Permesso' when squeezing past someone or entering a home."
+},
+{
+"id": "ENG_CHUNK_1223",
+"t": "Mi dispiace / Scusa",
+"ex": "Scusa, è stato un mio errore.",
+"n": "'Mi dispiace' = I regret it; 'scusa/scusi' = I apologise. Both fit here."
+},
+{
+"id": "ENG_CHUNK_1224",
+"t": "Non fa niente / Non importa",
+"ex": "\"Scusa, ti ho rotto la tazza.\" \"Non fa niente.\""
+},
+{
+"id": "ENG_CHUNK_1225",
+"t": "Scusa il ritardo / Scusi il ritardo",
+"ex": "Scusa il ritardo, l'autobus non è passato.",
+"n": "Italian uses a noun ('il ritardo'), not 'I am late'."
+},
+{
+"id": "ENG_CHUNK_1226",
+"t": "Scusi, non ho capito",
+"ex": "Scusi, non ho capito. Può ripetere?",
+"n": "Italian uses the past 'non ho capito' where English uses present 'don't understand'."
+},
+{
+"id": "ENG_CHUNK_1227",
+"t": "Può parlare più lentamente, per favore?",
+"ex": "Può parlare più lentamente, per favore? Il mio italiano non è molto buono.",
+"n": "'Più piano' is equally common: 'Può parlare più piano?'"
+},
+{
+"id": "ENG_CHUNK_1228",
+"t": "Può ripetere, per favore? / Puoi ripetere?",
+"ex": "Scusi, può ripetere, per favore?"
+},
+{
+"id": "ENG_CHUNK_1229",
+"t": "Come si scrive, per favore?",
+"ex": "Il cognome? Come si scrive, per favore?",
+"n": "Italians spell names using cities: 'A come Ancona, B come Bologna'."
+},
+{
+"id": "ENG_CHUNK_1230",
+"t": "Non parlo bene l'italiano",
+"ex": "Scusi, non parlo bene l'italiano.",
+"n": "'Parlo poco l'italiano' is also common."
+},
+{
+"id": "ENG_CHUNK_1231",
+"t": "Come ti chiami? / Come si chiama?",
+"ex": "Ciao, sono Tommaso. Tu come ti chiami?",
+"n": "Reflexive 'chiamarsi': literally 'how do you call yourself?'"
+},
+{
+"id": "ENG_CHUNK_1232",
+"t": "Di dove sei? / Di dov'è?",
+"ex": "Di dove sei? Hai un bell'accento.",
+"n": "'Di dove' not 'da dove'; answer 'Sono di Roma' (city) or 'Sono inglese' (nationality)."
+},
+{
+"id": "ENG_CHUNK_1233",
+"t": "Quanti anni hai?",
+"ex": "Quanti anni hai, Emma?",
+"n": "Italian 'has' years: 'Ho trent'anni', never 'sono trenta'."
+},
+{
+"id": "ENG_CHUNK_1234",
+"t": "Dove abiti? / Dove vivi?",
+"ex": "Dove abiti? Qui vicino?"
+},
+{
+"id": "ENG_CHUNK_1235",
+"t": "Che lavoro fai? / Cosa fai nella vita?",
+"ex": "Che lavoro fai? Sei studente?"
+},
+{
+"id": "ENG_CHUNK_1236",
+"t": "Hai fratelli o sorelle?",
+"ex": "Hai fratelli o sorelle?",
+"n": "'Fratelli' alone can mean siblings of mixed sex."
+},
+{
+"id": "ENG_CHUNK_1237",
+"t": "Da quanto tempo vivi qui?",
+"ex": "Da quanto tempo vivi qui?",
+"n": "Present tense with 'da': 'Vivo qui da tre anni', not a perfect tense."
+},
+{
+"id": "ENG_CHUNK_1238",
+"t": "E tu? / E Lei?",
+"ex": "Io sono italiano. E tu?"
+},
+{
+"id": "ENG_CHUNK_1239",
+"t": "Che ore sono? / Che ora è?",
+"ex": "Scusi, che ore sono?",
+"n": "Answer 'Sono le tre', but 'È l'una', 'È mezzogiorno'."
+},
+{
+"id": "ENG_CHUNK_1240",
+"t": "Quanto costa? / Quanto viene?",
+"ex": "Questa borsa è bella. Quanto costa?",
+"n": "'Quant'è?' is used at the till for the total."
+},
+{
+"id": "ENG_CHUNK_1241",
+"t": "Posso aiutarla? / Desidera?",
+"ex": "Buongiorno, posso aiutarla?",
+"n": "'Desidera?' is the classic shop or bar opener."
+},
+{
+"id": "ENG_CHUNK_1242",
+"t": "Basta così, grazie",
+"ex": "\"Altro?\" \"No, basta così, grazie.\""
+},
+{
+"id": "ENG_CHUNK_1243",
+"t": "Posso vedere il menù, per favore?",
+"ex": "Buonasera, posso vedere il menù, per favore?",
+"n": "'Ci porta il menù?' is also common; 'la carta' in upscale places."
+},
+{
+"id": "ENG_CHUNK_1244",
+"t": "Cosa mi consiglia? / Cosa mi consigli?",
+"ex": "È la prima volta che vengo. Cosa mi consiglia?"
+},
+{
+"id": "ENG_CHUNK_1245",
+"t": "Sono vegetariano / Sono vegetariana",
+"ex": "Sono vegetariana. C'è carne in questa zuppa?",
+"n": "Ending agrees with the speaker's gender."
+},
+{
+"id": "ENG_CHUNK_1246",
+"t": "Sono pieno / Sono piena",
+"ex": "Basta così, grazie. Sono pieno.",
+"n": "'Sono sazio/a' is more polite at a host's table."
+},
+{
+"id": "ENG_CHUNK_1247",
+"t": "Dov'è il bagno?",
+"ex": "Scusi, dov'è il bagno?"
+},
+{
+"id": "ENG_CHUNK_1248",
+"t": "Vada sempre dritto / Vai sempre dritto",
+"ex": "Vada sempre dritto, e la banca è sulla sinistra.",
+"n": "'Sempre dritto' = keep straight on; Lei imperative 'vada', tu 'vai'."
+},
+{
+"id": "ENG_CHUNK_1249",
+"t": "Dove devo scendere?",
+"ex": "Voglio andare allo zoo. Dove devo scendere?",
+"n": "'Scendere' = get off; 'salire' = get on."
+},
+{
+"id": "ENG_CHUNK_1250",
+"t": "Qual è la password del wifi?",
+"ex": "Scusi, qual è la password del wifi?",
+"n": "'Qual è' has no apostrophe."
+},
+{
+"id": "ENG_CHUNK_1251",
+"t": "Aiuto!",
+"ex": "Aiuto! Qualcuno mi aiuti!"
+},
+{
+"id": "ENG_CHUNK_1252",
+"t": "Mi può aiutare? / Mi puoi aiutare?",
+"ex": "Scusi, mi può aiutare? Mi sono perso."
+},
+{
+"id": "ENG_CHUNK_1253",
+"t": "Ho bisogno di un medico",
+"ex": "Ho bisogno di un medico. Mio figlio sta molto male."
+},
+{
+"id": "ENG_CHUNK_1254",
+"t": "Mi fa male qui",
+"ex": "Mi fa male qui, alla pancia.",
+"n": "'Fare male' takes an indirect object: 'mi fa male la testa'."
+},
+{
+"id": "ENG_CHUNK_1255",
+"t": "Non mi sento bene / Sto male",
+"ex": "Non mi sento bene. Vado a casa."
+},
+{
+"id": "ENG_CHUNK_1256",
+"t": "Chiamate un'ambulanza!",
+"ex": "Chiamate un'ambulanza! Non respira!",
+"n": "Plural imperative to address everyone around; in Italy the number is 112 or 118."
+},
+{
+"id": "ENG_CHUNK_1257",
+"t": "Mi sono perso / Mi sono persa",
+"ex": "Scusi, mi sono perso. Dov'è la stazione?",
+"n": "Passato prossimo in Italian; agrees with the speaker's gender."
+},
+{
+"id": "ENG_CHUNK_1258",
+"t": "Attento! / Attenzione!",
+"ex": "Attento! Una macchina!",
+"n": "'Attento/a/i' agrees with who is warned; 'Attenzione!' is neutral."
+},
+{
+"id": "ENG_CHUNK_1259",
+"t": "Che cosa c'è? / Che succede?",
+"ex": "Hai l'aria triste. Che c'è?"
+},
+{
+"id": "ENG_CHUNK_1260",
+"t": "Tutto bene? / Stai bene?",
+"ex": "Tutto bene? Sei pallido."
+},
+{
+"id": "ENG_CHUNK_1261",
+"t": "Buon compleanno! / Tanti auguri!",
+"ex": "Tanti auguri! Ecco un regalo per te."
+},
+{
+"id": "ENG_CHUNK_1262",
+"t": "Bravo! / Brava! / Complimenti!",
+"ex": "Hai passato l'esame? Brava!",
+"n": "'Bravo' agrees with the person praised: brava, bravi, brave."
+},
+{
+"id": "ENG_CHUNK_1263",
+"t": "Piove / Sta piovendo",
+"ex": "Prendi l'ombrello. Piove."
+},
+{
+"id": "ENG_CHUNK_1264",
+"t": "Che bella giornata oggi, eh?",
+"ex": "Che bella giornata oggi, eh?",
+"n": "Italian tags with 'eh?' or 'vero?' rather than a question tag."
+},
+{
+"id": "ENG_CHUNK_1265",
+"t": "Qual è il tuo numero di telefono? / Mi dai il tuo numero?",
+"ex": "Mi dai il tuo numero? Ti scrivo io."
+},
+{
+"id": "ENG_CHUNK_1266",
+"t": "Non ti sento",
+"ex": "Scusa, non ti sento. C'è troppo rumore qui.",
+"n": "'Sentire' = hear; no 'can' needed."
+},
+{
+"id": "ENG_CHUNK_1267",
+"t": "Scusa, non ho sentito la chiamata",
+"ex": "Ciao, scusa, non ho sentito la chiamata. Che c'è?",
+"n": "Also 'Ho visto che mi hai chiamato'."
+},
+{
+"id": "ENG_CHUNK_1268",
+"t": "Posso farti una domanda? / Posso farle una domanda?",
+"ex": "Scusi, posso farle una domanda?",
+"n": "'Fare una domanda', never 'chiedere una domanda'."
+},
+{
+"id": "ENG_CHUNK_1269",
+"t": "A che ora ci vediamo?",
+"ex": "Allora, cena venerdì. A che ora ci vediamo?"
+},
+{
+"id": "ENG_CHUNK_1270",
+"t": "Ho il telefono quasi scarico / Mi si sta scaricando il telefono",
+"ex": "Devo andare, ho il telefono quasi scarico."
+},
+{
+"id": "ENG_CHUNK_1271",
+"t": "Mmm, vediamo / Allora, vediamo",
+"ex": "Mmm, vediamo... Credo che sia martedì."
+},
+{
+"id": "ENG_CHUNK_1272",
+"t": "Un attimo / Un momento",
+"ex": "Un attimo, prendo la penna."
+},
+{
+"id": "ENG_CHUNK_1273",
+"t": "Aspetta un attimo! / Aspetta!",
+"ex": "Aspetta un attimo, arrivo!"
+},
+{
+"id": "ENG_CHUNK_1274",
+"t": "Un attimo / Resta in linea",
+"ex": "Un attimo, controllo.",
+"n": "'Resta in linea' (Lei: 'Rimanga in linea') is specifically for phone calls."
+},
+{
+"id": "ENG_CHUNK_1275",
+"t": "Scusi? / Come, scusi?",
+"ex": "Come, scusi? Non ho sentito."
+},
+{
+"id": "ENG_CHUNK_1276",
+"t": "Scusa? / Come?",
+"ex": "Scusa? Puoi ripetere?",
+"n": "A bare 'Cosa?' or 'Eh?' is common with friends but can sound rude."
+},
+{
+"id": "ENG_CHUNK_1277",
+"t": "Cos'è? / Che cos'è questo?",
+"ex": "Cos'è? Non conosco questa parola."
+},
+{
+"id": "ENG_CHUNK_1278",
+"t": "Va bene / Ok",
+"ex": "Va bene, andiamo.",
+"n": "'Va bene' is the everyday default; 'd'accordo' for agreeing to a plan."
+},
+{
+"id": "ENG_CHUNK_1279",
+"t": "Certo / Ma certo",
+"ex": "\"Posso sedermi qui?\" \"Certo.\"",
+"n": "'Prego, si accomodi' is the polite version when offering a seat."
+},
+{
+"id": "ENG_CHUNK_1280",
+"t": "Certo / Sì, sì",
+"ex": "\"Mi passi il sale?\" \"Certo.\""
+},
+{
+"id": "ENG_CHUNK_1281",
+"t": "Anch'io",
+"ex": "\"Adoro questa canzone.\" \"Anch'io!\"",
+"n": "Stressed pronoun after 'anche': anch'io, anche tu, anche lui."
+},
+{
+"id": "ENG_CHUNK_1282",
+"t": "Neanch'io / Nemmeno io",
+"ex": "\"Non mi piace il caffè.\" \"Neanche a me.\"",
+"n": "With 'piacere' the pronoun changes: 'Anche a me / Neanche a me'."
+},
+{
+"id": "ENG_CHUNK_1283",
+"t": "Ok / Giusto / Allora",
+"ex": "Ok, quindi l'autobus parte alle nove."
+},
+{
+"id": "ENG_CHUNK_1284",
+"t": "Non lo so",
+"ex": "Scusa, non lo so.",
+"n": "Italian adds 'lo': 'non lo so'; bare 'non so' also exists."
+},
+{
+"id": "ENG_CHUNK_1285",
+"t": "Forse / Magari",
+"ex": "\"Vieni stasera?\" \"Forse.\"",
+"n": "'Magari' also means 'I wish!'."
+},
+{
+"id": "ENG_CHUNK_1286",
+"t": "Non sono sicuro / Non sono sicura",
+"ex": "\"È aperto la domenica?\" \"Non sono sicuro.\""
+},
+{
+"id": "ENG_CHUNK_1287",
+"t": "Buona idea",
+"ex": "\"Prendiamo un taxi.\" \"Buona idea.\""
+},
+{
+"id": "ENG_CHUNK_1288",
+"t": "Fantastico! / Che bello!",
+"ex": "Ti hanno preso? Fantastico!"
+},
+{
+"id": "ENG_CHUNK_1289",
+"t": "Oh no!",
+"ex": "Oh no! Ho dimenticato le chiavi."
+},
+{
+"id": "ENG_CHUNK_1290",
+"t": "Beh... / Mah...",
+"ex": "Beh... non sono sicuro.",
+"n": "'Mah' signals doubt or scepticism."
+},
+{
+"id": "ENG_CHUNK_1291",
+"t": "In realtà / Veramente",
+"ex": "In realtà sono canadese, non americano.",
+"n": "False friend: 'attualmente' means 'currently', not 'actually'."
+},
+{
+"id": "ENG_CHUNK_1292",
+"t": "Perfetto / Va benissimo",
+"ex": "\"Pizza alle sette?\" \"Perfetto.\""
+},
+{
+"id": "ENG_CHUNK_1293",
+"t": "Ok / Perfetto / Fico",
+"ex": "\"Ci vediamo lì.\" \"Ok.\"",
+"n": "'Figo/fico' is slangy; plain 'ok' is the safe choice."
+},
+{
+"id": "ENG_CHUNK_1294",
+"t": "Wow! / Accidenti!",
+"ex": "Wow! Casa tua è bellissima.",
+"n": "'Caspita!' is another common, mild exclamation."
+},
+{
+"id": "ENG_CHUNK_1295",
+"t": "Va bene? / Ti va bene?",
+"ex": "Vengo alle otto. Ti va bene?"
+},
+{
+"id": "ENG_CHUNK_1296",
+"t": "E poi",
+"ex": "Mi sono alzato e poi ho fatto colazione."
+},
+{
+"id": "ENG_CHUNK_1297",
+"t": "Ma",
+"ex": "Mi piace il tè, ma non mi piace il caffè.",
+"n": "'Però' is a common spoken alternative."
+},
+{
+"id": "ENG_CHUNK_1298",
+"t": "Perché",
+"ex": "Sono stanco perché ho lavorato fino a tardi.",
+"n": "Same word as 'why?'; the accent (é) is required."
+},
+{
+"id": "ENG_CHUNK_1299",
+"t": "Anche",
+"ex": "Parlo francese. Parlo anche un po' di tedesco.",
+"n": "'Anche' goes before the word it adds to."
+},
+{
+"id": "ENG_CHUNK_1300",
+"t": "Poi",
+"ex": "Prima faccio la doccia, poi mi vesto."
+}
+]

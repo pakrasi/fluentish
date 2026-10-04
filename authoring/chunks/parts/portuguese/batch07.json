@@ -1,0 +1,540 @@
+[
+ {
+  "id": "ENG_CHUNK_0601",
+  "t": "Eu pedi [substantivo], mas [oração]",
+  "ex": "Desculpa, eu pedi o hambúrguer vegetariano, mas este aqui tem frango."
+ },
+ {
+  "id": "ENG_CHUNK_0602",
+  "t": "Eu poderia falar com [pessoa]? / Por favor, o/a [pessoa] está?",
+  "ex": "Oi, eu poderia falar com a Maria, por favor?",
+  "n": "Formal: O senhor/A senhora poderia me passar para ...? PT-PT on phone: Posso falar com ...?"
+ },
+ {
+  "id": "ENG_CHUNK_0603",
+  "t": "Aqui é [pessoa], da/do [substantivo] / Quem fala é [pessoa]",
+  "ex": "Oi, aqui é o Samuel, do consultório odontológico.",
+  "n": "Not 'Isto é' / 'Este é': on the phone Brazilians say 'Aqui é' or 'É o/a ...'."
+ },
+ {
+  "id": "ENG_CHUNK_0604",
+  "t": "Estou ligando por causa de [substantivo] / Estou ligando sobre [substantivo]",
+  "ex": "Oi, estou ligando por causa do apartamento que você anunciou.",
+  "n": "PT-PT: Estou a ligar / Estou a telefonar."
+ },
+ {
+  "id": "ENG_CHUNK_0605",
+  "t": "Posso deixar um recado para [pessoa]?",
+  "ex": "Ela não está? Tudo bem. Posso deixar um recado para ela?",
+  "n": "'Recado' is the everyday word; 'mensagem' is fine too."
+ },
+ {
+  "id": "ENG_CHUNK_0606",
+  "t": "Você pode pedir para [pessoa] me ligar de volta? / ... me retornar?",
+  "ex": "Você pode pedir para o Tomás me ligar de volta quando ele estiver livre?",
+  "n": "'Retornar a ligação' is common in service contexts."
+ },
+ {
+  "id": "ENG_CHUNK_0607",
+  "t": "Estou com [substantivo] há [período]",
+  "ex": "Estou com dor de cabeça há dois dias já.",
+  "n": "Present tense + há, not perfect: English 'I've had' becomes 'estou com ... há'. Symptoms use estar com."
+ },
+ {
+  "id": "ENG_CHUNK_0608",
+  "t": "Dói quando eu [verbo]",
+  "ex": "Dói quando eu me abaixo para amarrar o sapato."
+ },
+ {
+  "id": "ENG_CHUNK_0609",
+  "t": "Meu/Minha [parte do corpo] está me matando",
+  "ex": "Meu joelho está me matando depois daquela caminhada longa.",
+  "n": "Also very common: 'Estou morto de dor no joelho'."
+ },
+ {
+  "id": "ENG_CHUNK_0610",
+  "t": "Acho que estou com [substantivo] / Acho que peguei [substantivo]",
+  "ex": "Acho que peguei um resfriado, então vou ficar em casa hoje.",
+  "n": "'Pegar um resfriado/uma gripe' = catch; PT-PT: constipação (not constipation!)."
+ },
+ {
+  "id": "ENG_CHUNK_0611",
+  "t": "Você tem alguma coisa para [substantivo]? / O senhor tem algo para [substantivo]?",
+  "ex": "Oi, você tem alguma coisa para dor de cabeça?",
+  "n": "At the pharmacy, 'o que você me indica para ...?' is also typical."
+ },
+ {
+  "id": "ENG_CHUNK_0612",
+  "t": "Devo me preocupar com [substantivo]?",
+  "ex": "Devo me preocupar com essa tosse, ou é só um resfriado?"
+ },
+ {
+  "id": "ENG_CHUNK_0613",
+  "t": "De quanto em quanto tempo eu devo [verbo]? / Com que frequência devo [verbo]?",
+  "ex": "De quanto em quanto tempo eu devo tomar esses comprimidos?",
+  "n": "'De quantas em quantas horas' for dosage in hours."
+ },
+ {
+  "id": "ENG_CHUNK_0614",
+  "t": "Preciso de receita para [substantivo]?",
+  "ex": "Preciso de receita para esses remédios de alergia?"
+ },
+ {
+  "id": "ENG_CHUNK_0615",
+  "t": "Eu não sou muito de [substantivo/verbo]",
+  "ex": "Sinceramente, eu não sou nem um pouco de acordar cedo.",
+  "n": "No direct 'X person' frame; 'não sou muito de' + noun/infinitive does the job ('não sou de praia')."
+ },
+ {
+  "id": "ENG_CHUNK_0616",
+  "t": "Ando me sentindo [adjetivo] / Tenho me sentido [adjetivo] ultimamente",
+  "ex": "Tenho me sentido muito bem ultimamente, obrigado por perguntar.",
+  "n": "'Andar + gerúndio/adjetivo' is the natural colloquial 'lately' form."
+ },
+ {
+  "id": "ENG_CHUNK_0617",
+  "t": "Estou trabalhando em [substantivo] / Estou mexendo com [substantivo]",
+  "ex": "Estou trabalhando no novo site esta semana."
+ },
+ {
+  "id": "ENG_CHUNK_0618",
+  "t": "Estou no meio de [substantivo]",
+  "ex": "Posso te ligar depois? Estou no meio do jantar."
+ },
+ {
+  "id": "ENG_CHUNK_0619",
+  "t": "Você tem um minutinho para [verbo]?",
+  "ex": "Você tem um minutinho para dar uma olhada neste e-mail?",
+  "n": "The diminutive 'minutinho' softens the request."
+ },
+ {
+  "id": "ENG_CHUNK_0620",
+  "t": "Te dou um retorno sobre [substantivo] / Te falo sobre [substantivo] depois",
+  "ex": "Te dou um retorno sobre as datas até sexta.",
+  "n": "'Dar um retorno' is standard office Portuguese in Brazil."
+ },
+ {
+  "id": "ENG_CHUNK_0621",
+  "t": "Dá para passar [substantivo] para [substantivo]? / Podemos mudar [substantivo] para [substantivo]?",
+  "ex": "Dá para passar a reunião para quinta?"
+ },
+ {
+  "id": "ENG_CHUNK_0622",
+  "t": "Deixa eu te mostrar [substantivo] passo a passo / Vou te explicar [substantivo]",
+  "ex": "Deixa eu te mostrar o aplicativo novo passo a passo, é bem fácil.",
+  "n": "'Deixa eu' (not 'deixe-me') is normal spoken Brazilian."
+ },
+ {
+  "id": "ENG_CHUNK_0623",
+  "t": "Eu sou responsável por [substantivo] / Eu fico encarregado de [substantivo]",
+  "ex": "Eu fico encarregado dos petiscos da festa."
+ },
+ {
+  "id": "ENG_CHUNK_0624",
+  "t": "Ainda estou esperando [substantivo]",
+  "ex": "Ainda estou esperando a minha encomenda, era para ter chegado na segunda."
+ },
+ {
+  "id": "ENG_CHUNK_0625",
+  "t": "Alguma novidade sobre [substantivo]? / E aí, alguma notícia de [substantivo]?",
+  "ex": "E aí, alguma novidade sobre o conserto da cozinha?"
+ },
+ {
+  "id": "ENG_CHUNK_0626",
+  "t": "Parabéns por [substantivo] / Parabéns pelo/pela [substantivo]",
+  "ex": "Parabéns pelo emprego novo! Você merece demais."
+ },
+ {
+  "id": "ENG_CHUNK_0627",
+  "t": "Boa sorte com/em [substantivo]",
+  "ex": "Boa sorte na entrevista amanhã!"
+ },
+ {
+  "id": "ENG_CHUNK_0628",
+  "t": "Manda um abraço/beijo para [pessoa]",
+  "ex": "Manda um beijo para a sua mãe, tá?",
+  "n": "'Abraço' between men/casually; 'beijo' for family and women. 'Diz oi para ...' is also fine."
+ },
+ {
+  "id": "ENG_CHUNK_0629",
+  "t": "Você vai [substantivo]? / Você vem para [substantivo]?",
+  "ex": "Você vai na festa de sexta?",
+  "n": "'Ir na' is universal in speech; textbook form is 'ir à'."
+ },
+ {
+  "id": "ENG_CHUNK_0630",
+  "t": "A gente vai fazer [substantivo] no/na [dia]",
+  "ex": "A gente vai fazer um churrasco no sábado, aparece lá!",
+  "n": "'A gente' = we in everyday Brazilian speech (3rd-person singular verb)."
+ },
+ {
+  "id": "ENG_CHUNK_0631",
+  "t": "O que está acontecendo com [substantivo]? / Que que houve com [substantivo]?",
+  "ex": "O que está acontecendo com o Wi-Fi? Ele fica caindo toda hora."
+ },
+ {
+  "id": "ENG_CHUNK_0632",
+  "t": "Você me dá uma carona até [substantivo]?",
+  "ex": "Você me dá uma carona até o aeroporto amanhã de manhã?",
+  "n": "PT-PT: boleia instead of carona."
+ },
+ {
+  "id": "ENG_CHUNK_0633",
+  "t": "Chego em [tempo] / Estou aí em [tempo]",
+  "ex": "Só estou estacionando, chego em cinco minutos."
+ },
+ {
+  "id": "ENG_CHUNK_0634",
+  "t": "Estou indo para [lugar] / Estou a caminho de [lugar]",
+  "ex": "Estou indo para a academia, posso te ligar mais tarde?",
+  "n": "PT-PT: ginásio = gym; in Brazil 'ginásio' is a sports arena."
+ },
+ {
+  "id": "ENG_CHUNK_0635",
+  "t": "Obrigado/a pela oferta, mas [oração]",
+  "ex": "Obrigado pela oferta, mas acho que dou conta.",
+  "n": "Gender agrees with the speaker: obrigado (m), obrigada (f)."
+ },
+ {
+  "id": "ENG_CHUNK_0636",
+  "t": "contar uma piada",
+  "ex": "Meu pai adora contar piada no jantar.",
+  "n": "Contar, not dizer."
+ },
+ {
+  "id": "ENG_CHUNK_0637",
+  "t": "para falar a verdade / na verdade",
+  "ex": "Para falar a verdade, eu nunca vi esse filme."
+ },
+ {
+  "id": "ENG_CHUNK_0638",
+  "t": "tirar sarro de [pessoa] / zoar [pessoa]",
+  "ex": "Meus amigos sempre zoam o meu jeito de dançar.",
+  "n": "'Zoar' and 'tirar sarro' are informal Brazilian; neutral: 'caçoar de', 'fazer piada de'."
+ },
+ {
+  "id": "ENG_CHUNK_0639",
+  "t": "dar desculpas",
+  "ex": "Tá bom, chega de dar desculpa, hoje eu vou correr."
+ },
+ {
+  "id": "ENG_CHUNK_0640",
+  "t": "quebrar uma promessa / não cumprir a palavra",
+  "ex": "Eu disse que ia te ajudar na mudança, e não vou quebrar minha promessa."
+ },
+ {
+  "id": "ENG_CHUNK_0641",
+  "t": "culpar [pessoa] por [substantivo] / pôr a culpa em [pessoa]",
+  "ex": "Não põe a culpa em mim pela chuva, eu só planejei o piquenique!"
+ },
+ {
+  "id": "ENG_CHUNK_0642",
+  "t": "fazer [substantivo] de propósito",
+  "ex": "Desculpa, não fiz de propósito, escorregou da mão."
+ },
+ {
+  "id": "ENG_CHUNK_0643",
+  "t": "tomar um ar / pegar um ar",
+  "ex": "Vou só sair para tomar um ar."
+ },
+ {
+  "id": "ENG_CHUNK_0644",
+  "t": "dar uma sugestão",
+  "ex": "Posso dar uma sugestão? Vamos pedir comida tailandesa hoje."
+ },
+ {
+  "id": "ENG_CHUNK_0645",
+  "t": "tomar cuidado com [substantivo] / cuidado com [substantivo]",
+  "ex": "Cuidado com o degrau quando você entrar."
+ },
+ {
+  "id": "ENG_CHUNK_0646",
+  "t": "um dia longo / um dia puxado",
+  "ex": "Foi um dia puxado, só quero o sofá.",
+  "n": "'Puxado' (tough, exhausting) sounds more natural than 'longo' here."
+ },
+ {
+  "id": "ENG_CHUNK_0647",
+  "t": "um mau hábito / uma mania",
+  "ex": "Olhar o celular na cama é um mau hábito meu."
+ },
+ {
+  "id": "ENG_CHUNK_0648",
+  "t": "um bom senso de humor",
+  "ex": "Meu novo colega de apartamento tem um ótimo senso de humor.",
+  "n": "False friend: 'bom senso' alone = common sense."
+ },
+ {
+  "id": "ENG_CHUNK_0649",
+  "t": "ser muito fã de [substantivo]",
+  "ex": "Eu sou muito fã de comida apimentada, vamos experimentar aquele lugar."
+ },
+ {
+  "id": "ENG_CHUNK_0650",
+  "t": "novinho em folha / zero (quilômetro)",
+  "ex": "Olha a minha bicicleta novinha em folha!",
+  "n": "'Zerado/zero' is colloquial for brand-new things, especially cars."
+ },
+ {
+  "id": "ENG_CHUNK_0651",
+  "t": "tudo certo / perfeitamente bom",
+  "ex": "Não se preocupa, a sopa está ótima, tudo certo."
+ },
+ {
+  "id": "ENG_CHUNK_0652",
+  "t": "pegar o jeito de [substantivo]",
+  "ex": "Finalmente estou pegando o jeito desse aplicativo novo."
+ },
+ {
+  "id": "ENG_CHUNK_0653",
+  "t": "tirar conclusões precipitadas",
+  "ex": "Não vamos tirar conclusões precipitadas até falarmos com ela."
+ },
+ {
+  "id": "ENG_CHUNK_0654",
+  "t": "dar uma olhada em [substantivo] / verificar [substantivo]",
+  "ex": "Vou dar uma olhada nesse problema hoje à tarde."
+ },
+ {
+  "id": "ENG_CHUNK_0655",
+  "t": "tocar em [substantivo] / puxar o assunto de [substantivo]",
+  "ex": "Eu não quis tocar no assunto do dinheiro no jantar."
+ },
+ {
+  "id": "ENG_CHUNK_0656",
+  "t": "apontar [substantivo] / chamar atenção para [substantivo]",
+  "ex": "Obrigado por apontar o erro de digitação."
+ },
+ {
+  "id": "ENG_CHUNK_0657",
+  "t": "repassar [substantivo] / revisar [substantivo]",
+  "ex": "Vamos repassar o plano mais uma vez."
+ },
+ {
+  "id": "ENG_CHUNK_0658",
+  "t": "dar seguimento a [substantivo] / retomar [substantivo]",
+  "ex": "Só estou retomando o meu e-mail de segunda.",
+  "n": "In e-mails: 'Retomando o e-mail abaixo...'."
+ },
+ {
+  "id": "ENG_CHUNK_0659",
+  "t": "pedir a opinião de [pessoa] sobre [substantivo]",
+  "ex": "Posso te pedir uma opinião sobre uma ideia?",
+  "n": "No verb-particle equivalent; 'o que você acha de ...?' is the usual lead-in."
+ },
+ {
+  "id": "ENG_CHUNK_0660",
+  "t": "pôr [pessoa] a par / atualizar [pessoa]",
+  "ex": "Perdi a reunião. Você me põe a par?",
+  "n": "'Me atualiza?' is the casual version."
+ },
+ {
+  "id": "ENG_CHUNK_0661",
+  "t": "alinhar com [pessoa] / bater um papo rápido com [pessoa]",
+  "ex": "Vamos alinhar com a equipe na sexta.",
+  "n": "'Alinhar' is the go-to Brazilian office verb for touching base."
+ },
+ {
+  "id": "ENG_CHUNK_0662",
+  "t": "avisar [pessoa] antes / dar um toque em [pessoa]",
+  "ex": "Valeu pelo toque sobre o trânsito.",
+  "n": "'Dar um toque' = informal heads-up."
+ },
+ {
+  "id": "ENG_CHUNK_0663",
+  "t": "pôr [substantivo] em dia",
+  "ex": "Passei o domingo pondo os e-mails em dia."
+ },
+ {
+  "id": "ENG_CHUNK_0664",
+  "t": "cumprir o prazo / entregar no prazo",
+  "ex": "Trabalhamos o fim de semana todo para cumprir o prazo."
+ },
+ {
+  "id": "ENG_CHUNK_0665",
+  "t": "estar sob pressão / estar pressionado",
+  "ex": "Todo mundo está sob muita pressão este mês."
+ },
+ {
+  "id": "ENG_CHUNK_0666",
+  "t": "Nem sei por onde começar",
+  "ex": "Como foi a viagem? Ai, nem sei por onde começar!"
+ },
+ {
+  "id": "ENG_CHUNK_0667",
+  "t": "Cá entre nós / Aqui entre nós",
+  "ex": "Cá entre nós, estou pensando em mudar de emprego."
+ },
+ {
+  "id": "ENG_CHUNK_0668",
+  "t": "Como eu disse / Como eu falei",
+  "ex": "Como eu falei, estou feliz em ajudar."
+ },
+ {
+  "id": "ENG_CHUNK_0669",
+  "t": "Mais uma coisa / Ah, só mais uma coisa",
+  "ex": "Ah, mais uma coisa: traz a sua identidade."
+ },
+ {
+  "id": "ENG_CHUNK_0670",
+  "t": "Não sei você, mas",
+  "ex": "Não sei você, mas eu estou morrendo de fome."
+ },
+ {
+  "id": "ENG_CHUNK_0671",
+  "t": "Quer saber?",
+  "ex": "Quer saber? Vamos pedir uma pizza e pronto."
+ },
+ {
+  "id": "ENG_CHUNK_0672",
+  "t": "Olha",
+  "ex": "Olha, eu sei que você está ocupado, mas isso é importante."
+ },
+ {
+  "id": "ENG_CHUNK_0673",
+  "t": "A questão é",
+  "ex": "A questão é: quem vai pagar?"
+ },
+ {
+  "id": "ENG_CHUNK_0674",
+  "t": "Entendi certo? / É isso?",
+  "ex": "Então a gente se encontra na estação às nove. Entendi certo?"
+ },
+ {
+  "id": "ENG_CHUNK_0675",
+  "t": "Você pode falar um pouco mais devagar?",
+  "ex": "Desculpa, você pode falar um pouco mais devagar? Meu português não é perfeito.",
+  "n": "Formal: O senhor/A senhora poderia falar mais devagar?"
+ },
+ {
+  "id": "ENG_CHUNK_0676",
+  "t": "Como é mesmo o nome dele?",
+  "ex": "Seu vizinho do cachorro fofo, como é mesmo o nome dele?",
+  "n": "'Mesmo' does the work of 'again' here."
+ },
+ {
+  "id": "ENG_CHUNK_0677",
+  "t": "Que interessante",
+  "ex": "Você cresceu numa fazenda? Que interessante."
+ },
+ {
+  "id": "ENG_CHUNK_0678",
+  "t": "Sim e não / Mais ou menos",
+  "ex": "Você gostou do filme? Mais ou menos, o final foi ótimo."
+ },
+ {
+  "id": "ENG_CHUNK_0679",
+  "t": "e tal / e essas coisas",
+  "ex": "A gente jogou mais jogo de tabuleiro, cozinhou e tal."
+ },
+ {
+  "id": "ENG_CHUNK_0680",
+  "t": "Desculpa, pode falar / Fala você",
+  "ex": "Ah, desculpa, pode falar."
+ },
+ {
+  "id": "ENG_CHUNK_0681",
+  "t": "Aqui está / Toma / Prontinho",
+  "ex": "Aqui está, um café com bastante leite.",
+  "n": "'Toma' is casual; staff say 'Prontinho' or 'Aqui está'."
+ },
+ {
+  "id": "ENG_CHUNK_0682",
+  "t": "Fazer o quê / Paciência",
+  "ex": "A padaria já fechou? Fazer o quê, a gente volta amanhã."
+ },
+ {
+  "id": "ENG_CHUNK_0683",
+  "t": "Obrigado/a mesmo assim / Valeu assim mesmo",
+  "ex": "Tudo bem se você estiver ocupado. Obrigado mesmo assim!"
+ },
+ {
+  "id": "ENG_CHUNK_0684",
+  "t": "Este lugar está ocupado? / Tem alguém sentado aqui?",
+  "ex": "Com licença, esse lugar está ocupado?"
+ },
+ {
+  "id": "ENG_CHUNK_0685",
+  "t": "Boa viagem",
+  "ex": "Boa viagem, e me manda mensagem quando chegar!",
+  "n": "PT-BR rarely says 'viagem segura'; 'Boa viagem' covers it."
+ },
+ {
+  "id": "ENG_CHUNK_0686",
+  "t": "Olha o lado bom / Veja pelo lado positivo",
+  "ex": "Olha o lado bom: agora você tem um fim de semana livre."
+ },
+ {
+  "id": "ENG_CHUNK_0687",
+  "t": "Aguenta firme / Força!",
+  "ex": "Aguenta firme, a semana já está acabando!"
+ },
+ {
+  "id": "ENG_CHUNK_0688",
+  "t": "Não é o fim do mundo",
+  "ex": "Perdeu o ônibus? Não é o fim do mundo.",
+  "n": "PT-PT: autocarro."
+ },
+ {
+  "id": "ENG_CHUNK_0689",
+  "t": "Acontece / Essas coisas acontecem",
+  "ex": "Não se preocupa com o suco derramado, acontece."
+ },
+ {
+  "id": "ENG_CHUNK_0690",
+  "t": "Não precisava!",
+  "ex": "Flores? Ai, não precisava!",
+  "n": "Imperfect 'precisava', not 'não devia ter' - the set phrase for receiving gifts."
+ },
+ {
+  "id": "ENG_CHUNK_0691",
+  "t": "Até lá",
+  "ex": "A festa é no sábado. Até lá, vou guardar energia."
+ },
+ {
+  "id": "ENG_CHUNK_0692",
+  "t": "No dia seguinte",
+  "ex": "A gente chegou tarde, e no dia seguinte fomos direto para a praia."
+ },
+ {
+  "id": "ENG_CHUNK_0693",
+  "t": "O mesmo vale para / Isso vale também para",
+  "ex": "Você devia beber mais água. O mesmo vale para mim."
+ },
+ {
+  "id": "ENG_CHUNK_0694",
+  "t": "O tempo todo",
+  "ex": "O bebê dormiu o tempo todo que a gente estava no avião."
+ },
+ {
+  "id": "ENG_CHUNK_0695",
+  "t": "Ao mesmo tempo",
+  "ex": "A cidade é cara, mas, ao mesmo tempo, tem muita coisa para fazer."
+ },
+ {
+  "id": "ENG_CHUNK_0696",
+  "t": "Em geral / De modo geral",
+  "ex": "Em geral, eu durmo melhor quando não tomo café depois do almoço."
+ },
+ {
+  "id": "ENG_CHUNK_0697",
+  "t": "Logo antes / Pouco antes / Bem antes de",
+  "ex": "Ela ligou logo antes do jantar.",
+  "n": "Careful: 'bem antes' can also mean 'long before'; 'logo antes' is unambiguous."
+ },
+ {
+  "id": "ENG_CHUNK_0698",
+  "t": "No fim das contas / De modo geral",
+  "ex": "No fim das contas, foi uma ótima viagem."
+ },
+ {
+  "id": "ENG_CHUNK_0699",
+  "t": "Foi assim que",
+  "ex": "A gente sentava um do lado do outro na aula. Foi assim que a gente virou amigo."
+ },
+ {
+  "id": "ENG_CHUNK_0700",
+  "t": "Principalmente / Acima de tudo",
+  "ex": "Eu amei a comida, as pessoas e, principalmente, as praias."
+ }
+]

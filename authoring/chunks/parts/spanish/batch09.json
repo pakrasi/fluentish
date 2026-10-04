@@ -1,0 +1,533 @@
+[
+{
+"id": "ENG_CHUNK_0801",
+"t": "Que [subjuntivo] no significa que [subjuntivo]",
+"ex": "Que sea caro no significa que sea mejor.",
+"n": "Both clauses take subjunctive: Que sea caro no quiere decir que sea mejor."
+},
+{
+"id": "ENG_CHUNK_0802",
+"t": "Entiendo tu punto, pero [oración] / Te entiendo, pero [oración]",
+"ex": "Entiendo tu punto, pero sigo pensando que deberíamos esperar.",
+"n": "Also: Entiendo lo que dices, pero..."
+},
+{
+"id": "ENG_CHUNK_0803",
+"t": "Entiendo por qué [oración] / Con razón [oración]",
+"ex": "Entiendo por qué estás molesto. Fue muy injusto."
+},
+{
+"id": "ENG_CHUNK_0804",
+"t": "¿Soy yo, o [oración]? / ¿Nada más a mí me parece que [oración]?",
+"ex": "¿Soy yo, o hace un frío horrible aquí?"
+},
+{
+"id": "ENG_CHUNK_0805",
+"t": "Uno pensaría que [oración]",
+"ex": "Uno pensaría que un hotel tan caro tendría un wifi decente."
+},
+{
+"id": "ENG_CHUNK_0806",
+"t": "Con razón [oración] / Ya decía yo",
+"ex": "¿Dormiste solo tres horas? Con razón estás cansado."
+},
+{
+"id": "ENG_CHUNK_0807",
+"t": "No me digas que [oración]",
+"ex": "No me digas que perdiste las llaves otra vez."
+},
+{
+"id": "ENG_CHUNK_0808",
+"t": "¿Me estás diciendo que [oración]? / ¿O sea que [oración]?",
+"ex": "¿Me estás diciendo que nunca has visto la nieve?"
+},
+{
+"id": "ENG_CHUNK_0809",
+"t": "Tenía entendido que [oración]",
+"ex": "Perdón, tenía entendido que la reunión era a las tres.",
+"n": "Imperfect 'tenía entendido' is the polite way to flag a misunderstanding."
+},
+{
+"id": "ENG_CHUNK_0810",
+"t": "Juraría que [oración] / Habría jurado que [oración]",
+"ex": "Juraría que dejé el celular en la mesa."
+},
+{
+"id": "ENG_CHUNK_0811",
+"t": "Por lo que veo, [oración] / Supongo que [oración]",
+"ex": "Por lo que veo, no te gustó la película."
+},
+{
+"id": "ENG_CHUNK_0812",
+"t": "Estoy empezando a pensar que [oración] / Ya me estoy imaginando que [oración]",
+"ex": "Ya estoy empezando a pensar que no va a venir."
+},
+{
+"id": "ENG_CHUNK_0813",
+"t": "Me di cuenta de que [oración] / Caí en la cuenta de que [oración]",
+"ex": "A medio camino al aeropuerto, caí en la cuenta de que había olvidado el pasaporte.",
+"n": "'Realizar' is a false friend: it means to carry out, not to realize."
+},
+{
+"id": "ENG_CHUNK_0814",
+"t": "[sustantivo] no es solo [sustantivo] / Hay más en [sustantivo] que [sustantivo]",
+"ex": "La vida no es solo trabajo, ¿eh?"
+},
+{
+"id": "ENG_CHUNK_0815",
+"t": "No me sorprendería que [subjuntivo]",
+"ex": "No me sorprendería que nevara esta noche.",
+"n": "Conditional + que + imperfect subjunctive: no me extrañaría que nevara."
+},
+{
+"id": "ENG_CHUNK_0816",
+"t": "Seguro que [verbo] / Tiene que [verbo]",
+"ex": "No te preocupes por la lluvia. Seguro que se despeja antes del mediodía."
+},
+{
+"id": "ENG_CHUNK_0817",
+"t": "Conociendo a [persona], [oración]",
+"ex": "Conociendo a mi hermano, va a llegar una hora tarde."
+},
+{
+"id": "ENG_CHUNK_0818",
+"t": "Capaz que [oración] / A lo mejor [oración], quién sabe",
+"ex": "A lo mejor sigue dormido, quién sabe.",
+"n": "'Capaz que' is Southern Cone/Mexico colloquial. A lo mejor takes indicative."
+},
+{
+"id": "ENG_CHUNK_0819",
+"t": "No hay forma de saber [oración] / Quién sabe [oración]",
+"ex": "Quién sabe qué tan larga va a estar la fila."
+},
+{
+"id": "ENG_CHUNK_0820",
+"t": "¿Qué tiene que ver [sustantivo] con [sustantivo]?",
+"ex": "¿Y qué tiene que ver mi edad con todo esto?"
+},
+{
+"id": "ENG_CHUNK_0821",
+"t": "No estoy convencido de que [subjuntivo]",
+"ex": "No estoy convencido de que sea el mejor momento para comprar casa.",
+"n": "Doubt trigger: no estoy convencido de que + subjunctive."
+},
+{
+"id": "ENG_CHUNK_0822",
+"t": "Hasta no ver, no creer / Lo creeré cuando [subjuntivo]",
+"ex": "¿Dice que va a dejar de fumar? Hasta no ver, no creer.",
+"n": "cuando + subjunctive: lo creeré cuando lo vea."
+},
+{
+"id": "ENG_CHUNK_0823",
+"t": "Siempre podemos [verbo]",
+"ex": "Si el restaurante está lleno, siempre podemos pedir a domicilio."
+},
+{
+"id": "ENG_CHUNK_0824",
+"t": "Mejor [verbo] de una vez / Ya de plano [verbo]",
+"ex": "El camión no viene. Mejor vámonos caminando de una vez.",
+"n": "No exact equivalent; 'mejor ... de una vez' or 'ya que' + situation does the job."
+},
+{
+"id": "ENG_CHUNK_0825",
+"t": "No es por [infinitivo], pero [oración]",
+"ex": "No es por quejarme, pero esta sopa está fría.",
+"n": "Classic disclaimer: 'No es por nada, pero...'."
+},
+{
+"id": "ENG_CHUNK_0826",
+"t": "No estaría de más [infinitivo] / No cuesta nada [infinitivo]",
+"ex": "No estaría de más llamar antes para ver si están abiertos."
+},
+{
+"id": "ENG_CHUNK_0827",
+"t": "Con [sustantivo] no te equivocas / [sustantivo] nunca falla",
+"ex": "Si no sabes qué pedir, con la pasta no te equivocas."
+},
+{
+"id": "ENG_CHUNK_0828",
+"t": "No hay excusa para [infinitivo]",
+"ex": "No hay excusa para ser grosero con el mesero.",
+"n": "Waiter: mesero (Mexico, Colombia), mozo (Southern Cone), camarero (Spain)."
+},
+{
+"id": "ENG_CHUNK_0829",
+"t": "Hagas lo que hagas, no [subjuntivo]",
+"ex": "Hagas lo que hagas, no le digas a papá lo de la fiesta.",
+"n": "Reduplicated subjunctive 'hagas lo que hagas'; negative commands are subjunctive: no le digas."
+},
+{
+"id": "ENG_CHUNK_0830",
+"t": "Ni se te ocurra [infinitivo] / ¡Ni lo pienses!",
+"ex": "¡Ni se te ocurra comerte el último pedazo de pastel!"
+},
+{
+"id": "ENG_CHUNK_0831",
+"t": "No te molestes en [infinitivo] / Ni te molestes en [infinitivo]",
+"ex": "Ni te molestes en llamarlo. Nunca contesta."
+},
+{
+"id": "ENG_CHUNK_0832",
+"t": "Digamos que [oración] / Pongamos que [oración]",
+"ex": "Digamos que salimos a las ocho. ¿Te sirve?"
+},
+{
+"id": "ENG_CHUNK_0833",
+"t": "Se puede decir que [oración] / Sin duda [oración]",
+"ex": "Se puede decir que la fiesta fue un éxito."
+},
+{
+"id": "ENG_CHUNK_0834",
+"t": "Te iba a preguntar si querías [verbo]",
+"ex": "Te iba a preguntar si querías ir a comer el viernes."
+},
+{
+"id": "ENG_CHUNK_0835",
+"t": "Me apunto a [sustantivo] / Me late [sustantivo]",
+"ex": "Me apunto a una peli esta noche, si tú quieres.",
+"n": "'Me apunto' is widely understood; 'me late' is Mexican; 'me prendo' is Rioplatense."
+},
+{
+"id": "ENG_CHUNK_0836",
+"t": "pedir una segunda opinión",
+"ex": "El dentista dice que necesito una corona, pero quiero pedir una segunda opinión."
+},
+{
+"id": "ENG_CHUNK_0837",
+"t": "efectos secundarios",
+"ex": "¿Hay algún efecto secundario que deba saber?",
+"n": "que + subjunctive after an indefinite antecedent: algún efecto que deba saber."
+},
+{
+"id": "ENG_CHUNK_0838",
+"t": "estar agotado / estar muerto",
+"ex": "Estoy muerto después de la mudanza."
+},
+{
+"id": "ENG_CHUNK_0839",
+"t": "recuperar el aliento",
+"ex": "Espérame, déjame recuperar el aliento."
+},
+{
+"id": "ENG_CHUNK_0840",
+"t": "perder la paciencia / perder los estribos",
+"ex": "Perdón por perder la paciencia contigo ayer."
+},
+{
+"id": "ENG_CHUNK_0841",
+"t": "ponerse como loco / entrar en pánico / flipar",
+"ex": "No te vayas a poner como loco, pero le hice un rayón a tu coche.",
+"n": "'Flipar' is Spain only. 'Rayón' is Latin American for a scratch."
+},
+{
+"id": "ENG_CHUNK_0842",
+"t": "tomarse [algo] personal / tomárselo a pecho",
+"ex": "No te lo tomes personal. Es así con todo el mundo.",
+"n": "Latin America: 'tomárselo personal'; Spain: 'tomárselo como algo personal'."
+},
+{
+"id": "ENG_CHUNK_0843",
+"t": "herir los sentimientos de [persona] / lastimar a [persona]",
+"ex": "Perdón si te lastimé."
+},
+{
+"id": "ENG_CHUNK_0844",
+"t": "sentirse excluido / sentirse hecho a un lado",
+"ex": "Invita también a tu prima, si no se va a sentir excluida."
+},
+{
+"id": "ENG_CHUNK_0845",
+"t": "abrirse con [persona]",
+"ex": "Pasaron meses antes de que se abriera conmigo.",
+"n": "antes de que + subjunctive, always."
+},
+{
+"id": "ENG_CHUNK_0846",
+"t": "desahogarse de [sustantivo] / sacarse [sustantivo] de encima",
+"ex": "Necesito desahogarme de algo."
+},
+{
+"id": "ENG_CHUNK_0847",
+"t": "desestresarse / liberar tensión",
+"ex": "Salgo a correr después del trabajo para desestresarme."
+},
+{
+"id": "ENG_CHUNK_0848",
+"t": "tener sentimientos encontrados sobre [sustantivo]",
+"ex": "Tengo sentimientos encontrados sobre regresar a vivir a casa."
+},
+{
+"id": "ENG_CHUNK_0849",
+"t": "ver venir [sustantivo] / esperarse [sustantivo]",
+"ex": "Guau, no me lo esperaba.",
+"n": "Also: No lo vi venir."
+},
+{
+"id": "ENG_CHUNK_0850",
+"t": "fallarle a [persona] / decepcionar a [persona]",
+"ex": "Le prometí ayudarla y no le quiero fallar."
+},
+{
+"id": "ENG_CHUNK_0851",
+"t": "admirar a [persona] / ser un ejemplo para [persona]",
+"ex": "Siempre he admirado a mi hermana mayor."
+},
+{
+"id": "ENG_CHUNK_0852",
+"t": "aguantar [sustantivo] / soportar [sustantivo]",
+"ex": "No sé cómo aguantas ese ruido todas las noches."
+},
+{
+"id": "ENG_CHUNK_0853",
+"t": "apoyar a [persona] / respaldar a [persona]",
+"ex": "Si el jefe pregunta, ¿me apoyas?"
+},
+{
+"id": "ENG_CHUNK_0854",
+"t": "tomar partido / ponerse de un lado",
+"ex": "Los dos son mis amigos, así que no voy a tomar partido."
+},
+{
+"id": "ENG_CHUNK_0855",
+"t": "estar de acuerdo / coincidir",
+"ex": "Mi papá y yo no siempre coincidimos en temas de dinero."
+},
+{
+"id": "ENG_CHUNK_0856",
+"t": "llevarse bien con [persona] / quedar en buenos términos con [persona]",
+"ex": "Todavía me llevo bien con mi ex."
+},
+{
+"id": "ENG_CHUNK_0857",
+"t": "perder el contacto con [persona]",
+"ex": "Perdimos el contacto después de la universidad."
+},
+{
+"id": "ENG_CHUNK_0858",
+"t": "llegar a un punto medio con [persona] / ceder un poco",
+"ex": "No puedo pagar el precio completo, pero ¿lo dejamos en un punto medio?"
+},
+{
+"id": "ENG_CHUNK_0859",
+"t": "ponerle los cuernos a [persona] / engañar a [persona]",
+"ex": "Se enteró de que la estaba engañando.",
+"n": "'Ponerle los cuernos' is more colloquial; 'engañar' is neutral."
+},
+{
+"id": "ENG_CHUNK_0860",
+"t": "sentar cabeza / establecerse",
+"ex": "Quiere viajar unos años antes de sentar cabeza.",
+"n": "antes de + infinitive when the subject is the same."
+},
+{
+"id": "ENG_CHUNK_0861",
+"t": "formar una familia / tener hijos",
+"ex": "Esperamos formar una familia en un par de años."
+},
+{
+"id": "ENG_CHUNK_0862",
+"t": "parecerse a [persona] / salir a [persona]",
+"ex": "Es igualita a su papá. Tiene la misma risa."
+},
+{
+"id": "ENG_CHUNK_0863",
+"t": "venir de familia / ser de familia",
+"ex": "Todos son altos. Viene de familia."
+},
+{
+"id": "ENG_CHUNK_0864",
+"t": "cuidar a [persona] / estar pendiente de [persona]",
+"ex": "Mi hermano mayor siempre me cuidaba en la escuela."
+},
+{
+"id": "ENG_CHUNK_0865",
+"t": "convencer a [persona] de [infinitivo] / convencer a [persona] de que [subjuntivo]",
+"ex": "Mis amigos me convencieron de tirarme en paracaídas."
+},
+{
+"id": "ENG_CHUNK_0866",
+"t": "Por mí / En lo que a mí respecta",
+"ex": "En lo que a mí respecta, el tema está cerrado."
+},
+{
+"id": "ENG_CHUNK_0867",
+"t": "No me malinterpretes / No me entiendas mal",
+"ex": "No me malinterpretes, me encanta mi trabajo. Nada más estoy agotado."
+},
+{
+"id": "ENG_CHUNK_0868",
+"t": "A ver si entendí / A ver, a ver",
+"ex": "A ver si entendí. ¿Renunciaste ayer?"
+},
+{
+"id": "ENG_CHUNK_0869",
+"t": "¿Cómo? / ¿Mande? / ¿Qué?",
+"ex": "¿Cómo? No te escuché bien.",
+"n": "'¿Mande?' is the polite Mexican 'pardon?'. A bare '¿Qué?' can sound curt."
+},
+{
+"id": "ENG_CHUNK_0870",
+"t": "Tampoco exageremos / Yo no diría tanto",
+"ex": "¿La mejor pizza de la ciudad? Tampoco exageremos."
+},
+{
+"id": "ENG_CHUNK_0871",
+"t": "Hasta cierto punto",
+"ex": "Estoy de acuerdo contigo hasta cierto punto."
+},
+{
+"id": "ENG_CHUNK_0872",
+"t": "En cierto modo / De alguna manera",
+"ex": "En cierto modo, perder ese trabajo fue lo mejor que me pasó."
+},
+{
+"id": "ENG_CHUNK_0873",
+"t": "Suena lógico / Me cuadra",
+"ex": "¿La reparación costó doscientos dólares? Suena lógico."
+},
+{
+"id": "ENG_CHUNK_0874",
+"t": "Entendido / Tienes razón",
+"ex": "Bueno, tienes razón. La próxima vez tengo más cuidado."
+},
+{
+"id": "ENG_CHUNK_0875",
+"t": "En eso te doy la razón",
+"ex": "Es un viaje largo en carro, en eso te doy la razón, pero la vista vale la pena."
+},
+{
+"id": "ENG_CHUNK_0876",
+"t": "Escúchame / Déjame terminar",
+"ex": "Ya sé que suena a locura, pero escúchame."
+},
+{
+"id": "ENG_CHUNK_0877",
+"t": "¿Y ahora qué hacemos? / ¿Cómo seguimos?",
+"ex": "Bueno, el banco dijo que no. ¿Y ahora qué hacemos?"
+},
+{
+"id": "ENG_CHUNK_0878",
+"t": "Espérame tantito / Guárdate esa idea",
+"ex": "Guárdate esa idea. Están tocando la puerta.",
+"n": "'Tantito' is Mexican; elsewhere: Espérame un segundo."
+},
+{
+"id": "ENG_CHUNK_0879",
+"t": "Te paso la palabra / Te toca",
+"ex": "Eso es todo de mi parte. Te paso la palabra, Sara."
+},
+{
+"id": "ENG_CHUNK_0880",
+"t": "¡Así se habla! / ¡Eso!",
+"ex": "¿Pizza y película? ¡Así se habla!"
+},
+{
+"id": "ENG_CHUNK_0881",
+"t": "Otra vez lo mismo / Ya empezamos",
+"ex": "Ay, se cayó el wifi. Otra vez lo mismo."
+},
+{
+"id": "ENG_CHUNK_0882",
+"t": "¡Ni me lo digas! / ¡Dímelo a mí!",
+"ex": "Los lunes son lo peor. ¡Ni me lo digas!"
+},
+{
+"id": "ENG_CHUNK_0883",
+"t": "No es ciencia espacial / No es tan difícil",
+"ex": "Solo sigue las instrucciones. No es tan difícil.",
+"n": "Spain: No tiene ciencia / No es física cuántica."
+},
+{
+"id": "ENG_CHUNK_0884",
+"t": "Hablando del rey de Roma",
+"ex": "Hablando del rey de Roma, ahí viene.",
+"n": "The full saying: '...por la puerta asoma'."
+},
+{
+"id": "ENG_CHUNK_0885",
+"t": "Entre más, mejor / Cuantos más, mejor",
+"ex": "Trae a tus amigos. ¡Entre más, mejor!",
+"n": "'Entre más' is Latin American; 'cuantos más' is standard."
+},
+{
+"id": "ENG_CHUNK_0886",
+"t": "¡Mucha suerte! / ¡Mucha mierda!",
+"ex": "¿Tienes función esta noche? ¡Mucha mierda!",
+"n": "'Mucha mierda' is the real theatre-world wish in Spanish, not rude in that context."
+},
+{
+"id": "ENG_CHUNK_0887",
+"t": "Toco madera",
+"ex": "No me he enfermado en todo el año, toco madera."
+},
+{
+"id": "ENG_CHUNK_0888",
+"t": "Quisiera proponer un brindis",
+"ex": "A ver, todos, quisiera proponer un brindis por los novios."
+},
+{
+"id": "ENG_CHUNK_0889",
+"t": "¡Salud por eso! / ¡Brindo por eso!",
+"ex": "¡Por un fin de semana largo! ¡Salud por eso!"
+},
+{
+"id": "ENG_CHUNK_0890",
+"t": "Mi más sentido pésame / Lo siento mucho",
+"ex": "Me acabo de enterar de lo de tu abuelo. Mi más sentido pésame."
+},
+{
+"id": "ENG_CHUNK_0891",
+"t": "Además / Y encima",
+"ex": "El departamento es enorme. Además, la renta es muy baja.",
+"n": "Rent: renta (Mexico), alquiler (Spain, Southern Cone), arriendo (Colombia, Chile)."
+},
+{
+"id": "ENG_CHUNK_0892",
+"t": "Sobre todo porque / Más aún porque",
+"ex": "Deberías llevar chamarra, sobre todo porque dicen que va a llover.",
+"n": "Jacket: chamarra (Mexico), campera (Argentina), chaqueta (neutral)."
+},
+{
+"id": "ENG_CHUNK_0893",
+"t": "Mucho menos / Ni hablar de",
+"ex": "Apenas sé cocinar pasta, mucho menos un pavo entero."
+},
+{
+"id": "ENG_CHUNK_0894",
+"t": "Ya que / Como",
+"ex": "Ya que estás parado, ¿me pasas un poco de agua?",
+"n": "Como (reason) must open the sentence: Como estás parado..."
+},
+{
+"id": "ENG_CHUNK_0895",
+"t": "A la larga",
+"ex": "Comprar buenos zapatos te ahorra dinero a la larga."
+},
+{
+"id": "ENG_CHUNK_0896",
+"t": "Al contrario / Si acaso",
+"ex": "El nuevo trabajo no es más estresante. Al contrario, es más fácil."
+},
+{
+"id": "ENG_CHUNK_0897",
+"t": "O mejor dicho / Bueno, no",
+"ex": "Te veo el martes, o mejor dicho, el miércoles."
+},
+{
+"id": "ENG_CHUNK_0898",
+"t": "De todas formas / En todo caso",
+"ex": "No sé si pueda ir. De todas formas, te llamo.",
+"n": "No sé si + indicative/subjunctive: 'si pueda' is common in Latin America; 'si puedo' is standard."
+},
+{
+"id": "ENG_CHUNK_0899",
+"t": "Llueva o no llueva / Ya sea que [subjuntivo] o no",
+"ex": "Vamos a ir a la playa, llueva o no.",
+"n": "Reduplicated subjunctive: llueva o no, quieras o no."
+},
+{
+"id": "ENG_CHUNK_0900",
+"t": "Y aun así / Y sin embargo",
+"ex": "Come comida chatarra todos los días, y aun así nunca sube de peso."
+}
+]

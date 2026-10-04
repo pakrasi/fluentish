@@ -1,0 +1,10274 @@
+[
+ {
+  "w": "sein",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to be"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich möchte heute pünktlich sein.",
+  "exen": "I want to be on time today.",
+  "forms": "ist · war · ist gewesen"
+ },
+ {
+  "w": "um",
+  "art": "",
+  "pl": null,
+  "pos": "prep",
+  "en": [
+   "at (clock time)",
+   "around"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Der Kurs beginnt um neun Uhr.",
+  "exen": "The course starts at nine o'clock."
+ },
+ {
+  "w": "danke",
+  "art": "",
+  "pl": null,
+  "pos": "interj",
+  "en": [
+   "thank you",
+   "thanks"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Danke für die Hilfe!",
+  "exen": "Thanks for the help!"
+ },
+ {
+  "w": "Familie",
+  "art": "die",
+  "pl": "Familien",
+  "pos": "noun",
+  "en": [
+   "family"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Meine Familie wohnt in Köln.",
+  "exen": "My family lives in Cologne."
+ },
+ {
+  "w": "Haus",
+  "art": "das",
+  "pl": "Häuser",
+  "pos": "noun",
+  "en": [
+   "house"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Wir wohnen in einem kleinen Haus.",
+  "exen": "We live in a small house."
+ },
+ {
+  "w": "Essen",
+  "art": "das",
+  "pl": "Essen",
+  "pos": "noun",
+  "en": [
+   "food",
+   "meal"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Das Essen ist fertig.",
+  "exen": "The food is ready."
+ },
+ {
+  "w": "krank",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "ill",
+   "sick"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "body",
+  "ex": "Ich bin krank und bleibe zu Hause.",
+  "exen": "I'm ill and staying at home."
+ },
+ {
+  "w": "Kleidung",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "clothes",
+   "clothing"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Ich brauche neue Kleidung.",
+  "exen": "I need new clothes."
+ },
+ {
+  "w": "Geld",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "money"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "money",
+  "ex": "Ich habe kein Geld dabei.",
+  "exen": "I don't have any money on me."
+ },
+ {
+  "w": "Stadt",
+  "art": "die",
+  "pl": "Städte",
+  "pos": "noun",
+  "en": [
+   "town",
+   "city"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "city",
+  "ex": "Ich wohne in einer kleinen Stadt.",
+  "exen": "I live in a small town."
+ },
+ {
+  "w": "fahren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to go (by vehicle)",
+   "to drive",
+   "to ride"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Ich fahre mit dem Zug nach Hamburg.",
+  "exen": "I'm going to Hamburg by train.",
+  "forms": "fährt · fuhr · ist gefahren"
+ },
+ {
+  "w": "Wetter",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "weather"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Wie ist das Wetter heute?",
+  "exen": "What's the weather like today?"
+ },
+ {
+  "w": "Arbeit",
+  "art": "die",
+  "pl": "Arbeiten",
+  "pos": "noun",
+  "en": [
+   "work",
+   "job"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "work",
+  "ex": "Ich gehe jetzt zur Arbeit.",
+  "exen": "I'm going to work now."
+ },
+ {
+  "w": "Freizeit",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "free time",
+   "leisure"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "leisure",
+  "ex": "Was machst du in deiner Freizeit?",
+  "exen": "What do you do in your free time?"
+ },
+ {
+  "w": "haben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to have"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Wir haben zwei Kinder.",
+  "exen": "We have two children.",
+  "forms": "hat · hatte · hat gehabt"
+ },
+ {
+  "w": "Zeit",
+  "art": "die",
+  "pl": "Zeiten",
+  "pos": "noun",
+  "en": [
+   "time"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Ich habe keine Zeit.",
+  "exen": "I don't have time."
+ },
+ {
+  "w": "hallo",
+  "art": "",
+  "pl": null,
+  "pos": "interj",
+  "en": [
+   "hello",
+   "hi"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Hallo, wie geht's?",
+  "exen": "Hi, how are you?"
+ },
+ {
+  "w": "Mutter",
+  "art": "die",
+  "pl": "Mütter",
+  "pos": "noun",
+  "en": [
+   "mother"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Meine Mutter ist Ärztin.",
+  "exen": "My mother is a doctor."
+ },
+ {
+  "w": "Wohnung",
+  "art": "die",
+  "pl": "Wohnungen",
+  "pos": "noun",
+  "en": [
+   "flat",
+   "apartment"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Die Wohnung hat drei Zimmer.",
+  "exen": "The flat has three rooms."
+ },
+ {
+  "w": "Wasser",
+  "art": "das",
+  "pl": "Wasser",
+  "pos": "noun",
+  "en": [
+   "water"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Ein Glas Wasser, bitte.",
+  "exen": "A glass of water, please."
+ },
+ {
+  "w": "Arzt",
+  "art": "der",
+  "pl": "Ärzte",
+  "pos": "noun",
+  "en": [
+   "doctor (male)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "body",
+  "ex": "Ich muss zum Arzt.",
+  "exen": "I have to go to the doctor."
+ },
+ {
+  "w": "Hose",
+  "art": "die",
+  "pl": "Hosen",
+  "pos": "noun",
+  "en": [
+   "trousers",
+   "pants"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Die Hose ist zu lang.",
+  "exen": "The trousers are too long."
+ },
+ {
+  "w": "kosten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to cost"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "money",
+  "ex": "Was kostet das?",
+  "exen": "How much does that cost?"
+ },
+ {
+  "w": "Straße",
+  "art": "die",
+  "pl": "Straßen",
+  "pos": "noun",
+  "en": [
+   "street",
+   "road"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "city",
+  "ex": "In welcher Straße wohnst du?",
+  "exen": "Which street do you live on?"
+ },
+ {
+  "w": "Auto",
+  "art": "das",
+  "pl": "Autos",
+  "pos": "noun",
+  "en": [
+   "car"
+  ],
+  "alt": [
+   "der Wagen"
+  ],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Wir fahren mit dem Auto.",
+  "exen": "We're going by car."
+ },
+ {
+  "w": "Sonne",
+  "art": "die",
+  "pl": "Sonnen",
+  "pos": "noun",
+  "en": [
+   "sun"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Die Sonne scheint.",
+  "exen": "The sun is shining."
+ },
+ {
+  "w": "Beruf",
+  "art": "der",
+  "pl": "Berufe",
+  "pos": "noun",
+  "en": [
+   "profession",
+   "job",
+   "occupation"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "work",
+  "ex": "Was sind Sie von Beruf?",
+  "exen": "What do you do for a living?"
+ },
+ {
+  "w": "Hobby",
+  "art": "das",
+  "pl": "Hobbys",
+  "pos": "noun",
+  "en": [
+   "hobby"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "leisure",
+  "ex": "Mein Hobby ist Kochen.",
+  "exen": "My hobby is cooking."
+ },
+ {
+  "w": "werden",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to become",
+   "to get (older, etc.)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Mein Sohn wird morgen zehn.",
+  "exen": "My son turns ten tomorrow.",
+  "forms": "wird · wurde · ist geworden"
+ },
+ {
+  "w": "Tag",
+  "art": "der",
+  "pl": "Tage",
+  "pos": "noun",
+  "en": [
+   "day"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Wie war dein Tag?",
+  "exen": "How was your day?"
+ },
+ {
+  "w": "Guten Morgen!",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "Good morning!"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Guten Morgen, Frau Weber!",
+  "exen": "Good morning, Mrs Weber!"
+ },
+ {
+  "w": "Vater",
+  "art": "der",
+  "pl": "Väter",
+  "pos": "noun",
+  "en": [
+   "father"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Mein Vater arbeitet viel.",
+  "exen": "My father works a lot."
+ },
+ {
+  "w": "Zimmer",
+  "art": "das",
+  "pl": "Zimmer",
+  "pos": "noun",
+  "en": [
+   "room"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Mein Zimmer ist klein.",
+  "exen": "My room is small."
+ },
+ {
+  "w": "Kaffee",
+  "art": "der",
+  "pl": "Kaffees",
+  "pos": "noun",
+  "en": [
+   "coffee"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Möchtest du einen Kaffee?",
+  "exen": "Would you like a coffee?"
+ },
+ {
+  "w": "Jacke",
+  "art": "die",
+  "pl": "Jacken",
+  "pos": "noun",
+  "en": [
+   "jacket"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Nimm eine Jacke mit!",
+  "exen": "Take a jacket with you!"
+ },
+ {
+  "w": "bezahlen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to pay"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "money",
+  "ex": "Kann ich mit Karte bezahlen?",
+  "exen": "Can I pay by card?"
+ },
+ {
+  "w": "Bus",
+  "art": "der",
+  "pl": "Busse",
+  "pos": "noun",
+  "en": [
+   "bus"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Der Bus kommt gleich.",
+  "exen": "The bus is coming soon."
+ },
+ {
+  "w": "Regen",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "rain"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Morgen gibt es Regen.",
+  "exen": "There'll be rain tomorrow."
+ },
+ {
+  "w": "Büro",
+  "art": "das",
+  "pl": "Büros",
+  "pos": "noun",
+  "en": [
+   "office"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "work",
+  "ex": "Ich arbeite in einem Büro.",
+  "exen": "I work in an office."
+ },
+ {
+  "w": "Sport",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "sport",
+   "exercise"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "leisure",
+  "ex": "Ich mache gern Sport.",
+  "exen": "I like doing sport."
+ },
+ {
+  "w": "können",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "can",
+   "to be able to"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Können Sie mir helfen?",
+  "exen": "Can you help me?",
+  "forms": "kann · konnte · hat gekonnt"
+ },
+ {
+  "w": "Woche",
+  "art": "die",
+  "pl": "Wochen",
+  "pos": "noun",
+  "en": [
+   "week"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Ich arbeite fünf Tage in der Woche.",
+  "exen": "I work five days a week."
+ },
+ {
+  "w": "Guten Tag!",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "Hello (formal)",
+   "Good day"
+  ],
+  "alt": [
+   "Grüß Gott!"
+  ],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Guten Tag, wie kann ich Ihnen helfen?",
+  "exen": "Hello, how can I help you?"
+ },
+ {
+  "w": "Eltern",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "parents"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Meine Eltern wohnen in Italien.",
+  "exen": "My parents live in Italy."
+ },
+ {
+  "w": "Küche",
+  "art": "die",
+  "pl": "Küchen",
+  "pos": "noun",
+  "en": [
+   "kitchen"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Die Küche ist groß.",
+  "exen": "The kitchen is big."
+ },
+ {
+  "w": "Tee",
+  "art": "der",
+  "pl": "Tees",
+  "pos": "noun",
+  "en": [
+   "tea"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Ich trinke gern Tee.",
+  "exen": "I like drinking tea."
+ },
+ {
+  "w": "Schuhe",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "shoes"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Die Schuhe sind zu klein.",
+  "exen": "The shoes are too small."
+ },
+ {
+  "w": "Euro",
+  "art": "der",
+  "pl": "Euro",
+  "pos": "noun",
+  "en": [
+   "euro"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "money",
+  "ex": "Das kostet zehn Euro.",
+  "exen": "That costs ten euros."
+ },
+ {
+  "w": "Zug",
+  "art": "der",
+  "pl": "Züge",
+  "pos": "noun",
+  "en": [
+   "train"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Der Zug hat Verspätung.",
+  "exen": "The train is delayed."
+ },
+ {
+  "w": "warm",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "warm"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Heute ist es warm.",
+  "exen": "It's warm today."
+ },
+ {
+  "w": "müssen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "must",
+   "to have to"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Wir müssen jetzt gehen.",
+  "exen": "We have to go now.",
+  "forms": "muss · musste · hat gemusst"
+ },
+ {
+  "w": "Monat",
+  "art": "der",
+  "pl": "Monate",
+  "pos": "noun",
+  "en": [
+   "month"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Ich bin seit einem Monat in Deutschland.",
+  "exen": "I've been in Germany for a month."
+ },
+ {
+  "w": "Guten Abend!",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "Good evening!"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Guten Abend, meine Damen und Herren!",
+  "exen": "Good evening, ladies and gentlemen!"
+ },
+ {
+  "w": "Kind",
+  "art": "das",
+  "pl": "Kinder",
+  "pos": "noun",
+  "en": [
+   "child"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Wir haben zwei Kinder.",
+  "exen": "We have two children."
+ },
+ {
+  "w": "Bad",
+  "art": "das",
+  "pl": "Bäder",
+  "pos": "noun",
+  "en": [
+   "bathroom"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Das Bad ist neben der Küche.",
+  "exen": "The bathroom is next to the kitchen."
+ },
+ {
+  "w": "Brot",
+  "art": "das",
+  "pl": "Brote",
+  "pos": "noun",
+  "en": [
+   "bread"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Wir brauchen Brot.",
+  "exen": "We need bread."
+ },
+ {
+  "w": "einkaufen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to go shopping",
+   "to shop"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Ich gehe am Samstag einkaufen.",
+  "exen": "I'm going shopping on Saturday.",
+  "forms": "kauft ein · kaufte ein · hat eingekauft"
+ },
+ {
+  "w": "Preis",
+  "art": "der",
+  "pl": "Preise",
+  "pos": "noun",
+  "en": [
+   "price"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "money",
+  "ex": "Der Preis ist gut.",
+  "exen": "The price is good."
+ },
+ {
+  "w": "Bahnhof",
+  "art": "der",
+  "pl": "Bahnhöfe",
+  "pos": "noun",
+  "en": [
+   "station",
+   "train station"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Wie komme ich zum Bahnhof?",
+  "exen": "How do I get to the station?"
+ },
+ {
+  "w": "kalt",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "cold"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Im Winter ist es kalt.",
+  "exen": "It's cold in winter."
+ },
+ {
+  "w": "wollen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to want"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Wir wollen am Samstag ins Kino.",
+  "exen": "We want to go to the cinema on Saturday.",
+  "forms": "will · wollte · hat gewollt"
+ },
+ {
+  "w": "Jahr",
+  "art": "das",
+  "pl": "Jahre",
+  "pos": "noun",
+  "en": [
+   "year"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Ich bin 30 Jahre alt.",
+  "exen": "I'm 30 years old."
+ },
+ {
+  "w": "Gute Nacht!",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "Good night!"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Gute Nacht, schlaf gut!",
+  "exen": "Good night, sleep well!"
+ },
+ {
+  "w": "Sohn",
+  "art": "der",
+  "pl": "Söhne",
+  "pos": "noun",
+  "en": [
+   "son"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Mein Sohn geht in die Schule.",
+  "exen": "My son goes to school."
+ },
+ {
+  "w": "Schlafzimmer",
+  "art": "das",
+  "pl": "Schlafzimmer",
+  "pos": "noun",
+  "en": [
+   "bedroom"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Das Schlafzimmer hat ein großes Fenster.",
+  "exen": "The bedroom has a big window."
+ },
+ {
+  "w": "Brötchen",
+  "art": "das",
+  "pl": "Brötchen",
+  "pos": "noun",
+  "en": [
+   "bread roll"
+  ],
+  "alt": [
+   "die Semmel"
+  ],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Zum Frühstück esse ich zwei Brötchen.",
+  "exen": "I eat two rolls for breakfast."
+ },
+ {
+  "w": "teuer",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "expensive"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "money",
+  "ex": "Das Hotel ist zu teuer.",
+  "exen": "The hotel is too expensive."
+ },
+ {
+  "w": "Fahrrad",
+  "art": "das",
+  "pl": "Fahrräder",
+  "pos": "noun",
+  "en": [
+   "bicycle",
+   "bike"
+  ],
+  "alt": [
+   "das Rad",
+   "das Velo"
+  ],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Ich fahre mit dem Fahrrad zur Arbeit.",
+  "exen": "I cycle to work."
+ },
+ {
+  "w": "heiß",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "hot"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Im Sommer ist es sehr heiß.",
+  "exen": "It's very hot in summer."
+ },
+ {
+  "w": "möchten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "would like"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich möchte einen Kaffee, bitte.",
+  "exen": "I would like a coffee, please."
+ },
+ {
+  "w": "Stunde",
+  "art": "die",
+  "pl": "Stunden",
+  "pos": "noun",
+  "en": [
+   "hour",
+   "lesson"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Der Film dauert zwei Stunden.",
+  "exen": "The film lasts two hours."
+ },
+ {
+  "w": "tschüss",
+  "art": "",
+  "pl": null,
+  "pos": "interj",
+  "en": [
+   "bye",
+   "see you"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Tschüss, bis morgen!",
+  "exen": "Bye, see you tomorrow!"
+ },
+ {
+  "w": "Tochter",
+  "art": "die",
+  "pl": "Töchter",
+  "pos": "noun",
+  "en": [
+   "daughter"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Meine Tochter ist fünf.",
+  "exen": "My daughter is five."
+ },
+ {
+  "w": "Wohnzimmer",
+  "art": "das",
+  "pl": "Wohnzimmer",
+  "pos": "noun",
+  "en": [
+   "living room"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Wir sehen im Wohnzimmer fern.",
+  "exen": "We watch TV in the living room."
+ },
+ {
+  "w": "Milch",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "milk"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Ich trinke Kaffee mit Milch.",
+  "exen": "I drink coffee with milk."
+ },
+ {
+  "w": "billig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "cheap"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "money",
+  "ex": "Das T-Shirt ist sehr billig.",
+  "exen": "The T-shirt is very cheap."
+ },
+ {
+  "w": "Flughafen",
+  "art": "der",
+  "pl": "Flughäfen",
+  "pos": "noun",
+  "en": [
+   "airport"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Der Flughafen ist weit weg.",
+  "exen": "The airport is far away."
+ },
+ {
+  "w": "dürfen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "may",
+   "to be allowed to"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Hier dürfen Sie nicht rauchen.",
+  "exen": "You are not allowed to smoke here.",
+  "forms": "darf · durfte · hat gedurft"
+ },
+ {
+  "w": "Minute",
+  "art": "die",
+  "pl": "Minuten",
+  "pos": "noun",
+  "en": [
+   "minute"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Der Bus kommt in zehn Minuten.",
+  "exen": "The bus comes in ten minutes."
+ },
+ {
+  "w": "Auf Wiedersehen!",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "goodbye (formal)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Auf Wiedersehen, Herr Schmidt!",
+  "exen": "Goodbye, Mr Schmidt!"
+ },
+ {
+  "w": "Bruder",
+  "art": "der",
+  "pl": "Brüder",
+  "pos": "noun",
+  "en": [
+   "brother"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Mein Bruder wohnt in Wien.",
+  "exen": "My brother lives in Vienna."
+ },
+ {
+  "w": "Toilette",
+  "art": "die",
+  "pl": "Toiletten",
+  "pos": "noun",
+  "en": [
+   "toilet"
+  ],
+  "alt": [
+   "das WC",
+   "das Klo"
+  ],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Wo ist die Toilette, bitte?",
+  "exen": "Where is the toilet, please?"
+ },
+ {
+  "w": "Frühstück",
+  "art": "das",
+  "pl": "Frühstücke",
+  "pos": "noun",
+  "en": [
+   "breakfast"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Das Frühstück ist um acht Uhr.",
+  "exen": "Breakfast is at eight o'clock."
+ },
+ {
+  "w": "Haltestelle",
+  "art": "die",
+  "pl": "Haltestellen",
+  "pos": "noun",
+  "en": [
+   "stop (bus, tram)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Die Haltestelle ist vor dem Haus.",
+  "exen": "The stop is in front of the house."
+ },
+ {
+  "w": "mögen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to like"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Kinder mögen Schokolade.",
+  "exen": "Children like chocolate.",
+  "forms": "mag · mochte · hat gemocht"
+ },
+ {
+  "w": "Uhr",
+  "art": "die",
+  "pl": "Uhren",
+  "pos": "noun",
+  "en": [
+   "clock",
+   "watch",
+   "o'clock"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Es ist drei Uhr.",
+  "exen": "It's three o'clock."
+ },
+ {
+  "w": "Wie geht's?",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "How are you?",
+   "How's it going?"
+  ],
+  "alt": [
+   "Wie geht es dir?"
+  ],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Hallo Anna, wie geht's?",
+  "exen": "Hi Anna, how are you?"
+ },
+ {
+  "w": "Schwester",
+  "art": "die",
+  "pl": "Schwestern",
+  "pos": "noun",
+  "en": [
+   "sister"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Meine Schwester studiert Medizin.",
+  "exen": "My sister studies medicine."
+ },
+ {
+  "w": "Tür",
+  "art": "die",
+  "pl": "Türen",
+  "pos": "noun",
+  "en": [
+   "door"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Bitte mach die Tür zu.",
+  "exen": "Please close the door."
+ },
+ {
+  "w": "Mittagessen",
+  "art": "das",
+  "pl": "Mittagessen",
+  "pos": "noun",
+  "en": [
+   "lunch"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Das Mittagessen ist um zwölf.",
+  "exen": "Lunch is at twelve."
+ },
+ {
+  "w": "Fahrkarte",
+  "art": "die",
+  "pl": "Fahrkarten",
+  "pos": "noun",
+  "en": [
+   "ticket (travel)"
+  ],
+  "alt": [
+   "das Ticket"
+  ],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Ich kaufe eine Fahrkarte nach Köln.",
+  "exen": "I'm buying a ticket to Cologne."
+ },
+ {
+  "w": "machen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to do",
+   "to make"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Was machst du am Wochenende?",
+  "exen": "What are you doing at the weekend?"
+ },
+ {
+  "w": "heute",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "today"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Heute ist Montag.",
+  "exen": "Today is Monday."
+ },
+ {
+  "w": "Entschuldigung",
+  "art": "",
+  "pl": null,
+  "pos": "interj",
+  "en": [
+   "excuse me",
+   "sorry"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Entschuldigung, wo ist der Bahnhof?",
+  "exen": "Excuse me, where is the station?"
+ },
+ {
+  "w": "Geschwister",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "siblings"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Hast du Geschwister?",
+  "exen": "Do you have any siblings?"
+ },
+ {
+  "w": "Fenster",
+  "art": "das",
+  "pl": "Fenster",
+  "pos": "noun",
+  "en": [
+   "window"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Das Fenster ist offen.",
+  "exen": "The window is open."
+ },
+ {
+  "w": "Abendessen",
+  "art": "das",
+  "pl": "Abendessen",
+  "pos": "noun",
+  "en": [
+   "dinner",
+   "supper"
+  ],
+  "alt": [
+   "das Abendbrot"
+  ],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Was gibt es zum Abendessen?",
+  "exen": "What's for dinner?"
+ },
+ {
+  "w": "gehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to go (on foot)",
+   "to walk"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich gehe jetzt nach Hause.",
+  "exen": "I'm going home now.",
+  "forms": "geht · ging · ist gegangen"
+ },
+ {
+  "w": "morgen",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "tomorrow"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Morgen habe ich frei.",
+  "exen": "Tomorrow I'm off."
+ },
+ {
+  "w": "Mann",
+  "art": "der",
+  "pl": "Männer",
+  "pos": "noun",
+  "en": [
+   "man",
+   "husband"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Mein Mann kocht gern.",
+  "exen": "My husband likes cooking."
+ },
+ {
+  "w": "Tisch",
+  "art": "der",
+  "pl": "Tische",
+  "pos": "noun",
+  "en": [
+   "table"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Der Schlüssel liegt auf dem Tisch.",
+  "exen": "The key is on the table."
+ },
+ {
+  "w": "Fleisch",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "meat"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Ich esse kein Fleisch.",
+  "exen": "I don't eat meat."
+ },
+ {
+  "w": "kommen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to come"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Woher kommen Sie?",
+  "exen": "Where do you come from?",
+  "forms": "kommt · kam · ist gekommen"
+ },
+ {
+  "w": "gestern",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "yesterday"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Gestern war ich im Kino.",
+  "exen": "Yesterday I was at the cinema."
+ },
+ {
+  "w": "Frau",
+  "art": "die",
+  "pl": "Frauen",
+  "pos": "noun",
+  "en": [
+   "woman",
+   "wife",
+   "Mrs"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Die Frau dort ist meine Lehrerin.",
+  "exen": "The woman over there is my teacher."
+ },
+ {
+  "w": "Stuhl",
+  "art": "der",
+  "pl": "Stühle",
+  "pos": "noun",
+  "en": [
+   "chair"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Hier ist noch ein Stuhl frei.",
+  "exen": "There's another free chair here."
+ },
+ {
+  "w": "Gemüse",
+  "art": "das",
+  "pl": "Gemüse",
+  "pos": "noun",
+  "en": [
+   "vegetables"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Gemüse ist gesund.",
+  "exen": "Vegetables are healthy."
+ },
+ {
+  "w": "sagen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to say",
+   "to tell"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Was sagst du?",
+  "exen": "What are you saying?"
+ },
+ {
+  "w": "jetzt",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "now"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Ich habe jetzt keine Zeit.",
+  "exen": "I don't have time now."
+ },
+ {
+  "w": "Freund",
+  "art": "der",
+  "pl": "Freunde",
+  "pos": "noun",
+  "en": [
+   "friend (male)",
+   "boyfriend"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Mein Freund heißt Tom.",
+  "exen": "My friend is called Tom."
+ },
+ {
+  "w": "Bett",
+  "art": "das",
+  "pl": "Betten",
+  "pos": "noun",
+  "en": [
+   "bed"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Ich gehe um elf ins Bett.",
+  "exen": "I go to bed at eleven."
+ },
+ {
+  "w": "Obst",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "fruit"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Ich esse jeden Tag Obst.",
+  "exen": "I eat fruit every day."
+ },
+ {
+  "w": "geben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to give"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Kannst du mir das Salz geben?",
+  "exen": "Can you give me the salt?",
+  "forms": "gibt · gab · hat gegeben"
+ },
+ {
+  "w": "Morgen",
+  "art": "der",
+  "pl": "Morgen",
+  "pos": "noun",
+  "en": [
+   "morning"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Guten Morgen!",
+  "exen": "Good morning!"
+ },
+ {
+  "w": "Freundin",
+  "art": "die",
+  "pl": "Freundinnen",
+  "pos": "noun",
+  "en": [
+   "friend (female)",
+   "girlfriend"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Ich treffe heute meine Freundin.",
+  "exen": "I'm meeting my friend today."
+ },
+ {
+  "w": "Schlüssel",
+  "art": "der",
+  "pl": "Schlüssel",
+  "pos": "noun",
+  "en": [
+   "key"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Wo ist mein Schlüssel?",
+  "exen": "Where is my key?"
+ },
+ {
+  "w": "Apfel",
+  "art": "der",
+  "pl": "Äpfel",
+  "pos": "noun",
+  "en": [
+   "apple"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Ich esse einen Apfel.",
+  "exen": "I'm eating an apple."
+ },
+ {
+  "w": "nehmen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to take"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich nehme die Suppe.",
+  "exen": "I'll take the soup.",
+  "forms": "nimmt · nahm · hat genommen"
+ },
+ {
+  "w": "Abend",
+  "art": "der",
+  "pl": "Abende",
+  "pos": "noun",
+  "en": [
+   "evening"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Am Abend sehe ich fern.",
+  "exen": "In the evening I watch TV."
+ },
+ {
+  "w": "Name",
+  "art": "der",
+  "pl": "Namen",
+  "pos": "noun",
+  "en": [
+   "name"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Wie ist Ihr Name?",
+  "exen": "What is your name?"
+ },
+ {
+  "w": "Miete",
+  "art": "die",
+  "pl": "Mieten",
+  "pos": "noun",
+  "en": [
+   "rent"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Die Miete ist 800 Euro.",
+  "exen": "The rent is 800 euros."
+ },
+ {
+  "w": "Ei",
+  "art": "das",
+  "pl": "Eier",
+  "pos": "noun",
+  "en": [
+   "egg"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Ich esse ein Ei zum Frühstück.",
+  "exen": "I eat an egg for breakfast."
+ },
+ {
+  "w": "sehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to see"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Wir sehen uns morgen.",
+  "exen": "See you tomorrow.",
+  "forms": "sieht · sah · hat gesehen"
+ },
+ {
+  "w": "Nacht",
+  "art": "die",
+  "pl": "Nächte",
+  "pos": "noun",
+  "en": [
+   "night"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Gute Nacht!",
+  "exen": "Good night!"
+ },
+ {
+  "w": "Vorname",
+  "art": "der",
+  "pl": "Vornamen",
+  "pos": "noun",
+  "en": [
+   "first name"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Mein Vorname ist Paul.",
+  "exen": "My first name is Paul."
+ },
+ {
+  "w": "Käse",
+  "art": "der",
+  "pl": "Käse",
+  "pos": "noun",
+  "en": [
+   "cheese"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Ich möchte ein Brot mit Käse.",
+  "exen": "I'd like a sandwich with cheese."
+ },
+ {
+  "w": "finden",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to find",
+   "to think (opinion)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich finde meinen Schlüssel nicht.",
+  "exen": "I can't find my key.",
+  "forms": "findet · fand · hat gefunden"
+ },
+ {
+  "w": "Wochenende",
+  "art": "das",
+  "pl": "Wochenenden",
+  "pos": "noun",
+  "en": [
+   "weekend"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Was machst du am Wochenende?",
+  "exen": "What are you doing at the weekend?"
+ },
+ {
+  "w": "Leute",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "people"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Die Leute hier sind nett.",
+  "exen": "The people here are nice."
+ },
+ {
+  "w": "Getränk",
+  "art": "das",
+  "pl": "Getränke",
+  "pos": "noun",
+  "en": [
+   "drink",
+   "beverage"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Welche Getränke haben Sie?",
+  "exen": "What drinks do you have?"
+ },
+ {
+  "w": "wissen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to know (a fact)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Wissen Sie, wo der Bahnhof ist?",
+  "exen": "Do you know where the station is?",
+  "forms": "weiß · wusste · hat gewusst"
+ },
+ {
+  "w": "Montag",
+  "art": "der",
+  "pl": "Montage",
+  "pos": "noun",
+  "en": [
+   "Monday"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Am Montag arbeite ich.",
+  "exen": "On Monday I work."
+ },
+ {
+  "w": "Mensch",
+  "art": "der",
+  "pl": "Menschen",
+  "pos": "noun",
+  "en": [
+   "person",
+   "human being"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Er ist ein netter Mensch.",
+  "exen": "He is a nice person."
+ },
+ {
+  "w": "Bier",
+  "art": "das",
+  "pl": "Biere",
+  "pos": "noun",
+  "en": [
+   "beer"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Ein Bier, bitte.",
+  "exen": "A beer, please."
+ },
+ {
+  "w": "kennen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to know (be familiar with)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Kennst du meinen Bruder?",
+  "exen": "Do you know my brother?",
+  "forms": "kennt · kannte · hat gekannt"
+ },
+ {
+  "w": "glauben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to believe",
+   "to think (have an opinion)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich glaube, er kommt heute nicht.",
+  "exen": "I think he isn't coming today."
+ },
+ {
+  "w": "Dienstag",
+  "art": "der",
+  "pl": "Dienstage",
+  "pos": "noun",
+  "en": [
+   "Tuesday"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Am Dienstag habe ich Deutschkurs.",
+  "exen": "On Tuesday I have German class."
+ },
+ {
+  "w": "Wein",
+  "art": "der",
+  "pl": "Weine",
+  "pos": "noun",
+  "en": [
+   "wine"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Möchten Sie Rotwein oder Weißwein?",
+  "exen": "Would you like red or white wine?"
+ },
+ {
+  "w": "brauchen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to need"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich brauche einen Stift.",
+  "exen": "I need a pen."
+ },
+ {
+  "w": "Mittwoch",
+  "art": "der",
+  "pl": "Mittwoche",
+  "pos": "noun",
+  "en": [
+   "Wednesday"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Am Mittwoch gehe ich schwimmen.",
+  "exen": "On Wednesday I go swimming."
+ },
+ {
+  "w": "heißen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to be called"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Wie heißen Sie?",
+  "exen": "What is your name?",
+  "forms": "heißt · hieß · hat geheißen"
+ },
+ {
+  "w": "Donnerstag",
+  "art": "der",
+  "pl": "Donnerstage",
+  "pos": "noun",
+  "en": [
+   "Thursday"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Am Donnerstag bin ich im Büro.",
+  "exen": "On Thursday I'm in the office."
+ },
+ {
+  "w": "wohnen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to live (reside)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich wohne in Berlin.",
+  "exen": "I live in Berlin."
+ },
+ {
+  "w": "Freitag",
+  "art": "der",
+  "pl": "Freitage",
+  "pos": "noun",
+  "en": [
+   "Friday"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Am Freitag gehen wir aus.",
+  "exen": "On Friday we go out."
+ },
+ {
+  "w": "leben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to live (be alive, lead a life)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Meine Großeltern leben noch.",
+  "exen": "My grandparents are still alive."
+ },
+ {
+  "w": "Samstag",
+  "art": "der",
+  "pl": "Samstage",
+  "pos": "noun",
+  "en": [
+   "Saturday"
+  ],
+  "alt": [
+   "der Sonnabend"
+  ],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Am Samstag kaufe ich ein.",
+  "exen": "On Saturday I do the shopping."
+ },
+ {
+  "w": "arbeiten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to work"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Meine Mutter arbeitet in einer Bank.",
+  "exen": "My mother works in a bank."
+ },
+ {
+  "w": "Sonntag",
+  "art": "der",
+  "pl": "Sonntage",
+  "pos": "noun",
+  "en": [
+   "Sunday"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Am Sonntag schlafe ich lange.",
+  "exen": "On Sunday I sleep in."
+ },
+ {
+  "w": "lernen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to learn",
+   "to study"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich lerne seit drei Monaten Deutsch.",
+  "exen": "I've been learning German for three months."
+ },
+ {
+  "w": "lesen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to read"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich lese gern Bücher.",
+  "exen": "I like reading books.",
+  "forms": "liest · las · hat gelesen"
+ },
+ {
+  "w": "schreiben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to write"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Bitte schreiben Sie Ihren Namen hier.",
+  "exen": "Please write your name here.",
+  "forms": "schreibt · schrieb · hat geschrieben"
+ },
+ {
+  "w": "sprechen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to speak",
+   "to talk"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Sprechen Sie Englisch?",
+  "exen": "Do you speak English?",
+  "forms": "spricht · sprach · hat gesprochen"
+ },
+ {
+  "w": "essen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to eat"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Wir essen um sieben Uhr.",
+  "exen": "We eat at seven o'clock.",
+  "forms": "isst · aß · hat gegessen"
+ },
+ {
+  "w": "trinken",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to drink"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich trinke morgens Tee.",
+  "exen": "I drink tea in the morning.",
+  "forms": "trinkt · trank · hat getrunken"
+ },
+ {
+  "w": "schlafen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to sleep"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Das Baby schläft schon.",
+  "exen": "The baby is already asleep.",
+  "forms": "schläft · schlief · hat geschlafen"
+ },
+ {
+  "w": "kaufen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to buy"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich kaufe Brot und Milch.",
+  "exen": "I'm buying bread and milk."
+ },
+ {
+  "w": "spielen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to play"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Die Kinder spielen im Garten.",
+  "exen": "The children are playing in the garden."
+ },
+ {
+  "w": "hören",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to hear",
+   "to listen"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich höre gern Musik.",
+  "exen": "I like listening to music."
+ },
+ {
+  "w": "fragen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to ask"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Darf ich etwas fragen?",
+  "exen": "May I ask something?"
+ },
+ {
+  "w": "verstehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to understand"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich verstehe das nicht.",
+  "exen": "I don't understand that.",
+  "forms": "versteht · verstand · hat verstanden"
+ },
+ {
+  "w": "helfen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to help"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Kann ich Ihnen helfen?",
+  "exen": "Can I help you?",
+  "forms": "hilft · half · hat geholfen"
+ },
+ {
+  "w": "bleiben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to stay",
+   "to remain"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich bleibe heute zu Hause.",
+  "exen": "I'm staying at home today.",
+  "forms": "bleibt · blieb · ist geblieben"
+ },
+ {
+  "w": "bringen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to bring",
+   "to take (somewhere)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Bringst du mir bitte ein Glas Wasser?",
+  "exen": "Will you bring me a glass of water?",
+  "forms": "bringt · brachte · hat gebracht"
+ },
+ {
+  "w": "suchen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to look for",
+   "to search"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich suche eine Wohnung.",
+  "exen": "I'm looking for a flat."
+ },
+ {
+  "w": "bekommen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to get",
+   "to receive"
+  ],
+  "alt": [
+   "kriegen"
+  ],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich bekomme viele E-Mails.",
+  "exen": "I get a lot of emails.",
+  "forms": "bekommt · bekam · hat bekommen"
+ },
+ {
+  "w": "stehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to stand",
+   "to be (written)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Der Bus steht an der Haltestelle.",
+  "exen": "The bus is standing at the stop.",
+  "forms": "steht · stand · hat gestanden"
+ },
+ {
+  "w": "liegen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to lie (be lying down)",
+   "to be (located)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Das Buch liegt auf dem Tisch.",
+  "exen": "The book is lying on the table.",
+  "forms": "liegt · lag · hat gelegen"
+ },
+ {
+  "w": "gefallen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to be pleasing to (I like it)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Die Wohnung gefällt mir sehr.",
+  "exen": "I really like the flat.",
+  "forms": "gefällt · gefiel · hat gefallen"
+ },
+ {
+  "w": "anfangen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to start",
+   "to begin"
+  ],
+  "alt": [
+   "beginnen"
+  ],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Wann können wir anfangen?",
+  "exen": "When can we start?",
+  "forms": "fängt an · fing an · hat angefangen"
+ },
+ {
+  "w": "warten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to wait"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich warte auf den Bus.",
+  "exen": "I'm waiting for the bus."
+ },
+ {
+  "w": "gut",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "good",
+   "well"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Das Essen ist sehr gut.",
+  "exen": "The food is very good."
+ },
+ {
+  "w": "schlecht",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "bad",
+   "badly"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Das Wetter ist heute schlecht.",
+  "exen": "The weather is bad today."
+ },
+ {
+  "w": "groß",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "big",
+   "tall",
+   "large"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Unsere Wohnung ist groß.",
+  "exen": "Our flat is big."
+ },
+ {
+  "w": "klein",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "small",
+   "little",
+   "short"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Das Zimmer ist sehr klein.",
+  "exen": "The room is very small."
+ },
+ {
+  "w": "neu",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "new"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich habe ein neues Handy.",
+  "exen": "I have a new mobile phone."
+ },
+ {
+  "w": "alt",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "old"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Das Haus ist sehr alt.",
+  "exen": "The house is very old."
+ },
+ {
+  "w": "jung",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "young"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Meine Lehrerin ist noch jung.",
+  "exen": "My teacher is still young."
+ },
+ {
+  "w": "schön",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "beautiful",
+   "nice"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Das ist ein schönes Bild.",
+  "exen": "That is a beautiful picture."
+ },
+ {
+  "w": "richtig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "right",
+   "correct"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Die Antwort ist richtig.",
+  "exen": "The answer is correct."
+ },
+ {
+  "w": "falsch",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "wrong",
+   "false"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Die Nummer ist falsch.",
+  "exen": "The number is wrong."
+ },
+ {
+  "w": "ich",
+  "art": "",
+  "pl": null,
+  "pos": "pron",
+  "en": [
+   "I"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich heiße Anna.",
+  "exen": "My name is Anna."
+ },
+ {
+  "w": "du",
+  "art": "",
+  "pl": null,
+  "pos": "pron",
+  "en": [
+   "you (informal, singular)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Wo wohnst du?",
+  "exen": "Where do you live?"
+ },
+ {
+  "w": "er",
+  "art": "",
+  "pl": null,
+  "pos": "pron",
+  "en": [
+   "he",
+   "it (masculine)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Er kommt aus Spanien.",
+  "exen": "He comes from Spain."
+ },
+ {
+  "w": "sie",
+  "art": "",
+  "pl": null,
+  "pos": "pron",
+  "en": [
+   "she",
+   "they"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Sie ist meine Schwester.",
+  "exen": "She is my sister."
+ },
+ {
+  "w": "Sie",
+  "art": "",
+  "pl": null,
+  "pos": "pron",
+  "en": [
+   "you (formal)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Woher kommen Sie?",
+  "exen": "Where are you from?"
+ },
+ {
+  "w": "es",
+  "art": "",
+  "pl": null,
+  "pos": "pron",
+  "en": [
+   "it"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Es ist schon spät.",
+  "exen": "It's already late."
+ },
+ {
+  "w": "wir",
+  "art": "",
+  "pl": null,
+  "pos": "pron",
+  "en": [
+   "we"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Wir wohnen in Hamburg.",
+  "exen": "We live in Hamburg."
+ },
+ {
+  "w": "ihr",
+  "art": "",
+  "pl": null,
+  "pos": "pron",
+  "en": [
+   "you (informal, plural)",
+   "her"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Kommt ihr heute Abend?",
+  "exen": "Are you (all) coming tonight?"
+ },
+ {
+  "w": "mein",
+  "art": "",
+  "pl": null,
+  "pos": "det",
+  "en": [
+   "my"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Das ist mein Mann.",
+  "exen": "This is my husband."
+ },
+ {
+  "w": "dein",
+  "art": "",
+  "pl": null,
+  "pos": "det",
+  "en": [
+   "your (informal)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ist das dein Auto?",
+  "exen": "Is that your car?"
+ },
+ {
+  "w": "ein",
+  "art": "",
+  "pl": null,
+  "pos": "det",
+  "en": [
+   "a",
+   "an",
+   "one"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich habe einen Bruder und eine Schwester.",
+  "exen": "I have a brother and a sister."
+ },
+ {
+  "w": "kein",
+  "art": "",
+  "pl": null,
+  "pos": "det",
+  "en": [
+   "no",
+   "not a",
+   "not any"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich habe keine Zeit.",
+  "exen": "I have no time."
+ },
+ {
+  "w": "viel",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "much",
+   "a lot"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Er arbeitet viel.",
+  "exen": "He works a lot."
+ },
+ {
+  "w": "wer",
+  "art": "",
+  "pl": null,
+  "pos": "pron",
+  "en": [
+   "who"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Wer ist das?",
+  "exen": "Who is that?"
+ },
+ {
+  "w": "was",
+  "art": "",
+  "pl": null,
+  "pos": "pron",
+  "en": [
+   "what"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Was ist das?",
+  "exen": "What is that?"
+ },
+ {
+  "w": "wo",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "where"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Wo ist die Toilette?",
+  "exen": "Where is the toilet?"
+ },
+ {
+  "w": "woher",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "where from"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Woher kommst du?",
+  "exen": "Where are you from?"
+ },
+ {
+  "w": "wohin",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "where to"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Wohin fährst du im Urlaub?",
+  "exen": "Where are you going on holiday?"
+ },
+ {
+  "w": "wann",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "when (question)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Wann beginnt der Kurs?",
+  "exen": "When does the course start?"
+ },
+ {
+  "w": "wie",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "how",
+   "like (as)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Wie geht es Ihnen?",
+  "exen": "How are you?"
+ },
+ {
+  "w": "warum",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "why"
+  ],
+  "alt": [
+   "wieso"
+  ],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Warum kommst du nicht?",
+  "exen": "Why aren't you coming?"
+ },
+ {
+  "w": "wie viel",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "how much"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Wie viel kostet das?",
+  "exen": "How much does that cost?"
+ },
+ {
+  "w": "und",
+  "art": "",
+  "pl": null,
+  "pos": "conj",
+  "en": [
+   "and"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich trinke Kaffee und Tee.",
+  "exen": "I drink coffee and tea."
+ },
+ {
+  "w": "oder",
+  "art": "",
+  "pl": null,
+  "pos": "conj",
+  "en": [
+   "or"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Möchtest du Tee oder Kaffee?",
+  "exen": "Would you like tea or coffee?"
+ },
+ {
+  "w": "aber",
+  "art": "",
+  "pl": null,
+  "pos": "conj",
+  "en": [
+   "but"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Das Hotel ist schön, aber teuer.",
+  "exen": "The hotel is nice but expensive."
+ },
+ {
+  "w": "in",
+  "art": "",
+  "pl": null,
+  "pos": "prep",
+  "en": [
+   "in",
+   "into"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich wohne in München.",
+  "exen": "I live in Munich."
+ },
+ {
+  "w": "an",
+  "art": "",
+  "pl": null,
+  "pos": "prep",
+  "en": [
+   "at",
+   "on (vertical surface)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Das Bild hängt an der Wand.",
+  "exen": "The picture is hanging on the wall."
+ },
+ {
+  "w": "auf",
+  "art": "",
+  "pl": null,
+  "pos": "prep",
+  "en": [
+   "on (top of)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Die Tasse steht auf dem Tisch.",
+  "exen": "The cup is on the table."
+ },
+ {
+  "w": "aus",
+  "art": "",
+  "pl": null,
+  "pos": "prep",
+  "en": [
+   "from",
+   "out of"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich komme aus Indien.",
+  "exen": "I come from India."
+ },
+ {
+  "w": "bei",
+  "art": "",
+  "pl": null,
+  "pos": "prep",
+  "en": [
+   "at (someone's place)",
+   "near"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich wohne bei meinen Eltern.",
+  "exen": "I live with my parents."
+ },
+ {
+  "w": "mit",
+  "art": "",
+  "pl": null,
+  "pos": "prep",
+  "en": [
+   "with",
+   "by (transport)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich fahre mit dem Bus.",
+  "exen": "I'm going by bus."
+ },
+ {
+  "w": "nach",
+  "art": "",
+  "pl": null,
+  "pos": "prep",
+  "en": [
+   "to (cities, countries)",
+   "after"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Wir fahren nach Berlin.",
+  "exen": "We're going to Berlin."
+ },
+ {
+  "w": "von",
+  "art": "",
+  "pl": null,
+  "pos": "prep",
+  "en": [
+   "from",
+   "of"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Das ist ein Geschenk von meiner Mutter.",
+  "exen": "That's a present from my mother."
+ },
+ {
+  "w": "zu",
+  "art": "",
+  "pl": null,
+  "pos": "prep",
+  "en": [
+   "to (people, places)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich gehe zum Arzt.",
+  "exen": "I'm going to the doctor."
+ },
+ {
+  "w": "für",
+  "art": "",
+  "pl": null,
+  "pos": "prep",
+  "en": [
+   "for"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Das Geschenk ist für dich.",
+  "exen": "The present is for you."
+ },
+ {
+  "w": "ja",
+  "art": "",
+  "pl": null,
+  "pos": "interj",
+  "en": [
+   "yes"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ja, gern!",
+  "exen": "Yes, I'd like that!"
+ },
+ {
+  "w": "nein",
+  "art": "",
+  "pl": null,
+  "pos": "interj",
+  "en": [
+   "no"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Nein, danke.",
+  "exen": "No, thank you."
+ },
+ {
+  "w": "nicht",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "not"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich rauche nicht.",
+  "exen": "I don't smoke."
+ },
+ {
+  "w": "auch",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "also",
+   "too"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich komme auch.",
+  "exen": "I'm coming too."
+ },
+ {
+  "w": "sehr",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "very",
+   "very much"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Das ist sehr gut.",
+  "exen": "That is very good."
+ },
+ {
+  "w": "hier",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "here"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich wohne hier.",
+  "exen": "I live here."
+ },
+ {
+  "w": "da",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "there",
+   "here (present)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ist Peter da?",
+  "exen": "Is Peter there?"
+ },
+ {
+  "w": "gern",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "gladly",
+   "like to (doing)"
+  ],
+  "alt": [
+   "gerne"
+  ],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich schwimme gern.",
+  "exen": "I like swimming."
+ },
+ {
+  "w": "nur",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "only",
+   "just"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich habe nur zehn Euro.",
+  "exen": "I only have ten euros."
+ },
+ {
+  "w": "noch",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "still",
+   "yet",
+   "more"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Möchtest du noch Kaffee?",
+  "exen": "Would you like more coffee?"
+ },
+ {
+  "w": "schon",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "already"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Bist du schon fertig?",
+  "exen": "Are you finished already?"
+ },
+ {
+  "w": "immer",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "always"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Er kommt immer zu spät.",
+  "exen": "He's always late."
+ },
+ {
+  "w": "eins",
+  "art": "",
+  "pl": null,
+  "pos": "num",
+  "en": [
+   "one (number)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Eins plus eins ist zwei.",
+  "exen": "One plus one is two."
+ },
+ {
+  "w": "zwei",
+  "art": "",
+  "pl": null,
+  "pos": "num",
+  "en": [
+   "two"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich habe zwei Kinder.",
+  "exen": "I have two children."
+ },
+ {
+  "w": "drei",
+  "art": "",
+  "pl": null,
+  "pos": "num",
+  "en": [
+   "three"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Das kostet drei Euro.",
+  "exen": "That costs three euros."
+ },
+ {
+  "w": "es gibt",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "there is",
+   "there are"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Gibt es hier ein Café? Ja, es gibt eins.",
+  "exen": "Is there a café here? Yes, there is one."
+ },
+ {
+  "w": "leider",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "unfortunately"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich habe leider keine Zeit.",
+  "exen": "Unfortunately I don't have time."
+ },
+ {
+  "w": "zeigen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to show"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Kannst du mir das Foto zeigen?",
+  "exen": "Can you show me the photo?"
+ },
+ {
+  "w": "lieben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to love"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "feelings",
+  "ex": "Ich liebe dich.",
+  "exen": "I love you."
+ },
+ {
+  "w": "nächste",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "next"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Wir sehen uns nächste Woche.",
+  "exen": "See you next week."
+ },
+ {
+  "w": "oben",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "up",
+   "upstairs",
+   "above"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Das Bad ist oben.",
+  "exen": "The bathroom is upstairs."
+ },
+ {
+  "w": "bitte",
+  "art": "",
+  "pl": null,
+  "pos": "interj",
+  "en": [
+   "please",
+   "you're welcome"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Einen Kaffee, bitte.",
+  "exen": "A coffee, please."
+ },
+ {
+  "w": "Familienname",
+  "art": "der",
+  "pl": "Familiennamen",
+  "pos": "noun",
+  "en": [
+   "surname",
+   "last name"
+  ],
+  "alt": [
+   "der Nachname"
+  ],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Wie ist Ihr Familienname?",
+  "exen": "What is your surname?"
+ },
+ {
+  "w": "Party",
+  "art": "die",
+  "pl": "Partys",
+  "pos": "noun",
+  "en": [
+   "party (celebration)"
+  ],
+  "alt": [
+   "die Feier"
+  ],
+  "level": "A1",
+  "theme": "leisure",
+  "ex": "Kommst du zu meiner Party?",
+  "exen": "Are you coming to my party?"
+ },
+ {
+  "w": "Saft",
+  "art": "der",
+  "pl": "Säfte",
+  "pos": "noun",
+  "en": [
+   "juice"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Ich trinke einen Orangensaft.",
+  "exen": "I'm drinking an orange juice."
+ },
+ {
+  "w": "Ärztin",
+  "art": "die",
+  "pl": "Ärztinnen",
+  "pos": "noun",
+  "en": [
+   "doctor (female)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "body",
+  "ex": "Meine Ärztin ist sehr nett.",
+  "exen": "My doctor is very nice."
+ },
+ {
+  "w": "Hemd",
+  "art": "das",
+  "pl": "Hemden",
+  "pos": "noun",
+  "en": [
+   "shirt"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Er trägt ein weißes Hemd.",
+  "exen": "He's wearing a white shirt."
+ },
+ {
+  "w": "zahlen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to pay (informal)"
+  ],
+  "alt": [
+   "bezahlen"
+  ],
+  "level": "A1",
+  "theme": "money",
+  "ex": "Zahlen, bitte!",
+  "exen": "The bill, please!"
+ },
+ {
+  "w": "Dorf",
+  "art": "das",
+  "pl": "Dörfer",
+  "pos": "noun",
+  "en": [
+   "village"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "city",
+  "ex": "Meine Eltern wohnen in einem Dorf.",
+  "exen": "My parents live in a village."
+ },
+ {
+  "w": "Museum",
+  "art": "das",
+  "pl": "Museen",
+  "pos": "noun",
+  "en": [
+   "museum"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "culture",
+  "ex": "Das Museum ist montags geschlossen.",
+  "exen": "The museum is closed on Mondays."
+ },
+ {
+  "w": "Ticket",
+  "art": "das",
+  "pl": "Tickets",
+  "pos": "noun",
+  "en": [
+   "ticket"
+  ],
+  "alt": [
+   "die Fahrkarte"
+  ],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Hast du schon ein Ticket?",
+  "exen": "Have you got a ticket yet?"
+ },
+ {
+  "w": "es regnet",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "it's raining"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Nimm einen Schirm, es regnet.",
+  "exen": "Take an umbrella, it's raining."
+ },
+ {
+  "w": "Firma",
+  "art": "die",
+  "pl": "Firmen",
+  "pos": "noun",
+  "en": [
+   "company",
+   "firm"
+  ],
+  "alt": [
+   "das Unternehmen",
+   "der Betrieb"
+  ],
+  "level": "A1",
+  "theme": "work",
+  "ex": "Die Firma ist in München.",
+  "exen": "The company is in Munich."
+ },
+ {
+  "w": "Lehrer",
+  "art": "der",
+  "pl": "Lehrer",
+  "pos": "noun",
+  "en": [
+   "teacher (male)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Der Lehrer erklärt die Grammatik.",
+  "exen": "The teacher explains the grammar."
+ },
+ {
+  "w": "Computer",
+  "art": "der",
+  "pl": "Computer",
+  "pos": "noun",
+  "en": [
+   "computer"
+  ],
+  "alt": [
+   "der Rechner"
+  ],
+  "level": "A1",
+  "theme": "media",
+  "ex": "Ich arbeite am Computer.",
+  "exen": "I work at the computer."
+ },
+ {
+  "w": "Formular",
+  "art": "das",
+  "pl": "Formulare",
+  "pos": "noun",
+  "en": [
+   "form (document)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "law",
+  "ex": "Bitte füllen Sie das Formular aus.",
+  "exen": "Please fill in the form."
+ },
+ {
+  "w": "sitzen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to sit",
+   "to be sitting"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Wir sitzen im Garten.",
+  "exen": "We are sitting in the garden.",
+  "forms": "sitzt · saß · hat gesessen"
+ },
+ {
+  "w": "glücklich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "happy"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "feelings",
+  "ex": "Ich bin sehr glücklich.",
+  "exen": "I'm very happy."
+ },
+ {
+  "w": "letzte",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "last (previous)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Letzte Woche war ich krank.",
+  "exen": "Last week I was ill."
+ },
+ {
+  "w": "unten",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "down",
+   "downstairs",
+   "below"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Die Küche ist unten.",
+  "exen": "The kitchen is downstairs."
+ },
+ {
+  "w": "Frage",
+  "art": "die",
+  "pl": "Fragen",
+  "pos": "noun",
+  "en": [
+   "question"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Ich habe eine Frage.",
+  "exen": "I have a question."
+ },
+ {
+  "w": "Nachname",
+  "art": "der",
+  "pl": "Nachnamen",
+  "pos": "noun",
+  "en": [
+   "last name",
+   "surname"
+  ],
+  "alt": [
+   "der Familienname"
+  ],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Bitte schreiben Sie Ihren Nachnamen.",
+  "exen": "Please write your last name."
+ },
+ {
+  "w": "Sport machen",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "to do sport",
+   "to exercise"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "leisure",
+  "ex": "Ich mache dreimal pro Woche Sport.",
+  "exen": "I exercise three times a week."
+ },
+ {
+  "w": "Butter",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "butter"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Ich esse Brot mit Butter.",
+  "exen": "I eat bread with butter."
+ },
+ {
+  "w": "gesund",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "healthy"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "body",
+  "ex": "Obst ist gesund.",
+  "exen": "Fruit is healthy."
+ },
+ {
+  "w": "Kleid",
+  "art": "das",
+  "pl": "Kleider",
+  "pos": "noun",
+  "en": [
+   "dress"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Das Kleid ist sehr schön.",
+  "exen": "The dress is very beautiful."
+ },
+ {
+  "w": "Cent",
+  "art": "der",
+  "pl": "Cent",
+  "pos": "noun",
+  "en": [
+   "cent"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "money",
+  "ex": "Das kostet 50 Cent.",
+  "exen": "That costs 50 cents."
+ },
+ {
+  "w": "Platz",
+  "art": "der",
+  "pl": "Plätze",
+  "pos": "noun",
+  "en": [
+   "square",
+   "place",
+   "seat"
+  ],
+  "alt": [
+   "der Spießer"
+  ],
+  "level": "A1",
+  "theme": "city",
+  "ex": "Wir treffen uns am Platz vor der Kirche.",
+  "exen": "We'll meet at the square in front of the church."
+ },
+ {
+  "w": "Film",
+  "art": "der",
+  "pl": "Filme",
+  "pos": "noun",
+  "en": [
+   "film",
+   "movie"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "culture",
+  "ex": "Der Film war sehr gut.",
+  "exen": "The film was very good."
+ },
+ {
+  "w": "Flugzeug",
+  "art": "das",
+  "pl": "Flugzeuge",
+  "pos": "noun",
+  "en": [
+   "plane",
+   "aeroplane"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Das Flugzeug landet um zehn.",
+  "exen": "The plane lands at ten."
+ },
+ {
+  "w": "regnen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to rain"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Heute regnet es den ganzen Tag.",
+  "exen": "Today it's raining all day."
+ },
+ {
+  "w": "Chef",
+  "art": "der",
+  "pl": "Chefs",
+  "pos": "noun",
+  "en": [
+   "boss (male)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "work",
+  "ex": "Mein Chef ist sehr nett.",
+  "exen": "My boss is very nice."
+ },
+ {
+  "w": "Lehrerin",
+  "art": "die",
+  "pl": "Lehrerinnen",
+  "pos": "noun",
+  "en": [
+   "teacher (female)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Meine Lehrerin kommt aus Wien.",
+  "exen": "My teacher is from Vienna."
+ },
+ {
+  "w": "Telefon",
+  "art": "das",
+  "pl": "Telefone",
+  "pos": "noun",
+  "en": [
+   "telephone",
+   "phone"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "media",
+  "ex": "Das Telefon klingelt.",
+  "exen": "The phone is ringing."
+ },
+ {
+  "w": "ausfüllen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to fill in",
+   "to fill out"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "law",
+  "ex": "Sie müssen das Formular ausfüllen.",
+  "exen": "You have to fill in the form.",
+  "forms": "füllt aus · füllte aus · hat ausgefüllt"
+ },
+ {
+  "w": "gehören",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to belong to"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Gehört das Fahrrad dir?",
+  "exen": "Does the bike belong to you?"
+ },
+ {
+  "w": "traurig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "sad"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "feelings",
+  "ex": "Warum bist du traurig?",
+  "exen": "Why are you sad?"
+ },
+ {
+  "w": "wie lange",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "how long"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Wie lange dauert der Kurs?",
+  "exen": "How long does the course last?"
+ },
+ {
+  "w": "Balkon",
+  "art": "der",
+  "pl": "Balkone",
+  "pos": "noun",
+  "en": [
+   "balcony"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Die Wohnung hat einen Balkon.",
+  "exen": "The flat has a balcony."
+ },
+ {
+  "w": "Antwort",
+  "art": "die",
+  "pl": "Antworten",
+  "pos": "noun",
+  "en": [
+   "answer",
+   "reply"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Die Antwort ist richtig.",
+  "exen": "The answer is correct."
+ },
+ {
+  "w": "Person",
+  "art": "die",
+  "pl": "Personen",
+  "pos": "noun",
+  "en": [
+   "person (counted)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Ein Tisch für vier Personen, bitte.",
+  "exen": "A table for four people, please."
+ },
+ {
+  "w": "Fußball",
+  "art": "der",
+  "pl": "Fußbälle",
+  "pos": "noun",
+  "en": [
+   "football",
+   "soccer"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "leisure",
+  "ex": "Am Samstag spielen wir Fußball.",
+  "exen": "On Saturday we play football."
+ },
+ {
+  "w": "Zucker",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "sugar"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Nehmen Sie Zucker?",
+  "exen": "Do you take sugar?"
+ },
+ {
+  "w": "müde",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "tired"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "body",
+  "ex": "Ich bin sehr müde.",
+  "exen": "I'm very tired."
+ },
+ {
+  "w": "Rock",
+  "art": "der",
+  "pl": "Röcke",
+  "pos": "noun",
+  "en": [
+   "skirt"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Sie trägt einen roten Rock.",
+  "exen": "She's wearing a red skirt."
+ },
+ {
+  "w": "günstig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "inexpensive",
+   "good value"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "money",
+  "ex": "Die Wohnung ist günstig.",
+  "exen": "The flat is good value."
+ },
+ {
+  "w": "Zentrum",
+  "art": "das",
+  "pl": "Zentren",
+  "pos": "noun",
+  "en": [
+   "centre",
+   "city centre"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "city",
+  "ex": "Das Hotel liegt im Zentrum.",
+  "exen": "The hotel is in the centre."
+ },
+ {
+  "w": "Konzert",
+  "art": "das",
+  "pl": "Konzerte",
+  "pos": "noun",
+  "en": [
+   "concert"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "culture",
+  "ex": "Wir gehen heute Abend ins Konzert.",
+  "exen": "We're going to a concert tonight."
+ },
+ {
+  "w": "U-Bahn",
+  "art": "die",
+  "pl": "U-Bahnen",
+  "pos": "noun",
+  "en": [
+   "underground",
+   "subway"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Ich fahre mit der U-Bahn.",
+  "exen": "I take the underground."
+ },
+ {
+  "w": "Schnee",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "snow"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Die Kinder spielen im Schnee.",
+  "exen": "The children are playing in the snow."
+ },
+ {
+  "w": "Kollege",
+  "art": "der",
+  "pl": "Kollegen",
+  "pos": "noun",
+  "en": [
+   "colleague (male)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "work",
+  "ex": "Mein Kollege hilft mir.",
+  "exen": "My colleague is helping me."
+ },
+ {
+  "w": "Schule",
+  "art": "die",
+  "pl": "Schulen",
+  "pos": "noun",
+  "en": [
+   "school"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Die Kinder sind in der Schule.",
+  "exen": "The children are at school."
+ },
+ {
+  "w": "Handy",
+  "art": "das",
+  "pl": "Handys",
+  "pos": "noun",
+  "en": [
+   "mobile phone",
+   "cell phone"
+  ],
+  "alt": [
+   "das Natel"
+  ],
+  "level": "A1",
+  "theme": "media",
+  "ex": "Mein Handy ist kaputt.",
+  "exen": "My mobile phone is broken."
+ },
+ {
+  "w": "unterschreiben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to sign"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "law",
+  "ex": "Bitte unterschreiben Sie hier.",
+  "exen": "Please sign here.",
+  "forms": "unterschreibt · unterschrieb · hat unterschrieben"
+ },
+ {
+  "w": "beginnen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to begin",
+   "to start"
+  ],
+  "alt": [
+   "anfangen"
+  ],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Der Film beginnt um acht.",
+  "exen": "The film begins at eight.",
+  "forms": "beginnt · begann · hat begonnen"
+ },
+ {
+  "w": "bis",
+  "art": "",
+  "pl": null,
+  "pos": "prep",
+  "en": [
+   "until",
+   "by"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Das Geschäft ist bis acht Uhr offen.",
+  "exen": "The shop is open until eight."
+ },
+ {
+  "w": "Garten",
+  "art": "der",
+  "pl": "Gärten",
+  "pos": "noun",
+  "en": [
+   "garden"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Die Kinder spielen im Garten.",
+  "exen": "The children are playing in the garden."
+ },
+ {
+  "w": "zum Beispiel",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "for example"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Ich mag Obst, zum Beispiel Äpfel.",
+  "exen": "I like fruit, for example apples."
+ },
+ {
+  "w": "Baby",
+  "art": "das",
+  "pl": "Babys",
+  "pos": "noun",
+  "en": [
+   "baby"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Das Baby schläft.",
+  "exen": "The baby is sleeping."
+ },
+ {
+  "w": "schwimmen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to swim"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "leisure",
+  "ex": "Im Sommer schwimme ich im See.",
+  "exen": "In summer I swim in the lake.",
+  "forms": "schwimmt · schwamm · ist geschwommen"
+ },
+ {
+  "w": "Salz",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "salt"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Die Suppe braucht mehr Salz.",
+  "exen": "The soup needs more salt."
+ },
+ {
+  "w": "Kopf",
+  "art": "der",
+  "pl": "Köpfe",
+  "pos": "noun",
+  "en": [
+   "head"
+  ],
+  "alt": [
+   "der Leiter"
+  ],
+  "level": "A1",
+  "theme": "body",
+  "ex": "Mein Kopf tut weh.",
+  "exen": "My head hurts."
+ },
+ {
+  "w": "Pullover",
+  "art": "der",
+  "pl": "Pullover",
+  "pos": "noun",
+  "en": [
+   "jumper",
+   "sweater"
+  ],
+  "alt": [
+   "der Pulli"
+  ],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Der Pullover ist warm.",
+  "exen": "The jumper is warm."
+ },
+ {
+  "w": "Bank",
+  "art": "die",
+  "pl": "Banken",
+  "pos": "noun",
+  "en": [
+   "bank (money)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "money",
+  "ex": "Ich gehe zur Bank.",
+  "exen": "I'm going to the bank."
+ },
+ {
+  "w": "Supermarkt",
+  "art": "der",
+  "pl": "Supermärkte",
+  "pos": "noun",
+  "en": [
+   "supermarket"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "city",
+  "ex": "Ich gehe in den Supermarkt.",
+  "exen": "I'm going to the supermarket."
+ },
+ {
+  "w": "S-Bahn",
+  "art": "die",
+  "pl": "S-Bahnen",
+  "pos": "noun",
+  "en": [
+   "suburban train"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Die S-Bahn fährt alle zehn Minuten.",
+  "exen": "The suburban train runs every ten minutes."
+ },
+ {
+  "w": "Wind",
+  "art": "der",
+  "pl": "Winde",
+  "pos": "noun",
+  "en": [
+   "wind"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Heute gibt es viel Wind.",
+  "exen": "It's very windy today."
+ },
+ {
+  "w": "Job",
+  "art": "der",
+  "pl": "Jobs",
+  "pos": "noun",
+  "en": [
+   "job"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "work",
+  "ex": "Ich suche einen neuen Job.",
+  "exen": "I'm looking for a new job."
+ },
+ {
+  "w": "Kurs",
+  "art": "der",
+  "pl": "Kurse",
+  "pos": "noun",
+  "en": [
+   "course",
+   "class"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Der Kurs beginnt um neun.",
+  "exen": "The course starts at nine."
+ },
+ {
+  "w": "E-Mail",
+  "art": "die",
+  "pl": "E-Mails",
+  "pos": "noun",
+  "en": [
+   "email"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "media",
+  "ex": "Ich schreibe dir eine E-Mail.",
+  "exen": "I'll write you an email."
+ },
+ {
+  "w": "dauern",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to last",
+   "to take (time)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Die Fahrt dauert zwei Stunden.",
+  "exen": "The journey takes two hours."
+ },
+ {
+  "w": "ab",
+  "art": "",
+  "pl": null,
+  "pos": "prep",
+  "en": [
+   "from (time/place onward)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Ab Montag arbeite ich wieder.",
+  "exen": "From Monday I'm working again."
+ },
+ {
+  "w": "Keller",
+  "art": "der",
+  "pl": "Keller",
+  "pos": "noun",
+  "en": [
+   "cellar",
+   "basement"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Die Fahrräder sind im Keller.",
+  "exen": "The bikes are in the cellar."
+ },
+ {
+  "w": "kein Problem",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "no problem"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Kein Problem, ich helfe dir.",
+  "exen": "No problem, I'll help you."
+ },
+ {
+  "w": "Junge",
+  "art": "der",
+  "pl": "Jungen",
+  "pos": "noun",
+  "en": [
+   "boy"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Der Junge spielt Fußball.",
+  "exen": "The boy is playing football."
+ },
+ {
+  "w": "laufen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to run",
+   "to walk"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "leisure",
+  "ex": "Ich laufe jeden Morgen im Park.",
+  "exen": "I run in the park every morning.",
+  "forms": "läuft · lief · ist gelaufen"
+ },
+ {
+  "w": "Kartoffel",
+  "art": "die",
+  "pl": "Kartoffeln",
+  "pos": "noun",
+  "en": [
+   "potato"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Wir essen Fisch mit Kartoffeln.",
+  "exen": "We're eating fish with potatoes."
+ },
+ {
+  "w": "Hand",
+  "art": "die",
+  "pl": "Hände",
+  "pos": "noun",
+  "en": [
+   "hand"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "body",
+  "ex": "Wasch dir die Hände!",
+  "exen": "Wash your hands!"
+ },
+ {
+  "w": "T-Shirt",
+  "art": "das",
+  "pl": "T-Shirts",
+  "pos": "noun",
+  "en": [
+   "T-shirt"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Ich kaufe zwei T-Shirts.",
+  "exen": "I'm buying two T-shirts."
+ },
+ {
+  "w": "Konto",
+  "art": "das",
+  "pl": "Konten",
+  "pos": "noun",
+  "en": [
+   "bank account"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "money",
+  "ex": "Ich möchte ein Konto eröffnen.",
+  "exen": "I'd like to open an account."
+ },
+ {
+  "w": "Markt",
+  "art": "der",
+  "pl": "Märkte",
+  "pos": "noun",
+  "en": [
+   "market"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "city",
+  "ex": "Am Samstag kaufe ich auf dem Markt ein.",
+  "exen": "On Saturday I shop at the market."
+ },
+ {
+  "w": "Straßenbahn",
+  "art": "die",
+  "pl": "Straßenbahnen",
+  "pos": "noun",
+  "en": [
+   "tram"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Die Straßenbahn ist voll.",
+  "exen": "The tram is full."
+ },
+ {
+  "w": "Frühling",
+  "art": "der",
+  "pl": "Frühlinge",
+  "pos": "noun",
+  "en": [
+   "spring (season)"
+  ],
+  "alt": [
+   "das Frühjahr"
+  ],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Im Frühling blühen die Blumen.",
+  "exen": "In spring the flowers bloom."
+ },
+ {
+  "w": "Kunde",
+  "art": "der",
+  "pl": "Kunden",
+  "pos": "noun",
+  "en": [
+   "customer",
+   "client"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "work",
+  "ex": "Der Kunde wartet schon.",
+  "exen": "The customer is already waiting."
+ },
+ {
+  "w": "Schüler",
+  "art": "der",
+  "pl": "Schüler",
+  "pos": "noun",
+  "en": [
+   "pupil",
+   "schoolchild"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Die Schüler lernen Englisch.",
+  "exen": "The pupils are learning English."
+ },
+ {
+  "w": "öffnen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to open"
+  ],
+  "alt": [
+   "aufmachen"
+  ],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Kannst du bitte das Fenster öffnen?",
+  "exen": "Can you open the window, please?"
+ },
+ {
+  "w": "seit",
+  "art": "",
+  "pl": null,
+  "pos": "prep",
+  "en": [
+   "since",
+   "for (time)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Ich wohne seit zwei Jahren hier.",
+  "exen": "I've lived here for two years."
+ },
+ {
+  "w": "Erdgeschoss",
+  "art": "das",
+  "pl": "Erdgeschosse",
+  "pos": "noun",
+  "en": [
+   "ground floor"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Wir wohnen im Erdgeschoss.",
+  "exen": "We live on the ground floor."
+ },
+ {
+  "w": "Wie bitte?",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "Pardon?",
+   "Sorry, what did you say?"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Wie bitte? Können Sie das wiederholen?",
+  "exen": "Pardon? Could you repeat that?"
+ },
+ {
+  "w": "Mädchen",
+  "art": "das",
+  "pl": "Mädchen",
+  "pos": "noun",
+  "en": [
+   "girl"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Das Mädchen heißt Lena.",
+  "exen": "The girl's name is Lena."
+ },
+ {
+  "w": "tanzen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to dance"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "leisure",
+  "ex": "Wir tanzen gern.",
+  "exen": "We like dancing."
+ },
+ {
+  "w": "Reis",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "rice"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Ich koche Reis mit Gemüse.",
+  "exen": "I'm cooking rice with vegetables."
+ },
+ {
+  "w": "Auge",
+  "art": "das",
+  "pl": "Augen",
+  "pos": "noun",
+  "en": [
+   "eye"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "body",
+  "ex": "Sie hat blaue Augen.",
+  "exen": "She has blue eyes."
+ },
+ {
+  "w": "Mantel",
+  "art": "der",
+  "pl": "Mäntel",
+  "pos": "noun",
+  "en": [
+   "coat"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Im Winter trage ich einen Mantel.",
+  "exen": "In winter I wear a coat."
+ },
+ {
+  "w": "Karte",
+  "art": "die",
+  "pl": "Karten",
+  "pos": "noun",
+  "en": [
+   "card",
+   "ticket",
+   "map"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "money",
+  "ex": "Kann ich mit Karte zahlen?",
+  "exen": "Can I pay by card?"
+ },
+ {
+  "w": "Bäckerei",
+  "art": "die",
+  "pl": "Bäckereien",
+  "pos": "noun",
+  "en": [
+   "bakery"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "city",
+  "ex": "Die Bäckerei öffnet um sechs.",
+  "exen": "The bakery opens at six."
+ },
+ {
+  "w": "Taxi",
+  "art": "das",
+  "pl": "Taxis",
+  "pos": "noun",
+  "en": [
+   "taxi"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Wir nehmen ein Taxi.",
+  "exen": "We're taking a taxi."
+ },
+ {
+  "w": "Sommer",
+  "art": "der",
+  "pl": "Sommer",
+  "pos": "noun",
+  "en": [
+   "summer"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Im Sommer fahren wir ans Meer.",
+  "exen": "In summer we go to the sea."
+ },
+ {
+  "w": "Student",
+  "art": "der",
+  "pl": "Studenten",
+  "pos": "noun",
+  "en": [
+   "student (university)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Mein Bruder ist Student.",
+  "exen": "My brother is a student."
+ },
+ {
+  "w": "aufmachen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to open (informal)"
+  ],
+  "alt": [
+   "öffnen"
+  ],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Kannst du bitte die Tür aufmachen?",
+  "exen": "Can you open the door, please?",
+  "forms": "macht auf · machte auf · hat aufgemacht"
+ },
+ {
+  "w": "dann",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "then"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Zuerst esse ich, dann gehe ich.",
+  "exen": "First I eat, then I go."
+ },
+ {
+  "w": "Stock",
+  "art": "der",
+  "pl": "Stockwerke",
+  "pos": "noun",
+  "en": [
+   "floor (storey)"
+  ],
+  "alt": [
+   "die Etage",
+   "das Stockwerk"
+  ],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Ich wohne im dritten Stock.",
+  "exen": "I live on the third floor."
+ },
+ {
+  "w": "Bis bald!",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "See you soon!"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Tschüss, bis bald!",
+  "exen": "Bye, see you soon!"
+ },
+ {
+  "w": "Herr",
+  "art": "der",
+  "pl": "Herren",
+  "pos": "noun",
+  "en": [
+   "Mr",
+   "gentleman"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Guten Tag, Herr Müller.",
+  "exen": "Good day, Mr Müller."
+ },
+ {
+  "w": "singen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to sing"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "leisure",
+  "ex": "Die Kinder singen ein Lied.",
+  "exen": "The children are singing a song.",
+  "forms": "singt · sang · hat gesungen"
+ },
+ {
+  "w": "Nudeln",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "pasta",
+   "noodles"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Die Kinder essen gern Nudeln.",
+  "exen": "The children like eating pasta."
+ },
+ {
+  "w": "Bauch",
+  "art": "der",
+  "pl": "Bäuche",
+  "pos": "noun",
+  "en": [
+   "belly (tummy)",
+   "stomach"
+  ],
+  "alt": [
+   "der Magen"
+  ],
+  "level": "A1",
+  "theme": "body",
+  "ex": "Mein Bauch tut weh.",
+  "exen": "My stomach hurts."
+ },
+ {
+  "w": "Größe",
+  "art": "die",
+  "pl": "Größen",
+  "pos": "noun",
+  "en": [
+   "size"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Welche Größe haben Sie?",
+  "exen": "What size are you?"
+ },
+ {
+  "w": "bar",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "in cash"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "money",
+  "ex": "Ich zahle bar.",
+  "exen": "I'm paying in cash."
+ },
+ {
+  "w": "Kino",
+  "art": "das",
+  "pl": "Kinos",
+  "pos": "noun",
+  "en": [
+   "cinema"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "city",
+  "ex": "Gehen wir heute ins Kino?",
+  "exen": "Shall we go to the cinema today?"
+ },
+ {
+  "w": "Gleis",
+  "art": "das",
+  "pl": "Gleise",
+  "pos": "noun",
+  "en": [
+   "track (platform number)",
+   "platform"
+  ],
+  "alt": [
+   "die Plattform"
+  ],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Der Zug fährt von Gleis 3.",
+  "exen": "The train leaves from platform 3."
+ },
+ {
+  "w": "Herbst",
+  "art": "der",
+  "pl": "Herbste",
+  "pos": "noun",
+  "en": [
+   "autumn",
+   "fall"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Im Herbst wird es kalt.",
+  "exen": "In autumn it gets cold."
+ },
+ {
+  "w": "Universität",
+  "art": "die",
+  "pl": "Universitäten",
+  "pos": "noun",
+  "en": [
+   "university"
+  ],
+  "alt": [
+   "die Uni",
+   "die Hochschule"
+  ],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Ich studiere an der Universität Bonn.",
+  "exen": "I study at the University of Bonn."
+ },
+ {
+  "w": "zumachen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to close",
+   "to shut"
+  ],
+  "alt": [
+   "schließen"
+  ],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Kannst du bitte das Fenster zumachen?",
+  "exen": "Can you close the window, please?",
+  "forms": "macht zu · machte zu · hat zugemacht"
+ },
+ {
+  "w": "einmal",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "once",
+   "one time"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Ich war einmal in Paris.",
+  "exen": "I was in Paris once."
+ },
+ {
+  "w": "Treppe",
+  "art": "die",
+  "pl": "Treppen",
+  "pos": "noun",
+  "en": [
+   "stairs",
+   "staircase"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Die Treppe ist rechts.",
+  "exen": "The stairs are on the right."
+ },
+ {
+  "w": "Bis morgen!",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "See you tomorrow!"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Bis morgen im Büro!",
+  "exen": "See you tomorrow at the office!"
+ },
+ {
+  "w": "Oma",
+  "art": "die",
+  "pl": "Omas",
+  "pos": "noun",
+  "en": [
+   "grandma"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Meine Oma ist 80 Jahre alt.",
+  "exen": "My grandma is 80 years old."
+ },
+ {
+  "w": "Musik",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "music"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "leisure",
+  "ex": "Ich höre gern Musik.",
+  "exen": "I like listening to music."
+ },
+ {
+  "w": "Fisch",
+  "art": "der",
+  "pl": "Fische",
+  "pos": "noun",
+  "en": [
+   "fish"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Heute gibt es Fisch.",
+  "exen": "Today there's fish."
+ },
+ {
+  "w": "Bein",
+  "art": "das",
+  "pl": "Beine",
+  "pos": "noun",
+  "en": [
+   "leg"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "body",
+  "ex": "Mein Bein tut weh.",
+  "exen": "My leg hurts."
+ },
+ {
+  "w": "Farbe",
+  "art": "die",
+  "pl": "Farben",
+  "pos": "noun",
+  "en": [
+   "colour"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Welche Farbe magst du?",
+  "exen": "Which colour do you like?"
+ },
+ {
+  "w": "Kirche",
+  "art": "die",
+  "pl": "Kirchen",
+  "pos": "noun",
+  "en": [
+   "church"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "city",
+  "ex": "Die Kirche ist sehr alt.",
+  "exen": "The church is very old."
+ },
+ {
+  "w": "Flug",
+  "art": "der",
+  "pl": "Flüge",
+  "pos": "noun",
+  "en": [
+   "flight"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Der Flug dauert zwei Stunden.",
+  "exen": "The flight takes two hours."
+ },
+ {
+  "w": "Winter",
+  "art": "der",
+  "pl": "Winter",
+  "pos": "noun",
+  "en": [
+   "winter"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Der Winter ist hier lang.",
+  "exen": "The winter is long here."
+ },
+ {
+  "w": "studieren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to study (at university)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Meine Tochter studiert Medizin.",
+  "exen": "My daughter studies medicine."
+ },
+ {
+  "w": "stimmen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to be right",
+   "to be correct"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Das stimmt nicht.",
+  "exen": "That's not right."
+ },
+ {
+  "w": "Mittag",
+  "art": "der",
+  "pl": "Mittage",
+  "pos": "noun",
+  "en": [
+   "midday",
+   "noon"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Am Mittag esse ich in der Kantine.",
+  "exen": "At midday I eat in the canteen."
+ },
+ {
+  "w": "Aufzug",
+  "art": "der",
+  "pl": "Aufzüge",
+  "pos": "noun",
+  "en": [
+   "lift",
+   "elevator"
+  ],
+  "alt": [
+   "der Lift"
+  ],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Der Aufzug ist kaputt.",
+  "exen": "The lift is broken."
+ },
+ {
+  "w": "Herzlich willkommen!",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "Welcome!"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Herzlich willkommen in Hamburg!",
+  "exen": "Welcome to Hamburg!"
+ },
+ {
+  "w": "Opa",
+  "art": "der",
+  "pl": "Opas",
+  "pos": "noun",
+  "en": [
+   "grandpa"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Mein Opa wohnt auf dem Land.",
+  "exen": "My grandpa lives in the country."
+ },
+ {
+  "w": "Spiel",
+  "art": "das",
+  "pl": "Spiele",
+  "pos": "noun",
+  "en": [
+   "game",
+   "match"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "leisure",
+  "ex": "Das Spiel beginnt um drei.",
+  "exen": "The match starts at three."
+ },
+ {
+  "w": "Hähnchen",
+  "art": "das",
+  "pl": "Hähnchen",
+  "pos": "noun",
+  "en": [
+   "chicken (food)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Ich nehme das Hähnchen mit Reis.",
+  "exen": "I'll have the chicken with rice."
+ },
+ {
+  "w": "Arm",
+  "art": "der",
+  "pl": "Arme",
+  "pos": "noun",
+  "en": [
+   "arm"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "body",
+  "ex": "Er hat den Arm gebrochen.",
+  "exen": "He has broken his arm."
+ },
+ {
+  "w": "rot",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "red"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Ich möchte das rote Kleid.",
+  "exen": "I'd like the red dress."
+ },
+ {
+  "w": "Park",
+  "art": "der",
+  "pl": "Parks",
+  "pos": "noun",
+  "en": [
+   "park"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "city",
+  "ex": "Wir gehen im Park spazieren.",
+  "exen": "We're going for a walk in the park."
+ },
+ {
+  "w": "Reise",
+  "art": "die",
+  "pl": "Reisen",
+  "pos": "noun",
+  "en": [
+   "trip",
+   "journey"
+  ],
+  "alt": [
+   "der Ausflug"
+  ],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Die Reise war sehr schön.",
+  "exen": "The trip was very nice."
+ },
+ {
+  "w": "Meer",
+  "art": "das",
+  "pl": "Meere",
+  "pos": "noun",
+  "en": [
+   "sea"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Wir fahren ans Meer.",
+  "exen": "We're going to the seaside."
+ },
+ {
+  "w": "Prüfung",
+  "art": "die",
+  "pl": "Prüfungen",
+  "pos": "noun",
+  "en": [
+   "exam",
+   "test"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Morgen habe ich eine Prüfung.",
+  "exen": "I have an exam tomorrow."
+ },
+ {
+  "w": "vergessen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to forget"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich habe meinen Schlüssel vergessen.",
+  "exen": "I forgot my key.",
+  "forms": "vergisst · vergaß · hat vergessen"
+ },
+ {
+  "w": "Nachmittag",
+  "art": "der",
+  "pl": "Nachmittage",
+  "pos": "noun",
+  "en": [
+   "afternoon"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Am Nachmittag habe ich Zeit.",
+  "exen": "I have time in the afternoon."
+ },
+ {
+  "w": "Schrank",
+  "art": "der",
+  "pl": "Schränke",
+  "pos": "noun",
+  "en": [
+   "cupboard",
+   "wardrobe"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Die Teller sind im Schrank.",
+  "exen": "The plates are in the cupboard."
+ },
+ {
+  "w": "Freut mich!",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "Nice to meet you!"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Ich bin Paul. – Freut mich!",
+  "exen": "I'm Paul. – Nice to meet you!"
+ },
+ {
+  "w": "Großeltern",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "grandparents"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Am Sonntag besuchen wir die Großeltern.",
+  "exen": "On Sunday we visit our grandparents."
+ },
+ {
+  "w": "spazieren gehen",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "to go for a walk"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "leisure",
+  "ex": "Am Sonntag gehen wir spazieren.",
+  "exen": "On Sunday we go for a walk."
+ },
+ {
+  "w": "Wurst",
+  "art": "die",
+  "pl": "Würste",
+  "pos": "noun",
+  "en": [
+   "sausage",
+   "cold meat"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Möchtest du Wurst oder Käse?",
+  "exen": "Would you like sausage or cheese?"
+ },
+ {
+  "w": "Fuß",
+  "art": "der",
+  "pl": "Füße",
+  "pos": "noun",
+  "en": [
+   "foot"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "body",
+  "ex": "Mein Fuß tut weh.",
+  "exen": "My foot hurts."
+ },
+ {
+  "w": "blau",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "blue"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Die Hose ist blau.",
+  "exen": "The trousers are blue."
+ },
+ {
+  "w": "Rathaus",
+  "art": "das",
+  "pl": "Rathäuser",
+  "pos": "noun",
+  "en": [
+   "town hall"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "city",
+  "ex": "Das Rathaus ist in der Stadtmitte.",
+  "exen": "The town hall is in the town centre."
+ },
+ {
+  "w": "reisen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to travel"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Ich reise gern.",
+  "exen": "I like travelling."
+ },
+ {
+  "w": "See",
+  "art": "der",
+  "pl": "Seen",
+  "pos": "noun",
+  "en": [
+   "lake"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Im Sommer schwimmen wir im See.",
+  "exen": "In summer we swim in the lake."
+ },
+ {
+  "w": "Buch",
+  "art": "das",
+  "pl": "Bücher",
+  "pos": "noun",
+  "en": [
+   "book"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Ich lese ein Buch.",
+  "exen": "I'm reading a book."
+ },
+ {
+  "w": "wünschen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to wish"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich wünsche dir alles Gute.",
+  "exen": "I wish you all the best."
+ },
+ {
+  "w": "Vormittag",
+  "art": "der",
+  "pl": "Vormittage",
+  "pos": "noun",
+  "en": [
+   "(late) morning",
+   "before noon"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Am Vormittag arbeite ich.",
+  "exen": "I work in the morning."
+ },
+ {
+  "w": "Sofa",
+  "art": "das",
+  "pl": "Sofas",
+  "pos": "noun",
+  "en": [
+   "sofa",
+   "couch"
+  ],
+  "alt": [
+   "die Couch"
+  ],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Wir sitzen auf dem Sofa.",
+  "exen": "We are sitting on the sofa."
+ },
+ {
+  "w": "Es tut mir leid.",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "I'm sorry."
+  ],
+  "alt": [
+   "Tut mir leid."
+  ],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Es tut mir leid, ich habe keine Zeit.",
+  "exen": "I'm sorry, I don't have time."
+ },
+ {
+  "w": "Alter",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "age"
+  ],
+  "alt": [
+   "das Zeitalter"
+  ],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Name, Alter, Adresse – bitte hier eintragen.",
+  "exen": "Name, age, address – please fill in here."
+ },
+ {
+  "w": "Rad fahren",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "to cycle",
+   "to ride a bike"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "leisure",
+  "ex": "Ich fahre gern Rad.",
+  "exen": "I like cycling."
+ },
+ {
+  "w": "Kuchen",
+  "art": "der",
+  "pl": "Kuchen",
+  "pos": "noun",
+  "en": [
+   "cake"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Am Sonntag backe ich einen Kuchen.",
+  "exen": "On Sunday I'm baking a cake."
+ },
+ {
+  "w": "Fieber",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "fever",
+   "temperature"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "body",
+  "ex": "Das Kind hat Fieber.",
+  "exen": "The child has a temperature."
+ },
+ {
+  "w": "grün",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "green"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Die Jacke ist grün.",
+  "exen": "The jacket is green."
+ },
+ {
+  "w": "links",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "(on the) left",
+   "to the left"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "city",
+  "ex": "Gehen Sie hier links.",
+  "exen": "Go left here."
+ },
+ {
+  "w": "fliegen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to fly"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Wir fliegen nach Spanien.",
+  "exen": "We're flying to Spain.",
+  "forms": "fliegt · flog · ist geflogen"
+ },
+ {
+  "w": "Berg",
+  "art": "der",
+  "pl": "Berge",
+  "pos": "noun",
+  "en": [
+   "mountain"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Wir wandern in den Bergen.",
+  "exen": "We go hiking in the mountains."
+ },
+ {
+  "w": "Heft",
+  "art": "das",
+  "pl": "Hefte",
+  "pos": "noun",
+  "en": [
+   "exercise book",
+   "notebook"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Schreibt die Wörter ins Heft.",
+  "exen": "Write the words in your exercise books."
+ },
+ {
+  "w": "lang",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "long"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Der Film ist sehr lang.",
+  "exen": "The film is very long."
+ },
+ {
+  "w": "morgens",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "in the morning(s)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Morgens trinke ich Kaffee.",
+  "exen": "In the morning I drink coffee."
+ },
+ {
+  "w": "Lampe",
+  "art": "die",
+  "pl": "Lampen",
+  "pos": "noun",
+  "en": [
+   "lamp"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Die Lampe ist neu.",
+  "exen": "The lamp is new."
+ },
+ {
+  "w": "Viel Spaß!",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "Have fun!"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Viel Spaß auf der Party!",
+  "exen": "Have fun at the party!"
+ },
+ {
+  "w": "Land",
+  "art": "das",
+  "pl": "Länder",
+  "pos": "noun",
+  "en": [
+   "country",
+   "countryside"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Aus welchem Land kommst du?",
+  "exen": "Which country are you from?"
+ },
+ {
+  "w": "Suppe",
+  "art": "die",
+  "pl": "Suppen",
+  "pos": "noun",
+  "en": [
+   "soup"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Die Suppe ist heiß.",
+  "exen": "The soup is hot."
+ },
+ {
+  "w": "Schmerzen",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "pain",
+   "ache"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "body",
+  "ex": "Ich habe Schmerzen im Rücken.",
+  "exen": "I have pain in my back."
+ },
+ {
+  "w": "gelb",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "yellow"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Das T-Shirt ist gelb.",
+  "exen": "The T-shirt is yellow."
+ },
+ {
+  "w": "rechts",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "(on the) right",
+   "to the right"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "city",
+  "ex": "Die Post ist rechts.",
+  "exen": "The post office is on the right."
+ },
+ {
+  "w": "Urlaub",
+  "art": "der",
+  "pl": "Urlaube",
+  "pos": "noun",
+  "en": [
+   "holiday",
+   "vacation"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Im Sommer machen wir Urlaub.",
+  "exen": "We go on holiday in summer."
+ },
+ {
+  "w": "Kugelschreiber",
+  "art": "der",
+  "pl": "Kugelschreiber",
+  "pos": "noun",
+  "en": [
+   "ballpoint pen",
+   "biro"
+  ],
+  "alt": [
+   "der Kuli"
+  ],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Hast du einen Kugelschreiber?",
+  "exen": "Do you have a pen?"
+ },
+ {
+  "w": "kurz",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "short",
+   "brief"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich habe eine kurze Frage.",
+  "exen": "I have a short question."
+ },
+ {
+  "w": "abends",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "in the evening(s)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Abends lese ich gern.",
+  "exen": "In the evenings I like to read."
+ },
+ {
+  "w": "Regal",
+  "art": "das",
+  "pl": "Regale",
+  "pos": "noun",
+  "en": [
+   "shelf",
+   "bookcase"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Die Bücher stehen im Regal.",
+  "exen": "The books are on the shelf."
+ },
+ {
+  "w": "alles klar",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "all right",
+   "got it"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Alles klar, bis morgen!",
+  "exen": "All right, see you tomorrow!"
+ },
+ {
+  "w": "Sprache",
+  "art": "die",
+  "pl": "Sprachen",
+  "pos": "noun",
+  "en": [
+   "language"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Welche Sprachen sprechen Sie?",
+  "exen": "Which languages do you speak?"
+ },
+ {
+  "w": "Salat",
+  "art": "der",
+  "pl": "Salate",
+  "pos": "noun",
+  "en": [
+   "salad",
+   "lettuce"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Ich nehme einen Salat.",
+  "exen": "I'll have a salad."
+ },
+ {
+  "w": "Praxis",
+  "art": "die",
+  "pl": "Praxen",
+  "pos": "noun",
+  "en": [
+   "doctor's surgery",
+   "practice"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "body",
+  "ex": "Die Praxis ist am Montag geschlossen.",
+  "exen": "The surgery is closed on Monday."
+ },
+ {
+  "w": "schwarz",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "black"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Die Schuhe sind schwarz.",
+  "exen": "The shoes are black."
+ },
+ {
+  "w": "geradeaus",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "straight ahead",
+   "straight on"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "city",
+  "ex": "Gehen Sie immer geradeaus.",
+  "exen": "Keep going straight ahead."
+ },
+ {
+  "w": "Urlaub machen",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "to go on holiday"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Wir machen Urlaub in Italien.",
+  "exen": "We're going on holiday in Italy."
+ },
+ {
+  "w": "Wort",
+  "art": "das",
+  "pl": "Wörter",
+  "pos": "noun",
+  "en": [
+   "word"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Das Wort kenne ich nicht.",
+  "exen": "I don't know that word."
+ },
+ {
+  "w": "schnell",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "fast",
+   "quick"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Der Zug ist sehr schnell.",
+  "exen": "The train is very fast."
+ },
+ {
+  "w": "Januar",
+  "art": "der",
+  "pl": "Januare",
+  "pos": "noun",
+  "en": [
+   "January"
+  ],
+  "alt": [
+   "der Jänner"
+  ],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Im Januar ist es kalt.",
+  "exen": "It's cold in January."
+ },
+ {
+  "w": "Möbel",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "furniture"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Wir brauchen neue Möbel.",
+  "exen": "We need new furniture."
+ },
+ {
+  "w": "in Ordnung",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "okay",
+   "all right"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Um acht? In Ordnung.",
+  "exen": "At eight? Okay."
+ },
+ {
+  "w": "Deutsch",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "German (language)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Ich lerne Deutsch.",
+  "exen": "I'm learning German."
+ },
+ {
+  "w": "Deutsche",
+  "art": "der",
+  "pl": "Deutschen",
+  "pos": "noun",
+  "en": [
+   "German (person)"
+  ],
+  "alt": [
+   "die Deutsche"
+  ],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Mein Nachbar ist Deutscher.",
+  "exen": "My neighbour is German."
+ },
+ {
+  "w": "Inder",
+  "art": "der",
+  "pl": "Inder",
+  "pos": "noun",
+  "en": [
+   "Indian (man)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Ich bin Inder und wohne in Berlin.",
+  "exen": "I'm Indian and live in Berlin."
+ },
+ {
+  "w": "Inderin",
+  "art": "die",
+  "pl": "Inderinnen",
+  "pos": "noun",
+  "en": [
+   "Indian (woman)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Meine Kollegin ist Inderin.",
+  "exen": "My colleague is Indian."
+ },
+ {
+  "w": "Tomate",
+  "art": "die",
+  "pl": "Tomaten",
+  "pos": "noun",
+  "en": [
+   "tomato"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Ich kaufe ein Kilo Tomaten.",
+  "exen": "I'm buying a kilo of tomatoes."
+ },
+ {
+  "w": "Termin",
+  "art": "der",
+  "pl": "Termine",
+  "pos": "noun",
+  "en": [
+   "appointment"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "body",
+  "ex": "Ich habe morgen einen Termin beim Arzt.",
+  "exen": "I have a doctor's appointment tomorrow."
+ },
+ {
+  "w": "weiß",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "white"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Er trägt ein weißes Hemd.",
+  "exen": "He's wearing a white shirt."
+ },
+ {
+  "w": "weit",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "far"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "city",
+  "ex": "Ist es weit bis zum Bahnhof?",
+  "exen": "Is it far to the station?"
+ },
+ {
+  "w": "Hotel",
+  "art": "das",
+  "pl": "Hotels",
+  "pos": "noun",
+  "en": [
+   "hotel"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Das Hotel ist in der Nähe vom Bahnhof.",
+  "exen": "The hotel is near the station."
+ },
+ {
+  "w": "Satz",
+  "art": "der",
+  "pl": "Sätze",
+  "pos": "noun",
+  "en": [
+   "sentence"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Lesen Sie den Satz.",
+  "exen": "Read the sentence."
+ },
+ {
+  "w": "langsam",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "slow",
+   "slowly"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Bitte sprechen Sie langsam.",
+  "exen": "Please speak slowly."
+ },
+ {
+  "w": "Februar",
+  "art": "der",
+  "pl": "Februare",
+  "pos": "noun",
+  "en": [
+   "February"
+  ],
+  "alt": [
+   "der Feber"
+  ],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Mein Geburtstag ist im Februar.",
+  "exen": "My birthday is in February."
+ },
+ {
+  "w": "Kühlschrank",
+  "art": "der",
+  "pl": "Kühlschränke",
+  "pos": "noun",
+  "en": [
+   "fridge"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Die Milch ist im Kühlschrank.",
+  "exen": "The milk is in the fridge."
+ },
+ {
+  "w": "na klar",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "of course",
+   "sure"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Kommst du mit? – Na klar!",
+  "exen": "Are you coming? – Of course!"
+ },
+ {
+  "w": "Englisch",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "English (language)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Sprechen Sie Englisch?",
+  "exen": "Do you speak English?"
+ },
+ {
+  "w": "Banane",
+  "art": "die",
+  "pl": "Bananen",
+  "pos": "noun",
+  "en": [
+   "banana"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Die Bananen sind gelb.",
+  "exen": "The bananas are yellow."
+ },
+ {
+  "w": "Krankenhaus",
+  "art": "das",
+  "pl": "Krankenhäuser",
+  "pos": "noun",
+  "en": [
+   "hospital"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "body",
+  "ex": "Meine Oma ist im Krankenhaus.",
+  "exen": "My grandma is in hospital."
+ },
+ {
+  "w": "anprobieren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to try on"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Kann ich die Hose anprobieren?",
+  "exen": "Can I try on the trousers?",
+  "forms": "probiert an · probierte an · hat anprobiert"
+ },
+ {
+  "w": "nah",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "near",
+   "close"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "city",
+  "ex": "Die Schule ist ganz nah.",
+  "exen": "The school is very close."
+ },
+ {
+  "w": "Koffer",
+  "art": "der",
+  "pl": "Koffer",
+  "pos": "noun",
+  "en": [
+   "suitcase"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Mein Koffer ist sehr schwer.",
+  "exen": "My suitcase is very heavy."
+ },
+ {
+  "w": "Hausaufgabe",
+  "art": "die",
+  "pl": "Hausaufgaben",
+  "pos": "noun",
+  "en": [
+   "homework (assignment)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Hast du deine Hausaufgaben gemacht?",
+  "exen": "Have you done your homework?"
+ },
+ {
+  "w": "einfach",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "easy",
+   "simple"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Die Übung ist einfach.",
+  "exen": "The exercise is easy."
+ },
+ {
+  "w": "März",
+  "art": "der",
+  "pl": "Märze",
+  "pos": "noun",
+  "en": [
+   "March"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Im März beginnt der Frühling.",
+  "exen": "Spring begins in March."
+ },
+ {
+  "w": "Herd",
+  "art": "der",
+  "pl": "Herde",
+  "pos": "noun",
+  "en": [
+   "cooker",
+   "stove"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Der Topf steht auf dem Herd.",
+  "exen": "The pot is on the stove."
+ },
+ {
+  "w": "natürlich",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "of course",
+   "naturally"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Natürlich helfe ich dir.",
+  "exen": "Of course I'll help you."
+ },
+ {
+  "w": "verheiratet",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "married"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Sind Sie verheiratet?",
+  "exen": "Are you married?"
+ },
+ {
+  "w": "Orange",
+  "art": "die",
+  "pl": "Orangen",
+  "pos": "noun",
+  "en": [
+   "orange (fruit)"
+  ],
+  "alt": [
+   "die Apfelsine"
+  ],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Ich kaufe Orangen.",
+  "exen": "I'm buying oranges."
+ },
+ {
+  "w": "Apotheke",
+  "art": "die",
+  "pl": "Apotheken",
+  "pos": "noun",
+  "en": [
+   "pharmacy",
+   "chemist's"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "body",
+  "ex": "Die Apotheke ist neben der Bank.",
+  "exen": "The pharmacy is next to the bank."
+ },
+ {
+  "w": "tragen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to wear",
+   "to carry"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Was soll ich heute tragen?",
+  "exen": "What should I wear today?",
+  "forms": "trägt · trug · hat getragen"
+ },
+ {
+  "w": "Pass",
+  "art": "der",
+  "pl": "Pässe",
+  "pos": "noun",
+  "en": [
+   "passport - add alt der Reisepass",
+   "passport"
+  ],
+  "alt": [
+   "der Reisepass"
+  ],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Ich brauche einen neuen Pass.",
+  "exen": "I need a new passport."
+ },
+ {
+  "w": "Übung",
+  "art": "die",
+  "pl": "Übungen",
+  "pos": "noun",
+  "en": [
+   "exercise",
+   "practice"
+  ],
+  "alt": [
+   "die Bewegung"
+  ],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Machen Sie Übung 3.",
+  "exen": "Do exercise 3."
+ },
+ {
+  "w": "schwer",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "difficult",
+   "heavy"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Der Koffer ist schwer.",
+  "exen": "The suitcase is heavy."
+ },
+ {
+  "w": "April",
+  "art": "der",
+  "pl": "Aprile",
+  "pos": "noun",
+  "en": [
+   "April"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Im April regnet es oft.",
+  "exen": "It often rains in April."
+ },
+ {
+  "w": "mieten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to rent (as tenant)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Wir möchten eine Wohnung mieten.",
+  "exen": "We want to rent a flat."
+ },
+ {
+  "w": "anrufen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to call (phone)",
+   "to ring"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Ich muss meine Mutter anrufen.",
+  "exen": "I have to call my mother.",
+  "forms": "ruft an · rief an · hat angerufen"
+ },
+ {
+  "w": "ledig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "single (not married)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Ich bin ledig.",
+  "exen": "I'm single."
+ },
+ {
+  "w": "Glas",
+  "art": "das",
+  "pl": "Gläser",
+  "pos": "noun",
+  "en": [
+   "glass"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Ein Glas Wein, bitte.",
+  "exen": "A glass of wine, please."
+ },
+ {
+  "w": "passen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to fit",
+   "to suit"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Die Schuhe passen gut.",
+  "exen": "The shoes fit well."
+ },
+ {
+  "w": "Ausweis",
+  "art": "der",
+  "pl": "Ausweise",
+  "pos": "noun",
+  "en": [
+   "ID card"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Haben Sie Ihren Ausweis dabei?",
+  "exen": "Do you have your ID with you?"
+ },
+ {
+  "w": "üben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to practise"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Ich übe jeden Tag Deutsch.",
+  "exen": "I practise German every day."
+ },
+ {
+  "w": "leicht",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "easy",
+   "light (not heavy)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Die Prüfung war leicht.",
+  "exen": "The exam was easy."
+ },
+ {
+  "w": "Mai",
+  "art": "der",
+  "pl": "Maie",
+  "pos": "noun",
+  "en": [
+   "May"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Die Hochzeit ist im Mai.",
+  "exen": "The wedding is in May."
+ },
+ {
+  "w": "umziehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to move (house)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Wir wollen nächsten Monat umziehen.",
+  "exen": "We want to move next month.",
+  "forms": "zieht um · zog um · ist umgezogen"
+ },
+ {
+  "w": "antworten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to answer",
+   "to reply"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Bitte antworten Sie bis Freitag.",
+  "exen": "Please reply by Friday."
+ },
+ {
+  "w": "Partner",
+  "art": "der",
+  "pl": "Partner",
+  "pos": "noun",
+  "en": [
+   "partner"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Mein Partner kommt aus Frankreich.",
+  "exen": "My partner is from France."
+ },
+ {
+  "w": "Flasche",
+  "art": "die",
+  "pl": "Flaschen",
+  "pos": "noun",
+  "en": [
+   "bottle"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Ich kaufe eine Flasche Wasser.",
+  "exen": "I'm buying a bottle of water."
+ },
+ {
+  "w": "Geschäft",
+  "art": "das",
+  "pl": "Geschäfte",
+  "pos": "noun",
+  "en": [
+   "shop",
+   "store",
+   "business"
+  ],
+  "alt": [
+   "der Laden"
+  ],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Das Geschäft öffnet um neun.",
+  "exen": "The shop opens at nine."
+ },
+ {
+  "w": "ankommen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to arrive"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Wir möchten pünktlich ankommen.",
+  "exen": "We want to arrive on time.",
+  "forms": "kommt an · kam an · ist angekommen"
+ },
+ {
+  "w": "wiederholen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to repeat",
+   "to revise"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Können Sie das bitte wiederholen?",
+  "exen": "Could you repeat that, please?"
+ },
+ {
+  "w": "wichtig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "important"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Das ist sehr wichtig.",
+  "exen": "That is very important."
+ },
+ {
+  "w": "Juni",
+  "art": "der",
+  "pl": "Junis",
+  "pos": "noun",
+  "en": [
+   "June"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Im Juni haben wir Urlaub.",
+  "exen": "We're on holiday in June."
+ },
+ {
+  "w": "einziehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to move in"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Wann können wir einziehen?",
+  "exen": "When can we move in?",
+  "forms": "zieht ein · zog ein · ist eingezogen"
+ },
+ {
+  "w": "erzählen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to tell (a story)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Kannst du vom Urlaub erzählen?",
+  "exen": "Can you tell us about the holiday?"
+ },
+ {
+  "w": "Gast",
+  "art": "der",
+  "pl": "Gäste",
+  "pos": "noun",
+  "en": [
+   "guest"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Wir haben heute Gäste.",
+  "exen": "We have guests today."
+ },
+ {
+  "w": "Tasse",
+  "art": "die",
+  "pl": "Tassen",
+  "pos": "noun",
+  "en": [
+   "cup"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Möchten Sie eine Tasse Kaffee?",
+  "exen": "Would you like a cup of coffee?"
+ },
+ {
+  "w": "Kasse",
+  "art": "die",
+  "pl": "Kassen",
+  "pos": "noun",
+  "en": [
+   "checkout",
+   "till"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Bitte bezahlen Sie an der Kasse.",
+  "exen": "Please pay at the checkout."
+ },
+ {
+  "w": "abfahren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to depart",
+   "to leave (vehicle)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Der Zug soll um acht abfahren.",
+  "exen": "The train is due to leave at eight.",
+  "forms": "fährt ab · fuhr ab · ist abgefahren"
+ },
+ {
+  "w": "interessant",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "interesting"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Das Buch ist interessant.",
+  "exen": "The book is interesting."
+ },
+ {
+  "w": "Juli",
+  "art": "der",
+  "pl": "Julis",
+  "pos": "noun",
+  "en": [
+   "July"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Im Juli ist es heiß.",
+  "exen": "It's hot in July."
+ },
+ {
+  "w": "aufstehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to get up"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Ich muss um sechs aufstehen.",
+  "exen": "I have to get up at six.",
+  "forms": "steht auf · stand auf · ist aufgestanden"
+ },
+ {
+  "w": "telefonieren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to phone",
+   "to be on the phone"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Er telefoniert gerade.",
+  "exen": "He is on the phone right now."
+ },
+ {
+  "w": "Geburtstag",
+  "art": "der",
+  "pl": "Geburtstage",
+  "pos": "noun",
+  "en": [
+   "birthday"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Wann hast du Geburtstag?",
+  "exen": "When is your birthday?"
+ },
+ {
+  "w": "Restaurant",
+  "art": "das",
+  "pl": "Restaurants",
+  "pos": "noun",
+  "en": [
+   "restaurant"
+  ],
+  "alt": [
+   "die Gaststätte"
+  ],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Wir gehen heute ins Restaurant.",
+  "exen": "We're going to a restaurant today."
+ },
+ {
+  "w": "umsteigen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to change (trains, buses)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "In Frankfurt müssen Sie umsteigen.",
+  "exen": "You have to change in Frankfurt.",
+  "forms": "steigt um · stieg um · ist umgestiegen"
+ },
+ {
+  "w": "toll",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "great",
+   "fantastic"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Die Party war toll!",
+  "exen": "The party was great!"
+ },
+ {
+  "w": "August",
+  "art": "der",
+  "pl": "Auguste",
+  "pos": "noun",
+  "en": [
+   "August"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Im August fahren wir ans Meer.",
+  "exen": "In August we go to the sea."
+ },
+ {
+  "w": "duschen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to shower",
+   "to have a shower"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Ich dusche jeden Morgen.",
+  "exen": "I shower every morning."
+ },
+ {
+  "w": "Telefonnummer",
+  "art": "die",
+  "pl": "Telefonnummern",
+  "pos": "noun",
+  "en": [
+   "phone number"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Wie ist deine Telefonnummer?",
+  "exen": "What's your phone number?"
+ },
+ {
+  "w": "Adresse",
+  "art": "die",
+  "pl": "Adressen",
+  "pos": "noun",
+  "en": [
+   "address"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Wie ist deine Adresse?",
+  "exen": "What's your address?"
+ },
+ {
+  "w": "Café",
+  "art": "das",
+  "pl": "Cafés",
+  "pos": "noun",
+  "en": [
+   "café"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Wir treffen uns im Café.",
+  "exen": "We're meeting in the café."
+ },
+ {
+  "w": "einsteigen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to get on",
+   "to board"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Bitte schnell einsteigen!",
+  "exen": "Please board quickly!",
+  "forms": "steigt ein · stieg ein · ist eingestiegen"
+ },
+ {
+  "w": "genau",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "exact",
+   "exactly"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Genau, das ist richtig.",
+  "exen": "Exactly, that's right."
+ },
+ {
+  "w": "September",
+  "art": "der",
+  "pl": "September",
+  "pos": "noun",
+  "en": [
+   "September"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Der Kurs beginnt im September.",
+  "exen": "The course starts in September."
+ },
+ {
+  "w": "waschen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to wash"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Ich wasche meine Kleidung.",
+  "exen": "I'm washing my clothes.",
+  "forms": "wäscht · wusch · hat gewaschen"
+ },
+ {
+  "w": "schicken",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to send"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Kannst du mir die Adresse schicken?",
+  "exen": "Can you send me the address?"
+ },
+ {
+  "w": "geboren",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "born"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Ich bin 1990 geboren.",
+  "exen": "I was born in 1990."
+ },
+ {
+  "w": "Speisekarte",
+  "art": "die",
+  "pl": "Speisekarten",
+  "pos": "noun",
+  "en": [
+   "menu"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Die Speisekarte, bitte.",
+  "exen": "The menu, please."
+ },
+ {
+  "w": "aussteigen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to get off"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Wir müssen hier aussteigen.",
+  "exen": "We have to get off here.",
+  "forms": "steigt aus · stieg aus · ist ausgestiegen"
+ },
+ {
+  "w": "fertig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "finished",
+   "ready"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich bin gleich fertig.",
+  "exen": "I'll be finished in a moment."
+ },
+ {
+  "w": "Oktober",
+  "art": "der",
+  "pl": "Oktober",
+  "pos": "noun",
+  "en": [
+   "October"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Im Oktober ziehe ich um.",
+  "exen": "In October I'm moving."
+ },
+ {
+  "w": "kochen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to cook"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Heute koche ich Nudeln.",
+  "exen": "Today I'm cooking pasta."
+ },
+ {
+  "w": "kennenlernen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to get to know",
+   "to meet (for the first time)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Ich möchte dich gern kennenlernen.",
+  "exen": "I'd like to get to know you.",
+  "forms": "lernt kennen · lernte kennen · hat kennengelernt"
+ },
+ {
+  "w": "Rechnung",
+  "art": "die",
+  "pl": "Rechnungen",
+  "pos": "noun",
+  "en": [
+   "bill",
+   "invoice"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Die Rechnung, bitte!",
+  "exen": "The bill, please!"
+ },
+ {
+  "w": "Abfahrt",
+  "art": "die",
+  "pl": "Abfahrten",
+  "pos": "noun",
+  "en": [
+   "departure"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Die Abfahrt ist um 9 Uhr.",
+  "exen": "Departure is at 9 o'clock."
+ },
+ {
+  "w": "frei",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "free (not taken)",
+   "off (work)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ist der Platz hier frei?",
+  "exen": "Is this seat free?"
+ },
+ {
+  "w": "November",
+  "art": "der",
+  "pl": "November",
+  "pos": "noun",
+  "en": [
+   "November"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Im November ist es oft grau.",
+  "exen": "In November it's often grey."
+ },
+ {
+  "w": "putzen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to clean"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Am Samstag putzen wir die Wohnung.",
+  "exen": "On Saturday we clean the flat."
+ },
+ {
+  "w": "besuchen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to visit"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Ich besuche am Wochenende meine Eltern.",
+  "exen": "I'm visiting my parents at the weekend."
+ },
+ {
+  "w": "bestellen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to order"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Ich möchte bitte bestellen.",
+  "exen": "I'd like to order, please."
+ },
+ {
+  "w": "Ankunft",
+  "art": "die",
+  "pl": "Ankünfte",
+  "pos": "noun",
+  "en": [
+   "arrival"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Die Ankunft ist um 12 Uhr.",
+  "exen": "Arrival is at 12 o'clock."
+ },
+ {
+  "w": "möglich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "possible"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ist das möglich?",
+  "exen": "Is that possible?"
+ },
+ {
+  "w": "Dezember",
+  "art": "der",
+  "pl": "Dezember",
+  "pos": "noun",
+  "en": [
+   "December"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Im Dezember schneit es manchmal.",
+  "exen": "In December it sometimes snows."
+ },
+ {
+  "w": "aufräumen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to tidy up"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Kannst du dein Zimmer aufräumen?",
+  "exen": "Can you tidy up your room?",
+  "forms": "räumt auf · räumte auf · hat aufgeräumt"
+ },
+ {
+  "w": "treffen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to meet"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Ich treffe heute meine Freunde.",
+  "exen": "I'm meeting my friends today.",
+  "forms": "trifft · traf · hat getroffen"
+ },
+ {
+  "w": "schmecken",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to taste (good)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Schmeckt es dir?",
+  "exen": "Do you like it (the food)?"
+ },
+ {
+  "w": "laut",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "loud",
+   "noisy"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Die Musik ist zu laut.",
+  "exen": "The music is too loud."
+ },
+ {
+  "w": "Datum",
+  "art": "das",
+  "pl": "Daten",
+  "pos": "noun",
+  "en": [
+   "date (calendar)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Welches Datum ist heute?",
+  "exen": "What's the date today?"
+ },
+ {
+  "w": "frühstücken",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to have breakfast"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Wir frühstücken um acht.",
+  "exen": "We have breakfast at eight."
+ },
+ {
+  "w": "einladen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to invite"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Ich möchte dich zum Essen einladen.",
+  "exen": "I'd like to invite you for dinner.",
+  "forms": "lädt ein · lud ein · hat eingeladen"
+ },
+ {
+  "w": "Hunger haben",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "to be hungry"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Ich habe Hunger.",
+  "exen": "I'm hungry."
+ },
+ {
+  "w": "leise",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "quiet (sound)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Bitte sprich leise, das Baby schläft.",
+  "exen": "Please speak quietly, the baby is asleep."
+ },
+ {
+  "w": "Kalender",
+  "art": "der",
+  "pl": "Kalender",
+  "pos": "noun",
+  "en": [
+   "calendar",
+   "diary"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Ich schreibe den Termin in den Kalender.",
+  "exen": "I'm writing the appointment in my diary."
+ },
+ {
+  "w": "fernsehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to watch TV"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Am Abend möchte ich fernsehen.",
+  "exen": "In the evening I want to watch TV.",
+  "forms": "sieht fern · sah fern · hat ferngesehen"
+ },
+ {
+  "w": "mitbringen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to bring along"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Soll ich etwas mitbringen?",
+  "exen": "Shall I bring anything?",
+  "forms": "bringt mit · brachte mit · hat mitgebracht"
+ },
+ {
+  "w": "Durst haben",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "to be thirsty"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Hast du Durst?",
+  "exen": "Are you thirsty?"
+ },
+ {
+  "w": "andere",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "other",
+   "different"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich möchte eine andere Farbe.",
+  "exen": "I'd like a different colour."
+ },
+ {
+  "w": "halb",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "half",
+   "half past (before the hour)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Es ist halb acht.",
+  "exen": "It's half past seven."
+ },
+ {
+  "w": "zu Hause",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "at home"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Ich bin heute Abend zu Hause.",
+  "exen": "I'm at home this evening."
+ },
+ {
+  "w": "lecker",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "tasty",
+   "delicious"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Die Suppe ist sehr lecker.",
+  "exen": "The soup is very tasty."
+ },
+ {
+  "w": "kaputt",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "broken"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Mein Handy ist kaputt.",
+  "exen": "My mobile phone is broken."
+ },
+ {
+  "w": "Viertel",
+  "art": "das",
+  "pl": "Viertel",
+  "pos": "noun",
+  "en": [
+   "quarter"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Es ist Viertel nach drei.",
+  "exen": "It's quarter past three."
+ },
+ {
+  "w": "nach Hause",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "(to) home",
+   "homeward"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Ich gehe jetzt nach Hause.",
+  "exen": "I'm going home now."
+ },
+ {
+  "w": "allein",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "alone"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich wohne allein.",
+  "exen": "I live alone."
+ },
+ {
+  "w": "spät",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "late"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Es ist schon spät.",
+  "exen": "It's already late."
+ },
+ {
+  "w": "reparieren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to repair",
+   "to fix"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Kannst du mein Fahrrad reparieren?",
+  "exen": "Can you fix my bike?"
+ },
+ {
+  "w": "unser",
+  "art": "",
+  "pl": null,
+  "pos": "det",
+  "en": [
+   "our"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Unser Haus ist klein.",
+  "exen": "Our house is small."
+ },
+ {
+  "w": "früh",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "early"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Ich stehe früh auf.",
+  "exen": "I get up early."
+ },
+ {
+  "w": "euer",
+  "art": "",
+  "pl": null,
+  "pos": "det",
+  "en": [
+   "your (informal, plural)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Wo ist euer Lehrer?",
+  "exen": "Where is your teacher?"
+ },
+ {
+  "w": "bald",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "soon"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Bis bald!",
+  "exen": "See you soon!"
+ },
+ {
+  "w": "dieser",
+  "art": "",
+  "pl": null,
+  "pos": "det",
+  "en": [
+   "this",
+   "that"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Dieser Pullover ist schön.",
+  "exen": "This jumper is nice."
+ },
+ {
+  "w": "danach",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "afterwards",
+   "after that"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Danach gehen wir essen.",
+  "exen": "Afterwards we'll go and eat."
+ },
+ {
+  "w": "jeder",
+  "art": "",
+  "pl": null,
+  "pos": "det",
+  "en": [
+   "every",
+   "each"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich lerne jeden Tag Deutsch.",
+  "exen": "I learn German every day."
+ },
+ {
+  "w": "zuerst",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "first",
+   "at first"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Zuerst lerne ich, dann spiele ich.",
+  "exen": "First I study, then I play."
+ },
+ {
+  "w": "alle",
+  "art": "",
+  "pl": null,
+  "pos": "pron",
+  "en": [
+   "all",
+   "everyone"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Alle sind schon da.",
+  "exen": "Everyone is already here."
+ },
+ {
+  "w": "pünktlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "on time",
+   "punctual"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Der Zug ist pünktlich.",
+  "exen": "The train is on time."
+ },
+ {
+  "w": "alles",
+  "art": "",
+  "pl": null,
+  "pos": "pron",
+  "en": [
+   "everything",
+   "all"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Alles ist gut.",
+  "exen": "Everything is fine."
+ },
+ {
+  "w": "Pause",
+  "art": "die",
+  "pl": "Pausen",
+  "pos": "noun",
+  "en": [
+   "break",
+   "pause"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Wir machen eine Pause.",
+  "exen": "We're taking a break."
+ },
+ {
+  "w": "etwas",
+  "art": "",
+  "pl": null,
+  "pos": "pron",
+  "en": [
+   "something",
+   "some"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Möchtest du etwas trinken?",
+  "exen": "Would you like something to drink?"
+ },
+ {
+  "w": "eine Pause machen",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "to take a break"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Lass uns eine Pause machen.",
+  "exen": "Let's take a break."
+ },
+ {
+  "w": "nichts",
+  "art": "",
+  "pl": null,
+  "pos": "pron",
+  "en": [
+   "nothing"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich habe nichts gegessen.",
+  "exen": "I haven't eaten anything."
+ },
+ {
+  "w": "man",
+  "art": "",
+  "pl": null,
+  "pos": "pron",
+  "en": [
+   "one",
+   "you (people in general)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Wie schreibt man das?",
+  "exen": "How do you write that?"
+ },
+ {
+  "w": "viele",
+  "art": "",
+  "pl": null,
+  "pos": "det",
+  "en": [
+   "many",
+   "a lot of"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich habe viele Freunde.",
+  "exen": "I have many friends."
+ },
+ {
+  "w": "wenig",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "little",
+   "not much"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich habe heute wenig Zeit.",
+  "exen": "I have little time today."
+ },
+ {
+  "w": "mehr",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "more"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich möchte mehr Informationen.",
+  "exen": "I'd like more information."
+ },
+ {
+  "w": "welcher",
+  "art": "",
+  "pl": null,
+  "pos": "det",
+  "en": [
+   "which"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Welche Farbe magst du?",
+  "exen": "Which colour do you like?"
+ },
+ {
+  "w": "denn",
+  "art": "",
+  "pl": null,
+  "pos": "conj",
+  "en": [
+   "because (for)",
+   "then (in questions)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich bleibe zu Hause, denn ich bin krank.",
+  "exen": "I'm staying home, because I'm ill."
+ },
+ {
+  "w": "ohne",
+  "art": "",
+  "pl": null,
+  "pos": "prep",
+  "en": [
+   "without"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich trinke Kaffee ohne Zucker.",
+  "exen": "I drink coffee without sugar."
+ },
+ {
+  "w": "vor",
+  "art": "",
+  "pl": null,
+  "pos": "prep",
+  "en": [
+   "in front of",
+   "before",
+   "ago"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Das Auto steht vor dem Haus.",
+  "exen": "The car is in front of the house."
+ },
+ {
+  "w": "hinter",
+  "art": "",
+  "pl": null,
+  "pos": "prep",
+  "en": [
+   "behind"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Der Garten ist hinter dem Haus.",
+  "exen": "The garden is behind the house."
+ },
+ {
+  "w": "neben",
+  "art": "",
+  "pl": null,
+  "pos": "prep",
+  "en": [
+   "next to",
+   "beside"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Die Bank ist neben der Post.",
+  "exen": "The bank is next to the post office."
+ },
+ {
+  "w": "über",
+  "art": "",
+  "pl": null,
+  "pos": "prep",
+  "en": [
+   "over",
+   "above",
+   "about"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Die Lampe hängt über dem Tisch.",
+  "exen": "The lamp hangs above the table."
+ },
+ {
+  "w": "unter",
+  "art": "",
+  "pl": null,
+  "pos": "prep",
+  "en": [
+   "under",
+   "below"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Die Katze liegt unter dem Bett.",
+  "exen": "The cat is lying under the bed."
+ },
+ {
+  "w": "zwischen",
+  "art": "",
+  "pl": null,
+  "pos": "prep",
+  "en": [
+   "between"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Die Apotheke ist zwischen Bank und Post.",
+  "exen": "The pharmacy is between the bank and the post office."
+ },
+ {
+  "w": "doch",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "yes (contradicting a negative)",
+   "after all"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Kommst du nicht? – Doch!",
+  "exen": "Aren't you coming? – Yes, I am!"
+ },
+ {
+  "w": "dort",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "there"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Dort ist der Bahnhof.",
+  "exen": "The station is over there."
+ },
+ {
+  "w": "oft",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "often"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich gehe oft ins Kino.",
+  "exen": "I often go to the cinema."
+ },
+ {
+  "w": "manchmal",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "sometimes"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Manchmal koche ich.",
+  "exen": "Sometimes I cook."
+ },
+ {
+  "w": "nie",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "never"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich trinke nie Alkohol.",
+  "exen": "I never drink alcohol."
+ },
+ {
+  "w": "vielleicht",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "maybe",
+   "perhaps"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Vielleicht komme ich morgen.",
+  "exen": "Maybe I'll come tomorrow."
+ },
+ {
+  "w": "zusammen",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "together"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Wir essen zusammen.",
+  "exen": "We eat together."
+ },
+ {
+  "w": "wieder",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "again"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Wann kommst du wieder?",
+  "exen": "When are you coming again?"
+ },
+ {
+  "w": "so",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "so",
+   "like this"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Das ist nicht so schwer.",
+  "exen": "That isn't so difficult."
+ },
+ {
+  "w": "zurück",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "back"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Wann bist du zurück?",
+  "exen": "When are you back?"
+ },
+ {
+  "w": "vier",
+  "art": "",
+  "pl": null,
+  "pos": "num",
+  "en": [
+   "four"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Wir sind vier Personen.",
+  "exen": "There are four of us."
+ },
+ {
+  "w": "fünf",
+  "art": "",
+  "pl": null,
+  "pos": "num",
+  "en": [
+   "five"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Der Bus kommt in fünf Minuten.",
+  "exen": "The bus comes in five minutes."
+ },
+ {
+  "w": "sechs",
+  "art": "",
+  "pl": null,
+  "pos": "num",
+  "en": [
+   "six"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich stehe um sechs Uhr auf.",
+  "exen": "I get up at six o'clock."
+ },
+ {
+  "w": "sieben",
+  "art": "",
+  "pl": null,
+  "pos": "num",
+  "en": [
+   "seven"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Die Woche hat sieben Tage.",
+  "exen": "The week has seven days."
+ },
+ {
+  "w": "acht",
+  "art": "",
+  "pl": null,
+  "pos": "num",
+  "en": [
+   "eight"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Der Film beginnt um acht.",
+  "exen": "The film starts at eight."
+ },
+ {
+  "w": "neun",
+  "art": "",
+  "pl": null,
+  "pos": "num",
+  "en": [
+   "nine"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Mein Sohn ist neun Jahre alt.",
+  "exen": "My son is nine years old."
+ },
+ {
+  "w": "zehn",
+  "art": "",
+  "pl": null,
+  "pos": "num",
+  "en": [
+   "ten"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Das Ticket kostet zehn Euro.",
+  "exen": "The ticket costs ten euros."
+ },
+ {
+  "w": "voll",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "full"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Der Bus ist ganz voll.",
+  "exen": "The bus is completely full."
+ },
+ {
+  "w": "nett",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "nice",
+   "kind"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Die Nachbarn sind sehr nett.",
+  "exen": "The neighbours are very nice."
+ },
+ {
+  "w": "Nummer",
+  "art": "die",
+  "pl": "Nummern",
+  "pos": "noun",
+  "en": [
+   "number (phone, house)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Wie ist Ihre Nummer?",
+  "exen": "What is your number?"
+ },
+ {
+  "w": "Kollegin",
+  "art": "die",
+  "pl": "Kolleginnen",
+  "pos": "noun",
+  "en": [
+   "colleague (female)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "work",
+  "ex": "Meine Kollegin ist sehr nett.",
+  "exen": "My colleague is very nice."
+ },
+ {
+  "w": "Fest",
+  "art": "das",
+  "pl": "Feste",
+  "pos": "noun",
+  "en": [
+   "celebration",
+   "festival"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "leisure",
+  "ex": "Das Fest beginnt um acht.",
+  "exen": "The celebration begins at eight."
+ },
+ {
+  "w": "Nachbar",
+  "art": "der",
+  "pl": "Nachbarn",
+  "pos": "noun",
+  "en": [
+   "neighbour"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Mein Nachbar ist sehr nett.",
+  "exen": "My neighbour is very nice."
+ },
+ {
+  "w": "Blume",
+  "art": "die",
+  "pl": "Blumen",
+  "pos": "noun",
+  "en": [
+   "flower"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Ich kaufe Blumen für meine Mutter.",
+  "exen": "I'm buying flowers for my mother."
+ },
+ {
+  "w": "Schokolade",
+  "art": "die",
+  "pl": "Schokoladen",
+  "pos": "noun",
+  "en": [
+   "chocolate"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Ich esse gern Schokolade.",
+  "exen": "I like eating chocolate."
+ },
+ {
+  "w": "Mund",
+  "art": "der",
+  "pl": "Münder",
+  "pos": "noun",
+  "en": [
+   "mouth"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "body",
+  "ex": "Mach bitte den Mund auf.",
+  "exen": "Please open your mouth."
+ },
+ {
+  "w": "Tasche",
+  "art": "die",
+  "pl": "Taschen",
+  "pos": "noun",
+  "en": [
+   "bag",
+   "pocket"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Meine Tasche ist schwer.",
+  "exen": "My bag is heavy."
+ },
+ {
+  "w": "Post",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "post office",
+   "post"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "money",
+  "ex": "Ich bringe das Paket zur Post.",
+  "exen": "I'm taking the parcel to the post office."
+ },
+ {
+  "w": "Zeit haben",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "to have time"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Hast du heute Zeit?",
+  "exen": "Do you have time today?"
+ },
+ {
+  "w": "Ecke",
+  "art": "die",
+  "pl": "Ecken",
+  "pos": "noun",
+  "en": [
+   "corner"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "city",
+  "ex": "Die Bank ist an der Ecke.",
+  "exen": "The bank is on the corner."
+ },
+ {
+  "w": "Bibliothek",
+  "art": "die",
+  "pl": "Bibliotheken",
+  "pos": "noun",
+  "en": [
+   "library"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Ich lerne in der Bibliothek.",
+  "exen": "I study in the library."
+ },
+ {
+  "w": "Verspätung",
+  "art": "die",
+  "pl": "Verspätungen",
+  "pos": "noun",
+  "en": [
+   "delay"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Der Zug hat zehn Minuten Verspätung.",
+  "exen": "The train is ten minutes late."
+ },
+ {
+  "w": "Nachricht",
+  "art": "die",
+  "pl": "Nachrichten",
+  "pos": "noun",
+  "en": [
+   "message",
+   "news item"
+  ],
+  "alt": [
+   "die Mitteilung"
+  ],
+  "level": "A1",
+  "theme": "media",
+  "ex": "Ich habe deine Nachricht bekommen.",
+  "exen": "I got your message."
+ },
+ {
+  "w": "Unterschrift",
+  "art": "die",
+  "pl": "Unterschriften",
+  "pos": "noun",
+  "en": [
+   "signature"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "law",
+  "ex": "Hier fehlt noch Ihre Unterschrift.",
+  "exen": "Your signature is still missing here."
+ },
+ {
+  "w": "Theater",
+  "art": "das",
+  "pl": "Theater",
+  "pos": "noun",
+  "en": [
+   "theatre"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "culture",
+  "ex": "Gehen wir am Freitag ins Theater?",
+  "exen": "Shall we go to the theatre on Friday?"
+ },
+ {
+  "w": "Spaß",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "fun"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "feelings",
+  "ex": "Deutsch lernen macht Spaß.",
+  "exen": "Learning German is fun."
+ },
+ {
+  "w": "leer",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "empty"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Die Flasche ist leer.",
+  "exen": "The bottle is empty."
+ },
+ {
+  "w": "freundlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "friendly"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Der Verkäufer ist sehr freundlich.",
+  "exen": "The shop assistant is very friendly."
+ },
+ {
+  "w": "Brief",
+  "art": "der",
+  "pl": "Briefe",
+  "pos": "noun",
+  "en": [
+   "letter (mail)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Ich schreibe einen Brief.",
+  "exen": "I'm writing a letter."
+ },
+ {
+  "w": "Mitarbeiter",
+  "art": "der",
+  "pl": "Mitarbeiter",
+  "pos": "noun",
+  "en": [
+   "employee",
+   "staff member"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "work",
+  "ex": "Die Firma hat 50 Mitarbeiter.",
+  "exen": "The company has 50 employees."
+ },
+ {
+  "w": "Schwimmbad",
+  "art": "das",
+  "pl": "Schwimmbäder",
+  "pos": "noun",
+  "en": [
+   "swimming pool"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "leisure",
+  "ex": "Im Sommer gehen wir ins Schwimmbad.",
+  "exen": "In summer we go to the swimming pool."
+ },
+ {
+  "w": "vermieten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to rent out",
+   "to let"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Wir vermieten ein Zimmer.",
+  "exen": "We rent out a room."
+ },
+ {
+  "w": "Tier",
+  "art": "das",
+  "pl": "Tiere",
+  "pos": "noun",
+  "en": [
+   "animal"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Hast du ein Tier zu Hause?",
+  "exen": "Do you have a pet at home?"
+ },
+ {
+  "w": "Eis",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "ice cream",
+   "ice"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Die Kinder möchten ein Eis.",
+  "exen": "The children want an ice cream."
+ },
+ {
+  "w": "Nase",
+  "art": "die",
+  "pl": "Nasen",
+  "pos": "noun",
+  "en": [
+   "nose"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "body",
+  "ex": "Meine Nase läuft.",
+  "exen": "My nose is running."
+ },
+ {
+  "w": "grau",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "grey"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Der Mantel ist grau.",
+  "exen": "The coat is grey."
+ },
+ {
+  "w": "Paket",
+  "art": "das",
+  "pl": "Pakete",
+  "pos": "noun",
+  "en": [
+   "parcel",
+   "package"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "money",
+  "ex": "Ich habe ein Paket bekommen.",
+  "exen": "I got a parcel."
+ },
+ {
+  "w": "Moment",
+  "art": "der",
+  "pl": "Momente",
+  "pos": "noun",
+  "en": [
+   "moment"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Einen Moment, bitte.",
+  "exen": "One moment, please."
+ },
+ {
+  "w": "Ampel",
+  "art": "die",
+  "pl": "Ampeln",
+  "pos": "noun",
+  "en": [
+   "traffic lights"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "city",
+  "ex": "An der Ampel gehen Sie links.",
+  "exen": "Turn left at the traffic lights."
+ },
+ {
+  "w": "Studentin",
+  "art": "die",
+  "pl": "Studentinnen",
+  "pos": "noun",
+  "en": [
+   "student (female, university)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Sie ist Studentin in Berlin.",
+  "exen": "She's a student in Berlin."
+ },
+ {
+  "w": "Fahrplan",
+  "art": "der",
+  "pl": "Fahrpläne",
+  "pos": "noun",
+  "en": [
+   "timetable"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Schau mal auf den Fahrplan.",
+  "exen": "Have a look at the timetable."
+ },
+ {
+  "w": "Internet",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "internet"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "media",
+  "ex": "Ich suche die Adresse im Internet.",
+  "exen": "I'm looking up the address on the internet."
+ },
+ {
+  "w": "anmelden",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to register",
+   "to sign up"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "law",
+  "ex": "Ich muss mich beim Amt anmelden.",
+  "exen": "I have to register with the authorities.",
+  "forms": "meldet an · meldete an · hat angemeldet"
+ },
+ {
+  "w": "froh",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "glad",
+   "happy"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "feelings",
+  "ex": "Ich bin froh, dass du da bist.",
+  "exen": "I'm glad you're here."
+ },
+ {
+  "w": "offen",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "open"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Die Tür ist offen.",
+  "exen": "The door is open."
+ },
+ {
+  "w": "Großmutter",
+  "art": "die",
+  "pl": "Großmütter",
+  "pos": "noun",
+  "en": [
+   "grandmother"
+  ],
+  "alt": [
+   "die Oma"
+  ],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Meine Großmutter backt gern.",
+  "exen": "My grandmother likes baking."
+ },
+ {
+  "w": "buchstabieren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to spell"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Können Sie das bitte buchstabieren?",
+  "exen": "Can you spell that, please?"
+ },
+ {
+  "w": "Chefin",
+  "art": "die",
+  "pl": "Chefinnen",
+  "pos": "noun",
+  "en": [
+   "boss (female)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "work",
+  "ex": "Die Chefin ist heute nicht da.",
+  "exen": "The boss isn't in today."
+ },
+ {
+  "w": "Ausflug",
+  "art": "der",
+  "pl": "Ausflüge",
+  "pos": "noun",
+  "en": [
+   "outing (day trip)",
+   "trip"
+  ],
+  "alt": [
+   "die Reise"
+  ],
+  "level": "A1",
+  "theme": "leisure",
+  "ex": "Am Sonntag machen wir einen Ausflug.",
+  "exen": "On Sunday we're going on an outing."
+ },
+ {
+  "w": "Vermieter",
+  "art": "der",
+  "pl": "Vermieter",
+  "pos": "noun",
+  "en": [
+   "landlord"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Der Vermieter wohnt im Erdgeschoss.",
+  "exen": "The landlord lives on the ground floor."
+ },
+ {
+  "w": "Hund",
+  "art": "der",
+  "pl": "Hunde",
+  "pos": "noun",
+  "en": [
+   "dog"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Unser Hund heißt Max.",
+  "exen": "Our dog is called Max."
+ },
+ {
+  "w": "Pizza",
+  "art": "die",
+  "pl": "Pizzas",
+  "pos": "noun",
+  "en": [
+   "pizza"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Wir bestellen eine Pizza.",
+  "exen": "We're ordering a pizza."
+ },
+ {
+  "w": "Ohr",
+  "art": "das",
+  "pl": "Ohren",
+  "pos": "noun",
+  "en": [
+   "ear"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "body",
+  "ex": "Mein Ohr tut weh.",
+  "exen": "My ear hurts."
+ },
+ {
+  "w": "braun",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "brown"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Ich suche braune Schuhe.",
+  "exen": "I'm looking for brown shoes."
+ },
+ {
+  "w": "Anfang",
+  "art": "der",
+  "pl": "Anfänge",
+  "pos": "noun",
+  "en": [
+   "beginning",
+   "start"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Anfang Mai habe ich Urlaub.",
+  "exen": "I'm on holiday at the beginning of May."
+ },
+ {
+  "w": "in der Nähe",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "nearby",
+   "near here"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "city",
+  "ex": "Gibt es hier in der Nähe eine Apotheke?",
+  "exen": "Is there a pharmacy near here?"
+ },
+ {
+  "w": "Stift",
+  "art": "der",
+  "pl": "Stifte",
+  "pos": "noun",
+  "en": [
+   "pen",
+   "pencil"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Kann ich deinen Stift haben?",
+  "exen": "Can I have your pen?"
+ },
+ {
+  "w": "Gepäck",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "luggage",
+   "baggage"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Wo kann ich mein Gepäck lassen?",
+  "exen": "Where can I leave my luggage?"
+ },
+ {
+  "w": "Foto",
+  "art": "das",
+  "pl": "Fotos",
+  "pos": "noun",
+  "en": [
+   "photo"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "media",
+  "ex": "Ich mache ein Foto.",
+  "exen": "I'm taking a photo."
+ },
+ {
+  "w": "verboten",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "forbidden",
+   "not allowed"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "law",
+  "ex": "Rauchen ist hier verboten.",
+  "exen": "Smoking is forbidden here."
+ },
+ {
+  "w": "Liebe",
+  "art": "die",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "love"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "feelings",
+  "ex": "Liebe ist wichtig.",
+  "exen": "Love is important."
+ },
+ {
+  "w": "geschlossen",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "closed"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Das Geschäft ist sonntags geschlossen.",
+  "exen": "The shop is closed on Sundays."
+ },
+ {
+  "w": "Großvater",
+  "art": "der",
+  "pl": "Großväter",
+  "pos": "noun",
+  "en": [
+   "grandfather"
+  ],
+  "alt": [
+   "der Opa"
+  ],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Mein Großvater war Lehrer.",
+  "exen": "My grandfather was a teacher."
+ },
+ {
+  "w": "Mach's gut!",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "Take care!"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Tschüss, mach's gut!",
+  "exen": "Bye, take care!"
+ },
+ {
+  "w": "Ingenieur",
+  "art": "der",
+  "pl": "Ingenieure",
+  "pos": "noun",
+  "en": [
+   "engineer"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "work",
+  "ex": "Mein Vater ist Ingenieur.",
+  "exen": "My father is an engineer."
+ },
+ {
+  "w": "Lust haben",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "to feel like (doing something)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "leisure",
+  "ex": "Hast du Lust auf Kino?",
+  "exen": "Do you feel like going to the cinema?"
+ },
+ {
+  "w": "Müll",
+  "art": "der",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "rubbish",
+   "trash"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Kannst du den Müll rausbringen?",
+  "exen": "Can you take out the rubbish?"
+ },
+ {
+  "w": "Katze",
+  "art": "die",
+  "pl": "Katzen",
+  "pos": "noun",
+  "en": [
+   "cat"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Die Katze schläft auf dem Sofa.",
+  "exen": "The cat is sleeping on the sofa."
+ },
+ {
+  "w": "Teller",
+  "art": "der",
+  "pl": "Teller",
+  "pos": "noun",
+  "en": [
+   "plate"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Der Teller ist leer.",
+  "exen": "The plate is empty."
+ },
+ {
+  "w": "Zahn",
+  "art": "der",
+  "pl": "Zähne",
+  "pos": "noun",
+  "en": [
+   "tooth"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "body",
+  "ex": "Ich putze mir die Zähne.",
+  "exen": "I'm brushing my teeth."
+ },
+ {
+  "w": "sich anziehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to get dressed"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Ich muss mich noch anziehen.",
+  "exen": "I still have to get dressed.",
+  "forms": "zieht an · zog an · hat angezogen"
+ },
+ {
+  "w": "Ende",
+  "art": "das",
+  "pl": "Enden",
+  "pos": "noun",
+  "en": [
+   "end"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Ende Juni ist der Kurs fertig.",
+  "exen": "The course finishes at the end of June."
+ },
+ {
+  "w": "Hausnummer",
+  "art": "die",
+  "pl": "Hausnummern",
+  "pos": "noun",
+  "en": [
+   "house number"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "city",
+  "ex": "Wie ist Ihre Hausnummer?",
+  "exen": "What is your house number?"
+ },
+ {
+  "w": "Papier",
+  "art": "das",
+  "pl": "Papiere",
+  "pos": "noun",
+  "en": [
+   "paper"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Ich brauche ein Blatt Papier.",
+  "exen": "I need a sheet of paper."
+ },
+ {
+  "w": "Weg",
+  "art": "der",
+  "pl": "Wege",
+  "pos": "noun",
+  "en": [
+   "way",
+   "path"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Kennst du den Weg?",
+  "exen": "Do you know the way?"
+ },
+ {
+  "w": "ein Foto machen",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "to take a photo"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "media",
+  "ex": "Kannst du ein Foto von uns machen?",
+  "exen": "Can you take a photo of us?"
+ },
+ {
+  "w": "Staatsangehörigkeit",
+  "art": "die",
+  "pl": "Staatsangehörigkeiten",
+  "pos": "noun",
+  "en": [
+   "nationality",
+   "citizenship"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "law",
+  "ex": "Welche Staatsangehörigkeit haben Sie?",
+  "exen": "What nationality are you?"
+ },
+ {
+  "w": "besetzt",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "occupied",
+   "busy (phone)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Die Toilette ist besetzt.",
+  "exen": "The toilet is occupied."
+ },
+ {
+  "w": "geschieden",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "divorced"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Meine Eltern sind geschieden.",
+  "exen": "My parents are divorced."
+ },
+ {
+  "w": "Postkarte",
+  "art": "die",
+  "pl": "Postkarten",
+  "pos": "noun",
+  "en": [
+   "postcard"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Ich schreibe dir eine Postkarte aus Rom.",
+  "exen": "I'll write you a postcard from Rome."
+ },
+ {
+  "w": "Kellner",
+  "art": "der",
+  "pl": "Kellner",
+  "pos": "noun",
+  "en": [
+   "waiter"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "work",
+  "ex": "Der Kellner bringt die Rechnung.",
+  "exen": "The waiter brings the bill."
+ },
+ {
+  "w": "mitkommen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to come along"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "leisure",
+  "ex": "Möchtest du mitkommen?",
+  "exen": "Would you like to come along?",
+  "forms": "kommt mit · kam mit · ist mitgekommen"
+ },
+ {
+  "w": "ruhig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "quiet",
+   "calm"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Die Straße ist sehr ruhig.",
+  "exen": "The street is very quiet."
+ },
+ {
+  "w": "Jahreszeit",
+  "art": "die",
+  "pl": "Jahreszeiten",
+  "pos": "noun",
+  "en": [
+   "season"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Welche Jahreszeit magst du?",
+  "exen": "Which season do you like?"
+ },
+ {
+  "w": "backen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to bake"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Wir backen einen Kuchen.",
+  "exen": "We're baking a cake.",
+  "forms": "backt · backte · hat gebacken"
+ },
+ {
+  "w": "Rücken",
+  "art": "der",
+  "pl": "Rücken",
+  "pos": "noun",
+  "en": [
+   "back (body)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "body",
+  "ex": "Mein Rücken tut weh.",
+  "exen": "My back hurts."
+ },
+ {
+  "w": "verkaufen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to sell"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Wir verkaufen unser Auto.",
+  "exen": "We're selling our car."
+ },
+ {
+  "w": "Wie spät ist es?",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "What time is it?"
+  ],
+  "alt": [
+   "Wie viel Uhr ist es?"
+  ],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Entschuldigung, wie spät ist es?",
+  "exen": "Excuse me, what time is it?"
+ },
+ {
+  "w": "Klasse",
+  "art": "die",
+  "pl": "Klassen",
+  "pos": "noun",
+  "en": [
+   "class",
+   "school year"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Mein Sohn ist in der dritten Klasse.",
+  "exen": "My son is in third grade."
+ },
+ {
+  "w": "Ausland",
+  "art": "das",
+  "pl": "",
+  "pos": "noun",
+  "en": [
+   "abroad",
+   "foreign countries"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Mein Bruder arbeitet im Ausland.",
+  "exen": "My brother works abroad."
+ },
+ {
+  "w": "Fernseher",
+  "art": "der",
+  "pl": "Fernseher",
+  "pos": "noun",
+  "en": [
+   "television (set)",
+   "TV"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "media",
+  "ex": "Der Fernseher ist im Wohnzimmer.",
+  "exen": "The TV is in the living room."
+ },
+ {
+  "w": "ganz",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "whole",
+   "quite",
+   "completely"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich habe den ganzen Tag gearbeitet.",
+  "exen": "I worked the whole day."
+ },
+ {
+  "w": "Hochzeit",
+  "art": "die",
+  "pl": "Hochzeiten",
+  "pos": "noun",
+  "en": [
+   "wedding"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Die Hochzeit ist im Mai.",
+  "exen": "The wedding is in May."
+ },
+ {
+  "w": "Information",
+  "art": "die",
+  "pl": "Informationen",
+  "pos": "noun",
+  "en": [
+   "information"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Ich brauche mehr Informationen.",
+  "exen": "I need more information."
+ },
+ {
+  "w": "Stelle",
+  "art": "die",
+  "pl": "Stellen",
+  "pos": "noun",
+  "en": [
+   "position",
+   "job (vacancy)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "work",
+  "ex": "Ich suche eine neue Stelle.",
+  "exen": "I'm looking for a new position."
+ },
+ {
+  "w": "Geschenk",
+  "art": "das",
+  "pl": "Geschenke",
+  "pos": "noun",
+  "en": [
+   "present",
+   "gift"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "leisure",
+  "ex": "Das Geschenk ist für dich.",
+  "exen": "The present is for you."
+ },
+ {
+  "w": "Bild",
+  "art": "das",
+  "pl": "Bilder",
+  "pos": "noun",
+  "en": [
+   "picture"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Das Bild ist sehr schön.",
+  "exen": "The picture is very beautiful."
+ },
+ {
+  "w": "es schneit",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "it's snowing"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Schau mal, es schneit!",
+  "exen": "Look, it's snowing!"
+ },
+ {
+  "w": "süß",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "sweet"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Der Kuchen ist sehr süß.",
+  "exen": "The cake is very sweet."
+ },
+ {
+  "w": "Gute Besserung!",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "Get well soon!"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "body",
+  "ex": "Gute Besserung!",
+  "exen": "Get well soon!"
+ },
+ {
+  "w": "Angebot",
+  "art": "das",
+  "pl": "Angebote",
+  "pos": "noun",
+  "en": [
+   "offer",
+   "special offer"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Die Äpfel sind heute im Angebot.",
+  "exen": "The apples are on special offer today."
+ },
+ {
+  "w": "erklären",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to explain"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Können Sie das Wort erklären?",
+  "exen": "Can you explain the word?"
+ },
+ {
+  "w": "Radio",
+  "art": "das",
+  "pl": "Radios",
+  "pos": "noun",
+  "en": [
+   "radio"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "media",
+  "ex": "Ich höre Radio beim Kochen.",
+  "exen": "I listen to the radio while cooking."
+ },
+ {
+  "w": "gleich",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "right away",
+   "in a moment"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich komme gleich.",
+  "exen": "I'll be there in a moment."
+ },
+ {
+  "w": "Herzlichen Glückwunsch!",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "Congratulations!",
+   "Happy birthday!"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Herzlichen Glückwunsch zum Geburtstag!",
+  "exen": "Happy birthday!"
+ },
+ {
+  "w": "fotografieren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to take photos",
+   "to photograph"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "leisure",
+  "ex": "Ich fotografiere gern.",
+  "exen": "I like taking photos."
+ },
+ {
+  "w": "Nachbarin",
+  "art": "die",
+  "pl": "Nachbarinnen",
+  "pos": "noun",
+  "en": [
+   "neighbour (female)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Meine Nachbarin hat einen Hund.",
+  "exen": "My neighbour has a dog."
+ },
+ {
+  "w": "Grad",
+  "art": "der",
+  "pl": "Grad",
+  "pos": "noun",
+  "en": [
+   "degree (temperature)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Heute sind es 25 Grad.",
+  "exen": "It's 25 degrees today."
+ },
+ {
+  "w": "Guten Appetit!",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "Enjoy your meal!"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Guten Appetit!",
+  "exen": "Enjoy your meal!"
+ },
+ {
+  "w": "ankreuzen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to tick",
+   "to mark with a cross"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Bitte die richtige Antwort ankreuzen.",
+  "exen": "Tick the right answer.",
+  "forms": "kreuzt an · kreuzte an · hat angekreuzt"
+ },
+ {
+  "w": "Zeitung",
+  "art": "die",
+  "pl": "Zeitungen",
+  "pos": "noun",
+  "en": [
+   "newspaper"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "media",
+  "ex": "Mein Vater liest jeden Morgen die Zeitung.",
+  "exen": "My father reads the newspaper every morning."
+ },
+ {
+  "w": "zwölf",
+  "art": "",
+  "pl": null,
+  "pos": "num",
+  "en": [
+   "twelve"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Das Jahr hat zwölf Monate.",
+  "exen": "The year has twelve months."
+ },
+ {
+  "w": "Spaß machen",
+  "art": "",
+  "pl": null,
+  "pos": "phrase",
+  "en": [
+   "to be fun"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "leisure",
+  "ex": "Tanzen macht mir Spaß.",
+  "exen": "Dancing is fun for me."
+ },
+ {
+  "w": "Baum",
+  "art": "der",
+  "pl": "Bäume",
+  "pos": "noun",
+  "en": [
+   "tree"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Im Garten steht ein großer Baum.",
+  "exen": "There's a big tree in the garden."
+ },
+ {
+  "w": "Kilo",
+  "art": "das",
+  "pl": "Kilos",
+  "pos": "noun",
+  "en": [
+   "kilo"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Ein Kilo Äpfel, bitte.",
+  "exen": "A kilo of apples, please."
+ },
+ {
+  "w": "Beispiel",
+  "art": "das",
+  "pl": "Beispiele",
+  "pos": "noun",
+  "en": [
+   "example"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Hier ist ein Beispiel.",
+  "exen": "Here's an example."
+ },
+ {
+  "w": "zwanzig",
+  "art": "",
+  "pl": null,
+  "pos": "num",
+  "en": [
+   "twenty"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Ich bin zwanzig Jahre alt.",
+  "exen": "I'm twenty years old."
+ },
+ {
+  "w": "Liter",
+  "art": "der",
+  "pl": "Liter",
+  "pos": "noun",
+  "en": [
+   "litre"
+  ],
+  "alt": [
+   "das Liter"
+  ],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Ich kaufe einen Liter Milch.",
+  "exen": "I'm buying a litre of milk."
+ },
+ {
+  "w": "Uni",
+  "art": "die",
+  "pl": "Unis",
+  "pos": "noun",
+  "en": [
+   "uni (university)"
+  ],
+  "alt": [
+   "die Universität"
+  ],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Ich fahre mit dem Rad zur Uni.",
+  "exen": "I cycle to uni."
+ },
+ {
+  "w": "hundert",
+  "art": "",
+  "pl": null,
+  "pos": "num",
+  "en": [
+   "hundred"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Das kostet hundert Euro.",
+  "exen": "That costs a hundred euros."
+ },
+ {
+  "w": "Stück",
+  "art": "das",
+  "pl": "Stücke",
+  "pos": "noun",
+  "en": [
+   "piece"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Möchtest du ein Stück Kuchen?",
+  "exen": "Would you like a piece of cake?"
+ },
+ {
+  "w": "erste",
+  "art": "",
+  "pl": null,
+  "pos": "num",
+  "en": [
+   "first"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Das ist mein erster Tag hier.",
+  "exen": "This is my first day here."
+ },
+ {
+  "w": "Zahl",
+  "art": "die",
+  "pl": "Zahlen",
+  "pos": "noun",
+  "en": [
+   "number (figure)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Schreiben Sie die Zahlen.",
+  "exen": "Write the numbers."
+ },
+ {
+  "w": "Problem",
+  "art": "das",
+  "pl": "Probleme",
+  "pos": "noun",
+  "en": [
+   "problem"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Das ist kein Problem.",
+  "exen": "That's no problem."
+ }
+]

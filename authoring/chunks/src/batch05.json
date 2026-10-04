@@ -1,0 +1,902 @@
+[
+{
+"id": "ENG_CHUNK_0401",
+"chunk": "Would it be possible to [base-verb]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking whether something can be arranged",
+"register": "polite",
+"natural_example": "Would it be possible to move our meeting to Thursday?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0402",
+"chunk": "I need you to [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Giving a direct request or instruction",
+"register": "neutral",
+"natural_example": "I need you to pick up the kids at three today.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0403",
+"chunk": "Let me [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Offering to take care of something",
+"register": "neutral",
+"natural_example": "Here, let me carry one of those bags.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0404",
+"chunk": "Can I get you [noun]?",
+"category": "sentence_frame",
+"pragmatic_function": "Offering a guest something",
+"register": "polite",
+"natural_example": "Come in! Can I get you something to drink?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0405",
+"chunk": "Feel free to [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Giving open permission",
+"register": "neutral",
+"natural_example": "Feel free to grab anything from the fridge.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0406",
+"chunk": "I'd be happy to [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Willingly agreeing to help",
+"register": "polite",
+"natural_example": "I'd be happy to show you around the neighborhood.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0407",
+"chunk": "I just got back from [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Opening news about a trip or outing",
+"register": "neutral",
+"natural_example": "I just got back from two weeks in Mexico.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0408",
+"chunk": "Let's not [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Suggesting avoiding an action",
+"register": "neutral",
+"natural_example": "Let's not argue about it tonight.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0409",
+"chunk": "We need to talk about [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Signaling a serious conversation",
+"register": "neutral",
+"natural_example": "We need to talk about the rent.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0410",
+"chunk": "It might be a good idea to [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Giving tentative advice",
+"register": "neutral",
+"natural_example": "It might be a good idea to call ahead first.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0411",
+"chunk": "I'd recommend [verb-ing]",
+"category": "sentence_frame",
+"pragmatic_function": "Recommending a course of action",
+"register": "neutral",
+"natural_example": "I'd recommend booking a few weeks in advance.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0412",
+"chunk": "It's worth [verb-ing]",
+"category": "sentence_frame",
+"pragmatic_function": "Saying something is worth the effort",
+"register": "neutral",
+"natural_example": "It's worth paying a little extra for a direct flight.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0413",
+"chunk": "The best thing to do is [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Giving clear advice",
+"register": "neutral",
+"natural_example": "The best thing to do is call the bank right away.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0414",
+"chunk": "Try not to [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Gently advising restraint",
+"register": "neutral",
+"natural_example": "Try not to worry too much, okay?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0415",
+"chunk": "Be careful not to [base-verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Warning against a mistake",
+"register": "neutral",
+"natural_example": "Be careful not to drop it, it's glass.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0416",
+"chunk": "Don't worry about [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Reassuring someone",
+"register": "neutral",
+"natural_example": "Don't worry about the dishes, I'll do them later.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0417",
+"chunk": "It's not your fault [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Reassuring someone who feels guilty",
+"register": "neutral",
+"natural_example": "It's not your fault the flight got canceled.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0418",
+"chunk": "I hope [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Expressing hope",
+"register": "neutral",
+"natural_example": "I hope you feel better soon.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0419",
+"chunk": "Don't get me started on [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Signaling a sore topic",
+"register": "informal",
+"natural_example": "Parking downtown? Don't get me started on parking.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0420",
+"chunk": "I'm glad [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Expressing relief or pleasure",
+"register": "neutral",
+"natural_example": "I'm glad you got home okay.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0421",
+"chunk": "It's a good thing [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Noting a lucky circumstance",
+"register": "informal",
+"natural_example": "It's a good thing we left early, the traffic's terrible.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0422",
+"chunk": "I'm worried [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Expressing concern",
+"register": "neutral",
+"natural_example": "I'm worried we won't find a parking spot.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0423",
+"chunk": "I'm nervous about [verb-ing]",
+"category": "sentence_frame",
+"pragmatic_function": "Expressing anxiety about something coming",
+"register": "neutral",
+"natural_example": "I'm nervous about meeting her parents.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0424",
+"chunk": "I feel bad about [verb-ing]",
+"category": "sentence_frame",
+"pragmatic_function": "Expressing guilt",
+"register": "neutral",
+"natural_example": "I feel bad about missing your birthday.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0425",
+"chunk": "It makes me [adjective] when [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Describing how something affects you",
+"register": "neutral",
+"natural_example": "It makes me so happy when the kids help without asking.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0426",
+"chunk": "That's what I call [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Praising an excellent example",
+"register": "informal",
+"natural_example": "Wow, that's what I call a breakfast!",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0427",
+"chunk": "It's not fair that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Protesting an injustice",
+"register": "neutral",
+"natural_example": "It's not fair that I always have to do the dishes.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0428",
+"chunk": "The problem with [noun] is [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Identifying a flaw",
+"register": "neutral",
+"natural_example": "The problem with this apartment is it gets no sunlight.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0429",
+"chunk": "The only problem is [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Adding a drawback to something good",
+"register": "neutral",
+"natural_example": "It's a great place. The only problem is it's miles from the station.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0430",
+"chunk": "The good thing about [noun] is [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Highlighting an advantage",
+"register": "neutral",
+"natural_example": "The good thing about this neighborhood is everything's within walking distance.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0431",
+"chunk": "The hardest part is [verb-ing]",
+"category": "sentence_frame",
+"pragmatic_function": "Identifying the main difficulty",
+"register": "neutral",
+"natural_example": "The hardest part is getting up in the morning.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0432",
+"chunk": "What I like about [noun] is [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Explaining what appeals to you",
+"register": "neutral",
+"natural_example": "What I like about this cafe is it's never crowded.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0433",
+"chunk": "How do you like [noun]?",
+"category": "sentence_frame",
+"pragmatic_function": "Asking for someone's impression of something new",
+"register": "neutral",
+"natural_example": "So how do you like the new apartment?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0434",
+"chunk": "How do you feel about [verb-ing]?",
+"category": "sentence_frame",
+"pragmatic_function": "Gauging someone's willingness",
+"register": "neutral",
+"natural_example": "How do you feel about getting a dog?",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0435",
+"chunk": "I'd say [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Giving a tentative estimate or opinion",
+"register": "neutral",
+"natural_example": "I'd say it's about a twenty-minute walk.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0436",
+"chunk": "to take a nap",
+"category": "collocation",
+"pragmatic_function": "Describing a short sleep",
+"register": "neutral",
+"natural_example": "I'm going to take a quick nap before dinner.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0437",
+"chunk": "to sleep in",
+"category": "collocation",
+"pragmatic_function": "Describing sleeping late on purpose",
+"register": "informal",
+"natural_example": "It's Saturday, so I'm going to sleep in.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0438",
+"chunk": "to catch a cold",
+"category": "collocation",
+"pragmatic_function": "Reporting a minor illness",
+"register": "neutral",
+"natural_example": "I think I'm catching a cold.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0439",
+"chunk": "to have a sore throat",
+"category": "collocation",
+"pragmatic_function": "Reporting a symptom",
+"register": "neutral",
+"natural_example": "I have a sore throat, so I'll skip practice today.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0440",
+"chunk": "to take a class",
+"category": "collocation",
+"pragmatic_function": "Talking about learning something",
+"register": "neutral",
+"natural_example": "I'm taking a pottery class on Tuesdays.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0441",
+"chunk": "to hurt your [noun]",
+"category": "collocation",
+"pragmatic_function": "Reporting an injury",
+"register": "neutral",
+"natural_example": "I hurt my back moving the couch.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0442",
+"chunk": "to get hurt",
+"category": "collocation",
+"pragmatic_function": "Warning of injury",
+"register": "neutral",
+"natural_example": "Get down from there before you get hurt.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0443",
+"chunk": "to take it easy",
+"category": "collocation",
+"pragmatic_function": "Advising someone to rest or slow down",
+"register": "informal",
+"natural_example": "The doctor told me to take it easy for a few days.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0444",
+"chunk": "to work out",
+"category": "collocation",
+"pragmatic_function": "Talking about exercise",
+"register": "neutral",
+"natural_example": "I try to work out three times a week.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0445",
+"chunk": "to get in shape",
+"category": "collocation",
+"pragmatic_function": "Talking about fitness goals",
+"register": "neutral",
+"natural_example": "I really want to get in shape before summer.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0446",
+"chunk": "to lose weight",
+"category": "collocation",
+"pragmatic_function": "Talking about weight",
+"register": "neutral",
+"natural_example": "He's lost a lot of weight since last year.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0447",
+"chunk": "to go on a diet",
+"category": "collocation",
+"pragmatic_function": "Talking about eating changes",
+"register": "neutral",
+"natural_example": "I'm going on a diet after the holidays.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0448",
+"chunk": "to eat out",
+"category": "collocation",
+"pragmatic_function": "Suggesting a restaurant meal",
+"register": "neutral",
+"natural_example": "Let's eat out tonight, I don't feel like cooking.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0449",
+"chunk": "to split the bill",
+"category": "collocation",
+"pragmatic_function": "Proposing to share costs",
+"register": "neutral",
+"natural_example": "Should we just split the bill?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0450",
+"chunk": "to pay in cash",
+"category": "collocation",
+"pragmatic_function": "Choosing how to pay",
+"register": "neutral",
+"natural_example": "Is it okay if I pay in cash?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0451",
+"chunk": "to pay [person] back",
+"category": "collocation",
+"pragmatic_function": "Promising to repay",
+"register": "neutral",
+"natural_example": "Thanks for lunch, I'll pay you back on Friday.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0452",
+"chunk": "to pay the bills",
+"category": "collocation",
+"pragmatic_function": "Talking about living costs",
+"register": "neutral",
+"natural_example": "I work weekends just to pay the bills.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0453",
+"chunk": "to get a refund",
+"category": "collocation",
+"pragmatic_function": "Returning a purchase",
+"register": "neutral",
+"natural_example": "The shoes didn't fit, so I got a refund.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0454",
+"chunk": "to save up for [noun]",
+"category": "collocation",
+"pragmatic_function": "Saving toward a goal",
+"register": "neutral",
+"natural_example": "I'm saving up for a new laptop.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0455",
+"chunk": "a good deal",
+"category": "collocation",
+"pragmatic_function": "Praising a bargain",
+"register": "neutral",
+"natural_example": "Forty bucks for both? That's a good deal.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0456",
+"chunk": "to put on [noun]",
+"category": "collocation",
+"pragmatic_function": "Getting dressed",
+"register": "neutral",
+"natural_example": "Put on a jacket, it's freezing out.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0457",
+"chunk": "to dress up",
+"category": "collocation",
+"pragmatic_function": "Wearing smarter clothes for an occasion",
+"register": "neutral",
+"natural_example": "Do we need to dress up for the party?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0458",
+"chunk": "to look up [noun]",
+"category": "collocation",
+"pragmatic_function": "Searching for information",
+"register": "neutral",
+"natural_example": "I'll look up the opening hours.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0459",
+"chunk": "to put away [noun]",
+"category": "collocation",
+"pragmatic_function": "Tidying things into place",
+"register": "neutral",
+"natural_example": "Can you put away the groceries?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0460",
+"chunk": "a dead battery",
+"category": "collocation",
+"pragmatic_function": "Explaining why a phone or car won't work",
+"register": "neutral",
+"natural_example": "Sorry I didn't call, I had a dead battery.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0461",
+"chunk": "to run errands",
+"category": "collocation",
+"pragmatic_function": "Describing small everyday tasks around town",
+"register": "neutral",
+"natural_example": "I'm running errands all afternoon.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0462",
+"chunk": "to pack your bags",
+"category": "collocation",
+"pragmatic_function": "Getting ready for a trip",
+"register": "neutral",
+"natural_example": "Pack your bags, we're going to the beach!",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0463",
+"chunk": "to save time",
+"category": "collocation",
+"pragmatic_function": "Suggesting efficiency",
+"register": "neutral",
+"natural_example": "Let's take the highway to save time.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0464",
+"chunk": "to waste time [verb-ing]",
+"category": "collocation",
+"pragmatic_function": "Criticizing lost time",
+"register": "neutral",
+"natural_example": "Don't waste time looking for parking, just take the bus.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0465",
+"chunk": "to go well",
+"category": "collocation",
+"pragmatic_function": "Reporting success",
+"register": "neutral",
+"natural_example": "The dinner went well, everyone loved the food.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0466",
+"chunk": "I know, right?",
+"category": "gambit_filler",
+"pragmatic_function": "Enthusiastic informal agreement",
+"register": "informal",
+"natural_example": "This place is so good! I know, right?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0467",
+"chunk": "Not exactly",
+"category": "gambit_filler",
+"pragmatic_function": "Correcting a slightly inaccurate statement",
+"register": "neutral",
+"natural_example": "You're moving to Chicago? Not exactly, it's a suburb outside the city.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0468",
+"chunk": "Wait, what?",
+"category": "gambit_filler",
+"pragmatic_function": "Reacting to something surprising or confusing",
+"register": "informal",
+"natural_example": "Wait, what? You quit your job?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0469",
+"chunk": "Can I just say something?",
+"category": "gambit_filler",
+"pragmatic_function": "Asking to take the turn",
+"register": "neutral",
+"natural_example": "Can I just say something? I think we're overthinking this.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0470",
+"chunk": "Sorry, what were you saying?",
+"category": "gambit_filler",
+"pragmatic_function": "Handing the turn back after an interruption",
+"register": "neutral",
+"natural_example": "Oh, that was my mom. Sorry, what were you saying?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0471",
+"chunk": "Any thoughts?",
+"category": "gambit_filler",
+"pragmatic_function": "Inviting others to contribute",
+"register": "neutral",
+"natural_example": "I was thinking Mexican food for Friday. Any thoughts?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0472",
+"chunk": "What would you do?",
+"category": "gambit_filler",
+"pragmatic_function": "Inviting the listener's perspective",
+"register": "neutral",
+"natural_example": "My landlord wants to raise the rent again. What would you do?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0473",
+"chunk": "Then what happened?",
+"category": "gambit_filler",
+"pragmatic_function": "Prompting the speaker to continue a story",
+"register": "informal",
+"natural_example": "So you missed the last bus? Then what happened?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0474",
+"chunk": "Tell me more",
+"category": "gambit_filler",
+"pragmatic_function": "Encouraging elaboration",
+"register": "neutral",
+"natural_example": "You met someone? Tell me more!",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0475",
+"chunk": "Who cares?",
+"category": "gambit_filler",
+"pragmatic_function": "Dismissing something as unimportant",
+"register": "informal",
+"natural_example": "So what if it's a little messy? Who cares?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0476",
+"chunk": "It's on the tip of my tongue",
+"category": "gambit_filler",
+"pragmatic_function": "Failing to recall a word or name",
+"register": "informal",
+"natural_example": "What's that word? It's on the tip of my tongue.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_0477",
+"chunk": "Like what?",
+"category": "gambit_filler",
+"pragmatic_function": "Asking for an example",
+"register": "informal",
+"natural_example": "We should do something fun this weekend. Like what?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0478",
+"chunk": "That's not what I meant",
+"category": "gambit_filler",
+"pragmatic_function": "Correcting a misunderstanding of one's words",
+"register": "neutral",
+"natural_example": "No, no, that's not what I meant. I love the haircut.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0479",
+"chunk": "Let me start over",
+"category": "gambit_filler",
+"pragmatic_function": "Restarting a failed explanation",
+"register": "neutral",
+"natural_example": "Okay, that came out wrong. Let me start over.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0480",
+"chunk": "If I remember correctly",
+"category": "gambit_filler",
+"pragmatic_function": "Hedging a statement based on memory",
+"register": "neutral",
+"natural_example": "If I remember correctly, the museum's closed on Mondays.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0481",
+"chunk": "Same to you",
+"category": "fixed_formula",
+"pragmatic_function": "Returning a good wish",
+"register": "neutral",
+"natural_example": "Have a great weekend! Thanks, same to you.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0482",
+"chunk": "Thanks for having me",
+"category": "fixed_formula",
+"pragmatic_function": "Thanking a host when leaving",
+"register": "polite",
+"natural_example": "Dinner was amazing. Thanks for having me.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0483",
+"chunk": "What can I get you?",
+"category": "fixed_formula",
+"pragmatic_function": "Taking an order in a cafe, bar, or restaurant",
+"register": "neutral",
+"natural_example": "Hi there, what can I get you?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0484",
+"chunk": "For here or to go?",
+"category": "fixed_formula",
+"pragmatic_function": "Asking whether food is eaten in or taken out",
+"register": "neutral",
+"natural_example": "One large coffee. For here or to go?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0485",
+"chunk": "Could we get the check, please?",
+"category": "fixed_formula",
+"pragmatic_function": "Asking for the bill in a restaurant",
+"register": "polite",
+"natural_example": "Excuse me, could we get the check, please?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0486",
+"chunk": "Watch your step",
+"category": "fixed_formula",
+"pragmatic_function": "Warning someone where they walk",
+"register": "neutral",
+"natural_example": "Watch your step, the floor's wet.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0487",
+"chunk": "Talk to you soon",
+"category": "fixed_formula",
+"pragmatic_function": "Closing a phone call or message",
+"register": "informal",
+"natural_example": "Okay, I've got to go. Talk to you soon!",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0488",
+"chunk": "You've got the wrong number",
+"category": "fixed_formula",
+"pragmatic_function": "Telling a caller they reached the wrong person",
+"register": "neutral",
+"natural_example": "Sorry, there's no Linda here. You've got the wrong number.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0489",
+"chunk": "You're breaking up",
+"category": "fixed_formula",
+"pragmatic_function": "Reporting a bad phone or video connection",
+"register": "neutral",
+"natural_example": "Sorry, you're breaking up. Can you say that again?",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0490",
+"chunk": "You're on mute",
+"category": "fixed_formula",
+"pragmatic_function": "Alerting someone that their microphone is off",
+"register": "informal",
+"natural_example": "Sorry, Dave, you're on mute.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0491",
+"chunk": "Until recently",
+"category": "discourse_connector",
+"pragmatic_function": "Marking a change that happened not long ago",
+"register": "neutral",
+"natural_example": "Until recently, I'd never even tried sushi.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0492",
+"chunk": "In fact",
+"category": "discourse_connector",
+"pragmatic_function": "Backing up a point with a stronger fact",
+"register": "neutral",
+"natural_example": "I'm not tired. In fact, I feel great.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0493",
+"chunk": "Every time",
+"category": "discourse_connector",
+"pragmatic_function": "Linking a repeated trigger to its result",
+"register": "neutral",
+"natural_example": "Every time I wash my car, it rains.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0494",
+"chunk": "The first time",
+"category": "discourse_connector",
+"pragmatic_function": "Anchoring a story to a first occurrence",
+"register": "neutral",
+"natural_example": "The first time I tried skiing, I fell about twenty times.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0495",
+"chunk": "Next time",
+"category": "discourse_connector",
+"pragmatic_function": "Setting up what to do on a future occasion",
+"register": "neutral",
+"natural_example": "Next time, let's take the train.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0496",
+"chunk": "Right after",
+"category": "discourse_connector",
+"pragmatic_function": "Placing an event immediately after another",
+"register": "neutral",
+"natural_example": "Call me right after the meeting.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0497",
+"chunk": "Before that",
+"category": "discourse_connector",
+"pragmatic_function": "Stepping back to an earlier event",
+"register": "neutral",
+"natural_example": "I work at a bank now. Before that, I was a teacher.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0498",
+"chunk": "All of a sudden",
+"category": "discourse_connector",
+"pragmatic_function": "Marking a sudden turn in a story",
+"register": "neutral",
+"natural_example": "We were having a picnic, and all of a sudden it started pouring.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0499",
+"chunk": "That way",
+"category": "discourse_connector",
+"pragmatic_function": "Pointing out the benefit of a suggestion",
+"register": "neutral",
+"natural_example": "Let's leave at six. That way, we'll beat the traffic.",
+"cefr_level": "B1"
+},
+{
+"id": "ENG_CHUNK_0500",
+"chunk": "If not",
+"category": "discourse_connector",
+"pragmatic_function": "Giving the alternative if a condition fails",
+"register": "neutral",
+"natural_example": "Are you free Friday? If not, how about Saturday?",
+"cefr_level": "B1"
+}
+]

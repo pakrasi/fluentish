@@ -1,0 +1,529 @@
+[
+ {
+  "id": "ENG_CHUNK_0901",
+  "t": "Vous n'auriez pas [nom], par hasard ? / T'aurais pas [nom] ?",
+  "ex": "T'aurais pas un chargeur de téléphone à me prêter, par hasard ?",
+  "n": "Negative question + par hasard is the tentative French ask."
+ },
+ {
+  "id": "ENG_CHUNK_0902",
+  "t": "Je préférerais que tu ne [verbe au subjonctif] pas / que vous ne [verbe] pas",
+  "ex": "Je préférerais que vous ne fumiez pas dans la voiture.",
+  "n": "Subjunctive trigger: préférer que + subjunctive."
+ },
+ {
+  "id": "ENG_CHUNK_0903",
+  "t": "J'aimerais bien que tu arrêtes de [verbe] / Ça m'agace que tu [verbe au subjonctif]",
+  "ex": "J'aimerais bien que tu arrêtes de laisser tes chaussures dans l'entrée.",
+  "n": "Subjunctive trigger: aimer que / ça m'agace que + subjunctive."
+ },
+ {
+  "id": "ENG_CHUNK_0904",
+  "t": "Si ça ne tenait qu'à moi, je [verbe au conditionnel]",
+  "ex": "Si ça ne tenait qu'à moi, je fermerais le bureau le vendredi."
+ },
+ {
+  "id": "ENG_CHUNK_0905",
+  "t": "Je préfère mille fois [nom] à [nom]",
+  "ex": "Je préfère mille fois une soirée tranquille à la maison à une grosse fête.",
+  "n": "préférer X à Y: the à is easy to miss."
+ },
+ {
+  "id": "ENG_CHUNK_0906",
+  "t": "Rien ne vaut [nom] / Rien de tel que [nom]",
+  "ex": "Rien ne vaut une douche chaude après un long footing."
+ },
+ {
+  "id": "ENG_CHUNK_0907",
+  "t": "Je penche pour [nom] / J'hésite, mais plutôt [nom]",
+  "ex": "Pour être honnête, je penche pour l'appart le moins cher."
+ },
+ {
+  "id": "ENG_CHUNK_0908",
+  "t": "J'hésite entre [nom] et [nom]",
+  "ex": "J'hésite entre le canapé bleu et le gris."
+ },
+ {
+  "id": "ENG_CHUNK_0909",
+  "t": "Je commence à avoir des doutes sur [nom] / Je me pose des questions sur [nom]",
+  "ex": "Je commence à avoir des doutes sur le nouveau boulot."
+ },
+ {
+  "id": "ENG_CHUNK_0910",
+  "t": "N'y vois pas trop de choses / Ne te prends pas la tête avec [nom]",
+  "ex": "Il t'a pas répondu ? Te prends pas la tête avec ça."
+ },
+ {
+  "id": "ENG_CHUNK_0911",
+  "t": "Finalement, tu as [participe passé] ? / Tu as fini par [verbe] ?",
+  "ex": "Finalement, t'es allé au mariage ?",
+  "n": "Finalement at the start does the 'end up' job in questions."
+ },
+ {
+  "id": "ENG_CHUNK_0912",
+  "t": "Je n'ai pas eu le temps de [verbe]",
+  "ex": "Désolé, j'ai pas eu le temps de lire ton mail."
+ },
+ {
+  "id": "ENG_CHUNK_0913",
+  "t": "Il y a [nom] qui traîne / Il y a [nom] qui circule",
+  "ex": "La moitié du bureau est absente. Il y a un virus qui traîne."
+ },
+ {
+  "id": "ENG_CHUNK_0914",
+  "t": "Je n'arrive pas à [verbe]",
+  "ex": "J'arrive pas à faire marcher cette imprimante.",
+  "n": "arriver à + infinitive = manage to. The go-to for 'can't seem to'."
+ },
+ {
+  "id": "ENG_CHUNK_0915",
+  "t": "Je ne suis pas fait pour [nom]",
+  "ex": "J'ai enseigné pendant un an, mais je ne suis pas fait pour ça.",
+  "n": "Agrees: pas faite pour (feminine speaker)."
+ },
+ {
+  "id": "ENG_CHUNK_0916",
+  "t": "Je suis débordé de [nom] / Je croule sous [nom]",
+  "ex": "On peut en parler demain ? Je croule sous le boulot aujourd'hui."
+ },
+ {
+  "id": "ENG_CHUNK_0917",
+  "t": "J'appréhende de [verbe] / Ça me déprime de [verbe]",
+  "ex": "J'appréhende de reprendre le boulot lundi.",
+  "n": "Informal: rien que d'y penser, ça me déprime."
+ },
+ {
+  "id": "ENG_CHUNK_0918",
+  "t": "Je n'ai pas le cœur à [verbe] / Je n'arrive pas à me résoudre à [verbe]",
+  "ex": "Je n'arrive pas à me résoudre à jeter ses vieilles lettres."
+ },
+ {
+  "id": "ENG_CHUNK_0919",
+  "t": "J'ai bien envie de [verbe] / Je suis tenté de [verbe]",
+  "ex": "J'ai bien envie de commander une pizza et de ne pas cuisiner."
+ },
+ {
+  "id": "ENG_CHUNK_0920",
+  "t": "Je suis bien décidé à [verbe]",
+  "ex": "Je suis bien décidé à finir ce marathon, quoi qu'il arrive.",
+  "n": "quoi qu'il arrive: quoi que + subjunctive."
+ },
+ {
+  "id": "ENG_CHUNK_0921",
+  "t": "Je n'ai pas d'autre choix que de [verbe]",
+  "ex": "Le loyer a encore augmenté, alors je n'ai pas d'autre choix que de déménager."
+ },
+ {
+  "id": "ENG_CHUNK_0922",
+  "t": "Je ne peux rien faire pour [nom] / Je n'y peux rien",
+  "ex": "Je ne peux rien faire pour le retard, désolé.",
+  "n": "Je n'y peux rien = it's not my fault / I can't help it."
+ },
+ {
+  "id": "ENG_CHUNK_0923",
+  "t": "Je n'ai pas le cœur de [verbe]",
+  "ex": "Je n'ai pas le cœur de lui dire que sa cuisine est mauvaise.",
+  "n": "avoir le cœur de = have the heart to; avoir le cœur à = be in the mood for."
+ },
+ {
+  "id": "ENG_CHUNK_0924",
+  "t": "La dernière chose que je veux, c'est [verbe] / c'est que [proposition au subjonctif]",
+  "ex": "La dernière chose que je veux, c'est vexer tes parents.",
+  "n": "With a new subject: c'est que tu sois triste (subjunctive)."
+ },
+ {
+  "id": "ENG_CHUNK_0925",
+  "t": "Je ne suis pas en mesure de [verbe]",
+  "ex": "Je crains de ne pas être en mesure d'approuver ça."
+ },
+ {
+  "id": "ENG_CHUNK_0926",
+  "t": "Ce n'est pas à moi de [verbe]",
+  "ex": "Ce n'est pas à moi de lui dire comment élever ses enfants."
+ },
+ {
+  "id": "ENG_CHUNK_0927",
+  "t": "Je mentirais si je disais que [proposition]",
+  "ex": "Je mentirais si je disais que je n'étais pas nerveux."
+ },
+ {
+  "id": "ENG_CHUNK_0928",
+  "t": "Ça m'embête de le dire, mais [proposition]",
+  "ex": "Ça m'embête de le dire, mais je crois qu'on est perdus."
+ },
+ {
+  "id": "ENG_CHUNK_0929",
+  "t": "Je ne veux pas [verbe], mais [proposition]",
+  "ex": "Je ne veux pas être impoli, mais il commence à se faire tard."
+ },
+ {
+  "id": "ENG_CHUNK_0930",
+  "t": "Je n'ai rien contre [nom], mais [proposition]",
+  "ex": "Je n'ai rien contre les chats, mais j'y suis allergique."
+ },
+ {
+  "id": "ENG_CHUNK_0931",
+  "t": "Tu ne crois quand même pas que [proposition au subjonctif] ?",
+  "ex": "Tu crois quand même pas qu'on sera là-bas pour six heures ?",
+  "n": "Subjunctive trigger in a negative question: croire que can take subjunctive (qu'on soit), but speech often keeps the indicative."
+ },
+ {
+  "id": "ENG_CHUNK_0932",
+  "t": "Je suis d'accord avec [personne] pour [nom] / Je suis du côté de [personne]",
+  "ex": "Je suis d'accord avec Sarah sur ce coup-là. On mange d'abord."
+ },
+ {
+  "id": "ENG_CHUNK_0933",
+  "t": "Je ne vois pas pourquoi [proposition]",
+  "ex": "Je vois pas pourquoi on ne pourrait pas juste prendre le train.",
+  "n": "pourquoi takes the indicative (or conditionnel), never the subjunctive."
+ },
+ {
+  "id": "ENG_CHUNK_0934",
+  "t": "Ce que je ne comprends pas, c'est [proposition]",
+  "ex": "Ce que je comprends pas, c'est pourquoi il n'a pas juste appelé."
+ },
+ {
+  "id": "ENG_CHUNK_0935",
+  "t": "Je suis tout à fait pour [nom / verbe]",
+  "ex": "Je suis tout à fait pour faire des économies, mais pas sur la bouffe."
+ },
+ {
+  "id": "ENG_CHUNK_0936",
+  "t": "sauter sur l'occasion",
+  "ex": "Si on me proposait un boulot à Tokyo, je sauterais sur l'occasion."
+ },
+ {
+  "id": "ENG_CHUNK_0937",
+  "t": "refuser [nom] / décliner [nom]",
+  "ex": "J'ai refusé le poste parce que le trajet était trop long.",
+  "n": "décliner une offre is polite; décliner also means 'to decline' in health."
+ },
+ {
+  "id": "ENG_CHUNK_0938",
+  "t": "annuler [nom]",
+  "ex": "Ils ont annulé le match à cause de la pluie."
+ },
+ {
+  "id": "ENG_CHUNK_0939",
+  "t": "mettre [nom] en pause / mettre [nom] entre parenthèses",
+  "ex": "On a mis la rénovation de la cuisine en pause pour l'instant."
+ },
+ {
+  "id": "ENG_CHUNK_0940",
+  "t": "traverser [nom] / passer par [nom]",
+  "ex": "Elle traverse une période difficile en ce moment."
+ },
+ {
+  "id": "ENG_CHUNK_0941",
+  "t": "tomber en morceaux / partir en lambeaux",
+  "ex": "Ces chaussures tombent déjà en morceaux."
+ },
+ {
+  "id": "ENG_CHUNK_0942",
+  "t": "s'en tirer avec [nom] / s'en sortir sans [nom]",
+  "ex": "Mon petit frère, on lui passe tout.",
+  "n": "No fixed equivalent: on lui passe tout = he gets away with everything."
+ },
+ {
+  "id": "ENG_CHUNK_0943",
+  "t": "échapper à [nom] / se défiler de [nom] / couper à [nom]",
+  "ex": "J'essaie de couper à la réunion de lundi.",
+  "n": "couper à quelque chose = to dodge it (informal)."
+ },
+ {
+  "id": "ENG_CHUNK_0944",
+  "t": "empêcher [nom] / nuire à [nom]",
+  "ex": "Ne laisse pas le boulot nuire à ta santé."
+ },
+ {
+  "id": "ENG_CHUNK_0945",
+  "t": "en faire tout un plat / faire des histoires",
+  "ex": "C'est juste une égratignure, fais pas d'histoires."
+ },
+ {
+  "id": "ENG_CHUNK_0946",
+  "t": "se laisser emporter / s'emballer",
+  "ex": "Pardon, je me suis un peu emballé avec la déco."
+ },
+ {
+  "id": "ENG_CHUNK_0947",
+  "t": "profiter à fond de [nom] / tirer le meilleur parti de [nom]",
+  "ex": "Profitons du soleil tant qu'il est là."
+ },
+ {
+  "id": "ENG_CHUNK_0948",
+  "t": "faire bonne impression",
+  "ex": "Je veux vraiment faire bonne impression à ses parents.",
+  "n": "No article: faire bonne impression."
+ },
+ {
+  "id": "ENG_CHUNK_0949",
+  "t": "inventer [nom]",
+  "ex": "Il a inventé une excuse comme quoi sa voiture était tombée en panne."
+ },
+ {
+  "id": "ENG_CHUNK_0950",
+  "t": "faire des progrès / progresser",
+  "ex": "Mon espagnol avance lentement, mais je fais des progrès."
+ },
+ {
+  "id": "ENG_CHUNK_0951",
+  "t": "faire la conversation / parler de la pluie et du beau temps",
+  "ex": "Je suis nul pour faire la conversation en soirée."
+ },
+ {
+  "id": "ENG_CHUNK_0952",
+  "t": "prendre un risque",
+  "ex": "Ouvrir un restaurant, c'est un gros risque, mais je vais le prendre."
+ },
+ {
+  "id": "ENG_CHUNK_0953",
+  "t": "profiter de [nom]",
+  "ex": "On devrait profiter du beau temps pour aller randonner.",
+  "n": "profiter de = make use of; profiter alone = enjoy."
+ },
+ {
+  "id": "ENG_CHUNK_0954",
+  "t": "prendre [nom] au sérieux",
+  "ex": "Il faut prendre cette toux au sérieux et voir un médecin."
+ },
+ {
+  "id": "ENG_CHUNK_0955",
+  "t": "considérer [nom] comme acquis",
+  "ex": "On considère l'eau potable comme acquise.",
+  "n": "Common spoken: on trouve ça normal."
+ },
+ {
+  "id": "ENG_CHUNK_0956",
+  "t": "[verbe] à tour de rôle / faire [nom] chacun son tour",
+  "ex": "Mon coloc et moi, on fait la cuisine à tour de rôle."
+ },
+ {
+  "id": "ENG_CHUNK_0957",
+  "t": "se mettre à [nom]",
+  "ex": "Je me suis mis au yoga pour mon dos."
+ },
+ {
+  "id": "ENG_CHUNK_0958",
+  "t": "reprendre [nom]",
+  "ex": "Ma sœur a repris la boulangerie familiale l'an dernier."
+ },
+ {
+  "id": "ENG_CHUNK_0959",
+  "t": "assumer la responsabilité de [nom] / assumer [nom]",
+  "ex": "J'assume pour la confusion avec les billets.",
+  "n": "J'assume alone is very natural in speech."
+ },
+ {
+  "id": "ENG_CHUNK_0960",
+  "t": "dire deux mots à [personne] / parler à [personne] en privé",
+  "ex": "Je pourrais vous dire un mot après le cours ?"
+ },
+ {
+  "id": "ENG_CHUNK_0961",
+  "t": "crever l'abcès / mettre les choses à plat",
+  "ex": "On a longuement discuté et on a mis les choses à plat."
+ },
+ {
+  "id": "ENG_CHUNK_0962",
+  "t": "garder rancune / en vouloir à quelqu'un",
+  "ex": "Elle lui en veut encore pour le mariage."
+ },
+ {
+  "id": "ENG_CHUNK_0963",
+  "t": "avoir [nom] en tête / avoir une idée de [nom]",
+  "ex": "T'as une idée pour le dîner ?"
+ },
+ {
+  "id": "ENG_CHUNK_0964",
+  "t": "faire du bien à [personne]",
+  "ex": "Une semaine à la plage, ça te ferait du bien."
+ },
+ {
+  "id": "ENG_CHUNK_0965",
+  "t": "se passer de [nom]",
+  "ex": "Je ne peux pas me passer de mon café du matin."
+ },
+ {
+  "id": "ENG_CHUNK_0966",
+  "t": "Pour être clair / Juste pour être sûr",
+  "ex": "Juste pour être sûr, on se retrouve à la gare, c'est ça ?"
+ },
+ {
+  "id": "ENG_CHUNK_0967",
+  "t": "Si je vous comprends bien",
+  "ex": "Si je vous comprends bien, vous voulez partir jeudi."
+ },
+ {
+  "id": "ENG_CHUNK_0968",
+  "t": "Rien à voir, mais / Sinon, autre chose",
+  "ex": "Rien à voir, mais t'as fini par trouver un nouvel appart ?",
+  "n": "Sinon... is the everyday topic switch."
+ },
+ {
+  "id": "ENG_CHUNK_0969",
+  "t": "Pour revenir à ce que tu disais tout à l'heure",
+  "ex": "Pour revenir à ce que tu disais tout à l'heure, pourquoi t'as démissionné ?"
+ },
+ {
+  "id": "ENG_CHUNK_0970",
+  "t": "Si ça peut t'aider / Pour ce que ça vaut",
+  "ex": "Si ça peut te rassurer, je pense que t'as fait le bon choix."
+ },
+ {
+  "id": "ENG_CHUNK_0971",
+  "t": "Sans vouloir te vexer / Soit dit sans vouloir te vexer",
+  "ex": "Sans vouloir te vexer, ta voiture sent la vieille frite."
+ },
+ {
+  "id": "ENG_CHUNK_0972",
+  "t": "Ça va te paraître bizarre, mais",
+  "ex": "Ça va te paraître bizarre, mais on ne s'est pas déjà rencontrés ?"
+ },
+ {
+  "id": "ENG_CHUNK_0973",
+  "t": "Je te comprends / Je vois ce que tu veux dire",
+  "ex": "Je te comprends, le trajet est horrible ces temps-ci."
+ },
+ {
+  "id": "ENG_CHUNK_0974",
+  "t": "Pour faire court / En bref",
+  "ex": "On peut se le permettre ? Pour faire court, non."
+ },
+ {
+  "id": "ENG_CHUNK_0975",
+  "t": "Et me voilà",
+  "ex": "Et me voilà, enfermé dehors en pyjama."
+ },
+ {
+  "id": "ENG_CHUNK_0976",
+  "t": "Soyons honnêtes / Faut bien l'avouer",
+  "ex": "Soyons honnêtes, on ne se servira jamais de ce tapis de course."
+ },
+ {
+  "id": "ENG_CHUNK_0977",
+  "t": "Je ne le vois pas comme ça",
+  "ex": "Hmm, je ne le vois pas comme ça. Je pense qu'il était juste fatigué."
+ },
+ {
+  "id": "ENG_CHUNK_0978",
+  "t": "à peu près / plus ou moins",
+  "ex": "C'est à une heure de route, à peu près."
+ },
+ {
+  "id": "ENG_CHUNK_0979",
+  "t": "Ne me cite pas / Je dis ça sous toutes réserves",
+  "ex": "Je crois que le magasin ouvre à neuf heures, mais ne me cite pas.",
+  "n": "Sous toutes réserves is formal; spoken: je dis ça, je dis rien."
+ },
+ {
+  "id": "ENG_CHUNK_0980",
+  "t": "Je vais jouer l'avocat du diable",
+  "ex": "Bon, je vais jouer l'avocat du diable. Et s'il pleut ?"
+ },
+ {
+  "id": "ENG_CHUNK_0981",
+  "t": "Sans rancune",
+  "ex": "T'as eu le poste à ma place ? Sans rancune."
+ },
+ {
+  "id": "ENG_CHUNK_0982",
+  "t": "Pas de souci / Je ne suis pas vexé",
+  "ex": "Sans vouloir te vexer, ta cuisine est un peu fade. Pas de souci."
+ },
+ {
+  "id": "ENG_CHUNK_0983",
+  "t": "Je te / vous dois des excuses",
+  "ex": "Je te dois des excuses pour ce que j'ai dit hier."
+ },
+ {
+  "id": "ENG_CHUNK_0984",
+  "t": "Tu as illuminé ma journée / Ça m'a fait trop plaisir",
+  "ex": "Merci pour les fleurs, ça m'a fait trop plaisir !"
+ },
+ {
+  "id": "ENG_CHUNK_0985",
+  "t": "Range ton argent / Laisse, c'est pour moi",
+  "ex": "Range ton argent, c'est moi qui invite."
+ },
+ {
+  "id": "ENG_CHUNK_0986",
+  "t": "La prochaine, c'est pour moi",
+  "ex": "Merci pour le café. La prochaine, c'est pour moi."
+ },
+ {
+  "id": "ENG_CHUNK_0987",
+  "t": "On remet ça à une autre fois ?",
+  "ex": "Je suis crevé ce soir. On remet ça à une autre fois ?"
+ },
+ {
+  "id": "ENG_CHUNK_0988",
+  "t": "Non merci, ça ira",
+  "ex": "Encore du gâteau ? Oh, non merci, ça ira."
+ },
+ {
+  "id": "ENG_CHUNK_0989",
+  "t": "Je n'en peux plus / Je ne pourrais plus rien avaler",
+  "ex": "C'était délicieux, mais je ne pourrais plus rien avaler."
+ },
+ {
+  "id": "ENG_CHUNK_0990",
+  "t": "C'est offert / C'est la maison qui offre",
+  "ex": "Désolé pour l'attente. Votre café est offert, c'est la maison qui offre."
+ },
+ {
+  "id": "ENG_CHUNK_0991",
+  "t": "Même comme ça / Et même là",
+  "ex": "J'ai redémarré l'ordi deux fois, et même comme ça il ne se connectait pas."
+ },
+ {
+  "id": "ENG_CHUNK_0992",
+  "t": "Au moment où / Juste au moment où",
+  "ex": "Juste au moment où je me mettais à table, le téléphone a sonné."
+ },
+ {
+  "id": "ENG_CHUNK_0993",
+  "t": "Très vite / Bientôt",
+  "ex": "On a commencé à discuter, et très vite on est devenus meilleurs amis."
+ },
+ {
+  "id": "ENG_CHUNK_0994",
+  "t": "Sans m'en rendre compte / Sans que je m'en rende compte",
+  "ex": "Je me suis mis devant un épisode, et sans m'en rendre compte, il était deux heures du matin.",
+  "n": "sans que + subjunctive."
+ },
+ {
+  "id": "ENG_CHUNK_0995",
+  "t": "D'abord / Déjà",
+  "ex": "Je ne vais pas m'installer là-bas. Déjà, c'est beaucoup trop cher.",
+  "n": "Déjà at the start = 'for one thing' (spoken)."
+ },
+ {
+  "id": "ENG_CHUNK_0996",
+  "t": "Au fond",
+  "ex": "Il joue les durs, mais au fond, il est très sensible."
+ },
+ {
+  "id": "ENG_CHUNK_0997",
+  "t": "Soit ça, soit / Ou alors",
+  "ex": "Elle doit être coincée dans les bouchons. Ou alors elle a oublié."
+ },
+ {
+  "id": "ENG_CHUNK_0998",
+  "t": "Si oui / Dans ce cas",
+  "ex": "Tu conduis demain ? Si oui, tu peux m'emmener ?",
+  "n": "Si c'est le cas is the neutral alternative."
+ },
+ {
+  "id": "ENG_CHUNK_0999",
+  "t": "Comme si",
+  "ex": "Il m'a regardé comme si j'étais fou.",
+  "n": "comme si + imparfait/plus-que-parfait, never subjunctive or conditionnel."
+ },
+ {
+  "id": "ENG_CHUNK_1000",
+  "t": "Plutôt que / Par opposition à",
+  "ex": "Pour l'instant, je préfère louer plutôt qu'acheter."
+ }
+]

@@ -1,0 +1,642 @@
+{
+ "L1-1": {
+  "evidence": "Nicht aus Angst, sondern weil ich es hasse, drei Stunden vor dem Abflug am Flughafen zu stehen.",
+  "evidence_en": "Not out of fear, but because I hate standing at the airport three hours before departure.",
+  "why": "Falsch: Der Autor sagt klar „nicht aus Angst“. Der Grund ist die lange Wartezeit am Flughafen.",
+  "why_en": "False: the author explicitly says 'not out of fear'. The reason is the long wait at the airport.",
+  "trap": "Das Wort „Angst“ steht im Text, aber mit „nicht“ davor – die Aussage dreht die Negation um.",
+  "trap_en": "The word 'Angst' is in the text, but negated with 'nicht' – the statement flips the negation.",
+  "question_en": "The author doesn't like flying because he is afraid of flying."
+ },
+ "L1-2": {
+  "evidence": "Ich hatte ein Bett im Liegewagen gebucht, zusammen mit fünf anderen Personen im Abteil.",
+  "evidence_en": "I had booked a bed in the couchette car, together with five other people in the compartment.",
+  "why": "Falsch: Er teilte das Abteil mit fünf anderen Personen, er war also nicht allein.",
+  "why_en": "False: he shared the compartment with five other people, so he wasn't alone.",
+  "trap": "„Das klingt eng, war aber gemütlicher“ könnte an Privatsphäre denken lassen, aber „gemütlich“ heißt nicht „allein“.",
+  "trap_en": "'It sounds cramped, but was cosier' might suggest privacy, but 'cosy' does not mean 'alone'.",
+  "question_en": "The author had a compartment to himself on the train."
+ },
+ "L1-3": {
+  "evidence": "Zum Frühstück gab es Kaffee und ein Brötchen, das war im Preis enthalten.",
+  "evidence_en": "For breakfast there was coffee and a bread roll; that was included in the price.",
+  "why": "Richtig: „im Preis enthalten“ = „im Fahrpreis enthalten“. Das Frühstück kostete nichts extra.",
+  "why_en": "True: 'included in the price' = 'included in the fare'. Breakfast cost nothing extra.",
+  "trap": "Man denkt vielleicht, Essen im Zug kostet immer extra – aber der Text sagt das Gegenteil.",
+  "trap_en": "You might assume food on a train always costs extra – but the text says the opposite.",
+  "question_en": "Breakfast on the train was included in the fare."
+ },
+ "L1-4": {
+  "evidence": "Wer erst eine Woche vorher bucht, zahlt oft das Doppelte.",
+  "evidence_en": "Anyone who books only a week in advance often pays double.",
+  "why": "Richtig: „erst eine Woche vorher“ = „kurz vor der Fahrt“, „das Doppelte“ = „mehr“, „oft“ = „meistens“.",
+  "why_en": "True: 'only a week before' = 'shortly before the trip', 'double' = 'more', 'often' = 'usually'.",
+  "trap": "Die Zahl 89 Euro gilt für die frühe Buchung (zwei Monate vorher), nicht für kurzfristige Käufer.",
+  "trap_en": "The 89-euro price is for the early booking (two months ahead), not for last-minute buyers.",
+  "question_en": "Anyone who buys the ticket shortly before the journey usually pays more."
+ },
+ "L1-5": {
+  "evidence": "dann ging es weiter nach Venedig, wieder über Nacht.",
+  "evidence_en": "then I continued to Venice, again overnight.",
+  "why": "Falsch: Er fuhr „wieder über Nacht“, also nachts, nicht tagsüber.",
+  "why_en": "False: he travelled 'again overnight', i.e. at night, not during the day.",
+  "trap": "„Zwei Tage“ in Wien kann an Tag denken lassen, aber die Fahrt selbst war in der Nacht.",
+  "trap_en": "'Two days' in Vienna may make you think of daytime, but the journey itself was at night.",
+  "question_en": "The author travelled from Vienna to Venice during the day."
+ },
+ "L1-6": {
+  "evidence": "bucht früh und packt leicht, denn im Liegewagen gibt es wenig Platz für Koffer.",
+  "evidence_en": "book early and pack light, because there is little room for suitcases in the couchette car.",
+  "why": "Richtig: „packt leicht“ bedeutet „mit wenig Gepäck reisen“. Das ist sein Tipp.",
+  "why_en": "True: 'pack light' means 'travel with little luggage'. That is his tip.",
+  "trap": "Man muss „packt leicht“ als Gepäck-Tipp erkennen; „leicht“ heißt hier nicht „einfach“.",
+  "trap_en": "You have to recognise 'pack light' as luggage advice; 'leicht' here doesn't mean 'easy'.",
+  "question_en": "The author recommends travelling with little luggage."
+ },
+ "L2-1": {
+  "evidence": "alle Busse, Straßenbahnen und Regionalzüge benutzen. Nur die schnellen Fernzüge sind ausgenommen.",
+  "evidence_en": "use all buses, trams and regional trains. Only the fast long-distance trains are excluded.",
+  "why": "b ist richtig: Man kann Busse und Regionalzüge in ganz Deutschland nutzen.",
+  "why_en": "b is correct: you can use buses and regional trains all over Germany.",
+  "trap": "a nimmt „schnelle Fernzüge“ aus dem Text, aber diese sind gerade „ausgenommen“, also nicht erlaubt.",
+  "trap_en": "a reuses 'fast long-distance trains', but these are exactly the ones that are 'excluded'.",
+  "question_en": "With the Deutschlandticket …",
+  "options_en": [
+   "you can also travel on the fast long-distance trains.",
+   "you can use regional trains and buses all over Germany.",
+   "you travel for free for a month."
+  ]
+ },
+ "L2-2": {
+  "evidence": "Die meisten hatten schon vorher eine Monatskarte und zahlen jetzt einfach weniger.",
+  "evidence_en": "Most already had a monthly pass before and now simply pay less.",
+  "why": "c ist richtig: „schon vorher eine Monatskarte“ = „schon vorher Bus und Bahn genutzt“.",
+  "why_en": "c is correct: 'already had a monthly pass' = 'already used buses and trains before'.",
+  "trap": "a sagt das Gegenteil: Nur etwa jeder zehnte Käufer ist vorher regelmäßig Auto gefahren – das ist nicht „die meisten“.",
+  "trap_en": "a says the opposite: only about one in ten buyers drove regularly before – that isn't 'most'.",
+  "question_en": "The study by the University of Kassel shows that …",
+  "options_en": [
+   "most buyers used to travel by car.",
+   "the ticket works especially well in the countryside.",
+   "most buyers already used buses and trains before."
+  ]
+ },
+ "L2-3": {
+  "evidence": "Wer im Sommer zum Wandern fährt, dem raten die Verkehrsbetriebe deshalb, früh am Morgen loszufahren.",
+  "evidence_en": "The transport companies therefore advise anyone travelling to go hiking in summer to set off early in the morning.",
+  "why": "a ist richtig: „zum Wandern fahren“ = „in die Berge fahren“, der Rat ist „früh am Morgen loszufahren“.",
+  "why_en": "a is correct: 'going hiking' = 'going to the mountains', and the advice is to leave early in the morning.",
+  "trap": "b nimmt „mehr Wagen“ und „neue Züge“ aus dem Text, aber die kommen erst in etwa zwei Jahren.",
+  "trap_en": "b reuses 'more carriages' and 'new trains', but these won't arrive for about two years.",
+  "question_en": "Anyone who travels to the mountains by train in summer …",
+  "options_en": [
+   "should set off early in the morning.",
+   "gets new trains with more carriages.",
+   "has to buy an extra ticket."
+  ]
+ },
+ "L2-4": {
+  "evidence": "Seit ein Foto des Dorfes vor drei Jahren im Internet berühmt wurde",
+  "evidence_en": "Since a photo of the village became famous on the internet three years ago",
+  "why": "b ist richtig: „Foto“ = „Bild“. Das Foto im Internet hat das Dorf bekannt gemacht.",
+  "why_en": "b is correct: 'Foto' = 'Bild'. The photo online made the village well known.",
+  "trap": "a nennt die richtige Zahl 780 Einwohner, aber das ist nicht der Grund, warum das Dorf bekannt ist.",
+  "trap_en": "a gives the correct figure of 780 residents, but that isn't why the village became known.",
+  "question_en": "Seebach has become well known …",
+  "options_en": [
+   "because the village has only 780 inhabitants.",
+   "because a picture of the village became famous on the internet.",
+   "because there is a new hotel on the lake there."
+  ]
+ },
+ "L2-5": {
+  "evidence": "Reisebusse müssen sich jetzt online anmelden, und pro Tag dürfen höchstens 40 Busse ins Dorf.",
+  "evidence_en": "Coaches now have to register online, and at most 40 buses per day may enter the village.",
+  "why": "a ist richtig: Busse brauchen eine Anmeldung; wer keine hat, muss draußen bleiben.",
+  "why_en": "a is correct: buses need to register; those without registration must stay outside.",
+  "trap": "b mischt die Zahlen: 40 ist die Zahl der Busse pro Tag, das Parken kostet 30 Euro.",
+  "trap_en": "b mixes up the numbers: 40 is the number of buses per day; parking costs 30 euros.",
+  "question_en": "Coaches …",
+  "options_en": [
+   "may only drive into the village after registering.",
+   "have to pay a 40-euro parking fee.",
+   "may not drive into the village at all any more."
+  ]
+ },
+ "L2-6": {
+  "evidence": "Sie will vor allem die Besucher gewinnen, die mehrere Tage bleiben und im Ort übernachten.",
+  "evidence_en": "Above all she wants to attract visitors who stay several days and spend the night in the village.",
+  "why": "c ist richtig: „mehrere Tage bleiben“ = „länger bleiben“.",
+  "why_en": "c is correct: 'stay several days' = 'stay longer'.",
+  "trap": "a ist zu stark: Sie will nicht „gar keine“ Touristen, sondern andere Touristen – Gäste, die übernachten.",
+  "trap_en": "a is too extreme: she doesn't want 'no tourists at all', just different ones – guests who stay overnight.",
+  "question_en": "The mayor …",
+  "options_en": [
+   "doesn't want any tourists in the village at all any more.",
+   "is of the same opinion as the hotel owner.",
+   "mainly wants guests who stay longer."
+  ]
+ },
+ "L3-1": {
+  "evidence": "Voll ausgestattete Küche, Garten, zwei Fahrräder inklusive. Ab 95 € pro Nacht, im Juli und August nur wochenweise.",
+  "evidence_en": "Fully equipped kitchen, garden, two bikes included. From €95 per night, in July and August weekly only.",
+  "why": "F passt: Ferienhaus an der Nordsee, eigene Küche, und im Sommer wird wochenweise vermietet – genau eine Woche.",
+  "why_en": "F fits: holiday house on the North Sea, own kitchen, and in summer it's rented by the week – exactly one week.",
+  "trap": "Andere Reiseangebote (G, H) haben Hotels, aber keine eigene Küche und nicht die Nordsee.",
+  "trap_en": "Other travel offers (G, H) have hotels, but no own kitchen and aren't at the North Sea.",
+  "question_en": "The Kaya family wants to spend a week on the North Sea in summer and needs accommodation with its own kitchen."
+ },
+ "L3-2": {
+  "evidence": "Fahre jeden Freitag um 14 Uhr von Köln nach Berlin, zurück am Sonntag. Drei Plätze frei, 25 € pro Person und Strecke.",
+  "evidence_en": "Driving from Cologne to Berlin every Friday at 2 pm, back on Sunday. Three seats free, €25 per person each way.",
+  "why": "A passt: Mitfahrgelegenheit am Freitag nach Berlin, günstig und zusammen mit anderen.",
+  "why_en": "A fits: a ride share to Berlin on Friday, cheap and together with others.",
+  "trap": "B (Autovermietung) bringt ihn auch nach Berlin, aber er fährt allein und es ist nicht die günstige Gemeinschaftslösung.",
+  "trap_en": "B (car rental) would also get him to Berlin, but he'd drive alone and it isn't the cheap shared option.",
+  "question_en": "Lukas is going to Berlin next Friday and wants to travel together with others as cheaply as possible."
+ },
+ "L3-3": {
+  "evidence": "Gruppenreisen für Menschen ab 65",
+  "evidence_en": "Group trips for people aged 65 and over",
+  "why": "H passt: Frau Dietrich ist 72 und möchte nicht allein reisen – Gruppenreisen mit Reiseleitung.",
+  "why_en": "H fits: Ms Dietrich is 72 and doesn't want to travel alone – group trips with a tour guide.",
+  "trap": "G (Prag mit dem Bus) ist auch eine Reise, aber nicht speziell für Senioren und nicht als betreute Gruppe beschrieben.",
+  "trap_en": "G (Prague by bus) is also a trip, but not aimed at seniors or described as an accompanied group.",
+  "question_en": "Ms Dietrich (72) likes travelling but doesn't want to travel alone."
+ },
+ "L3-4": {
+  "evidence": "Wir bringen Sie zu jeder Tages- und Nachtzeit zum Flughafen, auch wenn kein Zug mehr fährt.",
+  "evidence_en": "We take you to the airport at any time of day or night, even when no trains are running.",
+  "why": "C passt: Transfer rund um die Uhr, auch wenn keine Bahn fährt – ideal für 5 Uhr morgens.",
+  "why_en": "C fits: round-the-clock transfer, even when no trains run – ideal for 5 am.",
+  "trap": "E (Stadträder) ist auch immer verfügbar, aber mit Gepäck zum Flughafen ist das keine passende Lösung.",
+  "trap_en": "E (city bikes) is also always available, but it isn't a suitable way to get to the airport with luggage.",
+  "question_en": "Mehmet has to be at the airport at 5 in the morning, when no trains are running yet."
+ },
+ "L3-5": {
+  "evidence": "Englisch lernen, wo andere Urlaub machen",
+  "evidence_en": "Learn English where others go on holiday",
+  "why": "J passt: Sprachkurs Englisch in Malta – Sprache verbessern und ein anderes Land kennenlernen.",
+  "why_en": "J fits: English course in Malta – improve the language and get to know another country.",
+  "trap": "G (Prag) zeigt auch ein anderes Land, aber dort lernt man kein Englisch.",
+  "trap_en": "G (Prague) also shows another country, but you don't learn English there.",
+  "question_en": "Sonja wants to improve her English during the holidays and get to know another country at the same time."
+ },
+ "L3-6": {
+  "evidence": "Reparaturen aller Art, meistens am selben Tag fertig",
+  "evidence_en": "Repairs of all kinds, usually ready the same day",
+  "why": "0: Anja will selbst reparieren lernen. Die Werkstatt D repariert für sie, bietet aber keinen Kurs an.",
+  "why_en": "0: Anja wants to learn to repair it herself. Workshop D repairs for you but offers no course.",
+  "trap": "D ist die Beinahe-Anzeige: „Wir reparieren – Sie fahren!“ heißt, die Werkstatt macht die Arbeit, nicht Anja.",
+  "trap_en": "D is the near-miss ad: 'We repair – you ride!' means the workshop does the work, not Anja.",
+  "question_en": "Anja has an old bicycle and wants to learn to repair it herself."
+ },
+ "L3-7": {
+  "evidence": "Übernachtung mit Abendessen in einer Berghütte",
+  "evidence_en": "Overnight stay with dinner in a mountain hut",
+  "why": "I passt: Wanderwochenende (Samstag und Sonntag) in den Bergen mit Übernachtung in einer Hütte.",
+  "why_en": "I fits: hiking weekend (Saturday and Sunday) in the mountains with a night in a hut.",
+  "trap": "H nennt Südtirol (auch Berge), ist aber für Senioren und ohne Wandern und Hütte.",
+  "trap_en": "H mentions South Tyrol (also mountains), but it's for seniors, with no hiking or hut.",
+  "question_en": "Mr and Mrs Weber want to go hiking in the Alps for a weekend and spend the night in a mountain hut."
+ },
+ "L4-1": {
+  "evidence": "Für das Klima ist jeder Inlandsflug einer zu viel.",
+  "evidence_en": "For the climate, every domestic flight is one too many.",
+  "why": "Ja: Klara ist für ein Verbot. Sie findet jeden Inlandsflug schlecht und nennt Frankreich als gutes Beispiel.",
+  "why_en": "Yes: Klara supports a ban. She thinks every domestic flight is bad and cites France as a good example.",
+  "trap": "Der Anfang (Flug eine Stunde, Zug sechs) klingt wie ein Argument gegen das Verbot, aber dann kommt „Trotzdem“.",
+  "trap_en": "The opening (one hour by plane, six by train) sounds like an argument against, but then comes 'Trotzdem'.",
+  "question_en": "Klara, Hamburg: From Hamburg to Munich you fly for one hour; by train you need six. Nevertheless: the train is there, and it runs every hour. For the climate every domestic flight is one too many. In France short flights have already been banned, and the world didn't end."
+ },
+ "L4-2": {
+  "evidence": "Solange die Bahn nicht funktioniert, kann man das Flugzeug nicht verbieten.",
+  "evidence_en": "As long as the railway doesn't work, you can't ban planes.",
+  "why": "Nein: Stefan ist im Moment gegen ein Verbot, weil die Bahn nicht zuverlässig ist.",
+  "why_en": "No: Stefan is against a ban for now because the railway isn't reliable.",
+  "trap": "„dann verbieten“ klingt nach Zustimmung, aber er meint: erst später, nicht jetzt.",
+  "trap_en": "'then ban' sounds like agreement, but he means: only later, not now.",
+  "question_en": "Stefan, Nürnberg: I often have to go to Berlin for work. By train I'm travelling a whole day because something is constantly cancelled. As long as the railway doesn't work, you can't ban the plane. First build the alternative, then ban."
+ },
+ "L4-3": {
+  "evidence": "Aber ein Verbot? Das sollte doch jeder selbst entscheiden.",
+  "evidence_en": "But a ban? Everyone should decide that for themselves.",
+  "why": "Nein: Yara fliegt selbst nicht, aber sie will kein Verbot – jeder soll selbst entscheiden.",
+  "why_en": "No: Yara doesn't fly herself, but she doesn't want a ban – everyone should decide for themselves.",
+  "trap": "„Ich fliege selbst nie“ klingt nach Ja, aber ihr persönliches Verhalten ist nicht ihre Meinung zum Verbot.",
+  "trap_en": "'I never fly myself' sounds like a yes, but her personal behaviour isn't her view on the ban.",
+  "question_en": "Yara, Köln: I never fly within Germany myself; it's too expensive and too complicated for me. But a ban? Surely everyone should decide that for themselves. If the train gets better and cheaper, nobody will fly anyway. That doesn't need bans."
+ },
+ "L4-4": {
+  "evidence": "Ich bin für ein Verbot, für alle Strecken unter 600 Kilometern.",
+  "evidence_en": "I'm in favour of a ban for all routes under 600 kilometres.",
+  "why": "Ja: Henning sagt direkt „Ich bin für ein Verbot“.",
+  "why_en": "Yes: Henning says directly 'I'm in favour of a ban'.",
+  "trap": "Die Geschichte mit der Tochter lenkt ab, aber der letzte Satz ist eindeutig.",
+  "trap_en": "The story about his daughter is a distraction, but the last sentence is clear.",
+  "question_en": "Henning, Rostock: My daughter is 16 and asked me why we fly to Stuttgart for two days of holiday. I had no answer. We then did it by train, and it was great. I'm for a ban, for all routes under 600 kilometres."
+ },
+ "L4-5": {
+  "evidence": "Ein generelles Verbot ist zu einfach gedacht.",
+  "evidence_en": "A general ban is too simplistic.",
+  "why": "Nein: Beatrix ist gegen ein generelles Verbot, weil Inseln, abgelegene Regionen und Kranke Flüge brauchen.",
+  "why_en": "No: Beatrix opposes a general ban because islands, remote regions and sick people need flights.",
+  "trap": "Sie nennt nur Ausnahmen – man könnte denken, sie ist sonst dafür, aber ihr Fazit ist gegen das Verbot.",
+  "trap_en": "She only lists exceptions – you might think she'd otherwise agree, but her conclusion is against the ban.",
+  "question_en": "Beatrix, München: Anyone who lives on an island or in a remote region often has no good train connection. And what about sick people who need to get to a specialist clinic quickly? A general ban is too simplistic."
+ },
+ "L4-6": {
+  "evidence": "Nehmt sie weg, und plötzlich investiert die Politik in Schienen.",
+  "evidence_en": "Take them away, and suddenly politicians invest in rail.",
+  "why": "Ja: Tarek will die Flüge „wegnehmen“, damit die Bahn besser wird – also ist er für ein Verbot.",
+  "why_en": "Yes: Tarek wants to 'take away' flights so the railway improves – so he supports a ban.",
+  "trap": "„die Bahn ist im Moment ein Ärgernis“ klingt negativ, aber das gibt er nur zu, bevor er für das Verbot argumentiert.",
+  "trap_en": "'the railway is a nuisance right now' sounds negative, but it's only a concession before he argues for the ban.",
+  "question_en": "Tarek, Leipzig: Sure, the railway is a nuisance at the moment, I admit that. But it will only get better if more people have to use it. The plane is a convenient excuse. Take it away, and suddenly politicians will invest in rail."
+ },
+ "L4-7": {
+  "evidence": "Ein Verbot würde vielen Firmen helfen, endlich umzudenken.",
+  "evidence_en": "A ban would help many companies finally rethink.",
+  "why": "Ja: Ines findet Kurzflüge für Meetings absurd und glaubt, ein Verbot hilft.",
+  "why_en": "Yes: Ines finds short flights for meetings absurd and believes a ban would help.",
+  "trap": "Sie arbeitet am Flughafen – man erwartet, dass sie gegen ein Verbot ist, aber sie ist dafür.",
+  "trap_en": "She works at the airport – you'd expect her to oppose a ban, but she supports it.",
+  "question_en": "Ines, Freiburg: I work at the airport and every day I see people who fly to Düsseldorf for a two-hour meeting. That's absurd. Video conference or train – both work. A ban would help many companies to finally rethink."
+ },
+ "L5-1": {
+  "evidence": "In Bussen können beim Fahrer nur Einzelfahrkarten gekauft werden, bitte halten Sie dafür passendes Geld bereit.",
+  "evidence_en": "On buses only single tickets can be bought from the driver; please have the exact money ready.",
+  "why": "b ist richtig: Beim Fahrer gibt es nur Einzelfahrkarten, und man braucht passendes Geld.",
+  "why_en": "b is correct: the driver only sells single tickets, and you need the exact money.",
+  "trap": "a sagt „alle Fahrkartenarten“, aber der Text sagt „nur Einzelfahrkarten“. Die 60 Euro in c sind die Strafe ohne Fahrkarte.",
+  "trap_en": "a says 'all ticket types', but the text says 'only single tickets'. The €60 in c is the fine for no ticket.",
+  "question_en": "Anyone who wants to buy a ticket on the bus …",
+  "options_en": [
+   "can get all types of ticket from the driver.",
+   "needs the exact money for a single ticket.",
+   "has to pay 60 euros."
+  ]
+ },
+ "L5-2": {
+  "evidence": "In Bussen sind nur Klappräder erlaubt.",
+  "evidence_en": "Only folding bikes are allowed on buses.",
+  "why": "a ist richtig: „Klappräder“ = Räder, die man zusammenklappen kann.",
+  "why_en": "a is correct: 'Klappräder' = bikes that can be folded up.",
+  "trap": "b ist falsch wegen der Sperrzeiten (6–9 und 15–18 Uhr); c ist falsch, nur Kinder- und Klappräder sind kostenlos.",
+  "trap_en": "b is wrong because of the blocked times (6–9 and 15–18); c is wrong, only children's and folding bikes are free.",
+  "question_en": "Bicycles …",
+  "options_en": [
+   "may only travel on buses if they can be folded.",
+   "may travel on the tram at any time.",
+   "travel free on all means of transport."
+  ]
+ },
+ "L5-3": {
+  "evidence": "dürfen Sie ein Taxi nehmen. Wir erstatten Ihnen bis zu 25 €.",
+  "evidence_en": "you may take a taxi. We will reimburse you up to €25.",
+  "why": "c ist richtig: Man bekommt höchstens 25 Euro für das Taxi zurück.",
+  "why_en": "c is correct: you get back at most €25 for the taxi.",
+  "trap": "b sagt „kostenlos“, aber es gibt eine Grenze von 25 Euro – teurere Fahrten zahlt man teilweise selbst.",
+  "trap_en": "b says 'free', but there is a €25 cap – you pay part of more expensive rides yourself.",
+  "question_en": "If the train is more than 20 minutes late, …",
+  "options_en": [
+   "you get the fare back.",
+   "you can continue by taxi for free.",
+   "the company refunds up to 25 euros for a taxi."
+  ]
+ },
+ "L5-4": {
+  "evidence": "Dort werden sie drei Monate aufbewahrt.",
+  "evidence_en": "They are kept there for three months.",
+  "why": "b ist richtig: Die Fundsachen bleiben drei Monate im Fundbüro.",
+  "why_en": "b is correct: lost items stay at the lost property office for three months.",
+  "trap": "a ist falsch: Das Fundbüro ist nur Montag bis Freitag offen. c ist falsch: „Ein Versand nach Hause ist nicht möglich.“",
+  "trap_en": "a is wrong: the office is only open Monday to Friday. c is wrong: 'Sending items home is not possible.'",
+  "question_en": "Lost property …",
+  "options_en": [
+   "can also be collected at the weekend.",
+   "is kept for three months.",
+   "is sent to the owner's home."
+  ]
+ },
+ "H1-1a": {
+  "evidence": "Ihr Flug am Samstag geht jetzt nicht um 11 Uhr 20, sondern erst um 15 Uhr 40.",
+  "evidence_en": "Your flight on Saturday now leaves not at 11:20 but only at 15:40.",
+  "why": "Richtig: Der Flug geht „erst um 15 Uhr 40“ statt um 11 Uhr 20 – also später.",
+  "why_en": "True: the flight leaves 'only at 15:40' instead of 11:20 – so later.",
+  "trap": "Man hört zuerst 11 Uhr 20, aber das ist die alte Zeit; „nicht … sondern erst“ gibt die neue, spätere Zeit.",
+  "trap_en": "You hear 11:20 first, but that's the old time; 'not … but only' gives the new, later time.",
+  "question_en": "The flight to Lisbon on Saturday takes off later than planned."
+ },
+ "H1-1b": {
+  "evidence": "Ihre neuen Flugtickets schicke ich Ihnen heute noch per E-Mail",
+  "evidence_en": "I'll send you your new flight tickets by email today",
+  "why": "b ist richtig: Frau Beck schickt die Tickets per E-Mail.",
+  "why_en": "b is correct: Ms Beck sends the tickets by email.",
+  "trap": "c nimmt „bis 18 Uhr“ aus dem Text, aber sie soll nur anrufen, wenn sie Fragen hat – es ist kein Muss.",
+  "trap_en": "c reuses 'until 6 pm', but she should only call if she has questions – it isn't required.",
+  "question_en": "Ms Novak …",
+  "options_en": [
+   "has to book a new hotel.",
+   "gets the tickets by email.",
+   "is supposed to call the travel agency back by 6 pm."
+  ]
+ },
+ "H1-2a": {
+  "evidence": "fährt heute nicht von Gleis 7, sondern von Gleis 3.",
+  "evidence_en": "is not departing from platform 7 today, but from platform 3.",
+  "why": "Falsch: Der Zug fährt heute von Gleis 3, nicht von Gleis 7.",
+  "why_en": "False: the train leaves from platform 3 today, not platform 7.",
+  "trap": "Die Durchsage beginnt mit „Achtung an Gleis 7“ – aber das ist das alte Gleis.",
+  "trap_en": "The announcement starts with 'Attention platform 7' – but that's the old platform.",
+  "question_en": "The train to Frankfurt leaves from platform 7 today."
+ },
+ "H1-2b": {
+  "evidence": "hat der ICE außerdem etwa 15 Minuten Verspätung.",
+  "evidence_en": "the ICE is also about 15 minutes late.",
+  "why": "c ist richtig: 15 Minuten = eine Viertelstunde, „etwa“ = „ungefähr“.",
+  "why_en": "c is correct: 15 minutes = a quarter of an hour, 'etwa' = 'ungefähr'.",
+  "trap": "b ist falsch: Der Zug fährt nach Frankfurt; nur Reisende nach Mannheim müssen dort umsteigen.",
+  "trap_en": "b is wrong: the train does go to Frankfurt; only passengers to Mannheim change there.",
+  "question_en": "The ICE …",
+  "options_en": [
+   "leaves on time.",
+   "is not going to Frankfurt today.",
+   "is about a quarter of an hour late."
+  ]
+ },
+ "H1-3a": {
+  "evidence": "Ursprünglich wollte ich ja das kleinere nehmen, aber das war schon weg, also habe ich das größere mit drei Zimmern genommen",
+  "evidence_en": "Originally I wanted to take the smaller one, but it was already gone, so I took the bigger one with three rooms",
+  "why": "Falsch: Das kleinere war schon weg, deshalb hat sie das größere gebucht.",
+  "why_en": "False: the smaller one was already taken, so she booked the bigger one.",
+  "trap": "„das kleinere“ hört man zuerst, aber es war nur der ursprüngliche Plan.",
+  "trap_en": "You hear 'the smaller one' first, but it was only the original plan.",
+  "question_en": "Leni has booked the smaller holiday house."
+ },
+ "H1-3b": {
+  "evidence": "ich würde gern mit dem Zug fahren, nicht mit dem Auto",
+  "evidence_en": "I'd like to go by train, not by car",
+  "why": "a ist richtig: Leni möchte mit dem Zug fahren.",
+  "why_en": "a is correct: Leni wants to go by train.",
+  "trap": "c dreht die Richtung um: Nils soll Leni das Geld bis Mittwoch überweisen, nicht umgekehrt.",
+  "trap_en": "c reverses the direction: Nils should transfer the money to Leni by Wednesday, not the other way round.",
+  "question_en": "Leni wants to …",
+  "options_en": [
+   "go to Ticino by train.",
+   "go to Ticino by car.",
+   "send the money to Nils by Wednesday."
+  ]
+ },
+ "H1-4a": {
+  "evidence": "Die Autobahn war zuerst komplett gesperrt, inzwischen ist aber eine Spur wieder frei.",
+  "evidence_en": "The motorway was fully closed at first, but one lane is now open again.",
+  "why": "Falsch: Sie war nur „zuerst“ komplett gesperrt; jetzt ist eine Spur wieder frei.",
+  "why_en": "False: it was only fully closed 'at first'; now one lane is open again.",
+  "trap": "„komplett gesperrt“ kommt wörtlich vor, aber in der Vergangenheit („war zuerst“).",
+  "trap_en": "'completely closed' is said word for word, but in the past ('was at first').",
+  "question_en": "The A7 is completely closed at the moment."
+ },
+ "H1-4b": {
+  "evidence": "Busse ersetzen die Verbindung",
+  "evidence_en": "buses replace the service",
+  "why": "a ist richtig: Am Wochenende fahren keine Züge, Busse ersetzen sie.",
+  "why_en": "a is correct: no trains run at the weekend; buses replace them.",
+  "trap": "b nimmt „eine Stunde“ aus dem Text, aber die Fahrt dauert eine Stunde länger – die Züge fahren gar nicht.",
+  "trap_en": "b reuses 'one hour', but the journey takes an hour longer – the trains don't run at all.",
+  "question_en": "Between Bremen and Hamburg …",
+  "options_en": [
+   "buses run instead of trains at the weekend.",
+   "the trains leave an hour later.",
+   "the motorway is closed."
+  ]
+ },
+ "H1-5a": {
+  "evidence": "Jetzt im September: Kinder bis 14 Jahre fahren kostenlos, wenn sie mit einem Erwachsenen reisen.",
+  "evidence_en": "Now in September: children up to 14 travel free if they travel with an adult.",
+  "why": "Richtig: Im September fahren Kinder bis 14 kostenlos.",
+  "why_en": "True: in September children up to 14 travel free.",
+  "trap": "Die Bedingung „mit einem Erwachsenen“ ändert nichts an der Aussage – sie bleibt richtig.",
+  "trap_en": "The condition 'with an adult' doesn't change the statement – it's still true.",
+  "question_en": "Children up to 14 travel free in September."
+ },
+ "H1-5b": {
+  "evidence": "Buchen Sie bis Ende des Monats online und sparen Sie zusätzlich 15 Prozent.",
+  "evidence_en": "Book online by the end of the month and save an extra 15 percent.",
+  "why": "b ist richtig: Online-Buchung bis Monatsende spart 15 Prozent.",
+  "why_en": "b is correct: booking online by the end of the month saves 15 percent.",
+  "trap": "c ist falsch: Das Auto kostet ab 79 Euro pro Strecke, es ist nicht kostenlos.",
+  "trap_en": "c is wrong: the car costs from €79 each way; it isn't free.",
+  "question_en": "Anyone who books online by the end of the month …",
+  "options_en": [
+   "gets a free cabin.",
+   "saves 15 percent.",
+   "can take the car along for free."
+  ]
+ },
+ "H2-1": {
+  "evidence": "sind, wenn alles gut geht, gegen 13 Uhr in Dresden.",
+  "evidence_en": "will be in Dresden around 1 pm if all goes well.",
+  "why": "b ist richtig: Ankunft gegen 13 Uhr.",
+  "why_en": "b is correct: arrival around 1 pm.",
+  "trap": "„halb elf“ ist die Zeit der Pause an der Raststätte, nicht die Ankunft.",
+  "trap_en": "'half past ten' is the time of the rest stop, not the arrival.",
+  "question_en": "The group arrives in Dresden … .",
+  "options_en": [
+   "around half past ten",
+   "around 1 pm",
+   "in the evening"
+  ]
+ },
+ "H2-2": {
+  "evidence": "Heute Nachmittag machen wir eine zweistündige Stadtführung zu Fuß durch die Altstadt",
+  "evidence_en": "This afternoon we're doing a two-hour walking tour through the old town",
+  "why": "a ist richtig: Die Führung ist heute Nachmittag und zu Fuß.",
+  "why_en": "a is correct: the tour is this afternoon and on foot.",
+  "trap": "b ist falsch: Die Führung dauert zwei Stunden, nicht den ganzen Tag. Sonntag ist das Museum.",
+  "trap_en": "b is wrong: the tour lasts two hours, not all day. Sunday is the museum.",
+  "question_en": "The city tour …",
+  "options_en": [
+   "takes place on foot this afternoon.",
+   "lasts all day.",
+   "takes place on Sunday."
+  ]
+ },
+ "H2-3": {
+  "evidence": "deshalb haben wir getauscht: Schiff am Samstag, Museum am Sonntag.",
+  "evidence_en": "so we've swapped: boat on Saturday, museum on Sunday.",
+  "why": "c ist richtig: Wegen des Wetters wurde die Schifffahrt von Sonntag auf Samstag verlegt.",
+  "why_en": "c is correct: because of the weather the boat trip was moved from Sunday to Saturday.",
+  "trap": "a nimmt „Wetter“ aus dem Text, aber die Fahrt fällt nicht aus, sie wird nur verschoben.",
+  "trap_en": "a reuses 'weather', but the trip isn't cancelled, only moved.",
+  "question_en": "The boat trip on the Elbe …",
+  "options_en": [
+   "is cancelled because of the weather.",
+   "takes place on Sunday as planned.",
+   "has been moved to Saturday."
+  ]
+ },
+ "H2-4": {
+  "evidence": "Das Abendessen ist im Reisepreis nicht enthalten",
+  "evidence_en": "Dinner is not included in the price of the trip",
+  "why": "b ist richtig: „nicht im Reisepreis enthalten“ = die Gäste bezahlen selbst.",
+  "why_en": "b is correct: 'not included in the price' = guests pay themselves.",
+  "trap": "c nimmt „7 bis 10 Uhr“, aber das ist die Zeit für das Frühstück.",
+  "trap_en": "c reuses '7 to 10', but that's the breakfast time.",
+  "question_en": "Dinner …",
+  "options_en": [
+   "is included in the price at the hotel.",
+   "the guests have to pay for themselves.",
+   "is served from 7 to 10."
+  ]
+ },
+ "H2-5": {
+  "evidence": "Für den Museumsbesuch am Sonntag brauche ich bis heute Abend eine Liste, wer mitkommen möchte",
+  "evidence_en": "For the museum visit on Sunday I need a list by this evening of who wants to come",
+  "why": "a ist richtig: Man muss sich bis heute Abend auf die Liste setzen lassen.",
+  "why_en": "a is correct: you have to put your name on the list by this evening.",
+  "trap": "c ist falsch: Die Karten kosten 12 Euro Gruppenpreis; b ist falsch, sie bestellt die Karten vorher.",
+  "trap_en": "c is wrong: tickets cost €12 group price; b is wrong, she orders the tickets in advance.",
+  "question_en": "Anyone who wants to go to the museum on Sunday …",
+  "options_en": [
+   "has to sign up by this evening.",
+   "buys the ticket at the entrance.",
+   "pays no admission."
+  ]
+ },
+ "H3-1": {
+  "evidence": "Aber mit dem Zug musst du dreimal umsteigen",
+  "evidence_en": "But by train you have to change three times",
+  "why": "Richtig: „dreimal umsteigen“ = „mehrmals umsteigen“.",
+  "why_en": "True: 'change three times' = 'change several times'.",
+  "trap": "Die Fahrzeit (fünfzehn Stunden) lenkt ab, aber die Aussage fragt nur nach dem Umsteigen.",
+  "trap_en": "The travel time (fifteen hours) is a distraction; the statement is only about changing trains.",
+  "question_en": "By train to Croatia you would have to change several times."
+ },
+ "H3-2": {
+  "evidence": "Gibt es, aber schau dir die Preise an: über 300 Euro pro Person, hin und zurück.",
+  "evidence_en": "There are, but look at the prices: over 300 euros per person, return.",
+  "why": "Falsch: Jonas findet die Flüge teuer – „schau dir die Preise an“ ist Kritik.",
+  "why_en": "False: Jonas finds the flights expensive – 'look at the prices' is criticism.",
+  "trap": "„Direktflüge“ klingt praktisch, aber Jonas' Ton („aber … schau dir die Preise an“) ist negativ.",
+  "trap_en": "'Direct flights' sounds convenient, but Jonas's tone ('but … look at the prices') is negative.",
+  "question_en": "Jonas thinks the flights to Split are cheap."
+ },
+ "H3-3": {
+  "evidence": "aber mit einer Übernachtung unterwegs? In Österreich, irgendwo in den Bergen.",
+  "evidence_en": "but with an overnight stop on the way? In Austria, somewhere in the mountains.",
+  "why": "Richtig: Mia schlägt eine Übernachtung in Österreich vor, und Jonas sagt „Das gefällt mir“.",
+  "why_en": "True: Mia suggests stopping overnight in Austria, and Jonas says 'I like that'.",
+  "trap": "Mit einer Frage formuliert klingt es unsicher, aber Jonas stimmt sofort zu.",
+  "trap_en": "Phrased as a question it sounds uncertain, but Jonas agrees immediately.",
+  "question_en": "The two want to break the journey with an overnight stay in Austria."
+ },
+ "H3-4": {
+  "evidence": "schreibe ich meiner Mutter, dass Bruno diesmal mitkommt.",
+  "evidence_en": "I'll write to my mother that Bruno is coming along this time.",
+  "why": "Falsch: Der Hund Bruno kommt diesmal mit in den Urlaub.",
+  "why_en": "False: the dog Bruno is coming on holiday this time.",
+  "trap": "„wieder zu deiner Mutter“ kommt vor, aber mit „statt“: Sie wollen ihn gerade nicht zur Mutter geben.",
+  "trap_en": "'again to your mother' is said, but with 'instead of': they specifically don't want to leave him with her.",
+  "question_en": "The dog is supposed to stay with Mia's mother again."
+ },
+ "H3-5": {
+  "evidence": "Sechs Nächte im Bungalow, 780 Euro.",
+  "evidence_en": "Six nights in the bungalow, 780 euros.",
+  "why": "Falsch: Sie übernachten in einem Bungalow auf dem Campingplatz, nicht im Zelt.",
+  "why_en": "False: they stay in a bungalow at the campsite, not in a tent.",
+  "trap": "„Campingplatz“ und „Zelt“ werden erwähnt, aber Jonas sagt, ein Zelt bei 35 Grad hätte er nicht überlebt.",
+  "trap_en": "'Campsite' and 'tent' are mentioned, but Jonas says he wouldn't have survived a tent at 35 degrees.",
+  "question_en": "In Croatia the two will sleep in a tent."
+ },
+ "H3-6": {
+  "evidence": "im August sollte man das mindestens zwei Wochen vorher machen.",
+  "evidence_en": "in August you should do that at least two weeks in advance.",
+  "why": "Richtig: „mindestens zwei Wochen vorher“ = „rechtzeitig vorher“.",
+  "why_en": "True: 'at least two weeks before' = 'in good time'.",
+  "trap": "„Die Fähre nimmt Autos mit“ klingt unkompliziert, aber sie ist im August oft voll.",
+  "trap_en": "'The ferry takes cars' sounds easy, but it's often full in August.",
+  "question_en": "In August you should book the ferry well in advance."
+ },
+ "H3-7": {
+  "evidence": "Nein, der Personalausweis reicht, Kroatien ist ja in der EU.",
+  "evidence_en": "No, the ID card is enough, Croatia is in the EU after all.",
+  "why": "Falsch: Für Kroatien reicht der Personalausweis, einen Reisepass braucht er nicht.",
+  "why_en": "False: an ID card is enough for Croatia; he doesn't need a passport.",
+  "trap": "„Mein Reisepass ist abgelaufen“ lässt denken, er braucht einen neuen – aber Mia sagt „Nein“.",
+  "trap_en": "'My passport has expired' makes you think he needs a new one – but Mia says 'No'.",
+  "question_en": "Jonas needs a new passport for the trip."
+ },
+ "H4-1": {
+  "evidence": "Im Moment stehen auf jedem zweiten Quadratmeter parkende Fahrzeuge.",
+  "evidence_en": "At the moment parked vehicles stand on every second square metre.",
+  "why": "Dr. Falk (a) sagt das: „jeder zweite Quadratmeter“ = „sehr viel Platz“.",
+  "why_en": "Dr. Falk (a) says this: 'every second square metre' = 'a lot of space'.",
+  "trap": "Herr Brandt spricht auch über Parkplätze, aber er beklagt, dass es zu wenige gibt.",
+  "trap_en": "Mr Brandt also talks about parking, but he complains there are too few spaces.",
+  "question_en": "Parked cars take up a great deal of space in the city centre."
+ },
+ "H4-2": {
+  "evidence": "Meine Kunden kommen aus dem Umland, mit dem Auto, und sie wollen vor der Tür parken.",
+  "evidence_en": "My customers come from the surrounding area by car, and they want to park in front of the door.",
+  "why": "Herr Brandt (b) verkauft Waschmaschinen und Fernseher; seine Kunden wollen „vor der Tür parken“.",
+  "why_en": "Mr Brandt (b) sells washing machines and TVs; his customers want to 'park in front of the door'.",
+  "trap": "Frau Falk spricht über den Lieferservice für Waschmaschinen, aber als Lösung, nicht als Wunsch der Kunden.",
+  "trap_en": "Ms Falk talks about the washing-machine delivery service, but as a solution, not as the customers' wish.",
+  "question_en": "Customers who buy something big want to park directly in front of the shop."
+ },
+ "H4-3": {
+  "evidence": "Das bezahlt die Stadt in den ersten zwei Jahren.",
+  "evidence_en": "The city will pay for that for the first two years.",
+  "why": "Dr. Falk (a) erklärt den kostenlosen Lieferservice, den die Stadt zwei Jahre bezahlt.",
+  "why_en": "Dr. Falk (a) explains the free delivery service the city will pay for for two years.",
+  "trap": "Herr Brandt nennt auch „zwei Jahre“, aber er fürchtet, dass der Service danach verschwindet.",
+  "trap_en": "Mr Brandt also mentions 'two years', but he fears the service will then disappear.",
+  "question_en": "The city wants to pay for the delivery of purchased goods for two years."
+ },
+ "H4-4": {
+  "evidence": "Und die Parkhäuser sind noch nicht gebaut, das Verbot kommt aber schon nächstes Jahr.",
+  "evidence_en": "And the car parks haven't been built yet, but the ban is coming next year already.",
+  "why": "Herr Brandt (b) kritisiert die „falsche Reihenfolge“: Verbot vor den Parkhäusern.",
+  "why_en": "Mr Brandt (b) criticises the 'wrong order': the ban before the car parks.",
+  "trap": "Frau Falk erwähnt die Parkhäuser zuerst, aber sie sagt nicht, dass sie zu spät kommen.",
+  "trap_en": "Ms Falk mentions the car parks first, but she doesn't say they'll be late.",
+  "question_en": "The ban is coming before the new multi-storey car parks are finished."
+ },
+ "H4-5": {
+  "evidence": "aber auf der Hauptstraße hatte ich ehrlich gesagt Angst.",
+  "evidence_en": "but on the main road, to be honest, I was scared.",
+  "why": "Der Moderator (mod) erzählt von seiner Fahrradfahrt: „Angst“ = „nicht sicher gefühlt“.",
+  "why_en": "The moderator (mod) describes his bike ride: 'scared' = 'didn't feel safe'.",
+  "trap": "Frau Falk antwortet sofort zum Thema Rad, aber die persönliche Erfahrung ist die des Moderators.",
+  "trap_en": "Ms Falk replies straight away about cycling, but the personal experience is the moderator's.",
+  "question_en": "I didn't feel safe on my bike on the main street."
+ },
+ "H4-6": {
+  "evidence": "In Gent hat sich der Radverkehr in drei Jahren verdoppelt.",
+  "evidence_en": "In Ghent, cycling has doubled in three years.",
+  "why": "Dr. Falk (a) sagt das: Gent = belgische Stadt, „verdoppelt“ = „doppelt so viele“.",
+  "why_en": "Dr. Falk (a) says this: Ghent = Belgian city, 'doubled' = 'twice as many'.",
+  "trap": "Herr Brandt sagt direkt danach „Ich habe nichts gegen Fahrräder“, aber er nennt keine Zahlen zu Gent.",
+  "trap_en": "Mr Brandt says right after 'I have nothing against bikes', but gives no figures on Ghent.",
+  "question_en": "In a Belgian city twice as many people cycle today as three years ago."
+ },
+ "H4-7": {
+  "evidence": "Sperren Sie die Innenstadt nur am Wochenende, testen Sie das ein Jahr lang",
+  "evidence_en": "Close the city centre only at weekends, test that for a year",
+  "why": "Herr Brandt (b) schlägt den Test am Wochenende für ein Jahr vor.",
+  "why_en": "Mr Brandt (b) proposes the one-year weekend test.",
+  "trap": "Frau Falk spricht auch über „Wochenende“ und „ein Jahr“, aber sie lehnt den Wochenend-Test ab.",
+  "trap_en": "Ms Falk also mentions 'weekend' and 'one year', but she rejects the weekend test.",
+  "question_en": "The ban should first be tried out for one year only at weekends."
+ },
+ "H4-8": {
+  "evidence": "ich wohne selbst am Rand der Innenstadt",
+  "evidence_en": "I live on the edge of the city centre myself",
+  "why": "Der Moderator (mod) sagt, er wohnt am Rand der Innenstadt = in der Nähe.",
+  "why_en": "The moderator (mod) says he lives on the edge of the centre = nearby.",
+  "trap": "Herr Brandt hat ein Geschäft in der Innenstadt, aber er sagt nicht, dass er dort wohnt.",
+  "trap_en": "Mr Brandt has a shop in the city centre, but he doesn't say he lives there.",
+  "question_en": "I live near the city centre."
+ }
+}

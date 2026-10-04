@@ -1,0 +1,2068 @@
+[
+ {
+  "sec": 2,
+  "sub": "Two-part connectors ★",
+  "star": true,
+  "de": "sowohl … als auch …",
+  "en": "both … and — Sie spricht sowohl Englisch als auch Französisch.",
+  "igloo": [
+   "ENG_CHUNK_0198",
+   2
+  ]
+ },
+ {
+  "sec": 2,
+  "sub": "Two-part connectors ★",
+  "star": true,
+  "de": "nicht nur …, sondern auch …",
+  "en": "not only … but also — Das Hotel war nicht nur schön, sondern auch günstig.",
+  "igloo": null
+ },
+ {
+  "sec": 2,
+  "sub": "Two-part connectors ★",
+  "star": true,
+  "de": "entweder … oder …",
+  "en": "either … or — Entweder gehen wir ins Kino, oder wir bleiben zu Hause.",
+  "igloo": null
+ },
+ {
+  "sec": 2,
+  "sub": "Two-part connectors ★",
+  "star": true,
+  "de": "weder … noch …",
+  "en": "neither … nor — Ich habe weder Zeit noch Lust.",
+  "igloo": null
+ },
+ {
+  "sec": 2,
+  "sub": "Two-part connectors ★",
+  "star": true,
+  "de": "zwar …, aber …",
+  "en": "admittedly … but — Das Auto ist zwar alt, aber es fährt noch gut.",
+  "igloo": null
+ },
+ {
+  "sec": 2,
+  "sub": "Two-part connectors ★",
+  "star": true,
+  "de": "einerseits …, andererseits …",
+  "en": "on the one hand … on the other — Einerseits möchte ich sparen, andererseits würde ich gern reisen.",
+  "igloo": null
+ },
+ {
+  "sec": 2,
+  "sub": "Two-part connectors ★",
+  "star": true,
+  "de": "je …, desto …",
+  "en": "the more … the more — Je mehr man übt, desto leichter wird es. (verb-final after je, verb-second after desto)",
+  "igloo": null
+ },
+ {
+  "sec": 3,
+  "sub": "Meinung sagen ★",
+  "star": true,
+  "de": "Meiner Meinung nach …",
+  "en": "in my opinion (verb follows directly!)",
+  "igloo": [
+   "ENG_CHUNK_0078",
+   3
+  ]
+ },
+ {
+  "sec": 3,
+  "sub": "Meinung sagen ★",
+  "star": true,
+  "de": "Ich bin der Meinung / der Ansicht, dass …",
+  "en": "I am of the opinion that",
+  "igloo": [
+   "ENG_CHUNK_0932",
+   1
+  ]
+ },
+ {
+  "sec": 3,
+  "sub": "Meinung sagen ★",
+  "star": true,
+  "de": "Ich finde / glaube / denke, dass …",
+  "en": "I think that",
+  "igloo": [
+   "ENG_CHUNK_0078",
+   3
+  ]
+ },
+ {
+  "sec": 3,
+  "sub": "Meinung sagen ★",
+  "star": true,
+  "de": "Ich bin davon überzeugt, dass …",
+  "en": "I'm convinced that",
+  "igloo": [
+   "ENG_CHUNK_1364",
+   3
+  ]
+ },
+ {
+  "sec": 3,
+  "sub": "Meinung sagen ★",
+  "star": true,
+  "de": "Ich bin mir (nicht) sicher, ob …",
+  "en": "I'm (not) sure whether",
+  "igloo": [
+   "ENG_CHUNK_1364",
+   3
+  ]
+ },
+ {
+  "sec": 3,
+  "sub": "Meinung sagen ★",
+  "star": true,
+  "de": "Ehrlich gesagt, …",
+  "en": "honestly speaking",
+  "igloo": [
+   "ENG_CHUNK_0066",
+   1
+  ]
+ },
+ {
+  "sec": 3,
+  "sub": "Begründen und Beispiele ★",
+  "star": true,
+  "de": "Das liegt daran, dass …",
+  "en": "that's because",
+  "igloo": [
+   "ENG_CHUNK_0297",
+   1
+  ]
+ },
+ {
+  "sec": 3,
+  "sub": "Begründen und Beispiele ★",
+  "star": true,
+  "de": "Der Grund dafür ist, dass …",
+  "en": "the reason for that is",
+  "igloo": null
+ },
+ {
+  "sec": 3,
+  "sub": "Begründen und Beispiele ★",
+  "star": true,
+  "de": "Zum Beispiel … / Ein Beispiel dafür ist …",
+  "en": "for example",
+  "igloo": [
+   "ENG_CHUNK_0192",
+   1
+  ]
+ },
+ {
+  "sec": 3,
+  "sub": "Begründen und Beispiele ★",
+  "star": true,
+  "de": "Aus eigener Erfahrung kann ich sagen, dass …",
+  "en": "from my own experience I can say",
+  "igloo": [
+   "ENG_CHUNK_1417",
+   3
+  ]
+ },
+ {
+  "sec": 3,
+  "sub": "Begründen und Beispiele ★",
+  "star": true,
+  "de": "Als ich … war, …",
+  "en": "when I was … (single past event → als, not wenn)",
+  "igloo": null
+ },
+ {
+  "sec": 3,
+  "sub": "Begründen und Beispiele ★",
+  "star": true,
+  "de": "Dazu fällt mir ein Beispiel ein: …",
+  "en": "an example comes to mind",
+  "igloo": null
+ },
+ {
+  "sec": 3,
+  "sub": "Zustimmen / teilweise / widersprechen ★",
+  "star": true,
+  "de": "Da hast du Recht. / Das stimmt. / Das sehe ich auch so.",
+  "en": "full agreement (informal)",
+  "igloo": [
+   "ENG_CHUNK_0177",
+   1
+  ]
+ },
+ {
+  "sec": 3,
+  "sub": "Zustimmen / teilweise / widersprechen ★",
+  "star": true,
+  "de": "Da bin ich ganz deiner / Ihrer Meinung.",
+  "en": "I fully share your view",
+  "igloo": null
+ },
+ {
+  "sec": 3,
+  "sub": "Zustimmen / teilweise / widersprechen ★",
+  "star": true,
+  "de": "Das stimmt zwar, aber …",
+  "en": "true, but …",
+  "igloo": [
+   "ENG_CHUNK_0177",
+   1
+  ]
+ },
+ {
+  "sec": 3,
+  "sub": "Zustimmen / teilweise / widersprechen ★",
+  "star": true,
+  "de": "Das stimmt teilweise, allerdings …",
+  "en": "partly true, however",
+  "igloo": [
+   "ENG_CHUNK_0177",
+   1
+  ]
+ },
+ {
+  "sec": 3,
+  "sub": "Zustimmen / teilweise / widersprechen ★",
+  "star": true,
+  "de": "Ich sehe das etwas anders, weil …",
+  "en": "I see it a little differently",
+  "igloo": null
+ },
+ {
+  "sec": 3,
+  "sub": "Zustimmen / teilweise / widersprechen ★",
+  "star": true,
+  "de": "Da bin ich anderer Meinung.",
+  "en": "I disagree",
+  "igloo": [
+   "ENG_CHUNK_0573",
+   1
+  ]
+ },
+ {
+  "sec": 3,
+  "sub": "Zustimmen / teilweise / widersprechen ★",
+  "star": true,
+  "de": "Das kann man so nicht sagen.",
+  "en": "you can't put it that way",
+  "igloo": [
+   "ENG_CHUNK_0135",
+   1
+  ]
+ },
+ {
+  "sec": 3,
+  "sub": "Zustimmen / teilweise / widersprechen ★",
+  "star": true,
+  "de": "Das überzeugt mich nicht.",
+  "en": "that doesn't convince me",
+  "igloo": null
+ },
+ {
+  "sec": 3,
+  "sub": "Abwägen und abschließen ★",
+  "star": true,
+  "de": "Ein Vorteil ist, dass … / Dafür spricht, dass …",
+  "en": "an advantage is / in favour is",
+  "igloo": null
+ },
+ {
+  "sec": 3,
+  "sub": "Abwägen und abschließen ★",
+  "star": true,
+  "de": "Ein Nachteil ist allerdings, dass … / Dagegen spricht, dass …",
+  "en": "a disadvantage, however / against it is",
+  "igloo": null
+ },
+ {
+  "sec": 3,
+  "sub": "Abwägen und abschließen ★",
+  "star": true,
+  "de": "Einerseits …, andererseits …",
+  "en": "weigh both sides",
+  "igloo": null
+ },
+ {
+  "sec": 3,
+  "sub": "Abwägen und abschließen ★",
+  "star": true,
+  "de": "Zusammenfassend kann man sagen, dass …",
+  "en": "in summary",
+  "igloo": [
+   "ENG_CHUNK_0135",
+   1
+  ]
+ },
+ {
+  "sec": 3,
+  "sub": "Abwägen und abschließen ★",
+  "star": true,
+  "de": "Deshalb komme ich zu dem Schluss, dass …",
+  "en": "therefore I conclude",
+  "igloo": [
+   "ENG_CHUNK_0096",
+   1
+  ]
+ },
+ {
+  "sec": 3,
+  "sub": "Abwägen und abschließen ★",
+  "star": true,
+  "de": "Das ist meine Meinung.",
+  "en": "closing line, Schreiben A2",
+  "igloo": [
+   "ENG_CHUNK_1366",
+   3
+  ]
+ },
+ {
+  "sec": 4,
+  "sub": "Einstieg und Vorschläge ★",
+  "star": true,
+  "de": "Wir sollen ja … planen. Sollen wir mit dem Termin anfangen?",
+  "en": "open + first point",
+  "igloo": [
+   "ENG_CHUNK_0010",
+   1
+  ]
+ },
+ {
+  "sec": 4,
+  "sub": "Einstieg und Vorschläge ★",
+  "star": true,
+  "de": "Was meinst du, wann / wo …?",
+  "en": "hand the first move to the partner",
+  "igloo": [
+   "ENG_CHUNK_0172",
+   1
+  ]
+ },
+ {
+  "sec": 4,
+  "sub": "Einstieg und Vorschläge ★",
+  "star": true,
+  "de": "Ich schlage vor, dass wir …",
+  "en": "I suggest that we (verb-final!)",
+  "igloo": null
+ },
+ {
+  "sec": 4,
+  "sub": "Einstieg und Vorschläge ★",
+  "star": true,
+  "de": "Wie wäre es, wenn wir …?",
+  "en": "how about if we",
+  "igloo": [
+   "ENG_CHUNK_0010",
+   1
+  ]
+ },
+ {
+  "sec": 4,
+  "sub": "Einstieg und Vorschläge ★",
+  "star": true,
+  "de": "Wir könnten doch …",
+  "en": "we could (softener doch)",
+  "igloo": null
+ },
+ {
+  "sec": 4,
+  "sub": "Einstieg und Vorschläge ★",
+  "star": true,
+  "de": "Was hältst du davon, wenn …?",
+  "en": "what do you think of",
+  "igloo": [
+   "ENG_CHUNK_0104",
+   1
+  ]
+ },
+ {
+  "sec": 4,
+  "sub": "Einstieg und Vorschläge ★",
+  "star": true,
+  "de": "Hast du Lust, … zu …?",
+  "en": "do you feel like",
+  "igloo": [
+   "ENG_CHUNK_0105",
+   1
+  ]
+ },
+ {
+  "sec": 4,
+  "sub": "Einstieg und Vorschläge ★",
+  "star": true,
+  "de": "Sollen wir lieber … oder …?",
+  "en": "offer two options",
+  "igloo": [
+   "ENG_CHUNK_0010",
+   1
+  ]
+ },
+ {
+  "sec": 4,
+  "sub": "Aufgaben verteilen ★",
+  "star": true,
+  "de": "Ich könnte … übernehmen, und du kümmerst dich um …",
+  "en": "I could take … and you handle …",
+  "igloo": [
+   "ENG_CHUNK_1238",
+   2
+  ]
+ },
+ {
+  "sec": 4,
+  "sub": "Aufgaben verteilen ★",
+  "star": true,
+  "de": "Ich kümmere mich um die Einladungen / um die Technik.",
+  "en": "I'll take care of",
+  "igloo": [
+   "ENG_CHUNK_0055",
+   2
+  ]
+ },
+ {
+  "sec": 4,
+  "sub": "Aufgaben verteilen ★",
+  "star": true,
+  "de": "Kannst du … mitbringen / besorgen / organisieren?",
+  "en": "can you bring / get / organise",
+  "igloo": [
+   "ENG_CHUNK_0335",
+   1
+  ]
+ },
+ {
+  "sec": 4,
+  "sub": "Aufgaben verteilen ★",
+  "star": true,
+  "de": "Wer informiert die Gäste? Soll ich das machen?",
+  "en": "assign a point",
+  "igloo": [
+   "ENG_CHUNK_0031",
+   2
+  ]
+ },
+ {
+  "sec": 4,
+  "sub": "Reagieren: ja, jein, nein ★",
+  "star": true,
+  "de": "Gute Idee! / Das finde ich gut. / Einverstanden.",
+  "en": "accept",
+  "igloo": [
+   "ENG_CHUNK_1287",
+   1
+  ]
+ },
+ {
+  "sec": 4,
+  "sub": "Reagieren: ja, jein, nein ★",
+  "star": true,
+  "de": "Ja, das passt mir gut.",
+  "en": "that works for me",
+  "igloo": [
+   "ENG_CHUNK_0283",
+   1
+  ]
+ },
+ {
+  "sec": 4,
+  "sub": "Reagieren: ja, jein, nein ★",
+  "star": true,
+  "de": "Das ist zwar eine gute Idee, aber …",
+  "en": "soft no",
+  "igloo": [
+   "ENG_CHUNK_1287",
+   1
+  ]
+ },
+ {
+  "sec": 4,
+  "sub": "Reagieren: ja, jein, nein ★",
+  "star": true,
+  "de": "Ich weiß nicht, ob das klappt, weil …",
+  "en": "doubt + reason (two verb-final clauses)",
+  "igloo": [
+   "ENG_CHUNK_0006",
+   1
+  ]
+ },
+ {
+  "sec": 4,
+  "sub": "Reagieren: ja, jein, nein ★",
+  "star": true,
+  "de": "Das geht leider nicht, weil ich am Samstag arbeiten muss.",
+  "en": "refuse with reason",
+  "igloo": null
+ },
+ {
+  "sec": 4,
+  "sub": "Reagieren: ja, jein, nein ★",
+  "star": true,
+  "de": "Da bin ich mir nicht sicher. Vielleicht lieber …?",
+  "en": "counter-proposal",
+  "igloo": [
+   "ENG_CHUNK_0079",
+   1
+  ]
+ },
+ {
+  "sec": 4,
+  "sub": "Reagieren: ja, jein, nein ★",
+  "star": true,
+  "de": "Ich hätte einen anderen Vorschlag: …",
+  "en": "alternative",
+  "igloo": null
+ },
+ {
+  "sec": 4,
+  "sub": "Reagieren: ja, jein, nein ★",
+  "star": true,
+  "de": "Meinst du …? / Wie meinst du das?",
+  "en": "clarify",
+  "igloo": null
+ },
+ {
+  "sec": 4,
+  "sub": "Einigung und Abschluss ★",
+  "star": true,
+  "de": "Okay, dann machen wir das so.",
+  "en": "settle a point",
+  "igloo": [
+   "ENG_CHUNK_0228",
+   1
+  ]
+ },
+ {
+  "sec": 4,
+  "sub": "Einigung und Abschluss ★",
+  "star": true,
+  "de": "Abgemacht! / Dann ist alles klar.",
+  "en": "agreed",
+  "igloo": null
+ },
+ {
+  "sec": 4,
+  "sub": "Einigung und Abschluss ★",
+  "star": true,
+  "de": "Also, wir treffen uns am Freitag um 18 Uhr vor der Schule.",
+  "en": "summarise with um / am / vor",
+  "igloo": [
+   "ENG_CHUNK_1426",
+   1
+  ]
+ },
+ {
+  "sec": 4,
+  "sub": "Einigung und Abschluss ★",
+  "star": true,
+  "de": "Ich glaube, wir haben alles besprochen. Ich freue mich schon!",
+  "en": "close",
+  "igloo": [
+   "ENG_CHUNK_0306",
+   3
+  ]
+ },
+ {
+  "sec": 5,
+  "sub": "Time-buyers and glue",
+  "star": false,
+  "de": "Das ist ein wichtiger Punkt.",
+  "en": "that's an important point",
+  "igloo": null
+ },
+ {
+  "sec": 5,
+  "sub": "Time-buyers and glue",
+  "star": false,
+  "de": "Wie gesagt, …",
+  "en": "as I said",
+  "igloo": [
+   "ENG_CHUNK_0072",
+   2
+  ]
+ },
+ {
+  "sec": 5,
+  "sub": "Time-buyers and glue",
+  "star": false,
+  "de": "Ein weiterer Aspekt ist …",
+  "en": "another aspect is",
+  "igloo": null
+ },
+ {
+  "sec": 5,
+  "sub": "Time-buyers and glue",
+  "star": false,
+  "de": "Das hängt davon ab, ob …",
+  "en": "it depends on whether",
+  "igloo": null
+ },
+ {
+  "sec": 5,
+  "sub": "Time-buyers and glue",
+  "star": false,
+  "de": "Vor allem … / besonders …",
+  "en": "above all / especially",
+  "igloo": [
+   "ENG_CHUNK_0700",
+   1
+  ]
+ },
+ {
+  "sec": 5,
+  "sub": "Time-buyers and glue",
+  "star": false,
+  "de": "Was ich damit sagen will: …",
+  "en": "what I mean is",
+  "igloo": null
+ },
+ {
+  "sec": 6,
+  "sub": "Feedback geben ★",
+  "star": true,
+  "de": "Vielen Dank für deine Präsentation. Ich fand sie sehr interessant, vor allem den Teil über …",
+  "en": "thank + highlight",
+  "igloo": [
+   "ENG_CHUNK_0019",
+   1
+  ]
+ },
+ {
+  "sec": 6,
+  "sub": "Feedback geben ★",
+  "star": true,
+  "de": "Mir hat besonders gut gefallen, dass …",
+  "en": "I especially liked that",
+  "igloo": null
+ },
+ {
+  "sec": 6,
+  "sub": "Feedback geben ★",
+  "star": true,
+  "de": "Ich sehe das genauso / ähnlich / etwas anders, weil …",
+  "en": "position + reason",
+  "igloo": [
+   "ENG_CHUNK_0176",
+   2
+  ]
+ },
+ {
+  "sec": 6,
+  "sub": "Feedback geben ★",
+  "star": true,
+  "de": "Bei uns ist das anders: …",
+  "en": "contrast with your country",
+  "igloo": null
+ },
+ {
+  "sec": 6,
+  "sub": "Feedback geben ★",
+  "star": true,
+  "de": "Das kann ich gut nachvollziehen.",
+  "en": "I can relate to that",
+  "igloo": [
+   "ENG_CHUNK_1417",
+   3
+  ]
+ },
+ {
+  "sec": 6,
+  "sub": "Frage stellen ★",
+  "star": true,
+  "de": "Ich habe noch eine Frage: …",
+  "en": "lead-in",
+  "igloo": [
+   "ENG_CHUNK_0364",
+   2
+  ]
+ },
+ {
+  "sec": 6,
+  "sub": "Frage stellen ★",
+  "star": true,
+  "de": "Mich würde interessieren, ob / wie / warum …",
+  "en": "I'd be interested to know (verb-final)",
+  "igloo": null
+ },
+ {
+  "sec": 6,
+  "sub": "Frage stellen ★",
+  "star": true,
+  "de": "Was denkst du über …? / Was würdest du empfehlen?",
+  "en": "direct question",
+  "igloo": [
+   "ENG_CHUNK_0023",
+   1
+  ]
+ },
+ {
+  "sec": 6,
+  "sub": "Frage stellen ★",
+  "star": true,
+  "de": "Hast du selbst schon einmal …?",
+  "en": "personal experience question",
+  "igloo": [
+   "ENG_CHUNK_1381",
+   3
+  ]
+ },
+ {
+  "sec": 6,
+  "sub": "Auf Fragen antworten ★",
+  "star": true,
+  "de": "Das ist eine gute Frage.",
+  "en": "buy two seconds",
+  "igloo": [
+   "ENG_CHUNK_0366",
+   1
+  ]
+ },
+ {
+  "sec": 6,
+  "sub": "Auf Fragen antworten ★",
+  "star": true,
+  "de": "Ich glaube, dass … / Ehrlich gesagt, …",
+  "en": "answer opener",
+  "igloo": [
+   "ENG_CHUNK_0306",
+   3
+  ]
+ },
+ {
+  "sec": 6,
+  "sub": "Auf Fragen antworten ★",
+  "star": true,
+  "de": "Das kommt darauf an. Wenn …, dann …",
+  "en": "it depends",
+  "igloo": [
+   "ENG_CHUNK_0896",
+   3
+  ]
+ },
+ {
+  "sec": 6,
+  "sub": "Auf Fragen antworten ★",
+  "star": true,
+  "de": "Ja, tatsächlich habe ich … / Nein, noch nie, aber …",
+  "en": "experience yes / no",
+  "igloo": null
+ },
+ {
+  "sec": 6,
+  "sub": "Auf Fragen antworten ★",
+  "star": true,
+  "de": "Ich würde … empfehlen, weil …",
+  "en": "recommendation",
+  "igloo": [
+   "ENG_CHUNK_0411",
+   1
+  ]
+ },
+ {
+  "sec": 6,
+  "sub": "Auf Fragen antworten ★",
+  "star": true,
+  "de": "Könnten Sie die Frage bitte wiederholen?",
+  "en": "ask examiner to repeat",
+  "igloo": [
+   "ENG_CHUNK_0001",
+   1
+  ]
+ },
+ {
+  "sec": 6,
+  "sub": "Auf Fragen antworten ★",
+  "star": true,
+  "de": "Wenn ich Sie richtig verstehe, meinen Sie …?",
+  "en": "check understanding",
+  "igloo": [
+   "ENG_CHUNK_0967",
+   1
+  ]
+ },
+ {
+  "sec": 7,
+  "sub": null,
+  "star": false,
+  "de": "Liebe Clara, / Lieber Jonas, / Hallo Anna,",
+  "en": "then lowercase start: „vielen Dank …“",
+  "igloo": null
+ },
+ {
+  "sec": 7,
+  "sub": null,
+  "star": false,
+  "de": "vielen Dank für deine E-Mail / deinen Tipp.",
+  "en": "thanks for",
+  "igloo": [
+   "ENG_CHUNK_0019",
+   1
+  ]
+ },
+ {
+  "sec": 7,
+  "sub": null,
+  "star": false,
+  "de": "wie geht es dir? Ich hoffe, gut.",
+  "en": "how are you",
+  "igloo": [
+   "ENG_CHUNK_0226",
+   2
+  ]
+ },
+ {
+  "sec": 7,
+  "sub": null,
+  "star": false,
+  "de": "ich wollte dir kurz erzählen, wie … gelaufen ist.",
+  "en": "I wanted to tell you how … went",
+  "igloo": [
+   "ENG_CHUNK_0322",
+   1
+  ]
+ },
+ {
+  "sec": 7,
+  "sub": null,
+  "star": false,
+  "de": "entschuldige, dass ich mich erst jetzt melde.",
+  "en": "sorry for the late reply",
+  "igloo": [
+   "ENG_CHUNK_0020",
+   1
+  ]
+ },
+ {
+  "sec": 7,
+  "sub": null,
+  "star": false,
+  "de": "Gestern war … Es ist super gelaufen.",
+  "en": "it went really well",
+  "igloo": null
+ },
+ {
+  "sec": 7,
+  "sub": null,
+  "star": false,
+  "de": "Zuerst …, dann …, am Ende …",
+  "en": "sequence",
+  "igloo": [
+   "ENG_CHUNK_0098",
+   1
+  ]
+ },
+ {
+  "sec": 7,
+  "sub": null,
+  "star": false,
+  "de": "Es hat mir sehr gut gefallen, weil …",
+  "en": "I liked it because",
+  "igloo": [
+   "ENG_CHUNK_1262",
+   3
+  ]
+ },
+ {
+  "sec": 7,
+  "sub": null,
+  "star": false,
+  "de": "Leider hat … nicht geklappt.",
+  "en": "unfortunately … didn't work out",
+  "igloo": [
+   "ENG_CHUNK_0351",
+   3
+  ]
+ },
+ {
+  "sec": 7,
+  "sub": null,
+  "star": false,
+  "de": "Ich war ziemlich nervös, aber …",
+  "en": "I was quite nervous but",
+  "igloo": null
+ },
+ {
+  "sec": 7,
+  "sub": null,
+  "star": false,
+  "de": "Das Programm hat mir bei … geholfen, aber bei … nicht.",
+  "en": "helped with … but not with",
+  "igloo": null
+ },
+ {
+  "sec": 7,
+  "sub": null,
+  "star": false,
+  "de": "Das Problem war, dass … Deshalb …",
+  "en": "the problem was that … therefore",
+  "igloo": null
+ },
+ {
+  "sec": 7,
+  "sub": null,
+  "star": false,
+  "de": "Hast du Lust, am Samstag …?",
+  "en": "suggestion",
+  "igloo": [
+   "ENG_CHUNK_0105",
+   1
+  ]
+ },
+ {
+  "sec": 7,
+  "sub": null,
+  "star": false,
+  "de": "Wie wäre es, wenn wir uns nächste Woche treffen?",
+  "en": "how about meeting next week",
+  "igloo": [
+   "ENG_CHUNK_0010",
+   1
+  ]
+ },
+ {
+  "sec": 7,
+  "sub": null,
+  "star": false,
+  "de": "Passt dir Freitag um 18 Uhr?",
+  "en": "does Friday at 6 suit you",
+  "igloo": [
+   "ENG_CHUNK_0201",
+   1
+  ]
+ },
+ {
+  "sec": 7,
+  "sub": null,
+  "star": false,
+  "de": "Könntest du mir bitte sagen, ob …?",
+  "en": "polite request",
+  "igloo": [
+   "ENG_CHUNK_0001",
+   1
+  ]
+ },
+ {
+  "sec": 7,
+  "sub": null,
+  "star": false,
+  "de": "Melde dich, wenn du Zeit hast.",
+  "en": "get in touch when you have time",
+  "igloo": [
+   "ENG_CHUNK_0786",
+   3
+  ]
+ },
+ {
+  "sec": 7,
+  "sub": null,
+  "star": false,
+  "de": "Ich freue mich auf deine Antwort.",
+  "en": "looking forward to your reply",
+  "igloo": [
+   "ENG_CHUNK_0005",
+   1
+  ]
+ },
+ {
+  "sec": 7,
+  "sub": null,
+  "star": false,
+  "de": "Bis bald! / Liebe Grüße / Viele Grüße / Dein Alex",
+  "en": "sign-off",
+  "igloo": [
+   "ENG_CHUNK_0487",
+   1
+  ]
+ },
+ {
+  "sec": 8,
+  "sub": null,
+  "star": false,
+  "de": "1 · Reagieren",
+  "en": "Ich finde das Thema sehr interessant, weil … · Ich stimme Alex (teilweise) zu. · Ich sehe das anders als Alex. · Ich finde das überhaupt nicht so schlecht. · Ich finde das schrecklich!",
+  "igloo": null
+ },
+ {
+  "sec": 8,
+  "sub": null,
+  "star": false,
+  "de": "2 · Meinung",
+  "en": "Meiner Meinung nach … · Ich bin der Meinung, dass … · Ich bin davon überzeugt, dass …",
+  "igloo": null
+ },
+ {
+  "sec": 8,
+  "sub": null,
+  "star": false,
+  "de": "3 · Beispiel",
+  "en": "Ich habe das selbst ausprobiert: … · Als ich … war, … · Zum Beispiel …",
+  "igloo": null
+ },
+ {
+  "sec": 8,
+  "sub": null,
+  "star": false,
+  "de": "4 · Beide Seiten",
+  "en": "Einerseits …, andererseits … · Das stimmt zwar, aber … · Ein Vorteil ist, dass … Allerdings … · Je mehr …, desto …",
+  "igloo": null
+ },
+ {
+  "sec": 8,
+  "sub": null,
+  "star": false,
+  "de": "5 · Schluss",
+  "en": "Deshalb glaube ich, dass … · Zusammenfassend kann man sagen, dass … · Das ist meine Meinung.",
+  "igloo": null
+ },
+ {
+  "sec": 9,
+  "sub": null,
+  "star": false,
+  "de": "Sehr geehrte Frau Seidel, / Sehr geehrter Herr Müller, / Sehr geehrte Damen und Herren,",
+  "en": "formal salutation; text continues lowercase",
+  "igloo": null
+ },
+ {
+  "sec": 9,
+  "sub": null,
+  "star": false,
+  "de": "ich habe mich für den Workshop „…“ angemeldet.",
+  "en": "reference",
+  "igloo": [
+   "ENG_CHUNK_0350",
+   1
+  ]
+ },
+ {
+  "sec": 9,
+  "sub": null,
+  "star": false,
+  "de": "ich schreibe Ihnen, weil …",
+  "en": "I'm writing because",
+  "igloo": [
+   "ENG_CHUNK_1358",
+   3
+  ]
+ },
+ {
+  "sec": 9,
+  "sub": null,
+  "star": false,
+  "de": "Vielen Dank im Voraus. / Ich freue mich auf Ihre Antwort.",
+  "en": "thanks in advance",
+  "igloo": [
+   "ENG_CHUNK_1216",
+   3
+  ]
+ },
+ {
+  "sec": 9,
+  "sub": null,
+  "star": false,
+  "de": "Mit freundlichen Grüßen Alex Berger",
+  "en": "no comma after Grüßen",
+  "igloo": null
+ },
+ {
+  "sec": 9,
+  "sub": null,
+  "star": false,
+  "de": "Leider kann ich am … nicht teilnehmen, weil …",
+  "en": "cancel + reason",
+  "igloo": [
+   "ENG_CHUNK_1417",
+   3
+  ]
+ },
+ {
+  "sec": 9,
+  "sub": null,
+  "star": false,
+  "de": "Ich möchte mich dafür entschuldigen.",
+  "en": "apologise",
+  "igloo": [
+   "ENG_CHUNK_0112",
+   2
+  ]
+ },
+ {
+  "sec": 9,
+  "sub": null,
+  "star": false,
+  "de": "Wäre es möglich, an einem späteren Termin teilzunehmen?",
+  "en": "would it be possible to",
+  "igloo": [
+   "ENG_CHUNK_0401",
+   1
+  ]
+ },
+ {
+  "sec": 9,
+  "sub": null,
+  "star": false,
+  "de": "Könnten Sie mir bitte mitteilen, ob / wann …?",
+  "en": "could you let me know whether",
+  "igloo": [
+   "ENG_CHUNK_0001",
+   1
+  ]
+ },
+ {
+  "sec": 9,
+  "sub": null,
+  "star": false,
+  "de": "Ich wäre Ihnen sehr dankbar, wenn Sie …",
+  "en": "I'd be grateful if",
+  "igloo": [
+   "ENG_CHUNK_0727",
+   1
+  ]
+ },
+ {
+  "sec": 9,
+  "sub": null,
+  "star": false,
+  "de": "Können wir den Termin auf … verschieben?",
+  "en": "move the appointment to",
+  "igloo": [
+   "ENG_CHUNK_0401",
+   1
+  ]
+ },
+ {
+  "sec": 9,
+  "sub": null,
+  "star": false,
+  "de": "Leider ist … beschädigt angekommen. Ich bitte Sie, …",
+  "en": "complaint (Reklamation)",
+  "igloo": null
+ },
+ {
+  "sec": 9,
+  "sub": null,
+  "star": false,
+  "de": "Ich hätte noch eine Frage zu …",
+  "en": "one more question about",
+  "igloo": [
+   "ENG_CHUNK_0364",
+   2
+  ]
+ },
+ {
+  "sec": 10,
+  "sub": "Bedingungen and rules vocabulary (T3, T5) ★",
+  "star": true,
+  "de": "verbindlich",
+  "en": "binding"
+ },
+ {
+  "sec": 10,
+  "sub": "Bedingungen and rules vocabulary (T3, T5) ★",
+  "star": true,
+  "de": "kostenlos absagen / berechnet werden",
+  "en": "cancel free / be charged"
+ },
+ {
+  "sec": 10,
+  "sub": "Bedingungen and rules vocabulary (T3, T5) ★",
+  "star": true,
+  "de": "die Gebühr · die Ermäßigung · der Zuschlag",
+  "en": "fee · discount · surcharge"
+ },
+ {
+  "sec": 10,
+  "sub": "Bedingungen and rules vocabulary (T3, T5) ★",
+  "star": true,
+  "de": "eine Ersatzperson",
+  "en": "a substitute"
+ },
+ {
+  "sec": 10,
+  "sub": "Bedingungen and rules vocabulary (T3, T5) ★",
+  "star": true,
+  "de": "zur Verfügung stehen · in begrenzter Zahl",
+  "en": "be available · limited number"
+ },
+ {
+  "sec": 10,
+  "sub": "Bedingungen and rules vocabulary (T3, T5) ★",
+  "star": true,
+  "de": "ausschließlich · nur · lediglich",
+  "en": "exclusively / only"
+ },
+ {
+  "sec": 10,
+  "sub": "Bedingungen and rules vocabulary (T3, T5) ★",
+  "star": true,
+  "de": "gestattet / erlaubt ↔ nicht gestattet / verboten",
+  "en": "allowed ↔ not allowed"
+ },
+ {
+  "sec": 10,
+  "sub": "Bedingungen and rules vocabulary (T3, T5) ★",
+  "star": true,
+  "de": "erforderlich · notwendig · Voraussetzung",
+  "en": "required · necessary · prerequisite"
+ },
+ {
+  "sec": 10,
+  "sub": "Bedingungen and rules vocabulary (T3, T5) ★",
+  "star": true,
+  "de": "die Bescheinigung · die Bestätigung · die Anmeldung",
+  "en": "certificate · confirmation · registration"
+ },
+ {
+  "sec": 10,
+  "sub": "Bedingungen and rules vocabulary (T3, T5) ★",
+  "star": true,
+  "de": "mindestens ↔ höchstens · spätestens · bis / ab / innerhalb von",
+  "en": "at least ↔ at most · at the latest · by / from / within"
+ },
+ {
+  "sec": 10,
+  "sub": "Bedingungen and rules vocabulary (T3, T5) ★",
+  "star": true,
+  "de": "vorher · im Voraus · rechtzeitig",
+  "en": "beforehand · in advance · in time"
+ },
+ {
+  "sec": 10,
+  "sub": "Bedingungen and rules vocabulary (T3, T5) ★",
+  "star": true,
+  "de": "zustimmen · die Zustimmung",
+  "en": "to consent · consent"
+ },
+ {
+  "sec": 10,
+  "sub": "Bedingungen and rules vocabulary (T3, T5) ★",
+  "star": true,
+  "de": "Vorkenntnisse (nicht) nötig",
+  "en": "prior knowledge (not) needed"
+ },
+ {
+  "sec": 10,
+  "sub": "Bedingungen and rules vocabulary (T3, T5) ★",
+  "star": true,
+  "de": "vor Ort / Präsenz ↔ online",
+  "en": "in person ↔ online"
+ },
+ {
+  "sec": 10,
+  "sub": "Paraphrase pairs (T2 answer ↔ text) ★",
+  "star": true,
+  "de": "beliebig oft ↔ mehrmals / so oft man will",
+  "en": "as often as you like"
+ },
+ {
+  "sec": 10,
+  "sub": "Paraphrase pairs (T2 answer ↔ text) ★",
+  "star": true,
+  "de": "sich schämen ↔ peinlich sein",
+  "en": "embarrassment"
+ },
+ {
+  "sec": 10,
+  "sub": "Paraphrase pairs (T2 answer ↔ text) ★",
+  "star": true,
+  "de": "stille Jugendliche ↔ Zurückhaltende",
+  "en": "quiet ↔ reserved"
+ },
+ {
+  "sec": 10,
+  "sub": "Paraphrase pairs (T2 answer ↔ text) ★",
+  "star": true,
+  "de": "sich melden ↔ sich beteiligen / mitmachen",
+  "en": "participate"
+ },
+ {
+  "sec": 10,
+  "sub": "Paraphrase pairs (T2 answer ↔ text) ★",
+  "star": true,
+  "de": "fachlich stimmen ↔ die Qualität prüfen",
+  "en": "check correctness"
+ },
+ {
+  "sec": 10,
+  "sub": "Paraphrase pairs (T2 answer ↔ text) ★",
+  "star": true,
+  "de": "kostenlos ↔ gratis / ohne Gebühr",
+  "en": "free"
+ },
+ {
+  "sec": 10,
+  "sub": "Paraphrase pairs (T2 answer ↔ text) ★",
+  "star": true,
+  "de": "günstig ↔ preiswert / billig / nicht teuer",
+  "en": "cheap"
+ },
+ {
+  "sec": 10,
+  "sub": "Paraphrase pairs (T2 answer ↔ text) ★",
+  "star": true,
+  "de": "teilnehmen ↔ dabei sein / mitmachen",
+  "en": "take part"
+ },
+ {
+  "sec": 10,
+  "sub": "Paraphrase pairs (T2 answer ↔ text) ★",
+  "star": true,
+  "de": "Anfänger ↔ ohne Vorkenntnisse",
+  "en": "beginners"
+ },
+ {
+  "sec": 10,
+  "sub": "Paraphrase pairs (T2 answer ↔ text) ★",
+  "star": true,
+  "de": "werktags ↔ Montag bis Freitag · abends ↔ nach der Arbeit",
+  "en": "weekdays · evenings"
+ },
+ {
+  "sec": 10,
+  "sub": "Paraphrase pairs (T2 answer ↔ text) ★",
+  "star": true,
+  "de": "verbessern ↔ besser werden · sich erholen ↔ Pause machen",
+  "en": "improve · rest"
+ },
+ {
+  "sec": 10,
+  "sub": "Paraphrase pairs (T2 answer ↔ text) ★",
+  "star": true,
+  "de": "verschieben ↔ später machen · absagen ↔ nicht stattfinden",
+  "en": "postpone · cancel"
+ },
+ {
+  "sec": 10,
+  "sub": "Paraphrase pairs (T2 answer ↔ text) ★",
+  "star": true,
+  "de": "Grenzen haben ↔ nicht alles können",
+  "en": "has limits"
+ },
+ {
+  "sec": 10,
+  "sub": "Paraphrase pairs (T2 answer ↔ text) ★",
+  "star": true,
+  "de": "Feedback einordnen ↔ mit einem Menschen besprechen",
+  "en": "contextualise"
+ },
+ {
+  "sec": 10,
+  "sub": "Paraphrase pairs (T2 answer ↔ text) ★",
+  "star": true,
+  "de": "die Möglichkeit ↔ die Chance / die Gelegenheit",
+  "en": "opportunity"
+ },
+ {
+  "sec": 11,
+  "sub": "Spoken corrections and reversals ★",
+  "star": true,
+  "de": "Eigentlich wollte ich …, aber dann …",
+  "en": "plan changed → the second half is the answer",
+  "igloo": [
+   "ENG_CHUNK_0322",
+   1
+  ]
+ },
+ {
+  "sec": 11,
+  "sub": "Spoken corrections and reversals ★",
+  "star": true,
+  "de": "nicht um neun, sondern um zehn",
+  "en": "explicit correction",
+  "igloo": null
+ },
+ {
+  "sec": 11,
+  "sub": "Spoken corrections and reversals ★",
+  "star": true,
+  "de": "leider · doch nicht · stattdessen · statt",
+  "en": "something was cancelled or replaced",
+  "igloo": null
+ },
+ {
+  "sec": 11,
+  "sub": "Spoken corrections and reversals ★",
+  "star": true,
+  "de": "nur · erst · schon · noch nicht · nicht mehr",
+  "en": "quantity and time twists that make a statement Falsch",
+  "igloo": null
+ },
+ {
+  "sec": 11,
+  "sub": "Spoken corrections and reversals ★",
+  "star": true,
+  "de": "Das stimmt zwar, aber …",
+  "en": "concession → real opinion follows",
+  "igloo": [
+   "ENG_CHUNK_0177",
+   1
+  ]
+ },
+ {
+  "sec": 11,
+  "sub": "Spoken corrections and reversals ★",
+  "star": true,
+  "de": "verschoben auf … · findet … statt · fällt aus",
+  "en": "moved to · takes place · cancelled",
+  "igloo": null
+ },
+ {
+  "sec": 12,
+  "sub": "Höflichkeit: Konjunktiv II ★",
+  "star": true,
+  "de": "Könnten Sie mir bitte …?",
+  "en": "could you please",
+  "igloo": [
+   "ENG_CHUNK_0001",
+   1
+  ]
+ },
+ {
+  "sec": 12,
+  "sub": "Höflichkeit: Konjunktiv II ★",
+  "star": true,
+  "de": "Wäre es möglich, dass … / … zu …?",
+  "en": "would it be possible",
+  "igloo": [
+   "ENG_CHUNK_0401",
+   1
+  ]
+ },
+ {
+  "sec": 12,
+  "sub": "Höflichkeit: Konjunktiv II ★",
+  "star": true,
+  "de": "Ich hätte gern … / Ich würde gern …",
+  "en": "I'd like",
+  "igloo": [
+   "ENG_CHUNK_0119",
+   2
+  ]
+ },
+ {
+  "sec": 12,
+  "sub": "Höflichkeit: Konjunktiv II ★",
+  "star": true,
+  "de": "Wenn ich Zeit hätte, würde ich …",
+  "en": "hypothetical",
+  "igloo": [
+   "ENG_CHUNK_0722",
+   2
+  ]
+ },
+ {
+  "sec": 12,
+  "sub": "Höflichkeit: Konjunktiv II ★",
+  "star": true,
+  "de": "An deiner Stelle würde ich …",
+  "en": "in your place I would (advice)",
+  "igloo": [
+   "ENG_CHUNK_0012",
+   2
+  ]
+ },
+ {
+  "sec": 12,
+  "sub": "Höflichkeit: Konjunktiv II ★",
+  "star": true,
+  "de": "Du solltest / Du könntest …",
+  "en": "soft advice",
+  "igloo": [
+   "ENG_CHUNK_0724",
+   2
+  ]
+ },
+ {
+  "sec": 12,
+  "sub": "Höflichkeit: Konjunktiv II ★",
+  "star": true,
+  "de": "Das hätte mir auch passieren können.",
+  "en": "past hypothetical (fixed chunk)",
+  "igloo": [
+   "ENG_CHUNK_0380",
+   2
+  ]
+ },
+ {
+  "sec": 12,
+  "sub": "Passiv und Ersatzformen",
+  "star": false,
+  "de": "Über das Thema wird viel diskutiert.",
+  "en": "Präsens Passiv (your presentation opener)",
+  "igloo": null
+ },
+ {
+  "sec": 12,
+  "sub": "Passiv und Ersatzformen",
+  "star": false,
+  "de": "Das Problem wurde gelöst.",
+  "en": "Präteritum Passiv",
+  "igloo": null
+ },
+ {
+  "sec": 12,
+  "sub": "Passiv und Ersatzformen",
+  "star": false,
+  "de": "Das muss eingeordnet / geprüft werden.",
+  "en": "Modal + Partizip II + werden",
+  "igloo": null
+ },
+ {
+  "sec": 12,
+  "sub": "Passiv und Ersatzformen",
+  "star": false,
+  "de": "Das lässt sich machen. / Das lässt sich noch nicht sagen.",
+  "en": "can be done / can't be said yet",
+  "igloo": null
+ },
+ {
+  "sec": 12,
+  "sub": "Passiv und Ersatzformen",
+  "star": false,
+  "de": "Man kann …",
+  "en": "everyday passive substitute",
+  "igloo": null
+ },
+ {
+  "sec": 12,
+  "sub": "Relativsatz, Zweck, Zeit",
+  "star": false,
+  "de": "Das ist der Kollege, der gute Ideen hat.",
+  "en": "Nominativ",
+  "igloo": null
+ },
+ {
+  "sec": 12,
+  "sub": "Relativsatz, Zweck, Zeit",
+  "star": false,
+  "de": "Das Buch, das ich gelesen habe, …",
+  "en": "Akkusativ",
+  "igloo": null
+ },
+ {
+  "sec": 12,
+  "sub": "Relativsatz, Zweck, Zeit",
+  "star": false,
+  "de": "Der Mann, dem ich geholfen habe, …",
+  "en": "Dativ",
+  "igloo": null
+ },
+ {
+  "sec": 12,
+  "sub": "Relativsatz, Zweck, Zeit",
+  "star": false,
+  "de": "Die Stadt, in der ich wohne, …",
+  "en": "preposition + relative",
+  "igloo": null
+ },
+ {
+  "sec": 12,
+  "sub": "Relativsatz, Zweck, Zeit",
+  "star": false,
+  "de": "Ich lerne Deutsch, um einen Job zu finden.",
+  "en": "same subject → um … zu",
+  "igloo": [
+   "ENG_CHUNK_0193",
+   2
+  ]
+ },
+ {
+  "sec": 12,
+  "sub": "Relativsatz, Zweck, Zeit",
+  "star": false,
+  "de": "Ich erkläre es langsam, damit er es versteht.",
+  "en": "different subject → damit",
+  "igloo": null
+ },
+ {
+  "sec": 12,
+  "sub": "Relativsatz, Zweck, Zeit",
+  "star": false,
+  "de": "Er versucht, das Problem zu lösen.",
+  "en": "zu + Infinitiv",
+  "igloo": null
+ },
+ {
+  "sec": 12,
+  "sub": "Relativsatz, Zweck, Zeit",
+  "star": false,
+  "de": "Als ich klein war, … / Wenn ich Zeit habe, …",
+  "en": "als = once in the past · wenn = whenever / if",
+  "igloo": null
+ },
+ {
+  "sec": 12,
+  "sub": "Relativsatz, Zweck, Zeit",
+  "star": false,
+  "de": "Seit zwei Jahren lerne ich Deutsch.",
+  "en": "seit + Präsens",
+  "igloo": [
+   "ENG_CHUNK_0115",
+   2
+  ]
+ },
+ {
+  "sec": 12,
+  "sub": "Relativsatz, Zweck, Zeit",
+  "star": false,
+  "de": "um 9 Uhr · am Montag · am Abend · im Oktober · in der Nacht · vor zwei Jahren",
+  "en": "um = clock · am = day/part of day · im = month/season",
+  "igloo": null
+ },
+ {
+  "sec": 12,
+  "sub": "Verb + Präposition ★ (then: Worauf? Darauf.)",
+  "star": true,
+  "de": "reagieren auf + A · sich vorbereiten auf + A · warten auf + A · sich freuen auf + A (future) · achten auf + A",
+  "en": "react to · prepare for · wait for · look forward to · pay attention to",
+  "igloo": [
+   "ENG_CHUNK_0042",
+   2
+  ]
+ },
+ {
+  "sec": 12,
+  "sub": "Verb + Präposition ★ (then: Worauf? Darauf.)",
+  "star": true,
+  "de": "sich freuen über + A · sich ärgern über + A · sprechen über + A · sich beschweren über + A · nachdenken über + A",
+  "en": "be happy about · be annoyed about · talk about · complain about · think about",
+  "igloo": null
+ },
+ {
+  "sec": 12,
+  "sub": "Verb + Präposition ★ (then: Worauf? Darauf.)",
+  "star": true,
+  "de": "warnen vor + D · Angst haben vor + D · sich schämen vor + D · schützen vor + D",
+  "en": "the vor family (never für)",
+  "igloo": null
+ },
+ {
+  "sec": 12,
+  "sub": "Verb + Präposition ★ (then: Worauf? Darauf.)",
+  "star": true,
+  "de": "sich interessieren für + A · sich bedanken für + A · sich entschuldigen für + A",
+  "en": "the für family",
+  "igloo": null
+ },
+ {
+  "sec": 12,
+  "sub": "Verb + Präposition ★ (then: Worauf? Darauf.)",
+  "star": true,
+  "de": "sich beteiligen an + D · teilnehmen an + D · sich erinnern an + A · sich gewöhnen an + A · denken an + A",
+  "en": "participate in · take part in · remember · get used to · think of",
+  "igloo": null
+ },
+ {
+  "sec": 12,
+  "sub": "Verb + Präposition ★ (then: Worauf? Darauf.)",
+  "star": true,
+  "de": "sich kümmern um + A · es geht um + A · sich bewerben um + A · bitten um + A",
+  "en": "take care of · it's about · apply for · ask for",
+  "igloo": [
+   "ENG_CHUNK_0604",
+   2
+  ]
+ },
+ {
+  "sec": 12,
+  "sub": "Verb + Präposition ★ (then: Worauf? Darauf.)",
+  "star": true,
+  "de": "beruhen auf + D · abhängen von + D · träumen von + D · zufrieden sein mit + D · passen zu + D",
+  "en": "be based on · depend on · dream of · be satisfied with · fit",
+  "igloo": null
+ },
+ {
+  "sec": 12,
+  "sub": "Nomen-Verb-Verbindungen ★",
+  "star": true,
+  "de": "eine Entscheidung treffen · eine Frage stellen · ein Gespräch führen",
+  "en": "decide · ask · have a conversation",
+  "igloo": [
+   "ENG_CHUNK_0036",
+   2
+  ]
+ },
+ {
+  "sec": 12,
+  "sub": "Nomen-Verb-Verbindungen ★",
+  "star": true,
+  "de": "einen Vorschlag machen · Rücksicht nehmen auf · Kontakt aufnehmen mit",
+  "en": "suggest · be considerate of · get in touch with",
+  "igloo": [
+   "ENG_CHUNK_0644",
+   1
+  ]
+ },
+ {
+  "sec": 12,
+  "sub": "Nomen-Verb-Verbindungen ★",
+  "star": true,
+  "de": "Bescheid geben · Bescheid wissen · sich Sorgen machen um",
+  "en": "let know · be informed · worry about",
+  "igloo": [
+   "ENG_CHUNK_0662",
+   3
+  ]
+ },
+ {
+  "sec": 12,
+  "sub": "Nomen-Verb-Verbindungen ★",
+  "star": true,
+  "de": "Hinweise erhalten · eine Stelle bekommen · Regeln aufstellen",
+  "en": "receive tips · get a job · set rules",
+  "igloo": [
+   "ENG_CHUNK_0341",
+   3
+  ]
+ },
+ {
+  "sec": 12,
+  "sub": "Nomen-Verb-Verbindungen ★",
+  "star": true,
+  "de": "Angst haben vor · Erfolg haben · die Absicht haben, … zu …",
+  "en": "fear · succeed · intend to",
+  "igloo": null
+ },
+ {
+  "sec": 12,
+  "sub": "Nomen-Verb-Verbindungen ★",
+  "star": true,
+  "de": "zur Verfügung stehen · unter Druck stehen · in Frage kommen",
+  "en": "be available · be under pressure · be an option",
+  "igloo": [
+   "ENG_CHUNK_0665",
+   2
+  ]
+ },
+ {
+  "sec": 12,
+  "sub": "Nomen-Verb-Verbindungen ★",
+  "star": true,
+  "de": "eine Rolle spielen · zum Schluss kommen · in Betracht ziehen",
+  "en": "play a role · conclude · consider",
+  "igloo": [
+   "ENG_CHUNK_0098",
+   1
+  ]
+ },
+ {
+  "sec": 12,
+  "sub": "Perfekt traps",
+  "star": false,
+  "de": "erhalten → erhalten · bekommen → bekommen",
+  "en": "participle = infinitive",
+  "igloo": null
+ },
+ {
+  "sec": 12,
+  "sub": "Perfekt traps",
+  "star": false,
+  "de": "vorbereitet · eingeordnet · aufgestellt · angerufen",
+  "en": "separable: ge- squeezed inside",
+  "igloo": null
+ },
+ {
+  "sec": 12,
+  "sub": "Perfekt traps",
+  "star": false,
+  "de": "unterstützt · besucht · erklärt · entschieden",
+  "en": "inseparable prefix: no ge-",
+  "igloo": null
+ },
+ {
+  "sec": 12,
+  "sub": "Perfekt traps",
+  "star": false,
+  "de": "reagiert · diskutiert · organisiert · funktioniert",
+  "en": "-ieren: no ge-",
+  "igloo": null
+ },
+ {
+  "sec": 12,
+  "sub": "Perfekt traps",
+  "star": false,
+  "de": "erhalten = receive ↔ enthalten = contain",
+  "en": "er- = get (Erfolg) · ent-halten = hold within",
+  "igloo": null
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Müll trennen · Plastik vermeiden · Strom und Wasser sparen",
+  "en": "separate waste · avoid plastic · save energy and water"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Jeder kann einen kleinen Beitrag leisten.",
+  "en": "everyone can make a small contribution"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Die Politik sollte klare Regeln aufstellen.",
+  "en": "politics should set clear rules"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "mit dem Rad oder mit öffentlichen Verkehrsmitteln fahren",
+  "en": "by bike or public transport"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Das ist gut für die Umwelt, aber oft teurer.",
+  "en": "good for the environment but pricier"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "sich gesund ernähren · regelmäßig Sport treiben · genug schlafen",
+  "en": "eat healthily · exercise regularly · sleep enough"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Fast Food ist praktisch, aber ungesund.",
+  "en": "convenient but unhealthy"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "In Maßen ist alles erlaubt.",
+  "en": "everything in moderation"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Stress abbauen · sich erholen · eine Pause machen",
+  "en": "reduce stress · recover · take a break"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Es kommt auf die Einstellung an, nicht auf die Diät.",
+  "en": "mindset matters, not the diet (your own point)"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "im Homeoffice arbeiten · sich die Zeit selbst einteilen",
+  "en": "work from home · manage your own time"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Der Kontakt zu den Kollegen fehlt.",
+  "en": "you miss contact with colleagues"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "sich bewerben um eine Stelle · ein Bewerbungsgespräch führen",
+  "en": "apply for a job · have an interview"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Teilzeit arbeiten · Überstunden machen · unter Druck stehen",
+  "en": "part-time · overtime · under pressure"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Die Work-Life-Balance ist mir wichtiger als das Gehalt.",
+  "en": "balance over salary"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Das Handy lenkt mich ab. · ständig erreichbar sein",
+  "en": "distracts me · always reachable"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Soziale Netzwerke verbinden Menschen, aber sie kosten viel Zeit.",
+  "en": "connect people but cost time"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Man sollte Informationen aus dem Internet kritisch prüfen.",
+  "en": "check online info critically"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "KI kann beim Üben helfen, aber Menschen nicht ersetzen.",
+  "en": "can help practise, can't replace people"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "persönliche Daten schützen · keine Daten eingeben",
+  "en": "protect personal data"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "In der Stadt ist alles in der Nähe: Ärzte, Geschäfte, Kultur.",
+  "en": "everything close by"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Die Mieten sind hoch und es ist laut.",
+  "en": "rents high, noisy"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Auf dem Land hat man mehr Ruhe und Natur.",
+  "en": "more quiet and nature"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Ohne Auto kommt man kaum weg.",
+  "en": "hard to get anywhere without a car"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "eine Wohnung mieten · umziehen · die Nachbarn kennenlernen",
+  "en": "rent · move · meet the neighbours"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "neue Kulturen kennenlernen · den Horizont erweitern",
+  "en": "get to know cultures · broaden horizons"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Allein reisen ist frei, aber manchmal einsam.",
+  "en": "free but sometimes lonely"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Der Zug hat Verspätung. · Der Flug wurde gestrichen.",
+  "en": "delayed · cancelled"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "ein Hotel buchen · eine Reise planen · sich erholen",
+  "en": "book · plan · relax"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Kostenlose Verkehrsmittel: weniger Autos, bessere Luft, aber wer bezahlt?",
+  "en": "free transport pros/cons"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Kinder lernen Sprachen spielerisch.",
+  "en": "children learn playfully"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Man lernt eine Sprache, indem man sie jeden Tag spricht.",
+  "en": "by speaking daily"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Fehler machen gehört dazu.",
+  "en": "mistakes are part of it"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Studium oder Ausbildung: beides hat Vorteile.",
+  "en": "university or apprenticeship"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Online-Kurse sind flexibel, aber man braucht Disziplin.",
+  "en": "flexible but need discipline"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Zeit mit der Familie verbringen · gemeinsam essen",
+  "en": "spend time · eat together"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Junge Leute sollten früh selbstständig werden.",
+  "en": "become independent early"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Haustiere machen Arbeit, aber sie tun gut.",
+  "en": "pets are work but do you good"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Ich brauche ein Hobby, um abzuschalten.",
+  "en": "to switch off"
+ },
+ {
+  "sec": 13,
+  "sub": null,
+  "star": false,
+  "de": "Die Großeltern helfen bei der Erziehung.",
+  "en": "grandparents help raise the kids"
+ }
+]

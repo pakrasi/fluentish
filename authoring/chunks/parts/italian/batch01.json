@@ -1,0 +1,559 @@
+[
+{
+"id": "ENG_CHUNK_0001",
+"t": "Mi chiedevo se potessi [infinito] / Mi chiedevo se potesse [infinito]",
+"ex": "Mi chiedevo se potessi darmi una mano con questa cosa.",
+"n": "'Mi chiedevo se' + congiuntivo imperfetto (potessi/potesse); Lei form for strangers."
+},
+{
+"id": "ENG_CHUNK_0002",
+"t": "Ti dispiacerebbe [infinito]? / Le dispiacerebbe [infinito]?",
+"ex": "Ti dispiacerebbe chiudere la finestra?",
+"n": "Italian uses the infinitive, not a gerund: 'dispiacerebbe chiudere'."
+},
+{
+"id": "ENG_CHUNK_0003",
+"t": "Ti dispiace se [presente indicativo]? / Le dispiace se...?",
+"ex": "Ti dispiace se apro la finestra?",
+"n": "After 'se' the indicative is normal here: 'se apro', not congiuntivo."
+},
+{
+"id": "ENG_CHUNK_0004",
+"t": "Sto pensando di [infinito]",
+"ex": "Sto pensando di trasferirmi a Berlino l'anno prossimo.",
+"n": "'pensare di' + infinitive; 'penso che' + congiuntivo is a different job (opinion)."
+},
+{
+"id": "ENG_CHUNK_0005",
+"t": "Non vedo l'ora di [infinito]",
+"ex": "Non vedo l'ora di rivederti.",
+"n": "Literally 'I can't see the hour'; much more common than 'aspetto con ansia'."
+},
+{
+"id": "ENG_CHUNK_0006",
+"t": "Non so se [clausola]",
+"ex": "Non so se vengono stasera.",
+"n": "Spoken Italian keeps indicative after 'non so se'; congiuntivo (vengano) sounds more careful."
+},
+{
+"id": "ENG_CHUNK_0007",
+"t": "Stavo proprio per [infinito]",
+"ex": "Oh, stavo proprio per chiamarti!"
+},
+{
+"id": "ENG_CHUNK_0008",
+"t": "Sono settimane che voglio [infinito] / È da tanto che devo [infinito]",
+"ex": "Sono settimane che voglio chiamarti.",
+"n": "No direct equivalent of 'have been meaning to'; Italian uses 'è da tanto che' + present."
+},
+{
+"id": "ENG_CHUNK_0009",
+"t": "Non ha senso [infinito] / È inutile [infinito]",
+"ex": "È inutile aspettare, tanto non vengono."
+},
+{
+"id": "ENG_CHUNK_0010",
+"t": "Perché non [verbo, noi]?",
+"ex": "Perché non prendiamo una pizza stasera?",
+"n": "Also 'E se [imperfetto congiuntivo]...?': 'E se prendessimo una pizza?'"
+},
+{
+"id": "ENG_CHUNK_0011",
+"t": "Preferirei [infinito]",
+"ex": "Preferirei restare a casa stasera, se per te va bene.",
+"n": "'Preferirei che' + congiuntivo imperfetto when the subject changes: preferirei che tu restassi."
+},
+{
+"id": "ENG_CHUNK_0012",
+"t": "Se fossi in te, [condizionale]",
+"ex": "Se fossi in te, ne parlerei prima con il tuo capo.",
+"n": "Congiuntivo imperfetto 'fossi' + condizionale; 'se ero in te' is common but substandard."
+},
+{
+"id": "ENG_CHUNK_0013",
+"t": "Dipende da [nome]",
+"ex": "Dipende dal tempo, in realtà.",
+"n": "Contract da + article: dal, dalla, dai."
+},
+{
+"id": "ENG_CHUNK_0014",
+"t": "Il fatto è che [clausola] / Il punto è che [clausola]",
+"ex": "Il fatto è che ho già preso impegni per sabato."
+},
+{
+"id": "ENG_CHUNK_0015",
+"t": "Non volevo [infinito]",
+"ex": "Scusa, non volevo interromperti.",
+"n": "Imperfetto 'volevo', not passato prossimo."
+},
+{
+"id": "ENG_CHUNK_0016",
+"t": "Sono abituato a [infinito]",
+"ex": "Sono abituato ad alzarmi presto.",
+"n": "abituato/abituata agrees with the speaker; a -> ad before a vowel."
+},
+{
+"id": "ENG_CHUNK_0017",
+"t": "Ci vuole [nome] per [infinito] / Ci vogliono [nome] per [infinito]",
+"ex": "Ci vogliono una ventina di minuti per arrivarci.",
+"n": "'Ci vuole' + singular, 'ci vogliono' + plural: ci vuole un'ora, ci vogliono due ore."
+},
+{
+"id": "ENG_CHUNK_0018",
+"t": "Fammi sapere se [clausola] / Mi faccia sapere se...",
+"ex": "Fammi sapere se ti serve qualcosa."
+},
+{
+"id": "ENG_CHUNK_0019",
+"t": "Grazie per [infinito passato] / Grazie di [infinito passato]",
+"ex": "Grazie per avermelo detto.",
+"n": "Completed actions take the past infinitive: grazie per avermi aiutato."
+},
+{
+"id": "ENG_CHUNK_0020",
+"t": "Scusa se [clausola] / Scusa per [infinito passato]",
+"ex": "Scusa se ti ho fatto aspettare.",
+"n": "Formal: Mi scusi se... 'Scusa se' + indicative is the everyday choice."
+},
+{
+"id": "ENG_CHUNK_0021",
+"t": "Non ci posso credere che [clausola] / Non riesco a credere che...",
+"ex": "Non ci posso credere che sia già ottobre.",
+"n": "'credere che' triggers congiuntivo: che sia."
+},
+{
+"id": "ENG_CHUNK_0022",
+"t": "Mi saprebbe dire [clausola]? / Mi sai dire [clausola]?",
+"ex": "Mi saprebbe dire dov'è la stazione?",
+"n": "'Mi saprebbe dire' is the standard polite question to strangers; 'potrebbe dirmi' also fine."
+},
+{
+"id": "ENG_CHUNK_0023",
+"t": "Cosa ne pensi di [nome]? / Che ne pensa di...?",
+"ex": "Cosa ne pensi del nuovo ufficio?",
+"n": "Don't forget 'ne' (of it) – it is almost always there."
+},
+{
+"id": "ENG_CHUNK_0024",
+"t": "Com'è [infinito]?",
+"ex": "Com'è vivere a Londra?"
+},
+{
+"id": "ENG_CHUNK_0025",
+"t": "Mi dispiace, ma [clausola] / Purtroppo [clausola]",
+"ex": "Mi dispiace, ma stasera siamo al completo.",
+"n": "'Temo che' exists but triggers congiuntivo and sounds more formal."
+},
+{
+"id": "ENG_CHUNK_0026",
+"t": "Mi raccomando, [imperativo] / Assicurati di [infinito]",
+"ex": "Mi raccomando, chiudi la porta a chiave quando esci.",
+"n": "'Mi raccomando' is the idiomatic reminder; 'assicurati che' + congiuntivo also works."
+},
+{
+"id": "ENG_CHUNK_0027",
+"t": "Mi piacerebbe tanto, ma [clausola]",
+"ex": "Mi piacerebbe tanto, ma domani mattina lavoro presto."
+},
+{
+"id": "ENG_CHUNK_0028",
+"t": "Alla fine è venuto fuori che [clausola] / A quanto pare [clausola]",
+"ex": "Alla fine è venuto fuori che il negozio era chiuso da una settimana."
+},
+{
+"id": "ENG_CHUNK_0029",
+"t": "Sembra che [congiuntivo] / Pare che [congiuntivo]",
+"ex": "Sembra che stia per piovere.",
+"n": "'Sembra che' triggers congiuntivo; colloquial alternative: 'Mi sa che' + indicative."
+},
+{
+"id": "ENG_CHUNK_0030",
+"t": "Non ho idea di [clausola] / Non ho la minima idea di...",
+"ex": "Non ho idea di dove ho messo le chiavi.",
+"n": "Careful speech: 'dove abbia messo' (congiuntivo); spoken usually indicative."
+},
+{
+"id": "ENG_CHUNK_0031",
+"t": "Dovrei [infinito]",
+"ex": "Dovrei essere al lavoro per le nove.",
+"n": "Condizionale 'dovrei' carries the 'supposed to' sense; 'devo' is plain obligation."
+},
+{
+"id": "ENG_CHUNK_0032",
+"t": "Volevo solo [infinito]",
+"ex": "Volevo solo sapere se hai ricevuto la mia mail.",
+"n": "Imperfetto 'volevo' softens, like English past tense."
+},
+{
+"id": "ENG_CHUNK_0033",
+"t": "Decidi tu / Sta a [persona]",
+"ex": "Per me è uguale dove mangiamo. Decidi tu.",
+"n": "'Sta a te' is exact but 'decidi tu' is what people actually say."
+},
+{
+"id": "ENG_CHUNK_0034",
+"t": "Sembra [aggettivo] / Mi sembra [aggettivo]",
+"ex": "Sembra fantastico! A che ora vengo?",
+"n": "Very common short reaction: 'Che bello!' / 'Ottimo!'"
+},
+{
+"id": "ENG_CHUNK_0035",
+"t": "Sono riuscito a [infinito]",
+"ex": "Sono riuscito a sistemare la stampante da solo.",
+"n": "riuscire takes essere: sono riuscito/a."
+},
+{
+"id": "ENG_CHUNK_0036",
+"t": "prendere una decisione",
+"ex": "Dobbiamo prendere una decisione entro venerdì.",
+"n": "prendere, not fare, a decision."
+},
+{
+"id": "ENG_CHUNK_0037",
+"t": "fare una pausa",
+"ex": "Facciamo una pausa e prendiamoci un caffè."
+},
+{
+"id": "ENG_CHUNK_0038",
+"t": "dare un'occhiata a [nome]",
+"ex": "Puoi dare un'occhiata al mio portatile? Continua a bloccarsi."
+},
+{
+"id": "ENG_CHUNK_0039",
+"t": "finire [nome] / rimanere senza [nome]",
+"ex": "Abbiamo di nuovo finito il latte.",
+"n": "'Il latte è finito' is equally common."
+},
+{
+"id": "ENG_CHUNK_0040",
+"t": "mettersi in contatto con [persona] / sentire [persona]",
+"ex": "Domani mi metto in contatto con il padrone di casa.",
+"n": "Casual: 'Domani sento il padrone di casa.'"
+},
+{
+"id": "ENG_CHUNK_0041",
+"t": "fare un errore / sbagliare",
+"ex": "Scusa, ho fatto un errore con la prenotazione.",
+"n": "'Ho sbagliato' is often more natural than the noun phrase."
+},
+{
+"id": "ENG_CHUNK_0042",
+"t": "fare attenzione a [nome] / stare attento a [nome]",
+"ex": "Non stavo facendo caso all'ora.",
+"n": "'fare caso a' = to notice; 'fare attenzione' = to be careful."
+},
+{
+"id": "ENG_CHUNK_0043",
+"t": "avere senso",
+"ex": "Per me non ha senso.",
+"n": "avere, not fare: 'ha senso'."
+},
+{
+"id": "ENG_CHUNK_0044",
+"t": "fare un favore a [persona]",
+"ex": "Mi fai un favore e dai da mangiare al gatto?"
+},
+{
+"id": "ENG_CHUNK_0045",
+"t": "dare una mano a [persona]",
+"ex": "Mi dai una mano con questi scatoloni?"
+},
+{
+"id": "ENG_CHUNK_0046",
+"t": "impegnarsi / metterci impegno",
+"ex": "Si sta impegnando davvero tanto con il tedesco."
+},
+{
+"id": "ENG_CHUNK_0047",
+"t": "farsi venire in mente [nome] / tirare fuori [nome]",
+"ex": "Le è venuta in mente un'idea geniale.",
+"n": "Also 'ha avuto un'idea geniale' – the simplest option."
+},
+{
+"id": "ENG_CHUNK_0048",
+"t": "sbarazzarsi di [nome] / liberarsi di [nome]",
+"ex": "Devo liberarmi di un po' di vestiti vecchi."
+},
+{
+"id": "ENG_CHUNK_0049",
+"t": "andare d'accordo con [persona]",
+"ex": "Vado molto d'accordo con i miei colleghi."
+},
+{
+"id": "ENG_CHUNK_0050",
+"t": "cambiare idea",
+"ex": "Se cambi idea, chiamami."
+},
+{
+"id": "ENG_CHUNK_0051",
+"t": "tenere d'occhio [nome] / dare un'occhiata a [nome]",
+"ex": "Mi tieni d'occhio la borsa un attimo?"
+},
+{
+"id": "ENG_CHUNK_0052",
+"t": "fare con calma / prendersela comoda",
+"ex": "Non c'è fretta, fai con calma.",
+"n": "'Fai con calma' = take your time (kind); 'prendersela comoda' can sound like a complaint."
+},
+{
+"id": "ENG_CHUNK_0053",
+"t": "passare il tempo a [infinito]",
+"ex": "Passo un sacco di tempo a fare il pendolare.",
+"n": "passare + a + infinitive; also 'perdo un sacco di tempo nei tragitti'."
+},
+{
+"id": "ENG_CHUNK_0054",
+"t": "capire [nome] / capirci qualcosa",
+"ex": "Non ci capisco niente con questa nuova app.",
+"n": "'Non ci capisco niente' is the natural frustrated form."
+},
+{
+"id": "ENG_CHUNK_0055",
+"t": "sistemare [nome]",
+"ex": "Questa settimana devo sistemare la questione del visto."
+},
+{
+"id": "ENG_CHUNK_0056",
+"t": "occuparsi di [nome]",
+"ex": "Me ne occupo domani.",
+"n": "ne replaces 'di + cosa': me ne occupo."
+},
+{
+"id": "ENG_CHUNK_0057",
+"t": "farcela",
+"ex": "Scusa, stasera non ce la faccio.",
+"n": "farcela: ce la faccio, ce la fai, ce l'ho fatta."
+},
+{
+"id": "ENG_CHUNK_0058",
+"t": "avere difficoltà a [infinito] / fare fatica a [infinito]",
+"ex": "Ultimamente faccio fatica a dormire."
+},
+{
+"id": "ENG_CHUNK_0059",
+"t": "essere in ritardo",
+"ex": "Scusa, sono un po' in ritardo.",
+"n": "Italian has no progressive here: 'sono in ritardo' / 'arrivo un po' in ritardo'."
+},
+{
+"id": "ENG_CHUNK_0060",
+"t": "rimandare [nome/infinito]",
+"ex": "Continuo a rimandare la chiamata al dentista."
+},
+{
+"id": "ENG_CHUNK_0061",
+"t": "organizzare [nome] / fissare [nome]",
+"ex": "Possiamo fissare una riunione la settimana prossima?",
+"n": "'fissare un appuntamento/una riunione' = set up; 'installare/configurare' for devices."
+},
+{
+"id": "ENG_CHUNK_0062",
+"t": "smettere di [infinito]",
+"ex": "Ho smesso di fumare l'anno scorso.",
+"n": "'rinunciare a' = give up on a goal; 'smettere di' = quit a habit."
+},
+{
+"id": "ENG_CHUNK_0063",
+"t": "fare la differenza",
+"ex": "Dormire bene fa davvero la differenza."
+},
+{
+"id": "ENG_CHUNK_0064",
+"t": "occuparsi di [persona] / badare a [persona]",
+"ex": "Puoi badare ai bambini sabato?"
+},
+{
+"id": "ENG_CHUNK_0065",
+"t": "avere modo di [infinito] / avere l'occasione di [infinito]",
+"ex": "Non ho avuto modo di richiamarti."
+},
+{
+"id": "ENG_CHUNK_0066",
+"t": "A dire il vero / Sinceramente",
+"ex": "A dire il vero, il film non mi è piaciuto granché."
+},
+{
+"id": "ENG_CHUNK_0067",
+"t": "Fammi pensare / Aspetta, fammi pensare",
+"ex": "Fammi pensare... era martedì scorso, credo."
+},
+{
+"id": "ENG_CHUNK_0068",
+"t": "Come dire?",
+"ex": "È... come dire? Un po' intenso."
+},
+{
+"id": "ENG_CHUNK_0069",
+"t": "Capisci cosa intendo? / Hai presente?",
+"ex": "Non è la stessa cosa, capisci cosa intendo?"
+},
+{
+"id": "ENG_CHUNK_0070",
+"t": "Che io sappia / Per quanto ne so",
+"ex": "Che io sappia, la riunione è ancora confermata.",
+"n": "'Che io sappia' is a fixed congiuntivo form."
+},
+{
+"id": "ENG_CHUNK_0071",
+"t": "A proposito / Tra l'altro",
+"ex": "A proposito, hai saputo di Tommaso?"
+},
+{
+"id": "ENG_CHUNK_0072",
+"t": "Comunque, come stavo dicendo",
+"ex": "Comunque, come stavo dicendo, l'albergo era bellissimo."
+},
+{
+"id": "ENG_CHUNK_0073",
+"t": "Ah, mi hai fatto venire in mente una cosa / Ah, a proposito",
+"ex": "Ah, mi hai fatto venire in mente: devo chiamare mia madre.",
+"n": "No single fixed phrase; 'mi hai ricordato una cosa' also fine."
+},
+{
+"id": "ENG_CHUNK_0074",
+"t": "Capisco cosa vuoi dire",
+"ex": "Capisco cosa vuoi dire, ma secondo me costa troppo."
+},
+{
+"id": "ENG_CHUNK_0075",
+"t": "Giusto / Ci sta",
+"ex": "Giusto, anch'io farei lo stesso al posto tuo.",
+"n": "'Ci sta' is young/colloquial for 'fair enough'."
+},
+{
+"id": "ENG_CHUNK_0076",
+"t": "Aspetta un attimo / Un attimo",
+"ex": "Aspetta un attimo, prendo una penna."
+},
+{
+"id": "ENG_CHUNK_0077",
+"t": "Cioè",
+"ex": "È stato bello. Cioè, non fantastico, ma bello.",
+"n": "'Cioè' is the go-to self-correcting filler; also 'voglio dire'."
+},
+{
+"id": "ENG_CHUNK_0078",
+"t": "Secondo me / Se vuoi sapere la mia",
+"ex": "Secondo me sono soldi buttati."
+},
+{
+"id": "ENG_CHUNK_0079",
+"t": "Mah, non ne sono così sicuro",
+"ex": "Mah, non ne sono così sicuro.",
+"n": "'Mah' signals doubt; sicuro/sicura agrees with speaker."
+},
+{
+"id": "ENG_CHUNK_0080",
+"t": "Veramente... / In realtà...",
+"ex": "Veramente è il contrario.",
+"n": "'Attualmente' is a false friend: it means 'currently'."
+},
+{
+"id": "ENG_CHUNK_0081",
+"t": "Lascia stare / Non fa niente",
+"ex": "Lascia stare, lo faccio io."
+},
+{
+"id": "ENG_CHUNK_0082",
+"t": "Figurati / Tranquillo",
+"ex": "Tranquillo, capita a tutti.",
+"n": "'Figurati' after thanks; 'tranquillo/a' after an apology. Lei form: 'Si figuri'."
+},
+{
+"id": "ENG_CHUNK_0083",
+"t": "Stammi bene / Abbi cura di te",
+"ex": "Ok, ci vediamo la settimana prossima. Stammi bene!"
+},
+{
+"id": "ENG_CHUNK_0084",
+"t": "Non è niente di grave / Non è un problema",
+"ex": "Non ti preoccupare, non è niente di grave."
+},
+{
+"id": "ENG_CHUNK_0085",
+"t": "Fai pure / Prego",
+"ex": "Posso usare il tuo telefono? – Certo, fai pure.",
+"n": "Lei form: 'Prego, faccia pure.'"
+},
+{
+"id": "ENG_CHUNK_0086",
+"t": "Incrociamo le dita / In bocca al lupo",
+"ex": "Domani ho il colloquio, quindi incrociamo le dita.",
+"n": "To wish someone luck: 'In bocca al lupo!' – reply 'Crepi!' (never 'grazie')."
+},
+{
+"id": "ENG_CHUNK_0087",
+"t": "Offro io",
+"ex": "Metti via il portafoglio, offro io."
+},
+{
+"id": "ENG_CHUNK_0088",
+"t": "Ci penso",
+"ex": "Grazie dell'offerta. Ci penso.",
+"n": "'Ci penserò' is softer and often a polite no."
+},
+{
+"id": "ENG_CHUNK_0089",
+"t": "Che peccato",
+"ex": "Non puoi venire? Che peccato."
+},
+{
+"id": "ENG_CHUNK_0090",
+"t": "Quanto tempo! / Chi non muore si rivede!",
+"ex": "Ehi, quanto tempo! Come stai?",
+"n": "'Chi non muore si rivede' is a jokey, affectionate version."
+},
+{
+"id": "ENG_CHUNK_0091",
+"t": "D'altra parte / D'altro canto",
+"ex": "È caro. D'altra parte, durerà anni."
+},
+{
+"id": "ENG_CHUNK_0092",
+"t": "Detto questo",
+"ex": "L'albergo era un po' vecchio. Detto questo, il personale era gentilissimo."
+},
+{
+"id": "ENG_CHUNK_0093",
+"t": "In questo caso / Allora",
+"ex": "Non hai fame? Allora prendiamo solo un caffè."
+},
+{
+"id": "ENG_CHUNK_0094",
+"t": "Purché [congiuntivo] / Basta che [congiuntivo]",
+"ex": "Puoi prenderlo in prestito, basta che me lo riporti.",
+"n": "Both trigger congiuntivo: purché tu me lo riporti."
+},
+{
+"id": "ENG_CHUNK_0095",
+"t": "Anche se / Sebbene [congiuntivo]",
+"ex": "Siamo usciti anche se pioveva.",
+"n": "'Anche se' + indicative; 'sebbene/benché' + congiuntivo (more formal)."
+},
+{
+"id": "ENG_CHUNK_0096",
+"t": "Ecco perché / Per questo",
+"ex": "C'era lo sciopero dei treni. Ecco perché sono in ritardo."
+},
+{
+"id": "ENG_CHUNK_0097",
+"t": "Appena / Non appena",
+"ex": "Ti chiamo appena arrivo a casa.",
+"n": "Future reference: 'appena arrivo' (present) or 'appena sarò arrivato' (futuro anteriore)."
+},
+{
+"id": "ENG_CHUNK_0098",
+"t": "Alla fine",
+"ex": "Ne abbiamo parlato per ore, ma alla fine siamo rimasti a casa."
+},
+{
+"id": "ENG_CHUNK_0099",
+"t": "Dopotutto / In fondo",
+"ex": "Lascialo dormire. In fondo ha lavorato tutta la notte."
+},
+{
+"id": "ENG_CHUNK_0100",
+"t": "Per sicurezza / Non si sa mai",
+"ex": "Prendi un ombrello, non si sa mai."
+}
+]

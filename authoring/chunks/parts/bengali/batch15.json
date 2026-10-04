@@ -1,0 +1,376 @@
+[
+ {
+  "id": "ENG_CHUNK_1401",
+  "t": "আমার [noun] হয়েছে",
+  "tr": "aamaar [noun] hoyechhe",
+  "ex": "আমার ঠান্ডা লেগেছে। / আমার সর্দি হয়েছে।",
+  "extr": "aamaar thaandaa legechhe. / aamaar sordi hoyechhe.",
+  "n": "Illness 'has happened' to you (হয়েছে); a cold 'has struck' (ঠান্ডা লেগেছে)."
+ },
+ {
+  "id": "ENG_CHUNK_1402",
+  "t": "আমার [body-part] ব্যথা করছে",
+  "tr": "aamaar [body-part] byaathaa korchhe",
+  "ex": "আমার মাথা ব্যথা করছে।",
+  "extr": "aamaar maathaa byaathaa korchhe."
+ },
+ {
+  "id": "ENG_CHUNK_1403",
+  "t": "[noun]-এর জন্য একটা ওষুধ দিন",
+  "tr": "[noun]-er jonyo ektaa oshudh din",
+  "ex": "কাশির জন্য একটা ওষুধ দিন।",
+  "extr": "kaashir jonyo ektaa oshudh din."
+ },
+ {
+  "id": "ENG_CHUNK_1404",
+  "t": "আমার [noun] হারিয়ে গেছে",
+  "tr": "aamaar [noun] haariye gechhe",
+  "ex": "আমার পাসপোর্ট হারিয়ে গেছে।",
+  "extr": "aamaar paasport haariye gechhe.",
+  "n": "The thing 'has got lost'; হারিয়ে ফেলেছি ('I've lost it') is also fine."
+ },
+ {
+  "id": "ENG_CHUNK_1405",
+  "t": "আমার [noun] চুরি হয়ে গেছে",
+  "tr": "aamaar [noun] churi hoye gechhe",
+  "ex": "ট্রেনে আমার মানিব্যাগ চুরি হয়ে গেছে।",
+  "extr": "trene aamaar maanibyaag churi hoye gechhe.",
+  "n": "No 'someone': the passive চুরি হয়ে গেছে is the natural report."
+ },
+ {
+  "id": "ENG_CHUNK_1406",
+  "t": "আমার [noun] ভালো লাগে",
+  "tr": "aamaar [noun] bhaalo laage",
+  "ex": "আমার পিৎজা ভালো লাগে।",
+  "extr": "aamaar pitzaa bhaalo laage.",
+  "n": "The liker takes -র (আমার) and the thing is the subject: '[noun] feels good to me'."
+ },
+ {
+  "id": "ENG_CHUNK_1407",
+  "t": "[noun] নিয়ে আমার আগ্রহ আছে / আমার [noun] ভালো লাগে",
+  "tr": "[noun] niye aamaar aagroho aachhe / aamaar [noun] bhaalo laage",
+  "ex": "ইতিহাস নিয়ে আমার খুব আগ্রহ আছে।",
+  "extr": "itihaas niye aamaar khub aagroho aachhe."
+ },
+ {
+  "id": "ENG_CHUNK_1408",
+  "t": "আমার [noun] ভালো লাগে না",
+  "tr": "aamaar [noun] bhaalo laage naa",
+  "ex": "আমার কফি ভালো লাগে না।",
+  "extr": "aamaar kophi bhaalo laage naa."
+ },
+ {
+  "id": "ENG_CHUNK_1409",
+  "t": "তোমার [noun] ভালো লাগে?",
+  "tr": "tomaar [noun] bhaalo laage?",
+  "ex": "তোমার ইতালিয়ান খাবার ভালো লাগে?",
+  "extr": "tomaar itaaliyaan khaabaar bhaalo laage?"
+ },
+ {
+  "id": "ENG_CHUNK_1410",
+  "t": "তোমার প্রিয় [noun] কী? / তোমার ফেভারিট [noun] কী?",
+  "tr": "tomaar priyo [noun] kii? / tomaar phebhaarit [noun] kii?",
+  "ex": "তোমার প্রিয় রং কী?",
+  "extr": "tomaar priyo rong kii?"
+ },
+ {
+  "id": "ENG_CHUNK_1411",
+  "t": "আমার প্রিয় [noun] [noun]",
+  "tr": "aamaar priyo [noun] [noun]",
+  "ex": "আমার প্রিয় রং নীল।",
+  "extr": "aamaar priyo rong niil.",
+  "n": "No verb: আমার প্রিয় রং নীল."
+ },
+ {
+  "id": "ENG_CHUNK_1412",
+  "t": "আমি [verb]-তে চাই",
+  "tr": "aami [verb]-te chaai",
+  "ex": "আমি বাড়ি যেতে চাই।",
+  "extr": "aami baari jete chaai."
+ },
+ {
+  "id": "ENG_CHUNK_1413",
+  "t": "আমি [verb]-তে চাইছিলাম",
+  "tr": "aami [verb]-te chaaichhilaam",
+  "ex": "আমি একটা টেবিল বুক করতে চাইছিলাম।",
+  "extr": "aami ektaa tebil buk korte chaaichhilaam.",
+  "n": "Past progressive চাইছিলাম softens the wish, like 'I'd like to'."
+ },
+ {
+  "id": "ENG_CHUNK_1414",
+  "t": "আমাকে [verb]-তে হবে",
+  "tr": "aamaake [verb]-te hobe",
+  "ex": "আমাকে একবার ব্যাংকে যেতে হবে।",
+  "extr": "aamaake ekbaar byaanke jete hobe.",
+  "n": "The person takes -কে: আমাকে ... হবে."
+ },
+ {
+  "id": "ENG_CHUNK_1415",
+  "t": "আমাকে [verb]-তে হবে",
+  "tr": "aamaake [verb]-te hobe",
+  "ex": "কাল আমাকে কাজ করতে হবে।",
+  "extr": "kaal aamaake kaaj korte hobe.",
+  "n": "'Need to' and 'have to' collapse into the same -তে হবে frame."
+ },
+ {
+  "id": "ENG_CHUNK_1416",
+  "t": "আমার [noun] লাগবে",
+  "tr": "aamaar [noun] laagbe",
+  "ex": "আমার একটা ট্যাক্সি লাগবে।",
+  "extr": "aamaar ektaa tyaaksi laagbe."
+ },
+ {
+  "id": "ENG_CHUNK_1417",
+  "t": "[verb]-তে পারি?",
+  "tr": "[verb]-te paari?",
+  "ex": "এখানে বসতে পারি?",
+  "extr": "ekhaane boste paari?"
+ },
+ {
+  "id": "ENG_CHUNK_1418",
+  "t": "একটু [verb]-বেন, প্লিজ?",
+  "tr": "ektu [verb]-ben, plij?",
+  "ex": "একটু সাহায্য করবেন, প্লিজ?",
+  "extr": "ektu saahaajyo korben, plij?",
+  "n": "Future-tense question + একটু is the polite request; প্লিজ is optional."
+ },
+ {
+  "id": "ENG_CHUNK_1419",
+  "t": "আমি [verb]-তে পারি না",
+  "tr": "aami [verb]-te paari naa",
+  "ex": "আমি সাঁতার কাটতে পারি না।",
+  "extr": "aami saantaar kaatte paari naa."
+ },
+ {
+  "id": "ENG_CHUNK_1420",
+  "t": "চলো, [verb]",
+  "tr": "cholo, [verb]",
+  "ex": "চলো, সমুদ্রে যাই।",
+  "extr": "cholo, somudre jaai.",
+  "n": "Verb in the 'we' present (যাই, খাই) after চলো."
+ },
+ {
+  "id": "ENG_CHUNK_1421",
+  "t": "[verb]-তে ভুলো না কিন্তু",
+  "tr": "[verb]-te bhulo naa kintu",
+  "ex": "চাবিটা নিতে ভুলো না কিন্তু।",
+  "extr": "chaabitaa nite bhulo naa kintu."
+ },
+ {
+  "id": "ENG_CHUNK_1422",
+  "t": "তুমি কত ঘনঘন [verb]? / কতদিন পরপর [verb]?",
+  "tr": "tumi koto ghonoghon [verb]? / kotodin porpor [verb]?",
+  "ex": "তুমি কত ঘনঘন জিমে যাও?",
+  "extr": "tumi koto ghonoghon jime jaao?"
+ },
+ {
+  "id": "ENG_CHUNK_1423",
+  "t": "[time] সাধারণত কী করো?",
+  "tr": "[time] saadhaaronoto kii koro?",
+  "ex": "উইকেন্ডে সাধারণত কী করো?",
+  "extr": "uikende saadhaaronoto kii koro?"
+ },
+ {
+  "id": "ENG_CHUNK_1424",
+  "t": "[time] কী করছ?",
+  "tr": "[time] kii korchho?",
+  "ex": "এই উইকেন্ডে কী করছ?",
+  "extr": "ei uikende kii korchho?"
+ },
+ {
+  "id": "ENG_CHUNK_1425",
+  "t": "আমি [verb, future] / ভাবছি [verb, future]",
+  "tr": "aami [verb, future] / bhaabchhi [verb, future]",
+  "ex": "এই উইকেন্ডে মাসির বাড়ি যাব।",
+  "extr": "ei uikende maasir baari jaabo.",
+  "n": "Plain future does 'going to'; মাসি / পিসি / কাকিমা name which aunt."
+ },
+ {
+  "id": "ENG_CHUNK_1426",
+  "t": "[time]-এ [place]-এ দেখা করি",
+  "tr": "[time]-e [place]-e dekhaa kori",
+  "ex": "ছ'টায় ক্যাফেতে দেখা করি।",
+  "extr": "chhotaay kyaaphete dekhaa kori.",
+  "n": "Time usually comes before place."
+ },
+ {
+  "id": "ENG_CHUNK_1427",
+  "t": "তার বদলে [time] দেখা করা যায়?",
+  "tr": "taar bodle [time] dekhaa koraa jaay?",
+  "ex": "তার বদলে কাল দেখা করা যায়?",
+  "extr": "taar bodle kaal dekhaa koraa jaay?"
+ },
+ {
+  "id": "ENG_CHUNK_1428",
+  "t": "সরি, [day] আসতে পারব না",
+  "tr": "sori, [day] aaste paarbo naa",
+  "ex": "সরি, শনিবার আসতে পারব না।",
+  "extr": "sori, shonibaar aaste paarbo naa.",
+  "n": "Days take no 'on': শনিবার আসব."
+ },
+ {
+  "id": "ENG_CHUNK_1429",
+  "t": "[day] আমি ব্যস্ত আছি",
+  "tr": "[day] aami byasto aachhi",
+  "ex": "সোমবার আমি ব্যস্ত আছি। মঙ্গলবার হলে চলবে?",
+  "extr": "sombaar aami byasto aachhi. mongolbaar hole cholbe?"
+ },
+ {
+  "id": "ENG_CHUNK_1430",
+  "t": "[time] হলে তোমার চলবে? / [time] ঠিক আছে তো?",
+  "tr": "[time] hole tomaar cholbe? / [time] thik aachhe to?",
+  "ex": "ছ'টা হলে তোমার চলবে?",
+  "extr": "chhotaa hole tomaar cholbe?"
+ },
+ {
+  "id": "ENG_CHUNK_1431",
+  "t": "আমার [number] মিনিট দেরি হবে",
+  "tr": "aamaar [number] minit deri hobe",
+  "ex": "সরি, আমার দশ মিনিট দেরি হবে।",
+  "extr": "sori, aamaar dosh minit deri hobe."
+ },
+ {
+  "id": "ENG_CHUNK_1432",
+  "t": "আজ একটু [adjective] লাগছে",
+  "tr": "aaj ektu [adjective] laagchhe",
+  "ex": "আজ একটু ক্লান্ত লাগছে।",
+  "extr": "aaj ektu klaanto laagchhe.",
+  "n": "Feelings 'strike' (লাগছে) with no subject: ক্লান্ত লাগছে."
+ },
+ {
+  "id": "ENG_CHUNK_1433",
+  "t": "তোমার [person] কেমন আছেন?",
+  "tr": "tomaar [person] kemon aachhen?",
+  "ex": "তোমার মা কেমন আছেন?",
+  "extr": "tomaar maa kemon aachhen?",
+  "n": "Elders get the honorific verb (আছেন) even when you use তুমি with the asker."
+ },
+ {
+  "id": "ENG_CHUNK_1434",
+  "t": "[person] কেমন? / [person] লোক কেমন?",
+  "tr": "[person] kemon? / [person] lok kemon?",
+  "ex": "তোমাদের নতুন টিচার কেমন?",
+  "extr": "tomaader notun tichaar kemon?"
+ },
+ {
+  "id": "ENG_CHUNK_1435",
+  "t": "আজ [adjective]",
+  "tr": "aaj [adjective]",
+  "ex": "আজ খুব ঠান্ডা।",
+  "extr": "aaj khub thaandaa.",
+  "n": "Colloquially also আজ খুব ঠান্ডা পড়েছে ('cold has fallen')."
+ },
+ {
+  "id": "ENG_CHUNK_1436",
+  "t": "[place]-এ আবহাওয়া কেমন?",
+  "tr": "[place]-e aabohaaoyaa kemon?",
+  "ex": "টরন্টোতে আবহাওয়া কেমন?",
+  "extr": "torontote aabohaaoyaa kemon?"
+ },
+ {
+  "id": "ENG_CHUNK_1437",
+  "t": "[time] বৃষ্টি হবে",
+  "tr": "[time] brishti hobe",
+  "ex": "আজ বিকেলে বৃষ্টি হবে।",
+  "extr": "aaj bikele brishti hobe.",
+  "n": "Hedge with মনে হচ্ছে: মনে হচ্ছে বিকেলে বৃষ্টি হবে."
+ },
+ {
+  "id": "ENG_CHUNK_1438",
+  "t": "হ্যালো, আমি [name] বলছি",
+  "tr": "hyaalo, aami [name] bolchhi",
+  "ex": "হ্যালো, আমি মারিয়া বলছি।",
+  "extr": "hyaalo, aami maariyaa bolchhi.",
+  "n": "On the phone you are 'speaking' (বলছি): আমি X বলছি."
+ },
+ {
+  "id": "ENG_CHUNK_1439",
+  "t": "তোমাকে [time] ফোন করব",
+  "tr": "tomaake [time] phon korbo",
+  "ex": "কাল তোমাকে ফোন করব।",
+  "extr": "kaal tomaake phon korbo."
+ },
+ {
+  "id": "ENG_CHUNK_1440",
+  "t": "[clause] মেসেজ করিস / মেসেজ কোরো",
+  "tr": "[clause] mesej koris / mesej koro",
+  "ex": "বাড়ি পৌঁছে মেসেজ কোরো।",
+  "extr": "baari pounchhe mesej koro.",
+  "n": "'When you get home' is a conjunctive: পৌঁছে ('having arrived'); করিস is the তুই form."
+ },
+ {
+  "id": "ENG_CHUNK_1441",
+  "t": "আমার মনে হয় [clause]",
+  "tr": "aamaar mone hoy [clause]",
+  "ex": "আমার মনে হয় আইডিয়াটা ভালো।",
+  "extr": "aamaar mone hoy aaidiyaataa bhaalo."
+ },
+ {
+  "id": "ENG_CHUNK_1442",
+  "t": "আমি [person]-এর সঙ্গে একমত",
+  "tr": "aami [person]-er songe ekmot",
+  "ex": "আমি তোমার সঙ্গে একমত।",
+  "extr": "aami tomaar songe ekmot.",
+  "n": "In chat just ঠিক বলেছ ('you said right')."
+ },
+ {
+  "id": "ENG_CHUNK_1443",
+  "t": "[noun]-এর থেকে [noun] ভালো",
+  "tr": "[noun]-er theke [noun] bhaalo",
+  "ex": "কফির থেকে চা ভালো।",
+  "extr": "kophir theke chaa bhaalo.",
+  "n": "Reversed order: 'than coffee, tea is good'; no comparative ending."
+ },
+ {
+  "id": "ENG_CHUNK_1444",
+  "t": "আমি কখনো [place] যাইনি",
+  "tr": "aami kokhono [place] jaaini",
+  "ex": "আমি কখনো অস্ট্রেলিয়া যাইনি।",
+  "extr": "aami kokhono ostreliyaa jaaini."
+ },
+ {
+  "id": "ENG_CHUNK_1445",
+  "t": "গত [time] আমি [past-verb]",
+  "tr": "goto [time] aami [past-verb]",
+  "ex": "গত উইকেন্ডে দাদু-দিদার কাছে গিয়েছিলাম।",
+  "extr": "goto uikende daadu-didaar kaachhe giyechhilaam.",
+  "n": "For a completed past trip use the pluperfect-looking গিয়েছিলাম."
+ },
+ {
+  "id": "ENG_CHUNK_1446",
+  "t": "[noun] ভালো কাটল?",
+  "tr": "[noun] bhaalo kaatlo?",
+  "ex": "উইকেন্ড ভালো কাটল?",
+  "extr": "uikend bhaalo kaatlo?",
+  "n": "Time 'passes' (কাটল), so ask whether it passed well."
+ },
+ {
+  "id": "ENG_CHUNK_1447",
+  "t": "[noun] কেমন কাটল? / [noun] কেমন হল?",
+  "tr": "[noun] kemon kaatlo? / [noun] kemon holo?",
+  "ex": "উইকেন্ড কেমন কাটল?",
+  "extr": "uikend kemon kaatlo?",
+  "n": "কাটল for time periods, হল for events (পরীক্ষা কেমন হল?)."
+ },
+ {
+  "id": "ENG_CHUNK_1448",
+  "t": "এখন [verb]-ছি",
+  "tr": "ekhon [verb]-chhi",
+  "ex": "এখন কাজ করছি।",
+  "extr": "ekhon kaaj korchhi."
+ },
+ {
+  "id": "ENG_CHUNK_1449",
+  "t": "দুঃখিত, কিন্তু [clause] / সরি, [clause]",
+  "tr": "dukkhito, kintu [clause] / sori, [clause]",
+  "ex": "দুঃখিত, কিন্তু আমি আপনাকে সাহায্য করতে পারব না।",
+  "extr": "dukkhito, kintu aami aapnaake saahaajyo korte paarbo naa."
+ },
+ {
+  "id": "ENG_CHUNK_1450",
+  "t": "[day] দেখা হবে",
+  "tr": "[day] dekhaa hobe",
+  "ex": "সোমবার দেখা হবে!",
+  "extr": "sombaar dekhaa hobe!"
+ }
+]

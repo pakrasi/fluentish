@@ -1,0 +1,560 @@
+[
+{
+"id": "ENG_CHUNK_1201",
+"t": "Hi! / Hallo!",
+"ex": "Hi! Wie läuft dein Tag so?"
+},
+{
+"id": "ENG_CHUNK_1202",
+"t": "Guten Morgen / Morgen!",
+"ex": "Guten Morgen! Hast du gut geschlafen?",
+"n": "Among friends and colleagues often just \"Morgen!\"."
+},
+{
+"id": "ENG_CHUNK_1203",
+"t": "Guten Tag / Hallo",
+"ex": "Guten Tag. Kann ich Ihnen helfen?",
+"n": "No separate afternoon greeting in everyday use: \"Guten Tag\" covers the whole day; \"Guten Nachmittag\" sounds odd."
+},
+{
+"id": "ENG_CHUNK_1204",
+"t": "Gute Nacht",
+"ex": "Gute Nacht! Schlaf gut.",
+"n": "Only when going to bed or leaving late at night; as an evening greeting on arrival say \"Guten Abend\"."
+},
+{
+"id": "ENG_CHUNK_1205",
+"t": "Wie geht's? / Wie geht es Ihnen?",
+"ex": "Hallo Sam, wie geht's?",
+"n": "\"Wie geht's?\" to friends; \"Wie geht es Ihnen?\" to people you say Sie to. Expect a real answer, not just a greeting."
+},
+{
+"id": "ENG_CHUNK_1206",
+"t": "Gut, danke. Und dir? / Und Ihnen?",
+"ex": "„Wie geht's?“ „Gut, danke. Und dir?“",
+"n": "Match the question: \"Und dir?\" (du), \"Und Ihnen?\" (Sie)."
+},
+{
+"id": "ENG_CHUNK_1207",
+"t": "Nicht schlecht, danke / Ganz gut, danke",
+"ex": "„Wie geht's dir?“ „Ganz gut, danke.“"
+},
+{
+"id": "ENG_CHUNK_1208",
+"t": "Freut mich",
+"ex": "Hallo, ich bin Anna. Freut mich.",
+"n": "Also \"Schön, dich kennenzulernen\" (informal)."
+},
+{
+"id": "ENG_CHUNK_1209",
+"t": "Gleichfalls / Ebenso / Dir auch",
+"ex": "„Freut mich.“ „Mich auch.“",
+"n": "After \"Freut mich\" say \"Mich auch\"; after wishes (Schönen Tag!) say \"Gleichfalls\" or \"Dir/Ihnen auch\"."
+},
+{
+"id": "ENG_CHUNK_1210",
+"t": "Sehr erfreut / Freut mich, Sie kennenzulernen",
+"ex": "Guten Morgen, ich bin David Lee. Freut mich, Sie kennenzulernen.",
+"n": "\"Sehr erfreut\" sounds old-fashioned; \"Freut mich, Sie kennenzulernen\" is the safe formal choice."
+},
+{
+"id": "ENG_CHUNK_1211",
+"t": "Na, wie läuft's? / Na, alles klar?",
+"ex": "Hey Tom, na, alles klar?",
+"n": "\"Na?\" alone is a very casual hello among friends."
+},
+{
+"id": "ENG_CHUNK_1212",
+"t": "Schön, dich zu sehen! / Schön, Sie zu sehen",
+"ex": "Hey Maria! Schön, dich zu sehen."
+},
+{
+"id": "ENG_CHUNK_1213",
+"t": "Auf Wiedersehen / Tschüss",
+"ex": "Auf Wiedersehen, und vielen Dank für alles.",
+"n": "\"Tschüss\" is neutral-informal and very common; \"Auf Wiedersehen\" is formal. On the phone: \"Auf Wiederhören\"."
+},
+{
+"id": "ENG_CHUNK_1214",
+"t": "Bis später! / Bis dann!",
+"ex": "Okay, bis später!"
+},
+{
+"id": "ENG_CHUNK_1215",
+"t": "Schönen Tag noch! / Einen schönen Tag noch!",
+"ex": "Danke. Schönen Tag noch!",
+"n": "Standard reply: \"Danke, gleichfalls!\""
+},
+{
+"id": "ENG_CHUNK_1216",
+"t": "Danke / Danke schön",
+"ex": "Danke für den Kaffee.",
+"n": "\"Danke für\" + Akkusativ."
+},
+{
+"id": "ENG_CHUNK_1217",
+"t": "Vielen Dank! / Danke dir!",
+"ex": "Vielen Dank, das ist echt lieb von dir."
+},
+{
+"id": "ENG_CHUNK_1218",
+"t": "Bitte / Gern geschehen / Gerne",
+"ex": "„Danke!“ „Gerne!“",
+"n": "\"Gerne\" is the most common everyday reply; \"Bitte\" is fine too."
+},
+{
+"id": "ENG_CHUNK_1219",
+"t": "Kein Problem",
+"ex": "„Danke fürs Warten.“ „Kein Problem.“"
+},
+{
+"id": "ENG_CHUNK_1220",
+"t": "Ja, gerne / Ja, bitte",
+"ex": "„Möchtest du einen Tee?“ „Ja, gerne.“"
+},
+{
+"id": "ENG_CHUNK_1221",
+"t": "Nein, danke",
+"ex": "„Möchtest du noch Kuchen?“ „Nein, danke.“",
+"n": "\"Danke\" alone can mean \"no thanks\" when offered something, so add \"ja, gerne\" if you mean yes."
+},
+{
+"id": "ENG_CHUNK_1222",
+"t": "Entschuldigung",
+"ex": "Entschuldigung, ist das der Zug nach Hamburg?",
+"n": "Also \"Darf ich mal?\" or \"Sorry\" when squeezing past someone."
+},
+{
+"id": "ENG_CHUNK_1223",
+"t": "Es tut mir leid / Tut mir leid",
+"ex": "Tut mir leid, das war mein Fehler.",
+"n": "\"Entschuldigung\" for small things; \"Es tut mir leid\" for real regret or sympathy."
+},
+{
+"id": "ENG_CHUNK_1224",
+"t": "Schon gut / Kein Problem / Macht nichts",
+"ex": "„Sorry, ich habe deine Tasse kaputt gemacht.“ „Macht nichts.“"
+},
+{
+"id": "ENG_CHUNK_1225",
+"t": "Sorry, dass ich zu spät bin / Entschuldigung für die Verspätung",
+"ex": "Sorry, dass ich zu spät bin, der Bus ist nicht gekommen.",
+"n": "After \"dass\" the verb goes to the end."
+},
+{
+"id": "ENG_CHUNK_1226",
+"t": "Entschuldigung, das verstehe ich nicht",
+"ex": "Entschuldigung, das verstehe ich nicht. Kannst du das noch mal sagen?"
+},
+{
+"id": "ENG_CHUNK_1227",
+"t": "Können Sie bitte langsamer sprechen?",
+"ex": "Können Sie bitte etwas langsamer sprechen? Mein Deutsch ist nicht so gut.",
+"n": "du form: Kannst du bitte langsamer sprechen?"
+},
+{
+"id": "ENG_CHUNK_1228",
+"t": "Können Sie das bitte wiederholen? / Noch mal, bitte?",
+"ex": "Entschuldigung, können Sie das bitte wiederholen?",
+"n": "du form: Kannst du das noch mal sagen?"
+},
+{
+"id": "ENG_CHUNK_1229",
+"t": "Können Sie das bitte buchstabieren?",
+"ex": "Ihr Nachname? Können Sie das bitte buchstabieren?"
+},
+{
+"id": "ENG_CHUNK_1230",
+"t": "Ich spreche nicht so gut Deutsch / Ich spreche nur ein bisschen Deutsch",
+"ex": "Entschuldigung, ich spreche nicht so gut Deutsch."
+},
+{
+"id": "ENG_CHUNK_1231",
+"t": "Wie heißt du? / Wie heißen Sie?",
+"ex": "Hi, ich bin Tom. Wie heißt du?",
+"n": "\"Was ist dein Name?\" is understood but sounds translated; use \"heißen\"."
+},
+{
+"id": "ENG_CHUNK_1232",
+"t": "Woher kommst du? / Woher kommen Sie?",
+"ex": "Woher kommst du? Dein Akzent ist schön."
+},
+{
+"id": "ENG_CHUNK_1233",
+"t": "Wie alt bist du?",
+"ex": "Wie alt bist du, Emma?"
+},
+{
+"id": "ENG_CHUNK_1234",
+"t": "Wo wohnst du? / Wo wohnen Sie?",
+"ex": "Wo wohnst du? Hier in der Nähe?",
+"n": "\"wohnen\" = where your home is; \"leben\" = live in a broader sense (in a country, a life)."
+},
+{
+"id": "ENG_CHUNK_1235",
+"t": "Was machst du beruflich? / Was machen Sie beruflich?",
+"ex": "Was machst du beruflich? Bist du Student?",
+"n": "Plain \"Was machst du?\" means \"What are you doing (right now)?\"; add \"beruflich\"."
+},
+{
+"id": "ENG_CHUNK_1236",
+"t": "Hast du Geschwister?",
+"ex": "Hast du Geschwister?",
+"n": "German has one word for brothers and sisters: Geschwister."
+},
+{
+"id": "ENG_CHUNK_1237",
+"t": "Wie lange wohnst du schon hier?",
+"ex": "Wie lange wohnst du schon hier?",
+"n": "Present tense + schon, not a perfect tense: Ich wohne seit drei Jahren hier."
+},
+{
+"id": "ENG_CHUNK_1238",
+"t": "Und du? / Und Sie?",
+"ex": "Ich komme aus Italien. Und du?"
+},
+{
+"id": "ENG_CHUNK_1239",
+"t": "Wie spät ist es? / Wie viel Uhr ist es?",
+"ex": "Entschuldigung, wie spät ist es?"
+},
+{
+"id": "ENG_CHUNK_1240",
+"t": "Was kostet das? / Wie viel kostet das?",
+"ex": "Die Tasche ist schön. Was kostet die?"
+},
+{
+"id": "ENG_CHUNK_1241",
+"t": "Kann ich Ihnen helfen? / Kann ich Ihnen weiterhelfen?",
+"ex": "Guten Morgen, kann ich Ihnen helfen?",
+"n": "helfen takes the dative: Ihnen, dir."
+},
+{
+"id": "ENG_CHUNK_1242",
+"t": "Das war's, danke / Das ist alles, danke",
+"ex": "„Sonst noch etwas?“ „Nein, das war's, danke.“",
+"n": "Staff say \"Sonst noch etwas?\" or \"Darf's noch was sein?\"."
+},
+{
+"id": "ENG_CHUNK_1243",
+"t": "Kann ich bitte die Karte haben? / Die Karte, bitte",
+"ex": "Hallo, könnte ich bitte die Speisekarte haben?",
+"n": "In restaurants the menu is \"die (Speise)karte\"; \"das Menü\" is a set meal."
+},
+{
+"id": "ENG_CHUNK_1244",
+"t": "Was können Sie empfehlen? / Was empfiehlst du?",
+"ex": "Ich bin zum ersten Mal hier. Was können Sie empfehlen?"
+},
+{
+"id": "ENG_CHUNK_1245",
+"t": "Ich bin Vegetarier / Vegetarierin",
+"ex": "Ich bin Vegetarierin. Ist in der Suppe Fleisch?",
+"n": "No article before the noun: \"Ich bin Vegetarier\", not \"ein Vegetarier\"."
+},
+{
+"id": "ENG_CHUNK_1246",
+"t": "Ich bin satt",
+"ex": "Nein danke, ich bin satt.",
+"n": "\"Ich bin voll\" means \"I'm drunk\" in slang; say \"satt\"."
+},
+{
+"id": "ENG_CHUNK_1247",
+"t": "Wo ist die Toilette? / Wo sind die Toiletten?",
+"ex": "Entschuldigung, wo ist die Toilette?",
+"n": "\"Badezimmer\" is only the bathroom in a home; in public ask for \"die Toilette\" or \"das WC\"."
+},
+{
+"id": "ENG_CHUNK_1248",
+"t": "Gehen Sie geradeaus / Immer geradeaus",
+"ex": "Gehen Sie geradeaus, und die Bank ist auf der linken Seite.",
+"n": "du form: Geh geradeaus."
+},
+{
+"id": "ENG_CHUNK_1249",
+"t": "Wo muss ich aussteigen?",
+"ex": "Ich will zum Zoo. Wo muss ich aussteigen?",
+"n": "Separable verb: Ich steige am Zoo aus."
+},
+{
+"id": "ENG_CHUNK_1250",
+"t": "Wie ist das WLAN-Passwort?",
+"ex": "Entschuldigung, wie ist das WLAN-Passwort?",
+"n": "Germans say WLAN (\"weh-lahn\"), rarely \"Wi-Fi\"."
+},
+{
+"id": "ENG_CHUNK_1251",
+"t": "Hilfe!",
+"ex": "Hilfe! Kann mir jemand helfen?"
+},
+{
+"id": "ENG_CHUNK_1252",
+"t": "Können Sie mir helfen? / Kannst du mir helfen?",
+"ex": "Entschuldigung, können Sie mir helfen? Ich habe mich verlaufen."
+},
+{
+"id": "ENG_CHUNK_1253",
+"t": "Ich brauche einen Arzt / Ich brauche eine Ärztin",
+"ex": "Ich brauche einen Arzt. Mein Sohn ist sehr krank."
+},
+{
+"id": "ENG_CHUNK_1254",
+"t": "Es tut hier weh / Hier tut es weh",
+"ex": "Hier tut es weh, am Bauch."
+},
+{
+"id": "ENG_CHUNK_1255",
+"t": "Mir geht's nicht gut / Ich fühle mich nicht gut",
+"ex": "Mir geht's nicht gut. Ich gehe nach Hause.",
+"n": "Dative: \"Mir geht's nicht gut\", not \"Ich bin nicht gut\"."
+},
+{
+"id": "ENG_CHUNK_1256",
+"t": "Rufen Sie einen Krankenwagen! / Ruf einen Krankenwagen!",
+"ex": "Ruf einen Krankenwagen! Er atmet nicht.",
+"n": "Emergency number in Germany: 112."
+},
+{
+"id": "ENG_CHUNK_1257",
+"t": "Ich habe mich verlaufen",
+"ex": "Entschuldigung, ich habe mich verlaufen. Wo ist der Bahnhof?",
+"n": "On foot: verlaufen; driving: verfahren."
+},
+{
+"id": "ENG_CHUNK_1258",
+"t": "Vorsicht! / Pass auf!",
+"ex": "Vorsicht! Ein Auto!"
+},
+{
+"id": "ENG_CHUNK_1259",
+"t": "Was ist los?",
+"ex": "Du siehst traurig aus. Was ist los?",
+"n": "Also \"Was hast du?\" when someone seems upset or unwell."
+},
+{
+"id": "ENG_CHUNK_1260",
+"t": "Alles okay? / Alles in Ordnung?",
+"ex": "Alles okay? Du bist ganz blass."
+},
+{
+"id": "ENG_CHUNK_1261",
+"t": "Alles Gute zum Geburtstag!",
+"ex": "Alles Gute zum Geburtstag! Hier ist ein Geschenk für dich.",
+"n": "Wishing it before the day is considered bad luck in Germany."
+},
+{
+"id": "ENG_CHUNK_1262",
+"t": "Gut gemacht! / Super!",
+"ex": "Du hast die Prüfung bestanden? Super, gut gemacht!",
+"n": "\"Glückwunsch!\" for passing an exam or getting a job."
+},
+{
+"id": "ENG_CHUNK_1263",
+"t": "Es regnet",
+"ex": "Nimm einen Schirm mit. Es regnet."
+},
+{
+"id": "ENG_CHUNK_1264",
+"t": "Schönes Wetter heute, oder?",
+"ex": "Schönes Wetter heute, oder?",
+"n": "\"..., oder?\" or \"..., nicht?\" is the all-purpose tag question."
+},
+{
+"id": "ENG_CHUNK_1265",
+"t": "Wie ist deine Handynummer? / Was ist deine Nummer?",
+"ex": "Wie ist deine Handynummer? Ich schreib dir.",
+"n": "\"Handy\" = mobile phone in Germany."
+},
+{
+"id": "ENG_CHUNK_1266",
+"t": "Ich kann dich nicht hören / Ich verstehe dich nicht",
+"ex": "Sorry, ich verstehe dich nicht. Hier ist es sehr laut.",
+"n": "On the phone and in noise Germans usually say \"Ich verstehe dich nicht\"."
+},
+{
+"id": "ENG_CHUNK_1267",
+"t": "Sorry, ich hab deinen Anruf verpasst",
+"ex": "Hi, sorry, ich hab deinen Anruf verpasst. Was gibt's?"
+},
+{
+"id": "ENG_CHUNK_1268",
+"t": "Darf ich Sie etwas fragen? / Kann ich dich was fragen?",
+"ex": "Entschuldigung, darf ich Sie etwas fragen?"
+},
+{
+"id": "ENG_CHUNK_1269",
+"t": "Wann treffen wir uns?",
+"ex": "Okay, Freitag zum Essen. Um wie viel Uhr treffen wir uns?"
+},
+{
+"id": "ENG_CHUNK_1270",
+"t": "Mein Akku ist gleich leer",
+"ex": "Ich muss los, mein Akku ist gleich leer.",
+"n": "Germans talk about the battery (Akku), not the phone \"dying\"."
+},
+{
+"id": "ENG_CHUNK_1271",
+"t": "Ähm, mal sehen / Moment, mal überlegen",
+"ex": "Ähm, mal sehen ... ich glaube, das ist am Dienstag."
+},
+{
+"id": "ENG_CHUNK_1272",
+"t": "Einen Moment, bitte / Moment mal",
+"ex": "Einen Moment, ich hole meinen Stift."
+},
+{
+"id": "ENG_CHUNK_1273",
+"t": "Warte mal! / Warte kurz!",
+"ex": "Warte mal, ich komme!"
+},
+{
+"id": "ENG_CHUNK_1274",
+"t": "Moment / Bleib kurz dran",
+"ex": "Moment, ich schau mal nach.",
+"n": "On the phone: \"Bleiben Sie dran\" / \"Bleib dran\" = hold the line."
+},
+{
+"id": "ENG_CHUNK_1275",
+"t": "Wie bitte?",
+"ex": "Wie bitte? Ich habe Sie nicht verstanden.",
+"n": "The standard polite way to ask for a repeat; plain \"Was?\" can sound rude."
+},
+{
+"id": "ENG_CHUNK_1276",
+"t": "Wie bitte? / Was?",
+"ex": "Wie bitte? Kannst du das noch mal sagen?"
+},
+{
+"id": "ENG_CHUNK_1277",
+"t": "Was ist das?",
+"ex": "Was ist das? Das Wort kenne ich nicht.",
+"n": "For a word: \"Was heißt das?\" / \"Was bedeutet das?\""
+},
+{
+"id": "ENG_CHUNK_1278",
+"t": "Okay / Gut",
+"ex": "Okay, gehen wir.",
+"n": "Also \"Alles klar\" to show you understood."
+},
+{
+"id": "ENG_CHUNK_1279",
+"t": "Natürlich / Klar",
+"ex": "„Darf ich mich hier hinsetzen?“ „Natürlich.“"
+},
+{
+"id": "ENG_CHUNK_1280",
+"t": "Klar / Sicher",
+"ex": "„Kannst du mir das Salz geben?“ „Klar.“"
+},
+{
+"id": "ENG_CHUNK_1281",
+"t": "Ich auch",
+"ex": "„Ich liebe dieses Lied.“ „Ich auch!“"
+},
+{
+"id": "ENG_CHUNK_1282",
+"t": "Ich auch nicht",
+"ex": "„Ich mag keinen Kaffee.“ „Ich auch nicht.“",
+"n": "Not \"Ich nicht auch\"; \"nicht\" goes last."
+},
+{
+"id": "ENG_CHUNK_1283",
+"t": "Genau / Okay",
+"ex": "Okay, der Bus fährt also um neun.",
+"n": "\"Genau\" is the everyday word for agreeing; \"richtig\" sounds like a teacher."
+},
+{
+"id": "ENG_CHUNK_1284",
+"t": "Ich weiß nicht / Keine Ahnung",
+"ex": "Tut mir leid, das weiß ich nicht.",
+"n": "\"Keine Ahnung\" is casual and can sound curt."
+},
+{
+"id": "ENG_CHUNK_1285",
+"t": "Vielleicht",
+"ex": "„Kommst du heute Abend?“ „Vielleicht.“"
+},
+{
+"id": "ENG_CHUNK_1286",
+"t": "Ich bin mir nicht sicher / Weiß ich nicht genau",
+"ex": "„Hat das am Sonntag auf?“ „Ich bin mir nicht sicher.“",
+"n": "Shops in Germany are mostly closed on Sundays."
+},
+{
+"id": "ENG_CHUNK_1287",
+"t": "Gute Idee!",
+"ex": "„Lass uns ein Taxi nehmen.“ „Gute Idee.“"
+},
+{
+"id": "ENG_CHUNK_1288",
+"t": "Das ist ja toll! / Super!",
+"ex": "Du hast den Job? Das ist ja toll!"
+},
+{
+"id": "ENG_CHUNK_1289",
+"t": "Oh nein!",
+"ex": "Oh nein! Ich habe meine Schlüssel vergessen."
+},
+{
+"id": "ENG_CHUNK_1290",
+"t": "Na ja ... / Also ...",
+"ex": "Na ja ... ich weiß nicht so genau.",
+"n": "\"Also\" = well / so, not \"also\" (that is \"auch\")."
+},
+{
+"id": "ENG_CHUNK_1291",
+"t": "Eigentlich / Also eigentlich",
+"ex": "Eigentlich komme ich aus Kanada, nicht aus den USA.",
+"n": "False friend: \"aktuell\" means current, not actually."
+},
+{
+"id": "ENG_CHUNK_1292",
+"t": "Klingt gut / Passt",
+"ex": "„Pizza um sieben?“ „Klingt gut.“"
+},
+{
+"id": "ENG_CHUNK_1293",
+"t": "Cool / Super",
+"ex": "„Wir sehen uns dort.“ „Cool.“"
+},
+{
+"id": "ENG_CHUNK_1294",
+"t": "Wow! / Boah!",
+"ex": "Wow! Dein Haus ist wunderschön."
+},
+{
+"id": "ENG_CHUNK_1295",
+"t": "Ist das okay? / Passt das?",
+"ex": "Ich komme um acht. Ist das okay?"
+},
+{
+"id": "ENG_CHUNK_1296",
+"t": "und dann",
+"ex": "Ich bin aufgestanden, und dann habe ich gefrühstückt.",
+"n": "After \"dann\" the verb comes next: dann habe ich ..."
+},
+{
+"id": "ENG_CHUNK_1297",
+"t": "aber",
+"ex": "Ich mag Tee, aber ich mag keinen Kaffee.",
+"n": "\"aber\" does not change word order."
+},
+{
+"id": "ENG_CHUNK_1298",
+"t": "weil [Satz, Verb am Ende] / denn",
+"ex": "Ich bin müde, weil ich lange gearbeitet habe.",
+"n": "After \"weil\" the verb goes to the end; after \"denn\" normal word order."
+},
+{
+"id": "ENG_CHUNK_1299",
+"t": "auch",
+"ex": "Ich spreche Französisch. Ich spreche auch ein bisschen Deutsch.",
+"n": "False friend: German \"also\" means \"so\", not \"also\"."
+},
+{
+"id": "ENG_CHUNK_1300",
+"t": "dann",
+"ex": "Zuerst dusche ich, dann ziehe ich mich an.",
+"n": "Verb comes right after \"dann\": dann ziehe ich ..."
+}
+]

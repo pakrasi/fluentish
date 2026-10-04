@@ -1,0 +1,544 @@
+[
+{
+"id": "ENG_CHUNK_0201",
+"t": "Ti va bene [nome]? / Per te va bene [nome]?",
+"ex": "Ti va bene giovedì alle sei?"
+},
+{
+"id": "ENG_CHUNK_0202",
+"t": "Sei libero [nome]?",
+"ex": "Sei libero sabato? Facciamo una grigliata.",
+"n": "No preposition with weekdays: 'sabato' = this Saturday, 'il sabato' = every Saturday."
+},
+{
+"id": "ENG_CHUNK_0203",
+"t": "Hai programmi per [nome]? / Che fai [nome]?",
+"ex": "Hai programmi per il fine settimana?",
+"n": "Casual: 'Che fai questo weekend?'"
+},
+{
+"id": "ENG_CHUNK_0204",
+"t": "Vuoi venire da me a [nome/infinito]?",
+"ex": "Vuoi venire a cena da me venerdì?",
+"n": "'da me' = to my place; 'venire a cena' = come for dinner."
+},
+{
+"id": "ENG_CHUNK_0205",
+"t": "Come mai [clausola]?",
+"ex": "Come mai non mangi?",
+"n": "'Come mai' keeps normal word order and indicative."
+},
+{
+"id": "ENG_CHUNK_0206",
+"t": "Sarà per questo che [clausola]",
+"ex": "Hai saltato il pranzo? Sarà per questo che hai mal di testa.",
+"n": "Futuro of probability: 'sarà' = it's probably."
+},
+{
+"id": "ENG_CHUNK_0207",
+"t": "Cosa ti ha fatto [infinito]? / Come mai hai deciso di [infinito]?",
+"ex": "Come mai hai deciso di trasferirti a Chicago?",
+"n": "'Cosa ti ha spinto a...' is the more literal but more formal option."
+},
+{
+"id": "ENG_CHUNK_0208",
+"t": "È solo che [clausola]",
+"ex": "L'appartamento mi piace. È solo che è un po' lontano dal lavoro."
+},
+{
+"id": "ENG_CHUNK_0209",
+"t": "È vero, però [clausola]",
+"ex": "È vero, però lì ci servirebbe comunque una macchina."
+},
+{
+"id": "ENG_CHUNK_0210",
+"t": "Che c'è di male a [infinito]? / Cosa c'è di male se [clausola]?",
+"ex": "Che c'è di male a mangiare cereali per cena?"
+},
+{
+"id": "ENG_CHUNK_0211",
+"t": "Vedo se [clausola] / Controllo se [clausola]",
+"ex": "Vedo se hanno un tavolo per quattro.",
+"n": "Present tense for an immediate offer: 'vedo se', not 'vedrò'."
+},
+{
+"id": "ENG_CHUNK_0212",
+"t": "Quindi mi stai dicendo che [clausola]? / Cioè [clausola]?",
+"ex": "Quindi mi stai dicendo che qui non si può parcheggiare proprio?"
+},
+{
+"id": "ENG_CHUNK_0213",
+"t": "Scusa, hai detto che [clausola]?",
+"ex": "Scusa, hai detto che la riunione è alle tre?"
+},
+{
+"id": "ENG_CHUNK_0214",
+"t": "[clausola], vero? / [clausola], no?",
+"ex": "Domenica vieni alla grigliata, vero?",
+"n": "'..., no?' is even more casual."
+},
+{
+"id": "ENG_CHUNK_0215",
+"t": "Non ti sembra che [congiuntivo]? / Non trovi che [congiuntivo]?",
+"ex": "Non ti sembra che faccia un po' freddo per il mare?",
+"n": "Both trigger congiuntivo: faccia, sia."
+},
+{
+"id": "ENG_CHUNK_0216",
+"t": "Non vado matto per [nome] / Non amo molto [nome]",
+"ex": "A dire il vero, non vado matto per il cibo piccante.",
+"n": "'Non vado pazzo/matto per' = I'm not crazy about it; agrees: matta for a woman."
+},
+{
+"id": "ENG_CHUNK_0217",
+"t": "Sono fissato con [nome] / Mi piace un sacco [nome]",
+"ex": "Ultimamente sono fissato con l'arrampicata.",
+"n": "'Sono appassionato di' is the neutral version; 'mi sono fissato' more colloquial."
+},
+{
+"id": "ENG_CHUNK_0218",
+"t": "Non sopporto [nome/infinito]",
+"ex": "Non sopporto fare la fila."
+},
+{
+"id": "ENG_CHUNK_0219",
+"t": "Non mi dispiace [infinito] / Per me non è un problema [infinito]",
+"ex": "Guido io, se vuoi dormire, non mi dà fastidio.",
+"n": "'Non mi dispiace' = I don't mind; also 'non mi pesa'."
+},
+{
+"id": "ENG_CHUNK_0220",
+"t": "Preferisco [infinito] che [infinito] / Preferisco [nome] a [nome]",
+"ex": "Preferisco cucinare a casa che mangiare fuori.",
+"n": "Two infinitives: preferire X che Y; two nouns: preferire X a Y."
+},
+{
+"id": "ENG_CHUNK_0221",
+"t": "Non sono molto bravo a [infinito] / Non sono portato per [nome]",
+"ex": "Non sono molto bravo a ricordarmi i nomi."
+},
+{
+"id": "ENG_CHUNK_0222",
+"t": "Sei proprio bravo a [infinito]",
+"ex": "Sei proprio bravo a spiegare le cose.",
+"n": "bravo/brava agrees with the listener."
+},
+{
+"id": "ENG_CHUNK_0223",
+"t": "Non posso permettermi di [infinito]",
+"ex": "Non posso permettermi di uscire ogni fine settimana."
+},
+{
+"id": "ENG_CHUNK_0224",
+"t": "Non riesco a [infinito] da [evento/durata]",
+"ex": "Da quando ho traslocato non riesco a dormire.",
+"n": "Present tense + 'da quando', not passato prossimo."
+},
+{
+"id": "ENG_CHUNK_0225",
+"t": "Ho deciso di [infinito]",
+"ex": "Ho deciso di accettare il lavoro a Denver."
+},
+{
+"id": "ENG_CHUNK_0226",
+"t": "Spero di [infinito]",
+"ex": "Quest'estate spero di andare a trovare i miei nonni.",
+"n": "Same subject: spero di + infinitive; different subject: spero che + congiuntivo."
+},
+{
+"id": "ENG_CHUNK_0227",
+"t": "Probabilmente [presente] / Mi sa che [presente]",
+"ex": "Mi sa che resto a casa a rilassarmi.",
+"n": "'Mi sa che' is colloquial 'I reckon'; Italian uses present for near future."
+},
+{
+"id": "ENG_CHUNK_0228",
+"t": "Facciamo [nome]",
+"ex": "Le sette è troppo presto. Facciamo alle otto.",
+"n": "'Facciamo' fixes a time: 'facciamo alle otto', 'facciamo da me'."
+},
+{
+"id": "ENG_CHUNK_0229",
+"t": "Devo [infinito]",
+"ex": "Alle tre devo andare a prendere i bambini."
+},
+{
+"id": "ENG_CHUNK_0230",
+"t": "Non c'è bisogno che [congiuntivo] / Non devi [infinito]",
+"ex": "Non c'è bisogno che porti niente, vieni e basta.",
+"n": "'Non c'è bisogno che' triggers congiuntivo (porti)."
+},
+{
+"id": "ENG_CHUNK_0231",
+"t": "Bisogna [infinito]? / Devo [infinito]?",
+"ex": "Bisogna prenotare o possiamo presentarci direttamente?"
+},
+{
+"id": "ENG_CHUNK_0232",
+"t": "È normale [infinito]? / Si usa [infinito]?",
+"ex": "Qui si usa lasciare la mancia al parrucchiere?",
+"n": "'Si usa' = is it the custom."
+},
+{
+"id": "ENG_CHUNK_0233",
+"t": "Non si può [infinito] / È vietato [infinito]",
+"ex": "Dopo le sei qui non si può parcheggiare.",
+"n": "Impersonal 'non si può' is the everyday way to state a rule; 'è vietato' is signage."
+},
+{
+"id": "ENG_CHUNK_0234",
+"t": "Mi sa che devo [infinito] / Purtroppo dovrò [infinito]",
+"ex": "Scusa, purtroppo stasera devo disdire."
+},
+{
+"id": "ENG_CHUNK_0235",
+"t": "Tendo a [infinito] / Di solito [presente]",
+"ex": "Quando sono stressato tendo a mangiare troppo."
+},
+{
+"id": "ENG_CHUNK_0236",
+"t": "essere arrabbiato con [persona] / avercela con [persona]",
+"ex": "Ce l'ha ancora con me perché ho dimenticato il suo compleanno.",
+"n": "'avercela con qualcuno' is the idiomatic, colloquial form."
+},
+{
+"id": "ENG_CHUNK_0237",
+"t": "essere turbato per [nome] / starci male per [nome]",
+"ex": "Ci sta molto male per aver perso il lavoro."
+},
+{
+"id": "ENG_CHUNK_0238",
+"t": "essere fiero di [persona] / essere orgoglioso di [persona]",
+"ex": "Hai passato l'esame della patente? Sono fierissimo di te!"
+},
+{
+"id": "ENG_CHUNK_0239",
+"t": "addormentarsi",
+"ex": "Mi sono addormentato sul divano a metà film."
+},
+{
+"id": "ENG_CHUNK_0240",
+"t": "calmarsi",
+"ex": "Calmati, è solo un graffio."
+},
+{
+"id": "ENG_CHUNK_0241",
+"t": "essere stressato",
+"ex": "Sono stressatissimo per il trasloco."
+},
+{
+"id": "ENG_CHUNK_0242",
+"t": "essere di buon umore",
+"ex": "Oggi sei di buon umore. Che è successo?"
+},
+{
+"id": "ENG_CHUNK_0243",
+"t": "tirare su di morale [persona]",
+"ex": "Portiamola fuori a cena per tirarla su di morale.",
+"n": "Also 'tirare su' alone: 'per tirarla su'."
+},
+{
+"id": "ENG_CHUNK_0244",
+"t": "dispiacersi per [persona] / fare pena",
+"ex": "Mi dispiace per lui, è stato male tutta la settimana.",
+"n": "'Mi fa pena' = I pity him; can sound harsher."
+},
+{
+"id": "ENG_CHUNK_0245",
+"t": "conoscere [persona]",
+"ex": "È molto simpatica, una volta che la conosci.",
+"n": "'conoscere meglio' for getting to know someone more."
+},
+{
+"id": "ENG_CHUNK_0246",
+"t": "fare amicizia",
+"ex": "È difficile fare amicizia in una città nuova."
+},
+{
+"id": "ENG_CHUNK_0247",
+"t": "avere molto in comune con [persona]",
+"ex": "Ho molto in comune con il mio coinquilino."
+},
+{
+"id": "ENG_CHUNK_0248",
+"t": "lasciarsi con [persona] / lasciare [persona]",
+"ex": "Ha lasciato il suo ragazzo il mese scorso.",
+"n": "'lasciare qualcuno' = dump; 'lasciarsi' = split up (mutual)."
+},
+{
+"id": "ENG_CHUNK_0249",
+"t": "uscire con [persona] / avere un appuntamento",
+"ex": "Ieri sera siamo usciti insieme ed è andata benissimo.",
+"n": "'appuntamento' covers dates AND appointments."
+},
+{
+"id": "ENG_CHUNK_0250",
+"t": "chiedere di uscire a [persona]",
+"ex": "Dopo tre mesi finalmente le ha chiesto di uscire."
+},
+{
+"id": "ENG_CHUNK_0251",
+"t": "innamorarsi di [persona]",
+"ex": "Si sono innamorati durante un viaggio in Italia.",
+"n": "innamorarsi DI, not 'con'."
+},
+{
+"id": "ENG_CHUNK_0252",
+"t": "litigare con [persona]",
+"ex": "Ho litigato con mia sorella per le feste.",
+"n": "'litigare' is the common verb; 'avere una discussione' is milder."
+},
+{
+"id": "ENG_CHUNK_0253",
+"t": "dare sui nervi / dare fastidio",
+"ex": "Quel rumore dal piano di sopra mi dà proprio sui nervi."
+},
+{
+"id": "ENG_CHUNK_0254",
+"t": "contare su [persona]",
+"ex": "Puoi sempre contare su di me.",
+"n": "su + pronoun needs 'di': su di me, su di te."
+},
+{
+"id": "ENG_CHUNK_0255",
+"t": "incontrare per caso [persona] / beccare [persona]",
+"ex": "Ho incontrato per caso la mia vecchia professoressa al supermercato.",
+"n": "'beccare' is very colloquial."
+},
+{
+"id": "ENG_CHUNK_0256",
+"t": "passare / fare un salto",
+"ex": "Passo dopo il lavoro a lasciarti le chiavi.",
+"n": "'Faccio un salto da te' = I'll pop by."
+},
+{
+"id": "ENG_CHUNK_0257",
+"t": "fare una lista",
+"ex": "Facciamo una lista prima di andare al supermercato."
+},
+{
+"id": "ENG_CHUNK_0258",
+"t": "restare chiuso fuori",
+"ex": "Sono rimasto di nuovo chiuso fuori dalla macchina."
+},
+{
+"id": "ENG_CHUNK_0259",
+"t": "lasciare [persona] / accompagnare [persona]",
+"ex": "Mi lasci alla stazione?",
+"n": "'accompagnare' = give someone a lift somewhere."
+},
+{
+"id": "ENG_CHUNK_0260",
+"t": "rimanere bloccato nel traffico",
+"ex": "Scusa il ritardo, sono rimasto bloccato nel traffico.",
+"n": "'Ho beccato traffico' is the casual version."
+},
+{
+"id": "ENG_CHUNK_0261",
+"t": "perdere l'autobus",
+"ex": "Ho perso l'autobus, quindi sono dovuto andare a piedi."
+},
+{
+"id": "ENG_CHUNK_0262",
+"t": "prendere un volo / prendere l'aereo",
+"ex": "Domani mattina devo prendere un volo alle sei."
+},
+{
+"id": "ENG_CHUNK_0263",
+"t": "perdersi",
+"ex": "Ci siamo persi andando all'albergo."
+},
+{
+"id": "ENG_CHUNK_0264",
+"t": "andare in vacanza",
+"ex": "A luglio andiamo in vacanza in Messico.",
+"n": "'in vacanza' (no article); 'in ferie' for time off work."
+},
+{
+"id": "ENG_CHUNK_0265",
+"t": "prendere un giorno di ferie / prendersi un giorno libero",
+"ex": "Venerdì prendo un giorno di ferie per aiutare i miei col trasloco."
+},
+{
+"id": "ENG_CHUNK_0266",
+"t": "Secondo me / A mio parere",
+"ex": "Secondo me, nel vecchio posto si mangiava meglio.",
+"n": "'A mio parere' is more formal; 'secondo me' is what everyone says."
+},
+{
+"id": "ENG_CHUNK_0267",
+"t": "Sai / Hai presente",
+"ex": "È quel posticino, hai presente, vicino al panificio."
+},
+{
+"id": "ENG_CHUNK_0268",
+"t": "Scherzo! / Sto scherzando",
+"ex": "Ho mangiato tutta la torta. Scherzo, ne è rimasta un po'."
+},
+{
+"id": "ENG_CHUNK_0269",
+"t": "A onor del vero / Bisogna dire che",
+"ex": "È sempre in ritardo, ma bisogna dire che c'era un traffico terribile."
+},
+{
+"id": "ENG_CHUNK_0270",
+"t": "Scusi se interrompo / Scusa se ti interrompo",
+"ex": "Scusi se interrompo, ma è arrivato il suo taxi."
+},
+{
+"id": "ENG_CHUNK_0271",
+"t": "Come si dice? / Com'è la parola?",
+"ex": "È stato così... come si dice? Imbarazzante."
+},
+{
+"id": "ENG_CHUNK_0272",
+"t": "Come si chiama? / Coso",
+"ex": "Mi passi il... come si chiama, l'apriscatole?",
+"n": "'Coso'/'coso lì' is the colloquial 'thingy'."
+},
+{
+"id": "ENG_CHUNK_0273",
+"t": "Lo immaginavo / Appunto",
+"ex": "Quindi il lunedì il negozio è chiuso? Lo immaginavo."
+},
+{
+"id": "ENG_CHUNK_0274",
+"t": "Non proprio / Non tanto",
+"ex": "Hai fame? – Non tanto, ho pranzato abbondantemente."
+},
+{
+"id": "ENG_CHUNK_0275",
+"t": "Sono assolutamente d'accordo / Hai proprio ragione",
+"ex": "Sono assolutamente d'accordo, costa decisamente troppo."
+},
+{
+"id": "ENG_CHUNK_0276",
+"t": "Chi te l'ha detto? / Dove l'hai sentito?",
+"ex": "Chiudono la palestra? Chi te l'ha detto?"
+},
+{
+"id": "ENG_CHUNK_0277",
+"t": "Può ripetere? / Puoi ripetere?",
+"ex": "Scusi, può ripetere? C'è molto rumore qui."
+},
+{
+"id": "ENG_CHUNK_0278",
+"t": "Mettiamola così / Diciamo così",
+"ex": "Mettiamola così: quest'anno non ce lo possiamo permettere."
+},
+{
+"id": "ENG_CHUNK_0279",
+"t": "Dov'ero rimasto?",
+"ex": "Scusa, il telefono. Dov'ero rimasto?"
+},
+{
+"id": "ENG_CHUNK_0280",
+"t": "È una lunga storia",
+"ex": "Perché sei tornato? – È una lunga storia."
+},
+{
+"id": "ENG_CHUNK_0281",
+"t": "Meglio prevenire che curare / Non si sa mai",
+"ex": "Ho messo in valigia un maglione in più. Non si sa mai."
+},
+{
+"id": "ENG_CHUNK_0282",
+"t": "Facile a dirsi",
+"ex": "Smettere di preoccuparmi? Facile a dirsi.",
+"n": "Full form: 'Tra il dire e il fare c'è di mezzo il mare.'"
+},
+{
+"id": "ENG_CHUNK_0283",
+"t": "Per me va bene",
+"ex": "Sabato alle dieci? Per me va bene."
+},
+{
+"id": "ENG_CHUNK_0284",
+"t": "Ci sto! / Io ci sono",
+"ex": "Andate a fare trekking domenica? Ci sto!"
+},
+{
+"id": "ENG_CHUNK_0285",
+"t": "Tenga il resto",
+"ex": "Ecco venti euro. Tenga il resto.",
+"n": "Lei form to drivers and waiters."
+},
+{
+"id": "ENG_CHUNK_0286",
+"t": "Sto solo dando un'occhiata, grazie",
+"ex": "Posso aiutarla? – Sto solo dando un'occhiata, grazie."
+},
+{
+"id": "ENG_CHUNK_0287",
+"t": "Buona giornata! / Buona serata!",
+"ex": "Grazie del caffè. Buona giornata!",
+"n": "Pick by time of day: buona giornata / buon pomeriggio / buona serata."
+},
+{
+"id": "ENG_CHUNK_0288",
+"t": "È stato un piacere parlare con Lei / È stato un piacere",
+"ex": "Devo scappare, ma è stato un piacere parlare con te."
+},
+{
+"id": "ENG_CHUNK_0289",
+"t": "Come va? / Come te la passi?",
+"ex": "Ehi, Marco! Come te la passi?",
+"n": "'Come stai?' works too; 'come te la passi' implies it's been a while."
+},
+{
+"id": "ENG_CHUNK_0290",
+"t": "Che mi racconti? / Cosa hai fatto di bello?",
+"ex": "Allora, che hai fatto di bello dopo la laurea?"
+},
+{
+"id": "ENG_CHUNK_0291",
+"t": "All'inizio",
+"ex": "All'inizio odiavo il nuovo lavoro, ma adesso mi piace molto."
+},
+{
+"id": "ENG_CHUNK_0292",
+"t": "A parte questo / Per il resto",
+"ex": "La camera era un po' piccola. Per il resto, era perfetta."
+},
+{
+"id": "ENG_CHUNK_0293",
+"t": "Prima di tutto / Innanzitutto",
+"ex": "Innanzitutto, grazie di essere venuti."
+},
+{
+"id": "ENG_CHUNK_0294",
+"t": "Più tardi / Poi",
+"ex": "Abbiamo pranzato in centro e più tardi siamo andati al cinema."
+},
+{
+"id": "ENG_CHUNK_0295",
+"t": "Per ora / Finora",
+"ex": "Come va il nuovo lavoro? – Per ora benissimo."
+},
+{
+"id": "ENG_CHUNK_0296",
+"t": "Se possibile",
+"ex": "Vorrei un posto al finestrino, se possibile."
+},
+{
+"id": "ENG_CHUNK_0297",
+"t": "È perché [clausola]",
+"ex": "I bambini sono tranquilli. È perché stanno guardando i cartoni."
+},
+{
+"id": "ENG_CHUNK_0298",
+"t": "Il che significa / Quindi",
+"ex": "Il ponte è chiuso, il che significa che dobbiamo fare il giro."
+},
+{
+"id": "ENG_CHUNK_0299",
+"t": "Grazie a",
+"ex": "Grazie a te siamo arrivati in tempo."
+},
+{
+"id": "ENG_CHUNK_0300",
+"t": "come / tipo",
+"ex": "Porta qualcosa da sgranocchiare, tipo frutta o barrette.",
+"n": "'tipo' is very colloquial; 'come' or 'ad esempio' is neutral."
+}
+]

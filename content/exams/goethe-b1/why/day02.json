@@ -1,0 +1,642 @@
+{
+ "H1-1a": {
+  "evidence": "deshalb müssen wir den Termin verschieben – auf Freitag, gleiche Uhrzeit",
+  "evidence_en": "so we have to move the appointment – to Friday, same time",
+  "why": "Mittwoch war nur der alte Plan. Der neue Termin ist Freitag.",
+  "why_en": "Wednesday was only the original plan; the new date is Friday.",
+  "trap": "„Mittwoch“ kommt im Text vor („sollte ja eigentlich am Mittwoch“) – aber mit „eigentlich“ und „sollte“: Das gilt nicht mehr.",
+  "trap_en": "\"Wednesday\" is in the message, but with \"sollte eigentlich\" (was supposed to) – it no longer applies.",
+  "question_en": "The viewing takes place on Wednesday."
+ },
+ "H1-1b": {
+  "evidence": "Bitte bringen Sie eine Kopie Ihres Ausweises und die letzten drei Gehaltsabrechnungen mit.",
+  "evidence_en": "Please bring a copy of your ID and your last three pay slips.",
+  "why": "Gehaltsabrechnungen soll sie mitbringen – Antwort b.",
+  "why_en": "She is asked to bring her pay slips – answer b.",
+  "trap": "a) „Kopie“ steht im Text, aber vom Ausweis, nicht vom Mietvertrag. c) Der Keller wird erwähnt, aber nur als Korrektur der Anzeige.",
+  "trap_en": "a) \"Kopie\" is in the text, but of the ID, not the lease. c) The cellar is mentioned only as a correction to the ad.",
+  "question_en": "Mrs Aydin should bring …",
+  "options_en": [
+   "a copy of the rental contract.",
+   "her pay slips.",
+   "the key for the cellar."
+  ]
+ },
+ "H1-2a": {
+  "evidence": "findet am Samstag zum zehnten Mal das große Nachbarschaftsfest statt",
+  "evidence_en": "the big neighbourhood festival takes place on Saturday for the tenth time",
+  "why": "Zum zehnten Mal = es gab das Fest schon neunmal. Also falsch.",
+  "why_en": "For the tenth time = it has happened nine times before, so false.",
+  "trap": "Hier entscheidet die Zahl: „zehnten“, nicht „ersten“.",
+  "trap_en": "The number decides it: \"tenth\", not \"first\".",
+  "question_en": "The neighbourhood festival is taking place for the first time."
+ },
+ "H1-2b": {
+  "evidence": "braucht sich nicht mehr anzumelden – die Plätze sind leider schon alle vergeben",
+  "evidence_en": "no longer needs to register – unfortunately all the spots are already taken",
+  "why": "Alle Plätze sind vergeben = man bekommt keinen Platz mehr (a).",
+  "why_en": "All spots are taken = you can't get a spot any more (a).",
+  "trap": "b) „braucht sich nicht mehr anzumelden“ klingt wie „anmelden“, bedeutet aber: Es hat keinen Sinn mehr. c) Von zehn Euro ist keine Rede („Eintritt ist frei“).",
+  "trap_en": "b) \"needn't register any more\" sounds like registration is open, but it means there's no point. c) No fee is mentioned (\"Eintritt ist frei\").",
+  "question_en": "Anyone who wants to sell at the flea market …",
+  "options_en": [
+   "won't get a spot any more.",
+   "can still register until Friday.",
+   "has to pay ten euros."
+  ]
+ },
+ "H1-3a": {
+  "evidence": "aber der Installateur meint, es können drei werden",
+  "evidence_en": "but the plumber says it could be three",
+  "why": "Er dachte zuerst an eine Stunde, jetzt sind es bis zu drei Stunden.",
+  "why_en": "He first thought one hour; now it may be up to three.",
+  "trap": "„eine Stunde“ kommt vor, aber als falsche erste Schätzung („Ich habe zuerst gedacht …“).",
+  "trap_en": "\"One hour\" appears, but as his mistaken first guess (\"Ich habe zuerst gedacht\").",
+  "question_en": "The water will be turned off for about an hour."
+ },
+ "H1-3b": {
+  "evidence": "Sie können es heute Abend ab sieben abholen",
+  "evidence_en": "You can pick it up this evening from seven",
+  "why": "Das Paket liegt beim Nachbarn, sie holt es am Abend ab (b).",
+  "why_en": "The parcel is at the neighbour's; she can collect it in the evening (b).",
+  "trap": "c) Wasser in Flaschen soll sie für sich selbst abfüllen, nicht für den Nachbarn kaufen. a) Von Tür öffnen ist keine Rede.",
+  "trap_en": "c) She should fill bottles for herself, not buy them for him. a) Opening the door isn't mentioned.",
+  "question_en": "Mrs Hoffmann …",
+  "options_en": [
+   "should open the door for the tradesman tomorrow.",
+   "can collect her parcel from the neighbour in the evening.",
+   "should buy bottles of water for the neighbour."
+  ]
+ },
+ "H1-4a": {
+  "evidence": "nur, wenn Sie an der Kasse Ihre Kundenkarte vorzeigen",
+  "evidence_en": "only if you show your customer card at the till",
+  "why": "„nur, wenn … Kundenkarte“ = Rabatt nur mit Kundenkarte. Richtig.",
+  "why_en": "\"Only if … customer card\" = discount only with the card. True.",
+  "trap": "Kein Trick hier – die Aussage ist eine direkte Umschreibung.",
+  "trap_en": "No trick here – the statement is a direct paraphrase.",
+  "question_en": "You only get the discount with a customer card."
+ },
+ "H1-4b": {
+  "evidence": "das Möbelhaus selbst bleibt wie immer bis 20 Uhr geöffnet",
+  "evidence_en": "the furniture store itself stays open until 8 pm as usual",
+  "why": "Das Möbelhaus hat bis 20 Uhr offen (a).",
+  "why_en": "The store is open until 8 pm (a).",
+  "trap": "b) 18 Uhr gilt nur für das Restaurant, nicht für das Möbelhaus.",
+  "trap_en": "b) 6 pm applies only to the restaurant, not the store.",
+  "question_en": "The furniture store …",
+  "options_en": [
+   "is open until 8 pm today.",
+   "closes at 6 pm today.",
+   "only opens at 6 pm today."
+  ]
+ },
+ "H1-5a": {
+  "evidence": "Am Vormittag ist es noch ruhig und teilweise sonnig bei sechzehn Grad.",
+  "evidence_en": "In the morning it's still calm and partly sunny at sixteen degrees.",
+  "why": "Der Sturm kommt ab etwa 15 Uhr, also am Nachmittag. Falsch.",
+  "why_en": "The storm comes from about 3 pm, i.e. the afternoon. False.",
+  "trap": "„Vormittag“ kommt vor, aber mit „noch ruhig“ – genau das Gegenteil.",
+  "trap_en": "\"Vormittag\" appears, but with \"still calm\" – the opposite.",
+  "question_en": "The storm is already coming in the morning."
+ },
+ "H1-5b": {
+  "evidence": "dass alle Parks und Friedhöfe ab 14 Uhr geschlossen werden",
+  "evidence_en": "that all parks and cemeteries will be closed from 2 pm",
+  "why": "Ab 14 Uhr = heute am Nachmittag (c).",
+  "why_en": "From 2 pm = this afternoon (c).",
+  "trap": "b) „Morgen“ kommt vor, aber nur beim Wetter (morgen wird es ruhiger).",
+  "trap_en": "b) \"Tomorrow\" is mentioned, but only for the weather getting calmer.",
+  "question_en": "The parks in Bremen …",
+  "options_en": [
+   "stay open all day today.",
+   "are closed tomorrow.",
+   "will be closed this afternoon."
+  ]
+ },
+ "H2-1": {
+  "evidence": "Wer einen Schlüssel verliert, meldet sich bitte sofort bei mir",
+  "evidence_en": "Anyone who loses a key, please tell me immediately",
+  "why": "Man soll sich sofort beim Hausmeister melden (b).",
+  "why_en": "You must report to the caretaker immediately (b).",
+  "trap": "a) Das Schloss wird ausgetauscht, aber das macht das Haus – man kauft es nicht selbst. c) „kostenlos“ ist falsch: Es kostet rund 200 Euro.",
+  "trap_en": "a) The lock gets replaced, but not by you. c) Not free – it costs about €200.",
+  "question_en": "Anyone who loses a key …",
+  "options_en": [
+   "has to buy a new lock themselves.",
+   "should report to the caretaker immediately.",
+   "gets a new key free of charge."
+  ]
+ },
+ "H2-2": {
+  "evidence": "Die gelbe Tonne für Plastik wird nur alle zwei Wochen abgeholt, und zwar seit diesem Jahr am Montag",
+  "evidence_en": "The yellow bin for plastic is only collected every two weeks, and since this year on Monday",
+  "why": "Alle zwei Wochen, montags (c).",
+  "why_en": "Every two weeks, on Mondays (c).",
+  "trap": "b) Dienstag war früher („nicht mehr wie früher am Dienstag“).",
+  "trap_en": "b) Tuesday was the old day (\"no longer on Tuesday as before\").",
+  "question_en": "The yellow bin …",
+  "options_en": [
+   "is emptied every week.",
+   "is collected on Tuesdays.",
+   "is collected every two weeks on Mondays."
+  ]
+ },
+ "H2-3": {
+  "evidence": "Für die brauchen Sie eine Parkkarte, die bekommen Sie bei mir.",
+  "evidence_en": "For those you need a parking permit, which you get from me.",
+  "why": "Für die Gästeparkplätze braucht man eine Parkkarte (a).",
+  "why_en": "Guest spaces need a parking permit (a).",
+  "trap": "b) Das Gegenteil: „Besucher dürfen nicht in der Tiefgarage parken.“",
+  "trap_en": "b) The opposite: visitors may not park in the garage.",
+  "question_en": "Visitors …",
+  "options_en": [
+   "need a parking permit for the guest spaces.",
+   "may park in the underground car park.",
+   "have to park on the street."
+  ]
+ },
+ "H2-4": {
+  "evidence": "zwanzig Euro pro Tag, aber nur bis spätestens 23 Uhr",
+  "evidence_en": "twenty euros a day, but only until 11 pm at the latest",
+  "why": "Bis 23 Uhr darf man den Raum nutzen (a).",
+  "why_en": "The room can be used until 11 pm (a).",
+  "trap": "b) Er kostet 20 Euro, ist also nicht kostenlos. c) Man muss selbst sauber machen.",
+  "trap_en": "b) It costs €20. c) You clean up yourself.",
+  "question_en": "The common room …",
+  "options_en": [
+   "can be used until 11 pm.",
+   "is free for the tenants.",
+   "is cleaned by the caretaker after parties."
+  ]
+ },
+ "H2-5": {
+  "evidence": "am Wochenende nur bei Notfällen",
+  "evidence_en": "at the weekend only in emergencies",
+  "why": "Am Wochenende ist er nur bei Notfällen erreichbar (b).",
+  "why_en": "At weekends he can only be reached in emergencies (b).",
+  "trap": "a) 8 bis 16 Uhr gilt für Montag bis Freitag.",
+  "trap_en": "a) 8 am–4 pm is Monday to Friday.",
+  "question_en": "At the weekend …",
+  "options_en": [
+   "the caretaker can be reached from 8 am to 4 pm.",
+   "you can only reach the caretaker in emergencies.",
+   "the caretaker looks after the heating."
+  ]
+ },
+ "H3-1": {
+  "evidence": "Sie hat eine Stelle in Hamburg bekommen.",
+  "evidence_en": "She got a job in Hamburg.",
+  "why": "Sie zieht wegen einer Stelle (Arbeit) um, nicht zum Studieren. Falsch.",
+  "why_en": "She's moving for a job, not to study. False.",
+  "trap": "„Hamburg“ stimmt, aber der Grund ist falsch – „Uni“ kommt erst später bei Kai vor.",
+  "trap_en": "Hamburg is right but the reason is wrong – \"Uni\" only comes up later with Kai.",
+  "question_en": "Sina is moving to Hamburg because she wants to study there."
+ },
+ "H3-2": {
+  "evidence": "der Vermieter hat im August die Nebenkosten erhöht",
+  "evidence_en": "the landlord raised the service charges in August",
+  "why": "Sina zahlt 350, das Zimmer kostet jetzt 380 Euro – also mehr. Richtig.",
+  "why_en": "Sina pays €350, the room now costs €380 – so more. True.",
+  "trap": "Man muss die zwei Zahlen vergleichen: 350 → 380.",
+  "trap_en": "You have to compare the two numbers: 350 → 380.",
+  "question_en": "From November the room is supposed to cost more than before."
+ },
+ "H3-3": {
+  "evidence": "Und das mit dem Alter würde ich rausnehmen.",
+  "evidence_en": "And I'd take out the part about age.",
+  "why": "Kai will das Alter aus der Anzeige streichen = keine Altersgrenze. Richtig.",
+  "why_en": "Kai wants the age limit removed from the ad. True.",
+  "trap": "Lena hat die Altersgrenze geschrieben, Kai ist dagegen – auf die Person achten.",
+  "trap_en": "Lena wrote the age limit; Kai is against it – watch who says what.",
+  "question_en": "Kai doesn't want to name an age limit in the ad."
+ },
+ "H3-4": {
+  "evidence": "Aber ich finde wichtig, dass wir jemanden nehmen, der nicht raucht.",
+  "evidence_en": "But I think it's important that we take someone who doesn't smoke.",
+  "why": "Die neue Person soll gar nicht rauchen. Falsch.",
+  "why_en": "The new person shouldn't smoke at all. False.",
+  "trap": "„Balkon“ kommt vor, aber bei Sina: Ihr Rauchen auf dem Balkon hat genervt.",
+  "trap_en": "\"Balcony\" appears, but about Sina, whose smoking there annoyed them.",
+  "question_en": "The new person may smoke, but only on the balcony."
+ },
+ "H3-5": {
+  "evidence": "Ich dachte, wir machen alles an einem Abend.",
+  "evidence_en": "I thought we'd do everything in one evening.",
+  "why": "Alle Besichtigungen an einem Abend (Donnerstag). Falsch.",
+  "why_en": "All viewings on one evening (Thursday). False.",
+  "trap": "„jeden Abend“ sagt Kai über sein Training, nicht über die Besichtigungen.",
+  "trap_en": "\"Every evening\" is Kai's training, not the viewings.",
+  "question_en": "The viewings take place on several evenings."
+ },
+ "H3-6": {
+  "evidence": "diesmal entscheiden wir zu dritt. Sina soll auch mitreden",
+  "evidence_en": "this time the three of us decide. Sina should have a say too",
+  "why": "„zu dritt“ und „mitreden“ = Sina entscheidet mit. Richtig.",
+  "why_en": "\"The three of us\" and \"have a say\" = Sina co-decides. True.",
+  "trap": "„mitreden“ ist die Umschreibung von „mitentscheiden“.",
+  "trap_en": "\"mitreden\" is the paraphrase of \"mitentscheiden\".",
+  "question_en": "Sina should have a say in choosing the new person."
+ },
+ "H3-7": {
+  "evidence": "Er zahlt die Kaution direkt an Sina",
+  "evidence_en": "He pays the deposit directly to Sina",
+  "why": "Der Vermieter zahlt die Kaution, nicht Lena und Kai. Falsch.",
+  "why_en": "The landlord pays the deposit, not Lena and Kai. False.",
+  "trap": "Kai fragt „Müssen wir das vorstrecken?“ – die Antwort ist „Nein“.",
+  "trap_en": "Kai asks whether they must advance it – the answer is no.",
+  "question_en": "Lena and Kai have to pay Sina back the deposit."
+ },
+ "H4-1": {
+  "evidence": "Wir haben Bauland günstig an junge Familien verkauft, unter der Bedingung, dass sie innerhalb von drei Jahren bauen und selbst dort wohnen.",
+  "evidence_en": "We sold building land cheaply to young families on condition that they build within three years and live there themselves.",
+  "why": "Das sagt der Bürgermeister Petersen (b).",
+  "why_en": "Mayor Petersen says this (b).",
+  "trap": "„günstig“ = „billig“, „unter der Bedingung“ = „wenn“.",
+  "trap_en": "\"günstig\" = cheap, \"on condition that\" = if.",
+  "question_en": "The municipality sells plots of land cheaply if the buyers live there themselves."
+ },
+ "H4-2": {
+  "evidence": "Wer aufs Land zieht, der braucht in der Regel zwei Autos.",
+  "evidence_en": "Anyone who moves to the countryside usually needs two cars.",
+  "why": "Das sagt die Stadtplanerin Krüger (a).",
+  "why_en": "The planner Krüger says this (a).",
+  "trap": "„in der Regel“ = „meistens“. Petersen widerspricht danach nur teilweise.",
+  "trap_en": "\"in der Regel\" = usually. Petersen only partly disagrees afterwards.",
+  "question_en": "In the countryside a family usually needs two cars."
+ },
+ "H4-3": {
+  "evidence": "Bei uns gibt es seit zwei Jahren einen Bürgerbus, der von Freiwilligen gefahren wird.",
+  "evidence_en": "We've had a community bus driven by volunteers for two years.",
+  "why": "Das sagt Petersen über seine Gemeinde (b).",
+  "why_en": "Petersen, about his village (b).",
+  "trap": "Krüger spricht danach auch über den Bürgerbus, aber kritisch („ersetzt keine S-Bahn“).",
+  "trap_en": "Krüger mentions the bus too, but critically (\"no substitute for a train\").",
+  "question_en": "In the municipality, volunteers drive a bus."
+ },
+ "H4-4": {
+  "evidence": "ich bin selbst in einem Dorf aufgewachsen und bin mit achtzehn so schnell wie möglich in die Stadt gezogen",
+  "evidence_en": "I grew up in a village myself and moved to the city as fast as I could at eighteen",
+  "why": "Das erzählt der Moderator über sich selbst (mod).",
+  "why_en": "The moderator says this about himself (mod).",
+  "trap": "Signal: „Ich muss gestehen … ich bin selbst“ – der Moderator spricht persönlich.",
+  "trap_en": "Signal: \"I must admit … I myself\" – the moderator speaking personally.",
+  "question_en": "I moved from the village to the city as a young person."
+ },
+ "H4-5": {
+  "evidence": "Auch in der Stadt gibt es Nachbarschaft, man muss sie nur organisieren.",
+  "evidence_en": "There's neighbourliness in the city too; you just have to organise it.",
+  "why": "Das sagt Krüger (a).",
+  "why_en": "Krüger says this (a).",
+  "trap": "Petersen lobt die Nachbarschaft auf dem Land – Krüger widerspricht ihm genau hier.",
+  "trap_en": "Petersen praises village neighbours; Krüger disagrees at exactly this point.",
+  "question_en": "You can have good neighbourliness in the city too, if you organise it."
+ },
+ "H4-6": {
+  "evidence": "Die Gemeinde hat ihr die Praxisräume kostenlos zur Verfügung gestellt.",
+  "evidence_en": "The municipality provided her with the practice rooms free of charge.",
+  "why": "Das sagt Petersen (b).",
+  "why_en": "Petersen says this (b).",
+  "trap": "„zur Verfügung gestellt“ = „überlassen“.",
+  "trap_en": "\"zur Verfügung gestellt\" = \"überlassen\" (made available).",
+  "question_en": "The municipality gave a doctor the practice rooms free of charge."
+ },
+ "H4-7": {
+  "evidence": "Wenn eine Stadt selbst Wohnungen baut, kann sie auch die Miete bestimmen.",
+  "evidence_en": "If a city builds flats itself, it can also set the rent.",
+  "why": "Das sagt Krüger (a).",
+  "why_en": "Krüger says this (a).",
+  "trap": "Petersen sagt danach „Da sind wir uns einig“ – er stimmt zu, aber die Aussage kommt von Krüger.",
+  "trap_en": "Petersen then agrees, but the statement is Krüger's.",
+  "question_en": "Cities should build flats themselves in order to control rents."
+ },
+ "H4-8": {
+  "evidence": "Heute, mit zwei Kindern, überlege ich zum ersten Mal, ob ich wieder zurückgehen soll.",
+  "evidence_en": "Today, with two children, I'm considering for the first time whether to go back.",
+  "why": "Das sagt der Moderator (mod).",
+  "why_en": "The moderator says this (mod).",
+  "trap": "„überlege“ = „denke darüber nach“.",
+  "trap_en": "\"überlege\" = \"I'm thinking about it\".",
+  "question_en": "I'm thinking about moving back to the countryside with my family."
+ },
+ "L1-1": {
+  "evidence": "haben deshalb keine Umzugsfirma beauftragt, sondern nur einen Transporter gemietet",
+  "evidence_en": "so we didn't hire a removal company but only rented a van",
+  "why": "Sie hatten keine Firma, nur einen gemieteten Transporter. Falsch.",
+  "why_en": "They didn't pay a company, they only rented a van. False.",
+  "trap": "„Beim nächsten Mal zahlen wir lieber für Profis“ – das ist ein Plan für die Zukunft, nicht dieser Umzug.",
+  "trap_en": "\"Next time we'd rather pay professionals\" is a future plan, not what happened.",
+  "question_en": "The family paid a company for the move."
+ },
+ "L1-2": {
+  "evidence": "Am Ende haben wir fast zwölf Stunden gebraucht",
+  "evidence_en": "In the end it took us almost twelve hours",
+  "why": "„anstrengender, als wir gedacht hatten“ + zwölf Stunden = länger als erwartet. Richtig.",
+  "why_en": "\"More exhausting than we thought\" plus twelve hours = longer than expected. True.",
+  "trap": "Umschreibung: „als wir gedacht hatten“ ↔ „als erwartet“.",
+  "trap_en": "Paraphrase: \"than we had thought\" ↔ \"than expected\".",
+  "question_en": "The move took longer than expected."
+ },
+ "L1-3": {
+  "evidence": "aber die Miete ist nur halb so hoch wie in Frankfurt",
+  "evidence_en": "but the rent is only half as high as in Frankfurt",
+  "why": "Halb so hoch = deutlich niedriger. Richtig.",
+  "why_en": "Half as high = considerably lower. True.",
+  "trap": "„älter, als wir es uns gewünscht hatten“ im selben Satz ist negativ – aber es geht um das Haus, nicht die Miete.",
+  "trap_en": "The negative \"older than we wished\" in the same sentence is about the house, not the rent.",
+  "question_en": "The new rent is considerably lower than in Frankfurt."
+ },
+ "L1-4": {
+  "evidence": "Die Heizung muss allerdings bald erneuert werden",
+  "evidence_en": "The heating will have to be replaced soon, though",
+  "why": "Wenn sie erneuert werden muss, ist sie alt, nicht neu. Falsch.",
+  "why_en": "If it has to be replaced, it's old, not new. False.",
+  "trap": "„erneuert“ enthält „neu“ – aber es heißt „wird neu gemacht“, also ist sie jetzt alt.",
+  "trap_en": "\"erneuert\" contains \"neu\", but it means it will be renewed – so it's old now.",
+  "question_en": "The heating in the house is new."
+ },
+ "L1-5": {
+  "evidence": "In Frankfurt kannte ich nach fünf Jahren nicht einmal den Namen der Familie unter uns.",
+  "evidence_en": "In Frankfurt, after five years I didn't even know the name of the family below us.",
+  "why": "Sie kannte nicht einmal die Namen – also kein enger Kontakt. Falsch.",
+  "why_en": "She didn't even know their names – so no close contact. False.",
+  "trap": "Der enge Kontakt ist im Dorf (Frau Kessler, Kuchen), nicht in Frankfurt.",
+  "trap_en": "The close contact is in the village (Frau Kessler's cake), not Frankfurt.",
+  "question_en": "In Frankfurt the author was in close contact with her neighbours."
+ },
+ "L1-6": {
+  "evidence": "Mein Mann fährt jetzt jeden Tag fünfzig Minuten zur Arbeit, früher waren es zwanzig.",
+  "evidence_en": "My husband now drives fifty minutes to work every day; it used to be twenty.",
+  "why": "50 statt 20 Minuten = länger als früher. Richtig.",
+  "why_en": "50 instead of 20 minutes = longer than before. True.",
+  "trap": "Beide Zahlen stehen im Text – man muss sie vergleichen.",
+  "trap_en": "Both numbers are in the text – you have to compare them.",
+  "question_en": "The author's husband now needs longer to get to work than before."
+ },
+ "L2-1": {
+  "evidence": "Für jeden Quadratmeter Wohnfläche hilft der Student oder die Studentin eine Stunde pro Monat im Haushalt.",
+  "evidence_en": "For every square metre of living space, the student helps in the household for one hour a month.",
+  "why": "Statt Miete helfen sie im Haushalt: „Miete zahlt man keine“ (b).",
+  "why_en": "They help in the household instead of paying rent: \"no rent is paid\" (b).",
+  "trap": "a) Es gibt keine niedrige Miete, nur Nebenkosten. c) Die Rollen sind vertauscht.",
+  "trap_en": "a) There's no low rent, only utilities. c) The roles are reversed.",
+  "question_en": "With 'Wohnen für Hilfe' (living for help) …",
+  "options_en": [
+   "the students pay a low rent to the older people.",
+   "the students help with the household instead of paying rent.",
+   "older people help students look for a flat."
+  ]
+ },
+ "L2-2": {
+  "evidence": "Am Anfang hatte ich Angst, dass ich keine Freiheit mehr habe",
+  "evidence_en": "At first I was afraid I wouldn't have any freedom any more",
+  "why": "„Angst“ = „befürchtet“ (a).",
+  "why_en": "\"Angst\" = \"feared\" (a).",
+  "trap": "b) Sie frühstücken nur „manchmal“, nicht jeden Tag. c) „überhaupt nicht neugierig“ – das Gegenteil.",
+  "trap_en": "b) Only \"sometimes\", not every day. c) \"not nosy at all\" – the opposite.",
+  "question_en": "Jana Feld …",
+  "options_en": [
+   "was afraid at first that she would have too little freedom.",
+   "has breakfast with Mrs Brandt every day.",
+   "finds Mrs Brandt too nosy."
+  ]
+ },
+ "L2-3": {
+  "evidence": "Die Beraterinnen des Projekts führen deshalb vor jedem Einzug ein langes Gespräch mit beiden Seiten.",
+  "evidence_en": "So the project's advisers have a long conversation with both sides before every move-in.",
+  "why": "Vor dem Einzug gibt es ein Gespräch (c).",
+  "why_en": "There's a conversation before moving in (c).",
+  "trap": "a) „Pflege gehört ausdrücklich nicht“ dazu. b) Ein Viertel endet im ersten halben Jahr.",
+  "trap_en": "a) Care is explicitly excluded. b) A quarter end within six months.",
+  "question_en": "What do you learn about the project?",
+  "options_en": [
+   "The students also have to care for the older people.",
+   "All living partnerships last at least six months.",
+   "Before moving in there is a conversation with both sides."
+  ]
+ },
+ "L2-4": {
+  "evidence": "Die Stadt Potsdam bietet deshalb seit zwei Jahren eine kostenlose Nachbarschaftsmediation an.",
+  "evidence_en": "The city of Potsdam has therefore been offering free neighbourhood mediation for two years.",
+  "why": "kostenlos = für die Nachbarn kostenlos (b).",
+  "why_en": "Free of charge (b).",
+  "trap": "c) Die Stadt bietet sie an, nicht ein Gericht – das Gericht ist die teure Alternative. a) Das Gericht dauert oft Monate.",
+  "trap_en": "c) The city offers it, not a court – the court is the expensive alternative. a) Court takes months.",
+  "question_en": "The mediation in Potsdam …",
+  "options_en": [
+   "takes longer than a court case.",
+   "is free for the neighbours.",
+   "is offered by a court."
+  ]
+ },
+ "L2-5": {
+  "evidence": "Die Leute fühlen sich nicht respektiert.",
+  "evidence_en": "People don't feel respected.",
+  "why": "Es geht meistens um fehlenden Respekt (a).",
+  "why_en": "It's usually about a lack of respect (a).",
+  "trap": "b) „gar nicht um den Grill oder den Zaun“ – der Satz verneint genau das.",
+  "trap_en": "b) \"not about the barbecue or the fence at all\" – the text denies exactly this.",
+  "question_en": "Mrs Albers thinks that most disputes …",
+  "options_en": [
+   "are about a lack of respect.",
+   "are really about the barbecue or the fence.",
+   "are about music that is too loud."
+  ]
+ },
+ "L2-6": {
+  "evidence": "In der Mediation einigte man sich auf feste Grilltage: Mittwoch und Samstag.",
+  "evidence_en": "In mediation they agreed on fixed barbecue days: Wednesday and Saturday.",
+  "why": "feste Grilltage = bestimmte Tage (c).",
+  "why_en": "Fixed barbecue days = certain days (c).",
+  "trap": "a) Das Gegenteil: „Heute grüßt man sich wieder.“ b) Ein Anwalt ist nur Albers' allgemeiner Rat.",
+  "trap_en": "a) The opposite: they greet each other again. b) The lawyer is only Albers' general advice.",
+  "question_en": "The Öztürk family and Mr Lange …",
+  "options_en": [
+   "no longer greet each other in the stairwell.",
+   "ended up bringing in a lawyer.",
+   "agreed on certain days for barbecuing."
+  ]
+ },
+ "L3-1": {
+  "evidence": "Zimmer (14 m²) in netter 3er-WG nahe Uni, 260 € inklusive Nebenkosten und Internet.",
+  "evidence_en": "Room (14 m²) in a nice 3-person flatshare near the university, €260 including utilities and internet.",
+  "why": "WG-Zimmer für Studierende, günstig – passt zu Lea (E).",
+  "why_en": "A cheap flatshare room for students – fits Lea (E).",
+  "trap": "D und G sind ganze Wohnungen und teurer.",
+  "trap_en": "D and G are whole flats and more expensive.",
+  "question_en": "Lea is studying in Leipzig and is looking for a room in a flatshare, but she has little money."
+ },
+ "L3-2": {
+  "evidence": "Zwei kräftige Helfer und ein Transporter (3,5 t) für 45 € pro Stunde.",
+  "evidence_en": "Two strong helpers and a van (3.5 t) for €45 an hour.",
+  "why": "Helfer und Transporter für den Umzug (B).",
+  "why_en": "Helpers and a van for the move (B).",
+  "trap": "J holt Möbel ab, aber nur zum Kaufen, nicht für einen Umzug.",
+  "trap_en": "J collects furniture, but only to buy it, not to move it.",
+  "question_en": "The Nowak family is moving next month and needs help transporting the furniture."
+ },
+ "L3-3": {
+  "evidence": "Probleme mit Nebenkosten, Kündigung oder Mieterhöhung? Unsere Juristen beraten Mitglieder persönlich und per Telefon.",
+  "evidence_en": "Problems with utility bills, notice or rent increases? Our lawyers advise members in person and by phone.",
+  "why": "Beratung zu Nebenkosten (H).",
+  "why_en": "Advice on utility bills (H).",
+  "trap": "Keine andere Anzeige bietet Beratung.",
+  "trap_en": "No other ad offers advice.",
+  "question_en": "Mr Yilmaz is in trouble with his landlord over the utility bill and needs advice."
+ },
+ "L3-4": {
+  "evidence": "Erdgeschoss, 78 m², ruhige Lage am Stadtrand, 850 € warm. Haustiere ausdrücklich willkommen!",
+  "evidence_en": "Ground floor, 78 m², quiet location on the edge of town, €850 incl. heating. Pets explicitly welcome!",
+  "why": "Garten + Haustiere erlaubt (D).",
+  "why_en": "Garden + pets allowed (D).",
+  "trap": "G hat einen Balkon, aber „leider keine Haustiere“. C ist nur eine Ferienwohnung.",
+  "trap_en": "G has a balcony but no pets. C is only a holiday flat.",
+  "question_en": "Sarah and Tom are looking for a flat with a garden where pets are allowed."
+ },
+ "L3-5": {
+  "evidence": "Wir kaufen gebrauchte Sofas, Schränke, Tische und Betten und holen sie kostenlos bei Ihnen ab.",
+  "evidence_en": "We buy used sofas, wardrobes, tables and beds and collect them from you free of charge.",
+  "why": "Verkaufen + Abholung ohne eigenes Auto (J).",
+  "why_en": "Selling + collection, no car needed (J).",
+  "trap": "B transportiert Möbel, kauft sie aber nicht.",
+  "trap_en": "B moves furniture but doesn't buy it.",
+  "question_en": "Miriam is moving to Hamburg and wants to sell her old furniture, but she doesn't have a car."
+ },
+ "L3-6": {
+  "evidence": "Öffnungszeiten Montag bis Freitag 9–18 Uhr, am Wochenende geschlossen.",
+  "evidence_en": "Opening hours Monday to Friday 9–6, closed at weekends.",
+  "why": "A verleiht Bohrmaschinen, hat aber am Wochenende zu. Er braucht sie am Sonntag – also keine Anzeige (0).",
+  "why_en": "A lends drills but is closed at weekends; he needs it on Sunday – so no ad fits (0).",
+  "trap": "A passt fast perfekt („Bohrmaschine“, „leihen“) – der Tag macht den Unterschied.",
+  "trap_en": "A almost fits perfectly – the day is what rules it out.",
+  "question_en": "Mr Berger wants to put up shelves on Sunday and needs a drill at short notice."
+ },
+ "L3-7": {
+  "evidence": "Alle aus dem Viertel sind willkommen, besonders Menschen, die neu oder allein sind.",
+  "evidence_en": "Everyone from the neighbourhood is welcome, especially people who are new or on their own.",
+  "why": "Kontakt im eigenen Stadtteil, für Menschen, die allein sind (F).",
+  "why_en": "Contact in her own neighbourhood for people living alone (F).",
+  "trap": "„Viertel“ = „Stadtteil“.",
+  "trap_en": "\"Viertel\" = \"Stadtteil\" (part of town).",
+  "question_en": "Mrs Petrova is 70, lives alone and would like more contact with people in her part of town."
+ },
+ "L4-1": {
+  "evidence": "Ein Tier ist kein Grund, jemandem eine Wohnung zu verweigern.",
+  "evidence_en": "An animal is no reason to refuse someone a flat.",
+  "why": "Sie ist dafür, dass Tiere erlaubt sind (Ja).",
+  "why_en": "She's in favour of allowing pets (Ja).",
+  "trap": "Kein Trick – klare Meinung.",
+  "trap_en": "No trick – a clear opinion.",
+  "question_en": "Nadine, Kiel: My dog is part of the family. Even so, for a whole year I didn't find a flat, just because almost every ad said \"no pets\". That isn't fair. An animal is no reason to refuse someone a flat."
+ },
+ "L4-2": {
+  "evidence": "Genau deshalb muss ein Vermieter Tiere verbieten dürfen.",
+  "evidence_en": "That's exactly why a landlord must be allowed to ban animals.",
+  "why": "Er will Verbote erlauben (Nein).",
+  "why_en": "He wants bans to be possible (Nein).",
+  "trap": "Der letzte Satz entscheidet.",
+  "trap_en": "The last sentence decides it.",
+  "question_en": "Holger, Bochum: I live above a family with three cats. The stairwell stinks, and in summer the flies come in through the window. The landlord told me he couldn't do anything. That's exactly why a landlord must be allowed to ban animals."
+ },
+ "L4-3": {
+  "evidence": "Aber warum sollte ich entscheiden, was in der Wohnung nebenan passiert?",
+  "evidence_en": "But why should I decide what happens in the flat next door?",
+  "why": "Sie hat selbst keine Tiere, ist aber dafür, dass andere sie haben dürfen (Ja).",
+  "why_en": "She has no pets herself but thinks others should be allowed them (Ja).",
+  "trap": "„keine Haustiere und will auch keine“ klingt nach Nein – es ist nur ihre persönliche Situation.",
+  "trap_en": "\"No pets and don't want any\" sounds like Nein – it's only her personal situation.",
+  "question_en": "Aylin, Nürnberg: I don't have any pets myself and don't want any. But why should I decide what happens in the flat next door? As long as the dog doesn't bark all night, it's none of my business. And really none of the landlord's either."
+ },
+ "L4-4": {
+  "evidence": "Deshalb muss er das letzte Wort haben.",
+  "evidence_en": "That's why he must have the final say.",
+  "why": "Der Vermieter soll entscheiden = nicht in jeder Wohnung erlaubt (Nein).",
+  "why_en": "The landlord should decide = not allowed in every flat (Nein).",
+  "trap": "Er beginnt mit Verständnis („Ich verstehe …“), dann „Trotzdem“ – das Signal für seine echte Meinung.",
+  "trap_en": "He opens sympathetically, then \"Trotzdem\" signals his real view.",
+  "question_en": "Rolf, Kassel: I understand that animals are important to many people, especially older people. Even so: whoever rents out a flat is responsible for the building. Damaged floors, smells, the neighbours' allergies – in the end the landlord pays. So he has to have the final say."
+ },
+ "L4-5": {
+  "evidence": "Ein Verbot wäre grausam, vor allem für alte Menschen, die allein wohnen.",
+  "evidence_en": "A ban would be cruel, especially for older people who live alone.",
+  "why": "Sie ist gegen Verbote (Ja).",
+  "why_en": "She's against bans (Ja).",
+  "trap": "„gegen ein Verbot“ = „für die Erlaubnis“.",
+  "trap_en": "Against a ban = for allowing pets.",
+  "question_en": "Sofia, Erfurt: Studies show that people with pets are healthier and less lonely. My grandma practically lives only for her cat. A ban would be cruel, especially for old people who live alone."
+ },
+ "L4-6": {
+  "evidence": "In einem Mietshaus mit acht Parteien müssen alle Rücksicht nehmen.",
+  "evidence_en": "In a block of flats with eight households, everyone has to be considerate.",
+  "why": "Wer ein Tier will, soll ein Haus kaufen – in Mietwohnungen nein (Nein).",
+  "why_en": "Want a pet? Buy a house – not in rentals (Nein).",
+  "trap": "Die Geschichte mit dem Hund ist das Beispiel für seine Meinung.",
+  "trap_en": "The dog story is his example, not a separate point.",
+  "question_en": "Benjamin, Ulm: Anyone who absolutely wants an animal should buy a house with a garden. In a block of flats with eight households everyone has to be considerate. In our building the dog from the second floor bit the neighbour's cat – since then nobody talks to anyone."
+ },
+ "L4-7": {
+  "evidence": "Ein generelles Verbot ist einfach Unsinn.",
+  "evidence_en": "A general ban is simply nonsense.",
+  "why": "Als Vermieterin ist sie trotzdem dafür (Ja).",
+  "why_en": "Even as a landlord she's in favour (Ja).",
+  "trap": "„Ich bin selbst Vermieterin“ lässt Nein erwarten – ihre Erfahrung ist aber positiv.",
+  "trap_en": "Being a landlord suggests Nein, but her experience is positive.",
+  "question_en": "Charlotte, Trier: I'm a landlord myself and have had tenants with dogs for ten years. Never a problem, not once. Anyone who handles their animal responsibly is usually a reliable tenant too. A general ban is simply nonsense."
+ },
+ "L5-1": {
+  "evidence": "An Sonn- und Feiertagen gilt die Ruhezeit den ganzen Tag.",
+  "evidence_en": "On Sundays and public holidays the quiet period applies all day.",
+  "why": "Sonntag = den ganzen Tag Ruhe (b).",
+  "why_en": "Sunday = quiet all day (b).",
+  "trap": "a) 13–15 Uhr gilt nur werktags. c) 22 Uhr ist eine Werktagsregel.",
+  "trap_en": "a) 1–3 pm is weekdays only. c) 10 pm is a weekday rule.",
+  "question_en": "On Sunday …",
+  "options_en": [
+   "the quiet hours only apply at midday.",
+   "there has to be quiet all day.",
+   "you may play music until 10 pm."
+  ]
+ },
+ "L5-2": {
+  "evidence": "Fahrräder gehören ausschließlich in den Fahrradkeller.",
+  "evidence_en": "Bicycles belong exclusively in the bicycle cellar.",
+  "why": "„ausschließlich“ = nur dort (a).",
+  "why_en": "\"ausschließlich\" = only there (a).",
+  "trap": "b) Im Eingangsbereich dürfen nur Kinderwagen stehen.",
+  "trap_en": "b) Only prams may stand in the entrance.",
+  "question_en": "Bicycles …",
+  "options_en": [
+   "have to be taken to the bicycle cellar.",
+   "may stand in the entrance area.",
+   "may stand in the stairwell if they don't bother anyone."
+  ]
+ },
+ "L5-3": {
+  "evidence": "Sperrmüll (alte Möbel, Matratzen usw.) müssen die Mieter selbst bei der Stadt anmelden.",
+  "evidence_en": "Tenants must register bulky waste (old furniture, mattresses, etc.) with the city themselves.",
+  "why": "Selbst bei der Stadt anmelden = sich an die Stadt wenden (c).",
+  "why_en": "Register it with the city yourself (c).",
+  "trap": "a) Genau das ist verboten. b) Der Hausmeister kommt nur beim Garten vor.",
+  "trap_en": "a) That's exactly what's forbidden. b) The caretaker is only mentioned for garden parties.",
+  "question_en": "Anyone who wants to get rid of old furniture …",
+  "options_en": [
+   "puts it next to the bins in the courtyard.",
+   "informs the caretaker.",
+   "has to contact the city themselves."
+  ]
+ },
+ "L5-4": {
+  "evidence": "Grillen mit Holzkohle ist auf den Balkonen nicht gestattet; ein Elektrogrill darf benutzt werden.",
+  "evidence_en": "Charcoal grilling is not allowed on balconies; an electric grill may be used.",
+  "why": "Nur mit Elektrogrill (a).",
+  "why_en": "Only with an electric grill (a).",
+  "trap": "c) 22 Uhr gilt für Feiern im Garten, und Holzkohle ist verboten.",
+  "trap_en": "c) 10 pm is for garden parties, and charcoal is banned.",
+  "question_en": "On the balcony …",
+  "options_en": [
+   "you may only grill with an electric grill.",
+   "grilling is completely banned.",
+   "you may grill with charcoal until 10 pm."
+  ]
+ }
+}

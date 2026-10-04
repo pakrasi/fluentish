@@ -1,0 +1,524 @@
+[
+{
+"id": "ENG_CHUNK_1001",
+"t": "[Verbo] ha i suoi vantaggi / Non è male [verbo]",
+"ex": "Restare a casa a Capodanno ha i suoi vantaggi."
+},
+{
+"id": "ENG_CHUNK_1002",
+"t": "Alla fine dipende da [nome] / Tutto si riduce a [nome]",
+"ex": "Per me, alla fine dipende dal prezzo."
+},
+{
+"id": "ENG_CHUNK_1003",
+"t": "Non prendertela con [persona]",
+"ex": "Lo so che hai avuto una brutta giornata, ma non prendertela con me."
+},
+{
+"id": "ENG_CHUNK_1004",
+"t": "È considerato maleducato [verbo] / È da maleducati [verbo]",
+"ex": "In alcuni paesi è da maleducati mangiare mentre si cammina."
+},
+{
+"id": "ENG_CHUNK_1005",
+"t": "Mi piace pensare che [congiuntivo]",
+"ex": "Mi piace pensare di essere un discreto cuoco.",
+"n": "Pensare che + congiuntivo; same subject: pensare DI + infinito."
+},
+{
+"id": "ENG_CHUNK_1006",
+"t": "Non esiste [nome]",
+"ex": "Non esiste l'appartamento perfetto."
+},
+{
+"id": "ENG_CHUNK_1007",
+"t": "Non farti abbattere da [nome] / Non prendertela per [nome]",
+"ex": "Non farti abbattere da una recensione negativa."
+},
+{
+"id": "ENG_CHUNK_1008",
+"t": "Perché mai [persona] dovrebbe [verbo]?",
+"ex": "Perché mai dovrebbe mentire su una cosa così piccola?"
+},
+{
+"id": "ENG_CHUNK_1009",
+"t": "Cosa ti impedisce di [verbo]? / Chi te lo fa fare di non [verbo]?",
+"ex": "Odi il tuo lavoro. Cosa ti impedisce di cercarne un altro?"
+},
+{
+"id": "ENG_CHUNK_1010",
+"t": "Che fine ha fatto [nome]?",
+"ex": "Che fine ha fatto quel tizio con cui lavoravi?"
+},
+{
+"id": "ENG_CHUNK_1011",
+"t": "Hai presente [nome] di cui ti ho parlato?",
+"ex": "Hai presente quel bar di cui ti ho parlato? Ha chiuso.",
+"n": "'Hai presente...?' is the go-to shared-knowledge opener."
+},
+{
+"id": "ENG_CHUNK_1012",
+"t": "Quanto a [nome], [frase] / Per [nome], [frase]",
+"ex": "Per la cena, pensavo di ordinare qualcosa."
+},
+{
+"id": "ENG_CHUNK_1013",
+"t": "Che coincidenza che tu nomini [nome]",
+"ex": "Che coincidenza che tu nomini Napoli. Ci vado la settimana prossima.",
+"n": "Che coincidenza che + congiuntivo: nomini."
+},
+{
+"id": "ENG_CHUNK_1014",
+"t": "Se mai passi da [nome], [frase]",
+"ex": "Se mai passi da Bologna, devi venire a stare da noi."
+},
+{
+"id": "ENG_CHUNK_1015",
+"t": "È incredibile come [frase]",
+"ex": "È incredibile come crescono in fretta i bambini."
+},
+{
+"id": "ENG_CHUNK_1016",
+"t": "Non ti sto chiedendo di [verbo]",
+"ex": "Non ti sto chiedendo di cucinare tutte le sere, solo una volta a settimana."
+},
+{
+"id": "ENG_CHUNK_1017",
+"t": "Che probabilità c'erano che [congiuntivo]?",
+"ex": "Che probabilità c'erano che finissimo sullo stesso volo?",
+"n": "Congiuntivo imperfetto: finissimo. Or simply 'Ma guarda che caso!'."
+},
+{
+"id": "ENG_CHUNK_1018",
+"t": "Non riesco a credere a [nome] / Ancora non mi capacito di [nome]",
+"ex": "Non mi capacito della vista dal tuo balcone."
+},
+{
+"id": "ENG_CHUNK_1019",
+"t": "Avresti dovuto vedere [nome]",
+"ex": "Avresti dovuto vedere la faccia che ha fatto."
+},
+{
+"id": "ENG_CHUNK_1020",
+"t": "Quanto è [aggettivo]? / Troppo [aggettivo]!",
+"ex": "Ci hanno dato la camera superiore gratis. Troppo bello!",
+"n": "'Quanto è figo?' also works among young speakers."
+},
+{
+"id": "ENG_CHUNK_1021",
+"t": "Bisogna essere [aggettivo] per [verbo]",
+"ex": "Bisogna essere matti per guidare con questa neve."
+},
+{
+"id": "ENG_CHUNK_1022",
+"t": "Di' quello che vuoi su [persona], ma [frase]",
+"ex": "Di' quello che vuoi su mio zio, ma quando hai bisogno lui c'è sempre.",
+"n": "Also 'Sarà quel che sarà, ma...'."
+},
+{
+"id": "ENG_CHUNK_1023",
+"t": "Si è arrivati al punto che [frase]",
+"ex": "Si è arrivati al punto che non riuscivo più a dormire."
+},
+{
+"id": "ENG_CHUNK_1024",
+"t": "Ero a metà di [nome] quando [frase] / Stavo [gerundio] quando [frase]",
+"ex": "Stavo preparando la cena quando è andata via la corrente.",
+"n": "Imperfetto/stavo + gerundio for the background, passato prossimo for the interruption."
+},
+{
+"id": "ENG_CHUNK_1025",
+"t": "Ne ho sentito parlare bene di [nome] / Mi hanno parlato bene di [nome]",
+"ex": "Mi hanno parlato bene di quel thailandese in via Roma."
+},
+{
+"id": "ENG_CHUNK_1026",
+"t": "È chiedere troppo [nome]?",
+"ex": "È chiedere troppo un po' di silenzio la sera?"
+},
+{
+"id": "ENG_CHUNK_1027",
+"t": "[persona] voleva sapere [frase]",
+"ex": "Mia madre voleva sapere quando vieni a trovarla."
+},
+{
+"id": "ENG_CHUNK_1028",
+"t": "[persona] mi fa: [frase] / [persona] tipo: [frase]",
+"ex": "Allora gliel'ho detto, e lui mi fa: perché non me l'hai detto prima?",
+"n": "'Mi fa' (he goes) is the standard casual quotative."
+},
+{
+"id": "ENG_CHUNK_1029",
+"t": "Si dice che [congiuntivo] / Gira voce che [congiuntivo]",
+"ex": "Gira voce che venerdì l'ufficio chiuda prima.",
+"n": "Hearsay takes congiuntivo: chiuda."
+},
+{
+"id": "ENG_CHUNK_1030",
+"t": "Sono riuscito a far [verbo] [persona] / Ho convinto [persona] a [verbo]",
+"ex": "Ho convinto mio padre a farsi vedere dal medico per la schiena."
+},
+{
+"id": "ENG_CHUNK_1031",
+"t": "Non mi aspettavo che [persona] [congiuntivo]",
+"ex": "Non mi aspettavo che venisse così tanta gente.",
+"n": "Aspettarsi che + congiuntivo imperfetto: venisse."
+},
+{
+"id": "ENG_CHUNK_1032",
+"t": "Non riesco a immaginare di [verbo] / Non mi ci vedo a [verbo]",
+"ex": "Non mi ci vedo a vivere senza macchina qui."
+},
+{
+"id": "ENG_CHUNK_1033",
+"t": "[nome] non ha niente a che vedere con [nome]",
+"ex": "La pasta fatta in casa non ha niente a che vedere con quella confezionata."
+},
+{
+"id": "ENG_CHUNK_1034",
+"t": "Più [verbo], più [verbo]",
+"ex": "Più ne leggo, più mi preoccupo.",
+"n": "No articles: 'più... più...', not 'il più... il più'."
+},
+{
+"id": "ENG_CHUNK_1035",
+"t": "Un conto è [verbo], un altro è [verbo]",
+"ex": "Un conto è comprare un tapis roulant, un altro è usarlo davvero."
+},
+{
+"id": "ENG_CHUNK_1036",
+"t": "porsi un obiettivo / darsi un obiettivo",
+"ex": "Mi sono dato l'obiettivo di correre tre volte a settimana."
+},
+{
+"id": "ENG_CHUNK_1037",
+"t": "dare l'esempio",
+"ex": "Sei il più grande, quindi devi dare l'esempio."
+},
+{
+"id": "ENG_CHUNK_1038",
+"t": "fare pressione su [persona] / mettere pressione a [persona]",
+"ex": "I miei continuano a mettermi pressione perché compri casa.",
+"n": "'Perché' meaning 'so that' triggers congiuntivo: compri."
+},
+{
+"id": "ENG_CHUNK_1039",
+"t": "mettere [persona] in difficoltà / in imbarazzo",
+"ex": "Per favore, non mettermi in difficoltà davanti a tutti."
+},
+{
+"id": "ENG_CHUNK_1040",
+"t": "lasciare in pace [persona] / andarci piano con [persona]",
+"ex": "Vacci piano con lui, è la sua prima settimana."
+},
+{
+"id": "ENG_CHUNK_1041",
+"t": "prendere in giro [persona] / dare il tormento a [persona]",
+"ex": "I miei amici mi hanno preso in giro per il nuovo taglio."
+},
+{
+"id": "ENG_CHUNK_1042",
+"t": "cedere / arrendersi",
+"ex": "I bambini continuavano a chiedere un cane, e alla fine abbiamo ceduto."
+},
+{
+"id": "ENG_CHUNK_1043",
+"t": "concedere a [persona] il beneficio del dubbio",
+"ex": "Di solito è puntuale, quindi concediamogli il beneficio del dubbio."
+},
+{
+"id": "ENG_CHUNK_1044",
+"t": "fare un complimento a [persona]",
+"ex": "Oggi uno sconosciuto mi ha fatto un complimento per la giacca."
+},
+{
+"id": "ENG_CHUNK_1045",
+"t": "tenere presente [nome] / tenere conto di [nome]",
+"ex": "Tieni presente il budget quando scegli l'hotel."
+},
+{
+"id": "ENG_CHUNK_1046",
+"t": "mantenere un segreto / tenere un segreto",
+"ex": "Sai tenere un segreto? Sono incinta."
+},
+{
+"id": "ENG_CHUNK_1047",
+"t": "stare dietro a [nome] / tenere il passo con [nome]",
+"ex": "Non riesco a stare dietro a tutte le chat di gruppo."
+},
+{
+"id": "ENG_CHUNK_1048",
+"t": "spifferare tutto / vuotare il sacco",
+"ex": "Chi ha spifferato tutto della festa a sorpresa?",
+"n": "'Vuotare il sacco' = confess; 'spifferare' = blab someone else's secret."
+},
+{
+"id": "ENG_CHUNK_1049",
+"t": "tenere traccia di [nome] / tenere il conto di [nome]",
+"ex": "Uso un'app per tenere traccia delle spese."
+},
+{
+"id": "ENG_CHUNK_1050",
+"t": "mantenere la parola",
+"ex": "Ha detto che mi avrebbe ridato i soldi, e ha mantenuto la parola."
+},
+{
+"id": "ENG_CHUNK_1051",
+"t": "fare di tutto per [verbo] / farsi in quattro per [verbo]",
+"ex": "Il personale dell'hotel si è fatto in quattro per aiutarci."
+},
+{
+"id": "ENG_CHUNK_1052",
+"t": "prendere [nome] / andare su [nome]",
+"ex": "Credo che prenderò il pollo."
+},
+{
+"id": "ENG_CHUNK_1053",
+"t": "tornare utile / far comodo",
+"ex": "Tieni il cavo in più, potrebbe tornarti utile."
+},
+{
+"id": "ENG_CHUNK_1054",
+"t": "saltare fuori / capitare un imprevisto",
+"ex": "Scusa, mi è capitato un imprevisto al lavoro, quindi arrivo tardi."
+},
+{
+"id": "ENG_CHUNK_1055",
+"t": "imbattersi in [nome] / trovare per caso [nome]",
+"ex": "Mentre facevo pulizie ho trovato per caso delle vecchie foto."
+},
+{
+"id": "ENG_CHUNK_1056",
+"t": "cogliere [persona] alla sprovvista",
+"ex": "La domanda mi ha colto alla sprovvista."
+},
+{
+"id": "ENG_CHUNK_1057",
+"t": "dare la notizia a [persona]",
+"ex": "Chi lo dice alla nonna?"
+},
+{
+"id": "ENG_CHUNK_1058",
+"t": "rompere il ghiaccio",
+"ex": "Ho fatto una battuta stupida per rompere il ghiaccio."
+},
+{
+"id": "ENG_CHUNK_1059",
+"t": "girarci intorno / menare il can per l'aia",
+"ex": "Smettila di girarci intorno e dimmi cos'è successo."
+},
+{
+"id": "ENG_CHUNK_1060",
+"t": "perdersi [nome]",
+"ex": "Non voglio perdermi i biglietti del concerto."
+},
+{
+"id": "ENG_CHUNK_1061",
+"t": "tenere il posto a [persona]",
+"ex": "Mi tieni il posto? Sto solo parcheggiando."
+},
+{
+"id": "ENG_CHUNK_1062",
+"t": "distinguere [nome] da [nome]",
+"ex": "Non riesco a distinguere un gemello dall'altro."
+},
+{
+"id": "ENG_CHUNK_1063",
+"t": "capire l'antifona",
+"ex": "Continuavo a guardare l'orologio, ma lui non capiva l'antifona."
+},
+{
+"id": "ENG_CHUNK_1064",
+"t": "venire al dunque / mettersi al lavoro",
+"ex": "Ok, ci siamo tutti, veniamo al dunque."
+},
+{
+"id": "ENG_CHUNK_1065",
+"t": "insistere per [verbo]",
+"ex": "Mio padre ha insistito per pagare la cena.",
+"n": "With a different subject: insistere perché + congiuntivo."
+},
+{
+"id": "ENG_CHUNK_1066",
+"t": "Abbia pazienza un attimo / Un attimo di pazienza",
+"ex": "Abbia pazienza un attimo, sto cercando il file.",
+"n": "Lei imperative: abbia; tu: abbi pazienza."
+},
+{
+"id": "ENG_CHUNK_1067",
+"t": "Ci sto arrivando",
+"ex": "Sì, ci sto arrivando. Fammi finire."
+},
+{
+"id": "ENG_CHUNK_1068",
+"t": "In che senso?",
+"ex": "Pensi che sia una cattiva idea? In che senso?"
+},
+{
+"id": "ENG_CHUNK_1069",
+"t": "Può essere più preciso?",
+"ex": "Può essere più preciso? Quale parte non funziona?"
+},
+{
+"id": "ENG_CHUNK_1070",
+"t": "Dove vuoi arrivare? / Che vuoi dire?",
+"ex": "Dove vuoi arrivare? Dillo e basta."
+},
+{
+"id": "ENG_CHUNK_1071",
+"t": "Mi segui?",
+"ex": "Allora giri a sinistra al distributore, poi a destra. Mi segui?"
+},
+{
+"id": "ENG_CHUNK_1072",
+"t": "Adesso sì che ci siamo",
+"ex": "Ok, adesso sì che ci siamo."
+},
+{
+"id": "ENG_CHUNK_1073",
+"t": "tipo / cioè",
+"ex": "Era, tipo, la pizza più buona che abbia mai mangiato.",
+"n": "Superlative + che triggers congiuntivo: abbia mangiato."
+},
+{
+"id": "ENG_CHUNK_1074",
+"t": "Restiamo ognuno della propria idea",
+"ex": "Non ne verremo mai a capo, quindi restiamo ognuno della propria idea."
+},
+{
+"id": "ENG_CHUNK_1075",
+"t": "Non è questo il punto",
+"ex": "Lo so che costava poco, ma non è questo il punto."
+},
+{
+"id": "ENG_CHUNK_1076",
+"t": "È un modo di vedere le cose",
+"ex": "Perdere il lavoro è stata un'occasione per viaggiare? Beh, è un modo di vedere le cose."
+},
+{
+"id": "ENG_CHUNK_1077",
+"t": "Con tutto il rispetto",
+"ex": "Con tutto il rispetto, non credo che Lei abbia letto tutto il rapporto.",
+"n": "Non credo che + congiuntivo: abbia letto."
+},
+{
+"id": "ENG_CHUNK_1078",
+"t": "Non è così semplice",
+"ex": "Licenziarmi e basta? Non è così semplice, devo pagare l'affitto."
+},
+{
+"id": "ENG_CHUNK_1079",
+"t": "Fai presto a dirlo tu / Facile per te",
+"ex": "Rilassati? Fai presto a dirlo tu, non hai un esame domani."
+},
+{
+"id": "ENG_CHUNK_1080",
+"t": "Mi sbagliavo / Ritiro quello che ho detto",
+"ex": "Ah, apre alle nove? Mi sbagliavo."
+},
+{
+"id": "ENG_CHUNK_1081",
+"t": "Sono tutto orecchi",
+"ex": "Hai un piano migliore? Sono tutto orecchi."
+},
+{
+"id": "ENG_CHUNK_1082",
+"t": "Acqua in bocca / Sarò una tomba",
+"ex": "Tranquillo, sarò una tomba.",
+"n": "'Acqua in bocca!' is said TO someone to keep quiet."
+},
+{
+"id": "ENG_CHUNK_1083",
+"t": "È così e basta / Pazienza",
+"ex": "Il volo è di nuovo in ritardo, ma pazienza."
+},
+{
+"id": "ENG_CHUNK_1084",
+"t": "Come vuoi / Fai come ti pare",
+"ex": "Non vuoi la torta? Come vuoi.",
+"n": "'Fai come ti pare' sounds sharper."
+},
+{
+"id": "ENG_CHUNK_1085",
+"t": "Così mi piaci! / Questo è lo spirito giusto",
+"ex": "Riprovi la settimana prossima? Così mi piaci!"
+},
+{
+"id": "ENG_CHUNK_1086",
+"t": "Aspetta e spera / Non ci contare",
+"ex": "Ha detto che richiama, ma non ci contare."
+},
+{
+"id": "ENG_CHUNK_1087",
+"t": "I fatti contano più delle parole",
+"ex": "Continua a dire che aiuterà. Ma contano i fatti, non le parole."
+},
+{
+"id": "ENG_CHUNK_1088",
+"t": "Quello che conta è il pensiero",
+"ex": "La torta si è sfasciata, ma quello che conta è il pensiero."
+},
+{
+"id": "ENG_CHUNK_1089",
+"t": "L'abito non fa il monaco",
+"ex": "Il ristorante sembra malandato, ma l'abito non fa il monaco."
+},
+{
+"id": "ENG_CHUNK_1090",
+"t": "Piove sul bagnato / Le disgrazie non vengono mai sole",
+"ex": "Prima si è rotta la macchina, poi la lavastoviglie. Piove sul bagnato."
+},
+{
+"id": "ENG_CHUNK_1091",
+"t": "Senza contare che / Oltre al fatto che",
+"ex": "È troppo lontano, senza contare che è carissimo."
+},
+{
+"id": "ENG_CHUNK_1092",
+"t": "Già che ci siamo",
+"ex": "Puliamo il garage, e già che ci siamo sistemiamo gli attrezzi."
+},
+{
+"id": "ENG_CHUNK_1093",
+"t": "Tanto per cominciare / Fin dall'inizio",
+"ex": "Ma perché hai accettato di andarci, tanto per cominciare?",
+"n": "No exact equivalent; 'ma poi, perché...' often does the job."
+},
+{
+"id": "ENG_CHUNK_1094",
+"t": "Supponendo che [congiuntivo] / Sempre che [congiuntivo]",
+"ex": "Sempre che il tempo sia buono, partiamo alle otto.",
+"n": "Sempre che / supponendo che trigger congiuntivo: sia."
+},
+{
+"id": "ENG_CHUNK_1095",
+"t": "Di questo passo",
+"ex": "Di questo passo non arriveremo mai prima che faccia buio.",
+"n": "'Prima che' triggers congiuntivo: faccia."
+},
+{
+"id": "ENG_CHUNK_1096",
+"t": "Allo stato attuale / Così come stanno le cose",
+"ex": "Così come stanno le cose, quest'anno non possiamo permetterci una vacanza."
+},
+{
+"id": "ENG_CHUNK_1097",
+"t": "Per lo più / Nel complesso",
+"ex": "Per lo più, i vicini sono molto gentili."
+},
+{
+"id": "ENG_CHUNK_1098",
+"t": "In questo senso",
+"ex": "Il lavoro paga meno, ma è vicino a casa. In questo senso è meglio."
+},
+{
+"id": "ENG_CHUNK_1099",
+"t": "Nel peggiore dei casi / Male che vada",
+"ex": "Male che vada, prendiamo un taxi per tornare."
+},
+{
+"id": "ENG_CHUNK_1100",
+"t": "Un po' perché / In parte perché",
+"ex": "Ho smesso di andare in palestra, un po' perché era diventata carissima."
+}
+]

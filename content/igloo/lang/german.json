@@ -1,0 +1,4551 @@
+{
+ "lang": "german",
+ "name": "German",
+ "native": "Deutsch",
+ "notes": {
+  "variety": "Standard German as spoken in Germany, in the everyday spoken register the Goethe B1 exam expects: Perfekt for the past, du and Sie both shown, no dialect. Austrian and Swiss forms (Grüß Gott, Jänner) are mentioned only where a learner will hear them. Written-formal German appears in the B2 and C1 layers, because that is where a German speaker actually shifts into it.",
+  "turns": "German has no progressive: ich gehe covers both 'I go' and 'I am going', with gerade or jetzt added when it matters. The spoken past is the Perfekt (ich bin gegangen), which also does the job of the English present perfect; the Präteritum (ich ging) is for writing, except that sein, haben and the modals are said in the Präteritum even in speech. The future is usually the present plus a time word (morgen fahre ich); werden + infinitive adds promise, prediction or emphasis. The Plusquamperfekt (ich war gegangen) exists and is used with nachdem and bevor. A perfect continuous does not exist: use the present plus seit (ich wohne seit 2020 hier). Conditional and reported speech use Konjunktiv II (würde, hätte, wäre, könnte) and, in writing, Konjunktiv I.",
+  "wordOrder": "In a main clause the conjugated verb is always in second position, whatever comes first: Morgen fahre ich nach Berlin. Everything else that belongs to the verb (infinitive, participle, separable prefix) goes to the end, forming a bracket: Ich muss morgen früh aufstehen. Coordinating glue (und, aber, oder, denn) takes position zero and changes nothing; subordinating glue (weil, dass, wenn, obwohl) sends the conjugated verb to the end of its clause. A subordinate clause placed first counts as position one, so the main verb follows immediately: Weil es regnet, bleibe ich zu Hause. Adverbs like deshalb, trotzdem, dann take position one and force the subject after the verb. Inside the middle field the order is time, manner, place.",
+  "slotGrammar": "Every noun has a gender (der, die, das) that must be learned with the word, together with its plural. There are four cases: nominative (subject), accusative (direct object, after für, durch, ohne, um, gegen), dative (indirect object, after mit, nach, aus, zu, von, bei, seit), genitive (possession, mostly written). Nine two-way prepositions (in, an, auf, über, unter, vor, hinter, neben, zwischen) take accusative for movement and dative for location: ich gehe ins Kino, ich bin im Kino. Adjectives before a noun take endings that depend on gender, case and the article in front of them. Pronouns change by case: ich, mich, mir; er, ihn, ihm.",
+  "sound": "Long and short vowels are distinct and change meaning (Stadt vs Staat, bitten vs bieten); ü and ö need rounded lips. The letters ch have two sounds, the ich-Laut after front vowels and the Ach-Laut after a, o, u; sch is like English sh. Final b, d, g are devoiced (Tag sounds like tak), r is uvular at the start of a syllable and becomes a weak a-sound at the end (Mutter, der). Word stress falls on the first syllable of native words and on separable prefixes (ÁNrufen), never on inseparable prefixes (verSTÉHen). A glottal stop before vowel-initial words (ein | Apfel) keeps words from running together.",
+  "register": "du (singular) and ihr (plural) are for family, friends, children, students and increasingly colleagues; Sie is for strangers, officials, shops and any adult who has not offered the du. The switch changes the verb (kannst du / können Sie), the possessive (dein / Ihr) and the imperative (Komm! / Kommen Sie!). Greetings shift too: Hallo and Tschüss with du, Guten Tag and Auf Wiedersehen with Sie."
+ },
+ "turnGrid": [
+  {
+   "time": "past",
+   "aspect": "simple",
+   "form": "ich bin gegangen / ich ging",
+   "gloss": "I went",
+   "note": "Spoken German uses the Perfekt (bin gegangen); ging is the written Präteritum."
+  },
+  {
+   "time": "past",
+   "aspect": "progressive",
+   "form": "ich ging gerade / ich war gerade unterwegs",
+   "gloss": "I was going",
+   "note": "No progressive form: Präteritum or Perfekt plus gerade, or a rephrase such as unterwegs sein."
+  },
+  {
+   "time": "past",
+   "aspect": "perfect",
+   "form": "ich war gegangen",
+   "gloss": "I had gone",
+   "note": "Plusquamperfekt: war/hatte + Partizip II. Used with nachdem, bevor and als to order two past events."
+  },
+  {
+   "time": "present",
+   "aspect": "simple",
+   "form": "ich gehe",
+   "gloss": "I go",
+   "note": "The only present tense; it also covers 'I am going' and, with a time word, the future."
+  },
+  {
+   "time": "present",
+   "aspect": "progressive",
+   "form": "ich gehe gerade",
+   "gloss": "I am going (right now)",
+   "note": "No -ing form; gerade or jetzt marks right now. 'Ich bin am Gehen' is colloquial and regional."
+  },
+  {
+   "time": "present",
+   "aspect": "perfect",
+   "form": "ich bin gegangen",
+   "gloss": "I have gone",
+   "note": "The Perfekt is the everyday past, not an English present perfect. 'I have been here since May' is present: ich bin seit Mai hier."
+  },
+  {
+   "time": "future",
+   "aspect": "simple",
+   "form": "ich gehe (morgen) / ich werde gehen",
+   "gloss": "I will go",
+   "note": "Present plus a time word is the default; werde gehen adds a promise, a prediction or formality."
+  },
+  {
+   "time": "future",
+   "aspect": "progressive",
+   "form": "ich gehe dann gerade / ich werde dann gerade gehen",
+   "gloss": "I will be going",
+   "note": "Does not exist as a form; use the present or werden with gerade or dann."
+  },
+  {
+   "time": "future",
+   "aspect": "perfect",
+   "form": "ich werde gegangen sein / bis dahin bin ich gegangen",
+   "gloss": "I will have gone",
+   "note": "Futur II exists but is rare in speech; usually the Perfekt plus bis dahin does the job."
+  }
+ ],
+ "items": [
+  {
+   "id": "F-GREET",
+   "target": "Hallo! / Guten Tag! ... Tschüss! / Auf Wiedersehen!",
+   "gloss": "Hello / Good day ... Bye / Goodbye",
+   "example": {
+    "target": "Guten Morgen, Frau Weber! Wie geht es Ihnen? – Danke, gut. Und Ihnen?",
+    "gloss": "Good morning, Ms Weber! How are you? – Fine, thanks. And you?"
+   },
+   "note": "C-HELLO-BYE plus Wie geht's? (du) or Wie geht es Ihnen? (Sie). In the south you will hear Grüß Gott and Servus.",
+   "star": false
+  },
+  {
+   "id": "F-INTRO",
+   "target": "Ich heiße ___. Ich komme aus ___. Ich bin ___ von Beruf.",
+   "gloss": "My name is ___. I come from ___. I am a ___ by profession.",
+   "example": {
+    "target": "Ich heiße Arjun, ich komme aus Indien und ich arbeite als Krankenpfleger.",
+    "gloss": "I'm Arjun, I come from India and I work as a nurse."
+   },
+   "note": "C-MY-NAME, D-BE, G-FROM, G-AND. Jobs take no article: Ich bin Ingenieur, not ein Ingenieur.",
+   "star": false
+  },
+  {
+   "id": "F-THANK",
+   "target": "Vielen Dank! / Danke schön! – Gern geschehen! / Bitte!",
+   "gloss": "Many thanks! – You're welcome!",
+   "example": {
+    "target": "Vielen Dank für Ihre Hilfe! – Bitte, gern geschehen.",
+    "gloss": "Many thanks for your help! – You're welcome."
+   },
+   "note": "C-PLEASE-THANKS. bitte answers danke as well as meaning please; für + accusative names what you are thanking for.",
+   "star": false
+  },
+  {
+   "id": "F-ASK-PRICE",
+   "target": "Was kostet das? / Wie viel kostet ___?",
+   "gloss": "What does that cost? / How much does ___ cost?",
+   "example": {
+    "target": "Entschuldigung, was kostet der Kaffee? – Drei Euro fünfzig.",
+    "gloss": "Excuse me, what does the coffee cost? – Three euros fifty."
+   },
+   "note": "C-HOW-MUCH, T-WH. Prices are said as Euro plus number with no und: drei Euro fünfzig.",
+   "star": false
+  },
+  {
+   "id": "F-ASK-WAY",
+   "target": "Wo ist ___? / Wie komme ich zu ___?",
+   "gloss": "Where is ___? / How do I get to ___?",
+   "example": {
+    "target": "Entschuldigung, wie komme ich zum Bahnhof? – Immer geradeaus, dann links.",
+    "gloss": "Excuse me, how do I get to the station? – Straight ahead, then left."
+   },
+   "note": "C-SORRY, C-WHERE-IS, T-WH. zu + dative: zum Bahnhof, zur Post. Listen for links, rechts, geradeaus, an der Ampel.",
+   "star": false
+  },
+  {
+   "id": "F-NOT-UNDERSTAND",
+   "target": "Ich verstehe das nicht. / Können Sie das bitte wiederholen?",
+   "gloss": "I don't understand that. / Can you please repeat that?",
+   "example": {
+    "target": "Entschuldigung, ich verstehe das nicht. Können Sie bitte langsamer sprechen?",
+    "gloss": "Sorry, I don't understand. Could you please speak more slowly?"
+   },
+   "note": "C-DONT-UNDERSTAND, C-REPEAT-PLEASE, D-CAN. Add Wie bitte? for 'pardon?'; a bare Was? sounds rude.",
+   "star": true
+  },
+  {
+   "id": "F-LIKE",
+   "target": "Ich mag ___. / Ich ___ gern. / Ich mag ___ nicht.",
+   "gloss": "I like ___. / I like ___-ing. / I don't like ___.",
+   "example": {
+    "target": "Ich esse gern Pizza, aber ich mag keinen Fisch.",
+    "gloss": "I like eating pizza, but I don't like fish."
+   },
+   "note": "D-LIKE, T-NEG, G-BUT. mögen for nouns, verb + gern for activities. Negate a noun with kein, an activity with nicht gern.",
+   "star": false
+  },
+  {
+   "id": "F-WANT",
+   "target": "Ich möchte ___, bitte. / Ich hätte gern ___.",
+   "gloss": "I would like ___, please. / I'd like ___.",
+   "example": {
+    "target": "Ich hätte gern einen Cappuccino und ein Käsebrötchen, bitte.",
+    "gloss": "I'd like a cappuccino and a cheese roll, please."
+   },
+   "note": "D-WOULD-LIKE, G-AND, C-PLEASE-THANKS. What you order is accusative: einen Kaffee. Ich will sounds like a child demanding.",
+   "star": false
+  },
+  {
+   "id": "D-BE",
+   "target": "ich bin ___ / du bist ___ / Sie sind ___",
+   "gloss": "I am ___ / you are ___",
+   "example": {
+    "target": "Ich bin Ingenieur und ich bin 35 Jahre alt.",
+    "gloss": "I'm an engineer and I'm 35 years old."
+   },
+   "note": "sein is irregular: bin, bist, ist, sind, seid, sind. Jobs and nationalities take no article: Ich bin Inder, not ein Inder.",
+   "star": true
+  },
+  {
+   "id": "D-HAVE",
+   "target": "ich habe ___ / hast du ___? / haben Sie ___?",
+   "gloss": "I have ___ / do you have ___?",
+   "example": {
+    "target": "Ich habe zwei Kinder und einen Hund.",
+    "gloss": "I have two children and a dog."
+   },
+   "note": "The thing you have is accusative: einen Hund, keinen Hunger. Age uses sein, not haben: Ich bin 30.",
+   "star": true
+  },
+  {
+   "id": "D-THERE-IS",
+   "target": "es gibt ___",
+   "gloss": "there is / there are ___",
+   "example": {
+    "target": "Gibt es hier in der Nähe einen Supermarkt?",
+    "gloss": "Is there a supermarket near here?"
+   },
+   "note": "es gibt never changes for plural and takes the accusative: es gibt einen Park, es gibt keine Toiletten.",
+   "star": true
+  },
+  {
+   "id": "D-LIKE",
+   "target": "ich mag ___ / ich ___ gern",
+   "gloss": "I like ___ / I like ___-ing",
+   "example": {
+    "target": "Ich mag Berlin, aber ich fahre nicht gern U-Bahn.",
+    "gloss": "I like Berlin, but I don't like taking the U-Bahn."
+   },
+   "note": "mögen + noun in the accusative; gern after a verb for activities. 'Ich mag schwimmen' is heard, but gern is the natural form.",
+   "star": true
+  },
+  {
+   "id": "D-WANT",
+   "target": "ich will ___",
+   "gloss": "I want ___ / I want to ___",
+   "example": {
+    "target": "Ich will nächstes Jahr in Deutschland arbeiten.",
+    "gloss": "I want to work in Germany next year."
+   },
+   "note": "Modal: no zu, the infinitive goes to the end. wollen is blunt; for requests use möchte. Ich will never means 'I will'.",
+   "star": true
+  },
+  {
+   "id": "D-WOULD-LIKE",
+   "target": "ich möchte ___ / ich hätte gern ___",
+   "gloss": "I would like ___ / I'd like to ___",
+   "example": {
+    "target": "Ich möchte bitte einen Tisch für zwei Personen.",
+    "gloss": "I'd like a table for two, please."
+   },
+   "note": "möchte is Konjunktiv II of mögen but is the everyday polite want; its past is wollte. Infinitive at the end: Ich möchte zahlen.",
+   "star": true
+  },
+  {
+   "id": "D-NEED",
+   "target": "ich brauche ___ / ich muss ___",
+   "gloss": "I need ___ / I need to ___",
+   "example": {
+    "target": "Ich brauche ein Ticket nach Hamburg.",
+    "gloss": "I need a ticket to Hamburg."
+   },
+   "note": "brauchen + accusative for things; for 'need to' use müssen. brauchen zu exists only in the negative: Du brauchst nicht zu kommen.",
+   "star": true
+  },
+  {
+   "id": "D-CAN",
+   "target": "ich kann ___ / kannst du ___? / können Sie ___?",
+   "gloss": "I can ___ / can you ___?",
+   "example": {
+    "target": "Ich kann gut kochen, aber ich kann nicht singen.",
+    "gloss": "I can cook well, but I can't sing."
+   },
+   "note": "Modal: kann, kannst, kann, können; the infinitive goes to the end. Also permission: Kann ich hier sitzen?",
+   "star": true
+  },
+  {
+   "id": "D-GOING-TO",
+   "target": "ich ___ (morgen / am Wochenende)",
+   "gloss": "I'm going to ___ (tomorrow / at the weekend)",
+   "example": {
+    "target": "Am Wochenende fahre ich mit Freunden nach Hamburg.",
+    "gloss": "This weekend I'm going to Hamburg with friends."
+   },
+   "note": "No going-to form: present tense plus a time word is the intention future. gehen means walk; for a trip use fahren or fliegen.",
+   "star": true
+  },
+  {
+   "id": "D-WILL",
+   "target": "ich werde ___",
+   "gloss": "I will ___",
+   "example": {
+    "target": "Ich werde dich morgen anrufen, versprochen.",
+    "gloss": "I'll call you tomorrow, promise."
+   },
+   "note": "werden + infinitive at the end. Sounds like a promise or prediction; for plain plans Germans use the present. 'will' is not werden.",
+   "star": false
+  },
+  {
+   "id": "T-PRES",
+   "target": "-e, -st, -t, -en, -t, -en (ich mache, du machst, er macht)",
+   "gloss": "present tense endings",
+   "example": {
+    "target": "Ich arbeite bei Siemens und wohne in Berlin.",
+    "gloss": "I work at Siemens and live in Berlin."
+   },
+   "note": "Covers habits, facts, right now and the future. Strong verbs change the vowel in du/er: fahren → fährst, sprechen → spricht.",
+   "star": true
+  },
+  {
+   "id": "T-PROG",
+   "target": "ich ___ gerade / ich bin gerade dabei, ___ zu ___",
+   "gloss": "I am ___-ing right now",
+   "example": {
+    "target": "Ich koche gerade, kann ich dich später anrufen?",
+    "gloss": "I'm cooking right now, can I call you later?"
+   },
+   "note": "No -ing form. Add gerade or jetzt when 'right now' matters; 'ich bin am Kochen' is colloquial and regional.",
+   "star": false
+  },
+  {
+   "id": "T-PAST",
+   "target": "ich war, ich hatte, ich bin gegangen, ich habe gemacht",
+   "gloss": "I was, I had, I went, I did",
+   "example": {
+    "target": "Gestern war ich in Köln und habe Freunde getroffen.",
+    "gloss": "Yesterday I was in Cologne and met friends."
+   },
+   "note": "Start with war and hatte; for other verbs use the Perfekt (habe/bin + Partizip II). Movement and change use sein: bin gefahren.",
+   "star": true
+  },
+  {
+   "id": "T-FUT",
+   "target": "Präsens + Zeitangabe / werden + Infinitiv",
+   "gloss": "present + time word / werden + infinitive",
+   "example": {
+    "target": "Nächste Woche fliege ich nach Indien.",
+    "gloss": "Next week I'm flying to India."
+   },
+   "note": "The present is the normal future. A fronted time word pushes the subject after the verb: Morgen fahre ich.",
+   "star": false
+  },
+  {
+   "id": "T-NEG",
+   "target": "nicht (Verb, Adjektiv, Satz) / kein (Nomen)",
+   "gloss": "not / no, not a",
+   "example": {
+    "target": "Ich habe kein Auto und ich fahre nicht gern Bus.",
+    "gloss": "I don't have a car and I don't like taking the bus."
+   },
+   "note": "kein replaces ein or a missing article; nicht goes at the end or right before what it negates. 'nicht ein' is a mistake.",
+   "star": true
+  },
+  {
+   "id": "T-Q",
+   "target": "Verb + Subjekt ...? (Kommst du? Haben Sie Zeit?)",
+   "gloss": "verb first, then subject",
+   "example": {
+    "target": "Sprechen Sie Englisch? – Ja, ein bisschen.",
+    "gloss": "Do you speak English? – Yes, a little."
+   },
+   "note": "Verb to position one, no do. Answer a negative question with doch: Hast du keine Zeit? – Doch!",
+   "star": false
+  },
+  {
+   "id": "T-WH",
+   "target": "wer, was, wo, wann, wie, wie viel, warum + Verb + Subjekt",
+   "gloss": "who, what, where, when, how, how much, why",
+   "example": {
+    "target": "Wann fährt der nächste Zug nach München?",
+    "gloss": "When does the next train to Munich leave?"
+   },
+   "note": "Question word first, verb second, subject third. Direction is wohin, origin woher: Woher kommst du?",
+   "star": false
+  },
+  {
+   "id": "G-AND",
+   "target": "___ und ___",
+   "gloss": "and",
+   "example": {
+    "target": "Ich nehme einen Kaffee und ein Croissant.",
+    "gloss": "I'll have a coffee and a croissant."
+   },
+   "note": "Position zero: word order after und is untouched. No comma before und in a list.",
+   "star": true
+  },
+  {
+   "id": "G-BUT",
+   "target": "___, aber ___",
+   "gloss": "but",
+   "example": {
+    "target": "Ich möchte kommen, aber ich habe keine Zeit.",
+    "gloss": "I'd like to come, but I don't have time."
+   },
+   "note": "Position zero, comma before it, word order untouched. After a negative use sondern: nicht heute, sondern morgen.",
+   "star": true
+  },
+  {
+   "id": "G-OR",
+   "target": "___ oder ___",
+   "gloss": "or",
+   "example": {
+    "target": "Möchten Sie Tee oder Kaffee?",
+    "gloss": "Would you like tea or coffee?"
+   },
+   "note": "Position zero. In an oder-question the voice falls at the end: it is a choice, not a yes/no question.",
+   "star": false
+  },
+  {
+   "id": "G-BECAUSE",
+   "target": "___, weil ___ (Verb am Ende) / ___, denn ___",
+   "gloss": "because",
+   "example": {
+    "target": "Ich bleibe zu Hause, weil ich krank bin.",
+    "gloss": "I'm staying home because I'm ill."
+   },
+   "note": "weil sends the conjugated verb to the end of its clause; denn keeps main-clause order. The verb-final rule is the classic weil mistake.",
+   "star": true
+  },
+  {
+   "id": "G-THEN",
+   "target": "dann ___ / danach ___",
+   "gloss": "then / after that",
+   "example": {
+    "target": "Zuerst frühstücke ich, dann fahre ich ins Büro.",
+    "gloss": "First I have breakfast, then I go to the office."
+   },
+   "note": "dann fills position one, so the verb comes next and the subject third: dann fahre ich, not dann ich fahre.",
+   "star": false
+  },
+  {
+   "id": "G-ALSO",
+   "target": "auch",
+   "gloss": "also / too",
+   "example": {
+    "target": "Ich lerne Deutsch. – Ich auch! Ich komme auch aus Indien.",
+    "gloss": "I'm learning German. – Me too! I'm also from India."
+   },
+   "note": "auch sits after the verb, before what it refers to. Ich auch answers a statement, Ich auch nicht a negative one.",
+   "star": false
+  },
+  {
+   "id": "G-IN",
+   "target": "in + Dativ (Ort) / im + Monat",
+   "gloss": "in (place) / in (month)",
+   "example": {
+    "target": "Ich wohne in Berlin und habe im März Geburtstag.",
+    "gloss": "I live in Berlin and my birthday is in March."
+   },
+   "note": "Location takes dative: im Büro, in der Stadt; months take im. Movement into takes accusative: ins Kino.",
+   "star": false
+  },
+  {
+   "id": "G-ON",
+   "target": "am + Tag / auf + Dativ (Fläche)",
+   "gloss": "on (day) / on (surface)",
+   "example": {
+    "target": "Am Montag bin ich im Büro, das Buch liegt auf dem Tisch.",
+    "gloss": "On Monday I'm in the office; the book is on the table."
+   },
+   "note": "Days and parts of days use an: am Montag, am Abend. Surfaces use auf; a wall uses an: an der Wand.",
+   "star": false
+  },
+  {
+   "id": "G-AT",
+   "target": "um + Uhrzeit / am + Punkt / bei + Person",
+   "gloss": "at (time) / at (point) / at (someone's)",
+   "example": {
+    "target": "Wir treffen uns um acht am Bahnhof, dann essen wir bei mir.",
+    "gloss": "We'll meet at eight at the station, then eat at my place."
+   },
+   "note": "um for clock times, am for points and days, bei for at someone's place or employer: bei Siemens, bei meinen Eltern.",
+   "star": false
+  },
+  {
+   "id": "G-FROM",
+   "target": "aus + Dativ (Herkunft) / von + Dativ (Absender, Zeit)",
+   "gloss": "from (origin) / from (sender, time)",
+   "example": {
+    "target": "Ich komme aus Indien, die Mail ist von meiner Chefin.",
+    "gloss": "I'm from India; the email is from my boss."
+   },
+   "note": "aus for where you originate (country, building); von for people, senders and spans: von 9 bis 17 Uhr.",
+   "star": false
+  },
+  {
+   "id": "G-TO",
+   "target": "nach (Stadt, Land) / zu + Dativ (Person, Ort) / in + Akk.",
+   "gloss": "to (city, country) / to (person, place) / into",
+   "example": {
+    "target": "Ich fahre nach Berlin, gehe zum Arzt und dann ins Kino.",
+    "gloss": "I'm going to Berlin, to the doctor and then to the cinema."
+   },
+   "note": "nach for names without an article and nach Hause; zu for people and buildings as targets; in + accusative when you go inside.",
+   "star": true
+  },
+  {
+   "id": "G-WITH",
+   "target": "mit + Dativ",
+   "gloss": "with",
+   "example": {
+    "target": "Ich fahre mit dem Bus und wohne mit meiner Freundin zusammen.",
+    "gloss": "I take the bus and live with my girlfriend."
+   },
+   "note": "Always dative: mit dem, mit der, mit meinen Freunden. Also 'by' for transport: mit dem Zug.",
+   "star": true
+  },
+  {
+   "id": "S-PRON-SUBJ",
+   "target": "ich, du, er/sie/es, wir, ihr, sie / Sie",
+   "gloss": "I, you, he/she/it, we, you (pl), they / you (formal)",
+   "example": {
+    "target": "Kommt ihr heute Abend? Wir haben Zeit.",
+    "gloss": "Are you all coming tonight? We have time."
+   },
+   "note": "sie / Sie / sie: she, formal you (capital, plural verb), they. Pronouns follow the noun's gender: der Tisch → er, not es.",
+   "star": false
+  },
+  {
+   "id": "S-PRON-OBJ",
+   "target": "mich/mir, dich/dir, ihn/ihm, sie/ihr, es/ihm, uns, euch, sie/ihnen",
+   "gloss": "me, you, him, her, it, us, you, them (accusative / dative)",
+   "example": {
+    "target": "Kannst du mir helfen? Ich rufe dich später an.",
+    "gloss": "Can you help me? I'll call you later."
+   },
+   "note": "Accusative for direct objects, dative for the receiver and after helfen, danken, gefallen: Ich helfe dir, das gefällt mir.",
+   "star": true
+  },
+  {
+   "id": "S-ARTICLE",
+   "target": "der/die/das (the) / ein/eine/ein (a) / kein (no)",
+   "gloss": "definite, indefinite, negative article",
+   "example": {
+    "target": "Das ist ein Apfel. Der Apfel ist rot.",
+    "gloss": "That is an apple. The apple is red."
+   },
+   "note": "The article carries gender and case, so learn it with the noun. The accusative changes only masculine: der → den, ein → einen.",
+   "star": true
+  },
+  {
+   "id": "S-GENDER",
+   "target": "der (m), die (f), das (n); Plural immer die",
+   "gloss": "masculine, feminine, neuter; plural always die",
+   "example": {
+    "target": "Das Mädchen ist klein, der Tisch ist groß, die Tür ist offen.",
+    "gloss": "The girl is small, the table is big, the door is open."
+   },
+   "note": "Gender is grammatical, not natural: das Mädchen. Clues: -ung, -heit, -keit, -ion are die; -chen, -lein are das; -ling and -er people are der.",
+   "star": false
+  },
+  {
+   "id": "S-PLURAL",
+   "target": "-e, -en, -er, -s, Umlaut: Tische, Frauen, Kinder, Autos, Väter",
+   "gloss": "plural endings",
+   "example": {
+    "target": "Ich habe zwei Brüder und drei Schwestern.",
+    "gloss": "I have two brothers and three sisters."
+   },
+   "note": "Learn the plural with the noun. Rough guide: feminine -n/-en (Frauen), masculine -e often with umlaut (Stühle), loanwords -s (Handys).",
+   "star": false
+  },
+  {
+   "id": "S-DEMONSTR",
+   "target": "dieser/diese/dieses (this) / der da, die da, das da (that one)",
+   "gloss": "this / that",
+   "example": {
+    "target": "Dieser Tisch ist frei. – Nein, ich möchte den da am Fenster.",
+    "gloss": "This table is free. – No, I'd like that one by the window."
+   },
+   "note": "dieser declines like der. Spoken German points with das (Das ist gut!) and says der da for 'that one' rather than jener.",
+   "star": false
+  },
+  {
+   "id": "S-NUMBERS",
+   "target": "eins, zwei, drei ... einundzwanzig ... hundert / erste, zweite, dritte",
+   "gloss": "one, two, three ... twenty-one ... hundred / first, second, third",
+   "example": {
+    "target": "Ich wohne im dritten Stock, Nummer einundzwanzig.",
+    "gloss": "I live on the third floor, number twenty-one."
+   },
+   "note": "Units come before tens: 21 is ein-und-zwanzig. Ordinals add -te up to 19 and -ste from 20; erste, dritte and siebte are irregular.",
+   "star": false
+  },
+  {
+   "id": "L-SELF",
+   "target": "der Name (name), der Vorname (first name), das Alter (age), das Land (country), die Stadt (city), der Beruf (job), die Arbeit (work), die Sprache (language), der Student (student), der Ingenieur (engineer), die Lehrerin (teacher, f), der Arzt (doctor), verheiratet (married), ledig (single), Inder/Inderin (Indian), Deutscher/Deutsche (German)",
+   "gloss": "Self: name, nationality, job, age",
+   "note": "Feminine job titles add -in: Lehrerin, Ärztin, Ingenieurin. Age is sein: Ich bin 30, never habe.",
+   "star": false
+  },
+  {
+   "id": "L-FAMILY",
+   "target": "die Familie (family), die Eltern (parents), die Mutter (mother), der Vater (father), die Schwester (sister), der Bruder (brother), die Geschwister (siblings), das Kind (child), die Tochter (daughter), der Sohn (son), die Großeltern (grandparents), der Mann (husband), die Frau (wife), der Freund (friend, boyfriend), die Freundin (friend, girlfriend), die Leute (people)",
+   "gloss": "Family and people",
+   "note": "mein Freund with a possessive means boyfriend; say ein Freund von mir for a male friend. Geschwister and Eltern are plural only.",
+   "star": false
+  },
+  {
+   "id": "L-FOOD",
+   "target": "das Brot (bread), das Brötchen (roll), der Käse (cheese), die Wurst (sausage), das Ei (egg), das Wasser (water), der Kaffee (coffee), der Tee (tea), das Bier (beer), der Wein (wine), der Apfel (apple), das Gemüse (vegetables), das Fleisch (meat), die Speisekarte (menu), die Rechnung (bill), bestellen (to order)",
+   "gloss": "Food and drink, ordering",
+   "note": "Order stilles Wasser or you may get sparkling. Drinks stay singular when counted: zwei Bier, drei Kaffee.",
+   "star": false
+  },
+  {
+   "id": "L-TIME",
+   "target": "die Uhr (clock, o'clock), die Stunde (hour), die Minute (minute), der Tag (day), die Woche (week), der Monat (month), das Jahr (year), heute (today), morgen (tomorrow), gestern (yesterday), der Montag (Monday), das Wochenende (weekend), der Januar (January), halb (half), Viertel (quarter), jetzt (now)",
+   "gloss": "Time, days, months, clock",
+   "note": "halb neun is 8:30, not 9:30: German counts halfway to the next hour. Official times use 24 hours: 14 Uhr 30.",
+   "star": false
+  },
+  {
+   "id": "L-PLACES",
+   "target": "der Bahnhof (station), die Haltestelle (stop), der Flughafen (airport), die Straße (street), der Platz (square), die Kirche (church), das Rathaus (town hall), der Supermarkt (supermarket), die Apotheke (pharmacy), das Krankenhaus (hospital), die Bank (bank), das Kino (cinema), links (left), rechts (right), geradeaus (straight on), die Ampel (traffic lights)",
+   "gloss": "Places in town, directions",
+   "note": "Apotheke sells medicine; Drogerie sells shampoo. Directions come as an der Ampel links, die zweite Straße rechts.",
+   "star": false
+  },
+  {
+   "id": "L-VERBS-CORE",
+   "target": "gehen (go), kommen (come), essen (eat), trinken (drink), sehen (see), machen (do, make), sagen (say), wissen/kennen (know), geben (give), nehmen (take), wohnen (live), arbeiten (work), kaufen (buy), sprechen (speak), lesen (read), schreiben (write), schlafen (sleep), spielen (play), lernen (learn), wollen (want), mögen (like), brauchen (need), haben (have), sein (be)",
+   "gloss": "The 25 core verbs",
+   "note": "wissen is knowing a fact, kennen knowing a person or place. Strong verbs shift the vowel in du/er: ich esse, du isst; ich sehe, er sieht.",
+   "star": false
+  },
+  {
+   "id": "P-SOUNDS",
+   "target": "ü, ö, ch (ich / ach), uvular r, z = ts, w = v, long vs short vowels",
+   "gloss": "Round your lips for ü and ö (Tür, schön). ch is soft after i/e (ich) and throaty after a/o/u (Buch). z is always ts (zehn), w sounds like English v (Wasser), v like f (Vater). Vowel length changes meaning: Stadt (short) vs Staat (long).",
+   "note": "The ich-Laut is the sound at the start of English 'huge' said with more friction. Final -ig is also ich: zwanzig.",
+   "star": false
+  },
+  {
+   "id": "P-WORD-STRESS",
+   "target": "ÁRbeiten, ÁNrufen, but verSTÉHen, beZÁHlen; StudÉNT, MusÍK",
+   "gloss": "Native words stress the first syllable of the stem. Separable prefixes (an-, auf-, aus-, mit-) carry the stress; inseparable be-, ge-, er-, ver-, ent- never do. Loanwords stress the ending: Student, Musik, Information.",
+   "note": "The stress tells you whether a prefix separates: ÚMfahren (knock down) splits, umFÁHren (drive around) does not.",
+   "star": false
+  },
+  {
+   "id": "C-HELLO-BYE",
+   "target": "Hallo / Guten Tag ... Tschüss / Auf Wiedersehen",
+   "gloss": "Hello / Good day ... Bye / Goodbye",
+   "example": {
+    "target": "Guten Tag, Herr Müller! ... Auf Wiedersehen!",
+    "gloss": "Good day, Mr Müller! ... Goodbye!"
+   },
+   "note": "Hallo and Tschüss are fine with du and with most everyday Sie contacts; Guten Tag / Auf Wiedersehen are safe everywhere. On the phone: Auf Wiederhören.",
+   "star": true
+  },
+  {
+   "id": "C-PLEASE-THANKS",
+   "target": "bitte / danke (schön) / bitte (schön), gern geschehen",
+   "gloss": "please / thank you / you're welcome",
+   "example": {
+    "target": "Danke schön! – Bitte schön!",
+    "gloss": "Thank you! – You're welcome!"
+   },
+   "note": "bitte is please, you're welcome, here you are, and pardon (Wie bitte?). Answer danke with bitte.",
+   "star": true
+  },
+  {
+   "id": "C-SORRY",
+   "target": "Entschuldigung! / Entschuldigen Sie! / (Es) tut mir leid.",
+   "gloss": "Excuse me! / Sorry (I regret it).",
+   "example": {
+    "target": "Entschuldigung, ist hier noch frei? – Tut mir leid, nein.",
+    "gloss": "Excuse me, is this seat free? – Sorry, no."
+   },
+   "note": "Entschuldigung gets attention and apologises for small things; tut mir leid expresses regret. Sorry is common among the young.",
+   "star": true
+  },
+  {
+   "id": "C-HOW-MUCH",
+   "target": "Was kostet das? / Wie viel kostet das?",
+   "gloss": "How much is it?",
+   "example": {
+    "target": "Was kostet das Brötchen? – Sechzig Cent.",
+    "gloss": "How much is the roll? – Sixty cents."
+   },
+   "note": "kosten is a verb: literally 'what costs that'. Plural: Was kosten die Äpfel?",
+   "star": false
+  },
+  {
+   "id": "C-WHERE-IS",
+   "target": "Wo ist ___? / Wo sind ___?",
+   "gloss": "Where is ___? / Where are ___?",
+   "example": {
+    "target": "Entschuldigung, wo ist die Toilette? – Da hinten links.",
+    "gloss": "Excuse me, where is the toilet? – Back there on the left."
+   },
+   "note": "The thing you look for is nominative: wo ist der Bahnhof. For 'where to' use wohin: Wohin fährt dieser Bus?",
+   "star": false
+  },
+  {
+   "id": "C-DONT-UNDERSTAND",
+   "target": "Ich verstehe das nicht. / Ich verstehe Sie nicht.",
+   "gloss": "I don't understand (that / you).",
+   "example": {
+    "target": "Ich verstehe das nicht. Was bedeutet 'Anmeldung'?",
+    "gloss": "I don't understand. What does 'Anmeldung' mean?"
+   },
+   "note": "nicht goes to the end after the object. For something just said use the Perfekt: Ich habe das nicht verstanden.",
+   "star": true
+  },
+  {
+   "id": "C-REPEAT-PLEASE",
+   "target": "Können Sie das bitte wiederholen? / Langsamer, bitte.",
+   "gloss": "Can you repeat that, please? / Slower, please.",
+   "example": {
+    "target": "Wie bitte? Können Sie das bitte noch einmal sagen?",
+    "gloss": "Pardon? Can you say that once more, please?"
+   },
+   "note": "wiederholen is inseparable: Sie wiederholen, not holen ... wieder. noch einmal / nochmal means once more.",
+   "star": true
+  },
+  {
+   "id": "C-MY-NAME",
+   "target": "Ich heiße ___. / Ich bin ___. / Freut mich!",
+   "gloss": "My name is ___. / I'm ___. / Nice to meet you!",
+   "example": {
+    "target": "Ich heiße Anna. – Freut mich! Ich bin Tom.",
+    "gloss": "My name is Anna. – Nice to meet you! I'm Tom."
+   },
+   "note": "heißen is more natural than mein Name ist. Ask back with Und Sie? / Und du? Freut mich is the short form of Es freut mich, Sie kennenzulernen.",
+   "star": false
+  },
+  {
+   "id": "F-INVITE",
+   "target": "Hast du Lust, ___ zu ___? / Kommst du mit?",
+   "gloss": "Do you feel like ___-ing? / Are you coming along?",
+   "example": {
+    "target": "Hast du Lust, am Samstag mit uns ins Kino zu gehen?",
+    "gloss": "Do you feel like going to the cinema with us on Saturday?"
+   },
+   "note": "C-WOULD-YOU-LIKE, D-LETS, G-ON. Lust haben + zu-infinitive, zu right before the verb at the end. Sie form: Haben Sie Lust ...?",
+   "star": false
+  },
+  {
+   "id": "F-ACCEPT-DECLINE",
+   "target": "Ja, gern! / Danke, aber ich kann leider nicht, weil ___",
+   "gloss": "Yes, gladly! / Thanks, but unfortunately I can't, because ___",
+   "example": {
+    "target": "Danke für die Einladung, aber ich kann leider nicht, weil ich arbeiten muss.",
+    "gloss": "Thanks for the invitation, but I can't, because I have to work."
+   },
+   "note": "C-THANKS-BUT, D-CAN, G-BECAUSE, D-HAVE-TO. Always give a reason; a bare nein sounds cold. leider softens every refusal.",
+   "star": false
+  },
+  {
+   "id": "F-SUGGEST",
+   "target": "Wie wäre es mit ___? / Wollen wir ___? / Lass uns ___",
+   "gloss": "How about ___? / Shall we ___? / Let's ___",
+   "example": {
+    "target": "Wie wäre es mit Freitag um sieben? Wollen wir uns am Bahnhof treffen?",
+    "gloss": "How about Friday at seven? Shall we meet at the station?"
+   },
+   "note": "C-HOW-ABOUT, D-LETS, G-AT. Wie wäre es mit + dative. Wollen wir ...? is the everyday 'shall we'; sollen wir asks for instruction.",
+   "star": false
+  },
+  {
+   "id": "F-APOLOGISE",
+   "target": "Es tut mir leid, ___ / Entschuldige, dass ___",
+   "gloss": "I'm sorry, ___ / Sorry that ___",
+   "example": {
+    "target": "Tut mir leid, dass ich zu spät bin. Die S-Bahn hatte Verspätung.",
+    "gloss": "Sorry I'm late. The S-Bahn was delayed."
+   },
+   "note": "C-SORRY-LATE, G-BECAUSE, D-WAS-DOING. dass sends the verb to the end. Entschuldige (du) / Entschuldigen Sie (Sie).",
+   "star": false
+  },
+  {
+   "id": "F-ORDER",
+   "target": "Ich hätte gern ___. / Was ist ___? / Die Rechnung, bitte.",
+   "gloss": "I'd like ___. / What is ___? / The bill, please.",
+   "example": {
+    "target": "Ich hätte gern die Linsensuppe. Was ist eigentlich Spätzle? – Zahlen, bitte!",
+    "gloss": "I'd like the lentil soup. What is Spätzle, actually? – The bill, please!"
+   },
+   "note": "D-WOULD-LIKE, C-WHAT-MEAN, C-BILL. Zusammen oder getrennt? asks whether you pay together. Round up and say Stimmt so to tip.",
+   "star": false
+  },
+  {
+   "id": "F-ASK-REPEAT",
+   "target": "Was bedeutet ___? / Wie schreibt man das? / Wie heißt ___ auf Deutsch?",
+   "gloss": "What does ___ mean? / How do you spell that? / How do you say ___ in German?",
+   "example": {
+    "target": "Was bedeutet 'Feierabend'? Und wie schreibt man das?",
+    "gloss": "What does 'Feierabend' mean? And how do you spell it?"
+   },
+   "note": "C-WHAT-MEAN, T-WH. Spell with the German alphabet: a as ah, e as eh, i as ee, v as fau, w as veh, y as üpsilon.",
+   "star": false
+  },
+  {
+   "id": "F-DESCRIBE-PAST",
+   "target": "Zuerst habe ich ___, dann ___, und danach ___",
+   "gloss": "First I ___, then ___, and after that ___",
+   "example": {
+    "target": "Am Samstag habe ich zuerst eingekauft, dann war ich im Park und abends im Kino.",
+    "gloss": "On Saturday I first shopped, then I was in the park and in the cinema in the evening."
+   },
+   "note": "G-SEQUENCE, D-HAVE-DONE, T-PAST. One habe/bin, the participles at the end; war and hatte stay Präteritum even in speech.",
+   "star": false
+  },
+  {
+   "id": "F-MAKE-PLAN",
+   "target": "Wann passt es dir? / Treffen wir uns um ___? / Alles klar, bis dann!",
+   "gloss": "When suits you? / Shall we meet at ___ in front of ___? / OK, see you then!",
+   "example": {
+    "target": "Passt dir Dienstag um sechs? Treffen wir uns vor dem Café. – Alles klar, bis dann!",
+    "gloss": "Does Tuesday at six suit you? Let's meet outside the café. – Right, see you then!"
+   },
+   "note": "C-HOW-ABOUT, G-AT, D-LETS, C-SEE-YOU. passen takes the dative person: passt dir / passt Ihnen. Confirm with Abgemacht!",
+   "star": false
+  },
+  {
+   "id": "D-HAVE-TO",
+   "target": "ich muss ___",
+   "gloss": "I have to ___",
+   "example": {
+    "target": "Ich muss morgen früh aufstehen.",
+    "gloss": "I have to get up early tomorrow."
+   },
+   "note": "müssen: muss, musst, muss, müssen; infinitive at the end. It covers both 'must' and 'have to'. Past: ich musste.",
+   "star": true
+  },
+  {
+   "id": "D-MUST",
+   "target": "ich muss ___ / du darfst nicht ___ / du musst nicht ___",
+   "gloss": "I must ___ / you mustn't ___ / you don't have to ___",
+   "example": {
+    "target": "Hier darf man nicht rauchen. Du musst nicht mitkommen.",
+    "gloss": "You mustn't smoke here. You don't have to come along."
+   },
+   "note": "The trap: du musst nicht means 'you don't have to'. Prohibition is nicht dürfen: Sie dürfen hier nicht parken.",
+   "star": true
+  },
+  {
+   "id": "D-SHOULD",
+   "target": "ich sollte ___ / du solltest ___",
+   "gloss": "I should ___ / you should ___",
+   "example": {
+    "target": "Du solltest mehr Wasser trinken und weniger arbeiten.",
+    "gloss": "You should drink more water and work less."
+   },
+   "note": "sollte is Konjunktiv II of sollen and gives advice. Plain du sollst passes on an order: Der Chef sagt, du sollst kommen.",
+   "star": true
+  },
+  {
+   "id": "D-COULD",
+   "target": "könntest du ___? / könnten Sie ___? / ich konnte ___",
+   "gloss": "could you ___? / I could ___ (past)",
+   "example": {
+    "target": "Könnten Sie mir bitte helfen? Gestern konnte ich nicht kommen.",
+    "gloss": "Could you help me, please? Yesterday I couldn't come."
+   },
+   "note": "könnte (with umlaut) is the polite request; konnte (no umlaut) is the past of can. The umlaut is the whole difference.",
+   "star": true
+  },
+  {
+   "id": "D-MIGHT",
+   "target": "vielleicht ___ / es könnte ___ / es kann sein, dass ___",
+   "gloss": "maybe ___ / it might ___ / it could be that ___",
+   "example": {
+    "target": "Vielleicht regnet es morgen. Es könnte auch schneien.",
+    "gloss": "Maybe it'll rain tomorrow. It might snow too."
+   },
+   "note": "The adverb vielleicht does most of the work and takes position one, so the verb follows: vielleicht komme ich.",
+   "star": false
+  },
+  {
+   "id": "D-USED-TO",
+   "target": "früher habe ich ___ / früher war ich ___",
+   "gloss": "I used to ___ / I used to be ___",
+   "example": {
+    "target": "Früher habe ich viel Fußball gespielt, heute nicht mehr.",
+    "gloss": "I used to play a lot of football, now I don't any more."
+   },
+   "note": "No used-to verb: früher plus the Perfekt (or war/hatte) is how Germans say it. nicht mehr = no longer.",
+   "star": false
+  },
+  {
+   "id": "D-HAVE-DONE",
+   "target": "ich habe ___ gemacht / ich bin ___ gewesen / ich habe noch nie ___",
+   "gloss": "I have done ___ / I have been ___ / I've never ___",
+   "example": {
+    "target": "Ich war schon mal in Wien, aber ich habe noch nie Sachertorte gegessen.",
+    "gloss": "I've been to Vienna, but I've never eaten Sachertorte."
+   },
+   "note": "Perfekt = spoken past for everything: ate and have eaten. schon mal = ever, noch nie = never yet; war is preferred over bin gewesen.",
+   "star": true
+  },
+  {
+   "id": "D-WAS-DOING",
+   "target": "ich ___ gerade, als ___ / ich war gerade dabei, ___ zu ___, als ___",
+   "gloss": "I was doing ___ when ___",
+   "example": {
+    "target": "Ich habe gerade geduscht, als du angerufen hast.",
+    "gloss": "I was just showering when you called."
+   },
+   "note": "No progressive past: Perfekt or Präteritum plus gerade, and als (not wenn) for a single past 'when'. als sends the verb to the end.",
+   "star": true
+  },
+  {
+   "id": "D-VERB-TO",
+   "target": "ich hoffe / plane / versuche / vergesse / verspreche, ___ zu ___",
+   "gloss": "I hope / plan / try / forget / promise to ___",
+   "example": {
+    "target": "Ich versuche, jeden Tag zehn Minuten Deutsch zu lernen.",
+    "gloss": "I try to learn German for ten minutes every day."
+   },
+   "note": "zu + infinitive goes to the end, with a comma before the zu-clause. Separable verbs take zu inside: anzurufen, aufzustehen.",
+   "star": true
+  },
+  {
+   "id": "D-VERB-ING",
+   "target": "ich ___ gern / ich habe keine Lust, ___ zu ___ / ich mache weiter",
+   "gloss": "I enjoy ___-ing / I don't feel like ___-ing / I keep going",
+   "example": {
+    "target": "Ich koche gern, aber ich habe keine Lust, abzuwaschen.",
+    "gloss": "I enjoy cooking, but I don't feel like washing up."
+   },
+   "note": "No -ing form. Enjoying is gern + verb; 'finish doing' is fertig sein mit + noun; 'keep doing' is weiter + verb: weiterlesen.",
+   "star": false
+  },
+  {
+   "id": "D-THINK-THAT",
+   "target": "ich glaube, dass ___ / ich finde, ___ / ich weiß, dass ___",
+   "gloss": "I think that ___ / I find ___ / I know that ___",
+   "example": {
+    "target": "Ich glaube, dass der Zug schon weg ist. Ich finde, das ist zu teuer.",
+    "gloss": "I think the train has already gone. I think that's too expensive."
+   },
+   "note": "dass sends the verb to the end; leaving dass out keeps main-clause order: Ich glaube, der Zug ist weg. finden gives opinions, glauben beliefs.",
+   "star": true
+  },
+  {
+   "id": "D-LETS",
+   "target": "lass uns ___ / wollen wir ___? / ___ wir!",
+   "gloss": "let's ___ / shall we ___? / let's ___!",
+   "example": {
+    "target": "Wollen wir ein Taxi nehmen? – Ja, lass uns fahren!",
+    "gloss": "Shall we take a taxi? – Yes, let's go!"
+   },
+   "note": "Verb-first imperative with wir: Gehen wir! is the true let's. wollen wir ...? asks, lass uns ... proposes (lasst uns with ihr).",
+   "star": true
+  },
+  {
+   "id": "T-PAST-PROG",
+   "target": "Präteritum / Perfekt + gerade ... als ___",
+   "gloss": "past + gerade (just then) ... when ___",
+   "example": {
+    "target": "Ich saß gerade beim Essen, als das Telefon klingelte.",
+    "gloss": "I was just eating when the phone rang."
+   },
+   "note": "German has no past continuous; background is signalled by gerade, or by a Präteritum in writing. als introduces the interruption.",
+   "star": false
+  },
+  {
+   "id": "T-PRES-PERF",
+   "target": "haben/sein + Partizip II (gemacht, gegangen)",
+   "gloss": "have/be + past participle",
+   "example": {
+    "target": "Ich habe heute Morgen einen Kaffee getrunken und bin dann ins Büro gefahren.",
+    "gloss": "This morning I drank a coffee and then went to the office."
+   },
+   "note": "The Perfekt is simply the spoken past: no 'unfinished time' meaning. sein for motion and change (gefahren, aufgestanden), haben for the rest.",
+   "star": true
+  },
+  {
+   "id": "T-COND1",
+   "target": "wenn ___ (Verb am Ende), ___ (Verb zuerst)",
+   "gloss": "if ___, then ___",
+   "example": {
+    "target": "Wenn es morgen regnet, bleibe ich zu Hause.",
+    "gloss": "If it rains tomorrow, I'll stay at home."
+   },
+   "note": "Both halves stay in the present, no future. wenn sends the verb to the end; the main clause then starts with its verb.",
+   "star": true
+  },
+  {
+   "id": "T-PROG-FUT",
+   "target": "Präsens + Zeitangabe",
+   "gloss": "present + time word",
+   "example": {
+    "target": "Morgen treffe ich sie um zehn in der Stadt.",
+    "gloss": "I'm meeting her tomorrow at ten in town."
+   },
+   "note": "The present is the arranged future, exactly like English 'I'm meeting'. werden would sound like a prediction.",
+   "star": false
+  },
+  {
+   "id": "T-IMPERATIVE",
+   "target": "Komm! (du) / Kommt! (ihr) / Kommen Sie! (Sie)",
+   "gloss": "Come! informal singular, plural, formal",
+   "example": {
+    "target": "Nimm doch Platz! – Nehmen Sie bitte Platz!",
+    "gloss": "Take a seat! – Please take a seat!"
+   },
+   "note": "du form: verb stem, no pronoun, no -st; e→i verbs keep the change (nimm, gib, lies). Soften with mal, doch, bitte: Komm mal her!",
+   "star": false
+  },
+  {
+   "id": "G-SO",
+   "target": "___, deshalb ___ (Verb zuerst) / ___, also ___",
+   "gloss": "so, therefore ___",
+   "example": {
+    "target": "Ich war müde, deshalb bin ich früh ins Bett gegangen.",
+    "gloss": "I was tired, so I went to bed early."
+   },
+   "note": "deshalb, deswegen, darum take position one and invert: deshalb bin ich. so alone at the start means 'like this', not therefore.",
+   "star": true
+  },
+  {
+   "id": "G-WHEN",
+   "target": "wenn ___ (wiederholt / Zukunft) / als ___ (einmal, Vergangenheit)",
+   "gloss": "when (repeated / future) / when (once, past)",
+   "example": {
+    "target": "Als ich in Berlin ankam, hat es geregnet. Wenn ich Zeit habe, rufe ich an.",
+    "gloss": "When I arrived in Berlin, it was raining. When I have time, I'll call."
+   },
+   "note": "Both send the verb to the end. als for a single past event, wenn for repeated or future ones; wann only in questions.",
+   "star": true
+  },
+  {
+   "id": "G-BEFORE-AFTER",
+   "target": "bevor ___ / nachdem ___ (Verb am Ende) / vor + Dat. / nach + Dat.",
+   "gloss": "before / after (clause) / before / after (noun)",
+   "example": {
+    "target": "Nachdem ich gegessen hatte, bin ich spazieren gegangen. Vor dem Essen nicht!",
+    "gloss": "After I had eaten I went for a walk. Not before the meal!"
+   },
+   "note": "bevor/nachdem take a clause with verb at the end; vor/nach take a noun in the dative. nachdem pulls the Plusquamperfekt in careful speech.",
+   "star": false
+  },
+  {
+   "id": "G-IF",
+   "target": "wenn ___ (Verb am Ende) / falls ___",
+   "gloss": "if / in case",
+   "example": {
+    "target": "Wenn du Zeit hast, komm doch vorbei.",
+    "gloss": "If you have time, do come round."
+   },
+   "note": "wenn means both 'if' and 'when'; falls is 'if' only. Verb-final clause first, then the main verb: Wenn ..., komm.",
+   "star": true
+  },
+  {
+   "id": "G-THAT",
+   "target": "___, dass ___ (Verb am Ende)",
+   "gloss": "that",
+   "example": {
+    "target": "Ich hoffe, dass wir uns bald wiedersehen.",
+    "gloss": "I hope that we see each other again soon."
+   },
+   "note": "dass with double s is the conjunction and sends the verb to the end; das is the article or pronoun. A comma always precedes dass.",
+   "star": true
+  },
+  {
+   "id": "G-WHO-WHICH",
+   "target": "der / die / das ___ (Verb am Ende)",
+   "gloss": "who / which / that (relative)",
+   "example": {
+    "target": "Das ist der Kollege, der aus Indien kommt.",
+    "gloss": "That's the colleague who comes from India."
+   },
+   "note": "The relative pronoun is the definite article (der, die, das, den, dem) matching the noun's gender and its role in the clause; verb goes last.",
+   "star": false
+  },
+  {
+   "id": "G-FOR-SINCE",
+   "target": "seit + Dativ (seit einem Jahr, seit Montag)",
+   "gloss": "for (a year) / since (Monday)",
+   "example": {
+    "target": "Ich lerne seit zwei Jahren Deutsch und wohne seit März hier.",
+    "gloss": "I've been learning German for two years and living here since March."
+   },
+   "note": "seit covers both for and since, always with the present tense: ich wohne seit, never ich habe gewohnt seit.",
+   "star": true
+  },
+  {
+   "id": "G-UNTIL",
+   "target": "bis + Akk. (bis Montag) / bis ___ (Verb am Ende)",
+   "gloss": "until (noun) / until (clause)",
+   "example": {
+    "target": "Ich bleibe bis Freitag. Warte, bis ich zurück bin.",
+    "gloss": "I'm staying until Friday. Wait until I'm back."
+   },
+   "note": "bis takes accusative with a noun and no article with days; as a conjunction it sends the verb to the end.",
+   "star": false
+  },
+  {
+   "id": "G-ABOUT",
+   "target": "über + Akk. / von + Dat.",
+   "gloss": "about (topic)",
+   "example": {
+    "target": "Wir haben über den Film gesprochen. Erzähl mir von deiner Reise!",
+    "gloss": "We talked about the film. Tell me about your trip!"
+   },
+   "note": "sprechen/reden über + accusative, erzählen von + dative. 'About' as roughly is ungefähr or etwa: etwa zehn Minuten.",
+   "star": false
+  },
+  {
+   "id": "G-SEQUENCE",
+   "target": "zuerst ___, dann ___, danach ___, zum Schluss ___",
+   "gloss": "first, then, after that, finally",
+   "example": {
+    "target": "Zuerst haben wir gefrühstückt, dann sind wir gewandert und zum Schluss essen gegangen.",
+    "gloss": "First we had breakfast, then we hiked and finally went out to eat."
+   },
+   "note": "Each connector takes position one, so the verb comes next: dann sind wir. am Ende / schließlich also work for finally.",
+   "star": true
+  },
+  {
+   "id": "S-POSSESSIVE",
+   "target": "mein, dein, sein, ihr, unser, euer, ihr / Ihr (+ Endung wie ein)",
+   "gloss": "my, your, his, her, our, your, their / your (formal)",
+   "example": {
+    "target": "Das ist meine Schwester und ihr Mann.",
+    "gloss": "That's my sister and her husband."
+   },
+   "note": "Possessives take the endings of ein/kein: meine Schwester, meinen Bruder, mit meinem Vater. euer drops the e: eure.",
+   "star": false
+  },
+  {
+   "id": "S-QUANTIFIERS",
+   "target": "etwas, viel, wenig (unzählbar) / einige, viele, wenige (Plural)",
+   "gloss": "some, much, little (uncountable) / some, many, few (plural), a bit",
+   "example": {
+    "target": "Ich habe wenig Zeit, aber viele Ideen. Möchtest du etwas Wasser?",
+    "gloss": "I have little time but many ideas. Would you like some water?"
+   },
+   "note": "viel/wenig stay bare before uncountables (viel Geld), take endings before plurals (viele Leute). English any = a plain noun or kein.",
+   "star": false
+  },
+  {
+   "id": "S-COMPARATIVE",
+   "target": "-er als: größer als, teurer als, besser als",
+   "gloss": "-er than",
+   "example": {
+    "target": "Berlin ist größer als München, aber München ist teurer.",
+    "gloss": "Berlin is bigger than Munich, but Munich is more expensive."
+   },
+   "note": "Every adjective takes -er, even long ones (interessanter), often with umlaut (älter, größer). Irregular: gut/besser, viel/mehr, gern/lieber.",
+   "star": true
+  },
+  {
+   "id": "S-TOO-ENOUGH",
+   "target": "zu ___ / ___ genug / sehr ___",
+   "gloss": "too ___ / ___ enough / very ___",
+   "example": {
+    "target": "Die Jacke ist zu klein und nicht warm genug.",
+    "gloss": "The jacket is too small and not warm enough."
+   },
+   "note": "genug follows the adjective (groß genug) but precedes a noun (genug Zeit). zu = too; 'too' meaning also is auch.",
+   "star": false
+  },
+  {
+   "id": "S-OBJECT-CASE",
+   "target": "Dativ: mir, dir, ihm, ihr, uns, euch, ihnen / dem, der, dem, den (+n)",
+   "gloss": "dative for the receiver",
+   "example": {
+    "target": "Ich gebe meinem Bruder das Buch. Ich schenke es ihm.",
+    "gloss": "I give my brother the book. I give it to him."
+   },
+   "note": "The receiver is dative with no preposition. Order: dative noun before accusative noun, but pronoun object first: ich gebe es ihm.",
+   "star": false
+  },
+  {
+   "id": "L-TRAVEL",
+   "target": "die Fahrkarte (ticket), das Gleis (platform), der Zug (train), die Verspätung (delay), umsteigen (change trains), die Abfahrt (departure), die Ankunft (arrival), das Hotel (hotel), das Zimmer (room), die Reservierung (reservation), der Koffer (suitcase), die Reise (trip), der Flug (flight), buchen (to book), einfach / hin und zurück (single / return), der Ausweis (ID)",
+   "gloss": "Travel, transport, tickets, hotel",
+   "note": "Ticket is common for flights and events, Fahrkarte for trains. Der Zug hat zehn Minuten Verspätung is the announcement you will hear most.",
+   "star": false
+  },
+  {
+   "id": "L-SHOPPING",
+   "target": "das Geschäft (shop), einkaufen (to shop), die Kasse (checkout), der Preis (price), billig (cheap), teuer (expensive), das Geld (money), bar (cash), die Karte (card), anprobieren (try on), die Größe (size), die Hose (trousers), das Hemd (shirt), die Schuhe (shoes), die Jacke (jacket), umtauschen (exchange)",
+   "gloss": "Shopping, clothes, money",
+   "note": "Many small shops are cash only: Nur Barzahlung. günstig is the polite word for cheap; billig can mean shoddy.",
+   "star": false
+  },
+  {
+   "id": "L-HEALTH",
+   "target": "der Kopf (head), der Bauch (stomach), der Hals (throat), das Bein (leg), der Rücken (back), die Schmerzen (pain, pl), die Erkältung (cold), das Fieber (fever), der Husten (cough), die Praxis (doctor's office), der Termin (appointment), die Krankschreibung (sick note), das Rezept (prescription), die Tablette (pill), wehtun (to hurt), gesund (healthy)",
+   "gloss": "Health, body, at the doctor",
+   "note": "Pain is a dative construction: Mir tut der Kopf weh, or Ich habe Kopfschmerzen. Rezept means prescription as well as recipe.",
+   "star": false
+  },
+  {
+   "id": "L-WORK",
+   "target": "die Arbeit (work), der Job (job), die Stelle (position), der Chef / die Chefin (boss), der Kollege (colleague), die Firma (company), das Büro (office), die Besprechung (meeting), der Feierabend (end of the working day), der Urlaub (holiday), das Gehalt (salary), die Ausbildung (vocational training), das Studium (degree course), die Prüfung (exam), die Uni (university), kündigen (to quit)",
+   "gloss": "Work and study",
+   "note": "Feierabend has no English word: the moment work ends. studieren means being at university, not doing homework (lernen).",
+   "star": false
+  },
+  {
+   "id": "L-WEATHER",
+   "target": "das Wetter (weather), die Sonne (sun), der Regen (rain), der Schnee (snow), der Wind (wind), die Wolke (cloud), der Grad (degree), warm (warm), kalt (cold), heiß (hot), es regnet (it's raining), es schneit (it's snowing), der Frühling (spring), der Sommer (summer), der Herbst (autumn), der Winter (winter)",
+   "gloss": "Weather and seasons",
+   "note": "Weather is always es: es ist kalt, es regnet. Temperatures are said as fünf Grad, minus zwei; seasons take im: im Herbst.",
+   "star": false
+  },
+  {
+   "id": "L-ROUTINE",
+   "target": "aufstehen (get up), frühstücken (have breakfast), duschen (shower), sich anziehen (get dressed), die Wohnung (flat), die Küche (kitchen), das Bad (bathroom), das Schlafzimmer (bedroom), aufräumen (tidy up), putzen (clean), abwaschen (wash up), die Wäsche (laundry), einkaufen (shop for food), kochen (cook), der Müll (rubbish), fernsehen (watch TV)",
+   "gloss": "Daily routine, house, chores",
+   "note": "Most routine verbs are separable: ich stehe um sieben auf, ich räume auf. Rubbish is sorted: Papier, Plastik, Bio, Restmüll.",
+   "star": false
+  },
+  {
+   "id": "P-SENTENCE-STRESS",
+   "target": "Betonung auf dem neuen Inhalt; Verbklammer: das Ende trägt Gewicht",
+   "gloss": "Content words (nouns, main verbs, adjectives) are stressed, articles and pronouns are not. In the verb bracket the final element (participle, prefix, infinitive) carries a strong beat: Ich habe ihn gestern ANgerufen. Rhythm is stress-timed like English, so unstressed syllables are squeezed.",
+   "note": "Learners who put the beat on the modal (ich MUSS gehen) sound like they are insisting; the neutral beat is on gehen.",
+   "star": false
+  },
+  {
+   "id": "P-Q-INTONATION",
+   "target": "Ja/Nein-Frage steigt, W-Frage fällt, Aussage fällt",
+   "gloss": "Yes/no questions rise at the end (Kommst du mit? ↗), wh-questions fall like statements (Wann kommst du? ↘). A statement said with a rise becomes a question: Du kommst mit? ↗ A falling wh-question is not rude; a rising one sounds unsure.",
+   "note": "Tag questions use oder? or ne? with a rise: Du kommst doch mit, oder? ↗",
+   "star": false
+  },
+  {
+   "id": "C-WOULD-YOU-LIKE",
+   "target": "Hast du Lust, ___ zu ___? / Möchten Sie ___?",
+   "gloss": "Do you feel like ___-ing? / Would you like ___?",
+   "example": {
+    "target": "Hast du Lust, heute Abend essen zu gehen?",
+    "gloss": "Do you feel like going out to eat tonight?"
+   },
+   "note": "Lust haben zu is the friendly invitation; Möchtest du / Möchten Sie is the polite offer. zu goes right before the final verb.",
+   "star": true
+  },
+  {
+   "id": "C-THANKS-BUT",
+   "target": "Danke, aber ___ / Das ist lieb, aber ___",
+   "gloss": "Thanks, but ___ / That's kind, but ___",
+   "example": {
+    "target": "Das ist lieb, aber ich habe am Freitag leider schon etwas vor.",
+    "gloss": "That's kind, but unfortunately I already have plans on Friday."
+   },
+   "note": "aber keeps normal word order after the comma. etwas vorhaben = to have plans; leider makes the no polite.",
+   "star": true
+  },
+  {
+   "id": "C-HOW-ABOUT",
+   "target": "Wie wäre es mit ___? / Was hältst du von ___?",
+   "gloss": "How about ___? / What do you think of ___?",
+   "example": {
+    "target": "Wie wäre es mit Samstag? – Samstag passt mir gut.",
+    "gloss": "How about Saturday? – Saturday suits me fine."
+   },
+   "note": "Both take the dative: mit dem Kino, von einem Picknick. wäre is Konjunktiv II and makes it a soft suggestion.",
+   "star": true
+  },
+  {
+   "id": "C-SORRY-LATE",
+   "target": "Entschuldige die Verspätung! / Tut mir leid, dass ich zu spät bin.",
+   "gloss": "Sorry for the delay! / Sorry I'm late.",
+   "example": {
+    "target": "Tut mir leid, dass ich zu spät bin, die U-Bahn ist ausgefallen.",
+    "gloss": "Sorry I'm late, the U-Bahn was cancelled."
+   },
+   "note": "zu spät, not spät: spät alone means late in the day. Sie form: Entschuldigen Sie die Verspätung.",
+   "star": false
+  },
+  {
+   "id": "C-BILL",
+   "target": "Die Rechnung, bitte! / Zahlen, bitte! / Können wir zahlen?",
+   "gloss": "The bill, please! / Can we pay?",
+   "example": {
+    "target": "Zahlen, bitte! – Zusammen oder getrennt? – Zusammen. Stimmt so.",
+    "gloss": "The bill, please! – Together or separately? – Together. Keep the change."
+   },
+   "note": "You tip by rounding up when you pay, not by leaving coins: say Stimmt so or name the total (Machen Sie zwanzig).",
+   "star": true
+  },
+  {
+   "id": "C-WHAT-MEAN",
+   "target": "Was bedeutet ___? / Was heißt ___ auf Deutsch?",
+   "gloss": "What does ___ mean? / What is ___ in German?",
+   "example": {
+    "target": "Was bedeutet 'Maultaschen'? – Das sind gefüllte Nudeltaschen.",
+    "gloss": "What does 'Maultaschen' mean? – They're filled pasta pockets."
+   },
+   "note": "bedeuten asks for a meaning, heißen asks for the German word: Was heißt 'onion' auf Deutsch?",
+   "star": true
+  },
+  {
+   "id": "C-SEE-YOU",
+   "target": "Bis dann! / Bis morgen! / Bis später!",
+   "gloss": "See you then! / See you tomorrow! / See you later!",
+   "example": {
+    "target": "Also, Dienstag um sechs. Bis dann!",
+    "gloss": "Right, Tuesday at six. See you then!"
+   },
+   "note": "bis + time word, no verb. Bis bald is for an unspecified soon; Bis gleich for within the hour.",
+   "star": false
+  },
+  {
+   "id": "C-SOUNDS-GOOD",
+   "target": "Klingt gut! / Okay, passt! / Alles klar!",
+   "gloss": "Sounds good! / OK, fine! / All right!",
+   "example": {
+    "target": "Treffen wir uns um acht? – Klingt gut, passt mir.",
+    "gloss": "Shall we meet at eight? – Sounds good, works for me."
+   },
+   "note": "passt (from passen) is the everyday 'works for me'; Abgemacht! or Einverstanden! seal an arrangement.",
+   "star": false
+  },
+  {
+   "id": "F-OPINION",
+   "target": "Ich finde, dass ___ / Meiner Meinung nach ___ / Was meinst du?",
+   "gloss": "I think that ___ / In my opinion ___ / What do you think?",
+   "example": {
+    "target": "Meiner Meinung nach ist Homeoffice eine gute Sache. Was meinst du dazu?",
+    "gloss": "In my opinion working from home is a good thing. What do you think?"
+   },
+   "note": "C-IN-MY-OPINION, D-THINK-THAT, C-WHAT-DO-YOU-THINK. Meiner Meinung nach fills position one, so the verb comes straight after it.",
+   "star": false
+  },
+  {
+   "id": "F-AGREE-DISAGREE",
+   "target": "Da stimme ich dir zu. / Das sehe ich anders. / Ja, aber ___",
+   "gloss": "I agree with you. / I see that differently. / You're right, but ___",
+   "example": {
+    "target": "Da hast du recht, aber ich sehe das ein bisschen anders.",
+    "gloss": "You're right there, but I see it a bit differently."
+   },
+   "note": "C-I-AGREE, C-SEE-POINT-BUT. zustimmen takes the dative (dir, Ihnen). Das stimmt nicht is blunt; Das sehe ich anders is the polite disagreement.",
+   "star": false
+  },
+  {
+   "id": "F-GIVE-REASONS",
+   "target": "___, weil ___ / Ein Beispiel dafür ist ___ / zum Beispiel ___",
+   "gloss": "___ because ___ / An example of this is ___ / for example ___",
+   "example": {
+    "target": "Ich bin dafür, weil man Zeit spart. Zum Beispiel muss man nicht pendeln.",
+    "gloss": "I'm in favour because you save time. For example, you don't have to commute."
+   },
+   "note": "G-BECAUSE, G-SINCE-AS, G-SO. zum Beispiel at the start takes position one: zum Beispiel muss man. dafür/dagegen sein = to be for/against.",
+   "star": false
+  },
+  {
+   "id": "F-NARRATE",
+   "target": "Als ich ___, ___ / Nachdem ich ___ hatte, ___ / Plötzlich ___",
+   "gloss": "When I ___, ___ / After I had ___, ___ / Suddenly ___",
+   "example": {
+    "target": "Als ich am Bahnhof ankam, war der Zug schon weg. Also habe ich ein Taxi genommen.",
+    "gloss": "When I got to the station, the train had already gone. So I took a taxi."
+   },
+   "note": "G-WHEN, D-HAD-DONE, G-SO, G-SEQUENCE. Background in Präteritum (war, hatte, kam), events in Perfekt; plötzlich and dann move the story on.",
+   "star": false
+  },
+  {
+   "id": "F-COMPLAIN",
+   "target": "Ich habe ein Problem mit ___. / Könnten Sie bitte ___?",
+   "gloss": "I have a problem with ___. / Could you please ___?",
+   "example": {
+    "target": "Ich habe ein Problem mit dem Zimmer: Es ist sehr laut. Könnten Sie mir ein anderes geben?",
+    "gloss": "I have a problem with the room: it's very noisy. Could you give me another one?"
+   },
+   "note": "C-THE-THING-IS, D-COULD, G-AND. State the fact, then ask with Könnten Sie. Ich möchte mich beschweren is for formal letters, not the reception desk.",
+   "star": false
+  },
+  {
+   "id": "F-ARRANGE",
+   "target": "Wir könnten ___. / Das geht nicht, weil ___ / Wie wäre es mit ___?",
+   "gloss": "We could ___. / I don't think that's so good, because ___ / How about if ___?",
+   "example": {
+    "target": "Wir könnten Samstag feiern. – Samstag geht nicht. Wie wäre es mit Sonntag?",
+    "gloss": "We could celebrate on Saturday. – Saturday doesn't work. How about Sunday?"
+   },
+   "note": "C-HOW-ABOUT, D-COULD, G-BECAUSE, C-SOUNDS-GOOD. Goethe B1 Sprechen Teil 1: propose, reject with a reason, counter-propose, confirm.",
+   "star": false
+  },
+  {
+   "id": "F-ADVISE",
+   "target": "Du solltest ___. / An deiner Stelle würde ich ___.",
+   "gloss": "You should ___. / In your place I would ___. / Watch out that ___",
+   "example": {
+    "target": "Du solltest früher losfahren. An deiner Stelle würde ich den Zug nehmen.",
+    "gloss": "You should leave earlier. In your place I'd take the train."
+   },
+   "note": "D-SHOULD, C-IF-I-WERE-YOU, D-SHOULD-HAVE. würde + infinitive at the end; an deiner Stelle takes position one and inverts.",
+   "star": false
+  },
+  {
+   "id": "F-REPORT",
+   "target": "Sie hat gesagt, dass ___ / Sie hat mich gebeten, ___ zu ___",
+   "gloss": "She said that ___ / She asked me to ___ / She asked whether ___",
+   "example": {
+    "target": "Die Chefin hat gesagt, dass der Termin Donnerstag ist, und mich gebeten, es weiterzusagen.",
+    "gloss": "The boss said the deadline is Thursday and asked me to pass it on."
+   },
+   "note": "D-SAID-THAT, D-TOLD-TO, G-THAT. In speech the tense stays and dass carries the report; Konjunktiv I (sie sei) is for news and writing.",
+   "star": false
+  },
+  {
+   "id": "D-HAD-DONE",
+   "target": "ich hatte schon ___, als ___ / ich war schon ___, als ___",
+   "gloss": "I had already ___ when ___",
+   "example": {
+    "target": "Ich hatte den Zug schon verpasst, als ich am Gleis ankam.",
+    "gloss": "I had already missed the train when I got to the platform."
+   },
+   "note": "Plusquamperfekt: hatte/war + Partizip II at the end. Use it after nachdem and for 'already before'; als introduces the later event.",
+   "star": true
+  },
+  {
+   "id": "D-HAVE-BEEN-ING",
+   "target": "ich ___ seit ___ / ich ___ schon ___ lang",
+   "gloss": "I have been ___-ing for ___",
+   "example": {
+    "target": "Ich lerne seit zwei Jahren Deutsch und arbeite schon drei Monate hier.",
+    "gloss": "I've been learning German for two years and working here for three months."
+   },
+   "note": "Present tense plus seit (dative) or schon plus a length of time. A Perfekt here would mean the activity is over.",
+   "star": true
+  },
+  {
+   "id": "D-MUST-BE",
+   "target": "er muss ___ sein / das kann nicht ___ sein / wahrscheinlich ___",
+   "gloss": "he must be ___ / that can't be ___ / probably ___",
+   "example": {
+    "target": "Er muss krank sein, er ist nie so spät. Das kann nicht stimmen.",
+    "gloss": "He must be ill, he's never this late. That can't be right."
+   },
+   "note": "The modals do deduction as in English: muss (certain), kann nicht (impossible), könnte (possible). Adverbs also work: wahrscheinlich, bestimmt.",
+   "star": false
+  },
+  {
+   "id": "D-SHOULD-HAVE",
+   "target": "ich hätte ___ sollen / du hättest ___ sollen",
+   "gloss": "I should have ___ / you should have ___",
+   "example": {
+    "target": "Du hättest früher anfangen sollen.",
+    "gloss": "You should have started earlier."
+   },
+   "note": "hätte + infinitive + sollen, both at the end (the double infinitive). Learners wrongly say hätte gesollt; the modal stays an infinitive.",
+   "star": true
+  },
+  {
+   "id": "D-COULD-HAVE",
+   "target": "ich hätte ___ können / das hätte ___ sein können",
+   "gloss": "I could have ___ / that could have been ___",
+   "example": {
+    "target": "Ich hätte dich anrufen können, aber mein Handy war leer.",
+    "gloss": "I could have called you, but my phone was dead."
+   },
+   "note": "hätte + infinitive + können, same double-infinitive pattern as sollen. 'might have' is hätte ... können or vielleicht + Perfekt.",
+   "star": false
+  },
+  {
+   "id": "D-WOULD-RATHER",
+   "target": "ich würde lieber ___ / ich ___ lieber ___ / mir wäre ___ lieber",
+   "gloss": "I'd rather ___ / I prefer ___ / I'd prefer ___",
+   "example": {
+    "target": "Ich würde lieber in die Berge fahren, ans Meer kann man immer.",
+    "gloss": "I'd rather go to the mountains; the seaside is always possible."
+   },
+   "note": "lieber is the comparative of gern: ich fahre lieber, ich würde lieber fahren. am liebsten = most of all. lieber ... als = rather ... than.",
+   "star": true
+  },
+  {
+   "id": "D-IF-I-WERE",
+   "target": "wenn ich ___ wäre / hätte, würde ich ___",
+   "gloss": "if I were / had ___, I would ___",
+   "example": {
+    "target": "Wenn ich mehr Zeit hätte, würde ich jeden Tag Deutsch lernen.",
+    "gloss": "If I had more time, I would learn German every day."
+   },
+   "note": "Konjunktiv II in both halves: wäre, hätte, könnte, müsste in the wenn-clause, würde + infinitive in the main clause. Verb-final after wenn.",
+   "star": true
+  },
+  {
+   "id": "D-WISH",
+   "target": "ich wünschte, ich hätte ___ / wenn ich doch nur ___ könnte!",
+   "gloss": "I wish I had ___ / if only I could ___!",
+   "example": {
+    "target": "Ich wünschte, ich hätte mehr Urlaub. Wenn ich doch nur fliegen könnte!",
+    "gloss": "I wish I had more holiday. If only I could fly!"
+   },
+   "note": "wünschte is itself Konjunktiv II and the wish clause follows in Konjunktiv II too. doch nur inside a wenn-clause is 'if only'.",
+   "star": false
+  },
+  {
+   "id": "D-TOLD-TO",
+   "target": "sie hat mir gesagt, ich soll ___ / sie hat mich gebeten, ___ zu ___",
+   "gloss": "she told me to ___ / she asked me to ___",
+   "example": {
+    "target": "Sie hat mich gebeten, das Team zu informieren.",
+    "gloss": "She asked me to inform the team."
+   },
+   "note": "No 'tell someone to' infinitive: use sagen + sollen clause, or bitten (accusative person) + zu-infinitive. gebeten is the participle of bitten.",
+   "star": false
+  },
+  {
+   "id": "D-SAID-THAT",
+   "target": "er hat gesagt, dass ___ / er hat gefragt, ob ___",
+   "gloss": "he said that ___ / he asked whether ___",
+   "example": {
+    "target": "Er hat gesagt, dass er später kommt, und gefragt, ob wir warten können.",
+    "gloss": "He said he's coming later and asked whether we can wait."
+   },
+   "note": "dass and ob both send the verb to the end. Spoken German keeps the original tense; no backshift as in English 'said he was coming'.",
+   "star": true
+  },
+  {
+   "id": "D-COULD-YOU-TELL",
+   "target": "Könnten Sie mir sagen, wo ___? / Wissen Sie, ob ___?",
+   "gloss": "Could you tell me where ___? / Do you know whether ___?",
+   "example": {
+    "target": "Könnten Sie mir sagen, wann der nächste Zug fährt?",
+    "gloss": "Could you tell me when the next train leaves?"
+   },
+   "note": "Indirect question: the question word (or ob for yes/no) starts the clause and the verb goes to the end: wann der Zug fährt, not wann fährt der Zug.",
+   "star": true
+  },
+  {
+   "id": "D-PASSIVE",
+   "target": "es wurde ___ gebaut / es ist aus ___ / es wird ___ gemacht",
+   "gloss": "it was built ___ / it is made of ___ / it is being made ___",
+   "example": {
+    "target": "Das Rathaus wurde 1905 gebaut. Der Tisch ist aus Holz.",
+    "gloss": "The town hall was built in 1905. The table is made of wood."
+   },
+   "note": "werden + Partizip II, with wurde for the past. 'made of' is simply aus + material, no participle; by whom is von + dative.",
+   "star": false
+  },
+  {
+   "id": "D-BE-USED-TO",
+   "target": "ich bin ___ gewöhnt / ich habe mich an ___ gewöhnt",
+   "gloss": "I'm used to ___ / I've got used to ___",
+   "example": {
+    "target": "Ich habe mich an das Wetter gewöhnt, aber an das Frühstück noch nicht.",
+    "gloss": "I've got used to the weather, but not yet to the breakfast."
+   },
+   "note": "sich gewöhnen an + accusative; the state is gewöhnt sein an + accusative. Not to be confused with gewohnt (the participle of wohnen).",
+   "star": false
+  },
+  {
+   "id": "D-LET-MAKE",
+   "target": "sie hat mich ___ lassen / sie hat mich gezwungen, ___ zu ___",
+   "gloss": "she let me ___ / she made me ___",
+   "example": {
+    "target": "Meine Eltern haben mich nie allein reisen lassen.",
+    "gloss": "My parents never let me travel alone."
+   },
+   "note": "lassen + accusative + infinitive, and in the Perfekt lassen stays infinitive: haben ... lassen. 'made me' is zwingen zu or dafür sorgen, dass.",
+   "star": false
+  },
+  {
+   "id": "D-SUPPOSED-TO",
+   "target": "ich soll ___ / ich sollte eigentlich ___ / du solltest lieber ___",
+   "gloss": "I'm supposed to ___ / I was actually supposed to ___ / you'd better ___",
+   "example": {
+    "target": "Ich soll um neun beim Arzt sein. Du solltest lieber jetzt losgehen.",
+    "gloss": "I'm supposed to be at the doctor's at nine. You'd better leave now."
+   },
+   "note": "sollen with no umlaut = someone else expects it. sollte eigentlich = was supposed to but; lieber + sollte gives 'had better'.",
+   "star": false
+  },
+  {
+   "id": "D-ABLE-TO",
+   "target": "ich werde ___ können / ich konnte ___ / ich habe es geschafft, ___",
+   "gloss": "I'll be able to ___ / I was able to ___ / I managed to ___",
+   "example": {
+    "target": "Nächstes Jahr werde ich fließend sprechen können. Gestern konnte ich nicht kommen.",
+    "gloss": "Next year I'll be able to speak fluently. Yesterday I couldn't come."
+   },
+   "note": "können has all tenses, so no substitute is needed: werde ... können, konnte, habe ... gekonnt. schaffen adds the idea of managing.",
+   "star": false
+  },
+  {
+   "id": "T-PAST-PERF",
+   "target": "hatte / war + Partizip II",
+   "gloss": "had + past participle",
+   "example": {
+    "target": "Nachdem wir gegessen hatten, sind wir ins Kino gegangen.",
+    "gloss": "After we had eaten, we went to the cinema."
+   },
+   "note": "Plusquamperfekt for the earlier of two past events, almost always with nachdem or als. hatte/war go to the end of the nachdem-clause.",
+   "star": true
+  },
+  {
+   "id": "T-PERF-PROG",
+   "target": "Präsens + seit / schon (kein eigenes Tempus)",
+   "gloss": "present + since / already (no separate tense)",
+   "example": {
+    "target": "Ich warte schon seit einer Stunde auf den Bus.",
+    "gloss": "I've been waiting for the bus for an hour."
+   },
+   "note": "Does not exist as a form: the present with seit or schon covers it. A Perfekt (ich habe gewartet) means the waiting is finished.",
+   "star": false
+  },
+  {
+   "id": "T-PASSIVE",
+   "target": "wird / wurde + Partizip II (Vorgang) / ist + Partizip II (Zustand)",
+   "gloss": "is / was being + participle (process) / is + participle (state)",
+   "example": {
+    "target": "Die Straße wird repariert. Gestern wurde sie gesperrt. Jetzt ist sie gesperrt.",
+    "gloss": "The road is being repaired. Yesterday it was closed. Now it is closed."
+   },
+   "note": "werden-passive describes the action, sein-passive the resulting state. Verbs with dative objects keep it: mir wurde geholfen.",
+   "star": false
+  },
+  {
+   "id": "T-COND2",
+   "target": "wenn ___ Konjunktiv II, würde ich ___ / wäre, hätte, könnte, müsste",
+   "gloss": "if ___ (subjunctive), I would ___",
+   "example": {
+    "target": "Wenn ich du wäre, würde ich das Angebot annehmen.",
+    "gloss": "If I were you, I'd accept the offer."
+   },
+   "note": "Only sein, haben, the modals and a few verbs (wüsste, käme, ginge) use their own Konjunktiv II; everything else uses würde + infinitive.",
+   "star": true
+  },
+  {
+   "id": "T-REPORTED",
+   "target": "gesprochen: gleiche Zeit + dass / geschrieben: Konjunktiv I (sei)",
+   "gloss": "spoken: same tense + dass / written: Konjunktiv I",
+   "example": {
+    "target": "Er hat gesagt, dass er keine Zeit hat. (Zeitung: Er sagte, er habe keine Zeit.)",
+    "gloss": "He said he has no time. (Newspaper: He said he had no time.)"
+   },
+   "note": "Spoken German does not shift tense. Konjunktiv I (habe, sei, könne, werde) marks reported speech in news and reports; recognise it, do not force it.",
+   "star": false
+  },
+  {
+   "id": "G-ALTHOUGH",
+   "target": "obwohl ___ (Verb am Ende) / ___, trotzdem ___ (Verb zuerst)",
+   "gloss": "although / nevertheless",
+   "example": {
+    "target": "Obwohl es geregnet hat, sind wir wandern gegangen.",
+    "gloss": "Although it rained, we went hiking."
+   },
+   "note": "obwohl subordinates (verb last); trotzdem is an adverb in position one that inverts. Learners mix them: obwohl ... trotzdem together is redundant.",
+   "star": true
+  },
+  {
+   "id": "G-WHILE",
+   "target": "während ___ (Verb am Ende) / ___, dagegen ___",
+   "gloss": "while / whereas",
+   "example": {
+    "target": "Während meine Schwester gern reist, bleibe ich lieber zu Hause.",
+    "gloss": "While my sister likes travelling, I prefer staying home."
+   },
+   "note": "während is both temporal 'while' and contrastive 'whereas', verb-final either way. As a preposition it takes the genitive: während des Essens.",
+   "star": false
+  },
+  {
+   "id": "G-SINCE-AS",
+   "target": "da ___ (Verb am Ende) / weil ___",
+   "gloss": "since / as (reason)",
+   "example": {
+    "target": "Da ich morgen früh raus muss, gehe ich jetzt ins Bett.",
+    "gloss": "Since I have to be up early tomorrow, I'm going to bed now."
+   },
+   "note": "da gives a reason the listener already half knows and usually comes first; weil answers warum. Both are verb-final.",
+   "star": false
+  },
+  {
+   "id": "G-SO-THAT",
+   "target": "damit ___ (Verb am Ende) / so dass ___",
+   "gloss": "so that (purpose) / so that (result)",
+   "example": {
+    "target": "Ich spreche langsam, damit alle mich verstehen.",
+    "gloss": "I speak slowly so that everyone understands me."
+   },
+   "note": "damit for purpose with a different subject; um ... zu when the subjects match. sodass / so dass is the result, not the aim.",
+   "star": false
+  },
+  {
+   "id": "G-IN-ORDER-TO",
+   "target": "um ___ zu ___",
+   "gloss": "in order to ___",
+   "example": {
+    "target": "Ich bin nach Berlin gezogen, um Deutsch zu lernen.",
+    "gloss": "I moved to Berlin in order to learn German."
+   },
+   "note": "um opens the clause, zu + infinitive closes it, comma before um. Only when both verbs share a subject; otherwise damit.",
+   "star": true
+  },
+  {
+   "id": "G-WHOSE-WHERE",
+   "target": "dessen / deren ___ (whose) / wo ___ (where) / als ___ (when)",
+   "gloss": "whose / where / when (relative)",
+   "example": {
+    "target": "Das ist die Stadt, wo ich studiert habe, und der Kollege, dessen Frau Ärztin ist.",
+    "gloss": "That's the city where I studied and the colleague whose wife is a doctor."
+   },
+   "note": "wo replaces in der/in dem for places; dessen (m/n) and deren (f/pl) never change for the following noun. All are verb-final.",
+   "star": false
+  },
+  {
+   "id": "G-VERB-PREP",
+   "target": "warten auf +A, denken an +A, sich interessieren für +A, träumen von +D",
+   "gloss": "wait for, think of, be interested in, look forward to",
+   "example": {
+    "target": "Ich freue mich auf das Wochenende und interessiere mich für Fotografie.",
+    "gloss": "I'm looking forward to the weekend and I'm interested in photography."
+   },
+   "note": "Also: sprechen über +A, abhängen von +D, sich ärgern über +A, träumen von +D, bitten um +A, sich kümmern um +A. Learn verb, preposition and case as one word.",
+   "star": false
+  },
+  {
+   "id": "G-EITHER-NEITHER",
+   "target": "entweder ___ oder ___ / weder ___ noch ___",
+   "gloss": "either ___ or ___ / neither ___ nor ___",
+   "example": {
+    "target": "Entweder wir fahren mit dem Zug oder wir bleiben hier. Ich habe weder Zeit noch Geld.",
+    "gloss": "Either we go by train or we stay here. I have neither time nor money."
+   },
+   "note": "weder ... noch already negates: no nicht or kein. After entweder both orders are heard: Entweder wir fahren / Entweder fahren wir.",
+   "star": false
+  },
+  {
+   "id": "G-AS-SOON-AS",
+   "target": "sobald ___ (Verb am Ende) / bis ___",
+   "gloss": "as soon as / by the time",
+   "example": {
+    "target": "Ich melde mich, sobald ich zu Hause bin.",
+    "gloss": "I'll be in touch as soon as I'm home."
+   },
+   "note": "sobald is verb-final and uses the present for the future, like wenn. 'by the time' is bis + clause, or bis + noun: bis Freitag.",
+   "star": false
+  },
+  {
+   "id": "G-INSTEAD-OF",
+   "target": "statt ___ zu ___ / anstatt + Gen. / außer + Dat.",
+   "gloss": "instead of ___-ing / instead of / apart from",
+   "example": {
+    "target": "Statt zu fliegen, nehme ich den Nachtzug. Außer mir kommt niemand.",
+    "gloss": "Instead of flying, I'm taking the night train. Apart from me nobody is coming."
+   },
+   "note": "statt/anstatt take the genitive with nouns (statt des Zuges) but in speech often the dative. außer is always dative.",
+   "star": false
+  },
+  {
+   "id": "S-RELATIVE",
+   "target": "der/den/dem, die/die/der, das/das/dem, die/die/denen (Nom/Akk/Dat)",
+   "gloss": "relative pronouns by case",
+   "example": {
+    "target": "Der Mann, den ich getroffen habe, ist der Chef, mit dem du sprechen musst.",
+    "gloss": "The man I met is the boss you need to talk to."
+   },
+   "note": "Gender and number come from the noun before, case from the role inside the clause. A preposition comes first: mit dem, für die. Never drop it as in English.",
+   "star": true
+  },
+  {
+   "id": "S-REFLEXIVE",
+   "target": "mich, dich, sich, uns, euch, sich (Akk) / mir, dir, sich (Dat)",
+   "gloss": "myself, yourself, himself... / to myself",
+   "example": {
+    "target": "Ich freue mich auf Sonntag. Ich wasche mir die Hände.",
+    "gloss": "I'm looking forward to Sunday. I'm washing my hands."
+   },
+   "note": "Many verbs are reflexive without an English reflexive: sich freuen, sich erinnern, sich beeilen. Dative reflexive when a body part is the object.",
+   "star": false
+  },
+  {
+   "id": "S-QUANT-ADV",
+   "target": "ein paar, ein bisschen, ziemlich, eher, kaum",
+   "gloss": "a few, a bit, quite, rather, hardly",
+   "example": {
+    "target": "Ich habe ein paar Freunde hier, aber ich spreche kaum Deutsch mit ihnen.",
+    "gloss": "I have a few friends here, but I hardly speak German with them."
+   },
+   "note": "kaum already negates: kaum jemand, kaum Zeit. ein paar (few) differs from ein Paar (a pair). ziemlich gut = quite good, eher = rather/more.",
+   "star": false
+  },
+  {
+   "id": "S-SUPERLATIVE",
+   "target": "der/die/das ___-ste / am ___-sten / so ___ wie",
+   "gloss": "the ___-est / most ___ / as ___ as",
+   "example": {
+    "target": "Berlin ist die größte Stadt, aber Hamburg gefällt mir am besten.",
+    "gloss": "Berlin is the biggest city, but I like Hamburg best."
+   },
+   "note": "am -sten after a verb, der -ste before a noun. Comparison: so groß wie (as big as) but größer als (bigger than); als and wie are not swapped.",
+   "star": true
+  },
+  {
+   "id": "S-GENITIVE",
+   "target": "des/der ___(e)s / von + Dativ / Annas Auto",
+   "gloss": "of the ___ / of / Anna's car",
+   "example": {
+    "target": "Das Auto von meinem Bruder ist kaputt. (Schriftlich: das Auto meines Bruders.)",
+    "gloss": "My brother's car is broken. (Written: the car of my brother.)"
+   },
+   "note": "Spoken German prefers von + dative; the genitive (des Mannes, der Frau) is for writing. Names take -s with no apostrophe: Annas, Peters.",
+   "star": false
+  },
+  {
+   "id": "L-OPINION",
+   "target": "die Meinung (opinion), der Grund (reason), das Argument (argument), der Vorteil (advantage), der Nachteil (disadvantage), die Nachrichten (news), die Zeitung (newspaper), der Bericht (report), die Werbung (advertising), die Sendung (programme), das Thema (topic), diskutieren (to discuss), zustimmen (to agree), widersprechen (to contradict), überzeugen (to convince), einerseits / andererseits (on the one hand / on the other)",
+   "gloss": "Opinion, argument, media",
+   "note": "Vor- und Nachteile is the fixed pair the B1 exam loves. widersprechen takes the dative: Ich widerspreche dir.",
+   "star": false
+  },
+  {
+   "id": "L-FEELINGS",
+   "target": "das Gefühl (feeling), die Freude (joy), die Angst (fear), die Sorge (worry), der Stress (stress), glücklich (happy), traurig (sad), enttäuscht (disappointed), sauer (annoyed), nervös (nervous), die Beziehung (relationship), sich verlieben (to fall in love), sich streiten (to argue), sich trennen (to split up), vertrauen (to trust), vermissen (to miss someone)",
+   "gloss": "Feelings and relationships",
+   "note": "Fear and worry are haben: Ich habe Angst vor + dative. vermissen is for people and things; verpassen is missing a train.",
+   "star": false
+  },
+  {
+   "id": "L-ENVIRONMENT",
+   "target": "die Umwelt (environment), der Klimawandel (climate change), die Luft (air), der Müll (rubbish), recyceln (to recycle), die Verschmutzung (pollution), der Verkehr (traffic), das Fahrrad (bicycle), der Stau (traffic jam), die Innenstadt (city centre), der Stadtrand (outskirts), der Wald (forest), der Fluss (river), der See (lake), das Meer (sea), der Berg (mountain)",
+   "gloss": "Environment, city, nature",
+   "note": "der See is a lake, die See is the sea. Umweltfreundlich and nachhaltig (sustainable) are the adjectives every B1 text uses.",
+   "star": false
+  },
+  {
+   "id": "L-EDUCATION",
+   "target": "die Schule (school), das Abitur (school-leaving exam), die Ausbildung (apprenticeship), das Studium (degree), der Abschluss (qualification), das Fach (subject), die Vorlesung (lecture), das Praktikum (internship), die Bewerbung (application), der Lebenslauf (CV), das Vorstellungsgespräch (job interview), die Erfahrung (experience), die Weiterbildung (further training), die Karriere (career), sich bewerben um (to apply for), bestehen (to pass)",
+   "gloss": "Education, learning, career",
+   "note": "Ausbildung is the dual vocational track most Germans take; it is not 'education' in general (Bildung). sich bewerben um + accusative, bei + employer.",
+   "star": false
+  },
+  {
+   "id": "L-HOUSING",
+   "target": "die Wohnung (flat), die Miete (rent), der Vermieter (landlord), der Mieter (tenant), die Nebenkosten (utilities), die Kaution (deposit), der Mietvertrag (lease), die WG (flat-share), der Nachbar (neighbour), die Nachbarin (neighbour, f), der Lärm (noise), umziehen (to move house), einziehen (to move in), die Heizung (heating), der Balkon (balcony), das Erdgeschoss (ground floor)",
+   "gloss": "Housing, renting, neighbours",
+   "note": "Kaltmiete is rent without utilities, Warmmiete with them; ads quote both. 3-Zimmer-Wohnung counts all rooms, not bedrooms.",
+   "star": false
+  },
+  {
+   "id": "L-TECH",
+   "target": "das Handy (mobile phone), der Rechner (computer), der Bildschirm (screen), die Tastatur (keyboard), das Passwort (password), die E-Mail (email), die Nachricht (message), herunterladen (to download), hochladen (to upload), speichern (to save), löschen (to delete), das WLAN (wifi), die Verbindung (connection), die App (app), das soziale Netzwerk (social network), der Datenschutz (data protection)",
+   "gloss": "Technology and the internet",
+   "note": "WLAN is said veh-lahn and means wifi. Handy is German only; on the phone means am Telefon, online is just online.",
+   "star": false
+  },
+  {
+   "id": "P-CONNECTED",
+   "target": "hab ich, geht's, kannste, nich, 'n / 'ne, ham wir",
+   "gloss": "Unstressed e drops: hab ich, geh ich, ich hab's. es shrinks to 's (geht's, gibt's), du fuses onto the verb (kannste, haste). ein/eine become 'n/'ne, haben becomes ham. nicht is often nich and the final -en of verbs loses its vowel: komm'n.",
+   "note": "You do not need to produce these, but you must hear them: hab ich das gesagt? is ich habe das gesagt with two syllables gone.",
+   "star": false
+  },
+  {
+   "id": "P-NATIVE-SPEED",
+   "target": "Endungen und Pronomen verschwinden; der Satzrahmen bleibt",
+   "gloss": "At speed the -e and -en endings, ich after a verb, and es all shrink, but the verb bracket stays: the final participle or prefix is still clearly stressed. Listen for the first and last stressed word of the clause; the middle can be reconstructed. Regional accents change vowels more than consonants.",
+   "note": "Tip for the Hören test: the second verb part at the end (angerufen, mitgebracht) is loud; catch it and the sentence makes sense.",
+   "star": false
+  },
+  {
+   "id": "C-IN-MY-OPINION",
+   "target": "Meiner Meinung nach ___ / Ich finde, dass ___",
+   "gloss": "In my opinion ___ / I think that ___",
+   "example": {
+    "target": "Meiner Meinung nach sollte man weniger Auto fahren.",
+    "gloss": "In my opinion people should drive less."
+   },
+   "note": "Meiner Meinung nach counts as position one, so the verb comes next: nach sollte man. Not meiner Meinung nach, man sollte.",
+   "star": true
+  },
+  {
+   "id": "C-I-AGREE",
+   "target": "Da stimme ich zu. / Genau! / Da hast du recht.",
+   "gloss": "I agree. / Exactly! / You're right.",
+   "example": {
+    "target": "Genau, da hast du völlig recht.",
+    "gloss": "Exactly, you're completely right there."
+   },
+   "note": "recht haben, not recht sein. Sie form: Da haben Sie recht. Stimmt! on its own is an everyday 'true'.",
+   "star": false
+  },
+  {
+   "id": "C-SEE-POINT-BUT",
+   "target": "Das verstehe ich, aber ___ / Das stimmt schon, aber ___",
+   "gloss": "I understand that, but ___ / That's true, but ___",
+   "example": {
+    "target": "Das stimmt schon, aber im Homeoffice fehlt mir der Kontakt zu den Kollegen.",
+    "gloss": "That's true, but at home I miss the contact with colleagues."
+   },
+   "note": "schon in Das stimmt schon means 'granted', and prepares the aber. Normal word order continues after aber.",
+   "star": true
+  },
+  {
+   "id": "C-THE-THING-IS",
+   "target": "Die Sache ist die: ___ / Das Problem ist, dass ___",
+   "gloss": "The thing is: ___ / The problem is that ___",
+   "example": {
+    "target": "Die Sache ist die: Das Zimmer ist laut und das WLAN funktioniert nicht.",
+    "gloss": "The thing is: the room is noisy and the wifi doesn't work."
+   },
+   "note": "After the colon a full main clause follows. Das Problem ist, dass sends the verb to the end. Also common: Es ist so: ...",
+   "star": false
+  },
+  {
+   "id": "C-WHAT-DO-YOU-THINK",
+   "target": "Was meinst du? / Was denkst du darüber? / Wie sehen Sie das?",
+   "gloss": "What do you think? / What's your view on it?",
+   "example": {
+    "target": "Ich bin für den Vorschlag. Was meinst du?",
+    "gloss": "I'm in favour of the proposal. What do you think?"
+   },
+   "note": "meinen is the natural verb for opinions; Was denkst du? asks what is on your mind. darüber = about it (da + über).",
+   "star": true
+  },
+  {
+   "id": "C-IF-I-WERE-YOU",
+   "target": "An deiner Stelle würde ich ___ / Wenn ich du wäre, würde ich ___",
+   "gloss": "In your place I'd ___ / If I were you, I'd ___",
+   "example": {
+    "target": "An deiner Stelle würde ich noch mal mit dem Chef reden.",
+    "gloss": "If I were you, I'd talk to the boss again."
+   },
+   "note": "An deiner Stelle (Sie: an Ihrer Stelle) is the everyday form and takes position one. The infinitive goes to the end after würde.",
+   "star": true
+  },
+  {
+   "id": "C-TO-BE-HONEST",
+   "target": "Ehrlich gesagt, ___ / Um ehrlich zu sein, ___",
+   "gloss": "To be honest, ___",
+   "example": {
+    "target": "Ehrlich gesagt habe ich keine Lust auf die Party.",
+    "gloss": "To be honest, I don't feel like the party."
+   },
+   "note": "A fronted ehrlich gesagt counts as position one, so the verb follows directly and the comma is optional in speech.",
+   "star": false
+  },
+  {
+   "id": "C-IT-DEPENDS",
+   "target": "Das kommt darauf an. / Es hängt davon ab, ob ___",
+   "gloss": "It depends. / It depends on whether ___",
+   "example": {
+    "target": "Kommst du mit? – Kommt drauf an, wann ihr losfahrt.",
+    "gloss": "Are you coming? – Depends when you're leaving."
+   },
+   "note": "ankommen auf + accusative; before a clause the preposition becomes darauf/davon and the clause is verb-final. Spoken: Kommt drauf an.",
+   "star": true
+  },
+  {
+   "id": "F-ARGUE",
+   "target": "Erstens ___, zweitens ___. / Dafür spricht, dass ___",
+   "gloss": "Firstly ___, secondly ___. / In favour is that ___ / Against it is that ___",
+   "example": {
+    "target": "Dafür spricht, dass die Leute erholter sind. Dagegen spricht, dass es teuer ist.",
+    "gloss": "In favour: people are better rested. Against: it is expensive."
+   },
+   "note": "C-ADMITTEDLY, G-HOWEVER, G-OTHER-HAND, C-IN-SHORT. Number the points (erstens, zweitens, außerdem) and finish with insgesamt or alles in allem.",
+   "star": false
+  },
+  {
+   "id": "F-HEDGE",
+   "target": "Ich glaube, ___ / wohl / vermutlich / Es könnte sein, dass ___",
+   "gloss": "I think ___ / probably / presumably / It could be that ___",
+   "example": {
+    "target": "Das dürfte wohl stimmen, aber ganz sicher bin ich mir nicht.",
+    "gloss": "That's probably right, but I'm not entirely sure."
+   },
+   "note": "D-MIGHT, D-MUST-BE. dürfte + infinitive is the polite 'probably'; the particle wohl softens any claim. sich sicher sein takes the dative mir.",
+   "star": false
+  },
+  {
+   "id": "F-CONCEDE",
+   "target": "Zugegeben, ___ / Das mag sein, aber ___ / Trotzdem ___",
+   "gloss": "Admittedly, ___ / That may be, but ___ / Nevertheless ___",
+   "example": {
+    "target": "Zugegeben, das Auto ist teuer. Trotzdem spart es mir jeden Tag eine Stunde.",
+    "gloss": "Admittedly the car is expensive. Nevertheless it saves me an hour every day."
+   },
+   "note": "C-ADMITTEDLY, G-HOWEVER, C-THAT-SAID, G-ALTHOUGH. zwar ... aber is the neatest concession: Das ist zwar teuer, aber praktisch.",
+   "star": false
+  },
+  {
+   "id": "F-PERSUADE",
+   "target": "Es lohnt sich, ___ zu ___. / Mach dir keine Sorgen.",
+   "gloss": "You can be sure that ___ / It's worth ___-ing / Don't worry.",
+   "example": {
+    "target": "Mach dir keine Sorgen, es lohnt sich wirklich, den Kurs zu machen.",
+    "gloss": "Don't worry, it's really worth doing the course."
+   },
+   "note": "D-WILL, D-VERB-TO, G-AS-LONG-AS. sich lohnen + zu-infinitive; Sie form: Machen Sie sich keine Sorgen. bestimmt and auf jeden Fall reassure.",
+   "star": false
+  },
+  {
+   "id": "F-SUMMARISE",
+   "target": "Einerseits ___, andererseits ___. / Insgesamt ___ / Alles in allem ___",
+   "gloss": "On the one hand ___, on the other ___. / Overall ___ / All in all ___",
+   "example": {
+    "target": "Einerseits spart man Zeit, andererseits fehlt der Kontakt. Insgesamt: mehr Vorteile.",
+    "gloss": "On the one hand you save time, on the other contact is missing. Overall: more pros."
+   },
+   "note": "G-OTHER-HAND, G-WHEREAS, C-ON-BALANCE. einerseits and andererseits each take position one and invert; überwiegen = to outweigh.",
+   "star": false
+  },
+  {
+   "id": "F-SPECULATE",
+   "target": "Er wird wohl ___ / Sie muss ___ haben / Vielleicht hat sie ___",
+   "gloss": "He's probably ___ / She must have ___ / Maybe she ___",
+   "example": {
+    "target": "Er wird wohl im Stau stehen. Oder er muss den Termin vergessen haben.",
+    "gloss": "He's probably stuck in traffic. Or he must have forgotten the appointment."
+   },
+   "note": "D-MUST-HAVE, D-COULD-HAVE, G-OR. werden + wohl expresses present probability; modal + Partizip II + haben does past deduction.",
+   "star": false
+  },
+  {
+   "id": "F-REGRET",
+   "target": "Ich hätte ___ sollen. / Hätte ich das gewusst, ___",
+   "gloss": "I should have ___. / Had I known, ___ / I regret that ___",
+   "example": {
+    "target": "Ich hätte das Angebot annehmen sollen. Hätte ich das gewusst, wäre ich geblieben.",
+    "gloss": "I should have accepted the offer. Had I known, I would have stayed."
+   },
+   "note": "D-SHOULD-HAVE, D-IF-HAD-KNOWN, D-WISH-HAD. Konjunktiv II der Vergangenheit: hätte/wäre + Partizip II, or + infinitive + modal.",
+   "star": false
+  },
+  {
+   "id": "F-FORMAL-REQUEST",
+   "target": "Sehr geehrte Damen und Herren, ___ / Ich bitte Sie, ___ zu ___",
+   "gloss": "Dear Sir or Madam, ___ / I ask you to ___ / Yours sincerely",
+   "example": {
+    "target": "Sehr geehrte Frau Krüger, ich bitte Sie, die Heizung bis zum 15. reparieren zu lassen.",
+    "gloss": "Dear Ms Krüger, I ask you to have the heating repaired by the 15th."
+   },
+   "note": "C-I-WONDER-IF, D-HAVE-IT-DONE, C-WOULD-YOU-MIND. Formal letters use Konjunktiv II (wäre, könnten) and bis + date for deadlines; end with Mit freundlichen Grüßen.",
+   "star": false
+  },
+  {
+   "id": "D-IF-HAD-KNOWN",
+   "target": "wenn ich ___ gewusst hätte, hätte / wäre ich ___",
+   "gloss": "if I had known, I would have ___",
+   "example": {
+    "target": "Wenn ich das gewusst hätte, hätte ich den Job angenommen.",
+    "gloss": "If I had known that, I would have taken the job."
+   },
+   "note": "Both halves use hätte/wäre + Partizip II; there is no würde haben. Inversion drops wenn: Hätte ich das gewusst, ...",
+   "star": true
+  },
+  {
+   "id": "D-MUST-HAVE",
+   "target": "sie muss ___ haben / sie kann nicht ___ haben",
+   "gloss": "she must have ___ / she can't have ___",
+   "example": {
+    "target": "Sie muss den Zug verpasst haben, sie kann das nicht vergessen haben.",
+    "gloss": "She must have missed the train; she can't have forgotten it."
+   },
+   "note": "Modal in the present, then Partizip II + haben/sein at the end: muss verpasst haben, muss gegangen sein. Do not put the modal in the past.",
+   "star": false
+  },
+  {
+   "id": "D-WILL-HAVE-DONE",
+   "target": "bis ___ habe ich ___ / bis ___ werde ich ___ haben",
+   "gloss": "by ___ I will have ___",
+   "example": {
+    "target": "Bis nächsten Sommer habe ich die B2-Prüfung bestanden.",
+    "gloss": "By next summer I will have passed the B2 exam."
+   },
+   "note": "Perfekt plus bis + time is the everyday future perfect; werde ... bestanden haben (Futur II) sounds formal or expresses a guess about the past.",
+   "star": false
+  },
+  {
+   "id": "D-WILL-BE-ING",
+   "target": "dann ___ ich gerade / dann werde ich ___",
+   "gloss": "then I'll be ___-ing",
+   "example": {
+    "target": "Nächstes Jahr um diese Zeit arbeite ich wahrscheinlich in München.",
+    "gloss": "This time next year I'll probably be working in Munich."
+   },
+   "note": "No future continuous: present plus time phrase, or werden + infinitive, with gerade if the ongoing sense matters.",
+   "star": false
+  },
+  {
+   "id": "D-HAD-BEEN-ING",
+   "target": "ich hatte schon ___ lang ___, als ___ / ich ___ seit ___, als ___",
+   "gloss": "I had been ___-ing for ___ when ___",
+   "example": {
+    "target": "Ich hatte schon eine Stunde gewartet, als sie endlich kam.",
+    "gloss": "I had been waiting for an hour when she finally came."
+   },
+   "note": "Plusquamperfekt plus schon + duration, or Präteritum plus seit. No continuous form exists; schon lang(e) carries the sense.",
+   "star": false
+  },
+  {
+   "id": "D-HAVE-IT-DONE",
+   "target": "ich lasse ___ reparieren / ich habe ___ machen lassen",
+   "gloss": "I have ___ repaired / I had ___ done",
+   "example": {
+    "target": "Ich lasse mein Fahrrad reparieren. Wir haben die Küche neu machen lassen.",
+    "gloss": "I'm having my bike repaired. We had the kitchen redone."
+   },
+   "note": "lassen + infinitive is the causative; in the Perfekt both verbs stay infinitive: haben ... machen lassen. Also 'get someone to': ich lasse ihn kommen.",
+   "star": false
+  },
+  {
+   "id": "D-WISH-HAD",
+   "target": "ich wünschte, ich hätte ___ / hätte ich doch nur ___!",
+   "gloss": "I wish I had ___ / if only I had ___!",
+   "example": {
+    "target": "Hätte ich doch nur den Job angenommen!",
+    "gloss": "If only I had taken the job!"
+   },
+   "note": "Verb-first plus doch nur is the natural 'if only'; or wenn ich doch nur ... hätte. Past wishes need hätte/wäre + Partizip II.",
+   "star": false
+  },
+  {
+   "id": "D-WOULD-HABIT",
+   "target": "als ich klein war, ___ wir immer ___ / früher ___ wir ___",
+   "gloss": "when I was little, we would always ___ / we used to ___",
+   "example": {
+    "target": "Als ich klein war, sind wir jeden Sommer an die Ostsee gefahren.",
+    "gloss": "When I was little, we would go to the Baltic every summer."
+   },
+   "note": "No 'would' for habits: Perfekt (or Präteritum in writing) with immer, jeden Sommer, früher. würde here would be misread as a conditional.",
+   "star": false
+  },
+  {
+   "id": "D-REPORT-ING",
+   "target": "er hat zugegeben, dass ___ / er hat bestritten, ___ zu ___",
+   "gloss": "he admitted that ___ / he denied ___-ing / he suggested ___-ing",
+   "example": {
+    "target": "Er hat zugegeben, dass er den Fehler gemacht hat, aber bestritten, es gewusst zu haben.",
+    "gloss": "He admitted making the mistake but denied having known."
+   },
+   "note": "No -ing: dass-clause or zu-infinitive. A past infinitive is Partizip II + zu haben: gewusst zu haben. vorschlagen zu, leugnen/bestreiten zu.",
+   "star": false
+  },
+  {
+   "id": "D-ADVISED-TO",
+   "target": "sie hat mir geraten, ___ zu ___ / sie hat mich gewarnt, nicht zu ___",
+   "gloss": "she advised me to ___ / she warned me not to ___",
+   "example": {
+    "target": "Sie hat mir geraten, alles zu lesen, und mich gewarnt, nichts zu unterschreiben.",
+    "gloss": "She advised me to read everything and warned me not to sign anything."
+   },
+   "note": "raten takes the dative person (mir), warnen the accusative (mich); both continue with a zu-infinitive. warnen vor + dative before a noun.",
+   "star": false
+  },
+  {
+   "id": "D-IS-SAID-TO",
+   "target": "es heißt, dass ___ / er soll ___ sein / angeblich ___",
+   "gloss": "it is said that ___ / he is said to be ___ / allegedly ___",
+   "example": {
+    "target": "Er soll sehr reich sein. Es heißt, das Restaurant sei das beste der Stadt.",
+    "gloss": "He is said to be very rich. The restaurant is said to be the best in town."
+   },
+   "note": "sollen + infinitive reports hearsay: er soll krank sein. Es heißt, dass ... or Konjunktiv I (sei) does the same for a whole clause.",
+   "star": false
+  },
+  {
+   "id": "D-CLEFT",
+   "target": "Was ich will, ist ___ / Es ist ___, der ___ / ___ ist es, was ___",
+   "gloss": "What I want is ___ / It is ___ who ___",
+   "example": {
+    "target": "Was ich brauche, ist ein bisschen Ruhe. Nicht das Geld ist das Problem, sondern die Zeit.",
+    "gloss": "What I need is a bit of peace. It's not the money that's the problem, but the time."
+   },
+   "note": "was-clefts work as in English; 'it was X that' is rare, Germans front the element instead: Das Geld ist nicht das Problem, sondern ...",
+   "star": false
+  },
+  {
+   "id": "D-INVERSION",
+   "target": "nicht nur ___, sondern auch ___ / kaum hatte ich ___, da ___",
+   "gloss": "not only ___ but also ___ / hardly had I ___ when ___",
+   "example": {
+    "target": "Ich habe nicht nur die Prüfung bestanden, sondern auch einen Job gefunden.",
+    "gloss": "Not only did I pass the exam, but I also found a job."
+   },
+   "note": "German has no emphatic inversion after nicht nur; put it in the middle field and let sondern auch follow. Emphasis comes from fronting instead.",
+   "star": false
+  },
+  {
+   "id": "D-NEEDNT-HAVE",
+   "target": "das hättest du nicht ___ müssen / du musstest nicht ___",
+   "gloss": "you needn't have ___ / you didn't need to ___",
+   "example": {
+    "target": "Das hättest du nicht machen müssen, aber danke!",
+    "gloss": "You needn't have done that, but thank you!"
+   },
+   "note": "hättest + nicht + infinitive + müssen for the unnecessary thing that was done; musste nicht for what was simply not required. brauchen: hättest nicht zu kommen brauchen.",
+   "star": false
+  },
+  {
+   "id": "T-FUT-PERF",
+   "target": "werde ___ haben / sein (Futur II) / Perfekt + bis",
+   "gloss": "will have ___ / perfect + by",
+   "example": {
+    "target": "Bis Freitag werde ich den Bericht fertig haben. Er wird schon angekommen sein.",
+    "gloss": "By Friday I will have finished the report. He will have arrived by now."
+   },
+   "note": "Futur II mostly voices an assumption about the past (er wird angekommen sein = he has probably arrived); for real future deadlines use Perfekt + bis.",
+   "star": false
+  },
+  {
+   "id": "T-FUT-PROG",
+   "target": "Präsens / werden + Infinitiv (+ gerade, dann)",
+   "gloss": "present / werden + infinitive (+ just then)",
+   "example": {
+    "target": "Morgen um zehn sitze ich schon im Flieger.",
+    "gloss": "Tomorrow at ten I'll be sitting on the plane."
+   },
+   "note": "No form exists; the present with a time phrase is exact enough, and schon or gerade adds the ongoing feel.",
+   "star": false
+  },
+  {
+   "id": "T-PAST-PERF-PROG",
+   "target": "Plusquamperfekt + schon ___ lang / Präteritum + seit",
+   "gloss": "past perfect + already for ___ / past + since",
+   "example": {
+    "target": "Wir hatten schon zwei Stunden gewartet, als endlich jemand kam.",
+    "gloss": "We had been waiting for two hours when finally someone came."
+   },
+   "note": "schon + duration supplies the continuous meaning; the Plusquamperfekt is used because a later past event (als ...) follows.",
+   "star": false
+  },
+  {
+   "id": "T-COND3",
+   "target": "wenn ___ hätte/wäre + Partizip II, hätte/wäre ich ___ + Partizip II",
+   "gloss": "if ___ had done, I would have done",
+   "example": {
+    "target": "Wenn wir früher losgefahren wären, hätten wir den Zug nicht verpasst.",
+    "gloss": "If we had left earlier, we wouldn't have missed the train."
+   },
+   "note": "Both clauses use hätte or wäre + Partizip II; wären for motion and change. With modals the double infinitive: hätten fahren können.",
+   "star": true
+  },
+  {
+   "id": "T-COND-MIXED",
+   "target": "wenn ich ___ hätte / wäre + Partizip II, würde / wäre ich jetzt ___",
+   "gloss": "if I had done, I would now be",
+   "example": {
+    "target": "Wenn ich damals Deutsch gelernt hätte, hätte ich jetzt einen besseren Job.",
+    "gloss": "If I had learned German back then, I would have a better job now."
+   },
+   "note": "Past condition (hätte + Partizip II) with present result (hätte, wäre, würde + infinitive); jetzt or heute marks the switch.",
+   "star": false
+  },
+  {
+   "id": "T-PASSIVE-ALL",
+   "target": "wird / wurde / ist ... worden / wird ... werden + Partizip II",
+   "gloss": "is / was / has been / will be done; get-passive",
+   "example": {
+    "target": "Die Brücke ist 2010 gebaut worden und wird nächstes Jahr renoviert werden.",
+    "gloss": "The bridge was built in 2010 and will be renovated next year."
+   },
+   "note": "Perfekt passive uses worden (not geworden): ist gebaut worden. Modal passive: muss repariert werden. bekommen + Partizip II is the get-passive for dative objects.",
+   "star": false
+  },
+  {
+   "id": "G-HOWEVER",
+   "target": "jedoch / allerdings / trotzdem (Position 1 → Verb, Subjekt)",
+   "gloss": "however / nevertheless",
+   "example": {
+    "target": "Das Angebot ist gut. Allerdings ist die Frist sehr kurz.",
+    "gloss": "The offer is good. However, the deadline is very short."
+   },
+   "note": "All three are adverbs: in position one they invert (allerdings ist die Frist); jedoch can also sit after the subject. None sends the verb to the end.",
+   "star": true
+  },
+  {
+   "id": "G-DESPITE",
+   "target": "trotz + Genitiv / trotz + Dativ (gesprochen)",
+   "gloss": "despite / in spite of",
+   "example": {
+    "target": "Trotz des Regens sind wir gewandert. (Gesprochen: trotz dem Regen.)",
+    "gloss": "Despite the rain we went hiking."
+   },
+   "note": "trotz + noun, no clause; for a clause use obwohl. Written genitive, spoken often dative. trotzdem is the adverb, not a preposition.",
+   "star": false
+  },
+  {
+   "id": "G-WHEREAS",
+   "target": "während ___ (Verb am Ende) / wohingegen ___",
+   "gloss": "whereas / while (formal contrast)",
+   "example": {
+    "target": "Während in Städten Autos verboten werden, gibt es auf dem Land keine Alternative.",
+    "gloss": "Whereas cars are being banned in cities, in the countryside there is no alternative."
+   },
+   "note": "während is the everyday 'whereas'; wohingegen is rarer and formal. Both are verb-final and the main clause then starts with its verb.",
+   "star": false
+  },
+  {
+   "id": "G-OTHER-HAND",
+   "target": "einerseits ___, andererseits ___ / auf der einen Seite ___",
+   "gloss": "on the one hand ___, on the other hand ___",
+   "example": {
+    "target": "Einerseits ist die Stadt ruhiger ohne Autos, andererseits leiden die Geschäfte.",
+    "gloss": "On the one hand the city is quieter without cars, on the other the shops suffer."
+   },
+   "note": "Each phrase takes position one, so the verb follows and the subject comes third. Use them as a pair; a lone andererseits sounds unfinished.",
+   "star": false
+  },
+  {
+   "id": "G-UNLESS",
+   "target": "es sei denn, ___ / wenn ___ nicht ___ / außer wenn ___",
+   "gloss": "unless",
+   "example": {
+    "target": "Ich komme mit, es sei denn, es regnet.",
+    "gloss": "I'll come along, unless it rains."
+   },
+   "note": "es sei denn is followed by a main clause with normal order (es regnet), not verb-final. außer wenn is verb-final.",
+   "star": false
+  },
+  {
+   "id": "G-AS-LONG-AS",
+   "target": "solange ___ (Verb am Ende) / vorausgesetzt, dass ___",
+   "gloss": "as long as / provided that",
+   "example": {
+    "target": "Solange die Miete pünktlich kommt, ist der Vermieter zufrieden.",
+    "gloss": "As long as the rent arrives on time, the landlord is happy."
+   },
+   "note": "solange is verb-final and written as one word (so lange = so long a time). vorausgesetzt, dass is the formal 'provided that'.",
+   "star": false
+  },
+  {
+   "id": "G-IN-CASE",
+   "target": "falls ___ (Verb am Ende) / für den Fall, dass ___",
+   "gloss": "in case / if",
+   "example": {
+    "target": "Nimm einen Schirm mit, falls es regnet.",
+    "gloss": "Take an umbrella in case it rains."
+   },
+   "note": "falls covers both 'in case' and a tentative 'if', with the present tense. für den Fall, dass is more formal; 'just in case' is zur Sicherheit.",
+   "star": false
+  },
+  {
+   "id": "G-WHOEVER",
+   "target": "wer / was / wo auch immer ___ / egal, wer ___",
+   "gloss": "whoever / whatever / wherever / no matter who",
+   "example": {
+    "target": "Egal, was du sagst, ich fahre. Wer auch immer anruft, ich bin nicht da.",
+    "gloss": "Whatever you say, I'm going. Whoever calls, I'm not here."
+   },
+   "note": "egal + question word is the everyday form; auch immer the more careful one. Both open a verb-final clause, and the main clause follows with normal order.",
+   "star": false
+  },
+  {
+   "id": "G-NOT-ONLY",
+   "target": "nicht nur ___, sondern auch ___",
+   "gloss": "not only ___ but also ___",
+   "example": {
+    "target": "Sie spricht nicht nur Deutsch, sondern auch Türkisch und Arabisch.",
+    "gloss": "She speaks not only German but also Turkish and Arabic."
+   },
+   "note": "sondern is obligatory after nicht nur; aber auch is a mistake here. Comma before sondern, word order untouched.",
+   "star": false
+  },
+  {
+   "id": "G-EVEN-IF",
+   "target": "auch wenn ___ (Verb am Ende) / selbst wenn ___",
+   "gloss": "even if / even though",
+   "example": {
+    "target": "Auch wenn es teuer ist, kaufe ich das Ticket.",
+    "gloss": "Even if it's expensive, I'm buying the ticket."
+   },
+   "note": "auch wenn is verb-final and means both even if and even though; selbst wenn stresses the hypothetical. Both are followed by verb-first main clause.",
+   "star": false
+  },
+  {
+   "id": "S-ARTICLE-ABSTRACT",
+   "target": "das Leben, die Freiheit (Artikel bei Abstrakta) / aus Holz, Lehrer",
+   "gloss": "articles with abstract nouns / none with materials, jobs",
+   "example": {
+    "target": "Das Leben ist kurz. Zeit ist Geld. Sie studiert Medizin.",
+    "gloss": "Life is short. Time is money. She studies medicine."
+   },
+   "note": "Unlike English, abstracts often take the article (das Leben, die Natur), but proverbs, materials, subjects and jobs go bare: aus Holz, Medizin, Lehrer.",
+   "star": false
+  },
+  {
+   "id": "S-DETERMINERS",
+   "target": "jeder (each, every), beide (both), alle (all), keiner von beiden",
+   "gloss": "each / every / both / all / neither / either",
+   "example": {
+    "target": "Jeder Mitarbeiter hat beide Termine bekommen, aber keiner von beiden passt mir.",
+    "gloss": "Every employee got both dates, but neither suits me."
+   },
+   "note": "jeder declines like dieser and is singular; alle and beide are plural. 'either of them' has no single word: einer von beiden / egal welcher.",
+   "star": false
+  },
+  {
+   "id": "S-COLLOCATION",
+   "target": "eine Entscheidung treffen, eine Frage stellen, Erfahrung sammeln",
+   "gloss": "make a decision, spend time, ask a question, gain experience",
+   "example": {
+    "target": "Wir müssen bald eine Entscheidung treffen und dürfen keine Zeit verlieren.",
+    "gloss": "We have to make a decision soon and mustn't lose any time."
+   },
+   "note": "The verb is not translatable: Entscheidung treffen (not machen), Frage stellen, Sport treiben, Rolle spielen, Rücksicht nehmen, Abschied nehmen.",
+   "star": false
+  },
+  {
+   "id": "S-PHRASAL",
+   "target": "trennbar: an-, auf-, aus- (ich rufe an) / untrennbar: be-, er-, ver-",
+   "gloss": "separable prefixes / inseparable prefixes",
+   "example": {
+    "target": "Ich rufe dich morgen an. Ich habe den Vertrag unterschrieben.",
+    "gloss": "I'll call you tomorrow. I signed the contract."
+   },
+   "note": "Separable prefix goes to the end of a main clause and takes ge- inside: angerufen; inseparable verbs take no ge-: unterschrieben, verstanden.",
+   "star": false
+  },
+  {
+   "id": "L-ABSTRACT",
+   "target": "die Entwicklung (development), die Verantwortung (responsibility), die Gerechtigkeit (justice), die Freiheit (freedom), der Einfluss (influence), die Folge (consequence), die Ursache (cause), die Lösung (solution), die Möglichkeit (possibility), der Zusammenhang (connection), die Voraussetzung (prerequisite), der Unterschied (difference), die Bedeutung (significance), die Wirkung (effect), die Herausforderung (challenge), die Maßnahme (measure)",
+   "gloss": "Abstract nouns and argument vocabulary",
+   "note": "Nouns in -ung, -heit, -keit, -schaft are always feminine. Ursache is the cause, Grund is the reason someone gives; Folge and Wirkung are what follows.",
+   "star": false
+  },
+  {
+   "id": "L-BUSINESS",
+   "target": "das Unternehmen (company), der Kunde (customer), der Auftrag (order, contract), der Umsatz (turnover), der Gewinn (profit), der Verlust (loss), die Verhandlung (negotiation), das Angebot (offer), der Vertrag (contract), die Frist (deadline), die Lieferung (delivery), der Mitarbeiter (employee), die Abteilung (department), die Sitzung (meeting), verhandeln (to negotiate), zusagen / absagen (to confirm / cancel)",
+   "gloss": "Work, business, negotiation",
+   "note": "Termin is an appointment or a deadline; Frist is strictly a deadline period. Kunde is a weak noun: den Kunden, dem Kunden.",
+   "star": false
+  },
+  {
+   "id": "L-SOCIETY",
+   "target": "die Gesellschaft (society), die Regierung (government), die Wahl (election), die Partei (party), das Gesetz (law), der Staat (state), die Bevölkerung (population), die Wirtschaft (economy), die Arbeitslosigkeit (unemployment), die Gleichberechtigung (equal rights), die Migration (migration), der Bürger (citizen), die Steuer (tax), die Rente (pension), die Krise (crisis), die Demokratie (democracy)",
+   "gloss": "Politics, society, news",
+   "note": "die Wahl is both choice and election; wählen is to vote. Steuer (tax) is feminine, das Steuer (steering wheel) neuter.",
+   "star": false
+  },
+  {
+   "id": "L-SCIENCE",
+   "target": "die Wissenschaft (science), die Forschung (research), der Forscher (researcher), das Experiment (experiment), das Ergebnis (result), die Erkenntnis (finding), die Erfindung (invention), die Entdeckung (discovery), die Technik (technology), die Künstliche Intelligenz (AI), die Daten (data), die Studie (study), beweisen (to prove), untersuchen (to investigate), entwickeln (to develop), messen (to measure)",
+   "gloss": "Science and technology",
+   "note": "Wissenschaft covers all scholarship, humanities included. Technik is technology and technique; Technologie is the abstract field.",
+   "star": false
+  },
+  {
+   "id": "L-CULTURE",
+   "target": "die Kunst (art), die Ausstellung (exhibition), das Gemälde (painting), der Roman (novel), der Autor / die Autorin (author), die Handlung (plot), die Figur (character), der Film (film), der Regisseur (director), die Aufführung (performance), die Bühne (stage), das Konzert (concert), der Schauspieler (actor), das Publikum (audience), die Kritik (review), beeindruckend (impressive)",
+   "gloss": "Arts, culture, books, film",
+   "note": "Figur is a character in a story; Charakter is personality. Kritik means both criticism and a review: eine gute Kritik bekommen.",
+   "star": false
+  },
+  {
+   "id": "P-ACCENTS",
+   "target": "Norden (Hochdeutsch), Süden (gerolltes r), Österreich, Schweiz, Berlin",
+   "gloss": "The north speaks closest to the textbook, with a sharp s-t (Stein) in Hamburg. The south rolls or taps its r and drops final -e (ich hab). Austria says Jänner for January, Servus, and softens consonants; Swiss German is a separate dialect, but Swiss speakers switch to standard for outsiders. Berlin turns ich into ick and das into dit.",
+   "note": "Goethe listening tasks use standard German with light Austrian or Swiss colouring, never dialect. Recognise Grüß Gott, Jänner, Velo (bike in Switzerland).",
+   "star": false
+  },
+  {
+   "id": "P-ATTITUDE",
+   "target": "Modalpartikeln + Ton: doch, ja, mal, eben, halt, wohl, schon",
+   "gloss": "Attitude is carried less by melody and more by unstressed particles: ja (as you know), doch (contradiction or encouragement), mal (casual), eben/halt (that's how it is), wohl (probably), schon (grudging yes). A flat, low fall marks sarcasm: Na toll. A high rise with stretched vowel marks enthusiasm: Suuuper!",
+   "note": "Komm doch mal her! is friendly; Komm her! is an order. The particles never take stress; stressing doch turns it into an argument.",
+   "star": false
+  },
+  {
+   "id": "C-COULD-BE-ARGUED",
+   "target": "Man könnte sagen, dass ___ / Man könnte argumentieren, dass ___",
+   "gloss": "One could say that ___ / It could be argued that ___",
+   "example": {
+    "target": "Man könnte sagen, dass die Vier-Tage-Woche die Produktivität erhöht.",
+    "gloss": "It could be argued that the four-day week increases productivity."
+   },
+   "note": "German prefers the impersonal man + Konjunktiv II to a passive. The dass-clause is verb-final: dass ... erhöht.",
+   "star": false
+  },
+  {
+   "id": "C-ADMITTEDLY",
+   "target": "Zugegeben, ___ / Zwar ___, aber ___ / Sicher, ___",
+   "gloss": "Admittedly, ___ / True, ___ but ___ / Sure, ___",
+   "example": {
+    "target": "Zugegeben, ein freier Tag mehr kostet Geld. Aber die Leute sind produktiver.",
+    "gloss": "Admittedly, one more free day costs money. But people are more productive."
+   },
+   "note": "Zugegeben stands outside the sentence, so normal order follows after the comma. zwar sits inside position one and inverts: Zwar kostet es Geld, aber ...",
+   "star": false
+  },
+  {
+   "id": "C-THAT-SAID",
+   "target": "Trotzdem ___ / Dennoch ___ / Andererseits muss man sagen, dass ___",
+   "gloss": "Nevertheless ___ / That said, ___",
+   "example": {
+    "target": "Das Hotel war teuer. Trotzdem würde ich es wieder buchen.",
+    "gloss": "The hotel was expensive. That said, I'd book it again."
+   },
+   "note": "trotzdem and dennoch are adverbs in position one, verb next. Allerdings or Andererseits also carry the 'having said that' turn.",
+   "star": false
+  },
+  {
+   "id": "C-IN-SHORT",
+   "target": "Kurz gesagt, ___ / Zusammenfassend lässt sich sagen, dass ___",
+   "gloss": "In short, ___ / To sum up, ___ / All in all ___",
+   "example": {
+    "target": "Kurz gesagt: Die Vorteile überwiegen.",
+    "gloss": "In short: the advantages outweigh the drawbacks."
+   },
+   "note": "Kurz gesagt with a colon or comma is spoken; zusammenfassend opens a written conclusion and inverts the verb: zusammenfassend lässt sich sagen.",
+   "star": false
+  },
+  {
+   "id": "C-TAKE-YOUR-POINT",
+   "target": "Da ist was dran, aber ___ / Das ist ein guter Punkt, aber ___",
+   "gloss": "There's something in that, but ___ / That's a good point, but ___",
+   "example": {
+    "target": "Da ist was dran, aber die Kosten hast du nicht bedacht.",
+    "gloss": "I take your point, but you haven't considered the costs."
+   },
+   "note": "Da ist was dran (etwas dran sein) is the idiomatic concession in speech; it is followed by aber and normal word order.",
+   "star": false
+  },
+  {
+   "id": "C-WOULD-YOU-MIND",
+   "target": "Würde es Ihnen etwas ausmachen, ___ zu ___? / Wären Sie so nett, ___?",
+   "gloss": "Would you mind ___-ing? / Would you be so kind as to ___?",
+   "example": {
+    "target": "Würde es Ihnen etwas ausmachen, das Fenster zu schließen?",
+    "gloss": "Would you mind closing the window?"
+   },
+   "note": "ausmachen takes the dative person (dir, Ihnen) and a zu-infinitive. Answer Nein, gar nicht to agree; a Ja means you do mind.",
+   "star": false
+  },
+  {
+   "id": "C-I-WONDER-IF",
+   "target": "Ich wollte fragen, ob Sie ___ könnten. / Wäre es möglich, ___ zu ___?",
+   "gloss": "I wanted to ask whether you could ___. / Would it be possible to ___?",
+   "example": {
+    "target": "Ich wollte fragen, ob Sie die Heizung bis Freitag reparieren lassen könnten.",
+    "gloss": "I wanted to ask whether you could have the heating repaired by Friday."
+   },
+   "note": "ob opens a verb-final clause, and könnten goes last after the infinitives. Ich wollte fragen softens like English 'I was wondering'.",
+   "star": false
+  },
+  {
+   "id": "C-ON-BALANCE",
+   "target": "Alles in allem ___ / Unterm Strich ___ / Insgesamt ___",
+   "gloss": "All in all ___ / On balance ___ / Overall ___",
+   "example": {
+    "target": "Unterm Strich bin ich für ein Verbot, aber mit Ausnahmen.",
+    "gloss": "On balance I'm for a ban, but with exceptions."
+   },
+   "note": "All three take position one, so the verb follows: alles in allem bin ich. unterm Strich (below the line) is the accountant's image, common in speech.",
+   "star": false
+  },
+  {
+   "id": "F-QUALIFY",
+   "target": "Das gilt nur insofern, als ___ / Das trifft nur bedingt zu.",
+   "gloss": "That holds only insofar as ___ / That is only partly true.",
+   "example": {
+    "target": "Das gilt nur insofern, als es um Routinetexte geht; bei Literatur sieht es anders aus.",
+    "gloss": "That holds only insofar as routine texts are concerned; literature is different."
+   },
+   "note": "D-ARGUABLE, G-INSOFAR, G-NEVERTHELESS. bedingt, teilweise, in gewissem Maße and durchaus are the precision adverbs; nur insofern, als needs the comma.",
+   "star": false
+  },
+  {
+   "id": "F-REGISTER",
+   "target": "Ich bitte um Rückmeldung. / Sag mir Bescheid. / Meld dich mal.",
+   "gloss": "I request a reply. / Let me know. / Drop me a line.",
+   "example": {
+    "target": "Formell: Ich bitte um Rückmeldung. Neutral: Sag mir Bescheid. Locker: Meld dich!",
+    "gloss": "Formal: I request a reply. Neutral: Let me know. Casual: Get in touch!"
+   },
+   "note": "T-REGISTER, L-REGISTER-PAIRS. Formal German nominalises (um Rückmeldung bitten), casual German uses particles and imperatives (meld dich mal).",
+   "star": false
+  },
+  {
+   "id": "F-IRONY",
+   "target": "Na toll. / Das war ja ein voller Erfolg. / nicht gerade ___",
+   "gloss": "Oh great. / That was a complete success. / not exactly ___",
+   "example": {
+    "target": "Der Zug ist ausgefallen. Na toll, das war ja ein gelungener Start in den Urlaub.",
+    "gloss": "The train was cancelled. Great, what a successful start to the holiday."
+   },
+   "note": "D-SO-MUCH-FOR, P-IRONY-TONE, L-HUMOUR. Irony rides on ja and the flat tone; understatement uses nicht gerade: nicht gerade billig = very expensive.",
+   "star": false
+  },
+  {
+   "id": "F-CHAIR",
+   "target": "Kommen wir zum nächsten Punkt. / Darf ich Sie kurz unterbrechen?",
+   "gloss": "Let's move to the next point. / May I interrupt briefly? / That brings us to the end.",
+   "example": {
+    "target": "Darf ich Sie kurz unterbrechen? Das nehmen wir später auf. Zurück zu Punkt zwei.",
+    "gloss": "May I interrupt you briefly? We'll pick that up later. Back to point two."
+   },
+   "note": "C-IF-I-MAY, C-MOVE-ON, G-GIVEN-THAT. Chairing uses the wir imperative (Kommen wir, Beginnen wir) and Sie throughout; the Tagesordnung is the agenda.",
+   "star": false
+  },
+  {
+   "id": "F-CRITIQUE",
+   "target": "Ich hätte mir gewünscht, dass ___ / Mir fehlt hier noch ___",
+   "gloss": "I would have liked ___ / What I miss here is ___ / I wonder whether ___",
+   "example": {
+    "target": "Ich hätte mir gewünscht, dass die Kosten geprüft werden. Mir fehlt hier ein Plan B.",
+    "gloss": "I would have liked the costs checked. What I miss here is a plan B."
+   },
+   "note": "C-WITH-RESPECT, D-WOULD-HAVE-THOUGHT, G-ALBEIT. Criticism is packaged as a wish in Konjunktiv II (hätte mir gewünscht) or as something missing (mir fehlt).",
+   "star": false
+  },
+  {
+   "id": "F-NEGOTIATE",
+   "target": "Wir bestehen darauf, dass ___ / Andernfalls ___",
+   "gloss": "We insist that ___ / on condition that ___ / Otherwise ___",
+   "example": {
+    "target": "Wir bestehen auf pünktlicher Lieferung. Andernfalls müssen wir den Vertrag kündigen.",
+    "gloss": "We insist on punctual delivery. Otherwise we will have to terminate the contract."
+   },
+   "note": "D-SUBJUNCTIVE, G-PROVIDED, D-HAD-I-KNOWN. bestehen auf + dative; sich gezwungen sehen + zu is the formal threat. andernfalls inverts.",
+   "star": false
+  },
+  {
+   "id": "F-EVALUATE",
+   "target": "Dafür spricht ___, dagegen ___. / Entscheidend ist, ob ___",
+   "gloss": "In favour is ___, against ___. / The decisive question is whether ___ / Weighing all factors ___",
+   "example": {
+    "target": "Dafür spricht die Zeitersparnis, dagegen der Aufwand. Entscheidend ist, ob es sich lohnt.",
+    "gloss": "For: the time saved; against: the effort. The decisive question is whether it pays off."
+   },
+   "note": "C-ALL-THINGS, G-HENCE, C-ON-BALANCE. sprechen für/gegen with the argument as subject; entscheidend ist, ob opens a verb-final clause.",
+   "star": false
+  },
+  {
+   "id": "D-WOULD-HAVE-THOUGHT",
+   "target": "ich hätte eigentlich erwartet, dass ___ / ich hätte gedacht, dass ___",
+   "gloss": "I would have expected that ___ / I would have thought that ___",
+   "example": {
+    "target": "Ich hätte eigentlich erwartet, dass wir zuerst die Kosten prüfen.",
+    "gloss": "I would have thought we'd check the costs first."
+   },
+   "note": "Konjunktiv II Vergangenheit (hätte erwartet) plus eigentlich signals polite surprise; the dass-clause stays in the indicative and is verb-final.",
+   "star": false
+  },
+  {
+   "id": "D-ARGUABLE",
+   "target": "man kann durchaus argumentieren, dass ___ / es spricht einiges dafür",
+   "gloss": "one can well argue that ___ / there is a case for ___",
+   "example": {
+    "target": "Es spricht einiges dafür, dass die Vier-Tage-Woche kommt.",
+    "gloss": "There is a case for saying the four-day week is coming."
+   },
+   "note": "German avoids the passive here: impersonal man or es spricht dafür. durchaus is the hedge that makes the claim arguable rather than asserted.",
+   "star": false
+  },
+  {
+   "id": "D-MIGHT-AS-WELL",
+   "target": "dann kann ich auch gleich ___ / es kann gut sein, dass ___",
+   "gloss": "then I might as well ___ / that may well ___ / it may well be that ___",
+   "example": {
+    "target": "Wenn der Zug eh weg ist, kann ich auch gleich laufen. Es kann gut sein, dass es regnet.",
+    "gloss": "If the train's gone anyway, I might as well walk. It may well rain."
+   },
+   "note": "auch gleich after kann gives 'might as well'; gut sein, dass and durchaus give 'may well'. mögen as a concessive (das mag sein) is formal.",
+   "star": false
+  },
+  {
+   "id": "D-CLAIMS-TO-HAVE",
+   "target": "sie behauptet, ___ zu haben / sie scheint ___ zu haben",
+   "gloss": "she claims to have ___ / she seems to have ___",
+   "example": {
+    "target": "Sie behauptet, den Bericht geschickt zu haben, aber er scheint nicht angekommen zu sein.",
+    "gloss": "She claims to have sent the report, but it seems not to have arrived."
+   },
+   "note": "Perfect infinitive: Partizip II + zu haben / zu sein at the end. wollen also means 'claims': Er will das nicht gewusst haben.",
+   "star": false
+  },
+  {
+   "id": "D-EMPHATIC",
+   "target": "ich finde sehr wohl, dass ___ / ich habe es doch versucht / durchaus",
+   "gloss": "I do think that ___ / I did try / indeed",
+   "example": {
+    "target": "Ich habe es sehr wohl versucht, aber niemand hat abgenommen.",
+    "gloss": "I did try, but nobody picked up."
+   },
+   "note": "No emphatic do: stress the verb or add sehr wohl, doch, durchaus, tatsächlich. doch contradicts a previous negative: Ich habe doch angerufen!",
+   "star": false
+  },
+  {
+   "id": "D-HAD-I-KNOWN",
+   "target": "hätte ich das gewusst, ___ / sollten Sie ___ benötigen, ___",
+   "gloss": "had I known, ___ / should you need ___, ___ / were I ___, ___",
+   "example": {
+    "target": "Sollten Sie weitere Informationen benötigen, melden Sie sich gern.",
+    "gloss": "Should you need further information, do get in touch."
+   },
+   "note": "Verb-first conditionals are normal German, not literary: drop wenn and start with the Konjunktiv II verb. sollten ... is standard in formal letters.",
+   "star": false
+  },
+  {
+   "id": "D-SUBJUNCTIVE",
+   "target": "ich bestehe darauf, dass er ___ / es ist unerlässlich, dass sie ___",
+   "gloss": "I insist that he ___ / it is vital that she ___ (indicative)",
+   "example": {
+    "target": "Ich bestehe darauf, dass er sich entschuldigt und pünktlich liefert.",
+    "gloss": "I insist that he apologise and deliver on time."
+   },
+   "note": "No mandative subjunctive: the dass-clause uses the plain indicative (entschuldigt, liefert). Formal texts may put a modal in: dass er sich entschuldigen soll.",
+   "star": false
+  },
+  {
+   "id": "D-WAS-TO-HAVE",
+   "target": "ich sollte eigentlich ___ / ich wollte gerade ___",
+   "gloss": "I was to have ___ / I was just about to ___ / it was planned that ___",
+   "example": {
+    "target": "Eigentlich sollte ich am Freitag fliegen, aber der Flug wurde gestrichen.",
+    "gloss": "I was to have flown on Friday, but the flight was cancelled."
+   },
+   "note": "sollte + eigentlich is the future in the past that did not happen; wollte gerade is 'was about to'. würde only in reported speech: sie sagte, sie würde kommen.",
+   "star": false
+  },
+  {
+   "id": "D-HAVING-DONE",
+   "target": "nachdem ich ___ hatte, ___ / nach + Nominalisierung (nach Abschluss)",
+   "gloss": "after I had ___, ___ / after + noun (after completing ___)",
+   "example": {
+    "target": "Nach Abschluss des Projekts erfuhr ich von den neuen Anforderungen.",
+    "gloss": "Having finished the project, I learned of the new requirements."
+   },
+   "note": "German has almost no participle clauses in speech; use a nachdem-clause with Plusquamperfekt or a nominalisation with nach + genitive.",
+   "star": false
+  },
+  {
+   "id": "D-LITTLE-DID",
+   "target": "ich ahnte nicht, dass ___ / alles andere als ___",
+   "gloss": "little did I know that ___ / anything but ___ / far from being ___",
+   "example": {
+    "target": "Ich ahnte nicht, dass das Ganze alles andere als einfach werden würde.",
+    "gloss": "Little did I know the whole thing would be anything but simple."
+   },
+   "note": "No inversion trick: plain Ich ahnte nicht plus the ironic weight of alles andere als (anything but). ahnen = to have an inkling.",
+   "star": false
+  },
+  {
+   "id": "D-SO-MUCH-FOR",
+   "target": "so viel zu ___ / das war's dann mit ___ / von wegen ___!",
+   "gloss": "so much for ___ / that's the end of ___ / so much for (sarcastic) ___!",
+   "example": {
+    "target": "So viel zu meiner perfekten Planung. Von wegen entspannter Urlaub!",
+    "gloss": "So much for my perfect planning. Relaxing holiday, my foot!"
+   },
+   "note": "so viel zu + dative closes a topic ironically; von wegen + the quoted phrase mocks it. Both are spoken, never in formal writing.",
+   "star": false
+  },
+  {
+   "id": "D-NO-SOONER",
+   "target": "kaum hatte ich ___, da ___ / kaum war ich ___, als ___",
+   "gloss": "no sooner had I ___ than ___ / hardly was I ___ when ___",
+   "example": {
+    "target": "Kaum hatte ich abgegeben, da kam die neue Spezifikation.",
+    "gloss": "No sooner had I submitted than the new specification arrived."
+   },
+   "note": "kaum in position one puts hatte/war before the subject; the second clause opens with da or als and inverts again. Plusquamperfekt in the first half.",
+   "star": false
+  },
+  {
+   "id": "T-REGISTER",
+   "target": "Könnten Sie mir mitteilen, ob ___ / Sag mal, ___? // bedauern / schade",
+   "gloss": "Could you kindly inform me whether ___ / Tell me, ___? // I regret ___ / Pity, ___",
+   "example": {
+    "target": "Ich bedaure, Ihnen mitteilen zu müssen, dass ... – Sorry, ich muss dir was sagen: ...",
+    "gloss": "I regret to have to inform you that ... – Sorry, I've got to tell you something: ..."
+   },
+   "note": "Formal: Sie, Konjunktiv II, nominalisations, zu-infinitives. Informal: du, particles (mal, doch), was for etwas, dropped -e (hab, sag).",
+   "star": false
+  },
+  {
+   "id": "T-PERF-INF",
+   "target": "Partizip II + zu haben / zu sein",
+   "gloss": "past participle + to have / to be",
+   "example": {
+    "target": "Er behauptet, nichts davon gewusst zu haben.",
+    "gloss": "He claims to have known nothing about it."
+   },
+   "note": "Perfect infinitive at the end of a zu-clause: gewusst zu haben, gekommen zu sein. Without zu after modals: er muss es gewusst haben.",
+   "star": false
+  },
+  {
+   "id": "T-INVERSION",
+   "target": "Nie hätte ich gedacht, ___ / Kaum ___, da ___ / Erst dann ___",
+   "gloss": "Never would I have thought ___ / Hardly ___ when ___ / Only then ___",
+   "example": {
+    "target": "Nie hätte ich gedacht, dass ich mal in Berlin wohnen würde.",
+    "gloss": "Never would I have thought I'd live in Berlin one day."
+   },
+   "note": "Every fronted element inverts in German, so negative adverbials are not special: Nie hätte ich, Selten habe ich, Erst dann wurde mir klar.",
+   "star": false
+  },
+  {
+   "id": "T-SUBJUNCTIVE",
+   "target": "Konjunktiv I: er sei, er habe, er komme (indirekte Rede)",
+   "gloss": "reported speech subjunctive / long live ___!",
+   "example": {
+    "target": "Der Minister sagte, die Lage sei ernst, man habe aber alles im Griff.",
+    "gloss": "The minister said the situation was serious but everything was under control."
+   },
+   "note": "Konjunktiv I marks reported speech in news and formal writing; where it looks like the indicative (sie haben) Konjunktiv II steps in (sie hätten). Speech uses dass.",
+   "star": false
+  },
+  {
+   "id": "T-FUT-IN-PAST",
+   "target": "sollte eigentlich ___ / wollte gerade ___ / würde ___ (indirekt)",
+   "gloss": "was to ___ / was about to ___ / would ___ (reported)",
+   "example": {
+    "target": "Sie sagte, sie würde am Montag anfangen. Eigentlich sollte sie schon Freitag kommen.",
+    "gloss": "She said she would start on Monday. She was actually supposed to come on Friday."
+   },
+   "note": "würde inside reported speech is the future in the past; sollte eigentlich is the plan that fell through. No separate tense exists.",
+   "star": false
+  },
+  {
+   "id": "G-NEVERTHELESS",
+   "target": "dennoch / gleichwohl / nichtsdestotrotz (Position 1 → Inversion)",
+   "gloss": "nevertheless / nonetheless",
+   "example": {
+    "target": "Die Zahlen sind schwach. Dennoch halte ich an der Strategie fest.",
+    "gloss": "The figures are weak. Nevertheless I'm sticking to the strategy."
+   },
+   "note": "All are adverbs that invert from position one. dennoch is the neutral written form, trotzdem the spoken one; nichtsdestotrotz is half-jocular.",
+   "star": false
+  },
+  {
+   "id": "G-ALBEIT",
+   "target": "wenn auch ___ / wenngleich ___ (Verb am Ende) / allerdings ___",
+   "gloss": "albeit / although (formal)",
+   "example": {
+    "target": "Das Projekt war ein Erfolg, wenn auch ein teurer.",
+    "gloss": "The project was a success, albeit an expensive one."
+   },
+   "note": "wenn auch attaches a phrase without a verb, exactly like albeit. As a full clause (wenngleich er müde war) it is verb-final.",
+   "star": false
+  },
+  {
+   "id": "G-INSOFAR",
+   "target": "insofern, als ___ / soweit ___ / in dem Maße, wie ___",
+   "gloss": "insofar as / to the extent that",
+   "example": {
+    "target": "Das stimmt insofern, als es um Routinetexte geht.",
+    "gloss": "That is true insofar as routine texts are concerned."
+   },
+   "note": "insofern, als opens a verb-final clause; insofern alone as an adverb means 'in that respect'. soweit is the everyday version: soweit ich weiß.",
+   "star": false
+  },
+  {
+   "id": "G-GIVEN-THAT",
+   "target": "angesichts + Gen. / in Anbetracht + Gen. / da ___ (Verb am Ende)",
+   "gloss": "given / in view of / since",
+   "example": {
+    "target": "Angesichts der knappen Zeit verschieben wir Punkt drei.",
+    "gloss": "Given the shortage of time we'll postpone point three."
+   },
+   "note": "angesichts and in Anbetracht take the genitive and fill position one, so the verb follows. For a clause use da or zumal (especially since).",
+   "star": false
+  },
+  {
+   "id": "G-NOTWITHSTANDING",
+   "target": "ungeachtet + Gen. / unabhängig von + Dat. / trotz + Gen.",
+   "gloss": "notwithstanding / regardless of / despite",
+   "example": {
+    "target": "Ungeachtet der Kritik wurde das Gesetz verabschiedet.",
+    "gloss": "Notwithstanding the criticism, the law was passed."
+   },
+   "note": "ungeachtet is legal-formal and precedes its genitive; unabhängig davon, ob opens a clause. In speech people say egal, ob or trotz.",
+   "star": false
+  },
+  {
+   "id": "G-HENCE",
+   "target": "daher / somit / folglich / dadurch (Position 1 → Inversion)",
+   "gloss": "hence / thus / consequently / thereby",
+   "example": {
+    "target": "Die Anforderungen hatten sich geändert; folglich war die Arbeit umsonst.",
+    "gloss": "The requirements had changed; hence the work was wasted."
+   },
+   "note": "All invert from position one. daher and deshalb are neutral, folglich and somit formal, dadurch means 'by that means'.",
+   "star": false
+  },
+  {
+   "id": "G-LEST",
+   "target": "damit ___ nicht ___ / aus Angst, dass ___ / um nicht ___ zu ___",
+   "gloss": "so that ___ not / for fear that / in order not to",
+   "example": {
+    "target": "Ich habe nichts gesagt, aus Angst, dass er sich ärgert.",
+    "gloss": "I said nothing, for fear that he would be annoyed."
+   },
+   "note": "No lest: negate a purpose clause (damit ... nicht, um nicht ... zu) or name the fear (aus Angst, dass / aus Sorge, dass).",
+   "star": false
+  },
+  {
+   "id": "G-PROVIDED",
+   "target": "vorausgesetzt, (dass) ___ / sofern ___ / unter der Bedingung, dass ___",
+   "gloss": "provided that / on condition that",
+   "example": {
+    "target": "Wir verlängern den Vertrag, sofern die Lieferungen pünktlich erfolgen.",
+    "gloss": "We will extend the contract provided the deliveries are on time."
+   },
+   "note": "sofern and unter der Bedingung, dass are verb-final; vorausgesetzt without dass takes a main clause: vorausgesetzt, das klappt.",
+   "star": false
+  },
+  {
+   "id": "S-NOMINALISATION",
+   "target": "entscheiden → die Entscheidung / die Tatsache, dass ___ / das Lernen",
+   "gloss": "decide → decision / the fact that ___ / learning",
+   "example": {
+    "target": "Nach Abschluss des Studiums kam die Entscheidung für Berlin.",
+    "gloss": "After finishing university came the decision for Berlin."
+   },
+   "note": "Formal German swaps clauses for nouns: nach der Ankunft (after arriving), bei Bedarf (if needed). Any infinitive capitalised is a neuter noun: das Warten.",
+   "star": false
+  },
+  {
+   "id": "S-FORMAL-NP",
+   "target": "die von der Regierung geplante Reform (erweitertes Partizip)",
+   "gloss": "the reform planned by the government (extended participle)",
+   "example": {
+    "target": "Die im letzten Jahr eingeführte Regel gilt für alle Mitarbeiter.",
+    "gloss": "The rule introduced last year applies to all employees."
+   },
+   "note": "Written German stacks a whole relative clause before the noun: die [im letzten Jahr eingeführte] Regel. Read from the article to the noun, then back.",
+   "star": false
+  },
+  {
+   "id": "S-ELLIPSIS",
+   "target": "Ich auch. / Ich auch nicht. / Ich glaube schon. / Ich hoffe nicht.",
+   "gloss": "So do I. / Neither do I. / I think so. / I hope not.",
+   "example": {
+    "target": "Kommst du mit? – Ich glaube schon. Hoffentlich regnet es nicht. – Ich hoffe auch nicht.",
+    "gloss": "Are you coming? – I think so. Hopefully it won't rain. – I hope not either."
+   },
+   "note": "No 'so do I' with a verb: ich auch, ich auch nicht. schon and nicht replace the whole clause after glauben, hoffen, denken.",
+   "star": false
+  },
+  {
+   "id": "S-FRONTING",
+   "target": "Objekt an Position 1: Das habe ich nicht gewusst. Den Film kenne ich.",
+   "gloss": "object or adverb first: That I didn't know. The film I know.",
+   "example": {
+    "target": "Den Film kenne ich, das Buch habe ich noch nicht gelesen.",
+    "gloss": "The film I know; the book I haven't read yet."
+   },
+   "note": "Fronting is free and normal in German because the verb stays second; it gives contrast or links to the previous sentence. Subject then follows the verb.",
+   "star": false
+  },
+  {
+   "id": "L-IDIOM",
+   "target": "die Daumen drücken (cross fingers), ins Fettnäpfchen treten (put your foot in it), Schwein haben (be lucky), die Nase voll haben (be fed up), auf dem Holzweg sein (be on the wrong track), unter vier Augen (in private), das ist nicht mein Bier (not my problem), jemandem auf die Nerven gehen (get on someone's nerves), Bahnhof verstehen (understand nothing), etwas auf die lange Bank schieben (put off), den Faden verlieren (lose the thread), das Kind mit dem Bad ausschütten (overdo it), aus dem Häuschen sein (be over the moon), ins Blaue fahren (go off without a plan), Hals- und Beinbruch (break a leg)",
+   "gloss": "Idioms and fixed metaphors in daily use",
+   "note": "Idioms are conjugated normally: Ich drück dir die Daumen. Ich versteh nur Bahnhof is the everyday 'it's all Greek to me'.",
+   "star": false
+  },
+  {
+   "id": "L-REGISTER-PAIRS",
+   "target": "Rückmeldung / Antwort (reply), erhalten / kriegen (get), sich erkundigen / fragen (ask), bedauern / schade finden (regret), benötigen / brauchen (need), mitteilen / sagen (tell), Anliegen / Sache (matter), beabsichtigen / vorhaben (intend), erfolgen / passieren (take place), umgehend / sofort (immediately), Unterstützung / Hilfe (help), erwerben / kaufen (buy), sich befinden / sein (be located), gestatten / erlauben (allow), begleichen / bezahlen (pay), Kenntnis nehmen / merken (note)",
+   "gloss": "Register pairs: casual and formal words for the same thing",
+   "note": "Formal words are often Latinate-sounding or nominal (erfolgen, benötigen); kriegen is spoken only and never appears in a letter.",
+   "star": false
+  },
+  {
+   "id": "L-PRECISE",
+   "target": "gewissermaßen (in a sense), keineswegs (by no means), vermeintlich (supposed), etwaig (any possible), zumal (especially since), geradezu (downright), vorwiegend (predominantly), zweifellos (undoubtedly), erheblich (considerable), geringfügig (slight), entbehrlich (dispensable), stichhaltig (sound, of an argument), aufschlussreich (revealing), maßgeblich (decisive), unverzüglich (without delay), lediglich (merely)",
+   "gloss": "Low-frequency precise words",
+   "note": "keineswegs and lediglich are the precise negators and limiters of written argument; vermeintlich means 'supposed' with the implication of being wrong.",
+   "star": false
+  },
+  {
+   "id": "L-HUMOUR",
+   "target": "die Ironie (irony), der Witz (joke), der Schmäh (Austrian dry wit), trocken (dry), der Kalauer (pun), die Schadenfreude (joy at others' misfortune), das Understatement (understatement), na toll (oh great), von wegen (my foot), nicht gerade (not exactly), ganz großes Kino (quite a show, ironic), Ironie aus (irony off), sarkastisch (sarcastic), sich lustig machen über (make fun of), auf den Arm nehmen (pull someone's leg), ein Scherz (a joke)",
+   "gloss": "Humour, irony, understatement",
+   "note": "German irony is signalled by ja, aber auch and a flat tone, not by a smile; nicht gerade is the standard understatement: nicht gerade begeistert.",
+   "star": false
+  },
+  {
+   "id": "L-ACADEMIC",
+   "target": "die These (thesis), die Untersuchung (study), der Ansatz (approach), die Annahme (assumption), belegen (to substantiate), verdeutlichen (to illustrate), berücksichtigen (to take into account), erläutern (to explain), im Hinblick auf (with regard to), hinsichtlich (regarding), demnach (accordingly), im Folgenden (in what follows), zusammenfassend (in summary), die Schlussfolgerung (conclusion), der Sachverhalt (the facts of the matter), gemäß + Dat. (according to)",
+   "gloss": "Academic and professional discourse",
+   "note": "Academic German prefers man and the passive (es wird angenommen, dass) and nominal chains: im Hinblick auf die Ergebnisse der Untersuchung.",
+   "star": false
+  },
+  {
+   "id": "P-PROSODY",
+   "target": "Kontrastakzent: NICHT heute, sondern MORgen; Satzakzent auf dem Neuen",
+   "gloss": "German marks contrast by moving the sentence stress, and word order follows: the contrasted item is fronted and stressed. A pitch jump on one syllable (MORgen) plus a fall afterwards marks the focus; everything after it goes flat. Do not stress the verb bracket ends when the contrast is elsewhere.",
+   "note": "In answers the stress lands only on the new information: Wann kommst du? – Ich komme MORgen, with komme unstressed.",
+   "star": false
+  },
+  {
+   "id": "P-IRONY-TONE",
+   "target": "flach, tief, gedehnt: Na TOLL. Das ist ja SUper.",
+   "gloss": "Irony is a flat, low melody with a stretched stressed vowel and no final rise; the particle ja and aber auch sit unstressed inside. A genuine Super! rises and is short; an ironic Suuuper falls and is long. Dry understatement keeps the voice level and slightly quieter.",
+   "note": "If you cannot hear the flatness, look for ja + a positive adjective after bad news: Das ist ja wunderbar means the opposite.",
+   "star": false
+  },
+  {
+   "id": "C-BE-THAT-AS-IT-MAY",
+   "target": "Wie dem auch sei, ___ / Sei's drum, ___",
+   "gloss": "Be that as it may, ___ / So be it, ___",
+   "example": {
+    "target": "Wie dem auch sei, wir müssen bis Freitag liefern.",
+    "gloss": "Be that as it may, we have to deliver by Friday."
+   },
+   "note": "Wie dem auch sei stands outside the sentence, so normal order follows after the comma. Sei's drum is the casual shrug.",
+   "star": false
+  },
+  {
+   "id": "C-PUT-IT-MILDLY",
+   "target": "gelinde gesagt ___ / vorsichtig ausgedrückt ___",
+   "gloss": "to put it mildly ___ / to put it carefully ___",
+   "example": {
+    "target": "Das Ergebnis ist, gelinde gesagt, enttäuschend.",
+    "gloss": "The result is, to put it mildly, disappointing."
+   },
+   "note": "Inserted between commas it does not affect word order; fronted it takes position one: Gelinde gesagt war das enttäuschend.",
+   "star": false
+  },
+  {
+   "id": "C-WITH-RESPECT",
+   "target": "Bei allem Respekt, ___ / Mit Verlaub, ___",
+   "gloss": "With all due respect, ___ / With your permission, ___",
+   "example": {
+    "target": "Bei allem Respekt, das halte ich für einen Fehler.",
+    "gloss": "With all due respect, I consider that a mistake."
+   },
+   "note": "Both are outside the sentence; the main clause keeps normal order. Mit Verlaub is old-fashioned and slightly sharp; bei allem Respekt is the neutral form.",
+   "star": false
+  },
+  {
+   "id": "C-MOVE-ON",
+   "target": "Gehen wir weiter. / Können wir später darauf zurückkommen?",
+   "gloss": "Let's move to the next point. / Can we come back to that later?",
+   "example": {
+    "target": "Können wir später darauf zurückkommen? Kommen wir zum nächsten Punkt.",
+    "gloss": "Can we come back to that later? Let's move to the next point."
+   },
+   "note": "The wir imperative (Kommen wir) is the chair's let's; zurückkommen auf + accusative becomes darauf before a clause or when referring back.",
+   "star": false
+  },
+  {
+   "id": "C-IF-I-MAY",
+   "target": "Wenn ich darf, ___ / Wenn ich kurz einhaken darf, ___",
+   "gloss": "If I may, ___ / If I may just cut in, ___",
+   "example": {
+    "target": "Wenn ich kurz einhaken darf: Das ist ein wichtiger Punkt, aber nicht unser Thema heute.",
+    "gloss": "If I may cut in: that is an important point, but not our topic today."
+   },
+   "note": "The wenn-clause is verb-final (darf last); after the colon or comma a full main clause follows. einhaken is the polite interruption.",
+   "star": false
+  },
+  {
+   "id": "C-CORRECT-ME",
+   "target": "Korrigieren Sie mich, wenn ich falsch liege, aber ___",
+   "gloss": "Correct me if I'm wrong, but ___",
+   "example": {
+    "target": "Korrigieren Sie mich, wenn ich falsch liege, aber das Budget war doch schon genehmigt?",
+    "gloss": "Correct me if I'm wrong, but the budget had already been approved, hadn't it?"
+   },
+   "note": "falsch liegen = to be wrong; the wenn-clause is verb-final and aber continues with normal order. Adding doch turns the claim into a soft challenge.",
+   "star": false
+  },
+  {
+   "id": "C-ALL-THINGS",
+   "target": "Alles in allem ___ / Wenn man alles bedenkt, ___",
+   "gloss": "All things considered, ___",
+   "example": {
+    "target": "Alles in allem war es die richtige Entscheidung.",
+    "gloss": "All things considered, it was the right decision."
+   },
+   "note": "Alles in allem fills position one and inverts; wenn man alles bedenkt is a verb-final clause followed by verb-first main clause.",
+   "star": false
+  },
+  {
+   "id": "C-FOR-WHAT-ITS-WORTH",
+   "target": "Nur so als Anmerkung: ___ / Falls es dich interessiert: ___",
+   "gloss": "Just as a remark: ___ / In case it's of interest: ___",
+   "example": {
+    "target": "Nur so als Anmerkung: Ich hätte das Angebot angenommen.",
+    "gloss": "For what it's worth, I would have accepted the offer."
+   },
+   "note": "No literal equivalent. Nur so signals a throwaway remark; after the colon a full main clause follows with normal order.",
+   "star": false
+  }
+ ],
+ "scenarios": [
+  {
+   "id": "SC-A1-01",
+   "model": {
+    "target": "Ich heiße Arjun. Ich bin Inder und ich bin Krankenpfleger in Hamburg.",
+    "gloss": "My name is Arjun. I'm Indian and I'm a nurse in Hamburg."
+   },
+   "breakdown": [
+    {
+     "text": "Ich heiße",
+     "layer": "chunk",
+     "id": "C-MY-NAME",
+     "label": "C-MY-NAME"
+    },
+    {
+     "text": "Arjun.",
+     "layer": "filler",
+     "label": "slot: N"
+    },
+    {
+     "text": "Ich bin",
+     "layer": "door",
+     "id": "D-BE",
+     "label": "D-BE · pres"
+    },
+    {
+     "text": "Inder",
+     "layer": "filler",
+     "label": "slot: N · no article"
+    },
+    {
+     "text": "und",
+     "layer": "glue",
+     "id": "G-AND",
+     "label": "G-AND · position 0"
+    },
+    {
+     "text": "ich bin",
+     "layer": "door",
+     "id": "D-BE",
+     "label": "D-BE · pres"
+    },
+    {
+     "text": "Krankenpfleger in Hamburg.",
+     "layer": "filler",
+     "label": "slot: N · in + city"
+    }
+   ],
+   "keys": [
+    "heiße",
+    "bin",
+    "und"
+   ],
+   "alt": "Ich bin Arjun aus Indien. Ich arbeite als Krankenpfleger.",
+   "tip": "Jobs and nationalities take no article: Ich bin Krankenpfleger, never ein Krankenpfleger."
+  },
+  {
+   "id": "SC-A1-02",
+   "model": {
+    "target": "Ich hätte gern einen Kaffee und ein Sandwich, bitte. Danke schön!",
+    "gloss": "I'd like a coffee and a sandwich, please. Thank you!"
+   },
+   "breakdown": [
+    {
+     "text": "Ich hätte gern",
+     "layer": "door",
+     "id": "D-WOULD-LIKE",
+     "label": "D-WOULD-LIKE · polite"
+    },
+    {
+     "text": "einen Kaffee",
+     "layer": "filler",
+     "label": "slot: N · accusative"
+    },
+    {
+     "text": "und",
+     "layer": "glue",
+     "id": "G-AND",
+     "label": "G-AND"
+    },
+    {
+     "text": "ein Sandwich,",
+     "layer": "filler",
+     "label": "slot: N · accusative"
+    },
+    {
+     "text": "bitte. Danke schön!",
+     "layer": "chunk",
+     "id": "C-PLEASE-THANKS",
+     "label": "C-PLEASE-THANKS"
+    }
+   ],
+   "keys": [
+    "hätte gern",
+    "und",
+    "bitte"
+   ],
+   "alt": "Einen Kaffee und ein Sandwich, bitte. – Vielen Dank!",
+   "tip": "What you order is accusative: einen Kaffee (masculine changes), ein Sandwich (neuter does not)."
+  },
+  {
+   "id": "SC-A1-03",
+   "model": {
+    "target": "Entschuldigung, wo ist der Bahnhof? Und was kostet eine Fahrkarte?",
+    "gloss": "Excuse me, where is the station? And how much is a ticket?"
+   },
+   "breakdown": [
+    {
+     "text": "Entschuldigung,",
+     "layer": "chunk",
+     "id": "C-SORRY",
+     "label": "C-SORRY"
+    },
+    {
+     "text": "wo ist",
+     "layer": "chunk",
+     "id": "C-WHERE-IS",
+     "label": "C-WHERE-IS · T-WH"
+    },
+    {
+     "text": "der Bahnhof?",
+     "layer": "filler",
+     "label": "slot: N · nominative"
+    },
+    {
+     "text": "Und",
+     "layer": "glue",
+     "id": "G-AND",
+     "label": "G-AND"
+    },
+    {
+     "text": "was kostet",
+     "layer": "chunk",
+     "id": "C-HOW-MUCH",
+     "label": "C-HOW-MUCH · T-WH"
+    },
+    {
+     "text": "eine Fahrkarte?",
+     "layer": "filler",
+     "label": "slot: N"
+    }
+   ],
+   "keys": [
+    "Entschuldigung",
+    "wo ist",
+    "kostet"
+   ],
+   "alt": "Entschuldigen Sie, wie komme ich zum Bahnhof? Wie viel kostet ein Ticket?",
+   "tip": "After wo ist the noun stays nominative (der Bahnhof); only a direction question would use wohin."
+  },
+  {
+   "id": "SC-A1-04",
+   "model": {
+    "target": "Ich esse gern Pizza, aber ich mag keinen Fisch.",
+    "gloss": "I like eating pizza, but I don't like fish."
+   },
+   "breakdown": [
+    {
+     "text": "Ich esse gern",
+     "layer": "door",
+     "id": "D-LIKE",
+     "label": "D-LIKE · verb + gern"
+    },
+    {
+     "text": "Pizza,",
+     "layer": "filler",
+     "label": "slot: N"
+    },
+    {
+     "text": "aber",
+     "layer": "glue",
+     "id": "G-BUT",
+     "label": "G-BUT · position 0"
+    },
+    {
+     "text": "ich mag keinen",
+     "layer": "door",
+     "id": "D-LIKE",
+     "label": "D-LIKE · neg · kein"
+    },
+    {
+     "text": "Fisch.",
+     "layer": "filler",
+     "label": "slot: N · accusative"
+    }
+   ],
+   "keys": [
+    "gern",
+    "aber",
+    "kein"
+   ],
+   "alt": "Ich mag Nudeln sehr, aber Fisch esse ich nicht gern.",
+   "tip": "A noun is negated with kein, an activity with nicht: keinen Fisch, but nicht gern."
+  },
+  {
+   "id": "SC-A1-05",
+   "model": {
+    "target": "Am Samstag fahre ich mit meiner Freundin nach Hamburg.",
+    "gloss": "On Saturday I'm going to Hamburg with my girlfriend."
+   },
+   "breakdown": [
+    {
+     "text": "Am Samstag",
+     "layer": "filler",
+     "label": "slot: time · position 1"
+    },
+    {
+     "text": "fahre ich",
+     "layer": "door",
+     "id": "D-GOING-TO",
+     "label": "D-GOING-TO · pres as future"
+    },
+    {
+     "text": "mit meiner Freundin",
+     "layer": "glue",
+     "id": "G-WITH",
+     "label": "G-WITH · dative"
+    },
+    {
+     "text": "nach Hamburg.",
+     "layer": "filler",
+     "label": "slot: place · nach"
+    }
+   ],
+   "keys": [
+    "fahre ich",
+    "mit"
+   ],
+   "alt": "Ich gehe am Sonntag mit Freunden wandern.",
+   "tip": "A fronted time word pushes the subject behind the verb: Am Samstag fahre ich, never Am Samstag ich fahre."
+  },
+  {
+   "id": "SC-A1-06",
+   "model": {
+    "target": "Entschuldigung, ich verstehe das nicht. Können Sie das bitte langsamer sagen?",
+    "gloss": "Sorry, I don't understand. Can you say that more slowly, please?"
+   },
+   "breakdown": [
+    {
+     "text": "Entschuldigung,",
+     "layer": "chunk",
+     "id": "C-SORRY",
+     "label": "C-SORRY"
+    },
+    {
+     "text": "ich verstehe das nicht.",
+     "layer": "chunk",
+     "id": "C-DONT-UNDERSTAND",
+     "label": "C-DONT-UNDERSTAND · T-NEG"
+    },
+    {
+     "text": "Können Sie",
+     "layer": "door",
+     "id": "D-CAN",
+     "label": "D-CAN · T-Q · Sie"
+    },
+    {
+     "text": "das bitte langsamer sagen?",
+     "layer": "chunk",
+     "id": "C-REPEAT-PLEASE",
+     "label": "C-REPEAT-PLEASE · infinitive last"
+    }
+   ],
+   "keys": [
+    "verstehe",
+    "nicht",
+    "langsamer"
+   ],
+   "alt": "Wie bitte? Ich habe das nicht verstanden. Noch einmal, bitte, und langsam.",
+   "tip": "nicht goes to the end of its clause, after das, and the infinitive sagen closes the können bracket."
+  },
+  {
+   "id": "SC-A2-01",
+   "model": {
+    "target": "Danke, aber ich kann leider nicht kommen, weil ich am Freitag länger arbeiten muss.",
+    "gloss": "Thanks, but unfortunately I can't come, because I have to work late on Friday."
+   },
+   "breakdown": [
+    {
+     "text": "Danke, aber",
+     "layer": "chunk",
+     "id": "C-THANKS-BUT",
+     "label": "C-THANKS-BUT"
+    },
+    {
+     "text": "ich kann leider nicht",
+     "layer": "door",
+     "id": "D-CAN",
+     "label": "D-CAN · pres · neg"
+    },
+    {
+     "text": "kommen,",
+     "layer": "filler",
+     "label": "slot: V"
+    },
+    {
+     "text": "weil",
+     "layer": "glue",
+     "id": "G-BECAUSE",
+     "label": "G-BECAUSE · verb-final"
+    },
+    {
+     "text": "ich am Freitag länger arbeiten",
+     "layer": "filler",
+     "label": "slot: V"
+    },
+    {
+     "text": "muss.",
+     "layer": "door",
+     "id": "D-HAVE-TO",
+     "label": "D-HAVE-TO · closes clause"
+    }
+   ],
+   "keys": [
+    "kann",
+    "nicht",
+    "weil",
+    "muss"
+   ],
+   "alt": "Das ist lieb, aber Freitag geht leider nicht. Ich muss länger arbeiten.",
+   "tip": "weil sends the conjugated verb (muss) to the very end, behind the infinitive arbeiten."
+  },
+  {
+   "id": "SC-A2-02",
+   "model": {
+    "target": "Wie wäre es mit Donnerstag um sieben? Treffen wir uns im Café am Markt, passt das?",
+    "gloss": "How about Thursday at seven? Shall we meet in the café on the market square, does that work?"
+   },
+   "breakdown": [
+    {
+     "text": "Wie wäre es mit",
+     "layer": "chunk",
+     "id": "C-HOW-ABOUT",
+     "label": "C-HOW-ABOUT · + dative"
+    },
+    {
+     "text": "Donnerstag",
+     "layer": "filler",
+     "label": "slot: N"
+    },
+    {
+     "text": "um sieben?",
+     "layer": "glue",
+     "id": "G-AT",
+     "label": "G-AT · um + time"
+    },
+    {
+     "text": "Treffen wir uns",
+     "layer": "door",
+     "id": "D-LETS",
+     "label": "D-LETS · verb-first · T-Q"
+    },
+    {
+     "text": "im Café am Markt,",
+     "layer": "filler",
+     "label": "slot: place · dative"
+    },
+    {
+     "text": "passt das?",
+     "layer": "filler",
+     "label": "check-back"
+    }
+   ],
+   "keys": [
+    "Wie wäre es",
+    "um",
+    "Treffen wir uns"
+   ],
+   "alt": "Hast du am Donnerstag um sieben Zeit? Wir könnten ins Café am Markt gehen.",
+   "tip": "Treffen wir uns ...? with the verb first is the German let's, and the reflexive uns cannot be dropped."
+  },
+  {
+   "id": "SC-A2-03",
+   "model": {
+    "target": "Zuerst habe ich am Samstag eingekauft. Nach dem Einkaufen bin ich mit Freunden ins Kino gegangen.",
+    "gloss": "First I went shopping on Saturday. After the shopping I went to the cinema with friends."
+   },
+   "breakdown": [
+    {
+     "text": "Zuerst",
+     "layer": "glue",
+     "id": "G-SEQUENCE",
+     "label": "G-SEQUENCE · position 1"
+    },
+    {
+     "text": "habe ich",
+     "layer": "door",
+     "id": "D-HAVE-DONE",
+     "label": "D-HAVE-DONE · Perfekt · haben"
+    },
+    {
+     "text": "am Samstag",
+     "layer": "filler",
+     "label": "slot: time"
+    },
+    {
+     "text": "eingekauft.",
+     "layer": "door",
+     "id": "D-HAVE-DONE",
+     "label": "D-HAVE-DONE · Partizip II last"
+    },
+    {
+     "text": "Nach dem Einkaufen",
+     "layer": "glue",
+     "id": "G-BEFORE-AFTER",
+     "label": "G-BEFORE-AFTER · nach + dative"
+    },
+    {
+     "text": "bin ich",
+     "layer": "door",
+     "id": "D-HAVE-DONE",
+     "label": "D-HAVE-DONE · Perfekt · sein"
+    },
+    {
+     "text": "mit Freunden ins Kino",
+     "layer": "filler",
+     "label": "slot: with / place"
+    },
+    {
+     "text": "gegangen.",
+     "layer": "door",
+     "id": "D-HAVE-DONE",
+     "label": "D-HAVE-DONE · Partizip II last"
+    }
+   ],
+   "keys": [
+    "Zuerst",
+    "habe ich",
+    "Nach",
+    "gegangen"
+   ],
+   "alt": "Am Samstag war ich einkaufen, und am Sonntag habe ich einen Film gesehen.",
+   "tip": "The Perfekt is a bracket: habe/bin in second position, the participle last, and gehen takes sein."
+  },
+  {
+   "id": "SC-A2-04",
+   "model": {
+    "target": "Entschuldige die Verspätung! Ich bin spät dran, weil die U-Bahn stehen geblieben ist, als ich gerade unterwegs war.",
+    "gloss": "Sorry I'm late! I'm running late because the U-Bahn stopped while I was on my way."
+   },
+   "breakdown": [
+    {
+     "text": "Entschuldige die Verspätung!",
+     "layer": "chunk",
+     "id": "C-SORRY-LATE",
+     "label": "C-SORRY-LATE"
+    },
+    {
+     "text": "Ich bin spät dran,",
+     "layer": "filler",
+     "label": "statement"
+    },
+    {
+     "text": "weil",
+     "layer": "glue",
+     "id": "G-BECAUSE",
+     "label": "G-BECAUSE · verb-final"
+    },
+    {
+     "text": "die U-Bahn stehen geblieben ist,",
+     "layer": "filler",
+     "label": "slot: CL · Perfekt"
+    },
+    {
+     "text": "als ich gerade unterwegs",
+     "layer": "door",
+     "id": "D-WAS-DOING",
+     "label": "D-WAS-DOING · als + gerade"
+    },
+    {
+     "text": "war.",
+     "layer": "door",
+     "id": "D-WAS-DOING",
+     "label": "D-WAS-DOING · Präteritum · verb-final"
+    }
+   ],
+   "keys": [
+    "Verspätung",
+    "weil",
+    "als",
+    "gerade"
+   ],
+   "alt": "Tut mir leid, dass ich zu spät bin. Ich habe gerade geduscht, als du angerufen hast.",
+   "tip": "als, not wenn, for a single past event; gerade supplies the 'was doing' sense that German has no tense for."
+  },
+  {
+   "id": "SC-A2-05",
+   "model": {
+    "target": "Was sollte ich am besten machen? Ich habe eine starke Erkältung, aber ich muss morgen unbedingt arbeiten.",
+    "gloss": "What should I best do? I have a bad cold, but I really have to work tomorrow."
+   },
+   "breakdown": [
+    {
+     "text": "Was sollte ich",
+     "layer": "door",
+     "id": "D-SHOULD",
+     "label": "D-SHOULD · T-Q · wh"
+    },
+    {
+     "text": "am besten machen?",
+     "layer": "filler",
+     "label": "slot: V"
+    },
+    {
+     "text": "Ich habe eine starke Erkältung,",
+     "layer": "filler",
+     "label": "D-HAVE · symptom"
+    },
+    {
+     "text": "aber",
+     "layer": "glue",
+     "id": "G-BUT",
+     "label": "G-BUT · position 0"
+    },
+    {
+     "text": "ich muss",
+     "layer": "door",
+     "id": "D-HAVE-TO",
+     "label": "D-HAVE-TO · pres"
+    },
+    {
+     "text": "morgen unbedingt arbeiten.",
+     "layer": "filler",
+     "label": "slot: V"
+    }
+   ],
+   "keys": [
+    "sollte ich",
+    "aber",
+    "muss"
+   ],
+   "alt": "Was empfehlen Sie mir? Ich kann nicht zu Hause bleiben, ich habe morgen einen wichtigen Termin.",
+   "tip": "sollte (Konjunktiv II) asks for advice, soll ich asks for an order; aber leaves the word order untouched."
+  },
+  {
+   "id": "SC-A2-06",
+   "model": {
+    "target": "Was bedeutet 'Maultaschen'? ... Gut, dann hätte ich gern die Maultaschen. ... Die Rechnung, bitte!",
+    "gloss": "What does 'Maultaschen' mean? ... OK, then I'd like the Maultaschen. ... The bill, please!"
+   },
+   "breakdown": [
+    {
+     "text": "Was bedeutet",
+     "layer": "chunk",
+     "id": "C-WHAT-MEAN",
+     "label": "C-WHAT-MEAN · T-Q"
+    },
+    {
+     "text": "'Maultaschen'? ... Gut, dann",
+     "layer": "filler",
+     "label": "slot: N · dann = position 1"
+    },
+    {
+     "text": "hätte ich gern",
+     "layer": "door",
+     "id": "D-WOULD-LIKE",
+     "label": "D-WOULD-LIKE · inverted after dann"
+    },
+    {
+     "text": "die Maultaschen. ...",
+     "layer": "filler",
+     "label": "slot: N · accusative"
+    },
+    {
+     "text": "Die Rechnung, bitte!",
+     "layer": "chunk",
+     "id": "C-BILL",
+     "label": "C-BILL"
+    }
+   ],
+   "keys": [
+    "bedeutet",
+    "hätte ich gern",
+    "Rechnung"
+   ],
+   "alt": "Was ist das, Maultaschen? – Okay, das nehme ich. – Zahlen, bitte!",
+   "tip": "dann in position one flips the order: dann hätte ich, not dann ich hätte."
+  },
+  {
+   "id": "SC-B1-01",
+   "model": {
+    "target": "Ich würde lieber in die Berge fahren, weil ich das Wandern liebe. Wie wäre es mit einer Woche Berge und dann drei Tagen am Meer?",
+    "gloss": "I'd rather go to the mountains, because I love hiking. How about a week in the mountains and then three days at the sea?"
+   },
+   "breakdown": [
+    {
+     "text": "Ich würde lieber",
+     "layer": "door",
+     "id": "D-WOULD-RATHER",
+     "label": "D-WOULD-RATHER · Konjunktiv II"
+    },
+    {
+     "text": "in die Berge fahren,",
+     "layer": "filler",
+     "label": "slot: V · in + accusative"
+    },
+    {
+     "text": "weil",
+     "layer": "glue",
+     "id": "G-BECAUSE",
+     "label": "G-BECAUSE · verb-final"
+    },
+    {
+     "text": "ich das Wandern liebe.",
+     "layer": "filler",
+     "label": "slot: CL"
+    },
+    {
+     "text": "Wie wäre es mit",
+     "layer": "chunk",
+     "id": "C-HOW-ABOUT",
+     "label": "C-HOW-ABOUT · + dative"
+    },
+    {
+     "text": "einer Woche Berge und dann drei Tagen am Meer?",
+     "layer": "filler",
+     "label": "slot: N · dative"
+    }
+   ],
+   "keys": [
+    "würde lieber",
+    "weil",
+    "Wie wäre es mit"
+   ],
+   "alt": "Strand finde ich langweilig, ich wandere lieber. Machen wir doch beides: erst Berge, dann Meer.",
+   "tip": "lieber is the comparative of gern and sits right after würde; the infinitive fahren still goes to the end."
+  },
+  {
+   "id": "SC-B1-02",
+   "model": {
+    "target": "Meiner Meinung nach ist Homeoffice eine gute Sache, obwohl der Kontakt zu den Kollegen fehlt. Ich glaube, dass man zu Hause konzentrierter arbeitet.",
+    "gloss": "In my opinion working from home is a good thing, although contact with colleagues is missing. I think you work with more focus at home."
+   },
+   "breakdown": [
+    {
+     "text": "Meiner Meinung nach",
+     "layer": "chunk",
+     "id": "C-IN-MY-OPINION",
+     "label": "C-IN-MY-OPINION · position 1"
+    },
+    {
+     "text": "ist Homeoffice eine gute Sache,",
+     "layer": "filler",
+     "label": "verb 2nd · D-BE"
+    },
+    {
+     "text": "obwohl",
+     "layer": "glue",
+     "id": "G-ALTHOUGH",
+     "label": "G-ALTHOUGH · verb-final"
+    },
+    {
+     "text": "der Kontakt zu den Kollegen fehlt.",
+     "layer": "filler",
+     "label": "slot: CL"
+    },
+    {
+     "text": "Ich glaube, dass",
+     "layer": "door",
+     "id": "D-THINK-THAT",
+     "label": "D-THINK-THAT · dass verb-final"
+    },
+    {
+     "text": "man zu Hause konzentrierter arbeitet.",
+     "layer": "filler",
+     "label": "slot: CL"
+    }
+   ],
+   "keys": [
+    "Meiner Meinung nach",
+    "obwohl",
+    "dass"
+   ],
+   "alt": "Ich finde Homeoffice gut, weil man flexibler ist. Man sieht die Kollegen zwar seltener, aber das ist okay.",
+   "tip": "Meiner Meinung nach occupies position one, so the verb comes straight after it: nach ist Homeoffice."
+  },
+  {
+   "id": "SC-B1-03",
+   "model": {
+    "target": "Als ich am Bahnhof ankam, war der Zug schon abgefahren, weil ich den Wecker nicht gehört hatte. Deshalb habe ich ein Taxi genommen.",
+    "gloss": "When I got to the station, the train had already left, because I hadn't heard the alarm. So I took a taxi."
+   },
+   "breakdown": [
+    {
+     "text": "Als",
+     "layer": "glue",
+     "id": "G-WHEN",
+     "label": "G-WHEN · als = single past event"
+    },
+    {
+     "text": "ich am Bahnhof ankam,",
+     "layer": "filler",
+     "label": "slot: CL · verb-final"
+    },
+    {
+     "text": "war der Zug schon abgefahren,",
+     "layer": "door",
+     "id": "D-HAD-DONE",
+     "label": "D-HAD-DONE · Plusquamperfekt · sein"
+    },
+    {
+     "text": "weil",
+     "layer": "glue",
+     "id": "G-BECAUSE",
+     "label": "G-BECAUSE · verb-final"
+    },
+    {
+     "text": "ich den Wecker nicht",
+     "layer": "filler",
+     "label": "slot: CL"
+    },
+    {
+     "text": "gehört hatte.",
+     "layer": "door",
+     "id": "D-HAD-DONE",
+     "label": "D-HAD-DONE · hatte last"
+    },
+    {
+     "text": "Deshalb",
+     "layer": "glue",
+     "id": "G-SO",
+     "label": "G-SO · position 1"
+    },
+    {
+     "text": "habe ich ein Taxi genommen.",
+     "layer": "filler",
+     "label": "T-PRES-PERF · inverted"
+    }
+   ],
+   "keys": [
+    "Als",
+    "war",
+    "abgefahren",
+    "Deshalb"
+   ],
+   "alt": "Ich hatte den Wecker nicht gehört. Als ich ankam, war der Zug weg, also bin ich mit dem Bus gefahren.",
+   "tip": "The earlier event takes hatte/war + Partizip II; after deshalb the verb comes before the subject."
+  },
+  {
+   "id": "SC-B1-04",
+   "model": {
+    "target": "Die Sache ist die: Mein Zimmer ist sehr laut und das WLAN funktioniert nicht. Könnten Sie mir bitte ein anderes Zimmer geben?",
+    "gloss": "The thing is: my room is very noisy and the wifi doesn't work. Could you please give me another room?"
+   },
+   "breakdown": [
+    {
+     "text": "Die Sache ist die:",
+     "layer": "chunk",
+     "id": "C-THE-THING-IS",
+     "label": "C-THE-THING-IS"
+    },
+    {
+     "text": "Mein Zimmer ist sehr laut",
+     "layer": "filler",
+     "label": "D-BE · complaint 1"
+    },
+    {
+     "text": "und",
+     "layer": "glue",
+     "id": "G-AND",
+     "label": "G-AND · position 0"
+    },
+    {
+     "text": "das WLAN funktioniert nicht.",
+     "layer": "filler",
+     "label": "T-NEG · complaint 2"
+    },
+    {
+     "text": "Könnten Sie",
+     "layer": "door",
+     "id": "D-COULD",
+     "label": "D-COULD · polite request · T-Q"
+    },
+    {
+     "text": "mir bitte ein anderes Zimmer geben?",
+     "layer": "filler",
+     "label": "slot: V · dative mir"
+    }
+   ],
+   "keys": [
+    "Die Sache ist",
+    "und",
+    "Könnten Sie"
+   ],
+   "alt": "Entschuldigung, ich habe ein Problem: Das Zimmer ist laut und es gibt kein Internet. Wäre ein Zimmerwechsel möglich?",
+   "tip": "könnten with umlaut is the polite request; konnten without it would mean 'were able to'."
+  },
+  {
+   "id": "SC-B1-05",
+   "model": {
+    "target": "Du hättest früher anfangen sollen. An deiner Stelle würde ich jetzt einen Lernplan machen und die Prüfung wiederholen.",
+    "gloss": "You should have started earlier. In your place I'd make a study plan now and retake the exam."
+   },
+   "breakdown": [
+    {
+     "text": "Du hättest",
+     "layer": "door",
+     "id": "D-SHOULD-HAVE",
+     "label": "D-SHOULD-HAVE · hätte"
+    },
+    {
+     "text": "früher anfangen",
+     "layer": "filler",
+     "label": "slot: V · infinitive"
+    },
+    {
+     "text": "sollen.",
+     "layer": "door",
+     "id": "D-SHOULD-HAVE",
+     "label": "D-SHOULD-HAVE · double infinitive"
+    },
+    {
+     "text": "An deiner Stelle würde ich",
+     "layer": "chunk",
+     "id": "C-IF-I-WERE-YOU",
+     "label": "C-IF-I-WERE-YOU · T-COND2"
+    },
+    {
+     "text": "jetzt einen Lernplan machen und die Prüfung wiederholen.",
+     "layer": "filler",
+     "label": "slot: V · infinitives last"
+    }
+   ],
+   "keys": [
+    "hättest",
+    "sollen",
+    "An deiner Stelle",
+    "würde"
+   ],
+   "alt": "Du hättest mehr lernen müssen. Wenn ich du wäre, würde ich mit einer Lerngruppe üben.",
+   "tip": "hätte + infinitive + sollen: the modal stays an infinitive at the very end, never gesollt."
+  },
+  {
+   "id": "SC-B1-06",
+   "model": {
+    "target": "Die Chefin hat gesagt, dass die Deadline jetzt Donnerstag ist, und sie hat mich gebeten, das dem Team zu sagen.",
+    "gloss": "The boss said the deadline is now Thursday, and she asked me to tell the team."
+   },
+   "breakdown": [
+    {
+     "text": "Die Chefin hat gesagt, dass",
+     "layer": "door",
+     "id": "D-SAID-THAT",
+     "label": "D-SAID-THAT · dass verb-final"
+    },
+    {
+     "text": "die Deadline jetzt Donnerstag ist,",
+     "layer": "filler",
+     "label": "slot: CL · no tense shift"
+    },
+    {
+     "text": "und",
+     "layer": "glue",
+     "id": "G-AND",
+     "label": "G-AND · position 0"
+    },
+    {
+     "text": "sie hat mich gebeten,",
+     "layer": "door",
+     "id": "D-TOLD-TO",
+     "label": "D-TOLD-TO · bitten + accusative"
+    },
+    {
+     "text": "das dem Team",
+     "layer": "filler",
+     "label": "slot: dative Team"
+    },
+    {
+     "text": "zu sagen.",
+     "layer": "door",
+     "id": "D-TOLD-TO",
+     "label": "D-TOLD-TO · zu-infinitive last"
+    }
+   ],
+   "keys": [
+    "gesagt, dass",
+    "und",
+    "gebeten",
+    "zu sagen"
+   ],
+   "alt": "Laut Chefin ist die Deadline jetzt Donnerstag. Ich soll es dem Team weitersagen.",
+   "tip": "Spoken German does not backshift the tense: dass die Deadline Donnerstag ist, not war."
+  },
+  {
+   "id": "SC-B2-01",
+   "model": {
+    "target": "Ich bin für die Vier-Tage-Woche. Zugegeben, sie kostet die Firmen Geld. Allerdings wären die Leute produktiver, wenn sie erholter wären.",
+    "gloss": "I'm for the four-day week. Admittedly, it costs companies money. However, people would be more productive if they were better rested."
+   },
+   "breakdown": [
+    {
+     "text": "Ich bin für die Vier-Tage-Woche.",
+     "layer": "filler",
+     "label": "D-BE · für + accusative"
+    },
+    {
+     "text": "Zugegeben,",
+     "layer": "chunk",
+     "id": "C-ADMITTEDLY",
+     "label": "C-ADMITTEDLY"
+    },
+    {
+     "text": "sie kostet die Firmen Geld.",
+     "layer": "filler",
+     "label": "concession · normal order"
+    },
+    {
+     "text": "Allerdings",
+     "layer": "glue",
+     "id": "G-HOWEVER",
+     "label": "G-HOWEVER · position 1"
+    },
+    {
+     "text": "wären die Leute produktiver,",
+     "layer": "door",
+     "id": "D-IF-I-WERE",
+     "label": "D-IF-I-WERE · Konj. II main clause"
+    },
+    {
+     "text": "wenn sie erholter wären.",
+     "layer": "door",
+     "id": "D-IF-I-WERE",
+     "label": "D-IF-I-WERE · wenn + Konj. II · verb-final"
+    }
+   ],
+   "keys": [
+    "Zugegeben",
+    "Allerdings",
+    "wären",
+    "wenn"
+   ],
+   "alt": "Zwar kostet ein freier Tag Geld, aber ausgeruhte Mitarbeiter machen weniger Fehler. Das rechnet sich.",
+   "tip": "Allerdings takes position one and inverts (allerdings wären die Leute); it never sends the verb to the end."
+  },
+  {
+   "id": "SC-B2-02",
+   "model": {
+    "target": "Er muss den Termin vergessen haben, oder er könnte krank geworden sein. Er hätte uns aber wenigstens anrufen können.",
+    "gloss": "He must have forgotten the meeting, or he might have fallen ill. But he could at least have called us."
+   },
+   "breakdown": [
+    {
+     "text": "Er muss",
+     "layer": "door",
+     "id": "D-MUST-HAVE",
+     "label": "D-MUST-HAVE · deduction"
+    },
+    {
+     "text": "den Termin",
+     "layer": "filler",
+     "label": "slot: N · accusative"
+    },
+    {
+     "text": "vergessen haben,",
+     "layer": "door",
+     "id": "D-MUST-HAVE",
+     "label": "D-MUST-HAVE · Partizip II + haben"
+    },
+    {
+     "text": "oder",
+     "layer": "glue",
+     "id": "G-OR",
+     "label": "G-OR · position 0"
+    },
+    {
+     "text": "er könnte krank geworden sein.",
+     "layer": "door",
+     "id": "D-COULD-HAVE",
+     "label": "D-COULD-HAVE · könnte + Part. II + sein"
+    },
+    {
+     "text": "Er hätte uns aber wenigstens anrufen können.",
+     "layer": "door",
+     "id": "D-COULD-HAVE",
+     "label": "D-COULD-HAVE · hätte + inf + können"
+    }
+   ],
+   "keys": [
+    "muss",
+    "vergessen haben",
+    "oder",
+    "könnte",
+    "hätte"
+   ],
+   "alt": "Wahrscheinlich hat er die Einladung nicht gesehen. Oder sein Zug hatte Verspätung, das kommt ja oft vor.",
+   "tip": "The modal stays present (muss, könnte); the past goes into the participle plus haben or sein at the end."
+  },
+  {
+   "id": "SC-B2-03",
+   "model": {
+    "target": "Wenn ich gewusst hätte, wie gut die Stelle ist, hätte ich sie sofort angenommen. Hätte ich doch nur nicht abgesagt!",
+    "gloss": "If I had known how good the job was, I would have accepted it at once. If only I hadn't turned it down!"
+   },
+   "breakdown": [
+    {
+     "text": "Wenn ich gewusst hätte,",
+     "layer": "door",
+     "id": "D-IF-HAD-KNOWN",
+     "label": "D-IF-HAD-KNOWN · hätte verb-final"
+    },
+    {
+     "text": "wie gut die Stelle ist,",
+     "layer": "filler",
+     "label": "slot: CL · indirect question"
+    },
+    {
+     "text": "hätte ich sie sofort angenommen.",
+     "layer": "door",
+     "id": "D-IF-HAD-KNOWN",
+     "label": "D-IF-HAD-KNOWN · hätte + Part. II"
+    },
+    {
+     "text": "Hätte ich doch nur",
+     "layer": "door",
+     "id": "D-WISH-HAD",
+     "label": "D-WISH-HAD · verb-first wish"
+    },
+    {
+     "text": "nicht abgesagt!",
+     "layer": "filler",
+     "label": "slot: V · Partizip II"
+    }
+   ],
+   "keys": [
+    "Wenn ich gewusst hätte",
+    "hätte ich",
+    "doch nur"
+   ],
+   "alt": "Ich bereue es sehr. Wäre ich damals mutiger gewesen, hätte ich jetzt einen viel besseren Job.",
+   "tip": "Both halves need hätte/wäre + Partizip II; a würde in the wenn-clause is the classic error."
+  },
+  {
+   "id": "SC-B2-04",
+   "model": {
+    "target": "Ich wollte fragen, ob Sie die Heizung bis zum 15. Oktober reparieren lassen könnten. Solange sie nicht repariert wird, bleibt die Wohnung kalt.",
+    "gloss": "I wanted to ask whether you could have the heating repaired by 15 October. As long as it isn't repaired, the flat stays cold."
+   },
+   "breakdown": [
+    {
+     "text": "Ich wollte fragen, ob",
+     "layer": "chunk",
+     "id": "C-I-WONDER-IF",
+     "label": "C-I-WONDER-IF · ob verb-final"
+    },
+    {
+     "text": "Sie die Heizung bis zum 15. Oktober",
+     "layer": "filler",
+     "label": "slot: N · bis + date"
+    },
+    {
+     "text": "reparieren lassen könnten.",
+     "layer": "door",
+     "id": "D-HAVE-IT-DONE",
+     "label": "D-HAVE-IT-DONE · lassen + inf · könnten last"
+    },
+    {
+     "text": "Solange",
+     "layer": "glue",
+     "id": "G-AS-LONG-AS",
+     "label": "G-AS-LONG-AS · verb-final"
+    },
+    {
+     "text": "sie nicht repariert wird,",
+     "layer": "filler",
+     "label": "T-PASSIVE · wird last"
+    },
+    {
+     "text": "bleibt die Wohnung kalt.",
+     "layer": "filler",
+     "label": "main clause · verb first"
+    }
+   ],
+   "keys": [
+    "ob",
+    "reparieren lassen",
+    "Solange",
+    "repariert wird"
+   ],
+   "alt": "Ich bitte Sie, die Heizung bis spätestens 15. Oktober reparieren zu lassen. Andernfalls werde ich die Miete mindern.",
+   "tip": "In the ob-clause the whole verb group piles up at the end: reparieren lassen könnten, with the conjugated könnten last."
+  },
+  {
+   "id": "SC-B2-05",
+   "model": {
+    "target": "Einerseits wird die Luft besser, andererseits leiden die Geschäfte, während die Pendler keine Alternative haben. Unterm Strich bin ich dafür, mit Ausnahmen.",
+    "gloss": "On the one hand the air gets better, on the other the shops suffer, whereas commuters have no alternative. On balance I'm in favour, with exceptions."
+   },
+   "breakdown": [
+    {
+     "text": "Einerseits",
+     "layer": "glue",
+     "id": "G-OTHER-HAND",
+     "label": "G-OTHER-HAND · position 1"
+    },
+    {
+     "text": "wird die Luft besser,",
+     "layer": "filler",
+     "label": "inverted · verb 2nd"
+    },
+    {
+     "text": "andererseits",
+     "layer": "glue",
+     "id": "G-OTHER-HAND",
+     "label": "G-OTHER-HAND · position 1"
+    },
+    {
+     "text": "leiden die Geschäfte,",
+     "layer": "filler",
+     "label": "inverted"
+    },
+    {
+     "text": "während",
+     "layer": "glue",
+     "id": "G-WHEREAS",
+     "label": "G-WHEREAS · verb-final"
+    },
+    {
+     "text": "die Pendler keine Alternative haben.",
+     "layer": "filler",
+     "label": "slot: CL"
+    },
+    {
+     "text": "Unterm Strich",
+     "layer": "chunk",
+     "id": "C-ON-BALANCE",
+     "label": "C-ON-BALANCE · position 1"
+    },
+    {
+     "text": "bin ich dafür, mit Ausnahmen.",
+     "layer": "filler",
+     "label": "inverted · dafür sein"
+    }
+   ],
+   "keys": [
+    "Einerseits",
+    "andererseits",
+    "während",
+    "Unterm Strich"
+   ],
+   "alt": "Für ein Verbot spricht die Ruhe in der Stadt, dagegen sprechen die Lieferungen und der Handel. Alles in allem wäre ich für autofreie Sonntage.",
+   "tip": "einerseits and andererseits each take position one and push the subject behind the verb; während is verb-final."
+  },
+  {
+   "id": "SC-B2-06",
+   "model": {
+    "target": "Bis nächstes Jahr um diese Zeit werde ich die B2-Prüfung bestanden haben, und dann arbeite ich wahrscheinlich schon in München.",
+    "gloss": "By this time next year I will have passed the B2 exam, and then I'll probably already be working in Munich."
+   },
+   "breakdown": [
+    {
+     "text": "Bis nächstes Jahr um diese Zeit",
+     "layer": "filler",
+     "label": "slot: time · bis"
+    },
+    {
+     "text": "werde ich",
+     "layer": "door",
+     "id": "D-WILL-HAVE-DONE",
+     "label": "D-WILL-HAVE-DONE · Futur II"
+    },
+    {
+     "text": "die B2-Prüfung",
+     "layer": "filler",
+     "label": "slot: N"
+    },
+    {
+     "text": "bestanden haben,",
+     "layer": "door",
+     "id": "D-WILL-HAVE-DONE",
+     "label": "D-WILL-HAVE-DONE · Part. II + haben"
+    },
+    {
+     "text": "und",
+     "layer": "glue",
+     "id": "G-AND",
+     "label": "G-AND · position 0"
+    },
+    {
+     "text": "dann arbeite ich",
+     "layer": "door",
+     "id": "D-WILL-BE-ING",
+     "label": "D-WILL-BE-ING · present as future"
+    },
+    {
+     "text": "wahrscheinlich schon in München.",
+     "layer": "filler",
+     "label": "slot: place"
+    }
+   ],
+   "keys": [
+    "werde ich",
+    "bestanden haben",
+    "und",
+    "arbeite ich"
+   ],
+   "alt": "In einem Jahr habe ich B2 geschafft und suche mir dann einen Job bei einer deutschen Firma.",
+   "tip": "Futur II is werde + Partizip II + haben/sein; for the ongoing state German just uses the present with dann or schon."
+  },
+  {
+   "id": "SC-C1-01",
+   "model": {
+    "target": "Bei allem Respekt, ich hätte eigentlich erwartet, dass wir zuerst die Kosten prüfen, wenn auch nur grob.",
+    "gloss": "With respect, I would have expected us to check the costs first, albeit only roughly."
+   },
+   "breakdown": [
+    {
+     "text": "Bei allem Respekt,",
+     "layer": "chunk",
+     "id": "C-WITH-RESPECT",
+     "label": "C-WITH-RESPECT"
+    },
+    {
+     "text": "ich hätte eigentlich erwartet, dass",
+     "layer": "door",
+     "id": "D-WOULD-HAVE-THOUGHT",
+     "label": "D-WOULD-HAVE-THOUGHT · Konj. II + dass"
+    },
+    {
+     "text": "wir zuerst die Kosten prüfen,",
+     "layer": "filler",
+     "label": "slot: CL · verb-final"
+    },
+    {
+     "text": "wenn auch",
+     "layer": "glue",
+     "id": "G-ALBEIT",
+     "label": "G-ALBEIT · elliptical"
+    },
+    {
+     "text": "nur grob.",
+     "layer": "filler",
+     "label": "slot: adv"
+    }
+   ],
+   "keys": [
+    "Bei allem Respekt",
+    "hätte",
+    "erwartet",
+    "wenn auch"
+   ],
+   "alt": "Ich sehe das etwas anders: Mir hätte ein Kostenrahmen vorab geholfen, und sei er noch so grob.",
+   "tip": "hätte erwartet, dass is the German hedge for 'I would have thought'; wenn auch attaches a concession without a full clause."
+  },
+  {
+   "id": "SC-C1-02",
+   "model": {
+    "target": "Wenn ich kurz einhaken darf: Das ist ein wichtiger Punkt, den wir uns später vornehmen. Angesichts der Zeit kommen wir jetzt bitte zurück zur Tagesordnung.",
+    "gloss": "If I may cut in: that's an important point, which we'll take up later. Given the time, let's please return to the agenda now."
+   },
+   "breakdown": [
+    {
+     "text": "Wenn ich kurz einhaken darf:",
+     "layer": "chunk",
+     "id": "C-IF-I-MAY",
+     "label": "C-IF-I-MAY · verb-final"
+    },
+    {
+     "text": "Das ist ein wichtiger Punkt, den wir uns später vornehmen.",
+     "layer": "filler",
+     "label": "park the point · relative den"
+    },
+    {
+     "text": "Angesichts der Zeit",
+     "layer": "glue",
+     "id": "G-GIVEN-THAT",
+     "label": "G-GIVEN-THAT · + genitive · position 1"
+    },
+    {
+     "text": "kommen wir jetzt bitte zurück zur Tagesordnung.",
+     "layer": "chunk",
+     "id": "C-MOVE-ON",
+     "label": "C-MOVE-ON · wir imperative"
+    }
+   ],
+   "keys": [
+    "einhaken darf",
+    "später",
+    "Angesichts",
+    "zurück"
+   ],
+   "alt": "Darf ich Sie kurz unterbrechen? Das nehmen wir gern in die nächste Sitzung mit. Können wir zu Punkt drei zurückkommen?",
+   "tip": "angesichts takes the genitive and fills position one, so the verb follows immediately: angesichts der Zeit kommen wir."
+  },
+  {
+   "id": "SC-C1-03",
+   "model": {
+    "target": "Eigentlich sollten wir Freitag nach Lissabon fliegen. Ich ahnte nicht, dass die Airline am Donnerstag pleitegehen würde. So viel zu meiner perfekten Planung.",
+    "gloss": "We were to have flown to Lisbon on Friday. Little did I know the airline would go bust on Thursday. So much for my perfect planning."
+   },
+   "breakdown": [
+    {
+     "text": "Eigentlich sollten wir",
+     "layer": "door",
+     "id": "D-WAS-TO-HAVE",
+     "label": "D-WAS-TO-HAVE · sollte eigentlich"
+    },
+    {
+     "text": "Freitag nach Lissabon fliegen.",
+     "layer": "filler",
+     "label": "slot: V"
+    },
+    {
+     "text": "Ich ahnte nicht, dass",
+     "layer": "door",
+     "id": "D-LITTLE-DID",
+     "label": "D-LITTLE-DID · dass verb-final"
+    },
+    {
+     "text": "die Airline am Donnerstag pleitegehen würde.",
+     "layer": "filler",
+     "label": "slot: CL · würde = future in past"
+    },
+    {
+     "text": "So viel zu",
+     "layer": "door",
+     "id": "D-SO-MUCH-FOR",
+     "label": "D-SO-MUCH-FOR · zu + dative"
+    },
+    {
+     "text": "meiner perfekten Planung.",
+     "layer": "filler",
+     "label": "slot: N · dative"
+    }
+   ],
+   "keys": [
+    "Eigentlich sollten",
+    "ahnte nicht",
+    "würde",
+    "So viel zu"
+   ],
+   "alt": "Monatelang geplant, und am Tag vorher meldet die Airline Insolvenz an. Na großartig. Von wegen Traumurlaub.",
+   "tip": "German has no inversion for 'little did I know'; a flat Ich ahnte nicht plus the ironic eigentlich and so viel zu carry the tone."
+  },
+  {
+   "id": "SC-C1-04",
+   "model": {
+    "target": "Man kann durchaus argumentieren, dass KI Übersetzer ersetzt, insofern es um Standardtexte geht. Dennoch bleiben Literatur und Verhandlungen menschliche Arbeit.",
+    "gloss": "One can well argue that AI replaces translators, insofar as standard texts are concerned. Nevertheless literature and negotiations remain human work."
+   },
+   "breakdown": [
+    {
+     "text": "Man kann durchaus argumentieren, dass",
+     "layer": "door",
+     "id": "D-ARGUABLE",
+     "label": "D-ARGUABLE · man + dass"
+    },
+    {
+     "text": "KI Übersetzer ersetzt,",
+     "layer": "filler",
+     "label": "slot: CL · verb-final"
+    },
+    {
+     "text": "insofern",
+     "layer": "glue",
+     "id": "G-INSOFAR",
+     "label": "G-INSOFAR · verb-final"
+    },
+    {
+     "text": "es um Standardtexte geht.",
+     "layer": "filler",
+     "label": "slot: CL"
+    },
+    {
+     "text": "Dennoch",
+     "layer": "glue",
+     "id": "G-NEVERTHELESS",
+     "label": "G-NEVERTHELESS · position 1"
+    },
+    {
+     "text": "bleiben Literatur und Verhandlungen menschliche Arbeit.",
+     "layer": "filler",
+     "label": "inverted · verb 2nd"
+    }
+   ],
+   "keys": [
+    "argumentieren, dass",
+    "insofern",
+    "Dennoch"
+   ],
+   "alt": "Das trifft nur bedingt zu: Bei Routineübersetzungen ja, bei allem, was Ton und Kontext braucht, eher nicht.",
+   "tip": "dennoch is an adverb in position one (dennoch bleiben ...), whereas insofern opens a verb-final clause."
+  },
+  {
+   "id": "SC-C1-05",
+   "model": {
+    "target": "Wir bestehen darauf, dass Sie pünktlich liefern. Der Vertrag läuft weiter, vorausgesetzt, das gelingt; sollte es erneut Verzögerungen geben, wird er überprüft.",
+    "gloss": "We insist that you deliver on time. The contract continues, provided that succeeds; should there be delays again, it will be reviewed."
+   },
+   "breakdown": [
+    {
+     "text": "Wir bestehen darauf, dass",
+     "layer": "door",
+     "id": "D-SUBJUNCTIVE",
+     "label": "D-SUBJUNCTIVE · dass + indicative"
+    },
+    {
+     "text": "Sie pünktlich liefern.",
+     "layer": "filler",
+     "label": "slot: CL · verb-final"
+    },
+    {
+     "text": "Der Vertrag läuft weiter,",
+     "layer": "filler",
+     "label": "main clause"
+    },
+    {
+     "text": "vorausgesetzt,",
+     "layer": "glue",
+     "id": "G-PROVIDED",
+     "label": "G-PROVIDED · main-clause order follows"
+    },
+    {
+     "text": "das gelingt;",
+     "layer": "filler",
+     "label": "condition"
+    },
+    {
+     "text": "sollte es erneut Verzögerungen geben,",
+     "layer": "door",
+     "id": "D-HAD-I-KNOWN",
+     "label": "D-HAD-I-KNOWN · verb-first conditional"
+    },
+    {
+     "text": "wird er überprüft.",
+     "layer": "filler",
+     "label": "T-PASSIVE · verb first"
+    }
+   ],
+   "keys": [
+    "bestehen darauf, dass",
+    "vorausgesetzt",
+    "sollte es",
+    "überprüft"
+   ],
+   "alt": "Wir erwarten, dass die nächste Lieferung fristgerecht erfolgt. Andernfalls sehen wir uns gezwungen, den Vertrag zu überprüfen.",
+   "tip": "German has no mandative subjunctive: after bestehen darauf, dass the verb is plain indicative, and a verb-first sollte replaces falls."
+  },
+  {
+   "id": "SC-C1-06",
+   "model": {
+    "target": "Nach Abschluss des Projekts erfuhr ich von den neuen Anforderungen. Kaum hatte ich abgegeben, da kam die neue Spezifikation; folglich war alles umsonst.",
+    "gloss": "Having finished the project, I learned of the new requirements. No sooner had I submitted than the new spec arrived; hence it was all for nothing."
+   },
+   "breakdown": [
+    {
+     "text": "Nach Abschluss des Projekts",
+     "layer": "door",
+     "id": "D-HAVING-DONE",
+     "label": "D-HAVING-DONE · nach + nominalisation"
+    },
+    {
+     "text": "erfuhr ich von den neuen Anforderungen.",
+     "layer": "filler",
+     "label": "verb 2nd · Präteritum"
+    },
+    {
+     "text": "Kaum hatte ich",
+     "layer": "door",
+     "id": "D-NO-SOONER",
+     "label": "D-NO-SOONER · verb-first"
+    },
+    {
+     "text": "abgegeben,",
+     "layer": "filler",
+     "label": "slot: V · Partizip II"
+    },
+    {
+     "text": "da kam",
+     "layer": "door",
+     "id": "D-NO-SOONER",
+     "label": "D-NO-SOONER · da + inversion"
+    },
+    {
+     "text": "die neue Spezifikation;",
+     "layer": "filler",
+     "label": "slot: N"
+    },
+    {
+     "text": "folglich",
+     "layer": "glue",
+     "id": "G-HENCE",
+     "label": "G-HENCE · position 1"
+    },
+    {
+     "text": "war alles umsonst.",
+     "layer": "filler",
+     "label": "inverted"
+    }
+   ],
+   "keys": [
+    "Nach Abschluss",
+    "Kaum hatte ich",
+    "da kam",
+    "folglich"
+   ],
+   "alt": "Das Projekt war fertig, als ich erfuhr, dass die Anforderungen sich geändert hatten. Die ganze Arbeit war also für die Katz.",
+   "tip": "Kaum ... da is the German no-sooner: verb-first after kaum, inversion again after da; nach + nominalisation replaces the participle clause."
+  }
+ ]
+}

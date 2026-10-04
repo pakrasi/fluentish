@@ -1,0 +1,478 @@
+[
+ {
+  "strict": [],
+  "task": null,
+  "partner": null,
+  "prefill": null,
+  "chunk": null,
+  "level": "B1",
+  "hl": "I suggest that we meet at the station at six",
+  "id": "BP:sample-s1-vorschlag-dass",
+  "kind": "phrase",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_suggest",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "chunk",
+   "verb-final"
+  ],
+  "plan": "recall",
+  "prompt": "I suggest that we meet at the station at six.",
+  "prompt_lang": "en",
+  "accept": [
+   "ich schlage vor dass wir uns ([x]) treffen",
+   "ich würde vorschlagen dass wir uns ([x]) treffen",
+   "ich schlage vor wir treffen uns ([x])",
+   "lass uns ([x]) treffen",
+   "lassen sie uns ([x]) treffen"
+  ],
+  "anywhere": true,
+  "model": "Ich schlage vor, dass wir uns um sechs am Bahnhof treffen.",
+  "wrong": [
+   "Ich schlage vor, dass wir treffen uns um sechs am Bahnhof."
+  ],
+  "rule": "After dass, the verb goes to the end.",
+  "src": "sample · cheatsheet §4 Einstieg und Vorschläge"
+ },
+ {
+  "strict": [],
+  "task": null,
+  "partner": null,
+  "prefill": null,
+  "chunk": null,
+  "level": "B1",
+  "hl": "That brings me to the end of my presentation",
+  "id": "BP:sample-s2-folie5-ende",
+  "kind": "phrase",
+  "area": "speaking",
+  "group": "S2",
+  "teil": "S2",
+  "fn": "t2_close",
+  "star": true,
+  "trap": null,
+  "focus": [
+   "chunk"
+  ],
+  "plan": "recall",
+  "prompt": "That brings me to the end of my presentation. Thank you for listening.",
+  "prompt_lang": "en",
+  "accept": [
+   "damit bin ich am ende meiner präsentation",
+   "ich bin (jetzt) am ende meiner präsentation",
+   "das war meine präsentation"
+  ],
+  "anywhere": true,
+  "model": "Damit bin ich am Ende meiner Präsentation.",
+  "wrong": [],
+  "rule": "This is the fixed closing line for Folie 5.",
+  "src": "sample · cheatsheet §5 Folie 5"
+ },
+ {
+  "strict": [],
+  "task": null,
+  "partner": null,
+  "prefill": null,
+  "chunk": null,
+  "level": "B1",
+  "hl": "At first it was hard",
+  "id": "BP:sample-s2-am-anfang",
+  "kind": "phrase",
+  "area": "speaking",
+  "group": "S2",
+  "teil": "S2",
+  "fn": "t2_experience",
+  "star": true,
+  "trap": "v2",
+  "focus": [
+   "chunk",
+   "v2"
+  ],
+  "plan": "recall",
+  "prompt": "At first it was hard, but now I like it.",
+  "prompt_lang": "en",
+  "accept": [
+   "am anfang war es ([x]) schwierig",
+   "am anfang war das ([x]) schwierig",
+   "am anfang war es ([x]) schwer",
+   "am anfang war das ([x]) schwer",
+   "zuerst war es ([x]) schwierig"
+  ],
+  "anywhere": true,
+  "model": "Am Anfang war es schwierig, aber jetzt gefällt es mir.",
+  "wrong": [
+   "Am Anfang, es war schwierig, aber jetzt gefällt es mir."
+  ],
+  "rule": "After Am Anfang, the verb comes next, then the subject: Am Anfang war es schwierig.",
+  "src": "sample · cheatsheet §5 Folie 2"
+ },
+ {
+  "strict": [],
+  "task": null,
+  "partner": null,
+  "prefill": null,
+  "chunk": null,
+  "level": "B1",
+  "hl": "I think that's a good idea",
+  "id": "BP:sample-opinion-glaube",
+  "kind": "phrase",
+  "area": "speaking",
+  "group": "opinion",
+  "teil": "S3",
+  "fn": "forum_opinion",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "chunk",
+   "verb-final"
+  ],
+  "plan": "recall",
+  "prompt": "I think that's a good idea.",
+  "prompt_lang": "en",
+  "accept": [
+   "ich glaube dass das eine gute idee ist",
+   "ich glaube das ist eine gute idee",
+   "ich finde dass das eine gute idee ist",
+   "ich finde das ist eine gute idee",
+   "ich denke dass das eine gute idee ist",
+   "ich denke das ist eine gute idee"
+  ],
+  "anywhere": true,
+  "model": "Ich glaube, dass das eine gute Idee ist.",
+  "wrong": [
+   "Ich glaube, dass das ist eine gute Idee."
+  ],
+  "rule": "After dass, the verb goes to the end.",
+  "src": "sample · cheatsheet §3 Meinung sagen"
+ },
+ {
+  "strict": [],
+  "task": null,
+  "partner": "Wir könnten doch am Samstag grillen.",
+  "prefill": null,
+  "chunk": null,
+  "level": "B1",
+  "hl": null,
+  "id": "BT:sample-t1-reject-01",
+  "kind": "topic",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_reject",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "plan": "choice",
+  "prompt": "You can't on Saturday. Say no politely and give a reason.",
+  "prompt_lang": "en",
+  "accept": [
+   "das geht leider nicht weil [x]",
+   "das ist zwar eine gute idee aber [x]",
+   "am samstag kann ich leider nicht",
+   "leider habe ich am samstag keine zeit",
+   "ich habe leider keine zeit"
+  ],
+  "anywhere": true,
+  "model": "Das geht leider nicht, weil ich am Samstag arbeiten muss.",
+  "wrong": [
+   "Das geht leider nicht, weil ich muss am Samstag arbeiten."
+  ],
+  "rule": "To turn down a suggestion politely: Das geht leider nicht, weil …",
+  "src": "sample · cheatsheet §4 Reagieren"
+ },
+ {
+  "strict": [],
+  "task": null,
+  "partner": "Wir könnten doch am Samstag grillen.",
+  "prefill": null,
+  "chunk": null,
+  "level": "B1",
+  "hl": null,
+  "id": "BR:sample-t1-reply-01",
+  "kind": "reply",
+  "area": "speaking",
+  "group": "S1",
+  "teil": "S1",
+  "fn": "t1_react",
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "word-choice",
+   "verb-final"
+  ],
+  "plan": "choice",
+  "prompt": "How do you want to answer?",
+  "prompt_lang": "en",
+  "accept": [],
+  "anywhere": true,
+  "model": null,
+  "wrong": [
+   "Das ist zwar eine gute Idee, aber ich kann nicht, weil ich muss arbeiten."
+  ],
+  "wrong_move": "doubt",
+  "moves": [
+   {
+    "key": "agree",
+    "label": "Agree",
+    "fn": "t1_accept",
+    "accept": [
+     "gute idee",
+     "das finde ich gut",
+     "einverstanden",
+     "das klingt gut"
+    ],
+    "model": "Gute Idee! Am Samstag habe ich Zeit."
+   },
+   {
+    "key": "doubt",
+    "label": "Doubt + reason",
+    "fn": "t1_reject",
+    "accept": [
+     "das ist zwar eine gute idee aber [x]",
+     "ich weiß nicht ob das klappt",
+     "das geht leider nicht weil [x]",
+     "da bin ich mir nicht sicher"
+    ],
+    "model": "Das ist zwar eine gute Idee, aber am Samstag soll es regnen."
+   },
+   {
+    "key": "other",
+    "label": "Other idea",
+    "fn": "t1_counter",
+    "accept": [
+     "ich hätte einen anderen vorschlag",
+     "wie wäre es wenn wir ([x]) [x] würden",
+     "wir könnten (doch) (auch) [x]",
+     "vielleicht lieber [x]"
+    ],
+    "model": "Ich hätte einen anderen Vorschlag: Wir könnten im Park picknicken."
+   }
+  ],
+  "rule": "Agree, doubt with a reason, or offer another idea: all three are good Teil 1 moves.",
+  "src": "sample · cheatsheet §4 Reagieren"
+ },
+ {
+  "strict": [
+   "ist"
+  ],
+  "task": "Join the two sentences with dass.",
+  "partner": null,
+  "prefill": "Ich glaube, dass",
+  "chunk": null,
+  "level": "B1",
+  "hl": null,
+  "id": "BG:sample-verb-final-dass-01",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-final",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "verb-final",
+  "focus": [
+   "verb-final"
+  ],
+  "plan": "transform",
+  "prompt": "Ich glaube. Das ist eine gute Idee.",
+  "prompt_lang": "de",
+  "accept": [
+   "ich glaube dass das eine gute idee ist",
+   "ich glaube dass es eine gute idee ist"
+  ],
+  "anywhere": false,
+  "model": "Ich glaube, dass das eine gute Idee ist.",
+  "wrong": [
+   "Ich glaube, dass das ist eine gute Idee."
+  ],
+  "rule": "After dass, the verb goes to the end.",
+  "src": "sample"
+ },
+ {
+  "strict": [
+   "vor",
+   "der"
+  ],
+  "task": "Fill the gap.",
+  "partner": null,
+  "prefill": null,
+  "chunk": null,
+  "level": "B1",
+  "hl": null,
+  "id": "BG:sample-fuer-vor-01",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "verb-prep",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "fuer-vor",
+  "focus": [
+   "fuer-vor",
+   "prep-case"
+  ],
+  "plan": "recall",
+  "prompt": "Ich habe Angst ___ Prüfung. (die)",
+  "prompt_lang": "de",
+  "accept": [
+   "vor der"
+  ],
+  "anywhere": false,
+  "model": "Ich habe Angst vor der Prüfung.",
+  "wrong": [
+   "für der",
+   "vor die"
+  ],
+  "rule": "Angst vor, warnen vor, sich schämen vor: fear and warning take vor.",
+  "src": "sample"
+ },
+ {
+  "strict": [
+   "Thema"
+  ],
+  "task": "Say it in German.",
+  "partner": null,
+  "prefill": null,
+  "chunk": null,
+  "level": "B1",
+  "hl": null,
+  "id": "BG:sample-neuter-thema",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "gender-caps",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "neuter",
+  "focus": [
+   "neuter",
+   "article",
+   "cap"
+  ],
+  "plan": "recall",
+  "prompt": "the topic",
+  "prompt_lang": "en",
+  "accept": [
+   "das thema"
+  ],
+  "anywhere": false,
+  "model": "Das Thema",
+  "wrong": [
+   "der Thema",
+   "das thema"
+  ],
+  "rule": "Nouns ending in -ma are neuter: das Thema.",
+  "src": "sample"
+ },
+ {
+  "strict": [],
+  "task": "Start the sentence with Am Ende.",
+  "partner": null,
+  "prefill": "Am Ende",
+  "chunk": null,
+  "level": "B1",
+  "hl": null,
+  "id": "BG:sample-v2-am-ende",
+  "kind": "grammar",
+  "area": "grammar",
+  "group": "v2",
+  "teil": null,
+  "fn": null,
+  "star": true,
+  "trap": "v2",
+  "focus": [
+   "v2"
+  ],
+  "plan": "transform",
+  "prompt": "Wir machen eine Party.",
+  "prompt_lang": "de",
+  "accept": [
+   "am ende machen wir eine party"
+  ],
+  "anywhere": false,
+  "model": "Am Ende machen wir eine Party.",
+  "wrong": [
+   "Am Ende wir machen eine Party.",
+   "Am Ende, wir machen eine Party."
+  ],
+  "rule": "After Am Ende, the verb comes next, then the subject: Am Ende machen wir eine Party.",
+  "src": "sample"
+ },
+ {
+  "strict": [],
+  "task": "Say it another way.",
+  "partner": null,
+  "prefill": null,
+  "chunk": null,
+  "level": "B1",
+  "hl": null,
+  "id": "BL:sample-paraphrase-beliebig-a",
+  "kind": "reading",
+  "area": "reading",
+  "group": "paraphrase",
+  "teil": "L2",
+  "fn": null,
+  "star": true,
+  "trap": null,
+  "focus": [
+   "paraphrase"
+  ],
+  "plan": "recall",
+  "prompt": "beliebig oft",
+  "prompt_lang": "de",
+  "accept": [
+   "mehrmals",
+   "so oft man will",
+   "so oft wie man will",
+   "immer wieder"
+  ],
+  "anywhere": false,
+  "model": "Mehrmals",
+  "wrong": [],
+  "rule": "In Lesen Teil 2 the right option says the text's idea in other words.",
+  "src": "sample · cheatsheet §10 Paraphrase pairs"
+ },
+ {
+  "strict": [
+   "die",
+   "Gebühr"
+  ],
+  "task": "Say it in German.",
+  "partner": null,
+  "prefill": null,
+  "chunk": null,
+  "level": "B1",
+  "hl": null,
+  "id": "BL:sample-rules-gebuehr",
+  "kind": "reading",
+  "area": "reading",
+  "group": "rules",
+  "teil": "L5",
+  "fn": null,
+  "star": true,
+  "trap": "cap",
+  "focus": [
+   "word-choice",
+   "article",
+   "cap"
+  ],
+  "plan": "recall",
+  "prompt": "the fee",
+  "prompt_lang": "en",
+  "accept": [
+   "die gebühr"
+  ],
+  "anywhere": false,
+  "model": "Die Gebühr",
+  "wrong": [
+   "der Gebühr",
+   "die gebühr"
+  ],
+  "rule": "Gebühr is feminine: die Gebühr.",
+  "src": "sample · cheatsheet §10 Bedingungen"
+ }
+]

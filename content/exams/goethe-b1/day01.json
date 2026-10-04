@@ -1,0 +1,248 @@
+{
+  "day": 1,
+  "topic": "Arbeit und Beruf",
+  "lesen": {
+    "teil1": {
+      "title": "Mein erster Tag in der neuen Firma",
+      "source": "Blog",
+      "text": "Gestern war mein erster Arbeitstag bei einer kleinen Werbeagentur in Köln. Ich hatte fast zwei Monate nach einer neuen Stelle gesucht, und nach drei Bewerbungsgesprächen hat es endlich geklappt. Am Sonntagabend konnte ich vor Aufregung kaum schlafen.\n\nUm acht Uhr stand ich vor dem Büro, aber die Tür war noch geschlossen. Erst um halb neun kam meine neue Chefin, Frau Berger, und hat mich freundlich begrüßt. Sie hat mir erklärt, dass die meisten Kollegen erst um neun anfangen, weil viele Kinder haben und sie morgens zur Schule bringen. Das fand ich sehr sympathisch.\n\nDanach hat mir ein Kollege, Tobias, das Büro gezeigt. Es gibt eine große Küche mit einer Kaffeemaschine, die man kostenlos benutzen darf. Mittags essen alle zusammen an einem langen Tisch. Man muss sich nichts kaufen, denn ein Restaurant aus der Nachbarschaft liefert jeden Tag ein warmes Essen. Die Firma bezahlt die Hälfte, den Rest zahlen die Mitarbeiter selbst.\n\nAm Nachmittag hatte ich mein erstes richtiges Meeting. Ich habe vor allem zugehört, weil ich das Projekt noch nicht kannte. Trotzdem hat Frau Berger mich am Ende gefragt, was ich denke. Das hat mich überrascht, aber auch gefreut. In meiner alten Firma hat niemand nach meiner Meinung gefragt.\n\nAbends war ich müde, aber glücklich. Ich glaube, ich habe die richtige Entscheidung getroffen. Nächste Woche bekomme ich mein erstes eigenes Projekt. Ich bin gespannt!",
+      "items": [
+        {"id": "L1-1", "statement": "Die Autorin hat schnell eine neue Stelle gefunden.", "answer": false, "skill": "paraphrase"},
+        {"id": "L1-2", "statement": "Die Chefin kam später als die Autorin ins Büro.", "answer": true, "skill": "detail"},
+        {"id": "L1-3", "statement": "Viele Kollegen beginnen erst um neun Uhr, weil sie Kinder haben.", "answer": true, "skill": "detail"},
+        {"id": "L1-4", "statement": "Das Mittagessen ist für die Mitarbeiter kostenlos.", "answer": false, "skill": "negation"},
+        {"id": "L1-5", "statement": "Die Autorin hat im Meeting viel gesprochen.", "answer": false, "skill": "inference"},
+        {"id": "L1-6", "statement": "Die Autorin ist mit ihrer Entscheidung zufrieden.", "answer": true, "skill": "attitude"}
+      ]
+    },
+    "teil2": {
+      "texts": [
+        {
+          "title": "Vier Tage arbeiten, drei Tage frei",
+          "source": "Zeitung",
+          "text": "Immer mehr Firmen in Deutschland testen die Vier-Tage-Woche. Die Mitarbeiter arbeiten dann nur noch von Montag bis Donnerstag, bekommen aber das gleiche Gehalt wie vorher. Eine Firma aus Hannover, die Software entwickelt, hat das Modell ein Jahr lang ausprobiert. Das Ergebnis überrascht viele: Die Angestellten haben in vier Tagen genauso viel geschafft wie früher in fünf.\n\n„Wir haben gemerkt, dass lange Meetings oft unnötig sind\", sagt der Geschäftsführer Jan Kowalski. „Jetzt sprechen wir kürzer und konzentrierter.\" Auch die Mitarbeiter sind zufriedener. Weniger Kollegen sind krank, und fast niemand hat in diesem Jahr gekündigt.\n\nAllerdings passt das Modell nicht zu jedem Beruf. Im Krankenhaus oder im Supermarkt kann man die Arbeit nicht einfach auf vier Tage verteilen. Dort müsste man neue Mitarbeiter einstellen, und das kostet Geld. Kritiker warnen deshalb davor, die Vier-Tage-Woche für alle Branchen zu fordern. Kowalski sieht das ähnlich: „Jede Firma muss selbst herausfinden, was für sie funktioniert.\"",
+          "items": [
+            {"id": "L2-1", "question": "Die Firma aus Hannover …", "options": ["zahlt ihren Mitarbeitern seit einem Jahr weniger Gehalt.", "hat ein Jahr lang nur vier Tage pro Woche gearbeitet.", "entwickelt Software für die Vier-Tage-Woche."], "answer": 1, "skill": "paraphrase"},
+            {"id": "L2-2", "question": "Was hat die Firma festgestellt?", "options": ["Die Mitarbeiter arbeiten in vier Tagen genauso viel wie früher in fünf.", "Die Meetings dauern jetzt länger als früher.", "Mehr Mitarbeiter als früher haben die Firma verlassen."], "answer": 0, "skill": "paraphrase"},
+            {"id": "L2-3", "question": "Herr Kowalski meint, …", "options": ["die Vier-Tage-Woche sollte in allen Branchen eingeführt werden.", "im Krankenhaus funktioniert die Vier-Tage-Woche besonders gut.", "jede Firma sollte ihr eigenes Modell finden."], "answer": 2, "skill": "attitude"}
+          ]
+        },
+        {
+          "title": "Arbeiten, wo andere Urlaub machen",
+          "source": "Zeitschrift",
+          "text": "Lena Hartmann sitzt mit ihrem Laptop auf einer Terrasse mit Blick aufs Meer. Die 34-jährige Grafikdesignerin aus Leipzig arbeitet seit drei Monaten von Portugal aus. Ihre Firma erlaubt es, bis zu sechs Monate im Jahr aus dem Ausland zu arbeiten. „Ich muss nur zwischen zehn und vier Uhr erreichbar sein\", erzählt sie. „Den Rest des Tages kann ich frei einteilen.\"\n\nGanz einfach ist das Leben als sogenannte digitale Nomadin aber nicht. Das Internet in ihrer Wohnung ist oft langsam, deshalb arbeitet Lena meistens in einem Café. Außerdem vermisst sie manchmal ihre Kollegen. „Bei Videokonferenzen bekommt man nicht alles mit. Wenn im Büro etwas Lustiges passiert, erfahre ich das erst Tage später.\"\n\nTrotzdem will Lena das Modell weiterführen. Im Winter möchte sie nach Spanien, im Sommer zurück nach Leipzig. Ihr Tipp für alle, die es auch versuchen wollen: „Sprecht früh mit eurem Chef und macht klare Regeln, wann ihr erreichbar seid. Dann klappt es.\"",
+          "items": [
+            {"id": "L2-4", "question": "Lena Hartmann …", "options": ["macht seit drei Monaten Urlaub in Portugal.", "darf einen Teil des Jahres im Ausland arbeiten.", "muss den ganzen Tag für ihre Firma erreichbar sein."], "answer": 1, "skill": "paraphrase"},
+            {"id": "L2-5", "question": "Welches Problem hat Lena?", "options": ["Sie findet kein Café mit Internet.", "Ihre Kollegen wollen keine Videokonferenzen machen.", "Sie erfährt manche Dinge aus dem Büro erst spät."], "answer": 2, "skill": "detail"},
+            {"id": "L2-6", "question": "Was empfiehlt Lena?", "options": ["Man sollte den Chef nicht zu früh informieren.", "Man sollte feste Zeiten vereinbaren, in denen man erreichbar ist.", "Man sollte im Winter in Deutschland bleiben."], "answer": 1, "skill": "paraphrase"}
+          ]
+        }
+      ]
+    },
+    "teil3": {
+      "intro": "Einige Personen aus Ihrem Deutschkurs suchen Angebote rund um Arbeit und Beruf. Lesen Sie die Situationen 1–7 und die Anzeigen A–J. Welche Anzeige passt zu welcher Situation? Eine Anzeige kann nur einmal gewählt werden. Für eine Situation gibt es keine passende Anzeige – markieren Sie dort 0.",
+      "situations": [
+        {"id": "L3-1", "text": "Marta möchte am Wochenende Geld verdienen, hat aber unter der Woche keine Zeit.", "answer": "D", "skill": "matching"},
+        {"id": "L3-2", "text": "Ahmed hat sein Studium beendet und sucht eine erste feste Stelle als Ingenieur.", "answer": "G", "skill": "matching"},
+        {"id": "L3-3", "text": "Yuki möchte lernen, wie man eine gute Bewerbung auf Deutsch schreibt.", "answer": "A", "skill": "matching"},
+        {"id": "L3-4", "text": "Paolo möchte nach der Arbeit einen Kurs besuchen, um Excel besser zu können.", "answer": "I", "skill": "matching"},
+        {"id": "L3-5", "text": "Elena sucht einen Job in der Gastronomie, hat aber keine Erfahrung.", "answer": "E", "skill": "matching"},
+        {"id": "L3-6", "text": "Sven möchte sich selbstständig machen und braucht eine Beratung.", "answer": null, "skill": "matching"},
+        {"id": "L3-7", "text": "Fatima möchte ihre Kinder betreuen lassen, während sie arbeitet.", "answer": "H", "skill": "matching"}
+      ],
+      "ads": [
+        {"letter": "A", "title": "Workshop: Die perfekte Bewerbung", "text": "Lebenslauf, Anschreiben, Vorstellungsgespräch – in zwei Abenden lernen Sie, wie man sich in Deutschland richtig bewirbt. Speziell für Nicht-Muttersprachler. Volkshochschule Mitte, 45 €."},
+        {"letter": "B", "title": "Praktikum im Bereich Marketing", "text": "Wir suchen Studierende für ein sechsmonatiges Praktikum. Bezahlung: 900 € pro Monat. Voraussetzung: eingeschriebene/r Student/in. Bewerbung an praktikum@nordwerbung.de"},
+        {"letter": "C", "title": "Sprachtandem gesucht", "text": "Ich (Deutsch, 28) suche jemanden mit Muttersprache Spanisch oder Italienisch zum Sprachenlernen. Einmal pro Woche im Café, jeder zahlt selbst. Kontakt: tandem-koeln@web.de"},
+        {"letter": "D", "title": "Aushilfe Samstag/Sonntag", "text": "Bäckerei Krüger sucht freundliche Verkäufer/innen nur für das Wochenende, 6–14 Uhr. 14 € pro Stunde. Keine Erfahrung nötig, wir zeigen Ihnen alles. Einfach vorbeikommen!"},
+        {"letter": "E", "title": "Restaurant Olivo sucht Verstärkung", "text": "Küchenhilfe und Servicekraft (m/w/d) in Vollzeit gesucht. Quereinsteiger willkommen – Sie lernen bei uns alles, was Sie brauchen. Arbeitszeiten: Dienstag bis Sonntag, 16–23 Uhr."},
+        {"letter": "F", "title": "Büroraum zu vermieten", "text": "Heller Raum (20 m²) in Bürogemeinschaft in Ehrenfeld, ideal für Selbstständige. Internet, Küche und Drucker inklusive. 350 € pro Monat. Besichtigung nach Absprache."},
+        {"letter": "G", "title": "Berufseinsteiger (m/w/d) Maschinenbau", "text": "Ingenieurbüro Weber sucht Absolventen/innen mit abgeschlossenem Studium für eine unbefristete Stelle. Keine Berufserfahrung nötig. Wir bieten Einarbeitung und ein junges Team."},
+        {"letter": "H", "title": "Kita „Sonnenblume\" – freie Plätze", "text": "Ab sofort freie Plätze für Kinder von 1 bis 6 Jahren. Öffnungszeiten 7–17 Uhr, auch für berufstätige Eltern in Schichtarbeit geeignet. Anmeldung unter 0221 / 55 43 21."},
+        {"letter": "I", "title": "Abendkurs: Excel für den Beruf", "text": "Tabellen, Formeln, Diagramme – in acht Wochen sicher mit Excel arbeiten. Montag und Mittwoch, 18:30–20:00 Uhr. Für Anfänger und Fortgeschrittene. Anmeldung online."},
+        {"letter": "J", "title": "Fahrer/in für Lieferdienst", "text": "Wir suchen Fahrer/innen mit eigenem Auto, Montag bis Freitag 11–15 Uhr. Führerschein Klasse B erforderlich. Bezahlung nach Vereinbarung. Tel. 0221 / 88 77 66."}
+      ]
+    },
+    "teil4": {
+      "question": "Sollte man im Homeoffice arbeiten dürfen, so oft man will?",
+      "comments": [
+        {"id": "L4-1", "author": "Katrin, Bremen", "text": "Ich arbeite seit zwei Jahren fast nur zu Hause und schaffe viel mehr als im Büro. Niemand stört mich, und ich spare jeden Tag zwei Stunden im Zug. Jeder sollte selbst entscheiden dürfen, wo er arbeitet.", "answer": true, "skill": "attitude"},
+        {"id": "L4-2", "author": "Markus, Stuttgart", "text": "Am Anfang fand ich Homeoffice toll. Aber nach ein paar Monaten habe ich gemerkt, dass ich meine Kollegen brauche. Die besten Ideen entstehen beim Kaffee, nicht in einer Videokonferenz. Deshalb bin ich froh, dass meine Firma wieder Präsenztage verlangt.", "answer": false, "skill": "attitude"},
+        {"id": "L4-3", "author": "Selin, Hamburg", "text": "Meine Kinder sind noch klein. Ohne Homeoffice könnte ich gar nicht Vollzeit arbeiten. Wenn Firmen das wieder verbieten, verlieren sie viele gute Mitarbeiterinnen. Das müssen die Chefs endlich verstehen.", "answer": true, "skill": "attitude"},
+        {"id": "L4-4", "author": "Jonas, Dresden", "text": "Ich wohne in einer kleinen Wohnung und habe keinen ruhigen Arbeitsplatz. Für mich ist das Büro der bessere Ort. Ich verstehe aber, dass es bei anderen anders ist. Freiwillig ja, aber niemand sollte dazu gezwungen werden, zu Hause zu bleiben.", "answer": true, "skill": "inference"},
+        {"id": "L4-5", "author": "Petra, München", "text": "Ich bin Teamleiterin und sehe jeden Tag, dass neue Kollegen im Homeoffice viel langsamer lernen. Man kann nicht einfach kurz fragen. Ein oder zwei Tage zu Hause sind in Ordnung, aber nicht mehr.", "answer": false, "skill": "attitude"},
+        {"id": "L4-6", "author": "Daniel, Leipzig", "text": "Die Frage ist doch falsch gestellt. Es geht nicht darum, wo man sitzt, sondern ob die Arbeit gut ist. Wer seine Aufgaben erledigt, sollte arbeiten, wo er will – auch jeden Tag zu Hause.", "answer": true, "skill": "inference"},
+        {"id": "L4-7", "author": "Anna, Freiburg", "text": "Ehrlich gesagt: Viele meiner Kollegen arbeiten zu Hause deutlich weniger. Man merkt es an den Ergebnissen. Ich finde, Homeoffice sollte die Ausnahme sein, nicht die Regel.", "answer": false, "skill": "attitude"}
+      ]
+    },
+    "teil5": {
+      "title": "Hausordnung – Coworking-Space „Werkraum\"",
+      "text": "§ 1 Öffnungszeiten\nDer Werkraum ist Montag bis Freitag von 7 bis 22 Uhr geöffnet. Am Wochenende haben nur Mitglieder mit einer Jahreskarte Zutritt; sie erhalten dafür einen Schlüsselchip.\n\n§ 2 Arbeitsplätze\nFlexible Arbeitsplätze können nicht reserviert werden. Wer seinen Platz länger als 60 Minuten verlässt, muss ihn räumen. Feste Arbeitsplätze sind mit einem Namensschild markiert und dürfen nur von der jeweiligen Person genutzt werden.\n\n§ 3 Besprechungsräume\nDie beiden Besprechungsräume müssen über die Online-Plattform gebucht werden, maximal drei Stunden pro Tag und Mitglied. Nicht genutzte Buchungen sind spätestens zwei Stunden vorher zu stornieren, sonst wird eine Gebühr von 10 € berechnet.\n\n§ 4 Küche und Ruhe\nDie Küche steht allen Mitgliedern zur Verfügung. Benutztes Geschirr ist sofort in die Spülmaschine zu stellen. Telefonate sind nur in den Telefonkabinen oder im Flur erlaubt, nicht im Großraumbüro.\n\n§ 5 Gäste\nMitglieder dürfen Gäste mitbringen. Gäste müssen am Empfang angemeldet werden und dürfen sich höchstens vier Stunden pro Tag im Werkraum aufhalten. Für Gäste, die länger bleiben, gilt der Tagestarif.",
+      "items": [
+        {"id": "L5-1", "question": "Am Samstag …", "options": ["ist der Werkraum für alle Mitglieder geöffnet.", "können nur Mitglieder mit Jahreskarte den Werkraum nutzen.", "ist der Werkraum geschlossen."], "answer": 1, "skill": "detail"},
+        {"id": "L5-2", "question": "Wer einen flexiblen Arbeitsplatz hat, …", "options": ["darf ihn nicht länger als eine Stunde verlassen.", "kann ihn online reservieren.", "bekommt ein Namensschild."], "answer": 0, "skill": "paraphrase"},
+        {"id": "L5-3", "question": "Wenn man einen gebuchten Besprechungsraum nicht braucht, …", "options": ["muss man 10 € bezahlen.", "muss man die Buchung mindestens zwei Stunden vorher absagen.", "kann man ihn an ein anderes Mitglied weitergeben."], "answer": 1, "skill": "detail"},
+        {"id": "L5-4", "question": "Gäste …", "options": ["dürfen den ganzen Tag kostenlos bleiben.", "müssen im Flur arbeiten.", "müssen sich am Empfang anmelden."], "answer": 2, "skill": "detail"}
+      ]
+    }
+  },
+  "hoeren": {
+    "teil1": {
+      "texts": [
+        {
+          "id": "H1-1", "kind": "Anrufbeantworter",
+          "script": [{"speaker": "f1", "text": "Guten Tag, Herr Demir, hier ist Sabine Wolf von der Firma Nordlicht. Wir haben Ihre Bewerbung erhalten und möchten Sie gern zu einem Gespräch einladen. Wir hatten zuerst an Dienstag gedacht, aber da ist unser Abteilungsleiter leider nicht im Haus. Passt es Ihnen am Donnerstag um zehn Uhr? Bitte bringen Sie Ihre Zeugnisse im Original mit, die Kopien haben wir schon. Rufen Sie mich bitte kurz zurück, um den Termin zu bestätigen. Meine Nummer ist 040 – 33 55 78. Vielen Dank und bis bald!"}],
+          "items": [
+            {"id": "H1-1a", "type": "rf", "statement": "Das Gespräch soll am Dienstag stattfinden.", "answer": false, "skill": "number-time"},
+            {"id": "H1-1b", "type": "mc", "question": "Herr Demir soll …", "options": ["Kopien seiner Zeugnisse mitbringen.", "die Originale seiner Zeugnisse mitbringen.", "seine Bewerbung noch einmal schicken."], "answer": 1, "skill": "detail"}
+          ]
+        },
+        {
+          "id": "H1-2", "kind": "Radio",
+          "script": [{"speaker": "m1", "text": "Und hier noch ein Hinweis für alle, die auf Jobsuche sind: Am kommenden Samstag findet in der Stadthalle die große Jobmesse „Zukunft Arbeit\" statt. Über achtzig Firmen aus der Region stellen sich vor, vom kleinen Handwerksbetrieb bis zum großen Autohersteller. Der Eintritt ist frei. Wer möchte, kann seinen Lebenslauf von Experten kostenlos prüfen lassen – dafür sollte man sich aber vorher auf der Website anmelden, die Plätze sind begrenzt. Die Messe ist von neun bis siebzehn Uhr geöffnet. Parkplätze gibt es wenige, kommen Sie also am besten mit der Straßenbahn, Linie 4 hält direkt vor der Halle."}],
+          "items": [
+            {"id": "H1-2a", "type": "rf", "statement": "Die Jobmesse kostet keinen Eintritt.", "answer": true, "skill": "detail"},
+            {"id": "H1-2b", "type": "mc", "question": "Wer seinen Lebenslauf prüfen lassen will, …", "options": ["muss dafür bezahlen.", "soll sich vorher im Internet anmelden.", "soll früh zur Messe kommen."], "answer": 1, "skill": "paraphrase"}
+          ]
+        },
+        {
+          "id": "H1-3", "kind": "Anrufbeantworter",
+          "script": [{"speaker": "m2", "text": "Hallo Julia, hier ist Ben aus dem Büro. Du, ich muss dich um etwas bitten. Ich bin heute Morgen mit dem Fahrrad gestürzt, nichts Schlimmes, aber ich sitze gerade beim Arzt und weiß nicht, wie lange das dauert. Kannst du bitte um elf die Besprechung mit dem Kunden aus Dortmund übernehmen? Die Unterlagen liegen auf meinem Schreibtisch, in der blauen Mappe. Die Präsentation habe ich dir eben per E-Mail geschickt. Ach ja, und sag bitte Frau Berger Bescheid, dass ich später komme. Danke dir, ich melde mich, sobald ich hier fertig bin."}],
+          "items": [
+            {"id": "H1-3a", "type": "rf", "statement": "Ben hatte einen Unfall mit dem Auto.", "answer": false, "skill": "detail"},
+            {"id": "H1-3b", "type": "mc", "question": "Julia soll …", "options": ["die Präsentation vorbereiten.", "die Besprechung mit dem Kunden leiten.", "zum Arzt fahren."], "answer": 1, "skill": "paraphrase"}
+          ]
+        },
+        {
+          "id": "H1-4", "kind": "Durchsage",
+          "script": [{"speaker": "f2", "text": "Liebe Kolleginnen und Kollegen, eine kurze Durchsage: Wegen einer Störung im Aufzug bitten wir Sie, heute die Treppe zu benutzen. Der Techniker ist schon informiert und kommt gegen vierzehn Uhr. Außerdem erinnern wir daran, dass die Kantine heute wegen einer Veranstaltung nur bis dreizehn Uhr geöffnet ist. Wer später essen möchte, findet belegte Brötchen und Getränke im Konferenzraum im dritten Stock. Vielen Dank für Ihr Verständnis."}],
+          "items": [
+            {"id": "H1-4a", "type": "rf", "statement": "Der Aufzug funktioniert im Moment nicht.", "answer": true, "skill": "paraphrase"},
+            {"id": "H1-4b", "type": "mc", "question": "Die Kantine …", "options": ["ist heute geschlossen.", "schließt heute früher.", "ist heute im dritten Stock."], "answer": 1, "skill": "number-time"}
+          ]
+        },
+        {
+          "id": "H1-5", "kind": "Radio",
+          "script": [{"speaker": "f3", "text": "Sie hören das Wetter für morgen. Im Norden bleibt es den ganzen Tag bewölkt, am Nachmittag kann es leicht regnen. Im Süden dagegen scheint die Sonne, bei angenehmen 22 Grad. Achtung für alle Pendler: In der Nacht zum Freitag wird die A3 zwischen Köln und Bonn wegen Bauarbeiten gesperrt. Die Sperrung dauert bis Freitagmorgen sechs Uhr. Planen Sie also mehr Zeit ein oder nehmen Sie den Zug. Am Wochenende wird es dann überall sonnig und warm."}],
+          "items": [
+            {"id": "H1-5a", "type": "rf", "statement": "Im Süden regnet es morgen.", "answer": false, "skill": "detail"},
+            {"id": "H1-5b", "type": "mc", "question": "Die Autobahn ist gesperrt …", "options": ["am Freitag den ganzen Tag.", "in der Nacht auf Freitag.", "am Wochenende."], "answer": 1, "skill": "number-time"}
+          ]
+        }
+      ]
+    },
+    "teil2": {
+      "setting": "Sie nehmen an einer Führung durch eine Schokoladenfabrik teil und hören die Begrüßung.",
+      "script": [{"speaker": "m1", "text": "Herzlich willkommen bei der Schokoladenfabrik Lindner! Mein Name ist Thomas Reuter, ich arbeite seit fünfzehn Jahren hier und führe Sie heute durch unser Haus. Die Führung dauert ungefähr neunzig Minuten. Wir beginnen im Museum im Erdgeschoss, dort sehen Sie, wie die Firma 1892 als kleine Bäckerei angefangen hat. Danach gehen wir in die Produktion im ersten Stock. Bitte beachten Sie: In der Produktion dürfen Sie nicht fotografieren, das ist aus Hygienegründen verboten. Im Museum und im Verkaufsraum ist Fotografieren natürlich erlaubt. Sie bekommen gleich am Eingang eine Haube für die Haare und einen weißen Kittel, das ist Vorschrift. Wer eine Allergie gegen Nüsse hat, sagt mir bitte vorher Bescheid, denn am Ende der Führung probieren wir frische Pralinen, und einige enthalten Haselnüsse. Heute arbeiten in der Produktion etwa zweihundert Personen, in der Weihnachtszeit sind es fast doppelt so viele, weil dann die meisten Bestellungen kommen. Übrigens: Viele unserer Mitarbeiter haben hier als Auszubildende angefangen. Wenn Sie sich für eine Ausbildung interessieren, finden Sie Informationen am Ausgang, oder Sie sprechen mich einfach an. Nach der Führung können Sie im Verkaufsraum einkaufen. Mit dem Ticket der Führung bekommen Sie dort zehn Prozent Rabatt. Die Toiletten befinden sich links neben der Garderobe. So, dann folgen Sie mir bitte, wir fangen im Museum an."}],
+      "items": [
+        {"id": "H2-1", "question": "Die Führung …", "options": ["beginnt in der Produktion.", "dauert etwa anderthalb Stunden.", "wird von der Firmenchefin geleitet."], "answer": 1, "skill": "number-time"},
+        {"id": "H2-2", "question": "Fotografieren ist …", "options": ["überall in der Fabrik verboten.", "nur im Museum und im Verkaufsraum erlaubt.", "nur mit einer Haube erlaubt."], "answer": 1, "skill": "detail"},
+        {"id": "H2-3", "question": "Wer eine Nussallergie hat, …", "options": ["soll dem Führer vorher Bescheid sagen.", "darf nicht an der Führung teilnehmen.", "bekommt einen anderen Kittel."], "answer": 0, "skill": "detail"},
+        {"id": "H2-4", "question": "Vor Weihnachten …", "options": ["ist die Fabrik geschlossen.", "arbeiten weniger Personen in der Produktion.", "arbeiten fast doppelt so viele Personen wie sonst."], "answer": 2, "skill": "number-time"},
+        {"id": "H2-5", "question": "Mit dem Ticket der Führung …", "options": ["bekommt man im Verkaufsraum einen Rabatt.", "kann man kostenlos Pralinen mitnehmen.", "kann man sich für eine Ausbildung bewerben."], "answer": 0, "skill": "paraphrase"}
+      ]
+    },
+    "teil3": {
+      "setting": "Sie hören ein Gespräch zwischen zwei Kollegen in der Mittagspause.",
+      "script": [
+        {"speaker": "f2", "text": "Hallo Markus, setz dich doch! Und? Wie war dein Gespräch mit der Chefin?"},
+        {"speaker": "m2", "text": "Hallo Nina. Ganz gut eigentlich. Sie hat mir angeboten, ab Januar das neue Team in Berlin zu leiten."},
+        {"speaker": "f2", "text": "Wow, Berlin! Das ist ja eine große Chance. Hast du schon zugesagt?"},
+        {"speaker": "m2", "text": "Nein, noch nicht. Ich habe bis Ende des Monats Zeit, mich zu entscheiden. Das Problem ist, dass meine Freundin hier in Köln arbeitet. Sie hat gerade erst eine feste Stelle bekommen."},
+        {"speaker": "f2", "text": "Hm, das ist schwierig. Könntest du nicht pendeln? Berlin ist mit dem Zug ja nur vier Stunden entfernt."},
+        {"speaker": "m2", "text": "Das habe ich mir auch überlegt. Vielleicht drei Tage in Berlin und zwei Tage Homeoffice. Die Chefin meinte, das wäre möglich."},
+        {"speaker": "f2", "text": "Und das Gehalt? Bekommst du mehr?"},
+        {"speaker": "m2", "text": "Ja, ungefähr dreihundert Euro mehr im Monat. Aber die Mieten in Berlin sind inzwischen fast so hoch wie hier. Viel bleibt da nicht übrig."},
+        {"speaker": "f2", "text": "Stimmt. Aber als Teamleiter hast du später bessere Chancen. Ich würde es machen."},
+        {"speaker": "m2", "text": "Meinst du? Ich habe ehrlich gesagt ein bisschen Angst vor der Verantwortung. Ich habe noch nie ein Team geführt."},
+        {"speaker": "f2", "text": "Ach, das lernst du schnell. Es gibt doch dieses Führungsseminar von der Firma. Ich habe es letztes Jahr gemacht, das war wirklich hilfreich."},
+        {"speaker": "m2", "text": "Das ist eine gute Idee. Ich frage die Chefin, ob ich das noch vor Januar machen kann. Und heute Abend rede ich mit Laura. Am Ende müssen wir das zusammen entscheiden."},
+        {"speaker": "f2", "text": "Auf jeden Fall. Sag mir Bescheid, wie es ausgeht. Und jetzt lass uns essen, ich habe nur noch zwanzig Minuten."}
+      ],
+      "items": [
+        {"id": "H3-1", "statement": "Markus soll ab Januar ein Team in Berlin leiten.", "answer": true, "skill": "detail"},
+        {"id": "H3-2", "statement": "Markus hat das Angebot schon angenommen.", "answer": false, "skill": "negation"},
+        {"id": "H3-3", "statement": "Seine Freundin sucht zurzeit eine Stelle in Berlin.", "answer": false, "skill": "detail"},
+        {"id": "H3-4", "statement": "Markus könnte einen Teil der Woche von zu Hause arbeiten.", "answer": true, "skill": "paraphrase"},
+        {"id": "H3-5", "statement": "In Berlin würde Markus deutlich mehr Geld zum Leben haben.", "answer": false, "skill": "inference"},
+        {"id": "H3-6", "statement": "Nina hat schon ein Seminar für Führungskräfte besucht.", "answer": true, "skill": "detail"},
+        {"id": "H3-7", "statement": "Markus will die Entscheidung allein treffen.", "answer": false, "skill": "negation"}
+      ]
+    },
+    "teil4": {
+      "setting": "Sie hören eine Diskussion im Radio. Die Moderatorin spricht mit einem Unternehmer und einer Gewerkschaftsvertreterin über das Thema „Brauchen wir mehr Homeoffice?\"",
+      "speakers": {"mod": "Moderatorin Claudia Renner", "a": "Stefan Kraus (Unternehmer)", "b": "Miriam Vogt (Gewerkschaft)"},
+      "voices": {"mod": "f1", "a": "m1", "b": "f2"},
+      "script": [
+        {"speaker": "mod", "text": "Guten Abend und willkommen zu unserer Sendung „Arbeitswelt heute\". Mein Name ist Claudia Renner. Unser Thema: Brauchen wir mehr Homeoffice? Bei mir im Studio sind Stefan Kraus, der eine Firma mit sechzig Mitarbeitern leitet, und Miriam Vogt von der Gewerkschaft. Herr Kraus, Sie haben nach der Pandemie alle Mitarbeiter zurück ins Büro geholt. Warum?"},
+        {"speaker": "a", "text": "Guten Abend. Ja, das stimmt, seit einem Jahr arbeiten bei uns wieder alle im Büro, mindestens vier Tage pro Woche. Der Grund ist einfach: Die Qualität unserer Arbeit hat im Homeoffice gelitten. Wir hatten mehr Fehler, und neue Kollegen haben viel länger gebraucht, bis sie richtig mitarbeiten konnten. Ich sage nicht, dass Homeoffice grundsätzlich schlecht ist. Aber für ein kleines Team wie unseres funktioniert es einfach nicht."},
+        {"speaker": "mod", "text": "Frau Vogt, Sie sehen das anders."},
+        {"speaker": "b", "text": "Ja, ganz anders. Wir haben in einer großen Umfrage gesehen, dass die meisten Beschäftigten zwei bis drei Tage Homeoffice pro Woche wollen. Und die Firmen, die das erlauben, finden viel leichter neue Mitarbeiter. Wer heute sagt: „Alle müssen jeden Tag ins Büro\", der verliert die besten Leute an die Konkurrenz. Das ist kein Gefühl, das sind Zahlen."},
+        {"speaker": "a", "text": "Aber Zahlen sagen nicht alles. Ich kenne meine Mitarbeiter persönlich. Viele haben mir gesagt, dass sie zu Hause einsam waren. Der Kontakt zu den Kollegen fehlt, und irgendwann fehlt auch die Motivation."},
+        {"speaker": "mod", "text": "Ist das nicht ein Argument für eine Mischung? Also ein paar Tage zu Hause, ein paar Tage im Büro?"},
+        {"speaker": "b", "text": "Genau das fordern wir. Niemand will fünf Tage Homeoffice für alle. Aber es muss ein Recht darauf geben, einen Teil der Woche zu Hause zu arbeiten, wenn der Job das erlaubt. Sonst entscheidet allein der Chef, und das ist nicht fair."},
+        {"speaker": "a", "text": "Ein Recht per Gesetz, das halte ich für falsch. Jede Firma ist anders. Bei uns haben wir jetzt eine Lösung gefunden: Freitag ist bei uns Homeoffice-Tag, und die anderen Tage sind alle da. Damit sind fast alle zufrieden."},
+        {"speaker": "mod", "text": "Ich muss hier kurz einwerfen: Ich habe selbst drei Jahre lang von zu Hause gearbeitet und fand es am Anfang wunderbar. Nach einem Jahr habe ich aber gemerkt, dass ich abends nicht mehr abschalten konnte. Der Laptop stand ja immer im Wohnzimmer."},
+        {"speaker": "b", "text": "Das ist ein wichtiger Punkt. Deshalb brauchen wir auch klare Regeln für die Arbeitszeit. Nach achtzehn Uhr keine E-Mails, das muss selbstverständlich sein, egal ob im Büro oder zu Hause."},
+        {"speaker": "a", "text": "Da bin ich ausnahmsweise ganz Ihrer Meinung. Wer im Homeoffice arbeitet, muss abends auch Feierabend machen dürfen."},
+        {"speaker": "mod", "text": "Dann haben wir ja am Ende doch etwas gefunden, worüber sich alle einig sind. Vielen Dank, Herr Kraus, vielen Dank, Frau Vogt."}
+      ],
+      "items": [
+        {"id": "H4-1", "statement": "In seiner Firma arbeiten alle wieder mindestens vier Tage im Büro.", "answer": "a", "skill": "matching"},
+        {"id": "H4-2", "statement": "Die meisten Beschäftigten wünschen sich zwei bis drei Tage Homeoffice.", "answer": "b", "skill": "matching"},
+        {"id": "H4-3", "statement": "Neue Kollegen brauchen im Homeoffice länger, bis sie gut mitarbeiten.", "answer": "a", "skill": "matching"},
+        {"id": "H4-4", "statement": "Firmen ohne Homeoffice verlieren gute Mitarbeiter an andere Firmen.", "answer": "b", "skill": "matching"},
+        {"id": "H4-5", "statement": "Ich konnte abends nicht mehr abschalten.", "answer": "mod", "skill": "matching"},
+        {"id": "H4-6", "statement": "Es sollte ein gesetzliches Recht auf Homeoffice geben.", "answer": "b", "skill": "matching"},
+        {"id": "H4-7", "statement": "Freitags arbeiten die Mitarbeiter von zu Hause.", "answer": "a", "skill": "matching"},
+        {"id": "H4-8", "statement": "Ich habe selbst drei Jahre im Homeoffice gearbeitet.", "answer": "mod", "skill": "matching"}
+      ]
+    }
+  },
+  "schreiben": {
+    "aufgabe1": {
+      "minutes": 20, "words": 80,
+      "situation": "Sie haben vor zwei Wochen eine neue Stelle angefangen. Ihr Freund Jonas hat Ihnen geschrieben und möchte wissen, wie es Ihnen geht. Schreiben Sie ihm eine E-Mail.",
+      "points": ["Beschreiben Sie, wie Ihr erster Arbeitstag war.", "Erklären Sie, was Ihnen an der neuen Arbeit besonders gut oder nicht so gut gefällt.", "Machen Sie einen Vorschlag für ein Treffen."]
+    },
+    "aufgabe2": {
+      "minutes": 25, "words": 80,
+      "situation": "Sie haben im Fernsehen eine Diskussionssendung zum Thema „Vier-Tage-Woche für alle?\" gesehen. Im Online-Gästebuch der Sendung finden Sie folgende Meinung:",
+      "quote": "„Wer nur vier Tage arbeitet, ist einfach faul. Unsere Eltern haben sechs Tage gearbeitet und sich nie beschwert. Die Vier-Tage-Woche ist schlecht für die Wirtschaft.\" – Rainer, 58",
+      "instruction": "Schreiben Sie nun Ihre Meinung dazu (circa 80 Wörter)."
+    },
+    "aufgabe3": {
+      "minutes": 15, "words": 40,
+      "situation": "Ihre Chefin, Frau Berger, hat Sie zu einem Mitarbeitergespräch am Montag um 9 Uhr eingeladen. Sie können an diesem Termin nicht kommen. Schreiben Sie ihr eine E-Mail: Entschuldigen Sie sich höflich, nennen Sie den Grund und schlagen Sie einen anderen Termin vor.",
+      "addressee": "Frau Berger"
+    }
+  },
+  "sprechen": {
+    "teil1": {
+      "situation": "Eine Kollegin aus Ihrem Team verlässt die Firma. Sie und Ihr Partner / Ihre Partnerin wollen eine kleine Abschiedsfeier organisieren. Planen Sie gemeinsam.",
+      "points": ["Wann und wo soll die Feier stattfinden?", "Wer soll eingeladen werden?", "Was gibt es zu essen und zu trinken?", "Welches Geschenk kaufen Sie, und wer sammelt das Geld?"],
+      "partner_cues": [
+        "Ich finde, wir sollten die Feier am Freitagnachmittag machen, direkt nach der Arbeit. Was meinst du?",
+        "Sollen wir im Büro feiern oder lieber in ein Restaurant gehen?",
+        "Ich könnte einen Kuchen backen. Kannst du dich um die Getränke kümmern?",
+        "Was für ein Geschenk könnten wir ihr kaufen? Sie liest gern und reist viel.",
+        "Wer sammelt das Geld von den Kollegen ein? Ich habe diese Woche leider wenig Zeit.",
+        "Gut, dann machen wir es so. Schreibst du die Einladung, oder soll ich das machen?"
+      ]
+    },
+    "teil2": {
+      "topics": ["Thema A: Sollte man den Beruf wechseln, wenn er keinen Spaß mehr macht?", "Thema B: Ist Homeoffice besser als Arbeit im Büro?"],
+      "folien": [
+        "Stellen Sie Ihr Thema vor. Erklären Sie den Inhalt und die Struktur Ihrer Präsentation.",
+        "Berichten Sie von Ihrer Situation oder einem Erlebnis im Zusammenhang mit dem Thema.",
+        "Berichten Sie, wie die Situation in Ihrem Heimatland ist, und geben Sie Beispiele.",
+        "Nennen Sie die Vor- und Nachteile und sagen Sie dazu Ihre Meinung. Geben Sie auch Beispiele.",
+        "Beenden Sie Ihre Präsentation und bedanken Sie sich bei den Zuhörern."
+      ]
+    },
+    "teil3": {
+      "questions": ["Sie haben gesagt, dass Spaß im Beruf wichtig ist. Ist Geld nicht wichtiger?", "Haben Sie selbst schon einmal überlegt, den Beruf zu wechseln? Warum?", "Was würden Sie einem Freund raten, der seinen Job nicht mag?"],
+      "questions_b": ["Glauben Sie, dass man zu Hause wirklich so viel arbeitet wie im Büro?", "Was fehlt Ihnen, wenn Sie nicht mit Kollegen zusammenarbeiten?", "Wie sollte eine Firma entscheiden, wer Homeoffice machen darf?"]
+    }
+  }
+}

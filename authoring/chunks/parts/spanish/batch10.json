@@ -1,0 +1,526 @@
+[
+{
+"id": "ENG_CHUNK_0901",
+"t": "¿Por casualidad tendrá [sustantivo]? / ¿De casualidad tienes [sustantivo]?",
+"ex": "¿De casualidad tienes un cargador que me prestes?",
+"n": "que + subjunctive after an indefinite noun: un cargador que me prestes. 'De casualidad' is Latin American; Spain: por casualidad."
+},
+{
+"id": "ENG_CHUNK_0902",
+"t": "Preferiría que no [subjuntivo]",
+"ex": "Preferiría que no fumaras en el carro.",
+"n": "Preferiría que + imperfect subjunctive."
+},
+{
+"id": "ENG_CHUNK_0903",
+"t": "Ojalá no [subjuntivo] / Me gustaría que no [subjuntivo]",
+"ex": "Me gustaría que no dejaras los zapatos en el pasillo.",
+"n": "Ojalá + imperfect subjunctive for a wish about someone's habit: Ojalá no dejaras..."
+},
+{
+"id": "ENG_CHUNK_0904",
+"t": "Si fuera por mí, [verbo en condicional]",
+"ex": "Si fuera por mí, cerraría la oficina los viernes.",
+"n": "Si + imperfect subjunctive + conditional."
+},
+{
+"id": "ENG_CHUNK_0905",
+"t": "Prefiero mil veces [sustantivo] que [sustantivo]",
+"ex": "Prefiero mil veces una noche tranquila en casa que una fiesta grande."
+},
+{
+"id": "ENG_CHUNK_0906",
+"t": "No hay nada como [sustantivo]",
+"ex": "No hay nada como un baño caliente después de correr un buen rato.",
+"n": "Shower: regadera (Mexico) / ducha (neutral); 'darse un baño' often means shower in Latin America."
+},
+{
+"id": "ENG_CHUNK_0907",
+"t": "Me estoy inclinando por [sustantivo] / Me late más [sustantivo]",
+"ex": "La verdad, me estoy inclinando por el departamento más barato."
+},
+{
+"id": "ENG_CHUNK_0908",
+"t": "No me decido entre [sustantivo] y [sustantivo]",
+"ex": "No me decido entre el sillón azul y el gris."
+},
+{
+"id": "ENG_CHUNK_0909",
+"t": "Ya no estoy tan seguro de [sustantivo] / Me estoy arrepintiendo de [sustantivo]",
+"ex": "Ya no estoy tan seguro del nuevo trabajo."
+},
+{
+"id": "ENG_CHUNK_0910",
+"t": "No le des tantas vueltas a [sustantivo] / No le busques tres pies al gato",
+"ex": "¿No te contestó? No le des tantas vueltas."
+},
+{
+"id": "ENG_CHUNK_0911",
+"t": "¿Al final [verbo en pasado]? / ¿Por fin [verbo en pasado]?",
+"ex": "¿Al final fuiste a la boda?"
+},
+{
+"id": "ENG_CHUNK_0912",
+"t": "No alcancé a [verbo] / No me dio tiempo de [verbo]",
+"ex": "Perdón, no alcancé a leer tu correo.",
+"n": "'No alcancé a' is Latin American; Spain: no me dio tiempo a."
+},
+{
+"id": "ENG_CHUNK_0913",
+"t": "Anda un(a) [sustantivo] / Hay un(a) [sustantivo] dando vueltas",
+"ex": "Media oficina faltó. Anda un virus por ahí."
+},
+{
+"id": "ENG_CHUNK_0914",
+"t": "No logro [verbo] / No hay manera de [verbo]",
+"ex": "No logro hacer que funcione esta impresora."
+},
+{
+"id": "ENG_CHUNK_0915",
+"t": "No sirvo para [sustantivo/infinitivo] / No es lo mío",
+"ex": "Di clases un año, pero no sirvo para eso."
+},
+{
+"id": "ENG_CHUNK_0916",
+"t": "Estoy hasta el cuello de [sustantivo] / Estoy saturado de [sustantivo]",
+"ex": "¿Hablamos mañana? Hoy estoy hasta el cuello de trabajo."
+},
+{
+"id": "ENG_CHUNK_0917",
+"t": "Me da pavor [infinitivo] / Ya me da flojera [infinitivo]",
+"ex": "Me da pavor regresar al trabajo el lunes.",
+"n": "'Flojera' (Mexico) = can't-be-bothered dread; Spain: me da pereza."
+},
+{
+"id": "ENG_CHUNK_0918",
+"t": "No me animo a [verbo] / No soy capaz de [verbo]",
+"ex": "No soy capaz de tirar sus cartas viejas."
+},
+{
+"id": "ENG_CHUNK_0919",
+"t": "Me dan ganas de [verbo] / Estoy tentado a [verbo]",
+"ex": "Me dan ganas de pedir una pizza y no cocinar."
+},
+{
+"id": "ENG_CHUNK_0920",
+"t": "Estoy decidido a [verbo]",
+"ex": "Estoy decidido a terminar este maratón, pase lo que pase.",
+"n": "'pase lo que pase': reduplicated subjunctive = no matter what."
+},
+{
+"id": "ENG_CHUNK_0921",
+"t": "No me queda otra que [verbo] / No tengo más remedio que [verbo]",
+"ex": "Volvieron a subir la renta, así que no me queda otra que mudarme."
+},
+{
+"id": "ENG_CHUNK_0922",
+"t": "No puedo hacer nada con [sustantivo] / [sustantivo] no depende de mí",
+"ex": "Lo del retraso no depende de mí, perdón."
+},
+{
+"id": "ENG_CHUNK_0923",
+"t": "No tengo corazón para [verbo] / No me atrevo a [verbo]",
+"ex": "No me atrevo a decirle que cocina mal."
+},
+{
+"id": "ENG_CHUNK_0924",
+"t": "Lo último que quiero es [verbo]",
+"ex": "Lo último que quiero es molestar a tus papás."
+},
+{
+"id": "ENG_CHUNK_0925",
+"t": "No estoy en posición de [verbo] / No me corresponde [verbo]",
+"ex": "Me temo que no estoy en posición de aprobar eso."
+},
+{
+"id": "ENG_CHUNK_0926",
+"t": "No me toca a mí [verbo] / No soy quién para [verbo]",
+"ex": "No soy quién para decirle cómo criar a sus hijos."
+},
+{
+"id": "ENG_CHUNK_0927",
+"t": "Mentiría si dijera que [oración]",
+"ex": "Mentiría si dijera que no estaba nervioso.",
+"n": "si + imperfect subjunctive: si dijera."
+},
+{
+"id": "ENG_CHUNK_0928",
+"t": "Me duele decirlo, pero [oración] / Odio decirlo, pero [oración]",
+"ex": "Odio decirlo, pero creo que estamos perdidos."
+},
+{
+"id": "ENG_CHUNK_0929",
+"t": "No quiero [verbo], pero [oración] / No es por [infinitivo], pero [oración]",
+"ex": "No quiero ser grosero, pero ya es tarde."
+},
+{
+"id": "ENG_CHUNK_0930",
+"t": "No tengo nada en contra de [sustantivo], pero [oración]",
+"ex": "No tengo nada en contra de los gatos, pero soy alérgico."
+},
+{
+"id": "ENG_CHUNK_0931",
+"t": "¿En serio crees que [oración]? / No me digas que crees que [oración]",
+"ex": "¿En serio crees que vamos a llegar a las seis?",
+"n": "Affirmative question keeps indicative: ¿crees que vamos? 'No creo que' would trigger subjunctive."
+},
+{
+"id": "ENG_CHUNK_0932",
+"t": "Estoy con [persona] en [sustantivo] / Le doy la razón a [persona] en [sustantivo]",
+"ex": "En esto estoy con Sara. Primero comamos."
+},
+{
+"id": "ENG_CHUNK_0933",
+"t": "No veo por qué [oración]",
+"ex": "No veo por qué no podemos simplemente ir en tren."
+},
+{
+"id": "ENG_CHUNK_0934",
+"t": "Lo que no entiendo es [oración]",
+"ex": "Lo que no entiendo es por qué no llamó y ya."
+},
+{
+"id": "ENG_CHUNK_0935",
+"t": "Estoy totalmente a favor de [infinitivo]",
+"ex": "Estoy totalmente a favor de ahorrar, pero no en la comida."
+},
+{
+"id": "ENG_CHUNK_0936",
+"t": "no pensarlo dos veces / aprovechar la oportunidad al vuelo",
+"ex": "Si me ofrecieran un trabajo en Tokio, no lo pensaría dos veces.",
+"n": "si + imperfect subjunctive + conditional for the hypothetical."
+},
+{
+"id": "ENG_CHUNK_0937",
+"t": "rechazar [sustantivo]",
+"ex": "Rechacé el trabajo porque el trayecto era demasiado largo."
+},
+{
+"id": "ENG_CHUNK_0938",
+"t": "cancelar [sustantivo] / suspender [sustantivo]",
+"ex": "Suspendieron el partido por la lluvia."
+},
+{
+"id": "ENG_CHUNK_0939",
+"t": "dejar [sustantivo] en pausa / poner [sustantivo] en pausa",
+"ex": "Por ahora dejamos en pausa la remodelación de la cocina."
+},
+{
+"id": "ENG_CHUNK_0940",
+"t": "pasar por [sustantivo]",
+"ex": "Está pasando por un momento difícil."
+},
+{
+"id": "ENG_CHUNK_0941",
+"t": "desbaratarse / caerse a pedazos",
+"ex": "Estos zapatos ya se están cayendo a pedazos."
+},
+{
+"id": "ENG_CHUNK_0942",
+"t": "salirse con la suya / salir impune de [sustantivo]",
+"ex": "Mi hermanito siempre se sale con la suya."
+},
+{
+"id": "ENG_CHUNK_0943",
+"t": "zafarse de [sustantivo] / librarse de [sustantivo]",
+"ex": "Estoy tratando de zafarme de la reunión del lunes.",
+"n": "'Zafarse' is Latin American; Spain: escaquearse de."
+},
+{
+"id": "ENG_CHUNK_0944",
+"t": "interponerse en [sustantivo] / afectar [sustantivo]",
+"ex": "No dejes que el trabajo afecte tu salud.",
+"n": "No dejes que + subjunctive."
+},
+{
+"id": "ENG_CHUNK_0945",
+"t": "hacer un drama / hacer un escándalo",
+"ex": "Es solo un rayón, no hagas drama."
+},
+{
+"id": "ENG_CHUNK_0946",
+"t": "dejarse llevar / pasarse",
+"ex": "Perdón, me pasé un poquito con la decoración."
+},
+{
+"id": "ENG_CHUNK_0947",
+"t": "aprovechar al máximo [sustantivo]",
+"ex": "Aprovechemos el sol mientras dure.",
+"n": "mientras + subjunctive for 'as long as it lasts'."
+},
+{
+"id": "ENG_CHUNK_0948",
+"t": "causar buena impresión / dar una buena impresión",
+"ex": "De verdad quiero causarles buena impresión a sus papás."
+},
+{
+"id": "ENG_CHUNK_0949",
+"t": "inventarse [sustantivo]",
+"ex": "Se inventó una excusa de que se le descompuso el carro."
+},
+{
+"id": "ENG_CHUNK_0950",
+"t": "avanzar / hacer progresos",
+"ex": "Mi español va lento, pero voy avanzando."
+},
+{
+"id": "ENG_CHUNK_0951",
+"t": "hacer plática / hablar de cosas triviales",
+"ex": "Soy pésimo para hacer plática en las fiestas.",
+"n": "'Hacer plática' (Mexico, Central Am.); Spain: dar conversación / hablar de trivialidades."
+},
+{
+"id": "ENG_CHUNK_0952",
+"t": "arriesgarse / correr un riesgo",
+"ex": "Abrir un restaurante es un gran riesgo, pero voy a arriesgarme."
+},
+{
+"id": "ENG_CHUNK_0953",
+"t": "aprovechar [sustantivo]",
+"ex": "Deberíamos aprovechar el buen clima e ir de excursión.",
+"n": "No 'de': aprovechar el clima, not *aprovechar del clima (common learner error)."
+},
+{
+"id": "ENG_CHUNK_0954",
+"t": "tomarse [sustantivo] en serio",
+"ex": "Tienes que tomarte en serio esa tos e ir al médico."
+},
+{
+"id": "ENG_CHUNK_0955",
+"t": "dar [sustantivo] por sentado",
+"ex": "Damos por sentado el agua potable."
+},
+{
+"id": "ENG_CHUNK_0956",
+"t": "turnarse para [infinitivo]",
+"ex": "Mi compañero de cuarto y yo nos turnamos para hacer la cena."
+},
+{
+"id": "ENG_CHUNK_0957",
+"t": "empezar a hacer [sustantivo] / meterse a [sustantivo]",
+"ex": "Empecé a hacer yoga para ayudarme con la espalda."
+},
+{
+"id": "ENG_CHUNK_0958",
+"t": "hacerse cargo de [sustantivo] / tomar las riendas de [sustantivo]",
+"ex": "Mi hermana se hizo cargo de la panadería familiar el año pasado."
+},
+{
+"id": "ENG_CHUNK_0959",
+"t": "hacerse responsable de [sustantivo] / asumir la responsabilidad de [sustantivo]",
+"ex": "Me hago responsable de la confusión con los boletos.",
+"n": "Tickets: boletos (Latin America), entradas (events, Spain)."
+},
+{
+"id": "ENG_CHUNK_0960",
+"t": "hablar un momento con [persona]",
+"ex": "¿Podría hablar un momento con usted después de clase?"
+},
+{
+"id": "ENG_CHUNK_0961",
+"t": "aclarar las cosas / limar asperezas",
+"ex": "Tuvimos una larga plática y aclaramos las cosas."
+},
+{
+"id": "ENG_CHUNK_0962",
+"t": "guardar rencor",
+"ex": "Todavía le guarda rencor por lo de la boda."
+},
+{
+"id": "ENG_CHUNK_0963",
+"t": "tener [sustantivo] en mente / pensar en [sustantivo]",
+"ex": "¿Tenías algo en mente para la cena?"
+},
+{
+"id": "ENG_CHUNK_0964",
+"t": "hacerle bien a [persona] / caerle bien a [persona]",
+"ex": "Una semana en la playa te caería de maravilla.",
+"n": "'Caer bien' also means to like someone: me cae bien Ana."
+},
+{
+"id": "ENG_CHUNK_0965",
+"t": "vivir sin [sustantivo] / arreglárselas sin [sustantivo]",
+"ex": "No puedo vivir sin mi café de la mañana."
+},
+{
+"id": "ENG_CHUNK_0966",
+"t": "Nada más para que quede claro / Solo para aclarar",
+"ex": "Solo para aclarar: nos vemos en la estación, ¿verdad?"
+},
+{
+"id": "ENG_CHUNK_0967",
+"t": "Si le entendí bien / Si entiendo bien",
+"ex": "Si le entendí bien, usted quiere irse el jueves."
+},
+{
+"id": "ENG_CHUNK_0968",
+"t": "Cambiando de tema",
+"ex": "Cambiando de tema, ¿al final encontraste departamento?"
+},
+{
+"id": "ENG_CHUNK_0969",
+"t": "Volviendo a lo que dijiste antes",
+"ex": "Volviendo a lo que dijiste antes, ¿por qué renunciaste?"
+},
+{
+"id": "ENG_CHUNK_0970",
+"t": "Si te sirve de algo / Por si te sirve",
+"ex": "Si te sirve de algo, creo que tomaste la decisión correcta."
+},
+{
+"id": "ENG_CHUNK_0971",
+"t": "No te ofendas, pero / Con todo respeto, pero",
+"ex": "No te ofendas, pero tu carro huele a papas fritas viejas.",
+"n": "Spain: patatas. 'Con todo respeto' often precedes a blunt remark."
+},
+{
+"id": "ENG_CHUNK_0972",
+"t": "Esto va a sonar raro, pero",
+"ex": "Esto va a sonar raro, pero ¿ya nos conocíamos?"
+},
+{
+"id": "ENG_CHUNK_0973",
+"t": "Te entiendo / Te comprendo",
+"ex": "Te entiendo, el tráfico ha estado horrible últimamente."
+},
+{
+"id": "ENG_CHUNK_0974",
+"t": "En pocas palabras / La respuesta corta es",
+"ex": "¿Nos alcanza? La respuesta corta es no.",
+"n": "'¿Nos alcanza?' = can we afford it, lit. 'does it reach for us'."
+},
+{
+"id": "ENG_CHUNK_0975",
+"t": "Y ahí estaba yo",
+"ex": "Y ahí estaba yo, afuera de la casa en pijama y sin llaves."
+},
+{
+"id": "ENG_CHUNK_0976",
+"t": "Seamos honestos / Aceptémoslo",
+"ex": "Seamos honestos: nunca vamos a usar esa caminadora."
+},
+{
+"id": "ENG_CHUNK_0977",
+"t": "Yo no lo veo así",
+"ex": "Mmm, yo no lo veo así. Creo que solo estaba cansado."
+},
+{
+"id": "ENG_CHUNK_0978",
+"t": "Más o menos / Aproximadamente",
+"ex": "Es como una hora en carro, más o menos."
+},
+{
+"id": "ENG_CHUNK_0979",
+"t": "No me hagas mucho caso / No estoy seguro",
+"ex": "Creo que la tienda abre a las nueve, pero no me hagas mucho caso."
+},
+{
+"id": "ENG_CHUNK_0980",
+"t": "Déjame hacer de abogado del diablo",
+"ex": "Bueno, déjame hacer de abogado del diablo. ¿Y si llueve?"
+},
+{
+"id": "ENG_CHUNK_0981",
+"t": "Sin rencores / Todo bien",
+"ex": "¿Te dieron el trabajo a ti y no a mí? Todo bien, sin rencores."
+},
+{
+"id": "ENG_CHUNK_0982",
+"t": "No me ofendí / Tranquilo, para nada",
+"ex": "No te ofendas, pero tu comida está un poco sosa. Para nada, tranquilo.",
+"n": "'Sosa' = bland; Mexico also 'le falta sal'. No set formula like 'None taken'."
+},
+{
+"id": "ENG_CHUNK_0983",
+"t": "Te debo una disculpa",
+"ex": "Te debo una disculpa por lo que dije ayer."
+},
+{
+"id": "ENG_CHUNK_0984",
+"t": "Me alegraste el día",
+"ex": "¡Gracias por las flores, me alegraste el día!"
+},
+{
+"id": "ENG_CHUNK_0985",
+"t": "Guarda tu dinero / Ni se te ocurra pagar",
+"ex": "Guarda tu dinero, esta vez invito yo."
+},
+{
+"id": "ENG_CHUNK_0986",
+"t": "La próxima la pago yo / La próxima invito yo",
+"ex": "Gracias por el café. La próxima invito yo."
+},
+{
+"id": "ENG_CHUNK_0987",
+"t": "¿Lo dejamos para otro día? / ¿Te lo cambio para otro día?",
+"ex": "Hoy estoy agotado. ¿Lo dejamos para otro día?"
+},
+{
+"id": "ENG_CHUNK_0988",
+"t": "No, gracias / Paso, gracias",
+"ex": "¿Más pastel? Ay, no, gracias, ya estoy bien."
+},
+{
+"id": "ENG_CHUNK_0989",
+"t": "Ya no me cabe nada / No puedo más",
+"ex": "Estuvo delicioso, pero ya no me cabe nada."
+},
+{
+"id": "ENG_CHUNK_0990",
+"t": "Va por cuenta de la casa / Cortesía de la casa",
+"ex": "Perdón por la espera. El café va por cuenta de la casa."
+},
+{
+"id": "ENG_CHUNK_0991",
+"t": "Ni así / Ni aun así",
+"ex": "Reinicié la computadora dos veces, y ni así se conectó.",
+"n": "Spain: el ordenador."
+},
+{
+"id": "ENG_CHUNK_0992",
+"t": "Justo cuando",
+"ex": "Justo cuando me senté a comer, sonó el teléfono."
+},
+{
+"id": "ENG_CHUNK_0993",
+"t": "Al poco tiempo / En poco tiempo",
+"ex": "Empezamos a platicar, y al poco tiempo ya éramos mejores amigos."
+},
+{
+"id": "ENG_CHUNK_0994",
+"t": "Cuando me di cuenta",
+"ex": "Me senté a ver un capítulo, y cuando me di cuenta, ya eran las dos de la mañana."
+},
+{
+"id": "ENG_CHUNK_0995",
+"t": "Para empezar",
+"ex": "No me voy a mudar allá. Para empezar, es carísimo."
+},
+{
+"id": "ENG_CHUNK_0996",
+"t": "En el fondo",
+"ex": "Se hace el duro, pero en el fondo es muy sensible."
+},
+{
+"id": "ENG_CHUNK_0997",
+"t": "O eso, o / Eso o",
+"ex": "Seguro está atorada en el tráfico. Eso o se le olvidó.",
+"n": "'se le olvidó': accidental se construction."
+},
+{
+"id": "ENG_CHUNK_0998",
+"t": "Si es así / De ser así",
+"ex": "¿Vas a manejar mañana? Si es así, ¿me das un aventón?"
+},
+{
+"id": "ENG_CHUNK_0999",
+"t": "Como si [subjuntivo]",
+"ex": "Me miró como si estuviera loco.",
+"n": "como si always takes imperfect (or pluperfect) subjunctive."
+},
+{
+"id": "ENG_CHUNK_1000",
+"t": "En vez de / A diferencia de",
+"ex": "Por ahora prefiero rentar en vez de comprar."
+}
+]

@@ -1,0 +1,565 @@
+[
+{
+"id": "ENG_CHUNK_1301",
+"t": "D'abord",
+"ex": "D'abord, ouvre l'appli. Ensuite, connecte-toi."
+},
+{
+"id": "ENG_CHUNK_1302",
+"t": "Ou",
+"ex": "Thé ou café ?",
+"n": "Ou (or) has no accent; où (where) does."
+},
+{
+"id": "ENG_CHUNK_1303",
+"t": "Enfin / Finalement",
+"ex": "Enfin, on est arrivés à l'hôtel.",
+"n": "Finalement also means 'in the end, after all' (a change of plan)."
+},
+{
+"id": "ENG_CHUNK_1304",
+"t": "Ensuite",
+"ex": "Ensuite, tournez à droite à la banque."
+},
+{
+"id": "ENG_CHUNK_1305",
+"t": "Plus tard",
+"ex": "Je suis occupé, là. Je peux te rappeler plus tard ?"
+},
+{
+"id": "ENG_CHUNK_1306",
+"t": "Du coup / À cause de ça",
+"ex": "Le train avait du retard. Du coup, j'ai raté ma réunion.",
+"n": "Du coup is the everyday spoken 'so'; Par conséquent is written."
+},
+{
+"id": "ENG_CHUNK_1307",
+"t": "Après / Ensuite",
+"ex": "On a regardé un film. Après, on a dîné."
+},
+{
+"id": "ENG_CHUNK_1308",
+"t": "Et aussi",
+"ex": "J'ai besoin de pain et aussi d'un peu de lait."
+},
+{
+"id": "ENG_CHUNK_1309",
+"t": "Mais là / Mais finalement",
+"ex": "Je voulais sortir, mais là, il s'est mis à pleuvoir.",
+"n": "No fixed equivalent; speakers often just say mais + event. Mais finalement stresses the change of plan."
+},
+{
+"id": "ENG_CHUNK_1310",
+"t": "Ou peut-être / Ou alors",
+"ex": "Allons à la plage. Ou alors au parc ?",
+"n": "Ou alors is the natural spoken way to float another option."
+},
+{
+"id": "ENG_CHUNK_1311",
+"t": "Au début",
+"ex": "Au début, le français était très difficile pour moi.",
+"n": "Au début de + noun: au début du film."
+},
+{
+"id": "ENG_CHUNK_1312",
+"t": "Bref / Enfin bref",
+"ex": "Bref, c'était comment, ton week-end ?",
+"n": "Bref closes a digression; Sinon ? is also common to change topic."
+},
+{
+"id": "ENG_CHUNK_1313",
+"t": "Un jour",
+"ex": "Un jour, je veux visiter le Japon.",
+"n": "For stories in the past: Un jour, ... / Il était une fois (fairy tales)."
+},
+{
+"id": "ENG_CHUNK_1314",
+"t": "Tout à coup / Soudain",
+"ex": "Tout à coup, les lumières se sont éteintes.",
+"n": "Tout à coup is more spoken; soudain more written."
+},
+{
+"id": "ENG_CHUNK_1315",
+"t": "Heureusement",
+"ex": "J'ai perdu mon portefeuille, mais heureusement quelqu'un l'a trouvé.",
+"n": "False friend: heureusement = luckily, not 'happily'."
+},
+{
+"id": "ENG_CHUNK_1316",
+"t": "se lever",
+"ex": "Je me lève à sept heures tous les jours.",
+"n": "Reflexive: je me lève, tu te lèves."
+},
+{
+"id": "ENG_CHUNK_1317",
+"t": "se réveiller",
+"ex": "D'habitude, je me réveille à six heures."
+},
+{
+"id": "ENG_CHUNK_1318",
+"t": "prendre le petit-déjeuner",
+"ex": "Je prends le petit-déjeuner à la maison.",
+"n": "Quebec/Belgium/Switzerland: déjeuner = breakfast, dîner = lunch."
+},
+{
+"id": "ENG_CHUNK_1319",
+"t": "déjeuner",
+"ex": "On déjeune ensemble ?",
+"n": "In France déjeuner = lunch (verb and noun)."
+},
+{
+"id": "ENG_CHUNK_1320",
+"t": "dîner",
+"ex": "On dîne à sept heures.",
+"n": "In Quebec, Belgium and Switzerland the evening meal is le souper."
+},
+{
+"id": "ENG_CHUNK_1321",
+"t": "prendre une douche / se doucher",
+"ex": "Je prends une douche tous les matins."
+},
+{
+"id": "ENG_CHUNK_1322",
+"t": "se brosser les dents",
+"ex": "Brosse-toi les dents avant d'aller au lit.",
+"n": "Body parts take les, not possessive: se brosser les dents, not ses dents."
+},
+{
+"id": "ENG_CHUNK_1323",
+"t": "s'habiller",
+"ex": "Je m'habille et je prends le petit-déjeuner."
+},
+{
+"id": "ENG_CHUNK_1324",
+"t": "se coucher / aller au lit",
+"ex": "Je me couche à vingt-trois heures."
+},
+{
+"id": "ENG_CHUNK_1325",
+"t": "aller au travail / aller au boulot",
+"ex": "Je vais au travail en bus.",
+"n": "en bus, en voiture, but à pied, à vélo."
+},
+{
+"id": "ENG_CHUNK_1326",
+"t": "rentrer (à la maison) / rentrer chez soi",
+"ex": "Je suis fatigué. Je veux rentrer.",
+"n": "rentrer alone already means go back home."
+},
+{
+"id": "ENG_CHUNK_1327",
+"t": "rentrer (à la maison)",
+"ex": "Je rentre à six heures.",
+"n": "French uses rentrer for both go home and come home."
+},
+{
+"id": "ENG_CHUNK_1328",
+"t": "faire du shopping / faire les magasins",
+"ex": "On fait les magasins samedi ?"
+},
+{
+"id": "ENG_CHUNK_1329",
+"t": "regarder la télé",
+"ex": "Je regarde la télé le soir.",
+"n": "regarder takes no preposition: regarder la télé, not 'regarder à'."
+},
+{
+"id": "ENG_CHUNK_1330",
+"t": "écouter de la musique",
+"ex": "J'écoute de la musique dans le bus.",
+"n": "écouter takes a direct object: no 'à'."
+},
+{
+"id": "ENG_CHUNK_1331",
+"t": "faire ses devoirs",
+"ex": "Je fais mes devoirs après l'école.",
+"n": "Always plural: les devoirs."
+},
+{
+"id": "ENG_CHUNK_1332",
+"t": "préparer le dîner / faire à manger",
+"ex": "Je prépare le dîner tous les soirs."
+},
+{
+"id": "ENG_CHUNK_1333",
+"t": "se promener / faire une promenade / faire un tour",
+"ex": "Allons nous promener dans le parc."
+},
+{
+"id": "ENG_CHUNK_1334",
+"t": "jouer au [sport] / jouer à la [sport]",
+"ex": "Je joue au foot le samedi.",
+"n": "Sports: jouer à (au foot); instruments: jouer de (du piano). Some sports use faire: faire du tennis."
+},
+{
+"id": "ENG_CHUNK_1335",
+"t": "faire les courses",
+"ex": "Je fais les courses le lundi.",
+"n": "faire les courses = groceries; faire du shopping = clothes etc."
+},
+{
+"id": "ENG_CHUNK_1336",
+"t": "faire la lessive / faire une machine",
+"ex": "Je fais la lessive le dimanche."
+},
+{
+"id": "ENG_CHUNK_1337",
+"t": "faire le ménage",
+"ex": "On fait le ménage tous les samedis.",
+"n": "Not nettoyer la maison, which sounds like a one-off deep clean."
+},
+{
+"id": "ENG_CHUNK_1338",
+"t": "se laver les mains",
+"ex": "Lave-toi les mains avant de manger."
+},
+{
+"id": "ENG_CHUNK_1339",
+"t": "faire du café",
+"ex": "Je fais du café. Tu en veux ?",
+"n": "Partitive du: make (some) coffee. Tu en veux ? = do you want some?"
+},
+{
+"id": "ENG_CHUNK_1340",
+"t": "prendre le bus",
+"ex": "Je prends le bus pour aller à l'école."
+},
+{
+"id": "ENG_CHUNK_1341",
+"t": "monter dans le bus",
+"ex": "Monte dans le bus ici et descends au parc."
+},
+{
+"id": "ENG_CHUNK_1342",
+"t": "descendre du bus",
+"ex": "Descends du bus au prochain arrêt."
+},
+{
+"id": "ENG_CHUNK_1343",
+"t": "acheter un billet / prendre un billet",
+"ex": "Où est-ce que je peux acheter un billet ?",
+"n": "For metro/bus in Paris: un ticket."
+},
+{
+"id": "ENG_CHUNK_1344",
+"t": "louer une voiture",
+"ex": "On veut louer une voiture pour trois jours.",
+"n": "louer = both rent (as tenant) and let (as owner)."
+},
+{
+"id": "ENG_CHUNK_1345",
+"t": "traverser la rue",
+"ex": "Fais attention quand tu traverses la rue.",
+"n": "traverser takes a direct object: no preposition."
+},
+{
+"id": "ENG_CHUNK_1346",
+"t": "tourner à gauche",
+"ex": "Tournez à gauche à la banque."
+},
+{
+"id": "ENG_CHUNK_1347",
+"t": "prendre une photo",
+"ex": "Je peux prendre une photo ?"
+},
+{
+"id": "ENG_CHUNK_1348",
+"t": "avoir faim",
+"ex": "J'ai faim. On mange ?",
+"n": "avoir, not être: j'ai faim."
+},
+{
+"id": "ENG_CHUNK_1349",
+"t": "avoir soif",
+"ex": "J'ai soif. Il y a de l'eau ?",
+"n": "avoir, not être: j'ai soif."
+},
+{
+"id": "ENG_CHUNK_1350",
+"t": "être fatigué(e)",
+"ex": "Je suis fatigué. Je vais me coucher.",
+"n": "Spoken intensifier: Je suis crevé(e)."
+},
+{
+"id": "ENG_CHUNK_1351",
+"t": "être en retard",
+"ex": "Dépêche-toi, on va être en retard !",
+"n": "en retard for people; for trains also avoir du retard."
+},
+{
+"id": "ENG_CHUNK_1352",
+"t": "être à l'heure",
+"ex": "Le train est à l'heure aujourd'hui."
+},
+{
+"id": "ENG_CHUNK_1353",
+"t": "bien s'amuser / passer un bon moment",
+"ex": "On s'est bien amusés à la plage."
+},
+{
+"id": "ENG_CHUNK_1354",
+"t": "avoir mal à la tête",
+"ex": "J'ai mal à la tête. Tu as un doliprane ?",
+"n": "Doliprane (paracetamol) is what French people reach for; aspirine also fine."
+},
+{
+"id": "ENG_CHUNK_1355",
+"t": "avoir de la fièvre",
+"ex": "Mon fils a de la fièvre.",
+"n": "Partitive de la: avoir de la fièvre."
+},
+{
+"id": "ENG_CHUNK_1356",
+"t": "prendre un médicament",
+"ex": "Prenez ce médicament deux fois par jour.",
+"n": "prendre, not 'boire', even for syrup."
+},
+{
+"id": "ENG_CHUNK_1357",
+"t": "passer un coup de fil / téléphoner",
+"ex": "Je dois passer un coup de fil.",
+"n": "téléphoner à quelqu'un / appeler quelqu'un (direct object)."
+},
+{
+"id": "ENG_CHUNK_1358",
+"t": "envoyer un message / envoyer un texto",
+"ex": "Je t'envoie un message plus tard."
+},
+{
+"id": "ENG_CHUNK_1359",
+"t": "charger son téléphone / recharger son portable",
+"ex": "Je peux charger mon téléphone ici ?",
+"n": "le portable = mobile phone."
+},
+{
+"id": "ENG_CHUNK_1360",
+"t": "apprendre le français",
+"ex": "J'apprends le français pour mon travail.",
+"n": "Here the language takes le: apprendre le français (vs parler français)."
+},
+{
+"id": "ENG_CHUNK_1361",
+"t": "Je m'appelle [prénom] / Moi, c'est [prénom]",
+"ex": "Bonjour, je m'appelle Carlos.",
+"n": "Moi, c'est... is the relaxed spoken version."
+},
+{
+"id": "ENG_CHUNK_1362",
+"t": "Je viens de [lieu] / Je suis [nationalité]",
+"ex": "Je viens du Mexique.",
+"n": "de + country article: du Mexique, des États-Unis, de France (feminine drops la)."
+},
+{
+"id": "ENG_CHUNK_1363",
+"t": "J'habite à [ville] / J'habite en [pays]",
+"ex": "J'habite à Lyon.",
+"n": "à + city; en + feminine country; au + masculine country."
+},
+{
+"id": "ENG_CHUNK_1364",
+"t": "J'ai [nombre] ans",
+"ex": "J'ai trente ans.",
+"n": "avoir, never être; ans is required."
+},
+{
+"id": "ENG_CHUNK_1365",
+"t": "Je suis [métier]",
+"ex": "Je suis professeur.",
+"n": "No article before a profession: je suis professeur, not un professeur."
+},
+{
+"id": "ENG_CHUNK_1366",
+"t": "Je te présente [personne] / Voici [personne]",
+"ex": "Je te présente ma femme, Julia.",
+"n": "Formal: Je vous présente..."
+},
+{
+"id": "ENG_CHUNK_1367",
+"t": "Vous parlez [langue] ? / Tu parles [langue] ?",
+"ex": "Excusez-moi, vous parlez anglais ?",
+"n": "No article after parler: parler anglais."
+},
+{
+"id": "ENG_CHUNK_1368",
+"t": "Je parle un peu [langue]",
+"ex": "Je parle un peu français."
+},
+{
+"id": "ENG_CHUNK_1369",
+"t": "J'apprends le [langue]",
+"ex": "J'apprends le français en cours du soir."
+},
+{
+"id": "ENG_CHUNK_1370",
+"t": "Comment on dit [mot] en [langue] ?",
+"ex": "Comment on dit « Danke » en français ?"
+},
+{
+"id": "ENG_CHUNK_1371",
+"t": "Qu'est-ce que ça veut dire, [mot] ? / Que veut dire [mot] ?",
+"ex": "Qu'est-ce que ça veut dire, « occupé » ?",
+"n": "vouloir dire = to mean; not 'signifier' in speech."
+},
+{
+"id": "ENG_CHUNK_1372",
+"t": "Je ne comprends pas [nom]",
+"ex": "Je ne comprends pas ce mot."
+},
+{
+"id": "ENG_CHUNK_1373",
+"t": "Il est [heure]",
+"ex": "Il est trois heures.",
+"n": "Always il est + heure(s); heures is not optional."
+},
+{
+"id": "ENG_CHUNK_1374",
+"t": "Mon anniversaire, c'est le [date]",
+"ex": "Mon anniversaire, c'est le 3 mai.",
+"n": "Dates use cardinal numbers (le 3 mai) except le premier."
+},
+{
+"id": "ENG_CHUNK_1375",
+"t": "C'est quand, [nom] ? / Quand est [nom] ?",
+"ex": "C'est quand, ton anniversaire ?"
+},
+{
+"id": "ENG_CHUNK_1376",
+"t": "[nom], c'est à quelle heure ? / À quelle heure est [nom] ?",
+"ex": "Le film, c'est à quelle heure ?"
+},
+{
+"id": "ENG_CHUNK_1377",
+"t": "[lieu] ouvre à quelle heure ? / À quelle heure ouvre [lieu] ?",
+"ex": "La banque ouvre à quelle heure ?"
+},
+{
+"id": "ENG_CHUNK_1378",
+"t": "Combien coûte [nom] ? / [nom], c'est combien ?",
+"ex": "Il coûte combien, ce t-shirt ?"
+},
+{
+"id": "ENG_CHUNK_1379",
+"t": "Ça fait [prix], s'il vous plaît",
+"ex": "Ça fait douze euros, s'il vous plaît."
+},
+{
+"id": "ENG_CHUNK_1380",
+"t": "Je peux payer par [moyen] ? / Je peux payer en [moyen] ?",
+"ex": "Je peux payer par carte ?",
+"n": "par carte, par chèque, but en espèces / en liquide."
+},
+{
+"id": "ENG_CHUNK_1381",
+"t": "Vous avez [nom] ?",
+"ex": "Vous avez du lait ?",
+"n": "Partitive: du lait, de la farine; after negative: pas de lait."
+},
+{
+"id": "ENG_CHUNK_1382",
+"t": "C'est un peu trop [adjectif]",
+"ex": "C'est un peu trop grand. Vous l'avez en plus petit ?",
+"n": "Vous l'avez en plus petit ? = do you have it in a smaller size."
+},
+{
+"id": "ENG_CHUNK_1383",
+"t": "Je pourrais avoir [nom], s'il vous plaît ?",
+"ex": "Je pourrais avoir un café, s'il vous plaît ?",
+"n": "Also: Un café, s'il vous plaît."
+},
+{
+"id": "ENG_CHUNK_1384",
+"t": "Je voudrais [nom], s'il vous plaît",
+"ex": "Je voudrais un sandwich, s'il vous plaît.",
+"n": "Je voudrais is the polite default; Je veux sounds demanding."
+},
+{
+"id": "ENG_CHUNK_1385",
+"t": "Je vais prendre [nom] / Pour moi, [nom]",
+"ex": "Je vais prendre le poisson, s'il vous plaît."
+},
+{
+"id": "ENG_CHUNK_1386",
+"t": "Un verre de [nom], s'il vous plaît",
+"ex": "Un verre d'eau, s'il vous plaît.",
+"n": "Tap water in a restaurant: une carafe d'eau (free)."
+},
+{
+"id": "ENG_CHUNK_1387",
+"t": "Vous voulez encore [nom] ? / Tu reprends [nom] ?",
+"ex": "Tu veux encore du riz ?",
+"n": "Partitive du/de la for 'some'; Vous en voulez ? = would you like some?"
+},
+{
+"id": "ENG_CHUNK_1388",
+"t": "Ça te dirait de [infinitif] ? / Vous voulez [infinitif] ?",
+"ex": "Ça te dirait de venir à ma fête ?"
+},
+{
+"id": "ENG_CHUNK_1389",
+"t": "Où est [lieu] ?",
+"ex": "Où est la gare ?"
+},
+{
+"id": "ENG_CHUNK_1390",
+"t": "Où est [lieu] le plus proche ?",
+"ex": "Où est le distributeur le plus proche ?",
+"n": "Adjective follows: le distributeur le plus proche; la pharmacie la plus proche."
+},
+{
+"id": "ENG_CHUNK_1391",
+"t": "Tournez à gauche à [lieu]",
+"ex": "Tournez à gauche à l'église.",
+"n": "Also après l'église or au niveau de l'église."
+},
+{
+"id": "ENG_CHUNK_1392",
+"t": "C'est à [direction]",
+"ex": "La banque est à gauche.",
+"n": "à gauche / à droite, or sur la gauche."
+},
+{
+"id": "ENG_CHUNK_1393",
+"t": "C'est à côté de [lieu]",
+"ex": "La boulangerie est à côté de la banque.",
+"n": "à côté de + le = à côté du."
+},
+{
+"id": "ENG_CHUNK_1394",
+"t": "Un billet pour [lieu], s'il vous plaît",
+"ex": "Un billet pour Bordeaux, s'il vous plaît.",
+"n": "Aller simple (one-way) or aller-retour (return)."
+},
+{
+"id": "ENG_CHUNK_1395",
+"t": "Quel bus va à [lieu] ?",
+"ex": "Quel bus va à l'aéroport ?"
+},
+{
+"id": "ENG_CHUNK_1396",
+"t": "Le prochain [nom] pour [lieu], c'est à quelle heure ?",
+"ex": "Le prochain train pour Lille, c'est à quelle heure ?",
+"n": "Also: À quelle heure part le prochain train pour... ?"
+},
+{
+"id": "ENG_CHUNK_1397",
+"t": "Vous pouvez m'emmener à [lieu] ?",
+"ex": "Vous pouvez m'emmener à l'aéroport, s'il vous plaît ?",
+"n": "To a taxi driver, also simply: À l'aéroport, s'il vous plaît."
+},
+{
+"id": "ENG_CHUNK_1398",
+"t": "Il faut environ [durée] / Ça prend à peu près [durée]",
+"ex": "Il faut environ vingt minutes en bus."
+},
+{
+"id": "ENG_CHUNK_1399",
+"t": "Je voudrais une chambre pour [nombre] nuits",
+"ex": "Je voudrais une chambre pour deux nuits, s'il vous plaît."
+},
+{
+"id": "ENG_CHUNK_1400",
+"t": "[nom] ne marche pas / [nom] ne fonctionne pas",
+"ex": "La douche ne marche pas.",
+"n": "Spoken: La douche marche pas."
+}
+]

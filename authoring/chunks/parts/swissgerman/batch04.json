@@ -1,0 +1,554 @@
+[
+ {
+  "id": "ENG_CHUNK_0301",
+  "t": "Wohär kännsch [Person]?",
+  "ex": "Und wohär kännsch d Sarah? Vom Gschäft?",
+  "n": "Names take the article: d Sarah, de Tom."
+ },
+ {
+  "id": "ENG_CHUNK_0302",
+  "t": "Ich gwöhn mi langsam dra, [z + Infinitiv]",
+  "ex": "Ich gwöhn mi langsam dra, mit em Tram is Gschäft z fahre.",
+  "n": "Zürich has trams, not a subway; adapt freely."
+ },
+ {
+  "id": "ENG_CHUNK_0303",
+  "t": "Garantiert [Verb zweit + Satz] / Ich wett, dass [Satz]",
+  "ex": "Garantiert isch si scho im Restaurant.",
+  "n": "'Ich wett' (I bet) sounds like 'I'd like'; garantiert avoids the clash."
+ },
+ {
+  "id": "ENG_CHUNK_0304",
+  "t": "Ich ha s Gfühl, dass [Satz]",
+  "ex": "Ich ha s Gfühl, dass er nöd chunnt."
+ },
+ {
+  "id": "ENG_CHUNK_0305",
+  "t": "Ich frog mi, öb [Satz]",
+  "ex": "Ich frog mi, öb d Beckerei na offe hät.",
+  "n": "öb sends the verb to the end. 'offe haa' = be open (of a shop)."
+ },
+ {
+  "id": "ENG_CHUNK_0306",
+  "t": "Ich glaub, [Verb zweit + Satz] / Dänn halt [Satz]",
+  "ex": "De Bus chunnt nöd. Dänn laufed mer halt.",
+  "n": "'Dänn halt' is the resigned 'I guess'."
+ },
+ {
+  "id": "ENG_CHUNK_0307",
+  "t": "Du häsch jedes Rächt, [z + Infinitiv]",
+  "ex": "Du häsch jedes Rächt, hässig z sii."
+ },
+ {
+  "id": "ENG_CHUNK_0308",
+  "t": "Nie im Läbe [Verb zweit + Satz]",
+  "ex": "Nie im Läbe sind mer bis am Sächsi det.",
+  "n": "Also: Das schaffed mer nie."
+ },
+ {
+  "id": "ENG_CHUNK_0309",
+  "t": "Ich zwiifle, dass [Satz] / Ich glaub chuum, dass [Satz]",
+  "ex": "Ich glaub chuum, dass die am Sunntig offe händ.",
+  "n": "Shops closing on Sunday is the Swiss norm; chuum = hardly."
+ },
+ {
+  "id": "ENG_CHUNK_0310",
+  "t": "Es söll [Infinitiv]",
+  "ex": "Es söll s Wuchenänd schneie.",
+  "n": "söll (Standard soll) marks hearsay and forecasts."
+ },
+ {
+  "id": "ENG_CHUNK_0311",
+  "t": "Villicht isch s, wil [Satz]",
+  "ex": "D Pflanze gaat ii. Villicht isch s, wil si z wenig Liecht überchunnt.",
+  "n": "überchoo = get, receive (Swiss; Standard bekommen)."
+ },
+ {
+  "id": "ENG_CHUNK_0312",
+  "t": "Es chönnt guet sii, dass [Satz]",
+  "ex": "Es chönnt guet sii, dass mer hüt früener fertig sind."
+ },
+ {
+  "id": "ENG_CHUNK_0313",
+  "t": "Und wänn [Satz]?",
+  "ex": "Und wänn niemer chunnt?"
+ },
+ {
+  "id": "ENG_CHUNK_0314",
+  "t": "Ich ha gnueg vo [Nomen] / Ich ha s gsee, [z + Infinitiv]",
+  "ex": "Ich ha gnueg devo, jede Aabig Teigwaare z ässe.",
+  "n": "'Es schiisst mi aa' is cruder but very common. Teigwaare = pasta (Swiss)."
+ },
+ {
+  "id": "ENG_CHUNK_0315",
+  "t": "[Nomen] [Verb] immer wider",
+  "ex": "Min Laptop stürzt bi Videocalls immer wider ab.",
+  "n": "No 'keep' verb; immer wider carries the repetition."
+ },
+ {
+  "id": "ENG_CHUNK_0316",
+  "t": "Mit [Nomen] stimmt öppis nöd",
+  "ex": "Mit de Wöschmaschine stimmt öppis nöd.",
+  "n": "Swiss often say 'isch öppis nöd guet mit ...'."
+ },
+ {
+  "id": "ENG_CHUNK_0317",
+  "t": "[Person] [Verb] immer [Rest]",
+  "ex": "Min Mitbewohner laat s Gschirr immer im Schüttstei stah.",
+  "n": "Schüttstei = kitchen sink (Swiss). Stress 'immer' to complain."
+ },
+ {
+  "id": "ENG_CHUNK_0318",
+  "t": "Es nervt mega, wänn [Satz]",
+  "ex": "Es nervt mega, wänn Lüüt im Kino schwätzed.",
+  "n": "wänn sends the verb to the end."
+ },
+ {
+  "id": "ENG_CHUNK_0319",
+  "t": "Sorry, ich ha nöd gmerkt, dass [Satz]",
+  "ex": "Sorry, ich ha nöd gmerkt, dass d am Telefoniere bisch.",
+  "n": "am + infinitive for 'in the middle of'."
+ },
+ {
+  "id": "ENG_CHUNK_0320",
+  "t": "Entschuldiged Si d Störig, aber [Satz]",
+  "ex": "Entschuldiged Si d Störig, aber händ Si churz Ziit?",
+  "n": "du form: Sorry, dass ich störe, aber ..."
+ },
+ {
+  "id": "ENG_CHUNK_0321",
+  "t": "Ich ha total vergässe, [z + Infinitiv]",
+  "ex": "Ich ha total vergässe, mis Mami zrugg z lüüte."
+ },
+ {
+  "id": "ENG_CHUNK_0322",
+  "t": "Ich hett eigentlich wele [Infinitiv], aber [Satz]",
+  "ex": "Ich hett eigentlich wele go jogge, aber dänn hät s aagfange schiffe.",
+  "n": "schiffe = pour with rain (Swiss slang)."
+ },
+ {
+  "id": "ENG_CHUNK_0323",
+  "t": "Ich bi im [Nomen] ufghalte worde / Ich ha im [Nomen] nöd wegchöne",
+  "ex": "Sorry für d Verspötig, ich ha im Gschäft nöd wegchöne."
+ },
+ {
+  "id": "ENG_CHUNK_0324",
+  "t": "Bisch scho mal in [Land] gsi?",
+  "ex": "Bisch scho mal in Mexiko gsi?",
+  "n": "Perfekt with sii: bisch ... gsi."
+ },
+ {
+  "id": "ENG_CHUNK_0325",
+  "t": "Ich [Verb] s erscht Mal",
+  "ex": "Ich fahr s erscht Mal Ski, also bis nätt zu mir.",
+  "n": "Present tense: 'Es isch s erscht Mal, dass ich ...' also works."
+ },
+ {
+  "id": "ENG_CHUNK_0326",
+  "t": "Ich bi in [Ort] ufgwachse",
+  "ex": "Ich bi in ere chliine Stadt i de Nöchi vo Denver ufgwachse."
+ },
+ {
+  "id": "ENG_CHUNK_0327",
+  "t": "Weisch na, wo [Satz]?",
+  "ex": "Weisch na, wo mer eus bim Zälte verlaufe händ?",
+  "n": "wo = when here (Standard als): the dialect uses wo for time too."
+ },
+ {
+  "id": "ENG_CHUNK_0328",
+  "t": "Einisch [Verb zweit + Satz] / Es isch mal passiert, dass [Satz]",
+  "ex": "Einisch händ mer de letscht Zug hei verpasst.",
+  "n": "Perfekt only: händ ... verpasst, never 'verpassten'."
+ },
+ {
+  "id": "ENG_CHUNK_0329",
+  "t": "Du glaubsch nöd, [W-Wort + Satz]",
+  "ex": "Du glaubsch nöd, wän ich im Coop gseh ha.",
+  "n": "wän = whom (Standard wen)."
+ },
+ {
+  "id": "ENG_CHUNK_0330",
+  "t": "Ich ha kei Ahnig gha, dass [Satz]",
+  "ex": "Ich ha kei Ahnig gha, dass du eso guet chasch choche."
+ },
+ {
+  "id": "ENG_CHUNK_0331",
+  "t": "Ich hett nie dänkt, dass ich [Verb am Ände]",
+  "ex": "Ich hett nie dänkt, dass mer s Jogge so gfallt.",
+  "n": "Konjunktiv hett + Partizip for 'would never have'."
+ },
+ {
+  "id": "ENG_CHUNK_0332",
+  "t": "Du gsehsch [Adjektiv] uus",
+  "ex": "Du gsehsch kaputt uus. Lange Tag?"
+ },
+ {
+  "id": "ENG_CHUNK_0333",
+  "t": "Chumm, mer gönd [Nomen] go [Infinitiv]",
+  "ex": "Chumm, mer gönd nach de Sitzig go z Mittag ässe.",
+  "n": "The double 'go' after gaa: gönd ... go ässe."
+ },
+ {
+  "id": "ENG_CHUNK_0334",
+  "t": "Häsch dra dänkt, [z + Infinitiv]?",
+  "ex": "Häsch dra dänkt, d Hindertür abzschlüsse?"
+ },
+ {
+  "id": "ENG_CHUNK_0335",
+  "t": "Wär s Ine mögli, [z + Infinitiv]?",
+  "ex": "Wär s Ine mögli, am Friitig mini Schicht z übernä?",
+  "n": "du form: Chöntsch du ...?"
+ },
+ {
+  "id": "ENG_CHUNK_0336",
+  "t": "en Flug bueche",
+  "ex": "Ich mues na en Flug für Wiehnacht bueche.",
+  "n": "Thanksgiving swapped for Christmas; adapt holidays freely."
+ },
+ {
+  "id": "ENG_CHUNK_0337",
+  "t": "Trinkgäld gää",
+  "ex": "Häsch em Kellner Trinkgäld gää?",
+  "n": "In Switzerland tips are optional; rounding up is common."
+ },
+ {
+  "id": "ENG_CHUNK_0338",
+  "t": "iichecke",
+  "ex": "Mer chönd ab de Drüü im Hotel iichecke."
+ },
+ {
+  "id": "ENG_CHUNK_0339",
+  "t": "vo dihei us schaffe / Homeoffice mache",
+  "ex": "Am Mäntig und am Friitig mach ich Homeoffice.",
+  "n": "'Homeoffice' is the everyday Swiss word."
+ },
+ {
+  "id": "ENG_CHUNK_0340",
+  "t": "e Sitzig haa mit [Person]",
+  "ex": "Ich ha am Zwei e Sitzig mit minere Chefin."
+ },
+ {
+  "id": "ENG_CHUNK_0341",
+  "t": "e Stell finde / en Job überchoo",
+  "ex": "Min Sohn hät grad e Stell im Spital übercho.",
+  "n": "Stell (Standard Stelle) is the Swiss word for job."
+ },
+ {
+  "id": "ENG_CHUNK_0342",
+  "t": "sich für [Nomen] bewerbe",
+  "ex": "Ich bewirb mi für e Stell i de Bibliothek.",
+  "n": "bewerbe um/für; Standard: sich bewerben um."
+ },
+ {
+  "id": "ENG_CHUNK_0343",
+  "t": "de Lohn überchoo",
+  "ex": "Ich überchume alli zwei Wuche am Friitig de Lohn.",
+  "n": "Swiss pay is usually monthly; Lohn = wages."
+ },
+ {
+  "id": "ENG_CHUNK_0344",
+  "t": "Gäld verdiene",
+  "ex": "Er verdient näbebii Gäld mit Velo flicke."
+ },
+ {
+  "id": "ENG_CHUNK_0345",
+  "t": "[Nomen] erledige",
+  "ex": "Ich mues s Wuchenänd mini Stüürerchlärig erledige.",
+  "n": "Stüürerchlärig = tax return."
+ },
+ {
+  "id": "ENG_CHUNK_0346",
+  "t": "Notize mache",
+  "ex": "Chasch i de Sitzig Notize mache?"
+ },
+ {
+  "id": "ENG_CHUNK_0347",
+  "t": "[Nomen] usfülle",
+  "ex": "Si müend zerscht das Formular usfülle."
+ },
+ {
+  "id": "ENG_CHUNK_0348",
+  "t": "ufhänke",
+  "ex": "Nöd ufhänke, ich bi na da!",
+  "n": "Also: ablegge."
+ },
+ {
+  "id": "ENG_CHUNK_0349",
+  "t": "[Person] aalüüte",
+  "ex": "Ich lüüt der aa, wänn ich glandet bi.",
+  "n": "aalüüte (Standard anrufen) is the Swiss word."
+ },
+ {
+  "id": "ENG_CHUNK_0350",
+  "t": "sich für [Nomen] aamälde",
+  "ex": "Ich ha mi grad für en Yoga-Kurs aagmäldet."
+ },
+ {
+  "id": "ENG_CHUNK_0351",
+  "t": "schiefgaa",
+  "ex": "Bi de Zahlig isch öppis schiefggange."
+ },
+ {
+  "id": "ENG_CHUNK_0352",
+  "t": "en Panne haa / verrecke",
+  "ex": "Üses Auto hät uf de Autobahn e Panne gha.",
+  "n": "'Es isch verreckt' = it died (informal)."
+ },
+ {
+  "id": "ENG_CHUNK_0353",
+  "t": "schlimmer wärde",
+  "ex": "Min Huescht wird schlimmer."
+ },
+ {
+  "id": "ENG_CHUNK_0354",
+  "t": "alles nur na schlimmer mache",
+  "ex": "Säg nüt, du machsch s nur na schlimmer."
+ },
+ {
+  "id": "ENG_CHUNK_0355",
+  "t": "Ärger überchoo",
+  "ex": "Du überchunsch Ärger, wänn de Chef das gseht."
+ },
+ {
+  "id": "ENG_CHUNK_0356",
+  "t": "[Nomen] vermassle / [Nomen] versiebe",
+  "ex": "Ich ha d Präsentation total vermasslet.",
+  "n": "versiebe is extra Swiss."
+ },
+ {
+  "id": "ENG_CHUNK_0357",
+  "t": "es Problem löse",
+  "ex": "De Router neu starte hät s Problem glöst."
+ },
+ {
+  "id": "ENG_CHUNK_0358",
+  "t": "en Platte haa",
+  "ex": "Ich ha uf em Wäg is Gschäft en Platte gha.",
+  "n": "en Platte = a flat tyre (Swiss)."
+ },
+ {
+  "id": "ENG_CHUNK_0359",
+  "t": "en Parkplatz finde",
+  "ex": "Ich ha zwänzg Minute bruucht, zum en Parkplatz finde."
+ },
+ {
+  "id": "ENG_CHUNK_0360",
+  "t": "abwäsche",
+  "ex": "Ich wäsch ab, wänn du chochsch."
+ },
+ {
+  "id": "ENG_CHUNK_0361",
+  "t": "de Abfall usetrage / de Güsel useträge",
+  "ex": "Chasch de Güsel useträge, wänn d gaasch?",
+  "n": "Güsel = trash (Zürich); 'de Güsel useträge'."
+ },
+ {
+  "id": "ENG_CHUNK_0362",
+  "t": "e Puff mache",
+  "ex": "D Chind händ i de Stube es Puff gmacht.",
+  "n": "False friend: Swiss s Puff = mess; in Germany it means brothel."
+ },
+ {
+  "id": "ENG_CHUNK_0363",
+  "t": "d Haar la schniide / zum Coiffeur gaa",
+  "ex": "Ich mues dringend zum Coiffeur."
+ },
+ {
+  "id": "ENG_CHUNK_0364",
+  "t": "e churzi Frag",
+  "ex": "Chan ich der e churzi Frag stelle?"
+ },
+ {
+  "id": "ENG_CHUNK_0365",
+  "t": "Platz neh / absitze",
+  "ex": "Nämed Si bitte Platz, de Dokter chunnt grad.",
+  "n": "du form: Hock ab / Sitz ab."
+ },
+ {
+  "id": "ENG_CHUNK_0366",
+  "t": "Gueti Frag",
+  "ex": "Wo händ mer parkiert? Gueti Frag."
+ },
+ {
+  "id": "ENG_CHUNK_0367",
+  "t": "Mehr oder weniger / So ziemlich",
+  "ex": "Bisch fertig mit Packe? Mehr oder weniger."
+ },
+ {
+  "id": "ENG_CHUNK_0368",
+  "t": "Wart, lass mi rate",
+  "ex": "Wart, lass mi rate. Du häsch dini Schlüssel scho wider vergässe."
+ },
+ {
+  "id": "ENG_CHUNK_0369",
+  "t": "Alles klar / Verstande",
+  "ex": "Bi de Tankstell links. Alles klar."
+ },
+ {
+  "id": "ENG_CHUNK_0370",
+  "t": "Sorry, ich chume nöd mit",
+  "ex": "Sorry, ich chume nöd mit. Wele Bus mues ich neh?",
+  "n": "'nöd mitcho' = not follow (the explanation)."
+ },
+ {
+  "id": "ENG_CHUNK_0371",
+  "t": "Lass mi fertig rede",
+  "ex": "Lass mi fertig rede, dänn chasch du.",
+  "n": "Sie form: Lönd Si mi bitte fertig rede."
+ },
+ {
+  "id": "ENG_CHUNK_0372",
+  "t": "Ah, bevor ich s vergiss",
+  "ex": "Ah, bevor ich s vergiss, dis Mami hät aaglüüte."
+ },
+ {
+  "id": "ENG_CHUNK_0373",
+  "t": "Churz und guet",
+  "ex": "Churz und guet, mer händ de Flug verpasst."
+ },
+ {
+  "id": "ENG_CHUNK_0374",
+  "t": "Ob du s glaubsch oder nöd",
+  "ex": "Ob du s glaubsch oder nöd, ich ha s Meer na nie gseh."
+ },
+ {
+  "id": "ENG_CHUNK_0375",
+  "t": "Also",
+  "ex": "Also, wie isch dis Wuchenänd gsi?"
+ },
+ {
+  "id": "ENG_CHUNK_0376",
+  "t": "Weisch",
+  "ex": "Weisch, de Lade macht am Sunntig früener zue."
+ },
+ {
+  "id": "ENG_CHUNK_0377",
+  "t": "Im Prinzip / Eigentlich",
+  "ex": "Im Prinzip bruuched mer meh Ziit."
+ },
+ {
+  "id": "ENG_CHUNK_0378",
+  "t": "Guete Punkt",
+  "ex": "Guete Punkt. Da han ich nöd dra dänkt."
+ },
+ {
+  "id": "ENG_CHUNK_0379",
+  "t": "Du häsch völlig rächt",
+  "ex": "Du häsch völlig rächt, ich hett söle aalüüte.",
+  "n": "hett söle + infinitive = should have."
+ },
+ {
+  "id": "ENG_CHUNK_0380",
+  "t": "Ich au / Gliichfalls",
+  "ex": "Ich ha en Mordshunger. Ich au.",
+  "n": "After a negative: Ich au nöd."
+ },
+ {
+  "id": "ENG_CHUNK_0381",
+  "t": "Ich schulde der öppis",
+  "ex": "Merci fürs Abhole. Ich schulde der öppis.",
+  "n": "Also: Ich bi der öppis schuldig."
+ },
+ {
+  "id": "ENG_CHUNK_0382",
+  "t": "Jederziit / Gern immer",
+  "ex": "Merci fürs Mitnäh. Jederziit."
+ },
+ {
+  "id": "ENG_CHUNK_0383",
+  "t": "Das isch mega lieb vo Ine",
+  "ex": "Si händ Suppe bracht? Das isch mega lieb vo Ine.",
+  "n": "du form: Das isch lieb vo dir."
+ },
+ {
+  "id": "ENG_CHUNK_0384",
+  "t": "Min Fähler",
+  "ex": "Oh, sorry, min Fähler, ich ha dänkt, das seg mini Tasse."
+ },
+ {
+  "id": "ENG_CHUNK_0385",
+  "t": "Das passiert nüme",
+  "ex": "Sorry, dass ich hüt am Morge z spoot gsi bi. Das passiert nüme.",
+  "n": "Present for future: passiert, not wird passiere."
+ },
+ {
+  "id": "ENG_CHUNK_0386",
+  "t": "Ich weiss, wie das isch",
+  "ex": "Min Flug isch au annulliert worde. Ich weiss, wie das isch."
+ },
+ {
+  "id": "ENG_CHUNK_0387",
+  "t": "Gsundheit!",
+  "ex": "Gsundheit! Wirsch chrank?"
+ },
+ {
+  "id": "ENG_CHUNK_0388",
+  "t": "Du schaffsch das",
+  "ex": "Mach der kei Sorge wägem Vorstelligsgspräch. Du schaffsch das."
+ },
+ {
+  "id": "ENG_CHUNK_0389",
+  "t": "Ich freu mi so für dich",
+  "ex": "Du häsch di verlobt? Ich freu mi so für dich!"
+ },
+ {
+  "id": "ENG_CHUNK_0390",
+  "t": "Du häsch s verdient",
+  "ex": "Gratuliere zur Beförderig. Du häsch s verdient."
+ },
+ {
+  "id": "ENG_CHUNK_0391",
+  "t": "usser [Nomen]",
+  "ex": "Alles isch super gsi, usser s Wätter."
+ },
+ {
+  "id": "ENG_CHUNK_0392",
+  "t": "Und zu allem Übel / Und obedri",
+  "ex": "De Flug hät Verspötig gha, und obedri händ s mis Gepäck verlore.",
+  "n": "obedri = on top of that (Swiss)."
+ },
+ {
+  "id": "ENG_CHUNK_0393",
+  "t": "Bis [Satz]",
+  "ex": "Bis mer det gsi sind, hät de Film scho aagfange gha.",
+  "n": "Doubled Perfekt (aagfange gha) for 'had started'; plain Perfekt is fine too."
+ },
+ {
+  "id": "ENG_CHUNK_0394",
+  "t": "Unterdesse",
+  "ex": "S Znacht isch fast fertig. Chasch unterdesse de Tisch decke?"
+ },
+ {
+  "id": "ENG_CHUNK_0395",
+  "t": "Jetzt wo [Satz]",
+  "ex": "Jetzt wo d Chind grösser sind, reised mer meh.",
+  "n": "wo sends the verb to the end."
+ },
+ {
+  "id": "ENG_CHUNK_0396",
+  "t": "Ab jetzt",
+  "ex": "Ab jetzt nimm ich min Zmittag sälber mit."
+ },
+ {
+  "id": "ENG_CHUNK_0397",
+  "t": "So oder so",
+  "ex": "Mer chönd de Bus neh oder laufe. So oder so isch s zwänzg Minute."
+ },
+ {
+  "id": "ENG_CHUNK_0398",
+  "t": "Am Ändi vom Tag / Letschtlich",
+  "ex": "Letschtlich isch s dini Entscheidig.",
+  "n": "'Am Ände vom Tag' is an anglicism; letschtlich is more natural."
+ },
+ {
+  "id": "ENG_CHUNK_0399",
+  "t": "Damals / Früener",
+  "ex": "Damals händ mer kei Handy gha."
+ },
+ {
+  "id": "ENG_CHUNK_0400",
+  "t": "Dozmal",
+  "ex": "Dozmal han ich dänkt, das seg e super Idee.",
+  "n": "dozmal = back then (Zürich); Standard damals."
+ }
+]

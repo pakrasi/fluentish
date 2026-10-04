@@ -1,0 +1,176 @@
+{
+ "G:register-formal-email.01": {
+  "topic": "register",
+  "trap": null,
+  "focus": [
+   "chunk",
+   "ending"
+  ],
+  "strict": [
+   "geehrte"
+  ],
+  "wrong": [
+   "geehrter"
+  ],
+  "rule": "Before Damen und Herren, write geehrte: Sehr geehrte Damen und Herren.",
+  "skip": false
+ },
+ "G:register-formal-email.02": {
+  "topic": "register",
+  "trap": "cap",
+  "focus": [
+   "chunk",
+   "ending",
+   "cap"
+  ],
+  "strict": [
+   "Grüßen"
+  ],
+  "wrong": [
+   "Grüße",
+   "grüßen"
+  ],
+  "rule": "A formal email ends with Mit freundlichen Grüßen, with -en and a capital G.",
+  "skip": false
+ },
+ "G:register-formal-email.03": {
+  "topic": "register",
+  "trap": null,
+  "focus": [
+   "chunk",
+   "ending"
+  ],
+  "strict": [],
+  "wrong": [
+   "Frau"
+  ],
+  "rule": "Sehr geehrter goes with Herr and sehr geehrte with Frau: Sehr geehrter Herr Schmidt.",
+  "skip": false
+ },
+ "G:register-formal-email.04": {
+  "topic": "register",
+  "trap": null,
+  "focus": [
+   "chunk",
+   "ending"
+  ],
+  "strict": [],
+  "wrong": [
+   "Herr"
+  ],
+  "rule": "Sehr geehrte goes with Frau and sehr geehrter with Herr: Sehr geehrte Frau Weber.",
+  "skip": false
+ },
+ "G:register-formal-email.05": {
+  "topic": "register",
+  "trap": "cap",
+  "focus": [
+   "register",
+   "cap"
+  ],
+  "strict": [
+   "Sie"
+  ],
+  "wrong": [
+   "Können sie mir helfen?",
+   "Kannst Sie mir helfen?"
+  ],
+  "rule": "With Sie, the verb takes -en and Sie takes a capital: Können Sie mir helfen?",
+  "skip": false
+ },
+ "G:register-formal-email.06": {
+  "topic": "register",
+  "trap": "cap",
+  "focus": [
+   "register",
+   "cap"
+  ],
+  "strict": [
+   "Sie"
+  ],
+  "wrong": [
+   "Haben sie morgen Zeit?",
+   "Hast Sie morgen Zeit?"
+  ],
+  "rule": "With Sie, the verb takes -en and Sie takes a capital: Haben Sie morgen Zeit?",
+  "skip": false
+ },
+ "G:register-formal-email.07": {
+  "topic": "register",
+  "trap": "cap",
+  "focus": [
+   "register",
+   "cap"
+  ],
+  "strict": [
+   "Sie"
+  ],
+  "wrong": [
+   "Schicken sie mir bitte die Unterlagen.",
+   "Schick Sie mir bitte die Unterlagen."
+  ],
+  "rule": "The formal request puts Sie after the verb: Schicken Sie mir bitte die Unterlagen.",
+  "skip": false
+ },
+ "G:register-formal-email.08": {
+  "topic": "register",
+  "trap": "cap",
+  "focus": [
+   "register",
+   "cap"
+  ],
+  "strict": [
+   "Ihre"
+  ],
+  "wrong": [
+   "ihre",
+   "deine"
+  ],
+  "rule": "In a formal email, Sie, Ihr and Ihnen always take a capital: Ihre E-Mail.",
+  "skip": false
+ },
+ "G:register-formal-email.09": {
+  "topic": "register",
+  "trap": "cap",
+  "focus": [
+   "register",
+   "cap"
+  ],
+  "strict": [
+   "Ihre"
+  ],
+  "wrong": [
+   "ihre",
+   "deine"
+  ],
+  "rule": "In a formal email, Sie, Ihr and Ihnen always take a capital: Ihre Antwort.",
+  "skip": false
+ },
+ "G:register-formal-email.10": {
+  "topic": "register",
+  "trap": null,
+  "focus": [
+   "konj2",
+   "umlaut"
+  ],
+  "strict": [],
+  "wrong": [
+   "Konnten Sie mich zurückrufen?"
+  ],
+  "rule": "A polite request uses könnten with the umlaut: Könnten Sie mich zurückrufen?",
+  "skip": false
+ },
+ "G:register-formal-email.11": {
+  "topic": "register",
+  "trap": null,
+  "focus": [
+   "chunk"
+  ],
+  "strict": [],
+  "wrong": [
+   "bewerben"
+  ],
+  "rule": "The job application line is sich bewerben um: Hiermit bewerbe ich mich um die Stelle.",
+  "skip": false
+ }
+}

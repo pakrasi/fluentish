@@ -1,0 +1,548 @@
+[
+{
+"id": "ENG_CHUNK_0101",
+"t": "Vuoi che [congiuntivo]? / Se vuoi, [presente]",
+"ex": "Sembri indaffarato. Vuoi che prepari io la cena stasera?",
+"n": "'Vuoi che' triggers congiuntivo: vuoi che (io) prepari. Casual: 'Se vuoi, preparo io la cena.'"
+},
+{
+"id": "ENG_CHUNK_0102",
+"t": "Non credo che [congiuntivo] / Non penso che [congiuntivo]",
+"ex": "Non credo che oggi piova.",
+"n": "Classic congiuntivo trigger: non credo che piova / sia / abbia."
+},
+{
+"id": "ENG_CHUNK_0103",
+"t": "Sono quasi sicuro che [clausola]",
+"ex": "Sono quasi sicuro di aver lasciato il portafoglio al ristorante.",
+"n": "Same subject -> di + infinitive: sono sicuro di aver lasciato. 'Sicuro che' takes indicative."
+},
+{
+"id": "ENG_CHUNK_0104",
+"t": "E se [congiuntivo imperfetto]? / Perché non [verbo]?",
+"ex": "Troppo stanco per cucinare? E se ordinassimo una pizza?",
+"n": "'E se' + congiuntivo imperfetto: e se ordinassimo, e se andassimo."
+},
+{
+"id": "ENG_CHUNK_0105",
+"t": "Ti va di [infinito]?",
+"ex": "Ti va di prendere un gelato?",
+"n": "The standard casual invitation. Lei form: Le va di...?"
+},
+{
+"id": "ENG_CHUNK_0106",
+"t": "Non mi va di [infinito]",
+"ex": "Stasera non mi va di cucinare."
+},
+{
+"id": "ENG_CHUNK_0107",
+"t": "Ho l'impressione che [congiuntivo] / Mi sembra che [congiuntivo]",
+"ex": "Ho l'impressione che non ci sentiamo da secoli.",
+"n": "Both trigger congiuntivo; spoken Italian often slips into indicative here."
+},
+{
+"id": "ENG_CHUNK_0108",
+"t": "Forse dovremmo [infinito] / Forse è meglio [infinito]",
+"ex": "Si sta facendo buio. Forse è meglio tornare."
+},
+{
+"id": "ENG_CHUNK_0109",
+"t": "Faresti meglio a [infinito] / È meglio che [congiuntivo]",
+"ex": "È meglio che ti porti una giacca, fuori si gela.",
+"n": "'È meglio che' triggers congiuntivo: è meglio che tu vada."
+},
+{
+"id": "ENG_CHUNK_0110",
+"t": "È meglio che [congiuntivo, io] / Sarà meglio che [congiuntivo]",
+"ex": "È quasi mezzanotte. È meglio che vada.",
+"n": "'È meglio che vada' (congiuntivo) = I'd better go; very common leave-taking."
+},
+{
+"id": "ENG_CHUNK_0111",
+"t": "Hai provato a [infinito]?",
+"ex": "Il portatile si è bloccato? Hai provato a riavviarlo?",
+"n": "provare a + infinitive = try doing."
+},
+{
+"id": "ENG_CHUNK_0112",
+"t": "Ho intenzione di [infinito] / Ho in programma di [infinito]",
+"ex": "A dicembre ho intenzione di andare a trovare i miei nonni."
+},
+{
+"id": "ENG_CHUNK_0113",
+"t": "Alla fine ho [participio passato] / Ho finito per [infinito]",
+"ex": "Alla fine sono rimasto in ufficio fino alle dieci.",
+"n": "'Alla fine' + passato prossimo is the natural choice."
+},
+{
+"id": "ENG_CHUNK_0114",
+"t": "Prima [imperfetto] / Una volta [imperfetto]",
+"ex": "Una volta giocavo a calcio ogni fine settimana.",
+"n": "No 'used to' verb: the imperfetto alone does the job, often with 'prima' or 'da piccolo'."
+},
+{
+"id": "ENG_CHUNK_0115",
+"t": "[presente] da [durata]",
+"ex": "Studio spagnolo da circa due anni.",
+"n": "Present tense + da, NOT passato prossimo: 'studio da due anni', not 'ho studiato'."
+},
+{
+"id": "ENG_CHUNK_0116",
+"t": "Da quanto tempo [presente]?",
+"ex": "Da quanto tempo vivi a Chicago?",
+"n": "Present tense: 'Da quanto (tempo) vivi', never 'hai vissuto'."
+},
+{
+"id": "ENG_CHUNK_0117",
+"t": "È da [durata] che non [verbo] / Sono [durata] che...",
+"ex": "È da un'eternità che non vedo i miei cugini.",
+"n": "Italian flips it: 'it's been ages since I saw' = 'è da secoli che non vedo' (present, negative)."
+},
+{
+"id": "ENG_CHUNK_0118",
+"t": "Cosa dovrei [infinito]? / Cosa mi metto?",
+"ex": "È una festa elegante. Cosa mi metto?",
+"n": "For quick deliberation the present works: Cosa faccio? Cosa mi metto?"
+},
+{
+"id": "ENG_CHUNK_0119",
+"t": "Magari [congiuntivo imperfetto] / Vorrei che [congiuntivo imperfetto]",
+"ex": "Magari avessi più ferie!",
+"n": "'Magari' + congiuntivo imperfetto = if only. Regret about the past: magari avessi saputo."
+},
+{
+"id": "ENG_CHUNK_0120",
+"t": "A chi tocca [infinito]?",
+"ex": "A chi tocca lavare i piatti?",
+"n": "'toccare a qualcuno' = be someone's turn: tocca a te."
+},
+{
+"id": "ENG_CHUNK_0121",
+"t": "Non vedo l'ora di [infinito]",
+"ex": "Non vedo l'ora di vedere il nuovo appartamento."
+},
+{
+"id": "ENG_CHUNK_0122",
+"t": "Ho sentito che [clausola] / Ho sentito dire che...",
+"ex": "Ho sentito che il nuovo panificio all'angolo è buonissimo."
+},
+{
+"id": "ENG_CHUNK_0123",
+"t": "A quanto pare, [clausola] / Pare che [congiuntivo]",
+"ex": "A quanto pare, il concerto è stato spostato a domenica.",
+"n": "'Pare che' triggers congiuntivo: pare che sia stato spostato."
+},
+{
+"id": "ENG_CHUNK_0124",
+"t": "[persona] mi ha detto che [clausola]",
+"ex": "Mia sorella mi ha detto che oggi il negozio chiude presto."
+},
+{
+"id": "ENG_CHUNK_0125",
+"t": "[persona] mi ha chiesto di [infinito]",
+"ex": "Il mio capo mi ha chiesto di fermarmi fino a tardi stasera.",
+"n": "chiedere di + infinitive (not 'a')."
+},
+{
+"id": "ENG_CHUNK_0126",
+"t": "Dove hai preso [nome]? / Dove l'hai comprato?",
+"ex": "Dove hai preso quella giacca? È bellissima."
+},
+{
+"id": "ENG_CHUNK_0127",
+"t": "Mi dà [nome], per favore? / Posso avere [nome]?",
+"ex": "Mi fa un latte macchiato piccolo, per favore?",
+"n": "At a bar: 'Mi fa un...' / 'Mi dà un...' / 'Vorrei un...'. Beware: 'latte' alone = milk."
+},
+{
+"id": "ENG_CHUNK_0128",
+"t": "Non trovo più [nome] / Non riesco a trovare [nome] da nessuna parte",
+"ex": "Non trovo più le chiavi."
+},
+{
+"id": "ENG_CHUNK_0129",
+"t": "Cerco [nome] / Stavo cercando [nome]",
+"ex": "Buongiorno, cerco un biglietto d'auguri per mio padre.",
+"n": "In shops simple 'cerco' is normal; 'stavo cercando' is softer."
+},
+{
+"id": "ENG_CHUNK_0130",
+"t": "Ce l'avete in [nome]?",
+"ex": "Ce l'avete in una taglia più piccola?",
+"n": "'Ce l'avete' (ce + lo/la + avete) is the spoken form for 'do you have it'."
+},
+{
+"id": "ENG_CHUNK_0131",
+"t": "Avete ancora [nome]? / Sono rimasti [nome]?",
+"ex": "Avete ancora biglietti per stasera?"
+},
+{
+"id": "ENG_CHUNK_0132",
+"t": "Come si arriva a [nome]? / Per andare a [nome]?",
+"ex": "Scusi, come si arriva alla stazione?",
+"n": "'Scusi' (Lei) to strangers; 'Per andare alla stazione?' is a very common short form."
+},
+{
+"id": "ENG_CHUNK_0133",
+"t": "Conosci qualcuno che [congiuntivo]?",
+"ex": "Conosci qualcuno che possa aggiustare un rubinetto che perde?",
+"n": "Relative clause after an indefinite: congiuntivo (possa); spoken often 'che sa aggiustare'."
+},
+{
+"id": "ENG_CHUNK_0134",
+"t": "Qual è il modo migliore per [infinito]? / Come conviene [infinito]?",
+"ex": "Qual è il modo migliore per andare in centro da qui?"
+},
+{
+"id": "ENG_CHUNK_0135",
+"t": "C'è modo di [infinito]? / Si può [infinito]?",
+"ex": "C'è modo di cambiare il volo?"
+},
+{
+"id": "ENG_CHUNK_0136",
+"t": "scoprire [nome] / informarsi su [nome]",
+"ex": "Devo scoprire l'indirizzo prima di partire."
+},
+{
+"id": "ENG_CHUNK_0137",
+"t": "passare a prendere [persona] / venire a prendere [persona]",
+"ex": "Mi vieni a prendere alla stazione alle sei?",
+"n": "prendere alone is ambiguous; say 'venire/passare a prendere'."
+},
+{
+"id": "ENG_CHUNK_0138",
+"t": "fare una festa / organizzare una festa",
+"ex": "Facciamo una festa per i sessant'anni di papà."
+},
+{
+"id": "ENG_CHUNK_0139",
+"t": "presentarsi / farsi vedere",
+"ex": "Alla riunione si sono presentate solo cinque persone.",
+"n": "'farsi vivo' = to finally show up / get in touch (often reproachful)."
+},
+{
+"id": "ENG_CHUNK_0140",
+"t": "uscire con [persona] / stare con [persona]",
+"ex": "Questo weekend esco con i miei cugini.",
+"n": "'uscire con' can also mean dating – context decides."
+},
+{
+"id": "ENG_CHUNK_0141",
+"t": "richiamare [persona]",
+"ex": "Sto guidando. Ti posso richiamare tra dieci minuti?"
+},
+{
+"id": "ENG_CHUNK_0142",
+"t": "prepararsi",
+"ex": "Sbrigati a prepararti, usciamo tra cinque minuti."
+},
+{
+"id": "ENG_CHUNK_0143",
+"t": "fare due chiacchiere con [persona] / rivedersi",
+"ex": "È stato bellissimo rivederti e fare due chiacchiere ieri sera.",
+"n": "No single verb; 'aggiornarsi' also used: 'ci aggiorniamo'."
+},
+{
+"id": "ENG_CHUNK_0144",
+"t": "uscire",
+"ex": "Vuoi uscire stasera o restare a casa?"
+},
+{
+"id": "ENG_CHUNK_0145",
+"t": "fare la fila / fare la coda",
+"ex": "Abbiamo fatto la fila per un'ora per entrare."
+},
+{
+"id": "ENG_CHUNK_0146",
+"t": "fare programmi / organizzarsi",
+"ex": "Organizziamoci per il fine settimana."
+},
+{
+"id": "ENG_CHUNK_0147",
+"t": "mettere la sveglia",
+"ex": "Ho messo la sveglia alle sei, così non dormo troppo."
+},
+{
+"id": "ENG_CHUNK_0148",
+"t": "sposarsi",
+"ex": "Mio fratello si sposa a giugno.",
+"n": "Reflexive: si sposa; 'sposare qualcuno' = marry someone."
+},
+{
+"id": "ENG_CHUNK_0149",
+"t": "annoiarsi",
+"ex": "I bambini si annoiano subito nei viaggi lunghi in macchina."
+},
+{
+"id": "ENG_CHUNK_0150",
+"t": "ammalarsi",
+"ex": "Mi ammalo sempre quando cambia la stagione."
+},
+{
+"id": "ENG_CHUNK_0151",
+"t": "stare meglio / rimettersi",
+"ex": "Spero che tu stia meglio presto.",
+"n": "'Spero che' triggers congiuntivo: stia. Short form: 'Rimettiti presto!'"
+},
+{
+"id": "ENG_CHUNK_0152",
+"t": "andare dal medico / farsi vedere da un medico",
+"ex": "Dovresti farti vedere da un medico per quella tosse.",
+"n": "'dal medico' (da + person) for going to someone's place."
+},
+{
+"id": "ENG_CHUNK_0153",
+"t": "prendere un appuntamento",
+"ex": "Devo prendere un appuntamento dal dentista."
+},
+{
+"id": "ENG_CHUNK_0154",
+"t": "fare tardi / stare sveglio fino a tardi",
+"ex": "Ho fatto tardi a guardare un film e adesso sono distrutto.",
+"n": "'fare tardi' = stay up late OR be late, depending on context."
+},
+{
+"id": "ENG_CHUNK_0155",
+"t": "dormire abbastanza",
+"ex": "Ultimamente non dormo abbastanza."
+},
+{
+"id": "ENG_CHUNK_0156",
+"t": "avere fretta / andare di fretta",
+"ex": "Scusa, ora non posso parlare, vado di fretta."
+},
+{
+"id": "ENG_CHUNK_0157",
+"t": "volerci un po' / metterci un po'",
+"ex": "Il cibo potrebbe metterci un po', stasera la cucina è piena.",
+"n": "'ci vuole un po'' (impersonal) vs 'ci mette un po'' (with subject)."
+},
+{
+"id": "ENG_CHUNK_0158",
+"t": "pagare [nome]",
+"ex": "Chi paga la cena stasera?",
+"n": "No 'for': pagare la cena, pagare il conto."
+},
+{
+"id": "ENG_CHUNK_0159",
+"t": "risparmiare",
+"ex": "Stiamo cercando di risparmiare per una macchina nuova."
+},
+{
+"id": "ENG_CHUNK_0160",
+"t": "spendere soldi per [nome] / in [nome]",
+"ex": "Cerco di non spendere soldi in cose che non mi servono."
+},
+{
+"id": "ENG_CHUNK_0161",
+"t": "essere al verde",
+"ex": "Mi presti dieci euro? Sono al verde fino allo stipendio."
+},
+{
+"id": "ENG_CHUNK_0162",
+"t": "dovere soldi a [persona]",
+"ex": "Devo ancora dei soldi a mia sorella per il viaggio."
+},
+{
+"id": "ENG_CHUNK_0163",
+"t": "ordinare da asporto / farsi portare qualcosa",
+"ex": "Sono troppo stanco per cucinare, ordiniamo qualcosa.",
+"n": "'ordinare d'asporto' = take-out; 'a domicilio' = delivered."
+},
+{
+"id": "ENG_CHUNK_0164",
+"t": "avere nostalgia di casa",
+"ex": "I primi mesi all'università avevo nostalgia di casa."
+},
+{
+"id": "ENG_CHUNK_0165",
+"t": "essere emozionato per [nome] / non vedere l'ora di [nome]",
+"ex": "I bambini non vedono l'ora di andare allo zoo.",
+"n": "'Eccitato' can sound sexual; prefer 'emozionato', 'entusiasta' or 'non vedere l'ora'."
+},
+{
+"id": "ENG_CHUNK_0166",
+"t": "Ah già / Ah, è vero",
+"ex": "La riunione è alle tre, non alle due. Ah già, me n'ero dimenticato."
+},
+{
+"id": "ENG_CHUNK_0167",
+"t": "o qualcosa del genere",
+"ex": "Prendiamoci un caffè o qualcosa del genere."
+},
+{
+"id": "ENG_CHUNK_0168",
+"t": "un po' / abbastanza",
+"ex": "Il film era un po' noioso."
+},
+{
+"id": "ENG_CHUNK_0169",
+"t": "Credo di sì / Penso di sì",
+"ex": "La farmacia è ancora aperta? Credo di sì."
+},
+{
+"id": "ENG_CHUNK_0170",
+"t": "Credo di no / Non credo",
+"ex": "Pioverà? Non credo."
+},
+{
+"id": "ENG_CHUNK_0171",
+"t": "Davvero? / Sul serio?",
+"ex": "Ho avuto il lavoro! – Davvero? Fantastico!"
+},
+{
+"id": "ENG_CHUNK_0172",
+"t": "In che senso? / Cosa vuoi dire?",
+"ex": "In che senso? Pensavo ti piacesse.",
+"n": "'Pensavo che ti piacesse' – congiuntivo after pensare."
+},
+{
+"id": "ENG_CHUNK_0173",
+"t": "Scusi, non ho capito / Come, scusa?",
+"ex": "Scusi, non ho capito. Può ripetere?"
+},
+{
+"id": "ENG_CHUNK_0174",
+"t": "Mi segui? / È chiaro?",
+"ex": "Allora giri a sinistra alla banca, poi a destra. Mi segui?"
+},
+{
+"id": "ENG_CHUNK_0175",
+"t": "Ah, ho capito / Ah, capisco",
+"ex": "Il volo è in ritardo? Ah, ho capito."
+},
+{
+"id": "ENG_CHUNK_0176",
+"t": "Esatto / Appunto",
+"ex": "Quindi partiamo alle otto per evitare il traffico? – Esatto."
+},
+{
+"id": "ENG_CHUNK_0177",
+"t": "È vero / Hai ragione",
+"ex": "È caro, ma durerà anni. – È vero."
+},
+{
+"id": "ENG_CHUNK_0178",
+"t": "Se proprio devo / Va be'",
+"ex": "Vuoi venire anche tu? – Va be', dai.",
+"n": "'Va be'' / 'va bene, dai' conveys reluctant agreement."
+},
+{
+"id": "ENG_CHUNK_0179",
+"t": "Ah sì? / Davvero?",
+"ex": "Sono cresciuto in Texas, in realtà. – Ah sì? In che zona?"
+},
+{
+"id": "ENG_CHUNK_0180",
+"t": "Ma dici sul serio? / Ma dai!",
+"ex": "Ma dici sul serio? Ti sei licenziato?"
+},
+{
+"id": "ENG_CHUNK_0181",
+"t": "Te ne sono davvero grato / Grazie davvero",
+"ex": "Grazie per avermi aiutato col trasloco. Te ne sono davvero grato.",
+"n": "grato/grata agrees with speaker; 'grazie mille, davvero' is more casual."
+},
+{
+"id": "ENG_CHUNK_0182",
+"t": "Si figuri / È stato un piacere",
+"ex": "Grazie mille per la cena. – È stato un piacere, tornate presto."
+},
+{
+"id": "ENG_CHUNK_0183",
+"t": "Mi dispiace molto / Mi dispiace tanto",
+"ex": "Mio padre è in ospedale. – Oh, mi dispiace tanto."
+},
+{
+"id": "ENG_CHUNK_0184",
+"t": "Scusi per l'attesa / Scusa se ti ho fatto aspettare",
+"ex": "Scusi per l'attesa. C'era un traffico terribile."
+},
+{
+"id": "ENG_CHUNK_0185",
+"t": "Devo andare / Dovrei andare",
+"ex": "Accidenti, sono già le dieci. Devo scappare.",
+"n": "'Devo scappare' = I must run – very common casual exit."
+},
+{
+"id": "ENG_CHUNK_0186",
+"t": "Serviti pure / Prendi pure",
+"ex": "C'è del caffè in cucina, serviti pure.",
+"n": "Imperative + 'pure' = go ahead. Lei: 'Si serva pure'."
+},
+{
+"id": "ENG_CHUNK_0187",
+"t": "Fai come se fossi a casa tua",
+"ex": "Entra pure e fai come se fossi a casa tua.",
+"n": "Fixed congiuntivo: 'come se fossi'."
+},
+{
+"id": "ENG_CHUNK_0188",
+"t": "Brava! / Bravo! / Complimenti!",
+"ex": "Ho finalmente smesso di fumare. – Bravo!",
+"n": "'Bravo' agrees: bravo/brava/bravi."
+},
+{
+"id": "ENG_CHUNK_0189",
+"t": "Ma dai! / Non ci credo!",
+"ex": "Ho vinto due biglietti per la partita. – Ma dai!"
+},
+{
+"id": "ENG_CHUNK_0190",
+"t": "Che sollievo",
+"ex": "Il test è negativo. Che sollievo."
+},
+{
+"id": "ENG_CHUNK_0191",
+"t": "a causa di / per",
+"ex": "Il volo è stato in ritardo a causa della neve."
+},
+{
+"id": "ENG_CHUNK_0192",
+"t": "per esempio / ad esempio",
+"ex": "Ci sono tante cose da fare qui. Per esempio, puoi noleggiare una bici al lago."
+},
+{
+"id": "ENG_CHUNK_0193",
+"t": "così / in modo da [infinito] / perché [congiuntivo]",
+"ex": "Parto presto così evito il traffico.",
+"n": "'Perché' = purpose takes congiuntivo: perché tu possa; same subject: per/in modo da + infinitive."
+},
+{
+"id": "ENG_CHUNK_0194",
+"t": "anche se",
+"ex": "Vado al mare anche se piove.",
+"n": "Unlike 'sebbene', 'anche se' takes indicative."
+},
+{
+"id": "ENG_CHUNK_0195",
+"t": "almeno",
+"ex": "L'albergo era minuscolo, ma almeno era pulito."
+},
+{
+"id": "ENG_CHUNK_0196",
+"t": "invece di [infinito/nome]",
+"ex": "Andiamo a piedi invece di prendere l'autobus."
+},
+{
+"id": "ENG_CHUNK_0197",
+"t": "cioè / in altre parole",
+"ex": "Il negozio chiude tra cinque minuti. Cioè, sbrigati."
+},
+{
+"id": "ENG_CHUNK_0198",
+"t": "oltre a / sia... che...",
+"ex": "Parla il francese oltre allo spagnolo.",
+"n": "'sia il francese che lo spagnolo' is the other common pattern."
+},
+{
+"id": "ENG_CHUNK_0199",
+"t": "oggigiorno / di questi tempi",
+"ex": "Di questi tempi è tutto così caro."
+},
+{
+"id": "ENG_CHUNK_0200",
+"t": "dopo / poi",
+"ex": "Abbiamo cenato e poi siamo andati a fare una passeggiata."
+}
+]

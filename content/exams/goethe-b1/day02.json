@@ -1,0 +1,255 @@
+{
+  "day": 2,
+  "topic": "Wohnen und Nachbarschaft",
+  "lesen": {
+    "teil1": {
+      "title": "Unser Umzug aufs Land",
+      "source": "Blog",
+      "text": "Vor drei Wochen sind wir umgezogen: aus einer Dreizimmerwohnung mitten in Frankfurt in ein kleines Haus in einem Dorf, ungefähr vierzig Kilometer von der Stadt entfernt. Viele Freunde haben uns davor gewarnt. „Ihr werdet euch langweilen“, haben sie gesagt. Bis jetzt kann ich das nicht bestätigen.\n\nDer Umzug selbst war allerdings anstrengender, als wir gedacht hatten. Wir wollten Geld sparen und haben deshalb keine Umzugsfirma beauftragt, sondern nur einen Transporter gemietet. Mein Bruder und zwei Kollegen haben geholfen. Am Ende haben wir fast zwölf Stunden gebraucht, und mein Rücken tat drei Tage lang weh. Beim nächsten Mal zahlen wir lieber für Profis.\n\nDas Haus ist älter, als wir es uns gewünscht hatten, aber die Miete ist nur halb so hoch wie in Frankfurt. Dafür haben wir jetzt einen Garten, in dem unsere Tochter spielen kann. Die Heizung muss allerdings bald erneuert werden, das hat uns der Vermieter schon beim ersten Gespräch gesagt.\n\nAm meisten überrascht haben mich die Nachbarn. In Frankfurt kannte ich nach fünf Jahren nicht einmal den Namen der Familie unter uns. Hier stand am zweiten Tag Frau Kessler von nebenan mit einem Kuchen vor der Tür. Am Wochenende hat uns der Nachbar von gegenüber sein Werkzeug geliehen, weil wir Regale aufbauen mussten.\n\nNatürlich gibt es auch Nachteile. Der Bus in die Stadt fährt nur einmal pro Stunde, und abends gar nicht mehr. Ohne Auto geht es hier nicht. Mein Mann fährt jetzt jeden Tag fünfzig Minuten zur Arbeit, früher waren es zwanzig. Trotzdem: Wenn ich abends auf der Terrasse sitze und es ganz still ist, weiß ich, dass wir die richtige Entscheidung getroffen haben.",
+      "items": [
+        {"id": "L1-1", "statement": "Die Familie hat für den Umzug eine Firma bezahlt.", "answer": false, "skill": "negation"},
+        {"id": "L1-2", "statement": "Der Umzug hat länger gedauert als erwartet.", "answer": true, "skill": "paraphrase"},
+        {"id": "L1-3", "statement": "Die neue Miete ist deutlich niedriger als in Frankfurt.", "answer": true, "skill": "number-time"},
+        {"id": "L1-4", "statement": "Die Heizung im Haus ist neu.", "answer": false, "skill": "detail"},
+        {"id": "L1-5", "statement": "In Frankfurt hatte die Autorin engen Kontakt zu ihren Nachbarn.", "answer": false, "skill": "inference"},
+        {"id": "L1-6", "statement": "Der Mann der Autorin braucht jetzt länger zur Arbeit als früher.", "answer": true, "skill": "number-time"}
+      ]
+    },
+    "teil2": {
+      "texts": [
+        {
+          "title": "Wohnen für Hilfe: Ein Zimmer gegen Zeit",
+          "source": "Zeitung",
+          "text": "In vielen Universitätsstädten ist es fast unmöglich geworden, ein bezahlbares Zimmer zu finden. In Münster sucht man deshalb neue Wege. Das Projekt „Wohnen für Hilfe“ bringt Studierende und ältere Menschen zusammen, die allein in einer großen Wohnung oder einem Haus leben. Die Regel ist einfach: Für jeden Quadratmeter Wohnfläche hilft der Student oder die Studentin eine Stunde pro Monat im Haushalt. Wer also ein Zimmer von zwanzig Quadratmetern bewohnt, arbeitet zwanzig Stunden im Monat – zum Beispiel beim Einkaufen, im Garten oder am Computer. Miete zahlt man keine, nur die Nebenkosten für Strom und Wasser.\n\nDie 24-jährige Jana Feld lebt seit einem Jahr bei der 79-jährigen Hilde Brandt. „Am Anfang hatte ich Angst, dass ich keine Freiheit mehr habe“, erzählt sie. „Aber Frau Brandt ist überhaupt nicht neugierig. Wir frühstücken manchmal zusammen, mehr nicht.“ Hilde Brandt dagegen freut sich vor allem darüber, dass abends jemand im Haus ist. „Seit mein Mann gestorben ist, war es hier sehr still.“\n\nDas Projekt hat allerdings auch Grenzen. Pflege gehört ausdrücklich nicht zu den Aufgaben der Studierenden. Und nicht jedes Paar passt zusammen: Etwa ein Viertel der Wohnpartnerschaften wird im ersten halben Jahr wieder beendet. Die Beraterinnen des Projekts führen deshalb vor jedem Einzug ein langes Gespräch mit beiden Seiten.",
+          "items": [
+            {"id": "L2-1", "question": "Bei „Wohnen für Hilfe“ …", "options": ["zahlen die Studierenden eine niedrige Miete an die älteren Menschen.", "arbeiten die Studierenden statt Miete im Haushalt mit.", "helfen ältere Menschen Studierenden bei der Wohnungssuche."], "answer": 1, "skill": "paraphrase"},
+            {"id": "L2-2", "question": "Jana Feld …", "options": ["hat am Anfang befürchtet, zu wenig Freiheit zu haben.", "frühstückt jeden Tag mit Frau Brandt.", "findet Frau Brandt zu neugierig."], "answer": 0, "skill": "paraphrase"},
+            {"id": "L2-3", "question": "Was erfährt man über das Projekt?", "options": ["Die Studierenden müssen die älteren Menschen auch pflegen.", "Alle Wohnpartnerschaften halten mindestens ein halbes Jahr.", "Vor dem Einzug gibt es ein Gespräch mit beiden Seiten."], "answer": 2, "skill": "detail"}
+          ]
+        },
+        {
+          "title": "Streit um den Grill – und wie man ihn löst",
+          "source": "Zeitschrift",
+          "text": "Laute Musik, Zigarettenrauch auf dem Balkon, der Hund, der nachts bellt: Die Liste der Dinge, über die sich Nachbarn streiten, ist lang. Allein in Berlin landen jedes Jahr mehrere tausend solcher Fälle vor Gericht. Das ist teuer und dauert oft Monate. Die Stadt Potsdam bietet deshalb seit zwei Jahren eine kostenlose Nachbarschaftsmediation an. Dabei setzen sich die Streitenden mit einer neutralen Person an einen Tisch und suchen gemeinsam eine Lösung.\n\nMediatorin Ruth Albers hat in dieser Zeit über hundert Gespräche geführt. „Meistens geht es gar nicht um den Grill oder den Zaun“, sagt sie. „Die Leute fühlen sich nicht respektiert. Sobald sie merken, dass der andere ihnen zuhört, wird alles leichter.“ In etwa siebzig Prozent der Fälle finden die Nachbarn eine Einigung, mit der beide leben können.\n\nEin Beispiel: Familie Öztürk grillte im Sommer fast jeden Abend, der Rauch zog in die Wohnung von Herrn Lange im ersten Stock. Herr Lange rief die Polizei, die Familie fühlte sich beleidigt. In der Mediation einigte man sich auf feste Grilltage: Mittwoch und Samstag. Heute grüßt man sich wieder im Treppenhaus. Wer Streit mit den Nachbarn hat, der sollte nach Meinung von Albers auf jeden Fall zuerst das Gespräch suchen, bevor er einen Anwalt anruft.",
+          "items": [
+            {"id": "L2-4", "question": "Die Mediation in Potsdam …", "options": ["dauert länger als ein Gerichtsverfahren.", "ist für die Nachbarn kostenlos.", "wird von einem Gericht angeboten."], "answer": 1, "skill": "detail"},
+            {"id": "L2-5", "question": "Frau Albers meint, dass es bei den meisten Streitigkeiten …", "options": ["um fehlenden Respekt geht.", "wirklich um den Grill oder den Zaun geht.", "um zu laute Musik geht."], "answer": 0, "skill": "paraphrase"},
+            {"id": "L2-6", "question": "Familie Öztürk und Herr Lange …", "options": ["grüßen sich im Treppenhaus nicht mehr.", "haben am Ende einen Anwalt eingeschaltet.", "haben sich auf bestimmte Tage zum Grillen geeinigt."], "answer": 2, "skill": "paraphrase"}
+          ]
+        }
+      ]
+    },
+    "teil3": {
+      "intro": "Einige Personen aus Ihrem Deutschkurs suchen Angebote rund um Wohnen und Nachbarschaft. Lesen Sie die Situationen 1–7 und die Anzeigen A–J. Welche Anzeige passt zu welcher Situation? Eine Anzeige kann nur einmal gewählt werden. Für eine Situation gibt es keine passende Anzeige – markieren Sie dort 0.",
+      "situations": [
+        {"id": "L3-1", "text": "Lea studiert in Leipzig und sucht ein Zimmer in einer WG, sie hat aber nur wenig Geld.", "answer": "E", "skill": "matching"},
+        {"id": "L3-2", "text": "Familie Nowak zieht nächsten Monat um und braucht Hilfe beim Transport der Möbel.", "answer": "B", "skill": "matching"},
+        {"id": "L3-3", "text": "Herr Yilmaz hat Ärger mit seinem Vermieter wegen der Nebenkostenabrechnung und braucht eine Beratung.", "answer": "H", "skill": "matching"},
+        {"id": "L3-4", "text": "Sarah und Tom suchen eine Wohnung mit Garten, in der Haustiere erlaubt sind.", "answer": "D", "skill": "matching"},
+        {"id": "L3-5", "text": "Miriam zieht nach Hamburg und möchte ihre alten Möbel verkaufen, hat aber kein Auto.", "answer": "J", "skill": "matching"},
+        {"id": "L3-6", "text": "Herr Berger möchte am Sonntag Regale aufbauen und braucht dafür kurzfristig eine Bohrmaschine.", "answer": null, "skill": "matching"},
+        {"id": "L3-7", "text": "Frau Petrova ist 70, lebt allein und wünscht sich mehr Kontakt zu Menschen aus ihrem Stadtteil.", "answer": "F", "skill": "matching"}
+      ],
+      "ads": [
+        {"letter": "A", "title": "Werkzeug leihen statt kaufen", "text": "Bohrmaschine, Schleifgerät, Leiter: Bei uns leihen Sie Werkzeug ab 5 € pro Tag. Öffnungszeiten Montag bis Freitag 9–18 Uhr, am Wochenende geschlossen. Bitte Ausweis mitbringen. Baumarkt Hensel, Lindenstraße 12."},
+        {"letter": "B", "title": "Umzug ohne Stress", "text": "Zwei kräftige Helfer und ein Transporter (3,5 t) für 45 € pro Stunde. Wir tragen, fahren und bauen auf Wunsch Ihre Möbel wieder auf. Auch kurzfristig, auch am Wochenende. Tel. 0341 / 22 88 90."},
+        {"letter": "C", "title": "Ferienwohnung an der Ostsee", "text": "Gemütliche 2-Zimmer-Wohnung mit Balkon, 300 m zum Strand. Ab 70 € pro Nacht, mindestens 3 Nächte. Haustiere nach Absprache. Buchung unter www.ostsee-ferien-kuehl.de"},
+        {"letter": "D", "title": "3-Zimmer-Wohnung mit eigenem Garten", "text": "Erdgeschoss, 78 m², ruhige Lage am Stadtrand, 850 € warm. Haustiere ausdrücklich willkommen! Ab 1. November frei. Besichtigung am Samstag, Anmeldung per E-Mail: wohnung-gartenstr@mail.de"},
+        {"letter": "E", "title": "WG-Zimmer für Studentin / Studenten", "text": "Zimmer (14 m²) in netter 3er-WG nahe Uni, 260 € inklusive Nebenkosten und Internet. Wir suchen jemanden, der gern gemeinsam kocht. Kaution nur eine Monatsmiete. Nachricht an wg-suedvorstadt@web.de"},
+        {"letter": "F", "title": "Nachbarschaftscafé „Treffpunkt Ecke“", "text": "Jeden Dienstag und Donnerstag von 15 bis 18 Uhr: Kaffee, Kuchen, Gespräche. Alle aus dem Viertel sind willkommen, besonders Menschen, die neu oder allein sind. Kein Eintritt. Stadtteilzentrum Nord, Erdgeschoss."},
+        {"letter": "G", "title": "Helle 2-Zimmer-Wohnung mit Balkon", "text": "55 m², 4. Stock ohne Aufzug, 620 € kalt, Einbauküche. Leider keine Haustiere. Ideal für Paare oder Singles. Vermieter direkt, keine Provision. Tel. 0341 / 55 12 34."},
+        {"letter": "H", "title": "Mieterverein Leipzig e.V.", "text": "Probleme mit Nebenkosten, Kündigung oder Mieterhöhung? Unsere Juristen beraten Mitglieder persönlich und per Telefon. Mitgliedschaft 6 € im Monat, erste Beratung sofort möglich. Termin online oder unter 0341 / 99 00 11."},
+        {"letter": "I", "title": "Malerarbeiten vom Profi", "text": "Malermeister Krause renoviert Ihre Wohnung: Wände streichen, tapezieren, kleine Reparaturen. Kostenloser Kostenvoranschlag. Termine nach Absprache, auch abends. Tel. 0170 / 44 55 667."},
+        {"letter": "J", "title": "Möbel? Wir holen sie ab!", "text": "Sie ziehen um oder räumen aus? Wir kaufen gebrauchte Sofas, Schränke, Tische und Betten und holen sie kostenlos bei Ihnen ab. Faire Preise, Barzahlung. Gebrauchtmöbel Nord, Tel. 0341 / 77 66 55."}
+      ]
+    },
+    "teil4": {
+      "question": "Sollten Haustiere in jeder Mietwohnung erlaubt sein?",
+      "comments": [
+        {"id": "L4-1", "author": "Nadine, Kiel", "text": "Mein Hund gehört zur Familie. Trotzdem habe ich ein ganzes Jahr lang keine Wohnung gefunden, nur weil in fast jeder Anzeige „keine Haustiere“ stand. Das ist nicht fair. Ein Tier ist kein Grund, jemandem eine Wohnung zu verweigern.", "answer": true, "skill": "attitude"},
+        {"id": "L4-2", "author": "Holger, Bochum", "text": "Ich wohne über einer Familie mit drei Katzen. Im Treppenhaus stinkt es, und im Sommer kommen die Fliegen durch das Fenster. Der Vermieter hat mir gesagt, er könne nichts machen. Genau deshalb muss ein Vermieter Tiere verbieten dürfen.", "answer": false, "skill": "attitude"},
+        {"id": "L4-3", "author": "Aylin, Nürnberg", "text": "Ich selbst habe keine Haustiere und will auch keine. Aber warum sollte ich entscheiden, was in der Wohnung nebenan passiert? Solange der Hund nicht die ganze Nacht bellt, geht es mich nichts an. Und den Vermieter eigentlich auch nicht.", "answer": true, "skill": "inference"},
+        {"id": "L4-4", "author": "Rolf, Kassel", "text": "Ich verstehe, dass Tiere für viele Menschen wichtig sind, gerade für ältere Leute. Trotzdem: Wer eine Wohnung vermietet, trägt die Verantwortung für das Haus. Kaputte Böden, Gerüche, Allergien der Nachbarn – am Ende zahlt der Vermieter. Deshalb muss er das letzte Wort haben.", "answer": false, "skill": "inference"},
+        {"id": "L4-5", "author": "Sofia, Erfurt", "text": "Studien zeigen, dass Menschen mit Haustieren gesünder und weniger einsam sind. Meine Oma lebt praktisch nur noch für ihre Katze. Ein Verbot wäre grausam, vor allem für alte Menschen, die allein wohnen.", "answer": true, "skill": "attitude"},
+        {"id": "L4-6", "author": "Benjamin, Ulm", "text": "Wer unbedingt ein Tier will, soll ein Haus mit Garten kaufen. In einem Mietshaus mit acht Parteien müssen alle Rücksicht nehmen. Bei uns hat der Hund aus dem zweiten Stock die Katze der Nachbarin gebissen – seitdem redet keiner mehr mit dem anderen.", "answer": false, "skill": "attitude"},
+        {"id": "L4-7", "author": "Charlotte, Trier", "text": "Ich bin selbst Vermieterin und habe seit zehn Jahren Mieter mit Hunden. Nie ein Problem, nicht ein einziges Mal. Wer verantwortungsvoll mit seinem Tier umgeht, ist meistens auch ein zuverlässiger Mieter. Ein generelles Verbot ist einfach Unsinn.", "answer": true, "skill": "attitude"}
+      ]
+    },
+    "teil5": {
+      "title": "Hausordnung – Wohnhaus Lindenstraße 8",
+      "text": "§ 1 Ruhezeiten\nDie Ruhezeiten gelten werktags von 22 bis 7 Uhr und von 13 bis 15 Uhr. An Sonn- und Feiertagen gilt die Ruhezeit den ganzen Tag. Musikinstrumente dürfen außerhalb der Ruhezeiten höchstens zwei Stunden täglich gespielt werden.\n\n§ 2 Treppenhaus und Flure\nIm Treppenhaus dürfen keine Gegenstände abgestellt werden. Ausnahme: Kinderwagen dürfen im Eingangsbereich stehen. Fahrräder gehören ausschließlich in den Fahrradkeller. Die Reinigung des Treppenhauses übernehmen die Mieter wöchentlich im Wechsel nach dem Plan, der im Eingang aushängt.\n\n§ 3 Müll\nDie Mülltonnen befinden sich im Hof. Papier, Biomüll und Restmüll sind zu trennen. Sperrmüll (alte Möbel, Matratzen usw.) müssen die Mieter selbst bei der Stadt anmelden. Das Abstellen von Sperrmüll im Hof oder neben den Tonnen ist verboten.\n\n§ 4 Waschküche\nDie Waschmaschine und der Trockner im Keller können über den Belegungsplan reserviert werden, höchstens zweimal pro Woche und Wohnung. Die Nutzung ist nur zwischen 7 und 21 Uhr erlaubt. Nach der Benutzung ist der Filter des Trockners zu reinigen.\n\n§ 5 Balkone und Garten\nGrillen mit Holzkohle ist auf den Balkonen nicht gestattet; ein Elektrogrill darf benutzt werden. Der Gemeinschaftsgarten steht allen Mietern offen. Feiern im Garten sind bis 22 Uhr möglich und müssen mindestens drei Tage vorher beim Hausmeister angemeldet werden.",
+      "items": [
+        {"id": "L5-1", "question": "Am Sonntag …", "options": ["gelten die Ruhezeiten nur mittags.", "muss den ganzen Tag Ruhe herrschen.", "darf man bis 22 Uhr Musik machen."], "answer": 1, "skill": "detail"},
+        {"id": "L5-2", "question": "Fahrräder …", "options": ["müssen in den Fahrradkeller gebracht werden.", "dürfen im Eingangsbereich stehen.", "dürfen im Treppenhaus stehen, wenn sie niemanden stören."], "answer": 0, "skill": "detail"},
+        {"id": "L5-3", "question": "Wer alte Möbel loswerden will, …", "options": ["stellt sie neben die Mülltonnen im Hof.", "informiert den Hausmeister.", "muss sich selbst an die Stadt wenden."], "answer": 2, "skill": "paraphrase"},
+        {"id": "L5-4", "question": "Auf dem Balkon …", "options": ["darf man nur mit einem Elektrogrill grillen.", "ist Grillen ganz verboten.", "darf man bis 22 Uhr mit Holzkohle grillen."], "answer": 0, "skill": "paraphrase"}
+      ]
+    }
+  },
+  "hoeren": {
+    "teil1": {
+      "texts": [
+        {
+          "id": "H1-1", "kind": "Anrufbeantworter",
+          "script": [{"speaker": "f1", "text": "Guten Tag, Frau Aydin, hier ist Petra Lang von der Hausverwaltung Meier. Sie hatten sich für die Wohnung in der Goethestraße interessiert. Die Besichtigung sollte ja eigentlich am Mittwoch um 17 Uhr stattfinden. Leider ist der jetzige Mieter an dem Tag nicht da, deshalb müssen wir den Termin verschieben – auf Freitag, gleiche Uhrzeit, also 17 Uhr. Bitte bringen Sie eine Kopie Ihres Ausweises und die letzten drei Gehaltsabrechnungen mit. Die Wohnung hat übrigens doch einen Kellerraum, das stand in der Anzeige falsch. Wenn Freitag nicht passt, rufen Sie mich bitte zurück unter 0201 – 44 33 22. Auf Wiederhören!"}],
+          "items": [
+            {"id": "H1-1a", "type": "rf", "statement": "Die Besichtigung findet am Mittwoch statt.", "answer": false, "skill": "number-time"},
+            {"id": "H1-1b", "type": "mc", "question": "Frau Aydin soll … mitbringen.", "options": ["eine Kopie des Mietvertrags", "ihre Gehaltsabrechnungen", "den Schlüssel für den Keller"], "answer": 1, "skill": "detail"}
+          ]
+        },
+        {
+          "id": "H1-2", "kind": "Radio",
+          "script": [{"speaker": "m1", "text": "Und jetzt noch ein Tipp für das Wochenende: In der Nordstadt findet am Samstag zum zehnten Mal das große Nachbarschaftsfest statt. Von 14 bis 22 Uhr gibt es auf der Kastanienallee Musik, Essen aus zwanzig Ländern und einen Flohmarkt, auf dem die Anwohner ihre alten Sachen verkaufen. Wer selbst einen Stand haben möchte, braucht sich nicht mehr anzumelden – die Plätze sind leider schon alle vergeben. Für die Kinder gibt es eine Hüpfburg und um 16 Uhr ein Puppentheater. Die Kastanienallee ist von Freitagabend bis Sonntagmorgen für Autos gesperrt, parken Sie also bitte in den Nebenstraßen. Der Eintritt ist frei, Spenden sind willkommen."}],
+          "items": [
+            {"id": "H1-2a", "type": "rf", "statement": "Das Nachbarschaftsfest findet zum ersten Mal statt.", "answer": false, "skill": "detail"},
+            {"id": "H1-2b", "type": "mc", "question": "Wer auf dem Flohmarkt verkaufen möchte, …", "options": ["bekommt keinen Platz mehr.", "kann sich noch bis Freitag anmelden.", "muss zehn Euro bezahlen."], "answer": 0, "skill": "paraphrase"}
+          ]
+        },
+        {
+          "id": "H1-3", "kind": "Anrufbeantworter",
+          "script": [{"speaker": "at_m", "text": "Servus Frau Hoffmann, hier ist Ihr Nachbar Lukas Steiner aus dem dritten Stock. Ich rufe an, weil morgen früh der Handwerker kommt, der bei mir das Bad repariert. Dafür muss das Wasser im ganzen Haus abgestellt werden, so zwischen neun und zwölf. Ich habe zuerst gedacht, es dauert nur eine Stunde, aber der Installateur meint, es können drei werden. Bitte füllen Sie sich also vorher ein bisschen Wasser in Flaschen ab. Ach ja, und Ihr Paket vom Postboten liegt bei mir, ich habe es gestern angenommen. Sie können es heute Abend ab sieben abholen, da bin ich sicher zu Hause. Danke für Ihr Verständnis, bis später!"}],
+          "items": [
+            {"id": "H1-3a", "type": "rf", "statement": "Das Wasser wird ungefähr eine Stunde lang abgestellt.", "answer": false, "skill": "number-time"},
+            {"id": "H1-3b", "type": "mc", "question": "Frau Hoffmann …", "options": ["soll dem Handwerker morgen die Tür öffnen.", "kann ihr Paket am Abend beim Nachbarn abholen.", "soll Wasserflaschen für den Nachbarn kaufen."], "answer": 1, "skill": "paraphrase"}
+          ]
+        },
+        {
+          "id": "H1-4", "kind": "Durchsage",
+          "script": [{"speaker": "f2", "text": "Liebe Kundinnen und Kunden, herzlich willkommen im Möbelhaus Wohnwelt. Heute haben wir ein besonderes Angebot für Sie: Alle Sofas und Sessel in der zweiten Etage sind um zwanzig Prozent reduziert. Bitte beachten Sie: Das Angebot gilt nur heute und nur, wenn Sie an der Kasse Ihre Kundenkarte vorzeigen. Außerdem suchen wir den Besitzer eines silbernen Autos mit dem Kennzeichen H K L 428. Ihr Fahrzeug steht vor dem Lieferanteneingang und muss sofort umgeparkt werden. Und noch ein Hinweis: Unser Restaurant im Erdgeschoss schließt heute schon um 18 Uhr, das Möbelhaus selbst bleibt wie immer bis 20 Uhr geöffnet. Wir wünschen Ihnen viel Spaß beim Einkaufen."}],
+          "items": [
+            {"id": "H1-4a", "type": "rf", "statement": "Den Rabatt bekommt man nur mit Kundenkarte.", "answer": true, "skill": "detail"},
+            {"id": "H1-4b", "type": "mc", "question": "Das Möbelhaus …", "options": ["ist heute bis 20 Uhr geöffnet.", "schließt heute schon um 18 Uhr.", "öffnet heute erst um 18 Uhr."], "answer": 0, "skill": "number-time"}
+          ]
+        },
+        {
+          "id": "H1-5", "kind": "Radio",
+          "script": [{"speaker": "f3", "text": "Es ist 7 Uhr 30, hier der Wetterbericht. Für heute Nachmittag warnt der Wetterdienst vor starkem Sturm im ganzen Norden. Ab etwa 15 Uhr sind Windgeschwindigkeiten von bis zu hundert Kilometern pro Stunde möglich. Sichern Sie bitte alles, was auf Balkonen und in Gärten steht: Blumentöpfe, Stühle, Sonnenschirme. Am Vormittag ist es noch ruhig und teilweise sonnig bei sechzehn Grad. Der Regen kommt dann zusammen mit dem Sturm gegen Abend. Die Stadt Bremen hat angekündigt, dass alle Parks und Friedhöfe ab 14 Uhr geschlossen werden. Morgen beruhigt sich das Wetter wieder, es bleibt aber kühl bei höchstens zwölf Grad."}],
+          "items": [
+            {"id": "H1-5a", "type": "rf", "statement": "Der Sturm kommt schon am Vormittag.", "answer": false, "skill": "number-time"},
+            {"id": "H1-5b", "type": "mc", "question": "Die Parks in Bremen …", "options": ["bleiben heute den ganzen Tag geöffnet.", "sind morgen geschlossen.", "werden heute am Nachmittag geschlossen."], "answer": 2, "skill": "detail"}
+          ]
+        }
+      ]
+    },
+    "teil2": {
+      "setting": "Sie sind neu in eine Wohnanlage eingezogen. Der Hausmeister begrüßt die neuen Mieter und erklärt das Haus.",
+      "script": [{"speaker": "m3", "text": "Guten Abend zusammen, und herzlich willkommen im Rosenhof! Mein Name ist Werner Schulz, ich bin hier der Hausmeister, und zwar schon seit zwölf Jahren. Ich möchte Ihnen heute kurz das Wichtigste über das Haus erklären, damit wir gut zusammenleben. Zuerst zu den Schlüsseln: Sie haben alle drei Schlüssel bekommen – für die Wohnung, für die Haustür und für den Briefkasten. Der Haustürschlüssel passt auch für den Fahrradkeller. Wer einen Schlüssel verliert, meldet sich bitte sofort bei mir, denn dann müssen wir aus Sicherheitsgründen das Schloss der Haustür austauschen, und das kostet leider rund zweihundert Euro. Zweitens der Müll: Die Tonnen stehen hinter dem Haus. Bitte trennen Sie Papier, Bio und Restmüll, die Stadt kontrolliert das inzwischen, und wenn etwas Falsches drin ist, wird die Tonne einfach nicht geleert. Die gelbe Tonne für Plastik wird nur alle zwei Wochen abgeholt, und zwar seit diesem Jahr am Montag, nicht mehr wie früher am Dienstag. Drittens: die Tiefgarage. Jede Wohnung hat einen festen Stellplatz mit Nummer. Besucher dürfen nicht in der Tiefgarage parken, dafür gibt es die vier Gästeparkplätze vor dem Haus. Für die brauchen Sie eine Parkkarte, die bekommen Sie bei mir. Viertens, der Gemeinschaftsraum im Erdgeschoss: Den können Sie für Geburtstage oder andere Feiern mieten, zwanzig Euro pro Tag, aber nur bis spätestens 23 Uhr, und danach bitte alles selbst sauber machen. Dann noch zur Heizung: Das Haus hat eine zentrale Heizung, die im Oktober eingeschaltet wird. Wenn ein Heizkörper nicht warm wird, drehen Sie bitte nicht selbst daran herum, sondern rufen Sie mich an. Ich bin von Montag bis Freitag zwischen acht und sechzehn Uhr erreichbar, am Wochenende nur bei Notfällen, also zum Beispiel bei einem Wasserrohrbruch. Meine Nummer hängt im Eingang neben den Briefkästen. Und zuletzt: Am ersten Samstag im Mai machen wir jedes Jahr ein Hoffest, da lernen Sie alle Nachbarn kennen. Ich freue mich, wenn Sie kommen. So, gibt es Fragen?"}],
+      "items": [
+        {"id": "H2-1", "question": "Wer einen Schlüssel verliert, …", "options": ["muss selbst ein neues Schloss kaufen.", "soll sich sofort beim Hausmeister melden.", "bekommt kostenlos einen neuen Schlüssel."], "answer": 1, "skill": "detail"},
+        {"id": "H2-2", "question": "Die gelbe Tonne …", "options": ["wird jede Woche geleert.", "wird dienstags abgeholt.", "wird alle zwei Wochen montags abgeholt."], "answer": 2, "skill": "number-time"},
+        {"id": "H2-3", "question": "Besucher …", "options": ["brauchen für die Gästeparkplätze eine Parkkarte.", "dürfen in der Tiefgarage parken.", "müssen auf der Straße parken."], "answer": 0, "skill": "paraphrase"},
+        {"id": "H2-4", "question": "Der Gemeinschaftsraum …", "options": ["kann bis 23 Uhr genutzt werden.", "ist für die Mieter kostenlos.", "wird nach Feiern vom Hausmeister gereinigt."], "answer": 0, "skill": "detail"},
+        {"id": "H2-5", "question": "Am Wochenende …", "options": ["ist der Hausmeister von 8 bis 16 Uhr erreichbar.", "kann man den Hausmeister nur bei Notfällen erreichen.", "kümmert sich der Hausmeister um die Heizung."], "answer": 1, "skill": "paraphrase"}
+      ]
+    },
+    "teil3": {
+      "setting": "Sie hören ein Gespräch zwischen zwei Mitbewohnern einer Wohngemeinschaft in der Küche.",
+      "script": [
+        {"speaker": "f2", "text": "Kai, hast du kurz Zeit? Ich muss mit dir über Sina reden."},
+        {"speaker": "m3", "text": "Klar, was ist los? Ist sie schon wieder sauer wegen der Küche?"},
+        {"speaker": "f2", "text": "Nein, diesmal nicht. Sie hat mir gestern gesagt, dass sie Ende Oktober auszieht. Sie hat eine Stelle in Hamburg bekommen."},
+        {"speaker": "m3", "text": "Was, wirklich? Das ist ja schon in sechs Wochen. Dann müssen wir schnell jemanden finden, sonst zahlen wir ihren Anteil mit."},
+        {"speaker": "f2", "text": "Genau. Ich habe schon eine Anzeige geschrieben. Ich lese sie dir mal vor: Zimmer in 3er-WG, 16 Quadratmeter, 380 Euro warm, ab 1. November. Wir suchen eine Person zwischen 20 und 35, die gern gemeinsam kocht und keine Angst vor dem Putzplan hat."},
+        {"speaker": "m3", "text": "Hm, 380? Sina zahlt doch 350."},
+        {"speaker": "f2", "text": "Ja, aber der Vermieter hat im August die Nebenkosten erhöht, weißt du nicht mehr? Deshalb 30 Euro mehr."},
+        {"speaker": "m3", "text": "Ach so, stimmt. Und das mit dem Alter würde ich rausnehmen. Das klingt irgendwie unfreundlich. Wenn jemand 40 ist und nett, ist mir das doch egal."},
+        {"speaker": "f2", "text": "Okay, dann streiche ich das. Aber ich finde wichtig, dass wir jemanden nehmen, der nicht raucht. Bei Sina hat das Rauchen auf dem Balkon schon genervt."},
+        {"speaker": "m3", "text": "Da bin ich ganz bei dir. Und wie machen wir das mit den Besichtigungen? Ich habe nächste Woche jeden Abend Training."},
+        {"speaker": "f2", "text": "Ich dachte, wir machen alles an einem Abend. Sagen wir Donnerstag ab sieben, jede Person kommt für zwanzig Minuten. Da kannst du doch einmal das Training ausfallen lassen, oder?"},
+        {"speaker": "m3", "text": "Na gut, für die WG opfere ich mich. Aber die Entscheidung treffen wir zusammen, ja? Beim letzten Mal hast du Sina praktisch allein ausgesucht."},
+        {"speaker": "f2", "text": "Das stimmt doch gar nicht, du warst nur nie da! Aber ja, diesmal entscheiden wir zu dritt. Sina soll auch mitreden, sie wohnt ja noch bis Ende Oktober hier."},
+        {"speaker": "m3", "text": "Gut. Und was ist mit der Kaution? Sina bekommt ihre 700 Euro ja erst zurück, wenn die neue Person eingezogen ist. Müssen wir das vorstrecken?"},
+        {"speaker": "f2", "text": "Nein. Ich habe mit dem Vermieter gesprochen. Er zahlt die Kaution direkt an Sina, sobald der neue Mietvertrag unterschrieben ist. Das läuft also ohne uns."},
+        {"speaker": "m3", "text": "Super. Dann stell die Anzeige heute noch online. Ich teile sie morgen in der Uni-Gruppe."},
+        {"speaker": "f2", "text": "Mach ich. Ach, und Kai – du bist diese Woche mit dem Bad dran."},
+        {"speaker": "m3", "text": "Ich weiß, ich weiß. Morgen, versprochen."}
+      ],
+      "items": [
+        {"id": "H3-1", "statement": "Sina zieht nach Hamburg, weil sie dort studieren will.", "answer": false, "skill": "detail"},
+        {"id": "H3-2", "statement": "Das Zimmer soll ab November mehr kosten als bisher.", "answer": true, "skill": "number-time"},
+        {"id": "H3-3", "statement": "Kai möchte in der Anzeige keine Altersgrenze nennen.", "answer": true, "skill": "paraphrase"},
+        {"id": "H3-4", "statement": "Die neue Person darf rauchen, aber nur auf dem Balkon.", "answer": false, "skill": "negation"},
+        {"id": "H3-5", "statement": "Die Besichtigungen finden an mehreren Abenden statt.", "answer": false, "skill": "detail"},
+        {"id": "H3-6", "statement": "Sina soll bei der Auswahl der neuen Person mitentscheiden.", "answer": true, "skill": "detail"},
+        {"id": "H3-7", "statement": "Lena und Kai müssen Sina die Kaution zurückzahlen.", "answer": false, "skill": "inference"}
+      ]
+    },
+    "teil4": {
+      "setting": "Sie hören eine Diskussion im Radio. Der Moderator spricht mit einer Stadtplanerin und einem Bürgermeister über das Thema „Stadt oder Land – wo wohnen Familien besser?“",
+      "speakers": {"mod": "Moderator Florian Becker", "a": "Sabine Krüger (Stadtplanerin)", "b": "Uwe Petersen (Bürgermeister)"},
+      "voices": {"mod": "m1", "a": "f3", "b": "m2"},
+      "script": [
+        {"speaker": "mod", "text": "Guten Morgen und willkommen zu „Stadt, Land, Leben“. Mein Name ist Florian Becker. Immer mehr junge Familien ziehen aus den großen Städten weg, weil sie sich die Mieten nicht mehr leisten können. Ist das Land also die Lösung? Darüber spreche ich heute mit der Stadtplanerin Sabine Krüger und mit Uwe Petersen, Bürgermeister einer Gemeinde mit dreitausend Einwohnern in Niedersachsen. Herr Petersen, bei Ihnen sind in den letzten fünf Jahren über zweihundert Menschen zugezogen. Was machen Sie richtig?"},
+        {"speaker": "b", "text": "Guten Morgen. Ja, das stimmt, und darauf sind wir stolz. Wir haben vor allem eines gemacht: Wir haben Bauland günstig an junge Familien verkauft, unter der Bedingung, dass sie innerhalb von drei Jahren bauen und selbst dort wohnen. Ein Grundstück kostet bei uns ein Zehntel von dem, was man in Hannover bezahlt. Und wir haben schnelles Internet in jedes Haus gelegt, denn ohne Internet kommt heute niemand mehr aufs Land."},
+        {"speaker": "mod", "text": "Frau Krüger, Sie beraten Städte. Verlieren die Städte gerade ihre Bewohner?"},
+        {"speaker": "a", "text": "Nein, so einfach ist es nicht. Die großen Städte wachsen weiterhin, allerdings langsamer. Was ich problematisch finde: Wer aufs Land zieht, der braucht in der Regel zwei Autos. Die Kinder müssen zur Schule gefahren werden, die Eltern pendeln. Das ist teuer und schlecht für die Umwelt. Die günstige Miete auf dem Land wird also zum Teil durch die Fahrtkosten wieder aufgefressen."},
+        {"speaker": "b", "text": "Das höre ich oft, aber es stimmt nur zum Teil. Bei uns gibt es seit zwei Jahren einen Bürgerbus, der von Freiwilligen gefahren wird. Und viele unserer Neubürger arbeiten drei Tage von zu Hause. Die fahren nur noch zweimal pro Woche in die Stadt."},
+        {"speaker": "a", "text": "Das ist ein gutes Modell, ja. Aber ein Bürgerbus ersetzt keine S-Bahn. Und was passiert, wenn die Kinder älter werden und abends ins Kino wollen oder eine Ausbildung in der Stadt machen? Dann sitzen sie auf dem Land fest."},
+        {"speaker": "mod", "text": "Ich muss gestehen, ich bin selbst in einem Dorf aufgewachsen und bin mit achtzehn so schnell wie möglich in die Stadt gezogen. Heute, mit zwei Kindern, überlege ich zum ersten Mal, ob ich wieder zurückgehen soll."},
+        {"speaker": "b", "text": "Sehen Sie, genau das erleben wir ständig. Die Leute kommen zurück, sobald sie Kinder haben. Auf dem Land kennt man seine Nachbarn. Wenn ein Kind krank ist, hilft die Familie von nebenan. In der Stadt wohnen viele jahrelang Tür an Tür und wissen nicht einmal die Namen."},
+        {"speaker": "a", "text": "Da widerspreche ich. Auch in der Stadt gibt es Nachbarschaft, man muss sie nur organisieren. In Hamburg gibt es zum Beispiel Wohnprojekte, in denen dreißig Familien gemeinsam einen Garten und eine Werkstatt haben. Und die Stadt hat einen großen Vorteil: Ärzte, Schulen, Kultur, alles ist in zehn Minuten erreichbar. Auf dem Land schließt dagegen gerade die letzte Arztpraxis."},
+        {"speaker": "b", "text": "Bei uns nicht! Wir haben vor einem Jahr eine junge Ärztin gefunden. Die Gemeinde hat ihr die Praxisräume kostenlos zur Verfügung gestellt. Man muss sich als Gemeinde eben anstrengen."},
+        {"speaker": "mod", "text": "Frau Krüger, was müssten die Städte tun, damit Familien bleiben?"},
+        {"speaker": "a", "text": "Vor allem bauen, und zwar bezahlbar. In den letzten zwanzig Jahren wurde viel zu wenig gebaut. Und die Städte sollten aufhören, jeden freien Platz an Investoren zu verkaufen. Wenn eine Stadt selbst Wohnungen baut, kann sie auch die Miete bestimmen."},
+        {"speaker": "b", "text": "Da sind wir uns sogar einig. Nur: Das dauert Jahre. Bei uns kann eine Familie schon nächstes Jahr einziehen."},
+        {"speaker": "mod", "text": "Ein Punkt für das Land, ein Punkt für die Stadt. Vielen Dank Ihnen beiden, Frau Krüger und Herr Petersen."}
+      ],
+      "items": [
+        {"id": "H4-1", "statement": "Die Gemeinde verkauft Grundstücke billig, wenn die Käufer selbst dort wohnen.", "answer": "b", "skill": "matching"},
+        {"id": "H4-2", "statement": "Auf dem Land braucht eine Familie meistens zwei Autos.", "answer": "a", "skill": "matching"},
+        {"id": "H4-3", "statement": "In der Gemeinde fahren Freiwillige einen Bus.", "answer": "b", "skill": "matching"},
+        {"id": "H4-4", "statement": "Ich bin als junger Mensch vom Dorf in die Stadt gezogen.", "answer": "mod", "skill": "matching"},
+        {"id": "H4-5", "statement": "Auch in der Stadt kann man gute Nachbarschaft haben, wenn man sie organisiert.", "answer": "a", "skill": "matching"},
+        {"id": "H4-6", "statement": "Die Gemeinde hat einer Ärztin die Praxisräume kostenlos überlassen.", "answer": "b", "skill": "matching"},
+        {"id": "H4-7", "statement": "Die Städte sollten selbst Wohnungen bauen, um die Mieten zu kontrollieren.", "answer": "a", "skill": "matching"},
+        {"id": "H4-8", "statement": "Ich denke darüber nach, mit meiner Familie aufs Land zurückzuziehen.", "answer": "mod", "skill": "matching"}
+      ]
+    }
+  },
+  "schreiben": {
+    "aufgabe1": {
+      "minutes": 20, "words": 80,
+      "situation": "Sie sind vor einem Monat in eine neue Wohnung gezogen. Ihre Freundin Maria möchte wissen, wie Sie jetzt wohnen. Schreiben Sie ihr eine E-Mail.",
+      "points": ["Beschreiben Sie Ihre neue Wohnung und die Nachbarschaft.", "Erklären Sie, was beim Umzug gut oder nicht so gut gelaufen ist.", "Laden Sie Maria zu Ihrer Einweihungsfeier ein und schlagen Sie einen Termin vor."]
+    },
+    "aufgabe2": {
+      "minutes": 25, "words": 80,
+      "situation": "Sie haben im Fernsehen eine Diskussionssendung zum Thema „Wohnen in der Stadt – zu teuer für normale Familien?“ gesehen. Im Online-Gästebuch der Sendung finden Sie folgende Meinung:",
+      "quote": "„Wer sich die Miete in der Stadt nicht leisten kann, soll einfach aufs Land ziehen. Da ist es billig und ruhig. Niemand hat ein Recht darauf, in der Innenstadt zu wohnen.“ – Beate, 47",
+      "instruction": "Schreiben Sie nun Ihre Meinung dazu (circa 80 Wörter)."
+    },
+    "aufgabe3": {
+      "minutes": 15, "words": 40,
+      "situation": "Ihr Nachbar, Herr Krämer, hat sich beschwert, weil Ihre Geburtstagsfeier am Samstag bis nach Mitternacht sehr laut war. Schreiben Sie ihm eine E-Mail: Entschuldigen Sie sich höflich, erklären Sie kurz den Grund und machen Sie einen Vorschlag, wie Sie so etwas in Zukunft vermeiden.",
+      "addressee": "Herr Krämer"
+    }
+  },
+  "sprechen": {
+    "teil1": {
+      "situation": "In Ihr Haus ist eine neue Familie eingezogen. Sie und Ihr Partner / Ihre Partnerin möchten ein kleines Hausfest im Hof organisieren, damit sich alle Nachbarn kennenlernen. Planen Sie gemeinsam.",
+      "points": ["Wann soll das Fest stattfinden?", "Wo im Haus oder Hof feiern Sie?", "Wer bringt was mit (Essen, Getränke, Tische)?", "Wie informieren Sie die Nachbarn?"],
+      "partner_cues": [
+        "Ich finde, wir sollten das Fest an einem Samstagnachmittag machen, dann haben die meisten Zeit. Was denkst du?",
+        "Im Hof ist es schön, aber was machen wir, wenn es regnet?",
+        "Ich könnte einen Salat und Brot mitbringen. Kümmerst du dich um die Getränke?",
+        "Sollen wir die Nachbarn mit einem Zettel im Treppenhaus einladen oder lieber persönlich an jeder Tür klingeln?",
+        "Die alte Frau Weber im Erdgeschoss hört nicht mehr gut. Vielleicht sollte einer von uns sie direkt fragen?",
+        "Und wer räumt hinterher auf? Ich habe am Sonntag leider schon etwas vor."
+      ]
+    },
+    "teil2": {
+      "topics": ["Thema A: Sollte man seine Nachbarn gut kennen?", "Thema B: Stadt oder Land – wo lebt man besser?"],
+      "folien": [
+        "Stellen Sie Ihr Thema vor. Erklären Sie den Inhalt und die Struktur Ihrer Präsentation.",
+        "Berichten Sie von Ihrer Situation oder einem Erlebnis im Zusammenhang mit dem Thema.",
+        "Berichten Sie, wie die Situation in Ihrem Heimatland ist, und geben Sie Beispiele.",
+        "Nennen Sie die Vor- und Nachteile und sagen Sie dazu Ihre Meinung. Geben Sie auch Beispiele.",
+        "Beenden Sie Ihre Präsentation und bedanken Sie sich bei den Zuhörern."
+      ]
+    },
+    "teil3": {
+      "questions": ["Sie haben gesagt, dass gute Nachbarn wichtig sind. Wann wird der Kontakt zu viel?", "Hatten Sie selbst schon einmal Streit mit Nachbarn? Wie haben Sie darauf reagiert?", "Was kann man tun, wenn ein Nachbar immer wieder zu laut ist?"],
+      "questions_b": ["Sie haben gesagt, dass das Leben auf dem Land ruhiger ist. Ist es nicht auch langweilig?", "Könnten Sie sich vorstellen, ohne Auto auf dem Land zu leben?", "Wo möchten Sie wohnen, wenn Sie alt sind? Warum?"]
+    }
+  }
+}

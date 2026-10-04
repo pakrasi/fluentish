@@ -1,0 +1,552 @@
+[
+ {
+  "id": "ENG_CHUNK_0001",
+  "t": "Será que você poderia [verbo no infinitivo]?",
+  "ex": "Será que você poderia me dar uma mão com isso?",
+  "n": "Formal: Será que o senhor/a senhora poderia...? 'Será que' does the softening work of 'I was wondering'."
+ },
+ {
+  "id": "ENG_CHUNK_0002",
+  "t": "Você se importaria de [infinitivo]?",
+  "ex": "Você se importaria de fechar a janela?",
+  "n": "Formal: O senhor se importaria de...? Takes 'de' + infinitive, not a gerund."
+ },
+ {
+  "id": "ENG_CHUNK_0003",
+  "t": "Você se importa se eu [verbo no subjuntivo futuro]?",
+  "ex": "Você se importa se eu abrir a janela?",
+  "n": "'Se' + future subjunctive (abrir, fizer, puser), not present: se eu abro sounds foreign here."
+ },
+ {
+  "id": "ENG_CHUNK_0004",
+  "t": "Estou pensando em [infinitivo]",
+  "ex": "Estou pensando em me mudar para Berlim no ano que vem."
+ },
+ {
+  "id": "ENG_CHUNK_0005",
+  "t": "Estou ansioso para [infinitivo] / Mal posso esperar para [infinitivo]",
+  "ex": "Estou ansioso para te ver de novo.",
+  "n": "'Ansioso' here is positive eagerness, not anxiety; women say ansiosa. 'Não vejo a hora de...' is very common too."
+ },
+ {
+  "id": "ENG_CHUNK_0006",
+  "t": "Não sei se [oração]",
+  "ex": "Não sei se eles vêm hoje à noite."
+ },
+ {
+  "id": "ENG_CHUNK_0007",
+  "t": "Eu estava prestes a [infinitivo] / Eu ia agora mesmo [infinitivo]",
+  "ex": "Nossa, eu ia te ligar agora mesmo!",
+  "n": "In speech 'eu ia + infinitive' is far more common than 'estava prestes a'."
+ },
+ {
+  "id": "ENG_CHUNK_0008",
+  "t": "Faz tempo que eu quero [infinitivo]",
+  "ex": "Faz semanas que eu quero te ligar.",
+  "n": "No fixed equivalent of 'been meaning to'; Brazilians say 'faz tempo que eu quero/estou para...'."
+ },
+ {
+  "id": "ENG_CHUNK_0009",
+  "t": "Não adianta [infinitivo]",
+  "ex": "Não adianta esperar, eles não vêm."
+ },
+ {
+  "id": "ENG_CHUNK_0010",
+  "t": "Que tal a gente [infinitivo]? / Por que a gente não [verbo]?",
+  "ex": "Que tal a gente pedir uma pizza hoje?",
+  "n": "'A gente' (= we, with 3rd-person singular verb) is the everyday spoken 'we' in Brazil."
+ },
+ {
+  "id": "ENG_CHUNK_0011",
+  "t": "Prefiro [infinitivo]",
+  "ex": "Prefiro ficar em casa hoje, se não tiver problema."
+ },
+ {
+  "id": "ENG_CHUNK_0012",
+  "t": "Se eu fosse você, eu [verbo no futuro do pretérito]",
+  "ex": "Se eu fosse você, falaria primeiro com o seu chefe.",
+  "n": "In speech the imperfect often replaces the conditional: Se eu fosse você, eu falava..."
+ },
+ {
+  "id": "ENG_CHUNK_0013",
+  "t": "Depende de [substantivo] / Depende do [substantivo]",
+  "ex": "Depende do tempo, na verdade.",
+  "n": "Contract de + article: depende do tempo, da hora, dos outros."
+ },
+ {
+  "id": "ENG_CHUNK_0014",
+  "t": "O problema é que [oração] / A questão é que [oração]",
+  "ex": "O problema é que eu já tenho planos para sábado."
+ },
+ {
+  "id": "ENG_CHUNK_0015",
+  "t": "Eu não quis [infinitivo] / Não foi minha intenção [infinitivo]",
+  "ex": "Desculpa, não quis te interromper."
+ },
+ {
+  "id": "ENG_CHUNK_0016",
+  "t": "Estou acostumado a [infinitivo] / Estou acostumado com [substantivo]",
+  "ex": "Estou acostumado a acordar cedo.",
+  "n": "Women: acostumada. 'Acostumar-se com' is also common in speech."
+ },
+ {
+  "id": "ENG_CHUNK_0017",
+  "t": "Leva [tempo] para [infinitivo] / Demora [tempo] para [infinitivo]",
+  "ex": "Leva uns vinte minutos para chegar lá.",
+  "n": "'Leva/demora' for time; for effort use 'É preciso [substantivo] para...'."
+ },
+ {
+  "id": "ENG_CHUNK_0018",
+  "t": "Me avisa se [oração]",
+  "ex": "Me avisa se precisar de alguma coisa.",
+  "n": "Formal: Qualquer coisa, me avise. Brazilians put the pronoun first in speech (me avisa); EP says avisa-me."
+ },
+ {
+  "id": "ENG_CHUNK_0019",
+  "t": "Obrigado por [infinitivo]",
+  "ex": "Obrigado por me avisar.",
+  "n": "Speakers who are women say obrigada. Takes infinitive, not gerund."
+ },
+ {
+  "id": "ENG_CHUNK_0020",
+  "t": "Desculpa por [infinitivo]",
+  "ex": "Desculpa por te fazer esperar.",
+  "n": "Formal: Desculpe pela demora / Peço desculpas por..."
+ },
+ {
+  "id": "ENG_CHUNK_0021",
+  "t": "Não acredito que [oração]",
+  "ex": "Não acredito que já é outubro."
+ },
+ {
+  "id": "ENG_CHUNK_0022",
+  "t": "Você poderia me dizer [oração]? / Poderia me informar [oração]?",
+  "ex": "Você poderia me dizer onde fica a estação?",
+  "n": "Formal to strangers: O senhor/a senhora sabe me dizer onde fica...?"
+ },
+ {
+  "id": "ENG_CHUNK_0023",
+  "t": "O que você acha de [substantivo]? / O que você acha do [substantivo]?",
+  "ex": "O que você acha do escritório novo?",
+  "n": "'Achar de', not 'pensar sobre': pensar sobre sounds translated."
+ },
+ {
+  "id": "ENG_CHUNK_0024",
+  "t": "Como é [infinitivo]?",
+  "ex": "Como é morar em Londres?"
+ },
+ {
+  "id": "ENG_CHUNK_0025",
+  "t": "Infelizmente, [oração] / Sinto muito, mas [oração]",
+  "ex": "Sinto muito, mas estamos lotados hoje."
+ },
+ {
+  "id": "ENG_CHUNK_0026",
+  "t": "Não esquece de [infinitivo] / Lembra de [infinitivo]",
+  "ex": "Não esquece de trancar a porta quando sair.",
+  "n": "Informal Brazilian imperative uses the 3rd-person form (esquece, lembra). Formal: Não se esqueça de..."
+ },
+ {
+  "id": "ENG_CHUNK_0027",
+  "t": "Eu adoraria, mas [oração]",
+  "ex": "Eu adoraria, mas tenho que trabalhar cedo amanhã."
+ },
+ {
+  "id": "ENG_CHUNK_0028",
+  "t": "No fim, [oração] / Acontece que [oração]",
+  "ex": "No fim, a loja ficou fechada a semana toda."
+ },
+ {
+  "id": "ENG_CHUNK_0029",
+  "t": "Parece que [oração]",
+  "ex": "Parece que vai chover."
+ },
+ {
+  "id": "ENG_CHUNK_0030",
+  "t": "Não faço a menor ideia [de onde/se/...]",
+  "ex": "Não faço a menor ideia de onde deixei minhas chaves.",
+  "n": "Informal also: Sei lá onde deixei... 'Não faço ideia' is slightly less emphatic."
+ },
+ {
+  "id": "ENG_CHUNK_0031",
+  "t": "Eu tenho que [infinitivo] / Era para eu [infinitivo]",
+  "ex": "Eu tenho que estar no trabalho às nove.",
+  "n": "'Era pra eu...' carries the 'supposed to (but...)' nuance: Era pra eu estar lá às nove."
+ },
+ {
+  "id": "ENG_CHUNK_0032",
+  "t": "Só queria [infinitivo]",
+  "ex": "Só queria confirmar se você recebeu meu e-mail."
+ },
+ {
+  "id": "ENG_CHUNK_0033",
+  "t": "Você que sabe / Quem decide é [pessoa]",
+  "ex": "Pra mim tanto faz onde a gente come. Você que sabe.",
+  "n": "'Você que sabe' / 'Fica a seu critério' (formal) are the natural hand-overs."
+ },
+ {
+  "id": "ENG_CHUNK_0034",
+  "t": "Parece [adjetivo] / Que [adjetivo]!",
+  "ex": "Parece ótimo! Que horas eu chego?",
+  "n": "Very often just an exclamation: Que legal! Que ótimo!"
+ },
+ {
+  "id": "ENG_CHUNK_0035",
+  "t": "Consegui [infinitivo]",
+  "ex": "Consegui consertar a impressora sozinho."
+ },
+ {
+  "id": "ENG_CHUNK_0036",
+  "t": "tomar uma decisão",
+  "ex": "A gente precisa tomar uma decisão até sexta.",
+  "n": "Tomar, not fazer, a decision."
+ },
+ {
+  "id": "ENG_CHUNK_0037",
+  "t": "fazer uma pausa / dar um tempo",
+  "ex": "Vamos fazer uma pausa e tomar um café."
+ },
+ {
+  "id": "ENG_CHUNK_0038",
+  "t": "dar uma olhada em [substantivo] / dar uma olhada no [substantivo]",
+  "ex": "Você pode dar uma olhada no meu notebook? Ele fica travando."
+ },
+ {
+  "id": "ENG_CHUNK_0039",
+  "t": "ficar sem [substantivo] / acabar o [substantivo]",
+  "ex": "Acabou o leite de novo.",
+  "n": "Brazilians usually make the item the subject: Acabou o leite. 'Ficamos sem leite' is also fine."
+ },
+ {
+  "id": "ENG_CHUNK_0040",
+  "t": "entrar em contato com [pessoa] / falar com [pessoa]",
+  "ex": "Vou entrar em contato com o proprietário amanhã."
+ },
+ {
+  "id": "ENG_CHUNK_0041",
+  "t": "cometer um erro / errar",
+  "ex": "Desculpa, errei na reserva.",
+  "n": "'Cometer um erro' is more formal; in speech 'errar' or 'me enganei' is typical."
+ },
+ {
+  "id": "ENG_CHUNK_0042",
+  "t": "prestar atenção em [substantivo] / prestar atenção no [substantivo]",
+  "ex": "Eu não estava prestando atenção na hora."
+ },
+ {
+  "id": "ENG_CHUNK_0043",
+  "t": "fazer sentido",
+  "ex": "Isso não faz sentido pra mim."
+ },
+ {
+  "id": "ENG_CHUNK_0044",
+  "t": "fazer um favor para [pessoa] / fazer um favor pra [pessoa]",
+  "ex": "Você pode me fazer um favor e dar comida pro gato?"
+ },
+ {
+  "id": "ENG_CHUNK_0045",
+  "t": "dar uma mão para [pessoa] / dar uma força para [pessoa]",
+  "ex": "Você pode me dar uma mão com essas caixas?"
+ },
+ {
+  "id": "ENG_CHUNK_0046",
+  "t": "se esforçar",
+  "ex": "Ele está se esforçando muito com o alemão.",
+  "n": "No noun phrase needed: 'fazer um esforço' exists but the verb is more natural."
+ },
+ {
+  "id": "ENG_CHUNK_0047",
+  "t": "ter [ideia] / bolar [substantivo]",
+  "ex": "Ela teve uma ideia genial.",
+  "n": "'Bolar' (to cook up an idea/plan) is informal Brazilian."
+ },
+ {
+  "id": "ENG_CHUNK_0048",
+  "t": "se livrar de [substantivo]",
+  "ex": "Preciso me livrar de umas roupas velhas."
+ },
+ {
+  "id": "ENG_CHUNK_0049",
+  "t": "se dar bem com [pessoa]",
+  "ex": "Eu me dou bem com os meus colegas.",
+  "n": "Reflexive: eu me dou, você se dá, a gente se dá."
+ },
+ {
+  "id": "ENG_CHUNK_0050",
+  "t": "mudar de ideia",
+  "ex": "Se você mudar de ideia, é só me ligar.",
+  "n": "'Mudar de ideia', never 'mudar sua mente'."
+ },
+ {
+  "id": "ENG_CHUNK_0051",
+  "t": "ficar de olho em [substantivo] / ficar de olho no [substantivo]",
+  "ex": "Você pode ficar de olho na minha bolsa um minutinho?"
+ },
+ {
+  "id": "ENG_CHUNK_0052",
+  "t": "sem pressa / fica à vontade",
+  "ex": "Não tem pressa, fica à vontade."
+ },
+ {
+  "id": "ENG_CHUNK_0053",
+  "t": "passar [tempo] [gerúndio]",
+  "ex": "Eu passo muito tempo no trânsito indo para o trabalho.",
+  "n": "Brazilian Portuguese uses the gerund here; EP prefers passar tempo a + infinitive."
+ },
+ {
+  "id": "ENG_CHUNK_0054",
+  "t": "descobrir [substantivo] / entender [substantivo]",
+  "ex": "Não consigo entender esse aplicativo novo."
+ },
+ {
+  "id": "ENG_CHUNK_0055",
+  "t": "resolver [substantivo]",
+  "ex": "Preciso resolver meu visto essa semana."
+ },
+ {
+  "id": "ENG_CHUNK_0056",
+  "t": "lidar com [substantivo] / resolver [substantivo]",
+  "ex": "Eu resolvo isso amanhã."
+ },
+ {
+  "id": "ENG_CHUNK_0057",
+  "t": "conseguir ir / dar para ir",
+  "ex": "Desculpa, hoje não vou conseguir ir.",
+  "n": "Also very common: Hoje não vai dar."
+ },
+ {
+  "id": "ENG_CHUNK_0058",
+  "t": "ter dificuldade para [infinitivo] / ter dificuldade de [infinitivo]",
+  "ex": "Estou tendo dificuldade para dormir ultimamente."
+ },
+ {
+  "id": "ENG_CHUNK_0059",
+  "t": "estar atrasado",
+  "ex": "Desculpa, estou um pouco atrasado.",
+  "n": "Women: atrasada. Also: Vou me atrasar um pouquinho."
+ },
+ {
+  "id": "ENG_CHUNK_0060",
+  "t": "adiar [substantivo] / enrolar para [infinitivo]",
+  "ex": "Fico enrolando para ligar para o dentista.",
+  "n": "'Enrolar' (informal) = to stall/procrastinate; 'adiar' = postpone."
+ },
+ {
+  "id": "ENG_CHUNK_0061",
+  "t": "marcar [substantivo] / configurar [substantivo]",
+  "ex": "Podemos marcar uma reunião na semana que vem?",
+  "n": "Arranging events: marcar. Installing tech: configurar/instalar."
+ },
+ {
+  "id": "ENG_CHUNK_0062",
+  "t": "parar de [infinitivo] / largar [substantivo]",
+  "ex": "Parei de fumar ano passado."
+ },
+ {
+  "id": "ENG_CHUNK_0063",
+  "t": "fazer diferença",
+  "ex": "Uma boa noite de sono faz muita diferença."
+ },
+ {
+  "id": "ENG_CHUNK_0064",
+  "t": "cuidar de [pessoa]",
+  "ex": "Você pode cuidar das crianças no sábado?"
+ },
+ {
+  "id": "ENG_CHUNK_0065",
+  "t": "ter a chance de [infinitivo] / ter tempo de [infinitivo]",
+  "ex": "Não tive tempo de te ligar de volta."
+ },
+ {
+  "id": "ENG_CHUNK_0066",
+  "t": "Para ser sincero / Sinceramente",
+  "ex": "Para ser sincero, não gostei muito do filme.",
+  "n": "Spoken: Pra ser sincero. 'Honestamente' is less common."
+ },
+ {
+  "id": "ENG_CHUNK_0067",
+  "t": "Deixa eu pensar",
+  "ex": "Deixa eu pensar... foi na terça passada, acho.",
+  "n": "Standard grammar says 'Deixe-me pensar'; in Brazil 'deixa eu' is universal in speech."
+ },
+ {
+  "id": "ENG_CHUNK_0068",
+  "t": "Como é que eu posso dizer?",
+  "ex": "Ele é... como é que eu posso dizer? Um pouco intenso."
+ },
+ {
+  "id": "ENG_CHUNK_0069",
+  "t": "Sabe? / Entende?",
+  "ex": "Não é a mesma coisa, sabe?"
+ },
+ {
+  "id": "ENG_CHUNK_0070",
+  "t": "Que eu saiba",
+  "ex": "Que eu saiba, a reunião continua de pé."
+ },
+ {
+  "id": "ENG_CHUNK_0071",
+  "t": "A propósito / Aliás",
+  "ex": "Aliás, você ficou sabendo do Tom?",
+  "n": "'Aliás' is the more conversational choice in Brazil."
+ },
+ {
+  "id": "ENG_CHUNK_0072",
+  "t": "Enfim, como eu estava dizendo",
+  "ex": "Enfim, como eu estava dizendo, o hotel era uma graça.",
+  "n": "'Enfim' is a false friend: in speech it means 'anyway', not only 'finally'."
+ },
+ {
+  "id": "ENG_CHUNK_0073",
+  "t": "Isso me lembra",
+  "ex": "Isso me lembra: preciso ligar para a minha mãe.",
+  "n": "Also: Falando nisso... ('speaking of which')."
+ },
+ {
+  "id": "ENG_CHUNK_0074",
+  "t": "Entendo o que você quer dizer",
+  "ex": "Entendo o que você quer dizer, mas continuo achando caro demais."
+ },
+ {
+  "id": "ENG_CHUNK_0075",
+  "t": "Justo / Faz sentido",
+  "ex": "Justo, eu faria o mesmo no seu lugar."
+ },
+ {
+  "id": "ENG_CHUNK_0076",
+  "t": "Peraí / Espera um pouquinho",
+  "ex": "Peraí, vou só pegar uma caneta.",
+  "n": "'Peraí' = espera aí, very informal. Polite: Só um momento."
+ },
+ {
+  "id": "ENG_CHUNK_0077",
+  "t": "Quer dizer",
+  "ex": "Foi bom. Quer dizer, não foi incrível, mas foi bom."
+ },
+ {
+  "id": "ENG_CHUNK_0078",
+  "t": "Na minha opinião / Pra mim",
+  "ex": "Pra mim, isso é jogar dinheiro fora."
+ },
+ {
+  "id": "ENG_CHUNK_0079",
+  "t": "Não sei, não",
+  "ex": "Hmm, não sei, não.",
+  "n": "The doubled negation 'não sei, não' is the natural Brazilian soft disagreement."
+ },
+ {
+  "id": "ENG_CHUNK_0080",
+  "t": "Na verdade",
+  "ex": "Na verdade, é o contrário."
+ },
+ {
+  "id": "ENG_CHUNK_0081",
+  "t": "Deixa pra lá",
+  "ex": "Deixa pra lá, eu mesmo faço."
+ },
+ {
+  "id": "ENG_CHUNK_0082",
+  "t": "Imagina / Relaxa / Tranquilo",
+  "ex": "Imagina, acontece com todo mundo.",
+  "n": "'Imagina!' is the classic Brazilian reply to thanks or apology."
+ },
+ {
+  "id": "ENG_CHUNK_0083",
+  "t": "Se cuida",
+  "ex": "Tá bom, até semana que vem. Se cuida!",
+  "n": "EP: Cuida-te."
+ },
+ {
+  "id": "ENG_CHUNK_0084",
+  "t": "Não é nada de mais / Não é nada demais",
+  "ex": "Relaxa, não é nada de mais."
+ },
+ {
+  "id": "ENG_CHUNK_0085",
+  "t": "Fica à vontade / Pode",
+  "ex": "Posso usar seu telefone? Claro, fica à vontade.",
+  "n": "A bare 'Pode!' is the most common short permission."
+ },
+ {
+  "id": "ENG_CHUNK_0086",
+  "t": "Tomara / Dedos cruzados",
+  "ex": "Minha entrevista é amanhã, então tomara que dê certo.",
+  "n": "'Tomara (que)' + subjunctive is the everyday way; 'dedos cruzados' is understood but less idiomatic."
+ },
+ {
+  "id": "ENG_CHUNK_0087",
+  "t": "Essa é por minha conta / Deixa que eu pago",
+  "ex": "Guarda a carteira, essa é por minha conta."
+ },
+ {
+  "id": "ENG_CHUNK_0088",
+  "t": "Vou pensar",
+  "ex": "Obrigado pela oferta. Vou pensar.",
+  "n": "Often a soft refusal, as in English."
+ },
+ {
+  "id": "ENG_CHUNK_0089",
+  "t": "Que pena",
+  "ex": "Você não pode vir? Que pena."
+ },
+ {
+  "id": "ENG_CHUNK_0090",
+  "t": "Quanto tempo!",
+  "ex": "Oi, quanto tempo! Como você está?"
+ },
+ {
+  "id": "ENG_CHUNK_0091",
+  "t": "Por outro lado",
+  "ex": "É caro. Por outro lado, vai durar anos."
+ },
+ {
+  "id": "ENG_CHUNK_0092",
+  "t": "Mesmo assim / Dito isso",
+  "ex": "O hotel era meio velho. Mesmo assim, os funcionários eram uns amores."
+ },
+ {
+  "id": "ENG_CHUNK_0093",
+  "t": "Nesse caso / Então",
+  "ex": "Você não está com fome? Então vamos só tomar um café."
+ },
+ {
+  "id": "ENG_CHUNK_0094",
+  "t": "Desde que [subjuntivo] / Contanto que [subjuntivo]",
+  "ex": "Pode pegar emprestado, desde que você devolva.",
+  "n": "'Desde que' = as long as takes the subjunctive; with indicative it means 'since'."
+ },
+ {
+  "id": "ENG_CHUNK_0095",
+  "t": "Mesmo que [subjuntivo] / Apesar de [infinitivo]",
+  "ex": "A gente saiu mesmo com chuva.",
+  "n": "'Embora/mesmo que' + subjunctive; very common in speech: mesmo com + noun."
+ },
+ {
+  "id": "ENG_CHUNK_0096",
+  "t": "Por isso",
+  "ex": "Os trens estavam em greve. Por isso me atrasei.",
+  "n": "Also: É por isso que... 'Por isso' comes first, never 'isso é porque'."
+ },
+ {
+  "id": "ENG_CHUNK_0097",
+  "t": "Assim que [subjuntivo futuro]",
+  "ex": "Te ligo assim que chegar em casa.",
+  "n": "Future reference needs the future subjunctive: assim que eu chegar."
+ },
+ {
+  "id": "ENG_CHUNK_0098",
+  "t": "No fim / No final",
+  "ex": "A gente conversou por horas, mas no fim ficamos em casa."
+ },
+ {
+  "id": "ENG_CHUNK_0099",
+  "t": "Afinal",
+  "ex": "Deixa ele dormir. Afinal, ele trabalhou a noite toda.",
+  "n": "Also 'afinal de contas'."
+ },
+ {
+  "id": "ENG_CHUNK_0100",
+  "t": "Por via das dúvidas / Só por garantia",
+  "ex": "Leva um guarda-chuva, por via das dúvidas."
+ }
+]

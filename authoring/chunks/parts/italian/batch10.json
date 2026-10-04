@@ -1,0 +1,529 @@
+[
+{
+"id": "ENG_CHUNK_0901",
+"t": "Per caso avrebbe [nome]? / Hai per caso [nome]?",
+"ex": "Hai per caso un caricabatterie da prestarmi?",
+"n": "'Per caso' does the tentative work of 'happen to'."
+},
+{
+"id": "ENG_CHUNK_0902",
+"t": "Preferirei che non [congiuntivo imperfetto]",
+"ex": "Preferirei che non fumassi in macchina.",
+"n": "Preferirei che + congiuntivo imperfetto: fumassi."
+},
+{
+"id": "ENG_CHUNK_0903",
+"t": "Vorrei che non [congiuntivo imperfetto] / Non sopporto quando [frase]",
+"ex": "Vorrei che non lasciassi sempre le scarpe in corridoio.",
+"n": "Vorrei che + congiuntivo imperfetto."
+},
+{
+"id": "ENG_CHUNK_0904",
+"t": "Se dipendesse da me, [condizionale]",
+"ex": "Se dipendesse da me, chiuderei l'ufficio il venerdì.",
+"n": "se + congiuntivo imperfetto (dipendesse), then condizionale."
+},
+{
+"id": "ENG_CHUNK_0905",
+"t": "Preferisco mille volte [nome] a [nome]",
+"ex": "Preferisco mille volte una serata tranquilla a casa a una grande festa.",
+"n": "preferire X A Y."
+},
+{
+"id": "ENG_CHUNK_0906",
+"t": "Non c'è niente di meglio di [nome]",
+"ex": "Non c'è niente di meglio di una doccia calda dopo una bella corsa."
+},
+{
+"id": "ENG_CHUNK_0907",
+"t": "Sono più per [nome] / Propendo per [nome]",
+"ex": "Sinceramente, sono più per l'appartamento meno caro."
+},
+{
+"id": "ENG_CHUNK_0908",
+"t": "Sono indeciso tra [nome] e [nome]",
+"ex": "Sono indeciso tra il divano blu e quello grigio."
+},
+{
+"id": "ENG_CHUNK_0909",
+"t": "Comincio ad avere dei dubbi su [nome] / Ci sto ripensando",
+"ex": "Comincio ad avere dei dubbi sul nuovo lavoro."
+},
+{
+"id": "ENG_CHUNK_0910",
+"t": "Non farti troppi film su [nome] / Non pensarci troppo",
+"ex": "Non ti ha risposto? Non farti troppi film.",
+"n": "'Farsi film' is colloquial for overthinking/imagining things."
+},
+{
+"id": "ENG_CHUNK_0911",
+"t": "Alla fine hai [participio]? / Poi sei [participio]?",
+"ex": "Alla fine sei andato al matrimonio?",
+"n": "'Alla fine' carries the 'end up' meaning."
+},
+{
+"id": "ENG_CHUNK_0912",
+"t": "Non sono riuscito a [verbo] / Non ho fatto in tempo a [verbo]",
+"ex": "Scusa, non ho fatto in tempo a leggere la tua mail."
+},
+{
+"id": "ENG_CHUNK_0913",
+"t": "Gira [nome] / C'è in giro [nome]",
+"ex": "Metà ufficio è a casa. Gira un virus."
+},
+{
+"id": "ENG_CHUNK_0914",
+"t": "Non riesco proprio a [verbo]",
+"ex": "Non riesco proprio a far funzionare questa stampante."
+},
+{
+"id": "ENG_CHUNK_0915",
+"t": "Non sono tagliato per [nome]",
+"ex": "Ho insegnato per un anno, ma non sono tagliato per farlo."
+},
+{
+"id": "ENG_CHUNK_0916",
+"t": "Sono sommerso di [nome] / Sono pieno di [nome]",
+"ex": "Possiamo parlarne domani? Oggi sono sommerso di lavoro."
+},
+{
+"id": "ENG_CHUNK_0917",
+"t": "Mi fa paura il pensiero di [verbo] / Non ho nessuna voglia di [verbo]",
+"ex": "Non ho nessuna voglia di tornare al lavoro lunedì.",
+"n": "No single verb for 'dread'; 'mi angoscia l'idea di' is stronger."
+},
+{
+"id": "ENG_CHUNK_0918",
+"t": "Non riesco a [verbo] / Non ho il coraggio di [verbo]",
+"ex": "Non ho il coraggio di buttare le sue vecchie lettere."
+},
+{
+"id": "ENG_CHUNK_0919",
+"t": "Ho la tentazione di [verbo] / Quasi quasi [verbo]",
+"ex": "Quasi quasi ordino una pizza e non cucino.",
+"n": "'Quasi quasi' is the very Italian way to voice a temptation."
+},
+{
+"id": "ENG_CHUNK_0920",
+"t": "Sono deciso a [verbo]",
+"ex": "Sono deciso a finire questa maratona, costi quel che costi."
+},
+{
+"id": "ENG_CHUNK_0921",
+"t": "Non ho altra scelta che [verbo]",
+"ex": "L'affitto è aumentato di nuovo, quindi non ho altra scelta che trasferirmi."
+},
+{
+"id": "ENG_CHUNK_0922",
+"t": "Non posso farci niente per [nome]",
+"ex": "Per il ritardo non posso farci niente, mi dispiace."
+},
+{
+"id": "ENG_CHUNK_0923",
+"t": "Non ho il cuore di [verbo]",
+"ex": "Non ho il cuore di dirgli che cucina male."
+},
+{
+"id": "ENG_CHUNK_0924",
+"t": "L'ultima cosa che voglio è [verbo]",
+"ex": "L'ultima cosa che voglio è far arrabbiare i tuoi.",
+"n": "With a different subject: che + congiuntivo (che i tuoi si arrabbino)."
+},
+{
+"id": "ENG_CHUNK_0925",
+"t": "Non sono in grado di [verbo] / Non sono autorizzato a [verbo]",
+"ex": "Purtroppo non sono autorizzato ad approvarlo."
+},
+{
+"id": "ENG_CHUNK_0926",
+"t": "Non spetta a me [verbo]",
+"ex": "Non spetta a me dirle come crescere i figli."
+},
+{
+"id": "ENG_CHUNK_0927",
+"t": "Mentirei se dicessi che [frase]",
+"ex": "Mentirei se dicessi che non ero nervoso.",
+"n": "se + congiuntivo imperfetto: dicessi."
+},
+{
+"id": "ENG_CHUNK_0928",
+"t": "Mi dispiace dirlo, ma [frase]",
+"ex": "Mi dispiace dirlo, ma credo che ci siamo persi.",
+"n": "Credere che + congiuntivo: ci siamo persi is both indicativo and congiuntivo here."
+},
+{
+"id": "ENG_CHUNK_0929",
+"t": "Non voglio [verbo], ma [frase]",
+"ex": "Non voglio essere scortese, ma si sta facendo tardi."
+},
+{
+"id": "ENG_CHUNK_0930",
+"t": "Non ho niente contro [nome], ma [frase]",
+"ex": "Non ho niente contro i gatti, ma sono allergico."
+},
+{
+"id": "ENG_CHUNK_0931",
+"t": "Non penserai sul serio che [congiuntivo]!",
+"ex": "Non penserai sul serio che arriviamo per le sei!",
+"n": "Pensare che + congiuntivo; future 'penserai' here expresses incredulity."
+},
+{
+"id": "ENG_CHUNK_0932",
+"t": "Sono d'accordo con [persona] su [nome] / Sto con [persona]",
+"ex": "Su questo sto con Sara. Prima mangiamo."
+},
+{
+"id": "ENG_CHUNK_0933",
+"t": "Non vedo perché [frase] / Non capisco perché [congiuntivo]",
+"ex": "Non capisco perché non possiamo prendere il treno e basta.",
+"n": "'Non capisco perché' can take congiuntivo (non si possa) in careful speech."
+},
+{
+"id": "ENG_CHUNK_0934",
+"t": "Quello che non capisco è [frase]",
+"ex": "Quello che non capisco è perché non abbia semplicemente chiamato.",
+"n": "Indirect question after 'non capisco' often takes congiuntivo: abbia."
+},
+{
+"id": "ENG_CHUNK_0935",
+"t": "Sono assolutamente favorevole a [verbo] / Sono tutto per [verbo]",
+"ex": "Sono favorevolissimo a risparmiare, ma non sul cibo."
+},
+{
+"id": "ENG_CHUNK_0936",
+"t": "cogliere al volo l'occasione",
+"ex": "Se mi offrissero un lavoro a Tokyo, coglierei l'occasione al volo."
+},
+{
+"id": "ENG_CHUNK_0937",
+"t": "rifiutare [nome]",
+"ex": "Ho rifiutato il lavoro perché il tragitto era troppo lungo."
+},
+{
+"id": "ENG_CHUNK_0938",
+"t": "annullare [nome] / disdire [nome]",
+"ex": "Hanno annullato la partita per la pioggia.",
+"n": "'Disdire' for bookings/appointments."
+},
+{
+"id": "ENG_CHUNK_0939",
+"t": "mettere [nome] in sospeso / in stand-by",
+"ex": "Per ora abbiamo messo in stand-by la ristrutturazione della cucina."
+},
+{
+"id": "ENG_CHUNK_0940",
+"t": "passare [nome] / attraversare [nome]",
+"ex": "In questo momento sta passando un periodo difficile."
+},
+{
+"id": "ENG_CHUNK_0941",
+"t": "andare a pezzi / cadere a pezzi",
+"ex": "Queste scarpe cadono già a pezzi."
+},
+{
+"id": "ENG_CHUNK_0942",
+"t": "farla franca con [nome] / passarla liscia",
+"ex": "Il mio fratellino la passa sempre liscia."
+},
+{
+"id": "ENG_CHUNK_0943",
+"t": "scampare [nome] / riuscire a evitare [nome]",
+"ex": "Sto cercando di scampare la riunione del lunedì."
+},
+{
+"id": "ENG_CHUNK_0944",
+"t": "ostacolare [nome] / mettersi in mezzo a [nome]",
+"ex": "Non lasciare che il lavoro ostacoli la tua salute.",
+"n": "'Lasciare che' triggers congiuntivo: ostacoli."
+},
+{
+"id": "ENG_CHUNK_0945",
+"t": "fare storie / fare un dramma",
+"ex": "È solo un graffio, non fare storie."
+},
+{
+"id": "ENG_CHUNK_0946",
+"t": "lasciarsi prendere la mano",
+"ex": "Scusa, mi sono lasciato prendere la mano con le decorazioni."
+},
+{
+"id": "ENG_CHUNK_0947",
+"t": "approfittare al massimo di [nome] / godersi [nome]",
+"ex": "Godiamoci il sole finché dura.",
+"n": "'Finché dura' is indicativo; congiuntivo not needed here."
+},
+{
+"id": "ENG_CHUNK_0948",
+"t": "fare una buona impressione",
+"ex": "Voglio davvero fare una buona impressione sui suoi genitori."
+},
+{
+"id": "ENG_CHUNK_0949",
+"t": "inventarsi [nome]",
+"ex": "Si è inventato una scusa sulla macchina rotta."
+},
+{
+"id": "ENG_CHUNK_0950",
+"t": "fare progressi",
+"ex": "Il mio spagnolo è lento, ma sto facendo progressi."
+},
+{
+"id": "ENG_CHUNK_0951",
+"t": "fare due chiacchiere / chiacchierare del più e del meno",
+"ex": "Sono negatissimo a chiacchierare del più e del meno alle feste."
+},
+{
+"id": "ENG_CHUNK_0952",
+"t": "correre un rischio / rischiare",
+"ex": "Aprire un ristorante è un bel rischio, ma lo corro."
+},
+{
+"id": "ENG_CHUNK_0953",
+"t": "approfittare di [nome]",
+"ex": "Dovremmo approfittare del bel tempo e andare a fare un'escursione.",
+"n": "Also 'approfittare di qualcuno' = to take advantage (negative)."
+},
+{
+"id": "ENG_CHUNK_0954",
+"t": "prendere [nome] sul serio",
+"ex": "Questa tosse la devi prendere sul serio e andare dal medico."
+},
+{
+"id": "ENG_CHUNK_0955",
+"t": "dare [nome] per scontato",
+"ex": "Diamo per scontata l'acqua pulita.",
+"n": "Past participle agrees with the object: data per scontata l'acqua."
+},
+{
+"id": "ENG_CHUNK_0956",
+"t": "fare a turno a [verbo] / fare a turni",
+"ex": "Io e il mio coinquilino facciamo a turno a cucinare."
+},
+{
+"id": "ENG_CHUNK_0957",
+"t": "mettersi a fare [nome] / iniziare [nome]",
+"ex": "Ho iniziato a fare yoga per la schiena."
+},
+{
+"id": "ENG_CHUNK_0958",
+"t": "prendere in mano [nome] / rilevare [nome]",
+"ex": "L'anno scorso mia sorella ha preso in mano il forno di famiglia.",
+"n": "'Rilevare' for buying/taking over a business formally."
+},
+{
+"id": "ENG_CHUNK_0959",
+"t": "assumersi la responsabilità di [nome]",
+"ex": "Mi assumo io la responsabilità del pasticcio con i biglietti."
+},
+{
+"id": "ENG_CHUNK_0960",
+"t": "scambiare due parole con [persona]",
+"ex": "Potrei scambiare due parole con Lei dopo la lezione?"
+},
+{
+"id": "ENG_CHUNK_0961",
+"t": "chiarirsi / chiarire le cose",
+"ex": "Abbiamo parlato a lungo e ci siamo chiariti."
+},
+{
+"id": "ENG_CHUNK_0962",
+"t": "serbare rancore / portare rancore",
+"ex": "Porta ancora rancore per la storia del matrimonio."
+},
+{
+"id": "ENG_CHUNK_0963",
+"t": "avere in mente [nome]",
+"ex": "Avevi in mente qualcosa per cena?"
+},
+{
+"id": "ENG_CHUNK_0964",
+"t": "fare bene a [persona]",
+"ex": "Una settimana al mare ti farebbe bene."
+},
+{
+"id": "ENG_CHUNK_0965",
+"t": "fare a meno di [nome]",
+"ex": "Non posso fare a meno del caffè la mattina."
+},
+{
+"id": "ENG_CHUNK_0966",
+"t": "Tanto per essere chiari",
+"ex": "Tanto per essere chiari, ci vediamo alla stazione, giusto?"
+},
+{
+"id": "ENG_CHUNK_0967",
+"t": "Se ho capito bene",
+"ex": "Se ho capito bene, vuole partire giovedì."
+},
+{
+"id": "ENG_CHUNK_0968",
+"t": "Cambiando argomento",
+"ex": "Cambiando argomento, poi l'hai trovato un appartamento nuovo?"
+},
+{
+"id": "ENG_CHUNK_0969",
+"t": "Tornando a quello che dicevi prima",
+"ex": "Tornando a quello che dicevi prima, perché ti sei licenziato?"
+},
+{
+"id": "ENG_CHUNK_0970",
+"t": "Per quel che vale",
+"ex": "Per quel che vale, secondo me hai fatto la scelta giusta."
+},
+{
+"id": "ENG_CHUNK_0971",
+"t": "Senza offesa, ma",
+"ex": "Senza offesa, ma la tua macchina puzza di patatine vecchie."
+},
+{
+"id": "ENG_CHUNK_0972",
+"t": "Ti sembrerà strano, ma",
+"ex": "Ti sembrerà strano, ma ci siamo già conosciuti?"
+},
+{
+"id": "ENG_CHUNK_0973",
+"t": "Ti capisco",
+"ex": "Ti capisco, ultimamente il tragitto è stato un incubo."
+},
+{
+"id": "ENG_CHUNK_0974",
+"t": "In breve / In due parole",
+"ex": "Ce lo possiamo permettere? In due parole: no."
+},
+{
+"id": "ENG_CHUNK_0975",
+"t": "E niente, eccomi lì",
+"ex": "E niente, eccomi lì, chiuso fuori in pigiama.",
+"n": "'E niente' is a very spoken story-opener."
+},
+{
+"id": "ENG_CHUNK_0976",
+"t": "Diciamocelo / Ammettiamolo",
+"ex": "Diciamocelo, quel tapis roulant non lo useremo mai."
+},
+{
+"id": "ENG_CHUNK_0977",
+"t": "Non la vedo così",
+"ex": "Mah, io non la vedo così. Secondo me era solo stanco."
+},
+{
+"id": "ENG_CHUNK_0978",
+"t": "più o meno / all'incirca",
+"ex": "È circa un'ora di macchina, più o meno."
+},
+{
+"id": "ENG_CHUNK_0979",
+"t": "Non prenderlo per oro colato",
+"ex": "Mi sembra che il negozio apra alle nove, ma non prenderlo per oro colato.",
+"n": "'Mi sembra che' + congiuntivo: apra."
+},
+{
+"id": "ENG_CHUNK_0980",
+"t": "Faccio l'avvocato del diavolo",
+"ex": "Ok, faccio l'avvocato del diavolo. E se piove?"
+},
+{
+"id": "ENG_CHUNK_0981",
+"t": "Nessun rancore / Senza rancore",
+"ex": "Hanno preso te invece di me? Nessun rancore."
+},
+{
+"id": "ENG_CHUNK_0982",
+"t": "Figurati, nessuna offesa / Non mi offendo",
+"ex": "Senza offesa, ma la tua cucina è un po' insipida. Figurati, non mi offendo."
+},
+{
+"id": "ENG_CHUNK_0983",
+"t": "Ti devo delle scuse",
+"ex": "Ti devo delle scuse per quello che ho detto ieri."
+},
+{
+"id": "ENG_CHUNK_0984",
+"t": "Mi hai fatto felice / Mi hai svoltato la giornata",
+"ex": "Grazie per i fiori, mi hai svoltato la giornata!",
+"n": "'Svoltare la giornata' is youthful/informal."
+},
+{
+"id": "ENG_CHUNK_0985",
+"t": "Metti via i soldi / Lascia stare, offro io",
+"ex": "Metti via i soldi, questo lo offro io."
+},
+{
+"id": "ENG_CHUNK_0986",
+"t": "La prossima volta offro io",
+"ex": "Grazie per il caffè. La prossima volta offro io."
+},
+{
+"id": "ENG_CHUNK_0987",
+"t": "Facciamo un'altra volta?",
+"ex": "Stasera sono distrutto. Facciamo un'altra volta?",
+"n": "No rain-check idiom; 'facciamo un'altra volta' / 'rimandiamo'."
+},
+{
+"id": "ENG_CHUNK_0988",
+"t": "No, grazie, passo",
+"ex": "Ancora torta? No, grazie, sono a posto.",
+"n": "'Sono a posto' is the natural food refusal."
+},
+{
+"id": "ENG_CHUNK_0989",
+"t": "Non ce la faccio più / Sono pieno",
+"ex": "Era buonissimo, ma non ce la faccio più."
+},
+{
+"id": "ENG_CHUNK_0990",
+"t": "Offre la casa",
+"ex": "Scusi per la lunga attesa. Il caffè glielo offriamo noi, offre la casa."
+},
+{
+"id": "ENG_CHUNK_0991",
+"t": "Neanche così / Nemmeno allora",
+"ex": "Ho riavviato il portatile due volte, e neanche così si connetteva."
+},
+{
+"id": "ENG_CHUNK_0992",
+"t": "Proprio mentre / Proprio quando",
+"ex": "Proprio mentre mi sedevo a mangiare, è squillato il telefono."
+},
+{
+"id": "ENG_CHUNK_0993",
+"t": "Ben presto / Nel giro di poco",
+"ex": "Abbiamo cominciato a chiacchierare, e nel giro di poco eravamo migliori amici."
+},
+{
+"id": "ENG_CHUNK_0994",
+"t": "Senza rendermene conto",
+"ex": "Mi sono messo a guardare una puntata, e senza rendermene conto erano le due di notte."
+},
+{
+"id": "ENG_CHUNK_0995",
+"t": "Tanto per cominciare / Innanzitutto",
+"ex": "Non mi trasferisco lì. Tanto per cominciare, è troppo caro."
+},
+{
+"id": "ENG_CHUNK_0996",
+"t": "In fondo",
+"ex": "Fa il duro, ma in fondo è molto sensibile."
+},
+{
+"id": "ENG_CHUNK_0997",
+"t": "O quello o",
+"ex": "Sarà bloccata nel traffico. O quello o se n'è dimenticata."
+},
+{
+"id": "ENG_CHUNK_0998",
+"t": "Se sì / In tal caso",
+"ex": "Domani guidi tu? Se sì, mi dai un passaggio?"
+},
+{
+"id": "ENG_CHUNK_0999",
+"t": "Come se [congiuntivo]",
+"ex": "Mi ha guardato come se fossi matto.",
+"n": "'Come se' always takes congiuntivo imperfetto/trapassato: fossi."
+},
+{
+"id": "ENG_CHUNK_1000",
+"t": "Anziché / Invece di",
+"ex": "Per ora preferisco affittare, anziché comprare."
+}
+]

@@ -1,0 +1,816 @@
+{
+ "lang": "portuguese",
+ "variants": {
+  "dog.now": {
+   "tokens": [
+    [
+     "Meu senhorio",
+     "subj"
+    ],
+    [
+     "quer",
+     "door"
+    ],
+    [
+     "vir aqui",
+     "verb"
+    ],
+    [
+     "amanhã,",
+     "adv"
+    ],
+    [
+     "então",
+     "glue"
+    ],
+    [
+     "eu",
+     "subj2"
+    ],
+    [
+     "tenho que",
+     "door2"
+    ],
+    [
+     "esconder",
+     "verb2"
+    ],
+    [
+     "o cachorro.",
+     "obj2"
+    ]
+   ],
+   "why": "visitar wants an object, so speech says vir aqui (come here). então links the halves without moving any word, unlike German also."
+  },
+  "dog.past": {
+   "tokens": [
+    [
+     "Meu senhorio",
+     "subj"
+    ],
+    [
+     "quis",
+     "door|aux"
+    ],
+    [
+     "vir aqui",
+     "verb"
+    ],
+    [
+     "ontem,",
+     "adv"
+    ],
+    [
+     "então",
+     "glue"
+    ],
+    [
+     "eu",
+     "subj2"
+    ],
+    [
+     "tive que",
+     "door2|aux"
+    ],
+    [
+     "esconder",
+     "verb2"
+    ],
+    [
+     "o cachorro.",
+     "obj2"
+    ]
+   ],
+   "why": "Tense sits on both doors: quis and tive que. quis (perfeito) fits a one-off plan; queria would hint the visit never happened."
+  },
+  "dog.neg": {
+   "tokens": [
+    [
+     "Meu senhorio",
+     "subj"
+    ],
+    [
+     "não",
+     "neg"
+    ],
+    [
+     "quer",
+     "door"
+    ],
+    [
+     "vir aqui,",
+     "verb"
+    ],
+    [
+     "então",
+     "glue"
+    ],
+    [
+     "eu",
+     "subj2"
+    ],
+    [
+     "não",
+     "neg"
+    ],
+    [
+     "preciso",
+     "door2"
+    ],
+    [
+     "esconder",
+     "verb2"
+    ],
+    [
+     "o cachorro.",
+     "obj2"
+    ]
+   ],
+   "why": "No need is não preciso (I don't need), not não tenho que. Each não sits right before its own door; no do-support."
+  },
+  "dog.q": {
+   "tokens": [
+    [
+     "Seu senhorio",
+     "subj"
+    ],
+    [
+     "quer",
+     "door"
+    ],
+    [
+     "ir aí",
+     "verb"
+    ],
+    [
+     "amanhã,",
+     "adv"
+    ],
+    [
+     "então",
+     "glue"
+    ],
+    [
+     "você",
+     "subj2"
+    ],
+    [
+     "tem que",
+     "door2"
+    ],
+    [
+     "esconder",
+     "verb2"
+    ],
+    [
+     "o cachorro?",
+     "obj2"
+    ]
+   ],
+   "why": "No question word or inversion: rising pitch on the second half does it. vir aqui turns into ir aí because the visit is at your friend's place."
+  },
+  "cant.now": {
+   "tokens": [
+    [
+     "A gente",
+     "subj"
+    ],
+    [
+     "não",
+     "neg"
+    ],
+    [
+     "pode",
+     "door"
+    ],
+    [
+     "ir",
+     "verb"
+    ],
+    [
+     "porque",
+     "glue"
+    ],
+    [
+     "as crianças",
+     "subj2"
+    ],
+    [
+     "esconderam",
+     "verb2|aux"
+    ],
+    [
+     "a chave do carro.",
+     "obj2"
+    ]
+   ],
+   "why": "Spoken we is a gente, which takes the ela-form pode. can't splits into não + pode. Declining uses ir (go), not vir (come)."
+  },
+  "cant.past": {
+   "tokens": [
+    [
+     "A gente",
+     "subj"
+    ],
+    [
+     "não",
+     "neg"
+    ],
+    [
+     "pôde",
+     "door|aux"
+    ],
+    [
+     "ir",
+     "verb"
+    ],
+    [
+     "porque",
+     "glue"
+    ],
+    [
+     "as crianças",
+     "subj2"
+    ],
+    [
+     "esconderam",
+     "verb2|aux"
+    ],
+    [
+     "a chave do carro.",
+     "obj2"
+    ]
+   ],
+   "why": "Only an accent separates past pôde from present pode. Speech often prefers não conseguiu ir, didn't manage to go."
+  },
+  "cant.fut": {
+   "tokens": [
+    [
+     "A gente",
+     "subj"
+    ],
+    [
+     "não",
+     "neg"
+    ],
+    [
+     "vai",
+     "aux"
+    ],
+    [
+     "poder",
+     "door"
+    ],
+    [
+     "ir",
+     "verb"
+    ],
+    [
+     "amanhã",
+     "adv"
+    ],
+    [
+     "porque",
+     "glue"
+    ],
+    [
+     "as crianças",
+     "subj2"
+    ],
+    [
+     "esconderam",
+     "verb2|aux"
+    ],
+    [
+     "a chave do carro.",
+     "obj2"
+    ]
+   ],
+   "why": "No be-able-to swap: the future goes on vai and the ordinary poder just becomes an infinitive. Three verbs in a row: vai poder ir."
+  },
+  "cant.although": {
+   "tokens": [
+    [
+     "A gente",
+     "subj"
+    ],
+    [
+     "ainda",
+     "adv"
+    ],
+    [
+     "pode",
+     "door"
+    ],
+    [
+     "ir,",
+     "verb"
+    ],
+    [
+     "mesmo que",
+     "glue"
+    ],
+    [
+     "as crianças",
+     "subj2"
+    ],
+    [
+     "tenham escondido",
+     "verb2|aux"
+    ],
+    [
+     "a chave do carro.",
+     "obj2"
+    ]
+   ],
+   "why": "mesmo que forces the subjunctive, so esconderam becomes tenham escondido. Word order stays the same; ainda sits before pode."
+  },
+  "like.now": {
+   "tokens": [
+    [
+     "Minha irmã",
+     "subj"
+    ],
+    [
+     "gosta",
+     "door"
+    ],
+    [
+     "de",
+     "x"
+    ],
+    [
+     "café.",
+     "obj"
+    ]
+   ],
+   "why": "Unlike Spanish gustar, the sister stays the subject. gostar always needs de before the thing liked; no article for coffee in general."
+  },
+  "like.neg": {
+   "tokens": [
+    [
+     "Ela",
+     "subj"
+    ],
+    [
+     "não",
+     "neg"
+    ],
+    [
+     "gosta",
+     "door"
+    ],
+    [
+     "de",
+     "x"
+    ],
+    [
+     "café.",
+     "obj"
+    ]
+   ],
+   "why": "não goes before gosta and nothing else changes; no helper like doesn't, and de stays glued to the verb."
+  },
+  "like.they": {
+   "tokens": [
+    [
+     "Meus pais",
+     "subj"
+    ],
+    [
+     "gostam",
+     "door"
+    ],
+    [
+     "de",
+     "x"
+    ],
+    [
+     "café.",
+     "obj"
+    ]
+   ],
+   "why": "Two words agree with the plural: meu becomes meus and gosta becomes gostam. pais (parents) is literally fathers."
+  },
+  "like.q": {
+   "tokens": [
+    [
+     "Você",
+     "subj"
+    ],
+    [
+     "gosta",
+     "door"
+    ],
+    [
+     "de",
+     "x"
+    ],
+    [
+     "café?",
+     "obj"
+    ]
+   ],
+   "why": "Same order as the statement; intonation alone makes the question. você takes the same verb form as ela: gosta."
+  },
+  "go.habit": {
+   "tokens": [
+    [
+     "Meus avós",
+     "subj"
+    ],
+    [
+     "vão",
+     "verb"
+    ],
+    [
+     "à feira",
+     "obj"
+    ],
+    [
+     "todo domingo.",
+     "adv"
+    ]
+   ],
+   "why": "The weekly market is a feira, the street market. a + a fuses into à. Speech in Brazil often says vão na feira instead."
+  },
+  "go.prog": {
+   "tokens": [
+    [
+     "Eles",
+     "subj"
+    ],
+    [
+     "estão",
+     "aux"
+    ],
+    [
+     "indo",
+     "verb"
+    ],
+    [
+     "à feira",
+     "obj"
+    ],
+    [
+     "agora.",
+     "adv"
+    ]
+   ],
+   "why": "A real progressive, estar + gerund, shaped like English are going. In speech estão shrinks to tão: tão indo à feira."
+  },
+  "go.past": {
+   "tokens": [
+    [
+     "Eles",
+     "subj"
+    ],
+    [
+     "foram",
+     "verb|aux"
+    ],
+    [
+     "à feira",
+     "obj"
+    ],
+    [
+     "ontem.",
+     "adv"
+    ]
+   ],
+   "why": "One word carries go and past: foram. It is also the past of ser (to be), so eles foram can mean they went or they were."
+  },
+  "go.fut": {
+   "tokens": [
+    [
+     "Eles",
+     "subj"
+    ],
+    [
+     "vão",
+     "verb"
+    ],
+    [
+     "à feira",
+     "obj"
+    ],
+    [
+     "amanhã.",
+     "adv|aux"
+    ]
+   ],
+   "why": "Plain present plus amanhã carries the future; vão ir is avoided. Eles irão à feira is correct but sounds written."
+  },
+  "go.neg": {
+   "tokens": [
+    [
+     "Eles",
+     "subj"
+    ],
+    [
+     "não",
+     "neg"
+    ],
+    [
+     "vão",
+     "verb|aux"
+    ],
+    [
+     "à feira",
+     "obj"
+    ],
+    [
+     "hoje.",
+     "adv"
+    ]
+   ],
+   "why": "For a plan, speech uses plain não vão rather than the progressive não estão indo. não sits right before the verb."
+  },
+  "live.now": {
+   "tokens": [
+    [
+     "Meu irmão",
+     "subj"
+    ],
+    [
+     "mora",
+     "verb"
+    ],
+    [
+     "em Shillong",
+     "adv"
+    ],
+    [
+     "há dois anos.",
+     "dur|aux"
+    ]
+   ],
+   "why": "Present mora plus há (it has been) two years; no has-been-living. Speech often flips it: faz dois anos que ele mora em Shillong."
+  },
+  "live.past": {
+   "tokens": [
+    [
+     "Ele",
+     "subj"
+    ],
+    [
+     "morou",
+     "verb|aux"
+    ],
+    [
+     "em Délhi",
+     "adv"
+    ],
+    [
+     "por dois anos.",
+     "dur"
+    ]
+   ],
+   "why": "Finished period: pretérito perfeito morou, and há changes to por. Speech often drops it: morou dois anos em Délhi."
+  },
+  "live.fut": {
+   "tokens": [
+    [
+     "Em junho",
+     "adv"
+    ],
+    [
+     "vai fazer",
+     "aux"
+    ],
+    [
+     "três anos",
+     "dur"
+    ],
+    [
+     "que",
+     "x"
+    ],
+    [
+     "ele",
+     "subj"
+    ],
+    [
+     "mora",
+     "verb"
+    ],
+    [
+     "em Shillong.",
+     "adv"
+    ]
+   ],
+   "why": "No future perfect: the future goes on vai fazer (it will make), que links, and morar stays in the present."
+  },
+  "live.q": {
+   "tokens": [
+    [
+     "Faz quanto tempo",
+     "q|aux"
+    ],
+    [
+     "que",
+     "x"
+    ],
+    [
+     "você",
+     "subj"
+    ],
+    [
+     "mora",
+     "verb"
+    ],
+    [
+     "aqui?",
+     "adv"
+    ]
+   ],
+   "why": "Opens with faz quanto tempo (how long does it make) and que; mora stays plain present. Há quanto tempo você mora aqui? also works."
+  },
+  "rain.now": {
+   "tokens": [
+    [
+     "Tá",
+     "aux"
+    ],
+    [
+     "chovendo,",
+     "verb"
+    ],
+    [
+     "então",
+     "glue"
+    ],
+    [
+     "leva",
+     "verb2"
+    ],
+    [
+     "um guarda-chuva.",
+     "obj2"
+    ]
+   ],
+   "why": "No it: weather verbs have no subject, so tá (spoken estar) opens the sentence. leva is the everyday command; leve sounds formal."
+  },
+  "rain.fut": {
+   "tokens": [
+    [
+     "Vai",
+     "door|aux"
+    ],
+    [
+     "chover",
+     "verb"
+    ],
+    [
+     "mais tarde,",
+     "adv"
+    ],
+    [
+     "então",
+     "glue"
+    ],
+    [
+     "leva",
+     "verb2"
+    ],
+    [
+     "um guarda-chuva.",
+     "obj2"
+    ]
+   ],
+   "why": "going to maps straight onto vai + infinitive, again with no subject. The order stays the same as in English."
+  },
+  "rain.neg": {
+   "tokens": [
+    [
+     "Não",
+     "neg"
+    ],
+    [
+     "tá",
+     "aux"
+    ],
+    [
+     "chovendo,",
+     "verb"
+    ],
+    [
+     "então",
+     "glue"
+    ],
+    [
+     "não",
+     "neg"
+    ],
+    [
+     "leva",
+     "verb2"
+    ],
+    [
+     "guarda-chuva.",
+     "obj2"
+    ]
+   ],
+   "why": "Spoken negative command: não leva, where textbooks want não leve. The article um drops after não."
+  },
+  "if.real": {
+   "tokens": [
+    [
+     "Se",
+     "glue"
+    ],
+    [
+     "a gente",
+     "subj"
+    ],
+    [
+     "tiver",
+     "verb|aux"
+    ],
+    [
+     "tempo,",
+     "obj"
+    ],
+    [
+     "a gente",
+     "subj2"
+    ],
+    [
+     "vai",
+     "aux"
+    ],
+    [
+     "viajar.",
+     "verb2"
+    ]
+   ],
+   "why": "se takes the future subjunctive tiver, a form English lacks; se a gente tem tempo sounds off here. Main clause: vai + infinitive."
+  },
+  "if.unreal": {
+   "tokens": [
+    [
+     "Se",
+     "glue"
+    ],
+    [
+     "a gente",
+     "subj"
+    ],
+    [
+     "tivesse",
+     "verb|aux"
+    ],
+    [
+     "tempo,",
+     "obj"
+    ],
+    [
+     "a gente",
+     "subj2"
+    ],
+    [
+     "viajaria.",
+     "verb2|aux"
+    ]
+   ],
+   "why": "Past subjunctive tivesse, then the conditional viajaria fuses would + travel. Everyday speech often swaps in the imperfeito viajava."
+  },
+  "if.past": {
+   "tokens": [
+    [
+     "Se",
+     "glue"
+    ],
+    [
+     "a gente",
+     "subj"
+    ],
+    [
+     "tivesse",
+     "aux"
+    ],
+    [
+     "tido",
+     "verb"
+    ],
+    [
+     "tempo,",
+     "obj"
+    ],
+    [
+     "a gente",
+     "subj2"
+    ],
+    [
+     "teria",
+     "aux"
+    ],
+    [
+     "viajado.",
+     "verb2"
+    ]
+   ],
+   "why": "Both halves are ter + participle: tivesse tido, teria viajado. Speech often says a gente tinha viajado for the second half."
+  }
+ }
+}

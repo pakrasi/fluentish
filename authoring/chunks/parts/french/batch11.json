@@ -1,0 +1,521 @@
+[
+ {
+  "id": "ENG_CHUNK_1001",
+  "t": "[verbe], ça a du bon / Il y a du bon à [verbe]",
+  "ex": "Rester à la maison le soir du réveillon, ça a du bon."
+ },
+ {
+  "id": "ENG_CHUNK_1002",
+  "t": "Tout dépend de [nom] / Au final, c'est une question de [nom]",
+  "ex": "Pour moi, tout dépend du prix."
+ },
+ {
+  "id": "ENG_CHUNK_1003",
+  "t": "Ne passe pas tes nerfs sur [personne]",
+  "ex": "Je sais que t'as passé une sale journée, mais passe pas tes nerfs sur moi."
+ },
+ {
+  "id": "ENG_CHUNK_1004",
+  "t": "Il est mal vu de [verbe] / Ça ne se fait pas de [verbe]",
+  "ex": "Dans certains pays, ça ne se fait pas de manger en marchant."
+ },
+ {
+  "id": "ENG_CHUNK_1005",
+  "t": "J'aime à penser que [proposition] / Je crois que [proposition]",
+  "ex": "J'aime à penser que je cuisine plutôt bien."
+ },
+ {
+  "id": "ENG_CHUNK_1006",
+  "t": "[nom] parfait(e), ça n'existe pas / Il n'y a pas de [nom]",
+  "ex": "L'appartement parfait, ça n'existe pas.",
+  "n": "Spoken French fronts the noun: X, ça n'existe pas."
+ },
+ {
+  "id": "ENG_CHUNK_1007",
+  "t": "Ne te laisse pas abattre par [nom] / Ne te prends pas la tête avec [nom]",
+  "ex": "Te laisse pas abattre par une mauvaise critique."
+ },
+ {
+  "id": "ENG_CHUNK_1008",
+  "t": "Pourquoi est-ce que [personne] [verbe au conditionnel] ?",
+  "ex": "Pourquoi elle mentirait sur un truc aussi insignifiant ?",
+  "n": "The conditionnel carries the doubt: pourquoi il ferait ça ?"
+ },
+ {
+  "id": "ENG_CHUNK_1009",
+  "t": "Qu'est-ce qui t'empêche de [verbe] ?",
+  "ex": "Tu détestes ton boulot. Qu'est-ce qui t'empêche d'en chercher un autre ?"
+ },
+ {
+  "id": "ENG_CHUNK_1010",
+  "t": "Qu'est-ce qu'il est devenu, [nom] ? / Qu'est devenu [nom] ?",
+  "ex": "Qu'est-ce qu'il est devenu, le mec avec qui tu bossais ?"
+ },
+ {
+  "id": "ENG_CHUNK_1011",
+  "t": "Tu te souviens de [nom] dont je t'ai parlé ?",
+  "ex": "Tu te souviens du café dont je t'ai parlé ? Il a fermé.",
+  "n": "dont replaces de + noun: parler de -> dont je t'ai parlé."
+ },
+ {
+  "id": "ENG_CHUNK_1012",
+  "t": "Quant à [nom], [proposition] / Pour [nom], [proposition]",
+  "ex": "Pour le dîner, je me disais qu'on pourrait se faire livrer."
+ },
+ {
+  "id": "ENG_CHUNK_1013",
+  "t": "C'est drôle que tu parles de [nom]",
+  "ex": "C'est drôle que tu parles de Lyon, j'y vais la semaine prochaine.",
+  "n": "Subjunctive trigger: c'est drôle que + subjunctive (parles is subjunctive here)."
+ },
+ {
+  "id": "ENG_CHUNK_1014",
+  "t": "Si jamais tu passes par [nom], [proposition]",
+  "ex": "Si jamais tu passes par Lyon, viens dormir chez nous."
+ },
+ {
+  "id": "ENG_CHUNK_1015",
+  "t": "C'est fou comme [proposition] / C'est dingue à quel point [proposition]",
+  "ex": "C'est fou comme les enfants grandissent vite."
+ },
+ {
+  "id": "ENG_CHUNK_1016",
+  "t": "Je ne te demande pas de [verbe]",
+  "ex": "Je ne te demande pas de cuisiner tous les soirs, juste une fois par semaine."
+ },
+ {
+  "id": "ENG_CHUNK_1017",
+  "t": "C'était quoi les chances que [proposition au subjonctif] ?",
+  "ex": "C'était quoi les chances qu'on se retrouve dans le même avion ?",
+  "n": "Loose subjunctive after chances que. Also: Le monde est petit !"
+ },
+ {
+  "id": "ENG_CHUNK_1018",
+  "t": "Je n'en reviens pas de [nom] / J'en reviens toujours pas",
+  "ex": "J'en reviens toujours pas de la vue de ton balcon."
+ },
+ {
+  "id": "ENG_CHUNK_1019",
+  "t": "Si tu avais vu [nom] !",
+  "ex": "Si t'avais vu la tête qu'il a faite !",
+  "n": "si + plus-que-parfait as an exclamation, no main clause needed."
+ },
+ {
+  "id": "ENG_CHUNK_1020",
+  "t": "C'est trop [adjectif], non ? / Trop [adjectif], non ?",
+  "ex": "Ils nous ont surclassés gratuitement. C'est trop cool, non ?"
+ },
+ {
+  "id": "ENG_CHUNK_1021",
+  "t": "Il faut être [adjectif] pour [verbe]",
+  "ex": "Il faut être fou pour conduire dans cette neige."
+ },
+ {
+  "id": "ENG_CHUNK_1022",
+  "t": "On dira ce qu'on voudra de [personne], mais [proposition]",
+  "ex": "On dira ce qu'on voudra de mon oncle, mais il est toujours là quand on a besoin de lui."
+ },
+ {
+  "id": "ENG_CHUNK_1023",
+  "t": "C'en est arrivé au point où [proposition]",
+  "ex": "C'en est arrivé au point où je ne dormais plus du tout."
+ },
+ {
+  "id": "ENG_CHUNK_1024",
+  "t": "J'étais en train de [verbe] quand [proposition]",
+  "ex": "J'étais en train de préparer le dîner quand il y a eu une coupure de courant.",
+  "n": "Imparfait for the ongoing action, passé composé for the interruption."
+ },
+ {
+  "id": "ENG_CHUNK_1025",
+  "t": "On m'a dit du bien de [nom] / J'ai entendu du bien de [nom]",
+  "ex": "On m'a dit du bien du resto thaï dans la rue principale."
+ },
+ {
+  "id": "ENG_CHUNK_1026",
+  "t": "C'est trop demander, [nom] ? / C'est trop demander que [proposition au subjonctif] ?",
+  "ex": "C'est trop demander, un peu de calme le soir ?",
+  "n": "Subjunctive trigger: est-ce trop demander que + subjunctive."
+ },
+ {
+  "id": "ENG_CHUNK_1027",
+  "t": "[personne] voulait savoir [proposition]",
+  "ex": "Ma mère voulait savoir quand tu venais la voir.",
+  "n": "Reported question: no inversion, no est-ce que."
+ },
+ {
+  "id": "ENG_CHUNK_1028",
+  "t": "[personne] m'a fait, [proposition] / [personne] était genre, [proposition]",
+  "ex": "Alors je lui ai dit, et il m'a fait : pourquoi tu l'as pas dit avant ?",
+  "n": "il m'a fait / il était genre are the spoken quote markers."
+ },
+ {
+  "id": "ENG_CHUNK_1029",
+  "t": "Il paraît que [proposition] / Il se dit que [proposition]",
+  "ex": "Il paraît que le bureau ferme plus tôt vendredi."
+ },
+ {
+  "id": "ENG_CHUNK_1030",
+  "t": "J'ai réussi à convaincre [personne] de [verbe]",
+  "ex": "J'ai réussi à convaincre mon père d'aller voir un médecin pour son dos."
+ },
+ {
+  "id": "ENG_CHUNK_1031",
+  "t": "Je ne m'attendais pas à ce que [personne] [verbe au subjonctif]",
+  "ex": "Je ne m'attendais pas à ce qu'autant de monde vienne.",
+  "n": "Subjunctive trigger: s'attendre à ce que + subjunctive."
+ },
+ {
+  "id": "ENG_CHUNK_1032",
+  "t": "Je ne m'imagine pas [verbe] / J'ai du mal à imaginer [verbe]",
+  "ex": "Je ne m'imagine pas vivre sans voiture par ici."
+ },
+ {
+  "id": "ENG_CHUNK_1033",
+  "t": "[nom] n'a rien à voir avec [nom]",
+  "ex": "Les pâtes maison n'ont rien à voir avec les pâtes en boîte."
+ },
+ {
+  "id": "ENG_CHUNK_1034",
+  "t": "Plus je [verbe], plus je [verbe]",
+  "ex": "Plus je lis sur le sujet, plus je m'inquiète.",
+  "n": "No article: plus je..., plus je... (not *le plus)."
+ },
+ {
+  "id": "ENG_CHUNK_1035",
+  "t": "C'est une chose de [verbe], c'en est une autre de [verbe]",
+  "ex": "C'est une chose d'acheter un tapis de course, c'en est une autre de s'en servir."
+ },
+ {
+  "id": "ENG_CHUNK_1036",
+  "t": "se fixer un objectif",
+  "ex": "Je me suis fixé comme objectif de courir trois fois par semaine."
+ },
+ {
+  "id": "ENG_CHUNK_1037",
+  "t": "montrer l'exemple / donner l'exemple",
+  "ex": "T'es l'aîné, donc tu dois montrer l'exemple."
+ },
+ {
+  "id": "ENG_CHUNK_1038",
+  "t": "mettre la pression à [personne]",
+  "ex": "Mes parents n'arrêtent pas de me mettre la pression pour que j'achète une maison.",
+  "n": "pour que + subjunctive."
+ },
+ {
+  "id": "ENG_CHUNK_1039",
+  "t": "mettre [personne] dans l'embarras / coincer [personne]",
+  "ex": "S'il te plaît, me mets pas dans l'embarras devant tout le monde."
+ },
+ {
+  "id": "ENG_CHUNK_1040",
+  "t": "lâcher la grappe à [personne] / être indulgent avec [personne]",
+  "ex": "Lâche-lui la grappe, c'est sa première semaine.",
+  "n": "lâcher la grappe is slangy; sois indulgent is neutral."
+ },
+ {
+  "id": "ENG_CHUNK_1041",
+  "t": "charrier [personne] / chambrer [personne]",
+  "ex": "Mes potes m'ont chambré sur ma nouvelle coupe."
+ },
+ {
+  "id": "ENG_CHUNK_1042",
+  "t": "céder / craquer",
+  "ex": "Les enfants réclamaient un chien, et on a fini par craquer."
+ },
+ {
+  "id": "ENG_CHUNK_1043",
+  "t": "accorder le bénéfice du doute à [personne]",
+  "ex": "Il est d'habitude à l'heure, alors accordons-lui le bénéfice du doute."
+ },
+ {
+  "id": "ENG_CHUNK_1044",
+  "t": "faire un compliment à [personne]",
+  "ex": "Une inconnue m'a fait un compliment sur ma veste aujourd'hui."
+ },
+ {
+  "id": "ENG_CHUNK_1045",
+  "t": "garder [nom] en tête / tenir compte de [nom]",
+  "ex": "Garde le budget en tête quand tu choisis l'hôtel."
+ },
+ {
+  "id": "ENG_CHUNK_1046",
+  "t": "garder un secret",
+  "ex": "Tu sais garder un secret ? Je suis enceinte."
+ },
+ {
+  "id": "ENG_CHUNK_1047",
+  "t": "suivre [nom] / suivre le rythme de [nom]",
+  "ex": "J'arrive pas à suivre tous les groupes WhatsApp."
+ },
+ {
+  "id": "ENG_CHUNK_1048",
+  "t": "vendre la mèche",
+  "ex": "Qui a vendu la mèche pour la fête surprise ?"
+ },
+ {
+  "id": "ENG_CHUNK_1049",
+  "t": "suivre [nom] / tenir le compte de [nom]",
+  "ex": "J'utilise une appli pour suivre mes dépenses."
+ },
+ {
+  "id": "ENG_CHUNK_1050",
+  "t": "tenir parole / tenir sa promesse",
+  "ex": "Il avait dit qu'il me rembourserait, et il a tenu parole."
+ },
+ {
+  "id": "ENG_CHUNK_1051",
+  "t": "se mettre en quatre pour [verbe] / se donner du mal pour [verbe]",
+  "ex": "Le personnel de l'hôtel s'est mis en quatre pour nous aider."
+ },
+ {
+  "id": "ENG_CHUNK_1052",
+  "t": "prendre [nom] / partir sur [nom]",
+  "ex": "Je crois que je vais partir sur le poulet."
+ },
+ {
+  "id": "ENG_CHUNK_1053",
+  "t": "être utile / servir",
+  "ex": "Garde le câble en plus, ça pourrait servir."
+ },
+ {
+  "id": "ENG_CHUNK_1054",
+  "t": "avoir un imprévu",
+  "ex": "Désolé, j'ai eu un imprévu au boulot, je vais être en retard."
+ },
+ {
+  "id": "ENG_CHUNK_1055",
+  "t": "tomber sur [nom]",
+  "ex": "Je suis tombé sur de vieilles photos en faisant le ménage."
+ },
+ {
+  "id": "ENG_CHUNK_1056",
+  "t": "prendre [personne] au dépourvu",
+  "ex": "La question m'a pris au dépourvu."
+ },
+ {
+  "id": "ENG_CHUNK_1057",
+  "t": "annoncer la nouvelle à [personne]",
+  "ex": "Qui va annoncer la nouvelle à mamie ?"
+ },
+ {
+  "id": "ENG_CHUNK_1058",
+  "t": "briser la glace",
+  "ex": "J'ai fait une blague idiote pour briser la glace."
+ },
+ {
+  "id": "ENG_CHUNK_1059",
+  "t": "tourner autour du pot",
+  "ex": "Arrête de tourner autour du pot et dis-moi ce qui s'est passé."
+ },
+ {
+  "id": "ENG_CHUNK_1060",
+  "t": "rater [nom] / passer à côté de [nom]",
+  "ex": "Je ne veux pas rater les places pour le concert."
+ },
+ {
+  "id": "ENG_CHUNK_1061",
+  "t": "garder une place à [personne]",
+  "ex": "Tu peux me garder une place ? Je me gare."
+ },
+ {
+  "id": "ENG_CHUNK_1062",
+  "t": "faire la différence entre [nom] et [nom]",
+  "ex": "Je n'arrive pas à faire la différence entre les jumeaux."
+ },
+ {
+  "id": "ENG_CHUNK_1063",
+  "t": "comprendre le message / saisir l'allusion",
+  "ex": "Je n'arrêtais pas de regarder ma montre, mais il n'a pas compris le message."
+ },
+ {
+  "id": "ENG_CHUNK_1064",
+  "t": "passer aux choses sérieuses / entrer dans le vif du sujet",
+  "ex": "Bon, tout le monde est là, alors passons aux choses sérieuses."
+ },
+ {
+  "id": "ENG_CHUNK_1065",
+  "t": "tenir à [verbe] / insister pour [verbe]",
+  "ex": "Mon père a tenu à payer le dîner.",
+  "n": "tenir à + infinitive is the natural 'insist on'."
+ },
+ {
+  "id": "ENG_CHUNK_1066",
+  "t": "Patience / Un instant, s'il vous plaît",
+  "ex": "Un instant, je cherche le fichier."
+ },
+ {
+  "id": "ENG_CHUNK_1067",
+  "t": "J'y viens",
+  "ex": "Oui, j'y viens. Laisse-moi finir."
+ },
+ {
+  "id": "ENG_CHUNK_1068",
+  "t": "C'est-à-dire ? / Comment ça ?",
+  "ex": "Tu trouves que c'est une mauvaise idée ? Comment ça ?"
+ },
+ {
+  "id": "ENG_CHUNK_1069",
+  "t": "Vous pourriez préciser ?",
+  "ex": "Vous pourriez préciser ? Qu'est-ce qui ne marche pas exactement ?"
+ },
+ {
+  "id": "ENG_CHUNK_1070",
+  "t": "Où tu veux en venir ?",
+  "ex": "Où tu veux en venir ? Dis-le franchement."
+ },
+ {
+  "id": "ENG_CHUNK_1071",
+  "t": "Tu me suis ? / Vous me suivez ?",
+  "ex": "Donc tu tournes à gauche à la station-service, puis à droite. Tu me suis ?"
+ },
+ {
+  "id": "ENG_CHUNK_1072",
+  "t": "Là, on avance",
+  "ex": "Bon, là, on avance."
+ },
+ {
+  "id": "ENG_CHUNK_1073",
+  "t": "genre / tu vois",
+  "ex": "C'était, genre, la meilleure pizza de ma vie."
+ },
+ {
+  "id": "ENG_CHUNK_1074",
+  "t": "Restons-en là, chacun son avis",
+  "ex": "On ne tombera jamais d'accord, alors chacun son avis."
+ },
+ {
+  "id": "ENG_CHUNK_1075",
+  "t": "Ce n'est pas la question / Là n'est pas la question",
+  "ex": "Je sais que c'était pas cher, mais là n'est pas la question."
+ },
+ {
+  "id": "ENG_CHUNK_1076",
+  "t": "C'est une façon de voir les choses",
+  "ex": "Perdre mon boulot, une chance de voyager ? Bon, c'est une façon de voir les choses."
+ },
+ {
+  "id": "ENG_CHUNK_1077",
+  "t": "Sauf votre respect / Avec tout le respect que je vous dois",
+  "ex": "Avec tout le respect que je vous dois, je ne pense pas que vous ayez lu tout le rapport.",
+  "n": "je ne pense pas que + subjunctive (ayez)."
+ },
+ {
+  "id": "ENG_CHUNK_1078",
+  "t": "Ce n'est pas si simple",
+  "ex": "Démissionner, comme ça ? C'est pas si simple, j'ai un loyer à payer."
+ },
+ {
+  "id": "ENG_CHUNK_1079",
+  "t": "C'est facile à dire / C'est facile pour toi",
+  "ex": "Me détendre ? C'est facile à dire, toi t'as pas d'exam demain."
+ },
+ {
+  "id": "ENG_CHUNK_1080",
+  "t": "Au temps pour moi / J'avais tort",
+  "ex": "Ah, ça ouvre à neuf heures ? Au temps pour moi.",
+  "n": "Au temps pour moi (also spelled autant pour moi) = my mistake."
+ },
+ {
+  "id": "ENG_CHUNK_1081",
+  "t": "Je suis tout ouïe / Je t'écoute",
+  "ex": "T'as un meilleur plan ? Je suis tout ouïe."
+ },
+ {
+  "id": "ENG_CHUNK_1082",
+  "t": "Motus et bouche cousue",
+  "ex": "T'inquiète, motus et bouche cousue."
+ },
+ {
+  "id": "ENG_CHUNK_1083",
+  "t": "C'est comme ça / C'est la vie",
+  "ex": "Le vol est encore retardé, mais c'est comme ça."
+ },
+ {
+  "id": "ENG_CHUNK_1084",
+  "t": "Comme tu veux / Comme vous voulez",
+  "ex": "Tu veux pas de gâteau ? Comme tu veux."
+ },
+ {
+  "id": "ENG_CHUNK_1085",
+  "t": "C'est ça, l'esprit ! / Voilà, c'est comme ça qu'il faut voir les choses",
+  "ex": "Tu réessaies la semaine prochaine ? Voilà, c'est l'esprit !"
+ },
+ {
+  "id": "ENG_CHUNK_1086",
+  "t": "Ne compte pas trop dessus / Attends-toi à attendre",
+  "ex": "Il a dit qu'il rappellerait, mais compte pas trop dessus."
+ },
+ {
+  "id": "ENG_CHUNK_1087",
+  "t": "Les actes valent mieux que les paroles",
+  "ex": "Il répète qu'il va aider. Les actes valent mieux que les paroles."
+ },
+ {
+  "id": "ENG_CHUNK_1088",
+  "t": "C'est l'intention qui compte",
+  "ex": "Le gâteau s'est effondré, mais c'est l'intention qui compte."
+ },
+ {
+  "id": "ENG_CHUNK_1089",
+  "t": "Il ne faut pas se fier aux apparences",
+  "ex": "Le resto a l'air miteux, mais il ne faut pas se fier aux apparences.",
+  "n": "Proverb: l'habit ne fait pas le moine."
+ },
+ {
+  "id": "ENG_CHUNK_1090",
+  "t": "Un malheur n'arrive jamais seul",
+  "ex": "D'abord la voiture est tombée en panne, puis le lave-vaisselle. Un malheur n'arrive jamais seul."
+ },
+ {
+  "id": "ENG_CHUNK_1091",
+  "t": "Sans compter que / En plus",
+  "ex": "C'est trop loin, sans compter que c'est super cher."
+ },
+ {
+  "id": "ENG_CHUNK_1092",
+  "t": "Tant qu'on y est",
+  "ex": "Rangeons le garage, et tant qu'on y est, on peut trier les outils."
+ },
+ {
+  "id": "ENG_CHUNK_1093",
+  "t": "Au départ / Pour commencer",
+  "ex": "Pourquoi t'as accepté d'y aller, au départ ?"
+ },
+ {
+  "id": "ENG_CHUNK_1094",
+  "t": "À supposer que [proposition au subjonctif] / Si [proposition]",
+  "ex": "À supposer qu'il fasse beau, on part à huit heures.",
+  "n": "Subjunctive trigger: à supposer que / en supposant que + subjunctive. Speech prefers si."
+ },
+ {
+  "id": "ENG_CHUNK_1095",
+  "t": "À ce rythme-là / À ce train-là",
+  "ex": "À ce rythme-là, on n'arrivera jamais avant la nuit."
+ },
+ {
+  "id": "ENG_CHUNK_1096",
+  "t": "En l'état actuel des choses / Pour l'instant",
+  "ex": "Pour l'instant, on n'a pas les moyens de partir en vacances cette année."
+ },
+ {
+  "id": "ENG_CHUNK_1097",
+  "t": "Dans l'ensemble / Pour la plupart",
+  "ex": "Dans l'ensemble, les voisins sont vraiment sympas."
+ },
+ {
+  "id": "ENG_CHUNK_1098",
+  "t": "En ce sens / Dans ce sens-là",
+  "ex": "Le boulot paie moins, mais c'est près de chez moi. En ce sens, c'est mieux."
+ },
+ {
+  "id": "ENG_CHUNK_1099",
+  "t": "Au pire",
+  "ex": "Au pire, on prend un taxi pour rentrer."
+ },
+ {
+  "id": "ENG_CHUNK_1100",
+  "t": "En partie parce que",
+  "ex": "J'ai arrêté la salle, en partie parce que c'était devenu trop cher."
+ }
+]
