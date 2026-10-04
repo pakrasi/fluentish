@@ -30,7 +30,10 @@ export async function mount(el, ctx) {
     const pctx = { store, c, settings: s, exam, t };
 
     /** @type {any[]} */ const items = [], feedback = [], modules = [];
-    for (const { id, mod } of /** @type {any[]} */ (await planProviders())) {
+    const providers = /** @type {any[]} */ (await planProviders());
+    await Promise.all(providers.map(p => p.mod.prepare?.(ctx)));   // e.g. Practice's pool stats, so both tabs read one budget
+    if (!alive) return;
+    for (const { id, mod } of providers) {
       try {
         items.push(...((await mod.planItems?.(pctx)) || []));
         feedback.push(...(mod.todayFeedback?.(pctx) || []));
@@ -125,7 +128,9 @@ export async function mount(el, ctx) {
   }
 
   /** @param {any} it */
-  const primaryLabel = it => it.action || (it.minutes ? `${it.title} · ${t('unit.min', { n: it.minutes })}` : it.title);
+  const primaryLabel = it => (it.cut && it.source === 'practice' ? t('plan.round.one', { n: 12 }) : it.action) || (it.minutes ? `${it.title} · ${t('unit.min', { n: it.minutes })}` : it.title);
+  /** @param {any} r */
+  const rowDetail = r => (r.cut ? (r.rounds === 1 ? t('plan.review.cutOne') : t('plan.review.cut', { n: r.rounds })) : r.detail);
 
   function importNotice() {
     const meta = store.get('meta', {}) || {};
@@ -137,6 +142,7 @@ export async function mount(el, ctx) {
       h('p', { class: 'notice-title' }, t('import.title')),
       h('p', null, summaryText(meta.summary, t)),
       h('p', null, s.exam.date ? t('import.examDate', { date: label(s.exam.date) }) : t('import.noDate')),
+      Number.isInteger(meta.summary.newPerDay) && !s.rev?.newPerDay ? h('p', null, t('import.newPerDay', { n: meta.summary.newPerDay })) : null,
       h('div', { class: 'notice-actions' },
         h('a', { class: 'btn pressable', href: '#/profile/goal' }, t('import.change')),
         h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => { store.update('ui', (/** @type {any} */ u) => ({ ...(u || {}), importSeen: true }), {}); n.remove(); } }, t('import.dismiss'))),
@@ -157,16 +163,21 @@ export async function mount(el, ctx) {
     const head = plan.state === 'done'
       ? h('p', { class: 'plan-done' }, icon('check', { size: 18 }), t('today.done', { n: dueTomorrow({ store, c, settings: null, exam: null, t }) }))
       : plan.state === 'empty' ? h('p', { class: 'plan-empty' }, t('today.empty')) : null;
+    const m = plan.minutes;
+    const sub = m.mock ? t('today.planOver', { n: m.planned, budget: m.budget, module: String(m.mock.title).split(' · ')[0], min: m.mock.minutes })
+      : m.cut ? t('today.planCut', { n: m.planned, budget: m.budget }) : t('today.planMinutes', { n: m.planned, budget: m.budget });
     return section(t('today.plan'),
-      work.length ? h('p', { class: 'caption section-sub' }, t('today.planMinutes', { n: plan.minutes.planned, budget: plan.minutes.budget })) : null,
+      work.length ? h('p', { class: 'caption section-sub' }, sub) : null,
       head,
       plan.rows.length ? h('ol', { class: 'plan' }, plan.rows.map(r => h('li', { class: ['plan-item', r.done && 'is-done', r.kind === 'setup' && 'is-setup'] },
         h('a', { class: 'plan-row pressable', href: r.href },
           h('span', { class: 'plan-state', 'aria-hidden': 'true' }, r.done ? icon('check', { size: 14 }) : r.kind === 'setup' ? icon('calendar', { size: 14 }) : null),
-          h('span', { class: 'row-main' }, h('span', { class: 'row-title' }, r.title, r.done ? h('span', { class: 'sr-only' }, `, ${t('today.doneRow')}`) : null), r.detail ? h('span', { class: 'row-detail' }, r.detail) : null),
+          h('span', { class: 'row-main' }, h('span', { class: 'row-title' }, r.title, r.done ? h('span', { class: 'sr-only' }, `, ${t('today.doneRow')}`) : null), rowDetail(r) ? h('span', { class: 'row-detail' }, rowDetail(r)) : null),
           r.minutes ? h('span', { class: 'row-trail tnum' }, t('unit.min', { n: r.minutes })) : null,
           icon('next', { size: 16 }))))) : null,
-      plan.more ? h('p', { class: 'caption more' }, t('today.more', { n: plan.more })) : null);
+      plan.extra.length ? h('div', { class: 'plan-extra' }, h('h3', { class: 'label' }, t('today.more')),
+        h('ul', { class: 'list' }, plan.extra.map(r => h('li', null, h('a', { class: 'plan-extra-row pressable', href: r.href },
+          h('span', null, r.title), r.minutes ? h('span', { class: 'row-trail tnum' }, t('unit.min', { n: r.minutes })) : null))))) : null);
   }
 
   /** @param {any[]} modules */

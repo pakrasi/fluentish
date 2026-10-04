@@ -4,10 +4,11 @@ import { h, replace } from '../../core/dom.js';
 import { section, linkRow, notice } from '../../core/ui.js';
 import { icon } from '../../core/icons.js';
 import { fill, countTo } from '../../core/motion.js';
-import { label, add, diff } from '../../core/clock.js';
+import { label, add } from '../../core/clock.js';
 import * as RD from '../../domain/b1ready.js';
-import { roundMinutes } from '../../domain/today.js';
+import { ROUND_MIN } from '../../domain/budget.js';
 import * as C from './compose.js';
+import { todayBudget, roundAction } from './plan.js';
 import { resumable } from './session.js';
 import { loadData, stateFor, session, refreshWords, secrets, wordsState } from './data.js';
 import { COLLECTION as WORDS } from './words.js';
@@ -40,7 +41,8 @@ export async function mountHub(el, ctx) {
     const s = stateFor(ctx, data);
     const c = s.c, cards = s.cards;
     const rd = RD.compute({ pool: data.pool.filter((/** @type {any} */ it) => it.area !== 'mistakes'), store: cards, today: c.today, exam: c.exam, phase: c.phase });
-    const dueN = s.dueN, newN = C.newLeft(s);
+    const dueN = s.dueN, newN = s.budget.newLeft;
+    const b = todayBudget({ store, c, settings: ctx.settings(), t, exam: null });
     const sess = session(store);
     const round = resumable(sess.round, c.today, Date.now()) ? sess.round : null;
     const firstTime = !Object.values(cards).some(r => r && r.hist && r.hist.length);
@@ -52,7 +54,7 @@ export async function mountHub(el, ctx) {
 
     // ---- queue card ----
     const dueEl = h('span', { class: 'figure tnum' }, String(dueN));
-    const startLabel = round ? t('practice.finish', { n: left }) : c.phase === 'day' ? t('practice.startWarmup') : t('practice.start', { n: nRound, min: roundMinutes(nRound) });
+    const startLabel = round ? finishLabel(round, left) : c.phase === 'day' ? t('practice.startWarmup') : roundAction(b, nRound, t);
     const startBtn = nRound ? h('a', { class: 'btn btn-primary btn-wide pressable', href: '#/practice/round', id: 'pr-start' }, startLabel) : null;
     const nextDue = Object.values(cards).filter(r => r && r.reps).map(r => RD.dueOn(r, c)).filter(d => d > c.today).sort()[0];
     const queue = h('div', { class: 'pr-queue' },
@@ -99,13 +101,14 @@ export async function mountHub(el, ctx) {
         recallBar(x ? x.recall : 0, x ? x.coverage : 0, t('practice.area.bar', { recall: pct(x?.recall || 0), seen: pct(x?.coverage || 0) })), icon('next', { size: 16 }));
     });
 
-    // ---- pace and load ----
+    // ---- pace and load: the same budget as Today's plan row ----
     const foot = [];
-    if (c.phase === 'week' || c.phase === 'lastNew') {
-      const starLeft = C.priorityLeft(s, s.examSet);
-      const newDays = Math.max(1, diff(c.today, /** @type {string} */ (c.lastNewDay)) + 1);
-      const rounds = Math.max(1, Math.ceil(Math.min(starLeft / newDays, s.newPerDay) / 4 + dueN / C.ROUND));
-      foot.push(h('p', { class: 'caption' }, starLeft ? t('practice.pace', { n: rounds, min: rounds * 4, date: label(/** @type {string} */ (c.lastNewDay)) }) : t('practice.paceDone')));
+    const pace = s.budget.pace;
+    if (pace) {
+      const date = label(pace.lastNew);
+      foot.push(h('p', { class: 'caption' }, !pace.left ? t('practice.paceDone')
+        : pace.fits ? t('practice.pace', { n: Math.max(1, s.budget.rounds), min: Math.max(1, s.budget.rounds) * ROUND_MIN, date })
+          : t('practice.paceShort', { min: ctx.settings().minutesPerDay, reach: pace.reach, left: pace.left, date })));
     }
     const peak = fc.slice(1).filter(x => !c.exam || x.day < c.exam).sort((p, q) => q.n - p.n)[0];
     if (peak && peak.n >= 30 && c.phase !== 'after') foot.push(h('p', { class: 'caption' }, t('practice.peak', { date: label(peak.day), n: peak.n })));
@@ -131,6 +134,12 @@ export async function mountHub(el, ctx) {
       h('p', { class: 'pr-ready-top' }, h('span', { class: 'label' }, name), h('b', { class: 'tnum' }, pct(rd.overall.recall))),
       recallBar(rd.overall.recall, rd.overall.coverage, t('practice.area.bar', { recall: pct(rd.overall.recall), seen: pct(rd.overall.coverage) })),
       h('p', { class: 'caption' }, t('practice.readySub', { seen: rd.overall.seen, n: rd.overall.n })));
+  }
+
+  /** "Finish round · 11 questions left", with the kind for rounds that are not the daily one. @param {any} round @param {number} left */
+  function finishLabel(round, left) {
+    const kind = round.kind === 'today' ? null : round.kind === 'area' ? t(`practice.area.${round.area}`) : round.kind === 'topic' ? t('practice.kind.topic') : t(`practice.kind.${round.kind}`);
+    return kind ? t('practice.finishKind', { n: left, kind }) : t('practice.finish', { n: left });
   }
 
   const rerender = () => { if (!pending) pending = render().finally(() => { pending = null; }); };

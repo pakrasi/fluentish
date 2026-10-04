@@ -52,7 +52,7 @@ const QUIET = new Set();
 export function setSetting({ store, hlc, bus }, path, value) {
   const cur = normalizeSettings(store.get('settings'));
   const prev = getPath(cur, path);
-  if (JSON.stringify(prev) === JSON.stringify(value)) return prev;
+  if (JSON.stringify(prev) === JSON.stringify(value) && cur.rev[path]) return prev;   // an unstamped value (carried over) is stamped when chosen
   const next = structuredClone(cur);
   setPath(next, path, value);
   next.rev = { ...next.rev, [path]: hlc.tick() };

@@ -54,7 +54,8 @@ test('planMigration: settings, keys, cards, attempts, drafts and the summary', (
   assert.equal(plan.kv.settings.level, 'B1');
   assert.equal(plan.kv.settings.exam.type, 'goethe-b1');
   assert.equal(plan.kv.settings.exam.date, '2026-10-09');
-  assert.equal(plan.kv.settings.newPerDay, 30);
+  assert.equal(plan.kv.settings.newPerDay, null, 'Igloo\'s number becomes Auto');
+  assert.equal(plan.summary.newPerDay, 30, 'and is shown once in the import notice');
   assert.equal(plan.kv.settings.practice.claudeCheck, false);
   assert.equal(plan.kv.settings.practice.readAloud, true);
   assert.ok(plan.kv.settings.onboarded, 'a migrated learner skips onboarding');

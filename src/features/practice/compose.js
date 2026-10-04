@@ -14,11 +14,9 @@ import * as D8 from '../../domain/days.js';
 import * as FS from '../../domain/fsrs.js';
 import * as RD from '../../domain/b1ready.js';
 import { roundMinutes } from '../../domain/today.js';
+import { ROUND, SPLIT, NEW_ITEM_MIN, dailyNew, streamQuota } from '../../domain/budget.js';
 
-export const ROUND = 12;
-const SPLIT = /** @type {Record<string, number>} */ ({ p: 40 / 55, g: 15 / 55 });
-/** Minutes one new item costs inside rounds (shown, learnt, seen again): about 3 showings at 15 s. */
-export const NEW_ITEM_MIN = 0.75;
+export { ROUND, NEW_ITEM_MIN };
 
 /**
  * @typedef {object} State
@@ -54,31 +52,13 @@ export function rollDay(session, today) {
   return { day: newDay(today), days, rolled: true };
 }
 
-/**
- * New items a day. A number in settings wins; "Auto" (null) takes the smaller of what fits in the minutes and what
- * keeps pace with the priority items before the last new day (UX §3.4). No new items on the eve or the exam day.
- * @param {{c: import('../../core/clock.js').ClockCtx, settings: any, dueN: number, priorityLeft: number | null}} o
- */
-export function dailyNew({ c, settings, dueN, priorityLeft }) {
-  if (!c.newItems) return 0;
-  if (Number.isInteger(settings.newPerDay)) return Math.max(0, settings.newPerDay);
-  const minutes = settings.minutesPerDay || 60;
-  // rounds get the whole day without an exam; with one, half is left for mock modules, corrections and speaking
-  const share = settings.exam?.type && c.mocks ? 0.5 : 1;
-  const fit = Math.max(0, Math.floor((minutes * share - roundMinutesRaw(dueN)) / NEW_ITEM_MIN));
-  if (c.phase === 'week' || c.phase === 'lastNew') {
-    const newDays = Math.max(1, D8.diff(c.today, /** @type {string} */ (c.lastNewDay)) + 1);
-    const pace = priorityLeft == null ? fit : Math.ceil(priorityLeft / newDays);
-    return Math.max(4, Math.min(fit, pace, 60));
-  }
-  return Math.max(4, Math.min(fit, 20));   // no date, or after the exam: a steady trickle
-}
-const roundMinutesRaw = (/** @type {number} */ n) => (n / ROUND) * 4;
+/** New items a day: domain/budget.js (the one answer to "how much today"). */
+export { dailyNew };
 
-/** @param {State} s @param {string} st 'p' | 'g' */
+/** A stream's share of today's new items (the two shares add up to newPerDay). @param {State} s @param {string} st 'p' | 'g' */
 export function quota(s, st) {
   if (!s.c.newItems) return 0;
-  return Math.round(s.newPerDay * SPLIT[st]);
+  return streamQuota(s.newPerDay, /** @type {'p'|'g'} */ (st));
 }
 /** @param {State} s @param {string} st */
 export const newLeftOf = (s, st) => Math.max(0, quota(s, st) - ((s.day.newBy || {})[st] || 0));
@@ -133,33 +113,9 @@ export function nextNew(s, pool, n, left = { p: newLeftOf(s, 'p'), g: newLeftOf(
   return out;
 }
 
-/**
- * The learnable exam set for readiness (review M10): everything seen plus what the daily budget can still introduce
- * by exam−2, in the composer's order, with a floor per area. null after the exam or without a date (all items count).
- * @param {State} s
- */
-export function examSet(s) {
-  const c = s.c;
-  if (!c.exam || c.phase === 'after' || c.phase === 'none') return null;
-  const daysLeft = Math.max(0, D8.diff(c.today, D8.add(c.exam, -2)));
-  const open = c.phase === 'week' || c.phase === 'lastNew';
-  const shown = s.day.newBy || {};
-  const dayQ = (/** @type {string} */ st) => open ? quota(s, st) * (daysLeft + 1) - (shown[st] || 0) : 0;
-  const left = { p: Math.max(0, dayQ('p')), g: Math.max(0, dayQ('g')) };
-  const ids = new Set(nextNew(s, s.data.pool, left.p + left.g, left).map(it => it.id));
-  const fresh = newOrder(s, s.data.pool), total = left.p + left.g;
-  for (const a of ['speaking', 'reading', 'grammar', 'words']) {
-    const un = fresh.filter(it => it.area === a), floor = fresh.length ? Math.round(total * un.length / fresh.length) : 0;
-    let have = un.filter(it => ids.has(it.id)).length;
-    for (const it of un) { if (have >= floor) break; if (!ids.has(it.id)) { ids.add(it.id); have++; } }
-  }
-  for (const it of s.data.pool) if (!unseen(s, it)) ids.add(it.id);
-  return ids;
-}
-
-/** ★ and trap items not seen yet (the pace count for Auto new items). @param {State} s @param {Set<string> | null} [set] */
-export function priorityLeft(s, set = null) {
-  return s.data.pool.filter(it => (it.star || it.trap) && unseen(s, it) && (!set || set.has(it.id))).length;
+/** ★ and trap items not seen yet (the pace count for Auto new items). @param {State} s */
+export function priorityLeft(s) {
+  return s.data.pool.filter(it => (it.star || it.trap) && unseen(s, it)).length;
 }
 
 /** The day's trap set: 2 per sticky-error class, 2 more from mistakes; most-flagged and weakest first. @param {State} s */
@@ -267,7 +223,7 @@ export function compose(s, { kind = 'today', area, topic, size = ROUND } = {}) {
 }
 
 /** Due counts for the next n days, today first. @param {Record<string, any>} cards @param {string} today */
-export const forecast = (cards, c, n = 8) => RD.forecast(cards, c.today, n, c);
+export const forecast = (/** @type {Record<string, any>} */ cards, /** @type {any} */ c, n = 8) => RD.forecast(cards, c.today, n, c);
 
 /** "12 questions, 4 min" for a round of n. @param {number} n */
 export const roundCost = n => ({ n, min: roundMinutes(n) });

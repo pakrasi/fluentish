@@ -13,6 +13,7 @@ import * as RD from '../../domain/b1ready.js';
 import { buildPool } from './pool.js';
 import { wordItems, fetchWords, COLLECTION as WORDS } from './words.js';
 import * as C from './compose.js';
+import { dayBudget } from '../../domain/budget.js';
 
 const FILES = ['b1.items', 'b1.grammar', 'b1.bank', 'b1.plan', 'b1.nouns', 'b1.wordmap'];
 export const VOCAB_URL = `${config.github.api}/repos/${config.resultsRepo}/contents/data/vocab.json`;
@@ -53,22 +54,25 @@ export function dayLog(store, today) {
 }
 
 /**
- * The composer's state for now.
- * @param {import('../contract.js').ViewCtx} ctx @param {any} data
- * @returns {import('./compose.js').State & {examSet: Set<string> | null, dueN: number}}
+ * The composer's state for now, with today's budget (domain/budget.js: the same numbers Today's plan shows).
+ * @param {{clock: any, store: any, settings: () => any}} ctx @param {any} data
+ * @returns {import('./compose.js').State & {dueN: number, budget: import('../../domain/budget.js').Budget}}
  */
 export function stateFor(ctx, data) {
   const c = ctx.clock.ctx();
   const cards = ctx.store.cards('b1');
   const day = dayLog(ctx.store, c.today);
   const base = { data, cards, day, c, newPerDay: 0 };
-  const dueN = data.pool.reduce((/** @type {number} */ n, /** @type {any} */ it) => n + (RD.isDue(cards[it.id], c.today, c) ? 1 : 0), 0);
+  // the review round's due count: mistakes from corrections have their own row and round
+  const dueN = data.pool.reduce((/** @type {number} */ n, /** @type {any} */ it) => n + (it.area !== 'mistakes' && RD.isDue(cards[it.id], c.today, c) ? 1 : 0), 0);
   const pLeft = C.priorityLeft(base);
-  base.newPerDay = C.dailyNew({ c, settings: ctx.settings(), dueN, priorityLeft: pLeft });
+  const unseen = data.pool.reduce((/** @type {number} */ n, /** @type {any} */ it) => n + (it.area !== 'mistakes' && !cards[it.id]?.reps ? 1 : 0), 0);
+  const budget = dayBudget({ c, settings: ctx.settings(), dueN, priorityLeft: pLeft, newShown: day.newShown || 0, poolLeft: unseen });
+  base.newPerDay = budget.newPerDay;
   // Today's plan reads these without loading content
-  const s = session(ctx.store), stats = { day: c.today, priorityLeft: pLeft, pool: data.pool.length, newPerDay: base.newPerDay };
+  const s = session(ctx.store), stats = { day: c.today, priorityLeft: pLeft, pool: data.pool.length, unseen, newPerDay: base.newPerDay };
   if (JSON.stringify(s.stats) !== JSON.stringify(stats)) ctx.store.set('b1.session', { ...s, stats });
-  return { ...base, examSet: C.examSet(base), dueN };
+  return { ...base, dueN, budget };
 }
 
 /** A forecast(day) for the scheduler's load balancing, from the cards as they are now (due dates capped for the exam). @param {Record<string, any>} cards @param {any} c the clock context */

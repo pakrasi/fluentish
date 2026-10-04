@@ -13,6 +13,7 @@ import { summaryText } from '../../data/migrate.js';
 import { exportBundle, importFile } from '../../data/transfer.js';
 import { deleteProfile } from '../../data/session.js';
 import { notSentCount } from '../../data/sync/github-b1exam.js';
+import { newPerDayChosen } from '../../domain/budget.js';
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
 export async function mount(el, ctx) {
@@ -133,7 +134,7 @@ export async function mount(el, ctx) {
     const sec = section(t('profile.practice'));
     sec.id = 'profile-practice';
     const perDay = h('div', { class: 'form-field' }, h('p', { class: 'field-label' }, t('practice.newPerDay')),
-      seg({ label: t('practice.newPerDay'), value: s.newPerDay == null ? 'auto' : String(s.newPerDay),
+      seg({ label: t('practice.newPerDay'), value: newPerDayChosen(s) ? String(s.newPerDay) : 'auto',
         options: [['auto', t('practice.newAuto')], ...[10, 20, 30, 40].map(n => /** @type {[string, string]} */ ([String(n), String(n)]))],
         onChange: v => write('newPerDay', v === 'auto' ? null : Number(v)) }),
       h('p', { class: 'field-hint' }, t('practice.newPerDay.hint')));

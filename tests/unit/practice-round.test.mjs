@@ -103,7 +103,7 @@ test('composer: first round, due first, new caps, traps, fix last', () => {
 test('new items a day follow the exam date and the minutes', () => {
   const settings = { newPerDay: null, minutesPerDay: 60, exam: { type: 'goethe-b1' } };
   assert.equal(C.dailyNew({ c: context({ today: '2026-10-08', exam: EXAM }), settings, dueN: 10, priorityLeft: 100 }), 0, 'eve');
-  assert.equal(C.dailyNew({ c: context({ today: '2026-10-03', exam: EXAM }), settings: { ...settings, newPerDay: 25 }, dueN: 10, priorityLeft: 100 }), 25);
+  assert.equal(C.dailyNew({ c: context({ today: '2026-10-03', exam: EXAM }), settings: { ...settings, newPerDay: 25, rev: { newPerDay: 'x' } }, dueN: 10, priorityLeft: 100 }), 25);
   // 6 days left, 5 new-days (to exam−2): pace = ceil(100 / 5) = 20; minutes fit (30 − 10/3)/0.75 = 35
   assert.equal(C.dailyNew({ c: context({ today: '2026-10-03', exam: EXAM }), settings, dueN: 10, priorityLeft: 100 }), 20);
   assert.equal(C.dailyNew({ c: context({ today: '2026-10-03', exam: EXAM }), settings, dueN: 10, priorityLeft: 1000 }), 35, 'minutes win');

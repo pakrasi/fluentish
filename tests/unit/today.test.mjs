@@ -29,7 +29,19 @@ test('one mock module may run over the minutes; nothing else does', () => {
   const ctx = context({ today: '2026-10-03', exam: '2026-10-09' });
   const r = composeToday({ ctx, budget: 60, items: [item('review', { priority: 20, minutes: 8 }), item('mock', { kind: 'mock', mock: true, priority: 30, minutes: 65 }), item('speak', { kind: 'speak', priority: 50, minutes: 6 })] });
   assert.deepEqual(ids(r), ['review', 'mock']);
-  assert.equal(r.minutes.planned, 73);
+  assert.equal(r.rows[0].minutes, 4, 'the review round is cut to one round');
+  assert.equal(r.rows[0].cut, true);
+  assert.equal(r.minutes.planned, 69);
+  assert.deepEqual(r.minutes.mock, { title: 'mock', minutes: 65 });
+  assert.deepEqual(r.extra.map(x => x.id), ['speak'], 'what did not fit is listed, not just counted');
+});
+
+test('without a mock the plan never runs over: a long review round is cut to whole rounds that fit', () => {
+  const ctx = context({ today: '2026-10-03', exam: '2026-10-09' });
+  const r = composeToday({ ctx, budget: 30, items: [item('review', { priority: 20, minutes: 48, rounds: 12 }), item('speak', { kind: 'speak', priority: 50, minutes: 6 })] });
+  assert.deepEqual(ids(r), ['review']);
+  assert.equal(r.rows[0].minutes, 28); assert.equal(r.rows[0].rounds, 7); assert.equal(r.minutes.planned, 28);
+  assert.equal(r.minutes.cut, true); assert.equal(r.minutes.mock, null);
 });
 
 test('a small budget still gets the first row', () => {
@@ -74,4 +86,25 @@ test('feedback is capped at three with a count of the rest', () => {
 
 test('round minutes', () => {
   assert.equal(roundMinutes(0), 4); assert.equal(roundMinutes(12), 4); assert.equal(roundMinutes(38), 13);
+});
+
+test('one budget: new items, rounds and minutes; a carried-over number counts as Auto', async () => {
+  const { dayBudget, newPerDayChosen, streamQuota } = await import('../../src/domain/budget.js');
+  const s = { minutesPerDay: 60, newPerDay: null, exam: { type: 'goethe-b1' }, rev: {} };
+  const c = context({ today: '2026-10-03', exam: '2026-10-09' });
+  const b = dayBudget({ c, settings: s, dueN: 24, priorityLeft: 100, newShown: 0 });
+  // 6 days left, 5 new-days: pace 20; fit (30 − 8) / 0.75 = 29 → 20 new; 8 + 15 = 23 min → 6 rounds, 24 min
+  assert.equal(b.newPerDay, 20); assert.equal(b.newLeft, 20); assert.equal(b.rounds, 6); assert.equal(b.minutes, 24);
+  assert.deepEqual(b.pace, { lastNew: '2026-10-07', left: 100, needed: 20, reach: 100, fits: true });
+  const legacy = { ...s, newPerDay: 30 };
+  assert.equal(newPerDayChosen(legacy), false, 'Igloo\'s 30 a day has no rev stamp');
+  assert.equal(dayBudget({ c, settings: legacy, dueN: 24, priorityLeft: 100 }).newPerDay, 20, 'so Auto applies');
+  assert.equal(dayBudget({ c, settings: { ...legacy, rev: { newPerDay: 'x' } }, dueN: 24, priorityLeft: 100 }).newPerDay, 30, 'a number chosen here is kept');
+  // the pace line moves with the horizon
+  const far = dayBudget({ c: context({ today: '2026-10-03', exam: '2026-10-30' }), settings: s, dueN: 0, priorityLeft: 100 });
+  assert.equal(far.pace.needed, 4);
+  const short = dayBudget({ c: context({ today: '2026-10-03', exam: '2026-10-07' }), settings: s, dueN: 0, priorityLeft: 200 });
+  assert.equal(short.pace.needed, 67); assert.equal(short.newPerDay, 40, 'the minutes cap it'); assert.equal(short.pace.fits, false); assert.equal(short.pace.reach, 120);
+  for (const n of [0, 1, 7, 20, 55]) assert.equal(streamQuota(n, 'p') + streamQuota(n, 'g'), n);
+  assert.equal(dayBudget({ c: context({ today: '2026-10-08', exam: '2026-10-09' }), settings: s, dueN: 0, priorityLeft: 9 }).rounds, 0, 'eve, nothing due: no rounds');
 });

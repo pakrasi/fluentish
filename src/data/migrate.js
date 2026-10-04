@@ -77,7 +77,7 @@ export function planMigration(snap, { profileId, deviceId, now, uuid = ms => uui
   /** @type {Record<string, any>} */ const kv = {};
   const summary = { cards: 0, cardsSkipped: 0, attempts: 0, attemptsUnsent: 0, drafts: 0, trainingTexts: 0, words: 0, wordsUnsent: 0,
     voiceNotes: 0, feedback: 0, examDate: /** @type {string|null} */ (null), keys: /** @type {string[]} */ ([]), theme: null,
-    iglooCards: 0, legacyKeys: Object.keys(snap).length };
+    iglooCards: 0, legacyKeys: Object.keys(snap).length, newPerDay: /** @type {number | null} */ (null) };
 
   // ---- settings: the goal comes from what the legacy apps were used for ----
   const settings = normalizeSettings(null);
@@ -92,7 +92,9 @@ export function planMigration(snap, { profileId, deviceId, now, uuid = ms => uui
   }
   if (isDay(examDate)) { settings.exam.date = examDate; summary.examDate = examDate; }
   const b1s = json(snap['doors.b1.settings.v1'], {});
-  if (Number.isInteger(b1s.newPerDay)) settings.newPerDay = Math.max(0, Math.min(200, b1s.newPerDay));
+  // Igloo's "new items per day" is not carried over: here Auto paces new items to the exam date and the minutes. The
+  // old number is kept in the summary and shown once in the import notice.
+  if (Number.isInteger(b1s.newPerDay)) summary.newPerDay = Math.max(0, Math.min(200, b1s.newPerDay));
   if (typeof b1s.claude === 'boolean') settings.practice.claudeCheck = b1s.claude;
   if (b1s.layout && b1s.layout !== 'docked') settings.practice.simpleInput = true;
   const iglooPrefs = json(snap['doors.prefs.v2'], {});
