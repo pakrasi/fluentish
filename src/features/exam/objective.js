@@ -55,8 +55,8 @@ function renderParts({ ex, module, answers, review, key, onPick, t, audio }) {
         review ? h('p', { class: ['ex-mark', mine === right ? 'is-right' : 'is-wrong'] }, mine === right ? t('exam.de.markRight') : t('exam.de.markWrong', { right })) : null);
     }));
     const ads = h('div', { class: 'ex-ads', id: 'l3-ads' }, L.teil3.ads.map((/** @type {any} */ a) => h('div', { class: 'ex-ad' }, h('p', { class: 'ex-ad-t' }, h('b', { class: 'ex-ad-l' }, a.letter), ' ', a.title), h('p', null, a.text))));
-    parts.push(h('div', null, instr(t('exam.de.l3'), ' ', L.teil3.intro.replace(/Situationen 1\s*[–-]\s*7/, 'Situationen 13–19')), sit,
-      h('h3', { class: 'ex-sub' }, t('exam.de.ads')), ads));
+    parts.push(h('div', null, instr(t('exam.de.l3'), ' ', L.teil3.intro.replace(/Situationen 1\s*[–-]\s*7/, 'Situationen 13–19')),
+      h('div', { class: 'ex-l3' }, sit, h('div', null, h('h3', { class: 'ex-sub' }, t('exam.de.ads')), ads))));
     parts.push(h('div', null, instr(t('exam.de.l4'), ' ', h('b', null, L.teil4.question)),
       h('div', { class: 'ex-items' }, L.teil4.comments.map((/** @type {any} */ c, /** @type {number} */ i) => h('div', { class: 'ex-item', dataset: { item: c.id } },
         h('p', { class: 'ex-q' }, num(20 + i), h('b', null, c.author)), h('p', { class: 'ex-prose ex-comment' }, c.text),

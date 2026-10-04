@@ -112,8 +112,8 @@
 .ex-opt.is-wrong, .ex-opt.is-wrong:has(input:checked) { border-color: var(--bad); box-shadow: inset 0 0 0 1px var(--bad); background: var(--bad-soft); }
 .ex-opt.is-wrong .ex-opt-tag { color: var(--bad); }
 .ex-opt:has(input:disabled) { cursor: default; }
-.ex-letters { display: flex; flex-wrap: wrap; gap: 6px; margin-top: var(--s-3); }
-.ex-letter { width: 40px; height: 40px; border-radius: var(--r-ctl); border: 1px solid var(--hairline-strong); background: var(--canvas); color: var(--ink); font: 600 15px/1 var(--font-ui); cursor: pointer; }
+.ex-letters { display: flex; flex-wrap: wrap; gap: 4px; margin-top: var(--s-3); }
+.ex-letter { width: 38px; height: 40px; border-radius: var(--r-ctl); border: 1px solid var(--hairline-strong); background: var(--canvas); color: var(--ink); font: 600 15px/1 var(--font-ui); cursor: pointer; }
 .ex-letter.is-on { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
 .ex-letter:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .ex-letter.is-right { border-color: var(--ok); box-shadow: inset 0 0 0 1px var(--ok); }
@@ -123,7 +123,12 @@
 .ex-mark.is-right { color: var(--ok); } .ex-mark.is-wrong { color: var(--bad); }
 .ex-sub { margin-top: var(--s-6); font: 400 22px/1.2 var(--font-display); }
 .ex-ads { display: grid; gap: var(--s-3); margin-top: var(--s-3); }
-@media (min-width: 720px) { .ex-ads { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 720px) and (max-width: 959px) { .ex-ads { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 960px) {
+  .ex-l3 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--s-5); align-items: start; }
+  .ex-l3 > #l3-sit { position: sticky; top: 72px; max-height: calc(100vh - 96px); overflow: auto; }
+  .ex-l3 .ex-sub { margin-top: var(--s-4); }
+}
 .ex-ad { padding: var(--s-4); border-radius: var(--r-ctl); background: var(--surface); box-shadow: inset 0 0 0 1px var(--hairline); font-size: 15px; line-height: 1.45; }
 .ex-ad-t { font-weight: 600; margin-bottom: 4px; }
 .ex-ad-l { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 6px; background: var(--ink); color: var(--on-ink); font-size: 13px; }
