@@ -48,10 +48,13 @@ export async function mount(el, ctx) {
       return;
     }
     /** @type {any} */ let cleanup = null;
+    // "Get correction" on Today and the test page links here with ?correct=1: the correction starts at once, once
+    let autoCorrect = ctx.query.get('correct') === '1';
     const render = async () => {
       const fresh = findAttempt(ctx.store, exam.id, attempt.id) || attempt;
       if (typeof cleanup === 'function') cleanup();
-      if (def.id === 'schreiben') cleanup = await reviewSchreiben(page, ctx, { exam, n, ex, def, attempt: fresh });
+      const auto = autoCorrect; autoCorrect = false;
+      if (def.id === 'schreiben') cleanup = await reviewSchreiben(page, ctx, { exam, n, ex, def, attempt: fresh, autoCorrect: auto });
       else if (def.id === 'sprechen') cleanup = await reviewSprechen(page, ctx, { exam, n, ex, def, attempt: fresh });
       else cleanup = await reviewObjective(page, ctx, { exam, n, module: def.id, ex, def, attempt: fresh, focusItem: ctx.query.get('item') });
     };

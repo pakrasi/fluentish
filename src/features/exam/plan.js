@@ -100,14 +100,15 @@ export function todayFeedback({ store, exam, t }) {
     if (f.seen || !f.module || !f.day) continue;
     const a = last.get(`${f.day}:${f.module}`);
     if (!a || !feedbackFor(store, exam.id, a).cur.some(x => x.id === f.id)) continue;
-    rows.push({ id: `fb.${f.id}`, title: `${f.module === 'sprechen' ? 'Sprechen' : f.module === 'schreiben' ? 'Schreiben' : f.module === 'lesen' ? 'Lesen' : 'Hören'} · ${t('exam.test', { n: f.day })}`,
-      status: t('feedback.new'), href: `#/exam/${f.day}/${f.module}/review/${encodeURIComponent(a.id)}`, action: t('feedback.read') });
+    const title = `${f.module === 'sprechen' ? 'Sprechen' : f.module === 'schreiben' ? 'Schreiben' : f.module === 'lesen' ? 'Lesen' : 'Hören'} · ${t('exam.test', { n: f.day })}`;
+    rows.push({ id: `fb.${f.id}`, title, status: t('feedback.new'), href: `#/exam/${f.day}/${f.module}/review/${encodeURIComponent(a.id)}`, action: t('feedback.read'), label: t('feedback.readLabel', { title }) });
   }
   const pending = [...last.values()].filter(a => a.module === 'schreiben' && !a.remote && (a.writings || []).some((/** @type {any} */ w) => w.text) && !feedbackFor(store, exam.id, a).cur.length)
     .sort((a, b) => a.day - b.day);
   for (const a of pending) {
-    rows.push({ id: `uncorrected.${a.id}`, title: `Schreiben · ${t('exam.test', { n: a.day })}`, status: t('feedback.notCorrected'),
-      href: `#/exam/${a.day}/schreiben/review/${encodeURIComponent(a.id)}`, action: t('feedback.correct') });
+    const title = `Schreiben · ${t('exam.test', { n: a.day })}`;
+    rows.push({ id: `uncorrected.${a.id}`, title, status: t('feedback.notCorrected'),
+      href: `#/exam/${a.day}/schreiben/review/${encodeURIComponent(a.id)}?correct=1`, action: t('feedback.correct'), label: t('feedback.correctLabel', { title }) });
   }
   return rows;
 }

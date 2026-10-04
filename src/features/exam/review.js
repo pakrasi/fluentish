@@ -48,9 +48,9 @@ function feedbackEntry(ctx, f) {
 /**
  * Feedback for an attempt: the current entries, then older attempts' behind a disclosure. For Schreiben, "Correct now"
  * when nothing is there yet, and "Practise these mistakes" once corrections exist.
- * @param {{ ctx: any, exam: any, attempt: any, fb: {cur: any[], older: any[]}, ex?: any }} o
+ * @param {{ ctx: any, exam: any, attempt: any, fb: {cur: any[], older: any[]}, ex?: any, autoCorrect?: boolean }} o
  */
-export function feedbackBlock({ ctx, exam, attempt, fb, ex = null }) {
+export function feedbackBlock({ ctx, exam, attempt, fb, ex = null, autoCorrect = false }) {
   const { t, store } = ctx;
   const box = h('section', { class: 'ex-feedback', 'aria-labelledby': 'ex-fb-h' }, h('h2', { id: 'ex-fb-h' }, t('exam.fb.title')));
   if (fb.cur.length) {
@@ -59,7 +59,7 @@ export function feedbackBlock({ ctx, exam, attempt, fb, ex = null }) {
     if (mistakes) box.append(mistakesButton(ctx, attempt, fb.cur, mistakes));
     if (attempt.module === 'schreiben' && !attempt.remote) box.append(h('div', { class: 'ex-recorrect' }, correctionBlock({ ctx, exam, attempt, ex, again: true })));
   } else if (attempt.module === 'schreiben') {
-    box.append(correctionBlock({ ctx, exam, attempt, ex }));
+    box.append(correctionBlock({ ctx, exam, attempt, ex, auto: autoCorrect }));
   } else if (attempt.module === 'sprechen') {
     box.append(h('p', { class: 'caption' }, linked(store) ? t('exam.fb.sprechenWait') : t('exam.fb.sprechenNotLinked')));
   } else {
@@ -119,10 +119,12 @@ async function runCorrection(ctx, exam, attempt, ex) {
 }
 
 /**
- * "Correct now" for one Schreiben attempt. variant 'row' is the compact button for Today-like lists.
- * @param {{ ctx: any, exam: any, attempt: any, ex?: any, again?: boolean }} o
+ * "Get correction" for one Schreiben attempt. auto: start it at once (the learner already asked on Today or the test
+ * page). A reply that is not a correction is never saved: the error shows with Try again and the attempt stays
+ * "not corrected".
+ * @param {{ ctx: any, exam: any, attempt: any, ex?: any, again?: boolean, auto?: boolean }} o
  */
-export function correctionBlock({ ctx, exam, attempt, ex = null, again = false }) {
+export function correctionBlock({ ctx, exam, attempt, ex = null, again = false, auto = false }) {
   const { t, store } = ctx;
   const box = h('div', { class: 'ex-correct', 'aria-live': 'polite' });
   const k = String(attempt.id);
@@ -140,8 +142,9 @@ export function correctionBlock({ ctx, exam, attempt, ex = null, again = false }
       return;
     }
     const words = (attempt.writings || []).filter((/** @type {any} */ w) => /^aufgabe/.test(w.aufgabe)).map((/** @type {any} */ w) => w.word_count ?? wordCount(w.text));
+    const written = (attempt.writings || []).filter((/** @type {any} */ w) => /^aufgabe/.test(w.aufgabe) && String(w.text || '').trim()).length;
     replace(box,
-      h('p', null, running ? t('exam.correct.runningLong') : t('exam.correct.none')),
+      h('p', null, running ? t('exam.correct.runningLong', { n: written }) : t('exam.correct.none')),
       words.length ? h('p', { class: 'caption' }, t('exam.correct.words', { list: words.join(' / ') })) : null,
       job.error ? h('p', { class: 'field-error', role: 'alert' }, job.error) : null,
       hasKey
@@ -151,6 +154,10 @@ export function correctionBlock({ ctx, exam, attempt, ex = null, again = false }
       running ? h('p', { class: 'caption' }, t('exam.correct.canLeave')) : null);
   };
   draw();
+  if (auto && job.status === 'idle' && (store.get('secrets', {}) || {}).anthropicKey) {
+    history.replaceState(history.state, '', location.hash.replace(/[?&]correct=1/, ''));
+    runCorrection(ctx, exam, attempt, ex);
+  }
   return box;
 }
 
@@ -171,9 +178,9 @@ export async function nextCard(ctx, exam, n) {
 /* ---------- Schreiben and Sprechen reviews ---------- */
 
 /**
- * @param {HTMLElement} el @param {any} ctx @param {{ exam: any, n: number, ex: any, def: any, attempt: any, focusCorrection?: boolean }} o
+ * @param {HTMLElement} el @param {any} ctx @param {{ exam: any, n: number, ex: any, def: any, attempt: any, autoCorrect?: boolean }} o
  */
-export async function reviewSchreiben(el, ctx, { exam, n, ex, def, attempt }) {
+export async function reviewSchreiben(el, ctx, { exam, n, ex, def, attempt, autoCorrect = false }) {
   const { store, t } = ctx;
   const S = ex.schreiben;
   const fb = feedbackFor(store, exam.id, attempt);
@@ -187,7 +194,7 @@ export async function reviewSchreiben(el, ctx, { exam, n, ex, def, attempt }) {
     h('p', { class: 'caption tnum' }, t('exam.words', { n: wordCount(texts[k]), target: S[k].words })));
   replace(el, h('div', { class: 'ex-review' },
     reviewHead({ ctx, n, def, attempt, score: null, max: 100, pass: false, topic: ex.topic, status: sl ? sl.split(' · ')[0].replace(/^circa/, t('exam.about')) : t('exam.notCorrected') }),
-    feedbackBlock({ ctx, exam, attempt, fb, ex }),
+    feedbackBlock({ ctx, exam, attempt, fb, ex, autoCorrect }),
     h('section', { class: 'ex-texts', 'aria-labelledby': 'ex-texts-h' }, h('h2', { id: 'ex-texts-h' }, t('exam.yourTexts')), ['aufgabe1', 'aufgabe2', 'aufgabe3'].map((k, i) => task(k, i + 1))),
     await nextCard(ctx, exam, n)));
 }

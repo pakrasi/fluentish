@@ -93,11 +93,11 @@ export default {
   'exam.mistakes.open': 'Open Practice',
   'exam.correct.none': 'This version is not corrected yet.',
   'exam.correct.words': 'Words per task: {list}',
-  'exam.correct.now': 'Correct now',
+  'exam.correct.now': 'Get correction',
   'exam.correct.again': 'Correct again',
   'exam.correct.retry': 'Try again',
   'exam.correct.running': 'Correcting…',
-  'exam.correct.runningLong': 'Claude is reading your three texts. This takes about a minute.',
+  'exam.correct.runningLong': 'Correcting {n} texts. This takes about a minute.',
   'exam.correct.canLeave': 'You can leave this page; the correction keeps going.',
   'exam.correct.needKey': 'Corrections need a Claude API key.',
   'exam.correct.addKey': 'Add one in Profile',
@@ -112,6 +112,7 @@ export default {
   'exam.correct.err.refusal': 'The correction was declined. Try again.',
   'exam.correct.err.cut': 'The answer was cut off. Try again.',
   'exam.correct.err.empty': 'The answer was empty. Try again.',
+  'exam.correct.err.format': 'The reply was not a correction, so it was not saved. Try again.',
   'exam.correct.err.other': 'The correction did not work. Try again.',
   'exam.sync.notLinked': 'Results stay on this device until it is linked to your results repository.',
   'exam.sync.link': 'Link in Profile',
@@ -299,7 +300,9 @@ export default {
 
   // feedback rows
   'feedback.notCorrected': 'Not corrected',
-  'feedback.correct': 'Correct now',
+  'feedback.correct': 'Get correction',
+  'feedback.correctLabel': 'Get correction: {title}',
+  'feedback.readLabel': 'Read the correction: {title}',
   'feedback.new': 'New correction',
   'feedback.read': 'Read',
 

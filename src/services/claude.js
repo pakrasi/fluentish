@@ -97,12 +97,24 @@ export async function ask({ key, system = '', user, model = config.anthropic.mod
 }
 
 /**
- * Correct one Schreiben attempt. The body always starts with a "! " score line, as the review expects.
+ * Whether a reply has the shape of a correction: the score line ("! circa NN / 100 · …") and at least one task
+ * section ("## Aufgabe N"). Anything else (JSON, a refusal in prose, half an answer) is not saved as a correction.
+ * @param {string} text
+ */
+export function isCorrection(text) {
+  const s = String(text || '').trim();
+  return /^!\s*[^\n]*\d+\s*\/\s*100/.test(s) && /^##\s*Aufgabe\s*\d/m.test(s);
+}
+
+/**
+ * Correct one Schreiben attempt. Throws ClaudeError('format') when the reply is not a correction, so the attempt
+ * stays "not corrected" and the learner can try again.
  * @param {{ key: string, ex: any, texts: Record<string, string>, learnerNotes?: string | null, fetch?: typeof fetch }} o
  */
 export async function correctSchreiben({ key, ex, texts, learnerNotes, fetch: f }) {
   const res = await ask({ key, system: graderSystem(learnerNotes), user: graderMessage(ex, texts), fetch: f });
-  const body = /^! /.test(res.text) ? res.text : `! Korrektur\n${res.text}`;
+  const body = res.text.replace(/^```[a-z]*\n?|\n?```$/g, '').trim();
+  if (!isCorrection(body)) throw new ClaudeError('format', body.slice(0, 200));
   return { body, model: res.model };
 }
 

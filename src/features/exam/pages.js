@@ -135,7 +135,7 @@ export async function testPage(el, ctx, exam, n) {
           a ? h('p', { class: 'caption' }, when(a.submitted_at)) : null),
         h('div', { class: 'ex-mod-actions' },
           h('a', { class: ['btn pressable', (started || m.id === firstOpen) && !a ? 'btn-primary' : null], href: main.href }, main.text),
-          uncorrected ? h('a', { class: 'btn pressable', href: `${reviewHref}` }, t('feedback.correct')) : null,
+          uncorrected ? h('a', { class: 'btn pressable', href: `${reviewHref}?correct=1` }, t('feedback.correct')) : null,
           started && a ? h('a', { class: 'btn btn-quiet pressable', href: reviewHref }, t('exam.lastResult')) : null,
           a && !started ? h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => replace(confirmSlot, confirmPanel({
             title: t('exam.again.q', { module: m.name, n }), lines: [t('exam.again.detail')], yes: t('exam.again.yes'), no: t('exam.again.no'),

@@ -31,6 +31,7 @@
 /**
  * @typedef {object} FeedbackRow
  * @property {string} id @property {string} title @property {string} status @property {string} href @property {string} [action]
+ * @property {string} [label]   accessible name of the action, when several rows share the same action text
  */
 /**
  * @typedef {object} ModuleBar

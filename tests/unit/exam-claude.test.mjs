@@ -32,9 +32,11 @@ test('the user message carries all three tasks and texts', () => {
 
 test('request shape, the score line, and errors', async () => {
   let seen = null;
-  const ok = async (url, init) => { seen = { url, init, body: JSON.parse(init.body) }; return new Response(JSON.stringify({ model: 'm', stop_reason: 'end_turn', content: [{ type: 'thinking', thinking: '' }, { type: 'text', text: 'Gut gemacht.' }] }), { status: 200 }); };
+  const BODY = '! circa 62 / 100 · bestanden\nGut gemacht.\n## Aufgabe 1 · Einladung · circa 26 / 40';
+  const reply = (/** @type {string} */ text) => async (url, init) => { seen = { url, init, body: JSON.parse(init.body) }; return new Response(JSON.stringify({ model: 'm', stop_reason: 'end_turn', content: [{ type: 'thinking', thinking: '' }, { type: 'text', text }] }), { status: 200 }); };
+  const ok = reply(BODY);
   const r = await correctSchreiben({ key: 'k', ex, texts: { aufgabe1: 'x' }, learnerNotes: 'N', fetch: ok });
-  assert.equal(r.body, '! Korrektur\nGut gemacht.');
+  assert.equal(r.body, BODY);
   assert.equal(seen.url, 'https://api.anthropic.com/v1/messages');
   assert.equal(seen.init.headers['x-api-key'], 'k');
   assert.equal(seen.init.headers['anthropic-dangerous-direct-browser-access'], 'true');
@@ -50,6 +52,15 @@ test('request shape, the score line, and errors', async () => {
   await assert.rejects(ask({ key: 'k', system: 's', user: 'u', fetch: fail(200, { stop_reason: 'refusal', content: [] }) }), e => e.code === 'refusal');
   await assert.rejects(ask({ key: 'k', system: 's', user: 'u', fetch: async () => { throw new TypeError('Load failed'); } }), e => e.code === 'offline');
   await assert.rejects(ask({ key: '', system: 's', user: 'u' }), e => e.code === 'nokey');
+});
+
+test('a reply that is not a correction is never saved as one', async () => {
+  const reply = (/** @type {string} */ text) => async () => new Response(JSON.stringify({ model: 'm', stop_reason: 'end_turn', content: [{ type: 'text', text }] }), { status: 200 });
+  for (const bad of ['Gut gemacht.', '{"verdict":"correct","note":"ok"}', '! circa 62 / 100 · bestanden\nOhne Aufgaben.']) {
+    await assert.rejects(correctSchreiben({ key: 'k', ex, texts: {}, fetch: reply(bad) }), e => e instanceof ClaudeError && e.code === 'format', bad);
+  }
+  const fenced = await correctSchreiben({ key: 'k', ex, texts: {}, fetch: reply('```markdown\n! circa 50 / 100 · nicht bestanden\n## Aufgabe 1 · x · circa 20 / 40\n```') });
+  assert.match(fenced.body, /^! circa 50/);
 });
 
 test('the answer check (Practice) uses the small model without effort or fallbacks', async () => {
