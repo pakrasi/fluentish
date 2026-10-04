@@ -308,7 +308,7 @@ export async function mountRound(el, ctx) {
     if (recorded) return;
     recorded = true;
     const cards = store.cards('b1');
-    const res = S.answer({ round, entry, o: { ...o, revealed }, cards, day, c: st.c, forecast: forecaster(cards, st.c.today), now: Date.now(), tz: tz() });
+    const res = S.answer({ round, entry, o: { ...o, revealed }, cards, day, c: st.c, forecast: forecaster(cards, st.c), now: Date.now(), tz: tz() });
     saveAnswer(store, entry.item.id, res.rec, res.event, { round, day });
     updateDots();
   }
@@ -401,7 +401,7 @@ export async function mountRound(el, ctx) {
         if (cur !== entry) return;
         if (v.verdict === 'correct' || v.verdict === 'minor') {
           const cards = store.cards('b1');
-          const res = S.override({ round, entry: cur, ms: 0, c: st.c, forecast: forecaster(cards, st.c.today), now: Date.now(), tz: tz() });
+          const res = S.override({ round, entry: cur, ms: 0, c: st.c, forecast: forecaster(cards, st.c), now: Date.now(), tz: tz() });
           const variants = [...(session(store).variants || []), { id: cur.item.id, answer: full(typed), at: Date.now() }].slice(-200);
           saveAnswer(store, cur.item.id, res.rec, res.event, { round, day, variants });
           updateDots();
@@ -523,7 +523,7 @@ export async function mountRound(el, ctx) {
   }
   function drawNothing() {
     const c = st.c;
-    const tomorrow = RD.forecast(store.cards('b1'), c.today, 2)[1]?.n || 0;
+    const tomorrow = RD.forecast(store.cards('b1'), c.today, 2, c)[1]?.n || 0;
     replace(el, h('div', { class: 'practice pr-done stack' },
       h('p', { class: 'label' }, t('practice.round')),
       h('h1', null, spec.kind === 'missed' ? t('practice.nothing.missed') : spec.kind === 'mistakes' ? t('practice.nothing.mistakes') : t('practice.nothing.title')),
@@ -549,12 +549,12 @@ function drawDone(el, ctx, data, round) {
   const sum = S.summary(round, data.byId);
   // readiness before = the same store with only this round's items rolled back
   const pool = data.pool.filter((/** @type {any} */ it) => it.area !== 'mistakes');
-  const rd = (/** @type {any} */ cards) => RD.compute({ pool, store: cards, today: c.today, exam: c.exam, phase: c.phase, examSet: st.examSet });
+  const rd = (/** @type {any} */ cards) => RD.compute({ pool, store: cards, today: c.today, exam: c.exam, phase: c.phase });
   const now = store.cards('b1'), before = { ...now };
   for (const [id, r] of Object.entries(round.prev || {})) { if (r) before[id] = r; else delete before[id]; }
   const a = rd(now).overall, b = rd(before).overall;
   const more = st.dueN > 0 || C.newLeft(st) > 0;
-  const tomorrow = RD.forecast(now, c.today, 2)[1]?.n || 0;
+  const tomorrow = RD.forecast(now, c.today, 2, c)[1]?.n || 0;
   const p1 = (/** @type {number} */ x) => (100 * (x || 0)).toFixed(1);
   const short = (/** @type {any} */ it) => it.model || it.prompt;
   const list = (/** @type {string} */ title, /** @type {any[]} */ items) => items.length ? h('section', { class: 'pr-list' }, h('h2', null, title),

@@ -45,7 +45,7 @@ async function mountWords(el, ctx) {
     let card = null;
     if (data && n) {
       const s = stateFor(ctx, data);
-      const x = RD.compute({ pool: data.pool.filter((/** @type {any} */ it) => it.area === 'words'), store: s.cards, today: c.today, exam: c.exam, phase: c.phase, examSet: null }).areas.words;
+      const x = RD.compute({ pool: data.pool.filter((/** @type {any} */ it) => it.area === 'words'), store: s.cards, today: c.today, exam: c.exam, phase: c.phase }).areas.words;
       if (x) card = h('p', { class: 'label' }, t('practice.words.state', { seen: x.seen, n: x.n, due: x.due }));
     }
     replace(el, h('div', { class: 'practice stack' }, back('#/practice', t('practice.title')),

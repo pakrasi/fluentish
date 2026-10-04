@@ -100,7 +100,7 @@ export async function mount(el, ctx) {
       };
     }
     // no date, or after the exam: the review queue is the number; the last 28 days below it
-    const due = Object.values(store.cards('b1')).filter(r => isDue(r, c.today)).length;
+    const due = Object.values(store.cards('b1')).filter(r => isDue(r, c.today, c)).length;
     const num = h('span', { class: 'numeral' }, String(due));
     const daysEl = h('div', { class: 'days' });
     const lead = c.phase === 'after'

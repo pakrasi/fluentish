@@ -1,10 +1,10 @@
 /* Profile settings (settings@1) and device prefs (prefs@1): defaults, field-level writes and the exam date.
 
    The exam date has exactly one home, settings.exam.date, and one reader, core/clock.js. setExamDate() is the only
-   writer: it validates the date, records it per field on the hybrid logical clock, appends a settings.changed event,
-   re-caps reviews when the date moves earlier (fsrs.recap), and publishes settings:changed so Today re-renders. */
-import { recap } from '../domain/fsrs.js';
-import { context, isDay } from '../core/clock.js';
+   writer: it validates the date, records it per field on the hybrid logical clock, appends a settings.changed event
+   and publishes settings:changed so Today re-renders. It never touches a card: the exam cap on review dates is
+   applied when due dates are read (domain/b1ready.js dueOn), so moving the date back and forth is always safe. */
+import { isDay } from '../core/clock.js';
 
 export const MODULES = /** @type {const} */ (['lesen', 'hoeren', 'schreiben', 'sprechen']);
 
@@ -90,26 +90,15 @@ export function examDateError(date, today) {
  * The one writer of the exam date.
  * @param {{store: any, hlc: {tick: () => string}, bus?: any, clock: {today: () => string}}} app
  * @param {string | null} date
- * @returns {{ok: boolean, error?: string, prev?: string | null, moved: number}}
+ * @returns {{ok: boolean, error?: string, prev?: string | null}}
  */
 export function setExamDate(app, date) {
   const today = app.clock.today();
   const value = date || null;
   const error = examDateError(value, today);
-  if (error) return { ok: false, error, moved: 0 };
+  if (error) return { ok: false, error };
   const prev = normalizeSettings(app.store.get('settings')).exam.date;
-  if (prev === value) return { ok: true, prev, moved: 0 };
-  // earlier than before (or newly set): reviews due after the new cap would miss their pre-exam review
-  let moved = 0;
-  if (value && (!prev || value < prev)) {
-    const ctx = context({ today, exam: value });
-    for (const deck of Object.keys(app.store.cardsByDeck)) {
-      if (deck !== 'b1') continue;   // the FSRS deck; Igloo's SM-2 cards stay with Igloo until Drill moves here
-      const out = recap(app.store.cards(deck), ctx);
-      const entries = Object.entries(out).map(([id, due]) => /** @type {[string, any]} */ ([id, { ...app.store.cards(deck)[id], due }]));
-      if (entries.length) { app.store.putCards(deck, entries); moved += entries.length; }
-    }
-  }
+  if (prev === value) return { ok: true, prev };
   setSetting(app, 'exam.date', value);
-  return { ok: true, prev, moved };
+  return { ok: true, prev };
 }

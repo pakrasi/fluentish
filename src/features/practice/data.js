@@ -62,7 +62,7 @@ export function stateFor(ctx, data) {
   const cards = ctx.store.cards('b1');
   const day = dayLog(ctx.store, c.today);
   const base = { data, cards, day, c, newPerDay: 0 };
-  const dueN = data.pool.reduce((/** @type {number} */ n, /** @type {any} */ it) => n + (RD.isDue(cards[it.id], c.today) ? 1 : 0), 0);
+  const dueN = data.pool.reduce((/** @type {number} */ n, /** @type {any} */ it) => n + (RD.isDue(cards[it.id], c.today, c) ? 1 : 0), 0);
   const pLeft = C.priorityLeft(base);
   base.newPerDay = C.dailyNew({ c, settings: ctx.settings(), dueN, priorityLeft: pLeft });
   // Today's plan reads these without loading content
@@ -71,9 +71,9 @@ export function stateFor(ctx, data) {
   return { ...base, examSet: C.examSet(base), dueN };
 }
 
-/** A forecast(day) for the scheduler's load balancing, from the cards as they are now. @param {Record<string, any>} cards @param {string} today */
-export function forecaster(cards, today) {
-  const fc = RD.forecast(cards, today, 8);
+/** A forecast(day) for the scheduler's load balancing, from the cards as they are now (due dates capped for the exam). @param {Record<string, any>} cards @param {any} c the clock context */
+export function forecaster(cards, c) {
+  const fc = RD.forecast(cards, c.today, 8, c);
   return (/** @type {string} */ d) => fc.find(x => x.day === d)?.n || 0;
 }
 

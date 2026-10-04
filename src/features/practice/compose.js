@@ -32,7 +32,7 @@ export const NEW_ITEM_MIN = 0.75;
 /** @param {State} s @param {any} it */
 export const unseen = (s, it) => !(s.cards[it.id] && s.cards[it.id].reps);
 /** @param {State} s @param {any} it */
-export const due = (s, it) => RD.isDue(s.cards[it.id], s.c.today);
+export const due = (s, it) => RD.isDue(s.cards[it.id], s.c.today, s.c);
 /** @param {State} s @param {any} it @param {string} day */
 const R = (s, it, day) => FS.Ron(s.cards[it.id], day);
 /** @param {any} it */
@@ -267,7 +267,7 @@ export function compose(s, { kind = 'today', area, topic, size = ROUND } = {}) {
 }
 
 /** Due counts for the next n days, today first. @param {Record<string, any>} cards @param {string} today */
-export const forecast = (cards, today, n = 8) => RD.forecast(cards, today, n);
+export const forecast = (cards, c, n = 8) => RD.forecast(cards, c.today, n, c);
 
 /** "12 questions, 4 min" for a round of n. @param {number} n */
 export const roundCost = n => ({ n, min: roundMinutes(n) });

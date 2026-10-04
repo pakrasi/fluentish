@@ -169,7 +169,7 @@ export async function mountSpeak(el, ctx, parts) {
       const ok = typed ? g.ok : spk.ok;
       const cardsNow = ctx.store.cards('b1'), rec = cardsNow[it.id];
       const limit = T.limit(it, { stage: rec?.stage || 0, spoken: true });
-      const out = S.spoken({ item: it, rec, o: { ok, ms, limit }, c: ctx.clock.ctx(), forecast: forecaster(cardsNow, ctx.clock.ctx().today), now: Date.now(), tz: tz() });
+      const out = S.spoken({ item: it, rec, o: { ok, ms, limit }, c: ctx.clock.ctx(), forecast: forecaster(cardsNow, ctx.clock.ctx()), now: Date.now(), tz: tz() });
       saveAnswer(ctx.store, it.id, out.rec, out.event, {});
       results.push({ id: it.id, ok });
       mic.el.hidden = true; typeBox.hidden = true;

@@ -5,7 +5,7 @@
    Rows: the warm-up on the exam day; the review round (due + new, the composer's quota); mistakes from corrections;
    the Sprechen frames on the eve; the Teil 2 talk while the exam is ahead. When today's round is done and nothing is
    due, the round row shows done with "Another round" if new items are left. */
-import { isDue } from '../../domain/b1ready.js';
+import { isDue, dueOn } from '../../domain/b1ready.js';
 import { roundMinutes } from '../../domain/today.js';
 import { add } from '../../core/clock.js';
 import { dailyNew, ROUND } from './compose.js';
@@ -27,7 +27,7 @@ export function planItems({ store, c, settings, t }) {
   const recs = Object.entries(cards);
   const mistakes = Object.values(store.get('mistakes', {}) || {}).filter((/** @type {any} */ m) => m && !m.deletedAt);
   const mistakeIds = new Set(mistakes.map((/** @type {any} */ m) => m.id));
-  const due = recs.filter(([id, r]) => !mistakeIds.has(id) && isDue(r, c.today)).length;
+  const due = recs.filter(([id, r]) => !mistakeIds.has(id) && isDue(r, c.today, c)).length;
   const sess = store.get('b1.session', {}) || {};
   const stats = sess.stats && sess.stats.day === c.today ? sess.stats : null;
   const perDay = stats ? stats.newPerDay : dailyNew({ c, settings, dueN: due, priorityLeft: null });
@@ -52,7 +52,7 @@ export function planItems({ store, c, settings, t }) {
     out.push({ id: 'practice.round', source: 'practice', kind: 'review', title: t('plan.review'), detail: t('plan.review.none'), minutes: 0, href: '#/practice', priority: 20, done: true });
   }
   // mistakes from corrections: due ones and ones not practised yet
-  const mDue = mistakes.filter((/** @type {any} */ m) => isDue(cards[m.id], c.today)).length;
+  const mDue = mistakes.filter((/** @type {any} */ m) => isDue(cards[m.id], c.today, c)).length;
   const mNew = c.newItems ? mistakes.filter((/** @type {any} */ m) => !cards[m.id]?.reps).length : 0;
   if (mDue + mNew > 0) {
     const n = Math.min(ROUND, mDue + mNew);
@@ -73,5 +73,5 @@ export function planItems({ store, c, settings, t }) {
 /** Cards due tomorrow, for "Done for today. Tomorrow: about N due." @param {import('../contract.js').PlanCtx} ctx */
 export function dueTomorrow({ store, c }) {
   const tomorrow = add(c.today, 1);
-  return Object.values(store.cards('b1')).filter(r => r && r.reps && (r.due <= tomorrow || r.learn != null || r.relearn)).length;
+  return Object.values(store.cards('b1')).filter(r => r && r.reps && (dueOn(r, c) <= tomorrow || r.learn != null || r.relearn)).length;
 }

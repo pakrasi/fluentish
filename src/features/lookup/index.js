@@ -11,6 +11,7 @@ import { h, replace, on, announce } from '../../core/dom.js';
 import { label } from '../../core/clock.js';
 import { notice, seg } from '../../core/ui.js';
 import { num } from '../../core/i18n.js';
+import { dueOn } from '../../domain/b1ready.js';
 import * as D from './data.js';
 import { parseRoute, hashFor } from './route.js';
 import { search } from './search.js';
@@ -51,7 +52,7 @@ export async function mount(el, ctx) {
     const tri = triage(g, c.phase, wordmap);
     if (tri === 'waiting') return { cls: 'is-waiting', text: t('lookup.state.waiting') };
     const card = store.cards('b1')[cardId(g, wordmap)];
-    if (card && card.reps) return card.due <= c.today ? { cls: 'is-due', text: t('lookup.state.due') } : { cls: '', text: t('lookup.state.dueOn', { date: label(card.due) }), date: card.due };
+    if (card && card.reps) { const due = dueOn(card, c); return due <= c.today ? { cls: 'is-due', text: t('lookup.state.due') } : { cls: '', text: t('lookup.state.dueOn', { date: label(due) }), date: due }; }
     if (tri === 'later') return { cls: 'is-later', text: t('lookup.state.later') };
     if (tri === 'reference') return { cls: 'is-later', text: t('lookup.state.reference') };
     return { cls: '', text: t('lookup.state.new') };

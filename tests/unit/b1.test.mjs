@@ -207,9 +207,10 @@ test('readiness', () => {
     near(r.areas.speaking.recall, 2 * FS.R(6, 100) / 3, 1e-9, 'R at exam morning');
     const w = { speaking: 0.4, grammar: 0.3, reading: 0.15 };
     near(r.overall.recall, (0.4 * r.areas.speaking.recall) / (w.speaking + w.grammar + w.reading), 1e-9, 'rescaled without words');
-    r = RD.compute({ ...base, store, examSet: new Set(['a']) });
-    near(r.areas.speaking.recall, FS.R(6, 100), 1e-9, 'only the exam set counts');
-    assert.ok(!r.areas.grammar, 'areas outside the exam set are left out');
+    // the set never depends on the date: an earlier date changes the day, not who counts
+    const sooner = RD.compute({ ...base, exam: '2026-10-05', store });
+    assert.equal(sooner.overall.n, r.overall.n, 'same items whatever the date');
+    near(sooner.areas.speaking.recall, 2 * FS.R(2, 100) / 3, 1e-9, 'measured on the new exam day');
     const fc = RD.forecast({ a: { reps: 1, due: '2026-10-05', last: '2026-10-03', learn: null }, b: { reps: 1, due: '2026-10-01', last: '2026-09-30', learn: null } }, '2026-10-03');
     assert.equal(fc[0].n, 1, 'overdue counts today'); assert.equal(fc[2].n, 1);
   }

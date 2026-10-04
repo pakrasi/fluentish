@@ -90,7 +90,7 @@ export async function mount(el, ctx) {
       if (!r.ok) { dateField.setError(t(/** @type {string} */ (r.error))); return; }
       dateField.setError(null);
       if (!prev && dateInput.value && !s.exam.type) write('exam.type', exams.find((/** @type {any} */ x) => x.language === s.language)?.id || 'other');
-      ctx.toast(dateInput.value ? t('goal.date.moved', { date: label(dateInput.value) }) + (r.moved ? ` ${t('goal.date.recapped', { n: r.moved })}` : '') : t('goal.date.cleared'));
+      // no toast: the derived line under the field is live and says what the new date changes
       renderGoal();
     });
     const clearBtn = s.exam.date ? h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => { setExamDate(appCtx(), null); ctx.toast(t('goal.date.cleared')); renderGoal(); } }, t('goal.date.clear')) : null;
@@ -112,8 +112,7 @@ export async function mount(el, ctx) {
       examSel,
       s.exam.type ? h('div', { class: 'date-row' }, dateField, clearBtn) : null,
       modules, minutes,
-      h('p', { class: 'derived', 'aria-live': 'polite' }, derived(c)),
-      s.exam.date ? h('p', { class: 'caption' }, t('goal.date.rule')) : null);
+      h('p', { class: 'derived', 'aria-live': 'polite' }, derived(c)));
     return sec;
   }
 

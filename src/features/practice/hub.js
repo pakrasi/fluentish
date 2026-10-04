@@ -39,7 +39,7 @@ export async function mountHub(el, ctx) {
     if (!alive) return;
     const s = stateFor(ctx, data);
     const c = s.c, cards = s.cards;
-    const rd = RD.compute({ pool: data.pool.filter((/** @type {any} */ it) => it.area !== 'mistakes'), store: cards, today: c.today, exam: c.exam, phase: c.phase, examSet: s.examSet });
+    const rd = RD.compute({ pool: data.pool.filter((/** @type {any} */ it) => it.area !== 'mistakes'), store: cards, today: c.today, exam: c.exam, phase: c.phase });
     const dueN = s.dueN, newN = C.newLeft(s);
     const sess = session(store);
     const round = resumable(sess.round, c.today, Date.now()) ? sess.round : null;
@@ -47,14 +47,14 @@ export async function mountHub(el, ctx) {
     const ids = round ? [] : C.compose(s);
     const left = round ? round.queue.length - round.i : 0;
     const nRound = round ? left : ids.length;
-    const fc = RD.forecast(cards, c.today, 8);
+    const fc = RD.forecast(cards, c.today, 8, c);
     const tomorrow = fc[1]?.n || 0;
 
     // ---- queue card ----
     const dueEl = h('span', { class: 'figure tnum' }, String(dueN));
     const startLabel = round ? t('practice.finish', { n: left }) : c.phase === 'day' ? t('practice.startWarmup') : t('practice.start', { n: nRound, min: roundMinutes(nRound) });
     const startBtn = nRound ? h('a', { class: 'btn btn-primary btn-wide pressable', href: '#/practice/round', id: 'pr-start' }, startLabel) : null;
-    const nextDue = Object.values(cards).filter(r => r && r.reps && r.due > c.today).map(r => r.due).sort()[0];
+    const nextDue = Object.values(cards).filter(r => r && r.reps).map(r => RD.dueOn(r, c)).filter(d => d > c.today).sort()[0];
     const queue = h('div', { class: 'pr-queue' },
       h('div', { class: 'pr-queue-top' },
         h('p', { class: 'pr-due' }, dueEl, h('span', { class: 'label' }, t('practice.dueToday', { n: dueN }))),

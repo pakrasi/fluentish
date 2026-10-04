@@ -116,25 +116,24 @@ test('settings: field writes with rev, an event and a bus message; merge by rev'
   assert.equal(mergeSettings(s, newer).minutesPerDay, 90, 'newer remote wins');
 });
 
-test('exam date: validated, the single writer, earlier dates re-cap reviews', async () => {
+test('exam date: validated, the single writer, and it never rewrites a card', async () => {
   const { store, hlc, bus, clock } = await fresh('2026-10-03');
   const app = { store, hlc, bus, clock };
   assert.equal(examDateError('2026-10-02', '2026-10-03'), 'goal.date.past');
   assert.equal(examDateError('2026-02-30', '2026-10-03'), 'goal.date.invalid');
   assert.equal(examDateError(null, '2026-10-03'), null);
-  assert.deepEqual(setExamDate(app, '2026-10-01'), { ok: false, error: 'goal.date.past', moved: 0 });
+  assert.deepEqual(setExamDate(app, '2026-10-01'), { ok: false, error: 'goal.date.past' });
   store.putCards('b1', [
     ['a', { S: 30, D: 5, due: '2026-10-25', reps: 3 }], ['b', { S: 30, D: 5, due: '2026-10-12', reps: 3 }], ['c', { S: 3, D: 5, due: '2026-10-05', reps: 2 }],
   ]);
+  const before = structuredClone(store.cards('b1'));
   let r = setExamDate(app, '2026-10-30');
-  assert.deepEqual(r, { ok: true, prev: null, moved: 0 }, 'nothing is due after 29 Oct');
+  assert.deepEqual(r, { ok: true, prev: null });
   assert.equal(store.get('settings').exam.date, '2026-10-30');
   r = setExamDate(app, '2026-10-09');
-  assert.equal(r.moved, 2, 'two reviews were due after the new cap (8 Oct)');
-  assert.ok(store.cards('b1').a.due <= '2026-10-08' && store.cards('b1').b.due <= '2026-10-08');
-  assert.equal(store.cards('b1').c.due, '2026-10-05', 'earlier reviews keep their dates');
+  assert.equal(r.ok, true);
   r = setExamDate(app, '2026-10-20');
-  assert.equal(r.moved, 0, 'moving later changes nothing');
+  assert.deepEqual(store.cards('b1'), before, 'earlier or later, the cards keep their stored dates (the cap is applied on read)');
   r = setExamDate(app, null);
   assert.equal(r.ok, true);
   assert.equal(store.get('settings').exam.date, null, 'the date can be cleared');
