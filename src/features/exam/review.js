@@ -81,8 +81,7 @@ function mistakesButton(ctx, attempt, cur, n) {
     replace(wrap, queued
       ? h('p', { class: 'caption' }, t('exam.mistakes.queued', { n: queued }), ' ', h('a', { href: '#/practice' }, t('exam.mistakes.open')))
       : h('button', { type: 'button', class: 'btn btn-primary btn-wide pressable', onclick: () => {
-        let k = 0;
-        for (const f of cur) k = queueMistakes(store, { attempt, feedback: f });
+        const k = queueMistakes(store, { attempt, feedback: cur });
         ctx.toast(t('exam.mistakes.added', { n: k }));
         draw();
       } }, t('exam.mistakes.practise', { n })));

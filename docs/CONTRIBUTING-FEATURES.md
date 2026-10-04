@@ -86,7 +86,7 @@ export function todayModules(ctx) { return [/* ModuleBar */]; }      // optional
 `FeedbackRow`: `{ id, title, status, href, action? }` (at most three show). `ModuleBar`: `{ id, name, score | null, max, pass, href? }`.
 
 What stage A already provides (replace freely inside your folder):
-- `practice/plan.js`: the review round from `cards('b1')` with an "Auto" new-item estimate of 8, Teil 2 talk, the frames read-through on the eve, the warm-up on the exam day. Stage B: the real composer quota (priority items left ÷ new-days left, within the minutes), mistakes-from-corrections rounds (`f:` cards), "Another round" when done.
+- `practice/plan.js`: the review round from `cards('b1')` with an "Auto" new-item estimate of 8, Teil 2 talk, the frames read-through on the eve, the warm-up on the exam day. Stage B: the real composer quota (priority items left ÷ new-days left, within the minutes), mistakes-from-corrections rounds (`F:` cards, see below), "Another round" when done.
 - `exam/plan.js`: `nextModule()` (a started draft, else Schreiben/Sprechen never attempted, else the lowest latest score, on the first test not yet done), uncorrected Schreiben and unread local corrections as feedback, and the module bars against the manifest's pass lines. Stage B: the full run on exam−4/−3, Fritz's feedback from the results sync, "fits before the exam" counts.
 
 ## Data you will find in the store

@@ -2,16 +2,9 @@
 
 Goethe B1 mock exams: the test list, start panel, timed runners, reviews and the Today provider. Routes and files are listed at the top of `index.js`; data and collections at the top of `data.js`.
 
-## Hand-off: corrections → Practice cards
+## Corrections → Practice cards
 
-A correction line in feedback (`~~wrong~~ → ==right==` with a `_why_` line) is a practice item. "Practise these mistakes" on a review writes them to the store, in the kv collection **`mistakes.inbox`**:
-
-```js
-{ id: 'f:<attemptId>-<n>', kind: 'correction', language: 'german', wrong, right, rule,
-  source: { examId, test, module, attemptId, feedbackId }, createdAt }
-```
-
-Ids are stable (pressing the button twice adds nothing). Practice owns the rest: turn each entry into an `f:` card (UX §3.3, "Rewrite this sentence correctly", source line "Your Schreiben Test 1"), then remove it from the inbox with `store.update('mistakes.inbox', …)`. The review counts an attempt's mistakes as "in Practice" if they are in the inbox **or** a card `f:<attemptId>-*` exists in deck `b1` (`mistakesQueued()` in `data.js`); if Practice uses another deck, change that one line. Exam never writes cards itself.
+A correction line in feedback (`~~wrong~~ → ==right==` with a `_why_` line) is a practice item. "Practise these mistakes" on a review calls `addMistakes()` from `src/data/mistakes.js` with the corrections of all the attempt's current feedback entries in one call (`queueMistakes()` in `data.js`). That writes kv `mistakes`; Practice reviews each record as card `F:<attemptId>-<n>` in deck `b1`, with the source line "From your Schreiben Test 1". Calling it again keeps the ids of unchanged sentences. The review counts an attempt's live mistakes with `listMistakes()`. Exam never writes cards itself.
 
 ## Results sync
 

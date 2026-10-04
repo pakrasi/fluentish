@@ -7,12 +7,12 @@
      exams.remote          what the Mac wrote (feedback.json, results.json, vocab.json, learner.json) + ETags
      exams.syncStatus      the last flush
      exams.learnerNotes    private notes for the corrector (fills the grader prompt's {learner_profile})
-     mistakes.inbox        corrections waiting to become Practice cards (hand-off; see README in this folder)
    Attempts live in the attempts store; each new one also gets an exam.attempt event whose file path is fixed then. */
 import { uuidv7, isoWithOffset } from '../../data/ids.js';
 import { config } from '../../core/config.js';
 import { appendResult, attemptFile, pathFor, syncResults, notSentCount, audioExt } from '../../data/sync/github-b1exam.js';
 import { latestByTestModule, fbSplit, stampMs, wordCount, corrections, attemptIds } from '../../domain/grade.js';
+import { addMistakes, listMistakes } from '../../data/mistakes.js';
 import * as T from './timer.js';
 
 export const MODS = ['lesen', 'hoeren', 'schreiben', 'sprechen'];
@@ -261,31 +261,23 @@ export function learnerNotes(store) {
   return (l && (l.notes || l.grader_notes || l.learner_profile)) || null;
 }
 
-/* ---------- mistakes → Practice (hand-off) ---------- */
+/* ---------- mistakes → Practice ---------- */
 
 /**
- * Corrections in a feedback body become items for Practice. Practice turns each into an `f:` card and removes it
- * from the inbox (see README.md in this folder). Ids are stable, so pressing the button twice adds nothing.
- * @param {any} store @param {{ attempt: any, feedback: any }} o @returns {number} how many are waiting for that attempt
+ * The corrections in an attempt's current feedback become review cards through data/mistakes.js (deck 'b1',
+ * ids 'F:<attempt>-<n>'). All current entries go in one call, because addMistakes replaces an attempt's list:
+ * pressing again, or after a re-correction, keeps the ids (and schedules) of unchanged sentences.
+ * @param {any} store @param {{ attempt: any, feedback: any[] }} o @returns {number} the attempt's live mistakes
  */
 export function queueMistakes(store, { attempt, feedback }) {
-  const items = corrections(feedback.body).map((c, i) => ({
-    id: `f:${attempt.id}-${i + 1}`, kind: 'correction', language: 'german', wrong: c.wrong, right: c.right, rule: c.rule,
-    source: { examId: attempt.examId || null, test: attempt.day, module: attempt.module, attemptId: attempt.id, feedbackId: feedback.id },
-    createdAt: isoWithOffset(new Date()),
-  }));
-  const next = store.update('mistakes.inbox', (/** @type {any[]} */ xs) => {
-    const have = new Set((xs || []).map(x => x.id));
-    return [...(xs || []), ...items.filter(x => !have.has(x.id))];
-  }, []);
-  return next.filter((/** @type {any} */ x) => x.source?.attemptId === attempt.id).length;
+  const items = feedback.flatMap(f => corrections(f.body));
+  addMistakes(store, { attemptId: attempt.id, test: attempt.day ?? null, module: attempt.module || null, label: null, items });
+  return mistakesQueued(store, attempt);
 }
 
-/** How many mistakes of this attempt are in the inbox or already cards. @param {any} store @param {any} attempt */
+/** How many of this attempt's mistakes are in Practice. @param {any} store @param {any} attempt */
 export function mistakesQueued(store, attempt) {
-  const inbox = (store.get('mistakes.inbox', []) || []).filter((/** @type {any} */ x) => x.source?.attemptId === attempt.id).length;
-  const cards = Object.keys(store.cards('b1')).filter(k => k.startsWith(`f:${attempt.id}-`)).length;
-  return inbox + cards;
+  return listMistakes(store).filter(m => m.source.attemptId === attempt.id).length;
 }
 
 /* ---------- sync ---------- */
