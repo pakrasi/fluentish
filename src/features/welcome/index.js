@@ -2,9 +2,9 @@
    One question per screen; every step but the language can be skipped. Nothing is saved until Start, so leaving
    half-way leaves no half-made goal. A learner migrated from the old apps never sees this. */
 import { h, replace } from '../../core/dom.js';
-import { context, label } from '../../core/clock.js';
+import { context, label, parse } from '../../core/clock.js';
 import { config } from '../../core/config.js';
-import { markNode } from '../../core/brand.js';
+import { markNode, runway, studyDays } from '../../core/brand.js';
 import { segments } from '../../core/motion.js';
 import { field, nextId } from '../../core/ui.js';
 import { setSetting, setExamDate, examDateError, MODULES } from '../../data/settings.js';
@@ -40,11 +40,17 @@ export async function mount(el, ctx) {
   function body() {
     const step = STEPS[state.step];
     if (step === 'language') {
+      // phase 1: only languages with content can be chosen (German); the others are listed as later, by name
+      const byName = (/** @type {any} */ a, /** @type {any} */ b) => a.name.localeCompare(b.name, 'en');
+      const ready = manifest.languages.filter((/** @type {any} */ l) => l.content).sort(byName);
+      const later = manifest.languages.filter((/** @type {any} */ l) => !l.content).sort(byName);
       return [h('h1', { id: 'step-q' }, t('welcome.language')),
-        choices('language', manifest.languages.map((/** @type {any} */ l) => [l.id, l.name, l.native, langCode(l.id)]), state.language, v => {
+        choices('language', ready.map((/** @type {any} */ l) => [l.id, l.name, l.native, langCode(l.id)]), state.language, v => {
           state.language = v;
           if (!examsFor(v).some((/** @type {any} */ e) => e.id === state.examType) && state.examType !== 'other') state.examType = null;
-        })];
+        }),
+        later.length ? h('div', { class: 'later' }, h('p', { class: 'field-label' }, t('welcome.later')), h('p', { class: 'field-hint' }, t('welcome.laterDetail')),
+          h('ul', { class: 'later-list' }, later.map((/** @type {any} */ l) => h('li', null, l.name)))) : null];
     }
     if (step === 'level') {
       return [h('h1', { id: 'step-q' }, t('welcome.level')),
@@ -87,14 +93,18 @@ export async function mount(el, ctx) {
     lines.push(h('p', { class: 'summary-goal' }, examName || [lang?.name, state.level].filter(Boolean).join(' · ')));
     if (examName) lines.push(h('p', { class: 'caption' }, [lang?.name, state.level].filter(Boolean).join(' · ')));
     if (c.exam) lines.push(h('p', { class: 'summary-date' }, c.daysLeft === 0 ? t('welcome.sum.today', { date: label(c.exam) }) : t('welcome.sum.exam', { date: label(c.exam), n: c.daysLeft })));
-    const list = [t('welcome.sum.round')];
-    if (def && c.mocks) list.push(t('welcome.sum.mock'));
-    if (def && (state.modules.includes('schreiben') || state.modules.includes('sprechen'))) list.push(t('welcome.sum.productive'));
-    lines.push(h('p', null, t('welcome.sum.minutes', { n: state.minutes })), h('ul', { class: 'summary-list' }, list.map(x => h('li', null, x))));
+    lines.push(h('p', null, t('welcome.sum.minutes', { n: state.minutes }), ' ',
+      def && c.mocks ? `${t('welcome.sum.days')} ${t('welcome.sum.mockDays')}` : t('welcome.sum.rounds')));
+    // a preview of the instrument he is about to live with: the runway to the exam, or the empty study days
+    preview = h('div', { class: c.exam ? 'runway summary-runway' : 'days summary-days', 'aria-hidden': 'true' });
+    lines.push(preview);
     if (c.exam && c.phase === 'week') lines.push(h('p', { class: 'caption' }, t('welcome.sum.newStop', { date: label(/** @type {string} */ (c.lastNewDay)) })));
     if (!c.exam) lines.push(h('p', { class: 'caption' }, t('welcome.sum.noDate')));
+    previewCtx = c;
     return [h('h1', { id: 'step-q' }, t('welcome.summary')), h('div', { class: 'summary stack' }, ...lines)];
   }
+  /** @type {HTMLElement | null} */ let preview = null;
+  /** @type {any} */ let previewCtx = null;
 
   function start() {
     const w = (/** @type {string} */ p, /** @type {any} */ v) => setSetting({ store, hlc: app.hlc, bus }, p, v);
@@ -127,6 +137,12 @@ export async function mount(el, ctx) {
               h('button', { type: 'submit', class: 'btn btn-primary pressable', disabled: !canNext || !!error }, t('welcome.next'))))));
     replace(el, page);
     segments(progress, STEPS.map((_, i) => (i < state.step ? 'done' : i === state.step ? 'now' : '')));
+    if (step === 'summary' && preview && previewCtx) {
+      const c = previewCtx;
+      if (c.exam) runway(preview, { exam: parse(c.exam), today: parse(c.today), past: 0, locale: 'en-GB', plan: () => state.minutes, done: () => 0, examLabel: t('today.runway.exam'), minLabel: (d, p) => t('today.runway.min', { d, p }) });
+      else studyDays(preview, Array.from({ length: 28 }, () => false));
+    }
+    preview = null;
     const focusTarget = /** @type {HTMLElement | null} */ (page.querySelector('input:checked') || page.querySelector('h1'));
     if (focusTarget && document.activeElement === document.body) focusTarget.focus({ preventScroll: true });
   }

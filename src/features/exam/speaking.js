@@ -40,7 +40,7 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
   const content = h('div', { id: 'ex-panel', role: 'tabpanel' });
   const stopCue = () => { try { cueAudio?.pause(); } catch { /* none */ } cueAudio = null; };
   const setPhase = (/** @type {string} */ p) => {
-    if (recording) { ctx.toast(t('exam.rec.stopFirst')); return; }
+    if (recording) { ctx.toast(t('exam.de.rec.stopFirst')); return; }
     stopCue();
     st.phase = p; save(); draw();
     scrollTo({ top: 0 });
@@ -69,7 +69,7 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
 
   /** The recorder for one Teil. @param {string} part @param {string} label @param {string} hint */
   function recorderBox(part, label, hint) {
-    const box = h('section', { class: 'ex-rec', 'aria-label': t('exam.rec.title') });
+    const box = h('section', { class: 'ex-rec', 'aria-label': t('exam.de.rec.title') });
     const timeEl = h('span', { class: 'ex-rec-t tnum' });
     const status = h('p', { class: 'caption', 'aria-live': 'polite' });
     const list = h('ul', { class: 'ex-takes' });
@@ -103,9 +103,9 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
         t0 = Date.now();
         iv = setInterval(() => { timeEl.textContent = fmt((Date.now() - t0) / 1000); }, 500);
         timeEl.textContent = '0:00';
-        status.textContent = t('exam.rec.running');
+        status.textContent = t('exam.de.rec.running');
       } catch (e) {
-        status.textContent = e instanceof RecorderError && e.code === 'denied' ? t('exam.rec.denied') : t('exam.rec.unsupported');
+        status.textContent = e instanceof RecorderError && e.code === 'denied' ? t('exam.de.rec.denied') : t('exam.de.rec.unsupported');
       }
     }
     /** @param {boolean} auto the system ended the take, or the page is going away */
@@ -117,9 +117,9 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
       try {
         const { blob, mime } = await rec.stop();
         if (await keep(blob, mime) && id) await endTake(store, id);
-        if (auto) status.textContent = t('exam.rec.stoppedBySystem');
+        if (auto) status.textContent = t('exam.de.rec.stoppedBySystem');
       } catch {
-        status.textContent = t('exam.rec.empty');
+        status.textContent = t('exam.de.rec.empty');
         if (id) await endTake(store, id);
       }
       takeId = null;
@@ -129,22 +129,22 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
     }
     /** @param {Blob} blob @param {string} mime @returns {Promise<boolean>} whether the recording is stored */
     async function keep(blob, mime) {
-      status.textContent = t('exam.rec.saving');
+      status.textContent = t('exam.de.rec.saving');
       let stored = false;
       try {
         await saveRecording(ctx, { n, part, label, blob, mime });
         stored = true;
         st.recorded[part] = true; save(); drawTabs();
-        status.textContent = linked(store) ? t('exam.rec.savedSending') : t('exam.rec.savedLocal');
+        status.textContent = linked(store) ? t('exam.de.rec.savedSending') : t('exam.de.rec.savedLocal');
         setTimeout(drawList, 50);
         const r = await sync(ctx, true);
-        status.textContent = !linked(store) ? t('exam.rec.savedLocal') : r.error ? t('exam.rec.notSentYet') : t('exam.rec.sentOk');
+        status.textContent = !linked(store) ? t('exam.de.rec.savedLocal') : r.error ? t('exam.de.rec.notSentYet') : t('exam.de.rec.sentOk');
         drawList();
       } catch (e) {
         // the blob could not even be stored: offer the file right away so nothing is lost
         console.error(e);
-        status.textContent = t('exam.rec.storeFailed');
-        box.append(h('button', { type: 'button', class: 'btn pressable', onclick: () => download(blob, `test${n}-sprechen-${part}.${audioExt(mime)}`) }, icon('download', { size: 18 }), t('exam.rec.saveFile')));
+        status.textContent = t('exam.de.rec.storeFailed');
+        box.append(h('button', { type: 'button', class: 'btn pressable', onclick: () => download(blob, `test${n}-sprechen-${part}.${audioExt(mime)}`) }, icon('download', { size: 18 }), t('exam.de.rec.saveFile')));
       }
       return stored;
     }
@@ -152,9 +152,9 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
       const mine = recordings(store, n).filter(v => v.part === part && stampMs(v.created_at) >= since - 60e3);
       const items = await Promise.all(mine.map(async (v, i) => {
         const blob = v.blobRef ? await store.adapter.getBlob(v.blobRef).catch(() => null) : null;
-        return h('li', null, h('span', { class: 'caption' }, `${t('exam.take', { n: i + 1 })} · ${v.sent ? t('exam.rec.sent') : t('exam.rec.notSent')}`),
-          !v.sent ? h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: async () => { const r = await sync(ctx, true); ctx.toast(r.error ? t('exam.sync.failed', { why: r.error }) : t('exam.sync.allSent')); drawList(); } }, t('exam.sync.sendNow')) : null,
-          blob ? h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => download(blob, `test${n}-sprechen-${part}-${i + 1}.${audioExt(blob.type)}`) }, t('exam.rec.saveFile')) : null);
+        return h('li', null, h('span', { class: 'caption' }, `${t('exam.de.take', { n: i + 1 })} · ${v.sent ? t('exam.de.rec.sent') : t('exam.de.rec.notSent')}`),
+          !v.sent ? h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: async () => { const r = await sync(ctx, true); ctx.toast(r.error ? t('exam.de.sendFailed', { why: r.error }) : t('exam.de.allSent')); drawList(); } }, t('exam.de.sendNow')) : null,
+          blob ? h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => download(blob, `test${n}-sprechen-${part}-${i + 1}.${audioExt(blob.type)}`) }, t('exam.de.rec.saveFile')) : null);
       }));
       replace(list, items);
     }
@@ -166,7 +166,7 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
 
   const drawTabs = () => replace(tabs, PHASES.map(([p, nm]) => h('button', {
     type: 'button', role: 'tab', 'aria-selected': String(st.phase === p), disabled: recording && st.phase !== p, class: 'ex-tab pressable', lang: 'de', onclick: () => setPhase(p),
-  }, nm, p.startsWith('teil') ? h('span', { class: ['ex-dot', st.recorded[p] && 'is-full'], role: 'img', 'aria-label': st.recorded[p] ? t('exam.rec.has') : t('exam.rec.hasNot') }) : null)));
+  }, nm, p.startsWith('teil') ? h('span', { class: ['ex-dot', st.recorded[p] && 'is-full'], role: 'img', 'aria-label': st.recorded[p] ? t('exam.de.rec.has') : t('exam.de.rec.hasNot') }) : null)));
 
   function draw() {
     drawTabs();
@@ -208,7 +208,7 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
       show();
       c = h('div', { lang: 'de' }, instr(t('exam.de.t2')), folie,
         h('div', { class: 'row-actions' }, h('button', { type: 'button', class: 'btn pressable', onclick: () => { f = Math.max(0, f - 1); show(); } }, '← Folie'), h('button', { type: 'button', class: 'btn pressable', onclick: () => { f = Math.min(4, f + 1); show(); } }, 'Folie →')),
-        st.notes ? h('section', { class: 'ex-block' }, h('p', { class: 'label' }, 'Deine Stichpunkte'), h('p', { class: 'ex-pre' }, st.notes)) : null,
+        st.notes ? h('section', { class: 'ex-block' }, h('p', { class: 'label' }, 'Ihre Stichpunkte'), h('p', { class: 'ex-pre' }, st.notes)) : null,
         recorderBox('teil2', P.teil2.topics[st.topic], t('exam.de.rec2')),
         nav('teil1', 'teil3'));
     } else if (st.phase === 'teil3') {
@@ -235,7 +235,7 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
           clock.stop(false);   // only once the attempt is stored
           submitted = true;
           ctx.go(`/exam/${n}/sprechen/review/${r.id}`, { replace: true });
-        } catch (e) { busy = false; console.error(e); ctx.toast(t('exam.submitFailed')); }
+        } catch (e) { busy = false; console.error(e); ctx.toast(t('exam.de.submitFailed')); }
       };
       c = h('div', { lang: 'de' },
         h('section', { class: 'ex-block' }, h('p', { class: 'label' }, 'Aufnahmen'),
@@ -260,14 +260,14 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
   addEventListener('pagehide', onHide);
   document.addEventListener('visibilitychange', onVis);
   // a take cut off by a reload is kept as a recording
-  recoverTake(ctx).then(info => { if (info) { ctx.toast(t('exam.rec.recovered')); draw(); } }).catch(() => {});
+  recoverTake(ctx).then(info => { if (info) { ctx.toast(t('exam.de.rec.recovered')); draw(); } }).catch(() => {});
   replace(el, h('div', { class: 'ex-run', lang: 'de' },
     h('header', { class: 'ex-runhead' }, backLink(`#/exam/${n}`, t('exam.backTest', { n })), h('div', { class: 'ex-runhead-end' }, clock.el)),
     h('h1', { class: 'ex-run-title' }, 'Sprechen', h('span', { class: 'caption' }, ` · ${ex.topic}`)),
     tabs, content));
   draw();
   return {
-    canLeave() { if (rec.recording) { ctx.toast(t('exam.rec.stopFirst')); return false; } return true; },
+    canLeave() { if (rec.recording) { ctx.toast(t('exam.de.rec.stopFirst')); return false; } return true; },
     unmount() {
       removeEventListener('beforeunload', guard); removeEventListener('pagehide', onHide); document.removeEventListener('visibilitychange', onVis);
       if (activeStop) activeStop(true); else rec.cancel();   // never drop a take on the way out

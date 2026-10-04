@@ -48,6 +48,9 @@ export const EXAMS = [{
 const walk = d => readdirSync(d).flatMap(n => { const p = path.join(d, n); return statSync(p).isDirectory() ? walk(p) : [p]; });
 const sha = buf => createHash('sha256').update(buf).digest('hex');
 
+/** Languages with practice, exam and Look up content in this app. */
+const CONTENT_LANGS = ['german'];
+
 export function build() {
   const files = walk(CONTENT).map(p => path.relative(CONTENT, p).split(path.sep).join('/'))
     .filter(p => p.endsWith('.json') && p !== 'manifest.json').sort();
@@ -67,7 +70,8 @@ export function build() {
   return {
     schema: 'fluentish-content@1',
     version: sha(out.map(f => `${f.id}:${f.sha256}`).join('\n')).slice(0, 12),
-    languages: fw.languages.map(({ id, name, native, script, rtl, full }) => ({ id, name, native, script, rtl, full })),
+    // content: the language has practice content in this app (phase 1: German only); the others are listed as later
+    languages: fw.languages.map(({ id, name, native, script, rtl, full }) => ({ id, name, native, script, rtl, full, content: CONTENT_LANGS.includes(id) })),
     exams,
     files: out,
   };

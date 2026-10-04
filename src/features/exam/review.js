@@ -190,7 +190,7 @@ export async function reviewSchreiben(el, ctx, { exam, n, ex, def, attempt, auto
   const task = (/** @type {string} */ k, /** @type {number} */ i) => h('section', { class: 'ex-block', lang: 'de' },
     h('p', { class: 'label' }, `Aufgabe ${i} · ca. ${S[k].words} Wörter`),
     h('p', { class: 'caption' }, S[k].situation),
-    h('div', { class: 'ex-written' }, texts[k] ? String(texts[k]).split(/\n+/).map(p => h('p', null, p)) : '–'),
+    h('div', { class: 'ex-written' }, texts[k] ? String(texts[k]).split(/\n+/).map(p => h('p', null, p)) : h('p', { class: 'caption', lang: 'en' }, t('exam.nothingWritten'))),
     h('p', { class: 'caption tnum' }, t('exam.words', { n: wordCount(texts[k]), target: S[k].words })));
   replace(el, h('div', { class: 'ex-review' },
     reviewHead({ ctx, n, def, attempt, score: null, max: 100, pass: false, topic: ex.topic, status: sl ? sl.split(' · ')[0].replace(/^circa/, t('exam.about')) : t('exam.notCorrected') }),
@@ -234,7 +234,7 @@ export async function reviewSprechen(el, ctx, { exam, n, ex, def, attempt }) {
     feedbackBlock({ ctx, exam, attempt, fb }),
     h('section', { 'aria-labelledby': 'ex-rec-h' }, h('h2', { id: 'ex-rec-h' }, t('exam.recordings')),
       fallback ? h('p', { class: 'caption' }, t('exam.rec.fallback')) : null, sections),
-    notes?.text ? h('section', { class: 'ex-block', lang: 'de' }, h('p', { class: 'label' }, 'Deine Stichpunkte'), h('div', { class: 'ex-written' }, String(notes.text).split('\n').map(l => h('p', null, l)))) : null,
+    notes?.text ? h('section', { class: 'ex-block' }, h('p', { class: 'label' }, t('exam.yourNotes')), h('div', { class: 'ex-written', lang: 'de' }, String(notes.text).split('\n').map(l => h('p', null, l)))) : null,
     await nextCard(ctx, exam, n)));
   return () => urls.forEach(u => URL.revokeObjectURL(u));
 }

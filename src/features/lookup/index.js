@@ -37,6 +37,7 @@ export async function mount(el, ctx) {
   const today = () => ctx.clock.ctx();
   /** lemma → [word id, level], for the card ids of captured words (shared with Practice through domain/itemids.js) */
   const wordmap = await D.wordmap(ctx.content);
+  const testsTotal = (await ctx.content.manifest().catch(() => null))?.exams?.find((/** @type {any} */ e) => e.language === lang)?.tests?.length || 14;
 
   /* ---------- shared row builders ---------- */
 
@@ -186,7 +187,7 @@ export async function mount(el, ctx) {
     const meaning = g?.gloss || (r ? r.en.join(', ') : null);
     wrap.append(meaning ? h('p', { class: 'lk-meaning' }, meaning) : h('p', { class: 'lk-meaning is-muted' }, t('lookup.sheet.waiting')));
     if (g?.note) wrap.append(h('p', { class: 'lk-note' }, de(g.note)));
-    const stats = [g?.exam_days ? t('lookup.sheet.tests', { n: g.exam_days }) : null, band ? t(`lookup.sheet.freq.${band}`) : null].filter(Boolean);
+    const stats = [g?.exam_days ? t('lookup.sheet.tests', { n: g.exam_days, total: testsTotal }) : null, band ? t(`lookup.sheet.freq.${band}`) : null].filter(Boolean);
     if (g) {
       const s = wordState(g);
       wrap.append(h('div', { class: 'lk-status' },
@@ -275,7 +276,7 @@ export async function mount(el, ctx) {
   replace(el, h('div', { class: 'lookup' },
     h('div', { class: 'lk-top' },
       h('h1', null, t('lookup.title')),
-      route.opts.lang && !LANGS[route.opts.lang] ? notice({ children: [h('p', null, t('lookup.langOnly'))] }) : null,
+      (route.opts.lang && !LANGS[route.opts.lang]) || (ctx.settings().language && !LANGS[ctx.settings().language]) ? notice({ children: [h('p', null, t('lookup.langOnly'))] }) : null,
       h('div', { class: 'lk-search' }, h('label', { class: 'lk-field' }, glyph('search', 20), input, clearBtn)),
       nav),
     body));

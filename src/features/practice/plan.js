@@ -55,7 +55,7 @@ export function roundAction(b, n, t) {
  * @returns {import('../../domain/today.js').PlanItem[]}
  */
 export function planItems({ store, c, settings, t, exam }) {
-  if (!settings.language) return [];
+  if (settings.language !== 'german') return [];   // phase 1: the practice content is German; never German for another language
   if (c.phase === 'day') {
     return [{ id: 'practice.warmup', source: 'practice', kind: 'warmup', title: t('plan.warmup'), detail: t('plan.warmup.detail'),
       minutes: 3, href: '#/practice/round?kind=warmup', priority: 10, action: t('plan.warmup.action') }];

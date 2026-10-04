@@ -80,7 +80,7 @@ export function runSchreiben(el, ctx, { exam, n, ex, def }) {
           const rec = await submitAttempt(ctx, { exam, n, module: 'schreiben', clock: c, score: null, maxScore: 100, writings: writingsOf(texts) });
           clock.stop(false);   // only once the attempt is stored
           ctx.go(`/exam/${n}/schreiben/review/${rec.id}`, { replace: true });
-        } catch (e) { submitting = false; console.error(e); ctx.toast(t('exam.submitFailed')); }
+        } catch (e) { submitting = false; console.error(e); ctx.toast(t('exam.de.submitFailed')); }
       },
     }));
     confirmSlot.scrollIntoView({ block: 'nearest' });

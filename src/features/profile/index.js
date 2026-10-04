@@ -70,7 +70,8 @@ export async function mount(el, ctx) {
     const sec = section(t('profile.goal'));
     sec.id = 'profile-goal';
     const langSel = chipChoice({ label: t('profile.language'), name: 'language', value: s.language || '',
-      options: languages.map((/** @type {any} */ l) => /** @type {[string, string]} */ ([l.id, l.name])), onChange: v => {
+      // phase 1: only languages with content (German) can be chosen
+      options: languages.filter((/** @type {any} */ l) => l.content || l.id === s.language).map((/** @type {any} */ l) => /** @type {[string, string]} */ ([l.id, l.name])), onChange: v => {
         write('language', v);
         const ex = exams.find((/** @type {any} */ x) => x.id === s.exam.type);
         if (ex && ex.language !== v) write('exam.type', s.exam.date ? 'other' : null);
@@ -123,6 +124,7 @@ export async function mount(el, ctx) {
     if (c.phase === 'after') return t('goal.derived.after', { date: label(c.exam) });
     if (c.phase === 'day') return t('goal.derived.day');
     if (c.phase === 'eve') return t('goal.derived.eve');
+    if (c.phase === 'lastNew') return t('goal.derived.lastNew', { cap: label(c.capDay) });
     return t('goal.derived.week', { n: c.daysLeft, lastNew: label(c.lastNewDay), cap: label(c.capDay) });
   }
 
@@ -276,7 +278,7 @@ export async function mount(el, ctx) {
     });
     const errs = logEntries();
     sec.append(h('dl', { class: 'diag' },
-      h('dt', null, t('diag.content')), h('dd', { class: 'mono' }, manifest ? manifest.version : '–'),
+      h('dt', null, t('diag.content')), h('dd', { class: 'mono' }, manifest ? manifest.version : t('diag.notLoaded')),
       h('dt', null, t('diag.storage')), storage,
       h('dt', null, t('diag.device')), h('dd', { class: 'mono' }, app.device.deviceId),
       h('dt', null, t('diag.events')), h('dd', null, t('diag.eventsVal', { n: store.pending().length })),

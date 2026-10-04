@@ -34,10 +34,10 @@ export function clockBar({ ctx, n, module, minutes, countUp = false, label = '',
     el.classList.toggle('is-low', isLow);
     el.title = isLow ? t('exam.de.lowTime') : '';   // colour is never the only signal; the minute announcements say it too
     el.classList.toggle('is-paused', T.paused(clock));
-    replace(btn, icon(T.paused(clock) ? 'play' : 'pause', { size: 18 }), h('span', { class: 'sr-only' }, T.paused(clock) ? t('exam.resume') : t('exam.pause')));
-    btn.setAttribute('aria-label', T.paused(clock) ? t('exam.resume') : t('exam.pause'));
+    replace(btn, icon(T.paused(clock) ? 'play' : 'pause', { size: 18 }), h('span', { class: 'sr-only' }, T.paused(clock) ? t('exam.de.resume') : t('exam.de.pause')));
+    btn.setAttribute('aria-label', T.paused(clock) ? t('exam.de.resume') : t('exam.de.pause'));
     if (!countUp && !T.paused(clock)) for (const m of [10, 5, 1]) {
-      if (leftMs <= m * 60e3 && leftMs > (m * 60e3) - 2000 && !said.has(m)) { said.add(m); announce(t('exam.minutesLeft', { n: m })); }
+      if (leftMs <= m * 60e3 && leftMs > (m * 60e3) - 2000 && !said.has(m)) { said.add(m); announce(t('exam.de.minutesLeft', { n: m })); }
     }
     if (!quiet) onChange?.(T.paused(clock), leftMs);
   };

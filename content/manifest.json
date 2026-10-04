@@ -8,7 +8,8 @@
    "native": "Ka Ktien Khasi",
    "script": "latin",
    "rtl": false,
-   "full": true
+   "full": true,
+   "content": false
   },
   {
    "id": "german",
@@ -16,7 +17,8 @@
    "native": "Deutsch",
    "script": "latin",
    "rtl": false,
-   "full": true
+   "full": true,
+   "content": true
   },
   {
    "id": "hindi",
@@ -24,7 +26,8 @@
    "native": "हिन्दी",
    "script": "devanagari",
    "rtl": false,
-   "full": true
+   "full": true,
+   "content": false
   },
   {
    "id": "french",
@@ -32,7 +35,8 @@
    "native": "Français",
    "script": "latin",
    "rtl": false,
-   "full": true
+   "full": true,
+   "content": false
   },
   {
    "id": "swissgerman",
@@ -40,7 +44,8 @@
    "native": "Schwiizerdütsch",
    "script": "latin",
    "rtl": false,
-   "full": true
+   "full": true,
+   "content": false
   },
   {
    "id": "bengali",
@@ -48,7 +53,8 @@
    "native": "বাংলা",
    "script": "bengali",
    "rtl": false,
-   "full": false
+   "full": false,
+   "content": false
   },
   {
    "id": "spanish",
@@ -56,7 +62,8 @@
    "native": "Español",
    "script": "latin",
    "rtl": false,
-   "full": false
+   "full": false,
+   "content": false
   },
   {
    "id": "italian",
@@ -64,7 +71,8 @@
    "native": "Italiano",
    "script": "latin",
    "rtl": false,
-   "full": false
+   "full": false,
+   "content": false
   },
   {
    "id": "portuguese",
@@ -72,7 +80,8 @@
    "native": "Português",
    "script": "latin",
    "rtl": false,
-   "full": false
+   "full": false,
+   "content": false
   },
   {
    "id": "arabic",
@@ -80,7 +89,8 @@
    "native": "العربية",
    "script": "arabic",
    "rtl": true,
-   "full": false
+   "full": false,
+   "content": false
   }
  ],
  "exams": [

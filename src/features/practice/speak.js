@@ -53,7 +53,6 @@ export async function mountSpeak(el, ctx, parts) {
   replace(el, h('div', { class: 'practice stack' },
     back('#/practice', t('practice.title')),
     h('div', { class: 'page-head' }, h('h1', null, t('practice.speak.title'))),
-    h('p', { class: 'lead' }, t('practice.speak.lead')),
     h('nav', { class: 'pr-rows' },
       linkRow({ href: '#/practice/speak/teil2', title: t('practice.speak.teil2'), detail: t('practice.speak.teil2.detail') }),
       linkRow({ href: '#/practice/speak/aloud', title: t('practice.speak.aloud'), detail: t('practice.speak.aloud.detail') }),

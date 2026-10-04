@@ -178,7 +178,7 @@ export function runObjective(el, ctx, { exam, n, module, ex, def }) {
         } catch (e) {
           submitting = false;
           console.error(e);
-          ctx.toast(t('exam.submitFailed'));
+          ctx.toast(t('exam.de.submitFailed'));
         }
       },
     }));

@@ -20,6 +20,18 @@ import { warmVoices } from './speech.js';
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
 export async function mount(el, ctx) {
   const parts = (ctx.params.rest || '').split('/').filter(Boolean);
+  const lang = ctx.settings().language;
+  if (lang && lang !== 'german') {   // phase 1: the practice items are German; another language never gets them
+    replace(el, h('div', { class: 'practice stack' }, h('div', { class: 'page-head' }, h('h1', null, ctx.t('practice.title'))),
+      notice({ children: [h('p', null, ctx.t('practice.langLater')), h('p', null, h('a', { href: '#/profile/goal' }, ctx.t('practice.langChange')))] })));
+    return;
+  }
+  // an old link: #/practice/teil2 is the Teil 2 talk
+  if (parts[0] === 'teil2') { ctx.go('/practice/speak/teil2', { replace: true }); return; }
+  if (parts[0] && !['round', 'speak', 'words', 'write'].includes(parts[0])) {
+    replace(el, h('div', { class: 'practice stack' }, h('div', { class: 'page-head' }, h('h1', null, ctx.t('error.notFound'))), h('a', { class: 'btn pressable', href: '#/practice' }, ctx.t('practice.back'))));
+    return;
+  }
   warmVoices();
   if (parts[0] === 'round') return mountRound(el, ctx);
   if (parts[0] === 'speak') return mountSpeak(el, ctx, parts.slice(1));

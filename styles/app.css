@@ -191,7 +191,14 @@ input[type="date"].input { min-height: var(--tap); }
 .choice-main { display: grid; gap: 2px; }
 .choice-title { font-weight: 500; }
 .choice-detail { font-size: 13px; color: var(--ink-3); }
-.welcome-nav { display: flex; justify-content: space-between; align-items: center; gap: var(--s-2); margin-top: var(--s-8); }
+.welcome-nav { position: sticky; bottom: 0; z-index: 2; display: flex; justify-content: space-between; align-items: center; gap: var(--s-2); margin-top: var(--s-8); padding: var(--s-3) 0 calc(var(--s-3) + env(safe-area-inset-bottom)); background: linear-gradient(to bottom, transparent, var(--canvas) 30%); }
+@media (prefers-reduced-transparency: reduce) { .welcome-nav { background: var(--canvas); } }
+.welcome .btn-primary:disabled { opacity: 0.4; }
+.later { margin-top: var(--s-6); }
+.later-list { list-style: none; margin: var(--s-2) 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-1) var(--s-4); color: var(--ink-3); font-size: 14px; }
+.summary-runway { margin-top: var(--s-3); }
+.summary-runway .runway-bar { height: calc(var(--h, 64px) * 0.6); }
+.summary-days { margin-top: var(--s-3); }
 .welcome-nav-end { display: flex; gap: var(--s-2); }
 .summary { padding: var(--s-5); border-radius: var(--r-card); background: var(--surface); box-shadow: var(--shadow-card); --gap: var(--s-3); }
 .summary-goal { font: 400 24px/1.2 var(--font-display); text-wrap: balance; }
