@@ -11,7 +11,8 @@
      vocab.reviewed     data/vocab-reviews/<stamp>-<batch>.json        {events: [...]}
      training.logged    data/training/<stamp>-<task>.json
 
-     read with the token: data/feedback.json, data/results.json, data/vocab.json, data/learner.json (optional)
+     read with the token: data/feedback.json, data/results.json, data/vocab.json, data/learner.json (optional),
+     found through one listing of data/ so only changed files are fetched
 
    <stamp> is YYYYMMDDTHHMMSS in UTC, taken from the moment the event was created, so a retry writes the same file
    and a "422 sha" answer (the file already arrived) counts as sent. sync.py dedupes by path, so nothing is imported
@@ -22,6 +23,9 @@
    their collections with the path the old app already chose, or a new one.
 
    The network is injected (fetch), so node tests run the whole flow against a mock and against the real sync.py. */
+
+/** The files sync.py (and the tutor) write that this app reads. */
+export const PULLED = ['feedback', 'results', 'vocab', 'learner'];
 
 export const TYPES = new Set(['exam.attempt', 'exam.voice', 'feedback.created', 'vocab.captured', 'vocab.reviewed', 'training.logged']);
 
@@ -174,29 +178,39 @@ export function createGithubB1Exam({ token, repo, api = 'https://api.github.com'
       return { acked, rejected, error: null };
     },
     /**
-     * Read what the Mac wrote. 304 keeps the cached doc; 404 means not there (yet).
-     * @param {{etags?: Record<string, string>}} [cursor]
-     * @returns {Promise<{cursor: {etags: Record<string, string>}, docs: Record<string, any>, changed: string[]}>}
+     * Read what the Mac wrote. One listing of data/ (with its ETag; a 304 means nothing changed), then only the
+     * files whose blob sha changed. Files that are not there are not requested, so a missing optional file
+     * (learner.json) never shows up as a failed request.
+     * @param {{etag?: string, shas?: Record<string, string>}} [cursor]
+     * @returns {Promise<{cursor: {etag?: string, shas: Record<string, string>}, docs: Record<string, any>, changed: string[]}>}
      */
     async pull(cursor = {}) {
-      const etags = { ...(cursor.etags || {}) };
+      const shas = { ...(cursor.shas || {}) };
       /** @type {Record<string, any>} */ const docs = {};
       /** @type {string[]} */ const changed = [];
-      for (const name of ['feedback', 'results', 'vocab', 'learner']) {
-        const p = `data/${name}.json`;
-        /** @type {Record<string, string>} */ const h = { ...headers(), Accept: 'application/vnd.github.raw+json' };
-        if (etags[name]) h['If-None-Match'] = etags[name];
+      const get = async (/** @type {string} */ p, /** @type {Record<string, string>} */ extra = {}) => {
         let r;
-        try { r = await f(url(p), { headers: h, cache: 'no-store' }); } catch { throw new SyncError('No connection', { offline: true }); }
-        if (r.status === 304) continue;
+        try { r = await f(url(p), { headers: { ...headers(), ...extra }, cache: 'no-store' }); } catch { throw new SyncError('No connection', { offline: true }); }
         if (r.status === 401 || r.status === 403) throw new SyncError('The GitHub token is invalid or expired', { status: r.status, auth: true });
-        if (r.status === 404) { docs[name] = null; changed.push(name); delete etags[name]; continue; }
+        return r;
+      };
+      const list = await get('data', cursor.etag ? { 'If-None-Match': cursor.etag } : {});
+      if (list.status === 304) return { cursor: { etag: cursor.etag, shas }, docs, changed };
+      if (!list.ok) throw new SyncError(`GitHub ${list.status}: data/ could not be listed`, { status: list.status });
+      /** @type {any[]} */ let entries = [];
+      try { entries = await list.json(); } catch { entries = []; }
+      const bySha = new Map((Array.isArray(entries) ? entries : []).filter(e => e && e.type === 'file').map(e => [e.name, e.sha]));
+      for (const name of PULLED) {
+        const sha = bySha.get(`${name}.json`);
+        if (!sha) { if (shas[name]) { docs[name] = null; changed.push(name); delete shas[name]; } continue; }
+        if (shas[name] === sha) continue;
+        const r = await get(`data/${name}.json`, { Accept: 'application/vnd.github.raw+json' });
         if (!r.ok) continue;
-        try { docs[name] = await r.json(); changed.push(name); } catch { continue; }
-        const tag = r.headers.get('etag');
-        if (tag) etags[name] = tag; else delete etags[name];
+        try { docs[name] = await r.json(); } catch { continue; }
+        shas[name] = sha;
+        changed.push(name);
       }
-      return { cursor: { etags }, docs, changed };
+      return { cursor: { etag: list.headers.get('etag') || undefined, shas }, docs, changed };
     },
   };
 }

@@ -44,11 +44,15 @@ function mockGithub() {
       files.set(p, JSON.parse(init.body).content);
       return new Response('{}', { status: 201 });
     }
+    if (p === 'data') {
+      const listing = Object.entries(gh.reads).map(([k, v]) => ({ type: 'file', name: k.replace('data/', ''), sha: `sha-${JSON.stringify(v).length}` }));
+      const tag = `"${Buffer.from(JSON.stringify(listing)).toString("base64").slice(-24)}"`;
+      if (init.headers?.['If-None-Match'] === tag) return new Response(null, { status: 304 });
+      return new Response(JSON.stringify(listing), { status: 200, headers: { etag: tag } });
+    }
     const doc = gh.reads[p];
     if (doc === undefined) return new Response('{"message":"Not Found"}', { status: 404 });
-    const tag = `"${p.length}"`;
-    if (init.headers?.['If-None-Match'] === tag) return new Response(null, { status: 304 });
-    return new Response(JSON.stringify(doc), { status: 200, headers: { etag: tag } });
+    return new Response(JSON.stringify(doc), { status: 200 });
   };
   gh.text = p => Buffer.from(files.get(p), 'base64').toString('utf8');
   gh.json = p => JSON.parse(gh.text(p));
@@ -165,23 +169,33 @@ test('unsent items moved from the old app are sent with the path it chose, then 
   assert.equal(store.get('vocab.events')[1].synced, undefined, 'entries without a flag were sent long ago');
 });
 
-test('pull reads feedback, results and words with ETags; 304 keeps the cache', async () => {
+test('pull lists data/ once, fetches only changed files, never asks for missing ones; 304 keeps the cache', async () => {
   resetThrottle();
   const { store } = await fresh();
   const gh = mockGithub();
-  gh.reads['data/feedback.json'] = { feedback: [{ id: 1, day: 1, module: 'schreiben', attempt_id: 3, body: '! circa 61 / 100 · bestanden', created_at: 'x', source: 'fritz' }] };
+  gh.reads['data/feedback.json'] = { feedback: [{ id: 1, day: 1, module: 'schreiben', attempt_id: 3, body: '! circa 61 / 100 · bestanden', created_at: 'x', source: 'tutor' }] };
   gh.reads['data/results.json'] = { days: { 1: { attempts: {}, voice: [], feedback: [] } } };
   let r = await syncResults(store, { repo: REPO, fetch: gh.fetch, force: true });
   assert.equal(r.error, null);
   const remote = store.get('exams.remote');
   assert.equal(remote.feedback.feedback.length, 1);
-  assert.equal(remote.vocab, null, 'missing file is null');
-  assert.ok(remote.cursor.etags.feedback);
+  assert.equal(remote.vocab, undefined, 'a missing file is not requested');
+  assert.ok(!gh.calls.some(c => c.path === 'data/learner.json' || c.path === 'data/vocab.json'));
+  assert.ok(remote.cursor.etag && remote.cursor.shas.feedback);
+  // nothing changed: one listing request, answered 304
   resetThrottle();
+  const n = gh.calls.length;
   await syncResults(store, { repo: REPO, fetch: gh.fetch, force: true });
-  const gets = gh.calls.filter(c => c.path === 'data/feedback.json');
-  assert.equal(gets[1].headers['If-None-Match'], remote.cursor.etags.feedback);
-  assert.equal(store.get('exams.remote').feedback.feedback.length, 1, 'kept on 304');
+  assert.deepEqual(gh.calls.slice(n).map(c => c.path), ['data']);
+  assert.equal(gh.calls.at(-1).headers['If-None-Match'], remote.cursor.etag);
+  // results changed: only results.json is fetched again
+  gh.reads['data/results.json'] = { days: { 1: { attempts: {}, voice: [{ day: 1, transcript: 'Hallo' }], feedback: [] } } };
+  resetThrottle();
+  const m = gh.calls.length;
+  await syncResults(store, { repo: REPO, fetch: gh.fetch, force: true });
+  assert.deepEqual(gh.calls.slice(m).map(c => c.path), ['data', 'data/results.json']);
+  assert.equal(store.get('exams.remote').results.days[1].voice[0].transcript, 'Hallo');
+  assert.equal(store.get('exams.remote').feedback.feedback.length, 1, 'unchanged docs are kept');
 });
 
 /* ---------- contract test against the real sync.py ---------- */
