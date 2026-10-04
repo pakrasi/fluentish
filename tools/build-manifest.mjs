@@ -28,6 +28,7 @@ export const MAP = [
   [/^igloo\/grammar\/items_(\w+)\.json$/, m => `igloo.grammar.items.${m[1]}`, 'igloo-grammar-items@1'],
   [/^igloo\/grammar\/concepts_(\w+)\.json$/, m => `igloo.grammar.concepts.${m[1]}`, 'igloo-grammar-concepts@1'],
   [/^b1\/(items|annot|grammar|bank|nouns|frames|wordmap|plan|schreiben)\.json$/, m => `b1.${m[1]}`, null],
+  [/^speak\/situations\.json$/, () => 'speak.situations', 'speak-situations@1'],
   [/^exams\/([\w-]+)\/why\/day(\d+)\.json$/, m => `exam.${m[1]}.why.${m[2]}`, '%s-why@1'],
   [/^exams\/([\w-]+)\/day(\d+)\.json$/, m => `exam.${m[1]}.${m[2]}`, '%s-exam@1'],
 ];

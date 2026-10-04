@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "speak-situations@1",
+  "title": "Speaking situations",
+  "description": "Everyday situations for Practice > Speaking situations: the other person's line, a goal and model answers with the target chunk as offsets. Built from authoring/speak/situations.json by tools/build-speak.mjs; the semantic rules (ids, levels, registers, chunk offsets, chunk and frame links) are in src/features/practice/sim.js validateBank().",
+  "type": "object",
+  "required": ["about", "voices", "functions", "items"],
+  "additionalProperties": false,
+  "properties": {
+    "about": { "type": "string" },
+    "voices": {
+      "type": "object",
+      "required": ["other", "answer"],
+      "additionalProperties": false,
+      "properties": {
+        "other": { "type": "array", "minItems": 1, "items": { "type": "string", "pattern": "^de-DE-[A-Za-z]+Neural$" } },
+        "answer": { "type": "string", "pattern": "^de-DE-[A-Za-z]+Neural$" }
+      }
+    },
+    "functions": { "type": "object", "minProperties": 1, "propertyNames": { "pattern": "^[a-z]+$" }, "additionalProperties": { "type": "string", "minLength": 1 } },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "fn", "lv", "freq", "reg", "setup", "goal", "other", "answers", "src"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^SS:[a-z]+-[0-9]{2}$" },
+          "fn": { "type": "string", "pattern": "^[a-z]+$" },
+          "lv": { "enum": ["A1", "A2", "B1", "B2"] },
+          "freq": { "enum": [1, 2, 3] },
+          "reg": { "enum": ["du", "Sie"] },
+          "setup": { "type": "string", "minLength": 1 },
+          "goal": { "type": "string", "minLength": 1 },
+          "other": {
+            "type": "object",
+            "required": ["de", "voice", "audio"],
+            "additionalProperties": false,
+            "properties": {
+              "de": { "type": "string", "minLength": 1 },
+              "voice": { "type": "string" },
+              "audio": { "type": "string", "pattern": "^[0-9a-f]{32}\\.mp3$" }
+            }
+          },
+          "answers": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["de", "chunk", "audio"],
+              "additionalProperties": false,
+              "properties": {
+                "de": { "type": "string", "minLength": 1 },
+                "chunk": { "type": "array", "prefixItems": [{ "type": "integer", "minimum": 0 }, { "type": "integer", "minimum": 1 }], "minItems": 2, "maxItems": 2 },
+                "audio": { "type": "string", "pattern": "^[0-9a-f]{32}\\.mp3$" }
+              }
+            }
+          },
+          "ck": { "type": "string", "pattern": "^ENG_CHUNK_[0-9]{4}$" },
+          "frame": { "type": "string", "pattern": "^BP:" },
+          "src": { "enum": ["audiobook", "frames", "new"] }
+        }
+      }
+    }
+  }
+}

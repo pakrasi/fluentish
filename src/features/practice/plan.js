@@ -5,13 +5,15 @@
 
    Rows: the warm-up on the exam day; the review round (due + new, about N rounds); Schreiben phrases (their own
    rounds, right after the review round while Schreiben is the weakest module, see domain/modules.js writingFocus);
-   mistakes from corrections; the Sprechen frames on the eve; the Teil 2 talk while the exam is ahead. When today's
-   rounds are done and nothing is due, the round row shows done. */
+   mistakes from corrections; speaking situations (their own deck and budget, domain/budget.js simBudget); the
+   Sprechen frames on the eve; the Teil 2 talk while the exam is ahead. When today's rounds are done and nothing is
+   due, the round row shows done. */
 import { isDue, dueOn } from '../../domain/b1ready.js';
 import { roundMinutes } from '../../domain/today.js';
-import { dayBudget, ROUND } from '../../domain/budget.js';
+import { dayBudget, simBudget, ROUND } from '../../domain/budget.js';
 import { isWriting } from '../../domain/itemids.js';
 import { writingFocus } from '../../domain/modules.js';
+import { KV as SIM, DECK as SIM_DECK, ROUND_SIZE as SIM_ROUND, dueCount, dayOf } from './sim.js';
 import { add } from '../../core/clock.js';
 
 /**
@@ -23,6 +25,8 @@ export async function prepare(ctx) {
     const { loadData, stateFor } = await import('./data.js');
     if (!ctx.settings().language) return;
     stateFor(ctx, await loadData(ctx));
+    const { refreshSimStats } = await import('./sim-data.js');
+    await refreshSimStats(ctx);
   } catch { /* offline: Today plans from the last stats */ }
 }
 
@@ -47,6 +51,19 @@ export function todayBudget({ store, c, settings }) {
   const act = (store.get('activity', {}) || {})[c.today];
   const roundsToday = Math.max(act ? act.rounds || 0 : 0, day ? day.rounds || 0 : 0);
   return { ...budget, due, roundsToday, writeRounds: day ? day.writeRounds || 0 : 0 };
+}
+
+/**
+ * Speaking situations today: due cards, new ones left and the minutes they take (the hub and Today's row agree).
+ * The unseen count comes from the stats the bank wrote when it was last loaded (kv 'speak.sim'.stats).
+ * @param {{store: any, c: any, settings: any}} ctx
+ */
+export function simToday({ store, c, settings }) {
+  const sim = store.get(SIM, {}) || {};
+  const due = dueCount(store.cards(SIM_DECK), c);
+  const day = dayOf(sim, c.today);
+  const unseen = sim.stats && Number.isFinite(sim.stats.unseen) ? sim.stats.unseen : Infinity;
+  return { ...simBudget({ c, settings, dueN: due, newShown: day.newShown || 0, unseen }), due, roundsToday: day.rounds || 0 };
 }
 
 /**
@@ -108,6 +125,16 @@ export function planItems({ store, c, settings, t, exam }) {
     out.push({ id: 'practice.mistakes', source: 'practice', kind: 'mistakes', introducesNew: mDue === 0, title: t('practice.plan.mistakes'),
       detail: t('practice.plan.mistakes.detail', { n: mDue + mNew }), minutes: roundMinutes(n), href: '#/practice/round?kind=mistakes', priority: 25,
       action: t('practice.plan.mistakes.action', { n, min: roundMinutes(n) }) });
+  }
+  // speaking situations: a short self-graded round after the reviews
+  const sim = simToday({ store, c, settings });
+  if (sim.cards > 0) {
+    const n = Math.min(SIM_ROUND, sim.cards);
+    out.push({ id: 'practice.situations', source: 'practice', kind: 'speak', introducesNew: sim.due === 0, title: t('plan.sim'),
+      detail: sim.due ? (sim.newLeft ? t('plan.sim.detailNew', { due: sim.due, fresh: sim.newLeft }) : t('plan.sim.detail', { n: sim.due })) : t('plan.sim.detailFresh', { n: sim.newLeft }),
+      minutes: sim.minutes, href: '#/practice/situations/round?from=today', priority: 48, action: t('plan.sim.action', { n, min: Math.max(1, Math.ceil(n * 0.2)) }) });
+  } else if (sim.roundsToday > 0) {
+    out.push({ id: 'practice.situations', source: 'practice', kind: 'speak', title: t('plan.sim'), detail: t('plan.sim.none'), minutes: 0, href: '#/practice/situations', priority: 48, done: true });
   }
   if (c.phase === 'eve') {
     out.push({ id: 'practice.frames', source: 'practice', kind: 'read', title: t('plan.frames'), detail: t('plan.frames.detail'), minutes: 5, href: '#/lookup/frames', priority: 45 });

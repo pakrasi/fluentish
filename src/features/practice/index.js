@@ -3,6 +3,7 @@
      #/practice/round[?kind=…]         a round, full screen (round.js); kind: missed, mistakes, warmup, situation,
                                        area:<speaking|reading|grammar|words>, topic:<grammar topic>
      #/practice/speak[/teil2|/aloud[/check|/go]]   speaking (speak.js)
+     #/practice/situations[/round?pick=…]   speaking situations: hear a line, answer aloud, grade (sim-view.js)
      #/practice/words                  exam words from the private results repository
      #/practice/write                  Schreiben: its rounds, the Aufgaben, the phrases by function (write.js)
      #/practice/write/build/<task>[/free]  Build an email, then write it yourself (write.js, build.js)
@@ -14,6 +15,7 @@ import { mountHub } from './hub.js';
 import { mountRound } from './round.js';
 import { mountSpeak } from './speak.js';
 import { mountWrite } from './write.js';
+import { mountSim } from './sim-view.js';
 import { refreshWords, secrets, loadData, stateFor } from './data.js';
 import { COLLECTION as WORDS, inQueue } from './words.js';
 import * as RD from '../../domain/b1ready.js';
@@ -30,13 +32,14 @@ export async function mount(el, ctx) {
   }
   // an old link: #/practice/teil2 is the Teil 2 talk
   if (parts[0] === 'teil2') { ctx.go('/practice/speak/teil2', { replace: true }); return; }
-  if (parts[0] && !['round', 'speak', 'words', 'write'].includes(parts[0])) {
+  if (parts[0] && !['round', 'speak', 'situations', 'words', 'write'].includes(parts[0])) {
     replace(el, h('div', { class: 'practice stack' }, h('div', { class: 'page-head' }, h('h1', null, ctx.t('error.notFound'))), h('a', { class: 'btn pressable', href: '#/practice' }, ctx.t('practice.back'))));
     return;
   }
   warmVoices();
   if (parts[0] === 'round') return mountRound(el, ctx);
   if (parts[0] === 'speak') return mountSpeak(el, ctx, parts.slice(1));
+  if (parts[0] === 'situations') return mountSim(el, ctx, parts.slice(1));
   if (parts[0] === 'words') return mountWords(el, ctx);
   if (parts[0] === 'write') return mountWrite(el, ctx, parts.slice(1));
   return mountHub(el, ctx);

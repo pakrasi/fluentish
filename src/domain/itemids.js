@@ -13,10 +13,11 @@
      W:<word id>      exam word that is in the German word list      area words
      BW:<slug>        exam word that is not in the word list         area words
      F:<attempt>-<n>  a mistake from a Schreiben/Sprechen correction area mistakes
+     SS:<fn>-<nn>     a speaking situation (self-graded), deck 'speak' area situations
 
    Pure; tested in node (tests/unit/practice-ids.test.mjs). */
 
-/** @typedef {'phrase'|'reading'|'grammar'|'situation'|'reply'|'word'|'mistake'} ItemKind */
+/** @typedef {'phrase'|'reading'|'grammar'|'situation'|'reply'|'word'|'mistake'|'sim'} ItemKind */
 
 /** @type {Record<string, {kind: ItemKind, area: string}>} */
 export const TAGS = {
@@ -31,6 +32,7 @@ export const TAGS = {
   W: { kind: 'word', area: 'words' },
   BW: { kind: 'word', area: 'words' },
   F: { kind: 'mistake', area: 'mistakes' },
+  SS: { kind: 'sim', area: 'situations' },
 };
 
 /** The prefix of an item id ('BP', 'F', …) or null. @param {string} id */
