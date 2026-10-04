@@ -43,7 +43,7 @@
 
   /* readiness field cells */
   --cell-empty: rgb(20 21 25 / 0.10);
-  --cell-plan: rgb(20 21 25 / 0.18);      /* runway planned bar, module tracks: data, with a hairline-strong outline */
+  --cell-plan: rgb(20 21 25 / 0.18);      /* runway planned bar, module tracks: data, outlined with field-border (3:1) */
   --cell-learning: rgb(20 21 25 / 0.34);
   --cell-known: #2c2e34;
   --cell-new: var(--accent);

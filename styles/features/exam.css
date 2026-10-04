@@ -18,7 +18,7 @@
 .ex-sbar i { height: 4px; border-radius: 2px; background: var(--surface-2); }
 .ex-sbar i.is-pass { background: var(--ink); }
 .ex-sbar i.is-fail { background: var(--bad); }
-.ex-sbar i.is-sub { background: var(--cell-learning); }
+.ex-sbar i.is-sub { background: var(--ink-3); }
 
 /* ---------- Exam tab ---------- */
 .ex-upnext { display: grid; gap: var(--s-2); }

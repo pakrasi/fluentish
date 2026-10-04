@@ -92,7 +92,11 @@ The repo is public; a learner's results, recordings, vocab, mistakes and keys ne
 | `day` | exam day | a 3-minute warm-up only; FSRS writes nothing |
 | `after` | past | cap lifted, normal budget; "Set your next exam" |
 
-Readiness shows "would recall now" when the exam is more than 21 days away. When the date moves **earlier**, reviews due after the new cap are clamped into cap−2…cap (`fsrs.recap`); moving it later changes nothing. Profile restates what the date controls under the field ("6 days left. New items stop Wed 7 Oct. Reviews end Thu 8 Oct.") and a toast confirms the move.
+Readiness is measured on a set that never depends on the date (the whole B1 pool, mistakes excluded): expected recall on the exam day, or today without a date. Moving the date changes the day it is measured on, never the set. The exam cap on review dates (no review after exam−1 unless it will still be recalled on the day) is applied when due dates are **read** (`b1ready.dueOn`), so changing the date never writes a card: 9 → 5 → 9 leaves every card and count as it was (tested). Profile restates what the date controls under the field ("6 days left. New items stop Wed 7 Oct. Reviews end Thu 8 Oct."); the line is live, so there is no toast.
+
+How much a day holds has one answer: `domain/budget.js dayBudget()` (new items, rounds, minutes, pace). Today's plan row and button, Practice's hub and pace line and the round's quota all read it. Igloo's carried-over "new items per day" counts as Auto (a number counts only when chosen here, with a rev stamp).
+
+Results sync after a migration uploads nothing until the import notice has been seen; old unsent items from the legacy apps go only after the learner's tap (`ui.sendLegacy`). A Sprechen take in progress is written to IndexedDB every 2 seconds (`exams.takeInProgress` + blob `take:<id>`) and recovered on the next start.
 
 ## 6. Migration from the old apps
 

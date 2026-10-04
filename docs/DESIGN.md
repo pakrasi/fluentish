@@ -12,7 +12,7 @@ colors:                       # light
   ink-3: "#5c5f67"            # captions; 5.8:1 on canvas
   hairline: "rgba(20,21,25,0.11)"
   hairline-strong: "rgba(20,21,25,0.22)"
-  field-border: "rgba(20,21,25,0.42)"
+  field-border: "rgba(20,21,25,0.50)"   # inputs and data outlines: 3.3:1 on surface and on the atmosphere
   on-ink: "#f6f6f3"
   accent: "#2a43d6"           # cobalt: today, progress, focus, links. 6.6:1 on canvas
   accent-ink: "#2237b8"
@@ -25,6 +25,7 @@ colors:                       # light
   role-slot: "#b0432a"
   role-plain: "#6b6f78"
   cell-empty: "rgba(20,21,25,0.10)"
+  cell-plan: "rgba(20,21,25,0.18)"     # runway planned bar, module tracks; always with a field-border outline
   cell-learning: "rgba(20,21,25,0.34)"
   cell-known: "#2c2e34"
 colors-dark:
@@ -49,6 +50,7 @@ colors-dark:
   role-slot: "#f0906f"
   role-plain: "#959aa3"
   cell-empty: "rgba(236,235,230,0.10)"
+  cell-plan: "rgba(236,235,230,0.22)"
   cell-learning: "rgba(236,235,230,0.34)"
   cell-known: "#d9d8d2"
 
@@ -64,7 +66,8 @@ typography:
   label:    { fontFamily: Geist, fontSize: 13px, fontWeight: 500, lineHeight: 1.35 }
   caption:  { fontFamily: Geist, fontSize: 12px, fontWeight: 400, lineHeight: 1.4, numeric: tabular }
   tile:     { fontFamily: Geist, fontSize: 18px, fontWeight: 500, lineHeight: 1.25 }
-  mono:     { fontFamily: "Geist Mono", fontSize: 12.5px, fontWeight: 400 }            # role labels on tiles, key hints only
+  mono:     { fontFamily: "Geist Mono", fontSize: 12.5px, fontWeight: 400 }            # role labels on tiles, key hints, diagnostics ids only; never levels
+  german-list: { fontFamily: Newsreader, fontSize: 19px, fontWeight: 400, lineHeight: 1.35 }   # lists of German sentences (round done, missed)
 
 rounded: { tile: 6px, ctl: 12px, card: 20px, pill: 999px, cell: 2px }
 spacing: { 1: 4px, 2: 8px, 3: 12px, 4: 16px, 5: 20px, 6: 24px, 8: 32px, 10: 40px, 12: 48px, 16: 64px, gutter: "16px phone / 24px >=720px", tap: 44px }
@@ -83,17 +86,26 @@ components:
   button-primary: { backgroundColor: "{colors.ink}", textColor: "{colors.on-ink}", rounded: "{rounded.ctl}", height: 44px, padding: 0 18px, typography: "{typography.label} at 15px" }
   button:         { backgroundColor: "{colors.surface}", border: "1px {colors.hairline-strong}", rounded: "{rounded.ctl}", height: 44px }
   button-quiet:   { backgroundColor: transparent, textColor: "{colors.ink-2}", rounded: "{rounded.ctl}", height: 44px }
-  chip:           { rounded: "{rounded.pill}", height: 36px, padding: 0 14px, pressed: "ink fill" }
-  segmented:      { backgroundColor: "{colors.surface-2}", rounded: "{rounded.ctl}", thumb: "{colors.surface}, slides with spring-snappy" }
+  chip:           { rounded: "{rounded.pill}", height: "36px (pointer:fine) / 44px (pointer:coarse)", padding: "0 14px / 0 16px touch", pressed: "ink fill" }
+  segmented:      { backgroundColor: "{colors.surface-2}", rounded: "{rounded.ctl}", height: "40px fine / 44px touch (40px buttons, 2px track)", thumb: "{colors.surface}, slides with spring-snappy" }
+  timer-bar:      { height: 2px, fill: "{colors.hairline-strong}" }   # a timer is never accent
+  callout:        { backgroundColor: "{colors.surface-2}", rounded: "{rounded.tile}", padding: "10px 12px", border: none }   # rule lines; no side stripes
+  odometer:       { mask: "bottom fade only: #000 0-84%, transparent 96%" }
+  primary-width:  "phone 100%; desktop min(100%, 360px)"
   study-card:     { backgroundColor: "{colors.surface}", rounded: "{rounded.card}", padding: "24px 20px 20px", shadow: card, viewTransitionName: fx-card }
   answer-field:   { border: "bottom 1px {colors.field-border}", typography: "{typography.input}", caret: "{colors.accent}", height: 52px }
   tile:           { rounded: "{rounded.tile}", background: "role colour at 13% (17% dark) on surface", underline: "3px inset role colour" }
   segments:       { height: 4px, gap: 3px, rounded: 2px, done: ink, miss: bad, now: accent }
   ring:           { stroke: "5.5/100 of size", caps: butt, gap: 5deg, arc: ink, today: accent }
-  field:          { cell: "7px phone / 9px desktop", gap: 2px, rounded: "{rounded.cell}" }
-  runway:         { bar: "22-64px by planned minutes", rounded: 4px, today: "accent outline + accent fill", exam: "14px diamond, ink" }
+  field:          { cell: "7px phone / 9px desktop; 6px round strip; 5px round-done", gap: "2px (1px at 5px)", rounded: "{rounded.cell}", notStarted: "cell-empty + 1px hairline-strong outline" }
+  runway:         { bar: "22-64px by planned minutes (62% under 420px)", fill: "cell-plan + 1px field-border inset", rounded: 4px, today: "accent outline + accent fill", exam: "14px diamond, ink", forcedColors: "CanvasText outline and fill, Highlight today" }
   toast:          { backgroundColor: "{colors.ink}", textColor: "{colors.on-ink}", rounded: "{rounded.pill}", position: "fixed, above tab bar" }
-  tab-bar:        { position: "fixed bottom on phone, inline links >=900px", current: "ink label + 18x2px accent dash" }
+  tab-bar:        { position: "fixed bottom on phone, inline links >=900px", current: "ink label + 18x2px accent dash", glass: "92% canvas + blur; solid canvas under prefers-reduced-transparency" }
+  dock:           { position: "fixed above the tab bar on phone (<900px)", use: "Today and Practice's one Start button; the element itself, never an aria-hidden copy", scrollPadding: "html scroll-padding-bottom covers dock + tab bar" }
+
+layout:
+  column-list: 760px     # Practice, Exam, Look up, Profile, word and topic pages
+  column-wide: 1120px    # Today two columns from 960px, exam runner split from 960px
 ---
 
 ## Overview
@@ -133,7 +145,8 @@ Dials (taste-skill): VARIANCE 4, MOTION 5, DENSITY 5. App UI, not a landing page
 ## Layout
 
 - Single column on phone, 16px gutter plus safe-area insets. Max content 1120px; two columns from 960px where content pairs naturally (Today: countdown + next round; Progress: ring + field).
-- Today, top to bottom: hero (countdown numeral, runway, today's minutes, Start round), Next up, Readiness, Study days. The hero is the only boxed brand moment.
+- Today, top to bottom: hero (countdown numeral linking to the exam date, runway, today's minutes), phase notice, import notice, Feedback, Plan, Readiness (figure, field, legend, one line defining the number), Modules. On desktop: hero and Modules left, Feedback, Plan and Readiness right. The sticky button on phone starts the first unfinished Plan row and uses that row's words.
+- List pages use one 760px column; Today and the exam runner use the wide layout.
 - Bottom tab bar on phone (fixed, translucent, 44px targets), inline links at the top from 900px.
 - Sections separate with 40px and a hairline, not boxes. The study card is the one elevated surface in a round.
 
@@ -153,7 +166,7 @@ All in `styles/components.css`. The kit demo page stays with the design work (de
 - **Study card**: meta row (kind, "3 of 12"), prompt in Newsreader, optional hint, answer baseline field with check icon slot, actions (Show answer quiet, Check primary with Enter hint on keyboards). The `<input>` persists across cards: only the prompt text changes inside a view transition, so focus and the iOS keyboard stay up between cards.
 - **Round segments**: one 4px segment per question; done ink, miss bad, now accent (short stub).
 - **Readiness ring**: one arc per exam module (Lesen, Hören, Schreiben, Sprechen), ink; today's gain is the accent end of each arc. Overall percent in the centre as an odometer. Module rows below with 4px tracks.
-- **Readiness field**: canvas, one cell per item, introduction order. Legend: Known, Known today, Learning, Not started.
+- **Readiness field**: canvas (aria-hidden; the figure and the line under it carry the data), one cell per item of the B1 pool, introduction order. Known = recalled with 90% or more on the readiness day; Known today = known and practised today (accent). Legend: Known, Known today, Learning, Not started. It appears on Today, as a strip of the round's items in the round header, and on the round-done screen.
 - **Countdown runway**: one column per day from (today minus up to 2) to the exam; bar height is planned minutes, fill is minutes done; today accent; exam day a diamond labelled "Exam". Switches to weeks when the span is over 35 days. Driven entirely by the user's exam date setting.
 - **Study days**: last 28 days as squares; today outlined in accent, filled when the day's minutes are done.
 - **Word tiles**: role tint at 13% (17% dark), 3px role underline, optional mono role label. `.tile.gap` for the missing chunk.
@@ -176,7 +189,8 @@ Purpose first: every animation is feedback (an answer, a tap), a state change (c
 8. Card to card: View Transition on `fx-card`; old card slides 28px left and fades (160 ms), new one comes from 40px right at 98.5% scale with the snappy spring, 40 ms after. Back reverses direction. Fallback without View Transitions: the same keyframes by class.
 9. View to view (tabs): `fx-view` content fades out quick and rises 8px in; bars stay still. Give the content wrapper `view-transition-name: fx-view`; the bars must not be inside it.
 10. Numbers: the one big numeral per screen is an odometer (digits roll on their own columns, ones place first). Other counts tick with `countTo` (ease-out quart, 600-900 ms).
-11. Brand moment: the atmosphere is still at rest. It breathes (speed ramps up, holds 1.6 s, eases out) once when a round is finished. Nothing else on Today moves at rest.
+11. Brand moment: the atmosphere is still at rest. It breathes (speed ramps up, holds 1.6 s, eases out) once when a round is finished, behind the round-done result. Nothing else on Today moves at rest.
+12. The only brand motions: the field's intro (once a day on Today), `ripple()` on every first-try correct answer (round strip) and on cells that became known (Today, round-done), and `breathe()` once per finished round. A lost WebGL context falls back to the CSS gradient.
 
 **Reduced motion** (system setting, or `html[data-motion="reduce"]` as a user setting): `--move` becomes 0 so every translate/scale distance is zero; card and view changes become 140 ms crossfades; fills, rings and the runway jump to their values; the odometer and counters write the final number; the field draws its final state with no intro or ripple; the check and underline appear without sweeping; the atmosphere renders one still frame and never breathes. Haptics stay (they are not motion). `html[data-motion="full"]` opts back in.
 
@@ -193,7 +207,9 @@ Purpose first: every animation is feedback (an answer, a tap), a state change (c
 
 - Do keep the field and runway honest: each cell is a real item, each column a real day with real minutes.
 - Do keep the input focused between cards on iPhone (swap prompt text, not the input element).
-- Do use the accent only for "you, today, progress".
+- Do use the accent only for "you, today, progress". Never as a fill wider than a runway bar, never on timers.
+- Do set German sentence text in Newsreader wherever it is read (prompts, examples, lists); Geist only for typed input and tiles.
+- Do keep the exam runner and its start panel German, in Sie; everything around them is English.
 - Don't add confetti, particle bursts, sounds, streak flames or emoji. The ripple is the celebration.
 - Don't animate on page load beyond the one-time field intro and odometer roll. Returning to Today should feel instant.
 - Don't use role colours outside the grammar layer, or green for "known".

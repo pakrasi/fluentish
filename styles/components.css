@@ -116,7 +116,7 @@
 .countdown-head { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--s-4); flex-wrap: wrap; }
 .runway { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: var(--gap, 6px); align-items: end; }
 .runway-day { display: grid; gap: 6px; justify-items: center; }
-.runway-bar { position: relative; width: 100%; height: var(--h, 64px); border-radius: 4px; background: var(--cell-plan); box-shadow: inset 0 0 0 1px var(--hairline-strong); overflow: hidden; }
+.runway-bar { position: relative; width: 100%; height: var(--h, 64px); border-radius: 4px; background: var(--cell-plan); box-shadow: inset 0 0 0 1px var(--field-border); overflow: hidden; }
 .runway-bar > span { position: absolute; inset: auto 0 0 0; height: 100%; border-radius: inherit; background: var(--ink); transform-origin: bottom; transform: scaleY(var(--p, 0)); transition: transform var(--dur-fill) var(--spring-soft); transition-delay: calc(var(--i, 0) * var(--stagger)); }
 .runway-day.is-past .runway-bar > span { background: var(--cell-known); }
 .runway-day.is-today .runway-bar { box-shadow: inset 0 0 0 1.5px var(--accent); background: var(--accent-soft); }

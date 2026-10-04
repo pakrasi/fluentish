@@ -63,6 +63,7 @@ Today asks every feature what it offers and composes the day with `composeToday(
 ```js
 /** @param {import('../contract.js').PlanCtx} ctx  { store, c: clockCtx, settings, exam: manifestExam | null, t } */
 export function planItems(ctx) { return [/* PlanItem */]; }          // may be async; no DOM, no network
+export async function prepare(viewCtx) {}                           // optional: refresh cached stats (may load content) before Today composes
 export function todayFeedback(ctx) { return [/* FeedbackRow */]; }   // optional
 export function todayModules(ctx) { return [/* ModuleBar */]; }      // optional (Exam)
 ```
