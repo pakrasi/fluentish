@@ -32,6 +32,11 @@ export function applyPrefs(p) {
   if (prefs.theme === 'light' || prefs.theme === 'dark') root.dataset.theme = prefs.theme; else delete root.dataset.theme;
   if (prefs.motion === 'reduce' || prefs.motion === 'full') root.dataset.motion = prefs.motion; else delete root.dataset.motion;
   setLocale(prefs.locale);
+  // the browser chrome follows the app's theme, not only the system's
+  const canvas = getComputedStyle(root).getPropertyValue('--canvas').trim();
+  for (const m of document.querySelectorAll('meta[name="theme-color"]')) {
+    if (prefs.theme === 'light' || prefs.theme === 'dark') m.setAttribute('content', canvas); else m.setAttribute('content', m.getAttribute('media')?.includes('dark') ? '#0d0e11' : '#f4f4f1');
+  }
   try { localStorage.setItem(config.keys.boot, JSON.stringify({ theme: prefs.theme, motion: prefs.motion })); } catch { /* private mode */ }
 }
 

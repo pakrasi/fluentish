@@ -159,6 +159,7 @@ export default {
   'exam.de.left': 'Noch {t} Min.',
   'exam.de.used': '{t} Min. vergangen',
   'exam.de.timeUp': 'Die Zeit ist abgelaufen.',
+  'exam.de.lowTime': 'Weniger als 5 Minuten',
   'exam.de.overtime': 'Zeit abgelaufen, {t} Min. darüber',
   'exam.de.paused': 'Pausiert',
   'exam.de.continue': 'Weitermachen',
@@ -493,7 +494,6 @@ export default {
 
   // Practice (stage B): hub, round, speaking, exam words
   'practice.title': 'Practice',
-  'practice.sub': 'One review queue',
   'practice.loading': 'Loading your queue…',
   'practice.loadFailed': 'Could not load the practice items. Check the connection and reload.',
   'practice.back': 'Back to Practice',

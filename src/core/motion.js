@@ -305,7 +305,10 @@ export function segmented(el, onChange) {
   }));
   const cur = btns.find(b => b.getAttribute('aria-pressed') === 'true') || btns[0];
   thumb.style.transition = 'none'; place(cur); void thumb.offsetWidth; thumb.style.transition = '';
-  new ResizeObserver(() => place(btns.find(b => b.getAttribute('aria-pressed') === 'true') || btns[0])).observe(el);
+  // the control is rebuilt on every settings change: stop observing once it has left the page
+  const ro = new ResizeObserver(() => { if (!el.isConnected) { ro.disconnect(); return; } place(btns.find(b => b.getAttribute('aria-pressed') === 'true') || btns[0]); });
+  ro.observe(el);
+  return ro;
 }
 
 /* ------------------------------------------------------------------ */
@@ -317,6 +320,9 @@ export function toast(text, { action, onAction, ms = 4000 } = {}) {
   const t = document.createElement('div');
   t.className = 'toast'; t.setAttribute('role', 'status');
   t.append(Object.assign(document.createElement('span'), { textContent: text }));
+  // a status node inserted with its text is often skipped by VoiceOver: say it through the shell's live region too
+  const live = document.getElementById('live');
+  if (live) { live.textContent = ''; requestAnimationFrame(() => { live.textContent = text; }); }
   if (action) {
     const b = Object.assign(document.createElement('button'), { className: 'btn pressable', textContent: action });
     b.addEventListener('click', () => { onAction?.(); close(); });

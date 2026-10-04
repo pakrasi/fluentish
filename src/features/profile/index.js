@@ -215,7 +215,8 @@ export async function mount(el, ctx) {
     sec.id = 'profile-data';
     const meta = store.get('meta', {}) || {};
     const result = h('div', { 'aria-live': 'polite' });
-    const fileIn = /** @type {HTMLInputElement} */ (h('input', { type: 'file', accept: 'application/json,.json', class: 'sr-only', id: nextId('imp') }));
+    // the visible control is a real button; the file input stays out of the tab order
+    const fileIn = /** @type {HTMLInputElement} */ (h('input', { type: 'file', accept: 'application/json,.json', class: 'sr-only', id: nextId('imp'), tabindex: '-1', 'aria-hidden': 'true' }));
     fileIn.addEventListener('change', async () => {
       const f = fileIn.files && fileIn.files[0];
       if (!f) return;
@@ -258,7 +259,7 @@ export async function mount(el, ctx) {
           const b = exportBundle(store, { profile: app.profile });
           download(new Blob([JSON.stringify(b, null, 1)], { type: 'application/json' }), `fluentish-${ctx.clock.today()}.json`);
         } }, icon('download', { size: 18 }), t('data.export')),
-        h('label', { class: 'btn pressable', for: fileIn.id }, icon('upload', { size: 18 }), t('data.import')), fileIn,
+        h('button', { type: 'button', class: 'btn pressable', onclick: () => fileIn.click() }, icon('upload', { size: 18 }), t('data.import')), fileIn,
         deleteBtn),
       h('p', { class: 'field-hint' }, t('data.hint')),
       result, confirm);

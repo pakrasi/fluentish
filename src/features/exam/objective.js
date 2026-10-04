@@ -3,7 +3,7 @@
 import { h, replace } from '../../core/dom.js';
 import { answerKey, grade, teilIds, answeredIn, weakSkills, byTeil, passes } from '../../domain/grade.js';
 import { draft, saveDraft, submitAttempt, loadWhy, mediaUrl, feedbackFor, markSeen } from './data.js';
-import { clockBar, backLink, option, num, confirmPanel } from './parts.js';
+import { clockBar, backLink, option, num, confirmPanel, arrowKeys } from './parts.js';
 import { playerGroup, player, reviewAudio } from './player.js';
 import { fmt } from './timer.js';
 import { feedbackBlock, nextCard, reviewHead } from './review.js';
@@ -43,7 +43,7 @@ function renderParts({ ex, module, answers, review, key, onPick, t, audio }) {
       const mine = String(answers[s.id] ?? '').toUpperCase();
       const right = review ? String(correct(s.id) || '0').toUpperCase() : null;
       return h('div', { class: 'ex-item', dataset: { item: s.id } }, h('p', { class: 'ex-q' }, num(13 + i), s.text),
-        h('div', { class: 'ex-letters', role: 'radiogroup', 'aria-label': `${13 + i}` }, letters.map(l => {
+        h('div', { class: 'ex-letters', role: 'radiogroup', 'aria-label': `${13 + i}`, ref: (/** @type {HTMLElement} */ g) => queueMicrotask(() => arrowKeys(g)) }, letters.map(l => {
           const on = mine === l;
           return h('button', { type: 'button', role: 'radio', 'aria-checked': String(on), disabled: review, class: ['ex-letter', on && 'is-on', review && l === right && 'is-right', review && on && l !== right && 'is-wrong'],
             onclick: (/** @type {Event} */ e) => {
@@ -56,7 +56,7 @@ function renderParts({ ex, module, answers, review, key, onPick, t, audio }) {
     }));
     const ads = h('div', { class: 'ex-ads', id: 'l3-ads' }, L.teil3.ads.map((/** @type {any} */ a) => h('div', { class: 'ex-ad' }, h('p', { class: 'ex-ad-t' }, h('b', { class: 'ex-ad-l' }, a.letter), ' ', a.title), h('p', null, a.text))));
     parts.push(h('div', null, instr(t('exam.de.l3'), ' ', L.teil3.intro.replace(/Situationen 1\s*[–-]\s*7/, 'Situationen 13–19')),
-      h('div', { class: 'ex-l3' }, sit, h('div', null, h('h3', { class: 'ex-sub' }, t('exam.de.ads')), ads))));
+      h('div', { class: 'ex-l3' }, sit, h('div', null, h('h2', { class: 'ex-sub' }, t('exam.de.ads')), ads))));
     parts.push(h('div', null, instr(t('exam.de.l4'), ' ', h('b', null, L.teil4.question)),
       h('div', { class: 'ex-items' }, L.teil4.comments.map((/** @type {any} */ c, /** @type {number} */ i) => h('div', { class: 'ex-item', dataset: { item: c.id } },
         h('p', { class: 'ex-q' }, num(20 + i), h('b', null, c.author)), h('p', { class: 'ex-prose ex-comment' }, c.text),
@@ -114,6 +114,7 @@ export function runObjective(el, ctx, { exam, n, module, ex, def }) {
   let active = Math.min(d?.tab || 0, ids.length - 1);
   let busy = false;
   const tabs = h('div', { class: 'ex-tabs', role: 'tablist', 'aria-label': 'Teile', lang: 'de' });
+  arrowKeys(tabs);
   const body = h('div', { id: 'ex-panel', role: 'tabpanel' });
   const nav = h('div', { class: 'ex-nav' });
   const cover = h('div', { class: 'ex-cover', hidden: true });
@@ -215,6 +216,7 @@ export async function reviewObjective(el, ctx, { exam, n, module, ex, def, attem
   const prefix = module === 'lesen' ? 'L' : 'H';
   let active = Math.max(0, focusItem ? ids.findIndex(xs => xs.includes(focusItem)) : 0);
   const tabs = h('div', { class: 'ex-tabs', role: 'tablist', 'aria-label': 'Teile', lang: 'de' });
+  arrowKeys(tabs);
   const body = h('div', { id: 'ex-panel', role: 'tabpanel' });
   const show = (/** @type {number} */ i) => {
     active = i;

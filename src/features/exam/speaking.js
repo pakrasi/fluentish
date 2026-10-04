@@ -13,7 +13,7 @@ import { createRecorder, RecorderError } from '../../services/recorder.js';
 import { audioExt } from '../../data/sync/github-b1exam.js';
 import { draft, saveDraft, submitAttempt, saveRecording, recordings, mediaUrl, sync, linked, beginTake, keepTakeAudio, endTake, recoverTake } from './data.js';
 import { uuidv7 } from '../../data/ids.js';
-import { clockBar, backLink, confirmPanel } from './parts.js';
+import { clockBar, backLink, confirmPanel, arrowKeys } from './parts.js';
 import { fmt } from './timer.js';
 import { stampMs } from '../../domain/grade.js';
 
@@ -36,6 +36,7 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
   const clock = clockBar({ ctx, n, module: 'sprechen', minutes: 15, label: 'Vorb.' });
   const since = clock.clock.start;
   const tabs = h('div', { class: 'ex-tabs', role: 'tablist', 'aria-label': 'Teile' });
+  arrowKeys(tabs);
   const content = h('div', { id: 'ex-panel', role: 'tabpanel' });
   const stopCue = () => { try { cueAudio?.pause(); } catch { /* none */ } cueAudio = null; };
   const setPhase = (/** @type {string} */ p) => {

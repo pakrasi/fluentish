@@ -30,7 +30,9 @@ export function clockBar({ ctx, n, module, minutes, countUp = false, label = '',
     const leftMs = T.left(clock, now, minutes);
     const shown = countUp ? T.elapsed(clock, now) : leftMs;
     text.textContent = `${!countUp && leftMs < 0 ? '+' : ''}${T.fmt(shown / 1000)}`;
-    el.classList.toggle('is-low', !countUp && leftMs < 5 * 60e3 && !T.paused(clock));
+    const isLow = !countUp && leftMs < 5 * 60e3 && !T.paused(clock);
+    el.classList.toggle('is-low', isLow);
+    el.title = isLow ? t('exam.de.lowTime') : '';   // colour is never the only signal; the minute announcements say it too
     el.classList.toggle('is-paused', T.paused(clock));
     replace(btn, icon(T.paused(clock) ? 'play' : 'pause', { size: 18 }), h('span', { class: 'sr-only' }, T.paused(clock) ? t('exam.resume') : t('exam.pause')));
     btn.setAttribute('aria-label', T.paused(clock) ? t('exam.resume') : t('exam.pause'));
@@ -81,6 +83,35 @@ export function option({ name, value, label, badge, answers, review = false, cor
     tag ? h('span', { class: 'ex-opt-tag' }, tag) : null);
 }
 
+/**
+ * Arrow keys for a row of tabs or radio buttons: Left/Right (and Up/Down) move to the next enabled one and select it,
+ * as a tablist or radiogroup should; only the selected one is a Tab stop.
+ * @param {HTMLElement} group @param {string} [sel] the buttons
+ */
+export function arrowKeys(group, sel = 'button') {
+  const sync = () => {
+    const bs = /** @type {HTMLButtonElement[]} */ ([...group.querySelectorAll(sel)]);
+    const cur = bs.find(b => b.getAttribute('aria-selected') === 'true' || b.getAttribute('aria-checked') === 'true') || bs.find(b => !b.disabled);
+    for (const b of bs) b.tabIndex = b === cur ? 0 : -1;
+  };
+  group.addEventListener('keydown', e => {
+    const k = /** @type {KeyboardEvent} */ (e).key;
+    const step = k === 'ArrowRight' || k === 'ArrowDown' ? 1 : k === 'ArrowLeft' || k === 'ArrowUp' ? -1 : 0;
+    if (!step) return;
+    const bs = /** @type {HTMLButtonElement[]} */ ([...group.querySelectorAll(sel)]).filter(b => !b.disabled);
+    const i = bs.indexOf(/** @type {HTMLButtonElement} */ (document.activeElement));
+    if (i < 0) return;
+    e.preventDefault();
+    const next = bs[(i + step + bs.length) % bs.length];
+    next.click();
+    // the group may have been redrawn by the click: focus the button in the same place
+    const again = /** @type {HTMLButtonElement[]} */ ([...group.querySelectorAll(sel)]).find(b => b.textContent === next.textContent) || next;
+    sync(); again.focus();
+  });
+  new MutationObserver(sync).observe(group, { childList: true, subtree: true, attributes: true, attributeFilter: ['aria-selected', 'aria-checked'] });
+  sync();
+}
+
 /** Item number as printed in the exam. @param {number} n */
 export const num = n => h('span', { class: 'ex-num tnum' }, String(n));
 
@@ -89,11 +120,13 @@ export const num = n => h('span', { class: 'ex-num tnum' }, String(n));
  * @param {{ title: string, lines?: any[], yes: string, no: string, onYes: () => any, onNo: () => void, danger?: boolean, lang?: string }} o
  */
 export function confirmPanel({ title, lines = [], yes, no, onYes, onNo, danger = false, lang }) {
+  // focus goes back to what opened the panel when it closes with "no"
+  const opener = /** @type {HTMLElement | null} */ (document.activeElement);
   const yesBtn = h('button', { type: 'button', class: ['btn', danger ? 'btn-danger' : 'btn-primary', 'pressable'], onclick: async () => { yesBtn.disabled = true; try { await onYes(); } finally { yesBtn.disabled = false; } } }, yes);
   const el = h('div', { class: 'ex-confirm', role: 'alertdialog', 'aria-modal': 'false', 'aria-labelledby': 'ex-confirm-t', lang: lang || null },
     h('p', { class: 'ex-confirm-title', id: 'ex-confirm-t' }, title),
     lines.map(l => h('p', { class: 'caption' }, l)),
-    h('div', { class: 'row-actions' }, yesBtn, h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: onNo }, no)));
+    h('div', { class: 'row-actions' }, yesBtn, h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => { onNo(); if (opener && opener.isConnected) opener.focus(); } }, no)));
   setTimeout(() => yesBtn.focus(), 30);
   return el;
 }

@@ -14,7 +14,7 @@ import { loadData, stateFor, session, refreshWords, secrets, wordsState } from '
 import { COLLECTION as WORDS } from './words.js';
 
 const AREAS = ['speaking', 'grammar', 'reading', 'words'];
-const pct = (/** @type {number} */ x) => `${Math.round(100 * (x || 0))} %`;
+const pct = (/** @type {number} */ x) => new Intl.NumberFormat('en-GB', { style: 'percent', maximumFractionDigits: 0 }).format(x || 0);
 
 /** A recall bar: seen (quiet) under recall (ink). @param {number} recall @param {number} coverage @param {string} name */
 export function recallBar(recall, coverage, name) {
@@ -64,6 +64,7 @@ export async function mountHub(el, ctx) {
         h('p', { class: 'label pr-new' }, c.newItems ? t('practice.newLeft', { n: newN }) : t('practice.noNew'))),
       c.phase !== 'none' || Object.keys(cards).length ? readyLine(rd, c) : null,
       nRound ? null : h('p', { class: 'pr-empty' }, nextDue ? t('practice.nothingNext', { date: label(nextDue) }) : t('practice.nothing')),
+      // the one Start button: in the card on a wide screen, docked above the tab bar on a phone (CSS only, one element)
       startBtn ? h('div', { class: 'pr-queue-btn' }, startBtn) : null);
 
     // ---- notices ----
@@ -116,12 +117,11 @@ export async function mountHub(el, ctx) {
     foot.push(h('p', { class: 'caption' }, t('practice.tomorrow', { n: tomorrow, date: label(add(c.today, 1)) })));
 
     const view = h('div', { class: ['practice', 'stack', startBtn && 'has-dock'] },
-      h('div', { class: 'page-head' }, h('h1', null, t('practice.title')), h('span', { class: 'caption' }, t('practice.sub'))),
+      h('div', { class: 'page-head' }, h('h1', null, t('practice.title'))),
       notices, queue,
       h('nav', { class: 'pr-rows', 'aria-label': t('practice.more') }, rows),
       section(t('practice.areas'), h('div', { class: 'pr-areas' }, areaRows)),
-      h('div', { class: 'pr-foot stack' }, foot),
-      startBtn ? h('div', { class: 'dock' }, h('a', { class: 'btn btn-primary btn-wide pressable', href: '#/practice/round', tabindex: '-1', 'aria-hidden': 'true' }, startLabel)) : null);
+      h('div', { class: 'pr-foot stack' }, foot));
     const h1 = el.querySelector('h1');
     replace(el, view);
     if (h1 && document.activeElement === h1) view.querySelector('h1')?.focus({ preventScroll: true });
