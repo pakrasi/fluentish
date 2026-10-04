@@ -218,3 +218,26 @@ test('rollDay keeps 40 days and starts a fresh log', () => {
   assert.equal(C.rollDay({ day: r.day, days: r.days }, '2026-10-03').rolled, false);
   void FS;
 });
+
+test('round slots: a missed or mistakes round never replaces a paused daily round', async () => {
+  const S = await import('../../src/features/practice/session.js');
+  const { saveLogs } = await import('../../src/features/practice/data.js');
+  const kv = {};
+  const store = { get: (n, f) => (n in kv ? kv[n] : f), set: (n, v) => { kv[n] = v; } };
+  const daily = S.startRound(['a', 'b', 'c'], { kind: 'today' }, '2026-10-03', 1);
+  daily.i = 1;
+  saveLogs(store, { round: daily, slot: 'today' });
+  const missed = S.startRound(['x'], { kind: 'missed' }, '2026-10-03', 2);
+  saveLogs(store, { round: missed, slot: S.slotKey(missed) });
+  saveLogs(store, { round: null, slot: 'missed' });
+  const sess = kv['b1.session'];
+  assert.equal(S.savedRound(sess, 'today').queue.length, 3, 'the daily round is still there');
+  assert.equal(S.savedRound(sess, 'today').i, 1);
+  assert.equal(S.savedRound(sess, 'missed'), null);
+  assert.equal(S.slotKey({ kind: 'area', area: 'grammar' }), 'area:grammar');
+  assert.equal(S.roundHref({ kind: 'topic', topic: 'verb-final' }), '#/practice/round?kind=topic%3Averb-final');
+  // a round carried over from the trainer in the main slot belongs to its kind
+  const legacy = { round: { ...missed, kind: 'mistakes' } };
+  assert.equal(S.savedRound(legacy, 'today'), null);
+  assert.equal(S.savedRound(legacy, 'mistakes').kind, 'mistakes');
+});

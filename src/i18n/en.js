@@ -574,6 +574,7 @@ export default {
   'practice.youHad': 'You had:',
   'practice.oneWay': 'One way to say it',
   'practice.fixedIt': 'Fixed it',
+  'practice.retypeOk': 'Typed right.',
   'practice.comesBack': 'It comes back in a few questions.',
   'practice.claude.ask': 'My answer is right',
   'practice.word.play': 'Play the example',

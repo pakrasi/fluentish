@@ -61,7 +61,7 @@ export async function mount(el, ctx) {
         h('div', { class: 'today-a' }, hero.el, phaseNotice(c, examName), importNotice()),
         h('div', { class: 'today-b' }, feedbackSec, renderPlan(plan, c)),
         plan.modules.length ? h('div', { class: 'today-c' }, renderModules(plan.modules)) : null),
-      plan.primary ? h('div', { class: 'dock' }, h('a', { class: 'btn btn-primary btn-wide pressable', href: plan.primary.href }, primaryLabel(plan.primary))) : null);
+      plan.primary ? h('div', { class: 'dock' }, h('a', { class: 'btn btn-primary btn-wide pressable', href: fromToday(plan.primary.href) }, primaryLabel(plan.primary))) : null);
     replace(el, page);
     page.classList.toggle('has-dock', !!plan.primary);
     hero.after();
@@ -76,7 +76,7 @@ export async function mount(el, ctx) {
   function renderHero({ s, c, plan, activity, examName, lang }) {
     const countdown = c.phase === 'week' || c.phase === 'lastNew' || c.phase === 'eve' || c.phase === 'day';
     const minutesLine = h('p', { class: 'label' }, h('b', { class: 'tnum ink' }, String(Math.round(plan.minutes.done))), ' ', t('today.minutesOf', { n: s.minutesPerDay }));
-    const heroBtn = plan.primary ? h('a', { class: 'btn btn-primary pressable hero-btn', href: plan.primary.href }, primaryLabel(plan.primary)) : null;
+    const heroBtn = plan.primary ? h('a', { class: 'btn btn-primary pressable hero-btn', href: fromToday(plan.primary.href) }, primaryLabel(plan.primary)) : null;
     const atmoEl = h('div', { class: 'atmo', 'aria-hidden': 'true' });
     if (countdown) {
       const num = h('span', { class: 'numeral' }, String(c.daysLeft));
@@ -129,6 +129,8 @@ export async function mount(el, ctx) {
     };
   }
 
+  /** A round started here comes back here when it ends. @param {string} href */
+  const fromToday = href => (href.startsWith('#/practice/round') ? `${href}${href.includes('?') ? '&' : '?'}from=today` : href);
   /** @param {any} it */
   const primaryLabel = it => (it.cut && it.source === 'practice' ? t('plan.round.one', { n: 12 }) : it.action) || (it.minutes ? `${it.title} · ${t('unit.min', { n: it.minutes })}` : it.title);
   /** @param {any} r */
@@ -185,7 +187,7 @@ export async function mount(el, ctx) {
       work.length ? h('p', { class: 'caption section-sub' }, sub) : null,
       head,
       plan.rows.length ? h('ol', { class: 'plan' }, plan.rows.map(r => h('li', { class: ['plan-item', r.done && 'is-done', r.kind === 'setup' && 'is-setup'] },
-        h('a', { class: 'plan-row pressable', href: r.href },
+        h('a', { class: 'plan-row pressable', href: fromToday(r.href) },
           h('span', { class: 'plan-state', 'aria-hidden': 'true' }, r.done ? icon('check', { size: 14 }) : r.kind === 'setup' ? icon('calendar', { size: 14 }) : null),
           h('span', { class: 'row-main' }, h('span', { class: 'row-title' }, r.title, r.done ? h('span', { class: 'sr-only' }, `, ${t('today.doneRow')}`) : null), rowDetail(r) ? h('span', { class: 'row-detail' }, rowDetail(r)) : null),
           r.minutes ? h('span', { class: 'row-trail tnum' }, t('unit.min', { n: r.minutes })) : null,

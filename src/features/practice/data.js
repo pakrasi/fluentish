@@ -14,6 +14,7 @@ import { buildPool } from './pool.js';
 import { wordItems, fetchWords, COLLECTION as WORDS } from './words.js';
 import * as C from './compose.js';
 import { dayBudget } from '../../domain/budget.js';
+import { slotKey } from './session.js';
 
 const FILES = ['b1.items', 'b1.grammar', 'b1.bank', 'b1.plan', 'b1.nouns', 'b1.wordmap'];
 export const VOCAB_URL = `${config.github.api}/repos/${config.resultsRepo}/contents/data/vocab.json`;
@@ -94,10 +95,20 @@ export function saveAnswer(store, itemId, rec, event, logs) {
   saveLogs(store, logs);
 }
 
-/** @param {any} store @param {{round?: any, day?: any, variants?: any[]}} logs */
+/**
+ * @param {any} store @param {{round?: any, slot?: string, day?: any, variants?: any[]}} logs
+ *   slot: where the round lives ('today' is b1.session.round, any other kind is b1.session.rounds[slot])
+ */
 export function saveLogs(store, logs) {
   const s = session(store), next = { ...s };
-  if ('round' in logs) next.round = logs.round;
+  if ('round' in logs) {
+    const slot = logs.slot || 'today';
+    if (slot === 'today') next.round = logs.round;
+    else {
+      next.rounds = { ...(s.rounds || {}), [slot]: logs.round };
+      if (s.round && slotKey(s.round) === slot) next.round = null;   // a carried-over round of this kind moves to its slot
+    }
+  }
   if (logs.day) next.day = logs.day;
   if (logs.variants) next.variants = logs.variants;
   store.set('b1.session', next);

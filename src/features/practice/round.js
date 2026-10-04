@@ -70,6 +70,21 @@ function diffLines(typed, right) {
   return { you, right: rt };
 }
 
+/**
+ * A situation's lines: what he typed, plain (only one phrase is graded), and the answer with that phrase's words marked.
+ * @param {string} typed @param {string} right @param {string} pattern the accepted pattern that was checked
+ */
+function phraseLines(typed, right, pattern) {
+  const want = new Set(Match.words(String(pattern).replace(/…/g, ' ')).map((/** @type {any} */ w) => w.n));
+  /** @type {any[]} */ const rt = []; let p = 0;
+  for (const w of Match.words(right)) {
+    if (!want.has(w.n)) continue;
+    rt.push(right.slice(p, w.start), h('mark', null, right.slice(w.start, w.end))); p = w.end;
+  }
+  rt.push(right.slice(p));
+  return { you: [typed], right: rt };
+}
+
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
 export async function mountRound(el, ctx) {
   const { t, store } = ctx;
@@ -81,15 +96,19 @@ export async function mountRound(el, ctx) {
     return () => { document.body.dataset.chrome = 'on'; document.body.classList.remove('pr-in-round'); };
   }
   const spec = C.parseKind(ctx.query.get('kind'));
+  const slot = S.slotKey(spec);
+  // End and Esc go back where the round was started from (Today's button adds from=today)
+  const backTo = ctx.query.get('from') === 'today' ? '/today' : '/practice';
   let st = stateFor(ctx, data);
   const sess = session(store);
-  /** @type {any} */ let round = S.resumable(sess.round, st.c.today, Date.now()) && (spec.kind === 'today' || sess.round.kind === spec.kind) ? structuredClone(sess.round) : null;
+  const saved = S.savedRound(sess, slot);
+  /** @type {any} */ let round = S.resumable(saved, st.c.today, Date.now()) ? structuredClone(saved) : null;
   if (!round) {
     if (st.day.traps == null && spec.kind === 'today') st.day.traps = C.trapSet(st);
     const ids = C.compose(st, spec);
     if (!ids.length) return drawNothing();
     round = S.startRound(ids, spec, st.c.today, Date.now());
-    saveLogs(store, { round, day: st.day });
+    saveLogs(store, { round, slot, day: st.day });
   }
   const day = st.day;
   const settings = ctx.settings();
@@ -309,7 +328,7 @@ export async function mountRound(el, ctx) {
     recorded = true;
     const cards = store.cards('b1');
     const res = S.answer({ round, entry, o: { ...o, revealed }, cards, day, c: st.c, forecast: forecaster(cards, st.c), now: Date.now(), tz: tz() });
-    saveAnswer(store, entry.item.id, res.rec, res.event, { round, day });
+    saveAnswer(store, entry.item.id, res.rec, res.event, { round, slot, day });
     updateDots();
   }
   function hintNodes(/** @type {string} */ s) { return String(s).split(/\*([^*]+)\*/).map((x, i) => (i % 2 ? h('i', null, x) : x)); }
@@ -352,9 +371,11 @@ export async function mountRound(el, ctx) {
     else if (capSlip) head = t('practice.right.cap');
     else if (g.typos.length) head = t('practice.right.typo');
     const situation = it.kind === 'topic' || it.kind === 'reply';
-    const clean = g.primary && !g.typos.length && !capSlip && !umlaut && !late && !isNew && !situation;
+    const clean = g.primary && !g.typos.length && !capSlip && !umlaut && !late && !isNew && !situation && it.area !== 'mistakes';
     const kids = [];
     if (head) kids.push(h('p', { class: ['pr-res', (late || umlaut || capSlip || veryLate) ? 'is-warn' : 'is-ok'] }, head));
+    // a mistake from a correction: the rule is the point, so it shows on a right answer too
+    if (it.area === 'mistakes' && it.rule) kids.push(h('p', { class: 'pr-rule' }, it.rule));
     if (g.typos.length || capSlip || umlaut) kids.push(h('p', { class: 'pr-yours', lang: 'de' }, markSlips(g)));
     if (situation) kids.push(h('p', { class: 'caption' }, t('practice.checkedPhrase')));
     const others = g.alsoCorrect || [];
@@ -376,10 +397,13 @@ export async function mountRound(el, ctx) {
     const it = entry.item;
     record({ ok: false, ms, det: d?.cls || null, gDet: g.det?.cls || null });
     const right = g.right;
-    const df = diffLines(full(typed), right);
+    // a situation grades one phrase, not the whole sentence: only that phrase is marked, the rest is shown plain
+    const situation = it.kind === 'topic' || it.kind === 'reply';
+    const df = situation && g.pattern ? phraseLines(full(typed), right, g.pattern) : diffLines(full(typed), right);
     const kids = [h('p', { class: 'pr-res is-bad' }, t('practice.wrong')),
       h('p', { class: 'pr-diff', lang: 'de' }, h('span', { class: 'caption' }, t('practice.you')), ' ', df.you),
-      h('p', { class: 'pr-diff answer-key', lang: 'de' }, h('span', { class: 'caption' }, t('practice.rightIs')), ' ', df.right)];
+      h('p', { class: 'pr-diff answer-key', lang: 'de' }, h('span', { class: 'caption' }, t('practice.rightIs')), ' ', df.right),
+      situation ? h('p', { class: 'caption' }, t('practice.checkedPhrase')) : null];
     if (g.alsoCorrect?.length) kids.push(h('p', { class: 'pr-also' }, alsoMore(g.alsoCorrect, t('practice.otherWays') + ' ')));
     const rule = (d && g.detRule) || g.detRule || it.rule;
     if (rule) kids.push(h('p', { class: 'pr-rule' }, rule));
@@ -403,7 +427,7 @@ export async function mountRound(el, ctx) {
           const cards = store.cards('b1');
           const res = S.override({ round, entry: cur, ms: 0, c: st.c, forecast: forecaster(cards, st.c), now: Date.now(), tz: tz() });
           const variants = [...(session(store).variants || []), { id: cur.item.id, answer: full(typed), at: Date.now() }].slice(-200);
-          saveAnswer(store, cur.item.id, res.rec, res.event, { round, day, variants });
+          saveAnswer(store, cur.item.id, res.rec, res.event, { round, slot, day, variants });
           updateDots();
           replace(boxEl, h('p', { class: 'pr-res is-ok' }, v.verdict === 'correct' ? t('practice.claude.correct') : t('practice.claude.minor')), v.note ? h('p', { class: 'caption' }, v.note) : null);
           state = 'feedback'; input.value = ''; answerEl.classList.remove('is-wrong', 'is-retype'); input.placeholder = t('practice.ph.next'); setButtons();
@@ -462,6 +486,10 @@ export async function mountRound(el, ctx) {
     const g = grade(typed);
     if (g.ok) {
       state = 'feedback';
+      // the miss is fixed: no red "Not quite" next to a green check. The verdict turns, the struck line goes.
+      const verdict = fb.querySelector('.pr-res.is-bad');
+      if (verdict) { verdict.classList.replace('is-bad', 'is-ok'); verdict.textContent = t('practice.retypeOk'); }
+      fb.querySelectorAll('.pr-diff:not(.answer-key), .pr-claude').forEach(x => x.remove());
       fb.append(h('p', { class: 'caption pr-back' }, t('practice.comesBack')));
       answerEl.classList.remove('is-wrong', 'is-retype');
       input.placeholder = t('practice.ph.next');
@@ -476,15 +504,16 @@ export async function mountRound(el, ctx) {
   function next() {
     clearTimeout(auto);
     if (state === 'answer' || state === 'repair' || state === 'pick') return;
-    if (!S.advance(round)) { saveLogs(store, { round }); return finish(); }
-    saveLogs(store, { round });
+    if (!S.advance(round)) { saveLogs(store, { round, slot }); return finish(); }
+    saveLogs(store, { round, slot });
     drawCard();
   }
 
   // ---------- keys ----------
   input.addEventListener('keydown', e => {
     if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); onReturn(); return; }
-    if (e.key === 'Tab') { e.preventDefault(); onSecondary(); return; }
+    // Tab is Skip / Show me only while that button is there; otherwise focus moves on as usual (no keyboard trap)
+    if (e.key === 'Tab' && !e.shiftKey && !secondary.hidden) { e.preventDefault(); onSecondary(); return; }
     if (e.key === 'Escape') { e.preventDefault(); end(); return; }
     if (e.altKey && (e.key === 'a' || e.key === 'å')) { e.preventDefault(); fb.querySelectorAll('details').forEach(d => { d.open = !d.open; }); clearTimeout(auto); return; }
     if (state === 'feedback' && !holding && e.key.length === 1 && !e.metaKey && !e.ctrlKey) next();   // typing moves on; the key lands in the next answer
@@ -510,16 +539,16 @@ export async function mountRound(el, ctx) {
     cleanup();
     const done = round.results.filter((/** @type {any} */ r) => r.first).length;
     addActivity(store, st.c.today, { minutes: minutesSpent() });
-    saveLogs(store, { round });
-    ctx.go('/practice');
+    saveLogs(store, { round, slot });
+    ctx.go(backTo);
     setTimeout(() => ctx.toast(t('practice.saved', { n: done, total: round.planned })), 60);
   }
   function finish() {
     cleanup();
     day.rounds = (day.rounds || 0) + 1;
-    saveLogs(store, { round: null, day });
+    saveLogs(store, { round: null, slot, day });
     addActivity(store, st.c.today, { minutes: minutesSpent(), rounds: 1 });
-    drawDone(el, ctx, data, round);
+    drawDone(el, ctx, data, round, backTo);
   }
   function drawNothing() {
     const c = st.c;
@@ -542,8 +571,8 @@ export async function mountRound(el, ctx) {
   return () => { cleanup(); stopAudio(); document.body.dataset.chrome = 'on'; document.body.classList.remove('pr-in-round'); };
 }
 
-/** The done screen (UX §4.3). @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx @param {any} data @param {any} round */
-function drawDone(el, ctx, data, round) {
+/** The done screen (UX §4.3). @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx @param {any} data @param {any} round @param {string} backTo */
+function drawDone(el, ctx, data, round, backTo) {
   const { t, store } = ctx;
   const st = stateFor(ctx, data), c = st.c;
   const sum = S.summary(round, data.byId);
@@ -561,7 +590,7 @@ function drawDone(el, ctx, data, round) {
     h('ul', { class: 'list' }, items.map(it => h('li', { class: 'list-item', lang: 'de' }, short(it))))) : null;
   const exam = c.exam && c.phase !== 'after' && c.phase !== 'none';
   const bar = recallBar(a.recall, a.coverage, t('practice.area.bar', { recall: `${p1(a.recall)} %`, seen: `${p1(a.coverage)} %` }));
-  const anotherHref = round.kind === 'today' || round.kind === 'mistakes' || round.kind === 'missed' ? '#/practice/round' : `#/practice/round?kind=${round.kind === 'area' ? `area:${round.area}` : round.kind === 'topic' ? `topic:${round.topic}` : round.kind}`;
+  const anotherHref = round.kind === 'today' || round.kind === 'mistakes' || round.kind === 'missed' ? '#/practice/round' : S.roundHref(round);
   replace(el, h('div', { class: 'practice pr-done stack' },
     h('p', { class: 'label' }, t('practice.roundDone')),
     h('h1', null, h('span', { class: 'figure tnum' }, String(sum.right)), ' ', h('span', { class: 'pr-done-of' }, t('practice.ofRight', { n: sum.total }))),
@@ -585,7 +614,7 @@ function drawDone(el, ctx, data, round) {
   /** @type {HTMLElement | null} */ (el.querySelector('h1'))?.focus({ preventScroll: true });
   const onKey = (/** @type {KeyboardEvent} */ e) => {
     if (e.key === 'Enter' && more && !/** @type {HTMLElement} */ (e.target).closest('a,button')) { e.preventDefault(); location.hash = anotherHref; }
-    if (e.key === 'Escape') { e.preventDefault(); ctx.go('/practice'); }
+    if (e.key === 'Escape') { e.preventDefault(); ctx.go(backTo); }
   };
   document.addEventListener('keydown', onKey);
   const stop = () => document.removeEventListener('keydown', onKey);

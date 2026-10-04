@@ -28,6 +28,7 @@ const refCache = new WeakMap();
  * @property {string[]} alsoCorrect
  * @property {boolean} primary     exactly the first accepted answer
  * @property {string | null} detRule
+ * @property {string | null} pattern  for situations: the accepted pattern that was checked (the phrase that does the job)
  */
 
 /**
@@ -51,6 +52,13 @@ export function gradeAnswer(item, input, move = null, data = {}) {
   const render = (/** @type {string} */ p) => it.gap ? (own.has(p) ? (Match.gapFill(it.prompt, p)?.text || p) : p) : it.literal ? p : Match.renderPattern(p, it.model);
   let right = it.model;
   if (!r.ok && r.nearest != null && r.nearest > 0) right = render(accepted[r.nearest]);
+  // a situation: show the answer that contains the phrase being checked, never a variant without it
+  const pattern = it.anywhere ? (accepted[r.ok ? Math.max(0, accepted.indexOf(r.matched)) : Math.max(0, r.nearest ?? 0)] ?? null) : null;
+  if (pattern && it.anywhere && !r.ok) {
+    const fixed = Match.words(String(pattern).replace(/…/g, ' ')).map((/** @type {any} */ w) => w.n);
+    const has = (/** @type {string} */ s) => { const ws = new Set(Match.words(s).map((/** @type {any} */ w) => w.n)); return fixed.every(x => ws.has(x)); };
+    if (!has(right) && it.model && has(it.model)) right = it.model;
+  }
   // a pattern with an open slot ("weil ich … arbeiten muss") cannot be typed back: show the full model sentence
   if (/…/.test(right) && it.model && !/…/.test(it.model)) right = it.model;
   const shown = new Set([norm(r.ok ? r.input : right)]);
@@ -64,6 +72,6 @@ export function gradeAnswer(item, input, move = null, data = {}) {
   const detRule = det ? data.traps?.get(det.cls)?.rule || null : null;
   return {
     ok: r.ok && !det, matchOk: r.ok, det, input: r.input, typos: r.typos || [], capMiss: r.capMiss || [], umlautMiss: r.umlautMiss || [],
-    right, alsoCorrect: also.slice(0, 8), primary: !!(r.ok && r.matched === accepted[0] && r.exact), detRule,
+    right, alsoCorrect: also.slice(0, 8), primary: !!(r.ok && r.matched === accepted[0] && r.exact), detRule, pattern,
   };
 }

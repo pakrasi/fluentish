@@ -65,7 +65,7 @@
 .card-actions { display: flex; gap: var(--s-2); margin-top: var(--s-5); }
 .card-actions .btn-primary { flex: 1; }
 .answer-key { margin-top: var(--s-3); font: 400 20px/1.35 var(--font-display); }
-.answer-key mark { background: none; color: inherit; text-decoration: underline 2px var(--bad); text-underline-offset: 4px; }
+.answer-key mark { background: none; color: inherit; text-decoration: underline 2px var(--ok); text-underline-offset: 4px; }
 
 /* ---------- word tiles (grammar layer) ---------- */
 .tiles { display: flex; flex-wrap: wrap; gap: 6px; align-items: flex-end; }

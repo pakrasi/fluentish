@@ -21,6 +21,24 @@ export function startRound(ids, spec, today, now) {
     queue: ids.map(id => ({ id })), i: 0, results: /** @type {any[]} */ ([]), planned: ids.length, prev: /** @type {Record<string, any>} */ ({}) };
 }
 
+/**
+ * The slot a round is kept in: 'today' for the daily round (b1.session.round, the shape carried over from the
+ * trainer), else its kind ('missed', 'mistakes', 'area:grammar', 'topic:verb-final', …) in b1.session.rounds, so
+ * starting a missed or mistakes round never replaces a paused daily round.
+ * @param {{kind: string, area?: string | null, topic?: string | null}} r a round or a parsed kind
+ */
+export const slotKey = r => (r.kind === 'area' ? `area:${r.area}` : r.kind === 'topic' ? `topic:${r.topic}` : r.kind || 'today');
+
+/** The address that opens (or resumes) a round of this slot. @param {{kind: string, area?: string | null, topic?: string | null}} r */
+export const roundHref = r => { const k = slotKey(r); return k === 'today' ? '#/practice/round' : `#/practice/round?kind=${encodeURIComponent(k)}`; };
+
+/** The saved round of a slot (or null). A round carried over from the trainer in the main slot belongs to its own kind. @param {any} sess @param {string} key */
+export function savedRound(sess, key) {
+  const own = (sess.rounds || {})[key];
+  if (own) return own;
+  return sess.round && slotKey(sess.round) === key ? sess.round : null;
+}
+
 /** A saved round is resumable on the same study day, within 6 hours, while questions are left. @param {any} r @param {string} today @param {number} now */
 export function resumable(r, today, now) {
   return !!(r && r.queue && r.day === today && now - r.startedAt <= 6 * 3600e3 && r.i < r.queue.length);
@@ -83,9 +101,11 @@ export function answer({ round, entry, o, cards, day, c, forecast = () => 0, now
   if (entry.isNew) { day.newShown++; day.newBy = day.newBy || {}; const st = stream(entry.item); day.newBy[st] = (day.newBy[st] || 0) + 1; }
   if (!day.shown.includes(id)) day.shown.push(id);
   const res = FS.schedule(rec, { g, ms: o.ms, onTime: !!(entry.limit && o.ms <= entry.limit * 1000), flags, mode: 't', logOnly }, { ...c, forecast }, now);
-  // reinsert misses and learning steps: +4, then +10
+  // reinsert misses and learning steps: +4, then +10. A mistake from a correction typed right the first time is not
+  // asked again in its own round: it comes back on its schedule.
   const times = round.queue.filter((/** @type {any} */ q) => q.id === id).length;
-  if (res.reinsert && times < 3) {
+  const rightFirst = round.kind === 'mistakes' && res.reinsert === 'learn' && o.ok && !entry.reinsert;
+  if (res.reinsert && times < 3 && !rightFirst) {
     const at = Math.min(round.queue.length, round.i + 1 + (times === 1 ? 4 : 10));
     round.queue.splice(Math.max(round.i + 1, at), 0, { id, re: true });
   }

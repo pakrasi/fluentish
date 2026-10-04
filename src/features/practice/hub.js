@@ -9,7 +9,7 @@ import * as RD from '../../domain/b1ready.js';
 import { ROUND_MIN } from '../../domain/budget.js';
 import * as C from './compose.js';
 import { todayBudget, roundAction } from './plan.js';
-import { resumable } from './session.js';
+import { resumable, savedRound } from './session.js';
 import { loadData, stateFor, session, refreshWords, secrets, wordsState } from './data.js';
 import { COLLECTION as WORDS } from './words.js';
 
@@ -44,7 +44,8 @@ export async function mountHub(el, ctx) {
     const dueN = s.dueN, newN = s.budget.newLeft;
     const b = todayBudget({ store, c, settings: ctx.settings(), t, exam: null });
     const sess = session(store);
-    const round = resumable(sess.round, c.today, Date.now()) ? sess.round : null;
+    const main = savedRound(sess, 'today');
+    const round = resumable(main, c.today, Date.now()) ? main : null;
     const firstTime = !Object.values(cards).some(r => r && r.hist && r.hist.length);
     const ids = round ? [] : C.compose(s);
     const left = round ? round.queue.length - round.i : 0;
