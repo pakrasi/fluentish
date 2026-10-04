@@ -51,6 +51,8 @@ export function gradeAnswer(item, input, move = null, data = {}) {
   const render = (/** @type {string} */ p) => it.gap ? (own.has(p) ? (Match.gapFill(it.prompt, p)?.text || p) : p) : it.literal ? p : Match.renderPattern(p, it.model);
   let right = it.model;
   if (!r.ok && r.nearest != null && r.nearest > 0) right = render(accepted[r.nearest]);
+  // a pattern with an open slot ("weil ich … arbeiten muss") cannot be typed back: show the full model sentence
+  if (/…/.test(right) && it.model && !/…/.test(it.model)) right = it.model;
   const shown = new Set([norm(r.ok ? r.input : right)]);
   /** @type {string[]} */ const also = [];
   for (const p of (it.gap ? it.accept : accepted)) {

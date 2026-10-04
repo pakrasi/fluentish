@@ -109,10 +109,10 @@ export function override({ round, entry, ms, c, forecast = () => 0, now, tz = 'U
 /** Move on. Returns true while there is a next question. @param {any} round */
 export function advance(round) { round.i++; return round.i < round.queue.length; }
 
-/** Segment states for the kit's segments(): 'done' | 'miss' | 'now' | ''. @param {any} round */
-export function dots(round) {
+/** Segment states for the kit's segments(): 'done' | 'miss' | 'now' | ''. answered: the current card has its result. @param {any} round */
+export function dots(round, answered = false) {
   return round.queue.map((/** @type {any} */ q, /** @type {number} */ k) => {
-    if (k === round.i) return 'now';
+    if (k === round.i && !answered) return 'now';
     if (k > round.i) return '';
     const r = round.results.filter((/** @type {any} */ x) => x.id === q.id)[round.queue.slice(0, k).filter((/** @type {any} */ x) => x.id === q.id).length];
     return r && r.ok ? 'done' : 'miss';
