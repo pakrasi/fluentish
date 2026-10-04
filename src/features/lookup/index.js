@@ -15,7 +15,7 @@ import * as D from './data.js';
 import { parseRoute, hashFor } from './route.js';
 import { search } from './search.js';
 import { LANGS, langFor, TABS, PHRASE_CATS, GRAMMAR_SUBS, FRAME_SUBS, NOTE_KEYS, tenseGrid, dictHead } from './sources.js';
-import { triage, headword, examples, details, freqBand, sources, frequent } from './words.js';
+import { triage, cardId, headword, examples, details, freqBand, sources, frequent } from './words.js';
 import { hl, glyph, paged, markForm, caption } from './ui.js';
 import { play, stop, prefetchAudio } from './audio.js';
 
@@ -34,6 +34,8 @@ export async function mount(el, ctx) {
   let alive = true;
   const cleanup = () => { alive = false; stop(); offs.forEach(f => f()); pagers.forEach(p => p.stop()); };
   const today = () => ctx.clock.ctx();
+  /** lemma → [word id, level], for the card ids of captured words (shared with Practice through domain/itemids.js) */
+  const wordmap = await D.wordmap(ctx.content);
 
   /* ---------- shared row builders ---------- */
 
@@ -48,7 +50,7 @@ export async function mount(el, ctx) {
     const c = today();
     const tri = triage(g, c.phase);
     if (tri === 'waiting') return { cls: 'is-waiting', text: t('lookup.state.waiting') };
-    const card = store.cards('b1')[`x:${g.key}`];
+    const card = store.cards('b1')[cardId(g, wordmap)];
     if (card && card.reps) return card.due <= c.today ? { cls: 'is-due', text: t('lookup.state.due') } : { cls: '', text: t('lookup.state.dueOn', { date: label(card.due) }), date: card.due };
     if (tri === 'later') return { cls: 'is-later', text: t('lookup.state.later') };
     return { cls: '', text: t('lookup.state.new') };

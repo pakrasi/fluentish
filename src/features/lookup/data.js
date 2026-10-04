@@ -99,6 +99,11 @@ export async function myWords(store, { force = false, fetch: f } = {}) {
 /** Forget the cached repository copy (after the token changes). */
 export const resetMyWords = () => { remote = null; };
 
+/* ---------- word map ---------- */
+
+/** The B1 word map (lemma → [word id, level]) that exam-word card ids are built from; {} if it cannot load. @param {any} content */
+export const wordmap = content => once('wordmap', () => content.load('b1.wordmap')).catch(() => ({}));
+
 /* ---------- audio ---------- */
 
 /** @param {any} content @returns {Promise<{base: string, files: Record<string, string>}>} */

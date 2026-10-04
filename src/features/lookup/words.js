@@ -6,10 +6,13 @@
    mergeVocab(remote, local, events)       → remote words plus captures on this device not yet imported, minus deletes
    lemmaGroups(words)                      → one group per lemma (several captured forms of the same word)
    triage(group, phase)                    → 'waiting' (no meaning yet) | 'later' (exam week and not frequent) | 'queue'
+   cardId(group, wordmap)                  → the group's review card id, the same one Practice schedules (domain/itemids.js)
    headword(g), examples(g), details(g), freqBand(zipf), sources(g)
    The capture format is b1-exam's (docs/SCHEMA.md › vocab.local): {day, module, teil, word, word_key, lemma, gloss,
    gender, plural, pos, note, cluster, zipf, exam_days, sentence, sentence_en, examples (JSON), details (JSON), box,
    due, reviews, deleted}. */
+
+import { wordId } from '../../domain/itemids.js';
 
 export class VocabError extends Error {
   /** @param {'auth' | 'net' | 'http'} code @param {string} msg */
@@ -77,6 +80,12 @@ export function lemmaGroups(words) {
     return { ...g, forms: [...g.forms], days: [...g.days].sort((a, b) => a - b) };
   });
 }
+
+/**
+ * The review card of a captured word: 'W:<word id>' or 'BW:<slug>' through wordId(), exactly as Practice keys it.
+ * @param {any} g a lemma group @param {Record<string, [string, string]>} wordmap
+ */
+export const cardId = (g, wordmap) => wordId(g.lemma, wordmap);
 
 /** Importance (b1-exam): frequency plus how many of the 14 tests use it. @param {any} g */
 export const importance = g => (g.zipf ?? 3) + 1.5 * ((g.exam_days ?? 1) / 14);
