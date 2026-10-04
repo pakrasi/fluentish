@@ -103,9 +103,13 @@ export function applyEdit(script, edits, { id, at, lemma = s => s.toLowerCase() 
   for (const s of sections) for (const x of s.sentences) { sentById.set(x.id, x); alive.add(x.id); }
   /** @type {string[]} */ const marksRemoved = [];
   const marks = [];
-  for (const mk of script.marks || []) {
-    const s = sentById.get(mk.sentenceId);
+  const oldSentIds = new Set(script.sections.flatMap((/** @type {any} */ x) => x.sentences.map((/** @type {any} */ y) => y.id)));
+  for (let mk of script.marks || []) {
+    let s = sentById.get(mk.sentenceId);
+    // its sentence was split or rewritten: the first new sentence of the script with the same word takes the mark
+    if (!s) s = [...sentById.values()].find(x => !oldSentIds.has(x.id) && tokenize(x.de).some(tk => tk.w && tk.t === mk.surface));
     if (!s) { marksRemoved.push(mk.surface); continue; }
+    if (s.id !== mk.sentenceId) mk = { ...mk, sentenceId: s.id };
     const toks = tokenize(s.de).filter(t => t.w);
     const at0 = toks.find(t => t.k === mk.start);
     if (at0 && at0.t === mk.surface) { marks.push(mk); continue; }
