@@ -27,7 +27,7 @@ export function startRound(ids, spec, today, now) {
  * starting a missed or mistakes round never replaces a paused daily round.
  * @param {{kind: string, area?: string | null, topic?: string | null}} r a round or a parsed kind
  */
-export const slotKey = r => (r.kind === 'area' ? `area:${r.area}` : r.kind === 'topic' ? `topic:${r.topic}` : r.kind || 'today');
+export const slotKey = r => (r.kind === 'area' ? `area:${r.area}` : r.kind === 'topic' ? `topic:${r.topic}` : r.kind === 'write' ? (r.topic ? `write:${r.topic}` : 'write') : r.kind || 'today');
 
 /** The address that opens (or resumes) a round of this slot. @param {{kind: string, area?: string | null, topic?: string | null}} r */
 export const roundHref = r => { const k = slotKey(r); return k === 'today' ? '#/practice/round' : `#/practice/round?kind=${encodeURIComponent(k)}`; };
@@ -77,7 +77,7 @@ export function reviewEvent(itemId, before, rec, o, c, tz) {
  * @param {object} a
  * @param {any} a.round
  * @param {any} a.entry      from current()
- * @param {{ok: boolean, ms: number, revealed?: boolean, selfRepair?: boolean, capSlip?: boolean, umlaut?: boolean, typo?: boolean, partial?: boolean, det?: string|null, gDet?: string|null}} a.o
+ * @param {{ok: boolean, ms: number, revealed?: boolean, selfRepair?: boolean, capSlip?: boolean, umlaut?: boolean, typo?: boolean, partial?: boolean, punct?: boolean, det?: string|null, gDet?: string|null}} a.o
  * @param {Record<string, any>} a.cards
  * @param {any} a.day        the session day log
  * @param {any} a.c          clock context
@@ -89,16 +89,17 @@ export function answer({ round, entry, o, cards, day, c, forecast = () => 0, now
   const id = entry.item.id, rec = cards[id];
   const logOnly = round.kind === 'missed' && rec?.last === c.today;
   if (!(id in round.prev)) round.prev[id] = entry.before;
-  const g = FS.rate({ ok: o.ok, revealed: o.revealed, ms: o.ms, limit: entry.limit, selfRepair: o.selfRepair, capSlip: o.capSlip, umlaut: o.umlaut, partial: o.partial,
+  const g = FS.rate({ ok: o.ok, revealed: o.revealed, ms: o.ms, limit: entry.limit, selfRepair: o.selfRepair, capSlip: o.capSlip, umlaut: o.umlaut, partial: o.partial, punct: o.punct,
     prevRating: rec?.hist?.length ? rec.hist[rec.hist.length - 1][1] : 0, stage: entry.stage });
   const over = entry.limit && o.ms > entry.limit * 1000;
   const det = o.det || o.gDet || null;
-  const flags = [o.selfRepair && 'r', o.capSlip && 'c', o.typo && 'y', o.umlaut && 'u', over && 'o', o.partial && 'p', det && 'd' + det].filter(Boolean).join('');
+  const flags = [o.selfRepair && 'r', o.capSlip && 'c', o.typo && 'y', o.umlaut && 'u', over && 'o', o.partial && 'p', o.punct && 'k', det && 'd' + det].filter(Boolean).join('');
   // honesty: predicted recall vs the first try of reviewed items, first attempt of the day only
   if (rec && rec.reps && rec.learn == null && rec.last !== c.today && !entry.reinsert) {
     day.pred[0] += FS.Ron(rec, c.today); day.pred[1]++; day.firstTry[0] += g >= 3 ? 1 : 0; day.firstTry[1]++;
   }
-  if (entry.isNew) { day.newShown++; day.newBy = day.newBy || {}; const st = stream(entry.item); day.newBy[st] = (day.newBy[st] || 0) + 1; }
+  // a new Schreiben phrase counts against its own quota (newBy.w), not the daily rounds' new items (newShown)
+  if (entry.isNew) { const st = stream(entry.item); if (st !== 'w') day.newShown++; day.newBy = day.newBy || {}; day.newBy[st] = (day.newBy[st] || 0) + 1; }
   if (!day.shown.includes(id)) day.shown.push(id);
   const res = FS.schedule(rec, { g, ms: o.ms, onTime: !!(entry.limit && o.ms <= entry.limit * 1000), flags, mode: 't', logOnly }, { ...c, forecast }, now);
   // reinsert misses and learning steps: +4, then +10. A mistake from a correction typed right the first time is not

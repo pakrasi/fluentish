@@ -3,12 +3,15 @@
    'b1.session'.stats, which Practice writes whenever it builds the pool; prepare() builds it before Today composes,
    so Today and Practice read the same day budget (domain/budget.js) from the same inputs.
 
-   Rows: the warm-up on the exam day; the review round (due + new, about N rounds); mistakes from corrections; the
-   Sprechen frames on the eve; the Teil 2 talk while the exam is ahead. When today's rounds are done and nothing is
-   due, the round row shows done. */
+   Rows: the warm-up on the exam day; the review round (due + new, about N rounds); Schreiben phrases (their own
+   rounds, right after the review round while Schreiben is the weakest module, see domain/modules.js writingFocus);
+   mistakes from corrections; the Sprechen frames on the eve; the Teil 2 talk while the exam is ahead. When today's
+   rounds are done and nothing is due, the round row shows done. */
 import { isDue, dueOn } from '../../domain/b1ready.js';
 import { roundMinutes } from '../../domain/today.js';
 import { dayBudget, ROUND } from '../../domain/budget.js';
+import { isWriting } from '../../domain/itemids.js';
+import { writingFocus } from '../../domain/modules.js';
 import { add } from '../../core/clock.js';
 
 /**
@@ -30,15 +33,20 @@ export async function prepare(ctx) {
 export function todayBudget({ store, c, settings }) {
   const cards = store.cards('b1');
   const mistakeIds = new Set(Object.values(store.get('mistakes', {}) || {}).filter((/** @type {any} */ m) => m && !m.deletedAt).map((/** @type {any} */ m) => m.id));
-  const due = Object.entries(cards).filter(([id, r]) => !mistakeIds.has(id) && isDue(r, c.today, c)).length;
+  let due = 0, wDue = 0;
+  for (const [id, r] of Object.entries(cards)) {
+    if (mistakeIds.has(id) || !isDue(r, c.today, c)) continue;
+    if (isWriting(id)) wDue++; else due++;
+  }
   const sess = store.get('b1.session', {}) || {};
   const stats = sess.stats && sess.stats.day === c.today ? sess.stats : null;
   const day = sess.day && sess.day.day === c.today ? sess.day : null;
   const poolLeft = stats ? (stats.unseen ?? Math.max(0, stats.pool - Object.keys(cards).length)) : Infinity;
-  const budget = dayBudget({ c, settings, dueN: due, priorityLeft: stats ? stats.priorityLeft : null, newShown: day ? day.newShown || 0 : 0, poolLeft });
+  const writing = stats && stats.writing ? { due: wDue, left: stats.writing.unseen, shown: ((day && day.newBy) || {}).w || 0, focus: writingFocus({ store, c, settings }) } : null;
+  const budget = dayBudget({ c, settings, dueN: due, priorityLeft: stats ? stats.priorityLeft : null, newShown: day ? day.newShown || 0 : 0, poolLeft, writing });
   const act = (store.get('activity', {}) || {})[c.today];
   const roundsToday = Math.max(act ? act.rounds || 0 : 0, day ? day.rounds || 0 : 0);
-  return { ...budget, due, roundsToday };
+  return { ...budget, due, roundsToday, writeRounds: day ? day.writeRounds || 0 : 0 };
 }
 
 /**
@@ -79,6 +87,18 @@ export function planItems({ store, c, settings, t, exam }) {
     });
   } else if (b.roundsToday > 0) {
     out.push({ id: 'practice.round', source: 'practice', kind: 'review', title: t('plan.review'), detail: t('plan.review.none'), minutes: 0, href: '#/practice', priority: 20, done: true });
+  }
+  // Schreiben phrases: their own rounds; right after the review round while Schreiben is the weakest module
+  const w = b.writing;
+  if (w && w.n > 0) {
+    const n = Math.min(ROUND, w.n);
+    out.push({ id: 'practice.writing', source: 'practice', kind: 'write', introducesNew: w.due === 0, title: t('plan.writing'),
+      detail: [w.due && w.newLeft ? t('plan.review.detailNew', { due: w.due, fresh: w.newLeft }) : w.due ? t('plan.review.detail', { n: w.due, due: w.due }) : t('plan.new.detail', { n: w.newLeft }),
+        w.focus ? t('plan.writing.weakest') : null].filter(Boolean).join(' · '),
+      minutes: w.minutes, href: '#/practice/round?kind=write', priority: w.focus ? 22 : 50, rounds: w.rounds,
+      action: t('plan.writing.action', { n, min: roundMinutes(n) }) });
+  } else if (w && w.focus && b.writeRounds > 0) {
+    out.push({ id: 'practice.writing', source: 'practice', kind: 'write', title: t('plan.writing'), detail: t('plan.writing.done'), minutes: 0, href: '#/practice/write', priority: 22, done: true });
   }
   // mistakes from corrections: due ones and ones not practised yet
   const mDue = mistakes.filter((/** @type {any} */ m) => isDue(cards[m.id], c.today, c)).length;

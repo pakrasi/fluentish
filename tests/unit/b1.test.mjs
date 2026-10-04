@@ -208,7 +208,7 @@ test('readiness', () => {
     ];
     const base = { pool, today: '2026-10-03', exam: '2026-10-09', phase: 'week' };
     let r = RD.compute({ ...base, store: {} });
-    assert.equal(r.overall.recall, 0); assert.equal(r.overall.coverage, 0); assert.deepEqual(r.overall.without, ['words']);
+    assert.equal(r.overall.recall, 0); assert.equal(r.overall.coverage, 0); assert.deepEqual(r.overall.without, ['words', 'writing']);   // writing: the Schreiben phrases, an area since round 2
     const store = { a: { S: 100, D: 5, reps: 3, last: '2026-10-03', due: '2026-10-08', learn: null } };
     r = RD.compute({ ...base, store });
     near(r.areas.speaking.coverage, 2 / 3, 1e-9, '★ counts double');

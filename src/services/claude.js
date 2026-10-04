@@ -118,6 +118,49 @@ export async function correctSchreiben({ key, ex, texts, learnerNotes, fetch: f 
   return { body, model: res.model };
 }
 
+/* Practice: one Schreiben text written in Practice (Build an email, then "Write it yourself"). The same public,
+   generic grader as the mock exam, for one task; it has no learner slot at all, so nothing personal is ever sent. */
+
+/** The grader instructions for one task. German, like the exam feedback. */
+export const TASK_GRADER = [
+  'Du bist ein erfahrener Prüfer und Tutor für das Goethe-Zertifikat B1 (Modul Schreiben).',
+  'Korrigiere einen Übungstext zu einer Aufgabe nach den Goethe-Kriterien und schreibe die Rückmeldung in diesem Markdown-Format (die App zeigt genau diese Zeichen an):',
+  '- Erste Zeile: `! circa X / 40` bei Aufgabe 1 und 2, `! circa X / 20` bei Aufgabe 3.',
+  '- Zweite Zeile: `_Erfüllung x · Kohärenz x · Wortschatz x · Strukturen x_` (Aufgabe 1 und 2 je 0–10; Aufgabe 3: Erfüllung 0–4, Kohärenz 0–4, Wortschatz 0–6, Strukturen 0–6).',
+  '- Dann 1–2 Sätze: Sind alle Leitpunkte erfüllt? Passt das Register (Anrede, Gruß, du/Sie)? Passt die Länge?',
+  '- Dann jede Korrektur als eigene Zeile `~~Original~~ → ==Korrektur==` und direkt darunter eine Zeile `_kurze Erklärung_`. Nur echte Fehler, die wichtigsten zuerst, höchstens 10.',
+  '- Wenn etwas gut gelungen ist: eine Zeile `→ Gut: …`.',
+  'Schreibe auf Deutsch in einfachen Sätzen (B1-Niveau); Grammatikbegriffe darfst du in Klammern auf Englisch erklären. Bewerte streng, aber fair, so wie ein echter Goethe-Prüfer. Keine Einleitung, keine Wiederholung des Aufgabentexts.',
+].join('\n');
+
+/**
+ * The user message for one practice task (b1-schreiben@1 tasks[]) and the text written for it.
+ * @param {{aufgabe: string, situation: string, quote?: string, points: string[]}} task @param {string} text @param {number} words the word target
+ */
+export function taskMessage(task, text, words) {
+  const nr = String(task.aufgabe).replace(/^A/, '');
+  return [
+    `<aufgabe nr="${nr}" woerter="${words}">${task.situation}${task.quote ? `\nZitat: ${task.quote}` : ''}\nLeitpunkte:\n${task.points.map(p => `- ${p}`).join('\n')}</aufgabe>`,
+    `<text>${String(text || '').trim() || '(nicht geschrieben)'}</text>`,
+  ].join('\n');
+}
+
+/** Whether a reply has the shape of a one-task correction ("! circa NN / 40" or "/ 20"). @param {string} text */
+export function isTaskCorrection(text) {
+  return /^!\s*[^\n]*\d+\s*\/\s*(40|20)\b/.test(String(text || '').trim());
+}
+
+/**
+ * Correct one practice text. Throws ClaudeError('format') when the reply is not a correction.
+ * @param {{ key: string, task: any, text: string, words: number, fetch?: typeof fetch }} o
+ */
+export async function correctTask({ key, task, text, words, fetch: f }) {
+  const res = await ask({ key, system: TASK_GRADER, user: taskMessage(task, text, words), maxTokens: 6000, fetch: f });
+  const body = res.text.replace(/^```[a-z]*\n?|\n?```$/g, '').trim();
+  if (!isTaskCorrection(body)) throw new ClaudeError('format', body.slice(0, 200));
+  return { body, model: res.model };
+}
+
 /* Practice: "My answer is right". Claude checks one answer the matcher refused (never one a trap detector flagged).
    The prompt says nothing about the learner. Ported from Igloo's b1.js claudeCheck(). */
 

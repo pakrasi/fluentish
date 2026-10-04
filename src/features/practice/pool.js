@@ -1,8 +1,11 @@
 /* Practice: the item pool for the one review queue. Pure: content and private lists in, items out; tested in node.
    Ported from Igloo's b1.js build(): B1 items (content b1/items.json), chunk-bank phrases (b1/bank.json, those
    without a B1 twin), Igloo grammar (b1/grammar.json, ranked by plan topics), exam words (words.js) and mistakes
-   from corrections (data/mistakes.js). Ids keep their kind prefix (domain/itemids.js). */
+   from corrections (data/mistakes.js). Ids keep their kind prefix (domain/itemids.js).
+   Schreiben (b1/schreiben.json): the BS: phrases, and the trainer's letter items it links, go in area writing, grouped
+   by Aufgabe (W1, W2, W3) and function (wfn), introduced in the content's rank order. */
 import * as Match from '../../domain/match.js';
+import { verbForms } from '../../domain/detect.js';
 
 const TEIL_GROUP = /** @type {Record<string, [string, string]>} */ ({ 'Sprechen T1': ['S1', 'S1'], 'Sprechen T2': ['S2', 'S2'], 'Sprechen T3': ['S3', 'S3'], Forum: ['opinion', 'S3'] });
 const PLAN_OF_KIND = /** @type {Record<string, string>} */ ({ transform: 'transform', join: 'transform', order: 'transform', gap: 'recall', 'choose-article': 'recall', translate: 'recall' });
@@ -26,6 +29,10 @@ export function mistakeItem(m) {
   };
 }
 
+const POLITE = new Set(['Sie', 'Ihnen', 'Ihr', 'Ihre', 'Ihren', 'Ihrem', 'Ihrer', 'Ihres']);
+/** Polite forms in a sentence, not counting a sentence's first word. @param {string} s */
+export const politeIn = s => String(s || '').split(/(?<=[.!?:])\s+/).flatMap(sent => (sent.match(/[\p{L}]+/gu) || []).slice(1).filter(w => POLITE.has(w)));
+
 /**
  * Folded German word forms the content writes: models and accepted answers, grammar answers, the noun list (with
  * plurals) and, when loaded, the word list with its plurals, forms and examples. The matcher treats a typed word that
@@ -33,7 +40,7 @@ export function mistakeItem(m) {
  * @param {{items?: any[], grammar?: any[], bank?: Record<string, any>, nouns?: Record<string, string>, lexWords?: any[] | null, lexTexts?: string[] | null}} o
  *   lexTexts: more right German sentences (the chunk examples)
  */
-export function buildLexicon({ items = [], grammar = [], bank = {}, nouns = {}, lexWords = null, lexTexts = null }) {
+export function buildLexicon({ items = [], grammar = [], bank = {}, nouns = {}, lexWords = null, lexTexts = null, schreiben = null }) {
   /** @type {Set<string>} */ const L = new Set();
   const add = (/** @type {any} */ s) => { if (s) for (const w of Match.words(String(s).replace(/\[[^\]]*\]/g, ' '))) if (w.len > 1) L.add(w.n); };
   for (const k of Object.keys(nouns)) add(k);
@@ -42,15 +49,18 @@ export function buildLexicon({ items = [], grammar = [], bank = {}, nouns = {}, 
   for (const b of Object.values(bank)) { add(b.ex); (b.accept || []).forEach(add); }
   for (const w of lexWords || []) { add(w.w); add(w.pl); (w.alt || []).forEach(add); add(w.ex); add(w.forms); }
   for (const t of lexTexts || []) add(t);
+  for (const it of (schreiben && schreiben.items) || []) { add(it.model); (it.accept || []).forEach(add); }
+  for (const t of (schreiben && schreiben.tasks) || []) for (const p of t.parts) { add(p.model); (p.accept || []).forEach(add); }
   return L;
 }
 
 /**
- * @param {{items?: any[], grammar?: any[], bank?: Record<string, any>, plan: any, nouns?: Record<string, string>, words?: any[], mistakes?: any[], lexWords?: any[] | null, lexTexts?: string[] | null}} o
+ * @param {{items?: any[], grammar?: any[], bank?: Record<string, any>, plan: any, nouns?: Record<string, string>, words?: any[], mistakes?: any[], lexWords?: any[] | null, lexTexts?: string[] | null, schreiben?: any}} o
  *   words: round items from words.js toItem(); mistakes: mistake records; lexWords: the German word list (igloo.words.de)
- *   and lexTexts: the chunk examples (igloo.chunks.german), both optional, for the grader's lexicon
+ *   and lexTexts: the chunk examples (igloo.chunks.german), both optional, for the grader's lexicon; schreiben: the
+ *   Schreiben content (b1-schreiben@1), optional
  */
-export function buildPool({ items = [], grammar = [], bank = {}, plan, nouns = {}, words = [], mistakes = [], lexWords = null, lexTexts = null }) {
+export function buildPool({ items = [], grammar = [], bank = {}, plan, nouns = {}, words = [], mistakes = [], lexWords = null, lexTexts = null, schreiben = null }) {
   const topics = new Map(plan.topics.map((/** @type {any} */ t) => [t.id, t]));
   /** @type {Map<string, any>} */ const byId = new Map();
   /** @type {any[]} */ const pool = [];
@@ -58,7 +68,16 @@ export function buildPool({ items = [], grammar = [], bank = {}, plan, nouns = {
   const twins = new Set(items.map(i => i.chunk).filter(Boolean));
   // mistakes from corrections first, so they win any id clash and sit early in the pool order
   for (const m of mistakes) if (m && !m.deletedAt) add(mistakeItem(m));
-  for (const a of items) add({ ...a, promptLang: a.prompt_lang, gap: String(a.prompt).includes('___'), mine: false });
+  const linked = (schreiben && schreiben.linked) || {};
+  for (const a of items) {
+    const ln = linked[a.id];
+    // a letter item filed under Schreiben: its polite Sie, Ihnen, Ihr … must be typed with the capital (in lower
+    // case it is another word), as the Schreiben items have it
+    add({ ...a, promptLang: a.prompt_lang, gap: String(a.prompt).includes('___'), mine: false,
+      ...(ln ? { area: 'writing', group: a.teil, wfn: ln.fn, rank: ln.rank, tier: 1, aufgabe: `A${String(a.teil).slice(1)}`,
+        strict: [...new Set([...(a.strict || []), ...politeIn(a.model)])] } : {}) });
+  }
+  for (const a of (schreiben && schreiben.items) || []) add({ ...a, promptLang: a.prompt_lang, gap: false, mine: false, wfn: a.fn });
   for (const [cid, b] of Object.entries(bank)) {
     if (twins.has(cid)) continue;
     const [group, teil] = TEIL_GROUP[b.part] || ['opinion', 'S3'];
@@ -83,7 +102,8 @@ export function buildPool({ items = [], grammar = [], bank = {}, plan, nouns = {
   for (const w of words) add(w);
   const traps = new Map(plan.traps.map((/** @type {any} */ t) => [t.id, t]));
   const fnInfo = new Map(plan.functions.map((/** @type {any} */ f) => [f.id, f]));
-  return { pool, byId, plan, topics, traps, fnInfo, nouns, lexicon: buildLexicon({ items, grammar, bank, nouns, lexWords, lexTexts }) };
+  const writing = schreiben ? { aufgaben: schreiben.aufgaben || [], functions: schreiben.functions || [], tasks: schreiben.tasks || [] } : null;
+  return { pool, byId, plan, topics, traps, fnInfo, nouns, writing, verbs: lexWords ? verbForms(lexWords) : null, lexicon: buildLexicon({ items, grammar, bank, nouns, lexWords, lexTexts, schreiben }) };
 }
 
 /** Add items to a built pool (exam words that arrive after a fetch). Returns how many were new. @param {ReturnType<typeof buildPool>} data @param {any[]} list */

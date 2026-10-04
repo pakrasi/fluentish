@@ -27,8 +27,9 @@ function next(rec, g, t) {
 function rate(o) {
   if (!o.ok || o.revealed) return 1;
   if (o.limit && o.ms > 2 * o.limit * 1000) return 1;
-  // Hard: late, self-repaired, a capital or umlaut slip, or the phrase right but the rest of its sentence not (partial)
-  if ((o.limit && o.ms > o.limit * 1000) || o.selfRepair || o.capSlip || o.umlaut || o.claudeMinor || o.partial) return 2;
+  // Hard: late, self-repaired, a capital, umlaut or punctuation slip, or the phrase right but the rest of its sentence
+  // not (partial)
+  if ((o.limit && o.ms > o.limit * 1000) || o.selfRepair || o.capSlip || o.umlaut || o.punct || o.claudeMinor || o.partial) return 2;
   if (o.limit && o.stage >= 2 && o.ms <= 0.5 * o.limit * 1000 && o.prevRating === 3) return 4;
   return 3;
 }

@@ -72,6 +72,8 @@ jobs:
           python3 tools/validate_levels.py
       - name: B1 trainer sources
         run: python3 tools/validate_b1.py --all
+      - name: Schreiben sources
+        run: python3 tools/build_schreiben.py --check
       - name: Goethe B1 mock exams and explanations
         run: |
           python3 tools/validate_exam.py content/exams/goethe-b1/day*.json
@@ -80,6 +82,7 @@ jobs:
         run: |
           python3 tools/build_b1.py
           python3 tools/build_turns.py
+          python3 tools/build_schreiben.py
           node tools/build-manifest.mjs
           git diff --exit-code -- content
 

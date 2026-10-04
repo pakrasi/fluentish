@@ -192,6 +192,13 @@ NONVERB = set(norm("""der die das den dem des ein eine einen einem einer eines m
     morgen gestern hier dort dann denn aber oder und sondern""").split())
 
 
+# words that can follow aber/denn and look like verbs to FINITE_ANY (detect.js CONN_ADV)
+CONN_ADV = set(norm("""selbst sogar nur auch erst genau fast besonders gerade jedenfalls meist zumindest mindestens wenigstens
+    höchstens vielleicht jetzt nachts abends morgens mittags eben bereits trotzdem dennoch damals längst oben hinten vorne
+    immerhin""").split())
+MID_V2 = set(norm("deshalb deswegen darum trotzdem außerdem dennoch").split())
+# a main clause that starts with these after a missing comma or full stop (detect.js NEXT_MAIN)
+NEXT_MAIN = set(norm("dann so trotzdem deshalb deswegen darum außerdem danach").split())
 PARTICLES = set(norm("ab an auf aus ein mit vor zu zurück weg los fest teil statt vorbei hin her nach").split())
 
 
@@ -259,7 +266,7 @@ def detect(text, model=None):
                 # or a finite verb then another subordinator, or dann/so + verb ("…, weil …", "… ist dann fahre ich")
                 isfin = lambda w: w in fin or FINITE_ANY(w)
                 if isfin(toks[j]) and len(rest) >= 2 and ((isfin(rest[0]) and rest[1] in PRON and rest[1] != "das")
-                                                          or rest[0] in SUB_DETECT or (rest[0] in ("dann", "so") and isfin(rest[1]))):
+                                                          or rest[0] in SUB_DETECT or (rest[0] in NEXT_MAIN and isfin(rest[1]))):
                     end = j + 1
                     break
                 if toks[j] in fin and rest[0] not in ("oder", "und", "aber") and any(r not in fin for r in rest):
@@ -289,6 +296,30 @@ def detect(text, model=None):
                 out.add("inversion")
             elif len(rest) >= 2 and rest[0] in PRON and rest[0] != "das" and rest[1] in ("meine", "meinst", "meint", "meinen"):
                 out.add("inversion")  # "Wenn …, Sie meinen"
+    # aber and denn keep the normal order: "…, aber habe ich …" is wrong; a question after aber is not
+    for sent in re.split(r"(?<=[.!?])\s+", text.strip()):
+        if sent.rstrip().endswith("?"):
+            continue
+        toks = norm(sent).split()
+        # deshalb, trotzdem … right after a comma (or after und, oder): the verb comes next; "trotzdem, wir …" starts a new clause
+        done = False
+        for k, piece in enumerate(re.split(r"[,;:]", sent)):
+            pt = norm(piece).split()
+            for i in range(0, len(pt) - 2):
+                if not (k > 0 and (i == 0 or (i == 1 and pt[0] in ("und", "oder")))):
+                    continue
+                if pt[i] in MID_V2 and pt[i + 1] in PRON and pt[i + 1] not in ("das", "dies") and (pt[i + 2] in fin or FINITE_ANY(pt[i + 2])):
+                    out.add("v2")
+                    done = True
+                    break
+            if done:
+                break
+        for i in range(len(toks) - 2):
+            if toks[i] in ("aber", "denn") and toks[i + 1] not in CONN_ADV and (
+                    ((toks[i + 1] in fin or FINITE_ANY(toks[i + 1])) and toks[i + 2] in PRON and toks[i + 2] not in ("das", "dies"))
+                    or (toks[i + 1] in FINITE and toks[i + 2] in DET)):
+                out.add("connector-order")
+                break
     global COMMA_OK
     if FRONTED is None:
         plan = load_json(ROOT / "content/b1/plan.json")

@@ -167,3 +167,84 @@ body.pr-in-round #view { max-width: none; padding: 0; }
 .pr-word-ex { display: flex; align-items: center; gap: var(--s-1); }
 .pr-play { flex: none; display: grid; place-items: center; width: var(--tap); min-height: var(--tap); margin: -8px 0 -8px -12px; border: 0; border-radius: var(--r-ctl); background: transparent; color: var(--ink); cursor: pointer; }
 .pr-play:hover { background: var(--surface-2); }
+
+/* ---------- Schreiben (#/practice/write) and Build an email (write.js). Kit tokens only. ---------- */
+.wr-page .section h2 { font-size: 22px; }
+.wr-about { color: var(--ink-2); font-size: 14px; }
+.wr-fns { margin-top: var(--s-4); }
+.wr-fns > summary, .wr-task > summary, .wr-modeltext > summary { cursor: pointer; min-height: var(--tap); display: flex; align-items: center; font-weight: 500; color: var(--accent-ink); }
+.wr-fn h3 { margin-top: var(--s-5); font: 600 13px/1.35 var(--font-ui); color: var(--ink-2); letter-spacing: 0.01em; }
+.wr-phrase { display: grid; justify-content: stretch; gap: 2px; }
+.wr-phrase [lang="de"] { font: 400 18px/1.35 var(--font-display); }
+
+.wr-build { --gap: var(--s-5); }
+.wr-build .page-head { display: block; }
+.wr-build .page-head h1 { margin-top: var(--s-1); }
+.wr-task { padding: var(--s-3) var(--s-4) var(--s-4); border-radius: var(--r-ctl); background: var(--surface-2); }
+.wr-task[open] > summary { margin-bottom: var(--s-2); }
+.wr-task > * + * { margin-top: var(--s-3); }
+.wr-situation { font: 400 17px/1.45 var(--font-display); }
+.wr-quote { margin: 0; padding-left: var(--s-3); border-left: 2px solid var(--hairline-strong); font: italic 400 16px/1.45 var(--font-display); color: var(--ink-2); }
+.wr-points { margin: 0; padding-left: 1.3em; display: grid; gap: var(--s-2); font: 400 16px/1.4 var(--font-display); }
+.wr-points li { padding-left: var(--s-1); transition: color var(--dur-base) var(--ease-out); }
+.wr-points li.is-now { color: var(--accent-ink); }
+.wr-points li.is-done { color: var(--ink-2); }
+.wr-points li.is-done::marker { color: var(--ok); }
+
+/* the email: a sheet of paper that fills line by line */
+.wr-letterbox { padding: var(--s-5); border-radius: var(--r-card); background: var(--surface); box-shadow: inset 0 0 0 1px var(--hairline); }
+.wr-letterbox > .label { margin-bottom: var(--s-3); }
+.wr-letter { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font: 400 18px/1.5 var(--font-display); }
+.wr-line { min-height: 1.5em; }
+.wr-line.is-open, .wr-line.is-sign { margin: 0; }
+.wr-line.is-open.is-filled { margin-bottom: var(--s-2); }
+.wr-line.is-sign { margin-top: var(--s-2); }
+.wr-line.is-gap { min-height: 0; height: var(--s-1); }
+.wr-slot { display: inline-flex; align-items: center; min-height: 28px; padding: 0 10px; border-radius: var(--r-tile); box-shadow: inset 0 0 0 1px var(--hairline-strong); color: var(--ink-3); font: 500 12px/1 var(--font-ui); }
+.wr-letter.is-post .wr-line.is-filled + .wr-line.is-filled { margin-top: 0; }
+.wr-text.is-model { color: var(--ink-2); }
+.wr-fly { display: inline; }
+.wr-answer .wr-fly { position: absolute; left: 0; top: 12px; pointer-events: none; visibility: hidden; font: 400 18px/1.5 var(--font-display); }
+/* connectors: the grammar layer's glue role (DESIGN.md: role colours on word tiles), lit when the line lands */
+mark.wr-glue { color: inherit; background: transparent; border-radius: 4px; padding: 0 2px; margin: 0 -2px; box-shadow: inset 0 -2px 0 var(--role-glue);
+  transition: background-color var(--dur-fill) var(--ease-out), box-shadow var(--dur-base) var(--ease-out); }
+mark.wr-glue.is-lit, .answer-key mark.wr-glue, .wr-done mark.wr-glue { background: color-mix(in oklab, var(--role-glue) var(--role-mix), transparent); box-shadow: inset 0 -3px 0 var(--role-glue); }
+.answer-key mark.wr-glue { text-decoration: none; }
+
+/* the part card */
+.wr-work { --gap: var(--s-3); }
+.wr-segs { margin-top: var(--s-2); }
+.wr-card { padding: var(--s-5) var(--s-5) var(--s-4); }
+.wr-point { margin-top: var(--s-3); font: 500 15px/1.4 var(--font-ui); color: var(--ink-2); }
+.wr-cue { margin-top: var(--s-2); font: 400 22px/1.3 var(--font-display); text-wrap: pretty; }
+.wr-framebox:empty { display: none; }
+.wr-frame { margin-top: var(--s-4); display: flex; flex-wrap: wrap; align-items: center; gap: 4px; font: 400 18px/1.4 var(--font-display); color: var(--ink-2); }
+.wr-frame .tile { font-size: 16px; color: var(--ink); }
+.wr-frame-text { white-space: pre-wrap; }
+.wr-answer.is-wrong .answer-input { text-decoration: none; color: var(--ink); }
+.wr-card .answer { margin-top: var(--s-5); align-items: flex-end; }
+.wr-card .answer-input { resize: none; overflow: hidden; display: block; line-height: 24px; min-height: 52px; padding: 14px 0 12px; }
+.wr-card .answer .check { margin-bottom: 14px; }
+.wr-card .card-actions .btn { min-height: 48px; }
+
+/* done */
+.wr-done .pr-done-hero h1 { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 var(--s-2); }
+.wr-usedbox { display: grid; gap: var(--s-2); }
+.wr-used { flex-wrap: wrap; }
+.wr-compare .seg { width: 100%; }
+
+/* write it yourself */
+.wr-free { min-height: 260px; resize: vertical; font: 400 17px/1.5 var(--font-ui); }
+.wr-correction { display: grid; gap: var(--s-2); }
+.wr-correction:empty { display: none; }
+.wr-correction h3 { margin-top: var(--s-4); font: 400 20px/1.25 var(--font-display); }
+.wr-score { font: 400 24px/1.2 var(--font-display); }
+.wr-fix { font: 400 18px/1.4 var(--font-display); }
+.wr-fix mark { background: none; color: inherit; text-decoration: underline 2px var(--ok); text-underline-offset: 4px; }
+.wr-why { font-size: 13px; color: var(--ink-2); }
+.wr-good { color: var(--ink-2); }
+.wr-model { white-space: pre-line; font: 400 17px/1.5 var(--font-display); }
+@media (min-width: 720px) {
+  .wr-card { padding: var(--s-6) var(--s-8) var(--s-5); }
+  .wr-cue { font-size: 26px; }
+}

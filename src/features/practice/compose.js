@@ -5,6 +5,8 @@
      - new items come in priority order (P14): Teil 2 ★ phrases, trap grammar, Teil 1/3 ★ phrases, … ; mistakes from
        corrections are spread through the front (one in three)
      - two streams with their own quota: phrases, situations and words ('p') and grammar ('g'), 40 : 15
+     - Schreiben phrases (area writing, stream 'w') have their own rounds (kind write) and their own quota
+       (domain/budget.js writingBudget); the daily round leaves them out
      - situations come in once two phrases with that job have graduated
      - the exam day is a warm-up of well-known items; nothing new on the eve or the day
 
@@ -25,6 +27,7 @@ export { ROUND, NEW_ITEM_MIN };
  * @property {{day: string, rounds: number, traps: string[]|null, newShown: number, newBy?: Record<string, number>, firstTry: number[], pred: number[], shown: string[]}} day
  * @property {import('../../core/clock.js').ClockCtx} c
  * @property {number} newPerDay
+ * @property {number} [writingNew]   new Schreiben phrases for the day (stream 'w')
  */
 
 /** @param {State} s @param {any} it */
@@ -34,7 +37,7 @@ export const due = (s, it) => RD.isDue(s.cards[it.id], s.c.today, s.c);
 /** @param {State} s @param {any} it @param {string} day */
 const R = (s, it, day) => FS.Ron(s.cards[it.id], day);
 /** @param {any} it */
-export const stream = it => (it.area === 'grammar' ? 'g' : 'p');
+export const stream = it => (it.area === 'grammar' ? 'g' : it.area === 'writing' ? 'w' : 'p');
 
 /** A fresh day log. @param {string} today */
 export const newDay = today => ({ day: today, rounds: 0, traps: null, newShown: 0, newBy: {}, firstTry: [0, 0], pred: [0, 0], shown: /** @type {string[]} */ ([]) });
@@ -58,11 +61,12 @@ export { dailyNew };
 /** A stream's share of today's new items (the two shares add up to newPerDay). @param {State} s @param {string} st 'p' | 'g' */
 export function quota(s, st) {
   if (!s.c.newItems) return 0;
+  if (st === 'w') return s.writingNew || 0;
   return streamQuota(s.newPerDay, /** @type {'p'|'g'} */ (st));
 }
 /** @param {State} s @param {string} st */
 export const newLeftOf = (s, st) => Math.max(0, quota(s, st) - ((s.day.newBy || {})[st] || 0));
-/** @param {State} s */
+/** New items left today in the daily rounds (Schreiben phrases have their own: newLeftOf(s, 'w')). @param {State} s */
 export const newLeft = s => newLeftOf(s, 'p') + newLeftOf(s, 'g');
 
 /** Situations come in once two phrases with that job have graduated. @param {State} s @param {any} it */
@@ -88,11 +92,12 @@ export function newOrder(s, pool, anyTopic = false) {
     if (it.kind === 'topic' || it.kind === 'reply') return 8;
     if (it.area === 'words') return 9;
     if (it.area === 'reading') return 10;
+    if (it.area === 'writing') return 12;
     return 11;
   };
   const eligible = (/** @type {any} */ it) => it.rank !== 21 && !(it.group === 'praeteritum' && it.kind !== 'grammar');
   const list = pool.filter(it => unseen(s, it) && eligible(it) && (anyTopic || topicReady(s, it)));
-  const base = list.filter(it => !it.mine).map((it, i) => /** @type {[number, number, number, number, number, any]} */ ([tier(it), it.area === 'grammar' ? it.rank : 0, it.star ? 0 : 1, it.bank ? 1 : 0, i, it]))
+  const base = list.filter(it => !it.mine).map((it, i) => /** @type {[number, number, number, number, number, any]} */ ([tier(it), it.area === 'grammar' || it.area === 'writing' ? it.rank ?? 99 : 0, it.star ? 0 : 1, it.bank ? 1 : 0, i, it]))
     .sort((a, b) => a[0] - b[0] || a[1] - b[1] || a[2] - b[2] || a[3] - b[3] || a[4] - b[4]).map(x => x[5]);
   // mistakes from corrections are spread through the front of the order: one in every three
   const mine = list.filter(it => it.mine), out = [];
@@ -101,13 +106,17 @@ export function newOrder(s, pool, anyTopic = false) {
 }
 
 /** The first n new items, taking each stream's quota in turn. @param {State} s @param {any[]} pool @param {number} n */
-export function nextNew(s, pool, n, left = { p: newLeftOf(s, 'p'), g: newLeftOf(s, 'g') }, anyTopic = false) {
-  const order = newOrder(s, pool, anyTopic), out = [], q = { ...left };
-  const byS = { p: order.filter(it => stream(it) === 'p'), g: order.filter(it => stream(it) === 'g') };
-  while (out.length < n && ((q.p > 0 && byS.p.length) || (q.g > 0 && byS.g.length))) {
-    const tp = out.filter(it => stream(it) === 'p').length, tg = out.length - tp;
-    /** @type {'p'|'g'} */ let st = (tp / SPLIT.p <= tg / SPLIT.g) ? 'p' : 'g';
-    if (!(q[st] > 0 && byS[st].length)) st = st === 'p' ? 'g' : 'p';
+export function nextNew(s, pool, n, left = { p: newLeftOf(s, 'p'), g: newLeftOf(s, 'g'), w: newLeftOf(s, 'w') }, anyTopic = false) {
+  const order = newOrder(s, pool, anyTopic), out = [], q = /** @type {Record<'p'|'g'|'w', number>} */ ({ w: 0, ...left });
+  const byS = { p: order.filter(it => stream(it) === 'p'), g: order.filter(it => stream(it) === 'g'), w: order.filter(it => stream(it) === 'w') };
+  const can = (/** @type {'p'|'g'|'w'} */ st) => q[st] > 0 && byS[st].length > 0;
+  while (out.length < n && (can('p') || can('g') || can('w'))) {
+    /** @type {'p'|'g'|'w'} */ let st = 'w';
+    if (!can('w')) {   // the daily streams take turns by their split; a Schreiben round has only 'w'
+      const tp = out.filter(it => stream(it) === 'p').length, tg = out.filter(it => stream(it) === 'g').length;
+      st = (tp / SPLIT.p <= tg / SPLIT.g) ? 'p' : 'g';
+      if (!can(st)) st = st === 'p' ? 'g' : 'p';
+    }
     out.push(byS[st].shift()); q[st]--;
   }
   return out;
@@ -115,7 +124,7 @@ export function nextNew(s, pool, n, left = { p: newLeftOf(s, 'p'), g: newLeftOf(
 
 /** ★ and trap items not seen yet (the pace count for Auto new items). @param {State} s */
 export function priorityLeft(s) {
-  return s.data.pool.filter(it => (it.star || it.trap) && unseen(s, it)).length;
+  return s.data.pool.filter(it => (it.star || it.trap) && it.area !== 'writing' && unseen(s, it)).length;
 }
 
 /** The day's trap set: 2 per sticky-error class, 2 more from mistakes; most-flagged and weakest first. @param {State} s */
@@ -154,12 +163,15 @@ function spread(s, list) {
 
 /**
  * Parse a round kind from the URL: 'today' (default), 'missed', 'mistakes', 'warmup', 'situation',
- * 'area:<speaking|reading|grammar|words>', 'topic:<grammar topic>'.
+ * 'area:<speaking|reading|grammar|words|writing>', 'topic:<grammar topic>', 'write' and 'write:<W1|W2|W3>' (Schreiben
+ * phrases, all or one Aufgabe).
  * @param {string | null} kind
  * @returns {{kind: string, area?: string, topic?: string}}
  */
 export function parseKind(kind) {
   const k = String(kind || 'today');
+  const w = /^write(?::(W[123]))?$/.exec(k);
+  if (w || k === 'area:writing') return w && w[1] ? { kind: 'write', area: 'writing', topic: w[1] } : { kind: 'write', area: 'writing' };
   const m = /^(area|topic):(.+)$/.exec(k);
   if (m && m[1] === 'area' && ['speaking', 'reading', 'grammar', 'words'].includes(m[2])) return { kind: 'area', area: m[2] };
   if (m && m[1] === 'topic') return { kind: 'topic', area: 'grammar', topic: m[2] };
@@ -176,11 +188,14 @@ export function parseKind(kind) {
 export function compose(s, { kind = 'today', area, topic, size = ROUND } = {}) {
   const c = s.c, today = c.today, data = s.data;
   const situation = kind === 'situation';
+  const write = kind === 'write';
   let pool = data.pool.filter(it => (!area || it.area === area)
     && (!topic || it.group === topic || (data.topics.get(topic)?.confusable || []).includes(it.group))
     && (!situation || it.kind === 'topic' || it.kind === 'reply'));
   // mistakes stay out of the other area rounds; the daily round and their own round take them
-  if (kind === 'area' || kind === 'topic' || situation) pool = pool.filter(it => it.area !== 'mistakes');
+  if (kind === 'area' || kind === 'topic' || situation || write) pool = pool.filter(it => it.area !== 'mistakes');
+  // the Schreiben phrases have their own rounds and their own share of the day
+  if (kind === 'today') pool = pool.filter(it => it.area !== 'writing');
   if (kind === 'missed') return missed(s).slice(0, size).map(it => it.id);
   if (c.phase === 'day' || kind === 'warmup') {   // exam morning: a warm-up of items he knows well, nothing written
     return pool.filter(it => s.cards[it.id]?.reps && s.cards[it.id].learn == null && it.area !== 'mistakes')
@@ -196,7 +211,7 @@ export function compose(s, { kind = 'today', area, topic, size = ROUND } = {}) {
   const starFirst = c.phase === 'eve';
   dueList.sort((a, b) => (starFirst ? ((b.star || b.trap ? 1 : 0) - (a.star || a.trap ? 1 : 0)) : 0) || R(s, a, today) - R(s, b, today));
   const firstEver = !Object.values(s.cards).some(r => r && r.hist && r.hist.length);
-  const nNew = Math.min(newLeft(s), firstEver ? 8 : 4);
+  const nNew = write ? Math.min(newLeftOf(s, 'w'), 8) : Math.min(newLeft(s), firstEver ? 8 : 4);
   const fresh = nextNew(s, pool, nNew + 2, undefined, situation);
   const shownToday = new Set(s.day.shown || []);
   const traps = (!area || area !== 'words') && kind === 'today'

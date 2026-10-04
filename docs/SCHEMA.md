@@ -75,8 +75,12 @@ Every card id names its kind by prefix (`src/domain/itemids.js`): `BP:` B1 phras
 
 ### Key-value collections
 
-`settings`, `prefs`, `secrets`, `meta` (migration record: `migratedAt`, `legacyDeviceId`, a per-key fingerprint for the delta re-merge, `summary`), `activity` (`{[day]: {minutes, rounds}}` for the runway and study days), `ui` (dismissed notices), and the collections carried over for stage B: `b1.session`, `exams.drafts` (`{"N:module": {answers, start, pause, seen, tab, meta, prepStart}, "plays:N": {...}}`), `exams.training`, `exams.voice`, `exams.seen`, `exams.feedbackLocal`, `vocab.local`, `vocab.events`.
+`settings`, `prefs`, `secrets`, `meta` (migration record: `migratedAt`, `legacyDeviceId`, a per-key fingerprint for the delta re-merge, `summary`), `activity` (`{[day]: {minutes, rounds}}` for the runway and study days), `ui` (dismissed notices), and the collections carried over for stage B: `b1.session`, `exams.drafts` (`{"N:module": {answers, start, pause, seen, tab, meta, prepStart}, "plays:N": {...}}`), `exams.training`, `exams.voice`, `exams.seen`, `exams.feedbackLocal`, `vocab.local`, `vocab.events`. Practice adds `practice.write` (Schreiben, device-local: `{builds: {[task]: {day, right, total}}, drafts: {[task]: text}, corrections: {[task]: {body, text, at}}}`).
 
 ## Legacy localStorage keys (read once, never written)
 
 `src/data/migrate.js` lists them (`LEGACY_KEYS`, `LEGACY_PREFIXES`) with the mapping. Codecs: everything is JSON except `doors.apikey` (a raw string). Igloo's SM-2 keys (`doors.srs.v1`, `doors.know.v1`, `doors.progress.v1`, `doors.days.v1`, `doors.today.v1`) stay owned by Igloo until Drill and Test move here, and Igloo's SM-2 `due`/`last` are UTC epoch days (`clock.epochDay`), never reinterpreted.
+
+### Schreiben content (`content/b1/schreiben.json`, `b1-schreiben@1`)
+
+Built from `authoring/schreiben-src/` by `tools/build_schreiben.py` (which runs every validate_b1 item rule on each item and email line). `items`: Schreiben phrases with ids `BS:a<n>-<slug>`, area `writing`, group = Teil (`W1`–`W3`), `fn` = a function of `functions`, `tier` 1–3, `rank` (introduction order), `punct` (punctuation rules: `comma-end`, `no-comma-end`, `lower-start`, `comma-before:<word>`, a slip graded by `domain/punct.js`). `linked`: the B1 trainer's letter items (`BP:w1-…`) filed under a function; the pool moves them to area `writing`. `tasks`: Build an email (mock task, points, parts: `fixed` formulas and `free` lines built on a `frame` with `glue` connectors).
