@@ -19,7 +19,7 @@ import * as C from './compose.js';
 import * as S from './session.js';
 import { gradeAnswer } from './grade.js';
 import { loadData, stateFor, session, saveAnswer, saveLogs, forecaster, tz, addActivity, secrets } from './data.js';
-import { claudeCheck } from './claude.js';
+import { checkAnswer } from '../../services/claude.js';
 import { speech } from './speech.js';
 import { recallBar } from './hub.js';
 
@@ -392,7 +392,7 @@ export async function mountRound(el, ctx) {
       btn.disabled = true; btn.textContent = t('practice.claude.checking');
       const cur = entry;
       try {
-        const v = await claudeCheck(secrets(store).anthropicKey, cur.item, full(typed));
+        const v = await checkAnswer({ key: secrets(store).anthropicKey, item: cur.item, answer: full(typed) });
         if (cur !== entry) return;
         if (v.verdict === 'correct' || v.verdict === 'minor') {
           const cards = store.cards('b1');

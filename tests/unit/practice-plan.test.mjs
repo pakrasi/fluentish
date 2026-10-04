@@ -58,7 +58,7 @@ test('segments show the current card\'s result once it is answered', () => {
 });
 
 test('Claude check: a neutral prompt and a strict verdict parser', async () => {
-  const { checkPrompt, parseVerdict } = await import('../../src/features/practice/claude.js');
+  const { checkPrompt, parseVerdict } = await import('../../src/services/claude.js');
   const p = checkPrompt({ kind: 'phrase', task: null, prompt: 'Deal!', model: 'Abgemacht!', accept: ['abgemacht'], hl: null, prefill: null }, 'Einverstanden!');
   assert.match(p, /The learner wrote: Einverstanden!/);
   assert.doesNotMatch(p, new RegExp(['Is' + 'haan', 'Fri' + 'tz', 'Produkt' + 'manager'].join('|')));

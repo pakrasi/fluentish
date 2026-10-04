@@ -62,30 +62,29 @@ export function errorCode(status, msg) {
 
 /**
  * One Messages API call; returns the text. Refusals and cut-off answers are errors.
- * @param {{ key: string, system: string, user: string, model?: string, maxTokens?: number, effort?: string, fetch?: typeof fetch }} o
+ * `effort` and `fallback` apply to the Opus line (the grader). Claude Haiku 4.5 (the answer check) rejects effort and
+ * has no server-side fallback, so that caller passes `effort: null, fallback: false`. An empty `system` is left out.
+ * @param {{ key: string, system?: string, user: string, model?: string, maxTokens?: number, effort?: string | null, fallback?: boolean, fetch?: typeof fetch }} o
  * @returns {Promise<{ text: string, model: string, usage: any }>}
  */
-export async function ask({ key, system, user, model = config.anthropic.models.grade, maxTokens = 16000, effort = 'medium', fetch: f = (...a) => fetch(...a) }) {
+export async function ask({ key, system = '', user, model = config.anthropic.models.grade, maxTokens = 16000, effort = 'medium', fallback = true, fetch: f = (...a) => fetch(...a) }) {
   if (!key) throw new ClaudeError('nokey');
+  /** @type {Record<string, string>} */
+  const headers = {
+    'content-type': 'application/json',
+    'x-api-key': key,
+    'anthropic-version': config.anthropic.version,
+    'anthropic-dangerous-direct-browser-access': 'true',
+  };
+  if (fallback) headers['anthropic-beta'] = config.anthropic.fallbackBeta;
+  /** @type {Record<string, any>} */
+  const body = { model, max_tokens: maxTokens, messages: [{ role: 'user', content: user }] };
+  if (system) body.system = [{ type: 'text', text: system, cache_control: { type: 'ephemeral' } }];
+  if (effort) body.output_config = { effort };
+  if (fallback) body.fallbacks = 'default';
   let r;
   try {
-    r = await f(config.anthropic.api, {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-        'x-api-key': key,
-        'anthropic-version': config.anthropic.version,
-        'anthropic-beta': config.anthropic.fallbackBeta,
-        'anthropic-dangerous-direct-browser-access': 'true',
-      },
-      body: JSON.stringify({
-        model, max_tokens: maxTokens,
-        system: [{ type: 'text', text: system, cache_control: { type: 'ephemeral' } }],
-        output_config: { effort },
-        fallbacks: 'default',
-        messages: [{ role: 'user', content: user }],
-      }),
-    });
+    r = await f(config.anthropic.api, { method: 'POST', headers, body: JSON.stringify(body) });
   } catch (e) { throw new ClaudeError('offline'); }
   /** @type {any} */ let j = null;
   try { j = await r.json(); } catch { /* not json */ }
@@ -105,4 +104,35 @@ export async function correctSchreiben({ key, ex, texts, learnerNotes, fetch: f 
   const res = await ask({ key, system: graderSystem(learnerNotes), user: graderMessage(ex, texts), fetch: f });
   const body = /^! /.test(res.text) ? res.text : `! Korrektur\n${res.text}`;
   return { body, model: res.model };
+}
+
+/* Practice: "My answer is right". Claude checks one answer the matcher refused (never one a trap detector flagged).
+   The prompt says nothing about the learner. Ported from Igloo's b1.js claudeCheck(). */
+
+/** The prompt for one answer. Pure; tested in node. @param {any} it @param {string} answer */
+export function checkPrompt(it, answer) {
+  const task = it.kind === 'topic' || it.kind === 'reply'
+    ? `Situation (Goethe B1 Sprechen ${it.teil}): ${it.partner ? `the partner says „${it.partner}“. ` : ''}${it.prompt}`
+    : `Task: ${it.task ? it.task + ' ' : ''}${it.prompt}${it.hl ? ` (the graded part: "${it.hl}")` : ''}${it.prefill ? ` The answer starts with: ${it.prefill}` : ''}`;
+  return `You check one answer in a German B1 exam trainer. ${task}\nExample answers: ${[it.model, ...(it.accept || []).slice(0, 4)].filter(Boolean).join(' | ')}\nThe learner wrote: ${answer}\n`
+    + 'Is the learner\'s answer correct, natural B1 German that does the same job? The listed answers are examples, not the only correct ones. Judge grammar strictly (word order, verb position, articles, endings, capitals).\n'
+    + 'Reply with JSON only: {"verdict":"correct"|"minor"|"wrong","note":"one short sentence in English"}';
+}
+
+/** Parse Claude's reply. Pure. @param {string} text @returns {{verdict: 'correct'|'minor'|'wrong', note: string}} */
+export function parseVerdict(text) {
+  const m = String(text || '').match(/\{[\s\S]*\}/);
+  let j = { verdict: 'wrong', note: '' };
+  try { if (m) j = JSON.parse(m[0]); } catch { /* not JSON */ }
+  const v = ['correct', 'minor', 'wrong'].includes(j.verdict) ? j.verdict : 'wrong';
+  return { verdict: /** @type {any} */ (v), note: typeof j.note === 'string' ? j.note : '' };
+}
+
+/**
+ * Check one typed answer with the small model. Errors are ClaudeErrors (code: key, offline, rate, …).
+ * @param {{ key: string, item: any, answer: string, fetch?: typeof fetch }} o
+ */
+export async function checkAnswer({ key, item, answer, fetch: f }) {
+  const res = await ask({ key, user: checkPrompt(item, answer), model: config.anthropic.models.check, maxTokens: 200, effort: null, fallback: false, fetch: f });
+  return parseVerdict(res.text);
 }

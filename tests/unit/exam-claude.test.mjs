@@ -51,3 +51,18 @@ test('request shape, the score line, and errors', async () => {
   await assert.rejects(ask({ key: 'k', system: 's', user: 'u', fetch: async () => { throw new TypeError('Load failed'); } }), e => e.code === 'offline');
   await assert.rejects(ask({ key: '', system: 's', user: 'u' }), e => e.code === 'nokey');
 });
+
+test('the answer check (Practice) uses the small model without effort or fallbacks', async () => {
+  const { checkAnswer } = await import('../../src/services/claude.js');
+  let seen = null;
+  const ok = async (url, init) => { seen = { init, body: JSON.parse(init.body) }; return new Response(JSON.stringify({ model: 'claude-haiku-4-5', stop_reason: 'end_turn', content: [{ type: 'text', text: '{"verdict":"minor","note":"Word order."}' }] }), { status: 200 }); };
+  const v = await checkAnswer({ key: 'k', item: { kind: 'phrase', prompt: 'Deal!', model: 'Abgemacht!' }, answer: 'Einverstanden!', fetch: ok });
+  assert.deepEqual(v, { verdict: 'minor', note: 'Word order.' });
+  assert.equal(seen.body.model, 'claude-haiku-4-5');
+  assert.equal(seen.body.max_tokens, 200);
+  assert.equal(seen.body.output_config, undefined);
+  assert.equal(seen.body.fallbacks, undefined);
+  assert.equal(seen.body.system, undefined);
+  assert.equal(seen.init.headers['anthropic-beta'], undefined);
+  assert.match(seen.body.messages[0].content, /The learner wrote: Einverstanden!/);
+});
