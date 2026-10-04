@@ -475,6 +475,8 @@ export default {
   'data.iglooStays': { one: '{n} Igloo drill card stays in Igloo until Drill moves here.', other: '{n} Igloo drill cards stay in Igloo until Drill moves here.' },
   'data.skipped': { one: '{n} damaged card was left out.', other: '{n} damaged cards were left out.' },
 
+  'diag.show': 'Show diagnostics',
+  'diag.safari': 'Safari can delete what this site stores after 7 days without a visit. Results sent to your results repository are safe there. Export keeps a copy of the rest.',
   'diag.content': 'Content',
   'diag.storage': 'Storage',
   'diag.storage.persisted': 'Kept by the browser',

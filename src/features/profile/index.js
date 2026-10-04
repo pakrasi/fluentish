@@ -108,13 +108,14 @@ export async function mount(el, ctx) {
       }))) : null;
     const minutes = h('div', { class: 'form-field' }, h('p', { class: 'field-label' }, t('goal.minutes')),
       seg({ label: t('goal.minutes'), value: String(s.minutesPerDay), options: config.minutesOptions.map(n => [String(n), t('unit.min', { n })]), onChange: v => { write('minutesPerDay', Number(v)); renderGoal(); } }));
+    // the date first: it drives the countdown, the caps and the pacing
     sec.append(
-      langSel,
-      h('div', { class: 'form-field' }, h('p', { class: 'field-label' }, t('profile.level')), levelSeg),
-      examSel,
       s.exam.type ? h('div', { class: 'date-row' }, dateField, clearBtn) : null,
+      h('p', { class: 'derived', 'aria-live': 'polite' }, derived(c)),
+      examSel,
       modules, minutes,
-      h('p', { class: 'derived', 'aria-live': 'polite' }, derived(c)));
+      langSel,
+      h('div', { class: 'form-field' }, h('p', { class: 'field-label' }, t('profile.level')), levelSeg));
     return sec;
   }
 
@@ -277,7 +278,10 @@ export async function mount(el, ctx) {
       storage.textContent = !e ? t('diag.storage.memory') : `${e.persisted ? t('diag.storage.persisted') : t('diag.storage.notPersisted')}${e.usage != null ? ` · ${Math.round(e.usage / 1024)} KB` : ''}`;
     });
     const errs = logEntries();
-    sec.append(h('dl', { class: 'diag' },
+    sec.append(h('p', { class: 'field-hint' }, t('diag.safari')));
+    const det = h('details', { class: 'diag-details' }, h('summary', null, t('diag.show')));
+    sec.append(det);
+    det.append(h('dl', { class: 'diag' },
       h('dt', null, t('diag.content')), h('dd', { class: 'mono' }, manifest ? manifest.version : t('diag.notLoaded')),
       h('dt', null, t('diag.storage')), storage,
       h('dt', null, t('diag.device')), h('dd', { class: 'mono' }, app.device.deviceId),
