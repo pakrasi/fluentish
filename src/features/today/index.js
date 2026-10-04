@@ -70,7 +70,7 @@ export async function mount(el, ctx) {
   /** @param {any} o */
   function renderHero({ s, c, plan, activity, examName, lang }) {
     const countdown = c.phase === 'week' || c.phase === 'lastNew' || c.phase === 'eve' || c.phase === 'day';
-    const minutesLine = h('p', { class: 'label' }, h('b', { class: 'tnum ink' }, String(plan.minutes.done)), ' ', t('today.minutesOf', { n: s.minutesPerDay }));
+    const minutesLine = h('p', { class: 'label' }, h('b', { class: 'tnum ink' }, String(Math.round(plan.minutes.done))), ' ', t('today.minutesOf', { n: s.minutesPerDay }));
     const heroBtn = plan.primary ? h('a', { class: 'btn btn-primary pressable hero-btn', href: plan.primary.href }, primaryLabel(plan.primary)) : null;
     const atmoEl = h('div', { class: 'atmo', 'aria-hidden': 'true' });
     if (countdown) {
