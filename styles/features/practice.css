@@ -149,3 +149,8 @@ body.pr-in-round #view { max-width: none; padding: 0; }
   .pr-scroll { overflow: visible; }
   .pr-actions { padding-top: var(--s-4); }
 }
+
+/* ▶ on exam-word cards: the example's recording (services/audio.js) */
+.pr-word-ex { display: flex; align-items: center; gap: var(--s-1); }
+.pr-play { flex: none; display: grid; place-items: center; width: var(--tap); min-height: var(--tap); margin: -8px 0 -8px -12px; border: 0; border-radius: var(--r-ctl); background: transparent; color: var(--ink); cursor: pointer; }
+.pr-play:hover { background: var(--surface-2); }

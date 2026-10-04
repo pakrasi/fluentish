@@ -103,19 +103,3 @@ export const resetMyWords = () => { remote = null; };
 
 /** The B1 word map (lemma → [word id, level]) that exam-word card ids are built from; {} if it cannot load. @param {any} content */
 export const wordmap = content => once('wordmap', () => content.load('b1.wordmap')).catch(() => ({}));
-
-/* ---------- audio ---------- */
-
-/** @param {any} content @returns {Promise<{base: string, files: Record<string, string>}>} */
-export function audioManifest(content) {
-  return once('audio', async () => {
-    const m = await content.manifest();
-    const exam = (m.exams || []).find((/** @type {any} */ e) => e.media);
-    if (!exam) return { base: '', files: {} };
-    const base = new URL('vocab/', exam.media).href;
-    try {
-      const r = await fetch(new URL('manifest.json', base).href, { cache: 'default' });
-      return { base, files: r.ok ? await r.json() : {} };
-    } catch { return { base, files: {} }; }
-  });
-}

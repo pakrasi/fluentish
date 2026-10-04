@@ -10,6 +10,7 @@
    check, segment, auto-advance on a clean answer) and wrong motion (underline, strike, nudge, the answer opens below
    with the differing words marked), then "type it once". Scheduling is session.js; saving is data.js. */
 import { h, replace, announce } from '../../core/dom.js';
+import { icon } from '../../core/icons.js';
 import { correct as fxCorrect, wrong as fxWrong, resetAnswer, segments, swap, skip as skipHold, reduced, fill } from '../../core/motion.js';
 import { label, add } from '../../core/clock.js';
 import * as Match from '../../domain/match.js';
@@ -21,6 +22,7 @@ import { gradeAnswer } from './grade.js';
 import { loadData, stateFor, session, saveAnswer, saveLogs, forecaster, tz, addActivity, secrets } from './data.js';
 import { checkAnswer } from '../../services/claude.js';
 import { speech } from './speech.js';
+import { play as playAudio, stop as stopAudio, prefetchAudio } from '../../services/audio.js';
 import { recallBar } from './hub.js';
 
 const SVG = 'http://www.w3.org/2000/svg';
@@ -313,8 +315,11 @@ export async function mountRound(el, ctx) {
   function hintNodes(/** @type {string} */ s) { return String(s).split(/\*([^*]+)\*/).map((x, i) => (i % 2 ? h('i', null, x) : x)); }
   function wordCard(/** @type {any} */ it) {
     const c = it && it.card; if (!c) return null;
+    const ex = c.ex;
+    const play = ex ? h('button', { type: 'button', class: 'pr-play pressable', 'aria-label': t('practice.word.play'), onpointerdown: keep,
+      onclick: async () => { if (!(await playAudio(ctx.content, ex))) sp.say(ex, 'de'); } }, icon('play', { size: 16 })) : null;
     return h('div', { class: 'pr-word' }, h('p', { lang: 'de' }, h('b', null, c.head)),
-      c.ex ? h('p', { class: 'caption' }, h('span', { lang: 'de' }, c.ex), c.exEn ? ` (${c.exEn})` : null) : null,
+      ex ? h('p', { class: 'caption pr-word-ex' }, play, h('span', { lang: 'de' }, ex), c.exEn ? ` (${c.exEn})` : null) : null,
       c.conf ? h('p', { class: 'caption' }, c.conf) : null);
   }
   function alsoMore(/** @type {string[]} */ list, lead = '') {
@@ -532,8 +537,9 @@ export async function mountRound(el, ctx) {
     /** @type {any} */ (window).__practice = { get state() { return state; }, get entry() { return entry; }, input, onReturn, onSecondary, pick };
   }
   fit();
+  if (round.queue.some((/** @type {any} */ e) => data.byId.get(e.id)?.card?.ex)) prefetchAudio(ctx.content);
   await drawCard(true);
-  return () => { cleanup(); document.body.dataset.chrome = 'on'; document.body.classList.remove('pr-in-round'); };
+  return () => { cleanup(); stopAudio(); document.body.dataset.chrome = 'on'; document.body.classList.remove('pr-in-round'); };
 }
 
 /** The done screen (UX §4.3). @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx @param {any} data @param {any} round */

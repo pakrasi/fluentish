@@ -557,6 +557,7 @@ export default {
   'practice.fixedIt': 'Fixed it',
   'practice.comesBack': 'It comes back in a few questions.',
   'practice.claude.ask': 'My answer is right',
+  'practice.word.play': 'Play the example',
   'practice.claude.checking': 'Checking…',
   'practice.claude.correct': 'Claude: correct. It counts as Hard this time and is saved as a variant.',
   'practice.claude.minor': 'Claude: right, with a small slip. It counts as Hard this time.',

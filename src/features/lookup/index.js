@@ -17,7 +17,7 @@ import { search } from './search.js';
 import { LANGS, langFor, TABS, PHRASE_CATS, GRAMMAR_SUBS, FRAME_SUBS, NOTE_KEYS, tenseGrid, dictHead } from './sources.js';
 import { triage, cardId, headword, examples, details, freqBand, sources, frequent } from './words.js';
 import { hl, glyph, paged, markForm, caption } from './ui.js';
-import { play, stop, prefetchAudio } from './audio.js';
+import { play, stop, prefetchAudio } from '../../services/audio.js';
 
 const UI_KEY = 'lookup.ui';
 const DEBOUNCE_MS = 120;
