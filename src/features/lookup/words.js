@@ -5,7 +5,7 @@
    fetchVocab({token, repo, api, fetch})  → raw word entries; throws VocabError('auth' | 'net' | 'http')
    mergeVocab(remote, local, events)       → remote words plus captures on this device not yet imported, minus deletes
    lemmaGroups(words)                      → one group per lemma (several captured forms of the same word)
-   triage(group, phase)                    → 'waiting' (no meaning yet) | 'later' (exam week and not frequent) | 'queue'
+   triage(group, phase, wordmap)           → the shared triage (domain/wordtriage.js): waiting | later | queue | reference
    cardId(group, wordmap)                  → the group's review card id, the same one Practice schedules (domain/itemids.js)
    headword(g), examples(g), details(g), freqBand(zipf), sources(g)
    The capture format is b1-exam's (docs/SCHEMA.md › vocab.local): {day, module, teil, word, word_key, lemma, gloss,
@@ -13,6 +13,7 @@
    due, reviews, deleted}. */
 
 import { wordId } from '../../domain/itemids.js';
+import { wordTriage, wordLevel, frequent as isFrequent } from '../../domain/wordtriage.js';
 
 export class VocabError extends Error {
   /** @param {'auth' | 'net' | 'http'} code @param {string} msg */
@@ -94,20 +95,15 @@ export const importance = g => (g.zipf ?? 3) + 1.5 * ((g.exam_days ?? 1) / 14);
 export const byImportance = groups => [...groups].sort((a, b) => importance(b) - importance(a) || a.lemma.localeCompare(b.lemma, 'de'));
 
 /** Frequent enough for the queue in an exam week (UX §3.3). @param {any} g */
-export const frequent = g => (g.zipf ?? 0) >= 4 || (g.exam_days ?? 0) >= 3;
-
-const EXAM_WEEK = new Set(['week', 'lastNew', 'eve', 'day']);
+export const frequent = g => isFrequent({ zipf: g.zipf, examDays: g.exam_days });
 
 /**
- * Where a captured word stands (UX §3.3): no meaning yet → waiting; in an exam week, rare words wait until after it.
- * @param {any} g @param {string} phase clock phase
- * @returns {'waiting' | 'later' | 'queue'}
+ * Where a captured word stands (UX §3.3), by the rule Practice uses to fill rounds (domain/wordtriage.js).
+ * @param {any} g @param {string} phase clock phase @param {Record<string, [string, string]>} [wordmap] for the word's level
+ * @returns {'waiting' | 'later' | 'queue' | 'reference'}
  */
-export function triage(g, phase) {
-  if (!g.gloss) return 'waiting';
-  if (EXAM_WEEK.has(phase) && !frequent(g)) return 'later';
-  return 'queue';
-}
+export const triage = (g, phase, wordmap = {}) =>
+  wordTriage({ glossed: !!g.gloss, zipf: g.zipf, examDays: g.exam_days, level: wordLevel(g.lemma, wordmap) }, phase);
 
 /** "die Nachbarschaft" (article only for nouns, without b1-exam's brackets). @param {any} g */
 export const headword = g => [String(g.gender || '').replace(/[()]/g, '').trim(), g.lemma].filter(Boolean).join(' ');

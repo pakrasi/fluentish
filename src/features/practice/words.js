@@ -4,6 +4,7 @@
    gapped, or "type the noun with der, die or das" when the sentence has no article before it.
    Ported from Igloo's b1more.js. trimWords/toItem/inQueue are pure and tested in node; fetchWords takes its fetch. */
 import { wordId } from '../../domain/itemids.js';
+import { wordTriage } from '../../domain/wordtriage.js';
 
 export const COLLECTION = 'words.exam';
 /** At most one request per 10 minutes. */
@@ -37,15 +38,10 @@ export function trimWords(rows, wordmap) {
 }
 
 /**
- * Triage (UX §3.3): which saved words enter the review queue. In the weeks before an exam only frequent ones
- * (zipf ≥ 4, or in 3 or more of the mock tests); otherwise the B1 list (A1 to B1) or 2 or more tests.
- * The rest stay in Look up, marked for after the exam.
- * @param {any} w a trimmed word @param {string} phase clock phase
+ * Whether a trimmed word is in the review queue today: the shared triage (domain/wordtriage.js, UX §3.3).
+ * trimWords keeps only glossed words. @param {any} w a trimmed word @param {string} phase clock phase
  */
-export function inQueue(w, phase) {
-  if (phase === 'week' || phase === 'lastNew' || phase === 'eve' || phase === 'day') return w.zipf >= 4 || w.examDays >= 3;
-  return ['A1', 'A2', 'B1'].includes(w.level) || w.examDays >= 2;
-}
+export const inQueue = (w, phase) => wordTriage({ glossed: true, zipf: w.zipf, examDays: w.examDays, level: w.level }, phase) === 'queue';
 
 const DETS = new Set(`der die das den dem des ein eine einen einem einer eines kein keine keinen keinem keiner mein meine meinen meinem meiner
   dein deine deinen deinem sein seine seinen seinem ihr ihre ihren ihrem unser unsere unseren euer eure dieser diese dieses diesen diesem

@@ -48,11 +48,12 @@ export async function mount(el, ctx) {
   /** My words state: waiting, a review date, after the exam, new. @param {any} g */
   function wordState(g) {
     const c = today();
-    const tri = triage(g, c.phase);
+    const tri = triage(g, c.phase, wordmap);
     if (tri === 'waiting') return { cls: 'is-waiting', text: t('lookup.state.waiting') };
     const card = store.cards('b1')[cardId(g, wordmap)];
     if (card && card.reps) return card.due <= c.today ? { cls: 'is-due', text: t('lookup.state.due') } : { cls: '', text: t('lookup.state.dueOn', { date: label(card.due) }), date: card.due };
     if (tri === 'later') return { cls: 'is-later', text: t('lookup.state.later') };
+    if (tri === 'reference') return { cls: 'is-later', text: t('lookup.state.reference') };
     return { cls: '', text: t('lookup.state.new') };
   }
 
@@ -416,7 +417,7 @@ export async function mount(el, ctx) {
     const freqOnly = st.opts.freq === '1';
     const rows = mw.groups.filter(g => (!test || g.days.includes(test)) && (!freqOnly || frequent(g)));
     const waiting = mw.groups.filter(g => !g.gloss).length;
-    const later = mw.groups.filter(g => triage(g, phase) === 'later').length;
+    const later = mw.groups.filter(g => triage(g, phase, wordmap) === 'later').length;
     out.append(
       caption([t('lookup.words.count', { n: mw.groups.length, count: num(mw.groups.length) }), waiting ? t('lookup.words.waiting', { n: waiting }) : null].filter(Boolean).join(' · ')),
       later || mw.local ? caption([later ? t('lookup.words.later', { n: later }) : null, mw.local ? t('lookup.words.local', { n: mw.local }) : null].filter(Boolean).join(', ')) : null,

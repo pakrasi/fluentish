@@ -84,8 +84,9 @@ test('triage: no meaning waits; in an exam week only frequent words go in the qu
   assert.equal(triage(by('nachbar'), 'week'), 'queue');
   assert.equal(triage(by('übernachtung'), 'week'), 'later');
   assert.equal(triage(by('übernachtung'), 'eve'), 'later');
-  assert.equal(triage(by('übernachtung'), 'none'), 'queue');
-  assert.equal(triage(by('übernachtung'), 'after'), 'queue');
+  // outside an exam week: rare, in one test and not on the word list → reference only; on the list → queue
+  assert.equal(triage(by('übernachtung'), 'none'), 'reference');
+  assert.equal(triage(by('übernachtung'), 'after', { 'Übernachtung': ['uebernachtung.noun', 'B1'] }), 'queue');
   assert.equal(frequent({ zipf: 3, exam_days: 3 }), true);
   assert.equal(frequent({ zipf: 3.9, exam_days: 2 }), false);
 });

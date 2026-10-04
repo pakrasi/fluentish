@@ -730,6 +730,7 @@ export default {
   'lookup.words.levelAll': 'All levels',
   'lookup.state.waiting': 'Waiting for meaning',
   'lookup.state.later': 'After the exam',
+  'lookup.state.reference': 'Not in reviews',
   'lookup.state.new': 'New',
   'lookup.state.due': 'Due',
   'lookup.state.dueOn': 'Due {date}',
