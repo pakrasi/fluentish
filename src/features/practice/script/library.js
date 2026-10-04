@@ -41,6 +41,8 @@ export function mountLibrary(el, ctx) {
       h('p', { class: 'caption sc-private' }, t('practice.script.private')),
       h('div', { class: 'pr-queue-btn sc-dock' }, h('a', { class: 'btn btn-primary btn-wide pressable', href: '#/practice/scripts/new' }, t('practice.script.new')))));
   }
+  // a delete whose undo time ran out while the page was closed: finish it (the text goes, a tombstone stays)
+  for (const s of Object.values(St.all(store))) if (s && s.deletedAt && s.sections && Date.now() - Date.parse(s.deletedAt) > 5000) St.purge(store, s.id, { at: s.deletedAt });
   render();
   const off = [ctx.store.subscribe(St.KV, render)];
   return () => off.forEach(f => f());

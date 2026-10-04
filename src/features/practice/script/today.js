@@ -10,7 +10,7 @@ import { planRows, newShownToday } from './plan.js';
 export function scriptPlanItems({ store, c, settings, t }) {
   try {
     return planRows({ scripts: St.active(store), progress: store.get(St.PROGRESS, {}) || {}, cardOf: St.cardOf(store), c, settings, t });
-  } catch { return []; }
+  } catch (e) { console.error('script plan', e); return []; }
 }
 
 /** New script words shown today, for the B1 budget's newShown. @param {any} store @param {string} today */

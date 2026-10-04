@@ -743,6 +743,7 @@ export default {
   'practice.script.paste.ph': 'Paste German text, or German with English (EN and DE lines).',
   'practice.script.paste.found': { one: '{n} section, {words} words', other: '{n} sections, {words} words' },
   'practice.script.paste.format': 'The text is',
+  'practice.script.paste.wordsOnly': '{words} words',
   'practice.script.paste.kind': 'How you will say it',
   'practice.script.paste.kindHint': 'Talk: word for word. Retell: in your own words. You can switch each section later.',
   'practice.script.paste.register': 'Address the audience as',

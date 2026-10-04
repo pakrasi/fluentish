@@ -281,3 +281,5 @@ body.sc-full #view { padding-top: env(safe-area-inset-top); }
 .sc-run.is-running .sc-run-actions { position: fixed; left: 0; right: 0; bottom: 0; z-index: var(--z-bar); margin: 0; padding: var(--s-3) max(var(--gutter), env(safe-area-inset-left)) calc(var(--s-4) + env(safe-area-inset-bottom)); background: linear-gradient(to bottom, transparent, var(--canvas) 30%); }
 .sc-run.is-running .sc-run-actions .btn { max-width: 640px; margin: 0 auto; display: flex; }
 .sc-run.is-running { padding-bottom: 120px; }
+:root:has(.sc-dock) .toast { bottom: calc(150px + env(safe-area-inset-bottom)); }
+@media (min-width: 900px) { :root:has(.sc-dock) .toast { bottom: calc(32px + env(safe-area-inset-bottom)); } }

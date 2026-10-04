@@ -3,7 +3,6 @@
    runs locally on every change. Words he set in bold arrive marked. */
 import { h, replace } from '../../../core/dom.js';
 import { field, chipChoice, notice } from '../../../core/ui.js';
-import { uuidv7 } from '../../../data/ids.js';
 import * as P from './parse.js';
 import * as St from './store.js';
 import { lexicon } from './lexicon.js';
@@ -45,7 +44,7 @@ export function mountPaste(el, ctx) {
     else if (det && det.words < MIN_WORDS) { msg = h('p', { class: 'caption' }, t('practice.script.paste.short')); ok = false; }
     else if (det && det.words > LONG_SCRIPT_WORDS) msg = h('p', { class: 'caption' }, t('practice.script.paste.long', { min: Math.round(det.words / 110) }));
     replace(found, det ? [
-      h('p', { class: 'sc-detect-line' }, h('span', null, t(`practice.script.fmt.${fmt}`), ' · ', t('practice.script.paste.found', { n: det.sections, words: num(det.words) })),
+      h('p', { class: 'sc-detect-line' }, h('span', null, t(`practice.script.fmt.${fmt}`), ' · ', fmt === 'en' ? t('practice.script.paste.wordsOnly', { words: num(det.words) }) : t('practice.script.paste.found', { n: det.sections, words: num(det.words) })),
         h('button', { type: 'button', class: 'btn btn-quiet pressable sc-change', 'aria-expanded': 'false', onclick: (/** @type {Event} */ e) => toggleFormats(/** @type {HTMLElement} */ (e.currentTarget)) }, t('practice.script.change'))),
       h('div', { class: 'sc-formats', hidden: true }, chipChoice({ label: t('practice.script.paste.format'), value: String(fmt), name: 'fmt',
         options: [['de', t('practice.script.fmt.de')], ['pairs', t('practice.script.fmt.pairs')], ['notes', t('practice.script.fmt.notes')]],
@@ -87,7 +86,7 @@ export function mountPaste(el, ctx) {
       }
     }
     const status = St.canActivate(store) ? 'active' : 'paused';
-    const script = { id, v: 1, profileId: ctx.app?.profile?.id || null, uid: uuidv7(), title: title.value.trim() || p.title || t('practice.script.untitled'), register,
+    const script = { id, v: 1, profileId: ctx.app?.profile?.id || null, title: title.value.trim() || p.title || t('practice.script.untitled'), register,
       deliverOn: date.value || null, targetMin: null, status, source: { format: fmt, wording: null }, sections: p.sections, marks, unmarked: [], forced: [],
       names: p.names.map(x => x.toLowerCase()), analysis: {}, flagged: [], createdAt: now, deletedAt: null };
     St.put(store, script);
