@@ -4,6 +4,7 @@
 //   node tools/check-privacy.mjs --staged     pre-commit: the staged version of every added or changed file
 //   node tools/check-privacy.mjs --all        CI and pre-push: every tracked file
 //   node tools/check-privacy.mjs --dir _site  the built site, before it is published
+//   node tools/check-privacy.mjs --history    every version of every file in every commit (before a first push)
 //
 // Extra terms (names, e-mail addresses, cities) can be listed one per line in `.privacy-terms` at the repo root.
 // That file is git-ignored on purpose, so the terms themselves never get committed. Known, reviewed exceptions live
@@ -42,6 +43,7 @@ const TEXT_RULES = [
 function args() {
   const a = process.argv.slice(2);
   if (a.includes('--staged')) return { mode: 'staged' };
+  if (a.includes('--history')) return { mode: 'history' };
   const i = a.indexOf('--dir');
   if (i >= 0) return { mode: 'dir', dir: path.resolve(a[i + 1] || '_site') };
   return { mode: 'all' };
@@ -57,6 +59,21 @@ function files(opt) {
       read: () => execFileSync('git', ['show', `:${p}`], { cwd: ROOT, maxBuffer: 1 << 28 }),
       size: () => Number(git('cat-file', '-s', `:${p}`).trim()),
     }));
+  }
+  if (opt.mode === 'history') {
+    // each distinct (path, blob) that any commit added or changed; reported as path@commit
+    const seen = new Set(), out = [];
+    for (const c of git('rev-list', '--all').split('\n').filter(Boolean)) {
+      const lines = git('diff-tree', '-r', '--root', '--no-commit-id', '--no-renames', '--diff-filter=AM', c).split('\n').filter(Boolean);
+      for (const l of lines) {
+        const [meta, p] = l.split('\t');
+        const blob = meta.split(' ')[3];
+        if (seen.has(p + '\0' + blob)) continue;
+        seen.add(p + '\0' + blob);
+        out.push({ path: p, where: `${p}@${c.slice(0, 8)}`, read: () => execFileSync('git', ['cat-file', 'blob', blob], { cwd: ROOT, maxBuffer: 1 << 28 }), size: () => Number(git('cat-file', '-s', blob).trim()) });
+      }
+    }
+    return out;
   }
   if (opt.mode === 'dir') {
     const out = [];
@@ -91,8 +108,9 @@ let n = 0;
 for (const f of files(opt)) {
   if (f.path === SELF || f.path === '.privacy-terms') continue;
   n++;
-  for (const r of PATH_RULES) if (r.re.test(f.path) && !allowed(f.path, r.id)) findings.push([f.path, r.id, r.why]);
-  if (f.size() > MAX_BYTES && !allowed(f.path, 'size')) findings.push([f.path, 'size', `over ${MAX_BYTES / 1048576} MB`]);
+  const where = /** @type {any} */ (f).where || f.path;
+  for (const r of PATH_RULES) if (r.re.test(f.path) && !allowed(f.path, r.id)) findings.push([where, r.id, r.why]);
+  if (f.size() > MAX_BYTES && !allowed(f.path, 'size')) findings.push([where, 'size', `over ${MAX_BYTES / 1048576} MB`]);
   if (/\.(png|jpe?g|gif|webp|ico|woff2?|ttf|otf|pdf)$/i.test(f.path)) continue;
   const text = f.read().toString('utf8');
   const fixture = f.path.startsWith('tests/fixtures/');
@@ -102,7 +120,7 @@ for (const f of files(opt)) {
     const m = r.re.exec(text);
     if (m && !allowed(f.path, r.id)) {
       const line = text.slice(0, m.index).split('\n').length;
-      findings.push([`${f.path}:${line}`, r.id, r.why]);
+      findings.push([`${where}:${line}`, r.id, r.why]);
     }
   }
 }
