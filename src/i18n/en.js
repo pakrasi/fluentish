@@ -10,6 +10,8 @@ export default {
   'tab.exam': 'Exam',
   'tab.lookup': 'Look up',
   'shadow.banner': 'Preview: nothing here is saved to your progress.',
+  'preview.dropped': 'The preview profile was removed.',
+  'preview.droppedMoved': 'The preview profile was removed, and your progress was moved over from the old apps.',
 
   // units
   'unit.days': { one: 'day', other: 'days' },
@@ -465,7 +467,7 @@ export default {
   'data.kind.fluentish': 'Fluentish export',
   'data.kind.igloo': 'Igloo export',
   'data.delete': 'Delete all',
-  'data.delete.confirm': 'Delete all progress, recordings and keys on this device? What the old apps stored is not touched.',
+  'data.delete.confirm': 'Delete all progress, recordings and keys on this device? What the old apps stored is not touched, and is moved over again on the next start.',
   'data.delete.unsent': { one: '{n} result made here was not sent yet. Deleting loses it for good.', other: '{n} results made here were not sent yet. Deleting loses them for good.' },
   'data.delete.yes': 'Delete',
   'data.delete.yesUnsent': 'Delete, including unsent results',

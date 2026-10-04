@@ -111,6 +111,7 @@ async function main() {
   bus.on('settings:changed', ({ key }) => { if (/^(exam|language|level)/.test(key)) refreshShell(); });
   bus.on('profile:changed', () => refreshShell());
   if (!durable) toast(t('error.noStorage'), { ms: 8000 });
+  if (session.previewDropped) toast(t(session.migration ? 'preview.droppedMoved' : 'preview.dropped'), { ms: 8000 });   // leaving shadow mode (data/session.js)
 
   // ---------- router ----------
   const router = createRouter({

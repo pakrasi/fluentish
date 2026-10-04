@@ -130,14 +130,24 @@ test('openSession migrates once per device, read-only, and opens the store', asy
   assert.equal(b.migration, null);
   assert.equal(b.profile.id, a.profile.id);
   assert.equal(Object.keys(b.store.cards('b1')).length, 40);
-  // after "Delete all" the legacy data does not come back: a fresh profile goes to onboarding
+  // "Delete all" forgets the marker: the next start is a fresh import from the untouched legacy keys
+  b.store.set('ui', { importSeen: true });
+  await b.store.flush();
   await deleteProfile(adapter, b.device, b.profile);
+  assert.equal((await adapter.getDevice()).migratedAt, undefined);
   const c = await openSession({ adapter, legacyStorage: s, clock, now: () => NOW });
-  assert.equal(c.migration, null);
+  assert.equal(c.migration.cards, 40);
   assert.notEqual(c.profile.id, a.profile.id);
-  assert.equal(Object.keys(c.store.cards('b1')).length, 0);
-  assert.equal(c.store.get('settings'), undefined, 'empty profile: onboarding');
-  assert.equal(c.store.get('secrets'), undefined, 'secrets are gone too');
+  assert.equal(Object.keys(c.store.cards('b1')).length, 40);
+  assert.ok(!c.store.get('ui', {})?.importSeen, 'the import notice shows again');
+  assert.equal((await adapter.listProfiles()).length, 1);
+  // with no legacy keys, Delete all leads to an empty profile and onboarding
+  await c.store.flush();
+  await deleteProfile(adapter, c.device, c.profile);
+  const e = await openSession({ adapter, legacyStorage: readOnlyStorage({}).s, clock, now: () => NOW });
+  assert.equal(e.migration, null);
+  assert.equal(e.store.get('settings'), undefined, 'empty profile: onboarding');
+  assert.equal(e.store.get('secrets'), undefined, 'secrets are gone too');
   assert.equal(writes.length, 0);
 });
 
@@ -176,4 +186,111 @@ test('Delete all removes the recordings waiting on this device', async () => {
   await deleteProfile(adapter, a.device, a.profile);
   assert.equal(await adapter.getBlob('rec-1'), null);
   assert.equal(await adapter.getBlob('take:t1'), null);
+});
+
+// ---- leaving shadow mode (docs/CUTOVER.md, blocker 1) ----
+
+/** The legacy data on a preview day: fewer cards, attempts and words than in exam week. */
+function previewDay() {
+  const d = { ...fixture.localStorage };
+  const cards = JSON.parse(d['doors.b1.fsrs.v1']);
+  d['doors.b1.fsrs.v1'] = JSON.stringify(Object.fromEntries(Object.entries(cards).slice(0, 10)));
+  d['remote:attempts'] = JSON.stringify(JSON.parse(d['remote:attempts']).slice(0, 2));
+  d['remote:vocab'] = JSON.stringify(JSON.parse(d['remote:vocab']).slice(0, 1));
+  delete d['draft:4:schreiben'];
+  return d;
+}
+/** The count bookmark in CUTOVER.md, over a plain object. */
+const bookmark = data => {
+  const n = k => { try { const j = JSON.parse(data[k]); return Array.isArray(j) ? j.length : j ? Object.keys(j).length : 0; } catch { return 0; } };
+  return { cards: n('doors.b1.fsrs.v1'), attempts: n('remote:attempts'), words: n('remote:vocab') };
+};
+
+test('leaving shadow mode: the preview profile goes and the real migration runs from the legacy keys', async () => {
+  const adapter = createMemoryAdapter();
+  const pre = readOnlyStorage(previewDay());
+  // the preview: a shadow profile migrated from the preview-day keys, then some practice and a recording in it
+  const p = await openSession({ adapter, legacyStorage: pre.s, clock, now: () => NOW, kind: 'shadow' });
+  assert.equal(p.profile.kind, 'shadow');
+  assert.equal(p.migration.cards, 10);
+  assert.equal((await adapter.getDevice()).migratedKind, 'shadow');
+  await adapter.putBlob('rec-preview', new Blob([new Uint8Array(4)]));
+  p.store.append('exam.voice', { day: 1, module: 'sprechen', part: 'teil1', blobRef: 'rec-preview' });
+  p.store.set('ui', { importSeen: true, practised: 3 });
+  await p.store.flush();
+  // a shadow boot later keeps it
+  const p2 = await openSession({ adapter, legacyStorage: pre.s, clock, now: () => NOW, kind: 'shadow' });
+  assert.equal(p2.profile.id, p.profile.id);
+  assert.equal(p2.previewDropped, 0);
+
+  // exam week: the old apps went on writing their keys; then deployShadow → false
+  const week = readOnlyStorage(fixture.localStorage);
+  const expected = planMigration(readLegacy(week.s), { profileId: 'x', deviceId: 'd', now: NOW }).summary;
+  const c = await openSession({ adapter, legacyStorage: week.s, clock, now: () => NOW, kind: 'local' });
+  assert.equal(c.previewDropped, 1);
+  assert.equal(c.profile.kind, 'local');
+  assert.notEqual(c.profile.id, p.profile.id);
+  const profiles = await adapter.listProfiles();
+  assert.deepEqual(profiles.map(x => x.kind), ['local'], 'only the new local profile is left');
+  assert.equal(await adapter.getBlob('rec-preview'), null, 'the preview recording is gone');
+  assert.deepEqual(await adapter.loadScope(p.profile.id), {}, 'the preview data is gone');
+  // migrated counts equal the legacy counts (cards: minus the unusable ones migrate.js skips)
+  const legacy = bookmark(fixture.localStorage);
+  assert.equal(c.migration.cards + c.migration.cardsSkipped, legacy.cards);
+  assert.equal(Object.keys(c.store.cards('b1')).length, c.migration.cards);
+  assert.equal(c.migration.words, legacy.words);
+  assert.equal(c.store.attempts().length, c.migration.attempts);
+  assert.deepEqual(c.migration, expected, 'the same import as a first run on exam-week data');
+  assert.ok(!c.store.get('ui', {})?.importSeen, 'the import notice shows again');
+  assert.equal(c.store.get('secrets').githubToken, 'github_pat_FAKE');
+  const dev = await adapter.getDevice();
+  assert.equal(dev.migratedKind, 'local');
+  assert.equal(dev.activeProfile, c.profile.id);
+  await c.store.flush();
+
+  // second local boot: idempotent
+  const d = await openSession({ adapter, legacyStorage: week.s, clock, now: () => NOW, kind: 'local' });
+  assert.equal(d.previewDropped, 0);
+  assert.equal(d.migration, null);
+  assert.equal(d.profile.id, c.profile.id);
+  assert.equal(Object.keys(d.store.cards('b1')).length, c.migration.cards);
+  assert.equal(d.store.attempts().length, c.migration.attempts);
+  assert.equal((await adapter.listProfiles()).length, 1);
+  assert.equal(pre.writes.length + week.writes.length, 0, 'legacy keys are never written');
+});
+
+test('leaving shadow mode on a device whose marker predates migratedKind', async () => {
+  const adapter = createMemoryAdapter();
+  const { s } = readOnlyStorage(fixture.localStorage);
+  const p = await openSession({ adapter, legacyStorage: s, clock, now: () => NOW, kind: 'shadow' });
+  await p.store.flush();
+  const dev = await adapter.getDevice();
+  delete dev.migratedKind;   // the live preview before this change
+  await adapter.putDevice(dev);
+  const c = await openSession({ adapter, legacyStorage: s, clock, now: () => NOW, kind: 'local' });
+  assert.equal(c.previewDropped, 1);
+  assert.equal(c.migration.cards, 40);
+});
+
+test('leaving shadow mode with no legacy data: an empty local profile, onboarding', async () => {
+  const adapter = createMemoryAdapter();
+  const { s } = readOnlyStorage({});
+  const p = await openSession({ adapter, legacyStorage: s, clock, now: () => NOW, kind: 'shadow' });
+  p.store.set('settings', { onboarded: true });
+  await p.store.flush();
+  const c = await openSession({ adapter, legacyStorage: s, clock, now: () => NOW, kind: 'local' });
+  assert.equal(c.previewDropped, 1);
+  assert.equal(c.migration, null);
+  assert.equal(c.profile.kind, 'local');
+  assert.equal(c.store.get('settings'), undefined);
+});
+
+test('a local profile is never dropped, also in shadow mode', async () => {
+  const adapter = createMemoryAdapter();
+  const { s } = readOnlyStorage(fixture.localStorage);
+  const a = await openSession({ adapter, legacyStorage: s, clock, now: () => NOW });
+  await a.store.flush();
+  const b = await openSession({ adapter, legacyStorage: s, clock, now: () => NOW, kind: 'shadow' });
+  assert.equal(b.profile.id, a.profile.id);
+  assert.equal(b.previewDropped, 0);
 });
