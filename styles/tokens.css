@@ -19,7 +19,7 @@
   --ink-3: #5c5f67;           /* captions, ticks (5.6:1 on canvas) */
   --hairline: rgb(20 21 25 / 0.11);
   --hairline-strong: rgb(20 21 25 / 0.22);
-  --field-border: rgb(20 21 25 / 0.42);   /* inputs: 3:1 against surface */
+  --field-border: rgb(20 21 25 / 0.50);   /* inputs: 3.3:1 against surface */
   --on-ink: #f6f6f3;
 
   --accent: #2a43d6;          /* cobalt: progress, today, focus, links. Never a fill for big areas. */
@@ -43,6 +43,7 @@
 
   /* readiness field cells */
   --cell-empty: rgb(20 21 25 / 0.10);
+  --cell-plan: rgb(20 21 25 / 0.18);      /* runway planned bar, module tracks: data, with a hairline-strong outline */
   --cell-learning: rgb(20 21 25 / 0.34);
   --cell-known: #2c2e34;
   --cell-new: var(--accent);
@@ -103,7 +104,7 @@
     --ok: #66d19a; --bad: #ff8f85;
     --role-fn: #e08ac6; --role-door: #5cc4d5; --role-turn: #edb25e; --role-glue: #a2cf6c; --role-slot: #f0906f; --role-plain: #959aa3;
     --role-mix: 17%;
-    --cell-empty: rgb(236 235 230 / 0.10); --cell-learning: rgb(236 235 230 / 0.34); --cell-known: #d9d8d2;
+    --cell-empty: rgb(236 235 230 / 0.10); --cell-plan: rgb(236 235 230 / 0.22); --cell-learning: rgb(236 235 230 / 0.34); --cell-known: #d9d8d2;
     --atmo-1: #0d0e11; --atmo-2: #141a33; --atmo-3: #0b0c0f; --atmo-4: #1b2244;
     --shadow-card: 0 1px 0 rgb(255 255 255 / 0.04) inset, 0 12px 32px -14px rgb(0 0 0 / 0.6);
     --shadow-lift: 0 1px 0 rgb(255 255 255 / 0.05) inset, 0 28px 56px -18px rgb(0 0 0 / 0.7);
@@ -119,7 +120,7 @@
   --ok: #66d19a; --bad: #ff8f85;
   --role-fn: #e08ac6; --role-door: #5cc4d5; --role-turn: #edb25e; --role-glue: #a2cf6c; --role-slot: #f0906f; --role-plain: #959aa3;
   --role-mix: 17%;
-  --cell-empty: rgb(236 235 230 / 0.10); --cell-learning: rgb(236 235 230 / 0.34); --cell-known: #d9d8d2;
+  --cell-empty: rgb(236 235 230 / 0.10); --cell-plan: rgb(236 235 230 / 0.22); --cell-learning: rgb(236 235 230 / 0.34); --cell-known: #d9d8d2;
   --atmo-1: #0d0e11; --atmo-2: #141a33; --atmo-3: #0b0c0f; --atmo-4: #1b2244;
   --shadow-card: 0 1px 0 rgb(255 255 255 / 0.04) inset, 0 12px 32px -14px rgb(0 0 0 / 0.6);
   --shadow-lift: 0 1px 0 rgb(255 255 255 / 0.05) inset, 0 28px 56px -18px rgb(0 0 0 / 0.7);
@@ -149,6 +150,9 @@ p { margin: 0; }
 a { color: var(--accent-ink); text-underline-offset: 3px; text-decoration-thickness: 1px; }
 button, input, select, textarea { font: inherit; color: inherit; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+::selection { background: color-mix(in oklab, var(--accent) 22%, transparent); color: var(--ink); }
+html { scrollbar-color: var(--hairline-strong) transparent; }
+a, button, .btn, .chip, .pressable, label, summary { touch-action: manipulation; }
 [hidden] { display: none !important; }
 .sr-only { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 

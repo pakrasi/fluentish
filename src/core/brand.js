@@ -3,6 +3,7 @@
 // Copied from the design kit with its API kept. Changes: the vendored shader path, markNode() (the mark built with
 // DOM calls, for pages that never parse markup), and runway's `examLabel` option for i18n.
 import { reduced, haptic } from './motion.js';
+import { runwayDays, midnight, daysBetween } from '../domain/runway.js';
 
 const root = document.documentElement;
 const css = name => getComputedStyle(root).getPropertyValue(name).trim();
@@ -57,6 +58,8 @@ const STATE = { empty: 0, learning: 1, known: 2, new: 3 };
  *   f.set(i, 2);             // silent state change
  */
 export class Field {
+  // App changes: `label: null` leaves the canvas aria-hidden (the page carries the numbers in text), destroy() drops
+  // the observers when a view re-renders, and cells not started get a hairline outline so the field's extent shows.
   constructor(canvas, states, { cell, gap, label } = {}) {
     this.c = canvas; this.ctx = canvas.getContext('2d');
     this.s = Uint8Array.from(states);
@@ -65,20 +68,25 @@ export class Field {
     this.waves = [];       // {i, t0}
     this.introT0 = null;
     this.raf = 0;
-    canvas.setAttribute('role', 'img');
-    if (label) canvas.setAttribute('aria-label', label);
+    if (label) { canvas.setAttribute('role', 'img'); canvas.setAttribute('aria-label', label); } else canvas.setAttribute('aria-hidden', 'true');
     this.readColors();
     this.layout();
-    new ResizeObserver(() => { this.layout(); this.draw(performance.now()); }).observe(canvas);
-    const onTheme = () => { this.readColors(); this.draw(performance.now()); };
-    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', onTheme);
-    new MutationObserver(onTheme).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+    this.ro = new ResizeObserver(() => { this.layout(); this.draw(performance.now()); });
+    this.ro.observe(canvas);
+    this.onTheme = () => { this.readColors(); this.draw(performance.now()); };
+    this.scheme = matchMedia('(prefers-color-scheme: dark)');
+    this.scheme.addEventListener('change', this.onTheme);
+    this.mo = new MutationObserver(this.onTheme);
+    this.mo.observe(root, { attributes: true, attributeFilter: ['data-theme'] });
     this.hidden = false;
     this.draw(performance.now());
   }
 
+  destroy() { cancelAnimationFrame(this.raf); this.ro.disconnect(); this.mo.disconnect(); this.scheme.removeEventListener('change', this.onTheme); }
+
   readColors() {
     this.col = [css('--cell-empty'), css('--cell-learning'), css('--cell-known'), css('--accent')];
+    this.edge = css('--hairline-strong');
   }
 
   layout() {
@@ -170,6 +178,7 @@ export class Field {
       ctx.globalAlpha = alpha;
       ctx.fillStyle = color;
       roundRect(ctx, x + off, y + off, size, size, r);
+      if (this.s[i] === 0 && this.edge) { ctx.strokeStyle = this.edge; ctx.lineWidth = 1; ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(x + off + 0.5, y + off + 0.5, size - 1, size - 1, r); else ctx.rect(x + off + 0.5, y + off + 0.5, size - 1, size - 1); ctx.stroke(); }
       if (lift > 0) {
         ctx.globalAlpha = lift * 0.4;
         ctx.fillStyle = this.col[3];
@@ -190,8 +199,7 @@ function roundRect(ctx, x, y, w, h, r) {
 /* Exam countdown runway                                                */
 /* ------------------------------------------------------------------ */
 
-const DAY = 864e5;
-const startOfDay = d => { const x = new Date(d); x.setHours(0, 0, 0, 0); return x; };
+// Days are built from year/month/date (domain/runway.js), never by adding 24 h: across a DST change that drifts.
 
 /**
  * One column per day from `from` to the exam. Bar height = planned minutes,
@@ -201,11 +209,9 @@ const startOfDay = d => { const x = new Date(d); x.setHours(0, 0, 0, 0); return 
  * Returns the number of days left (calendar days until the exam).
  */
 export function runway(el, { exam, today = new Date(), plan = () => 40, done = () => 0, past = 0, locale, examLabel = 'Exam', minLabel = (d, p) => `${d} of ${p} min` } = {}) {
-  const t = startOfDay(today), e = startOfDay(exam);
-  const left = Math.round((e - t) / DAY);
-  const from = new Date(t - past * DAY);
-  const days = [];
-  for (let d = new Date(from); d <= e; d = new Date(+d + DAY)) days.push(d);
+  const t = midnight(today), e = midnight(exam);
+  const left = daysBetween(t, e);
+  const days = runwayDays(t, e, past);
   const weekly = days.length > 35;
   const items = weekly ? chunk(days, 7) : days.map(d => [d]);
   const maxPlan = Math.max(1, ...items.map(g => g.reduce((s, d) => s + plan(d), 0)));
@@ -314,6 +320,8 @@ export async function atmosphere(el, { colors } = {}) {
   } catch (err) { console.info('Atmosphere mount failed', err); return api; }
   requestAnimationFrame(() => el.classList.add('is-live'));
   let live = true;
+  // iOS drops WebGL contexts under memory pressure: fall back to the CSS gradient underneath instead of a blank canvas
+  el.querySelector('canvas')?.addEventListener('webglcontextlost', e => { e.preventDefault(); api.destroy(); }, { once: true });
   // After destroy() the mount is disposed: a late theme change must not reach it (the vendored mount would warn
   // "Uniform location for u_colors not found"), so both listeners go and recolor checks `live`.
   const recolor = () => { if (live && !colors) { const c = pick(); m.setUniforms({ u_colors: c, u_colorsCount: c.length }); } };

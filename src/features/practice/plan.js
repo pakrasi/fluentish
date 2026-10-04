@@ -42,12 +42,12 @@ export function todayBudget({ store, c, settings }) {
 }
 
 /**
- * The label of the button that starts the next review round, shared by Today's dock and Practice's hub.
+ * The label of the button that starts the next review round, shared by Today's dock and Practice's hub. It counts the
+ * rounds the plan row shows ("about 6 rounds" → "Start round 1 of 6"), so the button and the row say the same.
  * @param {{rounds: number, roundsToday: number}} b @param {number} n questions in the next round @param {(k: string, v?: any) => string} t
  */
 export function roundAction(b, n, t) {
-  const total = b.roundsToday + b.rounds;
-  return total > 1 ? t('plan.round.actionOf', { k: b.roundsToday + 1, total, n }) : t('plan.round.action', { n, min: roundMinutes(n) });
+  return b.rounds > 1 ? t('plan.round.actionOf', { k: 1, total: b.rounds, n }) : t('plan.round.action', { n, min: roundMinutes(n) });
 }
 
 /**
