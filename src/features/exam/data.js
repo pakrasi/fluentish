@@ -209,6 +209,43 @@ export async function saveRecording(ctx, { n, part, label, blob, mime, now = Dat
   return e;
 }
 
+/* ---------- a take in progress ----------
+   While a take records, its audio so far is written to IndexedDB every 2 seconds (blob 'take:<id>') under the kv
+   record 'exams.takeInProgress'. A reload, a closed tab or iOS killing the page loses at most those 2 seconds: the
+   next start finds the record and keeps the take as a normal recording (recoverTake). */
+const TAKE_KV = 'exams.takeInProgress';
+/** A take that has not been written for this long belongs to no live recorder (another tab writes every 2 s). */
+const TAKE_IDLE_MS = 10e3;
+
+/** @param {any} store @param {{id: string, n: number, part: string, label: string, startedAt: number}} info */
+export function beginTake(store, info) { store.set(TAKE_KV, { ...info, touchedAt: Date.now() }); }
+
+/** Keep the audio so far. @param {any} store @param {string} id @param {Blob} blob */
+export async function keepTakeAudio(store, id, blob) {
+  await store.adapter.putBlob(`take:${id}`, blob);
+  const cur = store.get(TAKE_KV, null);
+  if (cur && cur.id === id) store.set(TAKE_KV, { ...cur, mime: blob.type || cur.mime || null, touchedAt: Date.now() });
+}
+
+/** The take is saved as a recording (or dropped on purpose): forget the copy. @param {any} store @param {string} id */
+export async function endTake(store, id) {
+  if (store.get(TAKE_KV, null)?.id === id) store.set(TAKE_KV, null);
+  await store.adapter.deleteBlob(`take:${id}`).catch(() => {});
+}
+
+/**
+ * A take that was cut off by a reload or a closed page becomes a normal recording. Returns its info, or null.
+ * @param {{store: any, bus?: any}} ctx
+ */
+export async function recoverTake(ctx) {
+  const info = ctx.store.get(TAKE_KV, null);
+  if (!info || Date.now() - (info.touchedAt || 0) < TAKE_IDLE_MS) return null;
+  const blob = await ctx.store.adapter.getBlob(`take:${info.id}`).catch(() => null);
+  if (blob && blob.size) await saveRecording(ctx, { n: info.n, part: info.part, label: info.label, blob, mime: info.mime || blob.type || 'audio/webm', now: info.startedAt });
+  await endTake(ctx.store, info.id);
+  return blob && blob.size ? info : null;
+}
+
 /**
  * Recordings of a test: made here (events; the blob while not yet sent), moved from the old app, and known to the Mac
  * (with transcripts).

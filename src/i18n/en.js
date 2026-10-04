@@ -136,6 +136,8 @@ export default {
   'exam.rec.denied': 'No microphone access. Allow it in the browser settings, or choose a file.',
   'exam.rec.unsupported': 'This browser cannot record. Choose a file instead.',
   'exam.rec.empty': 'The recording was empty. Try again.',
+  'exam.rec.stoppedBySystem': 'The phone stopped the recording. Everything recorded until then is saved.',
+  'exam.rec.recovered': 'A recording that was cut off by a reload is saved.',
   'exam.rec.stopFirst': 'Stop the recording first.',
   'exam.rec.has': 'recorded',
   'exam.rec.hasNot': 'no recording yet',

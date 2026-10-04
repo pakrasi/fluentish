@@ -127,6 +127,12 @@ async function main() {
   await router.start();
   document.documentElement.classList.add('booted');
 
+  // a Sprechen take cut off by a reload or a killed page is kept as a recording (features/exam/data.js)
+  if (store.get('exams.takeInProgress')) {
+    import('./features/exam/data.js').then(m => m.recoverTake({ store, bus }))
+      .then(info => { if (info) toast(t('exam.rec.recovered')); }).catch((/** @type {any} */ e) => log('take', e));
+  }
+
   // ---------- results sync ----------
   // On start and whenever the page becomes visible again, at most once a minute. syncResults skips by itself when
   // the device is not linked or the profile is a shadow, uploads nothing until a migration's import notice has been

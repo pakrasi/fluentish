@@ -1,13 +1,18 @@
 /* Sprechen: 15 minutes of preparation with notes, then Teil 1 (planning with a partner whose lines are heard),
    Teil 2 (a presentation, slide by slide) and Teil 3 (the examiner's questions), one recording each.
 
-   A recording is never lost: the blob is written to IndexedDB with its file name before any upload, the upload is
-   retried by the results sync until both files are in the repository, and "Save file" downloads it at any time. */
+   A recording is never lost: while it runs, the audio so far is written to IndexedDB every 2 seconds (data.js
+   beginTake/keepTakeAudio), so a reload or a killed page keeps all but the last 2 seconds (recoverTake on the next
+   start); a take the system ends on its own (a call, Siri, the screen locking) is saved with what was captured; the
+   blob is written to IndexedDB with its file name before any upload, the upload is retried by the results sync until
+   both files are in the repository, and "Save file" downloads it at any time. While a take runs, leaving the page
+   asks first. */
 import { h, replace, download } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
 import { createRecorder, RecorderError } from '../../services/recorder.js';
 import { audioExt } from '../../data/sync/github-b1exam.js';
-import { draft, saveDraft, submitAttempt, saveRecording, recordings, mediaUrl, sync, linked } from './data.js';
+import { draft, saveDraft, submitAttempt, saveRecording, recordings, mediaUrl, sync, linked, beginTake, keepTakeAudio, endTake, recoverTake } from './data.js';
+import { uuidv7 } from '../../data/ids.js';
 import { clockBar, backLink, confirmPanel } from './parts.js';
 import { fmt } from './timer.js';
 import { stampMs } from '../../domain/grade.js';
@@ -24,6 +29,10 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
   const rec = createRecorder();
   /** @type {HTMLAudioElement | null} */ let cueAudio = null;
   let recording = false;
+  /** stop the take that is running, from outside its box (the page is being hidden) @type {((auto: boolean) => Promise<void>) | null} */
+  let activeStop = null;
+  /** write the take's audio so far now @type {(() => void) | null} */
+  let flushTake = null;
   const clock = clockBar({ ctx, n, module: 'sprechen', minutes: 15, label: 'Vorb.' });
   const since = clock.clock.start;
   const tabs = h('div', { class: 'ex-tabs', role: 'tablist', 'aria-label': 'Teile' });
@@ -71,11 +80,22 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
       if (f) keep(f, f.type || 'audio/mp4');
     } }));
     const startBtn = h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: start }, icon('record', { size: 18 }), t('exam.de.recStart'));
-    const stopBtn = h('button', { type: 'button', class: 'btn btn-danger pressable', onclick: stop, hidden: true }, icon('stop', { size: 18 }), t('exam.de.recStop'));
+    const stopBtn = h('button', { type: 'button', class: 'btn btn-danger pressable', onclick: () => stop(false), hidden: true }, icon('stop', { size: 18 }), t('exam.de.recStop'));
+    /** @type {string | null} */ let takeId = null;
+    /** @type {Blob | null} */ let soFar = null;
+    let savedAt = 0;
+    const flush = () => { if (takeId && soFar) { savedAt = Date.now(); keepTakeAudio(store, takeId, soFar).catch(() => {}); } };
     const fileBtn = h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => fileIn.click() }, rec.supported ? t('exam.de.recFile') : t('exam.de.recFileOnly'));
     async function start() {
       try {
-        await rec.start();
+        const id = uuidv7(Date.now());
+        await rec.start({
+          onChunk: b => { soFar = b; if (Date.now() - savedAt >= 2000) flush(); },
+          onEnded: () => { if (recording) stop(true); },
+        });
+        takeId = id; soFar = null; savedAt = 0;
+        beginTake(store, { id, n, part, label, startedAt: Date.now() });
+        activeStop = stop; flushTake = flush;
         recording = true; drawTabs();
         box.classList.add('is-on');
         startBtn.hidden = true; stopBtn.hidden = false;
@@ -87,21 +107,32 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
         status.textContent = e instanceof RecorderError && e.code === 'denied' ? t('exam.rec.denied') : t('exam.rec.unsupported');
       }
     }
-    async function stop() {
+    /** @param {boolean} auto the system ended the take, or the page is going away */
+    async function stop(auto) {
+      if (!recording) return;
+      recording = false; activeStop = null; flushTake = null;
       clearInterval(iv);
+      const id = takeId;
       try {
         const { blob, mime } = await rec.stop();
-        await keep(blob, mime);
-      } catch { status.textContent = t('exam.rec.empty'); }
-      recording = false; drawTabs();
+        if (await keep(blob, mime) && id) await endTake(store, id);
+        if (auto) status.textContent = t('exam.rec.stoppedBySystem');
+      } catch {
+        status.textContent = t('exam.rec.empty');
+        if (id) await endTake(store, id);
+      }
+      takeId = null;
+      drawTabs();
       box.classList.remove('is-on');
       startBtn.hidden = false; stopBtn.hidden = true;
     }
-    /** @param {Blob} blob @param {string} mime */
+    /** @param {Blob} blob @param {string} mime @returns {Promise<boolean>} whether the recording is stored */
     async function keep(blob, mime) {
       status.textContent = t('exam.rec.saving');
+      let stored = false;
       try {
         await saveRecording(ctx, { n, part, label, blob, mime });
+        stored = true;
         st.recorded[part] = true; save(); drawTabs();
         status.textContent = linked(store) ? t('exam.rec.savedSending') : t('exam.rec.savedLocal');
         setTimeout(drawList, 50);
@@ -114,6 +145,7 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
         status.textContent = t('exam.rec.storeFailed');
         box.append(h('button', { type: 'button', class: 'btn pressable', onclick: () => download(blob, `test${n}-sprechen-${part}.${audioExt(mime)}`) }, icon('download', { size: 18 }), t('exam.rec.saveFile')));
       }
+      return stored;
     }
     async function drawList() {
       const mine = recordings(store, n).filter(v => v.part === part && stampMs(v.created_at) >= since - 60e3);
@@ -218,6 +250,16 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
     replace(content, c);
   }
   let submitted = false;
+  // while a take runs: reloading or closing asks first; hiding the page writes the audio so far; leaving for good stops
+  // and keeps the take
+  const guard = (/** @type {BeforeUnloadEvent} */ e) => { if (recording) { e.preventDefault(); e.returnValue = ''; } };
+  const onHide = () => { flushTake?.(); if (activeStop) activeStop(true); };
+  const onVis = () => { if (document.visibilityState === 'hidden') flushTake?.(); };
+  addEventListener('beforeunload', guard);
+  addEventListener('pagehide', onHide);
+  document.addEventListener('visibilitychange', onVis);
+  // a take cut off by a reload is kept as a recording
+  recoverTake(ctx).then(info => { if (info) { ctx.toast(t('exam.rec.recovered')); draw(); } }).catch(() => {});
   replace(el, h('div', { class: 'ex-run', lang: 'de' },
     h('header', { class: 'ex-runhead' }, backLink(`#/exam/${n}`, t('exam.backTest', { n })), h('div', { class: 'ex-runhead-end' }, clock.el)),
     h('h1', { class: 'ex-run-title' }, 'Sprechen', h('span', { class: 'caption' }, ` · ${ex.topic}`)),
@@ -225,7 +267,11 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
   draw();
   return {
     canLeave() { if (rec.recording) { ctx.toast(t('exam.rec.stopFirst')); return false; } return true; },
-    unmount() { stopCue(); rec.cancel(); clock.stop(!submitted); document.body.dataset.chrome = 'on'; },
+    unmount() {
+      removeEventListener('beforeunload', guard); removeEventListener('pagehide', onHide); document.removeEventListener('visibilitychange', onVis);
+      if (activeStop) activeStop(true); else rec.cancel();   // never drop a take on the way out
+      stopCue(); clock.stop(!submitted); document.body.dataset.chrome = 'on';
+    },
   };
 }
 
