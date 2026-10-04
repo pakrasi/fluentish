@@ -9,11 +9,11 @@ permissions:
 
 jobs:
   privacy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with: { fetch-depth: 0 }
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with: { node-version: 22 }
       - name: Privacy check (every tracked file)
         run: node tools/check-privacy.mjs --all
@@ -23,25 +23,25 @@ jobs:
         run: node tools/check-dates.mjs
 
   unit:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
         tz: [America/New_York, Europe/Berlin, Asia/Kolkata]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with: { node-version: 22 }
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with: { python-version: '3.12' }   # test_b1/test_match compare against the Python reference checkers
       - name: Unit tests (TZ=${{ matrix.tz }})
         env: { TZ: '${{ matrix.tz }}' }
         run: node --test 'tests/unit/*.test.mjs'
 
   types:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with: { node-version: 22, cache: npm }
       - run: npm ci
       - name: tsc strict (core, data, new domain modules)
@@ -51,12 +51,12 @@ jobs:
         run: npx tsc -p tsconfig.legacy.json
 
   content:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with: { node-version: 22 }
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with: { python-version: '3.12' }
       - name: Manifest is current and every file matches its JSON Schema
         run: node tools/validate-content.mjs
@@ -84,11 +84,11 @@ jobs:
           git diff --exit-code -- content
 
   site:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with: { fetch-depth: 0 }
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with: { node-version: 22 }
       - name: Manifest is current
         run: node tools/build-manifest.mjs --check
