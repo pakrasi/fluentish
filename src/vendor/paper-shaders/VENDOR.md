@@ -6,12 +6,14 @@ no third-party JavaScript at runtime (review B6, CSP `script-src 'self'`).
 - Source: npm `@paper-design/shaders@0.0.81`, `dist/`, Apache-2.0 (LICENSE and NOTICE in this folder).
 - Tarball sha256: `65e31106239e9c2da8be52c4371d61efe625fa95fb9f2944977be9622c2aba88`
 - Files: only the dependency closure of `shader-mount.js`, `get-shader-color-from-string.js`, `shader-sizing.js` and
-  `shaders/mesh-gradient.js`. The only change: the `//# sourceMappingURL` lines are removed (the maps are not vendored).
+  `shaders/mesh-gradient.js`. Changes: the `//# sourceMappingURL` lines are removed (the maps are not vendored), and
+  shader-mount.js skips injecting its inline `<style>` when `<link data-paper-shader>` is present (index.html loads the
+  same CSS from styles/paper-shaders.css, so the CSP needs no inline styles).
 
 | File | sha256 after the change |
 |---|---|
 | get-shader-color-from-string.js | 060be66eb645924c39887403992cc2c111927ad8f8587cf4c96fbcfadb8791c3 |
-| shader-mount.js | 4c0b852f645b3acc273c624da76edf5f2b24e2afa2fa1b1aefb7f5d68c1d4909 |
+| shader-mount.js | 12a0b9f5360de48ae796242de506c43ec5443303bc1f3aa50de4f090d058e792 |
 | shader-sizing.js | 39a33aa83d15265ad31b92cbb1d007ed5c9f5d2c4d2fb92efda52f9f6ef0d7ed |
 | shader-utils.js | c2c2483c7064650858a89a966df0b4f1f5e9c21ea590659eb462bc3ae73c46e8 |
 | vertex-shader.js | 719a8ce8965375078cd09a6b6610196f7441db0f6ba0b64a5aa8675734e221a0 |

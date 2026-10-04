@@ -1,0 +1,28 @@
+/* German interface strings. Partial on purpose: any key missing here falls back to English (core/i18n.js).
+   The shell and Today come first; the rest follows when German chrome is offered (UX §3.6). */
+export default {
+  'nav.main': 'Hauptnavigation',
+  'nav.profile': 'Profil und Einstellungen',
+  'tab.today': 'Heute',
+  'tab.practice': 'Üben',
+  'tab.exam': 'Prüfung',
+  'tab.lookup': 'Nachschlagen',
+  'unit.days': { one: 'Tag', other: 'Tage' },
+  'unit.due': 'fällig',
+  'unit.min': '{n} Min.',
+  'exam.test': 'Test {n}',
+  'today.title': 'Heute',
+  'today.examLabel': 'Prüfung {exam}',
+  'today.examToday': 'Prüfung heute',
+  'today.plan': 'Plan',
+  'today.modules': 'Module',
+  'today.noScore': 'Noch kein Ergebnis',
+  'today.feedback': 'Korrekturen',
+  'plan.review': 'Wiederholungsrunde',
+  'plan.setDate': 'Prüfungstermin eintragen',
+  'feedback.notCorrected': 'Nicht korrigiert',
+  'feedback.correct': 'Jetzt korrigieren',
+  'profile.title': 'Profil',
+  'goal.date': 'Prüfungstermin',
+  'goal.date.past': 'Bitte ein Datum ab heute wählen.',
+};

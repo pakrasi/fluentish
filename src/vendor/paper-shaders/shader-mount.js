@@ -46,7 +46,7 @@ class ShaderMount {
       throw new Error("Paper Shaders: parent element must be an HTMLElement");
     }
     this.ownerDocument = parentElement.ownerDocument;
-    if (!this.ownerDocument.querySelector("style[data-paper-shader]")) {
+    if (!this.ownerDocument.querySelector("style[data-paper-shader], link[data-paper-shader]")) {   // fluentish: the CSS ships as styles/paper-shaders.css (CSP)
       const styleElement = this.ownerDocument.createElement("style");
       styleElement.innerHTML = defaultStyle;
       styleElement.setAttribute("data-paper-shader", "");

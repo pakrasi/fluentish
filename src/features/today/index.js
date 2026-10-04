@@ -1,0 +1,193 @@
+/* Today: what to do now and how long it takes (UX §4.1).
+   Order: countdown hero with the day runway (or the goal and study days without a date), the phase notice,
+   feedback to read, the plan from every feature (composed by domain/today.js), the module bars, and a sticky
+   button for the first unfinished row. Re-renders when the settings, cards, attempts or activity change. */
+import { h, replace } from '../../core/dom.js';
+import { label, parse, add, iso } from '../../core/clock.js';
+import { icon } from '../../core/icons.js';
+import { notice, section, nextId } from '../../core/ui.js';
+import { odometer, fill, reveal } from '../../core/motion.js';
+import { runway, studyDays, atmosphere } from '../../core/brand.js';
+import { composeToday } from '../../domain/today.js';
+import { isDue } from '../../domain/b1ready.js';
+import { planProviders } from '../registry.js';
+import { summaryText } from '../../data/migrate.js';
+import { dueTomorrow } from '../practice/plan.js';
+
+/** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
+export async function mount(el, ctx) {
+  const { store, t, bus } = ctx;
+  /** @type {any} */ let atmo = null;
+  let alive = true;
+  let pending = /** @type {Promise<void> | null} */ (null);
+
+  async function render() {
+    const s = ctx.settings();
+    const c = ctx.clock.ctx();
+    const manifest = await ctx.content.manifest().catch(() => null);
+    const exam = manifest && s.exam.type ? manifest.exams.find((/** @type {any} */ e) => e.id === s.exam.type) || null : null;
+    const lang = manifest && s.language ? manifest.languages.find((/** @type {any} */ l) => l.id === s.language) : null;
+    const pctx = { store, c, settings: s, exam, t };
+
+    /** @type {any[]} */ const items = [], feedback = [], modules = [];
+    for (const { id, mod } of /** @type {any[]} */ (await planProviders())) {
+      try {
+        items.push(...((await mod.planItems?.(pctx)) || []));
+        feedback.push(...(mod.todayFeedback?.(pctx) || []));
+        modules.push(...(mod.todayModules?.(pctx) || []));
+      } catch (e) { console.error(`today: ${id}`, e); }
+    }
+    if (s.language && c.phase === 'none') items.push({ id: 'today.setDate', source: 'today', kind: 'setup', title: t('plan.setDate'), detail: t('plan.setDate.detail'), minutes: 0, href: '#/profile/goal', priority: 90 });
+    if (s.language && c.phase === 'after') items.push({ id: 'today.nextExam', source: 'today', kind: 'setup', title: t('plan.nextExam'), detail: t('plan.nextExam.detail'), minutes: 0, href: '#/profile/goal', priority: 90 });
+    const activity = store.get('activity', {}) || {};
+    const plan = composeToday({ ctx: c, budget: s.minutesPerDay, items, feedback, modules, doneMinutes: activity[c.today]?.minutes || 0 });
+    if (!alive) return;
+
+    const examName = exam ? exam.short : t('exam.generic');
+    const hero = renderHero({ s, c, plan, activity, examName, lang });
+    const feedbackSec = plan.feedback.length ? section(t('today.feedback'),
+      h('ul', { class: 'list' }, plan.feedback.map(f => h('li', { class: 'list-item' },
+        h('div', { class: 'row-main' }, h('span', { class: 'row-title' }, f.title), h('span', { class: 'row-detail' }, f.status)),
+        f.action ? h('a', { class: 'btn pressable', href: f.href }, f.action) : null))),
+      plan.feedbackMore ? h('p', { class: 'caption more' }, t('today.feedbackMore', { n: plan.feedbackMore })) : null) : null;
+    const page = h('div', { class: 'today' },
+      h('header', { class: 'page-head' }, h('h1', null, t('today.title')), h('p', { class: 'caption' }, label(c.today))),
+      importNotice(),
+      h('div', { class: 'today-grid' },
+        h('div', { class: 'today-a' }, hero.el, phaseNotice(c, examName)),
+        h('div', { class: 'today-b' }, feedbackSec, renderPlan(plan, c)),
+        plan.modules.length ? h('div', { class: 'today-c' }, renderModules(plan.modules)) : null),
+      plan.primary ? h('div', { class: 'dock' }, h('a', { class: 'btn btn-primary btn-wide pressable', href: plan.primary.href }, primaryLabel(plan.primary))) : null);
+    replace(el, page);
+    page.classList.toggle('has-dock', !!plan.primary);
+    hero.after();
+    reveal(page);
+    for (const tr of page.querySelectorAll('.mbar .track')) fill(/** @type {HTMLElement} */ (tr), Number(/** @type {HTMLElement} */ (tr).dataset.p));
+    const atmoEl = /** @type {HTMLElement | null} */ (page.querySelector('.atmo'));
+    if (atmo) { atmo.destroy(); atmo = null; }
+    if (atmoEl) atmosphere(atmoEl).then(a => { if (alive) atmo = a; else a.destroy(); }).catch(() => {});
+  }
+
+  /** @param {any} o */
+  function renderHero({ s, c, plan, activity, examName, lang }) {
+    const countdown = c.phase === 'week' || c.phase === 'lastNew' || c.phase === 'eve' || c.phase === 'day';
+    const minutesLine = h('p', { class: 'label' }, h('b', { class: 'tnum ink' }, String(plan.minutes.done)), ' ', t('today.minutesOf', { n: s.minutesPerDay }));
+    const heroBtn = plan.primary ? h('a', { class: 'btn btn-primary pressable hero-btn', href: plan.primary.href }, primaryLabel(plan.primary)) : null;
+    const atmoEl = h('div', { class: 'atmo', 'aria-hidden': 'true' });
+    if (countdown) {
+      const num = h('span', { class: 'numeral' }, String(c.daysLeft));
+      const runEl = h('div', { class: 'runway' });
+      const head = c.phase === 'day'
+        ? h('p', { class: 'figure hero-today' }, t('today.examToday'))
+        : h('div', { class: 'hero-count' }, num, h('span', { class: 'unit' }, t('unit.days', { n: c.daysLeft })));
+      const el = h('section', { class: 'hero today-hero', 'aria-label': t('today.countdown') }, atmoEl,
+        h('p', { class: 'label' }, t('today.examLabel', { exam: examName })),
+        head,
+        h('p', { class: 'caption hero-date' }, c.phase === 'eve' ? t('today.tomorrowOn', { date: label(c.exam) }) : label(/** @type {string} */ (c.exam))),
+        runEl,
+        h('div', { class: 'hero-foot' }, minutesLine, heroBtn));
+      return {
+        el,
+        after() {
+          const ex = /** @type {string} */ (c.exam);
+          const planned = (/** @type {string} */ d) => (d === add(ex, -1) ? Math.min(s.minutesPerDay, 30) : s.minutesPerDay);
+          runway(runEl, {
+            exam: parse(ex), today: parse(c.today), past: 2, locale: 'en-GB',
+            plan: d => planned(iso(d)), done: d => (activity[iso(d)]?.minutes || 0),
+            examLabel: t('today.runway.exam'), minLabel: (d, p) => t('today.runway.min', { d, p }),
+          });
+          if (c.phase !== 'day') odometer(num, c.daysLeft, { label: t('today.daysLeftLabel', { n: c.daysLeft }) });
+        },
+      };
+    }
+    // no date, or after the exam: the review queue is the number; the last 28 days below it
+    const due = Object.values(store.cards('b1')).filter(r => isDue(r, c.today)).length;
+    const num = h('span', { class: 'numeral' }, String(due));
+    const daysEl = h('div', { class: 'days' });
+    const lead = c.phase === 'after'
+      ? t('today.examWas', { exam: examName, date: label(/** @type {string} */ (c.exam)) })
+      : [lang ? lang.name : null, s.level].filter(Boolean).join(' · ') || t('today.noGoal');
+    const runText = h('p', { class: 'caption hero-date' });
+    const el = h('section', { class: 'hero today-hero', 'aria-label': t('today.summary') }, atmoEl,
+      h('p', { class: 'label' }, lead),
+      h('div', { class: 'hero-count' }, num, h('span', { class: 'unit' }, t('unit.due'))),
+      runText,
+      h('div', { class: 'hero-days' }, daysEl),
+      h('div', { class: 'hero-foot' }, minutesLine, heroBtn));
+    return {
+      el,
+      after() {
+        const hist = Array.from({ length: 28 }, (_, i) => (activity[add(c.today, i - 27)]?.minutes || 0) > 0);
+        const run = studyDays(daysEl, hist);
+        runText.textContent = t('today.studied', { n: hist.filter(Boolean).length, run });
+        odometer(num, due, { label: t('today.dueLabel', { n: due }) });
+      },
+    };
+  }
+
+  /** @param {any} it */
+  const primaryLabel = it => it.action || (it.minutes ? `${it.title} · ${t('unit.min', { n: it.minutes })}` : it.title);
+
+  function importNotice() {
+    const meta = store.get('meta', {}) || {};
+    const ui = store.get('ui', {}) || {};
+    if (!meta.summary || ui.importSeen) return null;
+    const s = ctx.settings();
+    const id = nextId('imp');
+    const n = notice({ id, children: [
+      h('p', { class: 'notice-title' }, t('import.title')),
+      h('p', null, summaryText(meta.summary, t)),
+      h('p', null, s.exam.date ? t('import.examDate', { date: label(s.exam.date) }) : t('import.noDate')),
+      h('div', { class: 'notice-actions' },
+        h('a', { class: 'btn pressable', href: '#/profile/goal' }, t('import.change')),
+        h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => { store.update('ui', (/** @type {any} */ u) => ({ ...(u || {}), importSeen: true }), {}); n.remove(); } }, t('import.dismiss'))),
+    ] });
+    return n;
+  }
+
+  /** @param {any} c @param {string} examName */
+  function phaseNotice(c, examName) {
+    const key = { lastNew: 'phase.lastNew', eve: 'phase.eve', day: 'phase.day', after: 'phase.after' }[/** @type {string} */ (c.phase)];
+    if (!key) return null;
+    return notice({ children: [h('p', null, t(key, { exam: examName, date: c.exam ? label(c.exam) : '' }))] });
+  }
+
+  /** @param {ReturnType<typeof composeToday>} plan @param {any} c */
+  function renderPlan(plan, c) {
+    const work = plan.rows.filter(r => r.kind !== 'setup');
+    const head = plan.state === 'done'
+      ? h('p', { class: 'plan-done' }, icon('check', { size: 18 }), t('today.done', { n: dueTomorrow({ store, c, settings: null, exam: null, t }) }))
+      : plan.state === 'empty' ? h('p', { class: 'plan-empty' }, t('today.empty')) : null;
+    return section(t('today.plan'),
+      work.length ? h('p', { class: 'caption section-sub' }, t('today.planMinutes', { n: plan.minutes.planned, budget: plan.minutes.budget })) : null,
+      head,
+      plan.rows.length ? h('ol', { class: 'plan' }, plan.rows.map(r => h('li', { class: ['plan-item', r.done && 'is-done', r.kind === 'setup' && 'is-setup'] },
+        h('a', { class: 'plan-row pressable', href: r.href },
+          h('span', { class: 'plan-state', 'aria-hidden': 'true' }, r.done ? icon('check', { size: 14 }) : r.kind === 'setup' ? icon('calendar', { size: 14 }) : null),
+          h('span', { class: 'row-main' }, h('span', { class: 'row-title' }, r.title, r.done ? h('span', { class: 'sr-only' }, `, ${t('today.doneRow')}`) : null), r.detail ? h('span', { class: 'row-detail' }, r.detail) : null),
+          r.minutes ? h('span', { class: 'row-trail tnum' }, t('unit.min', { n: r.minutes })) : null,
+          icon('next', { size: 16 }))))) : null,
+      plan.more ? h('p', { class: 'caption more' }, t('today.more', { n: plan.more })) : null);
+  }
+
+  /** @param {any[]} modules */
+  function renderModules(modules) {
+    return section(t('today.modules'),
+      h('p', { class: 'caption section-sub' }, t('today.modulesSub')),
+      h('ul', { class: 'mbars' }, modules.map(m => {
+        const p = m.score == null ? 0 : m.score / m.max;
+        return h('li', null, h('a', { class: 'mbar pressable', href: m.href || '#/exam', 'aria-label': m.score == null ? t('today.moduleNone', { name: m.name }) : t('today.moduleScore', { name: m.name, score: m.score, max: m.max, pass: m.pass }) },
+          h('span', { class: 'mbar-name' }, m.name),
+          h('span', { class: ['track', m.score != null && m.score < m.pass && 'below'], dataset: { p: String(p) } }, h('span', { class: 'fill' }), h('i', { class: 'pass', style: { '--at': `${(m.pass / m.max) * 100}%` } })),
+          h('span', { class: ['mbar-val', 'tnum', m.score == null && 'none'] }, m.score == null ? t('today.noScore') : `${m.score}/${m.max}`)));
+      })));
+  }
+
+  const rerender = () => { if (!pending) pending = render().finally(() => { pending = null; }); };
+  await render();
+  const offs = [
+    bus.on('settings:changed', rerender),
+    store.subscribe('cards:b1', rerender), store.subscribe('attempts', rerender), store.subscribe('activity', rerender),
+  ];
+  return { unmount() { alive = false; offs.forEach(f => f()); atmo?.destroy(); } };
+}

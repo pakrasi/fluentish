@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob: https://pakrasi.github.io; connect-src 'self' https://api.github.com https://api.anthropic.com; worker-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f4f4f1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d0e11" media="(prefers-color-scheme: dark)">
+<meta name="description" content="Daily language practice with a review queue, mock exams in the Goethe B1 format and a reference.">
+<title>Fluentish</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<script src="src/boot.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400..650&family=Geist+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..400&display=swap">
+<link rel="stylesheet" href="styles/tokens.css">
+<link rel="stylesheet" href="styles/motion.css">
+<link rel="stylesheet" href="styles/components.css">
+<link rel="stylesheet" href="styles/paper-shaders.css" data-paper-shader>
+<link rel="stylesheet" href="styles/app.css">
+<link rel="modulepreload" href="src/main.js">
+<script type="module" src="src/main.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#view">Skip to content</a>
+<header class="bar" id="bar"><div class="bar-inner" id="bar-inner"></div></header>
+<div id="banner"></div>
+<main id="view" class="page" tabindex="-1"><p class="boot-note">Loading…</p></main>
+<div id="tabs-slot"></div>
+<div id="live" class="sr-only" aria-live="polite"></div>
+<noscript><p class="page">Fluentish needs JavaScript.</p></noscript>
+</body>
+</html>

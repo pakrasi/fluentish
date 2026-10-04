@@ -10,7 +10,7 @@
     "check:privacy": "node tools/check-privacy.mjs --all",
     "check:dates": "node tools/check-dates.mjs",
     "check:content": "node tools/validate-content.mjs",
-    "serve": "python3 -m http.server 8430",
+    "serve": "node tools/serve.mjs 8430",
     "hooks": "sh tools/install-hooks.sh"
   }
 }
