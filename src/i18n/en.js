@@ -417,7 +417,7 @@ export default {
   'diag.storage.memory': 'Not saved: this browser blocks storage',
   'diag.device': 'Device',
   'diag.events': 'Outbox',
-  'diag.eventsVal': { one: '{n} event not sent', other: '{n} events not sent' },
+  'diag.eventsVal': { one: '{n} event in the outbox', other: '{n} events in the outbox' },
   'diag.errors': 'Recent errors',
   'diag.none': 'None',
 

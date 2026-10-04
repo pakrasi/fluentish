@@ -12,6 +12,7 @@ import { setSetting, setExamDate, MODULES, defaultPrefs } from '../../data/setti
 import { summaryText } from '../../data/migrate.js';
 import { exportBundle, importFile } from '../../data/transfer.js';
 import { deleteProfile } from '../../data/session.js';
+import { notSentCount } from '../../data/sync/github-b1exam.js';
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
 export async function mount(el, ctx) {
@@ -178,7 +179,7 @@ export async function mount(el, ctx) {
         status.textContent = r.ok ? t('conn.sync.ok', { repo: config.resultsRepo }) + (exp ? ` ${t('conn.sync.expires', { date: exp.slice(0, 10) })}` : '') : t('conn.sync.fail', { status: r.status });
       } catch { status.textContent = t('conn.sync.offline'); }
     };
-    const pending = store.pending().length;
+    const pending = notSentCount(store);   // results-sync events only, the same count as the Exam tab
     const syncBox = h('div', { class: 'conn' },
       h('h3', null, t('conn.sync')),
       h('p', { class: 'field-hint' }, t('conn.sync.about')),
