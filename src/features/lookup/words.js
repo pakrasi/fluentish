@@ -86,7 +86,7 @@ export function lemmaGroups(words) {
  * The review card of a captured word: 'W:<word id>' or 'BW:<slug>' through wordId(), exactly as Practice keys it.
  * @param {any} g a lemma group @param {Record<string, [string, string]>} wordmap
  */
-export const cardId = (g, wordmap) => wordId(g.lemma, wordmap);
+export const cardId = (g, wordmap, has = null) => wordId(g.lemma, wordmap, has);
 
 /** Importance (b1-exam): frequency plus how many of the 14 tests use it. @param {any} g */
 export const importance = g => (g.zipf ?? 3) + 1.5 * ((g.exam_days ?? 1) / 14);

@@ -52,7 +52,8 @@ export async function mount(el, ctx) {
     const c = today();
     const tri = triage(g, c.phase, wordmap);
     if (tri === 'waiting') return { cls: 'is-waiting', text: t('lookup.state.waiting') };
-    const card = store.cards('b1')[cardId(g, wordmap)];
+    const cards = store.cards('b1');
+    const card = cards[cardId(g, wordmap, (/** @type {string} */ id) => !!cards[id]?.reps)];
     if (card && card.reps) { const due = dueOn(card, c); return due <= c.today ? { cls: 'is-due', text: t('lookup.state.due') } : { cls: '', text: t('lookup.state.dueOn', { date: label(due) }), date: due }; }
     if (tri === 'later') return { cls: 'is-later', text: t('lookup.state.later') };
     if (tri === 'reference') return { cls: 'is-later', text: t('lookup.state.reference') };
@@ -76,7 +77,7 @@ export async function mount(el, ctx) {
     return h('li', { class: 'lk-item' },
       h('a', { class: 'lk-row pressable', href: hashFor({ tab: 'words', id: r.id, opts: langOpt() }) },
         h('span', { class: 'lk-main' }, de(hl(dictHead(r), q), 'lk-title'), h('span', { class: 'lk-sub' }, hl(r.en.slice(0, 3).join(', '), q))),
-        h('span', { class: 'lk-trail mono' }, r.level || '')),
+        h('span', { class: 'lk-trail lk-level' }, r.level || '')),
       sayBtn(dictHead(r)));
   }
 
@@ -93,10 +94,14 @@ export async function mount(el, ctx) {
     return h('li', { class: ['lk-item', 'lk-x', cls] }, btn, det);
   }
 
+  /** A phrase with its open slots ([Infinitiv], [Satz]) as gap tiles, the chunk language of the grammar layer. @param {string} text @param {string} q */
+  const slotted = (text, q) => String(text).split(/(\[[^\]]+\])/).filter(Boolean)
+    .map(p => (/^\[.+\]$/.test(p) ? h('span', { class: 'tile gap lk-slot' }, p.slice(1, -1)) : hl(p, q)));
+
   /** @param {any} r @param {string} q */
   const phraseRow = (r, q) => disclosure({
-    head: [de(hl(r.de, q), 'lk-title'), h('span', { class: 'lk-sub' }, hl(r.en, q))],
-    trail: h('span', { class: 'lk-trail mono' }, r.level || ''),
+    head: [de(slotted(r.de, q), 'lk-title'), h('span', { class: 'lk-sub' }, hl(r.en, q))],
+    trail: h('span', { class: 'lk-trail lk-level' }, r.level || ''),
     body: () => [
       r.ex ? h('p', { class: 'lk-ex' }, sayBtn(r.ex), de(hl(r.ex, q))) : null,
       r.note ? h('p', { class: 'lk-note' }, r.note) : null,
@@ -105,11 +110,32 @@ export async function mount(el, ctx) {
     ],
   });
 
-  /** A grammar-layer item: the German as a word tile in its role colour. @param {any} r @param {string} q */
+  /**
+   * A pattern as a sentence of tiles: '___' is an open gap tile, the words between are tiles in the role colour, an
+   * instruction in brackets is the mono role label under the tile before it, ' / ' separates alternatives.
+   * "___, weil ___ (Verb am Ende) / ___, denn ___" → [gap] [, weil] [gap · Verb am Ende]  /  [gap] [, denn] [gap]
+   * @param {string} text @param {string} role @param {string} q
+   */
+  function tilesOf(text, role, q) {
+    /** @type {any[]} */ const out = [];
+    for (const [i, alt] of String(text).split(/\s+\/\s+/).entries()) {
+      if (i) out.push(h('span', { class: 'lk-or', 'aria-hidden': 'true' }, '/'));
+      for (const part of alt.split(/(___|\([^)]*\))/)) {
+        const p = part.trim();
+        if (!p) continue;
+        if (p === '___') out.push(h('span', { class: 'tile gap' }, h('span', { class: 'sr-only' }, 'gap'), '\u2003'));
+        else if (/^\(.*\)$/.test(p) && out.length && out[out.length - 1].classList?.contains('tile')) out[out.length - 1].append(h('small', null, p.slice(1, -1)));
+        else out.push(h('span', { class: `tile ${role}` }, hl(p, q)));
+      }
+    }
+    return h('span', { class: 'tiles lk-tiles', lang: 'de' }, out);
+  }
+
+  /** A grammar-layer item: the German as a sentence of word tiles in its role colour. @param {any} r @param {string} q */
   const layerRow = (r, q) => disclosure({
     cls: 'lk-layer',
-    head: [h('span', { class: `tile ${r.role} lk-tile`, lang: 'de' }, hl(r.de, q)), h('span', { class: 'lk-sub' }, hl(r.en, q))],
-    trail: h('span', { class: 'lk-trail mono' }, r.level || ''),
+    head: [tilesOf(r.de, r.role, q), h('span', { class: 'lk-sub' }, hl(r.en, q))],
+    trail: h('span', { class: 'lk-trail lk-level' }, r.level || ''),
     body: () => [
       r.gloss && r.gloss !== r.en ? h('p', { class: 'lk-note is-en' }, r.gloss) : null,
       r.example ? h('div', { class: 'lk-ex' }, sayBtn(r.example.de), h('div', null, de(hl(r.example.de, q)), r.example.en ? h('div', { class: 'lk-sub' }, r.example.en) : null)) : null,
@@ -166,6 +192,12 @@ export async function mount(el, ctx) {
     return cleanup;
   }
 
+  /** The article lighter than the noun ("der Termin"). @param {any} g @param {any} r @param {string} hw */
+  function headParts(g, r, hw) {
+    const m = /^(der|die|das)\s+(.+)$/.exec(hw);
+    return m ? [h('span', { class: 'lk-art' }, m[1]), ' ', m[2]] : hw;
+  }
+
   /** @param {string} id @param {any} g captured group @param {any} r word-list row */
   function wordSheet(id, g, r) {
     const wrap = h('div', { class: 'lookup lk-sheet' }, back(hashFor({ tab: 'words', opts: { ...langOpt(), w: g ? null : 'all' } })));
@@ -182,17 +214,20 @@ export async function mount(el, ctx) {
       r?.level ? t('lookup.sheet.level', { level: r.level }) : null,
     ].filter(Boolean);
     wrap.append(
-      h('div', { class: 'lk-sheet-head' }, h('h1', null, de(hw)), sayBtn(hw)),
+      h('div', { class: 'lk-sheet-head' }, h('h1', null, de(headParts(g, r, hw))), sayBtn(hw)),
       facts.length ? h('p', { class: 'lk-facts' }, facts.map((f, i) => [i ? ', ' : null, f])) : null);
     const meaning = g?.gloss || (r ? r.en.join(', ') : null);
-    wrap.append(meaning ? h('p', { class: 'lk-meaning' }, meaning) : h('p', { class: 'lk-meaning is-muted' }, t('lookup.sheet.waiting')));
+    const fromList = !!(g && !g.gloss && r);   // a captured word still waiting: the word list already knows its meaning
+    wrap.append(meaning ? h('p', { class: 'lk-meaning' }, meaning) : h('p', { class: 'lk-meaning is-muted' }, t('lookup.sheet.waiting')),
+      fromList ? h('p', { class: 'caption' }, t('lookup.sheet.fromList')) : null);
     if (g?.note) wrap.append(h('p', { class: 'lk-note' }, de(g.note)));
     const stats = [g?.exam_days ? t('lookup.sheet.tests', { n: g.exam_days, total: testsTotal }) : null, band ? t(`lookup.sheet.freq.${band}`) : null].filter(Boolean);
     if (g) {
       const s = wordState(g);
+      const state = fromList && s.cls === 'is-waiting' ? null : s;
       wrap.append(h('div', { class: 'lk-status' },
-        h('span', { class: ['lk-state', s.cls] }, s.text), stats.length ? h('span', { class: 'caption' }, stats.join(', ')) : null));
-      if (g.gloss) wrap.append(h('div', { class: 'row-actions' }, h('a', { class: 'btn btn-primary pressable', href: '#/practice/round?kind=area:words' }, t('lookup.sheet.practise'))));
+        state ? h('span', { class: ['lk-state', state.cls] }, state.text) : null, stats.length ? h('span', { class: 'caption' }, stats.join(', ')) : null));
+      if (g.gloss) wrap.append(h('div', { class: 'row-actions' }, h('a', { class: 'btn pressable', href: '#/practice/round?kind=area:words' }, t('lookup.sheet.practise'))));
     } else if (stats.length) wrap.append(h('p', { class: 'caption' }, stats.join(', ')));
 
     const exs = g ? examples(g) : r?.ex ? [{ de: r.ex, en: r.exen, form: r.w }] : [];
@@ -302,9 +337,11 @@ export async function mount(el, ctx) {
   /** @param {string} q */
   function setQuery(q) {
     clearTimeout(timer);
+    const was = st.q;
     st.q = q.trim();
     clearBtn.hidden = !input.value;
-    if (st.q && !st.tab) st.tab = 'all';
+    // a new search starts on All (every section's hits); picking a section while searching keeps it
+    if (st.q && (!st.tab || !was)) st.tab = 'all';
     if (!st.q && st.tab === 'all') st.tab = TABS.includes(ui.tab) ? ui.tab : 'phrases';
     sync(); draw();
   }
@@ -321,6 +358,8 @@ export async function mount(el, ctx) {
   }));
   offs.push(() => clearTimeout(timer));
   offs.push(store.subscribe('secrets', () => { D.resetMyWords(); if (st.tab === 'words' || st.q) draw(); }));
+  // a results sync may have sent words saved here: show them as sent
+  offs.push(ctx.bus.on('sync:status', () => { D.resetMyWords(); if (st.tab === 'words' && !st.q) draw(); }));
 
   let token = 0;
   async function draw() {

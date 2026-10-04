@@ -135,7 +135,7 @@ export const secrets = store => store.get('secrets', {}) || {};
 export async function refreshWords(ctx, { force = false } = {}) {
   const wordmap = await ctx.content.load('b1.wordmap').catch(() => ({}));
   const cached = ctx.store.get(WORDS, null);
-  const res = await fetchWords({ token: secrets(ctx.store).githubToken || null, cached, wordmap, url: VOCAB_URL, fetch: (...a) => fetch(...a),
+  const res = await fetchWords({ token: secrets(ctx.store).githubToken || null, cached, wordmap, url: VOCAB_URL, fetch: (...a) => fetch(...a), has: (/** @type {string} */ id) => !!ctx.store.cards('b1')[id]?.reps,
     now: Date.now(), online: navigator.onLine, force });
   if (res.cache && res.cache !== cached) ctx.store.set(WORDS, res.cache);
   wordsState = res.state;

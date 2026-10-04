@@ -51,12 +51,19 @@ export const slug = s => String(s).normalize('NFC').toLowerCase()
 /**
  * The card id of an exam word: 'W:<word id>' when the lemma is in the word map (content b1/wordmap.json:
  * lemma → [word id, level]), else 'BW:<slug>'. Look up uses the same id to show a word's schedule.
- * @param {string} lemma @param {Record<string, [string, string]>} [wordmap]
+ * The map's keys keep their case ('Zeit', and both 'Essen' and 'essen'): the exact lemma wins, then its lower-case
+ * form, then the capitalised form, so a noun captured as 'zeit' finds 'Zeit'. Ids are never re-keyed: when the
+ * capitalised match is new and a card already exists under the old 'BW:' id (has), that card keeps its id.
+ * @param {string} lemma @param {Record<string, [string, string]>} [wordmap] @param {((id: string) => boolean) | null} [has]
  */
-export function wordId(lemma, wordmap = {}) {
+export function wordId(lemma, wordmap = {}, has = null) {
   const l = String(lemma).trim();
   const wm = wordmap[l] || wordmap[l.toLowerCase()];
-  return wm ? `W:${wm[0]}` : `BW:${slug(l)}`;
+  if (wm) return `W:${wm[0]}`;
+  const legacy = `BW:${slug(l)}`;
+  const cap = wordmap[l.charAt(0).toUpperCase() + l.slice(1)];
+  if (cap) return has && has(legacy) ? legacy : `W:${cap[0]}`;
+  return legacy;
 }
 
 /** The card id of the n-th mistake (1-based) of an exam attempt. @param {string} attemptId @param {number} n */

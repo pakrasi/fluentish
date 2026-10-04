@@ -818,6 +818,7 @@ export default {
   'lookup.sheet.freq.mid': 'Less common',
   'lookup.sheet.freq.rare': 'Rare',
   'lookup.sheet.waiting': 'The meaning is added at the next results sync.',
+  'lookup.sheet.fromList': 'Meaning from the word list. Your own entry is added at the next results sync.',
   'lookup.sheet.examples': 'Examples',
   'lookup.sheet.fromTest': 'From your tests',
   'lookup.sheet.inTest': 'In the test',

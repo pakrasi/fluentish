@@ -17,19 +17,21 @@ const parse = (/** @type {any} */ s) => { if (!s) return null; if (typeof s !== 
  * vocab.json rows → one record per lemma (earliest test wins), only glossed words with a sentence.
  * @param {any[]} rows @param {Record<string, [string, string]>} wordmap lemma → [word id, level]
  */
-export function trimWords(rows, wordmap) {
+export function trimWords(rows, wordmap, has = null) {
   /** @type {Map<string, any>} */ const by = new Map();
   for (const r of rows || []) {
     if (!r || r.deleted || !r.gloss || !(r.lemma || r.word) || !r.sentence) continue;
     const lemma = String(r.lemma || r.word).trim();
-    if (!by.has(lemma) || (r.day || 99) < (by.get(lemma).day || 99)) by.set(lemma, r);
+    const k = lemma.toLowerCase();   // one record per word whatever its case, as Look up groups them
+    if (!by.has(k) || (r.day || 99) < (by.get(k).day || 99)) by.set(k, r);
   }
   const out = [];
-  for (const [lemma, r] of by) {
-    const wm = wordmap[lemma] || wordmap[lemma.toLowerCase()] || null;
+  for (const r of by.values()) {
+    const lemma = String(r.lemma || r.word).trim();
+    const wm = wordmap[lemma] || wordmap[lemma.toLowerCase()] || wordmap[lemma.charAt(0).toUpperCase() + lemma.slice(1)] || null;
     const ex = (parse(r.examples) || []).find((/** @type {any} */ e) => e && e.de && e.de !== r.sentence) || null;
     const det = parse(r.details) || {};
-    out.push({ id: wordId(lemma, wordmap), lemma, art: (r.gender || '').replace(/[()]/g, '') || null, pl: r.plural || null,
+    out.push({ id: wordId(lemma, wordmap, has), lemma, art: (r.gender || '').replace(/[()]/g, '') || null, pl: r.plural || null,
       pos: r.pos || null, gloss: String(r.gloss).split(/[,;]/).map(s => s.trim()).filter(Boolean), sent: r.sentence, form: r.word || lemma,
       ex: ex ? { de: ex.de, en: ex.en || '' } : null, cluster: r.cluster || null, day: r.day || null, module: r.module || null, teil: r.teil || null,
       examDays: r.exam_days || 0, level: wm ? wm[1] : '', conf: (det.confusions || [])[0] || null, zipf: r.zipf || 0 });
@@ -76,7 +78,7 @@ export const wordItems = (words, phase) => (words || []).filter(w => inQueue(w, 
  * @param {{token: string | null, cached: any, wordmap: Record<string, [string, string]>, url: string, fetch: typeof fetch, now: number, online?: boolean, force?: boolean}} o
  * @returns {Promise<{state: 'ok'|'cached'|'no-token'|'error', cache: any, added: string[], error?: string}>}
  */
-export async function fetchWords({ token, cached, wordmap, url, fetch: f, now, online = true, force = false }) {
+export async function fetchWords({ token, cached, wordmap, url, fetch: f, now, online = true, force = false, has = null }) {
   if (!token) return { state: 'no-token', cache: cached, added: [] };
   if (!online || (!force && cached && now - cached.fetchedAt < REFRESH_MS)) return { state: 'cached', cache: cached, added: [] };
   try {
@@ -86,7 +88,7 @@ export async function fetchWords({ token, cached, wordmap, url, fetch: f, now, o
     if (!r.ok) throw new Error(String(r.status));
     const body = await r.json();
     const rows = Array.isArray(body) ? body : body.words || [];
-    const words = trimWords(rows, wordmap);
+    const words = trimWords(rows, wordmap, has);
     const prev = new Set((cached?.words || []).map((/** @type {any} */ w) => w.id));
     const added = cached ? words.filter(w => !prev.has(w.id)) : [];
     return { state: 'ok', added: added.map(w => w.id), cache: { v: 1, fetchedAt: now, etag: r.headers.get('etag'), total: rows.filter((/** @type {any} */ x) => x && !x.deleted).length,

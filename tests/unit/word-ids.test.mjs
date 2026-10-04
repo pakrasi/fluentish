@@ -41,3 +41,13 @@ test('a schedule Practice wrote is the one Look up reads', () => {
   const g = lemmaGroups(mergeVocab(rows.slice(0, 2), [], []))[0];
   assert.deepEqual(cards[cardId(g, wordmap)], { reps: 2, due: 20000 });
 });
+
+test('a lower-case lemma finds the capitalised noun; an existing BW: card keeps its id', async () => {
+  const { wordId } = await import('../../src/domain/itemids.js');
+  const wm = { Zeit: ['w12', 'A1'], essen: ['w7', 'A1'], Essen: ['w8', 'A1'] };
+  assert.equal(wordId('zeit', wm), 'W:w12');
+  assert.equal(wordId('Zeit', wm), 'W:w12');
+  assert.equal(wordId('essen', wm), 'W:w7', 'an exact key wins over the capitalised one');
+  assert.equal(wordId('zeit', wm, id => id === 'BW:zeit'), 'BW:zeit', 'a card made before keeps its id');
+  assert.equal(wordId('Quatsch', wm), 'BW:quatsch');
+});
