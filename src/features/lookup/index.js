@@ -19,6 +19,7 @@ import { LANGS, langFor, TABS, PHRASE_CATS, GRAMMAR_SUBS, FRAME_SUBS, NOTE_KEYS,
 import { triage, cardId, headword, examples, details, freqBand, sources, frequent } from './words.js';
 import { hl, glyph, paged, markForm, caption } from './ui.js';
 import { play, stop, prefetchAudio } from '../../services/audio.js';
+import { markSeen } from '../../data/seen.js';
 
 const UI_KEY = 'lookup.ui';
 const DEBOUNCE_MS = 120;
@@ -103,6 +104,7 @@ export async function mount(el, ctx) {
     head: [de(slotted(r.de, q), 'lk-title'), h('span', { class: 'lk-sub' }, hl(r.en, q))],
     trail: h('span', { class: 'lk-trail lk-level' }, r.level || ''),
     body: () => [
+      (markSeen(store, `K:${r.id}`, today().today), null),
       r.ex ? h('p', { class: 'lk-ex' }, sayBtn(r.ex), de(hl(r.ex, q))) : null,
       r.note ? h('p', { class: 'lk-note' }, r.note) : null,
       h('p', { class: 'caption' }, [t(`lookup.phrases.cat.${r.cat}`), r.fn, r.prio === 1 ? t('lookup.phrases.exam') : null].filter(Boolean).join(', ')),
@@ -205,6 +207,8 @@ export async function mount(el, ctx) {
       wrap.append(h('h1', null, de(id)), h('p', { class: 'lk-empty' }, t('lookup.sheet.notFound', { id })));
       return wrap;
     }
+    // a view counts as "seen" for the knowledge score (data/seen.js)
+    markSeen(store, g ? cardId(g, wordmap, (/** @type {string} */ x) => !!store.cards('b1')[x]?.reps) : `W:${r.id}`, today().today);
     const hw = g ? headword(g) : dictHead(r);
     const band = freqBand(g ? g.zipf : r.zipf);
     const plural = g ? g.plural : r.pl;
