@@ -30,7 +30,8 @@
    The network is injected (fetch), so node tests run the whole flow against a mock and against the real sync.py. */
 
 /** The files sync.py (and the tutor) write that this app reads. */
-export const PULLED = ['feedback', 'results', 'vocab', 'learner'];
+/** data/<name>.json read back. 'vocab-audio' is the private word-audio index; it goes to its own store key (below). */
+export const PULLED = ['feedback', 'results', 'vocab', 'learner', 'vocab-audio'];
 
 export const TYPES = new Set(['exam.attempt', 'exam.voice', 'feedback.created', 'vocab.captured', 'vocab.reviewed', 'training.logged']);
 
@@ -186,8 +187,8 @@ export function createGithubB1Exam({ token, repo, api = 'https://api.github.com'
      * Read what the Mac wrote. One listing of data/ (with its ETag; a 304 means nothing changed), then only the
      * files whose blob sha changed. Files that are not there are not requested, so a missing optional file
      * (learner.json) never shows up as a failed request.
-     * @param {{etag?: string, shas?: Record<string, string>}} [cursor]
-     * @returns {Promise<{cursor: {etag?: string, shas: Record<string, string>}, docs: Record<string, any>, changed: string[]}>}
+     * @param {{etag?: string, names?: string, shas?: Record<string, string>}} [cursor]
+     * @returns {Promise<{cursor: {etag?: string, names?: string, shas: Record<string, string>}, docs: Record<string, any>, changed: string[]}>}
      */
     async pull(cursor = {}) {
       const shas = { ...(cursor.shas || {}) };
@@ -199,8 +200,11 @@ export function createGithubB1Exam({ token, repo, api = 'https://api.github.com'
         if (r.status === 401 || r.status === 403) throw new SyncError('The GitHub token is invalid or expired', { status: r.status, auth: true });
         return r;
       };
-      const list = await get('data', cursor.etag ? { 'If-None-Match': cursor.etag } : {});
-      if (list.status === 304) return { cursor: { etag: cursor.etag, shas }, docs, changed };
+      // the ETag only counts for the same list of files: a file added to PULLED is read on the next pull
+      const names = PULLED.join(',');
+      const etag = cursor.names === names ? cursor.etag : undefined;
+      const list = await get('data', etag ? { 'If-None-Match': etag } : {});
+      if (list.status === 304) return { cursor: { etag, names, shas }, docs, changed };
       if (!list.ok) throw new SyncError(`GitHub ${list.status}: data/ could not be listed`, { status: list.status });
       /** @type {any[]} */ let entries = [];
       try { entries = await list.json(); } catch { entries = []; }
@@ -215,7 +219,7 @@ export function createGithubB1Exam({ token, repo, api = 'https://api.github.com'
         shas[name] = sha;
         changed.push(name);
       }
-      return { cursor: { etag: list.headers.get('etag') || undefined, shas }, docs, changed };
+      return { cursor: { etag: list.headers.get('etag') || undefined, names, shas }, docs, changed };
     },
   };
 }
@@ -223,6 +227,7 @@ export function createGithubB1Exam({ token, repo, api = 'https://api.github.com'
 /* ---------- the flush, over the store ---------- */
 
 const REMOTE_KV = 'exams.remote';
+const VOCAB_AUDIO_KV = 'exams.vocabAudio';   // services/audio.js reads it
 const STATUS_KV = 'exams.syncStatus';
 
 /**
@@ -354,6 +359,12 @@ export function syncResults(store, { repo, api, fetch: f, force = false, pull = 
       try {
         const prev = store.get(REMOTE_KV, {}) || {};
         const res = await target.pull(prev.cursor || {});
+        if ('vocab-audio' in res.docs) {
+          // its own key: a 175 kB index would be rewritten with every feedback change otherwise
+          const { 'vocab-audio': index, ...rest } = res.docs;
+          store.set(VOCAB_AUDIO_KV, index && typeof index === 'object' && !Array.isArray(index) ? index : null);
+          res.docs = rest;
+        }
         if (res.changed.length) store.set(REMOTE_KV, { ...prev, ...res.docs, cursor: res.cursor, fetchedAt: new Date(now()).toISOString() });
         else if (JSON.stringify(res.cursor) !== JSON.stringify(prev.cursor || {})) store.set(REMOTE_KV, { ...prev, cursor: res.cursor });
       } catch (e) { error = /** @type {any} */ (e).message || String(e); }

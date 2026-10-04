@@ -45,7 +45,7 @@ export async function mount(el, ctx) {
 
   /** @param {string} text @param {string} [what] */
   const sayBtn = (text, what = text) => h('button', { type: 'button', class: 'lk-say pressable', 'aria-label': t('lookup.listen', { text: what }),
-    onclick: async (/** @type {Event} */ e) => { e.stopPropagation(); if (!(await play(ctx.content, text))) ctx.toast(t('lookup.noAudio')); } }, glyph('speaker', 20));
+    onclick: async (/** @type {Event} */ e) => { e.stopPropagation(); if (!(await play(ctx.content, text, ctx.store))) ctx.toast(t('lookup.noAudio')); } }, glyph('speaker', 20));
 
   /** My words state: waiting, a review date, after the exam, new. @param {any} g */
   function wordState(g) {
@@ -188,7 +188,7 @@ export async function mount(el, ctx) {
     const r = rows.find(x => x.id === id) || rows.find(x => x.w === id) || rows.find(x => x.w.toLowerCase() === id.toLowerCase()) || null;
     const g = mine.groups.find(x => x.key === id.toLowerCase()) || (r ? mine.groups.find(x => x.key === r.w.toLowerCase()) : null) || null;
     replace(el, wordSheet(id, g, r));
-    prefetchAudio(ctx.content);
+    prefetchAudio(ctx.content, ctx.store);
     return cleanup;
   }
 
@@ -430,7 +430,7 @@ export async function mount(el, ctx) {
       const dict = await D.dictionary(ctx.content, lang);
       const level = LEVELS.includes(st.opts.level) ? st.opts.level : '';
       const rows = level ? dict.rows.filter(r => r.level === level) : dict.rows;
-      prefetchAudio(ctx.content);
+      prefetchAudio(ctx.content, ctx.store);
       return h('div', null, toggle,
         chips(t('lookup.words.level'), 'level', [['', t('lookup.words.levelAll')], ...LEVELS.map(l => /** @type {[string, string]} */ ([l, l]))], level),
         caption(t('lookup.words.listCount', { n: num(rows.length) })),
@@ -451,7 +451,7 @@ export async function mount(el, ctx) {
       if (mw.status === 'ok') out.append(h('p', { class: 'lk-empty' }, t('lookup.words.empty')));
       return out;
     }
-    prefetchAudio(ctx.content);
+    prefetchAudio(ctx.content, ctx.store);
     const phase = today().phase;
     const tests = [...new Set(mw.groups.flatMap(g => g.days))].sort((a, b) => a - b);
     const test = tests.includes(Number(st.opts.test)) ? Number(st.opts.test) : 0;
@@ -474,7 +474,7 @@ export async function mount(el, ctx) {
     const phr = await D.phrases(ctx.content, lang);
     const cat = PHRASE_CATS.includes(st.opts.cat) ? st.opts.cat : '';
     const rows = cat ? phr.rows.filter((/** @type {any} */ r) => r.cat === cat) : phr.rows;
-    prefetchAudio(ctx.content);
+    prefetchAudio(ctx.content, ctx.store);
     return h('div', null,
       chips(t('lookup.phrases.kind'), 'cat', [['', t('lookup.phrases.all')], ...PHRASE_CATS.map(c => /** @type {[string, string]} */ ([c, t(`lookup.phrases.cat.${c}`)]))], cat),
       caption(t('lookup.phrases.count', { n: rows.length, count: num(rows.length) })),

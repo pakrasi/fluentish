@@ -6,6 +6,7 @@
      exams.seen            ids of feedback rows already read
      exams.remote          what the Mac wrote (feedback.json, results.json, vocab.json, learner.json) + ETags
      exams.syncStatus      the last flush
+     exams.vocabAudio      the private word-audio index (data/vocab-audio.json), read by services/audio.js; not exported
      exams.learnerNotes    private notes for the corrector (fills the grader prompt's {learner_profile})
    Attempts live in the attempts store; each new one also gets an exam.attempt event whose file path is fixed then. */
 import { uuidv7, isoWithOffset } from '../../data/ids.js';

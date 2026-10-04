@@ -14,7 +14,7 @@ const SCHEMA = {
     kv: { type: 'object' }, cards: { type: 'object' }, attempts: { type: 'array' }, events: { type: 'array' },
   },
 };
-const NOT_EXPORTED = new Set(['secrets', 'prefs']);
+const NOT_EXPORTED = new Set(['secrets', 'prefs', 'exams.vocabAudio']);   // the word-audio index is a cache of the results repo
 
 /** @param {import('./store.js').Store} store @param {{profile: any}} o */
 export function exportBundle(store, { profile }) {
