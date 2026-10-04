@@ -299,7 +299,10 @@ export async function atmosphere(el, { colors } = {}) {
     ])));
   } catch (err) { console.info('Atmosphere: Paper Shaders unavailable, keeping CSS gradient.', err); return api; }
   const P = paper;
-  const pick = () => (colors || ['--atmo-1', '--atmo-2', '--atmo-3', '--atmo-4'].map(css)).map(P.getShaderColorFromString);
+  // The vendored parser takes only #hex, comma rgb() and hsl() strings and logs "Unsupported color format" for
+  // anything else (an empty token read during a theme switch, a colour a browser serialises as color(srgb …), a
+  // named colour). Colours are resolved to [r, g, b, a] here, so it only ever sees arrays.
+  const pick = () => (colors || ['--atmo-1', '--atmo-2', '--atmo-3', '--atmo-4'].map(css)).map(toShaderColor);
   let m;
   try {
     const c = pick();
@@ -310,9 +313,14 @@ export async function atmosphere(el, { colors } = {}) {
     }, { antialias: false, powerPreference: 'low-power' }, 0, 6400, 1, 900 * 900);
   } catch (err) { console.info('Atmosphere mount failed', err); return api; }
   requestAnimationFrame(() => el.classList.add('is-live'));
-  const recolor = () => { if (!colors) { const c = pick(); m.setUniforms({ u_colors: c, u_colorsCount: c.length }); } };
-  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => setTimeout(recolor));
-  const mo = new MutationObserver(() => setTimeout(recolor)); mo.observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  let live = true;
+  // After destroy() the mount is disposed: a late theme change must not reach it (the vendored mount would warn
+  // "Uniform location for u_colors not found"), so both listeners go and recolor checks `live`.
+  const recolor = () => { if (live && !colors) { const c = pick(); m.setUniforms({ u_colors: c, u_colorsCount: c.length }); } };
+  const later = () => setTimeout(recolor);
+  const scheme = matchMedia('(prefers-color-scheme: dark)');
+  scheme.addEventListener('change', later);
+  const mo = new MutationObserver(later); mo.observe(root, { attributes: true, attributeFilter: ['data-theme'] });
   let ramp = 0;
   api.breathe = (peak = 0.9, holdMs = 1600) => {
     if (reduced()) return;
@@ -327,10 +335,38 @@ export async function atmosphere(el, { colors } = {}) {
     };
     ramp = requestAnimationFrame(tick);
   };
-  api.setColors = list => { colors = list; const c = list.map(P.getShaderColorFromString); m.setUniforms({ u_colors: c, u_colorsCount: c.length }); };
-  api.destroy = () => { cancelAnimationFrame(ramp); mo.disconnect(); try { m.dispose(); } catch {} el.classList.remove('is-live'); };
+  api.setColors = list => { if (!live) return; colors = list; const c = list.map(toShaderColor); m.setUniforms({ u_colors: c, u_colorsCount: c.length }); };
+  api.destroy = () => { if (!live) return; live = false; cancelAnimationFrame(ramp); scheme.removeEventListener('change', later); mo.disconnect(); try { m.dispose(); } catch {} el.classList.remove('is-live'); };
   return api;
 }
+/* The atmosphere's fallback colours when a token cannot be read: the light and dark --atmo-1..4 values. */
+const ATMO_FALLBACK = { light: ['#f4f4f1', '#e4e7f3', '#f1f1ec', '#dfe3f1'], dark: ['#0d0e11', '#141a33', '#0b0c0f', '#1b2244'] };
+let probe = null;
+/**
+ * Any CSS colour → [r, g, b, a] in 0..1 for the shader. #hex is read directly; anything else is painted on a
+ * 1×1 canvas and read back, so the result never depends on how a browser serialises colours. '' (a token that
+ * is not there) becomes the theme's fallback for that slot.
+ */
+function toShaderColor(value, i = 0) {
+  let v = String(value || '').trim();
+  if (!v) v = ATMO_FALLBACK[root.dataset.theme === 'dark' || (root.dataset.theme !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'][i % 4];
+  const hex = /^#([0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})$/i.exec(v);
+  if (hex) {
+    let x = hex[1];
+    if (x.length <= 4) x = [...x].map(ch => ch + ch).join('');
+    if (x.length === 6) x += 'ff';
+    return [0, 2, 4, 6].map(k => parseInt(x.slice(k, k + 2), 16) / 255);
+  }
+  try {
+    probe ??= document.createElement('canvas').getContext('2d', { willReadFrequently: true });
+    probe.clearRect(0, 0, 1, 1);
+    probe.fillStyle = '#000'; probe.fillStyle = v;   // an invalid colour leaves the black in place
+    probe.fillRect(0, 0, 1, 1);
+    const d = probe.getImageData(0, 0, 1, 1).data;
+    return [d[0] / 255, d[1] / 255, d[2] / 255, d[3] / 255];
+  } catch { return [0.5, 0.5, 0.5, 1]; }
+}
+
 const idle = () => new Promise(r => (window.requestIdleCallback ? requestIdleCallback(r, { timeout: 1200 }) : setTimeout(r, 150)));
 
 export { STATE, haptic };
