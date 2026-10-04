@@ -143,4 +143,4 @@ Differs from the plan, on purpose:
 - `<select>` is not used (WebKit reports it under the CSP); choices are chips.
 - `validate_beginner.py` and `check_word_part.py` were not ported (the first is obsolete since `beginner_en.json` merged into `en.json`; the second reads a learner's own word list).
 
-Deferred to later stages: the service worker, `stamp.mjs`, `deploy.yml` and versioned paths; the results-sync adapter and outbox flush; the Claude service and grader template; Practice, Exam and Look up; delta re-merge and restore-from-backup; persisted diagnostics; e2e/axe; golden vectors; annotating the ported domain modules for strict types; self-hosted fonts; LICENSE files (the owner chooses the licence).
+Deferred to later stages: the results-sync adapter and outbox flush; the Claude service and grader template; Practice, Exam and Look up; delta re-merge and restore-from-backup; persisted diagnostics; e2e/axe; golden vectors; annotating the ported domain modules for strict types; self-hosted fonts; LICENSE files (the owner chooses the licence).

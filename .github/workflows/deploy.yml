@@ -1,0 +1,66 @@
+# Publishes https://pakrasi.github.io/fluentish/ through GitHub Pages ("Build and deployment: GitHub Actions").
+#   - after the ci workflow passes for a push to main (workflow_run), the commit that ci tested is deployed
+#   - by hand (Actions > deploy > Run workflow), with an optional sha: a rollback re-deploys an earlier commit
+# The artifact is _site/ from tools/stamp.mjs: code under v/<sha>/ (plus the two previously deployed versions),
+# index.html, 404.html, sw.js, version.json, assets/ and content/. tools/, tests/, authoring/ are never published.
+name: deploy
+on:
+  workflow_run:
+    workflows: [ci]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      sha:
+        description: Commit to deploy (empty = the head of main). Use an earlier sha to roll back.
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push' &&
+       github.event.workflow_run.head_branch == 'main')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'workflow_dispatch' && (inputs.sha || 'main') || github.event.workflow_run.head_sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Manifest is current
+        run: node tools/build-manifest.mjs --check
+      - name: Stamp the site
+        run: node tools/stamp.mjs --out _site --live https://pakrasi.github.io/fluentish/version.json
+      - name: Privacy check (built site)
+        run: node tools/check-privacy.mjs --dir _site
+      - name: Nothing outside the app is published
+        run: |
+          for d in tools tests authoring docs schemas node_modules .github src styles; do
+            if [ -e "_site/$d" ]; then echo "_site/$d must not be published"; exit 1; fi
+          done
+          test -f _site/index.html && test -f _site/404.html && test -f _site/sw.js && test -f _site/version.json
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: _site }
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.pages.outputs.page_url }}
+    steps:
+      - id: pages
+        uses: actions/deploy-pages@v4

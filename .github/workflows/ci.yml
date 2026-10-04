@@ -1,5 +1,4 @@
-# Gates for every push and pull request. Written in stage A; nothing is deployed from here yet
-# (deploy.yml arrives with the shadow-mode deploy, not before the exam: review A1).
+# Gates for every push and pull request. deploy.yml runs after this workflow passes on main.
 name: ci
 on:
   push:
@@ -13,10 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
       - name: Privacy check (every tracked file)
         run: node tools/check-privacy.mjs --all
+      - name: Privacy check (every version of every file in history)
+        run: node tools/check-privacy.mjs --history
       - name: No hard-coded dates in src
         run: node tools/check-dates.mjs
 
@@ -80,3 +82,17 @@ jobs:
           python3 tools/build_turns.py
           node tools/build-manifest.mjs
           git diff --exit-code -- content
+
+  site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Manifest is current
+        run: node tools/build-manifest.mjs --check
+      - name: Build the site the deploy would publish
+        run: node tools/stamp.mjs --out _site
+      - name: Privacy check (built site)
+        run: node tools/check-privacy.mjs --dir _site
