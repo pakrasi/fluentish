@@ -38,7 +38,7 @@ test('legacy links: Igloo', () => {
     '#b1/situations/round': '#/practice/round?kind=area:speaking',
     '#drill': '#/practice', '#drill/start': '#/practice', '#test/placement': '#/practice',
     '#write/SC-03': '#/practice/write/SC-03', '#write': '#/practice/write',
-    '#lookup/phrases': '#/lookup/phrases', '#lookup/linking': '#/lookup/grammar', '#lookup': '#/lookup',
+    '#lookup/phrases': '#/lookup/phrases', '#lookup/linking': '#/lookup/grammar?g=linking', '#lookup/notes': '#/lookup/grammar?g=notes', '#lookup/frames': '#/lookup/frames?f=verbs', '#lookup': '#/lookup',
     '#how': '#/today', '#chunks/german': '#/lookup',
   };
   for (const [from, to] of Object.entries(cases)) assert.equal(mapLegacy(from), to, from);
@@ -47,7 +47,7 @@ test('legacy links: Igloo', () => {
 test('legacy links: B1 exam app', () => {
   const cases = {
     '#/tag/3': '#/exam/3', '#/tag/3/lesen': '#/exam/3/lesen', '#/tag/12/schreiben?review=1790000300000': '#/exam/12/schreiben/review/1790000300000',
-    '#/woerter': '#/lookup/words', '#/woerter/ueben': '#/lookup/words', '#/woerter?tag=2': '#/lookup/words', '#/training/1-aufgabe1': '#/practice/write',
+    '#/woerter': '#/lookup/words', '#/woerter/ueben': '#/lookup/words', '#/woerter?tag=2': '#/lookup/words?test=2', '#/training/1-aufgabe1': '#/practice/write',
     '#/fortschritt': '#/exam', '#/einstellungen': '#/profile', '#/export': '#/profile/data',
     '#/settings': '#/profile', '#/library/words': '#/lookup/words', '#/exams/3': '#/exam/3',
   };

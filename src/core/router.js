@@ -63,7 +63,7 @@ export function matchRoute(routes, path) {
 }
 
 const AREAS = /** @type {Record<string, string>} */ ({ words: 'words', sprechen: 'speaking', speaking: 'speaking', lesen: 'reading', reading: 'reading', grammar: 'grammar', situations: 'speaking' });
-const LOOKUP = /** @type {Record<string, string>} */ ({ phrases: 'phrases', frames: 'frames', grammar: 'grammar', linking: 'grammar', notes: 'grammar' });
+const LOOKUP = /** @type {Record<string, string>} */ ({ phrases: 'phrases', frames: 'frames?f=verbs', grammar: 'grammar', linking: 'grammar?g=linking', notes: 'grammar?g=notes' });
 
 /**
  * Old links from Igloo (language-doors/app.html#…, index.html#…), from the B1 exam app (b1-exam/app/#/…) and from the
@@ -81,7 +81,8 @@ export function mapLegacy(hash) {
     if (m[2] && review) return `#/exam/${m[1]}/${m[2]}/review/${encodeURIComponent(review)}`;
     return m[2] ? `#/exam/${m[1]}/${m[2]}` : `#/exam/${m[1]}`;
   }
-  if (/^\/woerter(\/|\?|$)/.test(raw)) return '#/lookup/words';
+  m = /^\/woerter(?:\/[a-z]*)?\/?(?:\?(.*))?$/.exec(raw);
+  if (m) { const tag = new URLSearchParams(m[1] || '').get('tag'); return tag && /^\d+$/.test(tag) ? `#/lookup/words?test=${tag}` : '#/lookup/words'; }
   if (/^\/training(\/|$)/.test(raw)) return '#/practice/write';
   if (/^\/fortschritt\/?$/.test(raw)) return '#/exam';
   if (/^\/einstellungen\/?$/.test(raw)) return '#/profile';
