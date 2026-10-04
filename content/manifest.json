@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "55774f2029f0",
+ "version": "13eb741c284e",
  "languages": [
   {
    "id": "khasi",
@@ -190,8 +190,8 @@
    "id": "b1.nouns",
    "path": "b1/nouns.json",
    "schema": "b1-nouns@1",
-   "bytes": 91828,
-   "sha256": "8cf5971a6f660bf547d716453e1b5e6fae0dd518d5916f33a32ce807125ef6a0"
+   "bytes": 93308,
+   "sha256": "771daf1d25d4e492b42817984554b0ca060fb9d0e1363ffe994eb8e36b217939"
   },
   {
    "id": "b1.plan",
@@ -211,8 +211,8 @@
    "id": "b1.wordmap",
    "path": "b1/wordmap.json",
    "schema": "b1-wordmap@1",
-   "bytes": 143869,
-   "sha256": "37408c02df8ea9061c6b84483ab049fed3580ec950fc574d6f893a68e6302f06"
+   "bytes": 148766,
+   "sha256": "900487c4ddc1d6664f603ebfe4914c35af84e3617a917da1b22f8a175d1adcee"
   },
   {
    "id": "clusters.de",

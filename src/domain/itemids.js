@@ -64,14 +64,16 @@ export const slug = s => String(s).normalize('NFC').toLowerCase()
  * lemma → [word id, level]), else 'BW:<slug>'. Look up uses the same id to show a word's schedule.
  * The map's keys keep their case ('Zeit', and both 'Essen' and 'essen'): the exact lemma wins, then its lower-case
  * form, then the capitalised form, so a noun captured as 'zeit' finds 'Zeit'. Ids are never re-keyed: when the
- * capitalised match is new and a card already exists under the old 'BW:' id (has), that card keeps its id.
+ * match is new (a word added to the list, or a capitalised match) and a card already exists under the old 'BW:' id
+ * (has), that card keeps its id.
  * @param {string} lemma @param {Record<string, [string, string]>} [wordmap] @param {((id: string) => boolean) | null} [has]
  */
 export function wordId(lemma, wordmap = {}, has = null) {
   const l = String(lemma).trim();
-  const wm = wordmap[l] || wordmap[l.toLowerCase()];
-  if (wm) return `W:${wm[0]}`;
   const legacy = `BW:${slug(l)}`;
+  const wm = wordmap[l] || wordmap[l.toLowerCase()];
+  // a word added to the word list later (the cluster words) keeps the BW: card it already has
+  if (wm) return has && has(legacy) ? legacy : `W:${wm[0]}`;
   const cap = wordmap[l.charAt(0).toUpperCase() + l.slice(1)];
   if (cap) return has && has(legacy) ? legacy : `W:${cap[0]}`;
   return legacy;
