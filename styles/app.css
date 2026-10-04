@@ -166,7 +166,7 @@ input[type="date"].input { min-height: var(--tap); }
 .profile-head .avatar .icon { width: 26px; height: 26px; }
 .profile-head .caption { margin-top: 4px; font-size: 14px; color: var(--ink-2); }
 .profile > .form-field { margin-top: var(--s-6); max-width: 420px; }
-.profile .section { max-width: 640px; }
+.profile .section { max-width: 760px; }
 .conn { margin-top: var(--s-6); }
 .conn + .conn { padding-top: var(--s-6); border-top: 1px solid var(--hairline); }
 .conn h3 { margin-bottom: var(--s-1); }

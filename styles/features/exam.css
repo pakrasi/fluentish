@@ -38,6 +38,16 @@
 .ex-mod { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: var(--s-3); padding: var(--s-4) 0; border-bottom: 1px solid var(--hairline); }
 .ex-mod-main { display: grid; gap: 2px; }
 .ex-mod-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--s-2); }
+/* a phone: the actions get their own row under the text instead of squeezing it */
+@media (max-width: 559px) {
+  .ex-mod { grid-template-columns: minmax(0, 1fr); }
+  .ex-mod-actions { justify-content: flex-start; }
+}
+.ex-mbars .mbar { grid-template-columns: 104px minmax(0, 1fr) 92px; min-height: 56px; }
+.ex-mbars .mbar-name .caption { font-weight: 400; margin-top: 2px; }
+/* one column rule for the list pages; primary buttons never stretch across a desktop */
+.ex-home, .ex-test, .ex-review, .ex-start { max-width: 760px; }
+@media (min-width: 720px) { .ex-upnext .btn-wide, .ex-mistakes .btn-wide, .ex-correct .btn-wide { width: auto; min-width: min(100%, 360px); max-width: 360px; justify-self: start; } }
 
 /* ---------- start panel ---------- */
 .ex-start { padding-top: var(--s-2); }

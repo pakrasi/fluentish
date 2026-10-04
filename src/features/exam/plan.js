@@ -13,6 +13,11 @@ export const scoreReader = (store, examId) => (/** @type {any} */ a) => {
   return f ? scoreNum(scoreLine(f.body)) : null;
 };
 
+/** Minutes a module takes in a day's plan: Sprechen is 15 minutes of preparation plus about 15 of exam. @param {any} def */
+export const planMinutes = def => (def.id === 'sprechen' ? 30 : def.minutes);
+/** "30 min (15 prep)" for Sprechen, "65 min" for the others. @param {any} def @param {(k: string, v?: any) => string} t */
+export const minutesLabel = (def, t) => (def.id === 'sprechen' ? t('exam.sprechenMinutes') : t('unit.min', { n: def.minutes }));
+
 /** A draft started this recently still wins Up next; an older one waits on its test page as "Resume". */
 export const RESUME_MS = 3 * 864e5;
 /** Modules never taken, weakest skill first: the productive ones before the receptive ones. */
@@ -78,7 +83,7 @@ export function planItems({ store, c, settings, exam, t }) {
     const a = today[today.length - 1];
     const def = exam.modules.find((/** @type {any} */ x) => x.id === a.module);
     return [{ id: 'exam.today', source: 'exam', kind: 'mock', mock: true, done: true, title: `${def ? def.name : a.module} · ${t('exam.test', { n: a.day })}`,
-      detail: t('plan.mock.submitted'), minutes: def ? def.minutes : 30, href: `#/exam/${a.day}/${a.module}/review/${a.id}`, priority: 30 }];
+      detail: t('plan.mock.submitted'), minutes: def ? planMinutes(def) : 30, href: `#/exam/${a.day}/${a.module}/review/${a.id}`, priority: 30 }];
   }
   const modules = settings.exam.modules?.length ? settings.exam.modules : exam.modules.map((/** @type {any} */ m) => m.id);
   const next = nextModule({ exam, modules, attempts, drafts: store.get('exams.drafts', {}) || {}, scoreOf: scoreReader(store, exam.id) });
@@ -86,8 +91,8 @@ export function planItems({ store, c, settings, exam, t }) {
   const def = exam.modules.find((/** @type {any} */ x) => x.id === next.module);
   return [{
     id: 'exam.next', source: 'exam', kind: 'mock', mock: true, title: `${def.name} · ${t('exam.test', { n: next.test })}`,
-    detail: t('plan.mock.detail', { min: def.minutes }), minutes: def.minutes, href: `#/exam/${next.test}/${next.module}`, priority: 30,
-    action: t('plan.mock.action', { module: def.name, min: def.minutes }),
+    detail: t('plan.mock.detailLabel', { min: minutesLabel(def, t) }), minutes: planMinutes(def), href: `#/exam/${next.test}/${next.module}`, priority: 30,
+    action: t('plan.mock.action', { module: def.name, min: planMinutes(def) }),
   }];
 }
 
