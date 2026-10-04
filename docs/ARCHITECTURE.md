@@ -8,7 +8,7 @@ One app that replaces two: Igloo (chunk bank, drill, the B1 trainer) and the B1 
 
 **Information architecture (UX §3):** four tabs, **Today · Practice · Exam · Look up**; Exam shows only when the profile has an exam goal. Settings live under the avatar (`#/profile`). English chrome, target-language content, exam screens in the exam's language. Routes are path-shaped so they map one to one onto an iOS navigation stack and deep links:
 
-`#/today` · `#/practice[/round?kind=…|/write[/id]|/speak[/teil2|/aloud]]` · `#/exam[/<test>[/<module>[/review/<attempt>]]]` · `#/lookup[/words|/phrases|/grammar|/frames]` · `#/profile[/goal|/practice|/connections|/appearance|/data|/diagnostics]` · `#/welcome`.
+`#/today` · `#/practice[/round?kind=…|/write[/build/<task>[/free]]|/speak[/teil2|/aloud]]` · `#/exam[/<test>[/<module>[/review/<attempt>]]]` · `#/lookup[/words|/phrases|/grammar|/frames]` · `#/profile[/goal|/practice|/connections|/appearance|/data|/diagnostics]` · `#/welcome`.
 
 ## 2. Repository layout
 

@@ -28,12 +28,12 @@ import { Field, atmosphere } from '../../core/brand.js';
 import { readinessView } from './field.js';
 
 const SVG = 'http://www.w3.org/2000/svg';
-const TEIL = /** @type {Record<string, string>} */ ({ S1: 'Teil 1', S2: 'Teil 2', S3: 'Teil 3', W1: 'Teil 1', W2: 'Teil 2', W3: 'Teil 3', L2: 'Teil 2', L3: 'Teil 3', L5: 'Teil 5' });
+const TEIL = /** @type {Record<string, string>} */ ({ S1: 'Teil 1', S2: 'Teil 2', S3: 'Teil 3', W1: 'Aufgabe 1', W2: 'Aufgabe 2', W3: 'Aufgabe 3', L2: 'Teil 2', L3: 'Teil 3', L5: 'Teil 5' });
 const fmtS = (/** @type {number} */ ms) => `${(ms / 1000).toFixed(1).replace(/\.0$/, '')} s`;
 const keep = (/** @type {Event} */ e) => e.preventDefault();   // buttons never take focus from the answer field
 
 /** The check mark the kit animates (a stroked path). */
-function checkMark() {
+export function checkMark() {
   const svg = document.createElementNS(SVG, 'svg');
   svg.setAttribute('class', 'check'); svg.setAttribute('viewBox', '0 0 24 24'); svg.setAttribute('fill', 'none'); svg.setAttribute('stroke', 'currentColor');
   svg.setAttribute('stroke-width', '2.2'); svg.setAttribute('stroke-linecap', 'round'); svg.setAttribute('stroke-linejoin', 'round'); svg.setAttribute('aria-hidden', 'true');
@@ -234,6 +234,7 @@ export async function mountRound(el, ctx) {
   function where(/** @type {any} */ it) {
     if (it.area === 'mistakes') return t('practice.where.mistake');
     if (it.area === 'words') return t('practice.where.words');
+    if (it.area === 'writing') return `Schreiben ${TEIL[it.teil] || ''}`.trim();
     if (it.kind === 'topic' || it.kind === 'reply') return t('practice.where.situation', { teil: TEIL[it.teil] || '' }).trim();
     if (/^W/.test(it.teil || '')) return `Schreiben ${TEIL[it.teil]}`;
     if (it.area === 'grammar') return t('practice.where.grammar');
@@ -399,7 +400,8 @@ export async function mountRound(el, ctx) {
     const capSlip = g.capMiss.length > 0 && !(it.focus || []).includes('cap');
     const umlaut = g.umlautMiss.length > 0;
     const partial = !!g.partial;
-    record({ ok: true, ms, capSlip, umlaut, typo: g.typos.length > 0, partial });
+    const punct = (g.punctMiss || []).length > 0;
+    record({ ok: true, ms, capSlip, umlaut, typo: g.typos.length > 0, partial, punct });
     state = 'feedback';
     if (partial) return showPartial(g, ms);
     /** @type {string | null} */ let head = null;
@@ -408,11 +410,14 @@ export async function mountRound(el, ctx) {
     else if (late) head = t('practice.right.late', { s: fmtS(ms), limit: Math.round(/** @type {number} */ (limitMs) / 1000) });
     else if (umlaut) head = t('practice.right.umlaut', { list: g.umlautMiss.map((/** @type {any} */ x) => x.expected).join(', ') });
     else if (capSlip) head = t('practice.right.cap');
+    else if (punct) head = t('practice.right.punct');
     else if (g.typos.length) head = t('practice.right.typo');
     const situation = it.kind === 'topic' || it.kind === 'reply';
-    const clean = g.primary && !g.typos.length && !capSlip && !umlaut && !late && !isNew && !situation && it.area !== 'mistakes';
+    const clean = g.primary && !g.typos.length && !capSlip && !umlaut && !punct && !late && !isNew && !situation && it.area !== 'mistakes';
     const kids = [];
-    if (head) kids.push(h('p', { class: ['pr-res', (late || umlaut || capSlip || veryLate) ? 'is-warn' : 'is-ok'] }, head));
+    if (head) kids.push(h('p', { class: ['pr-res', (late || umlaut || capSlip || veryLate || punct) ? 'is-warn' : 'is-ok'] }, head));
+    if (punct) kids.push(h('p', { class: 'pr-rule' }, (g.punctMiss || []).map((/** @type {any} */ m) => t(`practice.punct.${m.code}`, { word: m.word || '' })).join(' ')),
+      h('p', { class: 'answer-key', lang: 'de' }, it.model));
     // a mistake from a correction: the rule is the point, so it shows on a right answer too
     if (it.area === 'mistakes' && it.rule) kids.push(h('p', { class: 'pr-rule' }, it.rule));
     if (g.typos.length || capSlip || umlaut) kids.push(h('p', { class: 'pr-yours', lang: 'de' }, markSlips(g)));
@@ -457,7 +462,8 @@ export async function mountRound(el, ctx) {
       h('p', { class: 'pr-diff answer-key', lang: 'de' }, h('span', { class: 'caption' }, t('practice.rightIs')), ' ', df.right),
       situation ? h('p', { class: 'caption' }, t('practice.checkedPhrase')) : null];
     if (g.alsoCorrect?.length) kids.push(h('p', { class: 'pr-also' }, alsoMore(g.alsoCorrect, t('practice.otherWays') + ' ')));
-    const rule = (d && g.detRule) || g.detRule || it.rule;
+    // a Schreiben phrase's own rule names its sentence; elsewhere the trap's general rule comes first
+    const rule = it.area === 'writing' && it.rule ? it.rule : (d && g.detRule) || g.detRule || it.rule;
     if (rule) kids.push(h('p', { class: 'pr-rule' }, rule));
     if (claudeOk() && !d && !g.det) kids.push(claudeBox(typed));
     replace(fb, kids, wordCard(it));
@@ -600,6 +606,7 @@ export async function mountRound(el, ctx) {
   function finish() {
     cleanup();
     day.rounds = (day.rounds || 0) + 1;
+    if (round.kind === 'write') day.writeRounds = (day.writeRounds || 0) + 1;
     saveLogs(store, { round: null, slot, day });
     addActivity(store, st.c.today, { minutes: minutesSpent(), rounds: 1 });
     drawDone(el, ctx, data, round, backTo);
@@ -639,7 +646,10 @@ function drawDone(el, ctx, data, round, backTo) {
   const now = store.cards('b1'), before = { ...now };
   for (const [id, r] of Object.entries(round.prev || {})) { if (r) before[id] = r; else delete before[id]; }
   const a = rd(now).overall, b = rd(before).overall;
-  const more = st.dueN > 0 || C.newLeft(st) > 0;
+  // a Schreiben round goes on with Schreiben phrases: their own due and new counts
+  const write = round.kind === 'write';
+  const wDue = write ? pool.filter((/** @type {any} */ it) => it.area === 'writing' && RD.isDue(now[it.id], c.today, c)).length : 0;
+  const more = write ? wDue > 0 || C.newLeftOf(st, 'w') > 0 : st.dueN > 0 || C.newLeft(st) > 0;
   const tomorrow = RD.forecast(now, c.today, 2, c)[1]?.n || 0;
   const p1 = (/** @type {number} */ x) => (100 * (x || 0)).toFixed(1);
   const short = (/** @type {any} */ it) => it.model || it.prompt;
@@ -664,7 +674,7 @@ function drawDone(el, ctx, data, round, backTo) {
         h('p', { class: 'pr-ready-top' }, h('span', { class: 'label' }, exam ? t('practice.readyFor', { date: label(c.exam) }) : t('practice.readyNow')),
           h('b', { class: 'tnum' }, `${p1(b.recall)}% → ${p1(a.recall)}%`)), bar, fieldEl,
         Math.abs(a.recall - b.recall) < 0.0005 ? h('p', { class: 'caption' }, t('practice.repeats')) : null) : null),
-    h('p', { class: 'pr-next' }, more ? t('practice.nextUp', { due: st.dueN, n: C.newLeft(st) }) : t('practice.allDone', { n: tomorrow })),
+    h('p', { class: 'pr-next' }, more ? t(write ? (wDue ? 'practice.write.nextUp' : 'practice.write.nextNew') : 'practice.nextUp', write ? { due: wDue, n: C.newLeftOf(st, 'w') } : { due: st.dueN, n: C.newLeft(st) }) : t('practice.allDone', { n: tomorrow })),
     h('div', { class: 'pr-done-actions' },
       more ? h('a', { class: 'btn btn-primary pressable', href: anotherHref, id: 'pr-again' }, t('practice.another', { min: roundMinutes(C.ROUND) })) : null,
       h('a', { class: ['btn', 'pressable', !more && 'btn-primary'], href: '#/today' }, t('practice.doneToday'))),

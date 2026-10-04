@@ -4,7 +4,8 @@
                                        area:<speaking|reading|grammar|words>, topic:<grammar topic>
      #/practice/speak[/teil2|/aloud[/check|/go]]   speaking (speak.js)
      #/practice/words                  exam words from the private results repository
-     #/practice/write[/id]             not built yet: a short note
+     #/practice/write                  Schreiben: its rounds, the Aufgaben, the phrases by function (write.js)
+     #/practice/write/build/<task>[/free]  Build an email, then write it yourself (write.js, build.js)
    Pure logic: pool.js, grade.js, compose.js, session.js, words.js (tested in node). Storage and network: data.js. */
 import { h, replace } from '../../core/dom.js';
 import { notice } from '../../core/ui.js';
@@ -12,6 +13,7 @@ import { icon } from '../../core/icons.js';
 import { mountHub } from './hub.js';
 import { mountRound } from './round.js';
 import { mountSpeak } from './speak.js';
+import { mountWrite } from './write.js';
 import { refreshWords, secrets, loadData, stateFor } from './data.js';
 import { COLLECTION as WORDS, inQueue } from './words.js';
 import * as RD from '../../domain/b1ready.js';
@@ -36,7 +38,7 @@ export async function mount(el, ctx) {
   if (parts[0] === 'round') return mountRound(el, ctx);
   if (parts[0] === 'speak') return mountSpeak(el, ctx, parts.slice(1));
   if (parts[0] === 'words') return mountWords(el, ctx);
-  if (parts[0] === 'write') return mountWrite(el, ctx);
+  if (parts[0] === 'write') return mountWrite(el, ctx, parts.slice(1));
   return mountHub(el, ctx);
 }
 
@@ -86,11 +88,3 @@ async function mountWords(el, ctx) {
   return () => { alive = false; };
 }
 
-/** Writing practice is not part of this build yet. @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
-function mountWrite(el, ctx) {
-  const { t } = ctx;
-  replace(el, h('div', { class: 'practice stack' }, back('#/practice', t('practice.title')),
-    h('div', { class: 'page-head' }, h('h1', null, t('practice.write.title'))),
-    notice({ children: [h('p', null, t('practice.write.later'))] }),
-    h('a', { class: 'btn pressable', href: '#/exam' }, t('practice.write.toExam'))));
-}

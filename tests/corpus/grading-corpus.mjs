@@ -155,6 +155,63 @@ export function errorsIn(s, { lex, outside = null, inside = null } = {}) {
   return out.filter(x => !seen.has(x.text) && seen.add(x.text));
 }
 
+/* ---------- Schreiben: the errors a B1 letter or forum post gets marked down for ---------- */
+const POLITE = ['Sie', 'Ihnen', 'Ihr', 'Ihre', 'Ihren', 'Ihrem', 'Ihrer', 'Ihres'];
+// adverbs and phrases that open a sentence and take the verb next (the Schreiben items open with these)
+const OPENERS = ['zum beispiel', 'meiner meinung nach', 'am ende', 'in zukunft', 'leider', 'deshalb', 'deswegen', 'trotzdem', 'außerdem',
+  'übrigens', 'zuerst', 'dann', 'danach', 'jetzt', 'natürlich', 'einerseits', 'andererseits', 'zusammenfassend'];
+const SUBJ = new Set(['ich', 'du', 'er', 'sie', 'es', 'wir', 'ihr', 'man']);
+const UML_DROP = { 'ü': 'u', 'ä': 'a', 'ö': 'o' };
+
+/**
+ * Typical Schreiben errors in a correct model sentence. Each one is wrong in context:
+ *   salutation    Liebe ↔ Lieber, geehrte ↔ geehrter (the greeting no longer agrees with the person)
+ *   sie-lower     a polite Sie, Ihnen, Ihr … in lower case (it means she, they or you all)
+ *   strict-umlaut a dropped umlaut in a word the item spells strictly (Grüße → Gruße, freundlichen Grüßen → Grußen)
+ *   v2-swap       the subject before the verb after an opener: Leider kann ich → Leider ich kann
+ *   aber-order    the verb before the subject after aber or denn: aber ich habe → aber habe ich
+ *   v2-mid        the subject before the verb after a comma and deshalb, trotzdem …: deshalb kann ich → deshalb ich kann
+ *   zu-missing    Lust haben / möglich sein without zu: ins Kino zu gehen → ins Kino gehen
+ *   um-am         a clock time with am: um 18 Uhr → am 18 Uhr
+ * @param {string} s @param {{strict?: string[], free?: boolean}} [o] free: a Build an email line (free words around a frame)
+ */
+export function schreibenErrorsIn(s, { strict = [], free = false } = {}) {
+  const out = [], T = toks(s);
+  const low = (/** @type {any} */ t) => t.w.toLowerCase();
+  const sentStart = (/** @type {number} */ i) => i === 0 || /[.!?:]\s*$/.test(s.slice(0, i));
+  // salutation
+  let m = /^(Liebe|Lieber)(\s)/.exec(s); if (m) out.push({ cls: 'salutation', text: (m[1] === 'Liebe' ? 'Lieber' : 'Liebe') + s.slice(m[1].length) });
+  m = /^Sehr (geehrte|geehrter)(\s)/.exec(s); if (m) out.push({ cls: 'salutation', text: `Sehr ${m[1] === 'geehrte' ? 'geehrter' : 'geehrte'}${s.slice(5 + m[1].length)}` });
+  // polite forms in lower case
+  for (const t of T) if (POLITE.includes(t.w) && !sentStart(t.i)) out.push({ cls: 'sie-lower', text: put(s, t, t.w.toLowerCase()) });
+  // a dropped umlaut in a strict word
+  for (const t of T) if (strict.includes(t.w) && /[äöü]/.test(t.w)) out.push({ cls: 'strict-umlaut', text: put(s, t, t.w.replace(/[äöü]/g, c => UML_DROP[c])) });
+  // the verb second after an opener at the start of a sentence: swap the verb and a pronoun subject
+  for (const sent of s.split(/(?<=[.!?])\s+/)) {
+    const st = s.indexOf(sent), lw = sent.toLowerCase();
+    const op = OPENERS.find(o => lw.startsWith(o + ' '));
+    if (!op) continue;
+    const ST = toks(sent), n = op.split(' ').length;
+    const v = ST[n], p = ST[n + 1];
+    if (v && p && SUBJ.has(p.w.toLowerCase()) && !isCap(v.w)) out.push({ cls: 'v2-swap', text: s.slice(0, st) + sent.slice(0, v.i) + p.w + ' ' + v.w + sent.slice(p.e) });
+  }
+  // aber / denn with the verb first; deshalb, trotzdem … after a comma with the subject first
+  T.forEach((t, k) => {
+    const a = T[k + 1], b = T[k + 2];
+    if (!a || !b) return;
+    if ((low(t) === 'aber' || low(t) === 'denn') && SUBJ.has(low(a)) && !isCap(b.w) && b.w.length > 2 && !CLOSEDISH.has(low(b)) || ((low(t) === 'aber' || low(t) === 'denn') && SUBJ.has(low(a)) && ['bin', 'ist', 'sind', 'habe', 'hat', 'haben', 'kann', 'muss', 'will'].includes(low(b))))
+      out.push({ cls: 'aber-order', text: s.slice(0, a.i) + b.w + ' ' + a.w + s.slice(b.e) });
+    if (['deshalb', 'deswegen', 'trotzdem', 'außerdem'].includes(low(t)) && /,\s*$/.test(s.slice(0, t.i)) && !isCap(a.w) && SUBJ.has(low(b)))
+      out.push({ cls: 'v2-mid', text: s.slice(0, a.i) + b.w + ' ' + a.w + s.slice(b.e) });
+  });
+  // zu before the infinitive after Lust / möglich
+  if (/\b(Lust|möglich)\b/.test(s)) { m = / zu (\p{Ll}+en)\b/u.exec(s); if (m) out.push({ cls: 'zu-missing', text: s.slice(0, m.index) + ' ' + m[1] + s.slice(m.index + m[0].length) }); }
+  // um 18 Uhr → am 18 Uhr (in a fixed phrase; a free line's slot holds any time phrase)
+  if (!free) { m = /\bum (\d+) Uhr\b/.exec(s); if (m) out.push({ cls: 'um-am', text: s.slice(0, m.index) + `am ${m[1]} Uhr` + s.slice(m.index + m[0].length) }); }
+  const seen = new Set([s]);
+  return out.filter(x => !seen.has(x.text) && seen.add(x.text));
+}
+
 /** A real typo in a long word's stem (never the last 2 letters, never a vowel or umlaut): drop, double or swap consonants. */
 export function typoIn(s, { lex, outside = null, eligible = () => true } = {}) {
   const T = toks(s);
@@ -306,8 +363,57 @@ export const HELD_OUT = [
   ['K:ENG_CHUNK_0700', 'Mir haben das Essen, die Leute und besonders die Strände gefallen.', 'right', 'besonders'],
 ];
 
+/* ---------- Schreiben: answers written by hand, the way a B1 candidate writes them ---------- */
+// [item id, answer, want, the error or why it is right]. BX: ids are Build an email lines (task-part).
+export const SCHREIBEN_HELD = [
+  ['BS:a3-tut-mir-leid-aber', 'Es tut mir sehr leid, aber kann ich nicht zum Gespräch kommen.', 'wrong', 'aber + verb first'],
+  ['BS:a3-leider-nicht-teilnehmen', 'Leider, ich kann am Samstag nicht am Workshop teilnehmen.', 'wrong', 'comma and subject after Leider'],
+  ['BS:a3-dank-ihre-email', 'Danke für ihre E-Mail.', 'wrong', 'ihre in lower case'],
+  ['BS:a3-mfg', 'Mit freundlichen Grußen', 'wrong', 'umlaut in Grüßen'],
+  ['BS:a3-mfg', 'Mit freundliche Grüße', 'wrong', 'ending after mit'],
+  ['BS:a3-waere-es-moeglich', 'Ist es möglich, die Besprechung später haben?', 'wrong', 'no zu, no time'],
+  ['BS:a1-lieber-jonas', 'Liebe Jonas,', 'wrong', 'Jonas is a man'],
+  ['BS:a1-hoffe-es-geht-dir-gut', 'Ich hoffe das du gut bist.', 'wrong', 'du bist gut is English'],
+  ['BS:a1-passt-dir', 'Passt dir Freitag um 18:00h?', 'wrong', '18:00h for 18 Uhr'],
+  ['BS:a1-uebrigens-umgezogen', 'Übrigens bin ich in meiner neuen Wohnung gezogen.', 'wrong', 'dative after in with movement'],
+  ['BS:a2-meiner-meinung-nach-v2', 'Meiner Meinung nach, die Vier-Tage-Woche ist gut für viele Menschen.', 'wrong', 'comma and V2'],
+  ['BS:a2-zum-beispiel-v2', 'Zum Beispiel, viele Menschen arbeiten von zu Hause aus.', 'wrong', 'V2 after zum Beispiel'],
+  ['BS:a2-am-ende-muss-jeder', 'Am Ende, jeder muss selbst entscheiden.', 'wrong', 'V2 after Am Ende'],
+  ['BS:a2-es-kommt-darauf-an', 'Es ist abhängig von dem Beruf.', 'wrong', 'abhängig sein von for ankommen auf'],
+  ['BX:a1-umzug-p1', 'Die Wohnung ist schön. Außerdem es gibt viele Cafés.', 'wrong', 'V2 after Außerdem'],
+  ['BX:a1-umzug-p2', 'Der Umzug war anstrengend, weil wir haben keinen Aufzug.', 'wrong', 'verb not at the end'],
+  ['BX:a1-umzug-p2', 'Der Umzug war anstrengend, weil wir wohnen im vierten Stock.', 'wrong', 'verb not at the end (a verb from the word list)'],
+  ['BX:a1-neue-stelle-p2', 'Die Arbeit ist zwar hart, aber macht sie mir Spaß.', 'wrong', 'aber + verb first'],
+  ['BX:a1-neue-stelle-p3', 'Wie wäre es, wenn wir gehen am Sonntag ins Kino?', 'wrong', 'verb not at the end'],
+  ['BX:a2-vier-tage-woche-p3', 'Zum Beispiel meine Schwester arbeitet nur vier Tage.', 'wrong', 'V2 after Zum Beispiel'],
+  ['BX:a2-vier-tage-woche-p5', 'Deshalb finde ich, dass wir sollten es testen.', 'wrong', 'verb not at the end'],
+  ['BX:a2-wohnen-stadt-p2', 'Das Leben auf dem Land ist zwar billiger, aber gibt es dort weniger Arbeit.', 'wrong', 'aber + verb first'],
+  ['BX:a3-gespraech-verschieben-p1', 'Es tut mir leid, aber kann ich nicht kommen.', 'wrong', 'aber + verb first'],
+  ['BX:a3-gespraech-verschieben-p2', 'Der Grund ist, dass ich habe einen Termin in Hamburg.', 'wrong', 'verb not at the end'],
+  ['BX:a3-laerm-nachbar-p3', 'In Zukunft ich informiere alle Nachbarn vorher.', 'wrong', 'V2 after In Zukunft'],
+  ['BX:a3-kurs-anfrage-p2', 'Ich würde gern wissen, ob der Kurs findet abends statt.', 'wrong', 'separable verb not at the end'],
+  // right
+  ['BS:a3-mfg', 'Mit freundlichen Gruessen', 'right', 'ue and ss'],
+  ['BS:a1-lieber-jonas', 'Lieber Jonas,', 'right', 'the model'],
+  ['BS:a2-sehe-das-anders-als', 'Ich sehe das ganz anders als Rainer.', 'right', 'with ganz'],
+  ['BS:a3-tut-mir-leid-aber', 'Es tut mir leid, aber ich kann leider nicht zum Gespräch kommen.', 'right', 'with leider'],
+  ['BX:a1-umzug-p1', 'Die Wohnung ist klein, aber gemütlich. Außerdem habe ich jetzt einen Balkon.', 'right', 'other words'],
+  ['BX:a1-umzug-p2', 'Der Umzug war ziemlich stressig, weil es den ganzen Tag geregnet hat.', 'right', 'other reason'],
+  ['BX:a1-umzug-p2', 'Leider war der Umzug sehr teuer, denn wir haben eine Firma bezahlt.', 'right', 'denn'],
+  ['BX:a1-neue-stelle-p2', 'Mein Chef ist zwar streng, aber er ist immer fair.', 'right', 'other words'],
+  ['BX:a1-neue-stelle-p3', 'Wie wäre es, wenn wir am Samstag zusammen kochen?', 'right', 'other plan'],
+  ['BX:a2-vier-tage-woche-p3', 'Zum Beispiel arbeitet mein Kollege seit einem Jahr nur vier Tage.', 'right', 'other example'],
+  ['BX:a2-vier-tage-woche-p5', 'Deshalb finde ich, dass jede Firma die Vier-Tage-Woche testen sollte.', 'right', 'other words'],
+  ['BX:a3-gespraech-verschieben-p1', 'Es tut mir sehr leid, aber ich habe an diesem Tag schon einen Termin.', 'right', 'other reason'],
+  ['BX:a3-gespraech-verschieben-p2', 'Der Grund ist, dass ich an diesem Tag zum Arzt muss.', 'right', 'other reason'],
+  ['BX:a3-laerm-nachbar-p2', 'Es war so laut, weil wir meinen Geburtstag gefeiert haben und viele Gäste da waren.', 'right', 'two clauses'],
+  ['BX:a3-laerm-nachbar-p3', 'In Zukunft sage ich allen Nachbarn vorher Bescheid.', 'right', 'Bescheid sagen'],
+];
+
 /* ---------- the corpus ---------- */
 const typeOf = it => {
+  if (it.src === 'build') return 'schreiben email line';
+  if (it.area === 'writing') return 'schreiben phrase';
   if (it.area === 'mistakes') return 'mistake';
   if (it.area === 'words') return it.showGap ? 'word-article' : 'word-gap';
   if (it.kind === 'phrase') return it.bank ? 'phrase (bank)' : 'phrase';
@@ -325,7 +431,18 @@ export async function buildData({ root = ROOT, codeRoot = ROOT } = {}) {
   const content = { items: J(root, 'content/b1/items.json'), grammar: J(root, 'content/b1/grammar.json'), bank: J(root, 'content/b1/bank.json'), plan: J(root, 'content/b1/plan.json'), nouns: J(root, 'content/b1/nouns.json') };
   const mistakes = SYN_MISTAKES.map(([wrong, right], i) => ({ id: `F:corpus-${i}`, v: 1, wrong, right, rule: '', source: { attemptId: 'corpus', test: 1, module: 'schreiben', label: null }, createdAt: '2026-10-01T10:00:00Z', deletedAt: null }));
   const words = SYN_WORDS.map(w => W.toItem({ id: `W:corpus-${w.lemma}`, lemma: w.lemma, art: w.art, pl: null, pos: w.pos, gloss: ['x'], sent: w.sent, form: w.form, ex: null, cluster: null, day: 1, module: 'lesen', teil: null, examDays: 1, level: 'B1', conf: null, zipf: 3 })).filter(Boolean);
-  return buildPool({ ...content, mistakes, words, lexWords: J(root, 'content/igloo/words/de.json'), lexTexts: Object.values(J(root, 'content/igloo/chunks/german.json').chunks).map(c => c.ex).filter(Boolean) });
+  let schreiben = null;
+  try { schreiben = J(root, 'content/b1/schreiben.json'); } catch { /* a checkout from before the Schreiben content */ }
+  const data = buildPool({ ...content, mistakes, words, schreiben, lexWords: J(root, 'content/igloo/words/de.json'), lexTexts: Object.values(J(root, 'content/igloo/chunks/german.json').chunks).map(c => c.ex).filter(Boolean) });
+  // Build an email: every line of every task as the item the builder grades (features/practice/build.js partItem)
+  /** @type {any[]} */ const parts = [];
+  if (schreiben) {
+    try {
+      const B = await import(pathToFileURL(path.join(codeRoot, 'src/features/practice/build.js')).href);
+      for (const t of schreiben.tasks) for (const p of t.parts) { const it = { ...B.partItem(t, p), model: B.modelLine(p), lower: p.lower }; parts.push(it); data.byId.set(it.id, it); }
+    } catch { /* code from before the builder */ }
+  }
+  return Object.assign(data, { parts });
 }
 
 /** Build the corpus with this checkout's helpers: [{id, type, cls, text, want: 'wrong'|'right', move?}] */
@@ -336,7 +453,7 @@ export async function buildCorpus({ root = ROOT } = {}) {
   const data = await buildData({ root });
   const out = [];
   const add = (it, cls, text, want, move = null) => { if (text && text.trim()) out.push({ id: it.id, type: typeOf(it), cls, text, want, move }); };
-  for (const it of data.pool) {
+  for (const it of [...data.pool, ...(data.parts || [])]) {
     if (it.kind === 'reply') {
       for (const mv of it.moves) {
         add(it, 'model', mv.model, 'right', mv.key);
@@ -363,7 +480,10 @@ export async function buildCorpus({ root = ROOT } = {}) {
         const m = reOf(own).exec(fm);
         const cased = new Map(toks(model).slice(1).map(t => [t.w.toLowerCase(), t.w]));
         for (const n of Object.values(J(root, 'content/b1/nouns.json'))) if (!cased.has(n.toLowerCase())) cased.set(n.toLowerCase(), n);
-        for (const q of plain.filter(q => q !== own && Match.sameShape(Match.shapeOf(q), Match.shapeOf(own))).slice(0, 3)) {
+        // a phrase that ends in aber/denn (tut mir leid, aber) keeps the normal order after it: it cannot stand
+        // where an inverting adverb stood (Leider sind wir … → not "Tut mir leid, aber sind wir …")
+        const coord = (/** @type {string} */ p) => /\b(aber|denn|und|oder|sondern)$/.test(p.trim());
+        for (const q of plain.filter(q => q !== own && Match.sameShape(Match.shapeOf(q), Match.shapeOf(own)) && coord(q) === coord(own)).slice(0, 3)) {
           let rep = q.replace(/[\p{L}-]+/gu, w => cased.get(w.toLowerCase()) || w);
           if (m.index === 0 || /[.!?:]\s*$/.test(model.slice(0, m.index))) rep = rep[0].toUpperCase() + rep.slice(1);
           add(it, 'other-phrase', model.slice(0, m.index) + rep + model.slice(m.index + m[0].length), 'right');
@@ -376,6 +496,7 @@ export async function buildCorpus({ root = ROOT } = {}) {
     const ty = typoIn(model, { lex, eligible }); if (ty) add(it, 'stem-typo', ty, 'right');
     for (const w of it.wrong || []) add(it, 'listed-wrong', w, 'wrong');
     for (const e of errorsIn(model, { lex })) add(it, e.cls, e.text, 'wrong');
+    if (it.area === 'writing') for (const e of schreibenErrorsIn(model, { strict: it.strict || [], free: it.kind === 'topic' })) add(it, `schreiben: ${e.cls}`, e.text, 'wrong');
     if (it.gap) {
       // the gap word alone: right, and wrong forms of it
       for (const a0 of (it.accept || []).slice(0, 2)) {
@@ -403,6 +524,7 @@ export async function buildCorpus({ root = ROOT } = {}) {
     if (it.kind === 'topic') for (const p of (it.accept || []).filter(p => /\[x\]/.test(p)).slice(0, 2)) add(it, 'slot-garbage', garbage(p), 'wrong');
   }
   for (const [id, text, kind] of CURATED_RIGHT) { const it = data.byId.get(id); if (it) add(it, `curated-${kind}`, text, 'right'); }
+  for (const [id, text, want, why] of SCHREIBEN_HELD) { const it = data.byId.get(id); if (it) out.push({ id, type: 'held-out (Schreiben)', cls: `schreiben held-out: ${why}`, text, want, move: null }); }
   for (const [id, text, want, why] of HELD_OUT) { const it = data.byId.get(id); if (it) out.push({ id, type: 'held-out', cls: `held-out: ${why}`, text, want, move: null }); }
   // his answer, exactly
   const his = data.byId.get('BP:s2-glue-vor-allem');

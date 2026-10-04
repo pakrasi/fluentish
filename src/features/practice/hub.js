@@ -1,5 +1,5 @@
-/* Practice hub (#/practice, UX §4.2): the queue card with Start round, missed items, mistakes from corrections,
-   speaking, and the four areas with their recall bars. */
+/* Practice hub (#/practice, UX §4.2): the queue card with Start round, Schreiben (first while it is the weakest
+   module), missed items, mistakes from corrections, speaking, and the areas with their recall bars. */
 import { h, replace } from '../../core/dom.js';
 import { section, linkRow, notice } from '../../core/ui.js';
 import { icon } from '../../core/icons.js';
@@ -13,7 +13,7 @@ import { resumable, savedRound } from './session.js';
 import { loadData, stateFor, session, refreshWords, secrets, wordsState } from './data.js';
 import { COLLECTION as WORDS } from './words.js';
 
-const AREAS = ['speaking', 'grammar', 'reading', 'words'];
+const AREAS = ['speaking', 'writing', 'grammar', 'reading', 'words'];
 const pct = (/** @type {number} */ x) => new Intl.NumberFormat('en-GB', { style: 'percent', maximumFractionDigits: 0 }).format(x || 0);
 
 /** A recall bar: seen (quiet) under recall (ink). @param {number} recall @param {number} coverage @param {string} name */
@@ -79,11 +79,16 @@ export async function mountHub(el, ctx) {
     const missedN = C.missed(s).length;
     const mistakes = data.pool.filter((/** @type {any} */ it) => it.area === 'mistakes');
     const mistakesOpen = mistakes.filter((/** @type {any} */ it) => C.unseen(s, it) || C.due(s, it)).length;
+    const wb = s.budget.writing;
+    const writeRow = linkRow({ href: '#/practice/write', title: t('practice.writeRow'),
+      detail: wb && wb.n ? t(wb.focus ? 'practice.writeRow.focus' : 'practice.writeRow.detail', { due: wb.due, n: wb.newLeft }) : t('practice.writeRow.idle') });
     const rows = [
+      wb && wb.focus ? writeRow : null,
       missedN ? linkRow({ href: '#/practice/round?kind=missed', title: t('practice.missed', { n: missedN }), detail: t('practice.missed.detail') }) : null,
       mistakes.length ? linkRow({ href: '#/practice/round?kind=mistakes', title: t('practice.mistakes', { n: mistakes.length }),
         detail: mistakesOpen ? t('practice.mistakes.open', { n: mistakesOpen }) : t('practice.mistakes.none') }) : null,
       linkRow({ href: '#/practice/speak', title: t('practice.speak'), detail: t('practice.speak.detail') }),
+      wb && wb.focus ? null : writeRow,
     ];
 
     // ---- areas ----
@@ -98,7 +103,8 @@ export async function mountHub(el, ctx) {
           recallBar(0, 0, name), icon('next', { size: 16 }));
       }
       const trail = x && x.seen ? t('practice.area.trail', { pct: pct(x.recall), n: x.due }) : t('practice.area.notStarted');
-      return h('a', { class: 'pr-area pressable', href: a === 'words' ? '#/practice/words' : `#/practice/round?kind=area:${a}`, 'aria-label': `${name}, ${trail}` },
+      const href = a === 'words' ? '#/practice/words' : a === 'writing' ? '#/practice/write' : `#/practice/round?kind=area:${a}`;
+      return h('a', { class: 'pr-area pressable', href, 'aria-label': `${name}, ${trail}` },
         h('span', { class: 'pr-area-top' }, h('span', { class: 'row-title' }, name), h('span', { class: 'row-trail tnum' }, trail)),
         recallBar(x ? x.recall : 0, x ? x.coverage : 0, t('practice.area.bar', { recall: pct(x?.recall || 0), seen: pct(x?.coverage || 0) })), icon('next', { size: 16 }));
     });
@@ -139,7 +145,7 @@ export async function mountHub(el, ctx) {
 
   /** "Finish round · 11 questions left", with the kind for rounds that are not the daily one. @param {any} round @param {number} left */
   function finishLabel(round, left) {
-    const kind = round.kind === 'today' ? null : round.kind === 'area' ? t(`practice.area.${round.area}`) : round.kind === 'topic' ? t('practice.kind.topic') : t(`practice.kind.${round.kind}`);
+    const kind = round.kind === 'today' ? null : round.kind === 'area' ? t(`practice.area.${round.area}`) : round.kind === 'topic' ? t('practice.kind.topic') : t(`practice.kind.${round.kind}`);   // write: Schreiben
     return kind ? t('practice.finishKind', { n: left, kind }) : t('practice.finish', { n: left });
   }
 

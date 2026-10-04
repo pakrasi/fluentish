@@ -14,11 +14,12 @@ import { buildPool } from './pool.js';
 import { wordItems, fetchWords, COLLECTION as WORDS } from './words.js';
 import * as C from './compose.js';
 import { dayBudget } from '../../domain/budget.js';
+import { writingFocus } from '../../domain/modules.js';
 import { slotKey } from './session.js';
 
 // igloo.words.de and igloo.chunks.german (both precached) only feed the grader's lexicon of German word forms; without
 // them the B1 content's own words do
-const FILES = ['b1.items', 'b1.grammar', 'b1.bank', 'b1.plan', 'b1.nouns', 'b1.wordmap', 'igloo.words.de', 'igloo.chunks.german'];
+const FILES = ['b1.items', 'b1.grammar', 'b1.bank', 'b1.plan', 'b1.nouns', 'b1.wordmap', 'igloo.words.de', 'igloo.chunks.german', 'b1.schreiben'];
 export const VOCAB_URL = `${config.github.api}/repos/${config.resultsRepo}/contents/data/vocab.json`;
 
 /** @type {{key: string, data: any} | null} */ let memo = null;
@@ -29,7 +30,7 @@ export const VOCAB_URL = `${config.github.api}/repos/${config.resultsRepo}/conte
  * @param {import('../contract.js').ViewCtx} ctx
  */
 export async function loadData(ctx) {
-  const [items, grammar, bank, plan, nouns, wordmap, lexWords, chunksDe] = await Promise.all(FILES.map(id => ctx.content.load(id).catch(e => {
+  const [items, grammar, bank, plan, nouns, wordmap, lexWords, chunksDe, schreiben] = await Promise.all(FILES.map(id => ctx.content.load(id).catch(e => {
     if (id === 'b1.plan') throw e;
     return null;
   })));
@@ -39,7 +40,8 @@ export async function loadData(ctx) {
   const key = [wc?.fetchedAt || 0, c.phase, mistakes.map(m => m.id).join(',')].join('|');
   if (memo && memo.key === key) return memo.data;
   const data = /** @type {any} */ (buildPool({ items: items || [], grammar: grammar || [], bank: bank || {}, plan, nouns: nouns || {},
-    words: wordItems(wc?.words, c.phase), mistakes, lexWords: Array.isArray(lexWords) ? lexWords : null, lexTexts: chunkExamples(chunksDe) }));
+    words: wordItems(wc?.words, c.phase), mistakes, lexWords: Array.isArray(lexWords) ? lexWords : null, lexTexts: chunkExamples(chunksDe),
+    schreiben: schreiben && Array.isArray(schreiben.items) ? schreiben : null }));
   data.wordmap = wordmap || {};
   memo = { key, data };
   return data;
@@ -60,7 +62,8 @@ export function dayLog(store, today) {
 }
 
 /**
- * The composer's state for now, with today's budget (domain/budget.js: the same numbers Today's plan shows).
+ * The composer's state for now, with today's budget (domain/budget.js: the same numbers Today's plan shows). The
+ * Schreiben phrases (area writing) are counted apart: their own due count, unseen count and quota.
  * @param {{clock: any, store: any, settings: () => any}} ctx @param {any} data
  * @returns {import('./compose.js').State & {dueN: number, budget: import('../../domain/budget.js').Budget}}
  */
@@ -69,14 +72,23 @@ export function stateFor(ctx, data) {
   const cards = ctx.store.cards('b1');
   const day = dayLog(ctx.store, c.today);
   const base = { data, cards, day, c, newPerDay: 0 };
-  // the review round's due count: mistakes from corrections have their own row and round
-  const dueN = data.pool.reduce((/** @type {number} */ n, /** @type {any} */ it) => n + (it.area !== 'mistakes' && RD.isDue(cards[it.id], c.today, c) ? 1 : 0), 0);
+  // the review round's due count: mistakes from corrections and the Schreiben phrases have their own rows and rounds
+  let dueN = 0, unseen = 0, wDue = 0, wUnseen = 0;
+  for (const it of data.pool) {
+    if (it.area === 'mistakes') continue;
+    const d = RD.isDue(cards[it.id], c.today, c), u = !cards[it.id]?.reps;
+    if (it.area === 'writing') { wDue += d ? 1 : 0; wUnseen += u ? 1 : 0; } else { dueN += d ? 1 : 0; unseen += u ? 1 : 0; }
+  }
   const pLeft = C.priorityLeft(base);
-  const unseen = data.pool.reduce((/** @type {number} */ n, /** @type {any} */ it) => n + (it.area !== 'mistakes' && !cards[it.id]?.reps ? 1 : 0), 0);
-  const budget = dayBudget({ c, settings: ctx.settings(), dueN, priorityLeft: pLeft, newShown: day.newShown || 0, poolLeft: unseen });
+  const settings = ctx.settings();
+  const focus = writingFocus({ store: ctx.store, c, settings });
+  const writing = wDue + wUnseen ? { due: wDue, left: wUnseen, shown: (day.newBy || {}).w || 0, focus } : null;
+  const budget = dayBudget({ c, settings, dueN, priorityLeft: pLeft, newShown: day.newShown || 0, poolLeft: unseen, writing });
   base.newPerDay = budget.newPerDay;
+  /** @type {any} */ (base).writingNew = budget.writing ? budget.writing.newPerDay : 0;
   // Today's plan reads these without loading content
-  const s = session(ctx.store), stats = { day: c.today, priorityLeft: pLeft, pool: data.pool.length, unseen, newPerDay: base.newPerDay };
+  const s = session(ctx.store), stats = { day: c.today, priorityLeft: pLeft, pool: data.pool.length, unseen, newPerDay: base.newPerDay,
+    ...(writing ? { writing: { due: wDue, unseen: wUnseen } } : {}) };
   if (JSON.stringify(s.stats) !== JSON.stringify(stats)) ctx.store.set('b1.session', { ...s, stats });
   return { ...base, dueN, budget };
 }

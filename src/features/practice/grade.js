@@ -11,6 +11,7 @@
    and the rest with its differences, never "Right first time", and the answer counts as Hard (session.js). */
 import * as Match from '../../domain/match.js';
 import * as Detect from '../../domain/detect.js';
+import { punctCheck } from '../../domain/punct.js';
 
 /** @param {string} s */
 export const norm = s => Match.fold(String(s).toLowerCase()).replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
@@ -40,6 +41,8 @@ const refCache = new WeakMap();
  * @property {Rest | null} rest      the rest of the sentence (phrase cards and situations; null elsewhere)
  * @property {boolean} partial       the phrase is right, the rest is not: shown as such and counted as Hard
  * @property {string | null} phrase  the phrase he typed (slot words as …)
+ * @property {import('../../domain/punct.js').PunctMiss[]} punctMiss  punctuation rules of a Schreiben item the right
+ *                                   answer breaks (a slip: shown and rated Hard)
  */
 
 /**
@@ -61,8 +64,9 @@ export const isSituation = it => it.kind === 'topic' || it.kind === 'reply';
  * @param {any} item
  * @param {string} input
  * @param {any} [move]    for reply items: the move the learner picked
- * @param {{nouns?: Record<string, string>, traps?: Map<string, any>, lexicon?: Set<string>, variants?: Map<string, string[]>}} [data]
- *   lexicon: folded German word forms (pool.js buildLexicon); variants: item id → whole answers Claude confirmed right
+ * @param {{nouns?: Record<string, string>, traps?: Map<string, any>, lexicon?: Set<string>, variants?: Map<string, string[]>, verbs?: Set<string> | null}} [data]
+ *   lexicon: folded German word forms (pool.js buildLexicon); variants: item id → whole answers Claude confirmed right;
+ *   verbs: finite verb forms of the word list (detect.js verbForms), for the word-order detectors
  * @returns {Grade}
  */
 export function gradeAnswer(item, input, move = null, data = {}) {
@@ -82,14 +86,14 @@ export function gradeAnswer(item, input, move = null, data = {}) {
   // (Vielen Dank für ihre E-Mail: ihre is not sentence-initial there)
   const alone = it.gap && wordsIn(input) && wordsIn(input) <= Math.max(...(it.accept || ['']).map(wordsIn)) && Match.gapFill(it.prompt, input.trim());
   const r = Match.check(alone ? alone.text : input, accepted, o);
-  const det = Detect.run(input, it, r);
+  const det = Detect.run(input, it, r, { verbs: data.verbs || null });
   /** @type {Rest | null} */ let rest = null;
   if (r.ok && !det) {
     if (isPhraseCard(it)) {
       const v = data.variants && typeof data.variants.get === 'function' ? data.variants.get(it.id) || [] : [];
       rest = Match.restCheck(r.input, it.sentence || it.model, accepted, { ...o, anywhere: false, matched: r.matched, variants: v });
     } else if (isSituation(it)) {
-      rest = junkSlots(r, data.lexicon) || (it.model ? Match.formCheck(r.input, it.model, o) : null);
+      rest = junkSlots(r, data.lexicon) || (it.model ? Match.formCheck(r.input, it.model, { ...o, lone: it.src === 'build' }) : null);
     } else if (it.anywhere && it.model) {
       rest = Match.formCheck(r.input, it.model, o);   // reading: "Der Material" holds "material", but not as written
     }
@@ -117,13 +121,14 @@ export function gradeAnswer(item, input, move = null, data = {}) {
   if (r.ok && it.model && !shown.has(norm(it.model))) also.unshift(it.model);
   const detRule = det ? data.traps?.get(det.cls)?.rule || null : null;
   const partial = !!(rest && rest.status === 'differs');
+  const punctMiss = r.ok && !det && it.punct && it.punct.length ? punctCheck(input, it.punct, { nouns: data.nouns }) : [];
   // slips in the rest of the sentence show like the phrase's own
   const typos = [...(r.typos || []), ...(rest && rest.status === 'ok' ? (rest.typos || []).filter((/** @type {any} */ t) => !overlaps(t, r.typos || [])) : [])];
   const umlautMiss = [...(r.umlautMiss || []), ...(rest && rest.status === 'ok' ? (rest.umlautMiss || []).filter((/** @type {any} */ t) => !overlaps(t, r.umlautMiss || [])) : [])];
   return {
     ok: r.ok && !det, matchOk: r.ok, det, input: r.input, typos, capMiss: r.capMiss || [], umlautMiss,
     right: partial && rest && rest.ref ? rest.ref : right, alsoCorrect: also.slice(0, 8), primary: !!(r.ok && r.matched === accepted[0] && r.exact && !partial), detRule, pattern,
-    rest, partial, phrase: r.ok ? phraseOf(r) : null,
+    rest, partial, phrase: r.ok ? phraseOf(r) : null, punctMiss,
   };
 }
 
