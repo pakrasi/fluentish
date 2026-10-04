@@ -1,7 +1,11 @@
 #!/usr/bin/env node
 // The deploy build: writes the publishable site to _site/. Deterministic and dependency-free (review S1, A11).
 //
-//   node tools/stamp.mjs [--out _site] [--sha <commit>] [--keep <sha,sha>] [--live <url of the live version.json>]
+//   node tools/stamp.mjs [--out _site] [--sha <commit>] [--keep <sha,sha>] [--live <url of the live version.json>] [--sw on|off]
+//
+// The service worker switch in version.json comes from --sw, else the FLUENTISH_SW environment variable, else "on".
+// deploy.yml sets FLUENTISH_SW from its "sw" input or the repository variable FLUENTISH_SW, so the kill switch is a
+// workflow run or a variable, never a code change.
 //
 // Layout (the app root is /fluentish/ on Pages):
 //   index.html             network first; loads v/<sha>/src/main.js, with modulepreload for the static import graph
@@ -90,9 +94,21 @@ async function liveVersion(/** @type {string | undefined} */ url) {
   } catch { return null; }
 }
 
+/**
+ * The "sw" value of version.json: --sw, else FLUENTISH_SW, else 'on'. Anything but on/off is an error, so a typo can
+ * never switch the worker off (or fail to).
+ * @param {string | undefined} flag @param {string | undefined} env @returns {'on' | 'off'}
+ */
+export function swSetting(flag, env) {
+  const v = String(flag || env || 'on').trim().toLowerCase();
+  if (v !== 'on' && v !== 'off') throw new Error(`sw must be "on" or "off", not "${flag || env}"`);
+  return v;
+}
+
 function opts() {
   const a = process.argv.slice(2), get = (/** @type {string} */ k) => { const i = a.indexOf(k); return i >= 0 ? a[i + 1] : undefined; };
-  return { out: path.resolve(ROOT, get('--out') || '_site'), sha: get('--sha'), keep: (get('--keep') || '').split(',').filter(Boolean), live: get('--live') };
+  return { out: path.resolve(ROOT, get('--out') || '_site'), sha: get('--sha'), keep: (get('--keep') || '').split(',').filter(Boolean), live: get('--live'),
+    sw: swSetting(get('--sw'), process.env.FLUENTISH_SW) };
 }
 
 async function main() {
@@ -144,7 +160,7 @@ async function main() {
   }
 
   const version = {
-    app: 'fluentish', sha, committed: git('show', '-s', '--format=%cI', sha), content: manifest.version, kept, sw: 'on',
+    app: 'fluentish', sha, committed: git('show', '-s', '--format=%cI', sha), content: manifest.version, kept, sw: o.sw,
   };
   writeFileSync(path.join(o.out, 'version.json'), JSON.stringify(version, null, 1) + '\n');
 
@@ -154,7 +170,7 @@ async function main() {
   const bytes = (/** @type {string[]} */ fs) => fs.reduce((n, f) => n + statSync(path.join(o.out, f.split('?')[0] === './' ? 'index.html' : f.split('?')[0])).size, 0);
   const all = walk(o.out);
   console.log(`stamp: ${path.relative(ROOT, o.out) || o.out} ← ${sha.slice(0, 12)}: ${all.length} files, ${(bytes(all) / 1048576).toFixed(1)} MB; `
-    + `precache ${precache.length} files, ${(bytes(precache) / 1048576).toFixed(1)} MB; modulepreload ${graph.length}; kept ${kept.map(k => k.slice(0, 7)).join(', ') || 'none'}`);
+    + `precache ${precache.length} files, ${(bytes(precache) / 1048576).toFixed(1)} MB; modulepreload ${graph.length}; kept ${kept.map(k => k.slice(0, 7)).join(', ') || 'none'}; sw ${o.sw}`);
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {

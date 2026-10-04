@@ -63,4 +63,12 @@ To preview the built site locally: `node tools/stamp.mjs`, serve `_site/` at `/f
 
 **Roll back:** Actions → deploy → Run workflow, and enter the sha of an earlier good commit (any commit that has `tools/stamp.mjs`). From the shell: `gh workflow run deploy.yml -f sha=<sha>`. The next push to `main` deploys the head again.
 
-**Service worker:** scope `/fluentish/` only. Navigations are network first (3 s), `v/<sha>/` and hashed content are cache first, and GitHub, Anthropic, fonts, audio and Range requests are never handled. A new version waits and takes over only from Today. Kill switch: deploy a `version.json` with `"sw": "off"`. It unregisters only Fluentish's registration and deletes only `fluentish-*` caches. If the old Igloo `swKill` removes Fluentish's worker, it registers again on the next visit.
+**Service worker:** scope `/fluentish/` only. Navigations are network first (3 s), `v/<sha>/` and hashed content are cache first, and GitHub, Anthropic, fonts, audio and Range requests are never handled. A new version waits and takes over only from Today. Kill switch: a `version.json` with `"sw": "off"`. It unregisters only Fluentish's registration and deletes only `fluentish-*` caches. No code change is needed: `tools/stamp.mjs` takes the value from `--sw on|off`, else the `FLUENTISH_SW` environment variable, else `on`, and `deploy.yml` sets `FLUENTISH_SW` from its `sw` input, else the repository variable `FLUENTISH_SW`:
+
+```
+gh variable set FLUENTISH_SW --body off && gh workflow run deploy.yml   # off, and stays off for every later push
+gh variable delete FLUENTISH_SW && gh workflow run deploy.yml           # back on
+gh workflow run deploy.yml -f sw=off                                    # off for this deploy only; the next push turns it on again
+```
+
+Check it with `curl -s https://pakrasi.github.io/fluentish/version.json` (`"sw"`). If the old Igloo `swKill` removes Fluentish's worker, it registers again on the next visit.

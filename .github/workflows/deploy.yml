@@ -3,6 +3,7 @@
 #   - by hand (Actions > deploy > Run workflow), with an optional sha: a rollback re-deploys an earlier commit
 # The artifact is _site/ from tools/stamp.mjs: code under v/<sha>/ (plus the two previously deployed versions),
 # index.html, 404.html, sw.js, version.json, assets/ and content/. tools/, tests/, authoring/ are never published.
+# Service worker kill switch: run with sw=off, or set the repository variable FLUENTISH_SW=off (see README).
 name: deploy
 on:
   workflow_run:
@@ -13,6 +14,10 @@ on:
     inputs:
       sha:
         description: Commit to deploy (empty = the head of main). Use an earlier sha to roll back.
+        required: false
+        default: ''
+      sw:
+        description: 'Service worker: "off" is the kill switch (empty = the repository variable FLUENTISH_SW, else on)'
         required: false
         default: ''
 
@@ -31,17 +36,20 @@ jobs:
       github.event_name == 'workflow_dispatch' ||
       (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push' &&
        github.event.workflow_run.head_branch == 'main')
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: ${{ github.event_name == 'workflow_dispatch' && (inputs.sha || 'main') || github.event.workflow_run.head_sha }}
           fetch-depth: 0
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with: { node-version: 22 }
       - name: Manifest is current
         run: node tools/build-manifest.mjs --check
       - name: Stamp the site
+        env:
+          # the kill switch: this run's input, else the repository variable (kept for every later push), else on
+          FLUENTISH_SW: ${{ inputs.sw || vars.FLUENTISH_SW || 'on' }}
         run: node tools/stamp.mjs --out _site --live https://pakrasi.github.io/fluentish/version.json
       - name: Privacy check (built site)
         run: node tools/check-privacy.mjs --dir _site
@@ -51,16 +59,16 @@ jobs:
             if [ -e "_site/$d" ]; then echo "_site/$d must not be published"; exit 1; fi
           done
           test -f _site/index.html && test -f _site/404.html && test -f _site/sw.js && test -f _site/version.json
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
         with: { path: _site }
 
   deploy:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     environment:
       name: github-pages
       url: ${{ steps.pages.outputs.page_url }}
     steps:
       - id: pages
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

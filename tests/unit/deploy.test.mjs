@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { stampIndex, stampSw, importGraph, pickKept, CORE_CONTENT } from '../../tools/stamp.mjs';
+import { stampIndex, stampSw, importGraph, pickKept, CORE_CONTENT, swSetting } from '../../tools/stamp.mjs';
 import { createSw } from '../../src/services/sw.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
@@ -161,4 +161,14 @@ test('a waiting update does not reload a page that left Today before the takeove
   sw.atRest(false);
   e.events.controllerchange();
   assert.equal(e.reloads.length, 0);
+});
+
+test('the kill switch comes from --sw, then FLUENTISH_SW, then "on"; nothing else is accepted', () => {
+  assert.equal(swSetting(undefined, undefined), 'on');
+  assert.equal(swSetting(undefined, ''), 'on');
+  assert.equal(swSetting(undefined, 'off'), 'off');
+  assert.equal(swSetting('on', 'off'), 'on', 'the flag wins');
+  assert.equal(swSetting('OFF', undefined), 'off');
+  assert.throws(() => swSetting('of', undefined));
+  assert.throws(() => swSetting(undefined, 'false'));
 });
