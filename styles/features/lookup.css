@@ -58,7 +58,7 @@ div.lk-row { cursor: auto; min-height: 52px; }
 .lk-trail.lk-level { color: var(--ink-3); font-size: 12px; }
 .lk-slot { display: inline-flex; padding: 0 6px; font: 400 0.82em/1.4 var(--font-ui); vertical-align: 1px; border: 1px dashed var(--role-slot); box-shadow: none; color: var(--ink-3); }
 .lk-tiles { gap: 4px; }
-.lk-tiles .tile { font-size: 16px; padding: 4px 8px 3px; }
+.lk-tiles .tile { font-size: 16px; padding: 4px 8px 3px; white-space: normal; max-width: 100%; overflow-wrap: anywhere; }
 .lk-tiles .tile.gap { min-width: 2.6em; }
 .lk-or { align-self: center; color: var(--ink-3); padding: 0 2px; }
 .lk-art { color: var(--ink-3); }

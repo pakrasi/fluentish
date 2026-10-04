@@ -108,3 +108,9 @@ test('one budget: new items, rounds and minutes; a carried-over number counts as
   for (const n of [0, 1, 7, 20, 55]) assert.equal(streamQuota(n, 'p') + streamQuota(n, 'g'), n);
   assert.equal(dayBudget({ c: context({ today: '2026-10-08', exam: '2026-10-09' }), settings: s, dueN: 0, priorityLeft: 9 }).rounds, 0, 'eve, nothing due: no rounds');
 });
+
+test('next to a short mock the review round keeps what still fits', () => {
+  const ctx = context({ today: '2026-10-03', exam: '2026-10-09' });
+  const r = composeToday({ ctx, budget: 60, items: [item('review', { priority: 20, minutes: 44, rounds: 11 }), item('mock', { kind: 'mock', mock: true, priority: 30, minutes: 30 })] });
+  assert.equal(r.rows[0].minutes, 28); assert.equal(r.minutes.planned, 58); assert.equal(r.minutes.mock, null, 'nothing runs over now');
+});

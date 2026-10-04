@@ -8,7 +8,7 @@
      - rows are taken in priority order while they fit the day's minutes (the first always fits), at most four;
        one mock module may run over, because a timed module cannot be split
      - when the day runs over the minutes, the review round shrinks to what is left, one round at least, and says so
-       (minutes.cut); with a mock module that one round is all, because the module alone may fill the day
+       (minutes.cut); next to a long mock module that is often one round
      - setup rows (set an exam date, …) are added after the work and cost no minutes */
 
 /**
@@ -82,7 +82,7 @@ export function composeToday({ ctx, budget, items, feedback = [], modules = [], 
     for (let i = 0; i < rows.length; i++) {
       const r = rows[i];
       if (r.done || (r.kind !== 'review' && r.kind !== 'new') || r.minutes <= ROUND_MIN) continue;
-      const room = mock ? ROUND_MIN : Math.max(ROUND_MIN, Math.floor((budget - (planned - r.minutes)) / ROUND_MIN) * ROUND_MIN);
+      const room = Math.max(ROUND_MIN, Math.floor((budget - (planned - r.minutes)) / ROUND_MIN) * ROUND_MIN);
       if (room >= r.minutes) continue;
       planned -= r.minutes - room;
       rows[i] = { ...r, minutes: room, rounds: room / ROUND_MIN, cut: true };

@@ -87,7 +87,7 @@ components:
   button:         { backgroundColor: "{colors.surface}", border: "1px {colors.hairline-strong}", rounded: "{rounded.ctl}", height: 44px }
   button-quiet:   { backgroundColor: transparent, textColor: "{colors.ink-2}", rounded: "{rounded.ctl}", height: 44px }
   chip:           { rounded: "{rounded.pill}", height: "36px (pointer:fine) / 44px (pointer:coarse)", padding: "0 14px / 0 16px touch", pressed: "ink fill" }
-  segmented:      { backgroundColor: "{colors.surface-2}", rounded: "{rounded.ctl}", height: "40px fine / 44px touch (40px buttons, 2px track)", thumb: "{colors.surface}, slides with spring-snappy" }
+  segmented:      { backgroundColor: "{colors.surface-2}", rounded: "{rounded.ctl}", height: "40px fine / 44px touch (the buttons themselves, thumb inset 3px)", thumb: "{colors.surface}, slides with spring-snappy" }
   timer-bar:      { height: 2px, fill: "{colors.hairline-strong}" }   # a timer is never accent
   callout:        { backgroundColor: "{colors.surface-2}", rounded: "{rounded.tile}", padding: "10px 12px", border: none }   # rule lines; no side stripes
   odometer:       { mask: "bottom fade only: #000 0-84%, transparent 96%" }

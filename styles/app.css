@@ -39,6 +39,8 @@ body[data-chrome="off"] .bar, body[data-chrome="off"] #tabs-slot { display: none
 .notice-body { display: grid; gap: 6px; min-width: 0; }
 .notice-title { color: var(--ink); font-weight: 500; }
 .notice-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-1); }
+.notice-actions .btn { white-space: normal; text-align: center; line-height: 1.25; padding-block: 8px; }
+.notice { min-width: 0; }
 
 .list { list-style: none; margin: 0; padding: 0; }
 .list-item { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); padding: var(--s-3) 0; border-bottom: 1px solid var(--hairline); }
