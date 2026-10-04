@@ -52,9 +52,8 @@ export async function mount(el, ctx) {
       plan.feedbackMore ? h('p', { class: 'caption more' }, t('today.feedbackMore', { n: plan.feedbackMore })) : null) : null;
     const page = h('div', { class: 'today' },
       h('header', { class: 'page-head' }, h('h1', null, t('today.title')), h('p', { class: 'caption' }, label(c.today))),
-      importNotice(),
       h('div', { class: 'today-grid' },
-        h('div', { class: 'today-a' }, hero.el, phaseNotice(c, examName)),
+        h('div', { class: 'today-a' }, hero.el, phaseNotice(c, examName), importNotice()),
         h('div', { class: 'today-b' }, feedbackSec, renderPlan(plan, c)),
         plan.modules.length ? h('div', { class: 'today-c' }, renderModules(plan.modules)) : null),
       plan.primary ? h('div', { class: 'dock' }, h('a', { class: 'btn btn-primary btn-wide pressable', href: plan.primary.href }, primaryLabel(plan.primary))) : null);
