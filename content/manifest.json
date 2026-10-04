@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "263abecadc29",
+ "version": "91506afe2064",
  "languages": [
   {
    "id": "khasi",
@@ -647,6 +647,13 @@
    "schema": "igloo-word-themes@1",
    "bytes": 1715,
    "sha256": "a2bde1bee7b155216181ebea7603559b2d3d1d0246e02e187165644debf0228f"
+  },
+  {
+   "id": "speak.situations",
+   "path": "speak/situations.json",
+   "schema": "speak-situations@1",
+   "bytes": 97410,
+   "sha256": "c683e6be09a2c709c89ebd57d1b867d8f5be74689ab770fc5d2f3b7a5567875b"
   }
  ]
 }

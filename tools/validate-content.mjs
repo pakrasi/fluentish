@@ -6,6 +6,8 @@ import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { validate, unsupported } from '../src/core/schema.js';
 import { build, ROOT } from './build-manifest.mjs';
+import { build as buildSpeak, serialise as serialiseSpeak, SRC as SPEAK_SRC } from './build-speak.mjs';
+import { validateBank } from '../src/features/practice/sim.js';
 
 const schemas = new Map();
 for (const f of readdirSync(path.join(ROOT, 'schemas/content'))) {
@@ -29,6 +31,13 @@ for (const f of manifest.files) {
   errs.forEach(e => errors.push(`${f.path} ${e}`));
   n++;
 }
+// speaking situations: built from their source, and the rules a schema cannot say (sim.js validateBank)
+const speakPath = path.join(ROOT, 'content/speak/situations.json');
+const speakText = readFileSync(speakPath, 'utf8');
+if (serialiseSpeak(buildSpeak(JSON.parse(readFileSync(SPEAK_SRC, 'utf8')))) !== speakText) errors.push('content/speak/situations.json is out of date: run node tools/build-speak.mjs');
+const chunkIds = new Set(Object.keys(JSON.parse(readFileSync(path.join(ROOT, 'content/igloo/chunks/german.json'), 'utf8')).chunks));
+const frameIds = new Set(JSON.parse(readFileSync(path.join(ROOT, 'content/b1/frames.json'), 'utf8')).map((/** @type {any} */ f) => f.id));
+for (const e of validateBank(JSON.parse(speakText), { chunkIds, frameIds })) errors.push(`speak/situations.json ${e}`);
 if (errors.length) {
   console.error(`validate-content: ${errors.length} problem(s)`);
   errors.slice(0, 60).forEach(e => console.error('  ' + e));

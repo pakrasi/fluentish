@@ -8,7 +8,9 @@ import { label, add } from '../../core/clock.js';
 import * as RD from '../../domain/b1ready.js';
 import { ROUND_MIN } from '../../domain/budget.js';
 import * as C from './compose.js';
-import { todayBudget, roundAction } from './plan.js';
+import { todayBudget, roundAction, simToday } from './plan.js';
+import { DECK as SIM_DECK, KV as SIM_KV } from './sim.js';
+import { refreshSimStats } from './sim-data.js';
 import { resumable, savedRound } from './session.js';
 import { loadData, stateFor, session, refreshWords, secrets, wordsState } from './data.js';
 import { COLLECTION as WORDS } from './words.js';
@@ -84,6 +86,7 @@ export async function mountHub(el, ctx) {
       mistakes.length ? linkRow({ href: '#/practice/round?kind=mistakes', title: t('practice.mistakes', { n: mistakes.length }),
         detail: mistakesOpen ? t('practice.mistakes.open', { n: mistakesOpen }) : t('practice.mistakes.none') }) : null,
       linkRow({ href: '#/practice/speak', title: t('practice.speak'), detail: t('practice.speak.detail') }),
+      simRow(),
     ];
 
     // ---- areas ----
@@ -137,6 +140,14 @@ export async function mountHub(el, ctx) {
       h('p', { class: 'caption' }, t('practice.readySub', { seen: rd.overall.seen, n: rd.overall.n })));
   }
 
+  /** Speaking situations: due and new today, the same numbers as Today's row. */
+  function simRow() {
+    const x = simToday({ store, c: ctx.clock.ctx(), settings: ctx.settings() });
+    const detail = x.due && x.newLeft ? t('practice.sim.detail', { due: x.due, fresh: x.newLeft }) : x.due ? t('practice.sim.detailDue', { n: x.due })
+      : x.newLeft ? t('practice.sim.detailFresh', { n: x.newLeft }) : t('practice.sim.detailNone');
+    return linkRow({ href: '#/practice/situations', title: t('practice.sim'), detail });
+  }
+
   /** "Finish round · 11 questions left", with the kind for rounds that are not the daily one. @param {any} round @param {number} left */
   function finishLabel(round, left) {
     const kind = round.kind === 'today' ? null : round.kind === 'area' ? t(`practice.area.${round.area}`) : round.kind === 'topic' ? t('practice.kind.topic') : t(`practice.kind.${round.kind}`);
@@ -145,6 +156,7 @@ export async function mountHub(el, ctx) {
 
   const rerender = () => { if (!pending) pending = render().finally(() => { pending = null; }); };
   await render();
+  refreshSimStats(ctx);
   // exam words: at most one request every 10 minutes; a change rebuilds the pool
   if (secrets(store).githubToken) {
     refreshWords(ctx).then(res => {
@@ -153,6 +165,6 @@ export async function mountHub(el, ctx) {
       if (res.added.length) ctx.toast(t('practice.words.addedToast', { n: res.added.length }));
     }).catch(() => {});
   }
-  const offs = [store.subscribe('cards:b1', rerender), store.subscribe(WORDS, rerender), store.subscribe('mistakes', rerender), ctx.bus.on('settings:changed', rerender)];
+  const offs = [store.subscribe('cards:b1', rerender), store.subscribe(`cards:${SIM_DECK}`, rerender), store.subscribe(SIM_KV, rerender), store.subscribe(WORDS, rerender), store.subscribe('mistakes', rerender), ctx.bus.on('settings:changed', rerender)];
   return () => { alive = false; offs.forEach(f => f()); };
 }
