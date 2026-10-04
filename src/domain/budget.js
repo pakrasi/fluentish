@@ -83,3 +83,26 @@ export function dailyNew({ c, settings, dueN, priorityLeft }) {
 
 /** A stream's share of n new items; the two shares always add up to n. @param {number} n @param {'p'|'g'} st */
 export const streamQuota = (n, st) => (st === 'p' ? Math.round(n * SPLIT.p) : n - Math.round(n * SPLIT.p));
+
+/* Speaking situations (Practice › Speaking situations, features/practice/sim.js) have their own small budget, on top
+   of the review rounds: a card takes about 12 s (hear the line, say the answer, check, grade), a new one is shown
+   about twice (its learning step). New situations a day scale with the daily minutes (60 min → 10, 30 → 5, at
+   least 4) and follow the clock: none on the eve or the exam day. Today's row and the hub read this. */
+export const SIM_CARD_MIN = 0.2;
+export const SIM_NEW_MAX = 10;
+
+/**
+ * @param {object} o
+ * @param {import('../core/clock.js').ClockCtx} o.c
+ * @param {any} o.settings          normalised profile settings
+ * @param {number} o.dueN           situations due today
+ * @param {number} [o.newShown]     new situations already shown today
+ * @param {number} [o.unseen]       situations not seen yet in the open levels
+ * @returns {{newPerDay: number, newLeft: number, cards: number, minutes: number}}
+ */
+export function simBudget({ c, settings, dueN, newShown = 0, unseen = Infinity }) {
+  const newPerDay = c.newItems ? Math.max(4, Math.min(SIM_NEW_MAX, Math.round((settings?.minutesPerDay || 60) / 6))) : 0;
+  const newLeft = Math.max(0, Math.min(newPerDay - newShown, unseen));
+  const cards = dueN + 2 * newLeft;
+  return { newPerDay, newLeft, cards, minutes: cards ? Math.max(1, Math.ceil(cards * SIM_CARD_MIN - 1e-9)) : 0 };
+}
