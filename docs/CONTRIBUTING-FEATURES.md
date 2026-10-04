@@ -93,6 +93,18 @@ What stage A already provides (replace freely inside your folder):
 
 A learner who used the old apps arrives migrated (`src/data/migrate.js`): B1 FSRS cards in deck `b1`, exam attempts with `legacy: {id, path}` and their `synced` flags, `exams.drafts`, `exams.training`, `exams.voice`, `exams.seen`, `exams.feedbackLocal`, `vocab.local`, `vocab.events`, `b1.session`. Igloo's SM-2 deck is **not** moved (Igloo owns it until Drill and Test move here); `meta.summary.iglooCards` counts it. Formats: `docs/SCHEMA.md`.
 
+### Mistakes from corrections (Exam → Practice)
+
+A corrected Schreiben or Sprechen attempt hands its mistakes to the review queue through `src/data/mistakes.js` (no feature import needed):
+
+```js
+import { addMistakes, listMistakes } from '../../data/mistakes.js';
+const ids = addMistakes(ctx.store, { attemptId: attempt.id, test: 2, module: 'schreiben', label: 'Test 2 · Schreiben',
+  items: feedback.errors.map(e => ({ wrong: e.wrong, right: e.right, rule: e.rule })) });
+ctx.go('/practice/round?kind=mistakes');      // "Practise these mistakes · N"
+```
+Calling it again for the same attempt replaces its list and keeps the ids (and schedules) of unchanged sentences. Each mistake becomes card `F:<attempt>-<n>` in deck `b1`; Practice shows it as "Rewrite this sentence correctly" with the source line "Your Schreiben Test 2", puts unseen ones at the front of rounds (one in three) and offers a mistakes-only round. `listMistakes(store)` gives the count for a button. The records are private and never leave the device except through the results sync.
+
 ## Before you open a PR
 
 ```

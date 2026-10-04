@@ -56,6 +56,7 @@ Every client-created record carries `id` (UUIDv7), `profileId`, `deviceId` and `
 | (secrets) | kv `secrets`, device | `anthropicKey`, `githubToken`; never exported or synced, no schema on purpose |
 | `card-fsrs@1` | IDB `cards` `[profileId, deck, itemId]` | the FSRS snapshot from `domain/fsrs.js`; a cache of the events |
 | `exam-attempt@1` | IDB `attempts` | the B1 exam app's field names (`started_at`, `max_score`, `responses`, `writings`), which the Mac's `sync.py` imports, plus `examId` and `contentVersion` |
+| `mistake@1` | kv `mistakes`, profile, private | a mistake from a correction: `{id: 'F:<attempt>-<n>', v: 1, wrong, right, rule, source: {attemptId, test, module, label}, createdAt, deletedAt}`; written only through `src/data/mistakes.js`; Practice reviews each as card `F:…` in deck `b1` |
 | `event@1` | IDB `outbox` | append-only, the unit of sync (below) |
 | `fluentish-export@1` | file | Profile > Data > Export: kv collections except prefs and secrets, cards, attempts, events |
 
@@ -67,6 +68,10 @@ Every client-created record carries `id` (UUIDv7), `profileId`, `deviceId` and `
 `seq` is monotonic per device. `day` is the study day (04:00 cutoff) when the event happened. Types: `card.reviewed`, `exam.attempt`, `exam.voice`, `vocab.captured`, `vocab.reviewed`, `feedback.created`, `training.logged`, `settings.changed`, `legacy.imported`.
 
 `card.reviewed` must carry `{deck, itemId, g, ms, flags, mode, ctx: {exam, phase, tz}, base: {u, reps}, post}` (review B4): the scheduler's load balancing and the exam-date cap depend on the moment of review, so a replay elsewhere takes `post` when `base` matches the current card and otherwise re-runs `schedule()` with `forecast = () => 0`. The schema enforces these fields. `path` is the GitHub file path for the results sync, assigned when the event is created so retries write the same file (review S5, stage C).
+
+### Item ids in deck `b1`
+
+Every card id names its kind by prefix (`src/domain/itemids.js`): `BP:` B1 phrase, `BL:` Lesen phrase, `BG:` B1 grammar, `BT:` situation (topic match), `BR:` situation (reply), `K:` chunk-bank phrase, `G:` Igloo grammar item, `W:` exam word in the word list, `BW:` exam word outside it, `F:` mistake from a correction. The migrated cards keep their ids; `wordId(lemma, wordmap)` and `mistakeId(attempt, n)` build the two that come from private data.
 
 ### Key-value collections
 
