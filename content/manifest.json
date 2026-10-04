@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "79ecf8c8fd2e",
+ "version": "e7d1e5b5cccf",
  "languages": [
   {
    "id": "khasi",
@@ -519,15 +519,15 @@
    "id": "igloo.lang.french",
    "path": "igloo/lang/french.json",
    "schema": "igloo-lang@1",
-   "bytes": 256830,
-   "sha256": "9bab93ef777b8275e18d6bdae134dff8ef5eac3fd13695ce7845a6e2159450c5"
+   "bytes": 256826,
+   "sha256": "7e0f8a8dc89c4f50dc98c797f78e9d8df3ad274b4a5dd922349a7c4a1c08a216"
   },
   {
    "id": "igloo.lang.german",
    "path": "igloo/lang/german.json",
    "schema": "igloo-lang@1",
-   "bytes": 190324,
-   "sha256": "9e82a77eafefeed9fe7f9aace0cb28497042f8e1ce749d11e5c6ac0399158d15"
+   "bytes": 190297,
+   "sha256": "84da6fe871e6a157e38648fc8bdd24c4b03199a1576a5b227926fbca2339f8cf"
   },
   {
    "id": "igloo.lang.hindi",
@@ -540,8 +540,8 @@
    "id": "igloo.lang.khasi",
    "path": "igloo/lang/khasi.json",
    "schema": "igloo-lang@1",
-   "bytes": 200718,
-   "sha256": "f28fac3997486c73319babf761bb0e303ab1bba1280996e5ccbadc93bcb08893"
+   "bytes": 200664,
+   "sha256": "13006f494600e0272c17584ffc44d38b4f1c8a777aad0d99af11587a19e1d674"
   },
   {
    "id": "igloo.lang.swissgerman",
