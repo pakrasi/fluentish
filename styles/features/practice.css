@@ -47,15 +47,17 @@ body.pr-in-round #view { max-width: none; padding: 0; }
 .pr-round.is-flow { position: static; height: auto; min-height: 100dvh; }
 .pr-top { padding-top: var(--s-3); max-width: 640px; width: 100%; margin: 0 auto; }
 .pr-top-row { display: flex; justify-content: space-between; align-items: center; gap: var(--s-3); margin-top: 2px; }
-.pr-end { min-height: 40px; padding: 0 10px; margin-right: -10px; }
+.pr-top-row > .caption { white-space: nowrap; flex: none; }
+.pr-strip { width: var(--w, 94px); max-width: 40vw; flex: none; margin-left: auto; }
+.pr-end { min-height: var(--tap); padding: 0 10px; margin-right: -10px; }
 .pr-scroll { overflow-y: auto; overscroll-behavior: contain; padding: var(--s-2) 0 var(--s-3); -webkit-overflow-scrolling: touch; }
 .pr-card { max-width: 640px; margin: 0 auto; padding: var(--s-5) var(--s-5) var(--s-4); }
 .pr-card .prompt { margin-top: var(--s-3); font-size: clamp(22px, 6.4vw, var(--fs-prompt)); }
 .pr-card .answer { margin-top: var(--s-6); align-items: flex-end; }
 .pr-card .answer-input { resize: none; overflow: hidden; display: block; line-height: 24px; min-height: 52px; padding: 14px 0 12px; }
 .pr-card .answer .check { margin-bottom: 14px; }
-.pr-tbar { margin-top: var(--s-3); height: 3px; }
-.pr-tbar .fill { background: var(--accent); transform-origin: left; transition: none; }
+.pr-tbar { margin-top: var(--s-3); height: 2px; }
+.pr-tbar .fill { background: var(--hairline-strong); transform-origin: left; transition: none; }   /* a timer is never accent */
 .pr-tbar.is-over .fill { background: var(--ink-3); }
 .pr-tbar.is-repair .fill { background: var(--ink); }
 .pr-secs { min-width: 4ch; text-align: right; }
@@ -88,12 +90,12 @@ body.pr-in-round #view { max-width: none; padding: 0; }
 .answer-key mark, .pr-diff mark { background: none; color: inherit; text-decoration: underline 2px var(--ok); text-underline-offset: 4px; }   /* the words to learn, on the right answer: never red */
 .pr-study { font: 400 24px/1.3 var(--font-display); }
 .pr-study.is-long { font-size: 20px; }
-.pr-rule { color: var(--ink-2); font-size: 14px; padding-left: var(--s-3); border-left: 2px solid var(--hairline-strong); }
+.pr-rule { color: var(--ink-2); font-size: 14px; padding: 10px 12px; background: var(--surface-2); border-radius: var(--r-tile); }
 .pr-hint { color: var(--ink); font-weight: 500; }
 .pr-also { font-size: 14px; color: var(--ink-2); }
-.pr-more summary { cursor: pointer; color: var(--accent-ink); font-size: 13px; min-height: 32px; display: inline-flex; align-items: center; }
+.pr-more summary { cursor: pointer; color: var(--accent-ink); font-size: 13px; min-height: var(--tap); display: inline-flex; align-items: center; }
 .pr-word { padding: var(--s-3); border-radius: var(--r-ctl); background: var(--surface-2); display: grid; gap: 4px; }
-.pr-claude .btn { min-height: 40px; font-size: 14px; }
+.pr-claude .btn { min-height: var(--tap); font-size: 14px; }
 .pr-back { margin-top: var(--s-1); }
 .pr-actions { max-width: 640px; width: 100%; margin: 0 auto; padding: var(--s-2) 0 calc(var(--s-3) + env(safe-area-inset-bottom)); background: var(--canvas); }
 .pr-actions .btn-primary { flex: 1; min-height: 52px; font-size: 16px; }
@@ -106,11 +108,16 @@ body.pr-in-round #view { max-width: none; padding: 0; }
 
 /* ---------- done ---------- */
 .pr-done { max-width: 640px; margin: 0 auto; padding: calc(var(--s-8) + env(safe-area-inset-top)) max(var(--gutter), env(safe-area-inset-left)) var(--s-10); --gap: var(--s-4); }
-.pr-done h1 { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 var(--s-2); }
+.pr-done h1 { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 var(--s-2); margin-top: var(--s-2); }
 .pr-done-of { font-size: var(--fs-h2); color: var(--ink-2); }
-.pr-done .pr-ready { padding: var(--s-4); border-radius: var(--r-ctl); background: var(--surface); box-shadow: inset 0 0 0 1px var(--hairline); }
-.pr-list h2 { font-size: 20px; margin-top: var(--s-4); }
-.pr-list .list-item { font-size: 15px; }
+.pr-done-hero { --gap: var(--s-3); }
+.pr-done-hero > * + * { margin-top: var(--s-3); }
+.pr-done .pr-ready { margin-top: var(--s-5); }
+.pr-done-field { margin-top: var(--s-3); }
+.pr-list { margin-top: var(--s-10) !important; padding-top: var(--s-6); border-top: 1px solid var(--hairline); }
+.pr-list h2 { font-size: 20px; margin-bottom: var(--s-2); }
+.pr-list .list-item { font: 400 19px/1.35 var(--font-display); }
+.pr-list .list-item .caption { font-family: var(--font-ui); }
 .pr-next { color: var(--ink-2); }
 .pr-done-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-5); }
 .pr-done-actions .btn { min-height: 48px; }

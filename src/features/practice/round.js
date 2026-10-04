@@ -24,6 +24,8 @@ import { checkAnswer } from '../../services/claude.js';
 import { speech } from './speech.js';
 import { play as playAudio, stop as stopAudio, prefetchAudio } from '../../services/audio.js';
 import { recallBar } from './hub.js';
+import { Field, atmosphere } from '../../core/brand.js';
+import { readinessView } from './field.js';
 
 const SVG = 'http://www.w3.org/2000/svg';
 const TEIL = /** @type {Record<string, string>} */ ({ S1: 'Teil 1', S2: 'Teil 2', S3: 'Teil 3', W1: 'Teil 1', W2: 'Teil 2', W3: 'Teil 3', L2: 'Teil 2', L3: 'Teil 3', L5: 'Teil 5' });
@@ -120,7 +122,10 @@ export async function mountRound(el, ctx) {
   const segs = h('div', { class: 'segments', 'aria-label': t('practice.progress') });
   const count = h('span', { class: 'caption tnum' });
   const endBtn = h('button', { type: 'button', class: 'btn btn-quiet pressable pr-end', onpointerdown: keep, onclick: () => end() }, t('practice.end'), h('kbd', null, 'Esc'));
-  const top = h('div', { class: 'pr-top' }, segs, h('div', { class: 'pr-top-row' }, count, endBtn));
+  // the round's own strip of the readiness field: one cell per item, landing in accent on a right first answer
+  const stripIds = [...new Set(round.queue.map((/** @type {any} */ q) => q.id))];
+  const stripEl = h('canvas', { class: 'field pr-strip', style: { '--w': `${Math.min(stripIds.length, 24) * 8 - 2}px` } });
+  const top = h('div', { class: 'pr-top' }, segs, h('div', { class: 'pr-top-row' }, count, stripEl, endBtn));
   const meta = h('span', { class: 'label' });
   const secs = h('span', { class: 'caption tnum pr-secs', 'aria-hidden': 'true' });
   const tfill = h('span', { class: 'fill' });
@@ -330,6 +335,8 @@ export async function mountRound(el, ctx) {
     const res = S.answer({ round, entry, o: { ...o, revealed }, cards, day, c: st.c, forecast: forecaster(cards, st.c), now: Date.now(), tz: tz() });
     saveAnswer(store, entry.item.id, res.rec, res.event, { round, slot, day });
     updateDots();
+    const k = stripIds.indexOf(entry.item.id);
+    if (strip && k >= 0 && !entry.reinsert) { if (o.ok) strip.ripple(k); else strip.set(k, 1); }
   }
   function hintNodes(/** @type {string} */ s) { return String(s).split(/\*([^*]+)\*/).map((x, i) => (i % 2 ? h('i', null, x) : x)); }
   function wordCard(/** @type {any} */ it) {
@@ -527,6 +534,7 @@ export async function mountRound(el, ctx) {
 
   function cleanup() {
     alive = false;
+    strip?.destroy();
     clearInterval(tick); clearTimeout(auto);
     document.removeEventListener('visibilitychange', onVis);
     document.removeEventListener('keydown', onDocKey);
@@ -566,6 +574,9 @@ export async function mountRound(el, ctx) {
     /** @type {any} */ (window).__practice = { get state() { return state; }, get entry() { return entry; }, input, onReturn, onSecondary, pick };
   }
   fit();
+  // answers already given in a resumed round show in the strip
+  const firstOk = new Map(round.results.filter((/** @type {any} */ r) => r.first).map((/** @type {any} */ r) => [r.id, r.ok]));
+  /** @type {Field | null} */ const strip = new Field(/** @type {HTMLCanvasElement} */ (stripEl), stripIds.map(id => (firstOk.has(id) ? (firstOk.get(id) ? 3 : 1) : 0)), { cell: 6, gap: 2, label: null });
   if (round.queue.some((/** @type {any} */ e) => data.byId.get(e.id)?.card?.ex)) prefetchAudio(ctx.content);
   await drawCard(true);
   return () => { cleanup(); stopAudio(); document.body.dataset.chrome = 'on'; document.body.classList.remove('pr-in-round'); };
@@ -591,15 +602,21 @@ function drawDone(el, ctx, data, round, backTo) {
   const exam = c.exam && c.phase !== 'after' && c.phase !== 'none';
   const bar = recallBar(a.recall, a.coverage, t('practice.area.bar', { recall: `${p1(a.recall)} %`, seen: `${p1(a.coverage)} %` }));
   const anotherHref = round.kind === 'today' || round.kind === 'mistakes' || round.kind === 'missed' ? '#/practice/round' : S.roundHref(round);
+  // the brand moment: the atmosphere breathes once behind the result, and the field shows the round's right answers
+  // landing in the exam pool
+  const view = round.kind === 'mistakes' ? null : readinessView(st);
+  const fieldEl = view ? h('canvas', { class: 'field pr-done-field' }) : null;
+  const atmoEl = h('div', { class: 'atmo', 'aria-hidden': 'true' });
   replace(el, h('div', { class: 'practice pr-done stack' },
-    h('p', { class: 'label' }, t('practice.roundDone')),
-    h('h1', null, h('span', { class: 'figure tnum' }, String(sum.right)), ' ', h('span', { class: 'pr-done-of' }, t('practice.ofRight', { n: sum.total }))),
-    sum.late ? h('p', { class: 'caption' }, t('practice.late', { n: sum.late })) : null,
-    sum.fixedLast ? h('p', { class: 'caption' }, t('practice.lastFixed')) : null,
-    round.kind === 'mistakes' ? null : h('div', { class: 'pr-ready' },
-      h('p', { class: 'pr-ready-top' }, h('span', { class: 'label' }, exam ? t('practice.readyFor', { date: label(c.exam) }) : t('practice.readyNow')),
-        h('b', { class: 'tnum' }, `${p1(b.recall)} → ${p1(a.recall)} %`)), bar,
-      Math.abs(a.recall - b.recall) < 0.0005 ? h('p', { class: 'caption' }, t('practice.repeats')) : null),
+    h('section', { class: 'hero pr-done-hero' }, atmoEl,
+      h('p', { class: 'label' }, t('practice.roundDone')),
+      h('h1', null, h('span', { class: 'figure tnum' }, String(sum.right)), ' ', h('span', { class: 'pr-done-of' }, t('practice.ofRight', { n: sum.total }))),
+      sum.late ? h('p', { class: 'caption' }, t('practice.late', { n: sum.late })) : null,
+      sum.fixedLast ? h('p', { class: 'caption' }, t('practice.lastFixed')) : null,
+      view ? h('div', { class: 'pr-ready' },
+        h('p', { class: 'pr-ready-top' }, h('span', { class: 'label' }, exam ? t('practice.readyFor', { date: label(c.exam) }) : t('practice.readyNow')),
+          h('b', { class: 'tnum' }, `${p1(b.recall)}% → ${p1(a.recall)}%`)), bar, fieldEl,
+        Math.abs(a.recall - b.recall) < 0.0005 ? h('p', { class: 'caption' }, t('practice.repeats')) : null) : null),
     h('p', { class: 'pr-next' }, more ? t('practice.nextUp', { due: st.dueN, n: C.newLeft(st) }) : t('practice.allDone', { n: tomorrow })),
     h('div', { class: 'pr-done-actions' },
       more ? h('a', { class: 'btn btn-primary pressable', href: anotherHref, id: 'pr-again' }, t('practice.another', { min: roundMinutes(C.ROUND) })) : null,
@@ -610,6 +627,18 @@ function drawDone(el, ctx, data, round, backTo) {
     list(t('practice.list.new'), sum.news)));
   requestAnimationFrame(() => fill(bar, b.recall));
   setTimeout(() => fill(bar, a.recall), reduced() ? 0 : 380);
+  /** @type {any} */ let atmo = null;
+  /** @type {Field | null} */ let field = null;
+  if (view && fieldEl) {
+    const rightIds = new Set(round.results.filter((/** @type {any} */ r) => r.first && r.ok).map((/** @type {any} */ r) => r.id));
+    const cells = view.ids.map((id, i) => (rightIds.has(id) ? i : -1)).filter(i => i >= 0);
+    // the cells answered right start in their earlier state and land one after another
+    const start = view.states.map((x, i) => (rightIds.has(view.ids[i]) ? Math.min(x, 1) : x));
+    field = new Field(/** @type {HTMLCanvasElement} */ (fieldEl), start, { cell: 5, gap: 1, label: null });
+    cells.slice(0, 24).forEach((i, k) => setTimeout(() => field?.ripple(i, { state: Math.max(2, view.states[i]) }), reduced() ? 0 : 500 + k * 90));
+    cells.slice(24).forEach(i => field?.set(i, Math.max(2, view.states[i])));
+  }
+  atmosphere(atmoEl).then(x => { atmo = x; x.breathe(); }).catch(() => {});
   el.querySelector('h1')?.setAttribute('tabindex', '-1');
   /** @type {HTMLElement | null} */ (el.querySelector('h1'))?.focus({ preventScroll: true });
   const onKey = (/** @type {KeyboardEvent} */ e) => {
@@ -617,6 +646,6 @@ function drawDone(el, ctx, data, round, backTo) {
     if (e.key === 'Escape') { e.preventDefault(); ctx.go(backTo); }
   };
   document.addEventListener('keydown', onKey);
-  const stop = () => document.removeEventListener('keydown', onKey);
+  const stop = () => { document.removeEventListener('keydown', onKey); field?.destroy(); atmo?.destroy(); };
   addEventListener('hashchange', stop, { once: true });
 }
