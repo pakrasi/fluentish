@@ -7,6 +7,7 @@
      BG:<slug>        B1 grammar item                                area grammar
      BT:<slug>        B1 situation: topic match                       area speaking
      BR:<slug>        B1 situation: reply to your partner             area speaking
+     BS:a<n>-<slug>   Goethe B1 Schreiben phrase (Aufgabe n)          area writing
      K:<chunk id>     phrase from the chunk bank                     area speaking
      G:<item id>      grammar item from the Igloo grammar set        area grammar
      W:<word id>      exam word that is in the German word list      area words
@@ -24,6 +25,7 @@ export const TAGS = {
   BG: { kind: 'grammar', area: 'grammar' },
   BT: { kind: 'situation', area: 'speaking' },
   BR: { kind: 'reply', area: 'speaking' },
+  BS: { kind: 'phrase', area: 'writing' },
   K: { kind: 'phrase', area: 'speaking' },
   G: { kind: 'grammar', area: 'grammar' },
   W: { kind: 'word', area: 'words' },
@@ -36,6 +38,13 @@ export function tagOf(id) {
   const m = /^([A-Z]{1,2}):./.exec(String(id || ''));
   return m && TAGS[m[1]] ? m[1] : null;
 }
+
+/**
+ * A Schreiben card: a BS: phrase, or one of the B1 trainer's letter items (BP:w1-…, BP:w2-…, BP:w3-…), which the
+ * Schreiben content files under its functions (content b1/schreiben.json linked) and the pool puts in area writing.
+ * @param {string} id
+ */
+export const isWriting = id => /^(BS:|BP:w[123]-)/.test(String(id || ''));
 
 /** What kind of item an id names, or null for an unknown prefix. @param {string} id */
 export function kindOf(id) {

@@ -656,7 +656,12 @@ function formCheck(input, base, opts = {}) {
   const A = words(inp), B = words(base || '');
   const out = { status: 'ok', ref: base ? tidy(base) : '', marks: [], wrong: [] };
   if (!A.length || !B.length) return out;
-  for (const g of gaps(A, B).gaps) {
+  const G = gaps(A, B).gaps;
+  // lone: his own sentence around a frame (Build an email) is compared only when it is the model with one word
+  // replaced; two or more replaced stretches mean other words, where a different form is often right (wir sollten /
+  // jede Firma sollte). Lines he cut short or made longer still count as one replacement.
+  if (opts.lone && G.filter(g => g.a.length && g.b.length).length > 1) return out;
+  for (const g of G) {
     if (g.a.length !== 1 || g.b.length !== 1) continue;
     const t = A[g.a[0]], w = B[g.b[0]];
     if (!formPair(t, w, x)) continue;

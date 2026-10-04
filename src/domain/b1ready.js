@@ -7,8 +7,9 @@
    rescaled to the areas that have items. */
 import * as D8 from './days.js';
 import * as FS from './fsrs.js';
-const AREAS = ['speaking', 'grammar', 'reading', 'words'];
-const WEIGHTS = { speaking: 0.40, grammar: 0.30, reading: 0.15, words: 0.15 };
+const AREAS = ['speaking', 'grammar', 'reading', 'words', 'writing'];
+// writing: the Schreiben phrases (a quarter of the exam); weights are rescaled to the areas a pool has
+const WEIGHTS = { speaking: 0.40, grammar: 0.30, reading: 0.15, words: 0.15, writing: 0.25 };
 const w = it => (it.star || it.trap ? 2 : 1);
 const seenRec = rec => !!(rec && rec.reps);
 // The due date a card has while the exam is ahead: its stored due, capped at exam−1 (spread over exam−3 … exam−1 and

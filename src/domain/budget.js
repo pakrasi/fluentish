@@ -13,7 +13,12 @@
        the other half is theirs), and with an exam ahead no more than what keeps pace with the ★ and trap items left
        before the last new-item day (exam−2). At least 4 (one round's worth), at most 60; 20 without a date.
    Minutes and rounds: a round is 12 questions, about 4 minutes; a new item costs about 0.75 min inside rounds (shown,
-   learnt, seen again). Rounds are whole, and the minutes shown are rounds × 4, so "4 rounds, 16 min" always adds up. */
+   learnt, seen again). Rounds are whole, and the minutes shown are rounds × 4, so "4 rounds, 16 min" always adds up.
+
+   Schreiben (writingBudget): the Schreiben phrases have their own rounds and their own share of the day. While
+   Schreiben is the weakest exam module (focus) it gets up to 30 % of the daily minutes for new phrases, paced to meet
+   every phrase left by the last new-item day, at least 8 a day; otherwise a trickle of 4. Its minutes come off what
+   the main rounds may fill with new items (dayBudget's writing.reserve), so the day still fits the minutes. */
 import * as D8 from './days.js';
 
 export const ROUND = 12;
@@ -37,6 +42,7 @@ export const newPerDayChosen = settings => Number.isInteger(settings?.newPerDay)
  * @property {{lastNew: string, left: number, needed: number, reach: number, fits: boolean} | null} pace
  *           with an exam ahead and new days left: ★/trap items left, the daily number that meets them all by the last
  *           new day, and how many the budget meets
+ * @property {WritingBudget | null} writing   the Schreiben phrases' share, when the pool has them
  */
 
 /**
@@ -47,10 +53,12 @@ export const newPerDayChosen = settings => Number.isInteger(settings?.newPerDay)
  * @param {number | null} [o.priorityLeft]  starred and trap items not seen yet; null before the pool was ever loaded
  * @param {number} [o.newShown]     new items already shown today
  * @param {number} [o.poolLeft]     unseen items left in the pool
+ * @param {{due?: number, left?: number, shown?: number, focus?: boolean} | null} [o.writing]  the Schreiben phrases (writingBudget)
  * @returns {Budget}
  */
-export function dayBudget({ c, settings, dueN, priorityLeft = null, newShown = 0, poolLeft = Infinity }) {
-  const newPerDay = dailyNew({ c, settings, dueN, priorityLeft });
+export function dayBudget({ c, settings, dueN, priorityLeft = null, newShown = 0, poolLeft = Infinity, writing = null }) {
+  const w = writing ? writingBudget({ c, settings, ...writing }) : null;
+  const newPerDay = dailyNew({ c, settings, dueN, priorityLeft, reserved: w ? w.reserve : 0 });
   const newLeft = c.newItems ? Math.max(0, Math.min(newPerDay - newShown, poolLeft)) : 0;
   const raw = reviewMin(dueN) + newLeft * NEW_ITEM_MIN;
   const rounds = dueN + newLeft > 0 ? Math.max(1, Math.ceil(raw / ROUND_MIN - 1e-9)) : 0;
@@ -60,19 +68,54 @@ export function dayBudget({ c, settings, dueN, priorityLeft = null, newShown = 0
     const needed = Math.ceil(priorityLeft / days);
     pace = { lastNew: c.lastNewDay, left: priorityLeft, needed, reach: Math.min(priorityLeft, newPerDay * days), fits: newPerDay >= needed };
   }
-  return { newPerDay, newLeft, rounds, minutes: rounds * ROUND_MIN, pace };
+  return { newPerDay, newLeft, rounds, minutes: rounds * ROUND_MIN, pace, writing: w };
+}
+
+export const WRITE_SHARE = 0.3;
+
+/**
+ * @typedef {object} WritingBudget
+ * @property {boolean} focus       Schreiben is the weakest module: it gets its share of the day
+ * @property {number} newPerDay    new Schreiben phrases for the whole day
+ * @property {number} newLeft      new Schreiben phrases still to show today
+ * @property {number} due          Schreiben phrases due
+ * @property {number} n            questions today (due + new left)
+ * @property {number} rounds       Schreiben rounds that takes (0 when there is nothing)
+ * @property {number} minutes      rounds × 4
+ * @property {number} reserve      minutes the main rounds leave free for the new Schreiben phrases
+ */
+
+/**
+ * The Schreiben phrases' share of the day (see the header).
+ * @param {{c: import('../core/clock.js').ClockCtx, settings: any, due?: number, left?: number, shown?: number, focus?: boolean}} o
+ *   due: Schreiben phrases due; left: never seen; shown: new ones shown today
+ * @returns {WritingBudget}
+ */
+export function writingBudget({ c, settings, due = 0, left = 0, shown = 0, focus = false }) {
+  let newPerDay = 0;
+  if (c.newItems && left + shown > 0) {
+    const minutes = settings.minutesPerDay || 60;
+    const cap = Math.max(4, Math.floor((minutes * (focus ? WRITE_SHARE : 0.1)) / NEW_ITEM_MIN));
+    let pace = left + shown;
+    if ((c.phase === 'week' || c.phase === 'lastNew') && c.lastNewDay) pace = Math.ceil((left + shown) / Math.max(1, D8.diff(c.today, c.lastNewDay) + 1));
+    newPerDay = Math.min(left + shown, cap, focus ? Math.max(8, pace) : Math.min(4, Math.max(1, pace)));
+  }
+  const newLeft = Math.max(0, Math.min(newPerDay - shown, left));
+  const n = due + newLeft;
+  const rounds = n > 0 ? Math.max(1, Math.ceil((reviewMin(due) + newLeft * NEW_ITEM_MIN) / ROUND_MIN - 1e-9)) : 0;
+  return { focus, newPerDay, newLeft, due, n, rounds, minutes: rounds * ROUND_MIN, reserve: Math.round(newLeft * NEW_ITEM_MIN * 10) / 10 };
 }
 
 /**
- * New items for the day (see the header).
- * @param {{c: import('../core/clock.js').ClockCtx, settings: any, dueN: number, priorityLeft: number | null}} o
+ * New items for the day (see the header). reserved: minutes kept free for the new Schreiben phrases.
+ * @param {{c: import('../core/clock.js').ClockCtx, settings: any, dueN: number, priorityLeft: number | null, reserved?: number}} o
  */
-export function dailyNew({ c, settings, dueN, priorityLeft }) {
+export function dailyNew({ c, settings, dueN, priorityLeft, reserved = 0 }) {
   if (!c.newItems) return 0;
   if (newPerDayChosen(settings)) return Math.max(0, settings.newPerDay);
   const minutes = settings.minutesPerDay || 60;
   const share = settings.exam?.type && c.mocks ? 0.5 : 1;
-  const fit = Math.max(0, Math.floor((minutes * share - reviewMin(dueN)) / NEW_ITEM_MIN));
+  const fit = Math.max(0, Math.floor((minutes * share - reviewMin(dueN) - reserved) / NEW_ITEM_MIN));
   if (c.phase === 'week' || c.phase === 'lastNew') {
     const newDays = Math.max(1, D8.diff(c.today, /** @type {string} */ (c.lastNewDay)) + 1);
     const pace = priorityLeft == null ? fit : Math.ceil(priorityLeft / newDays);
