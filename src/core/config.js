@@ -15,10 +15,10 @@ export const config = {
   build: VERSIONED.exec(here.href)?.[1] ?? null,
   /** Base of the public content pack; every file is found through manifest.json. */
   contentBase: new URL('content/', root).href,
-  /** Shadow mode (review A3): until the cutover, a deployed site creates preview profiles that never sync, so nothing
-     done here reaches the b1-exam repo the old apps read. The cutover sets this to false. Dev servers create local
-     profiles as before. */
-  deployShadow: true,
+  /** Shadow mode (review A3): a deployed site that creates preview profiles that never sync. Off since the cutover:
+     the first start of a device that opened the preview merges that work into its real profile (data/session.js
+     keepPreview). Dev servers create local profiles either way. */
+  deployShadow: false,
   /** Private repository the results sync writes to (stage C); the device link stores a token for it. */
   resultsRepo: 'pakrasi/b1-exam',
   github: {

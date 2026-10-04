@@ -46,7 +46,7 @@ The exam date is a setting. No date is written in `src/`; `tools/check-dates.mjs
 
 ## Deploy
 
-Live at **https://pakrasi.github.io/fluentish/** (GitHub Pages, source "GitHub Actions"). Until the cutover it runs in shadow mode (`config.deployShadow`): a deployed site makes preview profiles that never sync, so nothing done there reaches the b1-exam repo the old apps read.
+Live at **https://pakrasi.github.io/fluentish/** (GitHub Pages, source "GitHub Actions"). Shadow mode is off (`config.deployShadow: false`, the cutover of 4 Oct): the site makes local profiles that sync results to the b1-exam repo. A device that opened the preview keeps that work: on its first start the preview profile is merged into the real one (newest per item, the preview's results queued with their original file names), archived, and purged 30 days later. What was kept is listed once on Today and in Profile › Data. Details and rollback: docs/CUTOVER.md.
 
 How a change goes live:
 

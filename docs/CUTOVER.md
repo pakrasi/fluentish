@@ -25,7 +25,7 @@ Igloo keeps its service worker for Drill offline, and its SM-2 data (`doors.srs.
 | `~/language-doors` | `cutover` (from `origin/main` 4d90cfb) | `88fd783` B1 hash guard, B1 assets dropped, scoped `swKill`, V 20261004a · `9712b4e` `scripts/cutover-merge.sh` |
 | `~/pakrasi-lab/b1-exam` | `cutover` (from main b8833f7) | `380d861` app guard + dashboard stub · `62ba54f` privacy fix · `81487ca`, `1166280` `scripts/cutover-merge.sh` (merge, `--redirect-only`, `--rollback`) |
 | `~/pakrasi-lab/b1-exam` | `cutover-redirects` | points at `380d861` (the stubs alone) |
-| `~/fluentish` | `docs-cutover` | this page and `tools/cutover/` (the rehearsal); merged into `main` with both blockers fixed |
+| `~/fluentish` | `docs-cutover` | this page and `tools/cutover/` (the rehearsal); merged into `main` with both blockers fixed and since deleted; the preview merge and the switch are on `main` |
 
 ### What each stub does
 
@@ -41,22 +41,32 @@ Igloo keeps its service worker for Drill offline, and its SM-2 data (`doors.srs.
 
 ## Before the switch (blockers)
 
-1. **Preview profiles convert. Fixed** (`src/data/session.js`, tests in `tests/unit/migrate.test.mjs`). The live build runs in shadow mode (`config.deployShadow: true`). A device that opened it has a `shadow` profile as `device.activeProfile`, and the shadow migration set `device.migratedAt`. On the first boot with `deployShadow: false`, `openSession` sees that the active profile is `shadow` and:
-   - deletes every shadow profile with its data and its recordings on the device (practice only, never synced);
-   - forgets the migration marker, unless a local profile is left (`device.migratedKind` now records which kind of profile a migration made; a marker from before that field can only be a shadow one here);
-   - runs the one-time migration from the legacy keys, as on a first run, so the import shows exam-week data, not preview-day data;
-   - shows one toast: "The preview profile was removed, and your progress was moved over from the old apps." The import notice on Today follows, with the counts.
-   Legacy keys are only read. A second boot opens the new local profile and migrates nothing. Profile › Delete all now also forgets the marker, so the next start imports from the legacy keys again (or opens onboarding when there are none). Tested with synthetic fixtures: preview on preview-day keys, practice and a recording in the preview, then a local boot on exam-week keys: one local profile, the preview data and recording gone, migrated counts equal to the legacy counts and to a first run, no legacy write, and an idempotent second boot.
+1. **Preview profiles are kept, not deleted. Done** (`src/data/cutover.js`, `src/data/session.js` `keepPreview`, tests in `tests/unit/cutover.test.mjs`). The live build ran in shadow mode (`config.deployShadow: true`) and real exam-week work was done in it (exam modules, recordings, rounds). A device that opened it has a `shadow` profile as `device.activeProfile`. On the first boot with `deployShadow: false`, `openSession` runs these steps, each recorded in `device.cutover` before it writes:
+   1. **Real profile.** A local profile that exists is kept as it is (no second import). Otherwise a new local profile is made and the one-time legacy import runs into it, exactly as on a first run, reading the legacy keys only (never `setItem`, `removeItem` or `clear`). The device's prefs and keys are merged, not overwritten: the theme and the keys the device has stay unless the old app changed that legacy key after the preview read it.
+   2. **Merge.** Each preview profile (oldest first) is merged into the real one. Whether "the old app changed a key after the preview read it" is decided by the per-key fingerprint the preview's own import stored (`meta.fingerprint`); with no fingerprint the preview counts as newer.
+      - **Cards**: per card id, the record whose last review is newer wins (`u`, the time of the last write; else `last`, the day of the last review), in both directions. The review logs (`hist`) of both are united (dated, the winner's last answer stays last, the last 12 kept as the app does).
+      - **Review events** (`card.reviewed`) and every other preview event: united by id.
+      - **Exam attempts**: united by id; the preview's records keep their id, times, `eventId`, file `path` and `synced: false`. A preview copy of an old-app attempt (it has `legacy.id`) defers to the import's fresh copy of that attempt, so none is there twice.
+      - **Recordings**: the bytes stay in IndexedDB under their `blobRef` (blobs are not per profile, so nothing is copied or deleted). A Sprechen take that was cut off (`exams.takeInProgress` + `take:<id>`) moves over and is recovered on start.
+      - **Corrections** (`exams.feedbackLocal`), **saved words** (`vocab.local`), **word answers** (`vocab.events`, keyed by day, word and time), **voice-note list**, **seen feedback**, **mistakes** (by id; `deletedAt` counts as a change): united by id. On a conflict the record with the newer time (`updated_at`, `deletedAt`, `created_at`, `at`) wins; on a tie the preview's for work made in it, the import's for records copied from the old apps. A record either side already sent stays sent, with the file name it was sent under.
+      - **Drafts**: per module the draft worked on last (its clock); play counts per recording, the higher. **Writing texts**: by task; a conflict goes to the old app if it changed `training:<task>` since the preview, else to the preview.
+      - **Settings** (exam date, minutes, …): per field by `rev` (hybrid logical clock). A field the legacy import stamped (exam date, language, level, exam type, onboarded) goes to the preview's value unless the old app changed that key (`examDate`) after the preview read it. The theme (device prefs) follows the same rule on `doors.prefs.v2`.
+      - **Day log and study minutes**: `b1.session.days` united by day (the larger count of rounds wins), the newer `day` stays today's, rounds in progress by start time; `activity` per day, the larger minutes and rounds (the same rule two tabs use).
+      - **Not merged**: caches the next sync refills (`exams.remote`, `exams.syncStatus`, `exams.vocabAudio`, `words.exam`), the preview's own import record (`meta`), and the consent flags in `ui` (`importSeen`, `sendLegacy`): the notice must be seen on the real profile.
+   3. **Outbox.** Every preview event the results sync sends (`exam.attempt`, `exam.voice`, `feedback.created`, `vocab.captured`, `vocab.reviewed`, `training.logged`) is in the real profile's outbox, unsent, with its original id, `seq`, `at` and file path, so the file names are the ones the preview fixed when the work was done (`YYYYMMDDTHHMMSS` of the original time) and sync.py imports each once (it dedupes by path; a retry of a file that arrived counts as sent). A preview attempt or correction whose event is missing gets one at its own time under a fixed id. Nothing goes out until the notice on Today has been seen (`ui.importSeen`, and `ui.previewSeen` when the real profile existed before); old unsent items from the legacy apps still wait for their own tap.
+   4. **Read back, then archive.** The merged records are read back and compared with what was written, and every preview event must be in the real outbox. Only then is the preview profile archived (`archivedAt`, `archivedInto`; it is never opened again) and the real profile made active. It is purged 30 days after `archivedAt`; a recording the real profile still points at is not deleted with it. If the read-back differs, the preview stays as it is, work goes on in the real profile, a toast says so, and the next start merges again.
+   - **Resume and idempotence**: a boot cut off during the import removes its half-made real profile (nothing of the preview is in it yet) and imports again; one cut off during the merge merges again, and every write is a put of a merged value, so a second pass changes only what the first did not write. Tested by killing a boot after each of its writes and resuming: every run ends equal to an uninterrupted one. A second boot after a finished cutover changes no record.
+   - **Notice**: one toast ("Your work from the preview is kept. Today lists what was added."), then the notice on Today: "Kept from the preview: 2 exam modules, 1 recording, 1 correction, 64 reviews. Imported from the old apps: 412 cards from Igloo, …", plus how many preview results go to the results repo when it is closed. Profile › Data keeps both lines.
    Still: never clear Safari's site data for pakrasi.github.io. The origin is shared, so that also deletes the legacy keys of both old apps.
 2. **Word audio reads the private index. Fixed** (`src/services/audio.js`, `src/data/sync/github-b1exam.js`, tests in `tests/unit/audio.test.mjs`). `'vocab-audio'` is in `PULLED`: the results sync reads `data/vocab-audio.json` from the b1-exam repo with the device's token and keeps it under its own store key `exams.vocabAudio` (not exported). `audioManifest()` uses, in order: that private copy; the public `<exam media>/vocab/manifest.json` while it still exists; nothing, and then ▶ uses the device's German voice. The recordings themselves stay public under `b1-exam/audio/vocab/`. A device that isn't linked (or a preview profile, which never syncs) gets the device voice once the public index is gone. So `--redirect-only` is no longer needed: merge b1-exam in full.
    `progress.json` needs nothing: Fluentish never reads it. It reads `data/results.json`, `feedback.json`, `vocab.json`, `learner.json` and `vocab-audio.json`.
-3. **Leave shadow mode.** `deployShadow: false`, deployed. This step makes Fluentish the writer for the B1 and exam collections, so from here on use Fluentish only for B1 and exams (one writer per collection, review B2). Old Igloo Drill/Test/Write stay fine.
+3. **Leave shadow mode. Done** (commit "Cutover: leave shadow mode; keep preview work"). `deployShadow: false`, deployed. This step makes Fluentish the writer for the B1 and exam collections, so from here on use Fluentish only for B1 and exams (one writer per collection, review B2). Old Igloo Drill/Test/Write stay fine.
 
 ## Order of the switch (planned for 13–16 Oct)
 
-1. Blockers 1 and 2 merged in Fluentish, CI green (done; the live build is still in shadow mode).
+1. Blockers 1 and 2 merged in Fluentish, CI green (done).
 2. On each device (iPhone Safari, Mac browser), run the **count bookmark** below on any pakrasi.github.io page and keep the numbers.
-3. Fluentish leaves shadow mode (commands below). Open `https://pakrasi.github.io/fluentish/` on each device once.
+3. Fluentish leaves shadow mode (done, brought forward to 4 Oct so the exam-week work in the preview is kept). Open `https://pakrasi.github.io/fluentish/` on each device once; each converts its own preview profile.
 4. Run the **iPhone checklist**. Any failure: stop and roll back Fluentish only (the old apps were never touched).
 5. Same day: switch language-doors and b1-exam (one command each).
 6. Update the `/b1-review` skill text and `b1-token.py`.
@@ -66,7 +76,7 @@ Igloo keeps its service worker for Drill offline, and its SM-2 data (`doors.srs.
 
 Do it on the iPhone in the same place he uses daily: either a Safari tab or the Home Screen icon. They have separate storage (review S3), so don't mix them.
 
-- [ ] **Preview removed.** On a device that opened the preview, the first visit shows the toast "The preview profile was removed…", the preview banner is gone, and Profile shows no preview profile.
+- [ ] **Preview kept.** On a device that opened the preview, the first visit shows the toast "Your work from the preview is kept…", the preview banner is gone, and Today's notice starts "Kept from the preview:" with the exam modules, recordings and reviews done there. Exam shows the preview's modules, and a preview recording plays back.
 - [ ] **Migrated counts match.** Fluentish's import notice on Today shows cards, exam attempts, drafts and words. They equal the bookmark's `b1 cards`, `exam attempts`, `drafts` and `words`, except for cards that migrate.js skips as unusable (no valid S, D, due or reps). Any gap beyond a few cards is a stop. Check the Mac browser the same way.
 - [ ] **Mic**: Practice › Say it aloud: the mic check passes and a spoken answer is graded. Exam › a Sprechen part records, plays back and shows its length.
 - [ ] **Keyboard stays up** through a typed Practice round of at least 10 items: after Return the field keeps focus and the keyboard does not drop between items, including after a wrong answer and the retype.
@@ -88,12 +98,12 @@ javascript:(()=>{const n=k=>{try{const j=JSON.parse(localStorage.getItem(k));ret
 
 Each switch command checks for a clean tree, merges, runs that repo's gates, pushes `main` and says how to check the deploy. Each script is run straight from the branch, so it works before it is on `main`.
 
-**Fluentish leaves shadow mode** (after blockers 1 and 2):
+**Fluentish leaves shadow mode** (done; this is what ran):
 
 ```
 cd ~/fluentish && git switch main && git pull --ff-only
 sed -i '' 's/deployShadow: true,/deployShadow: false,/' src/core/config.js
-npm test && git commit -am "Cutover: leave shadow mode" && git push origin main
+npm run test:tz && git commit -am "Cutover: leave shadow mode; keep preview work" && git push origin main
 curl -s https://pakrasi.github.io/fluentish/version.json    # "sha" is the new commit once deploy.yml finishes
 ```
 
@@ -115,7 +125,7 @@ After the switch, his language-doors working branch `b1-trainer` is behind `main
 
 ## Rollback
 
-- **Fluentish**: `cd ~/fluentish && git revert --no-edit <cutover commit> && git push origin main`, or redeploy an earlier build with `gh workflow run deploy.yml -f sha=<sha>`. Profiles already made `local` stay local: the rollback stops new devices from leaving shadow mode, and it doesn't undo synced data. A service worker problem alone: `gh variable set FLUENTISH_SW --body off && gh workflow run deploy.yml` (README › Service worker).
+- **Fluentish**: `cd ~/fluentish && git revert --no-edit <cutover commit> && git push origin main`, or redeploy an earlier build with `gh workflow run deploy.yml -f sha=<sha>`. Profiles already made `local` stay local and keep syncing (a shadow-mode build opens the active local profile): the rollback stops new devices from leaving shadow mode, and it doesn't undo synced data. An archived preview profile stays archived; for 30 days its data is still on the device, and `archivedAt` can be removed by hand to reopen it. A build from before the cutover change (ae8af0e or older) never deletes an archived preview either: it doesn't know the field and opens the active local profile. A service worker problem alone: `gh variable set FLUENTISH_SW --body off && gh workflow run deploy.yml` (README › Service worker).
 - **After a b1-exam rollback**, Fluentish's word audio needs nothing: the private copy it pulled stays in use until the next sync finds `data/vocab-audio.json` gone and drops it, and from the next start it reads the restored public index.
 - **language-doors**: `cd ~/language-doors && git switch main && git pull --ff-only && git revert --no-edit -m 1 <merge sha> && bash scripts/bump_v.sh && git commit -qam "Rollback V" && git push origin main`. The merge sha is in `git log --merges -1`.
 - **b1-exam**: `bash <(git -C ~/pakrasi-lab/b1-exam show cutover:scripts/cutover-merge.sh) --rollback`. It reverts every cutover merge under the sync lock, newest first, puts the word-audio index back in `docs/` with the entries added since, pushes, and restarts server.py.
@@ -189,7 +199,9 @@ Also checked:
 
 ## Risks left
 
-- **Home Screen icon and Safari tab** keep separate storage (review S3): each converts its own preview profile on its first visit after the switch, and only the one he uses daily matters for the counts.
+- **Home Screen icon and Safari tab** keep separate storage (review S3): each merges its own preview profile on its first visit after the switch. Work done in each is in that storage's outbox under its own file names, so both reach the Mac, each once.
+- **The same legacy items in two storages**: the import of old unsent items (legacy `synced:false`) can happen once per storage. Their file names come from the old app's path or their own time (the migration time only when they carry none), so in the usual case a second send is a "422 sha" and counts as sent.
+- **Old app and preview changed the same key**: a value the old app holds has no time of its own. When the fingerprint shows the old app changed it after the preview read it, the old app's value wins (exam date, theme, keys, writing texts), even if the preview changed it later still.
 - **Offline at the moment of cutover**: Igloo's old worker answers `app.html` from its cache when the network fails. An old B1 hub can then run offline and write legacy keys after the migration. The delta re-merge (review B2) has to catch this for 7 days.
 - **Pages caches HTML for up to 10 minutes**, so for that long after a push a browser can still get the old `app.html` and old app. The version checks and the delta re-merge cover it.
 - **Hashed audio names stay public** (review N1): `md5(voice|text)` lets someone confirm a guessed word. The fix is the HMAC naming after the exam.
