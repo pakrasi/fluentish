@@ -17,6 +17,7 @@ import { normalizeSettings, defaultPrefs } from './data/settings.js';
 import { createContent } from './data/content.js';
 import { syncResults } from './data/sync/github-b1exam.js';
 import { TABS, routes } from './features/registry.js';
+import { createSw } from './services/sw.js';
 
 installErrorLog();
 
@@ -40,6 +41,12 @@ export function applyPrefs(p) {
   try { localStorage.setItem(config.keys.boot, JSON.stringify({ theme: prefs.theme, motion: prefs.motion })); } catch { /* private mode */ }
 }
 
+/** Review A3: a deployed site runs in shadow mode until the cutover marks this device migrated. */
+function shadowByDefault() {
+  if (isDev() || !config.deployShadow) return false;
+  try { return !localStorage.getItem(config.keys.migrated); } catch { return true; }
+}
+
 async function main() {
   const q = new URLSearchParams(location.search);
   let adapter, durable = true;
@@ -55,7 +62,7 @@ async function main() {
   const session = await openSession({
     adapter, legacyStorage: legacyStorage(), clock, bus,
     channel: () => ('BroadcastChannel' in self ? new BroadcastChannel('fluentish') : null),
-    kind: q.has('shadow') ? 'shadow' : 'local',
+    kind: q.has('shadow') || shadowByDefault() ? 'shadow' : 'local',
   });
   store = session.store;
   store.onWriteError = (/** @type {string} */ what) => toast(t('error.save', { what }));
@@ -69,7 +76,8 @@ async function main() {
 
   const content = createContent({ base: config.contentBase });
   const toast = (/** @type {string} */ text, /** @type {any} */ o = {}) => kitToast(text, o);
-  const app = { hlc: session.hlc, device: session.device, profile: session.profile, adapter, durable, migration: session.migration };
+  const sw = createSw({ root: config.root, dev: isDev(), devOptIn: q.get('sw') === 'on', log });
+  const app = { sw, hlc: session.hlc, device: session.device, profile: session.profile, adapter, durable, migration: session.migration };
 
   // ---------- shell ----------
   const navFor = (/** @type {string} */ where) => {
@@ -122,6 +130,7 @@ async function main() {
     transition: update => swap(update, { kind: 'view', fallbackEl: /** @type {HTMLElement} */ ($('#view')) }),
     onMounted: ({ route }) => {
       markTab(route.tab || (route.path.startsWith('/profile') ? 'profile' : null));
+      sw.atRest(route.path === '/today');   // a new version applies only from Today, never mid-round or mid-exam
       const h1 = $('#view h1');
       document.title = h1 && route.path !== '/today' ? `${h1.textContent} · ${config.name}` : config.name;
     },
@@ -132,6 +141,7 @@ async function main() {
   });
   await router.start();
   document.documentElement.classList.add('booted');
+  sw.start();
 
   // a Sprechen take cut off by a reload or a killed page is kept as a recording (features/exam/data.js)
   if (store.get('exams.takeInProgress')) {
