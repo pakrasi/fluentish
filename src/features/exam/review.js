@@ -134,7 +134,7 @@ export function correctionBlock({ ctx, exam, attempt, ex = null, again = false }
   const draw = () => {
     const hasKey = !!(store.get('secrets', {}) || {}).anthropicKey;
     const running = job.status === 'running';
-    if (job.status === 'done') { replace(box); return; }   // the store change re-renders the review with the feedback
+    if (job.status === 'done' && !again) { replace(box); return; }   // the store change re-renders the review with the feedback
     if (again) {
       replace(box, h('button', { type: 'button', class: 'btn btn-quiet pressable', disabled: running, onclick: () => runCorrection(ctx, exam, attempt, ex) }, running ? t('exam.correct.running') : t('exam.correct.again')),
         job.error ? h('p', { class: 'field-error', role: 'alert' }, job.error) : null);

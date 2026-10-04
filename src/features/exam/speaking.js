@@ -70,9 +70,9 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
       fileIn.value = '';
       if (f) keep(f, f.type || 'audio/mp4');
     } }));
-    const startBtn = h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: start }, icon('record', { size: 18 }), t('exam.rec.start'));
-    const stopBtn = h('button', { type: 'button', class: 'btn btn-danger pressable', onclick: stop, hidden: true }, icon('stop', { size: 18 }), t('exam.rec.stop'));
-    const fileBtn = h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => fileIn.click() }, rec.supported ? t('exam.rec.file') : t('exam.rec.fileOnly'));
+    const startBtn = h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: start }, icon('record', { size: 18 }), t('exam.de.recStart'));
+    const stopBtn = h('button', { type: 'button', class: 'btn btn-danger pressable', onclick: stop, hidden: true }, icon('stop', { size: 18 }), t('exam.de.recStop'));
+    const fileBtn = h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => fileIn.click() }, rec.supported ? t('exam.de.recFile') : t('exam.de.recFileOnly'));
     async function start() {
       try {
         await rec.start();
