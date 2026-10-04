@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Date gate: the exam date is a user setting (core/clock.js + settings), so no calendar date may be hard-coded in src/.
 // Fails on any "20NN-" date literal in src/**, the shell HTML and the styles. Tests and fixtures may use dates freely.
+// A line that names an API version (anthropic-version, a beta flag) carries the marker `date-gate: api-version`.
 //   node tools/check-dates.mjs            every tracked file under the checked paths
 //   node tools/check-dates.mjs --staged   the staged versions (pre-commit)
 import { execFileSync } from 'node:child_process';
@@ -17,7 +18,7 @@ const list = staged ? git('diff', '--cached', '--name-only', '--diff-filter=ACMR
 const bad = [];
 for (const p of list.split('\0').filter(f => f && CHECKED.test(f))) {
   const text = staged ? git('show', `:${p}`) : readFileSync(path.join(ROOT, p), 'utf8');
-  text.split('\n').forEach((l, i) => { if (DATE.test(l)) bad.push(`${p}:${i + 1}: ${l.trim().slice(0, 100)}`); });
+  text.split('\n').forEach((l, i) => { if (DATE.test(l) && !/date-gate: api-version/.test(l)) bad.push(`${p}:${i + 1}: ${l.trim().slice(0, 100)}`); });
 }
 if (bad.length) {
   console.error(`check-dates: ${bad.length} hard-coded date(s); read dates from core/clock.js instead:`);

@@ -17,6 +17,8 @@ export const config = {
     api: 'https://api.anthropic.com/v1/messages',
     /** Carried over from the two legacy apps (review N6); the Claude service (stage B) reads them from here. */
     models: { check: 'claude-haiku-4-5', coach: 'claude-opus-5', grade: 'claude-opus-5-5' },
+    version: '2023-06-01',                              // date-gate: api-version (the anthropic-version header)
+    fallbackBeta: 'server-side-fallback-2026-07-01',    // date-gate: api-version (refusal fallback, fallbacks: 'default')
   },
   defaults: { minutesPerDay: 60, cutoffHour: 4 },
   /** Options offered in onboarding and Profile. */
