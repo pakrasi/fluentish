@@ -4,9 +4,11 @@
 //   node tools/check-privacy.mjs --staged     pre-commit: the staged version of every added or changed file
 //   node tools/check-privacy.mjs --all        CI and pre-push: every tracked file
 //   node tools/check-privacy.mjs --dir _site  the built site, before it is published
-//   node tools/check-privacy.mjs --history    every version of every file in every commit (before a first push)
+//   node tools/check-privacy.mjs --history [rev]   every version of every file in every commit reachable from rev
+//                                                  (default: all refs), e.g. before a first push
 //
-// Extra terms (names, e-mail addresses, cities) can be listed one per line in `.privacy-terms` at the repo root.
+// Extra terms (names, e-mail addresses, cities) can be listed one per line in `.privacy-terms` at the repo root;
+// a line `re:<regexp>` adds a pattern.
 // That file is git-ignored on purpose, so the terms themselves never get committed. Known, reviewed exceptions live
 // in tools/privacy-allow.json with a reason each. Exit code 1 on any finding.
 import { execFileSync } from 'node:child_process';
@@ -36,6 +38,8 @@ const TEXT_RULES = [
   { id: 'local-path', re: /(~\/Library\/|Application Support\/|\/Users\/[a-z][\w.-]*\/)/, why: 'local file-system path' },
   { id: 'mined-item', re: /"src"\s*:\s*"mine|:mine-/, why: 'item mined from one learner\'s own exams' },
   { id: 'grader-profile', re: /(seine|ihre|deine) bekannten Schwächen/, why: 'grader prompt that describes the learner' },
+  // text spelled out as character codes hides it from every other rule here (a name, a key)
+  { id: 'char-codes', re: /String\.fromCharCode|\bchr\(\s*\w+\s*\)\s+for\b|[(\[]\s*\d{2,3}(?:\s*,\s*\d{2,3}){4,}\s*[)\]]/, why: 'text spelled out as character codes', paths: /^tools\// },
   { id: 'legacy-keys-in-fixture', re: /"(remote|draft|training):[^"]*"\s*:/, why: 'legacy localStorage dump', fixturesOnly: true },
   { id: 'answers-in-fixture', re: /"(given|writings)"\s*:/, why: 'answers or texts written by a learner', fixturesOnly: true },
 ];
@@ -43,7 +47,8 @@ const TEXT_RULES = [
 function args() {
   const a = process.argv.slice(2);
   if (a.includes('--staged')) return { mode: 'staged' };
-  if (a.includes('--history')) return { mode: 'history' };
+  const hi = a.indexOf('--history');
+  if (hi >= 0) return { mode: 'history', rev: a[hi + 1] && !a[hi + 1].startsWith('-') ? a[hi + 1] : '--all' };
   const i = a.indexOf('--dir');
   if (i >= 0) return { mode: 'dir', dir: path.resolve(a[i + 1] || '_site') };
   return { mode: 'all' };
@@ -63,7 +68,7 @@ function files(opt) {
   if (opt.mode === 'history') {
     // each distinct (path, blob) that any commit added or changed; reported as path@commit
     const seen = new Set(), out = [];
-    for (const c of git('rev-list', '--all').split('\n').filter(Boolean)) {
+    for (const c of git('rev-list', opt.rev).split('\n').filter(Boolean)) {
       const lines = git('diff-tree', '-r', '--root', '--no-commit-id', '--no-renames', '--diff-filter=AM', c).split('\n').filter(Boolean);
       for (const l of lines) {
         const [meta, p] = l.split('\t');
@@ -92,11 +97,17 @@ function loadAllow() {
 }
 const globRe = g => new RegExp('^' + g.split('**').map(s => s.split('*').map(x => x.replace(/[.+?^${}()|[\]\\]/g, '\\$&')).join('[^/]*')).join('.*') + '$');
 
+/** Personal terms from the git-ignored .privacy-terms (one per line; `re:<regexp>` for a pattern, e.g. a name in
+    another script or spelled as character codes). Present on the owner's machines, so the hooks use it; CI has only
+    the generic rules above. */
 function loadTerms() {
   const f = path.join(ROOT, '.privacy-terms');
   if (!existsSync(f)) return [];
   return readFileSync(f, 'utf8').split('\n').map(s => s.trim()).filter(s => s && !s.startsWith('#'))
-    .map(t => ({ id: 'private-term', re: new RegExp(`\\b${t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i'), why: 'term listed in .privacy-terms' }));
+    .map(t => ({
+      id: 'private-term', why: 'term listed in .privacy-terms',
+      re: t.startsWith('re:') ? new RegExp(t.slice(3), 'iu') : new RegExp(`\\b${t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i'),
+    }));
 }
 
 const opt = args();
@@ -117,6 +128,7 @@ for (const f of files(opt)) {
   const synthetic = fixture && /"synthetic"\s*:\s*true/.test(text.slice(0, 400));
   for (const r of rules) {
     if (r.fixturesOnly && (!fixture || synthetic)) continue;
+    if (r.paths && !r.paths.test(f.path)) continue;
     const m = r.re.exec(text);
     if (m && !allowed(f.path, r.id)) {
       const line = text.slice(0, m.index).split('\n').length;

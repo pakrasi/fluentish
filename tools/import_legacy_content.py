@@ -57,8 +57,10 @@ def main():
     # ---- Igloo: framework, languages, turns, sentences, phrases, words, grammar ----
     cp(ld / "framework.json", C / "igloo/framework.json")
     cp(ld / "turns.json", C / "igloo/turns.json")
+    if not PERSONA:
+        print(f"warning: {SCRUB.relative_to(ROOT)} is missing: language files not copied (they would carry personal text)")
     for f in sorted(ld.glob("*.json")):
-        if f.name not in ("framework.json", "turns.json"):
+        if f.name not in ("framework.json", "turns.json") and PERSONA:
             # the self-introduction examples used one learner's name and employer: same sentences, neutral persona
             text = f.read_text()
             for old, new in PERSONA:
