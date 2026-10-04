@@ -75,7 +75,7 @@ mark.hl { background: var(--accent-soft); color: inherit; border-radius: 3px; bo
 .lk-note.is-en { color: var(--ink-3); }
 
 /* grammar layer: the German as a word tile in its role colour */
-.lk-tile { display: inline-block; white-space: normal; align-self: start; max-width: 100%; font-size: 16px; overflow-wrap: anywhere; }
+.lk-tile { display: inline-block; white-space: normal; align-self: start; justify-self: start; max-width: 100%; font-size: 16px; overflow-wrap: anywhere; }
 .lk-tile mark.hl { background: color-mix(in oklab, var(--c) 30%, transparent); box-shadow: none; }
 .lk-layer .lk-main { gap: 6px; }
 
