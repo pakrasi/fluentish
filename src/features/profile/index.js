@@ -228,16 +228,24 @@ export async function mount(el, ctx) {
       }
       fileIn.value = '';
     });
-    const confirm = h('div', { class: 'confirm', hidden: true },
-      h('p', null, t('data.delete.confirm')),
+    const unsent = notSentCount(store);
+    const deleteBtn = h('button', { type: 'button', class: 'btn btn-quiet danger pressable', 'aria-expanded': 'false', onclick: () => {
+      confirm.hidden = false; deleteBtn.setAttribute('aria-expanded', 'true');
+      /** @type {HTMLElement | null} */ (confirm.querySelector('button'))?.focus();
+    } }, t('data.delete'));
+    const confirm = h('div', { class: 'confirm', hidden: true, role: 'alertdialog', 'aria-modal': 'false', 'aria-labelledby': 'del-q' },
+      h('p', { id: 'del-q' }, t('data.delete.confirm')),
+      unsent ? h('p', { class: 'field-error' }, t('data.delete.unsent', { n: unsent })) : null,
       h('div', { class: 'row-actions' },
         h('button', { type: 'button', class: 'btn btn-danger pressable', onclick: async () => {
           await store.flush();
           await deleteProfile(app.adapter, app.device, app.profile);
+          store.deleted = true;              // this tab writes nothing more into it either
+          store.post({ kind: 'deleted' });   // other open tabs reload instead of writing into the deleted profile
           location.hash = '#/welcome';
           location.reload();
-        } }, t('data.delete.yes')),
-        h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => { confirm.hidden = true; } }, t('data.delete.no'))));
+        } }, unsent ? t('data.delete.yesUnsent') : t('data.delete.yes')),
+        h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => { confirm.hidden = true; deleteBtn.setAttribute('aria-expanded', 'false'); deleteBtn.focus(); } }, t('data.delete.no'))));
     sec.append(
       meta.summary ? h('div', { class: 'import-summary' },
         h('h3', null, t('data.moved')),
@@ -251,7 +259,7 @@ export async function mount(el, ctx) {
           download(new Blob([JSON.stringify(b, null, 1)], { type: 'application/json' }), `fluentish-${ctx.clock.today()}.json`);
         } }, icon('download', { size: 18 }), t('data.export')),
         h('label', { class: 'btn pressable', for: fileIn.id }, icon('upload', { size: 18 }), t('data.import')), fileIn,
-        h('button', { type: 'button', class: 'btn btn-quiet danger pressable', onclick: () => { confirm.hidden = false; } }, t('data.delete'))),
+        deleteBtn),
       h('p', { class: 'field-hint' }, t('data.hint')),
       result, confirm);
     return sec;

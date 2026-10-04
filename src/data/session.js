@@ -24,7 +24,20 @@ export async function openSession({ adapter, legacyStorage, clock, bus, channel 
   let device = await adapter.getDevice();
   if (!device) { device = { deviceId: newDeviceId(), activeProfile: null, seq: 0, createdAt: isoWithOffset(now()) }; await adapter.putDevice(device); }
 
-  const profiles = await adapter.listProfiles();
+  let profiles = await adapter.listProfiles();
+  // A migration that was cut off (the tab closed, iOS killed it, the disk was full) left a half-filled profile. If
+  // nothing was done in it since, it is removed and the migration runs again from the legacy keys, which it never
+  // touched. A profile that was used is kept as it is.
+  if (device.migrating) {
+    const half = profiles.find((/** @type {any} */ p) => p.id === device.migrating);
+    if (half && !(await adapter.loadProfile(half.id)).outbox.length) {
+      await adapter.deleteProfile(half.id);
+      profiles = profiles.filter((/** @type {any} */ p) => p.id !== half.id);
+      if (device.activeProfile === half.id) device.activeProfile = null;
+    }
+    delete device.migrating;
+    await adapter.putDevice(device);
+  }
   /** @type {any} */ let profile = profiles.find((/** @type {any} */ p) => p.id === device.activeProfile) || profiles[0] || null;
   /** @type {any} */ let migration = null;
 
@@ -32,12 +45,15 @@ export async function openSession({ adapter, legacyStorage, clock, bus, channel 
     // once per device: after "Delete all" the legacy keys are still there, and must not come back
     const snap = legacyStorage && !device.migratedAt ? readLegacy(legacyStorage) : {};
     profile = { id: uuidv7(now().getTime()), name: '', kind, createdAt: isoWithOffset(now()), remoteId: null };
+    const legacy = hasLegacyProgress(snap);
+    if (legacy) { device.migrating = profile.id; await adapter.putDevice(device); }   // marker first: see above
     await adapter.putProfile(profile);
-    if (hasLegacyProgress(snap)) {
+    if (legacy) {
       const plan = planMigration(snap, { profileId: profile.id, deviceId: device.deviceId, now: now() });
       if (plan.kv.meta.legacyDeviceId && !device.legacyDeviceId) device.legacyDeviceId = plan.kv.meta.legacyDeviceId;
       await applyMigration(adapter, plan, profile);
       device.migratedAt = plan.kv.meta.migratedAt;
+      delete device.migrating;
       migration = plan.summary;
     }
     device.activeProfile = profile.id;
@@ -54,10 +70,17 @@ export async function openSession({ adapter, legacyStorage, clock, bus, channel 
 }
 
 /**
- * Delete this profile's data and start a fresh one (Profile > Data > Delete all). Legacy keys stay untouched.
+ * Delete this profile's data and start a fresh one (Profile > Data > Delete all). Legacy keys stay untouched. Voice
+ * recordings still waiting on this device (the blobs of unsent exam.voice events, and a take in progress) go too:
+ * they live outside the profile's key range, so they are found through its outbox.
  * @param {any} adapter @param {any} device @param {{id: string}} profile
  */
 export async function deleteProfile(adapter, device, profile) {
+  const { outbox } = await adapter.loadProfile(profile.id);
+  const scope = await adapter.loadScope(profile.id);
+  const blobs = new Set(outbox.filter((/** @type {any} */ e) => e && e.type === 'exam.voice').map((/** @type {any} */ e) => e.payload?.blobRef || e.id));
+  if (scope['exams.takeInProgress']?.id) blobs.add(`take:${scope['exams.takeInProgress'].id}`);
+  for (const id of blobs) await adapter.deleteBlob(id).catch(() => {});
   await adapter.deleteProfile(profile.id);
   await adapter.putKV('device', 'secrets', undefined);
   device.activeProfile = null;

@@ -77,8 +77,8 @@ export function runSchreiben(el, ctx, { exam, n, ex, def }) {
         submitting = true;
         try {
           const c = clock.clock;
-          clock.stop(false);
           const rec = await submitAttempt(ctx, { exam, n, module: 'schreiben', clock: c, score: null, maxScore: 100, writings: writingsOf(texts) });
+          clock.stop(false);   // only once the attempt is stored
           ctx.go(`/exam/${n}/schreiben/review/${rec.id}`, { replace: true });
         } catch (e) { submitting = false; console.error(e); ctx.toast(t('exam.submitFailed')); }
       },
@@ -98,7 +98,7 @@ export function runSchreiben(el, ctx, { exam, n, ex, def }) {
       flushText();
       removeEventListener('pagehide', flushText);
       document.removeEventListener('visibilitychange', onVis);
-      clock.stop(!submitting);
+      clock.stop(true);   // a no-op after a submit (stopped there); otherwise pauses and keeps the draft
       document.body.dataset.chrome = 'on';
     },
   };

@@ -46,7 +46,9 @@ export function player({ group, store, n, id, url, limit, readSeconds = 0, autoS
       replace(btn, icon(playing ? 'speaker' : remaining() > 0 ? 'play' : 'check', { size: 18 }),
         h('span', { lang: 'de' }, playing ? t('exam.de.playing') : countdown ? t('exam.de.reading') : remaining() > 0 ? t('exam.de.play') : t('exam.de.noPlays')));
       btn.disabled = broken || playing || starting || !!countdown || remaining() <= 0 || !!busyElsewhere;
-      left.textContent = broken ? t('exam.audioMissing') : remaining() > 0 ? t('exam.playsLeft', { n: remaining() }) : t('exam.playsDone');
+      // a live region: touch it only when the words change, or screen readers repeat it on every timeupdate
+      const txt = broken ? t('exam.de.audioMissing') : remaining() > 0 ? t('exam.de.playsLeft', { n: remaining() }) : t('exam.de.playsDone');
+      if (left.textContent !== txt) left.textContent = txt;
       time.textContent = audio.duration && Number.isFinite(audio.duration) ? `${fmt(audio.currentTime)} / ${fmt(audio.duration)}` : '';
     },
     stop() { try { audio.pause(); } catch { /* not started */ } if (countdown) clearInterval(countdown); countdown = null; },
@@ -60,9 +62,9 @@ export function player({ group, store, n, id, url, limit, readSeconds = 0, autoS
     audio.play().then(() => {
       usePlay(store, n, id);
       playing = true; starting = false; note.textContent = '';
-      announce(t('exam.playsLeft', { n: remaining() }));
+      announce(t('exam.de.playsLeft', { n: remaining() }));
       me.refresh();
-    }).catch(() => { starting = false; group.release(me); me.refresh(); toast(t('exam.audioBlocked')); });
+    }).catch(() => { starting = false; group.release(me); me.refresh(); toast(t('exam.de.audioBlocked')); });
   };
   btn.onclick = () => {
     if (!readSeconds || used() > 0) return playNow();
@@ -79,11 +81,14 @@ export function player({ group, store, n, id, url, limit, readSeconds = 0, autoS
   audio.addEventListener('ended', () => {
     playing = false; group.release(me); me.refresh();
     if (autoSecond && remaining() > 0) {
+      // the 5-second wait belongs to this recording: the Teil tabs stay locked, so the second play never starts on
+      // a Teil that is no longer shown
       let s = 5;
+      group.take(me);
       note.textContent = t('exam.de.secondIn', { n: s });
       const iv = /** @type {any} */ (setInterval(() => {
         s--;
-        if (s <= 0) { clearInterval(iv); note.textContent = ''; if (!group.owner) playNow(); }
+        if (s <= 0) { clearInterval(iv); note.textContent = ''; group.release(me); playNow(); }
         else note.textContent = t('exam.de.secondIn', { n: s });
       }, 1000));
       group.timer(iv);

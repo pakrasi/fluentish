@@ -169,9 +169,10 @@ export function runObjective(el, ctx, { exam, n, module, ex, def }) {
         try {
           const g = grade(answerKey(ex), module, answers);
           const c = clock.clock;
+          const rec = await submitAttempt(ctx, { exam, n, module, clock: c, score: g.score, maxScore: g.max_score, responses: g.results, meta: {} });
+          // the clock stops only once the attempt is stored: a failed submit leaves it running and paused on leave
           clock.stop(false);
           group.stop();
-          const rec = await submitAttempt(ctx, { exam, n, module, clock: c, score: g.score, maxScore: g.max_score, responses: g.results, meta: {} });
           ctx.go(`/exam/${n}/${module}/review/${rec.id}`, { replace: true });
         } catch (e) {
           submitting = false;

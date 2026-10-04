@@ -192,7 +192,7 @@ export function startPanel(el, ctx, { exam, n, module, ex, def, onStart }) {
   const soundCheck = module === 'hoeren' ? h('button', { type: 'button', class: 'btn pressable', lang: 'de', onclick: () => {
     try { check?.pause(); } catch { /* none */ }
     check = new Audio(mediaUrl(exam, n, 's1-1.mp3'));
-    check.play().catch(() => ctx.toast(t('exam.audioBlocked')));
+    check.play().catch(() => ctx.toast(t('exam.de.audioBlocked')));
   } }, t('exam.de.soundCheck')) : null;
   replace(el, h('div', { class: 'ex-start' }, back,
     h('h1', { lang: 'de' }, def.name),

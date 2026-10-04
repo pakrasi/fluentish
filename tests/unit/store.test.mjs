@@ -138,3 +138,10 @@ test('exam date: validated, the single writer, and it never rewrites a card', as
   assert.equal(r.ok, true);
   assert.equal(store.get('settings').exam.date, null, 'the date can be cleared');
 });
+
+test('two tabs: a pending local write merges another tab\'s change instead of overwriting it', async () => {
+  const { mergeKV } = await import('../../src/data/store.js');
+  const a = { '2026-10-03': { minutes: 12, rounds: 3 } }, b = { '2026-10-03': { minutes: 30, rounds: 1 }, '2026-10-02': { minutes: 5, rounds: 1 } };
+  assert.deepEqual(mergeKV('activity', a, b), { '2026-10-03': { minutes: 30, rounds: 3 }, '2026-10-02': { minutes: 5, rounds: 1 } });
+  assert.equal(mergeKV('ui', { x: 1 }, { y: 2 }).x, 1, 'elsewhere this tab\'s pending change wins');
+});

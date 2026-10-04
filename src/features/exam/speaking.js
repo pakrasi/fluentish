@@ -63,7 +63,7 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
     stopCue();
     cueAudio = new Audio(url);
     cueAudio.onended = onEnd;
-    cueAudio.play().catch(() => { ctx.toast(t('exam.audioBlocked')); onEnd(); });
+    cueAudio.play().catch(() => { ctx.toast(t('exam.de.audioBlocked')); onEnd(); });
   };
 
   /** The recorder for one Teil. @param {string} part @param {string} label @param {string} hint */
@@ -228,10 +228,10 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
         try {
           const notes = [st.notes1 ? `Teil 1:\n${st.notes1}` : '', st.notes || ''].filter(Boolean).join('\n\n');
           const cl = clock.clock;
-          clock.stop(false);
           const r = await submitAttempt(ctx, { exam, n, module: 'sprechen', clock: cl, score: null, maxScore: 100,
             writings: notes ? [{ aufgabe: 'sprechen-notizen', text: notes, word_count: notes.split(/\s+/).filter(Boolean).length }] : [],
             meta: { topic: P.teil2.topics[st.topic], recorded: st.recorded } });
+          clock.stop(false);   // only once the attempt is stored
           submitted = true;
           ctx.go(`/exam/${n}/sprechen/review/${r.id}`, { replace: true });
         } catch (e) { busy = false; console.error(e); ctx.toast(t('exam.submitFailed')); }

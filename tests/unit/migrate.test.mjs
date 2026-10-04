@@ -148,3 +148,32 @@ test('a device with no legacy data gets an empty profile', async () => {
   assert.equal(x.migration, null);
   assert.equal(x.store.get('settings'), undefined);
 });
+
+test('a migration cut off half-way runs again on the next start; one that was used is kept', async () => {
+  const real = createMemoryAdapter();
+  const { s } = readOnlyStorage(fixture.localStorage);
+  let fail = true;
+  const flaky = { ...real, putCards: async (...a) => { if (fail) throw new Error('killed'); return real.putCards(...a); } };
+  await assert.rejects(openSession({ adapter: flaky, legacyStorage: s, clock, now: () => NOW }));
+  assert.ok((await real.getDevice()).migrating, 'the marker says a migration is running');
+  fail = false;
+  const a = await openSession({ adapter: real, legacyStorage: s, clock, now: () => NOW });
+  assert.equal(a.migration.cards, 40, 'migrated again from the untouched legacy keys');
+  assert.equal(Object.keys(a.store.cards('b1')).length, 40);
+  assert.equal((await real.listProfiles()).length, 1, 'the half profile is gone');
+  assert.equal((await real.getDevice()).migrating, undefined);
+});
+
+test('Delete all removes the recordings waiting on this device', async () => {
+  const adapter = createMemoryAdapter();
+  const { s } = readOnlyStorage(fixture.localStorage);
+  const a = await openSession({ adapter, legacyStorage: s, clock, now: () => NOW });
+  await adapter.putBlob('rec-1', new Blob([new Uint8Array(4)]));
+  await adapter.putBlob('take:t1', new Blob([new Uint8Array(4)]));
+  a.store.append('exam.voice', { day: 1, module: 'sprechen', part: 'teil1', blobRef: 'rec-1' });
+  a.store.set('exams.takeInProgress', { id: 't1', n: 1, part: 'teil2' });
+  await a.store.flush();
+  await deleteProfile(adapter, a.device, a.profile);
+  assert.equal(await adapter.getBlob('rec-1'), null);
+  assert.equal(await adapter.getBlob('take:t1'), null);
+});

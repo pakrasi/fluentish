@@ -35,6 +35,24 @@ const DEBOUNCE_MS = 250;
  * @property {boolean} synced @property {string|null} path
  */
 
+/**
+ * Two tabs changed the same collection before either wrote it: keep both. Study minutes per day take the larger
+ * count of each tab (they were added on top of the same value); for other collections this tab's pending change
+ * wins, as it would have without the merge.
+ * @param {string} name @param {any} local @param {any} remote
+ */
+export function mergeKV(name, local, remote) {
+  if (name === 'activity' && local && remote && typeof local === 'object' && typeof remote === 'object') {
+    /** @type {Record<string, any>} */ const out = { ...remote };
+    for (const [day, x] of Object.entries(local)) {
+      const y = out[day] || {};
+      out[day] = { ...y, ...x, minutes: Math.max(x?.minutes || 0, y.minutes || 0), rounds: Math.max(x?.rounds || 0, y.rounds || 0) };
+    }
+    return out;
+  }
+  return local;
+}
+
 export class Store {
   /**
    * @param {object} o
@@ -60,6 +78,8 @@ export class Store {
     /** @type {Map<string, ReturnType<typeof setTimeout>>} */ this.timers = new Map();
     /** @type {Set<Promise<any>>} */ this.inflight = new Set();
     /** @type {((path: string) => void) | null} */ this.onWriteError = null;
+    /** another tab deleted this profile @type {(() => void) | null} */ this.onDeleted = null;
+    this.deleted = false;
     if (channel) channel.onmessage = e => this.onRemote(e.data);
   }
 
@@ -88,7 +108,9 @@ export class Store {
   /** Replace a collection. Never mutate what get() returned; use update(). @param {string} name @param {any} value */
   set(name, value) {
     this.kv[name] = value;
-    const write = () => this.track(this.adapter.putKV(DEVICE_SCOPE.has(name) ? 'device' : this.profile.id, name, value), name)
+    // writes the value as it is when the write runs, not as it was when set() was called: another tab's change merged
+    // in meanwhile (onRemote) is kept
+    const write = () => this.deleted ? Promise.resolve() : this.track(this.adapter.putKV(DEVICE_SCOPE.has(name) ? 'device' : this.profile.id, name, this.kv[name]), name)
       .then(() => this.post({ kind: 'kv', name }));
     if (DEBOUNCED.has(name)) {
       clearTimeout(this.timers.get(name));
@@ -114,7 +136,7 @@ export class Store {
   putCards(deck, entries) {
     const c = this.cards(deck);
     for (const [id, rec] of entries) { if (rec == null) delete c[id]; else c[id] = rec; }
-    this.track(this.adapter.putCards(this.profile.id, deck, entries), `cards:${deck}`).then(() => this.post({ kind: 'cards', name: deck }));
+    if (!this.deleted) this.track(this.adapter.putCards(this.profile.id, deck, entries), `cards:${deck}`).then(() => this.post({ kind: 'cards', name: deck }));
     this.notify(`cards:${deck}`, c);
   }
 
@@ -124,7 +146,7 @@ export class Store {
   /** @param {any[]} list */
   putAttempts(list) {
     for (const a of list) this.attemptsById.set(a.id, a);
-    this.track(this.adapter.putAttempts(this.profile.id, list), 'attempts').then(() => this.post({ kind: 'attempts' }));
+    if (!this.deleted) this.track(this.adapter.putAttempts(this.profile.id, list), 'attempts').then(() => this.post({ kind: 'attempts' }));
     this.notify('attempts', this.attempts());
   }
 
@@ -143,7 +165,7 @@ export class Store {
       at: isoWithOffset(at), day: day || this.clock.today(), type, payload, synced: false, path,
     };
     this.events.set(e.id, e);
-    this.track(Promise.all([this.adapter.putEvents(this.profile.id, [e]), this.adapter.putDevice(this.device)]), 'outbox')
+    if (!this.deleted) this.track(Promise.all([this.adapter.putEvents(this.profile.id, [e]), this.adapter.putDevice(this.device)]), 'outbox')
       .then(() => this.post({ kind: 'outbox' }));
     this.notify('outbox', e);
     return e;
@@ -156,7 +178,7 @@ export class Store {
   markSynced(ids) {
     const changed = ids.map(id => this.events.get(id)).filter(Boolean).map(e => ({ .../** @type {Event} */ (e), synced: true }));
     changed.forEach(e => this.events.set(e.id, e));
-    if (changed.length) this.track(this.adapter.putEvents(this.profile.id, changed), 'outbox');
+    if (changed.length && !this.deleted) this.track(this.adapter.putEvents(this.profile.id, changed), 'outbox').then(() => this.post({ kind: 'outbox' }));
     this.notify('outbox', null);
   }
 
@@ -186,6 +208,7 @@ export class Store {
 
   /** Write everything that is waiting (call on pagehide / visibilitychange). */
   async flush() {
+    if (this.deleted) return;
     for (const [name, t] of this.timers) {
       clearTimeout(t);
       this.timers.delete(name);
@@ -199,11 +222,20 @@ export class Store {
 
   /** Another tab wrote: reload that part from the adapter. @param {{kind: string, name?: string, profileId: string}} m */
   async onRemote(m) {
+    if (m && m.kind === 'deleted' && m.profileId === this.profile.id) {
+      // never write into a deleted profile: drop what was waiting, and refuse later writes
+      this.deleted = true;
+      for (const tm of this.timers.values()) clearTimeout(tm);
+      this.timers.clear();
+      this.onDeleted?.();
+      return;
+    }
     if (!m || (m.profileId !== this.profile.id && !(m.kind === 'kv' && m.name && DEVICE_SCOPE.has(m.name)))) return;
     if (m.kind === 'kv' && m.name) {
       const scope = DEVICE_SCOPE.has(m.name) ? 'device' : this.profile.id;
       const all = await this.adapter.loadScope(scope);
-      this.kv[m.name] = all[m.name];
+      // a change of ours is still waiting to be written: merge, so neither tab's change is lost
+      this.kv[m.name] = this.timers.has(m.name) ? mergeKV(m.name, this.kv[m.name], all[m.name]) : all[m.name];
       this.notify(m.name, this.kv[m.name]);
       return;
     }

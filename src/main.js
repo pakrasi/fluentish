@@ -54,6 +54,7 @@ async function main() {
   });
   store = session.store;
   store.onWriteError = (/** @type {string} */ what) => toast(t('error.save', { what }));
+  store.onDeleted = () => location.reload();   // "Delete all" in another tab
   applyPrefs(store.get('prefs'));
   bus.on('prefs:changed', () => applyPrefs(store.get('prefs')));
   const flush = () => { store.flush(); };
