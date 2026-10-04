@@ -1,0 +1,990 @@
+{
+ "groups": [
+  {
+   "id": "place",
+   "label": "Where: position and direction"
+  },
+  {
+   "id": "prep",
+   "label": "Little words: prepositions and adverbs"
+  },
+  {
+   "id": "amount",
+   "label": "Size, shape and amount"
+  },
+  {
+   "id": "senses",
+   "label": "Senses: heat, light, sound, taste"
+  },
+  {
+   "id": "time",
+   "label": "Time"
+  },
+  {
+   "id": "quality",
+   "label": "Good or bad, easy or hard"
+  },
+  {
+   "id": "people",
+   "label": "People: character, mood and health"
+  },
+  {
+   "id": "family",
+   "label": "People: pairs and roles"
+  },
+  {
+   "id": "things",
+   "label": "Things and ideas"
+  },
+  {
+   "id": "move",
+   "label": "Verbs: coming and going"
+  },
+  {
+   "id": "act",
+   "label": "Verbs: doing and undoing"
+  }
+ ],
+ "pairs": [
+  {
+   "a": "innen.adv",
+   "b": "außen.adv",
+   "group": "place"
+  },
+  {
+   "a": "drinnen.adv",
+   "b": "draußen.adv",
+   "group": "place"
+  },
+  {
+   "a": "oben.adv",
+   "b": "unten.adv",
+   "group": "place"
+  },
+  {
+   "a": "vorne.adv",
+   "b": "hinten.adv",
+   "group": "place"
+  },
+  {
+   "a": "links.adv",
+   "b": "rechts.adv",
+   "group": "place"
+  },
+  {
+   "a": "hier.adv",
+   "b": "dort.adv",
+   "group": "place"
+  },
+  {
+   "a": "nah.adj",
+   "b": "fern.adj",
+   "group": "place"
+  },
+  {
+   "a": "vorwärts.adv",
+   "b": "rückwärts.adv",
+   "group": "place"
+  },
+  {
+   "a": "der_Norden",
+   "b": "der_Süden",
+   "group": "place"
+  },
+  {
+   "a": "der_Osten",
+   "b": "der_Westen",
+   "group": "place"
+  },
+  {
+   "a": "nördlich.adj",
+   "b": "südlich.adj",
+   "group": "place"
+  },
+  {
+   "a": "östlich.adj",
+   "b": "westlich.adj",
+   "group": "place"
+  },
+  {
+   "a": "das_Inland",
+   "b": "das_Ausland",
+   "group": "place"
+  },
+  {
+   "a": "die_Stadt",
+   "b": "das_Land",
+   "group": "place"
+  },
+  {
+   "a": "mit.prep",
+   "b": "ohne.prep",
+   "group": "prep"
+  },
+  {
+   "a": "für.prep",
+   "b": "gegen.prep",
+   "group": "prep"
+  },
+  {
+   "a": "über.prep",
+   "b": "unter.prep",
+   "group": "prep"
+  },
+  {
+   "a": "vor.prep",
+   "b": "hinter.prep",
+   "group": "prep"
+  },
+  {
+   "a": "vor.prep",
+   "b": "nach.prep",
+   "group": "prep"
+  },
+  {
+   "a": "an.adv",
+   "b": "aus.adv",
+   "group": "prep"
+  },
+  {
+   "a": "auf.adv",
+   "b": "zu.adv",
+   "group": "prep"
+  },
+  {
+   "a": "ja.interj",
+   "b": "nein.interj",
+   "group": "prep"
+  },
+  {
+   "a": "groß.adj",
+   "b": "klein.adj",
+   "group": "amount"
+  },
+  {
+   "a": "lang.adj",
+   "b": "kurz.adj",
+   "group": "amount"
+  },
+  {
+   "a": "hoch.adj",
+   "b": "niedrig.adj",
+   "group": "amount"
+  },
+  {
+   "a": "hoch.adj",
+   "b": "tief.adj",
+   "group": "amount"
+  },
+  {
+   "a": "breit.adj",
+   "b": "schmal.adj",
+   "group": "amount"
+  },
+  {
+   "a": "weit.adj",
+   "b": "eng.adj",
+   "group": "amount"
+  },
+  {
+   "a": "nah.adj",
+   "b": "weit.adj",
+   "group": "amount"
+  },
+  {
+   "a": "dick.adj",
+   "b": "dünn.adj",
+   "group": "amount"
+  },
+  {
+   "a": "dick.adj",
+   "b": "schlank.adj",
+   "group": "amount"
+  },
+  {
+   "a": "voll.adj",
+   "b": "leer.adj",
+   "group": "amount"
+  },
+  {
+   "a": "viel.adv",
+   "b": "wenig.adv",
+   "group": "amount"
+  },
+  {
+   "a": "mehr.adv",
+   "b": "weniger.adv",
+   "group": "amount"
+  },
+  {
+   "a": "alles.pron",
+   "b": "nichts.pron",
+   "group": "amount"
+  },
+  {
+   "a": "jemand.pron",
+   "b": "niemand.pron",
+   "group": "amount"
+  },
+  {
+   "a": "schwer.adj",
+   "b": "leicht.adj",
+   "group": "amount"
+  },
+  {
+   "a": "heiß.adj",
+   "b": "kalt.adj",
+   "group": "senses"
+  },
+  {
+   "a": "warm.adj",
+   "b": "kalt.adj",
+   "group": "senses"
+  },
+  {
+   "a": "warm.adj",
+   "b": "kühl.adj",
+   "group": "senses"
+  },
+  {
+   "a": "hell.adj",
+   "b": "dunkel.adj",
+   "group": "senses"
+  },
+  {
+   "a": "laut.adj",
+   "b": "leise.adj",
+   "group": "senses"
+  },
+  {
+   "a": "nass.adj",
+   "b": "trocken.adj",
+   "group": "senses"
+  },
+  {
+   "a": "hart.adj",
+   "b": "weich.adj",
+   "group": "senses"
+  },
+  {
+   "a": "süß.adj",
+   "b": "sauer.adj",
+   "group": "senses"
+  },
+  {
+   "a": "süß.adj",
+   "b": "salzig.adj",
+   "group": "senses"
+  },
+  {
+   "a": "scharf.adj",
+   "b": "mild.adj",
+   "group": "senses"
+  },
+  {
+   "a": "sauber.adj",
+   "b": "schmutzig.adj",
+   "group": "senses"
+  },
+  {
+   "a": "früh.adj",
+   "b": "spät.adj",
+   "group": "time"
+  },
+  {
+   "a": "früher.adv",
+   "b": "später.adv",
+   "group": "time"
+  },
+  {
+   "a": "zuerst.adv",
+   "b": "zuletzt.adv",
+   "group": "time"
+  },
+  {
+   "a": "vorher.adv",
+   "b": "nachher.adv",
+   "group": "time"
+  },
+  {
+   "a": "immer.adv",
+   "b": "nie.adv",
+   "group": "time"
+  },
+  {
+   "a": "oft.adv",
+   "b": "selten.adv",
+   "group": "time"
+  },
+  {
+   "a": "häufig.adj",
+   "b": "selten.adv",
+   "group": "time"
+  },
+  {
+   "a": "morgens.adv",
+   "b": "abends.adv",
+   "group": "time"
+  },
+  {
+   "a": "gestern.adv",
+   "b": "morgen.adv",
+   "group": "time"
+  },
+  {
+   "a": "der_Anfang",
+   "b": "das_Ende",
+   "group": "time"
+  },
+  {
+   "a": "der_Beginn",
+   "b": "das_Ende",
+   "group": "time"
+  },
+  {
+   "a": "der_Tag",
+   "b": "die_Nacht",
+   "group": "time"
+  },
+  {
+   "a": "der_Morgen",
+   "b": "der_Abend",
+   "group": "time"
+  },
+  {
+   "a": "der_Sommer",
+   "b": "der_Winter",
+   "group": "time"
+  },
+  {
+   "a": "die_Vergangenheit",
+   "b": "die_Zukunft",
+   "group": "time"
+  },
+  {
+   "a": "alt.adj",
+   "b": "neu.adj",
+   "group": "time"
+  },
+  {
+   "a": "alt.adj",
+   "b": "jung.adj",
+   "group": "time"
+  },
+  {
+   "a": "schnell.adj",
+   "b": "langsam.adj",
+   "group": "time"
+  },
+  {
+   "a": "gut.adj",
+   "b": "schlecht.adj",
+   "group": "quality"
+  },
+  {
+   "a": "richtig.adj",
+   "b": "falsch.adj",
+   "group": "quality"
+  },
+  {
+   "a": "wahr.adj",
+   "b": "falsch.adj",
+   "group": "quality"
+  },
+  {
+   "a": "einfach.adj",
+   "b": "schwierig.adj",
+   "group": "quality"
+  },
+  {
+   "a": "einfach.adj",
+   "b": "kompliziert.adj",
+   "group": "quality"
+  },
+  {
+   "a": "stark.adj",
+   "b": "schwach.adj",
+   "group": "quality"
+  },
+  {
+   "a": "teuer.adj",
+   "b": "billig.adj",
+   "group": "quality"
+  },
+  {
+   "a": "teuer.adj",
+   "b": "günstig.adj",
+   "group": "quality"
+  },
+  {
+   "a": "reich.adj",
+   "b": "arm.adj",
+   "group": "quality"
+  },
+  {
+   "a": "schön.adj",
+   "b": "hässlich.adj",
+   "group": "quality"
+  },
+  {
+   "a": "hübsch.adj",
+   "b": "hässlich.adj",
+   "group": "quality"
+  },
+  {
+   "a": "gleich.adv",
+   "b": "verschieden.adj",
+   "group": "quality"
+  },
+  {
+   "a": "ähnlich.adj",
+   "b": "verschieden.adj",
+   "group": "quality"
+  },
+  {
+   "a": "wichtig.adj",
+   "b": "unwichtig.adj",
+   "group": "quality"
+  },
+  {
+   "a": "möglich.adj",
+   "b": "unmöglich.adj",
+   "group": "quality"
+  },
+  {
+   "a": "interessant.adj",
+   "b": "langweilig.adj",
+   "group": "quality"
+  },
+  {
+   "a": "spannend.adj",
+   "b": "langweilig.adj",
+   "group": "quality"
+  },
+  {
+   "a": "sicher.adj",
+   "b": "gefährlich.adj",
+   "group": "quality"
+  },
+  {
+   "a": "sicher.adj",
+   "b": "unsicher.adj",
+   "group": "quality"
+  },
+  {
+   "a": "bekannt.adj",
+   "b": "unbekannt.adj",
+   "group": "quality"
+  },
+  {
+   "a": "modern.adj",
+   "b": "altmodisch.adj",
+   "group": "quality"
+  },
+  {
+   "a": "privat.adj",
+   "b": "öffentlich.adj",
+   "group": "quality"
+  },
+  {
+   "a": "positiv.adj",
+   "b": "negativ.adj",
+   "group": "quality"
+  },
+  {
+   "a": "aktiv.adj",
+   "b": "passiv.adj",
+   "group": "quality"
+  },
+  {
+   "a": "direkt.adj",
+   "b": "indirekt.adj",
+   "group": "quality"
+  },
+  {
+   "a": "angenehm.adj",
+   "b": "unangenehm.adj",
+   "group": "quality"
+  },
+  {
+   "a": "abhängig.adj",
+   "b": "unabhängig.adj",
+   "group": "quality"
+  },
+  {
+   "a": "erlaubt.adj",
+   "b": "verboten.adj",
+   "group": "quality"
+  },
+  {
+   "a": "besetzt.adj",
+   "b": "frei.adj",
+   "group": "quality"
+  },
+  {
+   "a": "offen.adj",
+   "b": "geschlossen.adj",
+   "group": "quality"
+  },
+  {
+   "a": "geöffnet.adj",
+   "b": "geschlossen.adj",
+   "group": "quality"
+  },
+  {
+   "a": "national.adj",
+   "b": "international.adj",
+   "group": "quality"
+  },
+  {
+   "a": "legal.adj",
+   "b": "illegal.adj",
+   "group": "quality"
+  },
+  {
+   "a": "glücklich.adj",
+   "b": "unglücklich.adj",
+   "group": "people"
+  },
+  {
+   "a": "froh.adj",
+   "b": "traurig.adj",
+   "group": "people"
+  },
+  {
+   "a": "fröhlich.adj",
+   "b": "traurig.adj",
+   "group": "people"
+  },
+  {
+   "a": "zufrieden.adj",
+   "b": "unzufrieden.adj",
+   "group": "people"
+  },
+  {
+   "a": "ruhig.adj",
+   "b": "nervös.adj",
+   "group": "people"
+  },
+  {
+   "a": "gesund.adj",
+   "b": "krank.adj",
+   "group": "people"
+  },
+  {
+   "a": "gesund.adj",
+   "b": "ungesund.adj",
+   "group": "people"
+  },
+  {
+   "a": "lebendig.adj",
+   "b": "tot.adj",
+   "group": "people"
+  },
+  {
+   "a": "müde.adj",
+   "b": "wach.adj",
+   "group": "people"
+  },
+  {
+   "a": "satt.adj",
+   "b": "hungrig.adj",
+   "group": "people"
+  },
+  {
+   "a": "freundlich.adj",
+   "b": "unfreundlich.adj",
+   "group": "people"
+  },
+  {
+   "a": "höflich.adj",
+   "b": "unhöflich.adj",
+   "group": "people"
+  },
+  {
+   "a": "nett.adj",
+   "b": "gemein.adj",
+   "group": "people"
+  },
+  {
+   "a": "fleißig.adj",
+   "b": "faul.adj",
+   "group": "people"
+  },
+  {
+   "a": "mutig.adj",
+   "b": "feige.adj",
+   "group": "people"
+  },
+  {
+   "a": "klug.adj",
+   "b": "dumm.adj",
+   "group": "people"
+  },
+  {
+   "a": "ledig.adj",
+   "b": "verheiratet.adj",
+   "group": "people"
+  },
+  {
+   "a": "gemeinsam.adj",
+   "b": "allein.adj",
+   "group": "people"
+  },
+  {
+   "a": "männlich.adj",
+   "b": "weiblich.adj",
+   "group": "people"
+  },
+  {
+   "a": "der_Mann",
+   "b": "die_Frau",
+   "group": "family"
+  },
+  {
+   "a": "der_Junge",
+   "b": "das_Mädchen",
+   "group": "family"
+  },
+  {
+   "a": "der_Vater",
+   "b": "die_Mutter",
+   "group": "family"
+  },
+  {
+   "a": "der_Sohn",
+   "b": "die_Tochter",
+   "group": "family"
+  },
+  {
+   "a": "der_Bruder",
+   "b": "die_Schwester",
+   "group": "family"
+  },
+  {
+   "a": "der_Onkel",
+   "b": "die_Tante",
+   "group": "family"
+  },
+  {
+   "a": "der_Freund",
+   "b": "der_Feind",
+   "group": "family"
+  },
+  {
+   "a": "der_Arbeitgeber",
+   "b": "der_Arbeitnehmer",
+   "group": "family"
+  },
+  {
+   "a": "der_Käufer",
+   "b": "der_Verkäufer",
+   "group": "family"
+  },
+  {
+   "a": "der_Mieter",
+   "b": "der_Vermieter",
+   "group": "family"
+  },
+  {
+   "a": "der_Absender",
+   "b": "der_Empfänger",
+   "group": "family"
+  },
+  {
+   "a": "der_Anfänger",
+   "b": "der_Profi",
+   "group": "family"
+  },
+  {
+   "a": "der_Eingang",
+   "b": "der_Ausgang",
+   "group": "things"
+  },
+  {
+   "a": "die_Ankunft",
+   "b": "die_Abfahrt",
+   "group": "things"
+  },
+  {
+   "a": "die_Hinfahrt",
+   "b": "die_Rückfahrt",
+   "group": "things"
+  },
+  {
+   "a": "die_Frage",
+   "b": "die_Antwort",
+   "group": "things"
+  },
+  {
+   "a": "der_Vorteil",
+   "b": "der_Nachteil",
+   "group": "things"
+  },
+  {
+   "a": "der_Gewinn",
+   "b": "der_Verlust",
+   "group": "things"
+  },
+  {
+   "a": "der_Erfolg",
+   "b": "der_Misserfolg",
+   "group": "things"
+  },
+  {
+   "a": "der_Sieg",
+   "b": "die_Niederlage",
+   "group": "things"
+  },
+  {
+   "a": "der_Krieg",
+   "b": "der_Frieden",
+   "group": "things"
+  },
+  {
+   "a": "die_Liebe",
+   "b": "der_Hass",
+   "group": "things"
+  },
+  {
+   "a": "das_Glück",
+   "b": "das_Pech",
+   "group": "things"
+  },
+  {
+   "a": "die_Mehrheit",
+   "b": "die_Minderheit",
+   "group": "things"
+  },
+  {
+   "a": "die_Zustimmung",
+   "b": "die_Ablehnung",
+   "group": "things"
+  },
+  {
+   "a": "das_Lob",
+   "b": "die_Kritik",
+   "group": "things"
+  },
+  {
+   "a": "das_Angebot",
+   "b": "die_Nachfrage",
+   "group": "things"
+  },
+  {
+   "a": "die_Theorie",
+   "b": "die_Praxis",
+   "group": "things"
+  },
+  {
+   "a": "die_Ursache",
+   "b": "die_Folge",
+   "group": "things"
+  },
+  {
+   "a": "das_Recht",
+   "b": "die_Pflicht",
+   "group": "things"
+  },
+  {
+   "a": "die_Wahrheit",
+   "b": "die_Lüge",
+   "group": "things"
+  },
+  {
+   "a": "die_Hitze",
+   "b": "die_Kälte",
+   "group": "things"
+  },
+  {
+   "a": "der_Import",
+   "b": "der_Export",
+   "group": "things"
+  },
+  {
+   "a": "die_Einnahmen",
+   "b": "die_Ausgaben",
+   "group": "things"
+  },
+  {
+   "a": "das_Einzelzimmer",
+   "b": "das_Doppelzimmer",
+   "group": "things"
+  },
+  {
+   "a": "kommen.verb",
+   "b": "gehen.verb",
+   "group": "move"
+  },
+  {
+   "a": "ankommen.verb",
+   "b": "abfahren.verb",
+   "group": "move"
+  },
+  {
+   "a": "einsteigen.verb",
+   "b": "aussteigen.verb",
+   "group": "move"
+  },
+  {
+   "a": "einziehen.verb",
+   "b": "ausziehen.verb",
+   "group": "move"
+  },
+  {
+   "a": "starten.verb",
+   "b": "landen.verb",
+   "group": "move"
+  },
+  {
+   "a": "steigen.verb",
+   "b": "sinken.verb",
+   "group": "move"
+  },
+  {
+   "a": "zunehmen.verb",
+   "b": "abnehmen.verb",
+   "group": "move"
+  },
+  {
+   "a": "erhöhen.verb",
+   "b": "senken.verb",
+   "group": "move"
+  },
+  {
+   "a": "ziehen.verb",
+   "b": "drücken.verb",
+   "group": "move"
+  },
+  {
+   "a": "bringen.verb",
+   "b": "holen.verb",
+   "group": "move"
+  },
+  {
+   "a": "sitzen.verb",
+   "b": "stehen.verb",
+   "group": "move"
+  },
+  {
+   "a": "einschlafen.verb",
+   "b": "aufwachen.verb",
+   "group": "move"
+  },
+  {
+   "a": "kaufen.verb",
+   "b": "verkaufen.verb",
+   "group": "act"
+  },
+  {
+   "a": "mieten.verb",
+   "b": "vermieten.verb",
+   "group": "act"
+  },
+  {
+   "a": "geben.verb",
+   "b": "nehmen.verb",
+   "group": "act"
+  },
+  {
+   "a": "gewinnen.verb",
+   "b": "verlieren.verb",
+   "group": "act"
+  },
+  {
+   "a": "senden.verb",
+   "b": "empfangen.verb",
+   "group": "act"
+  },
+  {
+   "a": "öffnen.verb",
+   "b": "schließen.verb",
+   "group": "act"
+  },
+  {
+   "a": "aufmachen.verb",
+   "b": "zumachen.verb",
+   "group": "act"
+  },
+  {
+   "a": "einschalten.verb",
+   "b": "ausschalten.verb",
+   "group": "act"
+  },
+  {
+   "a": "anmachen.verb",
+   "b": "ausmachen.verb",
+   "group": "act"
+  },
+  {
+   "a": "anfangen.verb",
+   "b": "aufhören.verb",
+   "group": "act"
+  },
+  {
+   "a": "beginnen.verb",
+   "b": "beenden.verb",
+   "group": "act"
+  },
+  {
+   "a": "sich_anmelden.verb",
+   "b": "sich_abmelden.verb",
+   "group": "act"
+  },
+  {
+   "a": "fragen.verb",
+   "b": "antworten.verb",
+   "group": "act"
+  },
+  {
+   "a": "reden.verb",
+   "b": "schweigen.verb",
+   "group": "act"
+  },
+  {
+   "a": "lachen.verb",
+   "b": "weinen.verb",
+   "group": "act"
+  },
+  {
+   "a": "lieben.verb",
+   "b": "hassen.verb",
+   "group": "act"
+  },
+  {
+   "a": "loben.verb",
+   "b": "kritisieren.verb",
+   "group": "act"
+  },
+  {
+   "a": "erlauben.verb",
+   "b": "verbieten.verb",
+   "group": "act"
+  },
+  {
+   "a": "zustimmen.verb",
+   "b": "widersprechen.verb",
+   "group": "act"
+  },
+  {
+   "a": "annehmen.verb",
+   "b": "ablehnen.verb",
+   "group": "act"
+  },
+  {
+   "a": "zusagen.verb",
+   "b": "absagen.verb",
+   "group": "act"
+  },
+  {
+   "a": "sich_erinnern.verb",
+   "b": "vergessen.verb",
+   "group": "act"
+  },
+  {
+   "a": "leben.verb",
+   "b": "sterben.verb",
+   "group": "act"
+  }
+ ]
+}

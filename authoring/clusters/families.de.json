@@ -1,0 +1,2154 @@
+[
+ {
+  "id": "fallen",
+  "head": "fallen.verb",
+  "label": "fallen",
+  "note": "fall; a case, an event that happens",
+  "members": [
+   "fallen.verb",
+   "der_Fall",
+   "der_Unfall",
+   "der_Zufall",
+   "zufällig.adj",
+   "der_Notfall",
+   "der_Abfall",
+   "der_Ausfall",
+   "ausfallen.verb",
+   "der_Durchfall",
+   "durchfallen.verb",
+   "umfallen.verb",
+   "einfallen.verb",
+   "der_Einfall",
+   "auffallen.verb",
+   "auffällig.adj",
+   "verfallen.verb",
+   "der_Verfall",
+   "zerfallen.verb",
+   "der_Zerfall",
+   "anfallen.verb",
+   "der_Anfall",
+   "der_Beifall",
+   "gefallen.verb",
+   "der_Gefallen",
+   "falls.conj",
+   "jedenfalls.adv",
+   "ebenfalls.adv",
+   "keinesfalls.adv",
+   "gegebenenfalls.adv",
+   "allenfalls.adv",
+   "auf_jeden_fall.phrase",
+   "auf_keinen_fall.phrase",
+   "der_Tonfall",
+   "das_Gefälle"
+  ]
+ },
+ {
+  "id": "weisen",
+  "head": "weisen.verb",
+  "label": "weisen",
+  "note": "point, show",
+  "members": [
+   "weisen.verb",
+   "hinweisen.verb",
+   "der_Hinweis",
+   "beweisen.verb",
+   "der_Beweis",
+   "nachweisen.verb",
+   "der_Nachweis",
+   "der_Ausweis",
+   "verweisen.verb",
+   "überweisen.verb",
+   "die_Überweisung",
+   "sich_erweisen.verb",
+   "wegweisend.adj"
+  ]
+ },
+ {
+  "id": "sprechen",
+  "head": "sprechen.verb",
+  "label": "sprechen",
+  "note": "speak",
+  "members": [
+   "sprechen.verb",
+   "die_Sprache",
+   "die_Fremdsprache",
+   "die_Aussprache",
+   "aussprechen.verb",
+   "besprechen.verb",
+   "die_Besprechung",
+   "versprechen.verb",
+   "das_Versprechen",
+   "vielversprechend.adj",
+   "widersprechen.verb",
+   "der_Widerspruch",
+   "widersprüchlich.adj",
+   "entsprechen.verb",
+   "entsprechend.adj",
+   "ansprechen.verb",
+   "der_Anspruch",
+   "anspruchsvoll.adj",
+   "in_anspruch_nehmen.phrase",
+   "der_Einspruch",
+   "das_Gespräch",
+   "die_Sprechstunde",
+   "freisprechen.verb",
+   "zur_sprache_bringen.phrase",
+   "rücksprache_halten.phrase",
+   "zweisprachig.adj",
+   "mehrsprachig.adj"
+  ]
+ },
+ {
+  "id": "sagen",
+  "head": "sagen.verb",
+  "label": "sagen",
+  "note": "say",
+  "members": [
+   "sagen.verb",
+   "absagen.verb",
+   "die_Absage",
+   "zusagen.verb",
+   "die_Zusage",
+   "aussagen.verb",
+   "die_Aussage",
+   "die_Ansage",
+   "die_Durchsage",
+   "versagen.verb",
+   "ehrlich_gesagt.phrase",
+   "sozusagen.adv"
+  ]
+ },
+ {
+  "id": "wirken",
+  "head": "wirken.verb",
+  "label": "wirken",
+  "note": "have an effect, work",
+  "members": [
+   "wirken.verb",
+   "die_Wirkung",
+   "die_Auswirkung",
+   "sich_auswirken.verb",
+   "bewirken.verb",
+   "die_Nebenwirkung",
+   "die_Wechselwirkung",
+   "wirksam.adj",
+   "die_Wirksamkeit",
+   "wirklich.adv",
+   "die_Wirklichkeit"
+  ]
+ },
+ {
+  "id": "sicht",
+  "head": "die_Sicht",
+  "label": "Sicht",
+  "note": "view, sight (from sehen)",
+  "members": [
+   "die_Sicht",
+   "die_Absicht",
+   "absichtlich.adj",
+   "absicht_haben.phrase",
+   "beabsichtigen.verb",
+   "die_Ansicht",
+   "die_Aussicht",
+   "die_Einsicht",
+   "die_Rücksicht",
+   "rücksichtsvoll.adj",
+   "rücksicht_nehmen.phrase",
+   "berücksichtigen.verb",
+   "die_Vorsicht",
+   "vorsichtig.adj",
+   "die_Übersicht",
+   "die_Hinsicht",
+   "hinsichtlich.prep",
+   "die_Zuversicht",
+   "zuversichtlich.adj",
+   "die_Sichtweise",
+   "offensichtlich.adj",
+   "voraussichtlich.adj",
+   "besichtigen.verb",
+   "die_Besichtigung"
+  ]
+ },
+ {
+  "id": "sehen",
+  "head": "sehen.verb",
+  "label": "sehen",
+  "note": "see, look",
+  "members": [
+   "sehen.verb",
+   "fernsehen.verb",
+   "das_Fernsehen",
+   "der_Fernseher",
+   "das_Aussehen",
+   "auf_wiedersehen.phrase",
+   "die_Sehenswürdigkeit"
+  ]
+ },
+ {
+  "id": "teil",
+  "head": "der_Teil",
+  "label": "Teil",
+  "note": "part, share",
+  "members": [
+   "der_Teil",
+   "teilen.verb",
+   "das_Gegenteil",
+   "im_gegenteil.phrase",
+   "der_Vorteil",
+   "der_Nachteil",
+   "der_Anteil",
+   "das_Abteil",
+   "die_Abteilung",
+   "verteilen.verb",
+   "einteilen.verb",
+   "mitteilen.verb",
+   "die_Mitteilung",
+   "teilnehmen.verb",
+   "der_Teilnehmer",
+   "die_Teilnahme",
+   "teilweise.adv",
+   "die_Teilzeit",
+   "benachteiligt.adj"
+  ]
+ },
+ {
+  "id": "stimmen",
+  "head": "stimmen.verb",
+  "label": "stimmen",
+  "note": "be right; vote, voice; mood",
+  "members": [
+   "stimmen.verb",
+   "die_Stimme",
+   "die_Stimmung",
+   "bestimmen.verb",
+   "bestimmt.adv",
+   "zustimmen.verb",
+   "die_Zustimmung",
+   "abstimmen.verb",
+   "die_Abstimmung",
+   "übereinstimmen.verb",
+   "die_Übereinstimmung"
+  ]
+ },
+ {
+  "id": "legen",
+  "head": "legen.verb",
+  "label": "legen",
+  "note": "lay, put",
+  "members": [
+   "legen.verb",
+   "hinlegen.verb",
+   "belegen.verb",
+   "der_Beleg",
+   "widerlegen.verb",
+   "darlegen.verb",
+   "überlegen.verb",
+   "die_Überlegung",
+   "verlegen.verb",
+   "anlegen.verb",
+   "festlegen.verb",
+   "ablegen.verb",
+   "vorlegen.verb",
+   "die_Auslegung",
+   "grundlegend.adj",
+   "wert_legen_auf.phrase"
+  ]
+ },
+ {
+  "id": "lage",
+  "head": "die_Lage",
+  "label": "Lage",
+  "note": "position, layer (from liegen)",
+  "members": [
+   "die_Lage",
+   "die_Grundlage",
+   "die_Unterlagen",
+   "die_Niederlage",
+   "die_Beilage",
+   "die_Ablage",
+   "die_Auflage",
+   "die_Rücklage"
+  ]
+ },
+ {
+  "id": "liegen",
+  "head": "liegen.verb",
+  "label": "liegen",
+  "note": "lie (be lying)",
+  "members": [
+   "liegen.verb",
+   "vorliegen.verb",
+   "die_Gelegenheit",
+   "gelegentlich.adv",
+   "abgelegen.adj",
+   "zugrunde_liegen.verb"
+  ]
+ },
+ {
+  "id": "raum",
+  "head": "der_Raum",
+  "label": "Raum",
+  "note": "room, space",
+  "members": [
+   "der_Raum",
+   "räumen.verb",
+   "aufräumen.verb",
+   "einräumen.verb",
+   "geräumig.adj",
+   "der_Zeitraum"
+  ]
+ },
+ {
+  "id": "holen",
+  "head": "holen.verb",
+  "label": "holen",
+  "note": "fetch",
+  "members": [
+   "holen.verb",
+   "abholen.verb",
+   "wiederholen.verb",
+   "die_Wiederholung",
+   "nachholen.verb",
+   "überholen.verb",
+   "sich_erholen.verb",
+   "die_Erholung"
+  ]
+ },
+ {
+  "id": "fahren",
+  "head": "fahren.verb",
+  "label": "fahren",
+  "note": "travel, drive",
+  "members": [
+   "fahren.verb",
+   "die_Fahrt",
+   "die_Abfahrt",
+   "abfahren.verb",
+   "die_Hinfahrt",
+   "die_Rückfahrt",
+   "die_Vorfahrt",
+   "der_Fahrer",
+   "der_Beifahrer",
+   "der_Fahrgast",
+   "das_Fahrzeug",
+   "erfahren.verb",
+   "die_Erfahrung",
+   "das_Verfahren"
+  ]
+ },
+ {
+  "id": "ziehen",
+  "head": "ziehen.verb",
+  "label": "ziehen",
+  "note": "pull, move",
+  "members": [
+   "ziehen.verb",
+   "der_Zug",
+   "umziehen.verb",
+   "der_Umzug",
+   "einziehen.verb",
+   "ausziehen.verb",
+   "sich_ausziehen.verb",
+   "sich_anziehen.verb",
+   "der_Anzug",
+   "sich_umziehen.verb",
+   "der_Aufzug",
+   "erziehen.verb",
+   "die_Erziehung",
+   "sich_beziehen.verb",
+   "die_Beziehung",
+   "der_Bezug",
+   "in_bezug_auf.phrase",
+   "bezug_nehmen_auf.phrase",
+   "einbeziehen.verb",
+   "heranziehen.verb",
+   "beziehungsweise.conj"
+  ]
+ },
+ {
+  "id": "stellen",
+  "head": "stellen.verb",
+  "label": "stellen",
+  "note": "put (upright), place",
+  "members": [
+   "stellen.verb",
+   "die_Stelle",
+   "bestellen.verb",
+   "ausstellen.verb",
+   "die_Ausstellung",
+   "einstellen.verb",
+   "die_Einstellung",
+   "feststellen.verb",
+   "herstellen.verb",
+   "der_Hersteller",
+   "darstellen.verb",
+   "sich_herausstellen.verb",
+   "die_Vorstellung",
+   "stellung_nehmen.phrase",
+   "die_Stellungnahme",
+   "die_Angestellte",
+   "eine_frage_stellen.phrase"
+  ]
+ },
+ {
+  "id": "stehen",
+  "head": "stehen.verb",
+  "label": "stehen",
+  "note": "stand",
+  "members": [
+   "stehen.verb",
+   "aufstehen.verb",
+   "verstehen.verb",
+   "sich_verstehen.verb",
+   "das_Verständnis",
+   "das_Missverständnis",
+   "selbstverständlich.adv",
+   "bestehen.verb",
+   "bestehen_aus.verb",
+   "entstehen.verb",
+   "der_Zustand",
+   "zuständig.adj",
+   "die_Zuständigkeit",
+   "mit_abstand.phrase",
+   "der_Umstand",
+   "der_Standpunkt",
+   "einverstanden.adj"
+  ]
+ },
+ {
+  "id": "setzen",
+  "head": "sich_setzen.verb",
+  "label": "setzen",
+  "note": "set, put (sitting)",
+  "members": [
+   "sich_setzen.verb",
+   "der_Satz",
+   "besetzt.adj",
+   "übersetzen.verb",
+   "die_Übersetzung",
+   "ersetzen.verb",
+   "der_Ersatz",
+   "sich_einsetzen.verb",
+   "der_Einsatz",
+   "umsetzen.verb",
+   "die_Umsetzung",
+   "sich_durchsetzen.verb",
+   "das_Gesetz",
+   "gesetzlich.adj",
+   "die_Voraussetzung",
+   "der_Gegensatz",
+   "der_Aufsatz",
+   "der_Umsatz",
+   "der_Ansatz",
+   "der_Vorsatz",
+   "der_Grundsatz",
+   "grundsätzlich.adv"
+  ]
+ },
+ {
+  "id": "sitzen",
+  "head": "sitzen.verb",
+  "label": "sitzen",
+  "note": "sit",
+  "members": [
+   "sitzen.verb",
+   "die_Sitzung",
+   "der_Sitzplatz",
+   "sitzenbleiben.verb"
+  ]
+ },
+ {
+  "id": "schliessen",
+  "head": "schließen.verb",
+  "label": "schließen",
+  "note": "close, conclude",
+  "members": [
+   "schließen.verb",
+   "abschließen.verb",
+   "der_Abschluss",
+   "beschließen.verb",
+   "der_Beschluss",
+   "ausschließen.verb",
+   "ausschließlich.adv",
+   "schließlich.adv",
+   "anschließend.adv",
+   "der_Anschluss",
+   "der_Schluss",
+   "zum_schluss.phrase",
+   "der_Schlüssel"
+  ]
+ },
+ {
+  "id": "schlagen",
+  "head": "vorschlagen.verb",
+  "label": "schlagen",
+  "note": "hit, strike",
+  "members": [
+   "vorschlagen.verb",
+   "der_Vorschlag",
+   "einen_vorschlag_machen.phrase",
+   "der_Umschlag",
+   "der_Niederschlag",
+   "der_Zuschlag",
+   "der_Anschlag",
+   "der_Rückschlag"
+  ]
+ },
+ {
+  "id": "tragen",
+  "head": "tragen.verb",
+  "label": "tragen",
+  "note": "carry, wear",
+  "members": [
+   "tragen.verb",
+   "der_Vertrag",
+   "der_Mietvertrag",
+   "der_Betrag",
+   "der_Beitrag",
+   "beitragen.verb",
+   "der_Vortrag",
+   "der_Antrag",
+   "beantragen.verb",
+   "der_Auftrag"
+  ]
+ },
+ {
+  "id": "nehmen",
+  "head": "nehmen.verb",
+  "label": "nehmen",
+  "note": "take",
+  "members": [
+   "nehmen.verb",
+   "abnehmen.verb",
+   "mitnehmen.verb",
+   "zunehmen.verb",
+   "zunehmend.adv",
+   "annehmen.verb",
+   "die_Annahme",
+   "einnehmen.verb",
+   "die_Einnahmen",
+   "festnehmen.verb",
+   "die_Ausnahme",
+   "die_Aufnahme",
+   "die_Maßnahme",
+   "das_Unternehmen",
+   "der_Unternehmer",
+   "wahrnehmen.verb",
+   "die_Wahrnehmung",
+   "der_Arbeitnehmer",
+   "angenehm.adj",
+   "unangenehm.adj"
+  ]
+ },
+ {
+  "id": "geben",
+  "head": "geben.verb",
+  "label": "geben",
+  "note": "give",
+  "members": [
+   "geben.verb",
+   "ausgeben.verb",
+   "die_Ausgaben",
+   "abgeben.verb",
+   "aufgeben.verb",
+   "die_Aufgabe",
+   "zurückgeben.verb",
+   "die_Rückgabe",
+   "das_Angebot",
+   "das_Sonderangebot",
+   "sich_ergeben.verb",
+   "das_Ergebnis",
+   "die_Umgebung",
+   "der_Arbeitgeber",
+   "der_Gastgeber"
+  ]
+ },
+ {
+  "id": "kommen",
+  "head": "kommen.verb",
+  "label": "kommen",
+  "note": "come",
+  "members": [
+   "kommen.verb",
+   "ankommen.verb",
+   "die_Ankunft",
+   "bekommen.verb",
+   "mitkommen.verb",
+   "vorbeikommen.verb",
+   "vorkommen.verb",
+   "das_Einkommen",
+   "die_Auskunft",
+   "die_Herkunft",
+   "die_Zukunft",
+   "die_Unterkunft"
+  ]
+ },
+ {
+  "id": "gehen",
+  "head": "gehen.verb",
+  "label": "gehen",
+  "note": "go",
+  "members": [
+   "gehen.verb",
+   "ausgehen.verb",
+   "der_Ausgang",
+   "der_Eingang",
+   "der_Zugang",
+   "der_Übergang",
+   "umgehen.verb",
+   "der_Umgang",
+   "nachgehen.verb",
+   "der_Spaziergang",
+   "die_Vergangenheit",
+   "spazieren_gehen.phrase"
+  ]
+ },
+ {
+  "id": "suchen",
+  "head": "suchen.verb",
+  "label": "suchen",
+  "note": "search, look for",
+  "members": [
+   "suchen.verb",
+   "besuchen.verb",
+   "der_Besuch",
+   "der_Besucher",
+   "versuchen.verb",
+   "der_Versuch",
+   "untersuchen.verb",
+   "die_Untersuchung"
+  ]
+ },
+ {
+  "id": "kaufen",
+  "head": "kaufen.verb",
+  "label": "kaufen",
+  "note": "buy",
+  "members": [
+   "kaufen.verb",
+   "der_Kauf",
+   "der_Käufer",
+   "einkaufen.verb",
+   "der_Einkauf",
+   "verkaufen.verb",
+   "der_Verkauf",
+   "der_Verkäufer",
+   "die_Verkäuferin",
+   "das_Kaufhaus"
+  ]
+ },
+ {
+  "id": "arbeiten",
+  "head": "arbeiten.verb",
+  "label": "arbeiten",
+  "note": "work",
+  "members": [
+   "arbeiten.verb",
+   "die_Arbeit",
+   "der_Arbeiter",
+   "der_Mitarbeiter",
+   "die_Mitarbeiterin",
+   "die_Zusammenarbeit",
+   "arbeitslos.adj",
+   "die_Arbeitslosigkeit",
+   "verarbeiten.verb",
+   "ausarbeiten.verb",
+   "aufarbeiten.verb",
+   "der_Sachbearbeiter"
+  ]
+ },
+ {
+  "id": "halten",
+  "head": "halten.verb",
+  "label": "halten",
+  "note": "hold, keep",
+  "members": [
+   "halten.verb",
+   "erhalten.verb",
+   "sich_aufhalten.verb",
+   "der_Aufenthalt",
+   "sich_unterhalten.verb",
+   "die_Unterhaltung",
+   "der_Unterhalt",
+   "sich_verhalten.verb",
+   "das_Verhalten",
+   "das_Verhältnis",
+   "die_Haltung",
+   "haltbar.adj",
+   "der_Inhalt",
+   "das_Gehalt",
+   "der_Zusammenhalt",
+   "beibehalten.verb",
+   "der_Vorbehalt"
+  ]
+ },
+ {
+  "id": "lassen",
+  "head": "lassen.verb",
+  "label": "lassen",
+  "note": "let, leave",
+  "members": [
+   "lassen.verb",
+   "verlassen.verb",
+   "sich_verlassen_auf.verb",
+   "entlassen.verb",
+   "die_Entlassung",
+   "die_Zulassung",
+   "veranlassen.verb",
+   "gelassen.adj",
+   "die_Gelassenheit",
+   "zuverlässig.adj"
+  ]
+ },
+ {
+  "id": "laufen",
+  "head": "laufen.verb",
+  "label": "laufen",
+  "note": "run, walk",
+  "members": [
+   "laufen.verb",
+   "ablaufen.verb",
+   "abgelaufen.adj",
+   "sich_verlaufen.verb",
+   "der_Lebenslauf",
+   "der_Kreislauf",
+   "vorläufig.adj"
+  ]
+ },
+ {
+  "id": "finden",
+  "head": "finden.verb",
+  "label": "finden",
+  "note": "find",
+  "members": [
+   "finden.verb",
+   "stattfinden.verb",
+   "sich_befinden.verb",
+   "erfinden.verb",
+   "die_Erfindung",
+   "empfinden.verb",
+   "empfindlich.adj",
+   "sich_zurechtfinden.verb"
+  ]
+ },
+ {
+  "id": "binden",
+  "head": "die_Verbindung",
+  "label": "binden",
+  "note": "tie, bind",
+  "members": [
+   "die_Verbindung",
+   "die_Bindung",
+   "verbindlich.adj",
+   "die_Anbindung"
+  ]
+ },
+ {
+  "id": "denken",
+  "head": "denken.verb",
+  "label": "denken",
+  "note": "think",
+  "members": [
+   "denken.verb",
+   "denken_an.verb",
+   "die_Bedenken",
+   "die_Denkweise",
+   "das_Denkmal",
+   "gedenken.verb"
+  ]
+ },
+ {
+  "id": "danken",
+  "head": "danken.verb",
+  "label": "danken",
+  "note": "thank",
+  "members": [
+   "danken.verb",
+   "danke.interj",
+   "der_Dank",
+   "dankbar.adj",
+   "die_Dankbarkeit",
+   "sich_bedanken.verb"
+  ]
+ },
+ {
+  "id": "richten",
+  "head": "die_Richtung",
+  "label": "richten",
+  "note": "direct, set right",
+  "members": [
+   "die_Richtung",
+   "einrichten.verb",
+   "die_Einrichtung",
+   "ausrichten.verb",
+   "die_Nachricht",
+   "die_Nachrichten",
+   "der_Bericht",
+   "berichten.verb",
+   "der_Unterricht",
+   "unterrichten.verb",
+   "der_Richter"
+  ]
+ },
+ {
+  "id": "recht",
+  "head": "das_Recht",
+  "label": "Recht",
+  "note": "right, law",
+  "members": [
+   "das_Recht",
+   "richtig.adj",
+   "recht_haben.phrase",
+   "rechtlich.adj",
+   "berechtigt.adj",
+   "die_Gerechtigkeit",
+   "rechtzeitig.adv",
+   "die_Gleichberechtigung",
+   "mit_fug_und_recht.phrase"
+  ]
+ },
+ {
+  "id": "rufen",
+  "head": "rufen.verb",
+  "label": "rufen",
+  "note": "call",
+  "members": [
+   "rufen.verb",
+   "anrufen.verb",
+   "der_Anruf",
+   "zurückrufen.verb",
+   "widerrufen.verb",
+   "der_Beruf",
+   "beruflich.adj",
+   "berufstätig.adj"
+  ]
+ },
+ {
+  "id": "schreiben",
+  "head": "schreiben.verb",
+  "label": "schreiben",
+  "note": "write",
+  "members": [
+   "schreiben.verb",
+   "beschreiben.verb",
+   "unterschreiben.verb",
+   "die_Unterschrift",
+   "abschreiben.verb",
+   "verschreiben.verb",
+   "krankschreiben.verb",
+   "die_Krankschreibung",
+   "die_Schrift",
+   "schriftlich.adj",
+   "die_Vorschrift",
+   "die_Überschrift",
+   "die_Zeitschrift"
+  ]
+ },
+ {
+  "id": "lesen",
+  "head": "lesen.verb",
+  "label": "lesen",
+  "note": "read",
+  "members": [
+   "lesen.verb",
+   "vorlesen.verb",
+   "die_Vorlesung",
+   "die_Lesung",
+   "der_Leser"
+  ]
+ },
+ {
+  "id": "hoeren",
+  "head": "hören.verb",
+  "label": "hören",
+  "note": "hear",
+  "members": [
+   "hören.verb",
+   "zuhören.verb",
+   "aufhören.verb",
+   "gehören.verb"
+  ]
+ },
+ {
+  "id": "fragen",
+  "head": "fragen.verb",
+  "label": "fragen",
+  "note": "ask",
+  "members": [
+   "fragen.verb",
+   "die_Frage",
+   "nachfragen.verb",
+   "die_Nachfrage",
+   "die_Anfrage",
+   "die_Umfrage",
+   "hinterfragen.verb",
+   "fragwürdig.adj",
+   "in_frage_kommen.phrase"
+  ]
+ },
+ {
+  "id": "zahlen",
+  "head": "zahlen.verb",
+  "label": "zahlen",
+  "note": "pay; number",
+  "members": [
+   "zahlen.verb",
+   "die_Zahl",
+   "bezahlen.verb",
+   "die_Bezahlung",
+   "bezahlbar.adj",
+   "die_Zahlung",
+   "die_Anzahlung",
+   "einzahlen.verb",
+   "zahlreich.adj"
+  ]
+ },
+ {
+  "id": "bringen",
+  "head": "bringen.verb",
+  "label": "bringen",
+  "note": "bring",
+  "members": [
+   "bringen.verb",
+   "mitbringen.verb",
+   "verbringen.verb",
+   "sich_einbringen.verb"
+  ]
+ },
+ {
+  "id": "brauchen",
+  "head": "brauchen.verb",
+  "label": "brauchen",
+  "note": "need, use",
+  "members": [
+   "brauchen.verb",
+   "verbrauchen.verb",
+   "der_Verbrauch",
+   "der_Verbraucher"
+  ]
+ },
+ {
+  "id": "waehlen",
+  "head": "wählen.verb",
+  "label": "wählen",
+  "note": "choose, vote",
+  "members": [
+   "wählen.verb",
+   "die_Wahl",
+   "der_Wähler",
+   "die_Auswahl",
+   "auswählen.verb",
+   "das_Wahlrecht"
+  ]
+ },
+ {
+  "id": "glauben",
+  "head": "glauben.verb",
+  "label": "glauben",
+  "note": "believe",
+  "members": [
+   "glauben.verb",
+   "der_Glaube",
+   "die_Glaubwürdigkeit"
+  ]
+ },
+ {
+  "id": "zeigen",
+  "head": "zeigen.verb",
+  "label": "zeigen",
+  "note": "show",
+  "members": [
+   "zeigen.verb",
+   "aufzeigen.verb",
+   "die_Anzeige",
+   "die_Stellenanzeige"
+  ]
+ },
+ {
+  "id": "folgen",
+  "head": "folgen.verb",
+  "label": "folgen",
+  "note": "follow",
+  "members": [
+   "folgen.verb",
+   "die_Folge",
+   "folglich.adv",
+   "verfolgen.verb",
+   "zur_folge_haben.phrase",
+   "infolge.prep",
+   "zufolge.prep"
+  ]
+ },
+ {
+  "id": "erfolg",
+  "head": "der_Erfolg",
+  "label": "Erfolg",
+  "note": "success",
+  "members": [
+   "der_Erfolg",
+   "erfolgreich.adj",
+   "der_Misserfolg",
+   "erfolg_haben.phrase",
+   "viel_erfolg.phrase"
+  ]
+ },
+ {
+  "id": "sorgen",
+  "head": "sorgen.verb",
+  "label": "sorgen",
+  "note": "care, worry",
+  "members": [
+   "sorgen.verb",
+   "die_Sorge",
+   "keine_sorge.phrase",
+   "sich_sorgen_machen.phrase",
+   "besorgen.verb",
+   "versorgen.verb",
+   "die_Vorsorge",
+   "sorgfältig.adj"
+  ]
+ },
+ {
+  "id": "planen",
+  "head": "planen.verb",
+  "label": "planen",
+  "note": "plan",
+  "members": [
+   "planen.verb",
+   "der_Plan",
+   "der_Fahrplan",
+   "der_Stadtplan",
+   "der_Stundenplan"
+  ]
+ },
+ {
+  "id": "spielen",
+  "head": "spielen.verb",
+  "label": "spielen",
+  "note": "play",
+  "members": [
+   "spielen.verb",
+   "das_Spiel",
+   "der_Spieler",
+   "der_Schauspieler",
+   "die_Schauspielerin"
+  ]
+ },
+ {
+  "id": "ende",
+  "head": "das_Ende",
+  "label": "Ende",
+  "note": "end",
+  "members": [
+   "das_Ende",
+   "enden.verb",
+   "beenden.verb",
+   "endlich.adv",
+   "das_Wochenende"
+  ]
+ },
+ {
+  "id": "fangen",
+  "head": "anfangen.verb",
+  "label": "fangen",
+  "note": "catch; begin",
+  "members": [
+   "anfangen.verb",
+   "der_Anfang",
+   "der_Anfänger",
+   "der_Empfang"
+  ]
+ },
+ {
+  "id": "melden",
+  "head": "sich_melden.verb",
+  "label": "melden",
+  "note": "report, register",
+  "members": [
+   "sich_melden.verb",
+   "sich_anmelden.verb",
+   "die_Anmeldung",
+   "sich_abmelden.verb",
+   "sich_krankmelden.verb",
+   "die_Rückmeldung"
+  ]
+ },
+ {
+  "id": "meinen",
+  "head": "meinen.verb",
+  "label": "meinen",
+  "note": "mean, think",
+  "members": [
+   "meinen.verb",
+   "die_Meinung",
+   "meiner_meinung_nach.phrase",
+   "der_meinung_sein.phrase"
+  ]
+ },
+ {
+  "id": "bilden",
+  "head": "das_Bild",
+  "label": "Bild",
+  "note": "picture; form, educate",
+  "members": [
+   "das_Bild",
+   "die_Bildung",
+   "die_Ausbildung",
+   "die_Weiterbildung",
+   "die_Fortbildung",
+   "das_Vorbild"
+  ]
+ },
+ {
+  "id": "dienen",
+  "head": "verdienen.verb",
+  "label": "dienen",
+  "note": "serve",
+  "members": [
+   "verdienen.verb",
+   "der_Dienst",
+   "der_Kundendienst",
+   "die_Bedienung"
+  ]
+ },
+ {
+  "id": "reichen",
+  "head": "reichen.verb",
+  "label": "reichen",
+  "note": "reach, be enough",
+  "members": [
+   "reichen.verb",
+   "erreichen.verb",
+   "erreichbar.adj",
+   "ausreichen.verb",
+   "ausreichend.adj",
+   "einreichen.verb"
+  ]
+ },
+ {
+  "id": "deuten",
+  "head": "deuten.verb",
+  "label": "deuten",
+  "note": "point to, mean",
+  "members": [
+   "deuten.verb",
+   "bedeuten.verb",
+   "die_Bedeutung",
+   "bedeutend.adj",
+   "andeuten.verb",
+   "die_Andeutung",
+   "deutlich.adj"
+  ]
+ },
+ {
+  "id": "leiten",
+  "head": "leiten.verb",
+  "label": "leiten",
+  "note": "lead, manage",
+  "members": [
+   "leiten.verb",
+   "der_Leiter",
+   "die_Leitung",
+   "einleiten.verb",
+   "die_Einleitung",
+   "ableiten.verb"
+  ]
+ },
+ {
+  "id": "handeln",
+  "head": "sich_handeln_um.verb",
+  "label": "handeln",
+  "note": "act, deal",
+  "members": [
+   "sich_handeln_um.verb",
+   "die_Handlung",
+   "behandeln.verb",
+   "die_Behandlung",
+   "verhandeln.verb",
+   "die_Verhandlung"
+  ]
+ },
+ {
+  "id": "raten",
+  "head": "raten.verb",
+  "label": "raten",
+  "note": "advise, guess",
+  "members": [
+   "raten.verb",
+   "der_Rat",
+   "beraten.verb",
+   "die_Beratung",
+   "ratlos.adj"
+  ]
+ },
+ {
+  "id": "mieten",
+  "head": "mieten.verb",
+  "label": "mieten",
+  "note": "rent",
+  "members": [
+   "mieten.verb",
+   "die_Miete",
+   "der_Mieter",
+   "der_Untermieter",
+   "vermieten.verb",
+   "der_Vermieter",
+   "untervermieten.verb"
+  ]
+ },
+ {
+  "id": "tag",
+  "head": "der_Tag",
+  "label": "Tag",
+  "note": "day",
+  "members": [
+   "der_Tag",
+   "täglich.adj",
+   "der_Mittag",
+   "der_Nachmittag",
+   "der_Vormittag"
+  ]
+ },
+ {
+  "id": "machen",
+  "head": "machen.verb",
+  "label": "machen",
+  "note": "make, do",
+  "members": [
+   "machen.verb",
+   "aufmachen.verb",
+   "zumachen.verb",
+   "anmachen.verb",
+   "ausmachen.verb",
+   "abgemacht.phrase"
+  ]
+ },
+ {
+  "id": "dauern",
+  "head": "dauern.verb",
+  "label": "dauern",
+  "note": "last",
+  "members": [
+   "dauern.verb",
+   "die_Dauer",
+   "dauerhaft.adj",
+   "die_Ausdauer",
+   "auf_dauer.phrase"
+  ]
+ },
+ {
+  "id": "rechnen",
+  "head": "rechnen.verb",
+  "label": "rechnen",
+  "note": "calculate",
+  "members": [
+   "rechnen.verb",
+   "die_Rechnung",
+   "berechnen.verb",
+   "der_Rechner",
+   "rechnung_tragen.phrase"
+  ]
+ },
+ {
+  "id": "drucken",
+  "head": "drucken.verb",
+  "label": "drucken",
+  "note": "print",
+  "members": [
+   "drucken.verb",
+   "der_Drucker",
+   "ausdrucken.verb"
+  ]
+ },
+ {
+  "id": "druecken",
+  "head": "drücken.verb",
+  "label": "drücken",
+  "note": "press",
+  "members": [
+   "drücken.verb",
+   "ausdrücken.verb",
+   "der_Ausdruck",
+   "zum_ausdruck_bringen.phrase"
+  ]
+ },
+ {
+  "id": "messen",
+  "head": "messen.verb",
+  "label": "messen",
+  "note": "measure",
+  "members": [
+   "messen.verb",
+   "das_Ermessen",
+   "ermessen.verb",
+   "beimessen.verb"
+  ]
+ },
+ {
+  "id": "fordern",
+  "head": "fordern.verb",
+  "label": "fordern",
+  "note": "demand",
+  "members": [
+   "fordern.verb",
+   "die_Forderung",
+   "erfordern.verb",
+   "herausfordern.verb",
+   "die_Herausforderung"
+  ]
+ },
+ {
+  "id": "wissen",
+  "head": "wissen.verb",
+  "label": "wissen",
+  "note": "know",
+  "members": [
+   "wissen.verb",
+   "das_Wissen",
+   "die_Wissenschaft",
+   "wissenschaftlich.adj"
+  ]
+ },
+ {
+  "id": "freund",
+  "head": "der_Freund",
+  "label": "Freund",
+  "note": "friend",
+  "members": [
+   "der_Freund",
+   "die_Freundin",
+   "freundlich.adj",
+   "unfreundlich.adj",
+   "die_Freundschaft"
+  ]
+ },
+ {
+  "id": "lieben",
+  "head": "lieben.verb",
+  "label": "lieben",
+  "note": "love",
+  "members": [
+   "lieben.verb",
+   "die_Liebe",
+   "verliebt.adj",
+   "sich_verlieben.verb"
+  ]
+ },
+ {
+  "id": "glueck",
+  "head": "das_Glück",
+  "label": "Glück",
+  "note": "luck, happiness",
+  "members": [
+   "das_Glück",
+   "glücklich.adj",
+   "unglücklich.adj",
+   "zum_glück.phrase",
+   "viel_glück.phrase"
+  ]
+ },
+ {
+  "id": "moegen",
+  "head": "mögen.verb",
+  "label": "mögen",
+  "note": "like; may",
+  "members": [
+   "mögen.verb",
+   "möglich.adj",
+   "unmöglich.adj",
+   "die_Möglichkeit",
+   "möglicherweise.adv"
+  ]
+ },
+ {
+  "id": "pruefen",
+  "head": "prüfen.verb",
+  "label": "prüfen",
+  "note": "test, check",
+  "members": [
+   "prüfen.verb",
+   "die_Prüfung",
+   "überprüfen.verb",
+   "die_Überprüfung"
+  ]
+ },
+ {
+  "id": "passen",
+  "head": "passen.verb",
+  "label": "passen",
+  "note": "fit, suit",
+  "members": [
+   "passen.verb",
+   "passend.adj",
+   "anpassen.verb",
+   "aufpassen.verb",
+   "verpassen.verb"
+  ]
+ },
+ {
+  "id": "lust",
+  "head": "die_Lust",
+  "label": "Lust",
+  "note": "desire, wish",
+  "members": [
+   "die_Lust",
+   "lustig.adj",
+   "lust_haben.phrase"
+  ]
+ },
+ {
+  "id": "steigen",
+  "head": "steigen.verb",
+  "label": "steigen",
+  "note": "climb",
+  "members": [
+   "steigen.verb",
+   "einsteigen.verb",
+   "aussteigen.verb",
+   "umsteigen.verb"
+  ]
+ },
+ {
+  "id": "scheinen",
+  "head": "scheinen.verb",
+  "label": "scheinen",
+  "note": "shine, seem",
+  "members": [
+   "scheinen.verb",
+   "der_Schein",
+   "erscheinen.verb",
+   "anscheinend.adv",
+   "wahrscheinlich.adv",
+   "die_Wahrscheinlichkeit"
+  ]
+ },
+ {
+  "id": "bescheid",
+  "head": "der_Bescheid",
+  "label": "Bescheid",
+  "note": "information, notice",
+  "members": [
+   "der_Bescheid",
+   "bescheid_geben.phrase",
+   "bescheid_sagen.phrase",
+   "bescheid_wissen.phrase"
+  ]
+ },
+ {
+  "id": "verletzen",
+  "head": "sich_verletzen.verb",
+  "label": "verletzen",
+  "note": "injure",
+  "members": [
+   "sich_verletzen.verb",
+   "verletzt.adj",
+   "die_Verletzung",
+   "verletzlich.adj"
+  ]
+ },
+ {
+  "id": "nutzen",
+  "head": "nutzen.verb",
+  "label": "nutzen",
+  "note": "use",
+  "members": [
+   "nutzen.verb",
+   "der_Nutzen",
+   "nützlich.adj",
+   "der_Nutzer",
+   "benutzen.verb",
+   "der_Benutzer"
+  ]
+ },
+ {
+  "id": "regel",
+  "head": "die_Regel",
+  "label": "Regel",
+  "note": "rule",
+  "members": [
+   "die_Regel",
+   "regelmäßig.adj",
+   "regeln.verb",
+   "die_Regelung"
+  ]
+ },
+ {
+  "id": "scheiden",
+  "head": "sich_entscheiden.verb",
+  "label": "scheiden",
+  "note": "separate, decide",
+  "members": [
+   "sich_entscheiden.verb",
+   "die_Entscheidung",
+   "entscheidend.adj",
+   "eine_entscheidung_treffen.phrase",
+   "unterscheiden.verb",
+   "der_Unterschied",
+   "unterschiedlich.adj",
+   "verschieden.adj",
+   "sich_scheiden_lassen.verb",
+   "sich_scheiden_lassen.phrase"
+  ]
+ },
+ {
+  "id": "zweifeln",
+  "head": "zweifeln.verb",
+  "label": "zweifeln",
+  "note": "doubt",
+  "members": [
+   "zweifeln.verb",
+   "der_Zweifel",
+   "bezweifeln.verb",
+   "anzweifeln.verb"
+  ]
+ },
+ {
+  "id": "werfen",
+  "head": "werfen.verb",
+  "label": "werfen",
+  "note": "throw",
+  "members": [
+   "werfen.verb",
+   "einwerfen.verb",
+   "vorwerfen.verb",
+   "der_Vorwurf",
+   "aufwerfen.verb"
+  ]
+ },
+ {
+  "id": "eignen",
+  "head": "sich_eignen.verb",
+  "label": "eignen",
+  "note": "be suitable",
+  "members": [
+   "sich_eignen.verb",
+   "geeignet.adj",
+   "sich_aneignen.verb"
+  ]
+ },
+ {
+  "id": "name",
+  "head": "der_Name",
+  "label": "Name",
+  "note": "name",
+  "members": [
+   "der_Name",
+   "der_Vorname",
+   "der_Nachname"
+  ]
+ },
+ {
+  "id": "kennen",
+  "head": "kennen.verb",
+  "label": "kennen",
+  "note": "know (be familiar)",
+  "members": [
+   "kennen.verb",
+   "kennenlernen.verb",
+   "erkennen.verb",
+   "die_Erkenntnis",
+   "verkennen.verb",
+   "bekannt.adj",
+   "unbekannt.adj",
+   "die_Kenntnis"
+  ]
+ },
+ {
+  "id": "warten",
+  "head": "warten.verb",
+  "label": "warten",
+  "note": "wait",
+  "members": [
+   "warten.verb",
+   "erwarten.verb",
+   "die_Erwartung"
+  ]
+ },
+ {
+  "id": "person",
+  "head": "die_Person",
+  "label": "Person",
+  "note": "person",
+  "members": [
+   "die_Person",
+   "persönlich.adj",
+   "die_Persönlichkeit"
+  ]
+ },
+ {
+  "id": "antworten",
+  "head": "antworten.verb",
+  "label": "antworten",
+  "note": "answer",
+  "members": [
+   "antworten.verb",
+   "die_Antwort",
+   "beantworten.verb"
+  ]
+ },
+ {
+  "id": "buchen",
+  "head": "buchen.verb",
+  "label": "buchen",
+  "note": "book",
+  "members": [
+   "buchen.verb",
+   "die_Buchung",
+   "das_Buch"
+  ]
+ },
+ {
+  "id": "wort",
+  "head": "das_Wort",
+  "label": "Wort",
+  "note": "word",
+  "members": [
+   "das_Wort",
+   "zu_wort_kommen.phrase",
+   "das_wort_ergreifen.phrase"
+  ]
+ },
+ {
+  "id": "frei",
+  "head": "frei.adj",
+  "label": "frei",
+  "note": "free",
+  "members": [
+   "frei.adj",
+   "die_Freiheit",
+   "freilich.adv",
+   "freiwillig.adj"
+  ]
+ },
+ {
+  "id": "partner",
+  "head": "der_Partner",
+  "label": "Partner",
+  "note": "partner",
+  "members": [
+   "der_Partner",
+   "die_Partnerin",
+   "die_Partnerschaft"
+  ]
+ },
+ {
+  "id": "nachbar",
+  "head": "der_Nachbar",
+  "label": "Nachbar",
+  "note": "neighbour",
+  "members": [
+   "der_Nachbar",
+   "die_Nachbarin",
+   "die_Nachbarschaft"
+  ]
+ },
+ {
+  "id": "spaet",
+  "head": "spät.adj",
+  "label": "spät",
+  "note": "late",
+  "members": [
+   "spät.adj",
+   "später.adv",
+   "sich_verspäten.verb",
+   "die_Verspätung",
+   "verspätet.adj"
+  ]
+ },
+ {
+  "id": "sicher",
+  "head": "sicher.adj",
+  "label": "sicher",
+  "note": "safe, sure",
+  "members": [
+   "sicher.adj",
+   "unsicher.adj",
+   "die_Sicherheit",
+   "sicherlich.adv",
+   "versichern.verb",
+   "die_Versicherung"
+  ]
+ },
+ {
+  "id": "kosten",
+  "head": "kosten.verb",
+  "label": "kosten",
+  "note": "cost",
+  "members": [
+   "kosten.verb",
+   "die_Kosten",
+   "kostenlos.adj"
+  ]
+ },
+ {
+  "id": "zufrieden",
+  "head": "zufrieden.adj",
+  "label": "zufrieden",
+  "note": "satisfied",
+  "members": [
+   "zufrieden.adj",
+   "unzufrieden.adj",
+   "die_Zufriedenheit"
+  ]
+ },
+ {
+  "id": "sache",
+  "head": "die_Sache",
+  "label": "Sache",
+  "note": "thing, matter",
+  "members": [
+   "die_Sache",
+   "sachlich.adj",
+   "die_Tatsache",
+   "tatsächlich.adv"
+  ]
+ },
+ {
+  "id": "erlauben",
+  "head": "erlauben.verb",
+  "label": "erlauben",
+  "note": "allow",
+  "members": [
+   "erlauben.verb",
+   "erlaubt.adj",
+   "die_Erlaubnis"
+  ]
+ },
+ {
+  "id": "streiten",
+  "head": "sich_streiten.verb",
+  "label": "streiten",
+  "note": "argue",
+  "members": [
+   "sich_streiten.verb",
+   "der_Streit",
+   "sich_zerstreiten.verb"
+  ]
+ },
+ {
+  "id": "fehlen",
+  "head": "fehlen.verb",
+  "label": "fehlen",
+  "note": "be missing",
+  "members": [
+   "fehlen.verb",
+   "der_Fehler",
+   "fehlerhaft.adj",
+   "einen_fehler_machen.phrase"
+  ]
+ },
+ {
+  "id": "aendern",
+  "head": "ändern.verb",
+  "label": "ändern",
+  "note": "change",
+  "members": [
+   "ändern.verb",
+   "sich_verändern.verb",
+   "die_Veränderung"
+  ]
+ },
+ {
+  "id": "ueberraschen",
+  "head": "überraschen.verb",
+  "label": "überraschen",
+  "note": "surprise",
+  "members": [
+   "überraschen.verb",
+   "die_Überraschung",
+   "überrascht.adj"
+  ]
+ },
+ {
+  "id": "gruessen",
+  "head": "grüßen.verb",
+  "label": "grüßen",
+  "note": "greet",
+  "members": [
+   "grüßen.verb",
+   "der_Gruß",
+   "begrüßen.verb",
+   "die_Begrüßung"
+  ]
+ },
+ {
+  "id": "gleich",
+  "head": "gleich.adv",
+  "label": "gleich",
+  "note": "same, equal",
+  "members": [
+   "gleich.adv",
+   "vergleichen.verb",
+   "der_Vergleich",
+   "vergleichbar.adj",
+   "gleichzeitig.adv"
+  ]
+ },
+ {
+  "id": "hoeflich",
+  "head": "höflich.adj",
+  "label": "höflich",
+  "note": "polite",
+  "members": [
+   "höflich.adj",
+   "unhöflich.adj",
+   "die_Höflichkeit"
+  ]
+ },
+ {
+  "id": "bauen",
+  "head": "bauen.verb",
+  "label": "bauen",
+  "note": "build",
+  "members": [
+   "bauen.verb",
+   "der_Bau",
+   "ausbauen.verb",
+   "das_Gebäude"
+  ]
+ },
+ {
+  "id": "stecken",
+  "head": "stecken.verb",
+  "label": "stecken",
+  "note": "stick, put in",
+  "members": [
+   "stecken.verb",
+   "sich_anstecken.verb",
+   "ansteckend.adj"
+  ]
+ },
+ {
+  "id": "gewicht",
+  "head": "das_Gewicht",
+  "label": "Gewicht",
+  "note": "weight",
+  "members": [
+   "das_Gewicht",
+   "das_Übergewicht",
+   "ins_gewicht_fallen.phrase"
+  ]
+ },
+ {
+  "id": "haengen",
+  "head": "hängen.verb",
+  "label": "hängen",
+  "note": "hang",
+  "members": [
+   "hängen.verb",
+   "zusammenhängen.verb",
+   "der_Zusammenhang",
+   "abhängig.adj",
+   "unabhängig.adj",
+   "die_Abhängigkeit",
+   "der_Vorhang"
+  ]
+ },
+ {
+  "id": "ueberzeugen",
+  "head": "überzeugen.verb",
+  "label": "überzeugen",
+  "note": "convince",
+  "members": [
+   "überzeugen.verb",
+   "überzeugend.adj",
+   "die_Überzeugung"
+  ]
+ },
+ {
+  "id": "forschen",
+  "head": "forschen.verb",
+  "label": "forschen",
+  "note": "research",
+  "members": [
+   "forschen.verb",
+   "die_Forschung",
+   "der_Forscher"
+  ]
+ },
+ {
+  "id": "pflegen",
+  "head": "pflegen.verb",
+  "label": "pflegen",
+  "note": "care for",
+  "members": [
+   "pflegen.verb",
+   "die_Pflege",
+   "gepflegt.adj",
+   "der_Krankenpfleger",
+   "die_Pflegekraft"
+  ]
+ },
+ {
+  "id": "trauen",
+  "head": "trauen.verb",
+  "label": "trauen",
+  "note": "trust",
+  "members": [
+   "trauen.verb",
+   "vertrauen.verb",
+   "das_Vertrauen",
+   "sich_anvertrauen.verb",
+   "das_Misstrauen",
+   "misstrauisch.adj"
+  ]
+ },
+ {
+  "id": "fuegen",
+  "head": "verfügen_über.verb",
+  "label": "verfügen",
+  "note": "have at one's disposal",
+  "members": [
+   "verfügen_über.verb",
+   "die_Verfügung",
+   "zur_verfügung_stehen.phrase"
+  ]
+ },
+ {
+  "id": "foerdern",
+  "head": "fördern.verb",
+  "label": "fördern",
+  "note": "promote, support",
+  "members": [
+   "fördern.verb",
+   "befördern.verb",
+   "die_Beförderung"
+  ]
+ },
+ {
+  "id": "schweigen",
+  "head": "schweigen.verb",
+  "label": "schweigen",
+  "note": "be silent",
+  "members": [
+   "schweigen.verb",
+   "das_Schweigen",
+   "verschweigen.verb"
+  ]
+ },
+ {
+  "id": "kraenken",
+  "head": "kränken.verb",
+  "label": "kränken",
+  "note": "hurt (feelings)",
+  "members": [
+   "kränken.verb",
+   "gekränkt.adj",
+   "die_Kränkung"
+  ]
+ },
+ {
+  "id": "zocken",
+  "head": "zocken.verb",
+  "label": "zocken",
+  "note": "gamble; rip off",
+  "members": [
+   "zocken.verb",
+   "abzocken.verb",
+   "die_Abzocke"
+  ]
+ },
+ {
+  "id": "helfen",
+  "head": "helfen.verb",
+  "label": "helfen",
+  "note": "help",
+  "members": [
+   "helfen.verb",
+   "die_Hilfe",
+   "hilfreich.adj",
+   "hilflos.adj",
+   "die_Nachhilfe"
+  ]
+ },
+ {
+  "id": "treffen",
+  "head": "treffen.verb",
+  "label": "treffen",
+  "note": "meet, hit",
+  "members": [
+   "treffen.verb",
+   "das_Treffen",
+   "der_Treffpunkt",
+   "betreffen.verb",
+   "der_Betreff"
+  ]
+ },
+ {
+  "id": "gewinnen",
+  "head": "gewinnen.verb",
+  "label": "gewinnen",
+  "note": "win",
+  "members": [
+   "gewinnen.verb",
+   "der_Gewinn",
+   "der_Gewinner"
+  ]
+ },
+ {
+  "id": "gefahr",
+  "head": "die_Gefahr",
+  "label": "Gefahr",
+  "note": "danger",
+  "members": [
+   "die_Gefahr",
+   "gefährlich.adj",
+   "gefährden.verb"
+  ]
+ },
+ {
+  "id": "kunst",
+  "head": "die_Kunst",
+  "label": "Kunst",
+  "note": "art",
+  "members": [
+   "die_Kunst",
+   "künstlich.adj",
+   "der_Künstler"
+  ]
+ },
+ {
+  "id": "welt",
+  "head": "die_Welt",
+  "label": "Welt",
+  "note": "world",
+  "members": [
+   "die_Welt",
+   "die_Umwelt",
+   "weltweit.adj"
+  ]
+ },
+ {
+  "id": "schritt",
+  "head": "der_Schritt",
+  "label": "Schritt",
+  "note": "step",
+  "members": [
+   "der_Schritt",
+   "der_Fortschritt",
+   "fortschritte_machen.phrase"
+  ]
+ },
+ {
+  "id": "leisten",
+  "head": "sich_leisten.verb",
+  "label": "leisten",
+  "note": "achieve; afford",
+  "members": [
+   "sich_leisten.verb",
+   "die_Leistung",
+   "die_Dienstleistung"
+  ]
+ },
+ {
+  "id": "land",
+  "head": "das_Land",
+  "label": "Land",
+  "note": "country, land",
+  "members": [
+   "das_Land",
+   "das_Ausland",
+   "der_Ausländer",
+   "das_Inland",
+   "die_Landschaft",
+   "ländlich.adj",
+   "landen.verb",
+   "die_Landung"
+  ]
+ },
+ {
+  "id": "krank",
+  "head": "krank.adj",
+  "label": "krank",
+  "note": "ill",
+  "members": [
+   "krank.adj",
+   "die_Krankheit",
+   "das_Krankenhaus",
+   "die_Krankenkasse"
+  ]
+ },
+ {
+  "id": "gesund",
+  "head": "gesund.adj",
+  "label": "gesund",
+  "note": "healthy",
+  "members": [
+   "gesund.adj",
+   "die_Gesundheit",
+   "ungesund.adj"
+  ]
+ },
+ {
+  "id": "wechseln",
+  "head": "wechseln.verb",
+  "label": "wechseln",
+  "note": "change, exchange",
+  "members": [
+   "wechseln.verb",
+   "der_Wechselkurs",
+   "der_Stoffwechsel"
+  ]
+ },
+ {
+  "id": "ueben",
+  "head": "üben.verb",
+  "label": "üben",
+  "note": "practise",
+  "members": [
+   "üben.verb",
+   "die_Übung",
+   "kritik_üben.phrase"
+  ]
+ },
+ {
+  "id": "reisen",
+  "head": "reisen.verb",
+  "label": "reisen",
+  "note": "travel",
+  "members": [
+   "reisen.verb",
+   "die_Reise",
+   "die_Einreise",
+   "die_Ausreise",
+   "die_Geschäftsreise",
+   "die_Dienstreise"
+  ]
+ },
+ {
+  "id": "wandern",
+  "head": "wandern.verb",
+  "label": "wandern",
+  "note": "hike, wander",
+  "members": [
+   "wandern.verb",
+   "die_Wanderung",
+   "auswandern.verb",
+   "die_Auswanderung"
+  ]
+ },
+ {
+  "id": "grund",
+  "head": "der_Grund",
+  "label": "Grund",
+  "note": "reason, ground",
+  "members": [
+   "der_Grund",
+   "gründlich.adj",
+   "begründen.verb",
+   "die_Begründung"
+  ]
+ },
+ {
+  "id": "ruhe",
+  "head": "die_Ruhe",
+  "label": "Ruhe",
+  "note": "calm, rest",
+  "members": [
+   "die_Ruhe",
+   "ruhig.adj",
+   "beruhigen.verb",
+   "sich_ausruhen.verb"
+  ]
+ }
+]

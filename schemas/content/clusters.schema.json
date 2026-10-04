@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "clusters@1",
+  "title": "Word clusters",
+  "description": "Morphology for every word (prefix, stem, suffix, one family), curated word families, prefix and suffix notes, opposite pairs, topics for every word and chunk, and prepositions with usage notes and gap sentences. Built by tools/build-clusters.mjs from authoring/clusters/; the rules a schema cannot say are in src/domain/clusters.js validateClusters.",
+  "type": "object",
+  "required": ["version", "morph", "families", "prefixes", "suffixes", "opposites", "topics", "preps"],
+  "additionalProperties": false,
+  "$defs": {
+    "id": { "type": "string", "minLength": 1 },
+    "ids": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+    "text": { "type": "string", "minLength": 1, "pattern": "^[^—–]*$" }
+  },
+  "properties": {
+    "version": { "const": 1 },
+    "morph": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": ["stem"],
+        "additionalProperties": false,
+        "properties": {
+          "pre": { "type": "array", "minItems": 1, "items": { "type": "string", "pattern": "^[a-zäöüß]+$" } },
+          "stem": { "type": "string", "minLength": 1 },
+          "suf": { "type": "array", "minItems": 1, "items": { "type": "string", "pattern": "^[a-zäöüß]+$" } },
+          "sep": { "type": "boolean" },
+          "family": { "$ref": "#/$defs/id" }
+        }
+      }
+    },
+    "families": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "head", "label", "note", "members"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z_]+$" },
+          "head": { "$ref": "#/$defs/id" },
+          "label": { "$ref": "#/$defs/text" },
+          "note": { "$ref": "#/$defs/text" },
+          "members": { "type": "array", "minItems": 3, "uniqueItems": true, "items": { "$ref": "#/$defs/id" } }
+        }
+      }
+    },
+    "prefixes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "kind", "note", "ex"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-zäöüß]+$" },
+          "label": { "$ref": "#/$defs/text" },
+          "kind": { "enum": ["separable", "inseparable", "both", "word"] },
+          "note": { "$ref": "#/$defs/text" },
+          "ex": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "suffixes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "pos", "art", "note", "except"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-zäöüß]+$" },
+          "label": { "$ref": "#/$defs/text" },
+          "pos": { "enum": ["noun", "adj"] },
+          "art": { "enum": ["der", "die", "das", null] },
+          "note": { "$ref": "#/$defs/text" },
+          "except": { "$ref": "#/$defs/ids" }
+        }
+      }
+    },
+    "opposites": {
+      "type": "object",
+      "required": ["groups", "pairs"],
+      "additionalProperties": false,
+      "properties": {
+        "groups": { "type": "array", "items": { "type": "object", "required": ["id", "label"], "additionalProperties": false, "properties": { "id": { "type": "string" }, "label": { "$ref": "#/$defs/text" } } } },
+        "pairs": { "type": "array", "items": { "type": "object", "required": ["a", "b", "group", "primary"], "additionalProperties": false,
+          "properties": { "a": { "$ref": "#/$defs/id" }, "b": { "$ref": "#/$defs/id" }, "group": { "type": "string" }, "primary": { "type": "boolean" } } } }
+      }
+    },
+    "topics": {
+      "type": "object",
+      "required": ["list", "core", "chunks"],
+      "additionalProperties": false,
+      "properties": {
+        "list": { "type": "array", "items": { "type": "object", "required": ["id", "label"], "additionalProperties": false, "properties": { "id": { "type": "string" }, "label": { "$ref": "#/$defs/text" } } } },
+        "core": { "type": "object", "additionalProperties": { "type": "string" } },
+        "chunks": { "type": "object", "additionalProperties": { "type": "string" } }
+      }
+    },
+    "preps": {
+      "type": "object",
+      "required": ["groups", "notes", "gaps"],
+      "additionalProperties": false,
+      "properties": {
+        "groups": { "type": "array", "items": { "type": "object", "required": ["id", "label", "note", "members"], "additionalProperties": false,
+          "properties": { "id": { "type": "string" }, "label": { "$ref": "#/$defs/text" }, "note": { "$ref": "#/$defs/text" }, "members": { "$ref": "#/$defs/ids" } } } },
+        "notes": { "type": "object", "additionalProperties": { "type": "object", "required": ["case", "note", "ex"], "additionalProperties": false,
+          "properties": { "case": { "enum": ["dat", "akk", "gen", "two-way", null] }, "note": { "$ref": "#/$defs/text" },
+            "ex": { "type": "array", "minItems": 1, "items": { "type": "array", "prefixItems": [{ "type": "string" }, { "type": "string" }], "minItems": 2, "maxItems": 2 } } } } },
+        "gaps": { "type": "array", "items": { "type": "object", "required": ["id", "prep", "de", "answer", "en", "note"], "additionalProperties": false,
+          "properties": { "id": { "type": "string", "pattern": "^[a-z0-9-]+$" }, "prep": { "$ref": "#/$defs/id" }, "de": { "type": "string", "pattern": "___" },
+            "answer": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }, "en": { "$ref": "#/$defs/text" }, "note": { "$ref": "#/$defs/text" } } } }
+      }
+    }
+  }
+}

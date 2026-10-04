@@ -1,0 +1,2771 @@
+[
+ {
+  "id": "innen.adv",
+  "w": "innen",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "inside"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "core",
+  "rank": 727,
+  "zipf": 4.73,
+  "ex": "Innen ist das Haus sehr modern.",
+  "exen": "Inside, the house is very modern."
+ },
+ {
+  "id": "außen.adv",
+  "w": "außen",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "outside (on the outside)"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "core",
+  "rank": 728,
+  "zipf": 4.73,
+  "ex": "Außen ist das Auto rot, innen schwarz.",
+  "exen": "On the outside the car is red, inside it's black."
+ },
+ {
+  "id": "hoch.adj",
+  "w": "hoch",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "high",
+   "tall"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "rank": 704,
+  "zipf": 5.28,
+  "ex": "Der Berg ist sehr hoch.",
+  "exen": "The mountain is very high."
+ },
+ {
+  "id": "fern.adj",
+  "w": "fern",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "far",
+   "distant"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "rank": 938,
+  "zipf": 4.27,
+  "ex": "Er träumt von fernen Ländern.",
+  "exen": "He dreams of distant countries."
+ },
+ {
+  "id": "kühl.adj",
+  "w": "kühl",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "cool"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "nature",
+  "rank": 729,
+  "zipf": 3.93,
+  "ex": "Am Abend wird es kühl.",
+  "exen": "It gets cool in the evening."
+ },
+ {
+  "id": "dumm.adj",
+  "w": "dumm",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "stupid",
+   "silly"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "feelings",
+  "rank": 730,
+  "zipf": 4.76,
+  "ex": "Das war eine dumme Idee.",
+  "exen": "That was a silly idea."
+ },
+ {
+  "id": "klug.adj",
+  "w": "klug",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "clever",
+   "smart"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "feelings",
+  "rank": 731,
+  "zipf": 4.11,
+  "ex": "Sie ist ein kluges Mädchen.",
+  "exen": "She is a clever girl."
+ },
+ {
+  "id": "fröhlich.adj",
+  "w": "fröhlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "cheerful",
+   "happy"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "feelings",
+  "rank": 732,
+  "zipf": 4.09,
+  "ex": "Die Kinder sind heute sehr fröhlich.",
+  "exen": "The children are very cheerful today."
+ },
+ {
+  "id": "gemein.adj",
+  "w": "gemein",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "mean",
+   "nasty"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "feelings",
+  "rank": 939,
+  "zipf": 4.15,
+  "ex": "Das war wirklich gemein von dir.",
+  "exen": "That was really mean of you."
+ },
+ {
+  "id": "hungrig.adj",
+  "w": "hungrig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "hungry"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "food",
+  "rank": 733,
+  "zipf": 3.77,
+  "ex": "Nach dem Sport bin ich immer hungrig.",
+  "exen": "I'm always hungry after sport."
+ },
+ {
+  "id": "lebendig.adj",
+  "w": "lebendig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "alive",
+   "lively"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "abstract",
+  "rank": 940,
+  "zipf": 4.12,
+  "ex": "Die Altstadt ist am Abend sehr lebendig.",
+  "exen": "The old town is very lively in the evening."
+ },
+ {
+  "id": "salzig.adj",
+  "w": "salzig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "salty"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "food",
+  "rank": 734,
+  "zipf": 3.11,
+  "ex": "Die Suppe ist zu salzig.",
+  "exen": "The soup is too salty."
+ },
+ {
+  "id": "männlich.adj",
+  "w": "männlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "male",
+   "masculine"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "people",
+  "rank": 735,
+  "zipf": 4.01,
+  "ex": "Das Wort ist männlich: der Tisch.",
+  "exen": "The word is masculine: der Tisch."
+ },
+ {
+  "id": "weiblich.adj",
+  "w": "weiblich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "female",
+   "feminine"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "people",
+  "rank": 736,
+  "zipf": 3.96,
+  "ex": "Das Wort ist weiblich: die Lampe.",
+  "exen": "The word is feminine: die Lampe."
+ },
+ {
+  "id": "national.adj",
+  "w": "national",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "national"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "society",
+  "rank": 941,
+  "zipf": 4.29,
+  "ex": "Das ist ein nationaler Feiertag.",
+  "exen": "That is a national holiday."
+ },
+ {
+  "id": "aktiv.adj",
+  "w": "aktiv",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "active"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "leisure",
+  "rank": 942,
+  "zipf": 4.89,
+  "ex": "Meine Großmutter ist noch sehr aktiv.",
+  "exen": "My grandmother is still very active."
+ },
+ {
+  "id": "passiv.adj",
+  "w": "passiv",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "passive"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "abstract",
+  "rank": 943,
+  "zipf": 3.76,
+  "ex": "Im Unterricht ist er oft sehr passiv.",
+  "exen": "He is often very passive in class."
+ },
+ {
+  "id": "positiv.adj",
+  "w": "positiv",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "positive"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "abstract",
+  "rank": 944,
+  "zipf": 4.75,
+  "ex": "Das Ergebnis ist positiv.",
+  "exen": "The result is positive."
+ },
+ {
+  "id": "negativ.adj",
+  "w": "negativ",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "negative"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "abstract",
+  "rank": 945,
+  "zipf": 4.4,
+  "ex": "Der Test war zum Glück negativ.",
+  "exen": "Luckily the test was negative."
+ },
+ {
+  "id": "direkt.adj",
+  "w": "direkt",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "direct",
+   "directly"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "core",
+  "rank": 737,
+  "zipf": 5.34,
+  "ex": "Gibt es einen direkten Zug nach Hamburg?",
+  "exen": "Is there a direct train to Hamburg?"
+ },
+ {
+  "id": "indirekt.adj",
+  "w": "indirekt",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "indirect"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "rank": 895,
+  "zipf": 4.03,
+  "ex": "Das war eine indirekte Kritik.",
+  "exen": "That was indirect criticism."
+ },
+ {
+  "id": "unbekannt.adj",
+  "w": "unbekannt",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "unknown"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "abstract",
+  "rank": 946,
+  "zipf": 4.29,
+  "ex": "Die Band ist hier noch unbekannt.",
+  "exen": "The band is still unknown here."
+ },
+ {
+  "id": "unfreundlich.adj",
+  "w": "unfreundlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "unfriendly",
+   "rude"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "feelings",
+  "rank": 738,
+  "zipf": 3.41,
+  "ex": "Der Kellner war sehr unfreundlich.",
+  "exen": "The waiter was very unfriendly."
+ },
+ {
+  "id": "unglücklich.adj",
+  "w": "unglücklich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "unhappy"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "feelings",
+  "rank": 947,
+  "zipf": 4.05,
+  "ex": "Sie ist in ihrem Job unglücklich.",
+  "exen": "She is unhappy in her job."
+ },
+ {
+  "id": "unhöflich.adj",
+  "w": "unhöflich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "impolite",
+   "rude"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "feelings",
+  "rank": 948,
+  "zipf": 3.5,
+  "ex": "Es ist unhöflich, zu spät zu kommen.",
+  "exen": "It's rude to arrive late."
+ },
+ {
+  "id": "unsicher.adj",
+  "w": "unsicher",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "unsure",
+   "insecure",
+   "unsafe"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "feelings",
+  "rank": 949,
+  "zipf": 4.16,
+  "ex": "Ich bin mir noch unsicher.",
+  "exen": "I'm still unsure."
+ },
+ {
+  "id": "unwichtig.adj",
+  "w": "unwichtig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "unimportant"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "abstract",
+  "rank": 950,
+  "zipf": 3.68,
+  "ex": "Das ist jetzt unwichtig.",
+  "exen": "That's unimportant now."
+ },
+ {
+  "id": "nördlich.adj",
+  "w": "nördlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "northern",
+   "north of"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "rank": 951,
+  "zipf": 4.12,
+  "ex": "Wir wohnen nördlich von München.",
+  "exen": "We live north of Munich."
+ },
+ {
+  "id": "südlich.adj",
+  "w": "südlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "southern",
+   "south of"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "rank": 952,
+  "zipf": 4.13,
+  "ex": "Das Dorf liegt südlich der Stadt.",
+  "exen": "The village is south of the town."
+ },
+ {
+  "id": "östlich.adj",
+  "w": "östlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "eastern",
+   "east of"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "rank": 953,
+  "zipf": 3.91,
+  "ex": "Die Stadt liegt östlich von Berlin.",
+  "exen": "The town is east of Berlin."
+ },
+ {
+  "id": "westlich.adj",
+  "w": "westlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "western",
+   "west of"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "rank": 954,
+  "zipf": 3.96,
+  "ex": "Wir fahren in den westlichen Teil des Landes.",
+  "exen": "We're driving to the western part of the country."
+ },
+ {
+  "id": "fähig.adj",
+  "w": "fähig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "capable",
+   "able"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "rank": 955,
+  "zipf": 4.06,
+  "ex": "Sie ist eine sehr fähige Ärztin.",
+  "exen": "She is a very capable doctor."
+ },
+ {
+  "id": "hilfreich.adj",
+  "w": "hilfreich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "helpful"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "abstract",
+  "rank": 956,
+  "zipf": 4.25,
+  "ex": "Ihre Tipps waren sehr hilfreich.",
+  "exen": "Your tips were very helpful."
+ },
+ {
+  "id": "hilflos.adj",
+  "w": "hilflos",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "helpless"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "rank": 896,
+  "zipf": 3.75,
+  "ex": "Ohne Handy fühle ich mich hilflos.",
+  "exen": "Without my phone I feel helpless."
+ },
+ {
+  "id": "auffällig.adj",
+  "w": "auffällig",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "striking",
+   "conspicuous"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "abstract",
+  "rank": 957,
+  "zipf": 4.07,
+  "ex": "Sie trägt eine auffällige Jacke.",
+  "exen": "She is wearing a striking jacket."
+ },
+ {
+  "id": "absichtlich.adj",
+  "w": "absichtlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "on purpose",
+   "deliberate"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "abstract",
+  "rank": 958,
+  "zipf": 4.01,
+  "ex": "Das habe ich nicht absichtlich gemacht.",
+  "exen": "I didn't do that on purpose."
+ },
+ {
+  "id": "wirksam.adj",
+  "w": "wirksam",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "effective"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "rank": 897,
+  "zipf": 3.96,
+  "ex": "Das Medikament ist sehr wirksam.",
+  "exen": "The medicine is very effective."
+ },
+ {
+  "id": "passend.adj",
+  "w": "passend",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "suitable",
+   "matching"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "rank": 959,
+  "zipf": 4.26,
+  "ex": "Ich suche eine passende Hose zum Hemd.",
+  "exen": "I'm looking for trousers to match the shirt."
+ },
+ {
+  "id": "schriftlich.adj",
+  "w": "schriftlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "written",
+   "in writing"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "communication",
+  "rank": 960,
+  "zipf": 4.08,
+  "ex": "Bitte bestätigen Sie den Termin schriftlich.",
+  "exen": "Please confirm the appointment in writing."
+ },
+ {
+  "id": "teilweise.adv",
+  "w": "teilweise",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "partly",
+   "in part"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "core",
+  "rank": 961,
+  "zipf": 4.99,
+  "ex": "Das stimmt nur teilweise.",
+  "exen": "That's only partly true."
+ },
+ {
+  "id": "keinesfalls.adv",
+  "w": "keinesfalls",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "by no means",
+   "under no circumstances"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "rank": 898,
+  "zipf": 4.04,
+  "ex": "Das dürfen Sie keinesfalls vergessen.",
+  "exen": "You must under no circumstances forget that."
+ },
+ {
+  "id": "später.adv",
+  "w": "später",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "later"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "time",
+  "rank": 705,
+  "zipf": 5.5,
+  "ex": "Ich rufe dich später an.",
+  "exen": "I'll call you later."
+ },
+ {
+  "id": "nachher.adv",
+  "w": "nachher",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "afterwards",
+   "later"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "time",
+  "rank": 739,
+  "zipf": 4.4,
+  "ex": "Wir können nachher noch einen Kaffee trinken.",
+  "exen": "We can have a coffee afterwards."
+ },
+ {
+  "id": "vorwärts.adv",
+  "w": "vorwärts",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "forwards"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "rank": 962,
+  "zipf": 4.11,
+  "ex": "Fahren Sie bitte ein Stück vorwärts.",
+  "exen": "Please drive forward a bit."
+ },
+ {
+  "id": "rückwärts.adv",
+  "w": "rückwärts",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "backwards"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "rank": 963,
+  "zipf": 3.95,
+  "ex": "Er kann gut rückwärts einparken.",
+  "exen": "He's good at reversing into a parking space."
+ },
+ {
+  "id": "weniger.adv",
+  "w": "weniger",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "less",
+   "fewer"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "core",
+  "rank": 740,
+  "zipf": 5.42,
+  "ex": "Ich möchte weniger Zucker essen.",
+  "exen": "I want to eat less sugar."
+ },
+ {
+  "id": "an.adv",
+  "w": "an",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "on (switched on)"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "home",
+  "rank": 741,
+  "zipf": 6.69,
+  "ex": "Ist der Fernseher noch an?",
+  "exen": "Is the TV still on?"
+ },
+ {
+  "id": "aus.adv",
+  "w": "aus",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "off (switched off)",
+   "over"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "home",
+  "rank": 742,
+  "zipf": 6.6,
+  "ex": "Das Licht ist aus.",
+  "exen": "The light is off."
+ },
+ {
+  "id": "auf.adv",
+  "w": "auf",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "open"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "home",
+  "rank": 743,
+  "zipf": 6.89,
+  "ex": "Das Fenster ist auf.",
+  "exen": "The window is open."
+ },
+ {
+  "id": "zu.adv",
+  "w": "zu",
+  "art": "",
+  "pl": null,
+  "pos": "adv",
+  "en": [
+   "closed",
+   "shut"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "home",
+  "rank": 744,
+  "zipf": 7.01,
+  "ex": "Die Tür ist zu.",
+  "exen": "The door is shut."
+ },
+ {
+  "id": "der_Norden",
+  "w": "Norden",
+  "art": "der",
+  "pl": null,
+  "pos": "noun",
+  "en": [
+   "north"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "travel",
+  "rank": 745,
+  "zipf": 4.65,
+  "ex": "Hamburg liegt im Norden von Deutschland.",
+  "exen": "Hamburg is in the north of Germany."
+ },
+ {
+  "id": "der_Süden",
+  "w": "Süden",
+  "art": "der",
+  "pl": null,
+  "pos": "noun",
+  "en": [
+   "south"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "travel",
+  "rank": 746,
+  "zipf": 4.57,
+  "ex": "Im Süden ist es oft wärmer.",
+  "exen": "It's often warmer in the south."
+ },
+ {
+  "id": "der_Osten",
+  "w": "Osten",
+  "art": "der",
+  "pl": null,
+  "pos": "noun",
+  "en": [
+   "east"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "travel",
+  "rank": 747,
+  "zipf": 4.75,
+  "ex": "Die Sonne geht im Osten auf.",
+  "exen": "The sun rises in the east."
+ },
+ {
+  "id": "der_Westen",
+  "w": "Westen",
+  "art": "der",
+  "pl": null,
+  "pos": "noun",
+  "en": [
+   "west"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "travel",
+  "rank": 748,
+  "zipf": 4.73,
+  "ex": "Die Sonne geht im Westen unter.",
+  "exen": "The sun sets in the west."
+ },
+ {
+  "id": "der_Feind",
+  "w": "Feind",
+  "art": "der",
+  "pl": "Feinde",
+  "pos": "noun",
+  "en": [
+   "enemy"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "society",
+  "rank": 964,
+  "zipf": 4.35,
+  "ex": "Er hat viele Feinde.",
+  "exen": "He has many enemies."
+ },
+ {
+  "id": "die_Lüge",
+  "w": "Lüge",
+  "art": "die",
+  "pl": "Lügen",
+  "pos": "noun",
+  "en": [
+   "lie"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "communication",
+  "rank": 965,
+  "zipf": 4.25,
+  "ex": "Das ist eine Lüge!",
+  "exen": "That's a lie!"
+ },
+ {
+  "id": "das_Pech",
+  "w": "Pech",
+  "art": "das",
+  "pl": null,
+  "pos": "noun",
+  "en": [
+   "bad luck"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "feelings",
+  "rank": 749,
+  "zipf": 4.23,
+  "ex": "So ein Pech! Der Bus ist weg.",
+  "exen": "What bad luck! The bus has gone."
+ },
+ {
+  "id": "das_Lob",
+  "w": "Lob",
+  "art": "das",
+  "pl": null,
+  "pos": "noun",
+  "en": [
+   "praise"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "communication",
+  "rank": 966,
+  "zipf": 4.19,
+  "ex": "Danke für das Lob!",
+  "exen": "Thanks for the praise!"
+ },
+ {
+  "id": "der_Profi",
+  "w": "Profi",
+  "art": "der",
+  "pl": "Profis",
+  "pos": "noun",
+  "en": [
+   "professional",
+   "pro"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "leisure",
+  "rank": 967,
+  "zipf": 4.32,
+  "ex": "Er spielt Fußball wie ein Profi.",
+  "exen": "He plays football like a pro."
+ },
+ {
+  "id": "der_Anfänger",
+  "w": "Anfänger",
+  "art": "der",
+  "pl": "Anfänger",
+  "pos": "noun",
+  "en": [
+   "beginner"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "school",
+  "rank": 750,
+  "zipf": 4.03,
+  "ex": "Der Kurs ist für Anfänger.",
+  "exen": "The course is for beginners."
+ },
+ {
+  "id": "der_Käufer",
+  "w": "Käufer",
+  "art": "der",
+  "pl": "Käufer",
+  "pos": "noun",
+  "en": [
+   "buyer"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "rank": 968,
+  "zipf": 4.16,
+  "ex": "Für das Auto gibt es schon einen Käufer.",
+  "exen": "There's already a buyer for the car."
+ },
+ {
+  "id": "der_Misserfolg",
+  "w": "Misserfolg",
+  "art": "der",
+  "pl": "Misserfolge",
+  "pos": "noun",
+  "en": [
+   "failure"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "work",
+  "rank": 899,
+  "zipf": 3.36,
+  "ex": "Aus einem Misserfolg kann man viel lernen.",
+  "exen": "You can learn a lot from a failure."
+ },
+ {
+  "id": "die_Nachfrage",
+  "w": "Nachfrage",
+  "art": "die",
+  "pl": "Nachfragen",
+  "pos": "noun",
+  "en": [
+   "demand"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "money",
+  "rank": 900,
+  "zipf": 4.44,
+  "ex": "Die Nachfrage nach Wohnungen ist groß.",
+  "exen": "The demand for flats is high."
+ },
+ {
+  "id": "die_Ablehnung",
+  "w": "Ablehnung",
+  "art": "die",
+  "pl": "Ablehnungen",
+  "pos": "noun",
+  "en": [
+   "rejection",
+   "refusal"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "rank": 901,
+  "zipf": 4.17,
+  "ex": "Ich habe eine Ablehnung bekommen.",
+  "exen": "I got a rejection."
+ },
+ {
+  "id": "der_Import",
+  "w": "Import",
+  "art": "der",
+  "pl": "Importe",
+  "pos": "noun",
+  "en": [
+   "import"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "money",
+  "rank": 902,
+  "zipf": 3.7,
+  "ex": "Der Import von Obst ist teuer.",
+  "exen": "Importing fruit is expensive."
+ },
+ {
+  "id": "der_Export",
+  "w": "Export",
+  "art": "der",
+  "pl": "Exporte",
+  "pos": "noun",
+  "en": [
+   "export"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "money",
+  "rank": 903,
+  "zipf": 3.92,
+  "ex": "Deutschland lebt vom Export.",
+  "exen": "Germany lives off its exports."
+ },
+ {
+  "id": "das_Inland",
+  "w": "Inland",
+  "art": "das",
+  "pl": null,
+  "pos": "noun",
+  "en": [
+   "home country",
+   "domestic"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "travel",
+  "rank": 904,
+  "zipf": 3.77,
+  "ex": "Die Preise im Inland steigen.",
+  "exen": "Prices at home are rising."
+ },
+ {
+  "id": "der_Raum",
+  "w": "Raum",
+  "art": "der",
+  "pl": "Räume",
+  "pos": "noun",
+  "en": [
+   "room",
+   "space"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "home",
+  "rank": 969,
+  "zipf": 5.11,
+  "ex": "Der Raum ist hell und groß.",
+  "exen": "The room is bright and big."
+ },
+ {
+  "id": "die_Stimme",
+  "w": "Stimme",
+  "art": "die",
+  "pl": "Stimmen",
+  "pos": "noun",
+  "en": [
+   "voice",
+   "vote"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "communication",
+  "rank": 751,
+  "zipf": 5.02,
+  "ex": "Sie hat eine schöne Stimme.",
+  "exen": "She has a beautiful voice."
+ },
+ {
+  "id": "der_Besuch",
+  "w": "Besuch",
+  "art": "der",
+  "pl": "Besuche",
+  "pos": "noun",
+  "en": [
+   "visit",
+   "visitors"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "people",
+  "rank": 752,
+  "zipf": 4.89,
+  "ex": "Am Wochenende bekommen wir Besuch.",
+  "exen": "We're having visitors at the weekend."
+ },
+ {
+  "id": "der_Besucher",
+  "w": "Besucher",
+  "art": "der",
+  "pl": "Besucher",
+  "pos": "noun",
+  "en": [
+   "visitor"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "culture",
+  "rank": 970,
+  "zipf": 4.63,
+  "ex": "Das Museum hatte viele Besucher.",
+  "exen": "The museum had many visitors."
+ },
+ {
+  "id": "der_Versuch",
+  "w": "Versuch",
+  "art": "der",
+  "pl": "Versuche",
+  "pos": "noun",
+  "en": [
+   "attempt",
+   "experiment"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "science",
+  "rank": 971,
+  "zipf": 4.87,
+  "ex": "Es war nur ein Versuch.",
+  "exen": "It was only an attempt."
+ },
+ {
+  "id": "das_Treffen",
+  "w": "Treffen",
+  "art": "das",
+  "pl": "Treffen",
+  "pos": "noun",
+  "en": [
+   "meeting"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "people",
+  "rank": 753,
+  "zipf": 5.25,
+  "ex": "Wann ist das nächste Treffen?",
+  "exen": "When is the next meeting?"
+ },
+ {
+  "id": "der_Treffpunkt",
+  "w": "Treffpunkt",
+  "art": "der",
+  "pl": "Treffpunkte",
+  "pos": "noun",
+  "en": [
+   "meeting point"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "city",
+  "rank": 754,
+  "zipf": 3.93,
+  "ex": "Unser Treffpunkt ist vor dem Kino.",
+  "exen": "Our meeting point is in front of the cinema."
+ },
+ {
+  "id": "der_Betreff",
+  "w": "Betreff",
+  "art": "der",
+  "pl": "Betreffe",
+  "pos": "noun",
+  "en": [
+   "subject (of an email or letter)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "communication",
+  "rank": 972,
+  "zipf": 3.38,
+  "ex": "Schreiben Sie bitte einen Betreff.",
+  "exen": "Please write a subject line."
+ },
+ {
+  "id": "der_Kauf",
+  "w": "Kauf",
+  "art": "der",
+  "pl": "Käufe",
+  "pos": "noun",
+  "en": [
+   "purchase"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "rank": 973,
+  "zipf": 4.71,
+  "ex": "Der Kauf einer Wohnung ist teuer.",
+  "exen": "Buying a flat is expensive."
+ },
+ {
+  "id": "der_Einkauf",
+  "w": "Einkauf",
+  "art": "der",
+  "pl": "Einkäufe",
+  "pos": "noun",
+  "en": [
+   "shopping",
+   "purchase"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "clothes",
+  "rank": 755,
+  "zipf": 4.0,
+  "ex": "Ich muss noch den Einkauf machen.",
+  "exen": "I still have to do the shopping."
+ },
+ {
+  "id": "der_Verkauf",
+  "w": "Verkauf",
+  "art": "der",
+  "pl": "Verkäufe",
+  "pos": "noun",
+  "en": [
+   "sale"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "rank": 974,
+  "zipf": 4.61,
+  "ex": "Das Haus steht zum Verkauf.",
+  "exen": "The house is up for sale."
+ },
+ {
+  "id": "der_Dank",
+  "w": "Dank",
+  "art": "der",
+  "pl": null,
+  "pos": "noun",
+  "en": [
+   "thanks"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "communication",
+  "rank": 756,
+  "zipf": 5.32,
+  "ex": "Vielen Dank für Ihre Hilfe!",
+  "exen": "Many thanks for your help!"
+ },
+ {
+  "id": "der_Leser",
+  "w": "Leser",
+  "art": "der",
+  "pl": "Leser",
+  "pos": "noun",
+  "en": [
+   "reader"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "media",
+  "rank": 975,
+  "zipf": 4.55,
+  "ex": "Die Zeitung hat viele Leser.",
+  "exen": "The newspaper has many readers."
+ },
+ {
+  "id": "der_Bau",
+  "w": "Bau",
+  "art": "der",
+  "pl": "Bauten",
+  "pos": "noun",
+  "en": [
+   "construction",
+   "building"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "city",
+  "rank": 976,
+  "zipf": 4.85,
+  "ex": "Der Bau der Brücke dauert zwei Jahre.",
+  "exen": "The construction of the bridge takes two years."
+ },
+ {
+  "id": "das_Ereignis",
+  "w": "Ereignis",
+  "art": "das",
+  "pl": "Ereignisse",
+  "pos": "noun",
+  "en": [
+   "event"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "abstract",
+  "rank": 977,
+  "zipf": 4.24,
+  "ex": "Die Hochzeit war ein großes Ereignis.",
+  "exen": "The wedding was a big event."
+ },
+ {
+  "id": "das_Verständnis",
+  "w": "Verständnis",
+  "art": "das",
+  "pl": null,
+  "pos": "noun",
+  "en": [
+   "understanding"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "feelings",
+  "rank": 978,
+  "zipf": 4.61,
+  "ex": "Vielen Dank für Ihr Verständnis.",
+  "exen": "Thank you for your understanding."
+ },
+ {
+  "id": "die_Kenntnis",
+  "w": "Kenntnis",
+  "art": "die",
+  "pl": "Kenntnisse",
+  "pos": "noun",
+  "en": [
+   "knowledge"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "work",
+  "rank": 905,
+  "zipf": 4.31,
+  "ex": "Gute Kenntnisse in Deutsch sind wichtig.",
+  "exen": "A good knowledge of German is important."
+ },
+ {
+  "id": "die_Schrift",
+  "w": "Schrift",
+  "art": "die",
+  "pl": "Schriften",
+  "pos": "noun",
+  "en": [
+   "writing",
+   "handwriting",
+   "script"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "communication",
+  "rank": 979,
+  "zipf": 4.32,
+  "ex": "Ich kann deine Schrift nicht lesen.",
+  "exen": "I can't read your handwriting."
+ },
+ {
+  "id": "der_Schluss",
+  "w": "Schluss",
+  "art": "der",
+  "pl": "Schlüsse",
+  "pos": "noun",
+  "en": [
+   "end",
+   "conclusion"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "time",
+  "rank": 757,
+  "zipf": 4.92,
+  "ex": "Zum Schluss möchte ich mich bedanken.",
+  "exen": "Finally, I'd like to say thank you."
+ },
+ {
+  "id": "der_Ersatz",
+  "w": "Ersatz",
+  "art": "der",
+  "pl": null,
+  "pos": "noun",
+  "en": [
+   "replacement",
+   "substitute"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "rank": 906,
+  "zipf": 4.35,
+  "ex": "Wir brauchen einen Ersatz für den Kollegen.",
+  "exen": "We need a replacement for our colleague."
+ },
+ {
+  "id": "der_Einsatz",
+  "w": "Einsatz",
+  "art": "der",
+  "pl": "Einsätze",
+  "pos": "noun",
+  "en": [
+   "commitment",
+   "use",
+   "deployment"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "work",
+  "rank": 907,
+  "zipf": 5.09,
+  "ex": "Danke für Ihren Einsatz!",
+  "exen": "Thank you for your commitment!"
+ },
+ {
+  "id": "der_Bezug",
+  "w": "Bezug",
+  "art": "der",
+  "pl": "Bezüge",
+  "pos": "noun",
+  "en": [
+   "reference",
+   "connection"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "rank": 908,
+  "zipf": 4.72,
+  "ex": "In Bezug auf Ihre E-Mail habe ich eine Frage.",
+  "exen": "With reference to your email, I have a question."
+ },
+ {
+  "id": "die_Aussicht",
+  "w": "Aussicht",
+  "art": "die",
+  "pl": "Aussichten",
+  "pos": "noun",
+  "en": [
+   "view",
+   "prospect"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "rank": 980,
+  "zipf": 4.37,
+  "ex": "Vom Turm hat man eine tolle Aussicht.",
+  "exen": "There's a great view from the tower."
+ },
+ {
+  "id": "die_Vorsicht",
+  "w": "Vorsicht",
+  "art": "die",
+  "pl": null,
+  "pos": "noun",
+  "en": [
+   "caution",
+   "care"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "body",
+  "rank": 758,
+  "zipf": 4.39,
+  "ex": "Vorsicht, die Treppe ist nass!",
+  "exen": "Careful, the stairs are wet!"
+ },
+ {
+  "id": "die_Rücksicht",
+  "w": "Rücksicht",
+  "art": "die",
+  "pl": null,
+  "pos": "noun",
+  "en": [
+   "consideration"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "feelings",
+  "rank": 981,
+  "zipf": 4.07,
+  "ex": "Bitte nehmen Sie Rücksicht auf die Nachbarn.",
+  "exen": "Please be considerate of the neighbours."
+ },
+ {
+  "id": "die_Übersicht",
+  "w": "Übersicht",
+  "art": "die",
+  "pl": "Übersichten",
+  "pos": "noun",
+  "en": [
+   "overview"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "work",
+  "rank": 909,
+  "zipf": 4.5,
+  "ex": "Hier ist eine Übersicht über die Kosten.",
+  "exen": "Here is an overview of the costs."
+ },
+ {
+  "id": "die_Hinsicht",
+  "w": "Hinsicht",
+  "art": "die",
+  "pl": null,
+  "pos": "noun",
+  "en": [
+   "respect (in this respect)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "rank": 910,
+  "zipf": 4.37,
+  "ex": "In dieser Hinsicht hast du recht.",
+  "exen": "In this respect you're right."
+ },
+ {
+  "id": "die_Überlegung",
+  "w": "Überlegung",
+  "art": "die",
+  "pl": "Überlegungen",
+  "pos": "noun",
+  "en": [
+   "thought",
+   "consideration"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "rank": 911,
+  "zipf": 3.72,
+  "ex": "Nach langer Überlegung habe ich zugesagt.",
+  "exen": "After a lot of thought I accepted."
+ },
+ {
+  "id": "die_Wiederholung",
+  "w": "Wiederholung",
+  "art": "die",
+  "pl": "Wiederholungen",
+  "pos": "noun",
+  "en": [
+   "repetition",
+   "revision"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "school",
+  "rank": 982,
+  "zipf": 3.99,
+  "ex": "Vor der Prüfung machen wir eine Wiederholung.",
+  "exen": "We do a revision before the exam."
+ },
+ {
+  "id": "das_Versprechen",
+  "w": "Versprechen",
+  "art": "das",
+  "pl": "Versprechen",
+  "pos": "noun",
+  "en": [
+   "promise"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "communication",
+  "rank": 983,
+  "zipf": 4.4,
+  "ex": "Du hast dein Versprechen gehalten.",
+  "exen": "You kept your promise."
+ },
+ {
+  "id": "die_Ansage",
+  "w": "Ansage",
+  "art": "die",
+  "pl": "Ansagen",
+  "pos": "noun",
+  "en": [
+   "announcement"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "rank": 984,
+  "zipf": 3.69,
+  "ex": "Hast du die Ansage verstanden?",
+  "exen": "Did you understand the announcement?"
+ },
+ {
+  "id": "der_Gefallen",
+  "w": "Gefallen",
+  "art": "der",
+  "pl": "Gefallen",
+  "pos": "noun",
+  "en": [
+   "favour"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "people",
+  "rank": 985,
+  "zipf": 4.98,
+  "ex": "Kannst du mir einen Gefallen tun?",
+  "exen": "Can you do me a favour?"
+ },
+ {
+  "id": "der_Einfall",
+  "w": "Einfall",
+  "art": "der",
+  "pl": "Einfälle",
+  "pos": "noun",
+  "en": [
+   "idea"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "rank": 912,
+  "zipf": 3.3,
+  "ex": "Das war ein guter Einfall!",
+  "exen": "That was a good idea!"
+ },
+ {
+  "id": "der_Anfall",
+  "w": "Anfall",
+  "art": "der",
+  "pl": "Anfälle",
+  "pos": "noun",
+  "en": [
+   "attack",
+   "fit"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "body",
+  "rank": 913,
+  "zipf": 3.58,
+  "ex": "Der Patient hatte in der Nacht einen Anfall.",
+  "exen": "The patient had a fit during the night."
+ },
+ {
+  "id": "der_Verfall",
+  "w": "Verfall",
+  "art": "der",
+  "pl": null,
+  "pos": "noun",
+  "en": [
+   "decay",
+   "decline",
+   "expiry"
+  ],
+  "alt": [],
+  "level": "C1",
+  "theme": "abstract",
+  "rank": 645,
+  "zipf": 3.68,
+  "ex": "Der Verfall des alten Hauses ist traurig.",
+  "exen": "The decay of the old house is sad."
+ },
+ {
+  "id": "der_Zerfall",
+  "w": "Zerfall",
+  "art": "der",
+  "pl": null,
+  "pos": "noun",
+  "en": [
+   "disintegration",
+   "decay"
+  ],
+  "alt": [],
+  "level": "C1",
+  "theme": "science",
+  "rank": 646,
+  "zipf": 3.55,
+  "ex": "Der Zerfall des Reiches dauerte viele Jahre.",
+  "exen": "The empire's collapse took many years."
+ },
+ {
+  "id": "der_Beifall",
+  "w": "Beifall",
+  "art": "der",
+  "pl": null,
+  "pos": "noun",
+  "en": [
+   "applause"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "culture",
+  "rank": 914,
+  "zipf": 3.9,
+  "ex": "Am Ende gab es lauten Beifall.",
+  "exen": "At the end there was loud applause."
+ },
+ {
+  "id": "umfallen.verb",
+  "w": "umfallen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to fall over"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "core",
+  "rank": 986,
+  "zipf": 3.34,
+  "ex": "Pass auf, die Vase fällt gleich um!",
+  "exen": "Watch out, the vase is about to fall over!",
+  "forms": "fällt um · fiel um · ist umgefallen"
+ },
+ {
+  "id": "einfallen.verb",
+  "w": "einfallen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to occur to (an idea)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "abstract",
+  "rank": 987,
+  "zipf": 4.06,
+  "ex": "Mir fällt sein Name nicht ein.",
+  "exen": "I can't think of his name.",
+  "forms": "fällt ein · fiel ein · ist eingefallen"
+ },
+ {
+  "id": "auffallen.verb",
+  "w": "auffallen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to stand out",
+   "to be noticed"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "abstract",
+  "rank": 988,
+  "zipf": 3.68,
+  "ex": "Mir ist aufgefallen, dass du müde bist.",
+  "exen": "I noticed that you're tired.",
+  "forms": "fällt auf · fiel auf · ist aufgefallen"
+ },
+ {
+  "id": "verfallen.verb",
+  "w": "verfallen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to expire",
+   "to decay"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "rank": 915,
+  "zipf": 3.82,
+  "ex": "Das Ticket verfällt am Ende des Monats.",
+  "exen": "The ticket expires at the end of the month.",
+  "forms": "verfällt · verfiel · ist verfallen"
+ },
+ {
+  "id": "zerfallen.verb",
+  "w": "zerfallen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to fall apart",
+   "to disintegrate"
+  ],
+  "alt": [],
+  "level": "C1",
+  "theme": "science",
+  "rank": 647,
+  "zipf": 3.28,
+  "ex": "Das alte Papier zerfällt langsam.",
+  "exen": "The old paper is slowly falling apart.",
+  "forms": "zerfällt · zerfiel · ist zerfallen"
+ },
+ {
+  "id": "anfallen.verb",
+  "w": "anfallen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to arise (costs, work)"
+  ],
+  "alt": [],
+  "level": "C1",
+  "theme": "money",
+  "rank": 648,
+  "zipf": 3.47,
+  "ex": "Für die Reparatur fallen Kosten an.",
+  "exen": "There will be costs for the repair.",
+  "forms": "fällt an · fiel an · ist angefallen"
+ },
+ {
+  "id": "weisen.verb",
+  "w": "weisen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to point",
+   "to show"
+  ],
+  "alt": [],
+  "level": "C1",
+  "theme": "communication",
+  "rank": 649,
+  "zipf": 4.45,
+  "ex": "Das Schild weist nach Norden.",
+  "exen": "The sign points north.",
+  "forms": "weist · wies · hat gewiesen"
+ },
+ {
+  "id": "verweisen.verb",
+  "w": "verweisen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to refer (to)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "rank": 916,
+  "zipf": 3.98,
+  "ex": "Ich verweise auf meine letzte E-Mail.",
+  "exen": "I refer to my last email.",
+  "forms": "verweist · verwies · hat verwiesen"
+ },
+ {
+  "id": "entsprechen.verb",
+  "w": "entsprechen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to correspond to",
+   "to match"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "abstract",
+  "rank": 989,
+  "zipf": 4.26,
+  "ex": "Das entspricht nicht meinen Erwartungen.",
+  "exen": "That doesn't match my expectations.",
+  "forms": "entspricht · entsprach · hat entsprochen"
+ },
+ {
+  "id": "ansprechen.verb",
+  "w": "ansprechen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to speak to",
+   "to address (a topic)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "communication",
+  "rank": 990,
+  "zipf": 4.01,
+  "ex": "Ich möchte noch ein Problem ansprechen.",
+  "exen": "I'd like to raise one more problem.",
+  "forms": "spricht an · sprach an · hat angesprochen"
+ },
+ {
+  "id": "versagen.verb",
+  "w": "versagen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to fail"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "work",
+  "rank": 917,
+  "zipf": 4.08,
+  "ex": "Die Bremsen haben versagt.",
+  "exen": "The brakes failed.",
+  "forms": "versagt · versagte · hat versagt"
+ },
+ {
+  "id": "bestimmen.verb",
+  "w": "bestimmen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to decide",
+   "to determine"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "abstract",
+  "rank": 991,
+  "zipf": 4.38,
+  "ex": "Wer bestimmt hier die Regeln?",
+  "exen": "Who decides the rules here?",
+  "forms": "bestimmt · bestimmte · hat bestimmt"
+ },
+ {
+  "id": "übereinstimmen.verb",
+  "w": "übereinstimmen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to agree",
+   "to match"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "rank": 918,
+  "zipf": 3.45,
+  "ex": "Ich stimme mit dir völlig überein.",
+  "exen": "I completely agree with you.",
+  "forms": "stimmt überein · stimmte überein · hat übereingestimmt"
+ },
+ {
+  "id": "überlegen.verb",
+  "w": "überlegen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to think about",
+   "to consider"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "abstract",
+  "rank": 992,
+  "zipf": 4.54,
+  "ex": "Ich muss mir das noch überlegen.",
+  "exen": "I still have to think about it.",
+  "forms": "überlegt · überlegte · hat überlegt"
+ },
+ {
+  "id": "verlegen.verb",
+  "w": "verlegen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to postpone",
+   "to move",
+   "to misplace"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "work",
+  "rank": 919,
+  "zipf": 4.05,
+  "ex": "Wir müssen das Treffen auf Freitag verlegen.",
+  "exen": "We have to move the meeting to Friday.",
+  "forms": "verlegt · verlegte · hat verlegt"
+ },
+ {
+  "id": "anlegen.verb",
+  "w": "anlegen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to invest",
+   "to create (a file)",
+   "to put on"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "money",
+  "rank": 920,
+  "zipf": 4.13,
+  "ex": "Er hat sein Geld gut angelegt.",
+  "exen": "He invested his money well.",
+  "forms": "legt an · legte an · hat angelegt"
+ },
+ {
+  "id": "festlegen.verb",
+  "w": "festlegen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to fix",
+   "to set (a date)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "work",
+  "rank": 921,
+  "zipf": 3.83,
+  "ex": "Wir sollten einen Termin festlegen.",
+  "exen": "We should set a date.",
+  "forms": "legt fest · legte fest · hat festgelegt"
+ },
+ {
+  "id": "ablegen.verb",
+  "w": "ablegen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to take (an exam)",
+   "to put down"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "rank": 922,
+  "zipf": 3.84,
+  "ex": "Er hat die Prüfung erfolgreich abgelegt.",
+  "exen": "He passed the exam.",
+  "forms": "legt ab · legte ab · hat abgelegt"
+ },
+ {
+  "id": "vorlegen.verb",
+  "w": "vorlegen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to present",
+   "to submit"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "rank": 923,
+  "zipf": 3.68,
+  "ex": "Bitte legen Sie Ihren Ausweis vor.",
+  "exen": "Please show your ID.",
+  "forms": "legt vor · legte vor · hat vorgelegt"
+ },
+ {
+  "id": "hinlegen.verb",
+  "w": "hinlegen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to put down",
+   "to lie down"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "home",
+  "rank": 759,
+  "zipf": 3.51,
+  "ex": "Ich lege mich kurz hin.",
+  "exen": "I'm going to lie down for a bit.",
+  "forms": "legt hin · legte hin · hat hingelegt"
+ },
+ {
+  "id": "nachholen.verb",
+  "w": "nachholen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to catch up on",
+   "to make up for"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "rank": 993,
+  "zipf": 3.58,
+  "ex": "Wir holen den Termin nächste Woche nach.",
+  "exen": "We'll make up the appointment next week.",
+  "forms": "holt nach · holte nach · hat nachgeholt"
+ },
+ {
+  "id": "ersetzen.verb",
+  "w": "ersetzen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to replace"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "abstract",
+  "rank": 994,
+  "zipf": 4.37,
+  "ex": "Kann man das Teil ersetzen?",
+  "exen": "Can the part be replaced?",
+  "forms": "ersetzt · ersetzte · hat ersetzt"
+ },
+ {
+  "id": "fehlen.verb",
+  "w": "fehlen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to be missing",
+   "to be absent"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "core",
+  "rank": 760,
+  "zipf": 4.78,
+  "ex": "Wer fehlt heute?",
+  "exen": "Who is missing today?",
+  "forms": "fehlt · fehlte · hat gefehlt"
+ },
+ {
+  "id": "folgen.verb",
+  "w": "folgen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to follow"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "core",
+  "rank": 995,
+  "zipf": 5.18,
+  "ex": "Bitte folgen Sie mir.",
+  "exen": "Please follow me.",
+  "forms": "folgt · folgte · ist gefolgt"
+ },
+ {
+  "id": "verfolgen.verb",
+  "w": "verfolgen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to follow",
+   "to pursue"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "rank": 924,
+  "zipf": 4.47,
+  "ex": "Ich verfolge die Nachrichten jeden Tag.",
+  "exen": "I follow the news every day.",
+  "forms": "verfolgt · verfolgte · hat verfolgt"
+ },
+ {
+  "id": "sorgen.verb",
+  "w": "sorgen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to take care of",
+   "to worry"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "feelings",
+  "rank": 996,
+  "zipf": 5.07,
+  "ex": "Ich sorge für das Essen.",
+  "exen": "I'll take care of the food.",
+  "forms": "sorgt · sorgte · hat gesorgt"
+ },
+ {
+  "id": "besorgen.verb",
+  "w": "besorgen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to get",
+   "to buy"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "rank": 997,
+  "zipf": 4.08,
+  "ex": "Kannst du noch Brot besorgen?",
+  "exen": "Can you get some bread?",
+  "forms": "besorgt · besorgte · hat besorgt"
+ },
+ {
+  "id": "versorgen.verb",
+  "w": "versorgen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to look after",
+   "to supply"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "body",
+  "rank": 925,
+  "zipf": 4.07,
+  "ex": "Die Krankenschwester versorgt die Wunde.",
+  "exen": "The nurse treats the wound.",
+  "forms": "versorgt · versorgte · hat versorgt"
+ },
+ {
+  "id": "trauen.verb",
+  "w": "trauen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to trust",
+   "to dare"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "rank": 926,
+  "zipf": 4.12,
+  "ex": "Ich traue ihm nicht.",
+  "exen": "I don't trust him.",
+  "forms": "traut · traute · hat getraut"
+ },
+ {
+  "id": "anpassen.verb",
+  "w": "anpassen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to adapt",
+   "to adjust"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "abstract",
+  "rank": 998,
+  "zipf": 4.06,
+  "ex": "Wir müssen den Plan anpassen.",
+  "exen": "We have to adjust the plan.",
+  "forms": "passt an · passte an · hat angepasst"
+ },
+ {
+  "id": "vorlesen.verb",
+  "w": "vorlesen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to read aloud"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "school",
+  "rank": 761,
+  "zipf": 3.7,
+  "ex": "Kannst du mir die Nachricht vorlesen?",
+  "exen": "Can you read the message out to me?",
+  "forms": "liest vor · las vor · hat vorgelesen"
+ },
+ {
+  "id": "beenden.verb",
+  "w": "beenden",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to end",
+   "to finish"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "rank": 999,
+  "zipf": 4.38,
+  "ex": "Wir beenden das Meeting um vier.",
+  "exen": "We'll end the meeting at four.",
+  "forms": "beendet · beendete · hat beendet"
+ },
+ {
+  "id": "enden.verb",
+  "w": "enden",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to end"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "rank": 1000,
+  "zipf": 4.4,
+  "ex": "Der Film endet um zehn Uhr.",
+  "exen": "The film ends at ten o'clock.",
+  "forms": "endet · endete · hat geendet"
+ },
+ {
+  "id": "auswählen.verb",
+  "w": "auswählen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to choose",
+   "to select"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "abstract",
+  "rank": 1001,
+  "zipf": 3.78,
+  "ex": "Bitte wählen Sie eine Antwort aus.",
+  "exen": "Please choose an answer.",
+  "forms": "wählt aus · wählte aus · hat ausgewählt"
+ },
+ {
+  "id": "gefährden.verb",
+  "w": "gefährden",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to endanger"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "science",
+  "rank": 927,
+  "zipf": 3.96,
+  "ex": "Rauchen gefährdet die Gesundheit.",
+  "exen": "Smoking endangers your health.",
+  "forms": "gefährdet · gefährdete · hat gefährdet"
+ },
+ {
+  "id": "loben.verb",
+  "w": "loben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to praise"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "communication",
+  "rank": 1002,
+  "zipf": 3.78,
+  "ex": "Die Lehrerin lobt die Schüler.",
+  "exen": "The teacher praises the pupils.",
+  "forms": "lobt · lobte · hat gelobt"
+ },
+ {
+  "id": "hassen.verb",
+  "w": "hassen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to hate"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "feelings",
+  "rank": 1003,
+  "zipf": 4.22,
+  "ex": "Ich hasse es, früh aufzustehen.",
+  "exen": "I hate getting up early.",
+  "forms": "hasst · hasste · hat gehasst"
+ },
+ {
+  "id": "starten.verb",
+  "w": "starten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to take off",
+   "to start"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "travel",
+  "rank": 762,
+  "zipf": 4.63,
+  "ex": "Das Flugzeug startet um acht Uhr.",
+  "exen": "The plane takes off at eight o'clock.",
+  "forms": "startet · startete · ist gestartet"
+ },
+ {
+  "id": "senden.verb",
+  "w": "senden",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to send",
+   "to broadcast"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "media",
+  "rank": 1004,
+  "zipf": 4.28,
+  "ex": "Ich sende Ihnen die Unterlagen per E-Mail.",
+  "exen": "I'll send you the documents by email.",
+  "forms": "sendet · sandte/sendete · hat gesandt/gesendet"
+ },
+ {
+  "id": "empfangen.verb",
+  "w": "empfangen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to receive"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "media",
+  "rank": 928,
+  "zipf": 4.31,
+  "ex": "Hier kann man kein Signal empfangen.",
+  "exen": "You can't get a signal here.",
+  "forms": "empfängt · empfing · hat empfangen"
+ },
+ {
+  "id": "erhöhen.verb",
+  "w": "erhöhen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to raise",
+   "to increase"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "rank": 1005,
+  "zipf": 4.44,
+  "ex": "Die Firma erhöht die Preise.",
+  "exen": "The company is raising its prices.",
+  "forms": "erhöht · erhöhte · hat erhöht"
+ },
+ {
+  "id": "senken.verb",
+  "w": "senken",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to lower",
+   "to reduce"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "money",
+  "rank": 929,
+  "zipf": 4.1,
+  "ex": "Die Stadt will die Kosten senken.",
+  "exen": "The city wants to reduce costs.",
+  "forms": "senkt · senkte · hat gesenkt"
+ },
+ {
+  "id": "anmachen.verb",
+  "w": "anmachen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to switch on"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "home",
+  "rank": 763,
+  "zipf": 3.36,
+  "ex": "Mach bitte das Licht an.",
+  "exen": "Please switch the light on.",
+  "forms": "macht an · machte an · hat angemacht"
+ },
+ {
+  "id": "ausschalten.verb",
+  "w": "ausschalten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to switch off"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "home",
+  "rank": 764,
+  "zipf": 3.77,
+  "ex": "Schalten Sie bitte Ihr Handy aus.",
+  "exen": "Please switch off your phone.",
+  "forms": "schaltet aus · schaltete aus · hat ausgeschaltet"
+ },
+ {
+  "id": "der_Gewinner",
+  "w": "Gewinner",
+  "art": "der",
+  "pl": "Gewinner",
+  "pos": "noun",
+  "en": [
+   "winner"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "leisure",
+  "rank": 1006,
+  "zipf": 4.38,
+  "ex": "Wer ist der Gewinner?",
+  "exen": "Who is the winner?"
+ },
+ {
+  "id": "ungesund.adj",
+  "w": "ungesund",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "unhealthy"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "body",
+  "rank": 765,
+  "zipf": 3.44,
+  "ex": "Zu viel Zucker ist ungesund.",
+  "exen": "Too much sugar is unhealthy."
+ },
+ {
+  "id": "gründlich.adj",
+  "w": "gründlich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "thorough",
+   "thoroughly"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "abstract",
+  "rank": 1007,
+  "zipf": 4.01,
+  "ex": "Bitte lesen Sie den Vertrag gründlich.",
+  "exen": "Please read the contract thoroughly."
+ },
+ {
+  "id": "die_Ruhe",
+  "w": "Ruhe",
+  "art": "die",
+  "pl": null,
+  "pos": "noun",
+  "en": [
+   "quiet",
+   "calm",
+   "peace"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "feelings",
+  "rank": 766,
+  "zipf": 4.89,
+  "ex": "Ich brauche jetzt ein bisschen Ruhe.",
+  "exen": "I need a bit of peace and quiet now."
+ },
+ {
+  "id": "beruhigen.verb",
+  "w": "beruhigen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to calm down",
+   "to reassure"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "feelings",
+  "rank": 1008,
+  "zipf": 3.94,
+  "ex": "Beruhige dich, es ist alles in Ordnung.",
+  "exen": "Calm down, everything is fine.",
+  "forms": "beruhigt · beruhigte · hat beruhigt"
+ },
+ {
+  "id": "der_Dienst",
+  "w": "Dienst",
+  "art": "der",
+  "pl": "Dienste",
+  "pos": "noun",
+  "en": [
+   "service",
+   "duty"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "rank": 1009,
+  "zipf": 4.76,
+  "ex": "Am Wochenende hat sie Dienst.",
+  "exen": "She's on duty at the weekend."
+ },
+ {
+  "id": "entlang.prep",
+  "w": "entlang",
+  "art": "",
+  "pl": null,
+  "pos": "prep",
+  "en": [
+   "along"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "rank": 1010,
+  "zipf": 4.64,
+  "ex": "Gehen Sie immer die Straße entlang.",
+  "exen": "Keep going along the street."
+ }
+]
