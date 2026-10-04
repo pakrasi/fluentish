@@ -1,0 +1,11 @@
+{
+ "synthetic": true,
+ "about": "Made-up captured words in the b1-exam data/vocab.json shape, for the Look up tests. Never a real export.",
+ "words": [
+  { "id": 1, "day": 1, "module": "lesen", "teil": "Teil 1", "word": "Nachbarn", "word_key": "nachbarn", "lemma": "Nachbar", "gloss": "neighbour", "gender": "(der)", "plural": "Nachbarn", "pos": "Nomen", "cluster": "Wohnen", "zipf": 4.6, "exam_days": 5, "sentence": "Die Nachbarn feiern am Samstag ein Fest.", "sentence_en": "The neighbours are having a party on Saturday.", "examples": "[{\"de\": \"Mein Nachbar hilft mir oft.\", \"en\": \"My neighbour often helps me.\", \"form\": \"Nachbar\"}]", "details": "{\"usage\": \"Common in everyday talk.\", \"family\": [{\"de\": \"die Nachbarschaft\", \"en\": \"neighbourhood\"}]}", "box": 0, "due": null, "reviews": 0, "deleted": 0 },
+  { "id": 2, "day": 2, "module": "hoeren", "teil": "Teil 2", "word": "Nachbar", "word_key": "nachbar", "lemma": "Nachbar", "gloss": null, "zipf": 4.6, "exam_days": 5, "sentence": "Der Nachbar ist nett.", "box": 0, "reviews": 0, "deleted": 0 },
+  { "id": 3, "day": 1, "module": "lesen", "teil": "Teil 3", "word": "Übernachtung", "word_key": "übernachtung", "lemma": "Übernachtung", "gloss": "overnight stay", "gender": "(die)", "pos": "Nomen", "zipf": 3.2, "exam_days": 1, "sentence": "Die Übernachtung kostet 40 Euro.", "box": 0, "reviews": 0, "deleted": 0 },
+  { "id": 4, "day": 2, "module": "lesen", "word": "zufällig", "word_key": "zufällig", "lemma": "zufällig", "gloss": null, "zipf": 4.1, "exam_days": 2, "box": 0, "reviews": 0, "deleted": 0 },
+  { "id": 5, "day": 2, "module": "lesen", "word": "weg", "word_key": "weg", "lemma": "weg", "gloss": "away", "zipf": 5.2, "exam_days": 9, "box": 0, "reviews": 0, "deleted": 1 }
+ ]
+}
