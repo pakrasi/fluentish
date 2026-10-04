@@ -4,6 +4,6 @@
     "allowJs": true, "checkJs": true, "noEmit": true, "strict": true, "skipLibCheck": true, "resolveJsonModule": true
   },
   "include": ["src/core/clock.js", "src/core/schema.js", "src/core/router.js", "src/core/bus.js", "src/core/i18n.js", "src/core/config.js",
-              "src/data/**/*.js", "src/domain/days.js", "src/domain/today.js"],
+              "src/data/**/*.js", "src/domain/days.js", "src/domain/today.js", "src/domain/grade.js"],
   "exclude": ["src/vendor"]
 }
