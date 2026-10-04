@@ -250,15 +250,23 @@ def detect(text, model=None):
             # the clause's last word: "weil ich muss arbeiten", "dass bei dir ist alles gut"
             if i + 1 < len(toks) and toks[i + 1] in FINITE:
                 continue  # "Damit bin ich …": an adverb, not a clause
+            end = len(toks)  # the clause ends at a main clause that follows without a comma
             for j in range(i + 1, min(i + 5, len(toks) - 1)):
                 if toks[j] in SUB_DETECT:
                     break
                 rest = toks[j + 1:]
+                # a finite verb, then a finite verb and a pronoun: the main clause after a missing comma ("Wenn ich Zeit habe lerne ich")
+                # or a finite verb then another subordinator, or dann/so + verb ("…, weil …", "… ist dann fahre ich")
+                isfin = lambda w: w in fin or FINITE_ANY(w)
+                if isfin(toks[j]) and len(rest) >= 2 and ((isfin(rest[0]) and rest[1] in PRON and rest[1] != "das")
+                                                          or rest[0] in SUB_DETECT or (rest[0] in ("dann", "so") and isfin(rest[1]))):
+                    end = j + 1
+                    break
                 if toks[j] in fin and rest[0] not in ("oder", "und", "aber") and any(r not in fin for r in rest):
                     out.add("verb-final")
                     break
             # separable verb split in the clause: "dass es hängt von der Firma ab"
-            cl = toks[i + 1:]
+            cl = toks[i + 1:end]
             if len(cl) >= 3 and cl[-1] in PARTICLES and any(c in fin or FINITE_ANY(c) for c in cl[1:-1]):
                 out.add("verb-final")
     for sent in re.split(r"(?<=[.!?])\s+", text.strip()):

@@ -16,7 +16,9 @@ import * as C from './compose.js';
 import { dayBudget } from '../../domain/budget.js';
 import { slotKey } from './session.js';
 
-const FILES = ['b1.items', 'b1.grammar', 'b1.bank', 'b1.plan', 'b1.nouns', 'b1.wordmap'];
+// igloo.words.de and igloo.chunks.german (both precached) only feed the grader's lexicon of German word forms; without
+// them the B1 content's own words do
+const FILES = ['b1.items', 'b1.grammar', 'b1.bank', 'b1.plan', 'b1.nouns', 'b1.wordmap', 'igloo.words.de', 'igloo.chunks.german'];
 export const VOCAB_URL = `${config.github.api}/repos/${config.resultsRepo}/contents/data/vocab.json`;
 
 /** @type {{key: string, data: any} | null} */ let memo = null;
@@ -27,7 +29,7 @@ export const VOCAB_URL = `${config.github.api}/repos/${config.resultsRepo}/conte
  * @param {import('../contract.js').ViewCtx} ctx
  */
 export async function loadData(ctx) {
-  const [items, grammar, bank, plan, nouns, wordmap] = await Promise.all(FILES.map(id => ctx.content.load(id).catch(e => {
+  const [items, grammar, bank, plan, nouns, wordmap, lexWords, chunksDe] = await Promise.all(FILES.map(id => ctx.content.load(id).catch(e => {
     if (id === 'b1.plan') throw e;
     return null;
   })));
@@ -37,11 +39,14 @@ export async function loadData(ctx) {
   const key = [wc?.fetchedAt || 0, c.phase, mistakes.map(m => m.id).join(',')].join('|');
   if (memo && memo.key === key) return memo.data;
   const data = /** @type {any} */ (buildPool({ items: items || [], grammar: grammar || [], bank: bank || {}, plan, nouns: nouns || {},
-    words: wordItems(wc?.words, c.phase), mistakes }));
+    words: wordItems(wc?.words, c.phase), mistakes, lexWords: Array.isArray(lexWords) ? lexWords : null, lexTexts: chunkExamples(chunksDe) }));
   data.wordmap = wordmap || {};
   memo = { key, data };
   return data;
 }
+
+/** The German example sentences of the chunk file (igloo.chunks.german: {chunks: {id: {ex}}}). @param {any} f */
+const chunkExamples = f => (f && f.chunks ? Object.values(f.chunks).map((/** @type {any} */ c) => c && c.ex).filter(Boolean) : null);
 
 /** @param {any} store */
 export const session = store => store.get('b1.session', {}) || {};

@@ -1,8 +1,10 @@
 /* B1 trainer: speech helpers. Pure (no DOM, no recogniser); an ES module, tested in node.
    clean(transcript)            → the transcript without fillers, a self-repair keeps the last try ("ich glaube ich glaube dass" → "ich glaube dass")
-   grade(transcript, item, cal, opts) → per-check rows for Say it aloud: {chunk, verbFinal, fuerVor, ok, text}
+   grade(transcript, item, cal, opts) → per-check rows for Say it aloud: {chunk, verbFinal, fuerVor, rest, partial, ok, text}
         each check is true (✓), false (✗), 'not-in' (not in this answer) or 'off' (the mic check showed the phone fixes it)
         opts.match(text) → bool: the phrase check (B1.gradeAnswer(...).matchOk in the app; Match.check in tests)
+        opts.rest: the rest-of-sentence status from the grader ('ok'|'differs'|'na'|null). It counts (partial: Hard)
+        only when the mic check showed the phone keeps article and ending mistakes; otherwise the row is 'off'.
    CANARY                       → the 12 mic-check sentences, 3 per class, all wrong on purpose
    canaryKept(cls, said)        → did the recogniser keep the mistake in `said`?
    calibrate(results)           → {verbFinal, fuerVor, articles, endings}: true when every sentence of that class kept its mistake
@@ -48,7 +50,9 @@ function grade(transcript, item = {}, cal = null, opts = {}) {
     if (asr.fuerVor === false) fuerVor = 'off';
   }
   const ok = chunk !== false && verbFinal !== false && fuerVor !== false;
-  return { text, chunk, verbFinal, fuerVor, ok };
+  let rest = opts.rest === 'ok' ? true : opts.rest === 'differs' ? false : 'not-in';
+  if (rest === false && !(asr.endings === true && asr.articles === true)) rest = 'off';
+  return { text, chunk, verbFinal, fuerVor, rest, partial: ok && rest === false, ok };
 }
 
 // the mic check: every sentence is wrong on purpose; a class counts as "checked" when the phone kept all three mistakes

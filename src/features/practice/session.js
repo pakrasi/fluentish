@@ -7,7 +7,7 @@
 
    Scheduling rules kept from the trainer:
      - the rating comes from fsrs.rate(): wrong or revealed 1, over twice the limit 1, late / self-repair / capital or
-       umlaut slip 2, fast and steady 4, else 3
+       umlaut slip / phrase right but the rest of its sentence not (partial) 2, fast and steady 4, else 3
      - a miss or a learning step comes back in the same round: +4 questions, then +10, at most 3 showings
      - a "missed" round answers items already reviewed today: those answers only log
      - Claude's "My answer is right" redoes the answer as Hard (2) from the record before it */
@@ -77,7 +77,7 @@ export function reviewEvent(itemId, before, rec, o, c, tz) {
  * @param {object} a
  * @param {any} a.round
  * @param {any} a.entry      from current()
- * @param {{ok: boolean, ms: number, revealed?: boolean, selfRepair?: boolean, capSlip?: boolean, umlaut?: boolean, typo?: boolean, det?: string|null, gDet?: string|null}} a.o
+ * @param {{ok: boolean, ms: number, revealed?: boolean, selfRepair?: boolean, capSlip?: boolean, umlaut?: boolean, typo?: boolean, partial?: boolean, det?: string|null, gDet?: string|null}} a.o
  * @param {Record<string, any>} a.cards
  * @param {any} a.day        the session day log
  * @param {any} a.c          clock context
@@ -89,11 +89,11 @@ export function answer({ round, entry, o, cards, day, c, forecast = () => 0, now
   const id = entry.item.id, rec = cards[id];
   const logOnly = round.kind === 'missed' && rec?.last === c.today;
   if (!(id in round.prev)) round.prev[id] = entry.before;
-  const g = FS.rate({ ok: o.ok, revealed: o.revealed, ms: o.ms, limit: entry.limit, selfRepair: o.selfRepair, capSlip: o.capSlip, umlaut: o.umlaut,
+  const g = FS.rate({ ok: o.ok, revealed: o.revealed, ms: o.ms, limit: entry.limit, selfRepair: o.selfRepair, capSlip: o.capSlip, umlaut: o.umlaut, partial: o.partial,
     prevRating: rec?.hist?.length ? rec.hist[rec.hist.length - 1][1] : 0, stage: entry.stage });
   const over = entry.limit && o.ms > entry.limit * 1000;
   const det = o.det || o.gDet || null;
-  const flags = [o.selfRepair && 'r', o.capSlip && 'c', o.typo && 'y', o.umlaut && 'u', over && 'o', det && 'd' + det].filter(Boolean).join('');
+  const flags = [o.selfRepair && 'r', o.capSlip && 'c', o.typo && 'y', o.umlaut && 'u', over && 'o', o.partial && 'p', det && 'd' + det].filter(Boolean).join('');
   // honesty: predicted recall vs the first try of reviewed items, first attempt of the day only
   if (rec && rec.reps && rec.learn == null && rec.last !== c.today && !entry.reinsert) {
     day.pred[0] += FS.Ron(rec, c.today); day.pred[1]++; day.firstTry[0] += g >= 3 ? 1 : 0; day.firstTry[1]++;
@@ -109,7 +109,7 @@ export function answer({ round, entry, o, cards, day, c, forecast = () => 0, now
     const at = Math.min(round.queue.length, round.i + 1 + (times === 1 ? 4 : 10));
     round.queue.splice(Math.max(round.i + 1, at), 0, { id, re: true });
   }
-  round.results.push({ id, g, ok: o.ok, first: !entry.reinsert, ms: Math.round(o.ms || 0), isNew: entry.isNew, det });
+  round.results.push({ id, g, ok: o.ok, first: !entry.reinsert, ms: Math.round(o.ms || 0), isNew: entry.isNew, det, ...(o.partial ? { partial: true } : {}) });
   return { g, rec: res.rec, event: res.rec ? reviewEvent(id, rec || null, res.rec, { g, ms: o.ms, flags, mode: 't' }, c, tz) : null };
 }
 
@@ -141,15 +141,17 @@ export function dots(round, answered = false) {
 
 /**
  * A spoken answer (Say it aloud). Right = Good (Hard when slow); trap items (verb at the end, für/vor) get at most
- * Hard from speech alone; items not met yet only log (speech never starts a schedule).
- * @param {{item: any, rec: any, o: {ok: boolean, ms: number, limit?: number|null}, c: any, forecast?: (d: string) => number, now: number, tz?: string}} a
+ * Hard from speech alone, and so does a phrase whose sentence was not right around it (partial); items not met yet
+ * only log (speech never starts a schedule).
+ * @param {{item: any, rec: any, o: {ok: boolean, ms: number, limit?: number|null, partial?: boolean}, c: any, forecast?: (d: string) => number, now: number, tz?: string}} a
  */
 export function spoken({ item, rec, o, c, forecast = () => 0, now, tz = 'UTC' }) {
   const trap = ['verb-final', 'fuer-vor'].some(x => item.trap === x || (item.focus || []).includes(x));
   let g = o.ok ? (o.limit && o.ms > o.limit * 1000 ? 2 : 3) : 1;
-  if (o.ok && trap) g = Math.min(g, 2);
-  const res = FS.schedule(rec, { g, ms: o.ms || 0, onTime: g >= 3, flags: 's', mode: 's', logOnly: !rec || !rec.reps }, { ...c, forecast }, now);
-  return { g, rec: res.rec, event: res.rec ? reviewEvent(item.id, rec || null, res.rec, { g, ms: o.ms, flags: 's', mode: 's' }, c, tz) : null };
+  if (o.ok && (trap || o.partial)) g = Math.min(g, 2);
+  const flags = o.ok && o.partial ? 'sp' : 's';
+  const res = FS.schedule(rec, { g, ms: o.ms || 0, onTime: g >= 3, flags, mode: 's', logOnly: !rec || !rec.reps }, { ...c, forecast }, now);
+  return { g, rec: res.rec, event: res.rec ? reviewEvent(item.id, rec || null, res.rec, { g, ms: o.ms, flags, mode: 's' }, c, tz) : null };
 }
 
 /**
@@ -158,13 +160,14 @@ export function spoken({ item, rec, o, c, forecast = () => 0, now, tz = 'UTC' })
 export function summary(round, byId) {
   const firsts = round.results.filter((/** @type {any} */ r) => r.first);
   const right = firsts.filter((/** @type {any} */ r) => r.ok).length;
-  const late = firsts.filter((/** @type {any} */ r) => r.ok && r.g === 2).length;
+  const late = firsts.filter((/** @type {any} */ r) => r.ok && r.g === 2 && !r.partial).length;
+  const partial = firsts.filter((/** @type {any} */ r) => r.ok && r.partial).length;
   const missedIds = new Set(firsts.filter((/** @type {any} */ r) => !r.ok).map((/** @type {any} */ r) => r.id));
   const uniq = (/** @type {string[]} */ ids) => [...new Set(ids)].map(id => byId.get(id)).filter(Boolean);
   const fixed = uniq(round.results.filter((/** @type {any} */ r) => !r.first && r.ok && missedIds.has(r.id)).map((/** @type {any} */ r) => r.id));
   const news = uniq(round.results.filter((/** @type {any} */ r) => r.isNew).map((/** @type {any} */ r) => r.id));
   const back = uniq([...missedIds]);
   const last = round.results[round.results.length - 1];
-  return { total: firsts.length, right, late, fixed, news, back, fixedLast: !!(last && !last.first && last.ok),
+  return { total: firsts.length, right, late, partial, fixed, news, back, fixedLast: !!(last && !last.first && last.ok),
     ms: round.results.reduce((/** @type {number} */ a, /** @type {any} */ r) => a + Math.min(r.ms || 0, 60000), 0) };
 }

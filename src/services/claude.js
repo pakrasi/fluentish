@@ -127,7 +127,10 @@ export function checkPrompt(it, answer) {
     ? `Situation (Goethe B1 Sprechen ${it.teil}): ${it.partner ? `the partner says „${it.partner}“. ` : ''}${it.prompt}`
     : `Task: ${it.task ? it.task + ' ' : ''}${it.prompt}${it.hl ? ` (the graded part: "${it.hl}")` : ''}${it.prefill ? ` The answer starts with: ${it.prefill}` : ''}`;
   return `You check one answer in a German B1 exam trainer. ${task}\nExample answers: ${[it.model, ...(it.accept || []).slice(0, 4)].filter(Boolean).join(' | ')}\nThe learner wrote: ${answer}\n`
-    + 'Is the learner\'s answer correct, natural B1 German that does the same job? The listed answers are examples, not the only correct ones. Judge grammar strictly (word order, verb position, articles, endings, capitals).\n'
+    + 'Is the learner\'s whole answer correct, natural B1 German that does the same job? The listed answers are examples, not the only correct ones. '
+    + 'Judge every word, including the words outside the graded part, and judge grammar strictly: word order, verb position, case, articles, gender, adjective and verb endings, plurals, capitals.\n'
+    + '"minor" means only a spelling slip in an otherwise right answer: a typo inside a word, a missing umlaut or a lower-case noun. '
+    + 'Any wrong ending, case, article, gender, verb form, plural or word order makes it "wrong", however small.\n'
     + 'Reply with JSON only: {"verdict":"correct"|"minor"|"wrong","note":"one short sentence in English"}';
 }
 

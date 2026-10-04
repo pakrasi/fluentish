@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "e7d1e5b5cccf",
+ "version": "263abecadc29",
  "languages": [
   {
    "id": "khasi",
@@ -197,8 +197,8 @@
    "id": "b1.plan",
    "path": "b1/plan.json",
    "schema": "b1-plan@1",
-   "bytes": 13787,
-   "sha256": "bab302c3dfd8c17c5aa401f5c6bffa1dd74b7db0c12595b838af862030e3ab8d"
+   "bytes": 13807,
+   "sha256": "04cb38ae90a53e4a03e95fb5207157d538061d743120004c4e5b53633f64d8aa"
   },
   {
    "id": "b1.wordmap",

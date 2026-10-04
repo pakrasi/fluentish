@@ -4,7 +4,7 @@
    - relearn: a lapse today; one correct reinsertion → due tomorrow.
    - stage 0..3 picks the timer multiplier (1.5 new · 1.2 young · 1.0 review · 0.8 automatic). Capped at 2 until the exam.
    - hist: [[date, rating 1-4, ms, mode 't'|'s', flags]] (last 12). flags: l log-only, r self-repair, c capitals,
-     y typo, u umlaut, o over time, a Claude verdict, d<cls> detector class.
+     y typo, u umlaut, o over time, p phrase right but the rest of the sentence not, a Claude verdict, d<cls> detector class.
    Only the first attempt of the day changes S/D/due (P12); later ones only log. On the exam day nothing is written. */
 import * as D8 from './days.js';
 const W = [0.4872, 1.4003, 3.7145, 13.8206, 5.1618, 1.2298, 0.8975, 0.031, 1.6474, 0.1367, 1.0461, 2.1072, 0.0793, 0.3246, 1.587, 0.2272, 2.8755];
@@ -27,7 +27,8 @@ function next(rec, g, t) {
 function rate(o) {
   if (!o.ok || o.revealed) return 1;
   if (o.limit && o.ms > 2 * o.limit * 1000) return 1;
-  if ((o.limit && o.ms > o.limit * 1000) || o.selfRepair || o.capSlip || o.umlaut || o.claudeMinor) return 2;
+  // Hard: late, self-repaired, a capital or umlaut slip, or the phrase right but the rest of its sentence not (partial)
+  if ((o.limit && o.ms > o.limit * 1000) || o.selfRepair || o.capSlip || o.umlaut || o.claudeMinor || o.partial) return 2;
   if (o.limit && o.stage >= 2 && o.ms <= 0.5 * o.limit * 1000 && o.prevRating === 3) return 4;
   return 3;
 }

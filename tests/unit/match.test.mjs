@@ -266,7 +266,9 @@ test('B1 trainer options (opt-in; Test passes none of them)', () => {
     assert.equal(check('Konnten Sie mir helfen?', ['könnten sie mir helfen'], B).ok, false, 'konnten ≠ könnten');
     assert.equal(check('Ich wurde gern kommen', ['ich würde gern kommen'], B).ok, false, 'wurde ≠ würde');
     assert.equal(check('Das ist schon', ['das ist schön'], B).ok, false, 'schon ≠ schön');
-    assert.ok(check('Konnten Sie mir helfen?', ['könnten sie mir helfen'], { anywhere: true }).ok, 'Test still forgives it as a typo');
+    // Test (no B1 options) forgives a dropped umlaut as a typo, but never one that makes another word (konnten, Mutter)
+    assert.equal(check('Konnten Sie mir helfen?', ['könnten sie mir helfen'], { anywhere: true }).ok, false, 'konnten ≠ könnten in Test too');
+    assert.ok(check('Wir mussen gehen', ['wir müssen gehen'], { anywhere: true }).ok, 'Test still forgives a plain dropped umlaut');
     u = check('die Prufung', ['die prüfung'], B); assert.ok(u.ok && u.umlautMiss.length === 1);
     assert.ok(check('Koennten Sie mir helfen', ['könnten sie mir helfen'], B).ok, 'oe spelling is fine');
     // strict words: exact word, exact case

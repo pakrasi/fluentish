@@ -18,7 +18,7 @@ import * as RD from '../../domain/b1ready.js';
 import { roundMinutes } from '../../domain/today.js';
 import * as C from './compose.js';
 import * as S from './session.js';
-import { gradeAnswer } from './grade.js';
+import { gradeAnswer, isSituation } from './grade.js';
 import { loadData, stateFor, session, saveAnswer, saveLogs, forecaster, tz, addActivity, secrets } from './data.js';
 import { checkAnswer } from '../../services/claude.js';
 import { speech } from './speech.js';
@@ -70,6 +70,17 @@ function diffLines(typed, right) {
   d.right.forEach((/** @type {any} */ w, /** @type {number} */ k) => { if (!miss.has(k)) return; rt.push(right.slice(p2, w.start), h('mark', null, right.slice(w.start, w.end))); p2 = w.end; });
   rt.push(right.slice(p2));
   return { you, right: rt };
+}
+
+/** Text with ranges wrapped: marks → <mark>, struck → <s>. @param {string} text @param {{start: number, end: number}[]} ranges @param {'mark'|'s'} tag */
+function wrapRanges(text, ranges, tag) {
+  /** @type {any[]} */ const out = []; let p = 0;
+  for (const r of [...ranges].sort((a, b) => a.start - b.start)) {
+    if (r.start < p) continue;
+    out.push(text.slice(p, r.start), h(tag, tag === 's' ? { class: 'pr-wrongword' } : null, text.slice(r.start, r.end))); p = r.end;
+  }
+  out.push(text.slice(p));
+  return out;
 }
 
 /**
@@ -284,7 +295,13 @@ export async function mountRound(el, ctx) {
 
   // ---------- answering ----------
   const full = (/** @type {string} */ typed) => (entry.item.prefill ? `${entry.item.prefill} ` : '') + typed;
-  const grade = (/** @type {string} */ typed) => gradeAnswer(entry.item, full(typed), move, data);
+  // whole answers Claude confirmed right count as right sentences next time (the rest-of-sentence check)
+  const variants = () => {
+    /** @type {Map<string, string[]>} */ const m = new Map();
+    for (const v of session(store).variants || []) if (v && v.verdict === 'correct' && v.id && v.answer) m.set(v.id, [...(m.get(v.id) || []), v.answer]);
+    return m;
+  };
+  const grade = (/** @type {string} */ typed) => gradeAnswer(entry.item, full(typed), move, { ...data, variants: variants() });
   function onReturn() {
     if (holding) { skipHold(); return; }
     const typed = input.value.trim();
@@ -319,10 +336,10 @@ export async function mountRound(el, ctx) {
     const typed = input.value.trim();
     const g = submitted ? grade(typed) : null;
     if (g && g.ok) {
-      record({ ok: true, ms: outcome.ms, selfRepair: true, det: det.cls });
+      record({ ok: true, ms: outcome.ms, selfRepair: true, det: det.cls, partial: g.partial });
       state = 'feedback';
       fxCorrect(answerEl, { hold: 0 });
-      replace(fb, h('p', { class: 'pr-res is-ok' }, t('practice.fixedIt')));
+      replace(fb, h('p', { class: 'pr-res is-ok' }, t('practice.fixedIt')), g.partial ? restLines(g) : null);
       setButtons();
       return;
     }
@@ -363,13 +380,28 @@ export async function mountRound(el, ctx) {
   }
 
   // right
+  // the phrase is right, the rest of the sentence is not: "<phrase> is right.", the rest with its differences, Hard
+  function restLines(/** @type {any} */ g) {
+    const r = g.rest, kids = [];
+    if (r.junk) kids.push(h('p', { class: 'caption' }, t('practice.partial.junk')));
+    else if (r.ref) kids.push(h('p', { class: 'pr-diff answer-key pr-rest', lang: 'de' }, h('span', { class: 'caption' }, isSituation(entry.item) ? t('practice.partial.situation') : t('practice.partial.rest')), ' ', wrapRanges(r.ref, r.marks || [], 'mark')));
+    if ((r.wrong || []).length) kids.push(h('p', { class: 'pr-diff', lang: 'de' }, h('span', { class: 'caption' }, t('practice.you')), ' ', wrapRanges(g.input, r.wrong, 's')));
+    kids.push(h('p', { class: 'caption' }, t('practice.partial.hard')));
+    return kids;
+  }
+  function phraseHead(/** @type {any} */ g) {
+    const [a, b] = t('practice.partial.right', { phrase: '\u0000' }).split('\u0000');
+    return h('p', { class: 'pr-res is-warn' }, a, h('b', { lang: 'de' }, g.phrase || ''), b ?? '');
+  }
   async function showRight(/** @type {any} */ g, /** @type {number} */ ms, /** @type {boolean} */ isNew) {
     const it = entry.item;
     const late = !isNew && limitMs && ms > limitMs, veryLate = !isNew && limitMs && ms > 2 * limitMs;
     const capSlip = g.capMiss.length > 0 && !(it.focus || []).includes('cap');
     const umlaut = g.umlautMiss.length > 0;
-    record({ ok: true, ms, capSlip, umlaut, typo: g.typos.length > 0 });
+    const partial = !!g.partial;
+    record({ ok: true, ms, capSlip, umlaut, typo: g.typos.length > 0, partial });
     state = 'feedback';
+    if (partial) return showPartial(g, ms);
     /** @type {string | null} */ let head = null;
     if (isNew) head = t('practice.right.knew');
     else if (veryLate) head = t('practice.right.veryLate');
@@ -398,6 +430,19 @@ export async function mountRound(el, ctx) {
     await fxCorrect(answerEl, { hold: clean ? 420 : 300 });
     holding = false;
     if (clean && state === 'feedback' && alive) next();
+  }
+  // the phrase right, the rest not: never "Right first time"; the rest, Hard, Claude if he thinks his version is right
+  function showPartial(/** @type {any} */ g, /** @type {number} */ ms) {
+    const it = entry.item;
+    const kids = [phraseHead(g), ...restLines(g)];
+    if (it.area === 'mistakes' && it.rule) kids.push(h('p', { class: 'pr-rule' }, it.rule));
+    if (claudeOk() && !g.rest?.junk) kids.push(claudeBox(input.value.trim()));
+    replace(fb, kids, wordCard(it));
+    setButtons();
+    reveal.classList.add('is-open');
+    sayAnswer(g.rest?.ref || g.right);
+    announce(`${t('practice.partial.right', { phrase: g.phrase || '' })} ${g.rest?.ref ? `${t('practice.partial.rest')} ${g.rest.ref}` : t('practice.partial.junk')}`);
+    tbar.hidden = true; secs.textContent = fmtS(ms);   // no check mark: the answer as a whole was not right
   }
   // wrong: the diff, the closest right answer, one rule line, then type it once
   function showWrong(/** @type {any} */ g, /** @type {string} */ typed, /** @type {number} */ ms, /** @type {any} */ d = null) {
@@ -433,8 +478,9 @@ export async function mountRound(el, ctx) {
         if (v.verdict === 'correct' || v.verdict === 'minor') {
           const cards = store.cards('b1');
           const res = S.override({ round, entry: cur, ms: 0, c: st.c, forecast: forecaster(cards, st.c), now: Date.now(), tz: tz() });
-          const variants = [...(session(store).variants || []), { id: cur.item.id, answer: full(typed), at: Date.now() }].slice(-200);
-          saveAnswer(store, cur.item.id, res.rec, res.event, { round, slot, day, variants });
+          // only a "correct" verdict becomes a variant that later counts as a right sentence; "minor" (a slip) does not
+          const saved = v.verdict === 'correct' ? [...(session(store).variants || []), { id: cur.item.id, answer: full(typed), at: Date.now(), verdict: 'correct' }].slice(-200) : undefined;
+          saveAnswer(store, cur.item.id, res.rec, res.event, { round, slot, day, ...(saved ? { variants: saved } : {}) });
           updateDots();
           replace(boxEl, h('p', { class: 'pr-res is-ok' }, v.verdict === 'correct' ? t('practice.claude.correct') : t('practice.claude.minor')), v.note ? h('p', { class: 'caption' }, v.note) : null);
           state = 'feedback'; input.value = ''; answerEl.classList.remove('is-wrong', 'is-retype'); input.placeholder = t('practice.ph.next'); setButtons();
@@ -491,7 +537,7 @@ export async function mountRound(el, ctx) {
   }
   function checkRetype(/** @type {string} */ typed) {
     const g = grade(typed);
-    if (g.ok) {
+    if (g.ok && !g.partial) {   // he types the sentence he was shown: all of it has to be right
       state = 'feedback';
       // the miss is fixed: no red "Not quite" next to a green check. The verdict turns, the struck line goes.
       const verdict = fb.querySelector('.pr-res.is-bad');
@@ -612,6 +658,7 @@ function drawDone(el, ctx, data, round, backTo) {
       h('p', { class: 'label' }, t('practice.roundDone')),
       h('h1', null, h('span', { class: 'figure tnum' }, String(sum.right)), ' ', h('span', { class: 'pr-done-of' }, t('practice.ofRight', { n: sum.total }))),
       sum.late ? h('p', { class: 'caption' }, t('practice.late', { n: sum.late })) : null,
+      sum.partial ? h('p', { class: 'caption' }, t('practice.partialN', { n: sum.partial })) : null,
       sum.fixedLast ? h('p', { class: 'caption' }, t('practice.lastFixed')) : null,
       view ? h('div', { class: 'pr-ready' },
         h('p', { class: 'pr-ready-top' }, h('span', { class: 'label' }, exam ? t('practice.readyFor', { date: label(c.exam) }) : t('practice.readyNow')),

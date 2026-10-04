@@ -164,11 +164,14 @@ export async function mountSpeak(el, ctx, parts) {
     function gradeIt(/** @type {string} */ text, /** @type {boolean} */ typed) {
       const it = items[k], ms = performance.now() - t0;
       const g = gradeAnswer(it, text, null, data);
-      const spk = Sp.grade(text, it, cal, { match: () => g.matchOk });
+      const spk = Sp.grade(text, it, cal, { match: () => g.matchOk, rest: g.rest ? g.rest.status : null });
       const ok = typed ? g.ok : spk.ok;
+      // the phrase right, the rest of the sentence not: Hard, and never "Right in …" (typed: always; spoken: only when
+      // the mic check showed the phone keeps article and ending mistakes)
+      const partial = ok && (typed ? !!g.partial : spk.partial);
       const cardsNow = ctx.store.cards('b1'), rec = cardsNow[it.id];
       const limit = T.limit(it, { stage: rec?.stage || 0, spoken: true });
-      const out = S.spoken({ item: it, rec, o: { ok, ms, limit }, c: ctx.clock.ctx(), forecast: forecaster(cardsNow, ctx.clock.ctx()), now: Date.now(), tz: tz() });
+      const out = S.spoken({ item: it, rec, o: { ok, ms, limit, partial }, c: ctx.clock.ctx(), forecast: forecaster(cardsNow, ctx.clock.ctx()), now: Date.now(), tz: tz() });
       saveAnswer(ctx.store, it.id, out.rec, out.event, {});
       results.push({ id: it.id, ok });
       mic.el.hidden = true; typeBox.hidden = true;
@@ -178,12 +181,16 @@ export async function mountSpeak(el, ctx, parts) {
       replace(res,
         h('p', { class: 'caption' }, typed ? t('practice.speak.youTyped') : t('practice.speak.youSaid')),
         typed ? null : h('table', { class: 'pr-checks' }, h('tbody', null, row(t('practice.speak.c.phrase'), spk.chunk), row(t('practice.speak.c.verbFinalShort'), spk.verbFinal), row(t('practice.speak.c.fuerVor'), spk.fuerVor),
+          row(t('practice.speak.c.rest'), spk.rest),
           row(t('practice.speak.c.articlesEndings'), t('practice.speak.notChecked')), row(t('practice.speak.c.pron'), t('practice.speak.notChecked')))),
-        ok ? h('p', { class: 'pr-res is-ok' }, t('practice.right.time', { s: `${(ms / 1000).toFixed(1)} s` }))
+        partial ? [h('p', { class: 'pr-res is-warn' }, t('practice.partial.right', { phrase: g.phrase || '' })),
+          g.rest?.ref ? h('p', { class: 'answer-key', lang: 'de' }, h('span', { class: 'caption' }, t('practice.partial.rest')), ' ', g.rest.ref) : null,
+          h('p', { class: 'caption' }, t('practice.partial.hard'))]
+          : ok ? h('p', { class: 'pr-res is-ok' }, t('practice.right.time', { s: `${(ms / 1000).toFixed(1)} s` }))
           : [h('p', { class: 'pr-res is-bad' }, t('practice.wrong')), h('p', { class: 'answer-key', lang: 'de' }, g.right)],
         !ok && (g.detRule || it.rule) ? h('p', { class: 'pr-rule' }, g.detRule || it.rule) : null);
-      if (ok) fxCorrect(answerEl, { hold: 0 }); else fxWrong(answerEl);
-      announce(ok ? t('practice.speak.ok') : `${t('practice.wrong')}. ${g.right}`);
+      if (ok && !partial) fxCorrect(answerEl, { hold: 0 }); else if (!ok) fxWrong(answerEl);
+      announce(partial ? `${t('practice.partial.right', { phrase: g.phrase || '' })} ${t('practice.partial.rest')} ${g.rest?.ref || g.right}` : ok ? t('practice.speak.ok') : `${t('practice.wrong')}. ${g.right}`);
       const nextBtn = h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: () => next() }, k + 1 < items.length ? t('practice.next') : t('practice.speak.finish'));
       replace(below, typed ? null : h('button', { type: 'button', class: 'btn pressable', onclick: () => { results.pop(); openType(); replace(res, h('p', { class: 'caption' }, t('practice.speak.typeMeant'))); } }, t('practice.speak.notWhatISaid')), nextBtn);
       nextBtn.focus({ preventScroll: true });

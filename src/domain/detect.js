@@ -18,7 +18,7 @@ const SUB = set('dass weil wenn ob obwohl damit sobald bevor nachdem während fa
 const PARTICLES = set('ab an auf aus ein mit vor zu zurück weg los fest teil statt vorbei hin her nach');
 const PARTS_BY_LEN = [...PARTICLES].sort((a, b) => b.length - a.length);
 // plan.json traps[v2].fronted, longest first (test_b1.mjs checks the two lists are the same)
-let FRONTED = `auf der anderen seite|in meinem heimatland|meiner meinung nach|auf der einen seite|aus diesem grund|vor zwei jahren|am wochenende|normalerweise|nächste woche|letztes jahr|letzte woche|andererseits|schließlich|zum schluss|tatsächlich|vielleicht|inzwischen|am samstag|am sonntag|am freitag|eigentlich|einerseits|allerdings|am anfang|natürlich|am montag|im sommer|im winter|zum glück|im moment|deswegen|trotzdem|außerdem|manchmal|meistens|am ende|deshalb|zuletzt|gestern|bei uns|seitdem|zurzeit|dagegen|leider|danach|zuerst|morgen|früher|darum|heute|jetzt|dafür|sonst|dann|oft`
+let FRONTED = `auf der anderen seite|in meinem heimatland|meiner meinung nach|auf der einen seite|aus diesem grund|vor zwei jahren|zum beispiel|am wochenende|normalerweise|nächste woche|letztes jahr|letzte woche|andererseits|schließlich|zum schluss|tatsächlich|vielleicht|inzwischen|am samstag|am sonntag|am freitag|eigentlich|einerseits|allerdings|am anfang|natürlich|am montag|im sommer|im winter|zum glück|im moment|deswegen|trotzdem|außerdem|manchmal|meistens|am ende|deshalb|zuletzt|gestern|bei uns|seitdem|zurzeit|dagegen|leider|danach|zuerst|morgen|früher|darum|heute|jetzt|dafür|sonst|dann|oft`
   .split('|').map(norm).sort((a, b) => b.length - a.length);
 const COMMA_OK = new Set(['natuerlich', 'vielleicht', 'allerdings']);   // plan.json traps[v2].comma_ok
 const NONVERB = set(`der die das den dem des ein eine einen einem einer eines mein meine meinen meinem dein deine sein seine
@@ -72,12 +72,17 @@ function order(text, model) {
       }
       if (!SUB.has(t)) return;
       if (i + 1 < toks.length && FINITE.has(toks[i + 1])) return;   // "Damit bin ich …": an adverb
+      let end = toks.length;   // the clause ends at a main clause that follows without a comma
       for (let j = i + 1; j < Math.min(i + 5, toks.length - 1); j++) {
         if (SUB.has(toks[j])) break;
         const rest = toks.slice(j + 1);
+        // a finite verb, then a finite verb and a pronoun: the main clause after a missing comma ("Wenn ich Zeit habe lerne ich")
+        // or a finite verb then another subordinator, or dann/so + verb ("…, weil …", "… ist dann fahre ich")
+        if (isFin(toks[j], fin) && rest.length >= 2 && ((isFin(rest[0], fin) && PRON.has(rest[1]) && rest[1] !== 'das') ||
+          SUB.has(rest[0]) || (['dann', 'so'].includes(rest[0]) && isFin(rest[1], fin)))) { end = j + 1; break; }
         if (fin.has(toks[j]) && !['oder', 'und', 'aber'].includes(rest[0]) && rest.some(r => !fin.has(r))) { out.push({ cls: 'verb-final', word: t }); return; }
       }
-      const cl = toks.slice(i + 1);
+      const cl = toks.slice(i + 1, end);
       if (cl.length >= 3 && PARTICLES.has(cl[cl.length - 1]) && cl.slice(1, -1).some(c => isFin(c, fin))) out.push({ cls: 'verb-final', word: t });
     });
   }

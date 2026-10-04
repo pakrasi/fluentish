@@ -138,10 +138,18 @@ test('detectors: JS = Python reference, and no fires on right sentences', () => 
       ['Wer Fragen hat, er kann mich anrufen.', ''], ['Wer Fragen hat, der kann mich anrufen.', ''], ['Wer Zeit hat, kann kommen.', ''],
       ['Natürlich, es ist wichtig.', ''], ['Natürlich ist es wichtig.', ''], ['Wenn ich Sie richtig verstehe, Sie meinen die Kosten.', ''],
       ['Wenn ich dich richtig verstehe, meinst du die Kosten.', ''], ['Wer ist er, fragt sie.', ''],
+      // a main clause after a missing comma ends the subordinate clause; the verb-final error stays an error
+      ['Wenn ich Zeit habe lerne ich jeden Abend.', ''], ['Ich weiß nicht ob das klappt weil ich einen Arzttermin habe.', ''],
+      ['Wenn das Wetter schön ist dann fahre ich mit dem Rad.', ''], ['Nachdem wir gefrühstückt hatten gingen wir los.', ''],
+      ['Obwohl er keine Lust hat kommt er mit.', ''], ['Weil ich muss arbeiten gehe ich nicht.', ''], ['Wenn ich habe Zeit lerne ich.', ''],
     ];
+    for (const m of ['Weil ich muss arbeiten gehe ich nicht.', 'Wenn ich habe Zeit lerne ich.', 'Ich komme nicht weil ich habe keine Zeit.'])
+      assert.deepEqual(Det.classes(m, null), ['verb-final'], `must fire without the comma: ${m}`);
     const mustNot = ['Wenn ich Sie richtig verstehe, meinen Sie die Kosten?', 'Wir könnten grillen, was meinst du?', 'Natürlich, das stimmt.', 'Mich würde interessieren, wie deine Familie das sieht.',
       'Am Ende der Woche war es schön.', 'Heute Abend gehe ich ins Kino.', 'Ich weiß nicht, wie lange du arbeitest.', 'Was meinst du damit?', 'Wer hat Fragen?',
-      'Wer Fragen hat, der kann mich anrufen.', 'Natürlich ist es wichtig.', 'Natürlich, das ist wichtig.', 'Wenn ich dich richtig verstehe, meinst du die Kosten.', 'Wer kommt, sie oder er?'];
+      'Wer Fragen hat, der kann mich anrufen.', 'Natürlich ist es wichtig.', 'Natürlich, das ist wichtig.', 'Wenn ich dich richtig verstehe, meinst du die Kosten.', 'Wer kommt, sie oder er?',
+      'Wenn ich Zeit habe lerne ich jeden Abend.', 'Ich weiß nicht ob das klappt weil ich einen Arzttermin habe.', 'Wenn das Wetter schön ist dann fahre ich mit dem Rad.',
+      'Nachdem wir gefrühstückt hatten gingen wir los.', 'Obwohl er keine Lust hat kommt er mit.', 'Wenn ich Zeit hätte würde ich mitkommen.'];
     for (const m of mustNot) assert.deepEqual(Det.classes(m, null), [], `must not fire: ${m}`);
     const nModels = cases.length;
     cases.push(...fixed);
