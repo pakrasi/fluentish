@@ -10,6 +10,7 @@ import { isDue, dueOn } from '../../domain/b1ready.js';
 import { roundMinutes } from '../../domain/today.js';
 import { dayBudget, ROUND } from '../../domain/budget.js';
 import { add } from '../../core/clock.js';
+import { scriptPlanItems, scriptNewShown } from './script/today.js';
 
 /**
  * Refresh the pool stats Today reads (loads the content once; cached for the session). Never throws.
@@ -35,7 +36,8 @@ export function todayBudget({ store, c, settings }) {
   const stats = sess.stats && sess.stats.day === c.today ? sess.stats : null;
   const day = sess.day && sess.day.day === c.today ? sess.day : null;
   const poolLeft = stats ? (stats.unseen ?? Math.max(0, stats.pool - Object.keys(cards).length)) : Infinity;
-  const budget = dayBudget({ c, settings, dueN: due, priorityLeft: stats ? stats.priorityLeft : null, newShown: day ? day.newShown || 0 : 0, poolLeft });
+  // new script words shown today count as new items shown, so scripts never add to the day's new load
+  const budget = dayBudget({ c, settings, dueN: due, priorityLeft: stats ? stats.priorityLeft : null, newShown: (day ? day.newShown || 0 : 0) + scriptNewShown(store, c.today), poolLeft });
   const act = (store.get('activity', {}) || {})[c.today];
   const roundsToday = Math.max(act ? act.rounds || 0 : 0, day ? day.rounds || 0 : 0);
   return { ...budget, due, roundsToday };
@@ -96,6 +98,7 @@ export function planItems({ store, c, settings, t, exam }) {
   if (goalSpeaking && (c.phase === 'week' || c.phase === 'lastNew')) {
     out.push({ id: 'practice.teil2', source: 'practice', kind: 'speak', title: t('plan.teil2'), detail: t('plan.teil2.detail'), minutes: 6, href: '#/practice/speak/teil2', priority: 50 });
   }
+  out.push(...scriptPlanItems({ store, c, settings, t }));
   return out;
 }
 

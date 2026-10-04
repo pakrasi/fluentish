@@ -5,6 +5,7 @@
      #/practice/speak[/teil2|/aloud[/check|/go]]   speaking (speak.js)
      #/practice/words                  exam words from the private results repository
      #/practice/write[/id]             not built yet: a short note
+     #/practice/scripts[/…]            script mode (script/index.js); kind=script:<id> rounds go to script/words.js
    Pure logic: pool.js, grade.js, compose.js, session.js, words.js (tested in node). Storage and network: data.js. */
 import { h, replace } from '../../core/dom.js';
 import { notice } from '../../core/ui.js';
@@ -28,11 +29,13 @@ export async function mount(el, ctx) {
   }
   // an old link: #/practice/teil2 is the Teil 2 talk
   if (parts[0] === 'teil2') { ctx.go('/practice/speak/teil2', { replace: true }); return; }
-  if (parts[0] && !['round', 'speak', 'words', 'write'].includes(parts[0])) {
+  if (parts[0] && !['round', 'speak', 'words', 'write', 'scripts'].includes(parts[0])) {
     replace(el, h('div', { class: 'practice stack' }, h('div', { class: 'page-head' }, h('h1', null, ctx.t('error.notFound'))), h('a', { class: 'btn pressable', href: '#/practice' }, ctx.t('practice.back'))));
     return;
   }
   warmVoices();
+  if (parts[0] === 'scripts') return (await import('./script/index.js')).mountScripts(el, ctx, parts.slice(1));
+  if (parts[0] === 'round' && /^script:/.test(ctx.query.get('kind') || '')) return (await import('./script/index.js')).mountScriptRound(el, ctx);
   if (parts[0] === 'round') return mountRound(el, ctx);
   if (parts[0] === 'speak') return mountSpeak(el, ctx, parts.slice(1));
   if (parts[0] === 'words') return mountWords(el, ctx);

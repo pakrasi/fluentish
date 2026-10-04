@@ -251,6 +251,7 @@ export async function mount(el, ctx) {
           location.reload();
         } }, unsent ? t('data.delete.yesUnsent') : t('data.delete.yes')),
         h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => { confirm.hidden = true; deleteBtn.setAttribute('aria-expanded', 'false'); deleteBtn.focus(); } }, t('data.delete.no'))));
+    let includeScripts = false;   // scripts are private to the device (practice/script): out of the file unless ticked
     sec.append(
       meta.preview && !meta.summary ? h('div', { class: 'import-summary' }, h('h3', null, t('data.moved')), h('p', null, previewText(meta.preview, t))) : null,
       meta.summary ? h('div', { class: 'import-summary' },
@@ -260,9 +261,10 @@ export async function mount(el, ctx) {
         h('p', null, summaryText(meta.summary, t, { afterPreview: !!meta.preview })),
         meta.summary.iglooCards ? h('p', { class: 'caption' }, t('data.iglooStays', { n: meta.summary.iglooCards })) : null,
         meta.summary.cardsSkipped ? h('p', { class: 'caption' }, t('data.skipped', { n: meta.summary.cardsSkipped })) : null) : null,
+      Object.keys(store.get('scripts', {}) || {}).length ? switchRow({ label: t('data.includeScripts'), hint: t('data.includeScripts.hint'), checked: includeScripts, onChange: v => { includeScripts = v; } }) : null,
       h('div', { class: 'row-actions wrap' },
         h('button', { type: 'button', class: 'btn pressable', onclick: () => {
-          const b = exportBundle(store, { profile: app.profile });
+          const b = exportBundle(store, { profile: app.profile, includeScripts });
           download(new Blob([JSON.stringify(b, null, 1)], { type: 'application/json' }), `fluentish-${ctx.clock.today()}.json`);
         } }, icon('download', { size: 18 }), t('data.export')),
         h('button', { type: 'button', class: 'btn pressable', onclick: () => fileIn.click() }, icon('upload', { size: 18 }), t('data.import')), fileIn,
