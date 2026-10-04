@@ -10,8 +10,16 @@ export default {
   'tab.exam': 'Exam',
   'tab.lookup': 'Look up',
   'shadow.banner': 'Preview: nothing here is saved to your progress.',
-  'preview.dropped': 'The preview profile was removed.',
-  'preview.droppedMoved': 'The preview profile was removed, and your progress was moved over from the old apps.',
+  'preview.keptToast': 'Your work from the preview is kept. Today lists what was added.',
+  'preview.retry': 'Your work from the preview is still in the preview profile. It is added on the next start.',
+  'preview.kept': 'Kept from the preview: {list}.',
+  'preview.kept.modules': { one: '{n} exam module', other: '{n} exam modules' },
+  'preview.kept.recordings': { one: '{n} recording', other: '{n} recordings' },
+  'preview.kept.corrections': { one: '{n} correction', other: '{n} corrections' },
+  'preview.kept.reviews': { one: '{n} review', other: '{n} reviews' },
+  'preview.kept.mistakes': { one: '{n} mistake to practise', other: '{n} mistakes to practise' },
+  'preview.kept.settings': 'your settings',
+  'preview.toSend': { one: '{n} result from the preview goes to {repo} when you close this.', other: '{n} results from the preview go to {repo} when you close this.' },
 
   // units
   'unit.days': { one: 'day', other: 'days' },
@@ -358,6 +366,8 @@ export default {
   // import (migration) summary
   'import.title': 'Your progress from Igloo and the B1 exam app is here.',
   'import.lead': 'Imported {list}.',
+  'import.leadOld': 'Imported from the old apps: {list}.',
+  'import.titlePreview': 'Your work from the preview and the old apps is here.',
   'import.cards': { one: '{n} card from Igloo', other: '{n} cards from Igloo' },
   'import.attempts': { one: '{n} exam attempt', other: '{n} exam attempts' },
   'import.drafts': { one: '{n} unfinished draft', other: '{n} unfinished drafts' },

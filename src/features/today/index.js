@@ -13,6 +13,7 @@ import { composeToday } from '../../domain/today.js';
 import { isDue } from '../../domain/b1ready.js';
 import { planProviders } from '../registry.js';
 import { summaryText } from '../../data/migrate.js';
+import { previewText } from '../../data/cutover.js';
 import { dueTomorrow, todayBudget } from '../practice/plan.js';
 import { readinessFor } from '../practice/field.js';
 import { legacyJobs, allowLegacy } from '../../data/sync/github-b1exam.js';
@@ -195,13 +196,14 @@ export async function mount(el, ctx) {
   function importNotice() {
     const meta = store.get('meta', {}) || {};
     const ui = store.get('ui', {}) || {};
-    if (!meta.summary || ui.importSeen) return null;
+    const preview = meta.preview && !ui.previewSeen ? meta.preview : null;   // kept from the preview (data/cutover.js)
+    if (!(meta.summary && !ui.importSeen) && !preview) return null;
     const s = ctx.settings();
     const id = nextId('imp');
     const linked = !!(store.get('secrets', {}) || {}).githubToken;
     const unsent = linked && !ui.sendLegacy ? legacyJobs(store).length : 0;
     const close = (/** @type {boolean} */ send) => {
-      store.update('ui', (/** @type {any} */ u) => ({ ...(u || {}), importSeen: true }), {});
+      store.update('ui', (/** @type {any} */ u) => ({ ...(u || {}), importSeen: true, ...(meta.preview ? { previewSeen: true } : {}) }), {});
       if (send) allowLegacy(store);
       store.flush();
       n.remove();
@@ -210,10 +212,12 @@ export async function mount(el, ctx) {
       /** @type {HTMLElement | null} */ (el.querySelector('#view h1, h1'))?.focus({ preventScroll: true });
     };
     const n = notice({ id, children: [
-      h('p', { class: 'notice-title' }, t('import.title')),
-      h('p', null, summaryText(meta.summary, t)),
+      h('p', { class: 'notice-title' }, preview ? t('import.titlePreview') : t('import.title')),
+      preview ? h('p', null, previewText(/** @type {any} */ (preview), t)) : null,
+      meta.summary ? h('p', null, summaryText(meta.summary, t, { afterPreview: !!preview })) : null,
       h('p', null, s.exam.date ? t('import.examDate', { date: label(s.exam.date) }) : t('import.noDate')),
-      Number.isInteger(meta.summary.newPerDay) && !s.rev?.newPerDay ? h('p', null, t('import.newPerDay', { n: meta.summary.newPerDay })) : null,
+      meta.summary && Number.isInteger(meta.summary.newPerDay) && !s.rev?.newPerDay ? h('p', null, t('import.newPerDay', { n: meta.summary.newPerDay })) : null,
+      preview && linked && preview.toSend ? h('p', null, t('preview.toSend', { n: preview.toSend, repo: config.resultsRepo })) : null,
       unsent ? h('p', null, t('import.unsent', { n: unsent, repo: config.resultsRepo })) : null,
       h('div', { class: 'notice-actions' },
         unsent ? h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: () => close(true) }, t('import.sendLegacy', { n: unsent })) : null,

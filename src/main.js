@@ -111,7 +111,9 @@ async function main() {
   bus.on('settings:changed', ({ key }) => { if (/^(exam|language|level)/.test(key)) refreshShell(); });
   bus.on('profile:changed', () => refreshShell());
   if (!durable) toast(t('error.noStorage'), { ms: 8000 });
-  if (session.previewDropped) toast(t(session.migration ? 'preview.droppedMoved' : 'preview.dropped'), { ms: 8000 });   // leaving shadow mode (data/session.js)
+  // leaving shadow mode (data/session.js keepPreview): the preview's work was merged; Today's notice has the counts
+  if (session.previewKept) toast(t('preview.keptToast'), { ms: 8000 });
+  if (session.cutoverError) toast(t('preview.retry'), { ms: 10000 });
 
   // ---------- router ----------
   const router = createRouter({

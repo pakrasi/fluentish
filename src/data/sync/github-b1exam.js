@@ -24,7 +24,8 @@
    (ui.sendLegacy, set by "Send … from the old app" on Today or "Send now" on Exam). An item without a time keeps
    created_at null; its file name takes the migration time, never "now".
 
-   Consent: after a migration nothing is uploaded until the import notice on Today has been seen (ui.importSeen).
+   Consent: after a migration nothing is uploaded until the import notice on Today has been seen (ui.importSeen), and
+   after the cutover merged a preview's work, until its notice has been seen (ui.previewSeen).
    Reading what the Mac wrote is allowed before that.
 
    The network is injected (fetch), so node tests run the whole flow against a mock and against the real sync.py. */
@@ -280,10 +281,10 @@ export const pendingEvents = store => store.pending().filter((/** @type {any} */
 /** "N not sent": events plus unsent items moved from the old app. @param {any} store */
 export const notSentCount = store => pendingEvents(store).length + legacyJobs(store).length;
 
-/** Whether uploads may start: not before the import notice of a migration has been seen. @param {any} store */
+/** Whether uploads may start: not before the notice of a migration, or of work kept from the preview, has been seen. @param {any} store */
 export function uploadsAllowed(store) {
   const meta = store.get('meta', {}) || {}, ui = store.get('ui', {}) || {};
-  return !meta.summary || !!ui.importSeen || !!ui.sendLegacy;
+  return (!meta.summary || !!ui.importSeen || !!ui.sendLegacy) && (!meta.preview || !!ui.previewSeen || !!ui.sendLegacy);
 }
 /** Whether the learner asked to send the unsent items moved from the old app. @param {any} store */
 export const legacyAllowed = store => !!(store.get('ui', {}) || {}).sendLegacy;

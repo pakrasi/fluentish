@@ -50,7 +50,7 @@ Every client-created record carries `id` (UUIDv7), `profileId`, `deviceId` and `
 
 | Schema | Where | Notes |
 |---|---|---|
-| `profile@1` | IDB `profiles` | `kind`: `local`, `shadow` (a preview copy that must never sync), `remote` (accounts, later) |
+| `profile@1` | IDB `profiles` | `kind`: `local`, `shadow` (a preview copy that must never sync), `remote` (accounts, later); `archivedAt`, `archivedInto`: a preview merged at the cutover, never opened again, purged 30 days after `archivedAt` |
 | `settings@1` | kv `settings`, profile, synced | the goal and practice options; `exam.date` is the **only** place the exam date lives; `rev` holds an HLC per field path for last-write-wins merges |
 | `prefs@1` | kv `prefs`, device | theme, motion, locale; never synced |
 | (secrets) | kv `secrets`, device | `anthropicKey`, `githubToken`; never exported or synced, no schema on purpose |

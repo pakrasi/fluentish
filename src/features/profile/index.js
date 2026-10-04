@@ -10,6 +10,7 @@ import { section, seg, field, switchRow, notice, avatar, nextId, chipChoice } fr
 import { entries as logEntries } from '../../core/log.js';
 import { setSetting, setExamDate, MODULES, defaultPrefs } from '../../data/settings.js';
 import { summaryText } from '../../data/migrate.js';
+import { previewText } from '../../data/cutover.js';
 import { exportBundle, importFile } from '../../data/transfer.js';
 import { deleteProfile } from '../../data/session.js';
 import { notSentCount } from '../../data/sync/github-b1exam.js';
@@ -251,10 +252,12 @@ export async function mount(el, ctx) {
         } }, unsent ? t('data.delete.yesUnsent') : t('data.delete.yes')),
         h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => { confirm.hidden = true; deleteBtn.setAttribute('aria-expanded', 'false'); deleteBtn.focus(); } }, t('data.delete.no'))));
     sec.append(
+      meta.preview && !meta.summary ? h('div', { class: 'import-summary' }, h('h3', null, t('data.moved')), h('p', null, previewText(meta.preview, t))) : null,
       meta.summary ? h('div', { class: 'import-summary' },
         h('h3', null, t('data.moved')),
         h('p', null, t('data.movedOn', { date: label(String(meta.migratedAt).slice(0, 10)) })),
-        h('p', null, summaryText(meta.summary, t)),
+        meta.preview ? h('p', null, previewText(meta.preview, t)) : null,
+        h('p', null, summaryText(meta.summary, t, { afterPreview: !!meta.preview })),
         meta.summary.iglooCards ? h('p', { class: 'caption' }, t('data.iglooStays', { n: meta.summary.iglooCards })) : null,
         meta.summary.cardsSkipped ? h('p', { class: 'caption' }, t('data.skipped', { n: meta.summary.cardsSkipped })) : null) : null,
       h('div', { class: 'row-actions wrap' },

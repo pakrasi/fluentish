@@ -236,8 +236,9 @@ export async function applyMigration(adapter, plan, profile) {
  * The one-line summary shown once on Today and kept in Profile > Data.
  * @param {ReturnType<typeof planMigration>['summary']} s
  * @param {((key: string, vars?: Record<string, any>) => string) & {list?: (items: string[]) => string}} t
+ * @param {{afterPreview?: boolean}} [o] next to the preview's line: "Imported from the old apps: …"
  */
-export function summaryText(s, t) {
+export function summaryText(s, t, { afterPreview = false } = {}) {
   const parts = [];
   if (s.cards) parts.push(t('import.cards', { n: s.cards }));
   if (s.attempts) parts.push(t('import.attempts', { n: s.attempts }));
@@ -245,5 +246,5 @@ export function summaryText(s, t) {
   if (s.words) parts.push(t('import.words', { n: s.words }));
   if (s.trainingTexts) parts.push(t('import.training', { n: s.trainingTexts }));
   if (!parts.length) parts.push(t('import.settingsOnly'));
-  return t('import.lead', { list: t.list ? t.list(parts) : parts.join(', ') });
+  return t(afterPreview ? 'import.leadOld' : 'import.lead', { list: t.list ? t.list(parts) : parts.join(', ') });
 }

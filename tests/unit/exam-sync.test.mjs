@@ -15,6 +15,7 @@ import {
   pathFor, stamp, filesFor, sidecarPath, appendResult, createGithubB1Exam, syncResults, resetThrottle, notSentCount,
   attemptFile, legacyJobs, wordKey, audioExt, allowLegacy,
 } from '../../src/data/sync/github-b1exam.js';
+import { mockGithubFor, B1, haveSyncPy } from './sync-harness.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const PID = '0192a3b4-c5d6-7e8f-9a0b-000000000001';
@@ -29,35 +30,7 @@ async function fresh(secrets = { githubToken: 'test-token-not-real' }) {
   return { adapter, store };
 }
 
-/** A mock GitHub: a Map path → base64 content; behaviour switches for failures. */
-function mockGithub() {
-  const files = new Map();
-  const calls = [];
-  const gh = { files, calls, mode: 'ok', reads: {} };
-  gh.fetch = async (url, init = {}) => {
-    const p = decodeURIComponent(new URL(url).pathname.replace(`/repos/${REPO}/contents/`, ''));
-    calls.push({ method: init.method || 'GET', path: p, headers: init.headers });
-    if (gh.mode === 'offline') throw new TypeError('Failed to fetch');
-    if (gh.mode === 'auth') return new Response(JSON.stringify({ message: 'Bad credentials' }), { status: 401 });
-    if ((init.method || 'GET') === 'PUT') {
-      if (files.has(p)) return new Response(JSON.stringify({ message: 'Invalid request.\n\n"sha" wasn\'t supplied.' }), { status: 422 });
-      files.set(p, JSON.parse(init.body).content);
-      return new Response('{}', { status: 201 });
-    }
-    if (p === 'data') {
-      const listing = Object.entries(gh.reads).map(([k, v]) => ({ type: 'file', name: k.replace('data/', ''), sha: `sha-${JSON.stringify(v).length}` }));
-      const tag = `"${Buffer.from(JSON.stringify(listing)).toString("base64").slice(-24)}"`;
-      if (init.headers?.['If-None-Match'] === tag) return new Response(null, { status: 304 });
-      return new Response(JSON.stringify(listing), { status: 200, headers: { etag: tag } });
-    }
-    const doc = gh.reads[p];
-    if (doc === undefined) return new Response('{"message":"Not Found"}', { status: 404 });
-    return new Response(JSON.stringify(doc), { status: 200 });
-  };
-  gh.text = p => Buffer.from(files.get(p), 'base64').toString('utf8');
-  gh.json = p => JSON.parse(gh.text(p));
-  return gh;
-}
+const mockGithub = () => mockGithubFor(REPO);
 
 const lesenAttempt = (over = {}) => ({
   id: '0192a3b4-c5d6-7e8f-9a0b-0000000000a1', day: 3, module: 'lesen', started_at: '2026-10-03T13:00:00.000-04:00',
@@ -211,8 +184,6 @@ test('pull lists data/ once, fetches only changed files, never asks for missing 
 
 /* ---------- contract test against the real sync.py ---------- */
 
-const B1 = path.join(os.homedir(), 'pakrasi-lab/b1-exam');
-const haveSyncPy = existsSync(path.join(B1, 'scripts/sync.py')) && existsSync(path.join(B1, 'server.py'));
 
 test('the real sync.py imports every file this adapter writes, once', { skip: !haveSyncPy && 'the B1 exam app is not on this machine' }, async () => {
   resetThrottle();
