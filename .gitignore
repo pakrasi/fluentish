@@ -1,0 +1,9 @@
+# local only
+.privacy-terms
+tests/private/
+node_modules/
+_site/
+__pycache__/
+*.pyc
+.DS_Store
+.playwright-cli/

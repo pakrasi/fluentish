@@ -1,0 +1,10 @@
+{
+  "about": "Reviewed exceptions to tools/check-privacy.mjs. Each entry names the files (glob), the rules it may break and why.",
+  "allow": [
+    {
+      "path": "content/igloo/lang/german.json",
+      "rules": ["grader-profile"],
+      "reason": "The German self-introduction example uses a product-manager job title for a neutral persona (Arjun). It is course content, not a description of a learner."
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+#!/bin/sh
+# Installed with `sh tools/install-hooks.sh` (sets core.hooksPath to .githooks).
+# Blocks a commit that would publish private data, or a hard-coded date in src.
+set -e
+node tools/check-privacy.mjs --staged
+node tools/check-dates.mjs --staged

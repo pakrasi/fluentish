@@ -1,0 +1,5 @@
+#!/bin/sh
+# Every tracked file, not only the last commit: a push publishes all of them.
+set -e
+node tools/check-privacy.mjs --all
+node tools/check-dates.mjs
