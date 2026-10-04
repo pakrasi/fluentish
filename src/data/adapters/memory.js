@@ -2,7 +2,7 @@
    tests and as the fallback when IndexedDB is unavailable (the app then says progress is not being kept).
    Values are structured-cloned on the way in and out, like IndexedDB does, so tests catch shared-object bugs. */
 
-const clone = v => (v === undefined ? undefined : structuredClone(v));
+const clone = (/** @type {any} */ v) => (v === undefined ? undefined : structuredClone(v));
 
 export function createMemoryAdapter() {
   /** @type {any} */ let device = null;

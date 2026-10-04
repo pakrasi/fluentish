@@ -93,8 +93,8 @@ export async function createIdbAdapter(factory = indexedDB) {
     loadProfile: (/** @type {string} */ p) => tx(['cards', 'attempts', 'outbox'], 'readonly', async t => {
       /** @type {Record<string, Record<string, any>>} */ const cards = {};
       for (const [k, v] of /** @type {[any[], any][]} */ (await range(t.objectStore('cards'), [p]))) (cards[k[1]] ||= {})[k[2]] = v;
-      const attempts = (await range(t.objectStore('attempts'), [p])).map(([, v]) => v);
-      const outbox = (await range(t.objectStore('outbox'), [p])).map(([, v]) => v);
+      const attempts = (/** @type {[any, any][]} */ (await range(t.objectStore('attempts'), [p]))).map(([, v]) => v);
+      const outbox = (/** @type {[any, any][]} */ (await range(t.objectStore('outbox'), [p]))).map(([, v]) => v);
       return { cards, attempts, outbox };
     }),
     putCards: (/** @type {string} */ p, /** @type {string} */ deck, /** @type {[string, any][]} */ entries) => tx(['cards'], 'readwrite', t => {

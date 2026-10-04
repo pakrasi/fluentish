@@ -3,7 +3,9 @@
   "private": true,
   "description": "One daily language study app: review queue, mock exams and reference, phone first.",
   "type": "module",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "test": "node --test 'tests/unit/*.test.mjs'",
     "test:tz": "for tz in America/New_York Europe/Berlin Asia/Kolkata; do TZ=$tz node --test 'tests/unit/*.test.mjs' || exit 1; done",
@@ -11,6 +13,13 @@
     "check:dates": "node tools/check-dates.mjs",
     "check:content": "node tools/validate-content.mjs",
     "serve": "node tools/serve.mjs 8430",
-    "hooks": "sh tools/install-hooks.sh"
+    "hooks": "sh tools/install-hooks.sh",
+    "typecheck": "tsc -p tsconfig.json",
+    "typecheck:legacy": "tsc -p tsconfig.legacy.json",
+    "fixtures": "node tools/make-fixtures.mjs",
+    "manifest": "node tools/build-manifest.mjs"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
   }
 }

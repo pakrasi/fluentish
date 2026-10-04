@@ -1,0 +1,82 @@
+# Gates for every push and pull request. Written in stage A; nothing is deployed from here yet
+# (deploy.yml arrives with the shadow-mode deploy, not before the exam: review A1).
+name: ci
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  privacy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Privacy check (every tracked file)
+        run: node tools/check-privacy.mjs --all
+      - name: No hard-coded dates in src
+        run: node tools/check-dates.mjs
+
+  unit:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tz: [America/New_York, Europe/Berlin, Asia/Kolkata]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }   # test_b1/test_match compare against the Python reference checkers
+      - name: Unit tests (TZ=${{ matrix.tz }})
+        env: { TZ: '${{ matrix.tz }}' }
+        run: node --test 'tests/unit/*.test.mjs'
+
+  types:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - name: tsc strict (core, data, new domain modules)
+        run: npx tsc -p tsconfig.json
+      - name: tsc on the ported domain modules (advisory until they are annotated)
+        continue-on-error: true
+        run: npx tsc -p tsconfig.legacy.json
+
+  content:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - name: Manifest is current and every file matches its JSON Schema
+        run: node tools/validate-content.mjs
+      - name: Igloo language files
+        run: for f in content/igloo/lang/*.json; do python3 tools/validate.py "$f"; done
+      - name: Sentence banks
+        run: for f in content/igloo/sentences/*.json; do [ "$(basename $f)" = en.json ] || python3 tools/validate_sentences.py "$f"; done
+      - name: Grammar, phrase answers, chunk parts and levels
+        run: |
+          python3 tools/validate_grammar.py de
+          python3 tools/validate_accept.py german
+          python3 tools/validate_chunks.py german
+          python3 tools/validate_levels.py
+      - name: B1 trainer sources
+        run: python3 tools/validate_b1.py --all
+      - name: Goethe B1 mock exams and explanations
+        run: |
+          python3 tools/validate_exam.py content/exams/goethe-b1/day*.json
+          python3 tools/validate_exam_why.py content/exams/goethe-b1/why/day*.json
+      - name: Built content matches its sources
+        run: |
+          python3 tools/build_b1.py
+          python3 tools/build_turns.py
+          node tools/build-manifest.mjs
+          git diff --exit-code -- content

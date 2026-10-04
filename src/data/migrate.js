@@ -104,7 +104,7 @@ export function planMigration(snap, { profileId, deviceId, now, uuid = ms => uui
   // ---- device prefs and secrets ----
   const prefs = defaultPrefs();
   if (iglooPrefs.theme === 'light' || iglooPrefs.theme === 'dark') { prefs.theme = iglooPrefs.theme; summary.theme = iglooPrefs.theme; }
-  const secrets = { anthropicKey: null, githubToken: null };
+  const secrets = { anthropicKey: /** @type {string | null} */ (null), githubToken: /** @type {string | null} */ (null) };
   const ak = json(snap['anthropic:key']) || (snap['doors.apikey'] || '').trim() || null;   // doors.apikey is a raw string
   if (typeof ak === 'string' && ak) { secrets.anthropicKey = ak; summary.keys.push('claude'); }
   const gt = json(snap['gh:token']);
@@ -233,7 +233,7 @@ export async function applyMigration(adapter, plan, profile) {
 /**
  * The one-line summary shown once on Today and kept in Profile > Data.
  * @param {ReturnType<typeof planMigration>['summary']} s
- * @param {(key: string, vars?: Record<string, any>) => string} t
+ * @param {((key: string, vars?: Record<string, any>) => string) & {list?: (items: string[]) => string}} t
  */
 export function summaryText(s, t) {
   const parts = [];

@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": { "strict": false, "noImplicitAny": false },
+  "include": ["src/domain/*.js"],
+  "exclude": ["src/vendor"]
+}
