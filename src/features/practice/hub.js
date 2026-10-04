@@ -14,6 +14,7 @@ import { refreshSimStats } from './sim-data.js';
 import { resumable, savedRound } from './session.js';
 import { loadData, stateFor, session, refreshWords, secrets, wordsState } from './data.js';
 import { COLLECTION as WORDS } from './words.js';
+import { hubRow as scriptsRow } from './script/hub.js';
 
 const AREAS = ['speaking', 'writing', 'grammar', 'reading', 'words'];
 const pct = (/** @type {number} */ x) => new Intl.NumberFormat('en-GB', { style: 'percent', maximumFractionDigits: 0 }).format(x || 0);
@@ -89,6 +90,7 @@ export async function mountHub(el, ctx) {
       missedN ? linkRow({ href: '#/practice/round?kind=missed', title: t('practice.missed', { n: missedN }), detail: t('practice.missed.detail') }) : null,
       mistakes.length ? linkRow({ href: '#/practice/round?kind=mistakes', title: t('practice.mistakes', { n: mistakes.length }),
         detail: mistakesOpen ? t('practice.mistakes.open', { n: mistakesOpen }) : t('practice.mistakes.none') }) : null,
+      scriptsRow(store, c, t),
       linkRow({ href: '#/practice/speak', title: t('practice.speak'), detail: t('practice.speak.detail') }),
       wb && wb.focus ? null : writeRow,
       simRow(),
@@ -171,6 +173,6 @@ export async function mountHub(el, ctx) {
       if (res.added.length) ctx.toast(t('practice.words.addedToast', { n: res.added.length }));
     }).catch(() => {});
   }
-  const offs = [store.subscribe('cards:b1', rerender), store.subscribe(`cards:${SIM_DECK}`, rerender), store.subscribe(SIM_KV, rerender), store.subscribe(WORDS, rerender), store.subscribe('mistakes', rerender), ctx.bus.on('settings:changed', rerender)];
+  const offs = [store.subscribe('cards:b1', rerender), store.subscribe(`cards:${SIM_DECK}`, rerender), store.subscribe(SIM_KV, rerender), store.subscribe(WORDS, rerender), store.subscribe('mistakes', rerender), ctx.bus.on('settings:changed', rerender), store.subscribe('scripts', rerender)];
   return () => { alive = false; offs.forEach(f => f()); };
 }

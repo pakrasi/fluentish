@@ -16,16 +16,21 @@ const SCHEMA = {
 };
 const NOT_EXPORTED = new Set(['secrets', 'prefs', 'exams.vocabAudio']);   // the word-audio index is a cache of the results repo
 
-/** @param {import('./store.js').Store} store @param {{profile: any}} o */
-export function exportBundle(store, { profile }) {
+// Script mode (features/practice/script): his scripts are private to the device and leave it only when he ticks
+// "Include scripts": their collections, the 'script' deck and the reviews marked local.
+const SCRIPT_KV = new Set(['scripts', 'scripts.progress', 'scripts.words']);
+const SCRIPT_DECKS = new Set(['script']);
+
+/** @param {import('./store.js').Store} store @param {{profile: any, includeScripts?: boolean}} o */
+export function exportBundle(store, { profile, includeScripts = false }) {
   return {
     schema: 'fluentish-export@1',
     exportedAt: new Date().toISOString(),
     profile: { id: profile.id, name: profile.name, createdAt: profile.createdAt },
-    kv: Object.fromEntries(Object.entries(store.kv).filter(([k]) => !NOT_EXPORTED.has(k))),
-    cards: store.cardsByDeck,
+    kv: Object.fromEntries(Object.entries(store.kv).filter(([k]) => !NOT_EXPORTED.has(k) && (includeScripts || !SCRIPT_KV.has(k)))),
+    cards: includeScripts ? store.cardsByDeck : Object.fromEntries(Object.entries(store.cardsByDeck).filter(([d]) => !SCRIPT_DECKS.has(d))),
     attempts: store.attempts(),
-    events: [...store.events.values()],
+    events: [...store.events.values()].filter(e => includeScripts || !(e && e.payload && e.payload.local)),
   };
 }
 
