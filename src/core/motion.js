@@ -154,7 +154,10 @@ export function haptic() {
       input.type = 'checkbox'; input.setAttribute('switch', ''); input.tabIndex = -1;
       hapticLabel.append(input); document.body.append(hapticLabel);
     }
+    // a label click focuses its checkbox: give focus straight back, so an answer field keeps it (and the iPhone keyboard stays up)
+    const had = /** @type {HTMLElement | null} */ (document.activeElement);
     hapticLabel.click();
+    if (had && had !== document.activeElement && typeof had.focus === 'function') had.focus({ preventScroll: true });
   } catch { /* no haptics */ }
 }
 
