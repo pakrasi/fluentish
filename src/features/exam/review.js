@@ -8,7 +8,7 @@ import { correctSchreiben, ClaudeError } from '../../services/claude.js';
 import { render as md } from './md.js';
 import { backLink } from './parts.js';
 import { feedbackFor, markSeen, saveCorrection, learnerNotes, queueMistakes, mistakesQueued, allAttempts, recordings, linked } from './data.js';
-import { nextModule } from './plan.js';
+import { nextModule, scoreReader } from './plan.js';
 
 /** "Sat 3 Oct, 20:15" for a stamp (local time). @param {string} iso @param {boolean} [utc] */
 export function when(iso, utc = false) {
@@ -160,7 +160,7 @@ export function correctionBlock({ ctx, exam, attempt, ex = null, again = false }
 export async function nextCard(ctx, exam, n) {
   const { t, store } = ctx;
   const s = ctx.settings();
-  const next = nextModule({ exam, modules: s.exam.modules?.length ? s.exam.modules : exam.modules.map((/** @type {any} */ m) => m.id), attempts: allAttempts(store, exam.id), drafts: store.get('exams.drafts', {}) });
+  const next = nextModule({ exam, modules: s.exam.modules?.length ? s.exam.modules : exam.modules.map((/** @type {any} */ m) => m.id), attempts: allAttempts(store, exam.id), drafts: store.get('exams.drafts', {}), scoreOf: scoreReader(store, exam.id) });
   const def = next ? exam.modules.find((/** @type {any} */ m) => m.id === next.module) : null;
   return h('nav', { class: 'ex-next', 'aria-label': t('exam.next') },
     next && def ? h('a', { class: 'btn btn-primary pressable', href: `#/exam/${next.test}/${next.module}` }, t('exam.nextModule', { module: def.name, n: next.test })) : null,

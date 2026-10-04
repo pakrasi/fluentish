@@ -50,6 +50,7 @@ export default {
   'exam.new': 'New',
   'exam.start': 'Start',
   'exam.continue': 'Continue',
+  'exam.resumeDraft': 'Resume',
   'exam.review': 'Review',
   'exam.lastResult': 'Last result',
   'exam.again': 'Do again',

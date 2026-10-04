@@ -132,3 +132,19 @@ print(json.dumps(out))`;
   const ref = JSON.parse(execFileSync('python3', ['-c', py, SERVER, path.join(ROOT, 'content/exams/goethe-b1/day%02d.json')], { encoding: 'utf8' }));
   for (let n = 1; n <= 14; n++) assert.deepEqual(answerKey(exam(n)), ref[n], `test ${n}`);
 });
+
+test('Up next: a recent draft, then modules never taken (weakest skill first), then the lowest score', async () => {
+  const { nextModule } = await import('../../src/features/exam/plan.js');
+  const exam = { tests: [1, 2, 3], modules: [{ id: 'lesen', max: 30 }, { id: 'hoeren', max: 30 }, { id: 'schreiben', max: 100 }, { id: 'sprechen', max: 100 }] };
+  const mods = ['lesen', 'hoeren', 'schreiben', 'sprechen'];
+  const NOW = Date.parse('2026-10-03T12:00:00Z');
+  const attempts = [{ module: 'lesen', day: 1, score: 25, submitted_at: '2026-09-30T10:00:00Z' }];
+  const old = { '3:lesen': { answers: { a: 1 }, start: NOW - 7 * 864e5, seen: NOW - 7 * 864e5 } };
+  assert.deepEqual(nextModule({ exam, modules: mods, attempts, drafts: old, now: NOW }), { test: 1, module: 'schreiben' }, 'a week-old Lesen draft does not beat Schreiben never taken');
+  const fresh = { '3:lesen': { answers: { a: 1 }, start: NOW - 3600e3, seen: NOW - 600e3 } };
+  assert.deepEqual(nextModule({ exam, modules: mods, attempts, drafts: fresh, now: NOW }), { test: 3, module: 'lesen' }, 'a draft from today wins');
+  const noClock = { '3:lesen': { answers: { a: 1 } } };
+  assert.deepEqual(nextModule({ exam, modules: mods, attempts, drafts: noClock, now: NOW }), { test: 1, module: 'schreiben' }, 'a draft with no time never wins');
+  const all = [...attempts, { module: 'schreiben', day: 1, score: null }, { module: 'sprechen', day: 1, score: null }, { module: 'hoeren', day: 1, score: 20 }];
+  assert.deepEqual(nextModule({ exam, modules: mods, attempts: all, drafts: {}, now: NOW, scoreOf: a => (a.module === 'schreiben' ? 70 : a.module === 'sprechen' ? 55 : a.score) }), { test: 2, module: 'sprechen' }, 'lowest share of the maximum next');
+});

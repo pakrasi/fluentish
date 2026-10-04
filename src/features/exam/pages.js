@@ -6,7 +6,7 @@ import { section, notice } from '../../core/ui.js';
 import { scoreLine, scoreNum, passes } from '../../domain/grade.js';
 import { latest, allAttempts, feedbackFor, isStarted, draft, loadTest, sync, notSentCount, linked, saveDraft, mediaUrl } from './data.js';
 import { backLink, statusBar, confirmPanel } from './parts.js';
-import { nextModule, modulesFitting } from './plan.js';
+import { nextModule, modulesFitting, scoreReader, draftTouched, RESUME_MS } from './plan.js';
 import * as T from './timer.js';
 import { when } from './review.js';
 
@@ -55,7 +55,7 @@ export async function examHome(el, ctx, exam) {
   const draw = () => {
     const attempts = allAttempts(store, exam.id);
     const last = latest(store, exam.id);
-    const next = nextModule({ exam, modules: mods, attempts, drafts: store.get('exams.drafts', {}) });
+    const next = nextModule({ exam, modules: mods, attempts, drafts: store.get('exams.drafts', {}), scoreOf: scoreReader(store, exam.id) });
     const nextDef = next ? exam.modules.find((/** @type {any} */ m) => m.id === next.module) : null;
     const fit = modulesFitting(c, attempts);
     // module summary: latest, best, pass line, attempts
@@ -123,7 +123,8 @@ export async function testPage(el, ctx, exam, n) {
       const st = moduleStatus(ctx, exam, m, a, n);
       const started = isStarted(store, n, m.id);
       const reviewHref = a ? `#/exam/${n}/${m.id}/review/${encodeURIComponent(a.id)}` : null;
-      const main = started ? { href: `#/exam/${n}/${m.id}`, text: t('exam.continue') } : a ? { href: reviewHref, text: t('exam.review') } : { href: `#/exam/${n}/${m.id}`, text: t('exam.start') };
+      const old = started && Date.now() - draftTouched((store.get('exams.drafts', {}) || {})[`${n}:${m.id}`]) > RESUME_MS;
+      const main = started ? { href: `#/exam/${n}/${m.id}`, text: old ? t('exam.resumeDraft') : t('exam.continue') } : a ? { href: reviewHref, text: t('exam.review') } : { href: `#/exam/${n}/${m.id}`, text: t('exam.start') };
       const uncorrected = m.id === 'schreiben' && a && !a.remote && !feedbackFor(store, exam.id, a).cur.length;
       return h('li', { class: 'ex-mod' },
         h('div', { class: 'ex-mod-main' },
