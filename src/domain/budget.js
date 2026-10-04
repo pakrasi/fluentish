@@ -17,8 +17,18 @@
 
    Schreiben (writingBudget): the Schreiben phrases have their own rounds and their own share of the day. While
    Schreiben is the weakest exam module (focus) it gets up to 30 % of the daily minutes for new phrases, paced to meet
-   every phrase left by the last new-item day, at least 8 a day; otherwise a trickle of 4. Its minutes come off what
-   the main rounds may fill with new items (dayBudget's writing.reserve), so the day still fits the minutes. */
+   every phrase left by the last new-item day, at least 8 a day; otherwise a trickle of 4. Its minutes (due phrases
+   and new ones) come off what the main rounds may fill with new items (dayBudget's writing.reserve).
+
+   How the shares compose (one day, one number of minutes):
+     1. the B1 review rounds' due items always come first (Today cuts the review row if the day still runs over);
+     2. Schreiben reserves its minutes (writing.reserve, up to 30 % of the day for new phrases while it is the focus);
+     3. the other rows reserve theirs (side): speaking situations (simBudget, a few minutes) and, with no exam ahead,
+        the scripts (at most 25 % of the day, more only for a near delivery; features/practice/script/plan.js);
+     4. the B1 new items fill what is left of their share (half the day while mocks are planned), at least 4;
+     5. new script words shown today count as B1 new items shown, so scripts never add to the new load.
+   Reserving only shrinks the B1 new items when the day is full; when the ★ pace is lower than what fits, nothing
+   changes. Today's composer (domain/today.js) then keeps the rows inside the minutes. */
 import * as D8 from './days.js';
 
 export const ROUND = 12;
@@ -54,11 +64,12 @@ export const newPerDayChosen = settings => Number.isInteger(settings?.newPerDay)
  * @param {number} [o.newShown]     new items already shown today
  * @param {number} [o.poolLeft]     unseen items left in the pool
  * @param {{due?: number, left?: number, shown?: number, focus?: boolean} | null} [o.writing]  the Schreiben phrases (writingBudget)
+ * @param {number} [o.side]         minutes today's other rows take: speaking situations and scripts (see the header)
  * @returns {Budget}
  */
-export function dayBudget({ c, settings, dueN, priorityLeft = null, newShown = 0, poolLeft = Infinity, writing = null }) {
+export function dayBudget({ c, settings, dueN, priorityLeft = null, newShown = 0, poolLeft = Infinity, writing = null, side = 0 }) {
   const w = writing ? writingBudget({ c, settings, ...writing }) : null;
-  const newPerDay = dailyNew({ c, settings, dueN, priorityLeft, reserved: w ? w.reserve : 0 });
+  const newPerDay = dailyNew({ c, settings, dueN, priorityLeft, reserved: (w ? w.reserve : 0) + Math.max(0, side || 0) });
   const newLeft = c.newItems ? Math.max(0, Math.min(newPerDay - newShown, poolLeft)) : 0;
   const raw = reviewMin(dueN) + newLeft * NEW_ITEM_MIN;
   const rounds = dueN + newLeft > 0 ? Math.max(1, Math.ceil(raw / ROUND_MIN - 1e-9)) : 0;
@@ -82,7 +93,7 @@ export const WRITE_SHARE = 0.3;
  * @property {number} n            questions today (due + new left)
  * @property {number} rounds       Schreiben rounds that takes (0 when there is nothing)
  * @property {number} minutes      rounds × 4
- * @property {number} reserve      minutes the main rounds leave free for the new Schreiben phrases
+ * @property {number} reserve      minutes the main rounds leave free for the Schreiben phrases (due and new)
  */
 
 /**
@@ -103,11 +114,11 @@ export function writingBudget({ c, settings, due = 0, left = 0, shown = 0, focus
   const newLeft = Math.max(0, Math.min(newPerDay - shown, left));
   const n = due + newLeft;
   const rounds = n > 0 ? Math.max(1, Math.ceil((reviewMin(due) + newLeft * NEW_ITEM_MIN) / ROUND_MIN - 1e-9)) : 0;
-  return { focus, newPerDay, newLeft, due, n, rounds, minutes: rounds * ROUND_MIN, reserve: Math.round(newLeft * NEW_ITEM_MIN * 10) / 10 };
+  return { focus, newPerDay, newLeft, due, n, rounds, minutes: rounds * ROUND_MIN, reserve: Math.round((reviewMin(due) + newLeft * NEW_ITEM_MIN) * 10) / 10 };
 }
 
 /**
- * New items for the day (see the header). reserved: minutes kept free for the new Schreiben phrases.
+ * New items for the day (see the header). reserved: minutes kept free for Schreiben, situations and scripts.
  * @param {{c: import('../core/clock.js').ClockCtx, settings: any, dueN: number, priorityLeft: number | null, reserved?: number}} o
  */
 export function dailyNew({ c, settings, dueN, priorityLeft, reserved = 0 }) {
@@ -127,10 +138,11 @@ export function dailyNew({ c, settings, dueN, priorityLeft, reserved = 0 }) {
 /** A stream's share of n new items; the two shares always add up to n. @param {number} n @param {'p'|'g'} st */
 export const streamQuota = (n, st) => (st === 'p' ? Math.round(n * SPLIT.p) : n - Math.round(n * SPLIT.p));
 
-/* Speaking situations (Practice › Speaking situations, features/practice/sim.js) have their own small budget, on top
-   of the review rounds: a card takes about 12 s (hear the line, say the answer, check, grade), a new one is shown
-   about twice (its learning step). New situations a day scale with the daily minutes (60 min → 10, 30 → 5, at
-   least 4) and follow the clock: none on the eve or the exam day. Today's row and the hub read this. */
+/* Speaking situations (Practice › Speaking situations, features/practice/sim.js) have their own small budget; its
+   minutes are reserved off the B1 new items (dayBudget's side), so the day still fits. A card takes about 12 s
+   (hear the line, say the answer, check, grade), a new one is shown about twice (its learning step). New
+   situations a day scale with the daily minutes (60 min → 10, 30 → 5, at least 4) and follow the clock: none on
+   the eve or the exam day. Today's row and the hub read this. */
 export const SIM_CARD_MIN = 0.2;
 export const SIM_NEW_MAX = 10;
 

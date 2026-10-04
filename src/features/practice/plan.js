@@ -48,11 +48,24 @@ export function todayBudget({ store, c, settings }) {
   const day = sess.day && sess.day.day === c.today ? sess.day : null;
   const poolLeft = stats ? (stats.unseen ?? Math.max(0, stats.pool - Object.keys(cards).length)) : Infinity;
   const writing = stats && stats.writing ? { due: wDue, left: stats.writing.unseen, shown: ((day && day.newBy) || {}).w || 0, focus: writingFocus({ store, c, settings }) } : null;
-  // new script words shown today count as new items shown, so scripts never add to the day's new load
-  const budget = dayBudget({ c, settings, dueN: due, priorityLeft: stats ? stats.priorityLeft : null, newShown: (day ? day.newShown || 0 : 0) + scriptNewShown(store, c.today), poolLeft, writing });
+  // new script words shown today count as new items shown, so scripts never add to the day's new load; the minutes
+  // of the situations and script rows are reserved off the B1 new items (domain/budget.js, how the shares compose)
+  const budget = dayBudget({ c, settings, dueN: due, priorityLeft: stats ? stats.priorityLeft : null, newShown: (day ? day.newShown || 0 : 0) + scriptNewShown(store, c.today), poolLeft, writing,
+    side: sideMinutes({ store, c, settings }) });
   const act = (store.get('activity', {}) || {})[c.today];
   const roundsToday = Math.max(act ? act.rounds || 0 : 0, day ? day.rounds || 0 : 0);
   return { ...budget, due, roundsToday, writeRounds: day ? day.writeRounds || 0 : 0 };
+}
+
+/**
+ * Minutes today's rows outside the B1 and Schreiben rounds take: speaking situations and the scripts (their rows are
+ * capped at 25 % of the day after the exam, script/plan.js). dayBudget reserves them off the B1 new items.
+ * @param {{store: any, c: any, settings: any}} ctx
+ */
+export function sideMinutes({ store, c, settings }) {
+  const sim = simToday({ store, c, settings }).minutes;
+  const scripts = scriptPlanItems({ store, c, settings, t: () => '' }).reduce((n, r) => n + (r.done ? 0 : r.minutes || 0), 0);
+  return sim + scripts;
 }
 
 /**

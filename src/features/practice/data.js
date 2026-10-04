@@ -17,6 +17,7 @@ import { dayBudget } from '../../domain/budget.js';
 import { writingFocus } from '../../domain/modules.js';
 import { slotKey } from './session.js';
 import { scriptNewShown } from './script/today.js';
+import { sideMinutes } from './plan.js';
 
 // igloo.words.de and igloo.chunks.german (both precached) only feed the grader's lexicon of German word forms; without
 // them the B1 content's own words do
@@ -86,7 +87,8 @@ export function stateFor(ctx, data) {
   const writing = wDue + wUnseen ? { due: wDue, left: wUnseen, shown: (day.newBy || {}).w || 0, focus } : null;
   // new script words shown today come off the same daily number, so scripts never add to the new load
   const scriptNew = scriptNewShown(ctx.store, c.today);
-  const budget = dayBudget({ c, settings, dueN, priorityLeft: pLeft, newShown: (day.newShown || 0) + scriptNew, poolLeft: unseen, writing });
+  const budget = dayBudget({ c, settings, dueN, priorityLeft: pLeft, newShown: (day.newShown || 0) + scriptNew, poolLeft: unseen, writing,
+    side: sideMinutes({ store: ctx.store, c, settings }) });
   base.newPerDay = Math.max(0, budget.newPerDay - scriptNew);
   /** @type {any} */ (base).writingNew = budget.writing ? budget.writing.newPerDay : 0;
   // Today's plan reads these without loading content
