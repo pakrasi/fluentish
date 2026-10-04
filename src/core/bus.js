@@ -5,7 +5,8 @@
      prefs:changed     ({ key, value })         theme, motion or locale on this device
      store:changed     ({ name })               a collection changed (this tab or another one)
      route:changed     ({ path, route })        after a view is mounted
-     sync:status       ({ pending, error })     outbox state (stage C) */
+     sync:status       ({ pending, error })     outbox state (stage C)
+     sync:request      ({ force })              flush the results sync now (e.g. after the import notice is closed) */
 
 /** @typedef {(detail: any) => void} Handler */
 

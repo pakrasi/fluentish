@@ -13,7 +13,7 @@ import { Store } from '../../src/data/store.js';
 import { createMemoryAdapter } from '../../src/data/adapters/memory.js';
 import {
   pathFor, stamp, filesFor, sidecarPath, appendResult, createGithubB1Exam, syncResults, resetThrottle, notSentCount,
-  attemptFile, legacyJobs, wordKey, audioExt,
+  attemptFile, legacyJobs, wordKey, audioExt, allowLegacy,
 } from '../../src/data/sync/github-b1exam.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
@@ -162,7 +162,18 @@ test('unsent items moved from the old app are sent with the path it chose, then 
   store.set('vocab.local', [{ id: '2:haus', day: 2, word: 'Haus', word_key: 'haus', created_at: '2026-10-01T09:00:00-04:00', synced: false }]);
   store.set('vocab.events', [{ day: 2, word: 'Haus', known: true, at: '2026-10-01T10:00:00Z', synced: false }, { day: 2, word: 'Baum', known: false, at: '2026-09-01T10:00:00Z' }]);
   assert.equal(legacyJobs(store).length, 4);
-  const r = await syncResults(store, { repo: REPO, fetch: gh.fetch, force: true, pull: false });
+  // a migration: nothing is uploaded before the import notice was seen, and old items wait for their own tap
+  store.set('meta', { summary: { cards: 1 }, migratedAt: '2026-10-02T08:00:00+02:00' });
+  appendResult(store, 'feedback.created', { day: 1, module: 'schreiben', attempt_id: 'u', attempt_file: null, body: 'x', created_at: 'c' }, AT);
+  let r = await syncResults(store, { repo: REPO, fetch: gh.fetch, force: true, pull: false });
+  assert.equal(r.ok, 0); assert.equal(gh.calls.filter(c => c.method === 'PUT').length, 0, 'no upload before the notice');
+  store.set('ui', { importSeen: true });
+  resetThrottle();
+  r = await syncResults(store, { repo: REPO, fetch: gh.fetch, force: true, pull: false });
+  assert.equal(r.ok, 1, 'new work goes out once the notice is seen'); assert.equal(r.pending, 4, 'old items still wait');
+  allowLegacy(store);
+  resetThrottle();
+  r = await syncResults(store, { repo: REPO, fetch: gh.fetch, force: true, pull: false });
   assert.equal(r.ok, 4); assert.equal(r.pending, 0);
   assert.equal(gh.json('data/attempts/20260930T235959-day03-lesen.json').id, 1790000000000, 'the old id is kept in the file');
   assert.equal(gh.json('data/feedback-ai/20261001T130000-day02-schreiben.json').attempt_id, 15, 'the Mac alias wins');
@@ -264,4 +275,14 @@ test('the real sync.py imports every file this adapter writes, once', { skip: !h
   } finally {
     rmSync(tmp, { recursive: true, force: true });
   }
+});
+
+test('an old item without a time keeps created_at null; its file name takes the migration time, never now', async () => {
+  resetThrottle();
+  const { store } = await fresh();
+  store.set('meta', { summary: { cards: 1 }, migratedAt: '2026-10-02T08:00:00+02:00' });
+  store.set('exams.feedbackLocal', [{ id: 'local-9', day: 4, module: 'schreiben', attempt_id: 7, body: 'B', synced: false }]);
+  const [job] = legacyJobs(store);
+  assert.equal(job.event.payload.created_at, null);
+  assert.equal(job.event.path, 'data/feedback-ai/20261002T060000-day04-schreiben.json');
 });

@@ -129,7 +129,8 @@ async function main() {
 
   // ---------- results sync ----------
   // On start and whenever the page becomes visible again, at most once a minute. syncResults skips by itself when
-  // the device is not linked or the profile is a shadow, and its status reaches the views through the bus.
+  // the device is not linked or the profile is a shadow, uploads nothing until a migration's import notice has been
+  // seen, and sends old unsent items only after the learner's tap. Its status reaches the views through the bus.
   const SYNC_EVERY_MS = 60_000;
   let lastSync = -Infinity;
   const autoSync = () => {
@@ -140,6 +141,7 @@ async function main() {
   };
   autoSync();
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') autoSync(); });
+  bus.on('sync:request', () => { lastSync = performance.now(); syncResults(store, { repo: config.resultsRepo, api: config.github.api, force: true, emit: (type, data) => bus.emit(type, data) }).catch((/** @type {any} */ e) => log('sync', e)); });
 }
 
 main().catch(err => {

@@ -5,6 +5,7 @@ import { label } from '../../core/clock.js';
 import { section, notice } from '../../core/ui.js';
 import { scoreLine, scoreNum, passes } from '../../domain/grade.js';
 import { latest, allAttempts, feedbackFor, isStarted, draft, loadTest, sync, notSentCount, linked, saveDraft, mediaUrl } from './data.js';
+import { allowLegacy } from '../../data/sync/github-b1exam.js';
 import { backLink, statusBar, confirmPanel } from './parts.js';
 import { nextModule, modulesFitting, scoreReader, draftTouched, RESUME_MS } from './plan.js';
 import * as T from './timer.js';
@@ -34,6 +35,7 @@ function syncLine(ctx, redraw) {
   const st = store.get('exams.syncStatus', null);
   const btn = h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: async () => {
     btn.setAttribute('disabled', '');
+    allowLegacy(store);   // "Send now" is the learner's say-so for old unsent items too
     const r = await sync(ctx, true);
     ctx.toast(r.error ? t('exam.sync.failed', { why: r.error }) : t('exam.sync.allSent'));
     redraw();

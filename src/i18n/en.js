@@ -313,6 +313,9 @@ export default {
   'import.examDate': 'Exam date: {date}.',
   'import.noDate': 'No exam date was set. You can add one in Profile.',
   'import.newPerDay': 'New items per day was {n} in Igloo. Here it is Auto, which paces new items to your exam date and minutes. You can set a number in Profile.',
+  'import.unsent': { one: '{n} result from the old apps was not sent to {repo} yet. Nothing is sent until you say so.', other: '{n} results from the old apps were not sent to {repo} yet. Nothing is sent until you say so.' },
+  'import.sendLegacy': { one: 'Send {n} saved result from the old app', other: 'Send {n} saved results from the old apps' },
+  'import.sending': 'Sending the saved results.',
   'import.change': 'Change',
   'import.dismiss': 'Close',
 

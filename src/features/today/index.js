@@ -13,6 +13,8 @@ import { isDue } from '../../domain/b1ready.js';
 import { planProviders } from '../registry.js';
 import { summaryText } from '../../data/migrate.js';
 import { dueTomorrow } from '../practice/plan.js';
+import { legacyJobs, allowLegacy } from '../../data/sync/github-b1exam.js';
+import { config } from '../../core/config.js';
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
 export async function mount(el, ctx) {
@@ -138,14 +140,27 @@ export async function mount(el, ctx) {
     if (!meta.summary || ui.importSeen) return null;
     const s = ctx.settings();
     const id = nextId('imp');
+    const linked = !!(store.get('secrets', {}) || {}).githubToken;
+    const unsent = linked && !ui.sendLegacy ? legacyJobs(store).length : 0;
+    const close = (/** @type {boolean} */ send) => {
+      store.update('ui', (/** @type {any} */ u) => ({ ...(u || {}), importSeen: true }), {});
+      if (send) allowLegacy(store);
+      store.flush();
+      n.remove();
+      bus.emit('sync:request', { force: true });   // uploads were held until now (data/sync/github-b1exam.js)
+      if (send) toast(t('import.sending'));
+    };
+    const toast = (/** @type {string} */ m) => ctx.toast(m);
     const n = notice({ id, children: [
       h('p', { class: 'notice-title' }, t('import.title')),
       h('p', null, summaryText(meta.summary, t)),
       h('p', null, s.exam.date ? t('import.examDate', { date: label(s.exam.date) }) : t('import.noDate')),
       Number.isInteger(meta.summary.newPerDay) && !s.rev?.newPerDay ? h('p', null, t('import.newPerDay', { n: meta.summary.newPerDay })) : null,
+      unsent ? h('p', null, t('import.unsent', { n: unsent, repo: config.resultsRepo })) : null,
       h('div', { class: 'notice-actions' },
+        unsent ? h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: () => close(true) }, t('import.sendLegacy', { n: unsent })) : null,
         h('a', { class: 'btn pressable', href: '#/profile/goal' }, t('import.change')),
-        h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => { store.update('ui', (/** @type {any} */ u) => ({ ...(u || {}), importSeen: true }), {}); n.remove(); } }, t('import.dismiss'))),
+        h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => close(false) }, t('import.dismiss'))),
     ] });
     return n;
   }

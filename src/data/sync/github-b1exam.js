@@ -20,7 +20,12 @@
 
    Voice blobs wait in the IDB blobs store (blobRef = the event id) and are deleted only after both PUTs succeed.
    Unsent items moved from the old app (attempts, corrections, words, word answers with synced:false) are sent from
-   their collections with the path the old app already chose, or a new one.
+   their collections with the path the old app already chose, or a new one, and only after the learner said so
+   (ui.sendLegacy, set by "Send … from the old app" on Today or "Send now" on Exam). An item without a time keeps
+   created_at null; its file name takes the migration time, never "now".
+
+   Consent: after a migration nothing is uploaded until the import notice on Today has been seen (ui.importSeen).
+   Reading what the Mac wrote is allowed before that.
 
    The network is injected (fetch), so node tests run the whole flow against a mock and against the real sync.py. */
 
@@ -226,10 +231,13 @@ const STATUS_KV = 'exams.syncStatus';
  */
 export function legacyJobs(store) {
   /** @type {{key: string, event: any, done: () => void}[]} */ const jobs = [];
+  // a stamp for file names of items that carry no time of their own: when they were moved here, not now
+  const moved = Date.parse((store.get('meta', {}) || {}).migratedAt || '') || 0;
+  const when = (/** @type {any} */ v) => Date.parse(v || '') || moved;
   for (const a of store.attempts()) {
     if (!a.legacy || a.synced !== false || a.eventId) continue;
     const file = attemptFile(a);
-    const path = a.legacy.path || pathFor('exam.attempt', { file }, Date.parse(a.submitted_at) || Date.now());
+    const path = a.legacy.path || pathFor('exam.attempt', { file }, when(a.submitted_at));
     jobs.push({ key: `attempt:${a.id}`, event: { id: `legacy:${a.id}`, type: 'exam.attempt', path, payload: { file: { ...file, id: a.legacy.id ?? file.id } } },
       done: () => store.putAttempts([{ ...a, synced: true, path }]) });
   }
@@ -238,21 +246,22 @@ export function legacyJobs(store) {
     store.update(name, (/** @type {any[]} */ xs) => (xs || []).map(x => (match(x) ? { ...x, synced: true, _path: path || x._path } : x)), []);
   for (const fb of list('exams.feedbackLocal')) {
     if (!fb || fb.synced !== false) continue;
-    const payload = { day: fb.day, module: fb.module, attempt_id: fb.alias_id ?? fb.attempt_id, attempt_file: fb.attempt_file, body: fb.body, created_at: fb.created_at, model: fb.model };
-    const path = fb._path || pathFor('feedback.created', payload, Date.parse(fb.created_at) || Date.now());
+    const payload = { day: fb.day, module: fb.module, attempt_id: fb.alias_id ?? fb.attempt_id, attempt_file: fb.attempt_file, body: fb.body, created_at: fb.created_at ?? null, model: fb.model ?? null };
+    const path = fb._path || pathFor('feedback.created', payload, when(fb.created_at));
     jobs.push({ key: `fb:${fb.id}`, event: { id: `legacy:fb:${fb.id}`, type: 'feedback.created', path, payload }, done: () => mark('exams.feedbackLocal', x => x.id === fb.id, path) });
   }
   for (const w of list('vocab.local')) {
     if (!w || w.synced !== false) continue;
     const { synced, _path, ...rest } = w;
-    const path = _path || pathFor('vocab.captured', rest, Date.parse(w.created_at) || Date.now());
+    rest.created_at = w.created_at ?? null;
+    const path = _path || pathFor('vocab.captured', rest, when(w.created_at));
     jobs.push({ key: `word:${w.id}`, event: { id: `legacy:word:${w.id}`, type: 'vocab.captured', path, payload: rest }, done: () => mark('vocab.local', x => x.id === w.id, path) });
   }
   const open = list('vocab.events').filter(e => e && e.synced === false);
   if (open.length) {
     const first = open[0];
     const payload = { batch: `legacy${open.length}`, events: open.map(({ synced, _path, ...rest }) => rest) };
-    const path = pathFor('vocab.reviewed', payload, Date.parse(first.at) || Date.now());
+    const path = pathFor('vocab.reviewed', payload, when(first.at));
     const ids = new Set(open);
     jobs.push({ key: 'vocab-events', event: { id: 'legacy:vocab-events', type: 'vocab.reviewed', path, payload },
       done: () => store.update('vocab.events', (/** @type {any[]} */ xs) => (xs || []).map(x => (x && x.synced === false && [...ids].some(o => o.at === x.at && o.word === x.word) ? { ...x, synced: true } : x)), []) });
@@ -265,6 +274,19 @@ export const pendingEvents = store => store.pending().filter((/** @type {any} */
 
 /** "N not sent": events plus unsent items moved from the old app. @param {any} store */
 export const notSentCount = store => pendingEvents(store).length + legacyJobs(store).length;
+
+/** Whether uploads may start: not before the import notice of a migration has been seen. @param {any} store */
+export function uploadsAllowed(store) {
+  const meta = store.get('meta', {}) || {}, ui = store.get('ui', {}) || {};
+  return !meta.summary || !!ui.importSeen || !!ui.sendLegacy;
+}
+/** Whether the learner asked to send the unsent items moved from the old app. @param {any} store */
+export const legacyAllowed = store => !!(store.get('ui', {}) || {}).sendLegacy;
+/** The one tap that sends them (Today's import notice, Exam's "Send now"). @param {any} store */
+export function allowLegacy(store) {
+  store.update('ui', (/** @type {any} */ u) => ({ ...(u || {}), sendLegacy: true }), {});
+  store.flush?.();
+}
 
 /**
  * An attempt record → the file body sync.py imports (the B1 exam app's attempt shape).
@@ -304,8 +326,9 @@ export function syncResults(store, { repo, api, fetch: f, force = false, pull = 
   const run = async () => {
     let ok = 0, fail = 0;
     /** @type {string | null} */ let error = null;
+    const allowed = uploadsAllowed(store);
     // 1. events in the outbox
-    const events = pendingEvents(store);
+    const events = allowed ? pendingEvents(store) : [];
     if (events.length) {
       const res = await target.push(events);
       if (res.acked.length) {
@@ -319,8 +342,8 @@ export function syncResults(store, { repo, api, fetch: f, force = false, pull = 
       if (res.error) error = res.error.message;
       else if (res.rejected.length) error = res.rejected[0].error;
     }
-    // 2. unsent items from the old app
-    if (!error) {
+    // 2. unsent items from the old app, once the learner asked for it
+    if (!error && allowed && legacyAllowed(store)) {
       for (const job of legacyJobs(store)) {
         const r = await target.push([job.event]);
         if (r.acked.length) { job.done(); ok++; } else { fail++; error = r.rejected[0]?.error || 'not sent'; if (r.error) break; }
