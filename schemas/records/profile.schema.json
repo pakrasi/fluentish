@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "profile@1",
+  "title": "Profile",
+  "description": "A learner on this device. Every stored record carries profileId, so profile switching and accounts sit on top without moving data.",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "kind",
+    "createdAt"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 40
+    },
+    "kind": {
+      "enum": [
+        "local",
+        "shadow",
+        "remote"
+      ]
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "remoteId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

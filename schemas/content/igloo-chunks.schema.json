@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "igloo-chunks@1",
+  "title": "Phrase bank (one language)",
+  "description": "Translations of the English phrase bank, keyed by chunk id: text, example, note.",
+  "type": "object",
+  "required": [
+    "lang",
+    "chunks"
+  ],
+  "properties": {
+    "lang": {
+      "type": "string"
+    },
+    "chunks": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^ENG_CHUNK_\\d{4}$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "t"
+        ],
+        "properties": {
+          "t": {
+            "type": "string"
+          },
+          "tr": {
+            "type": "string"
+          },
+          "ex": {
+            "type": "string"
+          },
+          "extr": {
+            "type": "string"
+          },
+          "n": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

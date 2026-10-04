@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "fluentish-export@1",
+  "title": "Export bundle",
+  "description": "What Profile > Data > Export writes and Import reads. Never contains secrets (API key, GitHub token).",
+  "type": "object",
+  "required": [
+    "schema",
+    "exportedAt",
+    "profile",
+    "kv",
+    "cards",
+    "attempts",
+    "events"
+  ],
+  "properties": {
+    "schema": {
+      "const": "fluentish-export@1"
+    },
+    "exportedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "app": {
+      "type": "string"
+    },
+    "profile": {
+      "type": "object",
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "kv": {
+      "type": "object",
+      "propertyNames": {
+        "not": {
+          "enum": [
+            "secrets"
+          ]
+        }
+      }
+    },
+    "cards": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object"
+      }
+    },
+    "attempts": {
+      "type": "array"
+    },
+    "events": {
+      "type": "array"
+    }
+  }
+}

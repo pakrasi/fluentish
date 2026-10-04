@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "igloo-chunks-priority@1",
+  "title": "Exam priorities for the phrase bank",
+  "description": "Goethe B1 functions and their phrases, priority per chunk (1 = serves a Sprechen/Schreiben function), and exam functions with no phrase yet.",
+  "type": "object",
+  "required": [
+    "functions",
+    "prio"
+  ],
+  "properties": {
+    "about": {
+      "type": "string"
+    },
+    "functions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "part",
+          "chunk_ids"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "part": {
+            "type": "string"
+          },
+          "en": {
+            "type": "string"
+          },
+          "chunk_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "prio": {
+      "type": "object",
+      "additionalProperties": {
+        "enum": [
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    "b1_missing": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "card-fsrs@1",
+  "title": "FSRS card state",
+  "description": "One item's schedule (src/domain/fsrs.js). A snapshot: the card.reviewed events are the source of truth.",
+  "type": "object",
+  "required": [
+    "S",
+    "D",
+    "due",
+    "reps"
+  ],
+  "properties": {
+    "S": {
+      "type": "number",
+      "minimum": 0
+    },
+    "D": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 10
+    },
+    "due": {
+      "type": "string",
+      "format": "date"
+    },
+    "reps": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "lapses": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "last": {
+      "type": "string",
+      "format": "date"
+    },
+    "first": {
+      "type": "string",
+      "format": "date"
+    },
+    "stage": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3
+    },
+    "streak": {
+      "type": "integer"
+    },
+    "learn": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "relearn": {
+      "type": "boolean"
+    },
+    "u": {
+      "type": "number"
+    },
+    "hist": {
+      "type": "array",
+      "maxItems": 12,
+      "items": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "string",
+            "format": "date"
+          },
+          {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 4
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "seeded": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "prefs@1",
+  "title": "Device preferences",
+  "description": "Per device, never synced: theme, motion and interface language.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "theme": {
+      "enum": [
+        "auto",
+        "light",
+        "dark"
+      ]
+    },
+    "motion": {
+      "enum": [
+        "system",
+        "reduce",
+        "full"
+      ]
+    },
+    "locale": {
+      "enum": [
+        "en",
+        "de"
+      ]
+    }
+  }
+}

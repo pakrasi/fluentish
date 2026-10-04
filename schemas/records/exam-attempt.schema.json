@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "exam-attempt@1",
+  "title": "Mock exam attempt",
+  "description": "One submitted module. Field names follow the files the Mac's sync.py imports (started_at, max_score, responses, writings), plus the record fields every client-created record carries.",
+  "type": "object",
+  "required": [
+    "id",
+    "profileId",
+    "deviceId",
+    "createdAt",
+    "examId",
+    "day",
+    "module",
+    "score",
+    "max_score",
+    "responses",
+    "writings"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "profileId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "deviceId": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "examId": {
+      "type": "string"
+    },
+    "contentVersion": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "day": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "test number"
+    },
+    "module": {
+      "enum": [
+        "lesen",
+        "hoeren",
+        "schreiben",
+        "sprechen"
+      ]
+    },
+    "started_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "submitted_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "duration_s": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "score": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "max_score": {
+      "type": "number"
+    },
+    "meta": {
+      "type": "object"
+    },
+    "responses": {
+      "type": "array"
+    },
+    "writings": {
+      "type": "array"
+    },
+    "legacy": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": [
+            "number",
+            "string"
+          ]
+        },
+        "path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "synced": {
+      "type": "boolean"
+    }
+  }
+}

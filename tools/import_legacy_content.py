@@ -71,6 +71,11 @@ def main():
             cp(f, A / "chunks" / f.name)
         else:
             cp(f, C / "igloo/chunks" / f.name)
+    # priority_de.json listed which phrases one learner already had on his Anki cards: not shared material
+    prio = json.loads((ld / "chunks/priority_de.json").read_text())
+    prio.pop("anki", None)
+    prio["about"] = re.sub(r"\s*anki = .*$", "", prio["about"]).replace(" (exam October 2026)", "")
+    dump(C / "igloo/chunks/priority_de.json", prio)
     for d in ("src", "parts", "levels", "accept"):
         cp(ld / "chunks" / d, A / "chunks" / d)
     cp(ld / "words/de.json", C / "igloo/words/de.json")

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "b1-frames@1",
+  "title": "Sprechen frame models",
+  "description": "Starred Sprechen models for the exam-day read-through.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "teil",
+      "fn",
+      "de",
+      "id"
+    ],
+    "properties": {
+      "teil": {
+        "type": "string"
+      },
+      "fn": {
+        "type": "string"
+      },
+      "de": {
+        "type": "string"
+      },
+      "id": {
+        "type": "string"
+      }
+    }
+  }
+}

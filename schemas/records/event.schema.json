@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "event@1",
+  "title": "Progress event",
+  "description": "Append-only, the unit of sync. card.reviewed carries ctx, base and post so another device or a server can rebuild the card without replaying load balancing (review B4).",
+  "type": "object",
+  "required": [
+    "id",
+    "v",
+    "profileId",
+    "deviceId",
+    "seq",
+    "at",
+    "day",
+    "type",
+    "payload"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "v": {
+      "const": 1
+    },
+    "profileId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "deviceId": {
+      "type": "string"
+    },
+    "seq": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "day": {
+      "type": "string",
+      "format": "date"
+    },
+    "type": {
+      "enum": [
+        "card.reviewed",
+        "exam.attempt",
+        "exam.voice",
+        "vocab.captured",
+        "vocab.reviewed",
+        "feedback.created",
+        "training.logged",
+        "settings.changed",
+        "legacy.imported"
+      ]
+    },
+    "payload": {
+      "type": "object"
+    },
+    "synced": {
+      "type": "boolean"
+    },
+    "path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "anyOf": [
+        {
+          "properties": {
+            "type": {
+              "not": {
+                "const": "card.reviewed"
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "payload": {
+              "type": "object",
+              "required": [
+                "deck",
+                "itemId",
+                "g",
+                "ctx",
+                "base",
+                "post"
+              ],
+              "properties": {
+                "deck": {
+                  "type": "string"
+                },
+                "itemId": {
+                  "type": "string"
+                },
+                "g": {
+                  "enum": [
+                    1,
+                    2,
+                    3,
+                    4
+                  ]
+                },
+                "ms": {
+                  "type": "number"
+                },
+                "flags": {
+                  "type": "string"
+                },
+                "mode": {
+                  "type": "string"
+                },
+                "ctx": {
+                  "type": "object",
+                  "required": [
+                    "exam",
+                    "phase",
+                    "tz"
+                  ]
+                },
+                "base": {
+                  "type": [
+                    "object",
+                    "null"
+                  ]
+                },
+                "post": {
+                  "type": [
+                    "object",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

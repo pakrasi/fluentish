@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "igloo-turns@1",
+  "title": "GO in nine tenses",
+  "description": "The tense table (3 times × 3 aspects) for English and the ten languages. Built by tools/build_turns.py.",
+  "type": "object",
+  "required": [
+    "times",
+    "aspects",
+    "english",
+    "languages"
+  ],
+  "properties": {
+    "about": {
+      "type": "string"
+    },
+    "times": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "aspects": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "english": {
+      "type": "object"
+    },
+    "languages": {
+      "type": "object"
+    }
+  }
+}

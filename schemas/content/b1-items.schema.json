@@ -1,0 +1,176 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "b1-items@1",
+  "title": "B1 trainer items",
+  "description": "Authored practice items for the B1 trainer, built from authoring/b1-src by tools/build_b1.py. Ids are stable: progress is stored under them.",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "required": [
+      "id",
+      "kind",
+      "area",
+      "group",
+      "prompt",
+      "accept",
+      "model",
+      "src"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^B[PGRLT]:[a-z0-9-]+$"
+      },
+      "kind": {
+        "enum": [
+          "phrase",
+          "grammar",
+          "reading",
+          "reply",
+          "topic"
+        ]
+      },
+      "area": {
+        "enum": [
+          "speaking",
+          "grammar",
+          "reading",
+          "words"
+        ]
+      },
+      "group": {
+        "type": "string"
+      },
+      "teil": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "fn": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "star": {
+        "type": "boolean"
+      },
+      "trap": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "focus": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "strict": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "plan": {
+        "enum": [
+          "recall",
+          "transform",
+          "choice"
+        ]
+      },
+      "task": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "prompt": {
+        "type": "string"
+      },
+      "prompt_lang": {
+        "enum": [
+          "en",
+          "de"
+        ]
+      },
+      "hl": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "partner": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "prefill": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "accept": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "anywhere": {
+        "type": "boolean"
+      },
+      "model": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "wrong": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "rule": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "moves": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "wrong_move": {
+        "type": [
+          "object",
+          "string",
+          "null"
+        ]
+      },
+      "src": {
+        "type": "string"
+      },
+      "chunk": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "level": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    }
+  }
+}

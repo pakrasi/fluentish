@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "igloo-grammar-items@1",
+  "title": "German grammar items",
+  "description": "Typed grammar items per concept. tools/validate_grammar.py checks counts per concept and level.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "id",
+      "concept",
+      "level",
+      "kind",
+      "task",
+      "prompt",
+      "answer",
+      "note",
+      "strict_case"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z0-9-]+\\.\\d{2}$"
+      },
+      "concept": {
+        "type": "string"
+      },
+      "level": {
+        "enum": [
+          "A1",
+          "A2",
+          "B1",
+          "B2",
+          "C1",
+          "C2"
+        ]
+      },
+      "kind": {
+        "enum": [
+          "transform",
+          "gap",
+          "join",
+          "choose-article",
+          "order",
+          "translate"
+        ]
+      },
+      "task": {
+        "type": "string"
+      },
+      "prompt": {
+        "type": "string"
+      },
+      "answer": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "minItems": 1
+      },
+      "note": {
+        "type": "string"
+      },
+      "strict_case": {
+        "type": "boolean"
+      }
+    }
+  }
+}

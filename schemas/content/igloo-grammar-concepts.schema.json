@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "igloo-grammar-concepts@1",
+  "title": "German grammar concepts",
+  "description": "Concepts that grammar items belong to. No per-learner fields: evidence about one learner never goes in shared content.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "id",
+      "name",
+      "category",
+      "level"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "category": {
+        "type": "string"
+      },
+      "level": {
+        "enum": [
+          "A1",
+          "A2",
+          "B1",
+          "B2",
+          "C1",
+          "C2"
+        ]
+      },
+      "description": {
+        "type": "string"
+      },
+      "sticky": {
+        "type": "boolean"
+      }
+    }
+  }
+}

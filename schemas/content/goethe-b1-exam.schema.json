@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "goethe-b1-exam@1",
+  "title": "Goethe-Zertifikat B1 mock test",
+  "description": "One mock test in the format of the Goethe-Zertifikat B1 Modellsatz (item counts, task types, play counts). Answer keys are part of the content. Written to authoring/briefs/EXAM_SCHEMA_SOURCE.md; tools/validate_exam.py adds text-length and content checks.",
+  "type": "object",
+  "required": ["day", "topic", "lesen", "hoeren", "schreiben", "sprechen"],
+  "properties": {
+    "day": { "type": "integer", "minimum": 1, "description": "Test number (legacy name: day)." },
+    "topic": { "type": "string", "minLength": 3 },
+    "lesen": {
+      "type": "object",
+      "required": ["teil1", "teil2", "teil3", "teil4", "teil5"],
+      "properties": {
+        "teil1": { "type": "object", "required": ["title", "text", "items"], "properties": {
+          "title": { "type": "string" }, "source": { "type": "string" }, "text": { "type": "string", "minLength": 400 },
+          "items": { "type": "array", "minItems": 6, "maxItems": 6, "items": { "$ref": "#/$defs/rf" } } } },
+        "teil2": { "type": "object", "required": ["texts"], "properties": {
+          "texts": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "object", "required": ["title", "text", "items"], "properties": {
+            "title": { "type": "string" }, "source": { "type": "string" }, "text": { "type": "string" },
+            "items": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "$ref": "#/$defs/mc" } } } } } } },
+        "teil3": { "type": "object", "required": ["situations", "ads"], "properties": {
+          "intro": { "type": "string" },
+          "situations": { "type": "array", "minItems": 7, "maxItems": 7, "items": { "type": "object", "required": ["id", "text", "answer", "skill"], "properties": {
+            "id": { "$ref": "#/$defs/id" }, "text": { "type": "string" }, "skill": { "$ref": "#/$defs/skill" },
+            "answer": { "anyOf": [{ "type": "string", "pattern": "^[A-J]$" }, { "type": "null" }] } } } },
+          "ads": { "type": "array", "minItems": 10, "maxItems": 10, "items": { "type": "object", "required": ["letter", "text"], "properties": {
+            "letter": { "type": "string", "pattern": "^[A-J]$" }, "title": { "type": "string" }, "text": { "type": "string" } } } } } },
+        "teil4": { "type": "object", "required": ["question", "comments"], "properties": {
+          "question": { "type": "string" },
+          "comments": { "type": "array", "minItems": 7, "maxItems": 7, "items": { "type": "object", "required": ["id", "text", "answer", "skill"], "properties": {
+            "id": { "$ref": "#/$defs/id" }, "author": { "type": "string" }, "text": { "type": "string" }, "answer": { "type": "boolean" }, "skill": { "$ref": "#/$defs/skill" } } } } } },
+        "teil5": { "type": "object", "required": ["text", "items"], "properties": {
+          "title": { "type": "string" }, "text": { "type": "string" },
+          "items": { "type": "array", "minItems": 4, "maxItems": 4, "items": { "$ref": "#/$defs/mc" } } } }
+      }
+    },
+    "hoeren": {
+      "type": "object",
+      "required": ["teil1", "teil2", "teil3", "teil4"],
+      "properties": {
+        "teil1": { "type": "object", "required": ["texts"], "properties": {
+          "texts": { "type": "array", "minItems": 5, "maxItems": 5, "items": { "type": "object", "required": ["id", "script", "items"], "properties": {
+            "id": { "type": "string" }, "kind": { "type": "string" }, "script": { "$ref": "#/$defs/script" },
+            "items": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "anyOf": [{ "$ref": "#/$defs/rf" }, { "$ref": "#/$defs/mc" }] } } } } } } },
+        "teil2": { "type": "object", "required": ["script", "items"], "properties": {
+          "setting": { "type": "string" }, "script": { "$ref": "#/$defs/script" },
+          "items": { "type": "array", "minItems": 5, "maxItems": 5, "items": { "$ref": "#/$defs/mc" } } } },
+        "teil3": { "type": "object", "required": ["script", "items"], "properties": {
+          "setting": { "type": "string" }, "script": { "$ref": "#/$defs/script" },
+          "items": { "type": "array", "minItems": 7, "maxItems": 7, "items": { "$ref": "#/$defs/rf" } } } },
+        "teil4": { "type": "object", "required": ["speakers", "script", "items"], "properties": {
+          "setting": { "type": "string" },
+          "speakers": { "type": "object", "required": ["mod", "a", "b"] },
+          "voices": { "type": "object" },
+          "script": { "$ref": "#/$defs/script" },
+          "items": { "type": "array", "minItems": 8, "maxItems": 8, "items": { "type": "object", "required": ["id", "statement", "answer", "skill"], "properties": {
+            "id": { "$ref": "#/$defs/id" }, "statement": { "type": "string" }, "answer": { "enum": ["mod", "a", "b"] }, "skill": { "$ref": "#/$defs/skill" } } } } } }
+      }
+    },
+    "schreiben": {
+      "type": "object",
+      "required": ["aufgabe1", "aufgabe2", "aufgabe3"],
+      "properties": {
+        "aufgabe1": { "type": "object", "required": ["minutes", "words", "situation", "points"], "properties": { "minutes": { "const": 20 }, "words": { "const": 80 }, "situation": { "type": "string" }, "points": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "type": "string" } } } },
+        "aufgabe2": { "type": "object", "required": ["minutes", "words", "situation", "quote"], "properties": { "minutes": { "const": 25 }, "words": { "const": 80 }, "situation": { "type": "string" }, "quote": { "type": "string" }, "instruction": { "type": "string" } } },
+        "aufgabe3": { "type": "object", "required": ["minutes", "words", "situation"], "properties": { "minutes": { "const": 15 }, "words": { "const": 40 }, "situation": { "type": "string" }, "addressee": { "type": "string" } } }
+      }
+    },
+    "sprechen": {
+      "type": "object",
+      "required": ["teil1", "teil2", "teil3"],
+      "properties": {
+        "teil1": { "type": "object", "required": ["situation", "points"], "properties": { "situation": { "type": "string" }, "points": { "type": "array", "minItems": 3, "items": { "type": "string" } }, "partner_cues": { "type": "array", "items": { "type": "string" } } } },
+        "teil2": { "type": "object", "required": ["topics", "folien"], "properties": { "topics": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "string" } }, "folien": { "type": "array", "minItems": 5, "maxItems": 5, "items": { "type": "string" } } } },
+        "teil3": { "type": "object", "required": ["questions"], "properties": { "questions": { "type": "array", "minItems": 3, "items": { "type": "string" } }, "questions_b": { "type": "array", "items": { "type": "string" } } } }
+      }
+    }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[LH]\\d-\\d+[ab]?$" },
+    "skill": { "enum": ["detail", "global", "paraphrase", "negation", "number-time", "attitude", "inference", "matching"] },
+    "rf": { "type": "object", "required": ["id", "answer", "skill"], "properties": {
+      "id": { "$ref": "#/$defs/id" }, "type": { "const": "rf" }, "statement": { "type": "string" }, "text": { "type": "string" }, "answer": { "type": "boolean" }, "skill": { "$ref": "#/$defs/skill" } } },
+    "mc": { "type": "object", "required": ["id", "question", "options", "answer", "skill"], "properties": {
+      "id": { "$ref": "#/$defs/id" }, "type": { "const": "mc" }, "question": { "type": "string" },
+      "options": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "type": "string" } }, "answer": { "enum": [0, 1, 2] }, "skill": { "$ref": "#/$defs/skill" } } },
+    "script": { "type": "array", "minItems": 1, "items": { "type": "object", "required": ["speaker", "text"], "properties": { "speaker": { "type": "string" }, "text": { "type": "string", "minLength": 1 } } } }
+  }
+}

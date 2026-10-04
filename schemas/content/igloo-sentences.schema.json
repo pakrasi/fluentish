@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "igloo-sentences@1",
+  "title": "Sentence bank (one language)",
+  "description": "Tokenised sentence variants keyed by '<meaning>.<variant>'. tools/validate_sentences.py checks them against en.json.",
+  "type": "object",
+  "required": [
+    "lang",
+    "variants"
+  ],
+  "properties": {
+    "lang": {
+      "type": "string"
+    },
+    "variants": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "tokens"
+        ],
+        "properties": {
+          "tokens": {
+            "type": "array",
+            "minItems": 1
+          },
+          "why": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

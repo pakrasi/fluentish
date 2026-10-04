@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "b1-bank@1",
+  "title": "B1 phrase bank",
+  "description": "Igloo phrases that serve a Sprechen or Forum function, keyed by chunk id, with accepted typed answers.",
+  "type": "object",
+  "propertyNames": {
+    "pattern": "^ENG_CHUNK_\\d{4}$"
+  },
+  "additionalProperties": {
+    "type": "object",
+    "required": [
+      "en",
+      "accept",
+      "fn",
+      "part"
+    ],
+    "properties": {
+      "en": {
+        "type": "string"
+      },
+      "hl": {
+        "type": "string"
+      },
+      "ex": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "n": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "accept": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "minItems": 1
+      },
+      "fn": {
+        "type": "string"
+      },
+      "part": {
+        "type": "string"
+      },
+      "prio": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 3
+      },
+      "level": {
+        "type": "string"
+      }
+    }
+  }
+}

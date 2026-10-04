@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "igloo-word-themes@1",
+  "title": "Word themes",
+  "description": "Themes for grouping words.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "id",
+      "en"
+    ],
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "en": {
+        "type": "string"
+      },
+      "icon": {
+        "type": "string"
+      },
+      "order": {
+        "type": "integer"
+      }
+    }
+  }
+}

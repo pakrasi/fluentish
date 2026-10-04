@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "fluentish-content@1",
+  "title": "Content manifest",
+  "description": "content/manifest.json, written by tools/build-manifest.mjs. Clients find every content file through it, by id, and verify it by sha256.",
+  "type": "object",
+  "required": [
+    "schema",
+    "version",
+    "languages",
+    "exams",
+    "files"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": "fluentish-content@1"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{12}$"
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "native",
+          "full"
+        ]
+      }
+    },
+    "exams": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "language",
+          "level",
+          "modules",
+          "tests"
+        ],
+        "properties": {
+          "modules": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "name",
+                "minutes",
+                "max",
+                "pass"
+              ]
+            }
+          },
+          "tests": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "path",
+          "schema",
+          "bytes",
+          "sha256"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9.-]+$"
+          },
+          "path": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+@\\d+$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    }
+  }
+}

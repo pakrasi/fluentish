@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "settings@1",
+  "title": "Profile settings",
+  "description": "Profile-scoped and synced: the goal (language, level, exam with its date: the single source of the exam date) and practice options. Merged per field, last write wins on the hybrid logical clock in rev.",
+  "type": "object",
+  "required": [
+    "v",
+    "language",
+    "level",
+    "exam",
+    "minutesPerDay"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "v": {
+      "const": 1
+    },
+    "language": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-z]+$"
+    },
+    "level": {
+      "enum": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        null
+      ]
+    },
+    "exam": {
+      "type": "object",
+      "required": [
+        "type",
+        "date",
+        "modules"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "an exam id from the content manifest (e.g. goethe-b1), 'other', or null for no exam"
+        },
+        "date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "modules": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "lesen",
+              "hoeren",
+              "schreiben",
+              "sprechen"
+            ]
+          }
+        },
+        "result": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "description": "optional, after the exam: how it went"
+        }
+      }
+    },
+    "minutesPerDay": {
+      "type": "integer",
+      "minimum": 5,
+      "maximum": 240
+    },
+    "newPerDay": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 200,
+      "description": "null = automatic"
+    },
+    "practice": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "readAloud": {
+          "type": "boolean"
+        },
+        "claudeCheck": {
+          "type": "boolean"
+        },
+        "simpleInput": {
+          "type": "boolean"
+        }
+      }
+    },
+    "onboarded": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "rev": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^\\d{13}-\\d{4}-[\\w-]+$"
+      }
+    }
+  }
+}

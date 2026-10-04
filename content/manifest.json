@@ -1,0 +1,642 @@
+{
+ "schema": "fluentish-content@1",
+ "version": "fb6d7793b60c",
+ "languages": [
+  {
+   "id": "khasi",
+   "name": "Khasi",
+   "native": "Ka Ktien Khasi",
+   "script": "latin",
+   "rtl": false,
+   "full": true
+  },
+  {
+   "id": "german",
+   "name": "German",
+   "native": "Deutsch",
+   "script": "latin",
+   "rtl": false,
+   "full": true
+  },
+  {
+   "id": "hindi",
+   "name": "Hindi",
+   "native": "हिन्दी",
+   "script": "devanagari",
+   "rtl": false,
+   "full": true
+  },
+  {
+   "id": "french",
+   "name": "French",
+   "native": "Français",
+   "script": "latin",
+   "rtl": false,
+   "full": true
+  },
+  {
+   "id": "swissgerman",
+   "name": "Swiss German",
+   "native": "Schwiizerdütsch",
+   "script": "latin",
+   "rtl": false,
+   "full": true
+  },
+  {
+   "id": "bengali",
+   "name": "Bengali",
+   "native": "বাংলা",
+   "script": "bengali",
+   "rtl": false,
+   "full": false
+  },
+  {
+   "id": "spanish",
+   "name": "Spanish",
+   "native": "Español",
+   "script": "latin",
+   "rtl": false,
+   "full": false
+  },
+  {
+   "id": "italian",
+   "name": "Italian",
+   "native": "Italiano",
+   "script": "latin",
+   "rtl": false,
+   "full": false
+  },
+  {
+   "id": "portuguese",
+   "name": "Portuguese",
+   "native": "Português",
+   "script": "latin",
+   "rtl": false,
+   "full": false
+  },
+  {
+   "id": "arabic",
+   "name": "Arabic",
+   "native": "العربية",
+   "script": "arabic",
+   "rtl": true,
+   "full": false
+  }
+ ],
+ "exams": [
+  {
+   "id": "goethe-b1",
+   "name": "Goethe-Zertifikat B1",
+   "short": "Goethe B1",
+   "language": "german",
+   "level": "B1",
+   "modules": [
+    {
+     "id": "lesen",
+     "name": "Lesen",
+     "minutes": 65,
+     "max": 30,
+     "pass": 18
+    },
+    {
+     "id": "hoeren",
+     "name": "Hören",
+     "minutes": 40,
+     "max": 30,
+     "pass": 18
+    },
+    {
+     "id": "schreiben",
+     "name": "Schreiben",
+     "minutes": 60,
+     "max": 100,
+     "pass": 60
+    },
+    {
+     "id": "sprechen",
+     "name": "Sprechen",
+     "minutes": 15,
+     "max": 100,
+     "pass": 60
+    }
+   ],
+   "media": "https://pakrasi.github.io/b1-exam/audio/",
+   "note": "Practice in the format of the Goethe-Zertifikat B1. Not affiliated with the Goethe-Institut.",
+   "tests": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+   ]
+  }
+ ],
+ "files": [
+  {
+   "id": "b1.annot",
+   "path": "b1/annot.json",
+   "schema": "b1-annot@1",
+   "bytes": 48291,
+   "sha256": "6507a4ec133d3fd6bd2ee9bda3b9830bdcf93653da266b99bd4cf03a933217ae"
+  },
+  {
+   "id": "b1.bank",
+   "path": "b1/bank.json",
+   "schema": "b1-bank@1",
+   "bytes": 43779,
+   "sha256": "fe499c8608f215400cccca7b89ae599c17a7f93de4b859f764bc988fdd83ef1a"
+  },
+  {
+   "id": "b1.frames",
+   "path": "b1/frames.json",
+   "schema": "b1-frames@1",
+   "bytes": 10899,
+   "sha256": "3b23e2fd7e54f4980b06702ccbb647eb1d5570eb5dcc6d06c85dc74758e211ea"
+  },
+  {
+   "id": "b1.grammar",
+   "path": "b1/grammar.json",
+   "schema": "b1-grammar@1",
+   "bytes": 145942,
+   "sha256": "d69bef3719a5caf22bcbe7b6c0540ad43851de7ee223525576eb24b96bd07b3f"
+  },
+  {
+   "id": "b1.items",
+   "path": "b1/items.json",
+   "schema": "b1-items@1",
+   "bytes": 351180,
+   "sha256": "4cb8bba8bc332f15ca4df4a50f2d0fa03efe48f9738a400f6547b02c3c5dfa2b"
+  },
+  {
+   "id": "b1.nouns",
+   "path": "b1/nouns.json",
+   "schema": "b1-nouns@1",
+   "bytes": 91828,
+   "sha256": "8cf5971a6f660bf547d716453e1b5e6fae0dd518d5916f33a32ce807125ef6a0"
+  },
+  {
+   "id": "b1.plan",
+   "path": "b1/plan.json",
+   "schema": "b1-plan@1",
+   "bytes": 13787,
+   "sha256": "bab302c3dfd8c17c5aa401f5c6bffa1dd74b7db0c12595b838af862030e3ab8d"
+  },
+  {
+   "id": "b1.wordmap",
+   "path": "b1/wordmap.json",
+   "schema": "b1-wordmap@1",
+   "bytes": 143869,
+   "sha256": "37408c02df8ea9061c6b84483ab049fed3580ec950fc574d6f893a68e6302f06"
+  },
+  {
+   "id": "exam.goethe-b1.01",
+   "path": "exams/goethe-b1/day01.json",
+   "schema": "goethe-b1-exam@1",
+   "bytes": 34163,
+   "sha256": "349bb2aed107de6e61712bd8d28ab94dd26a67d956394569e762d66bf083d61b"
+  },
+  {
+   "id": "exam.goethe-b1.02",
+   "path": "exams/goethe-b1/day02.json",
+   "schema": "goethe-b1-exam@1",
+   "bytes": 39197,
+   "sha256": "4732eaeee11be363c86fa02717daf6f2b2a9a9b4499dfcf25c5e4860a7c1183f"
+  },
+  {
+   "id": "exam.goethe-b1.03",
+   "path": "exams/goethe-b1/day03.json",
+   "schema": "goethe-b1-exam@1",
+   "bytes": 39041,
+   "sha256": "35ca0db5313150f387ee35d8c59962e1b0ef7aea24ac7e9d9c68b83fc98d6103"
+  },
+  {
+   "id": "exam.goethe-b1.04",
+   "path": "exams/goethe-b1/day04.json",
+   "schema": "goethe-b1-exam@1",
+   "bytes": 38798,
+   "sha256": "4de00f7047970cb7c52a3daeefe704df30740bb6fc1db72bc04f0d680ed270db"
+  },
+  {
+   "id": "exam.goethe-b1.05",
+   "path": "exams/goethe-b1/day05.json",
+   "schema": "goethe-b1-exam@1",
+   "bytes": 39503,
+   "sha256": "d487e8096558c823ae3f04531ba1917e156c76be42676e55fbb89ea6eafcd1ed"
+  },
+  {
+   "id": "exam.goethe-b1.06",
+   "path": "exams/goethe-b1/day06.json",
+   "schema": "goethe-b1-exam@1",
+   "bytes": 45298,
+   "sha256": "a2340de88e158be3680f5ea64d4a7581f2a503827b048326404157907846f04a"
+  },
+  {
+   "id": "exam.goethe-b1.07",
+   "path": "exams/goethe-b1/day07.json",
+   "schema": "goethe-b1-exam@1",
+   "bytes": 44809,
+   "sha256": "c4e1a420c747d1f7fc0d8d0e3d89aa46284e81db04f16ab0fb4d2fdd0b10cfd5"
+  },
+  {
+   "id": "exam.goethe-b1.08",
+   "path": "exams/goethe-b1/day08.json",
+   "schema": "goethe-b1-exam@1",
+   "bytes": 44433,
+   "sha256": "d4627f1eb901783c8de2fdda596ca5f3c4450683a2da0048a4b38ebfbf2fc1d6"
+  },
+  {
+   "id": "exam.goethe-b1.09",
+   "path": "exams/goethe-b1/day09.json",
+   "schema": "goethe-b1-exam@1",
+   "bytes": 38885,
+   "sha256": "a64f3f150b38d5d79ad40de4938857ef4b00f1e5cdc4decaf38658f850f64358"
+  },
+  {
+   "id": "exam.goethe-b1.10",
+   "path": "exams/goethe-b1/day10.json",
+   "schema": "goethe-b1-exam@1",
+   "bytes": 38575,
+   "sha256": "816b101b12d629034b3c9d21bc155bb57bbae47774e58ae73755e1c730715c41"
+  },
+  {
+   "id": "exam.goethe-b1.11",
+   "path": "exams/goethe-b1/day11.json",
+   "schema": "goethe-b1-exam@1",
+   "bytes": 39485,
+   "sha256": "535940b48f5bf6e2ae5783319d41eaeb9c94ccbe385f80f8be4e4b8233284c6c"
+  },
+  {
+   "id": "exam.goethe-b1.12",
+   "path": "exams/goethe-b1/day12.json",
+   "schema": "goethe-b1-exam@1",
+   "bytes": 39487,
+   "sha256": "82ca0d67411f98f4de5aece23f50272ec117a85876350c6a3a8af37c90f50f82"
+  },
+  {
+   "id": "exam.goethe-b1.13",
+   "path": "exams/goethe-b1/day13.json",
+   "schema": "goethe-b1-exam@1",
+   "bytes": 39896,
+   "sha256": "491e8535d091a977ee44d0f1499664cce7240a1c3b581f61ba2ee7721ea16815"
+  },
+  {
+   "id": "exam.goethe-b1.14",
+   "path": "exams/goethe-b1/day14.json",
+   "schema": "goethe-b1-exam@1",
+   "bytes": 43000,
+   "sha256": "06c3dcd2be7a80b22a2a1bd8dc6e36108c955eebe58c98b4dca9050913c6c402"
+  },
+  {
+   "id": "exam.goethe-b1.why.01",
+   "path": "exams/goethe-b1/why/day01.json",
+   "schema": "goethe-b1-why@1",
+   "bytes": 44085,
+   "sha256": "97942956179e00ae1fce7df375fe5e7355dc873eafcc4ba11905377c88566b66"
+  },
+  {
+   "id": "exam.goethe-b1.why.02",
+   "path": "exams/goethe-b1/why/day02.json",
+   "schema": "goethe-b1-why@1",
+   "bytes": 37704,
+   "sha256": "9bc2fe21271cdea186bc06d6aaeb8fb87549fdd01b3f0f39ecf7ff2e0f48af72"
+  },
+  {
+   "id": "exam.goethe-b1.why.03",
+   "path": "exams/goethe-b1/why/day03.json",
+   "schema": "goethe-b1-why@1",
+   "bytes": 41722,
+   "sha256": "e60eddb73d2345ba42f6aba8527da4b8ce0025134c185ac3f3fddc2eb9e92e95"
+  },
+  {
+   "id": "exam.goethe-b1.why.04",
+   "path": "exams/goethe-b1/why/day04.json",
+   "schema": "goethe-b1-why@1",
+   "bytes": 43694,
+   "sha256": "84aa18d8ce6045f0f7cc866dbbf6ebee98509b674420e41e3e77fe41fed46b18"
+  },
+  {
+   "id": "exam.goethe-b1.why.05",
+   "path": "exams/goethe-b1/why/day05.json",
+   "schema": "goethe-b1-why@1",
+   "bytes": 40869,
+   "sha256": "a77ec1364e6bd27543909d36327e420ec230be62eff5ed80e6c48282914488cb"
+  },
+  {
+   "id": "exam.goethe-b1.why.06",
+   "path": "exams/goethe-b1/why/day06.json",
+   "schema": "goethe-b1-why@1",
+   "bytes": 42440,
+   "sha256": "375701d6276018e29666e8c2f75a3f7af51d6323f331049b2cde89db43850470"
+  },
+  {
+   "id": "exam.goethe-b1.why.07",
+   "path": "exams/goethe-b1/why/day07.json",
+   "schema": "goethe-b1-why@1",
+   "bytes": 43203,
+   "sha256": "342b5e6331983795097c958a112cc815675ce87bd54c1e30e8b37aa45f0545b3"
+  },
+  {
+   "id": "exam.goethe-b1.why.08",
+   "path": "exams/goethe-b1/why/day08.json",
+   "schema": "goethe-b1-why@1",
+   "bytes": 42873,
+   "sha256": "65a6f8b240d9fc3fc51f9419a02ed7f3f0c13785e15ef79718fe5cbd592c15a3"
+  },
+  {
+   "id": "exam.goethe-b1.why.09",
+   "path": "exams/goethe-b1/why/day09.json",
+   "schema": "goethe-b1-why@1",
+   "bytes": 42847,
+   "sha256": "e6bc5805260aaec4bb192f1a983c933b7010719e6ce78228e6c9a578eaebd876"
+  },
+  {
+   "id": "exam.goethe-b1.why.10",
+   "path": "exams/goethe-b1/why/day10.json",
+   "schema": "goethe-b1-why@1",
+   "bytes": 44419,
+   "sha256": "c2a049dd4104cbb62c38a52248eae14a7d707fae6503c75137b29d3e45e35393"
+  },
+  {
+   "id": "exam.goethe-b1.why.11",
+   "path": "exams/goethe-b1/why/day11.json",
+   "schema": "goethe-b1-why@1",
+   "bytes": 42576,
+   "sha256": "f54654e7c91d93838aa3be73e04bb721bc9b9ba9df1e5bdb89a6411dcb06ce65"
+  },
+  {
+   "id": "exam.goethe-b1.why.12",
+   "path": "exams/goethe-b1/why/day12.json",
+   "schema": "goethe-b1-why@1",
+   "bytes": 40350,
+   "sha256": "c0ab8e92989bcf93dbb8330b9b80cf945d4ef0baa722ee37d197cd0e89fdc952"
+  },
+  {
+   "id": "exam.goethe-b1.why.13",
+   "path": "exams/goethe-b1/why/day13.json",
+   "schema": "goethe-b1-why@1",
+   "bytes": 39339,
+   "sha256": "907bbe71518122c81e5dd4c981753648d4a2e202b5e77bf9cb3cc0eeb8c8fc1e"
+  },
+  {
+   "id": "exam.goethe-b1.why.14",
+   "path": "exams/goethe-b1/why/day14.json",
+   "schema": "goethe-b1-why@1",
+   "bytes": 40286,
+   "sha256": "d83da6443a40ab798351d5adfce59cb68f4a2f40b49b0bf57d8d7c6456a12cef"
+  },
+  {
+   "id": "igloo.chunks.accept.german",
+   "path": "igloo/chunks/accept_german.json",
+   "schema": "igloo-chunks-accept@1",
+   "bytes": 311696,
+   "sha256": "428a56e517146b62ec5269218caf2a90dcefd9326336939e32c9c8f814eefbb6"
+  },
+  {
+   "id": "igloo.chunks.arabic",
+   "path": "igloo/chunks/arabic.json",
+   "schema": "igloo-chunks@1",
+   "bytes": 442475,
+   "sha256": "ac0687b933779719d70cf63bfe6695d7856d2c9e58cfed66dfd92ede368c581f"
+  },
+  {
+   "id": "igloo.chunks.bengali",
+   "path": "igloo/chunks/bengali.json",
+   "schema": "igloo-chunks@1",
+   "bytes": 440379,
+   "sha256": "ef58426e52a0c98137060ec48be7581a44c510ecc3225072baf4bfdc11fa86bc"
+  },
+  {
+   "id": "igloo.chunks.en",
+   "path": "igloo/chunks/en.json",
+   "schema": "igloo-chunks-en@1",
+   "bytes": 645922,
+   "sha256": "4cca0fd7d05de0d07130727362b1c4d73703347911d85b344c6990c6c5f9e216"
+  },
+  {
+   "id": "igloo.chunks.french",
+   "path": "igloo/chunks/french.json",
+   "schema": "igloo-chunks@1",
+   "bytes": 207836,
+   "sha256": "806c5f8320303e0a81d5aaf601543b3d8b244427a0a856848c262e18d2b37585"
+  },
+  {
+   "id": "igloo.chunks.german",
+   "path": "igloo/chunks/german.json",
+   "schema": "igloo-chunks@1",
+   "bytes": 225900,
+   "sha256": "1a0ba4e3aec0aa10b6a0267bad317ad3e0109b451824060ac29b48efd5f4f316"
+  },
+  {
+   "id": "igloo.chunks.hindi",
+   "path": "igloo/chunks/hindi.json",
+   "schema": "igloo-chunks@1",
+   "bytes": 495084,
+   "sha256": "a4c354a8817cbea57f89e752eeeae2422d15ab66dd134075cfafe3385ec75cc9"
+  },
+  {
+   "id": "igloo.chunks.italian",
+   "path": "igloo/chunks/italian.json",
+   "schema": "igloo-chunks@1",
+   "bytes": 196550,
+   "sha256": "af870d7d5b9dfc2a491fbed0139c7b6cdd4e5f810bcacf8e2face83be75c5e0d"
+  },
+  {
+   "id": "igloo.chunks.khasi",
+   "path": "igloo/chunks/khasi.json",
+   "schema": "igloo-chunks@1",
+   "bytes": 193393,
+   "sha256": "ed12a577eb8be93ec1dc881e5c86b3f179752a684e94a3a87c20c1bfeb93ef8a"
+  },
+  {
+   "id": "igloo.chunks.portuguese",
+   "path": "igloo/chunks/portuguese.json",
+   "schema": "igloo-chunks@1",
+   "bytes": 201576,
+   "sha256": "c6a0f9eeae03e18b88a2860163f8816695c3931bd8cdeb20f4470a11a1831a49"
+  },
+  {
+   "id": "igloo.chunks.priority.de",
+   "path": "igloo/chunks/priority_de.json",
+   "schema": "igloo-chunks-priority@1",
+   "bytes": 23222,
+   "sha256": "76e6ade7fe5ddb2b00f923d79bd7a8dab8d09fbffd90f688dce4c586ac219359"
+  },
+  {
+   "id": "igloo.chunks.spanish",
+   "path": "igloo/chunks/spanish.json",
+   "schema": "igloo-chunks@1",
+   "bytes": 207752,
+   "sha256": "c86e5a918980aa21bd2368c2c2d88a00dbaf37a12246ba1251450846a122e1a2"
+  },
+  {
+   "id": "igloo.chunks.swissgerman",
+   "path": "igloo/chunks/swissgerman.json",
+   "schema": "igloo-chunks@1",
+   "bytes": 188594,
+   "sha256": "de28c01d5dd562dd3d5bf41ee6de02ecb334e73fb9d44ab39c51b675f5c0de93"
+  },
+  {
+   "id": "igloo.framework",
+   "path": "igloo/framework.json",
+   "schema": "igloo-framework@1",
+   "bytes": 55744,
+   "sha256": "de94d58be52a90958c17a1844fc191a631af78b5ba5e174abd47e45e1b568b58"
+  },
+  {
+   "id": "igloo.grammar.concepts.de",
+   "path": "igloo/grammar/concepts_de.json",
+   "schema": "igloo-grammar-concepts@1",
+   "bytes": 10089,
+   "sha256": "35be2df44d7aaf0737565880066a00e5cbb69772a17d351ddf88fa2afb51a77a"
+  },
+  {
+   "id": "igloo.grammar.items.de",
+   "path": "igloo/grammar/items_de.json",
+   "schema": "igloo-grammar-items@1",
+   "bytes": 232340,
+   "sha256": "1ce9aec93cea1f58e3fd78197b3d095351fae3771a39a35e62b447d77f537085"
+  },
+  {
+   "id": "igloo.lang.french",
+   "path": "igloo/lang/french.json",
+   "schema": "igloo-lang@1",
+   "bytes": 256830,
+   "sha256": "9bab93ef777b8275e18d6bdae134dff8ef5eac3fd13695ce7845a6e2159450c5"
+  },
+  {
+   "id": "igloo.lang.german",
+   "path": "igloo/lang/german.json",
+   "schema": "igloo-lang@1",
+   "bytes": 190324,
+   "sha256": "9e82a77eafefeed9fe7f9aace0cb28497042f8e1ce749d11e5c6ac0399158d15"
+  },
+  {
+   "id": "igloo.lang.hindi",
+   "path": "igloo/lang/hindi.json",
+   "schema": "igloo-lang@1",
+   "bytes": 326731,
+   "sha256": "bce9246771749bde1868f28aef0acd93d6b6910b3f970c6b63a82fc3cc626dd4"
+  },
+  {
+   "id": "igloo.lang.khasi",
+   "path": "igloo/lang/khasi.json",
+   "schema": "igloo-lang@1",
+   "bytes": 200718,
+   "sha256": "f28fac3997486c73319babf761bb0e303ab1bba1280996e5ccbadc93bcb08893"
+  },
+  {
+   "id": "igloo.lang.swissgerman",
+   "path": "igloo/lang/swissgerman.json",
+   "schema": "igloo-lang@1",
+   "bytes": 198585,
+   "sha256": "f1397722132100385d9b1be8851e43e9a013352bcca66eb1c95cef7a675a179b"
+  },
+  {
+   "id": "igloo.sentences.arabic",
+   "path": "igloo/sentences/arabic.json",
+   "schema": "igloo-sentences@1",
+   "bytes": 14410,
+   "sha256": "348aef86da5038a548e44a1787709c41ce908a9ec765f2bd449d808ea1e1d0b4"
+  },
+  {
+   "id": "igloo.sentences.bengali",
+   "path": "igloo/sentences/bengali.json",
+   "schema": "igloo-sentences@1",
+   "bytes": 16645,
+   "sha256": "db314f1477a330d3c55398d36e91beea7e7dba6e159d96a9786bb63d602dcb63"
+  },
+  {
+   "id": "igloo.sentences.en",
+   "path": "igloo/sentences/en.json",
+   "schema": "igloo-sentences-en@1",
+   "bytes": 15203,
+   "sha256": "22ffab3f2bae729e93cf50f58b6b60deb39f6b0d12afddcb3d4d47a15e3af608"
+  },
+  {
+   "id": "igloo.sentences.french",
+   "path": "igloo/sentences/french.json",
+   "schema": "igloo-sentences@1",
+   "bytes": 8041,
+   "sha256": "d5b2ac24dc3b9fb4bdcededfe6b54edae3282bc857b4f1728ae752baa74978d6"
+  },
+  {
+   "id": "igloo.sentences.german",
+   "path": "igloo/sentences/german.json",
+   "schema": "igloo-sentences@1",
+   "bytes": 11491,
+   "sha256": "fd063240cde7473334179431c117de7f159b1c55259c00f8cd833f23d907f2b8"
+  },
+  {
+   "id": "igloo.sentences.hindi",
+   "path": "igloo/sentences/hindi.json",
+   "schema": "igloo-sentences@1",
+   "bytes": 17637,
+   "sha256": "76c425fbe9183eab23a8b15da63ae2675a53016e375aa1db0765b4aad9ee0768"
+  },
+  {
+   "id": "igloo.sentences.italian",
+   "path": "igloo/sentences/italian.json",
+   "schema": "igloo-sentences@1",
+   "bytes": 11125,
+   "sha256": "ddd6368d4d09bded8d970686d8c3f45cc9d54d2d961c5deb0f1283dee2b881a2"
+  },
+  {
+   "id": "igloo.sentences.khasi",
+   "path": "igloo/sentences/khasi.json",
+   "schema": "igloo-sentences@1",
+   "bytes": 12759,
+   "sha256": "512a050f0d29058df813a2643e6e08bf44da2c305d82cb2211faf3aee0f05e9f"
+  },
+  {
+   "id": "igloo.sentences.portuguese",
+   "path": "igloo/sentences/portuguese.json",
+   "schema": "igloo-sentences@1",
+   "bytes": 11689,
+   "sha256": "46d95bad3e70a03eb915f49216964c4e1d6aa45475de7e6c0b3c46c32fe6607a"
+  },
+  {
+   "id": "igloo.sentences.spanish",
+   "path": "igloo/sentences/spanish.json",
+   "schema": "igloo-sentences@1",
+   "bytes": 10858,
+   "sha256": "46f273f5d87806c25d3914beac49580db4135c0d614175fefd7ce5a7ab8ff185"
+  },
+  {
+   "id": "igloo.sentences.swissgerman",
+   "path": "igloo/sentences/swissgerman.json",
+   "schema": "igloo-sentences@1",
+   "bytes": 11938,
+   "sha256": "c183081e34e587cee4bc892e2e33769c95988eb7578a80827314c6d387783382"
+  },
+  {
+   "id": "igloo.turns",
+   "path": "igloo/turns.json",
+   "schema": "igloo-turns@1",
+   "bytes": 35159,
+   "sha256": "a5b527c9c879382219dc7b125a020e1471d82b7070626ed10851c45710c4ca31"
+  },
+  {
+   "id": "igloo.words.de",
+   "path": "igloo/words/de.json",
+   "schema": "igloo-words@1",
+   "bytes": 1040755,
+   "sha256": "22496700938941bd80d3be8dfd5b03e71854262aa6cdb9c4b08a6fff01284d63"
+  },
+  {
+   "id": "igloo.words.themes",
+   "path": "igloo/words/themes.json",
+   "schema": "igloo-word-themes@1",
+   "bytes": 1715,
+   "sha256": "a2bde1bee7b155216181ebea7603559b2d3d1d0246e02e187165644debf0228f"
+  }
+ ]
+}

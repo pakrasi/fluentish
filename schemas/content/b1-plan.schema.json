@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "b1-plan@1",
+  "title": "B1 trainer plan",
+  "description": "Ranked grammar topics, sticky-error traps, exam parts, groups, functions and scenarios that drive the B1 composer.",
+  "type": "object",
+  "required": [
+    "topics",
+    "traps",
+    "teile",
+    "groups",
+    "functions"
+  ],
+  "properties": {
+    "about": {
+      "type": "string"
+    },
+    "topics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "rank",
+          "id",
+          "name",
+          "concepts"
+        ],
+        "properties": {
+          "rank": {
+            "type": "integer"
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "trap": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "concepts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "confusable": {
+            "type": "array"
+          }
+        }
+      }
+    },
+    "traps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "hint",
+          "rule"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "hint": {
+            "type": "string"
+          },
+          "rule": {
+            "type": "string"
+          },
+          "wrong_example": {
+            "type": "string"
+          },
+          "fronted": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "teile": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "groups": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      }
+    },
+    "functions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "teil",
+          "en"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "teil": {
+            "type": "string"
+          },
+          "group": {
+            "type": "string"
+          },
+          "en": {
+            "type": "string"
+          },
+          "star": {
+            "type": "boolean"
+          },
+          "situations": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "scenarios": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

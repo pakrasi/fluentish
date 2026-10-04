@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "igloo-framework@1",
+  "title": "Igloo framework",
+  "description": "The language-neutral master: levels, layers, the ten languages, item ids (doors, turns, glue, slots, chunks) and 30 scenarios.",
+  "type": "object",
+  "required": [
+    "levels",
+    "layers",
+    "languages",
+    "items",
+    "scenarios"
+  ],
+  "properties": {
+    "levels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "layers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name"
+        ]
+      }
+    },
+    "languages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "native",
+          "script",
+          "rtl",
+          "full"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z]+$"
+          },
+          "name": {
+            "type": "string"
+          },
+          "native": {
+            "type": "string"
+          },
+          "script": {
+            "type": "string"
+          },
+          "rtl": {
+            "type": "boolean"
+          },
+          "translit": {
+            "type": "boolean"
+          },
+          "full": {
+            "type": "boolean"
+          },
+          "variety": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "layer",
+          "level",
+          "en"
+        ]
+      }
+    },
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "level",
+          "situation",
+          "task"
+        ]
+      }
+    }
+  }
+}

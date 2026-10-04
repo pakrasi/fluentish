@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "igloo-words@1",
+  "title": "German word list",
+  "description": "German words A1–C2 with article, plural, meanings, level, theme, frequency and an example. Ids are stable: progress is stored under them.",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "required": [
+      "id",
+      "w",
+      "pos",
+      "en",
+      "level"
+    ],
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "w": {
+        "type": "string"
+      },
+      "art": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "pl": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "pos": {
+        "type": "string"
+      },
+      "en": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "minItems": 1
+      },
+      "alt": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "level": {
+        "enum": [
+          "A1",
+          "A2",
+          "B1",
+          "B2",
+          "C1",
+          "C2"
+        ]
+      },
+      "theme": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "rank": {
+        "type": "integer"
+      },
+      "zipf": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "ex": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "exen": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    }
+  }
+}

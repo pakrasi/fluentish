@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "b1-grammar@1",
+  "title": "B1 grammar items",
+  "description": "Igloo grammar items for the B1 plan's topics with the B1 annotations merged (tools/build_b1.py).",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "id",
+      "concept",
+      "level",
+      "kind",
+      "task",
+      "prompt",
+      "answer",
+      "topic"
+    ],
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "concept": {
+        "type": "string"
+      },
+      "level": {
+        "enum": [
+          "A1",
+          "A2",
+          "B1",
+          "B2",
+          "C1",
+          "C2"
+        ]
+      },
+      "kind": {
+        "type": "string"
+      },
+      "task": {
+        "type": "string"
+      },
+      "prompt": {
+        "type": "string"
+      },
+      "answer": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "minItems": 1
+      },
+      "note": {
+        "type": "string"
+      },
+      "strict_case": {
+        "type": "boolean"
+      },
+      "topic": {
+        "type": "string"
+      },
+      "trap": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "focus": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "strict": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "wrong": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "rule": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    }
+  }
+}

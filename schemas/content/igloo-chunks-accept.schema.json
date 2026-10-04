@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "igloo-chunks-accept@1",
+  "title": "Accepted typed answers per phrase",
+  "description": "Per chunk id: the English span to highlight and the German patterns that count ((optional) words, [slot]s). Built by tools/validate_accept.py --assemble.",
+  "type": "object",
+  "propertyNames": {
+    "pattern": "^ENG_CHUNK_\\d{4}$"
+  },
+  "additionalProperties": {
+    "type": "object",
+    "required": [
+      "core_en",
+      "accept"
+    ],
+    "properties": {
+      "core_en": {
+        "type": "string"
+      },
+      "accept": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "weak": {
+        "type": "boolean"
+      },
+      "note": {
+        "type": "string"
+      }
+    }
+  }
+}

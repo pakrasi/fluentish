@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "goethe-b1-why@1",
+  "title": "Answer explanations for one Goethe B1 mock test",
+  "description": "Keyed by Lesen/Hören item id (60 per test). Shown in the review after a module is submitted. tools/validate_exam_why.py checks that evidence is quoted verbatim.",
+  "type": "object",
+  "minProperties": 60,
+  "propertyNames": { "pattern": "^[LH]\\d-\\d+[ab]?$" },
+  "additionalProperties": {
+    "type": "object",
+    "required": ["evidence", "evidence_en", "why", "why_en", "trap", "trap_en"],
+    "properties": {
+      "evidence": { "type": "string", "minLength": 1 }, "evidence_en": { "type": "string" },
+      "why": { "type": "string", "minLength": 1 }, "why_en": { "type": "string" },
+      "trap": { "type": "string" }, "trap_en": { "type": "string" },
+      "question_en": { "type": "string" },
+      "options_en": { "type": "array", "items": { "type": "string" } }
+    }
+  }
+}

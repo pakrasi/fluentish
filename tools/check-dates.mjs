@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CHECKED = /^(src\/(?!vendor\/)|styles\/|index\.html$|404\.html$)/;
-const DATE = /\b20\d\d-(0[1-9]|1[0-2])\b/;
+const DATE = /\b(19|20)\d\d-\d\d-\d\d\b|2026-/;   // full ISO dates, and the old exam year in any form
 const staged = process.argv.includes('--staged');
 const git = (...a) => execFileSync('git', a, { cwd: ROOT, encoding: 'utf8', maxBuffer: 1 << 26 });
 const list = staged ? git('diff', '--cached', '--name-only', '--diff-filter=ACMR', '-z') : git('ls-files', '-z');

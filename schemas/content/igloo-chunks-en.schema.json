@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "igloo-chunks-en@1",
+  "title": "Phrase bank (English master)",
+  "description": "The 1,450 English phrases with category, register, slots, examples and CEFR level.",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "required": [
+      "id",
+      "chunk",
+      "category",
+      "natural_example",
+      "cefr_level"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^ENG_CHUNK_\\d{4}$"
+      },
+      "chunk": {
+        "type": "string"
+      },
+      "category": {
+        "type": "string"
+      },
+      "pragmatic_function": {
+        "type": "string"
+      },
+      "register": {
+        "type": "string"
+      },
+      "variable_slots": {
+        "type": "array"
+      },
+      "natural_example": {
+        "type": "string"
+      },
+      "substitutable_examples": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "cefr_level": {
+        "type": "string"
+      },
+      "level": {
+        "type": "string"
+      },
+      "level_reason": {
+        "type": "string"
+      }
+    }
+  }
+}
