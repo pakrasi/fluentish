@@ -1,0 +1,167 @@
+/* Fluentish tokens. Source of truth for colour, type, space, shape, elevation, layers.
+   Keep in sync with design/DESIGN.md. Light is the default; dark follows the system
+   unless <html data-theme="light|dark"> overrides it.
+   Fonts (load once, in <head>):
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..650&family=Geist+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..400&display=swap" rel="stylesheet">
+*/
+
+:root {
+  color-scheme: light dark;
+
+  /* ---------- colour: light ---------- */
+  --canvas: #f4f4f1;          /* page */
+  --surface: #fcfcfa;         /* study card, sheets */
+  --surface-2: #ebebe7;       /* wells, pressed, track */
+  --ink: #141519;             /* text, primary button fill */
+  --ink-2: #3e4047;           /* secondary text */
+  --ink-3: #5c5f67;           /* captions, ticks (5.6:1 on canvas) */
+  --hairline: rgb(20 21 25 / 0.11);
+  --hairline-strong: rgb(20 21 25 / 0.22);
+  --field-border: rgb(20 21 25 / 0.42);   /* inputs: 3:1 against surface */
+  --on-ink: #f6f6f3;
+
+  --accent: #2a43d6;          /* cobalt: progress, today, focus, links. Never a fill for big areas. */
+  --accent-ink: #2237b8;      /* accent as small text */
+  --accent-soft: color-mix(in oklab, var(--accent) 12%, var(--surface));
+  --on-accent: #f7f8ff;
+
+  --ok: #17784a;              /* correct answer */
+  --ok-soft: color-mix(in oklab, var(--ok) 12%, var(--surface));
+  --bad: #b3261e;             /* wrong answer, destructive. Always with text. */
+  --bad-soft: color-mix(in oklab, var(--bad) 10%, var(--surface));
+
+  /* word roles (grammar layer). Data colours: only on word tiles and their legend. */
+  --role-fn: #93407d;         /* function / structure */
+  --role-door: #0e7385;       /* verb frames */
+  --role-turn: #a05c06;       /* tense, negation, question */
+  --role-glue: #4a7a1c;       /* linking words */
+  --role-slot: #b0432a;       /* the slot you fill */
+  --role-plain: #6b6f78;      /* everything else */
+  --role-mix: 13%;
+
+  /* readiness field cells */
+  --cell-empty: rgb(20 21 25 / 0.10);
+  --cell-learning: rgb(20 21 25 / 0.34);
+  --cell-known: #2c2e34;
+  --cell-new: var(--accent);
+
+  /* atmosphere (brand moment only) */
+  --atmo-1: #f4f4f1; --atmo-2: #e4e7f3; --atmo-3: #f1f1ec; --atmo-4: #dfe3f1;
+
+  /* ---------- type ---------- */
+  --font-display: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --font-ui: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-devanagari: "Noto Sans Devanagari", var(--font-ui);
+  --font-bengali: "Noto Sans Bengali", var(--font-ui);
+  --font-arabic: "Noto Naskh Arabic", var(--font-ui);
+
+  --fs-numeral: clamp(84px, 24vw, 168px);  /* the one big number per screen */
+  --fs-figure: 48px;          /* secondary numbers */
+  --fs-prompt: 30px;          /* the sentence on a study card */
+  --fs-h1: 32px;
+  --fs-h2: 24px;
+  --fs-title: 17px;
+  --fs-body: 15px;
+  --fs-input: 18px;           /* never below 16 (iOS zoom) */
+  --fs-label: 13px;
+  --fs-caption: 12px;
+
+  /* ---------- space (4px grid) ---------- */
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 20px;
+  --s-6: 24px; --s-8: 32px; --s-10: 40px; --s-12: 48px; --s-16: 64px;
+  --gutter: 16px;
+  --measure: 62ch;
+  --page-max: 1120px;
+  --tap: 44px;
+
+  /* ---------- shape ---------- */
+  --r-tile: 6px;    /* word tiles, field cells (cells are 2px), tags */
+  --r-ctl: 12px;    /* buttons, inputs, segmented control */
+  --r-card: 20px;   /* study card, sheets */
+  --r-pill: 999px;  /* chips, progress tracks, toasts */
+
+  /* ---------- elevation ---------- */
+  --shadow-card: 0 1px 0 rgb(20 21 25 / 0.04), 0 1px 2px rgb(20 24 40 / 0.05), 0 10px 30px -12px rgb(20 24 40 / 0.16);
+  --shadow-lift: 0 2px 4px rgb(20 24 40 / 0.06), 0 24px 48px -16px rgb(20 24 40 / 0.24);
+  --shadow-sheet: 0 -1px 0 var(--hairline), 0 -24px 60px -20px rgb(20 24 40 / 0.22);
+
+  /* ---------- layers ---------- */
+  --z-atmo: 0; --z-content: 1; --z-bar: 30; --z-sheet: 60; --z-toast: 70; --z-fx: 80;
+}
+
+/* ---------- colour: dark ---------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --canvas: #0d0e11; --surface: #15171b; --surface-2: #1e2026;
+    --ink: #ecebe6; --ink-2: #c3c3be; --ink-3: #9c9da3;
+    --hairline: rgb(236 235 230 / 0.10); --hairline-strong: rgb(236 235 230 / 0.20);
+    --field-border: rgb(236 235 230 / 0.40); --on-ink: #101114;
+    --accent: #8d9cff; --accent-ink: #a7b3ff; --on-accent: #0b0d1f;
+    --ok: #66d19a; --bad: #ff8f85;
+    --role-fn: #e08ac6; --role-door: #5cc4d5; --role-turn: #edb25e; --role-glue: #a2cf6c; --role-slot: #f0906f; --role-plain: #959aa3;
+    --role-mix: 17%;
+    --cell-empty: rgb(236 235 230 / 0.10); --cell-learning: rgb(236 235 230 / 0.34); --cell-known: #d9d8d2;
+    --atmo-1: #0d0e11; --atmo-2: #141a33; --atmo-3: #0b0c0f; --atmo-4: #1b2244;
+    --shadow-card: 0 1px 0 rgb(255 255 255 / 0.04) inset, 0 12px 32px -14px rgb(0 0 0 / 0.6);
+    --shadow-lift: 0 1px 0 rgb(255 255 255 / 0.05) inset, 0 28px 56px -18px rgb(0 0 0 / 0.7);
+    --shadow-sheet: 0 -1px 0 var(--hairline), 0 -24px 60px -20px rgb(0 0 0 / 0.7);
+  }
+}
+:root[data-theme="dark"] {
+  --canvas: #0d0e11; --surface: #15171b; --surface-2: #1e2026;
+  --ink: #ecebe6; --ink-2: #c3c3be; --ink-3: #9c9da3;
+  --hairline: rgb(236 235 230 / 0.10); --hairline-strong: rgb(236 235 230 / 0.20);
+  --field-border: rgb(236 235 230 / 0.40); --on-ink: #101114;
+  --accent: #8d9cff; --accent-ink: #a7b3ff; --on-accent: #0b0d1f;
+  --ok: #66d19a; --bad: #ff8f85;
+  --role-fn: #e08ac6; --role-door: #5cc4d5; --role-turn: #edb25e; --role-glue: #a2cf6c; --role-slot: #f0906f; --role-plain: #959aa3;
+  --role-mix: 17%;
+  --cell-empty: rgb(236 235 230 / 0.10); --cell-learning: rgb(236 235 230 / 0.34); --cell-known: #d9d8d2;
+  --atmo-1: #0d0e11; --atmo-2: #141a33; --atmo-3: #0b0c0f; --atmo-4: #1b2244;
+  --shadow-card: 0 1px 0 rgb(255 255 255 / 0.04) inset, 0 12px 32px -14px rgb(0 0 0 / 0.6);
+  --shadow-lift: 0 1px 0 rgb(255 255 255 / 0.05) inset, 0 28px 56px -18px rgb(0 0 0 / 0.7);
+  --shadow-sheet: 0 -1px 0 var(--hairline), 0 -24px 60px -20px rgb(0 0 0 / 0.7);
+}
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
+
+@media (min-width: 720px) {
+  :root { --gutter: 24px; --fs-prompt: 36px; --fs-h1: 40px; --fs-h2: 28px; --fs-figure: 56px; }
+}
+
+/* ---------- base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+body {
+  margin: 0; background: var(--canvas); color: var(--ink);
+  font: 400 var(--fs-body)/1.55 var(--font-ui);
+  -webkit-font-smoothing: antialiased; overflow-x: clip;
+  font-feature-settings: "ss01" off;
+}
+h1, h2, h3 { margin: 0; text-wrap: balance; font-weight: 400; }
+h1 { font: 400 var(--fs-h1)/1.08 var(--font-display); letter-spacing: -0.02em; }
+h2 { font: 400 var(--fs-h2)/1.15 var(--font-display); letter-spacing: -0.01em; }
+h3 { font: 600 var(--fs-title)/1.3 var(--font-ui); letter-spacing: -0.01em; }
+p { margin: 0; }
+a { color: var(--accent-ink); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+[hidden] { display: none !important; }
+.sr-only { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+.numeral { font: 300 var(--fs-numeral)/0.84 var(--font-display); letter-spacing: -0.045em; font-variant-numeric: lining-nums proportional-nums; }
+.figure { font: 300 var(--fs-figure)/1 var(--font-display); letter-spacing: -0.025em; font-variant-numeric: lining-nums proportional-nums; }
+.unit { font: 400 0.32em/1 var(--font-display); letter-spacing: 0; color: var(--ink-2); margin-left: 0.06em; }
+.label { font: 500 var(--fs-label)/1.35 var(--font-ui); color: var(--ink-2); }
+.caption { font: 400 var(--fs-caption)/1.4 var(--font-ui); color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.tnum { font-variant-numeric: tabular-nums; }
+.mono { font-family: var(--font-mono); font-size: 12.5px; letter-spacing: 0.01em; }
+.prose { font: 400 17px/1.6 var(--font-display); color: var(--ink-2); max-width: var(--measure); }
+
+/* target-language text */
+[lang|="hi"], [lang|="mr"], [lang|="ne"] { font-family: var(--font-devanagari); }
+[lang|="bn"] { font-family: var(--font-bengali); }
+[lang|="ar"], [lang|="ur"] { font-family: var(--font-arabic); }

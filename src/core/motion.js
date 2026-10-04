@@ -1,0 +1,332 @@
+// Fluentish motion helpers. ES module, no dependencies. About 5 kB gzipped.
+// Every export works under reduced motion: movement is dropped, state still changes.
+
+const root = document.documentElement;
+root.classList.add('js');
+const mq = matchMedia('(prefers-reduced-motion: reduce)');
+
+/** True when motion should be reduced (system setting or html[data-motion="reduce"]). */
+export function reduced() {
+  const m = root.dataset.motion;
+  if (m === 'reduce') return true;
+  if (m === 'full') return false;
+  return mq.matches;
+}
+
+const cssMs = (name, fallback) => {
+  const v = getComputedStyle(root).getPropertyValue(name).trim();
+  return v ? parseFloat(v) : fallback;
+};
+const wait = ms => new Promise(r => setTimeout(r, ms));
+const raf = () => new Promise(r => requestAnimationFrame(r));
+
+/* ------------------------------------------------------------------ */
+/* Transitions                                                          */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Swap content with a choreographed transition.
+ * update: sync or async function that changes the DOM.
+ * kind: 'forward' | 'back' (study card, element needs view-transition-name: fx-card)
+ *       'view' (route/tab change, element needs view-transition-name: fx-view)
+ * fallbackEl: element to animate with WAAPI-by-class when View Transitions are missing.
+ * Resolves when the new state is on screen (not when the animation ends), so input is never blocked.
+ */
+export async function swap(update, { kind = 'forward', fallbackEl = null } = {}) {
+  if (reduced() || !document.startViewTransition) {
+    if (reduced() || !fallbackEl) { await update(); if (fallbackEl && reduced()) crossfade(fallbackEl); return; }
+    const outCls = kind === 'back' ? 'fx-out-right' : kind === 'view' ? null : 'fx-out-left';
+    if (outCls) { fallbackEl.classList.add(outCls); await wait(cssMs('--dur-quick', 160)); fallbackEl.classList.remove(outCls); }
+    await update();
+    const inCls = kind === 'back' ? 'fx-in-left' : kind === 'view' ? 'fx-rise' : 'fx-in-right';
+    fallbackEl.classList.add(inCls);
+    fallbackEl.addEventListener('animationend', () => fallbackEl.classList.remove(inCls), { once: true });
+    return;
+  }
+  root.dataset.vt = kind;
+  const t = document.startViewTransition(update);
+  t.finished.finally(() => { if (root.dataset.vt === kind) delete root.dataset.vt; });
+  await t.updateCallbackDone;
+}
+
+function crossfade(el) {
+  el.animate([{ opacity: 0.4 }, { opacity: 1 }], { duration: 140, easing: 'ease-out' });
+}
+
+/**
+ * FLIP: animate elements from their old box to their new box after mutate() runs.
+ * Use for list reorders, a chip moving into a sentence, a tile snapping into a slot.
+ */
+export async function flip(els, mutate, { duration, easing = 'var(--spring-snappy)' } = {}) {
+  els = [...els];
+  const first = new Map(els.map(el => [el, el.getBoundingClientRect()]));
+  await mutate();
+  if (reduced()) return;
+  const dur = duration ?? cssMs('--dur-card', 380);
+  const ease = easing.startsWith('var(') ? getComputedStyle(root).getPropertyValue(easing.slice(4, -1)).trim() || 'ease-out' : easing;
+  for (const el of els) {
+    const a = first.get(el), b = el.getBoundingClientRect();
+    const dx = a.left - b.left, dy = a.top - b.top, sx = a.width / (b.width || 1), sy = a.height / (b.height || 1);
+    if (!dx && !dy && sx === 1 && sy === 1) continue;
+    el.animate([
+      { transformOrigin: '0 0', transform: `translate(${dx}px, ${dy}px) scale(${sx}, ${sy})` },
+      { transformOrigin: '0 0', transform: 'none' },
+    ], { duration: dur, easing: ease });
+  }
+}
+
+/**
+ * Reveal elements marked [data-reveal] as they enter the viewport. Siblings stagger by --i
+ * (set automatically per container, capped at 8). Returns a disconnect function.
+ */
+export function reveal(scope = document) {
+  const els = [...scope.querySelectorAll('[data-reveal]:not(.is-in)')];
+  if (reduced() || !('IntersectionObserver' in window)) { els.forEach(el => el.classList.add('is-in')); return () => {}; }
+  const groups = new Map();
+  els.forEach(el => {
+    const k = el.parentElement; const n = groups.get(k) || 0; groups.set(k, n + 1);
+    el.style.setProperty('--i', Math.min(n, 8));
+  });
+  const io = new IntersectionObserver(entries => {
+    for (const e of entries) if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+  els.forEach(el => io.observe(el));
+  return () => io.disconnect();
+}
+
+/* ------------------------------------------------------------------ */
+/* Answer feedback                                                      */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Mark an .answer as correct: underline sweeps in green, the check draws, a light haptic.
+ * Resolves after `hold` ms (default 420), or sooner on skip(), so the caller can auto-advance.
+ * The input stays usable.
+ */
+export async function correct(answerEl, { hold = 420, haptics = true } = {}) {
+  answerEl.classList.remove('is-wrong');
+  answerEl.classList.add('is-correct');
+  answerEl.setAttribute('data-state', 'correct');
+  if (haptics) haptic();
+  await new Promise(r => { skipHold = r; setTimeout(r, reduced() ? Math.min(hold, 300) : hold); });
+  skipHold = () => {};
+}
+
+/** End the hold of a pending correct() early (e.g. the user pressed Enter again). */
+let skipHold = () => {};
+export function skip() { skipHold(); }
+
+/**
+ * Mark an .answer as wrong: underline sweeps in red, the input nudges once (not a shake).
+ * Pass revealEl (.reveal-answer) to open the correct answer underneath.
+ */
+export function wrong(answerEl, { revealEl = null, haptics = true } = {}) {
+  answerEl.classList.remove('is-correct', 'is-wrong');
+  void answerEl.offsetWidth; // restart the nudge if wrong twice
+  answerEl.classList.add('is-wrong');
+  answerEl.setAttribute('data-state', 'wrong');
+  if (revealEl) revealEl.classList.add('is-open');
+  if (haptics) haptic();
+}
+
+/** Clear correct/wrong state (call before rendering the next card into the same answer field). */
+export function resetAnswer(answerEl, revealEl) {
+  answerEl.classList.remove('is-correct', 'is-wrong');
+  answerEl.removeAttribute('data-state');
+  revealEl?.classList.remove('is-open');
+}
+
+/**
+ * Light haptic tap. Android: Vibration API. iOS 18+ Safari: toggling a hidden
+ * <input type=checkbox switch> through its label produces the system haptic.
+ * Silently does nothing elsewhere. Must be called from a user gesture on iOS.
+ */
+let hapticLabel = null;
+export function haptic() {
+  try {
+    if (navigator.vibrate) { navigator.vibrate(8); return; }
+    if (!/iP(hone|ad)/.test(navigator.userAgent)) return;
+    if (!hapticLabel) {
+      hapticLabel = document.createElement('label');
+      hapticLabel.setAttribute('aria-hidden', 'true');
+      hapticLabel.style.cssText = 'position:fixed;width:1px;height:1px;opacity:0;pointer-events:none;overflow:hidden';
+      const input = document.createElement('input');
+      input.type = 'checkbox'; input.setAttribute('switch', ''); input.tabIndex = -1;
+      hapticLabel.append(input); document.body.append(hapticLabel);
+    }
+    hapticLabel.click();
+  } catch { /* no haptics */ }
+}
+
+/* ------------------------------------------------------------------ */
+/* Numbers                                                              */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Count a number up/down in place (rAF, ease-out). For small numbers next to text.
+ * format: (n) => string. Writes the final value immediately under reduced motion.
+ */
+export function countTo(el, to, { from, duration = 700, decimals = 0, format } = {}) {
+  const fmt = format || (n => n.toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals }));
+  const start = from ?? (parseFloat(String(el.dataset.value ?? el.textContent).replace(/[^\d.-]/g, '')) || 0);
+  el.dataset.value = to;
+  if (reduced() || start === to) { el.textContent = fmt(to); return Promise.resolve(); }
+  cancelAnimationFrame(el._count);
+  return new Promise(resolve => {
+    const t0 = performance.now();
+    const tick = now => {
+      const k = Math.min(1, (now - t0) / duration), e = 1 - Math.pow(1 - k, 4);
+      el.textContent = fmt(start + (to - start) * e);
+      if (k < 1) el._count = requestAnimationFrame(tick); else resolve();
+    };
+    el._count = requestAnimationFrame(tick);
+  });
+}
+
+/**
+ * Odometer: each digit rolls on its own column with the snappy spring.
+ * For the one big numeral per screen (days left, readiness). Keeps an accessible label.
+ */
+export function odometer(el, value, { label } = {}) {
+  const str = String(value);
+  el.setAttribute('role', 'img');
+  el.setAttribute('aria-label', label ?? str);
+  if (!el.classList.contains('odo')) el.classList.add('odo');
+  const cols = [...el.children];
+  // Rebuild when the digit count changes; otherwise roll existing columns.
+  if (cols.length !== str.length) {
+    el.textContent = '';
+    [...str].forEach((ch, i) => {
+      if (!/\d/.test(ch)) { const s = document.createElement('span'); s.className = 'odo-sep'; s.textContent = ch; s.setAttribute('aria-hidden', 'true'); el.append(s); return; }
+      const col = document.createElement('span');
+      col.className = 'odo-col'; col.setAttribute('aria-hidden', 'true');
+      col.style.setProperty('--i', str.length - 1 - i);
+      for (let d = 0; d <= 9; d++) { const s = document.createElement('span'); s.textContent = d; col.append(s); }
+      // start from 0 so the first render rolls up
+      col.style.transform = 'translateY(0)';
+      el.append(col);
+    });
+  }
+  const set = () => [...el.children].forEach((col, i) => {
+    if (col.classList.contains('odo-col')) col.style.transform = `translateY(${-Number(str[i])}em)`;
+  });
+  if (reduced()) { [...el.children].forEach(c => c.style.transition = 'none'); set(); return; }
+  [...el.children].forEach(c => c.style.transition = '');
+  requestAnimationFrame(() => requestAnimationFrame(set));
+}
+
+/* ------------------------------------------------------------------ */
+/* Progress                                                             */
+/* ------------------------------------------------------------------ */
+
+/** Set a .track .fill (or any .fill) to p in 0..1. The spring does the rest. */
+export function fill(el, p) {
+  const f = el.classList.contains('fill') ? el : el.querySelector('.fill');
+  f.style.setProperty('--p', Math.max(0, Math.min(1, p)));
+  el.setAttribute?.('aria-valuenow', Math.round(p * 100));
+}
+
+/**
+ * Round progress: n segments; states is an array of 'done' | 'miss' | 'now' | ''.
+ * Builds the segments on first call.
+ */
+export function segments(el, states) {
+  if (el.children.length !== states.length) {
+    el.textContent = '';
+    el.style.setProperty('--n', states.length);
+    states.forEach(() => el.append(document.createElement('i')));
+  }
+  [...el.children].forEach((seg, i) => {
+    seg.className = states[i] ? `is-${states[i]}` : '';
+  });
+  const done = states.filter(s => s === 'done' || s === 'miss').length;
+  el.setAttribute('role', 'progressbar');
+  el.setAttribute('aria-valuemin', 0); el.setAttribute('aria-valuemax', states.length); el.setAttribute('aria-valuenow', done);
+}
+
+/**
+ * Readiness ring. arcs: [{ value: 0..1, today: 0..1 (optional gain shown in accent) }].
+ * Draws one arc per module with gaps between, all from one SVG. Returns an update(arcs) function.
+ */
+export function ring(el, arcs, { stroke = 5.5, gapDeg = 5 } = {}) {
+  const ns = 'http://www.w3.org/2000/svg';
+  const r = 50 - stroke / 2, C = 2 * Math.PI * r;
+  const n = arcs.length, gap = n > 1 ? (gapDeg / 360) * C : 0, seg = C / n - gap;
+  const inner = seg;                                   // butt caps: arcs end exactly at the gaps
+  const start = i => -(i * (seg + gap));
+  let svg = el.querySelector('svg');
+  if (!svg) {
+    svg = document.createElementNS(ns, 'svg');
+    svg.setAttribute('viewBox', '0 0 100 100'); svg.setAttribute('aria-hidden', 'true');
+    arcs.forEach((_, i) => {
+      for (const cls of ['ring-track', 'ring-arc today', 'ring-arc main']) {
+        const c = document.createElementNS(ns, 'circle');
+        c.setAttribute('cx', 50); c.setAttribute('cy', 50); c.setAttribute('r', r);
+        c.setAttribute('fill', 'none'); c.setAttribute('stroke-width', stroke); c.setAttribute('stroke-linecap', 'butt');
+        c.setAttribute('class', cls);
+        c.style.strokeDashoffset = start(i);
+        c.style.strokeDasharray = cls === 'ring-track' ? `${inner} ${C}` : `0 ${C}`;
+        if (cls !== 'ring-track') c.style.opacity = 0;
+        svg.append(c);
+      }
+    });
+    el.prepend(svg);
+  }
+  const clamp = v => Math.max(0, Math.min(1, v || 0));
+  const update = next => {
+    const circles = [...svg.querySelectorAll('circle')];
+    next.forEach((a, i) => {
+      const today = circles[i * 3 + 1], main = circles[i * 3 + 2];
+      const total = clamp(a.value), base = clamp(a.value - (a.today || 0));
+      main.style.strokeDasharray = `${base * inner} ${C}`; main.style.opacity = base > 0 ? 1 : 0;
+      today.style.strokeDasharray = `${total * inner} ${C}`; today.style.opacity = total > base ? 1 : 0;
+    });
+  };
+  if (reduced()) update(arcs); else requestAnimationFrame(() => requestAnimationFrame(() => update(arcs)));
+  return update;
+}
+
+/* ------------------------------------------------------------------ */
+/* Segmented control thumb                                              */
+/* ------------------------------------------------------------------ */
+
+/** Wire a .seg: moves the thumb under the pressed button. Calls onChange(value). */
+export function segmented(el, onChange) {
+  let thumb = el.querySelector('.seg-thumb');
+  if (!thumb) { thumb = document.createElement('span'); thumb.className = 'seg-thumb'; el.prepend(thumb); }
+  const place = btn => { thumb.style.width = btn.offsetWidth + 'px'; thumb.style.transform = `translateX(${btn.offsetLeft}px)`; };
+  const btns = [...el.querySelectorAll('button')];
+  btns.forEach(b => b.addEventListener('click', () => {
+    btns.forEach(x => x.setAttribute('aria-pressed', x === b));
+    place(b); onChange?.(b.value || b.textContent.trim());
+  }));
+  const cur = btns.find(b => b.getAttribute('aria-pressed') === 'true') || btns[0];
+  thumb.style.transition = 'none'; place(cur); void thumb.offsetWidth; thumb.style.transition = '';
+  new ResizeObserver(() => place(btns.find(b => b.getAttribute('aria-pressed') === 'true') || btns[0])).observe(el);
+}
+
+/* ------------------------------------------------------------------ */
+/* Toast                                                                */
+/* ------------------------------------------------------------------ */
+
+/** Show a toast with optional action. Returns a close function. Auto-closes after `ms`. */
+export function toast(text, { action, onAction, ms = 4000 } = {}) {
+  const t = document.createElement('div');
+  t.className = 'toast'; t.setAttribute('role', 'status');
+  t.append(Object.assign(document.createElement('span'), { textContent: text }));
+  if (action) {
+    const b = Object.assign(document.createElement('button'), { className: 'btn pressable', textContent: action });
+    b.addEventListener('click', () => { onAction?.(); close(); });
+    t.append(b);
+  }
+  document.body.append(t);
+  requestAnimationFrame(() => requestAnimationFrame(() => t.classList.add('is-in')));
+  let timer = setTimeout(close, ms);
+  function close() {
+    clearTimeout(timer); t.classList.remove('is-in');
+    setTimeout(() => t.remove(), reduced() ? 0 : 300);
+  }
+  return close;
+}
+
+export { wait, raf };
