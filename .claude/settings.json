@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ \"$CLAUDE_CODE_REMOTE\" = \"true\" ] || exit 0; cd \"$CLAUDE_PROJECT_DIR\" && npm ci --silent && sh tools/install-hooks.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
