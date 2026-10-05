@@ -782,7 +782,10 @@ function restCheck(input, base, accepted, opts = {}) {
   /** @type {AlignOpts} */ const aopts = { anywhere: false, typos, loose: null, x, slotMax };
   const first = toks[0], last = toks[toks.length - 1];
   const fits = (/** @type {El | undefined} */ e, /** @type {Word} */ t, /** @type {boolean} */ atEnd) => !e || e.t !== 'w' || !!wcost(e, t, typos, null, x) || e.alts.some(a => a.n && (atEnd ? t.n.endsWith(a.n) : t.n.startsWith(a.n)));
-  const text = (/** @type {{pre: string, mid: string, post: string, literal?: boolean}} */ c) => c.literal ? tidy(c.mid) : commasFrom(base, joinText(pre, renderIn(c.mid, base, opts.caseRef, !/\p{L}/u.test(pre)), post));
+  // the sentence shown: optional words only where the model or his answer has them (never "fest" neither wrote)
+  const known = new Set([...words(base), ...toks].map(w => w.n));
+  const shown = (/** @type {string} */ mid) => mid.replace(/\((?!\[)([^)]*)\)/g, (_, g) => words(g).every(w => known.has(w.n)) ? g : ' ');
+  const text = (/** @type {{pre: string, mid: string, post: string, literal?: boolean}} */ c) => c.literal ? tidy(c.mid) : punctFrom(base, commasFrom(base, joinText(pre, renderIn(shown(c.mid), base, opts.caseRef, !/\p{L}/u.test(pre)), post)));
   for (const c of cands) {
     const P = compile(c.pre, false, false).els, M = c.els || compile(c.mid, !c.literal, false).els, Q = compile(c.post, false, false).els;
     for (let s = 0; s <= P.length; s++) {
