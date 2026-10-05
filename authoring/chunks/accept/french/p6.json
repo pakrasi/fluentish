@@ -1,0 +1,611 @@
+{
+ "ENG_CHUNK_1391": {
+  "core_en": "Turn left at",
+  "accept": [
+   "tournez à gauche",
+   "tourne à gauche",
+   "prenez à gauche",
+   "prends à gauche"
+  ]
+ },
+ "ENG_CHUNK_1392": {
+  "core_en": "on the left",
+  "accept": [
+   "à gauche",
+   "sur la gauche",
+   "sur votre gauche",
+   "sur ta gauche",
+   "du côté gauche"
+  ]
+ },
+ "ENG_CHUNK_1393": {
+  "core_en": "next to",
+  "accept": [
+   "à côté de",
+   "juste à côté de",
+   "jouxte"
+  ]
+ },
+ "ENG_CHUNK_1394": {
+  "core_en": "A ticket to",
+  "accept": [
+   "un billet (de train) pour",
+   "un billet à destination de",
+   "un aller simple pour",
+   "un aller-retour pour",
+   "un aller pour"
+  ]
+ },
+ "ENG_CHUNK_1395": {
+  "core_en": "Which bus goes to",
+  "accept": [
+   "quel bus va",
+   "quel bus faut-il prendre pour",
+   "quel bus dois-je prendre pour",
+   "quel bus je dois prendre pour",
+   "quel bus dessert",
+   "quel autobus va"
+  ]
+ },
+ "ENG_CHUNK_1396": {
+  "core_en": "When is the next",
+  "accept": [
+   "le prochain [x] c'est à quelle heure",
+   "le prochain [x] c'est quand",
+   "à quelle heure part le prochain",
+   "à quelle heure est le prochain",
+   "à quelle heure passe le prochain",
+   "quand part le prochain",
+   "c'est quand le prochain",
+   "c'est à quelle heure le prochain"
+  ]
+ },
+ "ENG_CHUNK_1397": {
+  "core_en": "Can you take me to",
+  "accept": [
+   "vous pouvez m'emmener",
+   "pouvez-vous m'emmener",
+   "vous pourriez m'emmener",
+   "pourriez-vous m'emmener",
+   "tu peux m'emmener",
+   "vous pouvez me conduire",
+   "pouvez-vous me conduire",
+   "tu peux me conduire"
+  ]
+ },
+ "ENG_CHUNK_1398": {
+  "core_en": "It takes about",
+  "accept": [
+   "il faut (compter) environ",
+   "il faut à peu près",
+   "ça prend environ",
+   "ça prend à peu près",
+   "on met environ",
+   "il faut une vingtaine de",
+   "ça prend une vingtaine de"
+  ]
+ },
+ "ENG_CHUNK_1399": {
+  "core_en": "I'd like a room for",
+  "accept": [
+   "je voudrais (réserver) une chambre pour",
+   "j'aimerais (réserver) une chambre pour",
+   "je souhaiterais (réserver) une chambre pour",
+   "je souhaite (réserver) une chambre pour",
+   "il me faudrait une chambre pour"
+  ]
+ },
+ "ENG_CHUNK_1400": {
+  "core_en": "doesn't work",
+  "accept": [
+   "ne marche pas",
+   "ne fonctionne pas",
+   "est en panne"
+  ]
+ },
+ "ENG_CHUNK_1401": {
+  "core_en": "I have a cold",
+  "accept": [
+   "j'ai un rhume",
+   "j'ai attrapé un rhume",
+   "je suis enrhumé",
+   "je suis enrhumée"
+  ]
+ },
+ "ENG_CHUNK_1402": {
+  "core_en": "My head hurts",
+  "accept": [
+   "j'ai (très) mal à la tête",
+   "j'ai un mal de tête",
+   "j'ai des maux de tête"
+  ]
+ },
+ "ENG_CHUNK_1403": {
+  "core_en": "I need some medicine for",
+  "accept": [
+   "je voudrais quelque chose contre",
+   "je voudrais quelque chose pour",
+   "je voudrais un médicament contre",
+   "j'ai besoin d'un médicament contre",
+   "j'ai besoin d'un médicament pour",
+   "j'ai besoin de quelque chose contre",
+   "il me faut un médicament contre",
+   "il me faudrait quelque chose contre"
+  ]
+ },
+ "ENG_CHUNK_1404": {
+  "core_en": "I've lost my",
+  "accept": [
+   "j'ai perdu mon",
+   "j'ai égaré mon",
+   "je ne trouve plus mon"
+  ]
+ },
+ "ENG_CHUNK_1405": {
+  "core_en": "Someone stole my",
+  "accept": [
+   "on m'a volé",
+   "quelqu'un m'a volé",
+   "je me suis fait voler",
+   "on a volé mon",
+   "quelqu'un a volé mon"
+  ]
+ },
+ "ENG_CHUNK_1406": {
+  "core_en": "I like",
+  "accept": [
+   "j'aime (bien) la",
+   "j'aime (bien) les",
+   "j'adore la",
+   "j'adore les"
+  ]
+ },
+ "ENG_CHUNK_1407": {
+  "core_en": "I'm interested in",
+  "accept": [
+   "je m'intéresse (beaucoup) à",
+   "je m'intéresse (beaucoup) au",
+   "je m'intéresse (beaucoup) aux",
+   "ça m'intéresse",
+   "je suis passionné par",
+   "je suis passionnée par"
+  ]
+ },
+ "ENG_CHUNK_1408": {
+  "core_en": "I don't like",
+  "accept": [
+   "je n'aime pas (trop) le",
+   "je déteste le",
+   "je n'aime pas du tout le",
+   "je n'aime pas beaucoup le"
+  ]
+ },
+ "ENG_CHUNK_1409": {
+  "core_en": "Do you like",
+  "accept": [
+   "tu aimes",
+   "vous aimez",
+   "aimes-tu",
+   "aimez-vous"
+  ]
+ },
+ "ENG_CHUNK_1410": {
+  "core_en": "What's your favorite",
+  "accept": [
+   "c'est quoi ta [x] préférée",
+   "quelle est ta [x] préférée",
+   "quelle est votre [x] préférée",
+   "quelle est ta [x] favorite"
+  ]
+ },
+ "ENG_CHUNK_1411": {
+  "core_en": "My favorite color is",
+  "accept": [
+   "ma couleur préférée c'est",
+   "ma couleur préférée est",
+   "ma couleur favorite c'est",
+   "ma couleur favorite est",
+   "ce que je préfère comme couleur c'est"
+  ]
+ },
+ "ENG_CHUNK_1412": {
+  "core_en": "I want to",
+  "accept": [
+   "je veux",
+   "je voudrais",
+   "j'aimerais",
+   "j'ai envie de",
+   "j'ai envie d'aller"
+  ]
+ },
+ "ENG_CHUNK_1413": {
+  "core_en": "I'd like to",
+  "accept": [
+   "je voudrais",
+   "j'aimerais",
+   "je souhaiterais",
+   "je souhaite"
+  ]
+ },
+ "ENG_CHUNK_1414": {
+  "core_en": "I need to",
+  "accept": [
+   "je dois",
+   "j'ai besoin de",
+   "j'ai besoin d'aller",
+   "il faut que je",
+   "il faut que j'aille"
+  ]
+ },
+ "ENG_CHUNK_1415": {
+  "core_en": "I have to",
+  "accept": [
+   "je dois",
+   "il faut que je",
+   "je suis obligé de",
+   "je suis obligée de"
+  ]
+ },
+ "ENG_CHUNK_1416": {
+  "core_en": "I need",
+  "accept": [
+   "j'ai besoin d'un",
+   "il me faut",
+   "il me faudrait"
+  ]
+ },
+ "ENG_CHUNK_1417": {
+  "core_en": "Can I",
+  "accept": [
+   "je peux",
+   "puis-je",
+   "je pourrais",
+   "pourrais-je"
+  ]
+ },
+ "ENG_CHUNK_1418": {
+  "core_en": "Can you",
+  "accept": [
+   "vous pouvez",
+   "pouvez-vous",
+   "vous pourriez",
+   "pourriez-vous",
+   "tu peux",
+   "peux-tu",
+   "tu pourrais",
+   "pourrais-tu"
+  ]
+ },
+ "ENG_CHUNK_1419": {
+  "core_en": "I can't",
+  "accept": [
+   "je ne sais pas",
+   "je ne peux pas",
+   "je n'arrive pas à"
+  ]
+ },
+ "ENG_CHUNK_1420": {
+  "core_en": "Let's",
+  "accept": [
+   "on va",
+   "allons",
+   "si on allait",
+   "on pourrait aller"
+  ]
+ },
+ "ENG_CHUNK_1421": {
+  "core_en": "Don't forget to",
+  "accept": [
+   "n'oublie pas de",
+   "n'oubliez pas de",
+   "pense à",
+   "pensez à"
+  ]
+ },
+ "ENG_CHUNK_1422": {
+  "core_en": "How often do you",
+  "accept": [
+   "tous les combien",
+   "à quelle fréquence",
+   "combien de fois par semaine",
+   "combien de fois par mois"
+  ]
+ },
+ "ENG_CHUNK_1423": {
+  "core_en": "What do you usually do on",
+  "accept": [
+   "qu'est-ce que tu fais d'habitude",
+   "qu'est-ce que vous faites d'habitude",
+   "que fais-tu d'habitude",
+   "que faites-vous d'habitude",
+   "tu fais quoi d'habitude",
+   "qu'est-ce que tu fais en général",
+   "qu'est-ce que tu fais [x] d'habitude",
+   "d'habitude qu'est-ce que tu fais"
+  ]
+ },
+ "ENG_CHUNK_1424": {
+  "core_en": "What are you doing",
+  "accept": [
+   "tu fais quoi",
+   "qu'est-ce que tu fais",
+   "qu'est-ce que vous faites",
+   "vous faites quoi",
+   "que fais-tu",
+   "que faites-vous"
+  ]
+ },
+ "ENG_CHUNK_1425": {
+  "core_en": "I'm going to",
+  "accept": [
+   "je vais",
+   "je compte",
+   "j'ai prévu de"
+  ]
+ },
+ "ENG_CHUNK_1426": {
+  "core_en": "Let's meet at",
+  "accept": [
+   "on se retrouve au",
+   "on se retrouve à",
+   "retrouvons-nous au",
+   "retrouvons-nous à",
+   "on se donne rendez-vous au",
+   "on se donne rendez-vous à",
+   "on se voit au",
+   "on se voit à"
+  ]
+ },
+ "ENG_CHUNK_1427": {
+  "core_en": "Can we meet tomorrow instead",
+  "accept": [
+   "on peut plutôt se voir demain",
+   "on peut se voir plutôt demain",
+   "on peut se voir demain plutôt",
+   "on pourrait plutôt se voir demain",
+   "on pourrait se voir demain plutôt",
+   "on peut plutôt se retrouver demain",
+   "on peut se voir demain à la place",
+   "pouvons-nous plutôt nous voir demain"
+  ]
+ },
+ "ENG_CHUNK_1428": {
+  "core_en": "I can't come on",
+  "accept": [
+   "je ne peux pas venir",
+   "je ne pourrai pas venir",
+   "je ne vais pas pouvoir venir"
+  ]
+ },
+ "ENG_CHUNK_1429": {
+  "core_en": "I'm busy on",
+  "accept": [
+   "je suis pris",
+   "je suis prise",
+   "je suis déjà pris",
+   "je suis occupé",
+   "je suis occupée",
+   "je ne suis pas libre",
+   "je ne suis pas disponible"
+  ]
+ },
+ "ENG_CHUNK_1430": {
+  "core_en": "Is six o'clock okay for you",
+  "accept": [
+   "six heures ça te va",
+   "six heures ça vous va",
+   "six heures ça te convient",
+   "six heures ça vous convient",
+   "six heures c'est bon pour toi",
+   "six heures c'est bon pour vous",
+   "ça te va (à) six heures",
+   "ça vous va (à) six heures"
+  ]
+ },
+ "ENG_CHUNK_1431": {
+  "core_en": "I'll be ten minutes late",
+  "accept": [
+   "j'aurai dix minutes de retard",
+   "j'aurai 10 minutes de retard",
+   "je vais avoir dix minutes de retard",
+   "je serai en retard de dix minutes",
+   "je vais être en retard de dix minutes",
+   "j'ai dix minutes de retard",
+   "j'arriverai avec dix minutes de retard",
+   "je vais arriver avec dix minutes de retard"
+  ]
+ },
+ "ENG_CHUNK_1432": {
+  "core_en": "I'm feeling",
+  "accept": [
+   "je me sens",
+   "je suis",
+   "j'ai l'impression d'être"
+  ]
+ },
+ "ENG_CHUNK_1433": {
+  "core_en": "How's your",
+  "accept": [
+   "comment va ta",
+   "comment va votre",
+   "ta mère va bien",
+   "ta mère ça va"
+  ]
+ },
+ "ENG_CHUNK_1434": {
+  "core_en": "What's your new teacher like",
+  "accept": [
+   "il est comment ton nouveau prof",
+   "il est comment ton nouveau professeur",
+   "comment est ton nouveau prof",
+   "comment est ton nouveau professeur",
+   "comment est votre nouveau professeur",
+   "elle est comment ta nouvelle prof",
+   "comment est ta nouvelle prof",
+   "elle est comment ta nouvelle professeure"
+  ]
+ },
+ "ENG_CHUNK_1435": {
+  "core_en": "It's cold today",
+  "accept": [
+   "il fait (vraiment) froid aujourd'hui",
+   "aujourd'hui il fait froid",
+   "il fait (très) froid aujourd'hui"
+  ]
+ },
+ "ENG_CHUNK_1436": {
+  "core_en": "What's the weather like in",
+  "accept": [
+   "il fait quel temps",
+   "quel temps fait-il",
+   "quel temps il fait",
+   "quel temps est-ce qu'il fait",
+   "quelle est la météo"
+  ]
+ },
+ "ENG_CHUNK_1437": {
+  "core_en": "It's going to rain",
+  "accept": [
+   "il va pleuvoir",
+   "il pleuvra",
+   "ça va pleuvoir"
+  ]
+ },
+ "ENG_CHUNK_1438": {
+  "core_en": "Hello, this is",
+  "accept": [
+   "allô c'est",
+   "allô ici",
+   "bonjour c'est",
+   "bonjour ici",
+   "salut c'est",
+   "allô [x] à l'appareil",
+   "bonjour [x] à l'appareil"
+  ]
+ },
+ "ENG_CHUNK_1439": {
+  "core_en": "I'll call you",
+  "accept": [
+   "je t'appelle",
+   "je te rappelle",
+   "je vous appelle",
+   "je vous rappelle",
+   "je t'appellerai",
+   "je vous appellerai",
+   "je vais t'appeler",
+   "je te téléphone"
+  ]
+ },
+ "ENG_CHUNK_1440": {
+  "core_en": "Text me when",
+  "accept": [
+   "envoie-moi un texto quand",
+   "envoie-moi un sms quand",
+   "envoie-moi un message quand",
+   "envoyez-moi un texto quand",
+   "envoyez-moi un message quand",
+   "écris-moi quand",
+   "envoie-moi un texto dès que",
+   "envoie-moi un message dès que"
+  ]
+ },
+ "ENG_CHUNK_1441": {
+  "core_en": "I think",
+  "accept": [
+   "je pense que",
+   "je crois que",
+   "je trouve que",
+   "à mon avis",
+   "selon moi"
+  ]
+ },
+ "ENG_CHUNK_1442": {
+  "core_en": "I agree with",
+  "accept": [
+   "je suis (tout à fait) d'accord avec",
+   "je suis (entièrement) d'accord avec",
+   "je suis (complètement) d'accord avec",
+   "je partage ton avis",
+   "je partage votre avis"
+  ]
+ },
+ "ENG_CHUNK_1443": {
+  "core_en": "is better than",
+  "accept": [
+   "est meilleur que",
+   "c'est meilleur que",
+   "c'est mieux que",
+   "vaut mieux que"
+  ]
+ },
+ "ENG_CHUNK_1444": {
+  "core_en": "I've never been to",
+  "accept": [
+   "je ne suis jamais allé",
+   "je ne suis jamais allée",
+   "je n'ai jamais été"
+  ]
+ },
+ "ENG_CHUNK_1445": {
+  "core_en": "Last weekend, I",
+  "accept": [
+   "le week-end dernier j'ai",
+   "le week-end dernier je",
+   "le weekend dernier j'ai",
+   "le weekend dernier je",
+   "le week-end passé j'ai",
+   "le week-end passé je",
+   "la fin de semaine dernière j'ai",
+   "la fin de semaine dernière je"
+  ]
+ },
+ "ENG_CHUNK_1446": {
+  "core_en": "Did you have a good",
+  "accept": [
+   "tu as passé un bon",
+   "vous avez passé un bon",
+   "as-tu passé un bon",
+   "avez-vous passé un bon"
+  ]
+ },
+ "ENG_CHUNK_1447": {
+  "core_en": "How was your",
+  "accept": [
+   "c'était comment ton",
+   "c'était comment votre",
+   "comment était ton",
+   "comment s'est passé ton",
+   "comment c'était ton"
+  ]
+ },
+ "ENG_CHUNK_1448": {
+  "core_en": "I'm working at the moment",
+  "accept": [
+   "je suis en train de travailler",
+   "en ce moment je travaille",
+   "je travaille en ce moment",
+   "là je travaille",
+   "pour l'instant je travaille",
+   "je travaille pour le moment"
+  ]
+ },
+ "ENG_CHUNK_1449": {
+  "core_en": "I'm sorry, but",
+  "accept": [
+   "désolé mais",
+   "désolée mais",
+   "je regrette mais",
+   "navré mais",
+   "navrée mais"
+  ]
+ },
+ "ENG_CHUNK_1450": {
+  "core_en": "See you on",
+  "accept": [
+   "à lundi",
+   "on se voit lundi",
+   "on se revoit lundi",
+   "rendez-vous lundi"
+  ]
+ }
+}

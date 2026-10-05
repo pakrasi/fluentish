@@ -1,8 +1,9 @@
-/* French text rules: a STUB that tests/unit/lang-contract.test.mjs describes (Wave C2). Not a pack and not used by the
-   app; it fixes the tokenizer and normaliser contract before the French pilot (C3) builds the pack around it.
-   - Elision splits: l'ami → l' ami, qu'il → qu' il, jusqu'à → jusqu' à; a lexicalised apostrophe stays (aujourd'hui).
+/* French text rules: what a word is and which spellings are the same (the French pack, C3b; the contract is
+   tests/unit/lang-contract.test.mjs, written before the pack around this tokenizer).
+   - Elision splits: l'ami → l' ami, qu'il → qu' il, jusqu'à → jusqu' à; a lexicalised apostrophe stays (aujourd'hui,
+     quelqu'un, prud'homme).
    - Accents carry meaning (ou/où, a/à, du/dû): the key keeps them. Forgiving a dropped accent is the grader's slip
-     rule (grading.slips.marks with minimalPairs), never the key's.
+     rule (grading.slips.marks with minimalPairs, src/lang/fr/grading.js), never the key's.
    - œ and æ are typed oe and ae: the key folds them.
    - French typography puts a no-break space before ? ! : ; and inside « »: normalize makes it a plain space. */
 // @ts-check

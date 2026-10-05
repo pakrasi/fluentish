@@ -74,3 +74,5 @@ export const pack = () => activePack();
 export const packFor = id => registryPack(id);
 /** Every study language (full packs and metadata only), for the UI to list. */
 export const languages = () => LANGUAGES;
+/** A language's English name by its code or settings id ('fr' → 'French'); the code itself when unknown. @param {string} id */
+export const languageName = id => (LANGUAGES.find(l => l.id === id || l.legacyId === id) || { name: id }).name;

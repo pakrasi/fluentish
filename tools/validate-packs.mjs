@@ -13,7 +13,8 @@
 //   igloo.chunks.accept.<lang>    validate_accept.py        accepted answers, each example matches a pattern
 //   igloo.grammar.items.<lang>    validate_grammar.py       grammar items against their concepts
 // Per pack, its plugins (PLUGINS): the checks of content only that language has (German: the B1 trainer, the word
-// clusters, Word building, the Schreiben sources), and per exam its own validators (EXAM_PLUGINS).
+// clusters, Word building, the Schreiben sources; French: the course, tools/build-course.mjs), and per exam its own
+// validators (EXAM_PLUGINS).
 // tools/validate-content.mjs stays the schema gate for every file (schemas, sha256, packs, native review pairs).
 import { spawnSync } from 'node:child_process';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
@@ -33,6 +34,9 @@ export const PLUGINS = /** @type {Record<string, string[][]>} */ ({
     node('tools/build-wordbuild.mjs', '--check'),
     py('tools/build_schreiben.py', '--check'),
   ],
+  // the French course (C3b): its phrases, word list and accepted answers built from the reviewed parts, every model
+  // sentence graded right and no detector firing on one, with the app's matcher and the French pack
+  fr: [node('tools/build-course.mjs', 'fr', '--check')],
 });
 
 /** An exam's own validators (its test files' shapes are its own). exam id → commands. */

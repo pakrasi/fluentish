@@ -100,6 +100,8 @@ export function topicReady(s, it) {
 export function newOrder(s, pool, anyTopic = false) {
   const topics = s.data.topics;
   const tier = (/** @type {any} */ it) => {
+    // a course's own order (C3b: French phrases and words share one tier; their pool order interleaves them)
+    if (Number.isFinite(it.newTier)) return it.newTier;
     if (it.area === 'speaking' && it.group === 'S2' && it.star && it.kind === 'phrase') return 1;
     if (it.area === 'grammar' && topics.get(it.group)?.trap) return 2;
     if (it.area === 'speaking' && (it.group === 'S1' || it.group === 'S3') && it.star && it.kind === 'phrase') return 3;

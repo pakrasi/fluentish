@@ -389,12 +389,14 @@ function run(input, pat, opts) {
   return m;
 }
 
+// what ends the text before a word that starts a sentence (the pack's grading.sentenceStart, else this)
+const SENTENCE_START = /[.!?:]\s*["„“]?\s*$/;
 // B1: strict words in their exact case (focusMiss) and capitals against a reference (capMiss); sentence starts exempt,
 // and words the pack lets be written either way (de: recht/Recht haben)
 const eitherCase = (/** @type {Word[]} */ toks, /** @type {number} */ i) => L.grading.eitherCase(toks, i);
 /** @param {CheckResult & {focusMiss: Slip[], capMiss: Slip[]}} res @param {Alignment & {toks: Word[]}} m @param {string} inp @param {WordX} x @param {Map<string, string> | null | undefined} caseRef */
 function caseChecks(res, m, inp, x, caseRef) {
-  const initial = (/** @type {Word} */ t) => t.start === 0 || /[.!?:]\s*["„“]?\s*$/.test(inp.slice(0, t.start));
+  const initial = (/** @type {Word} */ t) => t.start === 0 || (L.grading.sentenceStart || SENTENCE_START).test(inp.slice(0, t.start));
   const used = new Set();
   for (const s of m.steps) (s.cs || []).forEach(c => {
     if (c.glued) return;

@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "lexicon@1",
-  "title": "German word list",
-  "description": "German words A1–C2 with article, plural, meanings, level, theme, frequency and an example. Ids are stable: progress is stored under them.",
+  "title": "Word list (one language)",
+  "description": "Words A1–C2 of one language with article, plural, meanings, level, theme, frequency and an example (German: igloo.words.de; French: igloo.words.fr, with gender, verb forms and auxiliary). Ids are stable: progress is stored under them.",
   "type": "array",
   "minItems": 1,
   "items": {
@@ -95,6 +95,39 @@
         "type": "string",
         "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
         "description": "Native review: the day it was reviewed (YYYY-MM-DD). Set together with reviewedBy."
+      },
+      "g": {
+        "enum": [
+          "m",
+          "f",
+          null
+        ],
+        "description": "Grammatical gender where the article hides it (French l'); French nouns carry it always."
+      },
+      "forms": {
+        "type": "string"
+      },
+      "aux": {
+        "enum": [
+          "avoir",
+          "être"
+        ],
+        "description": "French: the passé composé's auxiliary."
+      },
+      "pp": {
+        "type": "string",
+        "description": "French: the past participle."
+      },
+      "note": {
+        "type": "string"
+      },
+      "fem": {
+        "type": "string",
+        "description": "French adjectives: the feminine."
+      },
+      "before": {
+        "type": "boolean",
+        "description": "French adjectives: goes before the noun."
       }
     }
   }

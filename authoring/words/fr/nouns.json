@@ -1,0 +1,2584 @@
+[
+ {
+  "id": "homme.noun",
+  "w": "homme",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "hommes",
+  "en": [
+   "man"
+  ],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Cet homme travaille avec mon père.",
+  "exen": "This man works with my father."
+ },
+ {
+  "id": "femme.noun",
+  "w": "femme",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "femmes",
+  "en": [
+   "woman",
+   "wife"
+  ],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Sa femme est médecin à Lyon.",
+  "exen": "His wife is a doctor in Lyon."
+ },
+ {
+  "id": "ami.noun",
+  "w": "ami",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "amis",
+  "en": [
+   "friend"
+  ],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Je vais au cinéma avec un ami.",
+  "exen": "I'm going to the cinema with a friend."
+ },
+ {
+  "id": "père.noun",
+  "w": "père",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "pères",
+  "en": [
+   "father"
+  ],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Mon père fait la cuisine le dimanche.",
+  "exen": "My father cooks on Sundays."
+ },
+ {
+  "id": "mère.noun",
+  "w": "mère",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "mères",
+  "en": [
+   "mother"
+  ],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Ma mère habite près de Marseille.",
+  "exen": "My mother lives near Marseille."
+ },
+ {
+  "id": "frère.noun",
+  "w": "frère",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "frères",
+  "en": [
+   "brother"
+  ],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Mon frère a vingt ans.",
+  "exen": "My brother is twenty years old."
+ },
+ {
+  "id": "sœur.noun",
+  "w": "sœur",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "sœurs",
+  "en": [
+   "sister"
+  ],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Ma sœur étudie à Paris.",
+  "exen": "My sister studies in Paris."
+ },
+ {
+  "id": "fils.noun",
+  "w": "fils",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "fils",
+  "en": [
+   "son"
+  ],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Leur fils joue au foot le samedi.",
+  "exen": "Their son plays football on Saturdays."
+ },
+ {
+  "id": "fille.noun",
+  "w": "fille",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "filles",
+  "en": [
+   "daughter",
+   "girl"
+  ],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Notre fille commence l'école en septembre.",
+  "exen": "Our daughter starts school in September."
+ },
+ {
+  "id": "monsieur.noun",
+  "w": "monsieur",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "messieurs",
+  "en": [
+   "gentleman",
+   "sir"
+  ],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Un monsieur vous attend à l'accueil.",
+  "exen": "A gentleman is waiting for you at reception."
+ },
+ {
+  "id": "voisin.noun",
+  "w": "voisin",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "voisins",
+  "en": [
+   "neighbour"
+  ],
+  "level": "A2",
+  "theme": "people",
+  "ex": "Notre voisin est très sympathique.",
+  "exen": "Our neighbour is very friendly."
+ },
+ {
+  "id": "famille.noun",
+  "w": "famille",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "familles",
+  "en": [
+   "family"
+  ],
+  "level": "A1",
+  "theme": "people",
+  "ex": "Je passe Noël en famille.",
+  "exen": "I spend Christmas with my family."
+ },
+ {
+  "id": "maison.noun",
+  "w": "maison",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "maisons",
+  "en": [
+   "house",
+   "home"
+  ],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Nous avons une petite maison à la campagne.",
+  "exen": "We have a small house in the country."
+ },
+ {
+  "id": "appartement.noun",
+  "w": "appartement",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "appartements",
+  "en": [
+   "flat",
+   "apartment"
+  ],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Notre appartement est au troisième étage.",
+  "exen": "Our flat is on the third floor."
+ },
+ {
+  "id": "chambre.noun",
+  "w": "chambre",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "chambres",
+  "en": [
+   "bedroom",
+   "room"
+  ],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Ma chambre donne sur le jardin.",
+  "exen": "My bedroom looks onto the garden."
+ },
+ {
+  "id": "cuisine.noun",
+  "w": "cuisine",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "cuisines",
+  "en": [
+   "kitchen",
+   "cooking"
+  ],
+  "level": "A1",
+  "theme": "home",
+  "ex": "On mange souvent dans la cuisine.",
+  "exen": "We often eat in the kitchen."
+ },
+ {
+  "id": "salle de bains.noun",
+  "w": "salle de bains",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "salles de bains",
+  "en": [
+   "bathroom"
+  ],
+  "level": "A1",
+  "theme": "home",
+  "ex": "La salle de bains est à côté.",
+  "exen": "The bathroom is next door."
+ },
+ {
+  "id": "porte.noun",
+  "w": "porte",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "portes",
+  "en": [
+   "door"
+  ],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Ferme la porte, s'il te plaît.",
+  "exen": "Close the door, please."
+ },
+ {
+  "id": "fenêtre.noun",
+  "w": "fenêtre",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "fenêtres",
+  "en": [
+   "window"
+  ],
+  "level": "A1",
+  "theme": "home",
+  "ex": "J'ouvre la fenêtre le matin.",
+  "exen": "I open the window in the morning."
+ },
+ {
+  "id": "lit.noun",
+  "w": "lit",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "lits",
+  "en": [
+   "bed"
+  ],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Le lit est trop petit pour deux.",
+  "exen": "The bed is too small for two."
+ },
+ {
+  "id": "table.noun",
+  "w": "table",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "tables",
+  "en": [
+   "table"
+  ],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Les clés sont sur la table.",
+  "exen": "The keys are on the table."
+ },
+ {
+  "id": "clé.noun",
+  "w": "clé",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "clés",
+  "en": [
+   "key"
+  ],
+  "level": "A1",
+  "theme": "home",
+  "ex": "J'ai perdu la clé de la voiture.",
+  "exen": "I lost the car key."
+ },
+ {
+  "id": "escalier.noun",
+  "w": "escalier",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "escaliers",
+  "en": [
+   "stairs",
+   "staircase"
+  ],
+  "level": "A2",
+  "theme": "home",
+  "ex": "L'ascenseur est en panne, prenez l'escalier.",
+  "exen": "The lift is broken, take the stairs."
+ },
+ {
+  "id": "étage.noun",
+  "w": "étage",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "étages",
+  "en": [
+   "floor",
+   "storey"
+  ],
+  "level": "A2",
+  "theme": "home",
+  "ex": "Nous habitons au deuxième étage de l'immeuble.",
+  "exen": "We live on the second floor of the building."
+ },
+ {
+  "id": "armoire.noun",
+  "w": "armoire",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "armoires",
+  "en": [
+   "wardrobe"
+  ],
+  "level": "A2",
+  "theme": "home",
+  "ex": "Mes vêtements sont dans l'armoire.",
+  "exen": "My clothes are in the wardrobe."
+ },
+ {
+  "id": "jardin.noun",
+  "w": "jardin",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "jardins",
+  "en": [
+   "garden"
+  ],
+  "level": "A1",
+  "theme": "home",
+  "ex": "Les enfants jouent dans le jardin.",
+  "exen": "The children are playing in the garden."
+ },
+ {
+  "id": "pain.noun",
+  "w": "pain",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "pains",
+  "en": [
+   "bread"
+  ],
+  "level": "A1",
+  "theme": "food",
+  "ex": "J'achète du pain tous les matins.",
+  "exen": "I buy bread every morning."
+ },
+ {
+  "id": "lait.noun",
+  "w": "lait",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "laits",
+  "en": [
+   "milk"
+  ],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Il boit un verre de lait.",
+  "exen": "He drinks a glass of milk."
+ },
+ {
+  "id": "eau.noun",
+  "w": "eau",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "eaux",
+  "en": [
+   "water"
+  ],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Je voudrais une bouteille d'eau.",
+  "exen": "I'd like a bottle of water."
+ },
+ {
+  "id": "vin.noun",
+  "w": "vin",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "vins",
+  "en": [
+   "wine"
+  ],
+  "level": "A1",
+  "theme": "food",
+  "ex": "On prend une bouteille de vin rouge ?",
+  "exen": "Shall we get a bottle of red wine?"
+ },
+ {
+  "id": "café.noun",
+  "w": "café",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "cafés",
+  "en": [
+   "coffee",
+   "café"
+  ],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Je bois un café après le déjeuner.",
+  "exen": "I drink a coffee after lunch."
+ },
+ {
+  "id": "poisson.noun",
+  "w": "poisson",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "poissons",
+  "en": [
+   "fish"
+  ],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Le vendredi, nous mangeons du poisson.",
+  "exen": "On Fridays we eat fish."
+ },
+ {
+  "id": "pomme.noun",
+  "w": "pomme",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "pommes",
+  "en": [
+   "apple"
+  ],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Je mange une pomme chaque jour.",
+  "exen": "I eat an apple every day."
+ },
+ {
+  "id": "fromage.noun",
+  "w": "fromage",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "fromages",
+  "en": [
+   "cheese"
+  ],
+  "level": "A1",
+  "theme": "food",
+  "ex": "La France produit beaucoup de fromages.",
+  "exen": "France produces a lot of cheeses."
+ },
+ {
+  "id": "œuf.noun",
+  "w": "œuf",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "œufs",
+  "en": [
+   "egg"
+  ],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Il faut trois œufs pour ce gâteau.",
+  "exen": "You need three eggs for this cake."
+ },
+ {
+  "id": "légume.noun",
+  "w": "légume",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "légumes",
+  "en": [
+   "vegetable"
+  ],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Mange tes légumes, c'est bon pour toi.",
+  "exen": "Eat your vegetables, they're good for you."
+ },
+ {
+  "id": "fruit.noun",
+  "w": "fruit",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "fruits",
+  "en": [
+   "fruit"
+  ],
+  "level": "A1",
+  "theme": "food",
+  "ex": "J'achète des fruits au marché.",
+  "exen": "I buy fruit at the market."
+ },
+ {
+  "id": "sucre.noun",
+  "w": "sucre",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "sucres",
+  "en": [
+   "sugar"
+  ],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Je prends mon café sans sucre.",
+  "exen": "I take my coffee without sugar."
+ },
+ {
+  "id": "repas.noun",
+  "w": "repas",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "repas",
+  "en": [
+   "meal"
+  ],
+  "level": "A2",
+  "theme": "food",
+  "ex": "Le repas était vraiment délicieux.",
+  "exen": "The meal was really delicious."
+ },
+ {
+  "id": "petit-déjeuner.noun",
+  "w": "petit-déjeuner",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "petits-déjeuners",
+  "en": [
+   "breakfast"
+  ],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Le petit-déjeuner est servi à huit heures.",
+  "exen": "Breakfast is served at eight o'clock."
+ },
+ {
+  "id": "assiette.noun",
+  "w": "assiette",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "assiettes",
+  "en": [
+   "plate"
+  ],
+  "level": "A2",
+  "theme": "food",
+  "ex": "Mets les assiettes sur la table.",
+  "exen": "Put the plates on the table."
+ },
+ {
+  "id": "verre.noun",
+  "w": "verre",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "verres",
+  "en": [
+   "glass"
+  ],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Je voudrais un verre d'eau.",
+  "exen": "I'd like a glass of water."
+ },
+ {
+  "id": "huile.noun",
+  "w": "huile",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "huiles",
+  "en": [
+   "oil"
+  ],
+  "level": "A2",
+  "theme": "food",
+  "ex": "Ajoute un peu d'huile d'olive.",
+  "exen": "Add a little olive oil."
+ },
+ {
+  "id": "haricot.noun",
+  "w": "haricot",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "haricots",
+  "en": [
+   "bean"
+  ],
+  "level": "A2",
+  "theme": "food",
+  "ex": "J'ai acheté des haricots verts.",
+  "exen": "I bought some green beans."
+ },
+ {
+  "id": "orange.noun",
+  "w": "orange",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "oranges",
+  "en": [
+   "orange (fruit)"
+  ],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Je bois un jus d'orange le matin.",
+  "exen": "I drink orange juice in the morning."
+ },
+ {
+  "id": "gâteau.noun",
+  "w": "gâteau",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "gâteaux",
+  "en": [
+   "cake"
+  ],
+  "level": "A1",
+  "theme": "food",
+  "ex": "Ma grand-mère fait un gâteau au chocolat.",
+  "exen": "My grandmother is making a chocolate cake."
+ },
+ {
+  "id": "addition.noun",
+  "w": "addition",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "additions",
+  "en": [
+   "bill",
+   "check"
+  ],
+  "level": "A1",
+  "theme": "food",
+  "ex": "L'addition, s'il vous plaît !",
+  "exen": "The bill, please!"
+ },
+ {
+  "id": "tête.noun",
+  "w": "tête",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "têtes",
+  "en": [
+   "head"
+  ],
+  "level": "A1",
+  "theme": "body",
+  "ex": "J'ai mal à la tête.",
+  "exen": "I have a headache."
+ },
+ {
+  "id": "main.noun",
+  "w": "main",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "mains",
+  "en": [
+   "hand"
+  ],
+  "level": "A1",
+  "theme": "body",
+  "ex": "Lave-toi les mains avant de manger.",
+  "exen": "Wash your hands before eating."
+ },
+ {
+  "id": "bras.noun",
+  "w": "bras",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "bras",
+  "en": [
+   "arm"
+  ],
+  "level": "A1",
+  "theme": "body",
+  "ex": "Il s'est cassé le bras au ski.",
+  "exen": "He broke his arm skiing."
+ },
+ {
+  "id": "pied.noun",
+  "w": "pied",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "pieds",
+  "en": [
+   "foot"
+  ],
+  "level": "A1",
+  "theme": "body",
+  "ex": "On y va à pied ?",
+  "exen": "Shall we go on foot?"
+ },
+ {
+  "id": "œil.noun",
+  "w": "œil",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "yeux",
+  "en": [
+   "eye"
+  ],
+  "level": "A1",
+  "theme": "body",
+  "ex": "J'ai une poussière dans l'œil.",
+  "exen": "I've got a speck of dust in my eye."
+ },
+ {
+  "id": "oreille.noun",
+  "w": "oreille",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "oreilles",
+  "en": [
+   "ear"
+  ],
+  "level": "A2",
+  "theme": "body",
+  "ex": "Il a mal à l'oreille.",
+  "exen": "He has an earache."
+ },
+ {
+  "id": "nez.noun",
+  "w": "nez",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "nez",
+  "en": [
+   "nose"
+  ],
+  "level": "A1",
+  "theme": "body",
+  "ex": "J'ai le nez qui coule.",
+  "exen": "My nose is running."
+ },
+ {
+  "id": "dos.noun",
+  "w": "dos",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "dos",
+  "en": [
+   "back"
+  ],
+  "level": "A2",
+  "theme": "body",
+  "ex": "J'ai mal au dos depuis hier.",
+  "exen": "My back has been hurting since yesterday."
+ },
+ {
+  "id": "cœur.noun",
+  "w": "cœur",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "cœurs",
+  "en": [
+   "heart"
+  ],
+  "level": "A2",
+  "theme": "body",
+  "ex": "Son cœur bat très vite.",
+  "exen": "His heart is beating very fast."
+ },
+ {
+  "id": "cheveu.noun",
+  "w": "cheveu",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "cheveux",
+  "en": [
+   "hair (a single one)"
+  ],
+  "level": "A1",
+  "theme": "body",
+  "ex": "Elle a les cheveux longs.",
+  "exen": "She has long hair."
+ },
+ {
+  "id": "genou.noun",
+  "w": "genou",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "genoux",
+  "en": [
+   "knee"
+  ],
+  "level": "A2",
+  "theme": "body",
+  "ex": "Il s'est fait mal au genou.",
+  "exen": "He hurt his knee."
+ },
+ {
+  "id": "épaule.noun",
+  "w": "épaule",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "épaules",
+  "en": [
+   "shoulder"
+  ],
+  "level": "A2",
+  "theme": "body",
+  "ex": "J'ai mal à l'épaule droite.",
+  "exen": "My right shoulder hurts."
+ },
+ {
+  "id": "voix.noun",
+  "w": "voix",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "voix",
+  "en": [
+   "voice"
+  ],
+  "level": "A2",
+  "theme": "body",
+  "ex": "Elle a une très belle voix.",
+  "exen": "She has a very beautiful voice."
+ },
+ {
+  "id": "vêtement.noun",
+  "w": "vêtement",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "vêtements",
+  "en": [
+   "piece of clothing",
+   "garment"
+  ],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "J'ai acheté des vêtements pour l'hiver.",
+  "exen": "I bought clothes for the winter."
+ },
+ {
+  "id": "chemise.noun",
+  "w": "chemise",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "chemises",
+  "en": [
+   "shirt"
+  ],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Il porte une chemise blanche.",
+  "exen": "He is wearing a white shirt."
+ },
+ {
+  "id": "pantalon.noun",
+  "w": "pantalon",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "pantalons",
+  "en": [
+   "trousers",
+   "pants"
+  ],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Ce pantalon est trop long.",
+  "exen": "These trousers are too long."
+ },
+ {
+  "id": "chaussure.noun",
+  "w": "chaussure",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "chaussures",
+  "en": [
+   "shoe"
+  ],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Enlève tes chaussures, s'il te plaît.",
+  "exen": "Take your shoes off, please."
+ },
+ {
+  "id": "manteau.noun",
+  "w": "manteau",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "manteaux",
+  "en": [
+   "coat"
+  ],
+  "level": "A1",
+  "theme": "clothes",
+  "ex": "Prends ton manteau, il fait froid.",
+  "exen": "Take your coat, it's cold."
+ },
+ {
+  "id": "argent.noun",
+  "w": "argent",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "argents",
+  "en": [
+   "money",
+   "silver"
+  ],
+  "level": "A1",
+  "theme": "money",
+  "ex": "Je n'ai plus d'argent sur moi.",
+  "exen": "I don't have any money on me."
+ },
+ {
+  "id": "prix.noun",
+  "w": "prix",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "prix",
+  "en": [
+   "price",
+   "prize"
+  ],
+  "level": "A1",
+  "theme": "money",
+  "ex": "Quel est le prix de ce livre ?",
+  "exen": "What is the price of this book?"
+ },
+ {
+  "id": "euro.noun",
+  "w": "euro",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "euros",
+  "en": [
+   "euro"
+  ],
+  "level": "A1",
+  "theme": "money",
+  "ex": "Ce billet de train coûte dix euros.",
+  "exen": "This train ticket costs ten euros."
+ },
+ {
+  "id": "salaire.noun",
+  "w": "salaire",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "salaires",
+  "en": [
+   "salary",
+   "wage"
+  ],
+  "level": "B1",
+  "theme": "money",
+  "ex": "Son salaire a augmenté cette année.",
+  "exen": "His salary went up this year."
+ },
+ {
+  "id": "heure.noun",
+  "w": "heure",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "heures",
+  "en": [
+   "hour",
+   "time (o'clock)"
+  ],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Le train part dans une heure.",
+  "exen": "The train leaves in an hour."
+ },
+ {
+  "id": "jour.noun",
+  "w": "jour",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "jours",
+  "en": [
+   "day"
+  ],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Je travaille cinq jours par semaine.",
+  "exen": "I work five days a week."
+ },
+ {
+  "id": "semaine.noun",
+  "w": "semaine",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "semaines",
+  "en": [
+   "week"
+  ],
+  "level": "A1",
+  "theme": "time",
+  "ex": "On se voit la semaine prochaine.",
+  "exen": "See you next week."
+ },
+ {
+  "id": "mois.noun",
+  "w": "mois",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "mois",
+  "en": [
+   "month"
+  ],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Il part en vacances le mois prochain.",
+  "exen": "He's going on holiday next month."
+ },
+ {
+  "id": "année.noun",
+  "w": "année",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "années",
+  "en": [
+   "year"
+  ],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Bonne année à toute la famille !",
+  "exen": "Happy New Year to the whole family!"
+ },
+ {
+  "id": "an.noun",
+  "w": "an",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "ans",
+  "en": [
+   "year"
+  ],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Mon fils a dix ans.",
+  "exen": "My son is ten years old."
+ },
+ {
+  "id": "été.noun",
+  "w": "été",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "étés",
+  "en": [
+   "summer"
+  ],
+  "level": "A1",
+  "theme": "time",
+  "ex": "En été, nous allons à la mer.",
+  "exen": "In summer we go to the seaside."
+ },
+ {
+  "id": "hiver.noun",
+  "w": "hiver",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "hivers",
+  "en": [
+   "winter"
+  ],
+  "level": "A1",
+  "theme": "time",
+  "ex": "L'hiver est très froid ici.",
+  "exen": "Winter is very cold here."
+ },
+ {
+  "id": "automne.noun",
+  "w": "automne",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "automnes",
+  "en": [
+   "autumn",
+   "fall"
+  ],
+  "level": "A1",
+  "theme": "time",
+  "ex": "En automne, les feuilles tombent.",
+  "exen": "In autumn the leaves fall."
+ },
+ {
+  "id": "printemps.noun",
+  "w": "printemps",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "printemps",
+  "en": [
+   "spring"
+  ],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Au printemps, le jardin est magnifique.",
+  "exen": "In spring the garden is beautiful."
+ },
+ {
+  "id": "matin.noun",
+  "w": "matin",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "matins",
+  "en": [
+   "morning"
+  ],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Je me lève à sept heures du matin.",
+  "exen": "I get up at seven in the morning."
+ },
+ {
+  "id": "nuit.noun",
+  "w": "nuit",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "nuits",
+  "en": [
+   "night"
+  ],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Bonne nuit, dors bien !",
+  "exen": "Good night, sleep well!"
+ },
+ {
+  "id": "fin.noun",
+  "w": "fin",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "fins",
+  "en": [
+   "end"
+  ],
+  "level": "A2",
+  "theme": "time",
+  "ex": "Je suis en vacances à la fin du mois.",
+  "exen": "I'm on holiday at the end of the month."
+ },
+ {
+  "id": "anniversaire.noun",
+  "w": "anniversaire",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "anniversaires",
+  "en": [
+   "birthday",
+   "anniversary"
+  ],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Joyeux anniversaire, ma chérie !",
+  "exen": "Happy birthday, darling!"
+ },
+ {
+  "id": "fois.noun",
+  "w": "fois",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "fois",
+  "en": [
+   "time (occasion)"
+  ],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Je suis allé à Rome deux fois.",
+  "exen": "I've been to Rome twice."
+ },
+ {
+  "id": "temps.noun",
+  "w": "temps",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "temps",
+  "en": [
+   "time",
+   "weather"
+  ],
+  "level": "A1",
+  "theme": "time",
+  "ex": "Je n'ai pas le temps aujourd'hui.",
+  "exen": "I don't have time today."
+ },
+ {
+  "id": "âge.noun",
+  "w": "âge",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "âges",
+  "en": [
+   "age"
+  ],
+  "level": "A2",
+  "theme": "time",
+  "ex": "Quel âge a ton petit frère ?",
+  "exen": "How old is your little brother?"
+ },
+ {
+  "id": "ville.noun",
+  "w": "ville",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "villes",
+  "en": [
+   "town",
+   "city"
+  ],
+  "level": "A1",
+  "theme": "city",
+  "ex": "Lyon est une grande ville.",
+  "exen": "Lyon is a big city."
+ },
+ {
+  "id": "rue.noun",
+  "w": "rue",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "rues",
+  "en": [
+   "street"
+  ],
+  "level": "A1",
+  "theme": "city",
+  "ex": "J'habite dans une rue calme.",
+  "exen": "I live in a quiet street."
+ },
+ {
+  "id": "hôtel.noun",
+  "w": "hôtel",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "hôtels",
+  "en": [
+   "hotel"
+  ],
+  "level": "A1",
+  "theme": "city",
+  "ex": "L'hôtel est près de la gare.",
+  "exen": "The hotel is near the station."
+ },
+ {
+  "id": "hôpital.noun",
+  "w": "hôpital",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "hôpitaux",
+  "en": [
+   "hospital"
+  ],
+  "level": "A1",
+  "theme": "city",
+  "ex": "Elle travaille à l'hôpital la nuit.",
+  "exen": "She works at the hospital at night."
+ },
+ {
+  "id": "église.noun",
+  "w": "église",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "églises",
+  "en": [
+   "church"
+  ],
+  "level": "A2",
+  "theme": "city",
+  "ex": "L'église du village est très ancienne.",
+  "exen": "The village church is very old."
+ },
+ {
+  "id": "musée.noun",
+  "w": "musée",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "musées",
+  "en": [
+   "museum"
+  ],
+  "level": "A1",
+  "theme": "city",
+  "ex": "Le musée est fermé le mardi.",
+  "exen": "The museum is closed on Tuesdays."
+ },
+ {
+  "id": "gare.noun",
+  "w": "gare",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "gares",
+  "en": [
+   "train station"
+  ],
+  "level": "A1",
+  "theme": "city",
+  "ex": "Le taxi nous attend devant la gare.",
+  "exen": "The taxi is waiting for us outside the station."
+ },
+ {
+  "id": "marché.noun",
+  "w": "marché",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "marchés",
+  "en": [
+   "market"
+  ],
+  "level": "A1",
+  "theme": "city",
+  "ex": "Le samedi, je fais le marché.",
+  "exen": "On Saturdays I go to the market."
+ },
+ {
+  "id": "pharmacie.noun",
+  "w": "pharmacie",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "pharmacies",
+  "en": [
+   "chemist's",
+   "pharmacy"
+  ],
+  "level": "A1",
+  "theme": "city",
+  "ex": "La pharmacie est en face de la poste.",
+  "exen": "The pharmacy is opposite the post office."
+ },
+ {
+  "id": "quartier.noun",
+  "w": "quartier",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "quartiers",
+  "en": [
+   "neighbourhood",
+   "district"
+  ],
+  "level": "A2",
+  "theme": "city",
+  "ex": "Notre quartier est très animé le soir.",
+  "exen": "Our neighbourhood is very lively in the evening."
+ },
+ {
+  "id": "lycée.noun",
+  "w": "lycée",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "lycées",
+  "en": [
+   "secondary school",
+   "high school"
+  ],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Ma fille entre au lycée cette année.",
+  "exen": "My daughter starts high school this year."
+ },
+ {
+  "id": "voyage.noun",
+  "w": "voyage",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "voyages",
+  "en": [
+   "trip",
+   "journey"
+  ],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Bon voyage et à bientôt !",
+  "exen": "Have a good trip and see you soon!"
+ },
+ {
+  "id": "avion.noun",
+  "w": "avion",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "avions",
+  "en": [
+   "plane"
+  ],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Nous partons en avion demain.",
+  "exen": "We're leaving by plane tomorrow."
+ },
+ {
+  "id": "aéroport.noun",
+  "w": "aéroport",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "aéroports",
+  "en": [
+   "airport"
+  ],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Je viens te chercher à l'aéroport demain.",
+  "exen": "I'll come and pick you up at the airport tomorrow."
+ },
+ {
+  "id": "voiture.noun",
+  "w": "voiture",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "voitures",
+  "en": [
+   "car"
+  ],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Il va au travail en voiture.",
+  "exen": "He goes to work by car."
+ },
+ {
+  "id": "billet.noun",
+  "w": "billet",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "billets",
+  "en": [
+   "ticket",
+   "banknote"
+  ],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "J'ai acheté deux billets pour Nice.",
+  "exen": "I bought two tickets to Nice."
+ },
+ {
+  "id": "plage.noun",
+  "w": "plage",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "plages",
+  "en": [
+   "beach"
+  ],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Les enfants jouent sur la plage.",
+  "exen": "The children are playing on the beach."
+ },
+ {
+  "id": "mer.noun",
+  "w": "mer",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "mers",
+  "en": [
+   "sea"
+  ],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Nous passons l'été au bord de la mer.",
+  "exen": "We spend the summer by the sea."
+ },
+ {
+  "id": "pays.noun",
+  "w": "pays",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "pays",
+  "en": [
+   "country"
+  ],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Quel pays voulez-vous visiter ?",
+  "exen": "Which country do you want to visit?"
+ },
+ {
+  "id": "bateau.noun",
+  "w": "bateau",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "bateaux",
+  "en": [
+   "boat"
+  ],
+  "level": "A2",
+  "theme": "travel",
+  "ex": "On prend le bateau pour la Corse.",
+  "exen": "We're taking the boat to Corsica."
+ },
+ {
+  "id": "adresse.noun",
+  "w": "adresse",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "adresses",
+  "en": [
+   "address"
+  ],
+  "level": "A1",
+  "theme": "travel",
+  "ex": "Quelle est ton adresse ?",
+  "exen": "What is your address?"
+ },
+ {
+  "id": "réservation.noun",
+  "w": "réservation",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "réservations",
+  "en": [
+   "booking",
+   "reservation"
+  ],
+  "level": "A2",
+  "theme": "travel",
+  "ex": "J'ai fait une réservation pour deux personnes.",
+  "exen": "I made a reservation for two people."
+ },
+ {
+  "id": "arbre.noun",
+  "w": "arbre",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "arbres",
+  "en": [
+   "tree"
+  ],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Il y a un grand arbre dans le jardin.",
+  "exen": "There's a big tree in the garden."
+ },
+ {
+  "id": "oiseau.noun",
+  "w": "oiseau",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "oiseaux",
+  "en": [
+   "bird"
+  ],
+  "level": "A2",
+  "theme": "nature",
+  "ex": "Les oiseaux chantent le matin.",
+  "exen": "The birds sing in the morning."
+ },
+ {
+  "id": "animal.noun",
+  "w": "animal",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "animaux",
+  "en": [
+   "animal"
+  ],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Tu as un animal à la maison ?",
+  "exen": "Do you have a pet at home?"
+ },
+ {
+  "id": "chien.noun",
+  "w": "chien",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "chiens",
+  "en": [
+   "dog"
+  ],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Mon chien adore se promener.",
+  "exen": "My dog loves going for walks."
+ },
+ {
+  "id": "cheval.noun",
+  "w": "cheval",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "chevaux",
+  "en": [
+   "horse"
+  ],
+  "level": "A2",
+  "theme": "nature",
+  "ex": "Elle fait du cheval le dimanche.",
+  "exen": "She goes horse riding on Sundays."
+ },
+ {
+  "id": "fleur.noun",
+  "w": "fleur",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "fleurs",
+  "en": [
+   "flower"
+  ],
+  "level": "A1",
+  "theme": "nature",
+  "ex": "Il m'a offert des fleurs.",
+  "exen": "He gave me flowers."
+ },
+ {
+  "id": "herbe.noun",
+  "w": "herbe",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "herbes",
+  "en": [
+   "grass",
+   "herb"
+  ],
+  "level": "A2",
+  "theme": "nature",
+  "ex": "Les enfants sont assis dans l'herbe.",
+  "exen": "The children are sitting on the grass."
+ },
+ {
+  "id": "île.noun",
+  "w": "île",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "îles",
+  "en": [
+   "island"
+  ],
+  "level": "A2",
+  "theme": "nature",
+  "ex": "Nous avons passé une semaine sur une île.",
+  "exen": "We spent a week on an island."
+ },
+ {
+  "id": "étoile.noun",
+  "w": "étoile",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "étoiles",
+  "en": [
+   "star"
+  ],
+  "level": "A2",
+  "theme": "nature",
+  "ex": "Ce soir, on voit beaucoup d'étoiles.",
+  "exen": "Tonight we can see lots of stars."
+ },
+ {
+  "id": "forêt.noun",
+  "w": "forêt",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "forêts",
+  "en": [
+   "forest"
+  ],
+  "level": "A2",
+  "theme": "nature",
+  "ex": "Nous nous promenons dans la forêt.",
+  "exen": "We go for walks in the forest."
+ },
+ {
+  "id": "neige.noun",
+  "w": "neige",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "neiges",
+  "en": [
+   "snow"
+  ],
+  "level": "A2",
+  "theme": "nature",
+  "ex": "Les enfants jouent dans la neige.",
+  "exen": "The children are playing in the snow."
+ },
+ {
+  "id": "feu.noun",
+  "w": "feu",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "feux",
+  "en": [
+   "fire",
+   "traffic light"
+  ],
+  "level": "A2",
+  "theme": "nature",
+  "ex": "On a fait un feu dans la cheminée.",
+  "exen": "We made a fire in the fireplace."
+ },
+ {
+  "id": "travail.noun",
+  "w": "travail",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "travaux",
+  "en": [
+   "work",
+   "job"
+  ],
+  "level": "A1",
+  "theme": "work",
+  "ex": "Je cherche du travail à Bordeaux.",
+  "exen": "I'm looking for work in Bordeaux."
+ },
+ {
+  "id": "entreprise.noun",
+  "w": "entreprise",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "entreprises",
+  "en": [
+   "company",
+   "business"
+  ],
+  "level": "A2",
+  "theme": "work",
+  "ex": "Elle travaille dans une grande entreprise.",
+  "exen": "She works for a big company."
+ },
+ {
+  "id": "bureau.noun",
+  "w": "bureau",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "bureaux",
+  "en": [
+   "office",
+   "desk"
+  ],
+  "level": "A1",
+  "theme": "work",
+  "ex": "Je suis au bureau jusqu'à six heures.",
+  "exen": "I'm at the office until six."
+ },
+ {
+  "id": "emploi.noun",
+  "w": "emploi",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "emplois",
+  "en": [
+   "job",
+   "employment"
+  ],
+  "level": "B1",
+  "theme": "work",
+  "ex": "Il a trouvé un emploi à Paris.",
+  "exen": "He found a job in Paris."
+ },
+ {
+  "id": "réunion.noun",
+  "w": "réunion",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "réunions",
+  "en": [
+   "meeting"
+  ],
+  "level": "A2",
+  "theme": "work",
+  "ex": "La réunion commence à neuf heures.",
+  "exen": "The meeting starts at nine o'clock."
+ },
+ {
+  "id": "ordinateur.noun",
+  "w": "ordinateur",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "ordinateurs",
+  "en": [
+   "computer"
+  ],
+  "level": "A1",
+  "theme": "work",
+  "ex": "Mon ordinateur ne marche plus.",
+  "exen": "My computer doesn't work any more."
+ },
+ {
+  "id": "usine.noun",
+  "w": "usine",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "usines",
+  "en": [
+   "factory"
+  ],
+  "level": "A2",
+  "theme": "work",
+  "ex": "Son père travaille dans une usine.",
+  "exen": "His father works in a factory."
+ },
+ {
+  "id": "école.noun",
+  "w": "école",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "écoles",
+  "en": [
+   "school"
+  ],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Les enfants vont à l'école à pied.",
+  "exen": "The children walk to school."
+ },
+ {
+  "id": "université.noun",
+  "w": "université",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "universités",
+  "en": [
+   "university"
+  ],
+  "level": "A2",
+  "theme": "school",
+  "ex": "Elle étudie le droit à l'université.",
+  "exen": "She studies law at university."
+ },
+ {
+  "id": "étudiant.noun",
+  "w": "étudiant",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "étudiants",
+  "en": [
+   "student"
+  ],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Les étudiants passent leurs examens en juin.",
+  "exen": "The students take their exams in June."
+ },
+ {
+  "id": "cours.noun",
+  "w": "cours",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "cours",
+  "en": [
+   "class",
+   "lesson",
+   "course"
+  ],
+  "level": "A1",
+  "theme": "school",
+  "ex": "J'ai un cours de français ce soir.",
+  "exen": "I have a French class this evening."
+ },
+ {
+  "id": "examen.noun",
+  "w": "examen",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "examens",
+  "en": [
+   "exam"
+  ],
+  "level": "A2",
+  "theme": "school",
+  "ex": "Il a réussi son examen.",
+  "exen": "He passed his exam."
+ },
+ {
+  "id": "exercice.noun",
+  "w": "exercice",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "exercices",
+  "en": [
+   "exercise"
+  ],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Faites l'exercice à la page dix.",
+  "exen": "Do the exercise on page ten."
+ },
+ {
+  "id": "question.noun",
+  "w": "question",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "questions",
+  "en": [
+   "question"
+  ],
+  "level": "A1",
+  "theme": "school",
+  "ex": "Est-ce que je peux poser une question ?",
+  "exen": "Can I ask a question?"
+ },
+ {
+  "id": "erreur.noun",
+  "w": "erreur",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "erreurs",
+  "en": [
+   "mistake",
+   "error"
+  ],
+  "level": "A2",
+  "theme": "school",
+  "ex": "Tout le monde fait des erreurs.",
+  "exen": "Everyone makes mistakes."
+ },
+ {
+  "id": "jeu.noun",
+  "w": "jeu",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "jeux",
+  "en": [
+   "game"
+  ],
+  "level": "A1",
+  "theme": "leisure",
+  "ex": "Les enfants adorent ce jeu.",
+  "exen": "The children love this game."
+ },
+ {
+  "id": "musique.noun",
+  "w": "musique",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "musiques",
+  "en": [
+   "music"
+  ],
+  "level": "A1",
+  "theme": "leisure",
+  "ex": "J'écoute de la musique dans le train.",
+  "exen": "I listen to music on the train."
+ },
+ {
+  "id": "fête.noun",
+  "w": "fête",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "fêtes",
+  "en": [
+   "party",
+   "celebration"
+  ],
+  "level": "A1",
+  "theme": "leisure",
+  "ex": "On organise une fête samedi soir.",
+  "exen": "We're having a party on Saturday night."
+ },
+ {
+  "id": "équipe.noun",
+  "w": "équipe",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "équipes",
+  "en": [
+   "team"
+  ],
+  "level": "A2",
+  "theme": "leisure",
+  "ex": "Notre équipe a gagné le match.",
+  "exen": "Our team won the match."
+ },
+ {
+  "id": "journal.noun",
+  "w": "journal",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "journaux",
+  "en": [
+   "newspaper"
+  ],
+  "level": "A2",
+  "theme": "media",
+  "ex": "Mon père lit le journal tous les matins.",
+  "exen": "My father reads the newspaper every morning."
+ },
+ {
+  "id": "émission.noun",
+  "w": "émission",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "émissions",
+  "en": [
+   "programme",
+   "broadcast"
+  ],
+  "level": "B1",
+  "theme": "media",
+  "ex": "Cette émission passe tous les dimanches.",
+  "exen": "This programme is on every Sunday."
+ },
+ {
+  "id": "information.noun",
+  "w": "information",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "informations",
+  "en": [
+   "information",
+   "news (pl.)"
+  ],
+  "level": "A2",
+  "theme": "media",
+  "ex": "J'ai entendu ça aux informations.",
+  "exen": "I heard that on the news."
+ },
+ {
+  "id": "image.noun",
+  "w": "image",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "images",
+  "en": [
+   "image",
+   "picture"
+  ],
+  "level": "A2",
+  "theme": "media",
+  "ex": "Les images de ce film sont superbes.",
+  "exen": "The images in this film are superb."
+ },
+ {
+  "id": "histoire.noun",
+  "w": "histoire",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "histoires",
+  "en": [
+   "story",
+   "history"
+  ],
+  "level": "A1",
+  "theme": "media",
+  "ex": "Raconte-moi une histoire avant de dormir.",
+  "exen": "Tell me a story before bed."
+ },
+ {
+  "id": "téléphone.noun",
+  "w": "téléphone",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "téléphones",
+  "en": [
+   "telephone",
+   "phone"
+  ],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Ton téléphone sonne dans la cuisine !",
+  "exen": "Your phone is ringing in the kitchen!"
+ },
+ {
+  "id": "mot.noun",
+  "w": "mot",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "mots",
+  "en": [
+   "word"
+  ],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Je ne connais pas ce mot.",
+  "exen": "I don't know this word."
+ },
+ {
+  "id": "langue.noun",
+  "w": "langue",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "langues",
+  "en": [
+   "language",
+   "tongue"
+  ],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "Elle parle trois langues couramment.",
+  "exen": "She speaks three languages fluently."
+ },
+ {
+  "id": "réponse.noun",
+  "w": "réponse",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "réponses",
+  "en": [
+   "answer",
+   "reply"
+  ],
+  "level": "A1",
+  "theme": "communication",
+  "ex": "J'attends encore sa réponse à mon message.",
+  "exen": "I'm still waiting for his reply to my message."
+ },
+ {
+  "id": "peur.noun",
+  "w": "peur",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "peurs",
+  "en": [
+   "fear"
+  ],
+  "level": "A2",
+  "theme": "feelings",
+  "ex": "Mon fils a peur du noir.",
+  "exen": "My son is afraid of the dark."
+ },
+ {
+  "id": "joie.noun",
+  "w": "joie",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "joies",
+  "en": [
+   "joy"
+  ],
+  "level": "B1",
+  "theme": "feelings",
+  "ex": "Elle a appris la nouvelle avec joie.",
+  "exen": "She heard the news with joy."
+ },
+ {
+  "id": "amour.noun",
+  "w": "amour",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "amours",
+  "en": [
+   "love"
+  ],
+  "level": "A2",
+  "theme": "feelings",
+  "ex": "Ils se sont mariés par amour.",
+  "exen": "They married for love."
+ },
+ {
+  "id": "bonheur.noun",
+  "w": "bonheur",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "bonheurs",
+  "en": [
+   "happiness"
+  ],
+  "level": "B1",
+  "theme": "feelings",
+  "ex": "Je vous souhaite beaucoup de bonheur.",
+  "exen": "I wish you lots of happiness."
+ },
+ {
+  "id": "envie.noun",
+  "w": "envie",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "envies",
+  "en": [
+   "desire",
+   "wish"
+  ],
+  "level": "A2",
+  "theme": "feelings",
+  "ex": "J'ai très envie d'une glace au chocolat.",
+  "exen": "I really feel like a chocolate ice cream."
+ },
+ {
+  "id": "problème.noun",
+  "w": "problème",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "problèmes",
+  "en": [
+   "problem"
+  ],
+  "level": "A1",
+  "theme": "society",
+  "ex": "Pas de problème, je m'en occupe.",
+  "exen": "No problem, I'll deal with it."
+ },
+ {
+  "id": "accident.noun",
+  "w": "accident",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "accidents",
+  "en": [
+   "accident"
+  ],
+  "level": "A2",
+  "theme": "society",
+  "ex": "Il y a eu un accident sur l'autoroute.",
+  "exen": "There was an accident on the motorway."
+ },
+ {
+  "id": "loi.noun",
+  "w": "loi",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "lois",
+  "en": [
+   "law"
+  ],
+  "level": "B1",
+  "theme": "society",
+  "ex": "Cette nouvelle loi entre en vigueur demain.",
+  "exen": "This new law comes into force tomorrow."
+ },
+ {
+  "id": "situation.noun",
+  "w": "situation",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "situations",
+  "en": [
+   "situation"
+  ],
+  "level": "B1",
+  "theme": "society",
+  "ex": "La situation est difficile en ce moment.",
+  "exen": "The situation is difficult at the moment."
+ },
+ {
+  "id": "idée.noun",
+  "w": "idée",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "idées",
+  "en": [
+   "idea"
+  ],
+  "level": "A1",
+  "theme": "abstract",
+  "ex": "C'est une très bonne idée !",
+  "exen": "That's a very good idea!"
+ },
+ {
+  "id": "solution.noun",
+  "w": "solution",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "solutions",
+  "en": [
+   "solution"
+  ],
+  "level": "A2",
+  "theme": "abstract",
+  "ex": "Il faut trouver une solution rapidement.",
+  "exen": "We need to find a solution quickly."
+ },
+ {
+  "id": "exemple.noun",
+  "w": "exemple",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "exemples",
+  "en": [
+   "example"
+  ],
+  "level": "A1",
+  "theme": "abstract",
+  "ex": "Tu peux me donner un exemple ?",
+  "exen": "Can you give me an example?"
+ },
+ {
+  "id": "endroit.noun",
+  "w": "endroit",
+  "pos": "noun",
+  "art": "l'",
+  "g": "m",
+  "pl": "endroits",
+  "en": [
+   "place",
+   "spot"
+  ],
+  "level": "A2",
+  "theme": "abstract",
+  "ex": "C'est un endroit très calme.",
+  "exen": "It's a very quiet place."
+ },
+ {
+  "id": "habitude.noun",
+  "w": "habitude",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "habitudes",
+  "en": [
+   "habit"
+  ],
+  "level": "B1",
+  "theme": "abstract",
+  "ex": "J'ai l'habitude de me lever tôt.",
+  "exen": "I'm used to getting up early."
+ },
+ {
+  "id": "attention.noun",
+  "w": "attention",
+  "pos": "noun",
+  "art": "l'",
+  "g": "f",
+  "pl": "attentions",
+  "en": [
+   "attention",
+   "care"
+  ],
+  "level": "A2",
+  "theme": "abstract",
+  "ex": "Fais attention, la route est glissante.",
+  "exen": "Be careful, the road is slippery."
+ },
+ {
+  "id": "raison.noun",
+  "w": "raison",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "raisons",
+  "en": [
+   "reason"
+  ],
+  "level": "A2",
+  "theme": "abstract",
+  "ex": "Il est parti sans donner de raison.",
+  "exen": "He left without giving a reason."
+ },
+ {
+  "id": "vérité.noun",
+  "w": "vérité",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "vérités",
+  "en": [
+   "truth"
+  ],
+  "level": "B1",
+  "theme": "abstract",
+  "ex": "Dis-moi la vérité, s'il te plaît.",
+  "exen": "Tell me the truth, please."
+ },
+ {
+  "id": "choix.noun",
+  "w": "choix",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "choix",
+  "en": [
+   "choice"
+  ],
+  "level": "A2",
+  "theme": "abstract",
+  "ex": "Je n'ai pas le choix.",
+  "exen": "I have no choice."
+ },
+ {
+  "id": "chose.noun",
+  "w": "chose",
+  "pos": "noun",
+  "art": "la",
+  "g": "f",
+  "pl": "choses",
+  "en": [
+   "thing"
+  ],
+  "level": "A1",
+  "theme": "core",
+  "ex": "J'ai beaucoup de choses à faire.",
+  "exen": "I have lots of things to do."
+ },
+ {
+  "id": "côté.noun",
+  "w": "côté",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "côtés",
+  "en": [
+   "side"
+  ],
+  "level": "A2",
+  "theme": "core",
+  "ex": "La pharmacie est à côté de la banque.",
+  "exen": "The pharmacy is next to the bank."
+ },
+ {
+  "id": "moment.noun",
+  "w": "moment",
+  "pos": "noun",
+  "art": "le",
+  "g": "m",
+  "pl": "moments",
+  "en": [
+   "moment"
+  ],
+  "level": "A1",
+  "theme": "core",
+  "ex": "Attends un moment, s'il te plaît.",
+  "exen": "Wait a moment, please."
+ }
+]

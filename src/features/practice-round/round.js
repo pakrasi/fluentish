@@ -42,7 +42,9 @@ import { marked } from '../../data/known.js';
 import { skipsNew } from '../../domain/known.js';
 import { knowButton, isKnowKey, knowCard, knownResult } from '../shared/iknow.js';
 import { wordMeta, wordPanel } from '../../core/wordpanel.js';
-import { langAttr } from '../../core/lang.js';
+import { langAttr, languageName } from '../../core/lang.js';
+import { courseRound } from '../shared/course.js';
+import { scopeItem } from '../../domain/itemids.js';
 
 const TEIL = /** @type {Record<string, string>} */ ({ S1: 'Teil 1', S2: 'Teil 2', S3: 'Teil 3', W1: 'Aufgabe 1', W2: 'Aufgabe 2', W3: 'Aufgabe 3', L2: 'Teil 2', L3: 'Teil 3', L5: 'Teil 5' });
 const fmtS = (/** @type {number} */ ms) => `${(ms / 1000).toFixed(1).replace(/\.0$/, '')} s`;
@@ -116,8 +118,12 @@ export async function mountRound(el, ctx) {
     return () => { document.body.dataset.chrome = 'on'; document.body.classList.remove('pr-in-round'); };
   }
   // a cluster round (kind=cluster:<type>:<id> or cluster:due): cards in deck 'clusters', items built from their ids
-  const ck = parseClusterKind(ctx.query.get('kind'));
-  const deck = ck ? CLUSTER_DECK : 'b1';
+  // a course in another language (C3b): its round lives in its own deck and session (shared/course.js); it has no
+  // cluster rounds
+  const cr = data.course ? courseRound(data.course) : null;
+  const ck = cr ? null : parseClusterKind(ctx.query.get('kind'));
+  const deck = ck ? CLUSTER_DECK : cr ? cr.deck : 'b1';
+  const kv = cr ? cr.kv : 'b1.session';
   /** @type {any} */ let clusters = null;
   if (ck) {
     try { clusters = await loadClusters(ctx); } catch { clusters = null; }
@@ -137,7 +143,7 @@ export async function mountRound(el, ctx) {
   const backTo = ctx.query.get('from') === 'today' ? '/today' : ctx.query.get('from') === 'map' ? '/lookup/map' : groupBack(ctx.query.get('from'))
     || (clusterPage.length ? `/lookup/map/${clusterPage[0]}/${encodeURIComponent(clusterPage[1])}` : ctx.query.get('kind')?.startsWith('cluster:') ? '/practice/clusters' : '/practice');
   let st = stateFor(ctx, data);
-  const sess = session(store);
+  const sess = session(store, kv);
   const saved = S.savedRound(sess, slot);
   // the round size picker's choice (picker.js): Recommended is the composer's round; a custom size or "all" draws
   // from the whole list (domain/roundsize.js). A saved round of another size is not resumed.
@@ -164,9 +170,9 @@ export async function mountRound(el, ctx) {
     } else ids = sized && sized !== 'rec' ? RS.pick(C.buckets(st, spec), sized).ids : C.compose(st, spec);
     if (!ids.length) return drawNothing();
     round = S.startRound(ids, spec, st.c.today, Date.now());
-    if (ck) round.deck = deck;
+    if (ck || cr) round.deck = deck;
     if (want) round.size = want;
-    saveLogs(store, { round, slot, day: st.day });
+    saveLogs(store, { round, slot, day: st.day }, kv);
   }
   if (ck) addClusterItems(round.queue.map((/** @type {any} */ q) => q.id));
   const day = st.day;
@@ -288,8 +294,8 @@ export async function mountRound(el, ctx) {
     if (strip && k >= 0) strip.set(k, 2);
     updateDots();
     announce(t('practice.know.announce'));
-    if (!S.advance(round)) { saveLogs(store, { round, slot }); finish(); return; }
-    saveLogs(store, { round, slot });
+    if (!S.advance(round)) { saveLogs(store, { round, slot }, kv); finish(); return; }
+    saveLogs(store, { round, slot }, kv);
     drawCard(false, 'lift');
   }
   function updateDots() {
@@ -301,6 +307,7 @@ export async function mountRound(el, ctx) {
 
   // ---------- drawing a card ----------
   function where(/** @type {any} */ it) {
+    if (it.course) return t(it.area === 'words' ? 'course.where.words' : 'course.where.phrase');
     if (it.area === 'clusters') return it.where || t('practice.clusters.title');
     if (it.area === 'mistakes') return t('practice.where.mistake');
     if (it.area === 'words') return t('practice.where.words');
@@ -332,7 +339,7 @@ export async function mountRound(el, ctx) {
     const pf = String(it.prefill || ''), k = pf.search(/[.!?]\s+\S[^.!?]*$/);
     prefill.hidden = !it.prefill; prefill.textContent = k >= 0 ? `… ${pf.slice(k + 1).trim()}` : pf;
     input.value = ''; grow();
-    input.placeholder = it.gap ? t('practice.ph.gap') : it.area === 'mistakes' ? t('practice.ph.rewrite') : t('practice.ph.german');
+    input.placeholder = it.gap ? t('practice.ph.gap') : it.area === 'mistakes' ? t('practice.ph.rewrite') : it.course ? t('course.ph', { lang: languageName(it.course) }) : t('practice.ph.german');
     tbar.hidden = true;
     updateDots();
     if (state === 'pick') return drawPick();
@@ -370,7 +377,7 @@ export async function mountRound(el, ctx) {
   // whole answers Claude confirmed right count as right sentences next time (the rest-of-sentence check)
   const variants = () => {
     /** @type {Map<string, string[]>} */ const m = new Map();
-    for (const v of session(store).variants || []) if (v && v.verdict === 'correct' && v.id && v.answer) m.set(v.id, [...(m.get(v.id) || []), v.answer]);
+    for (const v of session(store, kv).variants || []) if (v && v.verdict === 'correct' && v.id && v.answer) m.set(v.id, [...(m.get(v.id) || []), v.answer]);
     return m;
   };
   const grade = (/** @type {string} */ typed) => gradeAnswer(entry.item, full(typed), move, { ...data, variants: variants() });
@@ -422,7 +429,7 @@ export async function mountRound(el, ctx) {
     recorded = true;
     const cards = store.cards(deck);
     const res = S.answer({ round, entry, o: { ...o, revealed }, cards, day, c: st.c, forecast: forecaster(cards, st.c), now: Date.now(), tz: tz() });
-    saveAnswer(store, entry.item.id, res.rec, res.event, { round, slot, day }, deck);
+    saveAnswer(store, entry.item.id, res.rec, res.event, { round, slot, day }, deck, kv);
     if (ck && entry.isNew) updateClusters(store, x => { const d = clusterDay(store, st.c.today); return { ...x, day: { ...d, newShown: d.newShown + 1 } }; });
     updateDots();
     const k = stripIds.indexOf(entry.item.id);
@@ -569,7 +576,8 @@ export async function mountRound(el, ctx) {
     sayAnswer(right);
     toRetype(right, 360);
   }
-  const claudeOk = () => !!secrets(store).anthropicKey && settings.practice.claudeCheck && navigator.onLine;
+  // the answer check's prompt is German B1's (services/claude.js): not offered in another course
+  const claudeOk = () => !cr && !!secrets(store).anthropicKey && settings.practice.claudeCheck && navigator.onLine;
   function claudeBox(/** @type {string} */ typed) {
     const boxEl = h('div', { class: 'pr-claude' });
     const btn = /** @type {HTMLButtonElement} */ (h('button', { type: 'button', class: 'btn pressable', onpointerdown: keep, onclick: async () => {
@@ -582,8 +590,8 @@ export async function mountRound(el, ctx) {
           const cards = store.cards(deck);
           const res = S.override({ round, entry: cur, ms: 0, c: st.c, forecast: forecaster(cards, st.c), now: Date.now(), tz: tz() });
           // only a "correct" verdict becomes a variant that later counts as a right sentence; "minor" (a slip) does not
-          const saved = v.verdict === 'correct' ? [...(session(store).variants || []), { id: cur.item.id, answer: full(typed), at: Date.now(), verdict: 'correct' }].slice(-200) : undefined;
-          saveAnswer(store, cur.item.id, res.rec, res.event, { round, slot, day, ...(saved ? { variants: saved } : {}) }, deck);
+          const saved = v.verdict === 'correct' ? [...(session(store, kv).variants || []), { id: cur.item.id, answer: full(typed), at: Date.now(), verdict: 'correct' }].slice(-200) : undefined;
+          saveAnswer(store, cur.item.id, res.rec, res.event, { round, slot, day, ...(saved ? { variants: saved } : {}) }, deck, kv);
           updateDots();
           replace(boxEl, h('p', { class: 'pr-res is-ok' }, v.verdict === 'correct' ? t('practice.claude.correct') : t('practice.claude.minor')), v.note ? h('p', { class: 'caption' }, v.note) : null);
           state = 'feedback'; input.value = ''; answerEl.classList.remove('is-wrong', 'is-retype'); input.placeholder = t('practice.ph.next'); setButtons();
@@ -659,8 +667,8 @@ export async function mountRound(el, ctx) {
   function next() {
     clearTimeout(auto);
     if (state === 'answer' || state === 'repair' || state === 'pick') return;
-    if (!S.advance(round)) { saveLogs(store, { round, slot }); return finish(); }
-    saveLogs(store, { round, slot });
+    if (!S.advance(round)) { saveLogs(store, { round, slot }, kv); return finish(); }
+    saveLogs(store, { round, slot }, kv);
     drawCard();
   }
 
@@ -697,14 +705,14 @@ export async function mountRound(el, ctx) {
     cleanup();
     const done = round.results.filter((/** @type {any} */ r) => r.first).length;
     addActivity(store, st.c.today, { minutes: minutesSpent() });
-    saveLogs(store, { round, slot });
+    saveLogs(store, { round, slot }, kv);
     ctx.go(backTo);
     setTimeout(() => ctx.toast(t('practice.saved', { n: done, total: round.planned })), 60);
   }
   function finish() {
     cleanup();
     if (ck) {   // a cluster round: its own day log and done screen; the B1 day log and readiness stay out of it
-      saveLogs(store, { round: null, slot });
+      saveLogs(store, { round: null, slot }, kv);
       updateClusters(store, x => { const d = clusterDay(store, st.c.today); return { ...x, day: { ...d, rounds: d.rounds + 1 } }; });
       addActivity(store, st.c.today, { minutes: minutesSpent(), rounds: 1 });
       const firsts = round.results.filter((/** @type {any} */ r) => r.first && !r.known);
@@ -714,19 +722,19 @@ export async function mountRound(el, ctx) {
     }
     day.rounds = (day.rounds || 0) + 1;
     if (round.kind === 'write') day.writeRounds = (day.writeRounds || 0) + 1;
-    saveLogs(store, { round: null, slot, day });
+    saveLogs(store, { round: null, slot, day }, kv);
     addActivity(store, st.c.today, { minutes: minutesSpent(), rounds: 1 });
     drawDone(el, ctx, data, round, backTo);
   }
   function drawNothing() {
     if (ck) { ctx.go(ck.key || ck.pick ? backTo : '/practice/clusters', { replace: true }); return () => { document.body.dataset.chrome = 'on'; document.body.classList.remove('pr-in-round'); }; }
     const c = st.c;
-    const tomorrow = RD.forecast(store.cards('b1'), c.today, 2, c)[1]?.n || 0;
+    const tomorrow = RD.forecast(store.cards(cr ? cr.deck : 'b1'), c.today, 2, c)[1]?.n || 0;
     replace(el, h('div', { class: 'practice pr-done stack' },
       h('p', { class: 'label' }, t('practice.round')),
       h('h1', null, spec.kind === 'missed' ? t('practice.nothing.missed') : spec.kind === 'mistakes' ? t('practice.nothing.mistakes') : t('practice.nothing.title')),
       h('p', { class: 'lead' }, spec.kind === 'missed' ? t('practice.nothing.missedSince', { date: label(add(c.today, -3)) }) : t('practice.tomorrow', { n: tomorrow, date: label(add(c.today, 1)) })),
-      h('div', { class: 'pr-done-actions' }, h('a', { class: 'btn btn-primary pressable', href: '#/practice' }, t('practice.done')), h('a', { class: 'btn pressable', href: '#/practice/speak' }, t('practice.speak')))));
+      h('div', { class: 'pr-done-actions' }, h('a', { class: 'btn btn-primary pressable', href: '#/practice' }, t('practice.done')), cr ? null : h('a', { class: 'btn pressable', href: '#/practice/speak' }, t('practice.speak')))));
     return () => { document.body.dataset.chrome = 'on'; document.body.classList.remove('pr-in-round'); };
   }
 
@@ -738,7 +746,7 @@ export async function mountRound(el, ctx) {
   // answers already given in a resumed round show in the strip
   const firstOk = new Map(round.results.filter((/** @type {any} */ r) => r.first).map((/** @type {any} */ r) => [r.id, r.known ? 2 : r.ok ? 3 : 1]));
   /** @type {Field | null} */ const strip = new Field(/** @type {HTMLCanvasElement} */ (stripEl), stripIds.map(id => firstOk.get(id) || 0), { cell: 6, gap: 2, label: null });
-  if (round.queue.some((/** @type {any} */ e) => data.byId.get(e.id)?.card?.ex)) prefetchAudio(ctx.content);
+  if (!cr && round.queue.some((/** @type {any} */ e) => data.byId.get(e.id)?.card?.ex)) prefetchAudio(ctx.content);
   await drawCard(true);
   return () => { cleanup(); stopAudio(); document.body.dataset.chrome = 'on'; document.body.classList.remove('pr-in-round'); };
 }
@@ -751,7 +759,8 @@ function drawDone(el, ctx, data, round, backTo) {
   // readiness before = the same store with only this round's items rolled back
   const pool = data.pool.filter((/** @type {any} */ it) => it.area !== 'mistakes');
   const rd = (/** @type {any} */ cards) => RD.compute({ pool, store: cards, today: c.today, exam: c.exam, phase: c.phase });
-  const now = store.cards('b1'), before = { ...now };
+  const cr = data.course ? courseRound(data.course) : null;
+  const now = store.cards(cr ? cr.deck : 'b1'), before = { ...now };
   for (const [id, r] of Object.entries(round.prev || {})) { if (r) before[id] = r; else delete before[id]; }
   const a = rd(now).overall, b = rd(before).overall;
   // a Schreiben round goes on with Schreiben phrases: their own due and new counts
@@ -776,7 +785,7 @@ function drawDone(el, ctx, data, round, backTo) {
     lines: [sum.late ? t('practice.late', { n: sum.late }) : null, sum.partial ? t('practice.partialN', { n: sum.partial }) : null, sum.fixedLast ? t('practice.lastFixed') : null,
       sum.known.length ? t('practice.know.inRound', { n: sum.known.length }) : null],
     data: view ? h('div', { class: 'pr-ready' },
-      h('p', { class: 'pr-ready-top' }, h('span', { class: 'label' }, t('practice.knownItems')), knownEl), bar, fieldEl) : null });
+      h('p', { class: 'pr-ready-top' }, h('span', { class: 'label' }, t(cr ? 'course.knownItems' : 'practice.knownItems')), knownEl), bar, fieldEl) : null });
   replace(el, h('div', { class: 'practice pr-done stack' },
     hero.el,
     h('p', { class: 'pr-next' }, more ? t(write ? (wDue ? 'practice.write.nextUp' : 'practice.write.nextNew') : 'practice.nextUp', write ? { due: wDue, n: C.newLeftOf(st, 'w') } : { due: st.dueN, n: C.newLeft(st) }) : t('practice.allDone', { n: tomorrow })),
@@ -791,8 +800,10 @@ function drawDone(el, ctx, data, round, backTo) {
     /** @type {Record<string, any>} */ const patch = {};
     for (const [id, r] of Object.entries(round.prev || {})) patch[id] = r || null;
     const ids = pool.map((/** @type {any} */ it) => it.id);
-    Promise.all([loadKnowledge(ctx, { patch: { b1: patch } }), loadKnowledge(ctx)]).then(([kb, ka]) => {
-      const known = (/** @type {any} */ k) => knownOf(ids, id => k.get(k.maps.resolve(id, 'b1') || id)).known;
+    Promise.all([loadKnowledge(ctx, { patch: { [cr ? cr.deck : 'b1']: patch } }), loadKnowledge(ctx)]).then(([kb, ka]) => {
+      // a course's items are scoped by its language (domain/itemids.js); German's never are
+      const itemOf = (/** @type {any} */ k, /** @type {string} */ id) => cr ? scopeItem(cr.lang, k.maps.resolve(id, 'core') || id) : k.maps.resolve(id, 'b1') || id;
+      const known = (/** @type {any} */ k) => knownOf(ids, id => k.get(itemOf(k, id))).known;
       const nb = known(kb), na = known(ka), n = ids.length || 1;
       knownEl.textContent = t('practice.knownOf', { b: nb, a: na, n: ids.length });
       requestAnimationFrame(() => fill(bar, nb / n));

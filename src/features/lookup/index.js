@@ -319,8 +319,9 @@ export async function mount(el, ctx) {
   replace(el, h('div', { class: 'lookup' },
     h('div', { class: 'lk-top' },
       h('h1', null, t('lookup.title')),
-      h('a', { class: 'lk-map pressable', href: '#/lookup/map' }, mapArt(),
-        h('span', { class: 'lk-map-text' }, h('span', { class: 'lk-map-title' }, t('lookup.map')), h('span', { class: 'lk-map-detail' }, t('lookup.map.detail'))), icon('next', { size: 18 })),
+      // the map is built from the German content (C3b: no map for another language)
+      LANGS[lang].b1 ? h('a', { class: 'lk-map pressable', href: '#/lookup/map' }, mapArt(),
+        h('span', { class: 'lk-map-text' }, h('span', { class: 'lk-map-title' }, t('lookup.map')), h('span', { class: 'lk-map-detail' }, t('lookup.map.detail'))), icon('next', { size: 18 })) : null,
       (route.opts.lang && !LANGS[route.opts.lang]) || (ctx.settings().language && !LANGS[ctx.settings().language]) ? notice({ children: [h('p', null, t('lookup.langOnly'))] }) : null,
       h('div', { class: 'lk-search' }, h('label', { class: 'lk-field' }, glyph('search', 20), input, clearBtn)),
       nav),
@@ -433,19 +434,21 @@ export async function mount(el, ctx) {
   }
 
   async function drawWords() {
-    const w = st.opts.w === 'all' ? 'all' : 'mine';
-    const toggle = seg({ label: t('lookup.words.view'), value: w, options: [['mine', t('lookup.words.mine')], ['all', t('lookup.words.all')]], onChange: v => setOpt('w', v === 'mine' ? '' : v) });
-    toggle.classList.add('lk-seg');
+    // exam words are German (the Goethe mocks): another language lists its word list only
+    const own = !!LANGS[lang].b1;
+    const w = !own || st.opts.w === 'all' ? 'all' : 'mine';
+    const toggle = !own ? null : seg({ label: t('lookup.words.view'), value: w, options: [['mine', t('lookup.words.mine')], ['all', t('lookup.words.all')]], onChange: v => setOpt('w', v === 'mine' ? '' : v) });
+    if (toggle) toggle.classList.add('lk-seg');
     if (w === 'all') {
       const dict = await D.dictionary(ctx.content, lang);
       const level = LEVELS.includes(st.opts.level) ? st.opts.level : '';
       const rows = level ? dict.rows.filter(r => r.level === level) : dict.rows;
-      prefetchAudio(ctx.content, ctx.store);
+      if (own) prefetchAudio(ctx.content, ctx.store);
       return h('div', null, toggle,
         chips(t('lookup.words.level'), 'level', [['', t('lookup.words.levelAll')], ...LEVELS.map(l => /** @type {[string, string]} */ ([l, l]))], level),
         caption(t('lookup.words.listCount', { n: num(rows.length) })),
         // Quick sort the level's words: Know / Learn, one word at a time (Practice › sort)
-        level ? h('p', { class: 'lk-sort' }, h('a', { class: 'btn pressable', href: `#/practice/sort?level=${level}&from=lookup` }, t('lookup.words.sort', { level }))) : null,
+        level && own ? h('p', { class: 'lk-sort' }, h('a', { class: 'btn pressable', href: `#/practice/sort?level=${level}&from=lookup` }, t('lookup.words.sort', { level }))) : null,
         list(rows, r => dictRow(r, '')));
     }
     const mw = await D.myWords(store);

@@ -129,7 +129,7 @@ def main():
     arg = sys.argv[2] if len(sys.argv) > 2 else None
     en, tr = load(lang)
     pdir = ROOT / f"authoring/chunks/accept/{lang}"
-    parts = [pdir / f"{arg}.json"] if arg and arg != "--assemble" else sorted(pdir.glob("*.json"))
+    parts = [pdir / f"{arg}.json"] if arg and arg != "--assemble" else sorted(pdir.glob("p*.json"))
     merged, errs = {}, 0
     for p in parts:
         data, errors, warnings = check_part(p, en, tr, L.fold)

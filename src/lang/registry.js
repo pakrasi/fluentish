@@ -1,11 +1,12 @@
 /* Every study language, and the active language pack (Wave C2).
    LANGUAGES: the ten languages of content/manifest.json `languages` (tests/unit/lang-registry.test.mjs keeps the two in
-   step): their BCP-47 tag, script, direction, fonts and voices, so the UI can list them. Only German has a full pack in
-   this build; the others are metadata only (full: false) until their pack ships.
+   step): their BCP-47 tag, script, direction, fonts and voices, so the UI can list them. German and French (C3b) have
+   full packs in this build; the others are metadata only (full: false) until their pack ships.
    The active pack is what the language-neutral engines (domain/match.js, detect.js, punct.js, forms.js) use when a
    call names none. core/lang.js sets it from settings.language; a language without a full pack keeps German. */
 // @ts-check
 import de from './de/index.js';
+import fr from './fr/index.js';
 /** @typedef {import('./types.js').LanguagePack} LanguagePack */
 /** @typedef {import('./types.js').LanguageMeta} LanguageMeta */
 /** @typedef {import('./types.js').LangId} LangId */
@@ -26,7 +27,7 @@ const meta = (id, legacyId, name, native, bcp47, script, o = {}) => ({
 /** @type {LanguageMeta[]} */
 export const LANGUAGES = [
   de,
-  meta('fr', 'french', 'French', 'Français', 'fr-FR', 'Latn'),
+  fr,
   meta('es', 'spanish', 'Spanish', 'Español', 'es-ES', 'Latn'),
   meta('it', 'italian', 'Italian', 'Italiano', 'it-IT', 'Latn'),
   meta('pt', 'portuguese', 'Portuguese', 'Português', 'pt-PT', 'Latn'),
@@ -39,7 +40,7 @@ export const LANGUAGES = [
 ];
 
 /** The full packs of this build. @type {Partial<Record<LangId, LanguagePack>>} */
-export const PACKS = { de };
+export const PACKS = { de, fr };
 
 /** The pack used when none is active or named. */
 export const DEFAULT_PACK = de;

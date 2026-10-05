@@ -25,7 +25,8 @@ test('packs: every content file is in exactly one pack, named for its language',
   assert.deepEqual(Object.keys(manifest.packs)[0], 'shared');
   for (const k of Object.keys(manifest.packs)) assert.ok(k === 'shared' || LANGUAGES.some(l => l.id === k), k);
   assert.deepEqual(manifest.packs.shared, ['igloo.chunks.en', 'igloo.framework', 'igloo.sentences.en', 'igloo.turns', 'igloo.words.themes']);
-  assert.deepEqual(manifest.packs.fr, ['igloo.chunks.french', 'igloo.lang.french', 'igloo.sentences.french']);
+  // French (C3b): Igloo's files plus the course, its accepted answers and its word list
+  assert.deepEqual(manifest.packs.fr, ['course.fr', 'igloo.chunks.accept.french', 'igloo.chunks.french', 'igloo.lang.french', 'igloo.sentences.french', 'igloo.words.fr']);
   for (const id of ['b1.items', 'speak.situations', 'exam.goethe-b1.def', 'exam.goethe-b1.why.03', 'clusters.de', 'igloo.chunks.accept.german', 'igloo.grammar.items.de']) assert.ok(manifest.packs.de.includes(id), id);
   assert.equal(packOf('igloo.chunks.arabic', manifest.exams), 'ar');
   assert.equal(packOf('exam.delf-b1.01', [{ id: 'delf-b1', language: 'french' }]), 'fr');
@@ -100,7 +101,7 @@ test('the stamped site gives every language its pack list (German as before)', (
   assert.equal(shared.length, manifest.packs.shared.length);
   for (const [k, ids] of Object.entries(manifest.packs)) if (k !== 'shared') assert.equal(packs[k].length, /** @type {string[]} */ (ids).length, k);
   assert.ok(packs.de.every(u => !/french|spanish|arabic/.test(u)));
-  assert.ok(packs.fr.every(u => /french/.test(u)));
+  assert.ok(packs.fr.every(u => /french|\/fr\.json/.test(u)));
 });
 
 /** A fake service worker container: one registration of this app, running `script`. */
@@ -150,7 +151,8 @@ test('one step validates every pack: the checks per language come from its files
     'tools/validate_accept.py german', 'tools/validate_grammar.py de', 'tools/validate_b1.py --all', 'tools/build_schreiben.py --check']) assert.ok(de.includes(c), c);
   assert.ok(de.some(c => c.startsWith('tools/validate_exam.py content/exams/goethe-b1/day01.json')));
   const fr = checksFor('fr', manifest.packs.fr, manifest.exams, manifest.files).map(c => c.slice(1).join(' '));
-  assert.deepEqual(fr, ['tools/validate_chunks.py french', 'tools/validate.py content/igloo/lang/french.json', 'tools/validate_sentences.py content/igloo/sentences/french.json']);
+  assert.deepEqual(fr, ['tools/validate_accept.py french', 'tools/validate_chunks.py french', 'tools/validate.py content/igloo/lang/french.json',
+    'tools/validate_sentences.py content/igloo/sentences/french.json', 'tools/build-course.mjs fr --check']);
   const ci = readFileSync(path.join(ROOT, '.github/workflows/ci.yml'), 'utf8');
   assert.match(ci, /run: node tools\/validate-packs\.mjs/);
 });

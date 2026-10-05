@@ -19,15 +19,15 @@
    'explore' keeps the mode, the gaps filter, what it already showed, the group a study round started from and the
    count each group page showed last. */
 import { h, replace, announce } from '../../core/dom.js';
-import { seg } from '../../core/ui.js';
+import { seg, notice } from '../../core/ui.js';
 import { icon } from '../../core/icons.js';
 import { reduced, handoff } from '../../core/motion.js';
 import { label as dayLabel } from '../../core/clock.js';
 import { num } from '../../core/i18n.js';
-import { langAttr, dirAttr } from '../../core/lang.js';
+import { langAttr, dirAttr, languageName } from '../../core/lang.js';
 import { MODES, summarise, nextUp, encode, nextBestGroup, gapsOf } from '../../domain/atlas.js';
 import { loadAtlas, layoutOf, scores, loadDetails, prefs, setPrefs, fold, find, totals } from '../../data/atlas.js';
-import { ensurePlacement } from '../shared/data.js';
+import { ensurePlacement, roundOf } from '../shared/data.js';
 import { openPicker } from '../shared/picker.js';
 import { CODE_STATE, STATES, groupName, pageHref } from './groups.js';
 import { createMap } from './map.js';
@@ -42,6 +42,15 @@ let mounts = 0;
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
 export async function mount(el, ctx) {
+  // the map is laid out from the German word list, clusters and grammar (tools/build-atlas.mjs); a course in another
+  // language has none yet (C3b), and says so plainly
+  const own = roundOf(ctx);
+  if (!own.trainer) {
+    replace(el, h('div', { class: 'stack page-pad' }, h('h1', null, ctx.t('lookup.map')),
+      notice({ children: [h('p', null, ctx.t('explore.courseNone', { lang: languageName(own.lang) }))] }),
+      h('a', { class: 'btn pressable', href: '#/lookup' }, ctx.t('explore.toLookup'))));
+    return undefined;
+  }
   // #/lookup/map/<type>/<id>: a group's page (group.js)
   const parts = String(ctx.params.rest || '').split('/').filter(Boolean);
   if (parts.length >= 2) return (await import('./group.js')).mountGroup(el, ctx, parts[0], parts.slice(1).join('/'));

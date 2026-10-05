@@ -22,7 +22,7 @@ import { todayBudget, roundAction, simToday, clusterToday } from '../../domain/a
 import { DECK as SIM_DECK, KV as SIM_KV } from '../../domain/sim.js';
 import { refreshSimStats } from '../shared/sim-data.js';
 import { resumable, savedRound } from '../shared/session.js';
-import { loadData, stateFor, session, refreshWords, secrets, wordsState } from '../shared/data.js';
+import { loadData, stateFor, session, refreshWords, secrets, wordsState, roundOf } from '../shared/data.js';
 import { COLLECTION as WORDS } from '../shared/words.js';
 import { hubRow as scriptsRow } from '../shared/script-row.js';
 import * as St from '../../domain/script/store.js';
@@ -54,7 +54,7 @@ export async function mountHub(el, ctx) {
     const day = await composeDay(ctx, { prepare: false }).catch(() => null);
     if (!alive) return;
     const planRow = day ? day.plan.rows.find((/** @type {any} */ r) => r.id === 'practice.round' && !r.done) || null : null;
-    const sess = session(store);
+    const sess = session(store, data.course ? roundOf(ctx).kv : 'b1.session');
     const main = savedRound(sess, 'today');
     const round = resumable(main, c.today, Date.now()) ? main : null;
     const firstTime = !Object.values(cards).some(r => r && r.hist && r.hist.length);
@@ -97,7 +97,39 @@ export async function mountHub(el, ctx) {
     if (phaseKey) notices.push(notice({ children: [h('p', null, t(phaseKey, { n: dueN }))] }));
     if (!navigator.onLine) notices.push(notice({ children: [h('p', null, t('practice.offline'))] }));
     if (firstTime) notices.push(notice({ children: [h('p', { class: 'notice-title' }, t('practice.first.title')), h('p', null, t('practice.first.body')),
-      matchMedia('(pointer: coarse)').matches ? h('p', null, t('practice.first.umlauts')) : null] }));
+      matchMedia('(pointer: coarse)').matches && !data.course ? h('p', null, t('practice.first.umlauts')) : null] }));
+
+    /** Put the page in, keeping focus on the heading, and count the figure up. @param {HTMLElement} view */
+    const show = view => {
+      const h1 = el.querySelector('h1');
+      replace(el, view);
+      if (h1 && document.activeElement === h1) view.querySelector('h1')?.focus({ preventScroll: true });
+      countTo(dueEl, figureN, { from: 0, duration: 600 });
+    };
+
+    // ---- a course in another language (C3b): its review round, its phrases and words, the misses; the exam modules,
+    //      the German word practice and scripts are German content ----
+    if (data.course) {
+      const opened = /** @type {Record<string, boolean>} */ ({ ...((store.get('ui', {}) || {}).practiceGroups || {}) });
+      const areaRow = (/** @type {string} */ a, /** @type {string} */ key) => {
+        const ar = rd.areas[a];
+        return ar && ar.n ? barRow({ href: `#/practice/round?kind=area:${a}`, title: t(key), x: ar,
+          detail: ar.seen ? t('practice.area.trail', { pct: pct(ar.recall), n: ar.due }) : t('practice.area.notStarted') }) : null;
+      };
+      const missedN = C.missed(s).length;
+      const rows = [areaRow('speaking', 'course.area.phrases'), areaRow('words', 'course.area.words'),
+        missedN ? linkRow({ href: '#/practice/round?kind=missed', title: t('practice.missed', { n: missedN }), detail: t('practice.missed.detail') }) : null];
+      const due = (rd.areas.speaking?.due || 0) + (rd.areas.words?.due || 0);
+      const foot = [h('p', { class: 'caption' }, tomorrow ? t('practice.tomorrow', { n: tomorrow, date: label(add(c.today, 1)) }) : t('practice.tomorrowNone', { date: label(add(c.today, 1)) })),
+        h('p', { class: 'caption' }, t('course.germanParts'))];
+      const view = h('div', { class: ['practice', 'stack', startBtn && 'has-dock'] },
+        h('div', { class: 'page-head' }, h('h1', null, t('practice.title'))),
+        notices, queue,
+        practiceGroup({ id: 'course', title: t('course.group'), trail: due ? t('practice.group.due', { n: due }) : null, open: opened.course ?? true, rows }),
+        h('div', { class: 'pr-foot stack' }, foot));
+      show(view);
+      return;
+    }
 
     // ---- group 1, exam modules ("Skills" without an exam goal): Schreiben, Sprechen, Lesen phrases and grammar
     //      (the old Areas), then misses and mistakes from corrections when there are any ----
@@ -175,10 +207,7 @@ export async function mountHub(el, ctx) {
       group('words', t('practice.group.words'), wordsDue, wordRows),
       group('own', t('practice.group.own'), 0, [scriptsRow(store, c, t)]),
       h('div', { class: 'pr-foot stack' }, foot));
-    const h1 = el.querySelector('h1');
-    replace(el, view);
-    if (h1 && document.activeElement === h1) view.querySelector('h1')?.focus({ preventScroll: true });
-    countTo(dueEl, figureN, { from: 0, duration: 600 });
+    show(view);
   }
 
   /**
@@ -211,21 +240,22 @@ export async function mountHub(el, ctx) {
 
   /** "Finish round · 11 questions left", with the kind for rounds that are not the daily one. @param {any} round @param {number} left */
   function finishLabel(round, left) {
-    const kind = round.kind === 'today' ? null : round.kind === 'area' ? t(`practice.area.${round.area}`) : round.kind === 'topic' ? t('practice.kind.topic') : t(`practice.kind.${round.kind}`);   // write: Schreiben
+    const kind = round.kind === 'today' ? null : round.kind === 'area' ? t(roundOf(ctx).trainer ? `practice.area.${round.area}` : round.area === 'words' ? 'course.area.words' : 'course.area.phrases') : round.kind === 'topic' ? t('practice.kind.topic') : t(`practice.kind.${round.kind}`);   // write: Schreiben
     return kind ? t('practice.finishKind', { n: left, kind }) : t('practice.finish', { n: left });
   }
 
   const rerender = () => { if (!pending) pending = render().finally(() => { pending = null; }); };
   await render();
-  refreshSimStats(ctx);
+  const own = roundOf(ctx);
+  if (own.trainer) refreshSimStats(ctx);
   // exam words: at most one request every 10 minutes; a change rebuilds the pool
-  if (secrets(store).githubToken) {
+  if (own.trainer && secrets(store).githubToken) {
     refreshWords(ctx).then(res => {
       if (alive && res.state === 'error') rerender();
       if (!alive || res.state !== 'ok') return;
       if (res.added.length) ctx.toast(t('practice.words.addedToast', { n: res.added.length }));
     }).catch(() => {});
   }
-  const offs = [store.subscribe('cards:b1', rerender), store.subscribe(`cards:${SIM_DECK}`, rerender), store.subscribe(SIM_KV, rerender), store.subscribe(WORDS, rerender), store.subscribe('mistakes', rerender), ctx.bus.on('settings:changed', rerender), store.subscribe('scripts', rerender)];
+  const offs = [store.subscribe('cards:b1', rerender), ...(own.trainer ? [] : [store.subscribe(`cards:${own.deck}`, rerender)]), store.subscribe(`cards:${SIM_DECK}`, rerender), store.subscribe(SIM_KV, rerender), store.subscribe(WORDS, rerender), store.subscribe('mistakes', rerender), ctx.bus.on('settings:changed', rerender), store.subscribe('scripts', rerender)];
   return () => { alive = false; offs.forEach(f => f()); };
 }

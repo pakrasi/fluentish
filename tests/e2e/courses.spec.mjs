@@ -22,7 +22,7 @@ async function storedSettings(page) {
   }));
 }
 
-test('Profile › Courses: the German course with its goal and minutes; other languages are listed as later', async ({ page }) => {
+test('Profile › Courses: the German course with its goal and minutes; French can be added, other languages are listed as later', async ({ page }) => {
   await seed(page, { examInDays: 4, minutes: 60 });
   await open(page, '#/profile/courses');
   const sec = page.locator('#profile-courses');
@@ -33,9 +33,11 @@ test('Profile › Courses: the German course with its goal and minutes; other la
   await expect(de.locator('.row-detail')).toContainText('60 min');
   await expect(de.locator('.row-trail')).toHaveText('Active');
   await sec.getByText('Add a course').click();
-  const fr = sec.locator('.course-add li', { hasText: 'French' });
-  await expect(fr.locator('.row-trail')).toHaveText('Later');
-  await expect(sec.getByRole('button', { name: 'Add a French course' })).toHaveCount(0);
+  // French ships (C3b): it can be added; a language without content is listed as later
+  await expect(sec.getByRole('button', { name: 'Add a French course' })).toHaveCount(1);
+  const es = sec.locator('.course-add li', { hasText: 'Spanish' });
+  await expect(es.locator('.row-trail')).toHaveText('Later');
+  await expect(sec.getByRole('button', { name: 'Add a Spanish course' })).toHaveCount(0);
   await expect(page.getByRole('group', { name: 'Language' })).toHaveCount(0);   // the language is the course now
   await checkA11y(page, 'Profile courses');
   const s = await storedSettings(page);

@@ -8,6 +8,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { LANGUAGES, PACKS, DEFAULT_PACK, packFor, languageMeta, activePack, setActivePack } from '../../src/lang/registry.js';
 import de from '../../src/lang/de/index.js';
+import fr from '../../src/lang/fr/index.js';
 import { setLanguage, pack, packFor as corePackFor, languages, LANGS, bcp47, dirAttr } from '../../src/core/lang.js';
 import * as Match from '../../src/domain/match.js';
 import Det from '../../src/domain/detect.js';
@@ -19,7 +20,7 @@ const SCRIPT = { latin: 'Latn', devanagari: 'Deva', bengali: 'Beng', arabic: 'Ar
 
 afterEach(() => setLanguage('german'));
 
-test('registry: the ten manifest languages, with their tag, script and direction; German is the only full pack', () => {
+test('registry: the ten manifest languages, with their tag, script and direction; German and French are the full packs', () => {
   assert.deepEqual(LANGUAGES.map(l => l.legacyId).sort(), manifest.languages.map((/** @type {any} */ l) => l.id).sort());
   for (const m of manifest.languages) {
     const l = languageMeta(m.id);
@@ -32,7 +33,7 @@ test('registry: the ten manifest languages, with their tag, script and direction
     assert.ok(l.speech.tts.locales.includes(l.bcp47));
   }
   assert.equal(new Set(LANGUAGES.map(l => l.id)).size, 10);
-  assert.deepEqual(Object.keys(PACKS), ['de']);
+  assert.deepEqual(Object.keys(PACKS), ['de', 'fr']);
   assert.equal(DEFAULT_PACK, de);
   assert.equal(languageMeta('kha')?.speech.asr, null, 'no recogniser has Khasi');
   assert.equal(languageMeta('gsw')?.speech.asr?.locale, 'de-CH');
@@ -40,7 +41,8 @@ test('registry: the ten manifest languages, with their tag, script and direction
 
 test('registry: packFor and the active pack; a language without a full pack keeps German', () => {
   assert.equal(packFor('de'), de); assert.equal(packFor('german'), de);
-  assert.equal(packFor('fr'), null); assert.equal(packFor('nonsense'), null);
+  assert.equal(packFor('fr'), fr); assert.equal(packFor('french'), fr); assert.equal(packFor('es'), null); assert.equal(packFor('nonsense'), null);
+  assert.equal(setActivePack('french'), fr); assert.equal(activePack(), fr);
   assert.equal(setActivePack('arabic'), de);
   assert.equal(setActivePack(null), de);
   assert.equal(activePack(), de);
@@ -56,7 +58,9 @@ test('core/lang: the table comes from the registry; setLanguage sets the pack; p
   assert.equal(pack(), de); assert.equal(activePack(), de);
   assert.equal(corePackFor('german'), de);
   assert.equal(languages().length, 10);
-  setLanguage('french');   // metadata only: German stays active everywhere
+  setLanguage('french');   // a full pack (C3b): French is active everywhere
+  assert.equal(pack(), fr); assert.deepEqual([bcp47(), dirAttr()], ['fr-FR', 'ltr']);
+  setLanguage('spanish');   // metadata only: German stays active everywhere
   assert.equal(pack(), de); assert.deepEqual([bcp47(), dirAttr()], ['de-DE', 'ltr']);
 });
 

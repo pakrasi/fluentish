@@ -1,0 +1,2917 @@
+[
+  {
+    "id": "aller.verb",
+    "w": "aller",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to go"
+    ],
+    "level": "A1",
+    "theme": "travel",
+    "ex": "Nous allons au cinéma ce soir.",
+    "exen": "We are going to the cinema tonight.",
+    "forms": "il va · il est allé · il allait · il ira",
+    "aux": "être",
+    "pp": "allé"
+  },
+  {
+    "id": "venir.verb",
+    "w": "venir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to come"
+    ],
+    "level": "A1",
+    "theme": "travel",
+    "ex": "Tu viens avec nous au restaurant ?",
+    "exen": "Are you coming with us to the restaurant?",
+    "forms": "il vient · il est venu · il venait · il viendra",
+    "aux": "être",
+    "pp": "venu"
+  },
+  {
+    "id": "arriver.verb",
+    "w": "arriver",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to arrive",
+      "to happen"
+    ],
+    "level": "A1",
+    "theme": "travel",
+    "ex": "Le train arrive à huit heures.",
+    "exen": "The train arrives at eight o'clock.",
+    "forms": "il arrive · il est arrivé · il arrivait · il arrivera",
+    "aux": "être",
+    "pp": "arrivé"
+  },
+  {
+    "id": "partir.verb",
+    "w": "partir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to leave",
+      "to go away"
+    ],
+    "level": "A1",
+    "theme": "travel",
+    "ex": "Elle est partie en vacances hier.",
+    "exen": "She left on holiday yesterday.",
+    "forms": "il part · il est parti · il partait · il partira",
+    "aux": "être",
+    "pp": "parti"
+  },
+  {
+    "id": "entrer.verb",
+    "w": "entrer",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to enter",
+      "to go in"
+    ],
+    "level": "A1",
+    "theme": "city",
+    "ex": "Entrez, la porte est ouverte !",
+    "exen": "Come in, the door is open!",
+    "forms": "il entre · il est entré · il entrait · il entrera",
+    "aux": "être",
+    "pp": "entré"
+  },
+  {
+    "id": "sortir.verb",
+    "w": "sortir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to go out",
+      "to leave"
+    ],
+    "level": "A1",
+    "theme": "leisure",
+    "ex": "Ce soir, on sort avec des amis.",
+    "exen": "Tonight we're going out with friends.",
+    "forms": "il sort · il est sorti · il sortait · il sortira",
+    "aux": "être",
+    "pp": "sorti",
+    "note": "avoir with a direct object: il a sorti la poubelle"
+  },
+  {
+    "id": "monter.verb",
+    "w": "monter",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to go up",
+      "to get on"
+    ],
+    "level": "A2",
+    "theme": "travel",
+    "ex": "Il est monté dans le bus.",
+    "exen": "He got on the bus.",
+    "forms": "il monte · il est monté · il montait · il montera",
+    "aux": "être",
+    "pp": "monté",
+    "note": "avoir with a direct object: il a monté les valises"
+  },
+  {
+    "id": "descendre.verb",
+    "w": "descendre",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to go down",
+      "to get off"
+    ],
+    "level": "A2",
+    "theme": "travel",
+    "ex": "Nous descendons au prochain arrêt.",
+    "exen": "We're getting off at the next stop.",
+    "forms": "il descend · il est descendu · il descendait · il descendra",
+    "aux": "être",
+    "pp": "descendu",
+    "note": "avoir with a direct object: il a descendu l'escalier"
+  },
+  {
+    "id": "naître.verb",
+    "w": "naître",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to be born"
+    ],
+    "level": "A2",
+    "theme": "people",
+    "ex": "Je suis né à Lyon en 1995.",
+    "exen": "I was born in Lyon in 1995.",
+    "forms": "il naît · il est né · il naissait · il naîtra",
+    "aux": "être",
+    "pp": "né"
+  },
+  {
+    "id": "mourir.verb",
+    "w": "mourir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to die"
+    ],
+    "level": "A2",
+    "theme": "people",
+    "ex": "Son grand-père est mort l'année dernière.",
+    "exen": "His grandfather died last year.",
+    "forms": "il meurt · il est mort · il mourait · il mourra",
+    "aux": "être",
+    "pp": "mort"
+  },
+  {
+    "id": "rester.verb",
+    "w": "rester",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to stay",
+      "to remain"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Je reste à la maison ce week-end.",
+    "exen": "I'm staying at home this weekend.",
+    "forms": "il reste · il est resté · il restait · il restera",
+    "aux": "être",
+    "pp": "resté"
+  },
+  {
+    "id": "tomber.verb",
+    "w": "tomber",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to fall"
+    ],
+    "level": "A2",
+    "theme": "core",
+    "ex": "L'enfant est tombé dans la rue.",
+    "exen": "The child fell in the street.",
+    "forms": "il tombe · il est tombé · il tombait · il tombera",
+    "aux": "être",
+    "pp": "tombé"
+  },
+  {
+    "id": "retourner.verb",
+    "w": "retourner",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to go back",
+      "to return"
+    ],
+    "level": "A2",
+    "theme": "travel",
+    "ex": "Elle retourne en Espagne cet été.",
+    "exen": "She is going back to Spain this summer.",
+    "forms": "il retourne · il est retourné · il retournait · il retournera",
+    "aux": "être",
+    "pp": "retourné",
+    "note": "avoir with a direct object (to turn over): il a retourné la crêpe"
+  },
+  {
+    "id": "devenir.verb",
+    "w": "devenir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to become"
+    ],
+    "level": "A2",
+    "theme": "core",
+    "ex": "Il veut devenir médecin plus tard.",
+    "exen": "He wants to become a doctor later.",
+    "forms": "il devient · il est devenu · il devenait · il deviendra",
+    "aux": "être",
+    "pp": "devenu"
+  },
+  {
+    "id": "revenir.verb",
+    "w": "revenir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to come back"
+    ],
+    "level": "A1",
+    "theme": "travel",
+    "ex": "Je reviens dans cinq minutes.",
+    "exen": "I'll be back in five minutes.",
+    "forms": "il revient · il est revenu · il revenait · il reviendra",
+    "aux": "être",
+    "pp": "revenu"
+  },
+  {
+    "id": "rentrer.verb",
+    "w": "rentrer",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to go home",
+      "to come back"
+    ],
+    "level": "A1",
+    "theme": "home",
+    "ex": "Nous sommes rentrés tard hier soir.",
+    "exen": "We got home late last night.",
+    "forms": "il rentre · il est rentré · il rentrait · il rentrera",
+    "aux": "être",
+    "pp": "rentré",
+    "note": "avoir with a direct object: il a rentré la voiture au garage"
+  },
+  {
+    "id": "passer.verb",
+    "w": "passer",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to pass",
+      "to spend (time)",
+      "to drop by"
+    ],
+    "level": "A2",
+    "theme": "core",
+    "ex": "Je suis passé chez toi ce matin.",
+    "exen": "I dropped by your place this morning.",
+    "forms": "il passe · il est passé · il passait · il passera",
+    "aux": "être",
+    "pp": "passé",
+    "note": "avoir with a direct object: il a passé un examen"
+  },
+  {
+    "id": "être.verb",
+    "w": "être",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to be"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Mon frère est très gentil.",
+    "exen": "My brother is very kind.",
+    "forms": "il est · il a été · il était · il sera",
+    "aux": "avoir",
+    "pp": "été"
+  },
+  {
+    "id": "avoir.verb",
+    "w": "avoir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to have"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "J'ai deux sœurs et un frère.",
+    "exen": "I have two sisters and a brother.",
+    "forms": "il a · il a eu · il avait · il aura",
+    "aux": "avoir",
+    "pp": "eu"
+  },
+  {
+    "id": "faire.verb",
+    "w": "faire",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to do",
+      "to make"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Qu'est-ce que tu fais ce soir ?",
+    "exen": "What are you doing tonight?",
+    "forms": "il fait · il a fait · il faisait · il fera",
+    "aux": "avoir",
+    "pp": "fait"
+  },
+  {
+    "id": "dire.verb",
+    "w": "dire",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to say",
+      "to tell"
+    ],
+    "level": "A1",
+    "theme": "communication",
+    "ex": "Elle m'a dit la vérité.",
+    "exen": "She told me the truth.",
+    "forms": "il dit · il a dit · il disait · il dira",
+    "aux": "avoir",
+    "pp": "dit"
+  },
+  {
+    "id": "pouvoir.verb",
+    "w": "pouvoir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "can",
+      "to be able to"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Tu peux m'aider, s'il te plaît ?",
+    "exen": "Can you help me, please?",
+    "forms": "il peut · il a pu · il pouvait · il pourra",
+    "aux": "avoir",
+    "pp": "pu"
+  },
+  {
+    "id": "vouloir.verb",
+    "w": "vouloir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to want"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Je voudrais un café, s'il vous plaît.",
+    "exen": "I would like a coffee, please.",
+    "forms": "il veut · il a voulu · il voulait · il voudra",
+    "aux": "avoir",
+    "pp": "voulu"
+  },
+  {
+    "id": "devoir.verb",
+    "w": "devoir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "must",
+      "to have to",
+      "to owe"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Je dois partir avant midi.",
+    "exen": "I have to leave before noon.",
+    "forms": "il doit · il a dû · il devait · il devra",
+    "aux": "avoir",
+    "pp": "dû"
+  },
+  {
+    "id": "savoir.verb",
+    "w": "savoir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to know (a fact)",
+      "to know how to"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Tu sais où est la gare ?",
+    "exen": "Do you know where the station is?",
+    "forms": "il sait · il a su · il savait · il saura",
+    "aux": "avoir",
+    "pp": "su"
+  },
+  {
+    "id": "prendre.verb",
+    "w": "prendre",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to take",
+      "to have (food, drink)"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Je prends le métro tous les jours.",
+    "exen": "I take the metro every day.",
+    "forms": "il prend · il a pris · il prenait · il prendra",
+    "aux": "avoir",
+    "pp": "pris"
+  },
+  {
+    "id": "mettre.verb",
+    "w": "mettre",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to put",
+      "to put on"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Mets ton manteau, il fait froid.",
+    "exen": "Put your coat on, it's cold.",
+    "forms": "il met · il a mis · il mettait · il mettra",
+    "aux": "avoir",
+    "pp": "mis"
+  },
+  {
+    "id": "voir.verb",
+    "w": "voir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to see"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "On a vu un bon film hier.",
+    "exen": "We saw a good film yesterday.",
+    "forms": "il voit · il a vu · il voyait · il verra",
+    "aux": "avoir",
+    "pp": "vu"
+  },
+  {
+    "id": "croire.verb",
+    "w": "croire",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to believe",
+      "to think"
+    ],
+    "level": "A2",
+    "theme": "abstract",
+    "ex": "Je crois qu'il va pleuvoir.",
+    "exen": "I think it's going to rain.",
+    "forms": "il croit · il a cru · il croyait · il croira",
+    "aux": "avoir",
+    "pp": "cru"
+  },
+  {
+    "id": "boire.verb",
+    "w": "boire",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to drink"
+    ],
+    "level": "A1",
+    "theme": "food",
+    "ex": "Il boit un thé tous les matins.",
+    "exen": "He drinks tea every morning.",
+    "forms": "il boit · il a bu · il buvait · il boira",
+    "aux": "avoir",
+    "pp": "bu"
+  },
+  {
+    "id": "lire.verb",
+    "w": "lire",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to read"
+    ],
+    "level": "A1",
+    "theme": "leisure",
+    "ex": "J'aime lire le soir dans mon lit.",
+    "exen": "I like reading in bed at night.",
+    "forms": "il lit · il a lu · il lisait · il lira",
+    "aux": "avoir",
+    "pp": "lu"
+  },
+  {
+    "id": "écrire.verb",
+    "w": "écrire",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to write"
+    ],
+    "level": "A1",
+    "theme": "communication",
+    "ex": "J'écris une lettre à ma grand-mère.",
+    "exen": "I'm writing a letter to my grandmother.",
+    "forms": "il écrit · il a écrit · il écrivait · il écrira",
+    "aux": "avoir",
+    "pp": "écrit"
+  },
+  {
+    "id": "connaître.verb",
+    "w": "connaître",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to know (a person, a place)"
+    ],
+    "level": "A1",
+    "theme": "people",
+    "ex": "Tu connais un bon restaurant ici ?",
+    "exen": "Do you know a good restaurant here?",
+    "forms": "il connaît · il a connu · il connaissait · il connaîtra",
+    "aux": "avoir",
+    "pp": "connu"
+  },
+  {
+    "id": "ouvrir.verb",
+    "w": "ouvrir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to open"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Le magasin ouvre à neuf heures.",
+    "exen": "The shop opens at nine o'clock.",
+    "forms": "il ouvre · il a ouvert · il ouvrait · il ouvrira",
+    "aux": "avoir",
+    "pp": "ouvert"
+  },
+  {
+    "id": "recevoir.verb",
+    "w": "recevoir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to receive",
+      "to get"
+    ],
+    "level": "A2",
+    "theme": "communication",
+    "ex": "J'ai reçu ton message ce matin.",
+    "exen": "I got your message this morning.",
+    "forms": "il reçoit · il a reçu · il recevait · il recevra",
+    "aux": "avoir",
+    "pp": "reçu"
+  },
+  {
+    "id": "vivre.verb",
+    "w": "vivre",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to live"
+    ],
+    "level": "A2",
+    "theme": "people",
+    "ex": "Elle a vécu trois ans à Berlin.",
+    "exen": "She lived in Berlin for three years.",
+    "forms": "il vit · il a vécu · il vivait · il vivra",
+    "aux": "avoir",
+    "pp": "vécu"
+  },
+  {
+    "id": "suivre.verb",
+    "w": "suivre",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to follow",
+      "to take (a course)"
+    ],
+    "level": "A2",
+    "theme": "core",
+    "ex": "Suivez cette rue jusqu'à la place.",
+    "exen": "Follow this street to the square.",
+    "forms": "il suit · il a suivi · il suivait · il suivra",
+    "aux": "avoir",
+    "pp": "suivi"
+  },
+  {
+    "id": "attendre.verb",
+    "w": "attendre",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to wait",
+      "to wait for"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "J'attends le bus depuis vingt minutes.",
+    "exen": "I've been waiting for the bus for twenty minutes.",
+    "forms": "il attend · il a attendu · il attendait · il attendra",
+    "aux": "avoir",
+    "pp": "attendu"
+  },
+  {
+    "id": "se lever.verb",
+    "w": "se lever",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to get up"
+    ],
+    "level": "A1",
+    "theme": "time",
+    "ex": "Je me lève à sept heures.",
+    "exen": "I get up at seven o'clock.",
+    "forms": "il se lève · il s'est levé · il se levait · il se lèvera",
+    "aux": "être",
+    "pp": "levé"
+  },
+  {
+    "id": "s'appeler.verb",
+    "w": "s'appeler",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to be called",
+      "to be named"
+    ],
+    "level": "A1",
+    "theme": "people",
+    "ex": "Comment s'appelle ton nouveau voisin ?",
+    "exen": "What's your new neighbour called?",
+    "forms": "il s'appelle · il s'est appelé · il s'appelait · il s'appellera",
+    "aux": "être",
+    "pp": "appelé"
+  },
+  {
+    "id": "se souvenir.verb",
+    "w": "se souvenir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to remember"
+    ],
+    "level": "A2",
+    "theme": "abstract",
+    "ex": "Tu te souviens de notre premier voyage ?",
+    "exen": "Do you remember our first trip?",
+    "forms": "il se souvient · il s'est souvenu · il se souvenait · il se souviendra",
+    "aux": "être",
+    "pp": "souvenu"
+  },
+  {
+    "id": "se coucher.verb",
+    "w": "se coucher",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to go to bed"
+    ],
+    "level": "A1",
+    "theme": "home",
+    "ex": "Les enfants se couchent à neuf heures.",
+    "exen": "The children go to bed at nine.",
+    "forms": "il se couche · il s'est couché · il se couchait · il se couchera",
+    "aux": "être",
+    "pp": "couché"
+  },
+  {
+    "id": "se réveiller.verb",
+    "w": "se réveiller",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to wake up"
+    ],
+    "level": "A1",
+    "theme": "home",
+    "ex": "Je me suis réveillé très tôt ce matin.",
+    "exen": "I woke up very early this morning.",
+    "forms": "il se réveille · il s'est réveillé · il se réveillait · il se réveillera",
+    "aux": "être",
+    "pp": "réveillé"
+  },
+  {
+    "id": "s'habiller.verb",
+    "w": "s'habiller",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to get dressed"
+    ],
+    "level": "A1",
+    "theme": "clothes",
+    "ex": "Elle s'habille vite le matin.",
+    "exen": "She gets dressed quickly in the morning.",
+    "forms": "il s'habille · il s'est habillé · il s'habillait · il s'habillera",
+    "aux": "être",
+    "pp": "habillé"
+  },
+  {
+    "id": "se promener.verb",
+    "w": "se promener",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to go for a walk"
+    ],
+    "level": "A2",
+    "theme": "leisure",
+    "ex": "On se promène au parc le dimanche.",
+    "exen": "We go for a walk in the park on Sundays.",
+    "forms": "il se promène · il s'est promené · il se promenait · il se promènera",
+    "aux": "être",
+    "pp": "promené"
+  },
+  {
+    "id": "s'asseoir.verb",
+    "w": "s'asseoir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to sit down"
+    ],
+    "level": "A2",
+    "theme": "core",
+    "ex": "Asseyez-vous, je vous en prie.",
+    "exen": "Please sit down.",
+    "forms": "il s'assied · il s'est assis · il s'asseyait · il s'assiéra",
+    "aux": "être",
+    "pp": "assis"
+  },
+  {
+    "id": "se dépêcher.verb",
+    "w": "se dépêcher",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to hurry"
+    ],
+    "level": "A2",
+    "theme": "time",
+    "ex": "Dépêche-toi, le film commence dans cinq minutes !",
+    "exen": "Hurry up, the film starts in five minutes!",
+    "forms": "il se dépêche · il s'est dépêché · il se dépêchait · il se dépêchera",
+    "aux": "être",
+    "pp": "dépêché"
+  },
+  {
+    "id": "falloir.verb",
+    "w": "falloir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to be necessary",
+      "must",
+      "to have to (impersonal)"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Il faut acheter du pain ce soir.",
+    "exen": "We need to buy bread tonight.",
+    "forms": "il faut · il a fallu · il fallait · il faudra",
+    "aux": "avoir",
+    "pp": "fallu"
+  },
+  {
+    "id": "pleuvoir.verb",
+    "w": "pleuvoir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to rain"
+    ],
+    "level": "A1",
+    "theme": "nature",
+    "ex": "Il pleut beaucoup en novembre.",
+    "exen": "It rains a lot in November.",
+    "forms": "il pleut · il a plu · il pleuvait · il pleuvra",
+    "aux": "avoir",
+    "pp": "plu"
+  },
+  {
+    "id": "comprendre.verb",
+    "w": "comprendre",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to understand"
+    ],
+    "level": "A1",
+    "theme": "communication",
+    "ex": "Je ne comprends pas cette question.",
+    "exen": "I don't understand this question.",
+    "forms": "il comprend · il a compris · il comprenait · il comprendra",
+    "aux": "avoir",
+    "pp": "compris"
+  },
+  {
+    "id": "apprendre.verb",
+    "w": "apprendre",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to learn",
+      "to teach"
+    ],
+    "level": "A1",
+    "theme": "school",
+    "ex": "J'apprends le français depuis un an.",
+    "exen": "I've been learning French for a year.",
+    "forms": "il apprend · il a appris · il apprenait · il apprendra",
+    "aux": "avoir",
+    "pp": "appris"
+  },
+  {
+    "id": "courir.verb",
+    "w": "courir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to run"
+    ],
+    "level": "A2",
+    "theme": "leisure",
+    "ex": "Il court dans le parc chaque matin.",
+    "exen": "He runs in the park every morning.",
+    "forms": "il court · il a couru · il courait · il courra",
+    "aux": "avoir",
+    "pp": "couru"
+  },
+  {
+    "id": "dormir.verb",
+    "w": "dormir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to sleep"
+    ],
+    "level": "A1",
+    "theme": "home",
+    "ex": "J'ai mal dormi cette nuit.",
+    "exen": "I slept badly last night.",
+    "forms": "il dort · il a dormi · il dormait · il dormira",
+    "aux": "avoir",
+    "pp": "dormi"
+  },
+  {
+    "id": "sentir.verb",
+    "w": "sentir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to smell",
+      "to feel"
+    ],
+    "level": "A2",
+    "theme": "body",
+    "ex": "Ça sent bon dans la cuisine !",
+    "exen": "It smells good in the kitchen!",
+    "forms": "il sent · il a senti · il sentait · il sentira",
+    "aux": "avoir",
+    "pp": "senti"
+  },
+  {
+    "id": "servir.verb",
+    "w": "servir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to serve",
+      "to be used for"
+    ],
+    "level": "B1",
+    "theme": "food",
+    "ex": "Le restaurant sert le dîner jusqu'à minuit.",
+    "exen": "The restaurant serves dinner until midnight.",
+    "forms": "il sert · il a servi · il servait · il servira",
+    "aux": "avoir",
+    "pp": "servi"
+  },
+  {
+    "id": "offrir.verb",
+    "w": "offrir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to give (as a gift)",
+      "to offer"
+    ],
+    "level": "A2",
+    "theme": "people",
+    "ex": "Il m'a offert des fleurs pour mon anniversaire.",
+    "exen": "He gave me flowers for my birthday.",
+    "forms": "il offre · il a offert · il offrait · il offrira",
+    "aux": "avoir",
+    "pp": "offert"
+  },
+  {
+    "id": "conduire.verb",
+    "w": "conduire",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to drive"
+    ],
+    "level": "A2",
+    "theme": "travel",
+    "ex": "Ma mère conduit très prudemment.",
+    "exen": "My mother drives very carefully.",
+    "forms": "il conduit · il a conduit · il conduisait · il conduira",
+    "aux": "avoir",
+    "pp": "conduit"
+  },
+  {
+    "id": "choisir.verb",
+    "w": "choisir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to choose"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Tu as choisi un dessert ?",
+    "exen": "Have you chosen a dessert?",
+    "forms": "il choisit · il a choisi · il choisissait · il choisira",
+    "aux": "avoir",
+    "pp": "choisi"
+  },
+  {
+    "id": "finir.verb",
+    "w": "finir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to finish",
+      "to end"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Le cours finit à midi.",
+    "exen": "The class ends at noon.",
+    "forms": "il finit · il a fini · il finissait · il finira",
+    "aux": "avoir",
+    "pp": "fini"
+  },
+  {
+    "id": "réussir.verb",
+    "w": "réussir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to succeed",
+      "to pass (an exam)"
+    ],
+    "level": "A2",
+    "theme": "school",
+    "ex": "Elle a réussi son examen de conduite.",
+    "exen": "She passed her driving test.",
+    "forms": "il réussit · il a réussi · il réussissait · il réussira",
+    "aux": "avoir",
+    "pp": "réussi"
+  },
+  {
+    "id": "grandir.verb",
+    "w": "grandir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to grow up",
+      "to grow"
+    ],
+    "level": "A2",
+    "theme": "people",
+    "ex": "J'ai grandi dans un petit village.",
+    "exen": "I grew up in a small village.",
+    "forms": "il grandit · il a grandi · il grandissait · il grandira",
+    "aux": "avoir",
+    "pp": "grandi"
+  },
+  {
+    "id": "réfléchir.verb",
+    "w": "réfléchir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to think (about)",
+      "to reflect"
+    ],
+    "level": "B1",
+    "theme": "abstract",
+    "ex": "Je vais réfléchir à ta proposition.",
+    "exen": "I'll think about your proposal.",
+    "forms": "il réfléchit · il a réfléchi · il réfléchissait · il réfléchira",
+    "aux": "avoir",
+    "pp": "réfléchi"
+  },
+  {
+    "id": "remplir.verb",
+    "w": "remplir",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to fill",
+      "to fill in"
+    ],
+    "level": "B1",
+    "theme": "work",
+    "ex": "Remplissez ce formulaire, s'il vous plaît.",
+    "exen": "Please fill in this form.",
+    "forms": "il remplit · il a rempli · il remplissait · il remplira",
+    "aux": "avoir",
+    "pp": "rempli"
+  },
+  {
+    "id": "vendre.verb",
+    "w": "vendre",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to sell"
+    ],
+    "level": "A2",
+    "theme": "money",
+    "ex": "Ils ont vendu leur maison l'an dernier.",
+    "exen": "They sold their house last year.",
+    "forms": "il vend · il a vendu · il vendait · il vendra",
+    "aux": "avoir",
+    "pp": "vendu"
+  },
+  {
+    "id": "répondre.verb",
+    "w": "répondre",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to answer",
+      "to reply"
+    ],
+    "level": "A1",
+    "theme": "communication",
+    "ex": "Il ne répond pas au téléphone.",
+    "exen": "He isn't answering the phone.",
+    "forms": "il répond · il a répondu · il répondait · il répondra",
+    "aux": "avoir",
+    "pp": "répondu"
+  },
+  {
+    "id": "entendre.verb",
+    "w": "entendre",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to hear"
+    ],
+    "level": "A1",
+    "theme": "body",
+    "ex": "Tu entends la musique des voisins ?",
+    "exen": "Can you hear the neighbours' music?",
+    "forms": "il entend · il a entendu · il entendait · il entendra",
+    "aux": "avoir",
+    "pp": "entendu"
+  },
+  {
+    "id": "perdre.verb",
+    "w": "perdre",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to lose"
+    ],
+    "level": "A2",
+    "theme": "core",
+    "ex": "J'ai perdu mes clés dans le train.",
+    "exen": "I lost my keys on the train.",
+    "forms": "il perd · il a perdu · il perdait · il perdra",
+    "aux": "avoir",
+    "pp": "perdu"
+  },
+  {
+    "id": "rendre.verb",
+    "w": "rendre",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to give back",
+      "to return"
+    ],
+    "level": "A2",
+    "theme": "core",
+    "ex": "Je te rends ton livre demain.",
+    "exen": "I'll give your book back tomorrow.",
+    "forms": "il rend · il a rendu · il rendait · il rendra",
+    "aux": "avoir",
+    "pp": "rendu"
+  },
+  {
+    "id": "parler.verb",
+    "w": "parler",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to speak",
+      "to talk"
+    ],
+    "level": "A1",
+    "theme": "communication",
+    "ex": "Elle parle trois langues étrangères.",
+    "exen": "She speaks three foreign languages.",
+    "forms": "il parle · il a parlé · il parlait · il parlera",
+    "aux": "avoir",
+    "pp": "parlé"
+  },
+  {
+    "id": "manger.verb",
+    "w": "manger",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to eat"
+    ],
+    "level": "A1",
+    "theme": "food",
+    "ex": "Nous mangeons ensemble à midi.",
+    "exen": "We eat together at noon.",
+    "forms": "il mange · il a mangé · il mangeait · il mangera",
+    "aux": "avoir",
+    "pp": "mangé"
+  },
+  {
+    "id": "commencer.verb",
+    "w": "commencer",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to start",
+      "to begin"
+    ],
+    "level": "A1",
+    "theme": "time",
+    "ex": "Le film commence à vingt heures.",
+    "exen": "The film starts at eight p.m.",
+    "forms": "il commence · il a commencé · il commençait · il commencera",
+    "aux": "avoir",
+    "pp": "commencé"
+  },
+  {
+    "id": "acheter.verb",
+    "w": "acheter",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to buy"
+    ],
+    "level": "A1",
+    "theme": "money",
+    "ex": "J'achète des légumes au marché.",
+    "exen": "I buy vegetables at the market.",
+    "forms": "il achète · il a acheté · il achetait · il achètera",
+    "aux": "avoir",
+    "pp": "acheté"
+  },
+  {
+    "id": "appeler.verb",
+    "w": "appeler",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to call",
+      "to phone"
+    ],
+    "level": "A1",
+    "theme": "communication",
+    "ex": "Je t'appelle ce soir après le travail.",
+    "exen": "I'll call you tonight after work.",
+    "forms": "il appelle · il a appelé · il appelait · il appellera",
+    "aux": "avoir",
+    "pp": "appelé"
+  },
+  {
+    "id": "préférer.verb",
+    "w": "préférer",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to prefer"
+    ],
+    "level": "A1",
+    "theme": "feelings",
+    "ex": "Je préfère le thé au café.",
+    "exen": "I prefer tea to coffee.",
+    "forms": "il préfère · il a préféré · il préférait · il préférera",
+    "aux": "avoir",
+    "pp": "préféré"
+  },
+  {
+    "id": "payer.verb",
+    "w": "payer",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to pay",
+      "to pay for"
+    ],
+    "level": "A1",
+    "theme": "money",
+    "ex": "Je peux payer par carte ?",
+    "exen": "Can I pay by card?",
+    "forms": "il paie · il a payé · il payait · il paiera",
+    "aux": "avoir",
+    "pp": "payé"
+  },
+  {
+    "id": "envoyer.verb",
+    "w": "envoyer",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to send"
+    ],
+    "level": "A2",
+    "theme": "communication",
+    "ex": "Envoie-moi un message quand tu arrives.",
+    "exen": "Send me a message when you arrive.",
+    "forms": "il envoie · il a envoyé · il envoyait · il enverra",
+    "aux": "avoir",
+    "pp": "envoyé"
+  },
+  {
+    "id": "essayer.verb",
+    "w": "essayer",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to try",
+      "to try on"
+    ],
+    "level": "A2",
+    "theme": "core",
+    "ex": "Je peux essayer cette robe ?",
+    "exen": "Can I try on this dress?",
+    "forms": "il essaie · il a essayé · il essayait · il essaiera",
+    "aux": "avoir",
+    "pp": "essayé"
+  },
+  {
+    "id": "aimer.verb",
+    "w": "aimer",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to like",
+      "to love"
+    ],
+    "level": "A1",
+    "theme": "feelings",
+    "ex": "J'aime beaucoup la cuisine italienne.",
+    "exen": "I really like Italian food.",
+    "forms": "il aime · il a aimé · il aimait · il aimera",
+    "aux": "avoir",
+    "pp": "aimé"
+  },
+  {
+    "id": "travailler.verb",
+    "w": "travailler",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to work"
+    ],
+    "level": "A1",
+    "theme": "work",
+    "ex": "Mon père travaille dans un hôpital.",
+    "exen": "My father works in a hospital.",
+    "forms": "il travaille · il a travaillé · il travaillait · il travaillera",
+    "aux": "avoir",
+    "pp": "travaillé"
+  },
+  {
+    "id": "habiter.verb",
+    "w": "habiter",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to live (somewhere)"
+    ],
+    "level": "A1",
+    "theme": "home",
+    "ex": "J'habite dans un appartement à Paris.",
+    "exen": "I live in a flat in Paris.",
+    "forms": "il habite · il a habité · il habitait · il habitera",
+    "aux": "avoir",
+    "pp": "habité"
+  },
+  {
+    "id": "chercher.verb",
+    "w": "chercher",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to look for",
+      "to search for"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Je cherche la rue de la Paix.",
+    "exen": "I'm looking for the rue de la Paix.",
+    "forms": "il cherche · il a cherché · il cherchait · il cherchera",
+    "aux": "avoir",
+    "pp": "cherché"
+  },
+  {
+    "id": "trouver.verb",
+    "w": "trouver",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to find",
+      "to think (opinion)"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "J'ai trouvé un portefeuille dans la rue.",
+    "exen": "I found a wallet in the street.",
+    "forms": "il trouve · il a trouvé · il trouvait · il trouvera",
+    "aux": "avoir",
+    "pp": "trouvé"
+  },
+  {
+    "id": "donner.verb",
+    "w": "donner",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to give"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Tu peux me donner le sel ?",
+    "exen": "Can you give me the salt?",
+    "forms": "il donne · il a donné · il donnait · il donnera",
+    "aux": "avoir",
+    "pp": "donné"
+  },
+  {
+    "id": "demander.verb",
+    "w": "demander",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to ask",
+      "to ask for"
+    ],
+    "level": "A1",
+    "theme": "communication",
+    "ex": "Je vais demander l'addition au serveur.",
+    "exen": "I'll ask the waiter for the bill.",
+    "forms": "il demande · il a demandé · il demandait · il demandera",
+    "aux": "avoir",
+    "pp": "demandé"
+  },
+  {
+    "id": "penser.verb",
+    "w": "penser",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to think"
+    ],
+    "level": "A1",
+    "theme": "abstract",
+    "ex": "Je pense souvent à mes amis.",
+    "exen": "I often think about my friends.",
+    "forms": "il pense · il a pensé · il pensait · il pensera",
+    "aux": "avoir",
+    "pp": "pensé"
+  },
+  {
+    "id": "regarder.verb",
+    "w": "regarder",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to watch",
+      "to look at"
+    ],
+    "level": "A1",
+    "theme": "media",
+    "ex": "On regarde la télé après le dîner.",
+    "exen": "We watch TV after dinner.",
+    "forms": "il regarde · il a regardé · il regardait · il regardera",
+    "aux": "avoir",
+    "pp": "regardé"
+  },
+  {
+    "id": "écouter.verb",
+    "w": "écouter",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to listen to"
+    ],
+    "level": "A1",
+    "theme": "media",
+    "ex": "J'écoute de la musique dans le train.",
+    "exen": "I listen to music on the train.",
+    "forms": "il écoute · il a écouté · il écoutait · il écoutera",
+    "aux": "avoir",
+    "pp": "écouté"
+  },
+  {
+    "id": "jouer.verb",
+    "w": "jouer",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to play"
+    ],
+    "level": "A1",
+    "theme": "leisure",
+    "ex": "Les enfants jouent au foot dans le jardin.",
+    "exen": "The children are playing football in the garden.",
+    "forms": "il joue · il a joué · il jouait · il jouera",
+    "aux": "avoir",
+    "pp": "joué"
+  },
+  {
+    "id": "porter.verb",
+    "w": "porter",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to wear",
+      "to carry"
+    ],
+    "level": "A2",
+    "theme": "clothes",
+    "ex": "Elle porte une jolie robe bleue.",
+    "exen": "She is wearing a pretty blue dress.",
+    "forms": "il porte · il a porté · il portait · il portera",
+    "aux": "avoir",
+    "pp": "porté"
+  },
+  {
+    "id": "laisser.verb",
+    "w": "laisser",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to leave (something)",
+      "to let"
+    ],
+    "level": "A2",
+    "theme": "core",
+    "ex": "J'ai laissé mon sac dans la voiture.",
+    "exen": "I left my bag in the car.",
+    "forms": "il laisse · il a laissé · il laissait · il laissera",
+    "aux": "avoir",
+    "pp": "laissé"
+  },
+  {
+    "id": "montrer.verb",
+    "w": "montrer",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to show"
+    ],
+    "level": "A2",
+    "theme": "communication",
+    "ex": "Tu peux me montrer le chemin ?",
+    "exen": "Can you show me the way?",
+    "forms": "il montre · il a montré · il montrait · il montrera",
+    "aux": "avoir",
+    "pp": "montré"
+  },
+  {
+    "id": "oublier.verb",
+    "w": "oublier",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to forget"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "J'ai oublié mon parapluie chez toi.",
+    "exen": "I forgot my umbrella at your place.",
+    "forms": "il oublie · il a oublié · il oubliait · il oubliera",
+    "aux": "avoir",
+    "pp": "oublié"
+  },
+  {
+    "id": "utiliser.verb",
+    "w": "utiliser",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to use"
+    ],
+    "level": "A2",
+    "theme": "core",
+    "ex": "J'utilise mon téléphone pour tout.",
+    "exen": "I use my phone for everything.",
+    "forms": "il utilise · il a utilisé · il utilisait · il utilisera",
+    "aux": "avoir",
+    "pp": "utilisé"
+  },
+  {
+    "id": "voyager.verb",
+    "w": "voyager",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to travel"
+    ],
+    "level": "A1",
+    "theme": "travel",
+    "ex": "Nous voyageons souvent en train.",
+    "exen": "We often travel by train.",
+    "forms": "il voyage · il a voyagé · il voyageait · il voyagera",
+    "aux": "avoir",
+    "pp": "voyagé"
+  },
+  {
+    "id": "changer.verb",
+    "w": "changer",
+    "pos": "verb",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "to change"
+    ],
+    "level": "A2",
+    "theme": "core",
+    "ex": "Elle a changé de travail en mai.",
+    "exen": "She changed jobs in May.",
+    "forms": "il change · il a changé · il changeait · il changera",
+    "aux": "avoir",
+    "pp": "changé"
+  },
+  {
+    "id": "grand.adj",
+    "w": "grand",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "big",
+      "tall",
+      "great"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Ils habitent dans une grande maison.",
+    "exen": "They live in a big house.",
+    "fem": "grande",
+    "before": true
+  },
+  {
+    "id": "petit.adj",
+    "w": "petit",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "small",
+      "little"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "J'ai un petit chien noir.",
+    "exen": "I have a little black dog.",
+    "fem": "petite",
+    "before": true
+  },
+  {
+    "id": "bon.adj",
+    "w": "bon",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "good"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "C'est une très bonne idée !",
+    "exen": "That's a very good idea!",
+    "fem": "bonne",
+    "before": true
+  },
+  {
+    "id": "mauvais.adj",
+    "w": "mauvais",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "bad"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Il a eu une mauvaise note.",
+    "exen": "He got a bad mark.",
+    "fem": "mauvaise",
+    "before": true
+  },
+  {
+    "id": "beau.adj",
+    "w": "beau",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "beautiful",
+      "handsome",
+      "nice (weather)"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Nous avons passé une belle journée à la plage.",
+    "exen": "We had a lovely day at the beach.",
+    "fem": "belle",
+    "before": true
+  },
+  {
+    "id": "nouveau.adj",
+    "w": "nouveau",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "new"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "J'ai acheté une nouvelle voiture.",
+    "exen": "I bought a new car.",
+    "fem": "nouvelle",
+    "before": true
+  },
+  {
+    "id": "vieux.adj",
+    "w": "vieux",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "old"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Il habite dans une vieille maison.",
+    "exen": "He lives in an old house.",
+    "fem": "vieille",
+    "before": true
+  },
+  {
+    "id": "jeune.adj",
+    "w": "jeune",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "young"
+    ],
+    "level": "A1",
+    "theme": "people",
+    "ex": "C'est une jeune femme très sympa.",
+    "exen": "She's a very nice young woman.",
+    "fem": "jeune",
+    "before": true
+  },
+  {
+    "id": "joli.adj",
+    "w": "joli",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "pretty",
+      "nice"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Vous avez un joli jardin.",
+    "exen": "You have a pretty garden.",
+    "fem": "jolie",
+    "before": true
+  },
+  {
+    "id": "gros.adj",
+    "w": "gros",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "big",
+      "fat"
+    ],
+    "level": "A2",
+    "theme": "core",
+    "ex": "Il y a un gros problème.",
+    "exen": "There's a big problem.",
+    "fem": "grosse",
+    "before": true
+  },
+  {
+    "id": "long.adj",
+    "w": "long",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "long"
+    ],
+    "level": "A2",
+    "theme": "core",
+    "ex": "C'était un long voyage en bus.",
+    "exen": "It was a long bus journey.",
+    "fem": "longue",
+    "before": true
+  },
+  {
+    "id": "haut.adj",
+    "w": "haut",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "high",
+      "tall"
+    ],
+    "level": "A2",
+    "theme": "core",
+    "ex": "Il y a de hautes montagnes dans cette région.",
+    "exen": "There are high mountains in this region.",
+    "fem": "haute",
+    "before": true
+  },
+  {
+    "id": "premier.adj",
+    "w": "premier",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "first"
+    ],
+    "level": "A1",
+    "theme": "time",
+    "ex": "C'est mon premier jour au travail.",
+    "exen": "It's my first day at work.",
+    "fem": "première",
+    "before": true
+  },
+  {
+    "id": "dernier.adj",
+    "w": "dernier",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "last"
+    ],
+    "level": "A1",
+    "theme": "time",
+    "ex": "C'est la dernière fois, je te le promets.",
+    "exen": "It's the last time, I promise.",
+    "fem": "dernière",
+    "before": true
+  },
+  {
+    "id": "heureux.adj",
+    "w": "heureux",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "happy"
+    ],
+    "level": "A1",
+    "theme": "feelings",
+    "ex": "Elle est très heureuse ici.",
+    "exen": "She is very happy here.",
+    "fem": "heureuse"
+  },
+  {
+    "id": "facile.adj",
+    "w": "facile",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "easy"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Cet exercice de grammaire est facile.",
+    "exen": "This grammar exercise is easy.",
+    "fem": "facile"
+  },
+  {
+    "id": "difficile.adj",
+    "w": "difficile",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "difficult",
+      "hard"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "C'est une question très difficile pour moi.",
+    "exen": "It's a very difficult question for me.",
+    "fem": "difficile"
+  },
+  {
+    "id": "content.adj",
+    "w": "content",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "pleased",
+      "glad",
+      "happy"
+    ],
+    "level": "A1",
+    "theme": "feelings",
+    "ex": "Je suis content de te voir.",
+    "exen": "I'm glad to see you.",
+    "fem": "contente"
+  },
+  {
+    "id": "triste.adj",
+    "w": "triste",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "sad"
+    ],
+    "level": "A1",
+    "theme": "feelings",
+    "ex": "Pourquoi est-ce que tu es triste ?",
+    "exen": "Why are you sad?",
+    "fem": "triste"
+  },
+  {
+    "id": "fatigué.adj",
+    "w": "fatigué",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "tired"
+    ],
+    "level": "A1",
+    "theme": "body",
+    "ex": "Je suis fatigué après le travail.",
+    "exen": "I'm tired after work.",
+    "fem": "fatiguée"
+  },
+  {
+    "id": "cher.adj",
+    "w": "cher",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "expensive",
+      "dear"
+    ],
+    "level": "A1",
+    "theme": "money",
+    "ex": "Ce restaurant est trop cher pour nous.",
+    "exen": "This restaurant is too expensive for us.",
+    "fem": "chère"
+  },
+  {
+    "id": "blanc.adj",
+    "w": "blanc",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "white"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Elle porte une chemise blanche.",
+    "exen": "She is wearing a white shirt.",
+    "fem": "blanche"
+  },
+  {
+    "id": "noir.adj",
+    "w": "noir",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "black"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "J'ai perdu mon sac noir.",
+    "exen": "I lost my black bag.",
+    "fem": "noire"
+  },
+  {
+    "id": "rouge.adj",
+    "w": "rouge",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "red"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Il conduit une voiture rouge.",
+    "exen": "He drives a red car.",
+    "fem": "rouge"
+  },
+  {
+    "id": "vert.adj",
+    "w": "vert",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "green"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Je voudrais une salade verte.",
+    "exen": "I'd like a green salad.",
+    "fem": "verte"
+  },
+  {
+    "id": "bleu.adj",
+    "w": "bleu",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "blue"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Elle a les yeux bleus.",
+    "exen": "She has blue eyes.",
+    "fem": "bleue"
+  },
+  {
+    "id": "gentil.adj",
+    "w": "gentil",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "kind",
+      "nice"
+    ],
+    "level": "A1",
+    "theme": "people",
+    "ex": "Ta sœur est vraiment gentille.",
+    "exen": "Your sister is really kind.",
+    "fem": "gentille"
+  },
+  {
+    "id": "sérieux.adj",
+    "w": "sérieux",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "serious",
+      "reliable"
+    ],
+    "level": "A2",
+    "theme": "people",
+    "ex": "C'est un élève très sérieux.",
+    "exen": "He's a very hard-working pupil.",
+    "fem": "sérieuse"
+  },
+  {
+    "id": "français.adj",
+    "w": "français",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "French"
+    ],
+    "level": "A1",
+    "theme": "society",
+    "ex": "J'adore la cuisine française et italienne.",
+    "exen": "I love French and Italian cooking.",
+    "fem": "française"
+  },
+  {
+    "id": "chaud.adj",
+    "w": "chaud",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "hot",
+      "warm"
+    ],
+    "level": "A1",
+    "theme": "nature",
+    "ex": "Je voudrais un chocolat chaud.",
+    "exen": "I'd like a hot chocolate.",
+    "fem": "chaude"
+  },
+  {
+    "id": "froid.adj",
+    "w": "froid",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "cold"
+    ],
+    "level": "A1",
+    "theme": "nature",
+    "ex": "L'eau de la mer est froide.",
+    "exen": "The sea water is cold.",
+    "fem": "froide"
+  },
+  {
+    "id": "libre.adj",
+    "w": "libre",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "free",
+      "available"
+    ],
+    "level": "A1",
+    "theme": "time",
+    "ex": "Tu es libre samedi soir ?",
+    "exen": "Are you free on Saturday evening?",
+    "fem": "libre"
+  },
+  {
+    "id": "vide.adj",
+    "w": "vide",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "empty"
+    ],
+    "level": "A2",
+    "theme": "core",
+    "ex": "Le frigo est complètement vide.",
+    "exen": "The fridge is completely empty.",
+    "fem": "vide"
+  },
+  {
+    "id": "propre.adj",
+    "w": "propre",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "clean",
+      "own (before the noun)"
+    ],
+    "level": "A2",
+    "theme": "home",
+    "ex": "Les serviettes dans la salle de bains sont propres.",
+    "exen": "The towels in the bathroom are clean.",
+    "fem": "propre"
+  },
+  {
+    "id": "sale.adj",
+    "w": "sale",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "dirty"
+    ],
+    "level": "A2",
+    "theme": "home",
+    "ex": "Ton pantalon est sale, mets-le dans la machine.",
+    "exen": "Your trousers are dirty, put them in the washing machine.",
+    "fem": "sale"
+  },
+  {
+    "id": "rapide.adj",
+    "w": "rapide",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "fast",
+      "quick"
+    ],
+    "level": "A2",
+    "theme": "core",
+    "ex": "Le TGV est un train rapide.",
+    "exen": "The TGV is a fast train.",
+    "fem": "rapide"
+  },
+  {
+    "id": "important.adj",
+    "w": "important",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "important"
+    ],
+    "level": "A1",
+    "theme": "abstract",
+    "ex": "J'ai une réunion importante demain.",
+    "exen": "I have an important meeting tomorrow.",
+    "fem": "importante"
+  },
+  {
+    "id": "intéressant.adj",
+    "w": "intéressant",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "interesting"
+    ],
+    "level": "A1",
+    "theme": "abstract",
+    "ex": "C'est un livre très intéressant.",
+    "exen": "It's a very interesting book.",
+    "fem": "intéressante"
+  },
+  {
+    "id": "fort.adj",
+    "w": "fort",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "strong",
+      "loud",
+      "good at"
+    ],
+    "level": "A2",
+    "theme": "core",
+    "ex": "Elle est forte en maths.",
+    "exen": "She is good at maths.",
+    "fem": "forte"
+  },
+  {
+    "id": "doux.adj",
+    "w": "doux",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "soft",
+      "gentle",
+      "mild"
+    ],
+    "level": "B1",
+    "theme": "core",
+    "ex": "Il fait doux ce matin.",
+    "exen": "It's mild this morning.",
+    "fem": "douce"
+  },
+  {
+    "id": "frais.adj",
+    "w": "frais",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "fresh",
+      "cool"
+    ],
+    "level": "A2",
+    "theme": "food",
+    "ex": "J'achète du poisson frais au marché.",
+    "exen": "I buy fresh fish at the market.",
+    "fem": "fraîche"
+  },
+  {
+    "id": "malade.adj",
+    "w": "malade",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "ill",
+      "sick"
+    ],
+    "level": "A1",
+    "theme": "body",
+    "ex": "Je suis malade depuis lundi.",
+    "exen": "I've been ill since Monday.",
+    "fem": "malade"
+  },
+  {
+    "id": "prêt.adj",
+    "w": "prêt",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "ready"
+    ],
+    "level": "A2",
+    "theme": "core",
+    "ex": "Tu es prête ? On part !",
+    "exen": "Are you ready? We're leaving!",
+    "fem": "prête"
+  },
+  {
+    "id": "inquiet.adj",
+    "w": "inquiet",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "worried",
+      "anxious"
+    ],
+    "level": "B1",
+    "theme": "feelings",
+    "ex": "Sa mère est inquiète pour lui.",
+    "exen": "His mother is worried about him.",
+    "fem": "inquiète"
+  },
+  {
+    "id": "ennuyeux.adj",
+    "w": "ennuyeux",
+    "pos": "adj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "boring"
+    ],
+    "level": "A2",
+    "theme": "feelings",
+    "ex": "Ce film est vraiment ennuyeux.",
+    "exen": "This film is really boring.",
+    "fem": "ennuyeuse"
+  },
+  {
+    "id": "souvent.adv",
+    "w": "souvent",
+    "pos": "adv",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "often"
+    ],
+    "level": "A1",
+    "theme": "time",
+    "ex": "Je vais souvent au marché le samedi.",
+    "exen": "I often go to the market on Saturdays."
+  },
+  {
+    "id": "toujours.adv",
+    "w": "toujours",
+    "pos": "adv",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "always",
+      "still"
+    ],
+    "level": "A1",
+    "theme": "time",
+    "ex": "Il est toujours en retard.",
+    "exen": "He is always late."
+  },
+  {
+    "id": "déjà.adv",
+    "w": "déjà",
+    "pos": "adv",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "already",
+      "ever"
+    ],
+    "level": "A1",
+    "theme": "time",
+    "ex": "Tu as déjà visité le musée du Louvre ?",
+    "exen": "Have you ever visited the Louvre museum?"
+  },
+  {
+    "id": "encore.adv",
+    "w": "encore",
+    "pos": "adv",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "again",
+      "still",
+      "more"
+    ],
+    "level": "A1",
+    "theme": "time",
+    "ex": "Tu veux encore du café ?",
+    "exen": "Do you want more coffee?"
+  },
+  {
+    "id": "maintenant.adv",
+    "w": "maintenant",
+    "pos": "adv",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "now"
+    ],
+    "level": "A1",
+    "theme": "time",
+    "ex": "Je dois vraiment partir maintenant, désolé.",
+    "exen": "I really have to leave now, sorry."
+  },
+  {
+    "id": "jamais.adv",
+    "w": "jamais",
+    "pos": "adv",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "never",
+      "ever"
+    ],
+    "level": "A1",
+    "theme": "time",
+    "ex": "Je ne bois jamais de café le soir.",
+    "exen": "I never drink coffee in the evening."
+  },
+  {
+    "id": "aujourd'hui.adv",
+    "w": "aujourd'hui",
+    "pos": "adv",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "today"
+    ],
+    "level": "A1",
+    "theme": "time",
+    "ex": "Il fait très beau aujourd'hui.",
+    "exen": "The weather is lovely today."
+  },
+  {
+    "id": "demain.adv",
+    "w": "demain",
+    "pos": "adv",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "tomorrow"
+    ],
+    "level": "A1",
+    "theme": "time",
+    "ex": "On se voit demain matin ?",
+    "exen": "Shall we meet tomorrow morning?"
+  },
+  {
+    "id": "hier.adv",
+    "w": "hier",
+    "pos": "adv",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "yesterday"
+    ],
+    "level": "A1",
+    "theme": "time",
+    "ex": "Hier, je suis allé à la piscine.",
+    "exen": "Yesterday I went to the swimming pool."
+  },
+  {
+    "id": "bientôt.adv",
+    "w": "bientôt",
+    "pos": "adv",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "soon"
+    ],
+    "level": "A1",
+    "theme": "time",
+    "ex": "À bientôt, et bon voyage !",
+    "exen": "See you soon, and have a good trip!"
+  },
+  {
+    "id": "beaucoup.adv",
+    "w": "beaucoup",
+    "pos": "adv",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "a lot",
+      "much",
+      "many"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Merci beaucoup pour ton aide.",
+    "exen": "Thank you very much for your help."
+  },
+  {
+    "id": "trop.adv",
+    "w": "trop",
+    "pos": "adv",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "too",
+      "too much"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Ce manteau est trop grand pour moi.",
+    "exen": "This coat is too big for me."
+  },
+  {
+    "id": "peut-être.adv",
+    "w": "peut-être",
+    "pos": "adv",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "maybe",
+      "perhaps"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Il va peut-être pleuvoir cet après-midi.",
+    "exen": "It may rain this afternoon."
+  },
+  {
+    "id": "ensemble.adv",
+    "w": "ensemble",
+    "pos": "adv",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "together"
+    ],
+    "level": "A1",
+    "theme": "people",
+    "ex": "On peut déjeuner ensemble demain ?",
+    "exen": "Can we have lunch together tomorrow?"
+  },
+  {
+    "id": "chez.prep",
+    "w": "chez",
+    "pos": "prep",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "at (someone's) place",
+      "at (someone's) house",
+      "at the (shop/professional), e.g. at the baker's"
+    ],
+    "level": "A1",
+    "theme": "home",
+    "ex": "Je dîne chez mes parents ce soir.",
+    "exen": "I'm having dinner at my parents' tonight."
+  },
+  {
+    "id": "pendant.prep",
+    "w": "pendant",
+    "pos": "prep",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "during",
+      "for (a duration)"
+    ],
+    "level": "A2",
+    "theme": "time",
+    "ex": "J'ai dormi pendant tout le voyage.",
+    "exen": "I slept during the whole journey."
+  },
+  {
+    "id": "depuis.prep",
+    "w": "depuis",
+    "pos": "prep",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "since",
+      "for (ongoing)"
+    ],
+    "level": "A2",
+    "theme": "time",
+    "ex": "J'habite ici depuis trois ans.",
+    "exen": "I've lived here for three years."
+  },
+  {
+    "id": "sans.prep",
+    "w": "sans",
+    "pos": "prep",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "without"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Je prends mon café sans sucre.",
+    "exen": "I take my coffee without sugar."
+  },
+  {
+    "id": "avant.prep",
+    "w": "avant",
+    "pos": "prep",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "before"
+    ],
+    "level": "A1",
+    "theme": "time",
+    "ex": "Lave-toi les mains avant le repas.",
+    "exen": "Wash your hands before the meal."
+  },
+  {
+    "id": "après.prep",
+    "w": "après",
+    "pos": "prep",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "after"
+    ],
+    "level": "A1",
+    "theme": "time",
+    "ex": "On va au cinéma après le dîner.",
+    "exen": "We're going to the cinema after dinner."
+  },
+  {
+    "id": "parce que.conj",
+    "w": "parce que",
+    "pos": "conj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "because"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "Je reste ici parce que je suis malade.",
+    "exen": "I'm staying here because I'm ill."
+  },
+  {
+    "id": "quand.conj",
+    "w": "quand",
+    "pos": "conj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "when"
+    ],
+    "level": "A1",
+    "theme": "time",
+    "ex": "Appelle-moi quand tu arrives à la gare.",
+    "exen": "Call me when you get to the station."
+  },
+  {
+    "id": "mais.conj",
+    "w": "mais",
+    "pos": "conj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "but"
+    ],
+    "level": "A1",
+    "theme": "core",
+    "ex": "C'est cher, mais c'est très bon.",
+    "exen": "It's expensive, but it's very good."
+  },
+  {
+    "id": "donc.conj",
+    "w": "donc",
+    "pos": "conj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "so",
+      "therefore"
+    ],
+    "level": "A2",
+    "theme": "core",
+    "ex": "Il pleut, donc nous restons à la maison.",
+    "exen": "It's raining, so we're staying at home."
+  },
+  {
+    "id": "pourtant.conj",
+    "w": "pourtant",
+    "pos": "conj",
+    "art": "",
+    "g": null,
+    "pl": null,
+    "en": [
+      "yet",
+      "however",
+      "even so"
+    ],
+    "level": "B1",
+    "theme": "core",
+    "ex": "Il est fatigué, pourtant il continue à travailler.",
+    "exen": "He's tired, yet he keeps working."
+  }
+]

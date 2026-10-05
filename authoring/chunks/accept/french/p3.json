@@ -1,0 +1,636 @@
+{
+ "ENG_CHUNK_0632": {
+  "core_en": "Can you give me a ride to",
+  "accept": [
+   "tu peux m'emmener",
+   "tu peux me déposer",
+   "vous pouvez m'emmener",
+   "vous pouvez me déposer",
+   "tu pourrais m'emmener",
+   "tu pourrais me déposer",
+   "vous pourriez m'emmener",
+   "tu peux me conduire"
+  ]
+ },
+ "ENG_CHUNK_0668": {
+  "core_en": "Like I said",
+  "accept": [
+   "comme je (te) disais",
+   "comme je vous (le) disais",
+   "comme je (te) le disais",
+   "comme je (te) l'ai (déjà) dit",
+   "comme je vous l'ai (déjà) dit"
+  ]
+ },
+ "ENG_CHUNK_0671": {
+  "core_en": "You know what?",
+  "accept": [
+   "tu sais quoi",
+   "vous savez quoi"
+  ]
+ },
+ "ENG_CHUNK_0709": {
+  "core_en": "They say",
+  "accept": [
+   "on dit",
+   "il paraît",
+   "il paraîtrait",
+   "les gens disent",
+   "à ce qu'on dit",
+   "paraît-il",
+   "on raconte"
+  ]
+ },
+ "ENG_CHUNK_1201": {
+  "core_en": "Hi!",
+  "accept": [
+   "salut",
+   "coucou",
+   "bonjour"
+  ]
+ },
+ "ENG_CHUNK_1202": {
+  "core_en": "Good morning",
+  "accept": [
+   "bonjour"
+  ]
+ },
+ "ENG_CHUNK_1203": {
+  "core_en": "Good afternoon",
+  "accept": [
+   "bonjour"
+  ]
+ },
+ "ENG_CHUNK_1204": {
+  "core_en": "Good night",
+  "accept": [
+   "bonne nuit"
+  ]
+ },
+ "ENG_CHUNK_1205": {
+  "core_en": "how are you?",
+  "accept": [
+   "ça va",
+   "comment vas-tu",
+   "comment allez-vous",
+   "comment tu vas",
+   "tu vas bien",
+   "vous allez bien"
+  ]
+ },
+ "ENG_CHUNK_1206": {
+  "core_en": "I'm fine, thanks. And you?",
+  "accept": [
+   "ça va (bien) (merci) et toi",
+   "ça va (bien) (merci) et vous",
+   "je vais bien (merci) et toi",
+   "je vais bien (merci) et vous",
+   "très bien (merci) et toi",
+   "très bien (merci) et vous",
+   "bien merci et toi",
+   "bien merci et vous"
+  ]
+ },
+ "ENG_CHUNK_1207": {
+  "core_en": "Not bad, thanks",
+  "accept": [
+   "pas mal merci",
+   "pas trop mal merci"
+  ]
+ },
+ "ENG_CHUNK_1208": {
+  "core_en": "Nice to meet you",
+  "accept": [
+   "enchanté",
+   "enchantée",
+   "ravi de te rencontrer",
+   "ravie de te rencontrer",
+   "ravi de vous rencontrer",
+   "ravie de vous rencontrer",
+   "ravi de faire ta connaissance",
+   "ravie de faire ta connaissance"
+  ]
+ },
+ "ENG_CHUNK_1209": {
+  "core_en": "You too",
+  "accept": [
+   "moi aussi",
+   "de même",
+   "pareillement",
+   "moi également",
+   "enchanté également",
+   "enchantée également"
+  ]
+ },
+ "ENG_CHUNK_1210": {
+  "core_en": "Pleased to meet you",
+  "accept": [
+   "ravi de faire votre connaissance",
+   "ravie de faire votre connaissance",
+   "ravi de vous rencontrer",
+   "ravie de vous rencontrer",
+   "enchanté",
+   "enchantée",
+   "heureux de faire votre connaissance",
+   "heureuse de faire votre connaissance"
+  ]
+ },
+ "ENG_CHUNK_1211": {
+  "core_en": "how's it going?",
+  "accept": [
+   "ça va",
+   "ça roule",
+   "comment ça se passe",
+   "comment tu vas",
+   "tu vas bien"
+  ]
+ },
+ "ENG_CHUNK_1212": {
+  "core_en": "Good to see you",
+  "accept": [
+   "plaisir de te voir",
+   "plaisir de vous voir",
+   "content de te voir",
+   "contente de te voir",
+   "content de vous voir",
+   "contente de vous voir",
+   "ravi de te voir",
+   "ravie de te voir"
+  ]
+ },
+ "ENG_CHUNK_1213": {
+  "core_en": "Goodbye",
+  "accept": [
+   "au revoir",
+   "salut"
+  ]
+ },
+ "ENG_CHUNK_1214": {
+  "core_en": "see you later",
+  "accept": [
+   "à plus",
+   "à tout à l'heure",
+   "à toute",
+   "à bientôt",
+   "à la prochaine"
+  ]
+ },
+ "ENG_CHUNK_1215": {
+  "core_en": "Have a nice day",
+  "accept": [
+   "bonne journée",
+   "bonne fin de journée"
+  ]
+ },
+ "ENG_CHUNK_1216": {
+  "core_en": "Thank you",
+  "accept": [
+   "merci",
+   "je te remercie",
+   "je vous remercie"
+  ]
+ },
+ "ENG_CHUNK_1217": {
+  "core_en": "Thanks a lot",
+  "accept": [
+   "merci beaucoup",
+   "merci mille fois",
+   "mille mercis",
+   "merci bien",
+   "un grand merci",
+   "merci infiniment"
+  ]
+ },
+ "ENG_CHUNK_1218": {
+  "core_en": "You're welcome",
+  "accept": [
+   "de rien",
+   "je vous en prie",
+   "je t'en prie",
+   "pas de quoi",
+   "avec plaisir"
+  ]
+ },
+ "ENG_CHUNK_1219": {
+  "core_en": "No problem",
+  "accept": [
+   "pas de problème",
+   "pas de souci",
+   "pas de soucis",
+   "aucun problème",
+   "aucun souci"
+  ]
+ },
+ "ENG_CHUNK_1220": {
+  "core_en": "Yes, please",
+  "accept": [
+   "oui s'il vous plaît",
+   "oui s'il te plaît",
+   "oui merci",
+   "volontiers"
+  ]
+ },
+ "ENG_CHUNK_1221": {
+  "core_en": "No, thank you",
+  "accept": [
+   "non merci",
+   "non je vous remercie",
+   "non je te remercie"
+  ]
+ },
+ "ENG_CHUNK_1222": {
+  "core_en": "Excuse me",
+  "accept": [
+   "excusez-moi",
+   "excuse-moi",
+   "pardon",
+   "pardonnez-moi"
+  ]
+ },
+ "ENG_CHUNK_1223": {
+  "core_en": "I'm sorry",
+  "accept": [
+   "désolé",
+   "désolée",
+   "pardon",
+   "je m'excuse",
+   "je suis navré",
+   "je suis navrée"
+  ]
+ },
+ "ENG_CHUNK_1224": {
+  "core_en": "That's okay",
+  "accept": [
+   "ce n'est pas grave",
+   "ce n'est rien",
+   "ça ne fait rien",
+   "il n'y a pas de mal",
+   "pas de souci"
+  ]
+ },
+ "ENG_CHUNK_1225": {
+  "core_en": "Sorry I'm late",
+  "accept": [
+   "désolé pour le retard",
+   "désolée pour le retard",
+   "désolé d'être en retard",
+   "désolée d'être en retard",
+   "pardon pour le retard",
+   "excusez-moi pour le retard",
+   "excuse-moi pour le retard",
+   "excusez-moi du retard"
+  ]
+ },
+ "ENG_CHUNK_1226": {
+  "core_en": "Sorry, I don't understand",
+  "accept": [
+   "pardon je ne comprends pas",
+   "désolé je ne comprends pas",
+   "désolée je ne comprends pas",
+   "excusez-moi je ne comprends pas",
+   "excuse-moi je ne comprends pas",
+   "pardon je n'ai pas compris",
+   "désolé je n'ai pas compris",
+   "désolée je n'ai pas compris"
+  ]
+ },
+ "ENG_CHUNK_1227": {
+  "core_en": "Could you speak more slowly, please?",
+  "accept": [
+   "vous pourriez parler plus lentement s'il vous plaît",
+   "vous pouvez parler plus lentement s'il vous plaît",
+   "pourriez-vous parler plus lentement s'il vous plaît",
+   "pouvez-vous parler plus lentement s'il vous plaît",
+   "tu pourrais parler plus lentement s'il te plaît",
+   "tu peux parler plus lentement s'il te plaît",
+   "vous pourriez parler moins vite s'il vous plaît"
+  ]
+ },
+ "ENG_CHUNK_1228": {
+  "core_en": "can you repeat that, please?",
+  "accept": [
+   "vous pouvez (le) répéter s'il vous plaît",
+   "tu peux (le) répéter s'il te plaît",
+   "pouvez-vous (le) répéter s'il vous plaît",
+   "peux-tu (le) répéter s'il te plaît",
+   "vous pourriez (le) répéter s'il vous plaît",
+   "tu pourrais (le) répéter s'il te plaît",
+   "pourriez-vous (le) répéter s'il vous plaît"
+  ]
+ },
+ "ENG_CHUNK_1229": {
+  "core_en": "Can you spell that, please?",
+  "accept": [
+   "vous pouvez épeler s'il vous plaît",
+   "vous pouvez l'épeler s'il vous plaît",
+   "tu peux épeler s'il te plaît",
+   "tu peux l'épeler s'il te plaît",
+   "pouvez-vous épeler s'il vous plaît",
+   "pouvez-vous l'épeler s'il vous plaît",
+   "vous pourriez l'épeler s'il vous plaît",
+   "pourriez-vous l'épeler s'il vous plaît"
+  ]
+ },
+ "ENG_CHUNK_1230": {
+  "core_en": "I don't speak much English",
+  "accept": [
+   "je ne parle pas (très) bien (le) français",
+   "je ne parle pas beaucoup français",
+   "je parle (un) peu français",
+   "je ne parle pas (très) bien anglais",
+   "je ne parle pas beaucoup anglais",
+   "je parle (un) peu anglais",
+   "je ne parle pas (très) bien l'anglais"
+  ]
+ },
+ "ENG_CHUNK_1231": {
+  "core_en": "What's your name?",
+  "accept": [
+   "comment tu t'appelles",
+   "comment vous appelez-vous",
+   "comment t'appelles-tu",
+   "tu t'appelles comment",
+   "vous vous appelez comment",
+   "comment vous vous appelez",
+   "quel est ton nom",
+   "quel est votre nom"
+  ]
+ },
+ "ENG_CHUNK_1232": {
+  "core_en": "Where are you from?",
+  "accept": [
+   "tu viens d'où",
+   "d'où venez-vous",
+   "d'où viens-tu",
+   "vous venez d'où",
+   "d'où est-ce que tu viens",
+   "d'où est-ce que vous venez",
+   "tu es d'où",
+   "vous êtes d'où"
+  ]
+ },
+ "ENG_CHUNK_1233": {
+  "core_en": "How old are you",
+  "accept": [
+   "tu as quel âge",
+   "quel âge as-tu",
+   "quel âge avez-vous",
+   "vous avez quel âge",
+   "quel âge tu as",
+   "quel âge vous avez"
+  ]
+ },
+ "ENG_CHUNK_1234": {
+  "core_en": "Where do you live?",
+  "accept": [
+   "tu habites où",
+   "où habitez-vous",
+   "où habites-tu",
+   "vous habitez où",
+   "où est-ce que tu habites",
+   "où est-ce que vous habitez",
+   "tu vis où",
+   "où vivez-vous"
+  ]
+ },
+ "ENG_CHUNK_1235": {
+  "core_en": "What do you do?",
+  "accept": [
+   "qu'est-ce que tu fais dans la vie",
+   "qu'est-ce que vous faites dans la vie",
+   "tu fais quoi dans la vie",
+   "vous faites quoi dans la vie",
+   "que fais-tu dans la vie",
+   "que faites-vous dans la vie",
+   "quel est ton métier",
+   "quel est votre métier"
+  ]
+ },
+ "ENG_CHUNK_1236": {
+  "core_en": "Do you have any brothers or sisters?",
+  "accept": [
+   "tu as des frères et (des) sœurs",
+   "tu as des frères ou des sœurs",
+   "vous avez des frères et (des) sœurs",
+   "vous avez des frères ou des sœurs",
+   "as-tu des frères et (des) sœurs",
+   "as-tu des frères ou des sœurs",
+   "avez-vous des frères et (des) sœurs",
+   "avez-vous des frères ou des sœurs"
+  ]
+ },
+ "ENG_CHUNK_1237": {
+  "core_en": "How long have you lived here?",
+  "accept": [
+   "tu habites ici depuis combien de temps",
+   "ça fait combien de temps que tu habites ici",
+   "depuis combien de temps tu habites ici",
+   "depuis combien de temps habites-tu ici",
+   "vous habitez ici depuis combien de temps",
+   "ça fait combien de temps que vous habitez ici",
+   "depuis combien de temps habitez-vous ici",
+   "depuis combien de temps vous habitez ici"
+  ]
+ },
+ "ENG_CHUNK_1238": {
+  "core_en": "What about you?",
+  "accept": [
+   "et toi",
+   "et vous",
+   "et de ton côté",
+   "et de votre côté"
+  ]
+ },
+ "ENG_CHUNK_1239": {
+  "core_en": "what time is it?",
+  "accept": [
+   "quelle heure est-il",
+   "il est quelle heure",
+   "quelle heure il est",
+   "vous avez l'heure",
+   "tu as l'heure",
+   "vous auriez l'heure"
+  ]
+ },
+ "ENG_CHUNK_1240": {
+  "core_en": "How much is it?",
+  "accept": [
+   "c'est combien",
+   "ça coûte combien",
+   "combien ça coûte",
+   "combien est-ce que ça coûte",
+   "ça fait combien",
+   "combien ça fait",
+   "combien c'est"
+  ]
+ },
+ "ENG_CHUNK_1241": {
+  "core_en": "can I help you?",
+  "accept": [
+   "je peux vous aider",
+   "puis-je vous aider",
+   "je peux t'aider",
+   "puis-je t'aider",
+   "vous désirez",
+   "je peux vous renseigner"
+  ]
+ },
+ "ENG_CHUNK_1242": {
+  "core_en": "that's all, thanks",
+  "accept": [
+   "ce sera tout (pour moi) merci",
+   "c'est tout (pour moi) merci",
+   "ça sera tout (pour moi) merci",
+   "ça ira merci",
+   "c'est bon merci"
+  ]
+ },
+ "ENG_CHUNK_1243": {
+  "core_en": "could I see the menu, please?",
+  "accept": [
+   "je pourrais avoir la carte s'il vous plaît",
+   "je pourrais voir la carte s'il vous plaît",
+   "je peux avoir la carte s'il vous plaît",
+   "je peux voir la carte s'il vous plaît",
+   "pourrais-je avoir la carte s'il vous plaît",
+   "pourrais-je voir la carte s'il vous plaît",
+   "puis-je avoir la carte s'il vous plaît",
+   "on pourrait avoir la carte s'il vous plaît"
+  ]
+ },
+ "ENG_CHUNK_1244": {
+  "core_en": "What do you recommend?",
+  "accept": [
+   "qu'est-ce que vous me conseillez",
+   "qu'est-ce que vous me recommandez",
+   "que me conseillez-vous",
+   "que me recommandez-vous",
+   "qu'est-ce que tu me conseilles",
+   "qu'est-ce que tu me recommandes",
+   "vous me conseillez quoi",
+   "qu'est-ce que vous conseillez"
+  ]
+ },
+ "ENG_CHUNK_1245": {
+  "core_en": "I'm vegetarian",
+  "accept": [
+   "je suis végétarien",
+   "je suis végétarienne"
+  ]
+ },
+ "ENG_CHUNK_1246": {
+  "core_en": "I'm full",
+  "accept": [
+   "j'ai bien mangé",
+   "je n'ai plus faim",
+   "j'ai trop mangé",
+   "je suis rassasié",
+   "je suis rassasiée",
+   "je n'en peux plus"
+  ]
+ },
+ "ENG_CHUNK_1247": {
+  "core_en": "where's the bathroom?",
+  "accept": [
+   "où sont les toilettes",
+   "où se trouvent les toilettes",
+   "les toilettes sont où",
+   "c'est où les toilettes",
+   "où sont les wc"
+  ]
+ },
+ "ENG_CHUNK_1248": {
+  "core_en": "Go straight ahead",
+  "accept": [
+   "allez tout droit",
+   "va tout droit",
+   "continuez tout droit",
+   "continue tout droit",
+   "tu vas tout droit"
+  ]
+ },
+ "ENG_CHUNK_1249": {
+  "core_en": "Where do I get off?",
+  "accept": [
+   "je dois descendre où",
+   "où est-ce que je dois descendre",
+   "où dois-je descendre",
+   "à quel arrêt je descends",
+   "à quel arrêt est-ce que je dois descendre",
+   "à quel arrêt dois-je descendre",
+   "je descends où",
+   "où est-ce que je descends"
+  ]
+ },
+ "ENG_CHUNK_1250": {
+  "core_en": "what's the wifi password?",
+  "accept": [
+   "c'est quoi le code (du) wifi",
+   "quel est le code (du) wifi",
+   "c'est quoi le mot de passe (du) wifi",
+   "quel est le mot de passe (du) wifi",
+   "c'est quoi le code (du) wi-fi",
+   "quel est le mot de passe (du) wi-fi"
+  ]
+ },
+ "ENG_CHUNK_1251": {
+  "core_en": "Help!",
+  "accept": [
+   "au secours",
+   "à l'aide",
+   "aidez-moi"
+  ]
+ },
+ "ENG_CHUNK_1252": {
+  "core_en": "can you help me?",
+  "accept": [
+   "vous pouvez m'aider",
+   "tu peux m'aider",
+   "pouvez-vous m'aider",
+   "peux-tu m'aider",
+   "vous pourriez m'aider",
+   "tu pourrais m'aider",
+   "pourriez-vous m'aider"
+  ]
+ },
+ "ENG_CHUNK_1253": {
+  "core_en": "I need a doctor",
+  "accept": [
+   "j'ai besoin d'un médecin",
+   "il me faut un médecin",
+   "j'ai besoin d'un docteur",
+   "il me faut un docteur",
+   "je dois voir un médecin"
+  ]
+ },
+ "ENG_CHUNK_1254": {
+  "core_en": "It hurts here",
+  "accept": [
+   "j'ai mal ici",
+   "ça me fait mal ici",
+   "ça fait mal ici",
+   "j'ai mal là",
+   "ça me fait mal là"
+  ]
+ },
+ "ENG_CHUNK_1255": {
+  "core_en": "I don't feel well",
+  "accept": [
+   "je ne me sens pas bien",
+   "je ne vais pas bien",
+   "je me sens mal",
+   "je ne suis pas bien"
+  ]
+ },
+ "ENG_CHUNK_1256": {
+  "core_en": "Call an ambulance!",
+  "accept": [
+   "appelez une ambulance",
+   "appelle une ambulance",
+   "appelez le samu",
+   "appelle le samu",
+   "appelez les secours",
+   "appelle les secours"
+  ]
+ }
+}

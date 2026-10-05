@@ -17,6 +17,7 @@ import * as FS from '../../domain/fsrs.js';
 import * as T from '../../domain/timer.js';
 import { stream } from './compose.js';
 import { origin } from '../../domain/itemids.js';
+import { deckName } from '../../domain/decks.js';
 
 /** @param {string[]} ids @param {{kind: string, area?: string, topic?: string}} spec @param {string} today @param {number} now */
 export function startRound(ids, spec, today, now) {
@@ -99,7 +100,8 @@ export function answer({ round, entry, o, cards, day, c, forecast = () => 0, now
   const det = o.det || o.gDet || null;
   const flags = [o.selfRepair && 'r', o.capSlip && 'c', o.typo && 'y', o.umlaut && 'u', over && 'o', o.partial && 'p', o.punct && 'k', study && 'v', det && 'd' + det].filter(Boolean).join('');
   // honesty: predicted recall vs the first try of reviewed items, first attempt of the day only
-  const own = !round.deck || round.deck === 'b1';   // a cluster round (deck 'clusters') keeps out of the B1 day log
+  // a cluster round (deck 'clusters') keeps out of the B1 day log; a course's round ('fr:core') keeps its own (C3b)
+  const own = !round.deck || round.deck === 'b1' || deckName(round.deck) === 'core';
   if (own && rec && rec.reps && rec.learn == null && rec.last !== c.today && !entry.reinsert) {
     day.pred[0] += FS.Ron(rec, c.today); day.pred[1]++; day.firstTry[0] += g >= 3 ? 1 : 0; day.firstTry[1]++;
   }

@@ -88,8 +88,8 @@ export async function listInfo(ctx, href) {
     const data = await loadData(ctx);
     const st = stateFor(ctx, data);
     const spec = C.parseKind(kind);
-    const saved = S.savedRound(session(store), S.slotKey(spec));
-    const title = spec.kind === 'area' ? t(`practice.area.${spec.area}`) : spec.kind === 'topic' ? (data.topics.get(spec.topic)?.name || t('practice.kind.topic'))
+    const saved = S.savedRound(session(store, data.course ? `${data.course}.session` : 'b1.session'), S.slotKey(spec));
+    const title = spec.kind === 'area' ? t(data.course ? (spec.area === 'words' ? 'course.area.words' : 'course.area.phrases') : `practice.area.${spec.area}`) : spec.kind === 'topic' ? (data.topics.get(spec.topic)?.name || t('practice.kind.topic'))
       : spec.kind === 'write' ? (spec.topic ? `Schreiben ${spec.topic.replace('W', 'Aufgabe ')}` : 'Schreiben') : spec.kind === 'missed' ? t('practice.kind.missedTitle') : t('practice.kind.mistakesTitle');
     return { type: l.type, title, b: C.buckets(st, spec), rec: C.compose(st, spec), minutes: n => roundMinutes(n), paused: S.resumable(saved, c.today, Date.now()) ? saved.queue.length - saved.i : null };
   }

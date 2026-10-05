@@ -6,6 +6,9 @@
 import { roundMinutes } from '../../domain/today.js';
 import { ROUND } from '../../domain/budget.js';
 import { todayBudget, roundAction } from '../../domain/allowance.js';
+import { courseRound } from '../shared/course.js';
+import { langCode } from '../../data/settings.js';
+import { packFor } from '../../core/lang.js';
 
 /**
  * Refresh the pool stats Today reads (loads the content once; cached for the session). Never throws.
@@ -24,12 +27,14 @@ export async function prepare(ctx) {
  * @returns {import('../../domain/today.js').PlanItem[]}
  */
 export function planItems({ store, c, settings, t }) {
-  if (settings.language !== 'german') return [];   // phase 1: the practice content is German; never German for another language
+  // German's round is the B1 trainer's; another language's is its course round (C3b) when its pack ships, else none
+  const cr = courseRound(langCode(settings.language));
+  if (settings.language !== 'german' && (cr.trainer || !packFor(cr.lang))) return [];
   if (c.phase === 'day') {
     return [{ id: 'practice.warmup', source: 'practice-round', kind: 'warmup', title: t('plan.warmup'), detail: t('plan.warmup.detail'),
       minutes: 3, href: '#/practice/round?kind=warmup', priority: 10, action: t('plan.warmup.action') }];
   }
-  const recs = Object.keys(store.cards('b1'));
+  const recs = Object.keys(store.cards(cr.deck));
   const b = todayBudget({ store, c, settings });
   const due = b.due, fresh = b.b1.newLeft;
   /** @type {import('../../domain/today.js').PlanItem[]} */

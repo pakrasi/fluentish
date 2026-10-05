@@ -1,17 +1,17 @@
-// The language-pack text contract (src/lang/types.js TextRules), as specs: German (the full pack) and the text-only
-// stubs for French (elision, accents that carry meaning), Hindi (Devanagari conjuncts, nukta, typing in Latin) and
+// The language-pack text contract (src/lang/types.js TextRules), as specs: German and French (the full packs; French
+// since C3b: elision, accents that carry meaning) and the text-only stubs for Hindi (Devanagari conjuncts, nukta, typing in Latin) and
 // Arabic (RTL, harakat, tatweel, alef variants). A pack for one of these languages must pass its cases unchanged.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import de from '../../src/lang/de/index.js';
-import * as fr from '../../src/lang/fr/text.js';
+import frPack from '../../src/lang/fr/index.js';
 import * as hi from '../../src/lang/hi/text.js';
 import * as ar from '../../src/lang/ar/text.js';
 import { languageMeta } from '../../src/lang/registry.js';
 
 const TEXT = {
   de: de.text,
-  fr: { normalize: fr.normalize, tokenize: fr.tokenize, fold: fr.fold, wordRe: fr.WORD_RE },
+  fr: frPack.text,
   hi: { normalize: hi.normalize, tokenize: hi.tokenize, fold: hi.fold, wordRe: hi.WORD_RE },
   ar: { normalize: ar.normalize, tokenize: ar.tokenize, fold: ar.fold, wordRe: ar.WORD_RE },
 };
@@ -67,7 +67,7 @@ test('de: umlauts and ß fold to ae/oe/ue/ss; other accents are ignored; gern = 
   assert.deepEqual([m?.script, m?.dir, de.grading.caseSensitive], ['Latn', 'ltr', 'nouns']);
 });
 
-/* ---- French (stub): elision, accents that carry meaning ---- */
+/* ---- French (the full pack, C3b): elision, accents that carry meaning ---- */
 test('fr: elision splits off the article or pronoun; a lexicalised apostrophe stays one word', () => {
   assert.deepEqual(raws(TEXT.fr, "L’ami qu’il voit"), ["L'", 'ami', "qu'", 'il', 'voit']);
   assert.deepEqual(raws(TEXT.fr, "jusqu’à d’accord c’est s’il"), ["jusqu'", 'à', "d'", 'accord', "c'", 'est', "s'", 'il']);
@@ -79,6 +79,8 @@ test('fr: accents are part of the key (ou ≠ où, a ≠ à); œ is typed oe; ty
   assert.deepEqual(keys(TEXT.fr, 'cœur Été'), keys(TEXT.fr, 'coeur été'));
   assert.equal(TEXT.fr.normalize('Ça va ?'), 'Ça va ?');
   assert.deepEqual(raws(TEXT.fr, '« Oui »'), ['Oui']);
+  const m = languageMeta('fr');
+  assert.deepEqual([m?.script, m?.dir, m?.full, frPack.grading.caseSensitive], ['Latn', 'ltr', true, 'proper']);
 });
 
 /* ---- Hindi (stub): Devanagari, nukta, transliteration ---- */

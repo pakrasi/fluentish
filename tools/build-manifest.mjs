@@ -30,6 +30,7 @@ export const MAP = [
   [/^igloo\/grammar\/concepts_(\w+)\.json$/, m => `igloo.grammar.concepts.${m[1]}`, 'igloo-grammar-concepts@1'],
   [/^b1\/(items|annot|grammar|bank|nouns|frames|wordmap|plan|schreiben|forms)\.json$/, m => `b1.${m[1]}`, null],
   [/^speak\/situations\.json$/, () => 'speak.situations', 'speak-situations@1'],
+  [/^course\/(\w+)\.json$/, m => `course.${m[1]}`, 'course@1'],
   [/^clusters\/(\w+)\.json$/, m => `clusters.${m[1]}`, 'clusters@1'],
   [/^build\/(\w+)\.json$/, m => `build.${m[1]}`, 'build@1'],
   [/^atlas\/(\w+)\.json$/, m => `atlas.${m[1]}`, 'atlas@1'],
@@ -117,7 +118,7 @@ const walk = d => readdirSync(d).flatMap(n => { const p = path.join(d, n); retur
 const sha = buf => createHash('sha256').update(buf).digest('hex');
 
 /** Languages with practice, exam and Look up content in this app. */
-const CONTENT_LANGS = ['german'];
+const CONTENT_LANGS = ['german', 'french'];
 
 export function build() {
   const files = walk(CONTENT).map(p => path.relative(CONTENT, p).split(path.sep).join('/'))
@@ -138,7 +139,7 @@ export function build() {
   return {
     schema: 'fluentish-content@1',
     version: sha(out.map(f => `${f.id}:${f.sha256}`).join('\n')).slice(0, 12),
-    // content: the language has practice content in this app (phase 1: German only); the others are listed as later
+    // content: the language has practice content in this app (German, and French since C3b); the others are listed as later
     languages: fw.languages.map(({ id, name, native, script, rtl, full }) => ({ id, name, native, script, rtl, full, content: CONTENT_LANGS.includes(id) })),
     exams,
     // each language pack's file ids (C3a): what a course needs, what the service worker precaches for it, and what

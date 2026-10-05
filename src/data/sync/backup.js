@@ -39,6 +39,8 @@ export const SNAPSHOT_KV = {
   settings: 'settings', activity: 'activity', mistakes: 'mistakes', 'lookup.seen': 'seen', known: 'fill',
   'b1.session': 'fill', 'speak.sim': 'fill', clusters: 'fill', 'practice.write': 'fill', 'exams.feedbackLocal': 'fill',
   'exams.seen': 'fill', 'exams.learnerNotes': 'fill', 'vocab.local': 'fill', 'vocab.events': 'fill',
+  // the French course's round session (C3b; a course's cards are in its deck fr:core, which every snapshot carries)
+  'fr.session': 'fill',
 };
 /** Device-scope collection with the backup's state (store.js DEVICE_SCOPE): never exported or uploaded. */
 export const STATE_KV = 'backup';

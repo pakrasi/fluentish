@@ -1,0 +1,1505 @@
+[
+ {
+  "file": "authoring/chunks/accept/french/p1.json",
+  "id": "ENG_CHUNK_0001",
+  "field": "accept",
+  "before": "est-ce que vous pourriez",
+  "after": "je me demandais si vous pouviez",
+  "severity": "improve",
+  "why": "drops 'I was wondering'; replaced by the common imparfait variant si vous pouviez"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p1.json",
+  "id": "ENG_CHUNK_0001",
+  "field": "accept",
+  "before": "est-ce que tu pourrais",
+  "after": "je me demandais si tu pouvais",
+  "severity": "improve",
+  "why": "drops 'I was wondering'; replaced by the common imparfait variant si tu pouvais"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p1.json",
+  "id": "ENG_CHUNK_0091",
+  "field": "accept",
+  "before": "d'autre part",
+  "after": "",
+  "severity": "error",
+  "why": "d'autre part is additive (moreover), not contrastive 'on the other hand' without d'une part"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p1.json",
+  "id": "ENG_CHUNK_0104",
+  "field": "accept",
+  "before": "pourquoi pas",
+  "after": "ça vous dit de",
+  "severity": "error",
+  "why": "'pourquoi pas + infinitif' is the ne-less form of pourquoi ne pas (already listed); added the vous form of ça te dit de"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p1.json",
+  "id": "ENG_CHUNK_0116",
+  "field": "accept",
+  "before": "depuis quand tu",
+  "after": "depuis quand",
+  "severity": "improve",
+  "why": "merge tu/vous so inversion (depuis quand habites-tu) is accepted too"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p1.json",
+  "id": "ENG_CHUNK_0116",
+  "field": "accept",
+  "before": "depuis quand vous",
+  "after": "depuis combien de temps est-ce que",
+  "severity": "improve",
+  "why": "est-ce que question form was rejected"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p1.json",
+  "id": "ENG_CHUNK_0142",
+  "field": "accept",
+  "before": "soyez prêts",
+  "after": "se préparer",
+  "severity": "improve",
+  "why": "être prêt is 'be ready' not 'get ready'; added the infinitive se préparer (il faut se préparer)"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p1.json",
+  "id": "ENG_CHUNK_0160",
+  "field": "accept",
+  "before": "",
+  "after": "dépense de l'argent",
+  "severity": "improve",
+  "why": "conjugated je/il dépense de l'argent was rejected"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p1.json",
+  "id": "ENG_CHUNK_0168",
+  "field": "accept",
+  "before": "genre",
+  "after": "",
+  "severity": "improve",
+  "why": "slang filler 'genre' is not a standard rendering of the degree hedge 'kind of'"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p1.json",
+  "id": "ENG_CHUNK_0181",
+  "field": "accept",
+  "before": "c'est (vraiment) sympa",
+  "after": "c'est (vraiment) (très) sympa",
+  "severity": "improve",
+  "why": "c'est très sympa was rejected"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p1.json",
+  "id": "ENG_CHUNK_0181",
+  "field": "accept",
+  "before": "c'est (vraiment) gentil",
+  "after": "c'est (vraiment) (très) gentil",
+  "severity": "improve",
+  "why": "c'est très gentil was rejected"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p1.json",
+  "id": "ENG_CHUNK_0191",
+  "field": "accept",
+  "before": "à cause d'un",
+  "after": "à cause d'",
+  "severity": "improve",
+  "why": "generalise the elided form (à cause d'elle, d'Anne)"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p1.json",
+  "id": "ENG_CHUNK_0191",
+  "field": "accept",
+  "before": "à cause d'une",
+  "after": "",
+  "severity": "improve",
+  "why": "covered by à cause d'"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p1.json",
+  "id": "ENG_CHUNK_0191",
+  "field": "accept",
+  "before": "",
+  "after": "en raison d'",
+  "severity": "improve",
+  "why": "elided en raison d'un / d'une was rejected"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0297",
+  "field": "accept",
+  "before": "c'est parce",
+  "after": "c'est parce qu'",
+  "severity": "error",
+  "why": "bare 'c'est parce' accepted non-elided 'c'est parce il...'; use the elided form explicitly"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0311",
+  "field": "accept",
+  "before": "c'est peut-être parce",
+  "after": "c'est peut-être parce que",
+  "severity": "error",
+  "why": "bare 'parce' accepted missing elision ('parce elle')"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0311",
+  "field": "accept",
+  "before": "",
+  "after": "c'est peut-être parce qu'",
+  "severity": "error",
+  "why": "elided form needed for the model sentence once 'parce' is closed"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0311",
+  "field": "accept",
+  "before": "peut-être que c'est parce",
+  "after": "peut-être que c'est parce que",
+  "severity": "error",
+  "why": "bare 'parce' accepted missing elision"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0311",
+  "field": "accept",
+  "before": "",
+  "after": "peut-être que c'est parce qu'",
+  "severity": "improve",
+  "why": "elided variant"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0311",
+  "field": "accept",
+  "before": "c'est sans doute parce",
+  "after": "",
+  "severity": "improve",
+  "why": "sans doute = probably, stronger than 'might be'"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0311",
+  "field": "accept",
+  "before": "il se peut que ce soit parce",
+  "after": "il se peut que ce soit parce que",
+  "severity": "error",
+  "why": "bare 'parce' accepted missing elision"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0325",
+  "field": "accept",
+  "before": "c'est ma première fois",
+  "after": "c'est une première pour moi",
+  "severity": "error",
+  "why": "'c'est ma première fois' is an anglicism (and has a sexual connotation in French)"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0336",
+  "field": "accept",
+  "before": "achète un billet d'avion",
+  "after": "réserver un billet d'avion",
+  "severity": "improve",
+  "why": "réserver un billet d'avion is the most common rendering and was missing"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0354",
+  "field": "accept",
+  "before": "qu'envenimer les choses",
+  "after": "",
+  "severity": "improve",
+  "why": "redundant: envenimer les choses already matches it anywhere"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0354",
+  "field": "accept",
+  "before": "qu'aggraver les choses",
+  "after": "",
+  "severity": "improve",
+  "why": "redundant: aggraver les choses already matches it anywhere"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0379",
+  "field": "accept",
+  "before": "",
+  "after": "vous avez complètement raison",
+  "severity": "improve",
+  "why": "vous form of an accepted tu pattern was missing"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0383",
+  "field": "accept",
+  "before": "c'est très gentil de votre part",
+  "after": "c'est (vraiment) (très) gentil de votre part",
+  "severity": "improve",
+  "why": "c'est gentil de votre part / vraiment très gentil were rejected"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0383",
+  "field": "accept",
+  "before": "c'est très gentil de ta part",
+  "after": "c'est (vraiment) (très) gentil de ta part",
+  "severity": "improve",
+  "why": "c'est gentil de ta part was rejected"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0383",
+  "field": "accept",
+  "before": "c'est vraiment gentil de votre part",
+  "after": "",
+  "severity": "improve",
+  "why": "merged into the optional pattern"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0383",
+  "field": "accept",
+  "before": "c'est vraiment gentil de ta part",
+  "after": "",
+  "severity": "improve",
+  "why": "merged into the optional pattern"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0383",
+  "field": "accept",
+  "before": "c'est très aimable de votre part",
+  "after": "c'est (vraiment) (très) aimable de votre part",
+  "severity": "improve",
+  "why": "c'est aimable de votre part was rejected"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0383",
+  "field": "accept",
+  "before": "",
+  "after": "c'est (vraiment) (très) aimable de ta part",
+  "severity": "improve",
+  "why": "tu form missing"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0383",
+  "field": "accept",
+  "before": "c'est très gentil à vous",
+  "after": "c'est (très) gentil à vous",
+  "severity": "improve",
+  "why": "allow without très"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0383",
+  "field": "accept",
+  "before": "c'est très gentil à toi",
+  "after": "c'est (très) gentil à toi",
+  "severity": "improve",
+  "why": "allow without très"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0391",
+  "field": "accept",
+  "before": "",
+  "after": "à l'exception de",
+  "severity": "improve",
+  "why": "standard synonym was missing"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0471",
+  "field": "accept",
+  "before": "",
+  "after": "qu'en dites-vous",
+  "severity": "improve",
+  "why": "common synonym was missing"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0483",
+  "field": "accept",
+  "before": "",
+  "after": "que désirez-vous",
+  "severity": "improve",
+  "why": "standard waiter phrase was missing"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0539",
+  "field": "accept",
+  "before": "",
+  "after": "se voit",
+  "severity": "improve",
+  "why": "'on se voit la semaine prochaine ?' was rejected"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0583",
+  "field": "accept",
+  "before": "rétablissez-vous vite",
+  "after": "j'espère que vous irez (vite) mieux",
+  "severity": "improve",
+  "why": "vous form of the j'espère pattern was missing (rétablissez-vous is rare; remettez-vous covers vous)"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0583",
+  "field": "accept",
+  "before": "j'espère que tu vas vite aller mieux",
+  "after": "vite aller mieux",
+  "severity": "improve",
+  "why": "generalise to tu vas / vous allez vite aller mieux"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0589",
+  "field": "accept",
+  "before": "c'est du tout cuit",
+  "after": "",
+  "severity": "error",
+  "why": "'c'est du tout cuit' means success is guaranteed (it's in the bag), not 'it's easy'"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p1.json",
+  "id": "ENG_CHUNK_0128",
+  "field": "model",
+  "before": "Je trouve mes clés nulle part.",
+  "after": "Je ne trouve mes clés nulle part.",
+  "severity": "error",
+  "why": "written negation drops ne (author's proposal accepted)"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p1.json",
+  "id": "ENG_CHUNK_0054",
+  "field": "model",
+  "before": "J'arrive pas à comprendre cette nouvelle appli.",
+  "after": "Je n'arrive pas à comprendre cette nouvelle appli.",
+  "severity": "error",
+  "why": "written negation drops ne (author's proposal accepted)"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p1.json",
+  "id": "ENG_CHUNK_0104",
+  "field": "model",
+  "before": "T'as pas la force de cuisiner ? Et si on commandait une pizza ?",
+  "after": "Trop fatigué pour cuisiner ? Et si on commandait une pizza ?",
+  "severity": "error",
+  "why": "ne-less t'as pas; author's proposal amended to follow the English 'Too tired to cook?'"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p1.json",
+  "id": "ENG_CHUNK_0206",
+  "field": "model",
+  "before": "T'as sauté le déjeuner ? C'est sûrement pour ça que t'as mal à la tête.",
+  "after": "Tu as sauté le déjeuner ? C'est sûrement pour ça que tu as mal à la tête.",
+  "severity": "improve",
+  "why": "author's note (leave as is) rejected: chunk is neutral, model should not teach t'as twice"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p1.json",
+  "id": "ENG_CHUNK_0073",
+  "field": "model",
+  "before": "Ça me fait penser, il faut que j'appelle ma mère.",
+  "after": "Ça me fait penser qu'il faut que j'appelle ma mère.",
+  "severity": "improve",
+  "why": "'ça me fait penser' needs que/à; bare form is truncated"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p1.json",
+  "id": "ENG_CHUNK_0160",
+  "field": "model",
+  "before": "J'essaie de ne pas dépenser d'argent pour des choses inutiles.",
+  "after": "J'essaie de ne pas dépenser d'argent pour des choses dont je n'ai pas besoin.",
+  "severity": "improve",
+  "why": "follow the English 'things I don't need'"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p1.json",
+  "id": "ENG_CHUNK_0275",
+  "field": "model",
+  "before": "Carrément, c'est beaucoup trop cher.",
+  "after": "Je suis tout à fait d'accord, c'est beaucoup trop cher.",
+  "severity": "improve",
+  "why": "model should show the full 'I totally agree' frame; carrément stays accepted"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0354",
+  "field": "model",
+  "before": "Dis rien, tu vas ne faire qu'envenimer les choses.",
+  "after": "Ne dis rien, tu ne feras qu'envenimer les choses.",
+  "severity": "error",
+  "why": "ne-less 'Dis rien' and awkward 'tu vas ne faire que' (author's proposal accepted)"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0460",
+  "field": "model",
+  "before": "Désolé de pas avoir appelé, j'avais plus de batterie.",
+  "after": "Désolé de ne pas avoir appelé, je n'avais plus de batterie.",
+  "severity": "error",
+  "why": "two ne-less negations in a neutral sentence (author's proposal accepted)"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0478",
+  "field": "model",
+  "before": "Non, non, c'est pas ce que je voulais dire. J'adore ta coupe.",
+  "after": "Non, non, ce n'est pas ce que je voulais dire. J'adore ta coupe.",
+  "severity": "error",
+  "why": "model should show standard negation; ne-less pattern stays as spoken gambit only"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0573",
+  "field": "model",
+  "before": "Je suis pas du tout d'accord, le premier film était bien meilleur.",
+  "after": "Je ne suis pas du tout d'accord, le premier film était bien meilleur.",
+  "severity": "error",
+  "why": "model should show standard negation; ne-less pattern stays as spoken gambit only"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0492",
+  "field": "model",
+  "before": "Je suis pas fatigué. En fait, je me sens super bien.",
+  "after": "Je ne suis pas fatigué. En fait, je me sens super bien.",
+  "severity": "error",
+  "why": "ne-less written negation outside the core span"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0416",
+  "field": "model",
+  "before": "T'inquiète pas pour la vaisselle, je la ferai plus tard.",
+  "after": "Ne t'inquiète pas pour la vaisselle, je la ferai plus tard.",
+  "severity": "improve",
+  "why": "chunk is neutral; model should show the ne form (t'inquiète pas stays accepted)"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0539",
+  "field": "model",
+  "before": "Faudrait qu'on se voie la semaine prochaine.",
+  "after": "On devrait se voir la semaine prochaine.",
+  "severity": "improve",
+  "why": "drops il (spoken); author's 'Il faudrait qu'on se voie' amended to the closer 'We should' = on devrait"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0369",
+  "field": "model",
+  "before": "Tourner à gauche à la station-service. Ça marche.",
+  "after": "Tourne à gauche à la station-service. Compris.",
+  "severity": "improve",
+  "why": "spoken instruction takes the imperative, not the infinitive; compris renders 'got it'"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0376",
+  "field": "model",
+  "before": "En fait, le magasin ferme tôt le dimanche.",
+  "after": "Tu vois, le magasin ferme tôt le dimanche.",
+  "severity": "improve",
+  "why": "model should render 'You see'"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0510",
+  "field": "model",
+  "before": "Tu pourrais me montrer comment marche la machine à café ?",
+  "after": "Tu pourrais me montrer comment utiliser la machine à café ?",
+  "severity": "improve",
+  "why": "follow the English 'how to use' (comment + infinitif)"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0570",
+  "field": "model",
+  "before": "Franchement, c'est la meilleure pizza que j'aie jamais mangée.",
+  "after": "Je dois dire que c'est la meilleure pizza que j'aie jamais mangée.",
+  "severity": "improve",
+  "why": "model should render 'I have to say'; franchement stays accepted"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p1.json",
+  "id": "ENG_CHUNK_0128",
+  "field": "other",
+  "before": "trouve [x] nulle part",
+  "after": "je ne trouve [x] nulle part",
+  "severity": "error",
+  "why": "PENDING: 'trouve [x] nulle part' accepts ne-less 'je trouve mes clés nulle part'; kept only so the current fr_ex validates. Replace with 'je ne trouve [x] nulle part' when the model fix is applied."
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0548",
+  "field": "other",
+  "before": "râler à cause de [nom] (fr_t)",
+  "after": "se plaindre de [nom] / râler contre [nom]",
+  "severity": "improve",
+  "why": "author's fr_t fix accepted: râler à cause de is not idiomatic"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0492",
+  "field": "other",
+  "before": "En fait / D'ailleurs (fr_t)",
+  "after": "En fait / En réalité",
+  "severity": "improve",
+  "why": "author's fr_t fix accepted: d'ailleurs means besides, not contrastive in fact"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p2.json",
+  "id": "ENG_CHUNK_0615",
+  "field": "other",
+  "before": "Je ne suis pas trop [nom] (fr_t)",
+  "after": "Je ne suis pas du matin",
+  "severity": "improve",
+  "why": "author's fr_t fix accepted"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p3.json",
+  "id": "ENG_CHUNK_0668",
+  "field": "accept",
+  "before": "comme je le disais",
+  "after": "comme je (te) le disais",
+  "severity": "improve",
+  "why": "also accept \"comme je te le disais\""
+ },
+ {
+  "file": "authoring/chunks/accept/french/p3.json",
+  "id": "ENG_CHUNK_0668",
+  "field": "accept",
+  "before": "comme je vous disais",
+  "after": "comme je vous (le) disais",
+  "severity": "improve",
+  "why": "also accept \"comme je vous le disais\""
+ },
+ {
+  "file": "authoring/chunks/accept/french/p3.json",
+  "id": "ENG_CHUNK_0671",
+  "field": "model",
+  "before": "Tu sais quoi ? On commande une pizza, c'est tout.",
+  "after": "Tu sais quoi ? On n'a qu'à commander une pizza.",
+  "severity": "improve",
+  "why": "author's fix accepted: « c'est tout » reads as 'end of discussion'; « on n'a qu'à » = let's just"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p3.json",
+  "id": "ENG_CHUNK_0709",
+  "field": "accept",
+  "before": "",
+  "after": "on raconte",
+  "severity": "improve",
+  "why": "common hearsay synonym of on dit"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p3.json",
+  "id": "ENG_CHUNK_1209",
+  "field": "accept",
+  "before": "",
+  "after": "enchanté également",
+  "severity": "improve",
+  "why": "natural reply to « Enchanté »"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p3.json",
+  "id": "ENG_CHUNK_1209",
+  "field": "accept",
+  "before": "",
+  "after": "enchantée également",
+  "severity": "improve",
+  "why": "feminine of the same reply"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p3.json",
+  "id": "ENG_CHUNK_1224",
+  "field": "accept",
+  "before": "c'est pas grave",
+  "after": "",
+  "severity": "error",
+  "why": "register neutral and fr_t uses ne: ne-less written form not accepted"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p3.json",
+  "id": "ENG_CHUNK_1224",
+  "field": "model",
+  "before": "« Pardon, j'ai cassé ta tasse. » « C'est pas grave. »",
+  "after": "« Pardon, j'ai cassé ta tasse. » « Ce n'est pas grave. »",
+  "severity": "error",
+  "why": "model must use standard negation (neutral register, fr_t is « Ce n'est pas grave »); validate_accept reports 1 error on p3 (old fr_ex) until this model fix is applied"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p3.json",
+  "id": "ENG_CHUNK_1230",
+  "field": "accept",
+  "before": "je ne parle pas (très) bien français",
+  "after": "je ne parle pas (très) bien (le) français",
+  "severity": "improve",
+  "why": "« parler le français » is equally correct"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p3.json",
+  "id": "ENG_CHUNK_1230",
+  "field": "accept",
+  "before": "",
+  "after": "je ne parle pas (très) bien l'anglais",
+  "severity": "improve",
+  "why": "article form with anglais"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p3.json",
+  "id": "ENG_CHUNK_1230",
+  "field": "model",
+  "before": "Désolé, je ne parle pas bien français.",
+  "after": "Désolé, je ne parle pas bien anglais.",
+  "severity": "improve",
+  "why": "author's fix amended: translate the English shown (English); « pas bien » is more idiomatic than « pas beaucoup »"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p3.json",
+  "id": "ENG_CHUNK_1246",
+  "field": "accept",
+  "before": "",
+  "after": "je n'en peux plus",
+  "severity": "improve",
+  "why": "the usual native way to say you are full at table"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p4.json",
+  "id": "ENG_CHUNK_1261",
+  "field": "accept",
+  "before": "bonne fête",
+  "after": "",
+  "severity": "error",
+  "why": "in France « bonne fête » is a name-day wish, not happy birthday"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p4.json",
+  "id": "ENG_CHUNK_1270",
+  "field": "other",
+  "before": "note: Also Mon téléphone va bientôt s'éteindre / Je vais plus avoir de batterie.",
+  "after": "note: Also Mon téléphone va bientôt s'éteindre / Je n'aurai bientôt plus de batterie.",
+  "severity": "improve",
+  "why": "author's note fix amended: restore ne; « je n'aurai bientôt plus » is more natural than « je ne vais bientôt plus avoir »; fr_ex itself is correct"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p4.json",
+  "id": "ENG_CHUNK_1281",
+  "field": "accept",
+  "before": "",
+  "after": "moi de même",
+  "severity": "improve",
+  "why": "common synonym of moi aussi"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p4.json",
+  "id": "ENG_CHUNK_1316",
+  "field": "accept",
+  "before": "on se lève",
+  "after": "se lève",
+  "severity": "improve",
+  "why": "covers il/elle/on se lève"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p4.json",
+  "id": "ENG_CHUNK_1317",
+  "field": "accept",
+  "before": "on se réveille",
+  "after": "se réveille",
+  "severity": "improve",
+  "why": "covers il/elle/on se réveille"
+ },
+ {
+  "file": "authoring/chunks/accept/french/p4.json",
+  "id": "ENG_CHUNK_1311",
+  "field": "model",
+  "before": "Au début, le français était très difficile pour moi.",
+  "after": "Au début, l'anglais était très difficile pour moi.",
+  "severity": "improve",
+  "why": "author's fix accepted: model should translate the English sentence"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1334",
+  "field": "accept",
+  "before": "joue à la",
+  "after": "",
+  "severity": "error",
+  "why": "foot(ball) is masculine: accepts 'joue à la foot'"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1334",
+  "field": "accept",
+  "before": "jouer à la",
+  "after": "",
+  "severity": "error",
+  "why": "foot(ball) is masculine: accepts 'jouer à la foot'"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1358",
+  "field": "accept",
+  "before": "",
+  "after": "t'envoyer un message",
+  "severity": "improve",
+  "why": "'je vais t'envoyer un message' (futur proche) was rejected"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1362",
+  "field": "accept",
+  "before": "je viens de",
+  "after": "",
+  "severity": "error",
+  "why": "for Mexico accepts the common error 'je viens de Mexique'"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1362",
+  "field": "accept",
+  "before": "je viens des",
+  "after": "",
+  "severity": "error",
+  "why": "for Mexico only matches the wrong 'je viens des Mexique'"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1362",
+  "field": "accept",
+  "before": "je suis originaire de",
+  "after": "",
+  "severity": "error",
+  "why": "for Mexico accepts 'originaire de Mexique'; 'originaire du' stays"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1363",
+  "field": "accept",
+  "before": "j'habite en",
+  "after": "",
+  "severity": "error",
+  "why": "Chicago is a city: accepts 'j'habite en Chicago'"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1363",
+  "field": "accept",
+  "before": "j'habite au",
+  "after": "",
+  "severity": "error",
+  "why": "Chicago is a city: accepts 'j'habite au Chicago'"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1363",
+  "field": "accept",
+  "before": "j'habite aux",
+  "after": "",
+  "severity": "error",
+  "why": "Chicago is a city: accepts 'j'habite aux Chicago'"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1363",
+  "field": "accept",
+  "before": "je vis en",
+  "after": "",
+  "severity": "error",
+  "why": "Chicago is a city: accepts 'je vis en Chicago'"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1363",
+  "field": "accept",
+  "before": "je vis au",
+  "after": "",
+  "severity": "error",
+  "why": "Chicago is a city: accepts 'je vis au Chicago'"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1363",
+  "field": "accept",
+  "before": "",
+  "after": "j'habite chicago",
+  "severity": "improve",
+  "why": "habiter + direct object is standard: 'J'habite Chicago'"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1363",
+  "field": "accept",
+  "before": "",
+  "after": "je réside à",
+  "severity": "improve",
+  "why": "formal synonym, keeps 3+ patterns"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1365",
+  "field": "accept",
+  "before": "",
+  "after": "je suis instituteur",
+  "severity": "improve",
+  "why": "primary-school teacher, common rendering"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1365",
+  "field": "accept",
+  "before": "",
+  "after": "je suis institutrice",
+  "severity": "improve",
+  "why": "feminine of instituteur"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1366",
+  "field": "accept",
+  "before": "voici mon",
+  "after": "",
+  "severity": "error",
+  "why": "'my wife' is feminine: only matches 'voici mon femme'"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1366",
+  "field": "accept",
+  "before": "c'est mon",
+  "after": "",
+  "severity": "error",
+  "why": "'my wife' is feminine: only matches 'c'est mon femme'"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1371",
+  "field": "accept",
+  "before": "",
+  "after": "qu'est-ce que [x] veut dire",
+  "severity": "improve",
+  "why": "'Qu'est-ce que « busy » veut dire ?' is standard and was rejected"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1377",
+  "field": "accept",
+  "before": "ouvre-t-elle à quelle heure",
+  "after": "",
+  "severity": "error",
+  "why": "inversion with in-situ 'à quelle heure' ('La banque ouvre-t-elle à quelle heure') is not standard"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1377",
+  "field": "accept",
+  "before": "",
+  "after": "à quelle heure [x] ouvre-t-elle",
+  "severity": "improve",
+  "why": "the standard inverted form 'À quelle heure la banque ouvre-t-elle ?'"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1378",
+  "field": "accept",
+  "before": "",
+  "after": "quel est le prix de",
+  "severity": "improve",
+  "why": "common neutral rendering 'Quel est le prix de ce t-shirt ?'"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1380",
+  "field": "accept",
+  "before": "je peux payer en",
+  "after": "",
+  "severity": "error",
+  "why": "for 'by card' only matches 'payer en carte', which is non-standard (par carte)"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1380",
+  "field": "accept",
+  "before": "",
+  "after": "je peux payer avec",
+  "severity": "improve",
+  "why": "'Je peux payer avec la carte ?' is correct"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1380",
+  "field": "accept",
+  "before": "",
+  "after": "je peux régler par",
+  "severity": "improve",
+  "why": "régler = pay, common at a till"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1386",
+  "field": "accept",
+  "before": "un verre de",
+  "after": "un verre d'",
+  "severity": "error",
+  "why": "'de' before eau must elide: 'un verre de' accepted 'un verre de eau'"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1389",
+  "field": "accept",
+  "before": "",
+  "after": "où est-ce que [x] se trouve",
+  "severity": "improve",
+  "why": "'Où est-ce que la gare se trouve ?' was rejected"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1390",
+  "field": "accept",
+  "before": "où est la [x] la plus proche",
+  "after": "",
+  "severity": "error",
+  "why": "ATM (distributeur, DAB) is masculine: accepts 'la distributeur la plus proche'"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1390",
+  "field": "accept",
+  "before": "où se trouve la [x] la plus proche",
+  "after": "",
+  "severity": "error",
+  "why": "ATM is masculine: accepts the feminine agreement"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1390",
+  "field": "accept",
+  "before": "",
+  "after": "où est le [x] le plus près",
+  "severity": "improve",
+  "why": "'le plus près' is a common accepted variant"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1393",
+  "field": "accept",
+  "before": "à côté du",
+  "after": "",
+  "severity": "error",
+  "why": "'the bank' is feminine: only matches 'à côté du banque'"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1393",
+  "field": "accept",
+  "before": "à côté des",
+  "after": "",
+  "severity": "error",
+  "why": "'the bank' is singular feminine: only matches 'à côté des banque'"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1393",
+  "field": "accept",
+  "before": "à côté d'un",
+  "after": "",
+  "severity": "error",
+  "why": "English has 'the bank'; only matches 'd'un banque' or a different sentence"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1393",
+  "field": "accept",
+  "before": "à côté d'une",
+  "after": "",
+  "severity": "error",
+  "why": "English has 'the bank' (definite)"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1393",
+  "field": "accept",
+  "before": "",
+  "after": "juste à côté de",
+  "severity": "improve",
+  "why": "common rendering"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1393",
+  "field": "accept",
+  "before": "",
+  "after": "jouxte",
+  "severity": "improve",
+  "why": "'La boulangerie jouxte la banque' is correct (formal)"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1404",
+  "field": "accept",
+  "before": "j'ai perdu ma",
+  "after": "",
+  "severity": "error",
+  "why": "passeport is masculine: only matches 'ma passeport'"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1404",
+  "field": "accept",
+  "before": "j'ai perdu mes",
+  "after": "",
+  "severity": "error",
+  "why": "singular passport: only matches 'mes passeport'"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1404",
+  "field": "accept",
+  "before": "",
+  "after": "j'ai égaré mon",
+  "severity": "improve",
+  "why": "égarer = to mislay, common synonym"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1404",
+  "field": "accept",
+  "before": "",
+  "after": "je ne trouve plus mon",
+  "severity": "improve",
+  "why": "natural native rendering of 'I've lost my'"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1405",
+  "field": "accept",
+  "before": "on a volé ma",
+  "after": "",
+  "severity": "error",
+  "why": "portefeuille is masculine: only matches 'ma portefeuille'"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1405",
+  "field": "accept",
+  "before": "quelqu'un a volé ma",
+  "after": "",
+  "severity": "error",
+  "why": "portefeuille is masculine"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1406",
+  "field": "accept",
+  "before": "j'aime (bien) le",
+  "after": "",
+  "severity": "error",
+  "why": "pizza is feminine: only matches 'j'aime le pizza'"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1406",
+  "field": "accept",
+  "before": "j'adore le",
+  "after": "",
+  "severity": "error",
+  "why": "pizza is feminine: only matches 'j'adore le pizza'"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1408",
+  "field": "accept",
+  "before": "je n'aime pas (trop) la",
+  "after": "",
+  "severity": "error",
+  "why": "café is masculine: only matches 'la café'"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1408",
+  "field": "accept",
+  "before": "je n'aime pas (trop) les",
+  "after": "",
+  "severity": "error",
+  "why": "only matches 'les café'"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1408",
+  "field": "accept",
+  "before": "je déteste la",
+  "after": "",
+  "severity": "error",
+  "why": "café is masculine"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1408",
+  "field": "accept",
+  "before": "je déteste les",
+  "after": "",
+  "severity": "error",
+  "why": "only matches 'les café'"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1408",
+  "field": "accept",
+  "before": "",
+  "after": "je n'aime pas du tout le",
+  "severity": "improve",
+  "why": "common intensified rendering"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1408",
+  "field": "accept",
+  "before": "",
+  "after": "je n'aime pas beaucoup le",
+  "severity": "improve",
+  "why": "common softened rendering"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1410",
+  "field": "accept",
+  "before": "c'est quoi ton [x] préféré",
+  "after": "",
+  "severity": "error",
+  "why": "couleur is feminine: only matches 'ton couleur préféré'"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1410",
+  "field": "accept",
+  "before": "quel est ton [x] préféré",
+  "after": "",
+  "severity": "error",
+  "why": "couleur is feminine: only matches 'quel est ton couleur préféré'"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1410",
+  "field": "accept",
+  "before": "quel est votre [x] préféré",
+  "after": "",
+  "severity": "error",
+  "why": "couleur is feminine"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1410",
+  "field": "accept",
+  "before": "",
+  "after": "quelle est ta [x] favorite",
+  "severity": "improve",
+  "why": "favori(te) synonym, used in 1411"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1416",
+  "field": "accept",
+  "before": "j'ai besoin de",
+  "after": "",
+  "severity": "error",
+  "why": "before 'un taxi' must elide: accepted 'j'ai besoin de un taxi'"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1416",
+  "field": "accept",
+  "before": "j'ai besoin d'une",
+  "after": "",
+  "severity": "error",
+  "why": "taxi is masculine: only matches 'd'une taxi'"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1433",
+  "field": "accept",
+  "before": "comment va ton",
+  "after": "",
+  "severity": "error",
+  "why": "mère is feminine: only matches 'ton mère'"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1433",
+  "field": "accept",
+  "before": "comment vont tes",
+  "after": "",
+  "severity": "error",
+  "why": "singular mother: only matches 'comment vont tes mère'"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1433",
+  "field": "accept",
+  "before": "comment vont vos",
+  "after": "",
+  "severity": "error",
+  "why": "singular mother"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1433",
+  "field": "accept",
+  "before": "",
+  "after": "ta mère va bien",
+  "severity": "improve",
+  "why": "'Ta mère va bien ?' is a common rendering"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1433",
+  "field": "accept",
+  "before": "",
+  "after": "ta mère ça va",
+  "severity": "improve",
+  "why": "casual form from the note: 'Et ta mère, ça va ?'"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1435",
+  "field": "accept",
+  "before": "",
+  "after": "il fait (très) froid aujourd'hui",
+  "severity": "improve",
+  "why": "'Il fait très froid aujourd'hui' was rejected while 'vraiment' was accepted"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1443",
+  "field": "accept",
+  "before": "est meilleure que",
+  "after": "",
+  "severity": "error",
+  "why": "thé is masculine: only matches 'le thé est meilleure'"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1447",
+  "field": "accept",
+  "before": "c'était comment ta",
+  "after": "",
+  "severity": "error",
+  "why": "week-end is masculine: only matches 'ta week-end'"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1447",
+  "field": "accept",
+  "before": "comment était ta",
+  "after": "",
+  "severity": "error",
+  "why": "week-end is masculine"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1447",
+  "field": "accept",
+  "before": "comment s'est passée ta",
+  "after": "",
+  "severity": "error",
+  "why": "week-end is masculine"
+ },
+ {
+  "file": "p5.json",
+  "id": "ENG_CHUNK_1354",
+  "field": "model",
+  "before": "J'ai mal à la tête. Tu as un doliprane ?",
+  "after": "J'ai mal à la tête. Tu as un Doliprane ?",
+  "severity": "improve",
+  "why": "Author fix accepted: brand name takes a capital"
+ },
+ {
+  "file": "p6.json",
+  "id": "ENG_CHUNK_1432",
+  "field": "model",
+  "before": "Je suis fatigué aujourd'hui.",
+  "after": "Je me sens fatigué aujourd'hui.",
+  "severity": "improve",
+  "why": "Author fix accepted: renders the highlighted 'I'm feeling'; matches 'je me sens'"
+ },
+ {
+  "file": "authoring/words/fr/nouns.json",
+  "id": "enfant.noun",
+  "field": "remove",
+  "before": "l'enfant (m)",
+  "after": "",
+  "severity": "error",
+  "why": "epicene noun (un/une enfant); l' hides gender, so g=m is ambiguous: removed per brief"
+ },
+ {
+  "file": "authoring/words/fr/nouns.json",
+  "id": "œil.noun",
+  "field": "ex",
+  "before": "Elle a les yeux bleus.",
+  "after": "J'ai une poussière dans l'œil.",
+  "severity": "improve",
+  "why": "example used only the irregular plural yeux; now shows the headword l'œil"
+ },
+ {
+  "file": "authoring/words/fr/nouns.json",
+  "id": "œil.noun",
+  "field": "exen",
+  "before": "She has blue eyes.",
+  "after": "I've got a speck of dust in my eye.",
+  "severity": "improve",
+  "why": "matches new example"
+ },
+ {
+  "file": "authoring/words/fr/nouns.json",
+  "id": "dos.noun",
+  "field": "exen",
+  "before": "My back has hurt since yesterday.",
+  "after": "My back has been hurting since yesterday.",
+  "severity": "improve",
+  "why": "more natural English for j'ai mal depuis hier"
+ },
+ {
+  "file": "authoring/words/fr/nouns.json",
+  "id": "raison.noun",
+  "field": "ex",
+  "before": "Tu as raison, c'est trop cher.",
+  "after": "Il est parti sans donner de raison.",
+  "severity": "improve",
+  "why": "old example 'Tu as raison' shows the idiom 'be right', not the gloss 'reason'"
+ },
+ {
+  "file": "authoring/words/fr/nouns.json",
+  "id": "raison.noun",
+  "field": "exen",
+  "before": "You're right, it's too expensive.",
+  "after": "He left without giving a reason.",
+  "severity": "improve",
+  "why": "matches new example"
+ },
+ {
+  "file": "authoring/words/fr/verbs-adj.json",
+  "id": "sortir.verb",
+  "field": "other",
+  "before": null,
+  "after": "avoir with a direct object: il a sorti la poubelle",
+  "severity": "improve",
+  "why": "note field added: être intransitively, avoir with a direct object"
+ },
+ {
+  "file": "authoring/words/fr/verbs-adj.json",
+  "id": "monter.verb",
+  "field": "other",
+  "before": null,
+  "after": "avoir with a direct object: il a monté les valises",
+  "severity": "improve",
+  "why": "note field added: être intransitively, avoir with a direct object"
+ },
+ {
+  "file": "authoring/words/fr/verbs-adj.json",
+  "id": "descendre.verb",
+  "field": "other",
+  "before": null,
+  "after": "avoir with a direct object: il a descendu l'escalier",
+  "severity": "improve",
+  "why": "note field added: être intransitively, avoir with a direct object"
+ },
+ {
+  "file": "authoring/words/fr/verbs-adj.json",
+  "id": "rentrer.verb",
+  "field": "other",
+  "before": null,
+  "after": "avoir with a direct object: il a rentré la voiture au garage",
+  "severity": "improve",
+  "why": "note field added: être intransitively, avoir with a direct object"
+ },
+ {
+  "file": "authoring/words/fr/verbs-adj.json",
+  "id": "retourner.verb",
+  "field": "other",
+  "before": null,
+  "after": "avoir with a direct object (to turn over): il a retourné la crêpe",
+  "severity": "improve",
+  "why": "note field added: être intransitively, avoir with a direct object"
+ },
+ {
+  "file": "authoring/words/fr/verbs-adj.json",
+  "id": "falloir.verb",
+  "field": "en",
+  "before": "[\"to be necessary\", \"must (il faut)\"]",
+  "after": "[\"to be necessary\", \"must\", \"to have to (impersonal)\"]",
+  "severity": "error",
+  "why": "gloss contained French (il faut); glosses must be English only"
+ },
+ {
+  "file": "authoring/words/fr/verbs-adj.json",
+  "id": "chercher.verb",
+  "field": "en",
+  "before": "[\"to look for\", \"to pick up\"]",
+  "after": "[\"to look for\", \"to search for\"]",
+  "severity": "error",
+  "why": "chercher alone does not mean 'to pick up' (that is aller/venir chercher); misleading gloss"
+ },
+ {
+  "file": "authoring/words/fr/verbs-adj.json",
+  "id": "haut.adj",
+  "field": "ex",
+  "before": "On voit la haute tour de loin.",
+  "after": "Il y a de hautes montagnes dans cette région.",
+  "severity": "improve",
+  "why": "'On voit la haute tour de loin' is stilted; natural example with prenominal haut"
+ },
+ {
+  "file": "authoring/words/fr/verbs-adj.json",
+  "id": "haut.adj",
+  "field": "exen",
+  "before": "You can see the tall tower from afar.",
+  "after": "There are high mountains in this region.",
+  "severity": "improve",
+  "why": "follows new example"
+ },
+ {
+  "file": "authoring/words/fr/verbs-adj.json",
+  "id": "dernier.adj",
+  "field": "ex",
+  "before": "C'est la dernière fois, je promets.",
+  "after": "C'est la dernière fois, je te le promets.",
+  "severity": "improve",
+  "why": "'je promets' without object is unidiomatic; natives say 'je te le promets'"
+ },
+ {
+  "file": "authoring/words/fr/verbs-adj.json",
+  "id": "boire.verb",
+  "field": "exen",
+  "before": "He drinks a tea every morning.",
+  "after": "He drinks tea every morning.",
+  "severity": "improve",
+  "why": "'drinks a tea' is unidiomatic English; faithful rendering"
+ },
+ {
+  "file": "authoring/words/fr/verbs-adj.json",
+  "id": "propre.adj",
+  "field": "en",
+  "before": "[\"clean\"]",
+  "after": "[\"clean\", \"own (before the noun)\"]",
+  "severity": "improve",
+  "why": "missing core sense 'own' (ma propre voiture), common at A2-B1"
+ },
+ {
+  "file": "authoring/words/fr/verbs-adj.json",
+  "id": "chez.prep",
+  "field": "en",
+  "before": "[\"at (someone's) place\", \"at the (shop of)\"]",
+  "after": "[\"at (someone's) place\", \"at (someone's) house\", \"at the (shop/professional), e.g. at the baker's\"]",
+  "severity": "improve",
+  "why": "garbled gloss 'at the (shop of)' clarified"
+ }
+]

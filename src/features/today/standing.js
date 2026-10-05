@@ -10,6 +10,7 @@ import { section } from '../../core/ui.js';
 import { label, diff } from '../../core/clock.js';
 import { modulesStanding, weakest, week, knownOf } from '../../domain/standing.js';
 import { loadKnowledge, knowledgeDecks } from '../../data/knowledge.js';
+import { scopeItem } from '../../domain/itemids.js';
 
 const AHEAD = new Set(['week', 'lastNew', 'eve']);
 const nf = new Intl.NumberFormat('en-GB');
@@ -45,8 +46,12 @@ export async function standingCounts(ctx, modules) {
     const { loadData, wordsKnown } = await import('../shared/data.js');
     // the pool first: loading it runs Igloo's placement import once, so every count below sees its marks
     const data = await loadData(ctx);
-    const [k, words] = await Promise.all([loadKnowledge(ctx), wordsKnown(ctx)]);
-    const get = (/** @type {string} */ id) => k.get(k.maps.resolve(id, 'b1') || id);
+    // a course in another language (C3b) has no map: its words and phrases known are its course's items, scoped by
+    // its language (domain/itemids.js)
+    const course = data.course || null;
+    const [k, mapWords] = await Promise.all([loadKnowledge(ctx), course ? null : wordsKnown(ctx)]);
+    const get = (/** @type {string} */ id) => k.get(course ? scopeItem(course, k.maps.resolve(id, 'core') || id) : k.maps.resolve(id, 'b1') || id);
+    const words = course ? knownOf(data.pool.map((/** @type {any} */ it) => it.id), get) : mapWords;
     const ms = modulesStanding({ modules, pool: data.pool, get });
     const c = ctx.clock.ctx();
     const decks = Object.fromEntries(knowledgeDecks(ctx.store).map(d => [d, ctx.store.cards(d) || {}]));   // the active course's
@@ -56,9 +61,10 @@ export async function standingCounts(ctx, modules) {
 
 /**
  * The section. Returns the element and a fill(counts) for the counts that come later.
- * @param {{plan: any, c: any, t: (k: string, v?: any) => string}} o
+ * @param {{plan: any, c: any, t: (k: string, v?: any) => string, course?: boolean}} o  course: a course in another language
+ *   than German, whose words line counts its course's items and opens Practice (there is no map for it)
  */
-export function renderStanding({ plan, c, t }) {
+export function renderStanding({ plan, c, t, course = false }) {
   const ahead = !!c.exam && AHEAD.has(c.phase);
   const ms0 = modulesStanding({ modules: plan.modules, pool: [], get: () => ({ state: 'unseen' }) });
   // one next action per module while there are study days left before the exam (not on the eve: reviews only)
@@ -83,7 +89,7 @@ export function renderStanding({ plan, c, t }) {
   const sec = section(t('stand.title'),
     sub ? h('p', { class: 'caption section-sub' }, sub) : null,
     rows.length ? h('ul', { class: 'mbars stand-list' }, rows) : null,
-    h('a', { class: 'stand-words pressable', href: '#/lookup/map' },
+    h('a', { class: 'stand-words pressable', href: course ? '#/practice' : '#/lookup/map' },
       h('span', { class: 'row-title' }, t('stand.words')), h('span', { class: 'row-trail' }, wordsEl)),
     weekEl,
     h('p', { class: 'caption stand-def' }, t('stand.def')));

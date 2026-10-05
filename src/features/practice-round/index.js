@@ -7,5 +7,5 @@ import { mountRound } from './round.js';
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
 export function mount(el, ctx) {
-  return practicePage(el, ctx, { list: false }, () => mountRound(el, ctx));
+  return practicePage(el, ctx, { list: false, course: true }, () => mountRound(el, ctx));
 }

@@ -35,7 +35,10 @@ def fold_german(s):
 
 
 def fold_french(s):
-    return s.replace("œ", "oe").replace("æ", "ae")
+    # œ/æ as typed, and elision split off as src/lang/fr/text.js tokenizes it (l'ami → l' ami, qu'il → qu' il;
+    # aujourd'hui stays one word), so a pattern "parce qu'" matches "parce qu'il" here as in the app
+    s = s.replace("œ", "oe").replace("æ", "ae").replace("’", "'")
+    return re.sub(r"(?<![\w'])(jusqu|lorsqu|puisqu|quoiqu|qu|[cdjlmnst])'(?=\w)", r"\1' ", s, flags=re.I)
 
 
 def fold_arabic(s):

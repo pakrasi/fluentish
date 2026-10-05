@@ -8,6 +8,6 @@
   ],
   "ratchet": {
     "about": "Every module under src, checked strict. tsconfig.json lists the modules that must be clean; this config counts the strict errors left in all the others. tools/typecheck-ratchet.mjs (CI) fails when the count rises above max; when it falls, lower max to the new count in the same commit.",
-    "max": 567
+    "max": 566
   }
 }

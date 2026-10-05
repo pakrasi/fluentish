@@ -94,8 +94,27 @@ pairs, the umlaut slip), its grammar (gender and articles, cases, the word card'
 clause shapes, comma rules) and its speech locales, exams and content ids. `domain/match.js`, `detect.js`, `punct.js`
 and `forms.js` hold only the language-neutral engines (alignment, Damerau-Levenshtein, slots, diffs, the typo policy,
 the detector runner) and take a pack per call; without one they use the active pack, which `core/lang.js` sets from
-`settings.language` (`pack()`). German (`src/lang/de/`) is the one full pack; `lang/registry.js` lists the other nine
-languages of the manifest as metadata (tag, script, direction, fonts, voices) so the UI can offer them. The move was
+`settings.language` (`pack()`). German (`src/lang/de/`) and French (`src/lang/fr/`, C3b) are the full packs;
+`lang/registry.js` lists the other eight languages of the manifest as metadata (tag, script, direction, fonts, voices)
+so the UI can offer them.
+
+**French** (C3b) proves the interface: elision splits in the tokenizer (`l' ami`, `qu' il`; `aujourd'hui` is one
+word), accents stay in the key and a dropped accent is a slip (`grading.slips.marks`) except the meaning pairs
+(ou/où, a/à, la/là, du/dû, sur/sûr …) and a final é or és (parlé → parle is the present tense; common nouns in -é keep
+the slip); articles, pronouns and prepositions are closed class; gender comes through the article, and an elided `l'`
+noun accepts its indefinite article (`l'école`, `une école`) while the word card names the gender; the forms model
+shows infinitive, présent, passé composé with its auxiliary, imparfait and futur, and the être agreement note; four
+detectors (avoir with an être verb, ne … pas order, agreement after elle, elision) each pass a zero-fire check over
+every French sentence of the content (`tests/unit/lang-fr.test.mjs`); `grading.sentenceStart` lets a capital follow
+« ». `tests/corpus/grading-corpus.fr.mjs` is the French corpus (0 wrong answers graded right). No engine changed
+behaviour for German: the golden vectors and the German corpus are unchanged.
+
+**A course in another language** (`features/shared/course.js`): its review round lives in deck `<lang>:core` and
+kv `<lang>.session` (German keeps `b1` and `b1.session`); its pool is the reviewed course file `course.<lang>`
+(`tools/build-course.mjs`, phrase cards) and the word list `igloo.words.<lang>` (word cards with the word panel);
+its counts go to kv `deck.stats`, which the allowance reads before the course's first card. Practice offers the hub
+and the round (other Practice pages are German content and say so); Today has its review row and no exam-date prompt
+when the language has no exam; Look up shows its phrases, grammar layer and word list; the map is German's and says so. The move was
 byte-identical: the golden vectors and the grading corpus did not change. `tests/unit/lang-contract.test.mjs` is the
 tokenizer and normaliser contract for German, French, Hindi and Arabic (the last three as text-only stubs under
 `src/lang/{fr,hi,ar}/text.js`); `tests/unit/lang-registry.test.mjs` keeps the registry in step with the manifest.

@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "course@1",
+  "title": "A language's course: the phrase cards of its review round",
+  "description": "Built by tools/build-course.mjs from the accepted answers (authoring/chunks/accept/<lang>/), Igloo's phrase translations and the English sentences. The app's review round for that language asks these (deck <code>:core). Every entry passed a native review (reviewedBy, reviewedAt).",
+  "type": "object",
+  "required": [
+    "lang",
+    "phrases",
+    "reviewedBy",
+    "reviewedAt"
+  ],
+  "properties": {
+    "lang": {
+      "type": "string"
+    },
+    "reviewedBy": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]*$"
+    },
+    "reviewedAt": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "phrases": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^ENG_CHUNK_\\d{4}$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "en",
+          "hl",
+          "ex",
+          "accept",
+          "level"
+        ],
+        "properties": {
+          "en": {
+            "type": "string",
+            "description": "the English sentence the card shows"
+          },
+          "hl": {
+            "type": "string",
+            "description": "the span of en the phrase renders"
+          },
+          "ex": {
+            "type": "string",
+            "description": "the model sentence"
+          },
+          "n": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "accept": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "level": {
+            "enum": [
+              "A1",
+              "A2",
+              "B1",
+              "B2",
+              "C1",
+              "C2"
+            ]
+          },
+          "cat": {
+            "type": "string"
+          },
+          "fn": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "weak": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}

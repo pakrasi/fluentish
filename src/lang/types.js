@@ -78,6 +78,8 @@
  *                                                   fr: ou/où, a/à): a dropped mark there is a miss
  * @property {{marks: MarkSlip | null}} slips        the slips a pack forgives as Hard (de: the umlaut)
  * @property {'nouns'|'none'|'proper'} caseSensitive  which capitals count (de: nouns; hi, ar: none)
+ * @property {RegExp} [sentenceStart]                what ends the text before a sentence's first word, whose capital is
+ *                                                   free (default: . ! ? : and one opening quote; fr: « » between)
  * @property {(toks: Token[], i: number) => boolean} eitherCase   a word written either way (de: recht/Recht haben)
  * @property {readonly RegExp[]} paradigms           closed-class families (der/den/dem …): another member is the same
  *                                                   word in another form (formCheck)

@@ -4,13 +4,16 @@
    grammar layer: linking words, tenses, cases, set phrases, vocabulary, sound, tasks, and the notes), frames
    (Sprechen frames from the B1 trainer, and Igloo's verb frames).
 
-   LANGS lists what each study language has. Phase 1 is German only; the `lang` parameter is kept so the
-   ten-language picker can come later without changing the routes. */
+   LANGS lists what each study language has: German, and French since C3b (phrases, the framework's grammar layer,
+   the course's word list). The `lang` parameter is kept so the ten-language picker can come later without changing the
+   routes. */
 import { gapFill } from '../../domain/match.js';
 
 /** Content ids per language. @type {Record<string, {code: string, chunks: string, lang: string, words?: string, b1?: boolean, priority?: string}>} */
 export const LANGS = {
   german: { code: 'de', chunks: 'igloo.chunks.german', lang: 'igloo.lang.german', words: 'igloo.words.de', b1: true, priority: 'igloo.chunks.priority.de' },
+  // C3b: Igloo's phrases and framework, and the course's word list (no B1 trainer, no exam words)
+  french: { code: 'fr', chunks: 'igloo.chunks.french', lang: 'igloo.lang.french', words: 'igloo.words.fr' },
 };
 export const DEFAULT_LANG = 'german';
 /** @param {string | null | undefined} id */
@@ -59,7 +62,7 @@ export function dictRows(words) {
     .sort((a, b) => (b.zipf ?? 0) - (a.zipf ?? 0) || a.rank - b.rank);   // most common first (zipf), the list's rank on a tie
 }
 /** "der Tisch" @param {{art?: string, w: string}} r */
-export const dictHead = r => [r.art, r.w].filter(Boolean).join(' ');
+export const dictHead = r => (r.art && /'$/.test(r.art) ? `${r.art}${r.w}` : [r.art, r.w].filter(Boolean).join(' '));   // l'école
 
 /**
  * Igloo's framework items in one language: {id, layer, role, level, en, de, gloss, example, note, star}.

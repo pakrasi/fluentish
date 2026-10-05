@@ -41,7 +41,7 @@ export async function mount(el, ctx) {
         h('div', { class: 'row-main' }, h('span', { class: 'row-title' }, f.title), h('span', { class: 'row-detail' }, f.status)),
         f.action ? h('a', { class: 'btn pressable', href: f.href, 'aria-label': f.label || null }, f.action) : null))),
       plan.feedbackMore ? h('p', { class: 'caption more' }, t('today.feedbackMore', { n: plan.feedbackMore })) : null) : null;
-    const stand = s.language ? renderStanding({ plan, c, t }) : null;
+    const stand = s.language ? renderStanding({ plan, c, t, ...(s.language !== 'german' ? { course: true } : {}) }) : null;
     const page = h('div', { class: 'today' },
       h('header', { class: 'page-head' }, h('h1', null, t('today.title')), h('p', { class: 'caption' }, label(c.today))),
       h('div', { class: 'today-grid' },

@@ -1,0 +1,646 @@
+{
+ "ENG_CHUNK_0297": {
+  "core_en": "That's because",
+  "accept": [
+   "c'est parce que",
+   "c'est parce qu'",
+   "ça vient du fait que",
+   "c'est dû au fait que",
+   "la raison c'est que"
+  ]
+ },
+ "ENG_CHUNK_0299": {
+  "core_en": "Thanks to",
+  "accept": [
+   "grâce à",
+   "grâce au",
+   "grâce aux"
+  ]
+ },
+ "ENG_CHUNK_0311": {
+  "core_en": "It might be because",
+  "accept": [
+   "c'est peut-être parce que",
+   "peut-être que c'est parce que",
+   "il se peut que ce soit parce que",
+   "ça vient peut-être du fait que",
+   "c'est peut-être dû au fait que",
+   "c'est peut-être parce qu'",
+   "peut-être que c'est parce qu'"
+  ]
+ },
+ "ENG_CHUNK_0325": {
+  "core_en": "This is my first time",
+  "accept": [
+   "c'est la première fois",
+   "c'est une première pour moi",
+   "je [x] pour la première fois"
+  ]
+ },
+ "ENG_CHUNK_0336": {
+  "core_en": "book a flight",
+  "accept": [
+   "réserver un vol",
+   "réserve un vol",
+   "réserves un vol",
+   "réservez un vol",
+   "prendre un billet d'avion",
+   "prenne un billet d'avion",
+   "acheter un billet d'avion",
+   "réserver un billet d'avion"
+  ]
+ },
+ "ENG_CHUNK_0345": {
+  "core_en": "get my taxes done",
+  "accept": [
+   "faire ma déclaration d'impôts",
+   "fasse ma déclaration d'impôts",
+   "faire mes impôts",
+   "fasse mes impôts",
+   "remplir ma déclaration d'impôts",
+   "remplisse ma déclaration d'impôts",
+   "déclarer mes revenus",
+   "déclare mes revenus"
+  ]
+ },
+ "ENG_CHUNK_0354": {
+  "core_en": "make things worse",
+  "accept": [
+   "envenimer les choses",
+   "aggraver les choses",
+   "envenimer la situation",
+   "aggraver la situation",
+   "faire empirer les choses",
+   "faire empirer la situation"
+  ]
+ },
+ "ENG_CHUNK_0363": {
+  "core_en": "get a haircut",
+  "accept": [
+   "me faire couper les cheveux",
+   "me fasse couper les cheveux",
+   "aller chez le coiffeur",
+   "j'aille chez le coiffeur",
+   "me couper les cheveux"
+  ]
+ },
+ "ENG_CHUNK_0366": {
+  "core_en": "Good question",
+  "accept": [
+   "bonne question",
+   "excellente question"
+  ]
+ },
+ "ENG_CHUNK_0369": {
+  "core_en": "Got it",
+  "accept": [
+   "compris",
+   "ça marche",
+   "d'accord",
+   "entendu",
+   "c'est noté"
+  ]
+ },
+ "ENG_CHUNK_0372": {
+  "core_en": "Oh, before I forget",
+  "accept": [
+   "avant que j'oublie",
+   "avant que je n'oublie",
+   "avant d'oublier",
+   "pendant que j'y pense"
+  ]
+ },
+ "ENG_CHUNK_0376": {
+  "core_en": "You see",
+  "accept": [
+   "tu vois",
+   "vous voyez",
+   "en fait",
+   "tu sais",
+   "vous savez"
+  ]
+ },
+ "ENG_CHUNK_0379": {
+  "core_en": "You're absolutely right",
+  "accept": [
+   "tu as tout à fait raison",
+   "vous avez tout à fait raison",
+   "tu as entièrement raison",
+   "vous avez entièrement raison",
+   "tu as complètement raison",
+   "tu as absolument raison",
+   "vous avez absolument raison",
+   "vous avez complètement raison"
+  ]
+ },
+ "ENG_CHUNK_0381": {
+  "core_en": "I owe you one",
+  "accept": [
+   "je t'en dois une",
+   "je vous en dois une",
+   "je te dois une fière chandelle",
+   "je vous dois une fière chandelle",
+   "je te dois un service",
+   "je te revaudrai ça",
+   "je vous revaudrai ça"
+  ]
+ },
+ "ENG_CHUNK_0383": {
+  "core_en": "That's very kind of you",
+  "accept": [
+   "c'est (vraiment) (très) gentil de votre part",
+   "c'est (vraiment) (très) gentil de ta part",
+   "c'est (vraiment) (très) aimable de votre part",
+   "c'est (très) gentil à vous",
+   "c'est (très) gentil à toi",
+   "c'est (vraiment) (très) aimable de ta part"
+  ]
+ },
+ "ENG_CHUNK_0385": {
+  "core_en": "It won't happen again",
+  "accept": [
+   "ça ne se reproduira pas",
+   "cela ne se reproduira pas",
+   "ça ne se reproduira plus",
+   "cela ne se reproduira plus",
+   "ça n'arrivera plus",
+   "ça ne se répétera pas"
+  ]
+ },
+ "ENG_CHUNK_0387": {
+  "core_en": "Bless you",
+  "accept": [
+   "à tes souhaits",
+   "à vos souhaits"
+  ]
+ },
+ "ENG_CHUNK_0389": {
+  "core_en": "I'm so happy for you",
+  "accept": [
+   "je suis tellement content pour",
+   "je suis tellement contente pour",
+   "je suis trop content pour",
+   "je suis trop contente pour",
+   "je suis tellement heureux pour",
+   "je suis tellement heureuse pour",
+   "je suis si content pour",
+   "je suis si contente pour"
+  ]
+ },
+ "ENG_CHUNK_0391": {
+  "core_en": "except for",
+  "accept": [
+   "sauf",
+   "à part",
+   "excepté",
+   "à l'exception de"
+  ]
+ },
+ "ENG_CHUNK_0394": {
+  "core_en": "In the meantime",
+  "accept": [
+   "en attendant",
+   "entre-temps",
+   "pendant ce temps"
+  ]
+ },
+ "ENG_CHUNK_0396": {
+  "core_en": "From now on",
+  "accept": [
+   "à partir de maintenant",
+   "désormais",
+   "dorénavant",
+   "à partir d'aujourd'hui",
+   "à l'avenir"
+  ]
+ },
+ "ENG_CHUNK_0398": {
+  "core_en": "At the end of the day",
+  "accept": [
+   "au final",
+   "au bout du compte",
+   "en fin de compte",
+   "finalement"
+  ]
+ },
+ "ENG_CHUNK_0400": {
+  "core_en": "At the time",
+  "accept": [
+   "sur le moment",
+   "à ce moment-là",
+   "à l'époque",
+   "sur le coup"
+  ]
+ },
+ "ENG_CHUNK_0404": {
+  "core_en": "Can I get you",
+  "accept": [
+   "je vous sers",
+   "je te sers",
+   "je peux vous servir",
+   "je peux te servir",
+   "je peux vous offrir",
+   "je peux t'offrir",
+   "je vous apporte",
+   "je t'apporte"
+  ]
+ },
+ "ENG_CHUNK_0416": {
+  "core_en": "Don't worry about",
+  "accept": [
+   "ne t'inquiète pas pour",
+   "ne vous inquiétez pas pour",
+   "t'inquiète pas pour",
+   "ne t'en fais pas pour",
+   "ne vous en faites pas pour",
+   "t'en fais pas pour"
+  ]
+ },
+ "ENG_CHUNK_0431": {
+  "core_en": "The hardest part is",
+  "accept": [
+   "le plus dur c'est",
+   "le plus dur est",
+   "le plus difficile c'est",
+   "le plus difficile est",
+   "le plus compliqué c'est"
+  ]
+ },
+ "ENG_CHUNK_0442": {
+  "core_en": "get hurt",
+  "accept": [
+   "te faire mal",
+   "vous faire mal",
+   "te blesser",
+   "vous blesser",
+   "se faire mal",
+   "se blesser"
+  ]
+ },
+ "ENG_CHUNK_0451": {
+  "core_en": "pay you back",
+  "accept": [
+   "je te rembourse",
+   "je vous rembourse",
+   "te rembourser",
+   "vous rembourser",
+   "je te rembourserai",
+   "je vous rembourserai",
+   "je te rends l'argent",
+   "je te rendrai l'argent"
+  ]
+ },
+ "ENG_CHUNK_0460": {
+  "core_en": "a dead battery",
+  "accept": [
+   "plus de batterie",
+   "batterie à plat",
+   "batterie déchargée",
+   "téléphone était déchargé",
+   "portable était déchargé"
+  ]
+ },
+ "ENG_CHUNK_0468": {
+  "core_en": "Wait, what?",
+  "accept": [
+   "attends quoi",
+   "attendez quoi",
+   "attends comment ça",
+   "attendez comment ça"
+  ]
+ },
+ "ENG_CHUNK_0471": {
+  "core_en": "Any thoughts?",
+  "accept": [
+   "vous en pensez quoi",
+   "tu en penses quoi",
+   "qu'est-ce que vous en pensez",
+   "qu'est-ce que tu en penses",
+   "qu'en pensez-vous",
+   "qu'en penses-tu",
+   "des idées",
+   "qu'en dites-vous"
+  ]
+ },
+ "ENG_CHUNK_0474": {
+  "core_en": "Tell me more",
+  "accept": [
+   "raconte",
+   "racontez",
+   "raconte-moi",
+   "racontez-moi",
+   "dis-m'en plus",
+   "dites-m'en plus",
+   "dis-moi tout",
+   "dites-moi tout"
+  ]
+ },
+ "ENG_CHUNK_0478": {
+  "core_en": "that's not what I meant",
+  "accept": [
+   "ce n'est pas ce que je voulais dire",
+   "c'est pas ce que je voulais dire",
+   "ce n'était pas ce que je voulais dire",
+   "ce n'est pas ce que je veux dire",
+   "je ne voulais pas dire ça",
+   "je n'ai pas voulu dire ça"
+  ]
+ },
+ "ENG_CHUNK_0481": {
+  "core_en": "same to you",
+  "accept": [
+   "toi aussi",
+   "vous aussi",
+   "pareillement",
+   "de même",
+   "également"
+  ]
+ },
+ "ENG_CHUNK_0483": {
+  "core_en": "what can I get you?",
+  "accept": [
+   "qu'est-ce que je vous sers",
+   "qu'est-ce que je te sers",
+   "que puis-je vous servir",
+   "qu'est-ce que je peux vous servir",
+   "qu'est-ce que vous prenez",
+   "vous désirez",
+   "que désirez-vous"
+  ]
+ },
+ "ENG_CHUNK_0485": {
+  "core_en": "could we get the check, please",
+  "accept": [
+   "l'addition s'il vous plaît",
+   "on pourrait avoir l'addition",
+   "pourrait-on avoir l'addition",
+   "nous pourrions avoir l'addition",
+   "pourrions-nous avoir l'addition",
+   "on peut avoir l'addition"
+  ]
+ },
+ "ENG_CHUNK_0487": {
+  "core_en": "talk to you soon",
+  "accept": [
+   "à plus",
+   "à bientôt",
+   "à tout à l'heure",
+   "à la prochaine",
+   "on s'appelle",
+   "on se reparle bientôt"
+  ]
+ },
+ "ENG_CHUNK_0489": {
+  "core_en": "you're breaking up",
+  "accept": [
+   "ça coupe",
+   "tu coupes",
+   "vous coupez",
+   "je t'entends mal",
+   "je vous entends mal",
+   "je ne t'entends pas bien",
+   "je ne vous entends pas bien",
+   "ça capte mal"
+  ]
+ },
+ "ENG_CHUNK_0492": {
+  "core_en": "in fact",
+  "accept": [
+   "en fait",
+   "en réalité",
+   "au contraire",
+   "à vrai dire"
+  ]
+ },
+ "ENG_CHUNK_0494": {
+  "core_en": "the first time",
+  "accept": [
+   "la première fois",
+   "lors de ma première",
+   "quand j'ai [x] pour la première fois"
+  ]
+ },
+ "ENG_CHUNK_0496": {
+  "core_en": "right after",
+  "accept": [
+   "juste après",
+   "tout de suite après",
+   "aussitôt après"
+  ]
+ },
+ "ENG_CHUNK_0498": {
+  "core_en": "all of a sudden",
+  "accept": [
+   "tout à coup",
+   "d'un coup",
+   "soudain",
+   "soudainement",
+   "subitement"
+  ]
+ },
+ "ENG_CHUNK_0500": {
+  "core_en": "if not",
+  "accept": [
+   "sinon",
+   "autrement",
+   "si ce n'est pas le cas",
+   "dans le cas contraire"
+  ]
+ },
+ "ENG_CHUNK_0510": {
+  "core_en": "Could you show me how to",
+  "accept": [
+   "tu pourrais me montrer comment",
+   "vous pourriez me montrer comment",
+   "tu peux me montrer comment",
+   "vous pouvez me montrer comment",
+   "pourriez-vous me montrer comment",
+   "pourrais-tu me montrer comment",
+   "tu pourrais m'expliquer comment",
+   "vous pourriez m'expliquer comment"
+  ]
+ },
+ "ENG_CHUNK_0524": {
+  "core_en": "Can I get that without",
+  "accept": [
+   "je pourrais l'avoir sans",
+   "je peux l'avoir sans",
+   "pourrais-je l'avoir sans",
+   "je pourrais avoir ça sans",
+   "je peux avoir ça sans",
+   "c'est possible sans",
+   "ce serait possible sans"
+  ]
+ },
+ "ENG_CHUNK_0539": {
+  "core_en": "get together",
+  "accept": [
+   "se voir",
+   "se voie",
+   "se retrouver",
+   "se retrouve",
+   "nous voir",
+   "nous retrouver",
+   "se voit"
+  ]
+ },
+ "ENG_CHUNK_0548": {
+  "core_en": "complaining about",
+  "accept": [
+   "se plaindre du",
+   "se plaindre de",
+   "se plaindre des",
+   "se plaint du",
+   "se plaint de",
+   "se plaint des",
+   "râler contre",
+   "râle contre"
+  ]
+ },
+ "ENG_CHUNK_0557": {
+  "core_en": "working overtime",
+  "accept": [
+   "fait des heures sup",
+   "fait des heures supplémentaires",
+   "faire des heures sup",
+   "faire des heures supplémentaires",
+   "fais des heures sup",
+   "fais des heures supplémentaires",
+   "enchaîné les heures sup"
+  ]
+ },
+ "ENG_CHUNK_0566": {
+  "core_en": "It's hard to say",
+  "accept": [
+   "difficile à dire",
+   "dur à dire",
+   "difficile de le dire",
+   "je ne saurais pas dire",
+   "je ne saurais dire"
+  ]
+ },
+ "ENG_CHUNK_0570": {
+  "core_en": "I have to say",
+  "accept": [
+   "je dois dire",
+   "il faut dire",
+   "franchement",
+   "honnêtement",
+   "je dois avouer",
+   "il faut avouer",
+   "j'avoue"
+  ]
+ },
+ "ENG_CHUNK_0573": {
+  "core_en": "I completely disagree",
+  "accept": [
+   "je ne suis pas du tout d'accord",
+   "je suis pas du tout d'accord",
+   "je ne suis absolument pas d'accord",
+   "je suis complètement en désaccord",
+   "je suis totalement en désaccord",
+   "je suis tout à fait en désaccord"
+  ]
+ },
+ "ENG_CHUNK_0576": {
+  "core_en": "you win",
+  "accept": [
+   "tu as gagné",
+   "t'as gagné",
+   "vous avez gagné",
+   "tu gagnes",
+   "vous gagnez",
+   "c'est toi qui gagnes"
+  ]
+ },
+ "ENG_CHUNK_0579": {
+  "core_en": "it gets worse",
+  "accept": [
+   "le pire c'est",
+   "le pire est",
+   "ce n'est pas fini",
+   "c'est pas fini",
+   "ce n'est pas tout",
+   "c'est pas tout",
+   "ça ne s'arrête pas là",
+   "attends la suite"
+  ]
+ },
+ "ENG_CHUNK_0581": {
+  "core_en": "Wish me luck",
+  "accept": [
+   "souhaite-moi bonne chance",
+   "souhaitez-moi bonne chance",
+   "souhaite-moi bon courage",
+   "souhaitez-moi bon courage",
+   "croise les doigts pour moi",
+   "croisez les doigts pour moi"
+  ]
+ },
+ "ENG_CHUNK_0583": {
+  "core_en": "Hope you feel better soon",
+  "accept": [
+   "remets-toi vite",
+   "remettez-vous vite",
+   "rétablis-toi vite",
+   "j'espère que vous irez (vite) mieux",
+   "bon rétablissement",
+   "prompt rétablissement",
+   "j'espère que tu iras (vite) mieux",
+   "vite aller mieux"
+  ]
+ },
+ "ENG_CHUNK_0585": {
+  "core_en": "it's not really my thing",
+  "accept": [
+   "ce n'est pas (trop) mon truc",
+   "ce n'est pas vraiment mon truc",
+   "c'est pas (trop) mon truc",
+   "c'est pas vraiment mon truc",
+   "ce n'est pas trop mon genre",
+   "ce n'est pas vraiment mon genre"
+  ]
+ },
+ "ENG_CHUNK_0587": {
+  "core_en": "Time flies",
+  "accept": [
+   "le temps passe (trop) vite",
+   "ça passe (trop) vite",
+   "le temps file",
+   "comme le temps passe"
+  ]
+ },
+ "ENG_CHUNK_0589": {
+  "core_en": "it's a piece of cake",
+  "accept": [
+   "c'est (très) facile",
+   "c'est super facile",
+   "c'est fastoche",
+   "c'est simple comme bonjour",
+   "c'est du gâteau",
+   "c'est un jeu d'enfant"
+  ]
+ },
+ "ENG_CHUNK_0602": {
+  "core_en": "could I speak to",
+  "accept": [
+   "je pourrais parler à",
+   "pourrais-je parler à",
+   "je peux parler à",
+   "puis-je parler à",
+   "je voudrais parler à",
+   "j'aimerais parler à"
+  ]
+ },
+ "ENG_CHUNK_0615": {
+  "core_en": "I'm not a morning person",
+  "accept": [
+   "je ne suis pas (du tout) du matin",
+   "je ne suis pas trop du matin",
+   "je ne suis pas vraiment du matin",
+   "je ne suis pas (du tout) matinal",
+   "je ne suis pas (du tout) matinale",
+   "le matin ce n'est pas mon truc"
+  ]
+ }
+}

@@ -25,5 +25,5 @@ export function mount(el, ctx) {
     replace(el, h('div', { class: 'practice stack' }, h('div', { class: 'page-head' }, h('h1', null, ctx.t('error.notFound'))), h('a', { class: 'btn pressable', href: '#/practice' }, ctx.t('practice.back'))));
     return undefined;
   }
-  return practicePage(el, ctx, { list: true }, () => mountHub(el, ctx));
+  return practicePage(el, ctx, { list: true, course: true }, () => mountHub(el, ctx));
 }

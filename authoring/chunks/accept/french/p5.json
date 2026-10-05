@@ -1,0 +1,591 @@
+{
+ "ENG_CHUNK_1331": {
+  "core_en": "do my homework",
+  "accept": [
+   "fais mes devoirs",
+   "faire mes devoirs",
+   "je fais mes devoirs"
+  ]
+ },
+ "ENG_CHUNK_1332": {
+  "core_en": "cook dinner",
+  "accept": [
+   "prépare le dîner",
+   "préparer le dîner",
+   "fais le dîner",
+   "faire le dîner",
+   "fais à manger",
+   "prépare à manger",
+   "fais la cuisine",
+   "je cuisine"
+  ]
+ },
+ "ENG_CHUNK_1333": {
+  "core_en": "go for a walk",
+  "accept": [
+   "nous promener",
+   "se promener",
+   "nous balader",
+   "se balader",
+   "faire une promenade",
+   "faire un tour",
+   "faire une balade"
+  ]
+ },
+ "ENG_CHUNK_1334": {
+  "core_en": "play",
+  "accept": [
+   "joue au",
+   "jouer au",
+   "fais du",
+   "faire du"
+  ]
+ },
+ "ENG_CHUNK_1335": {
+  "core_en": "do the shopping",
+  "accept": [
+   "fais les courses",
+   "faire les courses",
+   "fais mes courses",
+   "fais des courses"
+  ]
+ },
+ "ENG_CHUNK_1336": {
+  "core_en": "do the laundry",
+  "accept": [
+   "fais la lessive",
+   "faire la lessive",
+   "fais une lessive",
+   "lave le linge",
+   "laver le linge",
+   "fais une machine"
+  ]
+ },
+ "ENG_CHUNK_1337": {
+  "core_en": "clean the house",
+  "accept": [
+   "fait le ménage",
+   "faisons le ménage",
+   "faire le ménage",
+   "nettoyons la maison",
+   "nettoie la maison",
+   "nettoyer la maison"
+  ]
+ },
+ "ENG_CHUNK_1338": {
+  "core_en": "Wash your hands",
+  "accept": [
+   "lave-toi les mains",
+   "lavez-vous les mains",
+   "va te laver les mains",
+   "allez vous laver les mains",
+   "se laver les mains"
+  ]
+ },
+ "ENG_CHUNK_1339": {
+  "core_en": "make coffee",
+  "accept": [
+   "fais du café",
+   "faire du café",
+   "fais un café",
+   "faire un café",
+   "prépare du café",
+   "préparer du café"
+  ]
+ },
+ "ENG_CHUNK_1340": {
+  "core_en": "take the bus",
+  "accept": [
+   "prends le bus",
+   "prendre le bus",
+   "prends l'autobus",
+   "vais à l'école en bus"
+  ]
+ },
+ "ENG_CHUNK_1341": {
+  "core_en": "Get on the bus",
+  "accept": [
+   "monte dans le bus",
+   "montez dans le bus",
+   "monter dans le bus"
+  ]
+ },
+ "ENG_CHUNK_1342": {
+  "core_en": "Get off the bus",
+  "accept": [
+   "descends du bus",
+   "descendez du bus",
+   "descendre du bus"
+  ]
+ },
+ "ENG_CHUNK_1343": {
+  "core_en": "buy a ticket",
+  "accept": [
+   "acheter un billet",
+   "acheter un ticket",
+   "prendre un billet",
+   "prendre un ticket",
+   "acheter des billets",
+   "acheter des tickets"
+  ]
+ },
+ "ENG_CHUNK_1344": {
+  "core_en": "rent a car",
+  "accept": [
+   "louer une voiture",
+   "louer un véhicule",
+   "prendre une voiture de location"
+  ]
+ },
+ "ENG_CHUNK_1345": {
+  "core_en": "cross the street",
+  "accept": [
+   "traverses la rue",
+   "traversez la rue",
+   "traverser la rue",
+   "traverse la rue"
+  ]
+ },
+ "ENG_CHUNK_1346": {
+  "core_en": "Turn left",
+  "accept": [
+   "tournez à gauche",
+   "tourne à gauche",
+   "tourner à gauche",
+   "prenez à gauche",
+   "prends à gauche"
+  ]
+ },
+ "ENG_CHUNK_1347": {
+  "core_en": "take a photo",
+  "accept": [
+   "prendre une photo",
+   "faire une photo",
+   "prendre des photos",
+   "prendre une photographie"
+  ]
+ },
+ "ENG_CHUNK_1348": {
+  "core_en": "I'm hungry",
+  "accept": [
+   "j'ai faim",
+   "j'ai très faim",
+   "j'ai un peu faim"
+  ]
+ },
+ "ENG_CHUNK_1349": {
+  "core_en": "I'm thirsty",
+  "accept": [
+   "j'ai soif",
+   "j'ai très soif",
+   "j'ai un peu soif"
+  ]
+ },
+ "ENG_CHUNK_1350": {
+  "core_en": "I'm tired",
+  "accept": [
+   "je suis fatigué",
+   "je suis fatiguée",
+   "je suis crevé",
+   "je suis crevée",
+   "je suis épuisé",
+   "je suis épuisée"
+  ]
+ },
+ "ENG_CHUNK_1351": {
+  "core_en": "we're going to be late",
+  "accept": [
+   "on va être en retard",
+   "nous allons être en retard",
+   "on sera en retard",
+   "nous serons en retard",
+   "on va arriver en retard",
+   "nous allons arriver en retard"
+  ]
+ },
+ "ENG_CHUNK_1352": {
+  "core_en": "is on time",
+  "accept": [
+   "est à l'heure",
+   "arrive à l'heure",
+   "est ponctuel"
+  ]
+ },
+ "ENG_CHUNK_1353": {
+  "core_en": "We had a good time",
+  "accept": [
+   "on s'est bien amusés",
+   "on s'est bien amusées",
+   "on s'est bien amusé",
+   "nous nous sommes bien amusés",
+   "nous nous sommes bien amusées",
+   "on a passé un bon moment",
+   "nous avons passé un bon moment",
+   "on a passé un très bon moment"
+  ]
+ },
+ "ENG_CHUNK_1354": {
+  "core_en": "I have a headache",
+  "accept": [
+   "j'ai mal à la tête",
+   "j'ai un mal de tête",
+   "j'ai la migraine",
+   "j'ai une migraine"
+  ]
+ },
+ "ENG_CHUNK_1355": {
+  "core_en": "has a fever",
+  "accept": [
+   "a de la fièvre",
+   "a la fièvre",
+   "a de la température"
+  ]
+ },
+ "ENG_CHUNK_1356": {
+  "core_en": "Take this medicine",
+  "accept": [
+   "prenez ce médicament",
+   "prends ce médicament",
+   "prendre ce médicament"
+  ]
+ },
+ "ENG_CHUNK_1357": {
+  "core_en": "make a phone call",
+  "accept": [
+   "passer un coup de fil",
+   "passer un coup de téléphone",
+   "passer un appel",
+   "téléphoner",
+   "appeler quelqu'un"
+  ]
+ },
+ "ENG_CHUNK_1358": {
+  "core_en": "send you a message",
+  "accept": [
+   "je t'envoie un message",
+   "je vous envoie un message",
+   "je t'enverrai un message",
+   "je vous enverrai un message",
+   "je t'envoie un texto",
+   "je t'envoie un sms",
+   "je t'écris",
+   "t'envoyer un message"
+  ]
+ },
+ "ENG_CHUNK_1359": {
+  "core_en": "charge my phone",
+  "accept": [
+   "charger mon téléphone",
+   "recharger mon téléphone",
+   "charger mon portable",
+   "recharger mon portable"
+  ]
+ },
+ "ENG_CHUNK_1360": {
+  "core_en": "learning English",
+  "accept": [
+   "j'apprends le français",
+   "j'apprends l'anglais",
+   "j'étudie le français",
+   "j'étudie l'anglais",
+   "apprendre le français",
+   "apprendre l'anglais"
+  ]
+ },
+ "ENG_CHUNK_1361": {
+  "core_en": "my name is",
+  "accept": [
+   "je m'appelle",
+   "mon nom est",
+   "moi c'est",
+   "mon prénom est",
+   "mon prénom c'est"
+  ]
+ },
+ "ENG_CHUNK_1362": {
+  "core_en": "I'm from",
+  "accept": [
+   "je viens du",
+   "je suis du",
+   "je suis originaire du",
+   "je suis mexicain",
+   "je suis mexicaine"
+  ]
+ },
+ "ENG_CHUNK_1363": {
+  "core_en": "I live in",
+  "accept": [
+   "j'habite à",
+   "je vis à",
+   "j'habite chicago",
+   "je réside à"
+  ]
+ },
+ "ENG_CHUNK_1364": {
+  "core_en": "I'm thirty years old",
+  "accept": [
+   "j'ai trente ans",
+   "j'ai 30 ans"
+  ]
+ },
+ "ENG_CHUNK_1365": {
+  "core_en": "I'm a",
+  "accept": [
+   "je suis professeur",
+   "je suis professeure",
+   "je suis prof",
+   "je suis enseignant",
+   "je suis enseignante",
+   "je suis instituteur",
+   "je suis institutrice"
+  ]
+ },
+ "ENG_CHUNK_1366": {
+  "core_en": "This is my",
+  "accept": [
+   "je te présente",
+   "je vous présente",
+   "voici ma",
+   "c'est ma"
+  ]
+ },
+ "ENG_CHUNK_1367": {
+  "core_en": "do you speak",
+  "accept": [
+   "vous parlez",
+   "tu parles",
+   "parlez-vous",
+   "parles-tu"
+  ]
+ },
+ "ENG_CHUNK_1368": {
+  "core_en": "I speak a little",
+  "accept": [
+   "je parle un peu",
+   "je parle un petit peu"
+  ]
+ },
+ "ENG_CHUNK_1369": {
+  "core_en": "I'm learning",
+  "accept": [
+   "j'apprends",
+   "j'étudie",
+   "je suis en train d'apprendre",
+   "j'apprends le français"
+  ]
+ },
+ "ENG_CHUNK_1370": {
+  "core_en": "How do you say",
+  "accept": [
+   "comment on dit",
+   "comment dit-on",
+   "comment est-ce qu'on dit",
+   "comment ça se dit",
+   "comment se dit"
+  ]
+ },
+ "ENG_CHUNK_1371": {
+  "core_en": "What does",
+  "accept": [
+   "qu'est-ce que ça veut dire",
+   "qu'est-ce que veut dire",
+   "que veut dire",
+   "ça veut dire quoi",
+   "veut dire quoi",
+   "que signifie",
+   "qu'est-ce que signifie",
+   "qu'est-ce que [x] veut dire"
+  ]
+ },
+ "ENG_CHUNK_1372": {
+  "core_en": "I don't understand",
+  "accept": [
+   "je ne comprends pas",
+   "je n'arrive pas à comprendre"
+  ]
+ },
+ "ENG_CHUNK_1373": {
+  "core_en": "It's three o'clock",
+  "accept": [
+   "il est trois heures",
+   "il est 3 heures",
+   "il est 3h",
+   "il est 15 heures",
+   "il est 15h"
+  ]
+ },
+ "ENG_CHUNK_1374": {
+  "core_en": "My birthday is on",
+  "accept": [
+   "mon anniversaire c'est le",
+   "mon anniversaire est le",
+   "mon anniversaire tombe le"
+  ]
+ },
+ "ENG_CHUNK_1375": {
+  "core_en": "When is",
+  "accept": [
+   "c'est quand",
+   "quand est ton",
+   "quand est votre",
+   "quand tombe ton",
+   "quand tombe votre",
+   "quand est-ce que c'est"
+  ]
+ },
+ "ENG_CHUNK_1376": {
+  "core_en": "What time is",
+  "accept": [
+   "c'est à quelle heure",
+   "à quelle heure est",
+   "à quelle heure commence",
+   "commence à quelle heure",
+   "à quelle heure c'est"
+  ]
+ },
+ "ENG_CHUNK_1377": {
+  "core_en": "What time does",
+  "accept": [
+   "ouvre à quelle heure",
+   "à quelle heure ouvre",
+   "à quelle heure [x] ouvre",
+   "à quelle heure [x] ouvre-t-elle"
+  ]
+ },
+ "ENG_CHUNK_1378": {
+  "core_en": "How much is",
+  "accept": [
+   "combien coûte",
+   "coûte combien",
+   "c'est combien",
+   "combien ça coûte",
+   "ça coûte combien",
+   "ça fait combien",
+   "quel est le prix de"
+  ]
+ },
+ "ENG_CHUNK_1379": {
+  "core_en": "That's twelve dollars, please",
+  "accept": [
+   "ça fait douze euros",
+   "ça fait 12 euros",
+   "ça fait douze dollars",
+   "ça fait 12 dollars",
+   "c'est douze euros",
+   "c'est 12 euros",
+   "c'est douze dollars",
+   "c'est 12 dollars"
+  ]
+ },
+ "ENG_CHUNK_1380": {
+  "core_en": "Can I pay by",
+  "accept": [
+   "je peux payer par",
+   "puis-je payer par",
+   "on peut payer par",
+   "est-il possible de payer par",
+   "c'est possible de payer par",
+   "je peux payer avec",
+   "je peux régler par"
+  ]
+ },
+ "ENG_CHUNK_1381": {
+  "core_en": "Do you have",
+  "accept": [
+   "vous avez",
+   "tu as",
+   "avez-vous",
+   "as-tu",
+   "vous auriez"
+  ]
+ },
+ "ENG_CHUNK_1382": {
+  "core_en": "It's a bit too",
+  "accept": [
+   "c'est un peu trop",
+   "il est un peu trop",
+   "elle est un peu trop",
+   "c'est un petit peu trop"
+  ]
+ },
+ "ENG_CHUNK_1383": {
+  "core_en": "Can I have",
+  "accept": [
+   "je pourrais avoir",
+   "je peux avoir",
+   "puis-je avoir",
+   "pourrais-je avoir",
+   "je voudrais",
+   "j'aimerais"
+  ]
+ },
+ "ENG_CHUNK_1384": {
+  "core_en": "I'd like",
+  "accept": [
+   "je voudrais",
+   "j'aimerais",
+   "je prendrais"
+  ]
+ },
+ "ENG_CHUNK_1385": {
+  "core_en": "I'll have",
+  "accept": [
+   "je vais prendre",
+   "je prends",
+   "pour moi",
+   "je prendrai"
+  ]
+ },
+ "ENG_CHUNK_1386": {
+  "core_en": "A glass of",
+  "accept": [
+   "un verre d'eau",
+   "un verre d'",
+   "un grand verre d'eau"
+  ]
+ },
+ "ENG_CHUNK_1387": {
+  "core_en": "Would you like some",
+  "accept": [
+   "tu veux encore",
+   "vous voulez encore",
+   "tu reprends",
+   "vous reprenez",
+   "tu en veux encore",
+   "vous en voulez encore",
+   "tu veux un peu plus de",
+   "vous voulez un peu plus de"
+  ]
+ },
+ "ENG_CHUNK_1388": {
+  "core_en": "Would you like to",
+  "accept": [
+   "ça te dirait de",
+   "ça vous dirait de",
+   "tu veux",
+   "vous voulez",
+   "tu aimerais",
+   "vous aimeriez",
+   "veux-tu",
+   "voulez-vous"
+  ]
+ },
+ "ENG_CHUNK_1389": {
+  "core_en": "Where is",
+  "accept": [
+   "où est",
+   "où se trouve",
+   "c'est où",
+   "où est-ce que se trouve",
+   "où est-ce que [x] se trouve"
+  ]
+ },
+ "ENG_CHUNK_1390": {
+  "core_en": "Where's the nearest",
+  "accept": [
+   "où est le [x] le plus proche",
+   "où se trouve le [x] le plus proche",
+   "où est le [x] le plus près"
+  ]
+ }
+}

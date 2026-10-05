@@ -62,8 +62,10 @@ export async function composeDay(ctx, { prepare = true } = {}) {
       modules.push(...(mod.todayModules?.(pctx) || []));
     } catch (e) { console.error(`today: ${id}`, e); }
   }
-  if (s.language && c.phase === 'none') items.push({ id: 'today.setDate', source: 'today', kind: 'setup', title: t('plan.setDate'), detail: t('plan.setDate.detail'), minutes: 0, href: '#/profile/goal', priority: 90 });
-  if (s.language && c.phase === 'after') items.push({ id: 'today.nextExam', source: 'today', kind: 'setup', title: t('plan.nextExam'), detail: t('plan.nextExam.detail'), minutes: 0, href: '#/profile/goal', priority: 90 });
+  // a language with no mock exam in the content (French, C3b) is studied without a date: no prompt to set one
+  const examLang = !manifest || (manifest.exams || []).some((/** @type {any} */ e) => e.language === s.language);
+  if (s.language && examLang && c.phase === 'none') items.push({ id: 'today.setDate', source: 'today', kind: 'setup', title: t('plan.setDate'), detail: t('plan.setDate.detail'), minutes: 0, href: '#/profile/goal', priority: 90 });
+  if (s.language && examLang && c.phase === 'after') items.push({ id: 'today.nextExam', source: 'today', kind: 'setup', title: t('plan.nextExam'), detail: t('plan.nextExam.detail'), minutes: 0, href: '#/profile/goal', priority: 90 });
   const a = arrange(items, feedback, t);
   const activity = store.get('activity', {}) || {};
   // on the exam day nothing asks for work: no corrections to read, only the warm-up

@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "b9279ff680e5",
+ "version": "bb01aa663e8c",
  "languages": [
   {
    "id": "khasi",
@@ -36,7 +36,7 @@
    "script": "latin",
    "rtl": false,
    "full": true,
-   "content": false
+   "content": true
   },
   {
    "id": "swissgerman",
@@ -217,9 +217,12 @@
    "speak.situations"
   ],
   "fr": [
+   "course.fr",
+   "igloo.chunks.accept.french",
    "igloo.chunks.french",
    "igloo.lang.french",
-   "igloo.sentences.french"
+   "igloo.sentences.french",
+   "igloo.words.fr"
   ],
   "es": [
    "igloo.chunks.spanish",
@@ -348,6 +351,13 @@
    "schema": "clusters@1",
    "bytes": 370561,
    "sha256": "41cb1893ddf913d82c44d91839fec9bd44f648ea785352e92da3e1456fd45af9"
+  },
+  {
+   "id": "course.fr",
+   "path": "course/fr.json",
+   "schema": "course@1",
+   "bytes": 134145,
+   "sha256": "871b60bb3155a5fefc03f5c62d539f455c68205a83f3bd2ab055801ef700dc99"
   },
   {
    "id": "exam.goethe-b1.01",
@@ -560,6 +570,13 @@
    "sha256": "d83da6443a40ab798351d5adfce59cb68f4a2f40b49b0bf57d8d7c6456a12cef"
   },
   {
+   "id": "igloo.chunks.accept.french",
+   "path": "igloo/chunks/accept_french.json",
+   "schema": "phrases-accept@1",
+   "bytes": 83992,
+   "sha256": "47b87042ca3bef13dbdcd5453d2e8000121043c3cfac6d9ef26a4acd024a1cb0"
+  },
+  {
    "id": "igloo.chunks.accept.german",
    "path": "igloo/chunks/accept_german.json",
    "schema": "phrases-accept@1",
@@ -591,8 +608,8 @@
    "id": "igloo.chunks.french",
    "path": "igloo/chunks/french.json",
    "schema": "phrases@1",
-   "bytes": 207836,
-   "sha256": "806c5f8320303e0a81d5aaf601543b3d8b244427a0a856848c262e18d2b37585"
+   "bytes": 228777,
+   "sha256": "928d41ad071fb2081458097db3c1a96818a951d38839ee8f8578d10b3c088147"
   },
   {
    "id": "igloo.chunks.german",
@@ -796,6 +813,13 @@
    "schema": "lexicon@1",
    "bytes": 1136533,
    "sha256": "c72daf706704659d2e2c40efcb2c8bfc6d5e146daff8bb317dfc694a9338e833"
+  },
+  {
+   "id": "igloo.words.fr",
+   "path": "igloo/words/fr.json",
+   "schema": "lexicon@1",
+   "bytes": 109065,
+   "sha256": "722347b1fbe3589941d230a03294e26d5889878e615fdf6f2206b4ada32a6262"
   },
   {
    "id": "igloo.words.themes",

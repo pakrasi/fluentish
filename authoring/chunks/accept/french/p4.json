@@ -1,0 +1,625 @@
+{
+ "ENG_CHUNK_1257": {
+  "core_en": "I'm lost",
+  "accept": [
+   "je suis perdu",
+   "je suis perdue",
+   "je me suis perdu",
+   "je me suis perdue",
+   "je ne sais pas où je suis"
+  ]
+ },
+ "ENG_CHUNK_1258": {
+  "core_en": "Look out!",
+  "accept": [
+   "attention",
+   "fais attention",
+   "faites attention",
+   "fais gaffe",
+   "faites gaffe"
+  ]
+ },
+ "ENG_CHUNK_1259": {
+  "core_en": "What's the matter?",
+  "accept": [
+   "qu'est-ce qui ne va pas",
+   "qu'est-ce qu'il y a",
+   "qu'est-ce qui se passe",
+   "qu'est-ce que tu as",
+   "qu'est-ce que vous avez",
+   "qu'est-ce qui t'arrive",
+   "qu'est-ce qui vous arrive"
+  ]
+ },
+ "ENG_CHUNK_1260": {
+  "core_en": "Are you okay?",
+  "accept": [
+   "ça va",
+   "tu vas bien",
+   "vous allez bien",
+   "tout va bien",
+   "tu te sens bien",
+   "vous vous sentez bien"
+  ]
+ },
+ "ENG_CHUNK_1261": {
+  "core_en": "Happy birthday!",
+  "accept": [
+   "joyeux anniversaire",
+   "bon anniversaire"
+  ]
+ },
+ "ENG_CHUNK_1262": {
+  "core_en": "Well done!",
+  "accept": [
+   "bravo",
+   "bien joué",
+   "félicitations",
+   "chapeau"
+  ]
+ },
+ "ENG_CHUNK_1263": {
+  "core_en": "It's raining",
+  "accept": [
+   "il pleut",
+   "il est en train de pleuvoir"
+  ]
+ },
+ "ENG_CHUNK_1264": {
+  "core_en": "Nice weather today, isn't it?",
+  "accept": [
+   "il fait beau (aujourd'hui) hein",
+   "il fait beau (aujourd'hui) non",
+   "il fait beau (aujourd'hui) n'est-ce pas",
+   "il fait beau (aujourd'hui) pas vrai",
+   "il fait beau (aujourd'hui) tu ne trouves pas",
+   "il fait beau (aujourd'hui) vous ne trouvez pas",
+   "quel beau temps (aujourd'hui) hein",
+   "quel beau temps (aujourd'hui) non"
+  ]
+ },
+ "ENG_CHUNK_1265": {
+  "core_en": "What's your phone number?",
+  "accept": [
+   "c'est quoi ton numéro",
+   "quel est ton numéro",
+   "c'est quoi votre numéro",
+   "quel est votre numéro",
+   "tu as quel numéro",
+   "vous avez quel numéro"
+  ]
+ },
+ "ENG_CHUNK_1266": {
+  "core_en": "I can't hear you",
+  "accept": [
+   "je ne t'entends pas",
+   "je ne vous entends pas",
+   "je t'entends mal",
+   "je vous entends mal",
+   "je n'entends rien"
+  ]
+ },
+ "ENG_CHUNK_1267": {
+  "core_en": "sorry, I missed your call",
+  "accept": [
+   "désolé j'ai raté ton appel",
+   "désolée j'ai raté ton appel",
+   "désolé j'ai manqué ton appel",
+   "désolée j'ai manqué ton appel",
+   "désolé j'ai loupé ton appel",
+   "désolée j'ai loupé ton appel",
+   "désolé j'ai raté votre appel",
+   "désolée j'ai raté votre appel"
+  ]
+ },
+ "ENG_CHUNK_1268": {
+  "core_en": "can I ask you a question?",
+  "accept": [
+   "je peux vous poser une question",
+   "je peux te poser une question",
+   "puis-je vous poser une question",
+   "puis-je te poser une question",
+   "je pourrais vous poser une question",
+   "je pourrais te poser une question",
+   "pourrais-je vous poser une question"
+  ]
+ },
+ "ENG_CHUNK_1269": {
+  "core_en": "What time shall we meet?",
+  "accept": [
+   "on se retrouve à quelle heure",
+   "à quelle heure on se retrouve",
+   "à quelle heure est-ce qu'on se retrouve",
+   "on se voit à quelle heure",
+   "à quelle heure on se voit",
+   "à quelle heure est-ce qu'on se voit",
+   "à quelle heure nous retrouvons-nous",
+   "on se donne rendez-vous à quelle heure"
+  ]
+ },
+ "ENG_CHUNK_1270": {
+  "core_en": "my phone is about to die",
+  "accept": [
+   "je n'ai presque plus de batterie",
+   "je n'ai bientôt plus de batterie",
+   "mon téléphone n'a presque plus de batterie",
+   "mon portable n'a presque plus de batterie",
+   "mon téléphone va bientôt s'éteindre",
+   "mon portable va bientôt s'éteindre",
+   "ma batterie est presque vide",
+   "ma batterie est presque à plat"
+  ]
+ },
+ "ENG_CHUNK_1271": {
+  "core_en": "Um, let me see",
+  "accept": [
+   "euh voyons",
+   "euh attends",
+   "euh attendez",
+   "euh laisse-moi réfléchir",
+   "euh laissez-moi réfléchir"
+  ]
+ },
+ "ENG_CHUNK_1272": {
+  "core_en": "Just a moment",
+  "accept": [
+   "un instant",
+   "un petit instant",
+   "un moment",
+   "une seconde",
+   "une minute"
+  ]
+ },
+ "ENG_CHUNK_1273": {
+  "core_en": "Wait a minute",
+  "accept": [
+   "attends une minute",
+   "attendez une minute",
+   "attends une seconde",
+   "attendez une seconde",
+   "attends un instant",
+   "attendez un instant",
+   "attends un moment",
+   "attendez un moment"
+  ]
+ },
+ "ENG_CHUNK_1274": {
+  "core_en": "Hold on",
+  "accept": [
+   "attends",
+   "attendez",
+   "ne quittez pas",
+   "ne quitte pas",
+   "un instant",
+   "une seconde"
+  ]
+ },
+ "ENG_CHUNK_1275": {
+  "core_en": "Pardon?",
+  "accept": [
+   "pardon",
+   "comment",
+   "excusez-moi",
+   "excuse-moi"
+  ]
+ },
+ "ENG_CHUNK_1276": {
+  "core_en": "Sorry?",
+  "accept": [
+   "pardon",
+   "comment",
+   "quoi",
+   "excuse-moi",
+   "excusez-moi"
+  ]
+ },
+ "ENG_CHUNK_1277": {
+  "core_en": "What's that?",
+  "accept": [
+   "c'est quoi",
+   "qu'est-ce que c'est",
+   "qu'est-ce que ça veut dire",
+   "ça veut dire quoi"
+  ]
+ },
+ "ENG_CHUNK_1279": {
+  "core_en": "Of course",
+  "accept": [
+   "bien sûr",
+   "évidemment",
+   "bien entendu",
+   "naturellement"
+  ]
+ },
+ "ENG_CHUNK_1281": {
+  "core_en": "Me too",
+  "accept": [
+   "moi aussi",
+   "pareil",
+   "moi également",
+   "moi de même"
+  ]
+ },
+ "ENG_CHUNK_1282": {
+  "core_en": "Me neither",
+  "accept": [
+   "moi non plus",
+   "pareil",
+   "pareil pour moi"
+  ]
+ },
+ "ENG_CHUNK_1284": {
+  "core_en": "I don't know",
+  "accept": [
+   "je ne sais pas",
+   "je n'en sais rien",
+   "aucune idée",
+   "je n'en ai aucune idée"
+  ]
+ },
+ "ENG_CHUNK_1285": {
+  "core_en": "Maybe",
+  "accept": [
+   "peut-être",
+   "possible",
+   "ça se peut"
+  ]
+ },
+ "ENG_CHUNK_1286": {
+  "core_en": "I'm not sure",
+  "accept": [
+   "je ne suis pas sûr",
+   "je ne suis pas sûre",
+   "je n'en suis pas sûr",
+   "je n'en suis pas sûre",
+   "je ne suis pas certain",
+   "je ne suis pas certaine",
+   "je ne sais pas trop"
+  ]
+ },
+ "ENG_CHUNK_1287": {
+  "core_en": "Good idea",
+  "accept": [
+   "bonne idée",
+   "excellente idée",
+   "super idée"
+  ]
+ },
+ "ENG_CHUNK_1288": {
+  "core_en": "That's great",
+  "accept": [
+   "génial",
+   "super",
+   "formidable",
+   "fantastique",
+   "c'est top",
+   "excellent",
+   "c'est une bonne nouvelle",
+   "c'est une excellente nouvelle"
+  ]
+ },
+ "ENG_CHUNK_1289": {
+  "core_en": "Oh no!",
+  "accept": [
+   "oh non",
+   "ah non",
+   "mince",
+   "zut",
+   "oh là là"
+  ]
+ },
+ "ENG_CHUNK_1291": {
+  "core_en": "Actually",
+  "accept": [
+   "en fait",
+   "en réalité",
+   "à vrai dire"
+  ]
+ },
+ "ENG_CHUNK_1292": {
+  "core_en": "Sounds good",
+  "accept": [
+   "ça marche",
+   "ça me va",
+   "ça me dit",
+   "ça me convient",
+   "d'accord",
+   "parfait",
+   "volontiers"
+  ]
+ },
+ "ENG_CHUNK_1294": {
+  "core_en": "Wow!",
+  "accept": [
+   "waouh",
+   "wouah",
+   "ouah",
+   "oh là là"
+  ]
+ },
+ "ENG_CHUNK_1295": {
+  "core_en": "Is that okay?",
+  "accept": [
+   "ça te va",
+   "ça vous va",
+   "ça te convient",
+   "ça vous convient",
+   "c'est bon pour toi",
+   "c'est bon pour vous",
+   "ça marche pour toi",
+   "ça marche pour vous"
+  ]
+ },
+ "ENG_CHUNK_1301": {
+  "core_en": "First",
+  "accept": [
+   "d'abord",
+   "premièrement",
+   "en premier",
+   "pour commencer"
+  ]
+ },
+ "ENG_CHUNK_1303": {
+  "core_en": "Finally",
+  "accept": [
+   "enfin",
+   "finalement",
+   "à la fin"
+  ]
+ },
+ "ENG_CHUNK_1304": {
+  "core_en": "Next",
+  "accept": [
+   "ensuite",
+   "puis",
+   "après"
+  ]
+ },
+ "ENG_CHUNK_1305": {
+  "core_en": "later",
+  "accept": [
+   "plus tard",
+   "tout à l'heure",
+   "après"
+  ]
+ },
+ "ENG_CHUNK_1306": {
+  "core_en": "Because of that",
+  "accept": [
+   "du coup",
+   "à cause de ça",
+   "à cause de cela",
+   "par conséquent",
+   "c'est pour ça que",
+   "c'est pourquoi",
+   "donc",
+   "alors"
+  ]
+ },
+ "ENG_CHUNK_1307": {
+  "core_en": "Afterwards",
+  "accept": [
+   "après",
+   "ensuite",
+   "puis",
+   "plus tard",
+   "par la suite"
+  ]
+ },
+ "ENG_CHUNK_1311": {
+  "core_en": "At the beginning",
+  "accept": [
+   "au début",
+   "au départ",
+   "au commencement"
+  ]
+ },
+ "ENG_CHUNK_1312": {
+  "core_en": "Anyway",
+  "accept": [
+   "bref",
+   "sinon",
+   "en tout cas",
+   "de toute façon",
+   "enfin",
+   "quoi qu'il en soit"
+  ]
+ },
+ "ENG_CHUNK_1313": {
+  "core_en": "One day",
+  "accept": [
+   "un jour",
+   "un de ces jours",
+   "un beau jour"
+  ]
+ },
+ "ENG_CHUNK_1314": {
+  "core_en": "Suddenly",
+  "accept": [
+   "tout à coup",
+   "soudain",
+   "soudainement",
+   "d'un coup"
+  ]
+ },
+ "ENG_CHUNK_1315": {
+  "core_en": "luckily",
+  "accept": [
+   "heureusement",
+   "par chance",
+   "par bonheur"
+  ]
+ },
+ "ENG_CHUNK_1316": {
+  "core_en": "get up",
+  "accept": [
+   "je me lève",
+   "me lever",
+   "se lever",
+   "tu te lèves",
+   "se lève",
+   "nous nous levons",
+   "vous vous levez"
+  ]
+ },
+ "ENG_CHUNK_1317": {
+  "core_en": "wake up",
+  "accept": [
+   "je me réveille",
+   "me réveiller",
+   "se réveiller",
+   "tu te réveilles",
+   "se réveille",
+   "nous nous réveillons",
+   "vous vous réveillez"
+  ]
+ },
+ "ENG_CHUNK_1318": {
+  "core_en": "have breakfast",
+  "accept": [
+   "prends le petit-déjeuner",
+   "prends mon petit-déjeuner",
+   "prends le petit déjeuner",
+   "prends mon petit déjeuner",
+   "prendre le petit-déjeuner",
+   "prendre le petit déjeuner",
+   "prend le petit-déjeuner",
+   "je petit-déjeune"
+  ]
+ },
+ "ENG_CHUNK_1319": {
+  "core_en": "have lunch",
+  "accept": [
+   "déjeune",
+   "déjeuner",
+   "déjeunons",
+   "déjeunes",
+   "déjeunez"
+  ]
+ },
+ "ENG_CHUNK_1320": {
+  "core_en": "have dinner",
+  "accept": [
+   "dîne",
+   "dîner",
+   "dînons",
+   "dînes",
+   "dînez"
+  ]
+ },
+ "ENG_CHUNK_1321": {
+  "core_en": "take a shower",
+  "accept": [
+   "prends une douche",
+   "prend une douche",
+   "prendre une douche",
+   "je me douche",
+   "me doucher",
+   "se doucher"
+  ]
+ },
+ "ENG_CHUNK_1322": {
+  "core_en": "Brush your teeth",
+  "accept": [
+   "brosse-toi les dents",
+   "brossez-vous les dents",
+   "te brosser les dents",
+   "vous brosser les dents",
+   "se brosser les dents",
+   "lave-toi les dents",
+   "lavez-vous les dents"
+  ]
+ },
+ "ENG_CHUNK_1323": {
+  "core_en": "get dressed",
+  "accept": [
+   "m'habille",
+   "m'habiller",
+   "s'habiller",
+   "s'habille",
+   "t'habilles",
+   "nous nous habillons",
+   "vous vous habillez"
+  ]
+ },
+ "ENG_CHUNK_1324": {
+  "core_en": "go to bed",
+  "accept": [
+   "me couche",
+   "me coucher",
+   "se coucher",
+   "se couche",
+   "te couches",
+   "vais au lit",
+   "aller au lit",
+   "va au lit"
+  ]
+ },
+ "ENG_CHUNK_1325": {
+  "core_en": "go to work",
+  "accept": [
+   "vais au travail",
+   "aller au travail",
+   "va au travail",
+   "vais au boulot",
+   "aller au boulot",
+   "va au boulot",
+   "vais travailler",
+   "vais au bureau"
+  ]
+ },
+ "ENG_CHUNK_1326": {
+  "core_en": "go home",
+  "accept": [
+   "rentrer",
+   "rentre",
+   "aller chez moi",
+   "retourner chez moi"
+  ]
+ },
+ "ENG_CHUNK_1327": {
+  "core_en": "come home",
+  "accept": [
+   "rentre",
+   "rentrer",
+   "reviens à la maison",
+   "arrive à la maison",
+   "reviens chez moi",
+   "arrive chez moi"
+  ]
+ },
+ "ENG_CHUNK_1328": {
+  "core_en": "go shopping",
+  "accept": [
+   "fait les magasins",
+   "fais les magasins",
+   "faire les magasins",
+   "fait du shopping",
+   "fais du shopping",
+   "faire du shopping",
+   "faire les boutiques",
+   "fait les boutiques"
+  ]
+ },
+ "ENG_CHUNK_1329": {
+  "core_en": "watch TV",
+  "accept": [
+   "regarde la télé",
+   "regarder la télé",
+   "regardes la télé",
+   "regarde la télévision",
+   "regarder la télévision"
+  ]
+ },
+ "ENG_CHUNK_1330": {
+  "core_en": "listen to music",
+  "accept": [
+   "j'écoute de la musique",
+   "écoute de la musique",
+   "écoutes de la musique",
+   "écouter de la musique",
+   "écoutons de la musique",
+   "écoutez de la musique"
+  ]
+ }
+}

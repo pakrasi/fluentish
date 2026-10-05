@@ -143,12 +143,13 @@ export async function mount(el, ctx) {
     const minutes = h('div', { class: 'form-field' }, h('p', { class: 'field-label' }, t('goal.minutes')),
       seg({ label: t('goal.minutes'), value: String(s.minutesPerDay), options: config.minutesOptions.map(n => [String(n), t('unit.min', { n })]), onChange: v => { write('minutesPerDay', Number(v)); renderGoal(); } }));
     // the date first: it drives the countdown, the caps and the pacing
-    sec.append(
+    // (Element.append writes a null as the text "null": the fields a goal without an exam does not have are left out)
+    sec.append(...[
       s.exam.type ? h('div', { class: 'date-row' }, dateField, clearBtn) : null,
       h('p', { class: 'derived', 'aria-live': 'polite' }, derived(c)),
       examSel,
       modules, minutes,
-      h('div', { class: 'form-field' }, h('p', { class: 'field-label' }, t('profile.level')), levelSeg));
+      h('div', { class: 'form-field' }, h('p', { class: 'field-label' }, t('profile.level')), levelSeg)].filter(x => x != null));
     return sec;
   }
 

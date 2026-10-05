@@ -170,8 +170,12 @@ test('detectors: JS = Python reference, and no fires on right sentences', () => 
     const nModels = cases.length;
     cases.push(...fixed);
     const py = `import json,sys\nsys.path.insert(0, ${JSON.stringify(path.join(ROOT, 'tools'))})\nfrom validate_b1 import detect\nprint(json.dumps([sorted(detect(a, m or None)) for a, m in json.load(sys.stdin)]))`;
-    const out = spawnSync('python3', ['-c', py], { input: JSON.stringify(cases), encoding: 'utf8', maxBuffer: 1 << 26 });
-    assert.equal(out.status, 0, out.stderr);
+    // bounded (C3b): spawnSync blocks the whole test process, so a python3 that never answers (a first-run prompt of
+    // the system python, a stalled .pyc write) used to hang the suite with no message; now it fails, and says why
+    const out = spawnSync('python3', ['-c', py], { input: JSON.stringify(cases), encoding: 'utf8', maxBuffer: 1 << 26, timeout: 120_000, killSignal: 'SIGKILL',
+      env: { ...process.env, PYTHONDONTWRITEBYTECODE: '1' } });
+    assert.ifError(out.error);
+    assert.equal(out.status, 0, out.stderr || `python3 ended by ${out.signal}`);
     const want = JSON.parse(out.stdout);
     const bad = cases.map(([a, m], i) => [a, m, Det.classes(a, m || null), want[i]]).filter(([, , js, py]) => JSON.stringify(js) !== JSON.stringify(py));
     assert.deepEqual(bad.slice(0, 5), [], 'detect.js and validate_b1.detect disagree');

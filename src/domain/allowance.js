@@ -55,7 +55,9 @@ const courseDecks = settings => { const l = courseLang(settings); return l ? LEG
  * The active course's own namespaced decks in the store ('fr:core' …); none without a course, and none for German
  * today (its decks are the legacy ones). @param {any} store @param {any} settings @returns {string[]}
  */
-const courseNamed = (store, settings) => namedDecks(Object.keys((store && store.cardsByDeck) || {}), courseLang(settings));
+const courseNamed = (store, settings) => namedDecks([...new Set([...Object.keys((store && store.cardsByDeck) || {}),
+  // a course deck its feature has recorded today's numbers for, before its first card (C3b: a new French course)
+  ...Object.keys((store && typeof store.get === 'function' && store.get(DECK_STATS_KV, {})) || {})])], courseLang(settings));
 
 /**
  * The learner's first study week: {day} (0 on his first day) while his first study day is less than 7 days ago,
@@ -233,10 +235,14 @@ export function todayBudget({ store, c, settings }) {
   const act = (store.get('activity', {}) || {})[c.today];
   const day = a.day;
   const roundsToday = Math.max(act ? act.rounds || 0 : 0, day ? day.rounds || 0 : 0);
-  const cards = store.cards('b1');
+  // a course in another language (C3b) has its round in its own decks, and its next round's size in 'deck.stats'
+  const named = courseNamed(store, settings).filter(d => allowanceDeck(d) === 'b1');
+  const cards = named.length ? Object.assign({}, ...named.map(d => store.cards(d) || {})) : store.cards('b1');
   const firstEver = !Object.values(cards).some(r => r && r.hist && r.hist.length);
+  const ds = named.length ? /** @type {Record<string, any>} */ (store.get(DECK_STATS_KV, {}) || {}) : {};
+  const own = named.map(d => ds[d]).find(x => x && x.day === c.today && Number.isFinite(x.next));
   // the next daily round's size: what the composer made of the same state (data.js stateFor), else its rule
-  const next = a.stats && Number.isFinite(a.stats.next) ? a.stats.next : Math.min(ROUND, b.due + Math.min(b.newLeft, firstEver ? 8 : 4));
+  const next = own ? own.next : a.stats && Number.isFinite(a.stats.next) ? a.stats.next : Math.min(ROUND, b.due + Math.min(b.newLeft, firstEver ? 8 : 4));
   return { ...a, due: b.due, rounds: b.rounds, minutes: b.minutes, b1: b, writing: { ...a.decks.writing, focus: a.focus, n: a.decks.writing.due + a.decks.writing.newLeft },
     roundsToday, writeRounds: day ? day.writeRounds || 0 : 0, next };
 }
