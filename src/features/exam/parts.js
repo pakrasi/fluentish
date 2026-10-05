@@ -3,6 +3,7 @@ import { h, replace, announce } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
 import * as T from './timer.js';
 import { draft, saveDraft } from './data.js';
+import { langAttr } from '../../core/lang.js';
 
 /** The back link at the top of every exam screen ("← Test 3"). @param {string} href @param {string} text */
 export const backLink = (href, text) => h('a', { class: 'ex-back pressable', href }, icon('prev', { size: 18 }), h('span', null, text));
@@ -21,7 +22,7 @@ export function clockBar({ ctx, n, module, minutes, countUp = false, label = '',
   save();
   const text = h('span', { class: 'ex-clock-t tnum', role: 'timer', 'aria-live': 'off' });
   const btn = h('button', { type: 'button', class: 'btn btn-quiet ex-clock-btn pressable' });
-  const el = h('div', { class: 'ex-clock' }, label ? h('span', { class: 'ex-clock-l', lang: 'de' }, label) : null, text, btn);
+  const el = h('div', { class: 'ex-clock' }, label ? h('span', { class: 'ex-clock-l', lang: langAttr() }, label) : null, text, btn);
   let lastSave = Date.now();
   const said = new Set();
   let stopped = false;

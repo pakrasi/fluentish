@@ -26,6 +26,7 @@ import { gradeRow } from './grade4.js';
 import { buildLine, swapLine, tray, fromTray, ruleNode, tileLegend } from './machine.js';
 import { drawTree, landArticle } from './chain.js';
 import { play, css, nudge, pop, reduced, finishAll } from './fx.js';
+import { langAttr } from '../../core/lang.js';
 
 const KINDS = ['review', 'prefixes', 'verbs', 'sentences', 'suffixes', 'drill', 'pick'];
 const SIX_HOURS = 6 * 3600e3;
@@ -176,13 +177,13 @@ export async function mountRound(el, ctx) {
         const w = wordNode({ pre: p.id, stem: root, kind, t, big: true });
         replace(cs.slot, w);
         joinFrom(btn, w);
-        replace(say, h('p', { class: 'wb-res is-ok' }, h('span', { lang: 'de' }, `${p.id}-`), `: ${p.short}.`));
+        replace(say, h('p', { class: 'wb-res is-ok' }, h('span', { lang: langAttr() }, `${p.id}-`), `: ${p.short}.`));
       } else {
         btn.classList.add('is-wrongpick'); nudge(btn);
         const right = cs.chips.get(p.id); right?.classList.add('is-answer');
         sc.play();
         const q = d.P.get(pre);
-        replace(say, h('p', { class: 'wb-res is-bad' }, t('build.see.was', { p: `${p.id}-` }), ' ', p.short, '.'), h('p', { class: 'caption' }, h('span', { lang: 'de' }, `${pre}-`), ` ${q ? q.short : ''}.`));
+        replace(say, h('p', { class: 'wb-res is-bad' }, t('build.see.was', { p: `${p.id}-` }), ' ', p.short, '.'), h('p', { class: 'caption' }, h('span', { lang: langAttr() }, `${pre}-`), ` ${q ? q.short : ''}.`));
       }
       announce(`${ok ? t('build.right') : t('build.wrong')} ${p.id}-: ${p.short}`);
       setActions(again, nextBtn());
@@ -194,7 +195,7 @@ export async function mountRound(el, ctx) {
   function pxSay(/** @type {any} */ p) {
     const root = rootOf(p.id);
     const show = h('button', { type: 'button', class: 'btn btn-primary pressable wb-next', onclick: () => reveal() }, t('build.show'), h('kbd', null, '↵'));
-    replace(card, meta(false, t('build.where.prefix')), h('p', { class: 'wb-big', lang: 'de' }, `${p.id}-`), h('p', { class: 'prompt-hint' }, t('build.say.ask')));
+    replace(card, meta(false, t('build.where.prefix')), h('p', { class: 'wb-big', lang: langAttr() }, `${p.id}-`), h('p', { class: 'prompt-hint' }, t('build.say.ask')));
     setActions(show);
     let shown = false;
     function reveal() {
@@ -220,7 +221,7 @@ export async function mountRound(el, ctx) {
     const word = wordNode({ pre: v.pre, stem: bare(v.inf).slice(v.pre.length), kind: v.kind, t, big: true });
     const calib = h('div', { class: 'wb-calib' }, h('p', { class: 'label' }, t('build.predict.ask')), chips);
     replace(card, meta(!cardsOf(store)[`PD:${v.id}`]?.reps, t('build.where.verb')), h('p', { class: 'wb-vq' }, word, h('span', { 'aria-hidden': 'true' }, '?')),
-      h('p', { class: 'wb-vsum' }, h('span', { lang: 'de' }, `${v.pre}-`), ` ${p.short}  +  `, h('span', { lang: 'de' }, r.id), ` ${r.en}`), calib);
+      h('p', { class: 'wb-vsum' }, h('span', { lang: langAttr() }, `${v.pre}-`), ` ${p.short}  +  `, h('span', { lang: langAttr() }, r.id), ` ${r.en}`), calib);
     if (v.kind === 's') play(word.querySelector('.wb-dot'), [{ opacity: 0, transform: 'scale(0)' }, { opacity: 1, transform: 'scale(1)' }], { duration: 420, easing: css('--spring-pop') }); else weld(word);
     const show = h('button', { type: 'button', class: 'btn btn-primary pressable wb-next', onclick: () => reveal() }, t('build.predict.show'), h('kbd', null, '↵'));
     setActions(show);
@@ -241,10 +242,10 @@ export async function mountRound(el, ctx) {
   // SX: the article an ending gives (nouns), or what it makes (adjectives, self-graded)
   function sx(/** @type {any} */ s, /** @type {boolean} */ isNew) {
     const examples = d.c.chains.flatMap((/** @type {any} */ ch) => ch.nodes.filter((/** @type {any} */ n) => n.add === s.id && n.side === 'suf')).slice(0, 3);
-    const exLine = h('p', { class: 'wb-ex', lang: 'de' }, examples.map((/** @type {any} */ n, /** @type {number} */ i) => [i ? ' · ' : '', h('span', { class: 'wb-nw' }, pwAnswer(n))]));
-    const ruleBox = () => h('div', { class: 'wb-rulebox' }, h('p', { class: 'wb-rule' }, h('b', { lang: 'de' }, `${s.label}: `), s.rule), examples.length ? exLine : null);
+    const exLine = h('p', { class: 'wb-ex', lang: langAttr() }, examples.map((/** @type {any} */ n, /** @type {number} */ i) => [i ? ' · ' : '', h('span', { class: 'wb-nw' }, pwAnswer(n))]));
+    const ruleBox = () => h('div', { class: 'wb-rulebox' }, h('p', { class: 'wb-rule' }, h('b', { lang: langAttr() }, `${s.label}: `), s.rule), examples.length ? exLine : null);
     if (s.cls === 'adj' || !s.art) {
-      replace(card, meta(isNew, t('build.where.suffix')), h('p', { class: 'wb-big', lang: 'de' }, s.label), h('p', { class: 'prompt-hint' }, t('build.sx.adjAsk')));
+      replace(card, meta(isNew, t('build.where.suffix')), h('p', { class: 'wb-big', lang: langAttr() }, s.label), h('p', { class: 'prompt-hint' }, t('build.sx.adjAsk')));
       let shown = false;
       const reveal = () => {
         if (shown) return; shown = true;
@@ -256,8 +257,8 @@ export async function mountRound(el, ctx) {
     }
     let answered = false;
     const res = h('div', { 'aria-live': 'polite' });
-    const btns = h('div', { class: 'wb-artguess is-big', role: 'group', 'aria-label': t('build.sx.ask') }, ['der', 'die', 'das'].map(a => h('button', { type: 'button', class: 'pressable', lang: 'de', onclick: (/** @type {Event} */ e) => pick(a, /** @type {HTMLElement} */ (e.currentTarget)) }, a)));
-    replace(card, meta(isNew, t('build.where.suffix')), h('p', { class: 'wb-big', lang: 'de' }, s.label), h('p', { class: 'prompt-hint' }, t(isNew ? 'build.sx.askNew' : 'build.sx.ask')), btns, res);
+    const btns = h('div', { class: 'wb-artguess is-big', role: 'group', 'aria-label': t('build.sx.ask') }, ['der', 'die', 'das'].map(a => h('button', { type: 'button', class: 'pressable', lang: langAttr(), onclick: (/** @type {Event} */ e) => pick(a, /** @type {HTMLElement} */ (e.currentTarget)) }, a)));
+    replace(card, meta(isNew, t('build.where.suffix')), h('p', { class: 'wb-big', lang: langAttr() }, s.label), h('p', { class: 'prompt-hint' }, t(isNew ? 'build.sx.askNew' : 'build.sx.ask')), btns, res);
     function pick(/** @type {string} */ a, /** @type {HTMLElement} */ btn) {
       if (answered) return; answered = true;
       const ok = a === s.art;
@@ -291,14 +292,14 @@ export async function mountRound(el, ctx) {
       const g = gapped(o.f, o.form);
       accept = [g.answer];
       kids.push(meta(isNew, t('build.where.sentence')),
-        h('p', { class: 'prompt wb-gapped', lang: 'de' }, g.parts.map((/** @type {any} */ x, /** @type {number} */ i) => [i && !(x.text === '.' || x.text === '!' || x.text === '?') ? ' ' : '', x.gap ? h('span', { class: 'wb-gap', 'aria-label': t('build.gap') }, ' ') : x.text])),
-        h('p', { class: 'prompt-hint' }, h('span', { lang: 'de' }, o.f.inf), ` (${o.f.en}) · ${t(`build.form.${o.form}`)}`));
+        h('p', { class: 'prompt wb-gapped', lang: langAttr() }, g.parts.map((/** @type {any} */ x, /** @type {number} */ i) => [i && !(x.text === '.' || x.text === '!' || x.text === '?') ? ' ' : '', x.gap ? h('span', { class: 'wb-gap', 'aria-label': t('build.gap') }, ' ') : x.text])),
+        h('p', { class: 'prompt-hint' }, h('span', { lang: langAttr() }, o.f.inf), ` (${o.f.en}) · ${t(`build.form.${o.form}`)}`));
     } else {
       const { n, parent } = o;
       accept = [pwAnswer(n)]; noun = !!n.art;
-      kids.push(meta(isNew, t('build.where.word')), h('p', { class: 'prompt', lang: 'de' }, pwPrompt(n, parent, d.S.get(n.add))), h('p', { class: 'prompt-hint' }, n.en));
+      kids.push(meta(isNew, t('build.where.word')), h('p', { class: 'prompt', lang: langAttr() }, pwPrompt(n, parent, d.S.get(n.add))), h('p', { class: 'prompt-hint' }, n.en));
     }
-    const input = /** @type {HTMLInputElement} */ (h('input', { class: 'answer-input', type: 'text', lang: 'de', autocapitalize: 'off', autocomplete: 'off', spellcheck: 'false', enterkeyhint: 'go',
+    const input = /** @type {HTMLInputElement} */ (h('input', { class: 'answer-input', type: 'text', lang: langAttr(), autocapitalize: 'off', autocomplete: 'off', spellcheck: 'false', enterkeyhint: 'go',
       'aria-label': t('build.answer'), placeholder: o.kind === 'ps' ? t('build.ph.pieces') : o.kind === 'pv' ? t('build.ph.verb') : noun ? t('build.ph.noun') : t('build.ph.word') }));
     input.setAttribute('autocorrect', 'off');
     const check = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -327,10 +328,10 @@ export async function mountRound(el, ctx) {
       /** @type {any[]} */ const out = [];
       if (g.ok) {
         out.push(h('p', { class: ['wb-res', g.slip ? 'is-warn' : 'is-ok'] }, g.slip ? t('build.typed.slip', { list: g.slips.map(x => x.expected).join(', ') }) : t('build.right')));
-        if (g.slip) out.push(h('p', { class: 'answer-key', lang: 'de' }, right));
+        if (g.slip) out.push(h('p', { class: 'answer-key', lang: langAttr() }, right));
       } else {
         out.push(h('p', { class: 'wb-res is-bad' }, shown ? t('build.typed.shown') : g.articleMiss ? t('build.typed.article') : t('build.wrong')));
-        out.push(h('p', { class: 'answer-key', lang: 'de' }, h('span', { class: 'caption' }, t('build.rightIs')), ' ', right));
+        out.push(h('p', { class: 'answer-key', lang: langAttr() }, h('span', { class: 'caption' }, t('build.rightIs')), ' ', right));
       }
       replace(fb, out, explain(o));
       reveal.classList.add('is-open');
@@ -345,7 +346,7 @@ export async function mountRound(el, ctx) {
   function explain(o) {
     if (o.kind === 'pv') {
       const v = o.v;
-      return h('div', { class: 'wb-explain' }, h('p', { class: 'wb-vq' }, wordNode({ pre: v.pre, stem: bare(v.inf).slice(v.pre.length), kind: v.kind, t, big: true })), exampleNode(v), h('p', { class: 'caption' }, v.exEn, ' · ', h('span', { lang: 'de' }, `${v.aux} ${v.pp}`)));
+      return h('div', { class: 'wb-explain' }, h('p', { class: 'wb-vq' }, wordNode({ pre: v.pre, stem: bare(v.inf).slice(v.pre.length), kind: v.kind, t, big: true })), exampleNode(v), h('p', { class: 'caption' }, v.exEn, ' · ', h('span', { lang: langAttr() }, `${v.aux} ${v.pp}`)));
     }
     if (o.kind === 'ps') {
       const tr = tray(o.f, t);
@@ -418,7 +419,7 @@ export async function mountRound(el, ctx) {
     const done = h('div', { class: 'wb stack wb-done' },
       h('p', { class: 'label' }, t('build.roundDone')), h('h1', { class: 'sr-only' }, t('build.roundDone')),
       h('div', { class: 'wb-donefig' }, fig, h('p', { class: 'caption' }, t('build.ofRight', { n: firsts.length }))),
-      missed.length ? h('section', { class: 'wb-missed' }, h('h2', null, t('build.missed')), h('ul', { class: 'list' }, missed.map(id => h('li', { class: 'list-item', lang: 'de' }, label(id))))) : null,
+      missed.length ? h('section', { class: 'wb-missed' }, h('h2', null, t('build.missed')), h('ul', { class: 'list' }, missed.map(id => h('li', { class: 'list-item', lang: langAttr() }, label(id))))) : null,
       h('p', { class: 'caption' }, more ? t('build.more', { due: later.dueIds.length, n: later.budget.newLeft }) : t('build.allDone')),
       h('div', { class: 'wb-done-actions' }, more ? h('a', { class: 'btn btn-primary pressable', href: `#/practice/build/round?kind=${kind === 'pick' || kind === 'drill' ? 'review' : kind}&r=${Date.now()}` }, t('build.another')) : null,
         h('a', { class: ['btn', 'pressable', !more && 'btn-primary'], href: `#${backTo}` }, backTo === '/today' ? t('build.toToday') : t('build.toHub'))));

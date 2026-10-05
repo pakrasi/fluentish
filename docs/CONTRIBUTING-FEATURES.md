@@ -12,7 +12,7 @@ src/features/
   practice/ practice-round/ practice-write/ practice-speak/ practice-script/ practice-clusters/ build/
                        Practice: sibling features under #/practice, each with its own routes and plan.js (round 3)
   shared/              the practice runtime the Practice features share (pool, round state, grading, picker, done
-                       hero, self-grade, progress, speech, recall bar, cluster layout); a library: no routes, no plan
+                       hero, self-grade, progress, recall bar, cluster layout); a library: no routes, no plan
 ```
 
 The day's numbers (every deck's due cards and the one allowance of new items) are `domain/allowance.js`
@@ -27,9 +27,10 @@ The day's numbers (every deck's due cards and the one allowance of new items) ar
 4. **Only `clock` knows dates.** Read today and the exam through `ctx.clock.ctx()` (`today`, `exam`, `phase`, `daysLeft`, `lastNewDay`, `capDay`, `newItems`, `mocks`). Never `new Date()` for a study day, never a literal date (CI fails on `20NN-MM-DD` in `src/`). Labels: `label(day)` → "Fri 9 Oct", `labelDe(day)` → "9. Okt.".
 5. **Only `data/settings.js` writes settings,** and only `setExamDate()` writes the exam date.
 6. **No markup from strings.** Build with `h()` from `core/dom.js`; it throws on `html`/`innerHTML`. Render Claude's or anyone's text as text nodes. CSP is `script-src 'self'` with no inline styles: set styles through `el.style` / `style: {…}` in `h()`, never a `style` attribute string, and don't use `<select>` (WebKit reports it under the CSP; use chips or the segmented control).
-7. **Strings go through `t()`.** Add keys to `src/i18n/en.js` under your feature's prefix (`practice.*`, `exam.*`, `lookup.*`). Copy rules: labels name the thing, no slogans or praise, numbers with units, one middle dot per line at most, no em or en dashes. German exam content keeps `lang="de"`.
-8. **Motion from the kit only** (`core/motion.js`, `core/brand.js`), so reduced motion is handled once.
-9. **Tests in node.** Keep logic in pure functions (in your folder or `src/domain/`) and test them in `tests/unit/<feature>-*.test.mjs` with `node:test`. Fixtures are synthetic; real data goes in the git-ignored `tests/private/`.
+7. **The device through `services/`, the language through `core/lang.js`.** Microphone, recogniser, voices, playback, share and haptics only through `services/` (speech, voice, audio, share, haptics; ARCHITECTURE §2.2): never `new Audio`, `speechSynthesis`, `MediaRecorder` or `navigator.share` in a feature. Pass the tag from `core/lang.js` (`bcp47()`, `asrLocale()`), and mark study-language text with `lang: langAttr()`, not a literal `'de'` (Look up and Explore still have a few) and never `'de-DE'`. Start audio inside the tap (iOS plays only from a user gesture).
+8. **Strings go through `t()`.** Add keys to `src/i18n/en.js` under your feature's prefix (`practice.*`, `exam.*`, `lookup.*`). Copy rules: labels name the thing, no slogans or praise, numbers with units, one middle dot per line at most, no em or en dashes. Study-language content carries `lang: langAttr()`.
+9. **Motion from the kit only** (`core/motion.js`, `core/brand.js`), so reduced motion is handled once.
+10. **Tests in node.** Keep logic in pure functions (in your folder or `src/domain/`) and test them in `tests/unit/<feature>-*.test.mjs` with `node:test`. Fixtures are synthetic; real data goes in the git-ignored `tests/private/`.
 
 ## The view: `index.js`
 

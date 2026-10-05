@@ -8,6 +8,7 @@ import { h } from './dom.js';
 import { t } from './i18n.js';
 import { icon } from './icons.js';
 import { freq } from '../domain/wordcard.js';
+import { langAttr } from './lang.js';
 
 /** The 5-bar frequency meter and its label. @param {{bars: number, band: string}} f */
 function meter(f) {
@@ -35,17 +36,17 @@ export function wordMeta(card) {
  */
 export function wordPanel(card, { play = null, head = true, keep } = {}) {
   /** @type {any[]} */ const rows = [];
-  if (head && !card.forms) rows.push(h('p', { class: 'wp-head', lang: 'de' }, card.head));
-  if (card.forms) rows.push(h('p', { class: 'wp-forms', lang: 'de' }, card.forms));
-  if (card.pres) rows.push(h('p', { class: 'wp-sub' }, h('span', { class: 'caption' }, t('word.pres')), ' ', h('span', { lang: 'de' }, card.pres)));
+  if (head && !card.forms) rows.push(h('p', { class: 'wp-head', lang: langAttr() }, card.head));
+  if (card.forms) rows.push(h('p', { class: 'wp-forms', lang: langAttr() }, card.forms));
+  if (card.pres) rows.push(h('p', { class: 'wp-sub' }, h('span', { class: 'caption' }, t('word.pres')), ' ', h('span', { lang: langAttr() }, card.pres)));
   if (card.type === 'noun' && (card.plural || card.pluralNote)) rows.push(h('p', { class: 'wp-sub' }, h('span', { class: 'caption' }, t('word.plural')), ' ',
-    card.plural ? h('span', { lang: 'de' }, card.plural) : t(card.pluralNote === 'only' ? 'word.pluralOnly' : 'word.noPlural')));
+    card.plural ? h('span', { lang: langAttr() }, card.plural) : t(card.pluralNote === 'only' ? 'word.pluralOnly' : 'word.noPlural')));
   if (card.ex) {
     const [a, b] = card.exAt || [0, 0];
     const text = card.ex;
     const sentence = b > a ? [text.slice(0, a), h('mark', { class: 'wp-hl' }, text.slice(a, b)), text.slice(b)] : [text];
     const btn = play ? h('button', { type: 'button', class: 'pr-play pressable', 'aria-label': t('practice.word.play'), onpointerdown: keep || null, onclick: () => play(text) }, icon('play', { size: 16 })) : null;
-    rows.push(h('div', { class: 'wp-ex' }, btn, h('div', null, h('p', { class: 'wp-ex-de', lang: 'de' }, sentence),
+    rows.push(h('div', { class: 'wp-ex' }, btn, h('div', null, h('p', { class: 'wp-ex-de', lang: langAttr() }, sentence),
       card.exEn ? h('p', { class: 'caption' }, card.exEn) : null,
       card.exSrc ? h('p', { class: 'caption wp-src' }, card.exSrc) : null)));
   }

@@ -30,6 +30,7 @@ import { addActivity } from '../shared/data.js';
 import { gradeRow } from '../shared/selfgrade.js';
 import { doneHero } from '../shared/done-hero.js';
 import { variantBox } from './register.js';
+import { langAttr } from '../../core/lang.js';
 
 const SPEEDS = [0.8, 0.9, 1.0];
 
@@ -80,7 +81,7 @@ export function mountRehearse(el, ctx, script, sectionId) {
   drawSegs(prog0);
 
   // ---------- the text ----------
-  const textEl = h('div', { class: 'sc-rtext', lang: 'de' });
+  const textEl = h('div', { class: 'sc-rtext', lang: langAttr() });
   const enEl = h('p', { class: 'sc-en', lang: 'en', hidden: true });
   const cueEl = h('div', { class: 'sc-cue', hidden: true });
   // Register "Both": the Sie (or ihr) version of the section, made once with Claude and kept on the device

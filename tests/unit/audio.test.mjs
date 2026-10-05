@@ -32,7 +32,7 @@ const storeWith = index => ({ get: (k, d) => (k === VOCAB_AUDIO_KV && index !== 
 /** Browser audio mocks: records what play() did. */
 function mockBrowser({ germanVoice = true } = {}) {
   const did = { audio: [], spoken: [] };
-  globalThis.Audio = class { constructor(src) { this.src = src; did.audio.push(src); } play() { return Promise.resolve(); } pause() {} };
+  globalThis.Audio = class { constructor(src) { this.src = src; did.audio.push(src); } play() { return Promise.resolve(); } pause() {} addEventListener() {} };
   globalThis.SpeechSynthesisUtterance = class { constructor(text) { this.text = text; } };
   globalThis.speechSynthesis = {
     getVoices: () => (germanVoice ? [{ lang: 'de-DE', name: 'Anna' }] : [{ lang: 'en-US', name: 'Samantha' }]),

@@ -1,11 +1,14 @@
 /* Hören audio with the exam's play limits: no seeking, a play counts once playback has actually started, the count
    is saved on the device (a reload does not give a play back), one recording at a time, reading time before Teil 2
    and 3, and the second hearing of Teil 1 and 4 starting by itself after 5 seconds. While something plays, the Teil
-   tabs and Back/Next are locked (group.onBusy). Audio comes from the exam's media base. */
+   tabs and Back/Next are locked (group.onBusy). Audio comes from the exam's media base and plays through
+   services/audio.js track(), which starts it inside the tap and counts a play only once it has started. */
 import { h, replace, announce } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
 import { fmt } from './timer.js';
 import { plays, usePlay } from './data.js';
+import { track } from '../../services/audio.js';
+import { langAttr } from '../../core/lang.js';
 
 /** One runner's players. @param {(busy: boolean) => void} onBusy */
 export function playerGroup(onBusy) {
@@ -28,49 +31,46 @@ export function playerGroup(onBusy) {
  *           readSeconds?: number, autoSecond?: boolean, t: (k: string, v?: any) => string, toast: (s: string) => void }} o
  */
 export function player({ group, store, n, id, url, limit, readSeconds = 0, autoSecond = false, t, toast }) {
-  const audio = new Audio();
-  audio.preload = 'none';
-  audio.src = url;
+  const tr = track(url, { limit, used: () => plays(store, n)[id]?.used || 0, onCount: () => usePlay(store, n, id) });
+  const audio = tr.el;
   const btn = h('button', { type: 'button', class: 'btn pressable ex-play' });
   const left = h('span', { class: 'ex-plays caption tnum', 'aria-live': 'polite' });
   const bar = h('i');
   const time = h('span', { class: 'caption tnum' });
-  const note = h('p', { class: 'caption ex-play-note', lang: 'de' });
+  const note = h('p', { class: 'caption ex-play-note', lang: langAttr() });
   let playing = false, starting = false, broken = false;
   /** @type {number | null} */ let countdown = null;
   const used = () => plays(store, n)[id]?.used || 0;
-  const remaining = () => Math.max(0, limit - used());
+  const remaining = tr.remaining;
   const me = {
     refresh() {
       const busyElsewhere = group.owner && group.owner !== me;
       replace(btn, icon(playing ? 'speaker' : remaining() > 0 ? 'play' : 'check', { size: 18 }),
-        h('span', { lang: 'de' }, playing ? t('exam.de.playing') : countdown ? t('exam.de.reading') : remaining() > 0 ? t('exam.de.play') : t('exam.de.noPlays')));
+        h('span', { lang: langAttr() }, playing ? t('exam.de.playing') : countdown ? t('exam.de.reading') : remaining() > 0 ? t('exam.de.play') : t('exam.de.noPlays')));
       btn.disabled = broken || playing || starting || !!countdown || remaining() <= 0 || !!busyElsewhere;
       // a live region: touch it only when the words change, or screen readers repeat it on every timeupdate
       const txt = broken ? t('exam.de.audioMissing') : remaining() > 0 ? t('exam.de.playsLeft', { n: remaining() }) : t('exam.de.playsDone');
       if (left.textContent !== txt) left.textContent = txt;
       time.textContent = audio.duration && Number.isFinite(audio.duration) ? `${fmt(audio.currentTime)} / ${fmt(audio.duration)}` : '';
     },
-    stop() { try { audio.pause(); } catch { /* not started */ } if (countdown) clearInterval(countdown); countdown = null; },
+    stop() { tr.pause(); if (countdown) clearInterval(countdown); countdown = null; },
   };
   group.add(me);
   const playNow = () => {
     if (remaining() <= 0 || starting || (group.owner && group.owner !== me)) return;
     starting = true; group.take(me);
-    audio.preload = 'auto';
-    try { audio.currentTime = 0; } catch { /* before metadata */ }
-    audio.play().then(() => {
-      usePlay(store, n, id);
+    tr.start().then(r => {
+      if (r !== 'playing') { starting = false; group.release(me); me.refresh(); if (r === 'blocked') toast(t('exam.de.audioBlocked')); return; }
       playing = true; starting = false; note.textContent = '';
       announce(t('exam.de.playsLeft', { n: remaining() }));
       me.refresh();
-    }).catch(() => { starting = false; group.release(me); me.refresh(); toast(t('exam.de.audioBlocked')); });
+    });
   };
   btn.onclick = () => {
     if (!readSeconds || used() > 0) return playNow();
     let s = readSeconds;
     group.take(me);
-    const skip = h('button', { type: 'button', class: 'btn btn-quiet pressable', lang: 'de', onclick: () => go() }, t('exam.de.skipReading'));
+    const skip = h('button', { type: 'button', class: 'btn btn-quiet pressable', lang: langAttr(), onclick: () => go() }, t('exam.de.skipReading'));
     const draw = () => replace(note, t('exam.de.readingLeft', { n: s }), ' ', skip);
     const go = () => { if (countdown) clearInterval(countdown); countdown = null; note.textContent = ''; group.release(me); playNow(); };
     countdown = /** @type {any} */ (setInterval(() => { s--; if (s <= 0) go(); else draw(); }, 1000));

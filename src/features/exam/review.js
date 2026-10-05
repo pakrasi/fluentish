@@ -9,6 +9,7 @@ import { render as md } from './md.js';
 import { backLink } from './parts.js';
 import { feedbackFor, markSeen, saveCorrection, learnerNotes, queueMistakes, mistakesQueued, allAttempts, recordings, linked } from './data.js';
 import { nextModule, scoreReader } from './plan.js';
+import { langAttr } from '../../core/lang.js';
 
 /** "Sat 3 Oct, 20:15" for a stamp (local time). @param {string} iso @param {boolean} [utc] */
 export function when(iso, utc = false) {
@@ -28,8 +29,8 @@ export function reviewHead({ ctx, n, def, attempt, score, max, pass, topic, stat
   const { t } = ctx;
   return h('header', { class: 'ex-rhead' },
     backLink(`#/exam/${n}`, t('exam.backTest', { n })),
-    h('h1', null, h('span', { lang: 'de' }, def.name), ` · ${t('exam.test', { n })}`),
-    h('p', { class: 'caption', lang: 'de' }, topic),
+    h('h1', null, h('span', { lang: langAttr() }, def.name), ` · ${t('exam.test', { n })}`),
+    h('p', { class: 'caption', lang: langAttr() }, topic),
     score != null
       ? h('p', { class: 'ex-score' }, h('span', { class: 'figure tnum' }, String(score)), h('span', { class: 'ex-score-of tnum' }, ` / ${max}`),
         h('span', { class: ['ex-verdict', pass ? 'is-ok' : 'is-bad'] }, pass ? t('exam.passed', { pass: def.pass }) : t('exam.belowPass', { pass: def.pass })))
@@ -187,7 +188,7 @@ export async function reviewSchreiben(el, ctx, { exam, n, ex, def, attempt, auto
   markSeen(store, fb.cur.filter(f => !f.seen).map(f => f.id));
   const sl = fb.cur[0] ? scoreLine(fb.cur[0].body) : null;
   const texts = Object.fromEntries((attempt.writings || []).map((/** @type {any} */ w) => [w.aufgabe, w.text]));
-  const task = (/** @type {string} */ k, /** @type {number} */ i) => h('section', { class: 'ex-block', lang: 'de' },
+  const task = (/** @type {string} */ k, /** @type {number} */ i) => h('section', { class: 'ex-block', lang: langAttr() },
     h('p', { class: 'label' }, `Aufgabe ${i} · ca. ${S[k].words} Wörter`),
     h('p', { class: 'caption' }, S[k].situation),
     h('div', { class: 'ex-written' }, texts[k] ? String(texts[k]).split(/\n+/).map(p => h('p', null, p)) : h('p', { class: 'caption', lang: 'en' }, t('exam.nothingWritten'))),
@@ -220,12 +221,12 @@ export async function reviewSprechen(el, ctx, { exam, n, ex, def, attempt }) {
     return h('div', { class: 'ex-take' },
       h('p', { class: 'caption' }, [count > 1 ? t('exam.take', { n: i + 1 }) : null, when(v.created_at), v.sent ? t('exam.rec.sent') : t('exam.rec.notSent')].filter(Boolean).join(' · ')),
       url ? h('audio', { class: 'ex-raudio', controls: true, preload: 'metadata', src: url }) : null,
-      v.transcript ? h('p', { class: 'ex-transcript', lang: 'de' }, v.transcript) : h('p', { class: 'caption' }, t('exam.rec.noTranscript')));
+      v.transcript ? h('p', { class: 'ex-transcript', lang: langAttr() }, v.transcript) : h('p', { class: 'caption' }, t('exam.rec.noTranscript')));
   };
   const TEILE = [['teil1', 'Teil 1 · Gemeinsam etwas planen'], ['teil2', 'Teil 2 · Präsentation'], ['teil3', 'Teil 3 · Fragen']];
   const sections = await Promise.all(TEILE.map(async ([p, name]) => {
     const xs = takes.filter(v => v.part === p);
-    return h('section', { class: 'ex-block' }, h('p', { class: 'label', lang: 'de' }, name), xs.length ? await Promise.all(xs.map((v, i) => take(v, i, xs.length))) : h('p', { class: 'caption' }, t('exam.rec.none')));
+    return h('section', { class: 'ex-block' }, h('p', { class: 'label', lang: langAttr() }, name), xs.length ? await Promise.all(xs.map((v, i) => take(v, i, xs.length))) : h('p', { class: 'caption' }, t('exam.rec.none')));
   }));
   const notes = (attempt.writings || []).find((/** @type {any} */ w) => w.aufgabe === 'sprechen-notizen');
   const meta = attempt.meta && typeof attempt.meta === 'object' ? attempt.meta : {};
@@ -234,7 +235,7 @@ export async function reviewSprechen(el, ctx, { exam, n, ex, def, attempt }) {
     feedbackBlock({ ctx, exam, attempt, fb }),
     h('section', { 'aria-labelledby': 'ex-rec-h' }, h('h2', { id: 'ex-rec-h' }, t('exam.recordings')),
       fallback ? h('p', { class: 'caption' }, t('exam.rec.fallback')) : null, sections),
-    notes?.text ? h('section', { class: 'ex-block' }, h('p', { class: 'label' }, t('exam.yourNotes')), h('div', { class: 'ex-written', lang: 'de' }, String(notes.text).split('\n').map(l => h('p', null, l)))) : null,
+    notes?.text ? h('section', { class: 'ex-block' }, h('p', { class: 'label' }, t('exam.yourNotes')), h('div', { class: 'ex-written', lang: langAttr() }, String(notes.text).split('\n').map(l => h('p', null, l)))) : null,
     await nextCard(ctx, exam, n)));
   return () => urls.forEach(u => URL.revokeObjectURL(u));
 }

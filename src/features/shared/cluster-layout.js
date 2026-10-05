@@ -8,13 +8,14 @@ import { Field } from '../../core/brand.js';
 import { doneHero, againLink } from './done-hero.js';
 import { loadClusters, loadKnowledge, countsOf, cellsOf, update, DECK } from './cluster-data.js';
 import { roundWords, partOf } from './cluster-items.js';
+import { langAttr } from '../../core/lang.js';
 
 const STATE_CLS = /** @type {Record<string, string>} */ ({ known: 'is-known', shaky: 'is-shaky', unknown: 'is-unknown', unseen: 'is-unseen' });
 
 /** A word as type, in its knowledge state. @param {any} w @param {any} s a knowledge score */
 export function wordChip(w, s) {
   const art = w.pos === 'noun' && /^(der|die|das)$/.test(w.art) ? h('span', { class: 'cl-art' }, w.art, ' ') : null;
-  return h('span', { class: ['cl-w', STATE_CLS[s.state], s.today && 'is-today'], lang: 'de', 'data-id': w.id }, art, w.w);
+  return h('span', { class: ['cl-w', STATE_CLS[s.state], s.today && 'is-today'], lang: langAttr(), 'data-id': w.id }, art, w.w);
 }
 
 /**
@@ -40,7 +41,7 @@ export function clusterLayout(cl, ix, content, k, t) {
       h('div', { class: 'cl-branches' }, [...branches.entries()].sort((a, b) => (a[0] ? 1 : 0) - (b[0] ? 1 : 0) || a[0].localeCompare(b[0])).map(([p, ids]) => {
         const slot = h('span', { class: 'cl-leaves' });
         for (const id of ids) slots.set(id, slot);
-        return h('div', { class: 'cl-branch', hidden: true }, h('span', { class: 'cl-pre', lang: 'de' }, p ? `${p}-` : t('practice.clusters.noPrefix')), slot);
+        return h('div', { class: 'cl-branch', hidden: true }, h('span', { class: 'cl-pre', lang: langAttr() }, p ? `${p}-` : t('practice.clusters.noPrefix')), slot);
       })),
       h('p', { class: 'caption cl-empty' }, t('practice.clusters.treeEmpty')));
     /** Place each word: known in its branch, the rest in the tray. @param {any} kk */
@@ -83,7 +84,7 @@ export function clusterLayout(cl, ix, content, k, t) {
       const n = content.preps.notes[id]; const w = W(id);
       return h('li', { class: 'cl-prep' }, h('p', { class: 'cl-prep-head' }, wordChip(w, sc(id)), n && n.case ? h('span', { class: 'caption' }, t(`practice.clusters.case.${n.case}`)) : null),
         n ? h('p', { class: 'cl-prep-note' }, n.note) : null,
-        n ? n.ex.map((/** @type {[string, string]} */ [de, en]) => h('p', { class: 'cl-prep-ex' }, h('span', { lang: 'de' }, de), h('span', { class: 'caption' }, ` ${en}`))) : null);
+        n ? n.ex.map((/** @type {[string, string]} */ [de, en]) => h('p', { class: 'cl-prep-ex' }, h('span', { lang: langAttr() }, de), h('span', { class: 'caption' }, ` ${en}`))) : null);
     });
     /** @param {any} kk */
     const place = kk => { el.querySelectorAll('.cl-w').forEach(ch => { const s = kk.get(`W:${/** @type {HTMLElement} */ (ch).dataset.id}`); ch.className = ['cl-w', STATE_CLS[s.state]].join(' '); }); };

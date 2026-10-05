@@ -2,7 +2,8 @@
    Goal (with the exam date: its single source) · Practice · Connections (Claude key, results sync device link) ·
    Appearance (theme, motion) · Data (export, import, the import summary, delete) · Diagnostics.
    #/profile/<section> scrolls to that section. */
-import { h, replace, download } from '../../core/dom.js';
+import { h, replace } from '../../core/dom.js';
+import { shareFile } from '../../services/share.js';
 import { label } from '../../core/clock.js';
 import { config } from '../../core/config.js';
 import { icon } from '../../core/icons.js';
@@ -274,7 +275,7 @@ export async function mount(el, ctx) {
         h('button', { type: 'button', class: 'btn pressable', onclick: async () => {
           const archived = await store.archived().catch(() => []);   // the outbox archive (data/archive.js)
           const b = exportBundle(store, { profile: app.profile, includeScripts, archived });
-          download(new Blob([JSON.stringify(b, null, 1)], { type: 'application/json' }), `fluentish-${ctx.clock.today()}.json`);
+          await shareFile(new Blob([JSON.stringify(b, null, 1)], { type: 'application/json' }), `fluentish-${ctx.clock.today()}.json`);
         } }, icon('download', { size: 18 }), t('data.export')),
         h('button', { type: 'button', class: 'btn pressable', onclick: () => fileIn.click() }, icon('upload', { size: 18 }), t('data.import')), fileIn,
         deleteBtn),

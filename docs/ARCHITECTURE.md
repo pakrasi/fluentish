@@ -20,7 +20,9 @@ styles/               tokens.css, motion.css, components.css (design kit, unchan
 src/
   main.js             boot: storage → profile (+ one-time migration) → prefs → shell → router
   boot.js             pre-paint theme/motion (classic script)
-  core/               clock, router, dom, bus, i18n, config, schema, log, ui, icons, motion (kit), brand (kit)
+  core/               clock, router, dom, bus, i18n, config, schema, log, ui, icons, motion (kit), brand (kit),
+                      lang (the study language: lang/dir attributes, BCP-47, ASR locale, voice choice), link (device link)
+  services/           platform services behind interfaces (§2.2): speech, voice, audio, recorder, share, haptics; claude, sw
   data/               store, adapters/{idb,memory}, session, settings, migrate, transfer, content, ids
   domain/             pure, tested in node: fsrs, match, detect, speech, timer, readiness, b1ready, days, today
   features/           registry, contract, day; today/, profile/, welcome/, exam/, lookup/, explore/ (Look up › Map; palace/ is its 3D view, loaded on demand);
@@ -54,6 +56,23 @@ Layers, checked by `tests/unit/feature-graph.test.mjs` over every static, dynami
 | `features/shared/` | the same, never a feature |
 | `features/registry.js` | feature view, plan and boot modules, lazily |
 | `main.js` | core, data, services and `features/registry.js` only |
+
+### 2.2 Platform services
+
+Everything that touches the device goes through `src/services/`, so the iOS shell (Capacitor) can swap in a native
+implementation with one setter and every caller stays as it is (Arch #8, round 3). Every call takes a BCP-47 tag from
+`core/lang.js`; no feature writes `de-DE` (a unit lint checks it).
+
+| Service | Interface | Native later |
+|---|---|---|
+| `speech.js` | `speech().listen({lang})`, `record()` (through `recorder.js`, the one MediaRecorder path), `blocked()`, `cancel()`; `setSpeech()` | SFSpeechRecognizer |
+| `voice.js` | `say(text, bcp47, {prefer, avoid, rate, localOnly, onWord})`, `canSay`, `unlock()` (a silent utterance inside the tap), `hush()`; `setVoice()`. Voices come from the language's list in `core/lang.js`; "Multilingual" voices are never used | AVSpeechSynthesizer |
+| `audio.js` | the only player: `clip(url, {stallMs})` (words, situation lines, exam cues, the sound check), `track(url, {limit, used, onCount})` (Hören: preload none, a play counts once it started), `stop()`, `setAudioHooks({duck})`; and word audio `play(content, text, store, bcp47)`. Both start inside the caller's tap; one thing plays at a time | AVAudioSession (ducking, routes, background) |
+| `recorder.js` | `createRecorder()` | AVAudioRecorder |
+| `share.js` | `shareFile(blob, name)`: the share sheet on a touch device, else a download | share sheet |
+| `haptics.js` | `tap()` (`core/motion.js haptic()` calls it); `setHaptics()` | UIImpactFeedbackGenerator |
+
+The real-iPhone checks for these are `docs/IOS-CHECKS.md`.
 
 Practice was 35% of the code in one folder (round 2's assessment). Round 3 split it into sibling features, one per
 product, each owning its routes and its Today rows; no route, CSS class, store key or card id changed
@@ -178,11 +197,11 @@ The router keeps the legacy hash map (`core/router.js mapLegacy`): `#b1…`, `#d
 Stage A: unit tests (node:test, in a New York / Berlin / Kolkata matrix in CI): the ported `test_match`, `test_b1`, `test_readiness` with unchanged assertions, plus clock, FSRS-with-dates, schema, store, migration, router and Today-plan tests; `tsc` strict; content schemas, the manifest and every ported validator; built content matches its sources; privacy and date gates as hooks and in CI. Since then: the grading corpus (zero wrong answers graded right), a contract test that runs the real `sync.py` (skipped where the b1-exam checkout is missing, so in CI), and the manual iPhone checklist (docs/CUTOVER.md).
 
 **Browser e2e** (`tests/e2e/`, round 3; `npm run test:e2e`; the `e2e` job of `ci.yml`, a required check on `main`, and `deploy.yml` deploys only a commit it passed for). `@playwright/test` runs the site the deploy would publish (`tools/stamp.mjs` → `_site/`, served under `/fluentish/` by `tests/e2e/server.mjs`) in WebKit at an iPhone's 390 px and in desktop Chromium, from a synthetic profile written through the app's own data layer:
-- specs: boot and the tabs; a typed round to Done (answers stored); a Lesen module answered, submitted and reviewed; an offline reload from the service worker (the spec stops its own server); I know this and its Undo; Quick sort with Undo; progress backup to a mock results repository, Delete all, Restore from backup; export, Delete all, import; one Word building card; the Explore 2D map and a group sheet; a script's Marked words sheet never outliving its screen; speaking situations heard first, Check with the mic, and Say it aloud's old routes; records checked against `schemas/records` (§3, `data/records.js`);
+- specs: boot and the tabs; a typed round to Done (answers stored); a Lesen module answered, submitted and reviewed; an offline reload from the service worker (the spec stops its own server); I know this and its Undo; Quick sort with Undo; progress backup to a mock results repository, Delete all, Restore from backup; export, Delete all, import; one Word building card; the Explore 2D map and a group sheet; a script's Marked words sheet never outliving its screen; speaking situations heard first, Check with the mic, and Say it aloud's old routes; Hören play limits (two hearings with the automatic second, the reading time, a reload keeps the count) and a situation line played as a recording (`audio.spec`); Export handing a phone's share sheet the file; the device link from `b1-token.py`, with the token kept out of the address, the history, the console, the error ring, the backup and the export (`link.spec`); records checked against `schemas/records` (§3, `data/records.js`);
 - the network is sealed: GitHub (an in-memory Contents API that answers only a fake token), Anthropic, fonts and media are answered by route mocks, any other host fails the test, and service workers are blocked (the offline spec's worker serves only its own origin), so no token can reach a real server;
 - every test fails on a console error or an uncaught exception, and axe (WCAG 2.1 A/AA) fails on serious and critical findings on each screen it visits.
 - a Trusted Types tripwire: the shell is served with `require-trusted-types-for 'script'` and a default policy that refuses HTML and script strings (the service worker's same-origin URL passes), so an HTML string written into the DOM by the app or a vendored library fails the test.
-Not covered there: the mic, the keyboard, haptics and background behaviour on a real iPhone (the checklist), and Hören audio playback. **Golden vectors** (`tests/vectors/`, round 3): the exact outputs of the grader, FSRS, the clock and the day's allowance for fixed inputs, checked by `tests/unit/vectors.test.mjs`, for a language pack or a Swift port to match byte for byte (`tests/vectors/generate.mjs`).
+Not covered there: the mic, the speaker and the mute switch, the keyboard, haptics, the share sheet and background behaviour on a real iPhone (the checklists in CUTOVER.md and IOS-CHECKS.md). **Golden vectors** (`tests/vectors/`, round 3): the exact outputs of the grader, FSRS, the clock and the day's allowance for fixed inputs, checked by `tests/unit/vectors.test.mjs`, for a language pack or a Swift port to match byte for byte (`tests/vectors/generate.mjs`).
 
 **Accessibility:** focus moves to the view's `<h1>` on route change; the tab bar is a `<nav>` with `aria-current`; live regions for announcements; targets ≥ 44 px; text in the kit's sizes, inputs ≥ 16 px; `lang` on target-language text; every effect has a reduced-motion path (`html[data-motion]` is a user setting).
 

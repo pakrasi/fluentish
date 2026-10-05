@@ -56,6 +56,9 @@ test('progress backup to the (mock) results repository, Delete all, Restore from
 });
 
 test('export file, Delete all, import the file', async ({ page }) => {
+  // the file itself is what this test is about: no share sheet (a phone's Export opens one, services/share.js; the
+  // share spec checks that), so Export downloads in both browsers
+  await page.addInitScript(() => { try { delete /** @type {any} */ (Navigator.prototype).share; delete /** @type {any} */ (Navigator.prototype).canShare; } catch { /* not there */ } });
   await seed(page);
   const before = await studyALittle(page, 2);
   await open(page, '#/profile/data');

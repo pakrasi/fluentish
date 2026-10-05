@@ -81,11 +81,3 @@ export function announce(text) {
   requestAnimationFrame(() => { r.textContent = text; });
 }
 
-/** Trigger a file download of a Blob without touching markup. @param {Blob} blob @param {string} name */
-export function download(blob, name) {
-  const url = URL.createObjectURL(blob);
-  const a = h('a', { href: url, download: name, hidden: true });
-  document.body.append(a);
-  a.click();
-  setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 1000);
-}

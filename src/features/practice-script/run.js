@@ -15,6 +15,7 @@ import { gradeRow } from '../shared/selfgrade.js';
 import { switchRow } from '../../core/ui.js';
 import { addActivity } from '../shared/data.js';
 import { WPM } from '../../domain/script/config.js';
+import { langAttr } from '../../core/lang.js';
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx @param {any} script */
 export function mountRun(el, ctx, script) {
@@ -71,7 +72,7 @@ export function mountRun(el, ctx, script) {
     const s = script.sections[i];
     const first = s.sentences[0];
     const cue = first?.en || `${String(first?.de || '').split(/\s+/).slice(0, 4).join(' ')} …`;
-    const full = h('div', { class: 'sc-runfull', lang: 'de', hidden: true }, s.sentences.map((/** @type {any} */ x) => h('p', null, x.de)));
+    const full = h('div', { class: 'sc-runfull', lang: langAttr(), hidden: true }, s.sentences.map((/** @type {any} */ x) => h('p', null, x.de)));
     replace(cardEl, h('p', { class: 'caption tnum' }, t('practice.script.run.of', { n: i + 1, total: script.sections.length })),
       h('p', { class: 'sc-runtitle' }, s.title),
       h('p', { class: 'prompt sc-runcue', lang: first?.en ? 'en' : 'de' }, cue),

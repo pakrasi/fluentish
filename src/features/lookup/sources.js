@@ -6,6 +6,7 @@
 
    LANGS lists what each study language has. Phase 1 is German only; the `lang` parameter is kept so the
    ten-language picker can come later without changing the routes. */
+import { gapFill } from '../../domain/match.js';
 
 /** Content ids per language. @type {Record<string, {code: string, chunks: string, lang: string, words?: string, b1?: boolean, priority?: string}>} */
 export const LANGS = {
@@ -82,8 +83,7 @@ export function layerRows(fw, lang) {
 export function modelSentence(g) {
   const ans = [].concat(g.answer || [])[0] || '';
   const p = String(g.prompt || '');
-  if (p.includes('___')) return p.replace(/\s*\([^)]*\)\s*$/, '').replace('___', ans);
-  return ans;
+  return gapFill(p, ans)?.text ?? ans;   // the trainer's own gap filling (domain/match.js), capital and all
 }
 
 /**

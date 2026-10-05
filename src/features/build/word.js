@@ -9,6 +9,7 @@
    word appears assembled. */
 import { h } from '../../core/dom.js';
 import { play, css, flyText } from './fx.js';
+import { langAttr } from '../../core/lang.js';
 
 const VOWELS = /(äu|au|ei|eu|ie|aa|ee|oo|[aeiouäöüy])/i;
 
@@ -24,10 +25,10 @@ function stressed(s) {
  * @returns {HTMLElement}
  */
 export function wordNode({ pre = null, stem, kind = null, t, big = false }) {
-  if (!pre) return h('span', { class: ['wb-word', big && 'is-big'], lang: 'de' }, h('span', { class: 'wb-pc wb-stem' }, stem));
+  if (!pre) return h('span', { class: ['wb-word', big && 'is-big'], lang: langAttr() }, h('span', { class: 'wb-pc wb-stem' }, stem));
   const sep = kind === 's';
   const label = t(sep ? 'build.word.stressPre' : 'build.word.stressStem', { word: `${pre}${stem}`, pre });
-  return h('span', { class: ['wb-word', sep ? 'is-sep' : 'is-ins', big && 'is-big'], lang: 'de', role: 'img', 'aria-label': label },
+  return h('span', { class: ['wb-word', sep ? 'is-sep' : 'is-ins', big && 'is-big'], lang: langAttr(), role: 'img', 'aria-label': label },
     h('span', { class: 'wb-pc wb-pre', 'aria-hidden': 'true' }, sep ? stressed(pre) : pre),
     h('span', { class: 'wb-pc wb-stem', 'aria-hidden': 'true' }, sep ? stem : stressed(stem)),
     sep ? h('span', { class: 'wb-joint', 'aria-hidden': 'true' }) : h('span', { class: 'wb-weld', 'aria-hidden': 'true' }));
@@ -60,7 +61,7 @@ export function weld(word) {
  * @param {{ex: string, pre: string, kind: string}} v
  */
 export function exampleNode(v) {
-  const p = h('p', { class: 'wb-ex', lang: 'de' });
+  const p = h('p', { class: 'wb-ex', lang: langAttr() });
   if (v.kind === 's') {
     const m = new RegExp(`(^|\\s)(${v.pre})([.!?,])`, 'u').exec(v.ex);
     if (m) {

@@ -3,15 +3,17 @@
    situations as "Check with the mic" (journey #10): its old routes, #/practice/speak/aloud and …/aloud/go, open the
    situations, and the mic check keeps its route, #/practice/speak/aloud/check. No card id changed: the B1 phrase
    cards stay in the typed rounds.
-   Every microphone, recogniser and voice call goes through speech.js, so the iOS app can swap the implementation. */
+   Every microphone and recogniser call goes through services/speech.js, so the iOS app can swap the implementation. */
 import { h, replace, announce } from '../../core/dom.js';
 import { linkRow, notice } from '../../core/ui.js';
 import { icon } from '../../core/icons.js';
 import { fill, reduced } from '../../core/motion.js';
 import * as Sp from '../../domain/speech.js';
 import { loadData, session } from '../shared/data.js';
-import { speech } from '../shared/speech.js';
+import { speech } from '../../services/speech.js';
+import { asrLocale } from '../../core/lang.js';
 import { simToday } from '../../domain/allowance.js';
+import { langAttr } from '../../core/lang.js';
 
 const FOLIEN = /** @type {[string, string[]][]} */ ([['Thema vorstellen', ['t2_open']], ['Eigene Erfahrung', ['t2_experience']], ['In meinem Heimatland', ['t2_home']],
   ['Vor- und Nachteile, Meinung', ['t2_proscons', 't2_conclude']], ['Abschluss', ['t2_close']]]);
@@ -82,7 +84,7 @@ export async function mountSpeak(el, ctx, parts) {
   function micCheck() {
     const C = Sp.CANARY, results = /** @type {{i: number, said: string}[]} */ ([]);
     let i = 0; /** @type {any} */ let live = null;
-    const meta = h('p', { class: 'caption tnum' }), sent = h('p', { class: 'prompt', lang: 'de' }), heard = h('p', { class: 'pr-heard', lang: 'de' });
+    const meta = h('p', { class: 'caption tnum' }), sent = h('p', { class: 'prompt', lang: langAttr() }), heard = h('p', { class: 'pr-heard', lang: langAttr() });
     const mic = micButton(() => tap(), t);
     replace(el, h('div', { class: 'practice stack pr-speak' }, back('#/practice/speak', t('practice.speak.title')),
       h('div', { class: 'page-head' }, h('h1', null, t('practice.speak.check'))), h('p', { class: 'caption' }, t('practice.speak.check.how')),
@@ -91,7 +93,7 @@ export async function mountSpeak(el, ctx, parts) {
     async function tap() {
       if (live) { live.stop(); return; }
       mic.set('listening', t('practice.speak.listening'));
-      live = sp.listen({ onInterim: (/** @type {string} */ x) => { heard.textContent = x; } });
+      live = sp.listen({ lang: asrLocale(), onInterim: (/** @type {string} */ x) => { heard.textContent = x; } });
       const res = await live.done; live = null;
       if (res.error && !res.text) { mic.set(sp.blocked() ? 'error' : 'idle', errorText(res.error, t)); return; }
       results.push({ i, said: res.text });
@@ -123,14 +125,14 @@ export async function mountSpeak(el, ctx, parts) {
     offs.push(() => { if (audioUrl) URL.revokeObjectURL(audioUrl); });
     intro();
     function intro() {
-      const tEl = h('b', { lang: 'de' }, topic);
+      const tEl = h('b', { lang: langAttr() }, topic);
       replace(el, h('div', { class: 'practice stack' }, back('#/practice/speak', t('practice.speak.title')),
         h('div', { class: 'page-head' }, h('h1', null, t('practice.speak.teil2'))),
         h('p', { class: 'lead' }, t('practice.speak.teil2.lead')),
         h('p', { class: 'pr-topic' }, h('span', { class: 'label' }, t('practice.speak.topic')), ' ', tEl, ' ',
           h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => { topic = topics[(topics.indexOf(topic) + 1) % topics.length]; updSession(ctx.store, s => ({ ...s, teil2: { topic } })); tEl.textContent = topic; } }, t('practice.speak.change'))),
-        h('ol', { class: 'pr-folien' }, FOLIEN.map(([name], k) => h('li', null, h('span', { class: 'row-title', lang: 'de' }, name), h('span', { class: 'caption tnum' }, ` ${t('practice.speak.until', { t: mmss(ENDS[k]) })}`),
-          cues[k].length ? h('span', { class: 'caption pr-cue', lang: 'de' }, cues[k].join(' · ')) : null))),
+        h('ol', { class: 'pr-folien' }, FOLIEN.map(([name], k) => h('li', null, h('span', { class: 'row-title', lang: langAttr() }, name), h('span', { class: 'caption tnum' }, ` ${t('practice.speak.until', { t: mmss(ENDS[k]) })}`),
+          cues[k].length ? h('span', { class: 'caption pr-cue', lang: langAttr() }, cues[k].join(' · ')) : null))),
         sp.canListen() ? null : h('p', { class: 'caption' }, t('practice.speak.noRate')),
         h('div', { class: 'pr-done-actions' }, h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: () => start() }, t('practice.speak.start', { t: mmss(RUNS[run]) })))));
     }
@@ -143,11 +145,11 @@ export async function mountSpeak(el, ctx, parts) {
       let words = '', heardMs = 0, stopped = false; /** @type {any} */ let live = null;
       const t0 = performance.now();
       if (sp.canListen()) {
-        const go = () => { if (stopped) return; const s0 = performance.now(); live = sp.listen({ continuous: true });
+        const go = () => { if (stopped) return; const s0 = performance.now(); live = sp.listen({ lang: asrLocale(), continuous: true });
           live.done.then((/** @type {any} */ r) => { if (r.text) { words += ` ${r.text}`; heardMs += performance.now() - s0; } go(); }); };
         go();
       }
-      const clock = h('p', { class: 'numeral tnum pr-clock' }), folie = h('p', { class: 'pr-folie', lang: 'de' }), cue = h('p', { class: 'caption', lang: 'de' });
+      const clock = h('p', { class: 'numeral tnum pr-clock' }), folie = h('p', { class: 'pr-folie', lang: langAttr() }), cue = h('p', { class: 'caption', lang: langAttr() });
       const prog = h('div', { class: 'track pr-runbar' }, h('span', { class: 'fill' }));
       replace(el, h('div', { class: 'practice stack pr-run' }, h('h1', { class: 'label' }, t('practice.speak.run', { n: run + 1, topic, t: mmss(total) })), clock, folie, cue, prog,
         h('div', { class: 'pr-done-actions' }, h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: () => end() }, t('practice.speak.stop')))));

@@ -4,7 +4,7 @@
    (picker.js). Rounds and Quick sort open straight away. */
 import { h, replace } from '../../core/dom.js';
 import { notice } from '../../core/ui.js';
-import { warmVoices } from './speech.js';
+import { warm as warmVoices } from '../../services/voice.js';
 import { pickerLinks } from './picker.js';
 
 /**

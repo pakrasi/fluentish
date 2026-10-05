@@ -14,6 +14,7 @@ import { nextStep, hrefOf, words as wordState, runMinutes, scriptPhase } from '.
 import { applyEdit } from './align.js';
 import { take } from './moment.js';
 import { back, sheet, scriptField, landRow, stepSegs, dateLine, registerLine, clockTime } from './ui.js';
+import { langAttr } from '../../core/lang.js';
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx @param {any} script0 */
 export function mountOverview(el, ctx, script0) {
@@ -235,9 +236,9 @@ export function mountOverview(el, ctx, script0) {
       if (!now.length) { replace(body, h('p', { class: 'lead' }, t('practice.script.long.none'))); return; }
       replace(body, now.map(({ s: sec, x }) => {
         const parts = P.splitLocal(x.de);
-        return h('div', { class: 'sc-longitem' }, h('p', { class: 'sc-longtext', lang: 'de' }, x.de), h('p', { class: 'caption' }, t('practice.script.long.words', { n: P.wordCount(x.de), section: sec.title })),
+        return h('div', { class: 'sc-longitem' }, h('p', { class: 'sc-longtext', lang: langAttr() }, x.de), h('p', { class: 'caption' }, t('practice.script.long.words', { n: P.wordCount(x.de), section: sec.title })),
           parts ? h('div', { class: 'row-actions' }, h('button', { type: 'button', class: 'btn pressable', onclick: () => { split(sec.id, x.id, parts); draw(); } }, t('practice.script.long.split')),
-            h('span', { class: 'caption sc-split-preview', lang: 'de' }, `${parts[0]} / ${parts[1]}`)) : h('p', { class: 'caption' }, t('practice.script.long.noSplit')));
+            h('span', { class: 'caption sc-split-preview', lang: langAttr() }, `${parts[0]} / ${parts[1]}`)) : h('p', { class: 'caption' }, t('practice.script.long.noSplit')));
       }));
     };
     draw();

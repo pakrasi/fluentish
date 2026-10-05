@@ -20,7 +20,11 @@ import { sync, restore } from './data/sync/index.js';
 import { TABS, routes, startFeatures } from './features/registry.js';
 import { createSw } from './services/sw.js';
 import { loadRecordSchemas, recordChecker } from './data/records.js';
+import { takeLinkToken } from './core/link.js';
+import { setLanguage } from './core/lang.js';
 
+// first, before anything can log or navigate: a device-link token in the address is taken out of it (core/link.js)
+const linkToken = takeLinkToken();
 installErrorLog();
 
 /** localStorage for reading the legacy keys; null when the browser blocks it. */
@@ -81,6 +85,10 @@ async function main() {
   store.onDeleted = () => location.reload();   // "Delete all" in another tab
   applyPrefs(store.get('prefs'));
   bus.on('prefs:changed', () => applyPrefs(store.get('prefs')));
+  setLanguage(settings().language);
+  bus.on('settings:changed', ({ key }) => { if (key === 'language') setLanguage(settings().language); });
+  // the device link from b1-token.py: stored through the secrets path (device scope, never exported or synced)
+  const linked = linkToken ? (store.set('secrets', { anthropicKey: null, githubToken: null, ...(store.get('secrets', {}) || {}), githubToken: linkToken }), true) : false;
   const flush = () => { store.flush(); };
   addEventListener('pagehide', flush);
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') flush(); });
@@ -138,6 +146,8 @@ async function main() {
   if (session.cutoverError) toast(t('preview.retry'), { ms: 10000 });
   // a restore from the backup cut off last time was put back (data/restore.js)
   if (session.restoreRecovered === 'rolledBack') toast(t('restore.rolledBack'), { ms: 10000 });
+  if (linked) toast(t('conn.sync.savedToast'), { ms: 6000 });
+  else if (linkToken === '') toast(t('conn.link.bad'), { ms: 8000 });
 
   // ---------- router ----------
   const router = createRouter({

@@ -10,6 +10,7 @@ import { lemmaOf, glossOf, headOf } from './lemma.js';
 import { cardId } from './suggest.js';
 import { MAX_CHARS, LONG_SCRIPT_WORDS, MIN_WORDS, DEFAULT_SECTION_KIND, DEFAULT_REGISTER } from '../../domain/script/config.js';
 import { back, num } from './ui.js';
+import { langAttr } from '../../core/lang.js';
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
 export function mountPaste(el, ctx) {
@@ -17,7 +18,7 @@ export function mountPaste(el, ctx) {
   const c = ctx.clock.ctx();
   let kind = /** @type {'talk' | 'retell'} */ (DEFAULT_SECTION_KIND), register = DEFAULT_REGISTER, forced = /** @type {string | null} */ (null), kindTouched = false;
   const title = /** @type {HTMLInputElement} */ (h('input', { class: 'input', name: 'script-title', autocomplete: 'off', maxlength: 80 }));
-  const text = /** @type {HTMLTextAreaElement} */ (h('textarea', { class: 'input sc-paste', name: 'script-text', rows: 10, lang: 'de', spellcheck: 'false', autocapitalize: 'off',
+  const text = /** @type {HTMLTextAreaElement} */ (h('textarea', { class: 'input sc-paste', name: 'script-text', rows: 10, lang: langAttr(), spellcheck: 'false', autocapitalize: 'off',
     placeholder: t('practice.script.paste.ph') }));
   text.setAttribute('autocorrect', 'off');
   const textField = field({ label: t('practice.script.paste.text'), input: text });

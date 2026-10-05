@@ -7,15 +7,18 @@
    blob is written to IndexedDB with its file name before any upload, the upload is retried by the results sync until
    both files are in the repository, and "Save file" downloads it at any time. While a take runs, leaving the page
    asks first. */
-import { h, replace, download } from '../../core/dom.js';
+import { h, replace } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
 import { createRecorder, RecorderError } from '../../services/recorder.js';
+import { clip } from '../../services/audio.js';
+import { shareFile } from '../../services/share.js';
 import { audioExt } from '../../data/sync/index.js';
 import { draft, saveDraft, submitAttempt, saveRecording, recordings, mediaUrl, sync, linked, beginTake, keepTakeAudio, endTake, recoverTake } from './data.js';
 import { uuidv7 } from '../../data/ids.js';
 import { clockBar, backLink, confirmPanel, arrowKeys } from './parts.js';
 import { fmt } from './timer.js';
 import { stampMs } from '../../domain/grade.js';
+import { langAttr } from '../../core/lang.js';
 
 const PHASES = [['prep', 'Vorbereitung'], ['teil1', 'Teil 1'], ['teil2', 'Teil 2'], ['teil3', 'Teil 3'], ['done', 'Abgabe']];
 
@@ -27,7 +30,7 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
   const st = { topic: 0, notes1: '', notes: '', phase: 'prep', recorded: /** @type {Record<string, boolean>} */ ({}), ...(draft(store, n, 'sprechen')?.answers || {}) };
   const save = () => saveDraft(store, n, 'sprechen', { answers: { ...st, recorded: { ...st.recorded } } });
   const rec = createRecorder();
-  /** @type {HTMLAudioElement | null} */ let cueAudio = null;
+  /** @type {ReturnType<typeof clip> | null} */ let cueAudio = null;
   let recording = false;
   /** stop the take that is running, from outside its box (the page is being hidden) @type {((auto: boolean) => Promise<void>) | null} */
   let activeStop = null;
@@ -38,7 +41,7 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
   const tabs = h('div', { class: 'ex-tabs', role: 'tablist', 'aria-label': 'Teile' });
   arrowKeys(tabs);
   const content = h('div', { id: 'ex-panel', role: 'tabpanel' });
-  const stopCue = () => { try { cueAudio?.pause(); } catch { /* none */ } cueAudio = null; };
+  const stopCue = () => { cueAudio?.stop(); cueAudio = null; };
   const setPhase = (/** @type {string} */ p) => {
     if (recording) { ctx.toast(t('exam.de.rec.stopFirst')); return; }
     stopCue();
@@ -50,7 +53,7 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
     h('span', { class: 'ex-nav-grow' }),
     next ? h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: () => setPhase(next) }, t('exam.de.next')) : null);
   const notesArea = (/** @type {'notes1' | 'notes'} */ field, /** @type {string} */ ph) => {
-    const ta = /** @type {HTMLTextAreaElement} */ (h('textarea', { class: 'ex-write ex-notes', 'aria-label': 'Stichpunkte', placeholder: ph, spellcheck: 'false', autocorrect: 'off', lang: 'de',
+    const ta = /** @type {HTMLTextAreaElement} */ (h('textarea', { class: 'ex-write ex-notes', 'aria-label': 'Stichpunkte', placeholder: ph, spellcheck: 'false', autocorrect: 'off', lang: langAttr(),
       oninput: (/** @type {Event} */ e) => { st[field] = /** @type {HTMLTextAreaElement} */ (e.target).value; save(); } }));
     ta.value = st[field] || '';
     return ta;
@@ -62,9 +65,8 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
   };
   const playCue = (/** @type {string} */ url, /** @type {() => void} */ onEnd = () => {}) => {
     stopCue();
-    cueAudio = new Audio(url);
-    cueAudio.onended = onEnd;
-    cueAudio.play().catch(() => { ctx.toast(t('exam.de.audioBlocked')); onEnd(); });
+    const c = cueAudio = clip(url, { onEnded: onEnd });
+    c.result.then(r => { if (cueAudio === c && (r === 'blocked' || r === 'error')) { ctx.toast(t('exam.de.audioBlocked')); onEnd(); } });
   };
 
   /** The recorder for one Teil. @param {string} part @param {string} label @param {string} hint */
@@ -144,7 +146,7 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
         // the blob could not even be stored: offer the file right away so nothing is lost
         console.error(e);
         status.textContent = t('exam.de.rec.storeFailed');
-        box.append(h('button', { type: 'button', class: 'btn pressable', onclick: () => download(blob, `test${n}-sprechen-${part}.${audioExt(mime)}`) }, icon('download', { size: 18 }), t('exam.de.rec.saveFile')));
+        box.append(h('button', { type: 'button', class: 'btn pressable', onclick: () => shareFile(blob, `test${n}-sprechen-${part}.${audioExt(mime)}`) }, icon('download', { size: 18 }), t('exam.de.rec.saveFile')));
       }
       return stored;
     }
@@ -154,27 +156,27 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
         const blob = v.blobRef ? await store.adapter.getBlob(v.blobRef).catch(() => null) : null;
         return h('li', null, h('span', { class: 'caption' }, `${t('exam.de.take', { n: i + 1 })} · ${v.sent ? t('exam.de.rec.sent') : t('exam.de.rec.notSent')}`),
           !v.sent ? h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: async () => { const r = await sync(ctx, true); ctx.toast(r.error ? t('exam.de.sendFailed', { why: r.error }) : t('exam.de.allSent')); drawList(); } }, t('exam.de.sendNow')) : null,
-          blob ? h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => download(blob, `test${n}-sprechen-${part}-${i + 1}.${audioExt(blob.type)}`) }, t('exam.de.rec.saveFile')) : null);
+          blob ? h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => shareFile(blob, `test${n}-sprechen-${part}-${i + 1}.${audioExt(blob.type)}`) }, t('exam.de.rec.saveFile')) : null);
       }));
       replace(list, items);
     }
     drawList();
     replace(box, h('div', { class: 'ex-rec-row' }, rec.supported ? startBtn : null, rec.supported ? stopBtn : null, h('span', { class: 'ex-rec-dot', 'aria-hidden': 'true' }), timeEl, fileBtn, fileIn),
-      h('p', { class: 'caption', lang: 'de' }, hint), status, list);
+      h('p', { class: 'caption', lang: langAttr() }, hint), status, list);
     return box;
   }
 
   const drawTabs = () => replace(tabs, PHASES.map(([p, nm]) => h('button', {
-    type: 'button', role: 'tab', 'aria-selected': String(st.phase === p), disabled: recording && st.phase !== p, class: 'ex-tab pressable', lang: 'de', onclick: () => setPhase(p),
+    type: 'button', role: 'tab', 'aria-selected': String(st.phase === p), disabled: recording && st.phase !== p, class: 'ex-tab pressable', lang: langAttr(), onclick: () => setPhase(p),
   }, nm, p.startsWith('teil') ? h('span', { class: ['ex-dot', st.recorded[p] && 'is-full'], role: 'img', 'aria-label': st.recorded[p] ? t('exam.de.rec.has') : t('exam.de.rec.hasNot') }) : null)));
 
   function draw() {
     drawTabs();
     clock.el.hidden = st.phase !== 'prep';
-    const instr = (/** @type {string} */ s) => h('p', { class: 'ex-instr', lang: 'de' }, s);
+    const instr = (/** @type {string} */ s) => h('p', { class: 'ex-instr', lang: langAttr() }, s);
     let c;
     if (st.phase === 'prep') {
-      c = h('div', { lang: 'de' }, instr(t('exam.de.prepIntro')),
+      c = h('div', { lang: langAttr() }, instr(t('exam.de.prepIntro')),
         h('section', { class: 'ex-block' }, h('p', { class: 'label' }, 'Teil 1 · Gemeinsam etwas planen'), h('p', null, P.teil1.situation),
           h('ul', { class: 'ex-points' }, P.teil1.points.map((/** @type {string} */ p) => h('li', null, p))),
           h('p', { class: 'label' }, 'Stichpunkte Teil 1'), notesArea('notes1', 'Ideen, Vorschläge, Redemittel …')),
@@ -192,7 +194,7 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
         : replace(cueBox, h('p', { class: 'caption' }, t('exam.de.cueOf', { i: idx + 1, n: P.teil1.partner_cues.length })), h('p', { class: 'ex-cue-state' }, playing ? t('exam.de.partnerSpeaks') : t('exam.de.yourTurn')), ...hidden(P.teil1.partner_cues[idx]));
       const step = (/** @type {number} */ dx) => { idx = Math.max(0, Math.min(P.teil1.partner_cues.length - 1, idx + dx)); drawCue(true); playCue(mediaUrl(exam, n, `s1-${idx + 1}.mp3`), () => drawCue(false)); };
       drawCue(false);
-      c = h('div', { lang: 'de' }, instr(t('exam.de.t1')),
+      c = h('div', { lang: langAttr() }, instr(t('exam.de.t1')),
         h('section', { class: 'ex-block' }, h('p', null, P.teil1.situation), h('ul', { class: 'ex-points' }, P.teil1.points.map((/** @type {string} */ p) => h('li', null, p))),
           st.notes1 ? h('p', { class: 'caption ex-pre' }, st.notes1) : null),
         h('section', { class: 'ex-block' }, cueBox, h('div', { class: 'row-actions' },
@@ -206,7 +208,7 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
       const folie = h('div', { class: 'ex-folie' });
       const show = () => replace(folie, h('p', { class: 'caption' }, `Folie ${f + 1} von 5`), h('p', { class: 'ex-folie-t' }, String(P.teil2.topics[st.topic]).replace(/^Thema [AB]: /, '')), h('p', null, P.teil2.folien[f]));
       show();
-      c = h('div', { lang: 'de' }, instr(t('exam.de.t2')), folie,
+      c = h('div', { lang: langAttr() }, instr(t('exam.de.t2')), folie,
         h('div', { class: 'row-actions' }, h('button', { type: 'button', class: 'btn pressable', onclick: () => { f = Math.max(0, f - 1); show(); } }, '← Folie'), h('button', { type: 'button', class: 'btn pressable', onclick: () => { f = Math.min(4, f + 1); show(); } }, 'Folie →')),
         st.notes ? h('section', { class: 'ex-block' }, h('p', { class: 'label' }, 'Ihre Stichpunkte'), h('p', { class: 'ex-pre' }, st.notes)) : null,
         recorderBox('teil2', P.teil2.topics[st.topic], t('exam.de.rec2')),
@@ -214,7 +216,7 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
     } else if (st.phase === 'teil3') {
       const qs = st.topic === 0 ? P.teil3.questions : P.teil3.questions_b;
       const prefix = st.topic === 0 ? 's3' : 's3b';
-      c = h('div', { lang: 'de' }, instr(t('exam.de.t3')),
+      c = h('div', { lang: langAttr() }, instr(t('exam.de.t3')),
         h('section', { class: 'ex-block' }, qs.map((/** @type {string} */ q, /** @type {number} */ i) => h('div', { class: 'ex-item' },
           h('button', { type: 'button', class: 'btn pressable', onclick: () => playCue(mediaUrl(exam, n, `${prefix}-${i + 1}.mp3`)) }, icon('play', { size: 18 }), `Frage ${i + 1}`), ...hidden(q)))),
         recorderBox('teil3', P.teil2.topics[st.topic], t('exam.de.rec3')),
@@ -237,13 +239,13 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
           ctx.go(`/exam/${n}/sprechen/review/${r.id}`, { replace: true });
         } catch (e) { busy = false; console.error(e); ctx.toast(t('exam.de.submitFailed')); }
       };
-      c = h('div', { lang: 'de' },
+      c = h('div', { lang: langAttr() },
         h('section', { class: 'ex-block' }, h('p', { class: 'label' }, 'Aufnahmen'),
           h('p', null, ['teil1', 'teil2', 'teil3'].map(p => `${p.replace('teil', 'Teil ')} ${st.recorded[p] ? 'aufgenommen' : 'fehlt'}`).join(' · ')),
           h('p', { class: 'caption' }, t('exam.de.afterSubmit'))),
         h('div', { class: 'ex-nav' }, h('button', { type: 'button', class: 'btn pressable', onclick: () => setPhase('teil3') }, t('exam.de.back')), h('span', { class: 'ex-nav-grow' }),
           h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: () => replace(confirmSlot, confirmPanel({
-            lang: 'de', title: missing.length ? t('exam.de.missingQ', { list: missing.map(p => p.replace('teil', 'Teil ')).join(' und ') }) : t('exam.de.submitQ', { module: 'Sprechen' }),
+            lang: langAttr(), title: missing.length ? t('exam.de.missingQ', { list: missing.map(p => p.replace('teil', 'Teil ')).join(' und ') }) : t('exam.de.submitQ', { module: 'Sprechen' }),
             lines: [t('exam.de.final')], yes: t('exam.de.submitSprechen'), no: t('exam.de.keepGoing'), onNo: () => replace(confirmSlot), onYes: finish,
           })) }, t('exam.de.submitSprechen'))),
         confirmSlot);
@@ -261,7 +263,7 @@ export function runSprechen(el, ctx, { exam, n, ex }) {
   document.addEventListener('visibilitychange', onVis);
   // a take cut off by a reload is kept as a recording
   recoverTake(ctx).then(info => { if (info) { ctx.toast(t('exam.de.rec.recovered')); draw(); } }).catch(() => {});
-  replace(el, h('div', { class: 'ex-run', lang: 'de' },
+  replace(el, h('div', { class: 'ex-run', lang: langAttr() },
     h('header', { class: 'ex-runhead' }, backLink(`#/exam/${n}`, t('exam.backTest', { n })), h('div', { class: 'ex-runhead-end' }, clock.el)),
     h('h1', { class: 'ex-run-title' }, 'Sprechen', h('span', { class: 'caption' }, ` · ${ex.topic}`)),
     tabs, content));

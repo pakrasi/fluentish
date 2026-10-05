@@ -20,6 +20,7 @@ import { todayBudget } from '../../domain/allowance.js';
 import { doneHero } from '../shared/done-hero.js';
 import { swap } from '../../core/motion.js';
 import { knowButton, isKnowKey, knowCard } from '../shared/iknow.js';
+import { langAttr } from '../../core/lang.js';
 
 const ROUND = 12;
 const keep = (/** @type {Event} */ e) => e.preventDefault();
@@ -78,7 +79,7 @@ export async function mountWords(el, ctx) {
   const endBtn = h('button', { type: 'button', class: 'btn btn-quiet pressable pr-end', onpointerdown: keep, onclick: () => end() }, t('practice.end'));
   const meta = h('span', { class: 'label' });
   const promptBox = h('div', { class: 'pr-promptbox' });
-  const input = /** @type {HTMLTextAreaElement} */ (h('textarea', { class: 'answer-input', rows: 1, lang: 'de', autocapitalize: 'off', autocomplete: 'off', spellcheck: 'false', enterkeyhint: 'go', 'aria-label': t('practice.answerLabel') }));
+  const input = /** @type {HTMLTextAreaElement} */ (h('textarea', { class: 'answer-input', rows: 1, lang: langAttr(), autocapitalize: 'off', autocomplete: 'off', spellcheck: 'false', enterkeyhint: 'go', 'aria-label': t('practice.answerLabel') }));
   input.setAttribute('autocorrect', 'off');
   const answerEl = h('div', { class: 'answer' }, input, checkMark());
   const fb = h('div', { class: 'pr-fb', 'aria-live': 'polite' });
@@ -151,7 +152,7 @@ export async function mountWords(el, ctx) {
       state = 'feedback';
       primary.textContent = t('practice.next');
       secondary.hidden = true;
-      if (g.umlautMiss.length || g.capMiss.length || g.typos.length) { replace(fb, h('p', { class: 'pr-res is-warn' }, t('practice.right.typo')), h('p', { class: 'answer-key', lang: 'de' }, item.model)); reveal.classList.add('is-open'); }
+      if (g.umlautMiss.length || g.capMiss.length || g.typos.length) { replace(fb, h('p', { class: 'pr-res is-warn' }, t('practice.right.typo')), h('p', { class: 'answer-key', lang: langAttr() }, item.model)); reveal.classList.add('is-open'); }
       holding = true;
       fxCorrect(answerEl, { hold: 420 }).then(() => { holding = false; if (state === 'feedback' && !fb.childNodes.length) next(); });
     } else showRight(typed);
@@ -174,8 +175,8 @@ export async function mountWords(el, ctx) {
   function showRight(typed) {
     state = 'feedback';
     replace(fb, typed ? h('p', { class: 'pr-res is-bad' }, t('practice.wrong')) : null,
-      h('p', { class: 'answer-key', lang: 'de' }, item.gap ? item.accept[0] : item.model),
-      item.gap ? h('p', { class: 'caption', lang: 'de' }, item.model) : null,
+      h('p', { class: 'answer-key', lang: langAttr() }, item.gap ? item.accept[0] : item.model),
+      item.gap ? h('p', { class: 'caption', lang: langAttr() }, item.model) : null,
       h('p', { class: 'caption' }, item.head !== item.accept[0] ? item.head : ''));
     if (typed) fxWrong(answerEl, { revealEl: reveal }); else reveal.classList.add('is-open');
     primary.textContent = t('practice.next');
@@ -206,7 +207,7 @@ export async function mountWords(el, ctx) {
     cleanup();
     addActivity(store, c.today, { minutes: Math.min(30, (performance.now() - t0) / 60000), rounds: 0 });
     // the done hero; its data object is the round's words, each in the state it ended in
-    const list = h('ul', { class: 'sc-wdone', lang: 'de' }, Object.entries(firstOk).map(([id, ok], k) => h('li', { class: ['sc-wdone-w', ok ? 'is-ok' : 'is-miss'], style: { '--i': String(Math.min(k, 12)) } },
+    const list = h('ul', { class: 'sc-wdone', lang: langAttr() }, Object.entries(firstOk).map(([id, ok], k) => h('li', { class: ['sc-wdone-w', ok ? 'is-ok' : 'is-miss'], style: { '--i': String(Math.min(k, 12)) } },
       info.get(id)?.head || info.get(id)?.lemma || id, h('span', { class: 'sr-only' }, ok ? ` (${t('practice.script.words.gotIt')})` : ` (${t('practice.script.words.again')})`))));
     const hero = doneHero({ label: t('practice.script.words.title'), figure: right, of: t('practice.ofRight', { n: firstTotal - knownIds.size }),
       lines: [t('practice.script.words.after'), knownIds.size ? t('practice.know.inRound', { n: knownIds.size }) : null], data: list });

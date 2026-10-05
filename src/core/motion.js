@@ -1,5 +1,6 @@
 // Fluentish motion helpers. ES module, no dependencies. About 5 kB gzipped.
-// Every export works under reduced motion: movement is dropped, state still changes.
+// Every export works under reduced motion: movement is dropped, state still changes. Haptics: services/haptics.js.
+import { tap } from '../services/haptics.js';
 
 const root = document.documentElement;
 root.classList.add('js');
@@ -189,30 +190,8 @@ export function resetAnswer(answerEl, revealEl) {
   revealEl?.classList.remove('is-open');
 }
 
-/**
- * Light haptic tap. Android: Vibration API. iOS 18+ Safari: toggling a hidden
- * <input type=checkbox switch> through its label produces the system haptic.
- * Silently does nothing elsewhere. Must be called from a user gesture on iOS.
- */
-let hapticLabel = null;
-export function haptic() {
-  try {
-    if (navigator.vibrate) { navigator.vibrate(8); return; }
-    if (!/iP(hone|ad)/.test(navigator.userAgent)) return;
-    if (!hapticLabel) {
-      hapticLabel = document.createElement('label');
-      hapticLabel.setAttribute('aria-hidden', 'true');
-      hapticLabel.style.cssText = 'position:fixed;width:1px;height:1px;opacity:0;pointer-events:none;overflow:hidden';
-      const input = document.createElement('input');
-      input.type = 'checkbox'; input.setAttribute('switch', ''); input.tabIndex = -1;
-      hapticLabel.append(input); document.body.append(hapticLabel);
-    }
-    // a label click focuses its checkbox: give focus straight back, so an answer field keeps it (and the iPhone keyboard stays up)
-    const had = /** @type {HTMLElement | null} */ (document.activeElement);
-    hapticLabel.click();
-    if (had && had !== document.activeElement && typeof had.focus === 'function') had.focus({ preventScroll: true });
-  } catch { /* no haptics */ }
-}
+/** Light haptic tap (services/haptics.js: the web hack or the native shell's). Call it from a user gesture on iOS. */
+export function haptic() { tap(); }
 
 /* ------------------------------------------------------------------ */
 /* Numbers                                                              */

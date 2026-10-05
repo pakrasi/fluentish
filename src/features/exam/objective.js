@@ -7,6 +7,7 @@ import { clockBar, backLink, option, num, confirmPanel, arrowKeys } from './part
 import { playerGroup, player, reviewAudio } from './player.js';
 import { fmt } from './timer.js';
 import { feedbackBlock, nextCard, reviewHead } from './review.js';
+import { langAttr } from '../../core/lang.js';
 
 const SKILL_DE = /** @type {Record<string, string>} */ ({ detail: 'Detail', global: 'Hauptaussage', paraphrase: 'Umschreibung', negation: 'Negation',
   'number-time': 'Zahlen und Zeiten', attitude: 'Meinung', inference: 'Schlussfolgerung', matching: 'Zuordnung' });
@@ -92,7 +93,7 @@ function attachWhy(root, why, wrong, t) {
     const opts = el.querySelectorAll('.ex-opt .ex-opt-text');
     if (w.options_en && opts.length === w.options_en.length) opts.forEach((o, i) => o.append(h('span', { class: 'ex-en', lang: 'en' }, w.options_en[i])));
     el.append(h('details', { class: 'ex-why', open: wrong.has(el.dataset.item || '') },
-      h('summary', { lang: 'de' }, t('exam.de.why')),
+      h('summary', { lang: langAttr() }, t('exam.de.why')),
       w.evidence ? h('blockquote', null, `„${w.evidence}“`, w.evidence_en ? h('span', { class: 'ex-en', lang: 'en' }, w.evidence_en) : null) : null,
       h('p', null, w.why, w.why_en ? h('span', { class: 'ex-en', lang: 'en' }, w.why_en) : null),
       w.trap ? h('p', null, h('b', null, `${t('exam.de.trap')} `), w.trap, w.trap_en ? h('span', { class: 'ex-en', lang: 'en' }, w.trap_en) : null) : null));
@@ -113,7 +114,7 @@ export function runObjective(el, ctx, { exam, n, module, ex, def }) {
   const names = ids.map((_, i) => `Teil ${i + 1}`);
   let active = Math.min(d?.tab || 0, ids.length - 1);
   let busy = false;
-  const tabs = h('div', { class: 'ex-tabs', role: 'tablist', 'aria-label': 'Teile', lang: 'de' });
+  const tabs = h('div', { class: 'ex-tabs', role: 'tablist', 'aria-label': 'Teile', lang: langAttr() });
   arrowKeys(tabs);
   const body = h('div', { id: 'ex-panel', role: 'tabpanel' });
   const nav = h('div', { class: 'ex-nav' });
@@ -130,9 +131,9 @@ export function runObjective(el, ctx, { exam, n, module, ex, def }) {
     onChange: (p, leftMs) => {
       cover.hidden = !p;
       body.hidden = p;
-      if (p) replace(cover, h('div', { class: 'ex-cover-card' }, h('h2', { lang: 'de' }, t('exam.de.paused')),
-        h('p', { class: 'caption tnum', lang: 'de' }, module === 'hoeren' ? t('exam.de.used', { t: fmt(clock ? clock.elapsed() / 1000 : 0) }) : leftMs > 0 ? t('exam.de.left', { t: fmt(leftMs / 1000) }) : t('exam.de.timeUp')),
-        h('button', { type: 'button', class: 'btn btn-primary pressable', lang: 'de', onclick: () => clock.resume() }, t('exam.de.continue'))));
+      if (p) replace(cover, h('div', { class: 'ex-cover-card' }, h('h2', { lang: langAttr() }, t('exam.de.paused')),
+        h('p', { class: 'caption tnum', lang: langAttr() }, module === 'hoeren' ? t('exam.de.used', { t: fmt(clock ? clock.elapsed() / 1000 : 0) }) : leftMs > 0 ? t('exam.de.left', { t: fmt(leftMs / 1000) }) : t('exam.de.timeUp')),
+        h('button', { type: 'button', class: 'btn btn-primary pressable', lang: langAttr(), onclick: () => clock.resume() }, t('exam.de.continue'))));
       if (module !== 'hoeren' && leftMs < 0) { over.hidden = false; over.textContent = t('exam.de.overtime', { t: fmt(-leftMs / 1000) }); }
     },
   });
@@ -141,10 +142,10 @@ export function runObjective(el, ctx, { exam, n, module, ex, def }) {
     class: ['ex-tab pressable', answeredIn(ids[j], answers) === ids[j].length && 'is-full'], onclick: () => show(j),
   }, nm, h('span', { class: 'ex-tab-n tnum' }, `${answeredIn(ids[j], answers)}/${ids[j].length}`))));
   const drawNav = () => replace(nav,
-    active > 0 ? h('button', { type: 'button', class: 'btn pressable', lang: 'de', disabled: busy, onclick: () => show(active - 1) }, t('exam.de.back')) : null,
-    active < parts.length - 1 ? h('button', { type: 'button', class: 'btn pressable', lang: 'de', disabled: busy, onclick: () => show(active + 1) }, t('exam.de.next')) : null,
-    h('span', { class: 'ex-nav-grow caption tnum', lang: 'de' }, t('exam.de.answered', { n: answeredIn(all, answers), of: all.length })),
-    h('button', { type: 'button', class: ['btn pressable', active === parts.length - 1 && 'btn-primary'], lang: 'de', disabled: busy, onclick: askSubmit }, t('exam.de.submit')));
+    active > 0 ? h('button', { type: 'button', class: 'btn pressable', lang: langAttr(), disabled: busy, onclick: () => show(active - 1) }, t('exam.de.back')) : null,
+    active < parts.length - 1 ? h('button', { type: 'button', class: 'btn pressable', lang: langAttr(), disabled: busy, onclick: () => show(active + 1) }, t('exam.de.next')) : null,
+    h('span', { class: 'ex-nav-grow caption tnum', lang: langAttr() }, t('exam.de.answered', { n: answeredIn(all, answers), of: all.length })),
+    h('button', { type: 'button', class: ['btn pressable', active === parts.length - 1 && 'btn-primary'], lang: langAttr(), disabled: busy, onclick: askSubmit }, t('exam.de.submit')));
   const show = (/** @type {number} */ i) => {
     active = i;
     saveDraft(store, n, module, { tab: i });
@@ -158,7 +159,7 @@ export function runObjective(el, ctx, { exam, n, module, ex, def }) {
     if (busy) return;
     const leftMs = clock.left();
     replace(confirmSlot, confirmPanel({
-      lang: 'de',
+      lang: langAttr(),
       title: t('exam.de.submitQ', { module: def.name }),
       lines: [t('exam.de.answered', { n: answeredIn(all, answers), of: all.length }), names.map((nm, j) => `${nm}: ${answeredIn(ids[j], answers)}/${ids[j].length}`).join(' · '),
         module === 'hoeren' ? '' : leftMs > 0 ? t('exam.de.left', { t: fmt(leftMs / 1000) }) : t('exam.de.timeUp'), t('exam.de.final')].filter(Boolean),
@@ -186,8 +187,8 @@ export function runObjective(el, ctx, { exam, n, module, ex, def }) {
   }
   const head = h('header', { class: 'ex-runhead' },
     backLink(`#/exam/${n}`, t('exam.backTest', { n })),
-    h('div', { class: 'ex-runhead-end' }, clock.el, h('button', { type: 'button', class: 'btn btn-primary pressable ex-submit-top', lang: 'de', onclick: askSubmit }, t('exam.de.submit'))));
-  replace(el, h('div', { class: 'ex-run', lang: 'de' },
+    h('div', { class: 'ex-runhead-end' }, clock.el, h('button', { type: 'button', class: 'btn btn-primary pressable ex-submit-top', lang: langAttr(), onclick: askSubmit }, t('exam.de.submit'))));
+  replace(el, h('div', { class: 'ex-run', lang: langAttr() },
     head, over,
     h('h1', { class: 'ex-run-title' }, def.name, h('span', { class: 'caption' }, ` · ${ex.topic}`)),
     tabs, cover, body, nav, confirmSlot));
@@ -215,7 +216,7 @@ export async function reviewObjective(el, ctx, { exam, n, module, ex, def, attem
   const bt = byTeil(attempt.responses || []);
   const prefix = module === 'lesen' ? 'L' : 'H';
   let active = Math.max(0, focusItem ? ids.findIndex(xs => xs.includes(focusItem)) : 0);
-  const tabs = h('div', { class: 'ex-tabs', role: 'tablist', 'aria-label': 'Teile', lang: 'de' });
+  const tabs = h('div', { class: 'ex-tabs', role: 'tablist', 'aria-label': 'Teile', lang: langAttr() });
   arrowKeys(tabs);
   const body = h('div', { id: 'ex-panel', role: 'tabpanel' });
   const show = (/** @type {number} */ i) => {
@@ -233,7 +234,7 @@ export async function reviewObjective(el, ctx, { exam, n, module, ex, def, attem
   markSeen(store, fb.cur.filter(f => !f.seen).map(f => f.id));
   replace(el, h('div', { class: 'ex-review' },
     reviewHead({ ctx, n, def, attempt, score: attempt.score, max: attempt.max_score, pass: passes(attempt.score, attempt.max_score), topic: ex.topic }),
-    h('p', { class: 'caption ex-skills', lang: 'de' }, weak.length ? `${t('exam.de.bySkill')} ${weak.map(([k, v]) => `${SKILL_DE[k] || k} ${v[0]}/${v[1]}`).join(' · ')}` : t('exam.de.allRight')),
+    h('p', { class: 'caption ex-skills', lang: langAttr() }, weak.length ? `${t('exam.de.bySkill')} ${weak.map(([k, v]) => `${SKILL_DE[k] || k} ${v[0]}/${v[1]}`).join(' · ')}` : t('exam.de.allRight')),
     feedbackBlock({ ctx, exam, attempt, fb }),
     h('p', { class: 'caption' }, module === 'hoeren' ? t('exam.review.hoerenHint') : t('exam.review.lesenHint')),
     tabs, body,

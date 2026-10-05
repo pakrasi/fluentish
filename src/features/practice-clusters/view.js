@@ -33,6 +33,7 @@ import { marked } from '../../data/known.js';
 import { skipsNew } from '../../domain/known.js';
 import { knowButton, isKnowKey, knowCard, knownResult } from '../shared/iknow.js';
 import { clusterLayout, settle, drawClusterDone, wordChip } from '../shared/cluster-layout.js';
+import { langAttr } from '../../core/lang.js';
 
 const back = (/** @type {string} */ href, /** @type {string} */ text) => h('a', { class: 'pr-backlink pressable', href }, icon('prev', { size: 16 }), text);
 
@@ -183,7 +184,7 @@ async function mountSay(el, ctx, key) {
   const prompt = h('p', { class: 'prompt' });
   const wmeta = h('div', { class: 'cl-wmeta' });
   const sayHint = h('p', { class: 'caption sim-say' }, t('practice.clusters.sayHint'));
-  const answer = h('p', { class: 'answer-key', lang: 'de' });
+  const answer = h('p', { class: 'answer-key', lang: langAttr() });
   const extra = h('div', { class: 'cl-say-extra' });
   const reveal = h('div', { class: 'reveal-answer' }, h('div', null, answer, extra));
   const card = h('article', { class: 'card pr-card' }, h('div', { class: 'card-meta' }, meta), wmeta, task, prompt, sayHint, reveal);
@@ -214,7 +215,7 @@ async function mountSay(el, ctx, key) {
     answer.textContent = it.gap ? it.model : (it.card ? it.card.head : it.model);
     replace(wmeta, it.card?.type ? wordMeta(it.card) : null);
     replace(extra, it.usage ? h('p', { class: 'pr-rule' }, it.usage) : null, it.card?.type ? wordPanel(it.card, { head: false })
-      : it.card && it.card.ex ? h('p', { class: 'caption' }, h('span', { lang: 'de' }, it.card.ex), it.card.exEn ? ` (${it.card.exEn})` : null) : null);
+      : it.card && it.card.ex ? h('p', { class: 'caption' }, h('span', { lang: langAttr() }, it.card.ex), it.card.exEn ? ` (${it.card.exEn})` : null) : null);
     reveal.classList.remove('is-open'); sayHint.hidden = false;
     showBtn.hidden = false; grades.reset();
     const cards = store.cards(DECK) || {};

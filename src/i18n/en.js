@@ -481,6 +481,7 @@ export default {
   'conn.sync.fail': 'GitHub answered {status}. Check the token\'s repository and permissions.',
   'conn.sync.offline': 'Could not reach GitHub. Try again when online.',
   'conn.sync.savedToast': 'Device linked.',
+  'conn.link.bad': 'This link has no usable token. Link the device in Profile › Connections.',
   'conn.sync.pending': { one: '{n} change not sent yet.', other: '{n} changes not sent yet.' },
   'conn.sync.nonePending': 'Everything is sent.',
   'conn.token': 'GitHub token',
