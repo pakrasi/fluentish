@@ -14,11 +14,9 @@ import { buildPool } from './pool.js';
 import { wordItems, fetchWords, COLLECTION as WORDS } from './words.js';
 import { loadWordIx } from './wordix.js';
 import * as C from './compose.js';
-import { dayBudget } from '../../domain/budget.js';
-import { writingFocus } from '../../domain/modules.js';
 import { slotKey } from './session.js';
-import { scriptNewShown } from './script/today.js';
-import { sideMinutes, writingTask } from './plan.js';
+import { todayBudget } from './plan.js';
+import { firstWeek } from '../allowance.js';
 import { marked, importPlacement } from '../../data/known.js';
 
 // igloo.words.de and igloo.chunks.german (both precached) only feed the grader's lexicon of German word forms; without
@@ -92,43 +90,46 @@ export function dayLog(store, today) {
 }
 
 /**
- * The composer's state for now, with today's budget (domain/budget.js: the same numbers Today's plan shows). The
- * Schreiben phrases (area writing) are counted apart: their own due count, unseen count and quota.
+ * The composer's state for now, with today's allowance (features/allowance.js: the same numbers Today's plan and the
+ * hub show). It first writes the pool-wide stats the allowance reads ('b1.session'.stats: ★ and trap items not seen
+ * yet, unseen items, the Schreiben tasks, and the b1 cards no round can ask), then reads the allowance from them.
  * @param {{clock: any, store: any, settings: () => any}} ctx @param {any} data
- * @returns {import('./compose.js').State & {dueN: number, budget: import('../../domain/budget.js').Budget}}
+ * @returns {import('./compose.js').State & {dueN: number, budget: ReturnType<typeof todayBudget>}}
  */
 export function stateFor(ctx, data) {
   const c = ctx.clock.ctx();
   const cards = ctx.store.cards('b1');
   const day = dayLog(ctx.store, c.today);
-  // items marked known anywhere are never introduced as new (domain/known.js)
-  const base = { data, cards, day, c, newPerDay: 0, marked: marked(ctx.store) };
-  // the review round's due count: mistakes from corrections and the Schreiben phrases have their own rows and rounds
-  let dueN = 0, unseen = 0, wDue = 0, wUnseen = 0;
-  for (const it of data.pool) {
-    if (it.area === 'mistakes') continue;
-    const d = RD.isDue(cards[it.id], c.today, c), u = !cards[it.id]?.reps;
-    if (it.area === 'writing') { wDue += d ? 1 : 0; wUnseen += u ? 1 : 0; } else { dueN += d ? 1 : 0; unseen += u ? 1 : 0; }
-  }
-  const pLeft = C.priorityLeft(base);
   const settings = ctx.settings();
-  const focus = writingFocus({ store: ctx.store, c, settings });
+  // items marked known anywhere are never introduced as new (domain/known.js); a learner below B1 meets items of his
+  // level first, and only those in his first week (compose.js newOrder)
+  const fresh = firstWeek(ctx.store, c.today);
+  const base = { data, cards, day, c, newPerDay: 0, marked: marked(ctx.store), level: settings.level || null, fresh: !!fresh };
+  let unseen = 0, wUnseen = 0;
+  for (const it of data.pool) {
+    if (it.area === 'mistakes' || cards[it.id]?.reps) continue;
+    if (it.area === 'writing') wUnseen++; else unseen++;
+  }
+  // cards in deck b1 that no round can ask (an exam word the triage leaves out today, a deleted mistake): they are
+  // not reviews he can do, so no count shows them
+  const outside = Object.keys(cards).filter(id => !data.byId.has(id) && cards[id]?.reps).sort();
+  const pLeft = C.priorityLeft(base);
   const tasks = data.writing ? data.writing.tasks.map((/** @type {any} */ x) => ({ id: x.id, a: x.aufgabe, title: x.title,
     min: (data.writing.aufgaben.find((/** @type {any} */ a) => a.id === x.aufgabe) || {}).minutes || 20 })) : [];
-  const task = writingTask({ store: ctx.store, c, settings, tasks });
-  const writing = wDue + wUnseen ? { due: wDue, left: wUnseen, shown: (day.newBy || {}).w || 0, focus, taskMin: task && !task.done ? task.min : 0 } : null;
-  // new script words shown today come off the same daily number, so scripts never add to the new load
-  const scriptNew = scriptNewShown(ctx.store, c.today);
-  const budget = dayBudget({ c, settings, dueN, priorityLeft: pLeft, newShown: (day.newShown || 0) + scriptNew, poolLeft: unseen, writing,
-    side: sideMinutes({ store: ctx.store, c, settings }) });
-  base.newPerDay = Math.max(0, budget.newPerDay - scriptNew);
-  /** @type {any} */ (base).writingNew = budget.writing ? budget.writing.newPerDay : 0;
+  const s0 = session(ctx.store);
+  const write = (/** @type {any} */ stats) => { const s = session(ctx.store); if (JSON.stringify(s.stats) !== JSON.stringify(stats)) ctx.store.set('b1.session', { ...s, stats }); };
+  const stats = { day: c.today, priorityLeft: pLeft, pool: data.pool.length, unseen, ...(wUnseen || data.pool.some((/** @type {any} */ it) => it.area === 'writing') ? { writing: { unseen: wUnseen } } : {}),
+    ...(tasks.length ? { tasks } : {}), ...(outside.length ? { outside } : {}) };
+  // the next round's size is kept from the last write while the inputs are the same, so a re-read does not churn
+  write({ ...stats, ...(s0.stats && s0.stats.day === c.today && Number.isFinite(s0.stats.next) ? { next: s0.stats.next } : {}) });
+  const budget = todayBudget({ store: ctx.store, c, settings });
+  base.newPerDay = budget.b1.newPerDay;
+  /** @type {any} */ (base).writingNew = budget.decks.writing.newPerDay;
+  /** @type {any} */ (base).mistakesNew = budget.decks.mistakes.newPerDay;
   // Today's plan reads these without loading content; next is the size of the next daily round, so Today's button and
   // Practice's Start say the same number of questions
-  const s = session(ctx.store), stats = { day: c.today, priorityLeft: pLeft, pool: data.pool.length, unseen, newPerDay: base.newPerDay,
-    next: C.compose(base).length, ...(writing ? { writing: { due: wDue, unseen: wUnseen } } : {}), ...(tasks.length ? { tasks } : {}) };
-  if (JSON.stringify(s.stats) !== JSON.stringify(stats)) ctx.store.set('b1.session', { ...s, stats });
-  return { ...base, dueN, budget };
+  write({ ...stats, newPerDay: base.newPerDay, next: C.compose(base).length });
+  return { ...base, dueN: budget.due, budget };
 }
 
 /** A forecast(day) for the scheduler's load balancing, from the cards as they are now (due dates capped for the exam). @param {Record<string, any>} cards @param {any} c the clock context */

@@ -10,8 +10,10 @@ const t = (k, v = {}) => `${k}${Object.keys(v).length ? ' ' + JSON.stringify(v) 
 const EXAM = '2026-10-09';
 const settings = { language: 'german', exam: { type: 'goethe-b1', date: EXAM, modules: ['lesen', 'hoeren', 'schreiben', 'sprechen'] }, minutesPerDay: 60, newPerDay: null };
 const card = (due, o = {}) => ({ S: 3, D: 5, reps: 2, lapses: 0, last: '2026-10-01', due, stage: 1, learn: null, relearn: false, hist: [], ...o });
+// round 3: the store holds its cards in deck b1 only (the allowance and dueTomorrow read every deck; the old fake
+// answered every deck with the same cards)
 function store({ cards = {}, kv = {} } = {}) {
-  return { cards: () => cards, get: (n, f) => (n in kv ? kv[n] : f) };
+  return { cards: d => (d === 'b1' ? cards : {}), get: (n, f) => (n in kv ? kv[n] : f) };
 }
 
 test('plan: review round with the cached quota, mistakes row, Teil 2', () => {
@@ -24,11 +26,16 @@ test('plan: review round with the cached quota, mistakes row, Teil 2', () => {
   assert.equal(round.kind, 'review');
   assert.match(round.detail, /"due":1,"fresh":15/, 'one due (mistakes count separately), 20 − 5 shown = 15 new');
   const m = rows.find(r => r.id === 'practice.mistakes');
-  assert.equal(m.priority, 25); assert.match(m.detail, /"n":2/, 'one due + one unseen; deleted ones do not count');
+  assert.match(m.detail, /"n":2/, 'one due + one unseen; deleted ones do not count');
   assert.ok(rows.some(r => r.id === 'practice.teil2'));
-  // Today's composer keeps the mistakes row after the review round
+  // round 3 (journey #2): with no Schreiben score, Schreiben is the weakest module, so its mistakes come right after
+  // the writing and before the review round (priority 19.5); without the focus they stay after it (25)
+  assert.equal(m.priority, 19.5);
   const plan = composeToday({ ctx: c, budget: 60, items: rows });
-  assert.deepEqual(plan.rows.map(r => r.id).slice(0, 2), ['practice.round', 'practice.mistakes']);
+  assert.deepEqual(plan.rows.map(r => r.id).slice(0, 2), ['practice.mistakes', 'practice.round']);
+  const passed = { ...s, attempts: () => [{ module: 'schreiben', score: 80, max_score: 100, submitted_at: '2026-10-01T10:00:00Z' },
+    { module: 'lesen', score: 15, max_score: 30, submitted_at: '2026-10-01T11:00:00Z' }] };
+  assert.equal(planItems({ store: passed, c, settings, exam: null, t }).find(r => r.id === 'practice.mistakes').priority, 25);
 });
 
 test('plan: the eve has no new items and reads the frames; the exam day is a warm-up', () => {

@@ -1,23 +1,24 @@
 /* Practice's offer for Today's plan (docs/CONTRIBUTING-FEATURES.md). planItems is pure over ctx: no DOM, no fetches,
-   no content. The pool-wide numbers it needs (★ and trap items not seen yet, unseen items) come from
-   'b1.session'.stats, which Practice writes whenever it builds the pool; prepare() builds it before Today composes,
-   so Today and Practice read the same day budget (domain/budget.js) from the same inputs.
+   no content. Every number comes from the one daily allowance (features/allowance.js → domain/budget.js): the pool-wide
+   counts it needs (★ and trap items not seen yet, unseen items, cards no round can ask) come from 'b1.session'.stats,
+   which Practice writes whenever it builds the pool; prepare() builds it before Today composes, so Today and Practice
+   read the same numbers from the same inputs.
 
    Rows: the warm-up on the exam day; while Schreiben is the weakest module (domain/modules.js writingFocus), a
-   Schreiben task written from memory before everything else (features/day.js turns it into "read your correction" or
-   "get a correction" when the exam has one waiting); the review round (due + new, about N rounds); Schreiben phrases
-   (their own rounds, capped at about 8 minutes while Schreiben is the focus);
-   mistakes from corrections; speaking situations (their own deck and budget, domain/budget.js simBudget); the
-   Sprechen frames on the eve; the Teil 2 talk while the exam is ahead. When today's rounds are done and nothing is
-   due, the round row shows done. */
-import { isDue, dueOn } from '../../domain/b1ready.js';
+   Schreiben task written from memory before everything else (features/day.js puts a correction waiting right after
+   it); the review round (due + its share of new items, about N rounds); Schreiben phrases; mistakes from corrections;
+   speaking situations; the Sprechen frames on the eve; the Teil 2 talk while the exam is ahead; the scripts; word
+   clusters. A row that carries due cards says how many (reviews), so Today can count every deck's reviews and say
+   when they do not fit. When today's rounds are done and nothing is due, the round row shows done. */
+import { dueOn } from '../../domain/b1ready.js';
 import { roundMinutes } from '../../domain/today.js';
-import { dayBudget, simBudget, ROUND } from '../../domain/budget.js';
-import { isWriting } from '../../domain/itemids.js';
-import { writingFocus } from '../../domain/modules.js';
-import { KV as SIM, DECK as SIM_DECK, ROUND_SIZE as SIM_ROUND, dueCount, dayOf } from './sim.js';
+import { ROUND } from '../../domain/budget.js';
+import { DECK as SIM_DECK, ROUND_SIZE as SIM_ROUND, KV as SIM_KV, dayOf as simDayOf } from './sim.js';
 import { add } from '../../core/clock.js';
-import { scriptPlanItems, scriptNewShown } from './script/today.js';
+import { scriptPlanItems } from './script/today.js';
+import { dayAllowance, writingTask } from '../allowance.js';
+
+export { writingTask };
 
 /**
  * Refresh the pool stats Today reads (loads the content once; cached for the session). Never throws.
@@ -33,95 +34,43 @@ export async function prepare(ctx) {
   } catch { /* offline: Today plans from the last stats */ }
 }
 
-/** The kv Schreiben keeps its builds, drafts, corrections and written tasks in (write.js COLLECTION). */
-const WRITE_KV = 'practice.write';
-
 /**
- * Today's Schreiben task to write from memory while Schreiben is the weakest module: the Aufgabe written least
- * recently, and in it a task not written yet (else the one written longest ago). done: a task was written today.
- * tasks: [{id, a: 'A1', title, min}] (from the content; Today reads them from the session stats).
- * @param {{store: any, c: any, settings: any, tasks?: {id: string, a: string, title: string, min: number}[] | null}} o
- * @returns {{id: string, a: string, title: string, min: number, done: boolean} | null}
- */
-export function writingTask({ store, c, settings, tasks = null }) {
-  if (c.phase === 'day' || !writingFocus({ store, c, settings })) return null;
-  const list = tasks || (session(store).stats?.tasks) || [];
-  if (!list.length) return null;
-  const written = /** @type {Record<string, string>} */ ((store.get(WRITE_KV, {}) || {}).written || {});
-  const today = list.find(x => written[x.id] === c.today);
-  if (today) return { ...today, done: true };
-  const aufs = [...new Set(list.map(x => x.a))].sort();
-  const last = (/** @type {string} */ a) => list.filter(x => x.a === a).map(x => written[x.id] || '').sort().pop() || '';
-  const a = aufs.sort((x, y) => last(x).localeCompare(last(y)) || x.localeCompare(y))[0];
-  const mine = list.filter(x => x.a === a).sort((x, y) => (written[x.id] || '').localeCompare(written[y.id] || ''));
-  return { ...mine[0], done: false };
-}
-/** @param {any} store */
-const session = store => store.get('b1.session', {}) || {};
-
-/**
- * Today's budget from the store and the cached stats: the numbers the plan row, the hub and the round agree on.
+ * Today's numbers from the store and the cached stats: the allowance (every deck), plus what the review round's row,
+ * Practice's hub and the rounds read: the b1 deck's due count, rounds and minutes, the size of the next round.
  * @param {import('../contract.js').PlanCtx} ctx
  */
 export function todayBudget({ store, c, settings }) {
-  const cards = store.cards('b1');
-  const mistakeIds = new Set(Object.values(store.get('mistakes', {}) || {}).filter((/** @type {any} */ m) => m && !m.deletedAt).map((/** @type {any} */ m) => m.id));
-  let due = 0, wDue = 0;
-  for (const [id, r] of Object.entries(cards)) {
-    if (mistakeIds.has(id) || !isDue(r, c.today, c)) continue;
-    if (isWriting(id)) wDue++; else due++;
-  }
-  const sess = store.get('b1.session', {}) || {};
-  const stats = sess.stats && sess.stats.day === c.today ? sess.stats : null;
-  const day = sess.day && sess.day.day === c.today ? sess.day : null;
-  const poolLeft = stats ? (stats.unseen ?? Math.max(0, stats.pool - Object.keys(cards).length)) : Infinity;
-  const task = writingTask({ store, c, settings, tasks: stats ? stats.tasks : null });
-  const writing = stats && stats.writing ? { due: wDue, left: stats.writing.unseen, shown: ((day && day.newBy) || {}).w || 0, focus: writingFocus({ store, c, settings }),
-    taskMin: task && !task.done ? task.min : 0 } : null;
-  // new script words shown today count as new items shown, so scripts never add to the day's new load; the minutes
-  // of the situations and script rows are reserved off the B1 new items (domain/budget.js, how the shares compose)
-  const budget = dayBudget({ c, settings, dueN: due, priorityLeft: stats ? stats.priorityLeft : null, newShown: (day ? day.newShown || 0 : 0) + scriptNewShown(store, c.today), poolLeft, writing,
-    side: sideMinutes({ store, c, settings }) });
+  const a = dayAllowance({ store, c, settings });
+  const b = a.decks.b1;
   const act = (store.get('activity', {}) || {})[c.today];
+  const day = a.day;
   const roundsToday = Math.max(act ? act.rounds || 0 : 0, day ? day.rounds || 0 : 0);
+  const cards = store.cards('b1');
   const firstEver = !Object.values(cards).some(r => r && r.hist && r.hist.length);
   // the next daily round's size: what the composer made of the same state (data.js stateFor), else its rule
-  const next = stats && Number.isFinite(stats.next) ? stats.next : Math.min(ROUND, due + Math.min(budget.newLeft, firstEver ? 8 : 4));
-  return { ...budget, due, roundsToday, writeRounds: day ? day.writeRounds || 0 : 0, next, task };
+  const next = a.stats && Number.isFinite(a.stats.next) ? a.stats.next : Math.min(ROUND, b.due + Math.min(b.newLeft, firstEver ? 8 : 4));
+  return { ...a, due: b.due, rounds: b.rounds, minutes: b.minutes, b1: b, writing: { ...a.decks.writing, focus: a.focus, n: a.decks.writing.due + a.decks.writing.newLeft },
+    roundsToday, writeRounds: day ? day.writeRounds || 0 : 0, next };
 }
 
 /**
- * Minutes today's rows outside the B1 and Schreiben rounds take: speaking situations and the scripts (their rows are
- * capped at 25 % of the day after the exam, script/plan.js). dayBudget reserves them off the B1 new items.
- * @param {{store: any, c: any, settings: any}} ctx
+ * Word clusters today, from the allowance: cards due and, outside the exam, its share of new cards.
+ * @param {{store: any, c: any, settings?: any}} ctx
  */
-export function sideMinutes({ store, c, settings }) {
-  const sim = simToday({ store, c, settings }).minutes + clusterToday({ store, c }).minutes;
-  const scripts = scriptPlanItems({ store, c, settings, t: () => '' }).reduce((n, r) => n + (r.done ? 0 : r.minutes || 0), 0);
-  return sim + scripts;
+export function clusterToday({ store, c, settings }) {
+  const x = dayAllowance({ store, c, settings: settings || {} }).decks.clusters;
+  return { due: x.due, newLeft: x.newLeft, paused: x.paused, minutes: x.due + x.newLeft ? roundMinutes(Math.min(ROUND, x.due + x.newLeft)) : 0 };
 }
 
 /**
- * Word clusters today: cluster cards due (deck 'clusters') and the minutes of one round of them. New cluster cards
- * are only shown when he opens a cluster, so they never take minutes from the day.
- * @param {{store: any, c: any}} ctx
- */
-export function clusterToday({ store, c }) {
-  const due = Object.values(store.cards('clusters') || {}).filter(r => r && r.reps && isDue(r, c.today, c)).length;
-  return { due, minutes: due ? roundMinutes(Math.min(ROUND, due)) : 0 };
-}
-
-/**
- * Speaking situations today: due cards, new ones left and the minutes they take (the hub and Today's row agree).
- * The unseen count comes from the stats the bank wrote when it was last loaded (kv 'speak.sim'.stats).
+ * Speaking situations today: due cards, new ones left and the minutes they take (the hub and Today's row agree), from
+ * the allowance's speak share.
  * @param {{store: any, c: any, settings: any}} ctx
  */
 export function simToday({ store, c, settings }) {
-  const sim = store.get(SIM, {}) || {};
-  const due = dueCount(store.cards(SIM_DECK), c);
-  const day = dayOf(sim, c.today);
-  const unseen = sim.stats && Number.isFinite(sim.stats.unseen) ? sim.stats.unseen : Infinity;
-  return { ...simBudget({ c, settings, dueN: due, newShown: day.newShown || 0, unseen }), due, roundsToday: day.rounds || 0 };
+  const x = dayAllowance({ store, c, settings }).decks.speak;
+  const day = simDayOf(store.get(SIM_KV, {}) || {}, c.today);
+  return { newPerDay: x.newPerDay, newLeft: x.newLeft, cards: x.due + 2 * x.newLeft, minutes: x.minutes, due: x.due, roundsToday: day.rounds || 0 };
 }
 
 /**
@@ -146,12 +95,12 @@ export function planItems({ store, c, settings, t, exam }) {
   }
   const cards = store.cards('b1');
   const recs = Object.entries(cards);
-  const mistakes = Object.values(store.get('mistakes', {}) || {}).filter((/** @type {any} */ m) => m && !m.deletedAt);
   const b = todayBudget({ store, c, settings, t, exam });
-  const due = b.due, fresh = b.newLeft;
+  const maint = b.mode === 'maintenance' || b.mode === 'start';
+  const due = b.due, fresh = b.b1.newLeft;
   /** @type {import('../../domain/today.js').PlanItem[]} */
   const out = [];
-  // Schreiben first while it is the weakest module: a task from memory (features/day.js may turn it into a correction)
+  // Schreiben first while it is the weakest module: a task from memory (features/day.js puts a correction after it)
   const task = b.task;
   if (task) {
     out.push(task.done
@@ -163,7 +112,7 @@ export function planItems({ store, c, settings, t, exam }) {
     const n = b.next || Math.min(ROUND, due + fresh);
     const what = due > 0 ? (fresh > 0 ? t('plan.review.detailNew', { due, fresh }) : t('plan.review.detail', { n: due, due })) : t('plan.new.detail', { n: fresh });
     out.push({
-      id: 'practice.round', source: 'practice', kind: due > 0 ? 'review' : 'new', introducesNew: due === 0,
+      id: 'practice.round', source: 'practice', kind: due > 0 ? 'review' : 'new', introducesNew: due === 0, reviews: due,
       title: recs.length ? t('plan.review') : t('plan.firstRound'),
       detail: b.rounds > 1 ? `${what} · ${t('plan.rounds', { n: b.rounds })}` : what,
       minutes: b.minutes, href: '#/practice/round', priority: 20, rounds: b.rounds,
@@ -174,30 +123,29 @@ export function planItems({ store, c, settings, t, exam }) {
   }
   // Schreiben phrases: their own rounds; right after the review round while Schreiben is the weakest module
   const w = b.writing;
-  if (w && w.n > 0) {
-    const n = Math.min(ROUND, w.n);
-    out.push({ id: 'practice.writing', source: 'practice', kind: 'write', introducesNew: w.due === 0, title: t('plan.writing'),
-      detail: [w.due && w.newLeft ? t('plan.review.detailNew', { due: w.due, fresh: w.newLeft }) : w.due ? t('plan.review.detail', { n: w.due, due: w.due }) : t('plan.new.detail', { n: w.newLeft }),
-        ].filter(Boolean).join(' · '),
+  if (w.due + w.newLeft > 0) {
+    const n = Math.min(ROUND, w.due + w.newLeft);
+    out.push({ id: 'practice.writing', source: 'practice', kind: 'write', introducesNew: w.due === 0, reviews: w.due, title: t('plan.writing'),
+      detail: w.due && w.newLeft ? t('plan.review.detailNew', { due: w.due, fresh: w.newLeft }) : w.due ? t('plan.review.detail', { n: w.due, due: w.due }) : t('plan.new.detail', { n: w.newLeft }),
       minutes: w.minutes, href: '#/practice/round?kind=write', priority: w.focus ? 22 : 50, rounds: w.rounds,
       action: t('plan.writing.action', { n, min: roundMinutes(n) }) });
-  } else if (w && w.focus && b.writeRounds > 0) {
+  } else if (w.focus && b.writeRounds > 0) {
     out.push({ id: 'practice.writing', source: 'practice', kind: 'write', title: t('plan.writing'), detail: t('plan.writing.done'), minutes: 0, href: '#/practice/write', priority: 22, done: true });
   }
-  // mistakes from corrections: due ones and ones not practised yet
-  const mDue = mistakes.filter((/** @type {any} */ m) => isDue(cards[m.id], c.today, c)).length;
-  const mNew = c.newItems ? mistakes.filter((/** @type {any} */ m) => !cards[m.id]?.reps).length : 0;
-  if (mDue + mNew > 0) {
-    const n = Math.min(ROUND, mDue + mNew);
-    out.push({ id: 'practice.mistakes', source: 'practice', kind: 'mistakes', introducesNew: mDue === 0, title: t('practice.plan.mistakes'),
-      detail: t('practice.plan.mistakes.detail', { n: mDue + mNew }), minutes: roundMinutes(n), href: '#/practice/round?kind=mistakes', priority: 25,
+  // mistakes from corrections: due ones and ones not practised yet (their share of the day's new items comes first);
+  // while Schreiben is the focus they come right after the writing and its correction
+  const m = b.decks.mistakes;
+  if (m.due + m.newLeft > 0) {
+    const n = Math.min(ROUND, m.due + m.newLeft);
+    out.push({ id: 'practice.mistakes', source: 'practice', kind: 'mistakes', introducesNew: m.due === 0, reviews: m.due, title: t('practice.plan.mistakes'),
+      detail: t('practice.plan.mistakes.detail', { n: m.due + m.newLeft }), minutes: roundMinutes(n), href: '#/practice/round?kind=mistakes', priority: b.focus ? 19.5 : 25,
       action: t('practice.plan.mistakes.action', { n, min: roundMinutes(n) }) });
   }
   // speaking situations: a short self-graded round after the reviews
   const sim = simToday({ store, c, settings });
   if (sim.cards > 0) {
     const n = Math.min(SIM_ROUND, sim.cards);
-    out.push({ id: 'practice.situations', source: 'practice', kind: 'speak', introducesNew: sim.due === 0, title: t('plan.sim'),
+    out.push({ id: 'practice.situations', source: 'practice', kind: 'speak', introducesNew: sim.due === 0, reviews: sim.due, title: t('plan.sim'),
       detail: sim.due ? (sim.newLeft ? t('plan.sim.detailNew', { due: sim.due, fresh: sim.newLeft }) : t('plan.sim.detail', { n: sim.due })) : t('plan.sim.detailFresh', { n: sim.newLeft }),
       minutes: sim.minutes, href: '#/practice/situations/round?from=today', priority: 48, action: t('plan.sim.action', { n, min: Math.max(1, Math.ceil(n * 0.2)) }) });
   } else if (sim.roundsToday > 0) {
@@ -210,20 +158,37 @@ export function planItems({ store, c, settings, t, exam }) {
   if (goalSpeaking && (c.phase === 'week' || c.phase === 'lastNew')) {
     out.push({ id: 'practice.teil2', source: 'practice', kind: 'speak', title: t('plan.teil2'), detail: t('plan.teil2.detail'), minutes: 6, href: '#/practice/speak/teil2', priority: 50 });
   }
-  // script words count against the B1 day's new items (script/plan.js newAllowed)
-  out.push(...scriptPlanItems({ store, c: { ...c, dayNewLeft: b.newLeft }, settings, t }));
-  // word clusters: at most one row, only for due cluster cards; Today's composer keeps it only when the minutes allow
-  const cl = clusterToday({ store, c });
+  // scripts: their words are the script deck's share of the day; after the exam they are one of his goals (priority 30)
+  out.push(...scriptPlanItems({ store, c: { ...c, dayNewLeft: b.decks.script.newLeft }, settings, t }).map(r => (maint && !r.done && r.priority > 30 ? { ...r, priority: 30 } : r)));
+  // word clusters: due cards always (they are reviews like any other), and outside the exam their share of new cards
+  // from the cluster he studied last
+  const cl = b.decks.clusters;
+  const last = (store.get('clusters', {}) || {}).last;
   if (cl.due > 0) {
     const n = Math.min(ROUND, cl.due);
-    out.push({ id: 'practice.clusters', source: 'practice', kind: 'review', title: t('plan.clusters'), detail: t('plan.clusters.detail', { n: cl.due }),
-      minutes: cl.minutes, href: '#/practice/round?kind=cluster%3Adue', priority: 55, noCut: true, action: t('plan.clusters.action', { n, min: roundMinutes(n) }) });
+    out.push({ id: 'practice.clusters', source: 'practice', kind: 'review', reviews: cl.due, title: t('plan.clusters'), detail: t('plan.clusters.detail', { n: cl.due }),
+      minutes: roundMinutes(n), href: '#/practice/round?kind=cluster%3Adue', priority: maint ? 38 : 55, noCut: true, action: t('plan.clusters.action', { n, min: roundMinutes(n) }) });
+  } else if (cl.newLeft > 0 && last) {
+    const n = Math.min(ROUND, cl.newLeft);
+    out.push({ id: 'practice.clusters', source: 'practice', kind: 'new', introducesNew: true, title: t('plan.clusters'), detail: t('plan.clusters.new', { n }),
+      minutes: roundMinutes(n), href: `#/practice/round?kind=${encodeURIComponent(`cluster:${last}`)}&from=today`, priority: 38, noCut: true, optional: true,
+      action: t('plan.clusters.action', { n, min: roundMinutes(n) }) });
   }
   return out;
 }
 
-/** Cards due tomorrow, for "Done for today. Tomorrow: about N due." @param {import('../contract.js').PlanCtx} ctx */
+/**
+ * Cards due tomorrow in every deck, for "Done for today. Tomorrow: about N due."
+ * @param {import('../contract.js').PlanCtx} ctx
+ */
 export function dueTomorrow({ store, c }) {
   const tomorrow = add(c.today, 1);
-  return Object.values(store.cards('b1')).filter(r => r && r.reps && ((dueOn(r, c) || '') <= tomorrow || r.learn != null || r.relearn)).length;
+  let n = 0;
+  for (const deck of ['b1', SIM_DECK, 'script', 'build', 'clusters']) {
+    for (const [id, r] of Object.entries(store.cards(deck) || {})) {
+      if (!r || !r.reps || /^SR:/.test(id)) continue;
+      if ((dueOn(r, c) || '') <= tomorrow || r.learn != null || r.relearn) n++;
+    }
+  }
+  return n;
 }

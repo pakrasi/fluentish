@@ -14,7 +14,7 @@ import * as B from '../../src/features/practice/build.js';
 import { slotKey } from '../../src/features/practice/session.js';
 import { planItems } from '../../src/features/practice/plan.js';
 import { punctCheck, lowerStart } from '../../src/domain/punct.js';
-import { dayBudget, writingBudget } from '../../src/domain/budget.js';
+import { allowance } from '../../src/domain/budget.js';
 import { moduleScores, weakestModule, needsWork, writingFocus } from '../../src/domain/modules.js';
 import { kindOf, isWriting } from '../../src/domain/itemids.js';
 import Det from '../../src/domain/detect.js';
@@ -106,18 +106,21 @@ test('detectors: aber/denn keep the order, deshalb after a comma takes the verb,
 });
 
 test('budget: Schreiben gets its share while it is the focus, and the main rounds leave it room', () => {
+  // round 3: writingBudget/dayBudget are gone; the Schreiben phrases are the writing deck's share of the one
+  // allowance. The same rules, read from allowance().
   const settings = { minutesPerDay: 60, exam: { type: 'goethe-b1' } };
   const c = context({ today: '2026-10-04', exam: EXAM });
-  const f = writingBudget({ c, settings, due: 0, left: 100, focus: true });
+  const at = (/** @type {any} */ o = {}) => allowance({ c, settings, decks: { b1: { due: 10 }, writing: { due: 0, open: 100 } }, priorityLeft: 200, focus: true, ...o });
+  const f = at().decks.writing;
   assert.equal(f.newPerDay, 10, 'phrases are capped at about 8 minutes (0.75 min a phrase); the rest of the share is writing');
   assert.ok(f.minutes <= 8, 'two rounds at most');
-  assert.equal(writingBudget({ c, settings, due: 0, left: 100, focus: true, taskMin: 20 }).reserve, 27.5, 'the task is reserved too');
-  assert.equal(writingBudget({ c, settings, due: 0, left: 100, focus: false }).newPerDay, 4);
-  assert.equal(writingBudget({ c: context({ today: '2026-10-08', exam: EXAM }), settings, due: 5, left: 100, focus: true }).newPerDay, 0, 'no new on the eve');
-  const without = dayBudget({ c, settings, dueN: 10, priorityLeft: 200 });
-  const withW = dayBudget({ c, settings, dueN: 10, priorityLeft: 200, writing: { due: 0, left: 100, focus: true } });
-  assert.ok(withW.newPerDay <= without.newPerDay); assert.ok(withW.writing.rounds >= 1);
-  assert.equal(without.writing, null);
+  assert.ok(at({ fixedMin: 20 }).newPerDay <= at().newPerDay, 'the task is reserved too');
+  assert.equal(at({ focus: false }).decks.writing.newPerDay, 4);
+  assert.equal(allowance({ c: context({ today: '2026-10-08', exam: EXAM }), settings, decks: { writing: { due: 5, open: 100 } }, focus: true }).decks.writing.newPerDay, 0, 'no new on the eve');
+  const without = allowance({ c, settings, decks: { b1: { due: 10 } }, priorityLeft: 200 });
+  const withW = at();
+  assert.ok(withW.decks.b1.newPerDay <= without.decks.b1.newPerDay); assert.ok(withW.decks.writing.rounds >= 1);
+  assert.equal(without.decks.writing.newPerDay, 0);
 });
 
 test('modules: Schreiben under the pass line keeps the focus; an unscored Sprechen does not take it', () => {
@@ -148,7 +151,8 @@ test('rounds: write kinds, the daily round leaves Schreiben out, a Schreiben rou
 test('plan: a Schreiben row right after the review round while it is the weakest module', () => {
   const t = (k, v = {}) => `${k}${Object.keys(v).length ? ' ' + JSON.stringify(v) : ''}`;
   const c = context({ today: '2026-10-04', exam: EXAM });
-  const store = { cards: () => ({ 'BS:a1-lieber-jonas': { S: 3, D: 5, reps: 2, last: '2026-10-01', due: '2026-10-03', stage: 1, learn: null, hist: [] } }),
+  // (round 3: the fake store keeps its card in deck b1; every deck is read now)
+  const store = { cards: d => (d === 'b1' ? { 'BS:a1-lieber-jonas': { S: 3, D: 5, reps: 2, last: '2026-10-01', due: '2026-10-03', stage: 1, learn: null, hist: [] } } : {}),
     attempts: () => [], get: (n, f) => (n === 'b1.session' ? { stats: { day: '2026-10-04', priorityLeft: 50, pool: 900, unseen: 500, writing: { due: 1, unseen: 90 } } } : f) };
   const settings = { language: 'german', exam: { type: 'goethe-b1', date: EXAM, modules: ['lesen', 'hoeren', 'schreiben', 'sprechen'] }, minutesPerDay: 60, newPerDay: null };
   const rows = planItems({ store, c, settings, exam: null, t });

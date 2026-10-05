@@ -90,6 +90,8 @@
 .segments i { position: relative; height: 4px; border-radius: 2px; background: var(--surface-2); overflow: hidden; }
 .segments i::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: var(--ink); }
 .segments i.is-miss::after { background: var(--bad); opacity: 0.85; }
+/* a study step on a new item (Show me): seen, not missed */
+.segments i.is-seen::after { background: var(--ink-3); }
 .segments i.is-now::after { background: var(--accent); transform: scaleX(0.18); }
 
 /* ---------- readiness ring ---------- */

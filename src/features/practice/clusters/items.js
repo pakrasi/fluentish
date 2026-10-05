@@ -127,18 +127,19 @@ export function compose({ ids, cards, c, isDue, recall, size = ROUND, newCap = N
 
 /**
  * A cluster's cards by what a round would do with them (domain/roundsize.js Buckets), for the round size picker. New
- * cards come most common first; a round's own cap (NEW_PER_ROUND) is the allowance, there is no daily cap.
- * @param {{ids: string[], cards: Record<string, any>, c: any, isDue: (rec: any) => boolean, recall: (rec: any) => number, skip?: (id: string) => boolean, zipf?: ((id: string) => number | null | undefined) | null}} o
+ * cards come most common first; newLeft is the clusters' share of the day's one allowance left (features/allowance.js),
+ * at most a round's NEW_PER_ROUND.
+ * @param {{ids: string[], cards: Record<string, any>, c: any, isDue: (rec: any) => boolean, recall: (rec: any) => number, skip?: (id: string) => boolean, zipf?: ((id: string) => number | null | undefined) | null, newLeft?: number}} o
  * @returns {import('../../../domain/roundsize.js').Buckets}
  */
-export function buckets({ ids, cards, c, isDue, recall, skip = () => false, zipf = null }) {
+export function buckets({ ids, cards, c, isDue, recall, skip = () => false, zipf = null, newLeft = NEW_PER_ROUND }) {
   const seen = (/** @type {string} */ id) => !!cards[id]?.reps;
   const weak = (/** @type {string} */ a, /** @type {string} */ b) => recall(cards[a]) - recall(cards[b]);
   const uniq = [...new Set(ids)];
   const unseen = uniq.filter(id => !seen(id) && !skip(id));
   return { due: uniq.filter(id => seen(id) && isDue(cards[id])).sort(weak), fresh: zipf ? byFrequency(unseen, zipf) : unseen,
     rest: uniq.filter(id => seen(id) && !isDue(cards[id]) && !(cards[id].known && !cards[id].known.checked)).sort(weak),
-    newLeft: c.newItems ? NEW_PER_ROUND : 0, daily: false };
+    newLeft: c.newItems ? Math.max(0, Math.min(NEW_PER_ROUND, newLeft)) : 0, daily: true };
 }
 
 /** New cards between reviews: r r n r r n … @param {string[]} olds @param {string[]} news */

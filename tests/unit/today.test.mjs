@@ -89,24 +89,27 @@ test('round minutes', () => {
 });
 
 test('one budget: new items, rounds and minutes; a carried-over number counts as Auto', async () => {
-  const { dayBudget, newPerDayChosen, streamQuota } = await import('../../src/domain/budget.js');
+  // round 3: allowance() replaces dayBudget(); the same day, now with every deck in one number. Only the b1 deck is
+  // given here, so its share is the day's.
+  const { allowance, newPerDayChosen, streamQuota } = await import('../../src/domain/budget.js');
   const s = { minutesPerDay: 60, newPerDay: null, exam: { type: 'goethe-b1' }, rev: {} };
   const c = context({ today: '2026-10-03', exam: '2026-10-09' });
-  const b = dayBudget({ c, settings: s, dueN: 24, priorityLeft: 100, newShown: 0 });
+  const at = (/** @type {any} */ o) => allowance({ c, settings: s, decks: { b1: { due: 24 } }, priorityLeft: 100, ...o });
+  const b = at({});
   // 6 days left, 5 new-days: pace 20; fit (30 − 8) / 0.75 = 29 → 20 new; 8 + 15 = 23 min → 6 rounds, 24 min
-  assert.equal(b.newPerDay, 20); assert.equal(b.newLeft, 20); assert.equal(b.rounds, 6); assert.equal(b.minutes, 24);
+  assert.equal(b.decks.b1.newPerDay, 20); assert.equal(b.decks.b1.newLeft, 20); assert.equal(b.decks.b1.rounds, 6); assert.equal(b.decks.b1.minutes, 24);
   assert.deepEqual(b.pace, { lastNew: '2026-10-07', left: 100, needed: 20, reach: 100, fits: true });
   const legacy = { ...s, newPerDay: 30 };
   assert.equal(newPerDayChosen(legacy), false, 'Igloo\'s 30 a day has no rev stamp');
-  assert.equal(dayBudget({ c, settings: legacy, dueN: 24, priorityLeft: 100 }).newPerDay, 20, 'so Auto applies');
-  assert.equal(dayBudget({ c, settings: { ...legacy, rev: { newPerDay: 'x' } }, dueN: 24, priorityLeft: 100 }).newPerDay, 30, 'a number chosen here is kept');
+  assert.equal(at({ settings: legacy }).newPerDay, 20, 'so Auto applies');
+  assert.equal(at({ settings: { ...legacy, rev: { newPerDay: 'x' } } }).newPerDay, 30, 'a number chosen here is kept');
   // the pace line moves with the horizon
-  const far = dayBudget({ c: context({ today: '2026-10-03', exam: '2026-10-30' }), settings: s, dueN: 0, priorityLeft: 100 });
+  const far = allowance({ c: context({ today: '2026-10-03', exam: '2026-10-30' }), settings: s, decks: { b1: {} }, priorityLeft: 100 });
   assert.equal(far.pace.needed, 4);
-  const short = dayBudget({ c: context({ today: '2026-10-03', exam: '2026-10-07' }), settings: s, dueN: 0, priorityLeft: 200 });
-  assert.equal(short.pace.needed, 67); assert.equal(short.newPerDay, 40, 'the minutes cap it'); assert.equal(short.pace.fits, false); assert.equal(short.pace.reach, 120);
+  const short = allowance({ c: context({ today: '2026-10-03', exam: '2026-10-07' }), settings: s, decks: { b1: {} }, priorityLeft: 200 });
+  assert.equal(short.pace.needed, 67); assert.equal(short.decks.b1.newPerDay, 40, 'the minutes cap it'); assert.equal(short.pace.fits, false); assert.equal(short.pace.reach, 120);
   for (const n of [0, 1, 7, 20, 55]) assert.equal(streamQuota(n, 'p') + streamQuota(n, 'g'), n);
-  assert.equal(dayBudget({ c: context({ today: '2026-10-08', exam: '2026-10-09' }), settings: s, dueN: 0, priorityLeft: 9 }).rounds, 0, 'eve, nothing due: no rounds');
+  assert.equal(allowance({ c: context({ today: '2026-10-08', exam: '2026-10-09' }), settings: s, decks: { b1: {} }, priorityLeft: 9 }).decks.b1.rounds, 0, 'eve, nothing due: no rounds');
 });
 
 test('next to a short mock the review round keeps what still fits', () => {
@@ -146,7 +149,11 @@ test('the review cut happens before the next row is tested: a row after the mock
   assert.deepEqual(ids(s), ['review', 'mock', 'sit'], 'a 3-minute row fits in what the cut left (57 + 3 = 60)');
 });
 
-test('arrange: Schreiben reads a new correction first, then gets one, then writes; situations move up on a non-Sprechen mock day', async () => {
+test('arrange: the Schreiben task stays first and its correction follows it; situations move up on a non-Sprechen mock day', async () => {
+  // changed in round 3 (journey #2): a correction waiting no longer replaces the task from memory. The task stays
+  // (priority 18) and the correction is its own row right after it (practice.correction, priority 19), a new one to
+  // read before one to get. Every Schreiben mock waiting for a correction leaves Feedback: the plan row counts them.
+  // A Schreiben mock day drops the task only when the mock may run over (the whole module fits the day).
   const { arrange } = await import('../../src/features/day.js');
   const t = (k, v = {}) => `${k}${Object.keys(v).length ? ' ' + JSON.stringify(v) : ''}`;
   const task = item('practice.schreiben', { kind: 'write', priority: 18, minutes: 20, href: '#/practice/write/build/a1-x/free' });
@@ -155,14 +162,18 @@ test('arrange: Schreiben reads a new correction first, then gets one, then write
   const read = { id: 'fb.1', title: 'Schreiben · Test 3', status: 's', href: '#/exam/3/schreiben/review/a', module: 'schreiben', need: 'read', test: 3 };
   const get = { id: 'uncorrected.2', title: 'Schreiben · Test 2', status: 's', href: '#/exam/2/schreiben/review/b?correct=1', module: 'schreiben', need: 'correct', test: 2 };
   let a = arrange([task, sit, mock], [get, read], t);
-  const w = a.items.find(r => r.id === 'practice.schreiben');
-  assert.equal(w.href, read.href); assert.equal(w.minutes, 5);
-  assert.deepEqual(a.feedback.map(f => f.id), ['uncorrected.2'], 'the promoted row leaves the Feedback list');
+  assert.equal(a.items.find(r => r.id === 'practice.schreiben').href, task.href, 'the task stays');
+  const corr = a.items.find(r => r.id === 'practice.correction');
+  assert.equal(corr.href, read.href); assert.equal(corr.minutes, 5); assert.equal(corr.priority, 19);
+  assert.match(corr.detail, /plan\.schreiben\.more \{"n":1\}/, 'the other one waiting is counted on the row');
+  assert.deepEqual(a.feedback.map(f => f.id), [], 'both leave the Feedback list');
   assert.equal(a.items.find(r => r.id === 'practice.situations').priority, 28);
   a = arrange([task, sit, mock], [get], t);
-  assert.equal(a.items.find(r => r.id === 'practice.schreiben').href, get.href);
+  assert.equal(a.items.find(r => r.id === 'practice.correction').href, get.href);
   a = arrange([task, sit, { ...mock, module: 'schreiben' }], [], t);
-  assert.ok(!a.items.some(r => r.id === 'practice.schreiben'), 'a Schreiben mock day writes the mock instead');
+  assert.ok(!a.items.some(r => r.id === 'practice.schreiben'), 'a Schreiben mock day that fits writes the mock instead');
+  a = arrange([task, sit, { ...mock, module: 'schreiben', noOverrun: true }], [], t);
+  assert.ok(a.items.some(r => r.id === 'practice.schreiben'), 'a Schreiben mock that does not fit the day leaves the task in place');
   a = arrange([task, sit, { ...mock, module: 'sprechen' }], [], t);
   assert.equal(a.items.find(r => r.id === 'practice.situations').priority, 48);
 });

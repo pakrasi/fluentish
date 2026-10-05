@@ -53,7 +53,7 @@ export async function mountWords(el, ctx) {
     const ws = wordState(script, cards, c);
     // new script words share the B1 day's new items and stop when the clock allows none (audit P1-6)
     let dayLeft = Infinity;
-    try { dayLeft = todayBudget({ store, c, settings: ctx.settings() }).newLeft; } catch { /* no budget: the per-script cap holds */ }
+    try { dayLeft = todayBudget({ store, c, settings: ctx.settings() }).decks.script.newLeft; } catch { /* no budget: the per-script cap holds */ }
     const allowed = newAllowed(script, St.progress(store, script.id), c.today, { newItems: c.newItems !== false, dayLeft });
     // the round size picker's choice (picker.js, domain/roundsize.js): a custom size or all of the script's words
     const sized = RS.parseSize(ctx.query.get('size'));

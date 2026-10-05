@@ -1,5 +1,6 @@
 /* Mistakes from corrections become review cards (UX §3.3). This is the store-level API between the feature that has
-   a correction (Exam: a corrected Schreiben or Sprechen attempt; later Write) and Practice, which turns each mistake
+   a correction (Exam: a corrected Schreiben or Sprechen attempt; Practice › Schreiben: a text written from memory,
+   "Write it yourself", which Build an email also ends in) and Practice, which turns each mistake
    into an item ("Rewrite this sentence correctly") in the one review queue, deck 'b1', id 'F:<attempt>-<n>'.
 
    The records live in the profile's key-value collection 'mistakes' (private: never in the public repo or content).
@@ -14,6 +15,7 @@
 
    Record (mistake@1): { id, v: 1, wrong, right, rule, source: { attemptId, test, module, label }, createdAt, deletedAt } */
 import { mistakeId } from '../domain/itemids.js';
+import { corrections } from '../domain/grade.js';
 
 export const COLLECTION = 'mistakes';
 
@@ -68,6 +70,17 @@ export function addMistakes(store, o) {
   const { next, added } = planMistakes(store.get(COLLECTION, {}) || {}, o, new Date().toISOString());
   store.set(COLLECTION, next);
   return added;
+}
+
+/**
+ * A practice text's correction (Practice › Schreiben, Write it yourself): its correction lines (~~wrong~~ → ==right==,
+ * domain/grade.js corrections) as the input of addMistakes. One correction is one attempt: 'W-<task id>-<time>', so
+ * writing the same task again later adds its own mistakes, and asking again for the same text keeps their ids.
+ * @param {{taskId: string, at: number, label: string, body: string}} o
+ * @returns {Parameters<typeof planMistakes>[1]}
+ */
+export function freeWriteMistakes({ taskId, at, label, body }) {
+  return { attemptId: `W-${taskId}-${at}`, test: null, module: 'schreiben', label, items: corrections(body) };
 }
 
 /** Live mistakes, oldest first. @param {{get: (n: string, f?: any) => any}} store @returns {Mistake[]} */

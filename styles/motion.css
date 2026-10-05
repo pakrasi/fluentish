@@ -134,7 +134,7 @@
 
 /* ---------- round progress segments ---------- */
 .segments i::after { transform: scaleX(0); transform-origin: left; transition: transform var(--dur-base) var(--spring-snappy); }
-.segments i.is-done::after, .segments i.is-miss::after, .segments i.is-now::after { transform: scaleX(1); }
+.segments i.is-done::after, .segments i.is-miss::after, .segments i.is-seen::after, .segments i.is-now::after { transform: scaleX(1); }
 
 /* ---------- fills: bars and rings ---------- */
 .fill { transform-origin: left; transform: scaleX(var(--p, 0)); transition: transform var(--dur-fill) var(--spring-soft); }

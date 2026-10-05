@@ -6,10 +6,12 @@ import { planProviders } from './registry.js';
 
 /**
  * The rules that need more than one feature's rows (pure, tested in node):
- *   - Schreiben's first action: while Practice offers a Schreiben task (practice.schreiben, Schreiben is the weakest
- *     module), a new Schreiben correction to read comes first, then a written mock not corrected yet, then the task.
- *     The promoted feedback row leaves the Feedback list, so it shows once.
- *   - On a day whose mock is Schreiben the mock is the writing: the task from memory waits for another day.
+ *   - Schreiben while it is the weakest module: the task from memory stays the first row, and a correction waiting
+ *     (a new one to read first, else a written mock not corrected yet) comes right after it as its own row; its
+ *     mistakes follow (practice.mistakes). The promoted correction, and every other Schreiben mock waiting for a
+ *     correction, leave the Feedback list: the plan row says how many, so each shows once.
+ *   - On a day whose mock is Schreiben and the whole module fits the day (it may run over), the mock is the writing:
+ *     the task from memory waits for another day.
  *   - On a day whose mock is not Sprechen, speaking situations move up (priority 28, before the mock), so their four
  *     minutes fit.
  * @param {import('../domain/today.js').PlanItem[]} items @param {import('../domain/today.js').FeedbackRow[]} feedback
@@ -22,16 +24,17 @@ export function arrange(items, feedback, t) {
   const k = rows.findIndex(r => r.id === 'practice.schreiben');
   if (k >= 0) {
     const pick = fb.find(f => f.module === 'schreiben' && f.need === 'read') || fb.find(f => f.module === 'schreiben' && f.need === 'correct') || null;
-    const r = rows[k];
     if (pick) {
       const read = pick.need === 'read';
-      rows[k] = { ...r, done: false, href: pick.href, minutes: read ? 5 : 3, kind: 'read',
-        title: t(read ? 'plan.schreiben.read' : 'plan.schreiben.get'), detail: t(read ? 'plan.schreiben.readDetail' : 'plan.schreiben.getDetail', { n: pick.test }),
-        action: t(read ? 'plan.schreiben.readAction' : 'plan.schreiben.getAction', { n: pick.test }) };
-      fb = fb.filter(f => f !== pick);
-    } else if (mock && mock.module === 'schreiben' && !r.done) {
-      rows = rows.filter((_, i) => i !== k);
+      const waiting = fb.filter(f => f.module === 'schreiben' && f.need === 'correct');
+      const more = read ? waiting.length : waiting.length - 1;
+      rows.push({ id: 'practice.correction', source: 'exam', kind: 'read', href: pick.href, minutes: read ? 5 : 3, priority: 19,
+        title: t(read ? 'plan.schreiben.read' : 'plan.schreiben.get'),
+        detail: [t(read ? 'plan.schreiben.readDetail' : 'plan.schreiben.getDetail', { n: pick.test }), more > 0 ? t('plan.schreiben.more', { n: more }) : null].filter(Boolean).join(' · '),
+        action: t(read ? 'plan.schreiben.readAction' : 'plan.schreiben.getAction', { n: pick.test }) });
+      fb = fb.filter(f => f !== pick && !(f.module === 'schreiben' && f.need === 'correct'));
     }
+    if (mock && mock.module === 'schreiben' && !mock.noOverrun && !rows[k].done) rows = rows.filter(r => r.id !== 'practice.schreiben');
   }
   if (mock && mock.module !== 'sprechen') rows = rows.map(r => (r.id === 'practice.situations' ? { ...r, priority: 28 } : r));
   return { items: rows, feedback: fb };

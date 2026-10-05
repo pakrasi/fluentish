@@ -9,7 +9,7 @@ import { createBus } from '../../src/core/bus.js';
 import { context } from '../../src/core/clock.js';
 import { exportBundle, importFile } from '../../src/data/transfer.js';
 import { pendingEvents } from '../../src/data/sync/github-b1exam.js';
-import { planItems } from '../../src/features/practice/plan.js';
+import { planItems, todayBudget } from '../../src/features/practice/plan.js';
 import { scriptNewShown } from '../../src/features/practice/script/today.js';
 import * as St from '../../src/features/practice/script/store.js';
 import * as P from '../../src/features/practice/script/parse.js';
@@ -76,7 +76,7 @@ test('cardOf: a list word he already had stays in deck b1', async () => {
   assert.equal(St.cardOf(store)('SW:x'), null);
 });
 
-test('Today: a script row after the exam, none before; script new words count in the B1 budget', async () => {
+test('Today: a script row after the exam, none before; script new words count in the day\'s one allowance', async () => {
   const { store, script } = await fresh();
   St.updateProgress(store, script.id, p => ({ ...p, sections: Object.fromEntries(script.sections.map(s => [s.id, { marked: 'x' }])), newBy: { '2026-10-20': 6 } }));
   const settings = { language: 'german', exam: { type: 'goethe-b1', date: '2026-10-09', modules: [] }, minutesPerDay: 60, newPerDay: null };
@@ -87,12 +87,11 @@ test('Today: a script row after the exam, none before; script new words count in
   const row = after.find(r => r.id === 'script.bike01');
   assert.ok(row && row.kind === 'speak' && row.minutes <= 15);
   assert.equal(scriptNewShown(store, '2026-10-20'), 6);
-  // the B1 review round's new items: 6 fewer than without the script words
-  const round = after.find(r => r.id === 'practice.round');
-  const plain = planItems({ store: { ...store, get: (n, f) => (n === St.PROGRESS ? {} : store.get(n, f)), cards: d => store.cards(d) }, c, settings, t, exam: null }).find(r => r.id === 'practice.round');
-  const fresh1 = Number(/"n":(\d+)/.exec(round.detail)?.[1] ?? /"fresh":(\d+)/.exec(round.detail)?.[1]);
-  const fresh2 = Number(/"n":(\d+)/.exec(plain.detail)?.[1] ?? /"fresh":(\d+)/.exec(plain.detail)?.[1]);
-  assert.equal(fresh2 - fresh1, 6, `${round.detail} vs ${plain.detail}`);
+  // changed in round 3 (journey #1): script words are the script deck's share of the one allowance (they used to be
+  // taken out of the B1 round's new items). The 6 shown today come off the day's new items left, every deck together.
+  const a = todayBudget({ store, c, settings });
+  assert.equal(a.decks.script.shown, 6); assert.equal(a.shown, 6);
+  assert.equal(a.newLeft, a.newPerDay - 6, `${a.newLeft} left of ${a.newPerDay}`);
 });
 
 test('meanings: the prompt names no learner; the reply is validated', () => {

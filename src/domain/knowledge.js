@@ -26,7 +26,10 @@
                result as an observation on its day (known: S = 7 days, shaky: R 0.8, unknown: R 0.3)
      stability S in days of the card that gives that recall
      state     'known'   recall ≥ 0.90 and no lapse in the last 7 days (a lapse: Again on any card, or a Test result
-                         other than known, within 7 days)
+                         other than known, within 7 days). A lapse counts from the next study day: on the day itself
+                         the round brings the item back until he types it right, so studying never lowers today's
+                         state (Where you stand, docs/ARCHITECTURE.md). A study step on a new item (Show me, flag v)
+                         is never a lapse.
                'shaky'   recall ≥ 0.70, or known with such a lapse
                'unknown' anything else that has a record: recall < 0.70, cards only in their learning steps, words
                          only seen in an exam or in Look up ("not known" in the legend)
@@ -38,10 +41,11 @@
      marked    'self' | 'igloo' while a mark waits for its check, else null. A marked card is S 60 days, reviewed the
                day it was marked, so its recall is about 1 and it reads as known at once
    A concept: recall = the mean recall of its items (unseen items count 0), coverage = share of items seen; 'known'
-   when the mean over its seen items is ≥ 0.90 and at least half are seen, 'shaky' from 0.70 (or known with less
-   than half seen), 'unknown' below, 'unseen' when none is seen.
+   when the mean over its graduated items (out of their learning steps) is ≥ 0.90 and at least half are seen,
+   'shaky' from 0.70 (or known with less than half seen), 'unknown' below, 'unseen' when none is seen. Items still in
+   their first learning steps count for coverage only, so starting a new item never lowers its concept.
 
-   Nothing here changes a card or the B1 readiness number (domain/b1ready.js), which keeps its own pool and rules. */
+   Nothing here changes a card. Where you stand (domain/standing.js) and the map's known count read this score. */
 import * as FS from './fsrs.js';
 import * as D8 from './days.js';
 import { tagOf, slug, origin } from './itemids.js';
@@ -65,6 +69,7 @@ const TEST = /** @type {Record<string, {R: number, S: number}>} */ ({ known: { R
  * @property {'self' | 'igloo' | null} marked   marked known (domain/known.js) and not checked yet: by whom
  * @property {Origin[]} sources
  * @property {string[]} cards       the card ids that feed it ('<deck>/<card id>')
+ * @property {boolean} [grad]       it has a graduated card (out of the learning steps), or Igloo evidence
  */
 
 /**
@@ -114,7 +119,8 @@ export function resolver({ words = [], chunkOf = {}, gapPrep = {}, build = {} } 
  */
 
 /** @param {any} rec @param {string} today */
-const lapsedRecently = (rec, today) => !!rec.relearn || (rec.hist || []).some((/** @type {any[]} */ h) => h[1] === 1 && D8.diff(h[0], today) < LAPSE_DAYS && D8.diff(h[0], today) >= 0);
+const lapsedRecently = (rec, today) => (!!rec.relearn && rec.last !== today)
+  || (rec.hist || []).some((/** @type {any[]} */ h) => h[1] === 1 && !String(h[4] || '').includes('v') && D8.diff(h[0], today) < LAPSE_DAYS && D8.diff(h[0], today) >= 1);
 
 /** @param {number} recall @param {boolean} graduated @param {boolean} lapse @returns {State} */
 export function stateOf(recall, graduated, lapse) {
@@ -190,7 +196,7 @@ export function knowledge(input) {
   /** @type {Map<string, Score>} */ const items = new Map();
   for (const [id, a] of acc) {
     items.set(id, { id, state: stateOf(a.R, a.grad, a.lapse), recall: a.grad ? a.R : Math.min(a.R, SHAKY_R - 0.01), stability: a.grad ? a.S : 0,
-      last: a.last, today: a.today, marked: /** @type {Score['marked']} */ (a.marked), sources: [...a.sources].sort(), cards: a.cards });
+      last: a.last, today: a.today, marked: /** @type {Score['marked']} */ (a.marked), sources: [...a.sources].sort(), cards: a.cards, grad: a.grad });
   }
   return makeView(items);
 }
@@ -221,12 +227,13 @@ function makeView(items) {
     concept(id, itemIds) {
       const scores = itemIds.map(get);
       const seenS = scores.filter(s => s.state !== 'unseen');
+      const gradS = seenS.filter(s => s.grad);
       const n = scores.length, k = seenS.length;
       const recall = n ? scores.reduce((t, s) => t + s.recall, 0) / n : 0;
-      const seenMean = k ? seenS.reduce((t, s) => t + s.recall, 0) / k : 0;
+      const seenMean = gradS.length ? gradS.reduce((t, s) => t + s.recall, 0) / gradS.length : 0;
       const coverage = n ? k / n : 0;
       /** @type {State} */ let state = 'unseen';
-      if (k) state = seenMean >= KNOWN_R - 1e-9 ? (coverage >= 0.5 ? 'known' : 'shaky') : seenMean >= SHAKY_R - 1e-9 ? 'shaky' : 'unknown';
+      if (k) state = !gradS.length ? 'unknown' : seenMean >= KNOWN_R - 1e-9 ? (coverage >= 0.5 ? 'known' : 'shaky') : seenMean >= SHAKY_R - 1e-9 ? 'shaky' : 'unknown';
       const last = seenS.map(s => s.last).filter(Boolean).sort().pop() || null;
       return { id: `GC:${id}`, state, recall, stability: 0, last, today: scores.some(s => s.today), marked: null, coverage, n, seen: k,
         sources: [...new Set(scores.flatMap(s => s.sources))].sort(), cards: [] };

@@ -190,17 +190,29 @@ export function planRows({ scripts, progress, cardOf, c, settings, t }) {
       continue;
     }
     const nx = nextStep(s, prog, cardOf, c);
-    if (nx.kind === 'rest') continue;
-    let minutes = nx.minutes;
-    if (ph === 'eve') minutes = runMinutes(s) + stepMinutes(s.sections[0], 'listen');
+    // the script deck's due words are reviews (domain/budget.js): the step row carries them when its step is the
+    // words, else a row of their own says so, so they are never left uncounted (not even when the share is spent)
+    const wDue = words(s, cardOf, c).due.filter(id => cardOf(id)?.deck === 'script').length;
+    let carried = false;
     const left = s.deliverOn ? Math.max(1, D8.diff(c.today, s.deliverOn)) : null;
-    if (pool <= 0) continue;
-    minutes = Math.max(1, Math.min(minutes, pool));
-    pool -= minutes;
     const near = left != null && left <= 7;
-    const detail = ph === 'eve' ? t('practice.script.plan.eve') : detailOf(nx, t);
-    out.push({ id: `script.${s.id}`, source: 'practice', kind: 'speak', title: s.title, detail, minutes, href: hrefOf(s, nx), priority: near ? 22 : 45,
-      introducesNew: nx.kind === 'words' && words(s, cardOf, c).due.length === 0, action: t('practice.script.plan.action', { title: s.title, min: minutes }) });
+    if (nx.kind !== 'rest' && pool > 0) {
+      let minutes = nx.minutes;
+      if (ph === 'eve') minutes = runMinutes(s) + stepMinutes(s.sections[0], 'listen');
+      minutes = Math.max(1, Math.min(minutes, pool));
+      pool -= minutes;
+      const detail = ph === 'eve' ? t('practice.script.plan.eve') : detailOf(nx, t);
+      carried = nx.kind === 'words' && ph !== 'eve';
+      out.push({ id: `script.${s.id}`, source: 'practice', kind: 'speak', title: s.title, detail, minutes, href: hrefOf(s, nx), priority: near ? 22 : 45,
+        ...(carried && wDue ? { reviews: wDue } : {}),
+        introducesNew: nx.kind === 'words' && words(s, cardOf, c).due.length === 0, action: t('practice.script.plan.action', { title: s.title, min: minutes }) });
+    }
+    if (wDue && !carried) {
+      const wn = Math.min(12, wDue);
+      out.push({ id: `script.${s.id}.words`, source: 'practice', kind: 'review', title: s.title, detail: t('practice.script.next.words', { n: wDue, min: roundMinutes(wn) }),
+        minutes: roundMinutes(wn), href: `#/practice/round?kind=script:${s.id}`, priority: near ? 22 : 46, noCut: true, reviews: wDue,
+        action: t('practice.script.plan.action', { title: s.title, min: roundMinutes(wn) }) });
+    }
   }
   return out;
 }

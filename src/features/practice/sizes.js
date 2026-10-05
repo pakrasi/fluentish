@@ -71,7 +71,10 @@ export async function listInfo(ctx, href) {
     const cl = ck.key ? data.ix.byKey.get(ck.key) : null;
     if (ck.key && !cl) return null;
     const cards = store.cards(DECK) || {}, mk = marked(store);
-    const o = { ids: cl ? CI.cardIds(cl, data.ix) : dueCards(store, c), cards, c, isDue: (/** @type {any} */ r) => isDue(r, c.today, c), recall: recallOf(c), skip: (/** @type {string} */ id) => skipsNew(mk, id), zipf: CI.zipfOf(data.ix) };
+    const { clusterToday } = await import('./plan.js');
+    const newLeft = clusterToday({ store, c, settings: ctx.settings() }).newLeft;
+    const o = { ids: cl ? CI.cardIds(cl, data.ix) : dueCards(store, c), cards, c, isDue: (/** @type {any} */ r) => isDue(r, c.today, c), recall: recallOf(c), skip: (/** @type {string} */ id) => skipsNew(mk, id), zipf: CI.zipfOf(data.ix),
+      newLeft, newCap: Math.min(CI.NEW_PER_ROUND, newLeft) };
     let rec = CI.compose(o).ids;
     if (ck.due) rec = rec.filter(id => cards[id]?.reps);
     const b = CI.buckets(o);
@@ -109,7 +112,7 @@ export async function listInfo(ctx, href) {
   if (!script) return null;
   const cards = St.cardOf(store);
   let dayLeft = Infinity;
-  try { dayLeft = todayBudget({ store, c, settings: ctx.settings(), t, exam: null }).newLeft; } catch { /* the script's own cap holds */ }
+  try { dayLeft = todayBudget({ store, c, settings: ctx.settings(), t, exam: null }).decks.script.newLeft; } catch { /* the script's own cap holds */ }
   const allowed = P.newAllowed(script, St.progress(store, script.id), c.today, { newItems: c.newItems !== false, dayLeft });
   const ws = P.words(script, cards, c);
   const rec = [...ws.due, ...ws.fresh.slice(0, allowed)].slice(0, 12);

@@ -10,7 +10,7 @@
 import * as FS from '../../domain/fsrs.js';
 import * as RD from '../../domain/b1ready.js';
 import * as D8 from '../../domain/days.js';
-import { buildBudget } from '../../domain/budget.js';
+import { dayAllowance } from '../allowance.js';
 import { DECK, bare, lemmaMaps, itemResolver } from '../../domain/wordbuild.js';
 import { openNew, shownToday, recentMisses } from '../../domain/wordbuild-plan.js';
 import { lexiconOf } from '../../domain/wordbuild-grade.js';
@@ -50,7 +50,8 @@ export const knowledge = ctx => loadKnowledge(ctx);
 export const verbsFor = (d, root, pre) => d.c.verbs.filter((/** @type {any} */ v) => v.root === root && v.pre === pre).sort((/** @type {any} */ a, /** @type {any} */ b) => (a.kind === 's' ? -1 : 1) - (b.kind === 's' ? -1 : 1));
 
 /**
- * Today's state: due cards, what is open, the budget (domain/budget.js buildBudget: the deck's own cap).
+ * Today's state: due cards, what is open, the budget (Word building's share of the day's one allowance,
+ * features/allowance.js; the open count is written to kv 'build'.stats first, so the allowance reads it).
  * @param {any} ctx @param {any} d loadContent() @param {any} [k] knowledge (for the order of new verbs)
  */
 export function today(ctx, d, k = null) {
@@ -63,8 +64,18 @@ export function today(ctx, d, k = null) {
   const open = openNew({ content: d.c, cards, today: c.today, root, missed: recentMisses(game, c.today, D8.diff) });
   const unseen = open.px.length + open.verbs.length + open.ps.length + open.sx.length;
   const shown = shownToday(cards, c.today);
-  const budget = buildBudget({ c, settings: ctx.settings(), dueN: dueIds.length, newShown: shown.all, unseen });
+  writeStats(ctx.store, c.today, unseen);
+  const x = dayAllowance({ store: ctx.store, c, settings: ctx.settings() }).decks.build;
+  const newLeft = Math.min(x.newLeft, unseen);
+  const n = dueIds.length + newLeft;
+  const budget = { newPerDay: x.newPerDay, newLeft, due: dueIds.length, n, rounds: n ? Math.ceil(n / 12) : 0, minutes: x.minutes, paused: x.paused };
   return { c, cards, dueIds, open, shown, budget };
+}
+
+/** kv 'build'.stats: the new cards open today (the allowance reads it). @param {any} store @param {string} today @param {number} open */
+function writeStats(store, today, open) {
+  const cur = (store.get('build', {}) || {}).stats;
+  if (!cur || cur.day !== today || cur.open !== open) store.update('build', (/** @type {any} */ s) => ({ ...(s || {}), stats: { day: today, open } }), {});
 }
 
 /** isDue and recall for the composer. @param {any} c clock ctx */

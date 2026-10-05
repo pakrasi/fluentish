@@ -8,6 +8,8 @@
    Scheduling rules kept from the trainer:
      - the rating comes from fsrs.rate(): wrong or revealed 1, over twice the limit 1, late / self-repair / capital or
        umlaut slip / phrase right but the rest of its sentence not (partial) 2, fast and steady 4, else 3
+     - "Show me" on an item never seen (new and revealed before any answer) is a study step, not a miss: the card's
+       learning steps start (fsrs.js study), its segment shows as seen, and it never counts as missed
      - a miss or a learning step comes back in the same round: +4 questions, then +10, at most 3 showings
      - a "missed" round answers items already reviewed today: those answers only log
      - Claude's "My answer is right" redoes the answer as Hard (2) from the record before it */
@@ -90,21 +92,23 @@ export function answer({ round, entry, o, cards, day, c, forecast = () => 0, now
   const id = entry.item.id, rec = cards[id];
   const logOnly = round.kind === 'missed' && rec?.last === c.today;
   if (!(id in round.prev)) round.prev[id] = entry.before;
+  const study = !!(entry.isNew && o.revealed && !o.ok);
   const g = FS.rate({ ok: o.ok, revealed: o.revealed, ms: o.ms, limit: entry.limit, selfRepair: o.selfRepair, capSlip: o.capSlip, umlaut: o.umlaut, partial: o.partial, punct: o.punct,
     prevRating: rec?.hist?.length ? rec.hist[rec.hist.length - 1][1] : 0, stage: entry.stage });
   const over = entry.limit && o.ms > entry.limit * 1000;
   const det = o.det || o.gDet || null;
-  const flags = [o.selfRepair && 'r', o.capSlip && 'c', o.typo && 'y', o.umlaut && 'u', over && 'o', o.partial && 'p', o.punct && 'k', det && 'd' + det].filter(Boolean).join('');
+  const flags = [o.selfRepair && 'r', o.capSlip && 'c', o.typo && 'y', o.umlaut && 'u', over && 'o', o.partial && 'p', o.punct && 'k', study && 'v', det && 'd' + det].filter(Boolean).join('');
   // honesty: predicted recall vs the first try of reviewed items, first attempt of the day only
   const own = !round.deck || round.deck === 'b1';   // a cluster round (deck 'clusters') keeps out of the B1 day log
   if (own && rec && rec.reps && rec.learn == null && rec.last !== c.today && !entry.reinsert) {
     day.pred[0] += FS.Ron(rec, c.today); day.pred[1]++; day.firstTry[0] += g >= 3 ? 1 : 0; day.firstTry[1]++;
   }
-  // a new Schreiben phrase counts against its own quota (newBy.w), not the daily rounds' new items (newShown)
+  // a new Schreiben phrase (or mistake) counts against its own share (newBy.w, newBy.m), not the daily rounds' new
+  // items (newShown)
   if (entry.isNew && own) { const st = stream(entry.item); if (st === 'p' || st === 'g') day.newShown++; day.newBy = day.newBy || {}; day.newBy[st] = (day.newBy[st] || 0) + 1; }
   if (own && !day.shown.includes(id)) day.shown.push(id);
   const src = entry.item.origin || (entry.item.area === 'words' ? 'exam' : origin(id, 'b1'));
-  const res = FS.schedule(rec, { g, ms: o.ms, onTime: !!(entry.limit && o.ms <= entry.limit * 1000), flags, mode: 't', logOnly, src }, { ...c, forecast }, now);
+  const res = FS.schedule(rec, { g, ms: o.ms, onTime: !!(entry.limit && o.ms <= entry.limit * 1000), flags, mode: 't', logOnly, src, study }, { ...c, forecast }, now);
   // reinsert misses and learning steps: +4, then +10. A mistake from a correction typed right the first time is not
   // asked again in its own round: it comes back on its schedule.
   const times = round.queue.filter((/** @type {any} */ q) => q.id === id).length;
@@ -113,7 +117,7 @@ export function answer({ round, entry, o, cards, day, c, forecast = () => 0, now
     const at = Math.min(round.queue.length, round.i + 1 + (times === 1 ? 4 : 10));
     round.queue.splice(Math.max(round.i + 1, at), 0, { id, re: true });
   }
-  round.results.push({ id, g, ok: o.ok, first: !entry.reinsert, ms: Math.round(o.ms || 0), isNew: entry.isNew, det, ...(o.partial ? { partial: true } : {}) });
+  round.results.push({ id, g, ok: o.ok, first: !entry.reinsert, ms: Math.round(o.ms || 0), isNew: entry.isNew, det, ...(o.partial ? { partial: true } : {}), ...(study ? { study: true } : {}) });
   return { g, rec: res.rec, event: res.rec ? reviewEvent(id, rec || null, res.rec, { g, ms: o.ms, flags, mode: 't' }, c, tz, round.deck || 'b1') : null };
 }
 
@@ -133,13 +137,13 @@ export function override({ round, entry, ms, c, forecast = () => 0, now, tz = 'U
 /** Move on. Returns true while there is a next question. @param {any} round */
 export function advance(round) { round.i++; return round.i < round.queue.length; }
 
-/** Segment states for the kit's segments(): 'done' | 'miss' | 'now' | ''. answered: the current card has its result. @param {any} round */
+/** Segment states for the kit's segments(): 'done' | 'miss' | 'seen' (a study step) | 'now' | ''. answered: the current card has its result. @param {any} round */
 export function dots(round, answered = false) {
   return round.queue.map((/** @type {any} */ q, /** @type {number} */ k) => {
     if (k === round.i && !answered) return 'now';
     if (k > round.i) return '';
     const r = round.results.filter((/** @type {any} */ x) => x.id === q.id)[round.queue.slice(0, k).filter((/** @type {any} */ x) => x.id === q.id).length];
-    return r && r.ok ? 'done' : 'miss';
+    return r && r.ok ? 'done' : r && r.study ? 'seen' : 'miss';
   });
 }
 
@@ -163,11 +167,12 @@ export function spoken({ item, rec, o, c, forecast = () => 0, now, tz = 'UTC' })
  */
 export function summary(round, byId) {
   // a card marked "I know this" is not an answer: it is counted apart (known)
-  const firsts = round.results.filter((/** @type {any} */ r) => r.first && !r.known);
+  const firsts = round.results.filter((/** @type {any} */ r) => r.first && !r.known && !r.study);
   const right = firsts.filter((/** @type {any} */ r) => r.ok).length;
   const late = firsts.filter((/** @type {any} */ r) => r.ok && r.g === 2 && !r.partial).length;
   const partial = firsts.filter((/** @type {any} */ r) => r.ok && r.partial).length;
-  const missedIds = new Set(firsts.filter((/** @type {any} */ r) => !r.ok).map((/** @type {any} */ r) => r.id));
+  // a study step on a new item is not a miss: it is in news, never in back
+  const missedIds = new Set(firsts.filter((/** @type {any} */ r) => !r.ok && !r.study).map((/** @type {any} */ r) => r.id));
   const uniq = (/** @type {string[]} */ ids) => [...new Set(ids)].map(id => byId.get(id)).filter(Boolean);
   const fixed = uniq(round.results.filter((/** @type {any} */ r) => !r.first && r.ok && missedIds.has(r.id)).map((/** @type {any} */ r) => r.id));
   const news = uniq(round.results.filter((/** @type {any} */ r) => r.isNew && !r.known).map((/** @type {any} */ r) => r.id));

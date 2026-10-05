@@ -1,10 +1,10 @@
-// Word building: the unlock order, today's new items, rounds, the deck's own daily cap (composed in domain/budget.js
-// without touching the B1 allowance) and Split or stay (domain/wordbuild-plan.js). Synthetic card records only.
+// Word building: the unlock order, today's new items, rounds, its share of the day's one allowance (domain/budget.js;
+// round 3: it no longer has a cap of its own) and Split or stay (domain/wordbuild-plan.js). Synthetic card records only.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { context } from '../../src/core/clock.js';
-import { dayBudget, buildBudget, buildNewPerDay } from '../../src/domain/budget.js';
+import { allowance, buildShare } from '../../src/domain/budget.js';
 import * as P from '../../src/domain/wordbuild-plan.js';
 import { CORE } from '../../src/domain/wordbuild.js';
 import * as D8 from '../../src/domain/days.js';
@@ -100,21 +100,29 @@ test('a review round: due first by lowest recall, new ones between them, the cap
   assert.deepEqual(P.composeRound({ kind: 'pick', content: C, cards, today: TODAY, isDue, recall, newLeft: 0, ids: ['PD:abstellen', 'XX:nope'] }), ['PD:abstellen']);
 });
 
-test('budget: its own cap, default 5, none from the eve, never out of the B1 allowance', () => {
-  const exam = '2026-10-20';
-  const week = context({ today: TODAY, exam }), eve = context({ today: '2026-10-19', exam });
-  const s = { language: 'german', minutesPerDay: 60, newPerDay: null, practice: {}, exam: { type: 'goethe-b1', date: exam, modules: [] } };
-  assert.equal(buildNewPerDay(s), 5);
-  assert.equal(buildNewPerDay({ practice: { buildNew: 8 } }), 8);
-  assert.equal(buildNewPerDay({ practice: { buildNew: 99 } }), 20);
-  const b = buildBudget({ c: week, settings: s, dueN: 6, newShown: 2 });
-  assert.deepEqual([b.newPerDay, b.newLeft, b.n], [5, 3, 9]);
-  assert.equal(buildBudget({ c: eve, settings: s, dueN: 6 }).newLeft, 0);
-  assert.equal(buildBudget({ c: week, settings: s, dueN: 0, unseen: 1 }).newLeft, 1);
-  // the B1 day budget is the same whatever the Word building cap is
-  const b1 = dayBudget({ c: week, settings: s, dueN: 30, priorityLeft: 80 });
-  const b1b = dayBudget({ c: week, settings: { ...s, practice: { buildNew: 20 } }, dueN: 30, priorityLeft: 80 });
-  assert.deepEqual(b1, b1b);
+test('budget: a share of the one allowance; its setting is its want; paused while an exam is ahead', () => {
+  // changed in round 3 (journey #1): Word building used to have its own cap that never touched the B1 new items. Now
+  // its setting (default 5, at most 20) is what it wants from the day's one allowance: after the exam (or with no
+  // date) it shares the day with the other decks, and while an exam is ahead its new cards pause.
+  assert.equal(buildShare({ practice: {} }), 5);
+  assert.equal(buildShare({ practice: { buildNew: 8 } }), 8);
+  assert.equal(buildShare({ practice: { buildNew: 99 } }), 20);
+  const s = { language: 'german', minutesPerDay: 60, newPerDay: null, practice: {}, exam: { type: 'goethe-b1', date: '2026-10-09', modules: [] } };
+  const after = context({ today: TODAY, exam: '2026-10-09' });
+  const decks = { b1: { due: 30 }, build: { due: 6, open: 10, shown: 2 } };
+  const a = allowance({ c: after, settings: s, decks, goals: { build: true } });
+  assert.deepEqual([a.mode, a.decks.build.newPerDay, a.decks.build.newLeft, a.decks.build.due], ['maintenance', 5, 3, 6]);
+  assert.equal(a.reviews.due, 36, 'its reviews count with every other deck');
+  const week = context({ today: TODAY, exam: '2026-10-20' }), eve = context({ today: '2026-10-19', exam: '2026-10-20' });
+  const w = allowance({ c: week, settings: { ...s, exam: { ...s.exam, date: '2026-10-20' } }, decks, goals: { build: true } });
+  assert.deepEqual([w.decks.build.newLeft, w.decks.build.paused, w.decks.build.due], [0, true, 6], 'exam week: paused, reviews on');
+  assert.equal(allowance({ c: eve, settings: s, decks, goals: { build: true } }).decks.build.newLeft, 0);
+  // one allowance: on a full day a bigger Word building want takes from the others (it used to be added on top)
+  const full = { ...s, minutesPerDay: 20 };
+  const b5 = allowance({ c: after, settings: full, decks, goals: { build: true } });
+  const b20 = allowance({ c: after, settings: { ...full, practice: { buildNew: 20 } }, decks, goals: { build: true } });
+  assert.equal(b5.newPerDay, b20.newPerDay, 'the day\'s number does not grow');
+  assert.ok(b20.decks.build.newPerDay > b5.decks.build.newPerDay && b20.decks.b1.newPerDay < b5.decks.b1.newPerDay);
 });
 
 test('Split or stay: every verb once per deck, the reading decides, no card is written', () => {
@@ -133,23 +141,30 @@ test('Split or stay: every verb once per deck, the reading decides, no card is w
   assert.ok(P.playedToday(log, TODAY));
 });
 
-test("Today: Word building's rows (its own cap; the game every day but the exam day)", async () => {
+test("Today: Word building's rows (a goal after the exam; due cards only while an exam is ahead; the game after the exam)", async () => {
+  // changed in round 3 (journey #1, #5): while an exam is ahead the row shows due cards only and the game is not
+  // offered; after the exam the row shows even before the deck was started, and the game once it was.
   const { planItems } = await import('../../src/features/build/plan.js');
   const t = (k, v = {}) => `${k}${Object.keys(v).length ? ' ' + JSON.stringify(v) : ''}`;
   const exam = '2026-10-20';
   const settings = { language: 'german', minutesPerDay: 60, newPerDay: null, practice: {}, exam: { type: 'goethe-b1', date: exam, modules: [] } };
   const mk = (cards, kv = {}) => ({ cards: d => (d === 'build' ? cards : {}), get: (k, dflt) => (k in kv ? kv[k] : dflt) });
   const week = context({ today: TODAY, exam });
-  // not started: only the game
-  assert.deepEqual(planItems({ store: mk({}), c: week, settings, t }).map(r => r.id), ['build.game']);
-  // started: 1 due, 4 open new cards → 1 due + 4 new (cap 5)
   const cards = { 'PX:auf.see': { ...good('2026-10-01'), due: '2026-10-05' } };
+  // exam week: not started, nothing; started: its 1 due card, no new ones, no game
+  assert.deepEqual(planItems({ store: mk({}, { build: { stats: { day: TODAY, open: 4 } } }), c: week, settings, t }), []);
   const rows = planItems({ store: mk(cards, { build: { stats: { day: TODAY, open: 4 } } }), c: week, settings, t });
-  const r = rows.find(x => x.id === 'build.round');
-  assert.equal(r.priority, 56); assert.ok(r.noCut); assert.match(r.detail, /"due":1,"n":4/);
+  assert.deepEqual(rows.map(x => x.id), ['build.round']);
+  const r = rows[0];
+  assert.equal(r.priority, 56); assert.ok(r.noCut); assert.match(r.detail, /plan\.build\.due \{"n":1\}/); assert.equal(r.reviews, 1);
+  // after the exam: a goal (priority 35), 1 due + 4 new (its want is 5, 4 are open), and the game
+  const after = context({ today: TODAY, exam: '2026-10-09' });
+  const ra = planItems({ store: mk(cards, { build: { stats: { day: TODAY, open: 4 } } }), c: after, settings: { ...settings, exam: { ...settings.exam, date: '2026-10-09' } }, t });
+  assert.deepEqual(ra.map(x => x.id), ['build.round', 'build.game']);
+  assert.equal(ra[0].priority, 35); assert.match(ra[0].detail, /"due":1,"n":4/); assert.ok(ra[1].optional);
   // the exam day: nothing
   assert.deepEqual(planItems({ store: mk(cards), c: context({ today: exam, exam }), settings, t }), []);
   // played today: the game row shows done
   const log = { games: [{ day: TODAY, n: 10, right: 7, missed: [], timed: true }] };
-  assert.ok(planItems({ store: mk({}, { 'build.game': log }), c: week, settings, t })[0].done);
+  assert.ok(planItems({ store: mk(cards, { 'build.game': log }), c: after, settings, t }).find(x => x.id === 'build.game').done);
 });

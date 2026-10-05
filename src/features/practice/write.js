@@ -8,7 +8,8 @@
    from the card into the email (kit flip()), its connectors light up in the glue role colour, and the next part comes
    in (kit swap()). At the end the whole email stands next to the model, with the word count; then he can write it
    from memory and ask for a correction (services/claude.js correctTask, the generic grader: nothing personal is
-   sent). Builds, the free text and its correction stay on this device (kv practice.write). */
+   sent). Builds, the free text and its correction stay on this device (kv practice.write). The correction's lines
+   become mistake cards (data/mistakes.js, F:W-<task>-<time>), reviewed in the mistakes round like an exam's. */
 import { h, replace, announce } from '../../core/dom.js';
 import { linkRow, notice, section, seg } from '../../core/ui.js';
 import { icon } from '../../core/icons.js';
@@ -19,6 +20,7 @@ import * as RD from '../../domain/b1ready.js';
 import { roundMinutes } from '../../domain/today.js';
 import { ROUND } from '../../domain/budget.js';
 import { correctTask, ClaudeError } from '../../services/claude.js';
+import { addMistakes, freeWriteMistakes, listMistakes, COLLECTION as MISTAKES } from '../../data/mistakes.js';
 import * as B from './build.js';
 import * as S from './session.js';
 import { loadData, stateFor, session, secrets } from './data.js';
@@ -511,13 +513,29 @@ function drawFree(el, ctx, task, aufgabe) {
     replace(result, h('p', { class: 'caption' }, t('practice.build.correcting')));
     try {
       const res = await correctTask({ key: secrets(store).anthropicKey, task, text, words: target });
-      putKv(store, v => ({ ...v, drafts: { ...(v.drafts || {}), [task.id]: area.value }, corrections: { ...(v.corrections || {}), [task.id]: { body: res.body, text, at: Date.now() } },
+      const at = Date.now();
+      putKv(store, v => ({ ...v, drafts: { ...(v.drafts || {}), [task.id]: area.value }, corrections: { ...(v.corrections || {}), [task.id]: { body: res.body, text, at } },
         written: { ...(v.written || {}), [task.id]: today } }));
-      replace(result, correctionNodes(res.body));
+      replace(result, correctionNodes(res.body), practiseRow(queue({ body: res.body, at })));
     } catch (e) {
       replace(result, h('p', { class: 'pr-res is-bad' }, t(`exam.correct.err.${e instanceof ClaudeError ? e.code : 'other'}`)));
     }
     btn.disabled = false; btn.textContent = t('feedback.correct');
+  }
+  /**
+   * The correction's lines become mistake cards (once per correction; a correction he already turned into cards and
+   * then deleted them from is left alone). Returns how many of its mistakes are live.
+   * @param {{body: string, at: number}} cr @param {boolean} [onlyNew] a correction made before this was added
+   */
+  function queue(cr, onlyNew = false) {
+    const o = freeWriteMistakes({ taskId: task.id, at: cr.at, label: t('practice.build.mistakeLabel', { n: task.aufgabe.slice(1), title: task.title }), body: cr.body });
+    const known = Object.values(store.get(MISTAKES, {}) || {}).some((/** @type {any} */ m) => m && m.source && m.source.attemptId === o.attemptId);
+    if (!(onlyNew && known) && o.items.length) addMistakes(store, o);
+    return listMistakes(store).filter(m => m.source.attemptId === o.attemptId).length;
+  }
+  /** "Practise these 4 mistakes · 2 min" after a correction. @param {number} n */
+  function practiseRow(n) {
+    return n ? h('div', { class: 'pr-done-actions' }, h('a', { class: 'btn btn-primary pressable', href: '#/practice/round?kind=mistakes' }, t('practice.build.practise', { n, min: roundMinutes(Math.min(ROUND, n)) }))) : null;
   }
   const model = B.asText(B.modelEmail(task));
   // an optional exam clock: the Aufgabe's minutes, counting down; nothing happens at zero except the line saying so
@@ -551,7 +569,7 @@ function drawFree(el, ctx, task, aufgabe) {
     result,
     h('details', { class: 'wr-modeltext' }, h('summary', { class: 'pressable' }, t('practice.build.model')), h('p', { class: 'wr-model', lang: 'de' }, model)));
   replace(el, view);
-  if (corr) replace(result, h('p', { class: 'caption' }, t('practice.build.lastCorrection')), correctionNodes(corr.body));
+  if (corr) replace(result, h('p', { class: 'caption' }, t('practice.build.lastCorrection')), correctionNodes(corr.body), practiseRow(corr.at ? queue(corr, true) : 0));
   showCount();
   view.querySelector('h1')?.setAttribute('tabindex', '-1');
   return () => { flush(); removeEventListener('pagehide', flush); clearInterval(tick); };

@@ -8,7 +8,8 @@ import { Field } from '../../core/brand.js';
 import { countTo } from '../../core/motion.js';
 import { cardIds, conceptItems, CORE } from '../../domain/wordbuild.js';
 import { FRAME_GATE, SUFFIX_GATE, REST_GATE, firstGood, playedToday } from '../../domain/wordbuild-plan.js';
-import { buildNewPerDay } from '../../domain/budget.js';
+import { buildShare } from '../../domain/budget.js';
+import { dayAllowance } from '../allowance.js';
 import { backLink } from './compass.js';
 import { loadContent, knowledge, today as todayOf, setNewPerDay, GAME } from './data.js';
 import { writeStats } from './plan.js';
@@ -60,10 +61,10 @@ export async function mountHub(el, ctx) {
     const best = ((game && game.games) || []).filter((/** @type {any} */ g) => g.day === st.c.today && g.timed).reduce((m, /** @type {any} */ g) => Math.max(m, g.right), 0);
     const gameRow = h('a', { class: 'row pressable', href: '#/practice/build/game' }, h('span', { class: 'row-main' }, h('span', { class: 'row-title' }, t('build.game.title')),
       h('span', { class: 'row-detail' }, playedToday(game, st.c.today) && best ? t('build.hub.gameBest', { n: best }) : t('build.hub.game'))), icon('next', { size: 16 }));
-    const cap = buildNewPerDay(ctx.settings());
+    const cap = buildShare(ctx.settings());
     const capRow = h('div', { class: 'wb-field' }, h('p', { class: 'label', id: 'wb-cap' }, t('build.hub.cap')),
       h('div', { class: 'wb-chips', role: 'group', 'aria-labelledby': 'wb-cap' }, [0, 3, 5, 8, 12].map(v => h('button', { type: 'button', class: 'chip pressable', 'aria-pressed': String(v === cap), onclick: () => { setNewPerDay(ctx, v); draw(); } }, String(v)))),
-      h('p', { class: 'caption' }, st.c.newItems ? t('build.hub.capNote') : t('build.hub.capPaused')));
+      h('p', { class: 'caption' }, st.budget.paused || !st.c.newItems ? t('build.hub.capPaused') : t('build.hub.capNote', { n: dayAllowance({ store, c: st.c, settings: ctx.settings() }).newPerDay, left: st.budget.newLeft })));
     const b = st.budget;
     const what = b.due && b.newLeft ? t('build.hub.dueNew', { due: b.due, n: b.newLeft }) : b.due ? t('build.hub.due', { n: b.due }) : b.newLeft ? t('build.hub.new', { n: b.newLeft }) : '';
     const start = b.n ? h('a', { class: 'btn btn-primary btn-wide pressable', href: '#/practice/build/round?kind=review' }, t('build.hub.review', { what, min: b.minutes })) : null;

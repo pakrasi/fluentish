@@ -4,19 +4,23 @@
        easiest due items as a warm-up, and a miss from earlier today last ("the fix")
      - new items come in priority order (P14): Teil 2 ★ phrases, trap grammar, Teil 1/3 ★ phrases, … ; mistakes from
        corrections are spread through the front (one in three)
-     - two streams with their own quota: phrases, situations and words ('p') and grammar ('g'), 40 : 15
-     - Schreiben phrases (area writing, stream 'w') have their own rounds (kind write) and their own quota
-       (domain/budget.js writingBudget); the daily round leaves them out
+     - two streams share the b1 deck's part of the day's allowance (domain/budget.js): phrases, situations and words
+       ('p') and grammar ('g'), 40 : 15
+     - Schreiben phrases (area writing, stream 'w') have their own rounds (kind write) and their own share of the
+       allowance; the daily round leaves them out. Mistakes from corrections (stream 'm') have their own share (it
+       comes first): one in three new items of a round while it lasts, and all of it in their own round
+     - a learner below B1 (settings.level A1 or A2) meets the items of his level first, then the next level; in his
+       first study week only items of his level
      - situations come in once two phrases with that job have graduated
      - the exam day is a warm-up of well-known items; nothing new on the eve or the day
 
    state = { data (pool.js buildPool), cards (deck 'b1': id → FSRS record), day (session day log), c (clock ctx),
-             newPerDay (dailyNew()) } */
+             newPerDay (the b1 share of the allowance), writingNew, mistakesNew, level, fresh } */
 import * as D8 from '../../domain/days.js';
 import * as FS from '../../domain/fsrs.js';
 import * as RD from '../../domain/b1ready.js';
 import { roundMinutes } from '../../domain/today.js';
-import { ROUND, SPLIT, NEW_ITEM_MIN, dailyNew, streamQuota } from '../../domain/budget.js';
+import { ROUND, SPLIT, NEW_ITEM_MIN, streamQuota } from '../../domain/budget.js';
 import { skipsNew } from '../../domain/known.js';
 
 export { ROUND, NEW_ITEM_MIN };
@@ -29,7 +33,10 @@ export { ROUND, NEW_ITEM_MIN };
  * @property {import('../../core/clock.js').ClockCtx} c
  * @property {number} newPerDay
  * @property {number} [writingNew]   new Schreiben phrases for the day (stream 'w')
+ * @property {number} [mistakesNew]  new mistakes from corrections for the day (stream 'm'; Infinity when not given)
  * @property {Set<string>} [marked]   items marked known in any deck (domain/known.js markedItems): never introduced as new
+ * @property {string | null} [level] the learner's level (settings.level)
+ * @property {boolean} [fresh]       his first study week: only items of his level are new
  */
 
 /** @param {State} s @param {any} it */
@@ -39,7 +46,12 @@ export const due = (s, it) => RD.isDue(s.cards[it.id], s.c.today, s.c);
 /** @param {State} s @param {any} it @param {string} day */
 const R = (s, it, day) => FS.Ron(s.cards[it.id], day);
 /** @param {any} it */
-export const stream = it => (it.area === 'grammar' ? 'g' : it.area === 'writing' ? 'w' : it.area === 'clusters' ? 'c' : 'p');
+export const stream = it => (it.area === 'grammar' ? 'g' : it.area === 'writing' ? 'w' : it.area === 'clusters' ? 'c' : it.area === 'mistakes' ? 'm' : 'p');
+
+/** A study step on a new item (Show me): logged as 1 with the flag v, it is not a miss. @param {any[]} h a hist entry */
+export const studyStep = h => String(h[4] || '').includes('v');
+/** A real miss in the log: rated 1 and not a study step. @param {any[]} h */
+export const isMiss = h => h[1] === 1 && !studyStep(h);
 
 /** A fresh day log. @param {string} today */
 export const newDay = today => ({ day: today, rounds: 0, traps: null, newShown: 0, newBy: {}, firstTry: [0, 0], pred: [0, 0], shown: /** @type {string[]} */ ([]) });
@@ -57,13 +69,11 @@ export function rollDay(session, today) {
   return { day: newDay(today), days, rolled: true };
 }
 
-/** New items a day: domain/budget.js (the one answer to "how much today"). */
-export { dailyNew };
-
 /** A stream's share of today's new items (the two shares add up to newPerDay). @param {State} s @param {string} st 'p' | 'g' */
 export function quota(s, st) {
   if (!s.c.newItems) return 0;
   if (st === 'w') return s.writingNew || 0;
+  if (st === 'm') return s.mistakesNew ?? Infinity;
   return streamQuota(s.newPerDay, /** @type {'p'|'g'} */ (st));
 }
 /** New items the day still has room for across the daily streams: a round that took more than its stream's share
@@ -72,7 +82,7 @@ const dayRoom = s => Math.max(0, (s.newPerDay || 0) - (s.day.newShown || 0));
 /** @param {State} s @param {string} st */
 export const newLeftOf = (s, st) => {
   const own = Math.max(0, quota(s, st) - ((s.day.newBy || {})[st] || 0));
-  return st === 'w' ? own : Math.min(own, dayRoom(s));
+  return st === 'w' || st === 'm' ? own : Math.min(own, dayRoom(s));
 };
 /** New items left today in the daily rounds (Schreiben phrases have their own: newLeftOf(s, 'w')). @param {State} s */
 export const newLeft = s => Math.min(newLeftOf(s, 'p') + newLeftOf(s, 'g'), dayRoom(s));
@@ -104,27 +114,45 @@ export function newOrder(s, pool, anyTopic = false) {
     return 11;
   };
   const eligible = (/** @type {any} */ it) => it.rank !== 21 && !(it.group === 'praeteritum' && it.kind !== 'grammar');
-  const list = pool.filter(it => unseen(s, it) && eligible(it) && (anyTopic || topicReady(s, it)) && !(s.marked && skipsNew(s.marked, it.id, it.chunk)));
-  // inside a tier: rank (grammar, Schreiben), ★ first, then the more common word first (zipf; exam words carry it)
-  const base = list.filter(it => !it.mine).map((it, i) => /** @type {[number, number, number, number, number, any, number]} */ ([tier(it), it.area === 'grammar' || it.area === 'writing' ? it.rank ?? 99 : 0, it.star ? 0 : 1, it.bank ? 1 : 0, i, it, -(Number(it.zipf) || 0)]))
-    .sort((a, b) => a[0] - b[0] || a[1] - b[1] || a[2] - b[2] || a[6] - b[6] || a[3] - b[3] || a[4] - b[4]).map(x => x[5]);
+  // a learner below B1 meets his level first (band 0), then the next; in his first week only his level
+  const band = levelBand(s.level);
+  const list = pool.filter(it => unseen(s, it) && eligible(it) && (anyTopic || topicReady(s, it)) && !(s.marked && skipsNew(s.marked, it.id, it.chunk))
+    && !(s.fresh && band(it) > 0 && !it.mine));
+  // inside a level band and a tier: rank (grammar, Schreiben), ★ first, then the more common word first (zipf; exam words carry it)
+  const base = list.filter(it => !it.mine).map((it, i) => /** @type {[number, number, number, number, number, any, number, number]} */ ([tier(it), it.area === 'grammar' || it.area === 'writing' ? it.rank ?? 99 : 0, it.star ? 0 : 1, it.bank ? 1 : 0, i, it, -(Number(it.zipf) || 0), band(it)]))
+    .sort((a, b) => a[7] - b[7] || a[0] - b[0] || a[1] - b[1] || a[2] - b[2] || a[6] - b[6] || a[3] - b[3] || a[4] - b[4]).map(x => x[5]);
   // mistakes from corrections are spread through the front of the order: one in every three
   const mine = list.filter(it => it.mine), out = [];
   while (base.length || mine.length) { if (mine.length) out.push(mine.shift()); for (let k = 0; k < 2 && base.length; k++) out.push(base.shift()); }
   return out;
 }
 
+const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+/**
+ * How far an item is above a learner's level: 0 at or below it, 1 one level up … Only for a learner below B1
+ * (A1, A2); otherwise every item is band 0. An item without a level counts as B1.
+ * @param {string | null | undefined} level @returns {(it: any) => number}
+ */
+export function levelBand(level) {
+  const me = LEVELS.indexOf(String(level || ''));
+  if (me < 0 || me >= 2) return () => 0;
+  return it => { const l = LEVELS.indexOf(String(it.level || '')); return Math.max(0, (l < 0 ? 2 : l) - me); };
+}
+
 /** The first n new items, taking each stream's quota in turn. @param {State} s @param {any[]} pool @param {number} n */
-export function nextNew(s, pool, n, left = { p: newLeftOf(s, 'p'), g: newLeftOf(s, 'g'), w: newLeftOf(s, 'w') }, anyTopic = false) {
-  const order = newOrder(s, pool, anyTopic), out = [], q = /** @type {Record<'p'|'g'|'w', number>} */ ({ w: 0, ...left });
-  const byS = { p: order.filter(it => stream(it) === 'p'), g: order.filter(it => stream(it) === 'g'), w: order.filter(it => stream(it) === 'w') };
-  const can = (/** @type {'p'|'g'|'w'} */ st) => q[st] > 0 && byS[st].length > 0;
-  while (out.length < n && (can('p') || can('g') || can('w'))) {
-    /** @type {'p'|'g'|'w'} */ let st = 'w';
-    if (!can('w')) {   // the daily streams take turns by their split; a Schreiben round has only 'w'
+export function nextNew(s, pool, n, left = { p: newLeftOf(s, 'p'), g: newLeftOf(s, 'g'), w: newLeftOf(s, 'w'), m: newLeftOf(s, 'm') }, anyTopic = false) {
+  const order = newOrder(s, pool, anyTopic), out = [], q = /** @type {Record<'p'|'g'|'w'|'m', number>} */ ({ w: 0, m: 0, ...left });
+  const byS = { p: order.filter(it => stream(it) === 'p'), g: order.filter(it => stream(it) === 'g'), w: order.filter(it => stream(it) === 'w'), m: order.filter(it => stream(it) === 'm') };
+  const can = (/** @type {'p'|'g'|'w'|'m'} */ st) => q[st] > 0 && byS[st].length > 0;
+  while (out.length < n && (can('p') || can('g') || can('w') || can('m'))) {
+    /** @type {'p'|'g'|'w'|'m'} */ let st = 'w';
+    // mistakes from corrections: one in every three new items while their share lasts (their own stream, 'm')
+    if (can('m') && (out.length % 3 === 0 || !(can('p') || can('g') || can('w')))) st = 'm';
+    else if (!can('w')) {   // the daily streams take turns by their split; a Schreiben round has only 'w'
       const tp = out.filter(it => stream(it) === 'p').length, tg = out.filter(it => stream(it) === 'g').length;
       st = (tp / SPLIT.p <= tg / SPLIT.g) ? 'p' : 'g';
       if (!can(st)) st = st === 'p' ? 'g' : 'p';
+      if (!can(st)) st = 'm';
     }
     out.push(byS[st].shift()); q[st]--;
   }
@@ -154,13 +182,13 @@ export function trapSet(s) {
 
 /** @param {State} s @param {any} it */
 function lastMiss(s, it) {
-  const hs = (s.cards[it.id]?.hist || []).filter((/** @type {any[]} */ h) => h[1] === 1);
+  const hs = (s.cards[it.id]?.hist || []).filter(isMiss);
   return hs.length ? Date.parse(hs[hs.length - 1][0]) : 0;
 }
-/** Items missed (rated 1) in the last 3 days, latest first. @param {State} s */
+/** Items missed (rated 1) in the last 3 days, latest first; a study step on a new item (Show me) is not a miss. @param {State} s */
 export function missed(s) {
   const since = D8.add(s.c.today, -3);
-  return s.data.pool.filter(it => (s.cards[it.id]?.hist || []).some((/** @type {any[]} */ h) => h[0] >= since && h[1] === 1)).sort((a, b) => lastMiss(s, b) - lastMiss(s, a));
+  return s.data.pool.filter(it => (s.cards[it.id]?.hist || []).some((/** @type {any[]} */ h) => h[0] >= since && isMiss(h))).sort((a, b) => lastMiss(s, b) - lastMiss(s, a));
 }
 
 /** New items between reviews: r r n r r n … @param {State} s @param {any[]} list */
@@ -217,10 +245,10 @@ export function compose(s, { kind = 'today', area, topic, size = ROUND } = {}) {
     return pool.filter(it => s.cards[it.id]?.reps && s.cards[it.id].learn == null && it.area !== 'mistakes')
       .sort((a, b) => R(s, b, today) - R(s, a, today)).slice(0, c.phase === 'day' ? 9 : size).map(it => it.id);
   }
-  if (kind === 'mistakes') {   // his corrections: due ones, then unseen ones (no daily quota; none on the eve)
+  if (kind === 'mistakes') {   // his corrections: due ones, then unseen ones (their share of the day; none on the eve)
     const mine = pool.filter(it => it.area === 'mistakes');
     const d = mine.filter(it => due(s, it)).sort((a, b) => R(s, a, today) - R(s, b, today));
-    const fresh = c.newItems ? mine.filter(it => unseen(s, it)) : [];
+    const fresh = c.newItems ? mine.filter(it => unseen(s, it)).slice(0, Math.max(0, newLeftOf(s, 'm'))) : [];
     return [...d, ...fresh].slice(0, size).map(it => it.id);
   }
   const dueList = pool.filter(it => due(s, it));
@@ -234,10 +262,12 @@ export function compose(s, { kind = 'today', area, topic, size = ROUND } = {}) {
     ? trapSet(s).map(id => data.byId.get(id)).filter(it => it && pool.includes(it) && !shownToday.has(it.id) && !(s.cards[it.id]?.last === today && !due(s, it))) : [];
   /** @type {any[]} */ const chosen = [];
   const add = (/** @type {any} */ it) => { if (it && !chosen.includes(it) && chosen.length < size) chosen.push(it); };
-  const fix = dueList.find(it => s.cards[it.id]?.relearn || (s.cards[it.id]?.learn != null && (s.cards[it.id].hist || []).some((/** @type {any[]} */ h) => h[0] === today && h[1] === 1)));
+  const fix = dueList.find(it => s.cards[it.id]?.relearn || (s.cards[it.id]?.learn != null && (s.cards[it.id].hist || []).some((/** @type {any[]} */ h) => h[0] === today && isMiss(h))));
   const warm = dueList.filter(it => it !== fix && !s.cards[it.id]?.relearn && s.cards[it.id]?.learn == null).sort((a, b) => R(s, b, today) - R(s, a, today)).slice(0, 2);
   warm.forEach(add);
-  const trapPick = traps.filter(it => !unseen(s, it) || nNew > 0).slice(0, 2);
+  // a trap item never seen is new: for a learner below B1 it waits for its level band, like every new item (newOrder)
+  const band = levelBand(s.level);
+  const trapPick = traps.filter(it => !unseen(s, it) || (nNew > 0 && band(it) === 0)).slice(0, 2);
   const rest = dueList.filter(it => it !== fix && !warm.includes(it));
   let newUsed = 0;
   /** @type {any[]} */ const mid = [];
@@ -273,11 +303,11 @@ export function buckets(s, { kind = 'today', area, topic } = {}) {
   const weak = (/** @type {any} */ a, /** @type {any} */ b) => R(s, a, today) - R(s, b, today);
   const dueL = pool.filter(it => !unseen(s, it) && due(s, it)).sort(weak).map(it => it.id);
   const rest = pool.filter(it => !unseen(s, it) && !due(s, it)).sort(weak).map(it => it.id);
-  // a missed round answers items already seen; a mistakes round has no daily cap; the rest share the day's quota
+  // a missed round answers items already seen; the rest share the day's allowance (mistakes their own share)
   const fresh = kind === 'missed' ? [] : kind === 'mistakes' ? pool.filter(it => unseen(s, it)).map(it => it.id) : newOrder(s, pool, true).map(it => it.id);
-  const st = kind === 'write' ? 'w' : area === 'grammar' || kind === 'topic' ? 'g' : 'p';
-  const newLeft = !c.newItems || kind === 'missed' ? 0 : kind === 'mistakes' ? Infinity : kind === 'today' ? newLeft_(s) : newLeftOf(s, st);
-  return { due: dueL, fresh, rest, newLeft, daily: kind !== 'mistakes' };
+  const st = kind === 'write' ? 'w' : kind === 'mistakes' ? 'm' : area === 'grammar' || kind === 'topic' ? 'g' : 'p';
+  const newLeft = !c.newItems || kind === 'missed' ? 0 : kind === 'today' ? newLeft_(s) : newLeftOf(s, st);
+  return { due: dueL, fresh, rest, newLeft, daily: true };
 }
 const newLeft_ = (/** @type {State} */ s) => newLeft(s);
 

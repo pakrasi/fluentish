@@ -3,15 +3,16 @@
    content, so Today plans without loading it.
 
    Rows:
-     - Word building: due cards and today's new ones (the deck's own cap, domain/budget.js buildBudget, never taken
-       from the B1 allowance). Shown once the deck has been started; Today's composer keeps it only when the day's
-       minutes allow (priority 56, after the B1 rounds, Schreiben, situations and clusters; never cut).
-     - Split or stay: the 60-second game (1 min, priority 58), done once played today. Not on the exam day (only the
-       warm-up then). */
-import { isDue } from '../../domain/b1ready.js';
-import { buildBudget } from '../../domain/budget.js';
+     - Word building: due cards and its share of the day's one allowance of new items (features/allowance.js →
+       domain/budget.js; Profile › Practice sets how many it wants). After the exam, or with no date, it is one of
+       his goals: the row shows even before the deck was started (priority 35). While an exam is ahead its new cards
+       pause and the row shows only due cards (priority 56, after the exam work; never cut). Not in a new learner's
+       first week.
+     - Split or stay: the 60-second game (1 min, optional: it never takes the place of a row before it), only after
+       the exam or with no date, and once the deck has been started. */
 import { DECK } from '../../domain/wordbuild.js';
-import { playedToday, shownToday } from '../../domain/wordbuild-plan.js';
+import { playedToday } from '../../domain/wordbuild-plan.js';
+import { dayAllowance } from '../allowance.js';
 
 const KV = 'build', GAME = 'build.game';
 
@@ -41,25 +42,27 @@ export function planItems({ store, c, settings, t }) {
   const cards = store.cards(DECK) || {};
   /** @type {import('../../domain/today.js').PlanItem[]} */ const out = [];
   const started = Object.values(cards).some(r => r && r.reps);
-  if (started) {
-    const due = Object.values(cards).filter(r => r && r.reps && isDue(r, c.today, c)).length;
-    const kv = store.get(KV, {}) || {};
-    const stats = kv.stats && kv.stats.day === c.today ? kv.stats : null;
-    const b = buildBudget({ c, settings, dueN: due, newShown: shownToday(cards, c.today).all, unseen: stats ? stats.open : 0 });
-    const rounds = kv.rounds && kv.rounds.day === c.today ? kv.rounds.n : 0;
-    if (b.n > 0) {
-      const what = b.due && b.newLeft ? t('plan.build.dueNew', { due: b.due, n: b.newLeft }) : b.due ? t('plan.build.due', { n: b.due }) : t('plan.build.new', { n: b.newLeft });
-      const n = Math.min(12, b.n);
-      out.push({ id: 'build.round', source: 'build', kind: b.due ? 'review' : 'new', introducesNew: b.due === 0, title: t('plan.build'), detail: what,
-        minutes: b.minutes, href: '#/practice/build/round?kind=review&from=today', priority: 56, noCut: true,
-        action: t('plan.build.action', { n, min: b.minutes }) });
-    } else if (rounds > 0) {
-      out.push({ id: 'build.round', source: 'build', kind: 'review', title: t('plan.build'), detail: t('plan.build.done'), minutes: 0, href: '#/practice/build', priority: 56, done: true });
-    }
+  const a = dayAllowance({ store, c, settings });
+  const goal = a.mode === 'maintenance';
+  const b = a.decks.build;
+  const kv = store.get(KV, {}) || {};
+  const rounds = kv.rounds && kv.rounds.day === c.today ? kv.rounds.n : 0;
+  const n = b.due + b.newLeft;
+  if (n > 0 && (started || goal)) {
+    const what = b.due && b.newLeft ? t('plan.build.dueNew', { due: b.due, n: b.newLeft }) : b.due ? t('plan.build.due', { n: b.due }) : t('plan.build.new', { n: b.newLeft });
+    const k = Math.min(12, n);
+    out.push({ id: 'build.round', source: 'build', kind: b.due ? 'review' : 'new', introducesNew: b.due === 0, reviews: b.due, title: t('plan.build'), detail: what,
+      minutes: b.minutes, href: '#/practice/build/round?kind=review&from=today', priority: goal ? 35 : 56, noCut: true, optional: !b.due,
+      action: t('plan.build.action', { n: k, min: b.minutes }) });
+  } else if (rounds > 0) {
+    out.push({ id: 'build.round', source: 'build', kind: 'review', title: t('plan.build'), detail: t('plan.build.done'), minutes: 0, href: '#/practice/build', priority: goal ? 35 : 56, done: true });
   }
-  const game = store.get(GAME, null);
-  const played = playedToday(game, c.today);
-  out.push({ id: 'build.game', source: 'build', kind: 'warmup', title: t('plan.game'), detail: played ? t('plan.game.done') : t('plan.game.detail'),
-    minutes: 1, href: '#/practice/build/game?from=today', priority: 58, noCut: true, done: played, action: t('plan.game.action') });
+  // the game: after the exam or with no date, once Word building has been started
+  if (goal && started) {
+    const game = store.get(GAME, null);
+    const played = playedToday(game, c.today);
+    out.push({ id: 'build.game', source: 'build', kind: 'warmup', title: t('plan.game'), detail: played ? t('plan.game.done') : t('plan.game.detail'),
+      minutes: 1, href: '#/practice/build/game?from=today', priority: 58, noCut: true, optional: true, done: played, action: t('plan.game.action') });
+  }
   return out;
 }

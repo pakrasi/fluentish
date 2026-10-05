@@ -20,7 +20,7 @@ export function progressOf(round, answered, ok) {
     const j = seen.get(q.id) || 0; seen.set(q.id, j + 1);
     let st = '';
     if (k === round.i && !answered) st = 'now';
-    else if (k <= round.i) { const r = (byId.get(q.id) || [])[j]; st = r ? (ok(r) ? 'done' : 'miss') : ''; }
+    else if (k <= round.i) { const r = (byId.get(q.id) || [])[j]; st = r ? (ok(r) ? 'done' : r.study ? 'seen' : 'miss') : ''; }
     (q.re ? again : planned).push(st);
   });
   const cur = round.queue[round.i];

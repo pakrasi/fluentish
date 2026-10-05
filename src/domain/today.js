@@ -11,6 +11,11 @@
        (minutes.cut); next to a long mock module that is often one round. The cut happens as soon as the mock is
        placed, so the rows after it are tested against the minutes as they will be
      - a row finished today always stays in the plan with its check (it never drops to "If you have time")
+     - an optional row (a game, side-deck new items) never takes the place of a row before it: once a row was left
+       out, optional rows wait too; a mock marked noOverrun enters only when it fits
+     - reviews are never hidden: every row says how many due cards it carries (reviews), and the plan counts them all,
+       in the plan and left out (reviews.due, reviews.planned, reviews.left), so Today can say plainly when the day
+       cannot fit them. Rows are ordered by value (priority), so what is left out is the least urgent
      - setup rows (set an exam date, …) are added after the work and cost no minutes */
 
 /**
@@ -32,6 +37,9 @@
  * @property {(rounds: number) => string} [actionFor]  the sticky button's label for a row cut to this many rounds
  * @property {string} [module]     a mock row's exam module ('schreiben', 'sprechen', …)
  * @property {boolean} [noCut]     never shrunk to fit (a row that is not the daily review round)
+ * @property {number} [reviews]     due cards the row carries (any deck), counted in the plan's reviews
+ * @property {boolean} [optional]   never takes the place of a row before it that was left out
+ * @property {boolean} [noOverrun]  a mock that may not run over the day's minutes
  */
 /**
  * @typedef {object} FeedbackRow
@@ -74,7 +82,7 @@ export function composeToday({ ctx, budget, items, feedback = [], modules = [], 
   /** @type {PlanItem[]} */ const rows = [];
   /** @type {PlanItem[]} */ const extra = [];
   let planned = 0;
-  let overrun = false, cut = false;
+  let overrun = false, cut = false, skipped = false;
   // over the minutes: the review round gives way (a timed module cannot be split, a review round can), down to one round
   const cutReviews = () => {
     for (let i = 0; i < rows.length && planned > budget; i++) {
@@ -93,14 +101,18 @@ export function composeToday({ ctx, budget, items, feedback = [], modules = [], 
     if (it.done) { rows.push(it); planned += it.minutes; continue; }
     const open = rows.filter(r => !r.done).length;
     const fits = planned + it.minutes <= budget;
-    const mockOverrun = !fits && it.mock && !overrun && planned < budget;
-    if (open < MAX_ROWS && (open === 0 || fits || mockOverrun)) {
+    const mockOverrun = !fits && it.mock && !it.noOverrun && !overrun && planned < budget;
+    if (open < MAX_ROWS && (open === 0 || fits || mockOverrun) && !(it.optional && skipped)) {
       rows.push(it); planned += it.minutes;
       // the cut happens here, before the next row's fit test, so later rows see the minutes as they will be
       if (mockOverrun) { overrun = true; cutReviews(); }
-    } else extra.push(it);
+    } else { extra.push(it); skipped = true; }
   }
   if (planned > budget) cutReviews();
+  // every deck's due cards: in the plan (a cut row keeps what its rounds hold) and left out
+  const carried = (/** @type {PlanItem} */ r) => (r.done ? 0 : r.reviews || 0);
+  const dueAll = [...rows, ...extra].reduce((n, r) => n + carried(r), 0);
+  const inPlan = rows.reduce((n, r) => n + (r.cut && r.rounds ? Math.min(carried(r), r.rounds * 12) : carried(r)), 0);
   const mock = rows.find(r => r.mock && !r.done) || null;
   const primary = rows.find(r => !r.done) || null;
   return {
@@ -109,6 +121,7 @@ export function composeToday({ ctx, budget, items, feedback = [], modules = [], 
     more: extra.length,
     extra,
     minutes: { planned, budget, done: doneMinutes, cut, mock: mock && planned > budget ? { title: mock.title, minutes: mock.minutes } : null },
+    reviews: { due: dueAll, planned: inPlan, left: dueAll - inPlan },
     primary,
     state: rows.length === 0 ? 'empty' : primary ? 'todo' : 'done',
     feedback: feedback.slice(0, MAX_FEEDBACK),

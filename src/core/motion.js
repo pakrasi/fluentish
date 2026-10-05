@@ -276,7 +276,7 @@ export function segments(el, states) {
   [...el.children].forEach((seg, i) => {
     seg.className = states[i] ? `is-${states[i]}` : '';
   });
-  const done = states.filter(s => s === 'done' || s === 'miss').length;
+  const done = states.filter(s => s === 'done' || s === 'miss' || s === 'seen').length;
   el.setAttribute('role', 'progressbar');
   el.setAttribute('aria-valuemin', 0); el.setAttribute('aria-valuemax', states.length); el.setAttribute('aria-valuenow', done);
 }

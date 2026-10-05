@@ -8,7 +8,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { context, add } from '../../src/core/clock.js';
 import * as RS from '../../src/domain/roundsize.js';
-import { dayBudget } from '../../src/domain/budget.js';
+import { allowance } from '../../src/domain/budget.js';
 import { buildPool } from '../../src/features/practice/pool.js';
 import * as C from '../../src/features/practice/compose.js';
 import * as S from '../../src/features/practice/session.js';
@@ -86,9 +86,11 @@ test('B1 lists: Recommended is the composer round, all takes the whole list', ()
   const all = RS.pick(b, 'all');
   assert.equal(all.ids.length, RS.total(b));
   assert.equal(all.over, Math.max(0, b.fresh.length - b.newLeft));
-  // missed: nothing new; mistakes: no daily cap
+  // missed: nothing new; mistakes: changed in round 3, they have their share of the one allowance (journey #1), so
+  // the picker counts them against the day like every other list
   assert.equal(C.buckets(st, C.parseKind('missed')).newLeft, 0);
-  assert.equal(C.buckets(st, C.parseKind('mistakes')).daily, false);
+  const mb = C.buckets({ ...st, mistakesNew: 2 }, C.parseKind('mistakes'));
+  assert.equal(mb.daily, true); assert.equal(mb.newLeft, 2);
 });
 
 /** A store over plain objects (the kv and the decks), enough for stateFor, planItems and todayBudget. */
@@ -140,7 +142,8 @@ test('new items beyond today\'s allowance are scheduled, and Today\'s plan reads
   const soon = Object.values(store.cards('b1')).filter(r => r.due <= add(TODAY, 3)).length;
   assert.ok(soon >= p.over, `${soon} of the round's cards are due within 3 days`);
   // the day's budget, read again from the same numbers, agrees
-  assert.equal(dayBudget({ c, settings, dueN: 0, newShown: day.newShown }).newLeft, 0);
+  // (round 3: the one allowance replaces dayBudget; same check)
+  assert.equal(allowance({ c, settings, decks: { b1: { due: 0, shown: day.newShown } } }).newLeft, 0);
 });
 
 test('clusters and situations: their own buckets and allowances', () => {
@@ -148,7 +151,10 @@ test('clusters and situations: their own buckets and allowances', () => {
   const cb = CI.buckets({ ids: ['W:a', 'W:b', 'W:c', 'W:d'], cards: { 'W:a': seen(TODAY), 'W:b': seen(add(TODAY, 5)) }, c, isDue: r => r.due <= TODAY, recall: () => 0.5,
     zipf: id => ({ 'W:c': 3, 'W:d': 5 })[id] });
   assert.deepEqual([cb.due, cb.rest, cb.fresh], [['W:a'], ['W:b'], ['W:d', 'W:c']], 'new cards most common first');
-  assert.equal(cb.newLeft, CI.NEW_PER_ROUND); assert.equal(cb.daily, false);
+  // changed in round 3: a cluster list is part of the day's allowance (its share, at most a round's NEW_PER_ROUND)
+  assert.equal(cb.newLeft, CI.NEW_PER_ROUND); assert.equal(cb.daily, true);
+  assert.equal(CI.buckets({ ids: ['W:c'], cards: {}, c, isDue: () => false, recall: () => 0, newLeft: 2 }).newLeft, 2);
+  assert.equal(CI.buckets({ ids: ['W:c'], cards: {}, c, isDue: () => false, recall: () => 0, newLeft: 0 }).newLeft, 0, 'paused in exam week');
   const items = [{ id: 'SS:a', lv: 'A1', fn: 'agree', freq: 1 }, { id: 'SS:b', lv: 'A1', fn: 'agree', freq: 2 }, { id: 'SS:c', lv: 'A1', fn: 'decline', freq: 1 }];
   const sb = SM.buckets({ items, cards: { 'SS:a': seen(TODAY) }, c, pick: { kind: 'fn', fn: 'agree' }, start: 'A1', newLeft: 3 });
   assert.deepEqual([sb.due, sb.fresh], [['SS:a'], ['SS:b']]);

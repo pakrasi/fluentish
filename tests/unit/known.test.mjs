@@ -9,7 +9,7 @@ import * as D8 from '../../src/domain/days.js';
 import * as RD from '../../src/domain/b1ready.js';
 import { knowledge, resolver } from '../../src/domain/knowledge.js';
 import { context } from '../../src/core/clock.js';
-import { dayBudget } from '../../src/domain/budget.js';
+import { allowance } from '../../src/domain/budget.js';
 import * as C from '../../src/features/practice/compose.js';
 import { compose as composeCluster } from '../../src/features/practice/clusters/items.js';
 import * as KD from '../../src/data/known.js';
@@ -147,8 +147,9 @@ test('a mark never uses the day\'s new-item budget, and marked items are not int
   const twin = { id: 'BP:twin', kind: 'phrase', area: 'speaking', group: 'S2', star: true, trap: null, chunk: 'tw' };
   assert.equal(K.skipsNew(new Set(['K:tw']), twin.id, twin.chunk), true);
   // the day budget reads the same shown count: unchanged
-  const b = dayBudget({ c, settings: { minutesPerDay: 60, exam: { type: 'goethe-b1' } }, dueN: 0, priorityLeft: 20, newShown: day.newShown });
-  assert.equal(b.newLeft, dayBudget({ c, settings: { minutesPerDay: 60, exam: { type: 'goethe-b1' } }, dueN: 0, priorityLeft: 20, newShown: 0 }).newLeft);
+  // (round 3: the one allowance replaces dayBudget; same check)
+  const b = allowance({ c, settings: { minutesPerDay: 60, exam: { type: 'goethe-b1' } }, decks: { b1: { due: 0, shown: day.newShown } }, priorityLeft: 20 });
+  assert.equal(b.newLeft, allowance({ c, settings: { minutesPerDay: 60, exam: { type: 'goethe-b1' } }, decks: { b1: { due: 0, shown: 0 } }, priorityLeft: 20 }).newLeft);
   // clusters: a family card whose word is marked is not introduced; the marked card is not practised ahead
   const mk = KD.marked(store);
   const cl = composeCluster({ ids: ['CF:bwort', 'CF:cwort', 'W:dwort'], cards: store.cards('clusters'), c, isDue: () => false, recall: () => 0, skip: id => K.skipsNew(mk, id) });

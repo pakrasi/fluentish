@@ -1,10 +1,18 @@
 /* Exam's offer for Today: the next mock module, corrections waiting (Schreiben not corrected yet, corrections not
-   read yet) and the module bars. Pure over ctx: it reads the store (attempts, drafts, the Mac's results and feedback
-   cached by the results sync) and the clock context; no DOM, no network. Dates come only from the clock. */
+   read yet) and the module scores. Pure over ctx: it reads the store (attempts, drafts, the Mac's results and feedback
+   cached by the results sync) and the clock context; no DOM, no network. Dates come only from the clock.
+
+   A mock is planned only while an exam date is ahead with mock days left (phases week and lastNew): after the exam,
+   or with no date, Today has no mock row until he sets a next exam. While Schreiben is the weakest module
+   (domain/modules.js writingFocus) the mock is Schreiben when a test is left; it may run over the day only when the
+   whole module fits (the day's minutes at least the module plus 30), else it waits under "If you have time" and the
+   day's Schreiben is the task from memory (practice/plan.js). Any other module's mock then never runs over: the
+   Schreiben work comes first. */
 import { today as studyDay } from '../../core/clock.js';
 import { scoreLine, scoreNum, stampMs } from '../../domain/grade.js';
 import { allAttempts, allFeedback, feedbackFor, latest } from './data.js';
 import * as T from './timer.js';
+import { writingFocus } from '../../domain/modules.js';
 
 /** The latest score of an attempt, Schreiben and Sprechen from the score line of their correction. @param {any} store @param {string} examId */
 export const scoreReader = (store, examId) => (/** @type {any} */ a) => {
@@ -77,6 +85,7 @@ export function modulesFitting(c, attempts) {
 /** @param {import('../contract.js').PlanCtx} ctx @returns {import('../../domain/today.js').PlanItem[]} */
 export function planItems({ store, c, settings, exam, t }) {
   if (!exam || settings.exam.type !== exam.id) return [];
+  if (c.phase !== 'week' && c.phase !== 'lastNew' && c.phase !== 'eve' && c.phase !== 'day') return [];
   const attempts = allAttempts(store, exam.id);
   const today = submittedOn(attempts, c.today);
   if (today.length) {
@@ -86,13 +95,18 @@ export function planItems({ store, c, settings, exam, t }) {
       detail: t('plan.mock.submitted'), minutes: def ? planMinutes(def) : 30, href: `#/exam/${a.day}/${a.module}/review/${a.id}`, priority: 30 }];
   }
   const modules = settings.exam.modules?.length ? settings.exam.modules : exam.modules.map((/** @type {any} */ m) => m.id);
-  const next = nextModule({ exam, modules, attempts, drafts: store.get('exams.drafts', {}) || {}, scoreOf: scoreReader(store, exam.id) });
+  const drafts = store.get('exams.drafts', {}) || {};
+  const focus = writingFocus({ store, c, settings }) && modules.includes('schreiben');
+  const next = (focus && nextModule({ exam, modules: ['schreiben'], attempts, drafts, scoreOf: scoreReader(store, exam.id) }))
+    || nextModule({ exam, modules, attempts, drafts, scoreOf: scoreReader(store, exam.id) });
   if (!next) return [];
   const def = exam.modules.find((/** @type {any} */ x) => x.id === next.module);
+  const fitsDay = (settings.minutesPerDay || 60) >= planMinutes(def) + 30;
   return [{
     id: 'exam.next', source: 'exam', kind: 'mock', mock: true, module: next.module, title: `${def.name} · ${t('exam.test', { n: next.test })}`,
     detail: t('plan.mock.detailLabel', { min: minutesLabel(def, t) }), minutes: planMinutes(def), href: `#/exam/${next.test}/${next.module}`, priority: 30,
     action: t('plan.mock.action', { module: def.name, min: planMinutes(def) }),
+    ...(focus && (next.module !== 'schreiben' || !fitsDay) ? { noOverrun: true } : {}),
   }];
 }
 

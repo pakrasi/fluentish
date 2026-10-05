@@ -10,6 +10,7 @@ import FS from '../../src/domain/fsrs.js';
 import { kindOf } from '../../src/domain/itemids.js';
 import { buildPool, mistakeItem } from '../../src/features/practice/pool.js';
 import { gradeAnswer } from '../../src/features/practice/grade.js';
+import { allowance } from '../../src/domain/budget.js';
 import * as C from '../../src/features/practice/compose.js';
 import * as S from '../../src/features/practice/session.js';
 import * as W from '../../src/features/practice/words.js';
@@ -101,13 +102,23 @@ test('composer: first round, due first, new caps, traps, fix last', () => {
 });
 
 test('new items a day follow the exam date and the minutes', () => {
+  // round 3: domain/budget.js allowance() is the one rule (dailyNew is gone). Its total spans every deck; the b1
+  // deck's share is what the daily round may introduce.
   const settings = { newPerDay: null, minutesPerDay: 60, exam: { type: 'goethe-b1' } };
-  assert.equal(C.dailyNew({ c: context({ today: '2026-10-08', exam: EXAM }), settings, dueN: 10, priorityLeft: 100 }), 0, 'eve');
-  assert.equal(C.dailyNew({ c: context({ today: '2026-10-03', exam: EXAM }), settings: { ...settings, newPerDay: 25, rev: { newPerDay: 'x' } }, dueN: 10, priorityLeft: 100 }), 25);
+  const at = (/** @type {string} */ today, /** @type {any} */ o = {}) => allowance({ c: context({ today, exam: o.exam === undefined ? EXAM : o.exam }), settings: o.settings || settings,
+    decks: { b1: { due: 10 }, speak: {} }, priorityLeft: o.priorityLeft ?? 100 });
+  assert.equal(at('2026-10-08').newPerDay, 0, 'eve');
+  const chosen = at('2026-10-03', { settings: { ...settings, newPerDay: 25, rev: { newPerDay: 'x' } } });
+  assert.equal(chosen.newPerDay, 25, 'a number chosen here is the whole day, every deck');
+  assert.equal(Object.values(chosen.decks).reduce((n, d) => n + d.newPerDay, 0), 25);
   // 6 days left, 5 new-days (to exam−2): pace = ceil(100 / 5) = 20; minutes fit (30 − 10/3)/0.75 = 35
-  assert.equal(C.dailyNew({ c: context({ today: '2026-10-03', exam: EXAM }), settings, dueN: 10, priorityLeft: 100 }), 20);
-  assert.equal(C.dailyNew({ c: context({ today: '2026-10-03', exam: EXAM }), settings, dueN: 10, priorityLeft: 1000 }), 35, 'minutes win');
-  assert.equal(C.dailyNew({ c: context({ today: '2026-10-03', exam: null }), settings: { ...settings, exam: { type: null } }, dueN: 0, priorityLeft: 1000 }), 20, 'no date: a steady trickle');
+  assert.equal(at('2026-10-03').decks.b1.newPerDay, 20);
+  // changed: the minutes still win (35 for the day), but situations now take their floor of 4 from the same 35, so
+  // the b1 share is 31 (was 35 when situations had their own budget on top)
+  const short = at('2026-10-03', { priorityLeft: 1000 });
+  assert.equal(short.newPerDay, 35, 'minutes win');
+  assert.equal(short.decks.b1.newPerDay, 31);
+  assert.equal(at('2026-10-03', { exam: null, settings: { ...settings, exam: { type: null } }, priorityLeft: 1000 }).decks.b1.newPerDay, 20, 'no date: a steady trickle');
   // quota split 40 : 15
   const s = state('2026-10-03', {}, { newPerDay: 55 });
   assert.equal(C.quota(s, 'p'), 40); assert.equal(C.quota(s, 'g'), 15);
@@ -244,4 +255,18 @@ test('round slots: a missed or mistakes round never replaces a paused daily roun
   const legacy = { round: { ...missed, kind: 'mistakes' } };
   assert.equal(S.savedRound(legacy, 'today'), null);
   assert.equal(S.savedRound(legacy, 'mistakes').kind, 'mistakes');
+});
+
+test('a new A2 learner\'s first rounds are level-fit (round 3, journey #5): no B1 dass-clause on card 1', () => {
+  const lv = id => data.byId.get(id).level;
+  const s = { ...state('2026-10-03', {}, { exam: null, newPerDay: 8 }), level: 'A2', fresh: true };
+  const first = C.compose(s);
+  assert.equal(first.length, 8);
+  for (const id of first) assert.ok(['A1', 'A2'].includes(lv(id)) || data.byId.get(id).area === 'mistakes', `${id} is ${lv(id)}`);
+  // after the first week his level still comes first; B1 follows when it runs out
+  const later = C.newOrder({ ...s, fresh: false }, data.pool, true).filter(it => it.area !== 'mistakes');
+  const firstB1 = later.findIndex(it => !['A1', 'A2'].includes(it.level));
+  assert.ok(firstB1 > 0 && later.slice(0, firstB1).every(it => ['A1', 'A2'].includes(it.level)));
+  // a B1 learner is unchanged
+  assert.deepEqual(C.compose({ ...s, level: 'B1', fresh: true }), C.compose(state('2026-10-03', {}, { exam: null, newPerDay: 8 })));
 });

@@ -228,3 +228,15 @@ input[type="date"].input { min-height: var(--tap); }
 /* ---------- placeholders ---------- */
 .placeholder { padding-top: var(--s-6); --gap: var(--s-4); max-width: 560px; }
 .placeholder .btn { justify-self: start; }
+
+/* Where you stand (features/today/standing.js): a module bar, then its practice items known and one next action */
+.stand-list { gap: var(--s-3); }
+.stand-row { display: grid; gap: var(--s-1); padding-bottom: var(--s-3); border-bottom: 1px solid var(--hairline); }
+.stand-meta { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-2); align-items: baseline; margin: 0; }
+.stand-weak { font: 600 12px/1.3 var(--font-ui); color: var(--accent-ink); }
+.stand-items:empty { display: none; }
+.stand-act { justify-self: start; min-height: var(--tap); padding-inline: 0; text-align: left; white-space: normal; }
+.stand-words { display: flex; justify-content: space-between; gap: var(--s-3); align-items: center; min-height: var(--tap); margin-top: var(--s-3); color: var(--ink); text-decoration: none; }
+.stand-def, .stand-week { margin-top: var(--s-2); max-width: var(--measure); }
+.hero-def { margin-top: var(--s-1); color: var(--ink-2); }
+.plan-note { margin-top: var(--s-3); max-width: var(--measure); }

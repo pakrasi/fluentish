@@ -28,7 +28,10 @@ import { play as playAudio, stop as stopAudio, prefetchAudio } from '../../servi
 import { recallBar } from './hub.js';
 import { Field } from '../../core/brand.js';
 import { readinessView } from './field.js';
-import { parseClusterKind, itemFor as clusterItem, compose as composeCluster, cardIds as clusterCards, pickIds, typable, zipfOf, buckets as clusterBuckets } from './clusters/items.js';
+import { loadKnowledge } from '../../data/knowledge.js';
+import { knownOf } from '../../domain/standing.js';
+import { parseClusterKind, itemFor as clusterItem, compose as composeCluster, cardIds as clusterCards, pickIds, typable, zipfOf, buckets as clusterBuckets, NEW_PER_ROUND } from './clusters/items.js';
+import { clusterToday } from './plan.js';
 import * as RS from '../../domain/roundsize.js';
 import { sizedKind } from './sizes.js';
 import { loadClusters, dueCards as clusterDue, update as updateClusters, dayOf as clusterDay, recallOf, DECK as CLUSTER_DECK } from './clusters/data.js';
@@ -151,7 +154,11 @@ export async function mountRound(el, ctx) {
       const c0 = st.c, cards0 = store.cards(deck) || {};
       const pool = ck.key ? clusterCards(clusters.ix.byKey.get(ck.key), clusters.ix) : ck.pick ? picked : clusterDue(store, c0);
       const mk = marked(store);
-      const co = { ids: pool, cards: cards0, c: c0, isDue: (/** @type {any} */ rec) => RD.isDue(rec, c0.today, c0), recall: recallOf(c0), skip: (/** @type {string} */ id) => skipsNew(mk, id), zipf: zipfOf(clusters.ix) };
+      // new cluster cards take the clusters' share of the day's allowance (paused in exam week); a pick from the map
+      // takes all its words (it may go over: they count as shown today, so the other decks' share shrinks)
+      const clNew = clusterToday({ store, c: c0, settings: ctx.settings() }).newLeft;
+      const co = { ids: pool, cards: cards0, c: c0, isDue: (/** @type {any} */ rec) => RD.isDue(rec, c0.today, c0), recall: recallOf(c0), skip: (/** @type {string} */ id) => skipsNew(mk, id), zipf: zipfOf(clusters.ix),
+        newLeft: clNew, newCap: Math.min(NEW_PER_ROUND, clNew) };
       ids = sized && sized !== 'rec' ? RS.pick(clusterBuckets(co), sized).ids
         : composeCluster({ ...co, ...(ck.pick ? { size: picked.length, newCap: picked.length } : {}) }).ids;
       if (ck.due) ids = ids.filter(id => cards0[id]?.reps);
@@ -758,8 +765,10 @@ function drawDone(el, ctx, data, round, backTo) {
   const short = (/** @type {any} */ it) => it.model || it.prompt;
   const list = (/** @type {string} */ title, /** @type {any[]} */ items) => items.length ? h('section', { class: 'pr-list' }, h('h2', null, title),
     h('ul', { class: 'list' }, items.map(it => h('li', { class: 'list-item', lang: 'de' }, short(it))))) : null;
-  const exam = c.exam && c.phase !== 'after' && c.phase !== 'none';
-  const bar = recallBar(a.recall, a.coverage, t('practice.area.bar', { recall: `${p1(a.recall)} %`, seen: `${p1(a.coverage)} %` }));
+  // the exam items known before and after the round: the one definition of known (domain/knowledge.js, Where you
+  // stand), which a round never lowers; filled in once the knowledge score is loaded
+  const bar = recallBar(0, a.coverage, t('practice.area.bar', { recall: '', seen: `${p1(a.coverage)} %` }));
+  const knownEl = h('b', { class: 'tnum' }, '…');
   const anotherHref = round.kind === 'today' || round.kind === 'mistakes' || round.kind === 'missed' ? '#/practice/round' : S.roundHref(round);
   // the brand moment: the atmosphere breathes once behind the result, and the field shows the round's right answers
   // landing in the exam pool
@@ -769,9 +778,7 @@ function drawDone(el, ctx, data, round, backTo) {
     lines: [sum.late ? t('practice.late', { n: sum.late }) : null, sum.partial ? t('practice.partialN', { n: sum.partial }) : null, sum.fixedLast ? t('practice.lastFixed') : null,
       sum.known.length ? t('practice.know.inRound', { n: sum.known.length }) : null],
     data: view ? h('div', { class: 'pr-ready' },
-      h('p', { class: 'pr-ready-top' }, h('span', { class: 'label' }, exam ? t('practice.readyFor', { date: label(c.exam) }) : t('practice.readyNow')),
-        h('b', { class: 'tnum' }, `${p1(b.recall)}% → ${p1(a.recall)}%`)), bar, fieldEl,
-      Math.abs(a.recall - b.recall) < 0.0005 ? h('p', { class: 'caption' }, t('practice.repeats')) : null) : null });
+      h('p', { class: 'pr-ready-top' }, h('span', { class: 'label' }, t('practice.knownItems')), knownEl), bar, fieldEl) : null });
   replace(el, h('div', { class: 'practice pr-done stack' },
     hero.el,
     h('p', { class: 'pr-next' }, more ? t(write ? (wDue ? 'practice.write.nextUp' : 'practice.write.nextNew') : 'practice.nextUp', write ? { due: wDue, n: C.newLeftOf(st, 'w') } : { due: st.dueN, n: C.newLeft(st) }) : t('practice.allDone', { n: tomorrow })),
@@ -782,8 +789,18 @@ function drawDone(el, ctx, data, round, backTo) {
       h('ul', { class: 'list' }, sum.back.map((/** @type {any} */ it) => h('li', { class: 'list-item' }, h('span', { lang: 'de' }, short(it)),
         sum.fixed.includes(it) ? h('span', { class: 'caption' }, t('practice.list.fixedTag')) : null)))) : null,
     list(t('practice.list.new'), sum.news)));
-  requestAnimationFrame(() => fill(bar, b.recall));
-  setTimeout(() => fill(bar, a.recall), reduced() ? 0 : 380);
+  if (view) {
+    /** @type {Record<string, any>} */ const patch = {};
+    for (const [id, r] of Object.entries(round.prev || {})) patch[id] = r || null;
+    const ids = pool.map((/** @type {any} */ it) => it.id);
+    Promise.all([loadKnowledge(ctx, { patch: { b1: patch } }), loadKnowledge(ctx)]).then(([kb, ka]) => {
+      const known = (/** @type {any} */ k) => knownOf(ids, id => k.get(k.maps.resolve(id, 'b1') || id)).known;
+      const nb = known(kb), na = known(ka), n = ids.length || 1;
+      knownEl.textContent = t('practice.knownOf', { b: nb, a: na, n: ids.length });
+      requestAnimationFrame(() => fill(bar, nb / n));
+      setTimeout(() => fill(bar, na / n), reduced() ? 0 : 380);
+    }).catch(() => { knownEl.textContent = ''; });
+  }
   /** @type {Field | null} */ let field = null;
   if (view && fieldEl) {
     const rightIds = new Set(round.results.filter((/** @type {any} */ r) => r.first && r.ok).map((/** @type {any} */ r) => r.id));

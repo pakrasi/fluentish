@@ -4,7 +4,10 @@
    - relearn: a lapse today; one correct reinsertion → due tomorrow.
    - stage 0..3 picks the timer multiplier (1.5 new · 1.2 young · 1.0 review · 0.8 automatic). Capped at 2 until the exam.
    - hist: [[date, rating 1-4, ms, mode 't'|'s', flags]] (last 12). flags: l log-only, r self-repair, c capitals,
-     y typo, u umlaut, o over time, p phrase right but the rest of the sentence not, a Claude verdict, d<cls> detector class.
+     y typo, u umlaut, o over time, p phrase right but the rest of the sentence not, a Claude verdict, d<cls> detector class,
+     v a study step (o.study: "Show me" on an item never seen; logged as 1 with v, never counted as a miss).
+   - A study step starts the card's learning steps without rating it: S and D are set by the first answer he actually
+     gives (the in-round retry), so showing a new item never makes it a harder card and is never a lapse.
    Only the first attempt of the day changes S/D/due (P12); later ones only log. On the exam day nothing is written. */
 import * as D8 from './days.js';
 const W = [0.4872, 1.4003, 3.7145, 13.8206, 5.1618, 1.2298, 0.8975, 0.031, 1.6474, 0.1367, 1.0461, 2.1072, 0.0793, 0.3246, 1.587, 0.2272, 2.8755];
@@ -58,11 +61,13 @@ function staircase(rec, g, onTime, phase) {
   else if (g <= 2) { rec.stage = Math.max(0, (rec.stage || 0) - 1); rec.streak = 0; }
   if (rec.S < 3) rec.stage = Math.min(rec.stage, 1);
 }
-// One answer. o = {g, ms, onTime, mode, flags, src?}. ctx = {today, exam, phase, forecast(day)}, now (ms, for u).
+// One answer. o = {g, ms, onTime, mode, flags, src?, study?}. ctx = {today, exam, phase, forecast(day)}, now (ms, for u).
+// study: a new item shown before any answer (Show me): its learning steps start, nothing is rated (see the header).
 // Returns {rec, reinsert: null | 'learn' | 'lapse', wrote: bool}
 function schedule(rec0, o, ctx, now = Date.now()) {
   const t = ctx.today, g = o.g;
-  const entry = [t, g, Math.round(o.ms || 0), o.mode || 't', o.flags || ''];
+  const entry = [t, g, Math.round(o.ms || 0), o.mode || 't', (o.flags || '') + (o.study && !String(o.flags || '').includes('v') ? 'v' : '')];
+  const studied = (/** @type {any} */ r) => (r.hist || []).length > 0 && r.hist.every((/** @type {any[]} */ h) => String(h[4] || '').includes('v'));
   const log = rec => { rec.hist = [...(rec.hist || []), entry].slice(-12); rec.u = now; };
   if (ctx.phase === 'day' || o.logOnly) {
     if (!rec0) return { rec: null, reinsert: null, wrote: false };
@@ -71,13 +76,15 @@ function schedule(rec0, o, ctx, now = Date.now()) {
   }
   let rec, reinsert = null, wrote = true;
   if (!rec0 || !rec0.reps) {
-    rec = { ...init(g), reps: 1, lapses: 0, last: t, first: t, stage: 0, streak: 0, learn: g >= 3 ? 1 : 0, relearn: false, due: t, hist: rec0?.hist || [] };
+    rec = { ...init(o.study ? 3 : g), reps: 1, lapses: 0, last: t, first: t, stage: 0, streak: 0, learn: g >= 3 && !o.study ? 1 : 0, relearn: false, due: t, hist: rec0?.hist || [] };
     // where the item was first met (exam, speech, practice, lookup, script): added to new records only, for Explore
     const src = rec0?.src || o.src;
     if (src) rec = { ...rec, src };
     reinsert = 'learn';
   } else if (rec0.learn != null) {
     rec = { ...rec0 };
+    // the first real answer after a study step sets the card's S and D
+    if (!o.study && studied(rec0)) { const s0 = init(g); rec.S = s0.S; rec.D = s0.D; }
     if (rec.last === t) entry[4] += 'l'; else rec.last = t;
     if (g >= 3) rec.learn++;
     if (rec.learn >= 2) { rec.learn = null; rec.due = D8.add(t, 1); rec.stage = Math.max(rec.stage || 0, 0); }

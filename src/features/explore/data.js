@@ -80,6 +80,17 @@ export async function scores(ctx, A) {
   };
 }
 
+/**
+ * Known items on the whole map, of all of them: the one count Today's Where you stand and the map's total show
+ * (domain/standing.js). Every map item once, whatever the mode; "known" is the knowledge score's state.
+ * @param {any} A loadAtlas() @param {{st: Uint8Array}} K scores()
+ */
+export function totals(A, K) {
+  let known = 0;
+  for (let i = 0; i < A.n; i++) if (K.st[i] === STATE_CODE.known) known++;
+  return { known, n: A.n };
+}
+
 /** @type {Promise<any> | null} */ let details = null;
 /**
  * What a word card needs beyond the map: the word list entries, the phrases' English and examples, the concepts, and

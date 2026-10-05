@@ -82,7 +82,7 @@ export async function mount(el, ctx) {
     }
     if (step === 'time') {
       return [h('h1', { id: 'step-q' }, t('welcome.time')),
-        choices('minutes', config.minutesOptions.map(n => /** @type {[string, string, string]} */ ([String(n), t('unit.min', { n }), t(`welcome.time.${n}`)])), String(state.minutes), v => { state.minutes = Number(v); })];
+        choices('minutes', config.minutesOptions.map(n => /** @type {[string, string, string]} */ ([String(n), t('unit.min', { n }), t(`welcome.time.${n}${(state.examType && state.examType !== 'other') || !(n === 60 || n === 90) ? '' : '.noExam'}`)])), String(state.minutes), v => { state.minutes = Number(v); })];
     }
     // summary: the plan that follows from the answers
     const lang = manifest.languages.find((/** @type {any} */ l) => l.id === state.language);

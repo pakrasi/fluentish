@@ -9,7 +9,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { context } from '../../src/core/clock.js';
 import * as S from '../../src/features/practice/sim.js';
-import { simBudget } from '../../src/domain/budget.js';
+import { allowance } from '../../src/domain/budget.js';
 import { kindOf } from '../../src/domain/itemids.js';
 import { planItems, simToday } from '../../src/features/practice/plan.js';
 import { build, serialise, SRC, VOICES } from '../../tools/build-speak.mjs';
@@ -251,12 +251,16 @@ const t = (k, v = {}) => `${k}${Object.keys(v).length ? ' ' + JSON.stringify(v) 
 /** A store with decks (the plan reads cards('b1') and cards('speak')). */
 const store = ({ b1 = {}, speak = {}, kv = {} } = {}) => ({ cards: deck => (deck === 'speak' ? speak : deck === 'b1' ? b1 : {}), get: (n, f) => (n in kv ? kv[n] : f) });
 
-test('simBudget: new situations scale with the minutes, none on the eve; a new card counts twice', () => {
-  assert.deepEqual(simBudget({ c, settings, dueN: 3 }), { newPerDay: 10, newLeft: 10, cards: 23, minutes: 5 });
-  assert.equal(simBudget({ c, settings: { ...settings, minutesPerDay: 15 }, dueN: 0 }).newPerDay, 4);
-  assert.equal(simBudget({ c, settings, dueN: 0, newShown: 8, unseen: 1 }).newLeft, 1);
+test('situations: their share of the one allowance scales with the minutes, none on the eve; a new card counts twice', () => {
+  // round 3: simBudget is gone; situations are the speak deck's share of the one allowance (domain/budget.js).
+  const sp = (/** @type {any} */ o, cc = c, st = settings) => allowance({ c: cc, settings: st, decks: { speak: o } }).decks.speak;
+  const x = sp({ due: 3 });
+  assert.deepEqual([x.newPerDay, x.newLeft, x.due + 2 * x.newLeft, x.minutes], [10, 10, 23, 5]);
+  assert.equal(sp({ due: 0 }, c, { ...settings, minutesPerDay: 15 }).newPerDay, 4);
+  assert.equal(sp({ due: 0, shown: 8, open: 1 }).newLeft, 1);
   const eve = context({ today: '2026-10-08', exam: EXAM });
-  assert.deepEqual(simBudget({ c: eve, settings, dueN: 0 }), { newPerDay: 0, newLeft: 0, cards: 0, minutes: 0 });
+  const e = sp({ due: 0 }, eve);
+  assert.deepEqual([e.newPerDay, e.newLeft, e.minutes], [0, 0, 0]);
 });
 
 test('Today: a situations row from deck speak, kept out of the B1 review count; done after a round', () => {
@@ -269,7 +273,8 @@ test('Today: a situations row from deck speak, kept out of the B1 review count; 
   assert.equal(row.introducesNew, false);
   const review = rows.find(r => r.id === 'practice.round');
   assert.ok(!review || review.kind === 'new', 'situations never count as B1 reviews');
-  assert.deepEqual(simToday({ store: s, c, settings }), { newPerDay: 10, newLeft: 3, cards: 7, minutes: 2, due: 1, roundsToday: 0 });
+  // (round 3: the day's share is never more than what is open, so newPerDay is 3 here, not the minutes' 10)
+  assert.deepEqual(simToday({ store: s, c, settings }), { newPerDay: 3, newLeft: 3, cards: 7, minutes: 2, due: 1, roundsToday: 0 });
   // nothing left after a round today: the row shows done
   const done = store({ speak: { 'SS:greet-01': learntRec({ due: '2026-10-06' }) }, kv: { 'speak.sim': { stats: { day: '2026-10-04', unseen: 0 }, day: { day: '2026-10-04', newShown: 3, rounds: 1 } } } });
   assert.equal(planItems({ store: done, c, settings, exam: null, t }).find(r => r.id === 'practice.situations').done, true);
