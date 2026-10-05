@@ -24,7 +24,7 @@
      vocab.events                carried over from the legacy apps for the stage-B features */
 import { uuidv7, isoWithOffset } from './ids.js';
 
-export const DEVICE_SCOPE = new Set(['prefs', 'secrets']);
+export const DEVICE_SCOPE = new Set(['prefs', 'secrets', 'palace']);
 const DEBOUNCED = new Set(['settings', 'prefs', 'ui', 'activity']);
 const DEBOUNCE_MS = 250;
 
