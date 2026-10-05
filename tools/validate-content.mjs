@@ -47,6 +47,7 @@ for (const e of validateBank(JSON.parse(speakText), { chunkIds, frameIds })) err
   try {
     if (withAdded(wordsText, JSON.parse(readFileSync(path.join(ROOT, 'authoring/clusters/words-added.de.json'), 'utf8'))) !== wordsText) errors.push('content/igloo/words/de.json lacks the cluster words: run node tools/build-clusters.mjs');
     const words = JSON.parse(wordsText);
+    errors.push(...glossErrors(words, JSON.parse(readFileSync(path.join(ROOT, 'authoring/clusters/words-added.de.json'), 'utf8'))));
     const clustersText = readFileSync(CLUSTERS_OUT, 'utf8');
     if (serialiseClusters(buildClusters(words)) !== clustersText) errors.push('content/clusters/de.json is out of date: run node tools/build-clusters.mjs');
     const themes = JSON.parse(readFileSync(path.join(ROOT, 'content/igloo/words/themes.json'), 'utf8')).map((/** @type {any} */ t) => t.id);
@@ -58,6 +59,27 @@ try {
   const atlasText = readFileSync(ATLAS_OUT, 'utf8');
   if (buildAtlas(atlasSources(), JSON.parse(readFileSync(ATLAS_METRICS, 'utf8')), JSON.parse(atlasText)) !== atlasText) errors.push('content/atlas/de.json is out of date: run node tools/build-atlas.mjs');
 } catch (e) { errors.push(`atlas: ${/** @type {Error} */ (e).message}`); }
+/**
+ * English glosses are prompts (Word clusters, Look up): no authoring notes left in them ("passport - add alt der
+ * Reisepass", "reality - accept Wirklichkeit"), and a word added for the clusters never shows the same prompt as
+ * another word (its first three glosses), or the learner can't tell which German word is meant. The older list has a
+ * few synonym pairs with one prompt (Zimmer, Raum); those are not checked here.
+ * @param {any[]} words @param {any[]} added
+ */
+function glossErrors(words, added) {
+  const out = [];
+  const NOTE = /\s[-–]\s.*\b(accept|alt)\b|\badd alt\b|\bor accept\b/i;
+  for (const w of words) for (const e of w.en || []) if (NOTE.test(e)) out.push(`words ${w.id}: gloss ${JSON.stringify(e)} carries an authoring note`);
+  const shown = (/** @type {any} */ w) => (w.en || []).slice(0, 3).join('; ').trim().toLowerCase();
+  const by = new Map();
+  for (const w of words) { const k = shown(w); if (k) by.set(k, [...(by.get(k) || []), w.id]); }
+  for (const a of added) {
+    const ids = by.get(shown(a)) || [];
+    if (ids.length > 1) out.push(`words ${a.id}: prompt ${JSON.stringify(shown(a))} is also ${ids.filter(i => i !== a.id).join(', ')}'s; add a disambiguator in brackets`);
+  }
+  return out;
+}
+
 if (errors.length) {
   console.error(`validate-content: ${errors.length} problem(s)`);
   errors.slice(0, 60).forEach(e => console.error('  ' + e));
