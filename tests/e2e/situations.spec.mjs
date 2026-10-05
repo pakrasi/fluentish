@@ -22,7 +22,7 @@ const fakeRecogniser = () => {
 };
 
 test('a situation is heard first: the words wait behind Show the words', async ({ page }) => {
-  await seed(page, { examInDays: null, motion: 'full' });
+  await seed(page, { veteran: true, examInDays: null, motion: 'full' });
   await open(page, '#/practice/situations/round?pick=mixed');
   const card = page.locator('.sim-card');
   await expect(card).toBeVisible();
@@ -43,7 +43,7 @@ test('a situation is heard first: the words wait behind Show the words', async (
 });
 
 test('with reduced motion the line is always on screen', async ({ page }) => {
-  await seed(page, { examInDays: null, motion: 'reduce' });
+  await seed(page, { veteran: true, examInDays: null, motion: 'reduce' });
   await open(page, '#/practice/situations/round?pick=mixed');
   await expect(page.locator('.sim-them .sim-line')).toBeVisible();
   await expect(page.getByRole('button', { name: 'Show the words' })).toBeHidden();
@@ -51,7 +51,7 @@ test('with reduced motion the line is always on screen', async ({ page }) => {
 
 test('Check with the mic inside a situation: the phrase heard, a suggested grade, the card graded', async ({ page }) => {
   await page.addInitScript(fakeRecogniser);
-  await seed(page, { examInDays: null });
+  await seed(page, { veteran: true, examInDays: null });
   await open(page, '#/practice/situations/round?pick=mixed');
   const card = page.locator('.sim-card');
   const toggle = card.getByRole('button', { name: 'Check with the mic' });
@@ -79,7 +79,7 @@ test('Check with the mic inside a situation: the phrase heard, a suggested grade
 
 test('Say it aloud folded into Sprechen: its old routes open the situations, the mic check stays', async ({ page }) => {
   await page.addInitScript(fakeRecogniser);
-  await seed(page, { examInDays: null });
+  await seed(page, { veteran: true, examInDays: null });
   await open(page, '#/practice/speak');
   await expect(page.locator('#view')).not.toContainText('Say it aloud');
   await expect(page.locator('a[href="#/practice/situations"]')).toBeVisible();

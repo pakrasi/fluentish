@@ -1,8 +1,8 @@
 import { test, expect, seed, open, checkA11y, storedCards } from './fixtures.mjs';
 
 test('Word building: the hub, then one card of a review round', async ({ page }) => {
-  // no exam date: Word building is a side deck, and a learner without an exam week gets its new cards
-  await seed(page, { examInDays: null });
+  // no exam date and past his first week: maintenance, where Word building gets its share of the day's new items
+  await seed(page, { examInDays: null, veteran: true });
   await open(page, '#/practice/build');
   await checkA11y(page, 'Word building');
   await page.locator('a[href^="#/practice/build/round"]').first().click();

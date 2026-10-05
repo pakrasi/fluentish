@@ -205,13 +205,14 @@ export { expect };
  * A synthetic learner: one local profile, onboarded, German B1 with a Goethe B1 goal `examInDays` away, written into
  * IndexedDB through the app's own data layer (the stamped modules), before the app boots.
  * @param {import('@playwright/test').Page} page
- * @param {{examInDays?: number | null, level?: string, minutes?: number, token?: boolean, motion?: 'reduce' | 'full' | 'system', cards?: Record<string, Record<string, any>>, kv?: Record<string, any>, origin?: string}} [o]
- *   origin: another e2e server than the config's (the offline spec)
+ * @param {{examInDays?: number | null, level?: string, minutes?: number, token?: boolean, motion?: 'reduce' | 'full' | 'system', cards?: Record<string, Record<string, any>>, kv?: Record<string, any>, origin?: string, veteran?: boolean}} [o]
+ *   origin: another e2e server than the config's (the offline spec); veteran: he started studying a month ago (past
+ *   the first week, whose plan is level-fit with few decks: domain/budget.js mode 'start')
  */
-export async function seed(page, { examInDays = 60, level = 'B1', minutes = 60, token = false, motion = 'reduce', cards = {}, kv = {}, origin = '' } = {}) {
+export async function seed(page, { examInDays = 60, level = 'B1', minutes = 60, token = false, motion = 'reduce', cards = {}, kv = {}, origin = '', veteran = false } = {}) {
   await leaveQuietly(page);
   await page.goto(`${origin}${APP}version.json`);
-  await page.evaluate(async ({ sha, examInDays, level, minutes, token, fake, motion, cards, kv }) => {
+  await page.evaluate(async ({ sha, examInDays, level, minutes, token, fake, motion, cards, kv, veteran }) => {
     const v = `/fluentish/v/${sha}/src/`;
     const [{ createIdbAdapter }, { openSession }, { setSetting }, clockM] = await Promise.all([
       import(v + 'data/adapters/idb.js'), import(v + 'data/session.js'), import(v + 'data/settings.js'), import(v + 'core/clock.js')]);
@@ -229,12 +230,13 @@ export async function seed(page, { examInDays = 60, level = 'B1', minutes = 60, 
     // motion off by default: the tests wait for content, not for animations (one spec turns it on)
     s.store.set('prefs', { theme: 'light', motion, locale: 'en' });
     if (token) s.store.set('secrets', { anthropicKey: null, githubToken: fake });
+    if (veteran) s.store.set('activity', { [clockM.add(clock.today(), -30)]: { minutes: 30, rounds: 2 } });
     for (const [name, value] of Object.entries(kv)) s.store.set(name, value);
     for (const [deck, recs] of Object.entries(cards)) s.store.putCards(deck, Object.entries(recs));
     await s.store.flush();
     s.store.close();
     adapter.close?.();
-  }, { sha: SHA, examInDays, level, minutes, token, fake: FAKE_TOKEN, motion, cards, kv });
+  }, { sha: SHA, examInDays, level, minutes, token, fake: FAKE_TOKEN, motion, cards, kv, veteran });
 }
 
 /**
