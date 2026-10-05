@@ -25,7 +25,8 @@ export function loadAtlas(ctx) {
       const W = new Float32Array(n), AW = new Float32Array(n), F = new Float32Array(n);
       for (let i = 0; i < n; i++) { W[i] = I.w[i] / 10; AW[i] = I.aw[i] / 10; F[i] = I.f[i] / 100; }
       const index = new Map(I.id.map((/** @type {string} */ id, /** @type {number} */ i) => [id, i]));
-      return { n, ids: /** @type {string[]} */ (I.id), text: /** @type {string[]} */ (I.t), art: I.a.map((/** @type {number} */ a) => ARTICLES[a]),
+      // a phrase's slot ("dass [Satz]") reads as an ellipsis, the way it is said
+      return { n, ids: /** @type {string[]} */ (I.id), text: /** @type {string[]} */ (I.t.map((/** @type {string} */ x) => x.replace(/\[[^\]]*\]/g, '…'))), art: I.a.map((/** @type {number} */ a) => ARTICLES[a]),
         kind: I.k.map((/** @type {number} */ k) => KINDS[k]), level: I.L.map((/** @type {number} */ l) => LEVELS[l] || ''), pos: I.p, W, AW, F, index, modes: m.modes, unit: m.unit };
     });
     memo.catch(() => { memo = null; });
@@ -86,7 +87,18 @@ export async function scores(ctx, A) {
 export function loadDetails(ctx, maps) {
   if (!details) {
     const get = (/** @type {string} */ id) => ctx.content.load(id).catch(() => null);
-    details = Promise.all([get('igloo.chunks.german'), get('igloo.chunks.en'), get('b1.plan')]).then(([de, en, plan]) => {
+    details = Promise.all([get('igloo.chunks.german'), get('igloo.chunks.en'), get('b1.plan'), get('b1.bank'), get('b1.items'), get('b1.grammar')]).then(([de, en, plan, bank, items, grammar]) => {
+      // what Practice rounds can ask (#/practice/round?kind=pick:…): the speaking bank's phrases (K:), a B1 item that is
+      // a phrase's twin (asked under its own id), the B1 grammar items (G:, BG:)
+      /** @type {Map<string, string>} */ const twinOf = new Map();
+      for (const it of items || []) if (it.chunk && !twinOf.has(it.chunk)) twinOf.set(it.chunk, it.id);
+      const bankIds = new Set(Object.keys(bank || {}));
+      const askable = new Set([...((grammar || []).map((/** @type {any} */ g) => `G:${g.id}`)), ...(items || []).filter((/** @type {any} */ it) => String(it.id).startsWith('BG:')).map((/** @type {any} */ it) => it.id)]);
+      /** The round id of a map item or a grammar item, or null when no round asks it. @param {string} id */
+      const roundId = id => {
+        if (id.startsWith('K:')) { const cid = id.slice(2); return twinOf.get(cid) || (bankIds.has(cid) ? id : null); }
+        return askable.has(id) ? id : null;
+      };
       const words = new Map((maps.words || []).map((/** @type {any} */ w) => [w.id, w]));
       const ix = maps.clusters ? clusterIndex(maps.clusters, maps.words || []) : null;
       /** @type {Map<string, string>} */ const famOf = new Map();
@@ -94,7 +106,7 @@ export function loadDetails(ctx, maps) {
       /** @type {Map<string, string>} */ const topicOfConcept = new Map();
       for (const t of plan?.topics || []) for (const c of t.concepts || []) if (!topicOfConcept.has(c)) topicOfConcept.set(c, t.id);
       return { words, chunksDe: de?.chunks || {}, chunksEn: new Map((en || []).map((/** @type {any} */ c) => [c.id, c])), concepts: new Map((maps.conceptList || []).map((/** @type {any} */ c) => [c.id, c])),
-        ix, families: new Map((maps.clusters?.families || []).map((/** @type {any} */ f) => [f.id, f])), famOf, topicOfConcept };
+        ix, families: new Map((maps.clusters?.families || []).map((/** @type {any} */ f) => [f.id, f])), famOf, topicOfConcept, roundId };
     });
     details.catch(() => { details = null; });
   }
