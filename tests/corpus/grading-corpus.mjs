@@ -13,6 +13,7 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { RIGHT_VARIANTS } from './right-variants.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 export const ROOT = path.resolve(HERE, '../..');
@@ -419,6 +420,31 @@ export const SCHREIBEN_HELD = [
   ['BX:a3-laerm-nachbar-p2', 'Es war so laut, weil wir haben gefeiert.', 'wrong', 'haben second in a weil clause'],
   ['BX:a3-kurs-anfrage-p2', 'Ich würde gern wissen, ob kann man den Kurs abends machen.', 'wrong', 'verb right after ob'],
   ['BX:a1-neue-stelle-p3', 'Wie wäre es, wenn wir am Sonntag gehen zusammen essen?', 'wrong', 'finite verb before the infinitive in a wenn clause'],
+  // round 3: wrong answers aimed at the new rest-of-sentence rules (particles in slots, another accepted sentence,
+  // words borrowed from the model) and at the new accepted patterns
+  ['BS:a3-tut-mir-leid-aber', 'Es tut mir sehr leid, aber ich kann nicht zum Gespräch teilnehmen.', 'wrong', 'teilnehmen an, not zu (borrowed slot words)'],
+  ['BS:a2-rainer-schreibt-dass', 'Rainer meint, Menschen mit einer Vier-Tage-Woche faul sind.', 'wrong', 'verb last without dass'],
+  ['BS:a1-hoffe-es-geht-dir-gut', 'Ich hoffe, es dir gut geht.', 'wrong', 'verb last without dass'],
+  ['BS:a1-denn', 'Ich kann leider nicht kommen, weil ich muss arbeiten.', 'wrong', 'verb not at the end after weil'],
+  ['BS:a2-stimme-teilweise-zu', 'Ich nur stimme Rainer teilweise zu.', 'wrong', 'a particle before the verb'],
+  ['BS:a1-obwohl', 'Die Wohnung gefällt mir sehr gut, obwohl sie ist klein.', 'wrong', 'verb not at the end after obwohl'],
+  ['BX:a3-laerm-nachbar-p1', 'Ich möchte mich für den Lärm am Samstag entschuldige.', 'wrong', 'infinitive ending'],
+  ['BS:a1-hast-du-lust', 'Hast du am Samstag Lust, mit mir ins Kino gehen?', 'wrong', 'no zu'],
+  ['BS:a1-einverstanden-dann', 'Einverstanden! Dann wir treffen uns um sieben.', 'wrong', 'V2 after dann'],
+  ['BS:a2-deshalb-glaube-ich', 'Daher glaube ich, dass die Vier-Tage-Woche ist eine gute Idee.', 'wrong', 'verb not at the end after dass'],
+  ['BS:a3-wuerde-ihnen-passen', 'Passt es Sie am Dienstag um 10 Uhr?', 'wrong', 'Sie for Ihnen'],
+  ['BS:a1-dank-deine-email', 'Vielen lieben Dank für deine lieben E-Mail.', 'wrong', 'adjective ending'],
+  ['BS:a2-als-ich-student-war', 'Als ich Student war, ich arbeitete am Wochenende.', 'wrong', 'no inversion after the als clause'],
+  ['BS:a3-in-zukunft', 'In Zukunft gebe ich Sie vorher Bescheid.', 'wrong', 'Sie for Ihnen'],
+  ['BS:a2-bin-dagegen-dass', 'Ich bin gegen die Abschaffung der Bargelds.', 'wrong', 'genitive article'],
+  ['BS:a1-uebrigens-umgezogen', 'Übrigens bin ich in einer neuen Wohnung umgezogen.', 'wrong', 'dative after in with movement'],
+  ['BS:a2-beispiel-dafuer', 'Mein Bruder ist ein guter Beispiel dafür.', 'wrong', 'adjective ending'],
+  ['BS:a1-kann-dir-empfehlen', 'Dieses Handy kann ich dich wirklich empfehlen.', 'wrong', 'dich for dir'],
+  ['BS:a1-schlage-vor-dass', 'Ich würde vorschlagen, dass wir treffen uns am Bahnhof.', 'wrong', 'verb not at the end after dass'],
+  ['BS:a1-wie-du-weisst', 'Wie du weißt, ich bin letzten Monat nach Hamburg umgezogen.', 'wrong', 'no inversion after the wie clause'],
+  ['BS:a1-trotzdem', 'Die Wohnung ist klein. Dennoch ich fühle mich dort wohl.', 'wrong', 'V2 after dennoch'],
+  ['BS:a1-gern-kommen-aber', 'Ich würde sehr gern kommen, aber am Samstag ich habe schon etwas vor.', 'wrong', 'V2 after am Samstag'],
+  ['BS:a1-du-solltest', 'Du solltest unbedingt eine warme Jacke mitnimmst.', 'wrong', 'finite verb for the infinitive'],
   // right
   // the German review, round 2: plain right answers that were graded wrong
   ['BS:a1-toll-dass-stelle', 'Toll, dass du den Job bekommen hast!', 'right', 'den Job'],
@@ -451,6 +477,42 @@ export const SCHREIBEN_HELD = [
   ['BX:a3-laerm-nachbar-p2', 'Es war so laut, weil wir meinen Geburtstag gefeiert haben und viele Gäste da waren.', 'right', 'two clauses'],
   ['BX:a3-laerm-nachbar-p3', 'In Zukunft sage ich allen Nachbarn vorher Bescheid.', 'right', 'Bescheid sagen'],
 ];
+
+/* ---------- right variants made from a model sentence (round 3): swaps that keep the German right ---------- */
+// Each one is right wherever the model has the word: deshalb and deswegen are only ever the causal adverb (unlike
+// darum, daher), trotzdem/dennoch, E-Mail/Mail, a sentence-initial Vielen/Herzlichen Dank, and the Präteritum of sein
+// and haben for their Perfekt (ist … gewesen → war, hat … gehabt → hatte), which keeps the verb's place.
+const PRAET = { bin: 'war', bist: 'warst', ist: 'war', sind: 'waren', seid: 'wart', habe: 'hatte', hast: 'hattest', hat: 'hatte', haben: 'hatten', habt: 'hattet' };
+/** @param {string} s @returns {{cls: string, text: string}[]} */
+export function variantsOf(s) {
+  const out = [];
+  const swap = (/** @type {RegExp} */ re, /** @type {string} */ to, /** @type {string} */ cls) => {
+    if (!re.test(s)) return;
+    out.push({ cls, text: s.replace(re, w => /^\p{Lu}/u.test(w) ? to[0].toUpperCase() + to.slice(1) : to) });
+  };
+  swap(/(?<![\p{L}-])[Dd]eshalb(?![\p{L}-])/gu, 'deswegen', 'variant (auto): deshalb → deswegen');
+  swap(/(?<![\p{L}-])[Dd]eshalb(?![\p{L}-])/gu, 'daher', 'variant (auto): deshalb → daher');
+  swap(/(?<![\p{L}-])[Dd]eswegen(?![\p{L}-])/gu, 'deshalb', 'variant (auto): deswegen → deshalb');
+  swap(/(?<![\p{L}-])[Tt]rotzdem(?![\p{L}-])/gu, 'dennoch', 'variant (auto): trotzdem → dennoch');
+  swap(/(?<![\p{L}-])E-Mail(?![\p{L}-])/gu, 'Mail', 'variant (auto): E-Mail → Mail');
+  if (/^Vielen Dank\b/.test(s)) out.push({ cls: 'variant (auto): Herzlichen Dank', text: s.replace(/^Vielen Dank/, 'Herzlichen Dank') });
+  // Perfekt of sein/haben → Präteritum, one clause at a time
+  for (const [part, cls] of [['gewesen', 'variant (auto): ist … gewesen → war'], ['gehabt', 'variant (auto): hat … gehabt → hatte']]) {
+    const T = toks(s), k = T.findIndex(t => t.w === part);
+    if (k < 0) continue;
+    // the auxiliary of the same clause: before the participle, after the last comma or full stop before it
+    const from = Math.max(0, ...[...s.slice(0, T[k].i).matchAll(/[,.;:!?]/g)].map(m => /** @type {number} */ (m.index)));
+    const aux = [...T.slice(0, k + 2)].filter(t => t.i >= from && PRAET[t.w.toLowerCase()] && (part === 'gewesen' ? /^(bin|bist|ist|sind|seid)$/i : /^(habe|hast|hat|haben|habt)$/i).test(t.w));
+    if (aux.length !== 1) continue;
+    const a = aux[0], p = T[k];
+    const nw = PRAET[a.w.toLowerCase()], rep = /^\p{Lu}/u.test(a.w) ? nw[0].toUpperCase() + nw.slice(1) : nw;
+    // the auxiliary after the participle (verb-final clause): "… krank gewesen ist" → "… krank war"
+    const text = a.i > p.i ? s.slice(0, p.i) + rep + s.slice(a.e) : s.slice(0, a.i) + rep + s.slice(a.e, p.i).replace(/\s+$/, '') + s.slice(p.e);
+    out.push({ cls, text });
+  }
+  const seen = new Set([s]);
+  return out.filter(x => !seen.has(x.text) && seen.add(x.text));
+}
 
 /* ---------- the corpus ---------- */
 const typeOf = it => {
@@ -714,6 +776,16 @@ export async function buildCorpus({ root = ROOT } = {}) {
     }
   }
   for (const [id, text, kind] of CURATED_RIGHT) { const it = data.byId.get(id); if (it) add(it, `curated-${kind}`, text, 'right'); }
+  // right variants (round 3): by hand for Schreiben, and the safe swaps on every item he composes an answer for
+  for (const [id, text, why] of RIGHT_VARIANTS) {
+    const it = data.byId.get(id);
+    if (!it) throw new Error(`right-variants.mjs: no item ${id}`);
+    out.push({ id, type: typeOf(it), cls: `variant: ${why}`, text, want: 'right', move: null, variant: true });
+  }
+  for (const it of [...data.pool, ...(data.parts || [])]) {
+    if (!it.model || /…/.test(it.model) || it.gap || it.literal || it.kind === 'reply' || !(it.anywhere || it.src === 'build')) continue;
+    for (const v of variantsOf(it.model)) out.push({ id: it.id, type: typeOf(it), cls: v.cls, text: v.text, want: 'right', move: null, variant: true });
+  }
   for (const [id, text, want, why] of SCHREIBEN_HELD) { const it = data.byId.get(id); if (it) out.push({ id, type: 'held-out (Schreiben)', cls: `schreiben held-out: ${why}`, text, want, move: null }); }
   for (const [id, text, want, why] of HELD_OUT) { const it = data.byId.get(id); if (it) out.push({ id, type: 'held-out', cls: `held-out: ${why}`, text, want, move: null }); }
   // his answer, exactly
@@ -726,43 +798,53 @@ export async function buildCorpus({ root = ROOT } = {}) {
 
 /** Grade every corpus entry with the code under codeRoot. verdict: 'right' (green, nothing flagged), 'partial' (the
  *  phrase is right, the rest is flagged), 'wrong'. */
-export async function evaluate({ root = ROOT, codeRoot = root } = {}) {
+export async function evaluate({ root = ROOT, codeRoot = root, dataRoot = root } = {}) {
   // the corpus is always made with this checkout's helpers; the items and the grading come from the code under test
+  // (dataRoot: the content to grade with, e.g. a checkout from before an accept-list change)
   const { corpus } = await buildCorpus({ root });
-  const data = await buildData({ root, codeRoot });
+  const data = await buildData({ root: dataRoot, codeRoot });
   const { gradeAnswer } = await import(pathToFileURL(path.join(codeRoot, 'src/features/practice/grade.js')).href);
   let gradeTyped = null;
   try { ({ gradeTyped } = await import(pathToFileURL(path.join(codeRoot, 'src/domain/wordbuild-grade.js')).href)); } catch { /* code from before Word building */ }
   const opts = { ...data, nouns: data.nouns, traps: data.traps };
   for (const c of corpus) {
     const it = data.byId.get(c.id);
+    if (!it) { c.verdict = 'missing'; c.fp = c.fn = c.soft = c.partialWrong = false; c.slips = []; continue; }
     const move = c.move ? it.moves.find(m => m.key === c.move) : null;
     const g = it.src === 'wordbuild' && gradeTyped ? { ...gradeTyped(c.text, { accept: it.accept, noun: !!it.noun, lexicon: data.wbLexicon }), rest: null, typos: [], umlautMiss: [] } : gradeAnswer(it, c.text, move, opts);
     c.verdict = !g.ok ? 'wrong' : g.rest && g.rest.status === 'differs' ? 'partial' : 'right';
     c.fp = c.want === 'wrong' && c.verdict === 'right';
     c.fn = c.want === 'right' && c.verdict === 'wrong';
     c.soft = c.want === 'right' && c.verdict === 'partial';
+    c.partialWrong = c.want === 'wrong' && c.verdict === 'partial';   // a wrong answer shown as "the phrase is right"
     c.slips = [...(g.typos || []), ...(g.umlautMiss || [])].map(t => `${t.typed}→${t.expected}`);
   }
   return corpus;
 }
 
+/** Counts per item type. The right variants (c.variant) are counted apart: vRight, vFn (graded wrong), vSoft (graded
+ *  "the rest differs", Hard). pw: wrong answers graded partial. */
 export function table(corpus) {
+  const zero = () => ({ wrong: 0, fp: 0, pw: 0, right: 0, fn: 0, soft: 0, vRight: 0, vFn: 0, vSoft: 0 });
   const by = new Map();
   for (const c of corpus) {
-    const r = by.get(c.type) || { wrong: 0, fp: 0, right: 0, fn: 0, soft: 0 };
-    if (c.want === 'wrong') { r.wrong++; if (c.fp) r.fp++; } else { r.right++; if (c.fn) r.fn++; if (c.soft) r.soft++; }
+    if (c.verdict === 'missing') continue;
+    const r = by.get(c.type) || zero();
+    if (c.want === 'wrong') { r.wrong++; if (c.fp) r.fp++; if (c.partialWrong) r.pw++; }
+    else if (c.variant) { r.vRight++; if (c.fn) r.vFn++; if (c.soft) r.vSoft++; }
+    else { r.right++; if (c.fn) r.fn++; if (c.soft) r.soft++; }
     by.set(c.type, r);
   }
-  const all = [...by.values()].reduce((a, r) => ({ wrong: a.wrong + r.wrong, fp: a.fp + r.fp, right: a.right + r.right, fn: a.fn + r.fn, soft: a.soft + r.soft }), { wrong: 0, fp: 0, right: 0, fn: 0, soft: 0 });
+  const all = zero();
+  for (const r of by.values()) for (const k of Object.keys(all)) all[k] += r[k];
   return { rows: [...by.entries()].sort(), all };
 }
 
 const pct = (a, b) => (b ? `${(100 * a / b).toFixed(1)}%` : '-');
 export function report(corpus) {
   const { rows, all } = table(corpus);
-  const lines = ['type | wrong answers | false positives | right answers | false negatives | right, flagged Hard', '---|---:|---:|---:|---:|---:'];
-  for (const [t, r] of [...rows, ['ALL', all]]) lines.push(`${t} | ${r.wrong} | ${r.fp} (${pct(r.fp, r.wrong)}) | ${r.right} | ${r.fn} (${pct(r.fn, r.right)}) | ${r.soft} (${pct(r.soft, r.right)})`);
+  const lines = ['type | wrong answers | false positives | wrong, shown as partly right | right answers | false negatives | right, flagged Hard | right variants | variants graded wrong | variants flagged Hard', '---|---:|---:|---:|---:|---:|---:|---:|---:|---:'];
+  for (const [t, r] of [...rows, ['ALL', all]]) lines.push(`${t} | ${r.wrong} | ${r.fp} (${pct(r.fp, r.wrong)}) | ${r.pw} (${pct(r.pw, r.wrong)}) | ${r.right} | ${r.fn} (${pct(r.fn, r.right)}) | ${r.soft} (${pct(r.soft, r.right)}) | ${r.vRight} | ${r.vFn} (${pct(r.vFn, r.vRight)}) | ${r.vSoft} (${pct(r.vSoft, r.vRight)})`);
   const cls = new Map();
   for (const c of corpus.filter(c => c.want === 'wrong')) { const r = cls.get(c.cls) || [0, 0]; r[0]++; if (c.fp) r[1]++; cls.set(c.cls, r); }
   lines.push('', 'error class | wrong answers | false positives', '---|---:|---:');
@@ -773,7 +855,8 @@ export function report(corpus) {
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const arg = k => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : null; };
   const codeRoot = path.resolve(arg('--root') || ROOT);
-  const corpus = await evaluate({ root: ROOT, codeRoot });
+  // --data <checkout>: grade with that checkout's content too (the "before" of an accept-list change)
+  const corpus = await evaluate({ root: ROOT, codeRoot, dataRoot: path.resolve(arg('--data') || ROOT) });
   console.log(report(corpus));
   const list = arg('--list'), type = arg('--type'), cl = arg('--cls');
   if (list) for (const c of corpus.filter(c => c[list] && (!type || c.type === type) && (!cl || c.cls === cl))) console.log(`${c.type} | ${c.cls} | ${c.id}${c.move ? '/' + c.move : ''} | ${c.text}${c.slips.length ? ' | slips ' + c.slips.join(', ') : ''}`);

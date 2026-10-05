@@ -44,7 +44,8 @@
 /** @typedef {{t: 'w', raw: string, alts: Alt[], tail?: string, glued?: boolean}} WEl  a fixed word */
 /** @typedef {{t: 'opt', words: WEl[], raw: string, tail?: string, glued?: boolean}} OptEl  "(optional words)" */
 /** @typedef {{t: 'slot', raw: string, opt?: boolean, glued?: boolean, tail?: string, prefix?: Alt}} SlotEl  "[slot]", "([optional slot])", "Lieblings[x]" */
-/** @typedef {WEl | OptEl | SlotEl} El */
+/** @typedef {{t: 'part', raw: string, tail?: string, glued?: boolean, opt?: undefined, prefix?: undefined}} PartEl  0-3 particles (restCheck only, see PARTICLES) */
+/** @typedef {WEl | OptEl | SlotEl | PartEl} El */
 /** @typedef {{els: El[], lead?: string, src?: string}} Pattern */
 /** @typedef {{endings?: boolean, umlaut?: boolean, strict?: Map<string, string> | null, never?: Set<string> | null, lex?: Set<string> | null}} WordX  word-level options (xOpts) */
 /** @typedef {{cost: number, exact: boolean, a: Alt, umlaut?: boolean, ti: number, glued?: boolean}} Cost  one typed word against one pattern word */
@@ -103,7 +104,9 @@ function words(s, offset = 0) {
   for (const m of String(s).matchAll(WORD_RE)) {
     const raw = m[0], low = raw.toLowerCase();
     const at = /** @type {number} */ (m.index);
-    out.push({ raw, low, n: fold(low).normalize('NFD').replace(/\p{M}/gu, ''), len: (low.match(/\p{L}/gu) || []).length || low.length, start: offset + at, end: offset + at + raw.length });
+    // gern and gerne are the same word: one spelling for matching
+    const n = fold(low).normalize('NFD').replace(/\p{M}/gu, '');
+    out.push({ raw, low, n: n === 'gerne' ? 'gern' : n, len: (low.match(/\p{L}/gu) || []).length || low.length, start: offset + at, end: offset + at + raw.length });
   }
   return out;
 }
@@ -313,6 +316,10 @@ function align(pat, toks, { anywhere, typos, loose, x, slotMax = 6 }) {
       take(go(ei + 1, ti, off), { ei, ti, len: 0, n: 0, x: true, present: false });
     } else if (off) {
       // a slot is always whole words, separated from its neighbours by spaces
+    } else if (e.t === 'part') {
+      // particles where a slot of the pattern is (restCheck): none, or up to 3 of PARTICLES
+      take(go(ei + 1, ti, 0), { ei, ti, len: 0, n: 0, x: true });
+      for (let k = 1; k <= 3 && ti + k <= toks.length && PARTICLES.has(toks[ti + k - 1].n); k++) take(go(ei + 1, ti + k, 0), { ei, ti, len: k, n: 0, x: true });
     } else if (e.prefix) {
       const t = toks[ti], p = e.prefix;
       if (t && t.n.startsWith(p.n) && t.n.length > p.n.length)   // glued: the rest of this word is the slot's first word
@@ -576,15 +583,19 @@ const SLOT_RE = /\(\[[^\]]*\]\)|\[[^\]]*\]/g;
 const VERB_LAST = new Set(['dass', 'weil', 'ob', 'wenn', 'obwohl', 'damit', 'sobald', 'bevor', 'nachdem', 'waehrend', 'falls', 'seitdem']);
 const INVERT = new Set(['deshalb', 'deswegen', 'darum', 'daher', 'trotzdem', 'dann', 'danach', 'ausserdem', 'also', 'sonst', 'dennoch', 'denn']);
 const AUX_SEIN = /^(bin|bist|ist|sind|seid)$/, AUX_HABEN = /^(hab|habe|hast|hat|haben|habt)$/;
-/** @typedef {{clause: string, sein: boolean, haben: boolean}} Shape */
+/** @typedef {{clause: string, order: string, sein: boolean, haben: boolean}} Shape */
 /** @param {unknown} p @returns {Shape} */
 function shapeOf(p) {
   const ws = words(String(p || '').replace(SLOT_RE, ' ')).map(w => w.n);
-  return { clause: [ws.filter(w => VERB_LAST.has(w)).sort().join('+'), ws.filter(w => INVERT.has(w)).sort().join('+')].join('|'),
+  const sub = ws.filter(w => VERB_LAST.has(w)), inv = ws.filter(w => INVERT.has(w));
+  return { clause: [sub.slice().sort().join('+'), inv.slice().sort().join('+')].join('|'),
+    // the word order they make: any subordinator sends the verb to the end, any of these adverbs (not denn) puts it
+    // before the subject (deshalb, deswegen, daher, darum, trotzdem, dennoch … are interchangeable)
+    order: [sub.map(() => 'sub').join('+'), inv.map(w => w === 'denn' ? 'denn' : 'inv').sort().join('+')].join('|'),
     sein: ws.some(w => AUX_SEIN.test(w)), haben: ws.some(w => AUX_HABEN.test(w)) };
 }
-// the same clause words, and not sein in one where the other has haben
-const sameShape = (/** @type {Shape} */ a, /** @type {Shape} */ b) => a.clause === b.clause && !((a.sein && !a.haben && b.haben && !b.sein) || (a.haben && !a.sein && b.sein && !b.haben));
+// the same word order, and not sein in one where the other has haben
+const sameShape = (/** @type {Shape} */ a, /** @type {Shape} */ b) => a.order === b.order && !((a.sein && !a.haben && b.haben && !b.sein) || (a.haben && !a.sein && b.sein && !b.haben));
 /** @param {string} p @param {string[]} fills */
 function fillSlots(p, fills) {
   const n = (String(p).match(SLOT_RE) || []).length;
@@ -594,6 +605,57 @@ function fillSlots(p, fills) {
   const out = String(p).replace(SLOT_RE, m => { const f = fills[k++]; if (!f && m[0] === '[') bad = true; return f ? ` ${f} ` : ' '; });
   return bad ? null : out.replace(/\s+/g, ' ').trim();
 }
+// Whether another pattern may take the model's slot words: each filled slot is followed by a fixed word in both, so
+// the clause's verb is in the patterns, never among the words moved ("ich finde [x]" must not take "ist das eine gute
+// Idee" from "meiner meinung nach [x]": *ich finde ist das …).
+/** @param {string} p @param {string} own @param {string[]} fills @param {boolean} [strict] for display: the same words around the slot */
+function borrowable(p, own, fills, strict = false) {
+  if (p === own) return true;
+  // per slot: whether a fixed word follows it, the fixed word before it, and the fixed words after it (to the next slot)
+  const ctx = (/** @type {string} */ q) => {
+    const els = compile(q, true, false).els;
+    /** @type {{end: boolean, before: string, after: Set<string>, last: string}[]} */ const out = [];
+    els.forEach((e, i) => {
+      if (e.t !== 'slot') return;
+      const prev = els[i - 1], after = new Set();
+      let last = '';
+      for (let k = i + 1; k < els.length && els[k].t !== 'slot'; k++) { const x = els[k]; if (x.t === 'w' && !HELPERS.has(x.alts[0].n)) { after.add(x.alts[0].n); last = x.alts[0].n; } }
+      out.push({ end: !(i + 1 < els.length && els[i + 1].t === 'w'), before: prev && prev.t === 'w' ? prev.alts[0].n : '', after, last });
+    });
+    return out;
+  };
+  const a = ctx(p), b = ctx(own);
+  if (a.length !== b.length) return false;
+  return fills.every((f, k) => {
+    if (!words(f || '').length) return true;
+    const x = a[k], y = b[k];
+    // the verb is in the patterns (no slot at the end); words with a case or a preposition (die Materialien, zum
+    // Gespräch) move only where the same verb governs them (teilnehmen does not take "zum Gespräch" from kommen) and the
+    // same preposition stands before the slot (für/mit take other cases). Adverbs (unbedingt, mehr, kurz) move freely.
+    if (y.end) return false;
+    // the same words after the slot, in any order (dass [x] faul sind / [x] sind faul), or the same last word there: the
+    // verb at the end of the clause (über deine E-Mail / Nachricht gefreut)
+    const governed = (x.after.size === y.after.size && [...y.after].every(w => x.after.has(w))) || (!!x.last && x.last === y.last);
+    if (strict) return governed && x.before === y.before;
+    // a time phrase or one adverb moves freely; other words only under the same verb (das liegt daran, dass man ([x])
+    // zu viel arbeitet does not take "viele Menschen", the subject of … dass ([x]) zu viel arbeiten)
+    const fw = words(f);
+    if (TIME_RE.test(fold(f.toLowerCase())) || (fw.length === 1 && ADVERBS.has(fw[0].n))) return true;
+    return governed && (x.before === y.before || (!PREPS.has(x.before) && !PREPS.has(y.before)));
+  });
+}
+// a time phrase (am Samstag, um 10 Uhr, nächste Woche): no verb governs it, so it moves freely
+const TIME_RE = /^(am|um|im|ab|bis|seit|vor|nach|naechste|naechsten|letzte|letzten|diese|diesen|jeden|jede)( \S+)* (montag|dienstag|mittwoch|donnerstag|freitag|samstag|sonntag|wochenende|uhr|morgen|abend|nachmittag|vormittag|mittag|woche|monat|jahr|januar|februar|maerz|april|mai|juni|juli|august|september|oktober|november|dezember|sommer|winter|fruehling|herbst)$/;
+// adverbs that stand in the middle of a clause whatever its verb (du solltest [unbedingt] …, nimm [unbedingt] … mit)
+const ADVERBS = new Set(`unbedingt vorher nachher kurz oft immer heute morgen jetzt bald spaeter frueher wirklich gemeinsam zusammen wieder
+  bestimmt sicher ueberall dort hier endlich schnell gleich sofort lieber gern`.split(/\s+/).filter(Boolean));
+// modal verbs, würde, werden and zu: they do not decide the case of the words in a slot (sein and haben do: als ich [ein
+// Kind] war is not früher hatte ich [ein Kind])
+const HELPERS = new Set(`zu kann kannst koennen konnte konnten koennte koennten muss musst muessen musste mussten muesste will willst wollen
+  wollte wollten soll sollst sollen sollte sollten darf darfst duerfen durfte moechte moechtest moechten wuerde wuerdest wuerden werde wirst wird
+  werden`.split(/\s+/).filter(Boolean));
+const PREPS = new Set(`an am ans auf aufs aus bei beim bis durch durchs fuer fuers gegen hinter hinterm im in ins mit nach neben ohne seit
+  ueber uebers um ums unter unterm von vom vor vorm waehrend wegen zu zum zur zwischen trotz statt ab ausser gegenueber`.split(/\s+/).filter(Boolean));
 // a pattern (slots filled) as text in the sentence: the base sentence's spelling of each word, nouns from caseRef
 /** @param {string} mid @param {string} base @param {Map<string, string> | null | undefined} caseRef @param {boolean} initial */
 function renderIn(mid, base, caseRef, initial) {
@@ -618,6 +680,54 @@ const doubled = (/** @type {string} */ text, /** @type {string} */ p) => {
   const has = (/** @type {string} */ s) => { const ws = words(s).map(w => w.n); return ws.some((w, i) => i && w === ws[i - 1]); };
   return has(text) && !has(String(p).replace(SLOT_RE, ' '));
 };
+
+// Words that never change form and add only emphasis or a nuance: he may add them, or use another one, where an accepted
+// pattern has a slot (ich stimme Rainer [nur] teilweise zu, der Umzug ist [echt] gut gelaufen). Folded.
+// Only words that sit in front of a verb phrase as well as an adjective: an intensifier (sehr, ganz, so, ziemlich) needs
+// an adjective after it (*macht mir sehr Spaß, *ganz nicht), so it is not one of them.
+const PARTICLES = new Set(['wirklich', 'echt', 'nur', 'auch', 'dann', 'schon', 'noch', 'ja', 'doch', 'eigentlich', 'leider', 'natuerlich',
+  'einfach', 'vielleicht', 'uebrigens', 'stattdessen']);
+/** @type {PartEl} */
+const PART = { t: 'part', raw: '' };
+/**
+ * A pattern with its slots filled by the model's words, for the rest check: each slot becomes [particles] fill
+ * [particles], and a fill word that is a particle may be left out or swapped for another. null when a slot that must
+ * hold words has none (as fillSlots).
+ * @param {string} p @param {string[]} fills @returns {El[] | null}
+ */
+function slotParts(p, fills) {
+  const els = compile(p, true, false).els;
+  const n = els.filter(e => e.t === 'slot').length;
+  if (n && n !== fills.length) return null;
+  /** @type {El[]} */ const out = [];
+  let k = 0;
+  for (const e of els) {
+    if (e.t !== 'slot') { out.push(e); continue; }
+    const f = fills[k++];
+    if (!f && !e.opt) return null;
+    // a slot that must hold words keeps its words when they are all particles (wenn das Wetter [x] ist: not empty)
+    const fw = words(f || ''), keep = !e.opt && fw.every(w => PARTICLES.has(w.n));
+    out.push(PART);
+    for (const w of fw) {
+      /** @type {WEl} */ const el = { t: 'w', raw: w.raw, alts: [{ n: w.n, low: w.low, len: w.len, word: w.raw }] };
+      // a particle of the model may be left out (or swapped by the particles around it), and keeps its typo rules
+      out.push(PARTICLES.has(w.n) && !keep ? { t: 'opt', words: [el], raw: w.raw } : el);
+    }
+    out.push(PART);
+  }
+  return out;
+}
+/**
+ * @param {Word[]} toks @param {{n: number, steps: Step[]}} m @param {RestResult} res  the slips of an alignment, into res
+ */
+function slipsOf(toks, m, res) {
+  for (const st of m.steps) for (const cs of st.cs || []) {
+    if (!cs.cost) continue;
+    const t = toks[cs.ti];
+    (cs.umlaut ? res.umlautMiss : res.typos).push({ typed: t.raw, expected: cs.a.word, start: t.start, end: t.end });
+  }
+  return res;
+}
 
 /**
  * @typedef {object} RestResult
@@ -645,10 +755,26 @@ function restCheck(input, base, accepted, opts = {}) {
   // inversion words (ich finde dass … / ich finde …: the verb moves) and the same Perfekt helper (früher habe ich /
   // früher bin ich: the participle decides). The model's own words fill the slots.
   const shape = shapeOf(mr.matched);
-  /** @type {{pre: string, mid: string, post: string, literal?: boolean}[]} */ const cands = [];
+  /** @type {{pre: string, mid: string, post: string, literal?: boolean, els?: El[]}[]} */ const cands = [];
+  // A phrase of another shape still goes in, with nothing in its slots (only particles), where swapping the clause
+  // cannot change the words around it: the phrase ends its sentence after a main clause or a full stop (…, denn ich muss
+  // arbeiten → …, weil ich arbeiten muss), or it is a subordinate clause that opens the sentence and the other one is
+  // too (Obwohl … ist, … → Auch wenn … ist, …).
+  const wordsIn = (/** @type {string} */ t) => words(t).map(w => w.n);
+  const ends = !/\p{L}/u.test(post) || /^\s*[.!?;:]/u.test(post);
+  const after = !/\p{L}/u.test(pre) || /[.!?:]\s*$/u.test(pre) || (/,\s*$/.test(pre) && !wordsIn(pre).some(w => VERB_LAST.has(w)));
+  const subOnly = (/** @type {Shape} */ sh) => /^[^|]+\|$/.test(sh.clause);
+  const swappable = (/** @type {Shape} */ sh) => (ends && after) || (!/\p{L}/u.test(pre) && /^\s*,/.test(post) && subOnly(sh) && subOnly(shape));
   for (const p of order) {
-    if (p !== mr.matched && !sameShape(shapeOf(p), shape)) continue;
-    const mid = fillSlots(p, fills); if (mid != null && !doubled(mid, p)) cands.push({ pre, mid, post });
+    if (p !== mr.matched && !sameShape(shapeOf(p), shape)) {
+      if (!swappable(shapeOf(p))) continue;
+      const none = fills.map(() => ''), mid = fillSlots(p, none), els = slotParts(p, none);
+      if (mid != null && els) cands.push({ pre, mid, post, els });
+      continue;
+    }
+    if (!borrowable(p, String(mr.matched), fills)) continue;
+    const mid = fillSlots(p, fills), els = slotParts(p, fills);
+    if (mid != null && els && !doubled(mid, p)) cands.push({ pre, mid, post, els });
   }
   for (const v of opts.variants || []) if (v) cands.push({ pre: '', mid: String(v), post: '', literal: true });
   const x = xOpts({ ...opts, endings: opts.endings !== false });
@@ -658,7 +784,7 @@ function restCheck(input, base, accepted, opts = {}) {
   const fits = (/** @type {El | undefined} */ e, /** @type {Word} */ t, /** @type {boolean} */ atEnd) => !e || e.t !== 'w' || !!wcost(e, t, typos, null, x) || e.alts.some(a => a.n && (atEnd ? t.n.endsWith(a.n) : t.n.startsWith(a.n)));
   const text = (/** @type {{pre: string, mid: string, post: string, literal?: boolean}} */ c) => c.literal ? tidy(c.mid) : commasFrom(base, joinText(pre, renderIn(c.mid, base, opts.caseRef, !/\p{L}/u.test(pre)), post));
   for (const c of cands) {
-    const P = compile(c.pre, false, false).els, M = compile(c.mid, !c.literal, false).els, Q = compile(c.post, false, false).els;
+    const P = compile(c.pre, false, false).els, M = c.els || compile(c.mid, !c.literal, false).els, Q = compile(c.post, false, false).els;
     for (let s = 0; s <= P.length; s++) {
       const head = s < P.length ? P[s] : M[0];
       if (head && head.t === 'w' && !fits(head, first, false)) continue;
@@ -667,15 +793,59 @@ function restCheck(input, base, accepted, opts = {}) {
         if (tail && tail.t === 'w' && !fits(tail, last, true)) continue;
         const m = align({ els: [...P.slice(s), ...M, ...Q.slice(0, e)] }, toks, aopts);
         if (!m) continue;
-        /** @type {RestResult} */ const res = { ...out, status: 'ok', frag: s > 0 || e < Q.length, ref: text(c) };
-        for (const st of m.steps) for (const cs of st.cs || []) {
-          if (!cs.cost) continue;
-          const t = toks[cs.ti];
-          (cs.umlaut ? res.umlautMiss : res.typos).push({ typed: t.raw, expected: cs.a.word, start: t.start, end: t.end });
-        }
-        return res;
+        return slipsOf(toks, m, { ...out, status: 'ok', frag: s > 0 || e < Q.length, ref: text(c), typos: [], umlautMiss: [] });
       }
     }
+  }
+  // the whole answer is one of the accepted sentences: an accepted pattern from his first word to his last, whose slots
+  // hold nothing, only particles, or the model's own words for that slot. Borrowed words are taken only slot for slot
+  // and where a fixed word follows the slot in both patterns, so the verb is never among them (rainer meint ([x]) sind
+  // faul takes "Menschen mit einer Vier-Tage-Woche" from rainer schreibt dass ([x]) faul sind; ich finde [x] does not
+  // take "das eine gute Idee ist" from ich finde dass [x]).
+  const own = compile(mr.matched || '', true, false).els;
+  const slotsOf = (/** @type {El[]} */ els) => els.flatMap((e, i) => e.t === 'slot' ? [i] : []);
+  const fixedNext = (/** @type {El[]} */ els, /** @type {number} */ i) => i + 1 < els.length && els[i + 1].t === 'w';
+  const content = (/** @type {Word[]} */ ws) => ws.filter(w => !PARTICLES.has(w.n)).map(w => w.n).join(' ');
+  const ownSlots = slotsOf(own);
+  for (const p of order) {
+    const pat = compile(p, true, false), m = align(pat, toks, aopts);
+    if (!m) continue;
+    const pSlots = slotsOf(pat.els);
+    /** @type {string[]} */ const borrowed = [];
+    let fine = true;
+    for (const st of m.steps) {
+      const e = pat.els[st.ei];
+      if (e.t !== 'slot' || !st.len) continue;
+      const said = content(toks.slice(st.ti, st.ti + st.len));
+      // particles alone only in an optional slot (wenn das Wetter [x] ist needs a word)
+      if (!said) { if (!e.opt) fine = false; continue; }
+      if (!fixedNext(pat.els, st.ei)) { fine = false; break; }
+      // words of the model sentence outside its phrase, in their order (entschuldigen Sie den Lärm | am Samstag →
+      // ich möchte mich für den Lärm ([x]) entschuldigen)
+      if ([pre, post].some(t => ` ${content(words(t))} `.includes(` ${said} `))) continue;
+      borrowed.push(said);
+    }
+    // the other slot words are the model's own slot words, in the same order, split over the slots as he likes (hast du
+    // ([x]) lust ([x]) ins kino zu gehen: am Samstag | mit mir); never from a model slot that ends its pattern
+    const modelFill = fills.map(f => content(words(f || ''))).filter(Boolean).join(' ');
+    const ownSafe = ownSlots.every((i, k) => !content(words(fills[k] || '')) || fixedNext(own, i));
+    // and the words that govern them are the model's: the slots line up (borrowable), or the pattern is the model's own
+    // pattern with words or slots added (hast du ([x]) lust ([x]) ins kino zu gehen)
+    const fixedOf = (/** @type {El[]} */ els) => new Set(els.flatMap(e => e.t === 'w' ? [e.alts[0].n] : []));
+    const ownFixed = fixedOf(own), pFixed = fixedOf(pat.els);
+    const governed = borrowable(p, String(mr.matched), fills) || [...ownFixed].every(w => pFixed.has(w));
+    if (fine && borrowed.length && !(ownSafe && governed && borrowed.join(' ') === modelFill)) fine = false;
+    // and a slot he left empty is empty in the model too, or its words are elsewhere in his answer (es gibt zwar Busse,
+    // aber sie sind ([x]) zu spät: the model has oft there, and without it the sentence says something else). A pattern
+    // without slots is a whole sentence as written.
+    if (fine && pSlots.length === ownSlots.length) {
+      for (const st of m.steps) {
+        const k = pSlots.indexOf(st.ei);
+        const missing = k >= 0 && !st.len && words(fills[k] || '').some(w => !PARTICLES.has(w.n) && !toks.some(t => t.n === w.n));
+        if (missing) { fine = false; break; }
+      }
+    }
+    if (fine) return slipsOf(toks, m, { ...out, status: 'ok', frag: false, ref: tidy(inp), typos: [], umlautMiss: [] });
   }
   // nothing fits: the closest sentence (most words in common, his phrase first on a tie) and the word diff
   // (no candidate at all is not expected: best stays null, as it always has)
@@ -736,6 +906,183 @@ function markDiff(a, b) {
     });
   }
   return { wrong, marks };
+}
+
+// ---- "Also correct": the other accepted answers, written the way the model is ----
+// alsoLines(model, accepted, caseRef) → [{pattern, text}] for every accepted pattern that can be written out as German
+// with the model's punctuation: one with the model's clause structure (sameShape), its slots filled with the model's
+// words, its words in the model's spelling and capitals (nouns from caseRef), the model's commas, colons and the like
+// after the same words and before the same clause words (Ich würde vorschlagen, dass wir uns am Bahnhof treffen). A
+// pattern of another clause structure (ich hoffe, es geht dir gut for ich hoffe, dass …) needs commas the model
+// cannot give, so it is left out. Returns null when the model holds no accepted pattern.
+/** @param {string} base @param {string} text */
+function punctFrom(base, text) {
+  const B = words(base);
+  // the mark after a word (where the same word follows it), and a full stop, ! ? or colon before a word, in the model
+  /** @type {Map<string, {mk: string, next: string}>} */ const after = new Map();
+  /** @type {Map<string, string>} */ const before = new Map();
+  /** @type {Set<string>} */ const twice = new Set();
+  B.forEach((w, i) => {
+    if (after.has(w.n)) twice.add(w.n);
+    const mk = i + 1 < B.length ? (base.slice(w.end, B[i + 1].start).match(/^[,;:.!?]+/) || [''])[0] : '';
+    after.set(w.n, { mk, next: i + 1 < B.length ? B[i + 1].n : '' });
+    if (i + 1 < B.length && /^[.!?:]/.test(mk)) before.set(B[i + 1].n, mk);
+  });
+  const T = words(text);
+  /** @type {Map<string, number>} */ const seen = new Map();
+  for (const w of T) seen.set(w.n, (seen.get(w.n) || 0) + 1);
+  const once = (/** @type {Word} */ w) => !twice.has(w.n) && seen.get(w.n) === 1;
+  let out = '', at = 0;
+  T.forEach((w, i) => {
+    out += text.slice(at, w.end); at = w.end;
+    if (i + 1 >= T.length || /^\s*[,;:.!?…]/.test(text.slice(w.end))) return;
+    const nx = T[i + 1], a = once(w) ? after.get(w.n) : null;
+    out += (a && a.mk && a.next === nx.n ? a.mk : '') || (once(nx) ? before.get(nx.n) || '' : '');
+  });
+  out += text.slice(at);
+  // a capital after a full stop, ! or ?, and after a colon where the model has one (Zu deiner Frage: Der Kurs …)
+  out = out.replace(/([.!?]\s+)(\p{Ll})/gu, (_, sp, c) => sp + c.toUpperCase());
+  return /:\s+\p{Lu}/u.test(base) ? out.replace(/(:\s+)(\p{Ll})/gu, (_, sp, c) => sp + c.toUpperCase()) : out;
+}
+// A comma before a subordinate clause (dass, weil, obwohl, wenn, ob, falls …) inside a sentence; not after und/oder
+// or where it belongs before the word in front (auch wenn, als ob, so dass, nur wenn, selbst wenn)
+const SUB_COMMA = new Set(['dass', 'weil', 'obwohl', 'wenn', 'ob', 'falls', 'sobald', 'bevor', 'nachdem', 'seitdem', 'sodass', 'sondern']);
+const SUB_LEAD = new Set(['und', 'oder', 'auch', 'als', 'nur', 'selbst', 'ausser', 'gerade', 'sogar']);
+// A comma after an opinion verb before a main clause (Ich finde, das ist …; Ich hoffe, es geht dir gut), and before an
+// infinitive group after a word that announces it (Wäre es möglich, den Termin … zu verschieben; Ich freue mich darauf,
+// von dir zu hören)
+const OPINION = new Set(['finde', 'denke', 'glaube', 'meine', 'hoffe', 'weiss', 'sage', 'vor', 'finden', 'glauben', 'denken', 'meint', 'findet', 'glaubt', 'denkt']);
+const SUBJECTS = new Set(['das', 'es', 'die', 'der', 'er', 'sie', 'wir', 'ich', 'du', 'man', 'dir', 'mir', 'ihr', 'viele', 'alle', 'jeder']);
+const FINITE_WORDS = new Set(['ist', 'sind', 'war', 'waren', 'hat', 'haben', 'habe', 'kann', 'koennen', 'muss', 'muessen', 'will', 'soll', 'sollte',
+  'sollten', 'wird', 'werden', 'wuerde', 'gibt', 'geht', 'kommt', 'macht', 'passt', 'treffen', 'probieren', 'arbeiten', 'arbeitet']);
+const ZU_NOUN = new Set(['lust', 'zeit', 'idee']);
+const ZU_LEAD = new Set(['moeglich', 'lust', 'zeit', 'idee', 'vorschlag', 'darauf', 'darueber', 'dafuer', 'daran', 'davon', 'dazu', 'vor', 'wichtig', 'schwer', 'leicht']);
+/** @param {string} text */
+function clauseCommas(text) {
+  const T = words(text);
+  /** @type {number[]} */ const at = [];
+  T.forEach((w, i) => {
+    const nx = T[i + 1];
+    if (!nx || /^\s*[,;:.!?]/.test(text.slice(w.end))) return;
+    // opinion verb + a subject + a finite verb within the next words (no dass)
+    if (OPINION.has(w.n) && SUBJECTS.has(nx.n) && T.slice(i + 2, i + 6).some(x => FINITE_WORDS.has(x.n)) && !T.slice(i + 1, i + 6).some(x => SUB_COMMA.has(x.n))) at.push(w.end);
+    // a word that announces an infinitive group + at least one word + zu + the verb at the end of the line
+    const z = T.findIndex((x, k) => k > i && x.n === 'zu' && k === T.length - 2 && /(en|ern|eln)$/.test(T[k + 1].n) && !/^\p{Lu}/u.test(T[k + 1].raw));
+    if (ZU_LEAD.has(w.n) && z > i && (nx.n !== 'zu' || ZU_NOUN.has(w.n))) at.push(w.end);
+  });
+  let out = text;
+  for (const k of at.sort((a, b) => b - a)) out = out.slice(0, k) + ',' + out.slice(k);
+  return out;
+}
+/** @param {string} text */
+function subCommas(text) {
+  const T = words(text);
+  let out = text;
+  for (let i = T.length - 1; i > 0; i--) {
+    const w = T[i], prev = T[i - 1];
+    const lead = SUB_LEAD.has(prev.n) && i > 1 ? T[i - 2] : null;   // auch wenn: the comma goes before auch
+    if (!SUB_COMMA.has(w.n) || (SUB_LEAD.has(prev.n) && !lead) || ['und', 'oder'].includes(prev.n)) continue;
+    const at = lead ? prev : w, before = lead || prev;
+    if (/[,;:.!?(]\s*$/.test(out.slice(0, at.start))) continue;
+    out = out.slice(0, before.end) + ',' + out.slice(before.end);
+  }
+  return out;
+}
+// a line that starts with one of these is a question (the model's ? stays); otherwise a statement takes a full stop
+const QUESTION = new Set(`kann kannst koennen koennt koennte koenntest koennten wuerde wuerdest wuerden haette haettest haetten habe hast hat
+  haben habt ist bist sind seid waere waerst waeren war warst waren passt passen wollen willst wollt sollen soll sollte darf darfst duerfen
+  moechtest moechten magst gibt geht gehst kommst kommt hilfst weisst wisst was wie wo wann warum wer wen wem wessen welche welcher welches
+  welchen wohin woher womit wofuer worueber wozu wieso weshalb`.split(/\s+/).filter(Boolean));
+const DETLIKE = new Set([...[...CLOSED].filter(w => !/^(ich|mich|mir|du|dich|dir|er|ihn|ihm|sie|es|wir|uns|euch|man|sich|bin|bist|ist|sind|seid|war|warst|waren|wart|habe|hab|hast|hat|habt|haben|hatte|werde|wirst|wird|werden|werdet|wurde|dass|ob|wenn|als|wie|wer|wen|wem)$/.test(w)),
+  'zwei', 'drei', 'vier', 'fuenf', 'sechs', 'sieben', 'acht', 'neun', 'zehn', 'viele', 'vielen', 'wenige', 'einige', 'alle', 'jede', 'jeden', 'jeder', 'jedes']);
+const OPENERS = new Set(['ich', 'du', 'das', 'es', 'wir', 'da', 'man', 'er', 'mir', 'dir', 'dem', 'den', 'die', 'der', 'stimme', 'finde', 'sehe', 'bin', 'geht', 'klingt', 'gute', 'kein', 'keine']);
+const POLITE = new Set(['sie', 'ihnen', 'ihr', 'ihre', 'ihren', 'ihrem', 'ihrer', 'ihres']);
+const INTERJ = new Set(['okay', 'ok', 'ja', 'nein', 'gut', 'klar', 'prima', 'genau', 'entschuldigung', 'super', 'toll']);
+/**
+ * @param {string} base @param {string | string[]} accepted @param {Map<string, string> | null} [caseRef]
+ * @param {Set<string> | null} [lower]  folded words known to be written in lower case; with it, a line with a word whose
+ *   capital is not known (not in the model, caseRef, lower or the closed words) is left out
+ * @param {boolean} [standalone]  each line is a whole utterance (a situation's answer): it starts with a capital
+ * @returns {{pattern: string, text: string}[] | null}
+ */
+function alsoLines(base, accepted, caseRef = null, lower = null, standalone = false) {
+  const list = (Array.isArray(accepted) ? accepted : [accepted]).filter(a => a != null && String(a).trim() !== '');
+  if (!base || !list.length) return null;
+  const phrase = check(base, list, { anywhere: true, slotMax: 10, typos: false });
+  if (!phrase.ok || !phrase.span) return null;
+  // the slot words: from the whole model when a pattern covers it (Einverstanden! Dann treffen wir uns [um sieben])
+  const whole = check(base, list, { slotMax: 10, typos: false });
+  const mr = whole.ok ? whole : phrase;
+  const own = String(mr.matched), fills = /** @type {string[]} */ (mr.fills);
+  const shape = shapeOf(own);
+  const pre = base.slice(0, /** @type {[number, number]} */ (phrase.span)[0]);
+  const startsUpper = /^\P{L}*\p{Lu}/u.test(base);   // a line after a greeting's comma starts in lower case
+  const preWords = words(pre).map(w => w.n).filter(n => !PARTICLES.has(n));
+  const sentStart = /[.!?]\s*$/u.test(pre);   // the phrase opens a sentence of the model: a capital, no end mark of its own
+  const postWords = words(base.slice(/** @type {[number, number]} */ (phrase.span)[1])).map(w => w.n);
+  const inModel = new Set(words(base).map(w => w.n));
+  const finalMark = (base.match(/[.!?]+\s*$/) || [''])[0].trim();
+  const closes = whole.ok || !/\p{L}/u.test(base.slice(/** @type {[number, number]} */ (phrase.span)[1]));
+  // marks inside the model (or inside its phrase): a line with fewer has lost a comma (du weißt ja ich bin …)
+  const inner = (/** @type {string} */ t) => (t.replace(/[.!?]+\s*$/u, '').match(/[,;:.!?]/g) || []).length;
+  const span = /** @type {[number, number]} */ (phrase.span);
+  const marks = closes && !/\p{L}/u.test(pre) ? inner(base) : inner(base.slice(span[0], span[1]));
+  // full stops, ! and ? inside: the same number as the model's (no "das? Klingt gut" from a cut sentence)
+  const stops = (/** @type {string} */ t) => (t.replace(/[.!?]+\s*$/u, '').match(/[.!?](?=\s)/g) || []).length;
+  const stopsIn = closes && !/\p{L}/u.test(pre) ? stops(base) : stops(base.slice(span[0], span[1]));
+  // words the model has only at the start of a sentence: their capital there says nothing (Liebe Clara → meine liebe Clara)
+  const initialOnly = new Set();
+  const midWords = new Set();
+  String(base).split(/(?<=[.!?:])\s+/).forEach(sent => words(sent).forEach((w, i) => (i ? midWords : initialOnly).add(w.n)));
+  for (const n of midWords) initialOnly.delete(n);
+  /** @type {{pattern: string, text: string}[]} */ const out = [];
+  for (const p of list) {
+    if (!sameShape(shapeOf(p), shape)) continue;
+    // optional words only where the model has them: (etwas) (was) are two ways to say it, not one phrase
+    // (a group that opens the pattern stays: (ich bin) anderer meinung)
+    const q = p.trim().replace(/\((?!\[)([^)]*)\)/g, (m, g, at) => at === 0 || words(g).every(w => inModel.has(w.n)) ? g : ' ');
+    // the model's slot words where the same words govern them (borrowable, strict), else a slot that holds words in
+    // the model shows as …, and an empty one goes
+    const own2 = fillSlots(q, fills);
+    const nSlots = (p.match(SLOT_RE) || []).length;
+    // slots that do not line up with the model's cannot be shown faithfully (zu einfach would lose its zu)
+    if (nSlots !== fills.length && fills.some(f => words(f).length)) continue;
+    let text0;
+    if (own2 != null && borrowable(p, own, fills, true) && !doubled(own2, p)) text0 = own2;
+    else {
+      let k = 0;
+      text0 = q.replace(SLOT_RE, m => { const f = fills[k++]; return f || m[0] === '[' ? ' [x] ' : ' '; }).replace(/\s+/g, ' ').trim();
+    }
+    const has = words(text0).map(w => w.n);
+    if (lower && has.some(n => !inModel.has(n) && !CLOSED.has(n) && !lower.has(n) && !(caseRef && caseRef.has(n)) && !/\d/.test(n))) continue;
+    // a word after an article, a number or a preposition that the model does not have and no noun list knows: it may
+    // be a noun written in lower case (vier teile, das leben, eine frage, ohne kosten)
+    if (has.some((n, i) => i > 0 && DETLIKE.has(has[i - 1]) && !inModel.has(n) && !CLOSED.has(n) && !(caseRef && caseRef.has(n)) && !/\d/.test(n))) continue;
+    // sie, ihr, ihnen: polite (Sie) or not is known only from the model
+    if (has.some(n => POLITE.has(n) && !inModel.has(n) && !(caseRef && caseRef.has(n)))) continue;
+    // an interjection run into the next word needs a comma the model cannot give (Okay, machen wir das so)
+    if (has.length > 1 && INTERJ.has(has[0]) && !(inModel.has(has[0]) && inModel.has(has[1]))) continue;
+    // aber inside a line: a comma before it, or a particle (das ist aber schön); not known without the model
+    if (has.some((n, i) => i > 0 && n === 'aber') && !/,\s*aber\b/i.test(base)) continue;
+    // a line starts the sentence when the phrase does, or when it holds the words before the phrase too (ich kann
+    // leider nicht kommen, denn …); otherwise it is the phrase inside the sentence and starts in lower case (denn …)
+    const first = !preWords.length || preWords.every(n => has.includes(n));
+    if (has.some((n, i) => initialOnly.has(n) && (i > 0 || !first))) continue;
+    // a verb after fürs, beim, zum … is a noun there (fürs Zuhören): its capital is not known
+    if (has.some((n, i) => i > 0 && /^(fuers|beim|zum|vom|ins|am)$/.test(has[i - 1]) && !inModel.has(n) && !(caseRef && caseRef.has(n)))) continue;
+    // a situation's line is said on its own: a capital when it starts like a sentence (Das sehe ich anders), not on a
+    // bare phrase (anderer Meinung)
+    const own0 = standalone && OPENERS.has(has[0] || '');
+    const text = clauseCommas(commasFrom(base, subCommas(punctFrom(base, renderIn(text0, base, caseRef, (first || own0 || sentStart) && startsUpper))))).replace(/[\s,;:.!?]+$/u, '');
+    if (inner(text) < marks || stops(text) !== stopsIn) continue;
+    // the full stop or question mark when the line is a whole sentence: it starts the model's sentence and the phrase
+    // ends it; a statement (Ich möchte wissen, ob …) takes a full stop where the model asks
+    const mark = finalMark === '?' && !QUESTION.has(words(text)[0]?.n || '') ? '.' : finalMark;
+    // (it ends the sentence when the phrase does, or when it holds the model's words after the phrase too)
+    const ends = closes || postWords.every(n => has.includes(n));
+    out.push({ pattern: p, text: first && ends && mark ? text + mark : text });
+  }
+  return out;
 }
 
 // Situations (Sprechen Teil 1–3): the answer is free, only the phrase is graded. formCheck() compares it with the model
@@ -854,6 +1201,6 @@ function acceptedForGap(prompt, answers) {
 }
 const gapLoose = (/** @type {unknown} */ prompt) => words(gapBase(prompt).split(GAP).join(' ')).map(w => w.n);
 
-const api = { check, matches, diffWords, markDiff, restCheck, shapeOf, sameShape, formCheck, renderPattern, acceptedForWord, acceptedForChunk, acceptedForGap, gapFill, gapLoose, nounForm, nounPrompt, toIndef, clean, fold, dl, dl1, words, ending, CLOSED };
+const api = { check, matches, diffWords, markDiff, restCheck, alsoLines, shapeOf, sameShape, formCheck, renderPattern, acceptedForWord, acceptedForChunk, acceptedForGap, gapFill, gapLoose, nounForm, nounPrompt, toIndef, clean, fold, dl, dl1, words, ending, CLOSED };
 export default api;
-export { check, matches, diffWords, markDiff, restCheck, shapeOf, sameShape, formCheck, renderPattern, acceptedForWord, acceptedForChunk, acceptedForGap, gapFill, gapLoose, nounForm, nounPrompt, toIndef, clean, fold, dl, dl1, words, ending, CLOSED };
+export { check, matches, diffWords, markDiff, restCheck, alsoLines, shapeOf, sameShape, formCheck, renderPattern, acceptedForWord, acceptedForChunk, acceptedForGap, gapFill, gapLoose, nounForm, nounPrompt, toIndef, clean, fold, dl, dl1, words, ending, CLOSED };

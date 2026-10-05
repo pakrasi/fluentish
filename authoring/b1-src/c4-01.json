@@ -1842,8 +1842,8 @@
   "accept": [
    "ich sehe das (etwas) (ganz) anders",
    "das sehe ich (etwas) (ganz) anders",
-   "anderer meinung",
-   "nicht deiner meinung",
+   "(ich bin) anderer meinung",
+   "(ich bin) nicht deiner meinung",
    "das stimmt (zwar) aber [x]",
    "das finde ich nicht",
    "das überzeugt mich nicht",
@@ -1883,8 +1883,8 @@
   "accept": [
    "das sehe ich (etwas) (ganz) anders",
    "ich sehe das (etwas) (ganz) anders",
-   "anderer meinung",
-   "nicht deiner meinung",
+   "(ich bin) anderer meinung",
+   "(ich bin) nicht deiner meinung",
    "das stimmt (zwar) aber [x]",
    "das finde ich nicht",
    "das überzeugt mich nicht",
@@ -1923,10 +1923,10 @@
   "prefill": null,
   "accept": [
    "da bin ich anderer meinung",
-   "anderer meinung",
+   "(ich bin) anderer meinung",
    "ich sehe das (etwas) (ganz) anders",
    "das sehe ich (etwas) (ganz) anders",
-   "nicht deiner meinung",
+   "(ich bin) nicht deiner meinung",
    "das stimmt (zwar) aber [x]",
    "das finde ich nicht",
    "das überzeugt mich nicht"
@@ -1966,8 +1966,8 @@
    "das überzeugt mich nicht",
    "ich sehe das (etwas) (ganz) anders",
    "das sehe ich (etwas) (ganz) anders",
-   "anderer meinung",
-   "nicht deiner meinung",
+   "(ich bin) anderer meinung",
+   "(ich bin) nicht deiner meinung",
    "das stimmt (zwar) aber [x]",
    "das finde ich nicht",
    "das kann man so nicht sagen"
@@ -2006,7 +2006,7 @@
   "accept": [
    "da hast du recht",
    "das sehe ich auch so",
-   "ganz deiner meinung",
+   "(ich bin) ganz deiner meinung",
    "ich bin deiner meinung",
    "ich stimme dir (voll) zu",
    "stimme ich dir (voll) zu",
@@ -2047,7 +2047,7 @@
   "accept": [
    "das sehe ich auch so",
    "da hast du recht",
-   "ganz deiner meinung",
+   "(ich bin) ganz deiner meinung",
    "ich bin deiner meinung",
    "ich stimme dir (voll) zu",
    "stimme ich dir (voll) zu",
@@ -2086,7 +2086,7 @@
   "partner": "Fehler machen gehört zum Lernen dazu.",
   "prefill": null,
   "accept": [
-   "ganz deiner meinung",
+   "(ich bin) ganz deiner meinung",
    "da hast du recht",
    "das sehe ich auch so",
    "ich bin deiner meinung",
@@ -2130,7 +2130,7 @@
    "ich stimme dir (voll) zu",
    "da hast du recht",
    "das sehe ich auch so",
-   "ganz deiner meinung",
+   "(ich bin) ganz deiner meinung",
    "ich bin deiner meinung",
    "stimme ich dir (voll) zu",
    "das finde ich auch",

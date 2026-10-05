@@ -100,14 +100,14 @@
   "partner": null,
   "prefill": null,
   "accept": [
-   "mir hat besonders gut gefallen dass du [x] gesprochen hast",
    "mir hat (besonders) (gut) gefallen dass du [x] gesprochen hast",
    "mir hat (besonders) (gut) gefallen dass du [x] erzählt hast",
    "besonders gut hat mir gefallen dass du [x] gesprochen hast",
    "besonders gut hat mir gefallen dass du [x] erzählt hast",
    "ich fand (es) besonders gut dass du [x] gesprochen hast",
    "ich fand (es) besonders gut dass du [x] erzählt hast",
-   "besonders gut fand ich dass du [x] gesprochen hast"
+   "besonders gut fand ich dass du [x] gesprochen hast",
+   "mir hat besonders (gut) gefallen dass du von deiner (eigenen) erfahrung gesprochen hast"
   ],
   "anywhere": true,
   "model": "Mir hat besonders gut gefallen, dass du über deine eigene Erfahrung gesprochen hast.",

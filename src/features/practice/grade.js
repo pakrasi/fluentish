@@ -55,6 +55,8 @@ const refCache = new WeakMap();
  * @property {{start: number, end: number}[]} wrong   ranges of the answer that differ
  * @property {boolean} [frag]             he typed a part of the sentence
  * @property {boolean} [junk]             slot words that are no German
+ * @property {import('../../domain/match.js').Slip[]} [typos]       slips in the rest (status 'ok')
+ * @property {import('../../domain/match.js').Slip[]} [umlautMiss]
  */
 
 /** A phrase card: an English sentence to say in German, graded on its highlighted phrase. @param {any} it */
@@ -66,7 +68,7 @@ export const isSituation = it => it.kind === 'topic' || it.kind === 'reply';
  * @param {any} item
  * @param {string} input
  * @param {any} [move]    for reply items: the move the learner picked
- * @param {{nouns?: Record<string, string>, traps?: Map<string, any>, lexicon?: Set<string>, variants?: Map<string, string[]>, verbs?: Set<string> | null}} [data]
+ * @param {{nouns?: Record<string, string>, traps?: Map<string, any>, lexicon?: Set<string>, variants?: Map<string, string[]>, verbs?: Set<string> | null, pool?: any[]}} [data]
  *   lexicon: folded German word forms (pool.js buildLexicon); variants: item id → whole answers Claude confirmed right;
  *   verbs: finite verb forms of the word list (detect.js verbForms), for the word-order detectors
  * @returns {Grade}
@@ -101,7 +103,8 @@ export function gradeAnswer(item, input, move = null, data = {}) {
     }
   }
   const own = new Set(it.accept || []);
-  const render = (/** @type {string} */ p) => it.gap ? (own.has(p) ? (Match.gapFill(it.prompt, p)?.text || p) : p) : it.literal ? p : Match.renderPattern(p, it.model);
+  // a gap's answer in its sentence, with the capitals of the model and the noun list (bis sechs Uhr, beim Lernen)
+  const render = (/** @type {string} */ p) => it.gap ? (own.has(p) ? casedLike(Match.gapFill(it.prompt, p)?.text || p, modelCase(it.model)) : p) : it.literal ? p : Match.renderPattern(p, it.model);
   let right = it.model;
   if (!r.ok && r.nearest != null && r.nearest > 0) right = render(accepted[r.nearest]);
   // a situation: show the answer that contains the phrase being checked, never a variant without it
@@ -119,8 +122,15 @@ export function gradeAnswer(item, input, move = null, data = {}) {
   if (!r.ok && !it.gap && !it.literal) right = target;
   const shown = new Set([norm(r.ok ? r.input : right)]);
   /** @type {string[]} */ const also = [];
+  // the other accepted answers, written as the model is written: its commas, capitals and slot words (Match.alsoLines).
+  // A pattern that needs other commas than the model's is not shown; nothing is shown without punctuation.
+  const lines = !it.gap && !it.literal && it.model && !/…/.test(it.model) ? Match.alsoLines(it.model, accepted, alsoRef(it, ref, data), lowerWords(data), isSituation(it)) : null;
+  const lineOf = new Map((lines || []).map(l => [l.pattern, l.text]));
   for (const p of (it.gap ? it.accept : accepted)) {
-    const s = render(p); const k = norm(s);
+    const s = lines ? lineOf.get(p) : it.gap || it.literal ? render(p) : null;
+    // the model's own phrase (deshalb kann ich … inside its sentence) is not another answer
+    if (s == null || (lines && it.model && norm(it.model).includes(norm(s)))) continue;
+    const k = norm(s);
     if (shown.has(k) || (/…/.test(s) && it.kind !== 'topic' && it.kind !== 'reply' && it.anywhere === false)) continue;
     shown.add(k); also.push(s);
   }
@@ -168,6 +178,79 @@ export function retypeOk(it, typed, target) {
   if (!b.length || a.length !== b.length) return false;
   const strict = new Set(it && it.strict || []);
   return b.every((/** @type {any} */ w, /** @type {number} */ i) => a[i].n === w.n && (i === 0 || !strict.has(w.raw) || a[i].raw === w.raw));
+}
+
+/**
+ * Capitals for the "also correct" lines: the noun list and the model's words (caseRef), the polite forms the item
+ * spells strictly (Sie, Ihnen), and the nouns of every model sentence in the pool (Zeit, Vorschlag: words written with a
+ * capital inside a sentence and never in lower case there).
+ * @param {any} it @param {Map<string, string>} ref @param {{pool?: any[]}} data @returns {Map<string, string>}
+ */
+function alsoRef(it, ref, data) {
+  const m = new Map(poolWords(data.pool).nouns);
+  for (const [k, v] of ref) m.set(k, v);
+  for (const w of it.strict || []) if (/^\p{Lu}/u.test(w)) m.set(Match.fold(String(w).toLowerCase()), w);
+  return m;
+}
+/** Words known to be written in lower case: the pool's, and the finite verb forms of the word list. @param {any} data */
+function lowerWords(data) {
+  const { lower } = poolWords(data.pool);
+  if (!lower) return null;
+  if (!data.verbs || !data.verbs.size) return lower;
+  let m = verbCache.get(data.verbs);
+  if (!m) {
+    const { nouns } = poolWords(data.pool), caps = new Set([...nouns.keys(), ...Object.keys(data.nouns || {}).map(k => Match.fold(k))]);
+    m = new Set([...lower, ...[...data.verbs].filter(v => !caps.has(v))]);
+    verbCache.set(data.verbs, m);
+  }
+  return m;
+}
+const verbCache = new WeakMap();
+const wordCache = new WeakMap();
+/**
+ * The words of the pool's model sentences, past the first word of a sentence: nouns (written with a capital, never in
+ * lower case there) and the words written in lower case. Folded.
+ * @param {any[] | undefined} pool @returns {{nouns: Map<string, string>, lower: Set<string> | null}}
+ */
+function poolWords(pool) {
+  if (!pool) return { nouns: new Map(), lower: null };
+  let m = wordCache.get(pool);
+  if (m) return m;
+  /** @type {Map<string, string>} */ const cap = new Map();
+  /** @type {Set<string>} */ const lower = new Set();
+  for (const x of pool) for (const s of [x.model, ...(x.moves || []).map((/** @type {any} */ v) => v.model)]) {
+    if (!s) continue;
+    String(s).normalize('NFC').split(/(?<=[.!?:])\s+/).forEach(sent => Match.words(sent).forEach((/** @type {any} */ w, /** @type {number} */ i) => {
+      if (!i) return;
+      if (/^\p{Lu}/u.test(w.raw)) { if (!cap.has(Match.fold(w.low))) cap.set(Match.fold(w.low), w.raw); } else lower.add(Match.fold(w.low));
+    }));
+  }
+  // a word written both ways (die Teile / ich teile, das Leben / leben) has no known case: in neither set
+  m = { nouns: new Map([...cap].filter(([k]) => !lower.has(k))), lower: new Set([...lower].filter(k => !cap.has(k))) };
+  wordCache.set(pool, m);
+  return m;
+}
+
+/**
+ * A sentence with the written form of each word that ref knows, past the first word of each sentence.
+ * @param {string} text @param {Map<string, string>} ref
+ */
+function casedLike(text, ref) {
+  return String(text).split(/(?<=[.!?]\s)/).map((sent, k) => {
+    let first = true;
+    return sent.replace(/[\p{L}\p{N}_'-]+/gu, w => {
+      if (first) { first = false; return k ? w.charAt(0).toUpperCase() + w.slice(1) : w; }
+      const c = ref.get(Match.fold(w.toLowerCase()));
+      return c && c.toLowerCase() === w.toLowerCase() ? c : w;
+    });
+  }).join('');
+}
+
+/** The model's own spelling of its words past the first of each sentence (Uhr, Lernen). @param {string} model */
+function modelCase(model) {
+  /** @type {Map<string, string>} */ const m = new Map();
+  String(model || '').normalize('NFC').split(/(?<=[.!?:])\s+/).forEach(sent => Match.words(sent).forEach((/** @type {any} */ w, /** @type {number} */ i) => { if (i) m.set(Match.fold(w.low), w.raw); }));
+  return m;
 }
 
 /** @param {string} s */

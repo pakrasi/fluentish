@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "6865581f3090",
+ "version": "33977659f68c",
  "languages": [
   {
    "id": "khasi",
@@ -197,8 +197,8 @@
    "id": "b1.items",
    "path": "b1/items.json",
    "schema": "b1-items@1",
-   "bytes": 351198,
-   "sha256": "f99266e78d278eb7aedeeb7b428b6a7c21c275d1b87a532922dc747272af8ccf"
+   "bytes": 351347,
+   "sha256": "5c84176873317fb127423d4d7dc869795d0cabca5b1fd73f596df0019ad7dcd7"
   },
   {
    "id": "b1.nouns",
@@ -218,8 +218,8 @@
    "id": "b1.schreiben",
    "path": "b1/schreiben.json",
    "schema": "b1-schreiben@1",
-   "bytes": 120095,
-   "sha256": "b3ac2b7e47b86d05207faaecfe9a36944eeb81267d3be4588edd86200e573803"
+   "bytes": 124718,
+   "sha256": "44a8df4c7eb17c282151c59e8445557be3fb83b8226c15fbb8a91ab061da445c"
   },
   {
    "id": "b1.wordmap",

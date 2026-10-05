@@ -779,7 +779,7 @@ export default {
   'practice.checkedPhrase': 'Only the marked phrase is graded.',
   'practice.partial.right': '{phrase} is right.',
   'practice.partial.rest': 'The rest of the sentence:',
-  'practice.partial.hard': 'It counts as Hard: the phrase was right, the rest of the sentence was not.',
+  'practice.partial.hard': 'The phrase is right. The rest differs from the model, so it counts as Hard.',
   'practice.partial.junk': 'The words around the phrase are not German.',
   'practice.partial.situation': 'Check this word:',
   'practice.alsoCorrect': 'Also correct:',
