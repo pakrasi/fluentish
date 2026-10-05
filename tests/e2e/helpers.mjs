@@ -31,7 +31,9 @@ export async function answerCard(page, known) {
   if (await done.count()) return false;
   if (/^Next/.test(await primary.innerText())) {
     if (!known.has(prompt) && await page.locator('.pr-fb .answer-key').count()) known.set(prompt, await keyText());
-    await primary.click();
+    // a right answer moves on by itself after a moment, so Next may already be gone: a missed click is fine (the
+    // next card waits for its Check button, and Check on an empty answer does nothing)
+    await primary.click({ timeout: 3000 }).catch(() => {});
   }
   return true;
 }

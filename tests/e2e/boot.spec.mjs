@@ -7,7 +7,7 @@ test('boots to Today with no console errors, and the tabs work', async ({ page }
   await checkA11y(page, 'Today');
   for (const [tab, hash] of [['practice', '#/practice'], ['exam', '#/exam'], ['lookup', '#/lookup']]) {
     await page.locator(`nav.tabs a[data-tab="${tab}"]:visible`).first().click();
-    await expect(page).toHaveURL(new RegExp(`${hash}$`));
+    await expect(page).toHaveURL(new RegExp(`${hash}(/[a-z]+)?$`));   // Look up reopens its last section
     await expect(page.locator('#view h1').first()).toBeVisible();
   }
   await checkA11y(page, 'Look up');

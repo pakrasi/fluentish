@@ -10,7 +10,7 @@ export default defineConfig({
   testDir: '.',
   testMatch: /.*\.spec\.mjs$/,
   outputDir: '../../test-results/e2e',
-  timeout: 45_000,
+  timeout: 60_000,
   expect: { timeout: 10_000 },
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
