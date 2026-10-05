@@ -3,10 +3,10 @@
    sections. Every transition here uses the motion tokens, so reduced motion covers it. */
 
 /* ---------- shell ---------- */
-.skip-link { position: absolute; left: 8px; top: -60px; min-height: var(--tap); box-sizing: border-box; display: inline-flex; align-items: center; z-index: var(--z-fx); padding: 10px 14px; border-radius: var(--r-ctl); background: var(--ink); color: var(--on-ink); text-decoration: none; }
+.skip-link { position: absolute; inset-inline-start: 8px; top: -60px; min-height: var(--tap); box-sizing: border-box; display: inline-flex; align-items: center; z-index: var(--z-fx); padding: 10px 14px; border-radius: var(--r-ctl); background: var(--ink); color: var(--on-ink); text-decoration: none; }
 .skip-link:focus { top: 8px; }
 .bar-inner .tabs-top { display: none; }
-.avatar-link { margin-left: auto; display: grid; place-items: center; width: var(--tap); height: var(--tap); margin-right: -6px; border-radius: 50%; text-decoration: none; color: var(--ink); }
+.avatar-link { margin-inline-start: auto; display: grid; place-items: center; width: var(--tap); height: var(--tap); margin-inline-end: -6px; border-radius: 50%; text-decoration: none; color: var(--ink); }
 .avatar-link[aria-current="page"] .avatar { box-shadow: 0 0 0 2px var(--canvas), 0 0 0 3.5px var(--accent); }
 .avatar { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--surface-2); color: var(--ink); font: 600 13px/1 var(--font-ui); letter-spacing: 0.02em; box-shadow: inset 0 0 0 1px var(--hairline); }
 .icon { flex: none; }
@@ -18,7 +18,7 @@
 body[data-chrome="off"] .bar, body[data-chrome="off"] #tabs-slot { display: none; }
 .banner { margin: 0; padding: 8px var(--gutter); background: var(--surface-2); color: var(--ink-2); font-size: 13px; text-align: center; }
 @media (min-width: 900px) {
-  .bar-inner .tabs-top { display: flex; margin-left: var(--s-6); align-self: stretch; align-items: stretch; }
+  .bar-inner .tabs-top { display: flex; margin-inline-start: var(--s-6); align-self: stretch; align-items: stretch; }
   .bar-inner .tabs-top a { padding: 0 2px; }
   .tabs-bottom { display: none; }
 }
@@ -113,11 +113,11 @@ body[data-chrome="off"] .bar, body[data-chrome="off"] #tabs-slot { display: none
 .mbar-name { font-size: 14px; font-weight: 500; }
 .mbar .track { height: 6px; overflow: visible; background: var(--cell-plan); box-shadow: inset 0 0 0 1px var(--field-border); }
 .mbar .track .fill { border-radius: 3px; }
-.mbar .pass { position: absolute; top: -5px; bottom: -5px; left: var(--at); width: 2px; margin-left: -1px; border-radius: 1px; background: var(--ink-3); }
-.mbar-val { text-align: right; font-size: 14px; }
+.mbar .pass { position: absolute; top: -5px; bottom: -5px; inset-inline-start: var(--at); width: 2px; margin-inline-start: -1px; border-radius: 1px; background: var(--ink-3); }
+.mbar-val { text-align: end; font-size: 14px; }
 .mbar-val.none { color: var(--ink-3); font-size: 13px; }
 
-.dock { position: fixed; left: 0; right: 0; bottom: calc(57px + env(safe-area-inset-bottom)); z-index: calc(var(--z-bar) - 1); padding: var(--s-3) max(var(--gutter), env(safe-area-inset-left)) var(--s-2); background: linear-gradient(to bottom, transparent, var(--canvas) 34%); }
+.dock { position: fixed; inset-inline-start: 0; inset-inline-end: 0; bottom: calc(57px + env(safe-area-inset-bottom)); z-index: calc(var(--z-bar) - 1); padding: var(--s-3) max(var(--gutter), env(safe-area-inset-left)) var(--s-2); background: linear-gradient(to bottom, transparent, var(--canvas) 34%); }
 .dock .btn { box-shadow: var(--shadow-lift); }
 .today.has-dock { padding-bottom: 76px; }
 /* the sticky bars never cover what has focus or what a link scrolls to */
@@ -226,7 +226,7 @@ input[type="date"].input { min-height: var(--tap); }
 .summary-goal { font: 400 24px/1.2 var(--font-display); text-wrap: balance; }
 .summary-goal + .caption { margin-top: 4px; font-size: 13px; }
 .summary-date { font-weight: 500; }
-.summary-list { margin: 0; padding-left: 1.2em; color: var(--ink-2); }
+.summary-list { margin: 0; padding-inline-start: 1.2em; color: var(--ink-2); }
 
 /* ---------- placeholders ---------- */
 .placeholder { padding-top: var(--s-6); --gap: var(--s-4); max-width: 560px; }
@@ -238,7 +238,7 @@ input[type="date"].input { min-height: var(--tap); }
 .stand-meta { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-2); align-items: baseline; margin: 0; }
 .stand-weak { font: 600 12px/1.3 var(--font-ui); color: var(--accent-ink); }
 .stand-items:empty { display: none; }
-.stand-act { justify-self: start; min-height: var(--tap); padding-inline: 0; text-align: left; white-space: normal; }
+.stand-act { justify-self: start; min-height: var(--tap); padding-inline: 0; text-align: start; white-space: normal; }
 .stand-words { display: flex; justify-content: space-between; gap: var(--s-3); align-items: center; min-height: var(--tap); margin-top: var(--s-3); color: var(--ink); text-decoration: none; }
 .stand-def, .stand-week { margin-top: var(--s-2); max-width: var(--measure); }
 .hero-def { margin-top: var(--s-1); color: var(--ink-2); }

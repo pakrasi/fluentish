@@ -23,7 +23,7 @@
 .chip[aria-pressed="true"] .wb-sq.is-known { background: var(--on-ink); }
 @media (pointer: coarse) { .wb .chip { min-height: var(--tap); padding: 0 16px; } }
 .wb-legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12px; color: var(--ink-2); }
-.wb-legend i { display: inline-block; position: relative; width: 14px; height: 14px; margin-right: 6px; vertical-align: -3px; border-radius: 2px; }
+.wb-legend i { display: inline-block; position: relative; width: 14px; height: 14px; margin-inline-end: 6px; vertical-align: -3px; border-radius: 2px; }
 .wb-toggle { display: inline-flex; align-items: center; gap: 10px; min-height: var(--tap); font-size: 14px; color: var(--ink-2); cursor: pointer; justify-self: start; }
 .wb-toggle input { width: 20px; height: 20px; margin: 0; accent-color: var(--ink); }
 
@@ -38,12 +38,12 @@
 .wb-word.is-big { font-size: 32px; }
 @media (min-width: 720px) { .wb-word.is-big { font-size: 38px; } }
 .wb-pc { position: relative; display: inline-block; }
-.wb-word.is-sep .wb-pre { margin-right: 6px; }
+.wb-word.is-sep .wb-pre { margin-inline-end: 6px; }
 .wb-joint { position: absolute; top: 14%; height: 58%; width: 1.5px; border-radius: 1px; background: var(--field-border); }
 .wb-word.is-sep .wb-joint { left: calc(var(--pre-w, 0px)); }
-.wb-word.is-sep .wb-pre::after { content: ""; position: absolute; right: -4px; top: 14%; bottom: 8%; width: 1.5px; border-radius: 1px; background: var(--field-border); }
+.wb-word.is-sep .wb-pre::after { content: ""; position: absolute; inset-inline-end: -4px; top: 14%; bottom: 8%; width: 1.5px; border-radius: 1px; background: var(--field-border); }
 .wb-word.is-sep .wb-joint { display: none; }
-.wb-weld { position: absolute; left: 0; right: 0; bottom: 4px; height: 2px; border-radius: 1px; background: var(--ink); transform-origin: left; }
+.wb-weld { position: absolute; inset-inline-start: 0; inset-inline-end: 0; bottom: 4px; height: 2px; border-radius: 1px; background: var(--ink); transform-origin: left; }
 .wb-sv { position: relative; display: inline-block; }
 .wb-dot { position: absolute; left: 50%; bottom: -9px; width: 6px; height: 6px; margin-left: -3px; border-radius: 50%; background: var(--ink); }
 .wb-word .wb-dot { bottom: -10px; }
@@ -130,7 +130,7 @@
 .wb-how b { color: var(--ink); font-weight: 600; }
 .wb-ex { font: 400 19px/1.4 var(--font-display); }
 .wb-exrow { display: flex; align-items: flex-start; gap: var(--s-2); }
-.wb-play { flex: none; display: grid; place-items: center; width: var(--tap); height: var(--tap); margin: -8px 0 0 -10px; border: 0; border-radius: 50%; background: transparent; color: var(--ink-2); cursor: pointer; }
+.wb-play { flex: none; display: grid; place-items: center; width: var(--tap); height: var(--tap); margin-block: -8px 0; margin-inline: -10px 0; border: 0; border-radius: 50%; background: transparent; color: var(--ink-2); cursor: pointer; }
 .wb-empty { color: var(--ink-2); }
 .wb-saved:empty { display: none; }
 
@@ -142,11 +142,11 @@
 table.wb-pt { border-collapse: separate; border-spacing: 2px; font-size: 12px; }
 .wb-pt th { padding: 0; height: 40px; min-width: 32px; font: 500 13px/1 var(--font-display); color: var(--ink-2); }
 .wb-pt thead th button { width: 100%; min-width: 32px; min-height: var(--tap); border: 0; border-radius: 6px; background: transparent; color: var(--ink-2); font: 500 15px/1 var(--font-display); cursor: pointer; }
-.wb-pt thead th.wb-thgrp { height: 18px; padding-left: 4px; text-align: left; font: 500 11px/1 var(--font-ui); color: var(--ink-3); }
-.wb-pt tbody th { position: sticky; left: 0; z-index: 2; padding-right: 8px; background: var(--canvas); text-align: left; }
+.wb-pt thead th.wb-thgrp { height: 18px; padding-inline-start: 4px; text-align: start; font: 500 11px/1 var(--font-ui); color: var(--ink-3); }
+.wb-pt tbody th { position: sticky; inset-inline-start: 0; z-index: 2; padding-inline-end: 8px; background: var(--canvas); text-align: start; }
 .wb-pt tbody th button { min-height: 32px; padding: 0 2px; border: 0; background: transparent; color: var(--ink); font: 400 16px/1 var(--font-display); cursor: pointer; }
 .wb-pt td { width: 32px; height: 32px; padding: 0; }
-.wb-pt .wb-gap { padding-left: 8px; }
+.wb-pt .wb-gap { padding-inline-start: 8px; }
 .wb-pt .is-dim { opacity: 0.18; }
 .wb-pt th.is-hl { outline: 2px solid var(--ink); outline-offset: 1px; border-radius: 4px; }
 .wb-cell { position: relative; display: block; width: 32px; height: 32px; border-radius: 2px; }
@@ -176,27 +176,27 @@ table.wb-pt { border-collapse: separate; border-spacing: 2px; font-size: 12px; }
 .wb-grp { display: inline-flex; align-items: flex-end; white-space: nowrap; }
 .wb-t { --role: var(--role-plain); position: relative; display: inline-flex; align-items: baseline; min-height: 40px; padding: 8px 10px 9px; border-radius: var(--r-tile);
   background: color-mix(in oklab, var(--role) var(--role-mix), var(--surface)); box-shadow: inset 0 -3px 0 var(--role); font: 500 17px/1.2 var(--font-ui); color: var(--ink); white-space: nowrap; }
-.wb-t.is-punct { background: none; box-shadow: none; padding: 8px 0 9px 1px; }
+.wb-t.is-punct { background: none; box-shadow: none; padding-block: 8px 9px; padding-inline: 1px 0; }
 .wb-t.is-verb, .wb-t.is-part { --role: var(--role-door); }
 .wb-t.is-part { font-weight: 600; }
 .wb-t.is-aux { --role: var(--role-turn); }
 .wb-t.is-conj { --role: var(--role-glue); }
 .wb-t.is-slot { --role: var(--role-slot); font-weight: 600; }
-.wb-t.is-joinL { margin-left: -6px; border-top-left-radius: 0; border-bottom-left-radius: 0; }
-.wb-t.is-joinR { border-top-right-radius: 0; border-bottom-right-radius: 0; }
-.wb-t.is-joinL::before { content: ""; position: absolute; left: -1px; top: 7px; bottom: 9px; width: 2px; background: var(--surface); }
+.wb-t.is-joinL { margin-inline-start: -6px; border-start-start-radius: 0; border-end-start-radius: 0; }
+.wb-t.is-joinR { border-start-end-radius: 0; border-end-end-radius: 0; }
+.wb-t.is-joinL::before { content: ""; position: absolute; inset-inline-start: -1px; top: 7px; bottom: 9px; width: 2px; background: var(--surface); }
 .wb-t .wb-wpre { position: relative; }
-.wb-t .wb-wpre::after { content: ""; position: absolute; left: 0; right: -2px; bottom: -3px; height: 2px; border-radius: 1px; background: var(--ink); }
+.wb-t .wb-wpre::after { content: ""; position: absolute; inset-inline-start: 0; inset-inline-end: -2px; bottom: -3px; height: 2px; border-radius: 1px; background: var(--ink); }
 .wb-t .wb-dot { bottom: auto; top: -17px; }
 .wb-ttxt { display: inline-block; }
 .wb-joint-t { color: var(--ink-3); padding: 0 3px; font-weight: 400; }
 .wb-ghost { position: absolute; pointer-events: none; }
 .wb-slotlab { position: absolute; font: 500 11px/1 var(--font-ui); color: var(--ink-3); white-space: nowrap; }
-.wb-slotlab::before { content: ""; position: absolute; left: 0; right: 0; top: -6px; height: 4px; border: 1.5px solid var(--field-border); border-top: 0; border-radius: 0 0 3px 3px; }
+.wb-slotlab::before { content: ""; position: absolute; inset-inline-start: 0; inset-inline-end: 0; top: -6px; height: 4px; border: 1.5px solid var(--field-border); border-top: 0; border-radius: 0 0 3px 3px; }
 .wb-slotlab span { display: block; padding-top: 2px; }
 .wb-rule { padding: 10px 12px; border-radius: var(--r-tile); background: var(--surface-2); color: var(--ink-2); font-size: 14px; }
 .wb-rule b { color: var(--ink); font-weight: 600; }
-.wb-lg { display: inline-block; width: 12px; height: 12px; margin-right: 6px; border-radius: 2px; vertical-align: -2px; }
+.wb-lg { display: inline-block; width: 12px; height: 12px; margin-inline-end: 6px; border-radius: 2px; vertical-align: -2px; }
 .wb-lg.is-verb { background: var(--role-door); } .wb-lg.is-aux { background: var(--role-turn); } .wb-lg.is-slot { background: var(--role-slot); }
 .wb-lg.is-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ink); vertical-align: 0; }
 
@@ -210,11 +210,11 @@ table.wb-pt { border-collapse: separate; border-spacing: 2px; font-size: 12px; }
 .wb-node.is-noun { padding-top: 18px; }
 .wb-wbody { display: grid; gap: 2px; min-width: 0; }
 .wb-wline { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
-.wb-art { display: inline-grid; place-items: center; min-width: 34px; height: 30px; margin-right: -4px; font: 400 24px/1 var(--font-display); color: var(--ink-2); }
+.wb-art { display: inline-grid; place-items: center; min-width: 34px; height: 30px; margin-inline-end: -4px; font: 400 24px/1 var(--font-display); color: var(--ink-2); }
 .wb-art.is-ask { width: 36px; border: 1px dashed var(--field-border); border-radius: var(--r-tile); color: var(--ink-3); font-size: 18px; }
 .wb-w { position: relative; font: 400 24px/1.15 var(--font-display); letter-spacing: -0.01em; color: var(--ink); white-space: nowrap; }
 .wb-w .wb-add { position: relative; display: inline-block; }
-.wb-w .wb-add::after { content: ""; position: absolute; left: 0; right: 0; bottom: 1px; height: 2px; border-radius: 1px; background: var(--ink); }
+.wb-w .wb-add::after { content: ""; position: absolute; inset-inline-start: 0; inset-inline-end: 0; bottom: 1px; height: 2px; border-radius: 1px; background: var(--ink); }
 .wb-cls { position: relative; display: inline-grid; overflow: hidden; height: 20px; min-width: 72px; }
 .wb-cls span { grid-area: 1 / 1; font: 500 12px/20px var(--font-ui); color: var(--ink-3); }
 .wb-wen { font-size: 14px; color: var(--ink-2); }
@@ -246,7 +246,7 @@ body.wb-in-round #view { max-width: none; padding: 0; }
   padding: env(safe-area-inset-top) max(var(--gutter), env(safe-area-inset-left)) 0; }
 .wb-rtop { width: 100%; max-width: 640px; margin: 0 auto; padding-top: var(--s-3); view-transition-name: fx-roundhead; }
 .wb-rtop-row { display: flex; justify-content: space-between; align-items: center; gap: var(--s-3); margin-top: 2px; }
-.wb-rtop-row .btn { min-height: var(--tap); padding: 0 10px; margin-right: -10px; }
+.wb-rtop-row .btn { min-height: var(--tap); padding: 0 10px; margin-inline-end: -10px; }
 .wb-rscroll { overflow-y: auto; overscroll-behavior: contain; padding: var(--s-2) 0 var(--s-3); -webkit-overflow-scrolling: touch; }
 .wb-rcard { width: 100%; max-width: 640px; margin: 0 auto; padding: var(--s-5) var(--s-4) var(--s-4); display: grid; gap: var(--s-3); align-content: start; }
 .wb-rcard > .card-meta { margin-bottom: 2px; }
@@ -283,7 +283,7 @@ body.wb-in-round #view { max-width: none; padding: 0; }
 .wb-gcard { display: grid; place-items: center; gap: 10px; min-height: 220px; text-align: center; }
 .wb-gword { position: relative; display: inline-flex; font: 400 44px/1.05 var(--font-display); letter-spacing: -0.02em; padding-bottom: 6px; }
 .wb-gp, .wb-gs { position: relative; display: inline-block; }
-.wb-gw { position: absolute; left: 0; right: 0; bottom: 0; height: 2.5px; border-radius: 2px; background: var(--ink); transform-origin: left; transform: scaleX(0); }
+.wb-gw { position: absolute; inset-inline-start: 0; inset-inline-end: 0; bottom: 0; height: 2.5px; border-radius: 2px; background: var(--ink); transform-origin: left; transform: scaleX(0); }
 .wb-gj { position: absolute; top: 15%; bottom: 10%; width: 2px; background: var(--field-border); opacity: 0; }
 .wb-gmeaning { color: var(--ink-3); }
 .wb-gex { min-height: 1.4em; font: 400 19px/1.35 var(--font-display); }

@@ -44,7 +44,7 @@ export function drawTree({ d, t, chain, shown, answered, guess, box, onGrow, onA
     if (hidden.length && interactive && onGrow) {
       const g = h('div', { class: 'wb-grow' }, hidden.map((/** @type {any} */ k) => h('button', { type: 'button', class: 'pressable', lang: langAttr(),
         'aria-label': t('build.chain.add', { piece: growLabel(k.node, d, t), word: tn.node.word }), onclick: () => onGrow(k.node) }, `${tn.node.word} + ${growLabel(k.node, d, t)}`)));
-      g.style.paddingLeft = `${(tn.depth + 1) * INDENT}px`;
+      g.style.paddingInlineStart = `${(tn.depth + 1) * INDENT}px`;
       box.append(g);
     }
   };
@@ -63,7 +63,7 @@ export function drawTree({ d, t, chain, shown, answered, guess, box, onGrow, onA
       n.note && !asked ? h('span', { class: 'wb-wnote' }, n.note) : null,
       asked ? h('div', { class: 'wb-artguess', role: 'group', 'aria-label': t('build.chain.artFor', { word: n.word }) },
         ['der', 'die', 'das'].map(a => h('button', { type: 'button', class: 'pressable', lang: langAttr(), onclick: (/** @type {Event} */ e) => onAnswer && onAnswer(n, a, /** @type {HTMLElement} */ (e.currentTarget)) }, a))) : null);
-    body.style.paddingLeft = `${tn.depth * INDENT}px`;
+    body.style.paddingInlineStart = `${tn.depth * INDENT}px`;
     return h('div', { class: ['wb-node', n.art && 'is-noun', fresh === n.id && 'is-fresh'], 'data-id': n.id, 'data-parent': n.from || '' }, body);
   }
   walk(tree.root);

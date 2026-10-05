@@ -28,9 +28,9 @@
 /* a family as a tree: the head on top, one branch per prefix, the words still to learn in a tray below */
 .cl-family { display: flex; flex-direction: column; gap: var(--s-3); }
 .cl-head { margin: 0; font-size: 26px; }
-.cl-branches { margin-left: 10px; padding-left: 16px; border-left: 1px solid var(--hairline-strong); display: flex; flex-direction: column; gap: var(--s-2); }
+.cl-branches { margin-inline-start: 10px; padding-inline-start: 16px; border-inline-start: 1px solid var(--hairline-strong); display: flex; flex-direction: column; gap: var(--s-2); }
 .cl-branch { position: relative; display: flex; gap: var(--s-3); align-items: baseline; min-height: 28px; }
-.cl-branch::before { content: ''; position: absolute; left: -16px; top: 0.85em; width: 10px; border-top: 1px solid var(--hairline-strong); }
+.cl-branch::before { content: ''; position: absolute; inset-inline-start: -16px; top: 0.85em; width: 10px; border-top: 1px solid var(--hairline-strong); }
 .cl-pre { font: 500 12px/1 var(--font-mono); color: var(--ink-3); min-width: 48px; }
 .cl-leaves { display: flex; flex-wrap: wrap; gap: 2px var(--s-3); font-size: 18px; line-height: 1.6; }
 .cl-tray-label { margin: var(--s-2) 0 0; }
@@ -72,7 +72,7 @@
 .cl-page .cl-head { display: none; }
 .cl-first { display: grid; gap: var(--s-1); }
 .cl-first .label, .cl-all { margin: var(--s-3) 0 0; }
-.cl-map { align-self: flex-start; padding-left: 0; }
+.cl-map { align-self: flex-start; padding-inline-start: 0; }
 .cl-done-data { display: grid; gap: var(--s-5); }
 .cl-done-words { display: grid; gap: var(--s-2); }
 .cl-done-all { display: grid; gap: var(--s-2); }

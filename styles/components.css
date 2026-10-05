@@ -17,7 +17,7 @@
 @media (prefers-reduced-transparency: reduce) { .bar, .tabs { background: var(--canvas); backdrop-filter: none; -webkit-backdrop-filter: none; } }
 
 /* ---------- tab bar (phone) ---------- */
-.tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: var(--z-bar); display: grid; grid-template-columns: repeat(var(--n, 4), 1fr); padding: 6px max(8px, env(safe-area-inset-left)) calc(6px + env(safe-area-inset-bottom)); background: color-mix(in oklab, var(--canvas) 92%, transparent); backdrop-filter: saturate(1.4) blur(16px); -webkit-backdrop-filter: saturate(1.4) blur(16px); border-top: 1px solid var(--hairline); }
+.tabs { position: fixed; inset-inline-start: 0; inset-inline-end: 0; bottom: 0; z-index: var(--z-bar); display: grid; grid-template-columns: repeat(var(--n, 4), 1fr); padding: 6px max(8px, env(safe-area-inset-left)) calc(6px + env(safe-area-inset-bottom)); background: color-mix(in oklab, var(--canvas) 92%, transparent); backdrop-filter: saturate(1.4) blur(16px); -webkit-backdrop-filter: saturate(1.4) blur(16px); border-top: 1px solid var(--hairline); }
 .tabs a { position: relative; display: grid; place-items: center; gap: 2px; min-height: var(--tap); padding: 4px 0; color: var(--ink-3); text-decoration: none; font: 500 11px/1.2 var(--font-ui); }
 .tabs a svg { width: 22px; height: 22px; }
 .tabs a[aria-current="page"] { color: var(--ink); }
@@ -141,7 +141,7 @@
 .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: var(--s-6); }
 
 /* ---------- toast ---------- */
-.toast { position: fixed; left: 50%; bottom: calc(84px + env(safe-area-inset-bottom)); z-index: var(--z-toast); display: flex; align-items: center; gap: var(--s-3); padding: 10px 10px 10px 18px; border-radius: var(--r-pill); background: var(--ink); color: var(--on-ink); font-size: 14px; box-shadow: var(--shadow-lift); transform: translateX(-50%); white-space: nowrap; }
+.toast { position: fixed; left: 50%; bottom: calc(84px + env(safe-area-inset-bottom)); z-index: var(--z-toast); display: flex; align-items: center; gap: var(--s-3); padding-block: 10px; padding-inline: 18px 10px; border-radius: var(--r-pill); background: var(--ink); color: var(--on-ink); font-size: 14px; box-shadow: var(--shadow-lift); transform: translateX(-50%); white-space: nowrap; }
 .toast .btn { min-height: 34px; padding: 0 12px; background: transparent; color: inherit; border-color: color-mix(in oklab, var(--on-ink) 35%, transparent); }
 
 /* ---------- atmosphere (brand.js Atmosphere) ---------- */
@@ -173,10 +173,10 @@
   border: 1px solid var(--hairline-strong); border-radius: var(--r-ctl); background: var(--surface); color: var(--ink);
   font: 600 15px/1.15 var(--font-ui); cursor: pointer; -webkit-user-select: none; user-select: none; touch-action: manipulation; }
 .grade4-when { color: var(--ink-3); white-space: nowrap; font-weight: 400; }
-.grade4-b kbd { position: absolute; bottom: 5px; right: 6px; font: 500 10px/1 var(--font-mono); color: var(--ink-3); }
+.grade4-b kbd { position: absolute; bottom: 5px; inset-inline-end: 6px; font: 500 10px/1 var(--font-mono); color: var(--ink-3); }
 @media (hover: none), (pointer: coarse) { .grade4-b kbd { display: none; } }
 /* the suggestion: a 6px accent dot, no fill (nothing looks chosen before a tap) */
-.grade4-b.is-suggested::after { content: ""; position: absolute; top: 7px; right: 7px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.grade4-b.is-suggested::after { content: ""; position: absolute; top: 7px; inset-inline-end: 7px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
 .grade4-b.is-picked { background: var(--ink); border-color: var(--ink); color: var(--on-ink); }
 .grade4-b.is-picked .grade4-when { color: color-mix(in oklab, var(--on-ink) 72%, transparent); }
 .grade4-b.is-picked::after { background: var(--on-ink); }
