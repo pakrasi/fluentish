@@ -29,6 +29,8 @@ export function mountOverview(el, ctx, script0) {
     const cards = St.cardOf(store);
     const r = Lad.readiness(script, prog, id => cards(id)?.rec, c.today);
     const nothingMarked = !script.sections.some((/** @type {any} */ s) => prog.sections?.[s.id]?.marked);
+    // the numeral waits until a section has reached Cue: before that it can only say 0 (UX P0-5)
+    const noCue = !script.sections.some((/** @type {any} */ s) => prog.sections?.[s.id]?.done?.cue);
     const nx = nextStep(script, prog, cards, c);
     const ws = wordState(script, cards, c);
     const ph = scriptPhase(c.today, script.deliverOn);
@@ -37,7 +39,7 @@ export function mountOverview(el, ctx, script0) {
     // ---- figure ----
     const fig = h('span', { class: 'numeral sc-numeral' });
     const dayLabel = script.deliverOn && script.deliverOn >= c.today ? label(script.deliverOn) : null;
-    const figure = nothingMarked ? h('div', { class: 'sc-first' }, h('p', { class: 'lead' }, t('practice.script.first')))
+    const figure = nothingMarked || noCue ? h('div', { class: 'sc-first' }, h('p', { class: 'lead' }, nothingMarked ? t('practice.script.first') : t('practice.script.firstCue')))
       : h('button', { type: 'button', class: 'sc-figure pressable', onclick: () => explain(dayLabel), 'aria-label': t('practice.script.readyAria', { pct: r.pct }) },
         h('span', { class: 'sc-figure-top' }, fig, h('span', { class: 'sc-pct' }, '%')),
         h('span', { class: 'label' }, t('practice.script.readyLabel')),
@@ -46,7 +48,7 @@ export function mountOverview(el, ctx, script0) {
 
     // ---- facts ----
     const marked = new Set((script.marks || []).map((/** @type {any} */ m) => m.cardId));
-    const waiting = new Set((script.marks || []).filter((/** @type {any} */ m) => !m.gloss).map((/** @type {any} */ m) => m.cardId)).size;
+    const waiting = new Set((script.marks || []).filter((/** @type {any} */ m) => !m.gloss || m.guess).map((/** @type {any} */ m) => m.cardId)).size;
     const runs = prog.runs || [];
     const lastRun = runs[runs.length - 1];
     const facts = h('div', { class: 'sc-facts' },
@@ -65,13 +67,12 @@ export function mountOverview(el, ctx, script0) {
       else if (p.step === 'cue' && p.done.cue) cap = x?.rec?.due && x.rec.due > c.today ? t('practice.script.row.cueNext', { date: label(x.rec.due) }) : t('practice.script.row.cueDue');
       else cap = p.at && p.at > c.today ? t('practice.script.row.stepNext', { step: t(`practice.script.step.${p.step}`), date: label(p.at) }) : t(`practice.script.step.${p.step}`);
       const href = p.marked ? `#/practice/scripts/${script.id}/rehearse/${s.id}?step=${p.step}` : `#/practice/scripts/${script.id}/mark/${s.id}`;
-      const kindBtn = h('button', { type: 'button', class: 'chip pressable sc-kind', 'aria-label': t('practice.script.kindAria', { section: s.title, kind: t(`practice.script.kind.${s.kind || 'talk'}`) }),
-        onclick: () => switchKind(s.id) }, t(`practice.script.kind.${s.kind || 'talk'}`));
+      // the kind is plain text here; it is switched from the menu (UX P1-15), so a stray tap never drops steps
       return h('li', { class: 'sc-secrow' },
-        h('a', { class: 'sc-seclink pressable', href },
+        h('a', { class: 'sc-seclink pressable', href, 'aria-label': t('practice.script.kindAria', { section: s.title, kind: t(`practice.script.kind.${s.kind || 'talk'}`) }) + `. ${cap}` },
           h('span', { class: 'sc-secnum tnum' }, String(i + 1)),
-          h('span', { class: 'sc-secmain' }, h('span', { class: 'row-title' }, s.title), h('span', { class: 'sc-secline' }, stepSegs(s, p), h('span', { class: 'caption' }, cap)))),
-        archived ? null : kindBtn);
+          h('span', { class: 'sc-secmain' }, h('span', { class: 'row-title' }, s.title), h('span', { class: 'sc-secline' }, stepSegs(s, p),
+            h('span', { class: 'caption' }, h('span', { class: 'sc-kindcap' }, t(`practice.script.kind.${s.kind || 'talk'}`)), ' · ', cap)))));
     });
     const long = script.sections.flatMap((/** @type {any} */ s) => s.sentences.filter((/** @type {any} */ x) => P.isLong(x.de)).map((/** @type {any} */ x) => ({ s, x })));
 
@@ -88,11 +89,12 @@ export function mountOverview(el, ctx, script0) {
     const primary = archived ? null : nothingMarked ? { href: `#/practice/scripts/${script.id}/mark/${script.sections[0].id}`, text: t('practice.script.markWords') }
       : nx.kind === 'rest' ? null : { href: hrefOf(script, nx), text: actionText(nx) };
 
-    const view = h('div', { class: ['practice', 'stack', 'sc-over', primary && 'has-dock'] },
+    const view = h('div', { class: ['practice', 'stack', 'sc-over', primary && 'has-dock'], 'data-title': t('practice.script.title') },
       h('div', { class: 'sc-headrow' }, back('#/practice/scripts', t('practice.script.title')),
         h('button', { type: 'button', class: 'btn btn-quiet pressable sc-menu', 'aria-label': t('practice.script.menu'), 'aria-haspopup': 'dialog', onclick: () => menu() }, '···')),
       h('div', { class: 'page-head sc-over-head' }, h('h1', null, script.title)),
-      h('p', { class: 'label sc-dateline' }, dateLine(script, c.today, t), !script.deliverOn && !archived ? [' ', h('button', { type: 'button', class: 'btn-link', onclick: () => changeDate() }, t('practice.script.addDate'))] : null),
+      h('p', { class: 'label sc-dateline' }, script.deliverOn || archived ? dateLine(script, c.today, t) : null,
+        !script.deliverOn && !archived ? h('button', { type: 'button', class: 'btn btn-quiet pressable sc-adddate', onclick: () => changeDate() }, t('practice.script.addDate')) : null),
       h('p', { class: 'caption' }, t('practice.script.audience', { who: registerLine(script, t) })),
       banners, figure, field, nothingMarked ? null : facts,
       h('section', { class: 'section sc-sections', 'aria-labelledby': 'sc-sec-h' }, h('h2', { id: 'sc-sec-h' }, t('practice.script.sections')), h('ol', { class: 'sc-seclist' }, rows)),
@@ -108,13 +110,20 @@ export function mountOverview(el, ctx, script0) {
       // the numeral rolls from the value last seen; a section that just became known lands in accent
       const from = prog.seenPct ?? 0;
       const land = first && moment && r.rows.find(x => x.id === moment.sectionId && x.ready);
-      if (first && from !== r.pct && !reduced()) { odometer(fig, from, { label: `${from}` }); setTimeout(() => odometer(fig, r.pct, { label: `${r.pct}` }), land ? 380 : 60); }
-      else odometer(fig, r.pct, { label: `${r.pct}` });
+      if (!noCue) {
+        if (first && from !== r.pct && !reduced()) { odometer(fig, from, { label: `${from}` }); setTimeout(() => odometer(fig, r.pct, { label: `${r.pct}` }), land ? 380 : 60); }
+        else odometer(fig, r.pct, { label: `${r.pct}` });
+      }
       if (land) {
         const row = field.querySelector(`[data-section="${CSS.escape(moment.sectionId)}"]`);
         row?.querySelectorAll('.sc-cell').forEach(x => { x.className = 'sc-cell is-learning'; });
         requestAnimationFrame(() => landRow(field, moment.sectionId));
         announce(t('practice.script.landed', { section: land.title, pct: r.pct }));
+      } else if (first && moment && !reduced()) {
+        // after a Cue grade that did not make the section ready yet: its row fills with the runway spring
+        field.querySelector(`[data-section="${CSS.escape(moment.sectionId)}"]`)?.querySelectorAll('.sc-cell').forEach((x, i) => {
+          /** @type {HTMLElement} */ (x).style.setProperty('--i', String(Math.min(i, 24))); x.classList.add('is-fill');
+        });
       }
       if (prog.seenPct !== r.pct) St.updateProgress(store, script.id, p => ({ ...p, seenPct: r.pct }));
     }
@@ -129,14 +138,26 @@ export function mountOverview(el, ctx, script0) {
     return t('practice.script.act.run', { min: nx.minutes });
   }
 
-  /** @param {string} id */
-  function switchKind(id) {
+  /** Switch a section between Talk and Retell, with Undo (the switch can drop the Letters and Gaps steps). @param {string} id @param {'talk' | 'retell'} kind */
+  function switchKind(id, kind) {
     const s = St.get(store, script0.id); if (!s) return;
     const sec = s.sections.find((/** @type {any} */ x) => x.id === id);
-    const kind = sec.kind === 'retell' ? 'talk' : 'retell';
+    if (!sec || (sec.kind || 'talk') === kind) return;
+    const prevProg = structuredClone(St.progress(store, s.id).sections?.[id] || null), prevKind = sec.kind || 'talk';
     St.put(store, { ...s, sections: s.sections.map((/** @type {any} */ x) => (x.id === id ? { ...x, kind } : x)) });
     St.updateProgress(store, s.id, p => ({ ...p, sections: { ...p.sections, [id]: Lad.rekind(p.sections[id], kind) } }));
     announce(t('practice.script.kindNow', { section: sec.title, kind: t(`practice.script.kind.${kind}`) }));
+    ctx.toast(t('practice.script.kindNow', { section: sec.title, kind: t(`practice.script.kind.${kind}`) }), { action: t('practice.script.del.undo'), onAction: () => {
+      const s2 = St.get(store, script0.id); if (!s2) return;
+      St.put(store, { ...s2, sections: s2.sections.map((/** @type {any} */ x) => (x.id === id ? { ...x, kind: prevKind } : x)) });
+      St.updateProgress(store, s2.id, p => ({ ...p, sections: { ...p.sections, [id]: prevProg } }));
+    } });
+  }
+  function kinds() {
+    const s = St.get(store, script0.id); if (!s) return;
+    sheet({ title: t('practice.script.menu.kind'), children: [h('p', { class: 'field-hint' }, t('practice.script.paste.kindHint')),
+      ...s.sections.map((/** @type {any} */ x) => chipChoice({ label: x.title, value: x.kind || 'talk', name: `kind-${x.id}`,
+        options: [['talk', t('practice.script.kind.talk')], ['retell', t('practice.script.kind.retell')]], onChange: v => switchKind(x.id, /** @type {any} */ (v)) }))] });
   }
   /** @param {string} status */
   function setStatus(status) {
@@ -165,6 +186,7 @@ export function mountOverview(el, ctx, script0) {
       h('div', { class: 'sc-menulist' },
         item(t('practice.script.menu.edit'), () => ctx.go(`/practice/scripts/${s.id}/edit`)),
         item(t('practice.script.menu.date'), () => changeDate()),
+        item(t('practice.script.menu.kind'), () => kinds()),
         item(t('practice.script.menu.audience'), () => audience()),
         item(t('practice.script.menu.title'), () => rename()),
         s.status === 'paused' ? item(t('practice.script.resume'), () => setStatus('active')) : s.status === 'active' ? item(t('practice.script.menu.pause'), () => setStatus('paused')) : null,

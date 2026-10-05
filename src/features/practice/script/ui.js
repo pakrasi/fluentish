@@ -1,7 +1,7 @@
 /* Script mode: small view pieces shared by the screens. Kit classes and tokens only; motion from core/motion.js. */
 import { h, replace } from '../../../core/dom.js';
 import { icon } from '../../../core/icons.js';
-import { reduced, haptic } from '../../../core/motion.js';
+import { reduced } from '../../../core/motion.js';
 import { label } from '../../../core/clock.js';
 import { t as tr } from '../../../core/i18n.js';
 import * as D8 from '../../../domain/days.js';
@@ -87,8 +87,10 @@ export function dateLine(s, today, t) {
   if (!s.deliverOn) return t('practice.script.noDate');
   const d = D8.diff(today, s.deliverOn);
   if (d < 0) return t('practice.script.delivered', { date: label(s.deliverOn) });
-  if (d === 0) return t('practice.script.dateToday');
-  return t('practice.script.dateLine', { date: label(s.deliverOn), n: d });
+  // "Talk Thu 12 Nov" for a script said word for word, "Tell it Thu 12 Nov" when every section is retold
+  const retell = s.sections?.length && s.sections.every((/** @type {any} */ x) => x.kind === 'retell');
+  if (d === 0) return t(retell ? 'practice.script.dateToday.retell' : 'practice.script.dateToday');
+  return t(retell ? 'practice.script.dateLine.retell' : 'practice.script.dateLine', { date: label(s.deliverOn), n: d });
 }
 
 /** "Talk", "Retell" or "Talk and retell" from the sections. @param {any} s @param {(k: string) => string} t */
@@ -99,33 +101,6 @@ export function kindLine(s, t) {
 
 /** "ihr", "Sie" or "ihr and Sie". @param {any} s @param {(k: string) => string} t */
 export const registerLine = (s, t) => t(`practice.script.register.${s.register || 'both'}`);
-
-/**
- * The self-grade sheet (§3.7): Again / Hard / Good / Easy, each with what it means; the peek count pre-selects a
- * suggestion, he always taps. Resolves with the grade, or null when dismissed.
- * @param {{t: (k: string, v?: any) => string, title?: string, peeks?: number | null, suggest?: number | null}} o
- * @returns {Promise<1|2|3|4|null>}
- */
-export function gradeSheet({ t, title, peeks = null, suggest = null }) {
-  return new Promise(resolve => {
-    let chosen = /** @type {any} */ (null);
-    const btns = [1, 2, 3, 4].map(g => h('button', { type: 'button', class: ['sc-grade', 'pressable', suggest === g && 'is-suggested'], dataset: { g: String(g) },
-      'aria-describedby': suggest === g ? 'sc-grade-sug' : null,
-      onclick: (/** @type {Event} */ e) => pick(g, /** @type {HTMLElement} */ (e.currentTarget)) },
-      h('span', { class: 'sc-grade-name' }, t(`practice.script.grade.${g}`), suggest === g ? h('span', { class: 'sc-grade-sug' }, t('practice.script.grade.suggested')) : null),
-      h('span', { class: 'sc-grade-what' }, t(`practice.script.grade.${g}.what`)),
-      checkMark()));
-    const sh = sheet({ title: title || t('practice.script.grade.title'), cls: 'sc-grade-sheet', onClose: () => resolve(chosen),
-      children: [peeks != null ? h('p', { class: 'caption', id: 'sc-grade-sug' }, t('practice.script.grade.peeks', { n: peeks })) : null, h('div', { class: 'sc-grades' }, btns)] });
-    function pick(/** @type {number} */ g, /** @type {HTMLElement} */ b) {
-      if (chosen) return;
-      chosen = g; haptic();
-      b.classList.add('is-chosen');
-      setTimeout(() => sh.close(), reduced() ? 0 : 420);
-    }
-    /** @type {HTMLElement | undefined} */ (btns[(suggest || 3) - 1])?.focus();
-  });
-}
 
 const SVG = 'http://www.w3.org/2000/svg';
 /** The kit's check (motion.css .check, drawn with the pop spring). */
