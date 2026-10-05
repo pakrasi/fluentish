@@ -376,10 +376,12 @@ export function createMap(canvas, o) {
     for (const g of glow) {
       const p = (t - g.t0) / 1000; if (p < 0 || PA[g.i] <= 0) continue;
       const a = Math.max(0, 1 - p / 1.3) ** 2;
-      const x = PX[g.i] * k + ox, y = PY[g.i] * k + oy, w = A.W[g.i] * k, fpx = FS * k;
-      const pad = Math.max(4, 7 * k) * (1 + 0.6 * (1 - springPop(p)));
-      ctx.globalAlpha = a * 0.9;
-      ctx.beginPath(); ctx.roundRect(x - pad, y - fpx * 0.95 - pad * 0.4, w + pad * 2, fpx * 1.35 + pad * 0.8, Math.min(10, 4 + pad)); ctx.fill();
+      // in screen pixels at least a 14 px plate, so a word learned today shows at overview too
+      const x = PX[g.i] * k + ox, w = A.W[g.i] * k, fpx = FS * k, cy = PY[g.i] * k + oy - fpx * 0.32;
+      const grow = 1 + 0.7 * (1 - springPop(p));
+      const pad = Math.max(6, 7 * k) * grow, hh = Math.max(14, fpx * 1.35) * grow;
+      ctx.globalAlpha = a;
+      ctx.beginPath(); ctx.roundRect(x - pad, cy - hh / 2 - pad * 0.3, w + pad * 2, hh + pad * 0.6, Math.min(12, hh / 2 + pad * 0.3)); ctx.fill();
     }
     ctx.globalAlpha = 1;
   }
@@ -450,8 +452,8 @@ export function createMap(canvas, o) {
       const lh = f1 + 3, bw = Math.max(lab.tw, sub ? sub.length * 6.6 : 0), bh = lab.lines.length * lh + (sub ? 16 : 2);
       const bx = cx - bw / 2, by = cy - bh / 2;
       if (placed.some(l => bx < l[2] && bx + bw > l[0] && by < l[3] && by + bh > l[1])) continue;
-      placed.push([bx - 8, by - 4, bx + bw + 8, by + bh + 4]);
-      ctx.globalAlpha = a * dim * la * 0.9; ctx.fillStyle = C.canvas;
+      placed.push([bx - 2, by - 1, bx + bw + 2, by + bh + 1]);
+      ctx.globalAlpha = a * dim * la * 0.78; ctx.fillStyle = C.canvas;
       ctx.beginPath(); ctx.roundRect(bx - 8, by - 5, bw + 16, bh + 10, 8); ctx.fill();
       ctx.globalAlpha = a * dim * la; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
       ctx.fillStyle = C.ink; ctx.font = `600 ${f1}px Geist, system-ui, sans-serif`;
@@ -627,7 +629,7 @@ export function createMap(canvas, o) {
     /** @param {boolean} on */
     setGaps(on) { gaps = on; version++; kick(); },
     /** @param {number} i */
-    select(i) { selected = i; if (i >= 0) selGroup = L.G[i]; kick(); },
+    select(i) { selected = i; selGroup = -1; kick(); },
     /** @param {number} gi */
     selectGroup(gi) { selGroup = gi; selected = -1; kick(); },
     clear() { selected = -1; selGroup = -1; kick(); },
@@ -641,17 +643,17 @@ export function createMap(canvas, o) {
      * Fly to an item, leaving it in the free part of the screen (above a sheet of height `below`).
      * @param {number} i @param {{k?: number, below?: number}} [opt]
      */
-    flyToItem(i, { k, below = 0 } = {}) {
+    flyToItem(i, { k, below = 0, right = 0 } = {}) {
       const kk = Math.max(k || cam.k, 1.05);
       const ins = o.insets(), free = H - below - ins.top;
       const sy = ins.top + free * 0.42;
-      flyTo({ x: L.X[i] + A.W[i] / 2, y: L.Y[i] - (sy - H / 2) / kk, k: kk });
+      flyTo({ x: L.X[i] + A.W[i] / 2 + right / 2 / kk, y: L.Y[i] - (sy - H / 2) / kk, k: kk });
     },
-    /** @param {number} gi @param {{below?: number}} [opt] */
-    flyToGroup(gi, { below = 0 } = {}) {
-      const g = L.groups[gi], ins = o.insets(), free = H - below - ins.top;
-      const kk = Math.min(KMAX, Math.min(W / (2 * g.r + 60), free / (2 * g.r + 60)));
-      flyTo({ x: g.x, y: g.y - (ins.top + free / 2 - H / 2) / kk, k: Math.max(kk, cam.k * (FS * cam.k >= 8 ? 1 : 0)) });
+    /** @param {number} gi @param {{below?: number, right?: number}} [opt] */
+    flyToGroup(gi, { below = 0, right = 0 } = {}) {
+      const g = L.groups[gi], ins = o.insets(), free = H - below - ins.top - (below ? 0 : ins.bottom);
+      const kk = Math.min(KMAX, Math.min((W - right) / (2 * g.r + 60), free / (2 * g.r + 60)));
+      flyTo({ x: g.x + right / 2 / kk, y: g.y - (ins.top + free / 2 - H / 2) / kk, k: Math.max(kk, cam.k * (FS * cam.k >= 8 ? 1 : 0)) });
     },
     /** Is item i drawn in this layout? @param {number} i */
     has(i) { return !!L && !Number.isNaN(L.X[i]); },

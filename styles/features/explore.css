@@ -12,12 +12,12 @@
   --x-new: #84868d;                          /* not seen, italic: 3.3:1 */
   --x-bar-new: rgb(20 21 25 / 0.13);
   --x-today: var(--accent);
-  --x-glow: color-mix(in oklab, var(--accent) 16%, var(--canvas));
+  --x-glow: color-mix(in oklab, var(--accent) 26%, var(--canvas));
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) { --x-unknown: #d6d5d0; --x-box: rgb(236 235 230 / 0.42); --x-new: #6f7178; --x-bar-new: rgb(236 235 230 / 0.12); --x-glow: color-mix(in oklab, var(--accent) 22%, var(--canvas)); }
+  :root:not([data-theme="light"]) { --x-unknown: #d6d5d0; --x-box: rgb(236 235 230 / 0.42); --x-new: #6f7178; --x-bar-new: rgb(236 235 230 / 0.12); --x-glow: color-mix(in oklab, var(--accent) 34%, var(--canvas)); }
 }
-:root[data-theme="dark"] { --x-unknown: #d6d5d0; --x-box: rgb(236 235 230 / 0.42); --x-new: #6f7178; --x-bar-new: rgb(236 235 230 / 0.12); --x-glow: color-mix(in oklab, var(--accent) 22%, var(--canvas)); }
+:root[data-theme="dark"] { --x-unknown: #d6d5d0; --x-box: rgb(236 235 230 / 0.42); --x-new: #6f7178; --x-bar-new: rgb(236 235 230 / 0.12); --x-glow: color-mix(in oklab, var(--accent) 34%, var(--canvas)); }
 
 /* the map fills the space between the bar and the tab bar; the page does not scroll */
 body.ex-page #view { max-width: none; padding: 0; }
@@ -87,7 +87,7 @@ body.ex-page { overscroll-behavior: none; }
 .ex-close { position: absolute; top: 6px; right: 6px; z-index: 1; color: var(--ink-2); }
 .ex-sheet-body { overflow-y: auto; overscroll-behavior: contain; padding: var(--s-2) var(--s-5) calc(var(--s-5) + env(safe-area-inset-bottom)); }
 @media (min-width: 720px) {
-  .ex-sheet { left: auto; right: max(var(--s-4), calc((100vw - var(--page-max)) / 2)); bottom: var(--s-4); width: 380px; max-height: calc(100dvh - 53px - 140px - env(safe-area-inset-top)); border-radius: var(--r-card); box-shadow: var(--shadow-lift), 0 0 0 1px var(--hairline); }
+  .ex-sheet { left: auto; right: max(var(--s-4), calc((100vw - var(--page-max)) / 2)); top: calc(var(--ex-stage-top, 170px) + var(--s-4)); bottom: auto; width: 380px; max-height: calc(100dvh - var(--ex-stage-top, 170px) - 112px); border-radius: var(--r-card); box-shadow: var(--shadow-lift), 0 0 0 1px var(--hairline); }
   .ex-grab { display: none; }
   .ex-sheet-body { padding-top: var(--s-4); }
 }
@@ -127,9 +127,9 @@ body.ex-page { overscroll-behavior: none; }
 .ex-next-item { display: flex; align-items: baseline; width: 100%; min-height: 40px; padding: 4px 0; border: 0; background: transparent; color: var(--ink); text-align: left; font: 400 17px/1.25 "Fluentish Map", var(--font-display); cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .ex-next-item .ex-art { margin-right: 0.25em; }
 /* each word in its map encoding: the box for not known, italic for not seen, ink-3 for shaky */
-.ex-next-item.is-unknown .ex-w { padding: 0 4px; border: 1px solid var(--x-box); border-radius: 3px; color: var(--x-unknown); }
-.ex-next-item.is-unseen .ex-w { font-style: italic; color: var(--x-new); }
-.ex-next-item.is-shaky .ex-w { color: var(--x-shaky); }
+.ex-litem.is-unknown .ex-w, .ex-next-item.is-unknown .ex-w { padding: 0 4px; border: 1px solid var(--x-box); border-radius: 3px; color: var(--x-unknown); }
+.ex-litem.is-unseen .ex-w, .ex-next-item.is-unseen .ex-w { font-style: italic; color: var(--x-new); }
+.ex-litem.is-shaky .ex-w, .ex-next-item.is-shaky .ex-w { color: var(--x-shaky); }
 .ex-allknown { margin-top: var(--s-4); color: var(--ink-2); }
 
 /* find */
@@ -155,6 +155,7 @@ body.ex-page { overscroll-behavior: none; }
 .ex-litem { flex: 1; min-height: var(--tap); padding: 8px 0; border: 0; background: transparent; color: var(--ink); text-align: left; font: 400 18px/1.3 "Fluentish Map", var(--font-display); cursor: pointer; }
 .ex-lstate { white-space: nowrap; }
 .ex-lstate.is-today { color: var(--accent-ink); }
+.ex-litem.is-today .ex-w { color: var(--x-today); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
 .ex-empty { padding: var(--s-6) 0; color: var(--ink-2); }
 
 @media (prefers-reduced-transparency: reduce) {

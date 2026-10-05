@@ -1,5 +1,5 @@
 /* Explore (Look up › Map, #/lookup/map): a map of every German word, phrase and grammar concept in the content, set as
-   type, grouped by a chosen mode, inked by what the learner knows (DESIGN.md, Explore; docs/EXPLORE.md).
+   type, grouped by a chosen mode, inked by what the learner knows (DESIGN.md, Explore).
      #/lookup/map[?mode=topic|family|opp|level|type|source][&view=list][&at=<item id>]
    Positions come from content/atlas (built at build time) and never move as he learns. Tapping a word opens its card,
    with links to its opposite and its family that fly there; tapping a group opens its sheet, whose "Study" button
@@ -21,8 +21,14 @@ const CODE_STATE = ['unseen', 'unknown', 'shaky', 'known'];
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
 export async function mount(el, ctx) {
   const { t, store } = ctx;
-  document.body.classList.add('ex-page');
   /** @type {(() => void)[]} */ const offs = [() => document.body.classList.remove('ex-page')];
+  document.body.classList.add('ex-page');
+  try { return await mountMap(el, ctx, offs); } catch (e) { offs.forEach(f => f()); throw e; }
+}
+
+/** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx @param {(() => void)[]} offs */
+async function mountMap(el, ctx, offs) {
+  const { t, store } = ctx;
   let alive = true;
   const cleanup = () => { alive = false; offs.forEach(f => f()); };
 
@@ -53,6 +59,7 @@ export async function mount(el, ctx) {
   /** @type {Map<string, any>} */ const layouts = new Map();
   const layout = (/** @type {string} */ m) => { let l = layouts.get(m); if (!l) { l = layoutOf(A, m, K); layouts.set(m, l); } return l; };
   /** @type {any[]} */ let counts = [];
+  let openItem = -1, openGroupIdx = -1;     // what the sheet shows
   const stateOf = (/** @type {string} */ id) => ({ state: /** @type {any} */ (CODE_STATE[K.st[/** @type {number} */ (A.index.get(id))]]), today: !!K.today[/** @type {number} */ (A.index.get(id))] });
   const weight = (/** @type {string} */ id) => A.F[/** @type {number} */ (A.index.get(id))] || 1;
   const idsOf = (/** @type {any} */ g) => g.items.map((/** @type {number} */ i) => A.ids[i]);
@@ -98,6 +105,10 @@ export async function mount(el, ctx) {
     h('div', { class: 'ex-head' }, backLink(t), h1, h('div', { class: 'ex-head-tools' }, viewSeg, findBtn)),
     modeChips, stage, findEl);
   replace(el, page);
+  // where the map starts on screen, for the desktop card that sits over its top right
+  const stageTop = () => document.documentElement.style.setProperty('--ex-stage-top', `${Math.round(stage.getBoundingClientRect().top)}px`);
+  const ro = new ResizeObserver(stageTop); ro.observe(stage); stageTop();
+  offs.push(() => { ro.disconnect(); document.documentElement.style.removeProperty('--ex-stage-top'); });
   // the sheet lives on the body, above the tab bar (the view is its own stacking context)
   sheet.classList.add('ex-sheet-root');
   document.body.append(sheet);
@@ -213,7 +224,6 @@ export async function mount(el, ctx) {
   }
 
   /* ---------- sheets ---------- */
-  let openItem = -1, openGroupIdx = -1;
   const isPhone = () => innerWidth < 720;
   function showSheet() {
     if (sheet.hidden) { sheet.hidden = false; sheet.classList.remove('is-in'); requestAnimationFrame(() => sheet.classList.add('is-in')); }
@@ -227,6 +237,8 @@ export async function mount(el, ctx) {
     const done = () => { if (!sheet.classList.contains('is-in')) sheet.hidden = true; };
     if (reduced()) done(); else setTimeout(done, 170);
   }
+  /** The desktop card's width over the right of the map. */
+  const sheetRight = () => (isPhone() || sheet.hidden ? 0 : Math.max(0, stage.getBoundingClientRect().right - sheet.getBoundingClientRect().left + 16));
   /** How much of the stage the open sheet covers (a phone's bottom sheet; the desktop card sits beside the map). */
   const sheetBelow = () => { if (!isPhone() || sheet.hidden) return 0; const s = stage.getBoundingClientRect(), r = sheet.getBoundingClientRect(); return Math.max(0, s.bottom - r.top - 24); };
 
@@ -252,7 +264,7 @@ export async function mount(el, ctx) {
     // details: the word list entry or the phrase, links and actions; the camera moves once the sheet has its height
     const D = await loadDetails(ctx, K.k.maps).catch(() => null);
     if (!alive || openItem !== i) return;
-    if (!D) { if (fly) map.flyToItem(i, { below: sheetBelow() }); return; }
+    if (!D) { if (fly) map.flyToItem(i, { below: sheetBelow(), right: sheetRight() }); return; }
     const extra = /** @type {HTMLElement} */ (sheetBody.querySelector('.ex-card-extra'));
     const actions = /** @type {HTMLElement} */ (sheetBody.querySelector('.ex-actions'));
     /** @type {any[]} */ const bits = [], links = [], acts = [];
@@ -281,7 +293,7 @@ export async function mount(el, ctx) {
     }
     replace(extra, ...bits, ...links);
     replace(actions, ...acts);
-    if (fly) map.flyToItem(i, { below: sheetBelow() });
+    if (fly) map.flyToItem(i, { below: sheetBelow(), right: sheetRight() });
   }
   /** @param {string} label @param {string[]} wordIds */
   function linkRow(label, wordIds) {
@@ -294,7 +306,7 @@ export async function mount(el, ctx) {
     if (listOn) setView(false);
     if (!map.has(i)) setMode('topic');
     openWord(i, { fly: false });
-    map.flyToItem(i, { k: Math.max(map.camera.k, 1.1), below: sheetBelow() });
+    map.flyToItem(i, { k: Math.max(map.camera.k, 1.1), below: sheetBelow(), right: sheetRight() });
   }
 
   /** @param {number} gi @param {boolean} far @param {{fly?: boolean}} [opt] */
@@ -332,7 +344,7 @@ export async function mount(el, ctx) {
     } else body.push(h('p', { class: 'ex-allknown' }, t('explore.sheet.allKnown')));
     replace(sheetBody, ...body);
     showSheet();
-    if (fly) map.flyToGroup(gi, { below: sheetBelow() });
+    if (fly) map.flyToGroup(gi, { below: sheetBelow(), right: sheetRight() });
     void far;
   }
 
@@ -376,7 +388,8 @@ export async function mount(el, ctx) {
         if (!d.open || d.dataset.done) return;
         d.dataset.done = '1';
         d.append(h('ul', { class: 'ex-litems' }, ...g.items.map((/** @type {number} */ i) => h('li', null,
-          h('button', { type: 'button', class: 'ex-litem pressable', lang: 'de', onclick: () => { setView(false); openWord(i); } }, A.art[i] ? h('span', { class: 'ex-art' }, `${A.art[i]} `) : null, A.text[i]),
+          h('button', { type: 'button', class: ['ex-litem', 'pressable', `is-${K.today[i] ? 'today' : CODE_STATE[K.st[i]]}`], lang: 'de', onclick: () => { setView(false); openWord(i); } },
+            A.art[i] ? h('span', { class: 'ex-art' }, `${A.art[i]} `) : null, h('span', { class: 'ex-w' }, A.text[i])),
           h('span', { class: ['caption', `ex-lstate is-${K.today[i] ? 'today' : CODE_STATE[K.st[i]]}`], lang: 'en' }, t(`explore.state.${K.today[i] ? 'today' : CODE_STATE[K.st[i]]}`))))));
       });
       return d;

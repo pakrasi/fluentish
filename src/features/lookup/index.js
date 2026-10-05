@@ -548,20 +548,24 @@ function mapArt() {
   const NS = 'http://www.w3.org/2000/svg';
   const svg = document.createElementNS(NS, 'svg');
   svg.setAttribute('viewBox', '0 0 64 64'); svg.setAttribute('class', 'lk-map-art'); svg.setAttribute('aria-hidden', 'true');
-  for (const [x, y, r, k] of [[30, 30, 15, 0.7], [50, 17, 9, 0.45], [12, 47, 8, 0.85], [48, 46, 11, 0.3], [13, 15, 7, 0.6], [30, 55, 6, 0.5]]) {
+  for (const [x, y, r, k] of [[29, 30, 15, 0.7], [50, 16, 9, 0.45], [12, 47, 8, 0.85], [49, 46, 11, 0.3], [12, 14, 7, 0.6], [30, 56, 6, 0.5]]) {
     const c = 2 * Math.PI * r;
-    const base = document.createElementNS(NS, 'circle');
-    base.setAttribute('cx', String(x)); base.setAttribute('cy', String(y)); base.setAttribute('r', String(r));
-    base.setAttribute('fill', 'none'); base.setAttribute('stroke', 'var(--hairline-strong)'); base.setAttribute('stroke-width', '1.5');
-    const arc = /** @type {SVGCircleElement} */ (base.cloneNode());
-    arc.setAttribute('stroke', 'var(--ink)'); arc.setAttribute('stroke-dasharray', `${(c * k).toFixed(1)} ${c.toFixed(1)}`);
-    arc.setAttribute('transform', `rotate(-90 ${x} ${y})`);
-    svg.append(base, arc);
-    for (let j = 0; j < Math.floor(r / 3.5); j++) {
-      const w = (r * 1.2) * (1 - Math.abs(j - (r / 7)) / (r / 2.2));
+    const ring = (/** @type {string} */ stroke, /** @type {string | null} */ dash) => {
+      const e = document.createElementNS(NS, 'circle');
+      e.setAttribute('cx', String(x)); e.setAttribute('cy', String(y)); e.setAttribute('r', String(r));
+      e.setAttribute('fill', 'none'); e.setAttribute('stroke', stroke); e.setAttribute('stroke-width', '1.4');
+      if (dash) { e.setAttribute('stroke-dasharray', dash); e.setAttribute('transform', `rotate(-90 ${x} ${y})`); }
+      return e;
+    };
+    svg.append(ring('var(--hairline-strong)', null), ring('var(--ink)', `${(c * k).toFixed(1)} ${c.toFixed(1)}`));
+    // the paragraph: short lines inside the ring, one in the accent
+    const lines = Math.max(1, Math.floor((r * 1.1) / 3));
+    for (let j = 0; j < lines; j++) {
+      const ly = y - ((lines - 1) * 3) / 2 + j * 3, half = Math.sqrt(Math.max(0, (r - 3.5) ** 2 - (ly - y) ** 2));
+      if (half < 1.5) continue;
       const line = document.createElementNS(NS, 'rect');
-      line.setAttribute('x', (x - w / 2).toFixed(1)); line.setAttribute('y', (y - r / 2 + j * 3.4).toFixed(1)); line.setAttribute('width', Math.max(2, w).toFixed(1)); line.setAttribute('height', '1.4');
-      line.setAttribute('fill', j % 3 === 2 ? 'var(--accent)' : 'var(--ink-3)'); line.setAttribute('rx', '0.7');
+      line.setAttribute('x', (x - half).toFixed(1)); line.setAttribute('y', (ly - 0.6).toFixed(1)); line.setAttribute('width', (half * 2).toFixed(1)); line.setAttribute('height', '1.2');
+      line.setAttribute('fill', (j + r) % 4 === 1 ? 'var(--accent)' : 'var(--ink-3)'); line.setAttribute('rx', '0.6');
       svg.append(line);
     }
   }
