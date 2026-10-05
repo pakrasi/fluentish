@@ -18,6 +18,10 @@ test('grading corpus: no wrong German is right, right German is not wrong', asyn
   const corpus = await evaluate();
   const { rows, all } = table(corpus);
   assert.ok(all.wrong > 2500 && all.right > 2500, `corpus size ${all.wrong} wrong, ${all.right} right`);
+  // every typed item type is in the corpus: a missing content file (content/b1/schreiben.json) must fail, not shrink it
+  const types = new Set(rows.map(([type]) => type));
+  for (const type of ['schreiben phrase', 'schreiben email line', 'situation', 'cluster word', 'cluster family', 'cluster opposite', 'cluster prep', 'script word gap', 'script word meaning'])
+    assert.ok(types.has(type), `no ${type} answers in the corpus`);
   const fp = corpus.filter(c => c.fp).map(c => `${c.type} ${c.cls} ${c.id}: ${c.text}`);
   assert.deepEqual(fp, [], 'false positives');
   const fn = corpus.filter(c => c.fn).map(c => `${c.id}|${c.text}`).filter(k => !KNOWN_FN.has(k));
