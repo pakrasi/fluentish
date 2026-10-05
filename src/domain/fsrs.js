@@ -73,7 +73,8 @@ function schedule(rec0, o, ctx, now = Date.now()) {
   if (!rec0 || !rec0.reps) {
     rec = { ...init(g), reps: 1, lapses: 0, last: t, first: t, stage: 0, streak: 0, learn: g >= 3 ? 1 : 0, relearn: false, due: t, hist: rec0?.hist || [] };
     // where the item was first met (exam, speech, practice, lookup, script): added to new records only, for Explore
-    if (o.src && !rec0?.src) rec.src = o.src; else if (rec0?.src) rec.src = rec0.src;
+    const src = rec0?.src || o.src;
+    if (src) rec = { ...rec, src };
     reinsert = 'learn';
   } else if (rec0.learn != null) {
     rec = { ...rec0 };
