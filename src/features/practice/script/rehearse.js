@@ -359,7 +359,7 @@ export function mountRehearse(el, ctx, script, sectionId) {
     const r = Lad.readiness(St.get(store, script.id) || script, St.progress(store, script.id), x => St.cardOf(store)(x)?.rec, c.today);
     const row = r.rows.find(x => x.id === section.id);
     const field = scriptField({ rows: row ? [row] : [] });
-    const hero = doneHero({ cls: 'sc-stepdone', atmo: !reduced(), label: isVariant ? t('practice.script.variant.done', { form: variant.formName() }) : t('practice.script.stepDoneLabel', { step: t(`practice.script.step.${step}`) }),
+    const hero = doneHero({ level: 'h2', cls: 'sc-stepdone', atmo: !reduced(), label: isVariant ? t('practice.script.variant.done', { form: variant.formName() }) : t('practice.script.stepDoneLabel', { step: t(`practice.script.step.${step}`) }),
       figure: pos.done, of: t('practice.script.stepsOf', { n: pos.steps.length }), lines: [h('p', { class: 'lead' }, isVariant ? t('practice.script.variant.saved') : msg)], data: field });
     // within a week of delivery the next step is the one to do now (UX P2-32)
     const soon = !!script.deliverOn && D8diff(c.today, script.deliverOn) <= 7;

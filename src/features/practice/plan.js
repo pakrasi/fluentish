@@ -210,7 +210,8 @@ export function planItems({ store, c, settings, t, exam }) {
   if (goalSpeaking && (c.phase === 'week' || c.phase === 'lastNew')) {
     out.push({ id: 'practice.teil2', source: 'practice', kind: 'speak', title: t('plan.teil2'), detail: t('plan.teil2.detail'), minutes: 6, href: '#/practice/speak/teil2', priority: 50 });
   }
-  out.push(...scriptPlanItems({ store, c, settings, t }));
+  // script words count against the B1 day's new items (script/plan.js newAllowed)
+  out.push(...scriptPlanItems({ store, c: { ...c, dayNewLeft: b.newLeft }, settings, t }));
   // word clusters: at most one row, only for due cluster cards; Today's composer keeps it only when the minutes allow
   const cl = clusterToday({ store, c });
   if (cl.due > 0) {

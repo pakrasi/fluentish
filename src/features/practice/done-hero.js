@@ -9,13 +9,14 @@ import { countTo } from '../../core/motion.js';
 import { atmosphere } from '../../core/brand.js';
 
 /**
- * @param {{label: string, figure: number, of: string, lines?: any[], data?: Node | null, atmo?: boolean, cls?: string}} o
+ * @param {{label: string, figure: number, of: string, lines?: any[], data?: Node | null, atmo?: boolean, cls?: string, level?: 'h1' | 'h2'}} o
+ *   level: h2 when the hero sits inside a view that has its own h1 (a script step's done)
  * @returns {{el: HTMLElement, start: () => () => void}}
  */
-export function doneHero({ label, figure, of, lines = [], data = null, atmo = true, cls }) {
+export function doneHero({ label, figure, of, lines = [], data = null, atmo = true, cls, level = 'h1' }) {
   const fig = h('span', { class: 'figure tnum' }, String(figure));
   const atmoEl = atmo ? h('div', { class: 'atmo', 'aria-hidden': 'true' }) : null;
-  const h1 = h('h1', { tabindex: '-1' }, fig, ' ', h('span', { class: 'pr-done-of' }, of));
+  const h1 = h(level, { tabindex: '-1', class: level === 'h2' ? 'pr-done-h' : null }, fig, ' ', h('span', { class: 'pr-done-of' }, of));
   // the atmosphere sits behind the figure only; the data object follows below it, on the page (never text on the
   // gradient)
   const el = h('div', { class: ['pr-done-top', cls] },

@@ -116,7 +116,7 @@ body.pr-in-round #view { max-width: none; padding: 0; }
 
 /* ---------- done ---------- */
 .pr-done { max-width: 640px; margin: 0 auto; padding: calc(var(--s-8) + env(safe-area-inset-top)) max(var(--gutter), env(safe-area-inset-left)) var(--s-10); --gap: var(--s-4); }
-.pr-done h1 { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 var(--s-2); margin-top: var(--s-2); }
+.pr-done h1, .pr-done-h { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 var(--s-2); margin-top: var(--s-2); }
 .pr-done-of { font-size: var(--fs-h2); color: var(--ink-2); }
 .pr-done-hero { --gap: var(--s-3); }
 .pr-done-hero > * + * { margin-top: var(--s-3); }
