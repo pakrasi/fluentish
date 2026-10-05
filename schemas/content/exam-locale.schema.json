@@ -1,0 +1,26 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "exam-locale@1",
+ "title": "Exam-locale catalog",
+ "description": "The UI strings of one exam's runner in the exam's language (the Goethe B1 runner speaks German with Sie): content/exams/<id>/locale.<lang>.json, named by exam-def@1 `locale`. Same rules as src/i18n: {name} is filled in; an object { one, other } is a plural chosen on {n}. The English chrome around the exam stays in src/i18n/en.js.",
+ "type": "object",
+ "required": ["lang", "exam", "strings"],
+ "additionalProperties": false,
+ "properties": {
+  "lang": { "type": "string", "pattern": "^[a-z]{2}(-[A-Z]{2})?$" },
+  "exam": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+  "about": { "type": "string" },
+  "strings": {
+   "type": "object",
+   "minProperties": 1,
+   "propertyNames": { "pattern": "^[A-Za-z0-9][\\w.-]*$" },
+   "patternProperties": {
+    "": { "anyOf": [
+     { "type": "string" },
+     { "type": "object", "required": ["other"], "additionalProperties": false,
+       "properties": { "zero": { "type": "string" }, "one": { "type": "string" }, "two": { "type": "string" }, "few": { "type": "string" }, "many": { "type": "string" }, "other": { "type": "string" } } }
+    ] }
+   }
+  }
+ }
+}

@@ -1,19 +1,23 @@
-/* Schreiben: three tasks, 60 minutes, word counts, no spell check. Every keystroke is saved on the device. */
+/* A writing module (Goethe B1: Schreiben, three tasks, 60 minutes): the tasks of the exam definition with their
+   word targets, no spell check. Every keystroke is saved on the device. */
 import { h, replace } from '../../core/dom.js';
 import { wordCount } from '../../domain/grade.js';
-import { draft, saveDraft, submitAttempt, writingsOf } from './data.js';
+import { at } from '../../domain/examdef.js';
+import { draft, saveDraft, submitAttempt, writingsOf, sectionOf } from './data.js';
 import { clockBar, backLink, confirmPanel } from './parts.js';
 import { fmt } from './timer.js';
 import { langAttr } from '../../core/lang.js';
 
-const KEYS = ['aufgabe1', 'aufgabe2', 'aufgabe3'];
-
 /** @param {HTMLElement} el @param {any} ctx @param {{ exam: any, n: number, ex: any, def: any }} o */
 export function runSchreiben(el, ctx, { exam, n, ex, def }) {
   const { store, t } = ctx;
+  const tx = exam.tx;
   document.body.dataset.chrome = 'off';
-  const S = ex.schreiben;
-  /** @type {Record<string, string>} */ const texts = { ...(draft(store, n, 'schreiben')?.answers || {}) };
+  const module = def.id;
+  const sec = sectionOf(exam, module);
+  const KEYS = sec.parts.map((/** @type {any} */ p) => p.id);
+  /** @type {Record<string, any>} */ const S = Object.fromEntries(sec.parts.map((/** @type {any} */ p) => [p.id, at(ex, p.task)]));
+  /** @type {Record<string, string>} */ const texts = { ...(draft(store, n, module)?.answers || {}) };
   const cover = h('div', { class: 'ex-cover', hidden: true });
   const over = h('p', { class: 'ex-over', hidden: true, role: 'status' });
   const body = h('div');
@@ -22,78 +26,86 @@ export function runSchreiben(el, ctx, { exam, n, ex, def }) {
   /** @type {Record<string, HTMLElement>} */ const counts = {};
   const upd = (/** @type {string} */ k) => {
     const c = wordCount(texts[k]), target = S[k].words, met = c >= target * 0.85;
-    counts[k].textContent = t('exam.de.words', { n: c, target });
+    counts[k].textContent = tx('words', { n: c, target });
     counts[k].classList.toggle('is-met', met);
-    jumps[k].textContent = `Aufgabe ${k.slice(-1)} · ${c}/${target}`;
+    jumps[k].textContent = tx('taskJump', { i: KEYS.indexOf(k) + 1, n: c, target });
     jumps[k].classList.toggle('is-met', met);
   };
   let saveT = /** @type {any} */ (null);
   const area = (/** @type {string} */ k) => {
     const ta = /** @type {HTMLTextAreaElement} */ (h('textarea', {
-      class: 'ex-write', 'aria-label': `Text für Aufgabe ${k.slice(-1)}`, spellcheck: 'false', autocorrect: 'off', autocapitalize: 'sentences', autocomplete: 'off', lang: langAttr(),
+      class: 'ex-write', 'aria-label': tx('taskArea', { i: KEYS.indexOf(k) + 1 }), spellcheck: 'false', autocorrect: 'off', autocapitalize: 'sentences', autocomplete: 'off', lang: langAttr(),
       oninput: (/** @type {Event} */ e) => {
         texts[k] = /** @type {HTMLTextAreaElement} */ (e.target).value;
         upd(k);
         clearTimeout(saveT);                       // at most every 300 ms while typing; always on blur and pagehide
-        saveT = setTimeout(() => saveDraft(store, n, 'schreiben', { answers: { ...texts } }), 300);
+        saveT = setTimeout(() => saveDraft(store, n, module, { answers: { ...texts } }), 300);
       },
-      onblur: () => { clearTimeout(saveT); saveDraft(store, n, 'schreiben', { answers: { ...texts } }); },
+      onblur: () => { clearTimeout(saveT); saveDraft(store, n, module, { answers: { ...texts } }); },
     }));
     ta.value = texts[k] || '';
     counts[k] = h('p', { class: 'ex-wc caption tnum', 'aria-live': 'off' });
     return h('div', null, ta, counts[k]);
   };
-  const task = (/** @type {string} */ k, /** @type {number} */ i, /** @type {any[]} */ ...parts) => h('section', { class: 'ex-block', id: `aufgabe${i}` },
-    h('p', { class: 'label' }, `Aufgabe ${i} · ${S[k].minutes} Minuten, ca. ${S[k].words} Wörter`), ...parts, area(k));
-  for (const k of KEYS) jumps[k] = h('button', { type: 'button', class: 'chip pressable', onclick: () => document.getElementById(`aufgabe${k.slice(-1)}`)?.scrollIntoView({ block: 'start' }) });
+  /** The task's fields as the definition lists them, then its hint. @param {any} part */
+  const fields = part => {
+    const x = S[part.id];
+    const one = (/** @type {string} */ f) => (f === 'situation' ? h('p', null, x.situation)
+      : f === 'points' ? h('ul', { class: 'ex-points' }, (x.points || []).map((/** @type {string} */ p) => h('li', null, p)))
+        : f === 'quote' ? h('blockquote', { class: 'ex-quote' }, x.quote)
+          : f === 'instruction' ? h('p', null, x.instruction)
+            : f === 'addressee' ? h('p', { class: 'caption' }, tx('addressee', { to: x.addressee })) : null);
+    return [...(part.fields || ['situation']).map(one), part.hint ? h('p', { class: 'caption' }, tx(part.hint)) : null];
+  };
+  const task = (/** @type {any} */ part, /** @type {number} */ i) => h('section', { class: 'ex-block', id: part.id },
+    h('p', { class: 'label' }, tx('taskLabel', { i, min: S[part.id].minutes, words: S[part.id].words })), ...fields(part), area(part.id));
+  KEYS.forEach((/** @type {string} */ k) => { jumps[k] = h('button', { type: 'button', class: 'chip pressable', onclick: () => document.getElementById(k)?.scrollIntoView({ block: 'start' }) }); });
   replace(body,
-    h('p', { class: 'ex-instr' }, t('exam.de.schreibenIntro')),
-    h('div', { class: 'ex-jumps chips' }, KEYS.map(k => jumps[k])),
-    task('aufgabe1', 1, h('p', null, S.aufgabe1.situation), h('ul', { class: 'ex-points' }, S.aufgabe1.points.map((/** @type {string} */ p) => h('li', null, p))), h('p', { class: 'caption' }, t('exam.de.a1hint'))),
-    task('aufgabe2', 2, h('p', null, S.aufgabe2.situation), h('blockquote', { class: 'ex-quote' }, S.aufgabe2.quote), h('p', null, S.aufgabe2.instruction)),
-    task('aufgabe3', 3, h('p', null, S.aufgabe3.situation), h('p', { class: 'caption' }, `An: ${S.aufgabe3.addressee}`)),
-    h('div', { class: 'ex-nav' }, h('span', { class: 'ex-nav-grow' }), h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: () => askSubmit() }, t('exam.de.submit'))),
+    h('p', { class: 'ex-instr' }, tx(sec.intro)),
+    h('div', { class: 'ex-jumps chips' }, KEYS.map((/** @type {string} */ k) => jumps[k])),
+    ...sec.parts.map((/** @type {any} */ p, /** @type {number} */ i) => task(p, i + 1)),
+    h('div', { class: 'ex-nav' }, h('span', { class: 'ex-nav-grow' }), h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: () => askSubmit() }, tx('submit'))),
     confirmSlot);
   KEYS.forEach(upd);
   const clock = clockBar({
-    ctx, n, module: 'schreiben', minutes: def.minutes,
+    ctx, tx, n, module, minutes: def.minutes,
     onChange: (p, leftMs) => {
       cover.hidden = !p; body.hidden = p;
-      if (p) replace(cover, h('div', { class: 'ex-cover-card' }, h('h2', null, t('exam.de.paused')),
-        h('p', { class: 'caption tnum' }, leftMs > 0 ? t('exam.de.left', { t: fmt(leftMs / 1000) }) : t('exam.de.timeUp')),
-        h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: () => clock.resume() }, t('exam.de.continue'))));
-      if (leftMs < 0) { over.hidden = false; over.textContent = t('exam.de.overtime', { t: fmt(-leftMs / 1000) }); }
+      if (p) replace(cover, h('div', { class: 'ex-cover-card' }, h('h2', null, tx('paused')),
+        h('p', { class: 'caption tnum' }, leftMs > 0 ? tx('left', { t: fmt(leftMs / 1000) }) : tx('timeUp')),
+        h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: () => clock.resume() }, tx('continue'))));
+      if (leftMs < 0) { over.hidden = false; over.textContent = tx('overtime', { t: fmt(-leftMs / 1000) }); }
     },
   });
   let submitting = false;
   const askSubmit = () => {
-    saveDraft(store, n, 'schreiben', { answers: { ...texts } });
+    saveDraft(store, n, module, { answers: { ...texts } });
     const leftMs = clock.left();
     replace(confirmSlot, confirmPanel({
-      lang: langAttr(), title: t('exam.de.submitQ', { module: 'Schreiben' }),
-      lines: [...KEYS.map((k, i) => t('exam.de.taskWords', { i: i + 1, n: wordCount(texts[k]), target: S[k].words })), leftMs > 0 ? t('exam.de.left', { t: fmt(leftMs / 1000) }) : t('exam.de.timeUp'), t('exam.de.final')],
-      yes: t('exam.de.submit'), no: t('exam.de.keepGoing'), onNo: () => replace(confirmSlot),
+      lang: langAttr(), title: tx('submitQ', { module: def.name }),
+      lines: [...KEYS.map((/** @type {string} */ k, /** @type {number} */ i) => tx('taskWords', { i: i + 1, n: wordCount(texts[k]), target: S[k].words })), leftMs > 0 ? tx('left', { t: fmt(leftMs / 1000) }) : tx('timeUp'), tx('final')],
+      yes: tx('submit'), no: tx('keepGoing'), onNo: () => replace(confirmSlot),
       onYes: async () => {
         if (submitting) return;
         submitting = true;
         try {
           const c = clock.clock;
-          const rec = await submitAttempt(ctx, { exam, n, module: 'schreiben', clock: c, score: null, maxScore: 100, writings: writingsOf(texts) });
+          const rec = await submitAttempt(ctx, { exam, n, module, clock: c, score: null, maxScore: def.max, writings: writingsOf(texts, sec) });
           clock.stop(false);   // only once the attempt is stored
-          ctx.go(`/exam/${n}/schreiben/review/${rec.id}`, { replace: true });
-        } catch (e) { submitting = false; console.error(e); ctx.toast(t('exam.de.submitFailed')); }
+          ctx.go(`/exam/${n}/${module}/review/${rec.id}`, { replace: true });
+        } catch (e) { submitting = false; console.error(e); ctx.toast(tx('submitFailed')); }
       },
     }));
     confirmSlot.scrollIntoView({ block: 'nearest' });
   };
-  const flushText = () => { clearTimeout(saveT); if (!submitting) saveDraft(store, n, 'schreiben', { answers: { ...texts } }); };
+  const flushText = () => { clearTimeout(saveT); if (!submitting) saveDraft(store, n, module, { answers: { ...texts } }); };
   const onVis = () => { if (document.visibilityState === 'hidden') flushText(); };
   addEventListener('pagehide', flushText);
   document.addEventListener('visibilitychange', onVis);
   replace(el, h('div', { class: 'ex-run', lang: langAttr() },
     h('header', { class: 'ex-runhead' }, backLink(`#/exam/${n}`, t('exam.backTest', { n })),
-      h('div', { class: 'ex-runhead-end' }, clock.el, h('button', { type: 'button', class: 'btn btn-primary pressable ex-submit-top', onclick: () => askSubmit() }, t('exam.de.submit')))),
-    over, h('h1', { class: 'ex-run-title' }, 'Schreiben', h('span', { class: 'caption' }, ` · ${ex.topic}`)), cover, body));
+      h('div', { class: 'ex-runhead-end' }, clock.el, h('button', { type: 'button', class: 'btn btn-primary pressable ex-submit-top', onclick: () => askSubmit() }, tx('submit')))),
+    over, h('h1', { class: 'ex-run-title' }, def.name, h('span', { class: 'caption' }, ` · ${ex.topic}`)), cover, body));
   return {
     unmount() {
       flushText();

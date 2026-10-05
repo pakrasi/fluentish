@@ -1,0 +1,33 @@
+{
+ "id": "synth-b1",
+ "name": "Synthetic B1",
+ "short": "Synth B1",
+ "language": "french",
+ "level": "B1",
+ "locale": "fr",
+ "results": { "adapter": "b1-exam-sync@1" },
+ "media": { "base": "https://example.invalid/audio/", "test": "t{nn}/" },
+ "tests": { "file": "t{nn}.json", "schema": "synth-b1-exam@1" },
+ "scoring": { "passShare": 0.5 },
+ "itemTypes": {
+  "tf": { "key": { "from": "bool", "true": "v", "false": "f" }, "options": "row", "labels": ["vrai", "faux"], "text": "{text}" },
+  "mc": { "key": { "from": "index", "values": ["a", "b", "c", "d"] }, "options": "stack", "badge": true, "text": "{q}" },
+  "match": { "key": { "from": "value", "none": "x" }, "options": "letters", "text": "{text}" },
+  "writing": { "graded": "feedback" }
+ },
+ "sections": [
+  { "id": "co", "name": "Compréhension orale", "kind": "objective", "minutes": 25, "max": 6, "pass": 3, "clock": "up",
+    "parts": [
+     { "id": "CO1", "type": "mc", "first": 1, "instruction": "co1", "layout": "block", "groups": "oral.docs", "items": "qs", "groupLabel": "doc",
+       "audio": { "id": "co-{i}", "file": "co-{i}.mp3", "plays": 2, "replayAfter": 30 } }
+    ] },
+  { "id": "ce", "name": "Compréhension écrite", "kind": "objective", "minutes": 35, "max": 5, "pass": 3, "clock": "down",
+    "parts": [
+     { "id": "CE1", "type": "tf", "first": 1, "instruction": "ce1", "layout": "split", "group": "ecrit.texte", "items": "affirmations" },
+     { "id": "CE2", "type": "match", "first": 4, "instruction": "ce2", "layout": "match", "group": "ecrit.annonces", "items": "personnes",
+       "choices": { "from": "offres", "value": "lettre", "title": "titre", "text": "texte", "heading": "offres" } }
+    ] },
+  { "id": "pe", "name": "Production écrite", "kind": "writing", "minutes": 45, "max": 25, "pass": 13, "clock": "down",
+    "parts": [{ "id": "essai", "type": "writing", "task": "pe.essai", "fields": ["situation"] }] }
+ ]
+}

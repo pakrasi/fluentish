@@ -1,6 +1,10 @@
 # Exam feature
 
-Goethe B1 mock exams: the test list, start panel, timed runners, reviews and the Today provider. Routes and files are listed at the top of `index.js`; data and collections at the top of `data.js`.
+Mock exams: the test list, start panel, timed runners, reviews and the Today provider. Routes and files are listed at the top of `index.js`; data and collections at the top of `data.js`.
+
+## Exams as data
+
+The screens draw the exam from its definition (`content/exams/<id>/exam.json`, `exam-def@1`): sections and their kind, parts, item types, timings, play limits, reading times, replays, scoring and pass lines. The runner's strings are in the exam's language, from its exam-locale (`content/exams/<id>/locale.<lang>.json`), through `exam.tx('key')`; the English chrome uses `ctx.t` and `src/i18n/en.js`. `data.js examDef()` loads both with the manifest entry. Pure helpers: `domain/examdef.js` (walking a test by the definition) and `domain/grade.js`. Result files: the adapter the definition names (`domain/exam-results.js`). Adding an exam: docs/ARCHITECTURE.md §3.4.
 
 ## Corrections → Practice cards
 

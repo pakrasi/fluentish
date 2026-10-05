@@ -7,7 +7,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { make as makeGrade } from '../vectors/generate-exam.mjs';
-import { make as makeResults } from '../vectors/generate-exam-results.mjs';
+import { make as makeResults, makeViaDef as makeResultsViaDef } from '../vectors/generate-exam-results.mjs';
 
 /** @param {string} name @param {string} got */
 function same(name, got) {
@@ -21,3 +21,4 @@ function same(name, got) {
 
 test('golden vectors: exam.goethe-b1.json (grading) is unchanged', async () => same('exam.goethe-b1.json', await makeGrade(true)));
 test('golden vectors: exam-results.b1-exam.json (result files, through the sync target) is unchanged', async () => same('exam-results.b1-exam.json', await makeResults()));
+test('golden vectors: the adapter the Goethe B1 definition names writes the same result files, byte for byte', async () => same('exam-results.b1-exam.json', await makeResultsViaDef()));

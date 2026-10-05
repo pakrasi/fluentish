@@ -13,7 +13,7 @@ Every format here has a JSON Schema in `schemas/` (draft 2020-12, the subset `sr
   "languages": [{ "id": "german", "name": "German", "native": "Deutsch", "script": "latin", "rtl": false, "full": true }],
   "exams": [{ "id": "goethe-b1", "name": "Goethe-Zertifikat B1", "short": "Goethe B1", "language": "german", "level": "B1",
               "modules": [{ "id": "lesen", "name": "Lesen", "minutes": 65, "max": 30, "pass": 18 }, …],
-              "media": "https://pakrasi.github.io/b1-exam/audio/", "tests": [1, …, 14] }],
+              "media": "https://pakrasi.github.io/b1-exam/audio/", "def": "exam.goethe-b1.def", "locale": "exam.goethe-b1.locale.de", "tests": [1, …, 14] }],
   "files": [{ "id": "exam.goethe-b1.01", "path": "exams/goethe-b1/day01.json", "schema": "goethe-b1-exam@1", "bytes": 81234, "sha256": "…" }]
 }
 ```
@@ -33,12 +33,20 @@ The web app fetches `path?h=<sha256[:8]>`, so a changed file is never served fro
 | `igloo.turns` | `igloo-turns@1` | "go" in nine tenses |
 | `b1.items`, `b1.annot`, `b1.grammar`, `b1.bank`, `b1.nouns`, `b1.frames`, `b1.wordmap`, `b1.plan` | `b1-*@1` | the B1 trainer |
 | `exam.goethe-b1.NN`, `exam.goethe-b1.why.NN` | `goethe-b1-exam@1`, `goethe-b1-why@1` | 14 mock tests and their answer explanations |
+| `exam.goethe-b1.def` | `exam-def@1` | the exam as data: sections, parts, item types, timings, play limits, scoring, pass lines, locale and result-file adapter (ARCHITECTURE §3.4) |
+| `exam.goethe-b1.locale.de` | `exam-locale@1` | the runner's German strings (Sie), read through `exam.tx()` |
 
 Sources that are built into `content/` live in `authoring/` (B1 item sources, phrase parts and accept parts, word slices, tense sources, the briefs content was written to). The app never fetches them.
 
 ### Goethe B1 mock test (`goethe-b1-exam@1`)
 
 One file per test. The format follows the Goethe-Zertifikat B1 Modellsatz: Lesen Teil 1–5 (6 richtig/falsch, 2×3 MC, 7 situations to 10 ads with exactly one "0", 7 Ja/Nein comments, 4 MC), Hören Teil 1–4 (5 short texts × 2 items heard twice, a monologue with 5 MC heard once, a dialogue with 7 richtig/falsch heard once, a discussion with 8 who-said-it items heard twice), Schreiben Aufgabe 1–3 (20/25/15 minutes, 80/80/40 words), Sprechen Teil 1–3. Every objective item has an id (`L1-1`, `H1-1a`) and a `skill` (`detail`, `global`, `paraphrase`, `negation`, `number-time`, `attitude`, `inference`, `matching`). Answer keys are part of the content. The full annotated example is `authoring/briefs/EXAM_SCHEMA_SOURCE.md`; `tools/validate_exam.py` adds text-length checks the schema can't express. The field `day` is the test number (legacy name: tests are a library, not a calendar).
+
+### Exam definition (`exam-def@1`) and exam-locale (`exam-locale@1`)
+
+`content/exams/<id>/exam.json` describes one exam framework for the generic engine (`src/domain/examdef.js`, `src/domain/grade.js`, `src/features/exam/`): `sections` (id = module id in routes, drafts and result files; `kind` objective, writing or speaking; `minutes`, `max`, `pass`, `clock` down or up; `rules`/`intro` locale keys; speaking `prepMinutes`, `planMinutes`), each with `parts` (id = the Teil code in result rows, or the task id; `type`, or `{field, map, default}` when items carry their own; `first` printed number; `layout`; `group`/`groups`/`items` dot paths into a test; `audio: {id, file, plays, readSeconds?, replayAfter?}` where `id` is the play-count key in `exams.drafts`; writing `task` and `fields`; speaking `kind` plan, present or questions with `cues`/`questions` audio). `itemTypes` give each type's key rule (`bool` with true/false values, `index` into values, `value` with an optional none), how options are shown and the item's text template. `scoring.passShare`, `media {base, test}`, `tests {file, schema}`, `locale`, `results.adapter`. The manifest's `exams[]` entry is built from it. Full schema: `schemas/content/exam-def.schema.json`.
+
+`content/exams/<id>/locale.<lang>.json`: `{lang, exam, strings}`, with the same value rules as `src/i18n` (`{name}` placeholders; `{one, other}` plurals).
 
 ### Answer explanations (`goethe-b1-why@1`)
 

@@ -1,4 +1,4 @@
-// Grading for the Goethe B1 mock exams (src/domain/grade.js). Answers are synthetic; the tests themselves are the
+// Grading for the Goethe B1 mock exams (src/domain/grade.js over content/exams/goethe-b1/exam.json). Answers are synthetic; the tests themselves are the
 // public content in content/exams. When the B1 exam app's server.py is on this machine, its answer_key is the
 // reference for all 14 tests (skipped in CI).
 import { test } from 'node:test';
@@ -15,9 +15,11 @@ import {
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const exam = n => JSON.parse(readFileSync(path.join(ROOT, `content/exams/goethe-b1/day${String(n).padStart(2, '0')}.json`), 'utf8'));
+// the exam definition (exam-def@1) the generic grader reads
+const DEF = JSON.parse(readFileSync(path.join(ROOT, 'content/exams/goethe-b1/exam.json'), 'utf8'));
 
 test('answer key: 30 Lesen and 30 Hören items with the B1 exam app values', () => {
-  const key = answerKey(exam(1));
+  const key = answerKey(exam(1), DEF);
   const ids = Object.keys(key);
   assert.equal(ids.filter(i => i.startsWith('L')).length, 30);
   assert.equal(ids.filter(i => i.startsWith('H')).length, 30);
@@ -30,14 +32,14 @@ test('answer key: 30 Lesen and 30 Hören items with the B1 exam app values', () 
 });
 
 test('grade: all correct, all blank, case and spaces, one wrong', () => {
-  const key = answerKey(exam(2));
+  const key = answerKey(exam(2), DEF);
   const right = Object.fromEntries(Object.entries(key).map(([id, [v]]) => [id, v]));
-  const full = grade(key, 'lesen', right);
+  const full = grade(key, 'lesen', right, DEF);
   assert.equal(full.score, 30); assert.equal(full.max_score, 30);
   assert.deepEqual(Object.keys(full.by_teil), ['L1', 'L2', 'L3', 'L4', 'L5']);
   assert.equal(full.by_teil.L1.max, 6); assert.equal(full.by_teil.L3.max, 7);
 
-  const blank = grade(key, 'hoeren', {});
+  const blank = grade(key, 'hoeren', {}, DEF);
   assert.equal(blank.score, 0); assert.equal(blank.max_score, 30);
   assert.ok(blank.results.every(r => r.given === null && r.is_correct === 0));
 
@@ -46,7 +48,7 @@ test('grade: all correct, all blank, case and spaces, one wrong', () => {
   const messy = { ...right, [l3]: ` ${key[l3][0].toLowerCase()} ` };
   const firstL1 = Object.keys(key).find(id => id.startsWith('L1'));
   messy[firstL1] = key[firstL1][0] === 'r' ? 'f' : 'r';
-  const g = grade(key, 'lesen', messy);
+  const g = grade(key, 'lesen', messy, DEF);
   assert.equal(g.score, 29);
   const row = g.results.find(r => r.item_id === l3);
   assert.equal(row.given, key[l3][0].toLowerCase()); assert.equal(row.is_correct, 1);
@@ -55,11 +57,11 @@ test('grade: all correct, all blank, case and spaces, one wrong', () => {
 
 test('teil ids, answered counts and printed item numbers', () => {
   const ex = exam(3);
-  const L = teilIds(ex, 'lesen'), H = teilIds(ex, 'hoeren');
+  const L = teilIds(ex, 'lesen', DEF), H = teilIds(ex, 'hoeren', DEF);
   assert.deepEqual(L.map(x => x.length), [6, 6, 7, 7, 4]);
   assert.deepEqual(H.map(x => x.length), [10, 5, 7, 8]);
   assert.equal(answeredIn(L[0], { [L[0][0]]: 'r', [L[0][1]]: '', [L[0][2]]: null }), 1);
-  const info = itemInfo(ex);
+  const info = itemInfo(ex, DEF);
   assert.equal(info[L[0][0]].nr, 1); assert.equal(info[L[2][0]].nr, 13); assert.equal(info[L[4][3]].nr, 30);
   assert.equal(info[H[0][1]].nr, 2); assert.equal(info[H[3][7]].nr, 30);
 });
@@ -130,7 +132,7 @@ for n in range(1, 15):
     out[n] = {k: list(v) for k, v in srv.answer_key(ex).items()}
 print(json.dumps(out))`;
   const ref = JSON.parse(execFileSync('python3', ['-c', py, SERVER, path.join(ROOT, 'content/exams/goethe-b1/day%02d.json')], { encoding: 'utf8' }));
-  for (let n = 1; n <= 14; n++) assert.deepEqual(answerKey(exam(n)), ref[n], `test ${n}`);
+  for (let n = 1; n <= 14; n++) assert.deepEqual(answerKey(exam(n), DEF), ref[n], `test ${n}`);
 });
 
 test('Up next: a recent draft, then modules never taken (weakest skill first), then the lowest score', async () => {

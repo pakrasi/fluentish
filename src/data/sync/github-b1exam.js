@@ -34,6 +34,7 @@
 
    The network is injected (fetch), so node tests run the whole flow against a mock and against the real sync.py. */
 import { backupProgress } from './backup.js';
+import { b1ExamSync } from '../../domain/exam-results.js';
 
 /** The files sync.py (and the tutor) write that this app reads. */
 /** data/<name>.json read back. 'vocab-audio' is the private word-audio index; it goes to its own store key (below). */
@@ -49,7 +50,6 @@ export const audioExt = mime => AUDIO_EXT[String(mime || '').split(';')[0].trim(
 /** 'YYYYMMDDTHHMMSS' in UTC. @param {Date | number} at */
 export const stamp = at => new Date(at).toISOString().replace(/[-:]/g, '').slice(0, 15);
 
-const pad2 = (/** @type {number | string} */ n) => String(n).padStart(2, '0');
 const safe = (/** @type {string} */ s) => String(s).replace(/[^a-zA-Z0-9/_.-]+/g, '-');
 /** The B1 exam app's word key (lower case letters and digits only). @param {string} w */
 export const wordKey = w => String(w || '').trim().toLowerCase().replace(/[^\p{L}\p{N}_]/gu, '');
@@ -62,9 +62,10 @@ export const wordKey = w => String(w || '').trim().toLowerCase().replace(/[^\p{L
 export function pathFor(type, p, at) {
   const s = stamp(at);
   switch (type) {
-    case 'exam.attempt': return `data/attempts/${s}-day${pad2(p.file.day)}-${p.file.module}.json`;
-    case 'exam.voice': return safe(`data/voice/day${pad2(p.day)}/${s}-${p.module}-${p.part}`) + `.${audioExt(p.mime)}`;
-    case 'feedback.created': return `data/feedback-ai/${s}-day${pad2(p.day)}-${p.module}.json`;
+    // the exam files are named by the result-file adapter this target implements (domain/exam-results.js)
+    case 'exam.attempt': return b1ExamSync.attemptName(p.file, s);
+    case 'exam.voice': return safe(b1ExamSync.voiceStem(p, s)) + `.${audioExt(p.mime)}`;
+    case 'feedback.created': return b1ExamSync.feedbackName(p, s);
     case 'vocab.captured': return `data/vocab/${s}-${(p.word_key || wordKey(p.word)).slice(0, 24) || 'wort'}.json`;
     case 'vocab.reviewed': return `data/vocab-reviews/${s}-${safe(p.batch || 'batch')}.json`;
     case 'training.logged': return `data/training/${s}-${safe(p.task || 'text')}.json`;
@@ -387,19 +388,8 @@ export function allowLegacy(store) {
   store.flush?.();
 }
 
-/**
- * An attempt record → the file body sync.py imports (the B1 exam app's attempt shape).
- * @param {any} a
- */
-export function attemptFile(a) {
-  const meta = { ...(a.meta || {}), source: 'remote' };
-  return {
-    id: a.id, day: a.day, module: a.module, started_at: a.started_at ?? null, submitted_at: a.submitted_at, duration_s: a.duration_s ?? null,
-    score: a.score ?? null, max_score: a.max_score, meta,
-    responses: (a.responses || []).map((/** @type {any} */ r) => ({ item_id: r.item_id, teil: r.teil, skill: r.skill, given: r.given ?? null, correct: r.correct, is_correct: r.is_correct ? 1 : 0 })),
-    writings: (a.writings || []).map((/** @type {any} */ w) => ({ aufgabe: w.aufgabe, text: w.text ?? '', word_count: w.word_count ?? 0 })),
-  };
-}
+/** An attempt record as the B1 exam app's attempt file (the b1-exam-sync@1 adapter, domain/exam-results.js). */
+export const attemptFile = b1ExamSync.attemptFile;
 
 let flushing = /** @type {Promise<any> | null} */ (null);
 let lastFlush = 0;

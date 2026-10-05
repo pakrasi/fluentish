@@ -1,6 +1,7 @@
-/* Hören audio with the exam's play limits: no seeking, a play counts once playback has actually started, the count
-   is saved on the device (a reload does not give a play back), one recording at a time, reading time before Teil 2
-   and 3, and the second hearing of Teil 1 and 4 starting by itself after 5 seconds. While something plays, the Teil
+/* Exam audio with the play limits of the exam definition (exam-def@1 part.audio): no seeking, a play counts once
+   playback has actually started, the count is saved on the device (a reload does not give a play back), one
+   recording at a time, a reading time before the first play (readSeconds; Goethe B1 Hören Teil 2 and 3), and the
+   next hearing starting by itself after a pause (replayAfter; Teil 1 and 4, 5 seconds). While something plays, the Teil
    tabs and Back/Next are locked (group.onBusy). Audio comes from the exam's media base and plays through
    services/audio.js track(), which starts it inside the tap and counts a play only once it has started. */
 import { h, replace, announce } from '../../core/dom.js';
@@ -28,9 +29,10 @@ export function playerGroup(onBusy) {
 
 /**
  * @param {{ group: ReturnType<typeof playerGroup>, store: any, n: number, id: string, url: string, limit: number,
- *           readSeconds?: number, autoSecond?: boolean, t: (k: string, v?: any) => string, toast: (s: string) => void }} o
+ *           readSeconds?: number, replayAfter?: number, t: (k: string, v?: any) => string, toast: (s: string) => void }} o
+ *   t: the exam's strings (exam.tx); replayAfter: seconds before the next play starts by itself (0: never)
  */
-export function player({ group, store, n, id, url, limit, readSeconds = 0, autoSecond = false, t, toast }) {
+export function player({ group, store, n, id, url, limit, readSeconds = 0, replayAfter = 0, t, toast }) {
   const tr = track(url, { limit, used: () => plays(store, n)[id]?.used || 0, onCount: () => usePlay(store, n, id) });
   const audio = tr.el;
   const btn = h('button', { type: 'button', class: 'btn pressable ex-play' });
@@ -46,10 +48,10 @@ export function player({ group, store, n, id, url, limit, readSeconds = 0, autoS
     refresh() {
       const busyElsewhere = group.owner && group.owner !== me;
       replace(btn, icon(playing ? 'speaker' : remaining() > 0 ? 'play' : 'check', { size: 18 }),
-        h('span', { lang: langAttr() }, playing ? t('exam.de.playing') : countdown ? t('exam.de.reading') : remaining() > 0 ? t('exam.de.play') : t('exam.de.noPlays')));
+        h('span', { lang: langAttr() }, playing ? t('playing') : countdown ? t('reading') : remaining() > 0 ? t('play') : t('noPlays')));
       btn.disabled = broken || playing || starting || !!countdown || remaining() <= 0 || !!busyElsewhere;
       // a live region: touch it only when the words change, or screen readers repeat it on every timeupdate
-      const txt = broken ? t('exam.de.audioMissing') : remaining() > 0 ? t('exam.de.playsLeft', { n: remaining() }) : t('exam.de.playsDone');
+      const txt = broken ? t('audioMissing') : remaining() > 0 ? t('playsLeft', { n: remaining() }) : t('playsDone');
       if (left.textContent !== txt) left.textContent = txt;
       time.textContent = audio.duration && Number.isFinite(audio.duration) ? `${fmt(audio.currentTime)} / ${fmt(audio.duration)}` : '';
     },
@@ -60,9 +62,9 @@ export function player({ group, store, n, id, url, limit, readSeconds = 0, autoS
     if (remaining() <= 0 || starting || (group.owner && group.owner !== me)) return;
     starting = true; group.take(me);
     tr.start().then(r => {
-      if (r !== 'playing') { starting = false; group.release(me); me.refresh(); if (r === 'blocked') toast(t('exam.de.audioBlocked')); return; }
+      if (r !== 'playing') { starting = false; group.release(me); me.refresh(); if (r === 'blocked') toast(t('audioBlocked')); return; }
       playing = true; starting = false; note.textContent = '';
-      announce(t('exam.de.playsLeft', { n: remaining() }));
+      announce(t('playsLeft', { n: remaining() }));
       me.refresh();
     });
   };
@@ -70,8 +72,8 @@ export function player({ group, store, n, id, url, limit, readSeconds = 0, autoS
     if (!readSeconds || used() > 0) return playNow();
     let s = readSeconds;
     group.take(me);
-    const skip = h('button', { type: 'button', class: 'btn btn-quiet pressable', lang: langAttr(), onclick: () => go() }, t('exam.de.skipReading'));
-    const draw = () => replace(note, t('exam.de.readingLeft', { n: s }), ' ', skip);
+    const skip = h('button', { type: 'button', class: 'btn btn-quiet pressable', lang: langAttr(), onclick: () => go() }, t('skipReading'));
+    const draw = () => replace(note, t('readingLeft', { n: s }), ' ', skip);
     const go = () => { if (countdown) clearInterval(countdown); countdown = null; note.textContent = ''; group.release(me); playNow(); };
     countdown = /** @type {any} */ (setInterval(() => { s--; if (s <= 0) go(); else draw(); }, 1000));
     group.timer(/** @type {number} */ (countdown));
@@ -80,16 +82,16 @@ export function player({ group, store, n, id, url, limit, readSeconds = 0, autoS
   audio.addEventListener('timeupdate', () => { bar.style.width = audio.duration ? `${(100 * audio.currentTime) / audio.duration}%` : '0'; me.refresh(); });
   audio.addEventListener('ended', () => {
     playing = false; group.release(me); me.refresh();
-    if (autoSecond && remaining() > 0) {
-      // the 5-second wait belongs to this recording: the Teil tabs stay locked, so the second play never starts on
-      // a Teil that is no longer shown
-      let s = 5;
+    if (replayAfter > 0 && remaining() > 0) {
+      // the wait belongs to this recording: the Teil tabs stay locked, so the next play never starts on a Teil that
+      // is no longer shown
+      let s = replayAfter;
       group.take(me);
-      note.textContent = t('exam.de.secondIn', { n: s });
+      note.textContent = t('secondIn', { n: s });
       const iv = /** @type {any} */ (setInterval(() => {
         s--;
         if (s <= 0) { clearInterval(iv); note.textContent = ''; group.release(me); playNow(); }
-        else note.textContent = t('exam.de.secondIn', { n: s });
+        else note.textContent = t('secondIn', { n: s });
       }, 1000));
       group.timer(iv);
     }

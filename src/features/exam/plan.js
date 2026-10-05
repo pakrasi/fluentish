@@ -21,10 +21,10 @@ export const scoreReader = (store, examId) => (/** @type {any} */ a) => {
   return f ? scoreNum(scoreLine(f.body)) : null;
 };
 
-/** Minutes a module takes in a day's plan: Sprechen is 15 minutes of preparation plus about 15 of exam. @param {any} def */
-export const planMinutes = def => (def.id === 'sprechen' ? 30 : def.minutes);
-/** "30 min (15 prep)" for Sprechen, "65 min" for the others. @param {any} def @param {(k: string, v?: any) => string} t */
-export const minutesLabel = (def, t) => (def.id === 'sprechen' ? t('exam.sprechenMinutes') : t('unit.min', { n: def.minutes }));
+/** Minutes a module takes in a day's plan (exam-def planMinutes; Sprechen: 15 of preparation plus about 15 of exam). @param {any} def a manifest module */
+export const planMinutes = def => def.planMinutes ?? def.minutes;
+/** "30 min (15 prep)" for a module with preparation time (Sprechen), "65 min" for the others. @param {any} def @param {(k: string, v?: any) => string} t */
+export const minutesLabel = (def, t) => (def.prepMinutes ? t('exam.sprechenMinutes') : t('unit.min', { n: def.minutes }));
 
 /** A draft started this recently still wins Up next; an older one waits on its test page as "Resume". */
 export const RESUME_MS = 3 * 864e5;
@@ -119,7 +119,7 @@ export function todayFeedback({ store, exam, t }) {
     if (f.seen || !f.module || !f.day) continue;
     const a = last.get(`${f.day}:${f.module}`);
     if (!a || !feedbackFor(store, exam.id, a).cur.some(x => x.id === f.id)) continue;
-    const title = `${f.module === 'sprechen' ? 'Sprechen' : f.module === 'schreiben' ? 'Schreiben' : f.module === 'lesen' ? 'Lesen' : 'Hören'} · ${t('exam.test', { n: f.day })}`;
+    const title = `${exam.modules.find((/** @type {any} */ m) => m.id === f.module)?.name ?? f.module} · ${t('exam.test', { n: f.day })}`;
     rows.push({ id: `fb.${f.id}`, title, status: t('feedback.new'), href: `#/exam/${f.day}/${f.module}/review/${encodeURIComponent(a.id)}`, action: t('feedback.read'), label: t('feedback.readLabel', { title }),
       module: f.module, need: 'read', test: f.day });
   }

@@ -1,0 +1,74 @@
+{
+ "id": "goethe-b1",
+ "name": "Goethe-Zertifikat B1",
+ "short": "Goethe B1",
+ "language": "german",
+ "level": "B1",
+ "note": "Practice in the format of the Goethe-Zertifikat B1. Not affiliated with the Goethe-Institut.",
+ "locale": "de",
+ "results": { "adapter": "b1-exam-sync@1" },
+ "media": { "base": "https://pakrasi.github.io/b1-exam/audio/", "test": "day{nn}/" },
+ "tests": { "file": "day{nn}.json", "schema": "goethe-b1-exam@1" },
+ "scoring": { "passShare": 0.6, "answers": "trim-lower", "blank": "wrong" },
+ "itemTypes": {
+  "tf": { "key": { "from": "bool", "true": "r", "false": "f" }, "options": "row", "labels": ["true", "false"], "text": "{statement}" },
+  "yn": { "key": { "from": "bool", "true": "ja", "false": "nein" }, "options": "row", "labels": ["yes", "no"], "text": "{author}: {text}" },
+  "mc": { "key": { "from": "index", "values": ["a", "b", "c"] }, "options": "stack", "badge": true, "text": "{question}" },
+  "match": { "key": { "from": "value", "none": "0" }, "options": "letters", "text": "{text}" },
+  "who-said": { "key": { "from": "value", "values": ["mod", "a", "b"] }, "options": "row", "labels": "speakers", "text": "{statement}" },
+  "writing": { "graded": "feedback" },
+  "speaking": { "graded": "feedback" }
+ },
+ "sections": [
+  {
+   "id": "lesen", "name": "Lesen", "kind": "objective", "minutes": 65, "max": 30, "pass": 18,
+   "clock": "down", "rules": "rulesLesen",
+   "parts": [
+    { "id": "L1", "minutes": 10, "type": "tf", "first": 1, "instruction": "l1", "layout": "split", "group": "lesen.teil1", "items": "items", "textLabel": "source" },
+    { "id": "L2", "minutes": 20, "type": "mc", "first": 7, "instruction": "l2", "layout": "split", "groups": "lesen.teil2.texts", "items": "items", "textLabel": "source" },
+    { "id": "L3", "minutes": 10, "type": "match", "first": 13, "instruction": "l3", "layout": "match", "group": "lesen.teil3", "items": "situations",
+      "intro": { "from": "intro", "renumber": "Situationen" },
+      "choices": { "from": "ads", "value": "letter", "title": "title", "text": "text", "heading": "ads" } },
+    { "id": "L4", "minutes": 15, "type": "yn", "first": 20, "instruction": "l4", "layout": "list", "group": "lesen.teil4", "items": "comments", "lead": "question",
+      "show": { "bold": "author", "prose": "text" } },
+    { "id": "L5", "minutes": 10, "type": "mc", "first": 27, "instruction": "l5", "layout": "split", "group": "lesen.teil5", "items": "items" }
+   ]
+  },
+  {
+   "id": "hoeren", "name": "Hören", "kind": "objective", "minutes": 40, "max": 30, "pass": 18,
+   "clock": "up", "rules": "rulesHoeren", "soundCheck": "s1-1.mp3",
+   "parts": [
+    { "id": "H1", "type": { "field": "type", "map": { "rf": "tf", "mc": "mc" }, "default": "mc" }, "first": 1, "instruction": "h1", "summary": "h1Summary",
+      "layout": "block", "groups": "hoeren.teil1.texts", "items": "items", "groupLabel": "textKind", "script": "script",
+      "audio": { "id": "h1-{i}", "file": "h1-{i}.mp3", "plays": 2, "replayAfter": 5 } },
+    { "id": "H2", "type": "mc", "first": 11, "instruction": "h2", "summary": "h2Summary", "layout": "block", "group": "hoeren.teil2", "items": "items", "caption": "setting", "script": "script",
+      "audio": { "id": "h2", "file": "h2.mp3", "plays": 1, "readSeconds": 60 } },
+    { "id": "H3", "type": "tf", "first": 16, "instruction": "h3", "summary": "h3Summary", "layout": "block", "group": "hoeren.teil3", "items": "items", "caption": "setting", "script": "script",
+      "audio": { "id": "h3", "file": "h3.mp3", "plays": 1, "readSeconds": 30 } },
+    { "id": "H4", "type": "who-said", "first": 23, "instruction": "h4", "summary": "h4Summary", "layout": "block", "group": "hoeren.teil4", "items": "items", "caption": "setting", "script": "script",
+      "speakers": "speakers", "audio": { "id": "h4", "file": "h4.mp3", "plays": 2, "replayAfter": 5 } }
+   ]
+  },
+  {
+   "id": "schreiben", "name": "Schreiben", "kind": "writing", "minutes": 60, "max": 100, "pass": 60,
+   "clock": "down", "rules": "rulesSchreiben", "intro": "schreibenIntro",
+   "parts": [
+    { "id": "aufgabe1", "type": "writing", "task": "schreiben.aufgabe1", "fields": ["situation", "points"], "hint": "a1hint" },
+    { "id": "aufgabe2", "type": "writing", "task": "schreiben.aufgabe2", "fields": ["situation", "quote", "instruction"] },
+    { "id": "aufgabe3", "type": "writing", "task": "schreiben.aufgabe3", "fields": ["situation", "addressee"] }
+   ]
+  },
+  {
+   "id": "sprechen", "name": "Sprechen", "kind": "speaking", "minutes": 15, "max": 100, "pass": 60,
+   "clock": "down", "rules": "rulesSprechen", "prepMinutes": 15, "planMinutes": 30,
+   "parts": [
+    { "id": "teil1", "type": "speaking", "task": "sprechen.teil1", "kind": "plan", "summary": "s1Summary", "instruction": "t1", "recordHint": "rec1", "reviewLabel": "reviewS1",
+      "cues": { "from": "partner_cues", "file": "s1-{i}.mp3" } },
+    { "id": "teil2", "type": "speaking", "task": "sprechen.teil2", "kind": "present", "summary": "s2Summary", "instruction": "t2", "recordHint": "rec2", "reviewLabel": "reviewS2",
+      "topicPrefix": "^Thema [AB]: " },
+    { "id": "teil3", "type": "speaking", "task": "sprechen.teil3", "kind": "questions", "summary": "s3Summary", "instruction": "t3", "recordHint": "rec3", "reviewLabel": "reviewS3",
+      "questions": [{ "from": "questions", "file": "s3-{i}.mp3" }, { "from": "questions_b", "file": "s3b-{i}.mp3" }] }
+   ]
+  }
+ ]
+}

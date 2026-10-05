@@ -10,28 +10,47 @@
      exams.learnerNotes    private notes for the corrector (fills the grader prompt's {learner_profile})
    Attempts live in the attempts store; each new one also gets an exam.attempt event whose file path is fixed then. */
 import { uuidv7, isoWithOffset } from '../../data/ids.js';
-import { results, sync as syncAll, audioExt, attemptFile } from '../../data/sync/index.js';
+import { results, sync as syncAll, audioExt } from '../../data/sync/index.js';
 import { latestByTestModule, fbSplit, stampMs, wordCount, corrections, attemptIds } from '../../domain/grade.js';
+import { testPath, section } from '../../domain/examdef.js';
+import { adapterFor } from '../../domain/exam-results.js';
+import { createTx } from './locale.js';
 import { addMistakes, listMistakes } from '../../data/mistakes.js';
 import * as T from './timer.js';
 
-export const MODS = ['lesen', 'hoeren', 'schreiben', 'sprechen'];
 export const pad2 = (/** @type {number} */ n) => String(n).padStart(2, '0');
 
 /* ---------- content ---------- */
 
-/** The exam the profile prepares for (manifest entry) or null. @param {any} ctx */
+/**
+ * The exam the profile prepares for, or null: its manifest entry (modules, limits, tests, media) with the whole
+ * definition (`def`, exam-def@1) and the runner's strings (`tx`, from its exam-locale catalog). When the definition
+ * cannot be loaded, `def` is null and the screens say the exam could not be loaded.
+ * @param {any} ctx
+ */
 export async function examDef(ctx) {
   const s = ctx.settings();
   if (!s.exam.type) return null;
-  return ctx.content.exam(s.exam.type).catch(() => null);
+  const entry = await ctx.content.exam(s.exam.type).catch(() => null);
+  if (!entry) return null;
+  try {
+    const [def, catalog] = await Promise.all([ctx.content.load(entry.def), ctx.content.load(entry.locale)]);
+    return { ...entry, def, tx: createTx(catalog) };
+  } catch (e) {
+    console.error(e);
+    return { ...entry, def: null, tx: createTx({ lang: 'en', strings: {} }) };
+  }
 }
 /** One mock test. @param {any} ctx @param {any} exam @param {number} n */
 export const loadTest = (ctx, exam, n) => ctx.content.load(`exam.${exam.id}.${pad2(n)}`);
+/** A section (module) of the exam's definition. @param {any} exam @param {string} module */
+export const sectionOf = (exam, module) => section(exam.def, module);
+/** A module's kind (objective, writing, speaking), or null without the definition. @param {any} exam @param {string} module @returns {string | null} */
+export const kindOf = (exam, module) => (exam?.def ? section(exam.def, module)?.kind ?? null : null);
 /** The "Warum?" explanations of a test, or {} when there are none. @param {any} ctx @param {any} exam @param {number} n */
 export const loadWhy = (ctx, exam, n) => ctx.content.load(`exam.${exam.id}.why.${pad2(n)}`).catch(() => ({}));
-/** Audio for a test from the exam's media base (manifest). @param {any} exam @param {number} n @param {string} file */
-export const mediaUrl = (exam, n, file) => `${exam.media}day${pad2(n)}/${file}`;
+/** Audio for a test from the exam's media base and test folder (exam-def media). @param {any} exam @param {number} n @param {string} file */
+export const mediaUrl = (exam, n, file) => `${exam.media}${testPath(exam.def?.media?.test ?? 'day{nn}/', n)}${file}`;
 /** The manifest version, stored with each attempt. @param {any} ctx */
 export const contentVersion = async ctx => (await ctx.content.manifest().catch(() => null))?.version ?? null;
 
@@ -130,12 +149,15 @@ export function saveDraft(store, n, module, patch) {
   }, {});
 }
 
-/** Drop a module's draft and, for Hören, its play counts. @param {any} store @param {number} n @param {string} module */
-export function clearDraft(store, n, module) {
+/**
+ * Drop a module's draft and, for a module with recordings (Hören), the test's play counts.
+ * @param {any} store @param {number} n @param {string} module @param {boolean} [withPlays]
+ */
+export function clearDraft(store, n, module, withPlays = module === 'hoeren') {
   store.update('exams.drafts', (/** @type {any} */ all) => {
     const next = { ...(all || {}) };
     delete next[`${n}:${module}`];
-    if (module === 'hoeren') delete next[`plays:${n}`];
+    if (withPlays) delete next[`plays:${n}`];
     return next;
   }, {});
 }
@@ -177,10 +199,12 @@ export async function submitAttempt(ctx, { exam, n, module, clock, now = Date.no
     meta: { ...meta, pauses: T.pauses(clock, now) }, responses, writings, synced: false,
   };
   const r = results(store);
-  const e = r.record('exam.attempt', { attemptId: rec.id, file: attemptFile(rec) }, at);
+  // the file the results target writes is shaped by the result-file adapter the definition names
+  const e = r.record('exam.attempt', { attemptId: rec.id, file: adapterFor(exam.def).attemptFile(rec) }, at);
   const saved = { ...rec, eventId: e.id, path: r.ref(e) };
   store.putAttempts([saved]);
-  clearDraft(store, n, module);
+  const sec = exam.def ? sectionOf(exam, module) : null;
+  clearDraft(store, n, module, sec ? sec.parts.some((/** @type {any} */ p) => p.audio) : undefined);
   const day = ctx.clock.today();
   store.update('activity', (/** @type {any} */ a) => {
     const x = { minutes: 0, rounds: 0, ...((a || {})[day] || {}) };
@@ -191,21 +215,21 @@ export async function submitAttempt(ctx, { exam, n, module, clock, now = Date.no
   return saved;
 }
 
-/** Schreiben texts → writings rows. @param {Record<string, string>} texts */
-export const writingsOf = texts => ['aufgabe1', 'aufgabe2', 'aufgabe3'].map(k => ({ aufgabe: k, text: texts[k] || '', word_count: wordCount(texts[k]) }));
+/** Writing texts → writings rows, one per task of the section (Schreiben: aufgabe1 to 3). @param {Record<string, string>} texts @param {any} sec */
+export const writingsOf = (texts, sec) => sec.parts.map((/** @type {any} */ p) => p.id).map((/** @type {string} */ k) => ({ aufgabe: k, text: texts[k] || '', word_count: wordCount(texts[k]) }));
 
 /* ---------- recordings ---------- */
 
 /**
  * Keep a recording: the blob goes to IndexedDB first, then a voice event with its path; the upload is retried until
  * both files are in the repository. Returns the event.
- * @param {any} ctx @param {{n: number, part: string, label: string, blob: Blob, mime: string, now?: number}} o
+ * @param {any} ctx @param {{n: number, part: string, label: string, blob: Blob, mime: string, now?: number, module?: string}} o
  */
-export async function saveRecording(ctx, { n, part, label, blob, mime, now = Date.now() }) {
+export async function saveRecording(ctx, { n, part, label, blob, mime, now = Date.now(), module = 'sprechen' }) {
   const { store } = ctx;
   const blobRef = uuidv7(now);
   await store.adapter.putBlob(blobRef, blob);
-  const e = results(store).record('exam.voice', { day: n, module: 'sprechen', part, label, mime, bytes: blob.size, created_at: isoWithOffset(new Date(now)), blobRef, ext: audioExt(mime) }, new Date(now));
+  const e = results(store).record('exam.voice', { day: n, module, part, label, mime, bytes: blob.size, created_at: isoWithOffset(new Date(now)), blobRef, ext: audioExt(mime) }, new Date(now));
   sync(ctx, true);
   return e;
 }
@@ -218,7 +242,7 @@ const TAKE_KV = 'exams.takeInProgress';
 /** A take that has not been written for this long belongs to no live recorder (another tab writes every 2 s). */
 const TAKE_IDLE_MS = 10e3;
 
-/** @param {any} store @param {{id: string, n: number, part: string, label: string, startedAt: number}} info */
+/** @param {any} store @param {{id: string, n: number, part: string, label: string, startedAt: number, module?: string}} info */
 export function beginTake(store, info) { store.set(TAKE_KV, { ...info, touchedAt: Date.now() }); }
 
 /** Keep the audio so far. @param {any} store @param {string} id @param {Blob} blob */
@@ -242,26 +266,26 @@ export async function recoverTake(ctx) {
   const info = ctx.store.get(TAKE_KV, null);
   if (!info || Date.now() - (info.touchedAt || 0) < TAKE_IDLE_MS) return null;
   const blob = await ctx.store.adapter.getBlob(`take:${info.id}`).catch(() => null);
-  if (blob && blob.size) await saveRecording(ctx, { n: info.n, part: info.part, label: info.label, blob, mime: info.mime || blob.type || 'audio/webm', now: info.startedAt });
+  if (blob && blob.size) await saveRecording(ctx, { n: info.n, part: info.part, label: info.label, blob, mime: info.mime || blob.type || 'audio/webm', now: info.startedAt, module: info.module || 'sprechen' });
   await endTake(ctx.store, info.id);
   return blob && blob.size ? info : null;
 }
 
 /**
- * Recordings of a test: made here (events; the blob while not yet sent), moved from the old app, and known to the Mac
- * (with transcripts).
- * @param {any} store @param {number} n @returns {{ id: string, part: string, created_at: string, blobRef?: string, sent: boolean, transcript?: string | null, label?: string }[]}
+ * Recordings of a test's speaking module: made here (events; the blob while not yet sent), moved from the old app,
+ * and known to the Mac (with transcripts).
+ * @param {any} store @param {number} n @param {string} [module] @returns {{ id: string, part: string, created_at: string, blobRef?: string, sent: boolean, transcript?: string | null, label?: string }[]}
  */
-export function recordings(store, n) {
+export function recordings(store, n, module = 'sprechen') {
   const out = [];
-  const macVoice = (remote(store).results?.days?.[String(n)]?.voice || []).filter((/** @type {any} */ v) => v.module === 'sprechen');
+  const macVoice = (remote(store).results?.days?.[String(n)]?.voice || []).filter((/** @type {any} */ v) => v.module === module);
   const transcriptFor = (/** @type {string} */ created) => macVoice.find((/** @type {any} */ v) => Math.abs(stampMs(v.created_at) - stampMs(created)) < 5000)?.transcript || null;
   for (const e of store.events.values()) {
-    if (e.type !== 'exam.voice' || e.payload.day !== n) continue;
+    if (e.type !== 'exam.voice' || e.payload.day !== n || (e.payload.module ?? 'sprechen') !== module) continue;
     out.push({ id: e.id, part: e.payload.part, label: e.payload.label, created_at: e.payload.created_at, blobRef: e.synced ? undefined : e.payload.blobRef, sent: !!e.synced, transcript: transcriptFor(e.payload.created_at) });
   }
   for (const v of store.get('exams.voice', []) || []) {
-    if (!v || v.day !== n || v.module !== 'sprechen') continue;
+    if (!v || v.day !== n || v.module !== module) continue;
     out.push({ id: String(v.id), part: v.part, label: v.label, created_at: v.created_at, sent: true, transcript: transcriptFor(v.created_at) });
   }
   const mine = new Set(out.map(x => Math.round(stampMs(x.created_at) / 5000)));

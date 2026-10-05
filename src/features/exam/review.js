@@ -7,7 +7,8 @@ import { corrections, scoreLine, wordCount, stampMs } from '../../domain/grade.j
 import { correctSchreiben, ClaudeError } from '../../services/claude.js';
 import { render as md } from './md.js';
 import { backLink } from './parts.js';
-import { feedbackFor, markSeen, saveCorrection, learnerNotes, queueMistakes, mistakesQueued, allAttempts, recordings, linked } from './data.js';
+import { feedbackFor, markSeen, saveCorrection, learnerNotes, queueMistakes, mistakesQueued, allAttempts, recordings, linked, sectionOf } from './data.js';
+import { at } from '../../domain/examdef.js';
 import { nextModule, scoreReader } from './plan.js';
 import { langAttr } from '../../core/lang.js';
 
@@ -54,14 +55,15 @@ function feedbackEntry(ctx, f) {
 export function feedbackBlock({ ctx, exam, attempt, fb, ex = null, autoCorrect = false }) {
   const { t, store } = ctx;
   const box = h('section', { class: 'ex-feedback', 'aria-labelledby': 'ex-fb-h' }, h('h2', { id: 'ex-fb-h' }, t('exam.fb.title')));
+  const kind = sectionOf(exam, attempt.module)?.kind;
   if (fb.cur.length) {
     box.append(...fb.cur.map(f => feedbackEntry(ctx, f)));
     const mistakes = fb.cur.reduce((n, f) => n + corrections(f.body).length, 0);
     if (mistakes) box.append(mistakesButton(ctx, attempt, fb.cur, mistakes));
-    if (attempt.module === 'schreiben' && !attempt.remote) box.append(h('div', { class: 'ex-recorrect' }, correctionBlock({ ctx, exam, attempt, ex, again: true })));
-  } else if (attempt.module === 'schreiben') {
+    if (kind === 'writing' && !attempt.remote) box.append(h('div', { class: 'ex-recorrect' }, correctionBlock({ ctx, exam, attempt, ex, again: true })));
+  } else if (kind === 'writing') {
     box.append(correctionBlock({ ctx, exam, attempt, ex, auto: autoCorrect }));
-  } else if (attempt.module === 'sprechen') {
+  } else if (kind === 'speaking') {
     box.append(h('p', { class: 'caption' }, linked(store) ? t('exam.fb.sprechenWait') : t('exam.fb.sprechenNotLinked')));
   } else {
     return fb.older.length ? h('section', { class: 'ex-feedback' }, older(ctx, fb.older)) : null;
@@ -183,20 +185,22 @@ export async function nextCard(ctx, exam, n) {
  */
 export async function reviewSchreiben(el, ctx, { exam, n, ex, def, attempt, autoCorrect = false }) {
   const { store, t } = ctx;
-  const S = ex.schreiben;
+  const tx = exam.tx;
+  const sec = sectionOf(exam, def.id);
+  /** @type {Record<string, any>} */ const S = Object.fromEntries(sec.parts.map((/** @type {any} */ p) => [p.id, at(ex, p.task)]));
   const fb = feedbackFor(store, exam.id, attempt);
   markSeen(store, fb.cur.filter(f => !f.seen).map(f => f.id));
   const sl = fb.cur[0] ? scoreLine(fb.cur[0].body) : null;
   const texts = Object.fromEntries((attempt.writings || []).map((/** @type {any} */ w) => [w.aufgabe, w.text]));
   const task = (/** @type {string} */ k, /** @type {number} */ i) => h('section', { class: 'ex-block', lang: langAttr() },
-    h('p', { class: 'label' }, `Aufgabe ${i} · ca. ${S[k].words} Wörter`),
+    h('p', { class: 'label' }, tx('taskReview', { i, words: S[k].words })),
     h('p', { class: 'caption' }, S[k].situation),
     h('div', { class: 'ex-written' }, texts[k] ? String(texts[k]).split(/\n+/).map(p => h('p', null, p)) : h('p', { class: 'caption', lang: 'en' }, t('exam.nothingWritten'))),
     h('p', { class: 'caption tnum' }, t('exam.words', { n: wordCount(texts[k]), target: S[k].words })));
   replace(el, h('div', { class: 'ex-review' },
     reviewHead({ ctx, n, def, attempt, score: null, max: 100, pass: false, topic: ex.topic, status: sl ? sl.split(' · ')[0].replace(/^circa/, t('exam.about')) : t('exam.notCorrected') }),
     feedbackBlock({ ctx, exam, attempt, fb, ex, autoCorrect }),
-    h('section', { class: 'ex-texts', 'aria-labelledby': 'ex-texts-h' }, h('h2', { id: 'ex-texts-h' }, t('exam.yourTexts')), ['aufgabe1', 'aufgabe2', 'aufgabe3'].map((k, i) => task(k, i + 1))),
+    h('section', { class: 'ex-texts', 'aria-labelledby': 'ex-texts-h' }, h('h2', { id: 'ex-texts-h' }, t('exam.yourTexts')), sec.parts.map((/** @type {any} */ p, /** @type {number} */ i) => task(p.id, i + 1))),
     await nextCard(ctx, exam, n)));
 }
 
@@ -205,11 +209,13 @@ export async function reviewSchreiben(el, ctx, { exam, n, ex, def, attempt, auto
  */
 export async function reviewSprechen(el, ctx, { exam, n, ex, def, attempt }) {
   const { store, t } = ctx;
+  const tx = exam.tx;
+  const sec = sectionOf(exam, def.id);
   const fb = feedbackFor(store, exam.id, attempt);
   markSeen(store, fb.cur.filter(f => !f.seen).map(f => f.id));
   const utc = attempt.source === 'remote' && !/[+-]\d\d:\d\d$|Z$/.test(String(attempt.submitted_at));
   const t0 = stampMs(attempt.started_at, utc) - 60e3, t1 = stampMs(attempt.submitted_at, utc) + 60e3;
-  const all = recordings(store, n);
+  const all = recordings(store, n, def.id);
   let takes = all.filter(v => { const x = stampMs(v.created_at); return x >= t0 && x <= t1; });
   const fallback = !takes.length && all.length > 0;
   if (fallback) takes = all;
@@ -223,12 +229,12 @@ export async function reviewSprechen(el, ctx, { exam, n, ex, def, attempt }) {
       url ? h('audio', { class: 'ex-raudio', controls: true, preload: 'metadata', src: url }) : null,
       v.transcript ? h('p', { class: 'ex-transcript', lang: langAttr() }, v.transcript) : h('p', { class: 'caption' }, t('exam.rec.noTranscript')));
   };
-  const TEILE = [['teil1', 'Teil 1 · Gemeinsam etwas planen'], ['teil2', 'Teil 2 · Präsentation'], ['teil3', 'Teil 3 · Fragen']];
-  const sections = await Promise.all(TEILE.map(async ([p, name]) => {
+  const TEILE = sec.parts.map((/** @type {any} */ p) => [p.id, tx(p.reviewLabel)]);
+  const sections = await Promise.all(TEILE.map(async (/** @type {string[]} */ [p, name]) => {
     const xs = takes.filter(v => v.part === p);
     return h('section', { class: 'ex-block' }, h('p', { class: 'label', lang: langAttr() }, name), xs.length ? await Promise.all(xs.map((v, i) => take(v, i, xs.length))) : h('p', { class: 'caption' }, t('exam.rec.none')));
   }));
-  const notes = (attempt.writings || []).find((/** @type {any} */ w) => w.aufgabe === 'sprechen-notizen');
+  const notes = (attempt.writings || []).find((/** @type {any} */ w) => w.aufgabe === `${def.id}-notizen`);
   const meta = attempt.meta && typeof attempt.meta === 'object' ? attempt.meta : {};
   replace(el, h('div', { class: 'ex-review' },
     reviewHead({ ctx, n, def, attempt, score: null, max: 100, pass: false, topic: [ex.topic, meta.topic].filter(Boolean).join(' · '), status: fb.cur.length ? t('exam.corrected') : t('exam.waiting') }),

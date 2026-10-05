@@ -80,6 +80,17 @@ export async function make() {
   const gh = await import(pathToFileURL(path.join(ROOT, 'src/data/sync/github-b1exam.js')).href);
   return serialise(await rowsWith(gh));
 }
+/**
+ * Through the adapter the Goethe B1 definition names (exam-def@1 results.adapter): its attempt shape, with the target's
+ * paths and bodies. Must give the same bytes as make().
+ */
+export async function makeViaDef() {
+  const gh = await import(pathToFileURL(path.join(ROOT, 'src/data/sync/github-b1exam.js')).href);
+  const { adapterFor } = await import(pathToFileURL(path.join(ROOT, 'src/domain/exam-results.js')).href);
+  const def = JSON.parse(readFileSync(path.join(ROOT, 'content/exams/goethe-b1/exam.json'), 'utf8'));
+  const ad = adapterFor(def);
+  return serialise(await rowsWith({ attemptFile: ad.attemptFile, pathFor: gh.pathFor, filesFor: gh.filesFor }));
+}
 export { serialise, OUT };
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {

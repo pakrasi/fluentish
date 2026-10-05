@@ -1,0 +1,13 @@
+{
+ "topic": "Le travail",
+ "oral": { "docs": [
+  { "qs": [ { "id": "co-1", "q": "Où ?", "options": ["Ici", "Là", "Loin", "Près"], "answer": 2, "skill": "detail" }, { "id": "co-2", "q": "Quand ?", "options": ["Lundi", "Mardi", "Jeudi", "Samedi"], "answer": 0, "skill": "number-time" } ] },
+  { "qs": [ { "id": "co-3", "q": "Qui ?", "options": ["Léa", "Paul", "Ana", "Tom"], "answer": 3, "skill": "detail" } ] }
+ ] },
+ "ecrit": {
+  "texte": { "title": "Un texte", "text": "Un texte court.", "affirmations": [ { "id": "ce-1", "text": "Il pleut.", "answer": true, "skill": "detail" }, { "id": "ce-2", "text": "Il fait beau.", "answer": false, "skill": "negation" }, { "id": "ce-3", "text": "Il neige.", "answer": false, "skill": "detail" } ] },
+  "annonces": { "personnes": [ { "id": "ce-4", "text": "Marie cherche un vélo.", "answer": "B", "skill": "matching" }, { "id": "ce-5", "text": "Luc ne trouve rien.", "answer": null, "skill": "matching" } ],
+   "offres": [ { "lettre": "A", "titre": "Voiture", "texte": "…" }, { "lettre": "B", "titre": "Vélo", "texte": "…" } ] }
+ },
+ "pe": { "essai": { "minutes": 45, "words": 160, "situation": "Écrivez à un ami." } }
+}

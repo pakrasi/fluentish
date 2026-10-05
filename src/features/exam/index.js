@@ -4,10 +4,13 @@
      '<n>'                           one test's four modules
      '<n>/<module>'                  start panel, then the runner (no app chrome while the clock runs)
      '<n>/<module>/review/<attempt>' the review with feedback ('?item=L2-3' opens one item)
+   What a module is (its parts, timings, play limits, item types, scoring) comes from the exam definition
+   (exam-def@1, content/exams/<id>/exam.json) and the runner's strings from its exam-locale; data.js examDef() loads
+   both. The section's kind picks the runner: objective (objective.js), writing (writing.js), speaking (speaking.js).
    Data, sync and the hand-offs are in data.js; the Today provider is plan.js. */
 import { h, replace } from '../../core/dom.js';
 import { notice } from '../../core/ui.js';
-import { examDef, loadTest, isStarted, findAttempt, draft } from './data.js';
+import { examDef, loadTest, isStarted, findAttempt, draft, sectionOf } from './data.js';
 import { examHome, testPage, startPanel } from './pages.js';
 import { runObjective, reviewObjective } from './objective.js';
 import { runSchreiben } from './writing.js';
@@ -36,7 +39,10 @@ export async function mount(el, ctx) {
   }
   if (!b) return testPage(page, ctx, exam, n);
   let ex;
-  try { ex = await loadTest(ctx, exam, n); } catch (e) {
+  try {
+    if (!exam.def) throw new Error(`exam ${exam.id}: the definition did not load`);
+    ex = await loadTest(ctx, exam, n);
+  } catch (e) {
     console.error(e);
     replace(page, h('header', { class: 'page-head' }, h('h1', null, t('exam.test', { n }))), notice({ kind: 'warning', children: [h('p', null, t('exam.loadFailed'))] }));
     return;
@@ -47,6 +53,7 @@ export async function mount(el, ctx) {
       replace(page, h('header', { class: 'page-head' }, h('h1', null, t('exam.test', { n }))), notice({ children: [h('p', null, t('exam.attemptMissing'))] }), h('p', null, h('a', { href: `#/exam/${n}` }, t('exam.backTest', { n }))));
       return;
     }
+    const kind = sectionOf(exam, def.id)?.kind;
     /** @type {any} */ let cleanup = null;
     // "Get correction" on Today and the test page links here with ?correct=1: the correction starts at once, once
     let autoCorrect = ctx.query.get('correct') === '1';
@@ -54,8 +61,8 @@ export async function mount(el, ctx) {
       const fresh = findAttempt(ctx.store, exam.id, attempt.id) || attempt;
       if (typeof cleanup === 'function') cleanup();
       const auto = autoCorrect; autoCorrect = false;
-      if (def.id === 'schreiben') cleanup = await reviewSchreiben(page, ctx, { exam, n, ex, def, attempt: fresh, autoCorrect: auto });
-      else if (def.id === 'sprechen') cleanup = await reviewSprechen(page, ctx, { exam, n, ex, def, attempt: fresh });
+      if (kind === 'writing') cleanup = await reviewSchreiben(page, ctx, { exam, n, ex, def, attempt: fresh, autoCorrect: auto });
+      else if (kind === 'speaking') cleanup = await reviewSprechen(page, ctx, { exam, n, ex, def, attempt: fresh });
       else cleanup = await reviewObjective(page, ctx, { exam, n, module: def.id, ex, def, attempt: fresh, focusItem: ctx.query.get('item') });
     };
     await render();
@@ -68,9 +75,10 @@ export async function mount(el, ctx) {
   if (c) { ctx.go(`/exam/${n}/${b}`, { replace: true }); return; }
   // start panel until the clock starts; then the runner
   /** @type {any} */ let handle = null;
+  const kind = sectionOf(exam, def.id)?.kind;
   const run = () => {
-    if (def.id === 'schreiben') handle = runSchreiben(page, ctx, { exam, n, ex, def });
-    else if (def.id === 'sprechen') handle = runSprechen(page, ctx, { exam, n, ex, def });
+    if (kind === 'writing') handle = runSchreiben(page, ctx, { exam, n, ex, def });
+    else if (kind === 'speaking') handle = runSprechen(page, ctx, { exam, n, ex, def });
     else handle = runObjective(page, ctx, { exam, n, module: def.id, ex, def });
     page.querySelector('h1')?.focus({ preventScroll: true });
   };

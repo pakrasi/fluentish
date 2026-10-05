@@ -32,22 +32,30 @@ export const MAP = [
   [/^clusters\/(\w+)\.json$/, m => `clusters.${m[1]}`, 'clusters@1'],
   [/^build\/(\w+)\.json$/, m => `build.${m[1]}`, 'build@1'],
   [/^atlas\/(\w+)\.json$/, m => `atlas.${m[1]}`, 'atlas@1'],
+  [/^exams\/([\w-]+)\/exam\.json$/, m => `exam.${m[1]}.def`, 'exam-def@1'],
+  [/^exams\/([\w-]+)\/locale\.([\w-]+)\.json$/, m => `exam.${m[1]}.locale.${m[2]}`, 'exam-locale@1'],
   [/^exams\/([\w-]+)\/why\/day(\d+)\.json$/, m => `exam.${m[1]}.why.${m[2]}`, '%s-why@1'],
   [/^exams\/([\w-]+)\/day(\d+)\.json$/, m => `exam.${m[1]}.${m[2]}`, '%s-exam@1'],
 ];
 
-/** Mock exams the content offers. Module limits follow the official format; pass = 60 %. */
-export const EXAMS = [{
-  id: 'goethe-b1', name: 'Goethe-Zertifikat B1', short: 'Goethe B1', language: 'german', level: 'B1',
-  modules: [
-    { id: 'lesen', name: 'Lesen', minutes: 65, max: 30, pass: 18 },
-    { id: 'hoeren', name: 'Hören', minutes: 40, max: 30, pass: 18 },
-    { id: 'schreiben', name: 'Schreiben', minutes: 60, max: 100, pass: 60 },
-    { id: 'sprechen', name: 'Sprechen', minutes: 15, max: 100, pass: 60 },
-  ],
-  media: 'https://pakrasi.github.io/b1-exam/audio/',
-  note: 'Practice in the format of the Goethe-Zertifikat B1. Not affiliated with the Goethe-Institut.',
-}];
+/**
+ * Mock exams the content offers, from their definitions (content/exams/<id>/exam.json, exam-def@1): the summary the
+ * app's chrome and Today read (modules with limits and pass lines, media base, note). The runner loads the whole
+ * definition by its id (`def`) and the runner strings by `locale`.
+ */
+export function examEntries() {
+  const dir = path.join(CONTENT, 'exams');
+  return readdirSync(dir).filter(id => { try { return statSync(path.join(dir, id, 'exam.json')).isFile(); } catch { return false; } }).sort().map(id => {
+    const d = JSON.parse(readFileSync(path.join(dir, id, 'exam.json'), 'utf8'));
+    return {
+      id: d.id, name: d.name, short: d.short, language: d.language, level: d.level,
+      modules: d.sections.map((/** @type {any} */ s) => ({ id: s.id, name: s.name, minutes: s.minutes, max: s.max, pass: s.pass,
+        ...(s.prepMinutes ? { prepMinutes: s.prepMinutes } : {}), ...(s.planMinutes ? { planMinutes: s.planMinutes } : {}) })),
+      media: d.media.base, note: d.note,
+      def: `exam.${d.id}.def`, locale: `exam.${d.id}.locale.${d.locale}`,
+    };
+  });
+}
 
 const walk = d => readdirSync(d).flatMap(n => { const p = path.join(d, n); return statSync(p).isDirectory() ? walk(p) : [p]; });
 const sha = buf => createHash('sha256').update(buf).digest('hex');
@@ -70,7 +78,7 @@ export function build() {
   }
   if (unmapped.length) throw new Error(`content files with no manifest rule: ${unmapped.join(', ')}`);
   const fw = JSON.parse(readFileSync(path.join(CONTENT, 'igloo/framework.json'), 'utf8'));
-  const exams = EXAMS.map(e => ({ ...e, tests: out.filter(f => f.id.startsWith(`exam.${e.id}.`) && !f.id.includes('.why.')).map(f => Number(f.id.split('.').pop())) }));
+  const exams = examEntries().map(e => ({ ...e, tests: out.filter(f => /^\d+$/.test(f.id.slice(`exam.${e.id}.`.length)) && f.id.startsWith(`exam.${e.id}.`)).map(f => Number(f.id.split('.').pop())) }));
   return {
     schema: 'fluentish-content@1',
     version: sha(out.map(f => `${f.id}:${f.sha256}`).join('\n')).slice(0, 12),

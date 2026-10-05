@@ -1,33 +1,28 @@
-/* Goethe B1 mock exams: grading and the small pure helpers the exam screens, Today and the sync share.
-   A port of the B1 exam app's answerKey/grade (app.js) and server.py answer_key, with the same item ids, values
-   ('r'/'f', 'a'/'b'/'c', 'ja'/'nein', ad letters, 'mod'/'a'/'b') and result rows, because sync.py imports the rows
-   as they are. Pure: no DOM, no clock, no storage. Tested in node (tests/unit/exam-grade.test.mjs). */
+/* Mock exams: grading and the small pure helpers the exam screens, Today and the sync share. Generic over exam
+   definitions (exam-def@1, domain/examdef.js): the items, their types, the values a result row stores and the pass
+   share all come from the definition. For Goethe B1 that gives the B1 exam app's answerKey/grade (app.js, server.py
+   answer_key) exactly, with the same item ids, values ('r'/'f', 'a'/'b'/'c', 'ja'/'nein', ad letters, 'mod'/'a'/'b')
+   and result rows, because sync.py imports the rows as they are (tests/vectors/exam.goethe-b1.json, captured before
+   the change, holds every output). Pure: no DOM, no clock, no storage. Tested in node (tests/unit/exam-grade.test.mjs). */
+import { objectiveItems, correctValue, itemText, section } from './examdef.js';
 
 /** @typedef {{ item_id: string, teil: string, skill: string, given: string | null, correct: string, is_correct: 0 | 1 }} Response */
 /** @typedef {Record<string, [string, string, string]>} AnswerKey  item id → [correct value, Teil code, skill] */
 
+/** The Goethe B1 modules, for callers without a definition at hand (the sync's B1 exam app shapes). */
 export const MODULES = /** @type {const} */ (['lesen', 'hoeren', 'schreiben', 'sprechen']);
 export const OBJECTIVE = /** @type {const} */ (['lesen', 'hoeren']);
+/** The pass share when a definition gives none. */
 export const PASS_SHARE = 0.6;
 
 /**
- * Every objective item of a test → [correct, Teil, skill] (mirrors server.answer_key).
- * @param {any} ex a goethe-b1-exam@1 test
+ * Every objective item of a test → [correct, Teil, skill] (for Goethe B1, server.answer_key).
+ * @param {any} ex a test of the exam (goethe-b1-exam@1 for Goethe B1) @param {any} def its exam-def@1
  * @returns {AnswerKey}
  */
-export function answerKey(ex) {
+export function answerKey(ex, def) {
   /** @type {AnswerKey} */ const key = {};
-  const L = ex.lesen, H = ex.hoeren;
-  const abc = (/** @type {number} */ i) => 'abc'[i];
-  for (const it of L.teil1.items) key[it.id] = [it.answer ? 'r' : 'f', 'L1', it.skill];
-  for (const tx of L.teil2.texts) for (const it of tx.items) key[it.id] = [abc(it.answer), 'L2', it.skill];
-  for (const s of L.teil3.situations) key[s.id] = [s.answer || '0', 'L3', s.skill];
-  for (const c of L.teil4.comments) key[c.id] = [c.answer ? 'ja' : 'nein', 'L4', c.skill];
-  for (const it of L.teil5.items) key[it.id] = [abc(it.answer), 'L5', it.skill];
-  for (const tx of H.teil1.texts) for (const it of tx.items) key[it.id] = [it.type === 'rf' ? (it.answer ? 'r' : 'f') : abc(it.answer), 'H1', it.skill];
-  for (const it of H.teil2.items) key[it.id] = [abc(it.answer), 'H2', it.skill];
-  for (const it of H.teil3.items) key[it.id] = [it.answer ? 'r' : 'f', 'H3', it.skill];
-  for (const it of H.teil4.items) key[it.id] = [it.answer, 'H4', it.skill];
+  for (const it of objectiveItems(def, ex)) key[it.id] = [correctValue(def, it.type, it.item), it.part.id, it.item.skill];
   return key;
 }
 
@@ -35,16 +30,16 @@ export function answerKey(ex) {
 export const normAnswer = v => (v === undefined || v === null || v === '' ? null : String(v).trim().toLowerCase());
 
 /**
- * Grade one objective module (Lesen or Hören). Items left blank count as wrong.
- * @param {AnswerKey} key @param {'lesen'|'hoeren'} module @param {Record<string, unknown>} answers
+ * Grade one objective module. Items left blank count as wrong.
+ * @param {AnswerKey} key @param {string} module a section id @param {Record<string, unknown>} answers @param {any} def
  * @returns {{ score: number, max_score: number, by_teil: Record<string, {score: number, max: number}>, results: Response[] }}
  */
-export function grade(key, module, answers) {
-  const prefix = module === 'lesen' ? 'L' : 'H';
+export function grade(key, module, answers, def) {
+  const teile = new Set((section(def, module)?.parts || []).map((/** @type {any} */ p) => p.id));
   /** @type {Response[]} */ const results = [];
   let score = 0;
   for (const [id, [correct, teil, skill]] of Object.entries(key)) {
-    if (!id.startsWith(prefix)) continue;
+    if (!teile.has(teil)) continue;
     const given = normAnswer(answers ? answers[id] : null);
     const ok = given === correct.toLowerCase();
     if (ok) score++;
@@ -56,42 +51,25 @@ export function grade(key, module, answers) {
 }
 
 /**
- * Item ids per Teil in exam order (tab counts and the submit summary).
- * @param {any} ex @param {'lesen'|'hoeren'} module @returns {string[][]}
+ * Item ids per part in exam order (tab counts and the submit summary).
+ * @param {any} ex @param {string} module @param {any} def @returns {string[][]}
  */
-export function teilIds(ex, module) {
-  const ids = (/** @type {any[]} */ xs) => xs.map(x => x.id);
-  if (module === 'lesen') {
-    const L = ex.lesen;
-    return [ids(L.teil1.items), L.teil2.texts.flatMap((/** @type {any} */ t) => ids(t.items)), ids(L.teil3.situations), ids(L.teil4.comments), ids(L.teil5.items)];
-  }
-  const H = ex.hoeren;
-  return [H.teil1.texts.flatMap((/** @type {any} */ t) => ids(t.items)), ids(H.teil2.items), ids(H.teil3.items), ids(H.teil4.items)];
+export function teilIds(ex, module, def) {
+  const ids = objectiveItems(def, ex, module);
+  return (section(def, module)?.parts || []).map((/** @type {any} */ p) => ids.filter(it => it.part === p).map(it => it.id));
 }
 
 /** How many of these ids have an answer. @param {string[]} ids @param {Record<string, unknown>} answers */
 export const answeredIn = (ids, answers) => ids.filter(id => normAnswer(answers[id]) !== null).length;
 
 /**
- * Item id → number as printed in the exam (L1 1–6, L2 7–12, L3 13–19, L4 20–26, L5 27–30; H1 1–10, H2 11–15,
- * H3 16–22, H4 23–30) and its text.
- * @param {any} ex @returns {Record<string, {nr: number, text: string}>}
+ * Item id → number as printed in the exam (each part's `first` on; Goethe B1: L1 1–6 … L5 27–30, H1 1–10 … H4 23–30)
+ * and its text.
+ * @param {any} ex @param {any} def @returns {Record<string, {nr: number, text: string}>}
  */
-export function itemInfo(ex) {
+export function itemInfo(ex, def) {
   /** @type {Record<string, {nr: number, text: string}>} */ const m = {};
-  const L = ex.lesen, H = ex.hoeren;
-  L.teil1.items.forEach((/** @type {any} */ it, /** @type {number} */ i) => { m[it.id] = { nr: 1 + i, text: it.statement }; });
-  L.teil2.texts.forEach((/** @type {any} */ t, /** @type {number} */ ti) => t.items.forEach((/** @type {any} */ it, /** @type {number} */ i) => { m[it.id] = { nr: 7 + ti * 3 + i, text: it.question }; }));
-  L.teil3.situations.forEach((/** @type {any} */ it, /** @type {number} */ i) => { m[it.id] = { nr: 13 + i, text: it.text }; });
-  L.teil4.comments.forEach((/** @type {any} */ it, /** @type {number} */ i) => { m[it.id] = { nr: 20 + i, text: `${it.author}: ${it.text}` }; });
-  L.teil5.items.forEach((/** @type {any} */ it, /** @type {number} */ i) => { m[it.id] = { nr: 27 + i, text: it.question }; });
-  H.teil1.texts.forEach((/** @type {any} */ t, /** @type {number} */ ti) => {
-    m[t.items[0].id] = { nr: 1 + ti * 2, text: t.items[0].statement };
-    m[t.items[1].id] = { nr: 2 + ti * 2, text: t.items[1].question };
-  });
-  H.teil2.items.forEach((/** @type {any} */ it, /** @type {number} */ i) => { m[it.id] = { nr: 11 + i, text: it.question }; });
-  H.teil3.items.forEach((/** @type {any} */ it, /** @type {number} */ i) => { m[it.id] = { nr: 16 + i, text: it.statement }; });
-  H.teil4.items.forEach((/** @type {any} */ it, /** @type {number} */ i) => { m[it.id] = { nr: 23 + i, text: it.statement }; });
+  for (const it of objectiveItems(def, ex)) m[it.id] = { nr: it.nr, text: itemText(def, it) };
   return m;
 }
 
@@ -112,8 +90,11 @@ export function byTeil(responses) {
   return t;
 }
 
-/** Whether a score passes (60 % of the maximum). @param {number | null | undefined} score @param {number} max */
-export const passes = (score, max) => score != null && max > 0 && score / max >= PASS_SHARE;
+/**
+ * Whether a score passes: at least the definition's share of the maximum (Goethe B1: 60 %).
+ * @param {number | null | undefined} score @param {number} max @param {number} [share] exam-def scoring.passShare
+ */
+export const passes = (score, max, share = PASS_SHARE) => score != null && max > 0 && score / max >= share;
 
 /* ---------- feedback (Fritz's corrections and one-click corrections) ---------- */
 

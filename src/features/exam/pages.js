@@ -1,10 +1,11 @@
 /* The Exam tab (UX 4.4), a test's page (4.5) and the start panel (4.6). English chrome; test topics and the start
-   panel's task lines are German. */
+   panel (its lines from the exam definition, its words from the exam-locale) are in the exam's language. */
 import { h, replace } from '../../core/dom.js';
 import { label } from '../../core/clock.js';
 import { section, notice } from '../../core/ui.js';
 import { scoreLine, scoreNum, passes } from '../../domain/grade.js';
-import { latest, allAttempts, feedbackFor, isStarted, draft, loadTest, sync, notSentCount, allowLegacy, linked, saveDraft, mediaUrl } from './data.js';
+import { latest, allAttempts, feedbackFor, isStarted, draft, loadTest, sync, notSentCount, allowLegacy, linked, saveDraft, mediaUrl, sectionOf, kindOf } from './data.js';
+import { at } from '../../domain/examdef.js';
 import { backLink, statusBar, confirmPanel } from './parts.js';
 import { nextModule, modulesFitting, scoreReader, draftTouched, RESUME_MS, planMinutes, minutesLabel } from './plan.js';
 import * as T from './timer.js';
@@ -22,11 +23,11 @@ export function moduleStatus(ctx, exam, def, a, n) {
   if (!a) return { text: isStarted(store, n, def.id) ? t('exam.status.started') : t('exam.status.open'), state: null, fresh: false };
   const fb = feedbackFor(store, exam.id, a);
   const fresh = fb.cur.some(f => !f.seen);
-  if (a.score != null) return { text: `${a.score} / ${a.max_score}`, state: passes(a.score, a.max_score) ? 'pass' : 'fail', fresh };
+  if (a.score != null) return { text: `${a.score} / ${a.max_score}`, state: passes(a.score, a.max_score, exam.def?.scoring?.passShare) ? 'pass' : 'fail', fresh };
   const num = fb.cur[0] ? scoreNum(scoreLine(fb.cur[0].body)) : null;
-  if (num != null) return { text: t('exam.status.about', { n: num }), state: passes(num, 100) ? 'pass' : 'fail', fresh };
+  if (num != null) return { text: t('exam.status.about', { n: num }), state: passes(num, 100, exam.def?.scoring?.passShare) ? 'pass' : 'fail', fresh };
   if (fb.cur.length) return { text: t('exam.corrected'), state: 'sub', fresh };
-  return { text: def.id === 'schreiben' ? t('exam.notCorrected') : t('exam.waiting'), state: 'sub', fresh };
+  return { text: kindOf(exam, def.id) === 'writing' ? t('exam.notCorrected') : t('exam.waiting'), state: 'sub', fresh };
 }
 
 /** The sync line: "3 not sent · Send now", or how to link the device. @param {any} ctx @param {() => void} redraw */
@@ -71,7 +72,7 @@ export async function examHome(el, ctx, exam) {
       const scored = xs.map(a => (a.score != null ? a.score : (() => { const f = feedbackFor(store, exam.id, a).cur[0]; return f ? scoreNum(scoreLine(f.body)) : null; })())).filter(x => x != null);
       const lastA = [...last.values()].filter(a => a.module === m.id).sort((a, b) => String(b.submitted_at).localeCompare(String(a.submitted_at)))[0];
       const st = lastA ? moduleStatus(ctx, exam, m, lastA, lastA.day) : null;
-      const uncorrected = m.id === 'schreiben' ? [...last.values()].filter(a => a.module === 'schreiben' && !feedbackFor(store, exam.id, a).cur.length).length : 0;
+      const uncorrected = kindOf(exam, m.id) === 'writing' ? [...last.values()].filter(a => a.module === m.id && !feedbackFor(store, exam.id, a).cur.length).length : 0;
       const detail = !xs.length ? t('exam.sum.none')
         : [scored.length ? t('exam.sum.best', { n: Math.max(.../** @type {number[]} */ (scored)) }) : null, t('exam.sum.attempts', { n: xs.length }), uncorrected ? t('exam.sum.uncorrected', { n: uncorrected }) : null].filter(Boolean).join(' · ');
       // the same picture as Today's module bars: the latest score on a track with the pass tick
@@ -138,7 +139,7 @@ export async function testPage(el, ctx, exam, n) {
       const reviewHref = a ? `#/exam/${n}/${m.id}/review/${encodeURIComponent(a.id)}` : null;
       const old = started && Date.now() - draftTouched((store.get('exams.drafts', {}) || {})[`${n}:${m.id}`]) > RESUME_MS;
       const main = started ? { href: `#/exam/${n}/${m.id}`, text: old ? t('exam.resumeDraft') : t('exam.continue') } : a ? { href: reviewHref, text: t('exam.review') } : { href: `#/exam/${n}/${m.id}`, text: t('exam.start') };
-      const uncorrected = m.id === 'schreiben' && a && !a.remote && !feedbackFor(store, exam.id, a).cur.length;
+      const uncorrected = kindOf(exam, m.id) === 'writing' && a && !a.remote && !feedbackFor(store, exam.id, a).cur.length;
       return h('li', { class: 'ex-mod' },
         h('div', { class: 'ex-mod-main' },
           h('p', { class: 'row-title' }, h('span', { lang: langAttr() }, m.name), h('span', { class: 'caption' }, ` · ${minutesLabel(m, t)}`)),
@@ -172,6 +173,8 @@ export async function testPage(el, ctx, exam, n) {
  */
 export function startPanel(el, ctx, { exam, n, module, ex, def, onStart }) {
   const { t, store } = ctx;
+  const tx = exam.tx;
+  const sec = sectionOf(exam, module);
   const d = draft(store, n, module);
   const back = backLink(`#/exam/${n}`, t('exam.backTest', { n }));
   if (d?.clock && T.stale(d.clock, Date.now())) {
@@ -179,42 +182,43 @@ export function startPanel(el, ctx, { exam, n, module, ex, def, onStart }) {
     replace(el, h('div', { class: 'ex-start' }, back,
       h('h1', { lang: langAttr() }, def.name),
       h('div', { class: 'ex-start-card', lang: langAttr() },
-        h('p', null, t('exam.de.staleStarted', { module: def.name, when: new Intl.DateTimeFormat(bcp47(), { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }).format(new Date(d.clock.start)) })),
-        h('p', { class: 'caption' }, t('exam.de.staleRules')),
+        h('p', null, tx('staleStarted', { module: def.name, when: new Intl.DateTimeFormat(bcp47(), { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }).format(new Date(d.clock.start)) })),
+        h('p', { class: 'caption' }, tx('staleRules')),
         h('div', { class: 'row-actions' },
-          h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: () => { saveDraft(store, n, module, { clock: T.continueStale(/** @type {T.Clock} */ (d.clock), Date.now(), def.minutes) }); onStart(); } }, t('exam.de.continue')),
+          h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: () => { saveDraft(store, n, module, { clock: T.continueStale(/** @type {T.Clock} */ (d.clock), Date.now(), def.minutes) }); onStart(); } }, tx('continue')),
           h('button', { type: 'button', class: 'btn pressable', onclick: () => replace(confirmSlot, confirmPanel({
-            lang: langAttr(), title: t('exam.de.restartQ', { module: def.name }), lines: [t('exam.de.restartDetail', { min: def.minutes })], yes: t('exam.de.restart'), no: t('exam.de.keepGoing'),
+            lang: langAttr(), title: tx('restartQ', { module: def.name }), lines: [tx('restartDetail', { min: def.minutes })], yes: tx('restart'), no: tx('keepGoing'),
             onNo: () => replace(confirmSlot), onYes: () => { saveDraft(store, n, module, { clock: T.begin(Date.now()) }); onStart(); },
-          })) }, t('exam.de.restart'))),
+          })) }, tx('restart'))),
         confirmSlot)));
     return;
   }
-  const S = ex.schreiben;
-  const info = /** @type {Record<string, {lines: [string, string][], rules: string}>} */ ({
-    lesen: { lines: [['Teil 1', '10 Min.'], ['Teil 2', '20 Min.'], ['Teil 3', '10 Min.'], ['Teil 4', '15 Min.'], ['Teil 5', '10 Min.']], rules: t('exam.de.rulesLesen') },
-    hoeren: { lines: [['Teil 1', '5 kurze Texte, je zweimal'], ['Teil 2', 'ein Vortrag, einmal'], ['Teil 3', 'ein Gespräch, einmal'], ['Teil 4', 'eine Diskussion, zweimal']], rules: t('exam.de.rulesHoeren') },
-    schreiben: { lines: ['aufgabe1', 'aufgabe2', 'aufgabe3'].map((k, i) => [`Aufgabe ${i + 1}`, `${S[k].minutes} Min. · ca. ${S[k].words} Wörter`]), rules: t('exam.de.rulesSchreiben') },
-    sprechen: { lines: [['Vorbereitung', '15 Min.'], ['Teil 1', 'Gemeinsam etwas planen'], ['Teil 2', 'Ein Thema präsentieren'], ['Teil 3', 'Fragen zur Präsentation']], rules: t('exam.de.rulesSprechen') },
-  })[module];
+  // the parts of the module, as the definition gives them: a summary, or the part's minutes; a writing task's time and
+  // word target from the test
+  const speaking = sec.kind === 'speaking';
+  /** @type {[string, string][]} */ const lines = sec.parts.map((/** @type {any} */ p, /** @type {number} */ i) => (sec.kind === 'writing'
+    ? [tx('aufgabe', { i: i + 1 }), tx('taskStart', { min: at(ex, p.task).minutes, words: at(ex, p.task).words })]
+    : [tx('teil', { n: i + 1 }), p.summary ? tx(p.summary) : tx('minShort', { n: p.minutes })]));
+  if (speaking) lines.unshift([tx('prep'), tx('minShort', { n: sec.prepMinutes })]);
+  const info = { lines, rules: tx(sec.rules) };
   const retake = !!latest(store, exam.id).get(`${n}:${module}`);
   const go = () => { saveDraft(store, n, module, { clock: T.begin(Date.now()) }); onStart(); };
   /** @type {ReturnType<typeof clip> | null} */ let check = null;
-  const soundCheck = module === 'hoeren' ? h('button', { type: 'button', class: 'btn pressable', lang: langAttr(), onclick: () => {
+  const soundCheck = sec.soundCheck ? h('button', { type: 'button', class: 'btn pressable', lang: langAttr(), onclick: () => {
     check?.stop();
-    check = clip(mediaUrl(exam, n, 's1-1.mp3'));
-    check.result.then(r => { if (r === 'blocked' || r === 'error') ctx.toast(t('exam.de.audioBlocked')); });
-  } }, t('exam.de.soundCheck')) : null;
+    check = clip(mediaUrl(exam, n, sec.soundCheck));
+    check.result.then(r => { if (r === 'blocked' || r === 'error') ctx.toast(tx('audioBlocked')); });
+  } }, tx('soundCheck')) : null;
   replace(el, h('div', { class: 'ex-start' }, back,
     h('h1', { lang: langAttr() }, def.name),
-    h('p', { class: 'caption', lang: langAttr() }, module === 'sprechen' ? `${ex.topic} · 15 Min. Vorbereitung, ca. 15 Min. Prüfung` : `${ex.topic} · ${def.minutes} Minuten`),
+    h('p', { class: 'caption', lang: langAttr() }, speaking ? tx('startSpeaking', { topic: ex.topic, prep: sec.prepMinutes, min: def.minutes }) : tx('startMinutes', { topic: ex.topic, min: def.minutes })),
     h('div', { class: 'ex-start-card', lang: langAttr() },
       h('table', { class: 'ex-teile' }, h('tbody', null, info.lines.map(([a, b]) => h('tr', null, h('td', null, a), h('td', { class: 'tnum' }, b))))),
       h('p', { class: 'caption' }, info.rules),
-      retake ? h('p', { class: 'caption' }, t('exam.de.retake')) : null,
+      retake ? h('p', { class: 'caption' }, tx('retake')) : null,
       h('div', { class: 'row-actions' },
         h('button', { type: 'button', class: 'btn btn-primary pressable ex-go', onclick: go },
-          module === 'sprechen' ? t('exam.de.startPrep') : retake ? t('exam.de.newTry', { min: def.minutes }) : t('exam.de.startModule', { module: def.name, min: def.minutes })),
+          speaking ? tx('startPrep', { min: sec.prepMinutes }) : retake ? tx('newTry', { min: def.minutes }) : tx('startModule', { module: def.name, min: def.minutes })),
         soundCheck))));
   return () => { check?.stop(); };
 }

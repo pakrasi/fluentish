@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "f812b3c8eb46",
+ "version": "b9279ff680e5",
  "languages": [
   {
    "id": "khasi",
@@ -127,11 +127,15 @@
      "name": "Sprechen",
      "minutes": 15,
      "max": 100,
-     "pass": 60
+     "pass": 60,
+     "prepMinutes": 15,
+     "planMinutes": 30
     }
    ],
    "media": "https://pakrasi.github.io/b1-exam/audio/",
    "note": "Practice in the format of the Goethe-Zertifikat B1. Not affiliated with the Goethe-Institut.",
+   "def": "exam.goethe-b1.def",
+   "locale": "exam.goethe-b1.locale.de",
    "tests": [
     1,
     2,
@@ -339,6 +343,20 @@
    "schema": "goethe-b1-exam@1",
    "bytes": 43000,
    "sha256": "06c3dcd2be7a80b22a2a1bd8dc6e36108c955eebe58c98b4dca9050913c6c402"
+  },
+  {
+   "id": "exam.goethe-b1.def",
+   "path": "exams/goethe-b1/exam.json",
+   "schema": "exam-def@1",
+   "bytes": 5412,
+   "sha256": "87076b1ac08865cb487c3d5e0ee2e9287293db4fc767efcd218b357be51d4bfa"
+  },
+  {
+   "id": "exam.goethe-b1.locale.de",
+   "path": "exams/goethe-b1/locale.de.json",
+   "schema": "exam-locale@1",
+   "bytes": 9111,
+   "sha256": "f59e3afee1c2c3c7e0a6621eb4a57fae0388d0dd729c2090e5362b023dc1d0fe"
   },
   {
    "id": "exam.goethe-b1.why.01",
