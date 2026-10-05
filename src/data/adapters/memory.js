@@ -11,6 +11,7 @@ export function createMemoryAdapter() {
   /** @type {Map<string, any>} */ const cards = new Map();    // `${p}\u0000${deck}\u0000${id}`
   /** @type {Map<string, any>} */ const attempts = new Map(); // `${p}\u0000${id}`
   /** @type {Map<string, any>} */ const outbox = new Map();   // `${p}\u0000${id}`
+  /** @type {Map<string, any>} */ const archive = new Map();  // `${p}\u0000${id}`
   /** @type {Map<string, any>} */ const blobs = new Map();
   const S = '\u0000';
   const dropPrefix = (/** @type {Map<string, any>} */ m, /** @type {string} */ p) => { for (const k of [...m.keys()]) if (k.startsWith(p + S)) m.delete(k); };
@@ -23,7 +24,7 @@ export function createMemoryAdapter() {
     async putProfile(/** @type {any} */ p) { profiles.set(p.id, clone(p)); },
     async deleteProfile(/** @type {string} */ id) {
       profiles.delete(id);
-      for (const m of [kv, cards, attempts, outbox]) dropPrefix(m, id);
+      for (const m of [kv, cards, attempts, outbox, archive]) dropPrefix(m, id);
     },
     async loadScope(/** @type {string} */ scope) {
       /** @type {Record<string, any>} */ const out = {};
@@ -47,6 +48,8 @@ export function createMemoryAdapter() {
     },
     async putAttempts(/** @type {string} */ p, /** @type {any[]} */ list) { for (const a of list) attempts.set(p + S + a.id, clone(a)); },
     async putEvents(/** @type {string} */ p, /** @type {any[]} */ list) { for (const e of list) outbox.set(p + S + e.id, clone(e)); },
+    async archiveEvents(/** @type {string} */ p, /** @type {any[]} */ list) { for (const e of list) { archive.set(p + S + e.id, clone(e)); outbox.delete(p + S + e.id); } },
+    async loadArchive(/** @type {string} */ p) { return [...archive].filter(([k]) => k.startsWith(p + S)).map(([, v]) => clone(v)); },
     async putBlob(/** @type {string} */ id, /** @type {Blob} */ b) { blobs.set(id, b); },
     async getBlob(/** @type {string} */ id) { return blobs.get(id) ?? null; },
     async deleteBlob(/** @type {string} */ id) { blobs.delete(id); },

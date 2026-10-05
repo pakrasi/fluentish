@@ -11,6 +11,7 @@
      loadScope(scope) / putKV(scope, name, value)       key-value collections; scope = profileId or 'device'
      loadProfile(p) → { cards: {deck: {id: rec}}, attempts: [], outbox: [] }
      putCards(p, deck, [[id, rec | null]]) / putAttempts(p, []) / putEvents(p, [])
+     archiveEvents(p, [events]) / loadArchive(p)        move events out of the outbox (data/archive.js); read them
      putBlob(id, blob) / getBlob(id) / deleteBlob(id) / estimate() / close()
 
    Collections (key-value):
@@ -182,6 +183,22 @@ export class Store {
     if (changed.length && !this.deleted) this.track(this.adapter.putEvents(this.profile.id, changed), 'outbox').then(() => this.post({ kind: 'outbox' }));
     this.notify('outbox', null);
   }
+
+  /**
+   * Move events to the archive (data/archive.js chooses which): out of memory and out of the outbox store, kept in
+   * the archive store. Awaited, so a failed move leaves them where they were.
+   * @param {Event[]} list
+   */
+  async archive(list) {
+    if (!list.length || this.deleted || !this.adapter.archiveEvents) return 0;
+    await this.adapter.archiveEvents(this.profile.id, list);
+    for (const e of list) this.events.delete(e.id);
+    this.post({ kind: 'outbox' });
+    return list.length;
+  }
+
+  /** Every archived event of this profile (Export reads them). @returns {Promise<Event[]>} */
+  async archived() { return this.adapter.loadArchive ? this.adapter.loadArchive(this.profile.id) : []; }
 
   /* ---------- plumbing ---------- */
 

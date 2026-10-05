@@ -17,6 +17,7 @@ import { uuidv7, isoWithOffset, newDeviceId, createHlc } from './ids.js';
 import { readLegacy, hasLegacyProgress, planMigration, applyMigration } from './migrate.js';
 import { planPreviewMerge, legacyChangedSince, deviceMerge, purgeArchived, canon } from './cutover.js';
 import { recoverRestore } from './restore.js';
+import { archiveOld } from './archive.js';
 
 /**
  * @param {object} o
@@ -89,6 +90,9 @@ export async function openSession({ adapter, legacyStorage, clock, bus, channel 
   /** @type {'rolledBack' | 'undone' | null} */ let restoreRecovered = null;
   try { restoreRecovered = await recoverRestore(adapter, profile.id); } catch (e) { console.error('restore recovery failed', e); }
   const store = await Store.open({ adapter, profile, device, clock, bus, channel: channel() });
+  // the bounded outbox: acknowledged events older than 30 days move to the archive (data/archive.js), so later
+  // starts load only what is pending or recent
+  await archiveOld(store, now().getTime());
   const hlc = createHlc(device.deviceId);
   if (migration) store.append('legacy.imported', { summary: migration });
   return { store, profile, device, hlc, migration, previewKept, cutoverError, restoreRecovered, profiles: (await adapter.listProfiles()).filter((/** @type {any} */ p) => !p.archivedAt) };

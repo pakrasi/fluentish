@@ -264,8 +264,9 @@ export async function mount(el, ctx) {
         meta.summary.cardsSkipped ? h('p', { class: 'caption' }, t('data.skipped', { n: meta.summary.cardsSkipped })) : null) : null,
       Object.keys(store.get('scripts', {}) || {}).length ? switchRow({ label: t('data.includeScripts'), hint: t('data.includeScripts.hint'), checked: includeScripts, onChange: v => { includeScripts = v; } }) : null,
       h('div', { class: 'row-actions wrap' },
-        h('button', { type: 'button', class: 'btn pressable', onclick: () => {
-          const b = exportBundle(store, { profile: app.profile, includeScripts });
+        h('button', { type: 'button', class: 'btn pressable', onclick: async () => {
+          const archived = await store.archived().catch(() => []);   // the outbox archive (data/archive.js)
+          const b = exportBundle(store, { profile: app.profile, includeScripts, archived });
           download(new Blob([JSON.stringify(b, null, 1)], { type: 'application/json' }), `fluentish-${ctx.clock.today()}.json`);
         } }, icon('download', { size: 18 }), t('data.export')),
         h('button', { type: 'button', class: 'btn pressable', onclick: () => fileIn.click() }, icon('upload', { size: 18 }), t('data.import')), fileIn,

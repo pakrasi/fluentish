@@ -58,8 +58,8 @@ Every client-created record carries `id` (UUIDv7), `profileId`, `deviceId` and `
 | `card-fsrs@1` | IDB `cards` `[profileId, deck, itemId]` | the FSRS snapshot from `domain/fsrs.js`; a cache of the events |
 | `exam-attempt@1` | IDB `attempts` | the B1 exam app's field names (`started_at`, `max_score`, `responses`, `writings`), which the Mac's `sync.py` imports, plus `examId` and `contentVersion` |
 | `mistake@1` | kv `mistakes`, profile, private | a mistake from a correction: `{id: 'F:<attempt>-<n>', v: 1, wrong, right, rule, source: {attemptId, test, module, label}, createdAt, deletedAt}`; written only through `src/data/mistakes.js`; Practice reviews each as card `F:…` in deck `b1` |
-| `event@1` | IDB `outbox` | append-only, the unit of sync (below) |
-| `fluentish-export@1` | file | Profile > Data > Export: kv collections except prefs, secrets, palace and backup, cards, attempts, events |
+| `event@1` | IDB `outbox`, then `archive` | append-only, the unit of sync (below); acknowledged events older than 30 days move to `archive` unchanged (`data/archive.js`) |
+| `fluentish-export@1` | file | Profile > Data > Export: kv collections except prefs, secrets, palace and backup, cards, attempts, events (the outbox and its archive) |
 
 ### Events (`event@1`)
 

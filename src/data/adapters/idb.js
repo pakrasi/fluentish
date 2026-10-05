@@ -7,14 +7,18 @@
      kv        [scope, name]          → any   (scope = profileId, or 'device' for prefs and secrets)
      cards     [profileId, deck, id]  → FSRS record
      attempts  [profileId, id]        → ExamAttempt
-     outbox    [profileId, id]        → Event
+     outbox    [profileId, id]        → Event  (pending and recent events: what the store loads)
+     archive   [profileId, id]        → Event  (acknowledged events older than 30 days, moved out of the outbox by
+                                                data/archive.js; never loaded at start, read by Export; version 2)
      blobs     id                     → Blob  (voice notes until both uploads succeed)
+
+   Version 2 only adds the archive store (onupgradeneeded creates the stores that are missing; nothing else changes).
 
    The connection is reopened when iOS closes it in the background (InvalidStateError / "connection is closing"). */
 
 const NAME = 'fluentish';
-const VERSION = 1;
-const STORES = ['device', 'profiles', 'kv', 'cards', 'attempts', 'outbox', 'blobs'];
+const VERSION = 2;
+const STORES = ['device', 'profiles', 'kv', 'cards', 'attempts', 'outbox', 'blobs', 'archive'];
 
 /** @template T @param {IDBRequest<T>} r @returns {Promise<T>} */
 const req = r => new Promise((res, rej) => { r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); });
@@ -77,9 +81,9 @@ export async function createIdbAdapter(factory = indexedDB) {
     putDevice: (/** @type {any} */ d) => tx(['device'], 'readwrite', t => { t.objectStore('device').put(d, 'device'); }),
     listProfiles: () => tx(['profiles'], 'readonly', t => req(t.objectStore('profiles').getAll())),
     putProfile: (/** @type {any} */ p) => tx(['profiles'], 'readwrite', t => { t.objectStore('profiles').put(p); }),
-    deleteProfile: (/** @type {string} */ id) => tx(['profiles', 'kv', 'cards', 'attempts', 'outbox'], 'readwrite', t => {
+    deleteProfile: (/** @type {string} */ id) => tx(['profiles', 'kv', 'cards', 'attempts', 'outbox', 'archive'], 'readwrite', t => {
       t.objectStore('profiles').delete(id);
-      for (const s of ['kv', 'cards', 'attempts', 'outbox']) t.objectStore(s).delete(IDBKeyRange.bound([id], [id, []]));
+      for (const s of ['kv', 'cards', 'attempts', 'outbox', 'archive']) t.objectStore(s).delete(IDBKeyRange.bound([id], [id, []]));
     }),
     loadScope: (/** @type {string} */ scope) => tx(['kv'], 'readonly', async t => {
       /** @type {Record<string, any>} */ const out = {};
@@ -103,6 +107,11 @@ export async function createIdbAdapter(factory = indexedDB) {
     }),
     putAttempts: (/** @type {string} */ p, /** @type {any[]} */ list) => tx(['attempts'], 'readwrite', t => { for (const a of list) t.objectStore('attempts').put(a, [p, a.id]); }),
     putEvents: (/** @type {string} */ p, /** @type {any[]} */ list) => tx(['outbox'], 'readwrite', t => { for (const e of list) t.objectStore('outbox').put(e, [p, e.id]); }),
+    /** Move events from the outbox to the archive, in one transaction (both or neither). */
+    archiveEvents: (/** @type {string} */ p, /** @type {any[]} */ list) => tx(['outbox', 'archive'], 'readwrite', t => {
+      for (const e of list) { t.objectStore('archive').put(e, [p, e.id]); t.objectStore('outbox').delete([p, e.id]); }
+    }),
+    loadArchive: (/** @type {string} */ p) => tx(['archive'], 'readonly', async t => (/** @type {[any, any][]} */ (await range(t.objectStore('archive'), [p]))).map(([, v]) => v)),
     // Bytes, not the Blob itself: WebKit refuses Blobs in IndexedDB in private windows (and older iOS everywhere),
     // while an ArrayBuffer is stored by every engine. The bytes are read before the transaction opens.
     putBlob: async (/** @type {string} */ id, /** @type {Blob} */ b) => {

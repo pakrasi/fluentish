@@ -21,8 +21,14 @@ const NOT_EXPORTED = new Set(['secrets', 'prefs', 'palace', 'backup', 'exams.voc
 const SCRIPT_KV = new Set(['scripts', 'scripts.progress', 'scripts.words']);
 const SCRIPT_DECKS = new Set(['script']);
 
-/** @param {import('./store.js').Store} store @param {{profile: any, includeScripts?: boolean}} o */
-export function exportBundle(store, { profile, includeScripts = false }) {
+/**
+ * @param {import('./store.js').Store} store
+ * @param {{profile: any, includeScripts?: boolean, archived?: any[]}} o  archived: the events in the outbox archive
+ *   (store.archived()); an export holds every event, archived or not
+ */
+export function exportBundle(store, { profile, includeScripts = false, archived = [] }) {
+  /** @type {Map<string, any>} */ const events = new Map();
+  for (const e of [...archived, ...store.events.values()]) if (e && e.id) events.set(e.id, e);
   return {
     schema: 'fluentish-export@1',
     exportedAt: new Date().toISOString(),
@@ -30,7 +36,7 @@ export function exportBundle(store, { profile, includeScripts = false }) {
     kv: Object.fromEntries(Object.entries(store.kv).filter(([k]) => !NOT_EXPORTED.has(k) && (includeScripts || !SCRIPT_KV.has(k)))),
     cards: includeScripts ? store.cardsByDeck : Object.fromEntries(Object.entries(store.cardsByDeck).filter(([d]) => !SCRIPT_DECKS.has(d))),
     attempts: store.attempts(),
-    events: [...store.events.values()].filter(e => includeScripts || !(e && e.payload && e.payload.local)),
+    events: [...events.values()].sort((a, b) => (a.seq || 0) - (b.seq || 0)).filter(e => includeScripts || !(e && e.payload && e.payload.local)),
   };
 }
 
@@ -65,7 +71,8 @@ export async function importFile(text, { store, bus }) {
     const have = new Set(store.attempts().map(a => a.id));
     const newAttempts = data.attempts.filter((/** @type {any} */ a) => a && a.id && !have.has(a.id)).map((/** @type {any} */ a) => ({ ...a, profileId: store.profile.id }));
     if (newAttempts.length) store.putAttempts(newAttempts);
-    const newEvents = data.events.filter((/** @type {any} */ e) => e && e.id && !store.events.has(e.id));
+    const archivedIds = new Set((await store.archived()).map(e => e.id));
+    const newEvents = data.events.filter((/** @type {any} */ e) => e && e.id && !store.events.has(e.id) && !archivedIds.has(e.id));
     if (newEvents.length) {
       for (const e of newEvents) store.events.set(e.id, e);
       await store.adapter.putEvents(store.profile.id, newEvents);
