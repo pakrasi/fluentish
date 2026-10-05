@@ -12,7 +12,8 @@
                                                 learning collections (SNAPSHOT_KV), so a restore does not depend on
                                                 replaying every event. Rewritten in place during the day (at most every
                                                 SNAPSHOT_EVERY_MS, when it changed); a new file each study day.
-     data/logs/<deviceId>/<day>.ndjson          the scrubbed error log (core/log.js), once a day
+     data/logs/<deviceId>/<day>.ndjson          the scrubbed error log (core/log.js), once a study day: {at, where,
+                                                message, build} per line, a message with script text replaced
 
    Never uploaded: scripts (kv scripts*, deck 'script', reviews marked local), secrets, device prefs, caches of the
    results repository. Every body is checked before it leaves (leakIn): a token or key, or a script's marks, stop
@@ -276,4 +277,60 @@ async function snapshotIfDue(store, files, { now, force, build, secrets }) {
   }
   setState(store, { snapshot: { day: today, at: snap.at, hash, path, sha, profileId: store.profile.id, cards: snap.counts.cards } });
   return true;
+}
+
+/* ---------- the error log, once a day ---------- */
+
+/** Lower-case words of a text. @param {string} s */
+const words = s => String(s || '').toLowerCase().match(/[\p{L}\p{N}]+/gu) || [];
+
+/**
+ * A test for script text: true when a message holds three words in a row from one of his scripts, or a script's title.
+ * @param {Record<string, any>} scripts kv 'scripts'
+ * @returns {(message: string) => boolean}
+ */
+export function scriptText(scripts) {
+  /** @type {Set<string>} */ const grams = new Set();
+  /** @type {string[]} */ const titles = [];
+  for (const s of Object.values(scripts || {})) {
+    if (!s || typeof s !== 'object') continue;
+    if (typeof s.title === 'string' && s.title.trim().length >= 4) titles.push(s.title.trim().toLowerCase());
+    for (const sec of s.sections || []) {
+      for (const text of [sec.title, ...(sec.sentences || []).map((/** @type {any} */ x) => x && x.de)]) {
+        const w = words(text);
+        for (let i = 0; i + 2 < w.length; i++) grams.add(`${w[i]} ${w[i + 1]} ${w[i + 2]}`);
+      }
+    }
+  }
+  return message => {
+    const m = String(message || '').toLowerCase();
+    if (titles.some(t => m.includes(t))) return true;
+    const w = words(m);
+    for (let i = 0; i + 2 < w.length; i++) if (grams.has(`${w[i]} ${w[i + 1]} ${w[i + 2]}`)) return true;
+    return false;
+  };
+}
+
+/**
+ * Upload the error log once a study day: the entries logged since the last upload, to data/logs/<device>/<day>.ndjson,
+ * each checked again for script text (a match is replaced, never sent).
+ * @param {any} store @param {Files} files
+ * @param {{entries: {at: string, where: string, message: string}[], now: () => number, secrets: any, build?: string | null}} o
+ * @returns {Promise<number>} entries uploaded
+ */
+export async function uploadLog(store, files, { entries, now, secrets, build = null }) {
+  const st = state(store);
+  const today = store.clock.today();
+  if (st.logDay === today) return 0;
+  const since = st.logAt || '';
+  const fresh = entries.filter(e => e && typeof e.at === 'string' && e.at > since);
+  if (!fresh.length) { setState(store, { logDay: today }); return 0; }
+  const isScript = scriptText(store.get('scripts', {}) || {});
+  const lines = fresh.map(e => JSON.stringify({ at: e.at, where: String(e.where || '').slice(0, 40), message: isScript(e.message) || isScript(e.where) ? '[removed: script text]' : String(e.message || '').slice(0, 300), build }));
+  await writeOwned(files, logPath(store.device.deviceId, today), old => {
+    const have = new Set(String(old || '').split('\n').filter(Boolean));
+    return [...have, ...lines.filter(l => !have.has(l))].join('\n') + '\n';
+  }, `progress: error log (${deviceDir(store.device.deviceId)})`, secrets);
+  setState(store, { logDay: today, logAt: fresh[fresh.length - 1].at });
+  return fresh.length;
 }

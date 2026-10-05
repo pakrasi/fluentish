@@ -54,6 +54,7 @@ Every client-created record carries `id` (UUIDv7), `profileId`, `deviceId` and `
 | `settings@1` | kv `settings`, profile, synced | the goal and practice options; `exam.date` is the **only** place the exam date lives; `rev` holds an HLC per field path for last-write-wins merges |
 | `prefs@1` | kv `prefs`, device | theme, motion, locale; never synced |
 | (secrets) | kv `secrets`, device | `anthropicKey`, `githubToken`; never exported or synced, no schema on purpose |
+| (log) | kv `log`, device | the error log ring, at most 500 `{at, where, message}` (`core/log.js`); never exported, uploaded scrubbed once a day |
 | (palace) | kv `palace`, device | Explore › 3D's record of what it last showed: `{ver, st, day, played}`: the atlas ids' key with the profile id, one state digit per atlas item, the study day, and the item ids whose learned moment played that day (`domain/palace.js momentQueue`); never exported or synced, no schema on purpose |
 | `card-fsrs@1` | IDB `cards` `[profileId, deck, itemId]` | the FSRS snapshot from `domain/fsrs.js`; a cache of the events |
 | `exam-attempt@1` | IDB `attempts` | the B1 exam app's field names (`started_at`, `max_score`, `responses`, `writings`), which the Mac's `sync.py` imports, plus `examId` and `contentVersion` |
@@ -75,6 +76,7 @@ Every client-created record carries `id` (UUIDv7), `profileId`, `deviceId` and `
 | Path | Format | Writer |
 |---|---|---|
 | `data/events/<deviceId>/<day>.ndjson` | one `event@1` per line without `synced` and `path`, by `seq`; the learning events (`card.reviewed`, `card.marked_known`, `card.unmarked_known`, `settings.changed`) of that study day, except reviews marked `local` and events of deck `script` | this device only; lines are only added (read with sha, merge by id, write with sha) |
+| `data/logs/<deviceId>/<day>.ndjson` | `{at, where, message, build}` per line: the error log entries since the last upload, scrubbed (`core/log.js`), script text replaced | this device, once a study day |
 | `data/snapshots/<deviceId>/<day>.json.gz` (or `.json`) | `fluentish-snapshot@1`: `{schema, deviceId, profileId, at, day, seq, build, counts: {cards}, cards: {deck: {itemId: card-fsrs@1}}, kv: {settings, activity, mistakes, lookup.seen, known, b1.session, speak.sim, clusters, practice.write, exams.feedbackLocal, exams.seen, exams.learnerNotes, vocab.local, vocab.events}}`, every deck except `script` | this device only; rewritten in place during the study day |
 
 The device's backup state is the device-scope kv `backup` (`{on, at, error, eventsAt, snapshot: {day, at, hash, path, sha, profileId, cards}, autoMerge: {since} | null, mergedAt, mergeSeen: {profileId, files: {path: sha}}}`); the last restore or merge is the device-scope kv `backup.journal` (`{id, at, kind: 'restore' | 'merge', profileId, stage: 'applying' | 'done' | 'rolledBack' | 'undoing' | 'undone', counts, sources, before: {cards: {deck: {itemId: record | null}}, kv: {name: value | null}}, after: {cards: {deck: {itemId: hash}}, kv: {name: hash}}}`). Neither is exported or uploaded; "Delete all" clears both. The device record gains `previousDeviceIds` (the ids before each "Delete all").

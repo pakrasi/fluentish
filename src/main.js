@@ -10,7 +10,7 @@ import { markNode } from './core/brand.js';
 import { swap, toast as kitToast } from './core/motion.js';
 import { createRouter } from './core/router.js';
 import { avatar } from './core/ui.js';
-import { log, installErrorLog } from './core/log.js';
+import { log, installErrorLog, attachLogStore } from './core/log.js';
 import { createIdbAdapter } from './data/adapters/idb.js';
 import { createMemoryAdapter } from './data/adapters/memory.js';
 import { openSession } from './data/session.js';
@@ -52,6 +52,7 @@ async function main() {
   const q = new URLSearchParams(location.search);
   let adapter, durable = true;
   try { adapter = await createIdbAdapter(); } catch (e) { log('storage', e); adapter = createMemoryAdapter(); durable = false; }
+  await attachLogStore(adapter);   // the error log survives a reload (core/log.js)
 
   /** @type {any} */ let store = null;
   const settings = () => normalizeSettings(store?.get('settings'));

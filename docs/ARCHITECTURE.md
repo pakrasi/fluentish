@@ -135,7 +135,7 @@ Stage A: unit tests (node:test, in a New York / Berlin / Kolkata matrix in CI): 
 
 **i18n:** chrome strings through `t()` with `en` and `de` catalogs; dates through `Intl`.
 
-**Diagnostics:** an in-memory error log and storage/outbox/device facts in Profile > Diagnostics. Persisting the log and the daily scrubbed upload come with sync.
+**Diagnostics:** the error log (`core/log.js`) is a ring of the last 500 entries kept in IndexedDB (device kv `log`), scrubbed when logged (tokens, keys, Authorization values, URL queries, quoted text), shown with storage/outbox/device facts in Profile > Diagnostics, and uploaded once a study day with the progress backup to `data/logs/<deviceId>/<day>.ndjson` (entries since the last upload; a message holding three words in a row of a script, or a script's title, is replaced before it leaves).
 
 ## 9. Phase 4 (recorded so today's choices point at it)
 

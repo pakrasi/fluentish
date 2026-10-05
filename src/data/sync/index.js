@@ -18,6 +18,7 @@ import { config } from '../../core/config.js';
 import * as GH from './github-b1exam.js';
 import * as B from './backup.js';
 import * as R from '../restore.js';
+import { entries as logEntries } from '../../core/log.js';
 
 /**
  * @typedef {{acked: string[], rejected: {id: string, error: string}[], error: {message: string, auth?: boolean, offline?: boolean} | null}} PushResult
@@ -75,7 +76,9 @@ export function results(store) {
  *          backupNow?: boolean}} [o]  backupNow: "Back up now" (events and a snapshot, whatever their cadence)
  */
 export function sync(store, { force = false, pull = true, emit, fetch: f, now, backupNow = false } = {}) {
-  return GH.syncResults(store, { repo: config.resultsRepo, api: config.github.api, force: force || backupNow, pull, emit, fetch: f, now, backupNow, build: config.build });
+  return GH.syncResults(store, { repo: config.resultsRepo, api: config.github.api, force: force || backupNow, pull, emit, fetch: f, now, backupNow, build: config.build,
+    // the error log goes once a day with the backup (core/log.js)
+    extra: ({ files, secrets, now: n }) => B.uploadLog(store, files, { entries: logEntries(), now: n, secrets, build: config.build }).then(() => {}) });
 }
 
 /**
