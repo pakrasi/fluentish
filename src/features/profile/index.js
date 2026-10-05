@@ -13,7 +13,7 @@ import { summaryText } from '../../data/migrate.js';
 import { previewText } from '../../data/cutover.js';
 import { exportBundle, importFile } from '../../data/transfer.js';
 import { deleteProfile } from '../../data/session.js';
-import { notSentCount } from '../../data/sync/github-b1exam.js';
+import { results } from '../../data/sync/index.js';
 import { newPerDayChosen } from '../../domain/budget.js';
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
@@ -183,7 +183,7 @@ export async function mount(el, ctx) {
         status.textContent = r.ok ? t('conn.sync.ok', { repo: config.resultsRepo }) + (exp ? ` ${t('conn.sync.expires', { date: exp.slice(0, 10) })}` : '') : t('conn.sync.fail', { status: r.status });
       } catch { status.textContent = t('conn.sync.offline'); }
     };
-    const pending = notSentCount(store);   // results-sync events only, the same count as the Exam tab
+    const pending = results(store).notSent();   // results-sync events only, the same count as the Exam tab
     const syncBox = h('div', { class: 'conn' },
       h('h3', null, t('conn.sync')),
       h('p', { class: 'field-hint' }, t('conn.sync.about')),
@@ -233,7 +233,7 @@ export async function mount(el, ctx) {
       }
       fileIn.value = '';
     });
-    const unsent = notSentCount(store);
+    const unsent = results(store).notSent();
     const deleteBtn = h('button', { type: 'button', class: 'btn btn-quiet danger pressable', 'aria-expanded': 'false', onclick: () => {
       confirm.hidden = false; deleteBtn.setAttribute('aria-expanded', 'true');
       /** @type {HTMLElement | null} */ (confirm.querySelector('button'))?.focus();

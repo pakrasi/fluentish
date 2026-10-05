@@ -15,7 +15,7 @@ import { summaryText } from '../../data/migrate.js';
 import { previewText } from '../../data/cutover.js';
 import { dueTomorrow, todayBudget } from '../practice/plan.js';
 import { readinessFor } from '../practice/field.js';
-import { legacyJobs, allowLegacy } from '../../data/sync/github-b1exam.js';
+import { results } from '../../data/sync/index.js';
 import { config } from '../../core/config.js';
 
 /** "11%" in the interface language. @param {number} x */
@@ -178,13 +178,13 @@ export async function mount(el, ctx) {
     const s = ctx.settings();
     const id = nextId('imp');
     const linked = !!(store.get('secrets', {}) || {}).githubToken;
-    const unsent = linked && !ui.sendLegacy ? legacyJobs(store).length : 0;
+    const unsent = linked && !ui.sendLegacy ? results(store).legacyCount() : 0;
     const close = (/** @type {boolean} */ send) => {
       store.update('ui', (/** @type {any} */ u) => ({ ...(u || {}), importSeen: true, ...(meta.preview ? { previewSeen: true } : {}) }), {});
-      if (send) allowLegacy(store);
+      if (send) results(store).allowLegacy();
       store.flush();
       n.remove();
-      bus.emit('sync:request', { force: true });   // uploads were held until now (data/sync/github-b1exam.js)
+      bus.emit('sync:request', { force: true });   // uploads were held until now (data/sync/index.js)
       if (send) ctx.toast(t('import.sending'));
       /** @type {HTMLElement | null} */ (el.querySelector('#view h1, h1'))?.focus({ preventScroll: true });
     };

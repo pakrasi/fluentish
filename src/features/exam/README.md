@@ -8,7 +8,7 @@ A correction line in feedback (`~~wrong~~ → ==right==` with a `_why_` line) is
 
 ## Results sync
 
-`data/sync/github-b1exam.js` (core) sends `exam.attempt`, `exam.voice`, `feedback.created` and the other b1-exam events and reads `feedback.json`, `results.json`, `vocab.json` and `learner.json`. This feature calls it when the Exam tab opens and after every submit, recording and correction (`sync()` in `data.js`). Nothing calls it on boot yet: wiring `syncResults()` into `main.js` (on start, `online` and `visibilitychange`) is a one-line core change left to the shell owner.
+This feature records results through the sync seam, `data/sync/index.js` (`results(store).record(type, payload)`; `results(store).ref(event)` is the file the target names it, which a correction links to its attempt with). The GitHub target behind it (`data/sync/github-b1exam.js`) sends `exam.attempt`, `exam.voice`, `feedback.created` and the other b1-exam events and reads `feedback.json`, `results.json`, `vocab.json` and `learner.json`. The feature asks for a flush when the Exam tab opens and after every submit, recording and correction (`sync()` in `data.js`); `main.js` also flushes on start and when the page becomes visible.
 
 ## Private notes for the corrector
 

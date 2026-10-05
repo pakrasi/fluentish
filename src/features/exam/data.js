@@ -10,8 +10,7 @@
      exams.learnerNotes    private notes for the corrector (fills the grader prompt's {learner_profile})
    Attempts live in the attempts store; each new one also gets an exam.attempt event whose file path is fixed then. */
 import { uuidv7, isoWithOffset } from '../../data/ids.js';
-import { config } from '../../core/config.js';
-import { appendResult, attemptFile, pathFor, syncResults, notSentCount, audioExt } from '../../data/sync/github-b1exam.js';
+import { results, sync as syncAll, audioExt, attemptFile } from '../../data/sync/index.js';
 import { latestByTestModule, fbSplit, stampMs, wordCount, corrections, attemptIds } from '../../domain/grade.js';
 import { addMistakes, listMistakes } from '../../data/mistakes.js';
 import * as T from './timer.js';
@@ -177,8 +176,9 @@ export async function submitAttempt(ctx, { exam, n, module, clock, now = Date.no
     duration_s: Math.round(T.elapsed(clock, now) / 1000), score, max_score: maxScore,
     meta: { ...meta, pauses: T.pauses(clock, now) }, responses, writings, synced: false,
   };
-  const e = appendResult(store, 'exam.attempt', { attemptId: rec.id, file: attemptFile(rec) }, at);
-  const saved = { ...rec, eventId: e.id, path: e.path };
+  const r = results(store);
+  const e = r.record('exam.attempt', { attemptId: rec.id, file: attemptFile(rec) }, at);
+  const saved = { ...rec, eventId: e.id, path: r.ref(e) };
   store.putAttempts([saved]);
   clearDraft(store, n, module);
   const day = ctx.clock.today();
@@ -205,7 +205,7 @@ export async function saveRecording(ctx, { n, part, label, blob, mime, now = Dat
   const { store } = ctx;
   const blobRef = uuidv7(now);
   await store.adapter.putBlob(blobRef, blob);
-  const e = appendResult(store, 'exam.voice', { day: n, module: 'sprechen', part, label, mime, bytes: blob.size, created_at: isoWithOffset(new Date(now)), blobRef, ext: audioExt(mime) }, new Date(now));
+  const e = results(store).record('exam.voice', { day: n, module: 'sprechen', part, label, mime, bytes: blob.size, created_at: isoWithOffset(new Date(now)), blobRef, ext: audioExt(mime) }, new Date(now));
   sync(ctx, true);
   return e;
 }
@@ -285,7 +285,7 @@ export function saveCorrection(ctx, { attempt, body, model, now = Date.now() }) 
     id: `local-${uuidv7(now)}`, day: attempt.day, module: attempt.module, attempt_id: attempt.alias ?? attempt.legacy?.id ?? attempt.id,
     attempt_file: attempt.path || attempt.legacy?.path || attempt.file || null, body, created_at: isoWithOffset(at), model, source: 'fritz-app',
   };
-  const e = appendResult(store, 'feedback.created', { day: f.day, module: f.module, attempt_id: f.attempt_id, attempt_file: f.attempt_file, body, created_at: f.created_at, model }, at);
+  const e = results(store).record('feedback.created', { day: f.day, module: f.module, attempt_id: f.attempt_id, attempt_file: f.attempt_file, body, created_at: f.created_at, model }, at);
   store.update('exams.feedbackLocal', (/** @type {any[]} */ xs) => [...(xs || []), { ...f, eventId: e.id }], []);
   sync(ctx, true);
   return f;
@@ -322,11 +322,14 @@ export function mistakesQueued(store, attempt) {
 
 /** Flush the outbox and read the Mac's files (at most once a minute unless forced). @param {any} ctx @param {boolean} [force] */
 export function sync(ctx, force = false) {
-  return syncResults(ctx.store, { repo: config.resultsRepo, api: config.github.api, force, emit: (t, d) => ctx.bus?.emit(t, d) })
+  return syncAll(ctx.store, { force, emit: (t, d) => ctx.bus?.emit(t, d) })
     .catch((/** @type {any} */ e) => ({ ok: 0, fail: 0, pending: notSentCount(ctx.store), error: String(e?.message || e) }));
 }
 
-export { notSentCount, pathFor };
+/** Results not yet sent ("N not sent"). @param {any} store */
+export const notSentCount = store => results(store).notSent();
+/** Let the old app's unsent items go ("Send now"). @param {any} store */
+export const allowLegacy = store => results(store).allowLegacy();
 
 /** Whether this device is linked to the results repository. @param {any} store */
 export const linked = store => !!(store.get('secrets', {}) || {}).githubToken;

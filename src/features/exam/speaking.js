@@ -10,7 +10,7 @@
 import { h, replace, download } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
 import { createRecorder, RecorderError } from '../../services/recorder.js';
-import { audioExt } from '../../data/sync/github-b1exam.js';
+import { audioExt } from '../../data/sync/index.js';
 import { draft, saveDraft, submitAttempt, saveRecording, recordings, mediaUrl, sync, linked, beginTake, keepTakeAudio, endTake, recoverTake } from './data.js';
 import { uuidv7 } from '../../data/ids.js';
 import { clockBar, backLink, confirmPanel, arrowKeys } from './parts.js';

@@ -67,11 +67,28 @@ export function pathFor(type, p, at) {
   }
 }
 
+/**
+ * The path an event is filed under. An event that stored a path (every event from before the sync seam, and the
+ * cutover's) keeps it; an event recorded through data/sync/index.js stores none and its path is derived here, from
+ * its type, payload and creation time, which gives exactly what pathFor gave when it was created. null for an event
+ * this target does not send.
+ * @param {{type: string, payload: Record<string, any>, at: string, path?: string | null}} e
+ * @returns {string | null}
+ */
+export function pathOf(e) {
+  if (!e || !TYPES.has(e.type)) return null;
+  if (e.path) return e.path;
+  const at = Date.parse(e.at);
+  if (!Number.isFinite(at)) return null;
+  try { return pathFor(e.type, e.payload || {}, at); } catch { return null; }
+}
+
 /** The sidecar path of a voice file (same stem, .json). @param {string} audioPath */
 export const sidecarPath = audioPath => audioPath.replace(/\.[^./]+$/, '.json');
 
 /**
- * Append an event this target sends, with its path fixed now.
+ * Append an event this target sends, with its path stored now (the format before the sync seam; features record
+ * through data/sync/index.js, which stores no path). Kept for the tests of events that carry a stored path.
  * @param {{ append: (type: string, payload: Record<string, any>, o?: {at?: Date, path?: string|null, day?: string}) => any }} store
  * @param {string} type @param {Record<string, any>} payload @param {Date} [at]
  */
@@ -170,10 +187,11 @@ export function createGithubB1Exam({ token, repo, api = 'https://api.github.com'
       /** @type {string[]} */ const acked = [];
       /** @type {{id: string, error: string}[]} */ const rejected = [];
       for (const e of events) {
-        if (!TYPES.has(e.type) || !e.path) { rejected.push({ id: e.id, error: 'not for this target' }); continue; }
+        const path = pathOf(e);
+        if (!path) { rejected.push({ id: e.id, error: 'not for this target' }); continue; }
         try {
           const blob = e.type === 'exam.voice' ? await getBlob(e.payload.blobRef || e.id) : null;
-          for (const file of filesFor(e, blob)) await put(file);
+          for (const file of filesFor({ ...e, path }, blob)) await put(file);
           if (e.type === 'exam.voice') await deleteBlob(e.payload.blobRef || e.id).catch(() => {});
           acked.push(e.id);
         } catch (err) {
@@ -276,7 +294,7 @@ export function legacyJobs(store) {
 }
 
 /** Events this target sends that have not been acknowledged. @param {any} store */
-export const pendingEvents = store => store.pending().filter((/** @type {any} */ e) => TYPES.has(e.type) && e.path);
+export const pendingEvents = store => store.pending().filter((/** @type {any} */ e) => !!pathOf(e));
 
 /** "N not sent": events plus unsent items moved from the old app. @param {any} store */
 export const notSentCount = store => pendingEvents(store).length + legacyJobs(store).length;

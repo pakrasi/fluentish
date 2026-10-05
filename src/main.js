@@ -16,7 +16,7 @@ import { createMemoryAdapter } from './data/adapters/memory.js';
 import { openSession } from './data/session.js';
 import { normalizeSettings, defaultPrefs } from './data/settings.js';
 import { createContent } from './data/content.js';
-import { syncResults } from './data/sync/github-b1exam.js';
+import { sync } from './data/sync/index.js';
 import { TABS, routes } from './features/registry.js';
 import { createSw } from './services/sw.js';
 
@@ -156,7 +156,7 @@ async function main() {
   }
 
   // ---------- results sync ----------
-  // On start and whenever the page becomes visible again, at most once a minute. syncResults skips by itself when
+  // On start and whenever the page becomes visible again, at most once a minute. sync() skips by itself when
   // the device is not linked or the profile is a shadow, uploads nothing until a migration's import notice has been
   // seen, and sends old unsent items only after the learner's tap. Its status reaches the views through the bus.
   const SYNC_EVERY_MS = 60_000;
@@ -164,12 +164,12 @@ async function main() {
   const autoSync = () => {
     if (!navigator.onLine || performance.now() - lastSync < SYNC_EVERY_MS) return;
     lastSync = performance.now();
-    syncResults(store, { repo: config.resultsRepo, api: config.github.api, emit: (type, data) => bus.emit(type, data) })
+    sync(store, { emit: (type, data) => bus.emit(type, data) })
       .catch((/** @type {any} */ e) => log('sync', e));
   };
   autoSync();
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') autoSync(); });
-  bus.on('sync:request', () => { lastSync = performance.now(); syncResults(store, { repo: config.resultsRepo, api: config.github.api, force: true, emit: (type, data) => bus.emit(type, data) }).catch((/** @type {any} */ e) => log('sync', e)); });
+  bus.on('sync:request', () => { lastSync = performance.now(); sync(store, { force: true, emit: (type, data) => bus.emit(type, data) }).catch((/** @type {any} */ e) => log('sync', e)); });
 }
 
 main().catch(err => {

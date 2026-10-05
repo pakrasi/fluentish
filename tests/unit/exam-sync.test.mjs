@@ -14,7 +14,10 @@ import { createMemoryAdapter } from '../../src/data/adapters/memory.js';
 import {
   pathFor, stamp, filesFor, sidecarPath, appendResult, createGithubB1Exam, syncResults, resetThrottle, notSentCount,
   attemptFile, legacyJobs, wordKey, audioExt, allowLegacy,
+  pathOf,
 } from '../../src/data/sync/github-b1exam.js';
+import { results, ref, sync as seamSync } from '../../src/data/sync/index.js';
+import { config } from '../../src/core/config.js';
 import { mockGithubFor, B1, haveSyncPy } from './sync-harness.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
@@ -55,6 +58,47 @@ test('paths: UTC stamp without dashes, fixed per event, the formats sync.py read
   assert.equal(pathFor('training.logged', { task: '2-a1' }, AT), 'data/training/20261003T180405-2-a1.json');
   assert.equal(audioExt('audio/webm;codecs=opus'), 'webm');
   assert.equal(wordKey(' Größe, '), 'größe');
+});
+
+test('the sync seam: record() stores no path, and the target derives the same pinned file names', async () => {
+  const { store } = await fresh();
+  const r = results(store);
+  const cases = [
+    ['exam.attempt', { attemptId: 'x', file: { day: 3, module: 'lesen' } }, 'data/attempts/20261003T180405-day03-lesen.json'],
+    ['exam.voice', { day: 12, module: 'sprechen', part: 'teil2', mime: 'audio/mp4' }, 'data/voice/day12/20261003T180405-sprechen-teil2.m4a'],
+    ['feedback.created', { day: 2, module: 'schreiben' }, 'data/feedback-ai/20261003T180405-day02-schreiben.json'],
+    ['vocab.captured', { word: 'Nachbarschaft!' }, 'data/vocab/20261003T180405-nachbarschaft.json'],
+    ['vocab.reviewed', { batch: 'k3x9', events: [] }, 'data/vocab-reviews/20261003T180405-k3x9.json'],
+    ['training.logged', { task: '2-a1' }, 'data/training/20261003T180405-2-a1.json'],
+  ];
+  for (const [type, payload, want] of cases) {
+    const e = r.record(type, payload, AT);
+    assert.equal(e.path, null, `${type}: nothing transport-specific is stored`);
+    assert.equal(ref(e), want, type);
+    assert.equal(r.ref(e), pathFor(type, payload, AT), `${type}: the name it had when paths were stored`);
+  }
+  assert.throws(() => r.record('card.reviewed', {}), /not a result/);
+  // an old event keeps the path it stored, even when the derivation would give another name
+  const old = appendResult(store, 'exam.attempt', { attemptId: 'y', file: { day: 4, module: 'hoeren' } }, AT);
+  assert.equal(pathOf({ ...old, path: 'data/attempts/legacy-name.json' }), 'data/attempts/legacy-name.json');
+  assert.equal(pathOf({ type: 'card.reviewed', payload: {}, at: old.at, path: null }), null, 'learning events are not results');
+  assert.equal(r.notSent(), cases.length + 1);
+  // the time zone the event was made in does not change its name (the stamp is UTC)
+  const e = r.record('exam.attempt', { attemptId: 'z', file: { day: 3, module: 'lesen' } }, AT);
+  assert.equal(ref({ ...e, at: '2026-10-04T03:34:05.000+09:30' }), 'data/attempts/20261003T180405-day03-lesen.json');
+});
+
+test('the sync seam: sync() sends recorded results under their derived names', async () => {
+  resetThrottle();
+  const { store } = await fresh();
+  const gh = mockGithubFor(config.resultsRepo);   // a mock: the seam writes to the configured repository
+  const r = results(store);
+  const e = r.record('feedback.created', { day: 1, module: 'schreiben', attempt_id: 'u', attempt_file: null, body: 'x', created_at: 'c' }, AT);
+  const out = await seamSync(store, { fetch: gh.fetch, force: true, pull: false });
+  assert.equal(out.ok, 1);
+  assert.ok(gh.files.has(ref(e)));
+  assert.equal(r.notSent(), 0);
+  assert.equal(store.events.get(e.id).path, null, 'still nothing stored');
 });
 
 test('file bodies carry exactly the fields sync.py imports', async () => {
@@ -202,18 +246,26 @@ test('the real sync.py imports every file this adapter writes, once', { skip: !h
     // write through the adapter into a mock GitHub
     const { store, adapter } = await fresh();
     const gh = mockGithub();
+    // through the sync seam, as the features record them: no stored paths, the target names every file
+    const rec = (type, payload, at) => results(store).record(type, payload, at);
     const a = lesenAttempt();
-    const ea = appendResult(store, 'exam.attempt', { attemptId: a.id, file: attemptFile(a) }, AT);
+    const ea = rec('exam.attempt', { attemptId: a.id, file: attemptFile(a) }, AT);
     const s = { ...lesenAttempt({ id: '0192a3b4-c5d6-7e8f-9a0b-0000000000a2', module: 'schreiben', score: null, max_score: 100, responses: [] }), writings: [{ aufgabe: 'aufgabe1', text: 'Liebe Anna, ich komme gern.', word_count: 5 }] };
-    const es = appendResult(store, 'exam.attempt', { attemptId: s.id, file: attemptFile(s) }, new Date(AT.getTime() + 1000));
-    appendResult(store, 'feedback.created', { day: 3, module: 'schreiben', attempt_id: s.id, attempt_file: es.path, body: '! circa 58 / 100 · knapp unter 60\n~~ich komme gern~~ → ==ich komme gerne==', created_at: '2026-10-03T15:00:00-04:00', model: 'test-model' }, new Date(AT.getTime() + 2000));
+    const es = rec('exam.attempt', { attemptId: s.id, file: attemptFile(s) }, new Date(AT.getTime() + 1000));
+    rec('feedback.created', { day: 3, module: 'schreiben', attempt_id: s.id, attempt_file: ref(es), body: '! circa 58 / 100 · knapp unter 60\n~~ich komme gern~~ → ==ich komme gerne==', created_at: '2026-10-03T15:00:00-04:00', model: 'test-model' }, new Date(AT.getTime() + 2000));
     await adapter.putBlob('b1', new Blob([new Uint8Array(512)], { type: 'audio/mp4' }));
-    appendResult(store, 'exam.voice', { day: 3, module: 'sprechen', part: 'teil2', label: 'Thema A', mime: 'audio/mp4', bytes: 512, created_at: '2026-10-03T15:10:00-04:00', blobRef: 'b1' }, new Date(AT.getTime() + 3000));
-    appendResult(store, 'vocab.captured', { day: 3, module: 'lesen', teil: 'Teil 1', word: 'Nachbarschaft', sentence: 'Die Nachbarschaft ist ruhig.', created_at: '2026-10-03T15:20:00-04:00' }, new Date(AT.getTime() + 4000));
-    appendResult(store, 'vocab.reviewed', { batch: 'ab12', events: [{ day: 3, word: 'Nachbarschaft', known: true, at: '2026-10-03T15:30:00-04:00' }] }, new Date(AT.getTime() + 5000));
-    appendResult(store, 'training.logged', { task: '3-a1', day: 3, aufgabe: 'aufgabe1', text: 'Liebe Anna', result: { ok: true }, model: 'test-model', usage: null, at: '2026-10-03T15:40:00-04:00' }, new Date(AT.getTime() + 6000));
+    rec('exam.voice', { day: 3, module: 'sprechen', part: 'teil2', label: 'Thema A', mime: 'audio/mp4', bytes: 512, created_at: '2026-10-03T15:10:00-04:00', blobRef: 'b1' }, new Date(AT.getTime() + 3000));
+    rec('vocab.captured', { day: 3, module: 'lesen', teil: 'Teil 1', word: 'Nachbarschaft', sentence: 'Die Nachbarschaft ist ruhig.', created_at: '2026-10-03T15:20:00-04:00' }, new Date(AT.getTime() + 4000));
+    rec('vocab.reviewed', { batch: 'ab12', events: [{ day: 3, word: 'Nachbarschaft', known: true, at: '2026-10-03T15:30:00-04:00' }] }, new Date(AT.getTime() + 5000));
+    rec('training.logged', { task: '3-a1', day: 3, aufgabe: 'aufgabe1', text: 'Liebe Anna', result: { ok: true }, model: 'test-model', usage: null, at: '2026-10-03T15:40:00-04:00' }, new Date(AT.getTime() + 6000));
     const r = await syncResults(store, { repo: REPO, fetch: gh.fetch, force: true, pull: false });
     assert.equal(r.ok, 7); assert.equal(r.error, null);
+    assert.deepEqual([...gh.files.keys()].sort(), [
+      'data/attempts/20261003T180405-day03-lesen.json', 'data/attempts/20261003T180406-day03-schreiben.json',
+      'data/feedback-ai/20261003T180407-day03-schreiben.json', 'data/training/20261003T180411-3-a1.json',
+      'data/vocab-reviews/20261003T180410-ab12.json', 'data/vocab/20261003T180409-nachbarschaft.json',
+      'data/voice/day03/20261003T180408-sprechen-teil2.json', 'data/voice/day03/20261003T180408-sprechen-teil2.m4a',
+    ], 'the identical file names');
     for (const [p, b64] of gh.files) { mkdirSync(path.dirname(path.join(tmp, p)), { recursive: true }); writeFileSync(path.join(tmp, p), Buffer.from(b64, 'base64')); }
 
     const env = { ...process.env, HOME: home };
@@ -225,7 +277,8 @@ test('the real sync.py imports every file this adapter writes, once', { skip: !h
     const q = sql => JSON.parse(execFileSync('python3', ['-c', 'import sqlite3,json,sys; c=sqlite3.connect(sys.argv[1]); c.row_factory=sqlite3.Row; print(json.dumps([dict(r) for r in c.execute(sys.argv[2])]))', db, sql], { encoding: 'utf8' }));
     const atts = q('SELECT id, day, module, score, max_score, meta FROM attempts ORDER BY id');
     assert.deepEqual(atts.map(x => [x.day, x.module, x.score]), [[3, 'lesen', 2], [3, 'schreiben', null]]);
-    assert.equal(JSON.parse(atts[0].meta).file, ea.path);
+    assert.equal(JSON.parse(atts[0].meta).file, ref(ea));
+    assert.equal(ref(ea), 'data/attempts/20261003T180405-day03-lesen.json', 'the pinned name');
     assert.equal(q('SELECT COUNT(*) n FROM responses')[0].n, 3);
     assert.equal(q('SELECT word_count FROM writings')[0].word_count, 5);
     const fb = q('SELECT attempt_id, source FROM feedback');
@@ -239,8 +292,8 @@ test('the real sync.py imports every file this adapter writes, once', { skip: !h
     // the files sync.py writes back are what the adapter reads
     const feedbackJson = JSON.parse(readFileSync(path.join(tmp, 'data/feedback.json'), 'utf8'));
     assert.equal(feedbackJson.feedback[0].attempt_id, atts[1].id);
-    const results = JSON.parse(readFileSync(path.join(tmp, 'data/results.json'), 'utf8'));
-    assert.equal(results.days['3'].attempts.lesen.file, ea.path, 'results.json links the attempt to its file (the alias)');
+    const resultsJson = JSON.parse(readFileSync(path.join(tmp, 'data/results.json'), 'utf8'));
+    assert.equal(resultsJson.days['3'].attempts.lesen.file, ref(ea), 'results.json links the attempt to its file (the alias)');
     // idempotent: a second run imports nothing
     assert.match(run(), /imported 0,/);
   } finally {
