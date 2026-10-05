@@ -93,8 +93,11 @@ body[data-chrome="off"] .bar, body[data-chrome="off"] #tabs-slot { display: none
 /* rows that did not fit the minutes */
 .plan-extra { margin-top: var(--s-5); }
 .plan-extra h3 { margin-bottom: var(--s-1); }
-.plan-extra-row { display: flex; justify-content: space-between; align-items: center; gap: var(--s-3); min-height: var(--tap); color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--hairline); }
-.plan-extra-row:hover { color: var(--ink); }
+/* "If you have time": the same row anatomy as the plan (circle, chevron), quieter: the title in ink-2 */
+.plan-extra-row { min-height: 52px; }
+.plan-extra-row .row-title { color: var(--ink-2); font-weight: 500; }
+.plan-extra-row .plan-state { box-shadow: inset 0 0 0 1.5px var(--hairline-strong); }
+.plan-extra-row:hover .row-title { color: var(--ink); }
 
 .plan { list-style: none; margin: var(--s-3) 0 0; padding: 0; }
 .plan-row { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto 16px; align-items: center; gap: var(--s-3); min-height: 60px; padding: var(--s-2) 0; border-bottom: 1px solid var(--hairline); color: var(--ink); text-decoration: none; }

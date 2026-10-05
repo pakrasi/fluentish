@@ -230,8 +230,11 @@ export async function mount(el, ctx) {
           r.minutes ? h('span', { class: 'row-trail tnum' }, t('unit.min', { n: r.minutes })) : null,
           icon('next', { size: 16 }))))) : null,
       plan.extra.length ? h('div', { class: 'plan-extra' }, h('h3', { class: 'label' }, t('today.more')),
-        h('ul', { class: 'list' }, plan.extra.map(r => h('li', null, h('a', { class: 'plan-extra-row pressable', href: fromToday(r.href) },
-          h('span', null, r.title), r.minutes ? h('span', { class: 'row-trail tnum' }, t('unit.min', { n: r.minutes })) : null))))) : null);
+        h('ul', { class: 'list' }, plan.extra.map(r => h('li', null, h('a', { class: 'plan-row plan-extra-row pressable', href: fromToday(r.href) },
+          h('span', { class: 'plan-state', 'aria-hidden': 'true' }),
+          h('span', { class: 'row-main' }, h('span', { class: 'row-title' }, r.title), r.detail ? h('span', { class: 'row-detail' }, r.detail) : null),
+          r.minutes ? h('span', { class: 'row-trail tnum' }, t('unit.min', { n: r.minutes })) : h('span'),
+          icon('next', { size: 16 })))))) : null);
   }
 
   /** @param {any[]} modules */
