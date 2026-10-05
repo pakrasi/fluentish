@@ -3335,7 +3335,6 @@
   "accept": [
    "wie spät ist es",
    "wie viel uhr ist es",
-   "wieviel uhr ist es",
    "wie spät ist es (bitte)",
    "können sie mir sagen wie spät es ist",
    "kannst du mir sagen wie spät es ist",
@@ -3709,12 +3708,10 @@
   "accept": [
    "um wie viel uhr treffen wir uns",
    "wann treffen wir uns",
-   "um wieviel uhr treffen wir uns",
    "wann sollen wir uns treffen",
    "um wie viel uhr sollen wir uns treffen",
    "wann wollen wir uns treffen",
-   "um wie viel uhr wollen wir uns treffen",
-   "wie spät treffen wir uns"
+   "um wie viel uhr wollen wir uns treffen"
   ]
  },
  "ENG_CHUNK_1270": {
@@ -5007,7 +5004,6 @@
    "wann beginnt",
    "um wie viel uhr beginnt",
    "wann ist",
-   "um wieviel uhr ist",
    "wann läuft"
   ]
  },
@@ -5020,8 +5016,7 @@
    "um wie viel uhr macht [anything] auf",
    "ab wann ist [anything] offen",
    "ab wann hat [anything] auf",
-   "wann hat [anything] auf",
-   "um wieviel uhr öffnet"
+   "wann hat [anything] auf"
   ]
  },
  "ENG_CHUNK_1378": {
@@ -5029,7 +5024,6 @@
   "accept": [
    "was kostet",
    "wie viel kostet",
-   "wieviel kostet",
    "was kosten",
    "wie viel kosten",
    "wie teuer ist",

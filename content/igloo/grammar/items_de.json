@@ -113,8 +113,7 @@
   "task": "Write the word in brackets in the right form.",
   "prompt": "Wir besuchen ___ Großvater. (unser)",
   "answer": [
-   "unseren",
-   "unsern"
+   "unseren"
   ],
   "note": "Masculine accusative: unser → unseren.",
   "strict_case": false
@@ -1223,8 +1222,7 @@
   "task": "Write the word in brackets in the right form.",
   "prompt": "Wir danken ___ Lehrerin. (unser)",
   "answer": [
-   "unserer",
-   "unsrer"
+   "unserer"
   ],
   "note": "danken takes the dative: feminine → unserer.",
   "strict_case": false
@@ -4171,8 +4169,7 @@
   "task": "Write the word in brackets in the right form.",
   "prompt": "Das Buch passt gut zu ___ Thema. (unser)",
   "answer": [
-   "unserem",
-   "unserm"
+   "unserem"
   ],
   "note": "zu + dative, neuter: unserem.",
   "strict_case": false
@@ -4879,10 +4876,10 @@
   "task": "Fill the gap.",
   "prompt": "Das Essen war kalt. ___ haben wir alles gegessen.",
   "answer": [
-   "trotzdem",
-   "dennoch"
+   "Trotzdem",
+   "Dennoch"
   ],
-  "note": "The verb follows directly: trotzdem.",
+  "note": "The verb follows directly: Trotzdem haben wir ...",
   "strict_case": false
  },
  {
@@ -5799,8 +5796,7 @@
   "prompt": "Wenn du mich anrufst, komme ich.",
   "answer": [
    "Wenn du mich anrufen würdest, würde ich kommen.",
-   "Wenn du mich anrufen würdest, käme ich.",
-   "Wenn du mich anriefest, würde ich kommen."
+   "Wenn du mich anrufen würdest, käme ich."
   ],
   "note": "würde + infinitive.",
   "strict_case": false
@@ -7757,9 +7753,7 @@
   "prompt": "Either you call me or I call you.",
   "answer": [
    "Entweder rufst du mich an oder ich rufe dich an.",
-   "Entweder rufst du mich an, oder ich rufe dich an.",
    "Entweder du rufst mich an oder ich rufe dich an.",
-   "Entweder du rufst mich an, oder ich rufe dich an.",
    "Entweder rufen Sie mich an oder ich rufe Sie an.",
    "Entweder Sie rufen mich an oder ich rufe Sie an."
   ],

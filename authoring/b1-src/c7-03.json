@@ -248,8 +248,7 @@
   "prefill": null,
   "accept": [
    "vormittags",
-   "am vormittag",
-   "morgens"
+   "am vormittag"
   ],
   "anywhere": true,
   "model": "Vormittags",
@@ -675,7 +674,6 @@
   "prefill": null,
   "accept": [
    "junge leute",
-   "jugendliche",
    "junge menschen"
   ],
   "anywhere": true,

@@ -305,7 +305,7 @@
   { "id": "BS:a1-schreib-mir-bald", "fn": "a1_close", "tier": 3,
     "prompt": "Write back soon! (end of an email to a friend)",
     "model": "Schreib mir bald!",
-    "accept": ["schreib mir bald", "schreib bald", "schreib mir bald zurück", "antworte mir bald", "schreib mir bitte bald", "schreibe mir bald", "melde dich bald"],
+    "accept": ["schreib mir bald", "schreib bald", "schreib mir bald zurück", "antworte mir bald", "schreib mir bitte bald", "schreibe mir bald"],
     "wrong": ["Schreibst mir bald!"],
     "focus": ["chunk"],
     "rule": "The du imperative has no -st: Schreib mir bald!" },

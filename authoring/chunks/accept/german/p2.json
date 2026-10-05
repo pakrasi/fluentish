@@ -180,7 +180,6 @@
   "accept": [
    "was kostet es",
    "wie viel kostet es",
-   "wieviel kostet es",
    "was kostet das",
    "wie viel kostet das",
    "was kostet",
@@ -346,7 +345,6 @@
    "wann fährt [x] ab",
    "wann fährt",
    "um wie viel uhr fährt",
-   "um wieviel uhr fährt",
    "wann geht der zug",
    "wann geht der bus",
    "wann geht der letzte"
@@ -3300,9 +3298,8 @@
  "ENG_CHUNK_0774": {
   "core_en": "The way I see it",
   "accept": [
-   "(so) wie ich (das) sehe",
-   "(so) wie ich (es) sehe",
-   "wie ich (das) sehe",
+   "(so) wie ich das sehe",
+   "(so) wie ich es sehe",
    "meiner meinung nach",
    "aus meiner sicht",
    "meines erachtens",

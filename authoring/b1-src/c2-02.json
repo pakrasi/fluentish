@@ -1068,16 +1068,15 @@
   "accept": [
    "entweder gehen wir ins kino oder wir bleiben zu hause",
    "entweder wir gehen ins kino oder wir bleiben zu hause",
-   "entweder gehen wir ins kino oder bleiben wir zu hause",
    "entweder gehen wir ins kino oder wir bleiben daheim",
    "wir gehen entweder ins kino oder wir bleiben zu hause",
    "wir gehen entweder ins kino oder bleiben zu hause"
   ],
   "anywhere": true,
-  "model": "Entweder gehen wir ins Kino, oder wir bleiben zu Hause.",
+  "model": "Entweder gehen wir ins Kino oder wir bleiben zu Hause.",
   "wrong": [
-   "Entweder gehen wir ins Kino, oder wir zu Hause bleiben.",
-   "Entweder gehen wir ins Kino, oder wir bleiben nach Hause."
+   "Entweder gehen wir ins Kino oder wir zu Hause bleiben.",
+   "Entweder gehen wir ins Kino oder wir bleiben nach Hause."
   ],
   "rule": "Entweder pairs with oder, and oder keeps normal order: oder wir bleiben zu Hause.",
   "src": "cheatsheet §2 Two-part connectors",

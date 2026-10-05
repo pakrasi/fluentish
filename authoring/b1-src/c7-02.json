@@ -22,9 +22,9 @@
   "accept": [
    "so oft man will",
    "so oft wie man will",
-   "mehrmals",
-   "immer wieder",
-   "unbegrenzt oft"
+   "unbegrenzt oft",
+   "so oft man möchte",
+   "sooft man will"
   ],
   "anywhere": false,
   "model": "So oft man will",
@@ -56,9 +56,7 @@
   "prefill": null,
   "accept": [
    "beliebig oft",
-   "unbegrenzt oft",
-   "mehrmals",
-   "immer wieder"
+   "unbegrenzt oft"
   ],
   "anywhere": false,
   "model": "Beliebig oft",
@@ -156,7 +154,6 @@
   "accept": [
    "zurückhaltende jugendliche",
    "ruhige jugendliche",
-   "schüchterne jugendliche",
    "zurückhaltende"
   ],
   "anywhere": false,
@@ -189,8 +186,7 @@
   "prefill": null,
   "accept": [
    "stille menschen",
-   "ruhige menschen",
-   "schüchterne menschen"
+   "ruhige menschen"
   ],
   "anywhere": false,
   "model": "Stille Menschen",
@@ -221,6 +217,7 @@
   "partner": null,
   "prefill": null,
   "accept": [
+   "sich am unterricht beteiligen",
    "sich im unterricht beteiligen",
    "im unterricht mitmachen",
    "sich beteiligen",
@@ -228,7 +225,7 @@
    "im unterricht etwas sagen"
   ],
   "anywhere": false,
-  "model": "Sich im Unterricht beteiligen",
+  "model": "Sich am Unterricht beteiligen",
   "wrong": [],
   "rule": "sich melden in class = raise your hand and take part.",
   "src": "cheatsheet §10 Paraphrase pairs",
@@ -258,8 +255,6 @@
   "accept": [
    "mitmachen",
    "teilnehmen",
-   "dabei sein",
-   "sich melden",
    "aktiv sein"
   ],
   "anywhere": false,
@@ -702,14 +697,12 @@
   "partner": null,
   "prefill": null,
   "accept": [
-   "nach der arbeit",
-   "am abend",
-   "nach feierabend"
+   "am abend"
   ],
   "anywhere": false,
-  "model": "Nach der Arbeit",
+  "model": "Am Abend",
   "wrong": [],
-  "rule": "abends = nach der Arbeit, am Abend.",
+  "rule": "abends = am Abend (nach der Arbeit means something else).",
   "src": "cheatsheet §10 Paraphrase pairs",
   "chunk": null,
   "level": "B1"
@@ -735,14 +728,12 @@
   "partner": null,
   "prefill": null,
   "accept": [
-   "abends",
-   "am abend",
    "nach feierabend"
   ],
   "anywhere": false,
-  "model": "Abends",
+  "model": "Nach Feierabend",
   "wrong": [],
-  "rule": "abends = nach der Arbeit, am Abend.",
+  "rule": "nach der Arbeit = nach Feierabend, when the working day is over.",
   "src": "cheatsheet §10 Paraphrase pairs",
   "chunk": null,
   "level": "B1"
@@ -832,16 +823,14 @@
   "partner": null,
   "prefill": null,
   "accept": [
-   "pause machen",
-   "eine pause machen",
    "sich ausruhen",
    "entspannen",
    "sich entspannen"
   ],
   "anywhere": false,
-  "model": "Pause machen",
+  "model": "Sich ausruhen",
   "wrong": [],
-  "rule": "sich erholen = Pause machen, sich ausruhen.",
+  "rule": "sich erholen = sich ausruhen and get your strength back.",
   "src": "cheatsheet §10 Paraphrase pairs",
   "chunk": null,
   "level": "B1"
@@ -867,16 +856,13 @@
   "partner": null,
   "prefill": null,
   "accept": [
-   "sich erholen",
-   "sich ausruhen",
-   "entspannen",
-   "sich entspannen",
-   "pause machen"
+   "eine pause einlegen",
+   "kurz aufhören"
   ],
   "anywhere": false,
-  "model": "Sich erholen",
+  "model": "Eine Pause einlegen",
   "wrong": [],
-  "rule": "sich erholen = Pause machen, sich ausruhen.",
+  "rule": "eine Pause machen = eine Pause einlegen, stop for a short time.",
   "src": "cheatsheet §10 Paraphrase pairs",
   "chunk": null,
   "level": "B1"
@@ -904,8 +890,7 @@
   "accept": [
    "später machen",
    "auf später verschieben",
-   "auf einen anderen termin legen",
-   "auf später legen"
+   "auf einen anderen termin verlegen"
   ],
   "anywhere": false,
   "model": "Später machen",
@@ -938,7 +923,7 @@
   "accept": [
    "verschieben",
    "auf später verschieben",
-   "auf einen anderen tag legen"
+   "auf einen anderen tag verlegen"
   ],
   "anywhere": false,
   "model": "Verschieben",
@@ -1099,15 +1084,12 @@
   "partner": null,
   "prefill": null,
   "accept": [
-   "das feedback mit einem menschen besprechen",
-   "das feedback mit jemandem besprechen",
-   "mit einem menschen über das feedback sprechen",
    "das feedback verstehen und bewerten"
   ],
   "anywhere": false,
-  "model": "Das Feedback mit einem Menschen besprechen",
+  "model": "Das Feedback verstehen und bewerten",
   "wrong": [],
-  "rule": "einordnen = understand what something means, often by talking it through with a person.",
+  "rule": "einordnen = understand what something means and judge it.",
   "src": "cheatsheet §10 Paraphrase pairs",
   "chunk": null,
   "level": "B1"
@@ -1127,21 +1109,19 @@
   "strict": [],
   "plan": "recall",
   "task": "Say it another way.",
-  "prompt": "mit einem Menschen besprechen",
+  "prompt": "verstehen und bewerten",
   "prompt_lang": "de",
   "hl": null,
   "partner": null,
   "prefill": null,
   "accept": [
    "einordnen",
-   "richtig einordnen",
-   "verstehen und bewerten",
-   "mit jemandem besprechen"
+   "richtig einordnen"
   ],
   "anywhere": false,
   "model": "Einordnen",
   "wrong": [],
-  "rule": "einordnen = understand what something means, often by talking it through with a person.",
+  "rule": "einordnen = understand what something means and judge it.",
   "src": "cheatsheet §10 Paraphrase pairs",
   "chunk": null,
   "level": "B1"

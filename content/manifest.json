@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "33977659f68c",
+ "version": "f812b3c8eb46",
  "languages": [
   {
    "id": "khasi",
@@ -155,8 +155,8 @@
    "id": "atlas.de",
    "path": "atlas/de.json",
    "schema": "atlas@1",
-   "bytes": 555916,
-   "sha256": "cdf2ee65d5dbc16dc39f1fd81d34c4d9c11eb79e86f161e7227999d10821967b"
+   "bytes": 555915,
+   "sha256": "2bfbda0948c4f6167c9d8bbe79b510835cff95c0ccccd9a86417d0d1d8fced7a"
   },
   {
    "id": "b1.annot",
@@ -169,8 +169,8 @@
    "id": "b1.bank",
    "path": "b1/bank.json",
    "schema": "b1-bank@1",
-   "bytes": 43779,
-   "sha256": "fe499c8608f215400cccca7b89ae599c17a7f93de4b859f764bc988fdd83ef1a"
+   "bytes": 43649,
+   "sha256": "7d48377ed31e2784162c590bfabb1398fab50c1c70af4264dd247488c12b4c34"
   },
   {
    "id": "b1.forms",
@@ -190,15 +190,15 @@
    "id": "b1.grammar",
    "path": "b1/grammar.json",
    "schema": "b1-grammar@1",
-   "bytes": 145942,
-   "sha256": "d69bef3719a5caf22bcbe7b6c0540ad43851de7ee223525576eb24b96bd07b3f"
+   "bytes": 145797,
+   "sha256": "91a6fd278c80c3c3405863857f40f29cac8d2c176baa43fd12e99f757b39c4cb"
   },
   {
    "id": "b1.items",
    "path": "b1/items.json",
    "schema": "b1-items@1",
-   "bytes": 351347,
-   "sha256": "5c84176873317fb127423d4d7dc869795d0cabca5b1fd73f596df0019ad7dcd7"
+   "bytes": 350849,
+   "sha256": "f38bc7d693001b38c6ff0dd341475dcea85cd0676288633bc3ed670efb16397e"
   },
   {
    "id": "b1.nouns",
@@ -218,8 +218,8 @@
    "id": "b1.schreiben",
    "path": "b1/schreiben.json",
    "schema": "b1-schreiben@1",
-   "bytes": 124718,
-   "sha256": "44a8df4c7eb17c282151c59e8445557be3fb83b8226c15fbb8a91ab061da445c"
+   "bytes": 124725,
+   "sha256": "c208557a44961dad69e24fd6db5b17245991771baebc3b32e65375817f139550"
   },
   {
    "id": "b1.wordmap",
@@ -442,8 +442,8 @@
    "id": "igloo.chunks.accept.german",
    "path": "igloo/chunks/accept_german.json",
    "schema": "igloo-chunks-accept@1",
-   "bytes": 311696,
-   "sha256": "428a56e517146b62ec5269218caf2a90dcefd9326336939e32c9c8f814eefbb6"
+   "bytes": 311438,
+   "sha256": "8f47ee53358fc7e0d2064d2b377541f39911749bbbd9467169e1c3548c3a7085"
   },
   {
    "id": "igloo.chunks.arabic",
@@ -477,8 +477,8 @@
    "id": "igloo.chunks.german",
    "path": "igloo/chunks/german.json",
    "schema": "igloo-chunks@1",
-   "bytes": 225900,
-   "sha256": "1a0ba4e3aec0aa10b6a0267bad317ad3e0109b451824060ac29b48efd5f4f316"
+   "bytes": 225898,
+   "sha256": "a899488f9c08e056089f9d10a9e63d754727527c57b0e5aa061e26d5836279ad"
   },
   {
    "id": "igloo.chunks.hindi",
@@ -547,8 +547,8 @@
    "id": "igloo.grammar.items.de",
    "path": "igloo/grammar/items_de.json",
    "schema": "igloo-grammar-items@1",
-   "bytes": 232340,
-   "sha256": "1ce9aec93cea1f58e3fd78197b3d095351fae3771a39a35e62b447d77f537085"
+   "bytes": 232153,
+   "sha256": "3976f31710faee121db7b0c4c16930288f044a975fc54cac43a11a41d63f95bf"
   },
   {
    "id": "igloo.lang.french",

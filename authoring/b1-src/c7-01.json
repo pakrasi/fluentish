@@ -465,8 +465,7 @@
   "partner": null,
   "prefill": null,
   "accept": [
-   "ab montag",
-   "ab dem montag"
+   "ab montag"
   ],
   "anywhere": false,
   "model": "Ab Montag",
@@ -793,9 +792,9 @@
   "prefill": null,
   "accept": [
    "ohne kosten absagen",
-   "gratis absagen",
-   "umsonst absagen",
-   "absagen ohne zu bezahlen"
+   "absagen ohne zu bezahlen",
+   "kostenfrei absagen",
+   "ohne gebühr absagen"
   ],
   "anywhere": false,
   "model": "Ohne Kosten absagen",
@@ -964,8 +963,7 @@
   "prefill": null,
   "accept": [
    "einverstanden sein",
-   "ja sagen",
-   "erlauben"
+   "ja sagen"
   ],
   "anywhere": false,
   "model": "Einverstanden sein",
@@ -1030,8 +1028,7 @@
   "prefill": null,
   "accept": [
    "früh genug",
-   "nicht zu spät",
-   "pünktlich"
+   "nicht zu spät"
   ],
   "anywhere": false,
   "model": "Früh genug",
