@@ -103,6 +103,12 @@
         },
         "simpleInput": {
           "type": "boolean"
+        },
+        "buildNew": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 20,
+          "description": "Word building: new cards a day (its own cap; default 5 when missing)"
         }
       }
     },

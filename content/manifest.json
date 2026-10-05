@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "adc43a885e0d",
+ "version": "4d7417400614",
  "languages": [
   {
    "id": "khasi",
@@ -176,8 +176,8 @@
    "id": "b1.forms",
    "path": "b1/forms.json",
    "schema": "b1-forms@1",
-   "bytes": 15718,
-   "sha256": "66a766673295781e972e35d01773d92f9e17556473423763e551b208b56fb622"
+   "bytes": 15189,
+   "sha256": "4b630d1735d98418c488c0930a5499afad48816ff53ed8626ef304386b510f1d"
   },
   {
    "id": "b1.frames",
@@ -227,6 +227,13 @@
    "schema": "b1-wordmap@1",
    "bytes": 152538,
    "sha256": "c1cea21ef950108a0a7f4610bd30f3ea38029ed0485bd4e14029230e8f673e08"
+  },
+  {
+   "id": "build.de",
+   "path": "build/de.json",
+   "schema": "build@1",
+   "bytes": 118960,
+   "sha256": "ee29a2893d29dcf0afa1e440364ee366922a9619f4be728bfe0d9659ffba7be0"
   },
   {
    "id": "clusters.de",

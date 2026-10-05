@@ -74,6 +74,8 @@ jobs:
         run: python3 tools/validate_b1.py --all
       - name: Word clusters
         run: node tools/build-clusters.mjs --check
+      - name: Word building
+        run: node tools/build-wordbuild.mjs --check
       - name: Schreiben sources
         run: python3 tools/build_schreiben.py --check
       - name: Goethe B1 mock exams and explanations
@@ -86,6 +88,7 @@ jobs:
           python3 tools/build_turns.py
           python3 tools/build_schreiben.py
           node tools/build-clusters.mjs
+          node tools/build-wordbuild.mjs
           node tools/build-manifest.mjs
           git diff --exit-code -- content
 

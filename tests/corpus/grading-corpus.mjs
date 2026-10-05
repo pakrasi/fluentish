@@ -454,6 +454,7 @@ export const SCHREIBEN_HELD = [
 
 /* ---------- the corpus ---------- */
 const typeOf = it => {
+  if (it.src === 'wordbuild') return `word building ${it.wb}`;
   if (it.src === 'script') return it.gap ? 'script word gap' : 'script word meaning';
   if (it.area === 'clusters') return `cluster ${it.kind}`;
   if (it.src === 'build') return 'schreiben email line';
@@ -518,7 +519,20 @@ export async function buildData({ root = ROOT, codeRoot = ROOT } = {}) {
       accept: [a], model: a, gloss: null, task: null, lemma, art };
   }));
   for (const it of script) data.byId.set(it.id, it);
-  return Object.assign(data, { parts, clusters, script });
+  // Word building (deck 'build'): every typed card as the round grades it (domain/wordbuild-grade.js): the verb from
+  // its meaning (PV), the verb pieces of every sentence frame (PS), every chain word with its article (PW)
+  /** @type {any[]} */ const wordbuild = [];
+  try {
+    const W = await import(pathToFileURL(path.join(codeRoot, 'src/domain/wordbuild.js')).href);
+    const G = await import(pathToFileURL(path.join(codeRoot, 'src/domain/wordbuild-grade.js')).href);
+    const bc = J(root, 'content/build/de.json');
+    for (const v of bc.verbs) wordbuild.push({ id: `PV:${v.id}`, src: 'wordbuild', wb: 'verb', accept: G.pvAccept(v), v, siblings: bc.verbs.filter(x => x.root === v.root && x.pre !== v.pre).map(x => W.bare(x.inf)) });
+    for (const f of bc.frames) for (const form of W.FORMS) if (f.forms[form]) wordbuild.push({ id: `PS:${f.id}.${form}`, src: 'wordbuild', wb: 'sentence', accept: [W.gapped(f, form).answer], f, form });
+    for (const n of W.pwNodes(bc)) wordbuild.push({ id: `PW:${n.word}`, src: 'wordbuild', wb: 'word', accept: [W.pwAnswer(n)], noun: !!n.art, n });
+    for (const it of wordbuild) data.byId.set(it.id, it);
+    data.wbLexicon = G.lexiconOf(bc);
+  } catch (e) { if (!/Cannot find module|ERR_MODULE_NOT_FOUND|ENOENT/.test(String(e))) throw e; }
+  return Object.assign(data, { parts, clusters, script, wordbuild });
 }
 
 /** The cluster a card belongs to, for wrong answers drawn from its siblings. @param {any} ix @param {string} id */
@@ -661,6 +675,44 @@ export async function buildCorpus({ root = ROOT } = {}) {
       if (it.art) for (const a of OTHER_ART[it.art] || []) add(it, 'script-article', `${a} ${it.lemma}`, 'wrong');
     }
   }
+  // Word building: the answer and its ae/oe/ue spelling are right; a sibling prefix, the participle or a split
+  // infinitive, a wrong helper, ge- or zu in the wrong place, the pieces in the wrong order and a wrong article are not
+  for (const it of data.wordbuild || []) {
+    const a = it.accept[0];
+    add(it, 'wb-answer', a, 'right');
+    if (/[äöüß]/.test(a)) add(it, 'wb-ae-oe-ue-ss', umlautSpelled(a), 'right');
+    if (it.wb === 'verb') {
+      for (const s of it.siblings.slice(0, 3)) add(it, 'wb-sibling-prefix', s, 'wrong');
+      const inf = a.replace(/^sich /, '');
+      if (it.v.pp !== inf) add(it, 'wb-participle', it.v.pp, 'wrong');   // vergeben, ergeben: the participle is the infinitive
+      if (it.v.kind === 's') add(it, 'wb-split', `${it.v.pre} ${inf.slice(it.v.pre.length)}`, 'wrong');
+      add(it, 'wb-root-only', inf.slice(it.v.pre.length), 'wrong');
+      const ty = typoIn(inf, { lex, eligible: () => true }); if (ty) add(it, 'wb-typo', ty, 'wrong');
+    } else if (it.wb === 'sentence') {
+      const pieces = a.split(' ');
+      if (pieces.length > 1) add(it, 'wb-order', [...pieces].reverse().join(' '), 'wrong');
+      if (it.form === 'perf') {
+        const aux = pieces[0], swap = { habe: 'bin', bin: 'habe', hat: 'ist', ist: 'hat', haben: 'sind', sind: 'haben' }[aux];
+        if (swap) add(it, 'wb-helper', [swap, ...pieces.slice(1)].join(' '), 'wrong');
+        const pp = pieces[pieces.length - 1];
+        if (it.f.kind === 's' && pp.startsWith(`${it.f.pre}ge`)) {
+          add(it, 'wb-ge-outside', [...pieces.slice(0, -1), `ge${it.f.pre}${pp.slice(it.f.pre.length + 2)}`].join(' '), 'wrong');
+          add(it, 'wb-no-ge', [...pieces.slice(0, -1), `${it.f.pre}${pp.slice(it.f.pre.length + 2)}`].join(' '), 'wrong');
+        }
+        if (it.f.kind === 'i' || it.f.inner) add(it, 'wb-extra-ge', [...pieces.slice(0, -1), `ge${pp}`].join(' '), 'wrong');
+      }
+      if (it.form === 'zu') {
+        if (it.f.kind === 'i') add(it, 'wb-zu-glued', a.replace(/^zu /, 'zu'), 'wrong');
+        else add(it, 'wb-zu-apart', `zu ${it.f.pre}${a.slice(it.f.pre.length + 2)}`, 'wrong');
+      }
+      if (it.f.kind === 's' && (it.form === 'sub' || it.form === 'modal')) add(it, 'wb-split-end', `${it.f.pre} ${a.slice(it.f.pre.length)}`, 'wrong');
+      if (it.form === 'pres' && it.f.kind === 's') add(it, 'wb-unsplit', `${it.f.pre}${pieces[0]}`, 'wrong');
+    } else {
+      const m = /^(der|die|das) (.+)$/.exec(a);
+      if (m) { for (const o of OTHER_ART[m[1]] || []) add(it, 'wb-article', `${o} ${m[2]}`, 'wrong'); add(it, 'wb-no-article', m[2], 'wrong'); }
+      const w = it.n.word, ty = typoIn(w, { lex, eligible: () => true }); if (ty) add(it, 'wb-typo', m ? `${m[1]} ${ty}` : ty, 'wrong');
+    }
+  }
   for (const [id, text, kind] of CURATED_RIGHT) { const it = data.byId.get(id); if (it) add(it, `curated-${kind}`, text, 'right'); }
   for (const [id, text, want, why] of SCHREIBEN_HELD) { const it = data.byId.get(id); if (it) out.push({ id, type: 'held-out (Schreiben)', cls: `schreiben held-out: ${why}`, text, want, move: null }); }
   for (const [id, text, want, why] of HELD_OUT) { const it = data.byId.get(id); if (it) out.push({ id, type: 'held-out', cls: `held-out: ${why}`, text, want, move: null }); }
@@ -679,11 +731,13 @@ export async function evaluate({ root = ROOT, codeRoot = root } = {}) {
   const { corpus } = await buildCorpus({ root });
   const data = await buildData({ root, codeRoot });
   const { gradeAnswer } = await import(pathToFileURL(path.join(codeRoot, 'src/features/practice/grade.js')).href);
+  let gradeTyped = null;
+  try { ({ gradeTyped } = await import(pathToFileURL(path.join(codeRoot, 'src/domain/wordbuild-grade.js')).href)); } catch { /* code from before Word building */ }
   const opts = { ...data, nouns: data.nouns, traps: data.traps };
   for (const c of corpus) {
     const it = data.byId.get(c.id);
     const move = c.move ? it.moves.find(m => m.key === c.move) : null;
-    const g = gradeAnswer(it, c.text, move, opts);
+    const g = it.src === 'wordbuild' && gradeTyped ? { ...gradeTyped(c.text, { accept: it.accept, noun: !!it.noun, lexicon: data.wbLexicon }), rest: null, typos: [], umlautMiss: [] } : gradeAnswer(it, c.text, move, opts);
     c.verdict = !g.ok ? 'wrong' : g.rest && g.rest.status === 'differs' ? 'partial' : 'right';
     c.fp = c.want === 'wrong' && c.verdict === 'right';
     c.fn = c.want === 'right' && c.verdict === 'wrong';

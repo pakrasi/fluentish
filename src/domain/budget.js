@@ -168,3 +168,35 @@ export function simBudget({ c, settings, dueN, newShown = 0, unseen = Infinity }
   const cards = dueN + 2 * newLeft;
   return { newPerDay, newLeft, cards, minutes: cards ? Math.max(1, Math.ceil(cards * SIM_CARD_MIN - 1e-9)) : 0 };
 }
+
+/* Word building (Practice › Word building, src/features/build/) has its own small daily cap of new items (a setting,
+   settings.practice.buildNew, default 5; none on the eve or the exam day). It is NOT reserved off the B1 new items
+   (dayBudget's side): the B1 allowance stays what it is, and Today's composer decides whether the Word building row
+   fits the day's minutes. A card takes about 0.4 min (predict and reveal, a tap, or a few words typed); a new one about
+   NEW_ITEM_MIN, as everywhere. */
+export const BUILD_NEW_DEFAULT = 5;
+export const BUILD_NEW_MAX = 20;
+export const BUILD_CARD_MIN = 0.4;
+
+/** The deck's daily cap: the setting when it is a whole number, else the default. @param {any} settings */
+export function buildNewPerDay(settings) {
+  const n = settings?.practice?.buildNew;
+  return Number.isInteger(n) && n >= 0 ? Math.min(n, BUILD_NEW_MAX) : BUILD_NEW_DEFAULT;
+}
+
+/**
+ * @param {object} o
+ * @param {import('../core/clock.js').ClockCtx} o.c
+ * @param {any} o.settings          normalised profile settings
+ * @param {number} o.dueN           Word building cards due today
+ * @param {number} [o.newShown]     new Word building cards shown today
+ * @param {number} [o.unseen]       new cards open now (the unlock order decides which)
+ * @returns {{newPerDay: number, newLeft: number, due: number, n: number, rounds: number, minutes: number}}
+ */
+export function buildBudget({ c, settings, dueN, newShown = 0, unseen = Infinity }) {
+  const newPerDay = c.newItems ? buildNewPerDay(settings) : 0;
+  const newLeft = Math.max(0, Math.min(newPerDay - newShown, unseen));
+  const n = dueN + newLeft;
+  const minutes = n ? Math.max(1, Math.ceil(dueN * BUILD_CARD_MIN + newLeft * NEW_ITEM_MIN - 1e-9)) : 0;
+  return { newPerDay, newLeft, due: dueN, n, rounds: n ? Math.ceil(n / ROUND) : 0, minutes };
+}

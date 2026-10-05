@@ -1,0 +1,17 @@
+[
+ {"id":"stellen","lemma":"stellen.verb","en":"put (upright), place","obj":"upright","pres3":"stellt","pret":"stellte","aux":"hat","pp":"gestellt"},
+ {"id":"legen","lemma":"legen.verb","en":"lay, put (flat)","obj":"flat","pres3":"legt","pret":"legte","aux":"hat","pp":"gelegt"},
+ {"id":"setzen","lemma":"setzen.verb","en":"set, seat, put","obj":"seated","pres3":"setzt","pret":"setzte","aux":"hat","pp":"gesetzt"},
+ {"id":"nehmen","lemma":"nehmen.verb","en":"take","obj":"hand","pres3":"nimmt","pret":"nahm","aux":"hat","pp":"genommen"},
+ {"id":"geben","lemma":"geben.verb","en":"give","obj":"hand","pres3":"gibt","pret":"gab","aux":"hat","pp":"gegeben"},
+ {"id":"kommen","lemma":"kommen.verb","en":"come","obj":"mover","pres3":"kommt","pret":"kam","aux":"ist","pp":"gekommen"},
+ {"id":"gehen","lemma":"gehen.verb","en":"go, walk","obj":"mover","pres3":"geht","pret":"ging","aux":"ist","pp":"gegangen"},
+ {"id":"ziehen","lemma":"ziehen.verb","en":"pull; move (house)","obj":"mover","pres3":"zieht","pret":"zog","aux":"hat/ist","pp":"gezogen"},
+ {"id":"fallen","lemma":"fallen.verb","en":"fall","obj":"mover","pres3":"fällt","pret":"fiel","aux":"ist","pp":"gefallen"},
+ {"id":"halten","lemma":"halten.verb","en":"hold; stop","obj":"hand","pres3":"hält","pret":"hielt","aux":"hat","pp":"gehalten"},
+ {"id":"sprechen","lemma":"sprechen.verb","en":"speak","obj":"signal","pres3":"spricht","pret":"sprach","aux":"hat","pp":"gesprochen"},
+ {"id":"schreiben","lemma":"schreiben.verb","en":"write","obj":"signal","pres3":"schreibt","pret":"schrieb","aux":"hat","pp":"geschrieben"},
+ {"id":"sehen","lemma":"sehen.verb","en":"see, look","obj":"signal","pres3":"sieht","pret":"sah","aux":"hat","pp":"gesehen"},
+ {"id":"fahren","lemma":"fahren.verb","en":"drive, go (by vehicle)","obj":"mover","pres3":"fährt","pret":"fuhr","aux":"ist","pp":"gefahren"},
+ {"id":"stehen","lemma":"stehen.verb","en":"stand","obj":"upright","pres3":"steht","pret":"stand","aux":"hat","pp":"gestanden"}
+]

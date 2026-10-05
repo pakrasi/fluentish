@@ -11,7 +11,7 @@
 // The ledger only grows: --write never removes a line. What it covers: the B1 pool (BP/BL/BG/BT/BR/BS/K/G, as
 // features/practice/pool.js builds it), every word of the word list (W:<word id>, the id Look up, Explore, Word
 // clusters and the exam words use), every Word cluster card (CO/CF/CP and family heads), and the speaking situations
-// (SS:). Ids made from a learner's own data (F:, BW: exam words, SR:/SW: script cards) are not content and are not
+// (SS:), and every Word building card (PX/PD/PV/PS/SX/PW). Ids made from a learner's own data (F:, BW: exam words, SR:/SW: script cards) are not content and are not
 // listed.
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import path from 'node:path';
@@ -41,6 +41,9 @@ export async function currentIds() {
   // an alias keeps an old card id working: the card shows the item it points to (clusters/items.js itemFor)
   for (const [old, to] of Object.entries(clusters.aliases || {})) if (ids.has(to)) ids.add(old);
   for (const it of J('content/speak/situations.json').items) ids.add(it.id);
+  // Word building (deck 'build'): prefix, verb, sentence, suffix and word cards (domain/wordbuild.js cardIds)
+  const { cardIds: buildIds } = await imp('src/domain/wordbuild.js');
+  for (const id of buildIds(J('content/build/de.json'))) ids.add(id);
   return ids;
 }
 

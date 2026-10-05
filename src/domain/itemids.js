@@ -17,12 +17,18 @@
      CO:<a>~<b>       cluster study: given word a, type its opposite b  deck 'clusters'
      CF:<word id>     cluster study: a word family's stem and a meaning, type the word  deck 'clusters'
      CP:<gap id>      cluster study: a preposition gap sentence          deck 'clusters'
+     PX:<p>.see|say   Word building: a prefix (its motion; what it does)  deck 'build'
+     PD:<verb>        Word building: predict a prefixed verb's meaning     deck 'build'
+     PV:<verb>        Word building: English → type the prefixed verb      deck 'build'
+     PS:<frame>.<form> Word building: the verb pieces in a sentence frame  deck 'build'
+     SX:<suffix>      Word building: an ending and the article it gives   deck 'build'
+     PW:<word>        Word building: parent word + ending → the new word  deck 'build'
    Cluster study also schedules W:<word id> (meaning → word) in deck 'clusters'. Script mode keeps SR: (section
    rehearsals) and SW:<slug> (script words not in the list) in deck 'script'.
 
    Pure; tested in node (tests/unit/practice-ids.test.mjs). */
 
-/** @typedef {'phrase'|'reading'|'grammar'|'situation'|'reply'|'word'|'mistake'|'sim'|'opposite'|'family'|'prep'} ItemKind */
+/** @typedef {'phrase'|'reading'|'grammar'|'situation'|'reply'|'word'|'mistake'|'sim'|'opposite'|'family'|'prep'|'prefix'|'pverb'|'frame'|'suffix'|'pword'} ItemKind */
 
 /** @type {Record<string, {kind: ItemKind, area: string}>} */
 export const TAGS = {
@@ -41,6 +47,12 @@ export const TAGS = {
   CO: { kind: 'opposite', area: 'clusters' },
   CF: { kind: 'family', area: 'clusters' },
   CP: { kind: 'prep', area: 'clusters' },
+  PX: { kind: 'prefix', area: 'build' },
+  PD: { kind: 'pverb', area: 'build' },
+  PV: { kind: 'pverb', area: 'build' },
+  PS: { kind: 'frame', area: 'build' },
+  SX: { kind: 'suffix', area: 'build' },
+  PW: { kind: 'pword', area: 'build' },
 };
 
 /** The prefix of an item id ('BP', 'F', …) or null. @param {string} id */

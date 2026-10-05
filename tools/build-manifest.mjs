@@ -30,6 +30,7 @@ export const MAP = [
   [/^b1\/(items|annot|grammar|bank|nouns|frames|wordmap|plan|schreiben|forms)\.json$/, m => `b1.${m[1]}`, null],
   [/^speak\/situations\.json$/, () => 'speak.situations', 'speak-situations@1'],
   [/^clusters\/(\w+)\.json$/, m => `clusters.${m[1]}`, 'clusters@1'],
+  [/^build\/(\w+)\.json$/, m => `build.${m[1]}`, 'build@1'],
   [/^atlas\/(\w+)\.json$/, m => `atlas.${m[1]}`, 'atlas@1'],
   [/^exams\/([\w-]+)\/why\/day(\d+)\.json$/, m => `exam.${m[1]}.why.${m[2]}`, '%s-why@1'],
   [/^exams\/([\w-]+)\/day(\d+)\.json$/, m => `exam.${m[1]}.${m[2]}`, '%s-exam@1'],

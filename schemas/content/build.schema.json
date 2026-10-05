@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "build@1",
+  "title": "Word building",
+  "description": "Practice › Word building: the prefix model (kind, compass ring and position, pictogram, senses), root verbs, root × prefix verbs with their derivability grade and example, sentence frames as tiles, the endings that set an article or a word type, and word chains as trees. Built by tools/build-wordbuild.mjs from authoring/build/; the rules a schema cannot say are in src/domain/wordbuild.js validateBuild.",
+  "type": "object",
+  "required": ["version", "prefixes", "roots", "verbs", "frames", "suffixes", "chains"],
+  "additionalProperties": false,
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-zäöüß][a-zäöüß-]*$" },
+    "text": { "type": "string", "minLength": 1, "pattern": "^[^—–]*$" },
+    "level": { "enum": ["A1", "A2", "B1", "B2", "C1", "C2"] },
+    "tiles": {
+      "type": "array", "minItems": 2,
+      "items": { "type": "array", "prefixItems": [{ "enum": ["S", "X", "O", "A", "N", "C", "R", "P", "G", "Z", "."] }, { "$ref": "#/$defs/text" }], "minItems": 2, "maxItems": 2 }
+    }
+  },
+  "properties": {
+    "version": { "const": 1 },
+    "prefixes": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "kind", "ring", "glyph", "alt", "core", "short", "senses"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "$ref": "#/$defs/id" },
+          "kind": { "enum": ["s", "i", "d"] },
+          "ring": { "enum": ["axis", "path", "lens", "extra"] },
+          "pos": { "type": "integer", "minimum": 0, "maximum": 315 },
+          "glyph": { "type": "string", "pattern": "^[a-z]+$" },
+          "alt": { "$ref": "#/$defs/text" },
+          "core": { "$ref": "#/$defs/text" },
+          "short": { "$ref": "#/$defs/text" },
+          "senses": { "type": "array", "items": { "type": "object", "required": ["en", "ex"], "additionalProperties": false,
+            "properties": { "en": { "$ref": "#/$defs/text" }, "ex": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/text" } } } } },
+          "opp": { "type": "array", "items": { "type": "array", "prefixItems": [{ "$ref": "#/$defs/id" }, { "$ref": "#/$defs/text" }], "minItems": 2, "maxItems": 2 } },
+          "sep": { "$ref": "#/$defs/text" },
+          "insep": { "$ref": "#/$defs/text" },
+          "word": { "$ref": "#/$defs/text" }
+        }
+      }
+    },
+    "roots": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "lemma", "en", "obj", "pres3", "pret", "aux", "pp"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "$ref": "#/$defs/id" }, "lemma": { "type": "string", "minLength": 1 }, "en": { "$ref": "#/$defs/text" },
+          "obj": { "enum": ["upright", "flat", "seated", "hand", "mover", "signal"] },
+          "pres3": { "$ref": "#/$defs/text" }, "pret": { "$ref": "#/$defs/text" }, "aux": { "enum": ["hat", "ist", "hat/ist"] }, "pp": { "$ref": "#/$defs/text" }
+        }
+      }
+    },
+    "verbs": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "root", "pre", "inf", "kind", "grade", "how", "en", "why", "ex", "exEn", "aux", "pp", "lemma", "level"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "$ref": "#/$defs/id" }, "root": { "$ref": "#/$defs/id" }, "pre": { "$ref": "#/$defs/id" },
+          "inf": { "type": "string", "pattern": "^(sich )?[a-zäöüß]+$" },
+          "kind": { "enum": ["s", "i"] }, "grade": { "enum": ["T", "M", "O"] }, "how": { "enum": ["lit", "pic", "hist", "word"] },
+          "en": { "$ref": "#/$defs/text" }, "why": { "$ref": "#/$defs/text" }, "ex": { "$ref": "#/$defs/text" }, "exEn": { "$ref": "#/$defs/text" },
+          "aux": { "enum": ["hat", "ist"] }, "pp": { "type": "string", "pattern": "^[a-zäöüß]+$" },
+          "lemma": { "type": ["string", "null"] }, "dual": { "$ref": "#/$defs/id" }, "level": { "$ref": "#/$defs/level" },
+          "src": { "$ref": "#/$defs/text" }
+        }
+      }
+    },
+    "frames": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "verb", "inf", "pre", "kind", "en", "aux", "pp", "forms"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "$ref": "#/$defs/id" }, "verb": { "type": ["string", "null"] }, "inf": { "type": "string", "pattern": "^(sich )?[a-zäöüß]+$" },
+          "pre": { "$ref": "#/$defs/id" }, "inner": { "$ref": "#/$defs/id" }, "kind": { "enum": ["s", "i"] }, "en": { "$ref": "#/$defs/text" },
+          "aux": { "enum": ["hat", "ist"] }, "pp": { "type": "string", "pattern": "^[a-zäöüß]+$" }, "note": { "$ref": "#/$defs/text" },
+          "stress": { "type": "string", "pattern": "^[A-Za-zÄÖÜäöüß|]+$" }, "pair": { "$ref": "#/$defs/id" },
+          "forms": {
+            "type": "object", "minProperties": 2, "additionalProperties": false,
+            "properties": { "pres": { "$ref": "#/$defs/tiles" }, "perf": { "$ref": "#/$defs/tiles" }, "sub": { "$ref": "#/$defs/tiles" }, "modal": { "$ref": "#/$defs/tiles" }, "zu": { "$ref": "#/$defs/tiles" } }
+          }
+        }
+      }
+    },
+    "suffixes": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "cls", "art", "from", "label", "rule", "short", "ex", "except"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z]+$" }, "cls": { "enum": ["noun", "adj"] }, "art": { "enum": ["der", "die", "das", null] },
+          "from": { "$ref": "#/$defs/text" }, "label": { "$ref": "#/$defs/text" }, "rule": { "$ref": "#/$defs/text" }, "short": { "$ref": "#/$defs/text" },
+          "ex": { "$ref": "#/$defs/text" }, "except": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/text" } }
+        }
+      }
+    },
+    "chains": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "nodes"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "$ref": "#/$defs/id" }, "title": { "$ref": "#/$defs/text" },
+          "nodes": {
+            "type": "array", "minItems": 2,
+            "items": {
+              "type": "object",
+              "required": ["id", "word", "cls", "en"],
+              "additionalProperties": false,
+              "properties": {
+                "id": { "type": "string", "pattern": "^n\\d+$" }, "from": { "type": "string", "pattern": "^n\\d+$" }, "add": { "type": "string", "pattern": "^[a-zäöüß]+$" },
+                "side": { "enum": ["pre", "suf"] }, "word": { "type": "string", "pattern": "^[A-Za-zÄÖÜäöüß]+$" }, "cls": { "enum": ["verb", "noun", "adj"] },
+                "art": { "enum": ["der", "die", "das"] }, "en": { "$ref": "#/$defs/text" }, "note": { "$ref": "#/$defs/text" }, "rare": { "type": "boolean" },
+                "lemma": { "type": "string", "minLength": 1 }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
