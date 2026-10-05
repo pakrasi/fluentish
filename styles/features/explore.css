@@ -224,3 +224,18 @@ body.ex-page { overscroll-behavior: none; }
 .ex-sheet h2[tabindex="-1"]:focus { outline: none; }
 .explore.is-list .ex-zoom { display: none; }
 .ex-zoom .ex-icon:focus-visible { outline-offset: -3px; }
+
+/* select mode (select.js): tap the words you know; a solid bar over the bottom of the map or list */
+.ex-selbtn[aria-pressed="true"] { background: var(--ink); color: var(--on-ink); }
+.ex-selbar { position: absolute; left: 0; right: 0; bottom: 0; z-index: 4; display: grid; gap: var(--s-2); padding: var(--s-3) max(var(--gutter), env(safe-area-inset-right)) var(--s-3) max(var(--gutter), env(safe-area-inset-left));
+  background: var(--surface); box-shadow: 0 -1px 0 var(--hairline), var(--shadow-lift); }
+.ex-selbar[hidden] { display: none; }
+.ex-sel-top { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s-3); margin: 0; font: 400 14px/1.35 var(--font-ui); }
+.ex-sel-top b { font-weight: 600; }
+.ex-sel-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.ex-sel-actions .btn { min-height: var(--tap); padding: 0 12px; }
+.ex-sel-actions .btn-primary { margin-left: auto; min-width: 96px; }
+.explore.is-select .ex-hud { visibility: hidden; }
+.explore.is-select .ex-list { padding-bottom: 148px; }
+.explore.is-select .ex-litem { cursor: copy; }
+@media (forced-colors: active) { .ex-selbar { background: Canvas; border-top: 1px solid CanvasText; } }

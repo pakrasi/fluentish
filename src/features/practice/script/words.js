@@ -17,6 +17,8 @@ import { checkMark } from './ui.js';
 import { addActivity } from '../data.js';
 import { todayBudget } from '../plan.js';
 import { doneHero } from '../done-hero.js';
+import { swap } from '../../../core/motion.js';
+import { knowButton, isKnowKey, knowCard } from '../iknow.js';
 
 const ROUND = 12;
 const keep = (/** @type {Event} */ e) => e.preventDefault();
@@ -79,8 +81,10 @@ export async function mountWords(el, ctx) {
   const card = h('article', { class: 'card pr-card' }, h('div', { class: 'card-meta' }, meta), promptBox, answerEl, reveal);
   const secondary = h('button', { type: 'button', class: 'btn btn-quiet pressable', onpointerdown: keep, onclick: () => showMe() }, t('practice.showMe'));
   const primary = h('button', { type: 'button', class: 'btn btn-primary pressable pr-primary', onpointerdown: keep, onclick: () => onReturn() });
+  const knowBtn = knowButton(t, () => knowThis(), { typed: true });
   const box = h('div', { class: 'pr-round is-flow', role: 'region', 'aria-label': t('practice.script.words.title'), 'data-title': t('practice.script.title') },
-    h('div', { class: 'pr-top' }, segs, h('div', { class: 'pr-top-row' }, count, endBtn)), h('div', { class: 'pr-scroll' }, card), h('div', { class: 'card-actions pr-actions' }, secondary, primary));
+    h('div', { class: 'pr-top' }, segs, h('div', { class: 'pr-top-row' }, count, endBtn)), h('div', { class: 'pr-scroll' }, card), h('div', { class: 'card-actions pr-actions' }, knowBtn, secondary, primary));
+  /** @type {Set<string>} */ const knownIds = new Set();
   replace(el, h('h1', { class: 'sr-only' }, t('practice.script.words.title')), box);
 
   let state = 'answer', revealed = false, cardT0 = 0, holding = false;
@@ -115,6 +119,7 @@ export async function mountWords(el, ctx) {
     const rec = cards(cur.id)?.rec;
     const w = info.get(cur.id);
     replace(meta, !rec || !rec.reps ? h('span', { class: 'pr-newtag' }, t('practice.new')) : t('practice.review'), script ? ` · ${script.title}` : '');
+    knowBtn.hidden = !!(rec && rec.reps) || cur.again > 0;
     const gapAt = String(item.prompt).indexOf('___');
     replace(promptBox,
       item.task ? h('p', { class: 'pr-task' }, item.task) : null,
@@ -145,6 +150,19 @@ export async function mountWords(el, ctx) {
       holding = true;
       fxCorrect(answerEl, { hold: 420 }).then(() => { holding = false; if (state === 'feedback' && !fb.childNodes.length) next(); });
     } else showRight(typed);
+  }
+  /** "I know this" on a new word (iknow.js): marked known in its deck, the card lifts away, the round goes on. */
+  function knowThis() {
+    if (state !== 'answer' || holding || knowBtn.hidden) return;
+    const x = cards(cur.id);
+    knowCard(ctx, { deck: x?.deck || St.DECK, id: cur.id });
+    knownIds.add(cur.id);
+    state = 'known';
+    if (i < firstTotal) { states[i] = 'done'; segments(segs, states); }
+    announce(t('practice.know.announce'));
+    if (i + 1 >= queue.length) { finish(); return; }
+    i++;
+    swap(() => draw(), { kind: 'lift', fallbackEl: card });
   }
   function showMe() { if (state !== 'answer') return; revealed = true; record(false, null); showRight(''); }
   /** @param {string} typed */
@@ -185,7 +203,8 @@ export async function mountWords(el, ctx) {
     // the done hero; its data object is the round's words, each in the state it ended in
     const list = h('ul', { class: 'sc-wdone', lang: 'de' }, Object.entries(firstOk).map(([id, ok], k) => h('li', { class: ['sc-wdone-w', ok ? 'is-ok' : 'is-miss'], style: { '--i': String(Math.min(k, 12)) } },
       info.get(id)?.head || info.get(id)?.lemma || id, h('span', { class: 'sr-only' }, ok ? ` (${t('practice.script.words.gotIt')})` : ` (${t('practice.script.words.again')})`))));
-    const hero = doneHero({ label: t('practice.script.words.title'), figure: right, of: t('practice.ofRight', { n: firstTotal }), lines: [t('practice.script.words.after')], data: list });
+    const hero = doneHero({ label: t('practice.script.words.title'), figure: right, of: t('practice.ofRight', { n: firstTotal - knownIds.size }),
+      lines: [t('practice.script.words.after'), knownIds.size ? t('practice.know.inRound', { n: knownIds.size }) : null], data: list });
     replace(el, h('div', { class: 'practice pr-done stack', 'data-title': t('practice.script.title') }, hero.el,
       h('div', { class: 'pr-done-actions' }, h('a', { class: 'btn btn-primary pressable', href: backTo }, script ? t('practice.script.toOverview') : t('practice.script.toLibrary')))));
     const stopHero = hero.start();
@@ -196,6 +215,7 @@ export async function mountWords(el, ctx) {
   const onKey = (/** @type {KeyboardEvent} */ e) => {
     if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); onReturn(); }
     else if (e.key === 'Escape') { e.preventDefault(); end(); }
+    else if (isKnowKey(e, true) && !knowBtn.hidden) { e.preventDefault(); knowThis(); }
   };
   input.addEventListener('keydown', onKey);
   function cleanup() { input.removeEventListener('keydown', onKey); }

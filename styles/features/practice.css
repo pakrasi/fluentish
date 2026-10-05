@@ -130,6 +130,12 @@ body.pr-in-round #view { max-width: none; padding: 0; }
 .pr-done-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-5); }
 .pr-done-actions .btn { min-height: 48px; }
 .pr-done-actions .btn-primary { flex: 1 1 220px; }
+/* a done screen is an ordinary page (done-hero.js leaveRound): its actions stay on screen above the tab bar while the
+   page scrolls, so Another round and Done are always in reach */
+.pr-done .pr-done-actions, .wr-done .pr-done-actions { position: sticky; bottom: calc(57px + env(safe-area-inset-bottom)); z-index: 3;
+  margin-inline: calc(-1 * var(--s-2)); padding: var(--s-3) var(--s-2) var(--s-2); background: linear-gradient(to bottom, transparent, var(--canvas) 28%); }
+@media (min-width: 900px) { .pr-done .pr-done-actions, .wr-done .pr-done-actions { bottom: 0; } }
+@media (prefers-reduced-transparency: reduce) { .pr-done .pr-done-actions, .wr-done .pr-done-actions { background: var(--canvas); } }
 
 /* ---------- speaking ---------- */
 .pr-speak .pr-card { margin: var(--s-4) 0 0; max-width: none; }
@@ -373,3 +379,44 @@ mark.sim-chunk { background: repeating-linear-gradient(90deg, var(--ink-3) 0 2px
 .wr-timebox { display: inline-flex; align-items: center; gap: var(--s-2); }
 .wr-clock:empty { display: none; }
 .wr-memory { white-space: normal; text-align: center; max-width: 100%; }
+
+/* ---------- "I know this" on a new card (iknow.js) ---------- */
+.pr-actions .pr-know { margin-right: auto; padding: 0 12px; color: var(--ink-2); }
+.sim-actions { grid-template-columns: auto minmax(0, 1fr); column-gap: var(--s-2); }
+.sim-actions > * { grid-column: 1 / -1; }
+.sim-actions > .pr-know:not([hidden]) { grid-column: 1; }
+.sim-actions > .pr-know:not([hidden]) ~ .pr-primary { grid-column: 2; }
+
+/* ---------- Quick sort (known/sort.js) ---------- */
+.qs-top { display: grid; gap: 2px; }
+.qs-track { height: 2px; margin-top: var(--s-1); }
+.qs-track .fill { background: var(--accent); }
+.qs-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.qs-tools { justify-content: flex-end; margin-top: 0; }
+.qs-tools .btn { min-height: var(--tap); padding: 0 10px; }
+.qs-tools .pr-end { margin-right: -10px; }
+.qs-scroll { display: grid; align-items: center; }
+.qs-stage { display: grid; justify-items: center; align-content: center; gap: var(--s-2); text-align: center; max-width: 640px; width: 100%; margin: 0 auto; padding: var(--s-6) 0; }
+.qs-word { font: 400 clamp(44px, 13vw, 72px)/1.08 var(--font-display); letter-spacing: -0.02em; color: var(--ink); background: none; border: 0; padding: 4px 8px; min-height: var(--tap);
+  cursor: pointer; overflow-wrap: anywhere; max-width: 100%; }
+.qs-art { font-size: 0.5em; color: var(--ink-3); letter-spacing: 0; }
+.qs-gloss { font: 400 18px/1.4 var(--font-ui); color: var(--ink-2); min-height: 1.4em; margin: 0; max-width: 32ch; }
+.qs-level { margin: 0; }
+.qs-meaning { min-height: var(--tap); }
+.qs-actions { max-width: 640px; width: 100%; margin: 0 auto; padding: var(--s-2) 0 calc(var(--s-3) + env(safe-area-inset-bottom)); background: var(--canvas); }
+.qs-btns { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); }
+.qs-btn { display: grid; align-content: space-between; gap: var(--s-3); min-height: 108px; padding: var(--s-3) var(--s-4); border-radius: var(--r-card);
+  background: var(--surface); border: 1px solid var(--hairline-strong); color: var(--ink); font: inherit; text-align: left; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.qs-btn.is-learn { text-align: right; }
+.qs-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.qs-btn-top { display: flex; align-items: center; justify-content: space-between; gap: var(--s-2); }
+.qs-btn.is-know .qs-btn-top { justify-content: flex-start; }
+.qs-btn.is-learn .qs-btn-top { justify-content: flex-end; }
+.qs-btn-label { font: 600 20px/1.2 var(--font-ui); letter-spacing: -0.01em; }
+.qs-btn kbd { font: 500 11px/1 var(--font-mono); color: var(--ink-3); padding: 3px 5px; border-radius: 5px; border: 1px solid var(--hairline-strong); }
+@media (hover: none) { .qs-btn kbd, .qs-meaning kbd, .qs-tools kbd { display: none; } }
+.qs-stack { display: flex; align-items: baseline; gap: 6px; }
+.qs-btn.is-learn .qs-stack { justify-content: flex-end; }
+.qs-n { display: inline-block; font: 300 30px/1 var(--font-display); font-variant-numeric: tabular-nums lining-nums; transform-origin: 50% 70%; }
+.qs-how { margin: var(--s-3) 0 0; text-align: center; }
+.qs-done .pr-done-hero .caption + .caption { margin-top: var(--s-1); }

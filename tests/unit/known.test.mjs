@@ -218,3 +218,70 @@ test('Igloo placement results flow through the same path, once, never over a car
   assert.deepEqual(k.get('W:a.adj').sources, ['test']);
   assert.equal(k.get('W:a.adj').marked, 'igloo');
 });
+
+// ---------- Quick sort, the level spot check and the cluster done screen's words (pure helpers) ----------
+import { readFileSync } from 'node:fs';
+import { index } from '../../src/domain/clusters.js';
+import { itemFor, roundWords, partOf } from '../../src/features/practice/clusters/items.js';
+import { gradeAnswer } from '../../src/features/practice/grade.js';
+import { buildLexicon } from '../../src/features/practice/pool.js';
+import { sortList, sortSource, levelWords, sample, passes, SORT_MAX } from '../../src/features/practice/known/pick.js';
+
+const read = p => JSON.parse(readFileSync(new URL(`../../${p}`, import.meta.url), 'utf8'));
+const CL = read('content/clusters/de.json');
+const WORDS = read('content/igloo/words/de.json');
+const IX = index(CL, WORDS);
+const tt = (k, v) => `${k}${v ? JSON.stringify(v) : ''}`;
+
+test('Quick sort takes words not known yet, without gaps or repeats, in the order given', () => {
+  const known = new Set(['W:gut.adj']);
+  const score = id => ({ state: known.has(id) ? 'known' : 'unseen' });
+  const gap = WORDS.find(w => /…/.test(w.w));
+  const list = sortList(['gut.adj', 'sehr.adv', 'sehr.adv', 'nicht.adv', gap.id, 'no-such-word'], id => IX.word(id), score);
+  assert.deepEqual(list, ['sehr.adv', 'nicht.adv'].filter(id => IX.word(id)));
+  assert.ok(sortList(WORDS.map(w => w.id), id => IX.word(id), score).length <= SORT_MAX);
+  assert.deepEqual(sortSource(new URLSearchParams('cluster=topic:home')), { kind: 'cluster', key: 'topic:home' });
+  assert.deepEqual(sortSource(new URLSearchParams('level=A1')), { kind: 'level', level: 'A1' });
+  assert.equal(sortSource(new URLSearchParams('level=Z9')), null);
+  assert.deepEqual(sortSource(new URLSearchParams('ids=W:gut.adj,sehr.adv,<x>&title=Describing words')), { kind: 'ids', ids: ['gut.adj', 'sehr.adv'], title: 'Describing words' });
+});
+
+test('the level spot check: unseen words of the level, 10 at random, more than 2 misses fails', () => {
+  const studied = new Set([`W:${WORDS.find(w => w.level === 'A1').id}`]);
+  const ids = levelWords(WORDS, 'A1', id => ({ state: studied.has(id) ? 'unknown' : 'unseen' }));
+  assert.ok(ids.length > 600);
+  assert.ok(!ids.includes([...studied][0].slice(2)), 'a word in his rounds keeps its own schedule');
+  assert.ok(ids.every(id => IX.word(id).level === 'A1' && !/[…()[\]]/.test(IX.word(id).w)));
+  let x = 7; const rand = () => ((x = (x * 9301 + 49297) % 233280) / 233280);
+  const s10 = sample(ids, 10, rand);
+  assert.equal(new Set(s10).size, 10);
+  assert.ok(s10.every(id => ids.includes(id)));
+  assert.equal(passes(0), true); assert.equal(passes(2), true); assert.equal(passes(3), false);
+});
+
+test('the spot check grades with the real grader: an article missing or wrong is a miss', () => {
+  const nouns = read('content/b1/nouns.json');
+  const lexicon = buildLexicon({ nouns, lexWords: WORDS });
+  const noun = WORDS.find(w => w.level === 'A1' && w.pos === 'noun' && w.art === 'der' && !/\s/.test(w.w));
+  const it = itemFor(`W:${noun.id}`, IX, CL, { t: tt });
+  const g = s => gradeAnswer(it, s, null, { nouns, lexicon });
+  assert.equal(g(`der ${noun.w}`).ok, true);
+  assert.equal(g(`die ${noun.w}`).ok, false);
+  assert.equal(g(noun.w).ok, false);
+});
+
+test('a cluster done screen lists the round\'s words, from every kind of card', () => {
+  const fam = IX.byType.family.find(f => f.items.length > 4);
+  const prev = { [`CF:${fam.items[2]}`]: null, [`W:${fam.head}`]: null, [`CF:${fam.items[3]}`]: null };
+  const words = roundWords(prev, fam, CL);
+  assert.deepEqual(words, fam.items.filter(w => [fam.head, fam.items[2], fam.items[3]].includes(w)));
+  const part = partOf(fam, words);
+  assert.equal(part.items[0], fam.head);
+  assert.equal(part.items.length, 3);
+  const opp = IX.byType.opp.find(o => (o.pairs || []).length > 2);
+  const p0 = opp.pairs[0];
+  const op = partOf(opp, roundWords({ [`CO:${p0.a}~${p0.b}`]: null }, opp, CL));
+  assert.deepEqual(op.pairs.map(p => `${p.a}~${p.b}`), [`${p0.a}~${p0.b}`]);
+  const gap = CL.preps.gaps[0];
+  assert.deepEqual(roundWords({ [`CP:${gap.id}`]: null }, null, CL), [gap.prep]);
+});

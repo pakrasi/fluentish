@@ -8,8 +8,8 @@
    After a study round the map comes back to the group it started from, with its sheet open.
    The List view is the accessible alternative: every group with the sheet's counts and study action, every item with
    its state in words. On the canvas, Tab steps through the groups and Enter opens one.
-   Explore never writes a card; its own kv 'explore' keeps the mode, the gaps filter, what it already showed and the
-   group a study round started from. */
+   Explore writes cards only in select mode (select.js: tap the words you know, through data/known.js); its own kv
+   'explore' keeps the mode, the gaps filter, what it already showed and the group a study round started from. */
 import { h, replace, announce } from '../../core/dom.js';
 import { seg } from '../../core/ui.js';
 import { icon } from '../../core/icons.js';
@@ -19,6 +19,7 @@ import { num } from '../../core/i18n.js';
 import { MODES, summarise, nextUp, encode } from '../../domain/atlas.js';
 import { loadAtlas, layoutOf, scores, loadDetails, prefs, setPrefs, fold, find } from './data.js';
 import { createMap } from './map.js';
+import { createSelect } from './select.js';
 
 const STATES = /** @type {const} */ (['known', 'shaky', 'unknown', 'unseen']);
 const CODE_STATE = ['unseen', 'unknown', 'shaky', 'known'];
@@ -124,6 +125,10 @@ async function mountMap(el, ctx, offs) {
     h('div', { class: 'ex-head' }, backLink(t), h1, h('div', { class: 'ex-head-tools' }, viewSeg, findBtn)),
     h('div', { class: 'ex-chiprow' }, modeChips, zoom), stage, findEl);
   replace(el, page);
+  // select mode (select.js): tap the words you know to mark them known; the List is not re-drawn while it is on
+  const sel = createSelect({ ctx, A, page, score: i => K.score(i), rescore: () => rescore(), stateKey: i => stateKey(i), onOff: () => { if (listOn) renderList(); } });
+  page.querySelector('.ex-head-tools')?.prepend(sel.btn);
+  stage.append(sel.bar);
   // where the map starts on screen (the desktop card sits over its top right) and how tall a phone sheet's peek is
   const measure = () => {
     const r = stage.getBoundingClientRect(), root = document.documentElement.style;
@@ -148,7 +153,7 @@ async function mountMap(el, ctx, offs) {
     labelOf,
     countOf: gi => counts[gi] || { n: 0, known: 0, shaky: 0, unknown: 0, unseen: 0 },
     insets: () => ({ top: 8, bottom: hud.offsetHeight + 8 }),
-    onWord: i => openWord(i, { opener: canvas }),
+    onWord: i => (sel.on ? void sel.toggle(i) : openWord(i, { opener: canvas })),
     onGroup: (gi, far) => openGroup(gi, far, { opener: canvas }),
     onEmpty: () => closeSheet(),
     onHere: gi => {
@@ -207,7 +212,7 @@ async function mountMap(el, ctx, offs) {
     const nw = newlyLearned();
     map.setScores(K.st, K.today, nw); markShown(nw);
     renderTotals();
-    if (listOn) renderList();
+    if (listOn && !sel.on) renderList();
     if (openGroupIdx >= 0) openGroup(openGroupIdx, false, { fly: false, keep: true });
     else if (openItem >= 0) openWord(openItem, { fly: false, keep: true });
   }
@@ -453,6 +458,9 @@ async function mountMap(el, ctx, offs) {
       if (pool === words) {
         const studyIds = next.filter(x => !/[…()[\]]/.test(A.text[/** @type {number} */ (A.index.get(x))])).map(x => x.slice(2));
         if (studyIds.length) acts.push(studyLink(`#/practice/round?kind=cluster%3Apick&ids=${encodeURIComponent(studyIds.join(','))}&from=map`, t('explore.sheet.study', { n: studyIds.length }), true));
+        // Quick sort (Practice): every word of the group not known yet, Know or Learn one at a time
+        const sortIds = words.filter((/** @type {string} */ x) => stateOf(x).state !== 'known' && !/[…()[\]]/.test(A.text[/** @type {number} */ (A.index.get(x))])).map((/** @type {string} */ x) => x.slice(2));
+        if (sortIds.length > 1) acts.push(studyLink(`#/practice/sort?ids=${encodeURIComponent(sortIds.join(','))}&title=${encodeURIComponent(labelOf(g))}&from=map`, t('explore.sheet.sort', { n: sortIds.length }), false));
         if (!c.newItems && studyIds.length && studyIds.every(w => stateOf(`W:${w}`).state === 'unseen')) out.push(h('p', { class: 'caption ex-note' }, t('explore.sheet.noNew')));
       } else if (D && pool === phrases) {
         const askable = nextUp(phrases.filter((/** @type {string} */ x) => D.roundId(x)), stateOf, weight, STUDY_N).map(x => D.roundId(x));
@@ -537,7 +545,7 @@ async function mountMap(el, ctx, offs) {
         const items = h('ul', { class: 'ex-litems' }, ...g.items.map((/** @type {number} */ i) => {
           const k = stateKey(i);
           return h('li', null,
-            h('button', { type: 'button', class: 'ex-litem pressable', lang: 'de', onclick: (/** @type {Event} */ e) => openWord(i, { fly: false, opener: /** @type {HTMLElement} */ (e.currentTarget) }) },
+            h('button', { type: 'button', class: 'ex-litem pressable', lang: 'de', onclick: (/** @type {Event} */ e) => (sel.on ? void sel.toggle(i, /** @type {HTMLElement} */ (e.currentTarget)) : openWord(i, { fly: false, opener: /** @type {HTMLElement} */ (e.currentTarget) })) },
               swatch(k), h('span', { class: 'ex-w' }, ...word(i))),
             h('span', { class: ['caption', `ex-lstate is-${k}`], lang: 'en' }, t(`explore.state.${k}`)));
         }));
@@ -557,6 +565,7 @@ async function mountMap(el, ctx, offs) {
     if (!findEl.hidden) closeSearch();
     else if (legend.classList.contains('is-open')) { closeKey(); keyBtn.focus(); }
     else if (!sheet.hidden) closeSheet({ restore: true });
+    else if (sel.on) sel.set(false);
   };
   document.addEventListener('keydown', onKey);
   offs.push(() => document.removeEventListener('keydown', onKey));

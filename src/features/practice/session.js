@@ -162,16 +162,18 @@ export function spoken({ item, rec, o, c, forecast = () => 0, now, tz = 'UTC' })
  * What the done screen shows. @param {any} round @param {Map<string, any>} byId
  */
 export function summary(round, byId) {
-  const firsts = round.results.filter((/** @type {any} */ r) => r.first);
+  // a card marked "I know this" is not an answer: it is counted apart (known)
+  const firsts = round.results.filter((/** @type {any} */ r) => r.first && !r.known);
   const right = firsts.filter((/** @type {any} */ r) => r.ok).length;
   const late = firsts.filter((/** @type {any} */ r) => r.ok && r.g === 2 && !r.partial).length;
   const partial = firsts.filter((/** @type {any} */ r) => r.ok && r.partial).length;
   const missedIds = new Set(firsts.filter((/** @type {any} */ r) => !r.ok).map((/** @type {any} */ r) => r.id));
   const uniq = (/** @type {string[]} */ ids) => [...new Set(ids)].map(id => byId.get(id)).filter(Boolean);
   const fixed = uniq(round.results.filter((/** @type {any} */ r) => !r.first && r.ok && missedIds.has(r.id)).map((/** @type {any} */ r) => r.id));
-  const news = uniq(round.results.filter((/** @type {any} */ r) => r.isNew).map((/** @type {any} */ r) => r.id));
+  const news = uniq(round.results.filter((/** @type {any} */ r) => r.isNew && !r.known).map((/** @type {any} */ r) => r.id));
+  const known = uniq(round.results.filter((/** @type {any} */ r) => r.known).map((/** @type {any} */ r) => r.id));
   const back = uniq([...missedIds]);
   const last = round.results[round.results.length - 1];
-  return { total: firsts.length, right, late, partial, fixed, news, back, fixedLast: !!(last && !last.first && last.ok),
+  return { total: firsts.length, right, late, partial, fixed, news, back, known, fixedLast: !!(last && !last.first && last.ok),
     ms: round.results.reduce((/** @type {number} */ a, /** @type {any} */ r) => a + Math.min(r.ms || 0, 60000), 0) };
 }

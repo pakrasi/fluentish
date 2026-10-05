@@ -242,6 +242,10 @@ Each runs once per event, never at rest, and is dropped under reduced motion (th
 - **Line landing** (Build an email): the page scrolls to the line's slot and settles first; the line then flies by translation only on a 6 px arc (520 ms, spring-soft), never scaled; its connectors light at 90 ms steps, the task point lands; then the action row scrolls back into view.
 - **Word lift** (Scripts, marking a word): 420 ms spring-snappy to the new tray item; the tray text changes on arrival; the count digit lands.
 - **Situation card**: the line types in word by word with the audio, the model answer arrives as a reply bubble, the grades rise in on a stagger.
+- **Card lift** ("I know this" on a new card, every round type): the card rises 40 px and fades (300 ms, ease-out) and the next card rises into its place (spring-soft): `swap(…, { kind: 'lift' })`. Reduced motion: a crossfade.
+- **Quick sort fling** (Practice › Quick sort): a copy of the word flies on a short arc into the Know or Learn button and shrinks into its count (440 ms), which lands on spring-pop; the next word rises in at once, so input never waits: `fling()` in core/motion.js. Reduced motion: only the counts change.
+
+Done screens (components.done-hero) are ordinary pages: the hero's start() brings the header and tab bar back and unlocks the page scroll (`leaveRound()`), the actions row follows the hero and stays on screen above the tab bar (sticky), and a cluster round shows its own words plus the cluster as a compact field, never the whole cluster as type. `tests/unit/done-screens.test.mjs` guards this.
 
 Rules:
 - Chrome (a round's header with its segments and count, the action row, the bars) never leaves the screen while a card swaps: `fx-roundhead` and `fx-roundact` view-transition names with no animation, and the page around the card holds still.

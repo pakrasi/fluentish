@@ -28,12 +28,13 @@ function byDeck(entries) {
 /**
  * Mark cards known. Cards already marked or already long-known are left as they are (marking is idempotent).
  * @param {Ctx} ctx @param {Entry[]} entries
- * @param {{by?: import('../domain/known.js').By, spread?: boolean}} [o]  spread: a batch spreads its checks (off for one card)
+ * @param {{by?: import('../domain/known.js').By, spread?: boolean, batch?: number}} [o]  spread: a batch spreads its checks (off
+ *   for one card); batch: the size of the batch these cards are part of (Quick sort marks one word at a time)
  * @returns {{n: number, entries: Entry[], undo: () => number}}
  */
-export function markCards(ctx, entries, { by = 'self', spread = true } = {}) {
+export function markCards(ctx, entries, { by = 'self', spread = true, batch = 0 } = {}) {
   const { store } = ctx, c = ctx.clock.ctx(), now = Date.now(), zone = tz();
-  const total = entries.length;
+  const total = Math.max(entries.length, batch || 0);
   /** @type {Entry[]} */ const done = [];
   for (const [deck, ids] of byDeck(entries)) {
     const cards = store.cards(deck) || {};
@@ -102,7 +103,7 @@ export function wordEntry(store, wordId) {
 
 /**
  * Mark words known (Quick sort, select mode, a level). @param {Ctx} ctx @param {string[]} wordIds ids without W:
- * @param {{spread?: boolean}} [o]
+ * @param {{spread?: boolean, batch?: number}} [o]
  */
 export const markWords = (ctx, wordIds, o = {}) => markCards(ctx, wordIds.map(w => wordEntry(ctx.store, w)), o);
 

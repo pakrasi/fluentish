@@ -7,6 +7,8 @@
    Every card is rebuilt from its id (itemFor), so a saved round resumes and a due round can mix clusters. Typed rounds
    run in Practice's round (round.js) and are graded by grade.js over match.js, like every other typed answer. */
 
+import { itemOf } from '../../../domain/known.js';
+
 const ART = new Set(['der', 'die', 'das']);
 export const ROUND = 12;
 export const NEW_PER_ROUND = 6;
@@ -136,4 +138,30 @@ export function pickIds(param) {
     if (out.length >= PICK_MAX) break;
   }
   return out;
+}
+
+/**
+ * The words a round asked, as word ids in the cluster's order (a family card, an opposite and a preposition gap ask a
+ * word too). @param {Record<string, any>} prev the round's cards (id → record before) @param {any} cl the cluster or null
+ * @param {any} content the clusters content
+ */
+export function roundWords(prev, cl, content) {
+  /** @type {string[]} */ const out = [];
+  for (const id of Object.keys(prev || {})) {
+    let w = itemOf(id).replace(/^W:/, '');
+    if (id.startsWith('CP:')) w = (content?.preps?.gaps || []).find((/** @type {any} */ g) => g.id === id.slice(3))?.prep || '';
+    if (w && !/^[A-Z]{1,2}:/.test(w) && !out.includes(w)) out.push(w);
+  }
+  return cl ? cl.items.filter((/** @type {string} */ w) => out.includes(w)).concat(out.filter(w => !cl.items.includes(w))) : out;
+}
+
+/**
+ * The part of a cluster a round touched: its words (a family keeps its head, opposites the pairs of those words).
+ * @param {any} cl @param {string[]} words
+ */
+export function partOf(cl, words) {
+  const set = new Set(words);
+  if (cl.type === 'opp') { const pairs = (cl.pairs || []).filter((/** @type {any} */ p) => set.has(p.a) || set.has(p.b)); return { ...cl, pairs, items: [...new Set(pairs.flatMap((/** @type {any} */ p) => [p.a, p.b]))] }; }
+  if (cl.type === 'family') return { ...cl, items: [cl.head, ...cl.items.filter((/** @type {string} */ w) => w !== cl.head && set.has(w))] };
+  return { ...cl, items: cl.items.filter((/** @type {string} */ w) => set.has(w)) };
 }

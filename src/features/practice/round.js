@@ -13,7 +13,7 @@ import { h, replace, announce } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
 import { correct as fxCorrect, wrong as fxWrong, resetAnswer, swap, skip as skipHold, reduced, fill } from '../../core/motion.js';
 import { progressOf, drawProgress, againRow } from './progress.js';
-import { doneHero } from './done-hero.js';
+import { doneHero, againLink } from './done-hero.js';
 import { label, add } from '../../core/clock.js';
 import * as Match from '../../domain/match.js';
 import * as RD from '../../domain/b1ready.js';
@@ -33,6 +33,7 @@ import { loadClusters, dueCards as clusterDue, update as updateClusters, dayOf a
 import { drawClusterDone } from './clusters/view.js';
 import { marked } from '../../data/known.js';
 import { skipsNew } from '../../domain/known.js';
+import { knowButton, isKnowKey, knowCard, knownResult } from './iknow.js';
 
 const SVG = 'http://www.w3.org/2000/svg';
 const TEIL = /** @type {Record<string, string>} */ ({ S1: 'Teil 1', S2: 'Teil 2', S3: 'Teil 3', W1: 'Aufgabe 1', W2: 'Aufgabe 2', W3: 'Aufgabe 3', L2: 'Teil 2', L3: 'Teil 3', L5: 'Teil 5' });
@@ -186,7 +187,9 @@ export async function mountRound(el, ctx) {
   const card = h('article', { class: 'card pr-card' }, h('div', { class: 'card-meta' }, meta, secs), tbar, promptBox, answerEl, moves, reveal);
   const secondary = h('button', { type: 'button', class: 'btn btn-quiet pressable', onpointerdown: keep, onclick: () => onSecondary(), hidden: true });
   const primary = h('button', { type: 'button', class: 'btn btn-primary pressable pr-primary', onpointerdown: keep, onclick: () => onReturn() });
-  const actions = h('div', { class: 'card-actions pr-actions' }, secondary, primary);
+  // "I know this" on a new card (iknow.js): marks it known, the card lifts away, the round moves on
+  const knowBtn = knowButton(t, () => knowThis(), { typed: true });
+  const actions = h('div', { class: 'card-actions pr-actions' }, knowBtn, secondary, primary);
   const scroll = h('div', { class: 'pr-scroll' }, card);
   const box = h('div', { class: ['pr-round', docked ? 'is-docked' : 'is-flow'], role: 'region', 'aria-label': t('practice.round') }, top, scroll, actions);
   const h1 = h('h1', { class: 'sr-only' }, t('practice.round'));
@@ -257,6 +260,25 @@ export async function mountRound(el, ctx) {
     else if (state === 'retype') sec = t('practice.skip');
     secondary.hidden = !sec;
     if (sec) replace(secondary, sec, h('kbd', null, 'Tab'));
+    knowBtn.hidden = !canKnow();
+  }
+  const canKnow = () => !!entry && entry.isNew && entry.item.area !== 'mistakes' && (state === 'answer' || state === 'pick') && !holding;
+  /** "I know this": the card is marked known (never a new item of the day), lifts away, and the round goes on. */
+  function knowThis() {
+    if (!canKnow() || !alive) return;
+    const it = entry.item, id = it.id;
+    stopTimer(); clearTimeout(auto);
+    if (!(id in round.prev)) round.prev[id] = entry.before;
+    knowCard(ctx, { deck, id });
+    round.results.push(knownResult(id));
+    recorded = true; state = 'known';
+    const k = stripIds.indexOf(id);
+    if (strip && k >= 0) strip.set(k, 2);
+    updateDots();
+    announce(t('practice.know.announce'));
+    if (!S.advance(round)) { saveLogs(store, { round, slot }); finish(); return; }
+    saveLogs(store, { round, slot });
+    drawCard(false, 'lift');
   }
   function updateDots() {
     // the planned cards are the segments; cards that come back are ticks under them (the bar never re-divides)
@@ -305,11 +327,11 @@ export async function mountRound(el, ctx) {
     setButtons();
     startTimer(entry.limit ? entry.limit * 1000 : null);
   }
-  async function drawCard(first = false) {
+  async function drawCard(first = false, kind = 'forward') {
     entry = S.current(round, data.byId, store.cards(deck));
     if (!entry) return finish();
     if (first) { fillCard(); focusInput(); announce(t('practice.cardAnnounce', { n: progressOf(round, false, r => !!r.ok).k, total: round.planned || round.queue.length })); return; }
-    await swap(() => fillCard(), { kind: 'forward', fallbackEl: card });
+    await swap(() => fillCard(), { kind, fallbackEl: card });
     focusInput();
     scroll.scrollTop = 0;
   }
@@ -630,12 +652,14 @@ export async function mountRound(el, ctx) {
     // Tab is Skip / Show me only while that button is there; otherwise focus moves on as usual (no keyboard trap)
     if (e.key === 'Tab' && !e.shiftKey && !secondary.hidden) { e.preventDefault(); onSecondary(); return; }
     if (e.key === 'Escape') { e.preventDefault(); end(); return; }
+    if (isKnowKey(e, true)) { if (canKnow()) { e.preventDefault(); knowThis(); } return; }
     if (e.altKey && (e.key === 'a' || e.key === 'å')) { e.preventDefault(); fb.querySelectorAll('details').forEach(d => { d.open = !d.open; }); clearTimeout(auto); return; }
     if (state === 'feedback' && !holding && e.key.length === 1 && !e.metaKey && !e.ctrlKey) next();   // typing moves on; the key lands in the next answer
   });
   input.addEventListener('beforeinput', e => { if (/** @type {InputEvent} */ (e).inputType === 'insertLineBreak') { e.preventDefault(); onReturn(); } });
   const onDocKey = (/** @type {KeyboardEvent} */ e) => {
     if (state === 'pick' && ['1', '2', '3'].includes(e.key)) { e.preventDefault(); pick(+e.key - 1); }
+    else if (document.activeElement !== input && (isKnowKey(e, false) || isKnowKey(e, true)) && canKnow()) { e.preventDefault(); knowThis(); }
     else if (e.key === 'Escape' && document.activeElement !== input) end();
   };
   document.addEventListener('keydown', onDocKey);
@@ -665,8 +689,9 @@ export async function mountRound(el, ctx) {
       saveLogs(store, { round: null, slot });
       updateClusters(store, x => { const d = clusterDay(store, st.c.today); return { ...x, day: { ...d, rounds: d.rounds + 1 } }; });
       addActivity(store, st.c.today, { minutes: minutesSpent(), rounds: 1 });
-      const firsts = round.results.filter((/** @type {any} */ r) => r.first);
-      drawClusterDone(el, ctx, { key: ck.key, right: firsts.filter((/** @type {any} */ r) => r.ok).length, total: firsts.length, prev: round.prev || {}, again: S.roundHref(round), fromMap: backTo === '/lookup/map' });
+      const firsts = round.results.filter((/** @type {any} */ r) => r.first && !r.known);
+      drawClusterDone(el, ctx, { key: ck.key, right: firsts.filter((/** @type {any} */ r) => r.ok).length, total: firsts.length, prev: round.prev || {}, again: S.roundHref(round), fromMap: backTo === '/lookup/map',
+        known: round.results.filter((/** @type {any} */ r) => r.known).length });
       return;
     }
     day.rounds = (day.rounds || 0) + 1;
@@ -689,12 +714,12 @@ export async function mountRound(el, ctx) {
 
   // test hook (localhost only): the browser tests read the current card and drive the round
   if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) {
-    /** @type {any} */ (window).__practice = { get state() { return state; }, get entry() { return entry; }, input, onReturn, onSecondary, pick };
+    /** @type {any} */ (window).__practice = { get state() { return state; }, get entry() { return entry; }, input, onReturn, onSecondary, pick, knowThis };
   }
   fit();
   // answers already given in a resumed round show in the strip
-  const firstOk = new Map(round.results.filter((/** @type {any} */ r) => r.first).map((/** @type {any} */ r) => [r.id, r.ok]));
-  /** @type {Field | null} */ const strip = new Field(/** @type {HTMLCanvasElement} */ (stripEl), stripIds.map(id => (firstOk.has(id) ? (firstOk.get(id) ? 3 : 1) : 0)), { cell: 6, gap: 2, label: null });
+  const firstOk = new Map(round.results.filter((/** @type {any} */ r) => r.first).map((/** @type {any} */ r) => [r.id, r.known ? 2 : r.ok ? 3 : 1]));
+  /** @type {Field | null} */ const strip = new Field(/** @type {HTMLCanvasElement} */ (stripEl), stripIds.map(id => firstOk.get(id) || 0), { cell: 6, gap: 2, label: null });
   if (round.queue.some((/** @type {any} */ e) => data.byId.get(e.id)?.card?.ex)) prefetchAudio(ctx.content);
   await drawCard(true);
   return () => { cleanup(); stopAudio(); document.body.dataset.chrome = 'on'; document.body.classList.remove('pr-in-round'); };
@@ -728,7 +753,8 @@ function drawDone(el, ctx, data, round, backTo) {
   const view = round.kind === 'mistakes' ? null : readinessView(st);
   const fieldEl = view ? h('canvas', { class: 'field pr-done-field' }) : null;
   const hero = doneHero({ label: t('practice.roundDone'), figure: sum.right, of: t('practice.ofRight', { n: sum.total }),
-    lines: [sum.late ? t('practice.late', { n: sum.late }) : null, sum.partial ? t('practice.partialN', { n: sum.partial }) : null, sum.fixedLast ? t('practice.lastFixed') : null],
+    lines: [sum.late ? t('practice.late', { n: sum.late }) : null, sum.partial ? t('practice.partialN', { n: sum.partial }) : null, sum.fixedLast ? t('practice.lastFixed') : null,
+      sum.known.length ? t('practice.know.inRound', { n: sum.known.length }) : null],
     data: view ? h('div', { class: 'pr-ready' },
       h('p', { class: 'pr-ready-top' }, h('span', { class: 'label' }, exam ? t('practice.readyFor', { date: label(c.exam) }) : t('practice.readyNow')),
         h('b', { class: 'tnum' }, `${p1(b.recall)}% → ${p1(a.recall)}%`)), bar, fieldEl,
@@ -737,7 +763,7 @@ function drawDone(el, ctx, data, round, backTo) {
     hero.el,
     h('p', { class: 'pr-next' }, more ? t(write ? (wDue ? 'practice.write.nextUp' : 'practice.write.nextNew') : 'practice.nextUp', write ? { due: wDue, n: C.newLeftOf(st, 'w') } : { due: st.dueN, n: C.newLeft(st) }) : t('practice.allDone', { n: tomorrow })),
     h('div', { class: 'pr-done-actions' },
-      more ? h('a', { class: 'btn btn-primary pressable', href: anotherHref, id: 'pr-again' }, t('practice.another', { min: roundMinutes(C.ROUND) })) : null,
+      more ? againLink(ctx, anotherHref, t('practice.another', { min: roundMinutes(C.ROUND) }), { id: 'pr-again' }) : null,
       h('a', { class: ['btn', 'pressable', !more && 'btn-primary'], href: '#/today' }, t('practice.doneToday'))),
     sum.back.length ? h('section', { class: 'pr-list' }, h('h2', null, t('practice.list.back')), h('p', { class: 'caption' }, t('practice.list.backSub')),
       h('ul', { class: 'list' }, sum.back.map((/** @type {any} */ it) => h('li', { class: 'list-item' }, h('span', { lang: 'de' }, short(it)),
@@ -756,8 +782,10 @@ function drawDone(el, ctx, data, round, backTo) {
     cells.slice(24).forEach(i => field?.set(i, Math.max(2, view.states[i])));
   }
   const stopHero = hero.start();
+  const doneEl = el.firstElementChild;
   const onKey = (/** @type {KeyboardEvent} */ e) => {
-    if (e.key === 'Enter' && more && !/** @type {HTMLElement} */ (e.target).closest('a,button')) { e.preventDefault(); location.hash = anotherHref; }
+    if (!doneEl || !doneEl.isConnected) { stop(); return; }   // another round mounted on the same address
+    if (e.key === 'Enter' && more && !/** @type {HTMLElement} */ (e.target).closest('a,button')) { e.preventDefault(); ctx.go(anotherHref.slice(1)); }
     if (e.key === 'Escape') { e.preventDefault(); ctx.go(backTo); }
   };
   document.addEventListener('keydown', onKey);

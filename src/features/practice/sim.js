@@ -300,13 +300,13 @@ export function summary(round, byId) {
   /** @type {Map<string, {item: Item, g: number, last: number}>} */ const seen = new Map();
   for (const r of round.results) {
     const item = byId.get(r.id);
-    if (!item) continue;
+    if (!item || r.known) continue;   // marked "I know this": counted apart
     const cur = seen.get(r.id);
     if (!cur) seen.set(r.id, { item, g: r.g, last: r.g }); else cur.last = r.g;
   }
   const list = [...seen.values()];
   const by = (/** @type {number} */ g) => list.filter(x => x.g === g).length;
-  return { list, total: list.length, counts: { again: by(1), hard: by(2), good: by(3), easy: by(4) },
+  return { list, total: list.length, known: round.results.filter((/** @type {any} */ r) => r.known).length, counts: { again: by(1), hard: by(2), good: by(3), easy: by(4) },
     fresh: round.results.filter((/** @type {any} */ r) => r.isNew).length, cards: round.results.length,
     ms: round.results.reduce((/** @type {number} */ a, /** @type {any} */ r) => a + (r.ms || 0), 0) };
 }

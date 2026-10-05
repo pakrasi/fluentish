@@ -25,6 +25,7 @@ import { playLine, stopLine } from './sim-audio.js';
 import { simToday } from './plan.js';
 import { forecaster, tz } from './data.js';
 import { recallBar } from './hub.js';
+import { knowButton, isKnowKey, knowCard, knownResult } from './iknow.js';
 
 const pct = (/** @type {number} */ x) => new Intl.NumberFormat('en-GB', { style: 'percent', maximumFractionDigits: 0 }).format(x || 0);
 const back = (/** @type {string} */ href, /** @type {string} */ text) => h('a', { class: 'pr-backlink pressable', href }, icon('prev', { size: 16 }), text);
@@ -199,7 +200,8 @@ async function mountRound(el, ctx) {
 
   const showBtn = h('button', { type: 'button', class: 'btn btn-primary pressable pr-primary sim-show', onclick: () => doReveal() }, t('practice.sim.show'), h('kbd', null, 'Space'));
   const grades = gradeRow({ t, label: t('practice.sim.how'), onGrade: g => grade(g) });
-  const actions = h('div', { class: 'card-actions pr-actions sim-actions' }, showBtn, grades.el);
+  const knowBtn = knowButton(t, () => knowThis());
+  const actions = h('div', { class: 'card-actions pr-actions sim-actions' }, knowBtn, showBtn, grades.el);
   const scroll = h('div', { class: 'pr-scroll' }, card);
   const box = h('div', { class: 'pr-round sim-round is-docked', role: 'region', 'aria-label': t('practice.sim.round') }, top, scroll, actions);
   const h1 = h('h1', { class: 'sr-only' }, t('practice.sim.round'));
@@ -250,6 +252,7 @@ async function mountRound(el, ctx) {
     state = 'think';
     showBtn.hidden = false; grades.reset();
     const cards = simCards(store);
+    knowBtn.hidden = !!(cards[item.id]?.reps || q.re);
     when = S.preview(cards[item.id] || null, c, Date.now(), forecaster(cards, c));
     grades.set(when.map(w => (w == null ? t('practice.sim.inRound') : t('practice.sim.days', { n: w }))));
     updateTop();
@@ -274,7 +277,7 @@ async function mountRound(el, ctx) {
     state = 'revealed';
     reveal.classList.add('is-open');
     say.hidden = true;
-    showBtn.hidden = true; grades.show();   // the suggestion (Good) takes the focus, so it never drops to the page
+    showBtn.hidden = true; knowBtn.hidden = true; grades.show();   // the suggestion (Good) takes the focus, so it never drops to the page
     announce(item ? item.answers[0].de : '');
     playAnswer();
   }
@@ -308,11 +311,26 @@ async function mountRound(el, ctx) {
     setTimeout(next, reduced() ? 120 : 260);
   }
 
-  async function next() {
+  /** "I know this" on a new situation (iknow.js): marked known in deck 'speak', the card lifts away. */
+  function knowThis() {
+    if (state !== 'think' || busy || !item || knowBtn.hidden) return;
+    busy = true; state = 'graded';
+    const id = item.id;
+    knowCard(ctx, { deck: S.DECK, id });
+    round.results.push(knownResult(id));
+    updateTop(true);
+    const k = stripIds.indexOf(id);
+    if (k >= 0) strip.set(k, 2);
+    announce(t('practice.know.announce'));
+    stopLine();
+    next('lift');
+  }
+
+  async function next(kind = 'forward') {
     if (!alive) return;
     if (!S.advance(round)) { finish(); return; }
     saveRound(store, round);
-    await swap(() => { fillCard(); }, { kind: 'forward', fallbackEl: card });
+    await swap(() => { fillCard(); }, { kind, fallbackEl: card });
     scroll.scrollTop = 0;
     busy = false;
     showBtn.focus({ preventScroll: true });
@@ -329,7 +347,7 @@ async function mountRound(el, ctx) {
     ctx.go(backTo);
   }
   function finish() {
-    cleanup(false);   // the done screen stays full screen, as a B1 round's does
+    cleanup(false);   // the done hero brings the bars back (done-hero.js leaveRound)
     finishRound(store, round.day, minutes());
     drawDone(el, ctx, bank, byId, round, backTo, pick);
   }
@@ -345,6 +363,7 @@ async function mountRound(el, ctx) {
       return;
     }
     if (state === 'revealed' && grades.key(e)) return;
+    if (state === 'think' && isKnowKey(e, false) && !knowBtn.hidden) { e.preventDefault(); knowThis(); return; }
     if ((e.key === 'r' || e.key === 'R') && state !== 'graded') { e.preventDefault(); if (state === 'revealed') playAnswer(); else playOther(); }
   }
   document.addEventListener('keydown', onKey);
@@ -397,7 +416,8 @@ function drawDone(el, ctx, bank, byId, round, backTo, pick) {
   const good = sum.counts.good + sum.counts.easy;
   // the done hero (one figure, the atmosphere breathes once); its data object is the round's chunks as chat bubbles
   const hero = doneHero({ label: t('practice.roundDone'), figure: sum.total, of: t('practice.sim.done.title', { n: sum.total }),
-    lines: [`${t('practice.sim.done.counts', { good, hard: sum.counts.hard, again: sum.counts.again })} · ${t('practice.sim.done.time', { min: Math.max(1, Math.round(sum.ms / 60000)) })}`],
+    lines: [`${t('practice.sim.done.counts', { good, hard: sum.counts.hard, again: sum.counts.again })} · ${t('practice.sim.done.time', { min: Math.max(1, Math.round(sum.ms / 60000)) })}`,
+      sum.known ? t('practice.know.inRound', { n: sum.known }) : null],
     data: h('section', { class: 'sim-map-wrap', 'aria-label': t('practice.sim.done.map') }, h('ul', { class: 'sim-map' }, bubbles)) });
   replace(el, h('div', { class: 'practice pr-done sim-done stack' },
     hero.el,

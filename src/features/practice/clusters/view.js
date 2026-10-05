@@ -19,17 +19,18 @@ import { icon } from '../../../core/icons.js';
 import { countTo, reduced, swap, haptic } from '../../../core/motion.js';
 import { gradeRow } from '../selfgrade.js';
 import { progressOf, drawProgress, againRow } from '../progress.js';
-import { doneHero } from '../done-hero.js';
+import { doneHero, againLink } from '../done-hero.js';
 import { Field } from '../../../core/brand.js';
 import { TYPES } from '../../../domain/clusters.js';
 import { roundMinutes } from '../../../domain/today.js';
 import * as S from '../sim.js';
 import { forecaster, tz, addActivity } from '../data.js';
 import { loadClusters, loadKnowledge, countsOf, cellsOf, dueCards, recallOf, state, update, dayOf, DECK } from './data.js';
-import { cardIds, itemFor, compose } from './items.js';
+import { cardIds, itemFor, compose, roundWords, partOf } from './items.js';
 import { isDue } from '../../../domain/b1ready.js';
 import { marked } from '../../../data/known.js';
 import { skipsNew } from '../../../domain/known.js';
+import { knowButton, isKnowKey, knowCard, knownResult } from '../iknow.js';
 
 const back = (/** @type {string} */ href, /** @type {string} */ text) => h('a', { class: 'pr-backlink pressable', href }, icon('prev', { size: 16 }), text);
 const STATE_CLS = /** @type {Record<string, string>} */ ({ known: 'is-known', shaky: 'is-shaky', unknown: 'is-unknown', unseen: 'is-unseen' });
@@ -278,7 +279,8 @@ async function mountCluster(el, ctx, key) {
     h('p', { class: 'caption cl-legend' }, h('span', { class: 'cl-w is-known' }, t('practice.clusters.legend.known')), ' ', h('span', { class: 'cl-w is-shaky' }, t('practice.clusters.legend.shaky')), ' ',
       h('span', { class: 'cl-w is-unknown' }, t('practice.clusters.legend.unknown')), ' ', h('span', { class: 'cl-w is-unseen' }, t('practice.clusters.legend.unseen'))),
     lay.el,
-    h('p', null, h('a', { class: 'btn btn-quiet pressable cl-map', href: `#/lookup/map?cluster=${encodeURIComponent(key)}` }, icon('next', { size: 16 }), t('practice.clusters.onMap'))),
+    h('p', { class: 'cl-links' }, n.known < n.n ? h('a', { class: 'btn btn-quiet pressable cl-map', href: `#/practice/sort?cluster=${encodeURIComponent(key)}&from=cluster` }, t('practice.clusters.sort')) : null,
+      h('a', { class: 'btn btn-quiet pressable cl-map', href: `#/lookup/map?cluster=${encodeURIComponent(key)}` }, icon('next', { size: 16 }), t('practice.clusters.onMap'))),
     startN ? h('div', { class: 'cl-dock pr-queue-btn' }, typed, say) : h('p', { class: 'pr-empty' }, t('practice.clusters.nothing')));
   replace(el, view);
   update(store, s => ({ ...s, last: key, shown: { ...(s.shown || {}), [key]: n.known } }));
@@ -291,34 +293,51 @@ async function mountCluster(el, ctx, key) {
 /* ------------------------------------------------------------------ */
 
 /**
+ * The done screen of a cluster round (typed or said). Its data object is this round's words, landing where they now
+ * belong, and the whole cluster as a compact field with one count line ("7 of 223 known in Describing words"); never
+ * the whole cluster as type, which on a big cluster pushed the buttons off the page.
  * @param {HTMLElement} el @param {import('../../contract.js').ViewCtx} ctx
- * @param {{key: string | null, right: number, total: number, prev: Record<string, any>, again: string, fromMap?: boolean}} o
- *   key: the cluster ('<type>:<id>'), null for a due round; prev: the cards before the round (id → record or null)
+ * @param {{key: string | null, right: number, total: number, prev: Record<string, any>, again: string, fromMap?: boolean, known?: number}} o
+ *   key: the cluster ('<type>:<id>'), null for a due round; prev: the cards before the round (id → record or null);
+ *   known: cards marked "I know this" in the round
  */
-export async function drawClusterDone(el, ctx, { key, right, total, prev, again, fromMap = false }) {
+export async function drawClusterDone(el, ctx, { key, right, total, prev, again, fromMap = false, known = 0 }) {
   const { t, store } = ctx;
   const [data, after, before] = await Promise.all([loadClusters(ctx), loadKnowledge(ctx), loadKnowledge(ctx, { patch: { [DECK]: prev } })]);
   const cl = key ? data.ix.byKey.get(key) : null;
-  const backHref = cl ? `#/practice/clusters/${cl.type}/${cl.id}` : '#/practice/clusters';
+  const backHref = fromMap ? '#/lookup/map' : cl ? `#/practice/clusters/${cl.type}/${cl.id}` : '#/practice/clusters';
   const n0 = cl ? countsOf(cl, before).known : 0, n1 = cl ? countsOf(cl, after).known : 0;
   const countEl = h('span', { class: 'tnum' }, String(n0));
-  const lay = cl ? clusterLayout(cl, data.ix, data.c, before, t) : null;
+  // this round's words, in the cluster's own layout when there is one (a due round mixes clusters: a block of words)
+  const words = roundWords(prev, cl, data.c).filter(w => data.ix.word(w));
+  const part = words.length ? (cl ? partOf(cl, words) : { type: 'topic', items: words }) : null;
+  const lay = part ? clusterLayout(part, data.ix, data.c, before, t) : null;
   if (lay) lay.place(before);
-  // the done hero; its data object is the cluster itself, the words landing where they now belong, and one count line
+  const fieldEl = cl && cl.items.length >= 6 ? h('canvas', { class: 'field cl-done-field' }) : null;
   const hero = doneHero({ label: t('practice.roundDone'), figure: right, of: t('practice.ofRight', { n: total }),
-    data: cl ? h('div', { class: 'cl-done-data' },
-      h('p', { class: 'cl-count cl-count-line' }, countEl, ' ', h('span', null, t('practice.clusters.knownIn', { n: countsOf(cl, after).n, name: cl.label }))),
-      lay ? lay.el : null) : null });
+    lines: [known ? t('practice.know.inRound', { n: known }) : null],
+    data: h('div', { class: 'cl-done-data' },
+      lay ? h('section', { class: 'cl-done-words', 'aria-label': t('practice.clusters.roundWords') }, h('h2', { class: 'label' }, t('practice.clusters.roundWords')), lay.el) : null,
+      cl ? h('div', { class: 'cl-done-all' }, h('p', { class: 'cl-count cl-count-line' }, countEl, ' ', h('span', null, t('practice.clusters.knownIn', { n: countsOf(cl, after).n, name: cl.label }))), fieldEl) : null) });
   replace(el, h('div', { class: 'practice pr-done cl stack' },
     hero.el,
     h('div', { class: 'pr-done-actions' },
-      h('a', { class: 'btn btn-primary pressable', href: again, id: 'pr-again' }, t('practice.clusters.another')),
-      fromMap ? h('a', { class: 'btn pressable', href: '#/lookup/map' }, t('practice.clusters.backToMap'))
-        : h('a', { class: 'btn pressable', href: backHref }, cl ? t('practice.clusters.backTo', { name: cl.label }) : t('practice.clusters.title')))));
+      againLink(ctx, again, t('practice.clusters.another'), { id: 'pr-again' }),
+      h('a', { class: 'btn pressable', href: backHref, id: 'pr-done' }, t('practice.done')))));
   const stop = hero.start();
-  addEventListener('hashchange', stop, { once: true });
+  /** @type {Field | null} */ let field = null;
+  if (cl && fieldEl) {
+    // the whole cluster: the cells this round moved start where they were and land one after another
+    const a = cellsOf(cl, after), b = cellsOf(cl, before);
+    field = new Field(/** @type {HTMLCanvasElement} */ (fieldEl), b.map((x, i) => Math.min(x, a[i])), { cell: 5, gap: 1, label: null });
+    const moved = a.map((x, i) => (x !== b[i] ? i : -1)).filter(i => i >= 0);
+    moved.slice(0, 24).forEach((i, k) => setTimeout(() => field?.ripple(i, { state: a[i] }), reduced() ? 0 : 640 + k * 90));
+    moved.slice(24).forEach(i => field?.set(i, a[i]));
+  }
+  addEventListener('hashchange', () => { stop(); field?.destroy(); }, { once: true });
   if (cl) update(store, s => ({ ...s, shown: { ...(s.shown || {}), [cl.key]: n1 } }));
   if (lay) setTimeout(() => settle(lay, after, countEl, n1), reduced() ? 0 : 520);
+  else if (cl) countTo(countEl, n1, { duration: 700 });
   if (n1 > n0) announce(t('practice.clusters.nowKnown', { n: n1 - n0 }));
 }
 
@@ -361,8 +380,9 @@ async function mountSay(el, ctx, key) {
   const showBtn = h('button', { type: 'button', class: 'btn btn-primary pressable pr-primary', onclick: () => doReveal() }, t('practice.sim.show'), h('kbd', null, 'Space'));
   const grades = gradeRow({ t, label: t('practice.sim.how'), onGrade: g => grade(g) });
   const again = againRow();
+  const knowBtn = knowButton(t, () => knowThis());
   const box = h('div', { class: 'pr-round sim-round is-docked', role: 'region', 'aria-label': t('practice.clusters.sayTitle') },
-    h('div', { class: 'pr-top' }, segs, again, h('div', { class: 'pr-top-row' }, count, endBtn)), h('div', { class: 'pr-scroll' }, card), h('div', { class: 'card-actions pr-actions sim-actions' }, showBtn, grades.el));
+    h('div', { class: 'pr-top' }, segs, again, h('div', { class: 'pr-top-row' }, count, endBtn)), h('div', { class: 'pr-scroll' }, card), h('div', { class: 'card-actions pr-actions sim-actions' }, knowBtn, showBtn, grades.el));
   replace(el, h('h1', { class: 'sr-only' }, t('practice.clusters.sayTitle')), box);
   const vv = window.visualViewport;
   const fit = () => { box.style.height = `${vv ? vv.height : innerHeight}px`; };
@@ -387,12 +407,13 @@ async function mountSay(el, ctx, key) {
     showBtn.hidden = false; grades.reset();
     const cards = store.cards(DECK) || {};
     grades.set(S.preview(cards[it.id] || null, c, Date.now(), forecaster(cards, c)).map(w => (w == null ? t('practice.sim.inRound') : t('practice.sim.days', { n: w }))));
+    knowBtn.hidden = !!(cards[it.id]?.reps || round.queue[round.i].re);
     top();
     st = 'think'; t0 = performance.now();
   }
   function doReveal() {
     if (st !== 'think') return;
-    st = 'revealed'; reveal.classList.add('is-open'); sayHint.hidden = true; showBtn.hidden = true; grades.show();
+    st = 'revealed'; reveal.classList.add('is-open'); sayHint.hidden = true; showBtn.hidden = true; knowBtn.hidden = true; grades.show();
     announce(answer.textContent || '');
   }
   /** @param {1|2|3|4} g */
@@ -415,10 +436,23 @@ async function mountSay(el, ctx, key) {
     top(true);
     setTimeout(next, reduced() ? 120 : 260);
   }
-  async function next() {
+  /** "I know this" on a new card (iknow.js): marked known, the card lifts away. */
+  function knowThis() {
+    if (st !== 'think' || busy || knowBtn.hidden) return;
+    busy = true; st = 'graded';
+    const id = it.id;
+    const cards = store.cards(DECK) || {};
+    if (!(id in prev)) prev[id] = cards[id] ? structuredClone(cards[id]) : null;
+    knowCard(ctx, { deck: DECK, id });
+    round.results.push(knownResult(id));
+    top(true);
+    announce(t('practice.know.announce'));
+    next('lift');
+  }
+  async function next(kind = 'forward') {
     if (!alive) return;
     if (!S.advance(round)) return finish(false);
-    await swap(() => fill(), { kind: 'forward', fallbackEl: card });
+    await swap(() => fill(), { kind, fallbackEl: card });
     busy = false;
     showBtn.focus({ preventScroll: true });
     announce(`${task.textContent || ''} ${prompt.textContent || ''}`.trim());
@@ -428,15 +462,17 @@ async function mountSay(el, ctx, key) {
     alive = false; cleanup();
     addActivity(store, c.today, { minutes: Math.min(30, (performance.now() - t0r) / 60000), rounds: early ? 0 : 1 });
     if (!early) update(store, s => { const d = dayOf(store, c.today); return { ...s, day: { ...d, rounds: d.rounds + 1 } }; });
-    const firsts = round.results.filter((/** @type {any} */ r) => r.first);
-    if (early && !firsts.length) { ctx.go(`/practice/clusters/${type}/${cid}`); return; }
+    const firsts = round.results.filter((/** @type {any} */ r) => r.first && !r.known);
+    const known = round.results.filter((/** @type {any} */ r) => r.known).length;
+    if (early && !firsts.length && !known) { ctx.go(`/practice/clusters/${type}/${cid}`); return; }
     restore();
-    drawClusterDone(el, ctx, { key, right: firsts.filter((/** @type {any} */ r) => r.g >= 3).length, total: firsts.length, prev, again: `#/practice/clusters/${type}/${cid}/say` });
+    drawClusterDone(el, ctx, { key, right: firsts.filter((/** @type {any} */ r) => r.g >= 3).length, total: firsts.length, prev, again: `#/practice/clusters/${type}/${cid}/say`, known });
   }
   const onKey = (/** @type {KeyboardEvent} */ e) => {
     if (e.key === 'Escape') { e.preventDefault(); finish(true); return; }
     if (st === 'think' && (e.key === ' ' || e.key === 'Enter')) { e.preventDefault(); doReveal(); return; }
     if (st === 'revealed' && grades.key(e)) return;
+    if (st === 'think' && isKnowKey(e, false) && !knowBtn.hidden) { e.preventDefault(); knowThis(); return; }
     if (st === 'revealed' && (e.key === ' ' || e.key === 'Enter') && !(e.target instanceof HTMLElement && e.target.closest('button'))) { e.preventDefault(); grades.pick(grades.suggested); }
   };
   document.addEventListener('keydown', onKey);

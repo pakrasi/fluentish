@@ -441,6 +441,8 @@ export async function mount(el, ctx) {
       return h('div', null, toggle,
         chips(t('lookup.words.level'), 'level', [['', t('lookup.words.levelAll')], ...LEVELS.map(l => /** @type {[string, string]} */ ([l, l]))], level),
         caption(t('lookup.words.listCount', { n: num(rows.length) })),
+        // Quick sort the level's words: Know / Learn, one word at a time (Practice › sort)
+        level ? h('p', { class: 'lk-sort' }, h('a', { class: 'btn pressable', href: `#/practice/sort?level=${level}&from=lookup` }, t('lookup.words.sort', { level }))) : null,
         list(rows, r => dictRow(r, '')));
     }
     const mw = await D.myWords(store);

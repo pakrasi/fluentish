@@ -152,3 +152,4 @@ mark.lk-turn { background: color-mix(in oklab, var(--role-turn) var(--role-mix),
   .lk-search { top: calc(52px + env(safe-area-inset-top)); }
 }
 .lk-notes > * { min-width: 0; }
+.lk-sort { margin: var(--s-2) 0 var(--s-3); }

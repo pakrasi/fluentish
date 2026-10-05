@@ -9,6 +9,8 @@
      #/practice/write/build/<task>[/free]  Build an email, then write it yourself (write.js, build.js)
      #/practice/scripts[/…]            script mode (script/index.js); kind=script:<id> rounds go to script/words.js
      #/practice/clusters[/<type>[/<id>[/say]]]   word clusters (clusters/view.js); kind=cluster:… rounds run in round.js
+     #/practice/sort?cluster=…|level=…|ids=…   Quick sort: Know / Learn, one word at a time (known/sort.js)
+     #/practice/known/<A1|A2>          mark a level's words known after a spot check (known/check.js)
    Pure logic: pool.js, grade.js, compose.js, session.js, words.js (tested in node). Storage and network: data.js. */
 import { h, replace } from '../../core/dom.js';
 import { notice } from '../../core/ui.js';
@@ -34,13 +36,15 @@ export async function mount(el, ctx) {
   }
   // an old link: #/practice/teil2 is the Teil 2 talk
   if (parts[0] === 'teil2') { ctx.go('/practice/speak/teil2', { replace: true }); return; }
-  if (parts[0] && !['round', 'speak', 'situations', 'words', 'write', 'scripts', 'clusters'].includes(parts[0])) {
+  if (parts[0] && !['round', 'speak', 'situations', 'words', 'write', 'scripts', 'clusters', 'sort', 'known'].includes(parts[0])) {
     replace(el, h('div', { class: 'practice stack' }, h('div', { class: 'page-head' }, h('h1', null, ctx.t('error.notFound'))), h('a', { class: 'btn pressable', href: '#/practice' }, ctx.t('practice.back'))));
     return;
   }
   warmVoices();
   if (parts[0] === 'scripts') return (await import('./script/index.js')).mountScripts(el, ctx, parts.slice(1));
   if (parts[0] === 'clusters') return (await import('./clusters/view.js')).mountClusters(el, ctx, parts.slice(1));
+  if (parts[0] === 'sort') return (await import('./known/sort.js')).mountSort(el, ctx);
+  if (parts[0] === 'known') return (await import('./known/check.js')).mountCheck(el, ctx, parts[1] || 'A1');
   if (parts[0] === 'round' && /^script:/.test(ctx.query.get('kind') || '')) return (await import('./script/index.js')).mountScriptRound(el, ctx);
   if (parts[0] === 'round') return mountRound(el, ctx);
   if (parts[0] === 'speak') return mountSpeak(el, ctx, parts.slice(1));
