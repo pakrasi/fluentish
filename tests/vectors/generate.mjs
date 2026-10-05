@@ -13,7 +13,7 @@
 // fsrs.json      domain/fsrs.js: rate() over its flags, schedule() over answer sequences in every phase, dueFor(),
 //                R(), interval(), recap()
 // clock.json     core/clock.js: phase(), context(), today() at local times around the 04:00 cutoff, the labels
-// budget.json    domain/budget.js: dayBudget, writingBudget, dailyNew, simBudget, buildBudget, streamQuota
+// budget.json    domain/budget.js: allowance() over modes, settings and decks, mode, buildShare, streamQuota
 //
 // When a change alters results on purpose, write the vectors in a commit of their own and list every changed entry
 // with its reason in the commit message (round 3, lane A2).
@@ -170,31 +170,32 @@ export async function budgetVectors() {
     { minutesPerDay: 45, newPerDay: null, practice: { buildNew: 12 } },
     { practice: { buildNew: 99 } },
   ];
+  // deck inputs: none; a light day; a heavy day; decks with little open; new items already shown (a round over its share)
+  const deckSets = [
+    {},
+    { b1: { due: 12 }, writing: { due: 3, open: 40 }, speak: { due: 4 }, mistakes: { due: 2, open: 3 } },
+    { b1: { due: 160, open: 500 }, writing: { due: 30, open: 60 }, speak: { due: 40, open: 100 }, mistakes: { due: 10, open: 8 }, script: { due: 20, open: 30 }, build: { due: 15, open: 50 }, clusters: { due: 25, open: 80 } },
+    { b1: { due: 5, open: 3 }, writing: { due: 0, open: 0 }, speak: { due: 1, open: 2 }, build: { due: 0, open: 4 }, clusters: { due: 0, open: 2 } },
+    { b1: { due: 30, shown: 10 }, writing: { due: 6, open: 40, shown: 4 }, clusters: { due: 0, shown: 50 }, build: { due: 2, shown: 3 } },
+  ];
+  const extras = [
+    {},
+    { priorityLeft: 120, focus: true, fixedMin: 15 },
+    { priorityLeft: 0, goals: { script: true, build: true, clusters: true }, scripts: 2, examDecks: { script: 1 } },
+    { fresh: { day: 0 } },
+    { fresh: { day: 4 }, goals: { clusters: true } },
+  ];
   for (const [today, exam] of ctxs) {
     const c = context({ today, exam });
-    for (const settings of settingsList) {
-      const base = { today, exam, settings };
-      for (const dueN of [0, 7, 40, 160]) for (const priorityLeft of [null, 0, 30, 400]) {
-        rows.push({ fn: 'dailyNew', in: { ...base, dueN, priorityLeft, reserved: 0 }, out: B.dailyNew({ c, settings, dueN, priorityLeft }) });
-        rows.push({ fn: 'dailyNew', in: { ...base, dueN, priorityLeft, reserved: 13.5 }, out: B.dailyNew({ c, settings, dueN, priorityLeft, reserved: 13.5 }) });
-      }
-      for (const [dueN, newShown, poolLeft, side] of [[0, 0, Infinity, 0], [12, 0, 500, 0], [30, 5, 3, 6], [90, 40, 900, 12], [5, 0, 0, 0]])
-        for (const writing of [null, { due: 6, left: 40, shown: 0, focus: true, taskMin: 15 }, { due: 0, left: 10, shown: 2, focus: false }]) {
-          const inp = { dueN, priorityLeft: 120, newShown, poolLeft, writing, side };
-          rows.push({ fn: 'dayBudget', in: { ...base, ...inp, poolLeft: poolLeft === Infinity ? 'Infinity' : poolLeft }, out: B.dayBudget({ c, settings, ...inp }) });
-        }
-      for (const w of [{ due: 0, left: 0, shown: 0 }, { due: 10, left: 60, shown: 0, focus: true, taskMin: 15 }, { due: 3, left: 5, shown: 4, focus: false }, { due: 30, left: 100, shown: 1, focus: true, taskMin: 0 }])
-        rows.push({ fn: 'writingBudget', in: { ...base, ...w }, out: B.writingBudget({ c, settings, ...w }) });
-      for (const [dueN, newShown, unseen] of [[0, 0, Infinity], [8, 3, 2], [40, 0, 100]]) {
-        const u = unseen === Infinity ? 'Infinity' : unseen;
-        rows.push({ fn: 'simBudget', in: { ...base, dueN, newShown, unseen: u }, out: B.simBudget({ c, settings, dueN, newShown, unseen }) });
-        rows.push({ fn: 'buildBudget', in: { ...base, dueN, newShown, unseen: u }, out: B.buildBudget({ c, settings, dueN, newShown, unseen }) });
-      }
+    for (const fresh of [null, { day: 2 }]) rows.push({ fn: 'mode', in: { today, exam, fresh }, out: B.mode(c, fresh) });
+    for (const settings of settingsList) for (let a = 0; a < deckSets.length; a++) for (const x of extras) {
+      const inp = { decks: deckSets[a], ...x };
+      rows.push({ fn: 'allowance', in: { today, exam, settings, ...inp }, out: B.allowance({ c, settings, ...inp }) });
     }
   }
-  for (const s of settingsList) rows.push({ fn: 'buildNewPerDay', in: s, out: B.buildNewPerDay(s) }, { fn: 'newPerDayChosen', in: s, out: B.newPerDayChosen(s) });
+  for (const s of settingsList) rows.push({ fn: 'buildShare', in: s, out: B.buildShare(s) }, { fn: 'newPerDayChosen', in: s, out: B.newPerDayChosen(s) });
   for (const n of [0, 1, 4, 11, 20, 55]) for (const st of ['p', 'g']) rows.push({ fn: 'streamQuota', in: [n, st], out: B.streamQuota(n, st) });
-  return lines(header('budget', 'domain/budget.js outputs. Infinity is written as the string "Infinity".'), rows);
+  return lines(header('budget', 'domain/budget.js outputs (allowance, mode, buildShare, newPerDayChosen, streamQuota). Infinity is written as null.'), rows);
 }
 
 /* ---------------- CLI ---------------- */
