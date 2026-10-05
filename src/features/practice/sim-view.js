@@ -2,8 +2,11 @@
      #/practice/situations                      the picker: today's round, levels, situations by function
      #/practice/situations/round?pick=mixed|level:B1|fn:decline[&from=today]   a round, full screen
 
-   A card, about 10 to 15 seconds: the situation lands and the other person's line plays (it appears word by word in
-   a speech bubble, a small waveform moves while it plays); he answers out loud, to himself (no typing, no mic);
+   A card, about 10 to 15 seconds: the situation lands and the other person's line plays. It is heard first: its words
+   stay behind "Show the words" (journey #10: the Hören half of a conversation is listening, not reading), and they
+   show at once with reduced motion or when no audio plays; a small waveform moves while it plays. He answers out
+   loud, to himself; with "Check with the mic" on (it replaced Say it aloud), a tap records the answer and the phone's
+   transcript is checked for the chunk and the Say it aloud checks (sim.js micCheck), which suggest a grade;
    Show answer (Space) unfolds the model answer with its chunk marked and plays it in a second voice; he grades
    himself with four big buttons (keys 1 to 4, Enter or Space = Good) and the card is scheduled in deck 'speak'.
    Good and Easy land the item's cell in the round strip in accent; three or more in a row send a ripple back
@@ -21,12 +24,14 @@ import { doneHero } from './done-hero.js';
 import { Field } from '../../core/brand.js';
 import * as RS from '../../domain/roundsize.js';
 import * as S from './sim.js';
-import { loadBank, simState, simCards, setStart, saveGrade, saveRound, finishRound, refreshSimStats } from './sim-data.js';
+import { loadBank, simState, simCards, setStart, saveGrade, saveRound, finishRound, refreshSimStats, updateSim } from './sim-data.js';
 import { playLine, stopLine } from './sim-audio.js';
 import { simToday } from './plan.js';
 import { forecaster, tz } from './data.js';
 import { recallBar } from './hub.js';
 import { knowButton, isKnowKey, knowCard, knownResult } from './iknow.js';
+import { speech } from './speech.js';
+import { session } from './data.js';
 
 const pct = (/** @type {number} */ x) => new Intl.NumberFormat('en-GB', { style: 'percent', maximumFractionDigits: 0 }).format(x || 0);
 const back = (/** @type {string} */ href, /** @type {string} */ text) => h('a', { class: 'pr-backlink pressable', href }, icon('prev', { size: 16 }), text);
@@ -191,9 +196,11 @@ async function mountRound(el, ctx) {
 
   const meta = h('span', { class: 'label' });
   const setup = h('p', { class: 'sim-setup' });
-  const line = h('p', { class: 'sim-line', lang: 'de' });
+  const line = h('p', { class: 'sim-line', lang: 'de', id: 'sim-line' });
+  // the line is heard first; its words wait behind this button (journey #10)
+  const wordsBtn = h('button', { type: 'button', class: 'btn btn-quiet pressable sim-words', 'aria-expanded': 'false', 'aria-controls': 'sim-line', onclick: () => showWords() }, t('practice.sim.showWords'));
   const playBtn = h('button', { type: 'button', class: 'sim-play pressable', 'aria-label': t('practice.sim.play'), onclick: () => playOther() }, wave());
-  const them = h('div', { class: 'sim-bubble sim-them' }, playBtn, line);
+  const them = h('div', { class: 'sim-bubble sim-them' }, playBtn, h('div', { class: 'sim-linebox' }, line, wordsBtn));
   const status = h('p', { class: 'caption sim-status', 'aria-live': 'polite' });
   const goal = h('p', { class: 'sim-goal' });
   const say = h('p', { class: 'caption sim-say' }, t('practice.sim.say'));
@@ -201,8 +208,19 @@ async function mountRound(el, ctx) {
   const ansPlay = h('button', { type: 'button', class: 'sim-play pressable', 'aria-label': t('practice.sim.playAnswer'), onclick: () => playAnswer() }, wave());
   const you = h('div', { class: 'sim-bubble sim-you' }, answerLine, ansPlay);
   const also = h('div', { class: 'sim-also' });
-  const reveal = h('div', { class: 'reveal-answer sim-reveal' }, h('div', null, h('p', { class: 'label sim-model' }, t('practice.sim.model')), you, also));
-  const card = h('article', { class: 'card pr-card sim-card' }, h('div', { class: 'card-meta' }, meta), setup, them, status, goal, say, reveal);
+  const heardSlot = h('div', { class: 'sim-heardslot' });
+  const reveal = h('div', { class: 'reveal-answer sim-reveal' }, h('div', null, heardSlot, h('p', { class: 'label sim-model' }, t('practice.sim.model')), you, also));
+  // Check with the mic (it replaced Say it aloud): a switch on the card, kept for the next rounds (kv speak.sim mic)
+  const sp = speech();
+  const canMic = sp.canListen();
+  let micOn = canMic && !!simState(store).mic;
+  /** @type {any} */ let live = null;
+  const micLabel = h('p', { class: 'caption pr-mic-l', 'aria-live': 'polite' });
+  const micBtn = h('button', { type: 'button', class: 'pr-mic sim-mic pressable', 'aria-label': t('practice.sim.mic.say'), onclick: () => listen() }, icon('mic', { size: 26 }));
+  const micBox = h('div', { class: 'pr-micbox sim-micbox', hidden: true }, micBtn, micLabel);
+  const micToggle = canMic ? h('button', { type: 'button', class: 'btn btn-quiet pressable sim-mictoggle', 'aria-pressed': String(micOn), onclick: () => setMic(!micOn) },
+    icon('mic', { size: 16 }), t('practice.sim.mic')) : null;
+  const card = h('article', { class: 'card pr-card sim-card' }, h('div', { class: 'card-meta' }, meta, micToggle), setup, them, status, goal, say, micBox, reveal);
 
   const showBtn = h('button', { type: 'button', class: 'btn btn-primary pressable pr-primary sim-show', onclick: () => doReveal() }, t('practice.sim.show'), h('kbd', null, 'Space'));
   const grades = gradeRow({ t, label: t('practice.sim.how'), onGrade: g => grade(g) });
@@ -242,8 +260,14 @@ async function mountRound(el, ctx) {
     replace(line, ...wordSpans(item.other.de));
     const words = line.querySelectorAll('.sim-w').length || 1;
     line.style.setProperty('--wstep', `${Math.round(Math.max(45, Math.min(110, 1500 / words)))}ms`);
-    line.classList.remove('is-typed'); void line.offsetWidth; line.classList.add('is-typed');
+    line.classList.remove('is-typed');
+    // heard first: the words wait behind "Show the words"; with reduced motion they are always on screen
+    line.hidden = !reduced();
+    wordsBtn.hidden = !line.hidden;
+    wordsBtn.setAttribute('aria-expanded', String(!line.hidden));
     them.classList.remove('is-playing');
+    replace(heardSlot);
+    stopListening();
     status.textContent = '';
     replace(goal, h('span', { class: 'label' }, t('practice.sim.goal')), ' ', item.goal);
     const [a0, ...more] = item.answers;
@@ -256,6 +280,7 @@ async function mountRound(el, ctx) {
     reveal.classList.remove('is-open');
     say.hidden = false;
     state = 'think';
+    drawMic();
     showBtn.hidden = false; grades.reset();
     const cards = simCards(store);
     knowBtn.hidden = !!(cards[item.id]?.reps || q.re);
@@ -271,6 +296,61 @@ async function mountRound(el, ctx) {
       onStart: () => them.classList.add('is-playing'), onEnd: () => them.classList.remove('is-playing') });
     if (!alive) return;
     status.textContent = res === 'blocked' ? t('practice.sim.tapToPlay') : res === 'none' ? t('practice.sim.noAudio') : '';
+    if (res === 'none') showWords();   // nothing to hear: the line is read on screen
+  }
+
+  /** The other person's words on screen (word by word, the kit's timing). */
+  function showWords() {
+    if (!item || !line.hidden) return;
+    line.hidden = false;
+    wordsBtn.hidden = true;
+    wordsBtn.setAttribute('aria-expanded', 'true');
+    if (!reduced()) { line.classList.remove('is-typed'); void line.offsetWidth; line.classList.add('is-typed'); }
+    if (document.activeElement === wordsBtn) playBtn.focus({ preventScroll: true });
+  }
+
+  // ---------- Check with the mic ----------
+  /** @param {boolean} on */
+  function setMic(on) {
+    micOn = on;
+    micToggle?.setAttribute('aria-pressed', String(on));
+    updateSim(store, s => ({ ...s, mic: on }));
+    if (!on) stopListening();
+    drawMic();
+    announce(t(on ? 'practice.sim.mic.on' : 'practice.sim.mic.off'));
+  }
+  function drawMic() {
+    micBox.hidden = !(micOn && state === 'think');
+    micBtn.dataset.state = 'idle';
+    micBtn.setAttribute('aria-pressed', 'false');
+    micLabel.textContent = sp.blocked() ? t('practice.speak.err.blocked') : t('practice.sim.mic.tap');
+  }
+  function stopListening() { if (live) { const l = live; live = null; l.stop(); } }
+  async function listen() {
+    if (!item || state !== 'think' || busy) return;
+    if (live) { live.stop(); micLabel.textContent = t('practice.speak.checking'); return; }
+    stopLine();
+    const it = item;
+    micBtn.dataset.state = 'listening'; micBtn.setAttribute('aria-pressed', 'true');
+    micLabel.textContent = t('practice.speak.listening');
+    const mine = live = sp.listen({ onInterim: (/** @type {string} */ x) => { micLabel.textContent = x; } });
+    const res = await mine.done;
+    if (live === mine) live = null;
+    if (!alive || item !== it || state !== 'think') return;
+    if (!res.text) {
+      micBtn.dataset.state = sp.blocked() ? 'error' : 'idle'; micBtn.setAttribute('aria-pressed', 'false');
+      micLabel.textContent = sp.blocked() ? t('practice.speak.err.blocked') : res.error === 'network' ? t('practice.speak.err.network') : t('practice.speak.err.none');
+      return;
+    }
+    const chk = S.micCheck(res.text, it, session(store).cal || null);
+    const CHECK = /** @type {Record<string, string>} */ ({ true: t('practice.speak.ok'), false: t('practice.speak.bad'), off: t('practice.speak.off') });
+    const row = (/** @type {string} */ name, /** @type {any} */ v) => (v === 'not-in' || v == null ? null
+      : h('tr', null, h('td', null, name), h('td', { class: v === true ? 'is-ok' : v === false ? 'is-bad' : 'caption' }, CHECK[String(v)] || String(v))));
+    replace(heardSlot, h('div', { class: 'sim-heard' },
+      h('p', { class: 'caption' }, t('practice.speak.youSaid')), h('p', { class: 'pr-heard', lang: 'de' }, `„${chk.text}“`),
+      h('table', { class: 'pr-checks' }, h('tbody', null, row(t('practice.speak.c.phrase'), chk.chunk), row(t('practice.speak.c.verbFinalShort'), chk.verbFinal), row(t('practice.speak.c.fuerVor'), chk.fuerVor))),
+      h('p', { class: 'caption' }, t('practice.sim.mic.grade'))));
+    doReveal(chk.suggest);
   }
   async function playAnswer() {
     if (!item) return;
@@ -278,12 +358,15 @@ async function mountRound(el, ctx) {
     await playLine({ content: ctx.content, file: a.audio, text: a.de, onStart: () => you.classList.add('is-playing'), onEnd: () => you.classList.remove('is-playing') });
   }
 
-  function doReveal() {
+  /** @param {1|2|3|4} [suggest] the grade to suggest: Good, or what the mic check found */
+  function doReveal(suggest = 3) {
     if (state !== 'think' || busy) return;
     state = 'revealed';
+    stopListening();
+    showWords();
     reveal.classList.add('is-open');
-    say.hidden = true;
-    showBtn.hidden = true; knowBtn.hidden = true; grades.show();   // the suggestion (Good) takes the focus, so it never drops to the page
+    say.hidden = true; micBox.hidden = true;
+    showBtn.hidden = true; knowBtn.hidden = true; grades.show({ suggest });   // the suggestion takes the focus, so it never drops to the page
     announce(item ? item.answers[0].de : '');
     playAnswer();
   }
@@ -340,7 +423,7 @@ async function mountRound(el, ctx) {
     scroll.scrollTop = 0;
     busy = false;
     showBtn.focus({ preventScroll: true });
-    if (item) announce(`${item.setup} ${item.other.de}`);
+    if (item) announce(line.hidden ? item.setup : `${item.setup} ${item.other.de}`);
     playOther();
   }
 
@@ -370,6 +453,8 @@ async function mountRound(el, ctx) {
     }
     if (state === 'revealed' && grades.key(e)) return;
     if (state === 'think' && isKnowKey(e, false) && !knowBtn.hidden) { e.preventDefault(); knowThis(); return; }
+    if ((e.key === 'm' || e.key === 'M') && state === 'think' && micOn) { e.preventDefault(); listen(); return; }
+    if ((e.key === 'w' || e.key === 'W') && state === 'think' && line.hidden) { e.preventDefault(); showWords(); return; }
     if ((e.key === 'r' || e.key === 'R') && state !== 'graded') { e.preventDefault(); if (state === 'revealed') playAnswer(); else playOther(); }
   }
   document.addEventListener('keydown', onKey);
@@ -378,6 +463,7 @@ async function mountRound(el, ctx) {
     if (!alive) return;
     alive = false;
     stopLine();
+    stopListening();
     strip.destroy();
     document.removeEventListener('keydown', onKey);
     vv?.removeEventListener('resize', fit); removeEventListener('resize', fit);

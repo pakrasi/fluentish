@@ -13,11 +13,12 @@
 import * as FS from '../../domain/fsrs.js';
 import * as D8 from '../../domain/days.js';
 import { isDue } from '../../domain/b1ready.js';
+import * as Sp from '../../domain/speech.js';
 
 export const LEVELS = /** @type {const} */ (['A1', 'A2', 'B1', 'B2']);
 export const DECK = 'speak';
 export const PREFIX = 'SS:';
-/** kv collection: { start, round, day: {day, newShown, rounds}, stats: {day, unseen, due, total} } */
+/** kv collection: { start, round, day: {day, newShown, rounds}, stats: {day, unseen, due, total}, mic?: boolean } */
 export const KV = 'speak.sim';
 export const ROUND_SIZE = 12;
 /** Share of a level's items learnt before the next level opens. */
@@ -361,4 +362,39 @@ export function dots(round, answered = false) {
     if (k > round.i || !r) return '';
     return r.g === 1 ? 'miss' : 'done';
   });
+}
+
+/* ------------------------------------------------------------------ */
+/* Check with the mic                                                  */
+/* ------------------------------------------------------------------ */
+
+const foldMic = (/** @type {string} */ s) => String(s || '').normalize('NFC').toLowerCase().replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss');
+const micTokens = (/** @type {string} */ s) => foldMic(s).replace(/[^\p{L}\p{N}\s]/gu, ' ').split(/\s+/).filter(Boolean);
+
+/**
+ * Does a transcript say the chunk of one of the model answers? The chunk's words in a row, case, punctuation and
+ * umlaut spelling aside ("Wie wäre es mit" in "wie waere es mit Donnerstag").
+ * @param {string} transcript @param {Item} item
+ */
+export function saidChunk(transcript, item) {
+  const said = micTokens(transcript);
+  return (item.answers || []).some(a => {
+    const want = micTokens(chunkParts(a)[1]);
+    if (!want.length) return false;
+    for (let i = 0; i + want.length <= said.length; i++) if (want.every((w, k) => said[i + k] === w)) return true;
+    return false;
+  });
+}
+
+/**
+ * "Check with the mic" on a situation (it replaced Say it aloud): the Say it aloud checks (domain/speech.js grade)
+ * against the situation's model answer, with the phrase check being the chunk. The learner still grades himself; this
+ * only says what the phone heard and suggests a grade: Good when every check passed, Hard when the chunk was there
+ * but a check failed, Again when the chunk was missing.
+ * @param {string} transcript @param {Item} item @param {any} [cal] the mic check's calibration (b1.session.cal)
+ * @returns {ReturnType<typeof Sp.grade> & {suggest: 1 | 2 | 3}}
+ */
+export function micCheck(transcript, item, cal = null) {
+  const r = Sp.grade(transcript, { model: item.answers[0]?.de || '' }, cal, { match: t => saidChunk(t, item) });
+  return { ...r, suggest: r.chunk === false ? 1 : r.ok ? 3 : 2 };
 }

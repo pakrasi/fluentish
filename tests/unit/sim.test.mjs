@@ -287,3 +287,20 @@ test('ids: SS: names a speaking situation', () => {
   assert.deepEqual(kindOf('SS:decline-01'), { tag: 'SS', kind: 'sim', area: 'situations' });
   for (const it of BANK.items) assert.equal(kindOf(it.id).tag, 'SS');
 });
+
+test('Check with the mic: the chunk heard in a row, the Say it aloud checks, and a suggested grade (journey #10)', () => {
+  const mk = (/** @type {string[]} */ ...marked) => ({ answers: marked.map(m => ({ ...S.parseMarked(m), audio: 'x.mp3' })) });
+  const time = mk('Am Mittwoch kann ich nicht. [Wie wäre es mit] Donnerstag?', '[Geht es auch] am Donnerstag?');
+  assert.equal(S.saidChunk('am Mittwoch nicht, wie waere es mit Donnerstag', time), true);   // umlaut spelt out
+  assert.equal(S.saidChunk('Geht es auch am Donnerstag', time), true);                         // the second answer's chunk
+  assert.equal(S.saidChunk('wie es wäre mit Donnerstag', time), false);                       // words out of order
+  assert.equal(S.micCheck('Wie wäre es mit Donnerstag?', time).suggest, 3);
+  assert.equal(S.micCheck('Donnerstag vielleicht?', time).suggest, 1);
+  const opinion = mk('[Ich glaube, dass] das eine gute Idee ist.');
+  const wrongOrder = S.micCheck('ich glaube dass das ist eine gute Idee', opinion);
+  assert.equal(wrongOrder.chunk, true);
+  assert.equal(wrongOrder.verbFinal, false);
+  assert.equal(wrongOrder.suggest, 2);
+  // a phone that fixes word order (the mic check said so) never fails the verb check
+  assert.equal(S.micCheck('ich glaube dass das ist eine gute Idee', opinion, { asr: { verbFinal: false } }).suggest, 3);
+});

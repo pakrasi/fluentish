@@ -2,7 +2,7 @@
 
    Writes:
      cards 'speak'   one FSRS record per situation ('SS:<fn>-<nn>'), the shared scheduler (domain/fsrs.js)
-     speak.sim       { start, round, day: {day, newShown, rounds}, stats: {day, unseen, total} }
+     speak.sim       { start, round, day: {day, newShown, rounds}, stats: {day, unseen, total}, mic: "Check with the mic" on }
      activity        minutes for Today's runway (no rounds: those count the B1 review rounds)
    and appends card.reviewed events (deck 'speak') to the outbox; the results sync does not send them. */
 import * as S from './sim.js';
