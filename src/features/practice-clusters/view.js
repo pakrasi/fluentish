@@ -1,7 +1,8 @@
 /* Word clusters in Practice:
      #/practice/clusters[/<type>]            pick a type (families, opposites, prefixes, suffixes, topics, prepositions)
                                              and a cluster: each row shows known of total and a mini field
-     #/practice/clusters/<type>/<id>         the cluster: its words laid out as they are known, the note, and the rounds
+     #/practice/clusters/<type>/<id>         goes to the cluster's group page, #/lookup/map/<type>/<id> (round 3: one page
+                                             for a map group and a word cluster, features/explore/group.js)
      #/practice/clusters/<type>/<id>/say     the same cards said aloud and graded by himself (Again / Hard / Good / Easy)
      #/practice/round?kind=cluster:<type>:<id> | cluster:due   the typed round (round.js, graded by grade.js)
 
@@ -27,12 +28,12 @@ import { roundMinutes } from '../../domain/today.js';
 import * as S from '../../domain/sim.js';
 import { forecaster, tz, addActivity } from '../shared/data.js';
 import { loadClusters, loadKnowledge, countsOf, cellsOf, dueCards, recallOf, state, update, dayOf, DECK } from '../shared/cluster-data.js';
-import { cardIds, itemFor, compose, roundWords, partOf, zipfOf } from '../shared/cluster-items.js';
+import { cardIds, itemFor, compose, zipfOf } from '../shared/cluster-items.js';
 import { isDue } from '../../domain/b1ready.js';
 import { marked } from '../../data/known.js';
 import { skipsNew } from '../../domain/known.js';
 import { knowButton, isKnowKey, knowCard, knownResult } from '../shared/iknow.js';
-import { clusterLayout, settle, drawClusterDone, wordChip } from '../shared/cluster-layout.js';
+import { drawClusterDone } from '../shared/cluster-layout.js';
 import { langAttr } from '../../core/lang.js';
 
 const back = (/** @type {string} */ href, /** @type {string} */ text) => h('a', { class: 'pr-backlink pressable', href }, icon('prev', { size: 16 }), text);
@@ -41,7 +42,8 @@ const back = (/** @type {string} */ href, /** @type {string} */ text) => h('a', 
 export function mountClusters(el, ctx, rest) {
   const [type, id, sub] = rest;
   if (type && id && sub === 'say') return mountSay(el, ctx, `${type}:${id}`);
-  if (type && id) return mountCluster(el, ctx, `${type}:${id}`);
+  // one cluster is the group page under Look up › Map (features/explore/group.js), the same page the map opens
+  if (type && id) { ctx.go(`/lookup/map/${type}/${encodeURIComponent(id)}`, { replace: true }); return undefined; }
   return mountPicker(el, ctx, /** @type {any} */ (TYPES.includes(/** @type {any} */ (type)) ? type : ORDER[0]));
 }
 
@@ -78,7 +80,7 @@ async function mountPicker(el, ctx, type) {
     const n = countsOf(cl, k);
     // the strip of cells reads as data only with a few words; under six it would look like a loading bar
     const canvas = cl.items.length >= 6 ? h('canvas', { class: 'field cl-mini' }) : null;
-    const row = h('a', { class: 'cl-row pressable', href: `#/practice/clusters/${cl.type}/${cl.id}`, 'aria-label': t('practice.clusters.rowLabel', { name: cl.label, known: n.known, n: n.n }) },
+    const row = h('a', { class: 'cl-row pressable', href: `#/lookup/map/${cl.type}/${encodeURIComponent(cl.id)}`, 'aria-label': t('practice.clusters.rowLabel', { name: cl.label, known: n.known, n: n.n }) },
       h('span', { class: 'cl-row-top' }, h('span', { class: 'row-title', lang: cl.type === 'family' || cl.type === 'prefix' || cl.type === 'suffix' ? 'de' : null }, cl.label),
         h('span', { class: 'row-trail tnum' }, t('practice.clusters.of', { known: n.known, n: n.n }))),
       canvas);
@@ -100,58 +102,6 @@ async function mountPicker(el, ctx, type) {
 }
 
 /* ------------------------------------------------------------------ */
-/* One cluster                                                         */
-/* ------------------------------------------------------------------ */
-
-/** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx @param {string} key */
-async function mountCluster(el, ctx, key) {
-  const { t, store } = ctx;
-  let alive = true;
-  const [type] = key.split(':');
-  const backLink = back(`#/practice/clusters/${type}`, t('practice.clusters.title'));
-  replace(el, h('div', { class: 'practice cl stack' }, backLink, h('p', { class: 'caption' }, t('practice.loading'))));
-  let data, k;
-  try { [data, k] = await Promise.all([loadClusters(ctx), loadKnowledge(ctx)]); } catch {
-    if (alive) replace(el, h('div', { class: 'practice cl stack' }, backLink, notice({ kind: 'warning', children: [h('p', null, t('practice.clusters.loadFailed'))] })));
-    return () => { alive = false; };
-  }
-  if (!alive) return;
-  const cl = data.ix.byKey.get(key);
-  if (!cl) { replace(el, h('div', { class: 'practice cl stack' }, backLink, h('h1', null, t('error.notFound')))); return; }
-  const c = ctx.clock.ctx();
-  const n = countsOf(cl, k);
-  const shown = (state(store).shown || {})[key];
-  const countEl = h('span', { class: 'figure tnum' }, String(shown ?? n.known));
-  const lay = clusterLayout(cl, data.ix, data.c, k, t);
-  lay.place(k);
-  const ids = cardIds(cl, data.ix);
-  const cards = store.cards(DECK) || {};
-  const mk = marked(store);
-  const plan = compose({ ids, cards, c, isDue: rec => isDue(rec, c.today, c), recall: recallOf(c), skip: x => skipsNew(mk, x), zipf: zipfOf(data.ix) });
-  const startN = plan.ids.length;
-  const typed = startN ? h('a', { class: 'btn btn-primary pressable', href: `#/practice/round?kind=${encodeURIComponent(`cluster:${key}`)}` },
-    plan.extra ? t('practice.clusters.ahead', { n: startN }) : t('practice.clusters.typed', { n: startN, min: roundMinutes(startN) })) : null;
-  const say = startN ? h('a', { class: 'btn pressable', href: `#/practice/clusters/${type}/${cl.id}/say` }, t('practice.clusters.say')) : null;
-  const head = cl.type === 'family' ? h('p', { class: 'lead' }, t('practice.clusters.familyLead', { note: cl.note || '' }))
-    : cl.note ? h('p', { class: 'lead cl-note' }, cl.note) : null;
-  const view = h('div', { class: ['practice', 'cl', 'cl-page', 'stack', startN && 'has-dock'] }, backLink,
-    h('p', { class: 'label cl-eyebrow' }, t(`practice.clusters.types.${cl.type}`)),
-    h('div', { class: 'page-head' }, h('h1', { lang: cl.type === 'family' ? 'de' : null }, cl.label)),
-    head,
-    h('p', { class: 'cl-count' }, countEl, h('span', { class: 'label' }, t('practice.clusters.knownOf', { n: n.n }))),
-    h('p', { class: 'caption cl-legend' }, h('span', { class: 'cl-w is-known' }, t('practice.clusters.legend.known')), ' ', h('span', { class: 'cl-w is-shaky' }, t('practice.clusters.legend.shaky')), ' ',
-      h('span', { class: 'cl-w is-unknown' }, t('practice.clusters.legend.unknown')), ' ', h('span', { class: 'cl-w is-unseen' }, t('practice.clusters.legend.unseen'))),
-    lay.el,
-    h('p', { class: 'cl-links' }, n.known < n.n ? h('a', { class: 'btn btn-quiet pressable cl-map', href: `#/practice/sort?cluster=${encodeURIComponent(key)}&from=cluster` }, t('practice.clusters.sort')) : null,
-      h('a', { class: 'btn btn-quiet pressable cl-map', href: `#/lookup/map?cluster=${encodeURIComponent(key)}` }, icon('next', { size: 16 }), t('practice.clusters.onMap'))),
-    startN ? h('div', { class: 'cl-dock pr-queue-btn' }, typed, say) : h('p', { class: 'pr-empty' }, t('practice.clusters.nothing')));
-  replace(el, view);
-  update(store, s => ({ ...s, last: key, shown: { ...(s.shown || {}), [key]: n.known } }));
-  if (shown != null && shown !== n.known) countTo(countEl, n.known, { from: shown, duration: 700 });
-  return () => { alive = false; };
-}
-
-/* ------------------------------------------------------------------ */
 /* Say it: self-graded                                                 */
 /* ------------------------------------------------------------------ */
 
@@ -162,15 +112,15 @@ async function mountSay(el, ctx, key) {
   document.body.classList.add('pr-in-round');
   const restore = () => { document.body.dataset.chrome = 'on'; document.body.classList.remove('pr-in-round'); };
   const [type, cid] = key.split(':');
-  const backTo = `#/practice/clusters/${type}/${cid}`;
+  const backTo = `#/lookup/map/${type}/${encodeURIComponent(cid)}`;
   let data;
-  try { data = await loadClusters(ctx); } catch { ctx.go(`/practice/clusters/${type}/${cid}`, { replace: true }); return restore; }
+  try { data = await loadClusters(ctx); } catch { ctx.go(backTo.slice(1), { replace: true }); return restore; }
   const cl = data.ix.byKey.get(key);
   if (!cl) { ctx.go('/practice/clusters', { replace: true }); return restore; }
   let c = ctx.clock.ctx();
   const mk = marked(store);
   const plan = compose({ ids: cardIds(cl, data.ix), cards: store.cards(DECK) || {}, c, isDue: rec => isDue(rec, c.today, c), recall: recallOf(c), skip: x => skipsNew(mk, x), zipf: zipfOf(data.ix) });
-  if (!plan.ids.length) { ctx.go(`/practice/clusters/${type}/${cid}`, { replace: true }); return restore; }
+  if (!plan.ids.length) { ctx.go(backTo.slice(1), { replace: true }); return restore; }
   const round = { queue: plan.ids.map(id => ({ id })), i: 0, results: /** @type {any[]} */ ([]), planned: plan.ids.length };
   /** @type {Record<string, any>} */ const prev = {};
   const t0r = performance.now();
@@ -277,9 +227,9 @@ async function mountSay(el, ctx, key) {
     if (!early) update(store, s => { const d = dayOf(store, c.today); return { ...s, day: { ...d, rounds: d.rounds + 1 } }; });
     const firsts = round.results.filter((/** @type {any} */ r) => r.first && !r.known);
     const known = round.results.filter((/** @type {any} */ r) => r.known).length;
-    if (early && !firsts.length && !known) { ctx.go(`/practice/clusters/${type}/${cid}`); return; }
+    if (early && !firsts.length && !known) { ctx.go(backTo.slice(1)); return; }
     restore();
-    drawClusterDone(el, ctx, { key, right: firsts.filter((/** @type {any} */ r) => r.g >= 3).length, total: firsts.length, prev, again: `#/practice/clusters/${type}/${cid}/say`, known });
+    drawClusterDone(el, ctx, { key, right: firsts.filter((/** @type {any} */ r) => r.g >= 3).length, total: firsts.length, prev, again: `#/practice/clusters/${type}/${cid}/say`, back: backTo, known });
   }
   const onKey = (/** @type {KeyboardEvent} */ e) => {
     if (e.key === 'Escape') { e.preventDefault(); finish(true); return; }

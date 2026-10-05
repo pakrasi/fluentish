@@ -55,7 +55,7 @@ export function supported() {
  * @param {{A: any, layout: any, st: Uint8Array, today: Uint8Array, S: Float32Array, reduced: () => boolean, labels: HTMLElement,
  *   labelOf: (g: any) => string, countText: (gi: number) => string, countOf: (gi: number) => {n: number, known: number, shaky: number, unknown: number, unseen: number},
  *   insets: () => {top: number, bottom: number}, onWord: (i: number) => void, onGroup: (gi: number) => void, onEmpty: () => void,
- *   onHere: (gi: number) => void, onKbGroup?: (gi: number) => void, onLost: () => void, onRestored?: () => void}} o
+ *   onHere: (gi: number) => void, onCentre?: (gi: number) => void, onKbGroup?: (gi: number) => void, onLost: () => void, onRestored?: () => void}} o
  */
 export async function createPalace(canvas, o) {
   const { meta, img, metrics } = await loadSdf();
@@ -347,10 +347,17 @@ export async function createPalace(canvas, o) {
   }
 
   /* ---------- where you are */
-  let hereGi = -2;
+  let hereGi = -2, centreGi = -2;
   function here() {
-    let gi = -1;
-    for (let k = 0; k < L.groups.length; k++) { const g = L.groups[k]; if (Math.hypot(s.x - g.x, s.z - g.y) < g.r * 0.9 && s.d < g.r * 3.2) { gi = k; break; } }
+    let gi = -1, cg = -1;
+    for (let k = 0; k < L.groups.length; k++) {
+      const g = L.groups[k], d = Math.hypot(s.x - g.x, s.z - g.y);
+      if (cg < 0 && d < g.r && s.d < g.r * 8) cg = k;
+      if (d < g.r * 0.9 && s.d < g.r * 3.2) { gi = k; break; }
+    }
+    // the district under the middle of the screen while it fills much of it (Explore's "Study the gaps here")
+    if (gi >= 0) cg = gi;
+    if (cg !== centreGi) { centreGi = cg; o.onCentre?.(cg); }
     if (gi !== hereGi) { hereGi = gi; o.onHere(gi); }
   }
 
@@ -768,6 +775,13 @@ export async function createPalace(canvas, o) {
       return { x: end.x, y: end.z, k: M().ppu / end.d };
     },
     has(/** @type {number} */ i) { return !Number.isNaN(L.X[i]); },
+    /** A district's plinth on screen (canvas CSS px): its centre and radius, for the disc that grows into the group page. @param {number} gi */
+    groupScreen(gi) {
+      const g = L.groups[gi]; if (!g) return null;
+      const m = M(), p = project(m.vp, g.x, PLINTH, g.y, W, H);
+      if (!(p.w > 0)) return null;
+      return { x: p.x, y: p.y, r: (g.r * m.ppu) / Math.max(1, Math.hypot(m.eye[0] - g.x, m.eye[1] - PLINTH, m.eye[2] - g.y)) };
+    },
     get layout() { return L; },
     get camera() { return { ...s }; },
     get raised() { return rise > 0.99; },

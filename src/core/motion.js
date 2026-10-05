@@ -47,8 +47,38 @@ export async function swap(update, { kind = 'forward', fallbackEl = null } = {})
   }
   root.dataset.vt = kind;
   const t = document.startViewTransition(update);
-  t.finished.finally(() => { if (root.dataset.vt === kind) delete root.dataset.vt; });
+  lastVT = t;
+  t.finished.finally(() => { if (root.dataset.vt === kind) delete root.dataset.vt; handing.clear(); });
   await t.updateCallbackDone;
+}
+
+/* A shared element across a route change: the old view names one element (handoff) and the new view names the
+   element it becomes (receive); the route's view transition then moves and resizes the one into the other (a map
+   group's disc expanding into its page header). Only inside a view transition: reduced motion or a browser without
+   View Transitions gets the route's usual change, and the names are taken off again when the transition ends. */
+/** @type {ViewTransition | null} */ let lastVT = null;
+const handing = new Set();
+/**
+ * Name the element the next route's view transition starts from. Returns false when nothing will move.
+ * @param {HTMLElement | null} el @param {string} name
+ */
+export function handoff(el, name) {
+  if (!el || reduced() || !document.startViewTransition) return false;
+  el.style.viewTransitionName = name;
+  handing.add(name);
+  return true;
+}
+/**
+ * In the new view, name the element a handoff() of the same name lands in (call during mount). Does nothing when no
+ * handoff is pending.
+ * @param {HTMLElement | null} el @param {string} name
+ */
+export function receive(el, name) {
+  if (!el || !handing.has(name)) return;
+  handing.delete(name);
+  el.style.viewTransitionName = name;
+  const clear = () => { el.style.viewTransitionName = ''; };
+  if (lastVT) lastVT.finished.finally(clear); else requestAnimationFrame(clear);
 }
 
 /**

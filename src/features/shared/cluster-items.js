@@ -155,6 +155,8 @@ function spread(olds, news) {
  */
 export function parseClusterKind(kind) {
   if (kind === 'cluster:pick') return { due: false, key: null, pick: true };
+  // the gaps of a map group (Explore › 3D "Study the gaps here"): a long list of words that goes through the round size picker
+  if (kind === 'cluster:gaps') return { due: false, key: null, pick: true, gaps: true };
   const m = /^cluster:(?:(due)|(family|opp|prefix|suffix|topic|prep):([\w.äöüß-]+))$/.exec(String(kind || ''));
   if (!m) return null;
   return m[1] ? { due: true, key: null } : { due: false, key: `${m[2]}:${m[3]}` };
@@ -162,16 +164,18 @@ export function parseClusterKind(kind) {
 
 /** Most words a picked round takes. */
 export const PICK_MAX = 12;
+/** Most words a gaps list takes (the round size picker chooses how many of them a round asks). */
+export const GAPS_MAX = 200;
 /**
  * The card ids of a picked round from the address (?ids=<word id>,<word id>…): W: cards, in the order given, without
- * repeats, at most PICK_MAX. Anything that is not a plain word id is dropped. @param {string | null} param
+ * repeats, at most max (PICK_MAX). Anything that is not a plain word id is dropped. @param {string | null} param @param {number} [max]
  */
-export function pickIds(param) {
+export function pickIds(param, max = PICK_MAX) {
   const out = [];
   for (const raw of String(param || '').split(',')) {
     const id = raw.trim();
     if (id && /^[\wäöüÄÖÜß.'-]+$/.test(id) && !out.includes(`W:${id}`)) out.push(`W:${id}`);
-    if (out.length >= PICK_MAX) break;
+    if (out.length >= max) break;
   }
   return out;
 }
@@ -200,4 +204,13 @@ export function partOf(cl, words) {
   if (cl.type === 'opp') { const pairs = (cl.pairs || []).filter((/** @type {any} */ p) => set.has(p.a) || set.has(p.b)); return { ...cl, pairs, items: [...new Set(pairs.flatMap((/** @type {any} */ p) => [p.a, p.b]))] }; }
   if (cl.type === 'family') return { ...cl, items: [cl.head, ...cl.items.filter((/** @type {string} */ w) => w !== cl.head && set.has(w))] };
   return { ...cl, items: cl.items.filter((/** @type {string} */ w) => set.has(w)) };
+}
+
+/**
+ * Where a round or Quick sort started on a group page goes back to: from=map/<type>/<id> → '/lookup/map/<type>/<id>'
+ * (features/explore/group.js), else null. @param {string | null} from
+ */
+export function groupBack(from) {
+  const m = /^map\/([a-z]+)\/([^/?#&]+)$/.exec(String(from || ''));
+  return m ? `/lookup/map/${m[1]}/${m[2]}` : null;
 }

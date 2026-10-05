@@ -5,8 +5,8 @@
 
    Lists with a picker: B1 areas and grammar topics, Schreiben (all or one Aufgabe), missed items, mistakes from
    corrections, exam words, word clusters (one cluster, or the due ones), speaking situations (mixed, a level, a
-   function: the Sprechen Teil groups) and a script's words. Not: the daily round and the warm-up (Today's and the hub's
-   one tap), a round of items picked on the map, Quick sort. */
+   function: the Sprechen Teil groups), a script's words and a map group's gaps (Explore › 3D, kind=cluster:gaps). Not:
+   the daily round and the warm-up (Today's and the hub's one tap), a round of items picked on the map, Quick sort. */
 import * as RS from '../../domain/roundsize.js';
 import { ROUND, ROUND_MIN } from '../../domain/budget.js';
 
@@ -73,14 +73,16 @@ export async function listInfo(ctx, href) {
     const cards = store.cards(DECK) || {}, mk = marked(store);
     const { clusterToday } = await import('../../domain/allowance.js');
     const newLeft = clusterToday({ store, c, settings: ctx.settings() }).newLeft;
-    const o = { ids: cl ? CI.cardIds(cl, data.ix) : dueCards(store, c), cards, c, isDue: (/** @type {any} */ r) => isDue(r, c.today, c), recall: recallOf(c), skip: (/** @type {string} */ id) => skipsNew(mk, id), zipf: CI.zipfOf(data.ix),
+    // a map group's gaps (kind=cluster:gaps&ids=…): the words in the address
+    const gapIds = ck.gaps ? CI.pickIds(l.query.get('ids'), CI.GAPS_MAX).filter(id => CI.typable(data.ix.word(id.slice(2)))) : null;
+    const o = { ids: cl ? CI.cardIds(cl, data.ix) : gapIds || dueCards(store, c), cards, c, isDue: (/** @type {any} */ r) => isDue(r, c.today, c), recall: recallOf(c), skip: (/** @type {string} */ id) => skipsNew(mk, id), zipf: CI.zipfOf(data.ix),
       newLeft, newCap: Math.min(CI.NEW_PER_ROUND, newLeft) };
     let rec = CI.compose(o).ids;
     if (ck.due) rec = rec.filter(id => cards[id]?.reps);
     const b = CI.buckets(o);
     if (ck.due) { b.fresh = []; b.rest = []; }
-    const saved = S.savedRound(session(store), S.slotKey({ kind: 'cluster', topic: ck.key || 'due' }));
-    return { type: 'cluster', title: cl ? cl.label : t('practice.clusters.title'), b, rec, minutes: n => roundMinutes(n), paused: S.resumable(saved, c.today, Date.now()) ? saved.queue.length - saved.i : null };
+    const saved = S.savedRound(session(store), S.slotKey({ kind: 'cluster', topic: ck.key || (ck.gaps ? `gaps:${String(l.query.get('g') || 'map').slice(0, 80)}` : 'due') }));
+    return { type: 'cluster', title: cl ? cl.label : gapIds ? (l.query.get('title') || t('practice.clusters.title')).slice(0, 80) : t('practice.clusters.title'), b, rec, minutes: n => roundMinutes(n), paused: S.resumable(saved, c.today, Date.now()) ? saved.queue.length - saved.i : null };
   }
   if (l.runner === 'round') {
     const data = await loadData(ctx);

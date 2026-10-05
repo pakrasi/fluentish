@@ -1,7 +1,7 @@
-/* Practice (UX §4.2): the hub of the one review queue, and the exam words page. Owns #/practice and whatever no
+/* Practice (UX §4.2): the hub of the one review queue. Owns #/practice and whatever no
    other Practice feature owns:
      #/practice                        the hub (hub.js): what to do now, then three groups (exam modules, words, your material)
-     #/practice/words                  exam words from the private results repository (exam-words.js)
+     #/practice/words                  goes to Look up › Words › Exam words (#/lookup/words, round 3: one list of them)
      #/practice/<anything else>        not found
    The pages around it are sibling features (features/registry.js), each with its own routes and Today rows:
      practice-round     #/practice/round[?kind=…]                   the typed round
@@ -15,14 +15,15 @@
 import { h, replace } from '../../core/dom.js';
 import { practicePage, restParts } from '../shared/page.js';
 import { mountHub } from './hub.js';
-import { mountWords } from './exam-words.js';
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
 export function mount(el, ctx) {
   const parts = restParts(ctx);
-  if (parts[0] && parts[0] !== 'words') {
+  // the exam words list moved to Look up › Words › Exam words; Practice keeps the round (Words › Exam words)
+  if (parts[0] === 'words') { ctx.go('/lookup/words', { replace: true }); return undefined; }
+  if (parts[0]) {
     replace(el, h('div', { class: 'practice stack' }, h('div', { class: 'page-head' }, h('h1', null, ctx.t('error.notFound'))), h('a', { class: 'btn pressable', href: '#/practice' }, ctx.t('practice.back'))));
     return undefined;
   }
-  return practicePage(el, ctx, { list: true }, () => (parts[0] === 'words' ? mountWords(el, ctx) : mountHub(el, ctx)));
+  return practicePage(el, ctx, { list: true }, () => mountHub(el, ctx));
 }

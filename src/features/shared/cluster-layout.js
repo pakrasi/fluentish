@@ -160,15 +160,15 @@ export async function settle(lay, after, countEl, to) {
  * belong, and the whole cluster as a compact field with one count line ("7 of 223 known in Describing words"); never
  * the whole cluster as type, which on a big cluster pushed the buttons off the page.
  * @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx
- * @param {{key: string | null, right: number, total: number, prev: Record<string, any>, again: string, fromMap?: boolean, known?: number}} o
+ * @param {{key: string | null, right: number, total: number, prev: Record<string, any>, again: string, back?: string | null, known?: number}} o
  *   key: the cluster ('<type>:<id>'), null for a due round; prev: the cards before the round (id → record or null);
- *   known: cards marked "I know this" in the round
+ *   known: cards marked "I know this" in the round; back: where Done goes ('#/…'), else the cluster's group page
  */
-export async function drawClusterDone(el, ctx, { key, right, total, prev, again, fromMap = false, known = 0 }) {
+export async function drawClusterDone(el, ctx, { key, right, total, prev, again, back = null, known = 0 }) {
   const { t, store } = ctx;
   const [data, after, before] = await Promise.all([loadClusters(ctx), loadKnowledge(ctx), loadKnowledge(ctx, { patch: { [DECK]: prev } })]);
   const cl = key ? data.ix.byKey.get(key) : null;
-  const backHref = fromMap ? '#/lookup/map' : cl ? `#/practice/clusters/${cl.type}/${cl.id}` : '#/practice/clusters';
+  const backHref = back || (cl ? `#/lookup/map/${cl.type}/${encodeURIComponent(cl.id)}` : '#/practice/clusters');
   const n0 = cl ? countsOf(cl, before).known : 0, n1 = cl ? countsOf(cl, after).known : 0;
   const countEl = h('span', { class: 'tnum' }, String(n0));
   // this round's words, in the cluster's own layout when there is one (a due round mixes clusters: a block of words)

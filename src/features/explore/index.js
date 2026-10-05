@@ -1,37 +1,49 @@
 /* Explore (Look up › Map, #/lookup/map): a map of every German word, phrase and grammar concept in the content, set as
    type, grouped by a chosen mode, inked by what the learner knows (DESIGN.md, Explore).
      #/lookup/map[?mode=topic|family|opp|level|type|source][&view=list|3d][&at=<item id>][&g=<group key>][&cluster=<type>:<id>]
+     #/lookup/map/<type>/<id>   a group's page (group.js): where a group is studied, one page for a map group and a
+                                Practice word cluster (round 3)
    Positions come from content/atlas (built at build time) and never move as he learns. Tapping a word opens its card,
-   with links to its opposite and its family that fly there; tapping a group opens its sheet, whose "Study" button
-   starts a round in Practice (#/practice/round?kind=cluster:pick… for words, kind=pick:… for phrases and grammar).
-   ?g= opens a group's sheet; ?cluster= opens the map group of a Practice word cluster (the cluster page links here).
-   After a study round the map comes back to the group it started from, with its sheet open.
-   The List view is the accessible alternative: every group with the sheet's counts and study action, every item with
+   with links to its opposite and its family that fly there; tapping a group opens its sheet (name, count, the four
+   states) with one button, "Open the group", whose disc grows into the page's header (core/motion.js handoff).
+   ?g= opens a group's sheet; ?cluster= opens the map group of a Practice word cluster.
+   The header says how much he knows (the same number as Today's Where you stand, shared/data.js wordsKnown, after
+   Igloo's placement import) and suggests the next best group (domain/atlas.js nextBestGroup) with a one-tap round.
+   After a study round started from the map, the map comes back to the group it started from, with its sheet open.
+   The List view is the accessible alternative: every group with the sheet's counts and its page, every item with
    its state in words. On the canvas, Tab steps through the groups and Enter opens one.
    The 3D view (palace/, loaded with import() when the 3D segment opens) is the same map raised: the same layout, the
-   same sheets and study actions, its own camera; a word that became known plays the learned moment there once.
+   same sheets, its own camera; a word that became known plays the learned moment there once. "Study the gaps here"
+   sends the district's words not known (domain/atlas.js gapsOf) to the round size picker (kind=cluster:gaps).
    Explore writes cards only in select mode (select.js: tap the words you know, through data/known.js); its own kv
-   'explore' keeps the mode, the gaps filter, what it already showed and the group a study round started from. */
+   'explore' keeps the mode, the gaps filter, what it already showed, the group a study round started from and the
+   count each group page showed last. */
 import { h, replace, announce } from '../../core/dom.js';
 import { seg } from '../../core/ui.js';
 import { icon } from '../../core/icons.js';
-import { reduced } from '../../core/motion.js';
+import { reduced, handoff } from '../../core/motion.js';
 import { label as dayLabel } from '../../core/clock.js';
 import { num } from '../../core/i18n.js';
-import { MODES, summarise, nextUp, encode } from '../../domain/atlas.js';
+import { MODES, summarise, nextUp, encode, nextBestGroup, gapsOf } from '../../domain/atlas.js';
 import { loadAtlas, layoutOf, scores, loadDetails, prefs, setPrefs, fold, find, totals } from '../../data/atlas.js';
+import { ensurePlacement } from '../shared/data.js';
+import { openPicker } from '../shared/picker.js';
+import { CODE_STATE, STATES, groupName, pageHref } from './groups.js';
 import { createMap } from './map.js';
 import { createSelect } from './select.js';
 import { momentQueue, nextRecord, idsKey, decodeStates } from '../../domain/palace.js';
 
-const STATES = /** @type {const} */ (['known', 'shaky', 'unknown', 'unseen']);
-const CODE_STATE = ['unseen', 'unknown', 'shaky', 'known'];
+/** Most words "Study the gaps here" takes into the round size picker (the address carries them). */
+const GAPS_MAX = 200;
 const RETURN_MS = 3 * 3600e3;          // a study round started from the map comes back to its group within 3 hours
 const STUDY_N = 10;
 let mounts = 0;
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
 export async function mount(el, ctx) {
+  // #/lookup/map/<type>/<id>: a group's page (group.js)
+  const parts = String(ctx.params.rest || '').split('/').filter(Boolean);
+  if (parts.length >= 2) return (await import('./group.js')).mountGroup(el, ctx, parts[0], parts.slice(1).join('/'));
   /** @type {(() => void)[]} */ const offs = [() => document.body.classList.remove('ex-page')];
   document.body.classList.add('ex-page');
   try { return await mountMap(el, ctx, offs); } catch (e) { offs.forEach(f => f()); throw e; }
@@ -51,9 +63,11 @@ async function mountMap(el, ctx, offs) {
   const status = h('p', { class: 'ex-status caption', 'aria-live': 'polite' }, t('explore.loading'));
   replace(el, h('div', { class: 'explore is-loading' }, h('div', { class: 'ex-head' }, backLink(t), h1), status));
 
-  let A, K;
+  /** @type {any} */ let A;   // loadAtlas()
+  /** @type {any} */ let K;   // scores()
   try {
-    [A] = await Promise.all([loadAtlas(ctx), loadFonts()]);
+    // Igloo's placement import runs before the first count (a migrated profile's first visit may be straight here)
+    [A] = await Promise.all([loadAtlas(ctx), loadFonts(), ensurePlacement(ctx)]);
     K = await scores(ctx, A);
   } catch (e) {
     console.error(e);
@@ -90,12 +104,7 @@ async function mountMap(el, ctx, offs) {
   recount();
 
   /** A group's name. @param {any} g */
-  function labelOf(g) {
-    const [type, id] = String(g.key).split(/:(.*)/);
-    if (g.key === 'topic:grammar') return t('explore.group.grammar');
-    if (type === 'type' || type === 'source') return t(`explore.group.${type}.${id}`);
-    return g.label;
-  }
+  const labelOf = g => groupName(t, g);
 
   /* ---------- the page ---------- */
   const modeChips = h('div', { class: 'ex-modes', role: 'group', 'aria-label': t('explore.modes') },
@@ -120,7 +129,14 @@ async function mountMap(el, ctx, offs) {
   const distPanel = h('div', { class: 'pl-dist', id: 'pl-dist', role: 'group', 'aria-label': t('explore.3d.districts'), hidden: true }, h('p', { class: 'label pl-dist-title' }, t('explore.3d.goTo')), distList);
   const distBtn = h('button', { type: 'button', class: 'chip pressable pl-distbtn', 'aria-expanded': 'false', 'aria-controls': 'pl-dist', onclick: () => toggleDistricts() }, t('explore.3d.districts'));
   legend.append(h('span', { class: 'ex-key pl-height' }, t('explore.3d.height')));
-  const hud = h('div', { class: 'ex-hud' }, totalEl, h('div', { class: 'ex-ctl' }, keyBtn, gapsBtn, distBtn), legend);
+  // 3D: the open scaffolds and empty plots of the district he is in, as a round (through the round size picker)
+  const gaps3d = h('button', { type: 'button', class: 'chip pressable pl-gapsbtn', hidden: true, onclick: () => studyGaps() }, t('explore.3d.gaps'));
+  const hud = h('div', { class: 'ex-hud' }, totalEl, gaps3d, h('div', { class: 'ex-ctl' }, keyBtn, gapsBtn, distBtn), legend);
+  // the header: words and phrases known (the same number as Today's Where you stand) and the next best group
+  const knownEl = h('p', { class: 'ex-known caption tnum' });
+  const nextEl = h('p', { class: 'ex-nextbest' });
+  const nextBtn = h('a', { class: 'btn btn-primary pressable ex-nextbtn', hidden: true });
+  const meta = h('div', { class: 'ex-meta' }, h('div', { class: 'ex-meta-text' }, knownEl, nextEl), nextBtn);
   const keys3 = h('p', { class: 'sr-only', id: 'pl-keys' }, t('explore.3d.keys'));
   const labels3 = h('div', { class: 'pl-labels', 'aria-hidden': 'true' });
   /** @type {HTMLCanvasElement | null} */ let canvas3 = null;
@@ -137,7 +153,7 @@ async function mountMap(el, ctx, offs) {
   const stage = h('div', { class: 'ex-stage' }, canvas, keysHelp, keys3, labels3, hereEl, hud, distPanel, listEl);
   const page = h('div', { class: 'explore' },
     h('div', { class: 'ex-head' }, backLink(t), h1, h('div', { class: 'ex-head-tools' }, viewSeg, findBtn)),
-    h('div', { class: 'ex-chiprow' }, modeChips, zoom), stage, findEl);
+    meta, h('div', { class: 'ex-chiprow' }, modeChips, zoom), stage, findEl);
   replace(el, page);
   // select mode (select.js): tap the words you know to mark them known; the List is not re-drawn while it is on
   const sel = createSelect({ ctx, A, page, score: i => K.score(i), rescore: () => rescore(), stateKey: i => stateKey(i), onOff: () => { if (listOn) renderList(); } });
@@ -164,6 +180,8 @@ async function mountMap(el, ctx, offs) {
   requestAnimationFrame(() => chipIntoView(false));
 
   /* ---------- the map ---------- */
+  let hereGi = -1;   // the group the camera is inside (the "where you are" pill), -1 for none
+  let centreGi = -1; // 3D: the district under the middle of the screen, however far away
   const map = createMap(canvas, {
     A, reduced,
     labelOf,
@@ -173,6 +191,7 @@ async function mountMap(el, ctx, offs) {
     onGroup: (gi, far) => openGroup(gi, far, { opener: canvas }),
     onEmpty: () => closeSheet(),
     onHere: gi => {
+      hereGi = gi;
       hereEl.hidden = gi < 0 || listOn;
       if (gi < 0) return;
       const g = layout(mode).groups[gi], cn = counts[gi];
@@ -273,7 +292,9 @@ async function mountMap(el, ctx, offs) {
           onWord: i => openWord(i, { opener: canvas3 }),
           onGroup: gi => openGroup(gi, true, { opener: canvas3 }),
           onEmpty: () => closeSheet(),
+          onCentre: gi => { centreGi = gi; drawGaps3d(); },
           onHere: gi => {
+            hereGi = gi; drawGaps3d();
             hereEl.hidden = gi < 0 || view !== '3d';
             if (gi < 0) return;
             const g = layout(mode).groups[gi], cn = counts[gi];
@@ -454,6 +475,7 @@ async function mountMap(el, ctx, offs) {
     if (tg >= 0) openGroup(tg, true);
   }
   function selectSeg(/** @type {string} */ v) {
+    queueMicrotask(drawGaps3d);
     for (const b of viewSeg.querySelectorAll('button')) b.setAttribute('aria-pressed', String(/** @type {HTMLButtonElement} */ (b).value === v));
     const b = /** @type {HTMLElement | null} */ (viewSeg.querySelector('button[aria-pressed="true"]')), th = /** @type {HTMLElement | null} */ (viewSeg.querySelector('.seg-thumb'));
     if (b && th) { th.style.width = `${b.offsetWidth}px`; th.style.transform = `translateX(${b.offsetLeft}px)`; }
@@ -471,10 +493,61 @@ async function mountMap(el, ctx, offs) {
     const s = sp.toString();
     history.replaceState(history.state, '', `#/lookup/map${s ? `?${s}` : ''}`);
   }
-  // the whole map, every item once whatever the mode: the same count as Today's Where you stand (data/atlas.js totals)
+  // the whole map, every item once whatever the mode: the same count as Today's Where you stand (shared/data.js
+  // wordsKnown, data/atlas.js totals over the knowledge score); then the next best group of this mode
   function renderTotals() {
     const x = totals(A, K);
-    totalEl.textContent = t('explore.total', { k: num(x.known), n: num(x.n) });
+    knownEl.textContent = t('explore.total', { k: num(x.known), n: num(x.n) });
+    if (!totalEl.classList.contains('is-loading3d')) totalEl.textContent = '';
+    renderNext();
+    drawGaps3d();
+  }
+  /** The next best group (domain/atlas.js nextBestGroup): its name opens its page, the button studies its words. */
+  function renderNext() {
+    const L = layout(mode);
+    const best = nextBestGroup(L.groups, { kind: A.kind, level: A.level, F: A.F, st: K.st, text: A.text, upTo: ctx.settings().level });
+    if (!best) { replace(nextEl, t('explore.next.none')); nextBtn.hidden = true; return; }
+    const g = L.groups[best.gi], name = labelOf(g);
+    replace(nextEl, h('span', { class: 'ex-next-label' }, t('explore.next')), ' ',
+      h('a', { class: 'ex-next-name pressable', href: pageHref(g.key), onclick: () => discTo(best.gi) }, name),
+      h('span', { class: 'ex-next-n' }, ', ', t('explore.next.detail', { n: best.n })));
+    nextBtn.hidden = false;
+    nextBtn.setAttribute('href', `#/practice/round?kind=cluster%3Apick&ids=${encodeURIComponent(best.ids.map(i => A.ids[i].slice(2)).join(','))}&from=map`);
+    nextBtn.textContent = t('explore.next.study', { n: best.ids.length });
+    nextBtn.setAttribute('aria-label', t('explore.next.studyLabel', { n: best.ids.length, name }));
+    nextBtn.onclick = () => { setPrefs(store, s => ({ ...s, ret: { mode, key: g.key, at: Date.now() } })); };
+  }
+  /** 3D: "Study the gaps here" shows while the camera is over a district with words not known. */
+  function drawGaps3d() {
+    const gi = view === '3d' ? (hereGi >= 0 ? hereGi : centreGi >= 0 ? centreGi : openGroupIdx) : -1;
+    const n = gi >= 0 ? gapsOf(layout(mode).groups[gi]?.items || [], { kind: A.kind, F: A.F, st: K.st, text: A.text }).length : 0;
+    gaps3d.hidden = !n;
+    if (n) { const name = labelOf(layout(mode).groups[gi]); gaps3d.setAttribute('aria-label', t('explore.3d.gapsLabel', { n, name })); }
+  }
+  /** The district's gaps as a round: the round size picker first (Recommended, a number, or all of them). */
+  function studyGaps() {
+    const gi = hereGi >= 0 ? hereGi : centreGi >= 0 ? centreGi : openGroupIdx;
+    const g = gi >= 0 ? layout(mode).groups[gi] : null;
+    if (!g) return;
+    const idx = gapsOf(g.items, { kind: A.kind, F: A.F, st: K.st, text: A.text }).slice(0, GAPS_MAX);
+    if (!idx.length) return;
+    setPrefs(store, s => ({ ...s, ret: { mode, key: g.key, at: Date.now() } }));
+    const href = `#/practice/round?kind=cluster%3Agaps&ids=${encodeURIComponent(idx.map(i => A.ids[i].slice(2)).join(','))}&g=${encodeURIComponent(g.key)}&title=${encodeURIComponent(t('explore.gaps.title', { name: labelOf(g) }))}&from=map`;
+    void openPicker(ctx, href, gaps3d);
+  }
+  /**
+   * The disc of a group grows into its page's header (core/motion.js handoff; the route's view transition moves it).
+   * A copy of the disc sits over the map where the group is; reduced motion or no View Transitions: nothing moves.
+   * @param {number} gi
+   */
+  function discTo(gi) {
+    const at = cur().groupScreen?.(gi), cv = view === '3d' && canvas3 ? canvas3 : canvas;
+    if (!at || !Number.isFinite(at.x) || listOn) return;
+    const r = cv.getBoundingClientRect(), rad = Math.max(24, Math.min(at.r, 140));
+    const disc = h('div', { class: 'ex-disc-fly', 'aria-hidden': 'true', style: { left: `${Math.round(r.left + at.x - rad)}px`, top: `${Math.round(r.top + at.y - rad)}px`, width: `${Math.round(rad * 2)}px`, height: `${Math.round(rad * 2)}px` } },
+      h('b', null, labelOf(layout(mode).groups[gi])));
+    if (!handoff(disc, 'fx-disc')) return;
+    stage.append(disc);
   }
 
   /* ---------- sheets ---------- */
@@ -644,50 +717,18 @@ async function mountMap(el, ctx, offs) {
   }
 
   /**
-   * What a group offers to study: the counts, "Study next" in map states, and the study and cluster buttons. Shared by
-   * the sheet and the List view.
-   * @param {number} gi @param {any} D loadDetails() or null @param {boolean} inList
+   * What a group's sheet and its List entry show: the four states as a bar and in numbers, and one button that opens
+   * the group's page (group.js), where its words are studied. The map is for browsing; the page is for studying.
+   * @param {number} gi @param {boolean} inList
    */
-  function groupParts(gi, D, inList) {
-    const L = layout(mode), g = L.groups[gi], cn = counts[gi], ids = idsOf(g);
-    const words = ids.filter((/** @type {string} */ x) => x.startsWith('W:'));
-    const phrases = ids.filter((/** @type {string} */ x) => x.startsWith('K:'));
-    const concepts = ids.filter((/** @type {string} */ x) => x.startsWith('GC:'));
-    const pool = words.length ? words : phrases.length ? phrases : ids;
-    const next = nextUp(pool, stateOf, weight, STUDY_N);
+  function groupParts(gi, inList) {
+    const L = layout(mode), g = L.groups[gi], cn = counts[gi];
     const stack = h('div', { class: 'ex-stack', 'aria-hidden': 'true' },
       ...STATES.map(s => (cn[s] ? h('span', { class: `is-${s}`, style: { flexGrow: String(cn[s]) } }) : null)));
     const countsEl = h('p', { class: 'ex-counts caption tnum' }, ...STATES.map(s => h('span', null, swatch(s), t(`explore.sheet.${s}`, { n: num(cn[s]) }))));
-    /** @type {any[]} */ const out = [stack, countsEl];
-    /** @type {any[]} */ const acts = [];
-    if (next.length) {
-      if (!inList) {
-        out.push(h('h3', { class: 'ex-next-title label' }, t('explore.sheet.next')),
-          h('ul', { class: 'ex-next', lang: 'de' }, ...next.map(x => {
-            const j = /** @type {number} */ (A.index.get(x)), s = stateOf(x), k = s.today ? 'today' : s.state;
-            return h('li', null, h('button', { type: 'button', class: 'ex-next-item pressable', onclick: () => goTo(j) },
-              swatch(k), h('span', { class: 'ex-w' }, ...word(j)), h('span', { class: 'sr-only', lang: 'en' }, `, ${t(`explore.state.${k}`)}`)));
-          })));
-      }
-      if (pool === words) {
-        const studyIds = next.filter(x => !/[…()[\]]/.test(A.text[/** @type {number} */ (A.index.get(x))])).map(x => x.slice(2));
-        if (studyIds.length) acts.push(studyLink(`#/practice/round?kind=cluster%3Apick&ids=${encodeURIComponent(studyIds.join(','))}&from=map`, t('explore.sheet.study', { n: studyIds.length }), true));
-        // Quick sort (Practice): every word of the group not known yet, Know or Learn one at a time
-        const sortIds = words.filter((/** @type {string} */ x) => stateOf(x).state !== 'known' && !/[…()[\]]/.test(A.text[/** @type {number} */ (A.index.get(x))])).map((/** @type {string} */ x) => x.slice(2));
-        if (sortIds.length > 1) acts.push(studyLink(`#/practice/sort?ids=${encodeURIComponent(sortIds.join(','))}&title=${encodeURIComponent(labelOf(g))}&from=map`, t('explore.sheet.sort', { n: sortIds.length }), false));
-        if (!c.newItems && studyIds.length && studyIds.every(w => stateOf(`W:${w}`).state === 'unseen')) out.push(h('p', { class: 'caption ex-note' }, t('explore.sheet.noNew')));
-      } else if (D && pool === phrases) {
-        const askable = nextUp(phrases.filter((/** @type {string} */ x) => D.roundId(x)), stateOf, weight, STUDY_N).map(x => D.roundId(x));
-        if (askable.length) acts.push(studyLink(`#/practice/round?kind=${encodeURIComponent(`pick:${askable.join(',')}`)}&from=map`, t('explore.sheet.studyPhrases', { n: askable.length }), true));
-        else out.push(h('p', { class: 'caption ex-note' }, t('explore.sheet.phrasesNotInRounds')));
-      } else if (D && concepts.length) {
-        const cids = next.map(x => x.slice(3)), gids = grammarIds(cids, D);
-        const nC = new Set(gids.map(x => cids.find(cid => (K.k.maps.concepts[cid] || []).includes(x)))).size;
-        if (gids.length) acts.push(studyLink(`#/practice/round?kind=${encodeURIComponent(`pick:${gids.join(',')}`)}&from=map`, t('explore.sheet.studyGrammar', { n: nC }), true));
-      }
-    } else out.push(h('p', { class: 'ex-allknown' }, t('explore.sheet.allKnown')));
-    if (g.cluster) { const [ty, cid] = String(g.cluster).split(/:(.*)/); acts.push(h('a', { class: ['btn', 'pressable', !acts.length && 'btn-primary'], href: `#/practice/clusters/${ty}/${encodeURIComponent(cid)}` }, t('explore.sheet.cluster'))); }
-    return { parts: out, actions: acts.length ? h('div', { class: 'ex-actions' }, ...acts) : null };
+    const open = h('a', { class: 'btn btn-primary pressable ex-open', href: pageHref(g.key), onclick: () => { if (!inList) discTo(gi); } },
+      t('explore.sheet.open'), h('span', { class: 'sr-only' }, `: ${labelOf(g)}`));
+    return { parts: [stack, countsEl, cn.n && cn.known === cn.n ? h('p', { class: 'ex-allknown' }, t('explore.sheet.allKnown')) : null], actions: h('div', { class: 'ex-actions' }, open) };
   }
 
   /** @param {number} gi @param {boolean} far @param {{fly?: boolean, opener?: HTMLElement | null, keep?: boolean}} [opt] */
@@ -698,20 +739,15 @@ async function mountMap(el, ctx, offs) {
     const head = [h('p', { class: 'ex-meta caption' }, h('span', null, t(`explore.mode.${mode}`))),
       h('h2', { id: 'ex-sheet-title', class: 'ex-group-title' }, labelOf(g)),
       h('p', { class: 'ex-group-known' }, t('explore.known', { k: num(cn.known), n: num(cn.n) }))];
-    const draw = (/** @type {any} */ D) => { const p = groupParts(gi, D, false); replace(sheetBody, ...head, p.actions, ...p.parts); };
-    draw(null);
+    const p = groupParts(gi, false);
+    replace(sheetBody, ...head, p.actions, ...p.parts);
     if (!keep) crossfade();
     showSheet(keep ? undefined : from === undefined ? null : from);
     if (fly) void cur().flyToGroup(gi, { below: sheetBelow(), right: sheetRight() });
     // 3D: the words to study next get the open tile hovering over them
     if (view === '3d' && palace) palace.studyTiles(studyNext(gi).map(x => /** @type {number} */ (A.index.get(x))));
+    drawGaps3d();
     void far;
-    const D = await loadDetails(ctx, K.k.maps).catch(() => null);
-    if (alive && openGroupIdx === gi && D) {
-      const had = document.activeElement && sheet.contains(document.activeElement);
-      draw(D);
-      if (had) /** @type {HTMLElement | null} */ (sheetBody.querySelector('h2'))?.focus({ preventScroll: true });
-    }
   }
 
   /* ---------- search ---------- */
@@ -765,11 +801,9 @@ async function mountMap(el, ctx, offs) {
               swatch(k), h('span', { class: 'ex-w' }, ...word(i))),
             h('span', { class: ['caption', `ex-lstate is-${k}`], lang: 'en' }, t(`explore.state.${k}`)));
         }));
-        const fill = (/** @type {any} */ D) => { const p = groupParts(gi, D, true); replace(body, ...p.parts, p.actions); };
-        fill(null);
+        const p = groupParts(gi, true);
+        replace(body, ...p.parts, p.actions);
         d.append(body, items);
-        const D = await loadDetails(ctx, K.k.maps).catch(() => null);
-        if (alive && D) fill(D);
       });
       return d;
     }));

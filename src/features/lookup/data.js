@@ -1,6 +1,6 @@
 /* Look up: loading and caching. Content files come through ctx.content (manifest ids, cached by hash); each section
    is turned into rows and search docs once per app session and kept here, so going back to Look up, switching
-   sections or opening a word sheet never reloads or re-indexes anything. My words come from the private results
+   sections or opening a word sheet never reloads or re-indexes anything. Exam words come from the private results
    repository through the device's GitHub token (Profile › Connections) and are refetched after ten minutes. */
 import { config } from '../../core/config.js';
 import { buildIndex } from './search.js';
@@ -55,10 +55,10 @@ export function grammar(content, lang) {
   });
 }
 
-/** Everything the search needs except My words. @param {any} content @param {string} lang */
+/** Everything the search needs except Exam words. @param {any} content @param {string} lang */
 export const allContent = (content, lang) => Promise.all([dictionary(content, lang), phrases(content, lang), grammar(content, lang)]);
 
-/* ---------- My words ---------- */
+/* ---------- Exam words ---------- */
 
 /** @type {{at: number, key: string, p: Promise<any[]>} | null} */
 let remote = null;

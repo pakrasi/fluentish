@@ -7,6 +7,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { fetchVocab, VocabError, mergeVocab, lemmaGroups, byImportance, triage, headword, examples, details, freqBand, sources, wordKey, frequent } from '../../src/features/lookup/words.js';
 import { parseRoute, hashFor } from '../../src/features/lookup/route.js';
+import * as Match from '../../src/domain/match.js';
 import { phraseRows, layerRows, topicRows, frameGroups, modelSentence, tenseGrid, roleOf, langFor } from '../../src/features/lookup/sources.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
@@ -128,6 +129,9 @@ test('content rows: phrases German-first and exam phrases first, layers with rol
   assert.ok(frames[0].groups[0].en.length > 3);
   assert.equal(modelSentence({ prompt: 'Ich kaufe ___ Tisch. (der)', answer: ['den'] }), 'Ich kaufe den Tisch.');
   assert.equal(modelSentence({ prompt: 'Ich glaube. Er kommt. (dass)', answer: ['Ich glaube, dass er kommt.'] }), 'Ich glaube, dass er kommt.');
+  // a gap that starts the sentence takes a capital, as in the trainer's own model (domain/match.js gapFill)
+  assert.equal(modelSentence({ prompt: '___ Kind spielt im Garten. (das)', answer: ['das'] }), 'Das Kind spielt im Garten.');
+  assert.equal(modelSentence({ prompt: '___ Kind spielt im Garten. (das)', answer: ['das'] }), Match.gapFill('___ Kind spielt im Garten. (das)', 'das')?.text);
   const grid = tenseGrid(content('igloo/turns.json'), 'german');
   assert.equal(grid.length, 3);
   assert.ok(grid[2].cells[0].marks.length > 0);

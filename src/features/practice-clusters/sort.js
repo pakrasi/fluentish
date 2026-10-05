@@ -2,7 +2,7 @@
      ?cluster=<type>:<id>     a Word cluster's words (the cluster page's Quick sort)
      ?level=A1                the word list's words of a level (Look up › Words, the spot check that failed)
      ?ids=<word id>,…&title=  words picked elsewhere (the Explore map's group sheet and List)
-     &from=map|lookup|cluster|check   where Done goes back to
+     &from=map|lookup|cluster|check|map/<type>/<id>   where Done goes back to (map/…: a group page)
    Only words that are not known yet and have no gap ("um … zu") come up, most useful first.
 
    Know (← or 1) marks the word known through data/known.js (S 60 days, one check in about 60 days, spread over the
@@ -17,7 +17,7 @@ import { h, replace, announce } from '../../core/dom.js';
 import { fling, reduced, haptic } from '../../core/motion.js';
 import { doneHero } from '../shared/done-hero.js';
 import { loadClusters, loadKnowledge } from '../shared/cluster-data.js';
-import { form } from '../shared/cluster-items.js';
+import { form, groupBack } from '../shared/cluster-items.js';
 import { sortList, sortSource } from './pick.js';
 import { markWords, unmarkCards } from '../../data/known.js';
 import { langAttr } from '../../core/lang.js';
@@ -26,8 +26,10 @@ import { langAttr } from '../../core/lang.js';
 function backOf(q, src) {
   const from = q.get('from');
   if (from === 'map') return '#/lookup/map';
+  const page = groupBack(from);
+  if (page) return `#${page}`;
   if (from === 'lookup') return `#/lookup/words?w=all${src?.level ? `&level=${src.level}` : ''}`;
-  if (src?.kind === 'cluster') { const [ty, id] = src.key.split(':'); return `#/practice/clusters/${ty}/${id}`; }
+  if (src?.kind === 'cluster') { const [ty, id] = src.key.split(':'); return `#/lookup/map/${ty}/${encodeURIComponent(id)}`; }
   if (from === 'check') return '#/lookup/map';
   return '#/practice/clusters';
 }
@@ -168,7 +170,8 @@ export async function mountSort(el, ctx) {
     const known = picks.filter(p => p.choice === 'know'), learn = picks.filter(p => p.choice === 'learn');
     const left = total - picks.length;
     const studyIds = learn.map(p => p.id).slice(0, 12);
-    const from = ctx.query.get('from') === 'map' ? '&from=map' : '';
+    const f0 = ctx.query.get('from') || '';
+    const from = f0 === 'map' || groupBack(f0) ? `&from=${encodeURIComponent(f0)}` : '';
     const undoAll = h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => {
       const n = known.reduce((s, p) => s + (p.res ? unmarkCards(ctx, p.res.entries) : 0), 0);
       undoAll.remove();

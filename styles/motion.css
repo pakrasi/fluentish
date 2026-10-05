@@ -81,6 +81,13 @@
 :root[data-vt="view"]::view-transition-old(fx-view) { animation: vt-fade-out var(--dur-quick) var(--ease-in) both; }
 :root[data-vt="view"]::view-transition-new(fx-view) { animation: vt-rise var(--dur-card) var(--ease-out) 30ms both; }
 
+/* a shared element across a route (motion.js handoff/receive): a map group's disc grows into its page's header on
+   the snappy spring, the old picture fading as the new one comes in (both kept to their own aspect) */
+::view-transition-group(fx-disc) { animation-duration: 520ms; animation-timing-function: var(--spring-snappy); z-index: 2; }
+::view-transition-old(fx-disc) { animation: vt-fade-out 260ms var(--ease-in) both; height: 100%; object-fit: cover; }
+::view-transition-new(fx-disc) { animation: vt-fade-in 360ms var(--ease-out) 80ms both; height: 100%; object-fit: cover; }
+@keyframes vt-fade-in { from { opacity: 0; } }
+
 @keyframes vt-out-left  { to { opacity: 0; transform: translateX(calc(-28px * var(--move))) scale(calc(1 - 0.02 * var(--move))); } }
 @keyframes vt-out-right { to { opacity: 0; transform: translateX(calc(28px * var(--move))) scale(calc(1 - 0.02 * var(--move))); } }
 @keyframes vt-in-right  { from { opacity: 0; transform: translateX(calc(40px * var(--move))) scale(calc(1 - 0.015 * var(--move))); } }

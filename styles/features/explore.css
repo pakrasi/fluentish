@@ -275,3 +275,36 @@ body.ex-page { overscroll-behavior: none; }
 :root[data-motion="reduce"] .pl-label { transition: none; }
 :root[data-motion="reduce"] .ex-canvas { transition: opacity 140ms linear; }
 @media (prefers-reduced-transparency: reduce) { .pl-label { background: var(--surface); } }
+
+/* ---------- the header's knowledge line and the next best group (round 3) ---------- */
+.ex-meta { display: flex; align-items: center; gap: var(--s-3); padding: 0 max(var(--gutter), env(safe-area-inset-right)) var(--s-1) max(var(--gutter), env(safe-area-inset-left)); max-width: var(--page-max); width: 100%; margin: 0 auto; }
+.ex-meta-text { flex: 1; min-width: 0; display: grid; gap: 1px; }
+.ex-known { margin: 0; color: var(--ink-3); }
+.ex-nextbest { margin: 0; font: 400 14px/1.3 var(--font-ui); color: var(--ink-2); display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+.ex-next-label { color: var(--ink-3); }
+.ex-next-name { color: var(--ink); font-weight: 600; text-decoration: none; }
+.ex-next-name:hover { text-decoration: underline; text-underline-offset: 3px; }
+.ex-nextbtn { flex: none; min-height: 40px; padding: 0 14px; }
+@media (pointer: coarse) { .ex-nextbtn { min-height: var(--tap); } }
+.explore.is-list .ex-meta, .explore.is-select .ex-meta { display: none; }
+/* the HUD's left place holds the 3D loading line, or "Study the gaps here" in 3D */
+.ex-total:empty { display: none; }
+.ex-total:empty ~ .ex-ctl { margin-left: auto; }
+.pl-gapsbtn { background: var(--ink); color: var(--on-ink); box-shadow: none; }
+.explore:not(.is-3d) .pl-gapsbtn { display: none; }
+.pl-gapsbtn + .ex-ctl { margin-left: auto; }
+@media (forced-colors: active) { .pl-gapsbtn { background: ButtonFace; color: ButtonText; border: 1px solid ButtonText; } }
+
+/* the disc that grows into a group page's header (core/motion.js handoff; only inside a view transition) */
+.ex-disc-fly { position: fixed; z-index: 3; display: grid; place-items: center; border-radius: 50%; background: var(--surface); box-shadow: 0 0 0 1.5px var(--ink), var(--shadow-lift); pointer-events: none; overflow: hidden; }
+.ex-disc-fly b { font: 600 13px/16px var(--font-ui); color: var(--ink); padding: 0 8px; text-align: center; }
+
+/* ---------- the group page (features/explore/group.js) ---------- */
+.gp-head { display: grid; gap: var(--s-2); padding: var(--s-4) var(--s-4) var(--s-3); margin: 0 calc(-1 * var(--s-2)); border-radius: var(--r-card); background: var(--surface); box-shadow: inset 0 0 0 1px var(--hairline); }
+.gp-head h1 { margin: 0; }
+.gp-head .ex-stack { margin-top: var(--s-1); }
+.gp-head .ex-counts { margin: 0; }
+.gp-sec { display: grid; gap: var(--s-2); }
+.gp-block { font-size: 18px; }
+.gp .ex-next-item { text-decoration: none; }
+.gp-list { grid-template-columns: 1fr; }

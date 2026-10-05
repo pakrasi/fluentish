@@ -3,8 +3,8 @@
    #/lookup/words/<lemma or word id>                  a word sheet
    #/lookup/grammar/<topic id>                        a B1 grammar topic
    Query: q (search), lang (study language; German only in phase 1, kept so links stay valid later),
-   w (words: mine | all), g (grammar sub-section), f (frames: sprechen | verbs), cat (phrase kind), test (My words: Test N),
-   freq (My words: 1 = frequent only), level (word list: A1…B2). */
+   w (words: mine | all), g (grammar sub-section), f (frames: sprechen | verbs), cat (phrase kind), test (Exam words: Test N),
+   freq (Exam words: 1 = frequent only), level (word list: A1…B2). */
 import { TABS } from './sources.js';
 
 const KEYS = ['q', 'w', 'g', 'f', 'cat', 'test', 'level', 'freq', 'lang'];

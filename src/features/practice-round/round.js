@@ -31,7 +31,7 @@ import { Field } from '../../core/brand.js';
 import { readinessView } from './field.js';
 import { loadKnowledge } from '../../data/knowledge.js';
 import { knownOf } from '../../domain/standing.js';
-import { parseClusterKind, itemFor as clusterItem, compose as composeCluster, cardIds as clusterCards, pickIds, typable, zipfOf, buckets as clusterBuckets, NEW_PER_ROUND } from '../shared/cluster-items.js';
+import { parseClusterKind, itemFor as clusterItem, compose as composeCluster, cardIds as clusterCards, pickIds, typable, zipfOf, buckets as clusterBuckets, NEW_PER_ROUND, GAPS_MAX, groupBack } from '../shared/cluster-items.js';
 import { clusterToday } from '../../domain/allowance.js';
 import * as RS from '../../domain/roundsize.js';
 import { sizedKind } from '../shared/sizes.js';
@@ -125,13 +125,17 @@ export async function mountRound(el, ctx) {
     data = { ...data, byId: new Map(data.byId) };
   }
   // a round of words picked on the Explore map (kind=cluster:pick&ids=…): its own slot per set of words
-  const picked = ck?.pick ? pickIds(ctx.query.get('ids')).filter(id => typable(clusters.ix.word(id.slice(2)))) : [];
-  const spec = ck ? { kind: 'cluster', topic: ck.key || (ck.pick ? `pick:${picked.join(',')}` : 'due') } : C.parseKind(ctx.query.get('kind'));
+  // (kind=cluster:gaps&ids=…&g=<group>: a map group's gaps, a long list the round size picker takes a round from)
+  const picked = ck?.pick ? pickIds(ctx.query.get('ids'), ck.gaps ? GAPS_MAX : undefined).filter(id => typable(clusters.ix.word(id.slice(2)))) : [];
+  const spec = ck ? { kind: 'cluster', topic: ck.key || (ck.gaps ? `gaps:${String(ctx.query.get('g') || 'map').slice(0, 80)}` : ck.pick ? `pick:${picked.join(',')}` : 'due') } : C.parseKind(ctx.query.get('kind'));
   const slot = S.slotKey(spec);
   /** Cluster items for the ids of a round (rebuilt from the ids, so a saved round resumes). @param {string[]} ids */
   const addClusterItems = ids => { for (const id of ids) if (!data.byId.has(id)) { const it = clusterItem(id, clusters.ix, clusters.c, { t, fx: clusters.fx, where: t(`practice.clusters.where.${/^C[OFP]:/.test(id) ? id.slice(0, 2) : 'W'}`) }); if (it) data.byId.set(id, it); } };
   // End and Esc go back where the round was started from (Today's button adds from=today)
-  const backTo = ctx.query.get('from') === 'today' ? '/today' : ctx.query.get('from') === 'map' ? '/lookup/map' : ctx.query.get('kind')?.startsWith('cluster:') ? `/practice/clusters${(/^cluster:(\w+):(.+)$/.exec(String(ctx.query.get('kind'))) || []).slice(1).map(x => `/${x}`).join('')}` : '/practice';
+  // (a group page adds from=map/<type>/<id>; a cluster round without one goes back to the cluster's group page)
+  const clusterPage = (/^cluster:(\w+):(.+)$/.exec(String(ctx.query.get('kind'))) || []).slice(1);
+  const backTo = ctx.query.get('from') === 'today' ? '/today' : ctx.query.get('from') === 'map' ? '/lookup/map' : groupBack(ctx.query.get('from'))
+    || (clusterPage.length ? `/lookup/map/${clusterPage[0]}/${encodeURIComponent(clusterPage[1])}` : ctx.query.get('kind')?.startsWith('cluster:') ? '/practice/clusters' : '/practice');
   let st = stateFor(ctx, data);
   const sess = session(store);
   const saved = S.savedRound(sess, slot);
@@ -153,7 +157,7 @@ export async function mountRound(el, ctx) {
       const co = { ids: pool, cards: cards0, c: c0, isDue: (/** @type {any} */ rec) => RD.isDue(rec, c0.today, c0), recall: recallOf(c0), skip: (/** @type {string} */ id) => skipsNew(mk, id), zipf: zipfOf(clusters.ix),
         newLeft: clNew, newCap: Math.min(NEW_PER_ROUND, clNew) };
       ids = sized && sized !== 'rec' ? RS.pick(clusterBuckets(co), sized).ids
-        : composeCluster({ ...co, ...(ck.pick ? { size: picked.length, newCap: picked.length } : {}) }).ids;
+        : composeCluster({ ...co, ...(ck.pick && !ck.gaps ? { size: picked.length, newCap: picked.length } : {}) }).ids;
       if (ck.due) ids = ids.filter(id => cards0[id]?.reps);
       addClusterItems(ids);
       ids = ids.filter(id => data.byId.has(id));
@@ -704,7 +708,7 @@ export async function mountRound(el, ctx) {
       updateClusters(store, x => { const d = clusterDay(store, st.c.today); return { ...x, day: { ...d, rounds: d.rounds + 1 } }; });
       addActivity(store, st.c.today, { minutes: minutesSpent(), rounds: 1 });
       const firsts = round.results.filter((/** @type {any} */ r) => r.first && !r.known);
-      drawClusterDone(el, ctx, { key: ck.key, right: firsts.filter((/** @type {any} */ r) => r.ok).length, total: firsts.length, prev: round.prev || {}, again: S.roundHref(round), fromMap: backTo === '/lookup/map',
+      drawClusterDone(el, ctx, { key: ck.key, right: firsts.filter((/** @type {any} */ r) => r.ok).length, total: firsts.length, prev: round.prev || {}, again: ck.pick ? `#/practice/round?${ctx.query}` : S.roundHref(round), back: backTo.startsWith('/lookup/map') ? `#${backTo}` : null,
         known: round.results.filter((/** @type {any} */ r) => r.known).length });
       return;
     }
@@ -715,7 +719,7 @@ export async function mountRound(el, ctx) {
     drawDone(el, ctx, data, round, backTo);
   }
   function drawNothing() {
-    if (ck) { ctx.go(ck.key ? `/practice/clusters/${ck.key.replace(':', '/')}` : '/practice/clusters', { replace: true }); return () => { document.body.dataset.chrome = 'on'; document.body.classList.remove('pr-in-round'); }; }
+    if (ck) { ctx.go(ck.key || ck.pick ? backTo : '/practice/clusters', { replace: true }); return () => { document.body.dataset.chrome = 'on'; document.body.classList.remove('pr-in-round'); }; }
     const c = st.c;
     const tomorrow = RD.forecast(store.cards('b1'), c.today, 2, c)[1]?.n || 0;
     replace(el, h('div', { class: 'practice pr-done stack' },

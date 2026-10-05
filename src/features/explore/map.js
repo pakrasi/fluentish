@@ -770,6 +770,8 @@ export function createMap(canvas, o) {
     /** @param {{x: number, y: number, k: number}} c */
     set camera(c) { cam = { ...c }; untouched = false; kick(); },
     redraw() { version++; kick(); },
+    /** A group's disc on screen (canvas CSS px): its centre and radius, for the disc that grows into the group page. @param {number} gi */
+    groupScreen(gi) { const g = L.groups[gi]; return g ? { x: (g.x - cam.x) * cam.k + W / 2, y: (g.y - cam.y) * cam.k + H / 2, r: g.r * cam.k } : null; },
     /** Bitmap cache size, for the performance report. */
     /** Turn the group bitmaps off and on (to measure what they save). @param {boolean} on */
     bitmapsOn(on) { useBitmaps = on; kick(); },

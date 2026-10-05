@@ -547,3 +547,52 @@ export function nextUp(ids, get, weight, n = 10) {
   return ids.map((id, i) => ({ id, i, t: tier[get(id).state] })).filter(x => x.t < 9)
     .sort((a, b) => a.t - b.t || weight(b.id) - weight(a.id) || a.i - b.i).slice(0, n).map(x => x.id);
 }
+
+/* ---------------------------------------------------------------- the next best group */
+
+/** Common enough to be worth learning first: zipf 4 and up (about once in 100,000 words). */
+export const COMMON_F = 4;
+/** Most words the next best group's study button takes (a round). */
+export const NEXT_N = 12;
+
+/**
+ * The next best group to study (the map's suggestion): the group with the most common words he does not know yet, at
+ * or under his level. Words only (a round can ask them), never a word with a gap or brackets ("…", "(sich)"). A tie
+ * goes to the group with fewer items (less to wade through), then the first. Returns null when no group has one.
+ * ids: the round's words, the most common first (at most NEXT_N).
+ * @param {{items: number[]}[]} groups a layout's groups
+ * @param {object} o
+ * @param {string[]} o.kind   'w' | 'c' | 'g' per item
+ * @param {string[]} o.level  'A1' … per item ('' unknown)
+ * @param {ArrayLike<number>} o.F  frequency weight per item (a word's zipf)
+ * @param {ArrayLike<number>} o.st state code per item (STATE_CODE)
+ * @param {string[]} o.text   the item as written
+ * @param {string | null | undefined} o.upTo his level (A1 … C2; null: B1)
+ * @param {number} [o.minF]
+ * @returns {{gi: number, n: number, ids: number[]} | null}
+ */
+export function nextBestGroup(groups, { kind, level, F, st, text, upTo, minF = COMMON_F }) {
+  const top = Math.max(0, LEVELS.indexOf(upTo || 'B1'));
+  /** @type {{gi: number, n: number, ids: number[]} | null} */ let best = null;
+  groups.forEach((g, gi) => {
+    const open = g.items.filter(i => kind[i] === 'w' && st[i] !== STATE_CODE.known && F[i] >= minF && !/[…()[\]]/.test(text[i])
+      && LEVELS.indexOf(level[i]) >= 0 && LEVELS.indexOf(level[i]) <= top);
+    if (!open.length) return;
+    if (!best || open.length > best.n || (open.length === best.n && g.items.length < groups[best.gi].items.length)) {
+      best = { gi, n: open.length, ids: [...open].sort((a, b) => F[b] - F[a] || a - b).slice(0, NEXT_N) };
+    }
+  });
+  return best;
+}
+
+/**
+ * The gaps of a group (Explore › 3D "Study the gaps here"): its words not known yet that a round can ask, the open
+ * scaffolds (seen, not known) first, then the empty plots (not seen), each the most common first.
+ * @param {number[]} items @param {{kind: string[], F: ArrayLike<number>, st: ArrayLike<number>, text: string[]}} o
+ * @returns {number[]}
+ */
+export function gapsOf(items, { kind, F, st, text }) {
+  const tier = (/** @type {number} */ i) => (st[i] === STATE_CODE.unknown ? 0 : st[i] === STATE_CODE.unseen ? 1 : 9);
+  return items.filter(i => kind[i] === 'w' && tier(i) < 9 && !/[…()[\]]/.test(text[i]))
+    .sort((a, b) => tier(a) - tier(b) || F[b] - F[a] || a - b);
+}

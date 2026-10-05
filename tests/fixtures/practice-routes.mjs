@@ -4,7 +4,7 @@
 // matches it) and tests/e2e/routes.spec.mjs (it opens in the browser). Synthetic ids only.
 export const PRACTICE_ROUTES = [
   ['#/practice', 'practice'],
-  ['#/practice/words', 'practice'],
+  ['#/practice/words', 'practice'],   // goes on to Look up › Words › Exam words (round 3)
   ['#/practice/round', 'practice-round'],
   ['#/practice/round?kind=missed', 'practice-round'],
   ['#/practice/round?kind=mistakes', 'practice-round'],
@@ -30,6 +30,7 @@ export const PRACTICE_ROUTES = [
   ['#/practice/scripts/e2e-none', 'practice-script'],
   ['#/practice/clusters', 'practice-clusters'],
   ['#/practice/clusters/topic', 'practice-clusters'],
+  ['#/practice/clusters/topic/food', 'practice-clusters'],   // goes on to the group page, #/lookup/map/topic/food (round 3)
   ['#/practice/sort?level=A1', 'practice-clusters'],
   ['#/practice/known/A1', 'practice-clusters'],
   ['#/practice/build', 'build'],

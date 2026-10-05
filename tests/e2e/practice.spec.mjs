@@ -17,7 +17,7 @@ test('the hub: the next step, three groups, a group closes and stays closed', as
   }
   await expect(page.locator('.pr-areas')).toHaveCount(0);
   // exam words need a linked results repository: no row without one
-  await expect(page.locator('a[href="#/practice/words"], a[href="#/practice/round?kind=area:words"]')).toHaveCount(0);
+  await expect(page.locator('a[href="#/practice/words"], a[href="#/lookup/words"], a[href="#/practice/round?kind=area:words"]')).toHaveCount(0);
   await checkA11y(page, 'Practice hub');
   // close Exam modules: its rows leave the tab order, and the choice survives a reload
   await expect(heads.nth(0)).toHaveAttribute('aria-expanded', 'true');

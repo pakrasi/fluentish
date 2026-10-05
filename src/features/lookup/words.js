@@ -1,4 +1,4 @@
-/* Look up › My words: the words captured in mock-test reviews, with the glosses, examples and details added to them
+/* Look up › Exam words: the words captured in mock-test reviews, with the glosses, examples and details added to them
    in the private results repository (data/vocab.json). Pure except fetchVocab, whose fetch is injected; tested in
    node (tests/unit/lookup-words.test.mjs) with a mocked GitHub API.
 

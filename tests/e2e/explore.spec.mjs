@@ -7,7 +7,9 @@ test('Look up › Map: the 2D map opens, draws, and opens a group', async ({ pag
   await expect(map).toBeVisible();
   const box = await map.boundingBox();
   expect(box && box.width > 200 && box.height > 200).toBe(true);
-  await expect(page.locator('#view')).toContainText(/of [\d,]+ known/);
+  // the header: words and phrases known (Today's Where you stand says the same) and the next best group
+  await expect(page.locator('.ex-known')).toContainText(/of [\d,]+ words and phrases known/);
+  await expect(page.locator('.ex-nextbtn')).toHaveAttribute('href', /kind=cluster%3Apick&ids=/);
   // the canvas has been drawn on (not blank)
   const inked = await page.evaluate(() => {
     const c = /** @type {HTMLCanvasElement | null} */ (document.querySelector('#view canvas'));
@@ -28,7 +30,7 @@ test('Look up › Map: the 2D map opens, draws, and opens a group', async ({ pag
   const sheet = page.getByRole('dialog');
   await expect(sheet).toBeVisible();
   await expect(sheet.getByRole('heading', { level: 2 })).toBeVisible();
-  await expect(sheet.locator('a[href^="#/practice/round?kind=pick"]')).toBeVisible();   // "Study these …"
+  await expect(sheet.getByRole('link', { name: /Open the group/ })).toHaveAttribute('href', /^#\/lookup\/map\/\w+\//);
   await checkA11y(page, 'Map group sheet');
   await sheet.getByRole('button', { name: 'Close' }).click();
   await expect(sheet).toBeHidden();

@@ -136,7 +136,7 @@ export async function mountHub(el, ctx) {
       : examWords && wordsArea && wordsArea.n
         ? barRow({ href: '#/practice/round?kind=area:words', title: t('practice.area.words'), x: wordsArea,
           detail: wordsArea.seen ? t('practice.area.trail', { pct: pct(wordsArea.recall), n: wordsArea.due }) : t('practice.words.status.none', { n: examWords }) })
-        : linkRow({ href: '#/practice/words', title: t('practice.area.words'),
+        : linkRow({ href: '#/lookup/words', title: t('practice.area.words'),
           detail: wc ? t('practice.words.status.none', { n: examWords }) : wordsState === 'error' ? t('practice.words.status.failed') : t('practice.words.status.loading') });
     const wordRows = [
       linkRow({ href: '#/practice/clusters', title: t('practice.clusters.title'), detail: cl.due ? t('practice.clusters.rowDue', { n: cl.due }) : t('practice.clusters.rowDetail') }),

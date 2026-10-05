@@ -1,4 +1,4 @@
-/* Look up (UX §4.10): reference with one search. Sections: Words (My words, the captured exam words with their
+/* Look up (UX §4.10): reference with one search. Sections: Words (Exam words, the words saved in mock tests, with their
    glosses, examples and details from the private results repository; and the B1 word list), Phrases (the chunk
    bank), Grammar (B1 topics, then Igloo's grammar layer in the word-tile role colours, and the notes) and Frames
    (Sprechen frames and verb frames).
@@ -12,7 +12,7 @@ import { label } from '../../core/clock.js';
 import { notice, seg } from '../../core/ui.js';
 import { icon } from '../../core/icons.js';
 import { num } from '../../core/i18n.js';
-import { dueOn } from '../../domain/b1ready.js';
+import { dueOn, compute as readiness } from '../../domain/b1ready.js';
 import * as D from './data.js';
 import { parseRoute, hashFor } from './route.js';
 import { search } from './search.js';
@@ -21,6 +21,8 @@ import { triage, cardId, headword, examples, details, freqBand, sources, frequen
 import { hl, glyph, paged, markForm, caption } from './ui.js';
 import { play, stop, prefetchAudio } from '../../services/audio.js';
 import { markSeen } from '../../data/seen.js';
+import { refreshWords, loadData, stateFor, secrets } from '../shared/data.js';
+import { COLLECTION as EXAM_WORDS, inQueue } from '../shared/words.js';
 
 const UI_KEY = 'lookup.ui';
 const DEBOUNCE_MS = 120;
@@ -49,7 +51,7 @@ export async function mount(el, ctx) {
   const sayBtn = (text, what = text) => h('button', { type: 'button', class: 'lk-say pressable', 'aria-label': t('lookup.listen', { text: what }),
     onclick: async (/** @type {Event} */ e) => { e.stopPropagation(); if (!(await play(ctx.content, text, ctx.store))) ctx.toast(t('lookup.noAudio')); } }, glyph('speaker', 20));
 
-  /** My words state: waiting, a review date, after the exam, new. @param {any} g */
+  /** An exam word's state: waiting, a review date, after the exam, new. @param {any} g */
   function wordState(g) {
     const c = today();
     const tri = triage(g, c.phase, wordmap);
@@ -446,7 +448,7 @@ export async function mount(el, ctx) {
         list(rows, r => dictRow(r, '')));
     }
     const mw = await D.myWords(store);
-    const out = h('div', null, toggle);
+    const out = h('div', null, toggle, await examHead());
     if (mw.status === 'nolink' || mw.status === 'auth') {
       out.append(notice({ kind: mw.status === 'auth' ? 'warning' : 'info', children: [
         h('p', { class: 'notice-title' }, t('lookup.words.link.title')),
@@ -477,6 +479,41 @@ export async function mount(el, ctx) {
           h('button', { type: 'button', class: 'chip pressable', 'aria-pressed': String(freqOnly), onclick: () => setOpt('freq', freqOnly ? '' : '1') }, t('lookup.words.frequent')))),
       rows.length ? list(rows, g => mineRow(g, '')) : h('p', { class: 'lk-empty' }, t('lookup.words.emptyFilter')));
     return out;
+  }
+
+  /**
+   * Exam words (round 3: the one list of them, moved here from Practice): how many are in the review queue, how many
+   * of those he has seen, the round, and Update now. Practice keeps only the round (Practice › Words › Exam words).
+   */
+  async function examHead() {
+    const wc = store.get(EXAM_WORDS, null), c = today(), tok = !!secrets(store).githubToken;
+    if (!wc && !tok) return null;
+    const n = wc ? (wc.words || []).filter((/** @type {any} */ w) => inQueue(w, c.phase)).length : 0;
+    let seen = null;
+    if (n) {
+      const data = await loadData(ctx).catch(() => null);
+      const x = data ? readiness({ pool: data.pool.filter((/** @type {any} */ it) => it.area === 'words'), store: stateFor(ctx, data).cards, today: c.today, exam: c.exam, phase: c.phase }).areas.words : null;
+      if (x) seen = t('lookup.exam.state', { seen: x.seen, n: x.n, due: x.due });
+    }
+    const status = h('p', { class: 'caption', 'aria-live': 'polite' });
+    const update = async () => {
+      status.textContent = t('lookup.exam.checking');
+      const res = await refreshWords(ctx, { force: true });
+      if (!alive) return;
+      const w2 = store.get(EXAM_WORDS, null);
+      const msg = res.state === 'error' ? t('lookup.exam.failed', { why: res.error || '' })
+        : res.added.length ? t('lookup.exam.added', { n: res.added.length, test: w2?.addedTest || '?' }) : t('lookup.exam.updated');
+      D.resetMyWords(); await draw();
+      announce(msg);
+    };
+    return h('div', { class: 'lk-exam' },
+      wc ? h('p', { class: 'lk-exam-about' }, t('lookup.exam.about', { n, total: wc.total || (wc.words || []).length })) : null,
+      c.phase === 'week' || c.phase === 'lastNew' || c.phase === 'eve' ? h('p', { class: 'caption' }, t('lookup.exam.triage')) : null,
+      seen ? h('p', { class: 'caption tnum' }, seen) : null,
+      h('div', { class: 'row-actions lk-exam-actions' },
+        n ? h('a', { class: 'btn btn-primary pressable', href: '#/practice/round?kind=area:words' }, t('lookup.exam.round')) : null,
+        tok ? h('button', { type: 'button', class: 'btn pressable', onclick: () => { void update(); } }, t('lookup.exam.update')) : null),
+      status);
   }
 
   async function drawPhrases() {

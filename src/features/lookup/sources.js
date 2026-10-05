@@ -1,6 +1,6 @@
 /* Look up: content files → rows for each section and docs for the search index. Pure, tested in node.
 
-   Sections (UX §4.10): words (My words + the word list), phrases (the chunk bank), grammar (B1 topics, then Igloo's
+   Sections (UX §4.10): words (Exam words + the word list), phrases (the chunk bank), grammar (B1 topics, then Igloo's
    grammar layer: linking words, tenses, cases, set phrases, vocabulary, sound, tasks, and the notes), frames
    (Sprechen frames from the B1 trainer, and Igloo's verb frames).
 
@@ -150,7 +150,7 @@ export function tenseGrid(turns, lang) {
 
 /* ---------- search docs ---------- */
 
-/** @param {any[]} groups My words groups (words.js lemmaGroups) @param {(g: any) => string} head */
+/** @param {any[]} groups Exam words groups (words.js lemmaGroups) @param {(g: any) => string} head */
 export const myWordDocs = (groups, head) => groups.map(g => ({ id: `mine:${g.key}`, tab: 'words', title: head(g), sub: g.gloss || '',
   extra: [g.lemma, ...(g.forms || []), g.note, g.plural].filter(Boolean).join(' '), rank: -100 + Math.round(-(g.zipf ?? 3) * 10) / 1000, ref: { kind: 'mine', g } }));
 /** @param {ReturnType<typeof dictRows>} rows */

@@ -18,13 +18,14 @@ import { slotKey } from './session.js';
 import { todayBudget } from '../../domain/allowance.js';
 import { firstWeek } from '../../domain/allowance.js';
 import { marked, importPlacement } from '../../data/known.js';
+import { loadAtlas, scores, totals } from '../../data/atlas.js';
 
 // igloo.words.de and igloo.chunks.german (both precached) only feed the grader's lexicon of German word forms; without
 // them the B1 content's own words do
 const FILES = ['b1.items', 'b1.grammar', 'b1.bank', 'b1.plan', 'b1.nouns', 'b1.wordmap', 'igloo.words.de', 'igloo.chunks.german', 'b1.schreiben'];
 export const VOCAB_URL = `${config.github.api}/repos/${config.resultsRepo}/contents/data/vocab.json`;
 
-/** @type {{key: string, data: any} | null} */ let memo = null;
+/** @type {{key: string, data: any, words: any[]} | null} */ let memo = null;
 
 /**
  * The item pool for the current profile and day. Content files are cached by the content module; the pool is rebuilt
@@ -40,14 +41,15 @@ export async function loadData(ctx) {
   const wc = ctx.store.get(WORDS, null);
   const mistakes = listMistakes(ctx.store);
   const key = [wc?.fetchedAt || 0, c.phase, mistakes.map(m => m.id).join(',')].join('|');
-  if (memo && memo.key === key) return memo.data;
+  // the placement import is per profile, the pool is not: a pool built for another profile still imports for this one
+  if (memo && memo.key === key) { placeOnce(ctx, memo.data, memo.words); return memo.data; }
   const wx = Array.isArray(lexWords) ? await loadWordIx(ctx, lexWords).catch(() => null) : null;
   const data = /** @type {any} */ (buildPool({ items: items || [], grammar: grammar || [], bank: bank || {}, plan, nouns: nouns || {},
     words: wordItems(wc?.words, c.phase, wx || {}), mistakes, lexWords: Array.isArray(lexWords) ? lexWords : null, lexTexts: chunkExamples(chunksDe),
     schreiben: schreiben && Array.isArray(schreiben.items) ? schreiben : null }));
   data.wordmap = wordmap || {};
-  memo = { key, data };
-  placeOnce(ctx, data, Array.isArray(lexWords) ? lexWords : []);
+  memo = { key, data, words: Array.isArray(lexWords) ? lexWords : [] };
+  placeOnce(ctx, data, memo.words);
   return data;
 }
 
@@ -73,6 +75,35 @@ function placeOnce(ctx, data, words) {
       return null;
     });
   } catch { /* legacy data unreadable: nothing to import */ }
+}
+
+/**
+ * Igloo's placement import before anything counts what he knows: on a migrated profile it runs once (placeOnce, with
+ * the pool loaded); otherwise, and every later time, it returns at once. The map's first visit used to count before
+ * Practice had loaded the pool, so a migrated profile saw fewer known words there than on Today until then.
+ * @param {import('../contract.js').ViewCtx} ctx
+ */
+export async function ensurePlacement(ctx) {
+  if (!placementPending(ctx.store)) return;
+  try { await loadData(ctx); } catch { /* content missing: nothing to import now */ }
+}
+
+/** Whether Igloo's placement import is still to run for this profile. @param {any} store */
+export function placementPending(store) {
+  if (!(store.get('meta', {}) || {}).migratedAt || (store.get('known', {}) || {}).placement) return false;
+  try { const raw = globalThis.localStorage && localStorage.getItem('doors.know.v1'); return !!raw && Object.keys(JSON.parse(raw) || {}).length > 0; } catch { return false; }
+}
+
+/**
+ * Words and phrases known on the whole map, of all of them: the one number Today's Where you stand and the map's
+ * header show (data/atlas.js totals over domain/knowledge.js), after the placement import. Null without the map.
+ * @param {import('../contract.js').ViewCtx} ctx
+ * @returns {Promise<{known: number, n: number} | null>}
+ */
+export async function wordsKnown(ctx) {
+  await ensurePlacement(ctx);
+  /** @type {any} */ const A = await loadAtlas(ctx).catch(() => null);
+  return A ? totals(A, await scores(ctx, A)) : null;
 }
 
 /** The German example sentences of the chunk file (igloo.chunks.german: {chunks: {id: {ex}}}). @param {any} f */
