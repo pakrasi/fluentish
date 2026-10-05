@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "d0ec4ce1d5a6",
+ "version": "adc43a885e0d",
  "languages": [
   {
    "id": "khasi",
@@ -155,8 +155,8 @@
    "id": "atlas.de",
    "path": "atlas/de.json",
    "schema": "atlas@1",
-   "bytes": 547386,
-   "sha256": "5b59a48f94a663fbd21b56424691098dc8aeea15d5c0513a2ae775fc69d582b0"
+   "bytes": 555916,
+   "sha256": "cdf2ee65d5dbc16dc39f1fd81d34c4d9c11eb79e86f161e7227999d10821967b"
   },
   {
    "id": "b1.annot",
@@ -204,8 +204,8 @@
    "id": "b1.nouns",
    "path": "b1/nouns.json",
    "schema": "b1-nouns@1",
-   "bytes": 93308,
-   "sha256": "771daf1d25d4e492b42817984554b0ca060fb9d0e1363ffe994eb8e36b217939"
+   "bytes": 93140,
+   "sha256": "711a6793bccecd1b0bf407aea7b7897f9f5af618267437474136f9dfecc02e69"
   },
   {
    "id": "b1.plan",
@@ -225,15 +225,15 @@
    "id": "b1.wordmap",
    "path": "b1/wordmap.json",
    "schema": "b1-wordmap@1",
-   "bytes": 148766,
-   "sha256": "900487c4ddc1d6664f603ebfe4914c35af84e3617a917da1b22f8a175d1adcee"
+   "bytes": 152538,
+   "sha256": "c1cea21ef950108a0a7f4610bd30f3ea38029ed0485bd4e14029230e8f673e08"
   },
   {
    "id": "clusters.de",
    "path": "clusters/de.json",
    "schema": "clusters@1",
-   "bytes": 363326,
-   "sha256": "54ef569b18c45f65c671952ee3f03ea27d30349a721c858991f9d5a8532daf5e"
+   "bytes": 370561,
+   "sha256": "41cb1893ddf913d82c44d91839fec9bd44f648ea785352e92da3e1456fd45af9"
   },
   {
    "id": "exam.goethe-b1.01",
@@ -666,8 +666,8 @@
    "id": "igloo.words.de",
    "path": "igloo/words/de.json",
    "schema": "igloo-words@1",
-   "bytes": 1100968,
-   "sha256": "f94abeb10ac69aac1a6f6e56a536ac4acf95e0012ea11c606d40853fe71a7ab6"
+   "bytes": 1136493,
+   "sha256": "4e8343bc5cc62ee832fbe2bc3100fb438b9012da586e703689e7451a576f20f2"
   },
   {
    "id": "igloo.words.themes",

@@ -2789,5 +2789,2013 @@
   "zipf": 5.59,
   "ex": "Wir sind gleich alt.",
   "exen": "We are the same age."
+ },
+ {
+  "id": "abstellen.verb",
+  "w": "abstellen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to put down",
+   "to park",
+   "to switch off"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "core",
+  "rank": 1012,
+  "zipf": 3.7,
+  "ex": "Wir stellen das Auto vor dem Haus ab.",
+  "exen": "We park the car in front of the house.",
+  "forms": "stellt ab · stellte ab · hat abgestellt"
+ },
+ {
+  "id": "anstellen.verb",
+  "w": "anstellen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to employ",
+   "to switch on (colloquial)",
+   "to queue (sich anstellen)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "rank": 1013,
+  "zipf": 3.95,
+  "ex": "Die Bäckerei stellt im Sommer zwei Aushilfen an.",
+  "exen": "The bakery takes on two temporary staff in the summer.",
+  "forms": "stellt an · stellte an · hat angestellt"
+ },
+ {
+  "id": "aufstellen.verb",
+  "w": "aufstellen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to set up",
+   "to put up",
+   "to draw up (a list)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "core",
+  "rank": 1014,
+  "zipf": 4.07,
+  "ex": "Wir stellen den Weihnachtsbaum im Wohnzimmer auf.",
+  "exen": "We're putting up the Christmas tree in the living room.",
+  "forms": "stellt auf · stellte auf · hat aufgestellt"
+ },
+ {
+  "id": "vorstellen.verb",
+  "w": "vorstellen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to introduce",
+   "to imagine",
+   "to present"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "communication",
+  "rank": 1015,
+  "zipf": 4.88,
+  "ex": "Morgen stelle ich dir meine Eltern vor.",
+  "exen": "Tomorrow I'll introduce you to my parents.",
+  "forms": "stellt vor · stellte vor · hat vorgestellt"
+ },
+ {
+  "id": "zustellen.verb",
+  "w": "zustellen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to deliver (post)",
+   "to block (a doorway)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "rank": 1016,
+  "zipf": 2.99,
+  "ex": "Die Post stellt Briefe auch am Samstag zu.",
+  "exen": "The post office delivers letters on Saturdays too.",
+  "forms": "stellt zu · stellte zu · hat zugestellt"
+ },
+ {
+  "id": "umstellen.verb",
+  "w": "umstellen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to rearrange",
+   "to switch over (to)",
+   "to change (the clocks)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "core",
+  "rank": 1017,
+  "zipf": 3.55,
+  "ex": "Im Herbst stellen wir die Uhren um.",
+  "exen": "In autumn we put the clocks back.",
+  "forms": "stellt um · stellte um · hat umgestellt"
+ },
+ {
+  "id": "verstellen.verb",
+  "w": "verstellen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to adjust",
+   "to block (a path)",
+   "to disguise (one's voice)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "rank": 1018,
+  "zipf": 3.27,
+  "ex": "Kannst du den Sitz etwas nach vorne verstellen?",
+  "exen": "Can you move the seat forward a bit?",
+  "forms": "verstellt · verstellte · hat verstellt"
+ },
+ {
+  "id": "entstellen.verb",
+  "w": "entstellen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to distort",
+   "to disfigure"
+  ],
+  "alt": [],
+  "level": "C1",
+  "theme": "media",
+  "rank": 1019,
+  "zipf": 2.53,
+  "ex": "Der Bericht entstellt die Tatsachen.",
+  "exen": "The report distorts the facts.",
+  "forms": "entstellt · entstellte · hat entstellt"
+ },
+ {
+  "id": "erstellen.verb",
+  "w": "erstellen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to create",
+   "to draw up (a document)",
+   "to produce"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "rank": 1020,
+  "zipf": 4.26,
+  "ex": "Die Lehrerin erstellt einen neuen Stundenplan.",
+  "exen": "The teacher is drawing up a new timetable.",
+  "forms": "erstellt · erstellte · hat erstellt"
+ },
+ {
+  "id": "auflegen.verb",
+  "w": "auflegen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to hang up (the phone)",
+   "to put on (music)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "communication",
+  "rank": 1021,
+  "zipf": 3.49,
+  "ex": "Ich lege jetzt auf, mein Akku ist fast leer.",
+  "exen": "I'm going to hang up now, my battery is almost dead.",
+  "forms": "legt auf · legte auf · hat aufgelegt"
+ },
+ {
+  "id": "einlegen.verb",
+  "w": "einlegen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to put in",
+   "to insert",
+   "to take (a break)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "core",
+  "rank": 1022,
+  "zipf": 3.73,
+  "ex": "Ich lege eine neue Batterie in die Kamera ein.",
+  "exen": "I'm putting a new battery in the camera.",
+  "forms": "legt ein · legte ein · hat eingelegt"
+ },
+ {
+  "id": "nachlegen.verb",
+  "w": "nachlegen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to put more on (a fire)",
+   "to add more"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "home",
+  "rank": 1023,
+  "zipf": 3.04,
+  "ex": "Mein Großvater legt alle zwei Stunden Holz nach.",
+  "exen": "My grandfather puts more wood on every two hours.",
+  "forms": "legt nach · legte nach · hat nachgelegt"
+ },
+ {
+  "id": "zulegen.verb",
+  "w": "zulegen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to get (yourself) something",
+   "to gain (weight)",
+   "to speed up"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "rank": 1024,
+  "zipf": 3.72,
+  "ex": "Wir legen uns bald einen Hund zu.",
+  "exen": "We're going to get a dog soon.",
+  "forms": "legt zu · legte zu · hat zugelegt"
+ },
+ {
+  "id": "zerlegen.verb",
+  "w": "zerlegen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to take apart",
+   "to dismantle"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "home",
+  "rank": 1025,
+  "zipf": 3.39,
+  "ex": "Für den Umzug zerlegen wir das Bett.",
+  "exen": "We're taking the bed apart for the move.",
+  "forms": "zerlegt · zerlegte · hat zerlegt"
+ },
+ {
+  "id": "absetzen.verb",
+  "w": "absetzen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to drop off (a passenger)",
+   "to take off (a hat)",
+   "to put down"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "rank": 1026,
+  "zipf": 3.86,
+  "ex": "Das Taxi setzt uns direkt vor dem Hotel ab.",
+  "exen": "The taxi drops us right outside the hotel.",
+  "forms": "setzt ab · setzte ab · hat abgesetzt"
+ },
+ {
+  "id": "ansetzen.verb",
+  "w": "ansetzen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to schedule (a meeting)",
+   "to fix (a date)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "work",
+  "rank": 1027,
+  "zipf": 3.64,
+  "ex": "Der Chef setzt die Besprechung für neun Uhr an.",
+  "exen": "The boss is setting the meeting for nine o'clock.",
+  "forms": "setzt an · setzte an · hat angesetzt"
+ },
+ {
+  "id": "aufsetzen.verb",
+  "w": "aufsetzen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to put on (glasses, a hat)",
+   "to draft (a letter)",
+   "to put on (water to boil)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "clothes",
+  "rank": 1028,
+  "zipf": 3.62,
+  "ex": "Setz lieber eine Mütze auf, es ist kalt draußen.",
+  "exen": "You'd better put a hat on, it's cold outside.",
+  "forms": "setzt auf · setzte auf · hat aufgesetzt"
+ },
+ {
+  "id": "aussetzen.verb",
+  "w": "aussetzen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to stop (for a while)",
+   "to cut out (an engine)",
+   "to abandon (an animal)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "rank": 1029,
+  "zipf": 3.66,
+  "ex": "Mit dem Training setze ich eine Woche aus.",
+  "exen": "I'm taking a week off training.",
+  "forms": "setzt aus · setzte aus · hat ausgesetzt"
+ },
+ {
+  "id": "besetzen.verb",
+  "w": "besetzen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to occupy",
+   "to take (a seat)",
+   "to fill (a post)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "core",
+  "rank": 1030,
+  "zipf": 3.95,
+  "ex": "Wir besetzen schon mal die Plätze in der ersten Reihe.",
+  "exen": "We'll grab the seats in the front row.",
+  "forms": "besetzt · besetzte · hat besetzt"
+ },
+ {
+  "id": "versetzen.verb",
+  "w": "versetzen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to transfer (to another post)",
+   "to move up (a year at school)",
+   "to stand (someone) up"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "rank": 1031,
+  "zipf": 3.84,
+  "ex": "Nächstes Jahr versetzt mich meine Firma nach München.",
+  "exen": "Next year my company is transferring me to Munich.",
+  "forms": "versetzt · versetzte · hat versetzt"
+ },
+ {
+  "id": "aufnehmen.verb",
+  "w": "aufnehmen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to record",
+   "to take in (a person)",
+   "to take up (contact)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "media",
+  "rank": 1032,
+  "zipf": 4.51,
+  "ex": "Ich nehme die Sendung heute Abend auf.",
+  "exen": "I'm recording the programme this evening.",
+  "forms": "nimmt auf · nahm auf · hat aufgenommen"
+ },
+ {
+  "id": "sich_vornehmen.verb",
+  "w": "sich vornehmen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to resolve (to do)",
+   "to plan (to do)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "core",
+  "rank": 1033,
+  "zipf": 4.0,
+  "ex": "Dieses Jahr nehme ich mir vor, mehr zu lesen.",
+  "exen": "This year I've resolved to read more.",
+  "forms": "nimmt sich vor · nahm sich vor · hat sich vorgenommen"
+ },
+ {
+  "id": "übernehmen.verb",
+  "w": "übernehmen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to take over",
+   "to take on (a task)",
+   "to cover (costs)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "rank": 1034,
+  "zipf": 4.71,
+  "ex": "Meine Kollegin übernimmt während des Urlaubs meine Aufgaben.",
+  "exen": "My colleague is taking over my tasks while I'm on holiday.",
+  "forms": "übernimmt · übernahm · hat übernommen"
+ },
+ {
+  "id": "unternehmen.verb",
+  "w": "unternehmen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to do (something)",
+   "to undertake"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "leisure",
+  "rank": 1035,
+  "zipf": 4.3,
+  "ex": "Am Sonntag unternehmen wir einen Ausflug in die Berge.",
+  "exen": "On Sunday we're going on a trip to the mountains.",
+  "forms": "unternimmt · unternahm · hat unternommen"
+ },
+ {
+  "id": "sich_benehmen.verb",
+  "w": "sich benehmen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to behave (yourself)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "people",
+  "rank": 1036,
+  "zipf": 3.98,
+  "ex": "Die Kinder haben sich beim Essen gut benommen.",
+  "exen": "The children behaved well at the meal.",
+  "forms": "benimmt sich · benahm sich · hat sich benommen"
+ },
+ {
+  "id": "entnehmen.verb",
+  "w": "entnehmen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to take (from)",
+   "to gather (from a text)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "rank": 1037,
+  "zipf": 3.98,
+  "ex": "Die Details entnehmen Sie bitte dem Anhang.",
+  "exen": "Please see the attachment for the details.",
+  "forms": "entnimmt · entnahm · hat entnommen"
+ },
+ {
+  "id": "angeben.verb",
+  "w": "angeben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to state (details)",
+   "to give (information)",
+   "to show off"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "communication",
+  "rank": 1038,
+  "zipf": 4.07,
+  "ex": "Im Formular gibt man auch das Geburtsdatum an.",
+  "exen": "On the form you also give your date of birth.",
+  "forms": "gibt an · gab an · hat angegeben"
+ },
+ {
+  "id": "eingeben.verb",
+  "w": "eingeben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to enter (data)",
+   "to type in"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "media",
+  "rank": 1039,
+  "zipf": 3.62,
+  "ex": "Ich gebe die Adresse ins Navi ein.",
+  "exen": "I'm putting the address into the satnav.",
+  "forms": "gibt ein · gab ein · hat eingegeben"
+ },
+ {
+  "id": "nachgeben.verb",
+  "w": "nachgeben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to give in",
+   "to give way"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "people",
+  "rank": 1040,
+  "zipf": 3.41,
+  "ex": "Meine Mutter gibt fast nie nach.",
+  "exen": "My mother almost never gives in.",
+  "forms": "gibt nach · gab nach · hat nachgegeben"
+ },
+ {
+  "id": "zugeben.verb",
+  "w": "zugeben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to admit",
+   "to add (an ingredient)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "communication",
+  "rank": 1041,
+  "zipf": 4.17,
+  "ex": "Er gibt nicht gern zu, dass er sich geirrt hat.",
+  "exen": "He doesn't like admitting that he was wrong.",
+  "forms": "gibt zu · gab zu · hat zugegeben"
+ },
+ {
+  "id": "umgeben.verb",
+  "w": "umgeben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to surround"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "nature",
+  "rank": 1042,
+  "zipf": 4.21,
+  "ex": "Das Dorf ist von Bergen umgeben.",
+  "exen": "The village is surrounded by mountains.",
+  "forms": "umgibt · umgab · hat umgeben"
+ },
+ {
+  "id": "übergeben.verb",
+  "w": "übergeben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to hand over"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "rank": 1043,
+  "zipf": 4.38,
+  "ex": "Der Fahrer übergibt das Paket persönlich.",
+  "exen": "The driver hands over the parcel in person.",
+  "forms": "übergibt · übergab · hat übergeben"
+ },
+ {
+  "id": "vergeben.verb",
+  "w": "vergeben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to award (a place, a job)",
+   "to give out",
+   "to forgive"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "core",
+  "rank": 1044,
+  "zipf": 4.49,
+  "ex": "Die Schule vergibt die Plätze nach der Reihenfolge der Anmeldung.",
+  "exen": "The school allocates places in order of registration.",
+  "forms": "vergibt · vergab · hat vergeben"
+ },
+ {
+  "id": "abkommen.verb",
+  "w": "abkommen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to stray (from the path)",
+   "to come off (the road)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "travel",
+  "rank": 1045,
+  "zipf": 4.26,
+  "ex": "Der Fahrer kam bei Glatteis von der Straße ab.",
+  "exen": "The driver came off the road on black ice.",
+  "forms": "kommt ab · kam ab · ist abgekommen"
+ },
+ {
+  "id": "aufkommen.verb",
+  "w": "aufkommen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to arise",
+   "to come up (a question)",
+   "to pay (for something)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "rank": 1046,
+  "zipf": 4.03,
+  "ex": "Am Nachmittag kommt starker Wind auf.",
+  "exen": "In the afternoon a strong wind picks up.",
+  "forms": "kommt auf · kam auf · ist aufgekommen"
+ },
+ {
+  "id": "auskommen.verb",
+  "w": "auskommen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to get by (on money)",
+   "to get on (with someone)",
+   "to manage (without)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "money",
+  "rank": 1047,
+  "zipf": 3.73,
+  "ex": "Mit 800 Euro im Monat komme ich kaum aus.",
+  "exen": "I can barely get by on 800 euros a month.",
+  "forms": "kommt aus · kam aus · ist ausgekommen"
+ },
+ {
+  "id": "nachkommen.verb",
+  "w": "nachkommen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to come later",
+   "to follow (on)",
+   "to comply with (a request)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "core",
+  "rank": 1048,
+  "zipf": 4.04,
+  "ex": "Geht schon mal vor, ich komme in zehn Minuten nach.",
+  "exen": "You go on ahead, I'll follow in ten minutes.",
+  "forms": "kommt nach · kam nach · ist nachgekommen"
+ },
+ {
+  "id": "umkommen.verb",
+  "w": "umkommen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to die (in an accident)",
+   "to be killed"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "society",
+  "rank": 1049,
+  "zipf": 2.74,
+  "ex": "Bei dem Erdbeben kamen viele Menschen um.",
+  "exen": "Many people died in the earthquake.",
+  "forms": "kommt um · kam um · ist umgekommen"
+ },
+ {
+  "id": "durchkommen.verb",
+  "w": "durchkommen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to get through",
+   "to get by",
+   "to pass (an exam)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "core",
+  "rank": 1050,
+  "zipf": 3.49,
+  "ex": "Hoffentlich komme ich bei der Prüfung durch.",
+  "exen": "Hopefully I'll get through the exam.",
+  "forms": "kommt durch · kam durch · ist durchgekommen"
+ },
+ {
+  "id": "unterkommen.verb",
+  "w": "unterkommen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to find a place to stay",
+   "to find accommodation"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "travel",
+  "rank": 1051,
+  "zipf": 3.05,
+  "ex": "Während des Festivals kommen wir bei meiner Tante unter.",
+  "exen": "During the festival we're staying with my aunt.",
+  "forms": "kommt unter · kam unter · ist untergekommen"
+ },
+ {
+  "id": "entkommen.verb",
+  "w": "entkommen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to escape",
+   "to get away"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "rank": 1052,
+  "zipf": 3.94,
+  "ex": "Zwei Häftlinge sind aus dem Gefängnis entkommen.",
+  "exen": "Two prisoners have escaped from prison.",
+  "forms": "entkommt · entkam · ist entkommen"
+ },
+ {
+  "id": "angehen.verb",
+  "w": "angehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to concern",
+   "to go on (a light)",
+   "to tackle (a problem)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "core",
+  "rank": 1053,
+  "zipf": 4.02,
+  "ex": "Diese Frage geht uns alle an.",
+  "exen": "This question concerns all of us.",
+  "forms": "geht an · ging an · ist angegangen"
+ },
+ {
+  "id": "aufgehen.verb",
+  "w": "aufgehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to rise (the sun)",
+   "to open (a door)",
+   "to come undone"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "rank": 1054,
+  "zipf": 3.53,
+  "ex": "Im Juni geht die Sonne sehr früh auf.",
+  "exen": "In June the sun rises very early.",
+  "forms": "geht auf · ging auf · ist aufgegangen"
+ },
+ {
+  "id": "eingehen.verb",
+  "w": "eingehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to go into (a question)",
+   "to shrink (clothes)",
+   "to die (a plant)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "rank": 1055,
+  "zipf": 4.26,
+  "ex": "Der Lehrer geht auf jede Frage genau ein.",
+  "exen": "The teacher deals with every question carefully.",
+  "forms": "geht ein · ging ein · ist eingegangen"
+ },
+ {
+  "id": "vorgehen.verb",
+  "w": "vorgehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to go ahead",
+   "to proceed",
+   "to be fast (a clock)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "core",
+  "rank": 1056,
+  "zipf": 4.44,
+  "ex": "Wie gehen wir jetzt am besten vor?",
+  "exen": "What's the best way for us to proceed now?",
+  "forms": "geht vor · ging vor · ist vorgegangen"
+ },
+ {
+  "id": "zugehen.verb",
+  "w": "zugehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to close (a door)",
+   "to walk up (to someone)",
+   "to happen (in a certain way)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "core",
+  "rank": 1057,
+  "zipf": 3.54,
+  "ex": "Er geht direkt auf den Polizisten zu.",
+  "exen": "He walks straight up to the police officer.",
+  "forms": "geht zu · ging zu · ist zugegangen"
+ },
+ {
+  "id": "durchgehen.verb",
+  "w": "durchgehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to go through",
+   "to check (a text)",
+   "to walk through"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "school",
+  "rank": 1058,
+  "zipf": 3.75,
+  "ex": "Vor der Prüfung gehe ich meine Notizen noch einmal durch.",
+  "exen": "Before the exam I go through my notes once more.",
+  "forms": "geht durch · ging durch · ist durchgegangen"
+ },
+ {
+  "id": "untergehen.verb",
+  "w": "untergehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to sink",
+   "to set (the sun)",
+   "to go under"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "nature",
+  "rank": 1059,
+  "zipf": 3.63,
+  "ex": "Das Schiff ging im Sturm unter.",
+  "exen": "The ship sank in the storm.",
+  "forms": "geht unter · ging unter · ist untergegangen"
+ },
+ {
+  "id": "vergehen.verb",
+  "w": "vergehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to pass (time)",
+   "to wear off (pain)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "time",
+  "rank": 1060,
+  "zipf": 4.04,
+  "ex": "Im Urlaub vergehen die Tage viel zu schnell.",
+  "exen": "On holiday the days go by far too quickly.",
+  "forms": "vergeht · verging · ist vergangen"
+ },
+ {
+  "id": "begehen.verb",
+  "w": "begehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to commit (a crime, a mistake)",
+   "to celebrate (an occasion)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "rank": 1061,
+  "zipf": 3.96,
+  "ex": "Der junge Mann hat einen Diebstahl begangen.",
+  "exen": "The young man has committed a theft.",
+  "forms": "begeht · beging · hat begangen"
+ },
+ {
+  "id": "entgehen.verb",
+  "w": "entgehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to escape (notice)",
+   "to miss (a chance)",
+   "to avoid"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "rank": 1062,
+  "zipf": 3.99,
+  "ex": "Diese Chance lasse ich mir nicht entgehen.",
+  "exen": "I'm not going to miss this chance.",
+  "forms": "entgeht · entging · ist entgangen"
+ },
+ {
+  "id": "anziehen.verb",
+  "w": "anziehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to put on (clothes)",
+   "to attract",
+   "to dress (someone)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "clothes",
+  "rank": 1063,
+  "zipf": 4.16,
+  "ex": "Heute ziehe ich meinen neuen Pullover an.",
+  "exen": "Today I'm putting on my new jumper.",
+  "forms": "zieht an · zog an · hat angezogen"
+ },
+ {
+  "id": "abziehen.verb",
+  "w": "abziehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to deduct",
+   "to pull off",
+   "to strip (a bed)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "money",
+  "rank": 1064,
+  "zipf": 3.76,
+  "ex": "Vom Preis ziehen wir zehn Prozent ab.",
+  "exen": "We'll take ten per cent off the price.",
+  "forms": "zieht ab · zog ab · hat abgezogen"
+ },
+ {
+  "id": "aufziehen.verb",
+  "w": "aufziehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to bring up (a child)",
+   "to wind up (a clock)",
+   "to tease"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "people",
+  "rank": 1065,
+  "zipf": 3.43,
+  "ex": "Meine Großeltern haben mich aufgezogen.",
+  "exen": "My grandparents brought me up.",
+  "forms": "zieht auf · zog auf · hat aufgezogen"
+ },
+ {
+  "id": "vorziehen.verb",
+  "w": "vorziehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to prefer",
+   "to bring forward (a date)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "core",
+  "rank": 1066,
+  "zipf": 3.43,
+  "ex": "Viele Leute ziehen den Zug dem Flugzeug vor.",
+  "exen": "Many people prefer the train to the plane.",
+  "forms": "zieht vor · zog vor · hat vorgezogen"
+ },
+ {
+  "id": "zuziehen.verb",
+  "w": "zuziehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to draw (curtains)",
+   "to pull shut",
+   "to catch (an illness)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "home",
+  "rank": 1067,
+  "zipf": 2.94,
+  "ex": "Zieh bitte die Tür hinter dir zu!",
+  "exen": "Please pull the door shut behind you!",
+  "forms": "zieht zu · zog zu · hat zugezogen"
+ },
+ {
+  "id": "überziehen.verb",
+  "w": "überziehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to overdraw (an account)",
+   "to overrun (time)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "money",
+  "rank": 1068,
+  "zipf": 3.26,
+  "ex": "Wer sein Konto überzieht, zahlt hohe Zinsen.",
+  "exen": "Anyone who overdraws their account pays high interest.",
+  "forms": "überzieht · überzog · hat überzogen"
+ },
+ {
+  "id": "verziehen.verb",
+  "w": "verziehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to pull (a face)",
+   "to spoil (a child)",
+   "to warp"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "body",
+  "rank": 1069,
+  "zipf": 3.42,
+  "ex": "Das Kind verzieht beim Gemüse das Gesicht.",
+  "exen": "The child pulls a face at the vegetables.",
+  "forms": "verzieht · verzog · hat verzogen"
+ },
+ {
+  "id": "entziehen.verb",
+  "w": "entziehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to take away",
+   "to withdraw",
+   "to draw out (water)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "rank": 1070,
+  "zipf": 3.92,
+  "ex": "Salz entzieht dem Gemüse Wasser.",
+  "exen": "Salt draws water out of the vegetables.",
+  "forms": "entzieht · entzog · hat entzogen"
+ },
+ {
+  "id": "zufallen.verb",
+  "w": "zufallen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to shut (by itself)",
+   "to slam shut",
+   "to fall to (someone)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "home",
+  "rank": 1071,
+  "zipf": 2.73,
+  "ex": "Mir fallen vor Müdigkeit fast die Augen zu.",
+  "exen": "I'm so tired my eyes are almost closing.",
+  "forms": "fällt zu · fiel zu · ist zugefallen"
+ },
+ {
+  "id": "überfallen.verb",
+  "w": "überfallen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to attack",
+   "to rob (a bank)",
+   "to mug"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "rank": 1072,
+  "zipf": 3.96,
+  "ex": "Ein Mann hat gestern eine Tankstelle überfallen.",
+  "exen": "Yesterday a man held up a petrol station.",
+  "forms": "überfällt · überfiel · hat überfallen"
+ },
+ {
+  "id": "entfallen.verb",
+  "w": "entfallen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to be dropped",
+   "to be cancelled",
+   "to slip (someone's) mind"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "rank": 1073,
+  "zipf": 3.85,
+  "ex": "Sein Name ist mir leider entfallen.",
+  "exen": "Unfortunately his name has slipped my mind.",
+  "forms": "entfällt · entfiel · ist entfallen"
+ },
+ {
+  "id": "abhalten.verb",
+  "w": "abhalten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to keep (someone) from",
+   "to hold (a meeting)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "rank": 1074,
+  "zipf": 3.89,
+  "ex": "Der Regen hält uns nicht vom Spaziergang ab.",
+  "exen": "The rain won't stop us going for a walk.",
+  "forms": "hält ab · hielt ab · hat abgehalten"
+ },
+ {
+  "id": "anhalten.verb",
+  "w": "anhalten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to stop (a vehicle)",
+   "to last",
+   "to hold (your breath)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "rank": 1075,
+  "zipf": 3.86,
+  "ex": "Bitte halten Sie hier kurz an.",
+  "exen": "Please stop here for a moment.",
+  "forms": "hält an · hielt an · hat angehalten"
+ },
+ {
+  "id": "aufhalten.verb",
+  "w": "aufhalten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to hold up",
+   "to delay",
+   "to keep open (a door)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "core",
+  "rank": 1076,
+  "zipf": 4.11,
+  "ex": "Ein Unfall hält den Verkehr seit einer Stunde auf.",
+  "exen": "An accident has been holding up the traffic for an hour.",
+  "forms": "hält auf · hielt auf · hat aufgehalten"
+ },
+ {
+  "id": "aushalten.verb",
+  "w": "aushalten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to bear",
+   "to stand",
+   "to endure"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "feelings",
+  "rank": 1077,
+  "zipf": 3.92,
+  "ex": "Diesen Lärm halte ich nicht mehr aus.",
+  "exen": "I can't stand this noise any more.",
+  "forms": "hält aus · hielt aus · hat ausgehalten"
+ },
+ {
+  "id": "einhalten.verb",
+  "w": "einhalten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to keep (a promise)",
+   "to stick to (a rule)",
+   "to meet (a deadline)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "work",
+  "rank": 1078,
+  "zipf": 3.76,
+  "ex": "Er hält seine Versprechen immer ein.",
+  "exen": "He always keeps his promises.",
+  "forms": "hält ein · hielt ein · hat eingehalten"
+ },
+ {
+  "id": "durchhalten.verb",
+  "w": "durchhalten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to hold out",
+   "to keep going",
+   "to stick it out"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "feelings",
+  "rank": 1079,
+  "zipf": 3.58,
+  "ex": "Beim Marathon hält mein Freund bis zum Ende durch.",
+  "exen": "My friend keeps going right to the end of the marathon.",
+  "forms": "hält durch · hielt durch · hat durchgehalten"
+ },
+ {
+  "id": "behalten.verb",
+  "w": "behalten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to keep",
+   "to remember"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "core",
+  "rank": 1080,
+  "zipf": 4.62,
+  "ex": "Den Rest des Geldes kannst du behalten.",
+  "exen": "You can keep the rest of the money.",
+  "forms": "behält · behielt · hat behalten"
+ },
+ {
+  "id": "enthalten.verb",
+  "w": "enthalten",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to contain",
+   "to include"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "core",
+  "rank": 1081,
+  "zipf": 4.71,
+  "ex": "Der Preis enthält auch das Frühstück.",
+  "exen": "The price includes breakfast too.",
+  "forms": "enthält · enthielt · hat enthalten"
+ },
+ {
+  "id": "absprechen.verb",
+  "w": "absprechen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to agree (on)",
+   "to arrange",
+   "to check (with someone)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "communication",
+  "rank": 1082,
+  "zipf": 3.37,
+  "ex": "Ich spreche das noch mit meiner Frau ab.",
+  "exen": "I still need to check that with my wife.",
+  "forms": "spricht ab · sprach ab · hat abgesprochen"
+ },
+ {
+  "id": "nachsprechen.verb",
+  "w": "nachsprechen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to repeat (after someone)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "school",
+  "rank": 1083,
+  "zipf": 2.13,
+  "ex": "Die Kinder sprechen die neuen Wörter laut nach.",
+  "exen": "The children repeat the new words aloud.",
+  "forms": "spricht nach · sprach nach · hat nachgesprochen"
+ },
+ {
+  "id": "zusprechen.verb",
+  "w": "zusprechen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to award (to someone)",
+   "to encourage (someone)"
+  ],
+  "alt": [],
+  "level": "C1",
+  "theme": "law",
+  "rank": 1084,
+  "zipf": 2.79,
+  "ex": "Das Gericht spricht der Mutter das Sorgerecht zu.",
+  "exen": "The court awards custody to the mother.",
+  "forms": "spricht zu · sprach zu · hat zugesprochen"
+ },
+ {
+  "id": "durchsprechen.verb",
+  "w": "durchsprechen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to talk through",
+   "to discuss (in detail)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "communication",
+  "rank": 1085,
+  "zipf": 2.01,
+  "ex": "Vor dem Treffen sprechen wir alle Punkte durch.",
+  "exen": "Before the meeting we talk through all the points.",
+  "forms": "spricht durch · sprach durch · hat durchgesprochen"
+ },
+ {
+  "id": "anschreiben.verb",
+  "w": "anschreiben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to write to (someone)",
+   "to write up (on the board)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "communication",
+  "rank": 1086,
+  "zipf": 3.67,
+  "ex": "Ich schreibe morgen mehrere Firmen wegen eines Praktikums an.",
+  "exen": "Tomorrow I'm writing to several companies about an internship.",
+  "forms": "schreibt an · schrieb an · hat angeschrieben"
+ },
+ {
+  "id": "aufschreiben.verb",
+  "w": "aufschreiben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to write down",
+   "to note down"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "communication",
+  "rank": 1087,
+  "zipf": 3.38,
+  "ex": "Die Ärztin schreibt die Symptome genau auf.",
+  "exen": "The doctor writes down the symptoms carefully.",
+  "forms": "schreibt auf · schrieb auf · hat aufgeschrieben"
+ },
+ {
+  "id": "ausschreiben.verb",
+  "w": "ausschreiben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to advertise (a job)",
+   "to write out (in full)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "work",
+  "rank": 1088,
+  "zipf": 3.05,
+  "ex": "Die Universität schreibt jedes Jahr zwanzig Stipendien aus.",
+  "exen": "The university advertises twenty scholarships every year.",
+  "forms": "schreibt aus · schrieb aus · hat ausgeschrieben"
+ },
+ {
+  "id": "sich_einschreiben.verb",
+  "w": "sich einschreiben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to enrol",
+   "to register"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "school",
+  "rank": 1089,
+  "zipf": 3.23,
+  "ex": "Mein Bruder schreibt sich an der Uni in Köln ein.",
+  "exen": "My brother is enrolling at the university in Cologne.",
+  "forms": "schreibt sich ein · schrieb sich ein · hat sich eingeschrieben"
+ },
+ {
+  "id": "mitschreiben.verb",
+  "w": "mitschreiben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to take notes",
+   "to write down (what is said)",
+   "to sit (an exam)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "school",
+  "rank": 1090,
+  "zipf": 2.89,
+  "ex": "In der Vorlesung schreibe ich alles mit.",
+  "exen": "In the lecture I take notes on everything.",
+  "forms": "schreibt mit · schrieb mit · hat mitgeschrieben"
+ },
+ {
+  "id": "vorschreiben.verb",
+  "w": "vorschreiben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to prescribe (a rule)",
+   "to dictate (to someone)",
+   "to require"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "rank": 1091,
+  "zipf": 3.45,
+  "ex": "Meine Eltern schreiben mir nicht vor, was ich studiere.",
+  "exen": "My parents don't tell me what to study.",
+  "forms": "schreibt vor · schrieb vor · hat vorgeschrieben"
+ },
+ {
+  "id": "umschreiben.verb",
+  "w": "umschreiben",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to rewrite",
+   "to revise (a text)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "school",
+  "rank": 1092,
+  "zipf": 3.23,
+  "ex": "Nach dem Feedback schreibe ich die Einleitung noch einmal um.",
+  "exen": "After the feedback I'm rewriting the introduction.",
+  "forms": "schreibt um · schrieb um · hat umgeschrieben"
+ },
+ {
+  "id": "ansehen.verb",
+  "w": "ansehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to look at",
+   "to watch",
+   "to regard (as)"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "rank": 1093,
+  "zipf": 4.68,
+  "ex": "Sieh dir mal dieses Foto an!",
+  "exen": "Have a look at this photo!",
+  "forms": "sieht an · sah an · hat angesehen"
+ },
+ {
+  "id": "aufsehen.verb",
+  "w": "aufsehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to look up (from something)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "rank": 1094,
+  "zipf": 3.79,
+  "ex": "Als ich hereinkam, sah niemand auf.",
+  "exen": "When I came in, nobody looked up.",
+  "forms": "sieht auf · sah auf · hat aufgesehen"
+ },
+ {
+  "id": "aussehen.verb",
+  "w": "aussehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to look (appear)",
+   "to seem"
+  ],
+  "alt": [],
+  "level": "A1",
+  "theme": "core",
+  "rank": 1095,
+  "zipf": 4.78,
+  "ex": "Das Wetter sieht heute nicht so gut aus.",
+  "exen": "The weather doesn't look too good today.",
+  "forms": "sieht aus · sah aus · hat ausgesehen"
+ },
+ {
+  "id": "einsehen.verb",
+  "w": "einsehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to realise",
+   "to accept (a mistake)",
+   "to inspect (files)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "rank": 1096,
+  "zipf": 3.86,
+  "ex": "Endlich sieht er ein, dass er Hilfe braucht.",
+  "exen": "At last he realises that he needs help.",
+  "forms": "sieht ein · sah ein · hat eingesehen"
+ },
+ {
+  "id": "nachsehen.verb",
+  "w": "nachsehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to check",
+   "to look up",
+   "to look (to see)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "core",
+  "rank": 1097,
+  "zipf": 3.61,
+  "ex": "Ich sehe mal nach, ob die Post schon da ist.",
+  "exen": "I'll go and check whether the post has come.",
+  "forms": "sieht nach · sah nach · hat nachgesehen"
+ },
+ {
+  "id": "vorsehen.verb",
+  "w": "vorsehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to plan",
+   "to provide for",
+   "to intend"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "abstract",
+  "rank": 1098,
+  "zipf": 3.18,
+  "ex": "Das Programm sieht am Abend ein gemeinsames Essen vor.",
+  "exen": "The programme includes a dinner together in the evening.",
+  "forms": "sieht vor · sah vor · hat vorgesehen"
+ },
+ {
+  "id": "zusehen.verb",
+  "w": "zusehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to watch",
+   "to look on"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "leisure",
+  "rank": 1099,
+  "zipf": 3.97,
+  "ex": "Die Kinder sehen dem Clown begeistert zu.",
+  "exen": "The children watch the clown with delight.",
+  "forms": "sieht zu · sah zu · hat zugesehen"
+ },
+ {
+  "id": "sich_umsehen.verb",
+  "w": "sich umsehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to look around",
+   "to look (for)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "core",
+  "rank": 1100,
+  "zipf": 3.33,
+  "ex": "Wir sehen uns nach einer größeren Wohnung um.",
+  "exen": "We're looking around for a bigger flat.",
+  "forms": "sieht sich um · sah sich um · hat sich umgesehen"
+ },
+ {
+  "id": "durchsehen.verb",
+  "w": "durchsehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to look through",
+   "to check (a text)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "work",
+  "rank": 1101,
+  "zipf": 2.6,
+  "ex": "Die Lehrerin sieht am Abend die Hausaufgaben durch.",
+  "exen": "The teacher looks through the homework in the evening.",
+  "forms": "sieht durch · sah durch · hat durchgesehen"
+ },
+ {
+  "id": "übersehen.verb",
+  "w": "übersehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to overlook",
+   "to miss (not notice)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "core",
+  "rank": 1102,
+  "zipf": 4.23,
+  "ex": "Der Fahrer hat das Stoppschild übersehen.",
+  "exen": "The driver didn't see the stop sign.",
+  "forms": "übersieht · übersah · hat übersehen"
+ },
+ {
+  "id": "einfahren.verb",
+  "w": "einfahren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to pull in (a train)",
+   "to arrive (at a platform)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "rank": 1103,
+  "zipf": 3.43,
+  "ex": "Der Zug aus Berlin fährt gerade ein.",
+  "exen": "The train from Berlin is just pulling in.",
+  "forms": "fährt ein · fuhr ein · ist eingefahren"
+ },
+ {
+  "id": "mitfahren.verb",
+  "w": "mitfahren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to ride along",
+   "to get a lift",
+   "to come along (in a vehicle)"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "travel",
+  "rank": 1104,
+  "zipf": 3.39,
+  "ex": "Morgen fahre ich bei meinem Kollegen mit.",
+  "exen": "Tomorrow I'm getting a lift with my colleague.",
+  "forms": "fährt mit · fuhr mit · ist mitgefahren"
+ },
+ {
+  "id": "durchfahren.verb",
+  "w": "durchfahren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to go through (without stopping)",
+   "to drive straight through"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "travel",
+  "rank": 1105,
+  "zipf": 3.22,
+  "ex": "Wir fahren ohne Pause bis Wien durch.",
+  "exen": "We're driving straight through to Vienna without a break.",
+  "forms": "fährt durch · fuhr durch · ist durchgefahren"
+ },
+ {
+  "id": "umfahren.verb",
+  "w": "umfahren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to knock over (with a vehicle)",
+   "to knock down"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "travel",
+  "rank": 1106,
+  "zipf": 3.14,
+  "ex": "Der Lkw fuhr beim Wenden eine Laterne um.",
+  "exen": "The lorry knocked down a lamp post while turning.",
+  "forms": "fährt um · fuhr um · hat umgefahren"
+ },
+ {
+  "id": "überfahren.verb",
+  "w": "überfahren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to run over",
+   "to run (a red light)",
+   "to cross (a stop line)"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "travel",
+  "rank": 1107,
+  "zipf": 3.71,
+  "ex": "Ein Auto hat gestern den Hund der Nachbarn überfahren.",
+  "exen": "Yesterday a car ran over the neighbours' dog.",
+  "forms": "überfährt · überfuhr · hat überfahren"
+ },
+ {
+  "id": "befahren.verb",
+  "w": "befahren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to drive on (a road)",
+   "to use (a road)",
+   "to travel on"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "travel",
+  "rank": 1108,
+  "zipf": 3.59,
+  "ex": "Nur Busse dürfen diese Spur befahren.",
+  "exen": "Only buses may use this lane.",
+  "forms": "befährt · befuhr · hat befahren"
+ },
+ {
+  "id": "sich_verfahren.verb",
+  "w": "sich verfahren",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to get lost (driving)",
+   "to take a wrong turning"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "travel",
+  "rank": 1109,
+  "zipf": 3.0,
+  "ex": "Wir haben uns in der Altstadt verfahren.",
+  "exen": "We got lost driving in the old town.",
+  "forms": "verfährt sich · verfuhr sich · hat sich verfahren"
+ },
+ {
+  "id": "ausstehen.verb",
+  "w": "ausstehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to stand (someone)",
+   "to endure",
+   "to be outstanding (a payment)"
+  ],
+  "alt": [],
+  "level": "B1",
+  "theme": "feelings",
+  "rank": 1110,
+  "zipf": 3.27,
+  "ex": "Meine Schwester kann laute Musik nicht ausstehen.",
+  "exen": "My sister can't stand loud music.",
+  "forms": "steht aus · stand aus · hat ausgestanden"
+ },
+ {
+  "id": "gestehen.verb",
+  "w": "gestehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to confess",
+   "to admit"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "law",
+  "rank": 1111,
+  "zipf": 3.77,
+  "ex": "Ich muss dir etwas gestehen.",
+  "exen": "I have to confess something to you.",
+  "forms": "gesteht · gestand · hat gestanden"
+ },
+ {
+  "id": "überstehen.verb",
+  "w": "überstehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to get through",
+   "to survive",
+   "to come through"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "core",
+  "rank": 1112,
+  "zipf": 3.69,
+  "ex": "Die Pflanze hat den kalten Winter gut überstanden.",
+  "exen": "The plant came through the cold winter well.",
+  "forms": "übersteht · überstand · hat überstanden"
+ },
+ {
+  "id": "widerstehen.verb",
+  "w": "widerstehen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to resist"
+  ],
+  "alt": [],
+  "level": "B2",
+  "theme": "feelings",
+  "rank": 1113,
+  "zipf": 3.7,
+  "ex": "Einem guten Stück Kuchen kann ich nie widerstehen.",
+  "exen": "I can never resist a nice piece of cake.",
+  "forms": "widersteht · widerstand · hat widerstanden"
+ },
+ {
+  "id": "setzen.verb",
+  "w": "setzen",
+  "art": "",
+  "pl": null,
+  "pos": "verb",
+  "en": [
+   "to put (seated)",
+   "to set",
+   "to place"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "core",
+  "rank": 1114,
+  "zipf": 5.1,
+  "ex": "Die Mutter setzt das Baby in den Kinderwagen.",
+  "exen": "The mother puts the baby in the pram.",
+  "forms": "setzt · setzte · hat gesetzt"
  }
 ]
