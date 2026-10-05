@@ -138,24 +138,64 @@ export const wordCount = s => tokenize(s).filter(x => x.w).length;
 /** A sentence too long to say comfortably. @param {string} s */
 export const isLong = s => wordCount(s) > LONG_SENTENCE;
 
-const SUBORD = /,\s+(?=(?:die|der|das|dem|den|deren|dessen|weil|dass|wenn|obwohl|damit|als|ob|während|bevor|nachdem|sodass|indem|wo|was|wie|um)\b)/i;
+// Split points: the comma before und, aber, denn or doch, and a semicolon, where a whole main clause follows. A cut
+// before a relative pronoun or a subordinator (die, weil, dass …) would leave a verb-final fragment ("Weil wir … hatten."),
+// so those commas are never split points.
+const JOIN = /(?:,\s+(?=(?:und|aber|denn|doch)\s)|;\s+)/gi;
+const SUBJ = new Set(['ich', 'du', 'er', 'sie', 'es', 'wir', 'ihr', 'man']);
+const DETS = new Set(['der', 'die', 'das', 'den', 'dem', 'ein', 'eine', 'einen', 'einem', 'mein', 'meine', 'dein', 'deine', 'sein', 'seine',
+  'ihr', 'ihre', 'unser', 'unsere', 'euer', 'eure', 'kein', 'keine', 'dieser', 'diese', 'dieses', 'alle', 'viele']);
+// adverbs that can open a main clause with the verb next: "…, und dann haben wir …"
+const OPENERS = new Set(['dann', 'danach', 'deshalb', 'deswegen', 'darum', 'trotzdem', 'außerdem', 'jetzt', 'heute', 'morgen', 'gestern',
+  'später', 'damals', 'dabei', 'dafür', 'so', 'also', 'leider', 'zum', 'am', 'im', 'hier', 'dort', 'da', 'nun', 'inzwischen', 'seitdem']);
+const SUBORDS = new Set(['weil', 'dass', 'wenn', 'obwohl', 'damit', 'als', 'ob', 'während', 'bevor', 'nachdem', 'sodass', 'indem', 'falls',
+  'da', 'wo', 'was', 'wie', 'wer', 'um', 'die', 'der', 'das', 'dem', 'den', 'deren', 'dessen', 'denen']);
+const NOT_VERB = new Set(['nicht', 'auch', 'noch', 'schon', 'sehr', 'gern', 'gerne', 'immer', 'wieder', 'mehr', 'oben', 'unten', 'zusammen',
+  'selten', 'morgen', 'gestern', 'heute', 'eben', 'neben', 'wegen', 'gegen', 'unter', 'hinter', 'über']);
+const FIN = new Set(`bin bist ist sind seid war warst waren habe hab hast hat haben habt hatte hatten kann kannst können könnt muss musst
+  müssen will willst wollen soll sollst sollen darf darfst dürfen möchte möchtest möchten werde wirst wird werden würde würdest würden
+  könnte könnten hätte hätten wäre wären gibt gab geht ging kommt kam`.split(/\s+/));
+const verbish = (/** @type {string} */ w) => FIN.has(w) || (!NOT_VERB.has(w) && !SUBJ.has(w) && !DETS.has(w) && /^[a-zäöüß]{2,}(e|st|t|en|n)$/.test(w));
+const lowWords = (/** @type {string} */ s) => tokenize(s).filter(x => x.w).map(x => x.t);
+/** Does s read as a main clause with the verb second ("wir haben …", "dann haben wir …", "das Rad ist …")? Strict on
+ * purpose: an unsure case is no split point. @param {string} s */
+function mainClause(s) {
+  const w = lowWords(s);
+  if (w.length < 3) return false;
+  const [a, b, c] = w.map(x => x.toLowerCase());
+  if (a === 'das' || a === 'dies') return FIN.has(b);                    // das ist …
+  if (SUBJ.has(a)) return verbish(b);                                    // wir haben …
+  if (OPENERS.has(a) || a === 'da') return verbish(b) && (SUBJ.has(c) || DETS.has(c) || /^\p{Lu}/u.test(w[2] || ''));   // dann haben wir …
+  if (DETS.has(a) && /^\p{Lu}/u.test(w[1])) return verbish(c);           // das Rad ist …
+  if (/^\p{Lu}/u.test(w[0]) && !SUBORDS.has(a)) return verbish(b);      // Anna kommt …
+  return false;
+}
 
 /**
- * Split a long sentence locally at the comma before a subordinator or relative pronoun nearest the middle.
- * Returns null when there is no such place. The first part ends with a full stop; the second keeps its words.
+ * Split a long sentence locally where it is two main clauses: at the comma before und, aber, denn or doch, or at a
+ * semicolon, nearest the middle. Both halves must be whole sentences, so a comma before a relative pronoun or a
+ * subordinator (die, weil, dass …) is never used. Returns null when there is no such place. The first part ends with
+ * a full stop; the second keeps its words (und, aber … stay, with a capital).
  * @param {string} s @returns {[string, string] | null}
  */
 export function splitLocal(s) {
   const text = String(s);
-  /** @type {number[]} */ const cuts = [];
-  const re = new RegExp(SUBORD.source, 'gi');
+  /** @type {{at: number, len: number}[]} */ const cuts = [];
+  const re = new RegExp(JOIN.source, 'gi');
   let m;
-  while ((m = re.exec(text))) cuts.push(m.index);
+  while ((m = re.exec(text))) {
+    const a = text.slice(0, m.index).trim(), b = text.slice(m.index + m[0].length).trim();
+    const conj = /^(und|aber|denn|doch)\s+/i.exec(b);
+    if (wordCount(a) < 3 || wordCount(b) < 3) continue;
+    // the first half is the sentence's start: it must not open with a subordinator ("Weil es regnet, und …")
+    const first = (lowWords(a)[0] || '').toLowerCase();
+    if ((SUBORDS.has(first) && !DETS.has(first) && first !== 'da') || !mainClause(conj ? b.slice(conj[0].length) : b)) continue;
+    cuts.push({ at: m.index, len: m[0].length });
+  }
   if (!cuts.length) return null;
   const mid = text.length / 2;
-  const at = cuts.sort((a, b) => Math.abs(a - mid) - Math.abs(b - mid))[0];
-  const a = text.slice(0, at).trim(), b = text.slice(at + 1).trim();
-  if (wordCount(a) < 3 || wordCount(b) < 3) return null;
+  const { at, len } = cuts.sort((x, y) => Math.abs(x.at - mid) - Math.abs(y.at - mid))[0];
+  const a = text.slice(0, at).trim().replace(/[,;]$/, ''), b = text.slice(at + len).trim();
   return [`${a}.`, b.charAt(0).toUpperCase() + b.slice(1)];
 }
 

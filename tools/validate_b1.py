@@ -189,7 +189,11 @@ NONVERB = set(norm("""der die das den dem des ein eine einen einem einer eines m
     ihr ihre unser unsere euer eure kein keine keinen dieser diese dieses diesen jede jeder jedes jeden alle viele manche
     einige beide ich du er sie es wir man mich dich sich uns euch ihnen ihm ihn mir dir an auf aus bei mit nach von vor zu
     in um über unter für gegen ohne durch nicht auch noch schon sehr gern gerne ganz mehr wieder immer oben unten heute
-    morgen gestern hier dort dann denn aber oder und sondern""").split())
+    morgen gestern hier dort dann denn aber oder und sondern zusammen selten draußen drinnen neben wegen""").split())
+# subordinators that are never an adverb: a finite verb right after them is a word-order error (detect.js NEVER_ADV)
+NEVER_ADV = set(norm("dass weil ob wenn obwohl falls").split())
+# da and als open a verb-final clause only when the clause looks like one (detect.js LEAD_SUB): "Da hast du recht" is not
+LEAD_SUB = {"da", "als"}
 
 
 # words that can follow aber/denn and look like verbs to FINITE_ANY (detect.js CONN_ADV)
@@ -255,6 +259,9 @@ def detect(text, model=None):
                 continue
             # a finite verb 1-4 words after the subordinator (after a subject or a phrase like "bei dir") that is not
             # the clause's last word: "weil ich muss arbeiten", "dass bei dir ist alles gut"
+            if i + 2 < len(toks) and t in NEVER_ADV and toks[i + 1] in FINITE and (toks[i + 2] in PRON or toks[i + 2] in DET):
+                out.add("verb-final")  # "ob kann man …"
+                continue
             if i + 1 < len(toks) and toks[i + 1] in FINITE:
                 continue  # "Damit bin ich …": an adverb, not a clause
             end = len(toks)  # the clause ends at a main clause that follows without a comma
@@ -288,7 +295,11 @@ def detect(text, model=None):
             r2 = norm(parts[1]).split()
             if len(r2) >= 2 and r2[0] in ("er", "sie"):
                 out.add("wer-der")
-        if len(parts) == 2 and norm(parts[0]).split()[:1] and norm(parts[0]).split()[0] in SUB_DETECT \
+        raw0 = re.findall(r"[\w'-]+", parts[0])
+        lead = len(head) >= 3 and head[0] in LEAD_SUB and head[1] not in FINITE and \
+            (head[1] in PRON or head[1] in DET or (len(raw0) > 1 and raw0[1][:1].isupper())) and \
+            (head[-1] in fin or bool(FINITE_ANY(head[-1]))) and not any(w in FINITE for w in head[1:-1])
+        if len(parts) == 2 and norm(parts[0]).split()[:1] and (norm(parts[0]).split()[0] in SUB_DETECT or lead) \
                 and "oder nicht" not in norm(parts[0]):
             rest = norm(parts[1]).split()
             j = subject_end(rest, 0)
@@ -625,11 +636,13 @@ def check_item(it, ctx, where):
         cls = {c for c in (trap, *focus) if c in ("verb-final", "v2", "inversion")}
         if cls and not (detect(w, model) & (cls | {"verb-final", "v2", "inversion"})):
             W.append(f"{at}: wrong {w!r} doesn't trip the {sorted(cls)} detector; make sure it's his real mistake (verb in the wrong place)")
-    # strict words are in the model
+    # strict words are in the model, or (in lower case, like every pattern) in an accepted pattern: "Ich danke Ihnen
+    # im Voraus" as a variant of "Vielen Dank im Voraus" needs Ihnen in strict
     mwords = re.findall(r"[\wäöüßÄÖÜ'-]+", model)
+    pwords = {w for p in (it.get("accept") or []) if isinstance(p, str) for w in re.findall(r"[\wäöüßÄÖÜ'-]+", p)}
     for s in strict:
-        if s not in mwords and not (mwords and s.lower() == mwords[0].lower()):
-            E.append(f"{at}: strict word {s!r} is not in model (case-sensitive)")
+        if s not in mwords and not (mwords and s.lower() == mwords[0].lower()) and s.lower() not in pwords:
+            E.append(f"{at}: strict word {s!r} is not in the model (case-sensitive) or a pattern")
     # wrong answers
     capitems = "cap" in focus or trap == "cap"
     for w in wrong:
@@ -641,6 +654,8 @@ def check_item(it, ctx, where):
                 continue  # the matcher ignores case; match.js checks capitals against the cased model
             if kind == "topic" and (detect(w, model) & set(focus)):
                 continue  # free [x] content: the trap detector (run on every answer) catches it
+            if detect(w, model) & (set(focus) | {trap}) & {"verb-final", "v2", "inversion"}:
+                continue  # the rest of the sentence: "Da … teuer sind, viele Leute fahren …" (the word-order detector catches it)
             E.append(f"{at}: wrong {w!r} matches a pattern; a wrong answer must match no pattern"
                      + (" (or, for a topic item, must trip a trap detector in its focus)" if kind == "topic" else ""))
     if capitems and wrong and not any(case_only_diff(w, model, strict, ctx) or not answers_ok(w) for w in wrong):

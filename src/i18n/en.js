@@ -836,7 +836,7 @@ export default {
   'practice.script.row.stepNext': '{step} on {date}',
   'practice.script.long': { one: '{n} long sentence', other: '{n} long sentences' },
   'practice.script.long.detail': 'Over 25 words. Split them to make them easier to say.',
-  'practice.script.long.help': 'Split cuts at the comma before a word like die, weil or dass. You can edit the result.',
+  'practice.script.long.help': 'Split cuts at the comma before und, aber or denn when a full sentence follows. You can edit the result.',
   'practice.script.long.words': '{n} words in {section}',
   'practice.script.long.split': 'Split',
   'practice.script.long.noSplit': 'No place to split it here. Edit the text to shorten it.',

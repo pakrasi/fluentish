@@ -61,6 +61,12 @@ test('an opposite card accepts every listed opposite; a family card asks for the
   assert.ok(grade(gap, 'beim').ok);
   assert.ok(!grade(gap, 'zum').ok);
   assert.ok(gap.usage.length > 10, 'the usage note shows after the answer');
+  // the German review: in einer Bank, am Bahnhof abholen and aufgrund are right too
+  for (const [id, yes, no] of [['CP:bei-firma', 'in', 'zu'], ['CP:von-bahnhof', 'am', 'zum'], ['CP:wegen-streik', 'aufgrund', 'trotz']]) {
+    const g = itemFor(id, ix, C, { t });
+    assert.ok(grade(g, yes).ok, `${id}: ${yes}`);
+    assert.ok(!grade(g, no).ok, `${id}: ${no}`);
+  }
 });
 
 test('round composition: due first, at most 6 new, practise ahead when nothing is left', () => {

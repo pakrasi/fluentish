@@ -25,7 +25,7 @@ const NONVERB = set(`der die das den dem des ein eine einen einem einer eines me
   ihr ihre unser unsere euer eure kein keine keinen dieser diese dieses diesen jede jeder jedes jeden alle viele manche
   einige beide ich du er sie es wir man mich dich sich uns euch ihnen ihm ihn mir dir an auf aus bei mit nach von vor zu
   in um über unter für gegen ohne durch nicht auch noch schon sehr gern gerne ganz mehr wieder immer oben unten heute
-  morgen gestern hier dort dann denn aber oder und sondern`);
+  morgen gestern hier dort dann denn aber oder und sondern zusammen selten draußen drinnen neben wegen`);
 const TIME_NOUNS = set('abend morgen nachmittag mittag vormittag nacht wochenende anfang ende jahr woche monat');
 const WER_PRON = set('er sie');
 const MEINEN = set('meine meinst meint meinen');
@@ -39,6 +39,14 @@ const NEXT_MAIN = set('dann so trotzdem deshalb deswegen darum außerdem danach'
 const MID_V2 = set('deshalb deswegen darum trotzdem außerdem dennoch');
 const finiteAny = w => !NONVERB.has(w) && /^[a-z]{2,}(e|st|t|en|n)$/.test(w) && !/(ung|heit|keit|lein)$/.test(w);
 const isFin = (w, fin) => fin.has(w) || finiteAny(w);
+// subordinators that are never an adverb: a finite verb right after them is a word-order error ("ob kann man …")
+const NEVER_ADV = set('dass weil ob wenn obwohl falls');
+// a subordinate clause that opens a sentence and ends with its verb: "Da Busse teuer sind, …", "Als ich ankam, …"
+// (da and als are also an adverb and a preposition: "Da hast du recht", "Als Kind …", so the clause must look like one)
+const LEAD_SUB = set('da als');
+// the auxiliaries: haben, sein, werden. In "weil wir haben gefeiert" the participle at the end is no finite verb
+const AUX = set('bin bist ist sind seid war warst waren habe hab hast hat haben habt hatte hatten werde wirst wird werden');
+const PARTICIPLE = /^(ab|an|auf|aus|ein|mit|vor|zu|zurueck|weg|los|fest|teil|vorbei|hin|her|nach|um|durch)?ge[a-z]{2,}(t|en)$/;
 
 function clauseVerbs(model) {
   const out = new Set();
@@ -82,6 +90,7 @@ function order(text, model, verbs = null) {
         return;
       }
       if (!SUB.has(t)) return;
+      if (i + 2 < toks.length && NEVER_ADV.has(t) && FINITE.has(toks[i + 1]) && (PRON.has(toks[i + 2]) || DET.has(toks[i + 2]))) { out.push({ cls: 'verb-final', word: t }); return; }   // "ob kann man …"
       if (i + 1 < toks.length && (FINITE.has(toks[i + 1]) || (verbs && fin.has(toks[i + 1])))) return;   // "Damit bin ich …", "Seitdem gehe ich …": an adverb
       let end = toks.length;   // the clause ends at a main clause that follows without a comma
       for (let j = i + 1; j < Math.min(i + 5, toks.length - 1); j++) {
@@ -93,7 +102,7 @@ function order(text, model, verbs = null) {
           SUB.has(rest[0]) || (NEXT_MAIN.has(rest[0]) && isFin(rest[1], fin)))) { end = j + 1; break; }
         // with the word list's verbs: a verb group goes on (regnen würde, warten musstest), so decide at its last verb
         if (verbs && fin.has(toks[j]) && rest.length && fin.has(rest[0])) continue;
-        if (fin.has(toks[j]) && !['oder', 'und', 'aber'].includes(rest[0]) && rest.some(r => (verbs ? !verbish(r) : !fin.has(r)))) { out.push({ cls: 'verb-final', word: t }); return; }
+        if (fin.has(toks[j]) && !['oder', 'und', 'aber'].includes(rest[0]) && rest.some(r => (verbs ? !verbish(r) || (AUX.has(toks[j]) && PARTICIPLE.test(r)) : !fin.has(r)))) { out.push({ cls: 'verb-final', word: t }); return; }
       }
       const cl = toks.slice(i + 1, end);
       if (cl.length >= 3 && PARTICLES.has(cl[cl.length - 1]) && cl.slice(1, -1).some(c => isFin(c, fin))) out.push({ cls: 'verb-final', word: t });
@@ -107,7 +116,9 @@ function order(text, model, verbs = null) {
     const rest = norm(sent.slice(k + 1)).split(' ').filter(Boolean);
     // "Wer Fragen hat, er kann …": the second clause picks up wer with der, not er/sie
     if (!/\?\s*$/.test(sent) && hd.length >= 2 && hd[0] === 'wer' && rest.length >= 2 && WER_PRON.has(rest[0])) out.push({ cls: 'wer-der', word: 'wer' });
-    if (!SUB.has(hd[0]) || norm(sent.slice(0, k)).includes('oder nicht')) continue;
+    const raw0 = sent.slice(0, k).match(/[\p{L}\p{N}_'-]+/gu) || [];
+    const lead = LEAD_SUB.has(hd[0]) && hd.length >= 3 && !FINITE.has(hd[1]) && (PRON.has(hd[1]) || DET.has(hd[1]) || /^\p{Lu}/u.test(raw0[1] || '')) && isFin(hd[hd.length - 1], fin) && !hd.slice(1, -1).some(w => FINITE.has(w));
+    if (!(SUB.has(hd[0]) || lead) || norm(sent.slice(0, k)).includes('oder nicht')) continue;
     const j = subjectEnd(rest, 0, fin);
     if (j != null && j < rest.length && isFin(rest[j], fin)) out.push({ cls: 'inversion', word: hd[0] });
     else if (rest.length >= 2 && PRON.has(rest[0]) && rest[0] !== 'das' && MEINEN.has(rest[1])) out.push({ cls: 'inversion', word: hd[0] });   // "Wenn …, Sie meinen"

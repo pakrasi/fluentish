@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "d85495f29d43",
+ "version": "1aca0b7d1f5c",
  "languages": [
   {
    "id": "khasi",
@@ -190,8 +190,8 @@
    "id": "b1.items",
    "path": "b1/items.json",
    "schema": "b1-items@1",
-   "bytes": 351176,
-   "sha256": "4072acf17272ffba971b2d95af2391bb24dd9492f91543bf07e84b0241dacbf2"
+   "bytes": 351198,
+   "sha256": "f99266e78d278eb7aedeeb7b428b6a7c21c275d1b87a532922dc747272af8ccf"
   },
   {
    "id": "b1.nouns",
@@ -211,8 +211,8 @@
    "id": "b1.schreiben",
    "path": "b1/schreiben.json",
    "schema": "b1-schreiben@1",
-   "bytes": 118768,
-   "sha256": "b18f892831532b5638bbadb951a91bd1a89885dd2cfeea1064abbfb7db8fbdf4"
+   "bytes": 120060,
+   "sha256": "d2b394f32709df894e788bf7c31fddaf80daab80438975e2ef714de3e6137dff"
   },
   {
    "id": "b1.wordmap",
@@ -225,8 +225,8 @@
    "id": "clusters.de",
    "path": "clusters/de.json",
    "schema": "clusters@1",
-   "bytes": 361488,
-   "sha256": "37e67cb18634174dc2810d5438494d6da3ec8d4630be1754fb255d4a1ac7c6f6"
+   "bytes": 361509,
+   "sha256": "c05c104f1ffdb308b83bbd6727ecb652e3033b69dbe10394f3d7f3b5eaa415a9"
   },
   {
    "id": "exam.goethe-b1.01",

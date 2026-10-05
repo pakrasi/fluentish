@@ -90,13 +90,30 @@ test('tokenize: compounds stay whole, punctuation and quotes are their own token
   assert.equal(P.wordCount('Die Kette, das Rad.'), 4);
 });
 
-test('long sentences: flagged over 25 words, split locally at a comma before a subordinator', () => {
-  const long = 'Der Rahmen eines modernen Fahrrads muss viele Kräfte aufnehmen, die beim Fahren auf unebenen Straßen entstehen, und trotzdem leicht genug bleiben, damit man ihn gut tragen kann.';
+test('long sentences: flagged over 25 words, split only where two main clauses meet', () => {
+  const long = 'Das Team hat drei Monate lang jeden Abend an dem neuen Prototyp gearbeitet, aber die Ergebnisse waren am Ende leider nicht so gut wie wir gehofft hatten.';
   assert.ok(P.isLong(long));
-  const [a, b] = /** @type {[string, string]} */ (P.splitLocal(long));
-  assert.ok(a.endsWith('.') && /^[A-ZÄÖÜ]/.test(b));
-  assert.equal(P.wordCount(a) + P.wordCount(b), P.wordCount(long));
+  assert.deepEqual(P.splitLocal(long), ['Das Team hat drei Monate lang jeden Abend an dem neuen Prototyp gearbeitet.', 'Aber die Ergebnisse waren am Ende leider nicht so gut wie wir gehofft hatten.']);
+  assert.deepEqual(P.splitLocal('Am Anfang hatten wir nur wenig Zeit und sehr wenig Geld für das ganze Projekt; trotzdem haben wir es am Ende mit viel Arbeit gemeinsam geschafft.'),
+    ['Am Anfang hatten wir nur wenig Zeit und sehr wenig Geld für das ganze Projekt.', 'Trotzdem haben wir es am Ende mit viel Arbeit gemeinsam geschafft.']);
   assert.equal(P.splitLocal('Ohne Komma gibt es hier keine Stelle zum Teilen.'), null);
+});
+
+// a relative or subordinate clause is verb-final and can never stand alone: the German review's examples
+test('splitLocal never makes a fragment of a relative or subordinate clause', () => {
+  const rel = 'Wir haben in den letzten zwei Jahren ein völlig neues System gebaut, das die Daten von allen Satelliten in Echtzeit sammelt und sofort an die Teams in drei Ländern weitergibt.';
+  const dass = 'Ich möchte mich ganz herzlich bei euch allen bedanken und ich freue mich wirklich sehr, dass ihr heute alle hier seid und dass wir heute zusammen darüber sprechen können.';
+  const elided = 'Der Rahmen eines modernen Fahrrads muss viele Kräfte aufnehmen, die beim Fahren auf unebenen Straßen entstehen, und trotzdem leicht genug bleiben, damit man ihn gut tragen kann.';
+  for (const s of [rel, dass, elided]) { assert.ok(P.isLong(s)); assert.equal(P.splitLocal(s), null, s); }
+  // weil … , aber …: the cut is at aber, and the weil clause stays with its main clause
+  const weil = 'Das Projekt war am Anfang sehr schwierig für das ganze Team, weil wir nur wenig Zeit und sehr wenig Geld hatten, aber es hat am Ende doch geklappt.';
+  assert.deepEqual(P.splitLocal(weil), ['Das Projekt war am Anfang sehr schwierig für das ganze Team, weil wir nur wenig Zeit und sehr wenig Geld hatten.', 'Aber es hat am Ende doch geklappt.']);
+  // a relative clause before ", und wir …" stays in the first sentence
+  const both = 'Wir haben ein neues System für die Auswertung der Daten gebaut, das sehr schnell arbeitet, und wir nutzen es seit dem letzten Sommer jeden Tag im ganzen Team.';
+  assert.deepEqual(P.splitLocal(both), ['Wir haben ein neues System für die Auswertung der Daten gebaut, das sehr schnell arbeitet.', 'Und wir nutzen es seit dem letzten Sommer jeden Tag im ganzen Team.']);
+  // no half ever starts with a subordinator or relative pronoun
+  const SUB = /^(die|der|das|dem|den|deren|dessen|weil|dass|wenn|obwohl|damit|als|ob|während|bevor|nachdem|sodass|indem|wo|was|wie|um)\b/i;
+  for (const s of [rel, dass, elided, weil, both]) for (const half of (P.splitLocal(s) || []).slice(1)) assert.ok(!SUB.test(half), half);
 });
 
 test('partsOf: his own parts first, else chunks of about 4 to 9 words', () => {

@@ -12,9 +12,9 @@
   { "id": "BS:a3-dank-ihre-email", "fn": "a3_open", "tier": 1,
     "prompt": "Thank you for your email. (formal email)",
     "model": "Vielen Dank für Ihre E-Mail.",
-    "accept": ["vielen dank für ihre e-mail", "herzlichen dank für ihre e-mail", "danke für ihre e-mail", "vielen dank für ihre nachricht", "ich danke ihnen für ihre e-mail"],
+    "accept": ["vielen dank für ihre e-mail", "herzlichen dank für ihre e-mail", "danke für ihre e-mail", "vielen dank für ihre nachricht", "ich danke ihnen für ihre e-mail", "vielen dank für ihre mail"],
     "wrong": ["Vielen Dank für ihre E-Mail.", "Vielen Dank für Ihren E-Mail.", "Vielen Dank für deine E-Mail."],
-    "trap": "cap", "focus": ["chunk", "cap", "register", "ending"], "strict": ["Ihre"],
+    "trap": "cap", "focus": ["chunk", "cap", "register", "ending"], "strict": ["Ihre", "Ihnen"],
     "rule": "Die E-Mail is feminine, and the polite Ihre takes a capital: für Ihre E-Mail." },
 
   { "id": "BS:a3-schreibe-ihnen-weil", "fn": "a3_open", "tier": 1,
@@ -31,6 +31,7 @@
     "accept": ["vielen dank für die einladung zum gespräch", "vielen dank für ihre einladung zum gespräch", "danke für die einladung zum gespräch", "danke für ihre einladung zum gespräch", "herzlichen dank für die einladung zum gespräch"],
     "wrong": ["Vielen Dank für der Einladung zum Gespräch am Montag.", "Vielen Dank für die Einladung zur Gespräch am Montag."],
     "focus": ["chunk", "prep-case", "article"],
+    "strict": ["Ihre"],
     "rule": "für takes the accusative and das Gespräch gives zum: für die Einladung zum Gespräch." },
 
   { "id": "BS:a3-habe-mich-angemeldet", "fn": "a3_open", "tier": 2,
@@ -46,7 +47,7 @@
     "model": "Ich interessiere mich für Ihren Abendkurs.",
     "accept": ["ich interessiere mich für ihren abendkurs", "ich interessiere mich sehr für ihren abendkurs", "ich habe interesse an ihrem abendkurs"],
     "wrong": ["Ich interessiere mich an Ihren Abendkurs.", "Ich interessiere mich für ihren Abendkurs.", "Ich interessiere mir für Ihren Abendkurs."],
-    "trap": "cap", "focus": ["chunk", "prep-case", "cap"], "strict": ["Ihren"],
+    "trap": "cap", "focus": ["chunk", "prep-case", "cap"], "strict": ["Ihren", "Ihrem"],
     "rule": "sich interessieren für + accusative, and the polite Ihren takes a capital: für Ihren Kurs." },
 
   { "id": "BS:a3-tut-mir-leid-aber", "fn": "a3_decline", "tier": 1,
@@ -63,6 +64,7 @@
     "accept": ["ich möchte mich (bei ihnen) dafür entschuldigen", "ich möchte mich (bei ihnen) entschuldigen", "dafür möchte ich mich (bei ihnen) entschuldigen", "ich entschuldige mich (bei ihnen) dafür"],
     "wrong": ["Ich möchte mir dafür entschuldigen.", "Ich möchte mich dafür entschuldige."],
     "focus": ["chunk", "word-choice"],
+    "strict": ["Ihnen"],
     "rule": "sich entschuldigen takes mich: Ich möchte mich entschuldigen." },
 
   { "id": "BS:a3-leider-nicht-teilnehmen", "fn": "a3_decline", "tier": 1,
@@ -118,7 +120,7 @@
     "model": "Würde Ihnen Dienstag um 10 Uhr passen?",
     "accept": ["würde ihnen ([x]) dienstag um 10 uhr passen", "passt ihnen ([x]) dienstag um 10 uhr", "hätten sie ([x]) dienstag um 10 uhr zeit", "würde es ihnen ([x]) dienstag um 10 uhr passen"],
     "wrong": ["Würde Sie Dienstag um 10 Uhr passen?", "Würde ihnen Dienstag um 10 Uhr passen?", "Würde Ihnen Dienstag am 10 Uhr passen?"],
-    "trap": "cap", "focus": ["chunk", "cap", "register"], "strict": ["Ihnen"],
+    "trap": "cap", "focus": ["chunk", "cap", "register"], "strict": ["Ihnen", "Sie"],
     "rule": "passen takes the dative, so the polite form is Ihnen, with a capital: Würde Ihnen Dienstag passen?" },
 
   { "id": "BS:a3-neuen-termin", "fn": "a3_propose", "tier": 1,
@@ -134,7 +136,7 @@
     "model": "In Zukunft sage ich Ihnen vorher Bescheid.",
     "accept": ["in zukunft sage ich ihnen ([x]) bescheid", "ich sage ihnen in zukunft ([x]) bescheid", "beim nächsten mal sage ich ihnen ([x]) bescheid", "in zukunft informiere ich sie ([x])"],
     "wrong": ["In Zukunft ich sage Ihnen vorher Bescheid.", "In Zukunft sage ich Sie vorher Bescheid.", "In Zukunft sage ich ihnen vorher Bescheid."],
-    "trap": "cap", "focus": ["chunk", "v2", "cap"], "strict": ["Ihnen"],
+    "trap": "cap", "focus": ["chunk", "v2", "cap"], "strict": ["Ihnen", "Sie"],
     "rule": "After In Zukunft the verb comes next, and Bescheid sagen takes Ihnen: In Zukunft sage ich Ihnen Bescheid." },
 
   { "id": "BS:a3-mitteilen-ob", "fn": "a3_request", "tier": 1,
@@ -182,7 +184,7 @@
     "model": "Vielen Dank im Voraus.",
     "accept": ["vielen dank im voraus", "danke im voraus", "herzlichen dank im voraus", "ich danke ihnen im voraus"],
     "wrong": ["Vielen Dank in Voraus.", "Vielen Dank im voraus."],
-    "trap": "cap", "focus": ["chunk", "prep-case", "cap"], "strict": ["Voraus"],
+    "trap": "cap", "focus": ["chunk", "prep-case", "cap"], "strict": ["Voraus", "Ihnen"],
     "rule": "im Voraus is a fixed phrase, with a capital V." },
 
   { "id": "BS:a3-dank-verstaendnis", "fn": "a3_close", "tier": 1,
@@ -190,7 +192,7 @@
     "model": "Vielen Dank für Ihr Verständnis.",
     "accept": ["vielen dank für ihr verständnis", "danke für ihr verständnis", "herzlichen dank für ihr verständnis", "ich danke ihnen für ihr verständnis"],
     "wrong": ["Vielen Dank für Ihre Verständnis.", "Vielen Dank für ihr Verständnis."],
-    "trap": "cap", "focus": ["chunk", "cap", "ending"], "strict": ["Ihr"],
+    "trap": "cap", "focus": ["chunk", "cap", "ending"], "strict": ["Ihr", "Ihnen"],
     "rule": "das Verständnis is neuter: Ihr Verständnis, with a capital I." },
 
   { "id": "BS:a3-dank-bisherige-hilfe", "fn": "a3_close", "tier": 3,
@@ -198,7 +200,7 @@
     "model": "Vielen Dank für Ihre bisherige Hilfe.",
     "accept": ["vielen dank für ihre bisherige hilfe", "danke für ihre bisherige hilfe", "ich danke ihnen für ihre bisherige hilfe", "vielen dank für ihre bisherige unterstützung"],
     "wrong": ["Vielen Dank für Ihre bisherigen Hilfe.", "Vielen Dank für ihre bisherige Hilfe."],
-    "trap": "cap", "focus": ["chunk", "cap", "ending"], "strict": ["Ihre"],
+    "trap": "cap", "focus": ["chunk", "cap", "ending"], "strict": ["Ihre", "Ihnen"],
     "rule": "die Hilfe is feminine: Ihre bisherige Hilfe." }
  ]
 }

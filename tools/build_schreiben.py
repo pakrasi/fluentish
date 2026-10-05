@@ -77,6 +77,22 @@ def polite_errors(model, strict, at):
     return errs
 
 
+def polite_pattern_errors(accept, strict, model, at):
+    """The same for the accept patterns of a Sie text (they are lower case): a polite form after a pattern's first word
+    must be in strict, or "Ich danke ihnen im Voraus." (ihnen = them) is graded right. A lower-case form the model
+    itself uses (ihr = her) is meant as written."""
+    errs, lower_ok = [], set()
+    for sent in sentences(model):
+        lower_ok |= {t for t in re.findall(r"[\wäöüßÄÖÜ]+", sent)[1:] if t.lower() == t}
+    polite = {f.lower(): f for f in SIE_FORMS}
+    for p in accept or []:
+        for t in re.findall(r"[\wäöüßÄÖÜ]+", p)[1:]:
+            f = polite.get(t)
+            if f and f not in strict and t not in lower_ok:
+                errs.append(f"{at}: accept {p!r} has {t!r}; add {f!r} to strict (a polite form in lower case is another word)")
+    return sorted(set(errs))
+
+
 def punct_errors(model, punct, at):
     errs = []
     for p in punct or []:
@@ -140,6 +156,8 @@ def build_items(fns, ctx, prev_models, E, W):
             E += punct_errors(it["model"], it.get("punct"), at)
             E += register_errors(it["model"], a, at)
             E += polite_errors(it["model"], it.get("strict") or [], at)
+            if a == "A3":
+                E += polite_pattern_errors(it["accept"], it.get("strict") or [], it["model"], at)
             if V.norm(it["model"]) in prev_models:
                 E.append(f"{at}: the B1 trainer already has this model sentence ({prev_models[V.norm(it['model'])]})")
             items.append((a, it))
@@ -210,6 +228,8 @@ def check_tasks(tasks, ctx, E, W):
             E += register_errors(p["model"], a, pat)
             if p["kind"] == "fixed":
                 E += polite_errors(p["model"], p.get("strict") or [], pat)
+            if a == "A3":
+                E += polite_pattern_errors(p.get("accept"), p.get("strict") or [], p["model"], pat)
             if p.get("lower") and not ("lower-start" in (p.get("punct") or [])):
                 E.append(f"{pat}: a lower part needs the lower-start rule")
             for g in p.get("glue") or []:
@@ -249,6 +269,9 @@ def main():
             E.append(f"functions.json existing {iid}: not a letter item of content/b1/items.json")
         elif fn not in fns or TEIL[fns[fn]["aufgabe"]] != it["teil"]:
             E.append(f"functions.json existing {iid}: {fn} is not a function of its Teil {it['teil']}")
+        elif it["teil"] == "W3":   # a formal letter item: pool.js adds the model's polite forms to strict, not the patterns'
+            polite = [w for sent in sentences(it["model"]) for w in re.findall(r"[\wäöüßÄÖÜ]+", sent)[1:] if w in SIE_FORMS]
+            E += polite_pattern_errors(it["accept"], (it.get("strict") or []) + polite, it["model"], f"linked {iid} (authoring/b1-src)")
     items = build_items(fns, ctx, prev_models, E, W)
     tasks = load("tasks.json")["tasks"]
     check_tasks(tasks, ctx, E, W)

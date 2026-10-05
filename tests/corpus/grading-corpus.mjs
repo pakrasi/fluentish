@@ -392,7 +392,49 @@ export const SCHREIBEN_HELD = [
   ['BX:a3-gespraech-verschieben-p2', 'Der Grund ist, dass ich habe einen Termin in Hamburg.', 'wrong', 'verb not at the end'],
   ['BX:a3-laerm-nachbar-p3', 'In Zukunft ich informiere alle Nachbarn vorher.', 'wrong', 'V2 after In Zukunft'],
   ['BX:a3-kurs-anfrage-p2', 'Ich würde gern wissen, ob der Kurs findet abends statt.', 'wrong', 'separable verb not at the end'],
+  // the German review, round 2: polite forms in lower case (ihnen = them, ihre = her, sie = she), agreement, word order
+  ['BS:a3-dank-ihre-email', 'Ich danke ihnen für Ihre E-Mail.', 'wrong', 'ihnen in lower case'],
+  ['BS:a3-einladung-zum-gespraech', 'Vielen Dank für ihre Einladung zum Gespräch am Montag.', 'wrong', 'ihre in lower case'],
+  ['BS:a3-moechte-mich-entschuldigen', 'Ich möchte mich bei ihnen dafür entschuldigen.', 'wrong', 'ihnen in lower case'],
+  ['BS:a3-interessiere-mich-kurs', 'Ich habe Interesse an ihrem Abendkurs.', 'wrong', 'ihrem in lower case'],
+  ['BS:a3-wuerde-ihnen-passen', 'Hätten sie am Dienstag um 10 Uhr Zeit?', 'wrong', 'sie in lower case'],
+  ['BS:a3-in-zukunft', 'In Zukunft informiere ich sie vorher.', 'wrong', 'sie in lower case'],
+  ['BS:a3-dank-im-voraus', 'Ich danke ihnen im Voraus.', 'wrong', 'ihnen in lower case'],
+  ['BS:a3-dank-verstaendnis', 'Ich danke ihnen für Ihr Verständnis.', 'wrong', 'ihnen in lower case'],
+  ['BS:a3-dank-bisherige-hilfe', 'Ich danke ihnen für Ihre bisherige Hilfe.', 'wrong', 'ihnen in lower case'],
+  ['BP:w3-danke-ihre-einladung', 'Ich danke ihnen sehr für Ihre Einladung.', 'wrong', 'ihnen in lower case'],
+  ['BP:w3-hoffe-verstaendnis', 'Ich bitte sie um Verständnis.', 'wrong', 'sie in lower case'],
+  ['BP:w3-freue-mich-ihre-antwort', 'Ich freue mich, von ihnen zu hören.', 'wrong', 'ihnen in lower case'],
+  ['BX:a3-gespraech-verschieben-p1', 'Entschuldigen sie bitte, aber ich kann an diesem Termin nicht kommen.', 'wrong', 'sie in lower case'],
+  ['BX:a3-gespraech-verschieben-p3', 'Hätten sie am Dienstag um 10 Uhr Zeit?', 'wrong', 'sie in lower case'],
+  ['BX:a3-gespraech-verschieben-close', 'Ich danke ihnen für Ihr Verständnis.', 'wrong', 'ihnen in lower case'],
+  ['BX:a3-kurs-anfrage-p2', 'Könnten sie mir sagen, ob der Kurs auch abends stattfindet?', 'wrong', 'sie in lower case'],
+  ['BX:a3-kurs-anfrage-close', 'Ich danke ihnen im Voraus.', 'wrong', 'ihnen in lower case'],
+  ['BS:a2-liegt-daran-dass', 'Das liegt daran, dass viele Menschen zu viel arbeitet.', 'wrong', 'plural subject, singular verb'],
+  ['BS:a1-zuerst-dann', 'Zuerst haben wir die Kartons gepackt und dann wir haben alles getragen.', 'wrong', 'V2 after dann'],
+  ['BS:a1-nicht-alles-geklappt', 'Leider lief nicht alles.', 'wrong', 'unfinished: lief nicht alles glatt'],
+  ['BS:a2-da-teuer', 'Da Busse und Bahnen teuer sind, viele Leute fahren lieber mit dem Auto.', 'wrong', 'no inversion after the da clause'],
+  ['BX:a2-vier-tage-woche-p1', 'Ich stimme Rainer zu.', 'wrong', 'the cue says he sees it differently'],
+  ['BX:a3-laerm-nachbar-p1', 'Es tut mir leid, dass es so laut war gewesen.', 'wrong', 'verb not at the end'],
+  ['BX:a3-laerm-nachbar-p2', 'Es war so laut, weil wir haben gefeiert.', 'wrong', 'haben second in a weil clause'],
+  ['BX:a3-kurs-anfrage-p2', 'Ich würde gern wissen, ob kann man den Kurs abends machen.', 'wrong', 'verb right after ob'],
+  ['BX:a1-neue-stelle-p3', 'Wie wäre es, wenn wir am Sonntag gehen zusammen essen?', 'wrong', 'finite verb before the infinitive in a wenn clause'],
   // right
+  // the German review, round 2: plain right answers that were graded wrong
+  ['BS:a1-toll-dass-stelle', 'Toll, dass du den Job bekommen hast!', 'right', 'den Job'],
+  ['BS:a1-freut-mich-zu-hoeren', 'Schön, dass du eine neue Wohnung gefunden hast.', 'right', 'Schön, dass'],
+  ['BS:a1-gefreut-ueber-email', 'Ich habe mich sehr über deine Mail gefreut.', 'right', 'Mail'],
+  ['BS:a1-dank-deine-email', 'Vielen Dank für deine Mail.', 'right', 'Mail'],
+  ['BS:a3-dank-ihre-email', 'Vielen Dank für Ihre Mail.', 'right', 'Mail'],
+  ['BS:a1-wollte-dir-erzaehlen', 'Ich wollte dir kurz erzählen, wie mein Umzug gelaufen ist.', 'right', 'mein Umzug'],
+  ['BS:a1-tut-mir-leid-dass', 'Es tut mir leid, dass ich nicht zu deiner Geburtstagsparty kommen konnte.', 'right', 'Geburtstagsparty'],
+  ['BS:a1-gruesse-familie', 'Grüß deine Familie!', 'right', 'without von mir'],
+  ['BS:a2-bin-dagegen-dass', 'Ich bin dagegen, dass das Bargeld abgeschafft wird.', 'right', 'passive'],
+  ['BS:a2-es-kommt-darauf-an', 'Es kommt auf den Job an.', 'right', 'Job'],
+  ['BX:a1-absage-geburtstag-p2', 'Leider kann ich nicht kommen, weil meine Eltern zu Besuch kommen.', 'right', 'no time word'],
+  ['BX:a1-absage-geburtstag-p2', 'Ich kann leider nicht kommen, weil meine Eltern zu Besuch kommen.', 'right', 'no time word'],
+  ['BX:a1-umzug-intro', 'Vielen Dank für deine Mail!', 'right', 'Mail'],
+  ['BX:a3-gespraech-verschieben-p3', 'Hätten Sie am Dienstag um 10 Uhr Zeit?', 'right', 'Sie with a capital'],
   ['BS:a3-mfg', 'Mit freundlichen Gruessen', 'right', 'ue and ss'],
   ['BS:a1-lieber-jonas', 'Lieber Jonas,', 'right', 'the model'],
   ['BS:a2-sehe-das-anders-als', 'Ich sehe das ganz anders als Rainer.', 'right', 'with ganz'],
@@ -479,6 +521,7 @@ export async function buildCorpus({ root = ROOT } = {}) {
       if (own) {
         const m = reOf(own).exec(fm);
         const cased = new Map(toks(model).slice(1).map(t => [t.w.toLowerCase(), t.w]));
+        for (const w of it.strict || []) if (!cased.has(w.toLowerCase())) cased.set(w.toLowerCase(), w);   // the polite Ihnen of a variant
         for (const n of Object.values(J(root, 'content/b1/nouns.json'))) if (!cased.has(n.toLowerCase())) cased.set(n.toLowerCase(), n);
         // a phrase that ends in aber/denn (tut mir leid, aber) keeps the normal order after it: it cannot stand
         // where an inverting adverb stood (Leider sind wir … → not "Tut mir leid, aber sind wir …")

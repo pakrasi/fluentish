@@ -142,6 +142,10 @@ test('detectors: JS = Python reference, and no fires on right sentences', () => 
       ['Wenn ich Zeit habe lerne ich jeden Abend.', ''], ['Ich weiß nicht ob das klappt weil ich einen Arzttermin habe.', ''],
       ['Wenn das Wetter schön ist dann fahre ich mit dem Rad.', ''], ['Nachdem wir gefrühstückt hatten gingen wir los.', ''],
       ['Obwohl er keine Lust hat kommt er mit.', ''], ['Weil ich muss arbeiten gehe ich nicht.', ''], ['Wenn ich habe Zeit lerne ich.', ''],
+      // the German review, round 2: a finite verb right after ob, no inversion after a da or als clause
+      ['Ich würde gern wissen, ob kann man den Kurs abends machen.', ''], ['Da Busse und Bahnen teuer sind, viele Leute fahren lieber mit dem Auto.', ''],
+      ['Als ich klein war, ich habe viel gespielt.', ''], ['Da hast du recht, die Preise sind hoch.', ''], ['Da ich krank war, bin ich zu Hause geblieben.', ''],
+      ['Ich weiß nicht, ob man den Kurs abends machen kann.', ''], ['Als Kind habe ich viel gespielt, die Zeit war schön.', ''],
     ];
     for (const m of ['Weil ich muss arbeiten gehe ich nicht.', 'Wenn ich habe Zeit lerne ich.', 'Ich komme nicht weil ich habe keine Zeit.'])
       assert.deepEqual(Det.classes(m, null), ['verb-final'], `must fire without the comma: ${m}`);
@@ -151,6 +155,18 @@ test('detectors: JS = Python reference, and no fires on right sentences', () => 
       'Wenn ich Zeit habe lerne ich jeden Abend.', 'Ich weiß nicht ob das klappt weil ich einen Arzttermin habe.', 'Wenn das Wetter schön ist dann fahre ich mit dem Rad.',
       'Nachdem wir gefrühstückt hatten gingen wir los.', 'Obwohl er keine Lust hat kommt er mit.', 'Wenn ich Zeit hätte würde ich mitkommen.'];
     for (const m of mustNot) assert.deepEqual(Det.classes(m, null), [], `must not fire: ${m}`);
+    assert.deepEqual(Det.classes('Ich würde gern wissen, ob kann man den Kurs abends machen.', null), ['verb-final']);
+    assert.deepEqual(Det.classes('Da Busse und Bahnen teuer sind, viele Leute fahren lieber mit dem Auto.', null), ['inversion']);
+    assert.deepEqual(Det.classes('Als ich klein war, ich habe viel gespielt.', null), ['inversion']);
+    for (const m of ['Da hast du recht, die Preise sind hoch.', 'Da ich krank war, bin ich zu Hause geblieben.', 'Als Kind habe ich viel gespielt, die Zeit war schön.',
+      'Ich weiß nicht, ob man den Kurs abends machen kann.']) assert.deepEqual(Det.classes(m, null), [], `must not fire: ${m}`);
+    {   // with the word list's verbs (run() in the app): a participle or an infinitive at the end hides no verb-second error
+      const verbs = Det.verbForms(J('content/igloo/words/de.json'));
+      for (const m of ['Es war so laut, weil wir haben gefeiert.', 'Wie wäre es, wenn wir am Sonntag gehen zusammen essen?', 'Es tut mir leid, dass es so laut war gewesen.'])
+        assert.equal(Det.run(m, {}, null, { verbs })?.cls, 'verb-final', m);
+      for (const m of ['Es war so laut, weil wir gefeiert haben.', 'Wie wäre es, wenn wir am Sonntag zusammen essen gehen?', 'Es tut mir leid, dass es so laut gewesen ist.'])
+        assert.equal(Det.run(m, {}, null, { verbs }), null, m);
+    }
     const nModels = cases.length;
     cases.push(...fixed);
     const py = `import json,sys\nsys.path.insert(0, ${JSON.stringify(path.join(ROOT, 'tools'))})\nfrom validate_b1 import detect\nprint(json.dumps([sorted(detect(a, m or None)) for a, m in json.load(sys.stdin)]))`;
