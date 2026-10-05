@@ -2,7 +2,7 @@
 
 Phase 2 of ARCHITECTURE.md §8, as amended by the review (A1, A4, B2, B5, S2). This page lists what is ready, what must happen first, the order of the switch, the iPhone check, the commands and the rollback.
 
-**Status (5 Oct): the switch is done.** It was brought forward from 13–16 Oct to the morning of 4 Oct, so the exam-week work done in the preview is kept: Fluentish left shadow mode (41fec5c, 10:12), then language-doors (c2c395f, 10:20) and b1-exam (4de23a5, 10:20) were merged and pushed. Fluentish is the one writer of B1 and exam data; Igloo keeps Drill, Test, Write and Look up. Still open: the iPhone checklist below (not recorded as done), the `/b1-review` skill text and `b1-token.py` (step 6), and phase 3. The boot-time delta re-merge (step 7, ARCHITECTURE §6) was not built.
+**Status (5 Oct): the switch is done.** It was brought forward from 13–16 Oct to the morning of 4 Oct, so the exam-week work done in the preview is kept: Fluentish left shadow mode (41fec5c, 10:12), then language-doors (c2c395f, 10:20) and b1-exam (4de23a5, 10:20) were merged and pushed. Fluentish is the one writer of B1 and exam data; Igloo keeps Drill, Test, Write and Look up. Still open: the iPhone checklist below (not recorded as done), the `/b1-review` skill text (step 6; `b1-token.py` is done), and phase 3. The boot-time delta re-merge (step 7, ARCHITECTURE §6) was not built.
 
 The rest of this page is the runbook as it was written before the switch, with each step's status.
 
@@ -71,7 +71,7 @@ Igloo keeps its service worker for Drill offline, and its SM-2 data (`doors.srs.
 3. Fluentish leaves shadow mode. **Done 4 Oct** (41fec5c). Open `https://pakrasi.github.io/fluentish/` on each device once; each converts its own preview profile.
 4. Run the **iPhone checklist**. Any failure: stop and roll back Fluentish only (the old apps were never touched). **Open: not recorded as done.**
 5. Same day: switch language-doors and b1-exam (one command each). **Done 4 Oct** (c2c395f, 4de23a5): `b1-exam/data/progress.json` and `b1-exam/audio/vocab/manifest.json` answer 404.
-6. Update the `/b1-review` skill text and `b1-token.py`. **Open**: the skill still names the app at localhost:8426, and `b1-token.py` still opens `b1-exam/app/`.
+6. Update the `/b1-review` skill text and `b1-token.py`. **`b1-token.py` done 5 Oct** (b1-exam 53ef168): it opens `https://pakrasi.github.io/fluentish/#/profile?token=…`, which Fluentish takes out of the address, stores on the device and confirms with "Device linked." (`src/core/link.js`). **Open**: the skill text still names the app at localhost:8426.
 7. 7 days later: the delta re-merge window (review B2) closes. **Not built**: only the cutover's own merge uses the fingerprints (ARCHITECTURE §6). Phase 3 starts after the exam: port Drill, Test, Write and Look up, then retire Igloo's worker.
 
 ## iPhone checklist (the phase-2 gate)
@@ -152,7 +152,7 @@ The skill names the learner where this page says "the learner"; keep its wording
 
 Under "Content upkeep" add: Fluentish reads its own copy of the exams (`content/exams/goethe-b1/`). An edited `docs/exams/dayNN.json` has to be copied there too and validated there. Its audio stays in b1-exam.
 
-Also in b1-exam: `scripts/b1-token.py` opens `https://pakrasi.github.io/b1-exam/app/#token=…`. After the cutover that link drops the token and opens Fluentish's Profile, where the device is linked. Point `APP` at the Fluentish link flow once it accepts a token link, or link devices from Profile.
+Also in b1-exam: `scripts/b1-token.py` opens Fluentish with the token in the fragment (`#/profile?token=…`); Fluentish links the device and scrubs the address (`src/core/link.js`, `tests/e2e/link.spec.mjs`). The QR code opens Safari; the Home Screen icon has its own storage, so link it from Profile › Connections.
 
 ## Test evidence
 
