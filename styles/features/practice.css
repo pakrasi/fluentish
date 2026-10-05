@@ -344,3 +344,6 @@ mark.sim-chunk { background: linear-gradient(var(--accent), var(--accent)) 0 100
   :root:not([data-motion="full"]) .sim-line.is-typed .sim-w, :root:not([data-motion="full"]) .is-playing > .sim-play .sim-wave i { animation: none; }
   :root:not([data-motion="full"]) .sim-map.is-in .sim-map-b, :root:not([data-motion="full"]) .sim-grades.is-in .sim-g, :root:not([data-motion="full"]) mark.sim-chunk { transition-delay: 0ms; }
 }
+
+/* the done hero's data object (field strip, letter, ready-meter row, cluster pairs, chat bubbles) */
+.pr-done-data { margin-top: var(--s-5); }

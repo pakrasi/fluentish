@@ -161,3 +161,22 @@
   .runway-day.is-exam .runway-bar { border: 0; }
   .runway-day.is-exam .runway-bar::after { background: CanvasText; forced-color-adjust: none; }
 }
+
+/* ---------- grade4: the one self-grade control (Again / Hard / Good / Easy) ---------- */
+.grade4-wrap { display: grid; gap: var(--s-2); }
+.grade4-wrap[hidden] { display: none; }
+.grade4-what { margin: 0; min-height: 1.4em; color: var(--ink-3); }
+.grade4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-2); }
+.grade4-b { position: relative; display: grid; justify-items: center; align-content: center; gap: 3px; min-height: 64px; padding: 6px 4px;
+  border: 1px solid var(--hairline-strong); border-radius: var(--r-ctl); background: var(--surface); color: var(--ink);
+  font: 600 15px/1.15 var(--font-ui); cursor: pointer; -webkit-user-select: none; user-select: none; touch-action: manipulation; }
+.grade4-when { color: var(--ink-3); white-space: nowrap; font-weight: 400; }
+.grade4-b kbd { position: absolute; bottom: 5px; right: 6px; font: 500 10px/1 var(--font-mono); color: var(--ink-3); }
+@media (hover: none), (pointer: coarse) { .grade4-b kbd { display: none; } }
+/* the suggestion: a 6px accent dot, no fill (nothing looks chosen before a tap) */
+.grade4-b.is-suggested::after { content: ""; position: absolute; top: 7px; right: 7px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.grade4-b.is-picked { background: var(--ink); border-color: var(--ink); color: var(--on-ink); }
+.grade4-b.is-picked .grade4-when { color: color-mix(in oklab, var(--on-ink) 72%, transparent); }
+.grade4-b.is-picked::after { background: var(--on-ink); }
+.grade4-b:disabled { cursor: default; }
+@media (forced-colors: active) { .grade4-b.is-picked { border: 2px solid Highlight; } }

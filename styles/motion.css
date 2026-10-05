@@ -138,3 +138,12 @@
 /* ---------- one-shot attention (today cell, new streak day) ---------- */
 @keyframes land { 0% { transform: scale(calc(1 - 0.5 * var(--move))); opacity: 0; } 100% { transform: none; opacity: 1; } }
 .land { animation: land 520ms var(--spring-pop) both; }
+
+/* ---------- grade4: rise in on a stagger, the pick pops, the others step back ---------- */
+.grade4 .grade4-b { opacity: 0; transform: translateY(calc(12px * var(--move))) scale(calc(1 - 0.04 * var(--move))); }
+.grade4.is-in .grade4-b { opacity: 1; transform: none; transition: transform var(--dur-card) var(--spring-snappy), opacity var(--dur-base) var(--ease-out), background-color var(--dur-quick) var(--ease-out);
+  transition-delay: calc(var(--i) * var(--stagger)); }
+.grade4.is-in .grade4-b:active { transform: scale(calc(1 - 0.05 * var(--move))); transition-duration: 60ms; transition-delay: 0ms; }
+.grade4 .grade4-b.is-picked { animation: grade4-pick 420ms var(--spring-pop) both; }
+.grade4 .grade4-b.is-other { opacity: 0.3; transition-delay: 0ms; }
+@keyframes grade4-pick { from { transform: scale(calc(1 - 0.1 * var(--move))); } to { transform: none; } }
