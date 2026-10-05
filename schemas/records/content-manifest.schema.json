@@ -67,6 +67,19 @@
         }
       }
     },
+    "packs": {
+      "description": "Each language pack's file ids, keyed by pack id ('de', 'fr' ...; 'shared' for the files of no one language). Every file is in exactly one (tools/validate-content.mjs).",
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^(shared|[a-z]{2,3})$"
+      },
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
     "files": {
       "type": "array",
       "items": {

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "igloo-lang@1",
+  "$id": "lang-notes@1",
   "title": "Igloo language file",
   "description": "One language's forms for every framework item, plus scenarios. tools/validate.py checks it against the framework.",
   "type": "object",

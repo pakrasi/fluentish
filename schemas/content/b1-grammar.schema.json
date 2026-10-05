@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "b1-grammar@1",
+  "$id": "trainer-grammar@1",
   "title": "B1 grammar items",
   "description": "Igloo grammar items for the B1 plan's topics with the B1 annotations merged (tools/build_b1.py).",
   "type": "array",

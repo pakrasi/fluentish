@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "speak-situations@1",
+  "$id": "situations@1",
   "title": "Speaking situations",
   "description": "Everyday situations for Practice > Speaking situations: the other person's line, a goal and model answers with the target chunk as offsets. Built from authoring/speak/situations.json by tools/build-speak.mjs; the semantic rules (ids, levels, registers, chunk offsets, chunk and frame links) are in src/features/practice/sim.js validateBank().",
   "type": "object",

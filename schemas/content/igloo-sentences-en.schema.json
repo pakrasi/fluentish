@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "igloo-sentences-en@1",
+  "$id": "sentences-source@1",
   "title": "Sentence bank (English master)",
   "description": "Meanings, roles and English variants that every language's sentence file follows.",
   "type": "object",

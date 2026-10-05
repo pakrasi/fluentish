@@ -44,6 +44,11 @@ test('after one visit, the app reloads offline from the service worker', async (
       if (!navigator.serviceWorker.controller) await new Promise(r => navigator.serviceWorker.addEventListener('controllerchange', () => r(null), { once: true }));
     });
     expect(await page.evaluate(() => !!navigator.serviceWorker.controller)).toBe(true);
+    // per-language precache (C3a): the German pack and the shared files, no other language's
+    const cached = await page.evaluate(async () => (await Promise.all((await caches.keys()).filter(k => k.startsWith('fluentish-'))
+      .map(async k => (await (await caches.open(k)).keys()).map(r => new URL(r.url).pathname)))).flat());
+    for (const f of ['content/b1/items.json', 'content/igloo/lang/german.json', 'content/igloo/framework.json']) expect(cached, f).toContain(`${APP}${f}`);
+    expect(cached.filter(p => /\/(french|spanish|arabic|hindi)\.json$/.test(p))).toEqual([]);
     expect(await page.evaluate(async () => (await navigator.serviceWorker.getRegistration())?.scope)).toBe(`${srv.origin}${APP}`);
   } finally {
     await srv.stop();

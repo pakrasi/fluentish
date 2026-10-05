@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "igloo-chunks-en@1",
+  "$id": "phrases-source@1",
   "title": "Phrase bank (English master)",
   "description": "The 1,450 English phrases with category, register, slots, examples and CEFR level.",
   "type": "array",

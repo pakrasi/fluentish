@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "b1-annot@1",
+  "$id": "trainer-annot@1",
   "title": "B1 annotations of Igloo grammar items",
   "description": "Keyed by 'G:<grammar item id>': topic, trap, focus and wrong answers the B1 trainer adds to an existing Igloo grammar item.",
   "type": "object",

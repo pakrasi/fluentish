@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { stampIndex, stampSw, importGraph, pickKept, CORE_CONTENT, swSetting } from '../../tools/stamp.mjs';
+import { stampIndex, stampSw, importGraph, pickKept, contentPrecache, swSetting } from '../../tools/stamp.mjs';
 import { createSw } from '../../src/services/sw.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
@@ -42,6 +42,8 @@ test('stampSw fills in the version and the precache list, and fails without its 
   const out = stampSw(js, SHA, ['./', 'content/manifest.json']);
   assert.match(out, /const VERSION = 'aaaaaaaaaaaa'; \/\/ stamp:version/);
   assert.match(out, /const PRECACHE = \[".\/","content\/manifest.json"\]; \/\/ stamp:precache/);
+  assert.match(out, /const PACKS = \{\}; \/\/ stamp:packs/);
+  assert.match(stampSw(js, SHA, [], { de: ['content/a.json?h=1'] }), /const PACKS = \{"de":\["content\/a.json\?h=1"\]\}; \/\/ stamp:packs/);
   assert.throws(() => stampSw('const x = 1;', SHA, []));
 });
 
@@ -51,9 +53,13 @@ test('pickKept keeps at most two earlier deployable versions, live first', () =>
   assert.deepEqual(pickKept('cur', [undefined, 'old', 'p1'], ok), ['p1']);
 });
 
-test('core content covers B1, the mock exams and German Look up', () => {
-  for (const id of ['b1.items', 'exam.goethe-b1.01', 'exam.goethe-b1.why.01', 'igloo.framework', 'igloo.lang.german', 'igloo.chunks.en', 'speak.situations', 'atlas.de']) assert.ok(CORE_CONTENT.test(id), id);
-  for (const id of ['igloo.lang.french', 'igloo.chunks.spanish']) assert.ok(!CORE_CONTENT.test(id), id);
+test('German precache (shared + the de pack) covers B1, the mock exams and German Look up, and no other language', () => {
+  const m = JSON.parse(readFileSync(path.join(ROOT, 'content/manifest.json'), 'utf8'));
+  const { shared, packs } = contentPrecache(m);
+  const urlOf = (/** @type {string} */ id) => { const f = m.files.find((/** @type {any} */ x) => x.id === id); return `content/${f.path}?h=${f.sha256.slice(0, 8)}`; };
+  const de = new Set([...shared, ...packs.de]);
+  for (const id of ['b1.items', 'exam.goethe-b1.01', 'exam.goethe-b1.why.01', 'igloo.framework', 'igloo.lang.german', 'igloo.chunks.en', 'speak.situations', 'atlas.de']) assert.ok(de.has(urlOf(id)), id);
+  for (const id of ['igloo.lang.french', 'igloo.chunks.spanish']) assert.ok(!de.has(urlOf(id)), id);
 });
 
 /** sw.js in a sandbox whose location is the deployed root. */

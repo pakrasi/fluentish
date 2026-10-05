@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "b1-frames@1",
+  "$id": "frames@1",
   "title": "Sprechen frame models",
   "description": "Starred Sprechen models for the exam-day read-through.",
   "type": "array",

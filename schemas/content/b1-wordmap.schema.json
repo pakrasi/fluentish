@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "b1-wordmap@1",
+  "$id": "wordmap@1",
   "title": "Lemma → Igloo word",
   "description": "For saved exam words: lemma → [Igloo word id, level].",
   "type": "object",

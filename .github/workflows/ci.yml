@@ -61,28 +61,8 @@ jobs:
         with: { python-version: '3.12' }
       - name: Manifest is current and every file matches its JSON Schema
         run: node tools/validate-content.mjs
-      - name: Igloo language files
-        run: for f in content/igloo/lang/*.json; do python3 tools/validate.py "$f"; done
-      - name: Sentence banks
-        run: for f in content/igloo/sentences/*.json; do [ "$(basename $f)" = en.json ] || python3 tools/validate_sentences.py "$f"; done
-      - name: Grammar, phrase answers, chunk parts and levels
-        run: |
-          python3 tools/validate_grammar.py de
-          python3 tools/validate_accept.py german
-          python3 tools/validate_chunks.py german
-          python3 tools/validate_levels.py
-      - name: B1 trainer sources
-        run: python3 tools/validate_b1.py --all
-      - name: Word clusters
-        run: node tools/build-clusters.mjs --check
-      - name: Word building
-        run: node tools/build-wordbuild.mjs --check
-      - name: Schreiben sources
-        run: python3 tools/build_schreiben.py --check
-      - name: Goethe B1 mock exams and explanations
-        run: |
-          python3 tools/validate_exam.py content/exams/goethe-b1/day*.json
-          python3 tools/validate_exam_why.py content/exams/goethe-b1/why/day*.json
+      - name: Every language pack (manifest packs[lang]; the validators take the language, tools/langrules.py)
+        run: node tools/validate-packs.mjs
       - name: Built content matches its sources
         run: |
           python3 tools/build_b1.py

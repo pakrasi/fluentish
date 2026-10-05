@@ -1,0 +1,29 @@
+{
+ "about": "Generic content schema ids (round 3, C3a; Arch #15). A schema in schemas/content/ is named by what the file is for any language (lexicon@1, phrases@1, grammar@1 ...); the ids from before, named after Igloo, the B1 trainer or the speaking app, stay valid as aliases of the generic one, so a file or tool that still names the old id validates against the same schema. tools/build-manifest.mjs writes the generic id; tools/validate-content.mjs accepts either. An exam's test and explanation files keep the exam's own schemas (<exam>-exam@1 and <exam>-why@1, named by the exam definition, docs/ARCHITECTURE.md 3.4): their shapes are the exam's.",
+ "aliases": {
+  "igloo-words@1": "lexicon@1",
+  "igloo-word-themes@1": "lexicon-themes@1",
+  "igloo-chunks@1": "phrases@1",
+  "igloo-chunks-en@1": "phrases-source@1",
+  "igloo-chunks-accept@1": "phrases-accept@1",
+  "igloo-chunks-priority@1": "phrases-priority@1",
+  "igloo-grammar-items@1": "grammar@1",
+  "igloo-grammar-concepts@1": "grammar-concepts@1",
+  "igloo-sentences@1": "sentences@1",
+  "igloo-sentences-en@1": "sentences-source@1",
+  "igloo-lang@1": "lang-notes@1",
+  "igloo-framework@1": "framework@1",
+  "igloo-turns@1": "turns@1",
+  "speak-situations@1": "situations@1",
+  "b1-items@1": "trainer-items@1",
+  "b1-annot@1": "trainer-annot@1",
+  "b1-bank@1": "trainer-bank@1",
+  "b1-forms@1": "forms@1",
+  "b1-frames@1": "frames@1",
+  "b1-grammar@1": "trainer-grammar@1",
+  "b1-nouns@1": "nouns@1",
+  "b1-plan@1": "trainer-plan@1",
+  "b1-schreiben@1": "writing@1",
+  "b1-wordmap@1": "wordmap@1"
+ }
+}

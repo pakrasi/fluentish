@@ -21,7 +21,7 @@ import { TABS, routes, startFeatures } from './features/registry.js';
 import { createSw } from './services/sw.js';
 import { loadRecordSchemas, recordChecker } from './data/records.js';
 import { takeLinkToken } from './core/link.js';
-import { setLanguage } from './core/lang.js';
+import { setLanguage, language } from './core/lang.js';
 
 // first, before anything can log or navigate: a device-link token in the address is taken out of it (core/link.js)
 const linkToken = takeLinkToken();
@@ -96,7 +96,9 @@ async function main() {
 
   const content = createContent({ base: config.contentBase });
   const toast = (/** @type {string} */ text, /** @type {any} */ o = {}) => kitToast(text, o);
-  const sw = createSw({ root: config.root, dev: isDev(), devOptIn: q.get('sw') === 'on', log });
+  const sw = createSw({ root: config.root, dev: isDev(), devOptIn: q.get('sw') === 'on', log, pack: () => language().code });
+  // a course in another language: its pack is precached (after setLanguage above has made it active)
+  bus.on('settings:changed', ({ key }) => { if (key === 'language') sw.repack(); });
   const app = { sw, hlc: session.hlc, device: session.device, profile: session.profile, adapter, durable, migration: session.migration };
 
   // ---------- shell ----------

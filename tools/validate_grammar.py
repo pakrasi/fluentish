@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
 """Validate content/igloo/grammar/items_<lang>.json against content/igloo/grammar/concepts_<lang>.json.
-Usage: python3 tools/validate_grammar.py [lang]   (default: de)"""
+Usage: python3 tools/validate_grammar.py [lang]   (default: de; the pack id or the settings id)
+The item kinds a language has come from its plugin (tools/langrules.py)."""
 import json, re, sys, pathlib
 from collections import Counter
 root = pathlib.Path(__file__).resolve().parent.parent
-lang = sys.argv[1] if len(sys.argv) > 1 else "de"
-KINDS = {"transform", "gap", "join", "choose-article", "order", "translate"}
+sys.path.insert(0, str(root / "tools"))
+from langrules import lang as lang_rules  # noqa: E402
+L = lang_rules(sys.argv[1] if len(sys.argv) > 1 else "de")
+lang = L.code
+KINDS = L.grammar_kinds
 LEVELS = ["A1", "A2", "B1", "B2", "C1"]
 errs = []
 try:

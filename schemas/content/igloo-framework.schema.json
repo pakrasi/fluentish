@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "igloo-framework@1",
+  "$id": "framework@1",
   "title": "Igloo framework",
   "description": "The language-neutral master: levels, layers, the ten languages, item ids (doors, turns, glue, slots, chunks) and 30 scenarios.",
   "type": "object",

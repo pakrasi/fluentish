@@ -3,12 +3,14 @@
 Usage: python3 tools/validate_sentences.py content/igloo/sentences/german.json"""
 import json, sys, pathlib
 root = pathlib.Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(root / "tools"))
+from langrules import lang as lang_rules  # noqa: E402
 EN = json.loads((root / "content/igloo/sentences/en.json").read_text())
 ROLES = set(EN["roles"])
 path = pathlib.Path(sys.argv[1])
 try: L = json.loads(path.read_text())
 except Exception as e: print("INVALID JSON:", e); sys.exit(1)
-need_tr = L.get("lang") in ("hindi", "bengali", "arabic")
+need_tr = lang_rules(L.get("lang") or path.stem).translit   # the language's plugin (tools/langrules.py)
 errs = []
 keys = {f"{m['id']}.{v['id']}": (m, v) for m in EN["meanings"] for v in m["variants"]}
 got = L.get("variants", {})

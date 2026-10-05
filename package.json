@@ -11,7 +11,7 @@
     "test:tz": "for tz in America/New_York Europe/Berlin Asia/Kolkata; do TZ=$tz node --test 'tests/unit/*.test.mjs' || exit 1; done",
     "check:privacy": "node tools/check-privacy.mjs --all",
     "check:dates": "node tools/check-dates.mjs",
-    "check:content": "node tools/validate-content.mjs",
+    "check:content": "node tools/validate-content.mjs && node tools/validate-packs.mjs",
     "serve": "node tools/serve.mjs 8430",
     "hooks": "sh tools/install-hooks.sh",
     "typecheck": "tsc -p tsconfig.json",

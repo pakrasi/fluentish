@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "b1-plan@1",
+  "$id": "trainer-plan@1",
   "title": "B1 trainer plan",
   "description": "Ranked grammar topics, sticky-error traps, exam parts, groups, functions and scenarios that drive the B1 composer.",
   "type": "object",

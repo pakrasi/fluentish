@@ -1,6 +1,11 @@
 /* Fluentish service worker. Lives at the app root, so its scope is the app root (/fluentish/ when deployed) and nothing
    else on the shared pakrasi.github.io origin. tools/stamp.mjs writes the deployed copy: it fills in VERSION and the
-   PRECACHE list (the shell, v/<sha>/src, v/<sha>/styles, assets and the core content files addressed by hash).
+   PRECACHE list (the shell, v/<sha>/src, v/<sha>/styles, assets and the shared content files addressed by hash) and
+   PACKS, each language pack's content files (manifest packs[lang]).
+
+   - Install precaches PRECACHE and the packs its registration URL names: sw.js?packs=fr (src/services/sw.js asks for
+     the active course's language). A registration without packs is German: every registration made before courses
+     has that URL, so his German pack is precached as it always was.
 
    - Navigations: network first with a 3 s timeout, then the cached index.html.
    - v/<sha>/** and content/*?h=<hash>: immutable, cache first. The code of one deploy sits under one v/<sha>/ path, so
@@ -14,6 +19,7 @@
    - activate deletes only this app's old caches (fluentish-*), never another app's. */
 const VERSION = 'dev'; // stamp:version
 const PRECACHE = []; // stamp:precache
+const PACKS = {}; // stamp:packs
 
 const CACHE = 'fluentish-' + VERSION;
 const ROOT_URL = new URL('./', self.location.href).href;
@@ -21,6 +27,19 @@ const ROOT = new URL(ROOT_URL).pathname;
 const MEDIA = /\.(mp3|m4a|aac|wav|ogg|oga|opus|webm|mp4|m4v|mov)$/i;
 const NAV_TIMEOUT_MS = 3000;
 const NET_TIMEOUT_MS = 4000;
+const DEFAULT_PACKS = ['de'];
+
+/** The language packs this registration precaches: ?packs=fr,de on the script URL, else German. Pure; tests run it. */
+function packsOf(href) {
+  const q = new URL(href).searchParams.get('packs');
+  const want = q ? q.split(',').map(s => s.trim()).filter(p => /^[a-z]{2,3}$/.test(p)) : [];
+  return want.length ? want : DEFAULT_PACKS;
+}
+
+/** Everything install fetches: the shell and shared content, then the named packs' files. Pure; tests run it. */
+function precacheList(href) {
+  return [...PRECACHE, ...packsOf(href).flatMap(p => PACKS[p] || [])];
+}
 
 /** How a request is handled: 'pass' (not touched), 'navigate', 'immutable' or 'network'. Pure; tests run it. */
 function route(req) {
@@ -42,7 +61,7 @@ const isImmutable = href => route({ method: 'GET', url: href, headers: new Heade
 self.addEventListener('install', e => {
   e.waitUntil((async () => {
     const c = await caches.open(CACHE);
-    await Promise.all(PRECACHE.map(async p => {
+    await Promise.all(precacheList(self.location.href).map(async p => {
       const href = new URL(p, ROOT_URL).href;
       // an immutable file an older version already cached is copied, not downloaded again
       const old = isImmutable(href) ? await caches.match(href) : null;

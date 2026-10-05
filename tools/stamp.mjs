@@ -27,8 +27,20 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const BASE = '/fluentish/';
 const git = (/** @type {string[]} */ ...a) => execFileSync('git', a, { cwd: ROOT, encoding: 'utf8', maxBuffer: 1 << 28 }).trim();
 
-/** Content precached on install; everything else in content/ is cached the first time it is used. */
-export const CORE_CONTENT = /^(b1|exam|speak)\.|^igloo\.(framework|turns|chunks\.en)$|\.(german|de)$/;
+/**
+ * Content precached on install (C3a): the shared files plus the active course's language pack (manifest packs[lang]),
+ * never another language's. sw.js holds the shared list in PRECACHE and each pack's list in PACKS, and installs the
+ * packs its registration URL names (sw.js?packs=fr; none named is German, the language of every registration made
+ * before courses). Everything else in content/ is cached the first time it is used.
+ * @param {{packs: Record<string, string[]>, files: {id: string, path: string, sha256: string}[]}} manifest
+ * @returns {{shared: string[], packs: Record<string, string[]>}} content URLs (path?h=<sha8>)
+ */
+export function contentPrecache(manifest) {
+  const url = new Map(manifest.files.map(f => [f.id, `content/${f.path}?h=${f.sha256.slice(0, 8)}`]));
+  const list = (/** @type {string[]} */ ids) => ids.map(id => /** @type {string} */ (url.get(id)));
+  const { shared = [], ...langs } = manifest.packs;
+  return { shared: list(shared), packs: Object.fromEntries(Object.entries(langs).map(([k, ids]) => [k, list(ids)])) };
+}
 /** What goes under v/<sha>/: code and styles, without notes and type declarations. */
 const CODE_DIRS = ['src', 'styles'];
 const skipCode = (/** @type {string} */ p) => /\.(md|d\.ts)$/.test(p);
@@ -67,12 +79,16 @@ export function stampIndex(/** @type {string} */ html, /** @type {string} */ sha
   return out;
 }
 
-/** sw.js with its VERSION and PRECACHE lines filled in. */
-export function stampSw(/** @type {string} */ js, /** @type {string} */ sha, /** @type {string[]} */ precache) {
-  const a = js.replace(/^const VERSION = .*\/\/ stamp:version$/m, `const VERSION = '${sha.slice(0, 12)}'; // stamp:version`);
-  const b = a.replace(/^const PRECACHE = .*\/\/ stamp:precache$/m, `const PRECACHE = ${JSON.stringify(precache)}; // stamp:precache`);
-  if (a === js || b === a) throw new Error('sw.js: stamp markers not found');
-  return b;
+/** sw.js with its VERSION, PRECACHE and PACKS lines filled in. */
+export function stampSw(/** @type {string} */ js, /** @type {string} */ sha, /** @type {string[]} */ precache, /** @type {Record<string, string[]>} */ packs = {}) {
+  const lines = /** @type {const} */ ([['VERSION', `'${sha.slice(0, 12)}'`, 'version'], ['PRECACHE', JSON.stringify(precache), 'precache'], ['PACKS', JSON.stringify(packs), 'packs']]);
+  let out = js;
+  for (const [name, value, mark] of lines) {
+    const re = new RegExp(`^const ${name} = .*// stamp:${mark}$`, 'm');
+    if (!re.test(out)) throw new Error(`sw.js: stamp marker ${mark} not found`);
+    out = out.replace(re, () => `const ${name} = ${value}; // stamp:${mark}`);
+  }
+  return out;
 }
 
 /** Up to two earlier deployable versions to keep beside this one: the live site's, then its kept ones, then git parents. */
@@ -137,7 +153,7 @@ async function main() {
   if (!nf.includes(`${BASE}${v}/src/redirect-404.js`)) throw new Error('404.html: redirect script reference not found');
   writeFileSync(path.join(o.out, '404.html'), nf);
 
-  const core = manifest.files.filter(f => CORE_CONTENT.test(f.id));
+  const content = contentPrecache(manifest);
   const precache = [
     './',
     // code, styles and the vendored map font (the map's layout was built with its widths, so it must be there offline),
@@ -145,9 +161,9 @@ async function main() {
     ...walk(path.join(o.out, v)).filter(f => /\.(js|css|woff2)$/.test(f) || /^src\/vendor\/(newsreader-map|palace-sdf)\/[^/]+\.(json|png)$/.test(f)).map(f => `${v}/${f}`),
     ...walk(path.join(o.out, 'assets')).map(f => `assets/${f}`),
     'content/manifest.json',
-    ...core.map(f => `content/${f.path}?h=${f.sha256.slice(0, 8)}`),
+    ...content.shared,
   ];
-  writeFileSync(path.join(o.out, 'sw.js'), stampSw(readFileSync(path.join(ROOT, 'sw.js'), 'utf8'), sha, precache));
+  writeFileSync(path.join(o.out, 'sw.js'), stampSw(readFileSync(path.join(ROOT, 'sw.js'), 'utf8'), sha, precache, content.packs));
 
   // earlier versions, so an index.html still in a browser or CDN cache finds its own modules
   const live = await liveVersion(o.live);
@@ -172,7 +188,7 @@ async function main() {
   const bytes = (/** @type {string[]} */ fs) => fs.reduce((n, f) => n + statSync(path.join(o.out, f.split('?')[0] === './' ? 'index.html' : f.split('?')[0])).size, 0);
   const all = walk(o.out);
   console.log(`stamp: ${path.relative(ROOT, o.out) || o.out} ← ${sha.slice(0, 12)}: ${all.length} files, ${(bytes(all) / 1048576).toFixed(1)} MB; `
-    + `precache ${precache.length} files, ${(bytes(precache) / 1048576).toFixed(1)} MB; modulepreload ${graph.length}; kept ${kept.map(k => k.slice(0, 7)).join(', ') || 'none'}; sw ${o.sw}`);
+    + `precache ${precache.length} files, ${(bytes(precache) / 1048576).toFixed(1)} MB + de ${content.packs.de?.length ?? 0} files, ${(bytes(content.packs.de || []) / 1048576).toFixed(1)} MB; modulepreload ${graph.length}; kept ${kept.map(k => k.slice(0, 7)).join(', ') || 'none'}; sw ${o.sw}`);
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {

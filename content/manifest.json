@@ -154,6 +154,109 @@
    ]
   }
  ],
+ "packs": {
+  "shared": [
+   "igloo.chunks.en",
+   "igloo.framework",
+   "igloo.sentences.en",
+   "igloo.turns",
+   "igloo.words.themes"
+  ],
+  "de": [
+   "atlas.de",
+   "b1.annot",
+   "b1.bank",
+   "b1.forms",
+   "b1.frames",
+   "b1.grammar",
+   "b1.items",
+   "b1.nouns",
+   "b1.plan",
+   "b1.schreiben",
+   "b1.wordmap",
+   "build.de",
+   "clusters.de",
+   "exam.goethe-b1.01",
+   "exam.goethe-b1.02",
+   "exam.goethe-b1.03",
+   "exam.goethe-b1.04",
+   "exam.goethe-b1.05",
+   "exam.goethe-b1.06",
+   "exam.goethe-b1.07",
+   "exam.goethe-b1.08",
+   "exam.goethe-b1.09",
+   "exam.goethe-b1.10",
+   "exam.goethe-b1.11",
+   "exam.goethe-b1.12",
+   "exam.goethe-b1.13",
+   "exam.goethe-b1.14",
+   "exam.goethe-b1.def",
+   "exam.goethe-b1.locale.de",
+   "exam.goethe-b1.why.01",
+   "exam.goethe-b1.why.02",
+   "exam.goethe-b1.why.03",
+   "exam.goethe-b1.why.04",
+   "exam.goethe-b1.why.05",
+   "exam.goethe-b1.why.06",
+   "exam.goethe-b1.why.07",
+   "exam.goethe-b1.why.08",
+   "exam.goethe-b1.why.09",
+   "exam.goethe-b1.why.10",
+   "exam.goethe-b1.why.11",
+   "exam.goethe-b1.why.12",
+   "exam.goethe-b1.why.13",
+   "exam.goethe-b1.why.14",
+   "igloo.chunks.accept.german",
+   "igloo.chunks.german",
+   "igloo.chunks.priority.de",
+   "igloo.grammar.concepts.de",
+   "igloo.grammar.items.de",
+   "igloo.lang.german",
+   "igloo.sentences.german",
+   "igloo.words.de",
+   "speak.situations"
+  ],
+  "fr": [
+   "igloo.chunks.french",
+   "igloo.lang.french",
+   "igloo.sentences.french"
+  ],
+  "es": [
+   "igloo.chunks.spanish",
+   "igloo.sentences.spanish"
+  ],
+  "it": [
+   "igloo.chunks.italian",
+   "igloo.sentences.italian"
+  ],
+  "pt": [
+   "igloo.chunks.portuguese",
+   "igloo.sentences.portuguese"
+  ],
+  "gsw": [
+   "igloo.chunks.swissgerman",
+   "igloo.lang.swissgerman",
+   "igloo.sentences.swissgerman"
+  ],
+  "hi": [
+   "igloo.chunks.hindi",
+   "igloo.lang.hindi",
+   "igloo.sentences.hindi"
+  ],
+  "bn": [
+   "igloo.chunks.bengali",
+   "igloo.sentences.bengali"
+  ],
+  "kha": [
+   "igloo.chunks.khasi",
+   "igloo.lang.khasi",
+   "igloo.sentences.khasi"
+  ],
+  "ar": [
+   "igloo.chunks.arabic",
+   "igloo.sentences.arabic"
+  ]
+ },
  "files": [
   {
    "id": "atlas.de",
@@ -165,70 +268,70 @@
   {
    "id": "b1.annot",
    "path": "b1/annot.json",
-   "schema": "b1-annot@1",
+   "schema": "trainer-annot@1",
    "bytes": 48291,
    "sha256": "6507a4ec133d3fd6bd2ee9bda3b9830bdcf93653da266b99bd4cf03a933217ae"
   },
   {
    "id": "b1.bank",
    "path": "b1/bank.json",
-   "schema": "b1-bank@1",
+   "schema": "trainer-bank@1",
    "bytes": 43649,
    "sha256": "7d48377ed31e2784162c590bfabb1398fab50c1c70af4264dd247488c12b4c34"
   },
   {
    "id": "b1.forms",
    "path": "b1/forms.json",
-   "schema": "b1-forms@1",
+   "schema": "forms@1",
    "bytes": 15189,
    "sha256": "4b630d1735d98418c488c0930a5499afad48816ff53ed8626ef304386b510f1d"
   },
   {
    "id": "b1.frames",
    "path": "b1/frames.json",
-   "schema": "b1-frames@1",
+   "schema": "frames@1",
    "bytes": 10899,
    "sha256": "3b23e2fd7e54f4980b06702ccbb647eb1d5570eb5dcc6d06c85dc74758e211ea"
   },
   {
    "id": "b1.grammar",
    "path": "b1/grammar.json",
-   "schema": "b1-grammar@1",
+   "schema": "trainer-grammar@1",
    "bytes": 145797,
    "sha256": "91a6fd278c80c3c3405863857f40f29cac8d2c176baa43fd12e99f757b39c4cb"
   },
   {
    "id": "b1.items",
    "path": "b1/items.json",
-   "schema": "b1-items@1",
+   "schema": "trainer-items@1",
    "bytes": 350849,
    "sha256": "f38bc7d693001b38c6ff0dd341475dcea85cd0676288633bc3ed670efb16397e"
   },
   {
    "id": "b1.nouns",
    "path": "b1/nouns.json",
-   "schema": "b1-nouns@1",
+   "schema": "nouns@1",
    "bytes": 93140,
    "sha256": "711a6793bccecd1b0bf407aea7b7897f9f5af618267437474136f9dfecc02e69"
   },
   {
    "id": "b1.plan",
    "path": "b1/plan.json",
-   "schema": "b1-plan@1",
+   "schema": "trainer-plan@1",
    "bytes": 13807,
    "sha256": "04cb38ae90a53e4a03e95fb5207157d538061d743120004c4e5b53633f64d8aa"
   },
   {
    "id": "b1.schreiben",
    "path": "b1/schreiben.json",
-   "schema": "b1-schreiben@1",
+   "schema": "writing@1",
    "bytes": 124725,
    "sha256": "c208557a44961dad69e24fd6db5b17245991771baebc3b32e65375817f139550"
   },
   {
    "id": "b1.wordmap",
    "path": "b1/wordmap.json",
-   "schema": "b1-wordmap@1",
+   "schema": "wordmap@1",
    "bytes": 152538,
    "sha256": "c1cea21ef950108a0a7f4610bd30f3ea38029ed0485bd4e14029230e8f673e08"
   },
@@ -459,252 +562,252 @@
   {
    "id": "igloo.chunks.accept.german",
    "path": "igloo/chunks/accept_german.json",
-   "schema": "igloo-chunks-accept@1",
+   "schema": "phrases-accept@1",
    "bytes": 311438,
    "sha256": "8f47ee53358fc7e0d2064d2b377541f39911749bbbd9467169e1c3548c3a7085"
   },
   {
    "id": "igloo.chunks.arabic",
    "path": "igloo/chunks/arabic.json",
-   "schema": "igloo-chunks@1",
+   "schema": "phrases@1",
    "bytes": 442475,
    "sha256": "ac0687b933779719d70cf63bfe6695d7856d2c9e58cfed66dfd92ede368c581f"
   },
   {
    "id": "igloo.chunks.bengali",
    "path": "igloo/chunks/bengali.json",
-   "schema": "igloo-chunks@1",
+   "schema": "phrases@1",
    "bytes": 440379,
    "sha256": "ef58426e52a0c98137060ec48be7581a44c510ecc3225072baf4bfdc11fa86bc"
   },
   {
    "id": "igloo.chunks.en",
    "path": "igloo/chunks/en.json",
-   "schema": "igloo-chunks-en@1",
+   "schema": "phrases-source@1",
    "bytes": 645922,
    "sha256": "4cca0fd7d05de0d07130727362b1c4d73703347911d85b344c6990c6c5f9e216"
   },
   {
    "id": "igloo.chunks.french",
    "path": "igloo/chunks/french.json",
-   "schema": "igloo-chunks@1",
+   "schema": "phrases@1",
    "bytes": 207836,
    "sha256": "806c5f8320303e0a81d5aaf601543b3d8b244427a0a856848c262e18d2b37585"
   },
   {
    "id": "igloo.chunks.german",
    "path": "igloo/chunks/german.json",
-   "schema": "igloo-chunks@1",
+   "schema": "phrases@1",
    "bytes": 225898,
    "sha256": "a899488f9c08e056089f9d10a9e63d754727527c57b0e5aa061e26d5836279ad"
   },
   {
    "id": "igloo.chunks.hindi",
    "path": "igloo/chunks/hindi.json",
-   "schema": "igloo-chunks@1",
+   "schema": "phrases@1",
    "bytes": 495084,
    "sha256": "a4c354a8817cbea57f89e752eeeae2422d15ab66dd134075cfafe3385ec75cc9"
   },
   {
    "id": "igloo.chunks.italian",
    "path": "igloo/chunks/italian.json",
-   "schema": "igloo-chunks@1",
+   "schema": "phrases@1",
    "bytes": 196550,
    "sha256": "af870d7d5b9dfc2a491fbed0139c7b6cdd4e5f810bcacf8e2face83be75c5e0d"
   },
   {
    "id": "igloo.chunks.khasi",
    "path": "igloo/chunks/khasi.json",
-   "schema": "igloo-chunks@1",
+   "schema": "phrases@1",
    "bytes": 193393,
    "sha256": "ed12a577eb8be93ec1dc881e5c86b3f179752a684e94a3a87c20c1bfeb93ef8a"
   },
   {
    "id": "igloo.chunks.portuguese",
    "path": "igloo/chunks/portuguese.json",
-   "schema": "igloo-chunks@1",
+   "schema": "phrases@1",
    "bytes": 201576,
    "sha256": "c6a0f9eeae03e18b88a2860163f8816695c3931bd8cdeb20f4470a11a1831a49"
   },
   {
    "id": "igloo.chunks.priority.de",
    "path": "igloo/chunks/priority_de.json",
-   "schema": "igloo-chunks-priority@1",
+   "schema": "phrases-priority@1",
    "bytes": 23222,
    "sha256": "76e6ade7fe5ddb2b00f923d79bd7a8dab8d09fbffd90f688dce4c586ac219359"
   },
   {
    "id": "igloo.chunks.spanish",
    "path": "igloo/chunks/spanish.json",
-   "schema": "igloo-chunks@1",
+   "schema": "phrases@1",
    "bytes": 207752,
    "sha256": "c86e5a918980aa21bd2368c2c2d88a00dbaf37a12246ba1251450846a122e1a2"
   },
   {
    "id": "igloo.chunks.swissgerman",
    "path": "igloo/chunks/swissgerman.json",
-   "schema": "igloo-chunks@1",
+   "schema": "phrases@1",
    "bytes": 188594,
    "sha256": "de28c01d5dd562dd3d5bf41ee6de02ecb334e73fb9d44ab39c51b675f5c0de93"
   },
   {
    "id": "igloo.framework",
    "path": "igloo/framework.json",
-   "schema": "igloo-framework@1",
+   "schema": "framework@1",
    "bytes": 55744,
    "sha256": "de94d58be52a90958c17a1844fc191a631af78b5ba5e174abd47e45e1b568b58"
   },
   {
    "id": "igloo.grammar.concepts.de",
    "path": "igloo/grammar/concepts_de.json",
-   "schema": "igloo-grammar-concepts@1",
+   "schema": "grammar-concepts@1",
    "bytes": 10089,
    "sha256": "35be2df44d7aaf0737565880066a00e5cbb69772a17d351ddf88fa2afb51a77a"
   },
   {
    "id": "igloo.grammar.items.de",
    "path": "igloo/grammar/items_de.json",
-   "schema": "igloo-grammar-items@1",
+   "schema": "grammar@1",
    "bytes": 232153,
    "sha256": "3976f31710faee121db7b0c4c16930288f044a975fc54cac43a11a41d63f95bf"
   },
   {
    "id": "igloo.lang.french",
    "path": "igloo/lang/french.json",
-   "schema": "igloo-lang@1",
+   "schema": "lang-notes@1",
    "bytes": 256826,
    "sha256": "7e0f8a8dc89c4f50dc98c797f78e9d8df3ad274b4a5dd922349a7c4a1c08a216"
   },
   {
    "id": "igloo.lang.german",
    "path": "igloo/lang/german.json",
-   "schema": "igloo-lang@1",
+   "schema": "lang-notes@1",
    "bytes": 190297,
    "sha256": "84da6fe871e6a157e38648fc8bdd24c4b03199a1576a5b227926fbca2339f8cf"
   },
   {
    "id": "igloo.lang.hindi",
    "path": "igloo/lang/hindi.json",
-   "schema": "igloo-lang@1",
+   "schema": "lang-notes@1",
    "bytes": 326731,
    "sha256": "bce9246771749bde1868f28aef0acd93d6b6910b3f970c6b63a82fc3cc626dd4"
   },
   {
    "id": "igloo.lang.khasi",
    "path": "igloo/lang/khasi.json",
-   "schema": "igloo-lang@1",
+   "schema": "lang-notes@1",
    "bytes": 200664,
    "sha256": "13006f494600e0272c17584ffc44d38b4f1c8a777aad0d99af11587a19e1d674"
   },
   {
    "id": "igloo.lang.swissgerman",
    "path": "igloo/lang/swissgerman.json",
-   "schema": "igloo-lang@1",
+   "schema": "lang-notes@1",
    "bytes": 198585,
    "sha256": "f1397722132100385d9b1be8851e43e9a013352bcca66eb1c95cef7a675a179b"
   },
   {
    "id": "igloo.sentences.arabic",
    "path": "igloo/sentences/arabic.json",
-   "schema": "igloo-sentences@1",
+   "schema": "sentences@1",
    "bytes": 14410,
    "sha256": "348aef86da5038a548e44a1787709c41ce908a9ec765f2bd449d808ea1e1d0b4"
   },
   {
    "id": "igloo.sentences.bengali",
    "path": "igloo/sentences/bengali.json",
-   "schema": "igloo-sentences@1",
+   "schema": "sentences@1",
    "bytes": 16645,
    "sha256": "db314f1477a330d3c55398d36e91beea7e7dba6e159d96a9786bb63d602dcb63"
   },
   {
    "id": "igloo.sentences.en",
    "path": "igloo/sentences/en.json",
-   "schema": "igloo-sentences-en@1",
+   "schema": "sentences-source@1",
    "bytes": 15203,
    "sha256": "22ffab3f2bae729e93cf50f58b6b60deb39f6b0d12afddcb3d4d47a15e3af608"
   },
   {
    "id": "igloo.sentences.french",
    "path": "igloo/sentences/french.json",
-   "schema": "igloo-sentences@1",
+   "schema": "sentences@1",
    "bytes": 8041,
    "sha256": "d5b2ac24dc3b9fb4bdcededfe6b54edae3282bc857b4f1728ae752baa74978d6"
   },
   {
    "id": "igloo.sentences.german",
    "path": "igloo/sentences/german.json",
-   "schema": "igloo-sentences@1",
+   "schema": "sentences@1",
    "bytes": 11491,
    "sha256": "fd063240cde7473334179431c117de7f159b1c55259c00f8cd833f23d907f2b8"
   },
   {
    "id": "igloo.sentences.hindi",
    "path": "igloo/sentences/hindi.json",
-   "schema": "igloo-sentences@1",
+   "schema": "sentences@1",
    "bytes": 17637,
    "sha256": "76c425fbe9183eab23a8b15da63ae2675a53016e375aa1db0765b4aad9ee0768"
   },
   {
    "id": "igloo.sentences.italian",
    "path": "igloo/sentences/italian.json",
-   "schema": "igloo-sentences@1",
+   "schema": "sentences@1",
    "bytes": 11125,
    "sha256": "ddd6368d4d09bded8d970686d8c3f45cc9d54d2d961c5deb0f1283dee2b881a2"
   },
   {
    "id": "igloo.sentences.khasi",
    "path": "igloo/sentences/khasi.json",
-   "schema": "igloo-sentences@1",
+   "schema": "sentences@1",
    "bytes": 12759,
    "sha256": "512a050f0d29058df813a2643e6e08bf44da2c305d82cb2211faf3aee0f05e9f"
   },
   {
    "id": "igloo.sentences.portuguese",
    "path": "igloo/sentences/portuguese.json",
-   "schema": "igloo-sentences@1",
+   "schema": "sentences@1",
    "bytes": 11689,
    "sha256": "46d95bad3e70a03eb915f49216964c4e1d6aa45475de7e6c0b3c46c32fe6607a"
   },
   {
    "id": "igloo.sentences.spanish",
    "path": "igloo/sentences/spanish.json",
-   "schema": "igloo-sentences@1",
+   "schema": "sentences@1",
    "bytes": 10858,
    "sha256": "46f273f5d87806c25d3914beac49580db4135c0d614175fefd7ce5a7ab8ff185"
   },
   {
    "id": "igloo.sentences.swissgerman",
    "path": "igloo/sentences/swissgerman.json",
-   "schema": "igloo-sentences@1",
+   "schema": "sentences@1",
    "bytes": 11938,
    "sha256": "c183081e34e587cee4bc892e2e33769c95988eb7578a80827314c6d387783382"
   },
   {
    "id": "igloo.turns",
    "path": "igloo/turns.json",
-   "schema": "igloo-turns@1",
+   "schema": "turns@1",
    "bytes": 35159,
    "sha256": "a5b527c9c879382219dc7b125a020e1471d82b7070626ed10851c45710c4ca31"
   },
   {
    "id": "igloo.words.de",
    "path": "igloo/words/de.json",
-   "schema": "igloo-words@1",
+   "schema": "lexicon@1",
    "bytes": 1136533,
    "sha256": "c72daf706704659d2e2c40efcb2c8bfc6d5e146daff8bb317dfc694a9338e833"
   },
   {
    "id": "igloo.words.themes",
    "path": "igloo/words/themes.json",
-   "schema": "igloo-word-themes@1",
+   "schema": "lexicon-themes@1",
    "bytes": 1715,
    "sha256": "a2bde1bee7b155216181ebea7603559b2d3d1d0246e02e187165644debf0228f"
   },
   {
    "id": "speak.situations",
    "path": "speak/situations.json",
-   "schema": "speak-situations@1",
+   "schema": "situations@1",
    "bytes": 97392,
    "sha256": "b58dc6c6abdb2590ef215a8cf0d5e35a668f487712e315c221c9c677fc83797c"
   }

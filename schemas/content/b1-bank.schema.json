@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "b1-bank@1",
+  "$id": "trainer-bank@1",
   "title": "B1 phrase bank",
   "description": "Igloo phrases that serve a Sprechen or Forum function, keyed by chunk id, with accepted typed answers.",
   "type": "object",

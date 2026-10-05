@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "b1-schreiben@1",
+  "$id": "writing@1",
   "title": "Goethe B1 Schreiben practice",
   "description": "Schreiben phrase items (BS: ids, area writing), the functions they are grouped by in each Aufgabe, the B1 trainer's letter items filed under those functions (linked), and the Build an email tasks. Built from authoring/schreiben-src by tools/build_schreiben.py. Item ids are stable: progress is stored under them.",
   "type": "object",

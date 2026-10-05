@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "igloo-word-themes@1",
+  "$id": "lexicon-themes@1",
   "title": "Word themes",
   "description": "Themes for grouping words.",
   "type": "array",

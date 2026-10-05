@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "b1-nouns@1",
+  "$id": "nouns@1",
   "title": "German nouns for the capitals check",
   "description": "Folded lowercase form → the capitalised noun.",
   "type": "object",

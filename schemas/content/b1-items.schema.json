@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "b1-items@1",
+  "$id": "trainer-items@1",
   "title": "B1 trainer items",
   "description": "Authored practice items for the B1 trainer, built from authoring/b1-src by tools/build_b1.py. Ids are stable: progress is stored under them.",
   "type": "array",

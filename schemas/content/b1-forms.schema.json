@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "b1-forms@1",
+  "$id": "forms@1",
   "title": "German word forms outside the word list",
   "description": "Verb principal parts, noun articles and plurals, irregular adjective comparison. The rules a schema cannot say are in src/domain/forms.js validateForms.",
   "type": "object",

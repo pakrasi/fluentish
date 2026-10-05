@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "igloo-words@1",
+  "$id": "lexicon@1",
   "title": "German word list",
   "description": "German words A1–C2 with article, plural, meanings, level, theme, frequency and an example. Ids are stable: progress is stored under them.",
   "type": "array",
@@ -85,6 +85,16 @@
           "string",
           "null"
         ]
+      },
+      "reviewedBy": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9._-]*$",
+        "description": "Native review (C3a): the reviewer's handle (never a real name; the repository is public)."
+      },
+      "reviewedAt": {
+        "type": "string",
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+        "description": "Native review: the day it was reviewed (YYYY-MM-DD). Set together with reviewedBy."
       }
     }
   }

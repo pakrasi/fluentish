@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 """Check authoring/chunks/accept/<lang>/*.json (accepted typed answers per phrase).
 
-    python3 tools/validate_accept.py german [part]      # one part file, or all parts
-    python3 tools/validate_accept.py german --assemble  # all parts -> content/igloo/chunks/accept_<lang>.json
+    python3 tools/validate_accept.py <lang> [part]      # one part file, or all parts (lang: german or de, french or fr ...)
+    python3 tools/validate_accept.py <lang> --assemble  # all parts -> content/igloo/chunks/accept_<lang>.json
+
+The language's rules (how answers fold, tools/langrules.py) come from its plugin; German's are the ones below.
 
 Entry: {"ENG_CHUNK_0301": {"core_en": "how do you know", "accept": ["woher kennst du [x]", "woher kennen Sie [x]"]}}
 "weak": true marks a phrase whose German is a single generic word ("oder", "also"); the typed Test skips it.
 
 Pattern rules (match.js implements the same):
-  - case and punctuation are ignored; ae/oe/ue/ss == ä/ö/ü/ß
+  - case and punctuation are ignored; the language's fold applies (German: ae/oe/ue/ss == ä/ö/ü/ß)
   - "(word word)" = optional words
   - "[anything]" = a slot: 1 to 6 words (slot_max; the B1 trainer uses 10)
   - "([x])" = an optional slot: 0 to slot_max words (B1 items only; no accept_<lang>.json pattern uses it)
@@ -17,12 +19,15 @@ Pattern rules (match.js implements the same):
 import json, re, sys, unicodedata
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from langrules import lang as lang_rules, fold_german  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 
 
-def norm(s):
+def norm(s, fold=fold_german):
     s = unicodedata.normalize("NFC", s).lower()
-    s = s.replace("ä", "ae").replace("ö", "oe").replace("ü", "ue").replace("ß", "ss")
+    s = fold(s)
     s = re.sub(r"[^\w\s\[\]()'’-]", " ", s)
     return " ".join(s.replace("’", "'").split())
 
@@ -30,9 +35,9 @@ def norm(s):
 SLOT_OPT = "\x00"
 
 
-def to_regex(pattern, slot_max=6, anchored=False, groups=False):
+def to_regex(pattern, slot_max=6, anchored=False, groups=False, fold=fold_german):
     """Compile an accept pattern. anchored: the whole answer must match. groups: slots become named groups s0, s1, ..."""
-    p = norm(pattern)
+    p = norm(pattern, fold)
     out = []
     toks = re.findall(r"\(\[[^\]]*\]\)|\[[^\]]*\]|\([^)]*\)|[^\s\[\]()]+", p)
     slot = r"\S+(?: \S+){0,%d}" % (slot_max - 1)
@@ -72,9 +77,9 @@ def to_regex(pattern, slot_max=6, anchored=False, groups=False):
     return re.compile(r"(?:^|\s)" + body + r"(?:\s|$)")
 
 
-def matches(answer, pattern, slot_max=6, anchored=False):
-    a = norm(answer)
-    return bool(to_regex(pattern, slot_max, anchored).search(a if anchored else " " + a + " "))
+def matches(answer, pattern, slot_max=6, anchored=False, fold=fold_german):
+    a = norm(answer, fold)
+    return bool(to_regex(pattern, slot_max, anchored, fold=fold).search(a if anchored else " " + a + " "))
 
 
 def load(lang):
@@ -83,7 +88,7 @@ def load(lang):
     return en, tr
 
 
-def check_part(path, en, tr):
+def check_part(path, en, tr, fold=fold_german):
     data = json.loads(Path(path).read_text())
     errors, warnings = [], []
     for cid, e in data.items():
@@ -100,7 +105,7 @@ def check_part(path, en, tr):
         if not (isinstance(acc, list) and acc and all(isinstance(a, str) and a.strip() for a in acc)):
             errors.append(f"{cid}: accept must be a non-empty list of strings")
             continue
-        if len(acc) != len({norm(a) for a in acc}):
+        if len(acc) != len({norm(a, fold) for a in acc}):
             warnings.append(f"{cid}: duplicate patterns")
         for a in acc:
             if a.count("(") != a.count(")") or a.count("[") != a.count("]"):
@@ -108,20 +113,26 @@ def check_part(path, en, tr):
             if not re.sub(r"\[[^\]]*\]|\([^)]*\)", "", a).strip(" .,!?"):
                 errors.append(f"{cid}: pattern {a!r} has no fixed words")
         ex_de = tr.get(cid, {}).get("ex", "")
-        if ex_de and not any(matches(ex_de, a) for a in acc):
-            errors.append(f"{cid}: the German example does not match any pattern: {ex_de!r}")
+        if ex_de and not any(matches(ex_de, a, fold=fold) for a in acc):
+            errors.append(f"{cid}: the {LANGUAGE} example does not match any pattern: {ex_de!r}")
     return data, errors, warnings
 
 
+LANGUAGE = "German"
+
+
 def main():
-    lang = sys.argv[1]
+    global LANGUAGE
+    L = lang_rules(sys.argv[1])
+    lang = L.legacy
+    LANGUAGE = lang.capitalize()
     arg = sys.argv[2] if len(sys.argv) > 2 else None
     en, tr = load(lang)
     pdir = ROOT / f"authoring/chunks/accept/{lang}"
     parts = [pdir / f"{arg}.json"] if arg and arg != "--assemble" else sorted(pdir.glob("*.json"))
     merged, errs = {}, 0
     for p in parts:
-        data, errors, warnings = check_part(p, en, tr)
+        data, errors, warnings = check_part(p, en, tr, L.fold)
         for w in warnings:
             print("WARN ", w)
         for e in errors:

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "igloo-chunks-accept@1",
+  "$id": "phrases-accept@1",
   "title": "Accepted typed answers per phrase",
   "description": "Per chunk id: the English span to highlight and the German patterns that count ((optional) words, [slot]s). Built by tools/validate_accept.py --assemble.",
   "type": "object",

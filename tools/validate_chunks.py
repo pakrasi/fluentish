@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 """Validate chunk translations.
   python3 tools/validate_chunks.py <lang> [batchNN]   -> checks authoring/chunks/parts/<lang>/batchNN.json (or all present parts)
-  python3 tools/validate_chunks.py <lang> --assemble  -> requires every source batch, writes content/igloo/chunks/<lang>.json"""
+  python3 tools/validate_chunks.py <lang> --assemble  -> requires every source batch, writes content/igloo/chunks/<lang>.json
+<lang> is the settings id (german) or the pack id (de); the language's rules come from tools/langrules.py."""
 import json, sys, pathlib, re
 root = pathlib.Path(__file__).resolve().parent.parent
-lang = sys.argv[1]; arg = sys.argv[2] if len(sys.argv) > 2 else None
-TRANSLIT = lang in ('hindi', 'bengali', 'arabic')
+sys.path.insert(0, str(root / 'tools'))
+from langrules import lang as lang_rules  # noqa: E402
+L = lang_rules(sys.argv[1]); lang = L.legacy; arg = sys.argv[2] if len(sys.argv) > 2 else None
+TRANSLIT = L.translit
 SLOT = re.compile(r'\[[^\]]+\]')
 def check(bn):
     src = json.loads((root / f'authoring/chunks/src/{bn}.json').read_text())

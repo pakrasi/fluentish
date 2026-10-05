@@ -5,7 +5,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { validate, unsupported } from '../src/core/schema.js';
-import { build, ROOT } from './build-manifest.mjs';
+import { build, ROOT, ALIASES, canonical, packOf, reviewErrors } from './build-manifest.mjs';
 import { build as buildSpeak, serialise as serialiseSpeak, SRC as SPEAK_SRC } from './build-speak.mjs';
 import { validateBank } from '../src/domain/sim.js';
 import { validateClusters } from '../src/domain/clusters.js';
@@ -22,6 +22,11 @@ for (const f of readdirSync(path.join(ROOT, 'schemas/content'))) {
   if (bad.length) { console.error(`${f}: unsupported keywords ${bad.join(', ')}`); process.exit(1); }
   schemas.set(s.$id, s);
 }
+// the old ids (igloo-words@1, b1-items@1 …) name the same schemas as their generic ids (schemas/content-ids.json)
+for (const [old, id] of Object.entries(ALIASES)) {
+  if (!schemas.has(id)) { console.error(`schemas/content-ids.json: ${old} → ${id}, but no schema has $id ${id}`); process.exit(1); }
+  schemas.set(old, schemas.get(id));
+}
 const manifest = JSON.parse(readFileSync(path.join(ROOT, 'content/manifest.json'), 'utf8'));
 const errors = [];
 if (JSON.stringify(build()) !== JSON.stringify(manifest)) errors.push('content/manifest.json is out of date: run node tools/build-manifest.mjs');
@@ -33,9 +38,24 @@ for (const f of manifest.files) {
   if (createHash('sha256').update(buf).digest('hex') !== f.sha256) errors.push(`${f.path}: sha256 differs from the manifest`);
   const schema = schemas.get(f.schema);
   if (!schema) { errors.push(`${f.path}: no schema ${f.schema} in schemas/content`); continue; }
-  const errs = validate(schema, JSON.parse(buf.toString('utf8')));
+  const data = JSON.parse(buf.toString('utf8'));
+  const errs = validate(schema, data);
   errs.forEach(e => errors.push(`${f.path} ${e}`));
+  errors.push(...reviewErrors(data).map(e => `${f.path} ${e}`));
   n++;
+}
+// packs (C3a): every file in exactly one language pack, the pack its id names
+{
+  const seen = new Map();
+  for (const [pack, ids] of Object.entries(manifest.packs || {})) for (const id of ids) {
+    if (seen.has(id)) errors.push(`manifest packs: ${id} is in ${seen.get(id)} and ${pack}`);
+    seen.set(id, pack);
+  }
+  for (const f of manifest.files) {
+    if (!seen.has(f.id)) errors.push(`manifest packs: ${f.id} is in no pack`);
+    else if (seen.get(f.id) !== packOf(f.id, manifest.exams)) errors.push(`manifest packs: ${f.id} is in ${seen.get(f.id)}, not ${packOf(f.id, manifest.exams)}`);
+    if (canonical(f.schema) !== f.schema) errors.push(`manifest: ${f.id} names the old schema id ${f.schema}; the generic one is ${canonical(f.schema)}`);
+  }
 }
 // speaking situations: built from their source, and the rules a schema cannot say (sim.js validateBank)
 const speakPath = path.join(ROOT, 'content/speak/situations.json');
@@ -101,4 +121,4 @@ if (errors.length) {
   errors.slice(0, 60).forEach(e => console.error('  ' + e));
   process.exit(1);
 }
-console.log(`validate-content: ${n} files valid against ${schemas.size} schemas; manifest ${manifest.version} current`);
+console.log(`validate-content: ${n} files valid against ${new Set(schemas.values()).size} schemas (${Object.keys(ALIASES).length} old ids as aliases); manifest ${manifest.version} current`);
