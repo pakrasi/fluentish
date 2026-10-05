@@ -7,7 +7,7 @@ import { Store } from '../../src/data/store.js';
 import { createMemoryAdapter } from '../../src/data/adapters/memory.js';
 import { createBus } from '../../src/core/bus.js';
 import { context } from '../../src/core/clock.js';
-import { exportBundle } from '../../src/data/transfer.js';
+import { exportBundle, importFile } from '../../src/data/transfer.js';
 import { pendingEvents } from '../../src/data/sync/github-b1exam.js';
 import { planItems } from '../../src/features/practice/plan.js';
 import { scriptNewShown } from '../../src/features/practice/script/today.js';
@@ -115,4 +115,16 @@ test('a split sentence keeps its marks', async () => {
   const m = r.script.marks[0];
   const s = r.script.sections[0].sentences.find(x => x.id === m.sentenceId);
   assert.equal(P.tokenize(s.de).find(x => x.k === m.start).t, 'Rahmen');
+});
+
+test('import: an export with scripts merges them by id on a device that already has scripts (audit P2-7)', async () => {
+  const a = await fresh();
+  const file = JSON.stringify(exportBundle(a.store, { profile: { id: PID, name: '' }, includeScripts: true }));
+  const b = await fresh();
+  St.put(b.store, { ...b.script, id: 'other01', title: 'Other' });
+  St.put(b.store, { ...b.script, title: 'Mine here' });
+  await importFile(file, { store: b.store, bus: null });
+  const all = St.all(b.store);
+  assert.ok(all.other01 && all.bike01, 'both scripts');
+  assert.equal(all.bike01.title, 'Mine here', "the device's own copy of an id wins");
 });

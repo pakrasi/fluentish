@@ -73,6 +73,9 @@ export async function importFile(text, { store, bus }) {
     for (const [k, v] of Object.entries(data.kv)) {
       if (NOT_EXPORTED.has(k)) continue;
       if (k === 'settings') { store.set('settings', mergeSettings(store.get('settings'), v)); bus?.emit('settings:changed', { key: '*' }); }
+      // scripts merge by id, so a file made with "Include scripts" never leaves its script cards without their
+      // script on a device that already has scripts (the device's own copy of the same id wins)
+      else if (SCRIPT_KV.has(k) && v && typeof v === 'object' && !Array.isArray(v)) store.update(k, (/** @type {any} */ m) => ({ ...v, ...(m || {}) }), {});
       else if (store.get(k) == null) store.set(k, v);
     }
     return { kind: 'fluentish', cards, attempts: newAttempts.length };

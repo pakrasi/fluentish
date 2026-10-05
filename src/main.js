@@ -1,4 +1,5 @@
 /* Boot: open storage → profile (migrating legacy progress once) → apply device prefs → render the shell → route. */
+import { docTitle } from './core/title.js';
 import { bus } from './core/bus.js';
 import { createClock } from './core/clock.js';
 import { config, isDev } from './core/config.js';
@@ -135,7 +136,9 @@ async function main() {
       markTab(route.tab || (route.path.startsWith('/profile') ? 'profile' : null));
       sw.atRest(route.path === '/today');   // a new version applies only from Today, never mid-round or mid-exam
       const h1 = $('#view h1');
-      document.title = h1 && route.path !== '/today' ? `${h1.textContent} · ${config.name}` : config.name;
+      // a view that shows private text in its h1 (a script) names itself with data-title instead
+      const custom = $('#view [data-title]')?.getAttribute('data-title') || null;
+      document.title = docTitle({ h1: h1 ? h1.textContent : null, custom, path: route.path, name: config.name });
     },
     onError: (err, path) => {
       log('route', err);

@@ -87,3 +87,46 @@ test('cardId: the list id for listed lemmas, SW: for script words', () => {
   assert.equal(S.cardId('Übersetzungsverhältnis', null), 'SW:uebersetzungsverhaeltnis');
   assert.equal(S.cardId('Zeit', null, { Zeit: ['die_Zeit', 'A1'] }), 'W:die_Zeit', 'the word map when the entry is missing');
 });
+
+test('lemma: closed classes, Konjunktiv II, the verb after a subject, adjective endings (German review round 2)', () => {
+  const lem = (/** @type {string} */ w, o = {}) => L.lemmaOf(w, idx, o);
+  assert.equal(lem('würde').lemma, 'werden', 'never die Würde for a lower-case word');
+  assert.notEqual(lem('würde').entry?.en?.[0], 'dignity');
+  assert.equal(lem('Würde').lemma, 'Würde', 'the noun mid-sentence');
+  assert.equal(lem('weiß', { prev: 'ich' }).lemma, 'wissen', 'ich weiß');
+  assert.equal(lem('weiß').lemma, 'weiß', 'white, without a subject');
+  assert.ok(lem('weiß').guess, 'ambiguous: he confirms it');
+  assert.equal(lem('seine').lemma, 'sein'); assert.equal(lem('seine').entry?.pos, 'det', 'the possessive, not to be');
+  assert.equal(lem('meine', { prev: 'ich' }).lemma, 'meinen', 'ich meine');
+  for (const [f, v] of [['gäbe', 'geben'], ['wäre', 'sein'], ['hätte', 'haben'], ['hätten', 'haben'], ['könnte', 'können'], ['sind', 'sein'], ['bin', 'sein']]) assert.equal(lem(f).lemma, v, f);
+  assert.equal(lem('winzige').lemma, 'winzig', 'adjective ending stripped');
+  assert.equal(lem('Erstaunliches', { prev: 'etwas' }).lemma, 'erstaunlich');
+  assert.ok(lem('winzige').guess);
+  assert.ok(!lem('Rahmen').guess, 'a listed word is not a guess');
+});
+
+test('suggest: by his knowledge score, capped at about 12 % of the words', () => {
+  const toks = P.tokenize('Ich habe heute Zeit für eine Pause und einen Kaffee mit dem Team.');
+  const at = (/** @type {any[]} */ c, /** @type {string} */ w) => c[toks.findIndex(x => x.t === w)];
+  // without a score: list words at or below his level stay quiet
+  assert.ok(!at(S.classify(toks, { idx, lexicon, level: 'B1' }), 'Pause').suggest);
+  // not known in his score: suggested; known: never; not seen: suggested from A2 up, never A1
+  const st = (/** @type {Record<string, string>} */ m) => (/** @type {string} */ id) => /** @type {any} */ (m[id] || 'unseen');
+  const c1 = S.classify(toks, { idx, lexicon, level: 'B1', know: st({ 'W:die_Pause': 'unknown' }) });
+  assert.ok(at(c1, 'Pause').suggest, 'not known');
+  assert.ok(!at(c1, 'Zeit').suggest && !at(c1, 'habe').suggest, 'A1 words he has not met in the app are not suggested');
+  const c2 = S.classify(toks, { idx, lexicon, level: 'B1', know: st({ 'W:die_Pause': 'known' }) });
+  assert.ok(!at(c2, 'Pause').suggest, 'known');
+  // the cap keeps the strongest
+  const many = [P.tokenize('Die Schnittstelle der Gangschaltung braucht einen Rahmen.'), P.tokenize('Ich habe heute Zeit.')].map(x => S.classify(x, { idx, lexicon, level: 'B1' }));
+  const before = many.flat().filter(x => x.suggest).length;
+  S.capSuggest(many, 0.12);
+  const after = many.flat().filter(x => x.suggest).length;
+  assert.ok(before >= 2 && after === 1, `${before} → ${after}`);
+});
+
+test('cardId: an existing BW: card keeps its id (one schedule per lemma)', () => {
+  const e = L.lemmaOf('Schnittstelle', idx).entry;
+  assert.equal(S.cardId('Schnittstelle', e, {}, id => id === 'BW:schnittstelle'), 'BW:schnittstelle');
+  assert.equal(S.cardId('Schnittstelle', e, {}, () => false), 'W:die_Schnittstelle');
+});
