@@ -662,6 +662,8 @@ export function createMap(canvas, o) {
     /** @param {{x: number, y: number, k: number}} c */
     set camera(c) { cam = { ...c }; kick(); },
     redraw() { version++; kick(); },
+    /** Bitmap cache size, for the performance report. */
+    debug() { return { bitmaps: bitmaps.size, megapixels: +(bitmapPx / 1e6).toFixed(1) }; },
     resize,
     /** Scripted pans, zooms and mode-free motion, for the performance report. */
     async bench() {

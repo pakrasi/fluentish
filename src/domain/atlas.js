@@ -320,27 +320,14 @@ function fromLines(base, units, lines) {
 }
 
 /**
- * Lay out the Source groups on the device. Each disc's radius is a step of a fixed ladder (60 units x 1.1^n) big
- * enough for its paragraph, and lines run from the top, so an item met later only extends the last lines: nothing
- * moves until a group crosses to the next step (then that map is laid out again, a rare event).
+ * Lay out the Source groups on the device: each paragraph in its own fitted disc, items in the order they were first
+ * met, so a group grows at its end. Unlike the built modes, a Source group re-flows when it grows (it only exists on
+ * the device, and it changes as the learner meets items); the other groups keep their discs.
  * @param {GroupSpec[]} groups @param {Map<string, number>} widthById
  * @returns {Placed[]}
  */
 export function layoutSource(groups, widthById) {
-  const W = (/** @type {string} */ id) => { const w = widthById.get(id); if (w == null) throw new Error(`no width for ${id}`); return w; };
-  /** @type {Placed[]} */ const out = [];
-  for (const g of groups) {
-    const unitsW = g.units.map(u => u.map(W));
-    let area = 0; for (const u of unitsW) area += ((unitW(u) + gapOf(u)) / 10) * LH;
-    let step = Math.max(0, Math.ceil(Math.log((Math.sqrt(area / Math.PI) * 1.12) / 60) / Math.log(1.1)));
-    for (;; step++) {
-      const R = Math.round(60 * 1.1 ** step), y0 = Math.round(-R + LH * 1.2);
-      const lines = setLines(unitsW, R, 0, y0);
-      if (lines) { out.push(fromLines({ key: g.key, label: g.label, cluster: g.cluster, x: 0, y: 0, r: R, y0 }, g.units, lines)); break; }
-    }
-  }
-  pack(out, new Set());
-  return out;
+  return layoutGroups(groups, widthById);
 }
 
 /**

@@ -136,7 +136,7 @@ test('family: the head first, then its members; level: one group per level in or
   for (const x of map.modes.level) for (const i of x.items) assert.equal(A.LEVELS[map.items.L[i]], x.key.slice(6));
 });
 
-test('source: the first source wins, items in the order first met, and learning more only appends', () => {
+test('source: the first source wins, items in the order first met, so a group grows at its end', () => {
   const items = A.itemsFrom(src).slice(0, 400);
   const w = new Map(items.map(it => [it.id, A.itemWidths(A.widthOf(metrics), it).w]));
   /** @type {Record<string, string[]>} */ const src1 = { 'W:um.prep': ['lookup', 'practice'], 'W:sein.verb': ['exam'], 'W:haben.verb': ['practice'] };
@@ -144,16 +144,11 @@ test('source: the first source wins, items in the order first met, and learning 
   const g1 = A.sourceGroups(items, id => ({ sources: src1[id] || [] }), first);
   assert.deepEqual(g1.map(g => g.key), ['source:exam', 'source:practice']);
   assert.deepEqual(g1[1].units.flat(), ['W:um.prep', 'W:haben.verb']);
-  const l1 = A.layoutSource(g1, w);
   const src2 = { ...src1, 'W:werden.verb': ['practice'] };
-  const g2 = A.sourceGroups(items, id => ({ sources: src2[id] || [] }), first);
-  const l2 = A.layoutSource(g2, w);
-  for (const g of l1) {
-    const h = /** @type {A.Placed} */ (l2.find(x => x.key === g.key));
-    assert.equal(h.x, g.x); assert.equal(h.y, g.y);
-    g.ids.forEach((id, j) => { const k = h.ids.indexOf(id); assert.equal(h.ix[k], g.ix[j]); assert.equal(h.ln[k], g.ln[j]); });
-  }
-  assert.equal(l2[1].ids.at(-1), 'W:werden.verb');
+  const l2 = A.layoutSource(A.sourceGroups(items, id => ({ sources: src2[id] || [] }), first), w);
+  assert.deepEqual(l2[1].ids, ['W:um.prep', 'W:haben.verb', 'W:werden.verb']);
+  // the same set lays out the same way
+  assert.deepEqual(A.layoutSource(A.sourceGroups(items, id => ({ sources: src2[id] || [] }), first), w), l2);
 });
 
 test('encodings: ink plus shape, never hue alone', () => {

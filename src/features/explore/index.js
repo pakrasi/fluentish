@@ -338,9 +338,9 @@ async function mountMap(el, ctx, offs) {
       const acts = [];
       if (studyIds.length) acts.push(h('a', { class: 'btn btn-primary pressable', href: `#/practice/round?kind=cluster%3Apick&ids=${encodeURIComponent(studyIds.join(','))}&from=map` }, t('explore.sheet.study', { n: studyIds.length })));
       if (g.cluster) { const [ty, cid] = String(g.cluster).split(/:(.*)/); acts.push(h('a', { class: 'btn pressable', href: `#/practice/clusters/${ty}/${encodeURIComponent(cid)}` }, t('explore.sheet.cluster'))); }
+      if (!c.newItems && studyIds.length && studyIds.every(w => stateOf(`W:${w}`).state === 'unseen')) body.push(h('p', { class: 'caption ex-note' }, t('explore.sheet.noNew')));
+      if (!words.length) body.push(h('p', { class: 'caption ex-note' }, t('explore.sheet.noWords')));
       if (acts.length) body.push(h('div', { class: 'ex-actions' }, ...acts));
-      if (!c.newItems && studyIds.length && studyIds.every(w => stateOf(`W:${w}`).state === 'unseen')) body.push(h('p', { class: 'caption' }, t('explore.sheet.noNew')));
-      if (!words.length) body.push(h('p', { class: 'caption' }, t('explore.sheet.noWords')));
     } else body.push(h('p', { class: 'ex-allknown' }, t('explore.sheet.allKnown')));
     replace(sheetBody, ...body);
     showSheet();
