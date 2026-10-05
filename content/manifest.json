@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "4d7417400614",
+ "version": "6865581f3090",
  "languages": [
   {
    "id": "khasi",
@@ -673,8 +673,8 @@
    "id": "igloo.words.de",
    "path": "igloo/words/de.json",
    "schema": "igloo-words@1",
-   "bytes": 1136493,
-   "sha256": "4e8343bc5cc62ee832fbe2bc3100fb438b9012da586e703689e7451a576f20f2"
+   "bytes": 1136533,
+   "sha256": "c72daf706704659d2e2c40efcb2c8bfc6d5e146daff8bb317dfc694a9338e833"
   },
   {
    "id": "igloo.words.themes",
