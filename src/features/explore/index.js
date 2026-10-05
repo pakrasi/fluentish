@@ -24,6 +24,7 @@ import { icon } from '../../core/icons.js';
 import { reduced, handoff } from '../../core/motion.js';
 import { label as dayLabel } from '../../core/clock.js';
 import { num } from '../../core/i18n.js';
+import { langAttr } from '../../core/lang.js';
 import { MODES, summarise, nextUp, encode, nextBestGroup, gapsOf } from '../../domain/atlas.js';
 import { loadAtlas, layoutOf, scores, loadDetails, prefs, setPrefs, fold, find, totals } from '../../data/atlas.js';
 import { ensurePlacement } from '../shared/data.js';
@@ -117,7 +118,7 @@ async function mountMap(el, ctx, offs) {
   const hereEl = h('div', { class: 'ex-here', hidden: true }, h('b'), h('span', { class: 'tnum' }));
   const totalEl = h('span', { class: 'ex-total caption tnum' });
   const legend = h('div', { class: 'ex-legend', id: 'ex-legend', role: 'group', 'aria-label': t('explore.key') },
-    ...(['known', 'shaky', 'unknown', 'unseen', 'today']).map(s => h('span', { class: `ex-key is-${s}` }, h('i', { lang: 'de', 'aria-hidden': 'true' }, 'Aa'), t(`explore.state.${s}`))));
+    ...(['known', 'shaky', 'unknown', 'unseen', 'today']).map(s => h('span', { class: `ex-key is-${s}` }, h('i', { lang: langAttr(), 'aria-hidden': 'true' }, 'Aa'), t(`explore.state.${s}`))));
   const keyBtn = h('button', { type: 'button', class: 'chip pressable ex-keybtn', 'aria-expanded': 'false', 'aria-controls': 'ex-legend', onclick: () => toggleKey() }, t('explore.key'));
   const gapsBtn = h('button', { type: 'button', class: 'chip pressable ex-gaps', 'aria-pressed': String(gaps), onclick: () => setGaps(!gaps) }, t('explore.gaps'));
   const zoom = h('div', { class: 'ex-zoom' },
@@ -145,7 +146,7 @@ async function mountMap(el, ctx, offs) {
   const grab = h('button', { type: 'button', class: 'ex-grab', 'aria-label': t('explore.sheet.expand'), 'aria-expanded': 'false', onclick: () => { if (!dragged) setDetent(detent === 'full' ? 'peek' : 'full'); } }, h('i', { 'aria-hidden': 'true' }));
   const sheet = h('section', { class: 'ex-sheet is-peek', role: 'dialog', 'aria-modal': 'false', 'aria-labelledby': 'ex-sheet-title', hidden: true },
     grab, h('button', { type: 'button', class: 'ex-icon ex-close pressable', 'aria-label': t('explore.sheet.close'), onclick: () => closeSheet({ restore: true }) }, icon('close', { size: 18 })), sheetBody);
-  const findInput = /** @type {HTMLInputElement} */ (h('input', { type: 'search', class: 'ex-find-input', lang: 'de', autocomplete: 'off', spellcheck: 'false', 'aria-label': t('explore.find.label'), placeholder: t('explore.find.label') }));
+  const findInput = /** @type {HTMLInputElement} */ (h('input', { type: 'search', class: 'ex-find-input', lang: langAttr(), autocomplete: 'off', spellcheck: 'false', 'aria-label': t('explore.find.label'), placeholder: t('explore.find.label') }));
   findInput.setAttribute('autocorrect', 'off'); findInput.setAttribute('autocapitalize', 'off');
   const findList = h('ul', { class: 'ex-find-list', role: 'list' });
   const findEl = h('div', { class: 'ex-find', role: 'dialog', 'aria-label': t('explore.find'), hidden: true },
@@ -620,7 +621,7 @@ async function mountMap(el, ctx, offs) {
     const sc = K.score(i), kind = A.kind[i], id = A.ids[i];
     const L = layout(mode), g = L.groups[L.G[i]];
     const enc = encode(/** @type {any} */ (CODE_STATE[K.st[i]]), !!K.today[i]);
-    const title = h('h2', { id: 'ex-sheet-title', class: 'ex-word', lang: 'de' }, ...word(i));
+    const title = h('h2', { id: 'ex-sheet-title', class: 'ex-word', lang: langAttr() }, ...word(i));
     const kindLabel = t(`explore.kind.${kind === 'c' ? 'phrase' : kind === 'g' ? 'grammar' : A.pos[i]}`);
     const meta = h('p', { class: 'ex-meta caption' }, h('span', null, `${kindLabel} · ${A.level[i]}`), g ? h('span', null, labelOf(g)) : null);
     const stateLine = h('p', { class: 'ex-state' },
@@ -641,9 +642,9 @@ async function mountMap(el, ctx, offs) {
     /** @type {any[]} */ const bits = [], links = [], acts = [];
     if (kind === 'w') {
       const wid = id.slice(2), w = D.words.get(wid);
-      if (w && w.pl) bits.push(h('p', { class: 'caption', lang: 'de' }, t('explore.card.plural', { pl: w.pl })));
+      if (w && w.pl) bits.push(h('p', { class: 'caption', lang: langAttr() }, t('explore.card.plural', { pl: w.pl })));
       if (w && w.en?.length) bits.push(h('p', { class: 'ex-en' }, w.en.slice(0, 3).join('; ')));
-      if (w && w.ex) bits.push(h('p', { class: 'ex-ex', lang: 'de' }, w.ex), w.exen ? h('p', { class: 'ex-exen caption' }, w.exen) : null);
+      if (w && w.ex) bits.push(h('p', { class: 'ex-ex', lang: langAttr() }, w.ex), w.exen ? h('p', { class: 'ex-exen caption' }, w.exen) : null);
       const opp = D.ix ? D.ix.opposites(wid) : [];
       if (opp.length) links.push(linkRow(t('explore.card.opposite'), opp));
       const fam = D.famOf.get(wid), f = fam ? D.families.get(fam) : null;
@@ -653,7 +654,7 @@ async function mountMap(el, ctx, offs) {
     } else if (kind === 'c') {
       const cid = id.slice(2), de = D.chunksDe[cid], en = D.chunksEn.get(cid);
       if (en) bits.push(h('p', { class: 'ex-en' }, en.pragmatic_function || en.chunk || ''));
-      if (de && de.ex) bits.push(h('p', { class: 'ex-ex', lang: 'de' }, de.ex));
+      if (de && de.ex) bits.push(h('p', { class: 'ex-ex', lang: langAttr() }, de.ex));
       const rid = D.roundId(id);
       if (rid) acts.push(studyLink(`#/practice/round?kind=${encodeURIComponent(`pick:${rid}`)}&from=map`, t('explore.card.practise'), true));
       acts.push(h('a', { class: ['btn', 'pressable', !rid && 'btn-primary'], href: `#/lookup/phrases?q=${encodeURIComponent(A.text[i].replace(/…/g, '').trim().split(/\s+/).slice(0, 3).join(' '))}` }, t('explore.card.lookup')));
@@ -672,7 +673,7 @@ async function mountMap(el, ctx, offs) {
   }
   /** @param {string} label @param {string[]} wordIds */
   function linkRow(label, wordIds) {
-    const btns = wordIds.map(w => A.index.get(`W:${w}`)).filter(j => j != null).map(j => h('button', { type: 'button', class: 'ex-link pressable', lang: 'de', onclick: () => goTo(/** @type {number} */ (j)) },
+    const btns = wordIds.map(w => A.index.get(`W:${w}`)).filter(j => j != null).map(j => h('button', { type: 'button', class: 'ex-link pressable', lang: langAttr(), onclick: () => goTo(/** @type {number} */ (j)) },
       ...word(/** @type {number} */ (j))));
     return btns.length ? h('div', { class: 'ex-links' }, h('span', { class: 'caption ex-links-label' }, label), ...btns) : null;
   }
@@ -777,7 +778,7 @@ async function mountMap(el, ctx, offs) {
     sayTimer = window.setTimeout(() => announce(t('explore.find.count', { n: hits.length })), 700);
     if (!hits.length) { replace(findList, h('li', { class: 'ex-find-none caption' }, t('explore.find.none'))); return; }
     replace(findList, ...hits.map(i => h('li', null, h('button', { type: 'button', class: 'ex-find-hit pressable', onclick: () => { closeSearch(); goTo(i); } },
-      h('span', { class: 'ex-find-de', lang: 'de' }, ...word(i)),
+      h('span', { class: 'ex-find-de', lang: langAttr() }, ...word(i)),
       h('span', { class: 'ex-find-meta caption' }, `${t(`explore.state.${stateKey(i)}`)} · ${A.level[i]}`)))));
   }
   findInput.addEventListener('input', runSearch);
@@ -797,7 +798,7 @@ async function mountMap(el, ctx, offs) {
         const items = h('ul', { class: 'ex-litems' }, ...g.items.map((/** @type {number} */ i) => {
           const k = stateKey(i);
           return h('li', null,
-            h('button', { type: 'button', class: 'ex-litem pressable', lang: 'de', onclick: (/** @type {Event} */ e) => (sel.on ? void sel.toggle(i, /** @type {HTMLElement} */ (e.currentTarget)) : openWord(i, { fly: false, opener: /** @type {HTMLElement} */ (e.currentTarget) })) },
+            h('button', { type: 'button', class: 'ex-litem pressable', lang: langAttr(), onclick: (/** @type {Event} */ e) => (sel.on ? void sel.toggle(i, /** @type {HTMLElement} */ (e.currentTarget)) : openWord(i, { fly: false, opener: /** @type {HTMLElement} */ (e.currentTarget) })) },
               swatch(k), h('span', { class: 'ex-w' }, ...word(i))),
             h('span', { class: ['caption', `ex-lstate is-${k}`], lang: 'en' }, t(`explore.state.${k}`)));
         }));

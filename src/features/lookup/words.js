@@ -13,6 +13,7 @@
    due, reviews, deleted}. */
 
 import { wordId } from '../../domain/itemids.js';
+import { langAttr } from '../../core/lang.js';
 import { wordTriage, wordLevel, frequent as isFrequent } from '../../domain/wordtriage.js';
 
 export class VocabError extends Error {
@@ -92,7 +93,7 @@ export const cardId = (g, wordmap, has = null) => wordId(g.lemma, wordmap, has);
 export const importance = g => (g.zipf ?? 3) + 1.5 * ((g.exam_days ?? 1) / 14);
 
 /** @param {any[]} groups */
-export const byImportance = groups => [...groups].sort((a, b) => importance(b) - importance(a) || a.lemma.localeCompare(b.lemma, 'de'));
+export const byImportance = groups => [...groups].sort((a, b) => importance(b) - importance(a) || a.lemma.localeCompare(b.lemma, langAttr()));
 
 /** Frequent enough for the queue in an exam week (UX §3.3). @param {any} g */
 export const frequent = g => isFrequent({ zipf: g.zipf, examDays: g.exam_days });
