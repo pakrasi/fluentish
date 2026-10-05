@@ -3,7 +3,7 @@
      a line "~~x~~ → ==y==" followed by "_why_" lines is one correction block.
    parse() is pure (tested in node); render() builds DOM nodes with h(), so the text can never become markup. */
 import { h } from '../../core/dom.js';
-import { langAttr } from '../../core/lang.js';
+import { langAttr, dirAttr } from '../../core/lang.js';
 
 /** @typedef {{ t: 'text' | 'b' | 'del' | 'mark' | 'bad' | 'em', v: string }} Span */
 /** @typedef {{ k: 'h3' | 'h4' | 'p' | 'quote' | 'tip' | 'corr' | 'ul' | 'score', spans?: Span[], lines?: Span[][], items?: Span[][], num?: Span[], verdict?: Span[], tone?: string }} Block */
@@ -70,7 +70,7 @@ const spansNodes = spans => spans.map(s => (s.t === 'text' ? s.v : h(/** @type {
 
 /** Feedback as DOM. @param {string} src @returns {HTMLElement} */
 export function render(src) {
-  return h('div', { class: 'md', lang: langAttr() }, parse(src).map(b => {
+  return h('div', { class: 'md', lang: langAttr(), dir: dirAttr() }, parse(src).map(b => {
     switch (b.k) {
       case 'h3': return h('h3', null, spansNodes(b.spans || []));
       case 'h4': return h('h4', null, spansNodes(b.spans || []));

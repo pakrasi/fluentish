@@ -8,7 +8,7 @@ import { h, replace } from '../../core/dom.js';
 import { backLink, viewSwitch, legend } from './compass.js';
 import { play, css } from './fx.js';
 import { loadContent, knowledge } from './data.js';
-import { langAttr } from '../../core/lang.js';
+import { langAttr, dirAttr } from '../../core/lang.js';
 
 const COLS = /** @type {[string, string[]][]} */ ([
   ['build.table.splits', ['ab', 'an', 'auf', 'aus', 'ein', 'mit', 'nach', 'vor', 'zu']],
@@ -42,11 +42,11 @@ export async function mountTable(el, ctx) {
     const head1 = h('tr', null, h('th', { class: 'wb-thgrp', scope: 'col' }, h('span', { class: 'sr-only' }, t('build.table.root'))),
       COLS.map(([key, cols], i) => h('th', { class: ['wb-thgrp', i && 'wb-gap'], colspan: String(cols.length), scope: 'colgroup' }, t(key))));
     const head2 = h('tr', null, h('td', null), COLS.flatMap(([, cols], i) => cols.map((c, j) => h('th', { scope: 'col', class: [i && !j && 'wb-gap', focus?.col === c && 'is-hl'] },
-      h('button', { type: 'button', class: 'pressable', lang: langAttr(), 'aria-pressed': String(focus?.col === c), onclick: () => { focus = focus?.col === c ? null : { col: c }; url(); draw(true); } }, c)))));
+      h('button', { type: 'button', class: 'pressable', lang: langAttr(), dir: dirAttr(), 'aria-pressed': String(focus?.col === c), onclick: () => { focus = focus?.col === c ? null : { col: c }; url(); draw(true); } }, c)))));
     const body = h('tbody');
     for (const r of roots) {
       const tr = h('tr', null, h('th', { scope: 'row', class: focus?.row === r.id ? 'is-hl' : null },
-        h('button', { type: 'button', class: 'pressable', lang: langAttr(), 'aria-pressed': String(focus?.row === r.id), onclick: () => { focus = focus?.row === r.id ? null : { row: r.id }; url(); draw(true); } }, r.id)));
+        h('button', { type: 'button', class: 'pressable', lang: langAttr(), dir: dirAttr(), 'aria-pressed': String(focus?.row === r.id), onclick: () => { focus = focus?.row === r.id ? null : { row: r.id }; url(); draw(true); } }, r.id)));
       COLS.forEach(([, cols], i) => cols.forEach((c, j) => {
         const vs = d.c.verbs.filter((/** @type {any} */ v) => v.root === r.id && v.pre === c);
         const v = vs[0];
@@ -68,17 +68,17 @@ export async function mountTable(el, ctx) {
   function sheet() {
     if (!focus) return h('p', { class: 'caption' }, t('build.table.hint'));
     const row = (/** @type {any} */ v) => h('a', { class: 'wb-vrow pressable', href: `#/practice/build/prefixes?root=${encodeURIComponent(v.root)}&pre=${encodeURIComponent(v.pre)}&v=${encodeURIComponent(v.id)}` },
-      h('i', { class: `wb-cell is-${v.grade}`, 'aria-hidden': 'true' }), h('span', null, h('b', { lang: langAttr() }, v.inf), ' ', h('span', null, v.en)));
+      h('i', { class: `wb-cell is-${v.grade}`, 'aria-hidden': 'true' }), h('span', null, h('b', { lang: langAttr(), dir: dirAttr() }, v.inf), ' ', h('span', null, v.en)));
     if (focus.col) {
       const p = d.P.get(focus.col);
       const vs = d.c.verbs.filter((/** @type {any} */ v) => v.pre === focus?.col);
       const n = (/** @type {string} */ g) => vs.filter((/** @type {any} */ v) => v.grade === g).length;
-      return h('div', { class: 'wb-card wb-tsheet' }, h('p', { class: 'label', lang: langAttr() }, t('build.table.across', { p: `${p.id}-`, n: new Set(vs.map((/** @type {any} */ v) => v.root)).size })),
+      return h('div', { class: 'wb-card wb-tsheet' }, h('p', { class: 'label', lang: langAttr(), dir: dirAttr() }, t('build.table.across', { p: `${p.id}-`, n: new Set(vs.map((/** @type {any} */ v) => v.root)).size })),
         h('p', { class: 'wb-core-line' }, p.core), h('p', { class: 'caption' }, t('build.table.counts', { t: n('T'), m: n('M'), o: n('O') })),
         h('div', { class: 'wb-vlist' }, ['T', 'M', 'O'].flatMap(g => vs.filter((/** @type {any} */ v) => v.grade === g).map(row))));
     }
     const vs = d.c.verbs.filter((/** @type {any} */ v) => v.root === focus?.row);
-    return h('div', { class: 'wb-card wb-tsheet' }, h('p', { class: 'label', lang: langAttr() }, t('build.table.row', { root: focus.row, n: vs.length })), h('div', { class: 'wb-vlist' }, vs.map(row)));
+    return h('div', { class: 'wb-card wb-tsheet' }, h('p', { class: 'label', lang: langAttr(), dir: dirAttr() }, t('build.table.row', { root: focus.row, n: vs.length })), h('div', { class: 'wb-vlist' }, vs.map(row)));
   }
   draw(!!focus);
   return () => { alive = false; };

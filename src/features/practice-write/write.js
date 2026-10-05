@@ -27,7 +27,7 @@ import { loadData, stateFor, session, secrets } from '../shared/data.js';
 import { recallBar } from '../shared/recall-bar.js';
 import { checkMark } from '../shared/check-mark.js';
 import { doneHero } from '../shared/done-hero.js';
-import { langAttr } from '../../core/lang.js';
+import { langAttr, dirAttr } from '../../core/lang.js';
 
 export const COLLECTION = 'practice.write';
 const pct = (/** @type {number} */ x) => new Intl.NumberFormat('en-GB', { style: 'percent', maximumFractionDigits: 0 }).format(x || 0);
@@ -128,7 +128,7 @@ function mountPage(el, ctx, data) {
             if (!its.length) return null;
             return h('div', { class: 'wr-fn' }, h('h3', null, f.name),
               h('ul', { class: 'list' }, its.map((/** @type {any} */ it) => h('li', { class: 'list-item wr-phrase' },
-                h('span', { lang: langAttr() }, it.model), h('span', { class: 'caption' }, it.hl || it.prompt)))));
+                h('span', { lang: langAttr(), dir: dirAttr() }, it.model), h('span', { class: 'caption' }, it.hl || it.prompt)))));
           })));
     });
 
@@ -192,9 +192,9 @@ const glueLine = text => marked(text, B.connectorsIn(text), s => h('mark', { cla
 function frameTiles(part) {
   if (!part.frame) return null;
   const f = String(part.frame), glue = (part.glue || []).map((/** @type {string} */ g) => g.toLowerCase());
-  const pieces = marked(f, B.connectorsIn(f).filter(r => glue.includes(r.word.toLowerCase())), s => h('span', { class: 'tile glue', lang: langAttr() }, s));
+  const pieces = marked(f, B.connectorsIn(f).filter(r => glue.includes(r.word.toLowerCase())), s => h('span', { class: 'tile glue', lang: langAttr(), dir: dirAttr() }, s));
   // the frame reads as a sentence: plain words, the connector as a glue tile
-  return h('p', { class: 'wr-frame', lang: langAttr() }, pieces.filter(x => x !== '').map(x => (typeof x === 'string' ? h('span', { class: 'wr-frame-text' }, x) : x)));
+  return h('p', { class: 'wr-frame', lang: langAttr(), dir: dirAttr() }, pieces.filter(x => x !== '').map(x => (typeof x === 'string' ? h('span', { class: 'wr-frame-text' }, x) : x)));
 }
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx @param {any} data @param {any} task */
@@ -212,15 +212,15 @@ function mountBuild(el, ctx, data, task) {
   // current one is an accent rule (you, now); a filled one is the line itself
   const slots = new Map(task.parts.map((/** @type {any} */ p) => [p.key, h('li', { class: ['wr-line', `is-${p.key}`, p.point && 'is-point'], 'data-key': p.key },
     h('span', { class: 'wr-slot', 'aria-label': partLabel(p, task, t) }, h('span', { class: 'wr-slot-label', 'aria-hidden': 'true' }, p.point ? String(p.point) : t(`practice.build.part.${p.key}`))))]));
-  const letter = h('ol', { class: ['wr-letter', task.aufgabe === 'A2' && 'is-post'], 'aria-label': t('practice.build.yourEmail'), lang: langAttr() }, [...slots.values()]);
+  const letter = h('ol', { class: ['wr-letter', task.aufgabe === 'A2' && 'is-post'], 'aria-label': t('practice.build.yourEmail'), lang: langAttr(), dir: dirAttr() }, [...slots.values()]);
   const letterBox = h('section', { class: 'wr-letterbox', 'aria-live': 'polite' }, h('p', { class: 'label' }, task.aufgabe === 'A2' ? t('practice.build.yourPost') : t('practice.build.yourEmail')), letter);
 
   // ---------- the task ----------
-  const points = h('ol', { class: 'wr-points', lang: langAttr() }, task.points.map((/** @type {string} */ p, /** @type {number} */ k) => h('li', { 'data-point': String(k + 1) }, p)));
+  const points = h('ol', { class: 'wr-points', lang: langAttr(), dir: dirAttr() }, task.points.map((/** @type {string} */ p, /** @type {number} */ k) => h('li', { 'data-point': String(k + 1) }, p)));
   const taskBox = h('details', { class: 'wr-task', open: true },
     h('summary', { class: 'pressable' }, t('practice.build.task')),
-    h('p', { class: 'wr-situation', lang: langAttr() }, task.situation),
-    task.quote ? h('blockquote', { class: 'wr-quote', lang: langAttr() }, task.quote) : null,
+    h('p', { class: 'wr-situation', lang: langAttr(), dir: dirAttr() }, task.situation),
+    task.quote ? h('blockquote', { class: 'wr-quote', lang: langAttr(), dir: dirAttr() }, task.quote) : null,
     points,
     h('p', { class: 'caption' }, t('practice.write.aufgabeAbout', { words: aufgabe?.words || '', min: aufgabe?.minutes || '', register: task.aufgabe === 'A1' ? 'du' : task.aufgabe === 'A3' ? 'Sie' : t('practice.write.noRegister') })));
 
@@ -228,10 +228,10 @@ function mountBuild(el, ctx, data, task) {
   const segs = h('div', { class: 'segments wr-segs', 'aria-label': t('practice.build.progress') });
   const meta = h('span', { class: 'label' });
   const count = h('span', { class: 'caption tnum' });
-  const pointEl = h('p', { class: 'wr-point', lang: langAttr() });
+  const pointEl = h('p', { class: 'wr-point', lang: langAttr(), dir: dirAttr() });
   const cueEl = h('p', { class: 'wr-cue' });
   const frameEl = h('div', { class: 'wr-framebox' });
-  const input = /** @type {HTMLTextAreaElement} */ (h('textarea', { class: 'answer-input', rows: 2, lang: langAttr(), autocapitalize: 'off', autocomplete: 'off', spellcheck: 'false',
+  const input = /** @type {HTMLTextAreaElement} */ (h('textarea', { class: 'answer-input', rows: 2, lang: langAttr(), dir: dirAttr(), autocapitalize: 'off', autocomplete: 'off', spellcheck: 'false',
     enterkeyhint: 'go', 'aria-label': t('practice.build.answerLabel') }));
   input.setAttribute('autocorrect', 'off');
   const answerEl = h('div', { class: 'answer wr-answer' }, input, checkMark());
@@ -313,11 +313,11 @@ function mountBuild(el, ctx, data, task) {
     state = 'done-part';
     const notes = [];
     if (r.partial && r.g.rest) notes.push(h('p', { class: 'pr-res is-warn' }, t('practice.build.rightButWord')),
-      r.g.rest.ref ? h('p', { class: 'pr-diff answer-key', lang: langAttr() }, h('span', { class: 'caption' }, t('practice.partial.situation')), ' ', r.g.rest.ref) : null);
+      r.g.rest.ref ? h('p', { class: 'pr-diff answer-key', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, t('practice.partial.situation')), ' ', r.g.rest.ref) : null);
     else if (r.punctMiss.length) notes.push(h('p', { class: 'pr-res is-warn' }, t('practice.right.punct')), h('p', { class: 'pr-rule' }, r.punctMiss.map((/** @type {any} */ m) => t(`practice.punct.${m.code}`, { word: m.word || '' })).join(' ')));
     else if (r.g.capMiss.length || r.g.umlautMiss.length) notes.push(h('p', { class: 'pr-res is-warn' }, r.g.umlautMiss.length ? t('practice.right.umlaut', { list: r.g.umlautMiss.map((/** @type {any} */ x) => x.expected).join(', ') }) : t('practice.right.cap')));
     else notes.push(h('p', { class: 'pr-res is-ok' }, tries === 1 ? t('practice.build.rightFirst') : t('practice.build.rightNow')));
-    if (p.kind === 'free' || r.partial || r.punctMiss.length) notes.push(h('p', { class: 'caption' }, t('practice.build.oneModel')), h('p', { class: 'answer-key', lang: langAttr() }, glueLine(B.modelLine(p))));
+    if (p.kind === 'free' || r.partial || r.punctMiss.length) notes.push(h('p', { class: 'caption' }, t('practice.build.oneModel')), h('p', { class: 'answer-key', lang: langAttr(), dir: dirAttr() }, glueLine(B.modelLine(p))));
     replace(fb, notes);
     reveal.classList.add('is-open');
     announce(`${t('practice.build.rightFirst')} ${typed}`);
@@ -337,8 +337,8 @@ function mountBuild(el, ctx, data, task) {
     you.push(typed.slice(pos));
     const kids = [h('p', { class: 'pr-res is-bad' }, t('practice.wrong'))];
     if (r.g.det) kids.push(h('p', { class: 'pr-hint' }, String(r.g.det.hint).split(/\*([^*]+)\*/).map((x, k) => (k % 2 ? h('i', null, x) : x))));
-    kids.push(h('p', { class: 'pr-diff', lang: langAttr() }, h('span', { class: 'caption' }, t('practice.you')), ' ', you),
-      h('p', { class: 'pr-diff answer-key', lang: langAttr() }, h('span', { class: 'caption' }, p.kind === 'free' ? t('practice.build.oneWay') : t('practice.rightIs')), ' ', glueLine(p.kind === 'free' ? B.modelLine(p) : right)));
+    kids.push(h('p', { class: 'pr-diff', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, t('practice.you')), ' ', you),
+      h('p', { class: 'pr-diff answer-key', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, p.kind === 'free' ? t('practice.build.oneWay') : t('practice.rightIs')), ' ', glueLine(p.kind === 'free' ? B.modelLine(p) : right)));
     if (p.rule) kids.push(h('p', { class: 'pr-rule' }, p.rule));
     kids.push(h('p', { class: 'caption' }, t('practice.build.tryAgain')));
     replace(fb, kids);
@@ -352,7 +352,7 @@ function mountBuild(el, ctx, data, task) {
     if (!results[p.key]) results[p.key] = { first: false, ok: false };
     results[p.key].first = false; results[p.key].shown = true; results[p.key].ok = true;
     state = 'done-part';
-    replace(fb, h('p', { class: 'caption' }, t('practice.build.modelIn')), h('p', { class: 'answer-key', lang: langAttr() }, glueLine(B.modelLine(p))));
+    replace(fb, h('p', { class: 'caption' }, t('practice.build.modelIn')), h('p', { class: 'answer-key', lang: langAttr(), dir: dirAttr() }, glueLine(B.modelLine(p))));
     reveal.classList.add('is-open');
     setButtons();
     place(p, B.modelLine(p), true);
@@ -408,15 +408,15 @@ function mountBuild(el, ctx, data, task) {
     const lineNode = (/** @type {{key: string, text: string}} */ l, /** @type {boolean} */ mineView) => {
       const f = mineView && l.key ? fixes[l.key] : null;
       if (!f) return l.text ? h('span', { class: 'wr-text' }, glueLine(l.text)) : null;
-      const note = h('span', { class: 'wr-fixnote caption', hidden: true }, f.right ? [t('practice.build.rightForm'), ' ', h('span', { lang: langAttr() }, f.right)] : f.rule);
+      const note = h('span', { class: 'wr-fixnote caption', hidden: true }, f.right ? [t('practice.build.rightForm'), ' ', h('span', { lang: langAttr(), dir: dirAttr() }, f.right)] : f.rule);
       return [h('button', { type: 'button', class: 'wr-text wr-fixme', 'aria-expanded': 'false',
         onclick: (/** @type {Event} */ e) => { const b = /** @type {HTMLElement} */ (e.currentTarget); note.hidden = !note.hidden; b.setAttribute('aria-expanded', String(!note.hidden)); } }, glueLine(l.text)), note];
     };
     const showLetter = (/** @type {{key: string, text: string}[]} */ ls, mineView = true) => ls.map((l, k) => h('li', { class: ['wr-line', 'is-filled', l.key ? `is-${l.key}` : 'is-gap', 'wr-in'], style: { '--i': String(k) } }, lineNode(l, mineView)));
-    const out = h('ol', { class: ['wr-letter', task.aufgabe === 'A2' && 'is-post'], lang: langAttr() }, showLetter(mine));
+    const out = h('ol', { class: ['wr-letter', task.aufgabe === 'A2' && 'is-post'], lang: langAttr(), dir: dirAttr() }, showLetter(mine));
     const used = [...new Map(B.connectorsIn(B.asText(mine)).map(c => [c.word.toLowerCase(), c.word])).values()];
     const lead = reduced() ? 0 : 420 + mine.length * 70;
-    const usedEl = h('p', { class: 'tiles wr-used' }, used.map((w, k) => h('span', { class: 'tile glue land', lang: langAttr(), style: { animationDelay: `${reduced() ? 0 : lead + k * 70}ms` } }, w)));
+    const usedEl = h('p', { class: 'tiles wr-used' }, used.map((w, k) => h('span', { class: 'tile glue land', lang: langAttr(), dir: dirAttr(), style: { animationDelay: `${reduced() ? 0 : lead + k * 70}ms` } }, w)));
     const toggle = seg({ label: t('practice.build.compare'), value: 'mine', options: [['mine', task.aufgabe === 'A2' ? t('practice.build.yourPost') : t('practice.build.yourEmail')], ['model', t('practice.build.model')]],
       onChange: v => replace(out, showLetter(v === 'model' ? model : mine, v !== 'model')) });
     const target = aufgabe?.words || 80;
@@ -471,10 +471,10 @@ export function correctionNodes(body) {
     let m;
     if (line.startsWith('! ')) { out.push(h('p', { class: 'wr-score' }, line.slice(2))); continue; }
     if (line.startsWith('## ')) { out.push(h('h3', null, line.slice(3))); continue; }
-    if ((m = /^~~(.+?)~~\s*→\s*==(.+?)==\s*$/.exec(line))) { out.push(h('p', { class: 'wr-fix', lang: langAttr() }, h('s', { class: 'pr-wrongword' }, m[1]), ' → ', h('mark', null, m[2]))); continue; }
-    if ((m = /^_(.+)_$/.exec(line))) { out.push(h('p', { class: 'caption wr-why', lang: langAttr() }, inline(m[1]))); continue; }
-    if (line.startsWith('- ')) { if (!list) { list = h('ul', { class: 'pr-bullets', lang: langAttr() }); out.push(list); } list.append(h('li', null, inline(line.slice(2)))); continue; }
-    out.push(h('p', { lang: langAttr(), class: line.startsWith('→') ? 'wr-good' : null }, inline(line)));
+    if ((m = /^~~(.+?)~~\s*→\s*==(.+?)==\s*$/.exec(line))) { out.push(h('p', { class: 'wr-fix', lang: langAttr(), dir: dirAttr() }, h('s', { class: 'pr-wrongword' }, m[1]), ' → ', h('mark', null, m[2]))); continue; }
+    if ((m = /^_(.+)_$/.exec(line))) { out.push(h('p', { class: 'caption wr-why', lang: langAttr(), dir: dirAttr() }, inline(m[1]))); continue; }
+    if (line.startsWith('- ')) { if (!list) { list = h('ul', { class: 'pr-bullets', lang: langAttr(), dir: dirAttr() }); out.push(list); } list.append(h('li', null, inline(line.slice(2)))); continue; }
+    out.push(h('p', { lang: langAttr(), dir: dirAttr(), class: line.startsWith('→') ? 'wr-good' : null }, inline(line)));
   }
   return out;
 }
@@ -486,7 +486,7 @@ function drawFree(el, ctx, task, aufgabe) {
   const saved = kv(store);
   const draft = (saved.drafts || {})[task.id] || '';
   const corr = (saved.corrections || {})[task.id] || null;
-  const area = /** @type {HTMLTextAreaElement} */ (h('textarea', { class: 'input wr-free', id: 'wr-free', rows: 10, lang: langAttr(), spellcheck: 'false', autocapitalize: 'sentences' }));
+  const area = /** @type {HTMLTextAreaElement} */ (h('textarea', { class: 'input wr-free', id: 'wr-free', rows: 10, lang: langAttr(), dir: dirAttr(), spellcheck: 'false', autocapitalize: 'sentences' }));
   area.value = draft;
   const today = ctx.clock.today();
   // the task counts as written today once the text reaches most of its length, or when it is sent for a correction
@@ -560,15 +560,15 @@ function drawFree(el, ctx, task, aufgabe) {
     back('#/practice/write', t('practice.write.title')),
     h('div', { class: 'page-head' }, h('p', { class: 'label' }, t('practice.build.label', { n: task.aufgabe.slice(1) })), h('h1', null, t('practice.build.writeYourself'))),
     h('details', { class: 'wr-task', open: true }, h('summary', { class: 'pressable' }, t('practice.build.task')),
-      h('p', { class: 'wr-situation', lang: langAttr() }, task.situation), task.quote ? h('blockquote', { class: 'wr-quote', lang: langAttr() }, task.quote) : null,
-      h('ol', { class: 'wr-points', lang: langAttr() }, task.points.map((/** @type {string} */ p) => h('li', null, p)))),
+      h('p', { class: 'wr-situation', lang: langAttr(), dir: dirAttr() }, task.situation), task.quote ? h('blockquote', { class: 'wr-quote', lang: langAttr(), dir: dirAttr() }, task.quote) : null,
+      h('ol', { class: 'wr-points', lang: langAttr(), dir: dirAttr() }, task.points.map((/** @type {string} */ p) => h('li', null, p)))),
     h('p', { class: 'caption' }, t('practice.build.freeAbout')),
     h('div', { class: 'wr-freehead' }, h('label', { class: 'label', for: 'wr-free' }, t('practice.build.freeLabel')), h('span', { class: 'wr-timebox' }, clock, timeBtn)),
     area, wc,
     h('div', { class: 'pr-done-actions' }, btn, h('a', { class: 'btn pressable', href: `#/practice/write/build/${task.id}` }, t('practice.build.again'))),
     hasKey ? h('p', { class: 'caption' }, t('practice.build.privacy')) : notice({ children: [h('p', null, t('exam.correct.needKey')), h('p', null, h('a', { href: '#/profile/connections' }, t('exam.correct.addKey')))] }),
     result,
-    h('details', { class: 'wr-modeltext' }, h('summary', { class: 'pressable' }, t('practice.build.model')), h('p', { class: 'wr-model', lang: langAttr() }, model)));
+    h('details', { class: 'wr-modeltext' }, h('summary', { class: 'pressable' }, t('practice.build.model')), h('p', { class: 'wr-model', lang: langAttr(), dir: dirAttr() }, model)));
   replace(el, view);
   if (corr) replace(result, h('p', { class: 'caption' }, t('practice.build.lastCorrection')), correctionNodes(corr.body), practiseRow(corr.at ? queue(corr, true) : 0));
   showCount();

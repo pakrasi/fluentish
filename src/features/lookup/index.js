@@ -12,7 +12,7 @@ import { label } from '../../core/clock.js';
 import { notice, seg } from '../../core/ui.js';
 import { icon } from '../../core/icons.js';
 import { num } from '../../core/i18n.js';
-import { langAttr } from '../../core/lang.js';
+import { langAttr, dirAttr } from '../../core/lang.js';
 import { dueOn, compute as readiness } from '../../domain/b1ready.js';
 import * as D from './data.js';
 import { parseRoute, hashFor } from './route.js';
@@ -46,7 +46,7 @@ export async function mount(el, ctx) {
 
   /* ---------- shared row builders ---------- */
 
-  const de = (/** @type {any} */ text, cls = '') => h('span', { lang: langAttr(), class: cls || null }, text);
+  const de = (/** @type {any} */ text, cls = '') => h('span', { lang: langAttr(), dir: dirAttr(), class: cls || null }, text);
 
   /** @param {string} text @param {string} [what] */
   const sayBtn = (text, what = text) => h('button', { type: 'button', class: 'lk-say pressable', 'aria-label': t('lookup.listen', { text: what }),
@@ -134,7 +134,7 @@ export async function mount(el, ctx) {
         else out.push(h('span', { class: `tile ${role}` }, hl(p, q)));
       }
     }
-    return h('span', { class: 'tiles lk-tiles', lang: langAttr() }, out);
+    return h('span', { class: 'tiles lk-tiles', lang: langAttr(), dir: dirAttr() }, out);
   }
 
   /** A grammar-layer item: the German as a sentence of word tiles in its role colour. @param {any} r @param {string} q */
@@ -286,11 +286,11 @@ export async function mount(el, ctx) {
       h('h1', null, tp.name),
       h('p', { class: 'caption' }, t('lookup.grammar.rules', { n: tp.rules.length })),
       tp.trap ? notice({ kind: 'warning', children: [h('p', { class: 'notice-title' }, t('lookup.grammar.trap')), h('p', null, tp.trap.rule),
-        tp.trap.wrong_example ? h('p', null, h('span', { class: 'caption' }, t('lookup.grammar.wrong'), ' '), h('s', { lang: langAttr() }, tp.trap.wrong_example)) : null] }) : null,
+        tp.trap.wrong_example ? h('p', null, h('span', { class: 'caption' }, t('lookup.grammar.wrong'), ' '), h('s', { lang: langAttr(), dir: dirAttr() }, tp.trap.wrong_example)) : null] }) : null,
       h('ol', { class: 'lk-rules' }, tp.rules.map((/** @type {any} */ x) => h('li', { class: 'lk-rule' },
         h('p', { class: 'lk-rule-text' }, x.rule),
-        h('p', { class: 'lk-model', lang: langAttr() }, x.de),
-        x.wrong ? h('p', { class: 'lk-wrong' }, h('span', { class: 'caption' }, t('lookup.grammar.wrong'), ' '), h('s', { lang: langAttr() }, x.wrong)) : null))),
+        h('p', { class: 'lk-model', lang: langAttr(), dir: dirAttr() }, x.de),
+        x.wrong ? h('p', { class: 'lk-wrong' }, h('span', { class: 'caption' }, t('lookup.grammar.wrong'), ' '), h('s', { lang: langAttr(), dir: dirAttr() }, x.wrong)) : null))),
       conf.length ? h('section', { class: 'lk-sec' }, h('h2', null, t('lookup.grammar.confusable')),
         h('ul', { class: 'lk-list' }, conf.map((/** @type {any} */ c) => topicRow(c, '')))) : null,
       h('div', { class: 'row-actions' }, h('a', { class: 'btn btn-primary pressable', href: `#/practice/round?kind=topic:${encodeURIComponent(tp.id)}` }, t('lookup.grammar.practise'))));
@@ -554,7 +554,7 @@ export async function mount(el, ctx) {
         h('div', { class: 'lk-grid-scroll' }, h('table', { class: 'lk-grid' },
           h('thead', null, h('tr', null, h('td'), ['past', 'present', 'future'].map(x => h('th', { scope: 'col' }, t(`lookup.notes.${x}`))))),
           h('tbody', null, grid.map(row => h('tr', null, h('th', { scope: 'row' }, t(`lookup.notes.${row.aspect}`)),
-            row.cells.map(c => h('td', null, h('div', { lang: langAttr(), class: 'lk-grid-de' }, marked(c)), h('div', { class: 'lk-sub' }, c.en),
+            row.cells.map(c => h('td', null, h('div', { lang: langAttr(), dir: dirAttr(), class: 'lk-grid-de' }, marked(c)), h('div', { class: 'lk-sub' }, c.en),
               c.status !== 'form' ? h('div', { class: 'caption' }, t(c.status === 'none' ? 'lookup.notes.none' : 'lookup.notes.workaround')) : null)))))))) : null);
   }
 

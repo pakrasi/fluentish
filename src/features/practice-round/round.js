@@ -25,7 +25,7 @@ import { loadData, stateFor, session, saveAnswer, saveLogs, forecaster, tz, addA
 import { checkAnswer } from '../../services/claude.js';
 import { play as playAudio, stop as stopAudio, prefetchAudio } from '../../services/audio.js';
 import * as voice from '../../services/voice.js';
-import { bcp47 } from '../../core/lang.js';
+import { bcp47, dirAttr } from '../../core/lang.js';
 import { recallBar } from '../shared/recall-bar.js';
 import { Field } from '../../core/brand.js';
 import { readinessView } from './field.js';
@@ -188,8 +188,8 @@ export async function mountRound(el, ctx) {
   const tfill = h('span', { class: 'fill' });
   const tbar = h('div', { class: 'track pr-tbar', 'aria-hidden': 'true' }, tfill);
   const promptBox = h('div', { class: 'pr-promptbox' });
-  const prefill = h('span', { class: 'pr-prefill', lang: langAttr(), hidden: true });
-  const input = /** @type {HTMLTextAreaElement} */ (h('textarea', { class: 'answer-input', id: 'pr-input', rows: 1, lang: langAttr(), autocapitalize: 'off', autocomplete: 'off',
+  const prefill = h('span', { class: 'pr-prefill', lang: langAttr(), dir: dirAttr(), hidden: true });
+  const input = /** @type {HTMLTextAreaElement} */ (h('textarea', { class: 'answer-input', id: 'pr-input', rows: 1, lang: langAttr(), dir: dirAttr(), autocapitalize: 'off', autocomplete: 'off',
     spellcheck: 'false', enterkeyhint: 'go', 'aria-label': t('practice.answerLabel') }));
   input.setAttribute('autocorrect', 'off');
   const answerEl = h('div', { class: 'answer' }, prefill, input, checkMark());
@@ -322,8 +322,8 @@ export async function mountRound(el, ctx) {
     /** @type {any[]} */ const kids = [];
     if (it.card?.type) kids.push(wordMeta(it.card));
     if (it.task) kids.push(h('p', { class: 'pr-task' }, it.task));
-    if (it.partner) kids.push(h('p', { class: 'caption' }, t('practice.partner')), h('p', { class: 'pr-partner', lang: langAttr() }, `„${it.partner}“`));
-    if (it.gap || it.showGap) kids.push(h('p', { class: 'prompt', lang: langAttr() }, gapNodes(gapWindow(it.prompt, 20))));
+    if (it.partner) kids.push(h('p', { class: 'caption' }, t('practice.partner')), h('p', { class: 'pr-partner', lang: langAttr(), dir: dirAttr() }, `„${it.partner}“`));
+    if (it.gap || it.showGap) kids.push(h('p', { class: 'prompt', lang: langAttr(), dir: dirAttr() }, gapNodes(gapWindow(it.prompt, 20))));
     else kids.push(h('p', { class: 'prompt', lang: it.promptLang === 'de' ? 'de' : 'en' }, it.hl ? highlight(it.prompt, it.hl) : it.prompt));
     if (it.gloss) kids.push(h('p', { class: 'prompt-hint' }, it.gloss));
     if (it.source) kids.push(h('p', { class: 'caption pr-source' }, it.area === 'mistakes' ? t('practice.from.mistake', { src: it.source }) : it.source));
@@ -436,13 +436,13 @@ export async function mountRound(el, ctx) {
     const ex = c.ex;
     const play = ex ? h('button', { type: 'button', class: 'pr-play pressable', 'aria-label': t('practice.word.play'), onpointerdown: keep,
       onclick: async () => { if (!(await playAudio(ctx.content, ex))) readAloud(ex); } }, icon('play', { size: 16 })) : null;
-    return h('div', { class: 'pr-word' }, h('p', { lang: langAttr() }, h('b', null, c.head)),
-      ex ? h('p', { class: 'caption pr-word-ex' }, play, h('span', { lang: langAttr() }, ex), c.exEn ? ` (${c.exEn})` : null) : null,
+    return h('div', { class: 'pr-word' }, h('p', { lang: langAttr(), dir: dirAttr() }, h('b', null, c.head)),
+      ex ? h('p', { class: 'caption pr-word-ex' }, play, h('span', { lang: langAttr(), dir: dirAttr() }, ex), c.exEn ? ` (${c.exEn})` : null) : null,
       c.conf ? h('p', { class: 'caption' }, c.conf) : null);
   }
   function alsoMore(/** @type {string[]} */ list, lead = '') {
     return h('details', { class: 'pr-more' }, h('summary', { onpointerdown: keep, onclick: () => clearTimeout(auto) }, `${lead}${t('practice.more', { n: list.length })}`),
-      h('p', { lang: langAttr() }, list.join(' · ')));
+      h('p', { lang: langAttr(), dir: dirAttr() }, list.join(' · ')));
   }
   /** The device voice reads a text (the first of "a / b" alternatives). @param {string} text */
   function readAloud(text) { voice.say(String(text).replace(/\s*\/\s*.*$/, ''), bcp47(), { rate: 0.9 }); }
@@ -477,14 +477,14 @@ export async function mountRound(el, ctx) {
   function restLines(/** @type {any} */ g) {
     const r = g.rest, kids = [];
     if (r.junk) kids.push(h('p', { class: 'caption' }, t('practice.partial.junk')));
-    else if (r.ref) kids.push(h('p', { class: 'pr-diff answer-key pr-rest', lang: langAttr() }, h('span', { class: 'caption' }, isSituation(entry.item) ? t('practice.partial.situation') : t('practice.partial.rest')), ' ', wrapRanges(r.ref, r.marks || [], 'mark')));
-    if ((r.wrong || []).length) kids.push(h('p', { class: 'pr-diff', lang: langAttr() }, h('span', { class: 'caption' }, t('practice.you')), ' ', wrapRanges(g.input, r.wrong, 's')));
+    else if (r.ref) kids.push(h('p', { class: 'pr-diff answer-key pr-rest', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, isSituation(entry.item) ? t('practice.partial.situation') : t('practice.partial.rest')), ' ', wrapRanges(r.ref, r.marks || [], 'mark')));
+    if ((r.wrong || []).length) kids.push(h('p', { class: 'pr-diff', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, t('practice.you')), ' ', wrapRanges(g.input, r.wrong, 's')));
     kids.push(h('p', { class: 'caption' }, t('practice.partial.hard')));
     return kids;
   }
   function phraseHead(/** @type {any} */ g) {
     const [a, b] = t('practice.partial.right', { phrase: '\u0000' }).split('\u0000');
-    return h('p', { class: 'pr-res is-warn' }, a, h('b', { lang: langAttr() }, g.phrase || ''), b ?? '');
+    return h('p', { class: 'pr-res is-warn' }, a, h('b', { lang: langAttr(), dir: dirAttr() }, g.phrase || ''), b ?? '');
   }
   async function showRight(/** @type {any} */ g, /** @type {number} */ ms, /** @type {boolean} */ isNew) {
     const it = entry.item;
@@ -509,19 +509,19 @@ export async function mountRound(el, ctx) {
     const kids = [];
     if (head) kids.push(h('p', { class: ['pr-res', (late || umlaut || capSlip || veryLate || punct) ? 'is-warn' : 'is-ok'] }, head));
     if (punct) kids.push(h('p', { class: 'pr-rule' }, (g.punctMiss || []).map((/** @type {any} */ m) => t(`practice.punct.${m.code}`, { word: m.word || '' })).join(' ')),
-      h('p', { class: 'answer-key', lang: langAttr() }, it.model));
+      h('p', { class: 'answer-key', lang: langAttr(), dir: dirAttr() }, it.model));
     // a mistake from a correction: the rule is the point, so it shows on a right answer too
     if (it.area === 'mistakes' && it.rule) kids.push(h('p', { class: 'pr-rule' }, it.rule));
     // a preposition gap: the usage note is the point, so it shows after a right answer too
     if (it.usage) kids.push(h('p', { class: 'pr-rule' }, it.usage));
-    if (g.typos.length || capSlip || umlaut) kids.push(h('p', { class: 'pr-yours', lang: langAttr() }, markSlips(g)));
+    if (g.typos.length || capSlip || umlaut) kids.push(h('p', { class: 'pr-yours', lang: langAttr(), dir: dirAttr() }, markSlips(g)));
     const capHead = !isNew && !veryLate && !late && !umlaut && capSlip;
     if (capSlip && !capHead) kids.push(h('p', { class: 'caption' }, t('practice.capsNote', { list: [...new Set(g.capMiss.map((/** @type {any} */ x) => x.expected))].join(', ') })));
     if (situation) kids.push(h('p', { class: 'caption' }, t('practice.checkedPhrase')));
     // a word card's other accepted form ("bewerben" for "sich bewerben") is not news after a right answer
     const others = it.card?.type ? [] : g.alsoCorrect || [];
     if (others.length && !clean) kids.push(h('p', { class: 'pr-also' }, h('span', { class: 'caption' }, situation ? t('practice.otherWays') : t('practice.alsoCorrect')), ' ',
-      h('span', { lang: langAttr() }, others.slice(0, 2).join(' · ')), others.length > 2 ? alsoMore(others.slice(2), '') : null));
+      h('span', { lang: langAttr(), dir: dirAttr() }, others.slice(0, 2).join(' · ')), others.length > 2 ? alsoMore(others.slice(2), '') : null));
     replace(fb, kids, wordCard(it));
     setButtons();
     sayAnswer(g.input);
@@ -555,8 +555,8 @@ export async function mountRound(el, ctx) {
     const situation = it.kind === 'topic' || it.kind === 'reply';
     const df = situation && g.pattern ? phraseLines(full(typed), right, g.pattern) : diffLines(full(typed), right);
     const kids = [h('p', { class: 'pr-res is-bad' }, t('practice.wrong')),
-      h('p', { class: 'pr-diff', lang: langAttr() }, h('span', { class: 'caption' }, t('practice.you')), ' ', df.you),
-      h('p', { class: 'pr-diff answer-key', lang: langAttr() }, h('span', { class: 'caption' }, t('practice.rightIs')), ' ', df.right),
+      h('p', { class: 'pr-diff', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, t('practice.you')), ' ', df.you),
+      h('p', { class: 'pr-diff answer-key', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, t('practice.rightIs')), ' ', df.right),
       situation ? h('p', { class: 'caption' }, t('practice.checkedPhrase')) : null];
     if (g.alsoCorrect?.length) kids.push(h('p', { class: 'pr-also' }, alsoMore(g.alsoCorrect, t('practice.otherWays') + ' ')));
     // a Schreiben phrase's own rule names its sentence; elsewhere the trap's general rule comes first
@@ -604,8 +604,8 @@ export async function mountRound(el, ctx) {
     const g = grade(typed || '-');
     record({ ok: false, ms: elapsed() });
     const kids = [];
-    if (typed) kids.push(h('p', { class: 'caption' }, t('practice.youHad'), ' ', h('span', { lang: langAttr() }, full(typed))));
-    kids.push(h('p', { class: 'pr-res' }, t('practice.oneWay')), h('p', { class: 'answer-key', lang: langAttr() }, (g.target || g.right)));
+    if (typed) kids.push(h('p', { class: 'caption' }, t('practice.youHad'), ' ', h('span', { lang: langAttr(), dir: dirAttr() }, full(typed))));
+    kids.push(h('p', { class: 'pr-res' }, t('practice.oneWay')), h('p', { class: 'answer-key', lang: langAttr(), dir: dirAttr() }, (g.target || g.right)));
     if (g.alsoCorrect?.length) kids.push(h('p', { class: 'pr-also' }, alsoMore(g.alsoCorrect, t('practice.alsoCorrect') + ' ')));
     replace(fb, kids, wordCard(entry.item));
     fxWrong(answerEl, { revealEl: reveal, haptics: false });
@@ -620,10 +620,10 @@ export async function mountRound(el, ctx) {
     const kids = [];
     if (typed) {
       const df = diffLines(full(typed), (g.target || g.right));
-      kids.push(h('p', { class: 'pr-diff', lang: langAttr() }, h('span', { class: 'caption' }, t('practice.you')), ' ', df.you),
-        h('p', { class: ['answer-key', 'pr-study', String(g.target || g.right).length > 90 && 'is-long'], lang: langAttr() }, df.right));
-    } else kids.push(h('p', { class: ['answer-key', 'pr-study', String(g.target || g.right).length > 90 && 'is-long'], lang: langAttr() }, (g.target || g.right)));
-    if (g.alsoCorrect?.length) kids.push(h('p', { class: 'pr-also' }, h('span', { class: 'caption' }, t('practice.alsoCorrect')), ' ', h('span', { lang: langAttr() }, g.alsoCorrect.slice(0, 2).join(' · ')), g.alsoCorrect.length > 2 ? alsoMore(g.alsoCorrect.slice(2)) : null));
+      kids.push(h('p', { class: 'pr-diff', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, t('practice.you')), ' ', df.you),
+        h('p', { class: ['answer-key', 'pr-study', String(g.target || g.right).length > 90 && 'is-long'], lang: langAttr(), dir: dirAttr() }, df.right));
+    } else kids.push(h('p', { class: ['answer-key', 'pr-study', String(g.target || g.right).length > 90 && 'is-long'], lang: langAttr(), dir: dirAttr() }, (g.target || g.right)));
+    if (g.alsoCorrect?.length) kids.push(h('p', { class: 'pr-also' }, h('span', { class: 'caption' }, t('practice.alsoCorrect')), ' ', h('span', { lang: langAttr(), dir: dirAttr() }, g.alsoCorrect.slice(0, 2).join(' · ')), g.alsoCorrect.length > 2 ? alsoMore(g.alsoCorrect.slice(2)) : null));
     if (entry.item.rule) kids.push(h('p', { class: 'pr-rule' }, entry.item.rule));
     replace(fb, kids, wordCard(entry.item));
     reveal.classList.add('is-open');
@@ -762,7 +762,7 @@ function drawDone(el, ctx, data, round, backTo) {
   const p1 = (/** @type {number} */ x) => (100 * (x || 0)).toFixed(1);
   const short = (/** @type {any} */ it) => it.model || it.prompt;
   const list = (/** @type {string} */ title, /** @type {any[]} */ items) => items.length ? h('section', { class: 'pr-list' }, h('h2', null, title),
-    h('ul', { class: 'list' }, items.map(it => h('li', { class: 'list-item', lang: langAttr() }, short(it))))) : null;
+    h('ul', { class: 'list' }, items.map(it => h('li', { class: 'list-item', lang: langAttr(), dir: dirAttr() }, short(it))))) : null;
   // the exam items known before and after the round: the one definition of known (domain/knowledge.js, Where you
   // stand), which a round never lowers; filled in once the knowledge score is loaded
   const bar = recallBar(0, a.coverage, t('practice.area.bar', { recall: '', seen: `${p1(a.coverage)} %` }));
@@ -784,7 +784,7 @@ function drawDone(el, ctx, data, round, backTo) {
       more ? againLink(ctx, anotherHref, t('practice.another', { min: roundMinutes(C.ROUND) }), { id: 'pr-again' }) : null,
       h('a', { class: ['btn', 'pressable', !more && 'btn-primary'], href: '#/today' }, t('practice.doneToday'))),
     sum.back.length ? h('section', { class: 'pr-list' }, h('h2', null, t('practice.list.back')), h('p', { class: 'caption' }, t('practice.list.backSub')),
-      h('ul', { class: 'list' }, sum.back.map((/** @type {any} */ it) => h('li', { class: 'list-item' }, h('span', { lang: langAttr() }, short(it)),
+      h('ul', { class: 'list' }, sum.back.map((/** @type {any} */ it) => h('li', { class: 'list-item' }, h('span', { lang: langAttr(), dir: dirAttr() }, short(it)),
         sum.fixed.includes(it) ? h('span', { class: 'caption' }, t('practice.list.fixedTag')) : null)))) : null,
     list(t('practice.list.new'), sum.news)));
   if (view) {

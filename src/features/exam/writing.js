@@ -6,7 +6,7 @@ import { at } from '../../domain/examdef.js';
 import { draft, saveDraft, submitAttempt, writingsOf, sectionOf } from './data.js';
 import { clockBar, backLink, confirmPanel } from './parts.js';
 import { fmt } from './timer.js';
-import { langAttr } from '../../core/lang.js';
+import { langAttr, dirAttr } from '../../core/lang.js';
 
 /** @param {HTMLElement} el @param {any} ctx @param {{ exam: any, n: number, ex: any, def: any }} o */
 export function runSchreiben(el, ctx, { exam, n, ex, def }) {
@@ -34,7 +34,7 @@ export function runSchreiben(el, ctx, { exam, n, ex, def }) {
   let saveT = /** @type {any} */ (null);
   const area = (/** @type {string} */ k) => {
     const ta = /** @type {HTMLTextAreaElement} */ (h('textarea', {
-      class: 'ex-write', 'aria-label': tx('taskArea', { i: KEYS.indexOf(k) + 1 }), spellcheck: 'false', autocorrect: 'off', autocapitalize: 'sentences', autocomplete: 'off', lang: langAttr(),
+      class: 'ex-write', 'aria-label': tx('taskArea', { i: KEYS.indexOf(k) + 1 }), spellcheck: 'false', autocorrect: 'off', autocapitalize: 'sentences', autocomplete: 'off', lang: langAttr(), dir: dirAttr(),
       oninput: (/** @type {Event} */ e) => {
         texts[k] = /** @type {HTMLTextAreaElement} */ (e.target).value;
         upd(k);
@@ -82,7 +82,7 @@ export function runSchreiben(el, ctx, { exam, n, ex, def }) {
     saveDraft(store, n, module, { answers: { ...texts } });
     const leftMs = clock.left();
     replace(confirmSlot, confirmPanel({
-      lang: langAttr(), title: tx('submitQ', { module: def.name }),
+      lang: langAttr(), dir: dirAttr(), title: tx('submitQ', { module: def.name }),
       lines: [...KEYS.map((/** @type {string} */ k, /** @type {number} */ i) => tx('taskWords', { i: i + 1, n: wordCount(texts[k]), target: S[k].words })), leftMs > 0 ? tx('left', { t: fmt(leftMs / 1000) }) : tx('timeUp'), tx('final')],
       yes: tx('submit'), no: tx('keepGoing'), onNo: () => replace(confirmSlot),
       onYes: async () => {
@@ -102,7 +102,7 @@ export function runSchreiben(el, ctx, { exam, n, ex, def }) {
   const onVis = () => { if (document.visibilityState === 'hidden') flushText(); };
   addEventListener('pagehide', flushText);
   document.addEventListener('visibilitychange', onVis);
-  replace(el, h('div', { class: 'ex-run', lang: langAttr() },
+  replace(el, h('div', { class: 'ex-run', lang: langAttr(), dir: dirAttr() },
     h('header', { class: 'ex-runhead' }, backLink(`#/exam/${n}`, t('exam.backTest', { n })),
       h('div', { class: 'ex-runhead-end' }, clock.el, h('button', { type: 'button', class: 'btn btn-primary pressable ex-submit-top', onclick: () => askSubmit() }, tx('submit')))),
     over, h('h1', { class: 'ex-run-title' }, def.name, h('span', { class: 'caption' }, ` · ${ex.topic}`)), cover, body));

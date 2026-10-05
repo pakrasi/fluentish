@@ -15,7 +15,7 @@ import { gradeRow } from './grade4.js';
 import { play, css, reduced, finishAll } from './fx.js';
 import { loadContent, knowledge, verbsFor, saveAnswer, whenFor, logCalib, cardsOf, bare } from './data.js';
 import { play as playAudio } from '../../services/audio.js';
-import { langAttr } from '../../core/lang.js';
+import { langAttr, dirAttr } from '../../core/lang.js';
 
 const W = 358, H = 330, CX = W / 2, CY = H / 2 - 4, RX = 142, RY = 128;
 const GRADE_KEY = /** @type {Record<string, string>} */ ({ T: 'build.grade.T', M: 'build.grade.M', O: 'build.grade.O' });
@@ -60,7 +60,7 @@ export function compassStage({ d, t, root, plain = false, onPick }) {
   };
   const chip = (/** @type {any} */ p, /** @type {string} */ cls) => {
     const g = plain ? 'none' : gradeOf(p.id);
-    const b = /** @type {HTMLButtonElement} */ (h('button', { type: 'button', class: [cls, 'pressable', !plain && g === 'none' && 'is-none'], lang: langAttr(), 'data-p': p.id, 'aria-pressed': 'false', 'aria-label': name(p), tabindex: '-1',
+    const b = /** @type {HTMLButtonElement} */ (h('button', { type: 'button', class: [cls, 'pressable', !plain && g === 'none' && 'is-none'], lang: langAttr(), dir: dirAttr(), 'data-p': p.id, 'aria-pressed': 'false', 'aria-label': name(p), tabindex: '-1',
       onclick: () => onPick(p.id, b) }, h('span', { class: 'wb-chip-t' }, p.id), plain ? null : gm(g)));
     chips.set(p.id, b);
     return b;
@@ -106,20 +106,20 @@ export function mechLine(d, p, root, t) {
   const v = verbsFor(d, root, p.id)[0] || d.c.verbs.find((/** @type {any} */ x) => x.pre === p.id && x.kind === p.kind);
   if (!v) return h('p', { class: 'wb-mech' }, t(p.kind === 's' ? 'build.mech.sepPlain' : 'build.mech.insepPlain'));
   const r = d.R.get(v.root);
-  if (p.kind === 's') return h('p', { class: 'wb-mech' }, h('b', null, t('build.mech.sep')), ' ', h('span', { lang: langAttr() }, `er ${r.pres3} … `, h('b', null, p.id)), '. ',
-    h('b', null, t('build.mech.geIn')), ' ', h('span', { lang: langAttr() }, v.pp), '.');
-  return h('p', { class: 'wb-mech' }, h('b', null, t('build.mech.insep')), ' ', h('span', { lang: langAttr() }, `er ${p.id}${r.pres3}`), '. ', h('b', null, t('build.mech.noGe')), ' ', h('span', { lang: langAttr() }, v.pp), '.');
+  if (p.kind === 's') return h('p', { class: 'wb-mech' }, h('b', null, t('build.mech.sep')), ' ', h('span', { lang: langAttr(), dir: dirAttr() }, `er ${r.pres3} … `, h('b', null, p.id)), '. ',
+    h('b', null, t('build.mech.geIn')), ' ', h('span', { lang: langAttr(), dir: dirAttr() }, v.pp), '.');
+  return h('p', { class: 'wb-mech' }, h('b', null, t('build.mech.insep')), ' ', h('span', { lang: langAttr(), dir: dirAttr() }, `er ${p.id}${r.pres3}`), '. ', h('b', null, t('build.mech.noGe')), ' ', h('span', { lang: langAttr(), dir: dirAttr() }, v.pp), '.');
 }
 
 /** The prefix card. @param {any} d @param {any} p @param {string} root @param {any} t */
 export function prefixCard(d, p, root, t) {
   const tag = t(p.kind === 's' ? 'build.kind.s' : p.kind === 'i' ? 'build.kind.i' : 'build.kind.d');
   return h('div', { class: 'wb-card wb-pcard' },
-    h('div', { class: 'wb-ptitle' }, h('span', { class: 'wb-pname', lang: langAttr() }, `${p.id}-`), h('span', { class: 'wb-tag' }, tag)),
+    h('div', { class: 'wb-ptitle' }, h('span', { class: 'wb-pname', lang: langAttr(), dir: dirAttr() }, `${p.id}-`), h('span', { class: 'wb-tag' }, tag)),
     h('p', { class: 'wb-core-line' }, p.core),
     mechLine(d, p, root, t),
-    p.senses.length ? h('ul', { class: 'wb-senses' }, p.senses.map((/** @type {any} */ s) => h('li', null, h('span', null, s.en), h('span', { lang: langAttr() }, s.ex.join(', '))))) : null,
-    p.opp && p.opp.length ? h('p', { class: 'caption' }, t('build.opposites'), ' ', p.opp.map((/** @type {any} */ [o, x], /** @type {number} */ i) => [i ? ' · ' : '', h('span', { lang: langAttr() }, `${o}-`), ` (${x})`])) : null,
+    p.senses.length ? h('ul', { class: 'wb-senses' }, p.senses.map((/** @type {any} */ s) => h('li', null, h('span', null, s.en), h('span', { lang: langAttr(), dir: dirAttr() }, s.ex.join(', '))))) : null,
+    p.opp && p.opp.length ? h('p', { class: 'caption' }, t('build.opposites'), ' ', p.opp.map((/** @type {any} */ [o, x], /** @type {number} */ i) => [i ? ' · ' : '', h('span', { lang: langAttr(), dir: dirAttr() }, `${o}-`), ` (${x})`])) : null,
     p.word ? h('p', { class: 'caption' }, p.word) : null);
 }
 
@@ -147,7 +147,7 @@ export function verbReveal({ d, v, guess, t, ctx }) {
     cal ? h('p', { class: 'wb-calnote' }, cal) : null,
     h('p', { class: 'wb-how' }, h('b', null, `${t(`build.how.${v.how}`)}: `), v.why),
     h('div', { class: 'wb-exrow' }, say, exampleNode(v)),
-    h('p', { class: 'caption' }, v.exEn, ' · ', h('span', { lang: langAttr() }, `${v.aux} ${v.pp}`), r ? null : null),
+    h('p', { class: 'caption' }, v.exEn, ' · ', h('span', { lang: langAttr(), dir: dirAttr() }, `${v.aux} ${v.pp}`), r ? null : null),
     dual ? h('p', { class: 'caption wb-noaudio' }, t('build.reveal.noAudio')) : null);
 }
 
@@ -179,7 +179,7 @@ export async function mountCompass(el, ctx) {
   const kindOf = (/** @type {string} */ pre) => { const vs = verbsFor(d, st.root, pre); const v = vs.find((/** @type {any} */ x) => x.id === st.alt) || vs[0]; const p = d.P.get(pre); return v ? v.kind : p.kind === 'd' ? 's' : p.kind; };
 
   function drawRoots() {
-    replace(rootRow, roots.map(r => h('button', { type: 'button', class: 'chip pressable', lang: langAttr(), 'aria-pressed': String(r.id === st.root),
+    replace(rootRow, roots.map(r => h('button', { type: 'button', class: 'chip pressable', lang: langAttr(), dir: dirAttr(), 'aria-pressed': String(r.id === st.root),
       onclick: () => { st.root = r.id; st.pre = null; st.alt = null; drawRoots(); drawAll(); url(); } },
       h('span', { class: `wb-sq is-${rootState(r)}`, 'aria-hidden': 'true' }), r.id, h('span', { class: 'sr-only' }, ` (${t(`build.state.${rootState(r)}`)})`))));
   }
@@ -220,8 +220,8 @@ export async function mountCompass(el, ctx) {
     const r = d.R.get(st.root);
     if (!st.pre) {
       replace(panel, h('div', { class: 'wb-card wb-pcard' },
-        h('div', { class: 'wb-ptitle' }, h('span', { class: 'wb-pname', lang: langAttr() }, r.id), h('span', { class: 'wb-tag' }, t('build.root'))),
-        h('p', { class: 'wb-core-line' }, r.en), h('p', { class: 'caption', lang: langAttr() }, `${r.pres3} · ${r.pret} · ${r.aux.replace('/', ' / ')} ${r.pp}`),
+        h('div', { class: 'wb-ptitle' }, h('span', { class: 'wb-pname', lang: langAttr(), dir: dirAttr() }, r.id), h('span', { class: 'wb-tag' }, t('build.root'))),
+        h('p', { class: 'wb-core-line' }, r.en), h('p', { class: 'caption', lang: langAttr(), dir: dirAttr() }, `${r.pres3} · ${r.pret} · ${r.aux.replace('/', ' / ')} ${r.pp}`),
         h('p', { class: 'caption' }, t('build.compass.tap')),
         legend(t)));
       return;
@@ -244,8 +244,8 @@ export async function mountCompass(el, ctx) {
     }));
     const show = h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: () => reveal() }, t('build.predict.show'));
     const pre = h('div', { class: 'wb-calib' }, h('p', { class: 'label' }, t('build.predict.ask')), chips, h('div', { class: 'row-actions' }, show));
-    card.append(...[sw, h('p', { class: 'wb-vq', lang: langAttr() }, `${v.inf}?`),
-      h('p', { class: 'wb-vsum' }, h('span', { lang: langAttr() }, `${v.pre}-`), ` ${p.short}  +  `, h('span', { lang: langAttr() }, r.id), ` ${r.en}`), pre].filter(Boolean));
+    card.append(...[sw, h('p', { class: 'wb-vq', lang: langAttr(), dir: dirAttr() }, `${v.inf}?`),
+      h('p', { class: 'wb-vsum' }, h('span', { lang: langAttr(), dir: dirAttr() }, `${v.pre}-`), ` ${p.short}  +  `, h('span', { lang: langAttr(), dir: dirAttr() }, r.id), ` ${r.en}`), pre].filter(Boolean));
     function reveal() {
       pre.remove();
       const id = `PD:${v.id}`;

@@ -31,7 +31,7 @@ import { forecaster, tz } from '../shared/data.js';
 import { recallBar } from '../shared/recall-bar.js';
 import { knowButton, isKnowKey, knowCard, knownResult } from '../shared/iknow.js';
 import { speech } from '../../services/speech.js';
-import { asrLocale } from '../../core/lang.js';
+import { asrLocale, dirAttr } from '../../core/lang.js';
 import { session } from '../shared/data.js';
 import { langAttr } from '../../core/lang.js';
 
@@ -198,7 +198,7 @@ async function mountRound(el, ctx) {
 
   const meta = h('span', { class: 'label' });
   const setup = h('p', { class: 'sim-setup' });
-  const line = h('p', { class: 'sim-line', lang: langAttr(), id: 'sim-line' });
+  const line = h('p', { class: 'sim-line', lang: langAttr(), dir: dirAttr(), id: 'sim-line' });
   // the line is heard first; its words wait behind this button (journey #10)
   const wordsBtn = h('button', { type: 'button', class: 'btn btn-quiet pressable sim-words', 'aria-expanded': 'false', 'aria-controls': 'sim-line', onclick: () => showWords() }, t('practice.sim.showWords'));
   const playBtn = h('button', { type: 'button', class: 'sim-play pressable', 'aria-label': t('practice.sim.play'), onclick: () => playOther() }, wave());
@@ -206,7 +206,7 @@ async function mountRound(el, ctx) {
   const status = h('p', { class: 'caption sim-status', 'aria-live': 'polite' });
   const goal = h('p', { class: 'sim-goal' });
   const say = h('p', { class: 'caption sim-say' }, t('practice.sim.say'));
-  const answerLine = h('p', { class: 'sim-line', lang: langAttr() });
+  const answerLine = h('p', { class: 'sim-line', lang: langAttr(), dir: dirAttr() });
   const ansPlay = h('button', { type: 'button', class: 'sim-play pressable', 'aria-label': t('practice.sim.playAnswer'), onclick: () => playAnswer() }, wave());
   const you = h('div', { class: 'sim-bubble sim-you' }, answerLine, ansPlay);
   const also = h('div', { class: 'sim-also' });
@@ -277,7 +277,7 @@ async function mountRound(el, ctx) {
     replace(answerLine, pre, h('mark', { class: 'sim-chunk' }, chunk), post);
     replace(also, ...(more.length ? [h('p', { class: 'label' }, t('practice.sim.also')), ...more.map(a => {
       const [p1, c1, p2] = S.chunkParts(a);
-      return h('p', { class: 'sim-alt', lang: langAttr() }, p1, h('mark', { class: 'sim-chunk' }, c1), p2);
+      return h('p', { class: 'sim-alt', lang: langAttr(), dir: dirAttr() }, p1, h('mark', { class: 'sim-chunk' }, c1), p2);
     })] : []));
     reveal.classList.remove('is-open');
     say.hidden = false;
@@ -349,7 +349,7 @@ async function mountRound(el, ctx) {
     const row = (/** @type {string} */ name, /** @type {any} */ v) => (v === 'not-in' || v == null ? null
       : h('tr', null, h('td', null, name), h('td', { class: v === true ? 'is-ok' : v === false ? 'is-bad' : 'caption' }, CHECK[String(v)] || String(v))));
     replace(heardSlot, h('div', { class: 'sim-heard' },
-      h('p', { class: 'caption' }, t('practice.speak.youSaid')), h('p', { class: 'pr-heard', lang: langAttr() }, `„${chk.text}“`),
+      h('p', { class: 'caption' }, t('practice.speak.youSaid')), h('p', { class: 'pr-heard', lang: langAttr(), dir: dirAttr() }, `„${chk.text}“`),
       h('table', { class: 'pr-checks' }, h('tbody', null, row(t('practice.speak.c.phrase'), chk.chunk), row(t('practice.speak.c.verbFinalShort'), chk.verbFinal), row(t('practice.speak.c.fuerVor'), chk.fuerVor))),
       h('p', { class: 'caption' }, t('practice.sim.mic.grade'))));
     doReveal(chk.suggest);
@@ -504,7 +504,7 @@ function drawDone(el, ctx, bank, byId, round, backTo, pick) {
     const a = x.item.answers[0];
     const tone = x.g >= 3 ? 'is-good' : x.g === 2 ? 'is-hard' : 'is-again';
     return h('li', { class: ['sim-map-b', tone, i % 2 ? 'is-right' : 'is-left'], style: { '--i': String(Math.min(i, 16)) }, title },
-      h('span', { class: 'sim-map-chunk', lang: langAttr() }, S.chunkParts(a)[1]),
+      h('span', { class: 'sim-map-chunk', lang: langAttr(), dir: dirAttr() }, S.chunkParts(a)[1]),
       h('span', { class: 'caption' }, t(`practice.sim.g${x.g}`)));
   });
   const good = sum.counts.good + sum.counts.easy;

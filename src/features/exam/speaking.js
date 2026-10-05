@@ -20,7 +20,7 @@ import { clockBar, backLink, confirmPanel, arrowKeys } from './parts.js';
 import { fmt } from './timer.js';
 import { stampMs } from '../../domain/grade.js';
 import { at, fill } from '../../domain/examdef.js';
-import { langAttr } from '../../core/lang.js';
+import { langAttr, dirAttr } from '../../core/lang.js';
 
 /** @param {HTMLElement} el @param {any} ctx @param {{ exam: any, n: number, ex: any, def: any }} o */
 export function runSprechen(el, ctx, { exam, n, ex, def }) {
@@ -61,7 +61,7 @@ export function runSprechen(el, ctx, { exam, n, ex, def }) {
     h('span', { class: 'ex-nav-grow' }),
     next ? h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: () => setPhase(next) }, tx('next')) : null);
   const notesArea = (/** @type {'notes1' | 'notes'} */ field, /** @type {string} */ ph) => {
-    const ta = /** @type {HTMLTextAreaElement} */ (h('textarea', { class: 'ex-write ex-notes', 'aria-label': tx('notes'), placeholder: ph, spellcheck: 'false', autocorrect: 'off', lang: langAttr(),
+    const ta = /** @type {HTMLTextAreaElement} */ (h('textarea', { class: 'ex-write ex-notes', 'aria-label': tx('notes'), placeholder: ph, spellcheck: 'false', autocorrect: 'off', lang: langAttr(), dir: dirAttr(),
       oninput: (/** @type {Event} */ e) => { st[field] = /** @type {HTMLTextAreaElement} */ (e.target).value; save(); } }));
     ta.value = st[field] || '';
     return ta;
@@ -170,21 +170,21 @@ export function runSprechen(el, ctx, { exam, n, ex, def }) {
     }
     drawList();
     replace(box, h('div', { class: 'ex-rec-row' }, rec.supported ? startBtn : null, rec.supported ? stopBtn : null, h('span', { class: 'ex-rec-dot', 'aria-hidden': 'true' }), timeEl, fileBtn, fileIn),
-      h('p', { class: 'caption', lang: langAttr() }, hint), status, list);
+      h('p', { class: 'caption', lang: langAttr(), dir: dirAttr() }, hint), status, list);
     return box;
   }
 
   const drawTabs = () => replace(tabs, PHASES.map(([p, nm]) => h('button', {
-    type: 'button', role: 'tab', 'aria-selected': String(st.phase === p), disabled: recording && st.phase !== p, class: 'ex-tab pressable', lang: langAttr(), onclick: () => setPhase(p),
+    type: 'button', role: 'tab', 'aria-selected': String(st.phase === p), disabled: recording && st.phase !== p, class: 'ex-tab pressable', lang: langAttr(), dir: dirAttr(), onclick: () => setPhase(p),
   }, nm, PARTS.includes(p) ? h('span', { class: ['ex-dot', st.recorded[p] && 'is-full'], role: 'img', 'aria-label': st.recorded[p] ? tx('rec.has') : tx('rec.hasNot') }) : null)));
 
   function draw() {
     drawTabs();
     clock.el.hidden = st.phase !== 'prep';
-    const instr = (/** @type {string} */ s) => h('p', { class: 'ex-instr', lang: langAttr() }, s);
+    const instr = (/** @type {string} */ s) => h('p', { class: 'ex-instr', lang: langAttr(), dir: dirAttr() }, s);
     let c;
     if (st.phase === 'prep') {
-      c = h('div', { lang: langAttr() }, instr(tx('prepIntro')),
+      c = h('div', { lang: langAttr(), dir: dirAttr() }, instr(tx('prepIntro')),
         h('section', { class: 'ex-block' }, h('p', { class: 'label' }, tx('s1Title')), h('p', null, P.teil1.situation),
           h('ul', { class: 'ex-points' }, P.teil1.points.map((/** @type {string} */ p) => h('li', null, p))),
           h('p', { class: 'label' }, tx('notesFor', { n: 1 })), notesArea('notes1', tx('notes1Placeholder'))),
@@ -203,7 +203,7 @@ export function runSprechen(el, ctx, { exam, n, ex, def }) {
         : replace(cueBox, h('p', { class: 'caption' }, tx('cueOf', { i: idx + 1, n: cues.length })), h('p', { class: 'ex-cue-state' }, playing ? tx('partnerSpeaks') : tx('yourTurn')), ...hidden(cues[idx]));
       const step = (/** @type {number} */ dx) => { idx = Math.max(0, Math.min(cues.length - 1, idx + dx)); drawCue(true); playCue(mediaUrl(exam, n, fill(PLAN.cues.file, { i: idx + 1 })), () => drawCue(false)); };
       drawCue(false);
-      c = h('div', { lang: langAttr() }, instr(tx(PLAN.instruction)),
+      c = h('div', { lang: langAttr(), dir: dirAttr() }, instr(tx(PLAN.instruction)),
         h('section', { class: 'ex-block' }, h('p', null, P.teil1.situation), h('ul', { class: 'ex-points' }, P.teil1.points.map((/** @type {string} */ p) => h('li', null, p))),
           st.notes1 ? h('p', { class: 'caption ex-pre' }, st.notes1) : null),
         h('section', { class: 'ex-block' }, cueBox, h('div', { class: 'row-actions' },
@@ -218,7 +218,7 @@ export function runSprechen(el, ctx, { exam, n, ex, def }) {
       const folie = h('div', { class: 'ex-folie' });
       const show = () => replace(folie, h('p', { class: 'caption' }, tx('slideOf', { i: f + 1, n: slides.length })), h('p', { class: 'ex-folie-t' }, String(P.teil2.topics[st.topic]).replace(new RegExp(PRES.topicPrefix || '^$'), '')), h('p', null, slides[f]));
       show();
-      c = h('div', { lang: langAttr() }, instr(tx(PRES.instruction)), folie,
+      c = h('div', { lang: langAttr(), dir: dirAttr() }, instr(tx(PRES.instruction)), folie,
         h('div', { class: 'row-actions' }, h('button', { type: 'button', class: 'btn pressable', onclick: () => { f = Math.max(0, f - 1); show(); } }, tx('slidePrev')), h('button', { type: 'button', class: 'btn pressable', onclick: () => { f = Math.min(slides.length - 1, f + 1); show(); } }, tx('slideNext'))),
         st.notes ? h('section', { class: 'ex-block' }, h('p', { class: 'label' }, tx('yourNotes')), h('p', { class: 'ex-pre' }, st.notes)) : null,
         recorderBox(PRES.id, P.teil2.topics[st.topic], tx(PRES.recordHint)),
@@ -227,7 +227,7 @@ export function runSprechen(el, ctx, { exam, n, ex, def }) {
       // one question set per presentation topic, each with its recordings
       const set = QUES.questions[Math.min(st.topic, QUES.questions.length - 1)];
       const qs = P.teil3[set.from];
-      c = h('div', { lang: langAttr() }, instr(tx(QUES.instruction)),
+      c = h('div', { lang: langAttr(), dir: dirAttr() }, instr(tx(QUES.instruction)),
         h('section', { class: 'ex-block' }, qs.map((/** @type {string} */ q, /** @type {number} */ i) => h('div', { class: 'ex-item' },
           h('button', { type: 'button', class: 'btn pressable', onclick: () => playCue(mediaUrl(exam, n, fill(set.file, { i: i + 1 }))) }, icon('play', { size: 18 }), tx('question', { i: i + 1 })), ...hidden(q)))),
         recorderBox(QUES.id, P.teil2.topics[st.topic], tx(QUES.recordHint)),
@@ -251,13 +251,13 @@ export function runSprechen(el, ctx, { exam, n, ex, def }) {
           ctx.go(`/exam/${n}/${module}/review/${r.id}`, { replace: true });
         } catch (e) { busy = false; console.error(e); ctx.toast(tx('submitFailed')); }
       };
-      c = h('div', { lang: langAttr() },
+      c = h('div', { lang: langAttr(), dir: dirAttr() },
         h('section', { class: 'ex-block' }, h('p', { class: 'label' }, tx('recordings')),
           h('p', null, PARTS.map((/** @type {string} */ p) => `${teil(p)} ${st.recorded[p] ? tx('recorded') : tx('missing')}`).join(' · ')),
           h('p', { class: 'caption' }, tx('afterSubmit'))),
         h('div', { class: 'ex-nav' }, h('button', { type: 'button', class: 'btn pressable', onclick: () => setPhase(PARTS[PARTS.length - 1]) }, tx('back')), h('span', { class: 'ex-nav-grow' }),
           h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: () => replace(confirmSlot, confirmPanel({
-            lang: langAttr(), title: missing.length ? tx('missingQ', { list: missing.map(teil).join(tx('and')) }) : tx('submitQ', { module: def.name }),
+            lang: langAttr(), dir: dirAttr(), title: missing.length ? tx('missingQ', { list: missing.map(teil).join(tx('and')) }) : tx('submitQ', { module: def.name }),
             lines: [tx('final')], yes: tx('submitSprechen'), no: tx('keepGoing'), onNo: () => replace(confirmSlot), onYes: finish,
           })) }, tx('submitSprechen'))),
         confirmSlot);
@@ -275,7 +275,7 @@ export function runSprechen(el, ctx, { exam, n, ex, def }) {
   document.addEventListener('visibilitychange', onVis);
   // a take cut off by a reload is kept as a recording
   recoverTake(ctx).then(info => { if (info) { ctx.toast(tx('rec.recovered')); draw(); } }).catch(() => {});
-  replace(el, h('div', { class: 'ex-run', lang: langAttr() },
+  replace(el, h('div', { class: 'ex-run', lang: langAttr(), dir: dirAttr() },
     h('header', { class: 'ex-runhead' }, backLink(`#/exam/${n}`, t('exam.backTest', { n })), h('div', { class: 'ex-runhead-end' }, clock.el)),
     h('h1', { class: 'ex-run-title' }, def.name, h('span', { class: 'caption' }, ` · ${ex.topic}`)),
     tabs, content));

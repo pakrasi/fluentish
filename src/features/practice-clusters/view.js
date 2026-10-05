@@ -34,7 +34,7 @@ import { marked } from '../../data/known.js';
 import { skipsNew } from '../../domain/known.js';
 import { knowButton, isKnowKey, knowCard, knownResult } from '../shared/iknow.js';
 import { drawClusterDone } from '../shared/cluster-layout.js';
-import { langAttr } from '../../core/lang.js';
+import { langAttr, dirAttr } from '../../core/lang.js';
 
 const back = (/** @type {string} */ href, /** @type {string} */ text) => h('a', { class: 'pr-backlink pressable', href }, icon('prev', { size: 16 }), text);
 
@@ -134,7 +134,7 @@ async function mountSay(el, ctx, key) {
   const prompt = h('p', { class: 'prompt' });
   const wmeta = h('div', { class: 'cl-wmeta' });
   const sayHint = h('p', { class: 'caption sim-say' }, t('practice.clusters.sayHint'));
-  const answer = h('p', { class: 'answer-key', lang: langAttr() });
+  const answer = h('p', { class: 'answer-key', lang: langAttr(), dir: dirAttr() });
   const extra = h('div', { class: 'cl-say-extra' });
   const reveal = h('div', { class: 'reveal-answer' }, h('div', null, answer, extra));
   const card = h('article', { class: 'card pr-card' }, h('div', { class: 'card-meta' }, meta), wmeta, task, prompt, sayHint, reveal);
@@ -160,12 +160,12 @@ async function mountSay(el, ctx, key) {
     it = items.get(round.queue[round.i].id) || itemFor(round.queue[round.i].id, data.ix, data.c, { t, fx: data.fx });
     meta.textContent = t(`practice.clusters.types.${cl.type}`);
     task.textContent = it.task || '';
-    prompt.lang = it.promptLang === 'de' ? 'de' : 'en';
+    prompt.lang = it.promptLang === 'de' ? langAttr() : 'en'; prompt.dir = it.promptLang === 'de' ? dirAttr() : 'ltr';
     prompt.textContent = it.gap ? it.prompt.replace('___', '…') : it.prompt;
     answer.textContent = it.gap ? it.model : (it.card ? it.card.head : it.model);
     replace(wmeta, it.card?.type ? wordMeta(it.card) : null);
     replace(extra, it.usage ? h('p', { class: 'pr-rule' }, it.usage) : null, it.card?.type ? wordPanel(it.card, { head: false })
-      : it.card && it.card.ex ? h('p', { class: 'caption' }, h('span', { lang: langAttr() }, it.card.ex), it.card.exEn ? ` (${it.card.exEn})` : null) : null);
+      : it.card && it.card.ex ? h('p', { class: 'caption' }, h('span', { lang: langAttr(), dir: dirAttr() }, it.card.ex), it.card.exEn ? ` (${it.card.exEn})` : null) : null);
     reveal.classList.remove('is-open'); sayHint.hidden = false;
     showBtn.hidden = false; grades.reset();
     const cards = store.cards(DECK) || {};

@@ -15,7 +15,7 @@ import { levelWords, sample, passes, CHECK_N } from './pick.js';
 import { gradeAnswer } from '../shared/grade.js';
 import { loadData } from '../shared/data.js';
 import { markWords, unmarkCards } from '../../data/known.js';
-import { langAttr } from '../../core/lang.js';
+import { langAttr, dirAttr } from '../../core/lang.js';
 
 const LEVELS = ['A1', 'A2'];
 const keep = (/** @type {Event} */ e) => e.preventDefault();
@@ -61,8 +61,8 @@ export async function mountCheck(el, ctx, level) {
     const count = h('span', { class: 'caption tnum' });
     const meta = h('span', { class: 'label' }, t('practice.check.label', { level: lv }));
     const task = h('p', { class: 'pr-task' });
-    const prompt = h('p', { class: 'prompt', lang: 'en' });
-    const input = /** @type {HTMLTextAreaElement} */ (h('textarea', { class: 'answer-input', rows: 1, lang: langAttr(), autocapitalize: 'off', autocomplete: 'off', spellcheck: 'false', enterkeyhint: 'go', 'aria-label': t('practice.answerLabel'), placeholder: t('practice.ph.german') }));
+    const prompt = h('p', { class: 'prompt', lang: 'en', dir: 'ltr' });
+    const input = /** @type {HTMLTextAreaElement} */ (h('textarea', { class: 'answer-input', rows: 1, lang: langAttr(), dir: dirAttr(), autocapitalize: 'off', autocomplete: 'off', spellcheck: 'false', enterkeyhint: 'go', 'aria-label': t('practice.answerLabel'), placeholder: t('practice.ph.german') }));
     input.setAttribute('autocorrect', 'off');
     const answerEl = h('div', { class: 'answer' }, input);
     const fb = h('div', { class: 'pr-fb', 'aria-live': 'polite' });
@@ -100,7 +100,7 @@ export async function mountCheck(el, ctx, level) {
       states[i] = ok ? 'done' : 'miss';
       if (!ok) missed.push(pick[i]);
       replace(fb, ok ? h('p', { class: 'pr-res is-ok' }, t('practice.check.right')) : h('p', { class: 'pr-res is-bad' }, t('practice.wrong')),
-        ok ? null : h('p', { class: 'pr-diff answer-key', lang: langAttr() }, h('span', { class: 'caption' }, t('practice.rightIs')), ' ', it.model));
+        ok ? null : h('p', { class: 'pr-diff answer-key', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, t('practice.rightIs')), ' ', it.model));
       if (ok) fxCorrect(answerEl, { hold: 0 }); else fxWrong(answerEl, { revealEl: reveal });
       reveal.classList.add('is-open');
       replace(primary, t('practice.check.next'), h('kbd', null, '↵'));

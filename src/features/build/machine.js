@@ -18,7 +18,7 @@ import { FORMS, sentenceOf, bare } from '../../domain/wordbuild.js';
 import { backLink } from './compass.js';
 import { play, css, reduced, crossfade } from './fx.js';
 import { loadContent } from './data.js';
-import { langAttr } from '../../core/lang.js';
+import { langAttr, dirAttr } from '../../core/lang.js';
 
 const VERBISH = new Set(['R', 'P', 'G', 'Z']);
 const TILE = /** @type {Record<string, string>} */ ({ R: 'is-verb', P: 'is-part', G: 'is-slot', Z: 'is-slot', X: 'is-aux', C: 'is-conj', '.': 'is-punct' });
@@ -32,7 +32,7 @@ function dotted(s) {
 
 /** A stress pattern ("um|FAH|ren") as syllables with a dot under the stressed one. @param {string} s */
 export function stressPattern(s) {
-  return h('span', { class: 'wb-syll', lang: langAttr() }, s.split('|').map((x, i) => [i ? h('span', { class: 'wb-sylsep', 'aria-hidden': 'true' }, '·') : null,
+  return h('span', { class: 'wb-syll', lang: langAttr(), dir: dirAttr() }, s.split('|').map((x, i) => [i ? h('span', { class: 'wb-sylsep', 'aria-hidden': 'true' }, '·') : null,
     /\p{Lu}/u.test(x) && x.length > 0 && (x === x.toUpperCase()) ? h('span', { class: 'wb-sv wb-stressed' }, x.toLowerCase(), h('span', { class: 'wb-dot', 'aria-hidden': 'true' })) : x.toLowerCase()]));
 }
 
@@ -42,7 +42,7 @@ export function stressPattern(s) {
  */
 export function buildLine(f, form) {
   const toks = f.forms[form] || [];
-  const line = h('div', { class: 'wb-line', lang: langAttr() });
+  const line = h('div', { class: 'wb-line', lang: langAttr(), dir: dirAttr() });
   let grp = /** @type {HTMLElement | null} */ (null);
   toks.forEach(([k, text], i) => {
     const prev = toks[i - 1], next = toks[i + 1];
@@ -131,7 +131,7 @@ export function swapLine(stage, f, form, t, { from = null } = {}) {
     const r = /** @type {HTMLElement | null} */ (line.querySelector('[data-k="R"]'));
     if (r) {
       const rr = r.getBoundingClientRect();
-      const g = h('span', { class: 'wb-t is-slot wb-ghost', lang: langAttr(), 'aria-hidden': 'true' }, h('span', { class: 'wb-ttxt' }, 'ge'));
+      const g = h('span', { class: 'wb-t is-slot wb-ghost', lang: langAttr(), dir: dirAttr(), 'aria-hidden': 'true' }, h('span', { class: 'wb-ttxt' }, 'ge'));
       stage.append(g);
       g.style.left = `${rr.left - sr.left - 6}px`; g.style.top = `${rr.top - sr.top - 44}px`;
       play(g, [{ transform: 'translateY(-10px)', opacity: 0 }, { transform: 'translateY(16px)', opacity: 1, offset: 0.4 }, { transform: 'translateY(4px)', opacity: 1, offset: 0.55 }, { transform: 'translateY(-14px)', opacity: 0 }],
@@ -144,7 +144,7 @@ export function swapLine(stage, f, form, t, { from = null } = {}) {
 /** The tray: the infinitive, the start of every sentence. @param {any} f @param {any} t */
 export function tray(f, t) {
   const word = bare(f.inf);
-  const inf = h('span', { class: ['wb-t', 'is-verb', 'wb-inf'], lang: langAttr() }, f.kind === 's'
+  const inf = h('span', { class: ['wb-t', 'is-verb', 'wb-inf'], lang: langAttr(), dir: dirAttr() }, f.kind === 's'
     ? h('span', { class: 'wb-ttxt' }, h('b', null, f.pre), h('span', { class: 'wb-joint-t', 'aria-hidden': 'true' }, '|'), word.slice(f.pre.length))
     : h('span', { class: 'wb-ttxt' }, h('span', { class: 'wb-wpre' }, f.pre), word.slice(f.pre.length)));
   const el = h('div', { class: 'wb-tray' }, h('span', { class: 'caption' }, t('build.machine.verb')), inf, h('span', { class: 'wb-en' }, f.en), f.stress ? stressPattern(f.stress) : null);
@@ -187,7 +187,7 @@ export async function mountMachine(el, ctx, frameId) {
     if (!f.forms[st.form]) st.form = 'pres';
     const label = (/** @type {any} */ x) => x.pair ? `${bare(x.inf)} (${x.en})` : bare(x.inf);
     const picks = h('div', { class: 'wb-chips', role: 'group', 'aria-label': t('build.machine.verbs') }, d.c.frames.map((/** @type {any} */ x) =>
-      h('button', { type: 'button', class: 'chip pressable', lang: langAttr(), 'aria-pressed': String(x.id === f.id), onclick: () => { st.id = x.id; url(); draw(); } }, label(x))));
+      h('button', { type: 'button', class: 'chip pressable', lang: langAttr(), dir: dirAttr(), 'aria-pressed': String(x.id === f.id), onclick: () => { st.id = x.id; url(); draw(); } }, label(x))));
     const forms = h('div', { class: 'wb-chips is-wrap', role: 'group', 'aria-label': t('build.machine.forms') }, FORMS.filter(x => f.forms[x]).map(x =>
       h('button', { type: 'button', class: 'chip pressable', 'aria-pressed': String(x === st.form), onclick: (/** @type {Event} */ e) => {
         st.form = x; url();

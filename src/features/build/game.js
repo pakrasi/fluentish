@@ -15,7 +15,7 @@ import { gameDeck, gameRight, logGame } from '../../domain/wordbuild-plan.js';
 import { backLink } from './compass.js';
 import { play, css, reduced, nudge } from './fx.js';
 import { loadContent, GAME, addActivity } from './data.js';
-import { langAttr } from '../../core/lang.js';
+import { langAttr, dirAttr } from '../../core/lang.js';
 
 const LIMIT = 60_000;
 const UNTIMED_N = 20;
@@ -43,12 +43,12 @@ export async function mountGame(el, ctx) {
     const fill = h('i');
     const bar = h('div', { class: 'wb-timer', role: 'progressbar', 'aria-label': t('build.game.left'), 'aria-valuemin': '0', 'aria-valuemax': '60', 'aria-valuenow': '60', hidden: untimed }, fill);
     const scoreEl = h('b', { class: 'tnum' }, '0');
-    const word = h('div', { class: 'wb-gword', lang: langAttr() });
+    const word = h('div', { class: 'wb-gword', lang: langAttr(), dir: dirAttr() });
     const meaning = h('p', { class: 'wb-gmeaning' });
-    const ex = h('p', { class: 'wb-gex', lang: langAttr(), 'aria-live': 'polite' });
+    const ex = h('p', { class: 'wb-gex', lang: langAttr(), dir: dirAttr(), 'aria-live': 'polite' });
     const card = h('div', { class: 'wb-card wb-gcard' }, word, meaning, ex);
-    const bS = h('button', { type: 'button', class: 'btn pressable', onclick: () => answer(true) }, t('build.game.splits'), h('small', { lang: langAttr() }, 'ich stelle … auf'), h('kbd', null, '←'));
-    const bI = h('button', { type: 'button', class: 'btn pressable', onclick: () => answer(false) }, t('build.game.stays'), h('small', { lang: langAttr() }, 'ich bestelle'), h('kbd', null, '→'));
+    const bS = h('button', { type: 'button', class: 'btn pressable', onclick: () => answer(true) }, t('build.game.splits'), h('small', { lang: langAttr(), dir: dirAttr() }, 'ich stelle … auf'), h('kbd', null, '←'));
+    const bI = h('button', { type: 'button', class: 'btn pressable', onclick: () => answer(false) }, t('build.game.stays'), h('small', { lang: langAttr(), dir: dirAttr() }, 'ich bestelle'), h('kbd', null, '→'));
     const untimedBox = h('label', { class: 'wb-toggle' }, h('input', { type: 'checkbox', checked: untimed, onchange: (/** @type {Event} */ e) => {
       store.update(GAME, (/** @type {any} */ s) => ({ ...(s || {}), untimed: /** @type {HTMLInputElement} */ (e.target).checked }), {}); start();
     } }), t('build.game.untimed'));
@@ -116,7 +116,7 @@ export async function mountGame(el, ctx) {
         backLink(back, ctx.query.get('from') === 'today' ? t('build.toToday') : t('build.title')),
         h('div', { class: 'page-head' }, h('h1', null, t('build.game.title'))),
         h('div', { class: 'wb-donefig' }, fig, h('p', { class: 'caption' }, untimed ? t('build.game.ofUntimed', { n }) : t('build.game.of', { n }))),
-        misses.length ? h('section', { class: 'wb-missed' }, h('h2', null, t('build.missed')), h('div', { class: 'wb-misslist' }, misses.map(m => h('p', { lang: langAttr() }, m.ex,
+        misses.length ? h('section', { class: 'wb-missed' }, h('h2', null, t('build.missed')), h('div', { class: 'wb-misslist' }, misses.map(m => h('p', { lang: langAttr(), dir: dirAttr() }, m.ex,
           h('span', null, `${m.word}: ${t(m.kind === 's' ? 'build.game.isSplit' : 'build.game.isStay')}`))))) : null,
         misses.length ? h('p', { class: 'caption' }, t('build.game.feeds')) : null,
         h('div', { class: 'wb-done-actions' }, h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: start }, t('build.game.again')),

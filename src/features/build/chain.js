@@ -14,7 +14,7 @@ import { backLink } from './compass.js';
 import { play, css, reduced, nudge } from './fx.js';
 import { haptic } from '../../core/motion.js';
 import { loadContent } from './data.js';
-import { langAttr } from '../../core/lang.js';
+import { langAttr, dirAttr } from '../../core/lang.js';
 
 const NS = 'http://www.w3.org/2000/svg';
 const INDENT = 22;
@@ -42,7 +42,7 @@ export function drawTree({ d, t, chain, shown, answered, guess, box, onGrow, onA
     tn.kids.forEach(walk);
     const hidden = tn.kids.filter((/** @type {any} */ k) => !shown.has(k.node.id));
     if (hidden.length && interactive && onGrow) {
-      const g = h('div', { class: 'wb-grow' }, hidden.map((/** @type {any} */ k) => h('button', { type: 'button', class: 'pressable', lang: langAttr(),
+      const g = h('div', { class: 'wb-grow' }, hidden.map((/** @type {any} */ k) => h('button', { type: 'button', class: 'pressable', lang: langAttr(), dir: dirAttr(),
         'aria-label': t('build.chain.add', { piece: growLabel(k.node, d, t), word: tn.node.word }), onclick: () => onGrow(k.node) }, `${tn.node.word} + ${growLabel(k.node, d, t)}`)));
       g.style.paddingInlineStart = `${(tn.depth + 1) * INDENT}px`;
       box.append(g);
@@ -51,18 +51,18 @@ export function drawTree({ d, t, chain, shown, answered, guess, box, onGrow, onA
   function nodeRow(/** @type {any} */ tn) {
     const n = tn.node;
     const pc = pieces(n);
-    const word = h('span', { class: 'wb-w', lang: langAttr() });
+    const word = h('span', { class: 'wb-w', lang: langAttr(), dir: dirAttr() });
     if (n.side === 'pre' && pc.add) word.append(h('span', { class: 'wb-add' }, pc.add), pc.after);
     else word.append(pc.before, pc.add ? h('span', { class: 'wb-add' }, pc.add) : '');
     const asked = n.art && guess && !answered.has(n.id) && interactive;
-    const art = n.art ? (asked ? h('span', { class: 'wb-art is-ask', 'aria-label': t('build.chain.artUnset') }, '?') : h('span', { class: 'wb-art', lang: langAttr() }, n.art)) : null;
+    const art = n.art ? (asked ? h('span', { class: 'wb-art is-ask', 'aria-label': t('build.chain.artUnset') }, '?') : h('span', { class: 'wb-art', lang: langAttr(), dir: dirAttr() }, n.art)) : null;
     const cls = h('span', { class: 'wb-cls' }, h('span', null, t(`build.cls.${n.cls}`)));
     const body = h('div', { class: 'wb-wbody' },
       h('div', { class: 'wb-wline' }, art, word, cls, n.rare ? h('span', { class: 'caption' }, t('build.chain.rare')) : null),
       h('span', { class: 'wb-wen' }, n.en),
       n.note && !asked ? h('span', { class: 'wb-wnote' }, n.note) : null,
       asked ? h('div', { class: 'wb-artguess', role: 'group', 'aria-label': t('build.chain.artFor', { word: n.word }) },
-        ['der', 'die', 'das'].map(a => h('button', { type: 'button', class: 'pressable', lang: langAttr(), onclick: (/** @type {Event} */ e) => onAnswer && onAnswer(n, a, /** @type {HTMLElement} */ (e.currentTarget)) }, a))) : null);
+        ['der', 'die', 'das'].map(a => h('button', { type: 'button', class: 'pressable', lang: langAttr(), dir: dirAttr(), onclick: (/** @type {Event} */ e) => onAnswer && onAnswer(n, a, /** @type {HTMLElement} */ (e.currentTarget)) }, a))) : null);
     body.style.paddingInlineStart = `${tn.depth * INDENT}px`;
     return h('div', { class: ['wb-node', n.art && 'is-noun', fresh === n.id && 'is-fresh'], 'data-id': n.id, 'data-parent': n.from || '' }, body);
   }
@@ -137,13 +137,13 @@ export function landArticle(row, delay = 0) {
 
 /** The article chart and the adjective endings. @param {any} d @param {any} t */
 export function ruleChart(d, t) {
-  const col = (/** @type {string} */ art) => h('div', { class: 'wb-col' }, h('h3', { lang: langAttr() }, art),
+  const col = (/** @type {string} */ art) => h('div', { class: 'wb-col' }, h('h3', { lang: langAttr(), dir: dirAttr() }, art),
     d.c.suffixes.filter((/** @type {any} */ s) => s.art === art).map((/** @type {any} */ s) => h('div', { class: 'wb-sitem' },
-      h('span', { class: 'wb-sfx', 'data-s': s.id, lang: langAttr() }, s.label), h('p', { lang: langAttr(), class: 'wb-sx' }, s.ex.split(' → ')[1]), h('p', null, s.short))));
+      h('span', { class: 'wb-sfx', 'data-s': s.id, lang: langAttr(), dir: dirAttr() }, s.label), h('p', { lang: langAttr(), dir: dirAttr(), class: 'wb-sx' }, s.ex.split(' → ')[1]), h('p', null, s.short))));
   return h('section', { class: 'wb-rules stack' }, h('h2', null, t('build.chain.chart')), h('div', { class: 'wb-chart' }, col('der'), col('die'), col('das')),
     h('h2', null, t('build.chain.adj')),
     h('div', { class: 'wb-adjs' }, d.c.suffixes.filter((/** @type {any} */ s) => s.cls === 'adj').map((/** @type {any} */ s) =>
-      h('div', { class: 'wb-adjrow' }, h('b', { lang: langAttr(), class: 'wb-sfx', 'data-s': s.id }, s.label), h('span', null, s.rule), h('span', { lang: langAttr(), class: 'wb-sx' }, s.ex)))));
+      h('div', { class: 'wb-adjrow' }, h('b', { lang: langAttr(), dir: dirAttr(), class: 'wb-sfx', 'data-s': s.id }, s.label), h('span', null, s.rule), h('span', { lang: langAttr(), dir: dirAttr(), class: 'wb-sx' }, s.ex)))));
 }
 
 /** Underline an ending in the chart for 1.3 s (accent: you, now). @param {HTMLElement} root @param {string} id */
@@ -173,7 +173,7 @@ export async function mountChains(el, ctx, chainId) {
     chips, toggle, box, chart));
   const url = () => history.replaceState(history.state, '', `#/practice/build/suffixes/${encodeURIComponent(st.id)}`);
   function drawChips() {
-    replace(chips, chains.map((/** @type {any} */ c) => h('button', { type: 'button', class: 'chip pressable', lang: langAttr(), 'aria-pressed': String(c.id === st.id),
+    replace(chips, chains.map((/** @type {any} */ c) => h('button', { type: 'button', class: 'chip pressable', lang: langAttr(), dir: dirAttr(), 'aria-pressed': String(c.id === st.id),
       onclick: () => { st.id = c.id; st.shown = new Set(['n0']); st.answered = new Map(); url(); drawChips(); draw(); } }, c.title)));
   }
   function draw(/** @type {string | null} */ fresh = null) {

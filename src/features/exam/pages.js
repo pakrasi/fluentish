@@ -12,7 +12,7 @@ import * as T from './timer.js';
 import { when } from './review.js';
 import { fill } from '../../core/motion.js';
 import { clip } from '../../services/audio.js';
-import { langAttr, bcp47 } from '../../core/lang.js';
+import { langAttr, bcp47, dirAttr } from '../../core/lang.js';
 
 /** @param {any} exam */
 const modulesOf = exam => exam.modules.map((/** @type {any} */ m) => m.id);
@@ -78,7 +78,7 @@ export async function examHome(el, ctx, exam) {
       // the same picture as Today's module bars: the latest score on a track with the pass tick
       const score = lastA ? readScore(lastA) : null;
       return h('li', { class: 'ex-sum' }, h('div', { class: 'mbar', role: 'group', 'aria-label': score == null ? t('today.moduleNone', { name: m.name }) : t('today.moduleScore', { name: m.name, score, max: m.max, pass: m.pass }) },
-        h('span', { class: 'mbar-name' }, h('span', { lang: langAttr() }, m.name), h('span', { class: 'caption block' }, detail)),
+        h('span', { class: 'mbar-name' }, h('span', { lang: langAttr(), dir: dirAttr() }, m.name), h('span', { class: 'caption block' }, detail)),
         h('span', { class: ['track', score != null && score < m.pass && 'below'], dataset: { p: String(score == null ? 0 : score / m.max) } }, h('span', { class: 'fill' }), h('i', { class: 'pass', style: { '--at': `${(m.pass / m.max) * 100}%` } })),
         h('span', { class: ['mbar-val', 'tnum', score == null && 'none'] }, score == null ? (st && !uncorrected ? st.text : t('today.noScore')) : `${score}/${m.max}`)));
     });
@@ -95,7 +95,7 @@ export async function examHome(el, ctx, exam) {
       return h('a', { class: 'row pressable ex-testrow', href: `#/exam/${n}` },
         h('span', { class: 'ex-testno tnum' }, String(n)),
         h('span', { class: 'row-main' }, h('span', { class: 'row-title' }, t('exam.test', { n }), fresh ? h('span', { class: 'ex-new' }, t('exam.new')) : null),
-          h('span', { class: 'row-detail', lang: langAttr() }, topics[n] || ' '), statusBar(states.map((/** @type {any} */ x) => (x ? x.state : null)))),
+          h('span', { class: 'row-detail', lang: langAttr(), dir: dirAttr() }, topics[n] || ' '), statusBar(states.map((/** @type {any} */ x) => (x ? x.state : null)))),
         trail ? h('span', { class: 'row-trail tnum' }, trail) : null);
     });
     const after = c.phase === 'after';
@@ -142,7 +142,7 @@ export async function testPage(el, ctx, exam, n) {
       const uncorrected = kindOf(exam, m.id) === 'writing' && a && !a.remote && !feedbackFor(store, exam.id, a).cur.length;
       return h('li', { class: 'ex-mod' },
         h('div', { class: 'ex-mod-main' },
-          h('p', { class: 'row-title' }, h('span', { lang: langAttr() }, m.name), h('span', { class: 'caption' }, ` · ${minutesLabel(m, t)}`)),
+          h('p', { class: 'row-title' }, h('span', { lang: langAttr(), dir: dirAttr() }, m.name), h('span', { class: 'caption' }, ` · ${minutesLabel(m, t)}`)),
           h('p', { class: ['ex-status', st.state && `is-${st.state}`] }, st.text, st.fresh ? h('span', { class: 'ex-new' }, t('exam.new')) : null),
           a ? h('p', { class: 'caption' }, when(a.submitted_at)) : null),
         h('div', { class: 'ex-mod-actions' },
@@ -156,7 +156,7 @@ export async function testPage(el, ctx, exam, n) {
     });
     replace(el, h('div', { class: 'ex-test' },
       backLink('#/exam', t('tab.exam')),
-      h('header', { class: 'page-head ex-test-head' }, h('h1', null, t('exam.test', { n })), h('p', { class: 'lead', lang: langAttr() }, ex.topic)),
+      h('header', { class: 'page-head ex-test-head' }, h('h1', null, t('exam.test', { n })), h('p', { class: 'lead', lang: langAttr(), dir: dirAttr() }, ex.topic)),
       h('ul', { class: 'list ex-mods' }, rows), confirmSlot,
       h('p', { class: 'caption' }, t('exam.lastCounts'))));
   };
@@ -180,14 +180,14 @@ export function startPanel(el, ctx, { exam, n, module, ex, def, onStart }) {
   if (d?.clock && T.stale(d.clock, Date.now())) {
     const confirmSlot = h('div');
     replace(el, h('div', { class: 'ex-start' }, back,
-      h('h1', { lang: langAttr() }, def.name),
-      h('div', { class: 'ex-start-card', lang: langAttr() },
+      h('h1', { lang: langAttr(), dir: dirAttr() }, def.name),
+      h('div', { class: 'ex-start-card', lang: langAttr(), dir: dirAttr() },
         h('p', null, tx('staleStarted', { module: def.name, when: new Intl.DateTimeFormat(bcp47(), { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }).format(new Date(d.clock.start)) })),
         h('p', { class: 'caption' }, tx('staleRules')),
         h('div', { class: 'row-actions' },
           h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: () => { saveDraft(store, n, module, { clock: T.continueStale(/** @type {T.Clock} */ (d.clock), Date.now(), def.minutes) }); onStart(); } }, tx('continue')),
           h('button', { type: 'button', class: 'btn pressable', onclick: () => replace(confirmSlot, confirmPanel({
-            lang: langAttr(), title: tx('restartQ', { module: def.name }), lines: [tx('restartDetail', { min: def.minutes })], yes: tx('restart'), no: tx('keepGoing'),
+            lang: langAttr(), dir: dirAttr(), title: tx('restartQ', { module: def.name }), lines: [tx('restartDetail', { min: def.minutes })], yes: tx('restart'), no: tx('keepGoing'),
             onNo: () => replace(confirmSlot), onYes: () => { saveDraft(store, n, module, { clock: T.begin(Date.now()) }); onStart(); },
           })) }, tx('restart'))),
         confirmSlot)));
@@ -204,15 +204,15 @@ export function startPanel(el, ctx, { exam, n, module, ex, def, onStart }) {
   const retake = !!latest(store, exam.id).get(`${n}:${module}`);
   const go = () => { saveDraft(store, n, module, { clock: T.begin(Date.now()) }); onStart(); };
   /** @type {ReturnType<typeof clip> | null} */ let check = null;
-  const soundCheck = sec.soundCheck ? h('button', { type: 'button', class: 'btn pressable', lang: langAttr(), onclick: () => {
+  const soundCheck = sec.soundCheck ? h('button', { type: 'button', class: 'btn pressable', lang: langAttr(), dir: dirAttr(), onclick: () => {
     check?.stop();
     check = clip(mediaUrl(exam, n, sec.soundCheck));
     check.result.then(r => { if (r === 'blocked' || r === 'error') ctx.toast(tx('audioBlocked')); });
   } }, tx('soundCheck')) : null;
   replace(el, h('div', { class: 'ex-start' }, back,
-    h('h1', { lang: langAttr() }, def.name),
-    h('p', { class: 'caption', lang: langAttr() }, speaking ? tx('startSpeaking', { topic: ex.topic, prep: sec.prepMinutes, min: def.minutes }) : tx('startMinutes', { topic: ex.topic, min: def.minutes })),
-    h('div', { class: 'ex-start-card', lang: langAttr() },
+    h('h1', { lang: langAttr(), dir: dirAttr() }, def.name),
+    h('p', { class: 'caption', lang: langAttr(), dir: dirAttr() }, speaking ? tx('startSpeaking', { topic: ex.topic, prep: sec.prepMinutes, min: def.minutes }) : tx('startMinutes', { topic: ex.topic, min: def.minutes })),
+    h('div', { class: 'ex-start-card', lang: langAttr(), dir: dirAttr() },
       h('table', { class: 'ex-teile' }, h('tbody', null, info.lines.map(([a, b]) => h('tr', null, h('td', null, a), h('td', { class: 'tnum' }, b))))),
       h('p', { class: 'caption' }, info.rules),
       retake ? h('p', { class: 'caption' }, tx('retake')) : null,

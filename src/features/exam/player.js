@@ -9,7 +9,7 @@ import { icon } from '../../core/icons.js';
 import { fmt } from './timer.js';
 import { plays, usePlay } from './data.js';
 import { track } from '../../services/audio.js';
-import { langAttr } from '../../core/lang.js';
+import { langAttr, dirAttr } from '../../core/lang.js';
 
 /** One runner's players. @param {(busy: boolean) => void} onBusy */
 export function playerGroup(onBusy) {
@@ -39,7 +39,7 @@ export function player({ group, store, n, id, url, limit, readSeconds = 0, repla
   const left = h('span', { class: 'ex-plays caption tnum', 'aria-live': 'polite' });
   const bar = h('i');
   const time = h('span', { class: 'caption tnum' });
-  const note = h('p', { class: 'caption ex-play-note', lang: langAttr() });
+  const note = h('p', { class: 'caption ex-play-note', lang: langAttr(), dir: dirAttr() });
   let playing = false, starting = false, broken = false;
   /** @type {number | null} */ let countdown = null;
   const used = () => plays(store, n)[id]?.used || 0;
@@ -48,7 +48,7 @@ export function player({ group, store, n, id, url, limit, readSeconds = 0, repla
     refresh() {
       const busyElsewhere = group.owner && group.owner !== me;
       replace(btn, icon(playing ? 'speaker' : remaining() > 0 ? 'play' : 'check', { size: 18 }),
-        h('span', { lang: langAttr() }, playing ? t('playing') : countdown ? t('reading') : remaining() > 0 ? t('play') : t('noPlays')));
+        h('span', { lang: langAttr(), dir: dirAttr() }, playing ? t('playing') : countdown ? t('reading') : remaining() > 0 ? t('play') : t('noPlays')));
       btn.disabled = broken || playing || starting || !!countdown || remaining() <= 0 || !!busyElsewhere;
       // a live region: touch it only when the words change, or screen readers repeat it on every timeupdate
       const txt = broken ? t('audioMissing') : remaining() > 0 ? t('playsLeft', { n: remaining() }) : t('playsDone');
@@ -72,7 +72,7 @@ export function player({ group, store, n, id, url, limit, readSeconds = 0, repla
     if (!readSeconds || used() > 0) return playNow();
     let s = readSeconds;
     group.take(me);
-    const skip = h('button', { type: 'button', class: 'btn btn-quiet pressable', lang: langAttr(), onclick: () => go() }, t('skipReading'));
+    const skip = h('button', { type: 'button', class: 'btn btn-quiet pressable', lang: langAttr(), dir: dirAttr(), onclick: () => go() }, t('skipReading'));
     const draw = () => replace(note, t('readingLeft', { n: s }), ' ', skip);
     const go = () => { if (countdown) clearInterval(countdown); countdown = null; note.textContent = ''; group.release(me); playNow(); };
     countdown = /** @type {any} */ (setInterval(() => { s--; if (s <= 0) go(); else draw(); }, 1000));

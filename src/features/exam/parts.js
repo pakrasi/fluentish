@@ -3,7 +3,7 @@ import { h, replace, announce } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
 import * as T from './timer.js';
 import { draft, saveDraft } from './data.js';
-import { langAttr } from '../../core/lang.js';
+import { langAttr, dirAttr } from '../../core/lang.js';
 
 /** The back link at the top of every exam screen ("← Test 3"). @param {string} href @param {string} text */
 export const backLink = (href, text) => h('a', { class: 'ex-back pressable', href }, icon('prev', { size: 18 }), h('span', null, text));
@@ -22,7 +22,7 @@ export function clockBar({ ctx, tx, n, module, minutes, countUp = false, label =
   save();
   const text = h('span', { class: 'ex-clock-t tnum', role: 'timer', 'aria-live': 'off' });
   const btn = h('button', { type: 'button', class: 'btn btn-quiet ex-clock-btn pressable' });
-  const el = h('div', { class: 'ex-clock' }, label ? h('span', { class: 'ex-clock-l', lang: langAttr() }, label) : null, text, btn);
+  const el = h('div', { class: 'ex-clock' }, label ? h('span', { class: 'ex-clock-l', lang: langAttr(), dir: dirAttr() }, label) : null, text, btn);
   let lastSave = Date.now();
   const said = new Set();
   let stopped = false;
@@ -118,13 +118,13 @@ export const num = n => h('span', { class: 'ex-num tnum' }, String(n));
 
 /**
  * An inline confirm panel (no native dialogs): title, lines, a primary and a quiet action.
- * @param {{ title: string, lines?: any[], yes: string, no: string, onYes: () => any, onNo: () => void, danger?: boolean, lang?: string }} o
+ * @param {{ title: string, lines?: any[], yes: string, no: string, onYes: () => any, onNo: () => void, danger?: boolean, lang?: string, dir?: string }} o
  */
-export function confirmPanel({ title, lines = [], yes, no, onYes, onNo, danger = false, lang }) {
+export function confirmPanel({ title, lines = [], yes, no, onYes, onNo, danger = false, lang, dir }) {
   // focus goes back to what opened the panel when it closes with "no"
   const opener = /** @type {HTMLElement | null} */ (document.activeElement);
   const yesBtn = h('button', { type: 'button', class: ['btn', danger ? 'btn-danger' : 'btn-primary', 'pressable'], onclick: async () => { yesBtn.disabled = true; try { await onYes(); } finally { yesBtn.disabled = false; } } }, yes);
-  const el = h('div', { class: 'ex-confirm', role: 'alertdialog', 'aria-modal': 'false', 'aria-labelledby': 'ex-confirm-t', lang: lang || null },
+  const el = h('div', { class: 'ex-confirm', role: 'alertdialog', 'aria-modal': 'false', 'aria-labelledby': 'ex-confirm-t', lang: lang || null, dir: dir || null },
     h('p', { class: 'ex-confirm-title', id: 'ex-confirm-t' }, title),
     lines.map(l => h('p', { class: 'caption' }, l)),
     h('div', { class: 'row-actions' }, yesBtn, h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => { onNo(); if (opener && opener.isConnected) opener.focus(); } }, no)));

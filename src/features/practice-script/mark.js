@@ -19,7 +19,7 @@ import { lemmaOf, glossOf, headOf } from './lemma.js';
 import { getMeanings } from './meanings.js';
 import { say, hasVoice } from './voice.js';
 import { back, sheet, fullScreen } from './ui.js';
-import { langAttr } from '../../core/lang.js';
+import { langAttr, dirAttr } from '../../core/lang.js';
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx @param {any} script0 @param {string | null} sectionId */
 export async function mountMark(el, ctx, script0, sectionId) {
@@ -43,7 +43,7 @@ export async function mountMark(el, ctx, script0, sectionId) {
 
   // ---------- the text ----------
   /** @type {Map<HTMLElement, {sent: any, tok: any, cls: any}>} */ const words = new Map();
-  const textEl = h('div', { class: 'sc-text', lang: langAttr() });
+  const textEl = h('div', { class: 'sc-text', lang: langAttr(), dir: dirAttr() });
   function drawText() {
     words.clear();
     const marked = markedLemmas();
@@ -119,7 +119,7 @@ export async function mountMark(el, ctx, script0, sectionId) {
     const n = new Set(ms.map((/** @type {any} */ m) => m.cardId)).size;
     if (!pending) countTo(countEl, n, { duration: 420 });
     const recent = [...ms].reverse().map((/** @type {any} */ m) => m.lemma).filter((/** @type {string} */ x, /** @type {number} */ i, /** @type {string[]} */ a) => a.indexOf(x) === i).slice(0, 3);
-    replace(peekList, recent.map((l, i) => h('span', { class: ['sc-tray-lemma', pending && i === 0 && 'is-pending'], lang: langAttr() }, l)));
+    replace(peekList, recent.map((l, i) => h('span', { class: ['sc-tray-lemma', pending && i === 0 && 'is-pending'], lang: langAttr(), dir: dirAttr() }, l)));
     trayBtn.setAttribute('aria-label', t('practice.script.mark.trayLabel', { n }));
   }
   /** The flying word arrived: the lemma fades in where it landed, the count lands. */
@@ -199,7 +199,7 @@ export async function mountMark(el, ctx, script0, sectionId) {
       const target = peekList.querySelector('.sc-tray-lemma.is-pending') || countEl;
       const to = target.getBoundingClientRect();
       if (!r.width || !to.width) { resolve(null); return; }
-      const clone = h('span', { class: 'sc-lift', lang: langAttr(), 'aria-hidden': 'true', style: { left: `${r.left}px`, top: `${r.top}px`, width: `${r.width}px`, height: `${r.height}px` } }, b.textContent);
+      const clone = h('span', { class: 'sc-lift', lang: langAttr(), dir: dirAttr(), 'aria-hidden': 'true', style: { left: `${r.left}px`, top: `${r.top}px`, width: `${r.width}px`, height: `${r.height}px` } }, b.textContent);
       document.body.append(clone);
       const css = getComputedStyle(document.documentElement);
       const ease = css.getPropertyValue('--spring-snappy').trim() || 'cubic-bezier(0.22, 1, 0.36, 1)';
@@ -226,7 +226,7 @@ export async function mountMark(el, ctx, script0, sectionId) {
     if (!m) return;
     const count = script.sections.reduce((/** @type {number} */ n, /** @type {any} */ s) => n + s.sentences.reduce((/** @type {number} */ k, /** @type {any} */ x) =>
       k + P.tokenize(x.de).filter(tk => tk.w && lemmaOf(tk.t, L.idx).lemma.toLowerCase() === key).length, 0), 0);
-    const lemmaIn = /** @type {HTMLInputElement} */ (h('input', { class: 'input', value: m.lemma, lang: langAttr(), autocomplete: 'off', 'aria-label': t('practice.script.word.lemma') }));
+    const lemmaIn = /** @type {HTMLInputElement} */ (h('input', { class: 'input', value: m.lemma, lang: langAttr(), dir: dirAttr(), autocomplete: 'off', 'aria-label': t('practice.script.word.lemma') }));
     const lemmaRow = h('div', { class: 'sc-lemma-edit', hidden: true }, lemmaIn,
       h('button', { type: 'button', class: 'btn pressable', onclick: () => { changeLemma(m, lemmaIn.value.trim()); sh.close(); } }, t('practice.script.save')));
     const meaning = /** @type {HTMLInputElement} */ (h('input', { class: 'input', value: m.gloss || '', autocomplete: 'off', placeholder: t('practice.script.word.meaningPh'), 'aria-label': t('practice.script.word.meaning') }));
@@ -313,7 +313,7 @@ export async function mountMark(el, ctx, script0, sectionId) {
         h('ul', { class: 'list sc-traylist' }, list.map(m => {
           const inp = /** @type {HTMLInputElement} */ (h('input', { class: 'input', value: m.gloss || '', placeholder: t('practice.script.word.meaningPh'), 'aria-label': t('practice.script.tray.meaningOf', { word: m.lemma }) }));
           inp.addEventListener('change', () => { setGloss(m.cardId, inp.value.trim() || null, 'me'); });
-          return h('li', { class: 'sc-trayitem' }, h('div', { class: 'sc-trayitem-top' }, h('span', { class: 'sc-traylemma', lang: langAttr() }, m.guess ? h('span', { class: 'sc-dot', title: t('practice.script.word.guess') }) : null, m.head || m.lemma,
+          return h('li', { class: 'sc-trayitem' }, h('div', { class: 'sc-trayitem-top' }, h('span', { class: 'sc-traylemma', lang: langAttr(), dir: dirAttr() }, m.guess ? h('span', { class: 'sc-dot', title: t('practice.script.word.guess') }) : null, m.head || m.lemma,
             m.guess ? h('span', { class: 'sr-only' }, ` (${t('practice.script.word.guess')})`) : null),
             m.guess ? h('button', { type: 'button', class: 'btn btn-quiet pressable sc-confirm', onclick: () => { confirmLemma(m.cardId); draw(); } }, t('practice.script.word.looksRight')) : null,
             h('button', { type: 'button', class: 'btn btn-quiet pressable', 'aria-label': t('practice.script.tray.unmarkOf', { word: m.lemma }), onclick: () => { unmark(String(m.lemma).toLowerCase()); draw(); } }, icon('close', { size: 16 }))),

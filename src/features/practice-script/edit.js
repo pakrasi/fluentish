@@ -12,7 +12,7 @@ import { applyEdit } from './align.js';
 import { lexicon } from './lexicon.js';
 import { lemmaOf } from './lemma.js';
 import { back } from './ui.js';
-import { langAttr } from '../../core/lang.js';
+import { langAttr, dirAttr } from '../../core/lang.js';
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx @param {any} script @param {string | null} sectionId */
 export async function mountEdit(el, ctx, script, sectionId) {
@@ -36,7 +36,7 @@ export async function mountEdit(el, ctx, script, sectionId) {
       }
       const title = /** @type {HTMLInputElement} */ (h('input', { class: 'input', value: d.title, maxlength: 80, 'aria-label': t('practice.script.edit.title') }));
       title.addEventListener('input', () => { d.title = title.value; dirty = true; });
-      const de = /** @type {HTMLTextAreaElement} */ (h('textarea', { class: 'input sc-edit-de', rows: 8, lang: langAttr(), spellcheck: 'false', 'aria-label': t('practice.script.edit.german') }, d.de));
+      const de = /** @type {HTMLTextAreaElement} */ (h('textarea', { class: 'input sc-edit-de', rows: 8, lang: langAttr(), dir: dirAttr(), spellcheck: 'false', 'aria-label': t('practice.script.edit.german') }, d.de));
       de.value = d.de;
       de.addEventListener('input', () => { d.de = de.value; dirty = true; });
       const en = hasEn ? /** @type {HTMLTextAreaElement} */ (h('textarea', { class: 'input', rows: 6, lang: 'en', 'aria-label': t('practice.script.edit.english') })) : null;

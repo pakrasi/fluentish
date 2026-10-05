@@ -17,7 +17,7 @@ import { h, replace } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
 import { countTo, receive } from '../../core/motion.js';
 import { num } from '../../core/i18n.js';
-import { langAttr } from '../../core/lang.js';
+import { langAttr, dirAttr } from '../../core/lang.js';
 import { MODES, summarise, nextUp } from '../../domain/atlas.js';
 import { TYPES } from '../../domain/clusters.js';
 import { roundMinutes } from '../../domain/today.js';
@@ -104,7 +104,7 @@ export async function mountGroup(el, ctx, type, id) {
   const swatch = (/** @type {string} */ s) => h('i', { class: `ex-sw is-${s}`, 'aria-hidden': 'true' });
   const head = h('header', { class: 'gp-head' },
     h('p', { class: 'label cl-eyebrow' }, onMap ? t(`explore.mode.${type}`) : t(`practice.clusters.types.${type}`)),
-    h('h1', { lang }, name),
+    h('h1', { lang, dir: lang ? dirAttr() : null }, name),
     h('p', { class: 'cl-count' }, countEl, h('span', { class: 'label' }, t('explore.page.knownOf', { n: num(cn.n) }))),
     stack,
     h('p', { class: 'ex-counts caption tnum' }, ...STATES.map(s => h('span', null, swatch(s), t(`explore.sheet.${s}`, { n: num(cn[s]) })))));
@@ -130,10 +130,10 @@ export async function mountGroup(el, ctx, type, id) {
   // what to study next comes first, above the group's words
   if (next.length) {
     body.unshift(h('section', { class: 'gp-sec' }, h('h2', { class: 'label' }, t('explore.sheet.next')),
-      h('ul', { class: 'ex-next', lang: langAttr() }, ...next.map(x => {
+      h('ul', { class: 'ex-next', lang: langAttr(), dir: dirAttr() }, ...next.map(x => {
         const s = stateOf(x), k = s.today ? 'today' : s.state;
         return h('li', null, h('a', { class: 'ex-next-item pressable', href: `#/lookup/map?mode=${encodeURIComponent(onMap ? type : 'topic')}&at=${encodeURIComponent(x)}` },
-          swatch(k), h('span', { class: 'ex-w' }, wordOf(x)), h('span', { class: 'sr-only', lang: 'en' }, `, ${t(`explore.state.${k}`)}`)));
+          swatch(k), h('span', { class: 'ex-w' }, wordOf(x)), h('span', { class: 'sr-only', lang: 'en', dir: 'ltr' }, `, ${t(`explore.state.${k}`)}`)));
       }))));
   } else body.unshift(h('p', { class: 'ex-allknown' }, t('explore.sheet.allKnown')));
 
@@ -195,14 +195,14 @@ export async function mountGroup(el, ctx, type, id) {
   /** An item as type in its state (the cluster page's encoding). @param {string} x */
   function chip(x) {
     const s = stateOf(x);
-    return h('span', { class: ['cl-w', `is-${s.state}`, s.today && 'is-today'], lang: langAttr() }, wordOf(x));
+    return h('span', { class: ['cl-w', `is-${s.state}`, s.today && 'is-today'], lang: langAttr(), dir: dirAttr() }, wordOf(x));
   }
   /** Items as a list with their state square (DESIGN.md › Explore, Lists). @param {string[]} xs */
   function itemList(xs) {
-    return h('ul', { class: 'ex-next gp-list', lang: langAttr() }, ...xs.slice(0, BLOCK_MAX).map(x => {
+    return h('ul', { class: 'ex-next gp-list', lang: langAttr(), dir: dirAttr() }, ...xs.slice(0, BLOCK_MAX).map(x => {
       const s = stateOf(x), k = s.today ? 'today' : s.state;
       return h('li', null, h('a', { class: 'ex-next-item pressable', href: `#/lookup/map?mode=${encodeURIComponent(onMap ? type : 'topic')}&at=${encodeURIComponent(x)}` },
-        swatch(k), h('span', { class: 'ex-w' }, wordOf(x)), h('span', { class: 'sr-only', lang: 'en' }, `, ${t(`explore.state.${k}`)}`)));
+        swatch(k), h('span', { class: 'ex-w' }, wordOf(x)), h('span', { class: 'sr-only', lang: 'en', dir: 'ltr' }, `, ${t(`explore.state.${k}`)}`)));
     }));
   }
   /** The B1 grammar items of concepts that a round can ask, least known first, at most two a concept. @param {string[]} cids */

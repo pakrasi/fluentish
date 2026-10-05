@@ -11,7 +11,7 @@ import { fill, reduced } from '../../core/motion.js';
 import * as Sp from '../../domain/speech.js';
 import { loadData, session } from '../shared/data.js';
 import { speech } from '../../services/speech.js';
-import { asrLocale } from '../../core/lang.js';
+import { asrLocale, dirAttr } from '../../core/lang.js';
 import { simToday } from '../../domain/allowance.js';
 import { langAttr } from '../../core/lang.js';
 
@@ -84,7 +84,7 @@ export async function mountSpeak(el, ctx, parts) {
   function micCheck() {
     const C = Sp.CANARY, results = /** @type {{i: number, said: string}[]} */ ([]);
     let i = 0; /** @type {any} */ let live = null;
-    const meta = h('p', { class: 'caption tnum' }), sent = h('p', { class: 'prompt', lang: langAttr() }), heard = h('p', { class: 'pr-heard', lang: langAttr() });
+    const meta = h('p', { class: 'caption tnum' }), sent = h('p', { class: 'prompt', lang: langAttr(), dir: dirAttr() }), heard = h('p', { class: 'pr-heard', lang: langAttr(), dir: dirAttr() });
     const mic = micButton(() => tap(), t);
     replace(el, h('div', { class: 'practice stack pr-speak' }, back('#/practice/speak', t('practice.speak.title')),
       h('div', { class: 'page-head' }, h('h1', null, t('practice.speak.check'))), h('p', { class: 'caption' }, t('practice.speak.check.how')),
@@ -125,14 +125,14 @@ export async function mountSpeak(el, ctx, parts) {
     offs.push(() => { if (audioUrl) URL.revokeObjectURL(audioUrl); });
     intro();
     function intro() {
-      const tEl = h('b', { lang: langAttr() }, topic);
+      const tEl = h('b', { lang: langAttr(), dir: dirAttr() }, topic);
       replace(el, h('div', { class: 'practice stack' }, back('#/practice/speak', t('practice.speak.title')),
         h('div', { class: 'page-head' }, h('h1', null, t('practice.speak.teil2'))),
         h('p', { class: 'lead' }, t('practice.speak.teil2.lead')),
         h('p', { class: 'pr-topic' }, h('span', { class: 'label' }, t('practice.speak.topic')), ' ', tEl, ' ',
           h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => { topic = topics[(topics.indexOf(topic) + 1) % topics.length]; updSession(ctx.store, s => ({ ...s, teil2: { topic } })); tEl.textContent = topic; } }, t('practice.speak.change'))),
-        h('ol', { class: 'pr-folien' }, FOLIEN.map(([name], k) => h('li', null, h('span', { class: 'row-title', lang: langAttr() }, name), h('span', { class: 'caption tnum' }, ` ${t('practice.speak.until', { t: mmss(ENDS[k]) })}`),
-          cues[k].length ? h('span', { class: 'caption pr-cue', lang: langAttr() }, cues[k].join(' · ')) : null))),
+        h('ol', { class: 'pr-folien' }, FOLIEN.map(([name], k) => h('li', null, h('span', { class: 'row-title', lang: langAttr(), dir: dirAttr() }, name), h('span', { class: 'caption tnum' }, ` ${t('practice.speak.until', { t: mmss(ENDS[k]) })}`),
+          cues[k].length ? h('span', { class: 'caption pr-cue', lang: langAttr(), dir: dirAttr() }, cues[k].join(' · ')) : null))),
         sp.canListen() ? null : h('p', { class: 'caption' }, t('practice.speak.noRate')),
         h('div', { class: 'pr-done-actions' }, h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: () => start() }, t('practice.speak.start', { t: mmss(RUNS[run]) })))));
     }
@@ -149,7 +149,7 @@ export async function mountSpeak(el, ctx, parts) {
           live.done.then((/** @type {any} */ r) => { if (r.text) { words += ` ${r.text}`; heardMs += performance.now() - s0; } go(); }); };
         go();
       }
-      const clock = h('p', { class: 'numeral tnum pr-clock' }), folie = h('p', { class: 'pr-folie', lang: langAttr() }), cue = h('p', { class: 'caption', lang: langAttr() });
+      const clock = h('p', { class: 'numeral tnum pr-clock' }), folie = h('p', { class: 'pr-folie', lang: langAttr(), dir: dirAttr() }), cue = h('p', { class: 'caption', lang: langAttr(), dir: dirAttr() });
       const prog = h('div', { class: 'track pr-runbar' }, h('span', { class: 'fill' }));
       replace(el, h('div', { class: 'practice stack pr-run' }, h('h1', { class: 'label' }, t('practice.speak.run', { n: run + 1, topic, t: mmss(total) })), clock, folie, cue, prog,
         h('div', { class: 'pr-done-actions' }, h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: () => end() }, t('practice.speak.stop')))));

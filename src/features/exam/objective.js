@@ -11,7 +11,7 @@ import { clockBar, backLink, option, num, confirmPanel, arrowKeys } from './part
 import { playerGroup, player, reviewAudio } from './player.js';
 import { fmt } from './timer.js';
 import { feedbackBlock, nextCard, reviewHead } from './review.js';
-import { langAttr } from '../../core/lang.js';
+import { langAttr, dirAttr } from '../../core/lang.js';
 
 /** Surname of "Dr. Eva Brandt (Ärztin)". @param {string} full */
 const surname = full => full.split(' (')[0].trim().split(' ').pop() || full;
@@ -112,14 +112,14 @@ function attachWhy(root, why, wrong, tx) {
     const el = /** @type {HTMLElement} */ (node);
     const w = why[el.dataset.item || ''];
     if (!w || el.querySelector('.ex-why')) return;
-    if (w.question_en) el.querySelector('.ex-q')?.append(h('span', { class: 'ex-en', lang: 'en' }, w.question_en));
+    if (w.question_en) el.querySelector('.ex-q')?.append(h('span', { class: 'ex-en', lang: 'en', dir: 'ltr' }, w.question_en));
     const opts = el.querySelectorAll('.ex-opt .ex-opt-text');
-    if (w.options_en && opts.length === w.options_en.length) opts.forEach((o, i) => o.append(h('span', { class: 'ex-en', lang: 'en' }, w.options_en[i])));
+    if (w.options_en && opts.length === w.options_en.length) opts.forEach((o, i) => o.append(h('span', { class: 'ex-en', lang: 'en', dir: 'ltr' }, w.options_en[i])));
     el.append(h('details', { class: 'ex-why', open: wrong.has(el.dataset.item || '') },
-      h('summary', { lang: langAttr() }, tx('why')),
-      w.evidence ? h('blockquote', null, `„${w.evidence}“`, w.evidence_en ? h('span', { class: 'ex-en', lang: 'en' }, w.evidence_en) : null) : null,
-      h('p', null, w.why, w.why_en ? h('span', { class: 'ex-en', lang: 'en' }, w.why_en) : null),
-      w.trap ? h('p', null, h('b', null, `${tx('trap')} `), w.trap, w.trap_en ? h('span', { class: 'ex-en', lang: 'en' }, w.trap_en) : null) : null));
+      h('summary', { lang: langAttr(), dir: dirAttr() }, tx('why')),
+      w.evidence ? h('blockquote', null, `„${w.evidence}“`, w.evidence_en ? h('span', { class: 'ex-en', lang: 'en', dir: 'ltr' }, w.evidence_en) : null) : null,
+      h('p', null, w.why, w.why_en ? h('span', { class: 'ex-en', lang: 'en', dir: 'ltr' }, w.why_en) : null),
+      w.trap ? h('p', null, h('b', null, `${tx('trap')} `), w.trap, w.trap_en ? h('span', { class: 'ex-en', lang: 'en', dir: 'ltr' }, w.trap_en) : null) : null));
   });
 }
 
@@ -140,7 +140,7 @@ export function runObjective(el, ctx, { exam, n, module, ex, def }) {
   const names = ids.map((_, i) => tx('teil', { n: i + 1 }));
   let active = Math.min(d?.tab || 0, ids.length - 1);
   let busy = false;
-  const tabs = h('div', { class: 'ex-tabs', role: 'tablist', 'aria-label': tx('tabs'), lang: langAttr() });
+  const tabs = h('div', { class: 'ex-tabs', role: 'tablist', 'aria-label': tx('tabs'), lang: langAttr(), dir: dirAttr() });
   arrowKeys(tabs);
   const body = h('div', { id: 'ex-panel', role: 'tabpanel' });
   const nav = h('div', { class: 'ex-nav' });
@@ -157,9 +157,9 @@ export function runObjective(el, ctx, { exam, n, module, ex, def }) {
     onChange: (p, leftMs) => {
       cover.hidden = !p;
       body.hidden = p;
-      if (p) replace(cover, h('div', { class: 'ex-cover-card' }, h('h2', { lang: langAttr() }, tx('paused')),
-        h('p', { class: 'caption tnum', lang: langAttr() }, countUp ? tx('used', { t: fmt(clock ? clock.elapsed() / 1000 : 0) }) : leftMs > 0 ? tx('left', { t: fmt(leftMs / 1000) }) : tx('timeUp')),
-        h('button', { type: 'button', class: 'btn btn-primary pressable', lang: langAttr(), onclick: () => clock.resume() }, tx('continue'))));
+      if (p) replace(cover, h('div', { class: 'ex-cover-card' }, h('h2', { lang: langAttr(), dir: dirAttr() }, tx('paused')),
+        h('p', { class: 'caption tnum', lang: langAttr(), dir: dirAttr() }, countUp ? tx('used', { t: fmt(clock ? clock.elapsed() / 1000 : 0) }) : leftMs > 0 ? tx('left', { t: fmt(leftMs / 1000) }) : tx('timeUp')),
+        h('button', { type: 'button', class: 'btn btn-primary pressable', lang: langAttr(), dir: dirAttr(), onclick: () => clock.resume() }, tx('continue'))));
       if (!countUp && leftMs < 0) { over.hidden = false; over.textContent = tx('overtime', { t: fmt(-leftMs / 1000) }); }
     },
   });
@@ -168,10 +168,10 @@ export function runObjective(el, ctx, { exam, n, module, ex, def }) {
     class: ['ex-tab pressable', answeredIn(ids[j], answers) === ids[j].length && 'is-full'], onclick: () => show(j),
   }, nm, h('span', { class: 'ex-tab-n tnum' }, `${answeredIn(ids[j], answers)}/${ids[j].length}`))));
   const drawNav = () => replace(nav,
-    active > 0 ? h('button', { type: 'button', class: 'btn pressable', lang: langAttr(), disabled: busy, onclick: () => show(active - 1) }, tx('back')) : null,
-    active < parts.length - 1 ? h('button', { type: 'button', class: 'btn pressable', lang: langAttr(), disabled: busy, onclick: () => show(active + 1) }, tx('next')) : null,
-    h('span', { class: 'ex-nav-grow caption tnum', lang: langAttr() }, tx('answered', { n: answeredIn(all, answers), of: all.length })),
-    h('button', { type: 'button', class: ['btn pressable', active === parts.length - 1 && 'btn-primary'], lang: langAttr(), disabled: busy, onclick: askSubmit }, tx('submit')));
+    active > 0 ? h('button', { type: 'button', class: 'btn pressable', lang: langAttr(), dir: dirAttr(), disabled: busy, onclick: () => show(active - 1) }, tx('back')) : null,
+    active < parts.length - 1 ? h('button', { type: 'button', class: 'btn pressable', lang: langAttr(), dir: dirAttr(), disabled: busy, onclick: () => show(active + 1) }, tx('next')) : null,
+    h('span', { class: 'ex-nav-grow caption tnum', lang: langAttr(), dir: dirAttr() }, tx('answered', { n: answeredIn(all, answers), of: all.length })),
+    h('button', { type: 'button', class: ['btn pressable', active === parts.length - 1 && 'btn-primary'], lang: langAttr(), dir: dirAttr(), disabled: busy, onclick: askSubmit }, tx('submit')));
   const show = (/** @type {number} */ i) => {
     active = i;
     saveDraft(store, n, module, { tab: i });
@@ -185,7 +185,7 @@ export function runObjective(el, ctx, { exam, n, module, ex, def }) {
     if (busy) return;
     const leftMs = clock.left();
     replace(confirmSlot, confirmPanel({
-      lang: langAttr(),
+      lang: langAttr(), dir: dirAttr(),
       title: tx('submitQ', { module: def.name }),
       lines: [tx('answered', { n: answeredIn(all, answers), of: all.length }), names.map((nm, j) => `${nm}: ${answeredIn(ids[j], answers)}/${ids[j].length}`).join(' · '),
         countUp ? '' : leftMs > 0 ? tx('left', { t: fmt(leftMs / 1000) }) : tx('timeUp'), tx('final')].filter(Boolean),
@@ -213,8 +213,8 @@ export function runObjective(el, ctx, { exam, n, module, ex, def }) {
   }
   const head = h('header', { class: 'ex-runhead' },
     backLink(`#/exam/${n}`, t('exam.backTest', { n })),
-    h('div', { class: 'ex-runhead-end' }, clock.el, h('button', { type: 'button', class: 'btn btn-primary pressable ex-submit-top', lang: langAttr(), onclick: askSubmit }, tx('submit'))));
-  replace(el, h('div', { class: 'ex-run', lang: langAttr() },
+    h('div', { class: 'ex-runhead-end' }, clock.el, h('button', { type: 'button', class: 'btn btn-primary pressable ex-submit-top', lang: langAttr(), dir: dirAttr(), onclick: askSubmit }, tx('submit'))));
+  replace(el, h('div', { class: 'ex-run', lang: langAttr(), dir: dirAttr() },
     head, over,
     h('h1', { class: 'ex-run-title' }, def.name, h('span', { class: 'caption' }, ` · ${ex.topic}`)),
     tabs, cover, body, nav, confirmSlot));
@@ -243,7 +243,7 @@ export async function reviewObjective(el, ctx, { exam, n, module, ex, def, attem
   const ids = teilIds(ex, module, exam.def);
   const bt = byTeil(attempt.responses || []);
   let active = Math.max(0, focusItem ? ids.findIndex(xs => xs.includes(focusItem)) : 0);
-  const tabs = h('div', { class: 'ex-tabs', role: 'tablist', 'aria-label': tx('tabs'), lang: langAttr() });
+  const tabs = h('div', { class: 'ex-tabs', role: 'tablist', 'aria-label': tx('tabs'), lang: langAttr(), dir: dirAttr() });
   arrowKeys(tabs);
   const body = h('div', { id: 'ex-panel', role: 'tabpanel' });
   const show = (/** @type {number} */ i) => {
@@ -261,7 +261,7 @@ export async function reviewObjective(el, ctx, { exam, n, module, ex, def, attem
   markSeen(store, fb.cur.filter(f => !f.seen).map(f => f.id));
   replace(el, h('div', { class: 'ex-review' },
     reviewHead({ ctx, n, def, attempt, score: attempt.score, max: attempt.max_score, pass: passes(attempt.score, attempt.max_score, exam.def.scoring.passShare), topic: ex.topic }),
-    h('p', { class: 'caption ex-skills', lang: langAttr() }, weak.length ? `${tx('bySkill')} ${weak.map(([k, v]) => `${tx.has(`skill.${k}`) ? tx(`skill.${k}`) : k} ${v[0]}/${v[1]}`).join(' · ')}` : tx('allRight')),
+    h('p', { class: 'caption ex-skills', lang: langAttr(), dir: dirAttr() }, weak.length ? `${tx('bySkill')} ${weak.map(([k, v]) => `${tx.has(`skill.${k}`) ? tx(`skill.${k}`) : k} ${v[0]}/${v[1]}`).join(' · ')}` : tx('allRight')),
     feedbackBlock({ ctx, exam, attempt, fb }),
     h('p', { class: 'caption' }, sec.parts.some((/** @type {any} */ p) => p.audio) ? t('exam.review.hoerenHint') : t('exam.review.lesenHint')),
     tabs, body,

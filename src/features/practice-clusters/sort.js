@@ -20,7 +20,7 @@ import { loadClusters, loadKnowledge } from '../shared/cluster-data.js';
 import { form, groupBack } from '../shared/cluster-items.js';
 import { sortList, sortSource } from './pick.js';
 import { markWords, unmarkCards } from '../../data/known.js';
-import { langAttr } from '../../core/lang.js';
+import { langAttr, dirAttr } from '../../core/lang.js';
 
 /** Where Done goes. @param {URLSearchParams} q @param {any} src */
 function backOf(q, src) {
@@ -84,7 +84,7 @@ export async function mountSort(el, ctx) {
     h('div', { class: 'pr-top-row qs-tools' }, undoBtn, endBtn));
   const art = h('span', { class: 'qs-art' });
   const lemma = h('span', { class: 'qs-lemma' });
-  const wordEl = h('button', { type: 'button', class: 'qs-word', lang: langAttr(), 'aria-describedby': 'qs-gloss', onclick: () => toggleMeaning() }, art, lemma);
+  const wordEl = h('button', { type: 'button', class: 'qs-word', lang: langAttr(), dir: dirAttr(), 'aria-describedby': 'qs-gloss', onclick: () => toggleMeaning() }, art, lemma);
   const gloss = h('p', { class: 'qs-gloss', id: 'qs-gloss', 'aria-live': 'polite' });
   const meaningBtn = h('button', { type: 'button', class: 'btn btn-quiet pressable qs-meaning', 'aria-expanded': 'false', onclick: () => toggleMeaning() }, t('practice.sort.meaning'), h('kbd', null, 'Space'));
   const level = h('div', { class: 'qs-level' });
