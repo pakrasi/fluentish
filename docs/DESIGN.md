@@ -115,6 +115,14 @@ components:
   toast:          { backgroundColor: "{colors.ink}", textColor: "{colors.on-ink}", rounded: "{rounded.pill}", position: "fixed, above tab bar" }
   tab-bar:        { position: "fixed bottom on phone, inline links >=900px", current: "ink label + 18x2px accent dash", glass: "92% canvas + blur; solid canvas under prefers-reduced-transparency" }
   dock:           { position: "fixed above the tab bar on phone (<900px)", use: "Today and Practice's one Start button; the element itself, never an aria-hidden copy", scrollPadding: "html scroll-padding-bottom covers dock + tab bar" }
+  grade4:         { layout: "4 equal columns, gap 8px", height: 64px, rounded: "{rounded.ctl}", background: "{colors.surface}", border: "1px {colors.hairline-strong}",
+                    label: "Geist 15/600 ink", interval: "{typography.caption} ink-3 tabular", suggested: "6px accent dot top-right, no fill; takes the focus",
+                    picked: "ink fill, on-ink text, 420ms spring-pop; the others 0.3", keys: "1-4, Enter/Space = the suggestion",
+                    use: "Speaking situations, Word clusters (say it aloud), Scripts: the only self-grade control (src/features/practice/selfgrade.js)" }
+  done-hero:      { parts: "label, one figure (typography.figure) + 'of N' line, the atmosphere breathing once, one data object", dataObject: "field strip | letter | ready-meter row | cluster layout | chat bubbles",
+                    rule: "one big numeral per screen; a second count is title size and ticks with countTo", code: "src/features/practice/done-hero.js" }
+  round-progress: { segments: "the cards planned at the start, fixed widths", again: "2px ticks under the segments (ink-3 40%), appended with land", count: "'3 of 8', 'Again · 8 of 8'", code: "src/features/practice/progress.js" }
+  letter-slot:    { empty: "1px field-border baseline rule + 12px ink-3 label at its end; 40% wide for greeting, closing, sign-off", current: "2px accent rule", filled: "Newsreader 18/1.5 ink" }
 
 layout:
   column-list: 760px     # Practice, Exam, Look up, Profile, word and topic pages
@@ -140,7 +148,9 @@ Dials (taste-skill): VARIANCE 4, MOTION 5, DENSITY 5. App UI, not a landing page
 - **Ink is the action colour.** Primary buttons are ink on canvas (on-ink text). This keeps the screen calm and leaves colour free for meaning.
 - **Accent (cobalt) means "you, now"**: today's column in the runway, today's gain on the ring, cells known today, the current round segment, the caret, focus rings, links, the active tab dash. Never a large fill, never a button background, no glow.
 - **ok / bad** appear only for answer feedback and destructive actions, always next to text or a check/strike.
-- **Role colours** (fn, door, turn, glue, slot, plain) are data colours for the grammar layer: tiles and their legend only. Never on chrome, charts or buttons.
+- **Role colours** (fn, door, turn, glue, slot, plain) are data colours for the grammar layer: tiles and their legend only. Never on chrome, charts or buttons. One written exception: in Build an email the connectors in a line are marked in `role-glue`, because a connector is exactly what that role names.
+- **Who is who in a conversation**: the other person's voice and bubble are ink and surface-2; the model answer ("what you could say") is a surface bubble with a thin accent edge (45 %), never an accent fill. Its chunk is a dotted ink-3 rule, not an accent underline (that reads as a link).
+- **Feedback on a right answer is never red.** A capital or umlaut to fix shows the word once with the changed letters underlined in accent, and a caption ("Capitals: Damen, Herren."). Red is for real misses only.
 - **Cells** (empty, learning, known) are ink at three strengths. "Known" is quiet ink, never green, so a full field looks finished rather than loud.
 - **Atmosphere** (`--atmo-1..4`): near-canvas tones with a faint cobalt cast. Only behind the Today hero.
 - Light canvas is a neutral paper (#f4f4f1), not cream. No warm beige, no brass.
@@ -210,6 +220,20 @@ Explore (`src/features/explore/`, `#/lookup/map`) is a map of every word, phrase
 - Reduced motion: no reveal, no glow, no inertia; mode switches are 140 ms crossfades; the camera jumps.
 - Don't loop, drift or rotate at rest; the canvas draws only while something moves.
 
+
+## Earned moments (round 2)
+
+Each runs once per event, never at rest, and is dropped under reduced motion (the end state appears at once).
+- **Map flow** (Explore mode switch): as described above. It is the reference quality for the rest.
+- **Pair snap** (Word clusters, after a round): the pairs and words that changed land one after another, 140 ms apart, each 560 ms on spring-pop; a snapped pair's link draws in, an accent plate (x-glow) fades under it over 1.3 s; a haptic tick for the first three; the count starts with the first landing.
+- **Line landing** (Build an email): the page scrolls to the line's slot and settles first; the line then flies by translation only on a 6 px arc (520 ms, spring-soft), never scaled; its connectors light at 90 ms steps, the task point lands; then the action row scrolls back into view.
+- **Word lift** (Scripts, marking a word): 420 ms spring-snappy to the new tray item; the tray text changes on arrival; the count digit lands.
+- **Situation card**: the line types in word by word with the audio, the model answer arrives as a reply bubble, the grades rise in on a stagger.
+
+Rules:
+- Chrome (a round's header with its segments and count, the action row, the bars) never leaves the screen while a card swaps: `fx-roundhead` and `fx-roundact` view-transition names with no animation, and the page around the card holds still.
+- A progress total never grows mid-round (components.round-progress).
+- If an effect happens off-screen or under a sheet, it did not happen: move the scroll, the camera or the sheet first.
 
 ## Motion
 
