@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "8a4832ca710d",
+ "version": "d0ec4ce1d5a6",
  "languages": [
   {
    "id": "khasi",
@@ -171,6 +171,13 @@
    "schema": "b1-bank@1",
    "bytes": 43779,
    "sha256": "fe499c8608f215400cccca7b89ae599c17a7f93de4b859f764bc988fdd83ef1a"
+  },
+  {
+   "id": "b1.forms",
+   "path": "b1/forms.json",
+   "schema": "b1-forms@1",
+   "bytes": 15718,
+   "sha256": "66a766673295781e972e35d01773d92f9e17556473423763e551b208b56fb622"
   },
   {
    "id": "b1.frames",
@@ -659,8 +666,8 @@
    "id": "igloo.words.de",
    "path": "igloo/words/de.json",
    "schema": "igloo-words@1",
-   "bytes": 1080106,
-   "sha256": "37e1d7c7800ddbcbc2c72c8d9bab9951e52476b4306dce131be8129a822d92b1"
+   "bytes": 1100968,
+   "sha256": "f94abeb10ac69aac1a6f6e56a536ac4acf95e0012ea11c606d40853fe71a7ab6"
   },
   {
    "id": "igloo.words.themes",

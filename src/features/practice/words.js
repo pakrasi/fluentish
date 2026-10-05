@@ -1,10 +1,13 @@
 /* Practice: exam words. The words he saved in mock exams live in the private results repository (data/vocab.json).
    Practice reads that file at runtime with the GitHub token from the store (secrets.githubToken), keeps a trimmed copy
-   in the profile's 'words.exam' collection, and turns each word into a round item: his exam sentence with the word
-   gapped, or "type the noun with der, die or das" when the sentence has no article before it.
+   in the profile's 'words.exam' collection, and turns each word into a round item that tests the word: its meaning in
+   English and its type, answered with the dictionary form, then its key forms and one example sentence.
    Ported from Igloo's b1more.js. trimWords/toItem/inQueue are pure and tested in node; fetchWords takes its fetch. */
 import { wordId } from '../../domain/itemids.js';
 import { wordTriage } from '../../domain/wordtriage.js';
+import { wordType } from '../../domain/forms.js';
+import { wordCard, answerForms, maskAnswer } from '../../domain/wordcard.js';
+/** @typedef {import('../../domain/forms.js').formsIndex} formsIndex */
 
 export const COLLECTION = 'words.exam';
 /** At most one request per 10 minutes. */
@@ -45,33 +48,42 @@ export function trimWords(rows, wordmap, has = null) {
  */
 export const inQueue = (w, phase) => wordTriage({ glossed: true, zipf: w.zipf, examDays: w.examDays, level: w.level }, phase) === 'queue';
 
-const DETS = new Set(`der die das den dem des ein eine einen einem einer eines kein keine keinen keinem keiner mein meine meinen meinem meiner
-  dein deine deinen deinem sein seine seinen seinem ihr ihre ihren ihrem unser unsere unseren euer eure dieser diese dieses diesen diesem
-  jeder jede jedes jeden jedem welche welcher welches viele wenige einige mehrere alle beide im am zum zur vom beim ins ans aufs`.split(/\s+/));
+const TASK = /** @type {Record<string, string>} */ ({ verb: 'Type the infinitive.', noun: 'Type it with der, die or das.', nounPl: 'Plural only: type it with die.',
+  nounName: 'Type the name.', adjective: 'Type the base form.', adverb: 'Type the word.', preposition: 'Type the word.', number: 'Type the word.', word: 'Type the German word.' });
 
-/** A trimmed word → a round item, or null when the word is not in its own sentence. @param {any} w */
-export function toItem(w) {
-  const s = String(w.sent), f = String(w.form);
-  const re = new RegExp(`(^|[^\\p{L}])(${f.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})(?![\\p{L}])`, 'u');
-  const m = s.match(re);
-  let i;
-  if (m && m.index != null) i = m.index + m[1].length;
-  else { const k = s.toLowerCase().indexOf(f.toLowerCase()); if (k < 0) return null; i = k; }
-  const prompt = s.slice(0, i) + '___' + s.slice(i + f.length);
-  const before = s.slice(0, i).toLowerCase().match(/[\p{L}]+/gu) || [];
-  const noun = /^nomen$/i.test(w.pos || '') && !!w.art;
-  const needArt = noun && !before.slice(-2).some(x => DETS.has(x));
-  const head = noun ? `${w.art} ${w.lemma}${w.pl && !/^\(?pl/i.test(w.pl) ? ', ' + w.pl : ''}` : w.lemma;
+/**
+ * A trimmed word → a round item that tests the word itself: the prompt is the English
+ * meaning and the word type, the answer is the dictionary form (a verb's infinitive, a noun with its article, an
+ * adjective's base form), graded by the real grader. After the answer the card shows the key forms (domain/forms.js,
+ * from validated content) and ONE example: his exam sentence cut to the clause with the word, with "From Test N ·
+ * Module" under it, else the word list's example. The card id is the word's id as before (W:/BW:), so its schedule
+ * and history carry over.
+ * @param {any} w a trimmed word (trimWords)
+ * @param {{ix?: ReturnType<typeof formsIndex> | null, verbs?: Set<string> | null}} [o] ix: forms index (formsIndex over the word list and
+ *   content b1.forms); without it the card falls back to the exam list's own article
+ */
+export function toItem(w, { ix = null, verbs = null } = {}) {
+  const src = `From Test ${w.day || '?'}${w.module ? ' · ' + (MOD[w.module] || w.module) : ''}`;
+  const made = ix ? wordCard(ix, { lemma: w.lemma, pos: w.pos, id: w.id, zipf: w.zipf || null, level: w.level || null, conf: w.conf, sent: w.sent, form: w.form, src, verbs,
+    fallbacks: [w.ex ? { de: w.ex.de, en: w.ex.en || null } : null] }) : null;
+  const type = made ? made.card.type : wordType(w.pos) || 'word';
+  const art = type === 'noun' && w.art ? String(w.art).split('/')[0] : null;
+  const accept = made ? made.accept : [art ? `${art} ${w.lemma}` : w.lemma];
+  const head = made ? made.card.head : accept[0];
+  const forms = made ? made.forms : answerForms(accept);
+  const task = type === 'noun' ? (made?.card.pluralNote === 'only' ? TASK.nounPl : /^(der|die|das) /.test(head) ? TASK.noun : TASK.nounName) : TASK[type] || TASK.word;
   return { id: w.id, kind: 'word', area: 'words', group: w.cluster || 'words', teil: null, fn: null, star: false, trap: null, focus: ['word'], strict: [],
-    plan: 'recall', task: needArt ? 'Type the noun with der, die or das.' : null, prompt, promptLang: 'de', hl: null, partner: null, prefill: null,
-    gap: !needArt, showGap: needArt, accept: needArt ? [`${w.art} ${w.lemma}`] : [f], anywhere: false, literal: true, loose: !needArt,
-    model: needArt ? `${w.art} ${w.lemma}` : s, wrong: [], rule: '', src: 'exam', level: w.level || 'B1', gloss: w.gloss.join(', '),
-    source: `From Test ${w.day || '?'}${w.module ? ' · ' + (MOD[w.module] || w.module) : ''}`,
-    card: { head, ex: w.ex ? w.ex.de : null, exEn: w.ex ? w.ex.en : null, conf: w.conf } };
+    plan: 'recall', task, prompt: maskAnswer(w.gloss.join(', '), forms, head), promptLang: 'en', hl: null, partner: null, prefill: null,
+    gap: false, showGap: false, accept, anywhere: false, literal: true, loose: false,
+    model: head, wrong: [], rule: '', src: 'exam', level: w.level || 'B1', gloss: null, zipf: w.zipf || null,
+    card: made ? made.card : { type, head, forms: null, pres: null, plural: null, pluralNote: null, level: w.level || null, zipf: w.zipf || null, ex: null, exAt: null, exSrc: null, exEn: null, conf: w.conf } };
 }
 
-/** Round items for the words that pass triage today. @param {any[]} words @param {string} phase */
-export const wordItems = (words, phase) => (words || []).filter(w => inQueue(w, phase)).map(toItem).filter(Boolean);
+/**
+ * Round items for the words that pass triage today. @param {any[]} words @param {string} phase
+ * @param {{ix?: ReturnType<typeof formsIndex> | null, verbs?: Set<string> | null}} [o]
+ */
+export const wordItems = (words, phase, o = {}) => (words || []).filter(w => inQueue(w, phase)).map(w => toItem(w, o)).filter(Boolean);
 
 /**
  * Read data/vocab.json from the private repository. Returns the next cache value and what changed.

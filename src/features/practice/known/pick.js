@@ -1,5 +1,6 @@
 /* Quick sort and the level spot check: which words, and the rules. Pure; tested in node (tests/unit/known.test.mjs).
    The views are sort.js and check.js. */
+import { byFrequency } from '../../../domain/wordcard.js';
 import { typable } from '../clusters/items.js';
 
 const ALL_LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
@@ -12,7 +13,8 @@ export const SORT_MAX = 400;
  */
 export function sortList(ids, word, score) {
   /** @type {string[]} */ const out = [];
-  for (const id of ids) {
+  // most common first (zipf): the words worth sorting first
+  for (const id of byFrequency(ids, x => word(x)?.zipf)) {
     if (out.includes(id)) continue;
     const w = word(id);
     if (!w || !typable(w)) continue;

@@ -9,6 +9,7 @@ import { build, ROOT } from './build-manifest.mjs';
 import { build as buildSpeak, serialise as serialiseSpeak, SRC as SPEAK_SRC } from './build-speak.mjs';
 import { validateBank } from '../src/features/practice/sim.js';
 import { validateClusters } from '../src/domain/clusters.js';
+import { validateForms } from '../src/domain/forms.js';
 import { build as buildAtlas, sources as atlasSources, OUT as ATLAS_OUT, METRICS as ATLAS_METRICS } from './build-atlas.mjs';
 import { build as buildClusters, serialise as serialiseClusters, withAdded, OUT as CLUSTERS_OUT, WORDS as WORDS_PATH } from './build-clusters.mjs';
 
@@ -54,6 +55,11 @@ for (const e of validateBank(JSON.parse(speakText), { chunkIds, frameIds })) err
     for (const e of validateClusters(JSON.parse(clustersText), { words, chunkIds, themes })) errors.push(`clusters/de.json ${e}`);
   } catch (e) { errors.push(`clusters: ${/** @type {Error} */ (e).message}`); }
 }
+// word forms: every verb of the word list has its forms, forms.json agrees with itself and never repeats a listed word
+try {
+  const words = JSON.parse(readFileSync(path.join(ROOT, 'content/igloo/words/de.json'), 'utf8'));
+  for (const e of validateForms(JSON.parse(readFileSync(path.join(ROOT, 'content/b1/forms.json'), 'utf8')), words)) errors.push(e);
+} catch (e) { errors.push(`forms: ${/** @type {Error} */ (e).message}`); }
 // the Explore map: what the content builds, keeping every position of the shipped map (tools/build-atlas.mjs)
 try {
   const atlasText = readFileSync(ATLAS_OUT, 'utf8');

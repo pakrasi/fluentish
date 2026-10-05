@@ -8,6 +8,7 @@
    run in Practice's round (round.js) and are graded by grade.js over match.js, like every other typed answer. */
 
 import { itemOf } from '../../../domain/known.js';
+import { wordCard, answerForms, maskAnswer, byFrequency } from '../../../domain/wordcard.js';
 
 const ART = new Set(['der', 'die', 'das']);
 export const ROUND = 12;
@@ -24,9 +25,23 @@ function accepted(w) {
 const gloss = w => (w.en || []).slice(0, 3).join('; ');
 /** @param {any} w */
 const strictArt = w => (w.pos === 'noun' && ART.has(w.art) ? [w.art] : []);
-/** @param {any} w */
-const card = w => ({ head: form(w) + (w.pos === 'noun' && w.pl ? `, ${w.pl}` : ''), ex: w.ex || null, exEn: w.exen || null, conf: null });
+/**
+ * The word panel's card for a word (domain/wordcard.js): type, forms, frequency, one example. Without the forms index
+ * (node tests that build items from the clusters content alone) the word list's own fields.
+ * @param {any} w @param {any} fx {ix, verbs} from wordix.js, or null
+ */
+function card(w, fx) {
+  if (fx) return wordCard(fx.ix, { lemma: w.w, pos: w.pos, id: `W:${w.id}`, zipf: w.zipf, level: w.level, verbs: fx.verbs });
+  const c = { type: w.pos === 'noun' ? 'noun' : w.pos === 'verb' ? 'verb' : w.pos === 'adj' ? 'adjective' : 'word', head: form(w), forms: null, pres: null,
+    plural: w.pos === 'noun' && w.pl ? `die ${w.pl}` : null, pluralNote: null, level: w.level || null, zipf: w.zipf ?? null,
+    ex: w.ex || null, exAt: null, exSrc: null, exEn: w.exen || null, conf: null };
+  return { card: c, accept: accepted(w), forms: answerForms(accepted(w)) };
+}
+/** A gloss with the answer taken out (domain/wordcard.js maskAnswer). @param {any} w @param {{forms: Set<string>}} made */
+const prompt = (w, made) => maskAnswer(gloss(w), made.forms, form(w));
 
+/** The word frequency of a card (its answer word), for new-card order. @param {{word: (id: string) => any}} ix */
+export const zipfOf = ix => (/** @type {string} */ id) => { const w = ix.word(id.startsWith('CO:') ? id.split('~')[1] : id.replace(/^(W|CF):/, '')); return w ? w.zipf : null; };
 /** Whether a word can be a typed card: no open slot (… or brackets) in it. @param {any} w */
 export const typable = w => !!w && !/[…()[\]]/.test(w.w);
 
@@ -53,12 +68,12 @@ export const itemIds = cl => cl.items.map(id => `W:${id}`);
  * @param {string} id
  * @param {{word: (id: string) => any, opposites: (id: string) => string[]}} ix  domain/clusters.js index()
  * @param {any} c the clusters content
- * @param {{t: (k: string, v?: any) => string, where?: string}} o
+ * @param {{t: (k: string, v?: any) => string, where?: string, fx?: any}} o  fx: the forms index (wordix.js loadWordIx) for the word panel
  */
-export function itemFor(id, ix, c, { t, where = '' }) {
+export function itemFor(id, ix, c, { t, where = '', fx = null }) {
   // a card whose content moved keeps its id and shows the item it now points to (content aliases)
   const to = c.aliases?.[id];
-  if (to && to !== id) { const it = itemFor(to, ix, c, { t, where }); return it ? { ...it, id } : null; }
+  if (to && to !== id) { const it = itemFor(to, ix, c, { t, where, fx }); return it ? { ...it, id } : null; }
   const base = { id, area: 'clusters', teil: null, fn: null, star: false, trap: null, focus: [], plan: 'recall', hl: null, partner: null, prefill: null,
     anywhere: false, literal: true, wrong: [], src: 'cluster', origin: 'practice', level: 'B1', where };
   if (id.startsWith('CP:')) {
@@ -73,8 +88,9 @@ export function itemFor(id, ix, c, { t, where = '' }) {
     const wa = ix.word(a), wb = ix.word(b);
     if (!wa || !wb) return null;
     const others = ix.opposites(a).filter(x => x !== b).map(x => ix.word(x)).filter(Boolean);
+    const made = card(wb, fx);
     return { ...base, kind: 'opposite', group: a, task: t('practice.clusters.task.opp'), prompt: form(wa), promptLang: 'de', gap: false, loose: false,
-      strict: strictArt(wb), accept: [...accepted(wb), ...others.flatMap(accepted)], model: form(wb), gloss: gloss(wa), rule: '', card: card(wb), level: wb.level };
+      strict: strictArt(wb), accept: [...accepted(wb), ...others.flatMap(accepted)], model: form(wb), gloss: maskAnswer(gloss(wa), made.forms, form(wb)), rule: '', card: made.card, level: wb.level, zipf: wb.zipf ?? null };
   }
   const wid = id.replace(/^(W|CF):/, '');
   const w = ix.word(wid);
@@ -83,8 +99,9 @@ export function itemFor(id, ix, c, { t, where = '' }) {
   const head = fam ? ix.word(fam.head) : null;
   const task = head ? t('practice.clusters.task.family', { head: form(head) })
     : w.pos === 'noun' && ART.has(w.art) ? t('practice.clusters.task.noun') : t('practice.clusters.task.word');
-  return { ...base, kind: head ? 'family' : 'word', group: fam ? fam.id : w.theme || '', task, prompt: gloss(w), promptLang: 'en', gap: false, loose: false,
-    strict: strictArt(w), accept: accepted(w), model: form(w), gloss: null, rule: '', card: card(w), level: w.level };
+  const made = card(w, fx);
+  return { ...base, kind: head ? 'family' : 'word', group: fam ? fam.id : w.theme || '', task, prompt: prompt(w, made), promptLang: 'en', gap: false, loose: false,
+    strict: strictArt(w), accept: accepted(w), model: form(w), gloss: null, rule: '', card: made.card, level: w.level, zipf: w.zipf ?? null };
 }
 
 /**
@@ -94,13 +111,15 @@ export function itemFor(id, ix, c, { t, where = '' }) {
  * newCap: at most this many new cards (a round of words picked on the map takes all of them while new items are allowed).
  * skip: cards never introduced as new (their word is marked known in some deck, domain/known.js skipsNew); a card
  * marked known waits for its check and is not practised ahead either.
- * @param {{ids: string[], cards: Record<string, any>, c: any, isDue: (rec: any) => boolean, recall: (rec: any) => number, size?: number, newCap?: number, skip?: (id: string) => boolean}} o
+ * zipf: a card's word frequency; new cards come most common first.
+ * @param {{ids: string[], cards: Record<string, any>, c: any, isDue: (rec: any) => boolean, recall: (rec: any) => number, size?: number, newCap?: number, skip?: (id: string) => boolean, zipf?: ((id: string) => number | null | undefined) | null}} o
  * @returns {{ids: string[], due: number, fresh: number, extra: boolean}}
  */
-export function compose({ ids, cards, c, isDue, recall, size = ROUND, newCap = NEW_PER_ROUND, skip = () => false }) {
+export function compose({ ids, cards, c, isDue, recall, size = ROUND, newCap = NEW_PER_ROUND, skip = () => false, zipf = null }) {
   const due = ids.filter(id => cards[id]?.reps && isDue(cards[id])).sort((a, b) => recall(cards[a]) - recall(cards[b])).slice(0, size);
   const cap = c.newItems ? Math.min(newCap, size - due.length) : 0;
-  const fresh = ids.filter(id => !cards[id]?.reps && !skip(id)).slice(0, Math.max(0, cap));
+  const unseen = ids.filter(id => !cards[id]?.reps && !skip(id));
+  const fresh = (zipf ? byFrequency(unseen, zipf) : unseen).slice(0, Math.max(0, cap));
   if (due.length + fresh.length) return { ids: spread(due, fresh), due: due.length, fresh: fresh.length, extra: false };
   const extra = ids.filter(id => cards[id]?.reps && cards[id].last !== c.today && !(cards[id].known && !cards[id].known.checked)).sort((a, b) => recall(cards[a]) - recall(cards[b])).slice(0, size);
   return { ids: extra, due: 0, fresh: 0, extra: extra.length > 0 };

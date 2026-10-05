@@ -126,7 +126,7 @@ export function topicOf(c, w) {
  * @property {string} id
  * @property {string} label
  * @property {string} [note]
- * @property {string[]} items  word ids, in study order (A1 first, then by frequency)
+ * @property {string[]} items  word ids, in study order: most common first (zipf), a family's head first
  * @property {string} [head]   a family's head word
  * @property {any[]} [pairs]   opposites: the group's pairs
  * @property {any[]} [gaps]    prepositions: the group's gap sentences
@@ -142,7 +142,7 @@ export function index(c, words) {
   const byId = new Map(words.map(w => [w.id, w]));
   const order = (/** @type {string[]} */ ids) => [...new Set(ids)].filter(id => byId.has(id)).sort((a, b) => {
     const x = byId.get(a), y = byId.get(b);
-    return LEVEL_ORDER.indexOf(x.level) - LEVEL_ORDER.indexOf(y.level) || (y.zipf || 0) - (x.zipf || 0) || a.localeCompare(b);
+    return (y.zipf || 0) - (x.zipf || 0) || LEVEL_ORDER.indexOf(x.level) - LEVEL_ORDER.indexOf(y.level) || a.localeCompare(b);
   });
   /** @type {Cluster[]} */ const all = [];
   for (const f of c.families || []) all.push({ key: `family:${f.id}`, type: 'family', id: f.id, label: f.label, note: f.note, head: f.head, items: [f.head, ...order(f.members.filter((/** @type {string} */ m) => m !== f.head))] });

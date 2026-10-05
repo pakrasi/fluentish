@@ -51,7 +51,7 @@ export async function mountCheck(el, ctx, level) {
   /** @type {(() => void) | null} */ let stopRun = null;
   function run() {
     const pick = sample(ids, n);
-    const items = pick.map(id => itemFor(`W:${id}`, clusters.ix, clusters.c, { t }));
+    const items = pick.map(id => itemFor(`W:${id}`, clusters.ix, clusters.c, { t, fx: clusters.fx }));
     document.body.dataset.chrome = 'off';
     document.body.classList.add('pr-in-round');
     /** @type {string[]} */ const missed = [];

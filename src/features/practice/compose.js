@@ -99,8 +99,9 @@ export function newOrder(s, pool, anyTopic = false) {
   };
   const eligible = (/** @type {any} */ it) => it.rank !== 21 && !(it.group === 'praeteritum' && it.kind !== 'grammar');
   const list = pool.filter(it => unseen(s, it) && eligible(it) && (anyTopic || topicReady(s, it)) && !(s.marked && skipsNew(s.marked, it.id, it.chunk)));
-  const base = list.filter(it => !it.mine).map((it, i) => /** @type {[number, number, number, number, number, any]} */ ([tier(it), it.area === 'grammar' || it.area === 'writing' ? it.rank ?? 99 : 0, it.star ? 0 : 1, it.bank ? 1 : 0, i, it]))
-    .sort((a, b) => a[0] - b[0] || a[1] - b[1] || a[2] - b[2] || a[3] - b[3] || a[4] - b[4]).map(x => x[5]);
+  // inside a tier: rank (grammar, Schreiben), ★ first, then the more common word first (zipf; exam words carry it)
+  const base = list.filter(it => !it.mine).map((it, i) => /** @type {[number, number, number, number, number, any, number]} */ ([tier(it), it.area === 'grammar' || it.area === 'writing' ? it.rank ?? 99 : 0, it.star ? 0 : 1, it.bank ? 1 : 0, i, it, -(Number(it.zipf) || 0)]))
+    .sort((a, b) => a[0] - b[0] || a[1] - b[1] || a[2] - b[2] || a[6] - b[6] || a[3] - b[3] || a[4] - b[4]).map(x => x[5]);
   // mistakes from corrections are spread through the front of the order: one in every three
   const mine = list.filter(it => it.mine), out = [];
   while (base.length || mine.length) { if (mine.length) out.push(mine.shift()); for (let k = 0; k < 2 && base.length; k++) out.push(base.shift()); }

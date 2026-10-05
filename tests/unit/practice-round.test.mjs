@@ -185,12 +185,16 @@ test('exam words: trim, triage, items, fetch', async () => {
   // triage: exam weeks keep frequent words only; otherwise the B1 list or 2+ tests
   assert.deepEqual(words.filter(w => W.inQueue(w, 'week')).map(w => w.lemma), ['Termin']);
   assert.deepEqual(words.filter(w => W.inQueue(w, 'after')).map(w => w.lemma), ['Termin', 'absagen']);
+  // the card tests the word: its meaning and type, answered with the dictionary form (without the forms index the
+  // exam list's own article; tests/unit/forms.test.mjs covers the full card)
   const t = W.toItem(words[0]);
-  assert.equal(t.prompt, 'Ich habe morgen einen ___ beim Arzt.'); assert.equal(t.gap, true);
-  assert.equal(t.source, 'From Test 2 · Lesen'); assert.equal(t.card.head, 'der Termin, Termine');
+  assert.equal(t.prompt, 'appointment'); assert.equal(t.gap, false); assert.equal(t.card.type, 'noun');
+  assert.deepEqual(t.accept, ['der Termin']); assert.equal(t.card.head, 'der Termin');
   const n = W.toItem(words[2]);
-  assert.equal(n.task, 'Type the noun with der, die or das.'); assert.deepEqual(n.accept, ['die Nachbarschaft']);
-  assert.equal(gradeAnswer(t, 'Termin').ok, true);
+  assert.equal(n.task, 'Type it with der, die or das.'); assert.deepEqual(n.accept, ['die Nachbarschaft']);
+  assert.equal(gradeAnswer(t, 'der Termin').ok, true);
+  assert.equal(gradeAnswer(t, 'Termin').ok, false, 'a noun is typed with its article');
+  assert.equal(gradeAnswer(t, 'die Termin').ok, false);
   assert.equal(gradeAnswer(n, 'die Nachbarschaft').ok, true);
   assert.equal(gradeAnswer(n, 'der Nachbarschaft').ok, false);
   // fetch: no token, rate limit, 304, ok with added words, error keeps the cache

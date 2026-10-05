@@ -11,6 +11,8 @@
    Motion (core/motion.js fling): the word flies on a short arc into the Know or Learn button, whose count lands with
    the pop spring, while the next word rises in its place; reduced motion: the counts change, nothing flies.
    The summary is the shared done hero: "Marked 142 known, 38 to learn", Study the words to learn now, Done. */
+import { wordMeta, wordPanel } from '../../../core/wordpanel.js';
+import { wordCard } from '../../../domain/wordcard.js';
 import { h, replace, announce } from '../../../core/dom.js';
 import { fling, reduced, haptic } from '../../../core/motion.js';
 import { doneHero } from '../done-hero.js';
@@ -82,8 +84,12 @@ export async function mountSort(el, ctx) {
   const wordEl = h('button', { type: 'button', class: 'qs-word', lang: 'de', 'aria-describedby': 'qs-gloss', onclick: () => toggleMeaning() }, art, lemma);
   const gloss = h('p', { class: 'qs-gloss', id: 'qs-gloss', 'aria-live': 'polite' });
   const meaningBtn = h('button', { type: 'button', class: 'btn btn-quiet pressable qs-meaning', 'aria-expanded': 'false', onclick: () => toggleMeaning() }, t('practice.sort.meaning'), h('kbd', null, 'Space'));
-  const level = h('p', { class: 'caption qs-level tnum' });
-  const stage = h('div', { class: 'qs-stage' }, level, wordEl, gloss, meaningBtn);
+  const level = h('div', { class: 'qs-level' });
+  const panel = h('div', { class: 'qs-panel' });
+  const stage = h('div', { class: 'qs-stage' }, level, wordEl, gloss, panel, meaningBtn);
+  /** The word panel's card for a list word (domain/wordcard.js). @param {any} w */
+  const cardOf = w => (data.fx ? wordCard(data.fx.ix, { lemma: w.w, pos: w.pos, id: `W:${w.id}`, zipf: w.zipf, level: w.level, verbs: data.fx.verbs }).card
+    : { type: 'word', head: form(w), forms: null, pres: null, plural: null, pluralNote: null, level: w.level || null, zipf: w.zipf ?? null, ex: w.ex || null, exAt: null, exSrc: null, exEn: w.exen || null, conf: null });
   const knowN = h('span', { class: 'qs-n tnum' }, '0');
   const learnN = h('span', { class: 'qs-n tnum' }, '0');
   const knowBtn = h('button', { type: 'button', class: 'qs-btn is-know pressable', onclick: () => choose('know') },
@@ -106,7 +112,8 @@ export async function mountSort(el, ctx) {
     wordEl.setAttribute('aria-label', form(w));
     gloss.textContent = ''; showing = false; meaningBtn.setAttribute('aria-expanded', 'false');
     replace(meaningBtn, t('practice.sort.meaning'), h('kbd', null, 'Space'));
-    level.textContent = w.level || '';
+    replace(level, wordMeta(cardOf(w)));
+    replace(panel);
     count.textContent = t('practice.sort.count', { n: i + 1, total });
     tfill.style.setProperty('--p', String(i / total));
     if (enter && !reduced()) { stage.classList.remove('fx-in-up'); void stage.offsetWidth; stage.classList.add('fx-in-up'); }
@@ -117,6 +124,7 @@ export async function mountSort(el, ctx) {
     const w = word(list[i]);
     showing = !showing;
     gloss.textContent = showing ? (w.en || []).slice(0, 3).join('; ') : '';
+    replace(panel, showing ? wordPanel(cardOf(w), { head: false }) : null);
     meaningBtn.setAttribute('aria-expanded', String(showing));
     replace(meaningBtn, t(showing ? 'practice.sort.hide' : 'practice.sort.meaning'), h('kbd', null, 'Space'));
   }

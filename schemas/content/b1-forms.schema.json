@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "b1-forms@1",
+  "title": "German word forms outside the word list",
+  "description": "Verb principal parts, noun articles and plurals, irregular adjective comparison. The rules a schema cannot say are in src/domain/forms.js validateForms.",
+  "type": "object",
+  "required": ["verbs", "nouns", "adj"],
+  "additionalProperties": false,
+  "properties": {
+    "about": { "type": "string" },
+    "examples": {
+      "type": "object",
+      "additionalProperties": { "type": "array", "prefixItems": [{ "type": "string", "pattern": "[.!?]$" }, { "type": "string" }], "minItems": 2, "maxItems": 2 }
+    },
+    "verbs": {
+      "type": "object",
+      "additionalProperties": { "type": "string", "pattern": "^[^·]+ · [^·]+ · (hat|ist|hat/ist) [^·]+$" }
+    },
+    "nouns": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "prefixItems": [{ "enum": ["der", "die", "das", "der/die", "pl", "-"] }, { "type": "string" }],
+        "minItems": 2, "maxItems": 2
+      }
+    },
+    "adj": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "prefixItems": [{ "type": "string", "pattern": "(er|mehr)$" }, { "type": "string", "pattern": "^am \\S+ten$" }],
+        "minItems": 2, "maxItems": 2
+      }
+    }
+  }
+}

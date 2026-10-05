@@ -12,6 +12,7 @@ import { listMistakes } from '../../data/mistakes.js';
 import * as RD from '../../domain/b1ready.js';
 import { buildPool } from './pool.js';
 import { wordItems, fetchWords, COLLECTION as WORDS } from './words.js';
+import { loadWordIx } from './wordix.js';
 import * as C from './compose.js';
 import { dayBudget } from '../../domain/budget.js';
 import { writingFocus } from '../../domain/modules.js';
@@ -42,8 +43,9 @@ export async function loadData(ctx) {
   const mistakes = listMistakes(ctx.store);
   const key = [wc?.fetchedAt || 0, c.phase, mistakes.map(m => m.id).join(',')].join('|');
   if (memo && memo.key === key) return memo.data;
+  const wx = Array.isArray(lexWords) ? await loadWordIx(ctx, lexWords).catch(() => null) : null;
   const data = /** @type {any} */ (buildPool({ items: items || [], grammar: grammar || [], bank: bank || {}, plan, nouns: nouns || {},
-    words: wordItems(wc?.words, c.phase), mistakes, lexWords: Array.isArray(lexWords) ? lexWords : null, lexTexts: chunkExamples(chunksDe),
+    words: wordItems(wc?.words, c.phase, wx || {}), mistakes, lexWords: Array.isArray(lexWords) ? lexWords : null, lexTexts: chunkExamples(chunksDe),
     schreiben: schreiben && Array.isArray(schreiben.items) ? schreiben : null }));
   data.wordmap = wordmap || {};
   memo = { key, data };

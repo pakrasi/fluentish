@@ -275,8 +275,8 @@ export const CURATED_RIGHT = [
   ['BP:s2-glue-vor-allem', 'Mir gefaellt die Stadt, vor allem die vielen Cafes.', 'full'],
   ['BP:s2-glue-vor-allem', 'Mir gefällt die Stadt, vor allem die vielen Cafés', 'full'],
   ['BP:s2-glue-vor-allem', 'vor allem die vielen Cafés', 'full'],
-  ['W:corpus-Mutter', 'Muetter', 'full'],
-  ['W:corpus-Mutter', 'Viele Muetter arbeiten heute Teilzeit.', 'full'],
+  ['W:corpus-Mutter', 'die Mutter', 'full'],
+  ['W:corpus-Mutter', 'Die Mutter', 'full'],
 ];
 
 /* ---------- a held-out set, written by hand on randomly drawn items (seed 2026) before looking at any result ---------- */
@@ -459,7 +459,7 @@ const typeOf = it => {
   if (it.src === 'build') return 'schreiben email line';
   if (it.area === 'writing') return 'schreiben phrase';
   if (it.area === 'mistakes') return 'mistake';
-  if (it.area === 'words') return it.showGap ? 'word-article' : 'word-gap';
+  if (it.area === 'words') return it.showGap ? 'word-article' : it.gap ? 'word-gap' : 'word dictionary form';
   if (it.kind === 'phrase') return it.bank ? 'phrase (bank)' : 'phrase';
   if (it.kind === 'topic' || it.kind === 'reply') return 'situation';
   if (it.kind === 'reading') return 'reading';
@@ -474,7 +474,13 @@ export async function buildData({ root = ROOT, codeRoot = ROOT } = {}) {
   const W = await import(pathToFileURL(path.join(codeRoot, 'src/features/practice/words.js')).href);
   const content = { items: J(root, 'content/b1/items.json'), grammar: J(root, 'content/b1/grammar.json'), bank: J(root, 'content/b1/bank.json'), plan: J(root, 'content/b1/plan.json'), nouns: J(root, 'content/b1/nouns.json') };
   const mistakes = SYN_MISTAKES.map(([wrong, right], i) => ({ id: `F:corpus-${i}`, v: 1, wrong, right, rule: '', source: { attemptId: 'corpus', test: 1, module: 'schreiben', label: null }, createdAt: '2026-10-01T10:00:00Z', deletedAt: null }));
-  const words = SYN_WORDS.map(w => W.toItem({ id: `W:corpus-${w.lemma}`, lemma: w.lemma, art: w.art, pl: null, pos: w.pos, gloss: ['x'], sent: w.sent, form: w.form, ex: null, cluster: null, day: 1, module: 'lesen', teil: null, examDays: 1, level: 'B1', conf: null, zipf: 3 })).filter(Boolean);
+  // exam words: the card that asks for the dictionary form (with the forms index when the code under test has one)
+  let wx = {};
+  try {
+    const F = await import(pathToFileURL(path.join(codeRoot, 'src/domain/forms.js')).href);
+    if (F.formsIndex) { const ix = F.formsIndex(J(root, 'content/igloo/words/de.json'), J(root, 'content/b1/forms.json')); wx = { ix, verbs: F.verbSet(ix) }; }
+  } catch { /* code or content from before the forms table */ }
+  const words = SYN_WORDS.map(w => W.toItem({ id: `W:corpus-${w.lemma}`, lemma: w.lemma, art: w.art, pl: null, pos: w.pos, gloss: ['x'], sent: w.sent, form: w.form, ex: null, cluster: null, day: 1, module: 'lesen', teil: null, examDays: 1, level: 'B1', conf: null, zipf: 3 }, wx)).filter(Boolean);
   let schreiben = null;
   try { schreiben = J(root, 'content/b1/schreiben.json'); } catch { /* a checkout from before the Schreiben content */ }
   const data = buildPool({ ...content, mistakes, words, schreiben, lexWords: J(root, 'content/igloo/words/de.json'), lexTexts: Object.values(J(root, 'content/igloo/chunks/german.json').chunks).map(c => c.ex).filter(Boolean) });
@@ -600,8 +606,17 @@ export async function buildCorpus({ root = ROOT } = {}) {
     }
     if (it.area === 'words') {
       const w = SYN_WORDS.find(x => `W:corpus-${x.lemma}` === it.id);
-      if (it.showGap) { for (const a of OTHER_ART[w.art] || []) add(it, 'word-article', `${a} ${w.lemma}`, 'wrong'); add(it, 'word-article-right', `${w.art} ${w.lemma}`, 'right'); }
-      else for (const x of w.wrongs) { add(it, 'word-form', x, 'wrong'); add(it, 'word-form-sentence', w.sent.replace(w.form, x), 'wrong'); }
+      if (it.gap || it.showGap) {   // the gap card (code from before the dictionary-form card)
+        if (it.showGap) { for (const a of OTHER_ART[w.art] || []) add(it, 'word-article', `${a} ${w.lemma}`, 'wrong'); add(it, 'word-article-right', `${w.art} ${w.lemma}`, 'right'); }
+        else for (const x of w.wrongs) { add(it, 'word-form', x, 'wrong'); add(it, 'word-form-sentence', w.sent.replace(w.form, x), 'wrong'); }
+      } else {   // the dictionary form: right as given; an inflected form, another article or a noun without one are wrong
+        const noun = !!w.art;
+        add(it, 'word-dict-right', noun ? `${w.art} ${w.lemma}` : w.lemma, 'right');
+        if (noun) { for (const a of OTHER_ART[w.art] || []) add(it, 'word-article', `${a} ${w.lemma}`, 'wrong'); add(it, 'word-no-article', w.lemma, 'wrong'); }
+        // a dropped letter ("Muter") is a typo of the right word, graded as one; inflected forms are the misses
+        const typo = (/** @type {string} */ x) => x.length === w.lemma.length - 1 && [...w.lemma].some((_, k) => w.lemma.slice(0, k) + w.lemma.slice(k + 1) === x);
+        for (const x of new Set([...w.wrongs, w.form])) if (x !== w.lemma && !typo(x)) add(it, 'word-inflected', noun ? `${w.art} ${x}` : x, 'wrong');
+      }
     }
     if (it.area === 'mistakes') {
       add(it, 'retype-wrong', it.wrong[0], 'wrong');

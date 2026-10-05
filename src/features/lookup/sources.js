@@ -55,7 +55,7 @@ export function phraseRows(en, target, priority = null) {
 export function dictRows(words) {
   return (words || []).map(w => ({ id: w.id, w: w.w, art: w.art || '', pl: w.pl || null, pos: w.pos || null, en: w.en || [], alt: w.alt || [], level: w.level || null,
     theme: w.theme || null, rank: w.rank ?? 1e6, zipf: w.zipf ?? null, ex: w.ex || null, exen: w.exen || null, forms: w.forms || null }))
-    .sort((a, b) => a.rank - b.rank);
+    .sort((a, b) => (b.zipf ?? 0) - (a.zipf ?? 0) || a.rank - b.rank);   // most common first (zipf), the list's rank on a tie
 }
 /** "der Tisch" @param {{art?: string, w: string}} r */
 export const dictHead = r => [r.art, r.w].filter(Boolean).join(' ');

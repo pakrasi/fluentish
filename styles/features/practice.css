@@ -420,3 +420,8 @@ mark.sim-chunk { background: repeating-linear-gradient(90deg, var(--ink-3) 0 2px
 .qs-n { display: inline-block; font: 300 30px/1 var(--font-display); font-variant-numeric: tabular-nums lining-nums; transform-origin: 50% 70%; }
 .qs-how { margin: var(--s-3) 0 0; text-align: center; }
 .qs-done .pr-done-hero .caption + .caption { margin-top: var(--s-1); }
+/* Quick sort: the word panel under the meaning */
+.qs-level .wp-meta { justify-content: center; }
+.qs-panel { width: 100%; max-width: 40ch; text-align: left; }
+.qs-panel:empty { display: none; }
+.cl-wmeta:empty { display: none; }

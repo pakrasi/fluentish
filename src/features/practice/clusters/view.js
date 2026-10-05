@@ -13,6 +13,7 @@
                  learnt in the round snaps together.
      the rest    the words as a block of type: known in ink, shaky grey, not known boxed, not seen pale italic
                  (Explore's encoding), and the known count ticks up from the last one shown. */
+import { wordMeta, wordPanel } from '../../../core/wordpanel.js';
 import { h, replace, announce } from '../../../core/dom.js';
 import { notice } from '../../../core/ui.js';
 import { icon } from '../../../core/icons.js';
@@ -26,7 +27,7 @@ import { roundMinutes } from '../../../domain/today.js';
 import * as S from '../sim.js';
 import { forecaster, tz, addActivity } from '../data.js';
 import { loadClusters, loadKnowledge, countsOf, cellsOf, dueCards, recallOf, state, update, dayOf, DECK } from './data.js';
-import { cardIds, itemFor, compose, roundWords, partOf } from './items.js';
+import { cardIds, itemFor, compose, roundWords, partOf, zipfOf } from './items.js';
 import { isDue } from '../../../domain/b1ready.js';
 import { marked } from '../../../data/known.js';
 import { skipsNew } from '../../../domain/known.js';
@@ -264,7 +265,7 @@ async function mountCluster(el, ctx, key) {
   const ids = cardIds(cl, data.ix);
   const cards = store.cards(DECK) || {};
   const mk = marked(store);
-  const plan = compose({ ids, cards, c, isDue: rec => isDue(rec, c.today, c), recall: recallOf(c), skip: x => skipsNew(mk, x) });
+  const plan = compose({ ids, cards, c, isDue: rec => isDue(rec, c.today, c), recall: recallOf(c), skip: x => skipsNew(mk, x), zipf: zipfOf(data.ix) });
   const startN = plan.ids.length;
   const typed = startN ? h('a', { class: 'btn btn-primary pressable', href: `#/practice/round?kind=${encodeURIComponent(`cluster:${key}`)}` },
     plan.extra ? t('practice.clusters.ahead', { n: startN }) : t('practice.clusters.typed', { n: startN, min: roundMinutes(startN) })) : null;
@@ -359,12 +360,12 @@ async function mountSay(el, ctx, key) {
   if (!cl) { ctx.go('/practice/clusters', { replace: true }); return restore; }
   let c = ctx.clock.ctx();
   const mk = marked(store);
-  const plan = compose({ ids: cardIds(cl, data.ix), cards: store.cards(DECK) || {}, c, isDue: rec => isDue(rec, c.today, c), recall: recallOf(c), skip: x => skipsNew(mk, x) });
+  const plan = compose({ ids: cardIds(cl, data.ix), cards: store.cards(DECK) || {}, c, isDue: rec => isDue(rec, c.today, c), recall: recallOf(c), skip: x => skipsNew(mk, x), zipf: zipfOf(data.ix) });
   if (!plan.ids.length) { ctx.go(`/practice/clusters/${type}/${cid}`, { replace: true }); return restore; }
   const round = { queue: plan.ids.map(id => ({ id })), i: 0, results: /** @type {any[]} */ ([]), planned: plan.ids.length };
   /** @type {Record<string, any>} */ const prev = {};
   const t0r = performance.now();
-  const items = new Map(plan.ids.map(id => [id, itemFor(id, data.ix, data.c, { t })]));
+  const items = new Map(plan.ids.map(id => [id, itemFor(id, data.ix, data.c, { t, fx: data.fx })]));
 
   const segs = h('div', { class: 'segments', 'aria-label': t('practice.progress') });
   const count = h('span', { class: 'caption tnum' });
@@ -372,11 +373,12 @@ async function mountSay(el, ctx, key) {
   const meta = h('span', { class: 'label' });
   const task = h('p', { class: 'pr-task' });
   const prompt = h('p', { class: 'prompt' });
+  const wmeta = h('div', { class: 'cl-wmeta' });
   const sayHint = h('p', { class: 'caption sim-say' }, t('practice.clusters.sayHint'));
   const answer = h('p', { class: 'answer-key', lang: 'de' });
   const extra = h('div', { class: 'cl-say-extra' });
   const reveal = h('div', { class: 'reveal-answer' }, h('div', null, answer, extra));
-  const card = h('article', { class: 'card pr-card' }, h('div', { class: 'card-meta' }, meta), task, prompt, sayHint, reveal);
+  const card = h('article', { class: 'card pr-card' }, h('div', { class: 'card-meta' }, meta), wmeta, task, prompt, sayHint, reveal);
   const showBtn = h('button', { type: 'button', class: 'btn btn-primary pressable pr-primary', onclick: () => doReveal() }, t('practice.sim.show'), h('kbd', null, 'Space'));
   const grades = gradeRow({ t, label: t('practice.sim.how'), onGrade: g => grade(g) });
   const again = againRow();
@@ -396,13 +398,15 @@ async function mountSay(el, ctx, key) {
     count.textContent = p.onAgain ? t('practice.countAgain', { n: p.k, total: p.n }) : t('practice.count', { n: p.k, total: p.n });
   };
   function fill() {
-    it = items.get(round.queue[round.i].id) || itemFor(round.queue[round.i].id, data.ix, data.c, { t });
+    it = items.get(round.queue[round.i].id) || itemFor(round.queue[round.i].id, data.ix, data.c, { t, fx: data.fx });
     meta.textContent = t(`practice.clusters.types.${cl.type}`);
     task.textContent = it.task || '';
     prompt.lang = it.promptLang === 'de' ? 'de' : 'en';
     prompt.textContent = it.gap ? it.prompt.replace('___', '…') : it.prompt;
     answer.textContent = it.gap ? it.model : (it.card ? it.card.head : it.model);
-    replace(extra, it.usage ? h('p', { class: 'pr-rule' }, it.usage) : null, it.card && it.card.ex ? h('p', { class: 'caption' }, h('span', { lang: 'de' }, it.card.ex), it.card.exEn ? ` (${it.card.exEn})` : null) : null);
+    replace(wmeta, it.card?.type ? wordMeta(it.card) : null);
+    replace(extra, it.usage ? h('p', { class: 'pr-rule' }, it.usage) : null, it.card?.type ? wordPanel(it.card, { head: false })
+      : it.card && it.card.ex ? h('p', { class: 'caption' }, h('span', { lang: 'de' }, it.card.ex), it.card.exEn ? ` (${it.card.exEn})` : null) : null);
     reveal.classList.remove('is-open'); sayHint.hidden = false;
     showBtn.hidden = false; grades.reset();
     const cards = store.cards(DECK) || {};

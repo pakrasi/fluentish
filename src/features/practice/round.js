@@ -28,12 +28,13 @@ import { play as playAudio, stop as stopAudio, prefetchAudio } from '../../servi
 import { recallBar } from './hub.js';
 import { Field } from '../../core/brand.js';
 import { readinessView } from './field.js';
-import { parseClusterKind, itemFor as clusterItem, compose as composeCluster, cardIds as clusterCards, pickIds, typable } from './clusters/items.js';
+import { parseClusterKind, itemFor as clusterItem, compose as composeCluster, cardIds as clusterCards, pickIds, typable, zipfOf } from './clusters/items.js';
 import { loadClusters, dueCards as clusterDue, update as updateClusters, dayOf as clusterDay, recallOf, DECK as CLUSTER_DECK } from './clusters/data.js';
 import { drawClusterDone } from './clusters/view.js';
 import { marked } from '../../data/known.js';
 import { skipsNew } from '../../domain/known.js';
 import { knowButton, isKnowKey, knowCard, knownResult } from './iknow.js';
+import { wordMeta, wordPanel } from '../../core/wordpanel.js';
 
 const SVG = 'http://www.w3.org/2000/svg';
 const TEIL = /** @type {Record<string, string>} */ ({ S1: 'Teil 1', S2: 'Teil 2', S3: 'Teil 3', W1: 'Aufgabe 1', W2: 'Aufgabe 2', W3: 'Aufgabe 3', L2: 'Teil 2', L3: 'Teil 3', L5: 'Teil 5' });
@@ -130,7 +131,7 @@ export async function mountRound(el, ctx) {
   const spec = ck ? { kind: 'cluster', topic: ck.key || (ck.pick ? `pick:${picked.join(',')}` : 'due') } : C.parseKind(ctx.query.get('kind'));
   const slot = S.slotKey(spec);
   /** Cluster items for the ids of a round (rebuilt from the ids, so a saved round resumes). @param {string[]} ids */
-  const addClusterItems = ids => { for (const id of ids) if (!data.byId.has(id)) { const it = clusterItem(id, clusters.ix, clusters.c, { t, where: t(`practice.clusters.where.${/^C[OFP]:/.test(id) ? id.slice(0, 2) : 'W'}`) }); if (it) data.byId.set(id, it); } };
+  const addClusterItems = ids => { for (const id of ids) if (!data.byId.has(id)) { const it = clusterItem(id, clusters.ix, clusters.c, { t, fx: clusters.fx, where: t(`practice.clusters.where.${/^C[OFP]:/.test(id) ? id.slice(0, 2) : 'W'}`) }); if (it) data.byId.set(id, it); } };
   // End and Esc go back where the round was started from (Today's button adds from=today)
   const backTo = ctx.query.get('from') === 'today' ? '/today' : ctx.query.get('from') === 'map' ? '/lookup/map' : ctx.query.get('kind')?.startsWith('cluster:') ? `/practice/clusters${(/^cluster:(\w+):(.+)$/.exec(String(ctx.query.get('kind'))) || []).slice(1).map(x => `/${x}`).join('')}` : '/practice';
   let st = stateFor(ctx, data);
@@ -144,7 +145,7 @@ export async function mountRound(el, ctx) {
       const c0 = st.c, cards0 = store.cards(deck) || {};
       const pool = ck.key ? clusterCards(clusters.ix.byKey.get(ck.key), clusters.ix) : ck.pick ? picked : clusterDue(store, c0);
       const mk = marked(store);
-      ids = composeCluster({ ids: pool, cards: cards0, c: c0, isDue: rec => RD.isDue(rec, c0.today, c0), recall: recallOf(c0), skip: id => skipsNew(mk, id),
+      ids = composeCluster({ ids: pool, cards: cards0, c: c0, isDue: rec => RD.isDue(rec, c0.today, c0), recall: recallOf(c0), skip: id => skipsNew(mk, id), zipf: zipfOf(clusters.ix),
         ...(ck.pick ? { size: picked.length, newCap: picked.length } : {}) }).ids;
       if (ck.due) ids = ids.filter(id => cards0[id]?.reps);
       addClusterItems(ids);
@@ -308,6 +309,7 @@ export async function mountRound(el, ctx) {
     replace(fb);
     replace(meta, entry.isNew ? h('span', { class: 'pr-newtag' }, t('practice.new')) : t('practice.review'), ` · ${where(it)}`);
     /** @type {any[]} */ const kids = [];
+    if (it.card?.type) kids.push(wordMeta(it.card));
     if (it.task) kids.push(h('p', { class: 'pr-task' }, it.task));
     if (it.partner) kids.push(h('p', { class: 'caption' }, t('practice.partner')), h('p', { class: 'pr-partner', lang: 'de' }, `„${it.partner}“`));
     if (it.gap || it.showGap) kids.push(h('p', { class: 'prompt', lang: 'de' }, gapNodes(gapWindow(it.prompt, 20))));
@@ -418,6 +420,8 @@ export async function mountRound(el, ctx) {
   function hintNodes(/** @type {string} */ s) { return String(s).split(/\*([^*]+)\*/).map((x, i) => (i % 2 ? h('i', null, x) : x)); }
   function wordCard(/** @type {any} */ it) {
     const c = it && it.card; if (!c) return null;
+    // a card whose item is one word: the shared word panel (forms, one example, where it is from)
+    if (c.type) return wordPanel(c, { keep, play: async (/** @type {string} */ ex) => { if (!(await playAudio(ctx.content, ex))) sp.say(ex, 'de'); } });
     const ex = c.ex;
     const play = ex ? h('button', { type: 'button', class: 'pr-play pressable', 'aria-label': t('practice.word.play'), onpointerdown: keep,
       onclick: async () => { if (!(await playAudio(ctx.content, ex))) sp.say(ex, 'de'); } }, icon('play', { size: 16 })) : null;

@@ -233,12 +233,14 @@ const WORDS = read('content/igloo/words/de.json');
 const IX = index(CL, WORDS);
 const tt = (k, v) => `${k}${v ? JSON.stringify(v) : ''}`;
 
-test('Quick sort takes words not known yet, without gaps or repeats, in the order given', () => {
+test('Quick sort takes words not known yet, without gaps or repeats, most common first', () => {
   const known = new Set(['W:gut.adj']);
   const score = id => ({ state: known.has(id) ? 'known' : 'unseen' });
   const gap = WORDS.find(w => /…/.test(w.w));
   const list = sortList(['gut.adj', 'sehr.adv', 'sehr.adv', 'nicht.adv', gap.id, 'no-such-word'], id => IX.word(id), score);
-  assert.deepEqual(list, ['sehr.adv', 'nicht.adv'].filter(id => IX.word(id)));
+  assert.deepEqual(list, ['sehr.adv', 'nicht.adv'].filter(id => IX.word(id)).sort((a, b) => IX.word(b).zipf - IX.word(a).zipf));
+  const many = sortList(WORDS.map(w => w.id), id => IX.word(id), score);
+  assert.ok(many.every((id, i) => i === 0 || (IX.word(many[i - 1]).zipf || 0) >= (IX.word(id).zipf || 0)), 'by zipf, most common first');
   assert.ok(sortList(WORDS.map(w => w.id), id => IX.word(id), score).length <= SORT_MAX);
   assert.deepEqual(sortSource(new URLSearchParams('cluster=topic:home')), { kind: 'cluster', key: 'topic:home' });
   assert.deepEqual(sortSource(new URLSearchParams('level=A1')), { kind: 'level', level: 'A1' });

@@ -180,3 +180,22 @@
 .grade4-b.is-picked::after { background: var(--on-ink); }
 .grade4-b:disabled { cursor: default; }
 @media (forced-colors: active) { .grade4-b.is-picked { border: 2px solid Highlight; } }
+
+/* ---------- word panel (core/wordpanel.js): every card whose item is one word ---------- */
+.wp-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0; font: 500 13px/1.3 var(--font-ui); color: var(--ink-3); }
+.wp-type { color: var(--ink-2); }
+.wp-dot { color: var(--ink-3); }
+.wp-freq { display: inline-flex; align-items: center; gap: 6px; }
+.wp-bars { display: inline-flex; align-items: flex-end; gap: 2px; height: 11px; }
+.wp-bar { width: 3px; border-radius: 1px; background: var(--cell-empty); box-shadow: inset 0 0 0 1px var(--hairline-strong); }
+.wp-bar:nth-child(1) { height: 4px; } .wp-bar:nth-child(2) { height: 6px; } .wp-bar:nth-child(3) { height: 8px; } .wp-bar:nth-child(4) { height: 10px; } .wp-bar:nth-child(5) { height: 11px; }
+.wp-bar.is-on { background: var(--ink-2); box-shadow: none; }
+.wp { display: grid; gap: 6px; padding: var(--s-3); border-radius: var(--r-ctl); background: var(--surface-2); }
+.wp p { margin: 0; }
+.wp-head { font: 600 17px/1.35 var(--font-ui); color: var(--ink); }
+.wp-forms { font: 400 17px/1.4 var(--font-display); color: var(--ink); }
+.wp-sub { font-size: 15px; color: var(--ink-2); }
+.wp-ex { display: flex; align-items: flex-start; gap: var(--s-1); margin-top: 2px; }
+.wp-ex-de { font: 400 17px/1.45 var(--font-display); color: var(--ink); }
+.wp-hl { background: none; color: inherit; font-weight: 600; text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.wp-src { margin-top: 2px; }

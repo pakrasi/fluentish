@@ -6,16 +6,18 @@ import { loadKnowledge } from '../../../data/knowledge.js';
 import { isDue } from '../../../domain/b1ready.js';
 import * as FS from '../../../domain/fsrs.js';
 import { cardIds, itemFor, itemIds } from './items.js';
+import { loadWordIx } from '../wordix.js';
 
 export const DECK = 'clusters';
 export const KV = 'clusters';
 
-/** @type {Promise<{c: any, words: any[], ix: ReturnType<typeof index>}> | null} */ let memo = null;
+/** @type {Promise<{c: any, words: any[], ix: ReturnType<typeof index>, fx: any}> | null} */ let memo = null;
 
-/** The clusters content, the word list and the index (once a session). @param {{content: any}} ctx */
+/** The clusters content, the word list, the index and the word forms index (once a session). @param {{content: any}} ctx */
 export function loadClusters(ctx) {
   if (!memo) {
-    memo = Promise.all([ctx.content.load('clusters.de'), ctx.content.load('igloo.words.de')]).then(([c, words]) => ({ c, words, ix: index(c, words) }));
+    memo = Promise.all([ctx.content.load('clusters.de'), ctx.content.load('igloo.words.de')])
+      .then(async ([c, words]) => ({ c, words, ix: index(c, words), fx: await loadWordIx(ctx, words).catch(() => null) }));
     memo.catch(() => { memo = null; });
   }
   return memo;
