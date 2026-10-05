@@ -52,7 +52,7 @@ test('pickKept keeps at most two earlier deployable versions, live first', () =>
 });
 
 test('core content covers B1, the mock exams and German Look up', () => {
-  for (const id of ['b1.items', 'exam.goethe-b1.01', 'exam.goethe-b1.why.01', 'igloo.framework', 'igloo.lang.german', 'igloo.chunks.en']) assert.ok(CORE_CONTENT.test(id), id);
+  for (const id of ['b1.items', 'exam.goethe-b1.01', 'exam.goethe-b1.why.01', 'igloo.framework', 'igloo.lang.german', 'igloo.chunks.en', 'speak.situations', 'atlas.de']) assert.ok(CORE_CONTENT.test(id), id);
   for (const id of ['igloo.lang.french', 'igloo.chunks.spanish']) assert.ok(!CORE_CONTENT.test(id), id);
 });
 
