@@ -2,7 +2,9 @@
 
 Phase 2 of ARCHITECTURE.md §8, as amended by the review (A1, A4, B2, B5, S2). This page lists what is ready, what must happen first, the order of the switch, the iPhone check, the commands and the rollback.
 
-The old apps stay in use until the exam on 9 Oct **and** the iPhone check below. Nothing here goes live until the owner runs the commands.
+**Status (5 Oct): the switch is done.** It was brought forward from 13–16 Oct to the morning of 4 Oct, so the exam-week work done in the preview is kept: Fluentish left shadow mode (41fec5c, 10:12), then language-doors (c2c395f, 10:20) and b1-exam (4de23a5, 10:20) were merged and pushed. Fluentish is the one writer of B1 and exam data; Igloo keeps Drill, Test, Write and Look up. Still open: the iPhone checklist below (not recorded as done), the `/b1-review` skill text and `b1-token.py` (step 6), and phase 3. The boot-time delta re-merge (step 7, ARCHITECTURE §6) was not built.
+
+The rest of this page is the runbook as it was written before the switch, with each step's status.
 
 ## What moves, and what stays
 
@@ -62,15 +64,15 @@ Igloo keeps its service worker for Drill offline, and its SM-2 data (`doors.srs.
    `progress.json` needs nothing: Fluentish never reads it. It reads `data/results.json`, `feedback.json`, `vocab.json`, `learner.json` and `vocab-audio.json`.
 3. **Leave shadow mode. Done** (commit "Cutover: leave shadow mode; keep preview work"). `deployShadow: false`, deployed. This step makes Fluentish the writer for the B1 and exam collections, so from here on use Fluentish only for B1 and exams (one writer per collection, review B2). Old Igloo Drill/Test/Write stay fine.
 
-## Order of the switch (planned for 13–16 Oct)
+## Order of the switch (planned for 13–16 Oct, done on 4 Oct)
 
-1. Blockers 1 and 2 merged in Fluentish, CI green (done).
-2. On each device (iPhone Safari, Mac browser), run the **count bookmark** below on any pakrasi.github.io page and keep the numbers.
-3. Fluentish leaves shadow mode (done, brought forward to 4 Oct so the exam-week work in the preview is kept). Open `https://pakrasi.github.io/fluentish/` on each device once; each converts its own preview profile.
-4. Run the **iPhone checklist**. Any failure: stop and roll back Fluentish only (the old apps were never touched).
-5. Same day: switch language-doors and b1-exam (one command each).
-6. Update the `/b1-review` skill text and `b1-token.py`.
-7. 7 days later: the delta re-merge window (review B2) closes. Phase 3 starts: port Drill, Test, Write and Look up, then retire Igloo's worker.
+1. Blockers 1 and 2 merged in Fluentish, CI green. **Done.**
+2. On each device (iPhone Safari, Mac browser), run the **count bookmark** below on any pakrasi.github.io page and keep the numbers. **Not recorded.**
+3. Fluentish leaves shadow mode. **Done 4 Oct** (41fec5c). Open `https://pakrasi.github.io/fluentish/` on each device once; each converts its own preview profile.
+4. Run the **iPhone checklist**. Any failure: stop and roll back Fluentish only (the old apps were never touched). **Open: not recorded as done.**
+5. Same day: switch language-doors and b1-exam (one command each). **Done 4 Oct** (c2c395f, 4de23a5): `b1-exam/data/progress.json` and `b1-exam/audio/vocab/manifest.json` answer 404.
+6. Update the `/b1-review` skill text and `b1-token.py`. **Open**: the skill still names the app at localhost:8426, and `b1-token.py` still opens `b1-exam/app/`.
+7. 7 days later: the delta re-merge window (review B2) closes. **Not built**: only the cutover's own merge uses the fingerprints (ARCHITECTURE §6). Phase 3 starts after the exam: port Drill, Test, Write and Look up, then retire Igloo's worker.
 
 ## iPhone checklist (the phase-2 gate)
 
@@ -78,7 +80,7 @@ Do it on the iPhone in the same place he uses daily: either a Safari tab or the 
 
 - [ ] **Preview kept.** On a device that opened the preview, the first visit shows the toast "Your work from the preview is kept…", the preview banner is gone, and Today's notice starts "Kept from the preview:" with the exam modules, recordings and reviews done there. Exam shows the preview's modules, and a preview recording plays back.
 - [ ] **Migrated counts match.** Fluentish's import notice on Today shows cards, exam attempts, drafts and words. They equal the bookmark's `b1 cards`, `exam attempts`, `drafts` and `words`, except for cards that migrate.js skips as unusable (no valid S, D, due or reps). Any gap beyond a few cards is a stop. Check the Mac browser the same way.
-- [ ] **Mic**: Practice › Say it aloud: the mic check passes and a spoken answer is graded. Exam › a Sprechen part records, plays back and shows its length.
+- [ ] **Mic**: Practice › Sprechen › Mic check passes, and in a speaking situation Check with the mic hears a spoken answer and suggests a grade (Say it aloud folded into the situations in round 3). Exam › a Sprechen part records, plays back and shows its length.
 - [ ] **Keyboard stays up** through a typed Practice round of at least 10 items: after Return the field keeps focus and the keyboard does not drop between items, including after a wrong answer and the retype.
 - [ ] **Haptics**: a correct answer gives a light tap (`haptic()` in `src/core/motion.js`: iOS has no `navigator.vibrate`, so it clicks a hidden switch input) and the keyboard stays up right after the tap.
 - [ ] **A real Sprechen upload reaches the Mac.** Record one short Sprechen part in Fluentish. On the Mac: `python3 ~/pakrasi-lab/b1-exam/scripts/sync.py && python3 ~/pakrasi-lab/b1-exam/scripts/b1-review.py status`. The new recording is listed for that day. Repeat with one Lesen or Hören submit, and one Schreiben submit.
@@ -96,7 +98,7 @@ javascript:(()=>{const n=k=>{try{const j=JSON.parse(localStorage.getItem(k));ret
 
 ## Commands
 
-Each switch command checks for a clean tree, merges, runs that repo's gates, pushes `main` and says how to check the deploy. Each script is run straight from the branch, so it works before it is on `main`.
+All three ran on 4 Oct; they stay here for the record and for a rollback. Each switch command checks for a clean tree, merges, runs that repo's gates, pushes `main` and says how to check the deploy. Each script is run straight from the branch, so it works before it is on `main`.
 
 **Fluentish leaves shadow mode** (done; this is what ran):
 
@@ -125,7 +127,7 @@ After the switch, his language-doors working branch `b1-trainer` is behind `main
 
 ## Rollback
 
-- **Fluentish**: `cd ~/fluentish && git revert --no-edit <cutover commit> && git push origin main`, or redeploy an earlier build with `gh workflow run deploy.yml -f sha=<sha>`. Profiles already made `local` stay local and keep syncing (a shadow-mode build opens the active local profile): the rollback stops new devices from leaving shadow mode, and it doesn't undo synced data. An archived preview profile stays archived; for 30 days its data is still on the device, and `archivedAt` can be removed by hand to reopen it. A build from before the cutover change (ae8af0e or older) never deletes an archived preview either: it doesn't know the field and opens the active local profile. A service worker problem alone: `gh variable set FLUENTISH_SW --body off && gh workflow run deploy.yml` (README › Service worker).
+- **Fluentish**: `cd ~/fluentish && git revert --no-edit <cutover commit>`, pushed to a branch first and then fast-forwarded to `main` once its `ci` passed (`main` takes only such commits since round 3), or redeploy an earlier build with `gh workflow run deploy.yml -f sha=<sha>`. Profiles already made `local` stay local and keep syncing (a shadow-mode build opens the active local profile): the rollback stops new devices from leaving shadow mode, and it doesn't undo synced data. An archived preview profile stays archived; for 30 days its data is still on the device, and `archivedAt` can be removed by hand to reopen it. A build from before the cutover change (ae8af0e or older) never deletes an archived preview either: it doesn't know the field and opens the active local profile. A service worker problem alone: `gh variable set FLUENTISH_SW --body off && gh workflow run deploy.yml` (README › Service worker).
 - **After a b1-exam rollback**, Fluentish's word audio needs nothing: the private copy it pulled stays in use until the next sync finds `data/vocab-audio.json` gone and drops it, and from the next start it reads the restored public index.
 - **language-doors**: `cd ~/language-doors && git switch main && git pull --ff-only && git revert --no-edit -m 1 <merge sha> && bash scripts/bump_v.sh && git commit -qam "Rollback V" && git push origin main`. The merge sha is in `git log --merges -1`.
 - **b1-exam**: `bash <(git -C ~/pakrasi-lab/b1-exam show cutover:scripts/cutover-merge.sh) --rollback`. It reverts every cutover merge under the sync lock, newest first, puts the word-audio index back in `docs/` with the entries added since, pushes, and restarts server.py.
@@ -179,7 +181,7 @@ Links checked (old → final URL):
 | `#b1/round` · `#b1/missed` | `#/practice/round` · `…?kind=missed` |
 | `#b1/words`, `#b1/words/round` · `#b1/sprechen`, `#b1/situations` · `#b1/lesen` · `#b1/grammar` | `#/practice/round?kind=area:words` · `area:speaking` · `area:reading` · `area:grammar` |
 | `#b1/grammar/dass` | `#/practice/round?kind=topic:dass` |
-| `#b1/aloud`, `#b1/aloud/go` · `#b1/teil2` | `#/practice/speak/aloud` · `#/practice/speak/teil2` |
+| `#b1/aloud`, `#b1/aloud/go` · `#b1/teil2` | `#/practice/speak/aloud` (since round 3 it opens `#/practice/situations`) · `#/practice/speak/teil2` |
 | `#b1/frames` | `#/lookup/frames` |
 | `b1-exam/app/`, `#/`, `#/fortschritt`, `b1-exam/`, `b1-exam/index.html` | `#/exam` |
 | `#/tag/3` · `#/tag/3/lesen` · `#/tag/3/schreiben?review=42` | `#/exam/3` · `#/exam/3/lesen` · `#/exam/3/schreiben/review/42` |
@@ -206,4 +208,4 @@ Also checked:
 - **Pages caches HTML for up to 10 minutes**, so for that long after a push a browser can still get the old `app.html` and old app. The version checks and the delta re-merge cover it.
 - **Hashed audio names stay public** (review N1): `md5(voice|text)` lets someone confirm a guessed word. The fix is the HMAC naming after the exam.
 - **Mid-module b1-exam tabs** don't reload until the module ends, by design. A module finished in the old tab after the cutover still uploads through the old app and reaches the Mac as before.
-- **WebKit in Playwright is not an iPhone**: mic, keyboard, haptics, Home Screen storage and background behaviour are covered only by the checklist above.
+- **WebKit in Playwright is not an iPhone**: mic, keyboard, haptics, Home Screen storage and background behaviour are covered only by the checklist above. Since round 3 the browser e2e suite (ARCHITECTURE §8) runs on every push and gates the deploy; it covers the flows, not the device.

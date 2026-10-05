@@ -122,5 +122,8 @@ npm run typecheck             # strict on core, data and the new domain modules
 node tools/validate-content.mjs
 node tools/check-privacy.mjs --all && node tools/check-dates.mjs
 npm run serve                 # http://localhost:8430/ ; ?today=YYYY-MM-DD works on localhost only
+npm run test:e2e              # the stamped site in WebKit 390 px and Chromium, mocks for every other host, axe
 ```
+A feature with a new screen or flow adds a spec in `tests/e2e/<feature>.spec.mjs`: start from `seed(page)` (a synthetic profile), `open(page, '#/…')`, drive it by role and label, assert what was stored with `storedCards(page, deck)`, and call `checkA11y(page, '<screen>')` on each new screen. A spec fails on any console error, any request to a host the fixtures do not mock, an HTML string written into the DOM (the Trusted Types tripwire), and any record that does not match `schemas/records` (a new field goes into its schema in the same commit). `main` takes only commits whose `ci` jobs, the e2e among them, passed on a branch first.
+
 Look at your screens at 390 px (WebKit, light and dark, reduced motion) and 1280 px. Playwright's WebKit screenshots inject a style that this CSP reports, so read the console **before** taking a screenshot.

@@ -48,9 +48,11 @@ Keyed by item id, 60 per test: `evidence` (a verbatim quote that decides the ite
 
 Every client-created record carries `id` (UUIDv7), `profileId`, `deviceId` and `createdAt` (ISO with offset); mutable ones add `rev` (hybrid logical clock) and `deletedAt` when deletable. Legacy identifiers are kept under `legacy`.
 
+**Checked while developing and testing** (`src/data/records.js`): on a dev server, in the browser e2e suite and in `tests/unit/records.test.mjs`, the store validates every `store.set` of `settings`, `prefs` and `exams.feedbackLocal`, every `store.append` (event@1) and every profile written to the adapter against `schemas/records/` before writing, and reports a mismatch (a console error in the browser, which fails the e2e suite; an exception in node). The deployed app loads no schema, so a record that drifts from its schema is caught before it ships, never in his app. A new field is added to its schema in the same commit.
+
 | Schema | Where | Notes |
 |---|---|---|
-| `profile@1` | IDB `profiles` | `kind`: `local`, `shadow` (a preview copy that must never sync), `remote` (accounts, later); `archivedAt`, `archivedInto`: a preview merged at the cutover, never opened again, purged 30 days after `archivedAt` |
+| `profile@1` | IDB `profiles` | `kind`: `local`, `shadow` (a preview copy that must never sync), `remote` (accounts, later); `archivedAt`, `archivedInto`: a preview merged at the cutover, never opened again, purged 30 days after `archivedAt` (in the schema since round 3; before, the schema refused the records the cutover wrote) |
 | `settings@1` | kv `settings`, profile, synced | the goal and practice options; `exam.date` is the **only** place the exam date lives; `rev` holds an HLC per field path for last-write-wins merges |
 | `prefs@1` | kv `prefs`, device | theme, motion, locale; never synced |
 | (secrets) | kv `secrets`, device | `anthropicKey`, `githubToken`; never exported or synced, no schema on purpose |
@@ -59,6 +61,7 @@ Every client-created record carries `id` (UUIDv7), `profileId`, `deviceId` and `
 | `card-fsrs@1` | IDB `cards` `[profileId, deck, itemId]` | the FSRS snapshot from `domain/fsrs.js`; a cache of the events |
 | `exam-attempt@1` | IDB `attempts` | the B1 exam app's field names (`started_at`, `max_score`, `responses`, `writings`), which the Mac's `sync.py` imports, plus `examId` and `contentVersion` |
 | `mistake@1` | kv `mistakes`, profile, private | a mistake from a correction: `{id: 'F:<attempt>-<n>', v: 1, wrong, right, rule, source: {attemptId, test, module, label}, createdAt, deletedAt}`; written only through `src/data/mistakes.js`; Practice reviews each as card `F:…` in deck `b1` |
+| `feedback@1` | kv `exams.feedbackLocal`, profile | a correction of the learner's text: a one-click Schreiben correction made here (`features/exam/data.js saveCorrection`), or one carried over from the B1 exam app. `body` is required; `author` (`ai`, `tutor`, `self`), `model` and `promptVersion` (`schreiben-exam@1`, from `services/claude.js PROMPTS`) say who or what wrote it and with which prompt. They are additive: records from before them have none. The `feedback.created` event carries the same three, and its `data/feedback-ai/*.json` file adds `author` and `prompt_version` (sync.py ignores keys it does not read) |
 | `event@1` | IDB `outbox`, then `archive` | append-only, the unit of sync (below); acknowledged events older than 30 days move to `archive` unchanged (`data/archive.js`) |
 | `fluentish-export@1` | file | Profile > Data > Export: kv collections except prefs, secrets, palace and backup, cards, attempts, events (the outbox and its archive) |
 
