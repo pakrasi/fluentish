@@ -454,6 +454,8 @@ export const SCHREIBEN_HELD = [
 
 /* ---------- the corpus ---------- */
 const typeOf = it => {
+  if (it.src === 'script') return it.gap ? 'script word gap' : 'script word meaning';
+  if (it.area === 'clusters') return `cluster ${it.kind}`;
   if (it.src === 'build') return 'schreiben email line';
   if (it.area === 'writing') return 'schreiben phrase';
   if (it.area === 'mistakes') return 'mistake';
@@ -484,8 +486,52 @@ export async function buildData({ root = ROOT, codeRoot = ROOT } = {}) {
       for (const t of schreiben.tasks) for (const p of t.parts) { const it = { ...B.partItem(t, p), model: B.modelLine(p), lower: p.lower }; parts.push(it); data.byId.set(it.id, it); }
     } catch { /* code from before the builder */ }
   }
-  return Object.assign(data, { parts });
+  // Word clusters: the cards of every cluster, built as the round builds them (clusters/items.js itemFor). Every
+  // opposite, family and preposition card; the meaning → word cards of topics, prefixes and suffixes one in four.
+  /** @type {any[]} */ const clusters = [];
+  try {
+    const { index } = await import(pathToFileURL(path.join(codeRoot, 'src/domain/clusters.js')).href);
+    const CI = await import(pathToFileURL(path.join(codeRoot, 'src/features/practice/clusters/items.js')).href);
+    const cc = J(root, 'content/clusters/de.json'), ix = index(cc, J(root, 'content/igloo/words/de.json'));
+    let k = 0;
+    const ids = new Set();
+    for (const cl of ix.all) for (const id of CI.cardIds(cl, ix)) if (!id.startsWith('W:') || cl.type === 'family' || k++ % 4 === 0) ids.add(id);
+    for (const id of ids) {
+      const it = CI.itemFor(id, ix, cc, { t: (/** @type {string} */ key) => key });
+      if (it && !data.byId.has(id)) { it.cluster = cl0(ix, id); clusters.push(it); data.byId.set(id, it); }
+    }
+  } catch (e) { if (!/Cannot find module|ERR_MODULE_NOT_FOUND/.test(String(e))) throw e; }
+  // Script mode: synthetic script words, the two cards script/words.js makes (his sentence with a gap; the meaning)
+  /** @type {any[]} */ const script = SYN_SCRIPT.map(([sentence, surface, lemma, art, gloss], i) => {
+    const at = sentence.indexOf(surface);
+    return { id: `SW:corpus-${i}-gap`, kind: 'word', area: 'words', src: 'script', prompt: `${sentence.slice(0, at)}___${sentence.slice(at + surface.length)}`, promptLang: 'de',
+      gap: true, literal: true, loose: true, anywhere: false, strict: [], accept: [surface], model: sentence, gloss, task: null, surface, lemma, art };
+  }).concat(SYN_SCRIPT.map(([, , lemma, art, gloss], i) => {
+    const a = art ? `${art} ${lemma}` : lemma;
+    return { id: `SW:corpus-${i}-meaning`, kind: 'word', area: 'words', src: 'script', prompt: gloss, promptLang: 'en', gap: false, literal: true, anywhere: false, strict: [],
+      accept: [a], model: a, gloss: null, task: null, lemma, art };
+  }));
+  for (const it of script) data.byId.set(it.id, it);
+  return Object.assign(data, { parts, clusters, script });
 }
+
+/** The cluster a card belongs to, for wrong answers drawn from its siblings. @param {any} ix @param {string} id */
+function cl0(ix, id) {
+  const wid = id.replace(/^(W|CF|CO|CP):/, '').split('~')[0];
+  return ix.all.find((/** @type {any} */ c) => (id.startsWith('CP:') ? c.type === 'prep' && (c.gaps || []).some((/** @type {any} */ g) => g.id === wid) : c.items.includes(wid)))?.key || null;
+}
+
+/** Synthetic script words (sentence, the word as written, lemma, article, gloss): not from any learner's script. */
+export const SYN_SCRIPT = [
+  ['Der Rahmen besteht aus leichtem Aluminium.', 'Rahmen', 'Rahmen', 'der', 'frame'],
+  ['Wir haben die alten Reifen gestern gewechselt.', 'Reifen', 'Reifen', 'der', 'tyre'],
+  ['Mit einer stabilen Kette fährt man sicherer.', 'stabilen', 'stabil', null, 'stable; sturdy'],
+  ['Die Bremse quietscht bei Regen ziemlich laut.', 'quietscht', 'quietschen', null, 'to squeak'],
+  ['Im Frühling pflanzen wir Tomaten im Garten.', 'pflanzen', 'pflanzen', null, 'to plant'],
+  ['Die Bienen sammeln den Nektar der Blüten.', 'Nektar', 'Nektar', 'der', 'nectar'],
+  ['Ohne Bestäubung gäbe es weniger Obst.', 'Bestäubung', 'Bestäubung', 'die', 'pollination'],
+  ['Das Gerät misst die Temperatur genau.', 'Gerät', 'Gerät', 'das', 'device'],
+];
 
 /** Build the corpus with this checkout's helpers: [{id, type, cls, text, want: 'wrong'|'right', move?}] */
 export async function buildCorpus({ root = ROOT } = {}) {
@@ -565,6 +611,40 @@ export async function buildCorpus({ root = ROOT } = {}) {
       for (const p of (it.accept || []).filter(p => /\[x\]/.test(p)).slice(0, 2)) add(it, 'slot-garbage', garbage(p), 'wrong');
     }
     if (it.kind === 'topic') for (const p of (it.accept || []).filter(p => /\[x\]/.test(p)).slice(0, 2)) add(it, 'slot-garbage', garbage(p), 'wrong');
+  }
+  // Word clusters: the answer, its article and siblings
+  const clusterOf = new Map();
+  for (const it of data.clusters || []) clusterOf.set(it.cluster, [...(clusterOf.get(it.cluster) || []), it]);
+  for (const it of data.clusters || []) {
+    const acc = new Set(it.accept.map(fold));
+    const notAccepted = (/** @type {string} */ x) => x && !acc.has(fold(x));
+    if (it.kind === 'prep') {
+      for (const a of it.accept) add(it, 'cluster-gap-right', a, 'right');
+      add(it, 'cluster-gap-sentence', it.model, 'right');
+      const others = [...new Set((clusterOf.get(it.cluster) || []).map(x => x.accept[0]))].filter(notAccepted);
+      for (const o of others.slice(0, 3)) add(it, 'cluster-gap-other-prep', o, 'wrong');
+      for (const a of it.accept.slice(0, 1)) { const n = ART_NEXT[a.toLowerCase()]; if (notAccepted(n)) add(it, 'cluster-gap-case', n, 'wrong'); }
+      continue;
+    }
+    add(it, 'cluster-model', it.model, 'right');
+    if (/[äöüß]/.test(it.model)) add(it, 'cluster-ae-oe-ue-ss', umlautSpelled(it.model), 'right');
+    const m = /^(der|die|das) (.+)$/.exec(it.model);
+    if (m) for (const a of OTHER_ART[m[1]] || []) if (notAccepted(`${a} ${m[2]}`)) add(it, 'cluster-article', `${a} ${m[2]}`, 'wrong');
+    if (it.kind === 'opposite') { if (notAccepted(it.prompt)) add(it, 'cluster-opposite-same', it.prompt, 'wrong'); }
+    const sib = (clusterOf.get(it.cluster) || []).map(x => x.model).filter(x => notAccepted(x) && fold(x) !== fold(it.prompt));
+    for (const x of sib.slice(0, 2)) add(it, 'cluster-sibling', x, 'wrong');
+  }
+  // Script words: the gap word and wrong forms of it; the meaning card with a wrong article
+  for (const it of data.script || []) {
+    if (it.gap) {
+      add(it, 'script-gap-word', it.surface, 'right');
+      for (const e of errorsIn(it.model, { lex })) add(it, `script-${e.cls}`, e.text, 'wrong');
+      const end = /(en|em|er|es|e)$/.exec(it.surface);
+      if (end && !it.art && it.surface.length > 4) add(it, 'script-gap-ending', it.surface.slice(0, -end[1].length) + ADJ_SWAP[end[1]], 'wrong');
+    } else {
+      add(it, 'script-meaning', it.model, 'right');
+      if (it.art) for (const a of OTHER_ART[it.art] || []) add(it, 'script-article', `${a} ${it.lemma}`, 'wrong');
+    }
   }
   for (const [id, text, kind] of CURATED_RIGHT) { const it = data.byId.get(id); if (it) add(it, `curated-${kind}`, text, 'right'); }
   for (const [id, text, want, why] of SCHREIBEN_HELD) { const it = data.byId.get(id); if (it) out.push({ id, type: 'held-out (Schreiben)', cls: `schreiben held-out: ${why}`, text, want, move: null }); }

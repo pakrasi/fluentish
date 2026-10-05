@@ -6,7 +6,7 @@
   "pl": null,
   "pos": "adv",
   "en": [
-   "inside"
+   "inside (on the inside)"
   ],
   "alt": [],
   "level": "A2",
@@ -260,7 +260,7 @@
   "theme": "society",
   "rank": 941,
   "zipf": 4.29,
-  "ex": "Das ist ein nationaler Feiertag.",
+  "ex": "Der 3. Oktober ist ein nationaler Feiertag.",
   "exen": "That is a national holiday."
  },
  {
@@ -850,7 +850,7 @@
   "pl": null,
   "pos": "adv",
   "en": [
-   "open"
+   "open (colloquial: das Fenster ist auf)"
   ],
   "alt": [],
   "level": "A2",
@@ -867,8 +867,8 @@
   "pl": null,
   "pos": "adv",
   "en": [
-   "closed",
-   "shut"
+   "shut (colloquial: die Tür ist zu)",
+   "closed"
   ],
   "alt": [],
   "level": "A2",
@@ -1159,8 +1159,8 @@
   "pl": null,
   "pos": "noun",
   "en": [
-   "home country",
-   "domestic"
+   "home (within the country, not abroad)",
+   "interior (of a country)"
   ],
   "alt": [],
   "level": "B2",
@@ -1266,7 +1266,8 @@
   "pl": "Treffen",
   "pos": "noun",
   "en": [
-   "meeting"
+   "meeting (get-together)",
+   "meet-up"
   ],
   "alt": [],
   "level": "A2",
@@ -1421,7 +1422,8 @@
   "pl": "Ereignisse",
   "pos": "noun",
   "en": [
-   "event"
+   "event (something that happens)",
+   "occurrence"
   ],
   "alt": [],
   "level": "B1",
@@ -1455,15 +1457,15 @@
   "pl": "Kenntnisse",
   "pos": "noun",
   "en": [
-   "knowledge"
+   "knowledge (of a fact): zur Kenntnis nehmen = to take note of"
   ],
   "alt": [],
   "level": "B2",
   "theme": "work",
   "rank": 905,
   "zipf": 4.31,
-  "ex": "Gute Kenntnisse in Deutsch sind wichtig.",
-  "exen": "A good knowledge of German is important."
+  "ex": "Ich habe Ihre E-Mail zur Kenntnis genommen.",
+  "exen": "I have taken note of your email."
  },
  {
   "id": "die_Schrift",
@@ -1600,7 +1602,7 @@
   "pl": null,
   "pos": "noun",
   "en": [
-   "consideration"
+   "consideration (for others)"
   ],
   "alt": [],
   "level": "B1",
@@ -1704,7 +1706,7 @@
   "pl": "Ansagen",
   "pos": "noun",
   "en": [
-   "announcement"
+   "announcement (spoken, e.g. a recorded phone message)"
   ],
   "alt": [],
   "level": "B1",
@@ -1738,7 +1740,8 @@
   "pl": "Einfälle",
   "pos": "noun",
   "en": [
-   "idea"
+   "idea (sudden thought)",
+   "brainwave"
   ],
   "alt": [],
   "level": "B2",
@@ -1810,7 +1813,7 @@
   "pl": null,
   "pos": "noun",
   "en": [
-   "applause"
+   "applause (formal; also der Applaus)"
   ],
   "alt": [],
   "level": "B2",
@@ -1957,7 +1960,8 @@
   "pl": null,
   "pos": "verb",
   "en": [
-   "to refer (to)"
+   "to refer (someone to something)",
+   "to point to"
   ],
   "alt": [],
   "level": "B2",
@@ -2013,7 +2017,7 @@
   "pl": null,
   "pos": "verb",
   "en": [
-   "to fail"
+   "to fail (stop working, not cope)"
   ],
   "alt": [],
   "level": "B2",
@@ -2088,8 +2092,7 @@
   "pl": null,
   "pos": "verb",
   "en": [
-   "to postpone",
-   "to move",
+   "to move (to another date or place)",
    "to misplace"
   ],
   "alt": [],
@@ -2297,8 +2300,8 @@
   "pl": null,
   "pos": "verb",
   "en": [
-   "to take care of",
-   "to worry"
+   "to take care of (sorgen für)",
+   "to worry (sich sorgen um)"
   ],
   "alt": [],
   "level": "B1",
@@ -2410,7 +2413,7 @@
   "pl": null,
   "pos": "verb",
   "en": [
-   "to end",
+   "to end (something)",
    "to finish"
   ],
   "alt": [],
@@ -2429,7 +2432,7 @@
   "pl": null,
   "pos": "verb",
   "en": [
-   "to end"
+   "to end, come to an end (no object)"
   ],
   "alt": [],
   "level": "B1",
@@ -2558,7 +2561,8 @@
   "pl": null,
   "pos": "verb",
   "en": [
-   "to receive"
+   "to receive (guests, a signal)",
+   "to welcome"
   ],
   "alt": [],
   "level": "B2",
@@ -2614,7 +2618,7 @@
   "pl": null,
   "pos": "verb",
   "en": [
-   "to switch on"
+   "to switch on (colloquial)"
   ],
   "alt": [],
   "level": "A2",
@@ -2767,5 +2771,23 @@
   "zipf": 4.64,
   "ex": "Gehen Sie immer die Straße entlang.",
   "exen": "Keep going along the street."
+ },
+ {
+  "id": "gleich.adj",
+  "w": "gleich",
+  "art": "",
+  "pl": null,
+  "pos": "adj",
+  "en": [
+   "same",
+   "equal"
+  ],
+  "alt": [],
+  "level": "A2",
+  "theme": "core",
+  "rank": 1011,
+  "zipf": 5.59,
+  "ex": "Wir sind gleich alt.",
+  "exen": "We are the same age."
  }
 ]

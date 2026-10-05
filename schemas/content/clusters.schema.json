@@ -13,6 +13,12 @@
   },
   "properties": {
     "version": { "const": 1 },
+    "aliases": {
+      "description": "Card ids whose content moved: the old id (kept on the learner's card) → the id of the item it now shows. Ids never change.",
+      "type": "object",
+      "propertyNames": { "pattern": "^(CO|CF|CP|W):." },
+      "additionalProperties": { "type": "string", "pattern": "^(CO|CF|CP|W):." }
+    },
     "morph": {
       "type": "object",
       "minProperties": 1,

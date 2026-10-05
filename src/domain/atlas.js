@@ -332,15 +332,30 @@ export function layoutSource(groups, widthById) {
 
 /**
  * Keep a group's existing items where they are; append new ones on new lines. Units whose items are all gone are
- * dropped (their places stay empty until a repack).
+ * dropped (their places stay empty until a repack), except that a new item as wide as a dropped one takes its place.
  * @param {Placed} p @param {GroupSpec} g @param {(id: string) => number} W
  */
 function extend(p, g, W) {
   const have = new Set(p.ids);
   const still = new Set(g.units.flat());
+  // A word whose content id moved (gleich.adv → gleich.adj) has the same text, so the same width: the new id takes
+  // the old one's place, in a pair beside the same partner, and nothing else moves.
+  /** @type {Map<number, string>} */ const repl = new Map();
+  const vacant = (/** @type {number} */ i) => i >= 0 && !still.has(p.ids[i]) && !repl.has(i);
+  for (const u of g.units) {
+    const nu = u.filter(id => !have.has(id));
+    if (nu.length !== 1) continue;
+    let j = -1;
+    if (u.length === 2) { const i = p.ids.indexOf(/** @type {string} */ (u.find(id => have.has(id)))); j = i >= 0 ? p.pair[i] : -1; }
+    else if (u.length === 1) j = p.ids.findIndex((id, i) => p.pair[i] < 0 && vacant(i) && W(id) === W(nu[0]));
+    if (vacant(j) && W(p.ids[j]) === W(nu[0])) { repl.set(j, nu[0]); have.add(nu[0]); }
+  }
   const keep = { ids: /** @type {string[]} */ ([]), ix: /** @type {number[]} */ ([]), ln: /** @type {number[]} */ ([]), pair: /** @type {number[]} */ ([]) };
   const remap = new Map();
-  p.ids.forEach((id, i) => { if (still.has(id)) { remap.set(i, keep.ids.length); keep.ids.push(id); keep.ix.push(p.ix[i]); keep.ln.push(p.ln[i]); keep.pair.push(p.pair[i]); } });
+  p.ids.forEach((id, i) => {
+    const to = still.has(id) ? id : repl.get(i);
+    if (to) { remap.set(i, keep.ids.length); keep.ids.push(to); keep.ix.push(p.ix[i]); keep.ln.push(p.ln[i]); keep.pair.push(p.pair[i]); }
+  });
   keep.pair = keep.pair.map(j => (j >= 0 && remap.has(j) ? /** @type {number} */ (remap.get(j)) : -1));
   const fresh = g.units.filter(u => u.every(id => !have.has(id)));
   const base = { key: p.key, label: g.label, cluster: g.cluster, x: p.x, y: p.y, r: p.r, y0: p.y0 };

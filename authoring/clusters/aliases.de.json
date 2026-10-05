@@ -1,0 +1,8 @@
+{
+ "about": "Card ids whose content moved. A learner's card keeps its id (ids never change); the app shows it as the item it points to. Add an entry whenever a fix would make a shipped id disappear (tests/fixtures/shipped-ids.txt).",
+ "ids": {
+  "CO:gleich.adv~verschieden.adj": "CO:gleich.adj~verschieden.adj",
+  "CO:verschieden.adj~gleich.adv": "CO:verschieden.adj~gleich.adj",
+  "CF:sich_scheiden_lassen.phrase": "CF:sich_scheiden_lassen.verb"
+ }
+}

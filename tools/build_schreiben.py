@@ -252,6 +252,13 @@ def check_tasks(tasks, ctx, E, W):
     E += V.js_check(parts_b1, "tasks")
 
 
+def slot_errors(rows):
+    """A mandatory [x] right before nicht or leider is almost always an optional slot written as mandatory: "leider kann
+    ich [x] nicht kommen" rejects the plainest right answer, "Leider kann ich nicht kommen" (German review round 2)."""
+    return [f"{at}: accept {p!r} has a mandatory [x] before nicht/leider; write ([x]) if the slot can be empty"
+            for at, pats in rows for p in pats if re.search(r"(?<!\()\[x\]\s+(nicht|leider)\b", p)]
+
+
 def main():
     check_only = "--check" in sys.argv
     E, W = [], []
@@ -274,6 +281,7 @@ def main():
             E += polite_pattern_errors(it["accept"], (it.get("strict") or []) + polite, it["model"], f"linked {iid} (authoring/b1-src)")
     items = build_items(fns, ctx, prev_models, E, W)
     tasks = load("tasks.json")["tasks"]
+    E += slot_errors([(it["id"], it["accept"]) for _, it in items] + [(f"{t['id']}/{p['key']}", p.get("accept") or []) for t in tasks for p in t["parts"]])
     check_tasks(tasks, ctx, E, W)
     for w in W:
         print("warn:", w)
