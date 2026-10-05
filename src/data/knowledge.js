@@ -70,6 +70,6 @@ export async function loadKnowledge(ctx, { patch = {} } = {}) {
   // Igloo's data on this device belongs to the profile the legacy import ran for, not to every profile
   const migrated = !!(ctx.store.get('meta', {}) || {}).migratedAt;
   const k = knowledge({ today: c.today, epoch: ctx.clock.epochDay(), decks, resolve: m.resolve, know: migrated ? legacy('doors.know.v1') : {}, srs: migrated ? legacy('doors.srs.v1') : {},
-    lang: iglooLang(ctx.store), examWords, seen: ctx.store.get(SEEN, {}) || {} });
+    lang: iglooLang(ctx.store), itemLang: activeCourse(ctx.store.get('settings'))?.lang || 'de', examWords, seen: ctx.store.get(SEEN, {}) || {} });
   return { ...k, maps: m };
 }

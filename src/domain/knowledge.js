@@ -48,8 +48,8 @@
    Nothing here changes a card. Where you stand (domain/standing.js) and the map's known count read this score. */
 import * as FS from './fsrs.js';
 import * as D8 from './days.js';
-import { tagOf, slug, origin } from './itemids.js';
-import { deckName } from './decks.js';
+import { tagOf, slug, origin, scopeItem } from './itemids.js';
+import { deckName, deckLang } from './decks.js';
 import { itemResolver } from './wordbuild.js';
 
 export const KNOWN_R = 0.9;
@@ -115,6 +115,8 @@ export function resolver({ words = [], chunkOf = {}, gapPrep = {}, build = {} } 
  * @property {Record<string, any>} [know]            doors.know.v1
  * @property {Record<string, any>} [srs]             doors.srs.v1
  * @property {string} [lang]                         the Igloo language key ('german')
+ * @property {string} [itemLang]                     the course's language ('de'): Igloo's items are scoped to it
+ *                                                   (domain/itemids.js scopeItem; German's stay unscoped)
  * @property {string[]} [examWords]                  item ids of the words captured in mock exams
  * @property {Record<string, {first?: string, last?: string, n?: number}>} [seen]   lookup.seen: item id → views
  */
@@ -136,7 +138,7 @@ export function stateOf(recall, graduated, lapse) {
  * @param {Input} input
  */
 export function knowledge(input) {
-  const { today, decks = {}, know = {}, srs = {}, lang = 'german', examWords = [], seen = {} } = input;
+  const { today, decks = {}, know = {}, srs = {}, lang = 'german', itemLang = 'de', examWords = [], seen = {} } = input;
   const resolve = input.resolve || resolver();
   const examSet = new Set(examWords);
   /** @type {Map<string, {R: number, S: number, grad: boolean, lapse: boolean, last: string | null, today: boolean, marked: string | null, sources: Set<Origin>, cards: string[]}>} */
@@ -152,9 +154,11 @@ export function knowledge(input) {
   };
   for (const [deck, cards] of Object.entries(decks)) {
     const kind = deckName(deck);   // 'fr:core' reads as 'core'; a legacy deck is its own name (domain/decks.js)
+    const dl = deckLang(deck);     // a French deck's items are 'fr:…'; a legacy deck's (German) as they always were
     for (const [cid, rec] of Object.entries(cards || {})) {
       if (!rec || !rec.reps) continue;
-      const id = resolve(cid, kind);
+      const r0 = resolve(cid, kind);
+      const id = r0 && scopeItem(dl, r0);
       if (!id) continue;
       const a = slot(id);
       a.cards.push(`${deck}/${cid}`);
@@ -176,7 +180,7 @@ export function knowledge(input) {
   }
   // Igloo: Drill's SM-2 intervals and the Test results, keyed '<lang>|<item id>'
   const epoch = input.epoch;
-  const fromIgloo = (/** @type {string} */ key) => { const i = key.indexOf('|'); return i > 0 && key.slice(0, i) === lang ? resolve(key.slice(i + 1), 'b1') : null; };
+  const fromIgloo = (/** @type {string} */ key) => { const i = key.indexOf('|'); if (!(i > 0 && key.slice(0, i) === lang)) return null; const r = resolve(key.slice(i + 1), 'b1'); return r && scopeItem(itemLang, r); };
   if (epoch != null) {
     for (const [key, s] of Object.entries(srs || {})) {
       if (!s || !s.reps || !(s.ivl > 0)) continue;

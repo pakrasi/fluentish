@@ -121,3 +121,33 @@ export function origin(id, deck, isExam = () => false) {
   if ((tag === 'W' || tag === 'BW') && isExam(id)) return 'exam';
   return 'practice';
 }
+
+/* Item ids per language (round 3, C3a). The same content id can name an item in two languages (the chunk bank's
+   'K:ENG_CHUNK_0001' is a German phrase and a French one), so an item id says its language:
+     German        unscoped, as it always was: 'K:ENG_CHUNK_0001', 'W:haus.n' (never re-keyed, never prefixed)
+     any other     '<lang>:<item id>': 'fr:K:ENG_CHUNK_0001', 'fr:W:maison.n'
+   Card ids inside a course's namespaced decks ('fr:core') stay plain ('K:ENG_CHUNK_0001'): the deck already scopes the
+   card (IndexedDB key [profileId, deck, id]); knowledge scopes the item it resolves to by the deck's language
+   (domain/knowledge.js), and a feature that keys anything by item id (Look up's seen, exam words) uses scopeItem with
+   its course's language. */
+
+/** The language whose item ids carry no scope. */
+export const UNSCOPED_LANG = 'de';
+
+/**
+ * An item id in a language's scope: unchanged for German (or no language), '<lang>:<id>' otherwise; idempotent.
+ * @param {string | null | undefined} lang @param {string} id @returns {string}
+ */
+export function scopeItem(lang, id) {
+  if (!id || !lang || lang === UNSCOPED_LANG) return id;
+  return id.startsWith(`${lang}:`) ? id : `${lang}:${id}`;
+}
+
+/**
+ * An item id's language and its id inside that language ('fr:K:x' → {lang: 'fr', id: 'K:x'}; 'K:x' → German).
+ * @param {string} id @returns {{lang: string, id: string}}
+ */
+export function splitItem(id) {
+  const m = /^([a-z]{2,3}):(.+)$/.exec(String(id || ''));
+  return m ? { lang: m[1], id: m[2] } : { lang: UNSCOPED_LANG, id: String(id || '') };
+}

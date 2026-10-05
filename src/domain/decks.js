@@ -74,3 +74,31 @@ export function courseLang(settings) {
   const c = settings.courses.find((/** @type {any} */ x) => x && x.id === settings.activeCourse);
   return c && typeof c.lang === 'string' ? c.lang : null;
 }
+
+/**
+ * The namespaced decks ('<lang>:<name>') of a course's language among the deck names a store holds, sorted. The
+ * legacy decks are never among them (they have no ':'), so German's legacy reading is untouched by this.
+ * @param {readonly string[]} names @param {string | null | undefined} lang
+ */
+export function namedDecks(names, lang) {
+  return lang ? names.filter(d => d.includes(':') && inLang(d, lang)).sort() : [];
+}
+
+/**
+ * The allowance deck (domain/budget.js DeckId) a namespaced deck's cards count in (C3a): by its name, the decks that
+ * share a name with a legacy kind count as that kind (fr:speak → speak, fr:script → script, fr:build, fr:clusters,
+ * fr:writing, fr:mistakes); every other deck of a course (fr:core, fr:words, fr:grammar …) is part of its daily
+ * review round, the b1 share. A legacy deck is its own kind and is never mapped here.
+ * @param {string} deck @returns {'mistakes'|'b1'|'writing'|'speak'|'script'|'build'|'clusters'}
+ */
+export function allowanceDeck(deck) {
+  const n = deckName(deck);
+  return n === 'speak' || n === 'script' || n === 'build' || n === 'clusters' || n === 'writing' || n === 'mistakes' ? n : 'b1';
+}
+
+/**
+ * The kv collection where a course deck's feature records how many new items it has open today ({[deck]: {day,
+ * open}}), as 'b1.session' stats do for deck b1. Read by domain/allowance.js; a deck without a record today has any
+ * number open (as clusters).
+ */
+export const DECK_STATS_KV = 'deck.stats';

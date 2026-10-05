@@ -350,11 +350,11 @@ test('backup snapshot round trip: fluentish-snapshot@1 from before courses resto
 
 /* ---------------- scope: knowledge, the allowance, Where you stand ---------------- */
 
-test('knowledge, the allowance and dueTomorrow read the active course: German exactly as before, another language none of it', async () => {
+test('knowledge, the allowance and dueTomorrow read the active course: German exactly as before, another language only its own decks', async () => {
   const { store, app } = await session();
   store.putCards('b1', [['BP:a', card('2026-10-04', 2, T0)], ['W:haus.n', card('2026-10-05', 3, T0)]]);
   store.putCards('speak', [['SS:greet-01', card('2026-10-05', 1, T0)]]);
-  store.putCards('fr:core', [['K:ENG_CHUNK_0001', card('2026-10-05', 1, T0)]]);
+  store.putCards('fr:core', [['K:ENG_CHUNK_0001', card('2026-10-04', 1, T0)]]);
   const c = { today: DAY, exam: '2026-10-09', phase: 'week', daysLeft: 4, lastNewDay: '2026-10-07', capDay: '2026-10-08', newItems: true, mocks: true };
   // German: the settings from before courses and the migrated ones give the same numbers, byte for byte
   const before = dayAllowance({ store, c, settings: preCourse() });
@@ -364,16 +364,17 @@ test('knowledge, the allowance and dueTomorrow read the active course: German ex
   assert.equal(dueTomorrow({ store, c, settings: S.normalizeSettings(store.get('settings')) }), dueTomorrow({ store, c, settings: null }));
   assert.deepEqual(knowledgeDecks(store), DECKS, 'German: the legacy decks, in their order');
   assert.equal(courseLang(S.normalizeSettings(store.get('settings'))), 'de');
-  // French active: no German deck counts
+  // French active: no German deck counts, its own deck fr:core does (C3a: its due card, in the daily round's share)
   S.setCourse(app, 'fr', { lang: 'fr' });
   S.setActiveCourse(app, 'fr');
   const fs = S.normalizeSettings(store.get('settings'));
   assert.deepEqual(knowledgeDecks(store), ['fr:core']);
   const fa = dayAllowance({ store, c: { ...c, exam: null, phase: 'none', daysLeft: null, lastNewDay: null, capDay: null }, settings: fs });
-  assert.equal(fa.reviews.due, 0);
-  for (const d of Object.values(fa.decks)) assert.equal(d.due, 0);
-  assert.equal(dueTomorrow({ store, c, settings: fs }), 0);
-  assert.deepEqual(firstWeek(store, DAY, fs), { day: 0 }, 'a new course\'s first week');
+  assert.equal(fa.reviews.due, 1);
+  assert.equal(fa.decks.b1.due, 1);
+  for (const [k, d] of Object.entries(fa.decks)) if (k !== 'b1') assert.equal(d.due, 0, k);
+  assert.equal(dueTomorrow({ store, c, settings: fs }), 1);
+  assert.deepEqual(firstWeek(store, DAY, fs), { day: 1 }, 'a new course\'s first week (its first card was yesterday)');
   S.setActiveCourse(app, 'de');
   assert.deepEqual(knowledgeDecks(store), DECKS);
 });
