@@ -13,6 +13,15 @@ export const back = (href, text) => h('a', { class: 'pr-backlink pressable', hre
 /** "1,940" in the interface locale. @param {number} n */
 export const num = n => new Intl.NumberFormat('en-GB').format(n);
 
+/** The sheets open now. A sheet is a modal <dialog> on <body>, outside the view, so a route change never removes it by
+    itself: every script view's cleanup closes them (closeSheets, called from index.js), and so does any hash change. */
+const openSheets = new Set();
+
+/** Close every open sheet at once, without the exit motion and without its onClose (the view is going away). */
+export function closeSheets() {
+  for (const s of [...openSheets]) s.dismiss();
+}
+
 /**
  * A bottom sheet (<dialog>, modal). Esc, the backdrop and close() dismiss it; focus returns to the opener.
  * @param {{title: string, children: any[], onClose?: () => void, label?: string, cls?: string}} o
@@ -25,12 +34,18 @@ export function sheet({ title, children, onClose, cls }) {
   const d = /** @type {HTMLDialogElement} */ (h('dialog', { class: ['sc-sheet', cls], 'aria-label': title }, head, body));
   document.body.append(d);
   let open = true;
+  const remove = () => { openSheets.delete(entry); removeEventListener('hashchange', dismiss); try { d.close(); } catch { /* closed */ } d.remove(); };
+  /** Gone at once: the route changed under it. */
+  function dismiss() { if (!open) return; open = false; remove(); }
+  const entry = { dismiss };
   function close() {
     if (!open) return; open = false;
     d.classList.remove('is-in');
-    const gone = () => { try { d.close(); } catch { /* closed */ } d.remove(); opener?.focus?.({ preventScroll: true }); onClose?.(); };
+    const gone = () => { remove(); opener?.focus?.({ preventScroll: true }); onClose?.(); };
     if (reduced()) gone(); else setTimeout(gone, 160);
   }
+  openSheets.add(entry);
+  addEventListener('hashchange', dismiss);
   d.addEventListener('cancel', e => { e.preventDefault(); close(); });
   d.addEventListener('click', e => { if (e.target === d) close(); });
   d.showModal();

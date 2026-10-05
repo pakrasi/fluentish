@@ -131,3 +131,15 @@ test('idMaker: 6 base36 characters, unique against taken ids', () => {
   assert.match(a, /^[0-9a-z]{6}$/);
   assert.notEqual(a, '333333');
 });
+
+test('headings: when every heading is "# …", the first one is a section, not the title (journey #9)', () => {
+  const text = '# Einleitung\n\nHallo zusammen. Heute spreche ich über Fahrräder.\n\n# Hauptteil\n\nDer Rahmen ist das Herz des Fahrrads.\n\n# Schluss\n\nVielen Dank fürs Zuhören!';
+  const s = P.parseScript(text, { id: P.counterIds() });
+  assert.equal(s.title, null);
+  assert.deepEqual(s.sections.map(x => x.title), ['Einleitung', 'Hauptteil', 'Schluss']);
+  assert.equal(s.sections[0].sentences[0].de, 'Hallo zusammen.');
+  // a "# Title" above "## sections" is still the title
+  const t2 = P.parseScript('# Mein Vortrag\n\n## Einleitung\n\nHallo zusammen.\n\n## Schluss\n\nDanke.', { id: P.counterIds() });
+  assert.equal(t2.title, 'Mein Vortrag');
+  assert.deepEqual(t2.sections.map(x => x.title), ['Einleitung', 'Schluss']);
+});

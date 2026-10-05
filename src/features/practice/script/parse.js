@@ -309,7 +309,8 @@ export function parseScript(text, { format, id = idMaker(), kind = 'talk' } = {}
   const fmt = format || detect(body).format;
   const kindFor = fmt === 'notes' ? 'retell' : kind;
   const lines = body.split('\n');
-  const hasHeads = lines.some(l => /^#{2,6}\s+\S/.test(l)) || lines.filter(l => /^#\s+\S/.test(l)).length > 1;
+  const subHeads = lines.some(l => /^#{2,6}\s+\S/.test(l));
+  const hasHeads = subHeads || lines.filter(l => /^#\s+\S/.test(l)).length > 1;
 
   /** @type {{title: string, note: string | null, blocks: {kind: 'para' | 'pair', de: string, en?: string | null, full?: boolean, bold: string[], para?: boolean}[]}[]} */
   const raw = [];
@@ -352,7 +353,9 @@ export function parseScript(text, { format, id = idMaker(), kind = 'talk' } = {}
       let txt = head[2].trim();
       const hs = /\s*[*_]*\(\s*((?:folien?|slides?)\s[^)]*?)\s*\)[*_]*\s*$/i.exec(txt);
       if (hs) txt = txt.slice(0, hs.index).trim();
-      if (level === 1 && hasHeads && !title && !raw.some(r => r.blocks.length)) { title = stripInline(txt).text; continue; }
+      // a leading "# …" is the script's title only above "## …" sections; when every heading is a "# …" (# Einleitung,
+      // # Hauptteil …), the first one is a section like the others
+      if (level === 1 && subHeads && !title && !raw.some(r => r.blocks.length)) { title = stripInline(txt).text; continue; }
       if (skipLevel && level > skipLevel) continue;
       skipLevel = 0;
       if (SKIP_HEAD.test(txt)) { skipLevel = level; continue; }

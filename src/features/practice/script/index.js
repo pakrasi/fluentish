@@ -10,10 +10,21 @@
    Pure logic: parse, lemma, suggest, ladder, plan, align (tested in node). Storage: store.js. Device-only (§8). */
 import { h, replace } from '../../../core/dom.js';
 import * as St from './store.js';
-import { back } from './ui.js';
+import { back, closeSheets } from './ui.js';
 
 /** @param {HTMLElement} el @param {import('../../contract.js').ViewCtx} ctx @param {string[]} parts */
 export async function mountScripts(el, ctx, parts) {
+  const res = await mountView(el, ctx, parts);
+  // a sheet left open (the "Marked words" tray after the last section's Done, a word sheet) must not outlive its view
+  // (journey #9): it is a modal on <body>, so the view's cleanup closes it
+  return {
+    unmount() { closeSheets(); if (typeof res === 'function') res(); else res?.unmount?.(); },
+    canLeave: typeof res?.canLeave === 'function' ? () => res.canLeave() : undefined,
+  };
+}
+
+/** @param {HTMLElement} el @param {import('../../contract.js').ViewCtx} ctx @param {string[]} parts @returns {Promise<any>} */
+async function mountView(el, ctx, parts) {
   const [a, b, c] = parts;
   if (!a) return (await import('./library.js')).mountLibrary(el, ctx);
   if (a === 'new') return (await import('./paste.js')).mountPaste(el, ctx);
