@@ -8,7 +8,7 @@ One app that replaces two: Igloo (chunk bank, drill, the B1 trainer) and the B1 
 
 **Information architecture (UX §3):** four tabs, **Today · Practice · Exam · Look up**; Exam shows only when the profile has an exam goal. Settings live under the avatar (`#/profile`). English chrome, target-language content, exam screens in the exam's language. Routes are path-shaped so they map one to one onto an iOS navigation stack and deep links:
 
-`#/today` · `#/practice[/round?kind=…|/write[/build/<task>[/free]]|/speak[/teil2|/aloud]]` · `#/exam[/<test>[/<module>[/review/<attempt>]]]` · `#/lookup[/words|/phrases|/grammar|/frames]` · `#/profile[/goal|/practice|/connections|/appearance|/data|/diagnostics]` · `#/welcome`.
+`#/today` · `#/practice[/round?kind=…|/write[/build/<task>[/free]]|/speak[/teil2|/aloud]]` · `#/exam[/<test>[/<module>[/review/<attempt>]]]` · `#/lookup[/words|/phrases|/grammar|/frames|/map[?mode=…]]` · `#/profile[/goal|/practice|/connections|/appearance|/data|/diagnostics]` · `#/welcome`.
 
 ## 2. Repository layout
 
@@ -23,7 +23,7 @@ src/
   core/               clock, router, dom, bus, i18n, config, schema, log, ui, icons, motion (kit), brand (kit)
   data/               store, adapters/{idb,memory}, session, settings, migrate, transfer, content, ids
   domain/             pure, tested in node: fsrs, match, detect, speech, timer, readiness, b1ready, days, today
-  features/           registry, contract, today/, profile/, welcome/, practice/, exam/, lookup/
+  features/           registry, contract, today/, profile/, welcome/, practice/, exam/, lookup/, explore/ (Look up › Map)
   i18n/               en.js, de.js (partial; falls back to English)
   vendor/paper-shaders/   @paper-design/shaders 0.0.81, vendored (VENDOR.md)
 content/              PUBLIC content + manifest.json (consumed by the app and later iOS)

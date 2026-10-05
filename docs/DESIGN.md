@@ -28,6 +28,14 @@ colors:                       # light
   cell-plan: "rgba(20,21,25,0.18)"     # runway planned bar, module tracks; always with a field-border outline
   cell-learning: "rgba(20,21,25,0.34)"
   cell-known: "#2c2e34"
+  x-known: "{colors.ink}"                 # Explore map: known item text and bar
+  x-shaky: "{colors.ink-3}"               # 5.8:1 on canvas
+  x-unknown: "#2b2d33"                    # text inside the open box
+  x-box: "rgba(20,21,25,0.50)"            # open box and outlined bar; 3.4:1
+  x-new: "#84868d"                        # not seen, italic; 3.3:1
+  x-bar-new: "rgba(20,21,25,0.13)"        # not-seen bar at far zoom
+  x-today: "{colors.accent}"              # practised today, always with a hairline under it
+  x-glow: "accent 26% on canvas"          # the plate under a word just learned (fades in 1.3 s)
 colors-dark:
   canvas: "#0d0e11"
   surface: "#15171b"
@@ -53,6 +61,11 @@ colors-dark:
   cell-plan: "rgba(236,235,230,0.22)"
   cell-learning: "rgba(236,235,230,0.34)"
   cell-known: "#d9d8d2"
+  x-unknown: "#d6d5d0"
+  x-box: "rgba(236,235,230,0.42)"
+  x-new: "#6f7178"
+  x-bar-new: "rgba(236,235,230,0.12)"
+  x-glow: "accent 34% on canvas"
 
 typography:
   numeral:  { fontFamily: Newsreader, fontSize: "clamp(84px,24vw,168px)", fontWeight: 300, lineHeight: 0.84, letterSpacing: -0.045em, numeric: "lining proportional" }
@@ -171,6 +184,32 @@ All in `styles/components.css`. The kit demo page stays with the design work (de
 - **Study days**: last 28 days as squares; today outlined in accent, filled when the day's minutes are done.
 - **Word tiles**: role tint at 13% (17% dark), 3px role underline, optional mono role label. `.tile.gap` for the missing chunk.
 - **Toast**: ink pill above the tab bar, optional Undo, 4 s.
+
+## Explore (Look up › Map)
+
+Explore (`src/features/explore/`, `#/lookup/map`) is a map of every word, phrase and grammar concept in the content, grouped by a chosen mode, showing what the learner knows. It is the one screen where the field idea (one mark per item, inked by knowledge) becomes the whole page. It lives under Look up (an entry card at the top of Look up) rather than as a fifth tab: it is a way of looking things up and choosing what to study, and the tab bar stays at four.
+
+**Form.** Each group is a round paragraph of German set in the map font (a vendored Newsreader instance without kerning or ligatures, `src/vendor/newsreader-map/`), words in level then frequency order, with a ring around it. Groups sit on a fixed spiral, largest first. Positions come from content only and are computed at build time (`tools/build-atlas.mjs` → `content/atlas/de.json`) from the font's advance widths, so every device breaks the same lines and the map never moves as the learner learns. A rebuild keeps every shipped position: new items take new lines at the end of their paragraph, inside 6 % headroom; a group without room asks for a repack, which is a map release. Source is the one mode laid out on the device (it depends on where items were met); its groups grow at their end.
+
+**Encoding.** Ink is the scale; shape is the second channel. Known: ink. Shaky: ink-3. Not known: x-unknown text in an open box (the mark's open tile). Not seen: pale italic. Practised today: accent with a hairline under it. At far zoom every word is a bar of its exact width in the same styles (filled, grey, outlined, faint, accent). The group ring shows the four states as arcs from 12 o'clock. Nouns always carry their article at 72 % in ink-3. Known is never green; role colours never appear on the map. The study lists in the sheets use the same encodings, with the state in words for screen readers.
+
+**Semantic zoom.** Overview: bars, group names centred in their discs. 6.5 to 9.5 px: bars crossfade into type, drawn from per-group bitmaps cached per half-octave zoom tier. From 9.5 px: type, and the "where you are" pill names the group under the centre. A tap on a word opens its card (Opposite and Same family links fly to that word); a tap on a group flies to it and opens its sheet.
+
+**Modes.** Topic (talking-and-writing phrases grouped by kind; grammar as its 67 concepts), Word family, Opposites (primary pairs, a hairline inside each pair), Level, Word type (der, die and das nouns apart), Source (mock exams, scripts, speaking, practice rounds, Igloo, Look up). Items not in a mode fade out in place. One place per item per mode; second memberships are links in the card.
+
+**Study.** The group sheet's "Study next" lists the ten most useful words not yet known (not known, then shaky, then not seen; each by frequency). "Study these N words" starts a cluster round in Practice (`#/practice/round?kind=cluster:pick&ids=…`); groups that are Practice clusters also link to them. Explore never writes card state. "Gaps only" dims known and shaky items to 16 %.
+
+**Chrome.** Back to Look up, title, Map/List segmented control and Find in the head; mode chips in one scrolling row (tapping the current mode frames the whole map); legend, total, Gaps only and zoom over the bottom of the map. The sheet is a bottom sheet on a phone (over the tab bar, its buttons sticky) and a 380 px card at the top right of the map from 720 px. The List view lists the same groups and items with states in words and is the accessible alternative to the canvas.
+
+### Explore motion
+
+- First open of the day: groups ink in from the middle outwards (28 ms group stagger, 420 ms per word, about 1.5 s). Once per day.
+- A word learned today, the first time the map shows it: it settles in cobalt on a soft accent plate that shrinks on spring-pop and fades over 1.3 s (at least 14 px tall, so it shows at overview too).
+- Mode switch ("flow"): words fly to their new paragraphs on spring-soft, groups assembling from the middle out, delay up to 200 ms plus 90 ms jitter; leaving words fade at 2.2x; rings and names after 55 %. The camera frames the new map, or follows the selected word when it stays.
+- Camera flights: van Wijk smooth zoom, cubic in-out, 380 to 1,100 ms by distance.
+- Reduced motion: no reveal, no glow, no inertia; mode switches are 140 ms crossfades; the camera jumps.
+- Don't loop, drift or rotate at rest; the canvas draws only while something moves.
+
 
 ## Motion
 

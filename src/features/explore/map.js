@@ -71,9 +71,10 @@ export function createMap(canvas, o) {
   /** @type {{i: number, t0: number}[]} */ let glow = [];
   /** @type {Record<string, string>} */ let C = {};
   let version = 0;                 // bumps when what bitmaps show changes
+  let layoutNo = 0;                // bumps with every layout shown (bitmap keys)
   let raf = 0, alive = true;
   /** @type {number[]} */ let frames = [], drawMs = [];
-  let lastT = 0, bench = false;
+  let lastT = 0, bench = false, useBitmaps = true;
 
   /* ---------- colours ---------- */
   function readColors() {
@@ -194,7 +195,7 @@ export function createMap(canvas, o) {
     let pending = false;
     // glow plates sit under the words
     if (glow.length) drawGlowPlates(t, k, ox, oy);
-    if (still && fpx < TEXT_TO) pending = drawBitmaps(k, ox, oy, tText);
+    if (still && useBitmaps && fpx < TEXT_TO) pending = drawBitmaps(k, ox, oy, tText);
     else drawVector(k, ox, oy, tText, null);
     if (glow.length && tText > 0) drawGlowWords(t, k, ox, oy, tText);
     if (selected >= 0 && PA[selected] > 0) {
@@ -328,7 +329,7 @@ export function createMap(canvas, o) {
       const cx = g.x * k + ox, cy = g.y * k + oy, r = g.r * k;
       if (cx + r < 0 || cx - r > W || cy + r < 0 || cy - r > H) return;
       for (const layer of layers) {
-        const key = `${L.mode}|${gi}|${kt}|${layer}`;
+        const key = `${layoutNo}|${gi}|${kt}|${layer}`;
         let b = bitmaps.get(key);
         if (b && b.ver !== version) { bitmapPx -= b.px; bitmaps.delete(key); b = undefined; }
         if (!b) {
@@ -356,11 +357,10 @@ export function createMap(canvas, o) {
     const c = /** @type {CanvasRenderingContext2D} */ (cv.getContext('2d'));
     c.setTransform(BDPR(), 0, 0, BDPR(), 0, 0);
     const items = g.items.filter((/** @type {number} */ i) => i != null);
-    const saved = { px: PX, py: PY };
-    // positions at rest are the layout's
+    // at rest the drawn positions are the layout's
     for (const i of items) { PX[i] = L.X[i]; PY[i] = L.Y[i]; }
     drawItems(c, items, kt, -x0 * kt, -y0 * kt, layer === 'text' ? 1 : 0, layer === 'bars' ? 1 : 0, false);
-    void saved; void gi;
+    void gi;
     return { cv, x0, y0, kt, s: BDPR(), px: size * size, used: frameNo, ver: version };
   }
   function evict() {
@@ -604,7 +604,7 @@ export function createMap(canvas, o) {
     /** Show a layout. animate: flow every word to its new place. @param {Layout} next @param {{animate?: boolean, follow?: number}} [opt] */
     setLayout(next, { animate = false, follow = -1 } = {}) {
       const from = L;
-      L = next; grid = null; selGroup = -1;
+      L = next; grid = null; selGroup = -1; layoutNo++;
       introOrder = groupOrder(next);
       if (!from || !animate) { if (!from) cam = fitView(); kick(); return; }
       const rm = o.reduced();
@@ -663,6 +663,8 @@ export function createMap(canvas, o) {
     set camera(c) { cam = { ...c }; kick(); },
     redraw() { version++; kick(); },
     /** Bitmap cache size, for the performance report. */
+    /** Turn the group bitmaps off and on (to measure what they save). @param {boolean} on */
+    bitmapsOn(on) { useBitmaps = on; kick(); },
     debug() { return { bitmaps: bitmaps.size, megapixels: +(bitmapPx / 1e6).toFixed(1) }; },
     resize,
     /** Scripted pans, zooms and mode-free motion, for the performance report. */
