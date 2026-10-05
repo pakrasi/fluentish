@@ -3,10 +3,12 @@
    The verb-final / inversion / v2 rules mirror tools/validate_b1.py detect(); tests/unit/b1.test.mjs checks that both
    agree on every model and wrong answer in content/b1/items.json and on Igloo's German example sentences.
    Detect.run(input, item, r) → null | {cls, hint, word}   (r = the Match.check result, optional) */
-const norm = s => String(s == null ? '' : s).normalize('NFC').toLowerCase()
+// @ts-check
+/** @typedef {{cls: string, word: string}} Hit  one word-order error and the word to name in the hint */
+const norm = (/** @type {unknown} */ s) => String(s == null ? '' : s).normalize('NFC').toLowerCase()
   .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')
   .replace(/[’]/g, "'").replace(/[^\p{L}\p{N}_\s\[\]()'-]/gu, ' ').split(/\s+/).filter(Boolean).join(' ');
-const set = s => new Set(norm(s).split(' '));
+const set = (/** @type {string} */ s) => new Set(norm(s).split(' '));
 const FINITE = set(`bin bist ist sind seid war warst waren habe hab hast hat haben habt hatte hatten kann kannst können
   könnt muss musst müssen will willst wollen soll sollst sollen darf darfst dürfen möchte möchtest möchten werde wirst
   wird werden würde würdest würden könnte könntest könnten hätte hättest hätten wäre wärst wären mag gibt geht kommt
@@ -37,8 +39,8 @@ const CONN_ADV = set('selbst sogar nur auch erst genau fast besonders gerade jed
 const NEXT_MAIN = set('dann so trotzdem deshalb deswegen darum außerdem danach');
 // adverbs that keep the verb second in the middle of a sentence too
 const MID_V2 = set('deshalb deswegen darum trotzdem außerdem dennoch');
-const finiteAny = w => !NONVERB.has(w) && /^[a-z]{2,}(e|st|t|en|n)$/.test(w) && !/(ung|heit|keit|lein)$/.test(w);
-const isFin = (w, fin) => fin.has(w) || finiteAny(w);
+const finiteAny = (/** @type {string} */ w) => !NONVERB.has(w) && /^[a-z]{2,}(e|st|t|en|n)$/.test(w) && !/(ung|heit|keit|lein)$/.test(w);
+const isFin = (/** @type {string} */ w, /** @type {Set<string>} */ fin) => fin.has(w) || finiteAny(w);
 // subordinators that are never an adverb: a finite verb right after them is a word-order error ("ob kann man …")
 const NEVER_ADV = set('dass weil ob wenn obwohl falls');
 // a subordinate clause that opens a sentence and ends with its verb: "Da Busse teuer sind, …", "Als ich ankam, …"
@@ -48,8 +50,9 @@ const LEAD_SUB = set('da als');
 const AUX = set('bin bist ist sind seid war warst waren habe hab hast hat haben habt hatte hatten werde wirst wird werden');
 const PARTICIPLE = /^(ab|an|auf|aus|ein|mit|vor|zu|zurueck|weg|los|fest|teil|vorbei|hin|her|nach|um|durch)?ge[a-z]{2,}(t|en)$/;
 
+/** @param {unknown} model */
 function clauseVerbs(model) {
-  const out = new Set();
+  /** @type {Set<string>} */ const out = new Set();
   for (const clause of String(model || '').split(/[,.;:!?]/)) {
     const toks = norm(clause).split(' ').filter(Boolean);
     if (toks.length && toks.slice(0, -1).some(t => SUB.has(t))) {
@@ -60,6 +63,7 @@ function clauseVerbs(model) {
   }
   return out;
 }
+/** @param {string[]} toks @param {number} j @param {Set<string>} fin */
 function subjectEnd(toks, j, fin) {
   if (j >= toks.length) return null;
   if (DET.has(toks[j]) && j + 1 < toks.length && PRON.has(toks[j + 1])) return null;   // "meinen Sie …": a verb
@@ -68,8 +72,9 @@ function subjectEnd(toks, j, fin) {
   return null;
 }
 // the word-order classes, with the word to name in the hint
+/** @param {unknown} text @param {unknown} model @param {Set<string> | null} [verbs] @returns {Hit[]} */
 function order(text, model, verbs = null) {
-  const out = [];
+  /** @type {Hit[]} */ const out = [];
   const fin = new Set([...FINITE, ...clauseVerbs(model)]);
   // verb forms from the word list (run() only): a lower-case word of the answer that is a finite form of a known verb
   // counts as a verb too, so "weil sie arbeiten dort" is caught when no model has arbeiten (Build an email's free lines)
@@ -166,14 +171,14 @@ function order(text, model, verbs = null) {
   return out;
 }
 // the same classes as validate_b1.detect(text, model), as a sorted array (for the parity test)
-const classes = (text, model) => [...new Set(order(text, model).map(x => x.cls))].sort();
+const classes = (/** @type {unknown} */ text, /** @type {unknown} */ model) => [...new Set(order(text, model).map(x => x.cls))].sort();
 
 const NEUTER_END = /(ma|um|ment|chen|lein)$/i;
 const WRONG_FOR_NEUTER = new Set(['der', 'die', 'den', 'eine', 'einen', 'einer']);
 const NEUTER_ART = new Set(['das', 'dem', 'des', 'ein', 'einem', 'eines']);
-const words = s => [...String(s).matchAll(/[\p{L}\p{N}_'-]+/gu)].map(m => m[0]);
-const focusHas = (item, c) => item && (item.trap === c || (item.focus || []).includes(c));
-const it = w => `*${w}*`;
+const words = (/** @type {unknown} */ s) => [...String(s).matchAll(/[\p{L}\p{N}_'-]+/gu)].map(m => m[0]);
+const focusHas = (/** @type {any} */ item, /** @type {string} */ c) => item && (item.trap === c || (item.focus || []).includes(c));
+const it = (/** @type {unknown} */ w) => `*${w}*`;
 
 /**
  * The first sticky error in an answer, or null.
@@ -185,7 +190,7 @@ function run(input, item = {}, r = null, opts = {}) {
   if (!text.trim()) return null;
   const model = item.model || '';
   const o = order(text, model, (opts && opts.verbs) || null);
-  const pick = c => o.find(x => x.cls === c);
+  const pick = (/** @type {string} */ c) => o.find(x => x.cls === c);
   let x;
   if ((x = pick('verb-final'))) return { cls: 'verb-final', word: x.word, hint: `Check where the verb goes after ${it(x.word)}.` };
   if ((x = pick('inversion'))) return { cls: 'inversion', word: x.word, hint: 'Check the word order after the comma.' };
@@ -228,7 +233,7 @@ const NOT_A_VERB = set('bitte danke lange leise weise gerade heute morgen gester
  * @param {any[] | null | undefined} words @returns {Set<string>}
  */
 function verbForms(words) {
-  const out = new Set();
+  /** @type {Set<string>} */ const out = new Set();
   for (const w of words || []) {
     if (!w || w.pos !== 'verb' || !w.w || /\s/.test(String(w.w).trim())) continue;
     const inf = norm(w.w);
@@ -250,6 +255,6 @@ function verbForms(words) {
   return out;
 }
 
-const api = { run, classes, norm, verbForms, setFronted(list) { FRONTED = list.map(norm).sort((a, b) => b.length - a.length); }, get FRONTED() { return FRONTED; } };
+const api = { run, classes, norm, verbForms, setFronted(/** @type {string[]} */ list) { FRONTED = list.map(norm).sort((a, b) => b.length - a.length); }, get FRONTED() { return FRONTED; } };
 export default api;
 export { run, classes, norm, verbForms };

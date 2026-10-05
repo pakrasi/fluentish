@@ -46,9 +46,8 @@ jobs:
       - run: npm ci
       - name: tsc strict (core, data, new domain modules)
         run: npx tsc -p tsconfig.json
-      - name: tsc on the ported domain modules (advisory until they are annotated)
-        continue-on-error: true
-        run: npx tsc -p tsconfig.legacy.json
+      - name: tsc ratchet (every other module, strict; the error count may only fall)
+        run: node tools/typecheck-ratchet.mjs
 
   content:
     runs-on: ubuntu-24.04

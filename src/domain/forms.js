@@ -153,6 +153,7 @@ function nounForms(w, n) {
   const arts = n.art === 'der/die' ? ['der', 'die'] : plOnly ? ['die'] : none ? [] : [n.art];
   const head = none ? w : `${plOnly ? 'die' : n.art} ${w}`;
   const plural = !plOnly && !none && n.pl ? `die ${n.pl}` : null;
+  /** @type {'none' | 'only' | null} */
   const pluralNote = plOnly ? 'only' : !none && !n.pl && n.known ? 'none' : null;
   const pl = n.pl || '';
   return { type: 'noun', head, accept: none ? [w] : arts.map(a => `${a} ${w}`), line: null, pres: null, plural, pluralNote,

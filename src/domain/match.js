@@ -38,7 +38,39 @@
    - When ok: `span` = [start, end] of the matched pattern in `input`, `fills` = the text each slot took, in order.
    restCheck() grades the rest of a phrase card's sentence, formCheck() a situation's words against its model, markDiff()
    is the word diff the round shows (see each). */
+// @ts-check
+/** @typedef {{raw: string, low: string, n: string, len: number, start: number, end: number}} Word  a typed word; n: lowercase, folded, no accents */
+/** @typedef {{n: string, low: string, len: number, word: string}} Alt  one spelling a pattern word accepts */
+/** @typedef {{t: 'w', raw: string, alts: Alt[], tail?: string, glued?: boolean}} WEl  a fixed word */
+/** @typedef {{t: 'opt', words: WEl[], raw: string, tail?: string, glued?: boolean}} OptEl  "(optional words)" */
+/** @typedef {{t: 'slot', raw: string, opt?: boolean, glued?: boolean, tail?: string, prefix?: Alt}} SlotEl  "[slot]", "([optional slot])", "Lieblings[x]" */
+/** @typedef {WEl | OptEl | SlotEl} El */
+/** @typedef {{els: El[], lead?: string, src?: string}} Pattern */
+/** @typedef {{endings?: boolean, umlaut?: boolean, strict?: Map<string, string> | null, never?: Set<string> | null, lex?: Set<string> | null}} WordX  word-level options (xOpts) */
+/** @typedef {{cost: number, exact: boolean, a: Alt, umlaut?: boolean, ti: number, glued?: boolean}} Cost  one typed word against one pattern word */
+/** @typedef {{ei: number, ti: number, len: number, n: number, x: boolean, cs?: Cost[], present?: boolean, cut?: number}} Step  one pattern element in an alignment */
+/** @typedef {{n: number, exact: boolean, steps: Step[], start: number, toks?: Word[]}} Alignment */
+/** @typedef {{anywhere: boolean, typos: boolean, loose: Set<string> | null, x?: WordX, slotMax?: number}} AlignOpts */
+/** @typedef {{typed: string, expected: string, start: number, end: number}} Slip */
+/** @typedef {{start: number, end: number, word: string}} Wrong */
+/** @typedef {{start: number, end: number}} Range */
+/**
+ * @typedef {object} CheckOptions
+ * @property {string} [pos] @property {boolean} [strictCase] @property {boolean} [slots] @property {boolean} [anywhere]
+ * @property {boolean} [typos] @property {Iterable<string> | null} [loose] @property {number} [slotMax] @property {boolean} [endings]
+ * @property {boolean} [umlaut] @property {string[]} [strict] @property {Map<string, string> | null} [caseRef]
+ * @property {Iterable<string> | null} [never] @property {Set<string> | null} [lexicon]
+ */
+/**
+ * @typedef {object} CheckResult
+ * @property {boolean} ok @property {boolean} exact @property {boolean} close @property {boolean} articleMiss
+ * @property {boolean} caseMiss @property {string | null} matched @property {string[]} others @property {string} fixed
+ * @property {Slip[]} typos @property {string} input @property {Slip[]} [umlautMiss] @property {Slip[]} [capMiss]
+ * @property {Slip[]} [focusMiss] @property {number | null} [nearest] @property {[number, number] | null} [span] @property {string[]} [fills]
+ */
+/** @type {Record<string, string>} */
 const FOLD = { 'ä': 'ae', 'ö': 'oe', 'ü': 'ue', 'ß': 'ss', 'Ä': 'Ae', 'Ö': 'Oe', 'Ü': 'Ue', 'ẞ': 'SS' };
+/** @param {unknown} s */
 const fold = s => String(s).replace(/[äöüßÄÖÜẞ]/g, c => FOLD[c]);
 const ARTICLES = ['der', 'die', 'das', 'den', 'dem', 'des', 'ein', 'eine', 'einen', 'einem', 'einer', 'eines'];
 // Closed-class words: a different word from this list is a grammar mistake, never a typo, and these words get 0 edits.
@@ -55,30 +87,34 @@ const CLOSED = new Set(`der die das den dem des ein eine einen einem einer eines
 const WORD_RE = /[\p{L}\p{N}_'-]+/gu;   // what validate_accept.norm keeps as a word (brackets aside)
 
 // Legacy cleanup, kept for callers: NFC, collapse spaces, drop commas, quotes and final punctuation.
+/** @param {unknown} s */
 function clean(s) {
   return String(s == null ? '' : s).normalize('NFC')
     .replace(/[‘’ʼ]/g, "'").replace(/["„“”«»‚]/g, ' ').replace(/,/g, ' ')
     .replace(/\s+/g, ' ').trim().replace(/[\s.!?;:]+$/u, '').replace(/^[¿¡]+/, '').trim();
 }
-const tidy = s => String(s).normalize('NFC').replace(/\s+/g, ' ').trim();
-const nfc = s => String(s == null ? '' : s).normalize('NFC').replace(/[‘’ʼ]/g, "'");
+const tidy = (/** @type {unknown} */ s) => String(s).normalize('NFC').replace(/\s+/g, ' ').trim();
+const nfc = (/** @type {unknown} */ s) => String(s == null ? '' : s).normalize('NFC').replace(/[‘’ʼ]/g, "'");
 
 // words of a string, with offsets: {raw, low, n (lowercase + folded), len (letters), start, end}
+/** @param {unknown} s @param {number} [offset] @returns {Word[]} */
 function words(s, offset = 0) {
-  const out = [];
+  /** @type {Word[]} */ const out = [];
   for (const m of String(s).matchAll(WORD_RE)) {
     const raw = m[0], low = raw.toLowerCase();
-    out.push({ raw, low, n: fold(low).normalize('NFD').replace(/\p{M}/gu, ''), len: (low.match(/\p{L}/gu) || []).length || low.length, start: offset + m.index, end: offset + m.index + raw.length });
+    const at = /** @type {number} */ (m.index);
+    out.push({ raw, low, n: fold(low).normalize('NFD').replace(/\p{M}/gu, ''), len: (low.match(/\p{L}/gu) || []).length || low.length, start: offset + at, end: offset + at + raw.length });
   }
   return out;
 }
 
 // Damerau-Levenshtein (optimal string alignment) distance, or max+1 once it is over max
+/** @param {string} a @param {string} b @param {number} [max] */
 function dl(a, b, max = 9) {
   if (a === b) return 0;
   if (Math.abs(a.length - b.length) > max) return max + 1;
   const la = a.length, lb = b.length;
-  let p2 = null, p1 = Array.from({ length: lb + 1 }, (_, j) => j);
+  /** @type {number[] | null} */ let p2 = null, p1 = Array.from({ length: lb + 1 }, (_, j) => j);
   for (let i = 1; i <= la; i++) {
     const cur = [i]; let rowMin = i;
     for (let j = 1; j <= lb; j++) {
@@ -92,15 +128,20 @@ function dl(a, b, max = 9) {
   }
   return p1[lb];
 }
-const dl1 = (a, b) => dl(a, b, 1) <= 1;
-const allowedEdits = (len) => len <= 3 ? 0 : len <= 7 ? 1 : 2;
+const dl1 = (/** @type {string} */ a, /** @type {string} */ b) => dl(a, b, 1) <= 1;
+const allowedEdits = (/** @type {number} */ len) => len <= 3 ? 0 : len <= 7 ? 1 : 2;
 
 // one pattern word against one typed word: null, or {cost: 0|1, exact}
 // loose (optional Set of folded words): only these words may have typos; every other word must be exact
 // x: {endings, umlaut, strict: Map, never: Set, lex: Set} (see check); typo rules in typoOk()
+/** @type {WordX} */
 const NOX = {};
+/**
+ * @param {WEl} w @param {Word} tok @param {boolean} typos @param {Set<string> | null | undefined} loose @param {WordX} [x]
+ * @returns {{cost: number, exact: boolean, a: Alt, umlaut?: boolean} | null}
+ */
 function wcost(w, tok, typos, loose, x = NOX) {
-  let best = null;
+  /** @type {{cost: number, exact: boolean, a: Alt, umlaut?: boolean} | null} */ let best = null;
   for (const a of w.alts) {
     if (tok.n === a.n) return { cost: 0, exact: tok.low === a.low, a };
     if (x.never && x.never.has(tok.n)) continue;               // a word from a known wrong answer: never a slip
@@ -127,6 +168,7 @@ function wcost(w, tok, typos, loose, x = NOX) {
 //    the stem, within the budget (B1 `endings`: 1 edit, 5+ letters; Test: 1 edit for 4-7 letters, 2 for 8+);
 //  - a one-edit difference that is a vowel change (sprechen/sprichst, fuhr/fahr), ie/e (sieht/seht) or ie/ei
 //    (schrieb/schreib) is a grammar form, not a typo. u↔i and i↔o (neighbouring keys) stay typos.
+/** @param {string} t @param {{n: string, len: number}} a @param {WordX} x */
 function typoOk(t, a, x) {
   if (CLOSED.has(a.n) || CLOSED.has(t)) return false;
   if (SOUNDS.has(t) || (x.lex && x.lex.has(t))) return false;
@@ -141,10 +183,11 @@ function typoOk(t, a, x) {
 }
 // inflectional endings, longest first; the rest of the word (the stem) keeps at least 3 letters
 const ENDINGS = ['ern', 'est', 'ens', 'en', 'em', 'er', 'es', 'et', 'st', 'e', 'n', 'm', 'r', 's', 't'];
-const ending = n => ENDINGS.find(f => n.length >= f.length + 3 && n.endsWith(f)) || '';
+const ending = (/** @type {string} */ n) => ENDINGS.find(f => n.length >= f.length + 3 && n.endsWith(f)) || '';
 const VOWEL = /[aeiou]/;
 const KEY_NEIGHBOURS = new Set(['ui', 'iu', 'io', 'oi']);
 // the single edit between two stems is a German vowel alternation (ablaut, e→i, ie/e, ie/ei), not a slip of the finger
+/** @param {string} s @param {string} t */
 function formChange(s, t) {
   let p = 0; while (p < s.length && p < t.length && s[p] === t[p]) p++;
   let q = 0; while (q < s.length - p && q < t.length - p && s[s.length - 1 - q] === t[t.length - 1 - q]) q++;
@@ -160,10 +203,10 @@ function formChange(s, t) {
 // real words that sound like another word (wider/wieder, fiel/viel, Staat/Stadt): typing one is that word, never a typo,
 // even without the lexicon
 const SOUNDS = new Set('wider fiel seid wen staat meer wahr mahl lehre leere wal wahl lid leid lied stiel stil rat tod weise waise saite seite ente'.split(' '));
-const unUml = s => String(s).replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/ü/g, 'u');
+const unUml = (/** @type {unknown} */ s) => String(s).replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/ü/g, 'u');
 // both spellings of an umlaut (ä and ae) and the plain vowel map to the same letter: words equal under deUml differ
 // only in umlauts
-const deUml = s => String(s).replace(/ä|ae/g, 'a').replace(/ö|oe/g, 'o').replace(/ü|ue/g, 'u').replace(/ß/g, 'ss');
+const deUml = (/** @type {unknown} */ s) => String(s).replace(/ä|ae/g, 'a').replace(/ö|oe/g, 'o').replace(/ü|ue/g, 'u').replace(/ß/g, 'ss');
 // words that exist without the umlaut and mean something else: typing them is a miss, not a slip
 const UML_PAIR = new Set(`konnte konnten konntest konntet musste mussten musstest wurde wurden wurdest hatte hatten hattest
   ware waren war durfte durften durfe schon bruder mutter vater tochter apfel garten laden zahlen drucken kuchen fuhren
@@ -172,15 +215,17 @@ const UML_PAIR = new Set(`konnte konnten konntest konntet musste mussten musstes
 // ---- patterns ----
 // elements: {t:'w', alts:[{n, low, len, word}], raw} | {t:'opt', words:[w...], raw} | {t:'slot', raw, prefix?}
 // each element keeps `raw` (as written, for display) and `tail` (punctuation after it, display only)
+/** @param {string} src @param {boolean} useSlots @param {boolean} dots @returns {Pattern} */
 function parse(src, useSlots, dots) {
   let s = nfc(src);
   if (useSlots && dots) s = s.replace(/\.\.\.|…/g, '[…]');
   const re = useSlots ? /\[[^\]]*\]|\([^)]*\)|[^\s[\]()]+/g : /\S+/g;
-  const els = []; let lead = '', prevEnd = -1, prevReal = false;
+  /** @type {El[]} */ const els = []; let lead = '', prevEnd = -1, prevReal = false;
+  /** @type {(wd: Word, raw: string) => WEl} */
   const lit = (wd, raw) => ({ t: 'w', raw, alts: [{ n: wd.n, low: wd.low, len: wd.len, word: wd.raw }] });
   for (const m of s.matchAll(re)) {
-    const tok = m[0], glued = prevReal && prevEnd === m.index;
-    prevEnd = m.index + tok.length;
+    const tok = m[0], at = /** @type {number} */ (m.index), glued = prevReal && prevEnd === at;
+    prevEnd = at + tok.length;
     if (useSlots && tok[0] === '[') { els.push({ t: 'slot', raw: '…', glued }); prevReal = true; continue; }
     if (useSlots && /^\(\[[^\]]*\]\)$/.test(tok)) { els.push({ t: 'slot', raw: '…', opt: true, glued }); prevReal = true; continue; }
     if (useSlots && tok[0] === '(') {
@@ -194,7 +239,7 @@ function parse(src, useSlots, dots) {
     prevReal = true;
   }
   // glue: "Mein(e)" -> mein|meine, "(un)möglich" -> möglich|unmöglich, "Lieblings[Nomen]" -> slot with a prefix
-  const out = [];
+  /** @type {El[]} */ const out = [];
   for (const e of els) {
     const prev = out[out.length - 1];
     if (e.glued && prev) {
@@ -221,12 +266,18 @@ function parse(src, useSlots, dots) {
 // Best alignment of pattern elements to typed words: fewest typos, then exact spelling, then earliest start.
 // Positions are (token, offset): like validate_accept's "\s*" between words, fixed words may be written together
 // ("schonmal" for "schon (ein)mal"). Such glued pieces must be spelled exactly; typos only count on whole words.
+/** @typedef {{step: Step, next: StepList}} StepNode @typedef {StepNode | null} StepList @typedef {{n: number, x: boolean, steps: StepList}} Partial */
+/** @param {Pattern} pat @param {Word[]} toks @param {AlignOpts} o @returns {Alignment | null} */
 function align(pat, toks, { anywhere, typos, loose, x, slotMax = 6 }) {
-  const els = pat.els, memo = new Map(), END = { n: 0, x: true, steps: null };
-  const better = (a, b) => !b || a.n < b.n || (a.n === b.n && a.x && !b.x);
+  /** @type {Map<number, Partial | null>} */ const memo = new Map();
+  /** @type {Partial} */ const END = { n: 0, x: true, steps: null };
+  const els = pat.els;
+  const better = (/** @type {Partial} */ a, /** @type {Partial | null} */ b) => !b || a.n < b.n || (a.n === b.n && a.x && !b.x);
   // one pattern word at (ti, off): [{ti, off, c}] ways to match it
+  /** @param {WEl} w @param {number} ti @param {number} off @returns {{ti: number, off: number, c: Cost}[]} */
   function word(w, ti, off) {
-    const t = toks[ti], out = [];
+    const t = toks[ti];
+    /** @type {{ti: number, off: number, c: Cost}[]} */ const out = [];
     if (!t) return out;
     if (!off) { const c = wcost(w, t, typos, loose, x); if (c) out.push({ ti: ti + 1, off: 0, c: { ...c, ti } }); }
     const rest = t.n.slice(off);
@@ -236,19 +287,24 @@ function align(pat, toks, { anywhere, typos, loose, x, slotMax = 6 }) {
     }
     return out;
   }
+  /** @param {number} ei @param {number} ti @param {number} off @returns {Partial | null} */
   function go(ei, ti, off) {
     if (ei === els.length) return !off && (anywhere || ti === toks.length) ? END : null;
     const key = (ei * 4096 + ti) * 128 + off;
-    if (memo.has(key)) return memo.get(key);
-    const e = els[ei]; let best = null;
+    if (memo.has(key)) return /** @type {Partial | null} */ (memo.get(key));
+    const e = els[ei];
+    /** @type {Partial | null} */
+    let best = null;
+    /** @param {Partial | null} r @param {Step} step */
     const take = (r, step) => {
       if (!r) return;
-      const cand = { n: r.n + step.n, x: r.x && step.x, steps: { step, next: r.steps } };
+      /** @type {Partial} */ const cand = { n: r.n + step.n, x: r.x && step.x, steps: { step, next: r.steps } };
       if (better(cand, best)) best = cand;
     };
     if (e.t === 'w') {
       for (const m of word(e, ti, off)) take(go(ei + 1, m.ti, m.off), { ei, ti, len: 1, n: m.c.cost, x: m.c.exact, cs: [m.c] });
     } else if (e.t === 'opt') {
+      /** @type {(j: number, ti2: number, off2: number, n: number, x: boolean, cs: Cost[]) => void} */
       const chain = (j, ti2, off2, n, x, cs) => {
         if (j === e.words.length) return take(go(ei + 1, ti2, off2), { ei, ti, len: ti2 - ti, n, x, cs, present: true });
         for (const m of word(e.words[j], ti2, off2)) chain(j + 1, m.ti, m.off, n + m.c.cost, x && m.c.exact, [...cs, m.c]);
@@ -270,19 +326,21 @@ function align(pat, toks, { anywhere, typos, loose, x, slotMax = 6 }) {
     memo.set(key, best);
     return best;
   }
-  let best = null, start = 0;
+  /** @type {Partial | null} */ let best = null;
+  let start = 0;
   for (let s = 0; s < (anywhere ? Math.max(1, toks.length) : 1); s++) {
     const r = go(0, s, 0);
     if (r && better(r, best)) { best = r; start = s; }
     if (best && best.n === 0 && best.x) break;
   }
   if (!best) return null;
-  const steps = []; for (let l = best.steps; l; l = l.next) steps.push(l.step);
+  /** @type {Step[]} */ const steps = []; for (let l = best.steps; l; l = l.next) steps.push(l.step);
   return { n: best.n, exact: best.x, steps, start };
 }
 
 // Display a pattern. fill: the alignment (slots take the typed words), or null for the model answer
 // (optional words kept without their parens, slots as "…", first letter capitalised).
+/** @param {Pattern} pat @param {string} input @param {Alignment | null} m */
 function display(pat, input, m) {
   const byEl = new Map((m?.steps || []).map(s => [s.ei, s]));
   const parts = pat.lead ? [pat.lead] : [];
@@ -294,7 +352,7 @@ function display(pat, input, m) {
     else if (!m || !s) txt = e.raw;
     else if (!s.len) txt = '';
     else {
-      const tk = m.toks.slice(s.ti, s.ti + s.len);
+      const tk = /** @type {Word[]} */ (m.toks).slice(s.ti, s.ti + s.len);
       const typed = input.slice(tk[0].start, tk[tk.length - 1].end);
       txt = e.prefix ? (s.cut === -1 ? e.raw.slice(0, -1) + ' ' + input.slice(tk[1].start, tk[tk.length - 1].end) : e.raw.slice(0, -1) + typed.slice(s.cut)) : typed;
     }
@@ -305,7 +363,9 @@ function display(pat, input, m) {
   if (!m) out = out.replace(/^(\P{L}*)(\p{L})/u, (_, a, b) => a + b.toUpperCase());
   return out;
 }
+/** @type {Map<string, Pattern>} */
 const cache = new Map();
+/** @param {string} src @param {boolean} useSlots @param {boolean} dots @returns {Pattern} */
 function compile(src, useSlots, dots) {
   const k = (useSlots ? 1 : 0) + (dots ? 2 : 0) + '|' + src;
   let p = cache.get(k);
@@ -314,10 +374,11 @@ function compile(src, useSlots, dots) {
 }
 // "(entschuldigung) könnten sie das [x]" -> "Entschuldigung könnten sie das …"
 // caseRef (optional, e.g. the German example sentence): lowercase pattern words take its capitalisation ("Sie", nouns)
+/** @param {string} p @param {string | null} [caseRef] */
 function renderPattern(p, caseRef) {
   let out = display(compile(p, true, false), '', null);
   if (caseRef) {
-    const ref = new Map();
+    /** @type {Map<string, string>} */ const ref = new Map();
     String(caseRef).normalize('NFC').split(/(?<=[.!?:])\s+/).forEach(sent => words(sent).forEach((w, i) => { if (i && !ref.has(w.low)) ref.set(w.low, w.raw); }));
     out = out.replace(WORD_RE, w => ref.get(w.toLowerCase()) || w);
     out = out.replace(/^(\P{L}*)(\p{L})/u, (_, a, b) => a + b.toUpperCase());
@@ -326,13 +387,14 @@ function renderPattern(p, caseRef) {
 }
 
 // case check for strictCase: an aligned word whose capitalisation differs
+/** @param {Pattern} pat @param {Alignment} m */
 function caseDiffers(pat, m) {
   for (const s of m.steps) {
     const e = pat.els[s.ei];
     if (!s.cs) continue;
     for (let j = 0; j < s.cs.length; j++) {
       if (s.cs[j].glued) continue;
-      const t = m.toks[s.cs[j].ti], want = s.cs[j].a.word;
+      const t = /** @type {Word[]} */ (m.toks)[s.cs[j].ti], want = s.cs[j].a.word;
       if (s.cs[j].cost === 0 ? fold(t.raw) !== fold(want) : (t.raw[0] === t.raw[0].toUpperCase()) !== (want[0] === want[0].toUpperCase())) return true;
     }
     void e;
@@ -340,6 +402,7 @@ function caseDiffers(pat, m) {
   return false;
 }
 
+/** @param {string} input @param {Pattern} pat @param {AlignOpts} opts */
 function run(input, pat, opts) {
   const toks = words(input);
   const m = toks.length ? align(pat, toks, opts) : null;
@@ -351,10 +414,11 @@ function run(input, pat, opts) {
 // "recht/Recht haben", "recht/Recht geben": Duden allows both spellings, so neither case is a slip
 const HABEN_GEBEN = /^(hab|habe|hast|hat|haben|habt|hatte|hattest|hatten|hattet|haette|haettest|haetten|haettet|gehabt|geb|gebe|gibst|gibt|geben|gebt|gab|gabst|gaben|gabt|gegeben|gib)$/;
 const RECHT_DET = /^(das|des|dem|ein|eines|einem|kein|keines|keinem|mein|dein|sein|ihr|unser|euer|jedes|jedem|gleiche|gleiches|volle|volles|vollem|gutes|gutem)$/;
-const eitherCase = (toks, i) => toks[i].n === 'recht' && !(i > 0 && RECHT_DET.test(toks[i - 1].n)) &&
+const eitherCase = (/** @type {Word[]} */ toks, /** @type {number} */ i) => toks[i].n === 'recht' && !(i > 0 && RECHT_DET.test(toks[i - 1].n)) &&
   toks.slice(Math.max(0, i - 5), i + 6).some(t => HABEN_GEBEN.test(t.n));
+/** @param {CheckResult & {focusMiss: Slip[], capMiss: Slip[]}} res @param {Alignment & {toks: Word[]}} m @param {string} inp @param {WordX} x @param {Map<string, string> | null | undefined} caseRef */
 function caseChecks(res, m, inp, x, caseRef) {
-  const initial = t => t.start === 0 || /[.!?:]\s*["„“]?\s*$/.test(inp.slice(0, t.start));
+  const initial = (/** @type {Word} */ t) => t.start === 0 || /[.!?:]\s*["„“]?\s*$/.test(inp.slice(0, t.start));
   const used = new Set();
   for (const s of m.steps) (s.cs || []).forEach(c => {
     if (c.glued) return;
@@ -375,11 +439,13 @@ function caseChecks(res, m, inp, x, caseRef) {
 }
 // Word-level diff of an answer against a right sentence (LCS on folded words): which typed words are not in the
 // right one (`wrong`, offsets into a), and which words of b are not in a (`missing`, indexes into words(b)).
+/** @param {string} a @param {string} b */
 function diffWords(a, b) {
   const A = words(a), B = words(b), n = A.length, m = B.length;
   const L = Array.from({ length: n + 1 }, () => new Array(m + 1).fill(0));
   for (let i = n - 1; i >= 0; i--) for (let j = m - 1; j >= 0; j--) L[i][j] = A[i].n === B[j].n ? L[i + 1][j + 1] + 1 : Math.max(L[i + 1][j], L[i][j + 1]);
-  const wrong = [], keepB = new Set();
+  /** @type {Wrong[]} */ const wrong = [];
+  const keepB = new Set();
   let i = 0, j = 0;
   while (i < n && j < m) {
     if (A[i].n === B[j].n) { keepB.add(j); i++; j++; }
@@ -391,8 +457,9 @@ function diffWords(a, b) {
 }
 
 // the word-level options for wcost/typoOk
+/** @param {CheckOptions} opts @returns {WordX} */
 function xOpts(opts) {
-  const set = v => (v ? new Set([...v].map(w => fold(String(w).toLowerCase()))) : null);
+  const set = (/** @type {Iterable<string> | null | undefined} */ v) => (v ? new Set([...v].map(w => fold(String(w).toLowerCase()))) : null);
   return {
     endings: !!opts.endings, umlaut: !!opts.umlaut,
     strict: opts.strict && opts.strict.length ? new Map(opts.strict.map(w => [fold(String(w).toLowerCase()), String(w)])) : null,
@@ -400,11 +467,13 @@ function xOpts(opts) {
   };
 }
 
+/** @param {string} input @param {string | string[]} accepted @param {CheckOptions} [opts] @returns {CheckResult} */
 function check(input, accepted, opts = {}) {
   const strictCase = !!opts.strictCase, useSlots = opts.slots !== false, anywhere = !!opts.anywhere, typos = opts.typos !== false;
   const loose = opts.loose ? new Set([...opts.loose].map(w => fold(String(w).toLowerCase()))) : null;
   const list = (Array.isArray(accepted) ? accepted : [accepted]).filter(a => a != null && String(a).trim() !== '');
   const inp = nfc(input).replace(/\s+/g, ' ').trim();
+  /** @type {CheckResult} */
   const res = { ok: false, exact: false, close: false, articleMiss: false, caseMiss: false, matched: null, others: list.slice(), fixed: list[0] ? tidy(list[0]) : '', typos: [], input: inp };
   const b1 = opts.endings || opts.umlaut || opts.strict || opts.caseRef || opts.slotMax;
   if (b1) Object.assign(res, { umlautMiss: [], capMiss: [], focusMiss: [], nearest: null });
@@ -415,17 +484,20 @@ function check(input, accepted, opts = {}) {
   const aopts = { anywhere, typos, loose, x, slotMax: opts.slotMax || 6 };
 
   // 1. best match over all accepted strings: fewest typos, then exact spelling, then list order
-  let hit = -1, best = null;
-  pats.forEach((p, k) => {
-    const m = align(p, toks, aopts);
+  let hit = -1;
+  /** @type {Alignment | null} */ let best = null;
+  for (let k = 0; k < pats.length; k++) {
+    const m = align(pats[k], toks, aopts);
     if (m && (!best || m.n < best.n || (m.n === best.n && m.exact && !best.exact))) { best = m; hit = k; }
-  });
+  }
   if (best) {
-    best.toks = toks;
+    const b = /** @type {Alignment & {toks: Word[]}} */ (best);
+    b.toks = toks;
     const p = pats[hit];
-    res.matched = list[hit]; res.others = list.filter((_, k) => k !== hit); res.fixed = display(p, inp, best);
+    res.matched = list[hit]; res.others = list.filter((_, k) => k !== hit); res.fixed = display(p, inp, b);
     res.typos = [];
-    for (const s of best.steps) (s.cs || []).forEach((c, j) => {
+    const umlautMiss = /** @type {Slip[]} */ (res.umlautMiss);
+    for (const s of b.steps) (s.cs || []).forEach(c => {
       if (!c.cost) return;
       // the fix in its written case: the reference's capital (Präsentation), or a capital where he typed one
       const t = toks[c.ti];
@@ -433,24 +505,25 @@ function check(input, accepted, opts = {}) {
       let expected = ref || c.a.word;
       if (/^\p{Lu}/u.test(t.raw)) expected = expected.charAt(0).toUpperCase() + expected.slice(1);
       const miss = { typed: t.raw, expected, start: t.start, end: t.end };
-      (c.umlaut ? res.umlautMiss : res.typos).push(miss);
+      (c.umlaut ? umlautMiss : res.typos).push(miss);
     });
     // where the pattern sits in the answer, and what each slot took (in order)
-    let s0 = Infinity, e0 = -1; const fills = [];
-    for (const s of best.steps) {
+    let s0 = Infinity, e0 = -1;
+    /** @type {string[]} */ const fills = [];
+    for (const s of b.steps) {
       const e = p.els[s.ei];
       if (e.t === 'slot') {
         if (!s.len) { fills.push(''); continue; }
-        const a = toks[s.ti], b = toks[s.ti + s.len - 1];
-        fills.push(inp.slice(a.start, b.end)); s0 = Math.min(s0, a.start); e0 = Math.max(e0, b.end);
+        const a = toks[s.ti], z = toks[s.ti + s.len - 1];
+        fills.push(inp.slice(a.start, z.end)); s0 = Math.min(s0, a.start); e0 = Math.max(e0, z.end);
         continue;
       }
       for (const c of s.cs || []) { const t = toks[c.ti]; s0 = Math.min(s0, t.start); e0 = Math.max(e0, t.end); }
     }
     res.span = e0 >= 0 ? [s0, e0] : null; res.fills = fills;
-    if (strictCase && caseDiffers(p, best)) { res.caseMiss = true; return res; }
-    res.ok = true; res.exact = best.exact && !res.typos.length && !(res.umlautMiss || []).length;
-    if (b1) caseChecks(res, best, inp, x, opts.caseRef);
+    if (strictCase && caseDiffers(p, b)) { res.caseMiss = true; return res; }
+    res.ok = true; res.exact = b.exact && !res.typos.length && !(res.umlautMiss || []).length;
+    if (b1) caseChecks(/** @type {CheckResult & {focusMiss: Slip[], capMiss: Slip[]}} */ (res), b, inp, x, opts.caseRef);
     if (res.focusMiss && res.focusMiss.length) { res.ok = false; res.exact = false; }
     return res;
   }
@@ -471,7 +544,7 @@ function check(input, accepted, opts = {}) {
 
   // 3. close: at least half of a pattern's fixed words are in the answer (typos allowed)
   for (let k = 0; k < pats.length; k++) {
-    const fixedWords = pats[k].els.filter(e => e.t === 'w');
+    const fixedWords = /** @type {WEl[]} */ (pats[k].els.filter(e => e.t === 'w'));
     if (fixedWords.length < 2) continue;
     const found = fixedWords.filter(w => toks.some(t => wcost(w, t, typos, loose))).length;
     if (found * 2 >= fixedWords.length) { res.close = true; break; }
@@ -479,7 +552,7 @@ function check(input, accepted, opts = {}) {
   if (b1) {   // the accepted string closest to the answer: the most fixed words found (ties: list order)
     let bestK = 0, bestF = -1;
     pats.forEach((p, k) => {
-      const fw = p.els.flatMap(e => e.t === 'w' ? [e] : e.t === 'opt' ? e.words : []);
+      const fw = p.els.flatMap(e => e.t === 'w' ? [e] : e.t === 'opt' ? e.words : /** @type {WEl[]} */ ([]));
       const f = fw.filter(w => toks.some(t => wcost(w, t, typos, loose, x))).length - 0.01 * Math.max(0, fw.length - toks.length);
       if (f > bestF) { bestF = f; bestK = k; }
     });
@@ -503,13 +576,16 @@ const SLOT_RE = /\(\[[^\]]*\]\)|\[[^\]]*\]/g;
 const VERB_LAST = new Set(['dass', 'weil', 'ob', 'wenn', 'obwohl', 'damit', 'sobald', 'bevor', 'nachdem', 'waehrend', 'falls', 'seitdem']);
 const INVERT = new Set(['deshalb', 'deswegen', 'darum', 'daher', 'trotzdem', 'dann', 'danach', 'ausserdem', 'also', 'sonst', 'dennoch', 'denn']);
 const AUX_SEIN = /^(bin|bist|ist|sind|seid)$/, AUX_HABEN = /^(hab|habe|hast|hat|haben|habt)$/;
+/** @typedef {{clause: string, sein: boolean, haben: boolean}} Shape */
+/** @param {unknown} p @returns {Shape} */
 function shapeOf(p) {
   const ws = words(String(p || '').replace(SLOT_RE, ' ')).map(w => w.n);
   return { clause: [ws.filter(w => VERB_LAST.has(w)).sort().join('+'), ws.filter(w => INVERT.has(w)).sort().join('+')].join('|'),
     sein: ws.some(w => AUX_SEIN.test(w)), haben: ws.some(w => AUX_HABEN.test(w)) };
 }
 // the same clause words, and not sein in one where the other has haben
-const sameShape = (a, b) => a.clause === b.clause && !((a.sein && !a.haben && b.haben && !b.sein) || (a.haben && !a.sein && b.sein && !b.haben));
+const sameShape = (/** @type {Shape} */ a, /** @type {Shape} */ b) => a.clause === b.clause && !((a.sein && !a.haben && b.haben && !b.sein) || (a.haben && !a.sein && b.sein && !b.haben));
+/** @param {string} p @param {string[]} fills */
 function fillSlots(p, fills) {
   const n = (String(p).match(SLOT_RE) || []).length;
   if (!n) return String(p);
@@ -519,16 +595,18 @@ function fillSlots(p, fills) {
   return bad ? null : out.replace(/\s+/g, ' ').trim();
 }
 // a pattern (slots filled) as text in the sentence: the base sentence's spelling of each word, nouns from caseRef
+/** @param {string} mid @param {string} base @param {Map<string, string> | null | undefined} caseRef @param {boolean} initial */
 function renderIn(mid, base, caseRef, initial) {
-  const ref = new Map();
+  /** @type {Map<string, string>} */ const ref = new Map();
   String(base).normalize('NFC').split(/(?<=[.!?:])\s+/).forEach(sent => words(sent).forEach((w, i) => { if (i && !ref.has(w.low)) ref.set(w.low, w.raw); }));
   let out = display(compile(mid, true, false), '', null).replace(WORD_RE, w => ref.get(w.toLowerCase()) || (caseRef && caseRef.get(fold(w.toLowerCase()))) || w.toLowerCase());
   if (initial) out = out.replace(/^(\P{L}*)(\p{L})/u, (_, a, b) => a + b.toUpperCase());
   return out;
 }
-const joinText = (...parts) => parts.filter(s => s && s.trim()).join(' ').replace(/\s+([,.!?;:])/g, '$1').replace(/\s+/g, ' ').trim();
+const joinText = (/** @type {string[]} */ ...parts) => parts.filter(s => s && s.trim()).join(' ').replace(/\s+([,.!?;:])/g, '$1').replace(/\s+/g, ' ').trim();
 // patterns carry no commas: put back the base sentence's comma before a clause word it has one before (so, dass …)
 const COMMA_WORDS = new Set(['dass', 'weil', 'wenn', 'ob', 'obwohl', 'damit', 'aber', 'denn', 'sondern', 'bevor', 'nachdem', 'waehrend', 'falls', 'sodass', 'als', 'wie', 'wo', 'was']);
+/** @param {string} base @param {string} text */
 function commasFrom(base, text) {
   const want = new Set([...String(base).matchAll(/,\s*([\p{L}]+)/gu)].map(m => fold(m[1].toLowerCase())).filter(w => COMMA_WORDS.has(w)));
   if (!want.size) return text;
@@ -536,38 +614,49 @@ function commasFrom(base, text) {
 }
 // a word twice in a row that the pattern does not have twice: another pattern's slot took the model's words
 // ("… dass man ([x]) spät isst" with the model's "normalerweise sehr spät" gives "sehr spät spät isst")
-const doubled = (text, p) => {
-  const has = s => { const ws = words(s).map(w => w.n); return ws.some((w, i) => i && w === ws[i - 1]); };
+const doubled = (/** @type {string} */ text, /** @type {string} */ p) => {
+  const has = (/** @type {string} */ s) => { const ws = words(s).map(w => w.n); return ws.some((w, i) => i && w === ws[i - 1]); };
   return has(text) && !has(String(p).replace(SLOT_RE, ' '));
 };
 
+/**
+ * @typedef {object} RestResult
+ * @property {'ok'|'differs'|'na'} status @property {boolean} frag @property {string} ref @property {Slip[]} typos
+ * @property {Slip[]} umlautMiss @property {Range[]} marks @property {Wrong[]} wrong
+ */
+/**
+ * @param {string} input @param {string} base @param {string | string[]} accepted
+ * @param {CheckOptions & {matched?: string | null, variants?: string[]}} [opts]
+ * @returns {RestResult}
+ */
 function restCheck(input, base, accepted, opts = {}) {
   const list = (Array.isArray(accepted) ? accepted : [accepted]).filter(a => a != null && String(a).trim() !== '');
   const inp = nfc(input).replace(/\s+/g, ' ').trim();
   const toks = words(inp);
+  /** @type {RestResult} */
   const out = { status: 'na', frag: false, ref: base ? tidy(base) : '', typos: [], umlautMiss: [], marks: [], wrong: [] };
   if (!base || !toks.length || !list.length) return out;
   const slotMax = opts.slotMax || 10;
   const mr = check(base, list, { anywhere: true, slotMax, typos: false });
   if (!mr.ok || !mr.span) return out;
-  const pre = base.slice(0, mr.span[0]), post = base.slice(mr.span[1]);
+  const pre = base.slice(0, mr.span[0]), post = base.slice(mr.span[1]), fills = /** @type {string[]} */ (mr.fills);
   const order = opts.matched != null && list.includes(opts.matched) ? [opts.matched, ...list.filter(p => p !== opts.matched)] : list;
   // another accepted phrase goes into the model sentence only when it has the same shape: the same subordinators and
   // inversion words (ich finde dass … / ich finde …: the verb moves) and the same Perfekt helper (früher habe ich /
   // früher bin ich: the participle decides). The model's own words fill the slots.
   const shape = shapeOf(mr.matched);
-  const cands = [];
+  /** @type {{pre: string, mid: string, post: string, literal?: boolean}[]} */ const cands = [];
   for (const p of order) {
     if (p !== mr.matched && !sameShape(shapeOf(p), shape)) continue;
-    const mid = fillSlots(p, mr.fills); if (mid != null && !doubled(mid, p)) cands.push({ pre, mid, post });
+    const mid = fillSlots(p, fills); if (mid != null && !doubled(mid, p)) cands.push({ pre, mid, post });
   }
   for (const v of opts.variants || []) if (v) cands.push({ pre: '', mid: String(v), post: '', literal: true });
   const x = xOpts({ ...opts, endings: opts.endings !== false });
   const typos = opts.typos !== false;
-  const aopts = { anywhere: false, typos, loose: null, x, slotMax };
+  /** @type {AlignOpts} */ const aopts = { anywhere: false, typos, loose: null, x, slotMax };
   const first = toks[0], last = toks[toks.length - 1];
-  const fits = (e, t, atEnd) => !e || e.t !== 'w' || !!wcost(e, t, typos, null, x) || e.alts.some(a => a.n && (atEnd ? t.n.endsWith(a.n) : t.n.startsWith(a.n)));
-  const text = c => c.literal ? tidy(c.mid) : commasFrom(base, joinText(pre, renderIn(c.mid, base, opts.caseRef, !/\p{L}/u.test(pre)), post));
+  const fits = (/** @type {El | undefined} */ e, /** @type {Word} */ t, /** @type {boolean} */ atEnd) => !e || e.t !== 'w' || !!wcost(e, t, typos, null, x) || e.alts.some(a => a.n && (atEnd ? t.n.endsWith(a.n) : t.n.startsWith(a.n)));
+  const text = (/** @type {{pre: string, mid: string, post: string, literal?: boolean}} */ c) => c.literal ? tidy(c.mid) : commasFrom(base, joinText(pre, renderIn(c.mid, base, opts.caseRef, !/\p{L}/u.test(pre)), post));
   for (const c of cands) {
     const P = compile(c.pre, false, false).els, M = compile(c.mid, !c.literal, false).els, Q = compile(c.post, false, false).els;
     for (let s = 0; s <= P.length; s++) {
@@ -578,7 +667,7 @@ function restCheck(input, base, accepted, opts = {}) {
         if (tail && tail.t === 'w' && !fits(tail, last, true)) continue;
         const m = align({ els: [...P.slice(s), ...M, ...Q.slice(0, e)] }, toks, aopts);
         if (!m) continue;
-        const res = { ...out, status: 'ok', frag: s > 0 || e < Q.length, ref: text(c) };
+        /** @type {RestResult} */ const res = { ...out, status: 'ok', frag: s > 0 || e < Q.length, ref: text(c) };
         for (const st of m.steps) for (const cs of st.cs || []) {
           if (!cs.cost) continue;
           const t = toks[cs.ti];
@@ -589,23 +678,30 @@ function restCheck(input, base, accepted, opts = {}) {
     }
   }
   // nothing fits: the closest sentence (most words in common, his phrase first on a tie) and the word diff
-  let best = null, bestN = -1;
+  // (no candidate at all is not expected: best stays null, as it always has)
+  let best = /** @type {string} */ (/** @type {unknown} */ (null)), bestN = -1;
   for (const c of cands) {
     const ref = text(c), n = lcsWords(words(inp), words(ref));
     if (n > bestN) { bestN = n; best = ref; }
   }
   return { ...out, status: 'differs', ref: best, ...markDiff(inp, best) };
 }
+/** @param {Word[]} A @param {Word[]} B @param {(a: Word, b: Word) => boolean} [eq] */
 function lcsTable(A, B, eq = (a, b) => a.n === b.n) {
   const L = Array.from({ length: A.length + 1 }, () => new Array(B.length + 1).fill(0));
   for (let i = A.length - 1; i >= 0; i--) for (let j = B.length - 1; j >= 0; j--) L[i][j] = eq(A[i], B[j]) ? L[i + 1][j + 1] + 1 : Math.max(L[i + 1][j], L[i][j + 1]);
   return L;
 }
-const lcsWords = (A, B) => lcsTable(A, B)[0][0];
+const lcsWords = (/** @type {Word[]} */ A, /** @type {Word[]} */ B) => lcsTable(A, B)[0][0];
 // the LCS walk as gaps: [{a: [indexes in A], b: [indexes in B]}] between matched words, plus the matched pairs
+/** @typedef {{a: number[], b: number[], lead: boolean, trail?: boolean}} Gap */
+/** @param {Word[]} A @param {Word[]} B */
 function gaps(A, B) {
-  const L = lcsTable(A, B), out = [], pairs = [];
-  let i = 0, j = 0, cur = { a: [], b: [], lead: true };
+  const L = lcsTable(A, B);
+  /** @type {Gap[]} */ const out = [];
+  /** @type {[number, number][]} */ const pairs = [];
+  let i = 0, j = 0;
+  /** @type {Gap} */ let cur = { a: [], b: [], lead: true };
   while (i < A.length || j < B.length) {
     if (i < A.length && j < B.length && A[i].n === B[j].n) { out.push(cur); pairs.push([i, j]); cur = { a: [], b: [], lead: false }; i++; j++; }
     else if (j >= B.length || (i < A.length && L[i + 1][j] >= L[i][j + 1])) cur.a.push(i++);
@@ -615,15 +711,17 @@ function gaps(A, B) {
   return { gaps: out.filter(g => g.a.length || g.b.length), pairs };
 }
 // he nearly had it: the same word up to its ending, or the same but for an umlaut
-const nearly = (a, b) => commonPrefix(a.low, b.low) >= 3 || deUml(a.low) === deUml(b.low);
-const commonPrefix = (a, b) => { let p = 0; while (p < a.length && p < b.length && a[p] === b[p]) p++; return p; };
+const nearly = (/** @type {Word} */ a, /** @type {Word} */ b) => commonPrefix(a.low, b.low) >= 3 || deUml(a.low) === deUml(b.low);
+const commonPrefix = (/** @type {string} */ a, /** @type {string} */ b) => { let p = 0; while (p < a.length && p < b.length && a[p] === b[p]) p++; return p; };
 // Word diff of an answer a against a right sentence b: the words of a that differ (wrong) and the parts of b to mark.
 // A word he nearly had is marked from its first differing letter (from the ending when that is where it differs:
 // viel[en]); others whole. Words of b before or after everything he wrote are not marked when he wrote nothing there
 // (an answer that is a part of the sentence).
+/** @param {string} a @param {string} b @returns {{wrong: Wrong[], marks: Range[]}} */
 function markDiff(a, b) {
   const A = words(a), B = words(b), { gaps: G } = gaps(A, B);
-  const wrong = [], marks = [];
+  /** @type {Wrong[]} */ const wrong = [];
+  /** @type {Range[]} */ const marks = [];
   for (const g of G) {
     if ((g.lead || g.trail) && !g.a.length) continue;
     g.a.forEach(i => wrong.push({ start: A[i].start, end: A[i].end, word: A[i].raw }));
@@ -650,7 +748,8 @@ const FAMILY = [/^d(er|ie|as|en|em|es)$/, /^ein(e|en|em|er|es)?$/, /^kein(e|en|e
   /^welch(e|er|en|em|es)$/, /^(ich|mich|mir)$/, /^(du|dich|dir)$/, /^(er|ihn|ihm)$/, /^(wir|uns)$/, /^(ihnen)$/,
   /^(bin|bist|ist|sind|seid|sein|hab|habe|hast|hat|haben|habt)$/, /^(hatte|hattest|hatten|hattet|war|warst|waren|wart)$/, /^(werde|wirst|wird|werden|werdet)$/,
   /^(war|warst|waren|wart)$/, /^(wurde|wurdest|wurden|wurdet)$/];
-const family = n => FAMILY.findIndex(re => re.test(n));
+const family = (/** @type {string} */ n) => FAMILY.findIndex(re => re.test(n));
+/** @param {Word} a @param {Word} b @param {WordX} [x] */
 function formPair(a, b, x = NOX) {
   if (a.n === b.n) return false;
   if (deUml(a.low) === deUml(b.low)) return true;   // hatte/hätte, schon/schön, Mutter/Mütter
@@ -663,10 +762,12 @@ function formPair(a, b, x = NOX) {
   return p >= 3 && ra !== rb && ENDING_SET.has(ra) && ENDING_SET.has(rb);
 }
 const ENDING_SET = new Set(['', ...ENDINGS]);
+/** @param {string} input @param {string} base @param {CheckOptions & {lone?: boolean}} [opts] */
 function formCheck(input, base, opts = {}) {
   const x = xOpts({ ...opts, endings: true });
   const inp = nfc(input).replace(/\s+/g, ' ').trim();
   const A = words(inp), B = words(base || '');
+  /** @type {{status: 'ok'|'differs', ref: string, marks: Range[], wrong: Wrong[]}} */
   const out = { status: 'ok', ref: base ? tidy(base) : '', marks: [], wrong: [] };
   if (!A.length || !B.length) return out;
   const G = gaps(A, B).gaps;
@@ -687,12 +788,13 @@ function formCheck(input, base, opts = {}) {
 }
 
 // validate_accept.matches(answer, pattern) without typo tolerance
-const matches = (answer, pattern) => check(answer, [pattern], { anywhere: true, typos: false }).ok;
+const matches = (/** @type {string} */ answer, /** @type {string} */ pattern) => check(answer, [pattern], { anywhere: true, typos: false }).ok;
 
 // ---- nouns: definite ("the car") or indefinite ("a car") prompts ----
-const hash = s => { let x = 2166136261; for (const c of String(s)) { x ^= c.codePointAt(0); x = Math.imul(x, 16777619); } return x >>> 0; };
-const stripArt = g => String(g || '').replace(/^\s*(the|a|an)\s+/i, '').trim();
+const hash = (/** @type {unknown} */ s) => { let x = 2166136261; for (const c of String(s)) { x ^= /** @type {number} */ (c.codePointAt(0)); x = Math.imul(x, 16777619); } return x >>> 0; };
+const stripArt = (/** @type {unknown} */ g) => String(g || '').replace(/^\s*(the|a|an)\s+/i, '').trim();
 // 'indef' for about 30% of countable common nouns (stable per id); 'def' for everything else
+/** @param {any} word @returns {'def'|'indef'} */
 function nounForm(word) {
   if (!word || word.pos !== 'noun' || !word.art) return 'def';
   const g = stripArt((word.en || [])[0]);
@@ -700,28 +802,32 @@ function nounForm(word) {
   if (/^\P{Ll}*\p{Lu}/u.test(g)) return 'def';                     // proper nouns, holidays, languages
   return hash(word.id || word.w) % 100 < 30 ? 'indef' : 'def';
 }
-const anSound = g => /^(hour|honest|honou?r|heir)/i.test(g) || (/^[aeiou]/i.test(g) && !/^(u[nst]i|use|usu|ur[aeiou]|eu|one\b|once)/i.test(g));
+const anSound = (/** @type {string} */ g) => /^(hour|honest|honou?r|heir)/i.test(g) || (/^[aeiou]/i.test(g) && !/^(u[nst]i|use|usu|ur[aeiou]|eu|one\b|once)/i.test(g));
+/** @param {any} word @param {'def'|'indef'} [form] */
 function nounPrompt(word, form = nounForm(word)) {
   const g = stripArt((word.en || [])[0] || word.w);
   return form === 'indef' ? `${anSound(g) ? 'an' : 'a'} ${g}` : `the ${g}`;
 }
+/** @type {Record<string, string>} */
 const INDEF = { der: 'ein', das: 'ein', die: 'eine' };
-const toIndef = s => { const m = String(s).match(/^(der|die|das)\s+(.+)$/i); return m ? `${INDEF[m[1].toLowerCase()]} ${m[2]}` : s; };
+const toIndef = (/** @type {string} */ s) => { const m = String(s).match(/^(der|die|das)\s+(.+)$/i); return m ? `${INDEF[m[1].toLowerCase()]} ${m[2]}` : s; };
 
+/** @param {any} word @param {'def'|'indef'} [form] @returns {string[]} */
 function acceptedForWord(word, form = 'def') {
   if (!word) return [];
   const main = word.pos === 'noun' && word.art ? `${word.art} ${word.w}` : word.w;
   const def = [main];
   for (const a of word.alt || []) if (a && !def.includes(a)) def.push(a);
   if (form !== 'indef' || word.pos !== 'noun' || !word.art) return def;
-  const out = [];
+  /** @type {string[]} */ const out = [];
   for (const a of def) { const i = toIndef(a); if (!out.includes(i)) out.push(i); }
   for (const a of def) if (!out.includes(a)) out.push(a);   // the definite form counts too
   return out;
 }
 // t: the German chunk string, variants split on " / ". ex (optional): the German example sentence, accepted first.
+/** @param {unknown} t @param {string} [ex] */
 function acceptedForChunk(t, ex) {
-  const out = [];
+  /** @type {string[]} */ const out = [];
   if (ex) out.push(ex);
   for (const v of String(t || '').split(' / ').map(s => s.trim()).filter(Boolean)) if (!out.includes(v)) out.push(v);
   return out;
@@ -730,13 +836,15 @@ function acceptedForChunk(t, ex) {
 // Gap items ("Ich kaufe ___ Tisch. (der)"): the answer word alone, or the prompt with the gap filled, both count.
 // gapLoose() lists the carried-over words, which may have typos; the gap word itself must be exact.
 const GAP = '___';
-const gapBase = prompt => String(prompt || '').replace(/\s*\([^()]*\)\s*$/, '').trim();
+const gapBase = (/** @type {unknown} */ prompt) => String(prompt || '').replace(/\s*\([^()]*\)\s*$/, '').trim();
+/** @param {unknown} prompt @param {unknown} answer */
 function gapFill(prompt, answer) {
   const base = gapBase(prompt), i = base.indexOf(GAP);
   let a = String(answer);
   if (i >= 0 && !/\p{L}/u.test(base.slice(0, i)) && /\p{Ll}/u.test(a[0] || '') && /[.!?]\s*$/.test(base)) a = a[0].toUpperCase() + a.slice(1);
   return i < 0 ? null : { before: base.slice(0, i), gap: a, after: base.slice(i + GAP.length), text: base.slice(0, i) + a + base.slice(i + GAP.length) };
 }
+/** @param {unknown} prompt @param {string | string[]} answers @returns {string[]} */
 function acceptedForGap(prompt, answers) {
   const list = (Array.isArray(answers) ? answers : [answers]).filter(Boolean);
   if (!String(prompt || '').includes(GAP)) return list.slice();
@@ -744,7 +852,7 @@ function acceptedForGap(prompt, answers) {
   for (const a of list) { const f = gapFill(prompt, a); if (f && !out.includes(f.text)) out.push(f.text); }
   return out;
 }
-const gapLoose = prompt => words(gapBase(prompt).split(GAP).join(' ')).map(w => w.n);
+const gapLoose = (/** @type {unknown} */ prompt) => words(gapBase(prompt).split(GAP).join(' ')).map(w => w.n);
 
 const api = { check, matches, diffWords, markDiff, restCheck, shapeOf, sameShape, formCheck, renderPattern, acceptedForWord, acceptedForChunk, acceptedForGap, gapFill, gapLoose, nounForm, nounPrompt, toIndef, clean, fold, dl, dl1, words, ending, CLOSED };
 export default api;

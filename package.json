@@ -15,7 +15,7 @@
     "serve": "node tools/serve.mjs 8430",
     "hooks": "sh tools/install-hooks.sh",
     "typecheck": "tsc -p tsconfig.json",
-    "typecheck:legacy": "tsc -p tsconfig.legacy.json",
+    "typecheck:legacy": "node tools/typecheck-ratchet.mjs",
     "fixtures": "node tools/make-fixtures.mjs",
     "manifest": "node tools/build-manifest.mjs"
   },
