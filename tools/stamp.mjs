@@ -28,7 +28,7 @@ const BASE = '/fluentish/';
 const git = (/** @type {string[]} */ ...a) => execFileSync('git', a, { cwd: ROOT, encoding: 'utf8', maxBuffer: 1 << 28 }).trim();
 
 /** Content precached on install; everything else in content/ is cached the first time it is used. */
-export const CORE_CONTENT = /^(b1|exam)\.|^igloo\.(framework|turns|chunks\.en)$|\.(german|de)$/;
+export const CORE_CONTENT = /^(b1|exam|speak)\.|^igloo\.(framework|turns|chunks\.en)$|\.(german|de)$/;
 /** What goes under v/<sha>/: code and styles, without notes and type declarations. */
 const CODE_DIRS = ['src', 'styles'];
 const skipCode = (/** @type {string} */ p) => /\.(md|d\.ts)$/.test(p);
@@ -140,7 +140,8 @@ async function main() {
   const core = manifest.files.filter(f => CORE_CONTENT.test(f.id));
   const precache = [
     './',
-    ...walk(path.join(o.out, v)).filter(f => /\.(js|css)$/.test(f)).map(f => `${v}/${f}`),
+    // code, styles and the vendored map font (the map's layout was built with its widths, so it must be there offline)
+    ...walk(path.join(o.out, v)).filter(f => /\.(js|css|woff2)$/.test(f)).map(f => `${v}/${f}`),
     ...walk(path.join(o.out, 'assets')).map(f => `assets/${f}`),
     'content/manifest.json',
     ...core.map(f => `content/${f.path}?h=${f.sha256.slice(0, 8)}`),

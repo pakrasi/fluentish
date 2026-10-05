@@ -32,7 +32,7 @@ colors:                       # light
   x-shaky: "{colors.ink-3}"               # 5.8:1 on canvas
   x-unknown: "#2b2d33"                    # text inside the open box
   x-box: "rgba(20,21,25,0.50)"            # open box and outlined bar; 3.4:1
-  x-new: "#84868d"                        # not seen, italic; 3.3:1
+  x-new: "#6b6d74"                        # not seen, italic; 4.69:1 on canvas, 5.03:1 on surface
   x-bar-new: "rgba(20,21,25,0.13)"        # not-seen bar at far zoom
   x-today: "{colors.accent}"              # practised today, always with a hairline under it
   x-glow: "accent 26% on canvas"          # the plate under a word just learned (fades in 1.3 s)
@@ -63,7 +63,7 @@ colors-dark:
   cell-known: "#d9d8d2"
   x-unknown: "#d6d5d0"
   x-box: "rgba(236,235,230,0.42)"
-  x-new: "#6f7178"
+  x-new: "#7f8189"                        # 4.97:1 on canvas, 4.62:1 on surface
   x-bar-new: "rgba(236,235,230,0.12)"
   x-glow: "accent 34% on canvas"
 
@@ -201,21 +201,34 @@ Explore (`src/features/explore/`, `#/lookup/map`) is a map of every word, phrase
 
 **Form.** Each group is a round paragraph of German set in the map font (a vendored Newsreader instance without kerning or ligatures, `src/vendor/newsreader-map/`), words in level then frequency order, with a ring around it. Groups sit on a fixed spiral, largest first. Positions come from content only and are computed at build time (`tools/build-atlas.mjs` → `content/atlas/de.json`) from the font's advance widths, so every device breaks the same lines and the map never moves as the learner learns. A rebuild keeps every shipped position: new items take new lines at the end of their paragraph, inside 6 % headroom; a group without room asks for a repack, which is a map release. Source is the one mode laid out on the device (it depends on where items were met); its groups grow at their end.
 
-**Encoding.** Ink is the scale; shape is the second channel. Known: ink. Shaky: ink-3. Not known: x-unknown text in an open box (the mark's open tile). Not seen: pale italic. Practised today: accent with a hairline under it. At far zoom every word is a bar of its exact width in the same styles (filled, grey, outlined, faint, accent). The group ring shows the four states as arcs from 12 o'clock. Nouns always carry their article at 72 % in ink-3. Known is never green; role colours never appear on the map. The study lists in the sheets use the same encodings, with the state in words for screen readers.
+**Encoding.** Ink is the scale; shape is the second channel. Known: ink. Shaky: ink-3. Not known: x-unknown text in an open box (the mark's open tile). Not seen: x-new italic (4.5:1, it is read as text). Practised today: accent with a hairline under it. At far zoom every word is a bar of its exact width in the same styles (filled, grey, outlined, faint, accent). The group ring shows the four states as arcs from 12 o'clock: known ink, shaky ink-3, not known x-box, not seen x-box dotted (every arc at least 3:1). Nouns always carry their article at 72 % in ink-3. A phrase's slot ("dass [Satz]") reads "dass …". Known is never green; role colours never appear on the map.
 
-**Semantic zoom.** Overview: bars, group names centred in their discs. 6.5 to 9.5 px: bars crossfade into type, drawn from per-group bitmaps cached per half-octave zoom tier. From 9.5 px: type, and the "where you are" pill names the group under the centre. A tap on a word opens its card (Opposite and Same family links fly to that word); a tap on a group flies to it and opens its sheet.
+**Lists** (the sheets' Study next, the List view, search) do not copy the map's boxes and italics, which look like text fields in a list: the state is a 6 px square before the word (filled ink known, ink-3 shaky, x-box outline not known, dotted outline not seen, accent today), the word is plain Newsreader ink, and the state is also in words for screen readers.
+
+**Group names** sit on a plate (surface at 92 %, radius 6, padding 2px 6px): Geist 13/600 ink, at most two lines and 0.86 of the disc across (at least 88 px), the count "k / n" in 12 px ink-3 tabular under it on discs of 60 px and more. Only names that read are drawn: the first line whole, none on discs under 44 px, and where two plates meet the larger disc keeps its name (the other comes back as you zoom). Word family at overview draws its 146 discs as rings, with names for the 12 largest families; a smaller disc's words fade in as it grows past 44 px. A disc without a drawn name shows it in the "where you are" pill when the middle of the map is over it. Rings are drawn before every name, so no ring crosses a plate.
+
+**Semantic zoom.** Overview: bars, group names on plates in their discs. 6.5 to 9.5 px: bars crossfade into type, drawn from per-group bitmaps cached per half-octave zoom tier. From 9.5 px: type, and the "where you are" pill names the group under the centre. A tap on a word opens its card (Opposite and Same family links fly to that word); a tap on a group flies to it and opens its sheet.
 
 **Modes.** Topic (talking-and-writing phrases grouped by kind; grammar as its 67 concepts), Word family, Opposites (primary pairs, a hairline inside each pair), Level, Word type (der, die and das nouns apart), Source (mock exams, scripts, speaking, practice rounds, Igloo, Look up). Items not in a mode fade out in place. One place per item per mode; second memberships are links in the card.
 
-**Study.** The group sheet's "Study next" lists the ten most useful words not yet known (not known, then shaky, then not seen; each by frequency). "Study these N words" starts a cluster round in Practice (`#/practice/round?kind=cluster:pick&ids=…`); groups that are Practice clusters also link to them. Explore never writes card state. "Gaps only" dims known and shaky items to 16 %.
+**Study.** The group sheet's "Study next" lists the ten most useful items not yet known (not known, then shaky, then not seen; each by frequency). Its button starts a round in Practice: "Study these N words" a cluster round (`#/practice/round?kind=cluster:pick&ids=…`), "Study these N phrases" and "Study these N concepts" a round of exactly those items (`kind=pick:<id>,…`: the speaking bank's phrases, a B1 item that is a phrase's twin, the B1 grammar items of the concepts, least known first). A phrase or grammar card has "Practise now" / "Practise this grammar" the same way; a phrase no round asks says so. Groups that are Practice word clusters open the same cluster page as Practice › Word clusters ("Open as a word cluster"), and the cluster page links back with `#/lookup/map?cluster=<type>:<id>`. After a study round started from the map, the map comes back to that group with its sheet open (within 3 hours), and the words learned in the round settle in cobalt after the flight. Explore never writes card state. "Gaps only" dims known and shaky items to 16 %.
 
-**Chrome.** Back to Look up, title, Map/List segmented control and Find in the head; mode chips in one scrolling row (tapping the current mode frames the whole map); legend, total, Gaps only and zoom over the bottom of the map. The sheet is a bottom sheet on a phone (over the tab bar, its buttons sticky) and a 380 px card at the top right of the map from 720 px. The List view lists the same groups and items with states in words and is the accessible alternative to the canvas.
+**Chrome.** On a phone the map's own 48 px head row (back chevron, "Map" in Newsreader 24, Map/List, Find) replaces the app bar, so the map gets about 70 % of the screen; from 900 px the app bar stays and the head row sits under it. The chip row is the mode chips (36 px, 44 px to the finger, scrolling under a 24 px right-edge fade, the current one scrolled into view; tapping it frames the whole map) with − and + at its end (and Fit from 720 px). Over the bottom of the map one 52 px row: the total ("1,315 of 5,768 known"), Key and Gaps only; Key opens the legend on a solid surface plate (from 720 px the legend sits in the row itself). The fit leaves 12 px clear for the rings and uses 0.94 of the free stage on its limiting side, so Level and Source never cut a disc.
+
+**Sheet.** A bottom sheet on a phone with two heights: peek (46 % of the map: the word, its meaning, the example and the sticky buttons; a group's title, count and study button) and full (min(72 dvh, 560 px)). The grab handle is a button (tap toggles, drag up for full, drag down for peek, further down to close). A camera flight always runs at peek: a link to an opposite or a family word first drops the sheet to peek (240 ms), then the camera flies so the word lands 30 % down the map with a 1.5 px accent ring and an x-glow plate (1.3 s), while the card's content crosses in. From 720 px it is a 380 px card at the top right of the map. Focus moves to the sheet's title when it opens and back to what opened it when it closes.
+
+**List view** (the accessible alternative): every group as a disclosure with the sheet's parts (state bar, counts, the study and cluster buttons) and every item with its state square and its state in words; an item opens its card over the List, which stays where it was.
+
+**Keyboard** (the canvas is `role="application"`, roledescription "map", with its keys described): arrows pan, + and − zoom, Tab and Shift+Tab step through the groups in the order they ink in (each one flown to and announced) and leave the map after the last, Enter or Space opens the group Tab reached or the one in the middle, Esc closes the sheet or the Key.
+
+**Memory.** Group bitmaps live inside a pixel budget (10 MP on touch devices, 24 MP otherwise); evicted, stale and unmounted bitmaps have their canvases zeroed at once (WebKit frees backing stores lazily and counts them against a per-page cap), and a frame that alone would need more than the budget draws from a lower zoom tier.
 
 ### Explore motion
 
 - First open of the day: groups ink in from the middle outwards (28 ms group stagger, 420 ms per word, about 1.5 s). Once per day.
 - A word learned today, the first time the map shows it: it settles in cobalt on a soft accent plate that shrinks on spring-pop and fades over 1.3 s (at least 14 px tall, so it shows at overview too).
-- Mode switch ("flow"): words fly to their new paragraphs on spring-soft, groups assembling from the middle out, delay up to 200 ms plus 90 ms jitter; leaving words fade at 2.2x; rings and names after 55 %. The camera frames the new map, or follows the selected word when it stays.
+- Mode switch ("flow"): words fly to their new paragraphs on spring-soft, groups assembling from the middle out, delay up to 200 ms plus 90 ms jitter; leaving words fade at 2.2x; rings and names after 55 %. The camera frames the new map, or follows the selected word when it stays. When the words have settled, the chip that caused it lands (520 ms, spring-pop, 0.9 to 1).
+- A link flight lands with an accent ring and an x-glow plate on the word (1.3 s); the sheet's content crosses in (fade and 6 px rise, base duration).
 - Camera flights: van Wijk smooth zoom, cubic in-out, 380 to 1,100 ms by distance.
 - Reduced motion: no reveal, no glow, no inertia; mode switches are 140 ms crossfades; the camera jumps.
 - Don't loop, drift or rotate at rest; the canvas draws only while something moves.

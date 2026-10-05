@@ -176,6 +176,9 @@ export function parseKind(kind) {
   if (m && m[1] === 'area' && ['speaking', 'reading', 'grammar', 'words'].includes(m[2])) return { kind: 'area', area: m[2] };
   if (m && m[1] === 'topic') return { kind: 'topic', area: 'grammar', topic: m[2] };
   if (['missed', 'mistakes', 'warmup', 'situation'].includes(k)) return { kind: k };
+  // items picked on the Explore map (phrases, grammar): pick:<id>,<id>…
+  const p = /^pick:(.+)$/.exec(k);
+  if (p) return { kind: 'pick', topic: p[1] };
   return { kind: 'today' };
 }
 
@@ -197,6 +200,10 @@ export function compose(s, { kind = 'today', area, topic, size = ROUND } = {}) {
   // the Schreiben phrases have their own rounds and their own share of the day
   if (kind === 'today') pool = pool.filter(it => it.area !== 'writing');
   if (kind === 'missed') return missed(s).slice(0, size).map(it => it.id);
+  if (kind === 'pick') {   // the items as given (at most a round), new ones only while new items are allowed
+    return [...new Set(String(topic || '').split(','))].map(id => data.byId.get(id)).filter(it => it && it.area !== 'mistakes' && (c.newItems || !unseen(s, it)))
+      .slice(0, size).map(it => it.id);
+  }
   if (c.phase === 'day' || kind === 'warmup') {   // exam morning: a warm-up of items he knows well, nothing written
     return pool.filter(it => s.cards[it.id]?.reps && s.cards[it.id].learn == null && it.area !== 'mistakes')
       .sort((a, b) => R(s, b, today) - R(s, a, today)).slice(0, c.phase === 'day' ? 9 : size).map(it => it.id);
