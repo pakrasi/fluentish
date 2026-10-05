@@ -132,8 +132,8 @@
   },
   {
    "id": "a2-vier-tage-woche", "aufgabe": "A2", "exam": { "test": 1, "aufgabe": "aufgabe2" }, "to": "Rainer", "title": "Four-day week",
-   "situation": "Sie haben im Fernsehen eine Diskussionssendung zum Thema „Vier-Tage-Woche für alle?\" gesehen. Im Online-Gästebuch der Sendung finden Sie folgende Meinung:",
-   "quote": "„Wer nur vier Tage arbeitet, ist einfach faul. Unsere Eltern haben sechs Tage gearbeitet und sich nie beschwert. Die Vier-Tage-Woche ist schlecht für die Wirtschaft.\" – Rainer, 58",
+   "situation": "Sie haben im Fernsehen eine Diskussionssendung zum Thema „Vier-Tage-Woche für alle?“ gesehen. Im Online-Gästebuch der Sendung finden Sie folgende Meinung:",
+   "quote": "„Wer nur vier Tage arbeitet, ist einfach faul. Unsere Eltern haben sechs Tage gearbeitet und sich nie beschwert. Die Vier-Tage-Woche ist schlecht für die Wirtschaft.“ – Rainer, 58",
    "points": ["Reagieren Sie auf Rainer.", "Sagen Sie Ihre Meinung und begründen Sie sie.", "Nennen Sie ein Beispiel.", "Nennen Sie auch die andere Seite.", "Schreiben Sie einen Schluss."],
    "parts": [
     { "key": "p1", "kind": "free", "point": 1, "frame": "Ich sehe das anders als …", "glue": ["als"],
@@ -175,8 +175,8 @@
   },
   {
    "id": "a2-wohnen-stadt", "aufgabe": "A2", "exam": { "test": 2, "aufgabe": "aufgabe2" }, "to": "Beate", "title": "Living in the city",
-   "situation": "Sie haben im Fernsehen eine Diskussionssendung zum Thema „Wohnen in der Stadt – zu teuer für normale Familien?\" gesehen. Im Online-Gästebuch der Sendung finden Sie folgende Meinung:",
-   "quote": "„Wer sich die Miete in der Stadt nicht leisten kann, soll einfach aufs Land ziehen. Da ist es billig und ruhig. Niemand hat ein Recht darauf, in der Innenstadt zu wohnen.\" – Beate, 47",
+   "situation": "Sie haben im Fernsehen eine Diskussionssendung zum Thema „Wohnen in der Stadt – zu teuer für normale Familien?“ gesehen. Im Online-Gästebuch der Sendung finden Sie folgende Meinung:",
+   "quote": "„Wer sich die Miete in der Stadt nicht leisten kann, soll einfach aufs Land ziehen. Da ist es billig und ruhig. Niemand hat ein Recht darauf, in der Innenstadt zu wohnen.“ – Beate, 47",
    "points": ["Reagieren Sie auf Beate.", "Nennen Sie die andere Seite.", "Begründen Sie Ihre Meinung.", "Nennen Sie ein Beispiel.", "Schreiben Sie einen Schluss."],
    "parts": [
     { "key": "p1", "kind": "free", "point": 1, "frame": "Ich stimme … nur teilweise zu.", "glue": ["teilweise"],
@@ -232,7 +232,7 @@
       "rule": "The polite Ihre takes a capital, and the line after the greeting starts small: vielen Dank für Ihre …" },
     { "key": "p1", "kind": "free", "point": 1, "frame": "Es tut mir sehr leid, aber …", "glue": ["aber"],
       "cue": "Apologise: you're very sorry, but you can't come at that time.",
-      "model": "Es tut mir sehr leid, aber ich kann an diesem Termin nicht kommen.",
+      "model": "Es tut mir sehr leid, aber ich kann zu diesem Termin nicht kommen.",
       "accept": ["es tut mir (sehr) leid aber [x]", "entschuldigen sie bitte aber [x]", "ich bitte um entschuldigung aber [x]"],
       "wrong": ["Es tut mir sehr leid, aber kann ich an diesem Termin nicht kommen.", "Es tut mich sehr leid, aber ich kann an diesem Termin nicht kommen."],
       "focus": ["chunk", "connector-order", "word-choice"],

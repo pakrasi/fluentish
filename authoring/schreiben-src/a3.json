@@ -15,7 +15,7 @@
     "accept": ["vielen dank für ihre e-mail", "herzlichen dank für ihre e-mail", "danke für ihre e-mail", "vielen dank für ihre nachricht", "ich danke ihnen für ihre e-mail", "vielen dank für ihre mail"],
     "wrong": ["Vielen Dank für ihre E-Mail.", "Vielen Dank für Ihren E-Mail.", "Vielen Dank für deine E-Mail."],
     "trap": "cap", "focus": ["chunk", "cap", "register", "ending"], "strict": ["Ihre", "Ihnen"],
-    "rule": "Die E-Mail is feminine, and the polite Ihre takes a capital: für Ihre E-Mail." },
+    "rule": "die E-Mail is feminine, and the polite Ihre takes a capital: für Ihre E-Mail." },
 
   { "id": "BS:a3-schreibe-ihnen-weil", "fn": "a3_open", "tier": 1,
     "prompt": "I'm writing to you because I can't come to the appointment on Monday.",
@@ -140,7 +140,7 @@
     "rule": "After In Zukunft the verb comes next, and Bescheid sagen takes Ihnen: In Zukunft sage ich Ihnen Bescheid." },
 
   { "id": "BS:a3-mitteilen-ob", "fn": "a3_request", "tier": 1,
-    "prompt": "Could you please let me know whether I'll get my deposit back? (formal email)",
+    "prompt": "Could you please let me know whether I'll get my down payment back? (formal email, a cancelled booking)",
     "model": "Könnten Sie mir bitte mitteilen, ob ich meine Anzahlung zurückbekomme?",
     "accept": ["könnten sie mir (bitte) mitteilen ob ich ([x]) zurückbekomme", "könnten sie mir (bitte) sagen ob ich ([x]) zurückbekomme", "können sie mir (bitte) mitteilen ob ich ([x]) zurückbekomme", "können sie mir (bitte) sagen ob ich ([x]) zurückbekomme", "bekomme ich meine anzahlung zurück"],
     "wrong": ["Könnten Sie mir bitte mitteilen, ob ich bekomme meine Anzahlung zurück?", "Könnten sie mir bitte mitteilen, ob ich meine Anzahlung zurückbekomme?"],

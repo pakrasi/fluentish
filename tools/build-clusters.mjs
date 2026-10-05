@@ -8,6 +8,7 @@
 //   opposites.de.json     groups and pairs; the build marks the primary pairs (domain/clusters.js primaryPairs)
 //   topics.de.json        the core split for 'core' words, and a topic for every chunk
 //   preps.de.json         preposition groups, usage notes with examples, gap sentences
+//   aliases.de.json       card ids whose content moved (old id → the id it shows as); ids never change
 // The rules the content must follow are in src/domain/clusters.js validateClusters (run by validate-content.mjs).
 //   node tools/build-clusters.mjs           write both files
 //   node tools/build-clusters.mjs --check   exit 1 if either file is not what the sources build
@@ -55,6 +56,7 @@ export function build(words) {
   }
   const list = [...themes.filter((/** @type {any} */ t) => t.id !== 'core').map((/** @type {any} */ t) => ({ id: t.id, label: t.en })), ...topics.split];
   const { groups, gaps, ...rest } = preps;
+  const aliases = read('aliases.de.json').ids || {};
   return {
     version: 1,
     morph: m2,
@@ -64,6 +66,7 @@ export function build(words) {
     opposites: { groups: opp.groups, pairs: primaryPairs(opp.pairs) },
     topics: { list, core: topics.core, chunks: topics.chunks },
     preps: { groups, notes: rest.preps, gaps },
+    aliases,
   };
 }
 

@@ -54,6 +54,9 @@ export const itemIds = cl => cl.items.map(id => `W:${id}`);
  * @param {{t: (k: string, v?: any) => string, where?: string}} o
  */
 export function itemFor(id, ix, c, { t, where = '' }) {
+  // a card whose content moved keeps its id and shows the item it now points to (content aliases)
+  const to = c.aliases?.[id];
+  if (to && to !== id) { const it = itemFor(to, ix, c, { t, where }); return it ? { ...it, id } : null; }
   const base = { id, area: 'clusters', teil: null, fn: null, star: false, trap: null, focus: [], plan: 'recall', hl: null, partner: null, prefill: null,
     anywhere: false, literal: true, wrong: [], src: 'cluster', origin: 'practice', level: 'B1', where };
   if (id.startsWith('CP:')) {

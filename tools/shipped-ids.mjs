@@ -35,8 +35,11 @@ export async function currentIds() {
   const words = J('content/igloo/words/de.json');
   for (const w of words) ids.add(`W:${w.id}`);
   for (const [, [id]] of Object.entries(J('content/b1/wordmap.json'))) ids.add(`W:${id}`);
-  const ix = index(J('content/clusters/de.json'), words);
+  const clusters = J('content/clusters/de.json');
+  const ix = index(clusters, words);
   for (const cl of ix.all) for (const id of cardIds(cl, ix)) ids.add(id);
+  // an alias keeps an old card id working: the card shows the item it points to (clusters/items.js itemFor)
+  for (const [old, to] of Object.entries(clusters.aliases || {})) if (ids.has(to)) ids.add(old);
   for (const it of J('content/speak/situations.json').items) ids.add(it.id);
   return ids;
 }

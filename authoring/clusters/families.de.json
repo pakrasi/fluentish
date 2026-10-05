@@ -1486,8 +1486,7 @@
    "der_Unterschied",
    "unterschiedlich.adj",
    "verschieden.adj",
-   "sich_scheiden_lassen.verb",
-   "sich_scheiden_lassen.phrase"
+   "sich_scheiden_lassen.verb"
   ]
  },
  {
@@ -1773,11 +1772,11 @@
  },
  {
   "id": "gleich",
-  "head": "gleich.adv",
+  "head": "gleich.adj",
   "label": "gleich",
   "note": "same, equal",
   "members": [
-   "gleich.adv",
+   "gleich.adj",
    "vergleichen.verb",
    "der_Vergleich",
    "vergleichbar.adj",
