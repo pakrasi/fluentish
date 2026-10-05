@@ -37,7 +37,7 @@ export const due = (s, it) => RD.isDue(s.cards[it.id], s.c.today, s.c);
 /** @param {State} s @param {any} it @param {string} day */
 const R = (s, it, day) => FS.Ron(s.cards[it.id], day);
 /** @param {any} it */
-export const stream = it => (it.area === 'grammar' ? 'g' : it.area === 'writing' ? 'w' : 'p');
+export const stream = it => (it.area === 'grammar' ? 'g' : it.area === 'writing' ? 'w' : it.area === 'clusters' ? 'c' : 'p');
 
 /** A fresh day log. @param {string} today */
 export const newDay = today => ({ day: today, rounds: 0, traps: null, newShown: 0, newBy: {}, firstTry: [0, 0], pred: [0, 0], shown: /** @type {string[]} */ ([]) });

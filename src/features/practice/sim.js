@@ -229,12 +229,12 @@ export const resumable = (r, today, now) => !!(r && Array.isArray(r.queue) && r.
 /**
  * One self-grade through the shared scheduler. Easy on a card never seen graduates it at once (it skips the second
  * learning step); everything else is FSRS as the B1 trainer runs it, with mode 's' (spoken).
- * @param {{rec: any, g: 1|2|3|4, c: any, now: number, ms?: number, forecast?: (d: string) => number}} o
+ * @param {{rec: any, g: 1|2|3|4, c: any, now: number, ms?: number, forecast?: (d: string) => number, src?: string}} o
  * @returns {{rec: any, reinsert: null | 'learn' | 'lapse', wrote: boolean}}
  */
-export function gradeCard({ rec, g, c, now, ms = 0, forecast = () => 0 }) {
+export function gradeCard({ rec, g, c, now, ms = 0, forecast = () => 0, src = 'speech' }) {
   const ctx = { ...c, forecast };
-  const res = FS.schedule(rec, { g, ms, onTime: g >= 3, flags: '', mode: 's', src: 'speech' }, ctx, now);
+  const res = FS.schedule(rec, { g, ms, onTime: g >= 3, flags: '', mode: 's', src }, ctx, now);
   if (g === 4 && res.reinsert === 'learn' && res.rec && (!rec || !rec.reps)) {
     return { rec: { ...res.rec, learn: null, due: FS.dueFor(res.rec.S, ctx) }, reinsert: null, wrote: res.wrote };
   }

@@ -63,9 +63,19 @@ export function todayBudget({ store, c, settings }) {
  * @param {{store: any, c: any, settings: any}} ctx
  */
 export function sideMinutes({ store, c, settings }) {
-  const sim = simToday({ store, c, settings }).minutes;
+  const sim = simToday({ store, c, settings }).minutes + clusterToday({ store, c }).minutes;
   const scripts = scriptPlanItems({ store, c, settings, t: () => '' }).reduce((n, r) => n + (r.done ? 0 : r.minutes || 0), 0);
   return sim + scripts;
+}
+
+/**
+ * Word clusters today: cluster cards due (deck 'clusters') and the minutes of one round of them. New cluster cards
+ * are only shown when he opens a cluster, so they never take minutes from the day.
+ * @param {{store: any, c: any}} ctx
+ */
+export function clusterToday({ store, c }) {
+  const due = Object.values(store.cards('clusters') || {}).filter(r => r && r.reps && isDue(r, c.today, c)).length;
+  return { due, minutes: due ? roundMinutes(Math.min(ROUND, due)) : 0 };
 }
 
 /**
@@ -159,6 +169,13 @@ export function planItems({ store, c, settings, t, exam }) {
     out.push({ id: 'practice.teil2', source: 'practice', kind: 'speak', title: t('plan.teil2'), detail: t('plan.teil2.detail'), minutes: 6, href: '#/practice/speak/teil2', priority: 50 });
   }
   out.push(...scriptPlanItems({ store, c, settings, t }));
+  // word clusters: at most one row, only for due cluster cards; Today's composer keeps it only when the minutes allow
+  const cl = clusterToday({ store, c });
+  if (cl.due > 0) {
+    const n = Math.min(ROUND, cl.due);
+    out.push({ id: 'practice.clusters', source: 'practice', kind: 'review', title: t('plan.clusters'), detail: t('plan.clusters.detail', { n: cl.due }),
+      minutes: cl.minutes, href: '#/practice/round?kind=cluster%3Adue&from=today', priority: 55, action: t('plan.clusters.action', { n, min: roundMinutes(n) }) });
+  }
   return out;
 }
 

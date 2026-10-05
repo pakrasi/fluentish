@@ -1,0 +1,63 @@
+/* Practice › Word clusters (features/practice/clusters/view.js). Words are set as type in Newsreader; knowledge is ink
+   with a second channel of shape, as in Explore: known ink, shaky grey, not known boxed, not seen pale italic, today
+   accent. Movement comes from the kit (flip, countTo, Field); nothing here animates at rest. */
+.cl-types { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.cl-types .chip { text-decoration: none; }
+.cl-due { align-self: flex-start; }
+.cl-list { display: flex; flex-direction: column; }
+.cl-row { display: grid; gap: var(--s-2); padding: var(--s-3) 0; min-height: var(--tap); border-bottom: 1px solid var(--hairline); color: var(--ink); text-decoration: none; }
+.cl-row-top { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-3); }
+.cl-row .row-title[lang="de"] { font-family: var(--font-display); font-size: 19px; }
+.cl-mini { width: 100%; }
+
+.cl-count { display: flex; align-items: baseline; gap: var(--s-2); }
+.cl-legend { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-3); }
+.cl-note { color: var(--ink-2); }
+
+/* a word as type, in its state */
+.cl-w { font-family: var(--font-display); color: var(--ink); white-space: nowrap; border-radius: 3px; display: inline-block; }
+.cl-w.is-shaky { color: var(--ink-3); }
+.cl-w.is-unknown { color: var(--ink-2); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 50%, transparent); padding: 0 4px; }
+.cl-w.is-unseen { color: var(--ink-3); font-style: italic; }
+.cl-w.is-today { color: var(--accent); }
+.cl-art { font-size: 0.72em; color: var(--ink-3); }
+.cl-legend .cl-w { font-family: var(--font-ui); font-size: var(--fs-caption); }
+
+.cl-block { font-size: 19px; line-height: 2; margin: 0; }
+
+/* a family as a tree: the head on top, one branch per prefix, the words still to learn in a tray below */
+.cl-family { display: flex; flex-direction: column; gap: var(--s-3); }
+.cl-head { margin: 0; font-size: 26px; }
+.cl-branches { margin-left: 10px; padding-left: 16px; border-left: 1px solid var(--hairline-strong); display: flex; flex-direction: column; gap: var(--s-2); }
+.cl-branch { position: relative; display: flex; gap: var(--s-3); align-items: baseline; min-height: 28px; }
+.cl-branch::before { content: ''; position: absolute; left: -16px; top: 0.85em; width: 10px; border-top: 1px solid var(--hairline-strong); }
+.cl-pre { font: 500 12px/1 var(--font-mono); color: var(--ink-3); min-width: 48px; }
+.cl-leaves { display: flex; flex-wrap: wrap; gap: 2px var(--s-3); font-size: 18px; line-height: 1.6; }
+.cl-tray-label { margin: var(--s-2) 0 0; }
+.cl-tray { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-3); padding-top: var(--s-3); border-top: 1px dashed var(--hairline-strong); font-size: 17px; line-height: 1.7; min-height: 32px; }
+
+/* opposites: a known pair sits together, a pair still to learn is held apart */
+.cl-pairs { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.cl-pair { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; min-height: 40px; border-bottom: 1px solid var(--hairline); font-size: 18px; }
+.cl-pair > .cl-w:first-child { justify-self: end; }
+.cl-pair > .cl-w:last-child { justify-self: start; }
+.cl-link { display: block; width: 44px; margin: 0 8px; border-top: 1px dashed var(--hairline-strong); }
+.cl-pair.is-snapped .cl-link { width: 14px; margin: 0 6px; border-top: 1px solid var(--ink-3); }
+
+/* prepositions */
+.cl-preps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.cl-prep { padding: var(--s-3) 0; border-bottom: 1px solid var(--hairline); }
+.cl-prep-head { display: flex; align-items: baseline; gap: var(--s-3); margin: 0 0 var(--s-1); font-size: 20px; }
+.cl-prep-note { margin: 0 0 var(--s-2); color: var(--ink-2); max-width: var(--measure); }
+.cl-prep-ex { margin: 0; font-family: var(--font-display); font-size: 17px; }
+
+.cl-dock { display: flex; gap: var(--s-2); }
+.cl-dock .btn { flex: 1 1 0; }
+.cl-say-extra { display: flex; flex-direction: column; gap: var(--s-2); margin-top: var(--s-2); }
+
+@media (forced-colors: active) {
+  .cl-w.is-unknown { outline: 1px solid CanvasText; box-shadow: none; }
+  .cl-w.is-today { color: Highlight; }
+}
+.cl-eyebrow { margin: 0 0 calc(-1 * var(--s-2)); }
+.cl-empty { margin: 0; }

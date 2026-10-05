@@ -26,6 +26,9 @@ import { play as playAudio, stop as stopAudio, prefetchAudio } from '../../servi
 import { recallBar } from './hub.js';
 import { Field, atmosphere } from '../../core/brand.js';
 import { readinessView } from './field.js';
+import { parseClusterKind, itemFor as clusterItem, compose as composeCluster, cardIds as clusterCards } from './clusters/items.js';
+import { loadClusters, dueCards as clusterDue, update as updateClusters, dayOf as clusterDay, recallOf, DECK as CLUSTER_DECK } from './clusters/data.js';
+import { drawClusterDone } from './clusters/view.js';
 
 const SVG = 'http://www.w3.org/2000/svg';
 const TEIL = /** @type {Record<string, string>} */ ({ S1: 'Teil 1', S2: 'Teil 2', S3: 'Teil 3', W1: 'Aufgabe 1', W2: 'Aufgabe 2', W3: 'Aufgabe 3', L2: 'Teil 2', L3: 'Teil 3', L5: 'Teil 5' });
@@ -108,21 +111,42 @@ export async function mountRound(el, ctx) {
     replace(el, h('div', { class: 'practice stack page-pad' }, h('h1', null, t('practice.round')), h('p', null, t('practice.loadFailed')), h('a', { class: 'btn pressable', href: '#/practice' }, t('practice.back'))));
     return () => { document.body.dataset.chrome = 'on'; document.body.classList.remove('pr-in-round'); };
   }
-  const spec = C.parseKind(ctx.query.get('kind'));
+  // a cluster round (kind=cluster:<type>:<id> or cluster:due): cards in deck 'clusters', items built from their ids
+  const ck = parseClusterKind(ctx.query.get('kind'));
+  const deck = ck ? CLUSTER_DECK : 'b1';
+  /** @type {any} */ let clusters = null;
+  if (ck) {
+    try { clusters = await loadClusters(ctx); } catch { clusters = null; }
+    if (!clusters || (ck.key && !clusters.ix.byKey.get(ck.key))) { ctx.go('/practice/clusters', { replace: true }); return () => { document.body.dataset.chrome = 'on'; document.body.classList.remove('pr-in-round'); }; }
+    data = { ...data, byId: new Map(data.byId) };
+  }
+  const spec = ck ? { kind: 'cluster', topic: ck.key || 'due' } : C.parseKind(ctx.query.get('kind'));
   const slot = S.slotKey(spec);
+  /** Cluster items for the ids of a round (rebuilt from the ids, so a saved round resumes). @param {string[]} ids */
+  const addClusterItems = ids => { for (const id of ids) if (!data.byId.has(id)) { const it = clusterItem(id, clusters.ix, clusters.c, { t, where: t(`practice.clusters.where.${/^C[OFP]:/.test(id) ? id.slice(0, 2) : 'W'}`) }); if (it) data.byId.set(id, it); } };
   // End and Esc go back where the round was started from (Today's button adds from=today)
-  const backTo = ctx.query.get('from') === 'today' ? '/today' : '/practice';
+  const backTo = ctx.query.get('from') === 'today' ? '/today' : ctx.query.get('kind')?.startsWith('cluster:') ? `/practice/clusters${(/^cluster:(\w+):(.+)$/.exec(String(ctx.query.get('kind'))) || []).slice(1).map(x => `/${x}`).join('')}` : '/practice';
   let st = stateFor(ctx, data);
   const sess = session(store);
   const saved = S.savedRound(sess, slot);
   /** @type {any} */ let round = S.resumable(saved, st.c.today, Date.now()) ? structuredClone(saved) : null;
   if (!round) {
     if (st.day.traps == null && spec.kind === 'today') st.day.traps = C.trapSet(st);
-    const ids = C.compose(st, spec);
+    let ids;
+    if (ck) {
+      const c0 = st.c, cards0 = store.cards(deck) || {};
+      const pool = ck.key ? clusterCards(clusters.ix.byKey.get(ck.key), clusters.ix) : clusterDue(store, c0);
+      ids = composeCluster({ ids: pool, cards: cards0, c: c0, isDue: rec => RD.isDue(rec, c0.today, c0), recall: recallOf(c0) }).ids;
+      if (ck.due) ids = ids.filter(id => cards0[id]?.reps);
+      addClusterItems(ids);
+      ids = ids.filter(id => data.byId.has(id));
+    } else ids = C.compose(st, spec);
     if (!ids.length) return drawNothing();
     round = S.startRound(ids, spec, st.c.today, Date.now());
+    if (ck) round.deck = deck;
     saveLogs(store, { round, slot, day: st.day });
   }
+  if (ck) addClusterItems(round.queue.map((/** @type {any} */ q) => q.id));
   const day = st.day;
   const settings = ctx.settings();
   const sp = speech();
@@ -232,6 +256,7 @@ export async function mountRound(el, ctx) {
 
   // ---------- drawing a card ----------
   function where(/** @type {any} */ it) {
+    if (it.area === 'clusters') return it.where || t('practice.clusters.title');
     if (it.area === 'mistakes') return t('practice.where.mistake');
     if (it.area === 'words') return t('practice.where.words');
     if (it.area === 'writing') return `Schreiben ${TEIL[it.teil] || ''}`.trim();
@@ -270,7 +295,7 @@ export async function mountRound(el, ctx) {
     startTimer(entry.limit ? entry.limit * 1000 : null);
   }
   async function drawCard(first = false) {
-    entry = S.current(round, data.byId, store.cards('b1'));
+    entry = S.current(round, data.byId, store.cards(deck));
     if (!entry) return finish();
     if (first) { fillCard(); focusInput(); announce(t('practice.cardAnnounce', { n: entry.n, total: round.queue.length })); return; }
     await swap(() => fillCard(), { kind: 'forward', fallbackEl: card });
@@ -349,9 +374,10 @@ export async function mountRound(el, ctx) {
   function record(/** @type {any} */ o) {
     if (recorded) return;
     recorded = true;
-    const cards = store.cards('b1');
+    const cards = store.cards(deck);
     const res = S.answer({ round, entry, o: { ...o, revealed }, cards, day, c: st.c, forecast: forecaster(cards, st.c), now: Date.now(), tz: tz() });
-    saveAnswer(store, entry.item.id, res.rec, res.event, { round, slot, day });
+    saveAnswer(store, entry.item.id, res.rec, res.event, { round, slot, day }, deck);
+    if (ck && entry.isNew) updateClusters(store, x => { const d = clusterDay(store, st.c.today); return { ...x, day: { ...d, newShown: d.newShown + 1 } }; });
     updateDots();
     const k = stripIds.indexOf(entry.item.id);
     if (strip && k >= 0 && !entry.reinsert) { if (o.ok) strip.ripple(k); else strip.set(k, 1); }
@@ -413,13 +439,15 @@ export async function mountRound(el, ctx) {
     else if (punct) head = t('practice.right.punct');
     else if (g.typos.length) head = t('practice.right.typo');
     const situation = it.kind === 'topic' || it.kind === 'reply';
-    const clean = g.primary && !g.typos.length && !capSlip && !umlaut && !punct && !late && !isNew && !situation && it.area !== 'mistakes';
+    const clean = g.primary && !g.typos.length && !capSlip && !umlaut && !punct && !late && !isNew && !situation && it.area !== 'mistakes' && !it.usage;
     const kids = [];
     if (head) kids.push(h('p', { class: ['pr-res', (late || umlaut || capSlip || veryLate || punct) ? 'is-warn' : 'is-ok'] }, head));
     if (punct) kids.push(h('p', { class: 'pr-rule' }, (g.punctMiss || []).map((/** @type {any} */ m) => t(`practice.punct.${m.code}`, { word: m.word || '' })).join(' ')),
       h('p', { class: 'answer-key', lang: 'de' }, it.model));
     // a mistake from a correction: the rule is the point, so it shows on a right answer too
     if (it.area === 'mistakes' && it.rule) kids.push(h('p', { class: 'pr-rule' }, it.rule));
+    // a preposition gap: the usage note is the point, so it shows after a right answer too
+    if (it.usage) kids.push(h('p', { class: 'pr-rule' }, it.usage));
     if (g.typos.length || capSlip || umlaut) kids.push(h('p', { class: 'pr-yours', lang: 'de' }, markSlips(g)));
     if (situation) kids.push(h('p', { class: 'caption' }, t('practice.checkedPhrase')));
     const others = g.alsoCorrect || [];
@@ -463,7 +491,7 @@ export async function mountRound(el, ctx) {
       situation ? h('p', { class: 'caption' }, t('practice.checkedPhrase')) : null];
     if (g.alsoCorrect?.length) kids.push(h('p', { class: 'pr-also' }, alsoMore(g.alsoCorrect, t('practice.otherWays') + ' ')));
     // a Schreiben phrase's own rule names its sentence; elsewhere the trap's general rule comes first
-    const rule = it.area === 'writing' && it.rule ? it.rule : (d && g.detRule) || g.detRule || it.rule;
+    const rule = it.usage || (it.area === 'writing' && it.rule ? it.rule : (d && g.detRule) || g.detRule || it.rule);
     if (rule) kids.push(h('p', { class: 'pr-rule' }, rule));
     if (claudeOk() && !d && !g.det) kids.push(claudeBox(typed));
     replace(fb, kids, wordCard(it));
@@ -482,11 +510,11 @@ export async function mountRound(el, ctx) {
         const v = await checkAnswer({ key: secrets(store).anthropicKey, item: cur.item, answer: full(typed) });
         if (cur !== entry) return;
         if (v.verdict === 'correct' || v.verdict === 'minor') {
-          const cards = store.cards('b1');
+          const cards = store.cards(deck);
           const res = S.override({ round, entry: cur, ms: 0, c: st.c, forecast: forecaster(cards, st.c), now: Date.now(), tz: tz() });
           // only a "correct" verdict becomes a variant that later counts as a right sentence; "minor" (a slip) does not
           const saved = v.verdict === 'correct' ? [...(session(store).variants || []), { id: cur.item.id, answer: full(typed), at: Date.now(), verdict: 'correct' }].slice(-200) : undefined;
-          saveAnswer(store, cur.item.id, res.rec, res.event, { round, slot, day, ...(saved ? { variants: saved } : {}) });
+          saveAnswer(store, cur.item.id, res.rec, res.event, { round, slot, day, ...(saved ? { variants: saved } : {}) }, deck);
           updateDots();
           replace(boxEl, h('p', { class: 'pr-res is-ok' }, v.verdict === 'correct' ? t('practice.claude.correct') : t('practice.claude.minor')), v.note ? h('p', { class: 'caption' }, v.note) : null);
           state = 'feedback'; input.value = ''; answerEl.classList.remove('is-wrong', 'is-retype'); input.placeholder = t('practice.ph.next'); setButtons();
@@ -605,6 +633,14 @@ export async function mountRound(el, ctx) {
   }
   function finish() {
     cleanup();
+    if (ck) {   // a cluster round: its own day log and done screen; the B1 day log and readiness stay out of it
+      saveLogs(store, { round: null, slot });
+      updateClusters(store, x => { const d = clusterDay(store, st.c.today); return { ...x, day: { ...d, rounds: d.rounds + 1 } }; });
+      addActivity(store, st.c.today, { minutes: minutesSpent(), rounds: 1 });
+      const firsts = round.results.filter((/** @type {any} */ r) => r.first);
+      drawClusterDone(el, ctx, { key: ck.key, right: firsts.filter((/** @type {any} */ r) => r.ok).length, total: firsts.length, prev: round.prev || {}, again: S.roundHref(round) });
+      return;
+    }
     day.rounds = (day.rounds || 0) + 1;
     if (round.kind === 'write') day.writeRounds = (day.writeRounds || 0) + 1;
     saveLogs(store, { round: null, slot, day });
@@ -612,6 +648,7 @@ export async function mountRound(el, ctx) {
     drawDone(el, ctx, data, round, backTo);
   }
   function drawNothing() {
+    if (ck) { ctx.go(ck.key ? `/practice/clusters/${ck.key.replace(':', '/')}` : '/practice/clusters', { replace: true }); return () => { document.body.dataset.chrome = 'on'; document.body.classList.remove('pr-in-round'); }; }
     const c = st.c;
     const tomorrow = RD.forecast(store.cards('b1'), c.today, 2, c)[1]?.n || 0;
     replace(el, h('div', { class: 'practice pr-done stack' },

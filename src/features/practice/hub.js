@@ -14,6 +14,7 @@ import { refreshSimStats } from './sim-data.js';
 import { resumable, savedRound } from './session.js';
 import { loadData, stateFor, session, refreshWords, secrets, wordsState } from './data.js';
 import { COLLECTION as WORDS } from './words.js';
+import { clusterToday } from './plan.js';
 import { hubRow as scriptsRow } from './script/hub.js';
 
 const AREAS = ['speaking', 'writing', 'grammar', 'reading', 'words'];
@@ -85,6 +86,9 @@ export async function mountHub(el, ctx) {
     const wb = s.budget.writing;
     const writeRow = linkRow({ href: '#/practice/write', title: t('practice.writeRow'),
       detail: wb && wb.n ? t(wb.focus ? 'practice.writeRow.focus' : 'practice.writeRow.detail', { due: wb.due, n: wb.newLeft }) : t('practice.writeRow.idle') });
+    const cl = clusterToday({ store, c });
+    const clusterRow = () => linkRow({ href: '#/practice/clusters', title: t('practice.clusters.title'),
+      detail: cl.due ? t('practice.clusters.rowDue', { n: cl.due }) : t('practice.clusters.rowDetail') });
     const rows = [
       wb && wb.focus ? writeRow : null,
       missedN ? linkRow({ href: '#/practice/round?kind=missed', title: t('practice.missed', { n: missedN }), detail: t('practice.missed.detail') }) : null,
@@ -94,6 +98,7 @@ export async function mountHub(el, ctx) {
       linkRow({ href: '#/practice/speak', title: t('practice.speak'), detail: t('practice.speak.detail') }),
       wb && wb.focus ? null : writeRow,
       simRow(),
+      clusterRow(),
     ];
 
     // ---- areas ----

@@ -152,6 +152,7 @@ export function index(c, words) {
   }
   const pre = new Map(), suf = new Map();
   for (const [id, m] of Object.entries(c.morph || {})) {
+    if (byId.get(id)?.pos === 'phrase') continue;   // "in Bezug auf" is no be- word
     const p = (m.pre || [])[0];
     if (p) { if (!pre.has(p)) pre.set(p, []); pre.get(p).push(id); }
     for (const s of m.suf || []) { if (!suf.has(s)) suf.set(s, []); suf.get(s).push(id); }

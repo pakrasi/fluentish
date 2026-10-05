@@ -109,10 +109,10 @@ export const tz = () => { try { return Intl.DateTimeFormat().resolvedOptions().t
 
 /**
  * Save one scheduled answer: the card, its event, and the round and day logs.
- * @param {any} store @param {string} itemId @param {any} rec @param {any} event @param {{round?: any, day?: any}} logs
+ * @param {any} store @param {string} itemId @param {any} rec @param {any} event @param {{round?: any, day?: any}} logs @param {string} [deck] 'clusters' for a cluster round
  */
-export function saveAnswer(store, itemId, rec, event, logs) {
-  if (rec) store.putCards('b1', [[itemId, rec]]);
+export function saveAnswer(store, itemId, rec, event, logs, deck = 'b1') {
+  if (rec) store.putCards(deck, [[itemId, rec]]);
   if (event) store.append('card.reviewed', event);
   saveLogs(store, logs);
 }

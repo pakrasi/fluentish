@@ -28,7 +28,7 @@ export function startRound(ids, spec, today, now) {
  * starting a missed or mistakes round never replaces a paused daily round.
  * @param {{kind: string, area?: string | null, topic?: string | null}} r a round or a parsed kind
  */
-export const slotKey = r => (r.kind === 'area' ? `area:${r.area}` : r.kind === 'topic' ? `topic:${r.topic}` : r.kind === 'write' ? (r.topic ? `write:${r.topic}` : 'write') : r.kind || 'today');
+export const slotKey = r => (r.kind === 'area' ? `area:${r.area}` : r.kind === 'topic' ? `topic:${r.topic}` : r.kind === 'write' ? (r.topic ? `write:${r.topic}` : 'write') : r.kind === 'cluster' ? `cluster:${r.topic}` : r.kind || 'today');
 
 /** The address that opens (or resumes) a round of this slot. @param {{kind: string, area?: string | null, topic?: string | null}} r */
 export const roundHref = r => { const k = slotKey(r); return k === 'today' ? '#/practice/round' : `#/practice/round?kind=${encodeURIComponent(k)}`; };
@@ -68,8 +68,8 @@ export function current(round, byId, cards) {
  * @param {string} itemId @param {any} before @param {any} rec @param {{g: number, ms: number, flags: string, mode: string}} o
  * @param {{exam: string|null, phase: string}} c @param {string} tz
  */
-export function reviewEvent(itemId, before, rec, o, c, tz) {
-  return { deck: 'b1', itemId, g: o.g, ms: Math.round(o.ms || 0), flags: o.flags || '', mode: o.mode || 't',
+export function reviewEvent(itemId, before, rec, o, c, tz, deck = 'b1') {
+  return { deck, itemId, g: o.g, ms: Math.round(o.ms || 0), flags: o.flags || '', mode: o.mode || 't',
     ctx: { exam: c.exam, phase: c.phase, tz }, base: before ? { u: before.u ?? null, reps: before.reps ?? 0 } : null, post: rec };
 }
 
@@ -96,12 +96,13 @@ export function answer({ round, entry, o, cards, day, c, forecast = () => 0, now
   const det = o.det || o.gDet || null;
   const flags = [o.selfRepair && 'r', o.capSlip && 'c', o.typo && 'y', o.umlaut && 'u', over && 'o', o.partial && 'p', o.punct && 'k', det && 'd' + det].filter(Boolean).join('');
   // honesty: predicted recall vs the first try of reviewed items, first attempt of the day only
-  if (rec && rec.reps && rec.learn == null && rec.last !== c.today && !entry.reinsert) {
+  const own = !round.deck || round.deck === 'b1';   // a cluster round (deck 'clusters') keeps out of the B1 day log
+  if (own && rec && rec.reps && rec.learn == null && rec.last !== c.today && !entry.reinsert) {
     day.pred[0] += FS.Ron(rec, c.today); day.pred[1]++; day.firstTry[0] += g >= 3 ? 1 : 0; day.firstTry[1]++;
   }
   // a new Schreiben phrase counts against its own quota (newBy.w), not the daily rounds' new items (newShown)
-  if (entry.isNew) { const st = stream(entry.item); if (st !== 'w') day.newShown++; day.newBy = day.newBy || {}; day.newBy[st] = (day.newBy[st] || 0) + 1; }
-  if (!day.shown.includes(id)) day.shown.push(id);
+  if (entry.isNew && own) { const st = stream(entry.item); if (st === 'p' || st === 'g') day.newShown++; day.newBy = day.newBy || {}; day.newBy[st] = (day.newBy[st] || 0) + 1; }
+  if (own && !day.shown.includes(id)) day.shown.push(id);
   const src = entry.item.origin || (entry.item.area === 'words' ? 'exam' : origin(id, 'b1'));
   const res = FS.schedule(rec, { g, ms: o.ms, onTime: !!(entry.limit && o.ms <= entry.limit * 1000), flags, mode: 't', logOnly, src }, { ...c, forecast }, now);
   // reinsert misses and learning steps: +4, then +10. A mistake from a correction typed right the first time is not
@@ -113,7 +114,7 @@ export function answer({ round, entry, o, cards, day, c, forecast = () => 0, now
     round.queue.splice(Math.max(round.i + 1, at), 0, { id, re: true });
   }
   round.results.push({ id, g, ok: o.ok, first: !entry.reinsert, ms: Math.round(o.ms || 0), isNew: entry.isNew, det, ...(o.partial ? { partial: true } : {}) });
-  return { g, rec: res.rec, event: res.rec ? reviewEvent(id, rec || null, res.rec, { g, ms: o.ms, flags, mode: 't' }, c, tz) : null };
+  return { g, rec: res.rec, event: res.rec ? reviewEvent(id, rec || null, res.rec, { g, ms: o.ms, flags, mode: 't' }, c, tz, round.deck || 'b1') : null };
 }
 
 /**
@@ -126,7 +127,7 @@ export function override({ round, entry, ms, c, forecast = () => 0, now, tz = 'U
   round.queue = round.queue.filter((/** @type {any} */ q, /** @type {number} */ k) => k <= round.i || !(q.id === id && q.re));
   const last = round.results[round.results.length - 1];
   if (last && last.id === id) { last.ok = true; last.g = 2; }
-  return { rec: res.rec, event: res.rec ? reviewEvent(id, entry.before, res.rec, { g: 2, ms, flags: 'a', mode: 't' }, c, tz) : null };
+  return { rec: res.rec, event: res.rec ? reviewEvent(id, entry.before, res.rec, { g: 2, ms, flags: 'a', mode: 't' }, c, tz, round.deck || 'b1') : null };
 }
 
 /** Move on. Returns true while there is a next question. @param {any} round */

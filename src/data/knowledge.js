@@ -37,14 +37,18 @@ function legacy(key) {
 }
 
 /**
- * Score everything now. @param {{store: any, clock: any, content: any}} ctx
+ * Score everything now. patch: card records to use instead of the stored ones ({deck: {id: record | null}}), for the
+ * state before a round. @param {{store: any, clock: any, content: any}} ctx @param {{patch?: Record<string, Record<string, any>>}} [o]
  * @returns {Promise<ReturnType<typeof knowledge> & {maps: any}>}
  */
-export async function loadKnowledge(ctx) {
+export async function loadKnowledge(ctx, { patch = {} } = {}) {
   const m = await itemMaps(ctx.content);
   const c = ctx.clock.ctx();
   /** @type {Record<string, Record<string, any>>} */ const decks = {};
-  for (const d of DECKS) decks[d] = ctx.store.cards(d) || {};
+  for (const d of DECKS) {
+    decks[d] = ctx.store.cards(d) || {};
+    if (patch[d]) { decks[d] = { ...decks[d] }; for (const [id, rec] of Object.entries(patch[d])) { if (rec) decks[d][id] = rec; else delete decks[d][id]; } }
+  }
   const wc = ctx.store.get('words.exam', null);
   const examWords = wc && Array.isArray(wc.words) ? wc.words.map((/** @type {any} */ w) => m.resolve(w.id, 'b1')).filter(Boolean) : [];
   const k = knowledge({ today: c.today, epoch: ctx.clock.epochDay(), decks, resolve: m.resolve, know: legacy('doors.know.v1'), srs: legacy('doors.srs.v1'),
