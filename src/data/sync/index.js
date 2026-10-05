@@ -17,6 +17,7 @@
 import { config } from '../../core/config.js';
 import * as GH from './github-b1exam.js';
 import * as B from './backup.js';
+import * as R from '../restore.js';
 
 /**
  * @typedef {{acked: string[], rejected: {id: string, error: string}[], error: {message: string, auth?: boolean, offline?: boolean} | null}} PushResult
@@ -103,5 +104,43 @@ export function backup(store) {
     /** {at, error, snapshot: {day, at, cards}} of the last run on this device. */
     state: () => B.state(store),
     repo: config.resultsRepo,
+  };
+}
+
+/** Run fn with the restore lock (one tab at a time), where the browser has Web Locks. @template T @param {() => Promise<T>} fn @returns {Promise<T>} */
+const locked = fn => (typeof navigator !== 'undefined' && /** @type {any} */ (navigator).locks?.request
+  ? /** @type {Promise<T>} */ (/** @type {any} */ (navigator).locks.request('backup-restore', fn)) : fn());
+
+/**
+ * Restore from the backup and the automatic merge (data/restore.js), over one store.
+ * @param {any} store @param {{fetch?: typeof fetch}} [o]
+ */
+export function restore(store, { fetch: f } = {}) {
+  const files = () => backupFiles(store, { fetch: f });
+  return {
+    /**
+     * Read the backup and plan the merge: the devices and days found, the data, and the counts a restore would
+     * change. Changes nothing.
+     * @param {(done: number, total: number) => void} [onProgress]
+     */
+    async find(onProgress) {
+      const devices = await R.listBackups(files());
+      const data = await R.readBackups(files(), devices, { onProgress });
+      return { devices, data, plan: R.planRestore(store, data) };
+    },
+    /**
+     * Apply what find() read. The plan is made again now, from the cards as they are now, so an answer given
+     * while the preview was open is never undone by it.
+     * @param {R.BackupData} data @param {string[]} [sources]
+     */
+    apply: (data, sources) => locked(() => R.applyRestore(store, R.planRestore(store, data), { kind: 'restore', sources })),
+    undo: () => locked(() => R.undoRestore(store)),
+    last: () => R.lastRestore(store),
+    autoMergeOn: () => R.autoMergeOn(store),
+    /** @param {boolean} v */
+    setAutoMerge: v => R.setAutoMerge(store, v),
+    /** The automatic merge (only after the opt-in, at most every 30 minutes unless forced). @param {{force?: boolean}} [o] */
+    merge: (o = {}) => (backup(store).linked() ? locked(() => R.autoMerge(store, files(), o)) : Promise.resolve(null)),
+    span: R.span,
   };
 }

@@ -16,6 +16,7 @@ import { Store } from './store.js';
 import { uuidv7, isoWithOffset, newDeviceId, createHlc } from './ids.js';
 import { readLegacy, hasLegacyProgress, planMigration, applyMigration } from './migrate.js';
 import { planPreviewMerge, legacyChangedSince, deviceMerge, purgeArchived, canon } from './cutover.js';
+import { recoverRestore } from './restore.js';
 
 /**
  * @param {object} o
@@ -84,10 +85,13 @@ export async function openSession({ adapter, legacyStorage, clock, bus, channel 
     await adapter.putDevice(device);
   }
 
+  // a restore from the backup that was cut off is put back before anything reads the cards (data/restore.js)
+  /** @type {'rolledBack' | 'undone' | null} */ let restoreRecovered = null;
+  try { restoreRecovered = await recoverRestore(adapter, profile.id); } catch (e) { console.error('restore recovery failed', e); }
   const store = await Store.open({ adapter, profile, device, clock, bus, channel: channel() });
   const hlc = createHlc(device.deviceId);
   if (migration) store.append('legacy.imported', { summary: migration });
-  return { store, profile, device, hlc, migration, previewKept, cutoverError, profiles: (await adapter.listProfiles()).filter((/** @type {any} */ p) => !p.archivedAt) };
+  return { store, profile, device, hlc, migration, previewKept, cutoverError, restoreRecovered, profiles: (await adapter.listProfiles()).filter((/** @type {any} */ p) => !p.archivedAt) };
 }
 
 /**

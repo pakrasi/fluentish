@@ -16,7 +16,7 @@ import { createMemoryAdapter } from './data/adapters/memory.js';
 import { openSession } from './data/session.js';
 import { normalizeSettings, defaultPrefs } from './data/settings.js';
 import { createContent } from './data/content.js';
-import { sync } from './data/sync/index.js';
+import { sync, restore } from './data/sync/index.js';
 import { TABS, routes } from './features/registry.js';
 import { createSw } from './services/sw.js';
 
@@ -100,6 +100,16 @@ async function main() {
     markTab(currentTab);
   }
   let currentTab = /** @type {string | null} */ (null);
+  // The automatic merge of the other devices' backups (after the opt-in in Profile › Data) changes cards, so it runs
+  // only while the app is at rest on Today or Profile, never mid-round or mid-exam; at most every 30 minutes.
+  let atRest = false;
+  const autoMerge = () => {
+    if (!atRest || !navigator.onLine || !restore(store).autoMergeOn()) return;
+    restore(store).merge().then(r => {
+      const n = r ? r.counts.added + r.counts.updated + r.counts.removed : 0;
+      if (r && r.applied) toast(t('restore.merged', { n }));
+    }).catch((/** @type {any} */ e) => log('merge', e));
+  };
   const markTab = (/** @type {string | null} */ id) => {
     currentTab = id;
     for (const a of document.querySelectorAll('.tabs a')) {
@@ -115,6 +125,8 @@ async function main() {
   // leaving shadow mode (data/session.js keepPreview): the preview's work was merged; Today's notice has the counts
   if (session.previewKept) toast(t('preview.keptToast'), { ms: 8000 });
   if (session.cutoverError) toast(t('preview.retry'), { ms: 10000 });
+  // a restore from the backup cut off last time was put back (data/restore.js)
+  if (session.restoreRecovered === 'rolledBack') toast(t('restore.rolledBack'), { ms: 10000 });
 
   // ---------- router ----------
   const router = createRouter({
@@ -135,6 +147,8 @@ async function main() {
     onMounted: ({ route }) => {
       markTab(route.tab || (route.path.startsWith('/profile') ? 'profile' : null));
       sw.atRest(route.path === '/today');   // a new version applies only from Today, never mid-round or mid-exam
+      atRest = route.path === '/today' || route.path.startsWith('/profile');
+      if (atRest) autoMerge();
       const h1 = $('#view h1');
       // a view that shows private text in its h1 (a script) names itself with data-title instead
       const custom = $('#view [data-title]')?.getAttribute('data-title') || null;
@@ -165,7 +179,7 @@ async function main() {
     if (!navigator.onLine || performance.now() - lastSync < SYNC_EVERY_MS) return;
     lastSync = performance.now();
     sync(store, { emit: (type, data) => bus.emit(type, data) })
-      .catch((/** @type {any} */ e) => log('sync', e));
+      .catch((/** @type {any} */ e) => log('sync', e)).finally(autoMerge);
   };
   autoSync();
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') autoSync(); });
