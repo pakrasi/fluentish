@@ -117,7 +117,7 @@ function mountPage(el, ctx, data) {
           recallBar(g.recall, g.coverage, t('practice.area.bar', { recall: pct(g.recall), seen: pct(g.coverage) }))) : null,
         h('p', { class: 'wr-about' }, a.about),
         h('div', { class: 'pr-done-actions' },
-          nextTask(a.id) ? h('a', { class: 'btn btn-primary pressable', href: `#/practice/write/build/${nextTask(a.id).id}/free` }, t('practice.write.fromMemory', { n: a.id.slice(1), min: a.minutes || 20 })) : null,
+          nextTask(a.id) ? h('a', { class: 'btn btn-primary pressable wr-memory', href: `#/practice/write/build/${nextTask(a.id).id}/free` }, t('practice.write.fromMemory', { n: a.id.slice(1), min: a.minutes || 20 })) : null,
           h('a', { class: 'btn pressable', href: `#/practice/round?kind=write:${a.teil}` }, t('practice.write.practiseAufgabe', { n: a.id.slice(1) }))),
         h('details', { class: 'wr-fns' }, h('summary', { class: 'pressable' }, t('practice.write.byFunction', { n: items.length })),
           fns.map((/** @type {any} */ f) => {

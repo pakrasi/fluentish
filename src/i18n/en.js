@@ -1131,7 +1131,7 @@ export default {
   'practice.build.timeIt': 'Time it: {min} min',
   'practice.build.timeLeft': '{t} left',
   'practice.build.timeUp': 'Time is up. Finish your sentence.',
-  'practice.write.fromMemory': 'Write an Aufgabe {n} task from memory · {min} min',
+  'practice.write.fromMemory': 'Write Aufgabe {n} from memory · {min} min',
   'practice.build.marked': 'Underlined lines were accepted with a slip. Tap one to see it put right.',
   'practice.build.another': 'Back to Schreiben',
   'practice.build.again': 'Build it again',

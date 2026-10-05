@@ -372,3 +372,4 @@ mark.sim-chunk { background: repeating-linear-gradient(90deg, var(--ink-3) 0 2px
 .wr-freehead { display: flex; justify-content: space-between; align-items: center; gap: var(--s-3); flex-wrap: wrap; }
 .wr-timebox { display: inline-flex; align-items: center; gap: var(--s-2); }
 .wr-clock:empty { display: none; }
+.wr-memory { white-space: normal; text-align: center; max-width: 100%; }
