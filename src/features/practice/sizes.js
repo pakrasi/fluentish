@@ -8,7 +8,10 @@
    function: the Sprechen Teil groups) and a script's words. Not: the daily round and the warm-up (Today's and the hub's
    one tap), a round of items picked on the map, Quick sort. */
 import * as RS from '../../domain/roundsize.js';
-import { roundMinutes } from '../../domain/today.js';
+import { ROUND, ROUND_MIN } from '../../domain/budget.js';
+
+/** Minutes for n typed questions: a round of 12 is about 4 minutes (domain/budget.js). @param {number} n */
+const roundMinutes = n => Math.max(1, Math.ceil((n * ROUND_MIN) / ROUND - 1e-9));
 import * as C from './compose.js';
 import * as S from './session.js';
 import { loadData, stateFor, session } from './data.js';

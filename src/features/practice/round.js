@@ -513,7 +513,8 @@ export async function mountRound(el, ctx) {
     const capHead = !isNew && !veryLate && !late && !umlaut && capSlip;
     if (capSlip && !capHead) kids.push(h('p', { class: 'caption' }, t('practice.capsNote', { list: [...new Set(g.capMiss.map((/** @type {any} */ x) => x.expected))].join(', ') })));
     if (situation) kids.push(h('p', { class: 'caption' }, t('practice.checkedPhrase')));
-    const others = g.alsoCorrect || [];
+    // a word card's other accepted form ("bewerben" for "sich bewerben") is not news after a right answer
+    const others = it.card?.type ? [] : g.alsoCorrect || [];
     if (others.length && !clean) kids.push(h('p', { class: 'pr-also' }, h('span', { class: 'caption' }, situation ? t('practice.otherWays') : t('practice.alsoCorrect')), ' ',
       h('span', { lang: 'de' }, others.slice(0, 2).join(' · ')), others.length > 2 ? alsoMore(others.slice(2), '') : null));
     replace(fb, kids, wordCard(it));

@@ -91,7 +91,7 @@ export function options(b, rec) {
  * @returns {{mode: 'rec' | 'custom' | 'all', n: number}}
  */
 export function initial(last, N, recN) {
-  const n = clamp(last && last.n ? last.n : recN || Math.min(N, 12), N);
+  const n = clamp(last && last.n ? last.n : Math.max(recN, Math.min(N, 12)), N);
   if (last && last.mode === 'all') return { mode: 'all', n };
   if (last && last.mode === 'custom') return { mode: 'custom', n };
   return { mode: recN ? 'rec' : 'custom', n };
