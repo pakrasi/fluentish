@@ -1,7 +1,8 @@
 /* Explore: loading the map and scoring it. The map (content atlas.de, tools/build-atlas.mjs) is decoded once a session;
    the knowledge score (data/knowledge.js) is read again whenever a deck changes, and turned into typed arrays the
    renderer draws from. Explore never writes a card. Its own small state:
-     kv 'explore'   { mode, gaps, introDay, shown: {day, ids: [item ids already shown as learned today]} } */
+     kv 'explore'   { mode, gaps, introDay, view ('map' | '3d'), tiltDay, shown: {day, ids: [item ids already shown as learned today]} }
+     kv 'palace'    (device) the 3D view's record of what it last showed: {ver, st, day, played} (domain/palace.js momentQueue) */
 import { decode, positions, bounds, sourceGroups, layoutSource, STATE_CODE, KINDS, LEVELS, ARTICLES } from '../../domain/atlas.js';
 import { index as clusterIndex } from '../../domain/clusters.js';
 import { loadKnowledge } from '../../data/knowledge.js';
@@ -56,17 +57,18 @@ export function layoutOf(A, mode, K) {
  */
 export async function scores(ctx, A) {
   const k = await loadKnowledge(ctx);
-  const st = new Uint8Array(A.n), today = new Uint8Array(A.n);
+  const st = new Uint8Array(A.n), today = new Uint8Array(A.n), S = new Float32Array(A.n);
   /** @type {Map<number, any>} */ const concept = new Map();
   for (let i = 0; i < A.n; i++) {
     const id = A.ids[i];
     let s;
     if (A.kind[i] === 'g') { s = k.concept(id.slice(3), k.maps.concepts[id.slice(3)] || []); concept.set(i, s); } else s = k.get(id);
     st[i] = STATE_CODE[/** @type {import('../../domain/atlas.js').State} */ (s.state)]; today[i] = s.today ? 1 : 0;
+    S[i] = s.stability || 0;   // the 3D view's floors (domain/palace.js floorsOf)
   }
   const decks = Object.fromEntries(['b1', 'speak', 'script', 'clusters'].map(d => [d, ctx.store.cards(d) || {}]));
   return {
-    k, st, today,
+    k, st, today, S,
     /** @param {number} i */ score: i => concept.get(i) || k.get(A.ids[i]),
     /** @param {string} id */ sourcesOf: id => { const i = A.index.get(id); return (i != null && concept.get(i)?.sources) || k.get(id).sources; },
     /** the day the item was first met: the earliest `first` of its cards ('' when unknown) @param {string} id */

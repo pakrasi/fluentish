@@ -239,3 +239,37 @@ body.ex-page { overscroll-behavior: none; }
 .explore.is-select .ex-list { padding-bottom: 148px; }
 .explore.is-select .ex-litem { cursor: copy; }
 @media (forced-colors: active) { .ex-selbar { background: Canvas; border-top: 1px solid CanvasText; } }
+
+/* ---------- 3D (Explore › 3D, src/features/explore/palace/) ---------- */
+.ex-canvas.pl-canvas { z-index: 0; }
+.ex-canvas { transition: opacity var(--dur-quick) var(--ease-out); }
+.ex-canvas.is-fading { opacity: 0; transition: none; }
+/* district names: DOM plates over the canvas, constant size, placed every frame */
+.pl-labels { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
+.explore:not(.is-3d) .pl-labels { display: none; }
+.pl-label { position: absolute; top: 0; left: 0; display: grid; justify-items: center; padding: 2px 6px; border-radius: 6px; background: color-mix(in oklab, var(--surface) 92%, transparent);
+  white-space: nowrap; opacity: 0; transition: opacity 160ms var(--ease-out); will-change: transform; }
+.pl-label.is-on { opacity: 1; }
+.pl-label b { font: 600 13px/16px var(--font-ui); color: var(--ink); }
+.pl-label span { font: 400 12px/15px var(--font-ui); color: var(--ink-3); font-variant-numeric: tabular-nums; }
+/* the HUD in 3D: Districts instead of Gaps only; the key says what height means */
+.pl-distbtn, .ex-key.pl-height { display: none; }
+.explore.is-3d .pl-distbtn { display: inline-flex; }
+.explore.is-3d .ex-gaps { display: none; }
+.explore.is-3d .ex-key.pl-height { display: inline-flex; color: var(--ink-3); }
+@media (min-width: 720px) { .explore.is-3d .ex-key.pl-height { flex-basis: 100%; } }
+.ex-total.is-loading3d { color: var(--ink-3); }
+/* the districts list: the keyboard and screen-reader route around the city */
+.pl-dist { position: absolute; z-index: 3; right: max(var(--gutter), env(safe-area-inset-right)); bottom: 60px; width: min(340px, calc(100% - 2 * var(--gutter))); max-height: min(62%, 440px); overflow-y: auto; overscroll-behavior: contain;
+  padding: var(--s-3) var(--s-2) var(--s-2); border-radius: var(--r-card); background: var(--surface); box-shadow: var(--shadow-lift), 0 0 0 1px var(--hairline); }
+.pl-dist-title { margin: 0 var(--s-2) var(--s-2); color: var(--ink-3); }
+.pl-dist-list { list-style: none; margin: 0; padding: 0; }
+.pl-dist-item { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-3); width: 100%; min-height: var(--tap); padding: 6px var(--s-2); border: 0; border-radius: var(--r-ctl);
+  background: transparent; color: var(--ink); font: 500 14px/1.25 var(--font-ui); text-align: left; cursor: pointer; }
+.pl-dist-item:hover, .pl-dist-item:focus-visible { background: var(--surface-2); }
+.pl-dist-item span { white-space: nowrap; }
+/* reduced motion: names snap; the canvases still crossfade (140 ms), which is the reduced form of the tilt */
+@media (prefers-reduced-motion: reduce) { .pl-label { transition: none; } .ex-canvas { transition: opacity 140ms linear; } }
+:root[data-motion="reduce"] .pl-label { transition: none; }
+:root[data-motion="reduce"] .ex-canvas { transition: opacity 140ms linear; }
+@media (prefers-reduced-transparency: reduce) { .pl-label { background: var(--surface); } }

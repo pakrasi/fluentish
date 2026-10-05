@@ -140,8 +140,9 @@ async function main() {
   const core = manifest.files.filter(f => CORE_CONTENT.test(f.id));
   const precache = [
     './',
-    // code, styles and the vendored map font (the map's layout was built with its widths, so it must be there offline)
-    ...walk(path.join(o.out, v)).filter(f => /\.(js|css|woff2)$/.test(f)).map(f => `${v}/${f}`),
+    // code, styles and the vendored map font (the map's layout was built with its widths, so it must be there offline),
+    // with its metrics and the 3D view's text atlas
+    ...walk(path.join(o.out, v)).filter(f => /\.(js|css|woff2)$/.test(f) || /^src\/vendor\/(newsreader-map|palace-sdf)\/[^/]+\.(json|png)$/.test(f)).map(f => `${v}/${f}`),
     ...walk(path.join(o.out, 'assets')).map(f => `assets/${f}`),
     'content/manifest.json',
     ...core.map(f => `content/${f.path}?h=${f.sha256.slice(0, 8)}`),

@@ -761,6 +761,10 @@ export function createMap(canvas, o) {
     },
     /** Is item i drawn in this layout? @param {number} i */
     has(i) { return !!L && !Number.isNaN(L.X[i]); },
+    /** The scale at which the whole map fits (the 3D view starts from an overview when the map is near it). */
+    fitK() { return L && W ? fitView().k : 0; },
+    /** The camera that shows the whole map. */
+    fitCamera() { return fitView(); },
     get layout() { return L; },
     get camera() { return { ...cam }; },
     /** @param {{x: number, y: number, k: number}} c */
