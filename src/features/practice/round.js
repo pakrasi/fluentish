@@ -663,7 +663,7 @@ export async function mountRound(el, ctx) {
       updateClusters(store, x => { const d = clusterDay(store, st.c.today); return { ...x, day: { ...d, rounds: d.rounds + 1 } }; });
       addActivity(store, st.c.today, { minutes: minutesSpent(), rounds: 1 });
       const firsts = round.results.filter((/** @type {any} */ r) => r.first);
-      drawClusterDone(el, ctx, { key: ck.key, right: firsts.filter((/** @type {any} */ r) => r.ok).length, total: firsts.length, prev: round.prev || {}, again: S.roundHref(round) });
+      drawClusterDone(el, ctx, { key: ck.key, right: firsts.filter((/** @type {any} */ r) => r.ok).length, total: firsts.length, prev: round.prev || {}, again: S.roundHref(round), fromMap: backTo === '/lookup/map' });
       return;
     }
     day.rounds = (day.rounds || 0) + 1;

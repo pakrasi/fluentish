@@ -1445,6 +1445,7 @@ export default {
   'practice.clusters.nothing': 'Nothing to practise in this cluster yet.',
   'practice.clusters.another': 'Another round',
   'practice.clusters.backTo': 'Back to {name}',
+  'practice.clusters.backToMap': 'Back to the map',
   'practice.clusters.nowKnown': { one: '{n} more word known', other: '{n} more words known' },
   'practice.clusters.where.W': 'Word',
   'practice.clusters.where.CO': 'Opposites',

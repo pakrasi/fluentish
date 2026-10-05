@@ -289,10 +289,10 @@ async function mountCluster(el, ctx, key) {
 
 /**
  * @param {HTMLElement} el @param {import('../../contract.js').ViewCtx} ctx
- * @param {{key: string | null, right: number, total: number, prev: Record<string, any>, again: string}} o
+ * @param {{key: string | null, right: number, total: number, prev: Record<string, any>, again: string, fromMap?: boolean}} o
  *   key: the cluster ('<type>:<id>'), null for a due round; prev: the cards before the round (id → record or null)
  */
-export async function drawClusterDone(el, ctx, { key, right, total, prev, again }) {
+export async function drawClusterDone(el, ctx, { key, right, total, prev, again, fromMap = false }) {
   const { t, store } = ctx;
   const [data, after, before] = await Promise.all([loadClusters(ctx), loadKnowledge(ctx), loadKnowledge(ctx, { patch: { [DECK]: prev } })]);
   const cl = key ? data.ix.byKey.get(key) : null;
@@ -310,7 +310,8 @@ export async function drawClusterDone(el, ctx, { key, right, total, prev, again 
     hero.el,
     h('div', { class: 'pr-done-actions' },
       h('a', { class: 'btn btn-primary pressable', href: again, id: 'pr-again' }, t('practice.clusters.another')),
-      h('a', { class: 'btn pressable', href: backHref }, cl ? t('practice.clusters.backTo', { name: cl.label }) : t('practice.clusters.title')))));
+      fromMap ? h('a', { class: 'btn pressable', href: '#/lookup/map' }, t('practice.clusters.backToMap'))
+        : h('a', { class: 'btn pressable', href: backHref }, cl ? t('practice.clusters.backTo', { name: cl.label }) : t('practice.clusters.title')))));
   const stop = hero.start();
   addEventListener('hashchange', stop, { once: true });
   if (cl) update(store, s => ({ ...s, shown: { ...(s.shown || {}), [cl.key]: n1 } }));
