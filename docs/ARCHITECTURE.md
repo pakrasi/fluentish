@@ -23,9 +23,10 @@ src/
   core/               clock, router, dom, bus, i18n, config, schema, log, ui, icons, motion (kit), brand (kit)
   data/               store, adapters/{idb,memory}, session, settings, migrate, transfer, content, ids
   domain/             pure, tested in node: fsrs, match, detect, speech, timer, readiness, b1ready, days, today
-  features/           registry, contract, today/, profile/, welcome/, practice/, exam/, lookup/, explore/ (Look up › Map)
+  features/           registry, contract, today/, profile/, welcome/, practice/, exam/, lookup/, explore/ (Look up › Map; palace/ is its 3D view, loaded on demand)
   i18n/               en.js, de.js (partial; falls back to English)
   vendor/paper-shaders/   @paper-design/shaders 0.0.81, vendored (VENDOR.md)
+  vendor/newsreader-map/  the map font (OFL) and its advance widths; vendor/palace-sdf/ its prebuilt SDF text atlas for 3D
 content/              PUBLIC content + manifest.json (consumed by the app and later iOS)
 authoring/            sources built into content/, briefs; never fetched
 schemas/              content/*.schema.json, records/*.schema.json

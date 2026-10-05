@@ -54,11 +54,12 @@ Every client-created record carries `id` (UUIDv7), `profileId`, `deviceId` and `
 | `settings@1` | kv `settings`, profile, synced | the goal and practice options; `exam.date` is the **only** place the exam date lives; `rev` holds an HLC per field path for last-write-wins merges |
 | `prefs@1` | kv `prefs`, device | theme, motion, locale; never synced |
 | (secrets) | kv `secrets`, device | `anthropicKey`, `githubToken`; never exported or synced, no schema on purpose |
+| (palace) | kv `palace`, device | Explore › 3D's record of what it last showed: `{ver, st, day, played}`: the atlas ids' key with the profile id, one state digit per atlas item, the study day, and the item ids whose learned moment played that day (`domain/palace.js momentQueue`); never exported or synced, no schema on purpose |
 | `card-fsrs@1` | IDB `cards` `[profileId, deck, itemId]` | the FSRS snapshot from `domain/fsrs.js`; a cache of the events |
 | `exam-attempt@1` | IDB `attempts` | the B1 exam app's field names (`started_at`, `max_score`, `responses`, `writings`), which the Mac's `sync.py` imports, plus `examId` and `contentVersion` |
 | `mistake@1` | kv `mistakes`, profile, private | a mistake from a correction: `{id: 'F:<attempt>-<n>', v: 1, wrong, right, rule, source: {attemptId, test, module, label}, createdAt, deletedAt}`; written only through `src/data/mistakes.js`; Practice reviews each as card `F:…` in deck `b1` |
 | `event@1` | IDB `outbox` | append-only, the unit of sync (below) |
-| `fluentish-export@1` | file | Profile > Data > Export: kv collections except prefs and secrets, cards, attempts, events |
+| `fluentish-export@1` | file | Profile > Data > Export: kv collections except prefs, secrets and palace, cards, attempts, events |
 
 ### Events (`event@1`)
 

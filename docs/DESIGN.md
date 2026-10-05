@@ -234,6 +234,31 @@ Explore (`src/features/explore/`, `#/lookup/map`) is a map of every word, phrase
 - Don't loop, drift or rotate at rest; the canvas draws only while something moves.
 
 
+### Explore › 3D (the Type city)
+
+The third segment of the map's view control (Map · 3D · List; `?view=3d`, remembered per profile). The Atlas floor plan, raised: every word is a building whose footprint is the word itself, on its own line, at exactly the place the 2D map puts it (the same layout object), so the palace never rearranges and the plan view is the Atlas letter for letter. Height carries one fact, **how long he will remember the word** (FSRS stability; `src/domain/palace.js`):
+- known: 3 to 8 floors, one per doubling of stability, `round(log2(S + 1))`, a hairline per floor once a floor is 3 px tall;
+- shaky: 1 or 2 floors; not known: an open scaffold one floor high (the mark's open tile, edges only, in `x-box`); not seen: no building, the type printed pale italic on the empty plot;
+- practised today: the Atlas accent and hairline on the roof plus a cobalt band at the top of the walls; selected: a cobalt roof outline and a thicker hairline.
+State is never carried by height alone: the roofs keep the Atlas type encodings. Districts are the Atlas discs as plinths with the group ring on the rim and around the side. Heights are exaggerated smoothly from 1,200 units away, up to 5× at the overview, so the skyline reads; the card always states recall.
+
+**Light and dark.** White-model shading (walls lit from the upper left, soft contact shadows on the plinths, fog to the canvas). Dark is graphite massing with light type; known roofs glow faintly (ink at 7.5 % on the roof); far away the scaffolds and roof bars quieten further, since light edges on graphite read as noise.
+
+**Level of detail** (all on the GPU): under 5 px the type collapses in the vertex shader and the roof shows the word's bar; between 5 and 8.5 px bars cross into type; floor lines appear from 3 px a floor. Type is drawn from a prebuilt SDF atlas of the map font (`src/vendor/palace-sdf/`), so it is crisp at any angle. District names are DOM plates (as in the Atlas: surface 92 %, Geist 13/600, the count in 12 px ink-3), constant size, the larger group wins a collision, never half off screen, hidden inside the district you are looking at, where the "where you are" pill takes over.
+
+**Camera.** Phone: one finger pans (the ground stays under it, with inertia), two pinch, twist to turn, move up or down together to tilt; double tap zooms ×2.2. Desktop: drag pans, right drag or shift-drag orbits, wheel zooms at the pointer, horizontal scroll turns. The overview frames the whole raised map inside the free stage (measured on the projected rims, so no edge is cut); on a portrait stage it looks down at 52° so the round map also uses the height.
+
+**Motion** (springs are the kit's):
+- Map → 3D: the city starts exactly where the 2D map is (plan view, same place, same scale) and tilts to 42°, turning −24°, while the buildings rise district by district from the middle out, then line by line (back-out ease, 8 % overshoot), 1.7 s. From an overview it ends on the whole raised map. 3D → Map is the reverse and lands where the 3D view was looking (on the 2D map's own frame from an overview).
+- Fly to a word: log-distance zoom, cubic in-out, 0.55 to 1.5 s, rising on long hops; it ends at 56° with the type about 30 px (34 on a desktop), clear of the sheet. The buildings between the eye and the word **sink** to 12 % while it is selected (the street opens, 0.45 s in, 0.35 s out).
+- District entry (a district tapped, from the Districts list or with Tab and Enter): the camera frames the plinth at 45°, the other districts fade toward the canvas to 38 % and lose their names, and the "Study next" words get the open tile hovering over them, dropping in on spring-pop 60 ms apart from 0.55 s.
+- **The learned moment**, the single allowed particle burst in the app: the scaffold edges turn cobalt; a cobalt ring runs out across the plinth (1 s); the building rises from its old floors to its new ones on spring-pop with a cobalt line riding up the walls and an x-glow plate fading over 1.3 s; the letters lift off the old roof one after another (40 ms apart) and settle on the new one in cobalt on spring-soft; about 70 fine ink and cobalt motes rise from the base and fall (0.9 to 1.8 s); the neighbours within 260 units bob once. It plays once per word, on return from a study round and, if he missed it, on the next 3D open (a per-device record, kv `palace`). Before it plays the camera tours the words in stops that keep the type at least 22 px on a phone (26 on a desktop), 340 ms apart within a stop; the sheet stays closed until the last one has landed, then the district's sheet opens. Words the tour cannot reach settle into their final state. A toast says how many items are now known (an announcement only when a sheet opens next).
+- Reduced motion: 3D opens as a 140 ms crossfade to the finished still at its pose; flights jump; no inertia, rise, ring, letters, bob, glow or motes; learned words appear in their final state. Nothing moves at rest, ever: no idle orbit, no drift.
+
+**Access.** The canvas is `role="application"` (roledescription "3D map") with its keys described: arrows pan, + and − zoom, Q/E turn, Page Up/Down tilt, Tab and Shift+Tab step through the districts (each flown to and announced), Enter opens one, Esc closes the sheet. The **Districts** button (in the HUD row in place of Gaps only) lists every group with its count as 44 px buttons that fly there and open its sheet: the keyboard and VoiceOver route. Sheets, study actions and focus handling are the 2D map's. Under forced colours, or without WebGL2, 3D says so in one line and the map stays; a lost graphics context hands back to the map with a one-line note and 3D can be opened again.
+
+**Performance.** Hand-written WebGL2 (`src/features/explore/palace/gl.js`, no library), loaded with `import()` only when 3D opens. Nine instanced draws at most; one RGBA32F item-state texture that every layer reads (a learned word is one 64-byte write); glyph instances packed to 12 bytes; render on demand. DPR capped at 2; while moving, when the 90th percentile frame over 30 frames exceeds 18 ms the render scale steps to 1.5 then 1.25, back up after 240 frames on time, and one full-resolution frame is drawn when motion stops. One WebGL context while 3D is open, released when Explore unmounts.
+
 ## Earned moments (round 2)
 
 Each runs once per event, never at rest, and is dropped under reduced motion (the end state appears at once).
@@ -274,7 +299,7 @@ Purpose first: every animation is feedback (an answer, a tap), a state change (c
 
 **Reduced motion** (system setting, or `html[data-motion="reduce"]` as a user setting): `--move` becomes 0 so every translate/scale distance is zero; card and view changes become 140 ms crossfades; fills, rings and the runway jump to their values; the odometer and counters write the final number; the field draws its final state with no intro or ripple; the check and underline appear without sweeping; the atmosphere renders one still frame and never breathes. Haptics stay (they are not motion). `html[data-motion="full"]` opts back in.
 
-**Performance**: the shader is the only WebGL context (one per page, max), mounted after idle, low-power, pixel count capped at 900x900, speed 0 at rest. The field canvas runs rAF only while animating. No scroll listeners: reveals use IntersectionObserver. Total kit cost: about 5 kB + 5 kB gzipped JS, 8 kB gzipped CSS, plus Paper Shaders' mesh gradient (lazy, CDN, optional).
+**Performance**: the shader is the only WebGL context on Today (one per page, max; Explore › 3D holds its own only while open), mounted after idle, low-power, pixel count capped at 900x900, speed 0 at rest. The field canvas runs rAF only while animating. No scroll listeners: reveals use IntersectionObserver. Total kit cost: about 5 kB + 5 kB gzipped JS, 8 kB gzipped CSS, plus Paper Shaders' mesh gradient (lazy, CDN, optional).
 
 ## Copy
 
@@ -290,10 +315,10 @@ Purpose first: every animation is feedback (an answer, a tap), a state change (c
 - Do use the accent only for "you, today, progress". Never as a fill wider than a runway bar, never on timers.
 - Do set German sentence text in Newsreader wherever it is read (prompts, examples, lists); Geist only for typed input and tiles.
 - Do keep the exam runner and its start panel German, in Sie; everything around them is English.
-- Don't add confetti, particle bursts, sounds, streak flames or emoji. The ripple is the celebration.
+- Don't add confetti, particle bursts, sounds, streak flames or emoji. The ripple is the celebration. One written exception: the ~70 motes of the learned moment in Explore › 3D, the single allowed burst.
 - Don't animate on page load beyond the one-time field intro and odometer roll. Returning to Today should feel instant.
 - Don't use role colours outside the grammar layer, or green for "known".
-- Don't add 3D libraries. Paper Shaders mesh gradient is the only runtime dependency, optional, and the CSS gradient in `.atmo` is a finished look on its own.
+- Don't add 3D libraries. Explore › 3D is a thin hand-written WebGL2 layer. Paper Shaders mesh gradient is the only runtime dependency, optional, and the CSS gradient in `.atmo` is a finished look on its own.
 - Don't put the atmosphere behind text-heavy screens or the study card.
 
 ## Responsive Behavior
