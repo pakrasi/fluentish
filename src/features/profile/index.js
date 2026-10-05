@@ -248,7 +248,9 @@ export async function mount(el, ctx) {
           await deleteProfile(app.adapter, app.device, app.profile);
           store.deleted = true;              // this tab writes nothing more into it either
           store.post({ kind: 'deleted' });   // other open tabs reload instead of writing into the deleted profile
-          location.hash = '#/welcome';
+          // replaceState, not location.hash: a hashchange would route the still-onboarded tab to Today and start
+          // loading it just as the reload cancels that (an aborted import in the error log)
+          history.replaceState(history.state, '', '#/welcome');
           location.reload();
         } }, unsent ? t('data.delete.yesUnsent') : t('data.delete.yes')),
         h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => { confirm.hidden = true; deleteBtn.setAttribute('aria-expanded', 'false'); deleteBtn.focus(); } }, t('data.delete.no'))));

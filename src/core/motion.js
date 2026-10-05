@@ -260,7 +260,9 @@ export function odometer(el, value, { label } = {}) {
 export function fill(el, p) {
   const f = el.classList.contains('fill') ? el : el.querySelector('.fill');
   f.style.setProperty('--p', Math.max(0, Math.min(1, p)));
-  el.setAttribute?.('aria-valuenow', Math.round(p * 100));
+  // aria-valuenow only where it is allowed: on a progressbar (axe aria-allowed-attr; the Today and Exam module bars are
+  // plain tracks inside a labelled link)
+  if (el.getAttribute?.('role') === 'progressbar') el.setAttribute('aria-valuenow', Math.round(p * 100));
 }
 
 /**

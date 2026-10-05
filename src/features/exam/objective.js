@@ -30,7 +30,7 @@ function renderParts({ ex, module, answers, review, key, onPick, t, audio }) {
     h('p', { class: 'ex-q' }, num(nr), q),
     h('div', { class: 'ex-opts', role: 'radiogroup', 'aria-label': `${nr}` }, it.options.map((/** @type {string} */ o, /** @type {number} */ i) => opt(it.id, 'abc'[i], o, 'abc'[i]))));
   const instr = (/** @type {any[]} */ ...c) => h('p', { class: 'ex-instr' }, ...c);
-  const textCard = (/** @type {any} */ x, /** @type {string | null} */ label = null) => h('article', { class: 'ex-text' },
+  const textCard = (/** @type {any} */ x, /** @type {string | null} */ label = null) => h('article', { class: 'ex-text', tabindex: '0' },   // it scrolls by itself on a wide screen, so it takes focus
     label ? h('p', { class: 'label' }, label) : null, x.title ? h('h3', null, x.title) : null, h('div', { class: 'ex-prose' }, String(x.text).split(/\n\n+/).map(p => h('p', null, p))));
   const parts = [];
   if (module === 'lesen') {
@@ -39,7 +39,7 @@ function renderParts({ ex, module, answers, review, key, onPick, t, audio }) {
     parts.push(h('div', null, instr(t('exam.de.l2')), L.teil2.texts.map((/** @type {any} */ tx, /** @type {number} */ ti) => h('div', { class: 'ex-split' }, textCard(tx, tx.source),
       h('div', { class: 'ex-items' }, tx.items.map((/** @type {any} */ it, /** @type {number} */ i) => mc(it, 7 + ti * 3 + i, it.question)))))));
     const letters = ['0', ...L.teil3.ads.map((/** @type {any} */ a) => a.letter)];
-    const sit = h('div', { class: 'ex-items', id: 'l3-sit' }, L.teil3.situations.map((/** @type {any} */ s, /** @type {number} */ i) => {
+    const sit = h('div', { class: 'ex-items', id: 'l3-sit', tabindex: '0' }, L.teil3.situations.map((/** @type {any} */ s, /** @type {number} */ i) => {
       const mine = String(answers[s.id] ?? '').toUpperCase();
       const right = review ? String(correct(s.id) || '0').toUpperCase() : null;
       return h('div', { class: 'ex-item', dataset: { item: s.id } }, h('p', { class: 'ex-q' }, num(13 + i), s.text),
