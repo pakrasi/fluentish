@@ -3,7 +3,7 @@
    sections. Every transition here uses the motion tokens, so reduced motion covers it. */
 
 /* ---------- shell ---------- */
-.skip-link { position: absolute; left: 8px; top: -60px; z-index: var(--z-fx); padding: 10px 14px; border-radius: var(--r-ctl); background: var(--ink); color: var(--on-ink); text-decoration: none; }
+.skip-link { position: absolute; left: 8px; top: -60px; min-height: var(--tap); box-sizing: border-box; display: inline-flex; align-items: center; z-index: var(--z-fx); padding: 10px 14px; border-radius: var(--r-ctl); background: var(--ink); color: var(--on-ink); text-decoration: none; }
 .skip-link:focus { top: 8px; }
 .bar-inner .tabs-top { display: none; }
 .avatar-link { margin-left: auto; display: grid; place-items: center; width: var(--tap); height: var(--tap); margin-right: -6px; border-radius: 50%; text-decoration: none; color: var(--ink); }

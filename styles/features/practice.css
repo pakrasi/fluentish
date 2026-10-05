@@ -290,7 +290,7 @@ mark.wr-glue.is-lit, .answer-key mark.wr-glue, .wr-done mark.wr-glue { backgroun
 .sim-w { display: inline-block; }
 .sim-line.is-typed .sim-w { animation: sim-word var(--dur-base) var(--ease-out) both; animation-delay: calc(var(--i) * var(--wstep, 80ms)); }
 @keyframes sim-word { from { opacity: 0; transform: translateY(calc(5px * var(--move))); } }
-.sim-play { flex: none; display: grid; place-items: center; width: var(--tap); height: var(--tap); border: 0; border-radius: 50%; background: var(--surface); color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--hairline-strong); cursor: pointer; }
+.sim-play { flex: none; display: grid; place-items: center; width: var(--tap); height: var(--tap); min-width: var(--tap); min-height: var(--tap); box-sizing: border-box; padding: 0; border: 0; border-radius: 50%; background: var(--surface); color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--hairline-strong); cursor: pointer; }
 .sim-wave { display: inline-flex; align-items: center; gap: 2px; height: 18px; }
 .sim-wave i { width: 3px; height: 18px; border-radius: 2px; background: currentColor; transform: scaleY(0.4); }
 .sim-wave i:nth-child(2), .sim-wave i:nth-child(4) { transform: scaleY(0.7); }
