@@ -227,6 +227,23 @@ export function compose({ items, cards, c, pick, start, newLeft, size = ROUND_SI
   return { ids: interleave(extra).map(it => it.id), due: 0, fresh: 0, extra: extra.length > 0 };
 }
 
+/**
+ * A situation list by what a round would do with each card (domain/roundsize.js Buckets), for the round size picker.
+ * The mixed round's allowance is the day's (simBudget's newLeft); a level or function round's is its PICK_NEW.
+ * @param {{items: any[], cards: Record<string, any>, c: any, pick: Pick, start: string, newLeft: number}} o
+ * @returns {import('../../domain/roundsize.js').Buckets}
+ */
+export function buckets({ items, cards, c, pick, start, newLeft }) {
+  const open = openLevels(levelStates(items, cards, start));
+  const pool = items.filter(it => inPick(it, pick));
+  const seen = (/** @type {any} */ it) => !!cards[it.id]?.reps;
+  const weak = (/** @type {any} */ a, /** @type {any} */ b) => FS.Ron(cards[a.id], c.today) - FS.Ron(cards[b.id], c.today);
+  return { due: pool.filter(it => seen(it) && isDue(cards[it.id], c.today, c)).sort(weak).map(it => it.id),
+    fresh: newOrder(pool, cards, start, open).map(it => it.id),
+    rest: pool.filter(it => seen(it) && !isDue(cards[it.id], c.today, c)).sort(weak).map(it => it.id),
+    newLeft: !c.newItems ? 0 : pick.kind === 'mixed' ? Math.max(0, newLeft) : PICK_NEW, daily: pick.kind === 'mixed' };
+}
+
 /** @param {string[]} ids @param {Pick} pick @param {string} today @param {number} now */
 export function startRound(ids, pick, today, now) {
   return { id: now, pick: pickKey(pick), day: today, startedAt: now, queue: ids.map(id => ({ id })), i: 0, planned: ids.length,

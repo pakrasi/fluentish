@@ -19,6 +19,7 @@ import { gradeRow } from './selfgrade.js';
 import { progressOf, drawProgress, againRow } from './progress.js';
 import { doneHero } from './done-hero.js';
 import { Field } from '../../core/brand.js';
+import * as RS from '../../domain/roundsize.js';
 import * as S from './sim.js';
 import { loadBank, simState, simCards, setStart, saveGrade, saveRound, finishRound, refreshSimStats } from './sim-data.js';
 import { playLine, stopLine } from './sim-audio.js';
@@ -165,11 +166,16 @@ async function mountRound(el, ctx) {
   let c = ctx.clock.ctx();
   const settings = ctx.settings();
   const sim = simState(store);
-  /** @type {any} */ let round = S.resumable(sim.round, c.today, Date.now()) && sim.round.pick === S.pickKey(pick) ? structuredClone(sim.round) : null;
+  // the round size picker's choice (picker.js, domain/roundsize.js); a saved round of another size is not resumed
+  const sized = RS.parseSize(ctx.query.get('size'));
+  const want = sized ? RS.sizeKey(sized) : null;
+  /** @type {any} */ let round = S.resumable(sim.round, c.today, Date.now()) && sim.round.pick === S.pickKey(pick) && (!want || (sim.round.size || 'rec') === want) ? structuredClone(sim.round) : null;
   if (!round) {
-    const comp = S.compose({ items: b.items, cards: simCards(store), c, pick, start: S.startFor(sim.start, settings.level), newLeft: simToday({ store, c, settings }).newLeft });
-    if (!comp.ids.length) return drawEmpty();
-    round = S.startRound(comp.ids, pick, c.today, Date.now());
+    const o = { items: b.items, cards: simCards(store), c, pick, start: S.startFor(sim.start, settings.level), newLeft: simToday({ store, c, settings }).newLeft };
+    const ids = sized && sized !== 'rec' ? RS.pick(S.buckets(o), sized).ids : S.compose(o).ids;
+    if (!ids.length) return drawEmpty();
+    round = S.startRound(ids, pick, c.today, Date.now());
+    if (want) round.size = want;
     saveRound(store, round);
   }
   const roundT0 = performance.now();

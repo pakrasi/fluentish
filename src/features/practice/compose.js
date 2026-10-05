@@ -66,10 +66,16 @@ export function quota(s, st) {
   if (st === 'w') return s.writingNew || 0;
   return streamQuota(s.newPerDay, /** @type {'p'|'g'} */ (st));
 }
+/** New items the day still has room for across the daily streams: a round that took more than its stream's share
+ * (a custom or "all" round, domain/roundsize.js) uses up the day, not just its stream. @param {State} s */
+const dayRoom = s => Math.max(0, (s.newPerDay || 0) - (s.day.newShown || 0));
 /** @param {State} s @param {string} st */
-export const newLeftOf = (s, st) => Math.max(0, quota(s, st) - ((s.day.newBy || {})[st] || 0));
+export const newLeftOf = (s, st) => {
+  const own = Math.max(0, quota(s, st) - ((s.day.newBy || {})[st] || 0));
+  return st === 'w' ? own : Math.min(own, dayRoom(s));
+};
 /** New items left today in the daily rounds (Schreiben phrases have their own: newLeftOf(s, 'w')). @param {State} s */
-export const newLeft = s => newLeftOf(s, 'p') + newLeftOf(s, 'g');
+export const newLeft = s => Math.min(newLeftOf(s, 'p') + newLeftOf(s, 'g'), dayRoom(s));
 
 /** Situations come in once two phrases with that job have graduated. @param {State} s @param {any} it */
 export function topicReady(s, it) {
@@ -246,6 +252,34 @@ export function compose(s, { kind = 'today', area, topic, size = ROUND } = {}) {
   if (fix && !out.includes(fix)) out.push(fix);
   return out.slice(0, size).map(it => it.id);
 }
+
+/**
+ * The list a round kind draws from, by what a round would do with each item (domain/roundsize.js Buckets): the round
+ * size picker's N and its custom and "all" rounds. Recommended stays compose(). The same pool rules as compose():
+ * mistakes only in their own round, Schreiben phrases in theirs; items marked known and items never introduced
+ * (rank 21, Präteritum phrases) are not in it as new.
+ * @param {State} s @param {{kind?: string, area?: string, topic?: string}} spec
+ * @returns {import('../../domain/roundsize.js').Buckets}
+ */
+export function buckets(s, { kind = 'today', area, topic } = {}) {
+  const c = s.c, today = c.today, data = s.data;
+  let pool;
+  if (kind === 'missed') pool = missed(s);
+  else if (kind === 'mistakes') pool = data.pool.filter(it => it.area === 'mistakes');
+  else {
+    pool = data.pool.filter(it => (!area || it.area === area) && (!topic || it.group === topic || (data.topics.get(topic)?.confusable || []).includes(it.group)) && it.area !== 'mistakes');
+    if (kind === 'today') pool = pool.filter(it => it.area !== 'writing');
+  }
+  const weak = (/** @type {any} */ a, /** @type {any} */ b) => R(s, a, today) - R(s, b, today);
+  const dueL = pool.filter(it => !unseen(s, it) && due(s, it)).sort(weak).map(it => it.id);
+  const rest = pool.filter(it => !unseen(s, it) && !due(s, it)).sort(weak).map(it => it.id);
+  // a missed round answers items already seen; a mistakes round has no daily cap; the rest share the day's quota
+  const fresh = kind === 'missed' ? [] : kind === 'mistakes' ? pool.filter(it => unseen(s, it)).map(it => it.id) : newOrder(s, pool, true).map(it => it.id);
+  const st = kind === 'write' ? 'w' : area === 'grammar' || kind === 'topic' ? 'g' : 'p';
+  const newLeft = !c.newItems || kind === 'missed' ? 0 : kind === 'mistakes' ? Infinity : kind === 'today' ? newLeft_(s) : newLeftOf(s, st);
+  return { due: dueL, fresh, rest, newLeft, daily: kind !== 'mistakes' };
+}
+const newLeft_ = (/** @type {State} */ s) => newLeft(s);
 
 /** Due counts for the next n days, today first. @param {Record<string, any>} cards @param {string} today */
 export const forecast = (/** @type {Record<string, any>} */ cards, /** @type {any} */ c, n = 8) => RD.forecast(cards, c.today, n, c);

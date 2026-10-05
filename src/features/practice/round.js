@@ -28,7 +28,9 @@ import { play as playAudio, stop as stopAudio, prefetchAudio } from '../../servi
 import { recallBar } from './hub.js';
 import { Field } from '../../core/brand.js';
 import { readinessView } from './field.js';
-import { parseClusterKind, itemFor as clusterItem, compose as composeCluster, cardIds as clusterCards, pickIds, typable, zipfOf } from './clusters/items.js';
+import { parseClusterKind, itemFor as clusterItem, compose as composeCluster, cardIds as clusterCards, pickIds, typable, zipfOf, buckets as clusterBuckets } from './clusters/items.js';
+import * as RS from '../../domain/roundsize.js';
+import { sizedKind } from './sizes.js';
 import { loadClusters, dueCards as clusterDue, update as updateClusters, dayOf as clusterDay, recallOf, DECK as CLUSTER_DECK } from './clusters/data.js';
 import { drawClusterDone } from './clusters/view.js';
 import { marked } from '../../data/known.js';
@@ -137,7 +139,11 @@ export async function mountRound(el, ctx) {
   let st = stateFor(ctx, data);
   const sess = session(store);
   const saved = S.savedRound(sess, slot);
-  /** @type {any} */ let round = S.resumable(saved, st.c.today, Date.now()) ? structuredClone(saved) : null;
+  // the round size picker's choice (picker.js): Recommended is the composer's round; a custom size or "all" draws
+  // from the whole list (domain/roundsize.js). A saved round of another size is not resumed.
+  const sized = sizedKind(spec) && st.c.phase !== 'day' ? RS.parseSize(ctx.query.get('size')) : null;
+  const want = sized ? RS.sizeKey(sized) : null;
+  /** @type {any} */ let round = S.resumable(saved, st.c.today, Date.now()) && (!want || (saved.size || 'rec') === want) ? structuredClone(saved) : null;
   if (!round) {
     if (st.day.traps == null && spec.kind === 'today') st.day.traps = C.trapSet(st);
     let ids;
@@ -145,15 +151,17 @@ export async function mountRound(el, ctx) {
       const c0 = st.c, cards0 = store.cards(deck) || {};
       const pool = ck.key ? clusterCards(clusters.ix.byKey.get(ck.key), clusters.ix) : ck.pick ? picked : clusterDue(store, c0);
       const mk = marked(store);
-      ids = composeCluster({ ids: pool, cards: cards0, c: c0, isDue: rec => RD.isDue(rec, c0.today, c0), recall: recallOf(c0), skip: id => skipsNew(mk, id), zipf: zipfOf(clusters.ix),
-        ...(ck.pick ? { size: picked.length, newCap: picked.length } : {}) }).ids;
+      const co = { ids: pool, cards: cards0, c: c0, isDue: (/** @type {any} */ rec) => RD.isDue(rec, c0.today, c0), recall: recallOf(c0), skip: (/** @type {string} */ id) => skipsNew(mk, id), zipf: zipfOf(clusters.ix) };
+      ids = sized && sized !== 'rec' ? RS.pick(clusterBuckets(co), sized).ids
+        : composeCluster({ ...co, ...(ck.pick ? { size: picked.length, newCap: picked.length } : {}) }).ids;
       if (ck.due) ids = ids.filter(id => cards0[id]?.reps);
       addClusterItems(ids);
       ids = ids.filter(id => data.byId.has(id));
-    } else ids = C.compose(st, spec);
+    } else ids = sized && sized !== 'rec' ? RS.pick(C.buckets(st, spec), sized).ids : C.compose(st, spec);
     if (!ids.length) return drawNothing();
     round = S.startRound(ids, spec, st.c.today, Date.now());
     if (ck) round.deck = deck;
+    if (want) round.size = want;
     saveLogs(store, { round, slot, day: st.day });
   }
   if (ck) addClusterItems(round.queue.map((/** @type {any} */ q) => q.id));

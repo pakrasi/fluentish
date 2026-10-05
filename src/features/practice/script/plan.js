@@ -63,6 +63,20 @@ export function words(script, cardOf, c) {
 }
 
 /**
+ * A script's words by what a round would do with them (domain/roundsize.js Buckets), for the round size picker.
+ * newLeft: newAllowed() for the script today (it shares the B1 day's new items).
+ * @param {any} script @param {(id: string) => {rec: any, deck: string} | null} cardOf @param {any} c @param {number} newLeft
+ * @returns {import('../../../domain/roundsize.js').Buckets}
+ */
+export function wordBuckets(script, cardOf, c, newLeft) {
+  const w = words(script, cardOf, c);
+  const due = new Set(w.due);
+  const R = (/** @type {string} */ id) => FS.Ron(cardOf(id)?.rec, c.today);
+  const rest = wordIds(script).filter(id => cardOf(id)?.rec?.reps && !due.has(id)).sort((a, b) => R(a) - R(b));
+  return { due: [...w.due].sort((a, b) => String(cardOf(a)?.rec?.due).localeCompare(String(cardOf(b)?.rec?.due))), fresh: w.fresh, rest, newLeft, daily: true };
+}
+
+/**
  * How many new words this script may introduce today.
  * @param {any} script @param {any} prog kv 'scripts.progress'[id] @param {string} today
  * @param {{newItems?: boolean, dayLeft?: number}} [o] newItems: the clock allows new items today (false on the B1

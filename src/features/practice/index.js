@@ -24,6 +24,7 @@ import { refreshWords, secrets, loadData, stateFor } from './data.js';
 import { COLLECTION as WORDS, inQueue } from './words.js';
 import * as RD from '../../domain/b1ready.js';
 import { warmVoices } from './speech.js';
+import { pickerLinks } from './picker.js';
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
 export async function mount(el, ctx) {
@@ -41,6 +42,19 @@ export async function mount(el, ctx) {
     return;
   }
   warmVoices();
+  // list pages: a round link opens the round size picker first (picker.js); rounds and Quick sort run as before
+  const lists = !['round', 'sort', 'known'].includes(parts[0]) && !(parts[0] === 'situations' && parts[1] === 'round');
+  if (lists) {
+    const off = pickerLinks(ctx, el);
+    const res = await mountList(el, ctx, parts);
+    return { unmount() { off(); if (typeof res === 'function') res(); else if (res && typeof res.unmount === 'function') res.unmount(); },
+      canLeave: res && typeof res.canLeave === 'function' ? () => res.canLeave() : undefined };
+  }
+  return mountList(el, ctx, parts);
+}
+
+/** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx @param {string[]} parts @returns {Promise<any>} */
+async function mountList(el, ctx, parts) {
   if (parts[0] === 'scripts') return (await import('./script/index.js')).mountScripts(el, ctx, parts.slice(1));
   if (parts[0] === 'clusters') return (await import('./clusters/view.js')).mountClusters(el, ctx, parts.slice(1));
   if (parts[0] === 'sort') return (await import('./known/sort.js')).mountSort(el, ctx);

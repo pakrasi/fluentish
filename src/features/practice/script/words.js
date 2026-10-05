@@ -11,7 +11,8 @@ import * as RD from '../../../domain/b1ready.js';
 import { gradeAnswer } from '../grade.js';
 import * as St from './store.js';
 import { lexicon } from './lexicon.js';
-import { words as wordState, fsCtx, newAllowed } from './plan.js';
+import { words as wordState, fsCtx, newAllowed, wordBuckets } from './plan.js';
+import * as RS from '../../../domain/roundsize.js';
 import { tokenize } from './parse.js';
 import { checkMark } from './ui.js';
 import { addActivity } from '../data.js';
@@ -53,7 +54,11 @@ export async function mountWords(el, ctx) {
     // new script words share the B1 day's new items and stop when the clock allows none (audit P1-6)
     let dayLeft = Infinity;
     try { dayLeft = todayBudget({ store, c, settings: ctx.settings() }).newLeft; } catch { /* no budget: the per-script cap holds */ }
-    ids = [...ws.due.sort((a, b) => String(cards(a)?.rec?.due).localeCompare(String(cards(b)?.rec?.due))), ...ws.fresh.slice(0, newAllowed(script, St.progress(store, script.id), c.today, { newItems: c.newItems !== false, dayLeft }))].slice(0, ROUND);
+    const allowed = newAllowed(script, St.progress(store, script.id), c.today, { newItems: c.newItems !== false, dayLeft });
+    // the round size picker's choice (picker.js, domain/roundsize.js): a custom size or all of the script's words
+    const sized = RS.parseSize(ctx.query.get('size'));
+    ids = sized && sized !== 'rec' ? RS.pick(wordBuckets(script, cards, c, allowed), sized).ids
+      : [...ws.due.sort((a, b) => String(cards(a)?.rec?.due).localeCompare(String(cards(b)?.rec?.due))), ...ws.fresh.slice(0, allowed)].slice(0, ROUND);
   } else {
     ids = [...info.keys()].filter(id => { const r = cards(id)?.rec; return r && r.reps && RD.isDue(r, c.today, c); }).slice(0, ROUND);
   }
