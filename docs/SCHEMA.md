@@ -65,9 +65,9 @@ Every client-created record carries `id` (UUIDv7), `profileId`, `deviceId` and `
 ```js
 { id, v: 1, profileId, deviceId, seq, at: '…T21:04:05.120-04:00', day: 'YYYY-MM-DD', type, payload, synced, path }
 ```
-`seq` is monotonic per device. `day` is the study day (04:00 cutoff) when the event happened. Types: `card.reviewed`, `exam.attempt`, `exam.voice`, `vocab.captured`, `vocab.reviewed`, `feedback.created`, `training.logged`, `settings.changed`, `legacy.imported`.
+`seq` is monotonic per device. `day` is the study day (04:00 cutoff) when the event happened. Types: `card.reviewed`, `card.marked_known`, `card.unmarked_known`, `exam.attempt`, `exam.voice`, `vocab.captured`, `vocab.reviewed`, `feedback.created`, `training.logged`, `settings.changed`, `legacy.imported`.
 
-`card.reviewed` must carry `{deck, itemId, g, ms, flags, mode, ctx: {exam, phase, tz}, base: {u, reps}, post}` (review B4): the scheduler's load balancing and the exam-date cap depend on the moment of review, so a replay elsewhere takes `post` when `base` matches the current card and otherwise re-runs `schedule()` with `forecast = () => 0`. The schema enforces these fields. `path` is the GitHub file path for the results sync, assigned when the event is created so retries write the same file (review S5, stage C).
+`card.marked_known` and `card.unmarked_known` ("I know this", src/domain/known.js and src/data/known.js) carry `{deck, by: 'self' | 'igloo', items: [{itemId, base, post}], ctx: {exam, phase, tz}}`, one event per deck and action; `post` is the card after the change (null: deleted by an undo). A marked card has an added `known` field: `{by, on, prev}` until its check, `{by, on, checked, ok}` after. `card.reviewed` must carry `{deck, itemId, g, ms, flags, mode, ctx: {exam, phase, tz}, base: {u, reps}, post}` (review B4): the scheduler's load balancing and the exam-date cap depend on the moment of review, so a replay elsewhere takes `post` when `base` matches the current card and otherwise re-runs `schedule()` with `forecast = () => 0`. The schema enforces these fields. `path` is the GitHub file path for the results sync, assigned when the event is created so retries write the same file (review S5, stage C).
 
 ### Item ids in deck `b1`
 

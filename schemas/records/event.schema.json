@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "event@1",
   "title": "Progress event",
-  "description": "Append-only, the unit of sync. card.reviewed carries ctx, base and post so another device or a server can rebuild the card without replaying load balancing (review B4).",
+  "description": "Append-only, the unit of sync. card.reviewed carries ctx, base and post so another device or a server can rebuild the card without replaying load balancing (review B4). card.marked_known and card.unmarked_known carry {deck, by, items: [{itemId, base, post}], ctx} (src/domain/known.js).",
   "type": "object",
   "required": [
     "id",
@@ -45,6 +45,8 @@
     "type": {
       "enum": [
         "card.reviewed",
+        "card.marked_known",
+        "card.unmarked_known",
         "exam.attempt",
         "exam.voice",
         "vocab.captured",
@@ -134,6 +136,83 @@
                   "type": [
                     "object",
                     "null"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "anyOf": [
+        {
+          "properties": {
+            "type": {
+              "not": {
+                "enum": [
+                  "card.marked_known",
+                  "card.unmarked_known"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "payload": {
+              "type": "object",
+              "required": [
+                "deck",
+                "by",
+                "items",
+                "ctx"
+              ],
+              "properties": {
+                "deck": {
+                  "type": "string"
+                },
+                "by": {
+                  "enum": [
+                    "self",
+                    "igloo"
+                  ]
+                },
+                "items": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "itemId",
+                      "base",
+                      "post"
+                    ],
+                    "properties": {
+                      "itemId": {
+                        "type": "string"
+                      },
+                      "base": {
+                        "type": [
+                          "object",
+                          "null"
+                        ]
+                      },
+                      "post": {
+                        "type": [
+                          "object",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "ctx": {
+                  "type": "object",
+                  "required": [
+                    "exam",
+                    "phase",
+                    "tz"
                   ]
                 }
               }

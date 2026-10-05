@@ -32,7 +32,7 @@ export const BUILT_MODES = /** @type {const} */ (['topic', 'family', 'opp', 'lev
 /** Word-type groups in map order. */
 export const TYPE_GROUPS = ['der', 'die', 'das', 'verb', 'adj', 'adv', 'prep', 'conj', 'setphrase', 'other', 'phrase', 'grammar'];
 /** Source groups in map order (knowledge.js Origin values); an item sits in the first one it has. */
-export const SOURCE_GROUPS = ['exam', 'script', 'speech', 'practice', 'test', 'lookup'];
+export const SOURCE_GROUPS = ['exam', 'script', 'speech', 'practice', 'test', 'lookup', 'self'];
 
 /**
  * @typedef {object} Item

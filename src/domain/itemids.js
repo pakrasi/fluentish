@@ -90,7 +90,7 @@ export function wordId(lemma, wordmap = {}, has = null) {
 /** The card id of the n-th mistake (1-based) of an exam attempt. @param {string} attemptId @param {number} n */
 export const mistakeId = (attemptId, n) => `F:${attemptId}-${n}`;
 
-/** @typedef {'exam'|'speech'|'practice'|'lookup'|'script'|'test'} Origin */
+/** @typedef {'exam'|'speech'|'practice'|'lookup'|'script'|'test'|'self'} Origin */
 /**
  * Where an item was first met, from its card id and deck, for cards that have no recorded src (every card made before
  * src was recorded) and as the src of new cards: deck 'speak' → speech, 'script' → script; in deck 'b1' a mistake

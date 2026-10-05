@@ -18,6 +18,7 @@ import { writingFocus } from '../../domain/modules.js';
 import { slotKey } from './session.js';
 import { scriptNewShown } from './script/today.js';
 import { sideMinutes, writingTask } from './plan.js';
+import { marked, importPlacement } from '../../data/known.js';
 
 // igloo.words.de and igloo.chunks.german (both precached) only feed the grader's lexicon of German word forms; without
 // them the B1 content's own words do
@@ -46,7 +47,32 @@ export async function loadData(ctx) {
     schreiben: schreiben && Array.isArray(schreiben.items) ? schreiben : null }));
   data.wordmap = wordmap || {};
   memo = { key, data };
+  placeOnce(ctx, data, Array.isArray(lexWords) ? lexWords : []);
   return data;
+}
+
+/**
+ * Igloo's placement results ("known" in its Test) become marks once a profile, through the same path as "I know this"
+ * (data/known.js importPlacement): a pool item under its pool id (a chunk under the B1 phrase that is its twin), any
+ * other word of the list as a deck-clusters word card. Only for the profile the legacy import ran for. Never throws.
+ * @param {any} ctx @param {any} data the pool @param {any[]} words the German word list
+ */
+function placeOnce(ctx, data, words) {
+  try {
+    if (!(ctx.store.get('meta', {}) || {}).migratedAt || (ctx.store.get('known', {}) || {}).placement) return;
+    const raw = globalThis.localStorage && localStorage.getItem('doors.know.v1');
+    const know = raw ? JSON.parse(raw) || {} : {};
+    if (!Object.keys(know).length) return;
+    /** @type {Map<string, string>} */ const twin = new Map();
+    for (const it of data.pool) if (it.chunk) twin.set(`K:${it.chunk}`, it.id);
+    const listed = new Set(words.filter(w => w && !/[…()[\]]/.test(w.w)).map(w => `W:${w.id}`));
+    importPlacement(ctx, know, id => {
+      if (data.byId.has(id)) return data.byId.get(id).area === 'mistakes' ? null : { deck: 'b1', id };
+      if (twin.has(id)) return { deck: 'b1', id: /** @type {string} */ (twin.get(id)) };
+      if (listed.has(id)) return { deck: 'clusters', id };
+      return null;
+    });
+  } catch { /* legacy data unreadable: nothing to import */ }
 }
 
 /** The German example sentences of the chunk file (igloo.chunks.german: {chunks: {id: {ex}}}). @param {any} f */
@@ -73,7 +99,8 @@ export function stateFor(ctx, data) {
   const c = ctx.clock.ctx();
   const cards = ctx.store.cards('b1');
   const day = dayLog(ctx.store, c.today);
-  const base = { data, cards, day, c, newPerDay: 0 };
+  // items marked known anywhere are never introduced as new (domain/known.js)
+  const base = { data, cards, day, c, newPerDay: 0, marked: marked(ctx.store) };
   // the review round's due count: mistakes from corrections and the Schreiben phrases have their own rows and rounds
   let dueN = 0, unseen = 0, wDue = 0, wUnseen = 0;
   for (const it of data.pool) {

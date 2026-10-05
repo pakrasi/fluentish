@@ -31,6 +31,8 @@ import { readinessView } from './field.js';
 import { parseClusterKind, itemFor as clusterItem, compose as composeCluster, cardIds as clusterCards, pickIds, typable } from './clusters/items.js';
 import { loadClusters, dueCards as clusterDue, update as updateClusters, dayOf as clusterDay, recallOf, DECK as CLUSTER_DECK } from './clusters/data.js';
 import { drawClusterDone } from './clusters/view.js';
+import { marked } from '../../data/known.js';
+import { skipsNew } from '../../domain/known.js';
 
 const SVG = 'http://www.w3.org/2000/svg';
 const TEIL = /** @type {Record<string, string>} */ ({ S1: 'Teil 1', S2: 'Teil 2', S3: 'Teil 3', W1: 'Aufgabe 1', W2: 'Aufgabe 2', W3: 'Aufgabe 3', L2: 'Teil 2', L3: 'Teil 3', L5: 'Teil 5' });
@@ -140,7 +142,8 @@ export async function mountRound(el, ctx) {
     if (ck) {
       const c0 = st.c, cards0 = store.cards(deck) || {};
       const pool = ck.key ? clusterCards(clusters.ix.byKey.get(ck.key), clusters.ix) : ck.pick ? picked : clusterDue(store, c0);
-      ids = composeCluster({ ids: pool, cards: cards0, c: c0, isDue: rec => RD.isDue(rec, c0.today, c0), recall: recallOf(c0),
+      const mk = marked(store);
+      ids = composeCluster({ ids: pool, cards: cards0, c: c0, isDue: rec => RD.isDue(rec, c0.today, c0), recall: recallOf(c0), skip: id => skipsNew(mk, id),
         ...(ck.pick ? { size: picked.length, newCap: picked.length } : {}) }).ids;
       if (ck.due) ids = ids.filter(id => cards0[id]?.reps);
       addClusterItems(ids);

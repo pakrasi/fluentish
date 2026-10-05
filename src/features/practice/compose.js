@@ -17,6 +17,7 @@ import * as FS from '../../domain/fsrs.js';
 import * as RD from '../../domain/b1ready.js';
 import { roundMinutes } from '../../domain/today.js';
 import { ROUND, SPLIT, NEW_ITEM_MIN, dailyNew, streamQuota } from '../../domain/budget.js';
+import { skipsNew } from '../../domain/known.js';
 
 export { ROUND, NEW_ITEM_MIN };
 
@@ -28,6 +29,7 @@ export { ROUND, NEW_ITEM_MIN };
  * @property {import('../../core/clock.js').ClockCtx} c
  * @property {number} newPerDay
  * @property {number} [writingNew]   new Schreiben phrases for the day (stream 'w')
+ * @property {Set<string>} [marked]   items marked known in any deck (domain/known.js markedItems): never introduced as new
  */
 
 /** @param {State} s @param {any} it */
@@ -96,7 +98,7 @@ export function newOrder(s, pool, anyTopic = false) {
     return 11;
   };
   const eligible = (/** @type {any} */ it) => it.rank !== 21 && !(it.group === 'praeteritum' && it.kind !== 'grammar');
-  const list = pool.filter(it => unseen(s, it) && eligible(it) && (anyTopic || topicReady(s, it)));
+  const list = pool.filter(it => unseen(s, it) && eligible(it) && (anyTopic || topicReady(s, it)) && !(s.marked && skipsNew(s.marked, it.id, it.chunk)));
   const base = list.filter(it => !it.mine).map((it, i) => /** @type {[number, number, number, number, number, any]} */ ([tier(it), it.area === 'grammar' || it.area === 'writing' ? it.rank ?? 99 : 0, it.star ? 0 : 1, it.bank ? 1 : 0, i, it]))
     .sort((a, b) => a[0] - b[0] || a[1] - b[1] || a[2] - b[2] || a[3] - b[3] || a[4] - b[4]).map(x => x[5]);
   // mistakes from corrections are spread through the front of the order: one in every three

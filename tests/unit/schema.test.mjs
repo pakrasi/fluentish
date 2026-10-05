@@ -73,4 +73,10 @@ test('record schemas accept well-formed records', () => {
   assert.deepEqual(validate(ev, { ...base, type: 'settings.changed', payload: { key: 'exam.date', value: null } }), []);
   assert.ok(validate(ev, { ...base, type: 'card.reviewed', payload: { deck: 'b1', itemId: 'x', g: 3 } }).length > 0, 'card.reviewed needs ctx, base, post');
   assert.deepEqual(validate(ev, { ...base, type: 'card.reviewed', payload: { deck: 'b1', itemId: 'x', g: 3, ctx: { exam: null, phase: 'none', tz: 'UTC' }, base: null, post: {} } }), []);
+  // "I know this" (domain/known.js): one event per deck and action
+  const mark = { deck: 'clusters', by: 'self', items: [{ itemId: 'W:x', base: null, post: { S: 60, D: 3.932, due: '2026-12-02', reps: 1, known: { by: 'self', on: '2026-10-03', prev: null } } }], ctx: { exam: null, phase: 'none', tz: 'UTC' } };
+  assert.deepEqual(validate(ev, { ...base, type: 'card.marked_known', payload: mark }), []);
+  assert.deepEqual(validate(ev, { ...base, type: 'card.unmarked_known', payload: { ...mark, items: [{ itemId: 'W:x', base: { u: 1, reps: 1 }, post: null }] } }), []);
+  assert.ok(validate(ev, { ...base, type: 'card.marked_known', payload: { deck: 'b1', by: 'self', items: [] } }).length > 0, 'a mark needs its items and ctx');
+  assert.deepEqual(validate(J('schemas/records/card-fsrs.schema.json'), mark.items[0].post), []);
 });

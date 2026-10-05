@@ -89,6 +89,39 @@
     },
     "seeded": {
       "type": "string"
+    },
+    "known": {
+      "type": "object",
+      "description": "Marked known (src/domain/known.js): by whom and on which day; prev is the record before the mark (null: none) until the check, checked/ok once the check is answered.",
+      "required": [
+        "by",
+        "on"
+      ],
+      "properties": {
+        "by": {
+          "enum": [
+            "self",
+            "igloo"
+          ]
+        },
+        "on": {
+          "type": "string",
+          "format": "date"
+        },
+        "prev": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "checked": {
+          "type": "string",
+          "format": "date"
+        },
+        "ok": {
+          "type": "boolean"
+        }
+      }
     }
   }
 }

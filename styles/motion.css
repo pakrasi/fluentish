@@ -65,6 +65,9 @@
 /* card: back (previous card) */
 :root[data-vt="back"]::view-transition-old(fx-card) { animation: vt-out-right var(--dur-quick) var(--ease-in) both; }
 :root[data-vt="back"]::view-transition-new(fx-card) { animation: vt-in-left var(--dur-card) var(--spring-snappy) 40ms both; }
+/* "I know this": the card lifts away, softly, and the next one rises into its place */
+:root[data-vt="lift"]::view-transition-old(fx-card) { animation: vt-lift 300ms var(--ease-out) both; }
+:root[data-vt="lift"]::view-transition-new(fx-card) { animation: vt-in-up var(--dur-card) var(--spring-soft) 90ms both; }
 /* a round's chrome (header with the segments and count, the action row) never leaves the screen while the card
    swaps: it has its own names and no animation, and the page around the card holds still */
 .pr-round .pr-top { view-transition-name: fx-roundhead; }
@@ -84,6 +87,8 @@
 @keyframes vt-in-left   { from { opacity: 0; transform: translateX(calc(-40px * var(--move))) scale(calc(1 - 0.015 * var(--move))); } }
 @keyframes vt-fade-out  { to { opacity: 0; } }
 @keyframes vt-rise      { from { opacity: 0; transform: translateY(calc(8px * var(--move))); } }
+@keyframes vt-lift      { to { opacity: 0; transform: translateY(calc(-40px * var(--move))) scale(calc(1 - 0.03 * var(--move))); } }
+@keyframes vt-in-up     { from { opacity: 0; transform: translateY(calc(18px * var(--move))); } }
 
 /* WAAPI fallback uses the same keyframes by class */
 .fx-out-left  { animation: vt-out-left var(--dur-quick) var(--ease-in) both; }
@@ -91,6 +96,8 @@
 .fx-in-right  { animation: vt-in-right var(--dur-card) var(--spring-snappy) both; }
 .fx-in-left   { animation: vt-in-left var(--dur-card) var(--spring-snappy) both; }
 .fx-rise      { animation: vt-rise var(--dur-card) var(--ease-out) both; }
+.fx-out-up    { animation: vt-lift 300ms var(--ease-out) both; }
+.fx-in-up     { animation: vt-in-up var(--dur-card) var(--spring-soft) both; }
 
 /* ---------- answer field: correct / wrong ---------- */
 .answer { position: relative; }

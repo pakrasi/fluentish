@@ -31,7 +31,10 @@
                'unseen'  no record anywhere
      today     practised today with Good or Easy (the accent on the map)
      sources   where the item was met: exam, speech, practice, lookup, script, test (a card's src, or origin() for
-               cards made before src was recorded; Igloo data is test; exam words exam; Look up lookup)
+               cards made before src was recorded; Igloo data is test; exam words exam; Look up lookup), and self for
+               an item he marked known (domain/known.js; Igloo's placement marks count as test)
+     marked    'self' | 'igloo' while a mark waits for its check, else null. A marked card is S 60 days, reviewed the
+               day it was marked, so its recall is about 1 and it reads as known at once
    A concept: recall = the mean recall of its items (unseen items count 0), coverage = share of items seen; 'known'
    when the mean over its seen items is ≥ 0.90 and at least half are seen, 'shaky' from 0.70 (or known with less
    than half seen), 'unknown' below, 'unseen' when none is seen.
@@ -56,6 +59,7 @@ const TEST = /** @type {Record<string, {R: number, S: number}>} */ ({ known: { R
  * @property {number} stability     days (0 without a graduated card)
  * @property {string | null} last   the last day he practised it ('YYYY-MM-DD'), or null
  * @property {boolean} today        practised today with Good or Easy
+ * @property {'self' | 'igloo' | null} marked   marked known (domain/known.js) and not checked yet: by whom
  * @property {Origin[]} sources
  * @property {string[]} cards       the card ids that feed it ('<deck>/<card id>')
  */
@@ -122,11 +126,11 @@ export function knowledge(input) {
   const { today, decks = {}, know = {}, srs = {}, lang = 'german', examWords = [], seen = {} } = input;
   const resolve = input.resolve || resolver();
   const examSet = new Set(examWords);
-  /** @type {Map<string, {R: number, S: number, grad: boolean, lapse: boolean, last: string | null, today: boolean, sources: Set<Origin>, cards: string[]}>} */
+  /** @type {Map<string, {R: number, S: number, grad: boolean, lapse: boolean, last: string | null, today: boolean, marked: string | null, sources: Set<Origin>, cards: string[]}>} */
   const acc = new Map();
   const slot = (/** @type {string} */ id) => {
     let a = acc.get(id);
-    if (!a) { a = { R: 0, S: 0, grad: false, lapse: false, last: null, today: false, sources: new Set(), cards: [] }; acc.set(id, a); }
+    if (!a) { a = { R: 0, S: 0, grad: false, lapse: false, last: null, today: false, marked: null, sources: new Set(), cards: [] }; acc.set(id, a); }
     return a;
   };
   const observe = (/** @type {ReturnType<typeof slot>} */ a, /** @type {number} */ R, /** @type {number} */ S) => {
@@ -140,7 +144,11 @@ export function knowledge(input) {
       if (!id) continue;
       const a = slot(id);
       a.cards.push(`${deck}/${cid}`);
-      a.sources.add(/** @type {Origin} */ (rec.src || origin(cid, deck, x => examSet.has(resolve(x, deck) || x))));
+      // a card marked known (domain/known.js) and not checked yet: its source is the mark ('self', or Igloo's test),
+      // plus where it was met when it had been met before the mark
+      const by = rec.known && !rec.known.checked ? rec.known.by : null;
+      if (by) { a.marked = by; a.sources.add(by === 'igloo' ? 'test' : 'self'); }
+      if (!by || rec.src || (rec.hist || []).length) a.sources.add(/** @type {Origin} */ (rec.src || origin(cid, deck, x => examSet.has(resolve(x, deck) || x))));
       if (rec.last && (!a.last || rec.last > a.last)) a.last = rec.last;
       const h = rec.hist || [];
       if (rec.last === today && h.length && h[h.length - 1][0] === today && h[h.length - 1][1] >= 3) a.today = true;
@@ -176,13 +184,13 @@ export function knowledge(input) {
   /** @type {Map<string, Score>} */ const items = new Map();
   for (const [id, a] of acc) {
     items.set(id, { id, state: stateOf(a.R, a.grad, a.lapse), recall: a.grad ? a.R : Math.min(a.R, SHAKY_R - 0.01), stability: a.grad ? a.S : 0,
-      last: a.last, today: a.today, sources: [...a.sources].sort(), cards: a.cards });
+      last: a.last, today: a.today, marked: /** @type {Score['marked']} */ (a.marked), sources: [...a.sources].sort(), cards: a.cards });
   }
   return makeView(items);
 }
 
 /** @param {string} id @returns {Score} */
-const unseen = id => ({ id, state: 'unseen', recall: 0, stability: 0, last: null, today: false, sources: [], cards: [] });
+const unseen = id => ({ id, state: 'unseen', recall: 0, stability: 0, last: null, today: false, marked: null, sources: [], cards: [] });
 
 /** @param {Map<string, Score>} items */
 function makeView(items) {
@@ -214,7 +222,7 @@ function makeView(items) {
       /** @type {State} */ let state = 'unseen';
       if (k) state = seenMean >= KNOWN_R - 1e-9 ? (coverage >= 0.5 ? 'known' : 'shaky') : seenMean >= SHAKY_R - 1e-9 ? 'shaky' : 'unknown';
       const last = seenS.map(s => s.last).filter(Boolean).sort().pop() || null;
-      return { id: `GC:${id}`, state, recall, stability: 0, last, today: scores.some(s => s.today), coverage, n, seen: k,
+      return { id: `GC:${id}`, state, recall, stability: 0, last, today: scores.some(s => s.today), marked: null, coverage, n, seen: k,
         sources: [...new Set(scores.flatMap(s => s.sources))].sort(), cards: [] };
     },
   };

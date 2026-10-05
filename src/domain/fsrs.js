@@ -94,6 +94,9 @@ function schedule(rec0, o, ctx, now = Date.now()) {
     rec = { ...rec0 }; entry[4] += 'l'; wrote = false;
     if (rec.relearn) { if (g >= 3) { rec.relearn = false; rec.due = D8.add(t, 1); } else reinsert = 'lapse'; }
   }
+  // a card marked known (domain/known.js): its first answer that changes the card is the check; a pass or a miss,
+  // the mark is closed and the card goes on as any other (a miss is a lapse, back in normal reviews)
+  if (wrote && rec0 && rec0.known && !rec0.known.checked) rec.known = { by: rec0.known.by, on: rec0.known.on, checked: t, ok: g >= 2 };
   log(rec);
   return { rec, reinsert, wrote };
 }
@@ -118,7 +121,9 @@ function recap(store, ctx) {
   for (let d = cap; d >= D8.add(cap, -2) && d >= tomorrow; d = D8.add(d, -1)) days.push(d);
   /** @type {Record<string, number>} */ const load = Object.fromEntries(days.map(d => [d, 0]));
   for (const rec of Object.values(store)) if (rec && rec.reps && rec.due && load[rec.due] != null) load[rec.due]++;
-  const ids = Object.keys(store).filter(id => { const r = store[id]; return r && r.reps && r.due && r.due > cap; }).sort();
+  // a card marked known keeps its one check where it is (domain/known.js): clamping hundreds of them before the exam
+  // would bury the days that matter
+  const ids = Object.keys(store).filter(id => { const r = /** @type {any} */ (store[id]); return r && r.reps && r.due && r.due > cap && !(r.known && !r.known.checked); }).sort();
   for (const id of ids) {
     let best = days[0];
     for (const d of days) if (load[d] < load[best]) best = d;

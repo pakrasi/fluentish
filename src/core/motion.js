@@ -28,6 +28,7 @@ const raf = () => new Promise(r => requestAnimationFrame(r));
  * Swap content with a choreographed transition.
  * update: sync or async function that changes the DOM.
  * kind: 'forward' | 'back' (study card, element needs view-transition-name: fx-card)
+ *       'lift' (the study card lifts away and the next rises into its place: "I know this")
  *       'view' (route/tab change, element needs view-transition-name: fx-view)
  * fallbackEl: element to animate with WAAPI-by-class when View Transitions are missing.
  * Resolves when the new state is on screen (not when the animation ends), so input is never blocked.
@@ -35,10 +36,10 @@ const raf = () => new Promise(r => requestAnimationFrame(r));
 export async function swap(update, { kind = 'forward', fallbackEl = null } = {}) {
   if (reduced() || !document.startViewTransition) {
     if (reduced() || !fallbackEl) { await update(); if (fallbackEl && reduced()) crossfade(fallbackEl); return; }
-    const outCls = kind === 'back' ? 'fx-out-right' : kind === 'view' ? null : 'fx-out-left';
-    if (outCls) { fallbackEl.classList.add(outCls); await wait(cssMs('--dur-quick', 160)); fallbackEl.classList.remove(outCls); }
+    const outCls = kind === 'back' ? 'fx-out-right' : kind === 'view' ? null : kind === 'lift' ? 'fx-out-up' : 'fx-out-left';
+    if (outCls) { fallbackEl.classList.add(outCls); await wait(kind === 'lift' ? 260 : cssMs('--dur-quick', 160)); fallbackEl.classList.remove(outCls); }
     await update();
-    const inCls = kind === 'back' ? 'fx-in-left' : kind === 'view' ? 'fx-rise' : 'fx-in-right';
+    const inCls = kind === 'back' ? 'fx-in-left' : kind === 'view' ? 'fx-rise' : kind === 'lift' ? 'fx-in-up' : 'fx-in-right';
     fallbackEl.classList.add(inCls);
     fallbackEl.addEventListener('animationend', () => fallbackEl.classList.remove(inCls), { once: true });
     return;
@@ -47,6 +48,39 @@ export async function swap(update, { kind = 'forward', fallbackEl = null } = {})
   const t = document.startViewTransition(update);
   t.finished.finally(() => { if (root.dataset.vt === kind) delete root.dataset.vt; });
   await t.updateCallbackDone;
+}
+
+/**
+ * Send a copy of an element flying into another on a short arc (Quick sort: a word into its Know or Learn stack). The
+ * copy is fixed, moves by transform and opacity only, shrinks into the target, and the target then lands with the
+ * pop spring. The element itself is free at once, so the caller can put the next word in it while the copy flies.
+ * Reduced motion: no flight; the target only changes state. Resolves when the copy has landed.
+ */
+export function fling(el, toEl, { duration = 440 } = {}) {
+  if (reduced() || !el || !toEl || !el.animate) return Promise.resolve();
+  const a = el.getBoundingClientRect(), b = toEl.getBoundingClientRect();
+  if (!a.width || !b.width) return Promise.resolve();
+  const cs = getComputedStyle(el);
+  const ghost = el.cloneNode(true);
+  ghost.removeAttribute('id');
+  ghost.setAttribute('aria-hidden', 'true');
+  for (const k of ['fontFamily', 'fontSize', 'fontWeight', 'fontStyle', 'lineHeight', 'letterSpacing', 'color', 'textAlign', 'whiteSpace']) ghost.style[k] = cs[k];
+  Object.assign(ghost.style, { position: 'fixed', left: `${a.left}px`, top: `${a.top}px`, width: `${a.width}px`, height: `${a.height}px`, margin: '0',
+    pointerEvents: 'none', zIndex: '80', transformOrigin: '50% 50%', willChange: 'transform, opacity' });
+  document.body.append(ghost);
+  const dx = b.left + b.width / 2 - (a.left + a.width / 2), dy = b.top + b.height / 2 - (a.top + a.height / 2);
+  const s = Math.max(0.12, Math.min(0.4, b.height / Math.max(1, a.height)));
+  const tilt = dx < 0 ? -6 : 6;
+  const anim = ghost.animate([
+    { transform: 'none', opacity: 1 },
+    { transform: `translate(${dx * 0.42}px, ${dy * 0.38 - 26}px) scale(0.72) rotate(${tilt * 0.6}deg)`, opacity: 0.95, offset: 0.42 },
+    { transform: `translate(${dx}px, ${dy}px) scale(${s}) rotate(${tilt}deg)`, opacity: 0.2 },
+  ], { duration, easing: 'cubic-bezier(0.45, 0, 0.25, 1)', fill: 'forwards' });
+  return anim.finished.catch(() => {}).then(() => {
+    ghost.remove();
+    const pop = getComputedStyle(root).getPropertyValue('--spring-pop').trim() || 'ease-out';
+    toEl.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.1)', offset: 0.35 }, { transform: 'scale(1)' }], { duration: 360, easing: pop });
+  });
 }
 
 function crossfade(el) {

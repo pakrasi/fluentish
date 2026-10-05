@@ -90,15 +90,17 @@ export function itemFor(id, ix, c, { t, where = '' }) {
  * NEW_PER_ROUND, none when the clock allows no new items), then, when nothing is due or new, seen cards not reviewed
  * today, least well known first, so a cluster can always be practised.
  * newCap: at most this many new cards (a round of words picked on the map takes all of them while new items are allowed).
- * @param {{ids: string[], cards: Record<string, any>, c: any, isDue: (rec: any) => boolean, recall: (rec: any) => number, size?: number, newCap?: number}} o
+ * skip: cards never introduced as new (their word is marked known in some deck, domain/known.js skipsNew); a card
+ * marked known waits for its check and is not practised ahead either.
+ * @param {{ids: string[], cards: Record<string, any>, c: any, isDue: (rec: any) => boolean, recall: (rec: any) => number, size?: number, newCap?: number, skip?: (id: string) => boolean}} o
  * @returns {{ids: string[], due: number, fresh: number, extra: boolean}}
  */
-export function compose({ ids, cards, c, isDue, recall, size = ROUND, newCap = NEW_PER_ROUND }) {
+export function compose({ ids, cards, c, isDue, recall, size = ROUND, newCap = NEW_PER_ROUND, skip = () => false }) {
   const due = ids.filter(id => cards[id]?.reps && isDue(cards[id])).sort((a, b) => recall(cards[a]) - recall(cards[b])).slice(0, size);
   const cap = c.newItems ? Math.min(newCap, size - due.length) : 0;
-  const fresh = ids.filter(id => !cards[id]?.reps).slice(0, Math.max(0, cap));
+  const fresh = ids.filter(id => !cards[id]?.reps && !skip(id)).slice(0, Math.max(0, cap));
   if (due.length + fresh.length) return { ids: spread(due, fresh), due: due.length, fresh: fresh.length, extra: false };
-  const extra = ids.filter(id => cards[id]?.reps && cards[id].last !== c.today).sort((a, b) => recall(cards[a]) - recall(cards[b])).slice(0, size);
+  const extra = ids.filter(id => cards[id]?.reps && cards[id].last !== c.today && !(cards[id].known && !cards[id].known.checked)).sort((a, b) => recall(cards[a]) - recall(cards[b])).slice(0, size);
   return { ids: extra, due: 0, fresh: 0, extra: extra.length > 0 };
 }
 

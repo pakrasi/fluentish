@@ -28,6 +28,8 @@ import { forecaster, tz, addActivity } from '../data.js';
 import { loadClusters, loadKnowledge, countsOf, cellsOf, dueCards, recallOf, state, update, dayOf, DECK } from './data.js';
 import { cardIds, itemFor, compose } from './items.js';
 import { isDue } from '../../../domain/b1ready.js';
+import { marked } from '../../../data/known.js';
+import { skipsNew } from '../../../domain/known.js';
 
 const back = (/** @type {string} */ href, /** @type {string} */ text) => h('a', { class: 'pr-backlink pressable', href }, icon('prev', { size: 16 }), text);
 const STATE_CLS = /** @type {Record<string, string>} */ ({ known: 'is-known', shaky: 'is-shaky', unknown: 'is-unknown', unseen: 'is-unseen' });
@@ -260,7 +262,8 @@ async function mountCluster(el, ctx, key) {
   lay.place(k);
   const ids = cardIds(cl, data.ix);
   const cards = store.cards(DECK) || {};
-  const plan = compose({ ids, cards, c, isDue: rec => isDue(rec, c.today, c), recall: recallOf(c) });
+  const mk = marked(store);
+  const plan = compose({ ids, cards, c, isDue: rec => isDue(rec, c.today, c), recall: recallOf(c), skip: x => skipsNew(mk, x) });
   const startN = plan.ids.length;
   const typed = startN ? h('a', { class: 'btn btn-primary pressable', href: `#/practice/round?kind=${encodeURIComponent(`cluster:${key}`)}` },
     plan.extra ? t('practice.clusters.ahead', { n: startN }) : t('practice.clusters.typed', { n: startN, min: roundMinutes(startN) })) : null;
@@ -336,7 +339,8 @@ async function mountSay(el, ctx, key) {
   const cl = data.ix.byKey.get(key);
   if (!cl) { ctx.go('/practice/clusters', { replace: true }); return restore; }
   let c = ctx.clock.ctx();
-  const plan = compose({ ids: cardIds(cl, data.ix), cards: store.cards(DECK) || {}, c, isDue: rec => isDue(rec, c.today, c), recall: recallOf(c) });
+  const mk = marked(store);
+  const plan = compose({ ids: cardIds(cl, data.ix), cards: store.cards(DECK) || {}, c, isDue: rec => isDue(rec, c.today, c), recall: recallOf(c), skip: x => skipsNew(mk, x) });
   if (!plan.ids.length) { ctx.go(`/practice/clusters/${type}/${cid}`, { replace: true }); return restore; }
   const round = { queue: plan.ids.map(id => ({ id })), i: 0, results: /** @type {any[]} */ ([]), planned: plan.ids.length };
   /** @type {Record<string, any>} */ const prev = {};
