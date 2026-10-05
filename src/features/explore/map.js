@@ -16,9 +16,15 @@ import { FS, LH, ART, STATE_ORDER } from '../../domain/atlas.js';
 const FONT = '"Fluentish Map"';
 const KMAX = 4;
 const TEXT_FROM = 6.5, TEXT_TO = 9.5;     // drawn font size (px) of the bars-to-type crossfade
-const BITMAP_BUDGET = 24e6;               // device pixels kept in group bitmaps
+// device pixels kept in group bitmaps: phones get less (WebKit counts every canvas backing store against a per-page cap
+// and frees them lazily, so evicted bitmaps are also zeroed before they are dropped)
+const BITMAP_BUDGET = typeof matchMedia === 'function' && matchMedia('(pointer: coarse)').matches ? 10e6 : 24e6;
 const BUILD_MS = 6;                       // bitmap building per frame
 const STATE_KEY = ['unseen', 'unknown', 'shaky', 'known'];
+const LABEL_MIN_R = 22;                   // a group's name shows only on discs at least 44 px across
+const FAMILY_LABELS = 12;                 // Word family at overview: names for the largest families only
+/** Free a canvas's backing store now (WebKit otherwise keeps it until a GC). @param {{cv: HTMLCanvasElement | OffscreenCanvas}} b */
+const free = b => { try { b.cv.width = 0; b.cv.height = 0; } catch { /* detached */ } };
 
 /** FNV-1a, 0..1. @param {string} s @param {number} salt */
 function hash(s, salt = 0) {
@@ -51,7 +57,8 @@ const easeInOut = (/** @type {number} */ t) => (t < 0.5 ? 4 * t * t * t : 1 - Ma
 /**
  * @param {HTMLCanvasElement} canvas
  * @param {{A: any, reduced: () => boolean, labelOf: (g: any) => string, countOf: (gi: number) => {n: number, known: number, shaky: number, unknown: number, unseen: number},
- *   insets: () => {top: number, bottom: number}, onWord: (i: number) => void, onGroup: (gi: number, far: boolean) => void, onEmpty: () => void, onHere: (gi: number) => void}} o
+ *   insets: () => {top: number, bottom: number}, onWord: (i: number) => void, onGroup: (gi: number, far: boolean) => void, onEmpty: () => void, onHere: (gi: number) => void,
+ *   onKbGroup?: (gi: number) => void}} o
  */
 export function createMap(canvas, o) {
   const A = o.A, n = A.n;
@@ -69,6 +76,8 @@ export function createMap(canvas, o) {
   /** @type {any} */ let inertia = null;
   let introT0 = 0;
   /** @type {{i: number, t0: number}[]} */ let glow = [];
+  /** @type {{i: number, t0: number} | null} */ let mark = null;   // a word a link flew to: an accent ring and a plate, 1.3 s
+  let markNext = -1;
   /** @type {Record<string, string>} */ let C = {};
   let version = 0;                 // bumps when what bitmaps show changes
   let layoutNo = 0;                // bumps with every layout shown (bitmap keys)
@@ -96,9 +105,10 @@ export function createMap(canvas, o) {
     canvas.width = Math.round(W * DPR); canvas.height = Math.round(H * DPR);
     kick();
   }
+  // the whole map on screen: 0.94 of the free stage, with 12 px kept clear for the rings, so no disc is ever cut
   const fitView = (/** @type {Layout} */ l = L) => {
-    const b = l.bounds, ins = o.insets();
-    const k = Math.min(W / (b.x1 - b.x0 + 60), (H - ins.top - ins.bottom) / (b.y1 - b.y0 + 60));
+    const b = l.bounds, ins = o.insets(), m = 12 + 6;
+    const k = 0.94 * Math.min((W - 2 * m) / Math.max(1, b.x1 - b.x0), (H - ins.top - ins.bottom - 2 * m) / Math.max(1, b.y1 - b.y0));
     return { x: (b.x0 + b.x1) / 2, y: (b.y0 + b.y1) / 2 - (ins.top - ins.bottom) / 2 / k, k };
   };
   const kmin = () => fitView().k * 0.6;
@@ -133,7 +143,7 @@ export function createMap(canvas, o) {
     if (flight) {
       const p = Math.min(1, (t - flight.t0) / flight.dur);
       cam = p >= 1 ? { ...flight.to } : flight.at(easeInOut(p) * flight.S);
-      if (p >= 1) flight = null; else busy = true;
+      if (p >= 1) { flight = null; if (markNext >= 0) { mark = { i: markNext, t0: t }; markNext = -1; busy = true; } } else busy = true;
     }
     if (inertia) {
       inertia.vx *= 0.92; inertia.vy *= 0.92; cam.x -= inertia.vx / cam.k; cam.y -= inertia.vy / cam.k;
@@ -142,6 +152,7 @@ export function createMap(canvas, o) {
     if (morph) { if (t - morph.t0 > morph.end) { morph = null; } busy = true; }
     if (introT0) { if (t - introT0 > 1500) introT0 = 0; busy = true; }
     if (glow.length) { glow = glow.filter(g => t - g.t0 < 1400); busy = busy || glow.length > 0; }
+    if (mark && t - mark.t0 > 1400) mark = null; else if (mark) busy = true;
     const d0 = performance.now();
     const pending = draw(t);
     drawMs.push(performance.now() - d0); if (drawMs.length > 600) drawMs.shift();
@@ -195,6 +206,7 @@ export function createMap(canvas, o) {
     let pending = false;
     // glow plates sit under the words
     if (glow.length) drawGlowPlates(t, k, ox, oy);
+    if (mark) drawMark(t, k, ox, oy, true);
     if (still && useBitmaps && fpx < TEXT_TO) pending = drawBitmaps(k, ox, oy, tText);
     else drawVector(k, ox, oy, tText, null);
     if (glow.length && tText > 0) drawGlowWords(t, k, ox, oy, tText);
@@ -203,10 +215,16 @@ export function createMap(canvas, o) {
       ctx.globalAlpha = 1; ctx.fillStyle = C.accent;
       ctx.fillRect(x, y + Math.max(2, fpx * 0.2), A.W[selected] * k, Math.max(2, fpx * 0.09));
     }
+    if (mark) drawMark(t, k, ox, oy, false);
     drawGroups(t, k, ox, oy, tText);
     ctx.globalAlpha = 1;
     return pending;
   }
+
+  /** Word family at overview: a disc under 44 px on screen fades to its ring alone (its words come in as you zoom).
+   * @param {any} g @param {number} k @returns {number} 0..1 */
+  const famFade = (g, k) => (L.mode !== 'family' || !g || FS * k >= TEXT_FROM ? 1 : smooth(LABEL_MIN_R * 0.55, LABEL_MIN_R, g.r * k));
+  const tiny = (/** @type {any} */ g, /** @type {number} */ k) => famFade(g, k) <= 0.01;
 
   /** Items whose box meets the view. @param {number} k @param {number} ox @param {number} oy @param {Set<number> | null} only */
   function visible(k, ox, oy, only) {
@@ -238,7 +256,7 @@ export function createMap(canvas, o) {
    */
   function drawItems(c, vis, k, ox, oy, aText, aBars, live) {
     const fpx = FS * k;
-    const alpha = (/** @type {number} */ i) => (live ? PA[i] : 1) * dimOf(i);
+    const alpha = (/** @type {number} */ i) => (live ? PA[i] * (L.mode === 'family' && L.G[i] >= 0 ? famFade(L.groups[L.G[i]], k) : 1) : 1) * dimOf(i);
     const isGlow = live && glow.length ? new Set(glow.map(g => g.i)) : null;
     if (aBars > 0.01) {
       const bh = Math.max(1, LH * k * 0.42);
@@ -319,7 +337,13 @@ export function createMap(canvas, o) {
    */
   function drawBitmaps(k, ox, oy, tText) {
     frameNo++;
-    const kt = tierOf(k), t0 = performance.now();
+    let kt = tierOf(k);
+    const t0 = performance.now();
+    // a frame that alone would need more than the budget draws from a lower tier (slightly soft, never blank)
+    let need = 0;
+    for (const g of L.groups) { const cx = g.x * k + ox, cy = g.y * k + oy, r = g.r * k; if (cx + r < 0 || cx - r > W || cy + r < 0 || cy - r > H || tiny(g, k)) continue; need += ((2 * g.r + 48) * BDPR()) ** 2; }
+    need *= (tText > 0.01 && tText < 0.99 ? 2 : 1);
+    while (need * kt * kt > BITMAP_BUDGET * 0.7 && kt > 0.02) kt /= Math.SQRT2;
     /** @type {Set<number>} */ const fallback = new Set();
     let pending = false;
     const layers = /** @type {('bars'|'text')[]} */ ([]);
@@ -327,11 +351,11 @@ export function createMap(canvas, o) {
     if (tText > 0.01) layers.push('text');
     L.groups.forEach((g, gi) => {
       const cx = g.x * k + ox, cy = g.y * k + oy, r = g.r * k;
-      if (cx + r < 0 || cx - r > W || cy + r < 0 || cy - r > H) return;
+      if (cx + r < 0 || cx - r > W || cy + r < 0 || cy - r > H || tiny(g, k)) return;
       for (const layer of layers) {
         const key = `${layoutNo}|${gi}|${kt}|${layer}`;
         let b = bitmaps.get(key);
-        if (b && b.ver !== version) { bitmapPx -= b.px; bitmaps.delete(key); b = undefined; }
+        if (b && b.ver !== version) { bitmapPx -= b.px; free(b); bitmaps.delete(key); b = undefined; }
         if (!b) {
           if (performance.now() - t0 > BUILD_MS) { fallback.add(gi); pending = true; continue; }
           b = buildBitmap(g, gi, kt, layer);
@@ -339,7 +363,7 @@ export function createMap(canvas, o) {
         }
         b.used = frameNo;
         const f = k / kt;
-        ctx.globalAlpha = layer === 'bars' ? 1 - tText : tText;
+        ctx.globalAlpha = (layer === 'bars' ? 1 - tText : tText) * famFade(g, k);
         ctx.drawImage(/** @type {any} */ (b.cv), ox + b.x0 * k, oy + b.y0 * k, (b.cv.width / b.s) * f, (b.cv.height / b.s) * f);
       }
     });
@@ -366,7 +390,7 @@ export function createMap(canvas, o) {
   function evict() {
     if (bitmapPx <= BITMAP_BUDGET) return;
     const old = [...bitmaps.entries()].filter(([, b]) => b.used !== frameNo).sort((a, b) => a[1].used - b[1].used);
-    for (const [key, b] of old) { if (bitmapPx <= BITMAP_BUDGET * 0.8) break; bitmaps.delete(key); bitmapPx -= b.px; }
+    for (const [key, b] of old) { if (bitmapPx <= BITMAP_BUDGET * 0.8) break; free(b); bitmaps.delete(key); bitmapPx -= b.px; }
   }
 
   /* ---------- a word just learned: cobalt, settling ---------- */
@@ -402,63 +426,101 @@ export function createMap(canvas, o) {
     }
   }
 
+  /** The word a link flew to: an x-glow plate under it and a 1.5 px accent ring, fading over 1.3 s. @param {number} t @param {number} k @param {number} ox @param {number} oy @param {boolean} plate */
+  function drawMark(t, k, ox, oy, plate) {
+    const m = /** @type {{i: number, t0: number}} */ (mark), i = m.i;
+    if (PA[i] <= 0) return;
+    const p = (t - m.t0) / 1000, a = Math.max(0, 1 - p / 1.3) ** 2;
+    const fpx = FS * k, x = PX[i] * k + ox, w = A.W[i] * k, cy = PY[i] * k + oy - fpx * 0.32;
+    const pad = Math.max(6, 6 * k), hh = Math.max(16, fpx * 1.4);
+    ctx.globalAlpha = a;
+    ctx.beginPath(); ctx.roundRect(x - pad, cy - hh / 2, w + pad * 2, hh, Math.min(10, hh / 2));
+    if (plate) { ctx.fillStyle = C['x-glow']; ctx.fill(); } else { ctx.strokeStyle = C.accent; ctx.lineWidth = 1.5; ctx.stroke(); }
+    ctx.globalAlpha = 1;
+  }
+
   /* ---------- rings and names ---------- */
-  /** @type {Map<string, {lines: string[], tw: number, f1: number}>} */ const labelCache = new Map();
-  /** @param {string} text @param {number} f1 @param {number} maxw */
-  function wrapLabel(text, f1, maxw) {
-    const key = `${f1}|${Math.round(maxw / 8)}|${text}`;
+  /** @type {Map<string, {lines: string[], tw: number, ok: boolean}>} */ const labelCache = new Map();
+  const LABEL_FONT = '600 13px Geist, system-ui, sans-serif';
+  /** A group name in at most two lines of maxw, the second ending in an ellipsis when it runs over. @param {string} text @param {number} maxw */
+  function wrapLabel(text, maxw) {
+    const key = `${Math.round(maxw / 4)}|${text}`;
     let v = labelCache.get(key);
     if (!v) {
-      ctx.font = `600 ${f1}px Geist, system-ui, sans-serif`;
-      /** @type {string[]} */ const lines = []; let cur = '';
-      for (const w of text.split(' ')) { const nx = cur ? `${cur} ${w}` : w; if (cur && ctx.measureText(nx).width > maxw) { lines.push(cur); cur = w; } else cur = nx; }
-      lines.push(cur);
-      v = { lines: lines.slice(0, 3), tw: Math.max(...lines.slice(0, 3).map(l => ctx.measureText(l).width)), f1 };
+      ctx.font = LABEL_FONT;
+      const fits = (/** @type {string} */ x) => ctx.measureText(x).width <= maxw;
+      const clip = (/** @type {string} */ x) => { if (fits(x)) return x; let y = x; while (y.length > 1 && !fits(`${y}…`)) y = y.slice(0, -1); return `${y.trimEnd()}…`; };
+      const words = text.split(' ');
+      let l1 = words[0], j = 1;
+      while (j < words.length && fits(`${l1} ${words[j]}`)) { l1 += ` ${words[j]}`; j++; }
+      const lines = j < words.length ? [l1, words.slice(j).join(' ')] : [l1];
+      const out = lines.map(clip);
+      // only a name that reads: the first line whole, the second (if any) keeping at least five letters before its ellipsis
+      const ok = fits(lines[0]) && (lines.length < 2 || fits(lines[1]) || out[1].length >= 6);
+      v = { lines: out, tw: Math.max(...out.map(l => ctx.measureText(l).width)), ok };
       labelCache.set(key, v);
     }
     return v;
   }
+  /** @type {Set<number>} */ let labelled = new Set();
+  /** @type {Set<number>} */ let bigFamilies = new Set();
   /** @param {number} t @param {number} k @param {number} ox @param {number} oy @param {number} tText */
   function drawGroups(t, k, ox, oy, tText) {
     let a = 1;
     if (morph) a = clamp01(((t - morph.t0) / morph.end - 0.55) / 0.45);
     if (introT0) a *= clamp01((t - introT0 - 300) / 600);
+    labelled = new Set();
     if (!a) return;
     /** @type {number[][]} */ const placed = [];
     const order = L.groups.map((g, i) => i).sort((p, q) => L.groups[q].r - L.groups[p].r);
+    const plate = C.surface && !C.surface.startsWith('Canvas') ? C.surface : C.canvas;
     for (const gi of order) {
       const g = L.groups[gi], cx = g.x * k + ox, cy = g.y * k + oy, r = g.r * k + 6;
       if (cx + r < -40 || cx - r > W + 40 || cy + r < -60 || cy - r > H + 40) continue;
       const dim = selGroup >= 0 && selGroup !== gi ? 0.35 : 1;
       const cnt = o.countOf(gi);
-      const segs = /** @type {[number, string][]} */ ([[cnt.known, C['x-known']], [cnt.shaky, C['x-shaky']], [cnt.unknown, C['x-box']], [cnt.unseen, C['hairline-strong']]]);
+      // not seen: the same 3:1 outline colour as not known, dotted, so every arc reads as data
+      const segs = /** @type {[number, string, boolean][]} */ ([[cnt.known, C['x-known'], false], [cnt.shaky, C['x-shaky'], false], [cnt.unknown, C['x-box'], false], [cnt.unseen, C['x-box'], true]]);
       const lw = r > 120 ? 3 : 2, gap = Math.min(0.05, 2.5 / r);
       let ang = -Math.PI / 2;
       ctx.lineWidth = lw; ctx.lineCap = 'butt'; ctx.globalAlpha = a * dim;
-      for (const [v, col] of segs) {
+      for (const [v, col, dot] of segs) {
         if (!v || !cnt.n) continue;
         const sweep = (v / cnt.n) * Math.PI * 2;
+        ctx.setLineDash(dot ? [1.5, 3] : []);
         ctx.strokeStyle = col; ctx.beginPath(); ctx.arc(cx, cy, r, ang + gap / 2, ang + Math.max(gap / 2 + 0.002, sweep - gap / 2)); ctx.stroke();
         ang += sweep;
       }
-      if (gi === selGroup) { ctx.strokeStyle = C.accent; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(cx, cy, r + lw + 3, 0, Math.PI * 2); ctx.stroke(); }
-      // the name sits in its disc while the words are bars; the "where you are" pill takes over at type zoom
+      ctx.setLineDash([]);
+      if (gi === selGroup) { ctx.strokeStyle = C.accent; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(cx, cy, r + lw + 3, 0, Math.PI * 2); ctx.stroke(); }
+    }
+    // names after every ring, so no ring crosses a plate
+    for (const gi of order) {
+      const g = L.groups[gi], cx = g.x * k + ox, cy = g.y * k + oy, r = g.r * k + 6;
+      if (cx + r < -40 || cx - r > W + 40 || cy + r < -60 || cy - r > H + 40) continue;
+      const dim = selGroup >= 0 && selGroup !== gi ? 0.35 : 1;
+      const cnt = o.countOf(gi);
+      // the name sits in its disc on a plate while the words are bars; the "where you are" pill takes over at type zoom
       const la = 1 - tText; if (la <= 0.02) continue;
-      const label = o.labelOf(g), single = !label.includes(' ');
-      if (r < (single ? 14 : 24)) continue;
-      const f1 = r > 110 ? 16 : r > 45 ? 13 : 12;
-      const lab = wrapLabel(label, f1, Math.max(60, r * 1.6));
-      const sub = r >= 30 ? `${cnt.known} / ${cnt.n}` : '';
-      const lh = f1 + 3, bw = Math.max(lab.tw, sub ? sub.length * 6.6 : 0), bh = lab.lines.length * lh + (sub ? 16 : 2);
+      // Word family at overview names its largest families only; elsewhere a disc under 44 px has no name
+      if (L.mode === 'family' && FS * k < TEXT_FROM ? !bigFamilies.has(gi) : g.r * k < LABEL_MIN_R) continue;
+      // 0.86 of the disc, at least a short line (the plate is solid, so it may run past a small disc)
+      const lab = wrapLabel(o.labelOf(g), Math.max(0.86 * 2 * g.r * k - 12, 88));
+      if (!lab.ok) continue;
+      const sub = g.r * k >= 30 ? `${cnt.known} / ${cnt.n}` : '';
+      ctx.font = '400 12px Geist, system-ui, sans-serif';
+      const lh = 16, bw = Math.max(lab.tw, sub ? ctx.measureText(sub).width : 0), bh = lab.lines.length * lh + (sub ? 15 : 0);
       const bx = cx - bw / 2, by = cy - bh / 2;
-      if (placed.some(l => bx < l[2] && bx + bw > l[0] && by < l[3] && by + bh > l[1])) continue;
-      placed.push([bx - 2, by - 1, bx + bw + 2, by + bh + 1]);
-      ctx.globalAlpha = a * dim * la * 0.78; ctx.fillStyle = C.canvas;
-      ctx.beginPath(); ctx.roundRect(bx - 8, by - 5, bw + 16, bh + 10, 8); ctx.fill();
+      // collisions: the larger disc keeps its name (they are drawn largest first); the other comes back as you zoom
+      if (placed.some(l => bx - 6 < l[2] && bx + bw + 6 > l[0] && by - 2 < l[3] && by + bh + 2 > l[1])) continue;
+      placed.push([bx - 6, by - 2, bx + bw + 6, by + bh + 2]);
+      labelled.add(gi);
+      ctx.globalAlpha = a * dim * la * 0.92; ctx.fillStyle = plate;
+      ctx.beginPath(); ctx.roundRect(bx - 6, by - 2, bw + 12, bh + 4, 6); ctx.fill();
       ctx.globalAlpha = a * dim * la; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
-      ctx.fillStyle = C.ink; ctx.font = `600 ${f1}px Geist, system-ui, sans-serif`;
-      lab.lines.forEach((l, j) => ctx.fillText(l, cx, by + f1 + j * lh - 1));
-      if (sub) { ctx.fillStyle = C['ink-3']; ctx.font = '400 12px Geist, system-ui, sans-serif'; ctx.fillText(sub, cx, by + bh - 2); }
+      ctx.fillStyle = C.ink; ctx.font = LABEL_FONT;
+      lab.lines.forEach((l, j) => ctx.fillText(l, cx, by + 13 + j * lh));
+      if (sub) { ctx.fillStyle = C['ink-3']; ctx.font = '400 12px Geist, system-ui, sans-serif'; ctx.fillText(sub, cx, by + bh - 3); }
       ctx.textAlign = 'start';
     }
     ctx.globalAlpha = 1;
@@ -472,6 +534,10 @@ export function createMap(canvas, o) {
       let bd = Infinity;
       L.groups.forEach((g, i) => { const d = Math.hypot(g.x - cam.x, g.y - cam.y) - g.r; if (d < bd) { bd = d; gi = i; } });
       if (bd > 200 / cam.k) gi = -1;
+    } else if (L && !morph) {
+      // at overview: the disc under the middle of the map, when its own name is not drawn
+      const j = L.groups.findIndex(g => Math.hypot(g.x - cam.x, g.y - cam.y) < g.r);
+      if (j >= 0 && !labelled.has(j)) gi = j;
     }
     if (gi !== hereGi) { hereGi = gi; o.onHere(gi); }
   }
@@ -517,7 +583,7 @@ export function createMap(canvas, o) {
   const pos = (/** @type {PointerEvent} */ e) => { const r = canvas.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; };
   /** @param {PointerEvent} e */
   function down(e) {
-    canvas.setPointerCapture(e.pointerId);
+    canvas.setPointerCapture(e.pointerId); kbGroup = -1;
     const p = pos(e); pts.set(e.pointerId, p);
     flight = null; inertia = null; vel = [];
     if (pts.size === 1) gesture = { kind: 'pan', t: performance.now(), moved: 0 };
@@ -574,15 +640,45 @@ export function createMap(canvas, o) {
     if (gi >= 0) { o.onGroup(gi, FS * cam.k < 8); return; }
     o.onEmpty();
   }
-  /** @param {KeyboardEvent} e */
+  /** The group nearest the middle of the screen. */
+  function nearestGroup() {
+    let gi = -1, bd = Infinity;
+    L.groups.forEach((g, i) => { const d = Math.hypot(g.x - cam.x, g.y - cam.y) - g.r; if (d < bd) { bd = d; gi = i; } });
+    return gi;
+  }
+  /** Groups in the order they ink in (nearest the middle first): the order Tab steps through them. */
+  const tabOrder = () => [...L.groups.keys()].sort((p, q) => introOrder[p] - introOrder[q]);
+  /**
+   * Keys: arrows pan, + and - zoom, Tab and Shift+Tab step through the groups (and leave the map after the last),
+   * Enter or Space open the group in the middle (or the one Tab reached).
+   * @param {KeyboardEvent} e
+   */
   function key(e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
     const step = 80 / cam.k;
+    if (e.key === 'Tab') {
+      const ord = tabOrder(), at = ord.indexOf(kbGroup), nx = at + (e.shiftKey ? -1 : 1);
+      if ((e.shiftKey && at < 0) || nx < 0 || nx >= ord.length) { kbGroup = -1; selGroup = -1; kick(); return; }
+      e.preventDefault();
+      kbGroup = ord[nx]; selGroup = kbGroup;
+      api.flyToGroup(kbGroup);
+      o.onKbGroup?.(kbGroup);
+      return;
+    }
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      const gi = kbGroup >= 0 ? kbGroup : nearestGroup();
+      if (gi >= 0) o.onGroup(gi, true);
+      return;
+    }
     if (e.key === 'ArrowLeft') cam.x -= step; else if (e.key === 'ArrowRight') cam.x += step;
     else if (e.key === 'ArrowUp') cam.y -= step; else if (e.key === 'ArrowDown') cam.y += step;
     else if (e.key === '+' || e.key === '=') zoomAt(W / 2, H / 2, 1.4); else if (e.key === '-') zoomAt(W / 2, H / 2, 1 / 1.4);
     else return;
     e.preventDefault(); kick();
   }
+  let kbGroup = -1;
+  canvas.addEventListener('blur', () => { kbGroup = -1; });
   canvas.addEventListener('pointerdown', down);
   canvas.addEventListener('pointermove', move);
   canvas.addEventListener('pointerup', up);
@@ -600,12 +696,13 @@ export function createMap(canvas, o) {
   resize();
 
   /* ---------- the API ---------- */
-  return {
+  const api = {
     /** Show a layout. animate: flow every word to its new place. @param {Layout} next @param {{animate?: boolean, follow?: number}} [opt] */
     setLayout(next, { animate = false, follow = -1 } = {}) {
       const from = L;
-      L = next; grid = null; selGroup = -1; layoutNo++;
+      L = next; grid = null; selGroup = -1; layoutNo++; kbGroup = -1;
       introOrder = groupOrder(next);
+      bigFamilies = new Set(next.mode === 'family' ? next.groups.map((g, i) => [g.items.length, i]).sort((p, q) => q[0] - p[0]).slice(0, FAMILY_LABELS).map(x => x[1]) : []);
       if (!from || !animate) { if (!from) cam = fitView(); kick(); return; }
       const rm = o.reduced();
       const delay = new Float32Array(n), nG = Math.max(1, next.groups.length - 1);
@@ -618,10 +715,10 @@ export function createMap(canvas, o) {
       kick();
     },
     /** New scores: state codes and today flags; glow: item indices that were just learned. @param {Uint8Array} s @param {Uint8Array} td @param {number[]} [newly] */
-    setScores(s, td, newly = []) {
+    setScores(s, td, newly = [], { delay = 0 } = {}) {
       st.set(s); today.set(td); version++;
       if (newly.length && !o.reduced()) {
-        const t0 = performance.now() + (introT0 ? 1200 : 150);
+        const t0 = performance.now() + (introT0 ? 1200 : 150) + delay;
         glow = newly.slice(0, 40).map((i, j) => ({ i, t0: t0 + j * 60 }));
       }
       kick();
@@ -643,11 +740,14 @@ export function createMap(canvas, o) {
      * Fly to an item, leaving it in the free part of the screen (above a sheet of height `below`).
      * @param {number} i @param {{k?: number, below?: number}} [opt]
      */
-    flyToItem(i, { k, below = 0, right = 0 } = {}) {
+    flyToItem(i, { k, below = 0, right = 0, mark: withMark = false } = {}) {
       const kk = Math.max(k || cam.k, 1.05);
       const ins = o.insets(), free = H - below - ins.top;
-      const sy = ins.top + free * 0.42;
+      // above a phone sheet the word lands 30 % down the stage; beside the desktop card a little above the middle
+      const sy = below ? Math.min(H * 0.3, ins.top + free * 0.5) : ins.top + free * 0.42;
+      if (withMark && !o.reduced()) markNext = i;
       flyTo({ x: L.X[i] + A.W[i] / 2 + right / 2 / kk, y: L.Y[i] - (sy - H / 2) / kk, k: kk });
+      if (withMark && !flight && !o.reduced()) { mark = { i, t0: performance.now() }; markNext = -1; kick(); }
     },
     /** @param {number} gi @param {{below?: number, right?: number}} [opt] */
     flyToGroup(gi, { below = 0, right = 0 } = {}) {
@@ -701,9 +801,11 @@ export function createMap(canvas, o) {
     destroy() {
       alive = false; cancelAnimationFrame(raf); ro.disconnect(); mo.disconnect();
       mq.removeEventListener('change', recolor); fq.removeEventListener('change', recolor);
-      bitmaps.clear();
+      bitmaps.forEach(free); bitmaps.clear(); bitmapPx = 0;
+      canvas.width = 0; canvas.height = 0;
     },
   };
+  return api;
 }
 
 /** The order groups ink in and assemble: nearest the middle of the map first. @param {Layout} l */
