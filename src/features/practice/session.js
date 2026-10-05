@@ -28,7 +28,7 @@ export function startRound(ids, spec, today, now) {
  * starting a missed or mistakes round never replaces a paused daily round.
  * @param {{kind: string, area?: string | null, topic?: string | null}} r a round or a parsed kind
  */
-export const slotKey = r => (r.kind === 'area' ? `area:${r.area}` : r.kind === 'topic' ? `topic:${r.topic}` : r.kind === 'write' ? (r.topic ? `write:${r.topic}` : 'write') : r.kind === 'cluster' ? `cluster:${r.topic}` : r.kind || 'today');
+export const slotKey = r => (r.kind === 'area' ? `area:${r.area}` : r.kind === 'topic' ? `topic:${r.topic}` : r.kind === 'write' ? (r.topic ? `write:${r.topic}` : 'write') : r.kind === 'cluster' ? `cluster:${r.topic}` : r.kind === 'pick' ? `pick:${r.topic}` : r.kind || 'today');
 
 /** The address that opens (or resumes) a round of this slot. @param {{kind: string, area?: string | null, topic?: string | null}} r */
 export const roundHref = r => { const k = slotKey(r); return k === 'today' ? '#/practice/round' : `#/practice/round?kind=${encodeURIComponent(k)}`; };
