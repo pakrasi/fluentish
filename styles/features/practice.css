@@ -174,7 +174,11 @@ body.pr-in-round #view { max-width: none; padding: 0; }
 .wr-page .section h2 { font-size: 22px; }
 .wr-about { color: var(--ink-2); font-size: 14px; }
 .wr-fns { margin-top: var(--s-4); }
-.wr-fns > summary, .wr-task > summary, .wr-modeltext > summary { cursor: pointer; min-height: var(--tap); display: flex; align-items: center; font-weight: 500; color: var(--accent-ink); }
+.wr-fns > summary, .wr-task > summary, .wr-modeltext > summary { cursor: pointer; min-height: var(--tap); display: flex; align-items: center; gap: var(--s-2); font-weight: 500; color: var(--ink-2); list-style: none; }
+.wr-fns > summary::-webkit-details-marker, .wr-task > summary::-webkit-details-marker, .wr-modeltext > summary::-webkit-details-marker { display: none; }
+.wr-fns > summary::before, .wr-task > summary::before, .wr-modeltext > summary::before { content: ""; width: 7px; height: 7px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: rotate(-45deg); transition: transform var(--dur-base) var(--spring-snappy); margin: 0 4px 0 2px; }
+.wr-fns[open] > summary::before, .wr-task[open] > summary::before, .wr-modeltext[open] > summary::before { transform: rotate(45deg); }
 .wr-fn h3 { margin-top: var(--s-5); font: 600 13px/1.35 var(--font-ui); color: var(--ink-2); letter-spacing: 0.01em; }
 .wr-phrase { display: grid; justify-content: stretch; gap: 2px; }
 .wr-phrase [lang="de"] { font: 400 18px/1.35 var(--font-display); }
@@ -202,7 +206,22 @@ body.pr-in-round #view { max-width: none; padding: 0; }
 .wr-line.is-open.is-filled { margin-bottom: var(--s-2); }
 .wr-line.is-sign { margin-top: var(--s-2); }
 .wr-line.is-gap { min-height: 0; height: var(--s-1); }
-.wr-slot { display: inline-flex; align-items: center; min-height: 28px; padding: 0 10px; border-radius: var(--r-tile); box-shadow: inset 0 0 0 1px var(--hairline-strong); color: var(--ink-3); font: 500 12px/1 var(--font-ui); }
+/* an empty line of the letter: a rule at the text's baseline with its label at the end; 40% wide for the greeting,
+   the closing and the sign-off; the current line's rule is accent and 2px (you, now) */
+.wr-slot { display: flex; justify-content: flex-end; align-items: flex-end; width: 100%; min-height: 27px; padding-bottom: 3px; border-bottom: 1px solid var(--field-border);
+  color: var(--ink-3); font: 400 12px/1 var(--font-ui); transition: border-color var(--dur-base) var(--ease-out); }
+.wr-line.is-open .wr-slot, .wr-line.is-close .wr-slot, .wr-line.is-sign .wr-slot { width: 40%; }
+.wr-line.is-now .wr-slot { border-bottom: 2px solid var(--accent); padding-bottom: 2px; color: var(--accent-ink); }
+/* the finished email: lines land one after another; a line kept with a slip is marked and opens its right form */
+.wr-done .wr-letter .wr-in { animation: land 520ms var(--spring-pop) both; animation-delay: calc(var(--i) * 70ms); }
+.wr-fixme { all: unset; cursor: pointer; text-decoration: underline 2px dotted var(--bad); text-underline-offset: 5px; border-radius: 4px; }
+.wr-fixme:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.wr-fixnote { display: block; margin: 2px 0 var(--s-2); font-family: var(--font-ui); }
+.wr-fixnote[hidden] { display: none; }
+.wr-done-data { display: grid; gap: var(--s-4); }
+.wr-points li.land { animation: land 520ms var(--spring-pop) both; }
+.wr-build .wr-card { scroll-margin-bottom: calc(16px + env(safe-area-inset-bottom)); }
+.wr-build .card-actions .btn { scroll-margin-bottom: calc(16px + env(safe-area-inset-bottom)); }
 .wr-letter.is-post .wr-line.is-filled + .wr-line.is-filled { margin-top: 0; }
 .wr-text.is-model { color: var(--ink-2); }
 .wr-fly { display: inline; }
@@ -325,9 +344,11 @@ mark.sim-chunk { background: repeating-linear-gradient(90deg, var(--ink-3) 0 2px
 /* reduced motion: the words appear at once, the waveform holds still, nothing waits on a delay */
 :root[data-motion="reduce"] .sim-line.is-typed .sim-w, :root[data-motion="reduce"] .is-playing > .sim-play .sim-wave i { animation: none; }
 :root[data-motion="reduce"] .sim-map.is-in .sim-map-b, :root[data-motion="reduce"] mark.sim-chunk { transition-delay: 0ms; }
+:root[data-motion="reduce"] .wr-done .wr-letter .wr-in { animation-delay: 0ms; }
 @media (prefers-reduced-motion: reduce) {
   :root:not([data-motion="full"]) .sim-line.is-typed .sim-w, :root:not([data-motion="full"]) .is-playing > .sim-play .sim-wave i { animation: none; }
   :root:not([data-motion="full"]) .sim-map.is-in .sim-map-b, :root:not([data-motion="full"]) mark.sim-chunk { transition-delay: 0ms; }
+  :root:not([data-motion="full"]) .wr-done .wr-letter .wr-in { animation-delay: 0ms; }
 }
 
 /* the done hero's data object (field strip, letter, ready-meter row, cluster pairs, chat bubbles) */
@@ -342,3 +363,12 @@ mark.sim-chunk { background: repeating-linear-gradient(90deg, var(--ink-3) 0 2px
 .pr-again i.is-miss { background: var(--bad); opacity: 0.7; }
 @media (forced-colors: active) { .pr-again i { background: CanvasText; } .pr-again i.is-now { background: Highlight; } }
 .pr-done-data > .pr-ready { margin-top: 0; }
+
+/* Schreiben page: each task row has its "Write it yourself" beside it */
+.wr-taskrow { display: grid; grid-template-columns: minmax(0, 1fr); border-bottom: 1px solid var(--hairline); }
+.wr-taskrow > .row { border-bottom: 0; }
+.wr-free-link { justify-self: start; margin: -6px 0 var(--s-2); padding-left: 0; color: var(--ink-2); }
+/* Write it yourself: the label over the text and the optional exam clock */
+.wr-freehead { display: flex; justify-content: space-between; align-items: center; gap: var(--s-3); flex-wrap: wrap; }
+.wr-timebox { display: inline-flex; align-items: center; gap: var(--s-2); }
+.wr-clock:empty { display: none; }

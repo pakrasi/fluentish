@@ -51,7 +51,9 @@ export async function loadKnowledge(ctx, { patch = {} } = {}) {
   }
   const wc = ctx.store.get('words.exam', null);
   const examWords = wc && Array.isArray(wc.words) ? wc.words.map((/** @type {any} */ w) => m.resolve(w.id, 'b1')).filter(Boolean) : [];
-  const k = knowledge({ today: c.today, epoch: ctx.clock.epochDay(), decks, resolve: m.resolve, know: legacy('doors.know.v1'), srs: legacy('doors.srs.v1'),
+  // Igloo's data on this device belongs to the profile the legacy import ran for, not to every profile
+  const migrated = !!(ctx.store.get('meta', {}) || {}).migratedAt;
+  const k = knowledge({ today: c.today, epoch: ctx.clock.epochDay(), decks, resolve: m.resolve, know: migrated ? legacy('doors.know.v1') : {}, srs: migrated ? legacy('doors.srs.v1') : {},
     lang: 'german', examWords, seen: ctx.store.get(SEEN, {}) || {} });
   return { ...k, maps: m };
 }

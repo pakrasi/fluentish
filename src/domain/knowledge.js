@@ -145,8 +145,11 @@ export function knowledge(input) {
       const h = rec.hist || [];
       if (rec.last === today && h.length && h[h.length - 1][0] === today && h[h.length - 1][1] >= 3) a.today = true;
       if (lapsedRecently(rec, today)) a.lapse = true;
-      if (rec.learn == null) observe(a, FS.Ron(rec, today), rec.S || 0);
-      else if (!a.grad) a.R = Math.max(a.R, FS.Ron(rec, today));
+      // a record in an old shape (no S or due) has no recall today: it counts as seen, and never blocks a later card
+      const R = FS.Ron(rec, today);
+      if (!Number.isFinite(R)) continue;
+      if (rec.learn == null) observe(a, R, rec.S || 0);
+      else if (!a.grad) a.R = Math.max(a.R, R);
     }
   }
   // Igloo: Drill's SM-2 intervals and the Test results, keyed '<lang>|<item id>'
@@ -163,7 +166,7 @@ export function knowledge(input) {
       const t = k && TEST[k.s]; if (!t) continue;
       const id = fromIgloo(key); if (!id) continue;
       const a = slot(id); a.sources.add('test');
-      const age = Math.max(0, epoch - (k.last ?? epoch));
+      const age = Math.max(0, epoch - (k.last ?? epoch - 30));   // a result without a date counts as a month old
       observe(a, k.s === 'known' ? FS.R(age, t.S) : t.R, t.S);
       if (k.s !== 'known' && age < LAPSE_DAYS) a.lapse = true;
     }

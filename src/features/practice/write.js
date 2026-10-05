@@ -12,8 +12,7 @@
 import { h, replace, announce } from '../../core/dom.js';
 import { linkRow, notice, section, seg } from '../../core/ui.js';
 import { icon } from '../../core/icons.js';
-import { correct as fxCorrect, wrong as fxWrong, resetAnswer, segments, swap, flip, reduced, countTo, haptic, wait } from '../../core/motion.js';
-import { atmosphere } from '../../core/brand.js';
+import { correct as fxCorrect, wrong as fxWrong, resetAnswer, segments, swap, reduced, countTo, haptic, wait } from '../../core/motion.js';
 import { label } from '../../core/clock.js';
 import * as Match from '../../domain/match.js';
 import * as RD from '../../domain/b1ready.js';
@@ -25,6 +24,7 @@ import * as S from './session.js';
 import { loadData, stateFor, session, secrets } from './data.js';
 import { recallBar } from './hub.js';
 import { checkMark } from './round.js';
+import { doneHero } from './done-hero.js';
 
 export const COLLECTION = 'practice.write';
 const pct = (/** @type {number} */ x) => new Intl.NumberFormat('en-GB', { style: 'percent', maximumFractionDigits: 0 }).format(x || 0);
@@ -89,15 +89,22 @@ function mountPage(el, ctx, data) {
       n ? null : h('p', { class: 'pr-empty' }, nextDue ? t('practice.nothingNext', { date: label(nextDue) }) : t('practice.nothing')),
       start ? h('div', { class: 'pr-queue-btn' }, start) : null);
 
-    // Build an email
+    // Build an email, and each task written from memory
     const builds = kv(store).builds || {};
+    const written = /** @type {Record<string, string>} */ (kv(store).written || {});
     const aufName = (/** @type {string} */ a) => data.writing.aufgaben.find((/** @type {any} */ x) => x.id === a);
     const taskRows = data.writing.tasks.map((/** @type {any} */ task) => {
       const b = builds[task.id];
-      return linkRow({ href: `#/practice/write/build/${task.id}`, title: task.title,
-        detail: t('practice.build.rowDetail', { aufgabe: task.aufgabe.slice(1), kind: aufName(task.aufgabe)?.short || '', to: task.to }),
-        trail: b ? t('practice.build.rowDone', { right: b.right, total: b.total }) : null });
+      return h('div', { class: 'wr-taskrow' },
+        linkRow({ href: `#/practice/write/build/${task.id}`, title: task.title,
+          detail: t('practice.build.rowDetail', { aufgabe: task.aufgabe.slice(1), kind: aufName(task.aufgabe)?.short || '', to: task.to }),
+          trail: b ? t('practice.build.rowDone', { right: b.right, total: b.total }) : null }),
+        h('a', { class: 'btn btn-quiet pressable wr-free-link', href: `#/practice/write/build/${task.id}/free`, 'aria-label': t('practice.build.writeTask', { title: task.title }) },
+          t('practice.build.writeYourself'), written[task.id] ? h('span', { class: 'caption' }, ` · ${t('practice.build.writtenOn', { date: label(written[task.id]) })}`) : null));
     });
+    /** The Aufgabe's next task to write from memory: one not written yet, else the one written longest ago. @param {string} aid */
+    const nextTask = aid => data.writing.tasks.filter((/** @type {any} */ x) => x.aufgabe === aid)
+      .sort((/** @type {any} */ x, /** @type {any} */ y) => (written[x.id] || '').localeCompare(written[y.id] || ''))[0] || null;
 
     // the Aufgaben: recall, a round of that Aufgabe, the phrases by function
     const aufs = data.writing.aufgaben.map((/** @type {any} */ a) => {
@@ -109,7 +116,9 @@ function mountPage(el, ctx, data) {
           h('p', { class: 'pr-ready-top' }, h('span', { class: 'label' }, t('practice.write.aufgabeSeen', { seen: g.seen, n: g.n })), h('b', { class: 'tnum' }, pct(g.recall))),
           recallBar(g.recall, g.coverage, t('practice.area.bar', { recall: pct(g.recall), seen: pct(g.coverage) }))) : null,
         h('p', { class: 'wr-about' }, a.about),
-        h('div', { class: 'pr-done-actions' }, h('a', { class: 'btn pressable', href: `#/practice/round?kind=write:${a.teil}` }, t('practice.write.practiseAufgabe', { n: a.id.slice(1) }))),
+        h('div', { class: 'pr-done-actions' },
+          nextTask(a.id) ? h('a', { class: 'btn btn-primary pressable', href: `#/practice/write/build/${nextTask(a.id).id}/free` }, t('practice.write.fromMemory', { n: a.id.slice(1), min: a.minutes || 20 })) : null,
+          h('a', { class: 'btn pressable', href: `#/practice/round?kind=write:${a.teil}` }, t('practice.write.practiseAufgabe', { n: a.id.slice(1) }))),
         h('details', { class: 'wr-fns' }, h('summary', { class: 'pressable' }, t('practice.write.byFunction', { n: items.length })),
           fns.map((/** @type {any} */ f) => {
             const its = items.filter((/** @type {any} */ it) => it.wfn === f.id);
@@ -138,6 +147,27 @@ function mountPage(el, ctx, data) {
 }
 
 /* ---------------------------------------------------------------- Build an email */
+
+/** His line with its capital, umlaut and typo slips put right. @param {string} typed @param {{start: number, end: number, expected: string}[]} slips */
+function applySlips(typed, slips) {
+  let out = '', p = 0;
+  for (const m of [...slips].sort((a, b) => a.start - b.start)) { if (m.start < p) continue; out += typed.slice(p, m.start) + m.expected; p = m.end; }
+  return out + typed.slice(p);
+}
+
+/** Run a scroll and wait until the page stops moving (at most 420 ms). @param {() => void} go */
+async function settleScroll(go) {
+  go();
+  if (reduced()) return;
+  let last = -1, still = 0;
+  const t0 = performance.now();
+  while (performance.now() - t0 < 420) {
+    await new Promise(r => requestAnimationFrame(r));
+    const y = scrollY;
+    still = y === last ? still + 1 : 0; last = y;
+    if (still >= 2) return;
+  }
+}
 
 /** "Greeting", "Point 2 of 3" … @param {any} part @param {any} task @param {(k: string, v?: any) => string} t */
 function partLabel(part, task, t) {
@@ -170,12 +200,15 @@ function mountBuild(el, ctx, data, task) {
   const aufgabe = data.writing.aufgaben.find((/** @type {any} */ a) => a.id === task.aufgabe);
   /** @type {Record<string, string>} */ const lines = {};
   /** @type {Record<string, {first: boolean, ok: boolean, shown?: boolean}>} */ const results = {};
+  /** @type {Record<string, {right: string | null, rule: string | null}>} */ const fixes = {};
   let i = 0, state = 'answer', tries = 0, alive = true;
   const total = task.parts.length;
 
   // ---------- the letter: one slot per part, filled as he goes ----------
-  const slots = new Map(task.parts.map((/** @type {any} */ p) => [p.key, h('li', { class: ['wr-line', `is-${p.key}`], 'data-key': p.key },
-    h('span', { class: 'wr-slot' }, partLabel(p, task, t)))]));
+  // an empty line is a quiet rule at the text's baseline with a small label at its end ("1", "Closing line"); the
+  // current one is an accent rule (you, now); a filled one is the line itself
+  const slots = new Map(task.parts.map((/** @type {any} */ p) => [p.key, h('li', { class: ['wr-line', `is-${p.key}`, p.point && 'is-point'], 'data-key': p.key },
+    h('span', { class: 'wr-slot', 'aria-label': partLabel(p, task, t) }, h('span', { class: 'wr-slot-label', 'aria-hidden': 'true' }, p.point ? String(p.point) : t(`practice.build.part.${p.key}`))))]));
   const letter = h('ol', { class: ['wr-letter', task.aufgabe === 'A2' && 'is-post'], 'aria-label': t('practice.build.yourEmail'), lang: 'de' }, [...slots.values()]);
   const letterBox = h('section', { class: 'wr-letterbox', 'aria-live': 'polite' }, h('p', { class: 'label' }, task.aufgabe === 'A2' ? t('practice.build.yourPost') : t('practice.build.yourEmail')), letter);
 
@@ -247,6 +280,7 @@ function mountBuild(el, ctx, data, task) {
     input.value = ''; grow();
     input.placeholder = p.kind === 'free' ? t('practice.build.ph.free') : t('practice.ph.german');
     for (const li of points.children) li.classList.toggle('is-now', !!p.point && li.getAttribute('data-point') === String(p.point));
+    slots.forEach((li, key) => li.classList.toggle('is-now', key === p.key));
     dots(); setButtons();
   }
 
@@ -269,6 +303,10 @@ function mountBuild(el, ctx, data, task) {
   async function right(/** @type {any} */ p, /** @type {string} */ typed, /** @type {any} */ r) {
     if (!results[p.key]) results[p.key] = { first: tries === 1, ok: true };
     results[p.key].ok = true;
+    // accepted with a note: the finished email marks the line and shows the right form on a tap
+    const slips = [...(r.g.capMiss || []), ...(r.g.umlautMiss || []), ...(r.g.typos || [])];
+    if (slips.length || r.punctMiss.length) fixes[p.key] = { right: slips.length ? applySlips(typed, slips) : null,
+      rule: r.punctMiss.length ? r.punctMiss.map((/** @type {any} */ m) => t(`practice.punct.${m.code}`, { word: m.word || '' })).join(' ') : null };
     state = 'done-part';
     const notes = [];
     if (r.partial && r.g.rest) notes.push(h('p', { class: 'pr-res is-warn' }, t('practice.build.rightButWord')),
@@ -317,25 +355,36 @@ function mountBuild(el, ctx, data, task) {
     place(p, B.modelLine(p), true);
   }
 
-  // the line moves from the card into the email; its connectors light up there
+  // the line moves from the card into the email (DESIGN.md motion.earned.line-landing): the page scrolls first and
+  // settles, then the line flies by translation only (no scaling of the text) on a small arc, the slot's rule gives way
+  // to it, its connectors light up, the task point is ticked; then the card's action row scrolls back into view
   async function place(/** @type {any} */ p, /** @type {string} */ text, /** @type {boolean} */ shown = false) {
     lines[p.key] = text;
     const slot = /** @type {HTMLElement} */ (slots.get(p.key));
     const line = h('span', { class: ['wr-text', shown && 'is-model'] }, glueLine(text));
     const fly = h('span', { class: 'wr-fly' }, line);
     answerEl.append(fly);
-    // the keyboard goes down and the email comes into view, so the line can be seen landing
     input.blur();
     if (i === 0) taskBox.open = false;
-    letterBox.scrollIntoView({ block: 'start', behavior: reduced() ? 'auto' : 'smooth' });
-    if (!reduced()) await wait(260);
+    await settleScroll(() => slot.scrollIntoView({ block: 'center', behavior: reduced() ? 'auto' : 'smooth' }));
     if (!alive) return;
-    await flip([fly], () => { replace(slot, fly); slot.classList.add('is-filled'); });
+    const a = fly.getBoundingClientRect();
+    replace(slot, fly); slot.classList.add('is-filled'); slot.classList.remove('is-now');
+    if (!reduced()) {
+      const b = fly.getBoundingClientRect(), dx = a.left - b.left, dy = a.top - b.top;
+      const ease = getComputedStyle(document.documentElement).getPropertyValue('--spring-soft').trim() || 'ease-out';
+      await fly.animate([{ transform: `translate(${dx}px, ${dy}px)` }, { transform: `translate(${dx / 2}px, ${dy / 2 - 6}px)`, offset: 0.5 }, { transform: 'none' }],
+        { duration: 520, easing: ease }).finished.catch(() => {});
+      if (!alive) return;
+    }
     const marks = [...slot.querySelectorAll('.wr-glue')];
-    marks.forEach((m, k) => setTimeout(() => m.classList.add('is-lit'), reduced() ? 0 : 120 + k * 90));
-    if (p.point) points.children[p.point - 1]?.classList.add('is-done');
+    marks.forEach((m, k) => setTimeout(() => m.classList.add('is-lit'), reduced() ? 0 : k * 90));
+    if (p.point) { const li = points.children[p.point - 1]; li?.classList.add('is-done'); if (!reduced()) li?.classList.add('land'); }
     dots();
-    if (!reduced() && !shown) await wait(160);
+    if (!reduced() && !shown) await wait(160 + marks.length * 90);
+    if (!alive) return;
+    await settleScroll(() => primary.scrollIntoView({ block: 'end', behavior: reduced() ? 'auto' : 'smooth' }));
+    primary.focus({ preventScroll: true });
   }
   function nextPart() {
     if (i + 1 >= total) return finish();
@@ -351,38 +400,43 @@ function mountBuild(el, ctx, data, task) {
     const mine = B.assemble(task, lines);
     const model = B.modelEmail(task);
     const words = B.wordCount(B.asText(mine));
-    const atmoEl = h('div', { class: 'atmo', 'aria-hidden': 'true' });
     const wordsEl = h('span', { class: 'tnum' }, '0');
-    const showLetter = (/** @type {{key: string, text: string}[]} */ ls) => ls.map(l => h('li', { class: ['wr-line', 'is-filled', l.key ? `is-${l.key}` : 'is-gap'] }, l.text ? h('span', { class: 'wr-text' }, glueLine(l.text)) : null));
+    // his lines; one accepted with a note is marked, and a tap shows its right form
+    const lineNode = (/** @type {{key: string, text: string}} */ l, /** @type {boolean} */ mineView) => {
+      const f = mineView && l.key ? fixes[l.key] : null;
+      if (!f) return l.text ? h('span', { class: 'wr-text' }, glueLine(l.text)) : null;
+      const note = h('span', { class: 'wr-fixnote caption', hidden: true }, f.right ? [t('practice.build.rightForm'), ' ', h('span', { lang: 'de' }, f.right)] : f.rule);
+      return [h('button', { type: 'button', class: 'wr-text wr-fixme', 'aria-expanded': 'false',
+        onclick: (/** @type {Event} */ e) => { const b = /** @type {HTMLElement} */ (e.currentTarget); note.hidden = !note.hidden; b.setAttribute('aria-expanded', String(!note.hidden)); } }, glueLine(l.text)), note];
+    };
+    const showLetter = (/** @type {{key: string, text: string}[]} */ ls, mineView = true) => ls.map((l, k) => h('li', { class: ['wr-line', 'is-filled', l.key ? `is-${l.key}` : 'is-gap', 'wr-in'], style: { '--i': String(k) } }, lineNode(l, mineView)));
     const out = h('ol', { class: ['wr-letter', task.aufgabe === 'A2' && 'is-post'], lang: 'de' }, showLetter(mine));
     const used = [...new Map(B.connectorsIn(B.asText(mine)).map(c => [c.word.toLowerCase(), c.word])).values()];
-    const usedEl = h('p', { class: 'tiles wr-used' }, used.map((w, k) => h('span', { class: 'tile glue land', lang: 'de', style: { animationDelay: `${reduced() ? 0 : 300 + k * 70}ms` } }, w)));
+    const lead = reduced() ? 0 : 420 + mine.length * 70;
+    const usedEl = h('p', { class: 'tiles wr-used' }, used.map((w, k) => h('span', { class: 'tile glue land', lang: 'de', style: { animationDelay: `${reduced() ? 0 : lead + k * 70}ms` } }, w)));
     const toggle = seg({ label: t('practice.build.compare'), value: 'mine', options: [['mine', task.aufgabe === 'A2' ? t('practice.build.yourPost') : t('practice.build.yourEmail')], ['model', t('practice.build.model')]],
-      onChange: v => swap(() => replace(out, showLetter(v === 'model' ? model : mine)), { kind: 'view', fallbackEl: out }) });
+      onChange: v => replace(out, showLetter(v === 'model' ? model : mine, v !== 'model')) });
     const target = aufgabe?.words || 80;
+    const hero = doneHero({ label: task.aufgabe === 'A2' ? t('practice.build.donePost') : t('practice.build.doneEmail'), figure: sc.right, of: t('practice.build.ofRight', { n: sc.total }),
+      lines: [h('p', { class: 'caption' }, wordsEl, ' ', t('practice.build.words', { target })), Object.keys(fixes).length ? t('practice.build.marked') : null],
+      data: h('div', { class: 'wr-done-data' }, h('div', { class: 'wr-compare' }, toggle), h('section', { class: 'wr-letterbox' }, out),
+        used.length ? h('div', { class: 'wr-usedbox' }, h('p', { class: 'label' }, t('practice.build.connectors')), usedEl) : null) });
     const view = h('div', { class: 'practice stack wr-build wr-done' },
       back('#/practice/write', t('practice.write.title')),
-      h('section', { class: 'hero pr-done-hero' }, atmoEl,
-        h('p', { class: 'label' }, task.aufgabe === 'A2' ? t('practice.build.donePost') : t('practice.build.doneEmail')),
-        h('h1', null, h('span', { class: 'figure tnum' }, String(sc.right)), ' ', h('span', { class: 'pr-done-of' }, t('practice.build.ofRight', { n: sc.total }))),
-        h('p', { class: 'caption' }, wordsEl, ' ', t('practice.build.words', { target }))),
-      used.length ? h('div', { class: 'wr-usedbox' }, h('p', { class: 'label' }, t('practice.build.connectors')), usedEl) : null,
-      h('div', { class: 'wr-compare' }, toggle),
-      h('section', { class: 'wr-letterbox' }, out),
+      hero.el,
       h('div', { class: 'pr-done-actions' },
         h('a', { class: 'btn btn-primary pressable', href: `#/practice/write/build/${task.id}/free` }, t('practice.build.writeYourself')),
         h('a', { class: 'btn pressable', href: '#/practice/write' }, t('practice.build.another'))));
     replace(el, view);
     scrollTo(0, 0);
-    view.querySelector('h1')?.setAttribute('tabindex', '-1');
-    /** @type {HTMLElement | null} */ (view.querySelector('h1'))?.focus({ preventScroll: true });
+    cleanups.push(hero.start());
     countTo(wordsEl, words, { from: 0, duration: 700 });
-    let atmo = /** @type {any} */ (null);
-    atmosphere(atmoEl).then(x => { atmo = x; if (alive) x.breathe(); else x.destroy(); }).catch(() => {});
-    cleanups.push(() => atmo?.destroy());
   }
 
   /** @type {(() => void)[]} */ const cleanups = [];
+  // a build is full screen: no tab bar under the card's buttons (as in a round)
+  document.body.dataset.chrome = 'off';
+  cleanups.push(() => { document.body.dataset.chrome = 'on'; });
   // after a right line the keyboard is down: Return (or Space) goes on, as the Next button does
   const onDocKey = (/** @type {KeyboardEvent} */ e) => {
     if (state !== 'done-part' || document.activeElement === input || /** @type {HTMLElement} */ (e.target).closest?.('a,button,textarea,input,summary')) return;
@@ -392,7 +446,7 @@ function mountBuild(el, ctx, data, task) {
   cleanups.push(() => document.removeEventListener('keydown', onDocKey));
   fill();
   // "Write it yourself": #/practice/write/build/<id>/free opens the free text right away
-  if (location.hash.endsWith('/free')) drawFree(el, ctx, task, aufgabe);
+  if (location.hash.endsWith('/free')) cleanups.push(drawFree(el, ctx, task, aufgabe));
   else input.focus({ preventScroll: true });
   // test hook (localhost only): the browser checks read the current part and drive the builder
   if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) {
@@ -422,15 +476,19 @@ export function correctionNodes(body) {
   return out;
 }
 
-/** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx @param {any} task @param {any} aufgabe */
+/** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx @param {any} task @param {any} aufgabe @returns {() => void} the cleanup */
 function drawFree(el, ctx, task, aufgabe) {
   const { t, store } = ctx;
   const target = aufgabe?.words || 80;
   const saved = kv(store);
   const draft = (saved.drafts || {})[task.id] || '';
   const corr = (saved.corrections || {})[task.id] || null;
-  const area = /** @type {HTMLTextAreaElement} */ (h('textarea', { class: 'input wr-free', rows: 10, lang: 'de', spellcheck: 'false', autocapitalize: 'sentences', 'aria-label': t('practice.build.freeLabel') }));
+  const area = /** @type {HTMLTextAreaElement} */ (h('textarea', { class: 'input wr-free', id: 'wr-free', rows: 10, lang: 'de', spellcheck: 'false', autocapitalize: 'sentences' }));
   area.value = draft;
+  const today = ctx.clock.today();
+  // the task counts as written today once the text reaches most of its length, or when it is sent for a correction
+  const save = () => putKv(store, v => ({ ...v, drafts: { ...(v.drafts || {}), [task.id]: area.value },
+    ...(words() >= Math.round(target * 0.7) ? { written: { ...(v.written || {}), [task.id]: today } } : {}) }));
   const wc = h('p', { class: 'caption tnum', 'aria-live': 'polite' });
   const result = h('div', { class: 'wr-correction', 'aria-live': 'polite' });
   const hasKey = !!secrets(store).anthropicKey;
@@ -441,8 +499,11 @@ function drawFree(el, ctx, task, aufgabe) {
   area.addEventListener('input', () => {
     showCount();
     clearTimeout(timer);
-    timer = setTimeout(() => putKv(store, v => ({ ...v, drafts: { ...(v.drafts || {}), [task.id]: area.value } })), 600);
+    timer = setTimeout(save, 600);
   });
+  // the last keystrokes are kept when he leaves (the debounce would drop them)
+  const flush = () => { if (timer) { clearTimeout(timer); timer = null; save(); } };
+  addEventListener('pagehide', flush);
   async function run() {
     const text = area.value.trim();
     if (!text) { area.focus(); return; }
@@ -450,7 +511,8 @@ function drawFree(el, ctx, task, aufgabe) {
     replace(result, h('p', { class: 'caption' }, t('practice.build.correcting')));
     try {
       const res = await correctTask({ key: secrets(store).anthropicKey, task, text, words: target });
-      putKv(store, v => ({ ...v, drafts: { ...(v.drafts || {}), [task.id]: area.value }, corrections: { ...(v.corrections || {}), [task.id]: { body: res.body, text, at: Date.now() } } }));
+      putKv(store, v => ({ ...v, drafts: { ...(v.drafts || {}), [task.id]: area.value }, corrections: { ...(v.corrections || {}), [task.id]: { body: res.body, text, at: Date.now() } },
+        written: { ...(v.written || {}), [task.id]: today } }));
       replace(result, correctionNodes(res.body));
     } catch (e) {
       replace(result, h('p', { class: 'pr-res is-bad' }, t(`exam.correct.err.${e instanceof ClaudeError ? e.code : 'other'}`)));
@@ -458,13 +520,31 @@ function drawFree(el, ctx, task, aufgabe) {
     btn.disabled = false; btn.textContent = t('feedback.correct');
   }
   const model = B.asText(B.modelEmail(task));
+  // an optional exam clock: the Aufgabe's minutes, counting down; nothing happens at zero except the line saying so
+  const mins = aufgabe?.minutes || 20;
+  const clock = h('span', { class: 'caption tnum wr-clock', 'aria-live': 'off' });
+  let tick = /** @type {any} */ (null);
+  const timeBtn = /** @type {HTMLButtonElement} */ (h('button', { type: 'button', class: 'chip pressable wr-time', 'aria-pressed': 'false', onclick: () => toggleTime() }, t('practice.build.timeIt', { min: mins })));
+  function toggleTime() {
+    if (tick) { clearInterval(tick); tick = null; timeBtn.setAttribute('aria-pressed', 'false'); clock.textContent = ''; return; }
+    const end = Date.now() + mins * 60e3;
+    timeBtn.setAttribute('aria-pressed', 'true');
+    const draw = () => {
+      const left = Math.max(0, Math.round((end - Date.now()) / 1000));
+      clock.textContent = left ? t('practice.build.timeLeft', { t: `${Math.floor(left / 60)}:${String(left % 60).padStart(2, '0')}` }) : t('practice.build.timeUp');
+      if (!left) { clearInterval(tick); tick = null; timeBtn.setAttribute('aria-pressed', 'false'); announce(t('practice.build.timeUp')); }
+    };
+    draw(); tick = setInterval(draw, 1000);
+    area.focus();
+  }
   const view = h('div', { class: 'practice stack wr-build wr-freepage' },
     back('#/practice/write', t('practice.write.title')),
     h('div', { class: 'page-head' }, h('p', { class: 'label' }, t('practice.build.label', { n: task.aufgabe.slice(1) })), h('h1', null, t('practice.build.writeYourself'))),
-    h('details', { class: 'wr-task' }, h('summary', { class: 'pressable' }, t('practice.build.task')),
+    h('details', { class: 'wr-task', open: true }, h('summary', { class: 'pressable' }, t('practice.build.task')),
       h('p', { class: 'wr-situation', lang: 'de' }, task.situation), task.quote ? h('blockquote', { class: 'wr-quote', lang: 'de' }, task.quote) : null,
       h('ol', { class: 'wr-points', lang: 'de' }, task.points.map((/** @type {string} */ p) => h('li', null, p)))),
     h('p', { class: 'caption' }, t('practice.build.freeAbout')),
+    h('div', { class: 'wr-freehead' }, h('label', { class: 'label', for: 'wr-free' }, t('practice.build.freeLabel')), h('span', { class: 'wr-timebox' }, clock, timeBtn)),
     area, wc,
     h('div', { class: 'pr-done-actions' }, btn, h('a', { class: 'btn pressable', href: `#/practice/write/build/${task.id}` }, t('practice.build.again'))),
     hasKey ? h('p', { class: 'caption' }, t('practice.build.privacy')) : notice({ children: [h('p', null, t('exam.correct.needKey')), h('p', null, h('a', { href: '#/profile/connections' }, t('exam.correct.addKey')))] }),
@@ -474,4 +554,5 @@ function drawFree(el, ctx, task, aufgabe) {
   if (corr) replace(result, h('p', { class: 'caption' }, t('practice.build.lastCorrection')), correctionNodes(corr.body));
   showCount();
   view.querySelector('h1')?.setAttribute('tabindex', '-1');
+  return () => { flush(); removeEventListener('pagehide', flush); clearInterval(tick); };
 }

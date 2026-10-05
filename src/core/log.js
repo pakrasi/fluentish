@@ -15,6 +15,10 @@ export function log(where, err) {
 export const entries = () => [...ring];
 
 export function installErrorLog() {
-  addEventListener('error', e => log('error', e.error || e.message));
+  addEventListener('error', e => {
+    // a benign browser notice (a resize observer that settled a frame later), not an error of the app
+    if (/ResizeObserver loop/.test(String(e.message || ''))) return;
+    log('error', e.error || e.message);
+  });
   addEventListener('unhandledrejection', e => log('promise', e.reason));
 }

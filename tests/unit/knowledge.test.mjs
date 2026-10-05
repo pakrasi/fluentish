@@ -143,3 +143,14 @@ test('the score reads the stores and changes nothing: B1 readiness is the same b
   assert.equal(JSON.stringify(store), before);
   assert.deepEqual(RD.compute({ pool, store, today, exam: null, phase: 'none' }), rd0);
 });
+
+test('edge cases: a record in an old shape never blocks a later card; a Test result without a date is not known forever', () => {
+  const resolve = resolver({ words });
+  const old = { reps: 2, last: D8.add(today, -3), learn: null, hist: [] };   // no S, no due
+  const k = knowledge({ today, resolve, decks: { b1: { 'BW:raum': old }, clusters: { 'W:der_Raum': card(1, 30) } } });
+  const s = k.get('W:der_Raum');
+  assert.ok(Number.isFinite(s.recall) && s.recall > 0.9, 'the cluster card still counts');
+  const epoch = 20000;
+  const k2 = knowledge({ today, epoch, resolve, decks: {}, know: { 'german|groß.adj': { s: 'known' } }, lang: 'german' });
+  assert.ok(k2.get('W:groß.adj').recall < 1, 'an undated result has aged');
+});
