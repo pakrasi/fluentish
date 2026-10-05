@@ -87,8 +87,13 @@ test('topic: every word and phrase in its topic, the grammar concepts in Grammar
   const byKey = new Map(map.modes.topic.map((/** @type {any} */ g) => [g.key, g]));
   const at = (/** @type {string} */ id) => map.modes.topic.find((/** @type {any} */ g) => g.items.includes(map.items.id.indexOf(id)))?.key;
   assert.equal(at('W:der_Apfel'), 'topic:food');
-  const chunk = Object.entries(src.clusters.topics.chunks)[0];
+  const chunk = /** @type {[string, string]} */ (Object.entries(src.clusters.topics.chunks).find(([, t]) => t !== 'communication'));
   assert.equal(at(`K:${chunk[0]}`), `topic:${chunk[1]}`);
+  // phrases about talking and writing are grouped by their kind
+  const talk = /** @type {[string, string]} */ (Object.entries(src.clusters.topics.chunks).find(([, t]) => t === 'communication'));
+  const cat = src.chunksEn.find((/** @type {any} */ e) => e.id === talk[0]).category;
+  assert.equal(at(`K:${talk[0]}`), `topic:phrases-${cat.replace(/_/g, '-')}`);
+  assert.equal(byKey.get(`topic:phrases-${cat.replace(/_/g, '-')}`).cluster, null);
   assert.equal(at('GC:akkusativ'), 'topic:grammar');
   assert.equal(byKey.get('topic:food').cluster, 'topic:food');
   assert.equal(byKey.get('topic:grammar').cluster, null);

@@ -22,6 +22,8 @@ export const FEATURES = [
   { id: 'today', paths: ['/today'], tab: 'today', view: () => import('./today/index.js'), plan: null },
   { id: 'practice', paths: ['/practice', '/practice/*'], tab: 'practice', view: () => import('./practice/index.js'), plan: () => import('./practice/plan.js') },
   { id: 'exam', paths: ['/exam', '/exam/*'], tab: 'exam', needsExam: true, view: () => import('./exam/index.js'), plan: () => import('./exam/plan.js') },
+  // Explore lives under Look up (#/lookup/map); listed before lookup so its paths win the match
+  { id: 'explore', paths: ['/lookup/map', '/lookup/map/*'], tab: 'lookup', view: () => import('./explore/index.js'), plan: null },
   { id: 'lookup', paths: ['/lookup', '/lookup/*'], tab: 'lookup', view: () => import('./lookup/index.js'), plan: null },
   { id: 'profile', paths: ['/profile', '/profile/*'], tab: null, view: () => import('./profile/index.js'), plan: null },
   { id: 'welcome', paths: ['/welcome'], tab: null, chrome: false, view: () => import('./welcome/index.js'), plan: null },

@@ -45,7 +45,12 @@ export const SOURCE_GROUPS = ['exam', 'script', 'speech', 'practice', 'test', 'l
  * @property {number} f       frequency weight: a word's zipf, a chunk 5/4/3 by priority 1/2/3, a concept 4
  * @property {number} r       content rank (word list rank, chunk number, concept order)
  * @property {string} [topic] the topic id (words and chunks)
+ * @property {string} [cat]   a chunk's category (sentence_frame, collocation …)
  */
+
+/** Phrases about talking and writing (most of the chunk bank) are grouped by their kind in Topic mode. */
+export const PHRASE_GROUPS = /** @type {[string, string][]} */ ([['sentence_frame', 'Sentence frames'], ['collocation', 'Collocations'], ['gambit_filler', 'Fillers and gambits'],
+  ['discourse_connector', 'Connectors'], ['fixed_formula', 'Fixed phrases']]);
 
 /* ---------------------------------------------------------------- widths */
 
@@ -106,7 +111,7 @@ export function itemsFrom({ words, chunks, chunksEn, prio = {}, concepts, cluste
     const e = en.get(id) || {};
     const p = prio[id], pr = typeof p === 'object' && p ? p.prio : p;
     out.push({ id: `K:${id}`, t: chunkText(chunks[id].t), a: '', k: 'c', L: e.cefr_level || e.level || 'B1', p: 'phrase', f: pr === 1 ? 5 : pr === 2 ? 4 : 3,
-      r: Number(String(id).split('_').pop()) || 0, topic: chunkTopic[id] });
+      r: Number(String(id).split('_').pop()) || 0, topic: chunkTopic[id], cat: e.category });
   }
   concepts.forEach((g, i) => out.push({ id: `GC:${g.id}`, t: g.name, a: '', k: 'g', L: g.level, p: 'grammar', f: 4, r: i + 1 }));
   return out;
@@ -149,9 +154,14 @@ export function groupsFor(mode, items, clusters) {
   const one = (/** @type {string[]} */ ids) => ids.map(id => [id]);
   if (mode === 'topic') {
     /** @type {Map<string, string[]>} */ const m = new Map();
-    for (const it of items) { const k = it.k === 'g' ? 'grammar' : it.topic; if (!k) continue; if (!m.has(k)) m.set(k, []); /** @type {string[]} */ (m.get(k)).push(it.id); }
-    const list = [...(clusters?.topics?.list || []).map((/** @type {any} */ t) => ({ id: t.id, label: t.label })), { id: 'grammar', label: 'Grammar' }];
-    return list.filter(t => m.has(t.id)).map(t => ({ key: `topic:${t.id}`, label: t.label, cluster: t.id === 'grammar' ? null : `topic:${t.id}`, units: one(sorted(/** @type {string[]} */ (m.get(t.id)))) }));
+    const cats = new Set(PHRASE_GROUPS.map(p => p[0]));
+    for (const it of items) {
+      const k = it.k === 'g' ? 'grammar' : it.k === 'c' && it.topic === 'communication' && it.cat && cats.has(it.cat) ? `phrases-${it.cat.replace(/_/g, '-')}` : it.topic;
+      if (!k) continue; if (!m.has(k)) m.set(k, []); /** @type {string[]} */ (m.get(k)).push(it.id);
+    }
+    const list = [...(clusters?.topics?.list || []).map((/** @type {any} */ t) => ({ id: t.id, label: t.label, words: true })),
+      ...PHRASE_GROUPS.map(([c, label]) => ({ id: `phrases-${c.replace(/_/g, '-')}`, label, words: false })), { id: 'grammar', label: 'Grammar', words: false }];
+    return list.filter(t => m.has(t.id)).map(t => ({ key: `topic:${t.id}`, label: t.label, cluster: t.words ? `topic:${t.id}` : null, units: one(sorted(/** @type {string[]} */ (m.get(t.id)))) }));
   }
   if (mode === 'family') {
     return (clusters?.families || []).map((/** @type {any} */ f) => {
@@ -310,7 +320,7 @@ function fromLines(base, units, lines) {
 }
 
 /**
- * Lay out the Source groups on the device. Each disc's radius is a step of a fixed ladder (60 units x 1.25^n) big
+ * Lay out the Source groups on the device. Each disc's radius is a step of a fixed ladder (60 units x 1.1^n) big
  * enough for its paragraph, and lines run from the top, so an item met later only extends the last lines: nothing
  * moves until a group crosses to the next step (then that map is laid out again, a rare event).
  * @param {GroupSpec[]} groups @param {Map<string, number>} widthById
@@ -322,9 +332,9 @@ export function layoutSource(groups, widthById) {
   for (const g of groups) {
     const unitsW = g.units.map(u => u.map(W));
     let area = 0; for (const u of unitsW) area += ((unitW(u) + gapOf(u)) / 10) * LH;
-    let step = Math.max(0, Math.ceil(Math.log((Math.sqrt(area / Math.PI) * 1.12) / 60) / Math.log(1.25)));
+    let step = Math.max(0, Math.ceil(Math.log((Math.sqrt(area / Math.PI) * 1.12) / 60) / Math.log(1.1)));
     for (;; step++) {
-      const R = Math.round(60 * 1.25 ** step), y0 = Math.round(-R + LH * 1.2);
+      const R = Math.round(60 * 1.1 ** step), y0 = Math.round(-R + LH * 1.2);
       const lines = setLines(unitsW, R, 0, y0);
       if (lines) { out.push(fromLines({ key: g.key, label: g.label, cluster: g.cluster, x: 0, y: 0, r: R, y0 }, g.units, lines)); break; }
     }

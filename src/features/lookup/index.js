@@ -10,6 +10,7 @@
 import { h, replace, on, announce } from '../../core/dom.js';
 import { label } from '../../core/clock.js';
 import { notice, seg } from '../../core/ui.js';
+import { icon } from '../../core/icons.js';
 import { num } from '../../core/i18n.js';
 import { dueOn } from '../../domain/b1ready.js';
 import * as D from './data.js';
@@ -315,6 +316,8 @@ export async function mount(el, ctx) {
   replace(el, h('div', { class: 'lookup' },
     h('div', { class: 'lk-top' },
       h('h1', null, t('lookup.title')),
+      h('a', { class: 'lk-map pressable', href: '#/lookup/map' }, mapArt(),
+        h('span', { class: 'lk-map-text' }, h('span', { class: 'lk-map-title' }, t('lookup.map')), h('span', { class: 'lk-map-detail' }, t('lookup.map.detail'))), icon('next', { size: 18 })),
       (route.opts.lang && !LANGS[route.opts.lang]) || (ctx.settings().language && !LANGS[ctx.settings().language]) ? notice({ children: [h('p', null, t('lookup.langOnly'))] }) : null,
       h('div', { class: 'lk-search' }, h('label', { class: 'lk-field' }, glyph('search', 20), input, clearBtn)),
       nav),
@@ -538,4 +541,29 @@ export async function mount(el, ctx) {
   idle(() => { if (alive) D.allContent(ctx.content, lang).catch(() => {}); });
 
   return cleanup;
+}
+
+/** The way into Explore's map: a few groups as rings, partly inked, like the map at overview. */
+function mapArt() {
+  const NS = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(NS, 'svg');
+  svg.setAttribute('viewBox', '0 0 64 64'); svg.setAttribute('class', 'lk-map-art'); svg.setAttribute('aria-hidden', 'true');
+  for (const [x, y, r, k] of [[30, 30, 15, 0.7], [50, 17, 9, 0.45], [12, 47, 8, 0.85], [48, 46, 11, 0.3], [13, 15, 7, 0.6], [30, 55, 6, 0.5]]) {
+    const c = 2 * Math.PI * r;
+    const base = document.createElementNS(NS, 'circle');
+    base.setAttribute('cx', String(x)); base.setAttribute('cy', String(y)); base.setAttribute('r', String(r));
+    base.setAttribute('fill', 'none'); base.setAttribute('stroke', 'var(--hairline-strong)'); base.setAttribute('stroke-width', '1.5');
+    const arc = /** @type {SVGCircleElement} */ (base.cloneNode());
+    arc.setAttribute('stroke', 'var(--ink)'); arc.setAttribute('stroke-dasharray', `${(c * k).toFixed(1)} ${c.toFixed(1)}`);
+    arc.setAttribute('transform', `rotate(-90 ${x} ${y})`);
+    svg.append(base, arc);
+    for (let j = 0; j < Math.floor(r / 3.5); j++) {
+      const w = (r * 1.2) * (1 - Math.abs(j - (r / 7)) / (r / 2.2));
+      const line = document.createElementNS(NS, 'rect');
+      line.setAttribute('x', (x - w / 2).toFixed(1)); line.setAttribute('y', (y - r / 2 + j * 3.4).toFixed(1)); line.setAttribute('width', Math.max(2, w).toFixed(1)); line.setAttribute('height', '1.4');
+      line.setAttribute('fill', j % 3 === 2 ? 'var(--accent)' : 'var(--ink-3)'); line.setAttribute('rx', '0.7');
+      svg.append(line);
+    }
+  }
+  return svg;
 }
