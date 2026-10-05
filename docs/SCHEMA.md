@@ -53,7 +53,7 @@ Every client-created record carries `id` (UUIDv7), `profileId`, `deviceId` and `
 | Schema | Where | Notes |
 |---|---|---|
 | `profile@1` | IDB `profiles` | `kind`: `local`, `shadow` (a preview copy that must never sync), `remote` (accounts, later); `archivedAt`, `archivedInto`: a preview merged at the cutover, never opened again, purged 30 days after `archivedAt` (in the schema since round 3; before, the schema refused the records the cutover wrote) |
-| `settings@1` | kv `settings`, profile, synced | the goal and practice options; `exam.date` is the **only** place the exam date lives; `rev` holds an HLC per field path for last-write-wins merges |
+| `settings@1` | kv `settings`, profile, synced | the goal and practice options. `courses` (round 3): one course per language, `{id, lang, level, goal: {exam, date}, decks}`, ordered by id, and `activeCourse`, the one Today, Practice and the clock follow. The active course's `goal.date` is the **only** source of the exam date (read through `data/settings.js examDate()`). `language`, `level`, `exam.type`, `exam.date` stay as the active course's mirror for code and devices from before courses; `setCourse()` is their one writer (same rev on both). `rev` holds an HLC per field path (`courses.<id>.goal.date`, `activeCourse`, the mirror's paths) for last-write-wins merges; courses are united by id. A record from before courses gains course `de` from its old fields with their revs (`data/session.js migrateCourses`, idempotent, no new stamp) |
 | `prefs@1` | kv `prefs`, device | theme, motion, locale; never synced |
 | (secrets) | kv `secrets`, device | `anthropicKey`, `githubToken`; never exported or synced, no schema on purpose |
 | (log) | kv `log`, device | the error log ring, at most 500 `{at, where, message}` (`core/log.js`); never exported, uploaded scrubbed once a day |
@@ -83,6 +83,10 @@ Every client-created record carries `id` (UUIDv7), `profileId`, `deviceId` and `
 | `data/snapshots/<deviceId>/<day>.json.gz` (or `.json`) | `fluentish-snapshot@1`: `{schema, deviceId, profileId, at, day, seq, build, counts: {cards}, cards: {deck: {itemId: card-fsrs@1}}, kv: {settings, activity, mistakes, lookup.seen, known, b1.session, speak.sim, clusters, practice.write, exams.feedbackLocal, exams.seen, exams.learnerNotes, vocab.local, vocab.events}}`, every deck except `script` | this device only; rewritten in place during the study day |
 
 The device's backup state is the device-scope kv `backup` (`{on, at, error, eventsAt, snapshot: {day, at, hash, path, sha, profileId, cards}, autoMerge: {since} | null, mergedAt, mergeSeen: {profileId, files: {path: sha}}}`); the last restore or merge is the device-scope kv `backup.journal` (`{id, at, kind: 'restore' | 'merge', profileId, stage: 'applying' | 'done' | 'rolledBack' | 'undoing' | 'undone', counts, sources, before: {cards: {deck: {itemId: record | null}}, kv: {name: value | null}}, after: {cards: {deck: {itemId: hash}}, kv: {name: hash}}}`). Neither is exported or uploaded; "Delete all" clears both. The device record gains `previousDeviceIds` (the ids before each "Delete all").
+
+### Decks and languages (`src/domain/decks.js`)
+
+A deck made from round 3 on is named `<lang>:<name>` (`fr:core`). The decks from before courses keep their names and are German through the fixed `LEGACY_DECK_LANG` (`b1`, `speak`, `script`, `clusters`, `build` → `de`). Card ids and the IDB keys `[profileId, deck, itemId]` never change; no card moves deck. Events whose payload names a deck carry an additive top-level `lang` (`deckLang(deck)`). Knowledge (`data/knowledge.js knowledgeDecks`), the allowance (`domain/allowance.js`) and Where you stand read only the active course's decks; for German that is every legacy deck, so their outputs are unchanged.
 
 ### Item ids in deck `b1`
 

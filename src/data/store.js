@@ -25,6 +25,7 @@
      b1.session, exams.drafts, exams.training, exams.voice, exams.seen, exams.feedbackLocal, vocab.local,
      vocab.events                carried over from the legacy apps for the stage-B features */
 import { uuidv7, isoWithOffset } from './ids.js';
+import { deckLang } from '../domain/decks.js';
 
 export const DEVICE_SCOPE = new Set(['prefs', 'secrets', 'palace', 'backup']);
 const DEBOUNCED = new Set(['settings', 'prefs', 'ui', 'activity']);
@@ -35,6 +36,7 @@ const DEBOUNCE_MS = 250;
  * @property {string} id @property {1} v @property {string} profileId @property {string} deviceId @property {number} seq
  * @property {string} at @property {string} day @property {string} type @property {Record<string, any>} payload
  * @property {boolean} synced @property {string|null} path
+ * @property {string} [lang] the language of the event's deck ('de'), when it has one (domain/decks.js deckLang)
  */
 
 /**
@@ -170,6 +172,9 @@ export class Store {
       id: uuidv7(at.getTime()), v: 1, profileId: this.profile.id, deviceId: this.device.deviceId, seq: this.device.seq,
       at: isoWithOffset(at), day: day || this.clock.today(), type, payload, synced: false, path,
     };
+    // the deck's language (domain/decks.js): additive, so a server or another course can tell events apart
+    const lang = payload && typeof payload.deck === 'string' ? deckLang(payload.deck) : null;
+    if (lang) e.lang = lang;
     this.check?.('event', type, e);
     this.events.set(e.id, e);
     if (!this.deleted) this.track(Promise.all([this.adapter.putEvents(this.profile.id, [e]), this.adapter.putDevice(this.device)]), 'outbox')

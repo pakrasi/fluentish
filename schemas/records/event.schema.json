@@ -68,6 +68,11 @@
         "string",
         "null"
       ]
+    },
+    "lang": {
+      "type": "string",
+      "pattern": "^[a-z]{2,3}$",
+      "description": "additive (round 3, courses): the language of the event's deck, domain/decks.js deckLang ('de' for b1, speak, script, clusters, build; the prefix of a '<lang>:<name>' deck). Events from before it have none"
     }
   },
   "allOf": [

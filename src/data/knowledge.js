@@ -4,9 +4,24 @@
 import { knowledge, resolver, conceptItems } from '../domain/knowledge.js';
 import { COLLECTION as SEEN } from './seen.js';
 import { lemmaMaps } from '../domain/wordbuild.js';
+import { LEGACY_DECKS, decksOf } from '../domain/decks.js';
+import { activeCourse, langIdOf } from './settings.js';
 
-/** Decks of the one review schedule whose cards are items. */
-export const DECKS = ['b1', 'speak', 'script', 'clusters', 'build'];
+/** Decks of the one review schedule whose cards are items (the decks from before courses: all German). */
+export const DECKS = [...LEGACY_DECKS];
+
+/**
+ * The decks knowledge reads: the active course's (Arch #12): of the legacy decks and any '<lang>:<name>' deck in the
+ * store, those in the course's language. Without a course (before onboarding) every legacy deck, as before courses.
+ * @param {any} store @returns {string[]}
+ */
+export function knowledgeDecks(store) {
+  const named = Object.keys((store && store.cardsByDeck) || {}).filter(d => d.includes(':') && !DECKS.includes(d));
+  return decksOf([...DECKS, ...named.sort()], activeCourse(store.get('settings')));
+}
+
+/** The Igloo language key of the active course ('german'): its legacy SM-2 data is keyed '<key>|<item id>'. @param {any} store */
+const iglooLang = store => langIdOf(activeCourse(store.get('settings'))?.lang) || 'german';
 
 /** @type {Promise<any> | null} */ let maps = null;
 
@@ -46,7 +61,7 @@ export async function loadKnowledge(ctx, { patch = {} } = {}) {
   const m = await itemMaps(ctx.content);
   const c = ctx.clock.ctx();
   /** @type {Record<string, Record<string, any>>} */ const decks = {};
-  for (const d of DECKS) {
+  for (const d of knowledgeDecks(ctx.store)) {
     decks[d] = ctx.store.cards(d) || {};
     if (patch[d]) { decks[d] = { ...decks[d] }; for (const [id, rec] of Object.entries(patch[d])) { if (rec) decks[d][id] = rec; else delete decks[d][id]; } }
   }
@@ -55,6 +70,6 @@ export async function loadKnowledge(ctx, { patch = {} } = {}) {
   // Igloo's data on this device belongs to the profile the legacy import ran for, not to every profile
   const migrated = !!(ctx.store.get('meta', {}) || {}).migratedAt;
   const k = knowledge({ today: c.today, epoch: ctx.clock.epochDay(), decks, resolve: m.resolve, know: migrated ? legacy('doors.know.v1') : {}, srs: migrated ? legacy('doors.srs.v1') : {},
-    lang: 'german', examWords, seen: ctx.store.get(SEEN, {}) || {} });
+    lang: iglooLang(ctx.store), examWords, seen: ctx.store.get(SEEN, {}) || {} });
   return { ...k, maps: m };
 }

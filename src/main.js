@@ -14,7 +14,7 @@ import { log, installErrorLog, attachLogStore } from './core/log.js';
 import { createIdbAdapter } from './data/adapters/idb.js';
 import { createMemoryAdapter } from './data/adapters/memory.js';
 import { openSession } from './data/session.js';
-import { normalizeSettings, defaultPrefs } from './data/settings.js';
+import { normalizeSettings, defaultPrefs, examDate } from './data/settings.js';
 import { createContent } from './data/content.js';
 import { sync, restore } from './data/sync/index.js';
 import { TABS, routes, startFeatures } from './features/registry.js';
@@ -70,7 +70,7 @@ async function main() {
   /** @type {any} */ let store = null;
   const settings = () => normalizeSettings(store?.get('settings'));
   const clock = createClock({
-    exam: () => settings().exam.date,
+    exam: () => examDate(settings()),   // the active course's goal.date (data/settings.js)
     now: () => new Date(),
     forcedToday: isDev() ? q.get('today') : null,   // ?today=YYYY-MM-DD on localhost only
   });

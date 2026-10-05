@@ -1,5 +1,6 @@
 /* Profile: the one settings page, opened from the avatar (UX §4.11).
-   Goal (with the exam date: its single source) · Practice · Connections (Claude key, results sync device link) ·
+   Courses (one per language; the active one is what Today and Practice are about) · Goal of the active course (with
+   the exam date: its single source) · Practice · Connections (Claude key, results sync device link) ·
    Appearance (theme, motion) · Data (export, import, the import summary, delete) · Diagnostics.
    #/profile/<section> scrolls to that section. */
 import { h, replace } from '../../core/dom.js';
@@ -9,7 +10,7 @@ import { config } from '../../core/config.js';
 import { icon } from '../../core/icons.js';
 import { section, seg, field, switchRow, notice, avatar, nextId, chipChoice } from '../../core/ui.js';
 import { entries as logEntries } from '../../core/log.js';
-import { setSetting, setExamDate, MODULES, defaultPrefs } from '../../data/settings.js';
+import { setSetting, setExamDate, setCourse, setActiveCourse, addCourse, langCode, examDate, MODULES, defaultPrefs } from '../../data/settings.js';
 import { summaryText } from '../../data/migrate.js';
 import { previewText } from '../../data/cutover.js';
 import { exportBundle, importFile } from '../../data/transfer.js';
@@ -34,7 +35,7 @@ export async function mount(el, ctx) {
     if (cap) cap.textContent = goalLine(ctx.settings());
     if (key) /** @type {HTMLElement | null} */ (sec.querySelector(`[name="${CSS.escape(key)}"]`))?.focus();
   }
-  const renderGoal = () => swapSection(goal(ctx.settings()));
+  const renderGoal = () => { swapSection(goal(ctx.settings())); swapSection(courses(ctx.settings())); };
 
   function render() {
     const s = ctx.settings();
@@ -43,7 +44,7 @@ export async function mount(el, ctx) {
         avatar(app.profile, ''),
         h('div', null, h('h1', null, t('profile.title')), h('p', { class: 'caption' }, goalLine(s)))),
       nameField(),
-      goal(s), practice(s), connections(), appearance(), data(), diagnostics());
+      courses(s), goal(s), practice(s), connections(), appearance(), data(), diagnostics());
     replace(el, page);
     const target = ctx.params.rest;
     if (target) requestAnimationFrame(() => document.getElementById(`profile-${target}`)?.scrollIntoView({ block: 'start' }));
@@ -66,39 +67,69 @@ export async function mount(el, ctx) {
     return field({ label: t('profile.name'), input, hint: t('profile.name.hint') });
   }
 
+  /* ---------- courses ---------- */
+  /** @param {any} s */
+  function courses(s) {
+    const sec = section(t('profile.courses'));
+    sec.id = 'profile-courses';
+    const langOf = (/** @type {string} */ code) => languages.find((/** @type {any} */ l) => langCode(l.id) === code) || null;
+    const examName = (/** @type {string | null} */ id) => (!id ? null : id === 'other' ? t('goal.exam.other') : exams.find((/** @type {any} */ x) => x.id === id)?.short || id);
+    const list = h('ul', { class: 'list courses' }, s.courses.map((/** @type {any} */ c) => {
+      const active = c.id === s.activeCourse;
+      const name = langOf(c.lang)?.name || c.lang;
+      const detail = [c.level, examName(c.goal.exam), c.goal.date ? t('courses.examOn', { date: label(c.goal.date) }) : null, active ? t('unit.min', { n: s.minutesPerDay }) : null].filter(Boolean).join(' · ');
+      return h('li', { class: 'row course-row', dataset: { course: c.id } },
+        h('span', { class: 'row-main' }, h('span', { class: 'row-title' }, name), detail ? h('span', { class: 'row-detail' }, detail) : null),
+        active ? h('span', { class: 'row-trail' }, t('courses.active'))
+          : h('button', { type: 'button', class: 'btn btn-quiet pressable', 'aria-label': t('courses.switchTo', { lang: name }), onclick: () => {
+            setActiveCourse(appCtx(), c.id);
+            ctx.refreshShell();   // the Exam tab follows the course's goal
+            ctx.toast(t('courses.switched', { lang: name }));
+            render();
+          } }, t('courses.switch')));
+    }));
+    // Add a course: a language whose content ships in this build can be added; the others are listed as later
+    const have = new Set(s.courses.map((/** @type {any} */ c) => c.lang));
+    const others = languages.filter((/** @type {any} */ l) => langCode(l.id) && !have.has(langCode(l.id))).sort((/** @type {any} */ a, /** @type {any} */ b) => a.name.localeCompare(b.name, 'en'));
+    const add = h('details', { class: 'course-add' }, h('summary', null, t('courses.add')),
+      h('p', { class: 'field-hint' }, t('courses.add.hint')),
+      h('ul', { class: 'list' }, others.map((/** @type {any} */ l) => h('li', { class: 'row' },
+        h('span', { class: 'row-main' }, h('span', { class: 'row-title' }, l.name)),
+        l.content ? h('button', { type: 'button', class: 'btn btn-quiet pressable', 'aria-label': t('courses.addLang', { lang: l.name }), onclick: () => {
+          addCourse(appCtx(), { lang: /** @type {string} */ (langCode(l.id)) });
+          ctx.refreshShell();
+          ctx.toast(t('courses.added', { lang: l.name }));
+          render();
+        } }, t('courses.addShort')) : h('span', { class: 'row-trail' }, t('courses.later'))))));
+    sec.append(s.courses.length ? list : h('p', { class: 'caption' }, t('profile.noLanguage')), add);
+    return sec;
+  }
+
   /* ---------- goal ---------- */
   /** @param {any} s */
   function goal(s) {
     const c = ctx.clock.ctx();
     const sec = section(t('profile.goal'));
     sec.id = 'profile-goal';
-    const langSel = chipChoice({ label: t('profile.language'), name: 'language', value: s.language || '',
-      // phase 1: only languages with content (German) can be chosen
-      options: languages.filter((/** @type {any} */ l) => l.content || l.id === s.language).map((/** @type {any} */ l) => /** @type {[string, string]} */ ([l.id, l.name])), onChange: v => {
-        write('language', v);
-        const ex = exams.find((/** @type {any} */ x) => x.id === s.exam.type);
-        if (ex && ex.language !== v) write('exam.type', s.exam.date ? 'other' : null);
-        renderGoal();
-      } });
-    const levelSeg = seg({ label: t('profile.level'), value: s.level || '', options: config.levels.map(l => [l, l]), onChange: v => { write('level', v); renderGoal(); } });
+    const levelSeg = seg({ label: t('profile.level'), value: s.level || '', options: config.levels.map(l => [l, l]), onChange: v => { writeCourse({ level: v }); renderGoal(); } });
     const examOptions = [...exams.filter((/** @type {any} */ x) => x.language === s.language).map((/** @type {any} */ x) => [x.id, x.name]), ['other', t('goal.exam.other')], ['', t('goal.exam.none')]];
     const examSel = chipChoice({ label: t('goal.exam'), name: 'exam', value: s.exam.type || '', options: /** @type {any} */ (examOptions), onChange: v => {
-      write('exam.type', v || null);
-      if (!v && s.exam.date) setExamDate(appCtx(), null);
+      writeCourse({ 'goal.exam': v || null });
+      if (!v && examDate(s)) setExamDate(appCtx(), null);
       renderGoal();
     } });
-    const dateInput = /** @type {HTMLInputElement} */ (h('input', { class: 'input', type: 'date', name: 'exam-date', value: s.exam.date || '', min: c.today }));
+    const dateInput = /** @type {HTMLInputElement} */ (h('input', { class: 'input', type: 'date', name: 'exam-date', value: examDate(s) || '', min: c.today }));
     const dateField = field({ label: t('goal.date'), input: dateInput, hint: t('goal.date.hint') });
     dateInput.addEventListener('change', () => {
-      const prev = s.exam.date;
+      const prev = examDate(s);
       const r = setExamDate(appCtx(), dateInput.value || null);
       if (!r.ok) { dateField.setError(t(/** @type {string} */ (r.error))); return; }
       dateField.setError(null);
-      if (!prev && dateInput.value && !s.exam.type) write('exam.type', exams.find((/** @type {any} */ x) => x.language === s.language)?.id || 'other');
+      if (!prev && dateInput.value && !s.exam.type) writeCourse({ 'goal.exam': exams.find((/** @type {any} */ x) => x.language === s.language)?.id || 'other' });
       // no toast: the derived line under the field is live and says what the new date changes
       renderGoal();
     });
-    const clearBtn = s.exam.date ? h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => { setExamDate(appCtx(), null); ctx.toast(t('goal.date.cleared')); renderGoal(); } }, t('goal.date.clear')) : null;
+    const clearBtn = examDate(s) ? h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => { setExamDate(appCtx(), null); ctx.toast(t('goal.date.cleared')); renderGoal(); } }, t('goal.date.clear')) : null;
     const isMock = exams.some((/** @type {any} */ x) => x.id === s.exam.type);
     const modules = isMock ? h('div', { class: 'form-field' }, h('p', { class: 'field-label', id: 'mods-l' }, t('goal.modules')),
       h('div', { class: 'chips', role: 'group', 'aria-labelledby': 'mods-l' }, MODULES.map(m => {
@@ -117,7 +148,6 @@ export async function mount(el, ctx) {
       h('p', { class: 'derived', 'aria-live': 'polite' }, derived(c)),
       examSel,
       modules, minutes,
-      langSel,
       h('div', { class: 'form-field' }, h('p', { class: 'field-label' }, t('profile.level')), levelSeg));
     return sec;
   }
@@ -133,6 +163,8 @@ export async function mount(el, ctx) {
   }
 
   const appCtx = () => ({ store, hlc: app.hlc, bus, clock: ctx.clock });
+  /** The goal fields belong to the active course: written through its one writer (data/settings.js setCourse). @param {Record<string, any>} patch */
+  const writeCourse = patch => { const id = ctx.settings().activeCourse; if (id) setCourse(appCtx(), id, patch); else for (const [k, v] of Object.entries(patch)) write(k === 'goal.exam' ? 'exam.type' : k, v); };
 
   /* ---------- practice ---------- */
   /** @param {any} s */

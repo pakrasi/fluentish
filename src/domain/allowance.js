@@ -29,6 +29,7 @@ import * as St from './script/store.js';
 import { words as scriptWords, newShownToday } from './script/plan.js';
 import { scriptPlanItems } from './script/today.js';
 import { roundMinutes } from './today.js';
+import { courseLang, inLang, LEGACY_DECKS } from './decks.js';
 
 const WRITE_KV = 'practice.write';
 const EXAM_AHEAD = new Set(['week', 'lastNew', 'eve', 'day']);
@@ -36,16 +37,26 @@ const EXAM_AHEAD = new Set(['week', 'lastNew', 'eve', 'day']);
 /** @param {any} store */
 const session = store => store.get('b1.session', {}) || {};
 
+/** The store deck each of the allowance's decks reads (mistakes and Schreiben phrases are cards in deck b1). */
+const STORE_DECK = /** @type {Record<string, string>} */ ({ b1: 'b1', writing: 'b1', mistakes: 'b1', speak: 'speak', script: 'script', build: 'build', clusters: 'clusters' });
+
+/**
+ * The legacy decks the active course reads (Arch #12): all of them for German, none for a course in another language,
+ * every one without a course (as before courses). @param {any} settings @returns {readonly string[]}
+ */
+const courseDecks = settings => { const l = courseLang(settings); return l ? LEGACY_DECKS.filter(d => inLang(d, l)) : LEGACY_DECKS; };
+
 /**
  * The learner's first study week: {day} (0 on his first day) while his first study day is less than 7 days ago,
  * or he has not studied yet; null after it. The first day is the earliest day with study minutes or a first answer in
- * any deck.
- * @param {any} store @param {string} today
+ * any deck of the active course.
+ * @param {any} store @param {string} today @param {any} [settings] normalised settings (their active course)
  */
-export function firstWeek(store, today) {
+export function firstWeek(store, today, settings = null) {
   let first = '';
   for (const [d, a] of Object.entries(store.get('activity', {}) || {})) if (a && (a.minutes || a.rounds) && (!first || d < first)) first = d;
-  for (const deck of ['b1', 'speak', 'script', 'build', 'clusters']) {
+  const mine = courseDecks(settings);
+  for (const deck of ['b1', 'speak', 'script', 'build', 'clusters'].filter(d => mine.includes(d))) {
     for (const r of Object.values(store.cards(deck) || {})) if (r && r.reps && r.first && (!first || r.first < first)) first = r.first;
   }
   if (!first) return { day: 0 };
@@ -120,7 +131,7 @@ export function deckInputs({ store, c, settings }) {
   const bStats = (store.get('build', {}) || {}).stats;
   const clCards = store.cards('clusters') || {};
   const cl = (store.get('clusters', {}) || {}).day;
-  return {
+  return inCourse(settings, {
     stats, day,
     decks: {
       b1: { due, open: stats ? (stats.unseen ?? Math.max(0, stats.pool - Object.keys(cards).length)) : Infinity, shown: b1Shown },
@@ -133,7 +144,22 @@ export function deckInputs({ store, c, settings }) {
     },
     scripts,
     started: { build: Object.values(bCards).some(r => r && r.reps), clusters: Object.values(clCards).some(r => r && r.reps) },
-  };
+  });
+}
+
+/**
+ * The inputs as the active course sees them: a deck outside it counts nothing (no due cards, nothing new, no scripts,
+ * not started). German reads every legacy deck, so its inputs are left exactly as they are.
+ * @template {{decks: Record<string, any>, scripts: any[], started: Record<string, boolean>}} T
+ * @param {any} settings @param {T} inp @returns {T}
+ */
+function inCourse(settings, inp) {
+  const mine = courseDecks(settings);
+  if (mine.length === LEGACY_DECKS.length) return inp;
+  for (const k of Object.keys(inp.decks)) if (!mine.includes(STORE_DECK[k])) inp.decks[k] = { due: 0, open: 0, shown: 0 };
+  if (!mine.includes('script')) inp.scripts = [];
+  for (const k of Object.keys(inp.started)) if (!mine.includes(k)) inp.started[k] = false;
+  return inp;
 }
 
 /**
@@ -142,7 +168,7 @@ export function deckInputs({ store, c, settings }) {
  */
 export function dayAllowance({ store, c, settings }) {
   const inp = deckInputs({ store, c, settings });
-  const fresh = (c.phase === 'none' || c.phase === 'after') ? firstWeek(store, c.today) : null;
+  const fresh = (c.phase === 'none' || c.phase === 'after') ? firstWeek(store, c.today, settings) : null;
   const md = modeOf(c, fresh);
   const focus = writingFocus({ store, c, settings });
   const task = writingTask({ store, c, settings, tasks: inp.stats ? inp.stats.tasks : null });
@@ -209,13 +235,14 @@ export function roundAction(b, n, t) {
 }
 
 /**
- * Cards due tomorrow in every deck, for "Done for today. Tomorrow: about N due."
+ * Cards due tomorrow in every deck of the active course, for "Done for today. Tomorrow: about N due."
  * @param {{store: any, c: any, settings: any}} ctx
  */
-export function dueTomorrow({ store, c }) {
+export function dueTomorrow({ store, c, settings }) {
   const tomorrow = D8.add(c.today, 1);
   let n = 0;
-  for (const deck of ['b1', SIM_DECK, 'script', 'build', 'clusters']) {
+  const mine = courseDecks(settings);
+  for (const deck of ['b1', SIM_DECK, 'script', 'build', 'clusters'].filter(d => mine.includes(d))) {
     for (const [id, r] of Object.entries(store.cards(deck) || {})) {
       if (!r || !r.reps || /^SR:/.test(id)) continue;
       if ((dueOn(r, c) || '') <= tomorrow || r.learn != null || r.relearn) n++;

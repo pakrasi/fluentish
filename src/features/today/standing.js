@@ -9,7 +9,7 @@ import { h } from '../../core/dom.js';
 import { section } from '../../core/ui.js';
 import { label, diff } from '../../core/clock.js';
 import { modulesStanding, weakest, week, knownOf } from '../../domain/standing.js';
-import { loadKnowledge, DECKS } from '../../data/knowledge.js';
+import { loadKnowledge, knowledgeDecks } from '../../data/knowledge.js';
 
 const AHEAD = new Set(['week', 'lastNew', 'eve']);
 const nf = new Intl.NumberFormat('en-GB');
@@ -49,7 +49,7 @@ export async function standingCounts(ctx, modules) {
     const get = (/** @type {string} */ id) => k.get(k.maps.resolve(id, 'b1') || id);
     const ms = modulesStanding({ modules, pool: data.pool, get });
     const c = ctx.clock.ctx();
-    const decks = Object.fromEntries(DECKS.map(d => [d, ctx.store.cards(d) || {}]));
+    const decks = Object.fromEntries(knowledgeDecks(ctx.store).map(d => [d, ctx.store.cards(d) || {}]));   // the active course's
     return { ms, words, week: week(decks, c.today, diff), known: knownOf };
   } catch { return null; }
 }

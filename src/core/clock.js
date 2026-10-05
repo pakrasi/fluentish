@@ -1,7 +1,8 @@
 /* The one date source. Everything that depends on "today" or on the exam date reads it here.
 
    A study day is the local date with a 04:00 cutoff: an answer at 01:30 counts for the day before. The exam date is
-   a user setting (settings.exam.date, 'YYYY-MM-DD' or null); nothing in src hard-codes one.
+   a user setting: the active course's goal.date ('YYYY-MM-DD' or null), read through data/settings.js examDate(), which
+   main.js passes to createClock(); nothing in src hard-codes one.
 
    The functions at the top are pure (now, exam date and cutoff are passed in) and tested in node. createClock()
    wraps them for the app: it reads the setting through a getter and memoises the context per day + date. */

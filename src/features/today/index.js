@@ -13,6 +13,7 @@ import { odometer, fill, reveal } from '../../core/motion.js';
 import { runway, studyDays, atmosphere } from '../../core/brand.js';
 import { composeDay } from '../day.js';
 import { summaryText } from '../../data/migrate.js';
+import { examDate } from '../../data/settings.js';
 import { previewText } from '../../data/cutover.js';
 import { dueTomorrow } from '../../domain/allowance.js';
 import { dayAllowance, firstWeek } from '../../domain/allowance.js';
@@ -103,7 +104,7 @@ export async function mount(el, ctx) {
     const lead = c.phase === 'after'
       ? t('today.examWas', { exam: examName, date: label(/** @type {string} */ (c.exam)) })
       : [lang ? lang.name : null, s.level].filter(Boolean).join(' · ') || t('today.noGoal');
-    const studied = Object.values(activity).some((/** @type {any} */ a) => (a?.minutes || 0) > 0) && !firstWeek(store, c.today);
+    const studied = Object.values(activity).some((/** @type {any} */ a) => (a?.minutes || 0) > 0) && !firstWeek(store, c.today, s);
     const runText = h('p', { class: 'caption hero-date' });
     const el = h('section', { class: 'hero today-hero', 'aria-label': t('today.summary') }, atmoEl,
       h('p', { class: 'label' }, lead),
@@ -155,7 +156,7 @@ export async function mount(el, ctx) {
       h('p', { class: 'notice-title' }, preview ? t('import.titlePreview') : t('import.title')),
       preview ? h('p', null, previewText(/** @type {any} */ (preview), t)) : null,
       meta.summary ? h('p', null, summaryText(meta.summary, t, { afterPreview: !!preview })) : null,
-      h('p', null, s.exam.date ? t('import.examDate', { date: label(s.exam.date) }) : t('import.noDate')),
+      h('p', null, examDate(s) ? t('import.examDate', { date: label(/** @type {string} */ (examDate(s))) }) : t('import.noDate')),
       meta.summary && Number.isInteger(meta.summary.newPerDay) && !s.rev?.newPerDay ? h('p', null, t('import.newPerDay', { n: meta.summary.newPerDay })) : null,
       preview && linked && preview.toSend ? h('p', null, t('preview.toSend', { n: preview.toSend, repo: config.resultsRepo })) : null,
       unsent ? h('p', null, t('import.unsent', { n: unsent, repo: config.resultsRepo })) : null,
@@ -178,7 +179,7 @@ export async function mount(el, ctx) {
   function renderPlan(plan, c, allow) {
     const work = plan.rows.filter(r => r.kind !== 'setup');
     const head = plan.state === 'done'
-      ? h('p', { class: 'plan-done' }, icon('check', { size: 18 }), t('today.done', { n: dueTomorrow({ store, c, settings: null, exam: null, t }) }))
+      ? h('p', { class: 'plan-done' }, icon('check', { size: 18 }), t('today.done', { n: dueTomorrow({ store, c, settings: ctx.settings(), exam: null, t }) }))
       : plan.state === 'empty' ? h('p', { class: 'plan-empty' }, t('today.empty')) : null;
     const m = plan.minutes;
     const sub = m.mock ? t('today.planOver', { n: m.planned, budget: m.budget, module: String(m.mock.title).split(' · ')[0], min: m.mock.minutes })

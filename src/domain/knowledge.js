@@ -49,6 +49,7 @@
 import * as FS from './fsrs.js';
 import * as D8 from './days.js';
 import { tagOf, slug, origin } from './itemids.js';
+import { deckName } from './decks.js';
 import { itemResolver } from './wordbuild.js';
 
 export const KNOWN_R = 0.9;
@@ -150,9 +151,10 @@ export function knowledge(input) {
     a.grad = true;
   };
   for (const [deck, cards] of Object.entries(decks)) {
+    const kind = deckName(deck);   // 'fr:core' reads as 'core'; a legacy deck is its own name (domain/decks.js)
     for (const [cid, rec] of Object.entries(cards || {})) {
       if (!rec || !rec.reps) continue;
-      const id = resolve(cid, deck);
+      const id = resolve(cid, kind);
       if (!id) continue;
       const a = slot(id);
       a.cards.push(`${deck}/${cid}`);
@@ -160,7 +162,7 @@ export function knowledge(input) {
       // plus where it was met when it had been met before the mark
       const by = rec.known && !rec.known.checked ? rec.known.by : null;
       if (by) { a.marked = by; a.sources.add(by === 'igloo' ? 'test' : 'self'); }
-      if (!by || rec.src || (rec.hist || []).length) a.sources.add(/** @type {Origin} */ (rec.src || origin(cid, deck, x => examSet.has(resolve(x, deck) || x))));
+      if (!by || rec.src || (rec.hist || []).length) a.sources.add(/** @type {Origin} */ (rec.src || origin(cid, kind, x => examSet.has(resolve(x, kind) || x))));
       if (rec.last && (!a.last || rec.last > a.last)) a.last = rec.last;
       const h = rec.hist || [];
       if (rec.last === today && h.length && h[h.length - 1][0] === today && h[h.length - 1][1] >= 3) a.today = true;

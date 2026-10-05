@@ -12,7 +12,7 @@
  * @typedef {object} PlanCtx
  * @property {import('../data/store.js').Store} store
  * @property {import('../core/clock.js').ClockCtx} c       today, exam date, phase, daysLeft, lastNewDay, capDay, …
- * @property {any} settings                                 normalised settings@1 (settings.exam.date is the exam date)
+ * @property {any} settings                                 normalised settings@1 (the exam date: data/settings.js examDate(), the active course's goal.date)
  * @property {any | null} exam                              the exam definition from content/manifest.json, or null
  * @property {(key: string, vars?: Record<string, any>) => string} t
  */

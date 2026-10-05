@@ -131,7 +131,7 @@ The repo is public; a learner's results, recordings, vocab, mistakes and keys ne
 
 ## 5. The exam date
 
-**One source:** `settings.exam.date` (`'YYYY-MM-DD'` or `null`), read **only** through `core/clock.js`, written **only** by `setExamDate()` in `data/settings.js`. No date literal exists in `src/` (CI and the pre-commit hook fail on one); new profiles have no date; a migrated profile keeps the date the old apps stored, and none is assumed when there was none.
+**One source:** the active course's `goal.date` (`'YYYY-MM-DD'` or `null`; `settings.courses`, round 3), read **only** through `core/clock.js` (main.js passes it `data/settings.js examDate()`), written **only** by `setExamDate()` through `setCourse()` in `data/settings.js`. `settings.exam.date` remains as the active course's mirror, written in the same step with the same rev. No date literal exists in `src/` (CI and the pre-commit hook fail on one); new profiles have no date; a migrated profile keeps the date the old apps stored, and none is assumed when there was none.
 
 `clock.js` is pure (now, exam date and the 04:00 cutoff are passed in) and exposes `today()`, `epochDay()` (Igloo's SM-2 unit), `phase()`, `context()`, Intl labels and `createClock()` for the app. `?today=YYYY-MM-DD` works on localhost only.
 
@@ -145,6 +145,8 @@ The repo is public; a learner's results, recordings, vocab, mistakes and keys ne
 | `after` | past | cap lifted, normal budget; "Set your next exam" |
 
 Readiness is measured on a set that never depends on the date (the whole B1 pool, mistakes excluded): expected recall on the exam day, or today without a date. Moving the date changes the day it is measured on, never the set. The exam cap on review dates (no review after exam−1 unless it will still be recalled on the day) is applied when due dates are **read** (`b1ready.dueOn`), so changing the date never writes a card: 9 → 5 → 9 leaves every card and count as it was (tested). Profile restates what the date controls under the field ("6 days left. New items stop Wed 7 Oct. Reviews end Thu 8 Oct."); the line is live, so there is no toast.
+
+**Courses** (round 3, Arch #11-12): a profile has one course per language (`settings.courses`, `activeCourse`); Profile › Courses lists them and "Add a course" (a language becomes addable when its content ships; until then it is listed as later); onboarding makes the first. Switching the active course rewrites the mirror (`language`, `level`, `exam`), so Today, Practice, the clock and the Exam tab follow it. Decks are namespaced (`docs/SCHEMA.md` › Decks and languages).
 
 ### 5.1 One daily allowance
 

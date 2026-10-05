@@ -134,7 +134,7 @@ export function stateFor(ctx, data) {
   const settings = ctx.settings();
   // items marked known anywhere are never introduced as new (domain/known.js); a learner below B1 meets items of his
   // level first, and only those in his first week (compose.js newOrder)
-  const fresh = firstWeek(ctx.store, c.today);
+  const fresh = firstWeek(ctx.store, c.today, settings);
   const base = { data, cards, day, c, newPerDay: 0, marked: marked(ctx.store), level: settings.level || null, fresh: !!fresh };
   let unseen = 0, wUnseen = 0;
   for (const it of data.pool) {

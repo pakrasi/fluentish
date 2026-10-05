@@ -18,6 +18,7 @@ import { readLegacy, hasLegacyProgress, planMigration, applyMigration } from './
 import { planPreviewMerge, legacyChangedSince, deviceMerge, purgeArchived, canon } from './cutover.js';
 import { recoverRestore } from './restore.js';
 import { archiveOld } from './archive.js';
+import { normalizeSettings } from './settings.js';
 
 /**
  * @param {object} o
@@ -93,6 +94,7 @@ export async function openSession({ adapter, legacyStorage, clock, bus, channel 
   // the bounded outbox: acknowledged events older than 30 days move to the archive (data/archive.js), so later
   // starts load only what is pending or recent
   await archiveOld(store, now().getTime());
+  migrateCourses(store);
   const hlc = createHlc(device.deviceId);
   if (migration) store.append('legacy.imported', { summary: migration });
   return { store, profile, device, hlc, migration, previewKept, cutoverError, restoreRecovered, profiles: (await adapter.listProfiles()).filter((/** @type {any} */ p) => !p.archivedAt) };
@@ -198,6 +200,23 @@ async function keepPreview({ adapter, device, profiles, legacyStorage, now }) {
   device.activeProfile = c.realId;   // work goes on in the real profile; the preview stays until a merge reads back
   await adapter.putDevice(device);
   return { kept: null, migration: null, error };
+}
+
+/**
+ * Courses (Arch #11): a profile's settings from before courses gain course 'de', derived from language, level and
+ * exam with the revs those fields had (data/settings.js normalizeSettings), and the fields from before stay as they
+ * are, as the active course's mirror. Idempotent: settings that have a courses list are left alone, and so is a
+ * profile with no settings or no language yet (onboarding makes its first course). Writes no event and stamps no new
+ * rev, so every device derives the same record, and it touches no card, attempt or event.
+ * @param {any} store @returns {boolean} whether it wrote
+ */
+export function migrateCourses(store) {
+  const cur = store.get('settings');
+  if (!cur || typeof cur !== 'object' || Array.isArray(cur.courses)) return false;
+  const next = normalizeSettings(cur);
+  if (!next.courses.length) return false;
+  store.set('settings', next);
+  return true;
 }
 
 /** @param {any[]} list */

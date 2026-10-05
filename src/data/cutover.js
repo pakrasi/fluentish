@@ -22,7 +22,7 @@
                   import's for records copied from the old apps; a "sent" flag is never undone
      caches       (exams.remote, exams.syncStatus, exams.vocabAudio, words.exam) are not merged; the next sync refills them */
 import { fnv1a } from './ids.js';
-import { mergeSettings, normalizeSettings, defaultPrefs } from './settings.js';
+import { mergeSettings, normalizeSettings, defaultPrefs, adoptMirror } from './settings.js';
 import { pathFor, attemptFile, TYPES } from './sync/github-b1exam.js';
 
 /** Days an archived preview profile is kept before it is purged. */
@@ -274,7 +274,7 @@ export function mergeSettingsFromPreview(real, prev, legacyChanged, stamp) {
     if (keys.some(k => legacyChanged(k))) set(path, get(r, path), r.rev[path]);
     else if (p.rev[path]) set(path, get(p, path), p.rev[path]);
   }
-  return out;
+  return adoptMirror(out);   // the course takes the fields decided above (data/settings.js, round 3 courses)
 }
 
 /** b1.session: day logs united by day, the active rounds by start time, legacy-fed fields by the fingerprint. @param {any} real @param {any} prev @param {(key: string) => boolean} legacyChanged */

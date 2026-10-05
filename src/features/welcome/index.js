@@ -7,7 +7,7 @@ import { config } from '../../core/config.js';
 import { markNode, runway, studyDays } from '../../core/brand.js';
 import { segments } from '../../core/motion.js';
 import { field, nextId } from '../../core/ui.js';
-import { setSetting, setExamDate, examDateError, MODULES } from '../../data/settings.js';
+import { setSetting, setExamDate, examDateError, addCourse, langCode, MODULES } from '../../data/settings.js';
 import { isoWithOffset } from '../../data/ids.js';
 
 const STEPS = ['language', 'level', 'exam', 'time', 'summary'];
@@ -108,12 +108,13 @@ export async function mount(el, ctx) {
 
   function start() {
     const w = (/** @type {string} */ p, /** @type {any} */ v) => setSetting({ store, hlc: app.hlc, bus }, p, v);
-    w('language', state.language);
-    w('level', state.level);
-    w('exam.type', state.examType);
+    // the profile's first course (data/settings.js addCourse): its language, level and goal, made active
+    const date = state.examType && state.date && !examDateError(state.date, today) ? state.date : null;
+    const code = langCode(state.language);
+    if (code) addCourse({ store, hlc: app.hlc, bus }, { lang: code, level: state.level ?? null, goal: { exam: state.examType ?? null, date } });
+    else { w('language', state.language); w('level', state.level); w('exam.type', state.examType); if (date) setExamDate({ store, hlc: app.hlc, bus, clock: ctx.clock }, date); }
     w('exam.modules', state.modules);
     w('minutesPerDay', state.minutes);
-    if (state.examType && state.date && !examDateError(state.date, today)) setExamDate({ store, hlc: app.hlc, bus, clock: ctx.clock }, state.date);
     w('onboarded', isoWithOffset(new Date()));
     store.flush();
     ctx.refreshShell();
@@ -163,9 +164,4 @@ export async function mount(el, ctx) {
   }
 
   render();
-}
-
-/** BCP 47 code for a language id, so names render with the right font and voice. @param {string} id */
-function langCode(id) {
-  return /** @type {Record<string, string>} */ ({ german: 'de', khasi: 'kha', hindi: 'hi', french: 'fr', swissgerman: 'gsw', bengali: 'bn', spanish: 'es', italian: 'it', portuguese: 'pt', arabic: 'ar' })[id] || null;
 }

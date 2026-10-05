@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "settings@1",
   "title": "Profile settings",
-  "description": "Profile-scoped and synced: the goal (language, level, exam with its date: the single source of the exam date) and practice options. Merged per field, last write wins on the hybrid logical clock in rev.",
+  "description": "Profile-scoped and synced: the goal and practice options. courses (round 3) holds one course per language and activeCourse names the one the app is about; language, level and exam (type, date) are the active course's mirror, written only through data/settings.js setCourse(). The active course's goal.date is the single source of the exam date (core/clock.js reads it through data/settings.js examDate). Merged per field, last write wins on the hybrid logical clock in rev (course fields under 'courses.<id>.<field>').",
   "type": "object",
   "required": [
     "v",
@@ -118,6 +118,84 @@
         "null"
       ],
       "format": "date-time"
+    },
+    "courses": {
+      "type": "array",
+      "description": "one course per language, ordered by id. Added in round 3 (Arch #11): a record from before has none and gains course 'de' from language, level and exam (data/session.js migrateCourses)",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "lang",
+          "level",
+          "goal",
+          "decks"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$",
+            "description": "the course id: the language's short code for its first course ('de')"
+          },
+          "lang": {
+            "type": "string",
+            "pattern": "^[a-z]{2,3}$",
+            "description": "short language code ('de', 'fr')"
+          },
+          "level": {
+            "enum": [
+              "A1",
+              "A2",
+              "B1",
+              "B2",
+              "C1",
+              null
+            ]
+          },
+          "goal": {
+            "type": "object",
+            "required": [
+              "exam",
+              "date"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "exam": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "an exam id from the content manifest (goethe-b1), 'other', or null"
+              },
+              "date": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date",
+                "description": "the exam date of this course; the active course's is the exam date"
+              }
+            }
+          },
+          "decks": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^([a-z0-9]+|[a-z]{2,3}:[a-z0-9][a-z0-9._-]*)$"
+            },
+            "description": "the course's decks: legacy names (b1, speak, script, clusters, build) for German, '<lang>:<name>' for any new deck (domain/decks.js)"
+          }
+        }
+      }
+    },
+    "activeCourse": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "the id of the course Today, Practice and the clock follow; null before onboarding"
     },
     "rev": {
       "type": "object",
