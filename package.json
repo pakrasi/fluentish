@@ -17,9 +17,14 @@
     "typecheck": "tsc -p tsconfig.json",
     "typecheck:legacy": "node tools/typecheck-ratchet.mjs",
     "fixtures": "node tools/make-fixtures.mjs",
-    "manifest": "node tools/build-manifest.mjs"
+    "manifest": "node tools/build-manifest.mjs",
+    "test:e2e": "node tools/stamp.mjs --out _site && playwright test -c tests/e2e",
+    "e2e": "playwright test -c tests/e2e"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^22.20.5",
     "typescript": "^5.9.3"
   }
 }

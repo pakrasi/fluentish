@@ -1,4 +1,6 @@
-# Gates for every push and pull request. deploy.yml runs after this workflow passes on main.
+# Gates for every push and pull request. deploy.yml runs after this workflow passes on main, so every job here, the
+# browser e2e included, stands between a commit and the live app. The jobs are also required status checks on main
+# (branch protection), so main only takes commits that passed them on a branch first (CONTRIBUTING-FEATURES.md).
 name: ci
 on:
   push:
@@ -104,3 +106,44 @@ jobs:
         run: node tools/stamp.mjs --out _site
       - name: Privacy check (built site)
         run: node tools/check-privacy.mjs --dir _site
+
+  # Browser e2e (tests/e2e, ARCHITECTURE §8): the site the deploy would publish (tools/stamp.mjs → _site), in WebKit at
+  # an iPhone's 390 px and in desktop Chromium, with a synthetic profile. Every request to another host is answered by
+  # a mock or fails the test, and service workers are blocked (one offline spec runs its own worker against its own
+  # server), so no token can reach GitHub. axe serious/critical findings and any console error fail it.
+  e2e:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - name: Playwright version
+        id: pw
+        run: echo "version=$(node -p "require('@playwright/test/package.json').version")" >> "$GITHUB_OUTPUT"
+      - name: Cache the browsers
+        id: browsers
+        uses: actions/cache@v6
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ steps.pw.outputs.version }}-chromium-webkit
+      - name: Install the browsers
+        if: steps.browsers.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps chromium webkit
+      - name: Install the browsers' system libraries (cached browsers)
+        if: steps.browsers.outputs.cache-hit == 'true'
+        run: npx playwright install-deps chromium webkit
+      - name: tsc strict on the e2e suite
+        run: npx tsc -p tests/e2e/tsconfig.json
+      - name: Stamp the site and run the e2e suite
+        run: npm run test:e2e
+      - name: Report (on failure)
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: e2e-report
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 7

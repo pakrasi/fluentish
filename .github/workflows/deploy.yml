@@ -4,6 +4,9 @@
 # The artifact is _site/ from tools/stamp.mjs: code under v/<sha>/ (plus the two previously deployed versions),
 # index.html, 404.html, sw.js, version.json, assets/ and content/. tools/, tests/, authoring/ are never published.
 # Service worker kill switch: run with sw=off, or set the repository variable FLUENTISH_SW=off (see README).
+# Nothing is deployed unless the browser e2e suite (ci.yml, job e2e) passed for that very commit: after ci, that is the
+# run that triggered this one; by hand, an earlier run of ci on that commit (a rollback to a commit from before the
+# suite existed needs untested=true).
 name: deploy
 on:
   workflow_run:
@@ -20,9 +23,15 @@ on:
         description: 'Service worker: "off" is the kill switch (empty = the repository variable FLUENTISH_SW, else on)'
         required: false
         default: ''
+      untested:
+        description: 'true: deploy even without a passing e2e run for the commit (only for a rollback to a commit from before the e2e suite)'
+        type: boolean
+        required: false
+        default: false
 
 permissions:
   contents: read
+  checks: read
   pages: write
   id-token: write
 
@@ -42,6 +51,17 @@ jobs:
         with:
           ref: ${{ github.event_name == 'workflow_dispatch' && (inputs.sha || 'main') || github.event.workflow_run.head_sha }}
           fetch-depth: 0
+      - name: The browser e2e passed for this commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SHA: ${{ github.event_name == 'workflow_dispatch' && (inputs.sha || github.sha) || github.event.workflow_run.head_sha }}
+          UNTESTED: ${{ inputs.untested && 'true' || 'false' }}
+        run: |
+          sha=$(git rev-parse "$SHA")
+          n=$(gh api "repos/${{ github.repository }}/commits/$sha/check-runs?check_name=e2e&per_page=100" --jq '[.check_runs[] | select(.conclusion == "success")] | length')
+          if [ "$n" -gt 0 ]; then echo "e2e passed for $sha"
+          elif [ "$UNTESTED" = "true" ]; then echo "::warning::deploying $sha without a passing e2e run (untested=true)"
+          else echo "::error::no passing e2e run for $sha. Run ci on it first; untested=true only for a rollback to a commit from before the e2e suite."; exit 1; fi
       - uses: actions/setup-node@v7
         with: { node-version: 22 }
       - name: Manifest is current

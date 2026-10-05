@@ -9,3 +9,5 @@ __pycache__/
 .playwright-cli/
 authoring/private/
 media/
+test-results/
+playwright-report/
