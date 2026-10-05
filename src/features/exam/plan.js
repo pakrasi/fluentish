@@ -90,7 +90,7 @@ export function planItems({ store, c, settings, exam, t }) {
   if (!next) return [];
   const def = exam.modules.find((/** @type {any} */ x) => x.id === next.module);
   return [{
-    id: 'exam.next', source: 'exam', kind: 'mock', mock: true, title: `${def.name} · ${t('exam.test', { n: next.test })}`,
+    id: 'exam.next', source: 'exam', kind: 'mock', mock: true, module: next.module, title: `${def.name} · ${t('exam.test', { n: next.test })}`,
     detail: t('plan.mock.detailLabel', { min: minutesLabel(def, t) }), minutes: planMinutes(def), href: `#/exam/${next.test}/${next.module}`, priority: 30,
     action: t('plan.mock.action', { module: def.name, min: planMinutes(def) }),
   }];
@@ -106,14 +106,16 @@ export function todayFeedback({ store, exam, t }) {
     const a = last.get(`${f.day}:${f.module}`);
     if (!a || !feedbackFor(store, exam.id, a).cur.some(x => x.id === f.id)) continue;
     const title = `${f.module === 'sprechen' ? 'Sprechen' : f.module === 'schreiben' ? 'Schreiben' : f.module === 'lesen' ? 'Lesen' : 'Hören'} · ${t('exam.test', { n: f.day })}`;
-    rows.push({ id: `fb.${f.id}`, title, status: t('feedback.new'), href: `#/exam/${f.day}/${f.module}/review/${encodeURIComponent(a.id)}`, action: t('feedback.read'), label: t('feedback.readLabel', { title }) });
+    rows.push({ id: `fb.${f.id}`, title, status: t('feedback.new'), href: `#/exam/${f.day}/${f.module}/review/${encodeURIComponent(a.id)}`, action: t('feedback.read'), label: t('feedback.readLabel', { title }),
+      module: f.module, need: 'read', test: f.day });
   }
   const pending = [...last.values()].filter(a => a.module === 'schreiben' && !a.remote && (a.writings || []).some((/** @type {any} */ w) => w.text) && !feedbackFor(store, exam.id, a).cur.length)
     .sort((a, b) => a.day - b.day);
   for (const a of pending) {
     const title = `Schreiben · ${t('exam.test', { n: a.day })}`;
     rows.push({ id: `uncorrected.${a.id}`, title, status: t('feedback.notCorrected'),
-      href: `#/exam/${a.day}/schreiben/review/${encodeURIComponent(a.id)}?correct=1`, action: t('feedback.correct'), label: t('feedback.correctLabel', { title }) });
+      href: `#/exam/${a.day}/schreiben/review/${encodeURIComponent(a.id)}?correct=1`, action: t('feedback.correct'), label: t('feedback.correctLabel', { title }),
+      module: 'schreiben', need: 'correct', test: a.day });
   }
   return rows;
 }

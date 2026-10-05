@@ -9,9 +9,8 @@ import { icon } from '../../core/icons.js';
 import { notice, section, nextId } from '../../core/ui.js';
 import { odometer, fill, reveal } from '../../core/motion.js';
 import { runway, studyDays, atmosphere, Field } from '../../core/brand.js';
-import { composeToday } from '../../domain/today.js';
 import { isDue } from '../../domain/b1ready.js';
-import { planProviders } from '../registry.js';
+import { composeDay } from '../day.js';
 import { summaryText } from '../../data/migrate.js';
 import { previewText } from '../../data/cutover.js';
 import { dueTomorrow, todayBudget } from '../practice/plan.js';
@@ -31,30 +30,8 @@ export async function mount(el, ctx) {
   let pending = /** @type {Promise<void> | null} */ (null);
 
   async function render() {
-    const s = ctx.settings();
-    const c = ctx.clock.ctx();
-    const manifest = await ctx.content.manifest().catch(() => null);
-    const exam = manifest && s.exam.type ? manifest.exams.find((/** @type {any} */ e) => e.id === s.exam.type) || null : null;
-    const lang = manifest && s.language ? manifest.languages.find((/** @type {any} */ l) => l.id === s.language) : null;
-    const pctx = { store, c, settings: s, exam, t };
-
-    /** @type {any[]} */ const items = [], feedback = [], modules = [];
-    const providers = /** @type {any[]} */ (await planProviders());
-    await Promise.all(providers.map(p => p.mod.prepare?.(ctx)));   // e.g. Practice's pool stats, so both tabs read one budget
-    const ready = await readinessFor(ctx);
-    if (!alive) return;
-    for (const { id, mod } of providers) {
-      try {
-        items.push(...((await mod.planItems?.(pctx)) || []));
-        feedback.push(...(mod.todayFeedback?.(pctx) || []));
-        modules.push(...(mod.todayModules?.(pctx) || []));
-      } catch (e) { console.error(`today: ${id}`, e); }
-    }
-    if (s.language && c.phase === 'none') items.push({ id: 'today.setDate', source: 'today', kind: 'setup', title: t('plan.setDate'), detail: t('plan.setDate.detail'), minutes: 0, href: '#/profile/goal', priority: 90 });
-    if (s.language && c.phase === 'after') items.push({ id: 'today.nextExam', source: 'today', kind: 'setup', title: t('plan.nextExam'), detail: t('plan.nextExam.detail'), minutes: 0, href: '#/profile/goal', priority: 90 });
-    const activity = store.get('activity', {}) || {};
-    // on the exam day nothing asks for work: no corrections to read, only the warm-up
-    const plan = composeToday({ ctx: c, budget: s.minutesPerDay, items, feedback: c.phase === 'day' ? [] : feedback, modules, doneMinutes: activity[c.today]?.minutes || 0 });
+    const { plan, exam, lang, c, settings: s, activity } = await composeDay(ctx);
+    const readyNow = await readinessFor(ctx);
     if (!alive) return;
 
     const examName = exam ? exam.short : t('exam.generic');
@@ -64,7 +41,7 @@ export async function mount(el, ctx) {
         h('div', { class: 'row-main' }, h('span', { class: 'row-title' }, f.title), h('span', { class: 'row-detail' }, f.status)),
         f.action ? h('a', { class: 'btn pressable', href: f.href, 'aria-label': f.label || null }, f.action) : null))),
       plan.feedbackMore ? h('p', { class: 'caption more' }, t('today.feedbackMore', { n: plan.feedbackMore })) : null) : null;
-    const readySec = ready && ready.n ? renderReadiness(ready, c) : null;
+    const readySec = readyNow && readyNow.n ? renderReadiness(readyNow, c) : null;
     const page = h('div', { class: 'today' },
       h('header', { class: 'page-head' }, h('h1', null, t('today.title')), h('p', { class: 'caption' }, label(c.today))),
       h('div', { class: 'today-grid' },
@@ -189,7 +166,7 @@ export async function mount(el, ctx) {
   /** A round started here comes back here when it ends. @param {string} href */
   const fromToday = href => (href.startsWith('#/practice/round') ? `${href}${href.includes('?') ? '&' : '?'}from=today` : href);
   /** @param {any} it */
-  const primaryLabel = it => (it.cut && it.source === 'practice' ? t('plan.round.one', { n: 12 }) : it.action) || (it.minutes ? `${it.title} · ${t('unit.min', { n: it.minutes })}` : it.title);
+  const primaryLabel = it => it.action || (it.minutes ? `${it.title} · ${t('unit.min', { n: it.minutes })}` : it.title);
   /** @param {any} r */
   const rowDetail = r => (r.cut ? (r.rounds === 1 ? t('plan.review.cutOne') : t('plan.review.cut', { n: r.rounds })) : r.detail);
 
@@ -234,7 +211,7 @@ export async function mount(el, ctx) {
     return notice({ children: [h('p', null, t(key))] });
   }
 
-  /** @param {ReturnType<typeof composeToday>} plan @param {any} c */
+  /** @param {any} plan @param {any} c */
   function renderPlan(plan, c) {
     const work = plan.rows.filter(r => r.kind !== 'setup');
     const head = plan.state === 'done'

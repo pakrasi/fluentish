@@ -109,7 +109,9 @@ test('budget: Schreiben gets its share while it is the focus, and the main round
   const settings = { minutesPerDay: 60, exam: { type: 'goethe-b1' } };
   const c = context({ today: '2026-10-04', exam: EXAM });
   const f = writingBudget({ c, settings, due: 0, left: 100, focus: true });
-  assert.equal(f.newPerDay, 24, '30 % of 60 min at 0.75 min a phrase');
+  assert.equal(f.newPerDay, 10, 'phrases are capped at about 8 minutes (0.75 min a phrase); the rest of the share is writing');
+  assert.ok(f.minutes <= 8, 'two rounds at most');
+  assert.equal(writingBudget({ c, settings, due: 0, left: 100, focus: true, taskMin: 20 }).reserve, 27.5, 'the task is reserved too');
   assert.equal(writingBudget({ c, settings, due: 0, left: 100, focus: false }).newPerDay, 4);
   assert.equal(writingBudget({ c: context({ today: '2026-10-08', exam: EXAM }), settings, due: 5, left: 100, focus: true }).newPerDay, 0, 'no new on the eve');
   const without = dayBudget({ c, settings, dueN: 10, priorityLeft: 200 });
@@ -152,8 +154,24 @@ test('plan: a Schreiben row right after the review round while it is the weakest
   const rows = planItems({ store, c, settings, exam: null, t });
   const w = rows.find(r => r.id === 'practice.writing');
   assert.equal(w.priority, 22); assert.equal(w.kind, 'write'); assert.equal(w.href, '#/practice/round?kind=write');
-  assert.match(w.detail, /"due":1,"fresh":23/, "90 left over the 4 days to the last new day");
+  assert.match(w.detail, /"due":1,"fresh":10/, "phrases capped at about 8 minutes while Schreiben is the focus");
   assert.ok(!(rows.find(r => r.id === 'practice.round')?.detail || '').includes('"due":1,'), 'the Schreiben card is not in the review count');
+});
+
+test('plan: while Schreiben is the focus, a task from memory comes first; the least recently written Aufgabe', () => {
+  const t = (k, v = {}) => `${k}${Object.keys(v).length ? ' ' + JSON.stringify(v) : ''}`;
+  const c = context({ today: '2026-10-04', exam: EXAM });
+  const tasks = [{ id: 'a1-x', a: 'A1', title: 'X', min: 20 }, { id: 'a2-y', a: 'A2', title: 'Y', min: 25 }, { id: 'a3-z', a: 'A3', title: 'Z', min: 15 }];
+  const kv = { written: { 'a1-x': '2026-10-02' } };
+  const get = (n, f) => (n === 'b1.session' ? { stats: { day: '2026-10-04', priorityLeft: 50, pool: 900, unseen: 500, writing: { due: 0, unseen: 90 }, tasks } } : n === 'practice.write' ? kv : f);
+  const store = { cards: () => ({}), attempts: () => [], get };
+  const settings = { language: 'german', exam: { type: 'goethe-b1', date: EXAM, modules: ['lesen', 'hoeren', 'schreiben', 'sprechen'] }, minutesPerDay: 60, newPerDay: null };
+  const rows = planItems({ store, c, settings, exam: null, t });
+  const w = rows.find(r => r.id === 'practice.schreiben');
+  assert.equal(w.priority, 18); assert.equal(w.minutes, 25); assert.equal(w.href, '#/practice/write/build/a2-y/free');
+  kv.written['a2-y'] = '2026-10-04';
+  const done = planItems({ store, c, settings, exam: null, t }).find(r => r.id === 'practice.schreiben');
+  assert.equal(done.done, true, 'written today: the row shows done');
 });
 
 test('build an email: lines assemble into the email, connectors are found, the model email', () => {

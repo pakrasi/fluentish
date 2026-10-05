@@ -3,8 +3,10 @@
    'b1.session'.stats, which Practice writes whenever it builds the pool; prepare() builds it before Today composes,
    so Today and Practice read the same day budget (domain/budget.js) from the same inputs.
 
-   Rows: the warm-up on the exam day; the review round (due + new, about N rounds); Schreiben phrases (their own
-   rounds, right after the review round while Schreiben is the weakest module, see domain/modules.js writingFocus);
+   Rows: the warm-up on the exam day; while Schreiben is the weakest module (domain/modules.js writingFocus), a
+   Schreiben task written from memory before everything else (features/day.js turns it into "read your correction" or
+   "get a correction" when the exam has one waiting); the review round (due + new, about N rounds); Schreiben phrases
+   (their own rounds, capped at about 8 minutes while Schreiben is the focus);
    mistakes from corrections; speaking situations (their own deck and budget, domain/budget.js simBudget); the
    Sprechen frames on the eve; the Teil 2 talk while the exam is ahead. When today's rounds are done and nothing is
    due, the round row shows done. */
@@ -31,6 +33,32 @@ export async function prepare(ctx) {
   } catch { /* offline: Today plans from the last stats */ }
 }
 
+/** The kv Schreiben keeps its builds, drafts, corrections and written tasks in (write.js COLLECTION). */
+const WRITE_KV = 'practice.write';
+
+/**
+ * Today's Schreiben task to write from memory while Schreiben is the weakest module: the Aufgabe written least
+ * recently, and in it a task not written yet (else the one written longest ago). done: a task was written today.
+ * tasks: [{id, a: 'A1', title, min}] (from the content; Today reads them from the session stats).
+ * @param {{store: any, c: any, settings: any, tasks?: {id: string, a: string, title: string, min: number}[] | null}} o
+ * @returns {{id: string, a: string, title: string, min: number, done: boolean} | null}
+ */
+export function writingTask({ store, c, settings, tasks = null }) {
+  if (c.phase === 'day' || !writingFocus({ store, c, settings })) return null;
+  const list = tasks || (session(store).stats?.tasks) || [];
+  if (!list.length) return null;
+  const written = /** @type {Record<string, string>} */ ((store.get(WRITE_KV, {}) || {}).written || {});
+  const today = list.find(x => written[x.id] === c.today);
+  if (today) return { ...today, done: true };
+  const aufs = [...new Set(list.map(x => x.a))].sort();
+  const last = (/** @type {string} */ a) => list.filter(x => x.a === a).map(x => written[x.id] || '').sort().pop() || '';
+  const a = aufs.sort((x, y) => last(x).localeCompare(last(y)) || x.localeCompare(y))[0];
+  const mine = list.filter(x => x.a === a).sort((x, y) => (written[x.id] || '').localeCompare(written[y.id] || ''));
+  return { ...mine[0], done: false };
+}
+/** @param {any} store */
+const session = store => store.get('b1.session', {}) || {};
+
 /**
  * Today's budget from the store and the cached stats: the numbers the plan row, the hub and the round agree on.
  * @param {import('../contract.js').PlanCtx} ctx
@@ -47,14 +75,19 @@ export function todayBudget({ store, c, settings }) {
   const stats = sess.stats && sess.stats.day === c.today ? sess.stats : null;
   const day = sess.day && sess.day.day === c.today ? sess.day : null;
   const poolLeft = stats ? (stats.unseen ?? Math.max(0, stats.pool - Object.keys(cards).length)) : Infinity;
-  const writing = stats && stats.writing ? { due: wDue, left: stats.writing.unseen, shown: ((day && day.newBy) || {}).w || 0, focus: writingFocus({ store, c, settings }) } : null;
+  const task = writingTask({ store, c, settings, tasks: stats ? stats.tasks : null });
+  const writing = stats && stats.writing ? { due: wDue, left: stats.writing.unseen, shown: ((day && day.newBy) || {}).w || 0, focus: writingFocus({ store, c, settings }),
+    taskMin: task && !task.done ? task.min : 0 } : null;
   // new script words shown today count as new items shown, so scripts never add to the day's new load; the minutes
   // of the situations and script rows are reserved off the B1 new items (domain/budget.js, how the shares compose)
   const budget = dayBudget({ c, settings, dueN: due, priorityLeft: stats ? stats.priorityLeft : null, newShown: (day ? day.newShown || 0 : 0) + scriptNewShown(store, c.today), poolLeft, writing,
     side: sideMinutes({ store, c, settings }) });
   const act = (store.get('activity', {}) || {})[c.today];
   const roundsToday = Math.max(act ? act.rounds || 0 : 0, day ? day.rounds || 0 : 0);
-  return { ...budget, due, roundsToday, writeRounds: day ? day.writeRounds || 0 : 0 };
+  const firstEver = !Object.values(cards).some(r => r && r.hist && r.hist.length);
+  // the next daily round's size: what the composer made of the same state (data.js stateFor), else its rule
+  const next = stats && Number.isFinite(stats.next) ? stats.next : Math.min(ROUND, due + Math.min(budget.newLeft, firstEver ? 8 : 4));
+  return { ...budget, due, roundsToday, writeRounds: day ? day.writeRounds || 0 : 0, next, task };
 }
 
 /**
@@ -93,8 +126,9 @@ export function simToday({ store, c, settings }) {
 
 /**
  * The label of the button that starts the next review round, shared by Today's dock and Practice's hub. It counts the
- * rounds the plan row shows ("about 6 rounds" → "Start round 1 of 6"), so the button and the row say the same.
- * @param {{rounds: number, roundsToday: number}} b @param {number} n questions in the next round @param {(k: string, v?: any) => string} t
+ * rounds the composed plan row shows, after Today's cut ("2 rounds today" → "Start round 1 of 2"), so the row and both
+ * buttons say the same.
+ * @param {{rounds: number}} b @param {number} n questions in the next round @param {(k: string, v?: any) => string} t
  */
 export function roundAction(b, n, t) {
   return b.rounds > 1 ? t('plan.round.actionOf', { k: 1, total: b.rounds, n }) : t('plan.round.action', { n, min: roundMinutes(n) });
@@ -117,15 +151,23 @@ export function planItems({ store, c, settings, t, exam }) {
   const due = b.due, fresh = b.newLeft;
   /** @type {import('../../domain/today.js').PlanItem[]} */
   const out = [];
+  // Schreiben first while it is the weakest module: a task from memory (features/day.js may turn it into a correction)
+  const task = b.task;
+  if (task) {
+    out.push(task.done
+      ? { id: 'practice.schreiben', source: 'practice', kind: 'write', title: t('plan.schreiben'), detail: t('plan.schreiben.done', { n: task.a.slice(1) }), minutes: 0, href: '#/practice/write', priority: 18, done: true }
+      : { id: 'practice.schreiben', source: 'practice', kind: 'write', title: t('plan.schreiben'), detail: t('plan.schreiben.detail', { n: task.a.slice(1), title: task.title }),
+        minutes: task.min, href: `#/practice/write/build/${task.id}/free`, priority: 18, action: t('plan.schreiben.action', { min: task.min }) });
+  }
   if (due > 0 || fresh > 0) {
-    const n = Math.min(ROUND, due + fresh);
+    const n = b.next || Math.min(ROUND, due + fresh);
     const what = due > 0 ? (fresh > 0 ? t('plan.review.detailNew', { due, fresh }) : t('plan.review.detail', { n: due, due })) : t('plan.new.detail', { n: fresh });
     out.push({
       id: 'practice.round', source: 'practice', kind: due > 0 ? 'review' : 'new', introducesNew: due === 0,
       title: recs.length ? t('plan.review') : t('plan.firstRound'),
       detail: b.rounds > 1 ? `${what} · ${t('plan.rounds', { n: b.rounds })}` : what,
       minutes: b.minutes, href: '#/practice/round', priority: 20, rounds: b.rounds,
-      action: roundAction(b, n, t),
+      action: roundAction(b, n, t), actionFor: rounds => roundAction({ rounds }, n, t),
     });
   } else if (b.roundsToday > 0) {
     out.push({ id: 'practice.round', source: 'practice', kind: 'review', title: t('plan.review'), detail: t('plan.review.none'), minutes: 0, href: '#/practice', priority: 20, done: true });
@@ -136,7 +178,7 @@ export function planItems({ store, c, settings, t, exam }) {
     const n = Math.min(ROUND, w.n);
     out.push({ id: 'practice.writing', source: 'practice', kind: 'write', introducesNew: w.due === 0, title: t('plan.writing'),
       detail: [w.due && w.newLeft ? t('plan.review.detailNew', { due: w.due, fresh: w.newLeft }) : w.due ? t('plan.review.detail', { n: w.due, due: w.due }) : t('plan.new.detail', { n: w.newLeft }),
-        w.focus ? t('plan.writing.weakest') : null].filter(Boolean).join(' · '),
+        ].filter(Boolean).join(' · '),
       minutes: w.minutes, href: '#/practice/round?kind=write', priority: w.focus ? 22 : 50, rounds: w.rounds,
       action: t('plan.writing.action', { n, min: roundMinutes(n) }) });
   } else if (w && w.focus && b.writeRounds > 0) {
@@ -174,7 +216,7 @@ export function planItems({ store, c, settings, t, exam }) {
   if (cl.due > 0) {
     const n = Math.min(ROUND, cl.due);
     out.push({ id: 'practice.clusters', source: 'practice', kind: 'review', title: t('plan.clusters'), detail: t('plan.clusters.detail', { n: cl.due }),
-      minutes: cl.minutes, href: '#/practice/round?kind=cluster%3Adue&from=today', priority: 55, action: t('plan.clusters.action', { n, min: roundMinutes(n) }) });
+      minutes: cl.minutes, href: '#/practice/round?kind=cluster%3Adue', priority: 55, noCut: true, action: t('plan.clusters.action', { n, min: roundMinutes(n) }) });
   }
   return out;
 }

@@ -1,4 +1,5 @@
-/* Speak (#/practice/speak, UX §4.9): the Teil 2 talk, Say it aloud and the mic check. Ported from Igloo's b1more.js.
+/* Sprechen (#/practice/speak, UX §4.9): speaking situations (sim-view.js), the Teil 2 talk, Say it aloud and the mic
+   check. The talk and Say it aloud are ported from Igloo's b1more.js.
    Every microphone, recogniser and voice call goes through speech.js, so the iOS app can swap the implementation. */
 import { h, replace, announce } from '../../core/dom.js';
 import { linkRow, notice } from '../../core/ui.js';
@@ -10,6 +11,7 @@ import * as S from './session.js';
 import { gradeAnswer } from './grade.js';
 import { loadData, session, saveAnswer, forecaster, tz } from './data.js';
 import { speech } from './speech.js';
+import { simToday } from './plan.js';
 
 const FOLIEN = /** @type {[string, string[]][]} */ ([['Thema vorstellen', ['t2_open']], ['Eigene Erfahrung', ['t2_experience']], ['In meinem Heimatland', ['t2_home']],
   ['Vor- und Nachteile, Meinung', ['t2_proscons', 't2_conclude']], ['Abschluss', ['t2_close']]]);
@@ -50,10 +52,16 @@ export async function mountSpeak(el, ctx, parts) {
   if (what === 'teil2') { await drawTeil2(); return cleanup; }
   // the list
   const cal = session(ctx.store).cal;
+  const simDetail = () => {
+    const x = simToday({ store: ctx.store, c: ctx.clock.ctx(), settings: ctx.settings() });
+    return x.due && x.newLeft ? t('practice.sim.detail', { due: x.due, fresh: x.newLeft }) : x.due ? t('practice.sim.detailDue', { n: x.due })
+      : x.newLeft ? t('practice.sim.detailFresh', { n: x.newLeft }) : t('practice.sim.rowIdle');
+  };
   replace(el, h('div', { class: 'practice stack' },
     back('#/practice', t('practice.title')),
     h('div', { class: 'page-head' }, h('h1', null, t('practice.speak.title'))),
     h('nav', { class: 'pr-rows' },
+      linkRow({ href: '#/practice/situations', title: t('practice.sim'), detail: simDetail() }),
       linkRow({ href: '#/practice/speak/teil2', title: t('practice.speak.teil2'), detail: t('practice.speak.teil2.detail') }),
       linkRow({ href: '#/practice/speak/aloud', title: t('practice.speak.aloud'), detail: t('practice.speak.aloud.detail') }),
       linkRow({ href: '#/practice/speak/aloud/check', title: t('practice.speak.check'), detail: cal ? t('practice.speak.check.done') : t('practice.speak.check.never') })),

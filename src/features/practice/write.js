@@ -85,7 +85,7 @@ function mountPage(el, ctx, data) {
         h('p', { class: 'pr-ready-top' }, h('span', { class: 'label' }, t('practice.write.recall')), h('b', { class: 'tnum' }, pct(all.recall))),
         recallBar(all.recall, all.coverage, t('practice.area.bar', { recall: pct(all.recall), seen: pct(all.coverage) })),
         h('p', { class: 'caption' }, t('practice.write.seen', { seen: all.seen, n: all.n }))) : null,
-      wb && wb.focus ? h('p', { class: 'caption' }, t('practice.write.focus')) : null,
+      wb && wb.focus && c.exam ? h('p', { class: 'caption' }, t('practice.write.focus', { date: label(c.exam) })) : null,
       n ? null : h('p', { class: 'pr-empty' }, nextDue ? t('practice.nothingNext', { date: label(nextDue) }) : t('practice.nothing')),
       start ? h('div', { class: 'pr-queue-btn' }, start) : null);
 

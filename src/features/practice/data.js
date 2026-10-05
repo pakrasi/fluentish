@@ -17,7 +17,7 @@ import { dayBudget } from '../../domain/budget.js';
 import { writingFocus } from '../../domain/modules.js';
 import { slotKey } from './session.js';
 import { scriptNewShown } from './script/today.js';
-import { sideMinutes } from './plan.js';
+import { sideMinutes, writingTask } from './plan.js';
 
 // igloo.words.de and igloo.chunks.german (both precached) only feed the grader's lexicon of German word forms; without
 // them the B1 content's own words do
@@ -84,16 +84,20 @@ export function stateFor(ctx, data) {
   const pLeft = C.priorityLeft(base);
   const settings = ctx.settings();
   const focus = writingFocus({ store: ctx.store, c, settings });
-  const writing = wDue + wUnseen ? { due: wDue, left: wUnseen, shown: (day.newBy || {}).w || 0, focus } : null;
+  const tasks = data.writing ? data.writing.tasks.map((/** @type {any} */ x) => ({ id: x.id, a: x.aufgabe, title: x.title,
+    min: (data.writing.aufgaben.find((/** @type {any} */ a) => a.id === x.aufgabe) || {}).minutes || 20 })) : [];
+  const task = writingTask({ store: ctx.store, c, settings, tasks });
+  const writing = wDue + wUnseen ? { due: wDue, left: wUnseen, shown: (day.newBy || {}).w || 0, focus, taskMin: task && !task.done ? task.min : 0 } : null;
   // new script words shown today come off the same daily number, so scripts never add to the new load
   const scriptNew = scriptNewShown(ctx.store, c.today);
   const budget = dayBudget({ c, settings, dueN, priorityLeft: pLeft, newShown: (day.newShown || 0) + scriptNew, poolLeft: unseen, writing,
     side: sideMinutes({ store: ctx.store, c, settings }) });
   base.newPerDay = Math.max(0, budget.newPerDay - scriptNew);
   /** @type {any} */ (base).writingNew = budget.writing ? budget.writing.newPerDay : 0;
-  // Today's plan reads these without loading content
+  // Today's plan reads these without loading content; next is the size of the next daily round, so Today's button and
+  // Practice's Start say the same number of questions
   const s = session(ctx.store), stats = { day: c.today, priorityLeft: pLeft, pool: data.pool.length, unseen, newPerDay: base.newPerDay,
-    ...(writing ? { writing: { due: wDue, unseen: wUnseen } } : {}) };
+    next: C.compose(base).length, ...(writing ? { writing: { due: wDue, unseen: wUnseen } } : {}), ...(tasks.length ? { tasks } : {}) };
   if (JSON.stringify(s.stats) !== JSON.stringify(stats)) ctx.store.set('b1.session', { ...s, stats });
   return { ...base, dueN, budget };
 }

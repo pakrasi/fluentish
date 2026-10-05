@@ -16,7 +16,7 @@ const items = [
 ];
 const ids = r => r.rows.map(x => x.id);
 
-test('week: priority order within the minutes, at most four rows, setup last', () => {
+test('week: priority order within the minutes, at most five open rows, setup last', () => {
   const r = composeToday({ ctx: context({ today: '2026-10-03', exam: '2026-10-09' }), budget: 60, items });
   assert.deepEqual(ids(r), ['warmup', 'review', 'mock', 'new', 'setdate']);
   assert.equal(r.minutes.planned, 57);
@@ -113,4 +113,56 @@ test('next to a short mock the review round keeps what still fits', () => {
   const ctx = context({ today: '2026-10-03', exam: '2026-10-09' });
   const r = composeToday({ ctx, budget: 60, items: [item('review', { priority: 20, minutes: 44, rounds: 11 }), item('mock', { kind: 'mock', mock: true, priority: 30, minutes: 30 })] });
   assert.equal(r.rows[0].minutes, 28); assert.equal(r.minutes.planned, 58); assert.equal(r.minutes.mock, null, 'nothing runs over now');
+});
+
+test('a row done today stays in the plan with its check, even after a mock runs over and the review round is cut', () => {
+  const ctx = context({ today: '2026-10-04', exam: '2026-10-08' });
+  const r = composeToday({ ctx, budget: 60, items: [
+    item('review', { priority: 20, minutes: 24, rounds: 6, actionFor: n => `1 of ${n}` }),
+    item('mock', { kind: 'mock', mock: true, priority: 30, minutes: 65 }),
+    item('situations', { kind: 'speak', priority: 48, minutes: 4, done: true }),
+  ] });
+  assert.deepEqual(ids(r), ['review', 'mock', 'situations']);
+  assert.equal(r.extra.length, 0, 'nothing done drops to "If you have time"');
+  assert.equal(r.rows[0].cut, true); assert.equal(r.rows[0].rounds, 1);
+  assert.equal(r.rows[0].action, '1 of 1', 'a cut row relabels its button with the rounds it now has');
+});
+
+test('the review cut happens before the next row is tested: a row after the mock is tested against the cut minutes', () => {
+  const ctx = context({ today: '2026-10-04', exam: '2026-10-08' });
+  const r = composeToday({ ctx, budget: 60, items: [
+    item('review', { priority: 20, minutes: 20, rounds: 5 }),
+    item('mock', { kind: 'mock', mock: true, priority: 30, minutes: 45 }),
+    item('talk', { kind: 'speak', priority: 50, minutes: 6 }),
+  ] });
+  // 20 + 45 runs over: the review is cut to 12 (60 − 45, whole rounds), so 57 planned, and the 6-minute talk does not fit
+  assert.equal(r.rows[0].minutes, 12);
+  assert.deepEqual(r.extra.map(x => x.id), ['talk']);
+  const s = composeToday({ ctx, budget: 60, items: [
+    item('review', { priority: 20, minutes: 20, rounds: 5 }),
+    item('mock', { kind: 'mock', mock: true, priority: 30, minutes: 45 }),
+    item('sit', { kind: 'speak', priority: 50, minutes: 3 }),
+  ] });
+  assert.deepEqual(ids(s), ['review', 'mock', 'sit'], 'a 3-minute row fits in what the cut left (57 + 3 = 60)');
+});
+
+test('arrange: Schreiben reads a new correction first, then gets one, then writes; situations move up on a non-Sprechen mock day', async () => {
+  const { arrange } = await import('../../src/features/day.js');
+  const t = (k, v = {}) => `${k}${Object.keys(v).length ? ' ' + JSON.stringify(v) : ''}`;
+  const task = item('practice.schreiben', { kind: 'write', priority: 18, minutes: 20, href: '#/practice/write/build/a1-x/free' });
+  const sit = item('practice.situations', { kind: 'speak', priority: 48, minutes: 4 });
+  const mock = item('exam.next', { kind: 'mock', mock: true, module: 'lesen', priority: 30, minutes: 65 });
+  const read = { id: 'fb.1', title: 'Schreiben · Test 3', status: 's', href: '#/exam/3/schreiben/review/a', module: 'schreiben', need: 'read', test: 3 };
+  const get = { id: 'uncorrected.2', title: 'Schreiben · Test 2', status: 's', href: '#/exam/2/schreiben/review/b?correct=1', module: 'schreiben', need: 'correct', test: 2 };
+  let a = arrange([task, sit, mock], [get, read], t);
+  const w = a.items.find(r => r.id === 'practice.schreiben');
+  assert.equal(w.href, read.href); assert.equal(w.minutes, 5);
+  assert.deepEqual(a.feedback.map(f => f.id), ['uncorrected.2'], 'the promoted row leaves the Feedback list');
+  assert.equal(a.items.find(r => r.id === 'practice.situations').priority, 28);
+  a = arrange([task, sit, mock], [get], t);
+  assert.equal(a.items.find(r => r.id === 'practice.schreiben').href, get.href);
+  a = arrange([task, sit, { ...mock, module: 'schreiben' }], [], t);
+  assert.ok(!a.items.some(r => r.id === 'practice.schreiben'), 'a Schreiben mock day writes the mock instead');
+  a = arrange([task, sit, { ...mock, module: 'sprechen' }], [], t);
+  assert.equal(a.items.find(r => r.id === 'practice.situations').priority, 48);
 });

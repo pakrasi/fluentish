@@ -15,14 +15,17 @@
    Minutes and rounds: a round is 12 questions, about 4 minutes; a new item costs about 0.75 min inside rounds (shown,
    learnt, seen again). Rounds are whole, and the minutes shown are rounds × 4, so "4 rounds, 16 min" always adds up.
 
-   Schreiben (writingBudget): the Schreiben phrases have their own rounds and their own share of the day. While
-   Schreiben is the weakest exam module (focus) it gets up to 30 % of the daily minutes for new phrases, paced to meet
-   every phrase left by the last new-item day, at least 8 a day; otherwise a trickle of 4. Its minutes (due phrases
-   and new ones) come off what the main rounds may fill with new items (dayBudget's writing.reserve).
+   Schreiben (writingBudget): while Schreiben is the weakest exam module (focus) it gets up to 30% of the daily
+   minutes, spent on writing first: the Schreiben row on Today reads a correction, gets one, or writes a task from
+   memory (taskMin, practice/plan.js). The Schreiben phrases have their own rounds, capped at about 8 minutes a day
+   (PHRASE_MIN; due phrases always come); otherwise new phrases are a trickle of 4. Its minutes (phrases and the task)
+   come off what the main rounds may fill with new items (dayBudget's writing.reserve).
 
    How the shares compose (one day, one number of minutes):
-     1. the B1 review rounds' due items always come first (Today cuts the review row if the day still runs over);
-     2. Schreiben reserves its minutes (writing.reserve, up to 30 % of the day for new phrases while it is the focus);
+     1. the B1 review rounds' due items come first among the rounds; on a mock day that runs over, Today cuts the
+        review row to what is left (at least one round) while the Schreiben share stays, because Schreiben is the
+        weakest module (owner decision 8);
+     2. Schreiben reserves its minutes (writing.reserve: the writing task, and phrases capped at about 8 minutes);
      3. the other rows reserve theirs (side): speaking situations (simBudget, a few minutes) and, with no exam ahead,
         the scripts (at most 25 % of the day, more only for a near delivery; features/practice/script/plan.js);
      4. the B1 new items fill what is left of their share (half the day while mocks are planned), at least 4;
@@ -63,7 +66,7 @@ export const newPerDayChosen = settings => Number.isInteger(settings?.newPerDay)
  * @param {number | null} [o.priorityLeft]  starred and trap items not seen yet; null before the pool was ever loaded
  * @param {number} [o.newShown]     new items already shown today
  * @param {number} [o.poolLeft]     unseen items left in the pool
- * @param {{due?: number, left?: number, shown?: number, focus?: boolean} | null} [o.writing]  the Schreiben phrases (writingBudget)
+ * @param {{due?: number, left?: number, shown?: number, focus?: boolean, taskMin?: number} | null} [o.writing]  Schreiben (writingBudget)
  * @param {number} [o.side]         minutes today's other rows take: speaking situations and scripts (see the header)
  * @returns {Budget}
  */
@@ -83,6 +86,8 @@ export function dayBudget({ c, settings, dueN, priorityLeft = null, newShown = 0
 }
 
 export const WRITE_SHARE = 0.3;
+/** Minutes a day for Schreiben phrases while Schreiben is the focus (two rounds); the rest of the share is writing. */
+export const PHRASE_MIN = 8;
 
 /**
  * @typedef {object} WritingBudget
@@ -93,28 +98,30 @@ export const WRITE_SHARE = 0.3;
  * @property {number} n            questions today (due + new left)
  * @property {number} rounds       Schreiben rounds that takes (0 when there is nothing)
  * @property {number} minutes      rounds × 4
- * @property {number} reserve      minutes the main rounds leave free for the Schreiben phrases (due and new)
+ * @property {number} reserve      minutes the main rounds leave free for Schreiben (the phrases, due and new, and the task)
  */
 
 /**
  * The Schreiben phrases' share of the day (see the header).
- * @param {{c: import('../core/clock.js').ClockCtx, settings: any, due?: number, left?: number, shown?: number, focus?: boolean}} o
- *   due: Schreiben phrases due; left: never seen; shown: new ones shown today
+ * @param {{c: import('../core/clock.js').ClockCtx, settings: any, due?: number, left?: number, shown?: number, focus?: boolean, taskMin?: number}} o
+ *   due: Schreiben phrases due; left: never seen; shown: new ones shown today; taskMin: minutes of today's writing task
  * @returns {WritingBudget}
  */
-export function writingBudget({ c, settings, due = 0, left = 0, shown = 0, focus = false }) {
+export function writingBudget({ c, settings, due = 0, left = 0, shown = 0, focus = false, taskMin = 0 }) {
   let newPerDay = 0;
   if (c.newItems && left + shown > 0) {
     const minutes = settings.minutesPerDay || 60;
-    const cap = Math.max(4, Math.floor((minutes * (focus ? WRITE_SHARE : 0.1)) / NEW_ITEM_MIN));
+    // focus: the phrases get about PHRASE_MIN minutes (never more than the 30% share), the rest of the share is writing
+    const phraseMin = Math.min(PHRASE_MIN, minutes * WRITE_SHARE);
+    const cap = focus ? Math.max(4, Math.floor(Math.max(0, phraseMin - reviewMin(due)) / NEW_ITEM_MIN)) : Math.max(4, Math.floor((minutes * 0.1) / NEW_ITEM_MIN));
     let pace = left + shown;
     if ((c.phase === 'week' || c.phase === 'lastNew') && c.lastNewDay) pace = Math.ceil((left + shown) / Math.max(1, D8.diff(c.today, c.lastNewDay) + 1));
-    newPerDay = Math.min(left + shown, cap, focus ? Math.max(8, pace) : Math.min(4, Math.max(1, pace)));
+    newPerDay = Math.min(left + shown, cap, focus ? Math.max(4, pace) : Math.min(4, Math.max(1, pace)));
   }
   const newLeft = Math.max(0, Math.min(newPerDay - shown, left));
   const n = due + newLeft;
   const rounds = n > 0 ? Math.max(1, Math.ceil((reviewMin(due) + newLeft * NEW_ITEM_MIN) / ROUND_MIN - 1e-9)) : 0;
-  return { focus, newPerDay, newLeft, due, n, rounds, minutes: rounds * ROUND_MIN, reserve: Math.round((reviewMin(due) + newLeft * NEW_ITEM_MIN) * 10) / 10 };
+  return { focus, newPerDay, newLeft, due, n, rounds, minutes: rounds * ROUND_MIN, reserve: Math.round((reviewMin(due) + newLeft * NEW_ITEM_MIN + (focus ? taskMin : 0)) * 10) / 10 };
 }
 
 /**

@@ -1,7 +1,13 @@
-/* Practice hub (#/practice, UX §4.2): the queue card with Start round, Schreiben (first while it is the weakest
-   module), missed items, mistakes from corrections, speaking, and the areas with their recall bars. */
+/* Practice hub (#/practice, UX §4.2, round-2 IA): one list grouped by exam module.
+     the queue card with Start round (the same rounds as Today's plan row: features/day.js composes both)
+     For the exam: Schreiben (with its recall bar), Sprechen (situations, Teil 2 talk, say it aloud), then missed
+       items and mistakes from corrections when there are any
+     Words: word clusters, exam words
+     Your own material: scripts ("After the exam on …" while an exam is ahead)
+     Areas: recall bars for the Sprechen phrases, grammar and the Lesen phrases */
 import { h, replace } from '../../core/dom.js';
 import { section, linkRow, notice } from '../../core/ui.js';
+import { composeDay } from '../day.js';
 import { icon } from '../../core/icons.js';
 import { fill, countTo } from '../../core/motion.js';
 import { label, add } from '../../core/clock.js';
@@ -17,7 +23,7 @@ import { COLLECTION as WORDS } from './words.js';
 import { clusterToday } from './plan.js';
 import { hubRow as scriptsRow } from './script/hub.js';
 
-const AREAS = ['speaking', 'writing', 'grammar', 'reading', 'words'];
+const AREAS = ['speaking', 'grammar', 'reading'];
 const pct = (/** @type {number} */ x) => new Intl.NumberFormat('en-GB', { style: 'percent', maximumFractionDigits: 0 }).format(x || 0);
 
 /** A recall bar: seen (quiet) under recall (ink). @param {number} recall @param {number} coverage @param {string} name */
@@ -47,6 +53,10 @@ export async function mountHub(el, ctx) {
     const rd = RD.compute({ pool: data.pool.filter((/** @type {any} */ it) => it.area !== 'mistakes'), store: cards, today: c.today, exam: c.exam, phase: c.phase });
     const dueN = s.dueN, newN = s.budget.newLeft;
     const b = todayBudget({ store, c, settings: ctx.settings(), t, exam: null });
+    // the review row as Today shows it, after Today's cut: one count of rounds for the row, the dock and this button
+    const day = await composeDay(ctx, { prepare: false }).catch(() => null);
+    if (!alive) return;
+    const planRow = day ? day.plan.rows.find((/** @type {any} */ r) => r.id === 'practice.round' && !r.done) || null : null;
     const sess = session(store);
     const main = savedRound(sess, 'today');
     const round = resumable(main, c.today, Date.now()) ? main : null;
@@ -59,7 +69,7 @@ export async function mountHub(el, ctx) {
 
     // ---- queue card ----
     const dueEl = h('span', { class: 'figure tnum' }, String(dueN));
-    const startLabel = round ? finishLabel(round, left) : c.phase === 'day' ? t('practice.startWarmup') : roundAction(b, nRound, t);
+    const startLabel = round ? finishLabel(round, left) : c.phase === 'day' ? t('practice.startWarmup') : roundAction({ rounds: planRow ? planRow.rounds || 1 : b.rounds }, nRound, t);
     const startBtn = nRound ? h('a', { class: 'btn btn-primary btn-wide pressable', href: '#/practice/round', id: 'pr-start' }, startLabel) : null;
     const nextDue = Object.values(cards).filter(r => r && r.reps).map(r => RD.dueOn(r, c)).filter(d => d > c.today).sort()[0];
     const queue = h('div', { class: 'pr-queue' },
@@ -79,42 +89,40 @@ export async function mountHub(el, ctx) {
     if (firstTime) notices.push(notice({ children: [h('p', { class: 'notice-title' }, t('practice.first.title')), h('p', null, t('practice.first.body')),
       matchMedia('(pointer: coarse)').matches ? h('p', null, t('practice.first.umlauts')) : null] }));
 
-    // ---- rows ----
+    // ---- rows, grouped by exam module ----
     const missedN = C.missed(s).length;
     const mistakes = data.pool.filter((/** @type {any} */ it) => it.area === 'mistakes');
     const mistakesOpen = mistakes.filter((/** @type {any} */ it) => C.unseen(s, it) || C.due(s, it)).length;
     const wb = s.budget.writing;
-    const writeRow = linkRow({ href: '#/practice/write', title: t('practice.writeRow'),
-      detail: wb && wb.n ? t(wb.focus ? 'practice.writeRow.focus' : 'practice.writeRow.detail', { due: wb.due, n: wb.newLeft }) : t('practice.writeRow.idle') });
+    const wr = rd.areas.writing;
+    const writeDetail = wb && wb.n ? t(wb.focus ? 'practice.writeRow.focus' : 'practice.writeRow.detail', { due: wb.due, n: wb.newLeft }) : t('practice.writeRow.idle');
+    const writeRow = barRow({ href: '#/practice/write', title: t('practice.writeRow'), detail: writeDetail, x: wr });
+    const x = simToday({ store, c, settings: ctx.settings() });
+    const speakDetail = x.due && x.newLeft ? t('practice.sim.detail', { due: x.due, fresh: x.newLeft }) : x.due ? t('practice.sim.detailDue', { n: x.due })
+      : x.newLeft ? t('practice.sim.detailFresh', { n: x.newLeft }) : t('practice.speak.detail');
+    const speakRow = linkRow({ href: '#/practice/speak', title: t('practice.speak'), detail: speakDetail });
     const cl = clusterToday({ store, c });
-    const clusterRow = () => linkRow({ href: '#/practice/clusters', title: t('practice.clusters.title'),
-      detail: cl.due ? t('practice.clusters.rowDue', { n: cl.due }) : t('practice.clusters.rowDetail') });
-    const rows = [
-      wb && wb.focus ? writeRow : null,
+    const wordsArea = rd.areas.words;
+    const tok = !!secrets(store).githubToken, wc = store.get(WORDS, null);
+    const examRows = [
+      writeRow, speakRow,
       missedN ? linkRow({ href: '#/practice/round?kind=missed', title: t('practice.missed', { n: missedN }), detail: t('practice.missed.detail') }) : null,
       mistakes.length ? linkRow({ href: '#/practice/round?kind=mistakes', title: t('practice.mistakes', { n: mistakes.length }),
         detail: mistakesOpen ? t('practice.mistakes.open', { n: mistakesOpen }) : t('practice.mistakes.none') }) : null,
-      scriptsRow(store, c, t),
-      linkRow({ href: '#/practice/speak', title: t('practice.speak'), detail: t('practice.speak.detail') }),
-      wb && wb.focus ? null : writeRow,
-      simRow(),
-      clusterRow(),
+    ];
+    const wordRows = [
+      linkRow({ href: '#/practice/clusters', title: t('practice.clusters.title'), detail: cl.due ? t('practice.clusters.rowDue', { n: cl.due }) : t('practice.clusters.rowDetail') }),
+      barRow({ href: '#/practice/words', title: t('practice.area.words'), x: wordsArea,
+        detail: wordsArea && wordsArea.seen ? t('practice.area.trail', { pct: pct(wordsArea.recall), n: wordsArea.due })
+          : tok ? (wc ? t('practice.words.status.none') : wordsState === 'error' ? t('practice.words.status.failed') : t('practice.words.status.loading')) : t('practice.words.status.notLinked') }),
     ];
 
     // ---- areas ----
-    const wc = store.get(WORDS, null);
     const areaRows = AREAS.map(a => {
       const x = rd.areas[a];
       const name = t(`practice.area.${a}`);
-      if (a === 'words' && !x) {
-        const tok = !!secrets(store).githubToken;
-        return h('a', { class: 'pr-area pressable', href: '#/practice/words' },
-          h('span', { class: 'pr-area-top' }, h('span', { class: 'row-title' }, name), h('span', { class: 'row-trail tnum' }, tok ? (wc ? t('practice.words.status.none') : wordsState === 'error' ? t('practice.words.status.failed') : t('practice.words.status.loading')) : t('practice.words.status.notLinked'))),
-          recallBar(0, 0, name), icon('next', { size: 16 }));
-      }
       const trail = x && x.seen ? t('practice.area.trail', { pct: pct(x.recall), n: x.due }) : t('practice.area.notStarted');
-      const href = a === 'words' ? '#/practice/words' : a === 'writing' ? '#/practice/write' : `#/practice/round?kind=area:${a}`;
-      return h('a', { class: 'pr-area pressable', href, 'aria-label': `${name}, ${trail}` },
+      return h('a', { class: 'pr-area pressable', href: `#/practice/round?kind=area:${a}`, 'aria-label': `${name}, ${trail}` },
         h('span', { class: 'pr-area-top' }, h('span', { class: 'row-title' }, name), h('span', { class: 'row-trail tnum' }, trail)),
         recallBar(x ? x.recall : 0, x ? x.coverage : 0, t('practice.area.bar', { recall: pct(x?.recall || 0), seen: pct(x?.coverage || 0) })), icon('next', { size: 16 }));
     });
@@ -126,16 +134,18 @@ export async function mountHub(el, ctx) {
       const date = label(pace.lastNew);
       foot.push(h('p', { class: 'caption' }, !pace.left ? t('practice.paceDone')
         : pace.fits ? t('practice.pace', { n: Math.max(1, s.budget.rounds), min: Math.max(1, s.budget.rounds) * ROUND_MIN, date })
-          : t('practice.paceShort', { min: ctx.settings().minutesPerDay, reach: pace.reach, left: pace.left, date })));
+          : t('practice.paceShort', { reach: pace.reach, date })));
     }
     const peak = fc.slice(1).filter(x => !c.exam || x.day < c.exam).sort((p, q) => q.n - p.n)[0];
     if (peak && peak.n >= 30 && c.phase !== 'after') foot.push(h('p', { class: 'caption' }, t('practice.peak', { date: label(peak.day), n: peak.n })));
-    foot.push(h('p', { class: 'caption' }, t('practice.tomorrow', { n: tomorrow, date: label(add(c.today, 1)) })));
+    foot.push(h('p', { class: 'caption' }, tomorrow ? t('practice.tomorrow', { n: tomorrow, date: label(add(c.today, 1)) }) : t('practice.tomorrowNone', { date: label(add(c.today, 1)) })));
 
     const view = h('div', { class: ['practice', 'stack', startBtn && 'has-dock'] },
       h('div', { class: 'page-head' }, h('h1', null, t('practice.title'))),
       notices, queue,
-      h('nav', { class: 'pr-rows', 'aria-label': t('practice.more') }, rows),
+      section(t('practice.group.exam'), h('nav', { class: 'pr-rows', 'aria-label': t('practice.group.exam') }, examRows)),
+      section(t('practice.group.words'), h('nav', { class: 'pr-rows', 'aria-label': t('practice.group.words') }, wordRows)),
+      section(t('practice.group.own'), h('nav', { class: 'pr-rows', 'aria-label': t('practice.group.own') }, scriptsRow(store, c, t))),
       section(t('practice.areas'), h('div', { class: 'pr-areas' }, areaRows)),
       h('div', { class: 'pr-foot stack' }, foot));
     const h1 = el.querySelector('h1');
@@ -153,12 +163,11 @@ export async function mountHub(el, ctx) {
       h('p', { class: 'caption' }, t('practice.readySub', { seen: rd.overall.seen, n: rd.overall.n })));
   }
 
-  /** Speaking situations: due and new today, the same numbers as Today's row. */
-  function simRow() {
-    const x = simToday({ store, c: ctx.clock.ctx(), settings: ctx.settings() });
-    const detail = x.due && x.newLeft ? t('practice.sim.detail', { due: x.due, fresh: x.newLeft }) : x.due ? t('practice.sim.detailDue', { n: x.due })
-      : x.newLeft ? t('practice.sim.detailFresh', { n: x.newLeft }) : t('practice.sim.detailNone');
-    return linkRow({ href: '#/practice/situations', title: t('practice.sim'), detail });
+  /** A row that carries its area's recall bar (Schreiben, exam words). @param {{href: string, title: string, detail: string, x: any}} o */
+  function barRow({ href, title, detail, x }) {
+    return h('a', { class: 'pr-area pr-barrow pressable', href, 'aria-label': `${title}, ${detail}` },
+      h('span', { class: 'pr-area-top' }, h('span', { class: 'row-main' }, h('span', { class: 'row-title' }, title), h('span', { class: 'row-detail' }, detail))),
+      recallBar(x ? x.recall : 0, x ? x.coverage : 0, t('practice.area.bar', { recall: pct(x?.recall || 0), seen: pct(x?.coverage || 0) })), icon('next', { size: 16 }));
   }
 
   /** "Finish round · 11 questions left", with the kind for rounds that are not the daily one. @param {any} round @param {number} left */
