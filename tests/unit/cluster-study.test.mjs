@@ -76,3 +76,14 @@ test('round composition: due first, at most 6 new, practise ahead when nothing i
   assert.equal(parseClusterKind('cluster:nope:x'), null);
   assert.equal(form(ix.word('der_Raum')), 'der Raum');
 });
+
+test('a round of words picked on the map: ids from the address, all new ones taken while new items are allowed', async () => {
+  const { pickIds, PICK_MAX } = await import('../../src/features/practice/clusters/items.js');
+  assert.deepEqual(parseClusterKind('cluster:pick'), { due: false, key: null, pick: true });
+  assert.deepEqual(pickIds('der_Apfel, laufen.verb,der_Apfel,<x>,'), ['W:der_Apfel', 'W:laufen.verb']);
+  assert.equal(pickIds(Array.from({ length: 30 }, (_, i) => `w${i}`).join(',')).length, PICK_MAX);
+  const ids = ['W:a', 'W:b', 'W:c', 'W:d', 'W:e', 'W:f', 'W:g', 'W:h', 'W:i', 'W:j'];
+  const run = (/** @type {boolean} */ newItems) => compose({ ids, cards: {}, c: { today: 'd', newItems }, isDue: () => false, recall: () => 0, size: ids.length, newCap: ids.length });
+  assert.equal(run(true).ids.length, 10);
+  assert.equal(run(false).ids.length, 0);
+});

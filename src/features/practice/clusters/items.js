@@ -86,12 +86,13 @@ export function itemFor(id, ix, c, { t, where = '' }) {
  * The card ids of a round: due cards first (lowest recall first), then cards not seen yet in study order (at most
  * NEW_PER_ROUND, none when the clock allows no new items), then, when nothing is due or new, seen cards not reviewed
  * today, least well known first, so a cluster can always be practised.
- * @param {{ids: string[], cards: Record<string, any>, c: any, isDue: (rec: any) => boolean, recall: (rec: any) => number, size?: number}} o
+ * newCap: at most this many new cards (a round of words picked on the map takes all of them while new items are allowed).
+ * @param {{ids: string[], cards: Record<string, any>, c: any, isDue: (rec: any) => boolean, recall: (rec: any) => number, size?: number, newCap?: number}} o
  * @returns {{ids: string[], due: number, fresh: number, extra: boolean}}
  */
-export function compose({ ids, cards, c, isDue, recall, size = ROUND }) {
+export function compose({ ids, cards, c, isDue, recall, size = ROUND, newCap = NEW_PER_ROUND }) {
   const due = ids.filter(id => cards[id]?.reps && isDue(cards[id])).sort((a, b) => recall(cards[a]) - recall(cards[b])).slice(0, size);
-  const cap = c.newItems ? Math.min(NEW_PER_ROUND, size - due.length) : 0;
+  const cap = c.newItems ? Math.min(newCap, size - due.length) : 0;
   const fresh = ids.filter(id => !cards[id]?.reps).slice(0, Math.max(0, cap));
   if (due.length + fresh.length) return { ids: spread(due, fresh), due: due.length, fresh: fresh.length, extra: false };
   const extra = ids.filter(id => cards[id]?.reps && cards[id].last !== c.today).sort((a, b) => recall(cards[a]) - recall(cards[b])).slice(0, size);
@@ -105,9 +106,29 @@ function spread(olds, news) {
   return /** @type {string[]} */ (out);
 }
 
-/** A round kind for the address: 'cluster:<type>:<id>' or 'cluster:due'. @param {string | null} kind */
+/**
+ * A round kind for the address: 'cluster:<type>:<id>', 'cluster:due', or 'cluster:pick' (the words in ?ids=, picked
+ * on the Explore map). @param {string | null} kind
+ */
 export function parseClusterKind(kind) {
+  if (kind === 'cluster:pick') return { due: false, key: null, pick: true };
   const m = /^cluster:(?:(due)|(family|opp|prefix|suffix|topic|prep):([\w.äöüß-]+))$/.exec(String(kind || ''));
   if (!m) return null;
   return m[1] ? { due: true, key: null } : { due: false, key: `${m[2]}:${m[3]}` };
+}
+
+/** Most words a picked round takes. */
+export const PICK_MAX = 12;
+/**
+ * The card ids of a picked round from the address (?ids=<word id>,<word id>…): W: cards, in the order given, without
+ * repeats, at most PICK_MAX. Anything that is not a plain word id is dropped. @param {string | null} param
+ */
+export function pickIds(param) {
+  const out = [];
+  for (const raw of String(param || '').split(',')) {
+    const id = raw.trim();
+    if (id && /^[\wäöüÄÖÜß.'-]+$/.test(id) && !out.includes(`W:${id}`)) out.push(`W:${id}`);
+    if (out.length >= PICK_MAX) break;
+  }
+  return out;
 }

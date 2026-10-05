@@ -26,7 +26,7 @@ import { play as playAudio, stop as stopAudio, prefetchAudio } from '../../servi
 import { recallBar } from './hub.js';
 import { Field, atmosphere } from '../../core/brand.js';
 import { readinessView } from './field.js';
-import { parseClusterKind, itemFor as clusterItem, compose as composeCluster, cardIds as clusterCards } from './clusters/items.js';
+import { parseClusterKind, itemFor as clusterItem, compose as composeCluster, cardIds as clusterCards, pickIds, typable } from './clusters/items.js';
 import { loadClusters, dueCards as clusterDue, update as updateClusters, dayOf as clusterDay, recallOf, DECK as CLUSTER_DECK } from './clusters/data.js';
 import { drawClusterDone } from './clusters/view.js';
 
@@ -120,12 +120,14 @@ export async function mountRound(el, ctx) {
     if (!clusters || (ck.key && !clusters.ix.byKey.get(ck.key))) { ctx.go('/practice/clusters', { replace: true }); return () => { document.body.dataset.chrome = 'on'; document.body.classList.remove('pr-in-round'); }; }
     data = { ...data, byId: new Map(data.byId) };
   }
-  const spec = ck ? { kind: 'cluster', topic: ck.key || 'due' } : C.parseKind(ctx.query.get('kind'));
+  // a round of words picked on the Explore map (kind=cluster:pick&ids=…): its own slot per set of words
+  const picked = ck?.pick ? pickIds(ctx.query.get('ids')).filter(id => typable(clusters.ix.word(id.slice(2)))) : [];
+  const spec = ck ? { kind: 'cluster', topic: ck.key || (ck.pick ? `pick:${picked.join(',')}` : 'due') } : C.parseKind(ctx.query.get('kind'));
   const slot = S.slotKey(spec);
   /** Cluster items for the ids of a round (rebuilt from the ids, so a saved round resumes). @param {string[]} ids */
   const addClusterItems = ids => { for (const id of ids) if (!data.byId.has(id)) { const it = clusterItem(id, clusters.ix, clusters.c, { t, where: t(`practice.clusters.where.${/^C[OFP]:/.test(id) ? id.slice(0, 2) : 'W'}`) }); if (it) data.byId.set(id, it); } };
   // End and Esc go back where the round was started from (Today's button adds from=today)
-  const backTo = ctx.query.get('from') === 'today' ? '/today' : ctx.query.get('kind')?.startsWith('cluster:') ? `/practice/clusters${(/^cluster:(\w+):(.+)$/.exec(String(ctx.query.get('kind'))) || []).slice(1).map(x => `/${x}`).join('')}` : '/practice';
+  const backTo = ctx.query.get('from') === 'today' ? '/today' : ctx.query.get('from') === 'map' ? '/lookup/map' : ctx.query.get('kind')?.startsWith('cluster:') ? `/practice/clusters${(/^cluster:(\w+):(.+)$/.exec(String(ctx.query.get('kind'))) || []).slice(1).map(x => `/${x}`).join('')}` : '/practice';
   let st = stateFor(ctx, data);
   const sess = session(store);
   const saved = S.savedRound(sess, slot);
@@ -135,8 +137,9 @@ export async function mountRound(el, ctx) {
     let ids;
     if (ck) {
       const c0 = st.c, cards0 = store.cards(deck) || {};
-      const pool = ck.key ? clusterCards(clusters.ix.byKey.get(ck.key), clusters.ix) : clusterDue(store, c0);
-      ids = composeCluster({ ids: pool, cards: cards0, c: c0, isDue: rec => RD.isDue(rec, c0.today, c0), recall: recallOf(c0) }).ids;
+      const pool = ck.key ? clusterCards(clusters.ix.byKey.get(ck.key), clusters.ix) : ck.pick ? picked : clusterDue(store, c0);
+      ids = composeCluster({ ids: pool, cards: cards0, c: c0, isDue: rec => RD.isDue(rec, c0.today, c0), recall: recallOf(c0),
+        ...(ck.pick ? { size: picked.length, newCap: picked.length } : {}) }).ids;
       if (ck.due) ids = ids.filter(id => cards0[id]?.reps);
       addClusterItems(ids);
       ids = ids.filter(id => data.byId.has(id));
