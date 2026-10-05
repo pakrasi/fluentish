@@ -112,6 +112,7 @@ export async function mountHub(el, ctx) {
     ];
     const wordRows = [
       linkRow({ href: '#/practice/clusters', title: t('practice.clusters.title'), detail: cl.due ? t('practice.clusters.rowDue', { n: cl.due }) : t('practice.clusters.rowDetail') }),
+      linkRow({ href: '#/practice/build', title: t('practice.wordbuild.row'), detail: t('practice.wordbuild.rowDetail') }),
       barRow({ href: '#/practice/words', title: t('practice.area.words'), x: wordsArea,
         detail: wordsArea && wordsArea.seen ? t('practice.area.trail', { pct: pct(wordsArea.recall), n: wordsArea.due })
           : tok ? (wc ? t('practice.words.status.none') : wordsState === 'error' ? t('practice.words.status.failed') : t('practice.words.status.loading')) : t('practice.words.status.notLinked') }),

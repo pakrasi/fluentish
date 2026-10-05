@@ -3,9 +3,10 @@
    scores with domain/knowledge.js. Explore and Practice's clusters call loadKnowledge(); it never writes. */
 import { knowledge, resolver, conceptItems } from '../domain/knowledge.js';
 import { COLLECTION as SEEN } from './seen.js';
+import { lemmaMaps } from '../domain/wordbuild.js';
 
 /** Decks of the one review schedule whose cards are items. */
-export const DECKS = ['b1', 'speak', 'script', 'clusters'];
+export const DECKS = ['b1', 'speak', 'script', 'clusters', 'build'];
 
 /** @type {Promise<any> | null} */ let maps = null;
 
@@ -16,14 +17,14 @@ export const DECKS = ['b1', 'speak', 'script', 'clusters'];
 export function itemMaps(content) {
   if (!maps) {
     const get = (/** @type {string} */ id) => content.load(id).catch(() => null);
-    maps = Promise.all(['igloo.words.de', 'speak.situations', 'b1.items', 'clusters.de', 'igloo.grammar.concepts.de', 'igloo.grammar.items.de', 'b1.plan'].map(get))
-      .then(([words, sim, items, clusters, concepts, gItems, plan]) => {
+    maps = Promise.all(['igloo.words.de', 'speak.situations', 'b1.items', 'clusters.de', 'igloo.grammar.concepts.de', 'igloo.grammar.items.de', 'b1.plan', 'build.de'].map(get))
+      .then(([words, sim, items, clusters, concepts, gItems, plan, build]) => {
         /** @type {Record<string, string>} */ const chunkOf = {};
         for (const it of (sim && sim.items) || []) if (it.ck) chunkOf[it.id] = it.ck;
         for (const it of items || []) if (it.chunk) chunkOf[it.id] = it.chunk;
         /** @type {Record<string, string>} */ const gapPrep = {};
         for (const g of (clusters && clusters.preps && clusters.preps.gaps) || []) gapPrep[g.id] = g.prep;
-        return { words: words || [], clusters, resolve: resolver({ words: words || [], chunkOf, gapPrep }),
+        return { words: words || [], clusters, build, resolve: resolver({ words: words || [], chunkOf, gapPrep, build: build ? lemmaMaps(build) : {} }),
           concepts: conceptItems({ concepts: concepts || [], items: gItems || [], b1Items: items || [], plan }), conceptList: concepts || [] };
       });
     maps.catch(() => { maps = null; });

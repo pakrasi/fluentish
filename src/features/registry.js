@@ -20,6 +20,8 @@
 /** @type {Feature[]} */
 export const FEATURES = [
   { id: 'today', paths: ['/today'], tab: 'today', view: () => import('./today/index.js'), plan: null },
+  // Word building is its own feature under Practice (#/practice/build); listed before practice so its paths win the match
+  { id: 'build', paths: ['/practice/build', '/practice/build/*'], tab: 'practice', view: () => import('./build/index.js'), plan: () => import('./build/plan.js') },
   { id: 'practice', paths: ['/practice', '/practice/*'], tab: 'practice', view: () => import('./practice/index.js'), plan: () => import('./practice/plan.js') },
   { id: 'exam', paths: ['/exam', '/exam/*'], tab: 'exam', needsExam: true, view: () => import('./exam/index.js'), plan: () => import('./exam/plan.js') },
   // Explore lives under Look up (#/lookup/map); listed before lookup so its paths win the match
