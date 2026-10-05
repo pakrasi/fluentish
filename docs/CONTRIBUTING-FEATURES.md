@@ -106,6 +106,10 @@ ctx.go('/practice/round?kind=mistakes');      // "Practise these mistakes · N"
 ```
 Calling it again for the same attempt replaces its list and keeps the ids (and schedules) of unchanged sentences. Each mistake becomes card `F:<attempt>-<n>` in deck `b1`; Practice shows it as "Rewrite this sentence correctly" with the source line "Your Schreiben Test 2", puts unseen ones at the front of rounds (one in three) and offers a mistakes-only round. `listMistakes(store)` gives the count for a button. The records are private and never leave the device except through the results sync.
 
+### Card ids are append-only
+
+Card ids made from content (B1 phrases and grammar, `BS:` Schreiben phrases, `W:` words, `CO:`/`CF:`/`CP:` cluster cards, `SS:` situations) are listed in `tests/fixtures/shipped-ids.txt`. `tests/unit/item-ids.test.mjs` fails when one of them is no longer created by the content (a renamed slug, a word moved from family member to family head, a deleted gap), because the learner's card under that id would lose its schedule. Keep the old id, or migrate its cards and list it in `tests/fixtures/retired-ids.txt` with a reason. After adding content, run `node tools/shipped-ids.mjs --write`; it only ever appends.
+
 ## Before you open a PR
 
 ```

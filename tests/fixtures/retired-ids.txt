@@ -1,0 +1,2 @@
+# Card ids that content shipped and that were retired on purpose, one per line with a reason after #.
+# Only after the cards under that id have been migrated (see tools/shipped-ids.mjs).
