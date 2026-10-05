@@ -159,7 +159,10 @@ export function createRouter({ routes, view, makeCtx, guard, home, transition, o
       document.body.dataset.chrome = route.chrome === false ? 'off' : 'on';
       let ret;
       try { ret = await mod.mount(view, ctx); } catch (e) { onError?.(e, path); }
-      current = { path, hash: location.hash, cleanup: typeof ret === 'function' ? { unmount: ret } : ret || null };
+      const cleanup = typeof ret === 'function' ? { unmount: ret } : ret || null;
+      // a newer navigation mounted while this mount was pending: this view is already gone, so it stops now
+      if (mine !== token) { try { cleanup?.unmount?.(); } catch (e) { console.error(e); } return; }
+      current = { path, hash: location.hash, cleanup };
     };
     if (transition && current) await transition(update); else await update();
     if (mine !== token) return;
