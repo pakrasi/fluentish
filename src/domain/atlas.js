@@ -14,6 +14,8 @@
    The Source mode depends on where the learner met each item, so it is laid out on the device (layoutGroups) with the
    same widths; its groups grow in the order items were first met, so it too only appends. */
 
+import { DEFAULT_PACK } from '../lang/registry.js';
+
 export const FS = 16;          // base font size, world units
 export const LH = 26;          // line height
 export const GAP = 10;         // space between words
@@ -22,15 +24,16 @@ export const PAIR_GAP = 34;    // space between pairs: more than inside, so pair
 export const ART = 0.72;       // article size relative to the word
 export const HEAD = 1.06;      // disc radius over the radius the paragraph needs: headroom for new items
 export const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
-export const ARTICLES = ['', 'der', 'die', 'das'];
+/** The article column of a map file: '' and the language's definite articles (the default pack's; German: der die das). */
+export const ARTICLES = ['', ...(DEFAULT_PACK.grammar.gender ? DEFAULT_PACK.grammar.gender.citation : [])];
 /** Item kinds: w word, c chunk (phrase), g grammar concept. */
 export const KINDS = ['w', 'c', 'g'];
 export const MODES = /** @type {const} */ (['topic', 'family', 'opp', 'level', 'type', 'source']);
 /** @typedef {'topic'|'family'|'opp'|'level'|'type'|'source'} Mode */
 /** Modes whose layout ships in content/atlas (Source is laid out on the device). */
 export const BUILT_MODES = /** @type {const} */ (['topic', 'family', 'opp', 'level', 'type']);
-/** Word-type groups in map order. */
-export const TYPE_GROUPS = ['der', 'die', 'das', 'verb', 'adj', 'adv', 'prep', 'conj', 'setphrase', 'other', 'phrase', 'grammar'];
+/** Word-type groups in map order (nouns by their article first). */
+export const TYPE_GROUPS = [...ARTICLES.slice(1), 'verb', 'adj', 'adv', 'prep', 'conj', 'setphrase', 'other', 'phrase', 'grammar'];
 /** Source groups in map order (knowledge.js Origin values); an item sits in the first one it has. */
 export const SOURCE_GROUPS = ['exam', 'script', 'speech', 'practice', 'test', 'lookup', 'self'];
 

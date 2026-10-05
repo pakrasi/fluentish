@@ -4,7 +4,9 @@
 //                      practice runtime features/shared/**; never another features/<id>/
 //   features/shared/** a library for the Practice features: never imports a feature
 //   features/*.js      the kernel (registry, contract, day): only registry.js names feature modules, lazily
-//   domain/**          pure: imports domain/ only (a JSDoc type such as core/clock.js ClockCtx loads nothing)
+//   domain/**          pure: imports domain/ and the language packs lang/ only (a JSDoc type such as core/clock.js
+//                      ClockCtx loads nothing)
+//   lang/**            the language packs (Wave C2), pure: import lang/ only
 //   core, data, services, i18n   never import a feature; main.js imports only features/registry.js
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -51,7 +53,8 @@ export function violation(from, to, type = false) {
   if (a.startsWith('feature:') && b.startsWith('feature:') && a !== b) return 'features never import each other';
   if (a === 'shared' && b.startsWith('feature:')) return 'features/shared is a library and never imports a feature';
   if (a === 'kernel' && b.startsWith('feature:') && from !== 'features/registry.js') return 'only the registry names feature modules';
-  if (a === 'domain' && b !== 'domain' && !type) return 'domain is pure: it imports domain only';
+  if (a === 'domain' && b !== 'domain' && b !== 'lang' && !type) return 'domain is pure: it imports domain and lang only';
+  if (a === 'lang' && b !== 'lang' && !type) return 'a language pack is pure: it imports lang only';
   if (['core', 'data', 'services', 'i18n'].includes(a) && (b.startsWith('feature:') || b === 'shared' || b === 'kernel')) return `${a} never imports a feature`;
   if (a === 'main' && b !== 'main' && (b.startsWith('feature:') || b === 'shared' || (b === 'kernel' && to !== 'features/registry.js'))) return 'main.js reaches features through the registry only';
   return null;
@@ -70,6 +73,9 @@ test('the rule catches what it is meant to catch', () => {
   assert.ok(violation('main.js', 'features/exam/data.js'));
   assert.ok(violation('domain/allowance.js', 'data/scripts.js'));
   assert.equal(violation('domain/budget.js', 'core/clock.js', true), null);
+  assert.equal(violation('domain/match.js', 'lang/registry.js'), null);
+  assert.ok(violation('lang/de/index.js', 'domain/match.js'));
+  assert.ok(violation('lang/registry.js', 'core/lang.js'));
   assert.ok(violation('data/knowledge.js', 'features/shared/data.js'));
   assert.equal(violation('features/registry.js', 'features/exam/index.js'), null);
   assert.equal(violation('features/practice-speak/sim-view.js', 'features/shared/done-hero.js'), null);

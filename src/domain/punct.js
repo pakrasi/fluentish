@@ -6,12 +6,17 @@
      no-comma-end         no comma after the sign-off             Mit freundlichen Grüßen
      lower-start          the line after the greeting starts small    vielen Dank für deine E-Mail.
      comma-before:<word>  a comma before dass, weil, ob, wenn …   Ich hoffe, dass …
-   tools/build_schreiben.py checks that every model keeps its own rules. */
+   tools/build_schreiben.py checks that every model keeps its own rules.
+   The rules are language-neutral; their exceptions are the language pack's (pack.grammar.punctuation: the words after
+   which a subordinator needs no comma, the polite pronoun that keeps its capital, a word's key in the noun table).
+   Both functions take the pack last (default: the active pack, lang/registry.js). */
+// @ts-check
+import { activePack } from '../lang/registry.js';
+/** @typedef {import('../lang/types.js').LanguagePack} LanguagePack */
+/** The pack an argument names, else the active one (a callback's index or array is not a pack). @param {unknown} p @returns {LanguagePack} */
+const packOf = p => (p && typeof p === 'object' && 'grammar' in p ? /** @type {LanguagePack} */ (p) : activePack());
 
 const WORD = /[\p{L}\p{N}'-]+/gu;
-// "…, und weil", "so dass", "auch wenn", "als ob": no comma right before the subordinator
-const BEFORE_OK = new Set(['und', 'oder', 'aber', 'sondern', 'so', 'ohne', 'als', 'anstatt', 'statt', 'auch', 'nur', 'erst', 'selbst', 'gerade', 'allem', 'besonders', 'vor', 'bis', 'außer']);
-const POLITE = new Set(['Sie', 'Ihnen', 'Ihr', 'Ihre', 'Ihren', 'Ihrem', 'Ihrer', 'Ihres']);
 
 /**
  * @typedef {object} PunctMiss
@@ -25,9 +30,11 @@ const POLITE = new Set(['Sie', 'Ihnen', 'Ihr', 'Ihre', 'Ihren', 'Ihrem', 'Ihrer'
  * @param {string} input
  * @param {string[] | null | undefined} rules
  * @param {{nouns?: Record<string, string>}} [o]  nouns: folded lower-case noun → its cased form, so a noun may start the line
+ * @param {LanguagePack} [pack]
  * @returns {PunctMiss[]}
  */
-export function punctCheck(input, rules, o = {}) {
+export function punctCheck(input, rules, o = {}, pack) {
+  const { beforeOk: BEFORE_OK, politeCaps: POLITE, nounKey } = packOf(pack).grammar.punctuation;
   const s = String(input || '').normalize('NFC').trim();
   /** @type {PunctMiss[]} */ const out = [];
   if (!s || !rules || !rules.length) return out;
@@ -37,7 +44,7 @@ export function punctCheck(input, rules, o = {}) {
     else if (r === 'no-comma-end' && /,\s*$/.test(s)) out.push({ code: 'no-comma-end', at: s.length - 1 });
     else if (r === 'lower-start') {
       const first = words[0];
-      if (first && /^\p{Lu}/u.test(first.w) && !POLITE.has(first.w) && !isNoun(first.w, o.nouns)) out.push({ code: 'lower-start', word: first.w, at: first.i });
+      if (first && /^\p{Lu}/u.test(first.w) && !POLITE.has(first.w) && !isNoun(first.w, o.nouns, nounKey)) out.push({ code: 'lower-start', word: first.w, at: first.i });
     } else if (r.startsWith('comma-before:')) {
       const want = r.slice(13).toLowerCase();
       const k = words.findIndex((x, j) => j > 0 && x.w.toLowerCase() === want);
@@ -50,15 +57,16 @@ export function punctCheck(input, rules, o = {}) {
   return out;
 }
 
-/** @param {string} w @param {Record<string, string> | undefined} nouns */
-function isNoun(w, nouns) {
+/** @param {string} w @param {Record<string, string> | undefined} nouns @param {(w: string) => string} nounKey */
+function isNoun(w, nouns, nounKey) {
   if (!nouns) return false;
-  const k = w.toLowerCase().replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss');
+  const k = nounKey(w);
   return !!(nouns[k] || nouns[w.toLowerCase()]);
 }
 
-/** The model with its first letter made small, for a line that follows the greeting. @param {string} s */
-export const lowerStart = s => {
+/** The model with its first letter made small, for a line that follows the greeting. @param {string} s @param {LanguagePack} [pack] */
+export const lowerStart = (s, pack) => {
+  const POLITE = packOf(pack).grammar.punctuation.politeCaps;
   const m = /^(\P{L}*)(\p{L})/u.exec(String(s));
   if (!m) return String(s);
   const first = String(s).slice(m[1].length).match(/^[\p{L}'-]+/u)?.[0] || '';

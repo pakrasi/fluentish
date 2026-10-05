@@ -1,4 +1,10 @@
 /* Igloo answer matcher. Pure functions, no DOM. Used by the Test view and node tests (tests/unit/match.test.mjs).
+   Language-neutral since Wave C2: alignment, Damerau-Levenshtein, slots, diffs and the typo policy live here; what a
+   word is, which spellings are the same and every word list the policy names (closed-class words, endings, minimal
+   pairs, clause words, comma rules …) come from a language pack (src/lang/types.js; German: src/lang/de/). Every entry
+   point takes {pack} (check, restCheck, formCheck: in opts; alsoLines: its last argument); without one it uses the pack
+   of the call it runs inside, else the active pack (lang/registry.js, set by core/lang.js). The examples below are
+   German, the only full pack.
    check(input, accepted[], {pos, strictCase, slots, anywhere, typos})
      -> {ok, exact, close, articleMiss, caseMiss, matched, others, fixed, typos: [{typed, expected, start, end}], input}
      (typo offsets point into `input`, the answer after NFC and space cleanup)
@@ -39,12 +45,14 @@
    restCheck() grades the rest of a phrase card's sentence, formCheck() a situation's words against its model, markDiff()
    is the word diff the round shows (see each). */
 // @ts-check
-/** @typedef {{raw: string, low: string, n: string, len: number, start: number, end: number}} Word  a typed word; n: lowercase, folded, no accents */
+/** @typedef {import('../lang/types.js').Token} Word  a typed word; n: the pack's comparison key (de: lowercase, folded, no accents) */
+/** @typedef {import('../lang/types.js').LanguagePack} LanguagePack */
+/** @typedef {import('../lang/types.js').Shape} Shape */
 /** @typedef {{n: string, low: string, len: number, word: string}} Alt  one spelling a pattern word accepts */
 /** @typedef {{t: 'w', raw: string, alts: Alt[], tail?: string, glued?: boolean}} WEl  a fixed word */
 /** @typedef {{t: 'opt', words: WEl[], raw: string, tail?: string, glued?: boolean}} OptEl  "(optional words)" */
 /** @typedef {{t: 'slot', raw: string, opt?: boolean, glued?: boolean, tail?: string, prefix?: Alt}} SlotEl  "[slot]", "([optional slot])", "Lieblings[x]" */
-/** @typedef {{t: 'part', raw: string, tail?: string, glued?: boolean, opt?: undefined, prefix?: undefined}} PartEl  0-3 particles (restCheck only, see PARTICLES) */
+/** @typedef {{t: 'part', raw: string, tail?: string, glued?: boolean, opt?: undefined, prefix?: undefined}} PartEl  0-3 particles (restCheck only: the pack's slots.particles) */
 /** @typedef {WEl | OptEl | SlotEl | PartEl} El */
 /** @typedef {{els: El[], lead?: string, src?: string}} Pattern */
 /** @typedef {{endings?: boolean, umlaut?: boolean, strict?: Map<string, string> | null, never?: Set<string> | null, lex?: Set<string> | null}} WordX  word-level options (xOpts) */
@@ -61,6 +69,7 @@
  * @property {boolean} [typos] @property {Iterable<string> | null} [loose] @property {number} [slotMax] @property {boolean} [endings]
  * @property {boolean} [umlaut] @property {string[]} [strict] @property {Map<string, string> | null} [caseRef]
  * @property {Iterable<string> | null} [never] @property {Set<string> | null} [lexicon]
+ * @property {LanguagePack | null} [pack]  the language (default: the call's, else the active pack)
  */
 /**
  * @typedef {object} CheckResult
@@ -69,47 +78,35 @@
  * @property {Slip[]} typos @property {string} input @property {Slip[]} [umlautMiss] @property {Slip[]} [capMiss]
  * @property {Slip[]} [focusMiss] @property {number | null} [nearest] @property {[number, number] | null} [span] @property {string[]} [fills]
  */
-/** @type {Record<string, string>} */
-const FOLD = { 'ä': 'ae', 'ö': 'oe', 'ü': 'ue', 'ß': 'ss', 'Ä': 'Ae', 'Ö': 'Oe', 'Ü': 'Ue', 'ẞ': 'SS' };
+import { activePack } from '../lang/registry.js';
+
+// The pack of the call in progress. Every exported function runs inside inPack(): it sets L for the length of the call
+// (the pack named, else the enclosing call's, else the active one) and puts the previous one back. Everything is
+// synchronous, so one module variable is enough.
+/** @type {LanguagePack} */ let L = activePack();
+let depth = 0;
+/** @template T @param {LanguagePack | null | undefined} p @param {() => T} fn @returns {T} */
+function inPack(p, fn) {
+  const prev = L;
+  L = p || (depth ? L : activePack());
+  depth++;
+  try { return fn(); } finally { depth--; L = prev; }
+}
 /** @param {unknown} s */
-const fold = s => String(s).replace(/[äöüßÄÖÜẞ]/g, c => FOLD[c]);
-const ARTICLES = ['der', 'die', 'das', 'den', 'dem', 'des', 'ein', 'eine', 'einen', 'einem', 'einer', 'eines'];
-// Closed-class words: a different word from this list is a grammar mistake, never a typo, and these words get 0 edits.
-const CLOSED = new Set(`der die das den dem des ein eine einen einem einer eines kein keine keinen keinem keiner keines
-  ich mich mir du dich dir er ihn ihm sie ihr ihnen es wir uns euch man sich
-  mein meine meinen meinem meiner meines dein deine deinen deinem deiner deines sein seine seinen seinem seiner seines
-  ihre ihren ihrem ihrer ihres unser unsere unseren unserem unserer unseres euer eure euren eurem eurer eures
-  dieser diese dieses diesen diesem jener jene jenes jenen jenem wer wen wem wessen
-  an am ans auf aufs aus bei beim bis durch durchs für fürs gegen hinter hinterm im in ins mit nach neben ohne seit
-  über übers um ums unter unterm von vom vor vorm während wegen zu zum zur zwischen trotz statt ab außer gegenüber
-  entlang innerhalb außerhalb dass ob wenn als wie
-  bin bist ist sind seid war warst waren wart habe hab hast hat habt haben hatte werde wirst wird werden werdet wurde`
-  .split(/\s+/).filter(Boolean).map(w => fold(w)));
-const WORD_RE = /[\p{L}\p{N}_'-]+/gu;   // what validate_accept.norm keeps as a word (brackets aside)
+const fold = s => L.text.fold(s);
+const nfc = (/** @type {unknown} */ s) => L.text.normalize(s);
 
 // Legacy cleanup, kept for callers: NFC, collapse spaces, drop commas, quotes and final punctuation.
 /** @param {unknown} s */
 function clean(s) {
-  return String(s == null ? '' : s).normalize('NFC')
-    .replace(/[‘’ʼ]/g, "'").replace(/["„“”«»‚]/g, ' ').replace(/,/g, ' ')
+  return nfc(s).replace(/["„“”«»‚]/g, ' ').replace(/,/g, ' ')
     .replace(/\s+/g, ' ').trim().replace(/[\s.!?;:]+$/u, '').replace(/^[¿¡]+/, '').trim();
 }
 const tidy = (/** @type {unknown} */ s) => String(s).normalize('NFC').replace(/\s+/g, ' ').trim();
-const nfc = (/** @type {unknown} */ s) => String(s == null ? '' : s).normalize('NFC').replace(/[‘’ʼ]/g, "'");
 
-// words of a string, with offsets: {raw, low, n (lowercase + folded), len (letters), start, end}
+// words of a string, with offsets (the pack's tokenizer): {raw, low, n (the comparison key), len (letters), start, end}
 /** @param {unknown} s @param {number} [offset] @returns {Word[]} */
-function words(s, offset = 0) {
-  /** @type {Word[]} */ const out = [];
-  for (const m of String(s).matchAll(WORD_RE)) {
-    const raw = m[0], low = raw.toLowerCase();
-    const at = /** @type {number} */ (m.index);
-    // gern and gerne are the same word: one spelling for matching
-    const n = fold(low).normalize('NFD').replace(/\p{M}/gu, '');
-    out.push({ raw, low, n: n === 'gerne' ? 'gern' : n, len: (low.match(/\p{L}/gu) || []).length || low.length, start: offset + at, end: offset + at + raw.length });
-  }
-  return out;
-}
+const words = (s, offset = 0) => L.text.tokenize(s, offset);
 
 // Damerau-Levenshtein (optimal string alignment) distance, or max+1 once it is over max
 /** @param {string} a @param {string} b @param {number} [max] */
@@ -148,14 +145,15 @@ function wcost(w, tok, typos, loose, x = NOX) {
   for (const a of w.alts) {
     if (tok.n === a.n) return { cost: 0, exact: tok.low === a.low, a };
     if (x.never && x.never.has(tok.n)) continue;               // a word from a known wrong answer: never a slip
-    if (deUml(tok.low) === deUml(a.low)) {
-      // the two differ only in umlauts: never a typo. Typing the plain vowel for ä/ö/ü is a slip (B1: umlautMiss, Hard)
-      // unless the plain spelling is another word or form (konnten/könnten, Mutter/Mütter, fahrt/fährt): then a miss.
-      // Typing an umlaut that is not there (Mütter for Mutter, würde for wurde) is always a miss.
-      const dropped = unUml(a.low).replace(/ß/g, 'ss') === tok.low.replace(/ß/g, 'ss') && /[äöü]/.test(a.low);
-      if (!dropped || UML_PAIR.has(tok.low) || (x.lex && x.lex.has(tok.n)) || (x.strict && x.strict.has(a.n))) continue;
+    const mk = L.grading.slips.marks;
+    if (mk && mk.base(tok.low) === mk.base(a.low)) {
+      // the two differ only in marks (de: umlauts): never a typo. Typing the plain vowel for ä/ö/ü is a slip (B1:
+      // umlautMiss, Hard) unless the plain spelling is another word or form (konnten/könnten, Mutter/Mütter,
+      // fahrt/fährt): then a miss. Typing an umlaut that is not there (Mütter for Mutter, würde for wurde) is always a miss.
+      const dropped = mk.dropped(tok.low, a.low);
+      if (!dropped || L.grading.minimalPairs.has(tok.low) || (x.lex && x.lex.has(tok.n)) || (x.strict && x.strict.has(a.n))) continue;
       if (x.umlaut) { best = { cost: 1, exact: false, a, umlaut: true }; continue; }
-      if (typos && !best && !(loose && !loose.has(a.n)) && !CLOSED.has(a.n) && allowedEdits(a.len)) best = { cost: 1, exact: false, a };
+      if (typos && !best && !(loose && !loose.has(a.n)) && !L.grading.closedClass.has(a.n) && allowedEdits(a.len)) best = { cost: 1, exact: false, a };
       continue;
     }
     if (!typos || best || (loose && !loose.has(a.n))) continue;
@@ -165,7 +163,7 @@ function wcost(w, tok, typos, loose, x = NOX) {
   return best;
 }
 // Whether typed (folded) is a typo of the pattern word a, not a grammar mistake:
-//  - articles, pronouns, prepositions and the other CLOSED words get no typos at all;
+//  - articles, pronouns, prepositions and the other closed-class words get no typos at all;
 //  - a typed word that is itself a German word or form (x.lex: the content's words) is that word, not a typo;
 //  - the inflectional endings must be the same (vielen ≠ vieles, macht ≠ machst, kleinem ≠ kleinen): the typo is in
 //    the stem, within the budget (B1 `endings`: 1 edit, 5+ letters; Test: 1 edit for 4-7 letters, 2 for 8+);
@@ -173,8 +171,9 @@ function wcost(w, tok, typos, loose, x = NOX) {
 //    (schrieb/schreib) is a grammar form, not a typo. u↔i and i↔o (neighbouring keys) stay typos.
 /** @param {string} t @param {{n: string, len: number}} a @param {WordX} x */
 function typoOk(t, a, x) {
-  if (CLOSED.has(a.n) || CLOSED.has(t)) return false;
-  if (SOUNDS.has(t) || (x.lex && x.lex.has(t))) return false;
+  const G = L.grading;
+  if (G.closedClass.has(a.n) || G.closedClass.has(t)) return false;
+  if (G.soundAlikes.has(t) || (x.lex && x.lex.has(t))) return false;
   if (x.endings && a.len < 5) return false;
   const budget = x.endings ? 1 : allowedEdits(a.len);
   if (!budget) return false;
@@ -182,38 +181,11 @@ function typoOk(t, a, x) {
   if (et !== ea) return false;
   const st = t.slice(0, t.length - et.length), sa = a.n.slice(0, a.n.length - ea.length);
   const d = dl(st, sa, budget);
-  return d <= budget && !(d === 1 && formChange(st, sa));
+  return d <= budget && !(d === 1 && G.isFormChange(st, sa));
 }
-// inflectional endings, longest first; the rest of the word (the stem) keeps at least 3 letters
-const ENDINGS = ['ern', 'est', 'ens', 'en', 'em', 'er', 'es', 'et', 'st', 'e', 'n', 'm', 'r', 's', 't'];
-const ending = (/** @type {string} */ n) => ENDINGS.find(f => n.length >= f.length + 3 && n.endsWith(f)) || '';
-const VOWEL = /[aeiou]/;
-const KEY_NEIGHBOURS = new Set(['ui', 'iu', 'io', 'oi']);
-// the single edit between two stems is a German vowel alternation (ablaut, e→i, ie/e, ie/ei), not a slip of the finger
-/** @param {string} s @param {string} t */
-function formChange(s, t) {
-  let p = 0; while (p < s.length && p < t.length && s[p] === t[p]) p++;
-  let q = 0; while (q < s.length - p && q < t.length - p && s[s.length - 1 - q] === t[t.length - 1 - q]) q++;
-  const ds = s.slice(p, s.length - q), dt = t.slice(p, t.length - q);
-  if (ds.length === 1 && dt.length === 1) return VOWEL.test(ds) && VOWEL.test(dt) && !KEY_NEIGHBOURS.has(ds + dt);
-  if (ds.length + dt.length === 1) {   // one letter more or less: ie/e (sieht/seht, liest/lest)
-    const c = ds || dt, long = ds ? s : t;
-    return c === 'i' && (long[p + 1] === 'e' || long[p - 1] === 'e');
-  }
-  if (ds.length === 2 && dt.length === 2 && ds[0] === dt[1] && ds[1] === dt[0]) return (ds === 'ie' || ds === 'ei');
-  return false;
-}
-// real words that sound like another word (wider/wieder, fiel/viel, Staat/Stadt): typing one is that word, never a typo,
-// even without the lexicon
-const SOUNDS = new Set('wider fiel seid wen staat meer wahr mahl lehre leere wal wahl lid leid lied stiel stil rat tod weise waise saite seite ente'.split(' '));
-const unUml = (/** @type {unknown} */ s) => String(s).replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/ü/g, 'u');
-// both spellings of an umlaut (ä and ae) and the plain vowel map to the same letter: words equal under deUml differ
-// only in umlauts
-const deUml = (/** @type {unknown} */ s) => String(s).replace(/ä|ae/g, 'a').replace(/ö|oe/g, 'o').replace(/ü|ue/g, 'u').replace(/ß/g, 'ss');
-// words that exist without the umlaut and mean something else: typing them is a miss, not a slip
-const UML_PAIR = new Set(`konnte konnten konntest konntet musste mussten musstest wurde wurden wurdest hatte hatten hattest
-  ware waren war durfte durften durfe schon bruder mutter vater tochter apfel garten laden zahlen drucken kuchen fuhren
-  uben schwul suss`.split(/\s+/).filter(Boolean));
+// the inflectional ending of a key (the pack's endings, longest first); the rest of the word (the stem) keeps at least
+// 3 letters
+const ending = (/** @type {string} */ n) => L.grading.endings.find(f => n.length >= f.length + 3 && n.endsWith(f)) || '';
 
 // ---- patterns ----
 // elements: {t:'w', alts:[{n, low, len, word}], raw} | {t:'opt', words:[w...], raw} | {t:'slot', raw, prefix?}
@@ -317,9 +289,9 @@ function align(pat, toks, { anywhere, typos, loose, x, slotMax = 6 }) {
     } else if (off) {
       // a slot is always whole words, separated from its neighbours by spaces
     } else if (e.t === 'part') {
-      // particles where a slot of the pattern is (restCheck): none, or up to 3 of PARTICLES
+      // particles where a slot of the pattern is (restCheck): none, or up to 3 of the pack's particles
       take(go(ei + 1, ti, 0), { ei, ti, len: 0, n: 0, x: true });
-      for (let k = 1; k <= 3 && ti + k <= toks.length && PARTICLES.has(toks[ti + k - 1].n); k++) take(go(ei + 1, ti + k, 0), { ei, ti, len: k, n: 0, x: true });
+      for (let k = 1; k <= 3 && ti + k <= toks.length && L.grammar.slots.particles.has(toks[ti + k - 1].n); k++) take(go(ei + 1, ti + k, 0), { ei, ti, len: k, n: 0, x: true });
     } else if (e.prefix) {
       const t = toks[ti], p = e.prefix;
       if (t && t.n.startsWith(p.n) && t.n.length > p.n.length)   // glued: the rest of this word is the slot's first word
@@ -374,7 +346,7 @@ function display(pat, input, m) {
 const cache = new Map();
 /** @param {string} src @param {boolean} useSlots @param {boolean} dots @returns {Pattern} */
 function compile(src, useSlots, dots) {
-  const k = (useSlots ? 1 : 0) + (dots ? 2 : 0) + '|' + src;
+  const k = L.id + (useSlots ? 1 : 0) + (dots ? 2 : 0) + '|' + src;
   let p = cache.get(k);
   if (!p) { p = parse(src, useSlots, dots); if (cache.size > 5000) cache.clear(); cache.set(k, p); }
   return p;
@@ -387,7 +359,7 @@ function renderPattern(p, caseRef) {
   if (caseRef) {
     /** @type {Map<string, string>} */ const ref = new Map();
     String(caseRef).normalize('NFC').split(/(?<=[.!?:])\s+/).forEach(sent => words(sent).forEach((w, i) => { if (i && !ref.has(w.low)) ref.set(w.low, w.raw); }));
-    out = out.replace(WORD_RE, w => ref.get(w.toLowerCase()) || w);
+    out = out.replace(L.text.wordRe, w => ref.get(w.toLowerCase()) || w);
     out = out.replace(/^(\P{L}*)(\p{L})/u, (_, a, b) => a + b.toUpperCase());
   }
   return out;
@@ -417,12 +389,9 @@ function run(input, pat, opts) {
   return m;
 }
 
-// B1: strict words in their exact case (focusMiss) and capitals against a reference (capMiss); sentence starts exempt
-// "recht/Recht haben", "recht/Recht geben": Duden allows both spellings, so neither case is a slip
-const HABEN_GEBEN = /^(hab|habe|hast|hat|haben|habt|hatte|hattest|hatten|hattet|haette|haettest|haetten|haettet|gehabt|geb|gebe|gibst|gibt|geben|gebt|gab|gabst|gaben|gabt|gegeben|gib)$/;
-const RECHT_DET = /^(das|des|dem|ein|eines|einem|kein|keines|keinem|mein|dein|sein|ihr|unser|euer|jedes|jedem|gleiche|gleiches|volle|volles|vollem|gutes|gutem)$/;
-const eitherCase = (/** @type {Word[]} */ toks, /** @type {number} */ i) => toks[i].n === 'recht' && !(i > 0 && RECHT_DET.test(toks[i - 1].n)) &&
-  toks.slice(Math.max(0, i - 5), i + 6).some(t => HABEN_GEBEN.test(t.n));
+// B1: strict words in their exact case (focusMiss) and capitals against a reference (capMiss); sentence starts exempt,
+// and words the pack lets be written either way (de: recht/Recht haben)
+const eitherCase = (/** @type {Word[]} */ toks, /** @type {number} */ i) => L.grading.eitherCase(toks, i);
 /** @param {CheckResult & {focusMiss: Slip[], capMiss: Slip[]}} res @param {Alignment & {toks: Word[]}} m @param {string} inp @param {WordX} x @param {Map<string, string> | null | undefined} caseRef */
 function caseChecks(res, m, inp, x, caseRef) {
   const initial = (/** @type {Word} */ t) => t.start === 0 || /[.!?:]\s*["„“]?\s*$/.test(inp.slice(0, t.start));
@@ -537,6 +506,7 @@ function check(input, accepted, opts = {}) {
 
   // 2. nouns: right word (typos allowed), wrong or missing article
   if (opts.pos === 'noun') {
+    const ARTICLES = L.grading.articles;
     const rest = ARTICLES.includes(toks[0].n) ? toks.slice(1) : toks;
     for (let k = 0; k < pats.length && rest.length; k++) {
       const p = pats[k], first = p.els[0];
@@ -580,22 +550,11 @@ function check(input, accepted, opts = {}) {
 //     ref: the sentence compared with (the closest one when the rest differs); marks: ranges in ref to highlight
 //     (whole words, or the differing ending of a word he nearly had); wrong: ranges in the answer that differ.
 const SLOT_RE = /\(\[[^\]]*\]\)|\[[^\]]*\]/g;
-const VERB_LAST = new Set(['dass', 'weil', 'ob', 'wenn', 'obwohl', 'damit', 'sobald', 'bevor', 'nachdem', 'waehrend', 'falls', 'seitdem']);
-const INVERT = new Set(['deshalb', 'deswegen', 'darum', 'daher', 'trotzdem', 'dann', 'danach', 'ausserdem', 'also', 'sonst', 'dennoch', 'denn']);
-const AUX_SEIN = /^(bin|bist|ist|sind|seid)$/, AUX_HABEN = /^(hab|habe|hast|hat|haben|habt)$/;
-/** @typedef {{clause: string, order: string, sein: boolean, haben: boolean}} Shape */
+// the clause shape of a pattern (the pack's: which words decide the word order and the Perfekt helper)
 /** @param {unknown} p @returns {Shape} */
-function shapeOf(p) {
-  const ws = words(String(p || '').replace(SLOT_RE, ' ')).map(w => w.n);
-  const sub = ws.filter(w => VERB_LAST.has(w)), inv = ws.filter(w => INVERT.has(w));
-  return { clause: [sub.slice().sort().join('+'), inv.slice().sort().join('+')].join('|'),
-    // the word order they make: any subordinator sends the verb to the end, any of these adverbs (not denn) puts it
-    // before the subject (deshalb, deswegen, daher, darum, trotzdem, dennoch … are interchangeable)
-    order: [sub.map(() => 'sub').join('+'), inv.map(w => w === 'denn' ? 'denn' : 'inv').sort().join('+')].join('|'),
-    sein: ws.some(w => AUX_SEIN.test(w)), haben: ws.some(w => AUX_HABEN.test(w)) };
-}
-// the same word order, and not sein in one where the other has haben
-const sameShape = (/** @type {Shape} */ a, /** @type {Shape} */ b) => a.order === b.order && !((a.sein && !a.haben && b.haben && !b.sein) || (a.haben && !a.sein && b.sein && !b.haben));
+const shapeOf = p => L.grammar.clauses.shape(words(String(p || '').replace(SLOT_RE, ' ')).map(w => w.n));
+// whether two patterns may stand in for each other (de: the same word order, and not sein where the other has haben)
+const sameShape = (/** @type {Shape} */ a, /** @type {Shape} */ b) => L.grammar.clauses.same(a, b);
 /** @param {string} p @param {string[]} fills */
 function fillSlots(p, fills) {
   const n = (String(p).match(SLOT_RE) || []).length;
@@ -619,7 +578,7 @@ function borrowable(p, own, fills, strict = false) {
       if (e.t !== 'slot') return;
       const prev = els[i - 1], after = new Set();
       let last = '';
-      for (let k = i + 1; k < els.length && els[k].t !== 'slot'; k++) { const x = els[k]; if (x.t === 'w' && !HELPERS.has(x.alts[0].n)) { after.add(x.alts[0].n); last = x.alts[0].n; } }
+      for (let k = i + 1; k < els.length && els[k].t !== 'slot'; k++) { const x = els[k]; if (x.t === 'w' && !L.grammar.slots.helpers.has(x.alts[0].n)) { after.add(x.alts[0].n); last = x.alts[0].n; } }
       out.push({ end: !(i + 1 < els.length && els[i + 1].t === 'w'), before: prev && prev.t === 'w' ? prev.alts[0].n : '', after, last });
     });
     return out;
@@ -639,38 +598,27 @@ function borrowable(p, own, fills, strict = false) {
     if (strict) return governed && x.before === y.before;
     // a time phrase or one adverb moves freely; other words only under the same verb (das liegt daran, dass man ([x])
     // zu viel arbeitet does not take "viele Menschen", the subject of … dass ([x]) zu viel arbeiten)
-    const fw = words(f);
-    if (TIME_RE.test(fold(f.toLowerCase())) || (fw.length === 1 && ADVERBS.has(fw[0].n))) return true;
-    return governed && (x.before === y.before || (!PREPS.has(x.before) && !PREPS.has(y.before)));
+    const fw = words(f), S = L.grammar.slots;
+    if (S.timePhrase.test(fold(f.toLowerCase())) || (fw.length === 1 && S.adverbs.has(fw[0].n))) return true;
+    return governed && (x.before === y.before || (!S.prepositions.has(x.before) && !S.prepositions.has(y.before)));
   });
 }
-// a time phrase (am Samstag, um 10 Uhr, nächste Woche): no verb governs it, so it moves freely
-const TIME_RE = /^(am|um|im|ab|bis|seit|vor|nach|naechste|naechsten|letzte|letzten|diese|diesen|jeden|jede)( \S+)* (montag|dienstag|mittwoch|donnerstag|freitag|samstag|sonntag|wochenende|uhr|morgen|abend|nachmittag|vormittag|mittag|woche|monat|jahr|januar|februar|maerz|april|mai|juni|juli|august|september|oktober|november|dezember|sommer|winter|fruehling|herbst)$/;
-// adverbs that stand in the middle of a clause whatever its verb (du solltest [unbedingt] …, nimm [unbedingt] … mit)
-const ADVERBS = new Set(`unbedingt vorher nachher kurz oft immer heute morgen jetzt bald spaeter frueher wirklich gemeinsam zusammen wieder
-  bestimmt sicher ueberall dort hier endlich schnell gleich sofort lieber gern`.split(/\s+/).filter(Boolean));
-// modal verbs, würde, werden and zu: they do not decide the case of the words in a slot (sein and haben do: als ich [ein
-// Kind] war is not früher hatte ich [ein Kind])
-const HELPERS = new Set(`zu kann kannst koennen konnte konnten koennte koennten muss musst muessen musste mussten muesste will willst wollen
-  wollte wollten soll sollst sollen sollte sollten darf darfst duerfen durfte moechte moechtest moechten wuerde wuerdest wuerden werde wirst wird
-  werden`.split(/\s+/).filter(Boolean));
-const PREPS = new Set(`an am ans auf aufs aus bei beim bis durch durchs fuer fuers gegen hinter hinterm im in ins mit nach neben ohne seit
-  ueber uebers um ums unter unterm von vom vor vorm waehrend wegen zu zum zur zwischen trotz statt ab ausser gegenueber`.split(/\s+/).filter(Boolean));
+// (the pack's slot rules: a time phrase or one adverb moves freely; helpers do not govern a slot; prepositions do)
 // a pattern (slots filled) as text in the sentence: the base sentence's spelling of each word, nouns from caseRef
 /** @param {string} mid @param {string} base @param {Map<string, string> | null | undefined} caseRef @param {boolean} initial */
 function renderIn(mid, base, caseRef, initial) {
   /** @type {Map<string, string>} */ const ref = new Map();
   String(base).normalize('NFC').split(/(?<=[.!?:])\s+/).forEach(sent => words(sent).forEach((w, i) => { if (i && !ref.has(w.low)) ref.set(w.low, w.raw); }));
-  let out = display(compile(mid, true, false), '', null).replace(WORD_RE, w => ref.get(w.toLowerCase()) || (caseRef && caseRef.get(fold(w.toLowerCase()))) || w.toLowerCase());
+  let out = display(compile(mid, true, false), '', null).replace(L.text.wordRe, w => ref.get(w.toLowerCase()) || (caseRef && caseRef.get(fold(w.toLowerCase()))) || w.toLowerCase());
   if (initial) out = out.replace(/^(\P{L}*)(\p{L})/u, (_, a, b) => a + b.toUpperCase());
   return out;
 }
 const joinText = (/** @type {string[]} */ ...parts) => parts.filter(s => s && s.trim()).join(' ').replace(/\s+([,.!?;:])/g, '$1').replace(/\s+/g, ' ').trim();
-// patterns carry no commas: put back the base sentence's comma before a clause word it has one before (so, dass …)
-const COMMA_WORDS = new Set(['dass', 'weil', 'wenn', 'ob', 'obwohl', 'damit', 'aber', 'denn', 'sondern', 'bevor', 'nachdem', 'waehrend', 'falls', 'sodass', 'als', 'wie', 'wo', 'was']);
+// patterns carry no commas: put back the base sentence's comma before a clause word it has one before (so, dass …;
+// the pack's comma words)
 /** @param {string} base @param {string} text */
 function commasFrom(base, text) {
-  const want = new Set([...String(base).matchAll(/,\s*([\p{L}]+)/gu)].map(m => fold(m[1].toLowerCase())).filter(w => COMMA_WORDS.has(w)));
+  const want = new Set([...String(base).matchAll(/,\s*([\p{L}]+)/gu)].map(m => fold(m[1].toLowerCase())).filter(w => L.grammar.punctuation.commaWords.has(w)));
   if (!want.size) return text;
   return String(text).replace(/(?<=[\p{L}\p{N}])(\s+)(\p{L}+)/gu, (all, sp, w) => want.has(fold(w.toLowerCase())) ? `,${sp}${w}` : all);
 }
@@ -681,12 +629,8 @@ const doubled = (/** @type {string} */ text, /** @type {string} */ p) => {
   return has(text) && !has(String(p).replace(SLOT_RE, ' '));
 };
 
-// Words that never change form and add only emphasis or a nuance: he may add them, or use another one, where an accepted
-// pattern has a slot (ich stimme Rainer [nur] teilweise zu, der Umzug ist [echt] gut gelaufen). Folded.
-// Only words that sit in front of a verb phrase as well as an adjective: an intensifier (sehr, ganz, so, ziemlich) needs
-// an adjective after it (*macht mir sehr Spaß, *ganz nicht), so it is not one of them.
-const PARTICLES = new Set(['wirklich', 'echt', 'nur', 'auch', 'dann', 'schon', 'noch', 'ja', 'doch', 'eigentlich', 'leider', 'natuerlich',
-  'einfach', 'vielleicht', 'uebrigens', 'stattdessen']);
+// Words that never change form and add only emphasis or a nuance (the pack's slots.particles): he may add them, or use
+// another one, where an accepted pattern has a slot (ich stimme Rainer [nur] teilweise zu).
 /** @type {PartEl} */
 const PART = { t: 'part', raw: '' };
 /**
@@ -706,12 +650,12 @@ function slotParts(p, fills) {
     const f = fills[k++];
     if (!f && !e.opt) return null;
     // a slot that must hold words keeps its words when they are all particles (wenn das Wetter [x] ist: not empty)
-    const fw = words(f || ''), keep = !e.opt && fw.every(w => PARTICLES.has(w.n));
+    const fw = words(f || ''), keep = !e.opt && fw.every(w => L.grammar.slots.particles.has(w.n));
     out.push(PART);
     for (const w of fw) {
       /** @type {WEl} */ const el = { t: 'w', raw: w.raw, alts: [{ n: w.n, low: w.low, len: w.len, word: w.raw }] };
       // a particle of the model may be left out (or swapped by the particles around it), and keeps its typo rules
-      out.push(PARTICLES.has(w.n) && !keep ? { t: 'opt', words: [el], raw: w.raw } : el);
+      out.push(L.grammar.slots.particles.has(w.n) && !keep ? { t: 'opt', words: [el], raw: w.raw } : el);
     }
     out.push(PART);
   }
@@ -762,7 +706,7 @@ function restCheck(input, base, accepted, opts = {}) {
   // too (Obwohl … ist, … → Auch wenn … ist, …).
   const wordsIn = (/** @type {string} */ t) => words(t).map(w => w.n);
   const ends = !/\p{L}/u.test(post) || /^\s*[.!?;:]/u.test(post);
-  const after = !/\p{L}/u.test(pre) || /[.!?:]\s*$/u.test(pre) || (/,\s*$/.test(pre) && !wordsIn(pre).some(w => VERB_LAST.has(w)));
+  const after = !/\p{L}/u.test(pre) || /[.!?:]\s*$/u.test(pre) || (/,\s*$/.test(pre) && !wordsIn(pre).some(w => L.grammar.clauses.subordinators.has(w)));
   const subOnly = (/** @type {Shape} */ sh) => /^[^|]+\|$/.test(sh.clause);
   const swappable = (/** @type {Shape} */ sh) => (ends && after) || (!/\p{L}/u.test(pre) && /^\s*,/.test(post) && subOnly(sh) && subOnly(shape));
   for (const p of order) {
@@ -808,7 +752,7 @@ function restCheck(input, base, accepted, opts = {}) {
   const own = compile(mr.matched || '', true, false).els;
   const slotsOf = (/** @type {El[]} */ els) => els.flatMap((e, i) => e.t === 'slot' ? [i] : []);
   const fixedNext = (/** @type {El[]} */ els, /** @type {number} */ i) => i + 1 < els.length && els[i + 1].t === 'w';
-  const content = (/** @type {Word[]} */ ws) => ws.filter(w => !PARTICLES.has(w.n)).map(w => w.n).join(' ');
+  const content = (/** @type {Word[]} */ ws) => ws.filter(w => !L.grammar.slots.particles.has(w.n)).map(w => w.n).join(' ');
   const ownSlots = slotsOf(own);
   for (const p of order) {
     const pat = compile(p, true, false), m = align(pat, toks, aopts);
@@ -844,7 +788,7 @@ function restCheck(input, base, accepted, opts = {}) {
     if (fine && pSlots.length === ownSlots.length) {
       for (const st of m.steps) {
         const k = pSlots.indexOf(st.ei);
-        const missing = k >= 0 && !st.len && words(fills[k] || '').some(w => !PARTICLES.has(w.n) && !toks.some(t => t.n === w.n));
+        const missing = k >= 0 && !st.len && words(fills[k] || '').some(w => !L.grammar.slots.particles.has(w.n) && !toks.some(t => t.n === w.n));
         if (missing) { fine = false; break; }
       }
     }
@@ -884,7 +828,9 @@ function gaps(A, B) {
   return { gaps: out.filter(g => g.a.length || g.b.length), pairs };
 }
 // he nearly had it: the same word up to its ending, or the same but for an umlaut
-const nearly = (/** @type {Word} */ a, /** @type {Word} */ b) => commonPrefix(a.low, b.low) >= 3 || deUml(a.low) === deUml(b.low);
+const nearly = (/** @type {Word} */ a, /** @type {Word} */ b) => commonPrefix(a.low, b.low) >= 3 || sameButMarks(a.low, b.low);
+// the same word but for its marks (de: umlauts), by the pack's mark slip
+const sameButMarks = (/** @type {string} */ a, /** @type {string} */ b) => { const mk = L.grading.slips.marks; return !!mk && mk.base(a) === mk.base(b); };
 const commonPrefix = (/** @type {string} */ a, /** @type {string} */ b) => { let p = 0; while (p < a.length && p < b.length && a[p] === b[p]) p++; return p; };
 // Word diff of an answer a against a right sentence b: the words of a that differ (wrong) and the parts of b to mark.
 // A word he nearly had is marked from its first differing letter (from the ending when that is where it differs:
@@ -947,68 +893,24 @@ function punctFrom(base, text) {
   out = out.replace(/([.!?]\s+)(\p{Ll})/gu, (_, sp, c) => sp + c.toUpperCase());
   return /:\s+\p{Lu}/u.test(base) ? out.replace(/(:\s+)(\p{Ll})/gu, (_, sp, c) => sp + c.toUpperCase()) : out;
 }
-// A comma before a subordinate clause (dass, weil, obwohl, wenn, ob, falls …) inside a sentence; not after und/oder
-// or where it belongs before the word in front (auch wenn, als ob, so dass, nur wenn, selbst wenn)
-const SUB_COMMA = new Set(['dass', 'weil', 'obwohl', 'wenn', 'ob', 'falls', 'sobald', 'bevor', 'nachdem', 'seitdem', 'sodass', 'sondern']);
-const SUB_LEAD = new Set(['und', 'oder', 'auch', 'als', 'nur', 'selbst', 'ausser', 'gerade', 'sogar']);
-// A comma after an opinion verb before a main clause (Ich finde, das ist …; Ich hoffe, es geht dir gut), and before an
-// infinitive group after a word that announces it (Wäre es möglich, den Termin … zu verschieben; Ich freue mich darauf,
-// von dir zu hören)
-const OPINION = new Set(['finde', 'denke', 'glaube', 'meine', 'hoffe', 'weiss', 'sage', 'vor', 'finden', 'glauben', 'denken', 'meint', 'findet', 'glaubt', 'denkt']);
-const SUBJECTS = new Set(['das', 'es', 'die', 'der', 'er', 'sie', 'wir', 'ich', 'du', 'man', 'dir', 'mir', 'ihr', 'viele', 'alle', 'jeder']);
-const FINITE_WORDS = new Set(['ist', 'sind', 'war', 'waren', 'hat', 'haben', 'habe', 'kann', 'koennen', 'muss', 'muessen', 'will', 'soll', 'sollte',
-  'sollten', 'wird', 'werden', 'wuerde', 'gibt', 'geht', 'kommt', 'macht', 'passt', 'treffen', 'probieren', 'arbeiten', 'arbeitet']);
-const ZU_NOUN = new Set(['lust', 'zeit', 'idee']);
-const ZU_LEAD = new Set(['moeglich', 'lust', 'zeit', 'idee', 'vorschlag', 'darauf', 'darueber', 'dafuer', 'daran', 'davon', 'dazu', 'vor', 'wichtig', 'schwer', 'leicht']);
-/** @param {string} text */
-function clauseCommas(text) {
-  const T = words(text);
-  /** @type {number[]} */ const at = [];
-  T.forEach((w, i) => {
-    const nx = T[i + 1];
-    if (!nx || /^\s*[,;:.!?]/.test(text.slice(w.end))) return;
-    // opinion verb + a subject + a finite verb within the next words (no dass)
-    if (OPINION.has(w.n) && SUBJECTS.has(nx.n) && T.slice(i + 2, i + 6).some(x => FINITE_WORDS.has(x.n)) && !T.slice(i + 1, i + 6).some(x => SUB_COMMA.has(x.n))) at.push(w.end);
-    // a word that announces an infinitive group + at least one word + zu + the verb at the end of the line
-    const z = T.findIndex((x, k) => k > i && x.n === 'zu' && k === T.length - 2 && /(en|ern|eln)$/.test(T[k + 1].n) && !/^\p{Lu}/u.test(T[k + 1].raw));
-    if (ZU_LEAD.has(w.n) && z > i && (nx.n !== 'zu' || ZU_NOUN.has(w.n))) at.push(w.end);
-  });
-  let out = text;
-  for (const k of at.sort((a, b) => b - a)) out = out.slice(0, k) + ',' + out.slice(k);
-  return out;
-}
-/** @param {string} text */
-function subCommas(text) {
-  const T = words(text);
-  let out = text;
-  for (let i = T.length - 1; i > 0; i--) {
-    const w = T[i], prev = T[i - 1];
-    const lead = SUB_LEAD.has(prev.n) && i > 1 ? T[i - 2] : null;   // auch wenn: the comma goes before auch
-    if (!SUB_COMMA.has(w.n) || (SUB_LEAD.has(prev.n) && !lead) || ['und', 'oder'].includes(prev.n)) continue;
-    const at = lead ? prev : w, before = lead || prev;
-    if (/[,;:.!?(]\s*$/.test(out.slice(0, at.start))) continue;
-    out = out.slice(0, before.end) + ',' + out.slice(before.end);
-  }
-  return out;
-}
-// a line that starts with one of these is a question (the model's ? stays); otherwise a statement takes a full stop
-const QUESTION = new Set(`kann kannst koennen koennt koennte koenntest koennten wuerde wuerdest wuerden haette haettest haetten habe hast hat
-  haben habt ist bist sind seid waere waerst waeren war warst waren passt passen wollen willst wollt sollen soll sollte darf darfst duerfen
-  moechtest moechten magst gibt geht gehst kommst kommt hilfst weisst wisst was wie wo wann warum wer wen wem wessen welche welcher welches
-  welchen wohin woher womit wofuer worueber wozu wieso weshalb`.split(/\s+/).filter(Boolean));
-const DETLIKE = new Set([...[...CLOSED].filter(w => !/^(ich|mich|mir|du|dich|dir|er|ihn|ihm|sie|es|wir|uns|euch|man|sich|bin|bist|ist|sind|seid|war|warst|waren|wart|habe|hab|hast|hat|habt|haben|hatte|werde|wirst|wird|werden|werdet|wurde|dass|ob|wenn|als|wie|wer|wen|wem)$/.test(w)),
-  'zwei', 'drei', 'vier', 'fuenf', 'sechs', 'sieben', 'acht', 'neun', 'zehn', 'viele', 'vielen', 'wenige', 'einige', 'alle', 'jede', 'jeden', 'jeder', 'jedes']);
-const OPENERS = new Set(['ich', 'du', 'das', 'es', 'wir', 'da', 'man', 'er', 'mir', 'dir', 'dem', 'den', 'die', 'der', 'stimme', 'finde', 'sehe', 'bin', 'geht', 'klingt', 'gute', 'kein', 'keine']);
-const POLITE = new Set(['sie', 'ihnen', 'ihr', 'ihre', 'ihren', 'ihrem', 'ihrer', 'ihres']);
-const INTERJ = new Set(['okay', 'ok', 'ja', 'nein', 'gut', 'klar', 'prima', 'genau', 'entschuldigung', 'super', 'toll']);
+// The commas the pack writes into a line: before a subordinate clause (de: dass, weil …; not after und/oder), and
+// before a main clause after an opinion verb or an infinitive group (Ich finde, das ist …)
+const clauseCommas = (/** @type {string} */ text) => L.grammar.punctuation.clauseCommas(text);
+const subCommas = (/** @type {string} */ text) => L.grammar.punctuation.subCommas(text);
+// the pack's line rules (lines.*): which words start a question, stand like a determiner, open a sentence, are polite
+// or not only by the model, are interjections, are contractions before a noun, and the word that needs a comma
 /**
  * @param {string} base @param {string | string[]} accepted @param {Map<string, string> | null} [caseRef]
  * @param {Set<string> | null} [lower]  folded words known to be written in lower case; with it, a line with a word whose
  *   capital is not known (not in the model, caseRef, lower or the closed words) is left out
  * @param {boolean} [standalone]  each line is a whole utterance (a situation's answer): it starts with a capital
+ * @param {LanguagePack | null} [pack]  the language (default: the call's, else the active pack)
  * @returns {{pattern: string, text: string}[] | null}
  */
-function alsoLines(base, accepted, caseRef = null, lower = null, standalone = false) {
+function alsoLines(base, accepted, caseRef = null, lower = null, standalone = false, pack = null) {
+  void pack;   // read by the exported wrapper (inPack)
+  const { questionStarts: QUESTION, determinerLike: DETLIKE, openers: OPENERS, polite: POLITE, interjections: INTERJ, contractions, contrast } = L.grammar.lines;
+  const CLOSED = L.grading.closedClass;
   const list = (Array.isArray(accepted) ? accepted : [accepted]).filter(a => a != null && String(a).trim() !== '');
   if (!base || !list.length) return null;
   const phrase = check(base, list, { anywhere: true, slotMax: 10, typos: false });
@@ -1020,7 +922,7 @@ function alsoLines(base, accepted, caseRef = null, lower = null, standalone = fa
   const shape = shapeOf(own);
   const pre = base.slice(0, /** @type {[number, number]} */ (phrase.span)[0]);
   const startsUpper = /^\P{L}*\p{Lu}/u.test(base);   // a line after a greeting's comma starts in lower case
-  const preWords = words(pre).map(w => w.n).filter(n => !PARTICLES.has(n));
+  const preWords = words(pre).map(w => w.n).filter(n => !L.grammar.slots.particles.has(n));
   const sentStart = /[.!?]\s*$/u.test(pre);   // the phrase opens a sentence of the model: a capital, no end mark of its own
   const postWords = words(base.slice(/** @type {[number, number]} */ (phrase.span)[1])).map(w => w.n);
   const inModel = new Set(words(base).map(w => w.n));
@@ -1066,13 +968,13 @@ function alsoLines(base, accepted, caseRef = null, lower = null, standalone = fa
     // an interjection run into the next word needs a comma the model cannot give (Okay, machen wir das so)
     if (has.length > 1 && INTERJ.has(has[0]) && !(inModel.has(has[0]) && inModel.has(has[1]))) continue;
     // aber inside a line: a comma before it, or a particle (das ist aber schön); not known without the model
-    if (has.some((n, i) => i > 0 && n === 'aber') && !/,\s*aber\b/i.test(base)) continue;
+    if (has.some((n, i) => i > 0 && n === contrast) && !new RegExp(`,\\s*${contrast}\\b`, 'i').test(base)) continue;
     // a line starts the sentence when the phrase does, or when it holds the words before the phrase too (ich kann
     // leider nicht kommen, denn …); otherwise it is the phrase inside the sentence and starts in lower case (denn …)
     const first = !preWords.length || preWords.every(n => has.includes(n));
     if (has.some((n, i) => initialOnly.has(n) && (i > 0 || !first))) continue;
     // a verb after fürs, beim, zum … is a noun there (fürs Zuhören): its capital is not known
-    if (has.some((n, i) => i > 0 && /^(fuers|beim|zum|vom|ins|am)$/.test(has[i - 1]) && !inModel.has(n) && !(caseRef && caseRef.has(n)))) continue;
+    if (has.some((n, i) => i > 0 && contractions.has(has[i - 1]) && !inModel.has(n) && !(caseRef && caseRef.has(n)))) continue;
     // a situation's line is said on its own: a capital when it starts like a sentence (Das sehe ich anders), not on a
     // bare phrase (anderer Meinung)
     const own0 = standalone && OPENERS.has(has[0] || '');
@@ -1093,25 +995,24 @@ function alsoLines(base, accepted, caseRef = null, lower = null, standalone = fa
 // same neighbours, differing in its ending (einen anderes Vorschlag), an umlaut, or as another case or gender of the
 // same article or pronoun (bei mich, für einer Party). Other wordings pass.
 //   → {status: 'ok'|'differs', ref, marks, wrong}
-const FAMILY = [/^d(er|ie|as|en|em|es)$/, /^ein(e|en|em|er|es)?$/, /^kein(e|en|em|er|es)?$/, /^mein(e|en|em|er|es)?$/, /^dein(e|en|em|er|es)?$/,
-  /^sein(e|en|em|er|es)?$/, /^ihr(e|en|em|er|es)$/, /^unser(e|en|em|er|es)?$/, /^eu(e)?r(e|en|em|er|es)?$/, /^dies(e|er|en|em|es)$/, /^jed(e|er|en|em|es)$/,
-  /^welch(e|er|en|em|es)$/, /^(ich|mich|mir)$/, /^(du|dich|dir)$/, /^(er|ihn|ihm)$/, /^(wir|uns)$/, /^(ihnen)$/,
-  /^(bin|bist|ist|sind|seid|sein|hab|habe|hast|hat|haben|habt)$/, /^(hatte|hattest|hatten|hattet|war|warst|waren|wart)$/, /^(werde|wirst|wird|werden|werdet)$/,
-  /^(war|warst|waren|wart)$/, /^(wurde|wurdest|wurden|wurdet)$/];
-const family = (/** @type {string} */ n) => FAMILY.findIndex(re => re.test(n));
+// the closed-class family of a word (the pack's paradigms: der/den/dem …, ich/mich/mir …), or -1
+const family = (/** @type {string} */ n) => L.grading.paradigms.findIndex(re => re.test(n));
 /** @param {Word} a @param {Word} b @param {WordX} [x] */
 function formPair(a, b, x = NOX) {
   if (a.n === b.n) return false;
-  if (deUml(a.low) === deUml(b.low)) return true;   // hatte/hätte, schon/schön, Mutter/Mütter
+  const CLOSED = L.grading.closedClass;
+  if (sameButMarks(a.low, b.low)) return true;   // hatte/hätte, schon/schön, Mutter/Mütter
   if (CLOSED.has(a.n) && CLOSED.has(b.n)) { const f = family(a.n); if (f >= 0 && f === family(b.n)) return true; }
   // nearly the same word in the same place, and not a typo by the typo rules: das/dass, viel/fiel, Staat/Stadt, wider
   if (a.len >= 3 && dl(a.n, b.n, 1) <= 1 && !typoOk(a.n, { n: b.n, len: b.len }, { endings: true, lex: x.lex })) return true;
   if (CLOSED.has(a.n) && CLOSED.has(b.n)) return false;   // für/vor, mit/bei: another word, not another form
   // the same word up to a different ending: vieles/vielen, anderes/anderen, müsst/müssen, kannt/kannst
   const p = commonPrefix(a.n, b.n), ra = a.n.slice(p), rb = b.n.slice(p);
-  return p >= 3 && ra !== rb && ENDING_SET.has(ra) && ENDING_SET.has(rb);
+  const ends = endingSet();
+  return p >= 3 && ra !== rb && ends.has(ra) && ends.has(rb);
 }
-const ENDING_SET = new Set(['', ...ENDINGS]);
+/** @type {WeakMap<LanguagePack, Set<string>>} */ const ENDING_SETS = new WeakMap();
+const endingSet = () => { let e = ENDING_SETS.get(L); if (!e) { e = new Set(['', ...L.grading.endings]); ENDING_SETS.set(L, e); } return e; };
 /** @param {string} input @param {string} base @param {CheckOptions & {lone?: boolean}} [opts] */
 function formCheck(input, base, opts = {}) {
   const x = xOpts({ ...opts, endings: true });
@@ -1158,9 +1059,8 @@ function nounPrompt(word, form = nounForm(word)) {
   const g = stripArt((word.en || [])[0] || word.w);
   return form === 'indef' ? `${anSound(g) ? 'an' : 'a'} ${g}` : `the ${g}`;
 }
-/** @type {Record<string, string>} */
-const INDEF = { der: 'ein', das: 'ein', die: 'eine' };
-const toIndef = (/** @type {string} */ s) => { const m = String(s).match(/^(der|die|das)\s+(.+)$/i); return m ? `${INDEF[m[1].toLowerCase()]} ${m[2]}` : s; };
+// "der Tisch" → "ein Tisch" (the pack's articles; unchanged in a language without gender)
+const toIndef = (/** @type {string} */ s) => { const g = L.grammar.gender; return g ? g.toIndefinite(s) : s; };
 
 /** @param {any} word @param {'def'|'indef'} [form] @returns {string[]} */
 function acceptedForWord(word, form = 'def') {
@@ -1204,6 +1104,33 @@ function acceptedForGap(prompt, answers) {
 }
 const gapLoose = (/** @type {unknown} */ prompt) => words(gapBase(prompt).split(GAP).join(' ')).map(w => w.n);
 
-const api = { check, matches, diffWords, markDiff, restCheck, alsoLines, shapeOf, sameShape, formCheck, renderPattern, acceptedForWord, acceptedForChunk, acceptedForGap, gapFill, gapLoose, nounForm, nounPrompt, toIndef, clean, fold, dl, dl1, words, ending, CLOSED };
+// ---- the exported API: every entry point runs in its language pack (inPack) ----
+/**
+ * @template {(...a: any[]) => any} F
+ * @param {F} fn @param {(a: any[]) => LanguagePack | null | undefined} [packOf] the pack an argument names
+ * @returns {F}
+ */
+const scoped = (fn, packOf = () => null) => /** @type {F} */ ((/** @type {any[]} */ ...a) => inPack(packOf(a), () => fn(...a)));
+/** A pack, or null (a callback's index or array is not one). @param {unknown} p @returns {LanguagePack | null} */
+const asPack = p => (p && typeof p === 'object' && 'grammar' in p ? /** @type {LanguagePack} */ (p) : null);
+const optAt = (/** @type {number} */ i) => (/** @type {any[]} */ a) => asPack(a[i] && a[i].pack);
+const E = {
+  check: scoped(check, optAt(2)), matches: scoped(matches), diffWords: scoped(diffWords), markDiff: scoped(markDiff),
+  restCheck: scoped(restCheck, optAt(3)), alsoLines: scoped(alsoLines, a => asPack(a[5])), shapeOf: scoped(shapeOf), sameShape: scoped(sameShape),
+  formCheck: scoped(formCheck, optAt(2)), renderPattern: scoped(renderPattern), acceptedForWord: scoped(acceptedForWord), acceptedForChunk,
+  acceptedForGap, gapFill, gapLoose: scoped(gapLoose), nounForm, nounPrompt, toIndef: scoped(toIndef), clean: scoped(clean), fold: scoped(fold),
+  dl, dl1, words: scoped(words), ending: scoped(ending),
+};
+/** The default pack's closed-class words (kept for callers that read Match.CLOSED; a pack's own: pack.grading.closedClass). */
+const CLOSED = activePack().grading.closedClass;
+const api = { ...E, CLOSED };
 export default api;
-export { check, matches, diffWords, markDiff, restCheck, alsoLines, shapeOf, sameShape, formCheck, renderPattern, acceptedForWord, acceptedForChunk, acceptedForGap, gapFill, gapLoose, nounForm, nounPrompt, toIndef, clean, fold, dl, dl1, words, ending, CLOSED };
+const {
+  check: checkX, matches: matchesX, diffWords: diffWordsX, markDiff: markDiffX, restCheck: restCheckX, alsoLines: alsoLinesX, shapeOf: shapeOfX,
+  sameShape: sameShapeX, formCheck: formCheckX, renderPattern: renderPatternX, acceptedForWord: acceptedForWordX, gapLoose: gapLooseX, toIndef: toIndefX,
+  clean: cleanX, fold: foldX, words: wordsX, ending: endingX,
+} = E;
+export { checkX as check, matchesX as matches, diffWordsX as diffWords, markDiffX as markDiff, restCheckX as restCheck, alsoLinesX as alsoLines,
+  shapeOfX as shapeOf, sameShapeX as sameShape, formCheckX as formCheck, renderPatternX as renderPattern, acceptedForWordX as acceptedForWord,
+  acceptedForChunk, acceptedForGap, gapFill, gapLooseX as gapLoose, nounForm, nounPrompt, toIndefX as toIndef, cleanX as clean, foldX as fold, dl, dl1,
+  wordsX as words, endingX as ending, CLOSED };

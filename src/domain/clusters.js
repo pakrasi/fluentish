@@ -15,16 +15,21 @@
      preps      { groups: [{id, label, note, members}], notes: { wordId: {case, note, ex: [[de, en]]} },
                   gaps: [{ id, prep, de: '… ___ …', answer: [..], en, note }] }
 
-   Cluster ids are '<type>:<id>' (family:fallen, opp:place, prefix:be, suffix:ung, topic:travel, prep:twoway). */
+   Cluster ids are '<type>:<id>' (family:fallen, opp:place, prefix:be, suffix:ung, topic:travel, prep:twoway).
+   The word-formation rules (prefixes, cases, known false families) are the language pack's (pack.grammar.morphology;
+   German: src/lang/de/morph.js); the constants below are the default pack's, for the callers that read them. */
+
+import { DEFAULT_PACK } from '../lang/registry.js';
 
 export const TYPES = /** @type {const} */ (['family', 'opp', 'prefix', 'suffix', 'topic', 'prep']);
 /** @typedef {'family'|'opp'|'prefix'|'suffix'|'topic'|'prep'} ClusterType */
+const MORPH = /** @type {import('../lang/types.js').MorphologyRules} */ (DEFAULT_PACK.grammar.morphology);
 /** Words that must never head a family (heuristic errors the Explore prototype made). */
-export const NOT_HEADS = ['das_Mittel', 'statt.prep', 'zumal.conj'];
+export const NOT_HEADS = MORPH.notHeads;
 /** Known false families, as [word, family] pairs: kept out as regression checks. */
-export const NOT_IN = [['die_Zeitung', 'zeit'], ['die_Gefahr', 'fahren'], ['gehören.verb', 'holen'], ['das_Beispiel', 'spielen'], ['der_Reis', 'reisen'], ['der_Wein', 'weinen']];
+export const NOT_IN = MORPH.notIn;
 const LEVEL_ORDER = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
-const CASES = new Set(['dat', 'akk', 'gen', 'two-way', null]);
+const CASES = MORPH.prepCases;
 
 /**
  * Everything the content must satisfy beyond its JSON Schema.
@@ -107,11 +112,10 @@ export function validateClusters(c, { words, chunkIds = null, themes = [] }) {
   return out;
 }
 
-export const INSEPARABLE = new Set(['be', 'emp', 'ent', 'er', 'ge', 'miss', 'ver', 'zer']);
+/** Prefixes that never separate. */
+export const INSEPARABLE = MORPH.inseparable;
 /** Every prefix morph may use (verb particles, inseparable prefixes and the noun and adjective prefixes). */
-export const PREFIX_SET = new Set([...INSEPARABLE, 'ab', 'an', 'auf', 'aus', 'bei', 'dar', 'durch', 'ein', 'fern', 'fest', 'fort', 'frei', 'gegen', 'heran', 'heraus',
-  'her', 'hin', 'hinter', 'kennen', 'mit', 'nach', 'nieder', 'rück', 'sitzen', 'statt', 'teil', 'über', 'um', 'un', 'unter', 'ur', 'voll', 'vor', 'voran', 'vorbei',
-  'vorweg', 'weg', 'wider', 'wieder', 'zu', 'zurecht', 'zurück', 'zusammen']);
+export const PREFIX_SET = MORPH.prefixes;
 
 /** A word's topic: its core split when its theme is 'core', else its theme. @param {any} c @param {any} w */
 export function topicOf(c, w) {

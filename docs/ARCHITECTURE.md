@@ -21,10 +21,14 @@ src/
   main.js             boot: storage → profile (+ one-time migration) → prefs → shell → router
   boot.js             pre-paint theme/motion (classic script)
   core/               clock, router, dom, bus, i18n, config, schema, log, ui, icons, motion (kit), brand (kit),
-                      lang (the study language: lang/dir attributes, BCP-47, ASR locale, voice choice), link (device link)
+                      lang (the study language: lang/dir attributes, BCP-47, ASR locale, voice choice, the active
+                      language pack), link (device link)
+  lang/               language packs (§2.3): types.js (the LanguagePack interface), registry.js (the ten languages,
+                      the active pack), de/ (German: text, grading, syntax, detectors, forms, morphology)
   services/           platform services behind interfaces (§2.2): speech, voice, audio, recorder, share, haptics; claude, sw
   data/               store, adapters/{idb,memory}, session, settings, migrate, transfer, content, ids
   domain/             pure, tested in node: fsrs, match, detect, speech, timer, readiness, b1ready, days, today
+                      (match, detect, punct and forms are language-neutral engines over a language pack)
   features/           registry, contract, day; today/, profile/, welcome/, exam/, lookup/, explore/ (Look up › Map; palace/ is its 3D view, loaded on demand);
                       Practice as sibling features: practice/ (hub, exam words), practice-round/, practice-write/,
                       practice-speak/, practice-script/, practice-clusters/, build/ (Word building); shared/ is the
@@ -50,7 +54,8 @@ Layers, checked by `tests/unit/feature-graph.test.mjs` over every static, dynami
 
 | From | May import |
 |---|---|
-| `domain/` | `domain/` only (pure; a JSDoc type from `core/clock.js` loads nothing) |
+| `domain/` | `domain/` and `lang/` only (pure; a JSDoc type from `core/clock.js` loads nothing) |
+| `lang/` | `lang/` only (pure: the language packs) |
 | `core/`, `data/`, `services/`, `i18n/` | each other and `domain/`; never `features/` |
 | `features/<id>/` | core, data, domain, services, i18n, vendor, the kernel (`features/*.js`), `features/shared/`; never another feature |
 | `features/shared/` | the same, never a feature |
@@ -80,6 +85,20 @@ product, each owning its routes and its Today rows; no route, CSS class, store k
 from `data/atlas.js`, so it imports no feature.
 
 **No bundler, no framework.** Native ES modules run in Safari 17+ and node 22+; the domain code is tested with plain `import`. The deploy step (stage C) is the only build: it stamps the version, writes the manifest and copies publishable folders. Revisit esbuild only if first load on 4G exceeds 2 s or TypeScript sources are adopted. Types: JSDoc + `tsc --checkJs`, **strict and blocking** on `core`, `data` and the new domain modules; the ported domain modules are typed through `.d.ts` files where strict code imports them and checked non-strict (advisory) until annotated.
+
+### 2.3 Language packs
+
+Everything the app knows about one study language is a language pack (`src/lang/types.js`, Wave C2): its text rules
+(normalising, tokenizing, folding), its typo policy's word lists (closed-class words, endings, form changes, minimal
+pairs, the umlaut slip), its grammar (gender and articles, cases, the word card's forms, sticky-error detectors,
+clause shapes, comma rules) and its speech locales, exams and content ids. `domain/match.js`, `detect.js`, `punct.js`
+and `forms.js` hold only the language-neutral engines (alignment, Damerau-Levenshtein, slots, diffs, the typo policy,
+the detector runner) and take a pack per call; without one they use the active pack, which `core/lang.js` sets from
+`settings.language` (`pack()`). German (`src/lang/de/`) is the one full pack; `lang/registry.js` lists the other nine
+languages of the manifest as metadata (tag, script, direction, fonts, voices) so the UI can offer them. The move was
+byte-identical: the golden vectors and the grading corpus did not change. `tests/unit/lang-contract.test.mjs` is the
+tokenizer and normaliser contract for German, French, Hindi and Arabic (the last three as text-only stubs under
+`src/lang/{fr,hi,ar}/text.js`); `tests/unit/lang-registry.test.mjs` keeps the registry in step with the manifest.
 
 ## 3. Data layer
 
