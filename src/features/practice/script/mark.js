@@ -8,12 +8,13 @@
    list has no meaning for (the only Claude call of phase 1). */
 import { h, replace, announce } from '../../../core/dom.js';
 import { icon } from '../../../core/icons.js';
-import { flip, countTo, haptic, reduced } from '../../../core/motion.js';
+import { countTo, haptic, reduced } from '../../../core/motion.js';
 import * as FS from '../../../domain/fsrs.js';
 import * as P from './parse.js';
 import * as St from './store.js';
 import { lexicon } from './lexicon.js';
-import { classify, cardId } from './suggest.js';
+import { classify, cardId, capSuggest } from './suggest.js';
+import { loadKnowledge } from '../../../data/knowledge.js';
 import { lemmaOf, glossOf, headOf } from './lemma.js';
 import { getMeanings } from './meanings.js';
 import { say, hasVoice } from './voice.js';
@@ -28,10 +29,13 @@ export async function mountMark(el, ctx, script0, sectionId) {
   const section = script.sections[secIndex];
   if (!sectionId || sectionId !== section.id) { ctx.go(`/practice/scripts/${script.id}/mark/${section.id}`, { replace: true }); return restore; }
   replace(el, h('div', { class: 'practice stack sc-mark' }, h('p', { class: 'caption' }, t('practice.loading'))));
-  const L = await lexicon(ctx);
+  const [L, K] = await Promise.all([lexicon(ctx), loadKnowledge(ctx).catch(() => null)]);
   const c = ctx.clock.ctx();
   const settings = ctx.settings();
   const cards = St.cardOf(store);
+  const b1 = store.cards('b1') || {};
+  const has = (/** @type {string} */ id) => !!b1[id]?.reps;   // an exam word's BW: card keeps its id
+  const know = K ? (/** @type {string} */ id) => K.get(id).state : null;
   const card = (/** @type {string} */ id) => { const x = cards(id); return x && x.rec && x.rec.reps ? { r: FS.Ron(x.rec, c.today), lapses: x.rec.lapses || 0 } : null; };
   const save = () => { St.put(store, script); };
   const markedLemmas = () => new Set((script.marks || []).map((/** @type {any} */ m) => String(m.lemma).toLowerCase()));
@@ -43,14 +47,16 @@ export async function mountMark(el, ctx, script0, sectionId) {
     words.clear();
     const marked = markedLemmas();
     const ctxS = { idx: L.idx, lexicon: L.lexicon, level: settings.level || 'B1', names: new Set(script.names || []), unmarked: new Set(script.unmarked || []),
-      forced: new Set(script.forced || []), card, wordmap: L.wordmap };
+      forced: new Set(script.forced || []), card, wordmap: L.wordmap, know, has };
     const sugSeen = new Set();
     /** @type {any[]} */ const paras = [];
     let para = /** @type {any[]} */ ([]);
+    const toksOf = section.sentences.map((/** @type {any} */ sent) => P.tokenize(sent.de));
+    const clsOf = capSuggest(toksOf.map((/** @type {any} */ toks) => classify(toks, ctxS)));
     section.sentences.forEach((/** @type {any} */ sent, /** @type {number} */ si) => {
       if (sent.p && para.length) { paras.push(para); para = []; }
-      const toks = P.tokenize(sent.de);
-      const cls = classify(toks, ctxS);
+      const toks = toksOf[si];
+      const cls = clsOf[si];
       const kids = toks.map((tok, i) => {
         const x = cls[i];
         const space = tok.sp ? ' ' : '';
@@ -64,7 +70,7 @@ export async function mountMark(el, ctx, script0, sectionId) {
         const isMarked = marked.has(key);
         const sug = !isMarked && x.suggest && !sugSeen.has(key);
         if (sug) sugSeen.add(key);
-        const b = h('button', { type: 'button', class: ['sc-w', isMarked && 'is-marked', sug && 'is-sug'], dataset: { lemma: key },
+        const b = h('button', { type: 'button', tabindex: '-1', class: ['sc-w', isMarked && 'is-marked', sug && 'is-sug'], dataset: { lemma: key },
           'aria-pressed': String(isMarked), onclick: () => onWord(b) }, tok.t);
         words.set(b, { sent, tok, cls: x });
         return [space, b];
@@ -73,21 +79,55 @@ export async function mountMark(el, ctx, script0, sectionId) {
     });
     if (para.length) paras.push(para);
     replace(textEl, paras.map(p => h('p', { class: 'sc-para' }, p)));
+    // one tab stop for the whole text (roving tabindex): arrows move between words, Tab leaves (audit P2-13)
+    const all = [...words.keys()];
+    const at = all.find(b => b.dataset.lemma === roving) || all[0];
+    if (at) at.tabIndex = 0;
     drawActions();
   }
+  let roving = '';
+  textEl.addEventListener('keydown', e => {
+    const all = [...words.keys()];
+    const i = all.indexOf(/** @type {HTMLElement} */ (e.target));
+    if (i < 0) return;
+    const to = e.key === 'ArrowRight' || e.key === 'ArrowDown' ? i + 1 : e.key === 'ArrowLeft' || e.key === 'ArrowUp' ? i - 1 : e.key === 'Home' ? 0 : e.key === 'End' ? all.length - 1 : -2;
+    if (to === -2) return;
+    e.preventDefault();
+    const b = all[Math.max(0, Math.min(all.length - 1, to))];
+    all[i].tabIndex = -1; b.tabIndex = 0; roving = String(b.dataset.lemma); b.focus();
+  });
+  textEl.addEventListener('focusin', e => {
+    const b = /** @type {HTMLElement} */ (e.target);
+    if (!words.has(b)) return;
+    for (const x of words.keys()) x.tabIndex = x === b ? 0 : -1;
+    roving = String(b.dataset.lemma);
+  });
 
   // ---------- tray ----------
   const countEl = h('b', { class: 'tnum sc-tray-n' }, '0');
   const peekList = h('span', { class: 'sc-tray-list' });
   const trayBtn = h('button', { type: 'button', class: 'sc-tray pressable', 'aria-haspopup': 'dialog', onclick: () => openTray() },
     icon('next', { size: 16 }), h('span', { class: 'sc-tray-text' }, countEl, ' ', h('span', { class: 'sc-tray-label' }, t('practice.script.mark.marked')), peekList));
-  function drawTray(/** @type {string | null} */ added = null) {
+  /**
+   * The tray line. pending: the newest lemma is drawn but invisible, so a flying word has a place to land; the count
+   * waits for it (land() below).
+   * @param {{pending?: boolean}} [o]
+   */
+  function drawTray({ pending = false } = {}) {
     const ms = script.marks || [];
     const n = new Set(ms.map((/** @type {any} */ m) => m.cardId)).size;
-    countTo(countEl, n, { duration: 600 });
+    if (!pending) countTo(countEl, n, { duration: 420 });
     const recent = [...ms].reverse().map((/** @type {any} */ m) => m.lemma).filter((/** @type {string} */ x, /** @type {number} */ i, /** @type {string[]} */ a) => a.indexOf(x) === i).slice(0, 3);
-    replace(peekList, recent.map((l, i) => h('span', { class: ['sc-tray-lemma', added && i === 0 && l === added && !reduced() && 'fx-rise'], lang: 'de' }, l)));
+    replace(peekList, recent.map((l, i) => h('span', { class: ['sc-tray-lemma', pending && i === 0 && 'is-pending'], lang: 'de' }, l)));
     trayBtn.setAttribute('aria-label', t('practice.script.mark.trayLabel', { n }));
+  }
+  /** The flying word arrived: the lemma fades in where it landed, the count lands. */
+  function landTray() {
+    const slot = peekList.querySelector('.sc-tray-lemma.is-pending');
+    slot?.classList.remove('is-pending');
+    const n = new Set((script.marks || []).map((/** @type {any} */ m) => m.cardId)).size;
+    countEl.textContent = String(n); countEl.dataset.value = String(n);
+    countEl.classList.remove('land'); void countEl.offsetWidth; countEl.classList.add('land');
   }
 
   // ---------- actions ----------
@@ -123,9 +163,10 @@ export async function mountMark(el, ctx, script0, sectionId) {
       const key = w.cls.lemma.toLowerCase();
       if (marked.has(key)) continue;
       marked.add(key);
-      const L1 = w.cls.entry ? { lemma: w.cls.lemma, entry: w.cls.entry } : lemmaOf(w.tok.t, L.idx, { start: w.tok.k === 0 });
+      const L1 = w.cls.entry ? { lemma: w.cls.lemma, entry: w.cls.entry, guess: w.cls.guess } : lemmaOf(w.tok.t, L.idx, { start: w.tok.k === 0 });
       add.push({ id: make(), kind: 'word', sentenceId: w.sent.id, start: w.tok.k, end: w.tok.k, surface: w.tok.t, lemma: L1.lemma, head: headOf(L1.entry, L1.lemma),
-        level: L1.entry?.level || null, gloss: glossOf(L1.entry), glossFrom: L1.entry && glossOf(L1.entry) ? 'list' : null, cardId: cardId(L1.lemma, L1.entry, L.wordmap) });
+        level: L1.entry?.level || null, gloss: glossOf(L1.entry), glossFrom: L1.entry && glossOf(L1.entry) ? 'list' : null, cardId: cardId(L1.lemma, L1.entry?.id ? L1.entry : null, L.wordmap, has),
+        guess: !!(w.cls.guess || L1.guess) });
     }
     if (!add.length) return;
     script = { ...script, marks: [...(script.marks || []), ...add], unmarked: (script.unmarked || []).filter((/** @type {string} */ x) => !add.some(a => a.lemma.toLowerCase() === x)) };
@@ -133,8 +174,12 @@ export async function mountMark(el, ctx, script0, sectionId) {
     // every occurrence of the lemma in this section shows as marked; the tapped ones lift into the tray
     const keys = new Set(add.map(a => a.lemma.toLowerCase()));
     for (const [b] of words) if (keys.has(String(b.dataset.lemma))) { b.classList.remove('is-sug'); b.classList.add('is-marked'); b.setAttribute('aria-pressed', 'true'); }
-    list.slice(0, 8).forEach((b, i) => setTimeout(() => lift(b), reduced() ? 0 : i * 28));
-    drawTray(add[add.length - 1].lemma);
+    // the tray updates when the word arrives (design P1-7): every copy flies to the newest lemma's place in the tray
+    if (reduced()) drawTray();
+    else {
+      drawTray({ pending: true });
+      Promise.all(list.slice(0, 8).map((b, i) => lift(b, i * 28))).then(landTray);
+    }
     drawActions();
     announce(add.length === 1 ? t('practice.script.mark.markedOne', { word: add[0].lemma }) : t('practice.script.mark.markedN', { n: add.length }));
   }
@@ -142,22 +187,34 @@ export async function mountMark(el, ctx, script0, sectionId) {
     const list = [...words.keys()].filter(b => b.classList.contains('is-sug'));
     if (list.length) { haptic(); mark(list); }
   }
-  /** A copy of the word rises 8 px and flies into the tray (flip, card duration, snappy spring), shrinking and fading. @param {HTMLElement} b */
-  function lift(b) {
-    if (reduced()) return;
-    const r = b.getBoundingClientRect(), to = countEl.getBoundingClientRect();
-    if (!r.width || !to.width) return;
-    const clone = h('span', { class: 'sc-lift', lang: 'de', 'aria-hidden': 'true', style: { left: `${r.left}px`, top: `${r.top}px`, width: `${r.width}px`, height: `${r.height}px` } }, b.textContent);
-    document.body.append(clone);
-    requestAnimationFrame(() => {
-      clone.classList.add('is-up');
-      setTimeout(() => {
-        flip([clone], () => {
-          clone.classList.remove('is-up'); clone.classList.add('is-gone');
-          clone.style.left = `${to.left + to.width / 2 - r.width / 2}px`; clone.style.top = `${to.top + to.height / 2 - r.height / 2}px`;
+  /**
+   * A copy of the word rises 8 px, then flies by translate to the newest lemma in the tray (420 ms, snappy spring),
+   * shrinking to the tray's type size, and crossfades into it. Resolves when it has arrived.
+   * @param {HTMLElement} b @param {number} delay
+   */
+  function lift(b, delay) {
+    return new Promise(resolve => {
+      const r = b.getBoundingClientRect();
+      const target = peekList.querySelector('.sc-tray-lemma.is-pending') || countEl;
+      const to = target.getBoundingClientRect();
+      if (!r.width || !to.width) { resolve(null); return; }
+      const clone = h('span', { class: 'sc-lift', lang: 'de', 'aria-hidden': 'true', style: { left: `${r.left}px`, top: `${r.top}px`, width: `${r.width}px`, height: `${r.height}px` } }, b.textContent);
+      document.body.append(clone);
+      const css = getComputedStyle(document.documentElement);
+      const ease = css.getPropertyValue('--spring-snappy').trim() || 'cubic-bezier(0.22, 1, 0.36, 1)';
+      const k = Math.min(1, to.height / r.height || 1);
+      const dx = to.left - r.left, dy = to.top + to.height / 2 - (r.top + r.height / 2);
+      const up = clone.animate([{ transform: 'none' }, { transform: 'translateY(-8px)' }], { duration: 110, delay, easing: 'ease-out', fill: 'forwards' });
+      up.finished.then(() => {
+        const fly = clone.animate([
+          { transform: 'translateY(-8px)', transformOrigin: 'left center' },
+          { transform: `translate(${dx}px, ${dy}px) scale(${k})`, transformOrigin: 'left center' },
+        ], { duration: 420, easing: ease, fill: 'forwards' });
+        fly.finished.then(() => {
+          clone.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 120, fill: 'forwards' }).finished.then(() => clone.remove());
+          resolve(null);
         });
-        setTimeout(() => clone.remove(), 460);
-      }, 110);
+      }).catch(() => { clone.remove(); resolve(null); });
     });
   }
 
@@ -178,11 +235,19 @@ export async function mountMark(el, ctx, script0, sectionId) {
         hasVoice() ? h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => say(m.lemma) }, icon('play', { size: 18 }), t('practice.script.word.play')) : null,
         h('button', { type: 'button', class: 'btn btn-quiet pressable', 'aria-expanded': 'false', onclick: (/** @type {Event} */ e) => { lemmaRow.hidden = !lemmaRow.hidden; /** @type {HTMLElement} */ (e.currentTarget).setAttribute('aria-expanded', String(!lemmaRow.hidden)); if (!lemmaRow.hidden) lemmaIn.focus(); } }, t('practice.script.change'))),
       lemmaRow,
+      m.guess ? h('div', { class: 'sc-guess' }, h('p', { class: 'caption' }, h('span', { class: 'sc-dot', 'aria-hidden': 'true' }), t('practice.script.word.guess')),
+        h('button', { type: 'button', class: 'btn pressable', onclick: (/** @type {Event} */ e) => { confirmLemma(m.cardId); /** @type {HTMLElement} */ (e.currentTarget).parentElement?.remove(); } }, t('practice.script.word.looksRight'))) : null,
       h('label', { class: 'field-label' }, t('practice.script.word.meaning'), meaning),
       h('p', { class: 'caption' }, m.level ? h('span', { class: 'sc-level' }, m.level) : null, m.level ? ' ' : null,
         t('practice.script.word.count', { n: Math.max(1, count) }), m.glossFrom === 'claude' ? ` · ${t('practice.script.word.fromClaude')}` : ''),
       h('div', { class: 'row-actions' }, h('button', { type: 'button', class: 'btn pressable sc-unmark', onclick: () => { unmark(key); sh.close(); } }, t('practice.script.word.unmark'))),
     ] });
+  }
+  /** The guessed dictionary form is right: the word can become a card. @param {string} id */
+  function confirmLemma(id) {
+    script = { ...script, marks: script.marks.map((/** @type {any} */ x) => (x.cardId === id ? { ...x, guess: false } : x)) };
+    save(); drawTray();
+    announce(t('practice.script.word.confirmed'));
   }
   /** @param {string} id card id @param {string | null} gloss @param {string} from */
   function setGloss(id, gloss, from) {
@@ -194,9 +259,9 @@ export async function mountMark(el, ctx, script0, sectionId) {
     if (!next || next === m.lemma) return;
     const entry = (L.idx.lemmas.get(next.toLowerCase()) || [])[0] || null;
     const hasReviews = !!cards(m.cardId)?.rec?.reps;
-    const id = hasReviews ? m.cardId : cardId(next, entry, L.wordmap);   // a card with reviews keeps its id
+    const id = hasReviews ? m.cardId : cardId(next, entry, L.wordmap, has);   // a card with reviews keeps its id
     script = { ...script, marks: script.marks.map((/** @type {any} */ x) => (x.cardId === m.cardId ? { ...x, lemma: next, head: headOf(entry, next), level: entry?.level || x.level,
-      gloss: x.gloss || glossOf(entry), glossFrom: x.gloss ? x.glossFrom : (glossOf(entry) ? 'list' : null), cardId: id } : x)) };
+      gloss: x.gloss || glossOf(entry), glossFrom: x.gloss ? x.glossFrom : (glossOf(entry) ? 'list' : null), cardId: id, guess: false } : x)) };
     save(); drawText(); drawTray();
   }
   /** @param {string} key */
@@ -207,9 +272,10 @@ export async function mountMark(el, ctx, script0, sectionId) {
   }
 
   // ---------- the tray sheet ----------
-  function openTray() {
+  /** @param {{onClose?: () => void, focusGet?: boolean}} [o] */
+  function openTray({ onClose, focusGet = false } = {}) {
     const body = h('div', { class: 'sc-traysheet' });
-    const sh = sheet({ title: t('practice.script.tray.title'), children: [body] });
+    const sh = sheet({ title: t('practice.script.tray.title'), children: [body], onClose });
     function draw() {
       const byCard = new Map();
       for (const m of script.marks || []) if (!byCard.has(m.cardId)) byCard.set(m.cardId, m);
@@ -231,8 +297,8 @@ export async function mountMark(el, ctx, script0, sectionId) {
                   const r = res.get(i + 1); if (!r) return;
                   const entry = (L.idx.lemmas.get(r.lemma.toLowerCase()) || [])[0] || null;
                   const keep = !!cards(m.cardId)?.rec?.reps;
-                  const id = keep ? m.cardId : cardId(r.lemma, entry, L.wordmap);
-                  script = { ...script, marks: script.marks.map((/** @type {any} */ x) => (x.cardId === m.cardId ? { ...x, lemma: r.lemma, head: r.art ? `${r.art} ${r.lemma}` : headOf(entry, r.lemma), gloss: r.en, glossFrom: 'claude', cardId: id } : x)) };
+                  const id = keep ? m.cardId : cardId(r.lemma, entry, L.wordmap, has);
+                  script = { ...script, marks: script.marks.map((/** @type {any} */ x) => (x.cardId === m.cardId ? { ...x, lemma: r.lemma, head: r.art ? `${r.art} ${r.lemma}` : headOf(entry, r.lemma), gloss: r.en, glossFrom: 'claude', cardId: id, guess: false } : x)) };
                 });
                 save(); drawTray(); drawText(); draw();
                 const left = (script.marks || []).filter((/** @type {any} */ m) => !m.gloss).length;
@@ -242,28 +308,35 @@ export async function mountMark(el, ctx, script0, sectionId) {
                 status.textContent = t(`practice.script.err.${/** @type {any} */ (err)?.code || 'other'}`);
               }
             } }, t('practice.script.tray.get')), status]
-            : h('p', { class: 'caption' }, t('practice.script.tray.noKey'))) : null,
+            : h('p', { class: 'caption' }, t('practice.script.tray.noKey', { n: missing.length }))) : null,
         h('ul', { class: 'list sc-traylist' }, list.map(m => {
           const inp = /** @type {HTMLInputElement} */ (h('input', { class: 'input', value: m.gloss || '', placeholder: t('practice.script.word.meaningPh'), 'aria-label': t('practice.script.tray.meaningOf', { word: m.lemma }) }));
           inp.addEventListener('change', () => { setGloss(m.cardId, inp.value.trim() || null, 'me'); });
-          return h('li', { class: 'sc-trayitem' }, h('div', { class: 'sc-trayitem-top' }, h('span', { class: 'sc-traylemma', lang: 'de' }, m.head || m.lemma),
+          return h('li', { class: 'sc-trayitem' }, h('div', { class: 'sc-trayitem-top' }, h('span', { class: 'sc-traylemma', lang: 'de' }, m.guess ? h('span', { class: 'sc-dot', title: t('practice.script.word.guess') }) : null, m.head || m.lemma,
+            m.guess ? h('span', { class: 'sr-only' }, ` (${t('practice.script.word.guess')})`) : null),
+            m.guess ? h('button', { type: 'button', class: 'btn btn-quiet pressable sc-confirm', onclick: () => { confirmLemma(m.cardId); draw(); } }, t('practice.script.word.looksRight')) : null,
             h('button', { type: 'button', class: 'btn btn-quiet pressable', 'aria-label': t('practice.script.tray.unmarkOf', { word: m.lemma }), onclick: () => { unmark(String(m.lemma).toLowerCase()); draw(); } }, icon('close', { size: 16 }))),
           m.glossFrom === 'list' ? h('p', { class: 'caption' }, m.gloss) : inp);
         })));
     }
     draw();
+    if (focusGet) /** @type {HTMLElement | null} */ (body.querySelector('.sc-missing .btn-primary'))?.focus();
     void sh;
   }
   /** @param {string} id */
   const sentenceOf = id => script.sections.flatMap((/** @type {any} */ s) => s.sentences).find((/** @type {any} */ s) => s.id === id)?.de || '';
 
+  let asked = false;
   function finish() {
     St.updateProgress(store, script.id, p => ({ ...p, sections: { ...p.sections, [section.id]: { ...(p.sections[section.id] || {}), marked: c.today } } }));
     const next = script.sections[secIndex + 1];
+    // the last section: words still without a meaning (or a guessed form) are offered once before the overview (UX P1-19)
+    const waiting = (script.marks || []).filter((/** @type {any} */ m) => !m.gloss || m.guess).length;
+    if (!next && waiting && !asked) { asked = true; openTray({ focusGet: true, onClose: () => ctx.go(`/practice/scripts/${script.id}`) }); return; }
     ctx.go(next ? `/practice/scripts/${script.id}/mark/${next.id}` : `/practice/scripts/${script.id}`);
   }
 
-  const view = h('div', { class: 'practice sc-mark' },
+  const view = h('div', { class: 'practice sc-mark', 'data-title': t('practice.script.title') },
     h('div', { class: 'sc-headrow' }, back(`#/practice/scripts/${script.id}`, script.title), h('span', { class: 'caption tnum' }, t('practice.script.sectionOf', { n: secIndex + 1, total: script.sections.length }))),
     h('h1', { class: 'sc-mark-title' }, section.title),
     h('p', { class: 'caption sc-mark-help' }, t('practice.script.mark.help')),

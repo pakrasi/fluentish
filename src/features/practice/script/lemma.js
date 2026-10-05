@@ -18,6 +18,8 @@
  * @property {Word | null} entry      the word-list entry when the lemma is listed
  * @property {'list' | 'form' | 'rule' | 'prefix' | 'compound' | 'guess'} how
  * @property {Word | null} [part]     for a compound: its listed last part
+ * @property {boolean} [guess]       a local guess he should confirm before a card is made (unknown word, an
+ *                                   adjective ending stripped, or a listed word that is also a verb form)
  */
 
 const PREFIXES = ['zusammen', 'zurück', 'weiter', 'wieder', 'durch', 'heraus', 'herein', 'herum', 'hinaus', 'vorbei', 'entgegen', 'fest', 'fort', 'nach',
@@ -78,25 +80,68 @@ function candidates(low) {
   return out;
 }
 
+/* Closed classes, checked before the word list and the ending rules (German review round 2): the possessives with
+   their endings ("seine" is never sein, to be), the forms of sein, haben and werden, and the common Konjunktiv II
+   forms, which the ending rules cannot reach (gäbe, wäre, hätte, könnte, würde …). */
+const POSS = /** @type {Record<string, [string, string]>} */ ({ mein: ['mein', 'my'], dein: ['dein', 'your (informal)'], sein: ['sein', 'his, its'], ihr: ['ihr', 'her, their; your (formal: Ihr)'],
+  unser: ['unser', 'our'], euer: ['euer', 'your (informal, plural)'], eur: ['euer', 'your (informal, plural)'] });
+const IRREG = /** @type {Record<string, string>} */ ({});
+for (const [verb, forms] of /** @type {[string, string][]} */ ([
+  ['sein', 'bin bist ist sind seid war warst waren wart gewesen wäre wärst wären wärt sei seist seien'],
+  ['haben', 'habe hast hat habt hatte hattest hatten hattet gehabt hätte hättest hätten hättet'],
+  ['werden', 'werde wirst wird werdet wurde wurdest wurden wurdet geworden worden würde würdest würden würdet'],
+  ['geben', 'gäbe gäbest gäben'], ['kommen', 'käme kämest kämen'], ['gehen', 'ginge gingen'], ['wissen', 'wüsste wüsstest wüssten'],
+  ['können', 'könnte könntest könnten könntet'], ['müssen', 'müsste müsstest müssten müsstet'], ['dürfen', 'dürfte dürftest dürften dürftet'],
+  ['sollen', 'sollte solltest sollten solltet'], ['wollen', 'wollte wolltest wollten wolltet'], ['tun', 'täte täten'], ['bleiben', 'bliebe blieben'],
+  ['lassen', 'ließe ließen'], ['halten', 'hielte hielten'], ['finden', 'fände fänden'], ['stehen', 'stünde stünden stände'], ['liegen', 'läge lägen'],
+  ['sehen', 'sähe sähen'], ['nehmen', 'nähme nähmen'], ['bringen', 'brächte brächten'], ['denken', 'dächte dächten'],
+])) for (const f of forms.split(' ')) IRREG[f] = verb;
+// a lower-case word after one of these is a verb when the word list also has it as a verb form ("ich weiß")
+const SUBJ = new Set(['ich', 'du', 'er', 'sie', 'es', 'man', 'wir', 'ihr', 'wer', 'jemand', 'niemand']);
+// an adjective ending on an adjective-looking stem that is not listed: strip it, as a guess ("winzige", "Erstaunliches")
+const ADJ = /^(.{3,}(?:ig|lich|isch|bar|sam|haft|los|voll|ell|al|iv|ent|ant|end))(e|en|er|es|em)$/;
+
 /**
  * The lemma of one token.
  * @param {string} surface the word as written
  * @param {Index} idx
- * @param {{start?: boolean}} [o] start: the token starts its sentence (its capital says nothing about nounhood)
+ * @param {{start?: boolean, prev?: string}} [o] start: the token starts its sentence (its capital says nothing about
+ *   nounhood); prev: the word before it, lower case
  * @returns {Lemma}
  */
-export function lemmaOf(surface, idx, { start = false } = {}) {
+export function lemmaOf(surface, idx, { start = false, prev = '' } = {}) {
   const word = String(surface).replace(/^[^\p{L}\d]+|[^\p{L}\d]+$/gu, '');
   const low = word.toLowerCase();
   const cap = /^\p{Lu}/u.test(word);
   const noun = cap && !start;
   const own = (/** @type {Word} */ e) => e.w.replace(/^(der|die|das)\s+/i, '').trim();
+  const verbOf = (/** @type {string} */ v) => (idx.lemmas.get(v) || []).find(x => x.pos === 'verb') || null;
+  // 0. closed classes
+  if (!noun || start) {
+    if (IRREG[low]) { const e0 = verbOf(IRREG[low]); return { lemma: e0 ? own(e0) : IRREG[low], entry: e0, how: 'form' }; }
+    const pm = /^(mein|dein|sein|ihr|unser|euer|eur)(e|en|em|er|es)?$/.exec(low);
+    const asVerbForm = pm && SUBJ.has(prev) && !!verbOf(low.replace(/e$/, 'en'));   // "ich meine": meinen
+    if (pm && !asVerbForm && !(pm[1] === 'sein' && !pm[2]) && !(pm[1] === 'ihr' && !pm[2])) {
+      const [lemma, en] = POSS[pm[1]];
+      const listed = (idx.lemmas.get(lemma) || []).find(x => x.pos === 'det') || null;
+      return { lemma, entry: listed || { id: '', w: lemma, pos: 'det', en: [en], level: 'A1' }, how: 'list' };
+    }
+  }
   // 1. a listed lemma, then a listed form
-  // a capital mid-sentence means a noun: a verb or adjective entry does not fit it ("zu den Bremsen")
-  const fits = (/** @type {Word | null} */ x) => !!x && (!noun || x.pos === 'noun');
+  // a capital mid-sentence means a noun: a verb or adjective entry does not fit it ("zu den Bremsen"); a lower-case
+  // word mid-sentence is never a noun ("würde" is not die Würde)
+  const fits = (/** @type {Word | null} */ x) => !!x && (noun ? x.pos === 'noun' : (x.pos !== 'noun' || start));
   let e = pick(idx.lemmas.get(low) || [], noun);
-  if (fits(e)) return { lemma: own(/** @type {Word} */ (e)), entry: e, how: 'list' };
-  e = pick(idx.forms.get(low) || [], noun);
+  if (fits(e)) {
+    // a listed lemma that is also a form of a listed verb ("weiß": white, or ich weiß): after a subject, the verb
+    const asVerb = !noun ? (idx.forms.get(low) || []).find(x => x.pos === 'verb' && x !== e) : null;
+    if (asVerb && /** @type {Word} */ (e).pos !== 'verb') {
+      if (SUBJ.has(prev)) return { lemma: own(asVerb), entry: asVerb, how: 'form' };
+      return { lemma: own(/** @type {Word} */ (e)), entry: e, how: 'list', guess: true };
+    }
+    return { lemma: own(/** @type {Word} */ (e)), entry: e, how: 'list' };
+  }
+  e = pick((idx.forms.get(low) || []).filter(x => fits(x)), noun);
   if (fits(e)) return { lemma: own(/** @type {Word} */ (e)), entry: e, how: 'form' };
   // 2. regular endings
   for (const c of candidates(low)) {
@@ -131,7 +176,10 @@ export function lemmaOf(surface, idx, { start = false } = {}) {
       }
     }
   }
-  return { lemma: noun ? word : low, entry: null, how: 'guess' };
+  // 5. an adjective ending on an adjective-looking stem (also a capitalised one after etwas, viel, nichts)
+  const am = ADJ.exec(low);
+  if (am && (!noun || /^(etwas|viel|nichts|wenig|alles)$/.test(prev) || /(lich|ig|isch)(es|e|en)$/.test(low))) return { lemma: am[1], entry: null, how: 'guess', guess: true };
+  return { lemma: noun ? word : low, entry: null, how: 'guess', guess: true };
 }
 
 /** "die Schnittstelle, -n" style head for a word sheet. @param {Word | null} e @param {string} lemma */

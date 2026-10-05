@@ -10,13 +10,15 @@ import * as P from './parse.js';
 import * as St from './store.js';
 import * as Lad from './ladder.js';
 import { fsCtx, runMinutes } from './plan.js';
-import { fullScreen, clockTime, gradeSheet } from './ui.js';
+import { fullScreen, clockTime } from './ui.js';
+import { gradeRow } from '../selfgrade.js';
 import { switchRow } from '../../../core/ui.js';
 import { addActivity } from '../data.js';
 import { WPM } from './config.js';
 
 /** @param {HTMLElement} el @param {import('../../contract.js').ViewCtx} ctx @param {any} script */
 export function mountRun(el, ctx, script) {
+  /** @type {((e: KeyboardEvent) => void) | null} */ let keyOff = null;
   const { t, store } = ctx;
   const restore = fullScreen();
   const c = ctx.clock.ctx();
@@ -106,6 +108,7 @@ export function mountRun(el, ctx, script) {
         return b;
       }));
     const stuck = new Set();
+    const rowG = gradeRow({ t, label: t('practice.script.run.how'), onGrade: g => grade(ms, g) });
     const chips = h('div', { class: 'chips sc-stuck', role: 'group', 'aria-labelledby': 'sc-stuck-h' }, script.sections.map((/** @type {any} */ s, /** @type {number} */ k) =>
       h('button', { type: 'button', class: 'chip pressable', 'aria-pressed': 'false', onclick: (/** @type {Event} */ e) => { const b = /** @type {HTMLElement} */ (e.currentTarget); if (stuck.has(k)) stuck.delete(k); else stuck.add(k); b.setAttribute('aria-pressed', String(stuck.has(k))); } }, `${k + 1} ${s.title}`)));
     replace(el, h('div', { class: 'sc-run stack' },
@@ -114,12 +117,15 @@ export function mountRun(el, ctx, script) {
       bars,
       h('p', { class: 'caption sc-runlegend' }, t('practice.script.run.legend')),
       h('h2', { id: 'sc-stuck-h' }, t('practice.script.run.stuck')), chips,
-      h('div', { class: 'sc-actions' }, h('button', { type: 'button', class: 'btn btn-primary btn-wide pressable', onclick: () => grade(ms) }, t('practice.script.run.grade')))));
+      h('h2', null, t('practice.script.run.how')), rowG.el));
+    rowG.set(['', '', '', '']);
+    rowG.show({ focus: false });
+    keyOff = (/** @type {KeyboardEvent} */ e) => { if (!e.metaKey && !e.ctrlKey && !e.altKey) rowG.key(e); };
+    document.addEventListener('keydown', keyOff);
     countTo(totalEl, Math.round(ms / 1000), { from: 0, duration: 800, format: n => clockTime(n * 1000) });
-    /** @param {number} total */
-    async function grade(total) {
-      const g = await gradeSheet({ t, title: t('practice.script.run.how') });
-      if (!g || !alive) return;
+    /** @param {number} total @param {1|2|3|4} g */
+    function grade(total, g) {
+      if (!alive) return;
       const cards = St.cardOf(store), cx = fsCtx(script, c.today);
       const prog = St.progress(store, script.id);
       script.sections.forEach((/** @type {any} */ s, /** @type {number} */ k) => {
@@ -133,10 +139,10 @@ export function mountRun(el, ctx, script) {
       });
       St.updateProgress(store, script.id, x => ({ ...x, runs: [...(x.runs || []), { day: c.today, ms: Math.round(total), splits: splits.map(Math.round), grade: g, stuck: [...stuck] }].slice(-20) }));
       addActivity(store, c.today, { minutes: Math.min(60, total / 60000) });
-      ctx.go(`/practice/scripts/${script.id}`);
+      setTimeout(() => ctx.go(`/practice/scripts/${script.id}`), reduced() ? 0 : 420);
     }
   }
 
   start();
-  return () => { alive = false; clearInterval(tick); release(); restore(); };
+  return () => { alive = false; clearInterval(tick); release(); restore(); if (keyOff) document.removeEventListener('keydown', keyOff); };
 }

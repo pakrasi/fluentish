@@ -97,11 +97,21 @@ test('next step: mark, words, due cue, ladder, full run; the run first in the la
   let prog = { sections: {} };
   assert.equal(Pl.nextStep(s, prog, none, c).kind, 'mark');
   prog = { sections: Object.fromEntries(ids.map(id => [id, { marked: '2026-11-09' }])) };
+  // nothing listened to yet: Listen first, words after it (UX P1-14)
+  const l0 = Pl.nextStep(s, prog, none, c);
+  assert.equal(l0.kind, 'step'); assert.equal(l0.step, 'listen'); assert.equal(l0.section.id, ids[0]);
+  prog.sections[ids[0]] = { marked: '2026-11-09', step: 'parts', at: '2026-11-11', done: { listen: '2026-11-09' } };
   const w = Pl.nextStep(s, prog, none, c);
   assert.equal(w.kind, 'words'); assert.equal(w.n, 1);
+  // no new words when the clock allows none (the B1 eve), or when the B1 day has none left
+  assert.notEqual(Pl.nextStep(s, prog, none, { ...c, newItems: false }).kind, 'words');
+  assert.notEqual(Pl.nextStep(s, prog, none, { ...c, dayNewLeft: 0 }).kind, 'words');
+  // a guessed dictionary form waits for his check
+  assert.notEqual(Pl.nextStep({ ...s, marks: s.marks.map(m => ({ ...m, guess: true })) }, prog, none, c).kind, 'words');
   const seen = (/** @type {string} */ id) => (id === 'W:der_Rahmen' ? { deck: 'b1', rec: { S: 20, D: 5, reps: 2, last: '2026-11-09', due: '2026-11-30' } } : null);
   const st = Pl.nextStep(s, prog, seen, c);
-  assert.equal(st.kind, 'step'); assert.equal(st.step, 'listen'); assert.equal(st.section.id, ids[0]);
+  assert.equal(st.kind, 'step'); assert.equal(st.step, 'listen'); assert.equal(st.section.id, ids[1]);
+  prog.sections[ids[0]] = { marked: '2026-11-09' };
   // a step that waits until tomorrow is skipped for the next section's
   prog.sections[ids[0]] = { marked: 'x', step: 'letters', at: '2026-11-11', done: { listen: 'x' } };
   assert.equal(Pl.nextStep(s, prog, seen, c).section.id, ids[1]);
@@ -151,6 +161,8 @@ test('new words: 8 a day per script, none in the last 3 days, counted for the B1
   assert.equal(Pl.newAllowed(s, { newBy: { '2026-11-10': 9 } }, '2026-11-10'), 0);
   assert.equal(Pl.newAllowed({ ...s, deliverOn: '2026-11-12' }, {}, '2026-11-10'), 0);
   assert.equal(Pl.newAllowed({ ...s, deliverOn: '2026-11-13' }, {}, '2026-11-10'), 8);
+  assert.equal(Pl.newAllowed(s, {}, '2026-11-10', { newItems: false }), 0, 'the B1 eve and exam day: none');
+  assert.equal(Pl.newAllowed(s, {}, '2026-11-10', { dayLeft: 3 }), 3, 'never more than the B1 day has left');
   assert.equal(Pl.newShownToday({ a: { newBy: { '2026-11-10': 3 } }, b: { newBy: { '2026-11-10': 2, '2026-11-09': 8 } } }, '2026-11-10'), 5);
   assert.equal(Pl.scriptPhase('2026-11-10', null), 'none');
   assert.equal(Pl.scriptPhase('2026-11-10', '2026-11-18'), 'build');
@@ -197,4 +209,14 @@ test('applyEdit: sections keep ids, marks move with their word or are named when
   assert.ok(r.sections.find(x => x.id === a.id && x.changed === 1));
   assert.ok(!r.sections.find(x => x.id === b.id), 'untouched section: not in the summary');
   assert.equal(r.script.sections[3].sentences.length, 1);
+});
+
+test('Today: the 25 % share is one pool for all scripts together (audit P1-7)', () => {
+  const a = makeScript(), b = { ...makeScript(), id: 'bike02' };
+  const big = (/** @type {any} */ x) => ({ ...x, sections: x.sections.map((/** @type {any} */ y) => ({ ...y, sentences: Array(8).fill(y.sentences).flat() })) });
+  const prog = Object.fromEntries([a, b].map(x => [x.id, { sections: Object.fromEntries(x.sections.map((/** @type {any} */ y) => [y.id, { marked: 'x', done: { listen: 'x' }, step: 'parts' }])) }]));
+  const after = context({ today: '2026-10-20', exam: '2026-10-09' });
+  const rows = Pl.planRows({ scripts: [big(a), big(b)], progress: prog, cardOf: () => null, c: after, settings, t });
+  const total = rows.reduce((n, r) => n + r.minutes, 0);
+  assert.ok(total <= 15, `two scripts take ${total} of 60 min`);
 });

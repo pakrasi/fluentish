@@ -23,6 +23,12 @@ export function mountPaste(el, ctx) {
   const textField = field({ label: t('practice.script.paste.text'), input: text });
   const found = h('div', { class: 'sc-detect', 'aria-live': 'polite' });
   const date = /** @type {HTMLInputElement} */ (h('input', { class: 'input', type: 'date', name: 'deliver-on', min: c.today }));
+  // an empty date is a quiet button until he wants one, so an empty field never looks filled (design P1-24)
+  const dateField = field({ label: t('practice.script.paste.date'), input: date, hint: t('practice.script.paste.dateHint') });
+  dateField.hidden = true;
+  const addDate = h('button', { type: 'button', class: 'btn btn-quiet pressable sc-adddate', 'aria-expanded': 'false', onclick: () => {
+    dateField.hidden = false; addDate.hidden = true; date.focus(); try { /** @type {any} */ (date).showPicker?.(); } catch { /* not allowed */ } } }, t('practice.script.addDate'));
+  const dateBox = h('div', { class: 'sc-datebox' }, addDate, dateField);
   const go = /** @type {HTMLButtonElement} */ (h('button', { type: 'button', class: 'btn btn-primary btn-wide pressable', disabled: true, onclick: () => create() }, t('practice.script.continue')));
   const kindChips = h('div', null);
   const drawKind = () => replace(kindChips, chipChoice({ label: t('practice.script.paste.kind'), value: kind, name: 'kind',
@@ -82,7 +88,8 @@ export function mountPaste(el, ctx) {
         if (seen.has(key)) continue;
         seen.add(key);
         marks.push({ id: make(), kind: 'word', sentenceId: sent.id, start: tok.k, end: tok.k, surface: tok.t, lemma: lem.lemma,
-          head: headOf(lem.entry, lem.lemma), level: lem.entry?.level || null, gloss: glossOf(lem.entry), glossFrom: lem.entry ? 'list' : null, cardId: cardId(lem.lemma, lem.entry, L?.wordmap || {}) });
+          head: headOf(lem.entry, lem.lemma), level: lem.entry?.level || null, gloss: glossOf(lem.entry), glossFrom: lem.entry ? 'list' : null,
+          cardId: cardId(lem.lemma, lem.entry?.id ? lem.entry : null, L?.wordmap || {}, id => !!store.cards('b1')?.[id]?.reps), guess: !!(/** @type {any} */ (lem).guess) });
       }
     }
     const status = St.canActivate(store) ? 'active' : 'paused';
@@ -103,7 +110,7 @@ export function mountPaste(el, ctx) {
     chipChoice({ label: t('practice.script.paste.register'), value: register, name: 'register',
       options: [['informal', 'ihr'], ['formal', 'Sie'], ['both', t('practice.script.register.bothShort')]], onChange: v => { register = /** @type {any} */ (v); } }),
     h('p', { class: 'field-hint' }, t('practice.script.paste.registerHint')),
-    field({ label: t('practice.script.paste.date'), input: date, hint: t('practice.script.paste.dateHint') }),
+    dateBox,
     h('p', { class: 'caption sc-private' }, t('practice.script.paste.private')),
     h('div', { class: 'sc-actions' }, go)));
 }

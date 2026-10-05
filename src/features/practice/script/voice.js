@@ -4,10 +4,15 @@
 
 const w = /** @type {any} */ (globalThis);
 
-/** @returns {any | null} */
+/**
+ * A German voice that runs on the device. A script is private (§8): a cloud voice ("Google Deutsch" on Chrome for
+ * Windows, ChromeOS and Android has localService false) would send its text to a server, so only local voices are used
+ * (audit P2-2). With none, Listen and Play are off and the note says how to add one.
+ * @returns {any | null}
+ */
 function voice() {
   if (!('speechSynthesis' in w)) return null;
-  const vs = w.speechSynthesis.getVoices();
+  const vs = w.speechSynthesis.getVoices().filter((/** @type {any} */ v) => v.localService !== false);
   return vs.find((/** @type {any} */ v) => v.lang.replace('_', '-') === 'de-DE') || vs.find((/** @type {any} */ v) => /^de/i.test(v.lang)) || null;
 }
 

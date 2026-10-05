@@ -1,15 +1,19 @@
 /* Script mode: what to do next in a script, and its row on Today (SCRIPT-UX §3.6, §6). Pure; tested in node.
 
-   Next step, in this order: (1) a section whose words are not marked yet → Mark words; (2) word cards due → Words;
-   (3) a section at Cue whose rehearsal is due → Cue; (4) the earliest section not at Cue whose step is offered today
-   → that step; (5) every section at Cue → Full run. In the last 3 days before delivery the full run comes first.
+   Next step, in this order: (1) a section whose words are not marked yet → Mark words; (2) before any section has
+   been listened to, Listen to the first one (a word is learnt best in the sentence, so words come after Listen);
+   (3) word cards due → Words; (4) a section at Cue whose rehearsal is due → Cue; (5) the earliest section not at Cue
+   whose step is offered today → that step; (6) every section at Cue → Full run. In the last 3 days before delivery the
+   full run comes first.
 
    Exam first: while a B1 exam date is ahead (phases week, lastNew, eve, day) a script adds no Today row, unless it
    is to be delivered on or before the exam. After the exam a script's row takes at most 25 % of the daily minutes
    (MINUTES_SHARE), more only when the delivery date needs it (remaining step minutes ÷ days left), up to 50 %.
+   The share is one pool for all scripts together, split between their rows in order (audit P1-7).
    Priority 45; 22 in the last 7 days; on the eve "Full run and Listen"; on the day a 2-minute warm-up (Listen to
-   the first section). New words: at most 8 a day per script, none in the last 3 days before delivery; they count as
-   new items shown today in the B1 budget (newShownToday), so the combined new load never grows. */
+   the first section). New words: at most 8 a day per script, none in the last 3 days before delivery, none when the
+   clock allows no new items (the B1 eve and exam day), and never more than the B1 day's new items left; they count as
+   new items shown today in the B1 budget (newShownToday), so the combined new load never grows (audit P1-6). */
 import * as D8 from '../../../domain/days.js';
 import * as RD from '../../../domain/b1ready.js';
 import * as FS from '../../../domain/fsrs.js';
@@ -37,7 +41,8 @@ export const fsCtx = (script, today) => ({ today, exam: script.deliverOn || null
 
 /** Card ids of the marked words, one per lemma. @param {any} script @returns {string[]} */
 export function wordIds(script) {
-  return [...new Set((script.marks || []).filter((/** @type {any} */ m) => m && m.cardId && m.gloss).map((/** @type {any} */ m) => m.cardId))];
+  // a word waits for its meaning, and a guessed dictionary form waits for his check, before it becomes a card
+  return [...new Set((script.marks || []).filter((/** @type {any} */ m) => m && m.cardId && m.gloss && !m.guess).map((/** @type {any} */ m) => m.cardId))];
 }
 
 /**
@@ -60,11 +65,14 @@ export function words(script, cardOf, c) {
 /**
  * How many new words this script may introduce today.
  * @param {any} script @param {any} prog kv 'scripts.progress'[id] @param {string} today
+ * @param {{newItems?: boolean, dayLeft?: number}} [o] newItems: the clock allows new items today (false on the B1
+ *   exam's eve and day); dayLeft: the B1 day's new items left (todayBudget().newLeft), which script words share
  */
-export function newAllowed(script, prog, today) {
+export function newAllowed(script, prog, today, { newItems = true, dayLeft = Infinity } = {}) {
+  if (!newItems) return 0;
   if (script.deliverOn) { const left = D8.diff(today, script.deliverOn); if (left >= 0 && left < NO_NEW_DAYS) return 0; }
   const shown = prog?.newBy?.[today] || 0;
-  return Math.max(0, NEW_WORDS_PER_DAY - shown);
+  return Math.max(0, Math.min(NEW_WORDS_PER_DAY - shown, dayLeft));
 }
 
 /** New script words introduced today across all scripts (for the B1 day budget). @param {Record<string, any>} progressAll @param {string} today */
@@ -103,8 +111,10 @@ export function nextStep(script, prog, cardOf, c) {
   if ((ph === 'polish' || ph === 'eve') && script.deliverOn && D8.diff(today, script.deliverOn) <= 3 && allCue && !ranToday) return run;
   const unmarked = secs.find((/** @type {any} */ s) => !P(s).marked);
   if (unmarked) return { kind: 'mark', section: unmarked, minutes: 2 };
+  const first = secs[0];
+  if (first && !secs.some((/** @type {any} */ s) => P(s).done.listen) && P(first).step === 'listen') return { kind: 'step', section: first, step: 'listen', minutes: stepMinutes(first, 'listen') };
   const w = words(script, cardOf, c);
-  const fresh = Math.min(w.fresh.length, newAllowed(script, prog, today));
+  const fresh = Math.min(w.fresh.length, newAllowed(script, prog, today, { newItems: c.newItems !== false, dayLeft: c.dayNewLeft ?? Infinity }));
   if (w.due.length + fresh > 0) return { kind: 'words', n: w.due.length + fresh, minutes: roundMinutes(w.due.length + fresh) };
   const cap = fsCtx(script, today);
   const cueDue = secs.find((/** @type {any} */ s) => { const p = P(s); const x = cardOf(srId(script.id, s.id)); return p.step === 'cue' && x?.rec?.reps && RD.isDue(x.rec, today, cap); });
@@ -144,6 +154,14 @@ export function minutesLeft(script, prog) {
 export function planRows({ scripts, progress, cardOf, c, settings, t }) {
   /** @type {import('../../../domain/today.js').PlanItem[]} */ const out = [];
   const daily = settings?.minutesPerDay || 60;
+  // one pool for all scripts: 25 % of the day, more (up to 50 %) only as far as the nearest deadlines need it
+  let need = 0;
+  for (const s of scripts) {
+    if (!s || s.deletedAt || s.status !== 'active' || !s.deliverOn) continue;
+    const left = Math.max(1, D8.diff(c.today, s.deliverOn));
+    if (D8.diff(c.today, s.deliverOn) >= 0) need += minutesLeft(s, progress?.[s.id]) / left;
+  }
+  let pool = Math.max(1, Math.round(daily * Math.min(MINUTES_SHARE_MAX, Math.max(MINUTES_SHARE, need / daily))));
   for (const s of scripts) {
     if (!s || s.deletedAt || s.status !== 'active') continue;
     const examAhead = c.exam && EXAM_AHEAD.has(c.phase);
@@ -162,9 +180,9 @@ export function planRows({ scripts, progress, cardOf, c, settings, t }) {
     let minutes = nx.minutes;
     if (ph === 'eve') minutes = runMinutes(s) + stepMinutes(s.sections[0], 'listen');
     const left = s.deliverOn ? Math.max(1, D8.diff(c.today, s.deliverOn)) : null;
-    const needed = left ? Math.ceil(minutesLeft(s, prog) / left) : 0;
-    const share = Math.min(MINUTES_SHARE_MAX, Math.max(MINUTES_SHARE, needed / daily));
-    minutes = Math.max(1, Math.min(minutes, Math.round(daily * share)));
+    if (pool <= 0) continue;
+    minutes = Math.max(1, Math.min(minutes, pool));
+    pool -= minutes;
     const near = left != null && left <= 7;
     const detail = ph === 'eve' ? t('practice.script.plan.eve') : detailOf(nx, t);
     out.push({ id: `script.${s.id}`, source: 'practice', kind: 'speak', title: s.title, detail, minutes, href: hrefOf(s, nx), priority: near ? 22 : 45,

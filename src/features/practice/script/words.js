@@ -15,6 +15,8 @@ import { words as wordState, fsCtx, newAllowed } from './plan.js';
 import { tokenize } from './parse.js';
 import { checkMark } from './ui.js';
 import { addActivity } from '../data.js';
+import { todayBudget } from '../plan.js';
+import { doneHero } from '../done-hero.js';
 
 const ROUND = 12;
 const keep = (/** @type {Event} */ e) => e.preventDefault();
@@ -46,7 +48,10 @@ export async function mountWords(el, ctx) {
   let ids;
   if (script) {
     const ws = wordState(script, cards, c);
-    ids = [...ws.due.sort((a, b) => String(cards(a)?.rec?.due).localeCompare(String(cards(b)?.rec?.due))), ...ws.fresh.slice(0, newAllowed(script, St.progress(store, script.id), c.today))].slice(0, ROUND);
+    // new script words share the B1 day's new items and stop when the clock allows none (audit P1-6)
+    let dayLeft = Infinity;
+    try { dayLeft = todayBudget({ store, c, settings: ctx.settings() }).newLeft; } catch { /* no budget: the per-script cap holds */ }
+    ids = [...ws.due.sort((a, b) => String(cards(a)?.rec?.due).localeCompare(String(cards(b)?.rec?.due))), ...ws.fresh.slice(0, newAllowed(script, St.progress(store, script.id), c.today, { newItems: c.newItems !== false, dayLeft }))].slice(0, ROUND);
   } else {
     ids = [...info.keys()].filter(id => { const r = cards(id)?.rec; return r && r.reps && RD.isDue(r, c.today, c); }).slice(0, ROUND);
   }
@@ -74,7 +79,7 @@ export async function mountWords(el, ctx) {
   const card = h('article', { class: 'card pr-card' }, h('div', { class: 'card-meta' }, meta), promptBox, answerEl, reveal);
   const secondary = h('button', { type: 'button', class: 'btn btn-quiet pressable', onpointerdown: keep, onclick: () => showMe() }, t('practice.showMe'));
   const primary = h('button', { type: 'button', class: 'btn btn-primary pressable pr-primary', onpointerdown: keep, onclick: () => onReturn() });
-  const box = h('div', { class: 'pr-round is-flow', role: 'region', 'aria-label': t('practice.script.words.title') },
+  const box = h('div', { class: 'pr-round is-flow', role: 'region', 'aria-label': t('practice.script.words.title'), 'data-title': t('practice.script.title') },
     h('div', { class: 'pr-top' }, segs, h('div', { class: 'pr-top-row' }, count, endBtn)), h('div', { class: 'pr-scroll' }, card), h('div', { class: 'card-actions pr-actions' }, secondary, primary));
   replace(el, h('h1', { class: 'sr-only' }, t('practice.script.words.title')), box);
 
@@ -119,8 +124,10 @@ export async function mountWords(el, ctx) {
     input.value = ''; input.placeholder = item.gap ? t('practice.ph.gap') : t('practice.ph.german');
     secondary.hidden = false;
     primary.textContent = t('practice.check');
-    states[i] = 'now'; segments(segs, states);
-    count.textContent = t('practice.count', { n: Math.min(i + 1, queue.length), total: queue.length });
+    // progress only moves forward: the segments are the words planned at the start; a word that comes back again is
+    // counted on the last segment's side as "again", never as a new segment (design P0-1)
+    if (i < firstTotal) { states[i] = 'now'; segments(segs, states); }
+    count.textContent = i < firstTotal ? t('practice.count', { n: i + 1, total: firstTotal }) : t('practice.script.words.againOf', { n: i - firstTotal + 1, total: queue.length - firstTotal });
     input.focus({ preventScroll: true });
   }
   function onReturn() {
@@ -164,8 +171,8 @@ export async function mountWords(el, ctx) {
     if (res.rec) St.saveReview(store, { id: cur.id, rec: res.rec, prev, deck, g: rating, ms, mode: 't', flags: revealed ? 'r' : '', ctx: sc, scriptId: script ? script.id : 'words' });
     if (script && (!prev || !prev.reps)) St.countNew(store, script.id, c.today);
     if (!(cur.id in firstOk)) { firstOk[cur.id] = ok; if (ok) right++; }
-    states[i] = ok ? 'done' : 'miss'; segments(segs, states);
-    if (res.reinsert && cur.again < 2) { queue.push({ id: cur.id, again: cur.again + 1 }); states.push(''); }
+    if (i < firstTotal) { states[i] = ok ? 'done' : 'miss'; segments(segs, states); }
+    if (res.reinsert && cur.again < 2) queue.push({ id: cur.id, again: cur.again + 1 });
     if (ok) haptic();
   }
   function next() {
@@ -175,12 +182,15 @@ export async function mountWords(el, ctx) {
   function finish() {
     cleanup();
     addActivity(store, c.today, { minutes: Math.min(30, (performance.now() - t0) / 60000), rounds: 0 });
-    replace(el, h('div', { class: 'practice pr-done stack' },
-      h('p', { class: 'label' }, t('practice.script.words.title')),
-      h('h1', null, h('span', { class: 'figure tnum' }, String(right)), ' ', h('span', { class: 'pr-done-of' }, t('practice.ofRight', { n: firstTotal }))),
-      h('p', { class: 'pr-next' }, t('practice.script.words.after')),
+    // the done hero; its data object is the round's words, each in the state it ended in
+    const list = h('ul', { class: 'sc-wdone', lang: 'de' }, Object.entries(firstOk).map(([id, ok], k) => h('li', { class: ['sc-wdone-w', ok ? 'is-ok' : 'is-miss'], style: { '--i': String(Math.min(k, 12)) } },
+      info.get(id)?.head || info.get(id)?.lemma || id, h('span', { class: 'sr-only' }, ok ? ` (${t('practice.script.words.gotIt')})` : ` (${t('practice.script.words.again')})`))));
+    const hero = doneHero({ label: t('practice.script.words.title'), figure: right, of: t('practice.ofRight', { n: firstTotal }), lines: [t('practice.script.words.after')], data: list });
+    replace(el, h('div', { class: 'practice pr-done stack', 'data-title': t('practice.script.title') }, hero.el,
       h('div', { class: 'pr-done-actions' }, h('a', { class: 'btn btn-primary pressable', href: backTo }, script ? t('practice.script.toOverview') : t('practice.script.toLibrary')))));
-    /** @type {HTMLElement | null} */ (el.querySelector('a'))?.focus();
+    const stopHero = hero.start();
+    requestAnimationFrame(() => list.classList.add('is-in'));
+    addEventListener('hashchange', stopHero, { once: true });
   }
   function end() { cleanup(); location.hash = backTo; }
   const onKey = (/** @type {KeyboardEvent} */ e) => {

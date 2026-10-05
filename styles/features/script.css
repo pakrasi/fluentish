@@ -221,13 +221,31 @@ body.sc-full #view { padding-top: env(safe-area-inset-top); }
 .sc-rh-actions .sc-done { flex: 1; min-height: 52px; font-size: 16px; }
 .sc-enbtn { min-height: 52px; }
 .sc-novoice { margin: 0; }
-.sc-stepdone { display: grid; gap: var(--s-3); justify-items: start; margin-top: var(--s-6); padding: var(--s-5); border-radius: var(--r-card); background: var(--surface); box-shadow: var(--shadow-card); }
+.sc-stepdone-wrap { display: grid; gap: var(--s-4); margin-top: var(--s-2); }
 .sc-stepdone .lead { margin: 0; color: var(--ink); }
-.sc-bigcheck { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--ink); color: var(--on-ink); }
-.sc-bigcheck .check { width: 26px; height: 26px; color: var(--on-ink); }
-.sc-stepdone.is-correct .check { opacity: 1; transform: none; transition: opacity 80ms linear, transform 420ms var(--spring-pop); }
-.sc-stepdone.is-correct .check path { stroke-dashoffset: 0; transition: stroke-dashoffset var(--dur-base) var(--ease-out) 60ms; }
-.sc-rh-segs { --n: 5; }
+.sc-stepdone .sc-field { max-width: 100%; }
+/* the section's row of the ready meter fills with the runway spring, cell after cell */
+.sc-cell.is-fill { transform-origin: left; animation: sc-fill var(--dur-fill) var(--spring-soft) both; animation-delay: calc(240ms + var(--i, 0) * 28ms); }
+@keyframes sc-fill { from { transform: scaleX(0); opacity: 0.2; } }
+/* the step pills: a check before each step done, drawn with the kit's check when it is just done */
+.sc-stepchip { gap: 4px; }
+.sc-stepchip .check { display: none; width: 14px; height: 14px; color: var(--ink-3); opacity: 1; transform: none; }
+.sc-stepchip.is-done .check { display: inline-block; }
+.sc-stepchip[aria-pressed="true"] .check { color: inherit; }
+.sc-stepchip .check path { stroke-dashoffset: 0; }
+.sc-stepchip.is-drawn .check { animation: land 420ms var(--spring-pop) both; }
+.sc-stepchip.is-drawn .check path { stroke-dasharray: 24; animation: sc-draw var(--dur-base) var(--ease-out) both 60ms; }
+@keyframes sc-draw { from { stroke-dashoffset: 24; } to { stroke-dashoffset: 0; } }
+.sc-how { margin: 0; color: var(--ink-2); }
+.sc-how[hidden] { display: none; }
+.sc-peeks { margin: 0; }
+.sc-peeks[hidden] { display: none; }
+/* register Both: the switch between the two forms of address, in Cue */
+.sc-variant { display: grid; gap: var(--s-2); margin-bottom: var(--s-4); }
+.sc-variant[hidden] { display: none; }
+.sc-variant .btn { justify-self: start; }
+.sc-variant-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.sc-variant-row .label { margin-right: 4px; color: var(--ink-2); }
 @media (min-width: 720px) { .sc-rtext { font-size: 24px; } }
 
 /* ---------- full run ---------- */
@@ -271,15 +289,44 @@ body.sc-full #view { padding-top: env(safe-area-inset-top); }
 @media (prefers-reduced-motion: reduce) {
   :root:not([data-motion="full"]) .sc-t, :root:not([data-motion="full"]) .sc-rw::after, :root:not([data-motion="full"]) .sc-r::after,
   :root:not([data-motion="full"]) .sc-w::after, :root:not([data-motion="full"]) .is-listen .sc-sent { transition: none; }
-  :root:not([data-motion="full"]) .sc-cell.is-land { animation: none; }
+  :root:not([data-motion="full"]) .sc-cell.is-land, :root:not([data-motion="full"]) .sc-cell.is-fill { animation: none; }
+  :root:not([data-motion="full"]) .sc-wdone.is-in .sc-wdone-w { transition-delay: 0ms; }
 }
 :root[data-motion="reduce"] .sc-t, :root[data-motion="reduce"] .sc-rw::after, :root[data-motion="reduce"] .sc-r::after,
 :root[data-motion="reduce"] .sc-w::after, :root[data-motion="reduce"] .is-listen .sc-sent { transition: none; }
-:root[data-motion="reduce"] .sc-cell.is-land { animation: none; }
+:root[data-motion="reduce"] .sc-cell.is-land, :root[data-motion="reduce"] .sc-cell.is-fill { animation: none; }
+:root[data-motion="reduce"] .sc-wdone.is-in .sc-wdone-w { transition-delay: 0ms; }
 .sc-headrow .pr-backlink { padding-top: 0; }
-.sc-rw.is-mark .sc-a .sc-t { color: var(--accent-ink); }
+/* a marked word: the accent underline of the mark screen in Listen and Parts; where its letters are hidden, its blank
+   is an accent rule; the letters themselves stay ink */
+.is-listen .sc-rw.is-mark .sc-t, .is-parts .sc-rw.is-mark .sc-t, .sc-rtext:not(.is-letters):not(.is-gaps):not(.is-hidden):not(.is-parts) .sc-rw.is-mark .sc-t { text-decoration: underline 2px var(--accent); text-underline-offset: 0.22em; text-decoration-skip-ink: none; }
+.is-parts .is-letters-only .sc-rw.is-mark .sc-t, .is-parts .is-gaps-only .sc-rw.is-mark:not(.is-first) .sc-t { text-decoration: none; }
+.is-letters .sc-rw.is-mark .sc-r::after, .is-parts .is-letters-only .sc-rw.is-mark .sc-r::after,
+.is-gaps .sc-rw.is-mark:not(.is-first)::after, .is-parts .is-gaps-only .sc-rw.is-mark:not(.is-first)::after { background: var(--accent); height: 2px; }
+.sc-rw:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+/* mark screen: the tray lemma a flying word lands on, the count that lands, a guessed dictionary form */
+.sc-tray-lemma.is-pending { opacity: 0; }
+.sc-tray-lemma { transition: opacity 120ms linear; }
+.sc-tray-n { display: inline-block; }
+.sc-dot { display: inline-block; width: 6px; height: 6px; margin: 0 6px 0.18em 0; border-radius: 50%; background: var(--accent); vertical-align: middle; }
+.sc-guess { display: flex; align-items: center; justify-content: space-between; gap: var(--s-2); flex-wrap: wrap; }
+.sc-guess .caption { margin: 0; }
+.sc-confirm { margin-left: auto; }
+/* the words round's done hero: the round's words in the state they ended in */
+.sc-wdone { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 0; padding: 0; list-style: none; font: 400 19px/1.35 var(--font-display); }
+.sc-wdone-w { opacity: 0; transform: translateY(calc(6px * var(--move))); }
+.sc-wdone-w.is-miss { color: var(--ink-3); }
+.sc-wdone-w.is-ok { color: var(--ink); text-decoration: underline 2px var(--accent); text-underline-offset: 0.22em; }
+.sc-wdone.is-in .sc-wdone-w { opacity: 1; transform: none; transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-card) var(--spring-snappy); transition-delay: calc(300ms + var(--i) * 45ms); }
+/* the overview: a date to add, the section kind as plain text */
+.sc-kindcap { color: var(--ink-3); }
 .sc-run.is-running .sc-run-actions { position: fixed; left: 0; right: 0; bottom: 0; z-index: var(--z-bar); margin: 0; padding: var(--s-3) max(var(--gutter), env(safe-area-inset-left)) calc(var(--s-4) + env(safe-area-inset-bottom)); background: linear-gradient(to bottom, transparent, var(--canvas) 30%); }
 .sc-run.is-running .sc-run-actions .btn { max-width: 640px; margin: 0 auto; display: flex; }
 .sc-run.is-running { padding-bottom: 120px; }
 :root:has(.sc-dock) .toast { bottom: calc(150px + env(safe-area-inset-bottom)); }
 @media (min-width: 900px) { :root:has(.sc-dock) .toast { bottom: calc(32px + env(safe-area-inset-bottom)); } }
+.sc-adddate { justify-self: start; padding-left: 0; padding-right: 0; color: var(--accent-ink); }
+.sc-datebox { display: grid; }
+.sc-dateline .sc-adddate { min-height: var(--tap); margin: -12px 0; font: inherit; }
+.sc-trayitem .sc-confirm { width: auto; padding: 0 10px; margin-right: 0; margin-left: auto; color: var(--accent-ink); }
+.sc-traylemma { flex: 1; min-width: 0; }
