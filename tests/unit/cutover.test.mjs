@@ -398,7 +398,10 @@ test('the preview outbox reaches the results repo with its own file names; the r
     ...seed.attempts.map(a => a.path),
     seed.voice.path.replace(/\.m4a$/, '.json'), seed.voice.path, seed.fb.path,
   ].sort();
-  assert.deepEqual([...gh.files.keys()].sort(), expected, 'exactly the files the preview would have sent');
+  const backupFiles = [...gh.files.keys()].filter(k => /^data\/(events|snapshots)\//.test(k));
+  assert.deepEqual([...gh.files.keys()].filter(k => !backupFiles.includes(k)).sort(), expected, 'exactly the results the preview would have sent');
+  // the progress backup goes in the same flush, in folders sync.py never reads (its half below runs over all of them)
+  assert.ok(backupFiles.some(k => k.startsWith(`data/events/${store.device.deviceId}/`)) && backupFiles.some(k => k.startsWith(`data/snapshots/${store.device.deviceId}/`)), backupFiles.join(', '));
   assert.equal(seed.attempts[0].path, pathFor('exam.attempt', { file: { day: 4, module: 'lesen' } }, at(5)), 'named by the time it was submitted');
   assert.equal(seed.voice.path, 'data/voice/day04/20261001T181000-sprechen-teil2.m4a');
   assert.equal(gh.json(seed.attempts[0].path).submitted_at, seed.attempts[0].submitted_at, 'the original time inside the file');

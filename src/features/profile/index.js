@@ -14,6 +14,7 @@ import { previewText } from '../../data/cutover.js';
 import { exportBundle, importFile } from '../../data/transfer.js';
 import { deleteProfile } from '../../data/session.js';
 import { results } from '../../data/sync/index.js';
+import { backupBlock } from './backup.js';
 import { newPerDayChosen } from '../../domain/budget.js';
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
@@ -270,7 +271,8 @@ export async function mount(el, ctx) {
         h('button', { type: 'button', class: 'btn pressable', onclick: () => fileIn.click() }, icon('upload', { size: 18 }), t('data.import')), fileIn,
         deleteBtn),
       h('p', { class: 'field-hint' }, t('data.hint')),
-      result, confirm);
+      result, confirm,
+      backupBlock(ctx, () => swapSection(data())));
     return sec;
   }
 

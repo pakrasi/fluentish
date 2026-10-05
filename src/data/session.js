@@ -216,11 +216,17 @@ async function dropProfileData(adapter, id) {
 /**
  * Delete this profile's data and start a fresh one (Profile > Data > Delete all). Legacy keys stay untouched, and the
  * migration marker is forgotten: the next start imports from them again, or goes to onboarding when there is nothing.
+ * The device gets a new id: the progress backup's folders are named by it and have one writer each, so a fresh start
+ * never writes over the deleted profile's backup (which a restore can still read).
  * @param {any} adapter @param {any} device @param {{id: string}} profile
  */
 export async function deleteProfile(adapter, device, profile) {
   await dropProfileData(adapter, profile.id);
   await adapter.putKV('device', 'secrets', undefined);
+  await adapter.putKV('device', 'backup', undefined);
+  await adapter.putKV('device', 'backup.journal', undefined);
+  device.previousDeviceIds = [...new Set([...(device.previousDeviceIds || []), device.deviceId])].slice(-8);
+  device.deviceId = newDeviceId();
   device.activeProfile = null;
   delete device.migratedAt;
   delete device.migratedKind;

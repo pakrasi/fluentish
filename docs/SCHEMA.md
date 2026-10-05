@@ -59,7 +59,7 @@ Every client-created record carries `id` (UUIDv7), `profileId`, `deviceId` and `
 | `exam-attempt@1` | IDB `attempts` | the B1 exam app's field names (`started_at`, `max_score`, `responses`, `writings`), which the Mac's `sync.py` imports, plus `examId` and `contentVersion` |
 | `mistake@1` | kv `mistakes`, profile, private | a mistake from a correction: `{id: 'F:<attempt>-<n>', v: 1, wrong, right, rule, source: {attemptId, test, module, label}, createdAt, deletedAt}`; written only through `src/data/mistakes.js`; Practice reviews each as card `F:…` in deck `b1` |
 | `event@1` | IDB `outbox` | append-only, the unit of sync (below) |
-| `fluentish-export@1` | file | Profile > Data > Export: kv collections except prefs, secrets and palace, cards, attempts, events |
+| `fluentish-export@1` | file | Profile > Data > Export: kv collections except prefs, secrets, palace and backup, cards, attempts, events |
 
 ### Events (`event@1`)
 
@@ -69,6 +69,15 @@ Every client-created record carries `id` (UUIDv7), `profileId`, `deviceId` and `
 `seq` is monotonic per device. `day` is the study day (04:00 cutoff) when the event happened. Types: `card.reviewed`, `card.marked_known`, `card.unmarked_known`, `exam.attempt`, `exam.voice`, `vocab.captured`, `vocab.reviewed`, `feedback.created`, `training.logged`, `settings.changed`, `legacy.imported`.
 
 `card.marked_known` and `card.unmarked_known` ("I know this", src/domain/known.js and src/data/known.js) carry `{deck, by: 'self' | 'igloo', items: [{itemId, base, post}], ctx: {exam, phase, tz}}`, one event per deck and action; `post` is the card after the change (null: deleted by an undo). A marked card has an added `known` field: `{by, on, prev}` until its check, `{by, on, checked, ok}` after. `card.reviewed` must carry `{deck, itemId, g, ms, flags, mode, ctx: {exam, phase, tz}, base: {u, reps}, post}` (review B4): the scheduler's load balancing and the exam-date cap depend on the moment of review, so a replay elsewhere takes `post` when `base` matches the current card and otherwise re-runs `schedule()` with `forecast = () => 0`. The schema enforces these fields. `path` is the GitHub file path for the results sync. Events from before the sync seam stored it when they were created; events recorded through `data/sync/index.js` store `null` and the GitHub target derives the same name from the type, payload and `at` (`github-b1exam.js pathOf`), so retries still write the same file (review S5). A stored path always wins.
+
+### Progress backup (private results repository, `data/sync/backup.js`)
+
+| Path | Format | Writer |
+|---|---|---|
+| `data/events/<deviceId>/<day>.ndjson` | one `event@1` per line without `synced` and `path`, by `seq`; the learning events (`card.reviewed`, `card.marked_known`, `card.unmarked_known`, `settings.changed`) of that study day, except reviews marked `local` and events of deck `script` | this device only; lines are only added (read with sha, merge by id, write with sha) |
+| `data/snapshots/<deviceId>/<day>.json.gz` (or `.json`) | `fluentish-snapshot@1`: `{schema, deviceId, profileId, at, day, seq, build, counts: {cards}, cards: {deck: {itemId: card-fsrs@1}}, kv: {settings, activity, mistakes, lookup.seen, known, b1.session, speak.sim, clusters, practice.write, exams.feedbackLocal, exams.seen, exams.learnerNotes, vocab.local, vocab.events}}`, every deck except `script` | this device only; rewritten in place during the study day |
+
+The device's backup state is the device-scope kv `backup` (`{on, at, error, eventsAt, snapshot: {day, at, hash, path, sha, profileId, cards}}`); it is never exported or uploaded.
 
 ### Item ids in deck `b1`
 

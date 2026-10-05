@@ -267,6 +267,14 @@ test('the real sync.py imports every file this adapter writes, once', { skip: !h
       'data/voice/day03/20261003T180408-sprechen-teil2.json', 'data/voice/day03/20261003T180408-sprechen-teil2.m4a',
     ], 'the identical file names');
     for (const [p, b64] of gh.files) { mkdirSync(path.dirname(path.join(tmp, p)), { recursive: true }); writeFileSync(path.join(tmp, p), Buffer.from(b64, 'base64')); }
+    // the progress backup's folders sit next to them (data/sync/backup.js); sync.py must neither import nor touch them
+    const backupFiles = {
+      'data/events/dev1/2026-10-03.ndjson': '{"id":"e1","type":"card.reviewed","payload":{"deck":"b1"}}\n{"torn',
+      'data/snapshots/dev1/2026-10-03.json.gz': '\x1f\x8b not really gzip',
+      'data/snapshots/dev2/2026-10-03.json': '{"schema":"fluentish-snapshot@1","cards":{}}',
+      'data/logs/dev1/2026-10-03.ndjson': '{"at":"x","where":"boot","message":"m"}\n',
+    };
+    for (const [p, text] of Object.entries(backupFiles)) { mkdirSync(path.dirname(path.join(tmp, p)), { recursive: true }); writeFileSync(path.join(tmp, p), text); }
 
     const env = { ...process.env, HOME: home };
     const run = () => execFileSync('python3', [path.join(tmp, 'scripts/sync.py'), '--no-push'], { env, encoding: 'utf8' });
@@ -296,6 +304,7 @@ test('the real sync.py imports every file this adapter writes, once', { skip: !h
     assert.equal(resultsJson.days['3'].attempts.lesen.file, ref(ea), 'results.json links the attempt to its file (the alias)');
     // idempotent: a second run imports nothing
     assert.match(run(), /imported 0,/);
+    for (const [p, text] of Object.entries(backupFiles)) assert.equal(readFileSync(path.join(tmp, p), 'utf8'), text, `sync.py left ${p} alone`);
   } finally {
     rmSync(tmp, { recursive: true, force: true });
   }

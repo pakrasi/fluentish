@@ -3,6 +3,7 @@
 // touched). All data in the tests is synthetic.
 import { mkdtempSync, mkdirSync, writeFileSync, copyFileSync, existsSync, readdirSync, rmSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -11,20 +12,50 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
 export const B1 = path.join(os.homedir(), 'pakrasi-lab/b1-exam');
 export const haveSyncPy = existsSync(path.join(B1, 'scripts/sync.py')) && existsSync(path.join(B1, 'server.py'));
 
-/** A mock GitHub: a Map path → base64 content; behaviour switches for failures. */
+/**
+ * A mock GitHub: a Map path → base64 content; behaviour switches for failures. Like the Contents API: a PUT without
+ * a sha on an existing file is a 422, with a stale sha a 409; a GET of a file gives its sha and base64 content (no
+ * content above `big` bytes: read it raw), a GET of a folder lists it. `beforePut(path)` may throw (a cut connection).
+ */
 export function mockGithubFor(REPO) {
   const files = new Map();
   const calls = [];
-  const gh = { files, calls, mode: 'ok', reads: {} };
+  const gh = { files, calls, mode: 'ok', reads: {}, big: 1 << 20, beforePut: null };
+  const shaOf = b64 => createHash('sha1').update(b64).digest('hex');
   gh.fetch = async (url, init = {}) => {
     const p = decodeURIComponent(new URL(url).pathname.replace(`/repos/${REPO}/contents/`, ''));
     calls.push({ method: init.method || 'GET', path: p, headers: init.headers });
     if (gh.mode === 'offline') throw new TypeError('Failed to fetch');
     if (gh.mode === 'auth') return new Response(JSON.stringify({ message: 'Bad credentials' }), { status: 401 });
     if ((init.method || 'GET') === 'PUT') {
-      if (files.has(p)) return new Response(JSON.stringify({ message: 'Invalid request.\n\n"sha" wasn\'t supplied.' }), { status: 422 });
-      files.set(p, JSON.parse(init.body).content);
-      return new Response('{}', { status: 201 });
+      gh.beforePut?.(p);
+      const body = JSON.parse(init.body);
+      if (files.has(p)) {
+        if (!body.sha) return new Response(JSON.stringify({ message: 'Invalid request.\n\n"sha" wasn\'t supplied.' }), { status: 422 });
+        if (body.sha !== shaOf(files.get(p))) return new Response(JSON.stringify({ message: `${p} does not match ${body.sha}` }), { status: 409 });
+      } else if (body.sha) return new Response(JSON.stringify({ message: 'Not Found' }), { status: 404 });
+      const existed = files.has(p);
+      files.set(p, body.content);
+      return new Response(JSON.stringify({ content: { path: p, sha: shaOf(body.content) } }), { status: existed ? 200 : 201 });
+    }
+    if (p !== 'data' && !(p in gh.reads)) {
+      if (files.has(p)) {
+        const b64 = files.get(p);
+        const raw = Buffer.from(b64, 'base64');
+        if (/raw/.test(init.headers?.Accept || '')) return new Response(raw, { status: 200 });
+        const big = raw.length > gh.big;
+        return new Response(JSON.stringify({ type: 'file', name: p.split('/').pop(), path: p, sha: shaOf(b64), size: raw.length,
+          encoding: big ? 'none' : 'base64', content: big ? '' : b64.replace(/(.{60})/g, '$1\n') }), { status: 200 });
+      }
+      const kids = new Map();
+      for (const [k, v] of files) {
+        if (!k.startsWith(p + '/')) continue;
+        const rest = k.slice(p.length + 1), name = rest.split('/')[0];
+        kids.set(name, rest.includes('/') ? { type: 'dir', name, path: `${p}/${name}`, sha: 'dir', size: 0 }
+          : { type: 'file', name, path: k, sha: shaOf(v), size: Buffer.from(v, 'base64').length });
+      }
+      if (kids.size) return new Response(JSON.stringify([...kids.values()]), { status: 200 });
+      return new Response('{"message":"Not Found"}', { status: 404 });
     }
     if (p === 'data') {
       const listing = Object.entries(gh.reads).map(([k, v]) => ({ type: 'file', name: k.replace('data/', ''), sha: `sha-${JSON.stringify(v).length}` }));

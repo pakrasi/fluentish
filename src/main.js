@@ -169,6 +169,7 @@ async function main() {
   };
   autoSync();
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') autoSync(); });
+  addEventListener('online', autoSync);
   bus.on('sync:request', () => { lastSync = performance.now(); sync(store, { force: true, emit: (type, data) => bus.emit(type, data) }).catch((/** @type {any} */ e) => log('sync', e)); });
 }
 

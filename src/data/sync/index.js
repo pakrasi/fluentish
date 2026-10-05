@@ -16,11 +16,13 @@
    and that stored path is what is used for them. */
 import { config } from '../../core/config.js';
 import * as GH from './github-b1exam.js';
+import * as B from './backup.js';
 
 /**
  * @typedef {{acked: string[], rejected: {id: string, error: string}[], error: {message: string, auth?: boolean, offline?: boolean} | null}} PushResult
  * @typedef {{cursor: any, docs: Record<string, any>, changed: string[]}} PullResult
- * @typedef {{push: (events: any[]) => Promise<PushResult>, pull: (cursor?: any) => Promise<PullResult>}} SyncTarget
+ * @typedef {{push: (events: any[]) => Promise<PushResult>, pull: (cursor?: any) => Promise<PullResult>,
+ *            files?: import('./backup.js').Files}} SyncTarget  files: the target's own files (progress backup)
  */
 
 /** Result types: what the results target files. Learning events (card.*, settings.changed) are backed up instead. */
@@ -68,8 +70,38 @@ export function results(store) {
  * Flush: send results, back up progress, read what the Mac wrote. At most once a minute unless forced; one tab at a
  * time; skips by itself when the device is not linked or the profile is a preview.
  * @param {any} store
- * @param {{force?: boolean, pull?: boolean, emit?: (type: string, data: any) => void, fetch?: typeof fetch, now?: () => number}} [o]
+ * @param {{force?: boolean, pull?: boolean, emit?: (type: string, data: any) => void, fetch?: typeof fetch, now?: () => number,
+ *          backupNow?: boolean}} [o]  backupNow: "Back up now" (events and a snapshot, whatever their cadence)
  */
-export function sync(store, { force = false, pull = true, emit, fetch: f, now } = {}) {
-  return GH.syncResults(store, { repo: config.resultsRepo, api: config.github.api, force, pull, emit, fetch: f, now });
+export function sync(store, { force = false, pull = true, emit, fetch: f, now, backupNow = false } = {}) {
+  return GH.syncResults(store, { repo: config.resultsRepo, api: config.github.api, force: force || backupNow, pull, emit, fetch: f, now, backupNow, build: config.build });
+}
+
+/**
+ * The GitHub target's own files, for the backup and the restore (data/restore.js). Not for features.
+ * @param {any} store @param {{fetch?: typeof fetch}} [o]
+ */
+export function backupFiles(store, { fetch: f } = {}) {
+  return GH.createGithubB1Exam({ token: () => (store.get('secrets', {}) || {}).githubToken || null, repo: config.resultsRepo, api: config.github.api, fetch: f }).files;
+}
+
+/**
+ * The progress backup over one store (data/sync/backup.js): what Profile › Data shows and switches.
+ * @param {any} store
+ */
+export function backup(store) {
+  return {
+    /** Whether this device links to the results repository (the backup goes there). */
+    linked: () => !!(store.get('secrets', {}) || {}).githubToken,
+    /** Uploads may start (an import notice has been seen); the backup waits like the results do. */
+    allowed: () => GH.uploadsAllowed(store) && store.profile?.kind !== 'shadow',
+    on: () => B.backupOn(store),
+    /** @param {boolean} v */
+    setOn: v => B.setState(store, { on: !!v }),
+    /** Learning events not yet backed up. */
+    waiting: () => B.waiting(store),
+    /** {at, error, snapshot: {day, at, cards}} of the last run on this device. */
+    state: () => B.state(store),
+    repo: config.resultsRepo,
+  };
 }

@@ -22,7 +22,7 @@ const MAX_BYTES = 5 * 1024 * 1024;
 
 /** Paths that only private data uses. */
 const PATH_RULES = [
-  { id: 'private-data-path', re: /(^|\/)data\/(attempts|vocab|vocab-reviews|voice|training|feedback[^/]*|logs|content)\//, why: 'b1-exam private data folder' },
+  { id: 'private-data-path', re: /(^|\/)data\/(attempts|vocab|vocab-reviews|voice|training|feedback[^/]*|logs|content|events|snapshots)\//, why: 'b1-exam private data folder (events, snapshots: the progress backup)' },
   { id: 'private-data-file', re: /(^|\/)(results|progress|feedback|vocab|learner)\.json$/, why: 'private results / vocab / learner file' },
   { id: 'backup-state', re: /igloo-state/, why: 'device backup of review state' },
   { id: 'seed-words', re: /seed_de\.json$/, why: "words one learner already knows" },

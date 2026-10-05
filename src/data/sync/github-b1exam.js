@@ -28,7 +28,12 @@
    after the cutover merged a preview's work, until its notice has been seen (ui.previewSeen).
    Reading what the Mac wrote is allowed before that.
 
+   The same flush backs up progress (data/sync/backup.js): the learning events as one NDJSON file per device per
+   study day under data/events/, and a daily snapshot of the cards under data/snapshots/. sync.py reads only the
+   folders above, so it never sees them.
+
    The network is injected (fetch), so node tests run the whole flow against a mock and against the real sync.py. */
+import { backupProgress } from './backup.js';
 
 /** The files sync.py (and the tutor) write that this app reads. */
 /** data/<name>.json read back. 'vocab-audio' is the private word-audio index; it goes to its own store key (below). */
@@ -135,17 +140,27 @@ export function filesFor(e, blob = null) {
 
 /* ---------- transport ---------- */
 
-/** Base64 of UTF-8 text or a Blob's bytes. @param {string | Blob} body */
+/** Base64 of UTF-8 text, bytes or a Blob's bytes. @param {string | Blob | Uint8Array} body */
 export async function toBase64(body) {
-  const bytes = typeof body === 'string' ? new TextEncoder().encode(body) : new Uint8Array(await body.arrayBuffer());
+  const bytes = typeof body === 'string' ? new TextEncoder().encode(body) : body instanceof Uint8Array ? body : new Uint8Array(await body.arrayBuffer());
   let bin = '';
   for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
   return btoa(bin);
 }
 
+/** Bytes of a base64 string (GitHub wraps it in newlines). @param {string} b64 */
+export function fromBase64(b64) {
+  const bin = atob(String(b64 || '').replace(/\s+/g, ''));
+  const out = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+  return out;
+}
+
 export class SyncError extends Error {
-  /** @param {string} message @param {{status?: number, auth?: boolean, offline?: boolean}} [o] */
-  constructor(message, { status = 0, auth = false, offline = false } = {}) { super(message); this.status = status; this.auth = auth; this.offline = offline; }
+  /** @param {string} message @param {{status?: number, auth?: boolean, offline?: boolean, conflict?: boolean}} [o] */
+  constructor(message, { status = 0, auth = false, offline = false, conflict = false } = {}) {
+    super(message); this.status = status; this.auth = auth; this.offline = offline; this.conflict = conflict;
+  }
 }
 
 /**
@@ -177,8 +192,72 @@ export function createGithubB1Exam({ token, repo, api = 'https://api.github.com'
     throw new SyncError(`GitHub ${r.status}: ${msg}`, { status: r.status });
   }
 
+  /** A GET that maps transport and auth failures to SyncError. @param {string} p @param {Record<string, string>} [extra] */
+  async function get(p, extra = {}) {
+    let r;
+    try { r = await f(url(p), { headers: { ...headers(), ...extra }, cache: 'no-store' }); } catch { throw new SyncError('No connection', { offline: true }); }
+    if (r.status === 401 || r.status === 403) throw new SyncError('The GitHub token is invalid or expired', { status: r.status, auth: true });
+    return r;
+  }
+
+  /* Files this device owns alone (the progress backup, data/sync/backup.js): read with their sha, written with it. */
+  const files = {
+    /**
+     * One file's bytes and blob sha, or null when it is not there. Files over 1 MB come back without content from
+     * the JSON endpoint and are read raw.
+     * @param {string} p @returns {Promise<{sha: string, bytes: Uint8Array} | null>}
+     */
+    async read(p) {
+      const r = await get(p);
+      if (r.status === 404) return null;
+      if (!r.ok) throw new SyncError(`GitHub ${r.status}: ${p} could not be read`, { status: r.status });
+      /** @type {any} */ let meta;
+      try { meta = await r.json(); } catch { throw new SyncError(`GitHub: ${p} could not be read`); }
+      if (!meta || Array.isArray(meta) || meta.type !== 'file') throw new SyncError(`GitHub: ${p} is not a file`);
+      if (meta.encoding === 'base64' && (meta.content || !meta.size)) return { sha: meta.sha, bytes: fromBase64(meta.content || '') };
+      const raw = await get(p, { Accept: 'application/vnd.github.raw+json' });
+      if (!raw.ok) throw new SyncError(`GitHub ${raw.status}: ${p} could not be read`, { status: raw.status });
+      return { sha: meta.sha, bytes: new Uint8Array(await raw.arrayBuffer()) };
+    },
+    /**
+     * Create or replace a file. sha: the blob it replaces (null to create). Returns the new blob sha. A stale or
+     * missing sha is a conflict (409, or 422 naming the sha): the caller reads the file again and retries.
+     * @param {string} p @param {string | Uint8Array} body @param {string} message @param {string | null} [sha]
+     * @returns {Promise<string | null>}
+     */
+    async write(p, body, message, sha = null) {
+      const h = headers();
+      let r;
+      try {
+        r = await f(url(p), { method: 'PUT', headers: { ...h, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message, content: await toBase64(body), ...(sha ? { sha } : {}) }) });
+      } catch { throw new SyncError('No connection', { offline: true }); }
+      /** @type {any} */ let out = null;
+      try { out = await r.json(); } catch { /* not json */ }
+      if (r.ok) return out?.content?.sha ?? null;
+      const msg = out?.message || r.statusText || '';
+      if (r.status === 401 || r.status === 403) throw new SyncError('The GitHub token is invalid or expired', { status: r.status, auth: true });
+      if (r.status === 409 || (r.status === 422 && /sha/i.test(msg))) throw new SyncError(`GitHub ${r.status}: ${p} changed`, { status: r.status, conflict: true });
+      throw new SyncError(`GitHub ${r.status}: ${msg}`, { status: r.status });
+    },
+    /**
+     * A folder's entries ([] when it is not there).
+     * @param {string} p @returns {Promise<{name: string, path: string, type: string, sha: string, size: number}[]>}
+     */
+    async list(p) {
+      const r = await get(p);
+      if (r.status === 404) return [];
+      if (!r.ok) throw new SyncError(`GitHub ${r.status}: ${p} could not be listed`, { status: r.status });
+      /** @type {any} */ let entries;
+      try { entries = await r.json(); } catch { entries = []; }
+      return (Array.isArray(entries) ? entries : []).filter(e => e && typeof e.name === 'string')
+        .map(e => ({ name: e.name, path: e.path || `${p}/${e.name}`, type: e.type, sha: e.sha, size: e.size || 0 }));
+    },
+  };
+
   return {
     put,
+    files,
     /**
      * Send events in order. Stops at the first auth or connection error (the rest would fail the same way).
      * @param {any[]} events @returns {Promise<{acked: string[], rejected: {id: string, error: string}[], error: SyncError | null}>}
@@ -213,12 +292,6 @@ export function createGithubB1Exam({ token, repo, api = 'https://api.github.com'
       const shas = { ...(cursor.shas || {}) };
       /** @type {Record<string, any>} */ const docs = {};
       /** @type {string[]} */ const changed = [];
-      const get = async (/** @type {string} */ p, /** @type {Record<string, string>} */ extra = {}) => {
-        let r;
-        try { r = await f(url(p), { headers: { ...headers(), ...extra }, cache: 'no-store' }); } catch { throw new SyncError('No connection', { offline: true }); }
-        if (r.status === 401 || r.status === 403) throw new SyncError('The GitHub token is invalid or expired', { status: r.status, auth: true });
-        return r;
-      };
       // the ETag only counts for the same list of files: a file added to PULLED is read on the next pull
       const names = PULLED.join(',');
       const etag = cursor.names === names ? cursor.etag : undefined;
@@ -330,13 +403,16 @@ let flushing = /** @type {Promise<any> | null} */ (null);
 let lastFlush = 0;
 
 /**
- * Send what is waiting and read what the Mac wrote. At most once a minute unless forced; one tab at a time.
+ * Send what is waiting, back up progress and read what the Mac wrote. At most once a minute unless forced; one tab
+ * at a time.
  * @param {any} store
  * @param {{ repo: string, api?: string, fetch?: typeof fetch, force?: boolean, pull?: boolean, now?: () => number,
- *           emit?: (type: string, data: any) => void }} o
- * @returns {Promise<{ok: number, fail: number, pending: number, error: string | null, skipped?: boolean}>}
+ *           emit?: (type: string, data: any) => void, backupNow?: boolean, build?: string | null,
+ *           extra?: (o: {files: any, secrets: any, now: () => number}) => Promise<void> }} o
+ *   backupNow: "Back up now" (the events and a snapshot whatever their cadence); extra: the daily error-log upload
+ * @returns {Promise<{ok: number, fail: number, pending: number, error: string | null, skipped?: boolean, backup?: any}>}
  */
-export function syncResults(store, { repo, api, fetch: f, force = false, pull = true, now = Date.now, emit }) {
+export function syncResults(store, { repo, api, fetch: f, force = false, pull = true, now = Date.now, emit, backupNow = false, build = null, extra }) {
   const token = () => (store.get('secrets', {}) || {}).githubToken || null;
   if (!token() || store.profile?.kind === 'shadow') return Promise.resolve({ ok: 0, fail: 0, pending: notSentCount(store), error: null, skipped: true });
   if (flushing) return flushing;
@@ -348,7 +424,7 @@ export function syncResults(store, { repo, api, fetch: f, force = false, pull = 
     getBlob: id => adapter.getBlob(id), deleteBlob: id => adapter.deleteBlob(id),
   });
   const run = async () => {
-    let ok = 0, fail = 0;
+    let ok = 0, fail = 0, halted = false;
     /** @type {string | null} */ let error = null;
     const allowed = uploadsAllowed(store);
     // 1. events in the outbox
@@ -363,17 +439,25 @@ export function syncResults(store, { repo, api, fetch: f, force = false, pull = 
       }
       ok += res.acked.length;
       fail += res.rejected.length;
-      if (res.error) error = res.error.message;
+      if (res.error) { error = res.error.message; halted = true; }
       else if (res.rejected.length) error = res.rejected[0].error;
     }
     // 2. unsent items from the old app, once the learner asked for it
     if (!error && allowed && legacyAllowed(store)) {
       for (const job of legacyJobs(store)) {
         const r = await target.push([job.event]);
-        if (r.acked.length) { job.done(); ok++; } else { fail++; error = r.rejected[0]?.error || 'not sent'; if (r.error) break; }
+        if (r.acked.length) { job.done(); ok++; } else { fail++; error = r.rejected[0]?.error || 'not sent'; if (r.error) { halted = true; break; } }
       }
     }
-    // 3. Fritz's feedback, results from every device, words
+    // 3. progress backup: learning events and today's snapshot, on the same consent; its own errors do not hold
+    //    back the read below unless the token or the connection failed
+    /** @type {any} */ let backup = null;
+    if (allowed && !halted) {
+      const b = await backupProgress(store, target.files, { now, force: backupNow, build, extra });
+      backup = { ok: b.ok, files: b.files, snapshot: b.snapshot, error: b.error ? String(b.error?.message || b.error) : null };
+      if (b.error?.auth || b.error?.offline) { halted = true; error = error || backup.error; }
+    }
+    // 4. Fritz's feedback, results from every device, words
     if (pull && !error) {
       try {
         const prev = store.get(REMOTE_KV, {}) || {};
@@ -390,8 +474,8 @@ export function syncResults(store, { repo, api, fetch: f, force = false, pull = 
     }
     const status = { at: new Date(now()).toISOString(), ok, fail, error, pending: notSentCount(store) };
     store.set(STATUS_KV, status);
-    emit?.('sync:status', status);
-    return { ok, fail, pending: status.pending, error };
+    emit?.('sync:status', { ...status, backup });
+    return { ok, fail, pending: status.pending, error, backup };
   };
   const locked = typeof navigator !== 'undefined' && /** @type {any} */ (navigator).locks?.request
     ? /** @type {Promise<any>} */ (/** @type {any} */ (navigator).locks.request('outbox-flush', run))

@@ -17,6 +17,7 @@
      settings  profile, synced   the goal and practice options (data/settings.js); the exam date lives here only
      prefs     device            theme, motion, locale
      secrets   device            anthropicKey, githubToken; never exported or synced
+     backup    device            the progress backup's state (data/sync/backup.js); never exported or uploaded
      meta      profile           migration record, import summary
      activity  profile           { [day]: { minutes, rounds } } for the runway and study days
      ui        profile           dismissed notices
@@ -24,7 +25,7 @@
      vocab.events                carried over from the legacy apps for the stage-B features */
 import { uuidv7, isoWithOffset } from './ids.js';
 
-export const DEVICE_SCOPE = new Set(['prefs', 'secrets', 'palace']);
+export const DEVICE_SCOPE = new Set(['prefs', 'secrets', 'palace', 'backup']);
 const DEBOUNCED = new Set(['settings', 'prefs', 'ui', 'activity']);
 const DEBOUNCE_MS = 250;
 
