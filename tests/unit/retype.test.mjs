@@ -5,8 +5,8 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { buildPool } from '../../src/features/practice/pool.js';
-import { gradeAnswer, retypeOk } from '../../src/features/practice/grade.js';
+import { buildPool } from '../../src/features/shared/pool.js';
+import { gradeAnswer, retypeOk } from '../../src/features/shared/grade.js';
 import * as Match from '../../src/domain/match.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');

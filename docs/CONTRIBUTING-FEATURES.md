@@ -81,7 +81,7 @@ export function todayModules(ctx) { return [/* ModuleBar */]; }      // optional
 | `priority` | bands: 10 warm-up · 20 review round · 25 mistakes from corrections · 30 mock module · 40 new-only rounds · 45 things to read · 50 speaking/writing practice · 90 setup |
 | `done` | finished today (shows a check; the sticky button moves to the next row) |
 | `introducesNew` | shows never-seen items (dropped from exam−1) |
-| `reviews` | due cards the row carries (any deck); Today counts them in the plan and left out, and says when they do not fit. Read new and due numbers from `features/allowance.js dayAllowance()`, never a cap of your own |
+| `reviews` | due cards the row carries (any deck); Today counts them in the plan and left out, and says when they do not fit. Read new and due numbers from `domain/allowance.js dayAllowance()`, never a cap of your own |
 | `optional` | never takes the place of a row left out before it (games, side-deck new cards) |
 | `noOverrun` | a mock that may not run over the day's minutes |
 | `mock` | a timed exam module (dropped on the eve and the day) |

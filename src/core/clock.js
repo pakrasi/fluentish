@@ -5,9 +5,9 @@
 
    The functions at the top are pure (now, exam date and cutoff are passed in) and tested in node. createClock()
    wraps them for the app: it reads the setting through a getter and memoises the context per day + date. */
-import { iso, parse, add, diff, isDay } from '../domain/days.js';
+import { iso, parse, add, diff, isDay, phase } from '../domain/days.js';
 
-export { iso, parse, add, diff, isDay };
+export { iso, parse, add, diff, isDay, phase };
 
 export const DEFAULT_CUTOFF = 4;
 
@@ -32,12 +32,6 @@ export function today(now = new Date(), cutoff = DEFAULT_CUTOFF) {
 /** UTC epoch day, the unit Igloo's SM-2 deck stores (doors.srs.v1 due/last). Never reinterpret those integers. */
 export const epochDay = (now = new Date()) => Math.floor(now.getTime() / 864e5);
 
-/** @param {string} t today @param {string|null|undefined} exam @returns {Phase} */
-export function phase(t, exam) {
-  if (!exam) return 'none';
-  const d = diff(t, exam);
-  return d >= 3 ? 'week' : d === 2 ? 'lastNew' : d === 1 ? 'eve' : d === 0 ? 'day' : 'after';
-}
 
 /**
  * Everything derived from today and the exam date.

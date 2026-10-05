@@ -17,7 +17,7 @@ import { openSession } from './data/session.js';
 import { normalizeSettings, defaultPrefs } from './data/settings.js';
 import { createContent } from './data/content.js';
 import { sync, restore } from './data/sync/index.js';
-import { TABS, routes } from './features/registry.js';
+import { TABS, routes, startFeatures } from './features/registry.js';
 import { createSw } from './services/sw.js';
 import { loadRecordSchemas, recordChecker } from './data/records.js';
 
@@ -151,7 +151,7 @@ async function main() {
       return null;
     },
     makeCtx: (route, params, query) => ({
-      store, clock, settings, content, bus, t, toast, params, query, app, refreshShell,
+      store, clock, settings, content, bus, t, toast, params, query, app, refreshShell, route: route.path,
       go: (/** @type {string} */ p, /** @type {any} */ o) => router.go(p, o),
     }),
     transition: update => swap(update, { kind: 'view', fallbackEl: /** @type {HTMLElement} */ ($('#view')) }),
@@ -174,11 +174,8 @@ async function main() {
   document.documentElement.classList.add('booted');
   sw.start();
 
-  // a Sprechen take cut off by a reload or a killed page is kept as a recording (features/exam/data.js)
-  if (store.get('exams.takeInProgress')) {
-    import('./features/exam/data.js').then(m => m.recoverTake({ store, bus }))
-      .then(info => { if (info) toast(t('exam.rec.recovered')); }).catch((/** @type {any} */ e) => log('take', e));
-  }
+  // what features do once the app has started (the exam keeps a Sprechen take a reload cut off)
+  startFeatures({ store, bus, t, toast, log });
 
   // ---------- results sync ----------
   // On start and whenever the page becomes visible again, at most once a minute. sync() skips by itself when

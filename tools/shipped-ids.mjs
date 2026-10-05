@@ -9,7 +9,7 @@
 //   node tools/shipped-ids.mjs --write    append the ids the content creates now that are not in the ledger yet
 //
 // The ledger only grows: --write never removes a line. What it covers: the B1 pool (BP/BL/BG/BT/BR/BS/K/G, as
-// features/practice/pool.js builds it), every word of the word list (W:<word id>, the id Look up, Explore, Word
+// features/shared/pool.js builds it), every word of the word list (W:<word id>, the id Look up, Explore, Word
 // clusters and the exam words use), every Word cluster card (CO/CF/CP and family heads), and the speaking situations
 // (SS:), and every Word building card (PX/PD/PV/PS/SX/PW). Ids made from a learner's own data (F:, BW: exam words, SR:/SW: script cards) are not content and are not
 // listed.
@@ -25,9 +25,9 @@ const imp = (/** @type {string} */ p) => import(pathToFileURL(path.join(ROOT, p)
 
 /** Every card id the current content creates. @returns {Promise<Set<string>>} */
 export async function currentIds() {
-  const { buildPool } = await imp('src/features/practice/pool.js');
+  const { buildPool } = await imp('src/features/shared/pool.js');
   const { index } = await imp('src/domain/clusters.js');
-  const { cardIds } = await imp('src/features/practice/clusters/items.js');
+  const { cardIds } = await imp('src/features/shared/cluster-items.js');
   const ids = new Set();
   const data = buildPool({ items: J('content/b1/items.json'), grammar: J('content/b1/grammar.json'), bank: J('content/b1/bank.json'), plan: J('content/b1/plan.json'),
     nouns: J('content/b1/nouns.json'), schreiben: J('content/b1/schreiben.json') });

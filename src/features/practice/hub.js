@@ -1,6 +1,6 @@
 /* Practice hub (#/practice, UX §4.2, round-2 IA): one list grouped by exam module.
      the queue card: reviews due today in every deck and new items left today (the one allowance,
-       features/allowance.js: the same numbers as Today), with Start round (the same rounds as Today's plan row:
+       domain/allowance.js: the same numbers as Today), with Start round (the same rounds as Today's plan row:
        features/day.js composes both)
      For the exam: Schreiben (with its recall bar), Sprechen (situations, Teil 2 talk, say it aloud), then missed
        items and mistakes from corrections when there are any
@@ -10,32 +10,25 @@
 import { h, replace } from '../../core/dom.js';
 import { section, linkRow, notice } from '../../core/ui.js';
 import { composeDay } from '../day.js';
+import { recallBar } from '../shared/recall-bar.js';
 import { icon } from '../../core/icons.js';
 import { fill, countTo } from '../../core/motion.js';
 import { label, add } from '../../core/clock.js';
 import * as RD from '../../domain/b1ready.js';
 import { ROUND_MIN } from '../../domain/budget.js';
-import * as C from './compose.js';
-import { todayBudget, roundAction, simToday } from './plan.js';
-import { DECK as SIM_DECK, KV as SIM_KV } from './sim.js';
-import { refreshSimStats } from './sim-data.js';
-import { resumable, savedRound } from './session.js';
-import { loadData, stateFor, session, refreshWords, secrets, wordsState } from './data.js';
-import { COLLECTION as WORDS } from './words.js';
-import { clusterToday } from './plan.js';
-import { hubRow as scriptsRow } from './script/hub.js';
+import * as C from '../shared/compose.js';
+import { todayBudget, roundAction, simToday } from '../../domain/allowance.js';
+import { DECK as SIM_DECK, KV as SIM_KV } from '../../domain/sim.js';
+import { refreshSimStats } from '../shared/sim-data.js';
+import { resumable, savedRound } from '../shared/session.js';
+import { loadData, stateFor, session, refreshWords, secrets, wordsState } from '../shared/data.js';
+import { COLLECTION as WORDS } from '../shared/words.js';
+import { clusterToday } from '../../domain/allowance.js';
+import { hubRow as scriptsRow } from '../shared/script-row.js';
 
 const AREAS = ['speaking', 'grammar', 'reading'];
 const pct = (/** @type {number} */ x) => new Intl.NumberFormat('en-GB', { style: 'percent', maximumFractionDigits: 0 }).format(x || 0);
 
-/** A recall bar: seen (quiet) under recall (ink). @param {number} recall @param {number} coverage @param {string} name */
-export function recallBar(recall, coverage, name) {
-  const r = Math.max(0, Math.min(1, recall || 0)), c = Math.max(r, Math.min(1, coverage || 0));
-  const el = h('span', { class: 'track pr-bar', role: 'img', 'aria-label': name },
-    h('span', { class: 'pr-seen', style: { '--p': String(c) } }), h('span', { class: 'fill' }));
-  requestAnimationFrame(() => fill(el, r));
-  return el;
-}
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
 export async function mountHub(el, ctx) {

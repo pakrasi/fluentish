@@ -1,4 +1,4 @@
-// The round size picker (domain/roundsize.js, features/practice/sizes.js and the runners): Recommended, a custom
+// The round size picker (domain/roundsize.js, features/shared/sizes.js and the runners): Recommended, a custom
 // number and "all"; new items beyond today's allowance are scheduled like any new item, and Today's plan reads the
 // real load afterwards. Public B1 content; every learner record is synthetic.
 import { test } from 'node:test';
@@ -9,14 +9,14 @@ import { fileURLToPath } from 'node:url';
 import { context, add } from '../../src/core/clock.js';
 import * as RS from '../../src/domain/roundsize.js';
 import { allowance } from '../../src/domain/budget.js';
-import { buildPool } from '../../src/features/practice/pool.js';
-import * as C from '../../src/features/practice/compose.js';
-import * as S from '../../src/features/practice/session.js';
-import { stateFor } from '../../src/features/practice/data.js';
-import { planItems, todayBudget } from '../../src/features/practice/plan.js';
-import { listOf, sizedHref } from '../../src/features/practice/sizes.js';
-import * as CI from '../../src/features/practice/clusters/items.js';
-import * as SM from '../../src/features/practice/sim.js';
+import { buildPool } from '../../src/features/shared/pool.js';
+import * as C from '../../src/features/shared/compose.js';
+import * as S from '../../src/features/shared/session.js';
+import { stateFor } from '../../src/features/shared/data.js';
+import { planItems, todayBudget } from './practice-rows.mjs';
+import { listOf, sizedHref } from '../../src/features/shared/sizes.js';
+import * as CI from '../../src/features/shared/cluster-items.js';
+import * as SM from '../../src/domain/sim.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const J = p => JSON.parse(readFileSync(path.join(ROOT, p), 'utf8'));

@@ -15,6 +15,8 @@
  * @property {string} [tab]           which tab is current while this route shows
  * @property {boolean} [chrome]       false hides the header and tab bar (rounds, the exam runner)
  * @property {string} [title]         i18n key for document.title
+ * @property {(query: URLSearchParams) => boolean} [when]  matches only when the query passes too (listed before the
+ *                                    route it narrows: '/practice/round' with kind=script:… goes to the scripts)
  */
 
 /** @param {string} hash @returns {{path: string, query: URLSearchParams}} */
@@ -44,11 +46,12 @@ function compile(pattern) {
 const cache = new WeakMap();
 
 /**
- * @param {Route[]} routes @param {string} path
+ * @param {Route[]} routes @param {string} path @param {URLSearchParams} [query]
  * @returns {{route: Route, params: Record<string, string>} | null}
  */
-export function matchRoute(routes, path) {
+export function matchRoute(routes, path, query = new URLSearchParams()) {
   for (const route of routes) {
+    if (route.when && !route.when(query)) continue;
     let c = cache.get(route);
     if (!c) { c = compile(route.path); cache.set(route, c); }
     const m = c.re.exec(path);
@@ -140,7 +143,7 @@ export function createRouter({ routes, view, makeCtx, guard, home, transition, o
     if (legacy) setHash(legacy);
     let { path, query } = parseHash(location.hash);
     if (path === '/') { setHash(`#${home}`); path = home; }
-    let hit = matchRoute(routes, path);
+    let hit = matchRoute(routes, path, query);
     const redirect = guard ? guard(path, hit ? hit.route : null) : null;
     if (redirect && redirect !== path) { setHash(`#${redirect}`); return render(); }
     if (!hit) { setHash(`#${home}`); return render(); }

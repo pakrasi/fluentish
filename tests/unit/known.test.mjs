@@ -10,8 +10,8 @@ import * as RD from '../../src/domain/b1ready.js';
 import { knowledge, resolver } from '../../src/domain/knowledge.js';
 import { context } from '../../src/core/clock.js';
 import { allowance } from '../../src/domain/budget.js';
-import * as C from '../../src/features/practice/compose.js';
-import { compose as composeCluster } from '../../src/features/practice/clusters/items.js';
+import * as C from '../../src/features/shared/compose.js';
+import { compose as composeCluster } from '../../src/features/shared/cluster-items.js';
 import * as KD from '../../src/data/known.js';
 
 const today = '2026-10-05';
@@ -223,10 +223,10 @@ test('Igloo placement results flow through the same path, once, never over a car
 // ---------- Quick sort, the level spot check and the cluster done screen's words (pure helpers) ----------
 import { readFileSync } from 'node:fs';
 import { index } from '../../src/domain/clusters.js';
-import { itemFor, roundWords, partOf } from '../../src/features/practice/clusters/items.js';
-import { gradeAnswer } from '../../src/features/practice/grade.js';
-import { buildLexicon } from '../../src/features/practice/pool.js';
-import { sortList, sortSource, levelWords, sample, passes, SORT_MAX } from '../../src/features/practice/known/pick.js';
+import { itemFor, roundWords, partOf } from '../../src/features/shared/cluster-items.js';
+import { gradeAnswer } from '../../src/features/shared/grade.js';
+import { buildLexicon } from '../../src/features/shared/pool.js';
+import { sortList, sortSource, levelWords, sample, passes, SORT_MAX } from '../../src/features/practice-clusters/pick.js';
 
 const read = p => JSON.parse(readFileSync(new URL(`../../${p}`, import.meta.url), 'utf8'));
 const CL = read('content/clusters/de.json');

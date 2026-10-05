@@ -1,4 +1,4 @@
-// Exam words: Practice (features/practice/words.js trimWords) and Look up (features/lookup/words.js cardId) must name
+// Exam words: Practice (features/shared/words.js trimWords) and Look up (features/lookup/words.js cardId) must name
 // the same review card for the same lemma, so a word practised in a round shows its schedule on the word sheet.
 // Both go through wordId() in domain/itemids.js. Synthetic vocab rows; the real public word map.
 import { test } from 'node:test';
@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { trimWords } from '../../src/features/practice/words.js';
+import { trimWords } from '../../src/features/shared/words.js';
 import { mergeVocab, lemmaGroups, cardId } from '../../src/features/lookup/words.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');

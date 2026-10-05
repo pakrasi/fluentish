@@ -10,9 +10,9 @@ import * as M from '../../src/domain/match.js';
 import FS from '../../src/domain/fsrs.js';
 import Sp from '../../src/domain/speech.js';
 import { context } from '../../src/core/clock.js';
-import { buildPool, buildLexicon, mistakeItem } from '../../src/features/practice/pool.js';
-import { gradeAnswer } from '../../src/features/practice/grade.js';
-import * as S from '../../src/features/practice/session.js';
+import { buildPool, buildLexicon, mistakeItem } from '../../src/features/shared/pool.js';
+import { gradeAnswer } from '../../src/features/shared/grade.js';
+import * as S from '../../src/features/shared/session.js';
 import { checkPrompt } from '../../src/services/claude.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');

@@ -1,6 +1,6 @@
 /* Today › Where you stand (docs/ARCHITECTURE.md › Where you stand): per exam module the latest mock score against its
    pass line, the module's practice items known and one next action; then words and phrases known, the same count as
-   the map's (features/explore/data.js totals over the same knowledge score). Without an exam ahead the module actions
+   the map's (data/atlas.js totals over the same knowledge score). Without an exam ahead the module actions
    go and "This week" says what was learnt and what lapsed.
 
    The section draws at once from the composed plan (the module scores come with it); the counts that need content
@@ -42,7 +42,7 @@ export function nextActions(plan, ms, t) {
  */
 export async function standingCounts(ctx, modules) {
   try {
-    const [{ loadData }, ex] = await Promise.all([import('../practice/data.js'), import('../explore/data.js')]);
+    const [{ loadData }, ex] = await Promise.all([import('../shared/data.js'), import('../../data/atlas.js')]);
     const [data, k, A] = await Promise.all([loadData(ctx), loadKnowledge(ctx), ex.loadAtlas(ctx).catch(() => null)]);
     const get = (/** @type {string} */ id) => k.get(k.maps.resolve(id, 'b1') || id);
     const ms = modulesStanding({ modules, pool: data.pool, get });

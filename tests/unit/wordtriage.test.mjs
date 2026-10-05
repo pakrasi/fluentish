@@ -3,7 +3,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { wordTriage, wordLevel, frequent, EXAM_WEEK } from '../../src/domain/wordtriage.js';
-import { trimWords, inQueue } from '../../src/features/practice/words.js';
+import { trimWords, inQueue } from '../../src/features/shared/words.js';
 import { mergeVocab, lemmaGroups, triage } from '../../src/features/lookup/words.js';
 
 test('the rule', () => {

@@ -1,10 +1,10 @@
-// Practice's Today provider (src/features/practice/plan.js) over a synthetic store, and the composer rules it feeds.
+// Practice's Today provider (the practice features' plan.js, tests/unit/practice-rows.mjs) over a synthetic store, and the composer rules it feeds.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { context } from '../../src/core/clock.js';
 import { composeToday } from '../../src/domain/today.js';
-import { planItems, dueTomorrow } from '../../src/features/practice/plan.js';
-import { dots } from '../../src/features/practice/session.js';
+import { planItems, dueTomorrow } from './practice-rows.mjs';
+import { dots } from '../../src/features/shared/session.js';
 
 const t = (k, v = {}) => `${k}${Object.keys(v).length ? ' ' + JSON.stringify(v) : ''}`;
 const EXAM = '2026-10-09';

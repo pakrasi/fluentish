@@ -10,9 +10,9 @@ import { createMemoryAdapter } from '../../src/data/adapters/memory.js';
 import { syncResults, resetThrottle, createGithubB1Exam } from '../../src/data/sync/github-b1exam.js';
 import * as B from '../../src/data/sync/backup.js';
 import { openSession, deleteProfile } from '../../src/data/session.js';
-import * as St from '../../src/features/practice/script/store.js';
-import * as P from '../../src/features/practice/script/parse.js';
-import * as Lad from '../../src/features/practice/script/ladder.js';
+import * as St from '../../src/data/scripts.js';
+import * as P from '../../src/domain/script/parse.js';
+import * as Lad from '../../src/domain/script/ladder.js';
 import { mockGithubFor } from './sync-harness.mjs';
 
 const PID = '0192a3b4-c5d6-7e8f-9a0b-0000000000b1';

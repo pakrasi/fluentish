@@ -2,7 +2,7 @@
 // app parses the reply and checks it against the German review's ihr / Sie table before keeping it.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { formOf, variantPrompt, parseVariant, checkVariant } from '../../src/features/practice/script/register.js';
+import { formOf, variantPrompt, parseVariant, checkVariant } from '../../src/features/practice-script/register.js';
 
 test('formOf: ihr or Sie from the forms of address in the text', () => {
   assert.equal(formOf(['Heute zeige ich euch meinen Garten.', 'Habt ihr Fragen?']), 'informal');

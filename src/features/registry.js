@@ -4,26 +4,44 @@
 
    view  () => import('./<id>/index.js')   exports mount(el, ctx)
    plan  () => import('./<id>/plan.js')    exports planItems(ctx), and optionally todayFeedback(ctx), todayModules(ctx)
-   tab   the tab this feature lights up; null for pages reached from the avatar or links */
+   tab   the tab this feature lights up; null for pages reached from the avatar or links
+   boot  () => import('./<id>/boot.js')    exports start(app): work the feature does once after the app has started
+         (main.js runs it through startFeatures(), so core never imports a feature)
+
+   A path is a pattern ('/practice/write/*') or {path, when}: a route that matches only when the query passes too.
+   Order matters: the first match wins, so a feature that narrows another's path is listed before it.
+
+   Features never import each other (tests/unit/feature-graph.test.mjs scans the import graph). Practice is a group
+   of sibling features under #/practice (round, write, speak, script, clusters, build, and the hub); what they share
+   lives in features/shared/ (a library: no routes, no plan, never imports a feature) and domain/. */
 
 /**
  * @typedef {object} Feature
  * @property {string} id
- * @property {string[]} paths
+ * @property {(string | {path: string, when: (q: URLSearchParams) => boolean})[]} paths
  * @property {string | null} tab
  * @property {() => Promise<any>} view
  * @property {(() => Promise<any>) | null} plan
  * @property {boolean} [chrome]   false: no header and tab bar (full-screen flows)
  * @property {boolean} [needsExam] the tab shows only when the profile has an exam goal
+ * @property {() => Promise<any>} [boot]   a module whose start(app) runs once after the app has started
  */
+
+/** A script's words round is #/practice/round?kind=script:<id> (the scripts own it, ahead of practice-round). */
+const scriptRound = { path: '/practice/round', when: (/** @type {URLSearchParams} */ q) => /^script:/.test(q.get('kind') || '') };
 
 /** @type {Feature[]} */
 export const FEATURES = [
   { id: 'today', paths: ['/today'], tab: 'today', view: () => import('./today/index.js'), plan: null },
-  // Word building is its own feature under Practice (#/practice/build); listed before practice so its paths win the match
+  // Practice: sibling features under #/practice, listed before the hub so their paths win the match
   { id: 'build', paths: ['/practice/build', '/practice/build/*'], tab: 'practice', view: () => import('./build/index.js'), plan: () => import('./build/plan.js') },
-  { id: 'practice', paths: ['/practice', '/practice/*'], tab: 'practice', view: () => import('./practice/index.js'), plan: () => import('./practice/plan.js') },
-  { id: 'exam', paths: ['/exam', '/exam/*'], tab: 'exam', needsExam: true, view: () => import('./exam/index.js'), plan: () => import('./exam/plan.js') },
+  { id: 'practice-script', paths: [scriptRound, '/practice/scripts', '/practice/scripts/*'], tab: 'practice', view: () => import('./practice-script/index.js'), plan: () => import('./practice-script/plan.js') },
+  { id: 'practice-round', paths: ['/practice/round'], tab: 'practice', view: () => import('./practice-round/index.js'), plan: () => import('./practice-round/plan.js') },
+  { id: 'practice-write', paths: ['/practice/write', '/practice/write/*'], tab: 'practice', view: () => import('./practice-write/index.js'), plan: () => import('./practice-write/plan.js') },
+  { id: 'practice-speak', paths: ['/practice/speak', '/practice/speak/*', '/practice/situations', '/practice/situations/*', '/practice/teil2'], tab: 'practice', view: () => import('./practice-speak/index.js'), plan: () => import('./practice-speak/plan.js') },
+  { id: 'practice-clusters', paths: ['/practice/clusters', '/practice/clusters/*', '/practice/sort', '/practice/known', '/practice/known/*'], tab: 'practice', view: () => import('./practice-clusters/index.js'), plan: () => import('./practice-clusters/plan.js') },
+  { id: 'practice', paths: ['/practice', '/practice/*'], tab: 'practice', view: () => import('./practice/index.js'), plan: null },
+  { id: 'exam', paths: ['/exam', '/exam/*'], tab: 'exam', needsExam: true, view: () => import('./exam/index.js'), plan: () => import('./exam/plan.js'), boot: () => import('./exam/boot.js') },
   // Explore lives under Look up (#/lookup/map); listed before lookup so its paths win the match
   { id: 'explore', paths: ['/lookup/map', '/lookup/map/*'], tab: 'lookup', view: () => import('./explore/index.js'), plan: null },
   { id: 'lookup', paths: ['/lookup', '/lookup/*'], tab: 'lookup', view: () => import('./lookup/index.js'), plan: null },
@@ -40,7 +58,17 @@ export const TABS = [
 ];
 
 /** Router table built from the features. */
-export const routes = () => FEATURES.flatMap(f => f.paths.map(path => ({ path, load: f.view, tab: f.tab, chrome: f.chrome !== false, feature: f.id })));
+export const routes = () => FEATURES.flatMap(f => f.paths.map(p => ({ ...(typeof p === 'string' ? { path: p } : p), load: f.view, tab: f.tab, chrome: f.chrome !== false, feature: f.id })));
+
+/**
+ * Run every feature's boot module once the app has started (main.js). A failing one is logged and skipped.
+ * @param {{store: any, bus: any, t: (k: string, v?: any) => string, toast: (text: string) => void, log: (where: string, e: unknown) => void}} app
+ */
+export async function startFeatures(app) {
+  await Promise.all(FEATURES.filter(f => f.boot).map(async f => {
+    try { await (await /** @type {() => Promise<any>} */ (f.boot)()).start(app); } catch (e) { app.log(`boot ${f.id}`, e); }
+  }));
+}
 
 /** Every feature's plan module (for Today). */
 export async function planProviders() {

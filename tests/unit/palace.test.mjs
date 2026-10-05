@@ -15,7 +15,7 @@ const read = (/** @type {string} */ p) => readFileSync(new URL(p, ROOT));
 const metrics = JSON.parse(read('src/vendor/newsreader-map/metrics.json').toString());
 const sdfMeta = JSON.parse(read('src/vendor/palace-sdf/atlas.json').toString());
 
-/** The map as the app loads it (src/features/explore/data.js loadAtlas), without the DOM. */
+/** The map as the app loads it (src/data/atlas.js loadAtlas), without the DOM. */
 function loadAtlas() {
   const m = AT.decode(JSON.parse(read('content/atlas/de.json').toString())), I = m.items, n = I.id.length;
   const W = new Float32Array(n), AW = new Float32Array(n);

@@ -619,7 +619,7 @@ export async function createPalace(canvas, o) {
 
   /* ---------------------------------------------------------------- the API */
   const api = {
-    /** @param {any} next a layout (explore/data.js layoutOf) */
+    /** @param {any} next a layout (data/atlas.js layoutOf) */
     setLayout(next) {
       L = next;
       const del = riseDelays(A, L);

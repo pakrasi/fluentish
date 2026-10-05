@@ -3,7 +3,7 @@
    days), the phase notice, the import notice, feedback to read, the plan from every feature (composed by
    domain/today.js; every deck's reviews counted, and said plainly when they do not fit), Where you stand
    (today/standing.js: per module and words and phrases, one definition), and a sticky button for the first
-   unfinished row. Every number comes from the one daily allowance (features/allowance.js), the same as Practice's.
+   unfinished row. Every number comes from the one daily allowance (domain/allowance.js), the same as Practice's.
    Re-renders when the settings, cards, attempts or activity change. */
 import { h, replace } from '../../core/dom.js';
 import { label, parse, add, iso } from '../../core/clock.js';
@@ -14,8 +14,8 @@ import { runway, studyDays, atmosphere } from '../../core/brand.js';
 import { composeDay } from '../day.js';
 import { summaryText } from '../../data/migrate.js';
 import { previewText } from '../../data/cutover.js';
-import { dueTomorrow } from '../practice/plan.js';
-import { dayAllowance, firstWeek } from '../allowance.js';
+import { dueTomorrow } from '../../domain/allowance.js';
+import { dayAllowance, firstWeek } from '../../domain/allowance.js';
 import { results } from '../../data/sync/index.js';
 import { config } from '../../core/config.js';
 import { renderStanding, standingCounts } from './standing.js';

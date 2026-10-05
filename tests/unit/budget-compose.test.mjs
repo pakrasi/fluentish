@@ -18,13 +18,13 @@ import { context } from '../../src/core/clock.js';
 import { composeToday } from '../../src/domain/today.js';
 import { allowance, DECKS, NEW_COST } from '../../src/domain/budget.js';
 import RD from '../../src/domain/b1ready.js';
-import { planItems, todayBudget, simToday } from '../../src/features/practice/plan.js';
+import { planItems, todayBudget, simToday } from './practice-rows.mjs';
 import { planItems as buildItems } from '../../src/features/build/plan.js';
 import { planItems as examItems } from '../../src/features/exam/plan.js';
 import { arrange } from '../../src/features/day.js';
-import { stateFor } from '../../src/features/practice/data.js';
-import * as P from '../../src/features/practice/script/parse.js';
-import { MINUTES_SHARE } from '../../src/features/practice/script/config.js';
+import { stateFor } from '../../src/features/shared/data.js';
+import * as P from '../../src/domain/script/parse.js';
+import { MINUTES_SHARE } from '../../src/domain/script/config.js';
 
 const t = (k, v = {}) => `${k}${Object.keys(v).length ? ' ' + JSON.stringify(v) : ''}`;
 const EXAM = '2026-10-09';

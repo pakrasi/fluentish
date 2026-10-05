@@ -1,13 +1,13 @@
-// Cluster study (features/practice/clusters/items.js): cards from ids, round composition, and grading of every
+// Cluster study (features/shared/cluster-items.js): cards from ids, round composition, and grading of every
 // cluster card through Practice's grader. Wrong articles, wrong preposition forms and the other word of a pair must
 // never come back as right (the grading corpus rule, applied to the cluster cards).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { index } from '../../src/domain/clusters.js';
-import { cardIds, itemFor, compose, parseClusterKind, form } from '../../src/features/practice/clusters/items.js';
-import { gradeAnswer } from '../../src/features/practice/grade.js';
-import { buildLexicon } from '../../src/features/practice/pool.js';
+import { cardIds, itemFor, compose, parseClusterKind, form } from '../../src/features/shared/cluster-items.js';
+import { gradeAnswer } from '../../src/features/shared/grade.js';
+import { buildLexicon } from '../../src/features/shared/pool.js';
 
 const read = p => JSON.parse(readFileSync(new URL(`../../${p}`, import.meta.url), 'utf8'));
 const C = read('content/clusters/de.json');
@@ -84,7 +84,7 @@ test('round composition: due first, at most 6 new, practise ahead when nothing i
 });
 
 test('a round of words picked on the map: ids from the address, all new ones taken while new items are allowed', async () => {
-  const { pickIds, PICK_MAX } = await import('../../src/features/practice/clusters/items.js');
+  const { pickIds, PICK_MAX } = await import('../../src/features/shared/cluster-items.js');
   assert.deepEqual(parseClusterKind('cluster:pick'), { due: false, key: null, pick: true });
   assert.deepEqual(pickIds('der_Apfel, laufen.verb,der_Apfel,<x>,'), ['W:der_Apfel', 'W:laufen.verb']);
   assert.equal(pickIds(Array.from({ length: 30 }, (_, i) => `w${i}`).join(',')).length, PICK_MAX);

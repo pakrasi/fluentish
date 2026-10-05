@@ -19,7 +19,7 @@ import { reduced } from '../../core/motion.js';
 import { label as dayLabel } from '../../core/clock.js';
 import { num } from '../../core/i18n.js';
 import { MODES, summarise, nextUp, encode } from '../../domain/atlas.js';
-import { loadAtlas, layoutOf, scores, loadDetails, prefs, setPrefs, fold, find, totals } from './data.js';
+import { loadAtlas, layoutOf, scores, loadDetails, prefs, setPrefs, fold, find, totals } from '../../data/atlas.js';
 import { createMap } from './map.js';
 import { createSelect } from './select.js';
 import { momentQueue, nextRecord, idsKey, decodeStates } from '../../domain/palace.js';
@@ -471,7 +471,7 @@ async function mountMap(el, ctx, offs) {
     const s = sp.toString();
     history.replaceState(history.state, '', `#/lookup/map${s ? `?${s}` : ''}`);
   }
-  // the whole map, every item once whatever the mode: the same count as Today's Where you stand (data.js totals)
+  // the whole map, every item once whatever the mode: the same count as Today's Where you stand (data/atlas.js totals)
   function renderTotals() {
     const x = totals(A, K);
     totalEl.textContent = t('explore.total', { k: num(x.known), n: num(x.n) });

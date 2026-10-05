@@ -1,4 +1,4 @@
-// Script mode: privacy and storage (script/store.js, data/transfer.js), Today's wiring (practice/plan.js with
+// Script mode: privacy and storage (script/store.js, data/transfer.js), Today's wiring (the practice features' plan.js with
 // script/today.js), the meanings reply parser, and marks surviving a sentence split. Synthetic bicycle talk only.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -9,13 +9,13 @@ import { createBus } from '../../src/core/bus.js';
 import { context } from '../../src/core/clock.js';
 import { exportBundle, importFile } from '../../src/data/transfer.js';
 import { pendingEvents } from '../../src/data/sync/github-b1exam.js';
-import { planItems, todayBudget } from '../../src/features/practice/plan.js';
-import { scriptNewShown } from '../../src/features/practice/script/today.js';
-import * as St from '../../src/features/practice/script/store.js';
-import * as P from '../../src/features/practice/script/parse.js';
-import * as Lad from '../../src/features/practice/script/ladder.js';
-import { applyEdit } from '../../src/features/practice/script/align.js';
-import { parseMeanings, meaningsPrompt } from '../../src/features/practice/script/meanings.js';
+import { planItems, todayBudget } from './practice-rows.mjs';
+import { scriptNewShown } from '../../src/domain/script/today.js';
+import * as St from '../../src/data/scripts.js';
+import * as P from '../../src/domain/script/parse.js';
+import * as Lad from '../../src/domain/script/ladder.js';
+import { applyEdit } from '../../src/features/practice-script/align.js';
+import { parseMeanings, meaningsPrompt } from '../../src/features/practice-script/meanings.js';
 
 const PID = '0192a3b4-c5d6-7e8f-9a0b-000000000002';
 const de = fs.readFileSync(new URL('../fixtures/script-bicycle.md', import.meta.url), 'utf8');

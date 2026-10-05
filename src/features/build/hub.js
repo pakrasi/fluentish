@@ -9,7 +9,7 @@ import { countTo } from '../../core/motion.js';
 import { cardIds, conceptItems, CORE } from '../../domain/wordbuild.js';
 import { FRAME_GATE, SUFFIX_GATE, REST_GATE, firstGood, playedToday } from '../../domain/wordbuild-plan.js';
 import { buildShare } from '../../domain/budget.js';
-import { dayAllowance } from '../allowance.js';
+import { dayAllowance } from '../../domain/allowance.js';
 import { backLink } from './compass.js';
 import { loadContent, knowledge, today as todayOf, setNewPerDay, GAME } from './data.js';
 import { writeStats } from './plan.js';

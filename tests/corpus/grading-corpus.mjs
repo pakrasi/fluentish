@@ -1,7 +1,7 @@
 // Adversarial grading corpus, built from the real public content (content/b1/*.json) plus a few synthetic exam words
 // and corrections. For each item it makes typical B1 learner errors (wrong answers that must NOT come back as right)
 // and correct variants (answers that must not be marked wrong), runs every one through the app's grading path
-// (features/practice/grade.js gradeAnswer, the same call the round makes) and counts false positives and false
+// (features/shared/grade.js gradeAnswer, the same call the round makes) and counts false positives and false
 // negatives per item type.
 //
 //   node tests/corpus/grading-corpus.mjs [--root <repo>] [--list fp|fn|soft] [--type <type>]
@@ -10,7 +10,7 @@
 // tests/unit/grading-corpus.test.mjs runs it as a regression test.
 //
 // The error generators only make changes that are wrong in context; each one is described next to its code.
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { RIGHT_VARIANTS } from './right-variants.mjs';
@@ -531,10 +531,13 @@ const typeOf = it => {
   return it.kind;
 };
 
+/** A module of the code under codeRoot: its path now, or where it was before Practice was split (round 3). @param {string} root @param {string} now @param {string} before */
+const codeFile = (root, now, before) => path.join(root, existsSync(path.join(root, now)) ? now : before);
+
 /** The item pool as the code under codeRoot builds it (with the synthetic exam words and corrections). */
 export async function buildData({ root = ROOT, codeRoot = ROOT } = {}) {
-  const { buildPool } = await import(pathToFileURL(path.join(codeRoot, 'src/features/practice/pool.js')).href);
-  const W = await import(pathToFileURL(path.join(codeRoot, 'src/features/practice/words.js')).href);
+  const { buildPool } = await import(pathToFileURL(codeFile(codeRoot, 'src/features/shared/pool.js', 'src/features/practice/pool.js')).href);
+  const W = await import(pathToFileURL(codeFile(codeRoot, 'src/features/shared/words.js', 'src/features/practice/words.js')).href);
   const content = { items: J(root, 'content/b1/items.json'), grammar: J(root, 'content/b1/grammar.json'), bank: J(root, 'content/b1/bank.json'), plan: J(root, 'content/b1/plan.json'), nouns: J(root, 'content/b1/nouns.json') };
   const mistakes = SYN_MISTAKES.map(([wrong, right], i) => ({ id: `F:corpus-${i}`, v: 1, wrong, right, rule: '', source: { attemptId: 'corpus', test: 1, module: 'schreiben', label: null }, createdAt: '2026-10-01T10:00:00Z', deletedAt: null }));
   // exam words: the card that asks for the dictionary form (with the forms index when the code under test has one)
@@ -547,11 +550,11 @@ export async function buildData({ root = ROOT, codeRoot = ROOT } = {}) {
   let schreiben = null;
   try { schreiben = J(root, 'content/b1/schreiben.json'); } catch { /* a checkout from before the Schreiben content */ }
   const data = buildPool({ ...content, mistakes, words, schreiben, lexWords: J(root, 'content/igloo/words/de.json'), lexTexts: Object.values(J(root, 'content/igloo/chunks/german.json').chunks).map(c => c.ex).filter(Boolean) });
-  // Build an email: every line of every task as the item the builder grades (features/practice/build.js partItem)
+  // Build an email: every line of every task as the item the builder grades (features/practice-write/build.js partItem)
   /** @type {any[]} */ const parts = [];
   if (schreiben) {
     try {
-      const B = await import(pathToFileURL(path.join(codeRoot, 'src/features/practice/build.js')).href);
+      const B = await import(pathToFileURL(codeFile(codeRoot, 'src/features/practice-write/build.js', 'src/features/practice/build.js')).href);
       for (const t of schreiben.tasks) for (const p of t.parts) { const it = { ...B.partItem(t, p), model: B.modelLine(p), lower: p.lower }; parts.push(it); data.byId.set(it.id, it); }
     } catch { /* code from before the builder */ }
   }
@@ -560,7 +563,7 @@ export async function buildData({ root = ROOT, codeRoot = ROOT } = {}) {
   /** @type {any[]} */ const clusters = [];
   try {
     const { index } = await import(pathToFileURL(path.join(codeRoot, 'src/domain/clusters.js')).href);
-    const CI = await import(pathToFileURL(path.join(codeRoot, 'src/features/practice/clusters/items.js')).href);
+    const CI = await import(pathToFileURL(codeFile(codeRoot, 'src/features/shared/cluster-items.js', 'src/features/practice/clusters/items.js')).href);
     const cc = J(root, 'content/clusters/de.json'), ix = index(cc, J(root, 'content/igloo/words/de.json'));
     let k = 0;
     const ids = new Set();
@@ -803,7 +806,7 @@ export async function evaluate({ root = ROOT, codeRoot = root, dataRoot = root }
   // (dataRoot: the content to grade with, e.g. a checkout from before an accept-list change)
   const { corpus } = await buildCorpus({ root });
   const data = await buildData({ root: dataRoot, codeRoot });
-  const { gradeAnswer } = await import(pathToFileURL(path.join(codeRoot, 'src/features/practice/grade.js')).href);
+  const { gradeAnswer } = await import(pathToFileURL(codeFile(codeRoot, 'src/features/shared/grade.js', 'src/features/practice/grade.js')).href);
   let gradeTyped = null;
   try { ({ gradeTyped } = await import(pathToFileURL(path.join(codeRoot, 'src/domain/wordbuild-grade.js')).href)); } catch { /* code from before Word building */ }
   const opts = { ...data, nouns: data.nouns, traps: data.traps };

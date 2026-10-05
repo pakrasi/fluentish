@@ -1,8 +1,8 @@
 // A round of items picked on the Explore map (phrases, grammar): #/practice/round?kind=pick:<id>,<id>…
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { parseKind } from '../../src/features/practice/compose.js';
-import { slotKey, roundHref } from '../../src/features/practice/session.js';
+import { parseKind } from '../../src/features/shared/compose.js';
+import { slotKey, roundHref } from '../../src/features/shared/session.js';
 
 test('kind=pick: keeps its ids, has its own slot and comes back to the same address', () => {
   const k = parseKind('pick:K:ENG_CHUNK_0001,BP:s1-x,G:akkusativ.01');

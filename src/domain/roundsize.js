@@ -1,4 +1,4 @@
-/* How many items a Practice round takes: the round size picker's three choices (features/practice/picker.js). Pure;
+/* How many items a Practice round takes: the round size picker's three choices (features/shared/picker.js). Pure;
    tested in node (tests/unit/roundsize.test.mjs).
 
      Recommended  what the list's own composer makes: due items first, then new ones within today's allowance

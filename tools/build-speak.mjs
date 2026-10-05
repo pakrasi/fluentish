@@ -13,7 +13,7 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { parseMarked } from '../src/features/practice/sim.js';
+import { parseMarked } from '../src/domain/sim.js';
 
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const SRC = path.join(ROOT, 'authoring/speak/situations.json');

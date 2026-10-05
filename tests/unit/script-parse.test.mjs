@@ -1,9 +1,9 @@
-// Script mode: reading a pasted script (src/features/practice/script/parse.js). Fixtures are a synthetic talk about
+// Script mode: reading a pasted script (src/domain/script/parse.js). Fixtures are a synthetic talk about
 // how a bicycle works, in plain German and in the EN/DE pair format with parts, ROLLUP and skipped blocks.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import * as P from '../../src/features/practice/script/parse.js';
+import * as P from '../../src/domain/script/parse.js';
 
 const de = fs.readFileSync(new URL('../fixtures/script-bicycle.md', import.meta.url), 'utf8');
 const pairs = fs.readFileSync(new URL('../fixtures/script-bicycle-pairs.md', import.meta.url), 'utf8');

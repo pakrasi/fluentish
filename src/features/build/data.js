@@ -10,7 +10,7 @@
 import * as FS from '../../domain/fsrs.js';
 import * as RD from '../../domain/b1ready.js';
 import * as D8 from '../../domain/days.js';
-import { dayAllowance } from '../allowance.js';
+import { dayAllowance } from '../../domain/allowance.js';
 import { DECK, bare, lemmaMaps, itemResolver } from '../../domain/wordbuild.js';
 import { openNew, shownToday, recentMisses } from '../../domain/wordbuild-plan.js';
 import { lexiconOf } from '../../domain/wordbuild-grade.js';
@@ -51,7 +51,7 @@ export const verbsFor = (d, root, pre) => d.c.verbs.filter((/** @type {any} */ v
 
 /**
  * Today's state: due cards, what is open, the budget (Word building's share of the day's one allowance,
- * features/allowance.js; the open count is written to kv 'build'.stats first, so the allowance reads it).
+ * domain/allowance.js; the open count is written to kv 'build'.stats first, so the allowance reads it).
  * @param {any} ctx @param {any} d loadContent() @param {any} [k] knowledge (for the order of new verbs)
  */
 export function today(ctx, d, k = null) {

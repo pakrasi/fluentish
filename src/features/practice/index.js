@@ -1,116 +1,28 @@
-/* Practice (UX §4.2, §4.3, §4.9): the one review queue and the practice around it. Owns #/practice and below:
-     #/practice                        hub (hub.js)
-     #/practice/round[?kind=…]         a round, full screen (round.js); kind: missed, mistakes, warmup, situation,
-                                       area:<speaking|reading|grammar|words>, topic:<grammar topic>
-     #/practice/speak[/teil2|/aloud[/check|/go]]   speaking (speak.js)
-     #/practice/situations[/round?pick=…]   speaking situations: hear a line, answer aloud, grade (sim-view.js)
-     #/practice/words                  exam words from the private results repository
-     #/practice/write                  Schreiben: its rounds, the Aufgaben, the phrases by function (write.js)
-     #/practice/write/build/<task>[/free]  Build an email, then write it yourself (write.js, build.js)
-     #/practice/scripts[/…]            script mode (script/index.js); kind=script:<id> rounds go to script/words.js
-     #/practice/clusters[/<type>[/<id>[/say]]]   word clusters (clusters/view.js); kind=cluster:… rounds run in round.js
-     #/practice/sort?cluster=…|level=…|ids=…   Quick sort: Know / Learn, one word at a time (known/sort.js)
-     #/practice/known/<A1|A2>          mark a level's words known after a spot check (known/check.js)
-   Pure logic: pool.js, grade.js, compose.js, session.js, words.js (tested in node). Storage and network: data.js. */
+/* Practice (UX §4.2): the hub of the one review queue, and the exam words page. Owns #/practice and whatever no
+   other Practice feature owns:
+     #/practice                        the hub (hub.js): what to do now, then three groups (exam modules, words, your material)
+     #/practice/words                  exam words from the private results repository (exam-words.js)
+     #/practice/<anything else>        not found
+   The pages around it are sibling features (features/registry.js), each with its own routes and Today rows:
+     practice-round     #/practice/round[?kind=…]                   the typed round
+     practice-write     #/practice/write[/…]                         Schreiben and Build an email
+     practice-speak     #/practice/speak[/…], #/practice/situations[/…]   Sprechen and speaking situations
+     practice-script    #/practice/scripts[/…], #/practice/round?kind=script:<id>
+     practice-clusters  #/practice/clusters[/…], #/practice/sort, #/practice/known/<level>
+     build              #/practice/build[/…]                         Word building
+   They share the practice runtime in features/shared/ (the pool, the round state, grading, the done hero) and the
+   day's numbers in domain/allowance.js, and never import one another. */
 import { h, replace } from '../../core/dom.js';
-import { notice } from '../../core/ui.js';
-import { icon } from '../../core/icons.js';
+import { practicePage, restParts } from '../shared/page.js';
 import { mountHub } from './hub.js';
-import { mountRound } from './round.js';
-import { mountSpeak } from './speak.js';
-import { mountWrite } from './write.js';
-import { mountSim } from './sim-view.js';
-import { refreshWords, secrets, loadData, stateFor } from './data.js';
-import { COLLECTION as WORDS, inQueue } from './words.js';
-import * as RD from '../../domain/b1ready.js';
-import { warmVoices } from './speech.js';
-import { pickerLinks } from './picker.js';
+import { mountWords } from './exam-words.js';
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
-export async function mount(el, ctx) {
-  const parts = (ctx.params.rest || '').split('/').filter(Boolean);
-  const lang = ctx.settings().language;
-  if (lang && lang !== 'german') {   // phase 1: the practice items are German; another language never gets them
-    replace(el, h('div', { class: 'practice stack' }, h('div', { class: 'page-head' }, h('h1', null, ctx.t('practice.title'))),
-      notice({ children: [h('p', null, ctx.t('practice.langLater')), h('p', null, h('a', { href: '#/profile/goal' }, ctx.t('practice.langChange')))] })));
-    return;
-  }
-  // an old link: #/practice/teil2 is the Teil 2 talk
-  if (parts[0] === 'teil2') { ctx.go('/practice/speak/teil2', { replace: true }); return; }
-  if (parts[0] && !['round', 'speak', 'situations', 'words', 'write', 'scripts', 'clusters', 'sort', 'known'].includes(parts[0])) {
+export function mount(el, ctx) {
+  const parts = restParts(ctx);
+  if (parts[0] && parts[0] !== 'words') {
     replace(el, h('div', { class: 'practice stack' }, h('div', { class: 'page-head' }, h('h1', null, ctx.t('error.notFound'))), h('a', { class: 'btn pressable', href: '#/practice' }, ctx.t('practice.back'))));
-    return;
+    return undefined;
   }
-  warmVoices();
-  // list pages: a round link opens the round size picker first (picker.js); rounds and Quick sort run as before
-  const lists = !['round', 'sort', 'known'].includes(parts[0]) && !(parts[0] === 'situations' && parts[1] === 'round');
-  if (lists) {
-    const off = pickerLinks(ctx, el);
-    const res = await mountList(el, ctx, parts);
-    return { unmount() { off(); if (typeof res === 'function') res(); else if (res && typeof res.unmount === 'function') res.unmount(); },
-      canLeave: res && typeof res.canLeave === 'function' ? () => res.canLeave() : undefined };
-  }
-  return mountList(el, ctx, parts);
+  return practicePage(el, ctx, { list: true }, () => (parts[0] === 'words' ? mountWords(el, ctx) : mountHub(el, ctx)));
 }
-
-/** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx @param {string[]} parts @returns {Promise<any>} */
-async function mountList(el, ctx, parts) {
-  if (parts[0] === 'scripts') return (await import('./script/index.js')).mountScripts(el, ctx, parts.slice(1));
-  if (parts[0] === 'clusters') return (await import('./clusters/view.js')).mountClusters(el, ctx, parts.slice(1));
-  if (parts[0] === 'sort') return (await import('./known/sort.js')).mountSort(el, ctx);
-  if (parts[0] === 'known') return (await import('./known/check.js')).mountCheck(el, ctx, parts[1] || 'A1');
-  if (parts[0] === 'round' && /^script:/.test(ctx.query.get('kind') || '')) return (await import('./script/index.js')).mountScriptRound(el, ctx);
-  if (parts[0] === 'round') return mountRound(el, ctx);
-  if (parts[0] === 'speak') return mountSpeak(el, ctx, parts.slice(1));
-  if (parts[0] === 'situations') return mountSim(el, ctx, parts.slice(1));
-  if (parts[0] === 'words') return mountWords(el, ctx);
-  if (parts[0] === 'write') return mountWrite(el, ctx, parts.slice(1));
-  return mountHub(el, ctx);
-}
-
-const back = (/** @type {string} */ href, /** @type {string} */ text) => h('a', { class: 'pr-backlink pressable', href }, icon('prev', { size: 16 }), text);
-
-/** Exam words: where they come from, how many are in the queue, and a words round. @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
-async function mountWords(el, ctx) {
-  const { t, store } = ctx;
-  let alive = true;
-  const status = h('p', { class: 'caption', 'aria-live': 'polite' });
-  async function render() {
-    const tok = !!secrets(store).githubToken;
-    const wc = store.get(WORDS, null);
-    const c = ctx.clock.ctx();
-    const data = await loadData(ctx).catch(() => null);
-    if (!alive) return;
-    const n = wc ? wc.words.filter((/** @type {any} */ w) => inQueue(w, c.phase)).length : 0;
-    let card = null;
-    if (data && n) {
-      const s = stateFor(ctx, data);
-      const x = RD.compute({ pool: data.pool.filter((/** @type {any} */ it) => it.area === 'words'), store: s.cards, today: c.today, exam: c.exam, phase: c.phase }).areas.words;
-      if (x) card = h('p', { class: 'label' }, t('practice.words.state', { seen: x.seen, n: x.n, due: x.due }));
-    }
-    replace(el, h('div', { class: 'practice stack' }, back('#/practice', t('practice.title')),
-      h('div', { class: 'page-head' }, h('h1', null, t('practice.area.words'))),
-      !tok && !wc ? [h('p', { class: 'lead' }, t('practice.words.notLinked')), h('a', { class: 'btn btn-primary pressable', href: '#/profile/connections' }, t('practice.words.link'))]
-        : [h('p', { class: 'lead' }, wc ? t('practice.words.about', { n, total: wc.total || wc.words.length }) : t('practice.words.loading')),
-          c.phase === 'week' || c.phase === 'lastNew' || c.phase === 'eve' ? h('p', { class: 'caption' }, t('practice.words.triage')) : null,
-          card, status,
-          h('div', { class: 'pr-done-actions' },
-            n ? h('a', { class: 'btn btn-primary pressable', href: '#/practice/round?kind=area:words' }, t('practice.words.round')) : null,
-            tok ? h('button', { type: 'button', class: 'btn pressable', onclick: () => refresh(true) }, t('practice.words.update')) : null),
-          !tok ? notice({ children: [h('p', null, t('practice.words.cachedNoToken'))] }) : null]));
-  }
-  async function refresh(force = false) {
-    status.textContent = t('practice.words.checking');
-    const res = await refreshWords(ctx, { force });
-    if (!alive) return;
-    await render();
-    const wc = store.get(WORDS, null);
-    status.textContent = res.state === 'error' ? t('practice.words.failed', { why: res.error || '' })
-      : res.added.length ? t('practice.words.added', { n: res.added.length, test: wc?.addedTest || '?' })
-        : wc ? t('practice.words.updated') : '';
-  }
-  await render();
-  if (secrets(store).githubToken) refresh(false);
-  return () => { alive = false; };
-}
-

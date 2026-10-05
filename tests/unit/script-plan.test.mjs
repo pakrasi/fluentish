@@ -5,11 +5,11 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { context } from '../../src/core/clock.js';
 import { composeToday } from '../../src/domain/today.js';
-import * as P from '../../src/features/practice/script/parse.js';
-import * as Lad from '../../src/features/practice/script/ladder.js';
-import * as Pl from '../../src/features/practice/script/plan.js';
-import { applyEdit, alignSentences, overlap } from '../../src/features/practice/script/align.js';
-import { PARTS_STEP } from '../../src/features/practice/script/config.js';
+import * as P from '../../src/domain/script/parse.js';
+import * as Lad from '../../src/domain/script/ladder.js';
+import * as Pl from '../../src/domain/script/plan.js';
+import { applyEdit, alignSentences, overlap } from '../../src/features/practice-script/align.js';
+import { PARTS_STEP } from '../../src/domain/script/config.js';
 
 const t = (k, v = {}) => `${k}${Object.keys(v).length ? ' ' + JSON.stringify(v) : ''}`;
 const de = fs.readFileSync(new URL('../fixtures/script-bicycle.md', import.meta.url), 'utf8');

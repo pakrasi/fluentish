@@ -1,7 +1,7 @@
-// Explore search (src/features/explore/data.js): umlauts and ß fold, German prefixes first, then German anywhere, then English.
+// Explore search (src/data/atlas.js): umlauts and ß fold, German prefixes first, then German anywhere, then English.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { fold, find } from '../../src/features/explore/data.js';
+import { fold, find } from '../../src/data/atlas.js';
 
 test('fold drops accents and writes ß as ss', () => {
   assert.equal(fold('Größe'), 'grosse');

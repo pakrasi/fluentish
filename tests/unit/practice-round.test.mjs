@@ -8,12 +8,12 @@ import { fileURLToPath } from 'node:url';
 import { context, add } from '../../src/core/clock.js';
 import FS from '../../src/domain/fsrs.js';
 import { kindOf } from '../../src/domain/itemids.js';
-import { buildPool, mistakeItem } from '../../src/features/practice/pool.js';
-import { gradeAnswer } from '../../src/features/practice/grade.js';
+import { buildPool, mistakeItem } from '../../src/features/shared/pool.js';
+import { gradeAnswer } from '../../src/features/shared/grade.js';
 import { allowance } from '../../src/domain/budget.js';
-import * as C from '../../src/features/practice/compose.js';
-import * as S from '../../src/features/practice/session.js';
-import * as W from '../../src/features/practice/words.js';
+import * as C from '../../src/features/shared/compose.js';
+import * as S from '../../src/features/shared/session.js';
+import * as W from '../../src/features/shared/words.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const J = p => JSON.parse(readFileSync(path.join(ROOT, p), 'utf8'));
@@ -235,8 +235,8 @@ test('rollDay keeps 40 days and starts a fresh log', () => {
 });
 
 test('round slots: a missed or mistakes round never replaces a paused daily round', async () => {
-  const S = await import('../../src/features/practice/session.js');
-  const { saveLogs } = await import('../../src/features/practice/data.js');
+  const S = await import('../../src/features/shared/session.js');
+  const { saveLogs } = await import('../../src/features/shared/data.js');
   const kv = {};
   const store = { get: (n, f) => (n in kv ? kv[n] : f), set: (n, v) => { kv[n] = v; } };
   const daily = S.startRound(['a', 'b', 'c'], { kind: 'today' }, '2026-10-03', 1);

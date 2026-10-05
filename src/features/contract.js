@@ -30,6 +30,8 @@
  * @property {(text: string, o?: {action?: string, onAction?: () => void}) => void} toast
  * @property {Record<string, string>} params                route params; params.rest is the sub-path under the feature
  * @property {URLSearchParams} query
+ * @property {string} route                               the registry path that matched ('/practice/situations/*'), for a
+ *                                                          feature that owns more than one path prefix
  * @property {{ hlc: {tick: () => string}, device: any, profile: any, adapter: any }} app
  * @property {() => Promise<void>} refreshShell             re-render header and tabs (after a goal change)
  */

@@ -7,9 +7,9 @@ import { readFileSync, existsSync } from 'node:fs';
 import * as F from '../../src/domain/forms.js';
 import * as WC from '../../src/domain/wordcard.js';
 import { index } from '../../src/domain/clusters.js';
-import * as CI from '../../src/features/practice/clusters/items.js';
-import * as W from '../../src/features/practice/words.js';
-import { gradeAnswer } from '../../src/features/practice/grade.js';
+import * as CI from '../../src/features/shared/cluster-items.js';
+import * as W from '../../src/features/shared/words.js';
+import { gradeAnswer } from '../../src/features/shared/grade.js';
 
 const J = p => JSON.parse(readFileSync(new URL(`../../${p}`, import.meta.url), 'utf8'));
 const WORDS = J('content/igloo/words/de.json'), FORMS = J('content/b1/forms.json'), CL = J('content/clusters/de.json');

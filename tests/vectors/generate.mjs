@@ -5,7 +5,7 @@
 //   node tests/vectors/generate.mjs --check   compare (what tests/unit/vectors.test.mjs does)
 //
 // match.de.*.json  every grading-corpus answer (right and wrong) with the full result object the round gets
-//                (features/practice/grade.js gradeAnswer; Word building cards: domain/wordbuild-grade.js gradeTyped),
+//                (features/shared/grade.js gradeAnswer; Word building cards: domain/wordbuild-grade.js gradeTyped),
 //                in three shards by card id (each under the privacy check's 5 MB): trainer (B1 trainer, Schreiben,
 //                bank phrases, corrections), grammar (grammar items, exam and script words), clusters (word clusters
 //                and Word building). The INPUTS are stored in the files: the check re-grades exactly those answers,
@@ -55,7 +55,7 @@ export async function matchInputs({ fromFile = false, shard }) {
 export async function matchVectors(inputs, shard) {
   const { buildData } = await import('../corpus/grading-corpus.mjs');
   const data = await buildData();
-  const { gradeAnswer } = await imp('src/features/practice/grade.js');
+  const { gradeAnswer } = await imp('src/features/shared/grade.js');
   const { gradeTyped } = await imp('src/domain/wordbuild-grade.js');
   const rows = inputs.map(c => {
     const it = data.byId.get(c.id);

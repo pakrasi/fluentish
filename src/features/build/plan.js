@@ -3,7 +3,7 @@
    content, so Today plans without loading it.
 
    Rows:
-     - Word building: due cards and its share of the day's one allowance of new items (features/allowance.js →
+     - Word building: due cards and its share of the day's one allowance of new items (domain/allowance.js →
        domain/budget.js; Profile › Practice sets how many it wants). After the exam, or with no date, it is one of
        his goals: the row shows even before the deck was started (priority 35). While an exam is ahead its new cards
        pause and the row shows only due cards (priority 56, after the exam work; never cut). Not in a new learner's
@@ -12,7 +12,7 @@
        the exam or with no date, and once the deck has been started. */
 import { DECK } from '../../domain/wordbuild.js';
 import { playedToday } from '../../domain/wordbuild-plan.js';
-import { dayAllowance } from '../allowance.js';
+import { dayAllowance } from '../../domain/allowance.js';
 
 const KV = 'build', GAME = 'build.game';
 

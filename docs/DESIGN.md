@@ -118,10 +118,10 @@ components:
   grade4:         { layout: "4 equal columns, gap 8px", height: 64px, rounded: "{rounded.ctl}", background: "{colors.surface}", border: "1px {colors.hairline-strong}",
                     label: "Geist 15/600 ink", interval: "{typography.caption} ink-3 tabular", suggested: "6px accent dot top-right, no fill; takes the focus",
                     picked: "ink fill, on-ink text, 420ms spring-pop; the others 0.3", keys: "1-4, Enter/Space = the suggestion",
-                    use: "Speaking situations, Word clusters (say it aloud), Scripts: the only self-grade control (src/features/practice/selfgrade.js)" }
+                    use: "Speaking situations, Word clusters (say it aloud), Scripts: the only self-grade control (src/features/shared/selfgrade.js)" }
   done-hero:      { parts: "label, one figure (typography.figure) + 'of N' line, the atmosphere breathing once, one data object", dataObject: "field strip | letter | ready-meter row | cluster layout | chat bubbles",
-                    rule: "one big numeral per screen; a second count is title size and ticks with countTo", code: "src/features/practice/done-hero.js" }
-  round-progress: { segments: "the cards planned at the start, fixed widths", again: "2px ticks under the segments (ink-3 40%), appended with land", count: "'3 of 8', 'Again · 8 of 8'", code: "src/features/practice/progress.js" }
+                    rule: "one big numeral per screen; a second count is title size and ticks with countTo", code: "src/features/shared/done-hero.js" }
+  round-progress: { segments: "the cards planned at the start, fixed widths", again: "2px ticks under the segments (ink-3 40%), appended with land", count: "'3 of 8', 'Again · 8 of 8'", code: "src/features/shared/progress.js" }
   letter-slot:    { empty: "1px field-border baseline rule + 12px ink-3 label at its end; 40% wide for greeting, closing, sign-off", current: "2px accent rule", filled: "Newsreader 18/1.5 ink" }
 
 layout:

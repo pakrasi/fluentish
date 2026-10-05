@@ -1,7 +1,7 @@
 /* How much practice fits in a day: ONE allowance of new items across every deck, the reviews every deck has due, and
    the minutes they take. Pure, no storage or clock reads; tested in node and portable to iOS as is.
 
-   This is the one place that answers "how much today". features/allowance.js reads the store into its inputs; Today's
+   This is the one place that answers "how much today". domain/allowance.js reads the store into its inputs; Today's
    plan rows, Practice's hub, every feature's plan.js and every round's composer read the same result, so no screen
    can disagree and no deck keeps a cap of its own.
 
@@ -101,7 +101,7 @@ export const streamQuota = (n, st) => (st === 'p' ? Math.round(n * SPLIT.p) : n 
 
 /** @typedef {'exam'|'eve'|'day'|'maintenance'|'start'} Mode */
 /**
- * The day's mode. fresh: the learner is in his first study week (features/allowance.js firstWeek).
+ * The day's mode. fresh: the learner is in his first study week (domain/allowance.js firstWeek).
  * @param {{phase: string}} c @param {{day: number} | null} [fresh] @returns {Mode}
  */
 export function mode(c, fresh = null) {

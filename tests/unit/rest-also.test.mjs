@@ -5,8 +5,8 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { restCheck, alsoLines } from '../../src/domain/match.js';
-import { buildPool } from '../../src/features/practice/pool.js';
-import { gradeAnswer } from '../../src/features/practice/grade.js';
+import { buildPool } from '../../src/features/shared/pool.js';
+import { gradeAnswer } from '../../src/features/shared/grade.js';
 
 const J = (/** @type {string} */ p) => JSON.parse(readFileSync(new URL(`../../${p}`, import.meta.url), 'utf8'));
 const data = buildPool({ items: J('content/b1/items.json'), grammar: J('content/b1/grammar.json'), bank: J('content/b1/bank.json'), plan: J('content/b1/plan.json'),

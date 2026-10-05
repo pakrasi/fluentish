@@ -3,10 +3,10 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import * as P from '../../src/features/practice/script/parse.js';
-import * as L from '../../src/features/practice/script/lemma.js';
-import * as S from '../../src/features/practice/script/suggest.js';
-import { buildLexicon } from '../../src/features/practice/pool.js';
+import * as P from '../../src/domain/script/parse.js';
+import * as L from '../../src/features/practice-script/lemma.js';
+import * as S from '../../src/features/practice-script/suggest.js';
+import { buildLexicon } from '../../src/features/shared/pool.js';
 
 const words = JSON.parse(fs.readFileSync(new URL('../../content/igloo/words/de.json', import.meta.url), 'utf8'));
 const idx = L.buildIndex(words);

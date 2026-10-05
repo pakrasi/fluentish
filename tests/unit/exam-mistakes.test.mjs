@@ -3,7 +3,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { queueMistakes, mistakesQueued } from '../../src/features/exam/data.js';
-import { mistakeItem } from '../../src/features/practice/pool.js';
+import { mistakeItem } from '../../src/features/shared/pool.js';
 import { COLLECTION } from '../../src/data/mistakes.js';
 
 const memStore = () => { const kv = new Map(); return { get: (n, f) => kv.has(n) ? kv.get(n) : f, set: (n, v) => kv.set(n, v), kv }; };

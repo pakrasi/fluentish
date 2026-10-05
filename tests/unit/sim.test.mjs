@@ -1,4 +1,4 @@
-// Speaking situations (src/features/practice/sim.js): the bank validator, the level unlocks, the round composer and
+// Speaking situations (src/domain/sim.js): the bank validator, the level unlocks, the round composer and
 // the scheduling of self-grades through the shared FSRS, plus the budget and Today's row. Synthetic data only, except
 // the public bank itself (content/speak/situations.json), which must validate.
 import { test } from 'node:test';
@@ -8,10 +8,10 @@ import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { context } from '../../src/core/clock.js';
-import * as S from '../../src/features/practice/sim.js';
+import * as S from '../../src/domain/sim.js';
 import { allowance } from '../../src/domain/budget.js';
 import { kindOf } from '../../src/domain/itemids.js';
-import { planItems, simToday } from '../../src/features/practice/plan.js';
+import { planItems, simToday } from './practice-rows.mjs';
 import { build, serialise, SRC, VOICES } from '../../tools/build-speak.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');

@@ -7,7 +7,7 @@ import path from 'node:path';
 import { validate, unsupported } from '../src/core/schema.js';
 import { build, ROOT } from './build-manifest.mjs';
 import { build as buildSpeak, serialise as serialiseSpeak, SRC as SPEAK_SRC } from './build-speak.mjs';
-import { validateBank } from '../src/features/practice/sim.js';
+import { validateBank } from '../src/domain/sim.js';
 import { validateClusters } from '../src/domain/clusters.js';
 import { validateForms } from '../src/domain/forms.js';
 import { build as buildAtlas, sources as atlasSources, OUT as ATLAS_OUT, METRICS as ATLAS_METRICS } from './build-atlas.mjs';

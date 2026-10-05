@@ -8,11 +8,11 @@ import * as D8 from '../../src/domain/days.js';
 import RD from '../../src/domain/b1ready.js';
 import { knowledge, resolver } from '../../src/domain/knowledge.js';
 import { modulesStanding, weakest, knownOf, week } from '../../src/domain/standing.js';
-import * as S from '../../src/features/practice/session.js';
-import * as C from '../../src/features/practice/compose.js';
-import { buildPool } from '../../src/features/practice/pool.js';
+import * as S from '../../src/features/shared/session.js';
+import * as C from '../../src/features/shared/compose.js';
+import { buildPool } from '../../src/features/shared/pool.js';
 import { planMistakes, freeWriteMistakes } from '../../src/data/mistakes.js';
-import { planItems } from '../../src/features/practice/plan.js';
+import { planItems } from './practice-rows.mjs';
 
 const EXAM = '2026-10-09';
 const TODAY = '2026-10-05';
