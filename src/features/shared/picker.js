@@ -1,7 +1,7 @@
 /* The round size picker: before a Practice round of a list, a bottom sheet with three choices (domain/roundsize.js).
      1 Recommended  the list's own round (due first, new within today's allowance), with one line on why: default
      2 Custom       a stepper "of N in this list", 1 … N
-     3 Practice all N
+     3 Practice all N   (behind More unless it was the last choice for the list)
    It never slows the default path: Enter (or one tap on Start) takes the selected choice; pressing and holding a list
    starts Recommended at once; Today's buttons and the hub's Start round skip the sheet. A list with a paused round
    resumes it. The last choice per list type is remembered on this device (sizes.js).
@@ -99,11 +99,16 @@ export async function openPicker(ctx, href, opener = null) {
   const custom = h('div', { class: 'rs-row' }, customBtn,
     h('div', { class: 'rs-stepper', role: 'group', 'aria-label': t('practice.size.custom') }, less, tickEl, more, h('span', { class: 'caption rs-of tnum' }, t('practice.size.of', { n: N }))));
   const allBtn = opt('all', 3, [h('span', { class: 'rs-main' }, h('span', { class: 'rs-name' }, t('practice.size.all', { n: N })))]);
+  // "Practice all" waits behind More (journey review: it can add a day of new items in one tap), unless it was his
+  // last choice for this list or the list is no bigger than its recommended round
+  const showAll = () => { allBtn.hidden = false; moreBtn.remove(); };
+  const moreBtn = h('button', { type: 'button', class: 'btn btn-quiet pressable rs-more', onclick: () => { showAll(); allBtn.focus(); } }, t('practice.size.moreChoices'));
+  if (init.mode !== 'all') allBtn.hidden = true;
   const warn = h('p', { class: 'rs-warn', 'aria-live': 'polite' });
   const startBtn = h('button', { type: 'button', class: 'btn btn-primary btn-wide pressable rs-start', autofocus: true, onclick: () => start() });
   const panel = h('div', { class: 'rs-panel' },
     h('div', { class: 'rs-grab', 'aria-hidden': 'true' }), title, sub,
-    h('div', { class: 'rs-opts', role: 'radiogroup', 'aria-labelledby': 'rs-title' }, recBtn, custom, allBtn),
+    h('div', { class: 'rs-opts', role: 'radiogroup', 'aria-labelledby': 'rs-title' }, recBtn, custom, allBtn), allBtn.hidden ? moreBtn : null,
     warn, startBtn, h('p', { class: 'caption rs-tip' }, t('practice.size.tip')));
   const dlg = /** @type {HTMLDialogElement} */ (h('dialog', { class: 'rs-sheet', 'aria-labelledby': 'rs-title' }, panel));
   document.body.append(dlg);
@@ -127,6 +132,7 @@ export async function openPicker(ctx, href, opener = null) {
   }
   function choose(/** @type {'rec' | 'custom' | 'all'} */ k) {
     if (k === 'rec' && r.n === 0) return;
+    if (k === 'all' && allBtn.hidden) showAll();
     mode = k; draw();
     announce(k === 'rec' ? t('practice.size.rec') : k === 'all' ? t('practice.size.all', { n: N }) : `${t('practice.size.custom')} ${n}`);
   }

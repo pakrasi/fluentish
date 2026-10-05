@@ -1,5 +1,5 @@
 /* Script mode on Today (§6): the script rows Practice's plan adds, and the new script words counted into the B1 day
-   budget. No DOM: Practice's plan.js and data.js import it, and both run in node tests. */
+   budget. No DOM: the scripts' plan.js (features/practice-script) and domain/allowance.js import it; both run in node tests. */
 import * as St from './store.js';
 import { planRows, newShownToday } from './plan.js';
 

@@ -7,11 +7,10 @@ import { icon } from '../../core/icons.js';
 import { Field } from '../../core/brand.js';
 import { countTo } from '../../core/motion.js';
 import { cardIds, conceptItems, CORE } from '../../domain/wordbuild.js';
-import { FRAME_GATE, SUFFIX_GATE, REST_GATE, firstGood, playedToday } from '../../domain/wordbuild-plan.js';
-import { buildShare } from '../../domain/budget.js';
+import { FRAME_GATE, SUFFIX_GATE, REST_GATE, firstGood } from '../../domain/wordbuild-plan.js';
 import { dayAllowance } from '../../domain/allowance.js';
 import { backLink } from './compass.js';
-import { loadContent, knowledge, today as todayOf, setNewPerDay, GAME } from './data.js';
+import { loadContent, knowledge, today as todayOf } from './data.js';
 import { writeStats } from './plan.js';
 
 const CELL = /** @type {Record<string, number>} */ ({ known: 2, shaky: 1, unknown: 1, unseen: 0 });
@@ -57,14 +56,10 @@ export async function mountHub(el, ctx) {
       row('#/practice/build/table', t('build.verbs'), verbs, t('build.hub.verbs'), coreGood ? (n(st.open.verbs) ? t('build.hub.open', { n: n(st.open.verbs) }) : '') : t('build.hub.verbsLock')),
       row('#/practice/build/machine', t('build.sentences'), sent, t('build.hub.sentences'), n(st.open.ps) ? t('build.hub.open', { n: n(st.open.ps) }) : t('build.hub.sentencesLock', { n: FRAME_GATE })),
       row('#/practice/build/suffixes', t('build.suffixes'), suf, t('build.hub.suffixes'), seenVerbs >= SUFFIX_GATE ? (n(st.open.sx) ? t('build.hub.open', { n: n(st.open.sx) }) : '') : t('build.hub.suffixesLock', { n: SUFFIX_GATE - seenVerbs })));
-    const game = store.get(GAME, null);
-    const best = ((game && game.games) || []).filter((/** @type {any} */ g) => g.day === st.c.today && g.timed).reduce((m, /** @type {any} */ g) => Math.max(m, g.right), 0);
-    const gameRow = h('a', { class: 'row pressable', href: '#/practice/build/game' }, h('span', { class: 'row-main' }, h('span', { class: 'row-title' }, t('build.game.title')),
-      h('span', { class: 'row-detail' }, playedToday(game, st.c.today) && best ? t('build.hub.gameBest', { n: best }) : t('build.hub.game'))), icon('next', { size: 16 }));
-    const cap = buildShare(ctx.settings());
-    const capRow = h('div', { class: 'wb-field' }, h('p', { class: 'label', id: 'wb-cap' }, t('build.hub.cap')),
-      h('div', { class: 'wb-chips', role: 'group', 'aria-labelledby': 'wb-cap' }, [0, 3, 5, 8, 12].map(v => h('button', { type: 'button', class: 'chip pressable', 'aria-pressed': String(v === cap), onclick: () => { setNewPerDay(ctx, v); draw(); } }, String(v)))),
-      h('p', { class: 'caption' }, st.budget.paused || !st.c.newItems ? t('build.hub.capPaused') : t('build.hub.capNote', { n: dayAllowance({ store, c: st.c, settings: ctx.settings() }).newPerDay, left: st.budget.newLeft })));
+    // the share itself is set in Profile › Practice (one allowance, one place to change it)
+    const capRow = h('div', { class: 'wb-field' },
+      h('p', { class: 'caption' }, st.budget.paused || !st.c.newItems ? t('build.hub.capPaused') : t('build.hub.capNote', { n: dayAllowance({ store, c: st.c, settings: ctx.settings() }).newPerDay, left: st.budget.newLeft })),
+      h('a', { class: 'btn btn-quiet pressable', href: '#/profile/practice' }, t('build.hub.capChange')));
     const b = st.budget;
     const what = b.due && b.newLeft ? t('build.hub.dueNew', { due: b.due, n: b.newLeft }) : b.due ? t('build.hub.due', { n: b.due }) : b.newLeft ? t('build.hub.new', { n: b.newLeft }) : '';
     const start = b.n ? h('a', { class: 'btn btn-primary btn-wide pressable', href: '#/practice/build/round?kind=review' }, t('build.hub.review', { what, min: b.minutes })) : null;
@@ -74,7 +69,7 @@ export async function mountHub(el, ctx) {
       h('div', { class: 'page-head' }, h('h1', null, t('build.title'))),
       h('p', { class: 'wb-lead' }, t('build.hub.lead')),
       h('p', { class: 'wb-hub-count' }, dueEl, ' ', b.n ? t('build.hub.today', { due: b.due, n: b.newLeft }) : t('build.hub.none')),
-      rows, h('section', { class: 'section' }, h('h2', null, t('build.hub.more')), h('nav', { class: 'pr-rows', 'aria-label': t('build.hub.more') }, gameRow)),
+      rows,
       h('section', { class: 'section' }, capRow),
       start ? h('div', { class: 'dock' }, start) : null));
     countTo(dueEl, b.n, { from: 0, duration: 600 });

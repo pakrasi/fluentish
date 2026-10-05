@@ -4,17 +4,26 @@ Practice, Exam and Look up are built as **feature modules** on top of the stage-
 
 ```
 src/features/
-  registry.js          lists every feature once: its path prefix, its tab, its view and plan modules (core; already lists yours)
+  registry.js          lists every feature once: its paths, its tab, its view, plan and boot modules (core)
   contract.js          the ctx types below, as JSDoc
+  day.js               Today's plan, composed once for Today and Practice (core)
   today/  profile/  welcome/        core screens (stage A)
-  practice/ exam/ lookup/           yours: index.js (view) + plan.js (Today provider), placeholders today
+  exam/ lookup/ explore/            features: index.js (view) + plan.js (Today provider)
+  practice/ practice-round/ practice-write/ practice-speak/ practice-script/ practice-clusters/ build/
+                       Practice: sibling features under #/practice, each with its own routes and plan.js (round 3)
+  shared/              the practice runtime the Practice features share (pool, round state, grading, picker, done
+                       hero, self-grade, progress, speech, recall bar, cluster layout); a library: no routes, no plan
 ```
+
+The day's numbers (every deck's due cards and the one allowance of new items) are `domain/allowance.js`
+(`dayAllowance`, `todayBudget`, `simToday`, `clusterToday`, `dueTomorrow`), so Today and every feature read them from
+`domain/` and never from each other.
 
 ## The rules
 
 1. **Stay in your folder.** `src/features/<id>/**` plus your own CSS in `styles/features/<id>.css` (add the `<link>` to `index.html` in the same commit). Anything you need from core goes through `ctx` or a core import (`core/*`, `data/*`, `domain/*`). If core is missing something, add it in a separate, reviewed commit.
-2. **Features never import each other.** They meet through the store, the bus and links (`href="#/exam/3/lesen"`).
-3. **Your routes are yours.** You own every path under your prefix. The router gives you the rest in `ctx.params.rest` (`/exam/3/lesen/review/0192…` → `rest = '3/lesen/review/0192…'`) and the query in `ctx.query`. Parse it in your `index.js`.
+2. **Features never import each other.** They meet through the store, the bus and links (`href="#/exam/3/lesen"`). Code two features need goes to `domain/` (pure), `data/` (storage) or, for the Practice features, `features/shared/`. `tests/unit/feature-graph.test.mjs` scans the import graph (static, dynamic and JSDoc type imports) and fails on a feature importing another, `shared/` importing a feature, `domain/` importing outside `domain/`, or core, data and services importing a feature. `main.js` reaches features only through the registry: work a feature does once at start-up is its `boot` module (`start(app)`, see `exam/boot.js`).
+3. **Your routes are yours.** You own every path under your prefix. The router gives you the rest in `ctx.params.rest` (`/exam/3/lesen/review/0192…` → `rest = '3/lesen/review/0192…'`), the query in `ctx.query` and the registry path that matched in `ctx.route` (for a feature with more than one prefix). Parse it in your `index.js`. A registry path may be `{ path, when(query) }`, a route that matches only when the query passes too (`/practice/round` with `kind=script:<id>` belongs to the scripts); list it before the feature it narrows. Old routes never stop resolving: `tests/fixtures/practice-routes.mjs` lists Practice's, checked in node and in the browser.
 4. **Only `clock` knows dates.** Read today and the exam through `ctx.clock.ctx()` (`today`, `exam`, `phase`, `daysLeft`, `lastNewDay`, `capDay`, `newItems`, `mocks`). Never `new Date()` for a study day, never a literal date (CI fails on `20NN-MM-DD` in `src/`). Labels: `label(day)` → "Fri 9 Oct", `labelDe(day)` → "9. Okt.".
 5. **Only `data/settings.js` writes settings,** and only `setExamDate()` writes the exam date.
 6. **No markup from strings.** Build with `h()` from `core/dom.js`; it throws on `html`/`innerHTML`. Render Claude's or anyone's text as text nodes. CSP is `script-src 'self'` with no inline styles: set styles through `el.style` / `style: {…}` in `h()`, never a `style` attribute string, and don't use `<select>` (WebKit reports it under the CSP; use chips or the segmented control).
@@ -90,7 +99,7 @@ export function todayModules(ctx) { return [/* ModuleBar */]; }      // optional
 `FeedbackRow`: `{ id, title, status, href, action? }` (at most three show). `ModuleBar`: `{ id, name, score | null, max, pass, href? }`.
 
 What stage A already provides (replace freely inside your folder):
-- `practice/plan.js`: the review round from `cards('b1')` with an "Auto" new-item estimate of 8, Teil 2 talk, the frames read-through on the eve, the warm-up on the exam day. Stage B: the real composer quota (priority items left ÷ new-days left, within the minutes), mistakes-from-corrections rounds (`F:` cards, see below), "Another round" when done.
+- Practice's rows, one plan.js per sibling feature (round 3): `practice-round` the warm-up, the review round and mistakes from corrections; `practice-write` the Schreiben task from memory and the Schreiben phrases; `practice-speak` speaking situations, the frames on the eve and the Teil 2 talk; `practice-script` the scripts; `practice-clusters` word clusters; `build` Word building. Row ids keep their `practice.*` names; the composer orders by priority, then id, so the split changes no plan.
 - `exam/plan.js`: `nextModule()` (a started draft, else Schreiben/Sprechen never attempted, else the lowest latest score, on the first test not yet done), uncorrected Schreiben and unread local corrections as feedback, and the module bars against the manifest's pass lines. Stage B: the full run on exam−4/−3, Fritz's feedback from the results sync, "fits before the exam" counts.
 
 ## Data you will find in the store

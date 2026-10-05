@@ -15,7 +15,7 @@ import { exportBundle, importFile } from '../../data/transfer.js';
 import { deleteProfile } from '../../data/session.js';
 import { results } from '../../data/sync/index.js';
 import { backupBlock } from './backup.js';
-import { newPerDayChosen } from '../../domain/budget.js';
+import { newPerDayChosen, buildShare } from '../../domain/budget.js';
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
 export async function mount(el, ctx) {
@@ -143,9 +143,14 @@ export async function mount(el, ctx) {
         options: [['auto', t('practice.newAuto')], ...[10, 20, 30, 40].map(n => /** @type {[string, string]} */ ([String(n), String(n)]))],
         onChange: v => write('newPerDay', v === 'auto' ? null : Number(v)) }),
       h('p', { class: 'field-hint' }, t('practice.newPerDay.hint')));
+    // Word building's share of those new items (it was a chip row on Word building's page; one allowance, one place)
+    const buildNew = h('div', { class: 'form-field', id: 'profile-build-new' }, h('p', { class: 'field-label' }, t('profile.buildNew')),
+      seg({ label: t('profile.buildNew'), value: String(buildShare(s)), options: [0, 3, 5, 8, 12].map(n => /** @type {[string, string]} */ ([String(n), String(n)])),
+        onChange: v => write('practice.buildNew', Number(v)) }),
+      h('p', { class: 'field-hint' }, t('profile.buildNew.hint')));
     const hasKey = !!(store.get('secrets', {}) || {}).anthropicKey;
     sec.append(
-      perDay,
+      perDay, buildNew,
       switchRow({ label: t('practice.readAloud'), checked: s.practice.readAloud, onChange: v => write('practice.readAloud', v) }),
       switchRow({ label: t('practice.claudeCheck'), hint: hasKey ? undefined : t('practice.claudeCheck.needsKey'), checked: s.practice.claudeCheck, onChange: v => write('practice.claudeCheck', v) }),
       switchRow({ label: t('practice.simpleInput'), hint: t('practice.simpleInput.hint'), checked: s.practice.simpleInput, onChange: v => write('practice.simpleInput', v) }));

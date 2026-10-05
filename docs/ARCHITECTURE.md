@@ -23,7 +23,10 @@ src/
   core/               clock, router, dom, bus, i18n, config, schema, log, ui, icons, motion (kit), brand (kit)
   data/               store, adapters/{idb,memory}, session, settings, migrate, transfer, content, ids
   domain/             pure, tested in node: fsrs, match, detect, speech, timer, readiness, b1ready, days, today
-  features/           registry, contract, today/, profile/, welcome/, practice/, exam/, lookup/, explore/ (Look up › Map; palace/ is its 3D view, loaded on demand)
+  features/           registry, contract, day; today/, profile/, welcome/, exam/, lookup/, explore/ (Look up › Map; palace/ is its 3D view, loaded on demand);
+                      Practice as sibling features: practice/ (hub, exam words), practice-round/, practice-write/,
+                      practice-speak/, practice-script/, practice-clusters/, build/ (Word building); shared/ is the
+                      practice runtime they share (a library). Features never import each other (§2.1)
   i18n/               en.js, de.js (partial; falls back to English)
   vendor/paper-shaders/   @paper-design/shaders 0.0.81, vendored (VENDOR.md)
   vendor/newsreader-map/  the map font (OFL) and its advance widths; vendor/palace-sdf/ its prebuilt SDF text atlas for 3D
@@ -38,6 +41,24 @@ tests/e2e/            @playwright/test against the stamped _site/ (WebKit 390 px
 .github/workflows/    ci.yml (the gates, the e2e included), deploy.yml (Pages, after ci)
 docs/                 ARCHITECTURE.md (this), DESIGN.md, SCHEMA.md, CONTRIBUTING-FEATURES.md
 ```
+
+### 2.1 Module graph
+
+Layers, checked by `tests/unit/feature-graph.test.mjs` over every static, dynamic and JSDoc import:
+
+| From | May import |
+|---|---|
+| `domain/` | `domain/` only (pure; a JSDoc type from `core/clock.js` loads nothing) |
+| `core/`, `data/`, `services/`, `i18n/` | each other and `domain/`; never `features/` |
+| `features/<id>/` | core, data, domain, services, i18n, vendor, the kernel (`features/*.js`), `features/shared/`; never another feature |
+| `features/shared/` | the same, never a feature |
+| `features/registry.js` | feature view, plan and boot modules, lazily |
+| `main.js` | core, data, services and `features/registry.js` only |
+
+Practice was 35% of the code in one folder (round 2's assessment). Round 3 split it into sibling features, one per
+product, each owning its routes and its Today rows; no route, CSS class, store key or card id changed
+(`tests/fixtures/practice-routes.mjs`). Today reads the day's numbers from `domain/allowance.js` and the map's count
+from `data/atlas.js`, so it imports no feature.
 
 **No bundler, no framework.** Native ES modules run in Safari 17+ and node 22+; the domain code is tested with plain `import`. The deploy step (stage C) is the only build: it stamps the version, writes the manifest and copies publishable folders. Revisit esbuild only if first load on 4G exceeds 2 s or TypeScript sources are adopted. Types: JSDoc + `tsc --checkJs`, **strict and blocking** on `core`, `data` and the new domain modules; the ported domain modules are typed through `.d.ts` files where strict code imports them and checked non-strict (advisory) until annotated.
 

@@ -110,6 +110,25 @@ export async function flip(els, mutate, { duration, easing = 'var(--spring-snapp
 }
 
 /**
+ * Open or close a disclosure: the panel (.reveal-answer, one child) grows from 0fr to 1fr rows and fades in, the
+ * same layout animation as the answer reveal; with reduced motion it switches at once. The trigger's aria-expanded
+ * follows, and a closed panel is inert (out of the tab order and the accessibility tree).
+ * @param {HTMLElement} trigger @param {HTMLElement} panel @param {boolean} open
+ */
+export function disclose(trigger, panel, open) {
+  trigger.setAttribute('aria-expanded', String(open));
+  panel.inert = !open;
+  if (reduced()) {
+    panel.style.transition = 'none';
+    panel.classList.toggle('is-open', open);
+    void panel.offsetHeight;
+    panel.style.transition = '';
+    return;
+  }
+  panel.classList.toggle('is-open', open);
+}
+
+/**
  * Reveal elements marked [data-reveal] as they enter the viewport. Siblings stagger by --i
  * (set automatically per container, capped at 8). Returns a disconnect function.
  */

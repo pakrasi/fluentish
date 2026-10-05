@@ -62,6 +62,7 @@ export async function mountSpeak(el, ctx, parts) {
     h('div', { class: 'page-head' }, h('h1', null, t('practice.speak.title'))),
     h('nav', { class: 'pr-rows' },
       linkRow({ href: '#/practice/situations', title: t('practice.sim'), detail: simDetail() }),
+      linkRow({ href: '#/practice/round?kind=area:speaking', title: t('practice.area.speaking'), detail: t('practice.speak.phrases.detail') }),
       linkRow({ href: '#/practice/speak/teil2', title: t('practice.speak.teil2'), detail: t('practice.speak.teil2.detail') }),
       sp.canListen() ? linkRow({ href: '#/practice/speak/aloud/check', title: t('practice.speak.check'), detail: cal ? t('practice.speak.check.done') : t('practice.speak.check.never') }) : null),
     sp.canListen() ? null : notice({ children: [h('p', null, t('practice.speak.noRecogniser'))] })));

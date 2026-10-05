@@ -6,7 +6,7 @@
    or with no date, Today has no mock row until he sets a next exam. While Schreiben is the weakest module
    (domain/modules.js writingFocus) the mock is Schreiben when a test is left; it may run over the day only when the
    whole module fits (the day's minutes at least the module plus 30), else it waits under "If you have time" and the
-   day's Schreiben is the task from memory (practice/plan.js). Any other module's mock then never runs over: the
+   day's Schreiben is the task from memory (practice-write/plan.js). Any other module's mock then never runs over: the
    Schreiben work comes first. */
 import { today as studyDay } from '../../core/clock.js';
 import { scoreLine, scoreNum, stampMs } from '../../domain/grade.js';
