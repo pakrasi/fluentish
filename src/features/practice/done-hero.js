@@ -16,9 +16,12 @@ export function doneHero({ label, figure, of, lines = [], data = null, atmo = tr
   const fig = h('span', { class: 'figure tnum' }, String(figure));
   const atmoEl = atmo ? h('div', { class: 'atmo', 'aria-hidden': 'true' }) : null;
   const h1 = h('h1', { tabindex: '-1' }, fig, ' ', h('span', { class: 'pr-done-of' }, of));
-  const el = h('section', { class: ['hero', 'pr-done-hero', cls] }, atmoEl,
-    h('p', { class: 'label' }, label), h1,
-    lines.filter(Boolean).map(x => (typeof x === 'string' ? h('p', { class: 'caption tnum' }, x) : x)),
+  // the atmosphere sits behind the figure only; the data object follows below it, on the page (never text on the
+  // gradient)
+  const el = h('div', { class: ['pr-done-top', cls] },
+    h('section', { class: 'hero pr-done-hero' }, atmoEl,
+      h('p', { class: 'label' }, label), h1,
+      lines.filter(Boolean).map(x => (typeof x === 'string' ? h('p', { class: 'caption tnum' }, x) : x))),
     data ? h('div', { class: 'pr-done-data' }, data) : null);
   return {
     el,
