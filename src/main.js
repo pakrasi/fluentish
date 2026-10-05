@@ -19,6 +19,7 @@ import { createContent } from './data/content.js';
 import { sync, restore } from './data/sync/index.js';
 import { TABS, routes } from './features/registry.js';
 import { createSw } from './services/sw.js';
+import { loadRecordSchemas, recordChecker } from './data/records.js';
 
 installErrorLog();
 
@@ -53,6 +54,14 @@ async function main() {
   let adapter, durable = true;
   try { adapter = await createIdbAdapter(); } catch (e) { log('storage', e); adapter = createMemoryAdapter(); durable = false; }
   await attachLogStore(adapter);   // the error log survives a reload (core/log.js)
+  // development only (a dev server or the e2e server, which serve schemas/records): every record written is checked
+  // against its schema, and a mismatch is a console error (data/records.js). The deployed app loads no schema, and
+  // neither does a page a service worker controls (?sw=on on localhost tries the built app as it ships, offline too).
+  const check = isDev() && !navigator.serviceWorker?.controller ? await loadRecordSchemas(config.root).then(s => (s ? recordChecker(s) : null)) : null;
+  if (check) {
+    const put = adapter.putProfile.bind(adapter);
+    adapter.putProfile = (/** @type {any} */ p) => { check('profile', 'profile', p); return put(p); };
+  }
 
   /** @type {any} */ let store = null;
   const settings = () => normalizeSettings(store?.get('settings'));
@@ -67,6 +76,7 @@ async function main() {
     kind: q.has('shadow') || shadowByDefault() ? 'shadow' : 'local',
   });
   store = session.store;
+  store.check = check;
   store.onWriteError = (/** @type {string} */ what) => toast(t('error.save', { what }));
   store.onDeleted = () => location.reload();   // "Delete all" in another tab
   applyPrefs(store.get('prefs'));

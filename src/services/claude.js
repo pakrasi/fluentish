@@ -23,6 +23,12 @@ export const GRADER_TEMPLATE = [
 ].join('\n');
 
 /**
+ * The versions of the prompts in this file. A change to a prompt's text bumps its version (tests/unit/exam-claude.test.mjs
+ * pins a hash of each), so every stored correction says which prompt wrote it (feedback@1 promptVersion).
+ */
+export const PROMPTS = /** @type {const} */ ({ schreibenExam: 'schreiben-exam@1', schreibenTask: 'schreiben-task@1' });
+
+/**
  * The system prompt with the private learner notes in their slot (or nothing there).
  * @param {string | null | undefined} learnerNotes
  */
@@ -115,7 +121,7 @@ export async function correctSchreiben({ key, ex, texts, learnerNotes, fetch: f 
   const res = await ask({ key, system: graderSystem(learnerNotes), user: graderMessage(ex, texts), fetch: f });
   const body = res.text.replace(/^```[a-z]*\n?|\n?```$/g, '').trim();
   if (!isCorrection(body)) throw new ClaudeError('format', body.slice(0, 200));
-  return { body, model: res.model };
+  return { body, model: res.model, promptVersion: PROMPTS.schreibenExam };
 }
 
 /* Practice: one Schreiben text written in Practice (Build an email, then "Write it yourself"). The same public,
@@ -158,7 +164,7 @@ export async function correctTask({ key, task, text, words, fetch: f }) {
   const res = await ask({ key, system: TASK_GRADER, user: taskMessage(task, text, words), maxTokens: 6000, fetch: f });
   const body = res.text.replace(/^```[a-z]*\n?|\n?```$/g, '').trim();
   if (!isTaskCorrection(body)) throw new ClaudeError('format', body.slice(0, 200));
-  return { body, model: res.model };
+  return { body, model: res.model, promptVersion: PROMPTS.schreibenTask };
 }
 
 /* Practice: "My answer is right". Claude checks one answer the matcher refused (never one a trap detector flagged).

@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "feedback@1",
+  "title": "Feedback (a correction)",
+  "description": "One correction of a learner's text: an item of kv exams.feedbackLocal (a one-click Schreiben correction made here, or one carried over from the B1 exam app), sent as data/feedback-ai/*.json by its feedback.created event. author, model and promptVersion say who or what wrote it and with which prompt (additive: records from before they existed have none of them).",
+  "type": "object",
+  "required": [
+    "body"
+  ],
+  "properties": {
+    "id": {
+      "type": [
+        "string",
+        "integer"
+      ]
+    },
+    "day": {
+      "type": [
+        "integer",
+        "string",
+        "null"
+      ]
+    },
+    "module": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "attempt_id": {
+      "type": [
+        "string",
+        "integer",
+        "null"
+      ]
+    },
+    "attempt_file": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "body": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "author": {
+      "enum": [
+        "ai",
+        "tutor",
+        "self"
+      ],
+      "description": "ai: written by a model (Claude) from this app; tutor: a person or a tutor agent reviewing the learner's work; self: the learner"
+    },
+    "model": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "the model that wrote it, as the API reported it (author ai)"
+    },
+    "promptVersion": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-z0-9-]+@\\d+$",
+      "description": "the versioned prompt it was written with, e.g. schreiben-exam@1 (services/claude.js PROMPTS)"
+    },
+    "source": {
+      "type": "string"
+    },
+    "eventId": {
+      "type": "string"
+    },
+    "synced": {
+      "type": "boolean"
+    }
+  }
+}

@@ -125,7 +125,9 @@ export function filesFor(e, blob = null) {
       ];
     }
     case 'feedback.created':
-      return [{ path, body: json({ day: p.day, module: p.module, attempt_id: p.attempt_id ?? null, attempt_file: p.attempt_file ?? null, body: p.body, created_at: p.created_at, model: p.model ?? null }, 1), message: `Tag ${p.day} ${p.module}: Korrektur` }];
+      // author and prompt_version are additive (feedback@1); events from before them send neither
+      return [{ path, body: json({ day: p.day, module: p.module, attempt_id: p.attempt_id ?? null, attempt_file: p.attempt_file ?? null, body: p.body, created_at: p.created_at, model: p.model ?? null,
+        ...(p.author ? { author: p.author } : {}), ...(p.promptVersion ? { prompt_version: p.promptVersion } : {}) }, 1), message: `Tag ${p.day} ${p.module}: Korrektur` }];
     case 'vocab.captured':
       return [{ path, body: json({ day: p.day, module: p.module ?? null, teil: p.teil ?? null, word: p.word, word_key: p.word_key || wordKey(p.word), sentence: p.sentence || '', created_at: p.created_at }), message: `Wort: ${p.word} (Tag ${p.day})` }];
     case 'vocab.reviewed': {

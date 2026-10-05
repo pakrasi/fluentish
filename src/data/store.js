@@ -82,6 +82,9 @@ export class Store {
     /** @type {((path: string) => void) | null} */ this.onWriteError = null;
     /** another tab deleted this profile @type {(() => void) | null} */ this.onDeleted = null;
     this.deleted = false;
+    /** Dev and tests only (data/records.js): validates each set of a checked collection and each appended event against
+        schemas/records before it is written. Null in the deployed app. @type {((kind: 'event' | 'kv', name: string, value: any) => void) | null} */
+    this.check = null;
     if (channel) channel.onmessage = e => this.onRemote(e.data);
   }
 
@@ -109,6 +112,7 @@ export class Store {
 
   /** Replace a collection. Never mutate what get() returned; use update(). @param {string} name @param {any} value */
   set(name, value) {
+    this.check?.('kv', name, value);
     this.kv[name] = value;
     // writes the value as it is when the write runs, not as it was when set() was called: another tab's change merged
     // in meanwhile (onRemote) is kept
@@ -166,6 +170,7 @@ export class Store {
       id: uuidv7(at.getTime()), v: 1, profileId: this.profile.id, deviceId: this.device.deviceId, seq: this.device.seq,
       at: isoWithOffset(at), day: day || this.clock.today(), type, payload, synced: false, path,
     };
+    this.check?.('event', type, e);
     this.events.set(e.id, e);
     if (!this.deleted) this.track(Promise.all([this.adapter.putEvents(this.profile.id, [e]), this.adapter.putDevice(this.device)]), 'outbox')
       .then(() => this.post({ kind: 'outbox' }));

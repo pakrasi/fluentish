@@ -108,7 +108,7 @@ async function runCorrection(ctx, exam, attempt, ex) {
     const test = ex || await ctx.content.load(`exam.${exam.id}.${String(attempt.day).padStart(2, '0')}`);
     const texts = Object.fromEntries((attempt.writings || []).map((/** @type {any} */ w) => [w.aufgabe, w.text]));
     const res = await correctSchreiben({ key, ex: test, texts, learnerNotes: learnerNotes(store) });
-    saveCorrection(ctx, { attempt, body: res.body, model: res.model });
+    saveCorrection(ctx, { attempt, body: res.body, model: res.model, promptVersion: res.promptVersion });
     job.status = 'done';
     if (!location.hash.includes(`/review/${attempt.id}`)) ctx.toast(t('exam.correct.done', { n: attempt.day }));
   } catch (e) {

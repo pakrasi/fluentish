@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "profile@1",
   "title": "Profile",
-  "description": "A learner on this device. Every stored record carries profileId, so profile switching and accounts sit on top without moving data.",
+  "description": "A learner on this device. Every stored record carries profileId, so profile switching and accounts sit on top without moving data. A preview (shadow) profile merged into the real one at the cutover keeps its record with archivedAt and archivedInto (data/session.js keepPreview) until it is purged 30 days later.",
   "type": "object",
   "required": [
     "id",
@@ -36,6 +36,16 @@
         "string",
         "null"
       ]
+    },
+    "archivedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "when the cutover archived this preview profile after merging it (data/session.js); archived profiles are never opened and are purged 30 days later"
+    },
+    "archivedInto": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "description": "the id of the profile this preview was merged into"
     }
   }
 }

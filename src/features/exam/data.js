@@ -276,16 +276,18 @@ export function recordings(store, n) {
 
 /**
  * Keep a one-click correction: shown at once, sent as data/feedback-ai/*.json, attached to its attempt by the Mac.
- * @param {any} ctx @param {{ attempt: any, body: string, model: string | null, now?: number }} o
+ * The record (feedback@1) says who wrote it: author 'ai', the model the API reported and the prompt's version.
+ * @param {any} ctx @param {{ attempt: any, body: string, model: string | null, promptVersion?: string | null, now?: number }} o
  */
-export function saveCorrection(ctx, { attempt, body, model, now = Date.now() }) {
+export function saveCorrection(ctx, { attempt, body, model, promptVersion = null, now = Date.now() }) {
   const { store } = ctx;
   const at = new Date(now);
   const f = {
     id: `local-${uuidv7(now)}`, day: attempt.day, module: attempt.module, attempt_id: attempt.alias ?? attempt.legacy?.id ?? attempt.id,
     attempt_file: attempt.path || attempt.legacy?.path || attempt.file || null, body, created_at: isoWithOffset(at), model, source: 'fritz-app',
+    author: /** @type {const} */ ('ai'), promptVersion,
   };
-  const e = results(store).record('feedback.created', { day: f.day, module: f.module, attempt_id: f.attempt_id, attempt_file: f.attempt_file, body, created_at: f.created_at, model }, at);
+  const e = results(store).record('feedback.created', { day: f.day, module: f.module, attempt_id: f.attempt_id, attempt_file: f.attempt_file, body, created_at: f.created_at, model, author: f.author, promptVersion }, at);
   store.update('exams.feedbackLocal', (/** @type {any[]} */ xs) => [...(xs || []), { ...f, eventId: e.id }], []);
   sync(ctx, true);
   return f;
