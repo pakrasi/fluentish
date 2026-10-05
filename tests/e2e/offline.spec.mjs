@@ -31,11 +31,19 @@ test('after one visit, the app reloads offline from the service worker', async (
     await seed(page, { origin: srv.origin });
     await page.goto(`${srv.origin}${APP}?sw=on#/today`);
     await expect(page.locator('html.booted')).toHaveCount(1);
-    // installed (the stamped precache list) and in control of this page, with the app root as its scope
-    // the worker precaches about 8 MB: wait until it is active, then load once more under its control
-    await page.evaluate(() => navigator.serviceWorker.ready.then(() => null));
-    if (!(await page.evaluate(() => !!navigator.serviceWorker.controller))) { await page.reload(); await expect(page.locator('html.booted')).toHaveCount(1); }
-    await expect.poll(() => page.evaluate(() => !!navigator.serviceWorker.controller), { timeout: 30_000 }).toBe(true);
+    // installed (the stamped precache list) and in control of this page, with the app root as its scope.
+    // The worker precaches about 8 MB, then activates and claims this page (sw.js activate: clients.claim()). Wait for
+    // that claim, never reload for it: in WebKit a navigation the context route answers (the Trusted Types tripwire
+    // fulfils the shell) is never handed to the worker, so a page reloaded while the server is up stays uncontrolled
+    // for good. That reload was the old fallback when the claim had not landed yet when it was checked (a slow runner),
+    // and the cause of the WebKit flake (C3a).
+    await page.evaluate(async () => {
+      const reg = await navigator.serviceWorker.ready;
+      const w = reg.active;
+      if (w && w.state !== 'activated') await new Promise(r => w.addEventListener('statechange', () => { if (w.state === 'activated') r(null); }));
+      if (!navigator.serviceWorker.controller) await new Promise(r => navigator.serviceWorker.addEventListener('controllerchange', () => r(null), { once: true }));
+    });
+    expect(await page.evaluate(() => !!navigator.serviceWorker.controller)).toBe(true);
     expect(await page.evaluate(async () => (await navigator.serviceWorker.getRegistration())?.scope)).toBe(`${srv.origin}${APP}`);
   } finally {
     await srv.stop();
