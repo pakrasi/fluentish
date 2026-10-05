@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "atlas@1",
+  "title": "Explore map",
+  "description": "The Explore map: an item table (columns: id, text when it differs from the id, article, kind, level, part of speech, frequency x100, width and article width in tenths of a unit) and, per built mode, every group's disc (centre, radius, first baseline) with its items in paragraph order (dx: the first item of a line absolute, others the gap after the item before, tenths; ln: line). Built by tools/build-atlas.mjs with src/domain/atlas.js; positions never move between builds.",
+  "type": "object",
+  "required": ["version", "font", "unit", "items", "modes"],
+  "additionalProperties": false,
+  "$defs": {
+    "ints": { "type": "array", "items": { "type": "integer" } },
+    "group": {
+      "type": "object",
+      "required": ["key", "label", "cluster", "x", "y", "r", "y0", "items", "dx", "ln"],
+      "additionalProperties": false,
+      "properties": {
+        "key": { "type": "string", "pattern": "^(topic|family|opp|level|type):[\\w.äöüß-]+$" },
+        "label": { "type": "string", "minLength": 1 },
+        "cluster": { "type": ["string", "null"] },
+        "x": { "type": "integer" }, "y": { "type": "integer" }, "r": { "type": "integer", "minimum": 1 }, "y0": { "type": "integer" },
+        "items": { "$ref": "#/$defs/ints" }, "dx": { "$ref": "#/$defs/ints" }, "ln": { "$ref": "#/$defs/ints" }, "pair": { "$ref": "#/$defs/ints" }
+      }
+    },
+    "groups": { "type": "array", "items": { "$ref": "#/$defs/group" } }
+  },
+  "properties": {
+    "version": { "const": 1 },
+    "font": { "type": "object" },
+    "unit": { "type": "object", "required": ["fs", "lh", "art"] },
+    "items": {
+      "type": "object",
+      "required": ["id", "t", "a", "k", "L", "p", "f", "w", "aw"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "array", "items": { "type": "string", "pattern": "^(W|K|GC):.+$" } },
+        "t": { "type": "array", "items": { "type": "string" } },
+        "a": { "$ref": "#/$defs/ints" }, "k": { "$ref": "#/$defs/ints" }, "L": { "$ref": "#/$defs/ints" },
+        "p": { "type": "array", "items": { "type": "string" } },
+        "f": { "$ref": "#/$defs/ints" }, "w": { "$ref": "#/$defs/ints" }, "aw": { "$ref": "#/$defs/ints" }
+      }
+    },
+    "modes": {
+      "type": "object",
+      "required": ["topic", "family", "opp", "level", "type"],
+      "additionalProperties": false,
+      "properties": { "topic": { "$ref": "#/$defs/groups" }, "family": { "$ref": "#/$defs/groups" }, "opp": { "$ref": "#/$defs/groups" }, "level": { "$ref": "#/$defs/groups" }, "type": { "$ref": "#/$defs/groups" } }
+    }
+  }
+}

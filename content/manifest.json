@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "13eb741c284e",
+ "version": "6c88abceccf0",
  "languages": [
   {
    "id": "khasi",
@@ -151,6 +151,13 @@
   }
  ],
  "files": [
+  {
+   "id": "atlas.de",
+   "path": "atlas/de.json",
+   "schema": "atlas@1",
+   "bytes": 546655,
+   "sha256": "93760cad88762793a0ebe14b0eb4a9a632574e1bcf62145b8584240c1b001f0b"
+  },
   {
    "id": "b1.annot",
    "path": "b1/annot.json",

@@ -9,6 +9,7 @@ import { build, ROOT } from './build-manifest.mjs';
 import { build as buildSpeak, serialise as serialiseSpeak, SRC as SPEAK_SRC } from './build-speak.mjs';
 import { validateBank } from '../src/features/practice/sim.js';
 import { validateClusters } from '../src/domain/clusters.js';
+import { build as buildAtlas, sources as atlasSources, OUT as ATLAS_OUT, METRICS as ATLAS_METRICS } from './build-atlas.mjs';
 import { build as buildClusters, serialise as serialiseClusters, withAdded, OUT as CLUSTERS_OUT, WORDS as WORDS_PATH } from './build-clusters.mjs';
 
 const schemas = new Map();
@@ -52,6 +53,11 @@ for (const e of validateBank(JSON.parse(speakText), { chunkIds, frameIds })) err
     for (const e of validateClusters(JSON.parse(clustersText), { words, chunkIds, themes })) errors.push(`clusters/de.json ${e}`);
   } catch (e) { errors.push(`clusters: ${/** @type {Error} */ (e).message}`); }
 }
+// the Explore map: what the content builds, keeping every position of the shipped map (tools/build-atlas.mjs)
+try {
+  const atlasText = readFileSync(ATLAS_OUT, 'utf8');
+  if (buildAtlas(atlasSources(), JSON.parse(readFileSync(ATLAS_METRICS, 'utf8')), JSON.parse(atlasText)) !== atlasText) errors.push('content/atlas/de.json is out of date: run node tools/build-atlas.mjs');
+} catch (e) { errors.push(`atlas: ${/** @type {Error} */ (e).message}`); }
 if (errors.length) {
   console.error(`validate-content: ${errors.length} problem(s)`);
   errors.slice(0, 60).forEach(e => console.error('  ' + e));
