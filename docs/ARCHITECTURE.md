@@ -161,7 +161,7 @@ Stage A: unit tests (node:test, in a New York / Berlin / Kolkata matrix in CI): 
 - the network is sealed: GitHub (an in-memory Contents API that answers only a fake token), Anthropic, fonts and media are answered by route mocks, any other host fails the test, and service workers are blocked (the offline spec's worker serves only its own origin), so no token can reach a real server;
 - every test fails on a console error or an uncaught exception, and axe (WCAG 2.1 A/AA) fails on serious and critical findings on each screen it visits.
 - a Trusted Types tripwire: the shell is served with `require-trusted-types-for 'script'` and a default policy that refuses HTML and script strings (the service worker's same-origin URL passes), so an HTML string written into the DOM by the app or a vendored library fails the test.
-Not covered there: the mic, the keyboard, haptics and background behaviour on a real iPhone (the checklist), and Hören audio playback. Still to come: golden vectors in `tests/vectors/` for a Swift port.
+Not covered there: the mic, the keyboard, haptics and background behaviour on a real iPhone (the checklist), and Hören audio playback. **Golden vectors** (`tests/vectors/`, round 3): the exact outputs of the grader, FSRS, the clock and the day's allowance for fixed inputs, checked by `tests/unit/vectors.test.mjs`, for a language pack or a Swift port to match byte for byte (`tests/vectors/generate.mjs`).
 
 **Accessibility:** focus moves to the view's `<h1>` on route change; the tab bar is a `<nav>` with `aria-current`; live regions for announcements; targets ≥ 44 px; text in the kit's sizes, inputs ≥ 16 px; `lang` on target-language text; every effect has a reduced-motion path (`html[data-motion]` is a user setting).
 
@@ -186,4 +186,6 @@ Differs from the plan, on purpose:
 
 Deferred from stage A, and built since: the results sync and its outbox flush (stage C; behind the sync seam `data/sync/index.js`, §3.2); the Claude service and the grader template (`services/claude.js`, prompts versioned in `PROMPTS`); Practice, Exam and Look up (stage B, plus Explore, Word building and Scripts); restore from backup and the cross-device merge (§3.2); persisted diagnostics (§8); browser e2e with axe and a Trusted Types tripwire (round 3, §8); record checks against `schemas/records` in development and tests (round 3, §3).
 
-Still deferred: the boot-time delta re-merge (§6); golden vectors; annotating the ported domain modules for strict types (the legacy config is advisory in CI); self-hosted fonts; LICENSE files (the owner chooses the licence).
+Also built in round 3: golden vectors (§8), and the grader (`match.js`, `detect.js`, `speech.js`) in strict types, with a ratchet for every other module (`tools/typecheck-ratchet.mjs`: the error count may only fall).
+
+Still deferred: the boot-time delta re-merge (§6); strict types for the modules under the ratchet; self-hosted fonts; LICENSE files (the owner chooses the licence).
