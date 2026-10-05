@@ -255,7 +255,9 @@ body.ex-page { overscroll-behavior: none; }
 /* the HUD in 3D: Districts instead of Gaps only; the key says what height means */
 .pl-distbtn, .ex-key.pl-height { display: none; }
 .explore.is-3d .pl-distbtn { display: inline-flex; }
-.explore.is-3d .ex-gaps { display: none; }
+.explore.is-3d .ex-gaps, .explore.is-3d .ex-selbtn { display: none; }
+.ex-chiprow .ex-selbtn { flex: none; border-radius: var(--r-ctl); background: var(--surface); box-shadow: 0 0 0 1px var(--hairline); }
+.ex-chiprow .ex-selbtn[aria-pressed="true"] { background: var(--ink); color: var(--on-ink); }
 .explore.is-3d .ex-key.pl-height { display: inline-flex; color: var(--ink-3); }
 @media (min-width: 720px) { .explore.is-3d .ex-key.pl-height { flex-basis: 100%; } }
 .ex-total.is-loading3d { color: var(--ink-3); }

@@ -604,15 +604,16 @@ export async function createPalace(canvas, o) {
    * The learned moment for one item at time ta (seconds on the palace clock): the scaffold turns cobalt, a ring runs out,
    * the building rises from its old floors to its new ones on spring-pop with a cobalt line riding up, the letters
    * lift off and settle on the new roof in cobalt, ~70 motes rise and fall, the neighbours bob once.
-   * @param {number} i @param {number} from previous state code @param {number} ta
+   * A word he marked known himself (select mode, Quick sort) gets the softer version: the rise, the cobalt and the
+   * letters, without the ring and the motes, since no round earned it.
+   * @param {number} i @param {number} from previous state code @param {number} ta @param {boolean} [soft]
    */
-  function learn(i, from, ta) {
+  function learn(i, from, ta, soft = false) {
     const f0 = floorsOf(from, 0), f1 = floorsOf(3, S[i]);
     writeItem(i, [from, 3, ta, today[i]], [f0, f1, ta + 0.08, ta]);
     const x = L.X[i] + A.W[i] / 2, z = L.Y[i] - 5;
     pulses.set([x, z, ta, 0], (pulseK++ % 8) * 4);
-    ring(x, z, 46 + A.W[i] * 0.4, 1.0, ta + 0.05);
-    burst(i, ta + 0.08);
+    if (!soft) { ring(x, z, 46 + A.W[i] * 0.4, 1.0, ta + 0.05); burst(i, ta + 0.08); }
     busy(ta - now() + 2.6);
   }
 
@@ -651,8 +652,9 @@ export async function createPalace(canvas, o) {
      * type at least 22 px (26 on a desktop), 340 ms apart within a stop. Items the tour cannot reach settle at once.
      * Reduced motion: the final state at once. Resolves when the last moment has played.
      * @param {number[]} items in reading order @param {Map<number, number>} prev item → previous state
+     * @param {Set<number>} [soft] items he marked known himself (no ring, no motes)
      */
-    async playMoments(items, prev) {
+    async playMoments(items, prev, soft = new Set()) {
       if (!items.length) return [];
       if (o.reduced() || rise < 0.99) { for (const i of items) writeItem(i, [3, 3, NONE, today[i]], [floorsOf(3, S[i]), floorsOf(3, S[i]), NONE, NONE]); kick(); return items; }
       const minPx = isPhone() ? 22 : 26, ins = o.insets();
@@ -680,7 +682,7 @@ export async function createPalace(canvas, o) {
         }
         if (g.length === 1 && sel < 0) setLens(g[0], 2.4);
         const ta = now();
-        g.forEach((i, k) => learn(i, prev.get(i) ?? 1, ta + k * 0.34));
+        g.forEach((i, k) => learn(i, prev.get(i) ?? 1, ta + k * 0.34, soft.has(i)));
         await new Promise(r => setTimeout(r, interrupted ? 0 : (g.length - 1) * 340 + 1250));
       }
       return shown;
@@ -790,7 +792,7 @@ export async function createPalace(canvas, o) {
         kick();
       });
     },
-    rig: s, now, kick, learn: (/** @type {number} */ i, /** @type {number} */ from) => learn(i, from, now()),
+    rig: s, now, kick, learn: (/** @type {number} */ i, /** @type {number} */ from, soft = false) => learn(i, from, now(), soft),
     destroy() {
       alive = false; cancelAnimationFrame(raf); clearTimeout(lensHold);
       ro.disconnect(); mo.disconnect(); mq.removeEventListener('change', recolor);

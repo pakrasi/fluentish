@@ -141,7 +141,9 @@ async function mountMap(el, ctx, offs) {
   replace(el, page);
   // select mode (select.js): tap the words you know to mark them known; the List is not re-drawn while it is on
   const sel = createSelect({ ctx, A, page, score: i => K.score(i), rescore: () => rescore(), stateKey: i => stateKey(i), onOff: () => { if (listOn) renderList(); } });
-  page.querySelector('.ex-head-tools')?.prepend(sel.btn);
+  // in the chip row next to zoom (the head row at 390 px holds back, title, Map · 3D · List and Find at 44 px each);
+  // select mode is a 2D tool: the button hides in 3D, and opening 3D ends it
+  zoom.before(sel.btn);
   stage.append(sel.bar);
   // where the map starts on screen (the desktop card sits over its top right) and how tall a phone sheet's peek is
   const measure = () => {
@@ -241,7 +243,7 @@ async function mountMap(el, ctx, offs) {
   /* ---------- the 3D view (palace/) ---------- */
   /** @type {any} */ let palace = null;
   /** @type {Promise<any> | null} */ let palaceP = null;
-  /** @type {{play: number[], from: Map<number, number>} | null} */ let pendingMoments = null;
+  /** @type {{play: number[], from: Map<number, number>, soft: Set<number>} | null} */ let pendingMoments = null;
   let viewTurn = 0;
   /** The view that is showing: the 3D city or the 2D map (both take the same calls). */
   const cur = () => (view === '3d' && palace && !palace.lost ? palace : map);
@@ -327,18 +329,20 @@ async function mountMap(el, ctx, offs) {
     const prev = rec && rec.ver === key && rec.st ? decodeStates(rec.st, A.n) : null;
     const shown = play.filter(i => !Number.isNaN(L.X[i]));
     const from = new Map(shown.map(i => [i, prev ? prev[i] : 1]));
+    // words he marked known himself (select mode, Quick sort) get the softer moment
+    const soft = new Set(shown.filter(i => K.score(i)?.marked));
     store.set('palace', nextRecord(rec, { ids: A.ids, key, st: K.st, day: c.today }, shown));
-    return { play: shown, from };
+    return { play: shown, from, soft };
   }
   /**
    * Play queued moments (closing the sheet: an effect under a sheet did not happen), then say how many: a toast, or
    * only the announcement when a sheet opens next (the toast would cover its buttons).
-   * @param {{play: number[], from: Map<number, number>}} mq @param {{sheetNext?: boolean}} [opt]
+   * @param {{play: number[], from: Map<number, number>, soft: Set<number>}} mq @param {{sheetNext?: boolean}} [opt]
    */
   async function playMoments(mq, { sheetNext = false } = {}) {
     if (!palace || !mq.play.length) return;
     closeSheet();
-    const shown = await palace.playMoments(mq.play, mq.from);
+    const shown = await palace.playMoments(mq.play, mq.from, mq.soft);
     if (!alive) return;
     markShown(mq.play);
     const msg = t('explore.3d.learned', { n: mq.play.length });
@@ -400,6 +404,7 @@ async function mountMap(el, ctx, offs) {
   async function setView(v, initial = false, { target: tg = -1 } = {}) {
     const prev = initial ? 'map' : view;
     if (v === prev && !initial) return;
+    if (v === '3d' && sel.on) sel.set(false);
     if (v === '3d' && !can3d()) {
       view = prev === '3d' ? 'map' : prev; listOn = view === 'list'; selectSeg(view); page.classList.remove('is-3d');
       if (initial) { address(); if (tg >= 0) requestAnimationFrame(() => openGroup(tg, true)); }
