@@ -14,9 +14,16 @@ Every format here has a JSON Schema in `schemas/` (draft 2020-12, the subset `sr
   "exams": [{ "id": "goethe-b1", "name": "Goethe-Zertifikat B1", "short": "Goethe B1", "language": "german", "level": "B1",
               "modules": [{ "id": "lesen", "name": "Lesen", "minutes": 65, "max": 30, "pass": 18 }, …],
               "media": "https://pakrasi.github.io/b1-exam/audio/", "def": "exam.goethe-b1.def", "locale": "exam.goethe-b1.locale.de", "tests": [1, …, 14] }],
+  "packs": { "shared": ["igloo.chunks.en", "igloo.framework", …], "de": ["atlas.de", "b1.annot", …], "fr": ["igloo.chunks.french", …] },
   "files": [{ "id": "exam.goethe-b1.01", "path": "exams/goethe-b1/day01.json", "schema": "goethe-b1-exam@1", "bytes": 81234, "sha256": "…" }]
 }
 ```
+
+**Packs** (round 3, C3a): `packs[<lang>]` lists one language pack's file ids (the pack ids of `src/lang/registry.js`: `de`, `fr` …), `packs.shared` the files of no one language (the English sources, the framework, GO's tenses, the word themes). Every file is in exactly one pack, the one its id names (`build-manifest.mjs packOf`: a file named for its language, `igloo.chunks.french`, `clusters.de`; `b1.*` and `speak.*` are German; an exam's files are its language's). The service worker precaches `shared` and the active course's pack only (ARCHITECTURE §3.3).
+
+**Schema ids** are generic (`lexicon@1`, `phrases@1`, `grammar@1`, `sentences@1`, `situations@1`, `trainer-items@1` …). The ids from before (`igloo-words@1`, `igloo-chunks@1`, `b1-items@1`, `speak-situations@1` …) are aliases of them (`schemas/content-ids.json`) and still validate; the manifest writes the generic id. An exam's test and explanation files keep the exam's own schemas (`goethe-b1-exam@1`, `goethe-b1-why@1`). The table below names files by their old ids where that is how the tools still call them.
+
+**Native review**: a phrase bank, lexicon, grammar set or sentence bank may carry `reviewedBy` (a reviewer handle such as `native-fr-1`, never a real name: the repository is public) and `reviewedAt` (`YYYY-MM-DD`), on the file or on an entry; the two come together (`validate-content.mjs`).
 
 The web app fetches `path?h=<sha256[:8]>`, so a changed file is never served from an old cache. Versioning: a breaking change to a file's shape bumps its schema (`@2`) and writes a new path; old clients keep reading the old one. File contents carry no envelope, so the validators below keep working on them.
 
@@ -95,6 +102,10 @@ The device's backup state is the device-scope kv `backup` (`{on, at, error, even
 ### Decks and languages (`src/domain/decks.js`)
 
 A deck made from round 3 on is named `<lang>:<name>` (`fr:core`). The decks from before courses keep their names and are German through the fixed `LEGACY_DECK_LANG` (`b1`, `speak`, `script`, `clusters`, `build` → `de`). Card ids and the IDB keys `[profileId, deck, itemId]` never change; no card moves deck. Events whose payload names a deck carry an additive top-level `lang` (`deckLang(deck)`). Knowledge (`data/knowledge.js knowledgeDecks`), the allowance (`domain/allowance.js`) and Where you stand read only the active course's decks; for German that is every legacy deck, so their outputs are unchanged.
+
+Decks per course (C3a): the allowance (`domain/allowance.js`), and with it the budget, Today's count, `dueTomorrow` and the first week, counts the active course's `<lang>:<name>` decks: each in the allowance deck its name gives (`decks.js allowanceDeck`: `fr:speak` → speak, `fr:script`, `fr:build`, `fr:clusters`, `fr:writing`, `fr:mistakes` likewise, `fr:core` and any other → the daily round's b1 share): due cards, cards first answered today, and the new items its feature records open today in kv `deck.stats` (`{[deck]: {day, open}}`; any number without a record). German has no namespaced decks, so its numbers are the legacy reading, byte for byte.
+
+**Item ids per language** (`domain/itemids.js scopeItem`, `splitItem`): German item ids are unscoped and stay so (`K:ENG_CHUNK_0001`, `W:haus.n`; never re-keyed). Another language's item ids are `<lang>:<id>` (`fr:K:ENG_CHUNK_0001`), because the chunk bank's ids are the same in every language. Card ids inside a namespaced deck stay plain (`fr:core` / `K:ENG_CHUNK_0001`: the deck scopes the card in the IndexedDB key); knowledge scopes the item a card resolves to by its deck's language, and Igloo's legacy `lang|id` data by the course's. A feature that keys anything by item id (Look up's seen, exam words) passes its course's language to `scopeItem`.
 
 ### Item ids in deck `b1`
 

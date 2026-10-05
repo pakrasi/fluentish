@@ -172,6 +172,7 @@ Dials (taste-skill): VARIANCE 4, MOTION 5, DENSITY 5. App UI, not a landing page
 - List pages use one 760px column; Today and the exam runner use the wide layout.
 - Bottom tab bar on phone (fixed, translucent, 44px targets), inline links at the top from 900px.
 - Sections separate with 40px and a hairline, not boxes. The study card is the one elevated surface in a round.
+- Direction: write inline spacing and position with logical properties (`margin-inline-start`, `padding-inline`, `inset-inline-end`, `text-align: start`), never left/right, so a right-to-left course mirrors (`tests/unit/lang-dir.test.mjs` lists the few physical exceptions). Study-language text carries `lang` and `dir` (`core/lang.js`).
 
 ## Elevation & Depth
 
