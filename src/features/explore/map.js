@@ -114,6 +114,7 @@ export function createMap(canvas, o) {
   const kmin = () => fitView().k * 0.6;
   /** van Wijk and Nuij smooth zoom: on a long hop, zoom out a little so the way is visible. @param {{x: number, y: number, k: number}} to @param {{ms?: number}} [opt] */
   function flyTo(to, { ms } = {}) {
+    untouched = false;
     to = { ...to, k: Math.max(Math.min(to.k, KMAX), 0.01) };
     if (o.reduced()) { cam = { ...to }; flight = null; kick(); return; }
     const rho = Math.SQRT2, w0 = W / cam.k, w1 = W / to.k;
@@ -583,7 +584,7 @@ export function createMap(canvas, o) {
   const pos = (/** @type {PointerEvent} */ e) => { const r = canvas.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; };
   /** @param {PointerEvent} e */
   function down(e) {
-    canvas.setPointerCapture(e.pointerId); kbGroup = -1;
+    canvas.setPointerCapture(e.pointerId); kbGroup = -1; untouched = false;
     const p = pos(e); pts.set(e.pointerId, p);
     flight = null; inertia = null; vel = [];
     if (pts.size === 1) gesture = { kind: 'pan', t: performance.now(), moved: 0 };
@@ -622,7 +623,7 @@ export function createMap(canvas, o) {
   }
   /** @param {WheelEvent} e */
   function wheel(e) {
-    e.preventDefault(); flight = null;
+    e.preventDefault(); flight = null; untouched = false;
     const r = canvas.getBoundingClientRect(), sx = e.clientX - r.left, sy = e.clientY - r.top;
     // pinch on a trackpad and the mouse wheel zoom; a two-finger trackpad swipe pans
     const mouse = e.deltaMode !== 0 || (Math.abs(e.deltaY) >= 40 && Math.abs(e.deltaX) < 1 && Number.isInteger(e.deltaY));
@@ -655,6 +656,7 @@ export function createMap(canvas, o) {
    */
   function key(e) {
     if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key !== 'Shift') untouched = false;
     const step = 80 / cam.k;
     if (e.key === 'Tab') {
       const ord = tabOrder(), at = ord.indexOf(kbGroup), nx = at + (e.shiftKey ? -1 : 1);
@@ -685,7 +687,9 @@ export function createMap(canvas, o) {
   canvas.addEventListener('pointercancel', up);
   canvas.addEventListener('wheel', wheel, { passive: false });
   canvas.addEventListener('keydown', key);
-  const ro = new ResizeObserver(() => { const had = W; resize(); if (!had && L) cam = fitView(); });
+  // while nobody has moved the map, a resize (the stage settling on first load, a phone turning) frames it again
+  let untouched = true;
+  const ro = new ResizeObserver(() => { const had = W; resize(); if (L && (!had || (untouched && !flight && !morph))) cam = fitView(); });
   ro.observe(canvas);
   const mq = matchMedia('(prefers-color-scheme: dark)'), fq = matchMedia('(forced-colors: active)');
   const recolor = () => requestAnimationFrame(readColors);
@@ -760,7 +764,7 @@ export function createMap(canvas, o) {
     get layout() { return L; },
     get camera() { return { ...cam }; },
     /** @param {{x: number, y: number, k: number}} c */
-    set camera(c) { cam = { ...c }; kick(); },
+    set camera(c) { cam = { ...c }; untouched = false; kick(); },
     redraw() { version++; kick(); },
     /** Bitmap cache size, for the performance report. */
     /** Turn the group bitmaps off and on (to measure what they save). @param {boolean} on */

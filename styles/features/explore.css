@@ -85,14 +85,14 @@ body.ex-page { overscroll-behavior: none; }
 .ex-key.is-unknown i { color: var(--x-unknown); padding: 0 3px; border: 1px solid var(--x-box); border-radius: 3px; min-width: 0; margin-right: 6px; }
 .ex-key.is-unseen i { color: var(--x-new); font-style: italic; }
 .ex-key.is-today i { color: var(--x-today); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
-.ex-zoom { flex: none; display: flex; border-radius: var(--r-ctl); background: var(--surface); box-shadow: 0 0 0 1px var(--hairline); }
-.ex-zoom .ex-icon { border-radius: 0; }
+.ex-zoom { flex: none; display: flex; overflow: hidden; border-radius: var(--r-ctl); background: var(--surface); box-shadow: 0 0 0 1px var(--hairline); }
+.ex-zoom .ex-icon { display: grid; border-radius: 0; }
 .ex-zoom .ex-icon:first-child { border-radius: var(--r-ctl) 0 0 var(--r-ctl); }
 .ex-zoom .ex-icon:last-child { border-radius: 0 var(--r-ctl) var(--r-ctl) 0; }
 .ex-zoom .ex-icon + .ex-icon { box-shadow: -1px 0 0 var(--hairline); }
-.ex-fit { display: none; }
+.ex-zoom .ex-fit { display: none; }
 @media (min-width: 720px) {
-  .ex-fit { display: inline-grid; }
+  .ex-zoom .ex-fit { display: grid; }
   /* room for the legend in the row itself */
   .ex-keybtn { display: none; }
   .ex-legend { position: static; display: flex; flex-wrap: wrap; gap: 2px var(--s-4); padding: 0; background: none; box-shadow: none; font-size: 12px; order: 1; }
@@ -223,4 +223,4 @@ body.ex-page { overscroll-behavior: none; }
 @media (max-width: 719px) { .ex-find { top: 0; padding-top: calc(var(--s-3) + env(safe-area-inset-top)); } }
 .ex-sheet h2[tabindex="-1"]:focus { outline: none; }
 .explore.is-list .ex-zoom { display: none; }
-.ex-zoom .ex-icon { display: grid; }
+.ex-zoom .ex-icon:focus-visible { outline-offset: -3px; }

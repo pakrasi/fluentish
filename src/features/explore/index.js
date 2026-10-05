@@ -24,6 +24,7 @@ const STATES = /** @type {const} */ (['known', 'shaky', 'unknown', 'unseen']);
 const CODE_STATE = ['unseen', 'unknown', 'shaky', 'known'];
 const RETURN_MS = 3 * 3600e3;          // a study round started from the map comes back to its group within 3 hours
 const STUDY_N = 10;
+let mounts = 0;
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
 export async function mount(el, ctx) {
@@ -37,6 +38,10 @@ async function mountMap(el, ctx, offs) {
   const { t, store } = ctx;
   let alive = true;
   const cleanup = () => { alive = false; offs.forEach(f => f()); };
+  // a newer mount into the same element (a second navigation while this one loads) wins; this one stops at its next await
+  const gen = String(++mounts);
+  el.dataset.exGen = gen;
+  const stale = () => !alive || el.dataset.exGen !== gen;
 
   const h1 = h('h1', { class: 'ex-title' }, t('explore.title'));
   const status = h('p', { class: 'ex-status caption', 'aria-live': 'polite' }, t('explore.loading'));
@@ -48,11 +53,11 @@ async function mountMap(el, ctx, offs) {
     K = await scores(ctx, A);
   } catch (e) {
     console.error(e);
-    if (!alive) return cleanup;
+    if (stale()) return cleanup;
     replace(status, t('explore.loadFailed'), ' ', h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => ctx.go('/lookup/map', { replace: true }) }, t('explore.retry')));
     return cleanup;
   }
-  if (!alive) return cleanup;
+  if (stale()) { cleanup(); return cleanup; }
 
   const pf = prefs(store);
   const q = ctx.query;
