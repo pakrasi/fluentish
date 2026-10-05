@@ -18,7 +18,7 @@ import * as RD from '../../domain/b1ready.js';
 import { roundMinutes } from '../../domain/today.js';
 import * as C from './compose.js';
 import * as S from './session.js';
-import { gradeAnswer, isSituation } from './grade.js';
+import { gradeAnswer, isSituation, retypeOk } from './grade.js';
 import { loadData, stateFor, session, saveAnswer, saveLogs, forecaster, tz, addActivity, secrets } from './data.js';
 import { checkAnswer } from '../../services/claude.js';
 import { speech } from './speech.js';
@@ -484,7 +484,7 @@ export async function mountRound(el, ctx) {
   function showWrong(/** @type {any} */ g, /** @type {string} */ typed, /** @type {number} */ ms, /** @type {any} */ d = null) {
     const it = entry.item;
     record({ ok: false, ms, det: d?.cls || null, gDet: g.det?.cls || null });
-    const right = g.right;
+    const right = g.target || g.right;   // the whole sentence he types once, the same one shown here
     // a situation grades one phrase, not the whole sentence: only that phrase is marked, the rest is shown plain
     const situation = it.kind === 'topic' || it.kind === 'reply';
     const df = situation && g.pattern ? phraseLines(full(typed), right, g.pattern) : diffLines(full(typed), right);
@@ -539,12 +539,12 @@ export async function mountRound(el, ctx) {
     record({ ok: false, ms: elapsed() });
     const kids = [];
     if (typed) kids.push(h('p', { class: 'caption' }, t('practice.youHad'), ' ', h('span', { lang: 'de' }, full(typed))));
-    kids.push(h('p', { class: 'pr-res' }, t('practice.oneWay')), h('p', { class: 'answer-key', lang: 'de' }, g.right));
+    kids.push(h('p', { class: 'pr-res' }, t('practice.oneWay')), h('p', { class: 'answer-key', lang: 'de' }, (g.target || g.right)));
     if (g.alsoCorrect?.length) kids.push(h('p', { class: 'pr-also' }, alsoMore(g.alsoCorrect, t('practice.alsoCorrect') + ' ')));
     replace(fb, kids, wordCard(entry.item));
     fxWrong(answerEl, { revealEl: reveal, haptics: false });
-    sayAnswer(g.right);
-    toRetype(g.right, 0);
+    sayAnswer(g.target || g.right);
+    toRetype(g.target || g.right, 0);
   }
   // a new item: the study card, then type it once
   function showMe() { if (state === 'answer') studyCard(grade(input.value.trim() || '-'), input.value.trim()); }
@@ -553,17 +553,17 @@ export async function mountRound(el, ctx) {
     record({ ok: false, ms: elapsed() });
     const kids = [];
     if (typed) {
-      const df = diffLines(full(typed), g.right);
+      const df = diffLines(full(typed), (g.target || g.right));
       kids.push(h('p', { class: 'pr-diff', lang: 'de' }, h('span', { class: 'caption' }, t('practice.you')), ' ', df.you),
-        h('p', { class: ['answer-key', 'pr-study', String(g.right).length > 90 && 'is-long'], lang: 'de' }, df.right));
-    } else kids.push(h('p', { class: ['answer-key', 'pr-study', String(g.right).length > 90 && 'is-long'], lang: 'de' }, g.right));
+        h('p', { class: ['answer-key', 'pr-study', String(g.target || g.right).length > 90 && 'is-long'], lang: 'de' }, df.right));
+    } else kids.push(h('p', { class: ['answer-key', 'pr-study', String(g.target || g.right).length > 90 && 'is-long'], lang: 'de' }, (g.target || g.right)));
     if (g.alsoCorrect?.length) kids.push(h('p', { class: 'pr-also' }, h('span', { class: 'caption' }, t('practice.alsoCorrect')), ' ', h('span', { lang: 'de' }, g.alsoCorrect.slice(0, 2).join(' · ')), g.alsoCorrect.length > 2 ? alsoMore(g.alsoCorrect.slice(2)) : null));
     if (entry.item.rule) kids.push(h('p', { class: 'pr-rule' }, entry.item.rule));
     replace(fb, kids, wordCard(entry.item));
     reveal.classList.add('is-open');
     if (typed) fxWrong(answerEl, { haptics: false });
-    sayAnswer(g.right);
-    toRetype(g.right, typed ? 360 : 0);
+    sayAnswer(g.target || g.right);
+    toRetype(g.target || g.right, typed ? 360 : 0);
   }
   function toRetype(/** @type {string} */ right, /** @type {number} */ delay) {
     state = 'retype'; entry.right = right;
@@ -573,8 +573,7 @@ export async function mountRound(el, ctx) {
     if (delay && !reduced()) setTimeout(go, delay); else go();
   }
   function checkRetype(/** @type {string} */ typed) {
-    const g = grade(typed);
-    if (g.ok && !g.partial) {   // he types the sentence he was shown: all of it has to be right
+    if (retypeOk(entry.item, full(typed), entry.right) || retypeOk(entry.item, typed, entry.right)) {   // exactly the sentence he was shown (case and commas aside)
       state = 'feedback';
       // the miss is fixed: no red "Not quite" next to a green check. The verdict turns, the struck line goes.
       const verdict = fb.querySelector('.pr-res.is-bad');

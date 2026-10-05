@@ -527,6 +527,19 @@ function renderIn(mid, base, caseRef, initial) {
   return out;
 }
 const joinText = (...parts) => parts.filter(s => s && s.trim()).join(' ').replace(/\s+([,.!?;:])/g, '$1').replace(/\s+/g, ' ').trim();
+// patterns carry no commas: put back the base sentence's comma before a clause word it has one before (so, dass …)
+const COMMA_WORDS = new Set(['dass', 'weil', 'wenn', 'ob', 'obwohl', 'damit', 'aber', 'denn', 'sondern', 'bevor', 'nachdem', 'waehrend', 'falls', 'sodass', 'als', 'wie', 'wo', 'was']);
+function commasFrom(base, text) {
+  const want = new Set([...String(base).matchAll(/,\s*([\p{L}]+)/gu)].map(m => fold(m[1].toLowerCase())).filter(w => COMMA_WORDS.has(w)));
+  if (!want.size) return text;
+  return String(text).replace(/(?<=[\p{L}\p{N}])(\s+)(\p{L}+)/gu, (all, sp, w) => want.has(fold(w.toLowerCase())) ? `,${sp}${w}` : all);
+}
+// a word twice in a row that the pattern does not have twice: another pattern's slot took the model's words
+// ("… dass man ([x]) spät isst" with the model's "normalerweise sehr spät" gives "sehr spät spät isst")
+const doubled = (text, p) => {
+  const has = s => { const ws = words(s).map(w => w.n); return ws.some((w, i) => i && w === ws[i - 1]); };
+  return has(text) && !has(String(p).replace(SLOT_RE, ' '));
+};
 
 function restCheck(input, base, accepted, opts = {}) {
   const list = (Array.isArray(accepted) ? accepted : [accepted]).filter(a => a != null && String(a).trim() !== '');
@@ -546,7 +559,7 @@ function restCheck(input, base, accepted, opts = {}) {
   const cands = [];
   for (const p of order) {
     if (p !== mr.matched && !sameShape(shapeOf(p), shape)) continue;
-    const mid = fillSlots(p, mr.fills); if (mid != null) cands.push({ pre, mid, post });
+    const mid = fillSlots(p, mr.fills); if (mid != null && !doubled(mid, p)) cands.push({ pre, mid, post });
   }
   for (const v of opts.variants || []) if (v) cands.push({ pre: '', mid: String(v), post: '', literal: true });
   const x = xOpts({ ...opts, endings: opts.endings !== false });
@@ -554,7 +567,7 @@ function restCheck(input, base, accepted, opts = {}) {
   const aopts = { anywhere: false, typos, loose: null, x, slotMax };
   const first = toks[0], last = toks[toks.length - 1];
   const fits = (e, t, atEnd) => !e || e.t !== 'w' || !!wcost(e, t, typos, null, x) || e.alts.some(a => a.n && (atEnd ? t.n.endsWith(a.n) : t.n.startsWith(a.n)));
-  const text = c => c.literal ? tidy(c.mid) : joinText(pre, renderIn(c.mid, base, opts.caseRef, !/\p{L}/u.test(pre)), post);
+  const text = c => c.literal ? tidy(c.mid) : commasFrom(base, joinText(pre, renderIn(c.mid, base, opts.caseRef, !/\p{L}/u.test(pre)), post));
   for (const c of cands) {
     const P = compile(c.pre, false, false).els, M = compile(c.mid, !c.literal, false).els, Q = compile(c.post, false, false).els;
     for (let s = 0; s <= P.length; s++) {

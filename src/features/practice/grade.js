@@ -34,6 +34,8 @@ const refCache = new WeakMap();
  * @property {string} input
  * @property {any[]} typos @property {any[]} capMiss @property {any[]} umlautMiss
  * @property {string} right        the answer to show (closest accepted when wrong)
+ * @property {string} target       the sentence to type once after a miss: always a whole right sentence (the model,
+ *   or the variant Claude confirmed that is closest to the answer), never a pattern with its optional words dropped
  * @property {string[]} alsoCorrect
  * @property {boolean} primary     exactly the first accepted answer
  * @property {string | null} detRule
@@ -111,6 +113,10 @@ export function gradeAnswer(item, input, move = null, data = {}) {
   }
   // a pattern with an open slot ("weil ich … arbeiten muss") cannot be typed back: show the full model sentence
   if (/…/.test(right) && it.model && !/…/.test(it.model)) right = it.model;
+  const target = retypeTarget(it, input, data, right);
+  // a wrong answer shows the sentence he will type: a pattern rendered on its own drops the optional words, the
+  // capitals of nouns and the commas ("Es gibt zwar Busse aber sie sind zu spät")
+  if (!r.ok && !it.gap && !it.literal) right = target;
   const shown = new Set([norm(r.ok ? r.input : right)]);
   /** @type {string[]} */ const also = [];
   for (const p of (it.gap ? it.accept : accepted)) {
@@ -127,9 +133,41 @@ export function gradeAnswer(item, input, move = null, data = {}) {
   const umlautMiss = [...(r.umlautMiss || []), ...(rest && rest.status === 'ok' ? (rest.umlautMiss || []).filter((/** @type {any} */ t) => !overlaps(t, r.umlautMiss || [])) : [])];
   return {
     ok: r.ok && !det, matchOk: r.ok, det, input: r.input, typos, capMiss: r.capMiss || [], umlautMiss,
-    right: partial && rest && rest.ref ? rest.ref : right, alsoCorrect: also.slice(0, 8), primary: !!(r.ok && r.matched === accepted[0] && r.exact && !partial), detRule, pattern,
+    right: partial && rest && rest.ref ? rest.ref : right, target, alsoCorrect: also.slice(0, 8), primary: !!(r.ok && r.matched === accepted[0] && r.exact && !partial), detRule, pattern,
     rest, partial, phrase: r.ok ? phraseOf(r) : null, punctMiss,
   };
+}
+
+/**
+ * The sentence to type once: the model (the bank's example sentence when the model has an open slot), or the variant
+ * Claude confirmed for this item that shares the most words with the answer. Gap and literal items keep their answer.
+ * @param {any} it @param {string} input @param {{variants?: Map<string, string[]>}} data @param {string} fallback
+ */
+function retypeTarget(it, input, data, fallback) {
+  if (it.gap || it.literal) return it.model && !/…/.test(it.model) ? it.model : fallback;
+  const whole = [it.sentence, it.model].find(s => s && !/…/.test(s));   // a bank chunk: its example sentence first
+  if (!whole) return fallback;
+  const v = data.variants && typeof data.variants.get === 'function' ? data.variants.get(it.id) || [] : [];
+  const mine = Match.words(String(input || '')).map((/** @type {any} */ w) => w.n);
+  const common = (/** @type {string} */ s) => { const ws = new Set(Match.words(s).map((/** @type {any} */ w) => w.n)); return mine.filter(w => ws.has(w)).length; };
+  let best = whole, n = common(whole);
+  for (const s of v) if (s && !/…/.test(s) && common(s) > n) { best = s; n = common(s); }
+  return best;
+}
+
+/**
+ * Is the retyped answer the target he was shown? The same words in the same order; case and punctuation do not count
+ * (as in grading), except a strict word's capital (Sie, Ihnen), and ae/oe/ue/ss count as ä/ö/ü/ß.
+ * @param {any} it @param {string} typed @param {string} target
+ */
+export function retypeOk(it, typed, target) {
+  // a gap card: the missing words alone are the sentence too
+  const filled = it && it.gap && Match.words(String(typed || '')).length < Match.words(String(target || '')).length ? Match.gapFill(it.prompt, String(typed).trim()) : null;
+  if (filled && filled.text && retypeOk({ ...it, gap: false }, filled.text, target)) return true;
+  const a = Match.words(String(typed || '')), b = Match.words(String(target || ''));
+  if (!b.length || a.length !== b.length) return false;
+  const strict = new Set(it && it.strict || []);
+  return b.every((/** @type {any} */ w, /** @type {number} */ i) => a[i].n === w.n && (i === 0 || !strict.has(w.raw) || a[i].raw === w.raw));
 }
 
 /** @param {string} s */
