@@ -65,6 +65,15 @@
 /* card: back (previous card) */
 :root[data-vt="back"]::view-transition-old(fx-card) { animation: vt-out-right var(--dur-quick) var(--ease-in) both; }
 :root[data-vt="back"]::view-transition-new(fx-card) { animation: vt-in-left var(--dur-card) var(--spring-snappy) 40ms both; }
+/* a round's chrome (header with the segments and count, the action row) never leaves the screen while the card
+   swaps: it has its own names and no animation, and the page around the card holds still */
+.pr-round .pr-top { view-transition-name: fx-roundhead; }
+.pr-round .pr-actions { view-transition-name: fx-roundact; }
+::view-transition-old(fx-roundhead), ::view-transition-old(fx-roundact) { animation: none; display: none; }
+::view-transition-new(fx-roundhead), ::view-transition-new(fx-roundact) { animation: none; }
+::view-transition-group(fx-roundhead), ::view-transition-group(fx-roundact) { animation: none; }
+:root[data-vt="forward"]::view-transition-old(fx-view), :root[data-vt="back"]::view-transition-old(fx-view) { animation: none; display: none; }
+:root[data-vt="forward"]::view-transition-new(fx-view), :root[data-vt="back"]::view-transition-new(fx-view) { animation: none; }
 /* view: between tabs/routes. Content rises 8px; the bar and tab bar stay put. */
 :root[data-vt="view"]::view-transition-old(fx-view) { animation: vt-fade-out var(--dur-quick) var(--ease-in) both; }
 :root[data-vt="view"]::view-transition-new(fx-view) { animation: vt-rise var(--dur-card) var(--ease-out) 30ms both; }

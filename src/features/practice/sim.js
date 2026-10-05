@@ -149,6 +149,16 @@ export function levelStates(items, cards, start) {
   return out;
 }
 
+/**
+ * The start level in effect: the one he chose, or his profile level when that is higher, so a B1 learner finds every
+ * level up to B1 open from the first visit (levels above it still open at STEADY of the one before).
+ * @param {string | null | undefined} chosen @param {string | null | undefined} level settings.level
+ */
+export function startFor(chosen, level) {
+  const a = idx(chosen || 'A1'), b = level ? idx(level) : -1;
+  return LEVELS[Math.max(0, a, b)];
+}
+
 /** The levels whose new items can be shown. @param {LevelState[]} states */
 export const openLevels = states => new Set(states.filter(x => x.open).map(x => x.lv));
 

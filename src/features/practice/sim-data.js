@@ -37,7 +37,7 @@ export async function refreshSimStats(ctx) {
     const { items } = await loadBank(ctx);
     const c = ctx.clock.ctx();
     const sim = simState(ctx.store);
-    const st = S.stats(items, simCards(ctx.store), sim.start, c);
+    const st = S.stats(items, simCards(ctx.store), S.startFor(sim.start, ctx.settings().level), c);
     if (JSON.stringify(sim.stats) !== JSON.stringify(st)) updateSim(ctx.store, s => ({ ...s, stats: st }));
   } catch { /* offline: Today plans from the last stats */ }
 }

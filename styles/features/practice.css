@@ -89,6 +89,8 @@ body.pr-in-round #view { max-width: none; padding: 0; }
 .pr-yours { font-size: 17px; }
 .pr-slip { text-decoration: underline 2px var(--bad); text-underline-offset: 4px; }
 .pr-fix { color: var(--ink-2); }
+/* a capital or umlaut on a right answer: the changed letters underlined in accent, never red */
+.pr-capfix { text-decoration: underline 2px var(--accent); text-underline-offset: 4px; text-decoration-skip-ink: none; }
 .pr-diff { font-size: 17px; line-height: 1.4; }
 .pr-diff.answer-key { font: 400 20px/1.35 var(--font-display); margin-top: 0; }
 .pr-diff .caption { font-family: var(--font-ui); }
@@ -257,12 +259,6 @@ mark.wr-glue.is-lit, .answer-key mark.wr-glue, .wr-done mark.wr-glue { backgroun
 .sim-locked .row-trail { white-space: normal; text-align: left; }
 .sim-locked .pr-area-top { flex-direction: column; align-items: flex-start; gap: 2px; }
 .sim-jump { grid-area: jump; min-height: var(--tap); padding: 0 12px; font-size: 14px; }
-.sim-fns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-2); }
-.sim-fn { display: grid; gap: 2px; align-content: start; min-height: 64px; padding: var(--s-3); border-radius: var(--r-ctl); background: var(--surface); box-shadow: inset 0 0 0 1px var(--hairline); color: var(--ink); text-decoration: none; }
-.sim-fn-name { font: 500 14px/1.3 var(--font-ui); }
-.sim-fn .caption { color: var(--ink-3); }
-.sim-fn.is-locked { background: transparent; color: var(--ink-3); box-shadow: inset 0 0 0 1px var(--hairline); }
-@media (min-width: 720px) { .sim-fns { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 
 /* the card: setup, the other person's bubble, the goal; the answer bubble unfolds on the right */
 .sim-card { display: grid; gap: var(--s-3); }
@@ -270,7 +266,7 @@ mark.wr-glue.is-lit, .answer-key mark.wr-glue, .wr-done mark.wr-glue { backgroun
 .sim-setup { font: 400 15px/1.45 var(--font-ui); color: var(--ink-2); }
 .sim-bubble { position: relative; display: flex; align-items: flex-start; gap: var(--s-3); width: fit-content; max-width: 94%; padding: var(--s-3) var(--s-4) var(--s-3) var(--s-3); border-radius: 20px; }
 .sim-them { background: var(--surface-2); border-bottom-left-radius: 6px; }
-.sim-you { margin-left: auto; padding: var(--s-3) var(--s-3) var(--s-3) var(--s-4); background: var(--accent-soft); border-bottom-right-radius: 6px; }
+.sim-you { margin-left: auto; padding: var(--s-3) var(--s-3) var(--s-3) var(--s-4); background: var(--surface); box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--accent) 45%, transparent); border-bottom-right-radius: 6px; }
 .sim-line { padding-top: 7px; font: 400 clamp(21px, 5.8vw, 26px)/1.25 var(--font-display); letter-spacing: -0.01em; color: var(--ink); }
 .sim-w { display: inline-block; }
 .sim-line.is-typed .sim-w { animation: sim-word var(--dur-base) var(--ease-out) both; animation-delay: calc(var(--i) * var(--wstep, 80ms)); }
@@ -280,7 +276,9 @@ mark.wr-glue.is-lit, .answer-key mark.wr-glue, .wr-done mark.wr-glue { backgroun
 .sim-wave i { width: 3px; height: 18px; border-radius: 2px; background: currentColor; transform: scaleY(0.4); }
 .sim-wave i:nth-child(2), .sim-wave i:nth-child(4) { transform: scaleY(0.7); }
 .sim-wave i:nth-child(3) { transform: scaleY(1); }
+/* the other person's voice is ink; accent is kept for you (the model answer you could give) */
 .is-playing > .sim-play { color: var(--accent); box-shadow: inset 0 0 0 1.5px var(--accent); }
+.sim-them.is-playing > .sim-play { color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink-2); }
 .is-playing > .sim-play .sim-wave i { animation: sim-wave 640ms var(--ease-inout) infinite alternate; animation-delay: calc(var(--i) * -130ms); }
 @keyframes sim-wave { from { transform: scaleY(0.25); } to { transform: scaleY(1); } }
 .sim-status:empty { display: none; }
@@ -294,32 +292,19 @@ mark.wr-glue.is-lit, .answer-key mark.wr-glue, .wr-done mark.wr-glue { backgroun
   transition: transform var(--dur-card) var(--spring-snappy) 40ms, opacity var(--dur-base) var(--ease-out) 40ms; }
 .sim-reveal.is-open .sim-you { opacity: 1; transform: none; }
 /* the chunk: an accent underline that sweeps in once the answer is open */
-mark.sim-chunk { background: linear-gradient(var(--accent), var(--accent)) 0 100% / 0% 2px no-repeat; color: var(--accent-ink); padding-bottom: 1px; }
-.sim-reveal.is-open mark.sim-chunk, .sim-map mark.sim-chunk { background-size: 100% 2px; transition: background-size var(--dur-fill) var(--ease-out) 280ms; }
+mark.sim-chunk { background: repeating-linear-gradient(90deg, var(--ink-3) 0 2px, transparent 2px 4px) 0 100% / 0% 1px no-repeat; color: inherit; padding-bottom: 2px; }
+.sim-reveal.is-open mark.sim-chunk, .sim-map mark.sim-chunk { background-size: 100% 1px; transition: background-size var(--dur-fill) var(--ease-out) 280ms; }
 .sim-also { display: grid; gap: 4px; text-align: right; }
 .sim-also .label { color: var(--ink-3); }
 .sim-alt { font: 400 18px/1.35 var(--font-display); color: var(--ink-2); }
 .sim-alt mark.sim-chunk { background-size: 100% 1px; }
+.sim-later summary { min-height: var(--tap); display: flex; align-items: center; color: var(--ink-2); cursor: pointer; }
+.sim-later .caption { margin: 0 0 var(--s-2); }
 
-/* actions: Show answer, then the four grades */
+/* actions: Show answer, then the four grades (components.css .grade4) */
 .sim-actions { display: grid; }
 .sim-actions .sim-show { width: 100%; }
-.sim-grades { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-2); }
-.sim-grades[hidden], .sim-show[hidden] { display: none; }
-.sim-g { position: relative; display: grid; justify-items: center; align-content: center; gap: 3px; min-height: 64px; padding: 6px 4px; border: 1px solid var(--hairline-strong); border-radius: var(--r-ctl);
-  background: var(--surface); color: var(--ink); font: 500 15px/1.15 var(--font-ui); cursor: pointer; -webkit-user-select: none; user-select: none; touch-action: manipulation; }
-.sim-g.is-main { background: var(--ink); border-color: var(--ink); color: var(--on-ink); }
-.sim-g-when { color: inherit; opacity: 0.72; white-space: nowrap; }
-.sim-g kbd { position: absolute; top: 5px; right: 6px; font: 500 10px/1 var(--font-mono); opacity: 0.5; }
-@media (hover: none) { .sim-g kbd { display: none; } }
-.sim-grades .sim-g { opacity: 0; transform: translateY(calc(12px * var(--move))) scale(calc(1 - 0.04 * var(--move))); }
-.sim-grades.is-in .sim-g { opacity: 1; transform: none; transition: transform var(--dur-card) var(--spring-snappy), opacity var(--dur-base) var(--ease-out), background-color var(--dur-quick) var(--ease-out);
-  transition-delay: calc(var(--i) * var(--stagger)); }
-.sim-grades.is-in .sim-g:active { transform: scale(calc(1 - 0.05 * var(--move))); transition-duration: 60ms; transition-delay: 0ms; }
-.sim-grades .sim-g.is-picked { animation: sim-pick 420ms var(--spring-pop) both; }
-.sim-grades .sim-g.is-other { opacity: 0.3; transition-delay: 0ms; }
-.sim-g:disabled { cursor: default; }
-@keyframes sim-pick { from { transform: scale(calc(1 - 0.1 * var(--move))); } to { transform: none; } }
+.sim-show[hidden] { display: none; }
 /* a run of Good/Easy: the strip swells once while the ripple crosses it */
 .sim-round.is-streak .pr-strip { animation: sim-swell var(--dur-ripple) var(--ease-out); }
 @keyframes sim-swell { 30% { transform: scale(calc(1 + 0.12 * var(--move))); } }
@@ -339,11 +324,21 @@ mark.sim-chunk { background: linear-gradient(var(--accent), var(--accent)) 0 100
 
 /* reduced motion: the words appear at once, the waveform holds still, nothing waits on a delay */
 :root[data-motion="reduce"] .sim-line.is-typed .sim-w, :root[data-motion="reduce"] .is-playing > .sim-play .sim-wave i { animation: none; }
-:root[data-motion="reduce"] .sim-map.is-in .sim-map-b, :root[data-motion="reduce"] .sim-grades.is-in .sim-g, :root[data-motion="reduce"] mark.sim-chunk { transition-delay: 0ms; }
+:root[data-motion="reduce"] .sim-map.is-in .sim-map-b, :root[data-motion="reduce"] mark.sim-chunk { transition-delay: 0ms; }
 @media (prefers-reduced-motion: reduce) {
   :root:not([data-motion="full"]) .sim-line.is-typed .sim-w, :root:not([data-motion="full"]) .is-playing > .sim-play .sim-wave i { animation: none; }
-  :root:not([data-motion="full"]) .sim-map.is-in .sim-map-b, :root:not([data-motion="full"]) .sim-grades.is-in .sim-g, :root:not([data-motion="full"]) mark.sim-chunk { transition-delay: 0ms; }
+  :root:not([data-motion="full"]) .sim-map.is-in .sim-map-b, :root:not([data-motion="full"]) mark.sim-chunk { transition-delay: 0ms; }
 }
 
 /* the done hero's data object (field strip, letter, ready-meter row, cluster pairs, chat bubbles) */
 .pr-done-data { margin-top: var(--s-5); }
+
+/* round progress: the planned cards are the segments; cards that come back are 2px ticks underneath */
+.pr-again { display: flex; justify-content: flex-end; gap: 3px; height: 2px; margin-top: 3px; }
+.pr-again[hidden] { display: none; }
+.pr-again i { width: 10px; height: 2px; border-radius: 1px; background: color-mix(in oklab, var(--ink-3) 40%, transparent); }
+.pr-again i.is-now { background: var(--accent); }
+.pr-again i.is-done { background: var(--ink-3); }
+.pr-again i.is-miss { background: var(--bad); opacity: 0.7; }
+@media (forced-colors: active) { .pr-again i { background: CanvasText; } .pr-again i.is-now { background: Highlight; } }
+.pr-done-data > .pr-ready { margin-top: 0; }

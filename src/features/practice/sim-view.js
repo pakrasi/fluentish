@@ -14,7 +14,10 @@
 import { h, replace, announce } from '../../core/dom.js';
 import { notice, section } from '../../core/ui.js';
 import { icon } from '../../core/icons.js';
-import { segments, swap, reduced, haptic, countTo } from '../../core/motion.js';
+import { swap, reduced, countTo } from '../../core/motion.js';
+import { gradeRow } from './selfgrade.js';
+import { progressOf, drawProgress, againRow } from './progress.js';
+import { doneHero } from './done-hero.js';
 import { Field } from '../../core/brand.js';
 import * as S from './sim.js';
 import { loadBank, simState, simCards, setStart, saveGrade, saveRound, finishRound, refreshSimStats } from './sim-data.js';
@@ -41,7 +44,7 @@ export function mountSim(el, ctx, rest) {
 async function mountPicker(el, ctx) {
   const { t, store } = ctx;
   let alive = true, pending = /** @type {Promise<void> | null} */ (null);
-  const head = () => [back('#/practice', t('practice.title')), h('div', { class: 'page-head' }, h('h1', null, t('practice.sim')))];
+  const head = () => [back('#/practice/speak', t('practice.speak.title')), h('div', { class: 'page-head' }, h('h1', null, t('practice.sim')))];
   replace(el, h('div', { class: 'practice sim stack' }, head(), h('p', { class: 'caption' }, t('practice.loading'))));
 
   async function render() {
@@ -53,11 +56,12 @@ async function mountPicker(el, ctx) {
     if (!alive) return;
     const c = ctx.clock.ctx(), settings = ctx.settings();
     const cards = simCards(store), sim = simState(store);
-    const states = S.levelStates(b.items, cards, sim.start);
+    const start = S.startFor(sim.start, settings.level);
+    const states = S.levelStates(b.items, cards, start);
     const open = S.openLevels(states);
     const today = simToday({ store, c, settings });
     const saved = S.resumable(sim.round, c.today, Date.now()) ? sim.round : null;
-    const comp = S.compose({ items: b.items, cards, c, pick: { kind: 'mixed' }, start: sim.start, newLeft: today.newLeft });
+    const comp = S.compose({ items: b.items, cards, c, pick: { kind: 'mixed' }, start, newLeft: today.newLeft });
 
     // ---- today's round ----
     const dueEl = h('span', { class: 'figure tnum' }, String(today.due));
@@ -71,15 +75,8 @@ async function mountPicker(el, ctx) {
         h('p', { class: 'pr-due' }, dueEl, h('span', { class: 'label' }, t('practice.dueToday', { n: today.due }))),
         h('p', { class: 'label pr-new' }, c.newItems ? t('practice.sim.newLeft', { n: today.newLeft }) : t('practice.sim.noNew'))),
       comp.ids.length || saved ? null : h('p', { class: 'pr-empty' }, t('practice.sim.nothingPick')),
+      comp.fresh && !saved ? h('p', { class: 'caption' }, t('practice.sim.twice')) : null,
       startBtn ? h('div', { class: 'pr-queue-btn' }, startBtn) : null);
-
-    // ---- your level ----
-    const lvIdx = S.LEVELS.indexOf(/** @type {any} */ (settings.level));
-    const startIdx = S.LEVELS.indexOf(/** @type {any} */ (sim.start || 'A1'));
-    const suggest = lvIdx > 0 && lvIdx > startIdx && !states[lvIdx]?.open
-      ? notice({ children: [h('p', null, t('practice.sim.suggest', { lv: settings.level })),
-        h('p', null, h('button', { type: 'button', class: 'btn pressable', onclick: () => choose(/** @type {string} */ (settings.level)) }, t('practice.sim.level.startHere', { lv: settings.level })))] })
-      : null;
 
     // ---- levels ----
     const levelRows = states.map((x, i) => {
@@ -96,23 +93,26 @@ async function mountPicker(el, ctx) {
         h('button', { type: 'button', class: 'btn btn-quiet pressable sim-jump', onclick: () => choose(x.lv) }, t('practice.sim.level.startHere', { lv: x.lv })));
     });
 
-    // ---- by function ----
+    // ---- by situation: what is open now as rows with a learnt track, what opens later as one quiet list ----
     const fns = Object.keys(b.bank.functions || {});
-    const tiles = fns.map(fn => {
+    const fnRows = [], later = [];
+    for (const fn of fns) {
       const mine = b.items.filter(it => it.fn === fn);
       const avail = mine.filter(it => open.has(it.lv) || cards[it.id]?.reps);
+      if (!avail.length) { later.push(fnName(b.bank, fn)); continue; }
       const due = S.dueCount(Object.fromEntries(mine.map(it => [it.id, cards[it.id]]).filter(([, r]) => r)), c);
-      const sub = avail.length ? (due ? t('practice.sim.fn.due', { n: due }) : t('practice.sim.fn.count', { n: avail.length })) : t('practice.sim.fn.locked');
-      return avail.length
-        ? h('a', { class: 'sim-fn pressable', href: `#/practice/situations/round?pick=fn:${fn}` }, h('span', { class: 'sim-fn-name' }, fnName(b.bank, fn)), h('span', { class: 'caption tnum' }, sub))
-        : h('span', { class: 'sim-fn is-locked' }, h('span', { class: 'sim-fn-name' }, fnName(b.bank, fn)), h('span', { class: 'caption' }, sub));
-    });
-
+      const learntN = avail.filter(it => S.learnt(cards[it.id])).length, seenN = avail.filter(it => cards[it.id]?.reps).length;
+      const sub = due ? t('practice.sim.fn.due', { n: due }) : t('practice.sim.fn.learnt', { n: learntN, total: avail.length });
+      fnRows.push(h('a', { class: 'pr-area pressable', href: `#/practice/situations/round?pick=fn:${fn}`, 'aria-label': `${fnName(b.bank, fn)}, ${sub}` },
+        h('span', { class: 'pr-area-top' }, h('span', { class: 'row-title' }, fnName(b.bank, fn)), h('span', { class: 'row-trail tnum' }, sub)),
+        recallBar(avail.length ? learntN / avail.length : 0, avail.length ? seenN / avail.length : 0, t('practice.sim.level.bar', { lv: fnName(b.bank, fn), learnt: learntN, n: avail.length })), icon('next', { size: 16 })));
+    }
     const view = h('div', { class: ['practice', 'sim', 'stack', startBtn && 'has-dock'] },
       head(), h('p', { class: 'lead sim-lead' }, t('practice.sim.lead')),
-      queue, suggest,
-      section(t('practice.sim.levels'), h('div', { class: 'pr-areas' }, levelRows)),
-      section(t('practice.sim.functions'), h('div', { class: 'sim-fns' }, tiles)));
+      queue,
+      section(t('practice.sim.functions'), h('p', { class: 'caption section-sub' }, t('practice.sim.fn.openNow', { n: fnRows.length })), h('div', { class: 'pr-areas' }, fnRows),
+        later.length ? h('details', { class: 'sim-later' }, h('summary', { class: 'pressable' }, t('practice.sim.fn.later', { n: later.length })), h('p', { class: 'caption' }, later.join(' · '))) : null),
+      section(t('practice.sim.levels'), h('div', { class: 'pr-areas' }, levelRows)));
     const hadFocus = document.activeElement === el.querySelector('h1');
     replace(el, view);
     if (hadFocus) view.querySelector('h1')?.focus({ preventScroll: true });
@@ -166,7 +166,7 @@ async function mountRound(el, ctx) {
   const sim = simState(store);
   /** @type {any} */ let round = S.resumable(sim.round, c.today, Date.now()) && sim.round.pick === S.pickKey(pick) ? structuredClone(sim.round) : null;
   if (!round) {
-    const comp = S.compose({ items: b.items, cards: simCards(store), c, pick, start: sim.start, newLeft: simToday({ store, c, settings }).newLeft });
+    const comp = S.compose({ items: b.items, cards: simCards(store), c, pick, start: S.startFor(sim.start, settings.level), newLeft: simToday({ store, c, settings }).newLeft });
     if (!comp.ids.length) return drawEmpty();
     round = S.startRound(comp.ids, pick, c.today, Date.now());
     saveRound(store, round);
@@ -179,7 +179,8 @@ async function mountRound(el, ctx) {
   const endBtn = h('button', { type: 'button', class: 'btn btn-quiet pressable pr-end', onclick: () => end() }, t('practice.sim.end'), h('kbd', null, 'Esc'));
   const stripIds = [...new Set(round.queue.map((/** @type {any} */ q) => q.id))];
   const stripEl = h('canvas', { class: 'field pr-strip', style: { '--w': `${Math.min(stripIds.length, 24) * 8 - 2}px` } });
-  const top = h('div', { class: 'pr-top' }, segs, h('div', { class: 'pr-top-row' }, count, stripEl, endBtn));
+  const again = againRow();
+  const top = h('div', { class: 'pr-top' }, segs, again, h('div', { class: 'pr-top-row' }, count, stripEl, endBtn));
 
   const meta = h('span', { class: 'label' });
   const setup = h('p', { class: 'sim-setup' });
@@ -197,10 +198,8 @@ async function mountRound(el, ctx) {
   const card = h('article', { class: 'card pr-card sim-card' }, h('div', { class: 'card-meta' }, meta), setup, them, status, goal, say, reveal);
 
   const showBtn = h('button', { type: 'button', class: 'btn btn-primary pressable pr-primary sim-show', onclick: () => doReveal() }, t('practice.sim.show'), h('kbd', null, 'Space'));
-  const gradeBtns = /** @type {HTMLButtonElement[]} */ ([1, 2, 3, 4].map(g => /** @type {HTMLButtonElement} */ (h('button', { type: 'button', class: ['sim-g', 'pressable', g === 3 && 'is-main'], style: { '--i': String(g - 1) }, onclick: () => grade(/** @type {1|2|3|4} */ (g)) },
-    h('span', { class: 'sim-g-name' }, t(`practice.sim.g${g}`)), h('span', { class: 'sim-g-when caption tnum' }), h('kbd', null, String(g))))));
-  const grades = h('div', { class: 'sim-grades', role: 'group', 'aria-label': t('practice.sim.how'), hidden: true }, gradeBtns);
-  const actions = h('div', { class: 'card-actions pr-actions sim-actions' }, showBtn, grades);
+  const grades = gradeRow({ t, label: t('practice.sim.how'), onGrade: g => grade(g) });
+  const actions = h('div', { class: 'card-actions pr-actions sim-actions' }, showBtn, grades.el);
   const scroll = h('div', { class: 'pr-scroll' }, card);
   const box = h('div', { class: 'pr-round sim-round is-docked', role: 'region', 'aria-label': t('practice.sim.round') }, top, scroll, actions);
   const h1 = h('h1', { class: 'sr-only' }, t('practice.sim.round'));
@@ -222,8 +221,9 @@ async function mountRound(el, ctx) {
   /** @type {(number|null)[]} */ let when = [];
 
   function updateTop(answered = false) {
-    segments(segs, S.dots(round, answered));
-    count.textContent = t('practice.sim.of', { k: Math.min(round.i + 1, round.queue.length), n: round.queue.length });
+    const p = progressOf(round, answered, r => r.g > 1);
+    drawProgress(segs, again, p);
+    count.textContent = p.onAgain ? t('practice.countAgain', { n: p.k, total: p.n }) : t('practice.sim.of', { k: p.k, n: p.n });
   }
 
   function fillCard() {
@@ -248,16 +248,10 @@ async function mountRound(el, ctx) {
     reveal.classList.remove('is-open');
     say.hidden = false;
     state = 'think';
-    showBtn.hidden = false; grades.hidden = true; grades.classList.remove('is-in');
-    gradeBtns.forEach(bt => { bt.classList.remove('is-picked', 'is-other'); bt.disabled = false; });
+    showBtn.hidden = false; grades.reset();
     const cards = simCards(store);
     when = S.preview(cards[item.id] || null, c, Date.now(), forecaster(cards, c));
-    gradeBtns.forEach((bt, k) => {
-      const w = when[k];
-      const txt = w == null ? t('practice.sim.inRound') : t('practice.sim.days', { n: w });
-      /** @type {HTMLElement} */ (bt.querySelector('.sim-g-when')).textContent = txt;
-      bt.setAttribute('aria-label', t('practice.sim.gradeLabel', { grade: t(`practice.sim.g${k + 1}`), when: txt }));
-    });
+    grades.set(when.map(w => (w == null ? t('practice.sim.inRound') : t('practice.sim.days', { n: w }))));
     updateTop();
     t0 = performance.now();
   }
@@ -280,8 +274,7 @@ async function mountRound(el, ctx) {
     state = 'revealed';
     reveal.classList.add('is-open');
     say.hidden = true;
-    showBtn.hidden = true; grades.hidden = false;
-    requestAnimationFrame(() => grades.classList.add('is-in'));
+    showBtn.hidden = true; grades.show();   // the suggestion (Good) takes the focus, so it never drops to the page
     announce(item ? item.answers[0].de : '');
     playAnswer();
   }
@@ -299,9 +292,6 @@ async function mountRound(el, ctx) {
     const res = S.gradeCard({ rec: before, g, c, now: Date.now(), ms, forecast: forecaster(cards, c) });
     S.record(round, { id: item.id, g, isNew: isNew && !q.re, ms, reinsert: res.reinsert });
     saveGrade(store, { id: item.id, before, rec: res.rec, g, ms, c, tz: tz(), round, isNew: isNew && !q.re });
-    haptic();
-    // the button answers with a spring; the others step back
-    gradeBtns.forEach((bt, k) => { bt.classList.toggle('is-picked', k === g - 1); bt.classList.toggle('is-other', k !== g - 1); bt.disabled = true; });
     updateTop(true);
     // the strip: Good and Easy land in accent; a run of three or more sends a ripple back through the cells
     const k = stripIds.indexOf(item.id);
@@ -325,6 +315,8 @@ async function mountRound(el, ctx) {
     await swap(() => { fillCard(); }, { kind: 'forward', fallbackEl: card });
     scroll.scrollTop = 0;
     busy = false;
+    showBtn.focus({ preventScroll: true });
+    if (item) announce(`${item.setup} ${item.other.de}`);
     playOther();
   }
 
@@ -349,10 +341,10 @@ async function mountRound(el, ctx) {
     if (e.key === 'Escape') { e.preventDefault(); end(); return; }
     if ((e.key === ' ' || e.key === 'Enter') && !onButton) {
       e.preventDefault();
-      if (state === 'think') doReveal(); else if (state === 'revealed') grade(3);
+      if (state === 'think') doReveal(); else if (state === 'revealed') grades.pick(grades.suggested);
       return;
     }
-    if (/^[1-4]$/.test(e.key) && state === 'revealed') { e.preventDefault(); grade(/** @type {1|2|3|4} */ (Number(e.key))); return; }
+    if (state === 'revealed' && grades.key(e)) return;
     if ((e.key === 'r' || e.key === 'R') && state !== 'graded') { e.preventDefault(); if (state === 'revealed') playAnswer(); else playOther(); }
   }
   document.addEventListener('keydown', onKey);
@@ -393,8 +385,7 @@ function drawDone(el, ctx, bank, byId, round, backTo, pick) {
   const { t, store } = ctx;
   const sum = S.summary(round, byId);
   const c = ctx.clock.ctx();
-  const nextComp = S.compose({ items: [...byId.values()], cards: simCards(store), c, pick, start: simState(store).start, newLeft: simToday({ store, c, settings: ctx.settings() }).newLeft });
-  const fig = h('span', { class: 'figure tnum' }, String(sum.total));
+  const nextComp = S.compose({ items: [...byId.values()], cards: simCards(store), c, pick, start: S.startFor(simState(store).start, ctx.settings().level), newLeft: simToday({ store, c, settings: ctx.settings() }).newLeft });
   const bubbles = sum.list.map((x, i) => {
     const title = fnName(bank, x.item.fn);
     const a = x.item.answers[0];
@@ -404,14 +395,16 @@ function drawDone(el, ctx, bank, byId, round, backTo, pick) {
       h('span', { class: 'caption' }, t(`practice.sim.g${x.g}`)));
   });
   const good = sum.counts.good + sum.counts.easy;
+  // the done hero (one figure, the atmosphere breathes once); its data object is the round's chunks as chat bubbles
+  const hero = doneHero({ label: t('practice.roundDone'), figure: sum.total, of: t('practice.sim.done.title', { n: sum.total }),
+    lines: [`${t('practice.sim.done.counts', { good, hard: sum.counts.hard, again: sum.counts.again })} · ${t('practice.sim.done.time', { min: Math.max(1, Math.round(sum.ms / 60000)) })}`],
+    data: h('section', { class: 'sim-map-wrap', 'aria-label': t('practice.sim.done.map') }, h('ul', { class: 'sim-map' }, bubbles)) });
   replace(el, h('div', { class: 'practice pr-done sim-done stack' },
-    h('h1', null, fig, ' ', h('span', { class: 'pr-done-of' }, t('practice.sim.done.title', { n: sum.total }))),
-    h('p', { class: 'caption tnum' }, `${t('practice.sim.done.counts', { good, hard: sum.counts.hard, again: sum.counts.again })} · ${t('practice.sim.done.time', { min: Math.max(1, Math.round(sum.ms / 60000)) })}`),
-    h('section', { class: 'sim-map-wrap', 'aria-label': t('practice.sim.done.map') }, h('ul', { class: 'sim-map' }, bubbles)),
+    hero.el,
     h('div', { class: 'pr-done-actions' },
       nextComp.ids.length ? h('a', { class: 'btn btn-primary pressable', href: `#/practice/situations/round?pick=${encodeURIComponent(S.pickKey(pick))}${backTo === '/today' ? '&from=today' : ''}&r=${round.id}`, id: 'sim-again' }, t('practice.sim.another')) : null,
       h('a', { class: ['btn', 'pressable', !nextComp.ids.length && 'btn-primary'], href: `#${backTo}` }, t('practice.done')))));
-  countTo(fig, sum.total, { from: 0, duration: 600 });
+  const stop = hero.start();
   requestAnimationFrame(() => el.querySelector('.sim-map')?.classList.add('is-in'));
-  /** @type {HTMLElement | null} */ (el.querySelector('h1'))?.focus({ preventScroll: true });
+  addEventListener('hashchange', stop, { once: true });
 }

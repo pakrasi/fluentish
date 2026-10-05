@@ -16,7 +16,10 @@
 import { h, replace, announce } from '../../../core/dom.js';
 import { notice } from '../../../core/ui.js';
 import { icon } from '../../../core/icons.js';
-import { flip, countTo, reduced, segments, swap, haptic } from '../../../core/motion.js';
+import { countTo, reduced, swap, haptic } from '../../../core/motion.js';
+import { gradeRow } from '../selfgrade.js';
+import { progressOf, drawProgress, againRow } from '../progress.js';
+import { doneHero } from '../done-hero.js';
 import { Field } from '../../../core/brand.js';
 import { TYPES } from '../../../domain/clusters.js';
 import { roundMinutes } from '../../../domain/today.js';
@@ -34,8 +37,12 @@ export function mountClusters(el, ctx, rest) {
   const [type, id, sub] = rest;
   if (type && id && sub === 'say') return mountSay(el, ctx, `${type}:${id}`);
   if (type && id) return mountCluster(el, ctx, `${type}:${id}`);
-  return mountPicker(el, ctx, /** @type {any} */ (TYPES.includes(/** @type {any} */ (type)) ? type : 'family'));
+  return mountPicker(el, ctx, /** @type {any} */ (TYPES.includes(/** @type {any} */ (type)) ? type : ORDER[0]));
 }
+
+/** The cluster types in the order of the Explore map's modes (Topic, Word family, Opposites …). */
+const ORDER = ['topic', 'family', 'opp', 'prefix', 'suffix', 'prep'].filter(x => TYPES.includes(/** @type {any} */ (x)));
+const B1_LEVELS = new Set(['A1', 'A2', 'B1']);
 
 /** A word as type, in its knowledge state. @param {any} w @param {any} s a knowledge score */
 function wordChip(w, s) {
@@ -63,24 +70,33 @@ async function mountPicker(el, ctx, type) {
   const c = ctx.clock.ctx();
   const due = dueCards(store, c).length;
   const typeChips = h('div', { class: 'chips cl-types', role: 'group', 'aria-label': t('practice.clusters.type') },
-    TYPES.map(ty => h('a', { class: 'chip pressable', href: `#/practice/clusters/${ty}`, 'aria-current': ty === type ? 'page' : null, 'aria-pressed': String(ty === type) }, t(`practice.clusters.types.${ty}`))));
+    ORDER.map(ty => h('a', { class: 'chip pressable', href: `#/practice/clusters/${ty}`, 'aria-current': ty === type ? 'page' : null, 'aria-pressed': String(ty === type) }, t(`practice.clusters.types.${ty}`))));
   const list = data.ix.byType[type] || [];
-  const rows = list.map(cl => {
+  // "Start with": the five groups with the most words up to B1 he does not know yet
+  const open = (/** @type {any} */ cl) => cl.items.filter((/** @type {string} */ id) => B1_LEVELS.has(data.ix.word(id)?.level) && k.get(`W:${id}`).state !== 'known').length;
+  const best = [...list].map(cl => ({ cl, n: open(cl) })).filter(x => x.n > 0).sort((a, b) => b.n - a.n).slice(0, 5).map(x => x.cl);
+  const rowOf = (/** @type {any} */ cl) => {
     const n = countsOf(cl, k);
-    const canvas = h('canvas', { class: 'field cl-mini' });
+    // the strip of cells reads as data only with a few words; under six it would look like a loading bar
+    const canvas = cl.items.length >= 6 ? h('canvas', { class: 'field cl-mini' }) : null;
     const row = h('a', { class: 'cl-row pressable', href: `#/practice/clusters/${cl.type}/${cl.id}`, 'aria-label': t('practice.clusters.rowLabel', { name: cl.label, known: n.known, n: n.n }) },
       h('span', { class: 'cl-row-top' }, h('span', { class: 'row-title', lang: cl.type === 'family' || cl.type === 'prefix' || cl.type === 'suffix' ? 'de' : null }, cl.label),
         h('span', { class: 'row-trail tnum' }, t('practice.clusters.of', { known: n.known, n: n.n }))),
       canvas);
     return { row, canvas, cells: cellsOf(cl, k) };
-  });
+  };
+  const rows = list.map(rowOf);
+  const firstRows = list.length > 8 ? best.map(rowOf) : [];
   const view = h('div', { class: 'practice cl stack' }, head(),
     h('p', { class: 'lead' }, t(`practice.clusters.about.${type}`)),
     typeChips,
     due ? h('a', { class: 'btn btn-primary pressable cl-due', href: '#/practice/round?kind=cluster%3Adue' }, t('practice.clusters.due', { n: due, min: roundMinutes(Math.min(12, due)) })) : null,
+    firstRows.length ? h('section', { class: 'cl-first' }, h('h2', { class: 'label' }, t('practice.clusters.startWith')),
+      h('nav', { class: 'cl-list', 'aria-label': t('practice.clusters.startWith') }, firstRows.map(r => r.row))) : null,
+    firstRows.length ? h('h2', { class: 'label cl-all' }, t('practice.clusters.all', { n: list.length })) : null,
     h('nav', { class: 'cl-list', 'aria-label': t(`practice.clusters.types.${type}`) }, rows.map(r => r.row)));
   replace(el, view);
-  fields = rows.map(r => new Field(/** @type {HTMLCanvasElement} */ (r.canvas), r.cells, { cell: 5, gap: 1, label: null }));
+  fields = [...firstRows, ...rows].filter(r => r.canvas).map(r => new Field(/** @type {HTMLCanvasElement} */ (r.canvas), r.cells, { cell: 5, gap: 1, label: null }));
   return () => { alive = false; fields.forEach(f => f.destroy()); };
 }
 
@@ -168,13 +184,57 @@ export function clusterLayout(cl, ix, content, k, t) {
 }
 
 /**
- * Move a layout from the state before a round to now: known words fly to their branch, pairs snap, the count ticks.
+ * Move a layout from the state before a round to now (DESIGN.md motion.earned.pair-snap): each pair or word that
+ * changed lands in turn, 140 ms apart, on the pop spring; a snapped pair's link draws in and a soft accent plate fades
+ * under it (the clusters' version of the field ripple). The count starts ticking when the first one lands, and a
+ * haptic tick marks each of the first three. Reduced motion: the final state at once.
  * @param {any} lay clusterLayout() built with `before` @param {any} after @param {HTMLElement | null} countEl @param {number} to
  */
 export async function settle(lay, after, countEl, to) {
-  const chips = [...lay.el.querySelectorAll('.cl-w, .cl-pair')];
-  await flip(chips, () => lay.place(after), { easing: 'var(--spring-soft)' });
-  if (countEl) countTo(countEl, to, { duration: 700 });
+  if (reduced()) { lay.place(after); if (countEl) countTo(countEl, to); return; }
+  const all = /** @type {HTMLElement[]} */ ([...lay.el.querySelectorAll('.cl-w, .cl-pair, .cl-link')]);
+  const snap = () => new Map(all.map(x => [x, { cls: x.className, r: x.getBoundingClientRect() }]));
+  const before = snap();
+  lay.place(after);
+  const now = snap();
+  const B = (/** @type {HTMLElement} */ x) => /** @type {{cls: string, r: DOMRect}} */ (before.get(x)), N = (/** @type {HTMLElement} */ x) => /** @type {{cls: string, r: DOMRect}} */ (now.get(x));
+  const isPair = (/** @type {HTMLElement} */ x) => x.classList.contains('cl-pair');
+  const turned = (/** @type {HTMLElement} */ x) => B(x).cls !== N(x).cls;
+  // the units that land one by one: a pair that snapped, or a word whose state changed (outside a snapped pair)
+  const units = all.filter(x => !x.classList.contains('cl-link') && turned(x) && !(x.parentElement && isPair(x.parentElement) && turned(x.parentElement)));
+  const ease = getComputedStyle(document.documentElement).getPropertyValue('--spring-pop').trim() || 'ease-out';
+  const soft = getComputedStyle(document.documentElement).getPropertyValue('--spring-soft').trim() || 'ease-out';
+  const parts = (/** @type {HTMLElement} */ u) => (isPair(u) ? [u, .../** @type {HTMLElement[]} */ ([...u.querySelectorAll('.cl-w, .cl-link')])] : [u]);
+  // hold every unit in its old look and place until its turn
+  for (const u of units) for (const x of parts(u)) x.className = B(x).cls;
+  const held = new Map(units.filter(u => !isPair(u)).map(u => { const a = B(u).r, b = u.getBoundingClientRect(); return [u, `translate(${a.left - b.left}px, ${a.top - b.top}px)`]; }));
+  held.forEach((tr, u) => { u.style.transform = tr; });
+  // what only moved aside (the tray closing up) settles at once
+  for (const x of all) {
+    if (units.some(u => parts(u).includes(x)) || x.classList.contains('cl-link')) continue;
+    const a = B(x).r, b = x.getBoundingClientRect();
+    if (Math.abs(a.left - b.left) > 0.5 || Math.abs(a.top - b.top) > 0.5) x.animate([{ transform: `translate(${a.left - b.left}px, ${a.top - b.top}px)` }, { transform: 'none' }], { duration: 380, easing: soft });
+  }
+  if (!units.length) { if (countEl) countTo(countEl, to, { duration: 700 }); return; }
+  await Promise.all(units.map((u, n) => new Promise(resolve => setTimeout(() => {
+    if (n < 3) haptic();
+    if (n === 0 && countEl) countTo(countEl, to, { duration: 700 });
+    const ps = parts(u);
+    const r0 = new Map(ps.map(x => [x, x.getBoundingClientRect()]));
+    const tr = held.get(u);
+    if (tr) u.style.transform = '';
+    for (const x of ps) x.className = N(x).cls;
+    const anims = ps.map(x => {
+      if (x === u && tr) return x.animate([{ transform: tr }, { transform: 'none' }], { duration: 560, easing: ease });
+      const a = /** @type {DOMRect} */ (r0.get(x)), b = x.getBoundingClientRect();
+      if (x.classList.contains('cl-link')) return b.width ? x.animate([{ transform: `translateX(${a.left - b.left}px) scaleX(${a.width / b.width})` }, { transform: 'none' }], { duration: 560, easing: ease }) : null;
+      return Math.abs(a.left - b.left) > 0.5 ? x.animate([{ transform: `translateX(${a.left - b.left}px)` }, { transform: 'none' }], { duration: 560, easing: ease }) : null;
+    }).filter(Boolean);
+    // the soft accent plate under what just landed, fading over 1.3 s (as Explore's "learned today")
+    u.classList.add('is-landing');
+    setTimeout(() => u.classList.remove('is-landing'), 1300);
+    Promise.all(anims.map(a => /** @type {Animation} */ (a).finished.catch(() => {}))).then(resolve);
+  }, n * 140))));
 }
 
 /** @param {HTMLElement} el @param {import('../../contract.js').ViewCtx} ctx @param {string} key */
@@ -207,7 +267,7 @@ async function mountCluster(el, ctx, key) {
   const say = startN ? h('a', { class: 'btn pressable', href: `#/practice/clusters/${type}/${cl.id}/say` }, t('practice.clusters.say')) : null;
   const head = cl.type === 'family' ? h('p', { class: 'lead' }, t('practice.clusters.familyLead', { note: cl.note || '' }))
     : cl.note ? h('p', { class: 'lead cl-note' }, cl.note) : null;
-  const view = h('div', { class: ['practice', 'cl', 'stack', startN && 'has-dock'] }, backLink,
+  const view = h('div', { class: ['practice', 'cl', 'cl-page', 'stack', startN && 'has-dock'] }, backLink,
     h('p', { class: 'label cl-eyebrow' }, t(`practice.clusters.types.${cl.type}`)),
     h('div', { class: 'page-head' }, h('h1', { lang: cl.type === 'family' ? 'de' : null }, cl.label)),
     head,
@@ -215,6 +275,7 @@ async function mountCluster(el, ctx, key) {
     h('p', { class: 'caption cl-legend' }, h('span', { class: 'cl-w is-known' }, t('practice.clusters.legend.known')), ' ', h('span', { class: 'cl-w is-shaky' }, t('practice.clusters.legend.shaky')), ' ',
       h('span', { class: 'cl-w is-unknown' }, t('practice.clusters.legend.unknown')), ' ', h('span', { class: 'cl-w is-unseen' }, t('practice.clusters.legend.unseen'))),
     lay.el,
+    h('p', null, h('a', { class: 'btn btn-quiet pressable cl-map', href: `#/lookup/map?cluster=${encodeURIComponent(key)}` }, icon('next', { size: 16 }), t('practice.clusters.onMap'))),
     startN ? h('div', { class: 'cl-dock pr-queue-btn' }, typed, say) : h('p', { class: 'pr-empty' }, t('practice.clusters.nothing')));
   replace(el, view);
   update(store, s => ({ ...s, last: key, shown: { ...(s.shown || {}), [key]: n.known } }));
@@ -237,22 +298,23 @@ export async function drawClusterDone(el, ctx, { key, right, total, prev, again 
   const cl = key ? data.ix.byKey.get(key) : null;
   const backHref = cl ? `#/practice/clusters/${cl.type}/${cl.id}` : '#/practice/clusters';
   const n0 = cl ? countsOf(cl, before).known : 0, n1 = cl ? countsOf(cl, after).known : 0;
-  const countEl = h('span', { class: 'figure tnum' }, String(n0));
+  const countEl = h('span', { class: 'tnum' }, String(n0));
   const lay = cl ? clusterLayout(cl, data.ix, data.c, before, t) : null;
   if (lay) lay.place(before);
+  // the done hero; its data object is the cluster itself, the words landing where they now belong, and one count line
+  const hero = doneHero({ label: t('practice.roundDone'), figure: right, of: t('practice.ofRight', { n: total }),
+    data: cl ? h('div', { class: 'cl-done-data' },
+      h('p', { class: 'cl-count cl-count-line' }, countEl, ' ', h('span', null, t('practice.clusters.knownIn', { n: countsOf(cl, after).n, name: cl.label }))),
+      lay ? lay.el : null) : null });
   replace(el, h('div', { class: 'practice pr-done cl stack' },
-    h('section', { class: 'hero pr-done-hero' },
-      h('p', { class: 'label' }, t('practice.roundDone')),
-      h('h1', null, h('span', { class: 'figure tnum' }, String(right)), ' ', h('span', { class: 'pr-done-of' }, t('practice.ofRight', { n: total })))),
-    cl ? h('p', { class: 'cl-count' }, countEl, h('span', { class: 'label' }, t('practice.clusters.knownIn', { n: countsOf(cl, after).n, name: cl.label }))) : null,
-    lay ? lay.el : null,
+    hero.el,
     h('div', { class: 'pr-done-actions' },
       h('a', { class: 'btn btn-primary pressable', href: again, id: 'pr-again' }, t('practice.clusters.another')),
       h('a', { class: 'btn pressable', href: backHref }, cl ? t('practice.clusters.backTo', { name: cl.label }) : t('practice.clusters.title')))));
+  const stop = hero.start();
+  addEventListener('hashchange', stop, { once: true });
   if (cl) update(store, s => ({ ...s, shown: { ...(s.shown || {}), [cl.key]: n1 } }));
-  el.querySelector('h1')?.setAttribute('tabindex', '-1');
-  /** @type {HTMLElement | null} */ (el.querySelector('h1'))?.focus({ preventScroll: true });
-  if (lay) setTimeout(() => settle(lay, after, countEl, n1), reduced() ? 0 : 420);
+  if (lay) setTimeout(() => settle(lay, after, countEl, n1), reduced() ? 0 : 520);
   if (n1 > n0) announce(t('practice.clusters.nowKnown', { n: n1 - n0 }));
 }
 
@@ -292,11 +354,10 @@ async function mountSay(el, ctx, key) {
   const reveal = h('div', { class: 'reveal-answer' }, h('div', null, answer, extra));
   const card = h('article', { class: 'card pr-card' }, h('div', { class: 'card-meta' }, meta), task, prompt, sayHint, reveal);
   const showBtn = h('button', { type: 'button', class: 'btn btn-primary pressable pr-primary', onclick: () => doReveal() }, t('practice.sim.show'), h('kbd', null, 'Space'));
-  const gradeBtns = /** @type {HTMLButtonElement[]} */ ([1, 2, 3, 4].map(g => h('button', { type: 'button', class: ['sim-g', 'pressable', g === 3 && 'is-main'], style: { '--i': String(g - 1) }, onclick: () => grade(/** @type {1|2|3|4} */ (g)) },
-    h('span', { class: 'sim-g-name' }, t(`practice.sim.g${g}`)), h('kbd', null, String(g)))));
-  const grades = h('div', { class: 'sim-grades', role: 'group', 'aria-label': t('practice.sim.how'), hidden: true }, gradeBtns);
+  const grades = gradeRow({ t, label: t('practice.sim.how'), onGrade: g => grade(g) });
+  const again = againRow();
   const box = h('div', { class: 'pr-round sim-round is-docked', role: 'region', 'aria-label': t('practice.clusters.sayTitle') },
-    h('div', { class: 'pr-top' }, segs, h('div', { class: 'pr-top-row' }, count, endBtn)), h('div', { class: 'pr-scroll' }, card), h('div', { class: 'card-actions pr-actions sim-actions' }, showBtn, grades));
+    h('div', { class: 'pr-top' }, segs, again, h('div', { class: 'pr-top-row' }, count, endBtn)), h('div', { class: 'pr-scroll' }, card), h('div', { class: 'card-actions pr-actions sim-actions' }, showBtn, grades.el));
   replace(el, h('h1', { class: 'sr-only' }, t('practice.clusters.sayTitle')), box);
   const vv = window.visualViewport;
   const fit = () => { box.style.height = `${vv ? vv.height : innerHeight}px`; };
@@ -304,7 +365,11 @@ async function mountSay(el, ctx, key) {
 
   let st = 'think', busy = false, t0 = 0, alive = true;
   /** @type {any} */ let it = null;
-  const dots = (answered = false) => round.queue.map((_, i) => (i === round.i && !answered ? 'now' : i > round.i || !round.results[i] ? '' : round.results[i].g === 1 ? 'miss' : 'done'));
+  const top = (answered = false) => {
+    const p = progressOf(round, answered, r => r.g > 1);
+    drawProgress(segs, again, p);
+    count.textContent = p.onAgain ? t('practice.countAgain', { n: p.k, total: p.n }) : t('practice.count', { n: p.k, total: p.n });
+  };
   function fill() {
     it = items.get(round.queue[round.i].id) || itemFor(round.queue[round.i].id, data.ix, data.c, { t });
     meta.textContent = t(`practice.clusters.types.${cl.type}`);
@@ -314,17 +379,16 @@ async function mountSay(el, ctx, key) {
     answer.textContent = it.gap ? it.model : (it.card ? it.card.head : it.model);
     replace(extra, it.usage ? h('p', { class: 'pr-rule' }, it.usage) : null, it.card && it.card.ex ? h('p', { class: 'caption' }, h('span', { lang: 'de' }, it.card.ex), it.card.exEn ? ` (${it.card.exEn})` : null) : null);
     reveal.classList.remove('is-open'); sayHint.hidden = false;
-    showBtn.hidden = false; grades.hidden = true; grades.classList.remove('is-in');
-    gradeBtns.forEach(b => { b.classList.remove('is-picked', 'is-other'); b.disabled = false; });
-    segments(segs, dots()); count.textContent = t('practice.count', { n: round.i + 1, total: round.queue.length });
+    showBtn.hidden = false; grades.reset();
+    const cards = store.cards(DECK) || {};
+    grades.set(S.preview(cards[it.id] || null, c, Date.now(), forecaster(cards, c)).map(w => (w == null ? t('practice.sim.inRound') : t('practice.sim.days', { n: w }))));
+    top();
     st = 'think'; t0 = performance.now();
   }
   function doReveal() {
     if (st !== 'think') return;
-    st = 'revealed'; reveal.classList.add('is-open'); sayHint.hidden = true; showBtn.hidden = true; grades.hidden = false;
-    requestAnimationFrame(() => grades.classList.add('is-in'));
+    st = 'revealed'; reveal.classList.add('is-open'); sayHint.hidden = true; showBtn.hidden = true; grades.show();
     announce(answer.textContent || '');
-    gradeBtns[2].focus({ preventScroll: true });
   }
   /** @param {1|2|3|4} g */
   function grade(g) {
@@ -343,9 +407,7 @@ async function mountSay(el, ctx, key) {
     }
     if (!before || !before.reps) update(store, s => { const d = dayOf(store, c.today); return { ...s, day: { ...d, newShown: d.newShown + 1 } }; });
     S.record(round, { id, g, isNew: !before || !before.reps, ms: performance.now() - t0, reinsert: res.reinsert });
-    haptic();
-    gradeBtns.forEach((b, k) => { b.classList.toggle('is-picked', k === g - 1); b.classList.toggle('is-other', k !== g - 1); b.disabled = true; });
-    segments(segs, dots(true));
+    top(true);
     setTimeout(next, reduced() ? 120 : 260);
   }
   async function next() {
@@ -353,6 +415,8 @@ async function mountSay(el, ctx, key) {
     if (!S.advance(round)) return finish(false);
     await swap(() => fill(), { kind: 'forward', fallbackEl: card });
     busy = false;
+    showBtn.focus({ preventScroll: true });
+    announce(`${task.textContent || ''} ${prompt.textContent || ''}`.trim());
   }
   function finish(/** @type {boolean} */ early) {
     if (!alive) return;
@@ -367,8 +431,8 @@ async function mountSay(el, ctx, key) {
   const onKey = (/** @type {KeyboardEvent} */ e) => {
     if (e.key === 'Escape') { e.preventDefault(); finish(true); return; }
     if (st === 'think' && (e.key === ' ' || e.key === 'Enter')) { e.preventDefault(); doReveal(); return; }
-    if (st === 'revealed' && ['1', '2', '3', '4'].includes(e.key)) { e.preventDefault(); grade(/** @type {1|2|3|4} */ (Number(e.key))); return; }
-    if (st === 'revealed' && (e.key === ' ' || e.key === 'Enter')) { e.preventDefault(); grade(3); }
+    if (st === 'revealed' && grades.key(e)) return;
+    if (st === 'revealed' && (e.key === ' ' || e.key === 'Enter') && !(e.target instanceof HTMLElement && e.target.closest('button'))) { e.preventDefault(); grades.pick(grades.suggested); }
   };
   document.addEventListener('keydown', onKey);
   const cleanup = () => { document.removeEventListener('keydown', onKey); vv?.removeEventListener('resize', fit); removeEventListener('resize', fit); };

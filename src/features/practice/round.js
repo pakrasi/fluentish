@@ -11,7 +11,9 @@
    with the differing words marked), then "type it once". Scheduling is session.js; saving is data.js. */
 import { h, replace, announce } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
-import { correct as fxCorrect, wrong as fxWrong, resetAnswer, segments, swap, skip as skipHold, reduced, fill } from '../../core/motion.js';
+import { correct as fxCorrect, wrong as fxWrong, resetAnswer, swap, skip as skipHold, reduced, fill } from '../../core/motion.js';
+import { progressOf, drawProgress, againRow } from './progress.js';
+import { doneHero } from './done-hero.js';
 import { label, add } from '../../core/clock.js';
 import * as Match from '../../domain/match.js';
 import * as RD from '../../domain/b1ready.js';
@@ -24,7 +26,7 @@ import { checkAnswer } from '../../services/claude.js';
 import { speech } from './speech.js';
 import { play as playAudio, stop as stopAudio, prefetchAudio } from '../../services/audio.js';
 import { recallBar } from './hub.js';
-import { Field, atmosphere } from '../../core/brand.js';
+import { Field } from '../../core/brand.js';
 import { readinessView } from './field.js';
 import { parseClusterKind, itemFor as clusterItem, compose as composeCluster, cardIds as clusterCards, pickIds, typable } from './clusters/items.js';
 import { loadClusters, dueCards as clusterDue, update as updateClusters, dayOf as clusterDay, recallOf, DECK as CLUSTER_DECK } from './clusters/data.js';
@@ -163,7 +165,8 @@ export async function mountRound(el, ctx) {
   // the round's own strip of the readiness field: one cell per item, landing in accent on a right first answer
   const stripIds = [...new Set(round.queue.map((/** @type {any} */ q) => q.id))];
   const stripEl = h('canvas', { class: 'field pr-strip', style: { '--w': `${Math.min(stripIds.length, 24) * 8 - 2}px` } });
-  const top = h('div', { class: 'pr-top' }, segs, h('div', { class: 'pr-top-row' }, count, stripEl, endBtn));
+  const again = againRow();
+  const top = h('div', { class: 'pr-top' }, segs, again, h('div', { class: 'pr-top-row' }, count, stripEl, endBtn));
   const meta = h('span', { class: 'label' });
   const secs = h('span', { class: 'caption tnum pr-secs', 'aria-hidden': 'true' });
   const tfill = h('span', { class: 'fill' });
@@ -253,8 +256,10 @@ export async function mountRound(el, ctx) {
     if (sec) replace(secondary, sec, h('kbd', null, 'Tab'));
   }
   function updateDots() {
-    segments(segs, S.dots(round, recorded));
-    count.textContent = t('practice.count', { n: Math.min(round.i + 1, round.queue.length), total: round.queue.length });
+    // the planned cards are the segments; cards that come back are ticks under them (the bar never re-divides)
+    const p = progressOf(round, recorded, r => !!r.ok);
+    drawProgress(segs, again, p);
+    count.textContent = p.onAgain ? t('practice.countAgain', { n: p.k, total: p.n }) : t('practice.count', { n: p.k, total: p.n });
   }
 
   // ---------- drawing a card ----------
@@ -300,7 +305,7 @@ export async function mountRound(el, ctx) {
   async function drawCard(first = false) {
     entry = S.current(round, data.byId, store.cards(deck));
     if (!entry) return finish();
-    if (first) { fillCard(); focusInput(); announce(t('practice.cardAnnounce', { n: entry.n, total: round.queue.length })); return; }
+    if (first) { fillCard(); focusInput(); announce(t('practice.cardAnnounce', { n: progressOf(round, false, r => !!r.ok).k, total: round.planned || round.queue.length })); return; }
     await swap(() => fillCard(), { kind: 'forward', fallbackEl: card });
     focusInput();
     scroll.scrollTop = 0;
@@ -404,9 +409,25 @@ export async function mountRound(el, ctx) {
   function markSlips(/** @type {any} */ g) {
     const s = g.input, marks = [...g.typos.map((/** @type {any} */ x) => ({ ...x, k: 'typo' })), ...g.capMiss.map((/** @type {any} */ x) => ({ ...x, k: 'cap' })), ...g.umlautMiss.map((/** @type {any} */ x) => ({ ...x, k: 'uml' }))].sort((a, b) => a.start - b.start);
     /** @type {any[]} */ const out = []; let p = 0;
-    for (const m of marks) { if (m.start < p) continue; out.push(s.slice(p, m.start), h('span', { class: 'pr-slip' }, s.slice(m.start, m.end)), h('span', { class: 'pr-fix' }, ` ${m.expected}`)); p = m.end; }
+    for (const m of marks) {
+      if (m.start < p) continue;
+      // a capital or an umlaut: the word once, in its right spelling, with the letters that changed underlined in accent
+      // (it was graded right, so nothing here is red); a typo keeps its mark and the right spelling after it
+      if (m.k === 'typo') out.push(s.slice(p, m.start), h('span', { class: 'pr-slip' }, s.slice(m.start, m.end)), h('span', { class: 'pr-fix' }, ` ${m.expected}`));
+      else out.push(s.slice(p, m.start), changedLetters(s.slice(m.start, m.end), m.expected));
+      p = m.end;
+    }
     out.push(s.slice(p));
     return out;
+  }
+
+  /** "damen" → "Damen" with the D underlined. @param {string} typed @param {string} right */
+  function changedLetters(typed, right) {
+    /** @type {any[]} */ const out = [];
+    const a = [...typed], b = [...String(right)];
+    if (a.length !== b.length) return h('span', { class: 'pr-capfix' }, right);
+    b.forEach((ch, k) => out.push(ch === a[k] ? ch : h('span', { class: 'pr-capfix' }, ch)));
+    return h('span', null, out);
   }
 
   // right
@@ -438,7 +459,7 @@ export async function mountRound(el, ctx) {
     else if (veryLate) head = t('practice.right.veryLate');
     else if (late) head = t('practice.right.late', { s: fmtS(ms), limit: Math.round(/** @type {number} */ (limitMs) / 1000) });
     else if (umlaut) head = t('practice.right.umlaut', { list: g.umlautMiss.map((/** @type {any} */ x) => x.expected).join(', ') });
-    else if (capSlip) head = t('practice.right.cap');
+    else if (capSlip) head = t('practice.right.capList', { list: [...new Set(g.capMiss.map((/** @type {any} */ x) => x.expected))].join(', ') });
     else if (punct) head = t('practice.right.punct');
     else if (g.typos.length) head = t('practice.right.typo');
     const situation = it.kind === 'topic' || it.kind === 'reply';
@@ -452,6 +473,8 @@ export async function mountRound(el, ctx) {
     // a preposition gap: the usage note is the point, so it shows after a right answer too
     if (it.usage) kids.push(h('p', { class: 'pr-rule' }, it.usage));
     if (g.typos.length || capSlip || umlaut) kids.push(h('p', { class: 'pr-yours', lang: 'de' }, markSlips(g)));
+    const capHead = !isNew && !veryLate && !late && !umlaut && capSlip;
+    if (capSlip && !capHead) kids.push(h('p', { class: 'caption' }, t('practice.capsNote', { list: [...new Set(g.capMiss.map((/** @type {any} */ x) => x.expected))].join(', ') })));
     if (situation) kids.push(h('p', { class: 'caption' }, t('practice.checkedPhrase')));
     const others = g.alsoCorrect || [];
     if (others.length && !clean) kids.push(h('p', { class: 'pr-also' }, h('span', { class: 'caption' }, situation ? t('practice.otherWays') : t('practice.alsoCorrect')), ' ',
@@ -701,18 +724,14 @@ function drawDone(el, ctx, data, round, backTo) {
   // landing in the exam pool
   const view = round.kind === 'mistakes' ? null : readinessView(st);
   const fieldEl = view ? h('canvas', { class: 'field pr-done-field' }) : null;
-  const atmoEl = h('div', { class: 'atmo', 'aria-hidden': 'true' });
+  const hero = doneHero({ label: t('practice.roundDone'), figure: sum.right, of: t('practice.ofRight', { n: sum.total }),
+    lines: [sum.late ? t('practice.late', { n: sum.late }) : null, sum.partial ? t('practice.partialN', { n: sum.partial }) : null, sum.fixedLast ? t('practice.lastFixed') : null],
+    data: view ? h('div', { class: 'pr-ready' },
+      h('p', { class: 'pr-ready-top' }, h('span', { class: 'label' }, exam ? t('practice.readyFor', { date: label(c.exam) }) : t('practice.readyNow')),
+        h('b', { class: 'tnum' }, `${p1(b.recall)}% → ${p1(a.recall)}%`)), bar, fieldEl,
+      Math.abs(a.recall - b.recall) < 0.0005 ? h('p', { class: 'caption' }, t('practice.repeats')) : null) : null });
   replace(el, h('div', { class: 'practice pr-done stack' },
-    h('section', { class: 'hero pr-done-hero' }, atmoEl,
-      h('p', { class: 'label' }, t('practice.roundDone')),
-      h('h1', null, h('span', { class: 'figure tnum' }, String(sum.right)), ' ', h('span', { class: 'pr-done-of' }, t('practice.ofRight', { n: sum.total }))),
-      sum.late ? h('p', { class: 'caption' }, t('practice.late', { n: sum.late })) : null,
-      sum.partial ? h('p', { class: 'caption' }, t('practice.partialN', { n: sum.partial })) : null,
-      sum.fixedLast ? h('p', { class: 'caption' }, t('practice.lastFixed')) : null,
-      view ? h('div', { class: 'pr-ready' },
-        h('p', { class: 'pr-ready-top' }, h('span', { class: 'label' }, exam ? t('practice.readyFor', { date: label(c.exam) }) : t('practice.readyNow')),
-          h('b', { class: 'tnum' }, `${p1(b.recall)}% → ${p1(a.recall)}%`)), bar, fieldEl,
-        Math.abs(a.recall - b.recall) < 0.0005 ? h('p', { class: 'caption' }, t('practice.repeats')) : null) : null),
+    hero.el,
     h('p', { class: 'pr-next' }, more ? t(write ? (wDue ? 'practice.write.nextUp' : 'practice.write.nextNew') : 'practice.nextUp', write ? { due: wDue, n: C.newLeftOf(st, 'w') } : { due: st.dueN, n: C.newLeft(st) }) : t('practice.allDone', { n: tomorrow })),
     h('div', { class: 'pr-done-actions' },
       more ? h('a', { class: 'btn btn-primary pressable', href: anotherHref, id: 'pr-again' }, t('practice.another', { min: roundMinutes(C.ROUND) })) : null,
@@ -723,7 +742,6 @@ function drawDone(el, ctx, data, round, backTo) {
     list(t('practice.list.new'), sum.news)));
   requestAnimationFrame(() => fill(bar, b.recall));
   setTimeout(() => fill(bar, a.recall), reduced() ? 0 : 380);
-  /** @type {any} */ let atmo = null;
   /** @type {Field | null} */ let field = null;
   if (view && fieldEl) {
     const rightIds = new Set(round.results.filter((/** @type {any} */ r) => r.first && r.ok).map((/** @type {any} */ r) => r.id));
@@ -734,14 +752,12 @@ function drawDone(el, ctx, data, round, backTo) {
     cells.slice(0, 24).forEach((i, k) => setTimeout(() => field?.ripple(i, { state: Math.max(2, view.states[i]) }), reduced() ? 0 : 500 + k * 90));
     cells.slice(24).forEach(i => field?.set(i, Math.max(2, view.states[i])));
   }
-  atmosphere(atmoEl).then(x => { atmo = x; x.breathe(); }).catch(() => {});
-  el.querySelector('h1')?.setAttribute('tabindex', '-1');
-  /** @type {HTMLElement | null} */ (el.querySelector('h1'))?.focus({ preventScroll: true });
+  const stopHero = hero.start();
   const onKey = (/** @type {KeyboardEvent} */ e) => {
     if (e.key === 'Enter' && more && !/** @type {HTMLElement} */ (e.target).closest('a,button')) { e.preventDefault(); location.hash = anotherHref; }
     if (e.key === 'Escape') { e.preventDefault(); ctx.go(backTo); }
   };
   document.addEventListener('keydown', onKey);
-  const stop = () => { document.removeEventListener('keydown', onKey); field?.destroy(); atmo?.destroy(); };
+  const stop = () => { document.removeEventListener('keydown', onKey); field?.destroy(); stopHero(); };
   addEventListener('hashchange', stop, { once: true });
 }
