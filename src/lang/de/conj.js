@@ -221,7 +221,8 @@ export function build(words, table = null, extra = []) {
  */
 export function infinitivesIn(texts, skip) {
   /** @type {Set<string>} */ const out = new Set();
-  const ok = (/** @type {string} */ w) => /^[a-zäöüß]{4,}(en|ern|eln)$/.test(w) && !skip(key(w));
+  // (not a superlative: besten, größten, letzten)
+  const ok = (/** @type {string} */ w) => /^[a-zäöüß]{4,}(en|ern|eln)$/.test(w) && !/sten$/.test(w) && !skip(key(w));
   for (const t of texts) {
     const ws = String(t || '').replace(/\[[^\]]*\]|\([^)]*\)/g, ' ').split(/[^\p{L}]+/u).filter(Boolean);
     ws.forEach((w, i) => {
