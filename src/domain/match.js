@@ -767,7 +767,7 @@ function restCheck(input, base, accepted, opts = {}) {
   const spanFirst = words(base.slice(span0Of(mr), /** @type {[number, number]} */ (mr.span)[1]))[0];
   const fitsFrame = (/** @type {string} */ p) => {
     const els = compile(p, true, false).els;
-    if (preDet && spanFirst && els[0] && els[0].t === 'w' && !els[0].alts.some(a => a.n === spanFirst.n)) return false;
+    if (preDet && spanFirst && L.grading.caseSensitive === 'nouns' && /^\p{Lu}/u.test(spanFirst.raw) && els[0] && els[0].t === 'w' && !els[0].alts.some(a => a.n === spanFirst.n)) return false;
     if (!fr || !conj) return true;
     // a phrase with its own subject (was meinen Sie for was meinst du) brings its verb's person: only the infinitive,
     // participle and zu are the frame's then

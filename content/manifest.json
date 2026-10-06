@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "5236cf2868cc",
+ "version": "c19032779338",
  "languages": [
   {
    "id": "khasi",
@@ -358,8 +358,8 @@
    "id": "conversation.de",
    "path": "conversation/de.json",
    "schema": "conversation@1",
-   "bytes": 9908,
-   "sha256": "6747d9f18b3142346980eb992b01542075226b0cff3b91213f4e2e3226d04380"
+   "bytes": 9915,
+   "sha256": "12daca6a45073aa8560bf2f6b938f562b966248733acf655b1233ec2bfd098f4"
   },
   {
    "id": "course.fr",
@@ -589,8 +589,8 @@
    "id": "igloo.chunks.accept.german",
    "path": "igloo/chunks/accept_german.json",
    "schema": "phrases-accept@1",
-   "bytes": 535713,
-   "sha256": "e453aca5d3fba00d05500d3e78ef8974b606ed242ab998f9a1abd2b626ed8aad"
+   "bytes": 535777,
+   "sha256": "2aa8832a374209465fdfd855246cd2f69ee07753c9084a2cfd75308db3127018"
   },
   {
    "id": "igloo.chunks.arabic",
@@ -610,8 +610,8 @@
    "id": "igloo.chunks.en",
    "path": "igloo/chunks/en.json",
    "schema": "phrases-source@1",
-   "bytes": 764444,
-   "sha256": "b8001ac8b63592ef9ee9207daa0a1706fcc356e095c25d2c7d10c916ce5868b9"
+   "bytes": 764473,
+   "sha256": "dde581cae5d97b827f58b274e7b2dad491f52b4d16514b98a20ccc17c1d61966"
   },
   {
    "id": "igloo.chunks.french",
@@ -694,8 +694,8 @@
    "id": "igloo.grammar.items.de",
    "path": "igloo/grammar/items_de.json",
    "schema": "grammar@1",
-   "bytes": 408004,
-   "sha256": "3a04d2fb57497b7ac4db7c33c4356bfc589573f09d2809c8d13c9ec3a860d274"
+   "bytes": 408889,
+   "sha256": "d9c87499830e007ba064f9ba8c8254bd5608a47daec159aa12942be39ab7f199"
   },
   {
    "id": "igloo.lang.french",
@@ -820,8 +820,8 @@
    "id": "igloo.words.de",
    "path": "igloo/words/de.json",
    "schema": "lexicon@1",
-   "bytes": 1326561,
-   "sha256": "b645a741afddf9dd75e57b30fe554fa56fc01afed8cf2087381498abd01c6870"
+   "bytes": 1326586,
+   "sha256": "b69c1dc239d80692e65ec84c9fcf57736fd90c1ebcab56fc37ef704da5086210"
   },
   {
    "id": "igloo.words.fr",
