@@ -25,6 +25,8 @@ const ALLOWED = {
   'vocab.events': 'fill',
   'fr.session': 'fill',
   'read.words': 'fill',   // saved reading words: lemma, meaning, level, first/last/n; no sentence, no title (lane L2b)
+  'conv.sessions': 'fill',   // conversation sessions: numbers and ids, no free text (lane L4, PLAN-REVIEW B6)
+  'conv.used': 'seen',       // words he used in conversations: the conversation evidence (lane L4)
 };
 
 /** Collections found by pattern, and their rule. */
@@ -37,6 +39,7 @@ const DENIED = [
   'read.cache',         // Claude's glosses, translations and questions for a text (lane L2)
   'conv.transcripts',   // conversation transcripts (lane L4)
   'conv.feedback',      // conversation feedback with quotes from the transcript (lane L4)
+  'conv.spend',         // what this device spent on the Claude key this month (lane L4)
   'hours.external',     // study hours read from an outside file (lane L5)
   'exam.window',        // the exam window record (lane L1a): device-only, a restored device starts its own
   'today.anyway',       // "Study anyway" on an Off day (lane L1b): one day, this device

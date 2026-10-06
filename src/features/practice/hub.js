@@ -144,6 +144,12 @@ export async function mountHub(el, ctx) {
     const x = simToday({ store, c, settings: ctx.settings() });
     const speakDetail = x.due && x.newLeft ? t('practice.sim.detail', { due: x.due, fresh: x.newLeft }) : x.due ? t('practice.sim.detailDue', { n: x.due })
       : x.newLeft ? t('practice.sim.detailFresh', { n: x.newLeft }) : t('practice.speak.detail');
+    // Conversation (round 4, practice-conversation): how many this week, read from its sessions (no import of the feature)
+    const convRow = () => {
+      const week = add(c.today, -6);
+      const n = Object.values(store.get('conv.sessions', {}) || {}).filter((/** @type {any} */ x) => x && !x.deletedAt && x.turns > 0 && String(x.day || '') >= week).length;
+      return linkRow({ href: '#/practice/conversation', title: t('conv.row'), detail: n ? t('conv.row.week', { n }) : t('conv.row.detail') });
+    };
     const areaRow = (/** @type {string} */ a) => {
       const ar = rd.areas[a];
       return barRow({ href: `#/practice/round?kind=area:${a}`, title: t(`practice.area.${a}`), x: ar,
@@ -152,6 +158,7 @@ export async function mountHub(el, ctx) {
     const examRows = [
       barRow({ href: '#/practice/write', title: t('practice.writeRow'), detail: writeDetail, x: wr }),
       linkRow({ href: '#/practice/speak', title: t('practice.speak'), detail: speakDetail }),
+      convRow(),
       areaRow('reading'), areaRow('grammar'),
       missedN ? linkRow({ href: '#/practice/round?kind=missed', title: t('practice.missed', { n: missedN }), detail: t('practice.missed.detail') }) : null,
       mistakes.length ? linkRow({ href: '#/practice/round?kind=mistakes', title: t('practice.mistakes', { n: mistakes.length }),

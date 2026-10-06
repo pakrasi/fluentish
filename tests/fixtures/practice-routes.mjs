@@ -40,4 +40,7 @@ export const PRACTICE_ROUTES = [
   ['#/practice/read/new', 'practice-read'],
   ['#/practice/read/e2e-none', 'practice-read'],
   ['#/practice/round?kind=read', 'practice-read'],
+  // round 4: Conversation (lane L4)
+  ['#/practice/conversation', 'practice-conversation'],
+  ['#/practice/conversation/c/e2e-none', 'practice-conversation'],
 ];

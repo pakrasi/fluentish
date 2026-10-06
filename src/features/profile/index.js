@@ -20,6 +20,7 @@ import { backupBlock } from './backup.js';
 import { summary as progressSummary } from '../../data/progress.js';
 import { activeCourse } from '../../data/settings.js';
 import { newPerDayChosen, buildShare } from '../../domain/budget.js';
+import * as Conv from '../../domain/conversation.js';
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
 export async function mount(el, ctx) {
@@ -191,8 +192,25 @@ export async function mount(el, ctx) {
       perDay, buildNew,
       switchRow({ label: t('practice.readAloud'), checked: s.practice.readAloud, onChange: v => write('practice.readAloud', v) }),
       switchRow({ label: t('practice.claudeCheck'), hint: hasKey ? undefined : t('practice.claudeCheck.needsKey'), checked: s.practice.claudeCheck, onChange: v => write('practice.claudeCheck', v) }),
-      switchRow({ label: t('practice.simpleInput'), hint: t('practice.simpleInput.hint'), checked: s.practice.simpleInput, onChange: v => write('practice.simpleInput', v) }));
+      switchRow({ label: t('practice.simpleInput'), hint: t('practice.simpleInput.hint'), checked: s.practice.simpleInput, onChange: v => write('practice.simpleInput', v) }),
+      conversation(s));
     return sec;
+  }
+
+  /** Conversation practice (round 4, lane L4): his interests for topic suggestions, and the monthly limit. @param {any} s */
+  function conversation(s) {
+    const cv = s.conversation || {};
+    const interests = Array.isArray(cv.interests) ? cv.interests : [];
+    const cap = Number.isFinite(cv.monthlyCapUsd) && cv.monthlyCapUsd > 0 ? cv.monthlyCapUsd : Conv.MONTHLY_CAP;
+    const input = /** @type {HTMLInputElement} */ (h('input', { class: 'input', id: 'profile-interests', autocomplete: 'off', value: interests.join(', '), maxlength: '400',
+      onchange: () => { const next = Conv.parseInterests(input.value); write('conversation.interests', next); input.value = next.join(', '); } }));
+    const opts = [...new Set([...Conv.CAP_OPTIONS, cap])].sort((a, b) => a - b);
+    return h('div', { class: 'stack', id: 'profile-conversation' },
+      h('h3', null, t('conv.profile')),
+      field({ label: t('conv.profile.interests'), input, hint: t('conv.profile.interests.hint') }),
+      h('div', { class: 'form-field' }, h('p', { class: 'field-label' }, t('conv.profile.cap')),
+        seg({ label: t('conv.profile.cap'), value: String(cap), options: opts.map(n => /** @type {[string, string]} */ ([String(n), `$${n}`])), onChange: v => write('conversation.monthlyCapUsd', Number(v)) }),
+        h('p', { class: 'field-hint' }, t('conv.profile.cap.hint'))));
   }
 
   /* ---------- connections ---------- */

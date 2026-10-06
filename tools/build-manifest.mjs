@@ -35,6 +35,7 @@ export const MAP = [
   [/^build\/(\w+)\.json$/, m => `build.${m[1]}`, 'build@1'],
   [/^atlas\/(\w+)\.json$/, m => `atlas.${m[1]}`, 'atlas@1'],
   [/^read\/(\w+)\.json$/, m => `read.${m[1]}`, 'readers@1'],
+  [/^conversation\/(\w+)\.json$/, m => `conversation.${m[1]}`, 'conversation@1'],
   [/^exams\/([\w-]+)\/exam\.json$/, m => `exam.${m[1]}.def`, 'exam-def@1'],
   [/^exams\/([\w-]+)\/locale\.([\w-]+)\.json$/, m => `exam.${m[1]}.locale.${m[2]}`, 'exam-locale@1'],
   [/^exams\/([\w-]+)\/why\/day(\d+)\.json$/, m => `exam.${m[1]}.why.${m[2]}`, '%s-why@1'],

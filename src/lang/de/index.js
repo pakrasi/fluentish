@@ -65,10 +65,19 @@ const de = {
     abbreviations: R.ABBREVIATIONS,
   },
 
+  conversation: {
+    language: 'German',
+    register: { du: 'du', sie: 'Sie' },
+    connectors: ['zwar … aber', 'einerseits … andererseits', 'deshalb', 'trotzdem', 'außerdem'],
+    chips: ['Wie sagt man …?', 'Was bedeutet …?', 'Langsamer, bitte.', 'Noch einmal, bitte.'],
+    example: 'Example: they wrote "Am Samstag ich bin ins Kino gegangen." You reply: "Oh, <r was="Am Samstag ich bin">am Samstag bist du</r> ins Kino gegangen? Was hast du gesehen?"',
+  },
+
   exams: ['goethe-b1'],
   content: {
     words: 'igloo.words.de', phrases: 'igloo.chunks.german', accept: 'igloo.chunks.accept.german', sentences: 'igloo.sentences.german',
     grammar: 'igloo.grammar.items.de', clusters: 'clusters.de', build: 'build.de', atlas: 'atlas.de', forms: 'b1.forms',
+    conversation: 'conversation.de',
   },
 };
 

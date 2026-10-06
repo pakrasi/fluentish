@@ -47,6 +47,9 @@ export const SNAPSHOT_KV = {
   'fr.session': 'fill',
   // what he saved while reading (round 4; no sentence and no title: those stay in read.ctx and reads, device-only)
   'read.words': 'fill',
+  // conversation practice (round 4): each session's numbers and ids, no free text (the title and the transcript stay
+  // in conv.transcripts, device-only), and the words he used (conversation evidence, merged like lookup.seen)
+  'conv.sessions': 'fill', 'conv.used': 'seen',
 };
 /**
  * Collections found by an exact name pattern rather than a fixed name, with their merge rule (data/restore.js). Only
@@ -347,6 +350,21 @@ export function readTexts(store) {
 }
 
 /**
+ * The conversations on this device in Scripts' shape: each transcript's title and every line, his and Claude's, for
+ * the log check (conversation practice, round 4; the transcripts never leave the device).
+ * @param {any} store @returns {Record<string, any>}
+ */
+export function convTexts(store) {
+  /** @type {Record<string, any>} */ const out = {};
+  for (const [id, tr] of Object.entries(store.get('conv.transcripts', {}) || {})) {
+    if (!tr || typeof tr !== 'object') continue;
+    const x = /** @type {any} */ (tr);
+    out[`conv:${id}`] = { title: typeof x.title === 'string' ? x.title : null, sections: [{ sentences: (Array.isArray(x.turns) ? x.turns : []).map((/** @type {any} */ t) => ({ de: String(t && t.text || '').replace(/<\/?r\b[^>]*>/g, '') })) }] };
+  }
+  return out;
+}
+
+/**
  * Upload the error log once a study day: the entries logged since the last upload, to data/logs/<device>/<day>.ndjson,
  * each checked again for script text (a match is replaced, never sent).
  * @param {any} store @param {Files} files
@@ -360,8 +378,9 @@ export async function uploadLog(store, files, { entries, now, secrets, build = n
   const since = st.logAt || '';
   const fresh = entries.filter(e => e && typeof e.at === 'string' && e.at > since);
   if (!fresh.length) { setState(store, { logDay: today }); return 0; }
-  // reading texts (kv reads, read.ctx) have Scripts' shape, so the same check finds them (round 4)
-  const isScript = scriptText({ ...(store.get('scripts', {}) || {}), ...readTexts(store) });
+  // reading texts (kv reads, read.ctx) and conversation transcripts have Scripts' shape, so the same check finds them
+  // (round 4)
+  const isScript = scriptText({ ...(store.get('scripts', {}) || {}), ...readTexts(store), ...convTexts(store) });
   const lines = fresh.map(e => JSON.stringify({ at: e.at, where: String(e.where || '').slice(0, 40), message: isScript(e.message) || isScript(e.where) ? '[removed: script text]' : String(e.message || '').slice(0, 300), build }));
   await writeOwned(files, logPath(store.device.deviceId, today), old => {
     const have = new Set(String(old || '').split('\n').filter(Boolean));

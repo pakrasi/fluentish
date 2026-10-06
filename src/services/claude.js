@@ -111,6 +111,183 @@ export async function ask({ key, system = '', user, model = config.anthropic.mod
   return { text, model: j.model || model, usage: j.usage || null };
 }
 
+/* ---------- streaming (round 4, conversation practice) ----------
+   stream() posts a Messages API body with stream: true and reads the server-sent events as they arrive, so a reply
+   shows word by word. The SSE parser and the message builder are pure (tested in node with chunks split anywhere):
+     sseParser()      push(text chunk) → complete events; end() → the last one if the stream ended without a blank line
+     accumulate()     event by event, the message as the API would have returned it: every content block in order
+                      (thinking blocks with their signature, unchanged, so the history can be sent back as it came),
+                      the stop reason and the usage (input, cache reads and writes, output). */
+
+/** @typedef {{in: number, cacheRead: number, cacheWrite: number, out: number}} Usage */
+/** @typedef {{type: string, data: any}} SSEvent */
+
+/** An SSE reader: lines may be split anywhere between chunks. Events whose data is not JSON are skipped. */
+export function sseParser() {
+  let buf = '';
+  /** @type {string | null} */ let ev = null;
+  /** @type {string[]} */ let data = [];
+  /** @param {SSEvent[]} out */
+  const flush = out => {
+    if (data.length) {
+      const raw = data.join('\n');
+      try { const d = JSON.parse(raw); out.push({ type: ev || d?.type || 'message', data: d }); } catch { /* not JSON: skip */ }
+    }
+    ev = null; data = [];
+  };
+  /** @param {string} line @param {SSEvent[]} out */
+  const line = (line, out) => {
+    if (line === '') { flush(out); return; }
+    if (line.startsWith(':')) return;
+    const i = line.indexOf(':');
+    const field = i < 0 ? line : line.slice(0, i);
+    let value = i < 0 ? '' : line.slice(i + 1);
+    if (value.startsWith(' ')) value = value.slice(1);
+    if (field === 'event') ev = value;
+    else if (field === 'data') data.push(value);
+  };
+  return {
+    /** @param {string} chunk @returns {SSEvent[]} */
+    push(chunk) {
+      /** @type {SSEvent[]} */ const out = [];
+      buf += chunk;
+      let k;
+      while ((k = buf.search(/\r\n|\r|\n/)) >= 0) {
+        const nl = buf[k] === '\r' && buf[k + 1] === '\n' ? 2 : 1;
+        if (buf[k] === '\r' && k + 1 === buf.length) break;   // a \r at the end may be the first half of \r\n
+        line(buf.slice(0, k), out);
+        buf = buf.slice(k + nl);
+      }
+      return out;
+    },
+    /** @returns {SSEvent[]} */
+    end() {
+      /** @type {SSEvent[]} */ const out = [];
+      if (buf) { line(buf, out); buf = ''; }
+      flush(out);
+      return out;
+    },
+  };
+}
+
+/**
+ * The message being streamed, built event by event.
+ * @returns {{apply: (e: SSEvent) => void, content: any[], text: () => string, stop: () => string | null, stopDetails: () => any,
+ *   usage: () => Usage, model: () => string | null, error: () => {type: string, message: string} | null, done: () => boolean}}
+ */
+export function accumulate() {
+  /** @type {any[]} */ const content = [];
+  /** @type {string | null} */ let stop = null;
+  /** @type {any} */ let stopDetails = null;
+  /** @type {string | null} */ let model = null;
+  /** @type {{type: string, message: string} | null} */ let error = null;
+  let done = false;
+  /** @type {Usage} */ const usage = { in: 0, cacheRead: 0, cacheWrite: 0, out: 0 };
+  /** @param {any} u */
+  const take = u => {
+    if (!u) return;
+    if (Number.isFinite(u.input_tokens)) usage.in = u.input_tokens;
+    if (Number.isFinite(u.cache_read_input_tokens)) usage.cacheRead = u.cache_read_input_tokens;
+    if (Number.isFinite(u.cache_creation_input_tokens)) usage.cacheWrite = u.cache_creation_input_tokens;
+    if (Number.isFinite(u.output_tokens)) usage.out = u.output_tokens;
+  };
+  return {
+    content,
+    apply({ type, data }) {
+      const d = data || {};
+      if (type === 'message_start') { model = d.message?.model || null; take(d.message?.usage); }
+      else if (type === 'content_block_start' && Number.isInteger(d.index)) content[d.index] = structuredClone(d.content_block || {});
+      else if (type === 'content_block_delta' && Number.isInteger(d.index)) {
+        const b = content[d.index] || (content[d.index] = { type: 'text', text: '' });
+        const x = d.delta || {};
+        if (x.type === 'text_delta') b.text = (b.text || '') + (x.text || '');
+        else if (x.type === 'thinking_delta') b.thinking = (b.thinking || '') + (x.thinking || '');
+        else if (x.type === 'signature_delta') b.signature = (b.signature || '') + (x.signature || '');
+        else if (x.type === 'citations_delta') (b.citations ||= []).push(x.citation);
+        else if (x.type === 'input_json_delta') b.partial_json = (b.partial_json || '') + (x.partial_json || '');
+      } else if (type === 'message_delta') {
+        if (d.delta && 'stop_reason' in d.delta) stop = d.delta.stop_reason;
+        if (d.delta && d.delta.stop_details) stopDetails = d.delta.stop_details;
+        take(d.usage);
+      } else if (type === 'message_stop') done = true;
+      else if (type === 'error') error = { type: d.error?.type || 'error', message: d.error?.message || '' };
+    },
+    text: () => content.filter(b => b && b.type === 'text').map(b => b.text || '').join(''),
+    stop: () => stop,
+    stopDetails: () => stopDetails,
+    usage: () => ({ ...usage }),
+    model: () => model,
+    error: () => error,
+    done: () => done,
+  };
+}
+
+/** An SSE error event's type → a ClaudeError code. @param {string} type */
+const streamErrorCode = type => (type === 'overloaded_error' || type === 'api_error' ? 'overloaded' : type === 'rate_limit_error' ? 'rate'
+  : type === 'authentication_error' ? 'key' : type === 'permission_error' ? 'forbidden' : 'other');
+
+/**
+ * Stream one Messages API request. `body` is the whole request (domain/conversation.js builds it); stream: true is set
+ * here. onText gets the reply's text so far after each piece. Throws a ClaudeError: the HTTP codes of ask(), 'aborted'
+ * when the signal fired, 'stream' when the connection ended before the message did, and the SSE error event's code.
+ * A refusal or a cut-off reply is returned (stop), not thrown: the caller decides what the conversation does.
+ * @param {{key: string, body: Record<string, any>, beta?: string | null, signal?: AbortSignal, onText?: (text: string) => void, fetch?: typeof fetch}} o
+ * @returns {Promise<{content: any[], text: string, stop: string | null, stopDetails: any, usage: Usage, model: string}>}
+ */
+export async function stream({ key, body, beta = null, signal, onText, fetch: f = (...a) => fetch(...a) }) {
+  if (!key) throw new ClaudeError('nokey');
+  /** @type {Record<string, string>} */
+  const headers = {
+    'content-type': 'application/json',
+    accept: 'text/event-stream',
+    'x-api-key': key,
+    'anthropic-version': config.anthropic.version,
+    'anthropic-dangerous-direct-browser-access': 'true',
+  };
+  if (beta) headers['anthropic-beta'] = beta;
+  let r;
+  try {
+    r = await f(config.anthropic.api, { method: 'POST', headers, body: JSON.stringify({ ...body, stream: true }), signal });
+  } catch (e) {
+    throw new ClaudeError(signal?.aborted ? 'aborted' : 'offline');
+  }
+  if (!r.ok) {
+    /** @type {any} */ let j = null;
+    try { j = await r.json(); } catch { /* not json */ }
+    throw new ClaudeError(errorCode(r.status, j?.error?.message || ''), j?.error?.message || r.statusText);
+  }
+  const parse = sseParser();
+  const msg = accumulate();
+  const dec = new TextDecoder();
+  let last = '';
+  /** @param {SSEvent[]} evs */
+  const feed = evs => {
+    for (const e of evs) msg.apply(e);
+    const err = msg.error();
+    if (err) throw new ClaudeError(streamErrorCode(err.type), err.message);
+    const now = msg.text();
+    if (now !== last) { last = now; onText?.(now); }
+  };
+  const reader = r.body?.getReader();
+  if (!reader) throw new ClaudeError('stream');
+  try {
+    for (;;) {
+      const { value, done } = await reader.read();
+      if (done) break;
+      feed(parse.push(dec.decode(value, { stream: true })));
+    }
+    feed(parse.push(dec.decode()));
+    feed(parse.end());
+  } catch (e) {
+    if (e instanceof ClaudeError) throw e;
+    throw new ClaudeError(signal?.aborted ? 'aborted' : 'stream');
+  } finally {
+    try { reader.releaseLock(); } catch { /* released */ }
+  }
+  if (!msg.done()) throw new ClaudeError(signal?.aborted ? 'aborted' : 'stream');
+  return { content: msg.content.filter(Boolean), text: msg.text(), stop: msg.stop(), stopDetails: msg.stopDetails(), usage: msg.usage(), model: msg.model() || String(body.model || '') };
+}
+
 /**
  * Whether a reply has the shape of a correction: the score line ("! circa NN / 100 · …") and at least one task
  * section ("## Aufgabe N"). Anything else (JSON, a refusal in prose, half an answer) is not saved as a correction.

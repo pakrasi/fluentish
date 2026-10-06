@@ -31,9 +31,20 @@ export const config = {
   anthropic: {
     api: 'https://api.anthropic.com/v1/messages',
     /** Carried over from the two legacy apps (review N6); the Claude service (stage B) reads them from here. */
-    models: { check: 'claude-haiku-4-5', coach: 'claude-opus-5', grade: 'claude-opus-5-5' },
+    models: { check: 'claude-haiku-4-5', coach: 'claude-opus-5', grade: 'claude-opus-5-5',
+      // conversation practice (round 4): the partner's turns (streamed, cached, effort low) and the end feedback
+      converse: 'claude-sonnet-5-5', converseFeedback: 'claude-opus-5-5' },
     version: '2023-06-01',                              // date-gate: api-version (the anthropic-version header)
     fallbackBeta: 'server-side-fallback-2026-07-01',    // date-gate: api-version (refusal fallback, fallbacks: 'default')
+    /** US dollars per million tokens: input, output, 5-minute cache write, cache read. What a conversation costs is
+       computed from the API's usage with these (domain/conversation.js costOf). From the API's price list on the day
+       below; check it again when a model or price changes. */
+    pricesAsOf: '2026-09-25',                           // date-gate: api-version (the price list these come from)
+    prices: /** @type {Record<string, {in: number, out: number, cacheWrite: number, cacheRead: number}>} */ ({
+      'claude-sonnet-5-5': { in: 2, out: 10, cacheWrite: 2.5, cacheRead: 0.2 },
+      'claude-opus-5-5': { in: 4, out: 20, cacheWrite: 5, cacheRead: 0.2 },
+      'claude-haiku-4-5': { in: 1, out: 5, cacheWrite: 1.25, cacheRead: 0.1 },
+    }),
   },
   defaults: { minutesPerDay: 60, cutoffHour: 4 },
   /** Options offered in onboarding and Profile. */

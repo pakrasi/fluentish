@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "62e2c198d7a6",
+ "version": "93c59c5997c4",
  "languages": [
   {
    "id": "khasi",
@@ -176,6 +176,7 @@
    "b1.wordmap",
    "build.de",
    "clusters.de",
+   "conversation.de",
    "exam.goethe-b1.01",
    "exam.goethe-b1.02",
    "exam.goethe-b1.03",
@@ -352,6 +353,13 @@
    "schema": "clusters@1",
    "bytes": 377401,
    "sha256": "0ced2785f0adde04cebf2762504deec1b633351042536cd40cf146c93119df28"
+  },
+  {
+   "id": "conversation.de",
+   "path": "conversation/de.json",
+   "schema": "conversation@1",
+   "bytes": 9908,
+   "sha256": "6747d9f18b3142346980eb992b01542075226b0cff3b91213f4e2e3226d04380"
   },
   {
    "id": "course.fr",

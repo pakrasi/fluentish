@@ -145,6 +145,18 @@ Every card id names its kind by prefix (`src/domain/itemids.js`): `BP:` B1 phras
 
 `settings`, `prefs`, `secrets`, `meta` (migration record: `migratedAt`, `legacyDeviceId`, a per-key fingerprint for the delta re-merge, `summary`), `activity` (`{[day]: {minutes, rounds, by?, lang?, dev?}}` for the runway and study days; see Study minutes below), `ui` (dismissed notices), and the collections carried over for stage B: `b1.session`, `exams.drafts` (`{"N:module": {answers, start, pause, seen, tab, meta, prepStart}, "plays:N": {...}}`), `exams.training`, `exams.voice`, `exams.seen`, `exams.feedbackLocal`, `vocab.local`, `vocab.events`. Practice adds `practice.write` (Schreiben, device-local: `{builds: {[task]: {day, right, total}}, drafts: {[task]: text}, corrections: {[task]: {body, text, at}}}`). Progress (round 4) adds `hours.external` (device-only, never exported or in the snapshot: the study hours file as last read, `{url, day, at, syncedAt, entries: [{date, hours, lang}]}`, read at most once a study day; `features/today/progress/hours.js`). The exam window (round 4) adds `exam.window` (device-only, not in the snapshot: `{exam: the date last seen | null, outside: bool, recapped: {[date]: {on, moved}}}`; `features/day.js examWindow`).
 
+### Conversation (round 4, `features/practice-conversation/data.js`)
+
+| kv | Where | Shape |
+|---|---|---|
+| `conv.sessions` | profile, backed up (`fill`) | `{[id]: conv-session@1 {id (UUIDv7), v: 1, mode: 'free'\|'roleplay', topic: {kind: 'topic'\|'scenario'\|'own', ref: content id \| null}, level, partnerLevel, register: 'du'\|'sie', day, startedAt, endedAt, turns, words, minutes, slower, toldSlower, models: {turn, feedback}, promptVersions: {turn, session, feedback}, usage: {in, cacheRead, cacheWrite, out}, costUsd, closing, counted, cards, status: 'open'\|'ended'\|'finished', deletedAt}}`. No free text: his own topic and every title live in the transcript (PLAN-REVIEW B6) |
+| `conv.transcripts` | device only (never in a snapshot, log upload or export) | `{[id]: {id, title, system: {base, session, interests}, messages: Messages API history exactly as sent, append-only, thinking blocks kept, turns: [{i, who: 'learner'\|'partner', text, at, input?: 'typed'}]}}` |
+| `conv.feedback` | device only | `{[sessionId]: conv-feedback@1 {id, v: 1, sessionId, model, promptVersion, createdAt, raw (the model's JSON, domain/conversation-feedback.js schema), dropped: [{field, index, reason}], added: card ids}}` |
+| `conv.used` | profile, backed up (`seen`) | `{[itemId]: {first, last, n}}`: words of the list he used in typed turns or saved from a reply; knowledge source `conversation` (`data/knowledge.js EVIDENCE_KV`), never a state |
+| `conv.spend` | device only | `{month: 'YYYY-MM', usd, sessions}`: this device's spend on his key, against `settings.conversation.monthlyCapUsd` (default 3) |
+
+Mistakes he chooses become `F:C-<session id>-<n>` through `data/mistakes.js` (deck `b1`, `module: 'conversation'`), backed up like every other mistake (PLAN-REVIEW B5). Content: `content/conversation/<lang>.json` (`conversation@1`, manifest id `conversation.<lang>`): topics `{id, de, en, lv, tags}` and role-play scenarios `{id, title, en, fn, reg, lv, role, setup, goal, opener}`.
+
 ## Legacy localStorage keys (read once, never written)
 
 `src/data/migrate.js` lists them (`LEGACY_KEYS`, `LEGACY_PREFIXES`) with the mapping. Codecs: everything is JSON except `doors.apikey` (a raw string). Igloo's SM-2 keys (`doors.srs.v1`, `doors.know.v1`, `doors.progress.v1`, `doors.days.v1`, `doors.today.v1`) stay owned by Igloo until Drill and Test move here, and Igloo's SM-2 `due`/`last` are UTC epoch days (`clock.epochDay`), never reinterpreted.

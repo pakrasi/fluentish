@@ -24,6 +24,14 @@ const PINS = {
   },
   // ---- conversation.js (lane L4: conversation-turn, conversation-feedback, conversation-gloss) ----
   'conversation.js': {
+    'conversation-turn@1': 'aeae807a91ab',
+    'conversation-free@1': 'fe4a825519b5',
+    'conversation-roleplay@1': '73e484e995a9',
+    'conversation-slower@1': '067093a23215',
+    'conversation-faster@1': '54c0e4034901',
+    'conversation-closing@1': '135558e7e7c2',
+    'conversation-feedback@1': 'bc2fd5b40020',
+    'conversation-gloss@1': 'fa6d2a0651a4',
   },
 };
 

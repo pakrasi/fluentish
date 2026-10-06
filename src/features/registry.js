@@ -39,6 +39,7 @@ export const FEATURES = [
   // Practice: sibling features under #/practice, listed before the hub so their paths win the match
   { id: 'build', paths: ['/practice/build', '/practice/build/*'], tab: 'practice', view: () => import('./build/index.js'), plan: () => import('./build/plan.js') },
   { id: 'practice-script', paths: [scriptRound, '/practice/scripts', '/practice/scripts/*'], tab: 'practice', view: () => import('./practice-script/index.js'), plan: () => import('./practice-script/plan.js') },
+  { id: 'practice-conversation', paths: ['/practice/conversation', '/practice/conversation/*'], tab: 'practice', view: () => import('./practice-conversation/index.js'), plan: () => import('./practice-conversation/plan.js') },
   { id: 'practice-read', paths: [readRound, '/practice/read', '/practice/read/*'], tab: 'practice', view: () => import('./practice-read/index.js'), plan: () => import('./practice-read/plan.js') },
   { id: 'practice-round', paths: ['/practice/round'], tab: 'practice', view: () => import('./practice-round/index.js'), plan: () => import('./practice-round/plan.js') },
   { id: 'practice-write', paths: ['/practice/write', '/practice/write/*'], tab: 'practice', view: () => import('./practice-write/index.js'), plan: () => import('./practice-write/plan.js') },
