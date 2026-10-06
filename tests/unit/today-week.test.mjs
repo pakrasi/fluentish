@@ -25,8 +25,8 @@ test('weekDays: Monday first, the week\'s minutes, done from activity, today mar
   assert.deepEqual(days.map(d => d.done), [52, 0, 8, 0, 0, 0, 0]);
   assert.deepEqual(days.map(d => d.today), [false, false, true, false, false, false, false]);
   assert.deepEqual(weekTotals(days), { plan: 245, done: 60 });
-  // read has shipped (LIVE_SLOTS); write and talk have no feature yet: they are planned as normal days
-  assert.deepEqual(days.map(d => d.as), ['n', 'read', 'light', 'n', 'n', 'n', 'off']);
+  // read and talk have shipped (LIVE_SLOTS); write has no feature yet: it is planned as a normal day
+  assert.deepEqual(days.map(d => d.as), ['n', 'read', 'light', 'n', 'n', 'talk', 'off']);
   assert.deepEqual(laterThisWeek(days).map(d => d.day), ['2026-04-16', '2026-04-17', '2026-04-18', '2026-04-19']);
 });
 
