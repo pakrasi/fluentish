@@ -30,12 +30,13 @@ function kv(page, name) {
   }), name);
 }
 
-/** The one session's record. */
+/** The one session's record. @param {import('@playwright/test').Page} page @returns {Promise<any>} */
 async function session(page) {
   const all = await kv(page, 'conv.sessions');
   return Object.values(all || {})[0] || null;
 }
 
+/** @param {import('@playwright/test').Page} page @param {{spent?: number}} [o] */
 async function start(page, { spent = 0 } = {}) {
   await seed(page, { veteran: true, examInDays: null, kv: { secrets: { anthropicKey: KEY, githubToken: null }, ...(spent ? { 'conv.spend': { month: studyMonth(), usd: spent, sessions: 1 } } : {}) } });
   await open(page, '#/practice/conversation');
@@ -157,7 +158,7 @@ test('the browser\'s backup (fake token, gzip snapshot decompressed here) carrie
   await expect(page.locator('.toast').filter({ hasText: 'Backed up.' })).toBeVisible();
   const texts = [...gh.files].map(([p, b64]) => { const b = Buffer.from(b64, 'base64'); return [p, (b[0] === 0x1f && b[1] === 0x8b ? zlib.gunzipSync(b) : b).toString('utf8')]; });
   const snap = texts.find(([p]) => p.includes('/snapshots/'));
-  expect(snap, 'a snapshot went up').toBeTruthy();
+  if (!snap) throw new Error('no snapshot went up');
   expect(snap[0].endsWith('.json.gz')).toBe(true);
   expect(texts.filter(([, t]) => t.includes(SENTINEL)).map(([p]) => p)).toEqual([]);
   expect(JSON.parse(snap[1]).cards['de:read'][legacy]).toBeTruthy();
