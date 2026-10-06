@@ -88,7 +88,8 @@ test('reading: paste, the estimate, a word sheet, save to the tray; the review r
     await page.getByRole('button', { name: 'Check' }).click();
     if (await page.locator('.pr-done').count()) break;
     const next = page.getByRole('button', { name: 'Next' });
-    if (await next.isVisible()) await next.click();
+    // a short round can finish under the button (it leaves the page as the done screen comes in)
+    if (await next.isVisible()) await next.click({ timeout: 5000 }).catch(() => {});
     if (await page.locator('.pr-done').count()) break;
   }
   await expect(page.locator('.pr-done')).toBeVisible();
