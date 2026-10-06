@@ -329,10 +329,16 @@ export async function mountRound(el, ctx) {
     /** @type {any[]} */ const kids = [];
     if (it.card?.type) kids.push(wordMeta(it.card));
     if (it.task) kids.push(h('p', { class: 'pr-task' }, it.task));
+    // a mistake card says what to do and what kind of change it needs (round 5)
+    if (it.area === 'mistakes') kids.push(h('p', { class: 'pr-task' }, t('practice.mistake.task'), it.kinds && it.kinds.length ? ` ${kindsLine(it.kinds)}` : null));
     if (it.partner) kids.push(h('p', { class: 'caption' }, t('practice.partner')), h('p', { class: 'pr-partner', lang: langAttr(), dir: dirAttr() }, `„${it.partner}“`));
     if (it.gap || it.showGap) kids.push(h('p', { class: 'prompt', lang: langAttr(), dir: dirAttr() }, gapNodes(gapWindow(it.prompt, 20))));
     else kids.push(h('p', { class: 'prompt', lang: it.promptLang === 'de' ? 'de' : 'en' }, it.hl ? highlight(it.prompt, it.hl) : it.prompt));
     if (it.gloss) kids.push(h('p', { class: 'prompt-hint' }, it.gloss));
+    // where it stood in his text: the greeting before a small letter, the clause around a verb (his other mistakes
+    // there corrected); ___ is the sentence above
+    if (it.area === 'mistakes' && it.context) kids.push(h('p', { class: 'caption pr-context' }, h('span', null, t('practice.mistake.context')), ' ',
+      h('span', { lang: langAttr(), dir: dirAttr() }, [it.context.before, '___', it.context.after].filter(Boolean).join(' ').replace(/\s+([.!?,])/g, '$1'))));
     if (it.source) kids.push(h('p', { class: 'caption pr-source' }, it.area === 'mistakes' ? t('practice.from.mistake', { src: it.source }) : it.source));
     if (entry.isNew && it.area !== 'mistakes') kids.push(h('p', { class: 'caption pr-help' }, t('practice.typeIfKnown')));
     replace(promptBox, kids);
@@ -436,6 +442,22 @@ export async function mountRound(el, ctx) {
     if (strip && k >= 0 && !entry.reinsert) { if (o.ok) strip.ripple(k); else strip.set(k, 1); }
   }
   function hintNodes(/** @type {string} */ s) { return String(s).split(/\*([^*]+)\*/).map((x, i) => (i % 2 ? h('i', null, x) : x)); }
+  /** "2 things to fix: an ending, the word order." @param {string[]} kinds */
+  function kindsLine(kinds) {
+    /** @type {Map<string, number>} */ const n = new Map();
+    for (const k of kinds) n.set(k, (n.get(k) || 0) + 1);
+    const list = [...n].map(([k, c]) => t(`practice.mistake.kind.${k}`, { n: c })).join(', ');
+    return t('practice.mistake.fix', { n: kinds.length, list });
+  }
+  /**
+   * What he got wrong (g.notes, each from his answer) and the rule when it is about one of those errors (g.rule), in one
+   * box. @param {any} g @param {string | null} [rule]
+   */
+  function notesBox(g, rule = g.rule) {
+    const lines = (g.notes || []).map((/** @type {any} */ x) => h('p', null, hintNodes(x.code === 'item' ? x.text : t(`practice.note.${x.code}`, x))));
+    if (rule && !(g.notes || []).some((/** @type {any} */ x) => x.code === 'item' && x.text === rule)) lines.push(h('p', null, hintNodes(rule)));
+    return lines.length ? h('div', { class: 'pr-rule pr-notes' }, lines) : null;
+  }
   function wordCard(/** @type {any} */ it) {
     const c = it && it.card; if (!c) return null;
     // a card whose item is one word: the shared word panel (forms, one example, where it is from)
@@ -486,6 +508,9 @@ export async function mountRound(el, ctx) {
     if (r.junk) kids.push(h('p', { class: 'caption' }, t('practice.partial.junk')));
     else if (r.ref) kids.push(h('p', { class: 'pr-diff answer-key pr-rest', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, isSituation(entry.item) ? t('practice.partial.situation') : t('practice.partial.rest')), ' ', wrapRanges(r.ref, r.marks || [], 'mark')));
     if ((r.wrong || []).length) kids.push(h('p', { class: 'pr-diff', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, t('practice.you')), ' ', wrapRanges(g.input, r.wrong, 's')));
+    // his errors in the whole answer: a comma, a capital (also in the phrase: kontakt), the item's note on a word
+    const nb = notesBox(g, null);
+    if (nb) kids.push(nb);
     kids.push(h('p', { class: 'caption' }, t('practice.partial.hard')));
     return kids;
   }
@@ -566,9 +591,10 @@ export async function mountRound(el, ctx) {
       h('p', { class: 'pr-diff answer-key', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, t('practice.rightIs')), ' ', df.right),
       situation ? h('p', { class: 'caption' }, t('practice.checkedPhrase')) : null];
     if (g.alsoCorrect?.length) kids.push(h('p', { class: 'pr-also' }, alsoMore(g.alsoCorrect, t('practice.otherWays') + ' ')));
-    // a Schreiben phrase's own rule names its sentence; elsewhere the trap's general rule comes first
-    const rule = it.usage || (it.area === 'writing' && it.rule ? it.rule : (d && g.detRule) || g.detRule || it.rule);
-    if (rule) kids.push(h('p', { class: 'pr-rule' }, rule));
+    // his errors, each from his answer, and a rule only when it is about one of them (a detector's always: g.rule);
+    // after a self-repair, the trap's rule that was hinted
+    const nb = notesBox(g, g.rule || (d && outcome && outcome.g && outcome.g.detRule) || null);
+    if (nb) kids.push(nb);
     if (claudeOk() && !d && !g.det) kids.push(claudeBox(typed));
     replace(fb, kids, wordCard(it));
     fxWrong(answerEl, { revealEl: reveal });
@@ -632,7 +658,9 @@ export async function mountRound(el, ctx) {
         h('p', { class: ['answer-key', 'pr-study', String(g.target || g.right).length > 90 && 'is-long'], lang: langAttr(), dir: dirAttr() }, df.right));
     } else kids.push(h('p', { class: ['answer-key', 'pr-study', String(g.target || g.right).length > 90 && 'is-long'], lang: langAttr(), dir: dirAttr() }, (g.target || g.right)));
     if (g.alsoCorrect?.length) kids.push(h('p', { class: 'pr-also' }, h('span', { class: 'caption' }, t('practice.alsoCorrect')), ' ', h('span', { lang: langAttr(), dir: dirAttr() }, g.alsoCorrect.slice(0, 2).join(' · ')), g.alsoCorrect.length > 2 ? alsoMore(g.alsoCorrect.slice(2)) : null));
-    if (entry.item.rule) kids.push(h('p', { class: 'pr-rule' }, entry.item.rule));
+    // a typed attempt: his errors and the rule when it is about one; Show me: the item's rule, the lesson
+    const nb = typed ? notesBox(g) : entry.item.rule ? h('div', { class: 'pr-rule' }, hintNodes(entry.item.rule)) : null;
+    if (nb) kids.push(nb);
     replace(fb, kids, wordCard(entry.item));
     reveal.classList.add('is-open');
     if (typed) fxWrong(answerEl, { haptics: false });

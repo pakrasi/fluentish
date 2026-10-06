@@ -90,6 +90,7 @@ body.pr-in-round #view { max-width: none; padding: 0; }
 .pr-task { color: var(--ink-2); font-size: 14px; }
 .pr-partner { font: 400 20px/1.35 var(--font-display); }
 .pr-source { margin-top: var(--s-3); }
+.pr-context { margin-top: var(--s-2); }
 .pr-help { margin-top: var(--s-3); }
 .pr-chosen { margin-top: var(--s-3); }
 .pr-gap { display: inline-block; min-width: 3.2em; margin: 0 0.1em; border-bottom: 2px solid var(--accent); vertical-align: baseline; }
@@ -117,6 +118,7 @@ body.pr-in-round #view { max-width: none; padding: 0; }
 .pr-study { font: 400 24px/1.3 var(--font-display); }
 .pr-study.is-long { font-size: 20px; }
 .pr-rule { color: var(--ink-2); font-size: 14px; padding: 10px 12px; background: var(--surface-2); border-radius: var(--r-tile); }
+.pr-notes p + p { margin-top: 6px; }
 .pr-hint { color: var(--ink); font-weight: 500; }
 .pr-also { font-size: 14px; color: var(--ink-2); }
 .pr-more summary { cursor: pointer; color: var(--accent-ink); font-size: 13px; min-height: var(--tap); display: inline-flex; align-items: center; }
