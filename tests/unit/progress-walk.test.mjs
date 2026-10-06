@@ -129,27 +129,34 @@ test('walkDays: resuming from the last day done (each device\'s newest snapshot 
   }
 });
 
-test('walkDays: the cost grows with the days, not their square (a year against a quarter)', () => {
-  const run = h => {
-    const t0 = performance.now();
-    const walk = P.walkDays({ decks: h.decks, events: h.events });
-    let si = 0;
-    for (let i = 0; i < h.days; i++) {
-      const day = D8.add(START, i);
-      const snaps = [];
-      for (; si < h.snapshots.length && h.snapshots[si].day <= day; si++) snaps.push(h.snapshots[si]);
-      walk.step(day, snaps);
-    }
-    return performance.now() - t0;
+test('walkDays: the work grows with the days, not their square (a year against a quarter)', () => {
+  // counted, not timed (a busy machine cannot decide it): every read of a snapshot's card and of an event's payload
+  let reads = 0;
+  const counted = h => ({
+    ...h,
+    snapshots: h.snapshots.map(sn => ({ ...sn, cards: { b1: new Proxy(sn.cards.b1, { get: (o, k) => { reads++; return o[k]; } }) } })),
+    events: h.events.map(e => { const { payload, ...rest } = e; return Object.defineProperty(rest, 'payload', { enumerable: true, get: () => { reads++; return payload; } }); }),
+  });
+  const work = (days, walk) => {
+    const h = counted(history(7, days, 300, { snapEvery: 0.25, noEvent: 0 }));
+    reads = 0;
+    if (walk) {
+      const w = P.walkDays({ decks: h.decks, events: h.events });
+      let si = 0;
+      for (let i = 0; i < days; i++) {
+        const day = D8.add(START, i);
+        const snaps = [];
+        for (; si < h.snapshots.length && h.snapshots[si].day <= day; si++) snaps.push(h.snapshots[si]);
+        w.step(day, snaps);
+      }
+    } else for (let i = 0; i < days; i += 1) P.cardsAt({ decks: h.decks, events: h.events, snapshots: h.snapshots, day: D8.add(START, i) });
+    return reads;
   };
-  const make = days => ({ ...history(7, days, 800, { snapEvery: 0.25, noEvent: 0 }), days });
-  const hq = make(90), hy = make(360);
-  run(hq); run(hy);   // warm up
-  // the fastest of three, so a busy machine does not decide it
-  const best = h => Math.min(run(h), run(h), run(h));
-  const q = best(hq), y = best(hy);
-  // linear: about 4 times; quadratic (cardsAt day by day): about 16 times
-  assert.ok(y / q < 8, `a year took ${(y / q).toFixed(1)} times a quarter (${y.toFixed(0)} ms against ${q.toFixed(0)} ms)`);
+  const q = work(90, true), y = work(360, true);
+  // linear: about 4 times; cardsAt day by day (the old backfill): about 16 times
+  assert.ok(y / q < 6, `the walk: a year read ${(y / q).toFixed(1)} times a quarter (${y} against ${q})`);
+  const oq = work(90, false), oy = work(360, false);
+  assert.ok(oy / oq > 10, `cardsAt day by day grows with the square (${(oy / oq).toFixed(1)} times)`);
 });
 
 test('walkDays: a day before the last step is refused', () => {
