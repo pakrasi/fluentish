@@ -1,0 +1,596 @@
+[
+ {
+  "id": "read/de/b2-tech-03#a8",
+  "field": "de",
+  "before": "Man muss sich nur noch ein einziges Hauptpasswort merken, das allerdings besonders stark sein sollte.",
+  "after": "Viele Browser und Betriebssysteme haben eine solche Funktion inzwischen eingebaut.",
+  "severity": "error",
+  "why": "coherence: \"eine solche Funktion\" (password manager) sat after the passphrase sentence; order now a7 -> built-in managers -> master password -> passphrase"
+ },
+ {
+  "id": "read/de/b2-tech-03#a8",
+  "field": "en",
+  "before": "You only have to remember a single master password, which should, however, be particularly strong.",
+  "after": "Many browsers and operating systems now have such a function built in.",
+  "severity": "error",
+  "why": "coherence: \"eine solche Funktion\" (password manager) sat after the passphrase sentence; order now a7 -> built-in managers -> master password -> passphrase"
+ },
+ {
+  "id": "read/de/b2-tech-03#a9",
+  "field": "de",
+  "before": "Gut geeignet sind zum Beispiel mehrere zufällig gewählte Wörter, die zusammen eine lange, aber gut zu merkende Wortfolge bilden.",
+  "after": "Man muss sich nur noch ein einziges Hauptpasswort merken, das allerdings besonders stark sein sollte.",
+  "severity": "error",
+  "why": "coherence: \"eine solche Funktion\" (password manager) sat after the passphrase sentence; order now a7 -> built-in managers -> master password -> passphrase"
+ },
+ {
+  "id": "read/de/b2-tech-03#a9",
+  "field": "en",
+  "before": "Several randomly chosen words that together form a long but easy-to-remember sequence are well suited, for example.",
+  "after": "You only have to remember a single master password, which should, however, be particularly strong.",
+  "severity": "error",
+  "why": "coherence: \"eine solche Funktion\" (password manager) sat after the passphrase sentence; order now a7 -> built-in managers -> master password -> passphrase"
+ },
+ {
+  "id": "read/de/b2-tech-03#a10",
+  "field": "de",
+  "before": "Viele Browser und Betriebssysteme haben eine solche Funktion inzwischen eingebaut.",
+  "after": "Gut geeignet sind zum Beispiel mehrere zufällig gewählte Wörter, die zusammen eine lange, aber gut zu merkende Wortfolge bilden.",
+  "severity": "error",
+  "why": "coherence: \"eine solche Funktion\" (password manager) sat after the passphrase sentence; order now a7 -> built-in managers -> master password -> passphrase"
+ },
+ {
+  "id": "read/de/b2-tech-03#a10",
+  "field": "en",
+  "before": "Many browsers and operating systems now have such a function built in.",
+  "after": "Several randomly chosen words that together form a long but easy-to-remember sequence are well suited, for example.",
+  "severity": "error",
+  "why": "coherence: \"eine solche Funktion\" (password manager) sat after the passphrase sentence; order now a7 -> built-in managers -> master password -> passphrase"
+ },
+ {
+  "id": "read/de/b2-tech-03#a3",
+  "field": "en",
+  "before": "Many therefore use the same password several times, which represents a considerable risk.",
+  "after": "Many therefore use the same password for several accounts, which represents a considerable risk.",
+  "severity": "improve",
+  "why": "\"several times\" misses the point: reuse across accounts"
+ },
+ {
+  "id": "read/de/b2-tech-03#a18",
+  "field": "de",
+  "before": "Statt eines Passworts wird dabei ein Paar aus zwei digitalen Schlüsseln erzeugt.",
+  "after": "Statt eines Passworts wird dabei ein digitales Schlüsselpaar erzeugt.",
+  "severity": "improve",
+  "why": "\"ein Paar aus zwei\" is redundant"
+ },
+ {
+  "id": "read/de/b2-tech-03#a18",
+  "field": "en",
+  "before": "Instead of a password, a pair of two digital keys is generated.",
+  "after": "Instead of a password, a pair of digital keys is generated.",
+  "severity": "improve",
+  "why": "follows de"
+ },
+ {
+  "id": "read/de/b2-tech-03#a22",
+  "field": "de",
+  "before": "Wer den Verdacht hat, dass eines seiner Konten betroffen ist, sollte sofort das Passwort ändern und prüfen, ob dort unbekannte Geräte angemeldet sind.",
+  "after": "Wer den Verdacht hat, dass eines seiner Konten gehackt wurde, sollte sofort das Passwort ändern und prüfen, ob dort unbekannte Geräte angemeldet sind.",
+  "severity": "improve",
+  "why": "\"betroffen\" has no referent after the passkey paragraph"
+ },
+ {
+  "id": "read/de/b2-tech-03#a22",
+  "field": "en",
+  "before": "Anyone who suspects that one of their accounts has been affected should change the password immediately and check whether unknown devices are logged in.",
+  "after": "Anyone who suspects that one of their accounts has been hacked should change the password immediately and check whether unknown devices are logged in.",
+  "severity": "improve",
+  "why": "follows de"
+ },
+ {
+  "id": "read/de/b2-tech-03#a25",
+  "field": "de",
+  "before": "Ein guter Anfang ist es, mit dem wichtigsten Konto zu beginnen und die übrigen nach und nach umzustellen.",
+  "after": "Am besten beginnt man mit dem wichtigsten Konto und stellt die übrigen nach und nach um.",
+  "severity": "improve",
+  "why": "\"Ein guter Anfang ist es, … zu beginnen\" is redundant"
+ },
+ {
+  "id": "read/de/b2-tech-03#a25",
+  "field": "en",
+  "before": "A good start is to begin with your most important account and switch over the others gradually.",
+  "after": "It is best to start with your most important account and switch the others over gradually.",
+  "severity": "improve",
+  "why": "follows de"
+ },
+ {
+  "id": "read/de/b2-tech-03#q2",
+  "field": "skill",
+  "before": "global",
+  "after": "detail",
+  "severity": "improve",
+  "why": "single stated fact, not the gist"
+ },
+ {
+  "id": "read/de/b2-health-01#a13",
+  "field": "de",
+  "before": "Nach einem Jahr gaben deutlich mehr von ihnen an, sich weniger einsam zu fühlen, als in der Vergleichsgruppe, die die übliche Behandlung erhalten hatte.",
+  "after": "Nach einem Jahr gaben in der Projektgruppe deutlich mehr Menschen an, sich weniger einsam zu fühlen, als in der Vergleichsgruppe, die die übliche Behandlung erhalten hatte.",
+  "severity": "error",
+  "why": "\"von ihnen\" points back to the comparison group just named; the comparison breaks"
+ },
+ {
+  "id": "read/de/b2-health-01#a13",
+  "field": "en",
+  "before": "After a year, significantly more of them said they felt less lonely than in the comparison group, which had received the usual treatment.",
+  "after": "After a year, significantly more people in the project group said they felt less lonely than in the comparison group, which had received the usual treatment.",
+  "severity": "error",
+  "why": "follows de"
+ },
+ {
+  "id": "read/de/b2-health-02#a7",
+  "field": "de",
+  "before": "Erst in den letzten Jahren wurde er in einigen Regionen wiederbelebt, weil dort Hausärzte fehlen und die Bevölkerung immer älter wird.",
+  "after": "Erst in den letzten Jahren ist er in einigen Regionen wiederbelebt worden, weil dort Hausärzte fehlen und die Bevölkerung immer älter wird.",
+  "severity": "improve",
+  "why": "\"in den letzten Jahren\" reaching to now takes the Perfekt"
+ },
+ {
+  "id": "read/de/b2-health-03#a3",
+  "field": "en",
+  "before": "This is because colds and real flu are caused by viruses, against which antibiotics are ineffective.",
+  "after": "This is because colds and genuine flu (influenza) are caused by viruses, against which antibiotics are ineffective.",
+  "severity": "improve",
+  "why": "\"real flu\" is unidiomatic for \"echte Grippe\""
+ },
+ {
+  "id": "read/de/b2-health-03",
+  "field": "targets",
+  "before": [
+   "W:die_Infektion",
+   "W:die_Entwicklung",
+   "W:versagen.verb",
+   "W:die_Nebenwirkung",
+   "W:die_Herausforderung",
+   "W:verschreiben.verb",
+   "W:keinesfalls.adv",
+   "W:unter_druck_stehen.phrase",
+   "W:sparsam.adj",
+   "GC:passiv-mit-modalverben",
+   "GC:je-desto",
+   "GC:konjunktiv-2-vergangenheit"
+  ],
+  "after": [
+   "W:die_Infektion",
+   "W:die_Entwicklung",
+   "W:versagen.verb",
+   "W:die_Nebenwirkung",
+   "W:die_Herausforderung",
+   "W:verschreiben.verb",
+   "W:keinesfalls.adv",
+   "W:unter_Druck_stehen.phrase",
+   "W:sparsam.adj",
+   "GC:passiv-mit-modalverben",
+   "GC:je-desto",
+   "GC:konjunktiv-2-vergangenheit"
+  ],
+  "severity": "improve",
+  "why": "noun Druck capitalised like other ids (check against the id registry)"
+ },
+ {
+  "id": "read/de/b2-environment-01#a3",
+  "field": "de",
+  "before": "Gleichzeitig fehlt dasselbe Wasser einige Wochen später, wenn Stadtbäume unter Trockenheit leiden.",
+  "after": "Und genau dieses Wasser fehlt dann einige Wochen später, wenn Stadtbäume unter Trockenheit leiden.",
+  "severity": "error",
+  "why": "\"Gleichzeitig … einige Wochen später\" contradicts itself"
+ },
+ {
+  "id": "read/de/b2-environment-01#a3",
+  "field": "en",
+  "before": "At the same time, the same water is missing a few weeks later when city trees suffer from drought.",
+  "after": "And this very water is then missing a few weeks later, when city trees suffer from drought.",
+  "severity": "error",
+  "why": "follows de"
+ },
+ {
+  "id": "read/de/b2-environment-01#a21",
+  "field": "de",
+  "before": "Viele Städte setzen deshalb auf kleine Schritte.",
+  "after": "Weil sich ganze Viertel kaum auf einmal umbauen lassen, setzen viele Städte auf kleine Schritte.",
+  "severity": "improve",
+  "why": "coherence: \"deshalb\" followed the supporters' hindsight sentence, not the difficulty it refers to"
+ },
+ {
+  "id": "read/de/b2-environment-01#a21",
+  "field": "en",
+  "before": "Many cities are therefore relying on small steps.",
+  "after": "Because whole neighbourhoods can hardly be rebuilt at once, many cities are relying on small steps.",
+  "severity": "improve",
+  "why": "follows de"
+ },
+ {
+  "id": "read/de/b2-environment-01",
+  "field": "targets",
+  "before": [
+   "W:das_Konzept",
+   "W:versorgen.verb",
+   "W:umsetzen.verb",
+   "W:berücksichtigen.verb",
+   "W:erheblich.adj",
+   "W:der_Nutzen",
+   "W:das_Unwetter",
+   "W:die_Sanierung",
+   "W:der_Zuschuss",
+   "W:die_Maßnahme",
+   "GC:passiv-mit-modalverben",
+   "GC:je-desto"
+  ],
+  "after": [
+   "W:das_Konzept",
+   "W:versorgen.verb",
+   "W:umsetzen.verb",
+   "W:berücksichtigen.verb",
+   "W:erheblich.adj",
+   "W:der_Nutzen",
+   "W:das_Unwetter",
+   "W:die_Sanierung",
+   "W:der_Zuschuss",
+   "W:die_Maßnahme",
+   "GC:passiv-mit-modalverben",
+   "GC:je-desto",
+   "GC:konjunktiv-2-vergangenheit"
+  ],
+  "severity": "improve",
+  "why": "a20 is a clear Konjunktiv II past (\"Hätte man … geplant, wären … ausgefallen\")"
+ },
+ {
+  "id": "read/de/b2-environment-02#a21",
+  "field": "de",
+  "before": "Darüber werde ohnehin nicht im Dorf entschieden, sondern in Berlin und Brüssel.",
+  "after": "Darüber werde ohnehin nicht im Dorf entschieden, sondern in Hannover, Berlin und Brüssel.",
+  "severity": "improve",
+  "why": "fact: wolf management is also a Land matter, and the speaker is a Landtag member"
+ },
+ {
+  "id": "read/de/b2-environment-02#a21",
+  "field": "en",
+  "before": "In any case, this would not be decided in the village but in Berlin and Brussels.",
+  "after": "In any case, this would not be decided in the village but in Hanover, Berlin and Brussels.",
+  "severity": "improve",
+  "why": "follows de"
+ },
+ {
+  "id": "read/de/b2-environment-03#a2",
+  "field": "de",
+  "before": "Diese sogenannten Balkonkraftwerke bestehen meist aus ein oder zwei Solarmodulen und einem Wechselrichter, der den erzeugten Strom so umwandelt, dass er im Haushalt genutzt werden kann.",
+  "after": "Diese sogenannten Balkonkraftwerke bestehen meist aus einem oder zwei Solarmodulen und einem Wechselrichter, der den erzeugten Strom so umwandelt, dass er im Haushalt genutzt werden kann.",
+  "severity": "improve",
+  "why": "written standard inflects: \"aus einem oder zwei\""
+ },
+ {
+  "id": "read/de/b2-environment-03#a17",
+  "field": "en",
+  "before": "However, he may have a say in how and where it is attached.",
+  "after": "However, the landlord may have a say in how and where it is attached.",
+  "severity": "improve",
+  "why": "\"he\" is ambiguous in English"
+ },
+ {
+  "id": "read/de/b2-environment-03#a24",
+  "field": "de",
+  "before": "Den Strombedarf eines Haushalts deckt sie zwar nicht, doch sie kann die Stromrechnung spürbar senken.",
+  "after": "Den gesamten Strombedarf eines Haushalts deckt sie zwar nicht, doch sie kann die Stromrechnung spürbar senken.",
+  "severity": "improve",
+  "why": "it covers part of the demand; \"gesamten\" makes that clear"
+ },
+ {
+  "id": "read/de/b2-environment-03#a24",
+  "field": "en",
+  "before": "It won't cover a household's electricity needs, but it can noticeably reduce the electricity bill.",
+  "after": "It won't cover all of a household's electricity needs, but it can noticeably reduce the electricity bill.",
+  "severity": "improve",
+  "why": "follows de"
+ },
+ {
+  "id": "read/de/b2-society-01#a4",
+  "field": "de",
+  "before": "Seitdem leihen Rentnerinnen, Studierende und Eltern ehrenamtlich Bücher aus, organisieren Lesungen und reparieren kaputte Einbände.",
+  "after": "Seitdem verleihen Rentnerinnen, Studierende und Eltern ehrenamtlich Bücher, organisieren Lesungen und reparieren kaputte Einbände.",
+  "severity": "improve",
+  "why": "\"ausleihen\" here reads first as \"borrow\"; \"verleihen\" is unambiguous"
+ },
+ {
+  "id": "read/de/b2-society-01#a9",
+  "field": "de",
+  "before": "Denn es ist kein Einzelfall.",
+  "after": "Unsere Bibliothek ist kein Einzelfall.",
+  "severity": "improve",
+  "why": "coherence: paragraph-initial \"Denn\" hangs on the previous paragraph"
+ },
+ {
+  "id": "read/de/b2-society-01#a9",
+  "field": "en",
+  "before": "For it is not an isolated case.",
+  "after": "Our library is not an isolated case.",
+  "severity": "improve",
+  "why": "follows de"
+ },
+ {
+  "id": "read/de/b2-society-01#a12",
+  "field": "de",
+  "before": "Zum einen wird ein Angebot dadurch unsicher.",
+  "after": "Zum einen wird ein Angebot dadurch unzuverlässig.",
+  "severity": "improve",
+  "why": "a service is \"unzuverlässig\", not \"unsicher\" (= unsafe)"
+ },
+ {
+  "id": "read/de/b2-society-01#q4",
+  "field": "q",
+  "before": "Laut Autor wird ein Angebot unsicher, wenn es nur von Freiwilligen abhängt.",
+  "after": "Laut Autor wird ein Angebot unzuverlässig, wenn es nur von Freiwilligen abhängt.",
+  "severity": "improve",
+  "why": "follows a12"
+ },
+ {
+  "id": "read/de/b2-society-01#q4",
+  "field": "evidence",
+  "before": "Zum einen wird ein Angebot dadurch unsicher.",
+  "after": "Zum einen wird ein Angebot dadurch unzuverlässig.",
+  "severity": "improve",
+  "why": "follows a12"
+ },
+ {
+  "id": "read/de/b2-society-01#a17",
+  "field": "de",
+  "before": "Natürlich lässt sich einwenden, dass leere Kassen nun einmal keine andere Wahl lassen.",
+  "after": "Natürlich lässt sich einwenden, dass bei leeren Kassen nun einmal keine andere Wahl bleibt.",
+  "severity": "improve",
+  "why": "\"lässt sich … lassen\" repetition"
+ },
+ {
+  "id": "read/de/b2-society-01#a17",
+  "field": "en",
+  "before": "Of course, one could object that empty coffers simply leave no other choice.",
+  "after": "Of course, one could object that with empty coffers there is simply no other choice.",
+  "severity": "improve",
+  "why": "follows de"
+ },
+ {
+  "id": "read/de/b2-politics-01#a20",
+  "field": "de",
+  "before": "Ich würde mich freuen, wenn Ihre Zeitung das Thema weiter begleitet und dabei auch die Jugendlichen selbst zu Wort kommen lässt.",
+  "after": "In Ihrem Artikel haben vor allem Erwachsene über junge Menschen gesprochen.",
+  "severity": "error",
+  "why": "coherence: the criticism (adults spoke, pupils not) must come before the wish to let young people speak and the offer; order now a22, a23, a20, a21"
+ },
+ {
+  "id": "read/de/b2-politics-01#a20",
+  "field": "en",
+  "before": "I would be pleased if your newspaper continued to follow the subject and also let young people themselves have their say.",
+  "after": "In your article, it was mainly adults talking about young people.",
+  "severity": "error",
+  "why": "coherence: the criticism (adults spoke, pupils not) must come before the wish to let young people speak and the offer; order now a22, a23, a20, a21"
+ },
+ {
+  "id": "read/de/b2-politics-01#a21",
+  "field": "de",
+  "before": "Gern stelle ich dafür auch den Kontakt zu meinen Klassen her.",
+  "after": "Dabei hätten meine Schülerinnen und Schüler sicher einiges dazu zu sagen gehabt.",
+  "severity": "error",
+  "why": "coherence: the criticism (adults spoke, pupils not) must come before the wish to let young people speak and the offer; order now a22, a23, a20, a21"
+ },
+ {
+  "id": "read/de/b2-politics-01#a21",
+  "field": "en",
+  "before": "I would be happy to put you in touch with my classes for this.",
+  "after": "And yet my pupils would certainly have had a few things to say about it.",
+  "severity": "error",
+  "why": "coherence: the criticism (adults spoke, pupils not) must come before the wish to let young people speak and the offer; order now a22, a23, a20, a21"
+ },
+ {
+  "id": "read/de/b2-politics-01#a22",
+  "field": "de",
+  "before": "In Ihrem Artikel haben vor allem Erwachsene über junge Menschen gesprochen.",
+  "after": "Ich würde mich freuen, wenn Ihre Zeitung das Thema weiter begleitet und dabei auch die Jugendlichen selbst zu Wort kommen lässt.",
+  "severity": "error",
+  "why": "coherence: the criticism (adults spoke, pupils not) must come before the wish to let young people speak and the offer; order now a22, a23, a20, a21"
+ },
+ {
+  "id": "read/de/b2-politics-01#a22",
+  "field": "en",
+  "before": "In your article, it was mainly adults talking about young people.",
+  "after": "I would be pleased if your newspaper continued to follow the subject and also let young people themselves have their say.",
+  "severity": "error",
+  "why": "coherence: the criticism (adults spoke, pupils not) must come before the wish to let young people speak and the offer; order now a22, a23, a20, a21"
+ },
+ {
+  "id": "read/de/b2-politics-01#a23",
+  "field": "de",
+  "before": "Dabei hätten meine Schülerinnen und Schüler sicher einiges dazu zu sagen gehabt.",
+  "after": "Gern stelle ich dafür auch den Kontakt zu meinen Klassen her.",
+  "severity": "error",
+  "why": "coherence: the criticism (adults spoke, pupils not) must come before the wish to let young people speak and the offer; order now a22, a23, a20, a21"
+ },
+ {
+  "id": "read/de/b2-politics-01#a23",
+  "field": "en",
+  "before": "And yet my pupils would certainly have had a few things to say about it.",
+  "after": "I would be happy to put you in touch with my classes for this.",
+  "severity": "error",
+  "why": "coherence: the criticism (adults spoke, pupils not) must come before the wish to let young people speak and the offer; order now a22, a23, a20, a21"
+ },
+ {
+  "id": "read/de/b2-society-02",
+  "field": "targets",
+  "before": [
+   "W:das_Verhältnis",
+   "W:der_Absender",
+   "W:die_Lieferung",
+   "W:der_Flur",
+   "W:sich_handeln_um.verb",
+   "W:keineswegs.adv",
+   "W:selbstverständlich.adv",
+   "W:plaudern.verb",
+   "GC:konjunktiv-2-vergangenheit",
+   "GC:zweiteilige-konnektoren",
+   "GC:partizip-als-adjektiv"
+  ],
+  "after": [
+   "W:das_Verhältnis",
+   "W:der_Absender",
+   "W:die_Lieferung",
+   "W:der_Flur",
+   "W:sich_handeln_um.verb",
+   "W:keineswegs.adv",
+   "W:selbstverständlich.adj",
+   "W:plaudern.verb",
+   "GC:konjunktiv-2-vergangenheit",
+   "GC:zweiteilige-konnektoren",
+   "GC:partizip-als-adjektiv"
+  ],
+  "severity": "improve",
+  "why": "used predicatively as adjective (\"keineswegs selbstverständlich ist\")"
+ },
+ {
+  "id": "read/de/pd-kafka-vor-dem-gesetz#a6",
+  "field": "en",
+  "before": "Since the gate to the law stands open as always and the doorkeeper steps aside, the man bends down to look through the gate into the inside.",
+  "after": "Since the gate to the law stands open as always and the doorkeeper steps aside, the man bends down to look through the gate into the interior.",
+  "severity": "improve",
+  "why": "\"into the inside\" is unidiomatic"
+ },
+ {
+  "id": "read/de/pd-kafka-vor-dem-gesetz#a7",
+  "field": "en",
+  "before": "When the doorkeeper notices this, he laughs and says: \"If it tempts you so much, just try to go in despite my ban.",
+  "after": "When the doorkeeper notices this, he laughs and says: \"If it tempts you so much, just try to go in even though I forbid it.",
+  "severity": "improve",
+  "why": "\"despite my ban\" is unnatural"
+ },
+ {
+  "id": "read/de/pd-kafka-vor-dem-gesetz#a12",
+  "field": "en",
+  "before": "The man from the country did not expect such difficulties; the law is surely meant to be open to everyone and at all times, he thinks, but now, as he looks more closely at the doorkeeper in his fur coat, at his big pointed nose and his long, thin, black Tatar beard, he decides that he would rather wait until he gets permission to enter.",
+  "after": "The man from the country had not expected such difficulties; the law is surely meant to be open to everyone and at all times, he thinks, but now, as he looks more closely at the doorkeeper in his fur coat, at his big pointed nose and his long, thin, black Tatar beard, he decides that he would rather wait until he gets permission to enter.",
+  "severity": "improve",
+  "why": "\"hat nicht erwartet\" before present narration = \"had not expected\""
+ },
+ {
+  "id": "read/de/pd-kafka-vor-dem-gesetz#a16",
+  "field": "en",
+  "before": "The doorkeeper often questions him a little, asks him about his home and about many other things, but they are indifferent questions, the kind great lords ask, and at the end he always tells him again that he cannot let him in yet.",
+  "after": "The doorkeeper often holds little interrogations with him, asks him about his home and about many other things, but they are indifferent questions, the kind great lords ask, and at the end he always tells him again that he cannot let him in yet.",
+  "severity": "improve",
+  "why": "\"questions him a little\" loses \"kleine Verhöre anstellen\""
+ },
+ {
+  "id": "read/de/pd-kafka-vor-dem-gesetz#a17",
+  "field": "en",
+  "before": "The man, who had equipped himself with many things for his journey, uses everything, however valuable, to bribe the doorkeeper.",
+  "after": "The man, who has equipped himself with many things for his journey, uses everything, however valuable, to bribe the doorkeeper.",
+  "severity": "improve",
+  "why": "tense follows the German present narration"
+ },
+ {
+  "id": "read/de/pd-kafka-vor-dem-gesetz#a24",
+  "field": "en",
+  "before": "Yet now, in the darkness, he does make out a radiance that streams, never going out, from the door of the law.",
+  "after": "Yet now, in the darkness, he does make out a radiance that breaks, unquenchable, from the door of the law.",
+  "severity": "improve",
+  "why": "\"never going out\" is clumsy for \"unverlöschlich … bricht\""
+ },
+ {
+  "id": "read/de/pd-kafka-vor-dem-gesetz#q5",
+  "field": "evidence",
+  "before": "Merke aber: Ich bin mächtig.",
+  "after": "entschließt er sich, doch lieber zu warten",
+  "severity": "improve",
+  "why": "the man's own decision proves his fear better than the doorkeeper's boast"
+ },
+ {
+  "id": "read/de/pd-kafka-eine-kaiserliche-botschaft#a1",
+  "field": "en",
+  "before": "The emperor, so they say, has sent a message to you, the single one, the wretched subject, the tiny shadow that has fled before the imperial sun into the farthest distance; to you of all people the emperor has sent a message from his deathbed.",
+  "after": "The emperor, so they say, has sent a message to you, the lone individual, the wretched subject, the tiny shadow that has fled before the imperial sun into the farthest distance; to you of all people the emperor has sent a message from his deathbed.",
+  "severity": "improve",
+  "why": "\"the single one\" is unidiomatic for \"dem Einzelnen\""
+ },
+ {
+  "id": "read/de/pd-kafka-eine-kaiserliche-botschaft#a6",
+  "field": "en",
+  "before": "But the crowd is so big; their dwellings have no end.",
+  "after": "But the crowd is so vast; their dwellings have no end.",
+  "severity": "improve",
+  "why": "\"so big\" undersells the image"
+ },
+ {
+  "id": "read/de/pd-kafka-die-sorge-des-hausvaters#q2",
+  "field": "q",
+  "before": "Der Erzähler kann am Ende genau erklären, was Odradek ist.",
+  "after": "Der Erzähler kann genau erklären, was Odradek ist.",
+  "severity": "improve",
+  "why": "evidence is from the middle of the text, not \"am Ende\""
+ },
+ {
+  "id": "read/de/pd-kafka-die-sorge-des-hausvaters",
+  "field": "targets",
+  "before": [
+   "W:zumal.conj",
+   "W:unweigerlich.adv",
+   "W:offenbar.adv",
+   "W:derartig.adj",
+   "W:hinweisen.verb",
+   "W:die_Unsicherheit",
+   "W:nachweisen.verb",
+   "W:beeinflussen.verb",
+   "W:der_Ansatz",
+   "GC:konjunktiv-1"
+  ],
+  "after": [
+   "W:zumal.conj",
+   "W:unweigerlich.adv",
+   "W:offenbar.adv",
+   "W:derartig.adj",
+   "W:hinweisen.verb",
+   "W:die_Unsicherheit",
+   "W:nachweisen.verb",
+   "W:beeinflussen.verb",
+   "GC:konjunktiv-1"
+  ],
+  "severity": "improve",
+  "why": "\"Ansätze\" here means stumps/stubs, not the B2 sense \"approach\"; would teach the wrong meaning"
+ },
+ {
+  "id": "read/de/pd-kafka-ein-altes-blatt#a2",
+  "field": "en",
+  "before": "Until now we did not concern ourselves with it and went about our work; but the events of recent times are worrying us.",
+  "after": "Until now we have not concerned ourselves with it and have gone about our work; but the events of recent times are worrying us.",
+  "severity": "improve",
+  "why": "German Perfekt with \"bisher\" = English present perfect"
+ },
+ {
+  "id": "read/de/pd-kafka-ein-altes-blatt#a4",
+  "field": "en",
+  "before": "I have hardly opened my shop at dawn when I already see the entrances of all the lanes that lead into the square occupied by armed men.",
+  "after": "No sooner do I open my shop at dawn than I see the entrances of all the lanes that lead into the square occupied by armed men.",
+  "severity": "improve",
+  "why": "tense mix \"have hardly opened … when I already see\" is unnatural"
+ },
+ {
+  "id": "read/de/pd-kafka-ein-altes-blatt#a16",
+  "field": "en",
+  "before": "Our way of life and our institutions are as incomprehensible to them as they are unimportant.",
+  "after": "Our way of life and our institutions are as incomprehensible to them as they are a matter of indifference.",
+  "severity": "improve",
+  "why": "\"gleichgültig\" = indifferent, not \"unimportant\""
+ },
+ {
+  "id": "read/de/pd-kafka-ein-altes-blatt#a39",
+  "field": "en",
+  "before": "The saving of our country has been left to us craftsmen and tradespeople; but we are not up to such a task; and we never claimed to be capable of it either.",
+  "after": "The saving of our country has been left to us craftsmen and tradespeople; but we are not up to such a task; and we never boasted that we were capable of it either.",
+  "severity": "improve",
+  "why": "\"sich rühmen\" = boast"
+ }
+]

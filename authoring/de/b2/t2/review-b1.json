@@ -1,0 +1,331 @@
+[
+ {
+  "id": "read/de/b2-work-01#q5",
+  "field": "options",
+  "before": [
+   "Sie hat sich nur auf Wunsch ihrer Kollegin beworben.",
+   "Sie wollte schon immer allein eine Abteilung leiten.",
+   "Ohne das geteilte Modell hätte sie keine Führungsstelle übernommen."
+  ],
+  "after": [
+   "Sie hat sich nur auf Wunsch ihrer Kollegin beworben.",
+   "Sie wollte schon immer allein eine Abteilung leiten.",
+   "Ohne das geteilte Modell hätte sie die Stelle nicht übernommen."
+  ],
+  "severity": "improve",
+  "why": "Key overgeneralised ('keine Führungsstelle'); text only says she would not have taken this post alone."
+ },
+ {
+  "id": "read/de/b2-work-02#a20",
+  "field": "de",
+  "before": "Wie reagieren die Kolleginnen und Kollegen auf Quereinsteiger?",
+  "after": "Wie reagieren die Kolleginnen und Kollegen auf Seiteneinsteiger?",
+  "severity": "improve",
+  "why": "Text otherwise uses Seiteneinstieg; in German schools Quereinstieg and Seiteneinstieg are different routes, so keep one term."
+ },
+ {
+  "id": "read/de/b2-work-02#a20",
+  "field": "en",
+  "before": "How do colleagues react to career changers?",
+  "after": "How do colleagues react to lateral entrants?",
+  "severity": "improve",
+  "why": "Follows the German change."
+ },
+ {
+  "id": "read/de/b2-work-03#a2",
+  "field": "de",
+  "before": "Auf Wunsch muss darin nicht nur stehen, wie lange man beschäftigt war und welche Aufgaben man hatte, sondern auch, wie Leistung und Verhalten bewertet werden.",
+  "after": "Darin muss nicht nur stehen, wie lange man beschäftigt war und welche Aufgaben man hatte, sondern auf Wunsch auch, wie Leistung und Verhalten bewertet werden.",
+  "severity": "error",
+  "why": "Factually misleading: type and length of employment must always be stated; only the assessment of performance and conduct is 'auf Wunsch' (qualifiziertes Zeugnis)."
+ },
+ {
+  "id": "read/de/b2-work-03#a2",
+  "field": "en",
+  "before": "On request, it must state not only how long you were employed and what your tasks were, but also how your performance and conduct are assessed.",
+  "after": "It must state not only how long you were employed and what your tasks were, but also, on request, how your performance and conduct are assessed.",
+  "severity": "error",
+  "why": "Follows the German fix."
+ },
+ {
+  "id": "read/de/b2-work-03#a17",
+  "field": "en",
+  "before": "The closing sentence is often read particularly carefully: if the employer thanks the person for their work and regrets their departure, this is considered a good sign.",
+  "after": "The closing sentence is often read particularly carefully: if the employer thanks the person for working together and regrets their departure, this is considered a good sign.",
+  "severity": "improve",
+  "why": "'Zusammenarbeit' is cooperation/working together, not 'their work'."
+ },
+ {
+  "id": "read/de/b2-work-03#a23",
+  "field": "en",
+  "before": "If no agreement is reached, a correction can, if necessary, be sued for at the labour court.",
+  "after": "If no agreement is reached, a correction can, if necessary, be claimed in the labour court.",
+  "severity": "improve",
+  "why": "'be sued for' is awkward English."
+ },
+ {
+  "id": "read/de/b2-economy-03#q3",
+  "field": "q",
+  "before": "Wie lange bekommen die Gründer den Laden zu einem günstigen Preis?",
+  "after": "Wie lange bekommen die Gründer den Laden zu einer günstigen Miete?",
+  "severity": "improve",
+  "why": "A shop is rented, so 'Miete', not 'Preis'."
+ },
+ {
+  "id": "read/de/b2-economy-03#q5",
+  "field": "q",
+  "before": "Wie würde die Stadt es bewerten, wenn nur ein Teil der Geschäfte bleibt?",
+  "after": "Wie würde die Stadt es bewerten, wenn nur die Hälfte der Geschäfte bleibt?",
+  "severity": "improve",
+  "why": "Text speaks of 'die Hälfte'; 'ein Teil' could be one shop of six, which the text does not cover."
+ },
+ {
+  "id": "read/de/b2-media-01#a18",
+  "field": "de",
+  "before": "Sie suchten zum Beispiel danach, wo ein Bild zuerst veröffentlicht worden war und ob seriöse Medien darüber berichtet hatten.",
+  "after": "Sie prüften zum Beispiel, wo ein Bild zuerst veröffentlicht worden war und ob seriöse Medien darüber berichtet hatten.",
+  "severity": "improve",
+  "why": "'suchten danach, wo … und ob …' is clumsy; 'prüften, wo/ob' is the natural verb here."
+ },
+ {
+  "id": "read/de/b2-media-01#a18",
+  "field": "en",
+  "before": "For example, they looked for where an image had first been published and whether reputable media had reported on it.",
+  "after": "For example, they checked where an image had first been published and whether reputable media had reported on it.",
+  "severity": "improve",
+  "why": "Follows the German change."
+ },
+ {
+  "id": "read/de/b2-media-02#a24",
+  "field": "de",
+  "before": "Hätten sie damals nicht angefangen, gäbe es heute vermutlich gar keine Lokalberichterstattung mehr im Landkreis.",
+  "after": "Hätten sie damals nicht angefangen, gäbe es heute vermutlich kaum noch Lokalberichterstattung im Landkreis, sagt sie.",
+  "severity": "improve",
+  "why": "'gar keine' contradicts a3 (occasional short reports still appear); unattributed, it reads as the paper's own claim."
+ },
+ {
+  "id": "read/de/b2-media-02#a24",
+  "field": "en",
+  "before": "If they hadn't started back then, there would probably be no local reporting at all in the district today.",
+  "after": "If they hadn't started back then, there would probably be hardly any local reporting left in the district today, she says.",
+  "severity": "improve",
+  "why": "Follows the German change."
+ },
+ {
+  "id": "read/de/b2-media-02#a25",
+  "field": "de",
+  "before": "Damit das Projekt auch nach ihrer Rente bestehen bleibt, bildet Brückner seit diesem Jahr eine junge Volontärin aus.",
+  "after": "Damit das Projekt auch weiterbesteht, wenn sie in Rente geht, bildet Brückner seit diesem Jahr eine junge Volontärin aus.",
+  "severity": "improve",
+  "why": "'nach ihrer Rente' is colloquial; 'wenn sie in Rente geht' is the normal written form."
+ },
+ {
+  "id": "read/de/b2-media-02",
+  "field": "targets",
+  "before": [
+   "W:gelegentlich.adv",
+   "W:überwiegend.adv",
+   "W:die_Buchhaltung",
+   "W:abwägen.verb",
+   "W:wahrnehmen.verb",
+   "W:sorgfältig.adj",
+   "W:ausführlich.adj",
+   "W:die_Redaktion",
+   "GC:passiv-mit-modalverben",
+   "GC:konjunktiv-1",
+   "GC:konjunktiv-2-vergangenheit",
+   "GC:nomen-verb-verbindungen"
+  ],
+  "after": [
+   "W:gelegentlich.adv",
+   "W:überwiegend.adv",
+   "W:die_Buchhaltung",
+   "W:abwägen.verb",
+   "W:wahrnehmen.verb",
+   "W:sorgfältig.adj",
+   "W:ausführlich.adj",
+   "GC:passiv-mit-modalverben",
+   "GC:konjunktiv-1",
+   "GC:konjunktiv-2-vergangenheit",
+   "GC:nomen-verb-verbindungen"
+  ],
+  "severity": "improve",
+  "why": "'Redaktion' occurs only inside the compound 'Lokalredaktion'."
+ },
+ {
+  "id": "read/de/b2-media-03#q5",
+  "field": "skill",
+  "before": "inference",
+  "after": "detail",
+  "severity": "improve",
+  "why": "The reason is stated outright in a14 ('damit er von denselben Lesern wahrgenommen wird'); nothing is inferred."
+ },
+ {
+  "id": "read/de/b2-science-01#a1",
+  "field": "en",
+  "before": "On a clear evening in March, around sixty people gathered in a field on the edge of a small town in Brandenburg.",
+  "after": "On a clear evening in March, around sixty people have gathered in a field on the edge of a small town in Brandenburg.",
+  "severity": "improve",
+  "why": "German Perfekt opens a present-tense scene (a2–a5); English simple past breaks the scene."
+ },
+ {
+  "id": "read/de/b2-science-02#a9",
+  "field": "en",
+  "before": "There are several reasons, and fraud is the great exception.",
+  "after": "There are several reasons, and fraud is very much the exception.",
+  "severity": "improve",
+  "why": "'die große Ausnahme' means 'the rare exception'; 'the great exception' misleads."
+ },
+ {
+  "id": "read/de/b2-science-03#q3",
+  "field": "options",
+  "before": [
+   "wie viel Regen fällt",
+   "für welchen Zeitraum die Angabe gilt",
+   "ob überhaupt Regen fallen kann"
+  ],
+  "after": [
+   "wie viel Regen fällt",
+   "wie wahrscheinlich es ist, dass es überhaupt regnet",
+   "an wie vielen von zehn solchen Tagen es ungefähr regnet"
+  ],
+  "severity": "error",
+  "why": "Two right answers: the percentage itself does not state the period either (a6: place and period belong to the forecast, not the number). New distractors are both things the number does say (a7, a8)."
+ },
+ {
+  "id": "read/de/b2-tech-01#a16",
+  "field": "en",
+  "before": "After the first year, the town takes stock positively.",
+  "after": "After the first year, the town's verdict is positive.",
+  "severity": "improve",
+  "why": "'takes stock positively' is not natural English for 'zieht eine positive Bilanz'."
+ },
+ {
+  "id": "read/de/b2-tech-03#a16",
+  "field": "de",
+  "before": "Aktiviert werden sollte diese Funktion vor allem für E-Mail-Konten, denn über sie lassen sich die Passwörter fast aller anderen Konten zurücksetzen.",
+  "after": "Aktiviert werden sollte die Zwei-Faktor-Authentifizierung vor allem für E-Mail-Konten, denn über sie lassen sich die Passwörter fast aller anderen Konten zurücksetzen.",
+  "severity": "improve",
+  "why": "After a14 (SMS codes) and a15 (recovery codes) 'diese Funktion' no longer points clearly to two-factor authentication."
+ },
+ {
+  "id": "read/de/b2-tech-03#a16",
+  "field": "en",
+  "before": "This function should above all be activated for email accounts, because they can be used to reset the passwords of almost all other accounts.",
+  "after": "Two-factor authentication should above all be activated for email accounts, because they can be used to reset the passwords of almost all other accounts.",
+  "severity": "improve",
+  "why": "Follows the German change."
+ },
+ {
+  "id": "read/de/b2-health-03#q3",
+  "field": "options",
+  "before": [
+   "sie in den meisten Gemeinden mit dem Hausmüll entsorgen",
+   "sie für die nächste Infektion aufbewahren",
+   "sie in die Toilette werfen"
+  ],
+  "after": [
+   "sie meist über den Hausmüll entsorgen",
+   "sie für die nächste Infektion aufbewahren",
+   "sie in die Toilette werfen"
+  ],
+  "severity": "improve",
+  "why": "Key repeated the text verbatim ('in den meisten Gemeinden … mit dem Hausmüll') and stood out by length."
+ },
+ {
+  "id": "read/de/b2-environment-01#a12",
+  "field": "de",
+  "before": "Nach einem kräftigen Regen stehen sie einige Stunden unter Wasser, dann ist es im Boden versickert.",
+  "after": "Nach einem kräftigen Regen stehen sie einige Stunden unter Wasser, dann ist das Wasser im Boden versickert.",
+  "severity": "improve",
+  "why": "'es' has no clear antecedent (subject is 'sie' = Gräben; 'das Wasser' is a sentence back)."
+ },
+ {
+  "id": "read/de/b2-environment-01#a12",
+  "field": "en",
+  "before": "After heavy rain they are under water for a few hours, and then it has soaked into the ground.",
+  "after": "After heavy rain they are under water for a few hours, and then the water has soaked into the ground.",
+  "severity": "improve",
+  "why": "Follows the German change."
+ },
+ {
+  "id": "read/de/b2-society-01#a12",
+  "field": "en",
+  "before": "On the one hand, it makes a service unreliable.",
+  "after": "For one thing, it makes a service unreliable.",
+  "severity": "improve",
+  "why": "'zum einen … zum anderen' lists reasons; 'on the one hand … on the other hand' signals a contrast."
+ },
+ {
+  "id": "read/de/b2-society-01#a14",
+  "field": "en",
+  "before": "On the other hand, the volunteers themselves come under pressure.",
+  "after": "For another, the volunteers themselves come under pressure.",
+  "severity": "improve",
+  "why": "As a12."
+ },
+ {
+  "id": "read/de/b2-politics-01#q5",
+  "field": "options",
+  "before": [
+   "Im Artikel wurden keine Politiker zitiert.",
+   "Der Artikel war viel zu lang.",
+   "Die Jugendlichen selbst kamen darin nicht zu Wort."
+  ],
+  "after": [
+   "Im Artikel wurden keine Politiker zitiert.",
+   "Der Artikel war viel zu lang.",
+   "Die Jugendlichen selbst kamen darin kaum zu Wort."
+  ],
+  "severity": "improve",
+  "why": "Text says 'vor allem Erwachsene', not that no young person spoke; 'kaum' matches the evidence."
+ },
+ {
+  "id": "read/de/pd-kafka-vor-dem-gesetz#a12",
+  "field": "en",
+  "before": "The man from the country had not expected such difficulties; the law is surely meant to be open to everyone and at all times, he thinks, but now, as he looks more closely at the doorkeeper in his fur coat, at his big pointed nose and his long, thin, black Tatar beard, he decides that he would rather wait until he gets permission to enter.",
+  "after": "The man from the country has not expected such difficulties; the law is surely meant to be open to everyone and at all times, he thinks, but now, as he looks more closely at the doorkeeper in his fur coat, at his big pointed nose and his long, thin, black Tatar beard, he decides that he would rather wait until he gets permission to enter.",
+  "severity": "improve",
+  "why": "German 'hat nicht erwartet' in a present-tense narrative; English pluperfect breaks the tense line."
+ },
+ {
+  "id": "read/de/pd-kafka-vor-dem-gesetz#q5",
+  "field": "evidence",
+  "before": "entschließt er sich, doch lieber zu warten",
+  "after": "als er jetzt den Türhüter in seinem Pelzmantel genauer ansieht, seine große Spitznase, den langen, dünnen, schwarzen tatarischen Bart, entschließt er sich, doch lieber zu warten",
+  "severity": "improve",
+  "why": "Old evidence only shows that he waits, not why; the look at the doorkeeper is what supports 'Angst'."
+ },
+ {
+  "id": "read/de/pd-kafka-die-sorge-des-hausvaters#a26",
+  "field": "en",
+  "before": "He clearly does no harm to anyone; but the idea that he might even outlive me is almost painful to me.",
+  "after": "After all, he apparently does no harm to anyone; but the idea that he might even outlive me is almost painful to me.",
+  "severity": "improve",
+  "why": "'offenbar' = apparently, not 'clearly'; 'ja' = after all."
+ },
+ {
+  "id": "read/de/pd-kafka-die-sorge-des-hausvaters#q5",
+  "field": "options",
+  "before": [
+   "Dass Odradek nie stirbt und ihn überleben könnte.",
+   "Dass Odradek seinen Kindern schadet.",
+   "Dass Odradek das Haus für immer verlässt."
+  ],
+  "after": [
+   "Dass Odradek vielleicht nicht sterben kann und ihn überleben könnte.",
+   "Dass Odradek seinen Kindern schadet.",
+   "Dass Odradek das Haus für immer verlässt."
+  ],
+  "severity": "improve",
+  "why": "The narrator only asks 'Kann er denn sterben?'; 'nie stirbt' states as certain what the text leaves open."
+ },
+ {
+  "id": "read/de/pd-kafka-ein-altes-blatt#a11",
+  "field": "en",
+  "before": "Now and then we do try to run out of our shops and at least clear away the worst of the filth, but it happens less and less often, because the effort is useless and also puts us in danger of getting under the wild horses or being hurt by the whips.",
+  "after": "Now and then we do try to run out of our shops and at least clear away the worst of the filth, but it happens less and less often, because the effort is useless and also puts us in danger of being trampled by the wild horses or hurt by the whips.",
+  "severity": "improve",
+  "why": "'unter die Pferde kommen' = be trampled; 'getting under the horses' is not idiomatic English."
+ }
+]

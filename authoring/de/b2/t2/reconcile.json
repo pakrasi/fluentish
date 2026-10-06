@@ -1,0 +1,17 @@
+[
+ {
+  "id": "read/de/b2-*",
+  "decision": "coherence rewrites by pass A (sentences moved within paragraphs by rewriting them in place; ids kept)",
+  "why": "the drafts had sentences added late in the wrong paragraph"
+ },
+ {
+  "id": "read/de/b2-health-03, b2-society-02 targets",
+  "decision": "two targets dropped",
+  "why": "pass A named word ids that do not exist"
+ },
+ {
+  "id": "read/de/pd-kafka-*",
+  "decision": "German unchanged; spelling notes kept in this source only",
+  "why": "readers@1 has no field for an old-spelling table; the plan puts it in the language pack (lang/de reading.spelling), which belongs to lane L2"
+ }
+]

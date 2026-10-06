@@ -1,0 +1,786 @@
+[
+ {
+  "id": "read/de/b2-work-01#a2",
+  "field": "de",
+  "before": "Beide arbeiten jeweils 24 Stunden pro Woche, am Mittwoch sind sie gleichzeitig im Büro.",
+  "after": "Beide arbeiten jeweils 24 Stunden pro Woche, mittwochs sind sie gleichzeitig im Büro.",
+  "severity": "improve",
+  "why": "regular weekday: \"mittwochs\""
+ },
+ {
+  "id": "read/de/b2-work-01#a11",
+  "field": "de",
+  "before": "„Allein hätte ich mich nicht beworben“, sagt eine der beiden.",
+  "after": "„Allein hätte ich die Stelle nicht übernommen“, sagt eine der beiden.",
+  "severity": "improve",
+  "why": "coherence: they were asked (a10), not applicants"
+ },
+ {
+  "id": "read/de/b2-work-01#a11",
+  "field": "en",
+  "before": "\"I wouldn't have applied on my own,\" says one of the two.",
+  "after": "\"I wouldn't have taken on the job on my own,\" says one of the two.",
+  "severity": "improve",
+  "why": "coherence: they were asked (a10), not applicants"
+ },
+ {
+  "id": "read/de/b2-work-01#q5",
+  "field": "evidence",
+  "before": "„Allein hätte ich mich nicht beworben“",
+  "after": "„Allein hätte ich die Stelle nicht übernommen“",
+  "severity": "improve",
+  "why": "follows a11"
+ },
+ {
+  "id": "read/de/b2-work-01#q2",
+  "field": "skill",
+  "before": "global",
+  "after": "inference",
+  "severity": "improve",
+  "why": "answer is inferred from \"in Kauf nehmen\", not the main idea"
+ },
+ {
+  "id": "read/de/b2-work-02#a8",
+  "field": "de",
+  "before": "Hätte ich damals gewusst, wie anstrengend das erste Jahr wird, hätte ich vielleicht gezögert.",
+  "after": "Hätte ich damals gewusst, wie anstrengend das erste Jahr werden würde, hätte ich vielleicht gezögert.",
+  "severity": "improve",
+  "why": "future in the past: \"werden würde\""
+ },
+ {
+  "id": "read/de/b2-work-03#a4",
+  "field": "de",
+  "before": "Allerdings ist es nicht immer leicht zu verstehen.",
+  "after": "Allerdings ist es nicht immer leicht zu verstehen: Was auf den ersten Blick wie ein Lob aussieht, kann in Wirklichkeit eine deutliche Kritik enthalten.",
+  "severity": "error",
+  "why": "coherence: \"Denn …\" (old a6) sat between a5 and a7 and broke \"Aus diesem Widerspruch\"; moved here"
+ },
+ {
+  "id": "read/de/b2-work-03#a4",
+  "field": "en",
+  "before": "However, it is not always easy to understand.",
+  "after": "However, it is not always easy to understand: what looks like praise at first glance can in fact contain clear criticism.",
+  "severity": "error",
+  "why": "coherence: \"Denn …\" (old a6) sat between a5 and a7 and broke \"Aus diesem Widerspruch\"; moved here"
+ },
+ {
+  "id": "read/de/b2-work-03#a5",
+  "field": "de",
+  "before": "Ein Zeugnis muss einerseits wahr sein, andererseits soll es wohlwollend formuliert werden, damit es dem weiteren Berufsweg nicht schadet.",
+  "after": "Der Grund dafür sind zwei Anforderungen, die sich teilweise widersprechen.",
+  "severity": "error",
+  "why": "coherence: new lead-in after moving old a6 to a4"
+ },
+ {
+  "id": "read/de/b2-work-03#a5",
+  "field": "en",
+  "before": "On the one hand, a reference must be truthful; on the other hand, it should be worded favourably so that it does not harm the person's future career.",
+  "after": "The reason for this is two requirements that partly contradict each other.",
+  "severity": "error",
+  "why": "coherence: new lead-in after moving old a6 to a4"
+ },
+ {
+  "id": "read/de/b2-work-03#a6",
+  "field": "de",
+  "before": "Denn was auf den ersten Blick wie ein Lob aussieht, kann in Wirklichkeit eine deutliche Kritik enthalten.",
+  "after": "Ein Zeugnis muss einerseits wahr sein, andererseits soll es wohlwollend formuliert werden, damit es dem weiteren Berufsweg nicht schadet.",
+  "severity": "error",
+  "why": "coherence: old a5 now directly before \"Aus diesem Widerspruch\""
+ },
+ {
+  "id": "read/de/b2-work-03#a6",
+  "field": "en",
+  "before": "For what looks like praise at first glance can in fact contain clear criticism.",
+  "after": "On the one hand, a reference must be truthful; on the other hand, it should be worded favourably so that it does not harm the person's future career.",
+  "severity": "error",
+  "why": "coherence: old a5 now directly before \"Aus diesem Widerspruch\""
+ },
+ {
+  "id": "read/de/b2-work-03#a13",
+  "field": "de",
+  "before": "Fachleute empfehlen, beim Lesen nicht nur auf einzelne Wörter zu achten, sondern auch auf das, was fehlt.",
+  "after": "Diese Codes sind kein Geheimnis, sondern werden in zahlreichen Ratgebern erklärt.",
+  "severity": "error",
+  "why": "coherence: swap a13/a14 so the omission sentence a15 follows the advice about what is missing"
+ },
+ {
+  "id": "read/de/b2-work-03#a13",
+  "field": "en",
+  "before": "Experts recommend paying attention not only to individual words when reading, but also to what is missing.",
+  "after": "These codes are not a secret; they are explained in numerous guidebooks.",
+  "severity": "error",
+  "why": "coherence: swap a13/a14 so the omission sentence a15 follows the advice about what is missing"
+ },
+ {
+  "id": "read/de/b2-work-03#a14",
+  "field": "de",
+  "before": "Diese Codes sind kein Geheimnis, sondern werden in zahlreichen Ratgebern erklärt.",
+  "after": "Fachleute empfehlen, beim Lesen nicht nur auf einzelne Wörter zu achten, sondern auch auf das, was fehlt.",
+  "severity": "error",
+  "why": "coherence: swapped with a13"
+ },
+ {
+  "id": "read/de/b2-work-03#a14",
+  "field": "en",
+  "before": "These codes are not a secret; they are explained in numerous guidebooks.",
+  "after": "Experts recommend paying attention not only to individual words when reading, but also to what is missing.",
+  "severity": "error",
+  "why": "coherence: swapped with a13"
+ },
+ {
+  "id": "read/de/b2-work-03#a16",
+  "field": "de",
+  "before": "Besonders genau wird oft der Schlusssatz gelesen.",
+  "after": "Auch die Reihenfolge kann etwas aussagen: Werden zuerst Nebentätigkeiten genannt und erst am Ende die Hauptaufgaben, wirkt das ungünstig.",
+  "severity": "error",
+  "why": "coherence: order point moved from the \"what to do\" paragraph (a20) to the reading paragraph"
+ },
+ {
+  "id": "read/de/b2-work-03#a16",
+  "field": "en",
+  "before": "The closing sentence is often read particularly carefully.",
+  "after": "The order can also say something: if minor duties are listed first and the main tasks only at the end, this makes a poor impression.",
+  "severity": "error",
+  "why": "coherence: order point moved from the \"what to do\" paragraph (a20) to the reading paragraph"
+ },
+ {
+  "id": "read/de/b2-work-03#a17",
+  "field": "de",
+  "before": "Bedankt sich der Arbeitgeber für die Zusammenarbeit und bedauert er das Ausscheiden, gilt das als gutes Zeichen.",
+  "after": "Besonders genau wird oft der Schlusssatz gelesen: Bedankt sich der Arbeitgeber für die Zusammenarbeit und bedauert er das Ausscheiden, gilt das als gutes Zeichen.",
+  "severity": "error",
+  "why": "coherence: old a16+a17 merged to make room for the order point"
+ },
+ {
+  "id": "read/de/b2-work-03#a17",
+  "field": "en",
+  "before": "If the employer thanks the person for their work and regrets their departure, this is considered a good sign.",
+  "after": "The closing sentence is often read particularly carefully: if the employer thanks the person for their work and regrets their departure, this is considered a good sign.",
+  "severity": "error",
+  "why": "coherence: old a16+a17 merged to make room for the order point"
+ },
+ {
+  "id": "read/de/b2-work-03#a20",
+  "field": "de",
+  "before": "Auch die Reihenfolge kann etwas aussagen: Werden zuerst Nebentätigkeiten genannt und erst am Ende die Hauptaufgaben, wirkt das ungünstig.",
+  "after": "Es ist sinnvoll, die gewünschten Änderungen konkret zu benennen und kurz zu begründen.",
+  "severity": "error",
+  "why": "coherence: old a20 (order of tasks) broke the paragraph on challenging a reference; moved to a16"
+ },
+ {
+  "id": "read/de/b2-work-03#a20",
+  "field": "en",
+  "before": "The order can also say something: if minor duties are listed first and the main tasks only at the end, this makes a poor impression.",
+  "after": "It makes sense to name the desired changes specifically and give brief reasons.",
+  "severity": "error",
+  "why": "coherence: old a20 (order of tasks) broke the paragraph on challenging a reference; moved to a16"
+ },
+ {
+  "id": "read/de/b2-work-03#a23",
+  "field": "de",
+  "before": "Kommt keine Einigung zustande, kann eine Berichtigung notfalls vor dem Arbeitsgericht verlangt werden.",
+  "after": "Kommt keine Einigung zustande, kann eine Berichtigung notfalls vor dem Arbeitsgericht eingeklagt werden.",
+  "severity": "improve",
+  "why": "legal collocation: \"einklagen\""
+ },
+ {
+  "id": "read/de/b2-work-03#a23",
+  "field": "en",
+  "before": "If no agreement is reached, a correction can, if necessary, be demanded before the labour court.",
+  "after": "If no agreement is reached, a correction can, if necessary, be sued for at the labour court.",
+  "severity": "improve",
+  "why": "legal collocation: \"einklagen\""
+ },
+ {
+  "id": "read/de/b2-economy-01#a6",
+  "field": "de",
+  "before": "Eine offene Preiserhöhung würde von vielen Kundinnen und Kunden sofort bemerkt.",
+  "after": "Dass sie statt des Preises lieber die Füllmenge ändern, hat einen einfachen Grund: Eine offene Preiserhöhung würde von vielen Kundinnen und Kunden sofort bemerkt.",
+  "severity": "improve",
+  "why": "coherence: link from cost argument (a5) to why quantity, not price, is changed"
+ },
+ {
+  "id": "read/de/b2-economy-01#a6",
+  "field": "en",
+  "before": "An open price increase would be noticed immediately by many customers.",
+  "after": "There is a simple reason why they prefer to change the quantity rather than the price: an open price increase would be noticed immediately by many customers.",
+  "severity": "improve",
+  "why": "coherence: link from cost argument (a5) to why quantity, not price, is changed"
+ },
+ {
+  "id": "read/de/b2-economy-01#a10",
+  "field": "de",
+  "before": "Manchmal wird statt der Menge auch die Rezeptur verändert, etwa indem ein teurer Rohstoff teilweise durch einen günstigeren ersetzt wird.",
+  "after": "Ähnlich unauffällig ist eine andere Methode: Statt der Menge wird die Rezeptur verändert, etwa indem ein teurer Rohstoff teilweise durch einen günstigeren ersetzt wird.",
+  "severity": "improve",
+  "why": "coherence: recipe point was unlinked to the paragraph on noticing"
+ },
+ {
+  "id": "read/de/b2-economy-01#a10",
+  "field": "en",
+  "before": "Sometimes the recipe is changed instead of the quantity, for example by partly replacing an expensive raw material with a cheaper one.",
+  "after": "Another method is just as inconspicuous: instead of the quantity, the recipe is changed, for example by partly replacing an expensive raw material with a cheaper one.",
+  "severity": "improve",
+  "why": "coherence: recipe point was unlinked to the paragraph on noticing"
+ },
+ {
+  "id": "read/de/b2-economy-01#a13",
+  "field": "en",
+  "before": "Consumer advocates criticise, however, that the new packet is often just as big as the old one and thus promises more contents than are actually there.",
+  "after": "However, consumer advocates complain that the new packet is often just as big as the old one and thus promises more contents than are actually there.",
+  "severity": "improve",
+  "why": "\"criticise that\" is unidiomatic English"
+ },
+ {
+  "id": "read/de/b2-economy-01#a15",
+  "field": "de",
+  "before": "In Frankreich müssen große Supermärkte seit 2024 mit einem Schild darauf aufmerksam machen, wenn bei einem Produkt die Menge gesunken, der Preis aber gleich geblieben oder gestiegen ist.",
+  "after": "In Frankreich müssen größere Supermärkte seit 2024 mit einem Schild darauf aufmerksam machen, wenn bei einem Produkt die Menge gesunken, der Preis aber gleich geblieben oder gestiegen ist.",
+  "severity": "improve",
+  "why": "fact: French rule (July 2024) covers shops over 400 m², i.e. medium and large"
+ },
+ {
+  "id": "read/de/b2-economy-01#a15",
+  "field": "en",
+  "before": "In France, since 2024 large supermarkets have had to point out with a sign when the quantity of a product has fallen but the price has stayed the same or risen.",
+  "after": "In France, since 2024 larger supermarkets have had to point out with a sign when the quantity of a product has fallen but the price has stayed the same or risen.",
+  "severity": "improve",
+  "why": "fact: French rule (July 2024) covers shops over 400 m², i.e. medium and large"
+ },
+ {
+  "id": "read/de/b2-economy-01#q4",
+  "field": "q",
+  "before": "In Frankreich müssen große Supermärkte auf solche Änderungen hinweisen.",
+  "after": "In Frankreich müssen größere Supermärkte auf solche Änderungen hinweisen.",
+  "severity": "improve",
+  "why": "follows a15"
+ },
+ {
+  "id": "read/de/b2-economy-01#q4",
+  "field": "evidence",
+  "before": "In Frankreich müssen große Supermärkte seit 2024 mit einem Schild darauf aufmerksam machen",
+  "after": "In Frankreich müssen größere Supermärkte seit 2024 mit einem Schild darauf aufmerksam machen",
+  "severity": "improve",
+  "why": "follows a15"
+ },
+ {
+  "id": "read/de/b2-economy-01#q5",
+  "field": "evidence",
+  "before": "ermöglicht einen direkten Vergleich zwischen verschiedenen Packungsgrößen",
+  "after": "Wer ihn regelmäßig beachtet, bemerkt versteckte Preiserhöhungen deutlich schneller.",
+  "severity": "improve",
+  "why": "this sentence proves the key; old evidence only says comparison is possible"
+ },
+ {
+  "id": "read/de/b2-economy-02#a3",
+  "field": "de",
+  "before": "Dass es diesen Laden überhaupt noch gibt, ist keineswegs selbstverständlich.",
+  "after": "Dass es im Dorf überhaupt wieder einen Laden gibt, ist keineswegs selbstverständlich.",
+  "severity": "improve",
+  "why": "coherence: the old shop closed (a4); this is a new one, so \"wieder\", not \"noch\""
+ },
+ {
+  "id": "read/de/b2-economy-02#a3",
+  "field": "en",
+  "before": "The fact that this shop still exists at all is by no means a given.",
+  "after": "The fact that the village has a shop again at all is by no means a given.",
+  "severity": "improve",
+  "why": "coherence: the old shop closed (a4); this is a new one, so \"wieder\", not \"noch\""
+ },
+ {
+  "id": "read/de/b2-economy-03#a3",
+  "field": "de",
+  "before": "Sie mietet leer stehende Läden selbst an und gibt sie für bis zu zwei Jahre zu einem stark reduzierten Preis an Gründerinnen und Gründer weiter.",
+  "after": "Sie mietet leer stehende Läden selbst an und vermietet sie für bis zu zwei Jahre zu einer stark reduzierten Miete an Gründerinnen und Gründer weiter.",
+  "severity": "improve",
+  "why": "precise term: weitervermieten / Miete"
+ },
+ {
+  "id": "read/de/b2-economy-03#a3",
+  "field": "en",
+  "before": "It rents empty shops itself and passes them on to people starting a business at a greatly reduced price for up to two years.",
+  "after": "It rents empty shops itself and sublets them to people starting a business at a greatly reduced rent for up to two years.",
+  "severity": "improve",
+  "why": "precise term: weitervermieten / Miete"
+ },
+ {
+  "id": "read/de/b2-economy-03#q3",
+  "field": "evidence",
+  "before": "für bis zu zwei Jahre zu einem stark reduzierten Preis",
+  "after": "für bis zu zwei Jahre zu einer stark reduzierten Miete",
+  "severity": "improve",
+  "why": "follows a3"
+ },
+ {
+  "id": "read/de/b2-economy-03#a20",
+  "field": "de",
+  "before": "Manche Eigentümer seien eher bereit, die Miete zu senken, wenn sie sehen, dass ein Laden gut läuft.",
+  "after": "Manche Eigentümer seien durchaus bereit, die Miete dauerhaft zu senken, wenn sie dafür einen verlässlichen Mieter bekämen.",
+  "severity": "error",
+  "why": "logic: owners lowering rent because a shop does well made no sense"
+ },
+ {
+  "id": "read/de/b2-economy-03#a20",
+  "field": "en",
+  "before": "Some owners are more willing to lower the rent, it says, if they see that a shop is doing well.",
+  "after": "Some owners are quite willing to lower the rent permanently, it says, if they get a reliable tenant in return.",
+  "severity": "error",
+  "why": "logic: owners lowering rent because a shop does well made no sense"
+ },
+ {
+  "id": "read/de/b2-media-01#a11",
+  "field": "de",
+  "before": "Im Gegenteil, diese Gruppe hielt ihre Urteile häufiger für sicher, obwohl sie genauso oft falschlag.",
+  "after": "Diese Gruppe hielt ihre Urteile sogar häufiger für sicher, obwohl sie genauso oft falschlag.",
+  "severity": "improve",
+  "why": "\"Im Gegenteil\" implied they did worse, which a11 does not say"
+ },
+ {
+  "id": "read/de/b2-media-01#a11",
+  "field": "en",
+  "before": "On the contrary, this group considered their judgements to be certain more often, even though they were wrong just as often.",
+  "after": "This group even considered its judgements certain more often, although it was wrong just as often.",
+  "severity": "improve",
+  "why": "\"Im Gegenteil\" implied they did worse, which a11 does not say"
+ },
+ {
+  "id": "read/de/b2-media-01#q5",
+  "field": "evidence",
+  "before": "diese Gruppe hielt ihre Urteile häufiger für sicher, obwohl sie genauso oft falschlag",
+  "after": "hielt ihre Urteile sogar häufiger für sicher, obwohl sie genauso oft falschlag",
+  "severity": "improve",
+  "why": "follows a11"
+ },
+ {
+  "id": "read/de/b2-media-02#a4",
+  "field": "de",
+  "before": "„Plötzlich wusste niemand mehr, was im Rathaus beschlossen wird“, sagt Brückner.",
+  "after": "„Plötzlich wusste niemand mehr, was im Rathaus beschlossen wurde“, sagt Brückner.",
+  "severity": "improve",
+  "why": "tense sequence after \"wusste\""
+ },
+ {
+  "id": "read/de/b2-media-02#a8",
+  "field": "de",
+  "before": "Inzwischen unterstützen rund 1.400 Menschen das Portal, was gerade für zwei bescheidene Gehälter reicht.",
+  "after": "Inzwischen unterstützen rund 1.400 Menschen das Portal, was knapp für zwei bescheidene Gehälter reicht.",
+  "severity": "improve",
+  "why": "\"gerade\" is ambiguous (especially/just); \"knapp\" is clear"
+ },
+ {
+  "id": "read/de/b2-media-02#a10",
+  "field": "de",
+  "before": "Für Recherchen, die mehrere Wochen dauern, bleibt da kaum Spielraum.",
+  "after": "Früher war sie nur für ihre Texte zuständig, heute kümmert sie sich außerdem um Buchhaltung, Technik und den Kontakt zu den Unterstützern.",
+  "severity": "error",
+  "why": "coherence: \"bleibt da kaum Spielraum\" had no referent; swapped a10/a11"
+ },
+ {
+  "id": "read/de/b2-media-02#a10",
+  "field": "en",
+  "before": "That leaves hardly any room for investigations that take several weeks.",
+  "after": "She used to be responsible only for her articles; today she also takes care of the accounts, the technology and contact with supporters.",
+  "severity": "error",
+  "why": "coherence: \"bleibt da kaum Spielraum\" had no referent; swapped a10/a11"
+ },
+ {
+  "id": "read/de/b2-media-02#a11",
+  "field": "de",
+  "before": "Früher war sie nur für ihre Texte zuständig, heute kümmert sie sich außerdem um Buchhaltung, Technik und den Kontakt zu den Unterstützern.",
+  "after": "Für Recherchen, die mehrere Wochen dauern, bleibt da kaum Spielraum.",
+  "severity": "error",
+  "why": "coherence: swapped with a10"
+ },
+ {
+  "id": "read/de/b2-media-02#a11",
+  "field": "en",
+  "before": "She used to be responsible only for her articles; today she also takes care of the accounts, the technology and contact with supporters.",
+  "after": "That leaves hardly any room for investigations that take several weeks.",
+  "severity": "error",
+  "why": "coherence: swapped with a10"
+ },
+ {
+  "id": "read/de/b2-media-02#a15",
+  "field": "de",
+  "before": "Stattdessen setzt das Portal auf Themen, die viele Menschen direkt betreffen: Schulwege, Arztpraxen, Bauprojekte.",
+  "after": "Vor allem aber setzt das Portal auf Themen, die viele Menschen direkt betreffen: Schulwege, Arztpraxen, Bauprojekte.",
+  "severity": "error",
+  "why": "\"Stattdessen\" followed a14 (detailed reports), which it does not contrast with"
+ },
+ {
+  "id": "read/de/b2-media-02#a15",
+  "field": "en",
+  "before": "Instead, the site focuses on topics that directly affect many people: routes to school, doctors' practices, building projects.",
+  "after": "Above all, though, the site focuses on topics that directly affect many people: routes to school, doctors' practices, building projects.",
+  "severity": "error",
+  "why": "\"Stattdessen\" followed a14 (detailed reports), which it does not contrast with"
+ },
+ {
+  "id": "read/de/b2-media-02#a24",
+  "field": "de",
+  "before": "Hätten sie vor drei Jahren nicht angefangen, gäbe es heute vermutlich gar keine Lokalberichterstattung mehr.",
+  "after": "Hätten sie damals nicht angefangen, gäbe es heute vermutlich gar keine Lokalberichterstattung mehr im Landkreis.",
+  "severity": "error",
+  "why": "inconsistent: portal began half a year after the closure three years ago"
+ },
+ {
+  "id": "read/de/b2-media-02#a24",
+  "field": "en",
+  "before": "If they hadn't started three years ago, there would probably be no local reporting at all today.",
+  "after": "If they hadn't started back then, there would probably be no local reporting at all in the district today.",
+  "severity": "error",
+  "why": "inconsistent: portal began half a year after the closure three years ago"
+ },
+ {
+  "id": "read/de/b2-media-03#a19",
+  "field": "de",
+  "before": "Wer erreichen möchte, dass eine Behauptung ausdrücklich zurückgenommen wird, muss einen anderen Weg gehen.",
+  "after": "Manche Juristen halten sie deshalb für ein eher schwaches Instrument.",
+  "severity": "error",
+  "why": "coherence: \"deshalb\" followed the witnesses/lawyer sentence; it belongs after \"kein Eingeständnis\""
+ },
+ {
+  "id": "read/de/b2-media-03#a19",
+  "field": "en",
+  "before": "Anyone who wants a claim to be explicitly withdrawn has to take a different route.",
+  "after": "Some lawyers therefore regard it as a rather weak instrument.",
+  "severity": "error",
+  "why": "coherence: \"deshalb\" followed the witnesses/lawyer sentence; it belongs after \"kein Eingeständnis\""
+ },
+ {
+  "id": "read/de/b2-media-03#a20",
+  "field": "de",
+  "before": "Für einen solchen Widerruf muss vor Gericht nachgewiesen werden, dass die Behauptung falsch war, was deutlich aufwendiger ist.",
+  "after": "Wer erreichen möchte, dass eine Behauptung ausdrücklich zurückgenommen wird, muss einen anderen Weg gehen.",
+  "severity": "error",
+  "why": "reordered (old a19)"
+ },
+ {
+  "id": "read/de/b2-media-03#a20",
+  "field": "en",
+  "before": "For such a retraction, it has to be proved in court that the claim was false, which is considerably more complicated.",
+  "after": "Anyone who wants a claim to be explicitly withdrawn has to take a different route.",
+  "severity": "error",
+  "why": "reordered (old a19)"
+ },
+ {
+  "id": "read/de/b2-media-03#a21",
+  "field": "de",
+  "before": "Dafür sind oft Zeugen, Dokumente und ein Anwalt nötig.",
+  "after": "Für einen solchen Widerruf muss vor Gericht nachgewiesen werden, dass die Behauptung falsch war.",
+  "severity": "error",
+  "why": "reordered (old a20, first half)"
+ },
+ {
+  "id": "read/de/b2-media-03#a21",
+  "field": "en",
+  "before": "This often requires witnesses, documents and a lawyer.",
+  "after": "For such a retraction, it has to be proved in court that the claim was false.",
+  "severity": "error",
+  "why": "reordered (old a20, first half)"
+ },
+ {
+  "id": "read/de/b2-media-03#a22",
+  "field": "de",
+  "before": "Manche Juristen halten die Gegendarstellung deshalb für ein eher schwaches Instrument.",
+  "after": "Dafür sind oft Zeugen, Dokumente und ein Anwalt nötig, was das Verfahren deutlich aufwendiger macht.",
+  "severity": "error",
+  "why": "reordered (old a20 second half + a21)"
+ },
+ {
+  "id": "read/de/b2-media-03#a22",
+  "field": "en",
+  "before": "Some lawyers therefore regard the counter-statement as a rather weak instrument.",
+  "after": "This often requires witnesses, documents and a lawyer, which makes the process considerably more complicated.",
+  "severity": "error",
+  "why": "reordered (old a20 second half + a21)"
+ },
+ {
+  "id": "read/de/b2-media-03#a23",
+  "field": "de",
+  "before": "Andere betonen, gerade ihre Schnelligkeit sei ein großer Vorteil.",
+  "after": "Andere Fachleute betonen dagegen, gerade die Schnelligkeit der Gegendarstellung sei ein großer Vorteil.",
+  "severity": "error",
+  "why": "\"Andere\" and \"ihre\" lost their referents after reordering"
+ },
+ {
+  "id": "read/de/b2-media-03#a23",
+  "field": "en",
+  "before": "Others stress that its very speed is a great advantage.",
+  "after": "Other experts, by contrast, stress that the very speed of the counter-statement is a great advantage.",
+  "severity": "error",
+  "why": "\"Andere\" and \"ihre\" lost their referents after reordering"
+ },
+ {
+  "id": "read/de/b2-media-03#q1",
+  "field": "evidence",
+  "before": "gibt Betroffenen ein Mittel an die Hand",
+  "after": "gibt Betroffenen ein Mittel an die Hand, mit dem sie sich öffentlich wehren können",
+  "severity": "improve",
+  "why": "old evidence did not show what the means is for"
+ },
+ {
+  "id": "read/de/b2-science-01#a13",
+  "field": "de",
+  "before": "Wer als Kind in seinem Dorf noch die Milchstraße sehen konnte, sucht sie dort heute oft vergeblich.",
+  "after": "Besonders stark ist die Zunahme offenbar in Regionen, in denen alte Straßenlaternen durch helle LED-Leuchten ersetzt worden sind.",
+  "severity": "error",
+  "why": "coherence: LED/increase sentence (old a15) sat in the wildlife paragraph; moved to the trend paragraph"
+ },
+ {
+  "id": "read/de/b2-science-01#a13",
+  "field": "en",
+  "before": "Anyone who could still see the Milky Way from their village as a child often looks for it there in vain today.",
+  "after": "The increase is apparently particularly strong in regions where old street lamps have been replaced by bright LED lights.",
+  "severity": "error",
+  "why": "coherence: LED/increase sentence (old a15) sat in the wildlife paragraph; moved to the trend paragraph"
+ },
+ {
+  "id": "read/de/b2-science-01#a14",
+  "field": "de",
+  "before": "Lichtverschmutzung ist nicht nur ein Problem für Hobbyastronomen.",
+  "after": "Wer als Kind in seinem Dorf noch die Milchstraße sehen konnte, sucht sie dort heute oft vergeblich.",
+  "severity": "error",
+  "why": "reordered (old a13), leads into \"nicht nur ein Problem für Hobbyastronomen\""
+ },
+ {
+  "id": "read/de/b2-science-01#a14",
+  "field": "en",
+  "before": "Light pollution is not just a problem for amateur astronomers.",
+  "after": "Anyone who could still see the Milky Way from their village as a child often looks for it there in vain today.",
+  "severity": "error",
+  "why": "reordered (old a13), leads into \"nicht nur ein Problem für Hobbyastronomen\""
+ },
+ {
+  "id": "read/de/b2-science-01#a15",
+  "field": "de",
+  "before": "Besonders stark ist die Zunahme offenbar in Regionen, in denen alte Straßenlaternen durch helle LED-Leuchten ersetzt worden sind.",
+  "after": "Doch Lichtverschmutzung ist nicht nur ein Problem für Hobbyastronomen.",
+  "severity": "error",
+  "why": "reordered (old a14); now directly before the insects sentence"
+ },
+ {
+  "id": "read/de/b2-science-01#a15",
+  "field": "en",
+  "before": "The increase is apparently particularly strong in regions where old street lamps have been replaced by bright LED lights.",
+  "after": "But light pollution is not just a problem for amateur astronomers.",
+  "severity": "error",
+  "why": "reordered (old a14); now directly before the insects sentence"
+ },
+ {
+  "id": "read/de/b2-science-02#a21",
+  "field": "de",
+  "before": "Ziemlich viel.",
+  "after": "Ziemlich viel: Immer mehr Forschende legen vor Beginn einer Studie öffentlich fest, welche Hypothesen sie prüfen und wie sie die Daten auswerten wollen.",
+  "severity": "error",
+  "why": "merged old a21+a22 to make room for the journals point"
+ },
+ {
+  "id": "read/de/b2-science-02#a21",
+  "field": "en",
+  "before": "Quite a lot.",
+  "after": "Quite a lot: more and more researchers state publicly before a study begins which hypotheses they are testing and how they intend to analyse the data.",
+  "severity": "error",
+  "why": "merged old a21+a22 to make room for the journals point"
+ },
+ {
+  "id": "read/de/b2-science-02#a22",
+  "field": "de",
+  "before": "Immer mehr Forschende legen vor Beginn einer Studie öffentlich fest, welche Hypothesen sie prüfen und wie sie die Daten auswerten wollen.",
+  "after": "Dadurch kann später nicht mehr beliebig lange an der Auswertung herumprobiert werden, bis ein passendes Ergebnis herauskommt.",
+  "severity": "error",
+  "why": "reordered (old a23)"
+ },
+ {
+  "id": "read/de/b2-science-02#a22",
+  "field": "en",
+  "before": "More and more researchers state publicly before a study begins which hypotheses they are testing and how they intend to analyse the data.",
+  "after": "As a result, people can no longer tinker with the analysis for as long as they like until a suitable result comes out.",
+  "severity": "error",
+  "why": "reordered (old a23)"
+ },
+ {
+  "id": "read/de/b2-science-02#a23",
+  "field": "de",
+  "before": "Dadurch kann später nicht mehr beliebig lange an der Auswertung herumprobiert werden, bis ein passendes Ergebnis herauskommt.",
+  "after": "Manche Zeitschriften entscheiden sogar schon vor der Datenerhebung, ob sie eine Studie veröffentlichen, sodass das Ergebnis keine Rolle mehr spielt.",
+  "severity": "error",
+  "why": "coherence: old a27 (a reform) sat in the answer on trust, between \"Kurzfristig vielleicht\" and \"aber\""
+ },
+ {
+  "id": "read/de/b2-science-02#a23",
+  "field": "en",
+  "before": "As a result, people can no longer tinker with the analysis for as long as they like until a suitable result comes out.",
+  "after": "Some journals even decide before the data are collected whether they will publish a study, so that the result no longer plays a role.",
+  "severity": "error",
+  "why": "coherence: old a27 (a reform) sat in the answer on trust, between \"Kurzfristig vielleicht\" and \"aber\""
+ },
+ {
+  "id": "read/de/b2-science-02#a27",
+  "field": "de",
+  "before": "Manche Zeitschriften entscheiden sogar schon vor der Datenerhebung, ob sie eine Studie veröffentlichen, sodass das Ergebnis keine Rolle mehr spielt.",
+  "after": "Ich halte es aber für ein gutes Zeichen, dass ein Fach sich selbst so kritisch überprüft.",
+  "severity": "error",
+  "why": "reordered (old a28): \"aber\" now answers \"Kurzfristig vielleicht\""
+ },
+ {
+  "id": "read/de/b2-science-02#a27",
+  "field": "en",
+  "before": "Some journals even decide before the data are collected whether they will publish a study, so that the result no longer plays a role.",
+  "after": "But I think it's a good sign that a discipline examines itself so critically.",
+  "severity": "error",
+  "why": "reordered (old a28): \"aber\" now answers \"Kurzfristig vielleicht\""
+ },
+ {
+  "id": "read/de/b2-science-02#a28",
+  "field": "de",
+  "before": "Ich halte es aber für ein gutes Zeichen, dass ein Fach sich selbst so kritisch überprüft.",
+  "after": "Wissenschaft bedeutet ja nicht, dass jedes Ergebnis sofort stimmt, sondern dass Fehler mit der Zeit korrigiert werden können.",
+  "severity": "error",
+  "why": "reordered (old a29)"
+ },
+ {
+  "id": "read/de/b2-science-02#a28",
+  "field": "en",
+  "before": "But I think it's a good sign that a discipline examines itself so critically.",
+  "after": "After all, science doesn't mean that every result is right straight away, but that mistakes can be corrected over time.",
+  "severity": "error",
+  "why": "reordered (old a29)"
+ },
+ {
+  "id": "read/de/b2-science-02#a29",
+  "field": "de",
+  "before": "Wissenschaft bedeutet ja nicht, dass jedes Ergebnis sofort stimmt, sondern dass Fehler mit der Zeit korrigiert werden können.",
+  "after": "Problematisch wäre es, die Schwächen zu verschweigen.",
+  "severity": "error",
+  "why": "reordered (old a31)"
+ },
+ {
+  "id": "read/de/b2-science-02#a29",
+  "field": "en",
+  "before": "After all, science doesn't mean that every result is right straight away, but that mistakes can be corrected over time.",
+  "after": "What would be problematic is keeping quiet about the weaknesses.",
+  "severity": "error",
+  "why": "reordered (old a31)"
+ },
+ {
+  "id": "read/de/b2-science-02#a30",
+  "field": "de",
+  "before": "Zudem lernen Studierende heute schon im ersten Semester, wie man Studien kritisch liest.",
+  "after": "Langfristig kann eine offene Debatte das Vertrauen sogar stärken.",
+  "severity": "error",
+  "why": "coherence: answer now addresses the question about trust"
+ },
+ {
+  "id": "read/de/b2-science-02#a30",
+  "field": "en",
+  "before": "In addition, students today learn in their very first semester how to read studies critically.",
+  "after": "In the long run, an open debate can even strengthen trust.",
+  "severity": "error",
+  "why": "coherence: answer now addresses the question about trust"
+ },
+ {
+  "id": "read/de/b2-science-02#a31",
+  "field": "de",
+  "before": "Problematisch wäre es, die Schwächen zu verschweigen.",
+  "after": "Dazu trägt auch bei, dass Studierende heute schon im ersten Semester lernen, wie man Studien kritisch liest.",
+  "severity": "error",
+  "why": "old a30 (\"Zudem …\") sat between unrelated sentences; now linked to trust"
+ },
+ {
+  "id": "read/de/b2-science-02#a31",
+  "field": "en",
+  "before": "What would be problematic is keeping quiet about the weaknesses.",
+  "after": "It also helps that students today learn in their very first semester how to read studies critically.",
+  "severity": "error",
+  "why": "old a30 (\"Zudem …\") sat between unrelated sentences; now linked to trust"
+ },
+ {
+  "id": "read/de/b2-science-03#a3",
+  "field": "de",
+  "before": "Manche glauben, es werde an 30 Prozent des Tages regnen, andere vermuten, dass es in 30 Prozent der Region nass wird.",
+  "after": "Manche glauben, es werde während 30 Prozent des Tages regnen, andere vermuten, dass es in 30 Prozent der Region nass wird.",
+  "severity": "improve",
+  "why": "\"an 30 Prozent des Tages\" is unidiomatic"
+ },
+ {
+  "id": "read/de/b2-science-03#a20",
+  "field": "de",
+  "before": "Auch Gewitter im Sommer sind ein Sonderfall, denn sie entstehen oft so lokal, dass es in einem Stadtteil kräftig regnet, während im nächsten die Sonne scheint.",
+  "after": "Überraschungen gibt es vor allem bei Sommergewittern, denn sie entstehen oft so lokal, dass es in einem Stadtteil kräftig regnet, während im nächsten die Sonne scheint.",
+  "severity": "error",
+  "why": "\"Auch … ein Sonderfall\" had no preceding special case; now leads into a21"
+ },
+ {
+  "id": "read/de/b2-science-03#a20",
+  "field": "en",
+  "before": "Summer thunderstorms are also a special case, because they often form so locally that it pours in one part of town while the sun is shining in the next.",
+  "after": "Surprises happen above all with summer thunderstorms, because they often form so locally that it pours in one part of town while the sun is shining in the next.",
+  "severity": "error",
+  "why": "\"Auch … ein Sonderfall\" had no preceding special case; now leads into a21"
+ },
+ {
+  "id": "read/de/b2-tech-01#a21",
+  "field": "de",
+  "before": "Hätte man die Portale von Anfang an gemeinsam mit älteren Nutzern getestet, wären manche Schwierigkeiten vermutlich gar nicht erst entstanden.",
+  "after": "Hätte man die Portale von Anfang an gemeinsam mit älteren Benutzern getestet, wären manche Schwierigkeiten vermutlich gar nicht erst entstanden, meint sie.",
+  "severity": "improve",
+  "why": "report: opinion needs attribution; target W:der_Benutzer otherwise only in a compound"
+ },
+ {
+  "id": "read/de/b2-tech-01#a21",
+  "field": "en",
+  "before": "If the portals had been tested with older users from the start, some difficulties would probably never have arisen.",
+  "after": "If the portals had been tested with older users from the start, some difficulties would probably never have arisen, she believes.",
+  "severity": "improve",
+  "why": "report: opinion needs attribution; target W:der_Benutzer otherwise only in a compound"
+ },
+ {
+  "id": "read/de/b2-tech-02#a24",
+  "field": "de",
+  "before": "Ein vollständiges Verbot ist damit vom Tisch, eine uneingeschränkte Erlaubnis allerdings auch.",
+  "after": "Je nach Aufgabe soll entweder ganz ohne Hilfsmittel gearbeitet werden, oder die Schüler müssen offenlegen, wie sie die Programme genutzt haben.",
+  "severity": "error",
+  "why": "coherence: content of the rules (old a26) belongs right after a23"
+ },
+ {
+  "id": "read/de/b2-tech-02#a24",
+  "field": "en",
+  "before": "A complete ban is therefore off the table, but so is unrestricted permission.",
+  "after": "Depending on the task, either pupils will work without any aids at all, or they will have to disclose how they used the programs.",
+  "severity": "error",
+  "why": "coherence: content of the rules (old a26) belongs right after a23"
+ },
+ {
+  "id": "read/de/b2-tech-02#a25",
+  "field": "de",
+  "before": "Die Lehrkräfte wollen die neuen Regeln zunächst ein Halbjahr lang erproben und dann gemeinsam mit Eltern und Schülern auswerten.",
+  "after": "Ein vollständiges Verbot ist damit vom Tisch, eine uneingeschränkte Erlaubnis allerdings auch.",
+  "severity": "error",
+  "why": "reordered (old a24); \"damit\" now follows the rules"
+ },
+ {
+  "id": "read/de/b2-tech-02#a25",
+  "field": "en",
+  "before": "The teachers want to try out the new rules for half a year first and then evaluate them together with parents and pupils.",
+  "after": "A complete ban is therefore off the table, but so is unrestricted permission.",
+  "severity": "error",
+  "why": "reordered (old a24); \"damit\" now follows the rules"
+ },
+ {
+  "id": "read/de/b2-tech-02#a26",
+  "field": "de",
+  "before": "Je nach Aufgabe soll entweder ganz ohne Hilfsmittel gearbeitet werden, oder die Schüler müssen offenlegen, wie sie die Programme genutzt haben.",
+  "after": "Die Lehrkräfte wollen die neuen Regeln zunächst ein Halbjahr lang erproben und dann gemeinsam mit Eltern und Schülern auswerten.",
+  "severity": "error",
+  "why": "reordered (old a25) as closing sentence"
+ },
+ {
+  "id": "read/de/b2-tech-02#a26",
+  "field": "en",
+  "before": "Depending on the task, either pupils will work without any aids at all, or they will have to disclose how they used the programs.",
+  "after": "The teachers want to try out the new rules for half a year first and then evaluate them together with parents and pupils.",
+  "severity": "error",
+  "why": "reordered (old a25) as closing sentence"
+ }
+]

@@ -1,0 +1,66 @@
+{
+ "batch": "t2",
+ "about": "24 B2 texts (7 domains × 3 and 3 opinion pieces) and 4 public-domain classics by Franz Kafka (Ein Landarzt, 1919), each with 5 reviewed questions",
+ "reviewedBy": "model-2pass",
+ "reviewedAt": "2026-10-05",
+ "process": "author → machine gates (readers@1 shape, verbatim evidence, answer ranges, targets exist, no sticky-error detector on a sentence) → editor pass → pass A (native de-DE newspaper and textbook editor persona) → pass B (second native editor persona, blind to pass A) → reconcile. Entries are sentences (German and English) and questions. Both passes are model personas: reviewedBy is model-2pass.",
+ "licences": {
+  "own": 24,
+  "PD": 4,
+  "pd": "Franz Kafka, Ein Landarzt. Kleine Erzählungen (1919/1920), Project Gutenberg eBook #21989; German unchanged (checked byte for byte against the Gutenberg text), English translations our own. See content/NOTICE.md."
+ },
+ "rounds": [
+  {
+   "round": 1,
+   "a": {
+    "log": "review-a1-part1.json + review-a1-part2.json",
+    "entries": 860,
+    "changes": 160,
+    "errors": 84,
+    "improves": 76,
+    "entriesWithError": 42,
+    "errorRate": 0.0488
+   },
+   "b": {
+    "log": "review-b1.json",
+    "entries": 860,
+    "changes": 33,
+    "errors": 3,
+    "improves": 30,
+    "entriesWithError": 2,
+    "errorRate": 0.0023
+   },
+   "result": "pass B under 2%: done"
+  }
+ ],
+ "ids": [
+  "read/de/b2-work-01",
+  "read/de/b2-work-02",
+  "read/de/b2-work-03",
+  "read/de/b2-economy-01",
+  "read/de/b2-economy-02",
+  "read/de/b2-economy-03",
+  "read/de/b2-media-01",
+  "read/de/b2-media-02",
+  "read/de/b2-media-03",
+  "read/de/b2-science-01",
+  "read/de/b2-science-02",
+  "read/de/b2-science-03",
+  "read/de/b2-tech-01",
+  "read/de/b2-tech-02",
+  "read/de/b2-tech-03",
+  "read/de/b2-health-01",
+  "read/de/b2-health-02",
+  "read/de/b2-health-03",
+  "read/de/b2-environment-01",
+  "read/de/b2-environment-02",
+  "read/de/b2-environment-03",
+  "read/de/b2-society-01",
+  "read/de/b2-politics-01",
+  "read/de/b2-society-02",
+  "read/de/pd-kafka-vor-dem-gesetz",
+  "read/de/pd-kafka-eine-kaiserliche-botschaft",
+  "read/de/pd-kafka-die-sorge-des-hausvaters",
+  "read/de/pd-kafka-ein-altes-blatt"
+ ]
+}

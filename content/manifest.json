@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "923092271a6c",
+ "version": "c00ff51fe037",
  "languages": [
   {
    "id": "khasi",
@@ -833,8 +833,8 @@
    "id": "read.de",
    "path": "read/de.json",
    "schema": "readers@1",
-   "bytes": 85083,
-   "sha256": "aa50d68a4804d50251deb05b39a113bcc759212cb0fe0d2809e98ed3e6d65ea6"
+   "bytes": 363174,
+   "sha256": "f6629649c3d3ae9adce14952cf3c763f8696446cc2e952d3fc844e3d5e3afb91"
   },
   {
    "id": "speak.situations",
