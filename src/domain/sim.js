@@ -14,6 +14,7 @@ import * as FS from './fsrs.js';
 import * as D8 from './days.js';
 import { isDue, sideCap } from './b1ready.js';
 import * as Sp from './speech.js';
+import * as Hr from './hearing.js';
 
 export const LEVELS = /** @type {const} */ (['A1', 'A2', 'B1', 'B2']);
 export const DECK = 'speak';
@@ -411,4 +412,29 @@ export function typedItem(sim) {
   const chunks = [...new Set((sim.answers || []).map(a => a.de.slice(a.chunk[0], a.chunk[1]).trim()).filter(Boolean))];
   return { id: sim.id, kind: 'topic', anywhere: true, literal: false, gap: false, loose: false, strict: [], accept: chunks, model: sim.answers[0]?.de || '',
     prompt: sim.setup || '', promptLang: 'en', hl: null, area: 'speak', src: 'sim' };
+}
+
+/** @typedef {boolean | 'not-in' | 'off' | 'unsure'} MicState  as Sp.grade's checks, plus unsure: failed, but the phone wasn't sure what it heard */
+
+/**
+ * Check with the mic outdoors: every alternative the recogniser offered is checked and the best one counts (the chunk
+ * heard beats a check passed beats fewer checks failed; ties keep the recogniser's order). When the result can't be
+ * trusted (domain/hearing.js trust: low confidence, garbled, or a loud room and little of the answer came through), a
+ * failed check is shown as unsure, never wrong, and the suggestion is Good, as without the mic: he grades himself.
+ * Typed text (input 'typed') is always trusted.
+ * @param {{alts?: {text: string, confidence: number | null}[], text?: string, confidence?: number | null, ambient?: any, restarts?: number}} heard
+ * @param {Item} item @param {any} [cal]
+ */
+export function micCheckHeard(heard, item, cal = null) {
+  const alts = heard.alts && heard.alts.length ? heard.alts : [{ text: heard.text || '', confidence: heard.confidence ?? null }];
+  const score = (/** @type {ReturnType<typeof micCheck>} */ r) => (r.chunk ? 4 : 0) + (r.ok ? 2 : 0) - [r.verbFinal, r.fuerVor].filter(x => x === false).length;
+  const top = Hr.best(alts, text => { const r = micCheck(text, item, cal); return { score: score(r), value: r }; });
+  const r = top ? top.value : micCheck('', item, cal);
+  const alt = top ? top.alt : alts[0];
+  const tr = Hr.trust({ text: alt.text, confidence: alt.confidence, expected: item.answers[0]?.de || '', ambient: heard.ambient || null, restarts: heard.restarts || 0 });
+  if (!tr.unsure || (r.chunk && r.ok)) return { ...r, unsure: false, why: tr.why, alt: top ? top.index : 0 };
+  /** @param {any} v @returns {MicState} */
+  const soft = v => (v === false ? 'unsure' : v);
+  return { ...r, chunk: /** @type {any} */ (soft(r.chunk)), verbFinal: soft(r.verbFinal), fuerVor: soft(r.fuerVor), rest: soft(r.rest),
+    partial: false, ok: false, suggest: /** @type {1 | 2 | 3} */ (3), unsure: true, why: tr.why, alt: top ? top.index : 0 };
 }

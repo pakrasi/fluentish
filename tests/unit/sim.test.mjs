@@ -305,3 +305,32 @@ test('Check with the mic: the chunk heard in a row, the Say it aloud checks, and
   // a phone that fixes word order (the mic check said so) never fails the verb check
   assert.equal(S.micCheck('ich glaube dass das ist eine gute Idee', opinion, { asr: { verbFinal: false } }).suggest, 3);
 });
+
+test('Check with the mic outdoors: every alternative checked, and audio the phone was unsure of is never marked wrong', () => {
+  const mk = (/** @type {string[]} */ ...marked) => ({ answers: marked.map(m => ({ ...S.parseMarked(m), audio: 'x.mp3' })) });
+  const time = mk('Am Mittwoch kann ich nicht. [Wie wäre es mit] Donnerstag?');
+  const alt = (text, confidence = 0.8) => ({ text, confidence });
+  // the best guess misses the chunk, the second alternative has it: the second counts
+  const two = S.micCheckHeard({ alts: [alt('wie wäre es mit Donnerstag', 0.8), alt('wie wäre es mit Donnerstag', 0.6)].map((a, i) => i ? a : alt('wir wären es mit Donnerstag')) }, time);
+  assert.equal(two.chunk, true); assert.equal(two.alt, 1); assert.equal(two.suggest, 3); assert.equal(two.unsure, false);
+  // clean, confident and wrong: still Again
+  const wrong = S.micCheckHeard({ alts: [alt('Am Mittwoch kann ich nicht, vielleicht Freitag', 0.92)] }, time);
+  assert.equal(wrong.chunk, false); assert.equal(wrong.suggest, 1); assert.equal(wrong.unsure, false);
+  // low confidence: the failed check is unsure, the suggestion is Good (he grades himself)
+  const low = S.micCheckHeard({ alts: [alt('Am Mittwoch kann ich nicht, vielleicht Freitag', 0.3)] }, time);
+  assert.equal(low.chunk, 'unsure'); assert.equal(low.suggest, 3); assert.equal(low.unsure, true); assert.deepEqual(low.why, ['confidence']);
+  // garbled, and a loud room where little came through
+  assert.equal(S.micCheckHeard({ alts: [alt('ja', 0.9)] }, time).unsure, true);
+  const loud = { db: -35, peak: -30, loud: true, gusty: false, noisy: true };
+  const street = S.micCheckHeard({ alts: [alt('Mittwoch nicht Freitag', 0.9)], ambient: loud }, time);
+  assert.equal(street.unsure, true); assert.equal(street.suggest, 3); assert.notEqual(street.chunk, false);
+  // heard right in the noise: Right, as in a quiet room
+  const fine = S.micCheckHeard({ alts: [alt('Am Mittwoch kann ich nicht, wie wäre es mit Donnerstag', 0.9)], ambient: loud }, time);
+  assert.equal(fine.chunk, true); assert.equal(fine.unsure, false); assert.equal(fine.suggest, 3);
+  // a wrong word order heard unsure is never a Hard either
+  const opinion = mk('[Ich glaube, dass] das eine gute Idee ist.');
+  const order = S.micCheckHeard({ alts: [alt('ich glaube dass das ist eine gute Idee', 0.2)] }, opinion);
+  assert.equal(order.verbFinal, 'unsure'); assert.equal(order.suggest, 3);
+  // the old shape (text only) still works: typed answers are checked the same way
+  assert.equal(S.micCheckHeard({ text: 'Wie wäre es mit Donnerstag?' }, time).suggest, 3);
+});

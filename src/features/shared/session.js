@@ -157,12 +157,18 @@ export function dots(round, answered = false) {
  * A spoken answer (Say it aloud). Right = Good (Hard when slow); trap items (verb at the end, für/vor) get at most
  * Hard from speech alone, and so does a phrase whose sentence was not right around it (partial); items not met yet
  * only log (speech never starts a schedule).
- * @param {{item: any, rec: any, o: {ok: boolean, ms: number, limit?: number|null, partial?: boolean}, c: any, forecast?: (d: string) => number, now: number, tz?: string}} a
+ * Audio the phone wasn't sure of (o.unsure: domain/hearing.js trust) never grades him down: the grade is never below
+ * his own (o.self); without one nothing is graded (g null) and the view asks him.
+ * @param {{item: any, rec: any, o: {ok: boolean, ms: number, limit?: number|null, partial?: boolean, unsure?: boolean, self?: 1|2|3|4|null}, c: any, forecast?: (d: string) => number, now: number, tz?: string}} a
  */
 export function spoken({ item, rec, o, c, forecast = () => 0, now, tz = 'UTC' }) {
   const trap = ['verb-final', 'fuer-vor'].some(x => item.trap === x || (item.focus || []).includes(x));
   let g = o.ok ? (o.limit && o.ms > o.limit * 1000 ? 2 : 3) : 1;
   if (o.ok && (trap || o.partial)) g = Math.min(g, 2);
+  if (o.unsure) {
+    if (o.self == null) return { g: null, rec: null, event: null };
+    g = Math.max(g, o.self);
+  }
   const flags = o.ok && o.partial ? 'sp' : 's';
   const res = FS.schedule(rec, { g, ms: o.ms || 0, onTime: g >= 3, flags, mode: 's', logOnly: !rec || !rec.reps }, { ...c, forecast }, now);
   return { g, rec: res.rec, event: res.rec ? reviewEvent(item.id, rec || null, res.rec, { g, ms: o.ms, flags, mode: 's' }, c, tz) : null };

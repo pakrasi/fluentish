@@ -184,6 +184,24 @@ test('spoken answers: traps get at most Hard, unseen items only log', () => {
   assert.equal(r2.rec, null, 'speech never starts a schedule');
 });
 
+test('spoken answers the phone was unsure of: never below his own grade, traps still capped from speech alone', () => {
+  const c = context({ today: '2026-10-04', exam: EXAM });
+  const trap = data.pool.find(it => it.trap === 'verb-final' && it.kind === 'phrase') || data.pool.find(it => it.trap === 'verb-final');
+  const plain = data.pool.find(it => !it.trap && !(it.focus || []).length);
+  // misheard as wrong, he says Good: Good
+  const a = S.spoken({ item: plain, rec: seen(5, '2026-10-04'), o: { ok: false, ms: 2000, unsure: true, self: 3 }, c, now: 1 });
+  assert.equal(a.g, 3);
+  // a trap heard right but unsure: speech alone gives Hard, his Easy wins
+  const b = S.spoken({ item: trap, rec: seen(5, '2026-10-04'), o: { ok: true, ms: 2000, unsure: true, self: 4 }, c, now: 1 });
+  assert.equal(b.g, 4);
+  // his Again stays Again; speech heard right never lifts a trap past Hard on its own
+  assert.equal(S.spoken({ item: plain, rec: seen(5, '2026-10-04'), o: { ok: false, ms: 2000, unsure: true, self: 1 }, c, now: 1 }).g, 1);
+  assert.equal(S.spoken({ item: trap, rec: seen(5, '2026-10-04'), o: { ok: true, ms: 2000 }, c, now: 1 }).g, 2);
+  // unsure without his grade: nothing graded, nothing scheduled
+  const none = S.spoken({ item: plain, rec: seen(5, '2026-10-04'), o: { ok: false, ms: 2000, unsure: true }, c, now: 1 });
+  assert.deepEqual([none.g, none.rec, none.event], [null, null, null]);
+});
+
 test('exam words: trim, triage, items, fetch', async () => {
   const wordmap = { termin: ['termin.noun', 'A2'], absagen: ['absagen.verb', 'B1'] };
   const rows = [
