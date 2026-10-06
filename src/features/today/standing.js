@@ -92,7 +92,8 @@ export function renderStanding({ plan, c, t, course = false }) {
     h('a', { class: 'stand-words pressable', href: course ? '#/practice' : '#/lookup/map' },
       h('span', { class: 'row-title' }, t('stand.words')), h('span', { class: 'row-trail' }, wordsEl)),
     weekEl,
-    h('p', { class: 'caption stand-def' }, t('stand.def')));
+    h('p', { class: 'caption stand-def' }, t('stand.def')),
+    h('a', { class: 'stand-words pressable', href: '#/today/progress' }, h('span', { class: 'row-title' }, t('pg.link'))));
   sec.classList.add('today-stand');
   return {
     el: sec,

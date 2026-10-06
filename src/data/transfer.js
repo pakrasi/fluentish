@@ -15,7 +15,7 @@ const SCHEMA = {
     kv: { type: 'object' }, cards: { type: 'object' }, attempts: { type: 'array' }, events: { type: 'array' },
   },
 };
-const NOT_EXPORTED = new Set(['secrets', 'prefs', 'palace', 'backup', 'progress.device', 'exams.vocabAudio']);   // the word-audio index is a cache of the results repo; backup is device state
+const NOT_EXPORTED = new Set(['secrets', 'prefs', 'palace', 'backup', 'progress.device', 'hours.external', 'exams.vocabAudio']);   // the word-audio index is a cache of the results repo; backup is device state
 
 // Script mode (features/practice/script): his scripts are private to the device and leave it only when he ticks
 // "Include scripts": their collections, the 'script' deck and the reviews marked local.

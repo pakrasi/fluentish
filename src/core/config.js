@@ -21,6 +21,9 @@ export const config = {
   deployShadow: false,
   /** Private repository the results sync writes to (stage C); the device link stores a token for it. */
   resultsRepo: 'pakrasi/b1-exam',
+  /** The study hours file Progress reads when settings.connections.hours is not set (hours-json@1, a public GitHub
+     Pages file, same origin as the deployed app). Settings › the Progress page can point it elsewhere. */
+  hoursDefault: { repo: 'pakrasi/language-stack', path: 'data/toggl.json', lang: 'german' },
   github: {
     api: 'https://api.github.com',
     newTokenUrl: 'https://github.com/settings/personal-access-tokens/new',

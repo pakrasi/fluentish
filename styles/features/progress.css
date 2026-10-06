@@ -1,0 +1,133 @@
+/* Today › Progress (src/features/today/progress/). Kit tokens only, plus the study-days ramp below.
+   Charts: ink is the data, the accent marks you, now (today's point, this week's column); hairline solid grid;
+   2 px lines; columns at most 24 px with a 4 px rounded top. Estimated days are a dotted ink-3 line.
+   The study-days ramp is three ink steps, validated with the dataviz validator (--ordinal) against the canvas:
+   light #a2a4a8 #6a6d74 #2c2e36 (light end 2.27:1), dark #4a4d56 #8b8e97 #d6d7dc (2.29:1). "No study" is cell-empty. */
+.progress { --pg-k1: #a2a4a8; --pg-k2: #6a6d74; --pg-k3: #2c2e36; min-width: 0; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .progress { --pg-k1: #4a4d56; --pg-k2: #8b8e97; --pg-k3: #d6d7dc; }
+}
+:root[data-theme="dark"] .progress { --pg-k1: #4a4d56; --pg-k2: #8b8e97; --pg-k3: #d6d7dc; }
+
+.progress > * { min-width: 0; }
+.pg-back { display: inline-flex; align-items: center; gap: 6px; min-height: var(--tap); padding-top: var(--s-2); color: var(--ink-2); text-decoration: none; font-size: 14px; }
+.pg-back + .page-head { padding-top: 0; }
+.pg-empty { max-width: 60ch; margin-top: var(--s-4); }
+
+.pg-filter { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s-3); margin-top: var(--s-4); }
+.pg-kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-3); margin-top: var(--s-6); padding-bottom: var(--s-2); }
+.pg-kpi { display: grid; gap: 2px; min-width: 0; }
+.pg-kpi-v { font: 400 28px/1.1 var(--font-display); letter-spacing: -0.015em; color: var(--ink); white-space: nowrap; }
+.pg-kpi-l { font-size: 12px; color: var(--ink-3); }
+
+.pg-sec { min-width: 0; }
+.pg-sec .section-sub { max-width: 62ch; }
+.pg-note { display: flex; align-items: center; gap: 8px; margin-top: var(--s-2); }
+.pg-note .pg-key { flex: none; }
+.pg-warn { color: var(--ink-2); }
+.pg-h3 { margin-top: var(--s-6); font-size: 15px; }
+.pg-seg-row { margin-top: var(--s-3); }
+
+/* charts */
+.pg-frame { position: relative; width: 100%; min-width: 0; margin-top: var(--s-3); }
+.pg-chart { display: block; overflow: visible; font-family: var(--font-ui); -webkit-tap-highlight-color: transparent; touch-action: pan-y; }
+.pg-chart:focus { outline: none; }
+.pg-chart:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+.pg-axis { font-size: 11px; fill: var(--ink-3); font-variant-numeric: tabular-nums; }
+.pg-grid { stroke: var(--hairline); stroke-width: 1; }
+.pg-base { stroke: var(--hairline-strong); stroke-width: 1; }
+.pg-line { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.pg-line.pg-est { stroke: var(--ink-3); stroke-dasharray: 0.5 4; }
+.pg-wash { fill: var(--ink); fill-opacity: 0.1; }
+.pg-now { fill: var(--accent); stroke: var(--canvas); stroke-width: 2; }
+.pg-diamond { fill: var(--ink); stroke: var(--canvas); stroke-width: 2; }
+.pg-marker { stroke: var(--ink-3); stroke-width: 1; }
+.pg-cross { stroke: var(--hairline-strong); stroke-width: 1; }
+.pg-hot { fill: var(--ink); stroke: var(--canvas); stroke-width: 2; }
+.pg-bar { fill: var(--cell-known); transform-box: fill-box; transform-origin: 50% 100%; }
+.pg-bar-now { fill: var(--accent); }
+.pg-bar.is-hot { fill-opacity: 0.78; }
+.pg-slot { fill: var(--ink); fill-opacity: 0.05; }
+.pg-ref { stroke: var(--ink-2); stroke-width: 1; }
+.pg-band { fill: var(--ink); fill-opacity: 0.2; }
+.pg-band-open { fill-opacity: 0.12; }
+.pg-mid { stroke: var(--ink); stroke-width: 2; }
+.pg-key { overflow: visible; }
+
+/* the study days field */
+.pg-cal-wrap { overflow-x: auto; scrollbar-width: thin; }
+.pg-cell { fill: var(--cell-empty); }
+.pg-cell.pg-k1 { fill: var(--pg-k1); }
+.pg-cell.pg-k2 { fill: var(--pg-k2); }
+.pg-cell.pg-k3 { fill: var(--pg-k3); }
+.pg-cell-today { stroke: var(--accent); stroke-width: 1.5; }
+.pg-cell-hot { fill: none; stroke: var(--ink); stroke-width: 1.5; }
+.pg-legend { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: var(--s-2); }
+.pg-swatch-item { display: inline-flex; align-items: center; gap: 6px; }
+.pg-swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; background: var(--cell-empty); }
+.pg-swatch.pg-k1 { background: var(--pg-k1); }
+.pg-swatch.pg-k2 { background: var(--pg-k2); }
+.pg-swatch.pg-k3 { background: var(--pg-k3); }
+
+/* small multiples */
+.pg-multiples { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-5) var(--s-4); margin-top: var(--s-4); }
+.pg-multiple { min-width: 0; }
+.pg-multiple .pg-frame { margin-top: 6px; }
+.pg-multiple > .caption { margin-top: 4px; }
+.pg-m-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.pg-m-head b { font-size: 13px; font-weight: 600; }
+
+/* the readout */
+.pg-tip { position: fixed; top: 0; z-index: var(--z-toast); pointer-events: none; opacity: 0; display: grid; gap: 2px; max-width: 240px; padding: 8px 10px; border-radius: var(--r-tile); background: var(--surface); box-shadow: var(--shadow-lift), 0 0 0 1px var(--hairline); transition: opacity var(--dur-quick) var(--ease-out); }
+.pg-tip.on { opacity: 1; }
+.pg-tip-line { display: grid; gap: 1px; }
+.pg-tip-line b { font: 600 14px/1.3 var(--font-ui); color: var(--ink); }
+.pg-tip-line span { font-size: 12px; color: var(--ink-3); }
+
+/* table twins */
+.pg-table { margin-top: var(--s-3); }
+.pg-table > summary { display: inline-flex; align-items: center; min-height: var(--tap); cursor: pointer; color: var(--accent-ink); font-size: 14px; font-weight: 500; }
+.pg-table-scroll { max-height: 360px; overflow: auto; border-radius: var(--r-tile); box-shadow: inset 0 0 0 1px var(--hairline); }
+.pg-table-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.pg-table table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.pg-table th, .pg-table td { padding: 7px 10px; text-align: start; border-bottom: 1px solid var(--hairline); white-space: nowrap; }
+.pg-table thead th { position: sticky; top: 0; background: var(--canvas); color: var(--ink-3); font-weight: 500; font-size: 12px; }
+.pg-table tbody th { font-weight: 400; color: var(--ink); }
+.pg-table .num { text-align: end; font-variant-numeric: tabular-nums; }
+
+/* the level goal */
+.pg-goal .pg-frame + .caption { margin-top: var(--s-3); }
+.pg-goal-range { margin-top: var(--s-3); font: 400 19px/1.4 var(--font-display); color: var(--ink); max-width: 46ch; }
+
+/* milestones */
+.pg-ms { list-style: none; margin: var(--s-3) 0 0; padding: 0; }
+.pg-ms li { display: grid; grid-template-columns: 16px minmax(0, 1fr) auto; gap: 10px; align-items: center; min-height: 48px; border-bottom: 1px solid var(--hairline); font-size: 14px; }
+.pg-ms-tick { width: 9px; height: 9px; transform: rotate(45deg); background: var(--ink); justify-self: center; }
+.pg-ms li.is-next .pg-ms-tick { background: none; box-shadow: inset 0 0 0 1.5px var(--field-border); }
+.pg-ms li .caption { text-align: end; }
+
+/* the weekly log */
+.pg-log { list-style: none; margin: var(--s-3) 0 0; padding: 0; }
+.pg-log-row { padding: var(--s-3) 0; border-bottom: 1px solid var(--hairline); display: grid; gap: 2px; }
+.pg-log-row .row-title { font-weight: 500; }
+.pg-more { margin-top: var(--s-2); }
+
+.pg-source { margin-top: var(--s-4); display: grid; gap: var(--s-2); }
+.pg-source .row-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.pg-source-form { display: grid; gap: var(--s-3); max-width: 420px; }
+.pg-source-form .input { width: 100%; font-size: 16px; }
+
+@media (min-width: 960px) {
+  .pg-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 56px; align-items: start; }
+  .pg-col > .pg-sec:first-child { margin-top: var(--s-8); }
+  .pg-multiples { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .pg-multiples-kind { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pg-kpis { max-width: 640px; }
+}
+
+@media (forced-colors: active) {
+  .pg-line, .pg-mid, .pg-ref, .pg-marker { stroke: CanvasText; }
+  .pg-bar, .pg-cell.pg-k1, .pg-cell.pg-k2, .pg-cell.pg-k3, .pg-diamond, .pg-band { fill: CanvasText; }
+  .pg-bar-now, .pg-now { fill: Highlight; }
+  .pg-cell-today { stroke: Highlight; }
+}

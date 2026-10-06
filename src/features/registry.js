@@ -35,6 +35,7 @@ const readRound = { path: '/practice/round', when: (/** @type {URLSearchParams} 
 /** @type {Feature[]} */
 export const FEATURES = [
   { id: 'today', paths: ['/today'], tab: 'today', view: () => import('./today/index.js'), plan: null },
+  { id: 'today-progress', paths: ['/today/progress'], tab: 'today', view: () => import('./today/progress/index.js'), plan: null },
   // Practice: sibling features under #/practice, listed before the hub so their paths win the match
   { id: 'build', paths: ['/practice/build', '/practice/build/*'], tab: 'practice', view: () => import('./build/index.js'), plan: () => import('./build/plan.js') },
   { id: 'practice-script', paths: [scriptRound, '/practice/scripts', '/practice/scripts/*'], tab: 'practice', view: () => import('./practice-script/index.js'), plan: () => import('./practice-script/plan.js') },
