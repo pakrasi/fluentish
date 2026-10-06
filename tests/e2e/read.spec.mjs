@@ -92,8 +92,13 @@ test('reading: paste, the estimate, a word sheet, save to the tray; the review r
     if (await page.locator('.pr-done').count()) break;
   }
   await expect(page.locator('.pr-done')).toBeVisible();
+  // the round makes cards of the saved words in the order he saved them, as many as reading's share of the day's
+  // new items allows (scheduler hotfix: Auto is at most the sustainable rate, which the decks share), so the first
+  // saved word is a card and the second may wait for tomorrow's share
   const cards = await storedCards(page, 'de:read');
-  expect(Object.keys(cards).sort()).toEqual(['W:die_Branche', 'W:eine_rolle_spielen.phrase']);
+  const made = Object.keys(cards).sort();
+  expect(made).toContain('W:die_Branche');
+  expect(made.every(id => ['W:die_Branche', 'W:eine_rolle_spielen.phrase'].includes(id))).toBe(true);
   expect(cards['W:die_Branche'].src).toBe('read');
   expect(JSON.stringify(cards)).not.toContain(SENTINEL);
 });
