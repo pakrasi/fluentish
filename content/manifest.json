@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "0b70ca280ad0",
+ "version": "5236cf2868cc",
  "languages": [
   {
    "id": "khasi",
@@ -316,8 +316,8 @@
    "id": "b1.nouns",
    "path": "b1/nouns.json",
    "schema": "nouns@1",
-   "bytes": 93100,
-   "sha256": "4477d5165a046870403eaae8746d4a44596931903f6055e08886b17c30effe97"
+   "bytes": 105110,
+   "sha256": "e13f0e0a98be3679300017aa135f23a6c692d503f0e96fe6640e66e73d2dbf59"
   },
   {
    "id": "b1.plan",
@@ -337,8 +337,8 @@
    "id": "b1.wordmap",
    "path": "b1/wordmap.json",
    "schema": "wordmap@1",
-   "bytes": 152538,
-   "sha256": "c1cea21ef950108a0a7f4610bd30f3ea38029ed0485bd4e14029230e8f673e08"
+   "bytes": 169760,
+   "sha256": "af27fc9d8fb8d5d411406ccd9fe57aea5773f6312b6fb29b28e6933f35dc0104"
   },
   {
    "id": "build.de",
