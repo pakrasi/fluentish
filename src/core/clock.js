@@ -5,10 +5,15 @@
    main.js passes to createClock(); nothing in src hard-codes one.
 
    The functions at the top are pure (now, exam date and cutoff are passed in) and tested in node. createClock()
-   wraps them for the app: it reads the setting through a getter and memoises the context per day + date. */
-import { iso, parse, add, diff, isDay, phase } from '../domain/days.js';
+   wraps them for the app: it reads the setting through a getter and memoises the context per day + date.
 
-export { iso, parse, add, diff, isDay, phase };
+   The exam window (round 4): a date is a goal that can sit months ahead. Exam behaviour starts EXAM_WINDOW (14) days
+   before it; until then context().phase is 'none', as with no date, while exam, daysLeft, lastNewDay and capDay are
+   still there for the countdown line and Profile. Everything that plans the day (budget.js mode(), fsrs.js, Today
+   and the feature plans) reads that one phase. */
+import { iso, parse, add, diff, isDay, phase, planPhase, windowStart, EXAM_WINDOW } from '../domain/days.js';
+
+export { iso, parse, add, diff, isDay, phase, planPhase, windowStart, EXAM_WINDOW };
 
 export const DEFAULT_CUTOFF = 4;
 
@@ -17,7 +22,7 @@ export const DEFAULT_CUTOFF = 4;
  * @typedef {object} ClockCtx
  * @property {string} today         study day, 'YYYY-MM-DD'
  * @property {string|null} exam     exam date or null
- * @property {Phase} phase
+ * @property {Phase} phase          the phase the day is planned by (planPhase): 'none' before the exam window too
  * @property {number|null} daysLeft calendar days from today to the exam (negative after it), null without a date
  * @property {string|null} lastNewDay  exam−2: the last day new items are introduced
  * @property {string|null} capDay      exam−1: no review is scheduled later than this before the exam
@@ -36,13 +41,14 @@ export const epochDay = (now = new Date()) => Math.floor(now.getTime() / 864e5);
 
 /**
  * Everything derived from today and the exam date.
- * @param {{now?: Date, exam?: string|null, cutoff?: number, today?: string|null}} [o]  `today` forces the study day
+ * @param {{now?: Date, exam?: string|null, cutoff?: number, today?: string|null, examWindow?: number}} [o]  `today`
+ *   forces the study day; examWindow: days before the exam that exam behaviour starts (EXAM_WINDOW)
  * @returns {ClockCtx}
  */
-export function context({ now = new Date(), exam = null, cutoff = DEFAULT_CUTOFF, today: forced = null } = {}) {
+export function context({ now = new Date(), exam = null, cutoff = DEFAULT_CUTOFF, today: forced = null, examWindow = EXAM_WINDOW } = {}) {
   const t = forced && isDay(forced) ? forced : today(now, cutoff);
   const ex = exam && isDay(exam) ? exam : null;
-  const ph = phase(t, ex);
+  const ph = planPhase(t, ex, examWindow);
   return {
     today: t,
     exam: ex,
@@ -110,6 +116,8 @@ export function createClock({ exam, cutoff = () => DEFAULT_CUTOFF, now = () => n
       return memo.ctx;
     },
     epochDay: () => epochDay(now()),
+    /** days before the exam that exam behaviour starts */
+    examWindow: EXAM_WINDOW,
   };
   return api;
 }

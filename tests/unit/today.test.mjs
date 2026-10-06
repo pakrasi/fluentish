@@ -103,9 +103,11 @@ test('one budget: new items, rounds and minutes; a carried-over number counts as
   assert.equal(newPerDayChosen(legacy), false, 'Igloo\'s 30 a day has no rev stamp');
   assert.equal(at({ settings: legacy }).newPerDay, 20, 'so Auto applies');
   assert.equal(at({ settings: { ...legacy, rev: { newPerDay: 'x' } } }).newPerDay, 30, 'a number chosen here is kept');
-  // the pace line moves with the horizon
-  const far = allowance({ c: context({ today: '2026-10-03', exam: '2026-10-30' }), settings: s, decks: { b1: {} }, priorityLeft: 100 });
-  assert.equal(far.pace.needed, 4);
+  // the pace line moves with the horizon, which is at most the exam window (14 days, round 4)
+  const far = allowance({ c: context({ today: '2026-10-03', exam: '2026-10-17' }), settings: s, decks: { b1: {} }, priorityLeft: 100 });
+  assert.equal(far.pace.needed, 8);
+  const beyond = allowance({ c: context({ today: '2026-10-03', exam: '2026-10-30' }), settings: s, decks: { b1: {} }, priorityLeft: 100 });
+  assert.equal(beyond.mode, 'maintenance'); assert.equal(beyond.pace, null, 'a date past the window has no pace line');
   const short = allowance({ c: context({ today: '2026-10-03', exam: '2026-10-07' }), settings: s, decks: { b1: {} }, priorityLeft: 200 });
   assert.equal(short.pace.needed, 67); assert.equal(short.decks.b1.newPerDay, 40, 'the minutes cap it'); assert.equal(short.pace.fits, false); assert.equal(short.pace.reach, 120);
   for (const n of [0, 1, 7, 20, 55]) assert.equal(streamQuota(n, 'p') + streamQuota(n, 'g'), n);

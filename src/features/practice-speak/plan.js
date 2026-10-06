@@ -2,6 +2,7 @@
    allowance's speak share), the Sprechen frames to read on the eve, and the Teil 2 talk while the exam is ahead. */
 import { ROUND_SIZE as SIM_ROUND } from '../../domain/sim.js';
 import { simToday } from '../../domain/allowance.js';
+import { hasMockExam } from '../../domain/modules.js';
 
 /** Refresh the situations' stats Today reads (loads their bank once). Never throws. @param {any} ctx a view ctx */
 export async function prepare(ctx) {
@@ -33,7 +34,7 @@ export function planItems({ store, c, settings, t }) {
   if (c.phase === 'eve') {
     out.push({ id: 'practice.frames', source: 'practice-speak', kind: 'read', title: t('plan.frames'), detail: t('plan.frames.detail'), minutes: 5, href: '#/lookup/frames', priority: 45 });
   }
-  const goalSpeaking = settings.exam.type && settings.exam.modules.includes('sprechen');
+  const goalSpeaking = hasMockExam(settings) && settings.exam.modules.includes('sprechen');
   if (goalSpeaking && (c.phase === 'week' || c.phase === 'lastNew')) {
     out.push({ id: 'practice.teil2', source: 'practice-speak', kind: 'speak', title: t('plan.teil2'), detail: t('plan.teil2.detail'), minutes: 6, href: '#/practice/speak/teil2', priority: 50 });
   }

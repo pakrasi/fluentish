@@ -226,12 +226,14 @@ The repo is public; a learner's results, recordings, vocab, mistakes and keys ne
 
 | Phase | When | Effect |
 |---|---|---|
-| `none` | no date | no countdown, no caps; FSRS and readiness use the `after` rules (retention 0.90, recall measured today); Today offers "Set an exam date" |
-| `week` | ≥ 3 days | countdown and runway; new items allowed; reviews capped at exam−1, load-balanced over exam−3…exam−1 |
+| `none` | no date, or more than 14 days before it | no countdown, no caps; FSRS and readiness use the `after` rules (retention 0.90, recall measured today); Today offers "Set an exam date" only for an exam goal with no date |
+| `week` | 14 … 3 days | countdown and runway; new items allowed; reviews capped at exam−1, load-balanced over exam−3…exam−1 |
 | `lastNew` | exam−2 | last day for new items |
 | `eve` | exam−1 | no mock, no new items: reviews and the Sprechen frames |
 | `day` | exam day | a 3-minute warm-up only; FSRS writes nothing |
 | `after` | past | cap lifted, normal budget; "Set your next exam" |
+
+**The exam window** (round 4, L1a): an exam date is a goal that can sit months ahead, so the phase the day is planned by is `planPhase` (`core/clock.js context().phase`): `none` until exam − 14 (`EXAM_WINDOW`), then the phases above. `days.phase()` itself has no window (a script's delivery date reads it). Before the window the scheduler gives no cap, so when the window opens by the passage of time (the date was seen outside it and is unchanged since), `features/day.js examWindow` writes once per date, through `fsrs.recap`, the review each card owes before the exam by the in-window rule (due after exam − 1 and R on the exam day < 0.95, what `b1ready.dueOn` caps on read), in the course's decks except `script`; kv `exam.window` records it. Setting, moving or removing a date never writes a card. A goal whose exam has no mock definition (`goethe-b2` before its tests, `other`) is date-only (`domain/modules.js hasMockExam`): the countdown and the window work, with no Exam tab, mock, Schreiben focus or half day kept for a mock.
 
 Readiness is measured on a set that never depends on the date (the whole B1 pool, mistakes excluded): expected recall on the exam day, or today without a date. Moving the date changes the day it is measured on, never the set. The exam cap on review dates (no review after exam−1 unless it will still be recalled on the day) is applied when due dates are **read** (`b1ready.dueOn`), so changing the date never writes a card: 9 → 5 → 9 leaves every card and count as it was (tested). Profile restates what the date controls under the field ("6 days left. New items stop Wed 7 Oct. Reviews end Thu 8 Oct."); the line is live, so there is no toast.
 

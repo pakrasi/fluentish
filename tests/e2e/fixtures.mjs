@@ -205,14 +205,15 @@ export { expect };
  * A synthetic learner: one local profile, onboarded, German B1 with a Goethe B1 goal `examInDays` away, written into
  * IndexedDB through the app's own data layer (the stamped modules), before the app boots.
  * @param {import('@playwright/test').Page} page
- * @param {{examInDays?: number | null, level?: string, minutes?: number, token?: boolean, motion?: 'reduce' | 'full' | 'system', cards?: Record<string, Record<string, any>>, kv?: Record<string, any>, origin?: string, veteran?: boolean}} [o]
- *   origin: another e2e server than the config's (the offline spec); veteran: he started studying a month ago (past
+ * @param {{examInDays?: number | null, examType?: string, level?: string, minutes?: number, token?: boolean, motion?: 'reduce' | 'full' | 'system', cards?: Record<string, Record<string, any>>, kv?: Record<string, any>, origin?: string, veteran?: boolean}} [o]
+ *   examType: the exam goal (a date-only one such as 'goethe-b2' has no mocks); origin: another e2e server than the
+ *   config's (the offline spec); veteran: he started studying a month ago (past
  *   the first week, whose plan is level-fit with few decks: domain/budget.js mode 'start')
  */
-export async function seed(page, { examInDays = 60, level = 'B1', minutes = 60, token = false, motion = 'reduce', cards = {}, kv = {}, origin = '', veteran = false } = {}) {
+export async function seed(page, { examInDays = 60, examType = 'goethe-b1', level = 'B1', minutes = 60, token = false, motion = 'reduce', cards = {}, kv = {}, origin = '', veteran = false } = {}) {
   await leaveQuietly(page);
   await page.goto(`${origin}${APP}version.json`);
-  await page.evaluate(async ({ sha, examInDays, level, minutes, token, fake, motion, cards, kv, veteran }) => {
+  await page.evaluate(async ({ sha, examInDays, examType, level, minutes, token, fake, motion, cards, kv, veteran }) => {
     const v = `/fluentish/v/${sha}/src/`;
     const [{ createIdbAdapter }, { openSession }, { setSetting }, clockM] = await Promise.all([
       import(v + 'data/adapters/idb.js'), import(v + 'data/session.js'), import(v + 'data/settings.js'), import(v + 'core/clock.js')]);
@@ -222,7 +223,7 @@ export async function seed(page, { examInDays = 60, level = 'B1', minutes = 60, 
     const app = { store: s.store, hlc: s.hlc };
     setSetting(app, 'language', 'german');
     setSetting(app, 'level', level);
-    setSetting(app, 'exam.type', examInDays == null ? null : 'goethe-b1');
+    setSetting(app, 'exam.type', examInDays == null ? null : examType);
     setSetting(app, 'exam.modules', ['lesen', 'hoeren', 'schreiben', 'sprechen']);
     setSetting(app, 'minutesPerDay', minutes);
     if (examInDays != null) setSetting(app, 'exam.date', clockM.add(clock.today(), examInDays));
@@ -236,7 +237,7 @@ export async function seed(page, { examInDays = 60, level = 'B1', minutes = 60, 
     await s.store.flush();
     s.store.close();
     adapter.close?.();
-  }, { sha: SHA, examInDays, level, minutes, token, fake: FAKE_TOKEN, motion, cards, kv, veteran });
+  }, { sha: SHA, examInDays, examType, level, minutes, token, fake: FAKE_TOKEN, motion, cards, kv, veteran });
 }
 
 /**

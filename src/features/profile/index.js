@@ -5,7 +5,7 @@
    #/profile/<section> scrolls to that section. */
 import { h, replace } from '../../core/dom.js';
 import { shareFile } from '../../services/share.js';
-import { label } from '../../core/clock.js';
+import { label, windowStart } from '../../core/clock.js';
 import { config } from '../../core/config.js';
 import { icon } from '../../core/icons.js';
 import { section, seg, field, switchRow, notice, avatar, nextId, chipChoice } from '../../core/ui.js';
@@ -157,6 +157,8 @@ export async function mount(el, ctx) {
 
   /** What the date controls, restated under the field so a change shows at once (UX §4.11). @param {any} c */
   function derived(c) {
+    // a date before its exam window: planned as without one until then (core/clock.js planPhase)
+    if (c.phase === 'none' && c.exam) return t('goal.derived.far', { n: c.daysLeft, start: label(windowStart(c.exam)) });
     if (c.phase === 'none') return t('goal.derived.none');
     if (c.phase === 'after') return t('goal.derived.after', { date: label(c.exam) });
     if (c.phase === 'day') return t('goal.derived.day');

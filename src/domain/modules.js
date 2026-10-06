@@ -12,8 +12,20 @@
    Schreiben gets its share of the day (writingFocus) while it has no score, scores under the pass line (60 %), or
    scores lowest of the modules with a score. */
 import { scoreLine, scoreNum, stampMs } from './grade.js';
+import { PACKS } from '../lang/registry.js';
 
 export const MODULES = ['lesen', 'hoeren', 'schreiben', 'sprechen'];
+
+/** The exams that have mock tests in this build (each language pack's exams, as in content/manifest.json). */
+const MOCK_EXAMS = new Set(Object.values(PACKS).flatMap(p => (p && p.exams) || []));
+
+/**
+ * Whether the exam goal has mock tests (round 4, S9). A goal without a definition ('other', 'goethe-b2' before its
+ * tests ship) is date-only: the countdown and the exam window work, and there is no Exam tab, mock, module focus or
+ * half day kept for a mock.
+ * @param {any} settings
+ */
+export const hasMockExam = settings => MOCK_EXAMS.has(settings?.exam?.type);
 
 /**
  * @typedef {object} ModuleScore
@@ -71,7 +83,7 @@ export function weakestModule(scores, modules = MODULES) {
  * @param {{store: any, c: {phase: string}, settings: any}} ctx
  */
 export function writingFocus({ store, c, settings }) {
-  const goal = settings?.exam?.type ? (settings.exam.modules?.length ? settings.exam.modules : MODULES) : [];
+  const goal = hasMockExam(settings) ? (settings.exam.modules?.length ? settings.exam.modules : MODULES) : [];
   if (!goal.includes('schreiben') || !['week', 'lastNew', 'eve'].includes(c.phase)) return false;
   const remote = store.get('exams.remote', {}) || {};
   const scores = moduleScores({

@@ -23,6 +23,7 @@ import { createSw } from './services/sw.js';
 import { loadRecordSchemas, recordChecker } from './data/records.js';
 import { takeLinkToken } from './core/link.js';
 import { setLanguage, language } from './core/lang.js';
+import { hasMockExam } from './domain/modules.js';
 
 // first, before anything can log or navigate: a device-link token in the address is taken out of it (core/link.js)
 const linkToken = takeLinkToken();
@@ -105,7 +106,8 @@ async function main() {
   // ---------- shell ----------
   const navFor = (/** @type {string} */ where) => {
     const s = settings();
-    const tabs = TABS.filter(tb => !tb.needsExam || s.exam.type);
+    // the Exam tab: an exam goal with mock tests (a date-only goal such as 'other' has the countdown, not the tab)
+    const tabs = TABS.filter(tb => !tb.needsExam || hasMockExam(s));
     return h('nav', { class: `tabs tabs-${where}`, 'aria-label': t('nav.main'), style: { '--n': tabs.length } },
       tabs.map(tb => h('a', { href: tb.href, dataset: { tab: tb.id }, class: 'pressable' }, icon(tb.icon, { size: 22 }), h('span', null, t(tb.label)))));
   };

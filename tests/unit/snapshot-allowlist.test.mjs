@@ -37,6 +37,7 @@ const DENIED = [
   'conv.transcripts',   // conversation transcripts (lane L4)
   'conv.feedback',      // conversation feedback with quotes from the transcript (lane L4)
   'hours.external',     // study hours read from an outside file (lane L5)
+  'exam.window',        // the exam window record (lane L1a): device-only, a restored device starts its own
   'scripts',            // Script mode's scripts (round 2)
   'secrets',
 ];

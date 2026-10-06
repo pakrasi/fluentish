@@ -27,7 +27,29 @@ export const min = (a, b) => (a <= b ? a : b);
 export const max = (a, b) => (a >= b ? a : b);
 
 /**
- * The study phase of a day against the exam date (core/clock.js context() and the script plan read it).
+ * The exam window (round 4): exam behaviour (the countdown, review caps, mocks first, side decks paused, the last day
+ * for new items) starts this many days before the exam date. Further out, the day is planned as if there were no
+ * exam, so a date months away never turns today into exam weeks.
+ */
+export const EXAM_WINDOW = 14;
+
+/**
+ * The phase the day is planned by (core/clock.js context().phase): phase() inside the exam window, 'none' before it,
+ * even though a date is set. The first day of the window is exam − window. phase() stays as it was: a script's
+ * delivery date (domain/script/plan.js) has no window.
+ * @param {Day} t today @param {Day | null | undefined} exam @param {number} [window] days
+ * @returns {'none' | 'week' | 'lastNew' | 'eve' | 'day' | 'after'}
+ */
+export function planPhase(t, exam, window = EXAM_WINDOW) {
+  if (exam && diff(t, exam) > window) return 'none';
+  return phase(t, exam);
+}
+
+/** The first day of an exam's window (exam − window). @param {Day} exam @param {number} [window] */
+export const windowStart = (exam, window = EXAM_WINDOW) => add(exam, -window);
+
+/**
+ * The study phase of a day against the exam date, with no window (planPhase adds it; the script plan reads this).
  * @param {Day} t today @param {Day | null | undefined} exam
  * @returns {'none' | 'week' | 'lastNew' | 'eve' | 'day' | 'after'}
  */

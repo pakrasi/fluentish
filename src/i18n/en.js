@@ -1939,6 +1939,7 @@ export default {
      parallel lanes never edit the same lines. */
 
   // ---- Goals and week (Profile › Goals and week, Today's week strip; lane L1) ----
+  'goal.derived.far': { one: '{n} day left. Exam weeks start {start}.', other: '{n} days left. Exam weeks start {start}.' },
   // ---- end of Goals and week ----
 
   // ---- Reading (features/practice-read, shared/textview; lane L2) ----

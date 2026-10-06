@@ -60,6 +60,7 @@
    learnt, seen again); a situation 0.2 min (a new one is shown twice); a Word building card 0.4 min. Rounds are whole,
    and a row's minutes are rounds × 4, so "4 rounds, 16 min" always adds up. */
 import * as D8 from './days.js';
+import { hasMockExam } from './modules.js';
 
 export const ROUND = 12;
 export const ROUND_MIN = 4;
@@ -210,7 +211,7 @@ export function allowance({ c, settings, decks = {}, priorityLeft = null, focus 
 
   // ---- the day's number ----
   let total = 0, floor = 0;
-  const share0 = examWeek && settings?.exam?.type ? 0.5 : 1;
+  const share0 = examWeek && hasMockExam(settings) ? 0.5 : 1;
   if (c.newItems && md !== 'eve' && md !== 'day') {
     if (newPerDayChosen(settings)) total = Math.max(0, settings.newPerDay);
     else {

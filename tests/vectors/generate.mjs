@@ -74,7 +74,10 @@ function rng(a) { return () => { a |= 0; a = (a + 0x6D2B79F5) | 0; let t = Math.
 
 export async function fsrsVectors() {
   const FS = (await imp('src/domain/fsrs.js')).default;
-  const { context } = await imp('src/core/clock.js');
+  // the scheduler is pinned per phase, as given: its inputs are the phases without the clock's exam window (round 4,
+  // L1a), which clock.json and budget.json pin; fsrs.js reads only the phase it is handed
+  const { context: clockContext } = await imp('src/core/clock.js');
+  const context = (/** @type {any} */ o) => clockContext({ ...o, examWindow: Infinity });
   const D8 = await imp('src/domain/days.js');
   const rows = [];
   // rate(): no flag and each flag alone, over ok, the time limit, the time taken, the stage and the last rating

@@ -36,7 +36,8 @@ function rate(o) {
   if (o.limit && o.stage >= 2 && o.ms <= 0.5 * o.limit * 1000 && o.prevRating === 3) return 4;
   return 3;
 }
-// no exam date ('none') follows the 'after' rules: normal retention, no cap
+// no exam date, or a date before its window ('none', core/clock.js planPhase), follows the 'after' rules: normal
+// retention, no cap. Cards scheduled then are pulled in once when the window opens (features/day.js windowRecap).
 const open = phase => phase === 'after' || phase === 'none';
 const retention = phase => open(phase) ? 0.90 : 0.92;
 // due date for a review with stability S, capped at exam−1 (load-balanced over exam−3 … exam−1) unless R(exam) ≥ 0.95

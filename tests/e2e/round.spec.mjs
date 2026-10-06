@@ -3,7 +3,9 @@ import { answerCard } from './helpers.mjs';
 
 
 test('one typed round, from the first card to Done', async ({ page }) => {
-  await seed(page);
+  // in exam weeks, as this spec has always run (the default seed's exam is 60 days out: since the exam window that is
+  // the calm loop, whose first round is longer)
+  await seed(page, { examInDays: 10 });
   await open(page, '#/practice/round');
   await expect(page.locator('.pr-round')).toBeVisible();
   await checkA11y(page, 'round');
