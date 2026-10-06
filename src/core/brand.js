@@ -249,6 +249,51 @@ export function runway(el, { exam, today = new Date(), plan = () => 40, done = (
 function chunk(a, n) { const out = []; for (let i = 0; i < a.length; i += n) out.push(a.slice(i, i + n)); return out; }
 
 /* ------------------------------------------------------------------ */
+/* This week's strip (Today in maintenance, round 4)                    */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Seven columns, Monday first, drawn like the runway: bar height = planned minutes, fill = minutes done, today in
+ * accent, an Off day a baseline (a bar of its minutes when he studied anyway). Each column fills once from `from`
+ * (the share shown last time, so coming back from a round fills only what the round added); under reduced motion the
+ * fills are set at once.
+ *   weekStrip(el, [{ label: 'Mo', sub: 'Light', plan: 20, done: 12, today: false, aria: 'Mon 5 Oct, …' }, …], { from })
+ * @param {HTMLElement} el
+ * @param {{label: string, sub: string, plan: number, done: number, today: boolean, aria: string}[]} cols
+ * @param {{from?: (number | null)[]}} [o] each column's share shown before (null: from empty)
+ */
+export function weekStrip(el, cols, { from = [] } = {}) {
+  const maxPlan = Math.max(1, ...cols.map(c => Math.max(c.plan, c.done)));
+  el.className = 'runway wk-strip'; el.style.setProperty('--n', String(cols.length));
+  el.setAttribute('role', 'list');
+  el.textContent = '';
+  const fills = cols.map((c, i) => {
+    const col = document.createElement('div');
+    const off = !c.plan;
+    col.className = 'runway-day' + (c.today ? ' is-today' : '') + (off ? ' is-off' : '') + (off && c.done ? ' is-extra' : '');
+    col.setAttribute('role', 'listitem');
+    col.setAttribute('aria-label', c.aria);
+    col.title = c.aria;
+    col.style.setProperty('--i', String(i));
+    const bar = document.createElement('div'); bar.className = 'runway-bar';
+    const h = off && !c.done ? 0 : Math.round(22 + 42 * ((off ? c.done : c.plan) / maxPlan));
+    bar.style.setProperty('--h', `${h}px`);
+    const fillEl = document.createElement('span');
+    bar.append(fillEl);
+    const lab = document.createElement('abbr'); lab.textContent = c.label; lab.setAttribute('aria-hidden', 'true');
+    const sub = document.createElement('small'); sub.textContent = c.sub; sub.setAttribute('aria-hidden', 'true');
+    col.append(bar, lab, sub);
+    el.append(col);
+    const ratio = off ? (c.done ? 1 : 0) : Math.min(1, c.done / c.plan);
+    const start = reduced() ? ratio : Math.max(0, Math.min(1, from[i] ?? 0));
+    fillEl.style.setProperty('--p', String(start));
+    return { fillEl, ratio, start };
+  });
+  if (!reduced()) requestAnimationFrame(() => requestAnimationFrame(() => fills.forEach(f => { if (f.ratio !== f.start) f.fillEl.style.setProperty('--p', String(f.ratio)); })));
+  return fills.map(f => f.ratio);
+}
+
+/* ------------------------------------------------------------------ */
 /* Study days strip                                                     */
 /* ------------------------------------------------------------------ */
 

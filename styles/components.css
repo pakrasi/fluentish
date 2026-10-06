@@ -128,6 +128,12 @@
 .runway-day abbr { text-decoration: none; font: 500 11px/1 var(--font-ui); color: var(--ink-3); }
 .runway-day.is-today abbr { color: var(--accent-ink); }
 .runway-day.is-exam abbr { color: var(--ink); }
+.runway-day small { font: 400 10px/1 var(--font-ui); color: var(--ink-3); min-height: 10px; }
+.runway-day.is-today small { color: var(--accent-ink); }
+/* this week's strip (brand.js weekStrip): an Off day is a baseline, or a bar of what he studied anyway */
+.wk-strip { gap: 10px; }
+.wk-strip .runway-bar { max-width: 30px; }
+.wk-strip .runway-day.is-off:not(.is-extra) .runway-bar { height: 1px; background: var(--field-border); box-shadow: none; }
 
 /* ---------- study days strip ---------- */
 .days { display: grid; grid-template-columns: repeat(var(--n, 28), 1fr); gap: 3px; }
@@ -161,6 +167,7 @@
   .runway-bar > span, .days i.on, .track .fill, .segments i::after { background: CanvasText; forced-color-adjust: none; }
   .runway-day.is-today .runway-bar > span, .days i.today.on, .segments i.is-now::after { background: Highlight; }
   .runway-day.is-exam .runway-bar { border: 0; }
+  .wk-strip .runway-day.is-off:not(.is-extra) .runway-bar { border-width: 1px 0 0; background: none; }
   .runway-day.is-exam .runway-bar::after { background: CanvasText; forced-color-adjust: none; }
 }
 

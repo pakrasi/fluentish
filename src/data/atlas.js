@@ -93,6 +93,24 @@ export function totals(A, K) {
   return { known, n: A.n };
 }
 
+/**
+ * Known items per CEFR level, from the same scores as totals(): items without a level left out, levels without items
+ * left out, in level order (Today's Where you stand in maintenance, Profile › Goals and week's level goal).
+ * @param {{level: string[]}} A loadAtlas() @param {{st: ArrayLike<number>}} K scores()
+ * @returns {{level: string, k: number, n: number}[]}
+ */
+export function byLevel(A, K) {
+  /** @type {Record<string, {k: number, n: number}>} */ const by = {};
+  for (let i = 0; i < A.level.length; i++) {
+    const L = A.level[i];
+    if (!L || !LEVELS.includes(L)) continue;
+    const x = by[L] || (by[L] = { k: 0, n: 0 });
+    x.n++;
+    if (K.st[i] === STATE_CODE.known) x.k++;
+  }
+  return LEVELS.filter(L => by[L]).map(L => ({ level: L, k: by[L].k, n: by[L].n }));
+}
+
 /** @type {Promise<any> | null} */ let details = null;
 /**
  * What a word card needs beyond the map: the word list entries, the phrases' English and examples, the concepts, and
