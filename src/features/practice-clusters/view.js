@@ -26,7 +26,8 @@ import { Field } from '../../core/brand.js';
 import { TYPES } from '../../domain/clusters.js';
 import { roundMinutes } from '../../domain/today.js';
 import * as S from '../../domain/sim.js';
-import { forecaster, tz, addActivity } from '../shared/data.js';
+import { forecaster, tz, addActivity, loadData } from '../shared/data.js';
+import { typeCheck } from '../shared/typecheck.js';
 import { loadClusters, loadKnowledge, countsOf, cellsOf, dueCards, recallOf, state, update, dayOf, DECK } from '../shared/cluster-data.js';
 import { cardIds, itemFor, compose, zipfOf } from '../shared/cluster-items.js';
 import { isDue, sideCap } from '../../domain/b1ready.js';
@@ -199,9 +200,21 @@ async function mountSay(el, ctx, key) {
     top(true);
     setTimeout(next, reduced() ? 120 : 260);
   }
-  /** "I know this" on a new card (iknow.js): marked known, the card lifts away. */
+  /** @type {HTMLElement | null} */ let checkEl = null;
+  /** "I know this" on a new card: Check by typing first (shared/typecheck.js), then marked known and the card lifts away. */
   function knowThis() {
     if (st !== 'think' || busy || knowBtn.hidden) return;
+    st = 'typing';
+    knowBtn.hidden = true; showBtn.hidden = true; sayHint.hidden = true;
+    const panel = typeCheck({ ctx, deck: DECK, id: it.id, item: it, data: () => loadData(ctx),
+      onKnown: () => { checkEl?.remove(); checkEl = null; st = 'think'; markKnown(); },
+      onClose: () => { checkEl?.remove(); checkEl = null; st = 'think'; knowBtn.hidden = false; showBtn.hidden = false; sayHint.hidden = false; showBtn.focus({ preventScroll: true }); } });
+    checkEl = panel.el;
+    card.append(checkEl);
+    panel.focus();
+  }
+  function markKnown() {
+    if (st !== 'think' || busy) return;
     busy = true; st = 'graded';
     const id = it.id;
     const cards = store.cards(DECK) || {};
@@ -232,6 +245,7 @@ async function mountSay(el, ctx, key) {
     drawClusterDone(el, ctx, { key, right: firsts.filter((/** @type {any} */ r) => r.g >= 3).length, total: firsts.length, prev, again: `#/practice/clusters/${type}/${cid}/say`, back: backTo, known });
   }
   const onKey = (/** @type {KeyboardEvent} */ e) => {
+    if (st === 'typing') return;   // the Check by typing panel has its own keys
     if (e.key === 'Escape') { e.preventDefault(); finish(true); return; }
     if (st === 'think' && (e.key === ' ' || e.key === 'Enter')) { e.preventDefault(); doReveal(); return; }
     if (st === 'revealed' && grades.key(e)) return;

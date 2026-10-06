@@ -401,3 +401,14 @@ export function micCheck(transcript, item, cal = null) {
   const r = Sp.grade(transcript, { model: item.answers[0]?.de || '' }, cal, { match: t => saidChunk(t, item) });
   return { ...r, suggest: r.chunk === false ? 1 : r.ok ? 3 : 2 };
 }
+
+/**
+ * A speaking situation as a typed item for the grader: a free answer graded on its chunk (features/shared/grade.js isSituation): "Check by typing" before
+ * "I know this" (features/shared/typecheck.js).
+ * @param {{id: string, setup?: string, answers: {de: string, chunk: [number, number]}[]}} sim
+ */
+export function typedItem(sim) {
+  const chunks = [...new Set((sim.answers || []).map(a => a.de.slice(a.chunk[0], a.chunk[1]).trim()).filter(Boolean))];
+  return { id: sim.id, kind: 'topic', anywhere: true, literal: false, gap: false, loose: false, strict: [], accept: chunks, model: sim.answers[0]?.de || '',
+    prompt: sim.setup || '', promptLang: 'en', hl: null, area: 'speak', src: 'sim' };
+}

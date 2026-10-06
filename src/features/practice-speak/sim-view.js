@@ -27,9 +27,10 @@ import * as S from '../../domain/sim.js';
 import { loadBank, simState, simCards, setStart, saveGrade, saveRound, finishRound, refreshSimStats, updateSim } from '../shared/sim-data.js';
 import { playLine, stopLine } from './sim-audio.js';
 import { simToday } from '../../domain/allowance.js';
-import { forecaster, tz } from '../shared/data.js';
+import { forecaster, tz, loadData } from '../shared/data.js';
 import { recallBar } from '../shared/recall-bar.js';
 import { knowButton, isKnowKey, knowCard, knownResult } from '../shared/iknow.js';
+import { typeCheck, situationItem } from '../shared/typecheck.js';
 import { speech } from '../../services/speech.js';
 import { asrLocale, dirAttr } from '../../core/lang.js';
 import { session } from '../shared/data.js';
@@ -402,9 +403,23 @@ async function mountRound(el, ctx) {
     setTimeout(next, reduced() ? 120 : 260);
   }
 
-  /** "I know this" on a new situation (iknow.js): marked known in deck 'speak', the card lifts away. */
+  /** @type {HTMLElement | null} */ let checkEl = null;
+  /** "I know this" on a new situation: Check by typing first (shared/typecheck.js), then marked known in deck 'speak'. */
   function knowThis() {
     if (state !== 'think' || busy || !item || knowBtn.hidden) return;
+    state = 'typing';
+    stopListening();
+    knowBtn.hidden = true; showBtn.hidden = true;
+    const back = () => { checkEl?.remove(); checkEl = null; state = 'think'; };
+    const panel = typeCheck({ ctx, deck: S.DECK, id: item.id, item: situationItem(item), data: () => loadData(ctx),
+      onKnown: () => { back(); markKnown(); },
+      onClose: () => { back(); knowBtn.hidden = false; showBtn.hidden = false; showBtn.focus({ preventScroll: true }); } });
+    checkEl = panel.el;
+    card.append(checkEl);
+    panel.focus();
+  }
+  function markKnown() {
+    if (state !== 'think' || busy || !item) return;
     busy = true; state = 'graded';
     const id = item.id;
     knowCard(ctx, { deck: S.DECK, id });
@@ -447,6 +462,7 @@ async function mountRound(el, ctx) {
   function onKey(e) {
     if (e.metaKey || e.ctrlKey || e.altKey) return;
     const onButton = e.target instanceof HTMLElement && e.target.closest('button, a');
+    if (state === 'typing') return;   // the Check by typing panel has its own keys
     if (e.key === 'Escape') { e.preventDefault(); end(); return; }
     if ((e.key === ' ' || e.key === 'Enter') && !onButton) {
       e.preventDefault();

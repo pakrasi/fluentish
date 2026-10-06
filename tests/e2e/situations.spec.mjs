@@ -93,3 +93,29 @@ test('Say it aloud folded into Sprechen: its old routes open the situations, the
   await open(page, '#/practice/speak/aloud/check');
   await expect(page.locator('#view h1')).toHaveText('Mic check');
 });
+
+test('I know this on a situation asks Check by typing first: a miss marks nothing, the chunk typed right marks it known', async ({ page }) => {
+  await seed(page, { veteran: true, examInDays: null });
+  await open(page, '#/practice/situations/round?pick=mixed');
+  const card = page.locator('.sim-card');
+  await expect(card).toBeVisible();
+  await page.getByRole('button', { name: /^I know this/ }).click();
+  const panel = page.locator('.pr-typecheck');
+  await expect(panel).toBeVisible();
+  const input = panel.locator('textarea');
+  await expect(input).toBeFocused();
+  await checkA11y(page, 'situation, Check by typing');
+  await input.fill('Das weiß ich nicht.');
+  await input.press('Enter');
+  await expect(panel).toContainText('Not marked');
+  expect(await storedCards(page, 'speak')).toEqual({});
+  await panel.getByRole('button', { name: /^Go on/ }).click();
+  await expect(panel).toHaveCount(0);
+  await expect(page.getByRole('button', { name: /^Show answer/ })).toBeVisible();
+  // again, typed right: the chunk of the model answer
+  const chunk = String(await card.locator('.sim-you .sim-chunk').textContent());
+  await page.getByRole('button', { name: /^I know this/ }).click();
+  await page.locator('.pr-typecheck textarea').fill(chunk);
+  await page.locator('.pr-typecheck textarea').press('Enter');
+  await expect.poll(async () => Object.values(await storedCards(page, 'speak')).filter(r => r.known).length).toBe(1);
+});

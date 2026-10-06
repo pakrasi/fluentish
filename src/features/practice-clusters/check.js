@@ -2,7 +2,7 @@
    The words are the level's words he has not studied anywhere (knowledge 'unseen'; words in his rounds keep their
    own schedule) and that have no gap. First 10 of them at random, typed: the English meaning, the German word (a
    noun with its article), graded by Practice's grader (grade.js over match.js, the grading corpus rules). Nothing in
-   the check is scheduled.
+   the check is scheduled; each typed answer is recorded as a production check (data/checks.js, from 'spot').
    2 misses or fewer: every one of the words except the ones he missed is marked known through data/known.js (one check
    each in about 60 days, spread at most about 20 a day), with Undo. More than 2: nothing is marked and the page
    offers a Quick sort of the level instead (#/practice/sort?level=…). */
@@ -15,6 +15,7 @@ import { levelWords, sample, passes, CHECK_N } from './pick.js';
 import { gradeAnswer } from '../shared/grade.js';
 import { loadData } from '../shared/data.js';
 import { markWords, unmarkCards } from '../../data/known.js';
+import { recordCheck } from '../../data/checks.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
 
 const LEVELS = ['A1', 'A2'];
@@ -99,6 +100,8 @@ export async function mountCheck(el, ctx, level) {
       state = 'feedback';
       states[i] = ok ? 'done' : 'miss';
       if (!ok) missed.push(pick[i]);
+      // the typed answer is production evidence (domain/checks.js); it marks nothing and touches no card
+      recordCheck(ctx, { itemId: `W:${pick[i]}`, mode: 'produce', ok, from: 'spot', typed: true });
       replace(fb, ok ? h('p', { class: 'pr-res is-ok' }, t('practice.check.right')) : h('p', { class: 'pr-res is-bad' }, t('practice.wrong')),
         ok ? null : h('p', { class: 'pr-diff answer-key', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, t('practice.rightIs')), ' ', it.model));
       if (ok) fxCorrect(answerEl, { hold: 0 }); else fxWrong(answerEl, { revealEl: reveal });
