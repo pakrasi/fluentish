@@ -173,3 +173,72 @@ test('fuzz: a backfilled day equals the live day record (from the backup: snapsh
     assert.ok([...rebuilt.values()].filter(v => !v.estimated).length >= live.size / 2, `seed ${seed}: most days exact`);
   }
 });
+
+test('resumable: a backfill cut off mid-way goes on from its checkpoint; the days equal an uninterrupted run', async () => {
+  for (let seed = 201; seed <= 204; seed++) {
+    const x = await device('iph');
+    const live = await simulate(x, seed, 28);
+    x.clock.day = D8.add(START, 28);
+    wipe(x.store);
+    const days = [...live.keys()];
+    const cut = days[Math.floor(days.length / 2)];
+    // the tab closes right after the checkpoint of `cut`
+    const set = x.store.set.bind(x.store);
+    x.store.set = (k, v) => { const out = set(k, v); if (k === DEVICE_KV && v && v.partial && v.cursor.de === cut) throw new Error('tab closed'); return out; };
+    await assert.rejects(backfill(x.ctx, { files: null }), /tab closed/);
+    x.store.set = set;
+    const mid = x.store.get(DEVICE_KV);
+    assert.equal(mid.partial, true, `seed ${seed}: a checkpoint is kept`);
+    assert.equal(mid.cursor.de, cut);
+    assert.equal(mid.days, days.indexOf(cut) + 1, 'the days done so far');
+    // a day already done is not computed again: take one away, it stays away
+    const gone = days[0];
+    const key = P.monthKey('de', gone);
+    const { [gone]: _, ...rest } = x.store.get(key);
+    x.store.set(key, rest);
+    const res = await backfill(x.ctx, { files: null });
+    assert.equal(res.partial, undefined, 'finished');
+    assert.equal(res.days, days.length, 'the days of both runs');
+    assert.equal(res.from, days[0]);
+    const rebuilt = new Map(P.records(x.store.kv, 'de'));
+    assert.equal(rebuilt.has(gone), false, `seed ${seed}: the resumed run started after ${cut}`);
+    for (const [d, want] of live) if (d !== gone) assert.deepEqual(counts(rebuilt.get(d)), counts(want), `seed ${seed}, ${d}: equals the live day`);
+    assert.equal(await backfill(x.ctx, { files: null }), null, 'and it does not run again');
+  }
+});
+
+test('resumable with the backup: snapshots are read one at a time as the walk reaches them, never all at once', async () => {
+  const mock = mockGithubFor(config.resultsRepo);
+  const x = await device('mac');
+  x.mock = mock;
+  const live = await simulate(x, 301, 24, { backupOn: () => true });
+  x.clock.day = D8.add(START, 24);
+  resetThrottle();
+  await sync(x.store, { fetch: mock.fetch, pull: false, backupNow: true });
+  const y = await device('iph');
+  for (const [deck, cards] of Object.entries(x.store.cardsByDeck)) y.store.putCards(deck, Object.entries(cards));
+  y.store.set('activity', structuredClone(x.store.get('activity')));
+  y.clock.day = x.clock.day;
+  // the order of reads: every event file first, then each snapshot interleaved with the days written
+  const order = [];
+  const files = backupFiles(y.store, { fetch: mock.fetch });
+  const read = files.read.bind(files);
+  files.read = async p => { if (p.includes('/snapshots/')) order.push(`snap ${p.split('/').pop().slice(0, 10)}`); return read(p); };
+  const set = y.store.set.bind(y.store);
+  y.store.set = (k, v) => { if (k === DEVICE_KV && v && v.partial) order.push(`day ${v.cursor.de}`); return set(k, v); };
+  const res = await backfill(y.ctx, { files });
+  assert.equal(res.withBackup, true);
+  const snaps = order.filter(o => o.startsWith('snap'));
+  assert.ok(snaps.length >= 5, 'several snapshots');
+  // each snapshot is read just before the first day on or after it, not all before the first day
+  const firstDay = order.findIndex(o => o.startsWith('day'));
+  assert.ok(order.slice(0, firstDay).filter(o => o.startsWith('snap')).length < snaps.length, 'not every snapshot before the first day');
+  for (let i = 0; i < order.length; i++) {
+    if (!order[i].startsWith('snap')) continue;
+    const sday = order[i].slice(5);
+    const next = order.slice(i + 1).find(o => o.startsWith('day'));
+    if (next) assert.ok(next.slice(4) >= sday, `${order[i]} is read for ${next}`);
+  }
+  const rebuilt = new Map(P.records(y.store.kv, 'de'));
+  for (const [d, want] of live) { const got = rebuilt.get(d); if (!got.estimated) assert.deepEqual(counts(got), counts(want), `${d}: equal from the backup`); }
+});

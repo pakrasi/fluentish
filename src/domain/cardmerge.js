@@ -30,7 +30,12 @@ const uOf = r => (r && Number.isFinite(Number(r.u)) ? Number(r.u) : -1);
  */
 export function compare(a, b) {
   if (a == null || b == null) return a == null ? (b == null ? 0 : -1) : 1;
-  return uOf(a) - uOf(b) || (Number(a.reps) || 0) - (Number(b.reps) || 0) || (canon(a) < canon(b) ? -1 : canon(a) > canon(b) ? 1 : 0);
+  const d = uOf(a) - uOf(b) || (Number(a.reps) || 0) - (Number(b.reps) || 0);
+  if (d || a === b) return d;
+  // the same record twice (a snapshot and the event that made it) is common: equal JSON text is equal canonical text
+  if (JSON.stringify(a) === JSON.stringify(b)) return 0;
+  const ca = canon(a), cb = canon(b);
+  return ca < cb ? -1 : ca > cb ? 1 : 0;
 }
 
 /**

@@ -76,18 +76,34 @@ export function span(d) {
 }
 
 /**
+ * One snapshot file, read and checked, or null (missing, unreadable or not a snapshot). The progress log's backfill
+ * reads each one when its walk reaches the snapshot's day (data/progress.js), so a year of them is never in memory.
+ * @param {B.Files} files @param {FileRef} f @returns {Promise<any | null>}
+ */
+export async function readSnapshot(files, f) {
+  const got = await files.read(f.path);
+  if (!got) return null;
+  try {
+    const text = f.path.endsWith('.gz') ? await B.gunzip(got.bytes) : new TextDecoder().decode(got.bytes);
+    const snap = JSON.parse(text);
+    return snap && snap.schema === B.SNAPSHOT_SCHEMA && snap.cards && typeof snap.cards === 'object' ? snap : null;
+  } catch { return null; }
+}
+
+/**
  * Read each device's newest snapshot and its event files. seen: path → sha already merged (those are skipped);
  * skip: a device id to leave out (this device, for the automatic merge); all: every snapshot of every day, not only
- * the newest (the progress log's backfill, data/progress.js).
+ * the newest; snapshots false: the event files only (the progress log's backfill reads the snapshots itself, one at a
+ * time: readSnapshot).
  * @param {B.Files} files @param {DeviceBackup[]} devices
- * @param {{seen?: Record<string, string>, skip?: string | null, all?: boolean, onProgress?: (done: number, total: number) => void}} [o]
+ * @param {{seen?: Record<string, string>, skip?: string | null, all?: boolean, snapshots?: boolean, onProgress?: (done: number, total: number) => void}} [o]
  * @returns {Promise<BackupData>}
  */
-export async function readBackups(files, devices, { seen = {}, skip = null, all = false, onProgress } = {}) {
+export async function readBackups(files, devices, { seen = {}, skip = null, all = false, snapshots = true, onProgress } = {}) {
   /** @type {FileRef[]} */ const jobs = [];
   for (const d of devices) {
     if (d.deviceId === skip) continue;
-    for (const snap of all ? d.snapshots : d.snapshots.slice(-1)) if (seen[snap.path] !== snap.sha) jobs.push(snap);
+    for (const snap of !snapshots ? [] : all ? d.snapshots : d.snapshots.slice(-1)) if (seen[snap.path] !== snap.sha) jobs.push(snap);
     for (const f of d.events) if (seen[f.path] !== f.sha) jobs.push(f);
   }
   /** @type {BackupData} */ const out = { snapshots: [], events: [], read: {}, failed: [] };

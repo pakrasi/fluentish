@@ -168,11 +168,26 @@ export const recorded = (store, course) => P.records(store.kv, course);
 /**
  * Whether a day was a study day for a course: minutes in its language, or a card of it answered or marked.
  * @param {Env} env @param {{lang: string}} course @param {Record<string, Record<string, any>>} decks @param {string} day
+ * @param {Set<string>} [cardDays] the days a card was answered or marked (P.studyDays({}, decks)), when known
  */
-function studied(env, course, decks, day) {
+function studied(env, course, decks, day, cardDays) {
   if (minutesFor(env.activity[day], course.lang, env.legacyLang).total > 0) return true;
-  return P.studyDays({}, decks).includes(day);
+  return (cardDays || new Set(P.studyDays({}, decks))).has(day);
 }
+
+/** Work this long, then let the page breathe (a backfill of a year runs on the main thread). */
+export const BUDGET_MS = 12;
+/** A function that yields to the page once BUDGET_MS of work has passed since the last yield. */
+function breather() {
+  const now = () => (typeof performance !== 'undefined' ? performance.now() : Date.now());
+  let last = now();
+  return async () => { if (now() - last >= BUDGET_MS) { await new Promise(r => setTimeout(r, 0)); last = now(); } };
+}
+
+/**
+ * @typedef {{day: string, deviceId: string, load: () => Promise<{cards: any} | null>}} SnapRef  a backup snapshot,
+ *   read when the walk reaches its day
+ */
 
 /**
  * Today's record of every course studied today (src live).
@@ -199,28 +214,52 @@ async function localEvents(store) {
 }
 
 /**
- * Rebuild days of every course from the cards, the learning events and the snapshots, and write them (fin).
- * @param {Ctx} ctx @param {Env} env @param {{events: any[], snapshots: {day: string, cards: any}[], days: (course: any, decks: any) => string[]}} src
+ * Rebuild days of every course from the cards, the learning events and the snapshots, and write them (fin). One walk
+ * forward per course (domain/progress.js walkDays): linear in the days, each snapshot read when the walk reaches its
+ * day and let go after, a pause for the page every BUDGET_MS. resume: per course, the last day already done (the
+ * walk starts there from each device's newest snapshot up to it); onDay runs after each day written (the checkpoint).
+ * @param {Ctx} ctx @param {Env} env
+ * @param {{events: any[], snapshots: SnapRef[], days: (course: any, decks: any) => string[], resume?: Record<string, string>,
+ *   onDay?: (course: {id: string}, day: string, totals: {written: number, estimated: number, first: string | null, total: number, failed: number}) => void}} src
  */
-async function rebuild(ctx, env, { events, snapshots, days }) {
+async function rebuild(ctx, env, { events, snapshots, days, resume = {}, onDay }) {
   const store = ctx.store;
-  let written = 0, estimated = 0, first = /** @type {string | null} */ (null), total = 0;
+  const breathe = breather();
+  const snaps = [...snapshots].sort((a, b) => (a.day < b.day ? -1 : a.day > b.day ? 1 : 0));
+  const totals = { written: 0, estimated: 0, first: /** @type {string | null} */ (null), total: 0, failed: 0 };
   for (const course of coursesOf(store)) {
     const decks = courseDecks(store, course), keep = keepFor(course);
     const list = days(course, decks);
     if (!list.length) continue;
     const pool = await poolOf(ctx, course);
+    const walk = P.walkDays({ decks, events, keep, jumpDay: env.jumpDay });
+    let si = 0;
+    const done = resume[course.id] || null;
+    /** @param {SnapRef} ref */
+    const load = async ref => { const snap = await ref.load().catch(() => null); if (!snap) totals.failed++; return snap; };
+    if (done) {
+      // resume: the state of the last day done, from each device's newest snapshot up to it
+      /** @type {Map<string, SnapRef>} */ const newest = new Map();
+      for (; si < snaps.length && snaps[si].day <= done; si++) newest.set(snaps[si].deviceId, snaps[si]);
+      const anchors = [];
+      for (const ref of newest.values()) { const snap = await load(ref); if (snap) anchors.push(snap); }
+      walk.step(done, anchors);
+    }
     for (const day of list) {
-      const at = P.cardsAt({ decks, events, snapshots, day, keep, jumpDay: env.jumpDay });
+      if (done && day <= done) continue;
+      const anchors = [];
+      for (; si < snaps.length && snaps[si].day <= day; si++) { const snap = await load(snaps[si]); if (snap) anchors.push(snap); }
+      const at = walk.step(day, anchors);
       const rec = computeDay(env, pool, course, day, at.decks, { src: 'replay', fin: true, estimated: at.estimated });
-      if (writeDay(store, course.id, day, rec)) written++;
-      if (rec.estimated) estimated++;
-      if (!first || day < first) first = day;
-      total++;
-      await new Promise(r => setTimeout(r, 0));   // in steps, so the app stays responsive
+      if (writeDay(store, course.id, day, rec)) totals.written++;
+      if (rec.estimated) totals.estimated++;
+      if (!totals.first || day < totals.first) totals.first = day;
+      totals.total++;
+      onDay?.(course, day, totals);
+      await breathe();   // in steps, so the app stays responsive
     }
   }
-  return { written, estimated, first, total };
+  return totals;
 }
 
 /**
@@ -233,7 +272,8 @@ export async function catchUp(ctx) {
   const events = await localEvents(store);
   const res = await rebuild(ctx, env, { events, snapshots: [], days: (course, decks) => {
     const have = new Map(recorded(store, course.id));
-    return P.studyDays(env.activity, decks).filter(d => d >= from && d < today && !have.get(d)?.fin && studied(env, course, decks, d));
+    const cardDays = new Set(P.studyDays({}, decks));
+    return P.studyDays(env.activity, decks).filter(d => d >= from && d < today && !have.get(d)?.fin && studied(env, course, decks, d, cardDays));
   } });
   return res.written;
 }
@@ -243,35 +283,53 @@ export const deviceState = store => { const s = store.get(DEVICE_KV, null); retu
 
 /**
  * The one-time backfill (see the header). files: the backup's files when the device is linked, else null.
+ * Resumable: after each day the device record holds a checkpoint ({partial: true, cursor: {course: last day done},
+ * and the counts so far}), so a closed tab or a killed app goes on from there next time instead of from the start
+ * (one with the backup readable never resumes one without, which had no snapshots). The record without `partial` is
+ * written when every day is done, as before.
  * @param {Ctx} ctx @param {{files?: B.Files | null, force?: boolean}} [o]
  * @returns {Promise<any>} the device record, or null when it had run already
  */
 export async function backfill(ctx, { files = null, force = false } = {}) {
   const store = ctx.store, today = ctx.clock.today();
   const st = deviceState(store);
-  if (!force && st && (st.withBackup || !files)) return null;
+  if (!force && st && !st.partial && (st.withBackup || !files)) return null;
   let events = await localEvents(store);
-  /** @type {{day: string, cards: any}[]} */ let snapshots = [];
+  /** @type {SnapRef[]} */ let snapshots = [];
   let withBackup = false;
   if (files) {
     try {
       const devices = await R.listBackups(files);
-      const data = await R.readBackups(files, devices, { all: true });
+      // the event files now; each snapshot only when the walk reaches its day (rebuild)
+      const data = await R.readBackups(files, devices, { snapshots: false });
       /** @type {Map<string, any>} */ const byId = new Map(events.map(e => [e.id, e]));
       for (const e of data.events) if (e && e.id && !byId.has(e.id)) byId.set(e.id, e);
       events = [...byId.values()];
-      snapshots = data.snapshots.filter(s => s && D8.isDay(s.day)).map(s => ({ day: s.day, cards: s.cards }));
+      for (const d of devices) for (const f of d.snapshots) if (D8.isDay(f.day)) snapshots.push({ day: f.day, deviceId: d.deviceId, load: () => R.readSnapshot(/** @type {B.Files} */ (files), f) });
       withBackup = !data.failed.length;
     } catch { /* offline or no access: this device's events only, and again once the backup can be read */ }
   }
   const env = await environment(ctx);
   const exactFrom = snapshots.map(s => s.day).sort()[0] || null;
-  const res = await rebuild(ctx, env, { events, snapshots, days: (course, decks) => {
-    const evDays = events.filter(e => e.day && e.payload && keepFor(course)(e.payload.deck)).map(e => e.day);
-    const all = [...new Set([...P.studyDays(env.activity, decks), ...evDays])].filter(d => d < today && (studied(env, course, decks, d) || evDays.includes(d)));
+  const resumed = !force && st && st.partial && !!st.withBackup === withBackup && st.cursor && typeof st.cursor === 'object' ? st : null;
+  const base = resumed ? { estimated: Number(resumed.estimated) || 0, total: Number(resumed.days) || 0, first: resumed.from || null } : { estimated: 0, total: 0, first: null };
+  const startedAt = resumed?.startedAt || isoNow();
+  /** @type {Record<string, string>} */ const cursor = { ...(resumed ? resumed.cursor : {}) };
+  /** @param {{estimated: number, total: number, first: string | null}} r */
+  const sums = r => ({ from: [base.first, r.first].filter(Boolean).sort()[0] || null, days: base.total + r.total, estimated: base.estimated + r.estimated });
+  const res = await rebuild(ctx, env, { events, snapshots, resume: cursor, days: (course, decks) => {
+    const keep = keepFor(course);
+    const evDays = new Set(events.filter(e => e.day && e.payload && keep(e.payload.deck)).map(e => e.day));
+    const cardDays = new Set(P.studyDays({}, decks));
+    const all = [...new Set([...P.studyDays(env.activity, decks), ...evDays])].filter(d => d < today && (evDays.has(d) || studied(env, course, decks, d, cardDays)));
     return all.sort();
+  }, onDay: (course, day, totals) => {
+    cursor[course.id] = day;
+    store.set(DEVICE_KV, { profileId: store.profile.id, at: isoNow(), partial: true, startedAt, cursor: { ...cursor }, exactFrom, jumpDay: env.jumpDay, withBackup, ...sums(totals) });
   } });
-  const rec = { profileId: store.profile.id, at: isoNow(), from: res.first, exactFrom, jumpDay: env.jumpDay, withBackup, days: res.total, estimated: res.estimated };
+  // a snapshot that could not be read leaves the run without the backup (it runs again when the backup can be read)
+  if (res.failed) withBackup = false;
+  const rec = { profileId: store.profile.id, at: isoNow(), exactFrom, jumpDay: env.jumpDay, withBackup, ...sums(res) };
   store.set(DEVICE_KV, rec);
   return rec;
 }

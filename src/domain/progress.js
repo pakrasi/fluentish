@@ -32,7 +32,7 @@
 import * as D8 from './days.js';
 import * as FS from './fsrs.js';
 import { KNOWN_S, KNOWN_D } from './known.js';
-import { replay, joinCards, itemsOf, eventOrder, canon } from './cardmerge.js';
+import { replay, joinCards, itemsOf, eventOrder, canon, compare } from './cardmerge.js';
 
 export const V = 1;
 export const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
@@ -331,6 +331,130 @@ export function cardsAt({ decks, events, snapshots = [], day, keep = () => true,
   // cards gone now that existed then (an undone mark) are in the snapshots or the events, or were never on that day
   for (const [deck, d] of Object.entries(state)) for (const [id, rec] of Object.entries(d)) if (rec == null) delete d[id];
   return { decks: state, estimated };
+}
+
+/**
+ * The cards of a course at the end of each day of a run, walked forward once: cardsAt's three steps, made incremental
+ * so a year of days costs one pass over the cards, the snapshots and the events (round 4, audit P1-8; cardsAt called
+ * day by day re-joined every earlier snapshot and re-sorted every event, so the cost grew with the square of the days).
+ *   - the events are sorted once (cardmerge eventOrder) and replayed day by day onto one running state; each card's
+ *     changes after a day are found with a pointer that only moves forward;
+ *   - a snapshot is joined into the running state on the day it was taken and can be dropped after: step() takes the
+ *     snapshots of the days since the last step, so the caller reads them as it goes (data/progress.js reads each file
+ *     from the backup only when the walk reaches its day);
+ *   - a card that has not changed since a day joins the state on that day (its last change, computed once);
+ *   - the estimates of step 3 (estimateCard) go into that day's answer only, never into the running state.
+ * The answer equals cardsAt's for every day where the events' times run in the order of their days (the normal
+ * case): joining, replaying and the newest-wins rule commute; tests/unit/progress-walk.test.mjs checks the two
+ * against each other on random histories.
+ * Resuming (a backfill cut off by a closed tab): the first step() may be to the last day done, with each device's
+ * newest snapshot up to it, which gives the state of that day; the walk goes on from there.
+ * @param {object} o
+ * @param {Record<string, Record<string, any>>} o.decks   the course's cards now
+ * @param {any[]} o.events   learning events, any order
+ * @param {(deck: string) => boolean} [o.keep]
+ * @param {string | null} [o.jumpDay]
+ */
+export function walkDays({ decks, events, keep = () => true, jumpDay = null }) {
+  // eventOrder, with each event's time read once (a year is tens of thousands of events)
+  const sorted = events.filter(e => e && typeof e.day === 'string' && typeof e.id === 'string').map(e => ({ e, t: Date.parse(e.at) || 0 }))
+    .sort((a, b) => a.t - b.t || eventOrder(a.e, b.e)).map(x => x.e);
+  /** @type {Set<string>} */ const seenIds = new Set();
+  /** @type {any[]} */ const evs = [];
+  for (const e of sorted) if (!seenIds.has(e.id)) { seenIds.add(e.id); evs.push(e); }
+  // the events by study day, each day's in the replay order
+  /** @type {Map<string, any[]>} */ const byDay = new Map();
+  for (const e of evs) { let a = byDay.get(e.day); if (!a) byDay.set(e.day, (a = [])); a.push(e); }
+  const evDays = [...byDay.keys()].sort();
+  // each card's changes in the replay order (for "the first change after the day") and its last event day
+  /** @type {Map<string, {day: string, base: any}[]>} */ const changes = new Map();
+  for (const e of evs) {
+    for (const x of itemsOf(e)) {
+      if (!keep(x.deck)) continue;
+      const k = `${x.deck}\n${x.itemId}`;
+      let a = changes.get(k);
+      if (!a) changes.set(k, (a = []));
+      a.push({ day: e.day, base: x.base });
+    }
+  }
+  // the day each card here stops changing: it joins the state ("still") from then on
+  /** @type {{deck: string, id: string, rec: any, from: string}[]} */ const cards = [];
+  for (const [deck, recs] of Object.entries(decks)) {
+    if (!keep(deck)) continue;
+    for (const [id, rec] of Object.entries(recs || {})) {
+      if (!rec) continue;
+      let from = '';
+      if (rec.last && rec.last > from) from = rec.last;
+      if (rec.known && rec.known.on > from) from = rec.known.on;
+      for (const h of rec.hist || []) if (h[0] > from) from = h[0];
+      for (const c of changes.get(`${deck}\n${id}`) || []) if (c.day > from) from = c.day;
+      cards.push({ deck, id, rec, from });
+    }
+  }
+  const byFrom = [...cards].sort((a, b) => (a.from < b.from ? -1 : a.from > b.from ? 1 : 0));
+  /** @type {Map<string, number>} */ const ptr = new Map();
+  /** @type {Record<string, Record<string, any>>} */ const state = {};
+  let di = 0, si = 0;
+  let prev = '';
+  /** a card record into the state: the newer wins (cardmerge compare), equal records cheaply @param {string} deck @param {string} id @param {any} rec */
+  const join = (deck, id, rec) => {
+    if (!rec || typeof rec !== 'object') return;
+    const d = state[deck] || (state[deck] = {});
+    const cur = d[id];
+    if (cur === rec) return;
+    if (cur && cur.u === rec.u && (Number(cur.reps) || 0) === (Number(rec.reps) || 0) && JSON.stringify(cur) === JSON.stringify(rec)) return;
+    if (compare(rec, cur) > 0) d[id] = rec;
+  };
+  /** The first change of a card after a day (the pointer moves forward only). @param {string} k @param {string} day */
+  const firstAfter = (k, day) => {
+    const a = changes.get(k);
+    if (!a) return null;
+    let i = ptr.get(k) || 0;
+    while (i < a.length && a[i].day <= day) i++;
+    ptr.set(k, i);
+    return i < a.length ? a[i] : null;
+  };
+  return {
+    /**
+     * The cards at the end of `day` (after the last step's day), and how many had to be estimated.
+     * @param {string} day @param {{cards: Record<string, Record<string, any>>}[]} [snapshots] the snapshots taken after the last step's day, up to this one
+     * @returns {{decks: Record<string, Record<string, any>>, estimated: number}}
+     */
+    step(day, snapshots = []) {
+      if (day < prev) throw new Error(`walkDays: ${day} is before ${prev}`);
+      for (const snap of snapshots) for (const [deck, recs] of Object.entries((snap && snap.cards) || {})) {
+        if (!keep(deck) || !recs || typeof recs !== 'object') continue;
+        for (const [id, rec] of Object.entries(recs)) join(deck, id, rec);
+      }
+      for (; si < byFrom.length && byFrom[si].from <= day; si++) join(byFrom[si].deck, byFrom[si].id, byFrom[si].rec);
+      /** @type {any[]} */ const now = [];
+      let parts = 0;
+      for (; di < evDays.length && evDays[di] <= day; di++, parts++) for (const e of /** @type {any[]} */ (byDay.get(evDays[di]))) now.push(e);
+      if (parts > 1) now.sort(eventOrder);
+      if (now.length) replay(state, now, keep);
+      prev = day;
+      // the day's answer: the state, and the cards here that changed after the day and are in neither, estimated
+      /** @type {Record<string, Record<string, any>>} */ const out = {};
+      for (const [deck, d] of Object.entries(state)) out[deck] = d;
+      let estimated = 0;
+      for (const c of cards) {
+        const d = state[c.deck];
+        if (d && d[c.id] !== undefined) continue;
+        const k = `${c.deck}\n${c.id}`;
+        const first = firstAfter(k, day);
+        if (first && (first.base == null || (first.base.u == null && !first.base.reps))) continue;   // made after the day
+        const still = c.from <= day;
+        const rec = c.rec;
+        if (!first && !still && !(rec.hist || []).some((/** @type {any[]} */ h) => h[0] <= day) && !(rec.known && rec.known.on <= day) && !(rec.first && rec.first <= day)) continue;
+        const est = estimateCard(rec, day, jumpDay);
+        if (!est) continue;
+        if (out[c.deck] === state[c.deck]) out[c.deck] = { ...(state[c.deck] || {}) };
+        (out[c.deck] || (out[c.deck] = {}))[c.id] = est;
+        estimated++;
+      }
+      return { decks: out, estimated };
+    },
+  };
 }
 
 /**
