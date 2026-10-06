@@ -45,7 +45,11 @@ test('a week set on Goals and week: Today names the kind of day and draws the we
   await expect(page.locator('.week-sum')).toHaveText(/^4 h 05 a week\./);
   await expect.poll(async () => (await storedSettings(page))?.courses?.[0]?.week?.min).toEqual([45, 45, 20, 45, 30, 60, 0]);
   // kinds whose feature has not shipped say so
-  await expect(page.getByText('Read days are coming later. Until then this is a normal day.')).toBeVisible();
+  await expect(page.getByText('Write days are coming later. Until then this is a normal day.')).toBeVisible();
+  // Read has shipped (L2b: 'read' in LIVE_SLOTS): its day is a read day, not "coming later"
+  await expect(page.getByText('Read days are coming later. Until then this is a normal day.')).toHaveCount(0);
+  await expect(page.locator('button[name="week:1:kind:read"]')).not.toHaveClass(/is-later/);
+  await expect(page.locator('button[name="week:3:kind:write"]')).toHaveClass(/is-later/);
   await checkA11y(page, 'Goals and week');
   // every day light
   for (let i = 0; i < 7; i++) {
