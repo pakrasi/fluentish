@@ -21,6 +21,8 @@ import { fmt } from './timer.js';
 import { stampMs } from '../../domain/grade.js';
 import { at, fill } from '../../domain/examdef.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
+import { fill, reduced } from '../../core/motion.js';
+import { meter as level01 } from '../../domain/hearing.js';
 
 /** @param {HTMLElement} el @param {any} ctx @param {{ exam: any, n: number, ex: any, def: any }} o */
 export function runSprechen(el, ctx, { exam, n, ex, def }) {
@@ -81,6 +83,10 @@ export function runSprechen(el, ctx, { exam, n, ex, def }) {
   function recorderBox(part, label, hint) {
     const box = h('section', { class: 'ex-rec', 'aria-label': tx('rec.title') });
     const timeEl = h('span', { class: 'ex-rec-t tnum' });
+    // the level while recording, so he sees the phone hearing him (kit .track .fill; stepped with reduced motion)
+    const meterEl = h('div', { class: 'track ex-meter', 'aria-hidden': 'true', hidden: true }, h('span', { class: 'fill' }));
+    let meterAt = 0;
+    const onLevel = (/** @type {number} */ db) => { const now = performance.now(); if (reduced() && now - meterAt < 250) return; meterAt = now; fill(meterEl, level01(db)); };
     const status = h('p', { class: 'caption', 'aria-live': 'polite' });
     const list = h('ul', { class: 'ex-takes' });
     let t0 = 0;
@@ -103,7 +109,9 @@ export function runSprechen(el, ctx, { exam, n, ex, def }) {
         await rec.start({
           onChunk: b => { soFar = b; if (Date.now() - savedAt >= 2000) flush(); },
           onEnded: () => { if (recording) stop(true); },
+          onLevel,
         });
+        meterEl.hidden = false;
         takeId = id; soFar = null; savedAt = 0;
         beginTake(store, { id, n, part, label, startedAt: Date.now(), module });
         activeStop = stop; flushTake = flush;
@@ -123,6 +131,7 @@ export function runSprechen(el, ctx, { exam, n, ex, def }) {
       if (!recording) return;
       recording = false; activeStop = null; flushTake = null;
       clearInterval(iv);
+      meterEl.hidden = true; fill(meterEl, 0);
       const id = takeId;
       try {
         const { blob, mime } = await rec.stop();
@@ -169,7 +178,7 @@ export function runSprechen(el, ctx, { exam, n, ex, def }) {
       replace(list, items);
     }
     drawList();
-    replace(box, h('div', { class: 'ex-rec-row' }, rec.supported ? startBtn : null, rec.supported ? stopBtn : null, h('span', { class: 'ex-rec-dot', 'aria-hidden': 'true' }), timeEl, fileBtn, fileIn),
+    replace(box, h('div', { class: 'ex-rec-row' }, rec.supported ? startBtn : null, rec.supported ? stopBtn : null, h('span', { class: 'ex-rec-dot', 'aria-hidden': 'true' }), timeEl, meterEl, fileBtn, fileIn),
       h('p', { class: 'caption', lang: langAttr(), dir: dirAttr() }, hint), status, list);
     return box;
   }

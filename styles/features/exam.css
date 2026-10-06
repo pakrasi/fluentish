@@ -249,3 +249,10 @@ html[data-motion="reduce"] .ex-rec.is-on .ex-rec-dot { animation: none; }
 .md-verdict.is-bad { background: var(--bad-soft); color: var(--bad); }
 .md-tip { color: var(--ink-2); }
 .md-corr { padding: var(--s-2) var(--s-3); border-radius: var(--r-ctl); background: var(--canvas); }
+
+/* the level while a take records (services/recorder.js onLevel) */
+.ex-meter { width: 72px; height: 4px; align-self: center; }
+.ex-meter[hidden] { display: none; }
+.ex-meter .fill { background: var(--accent); transition-duration: 90ms; transition-timing-function: linear; }
+@media (prefers-reduced-motion: reduce) { :root:not([data-motion="full"]) .ex-meter .fill { transition: none; } }
+:root[data-motion="reduce"] .ex-meter .fill { transition: none; }
