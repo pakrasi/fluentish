@@ -13,6 +13,8 @@ export function planItems({ store, c, settings, t, day }) {
   const sessions = Object.values(store.get('conv.sessions', {}) || {});
   const done = sessions.some((/** @type {any} */ s) => s && !s.deletedAt && s.day === c.today && s.status !== 'open' && s.turns > 0);
   const min = day.slotMin > 0 ? day.slotMin : 10;
-  return [{ id: 'conversation.talk', source: 'practice-conversation', kind: 'speak', title: t('conv.plan.title'), detail: t('conv.plan.detail'),
-    minutes: min, href: '#/practice/conversation?from=today', priority: 50, done, action: t('conv.plan.action', { min }) }];
+  // without a Claude key the row says so and leads to Connections, not to a setup that says it (UX review P2-10)
+  const key = !!(store.get('secrets', {}) || {}).anthropicKey;
+  return [{ id: 'conversation.talk', source: 'practice-conversation', kind: 'speak', title: t('conv.plan.title'), detail: key ? t('conv.plan.detail') : t('conv.plan.noKey'),
+    minutes: min, href: key ? '#/practice/conversation?from=today' : '#/profile/connections', priority: 50, done, action: key ? t('conv.plan.action', { min }) : t('conv.plan.addKey') }];
 }

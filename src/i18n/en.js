@@ -2007,6 +2007,8 @@ export default {
   'stand.goalBy': 'Goal: {level} by {month}',
   'stand.goalShare': '{p}% of the {level} items known ({k} of {n}).',
   'stand.goalNoEstimate': 'A date estimate needs 8 weeks of progress records. It will show here then.',
+  'stand.goalEstimateOn': 'A date estimate needs 8 weeks of records. It shows on Progress from {date}.',
+  'stand.goalEstimateReady': 'The date estimate is on Progress.',
   'stand.mocks': '{exam} mock results',
   // Profile › Goals and week (features/profile/goals.js; L1c)
   'goals.title': 'Goals and week',
@@ -2419,6 +2421,8 @@ export default {
   'conv.plan.title': 'Conversation',
   'conv.plan.detail': 'A conversation with Claude, in writing',
   'conv.plan.action': 'Start conversation · {min} min',
+  'conv.plan.noKey': 'Add a Claude key to talk',
+  'conv.plan.addKey': 'Add a Claude key',
   'conv.row': 'Conversation',
   'conv.row.detail': 'Talk with Claude, in writing',
   'conv.row.week': { one: '1 conversation this week', other: '{n} conversations this week' },

@@ -99,17 +99,19 @@ const NS = 'http://www.w3.org/2000/svg';
 /**
  * Known over the last 12 weeks from the progress log, for the Progress row's sparkline, and the change over the last
  * 4 weeks. Null with fewer than two records. @param {any} store @param {string} today
- * @returns {{pts: {day: string, v: number}[], gain: number | null} | null}
+ * @returns {{pts: {day: string, v: number}[], gain: number | null, estimateOn: string | null} | null}
+ *   estimateOn: the day the level goal's date estimate can show (8 weeks after the first exact record)
  */
 export function sparkOf(store, today) {
   const course = activeCourse(store.get('settings'));
   if (!course) return null;
   const all = points(recorded(store, course.id));
+  const exact = all.find(p => !p.est);
   const from = addDays(today, -84);
   const pts = all.filter(p => p.day >= from && p.day <= today).map(p => ({ day: p.day, v: p.known }));
-  if (pts.length < 2) return null;
+  if (pts.length < 2) return exact ? { pts: [], gain: null, estimateOn: addDays(exact.day, 56) } : null;
   const then = all.filter(p => p.day <= addDays(today, -28)).pop();
-  return { pts, gain: then ? pts[pts.length - 1].v - then.known : null };
+  return { pts, gain: then ? pts[pts.length - 1].v - then.known : null, estimateOn: exact ? addDays(exact.day, 56) : null };
 }
 
 /**
@@ -173,7 +175,7 @@ export function renderStanding({ plan, c, t, course = false, rows: mode = 'open'
   const progress = () => h('a', { class: 'stand-progress pressable', href: '#/today/progress' },
     h('span', { class: 'row-main' }, h('span', { class: 'row-title' }, t('pg.link')),
       spark && spark.gain != null ? h('span', { class: 'row-detail tnum' }, t('stand.progressGain', { d: `${spark.gain >= 0 ? '+' : '−'}${nf.format(Math.abs(spark.gain))}` })) : null),
-    spark ? sparkline(spark.pts) : null,
+    spark && spark.pts.length > 1 ? sparkline(spark.pts) : null,
     icon('next', { size: 16 }));
   if (mode === 'open' || course) {
     const wordsEl = h('span', { class: 'tnum' }, '…');
@@ -213,7 +215,7 @@ export function renderStanding({ plan, c, t, course = false, rows: mode = 'open'
   const goalCard = goal ? h('div', { class: 'stand-goal' },
     h('p', { class: 'label' }, goal.month ? t('stand.goalBy', { level: goal.level, month: goal.month }) : t('stand.goal', { level: goal.level })),
     goalShare,
-    h('p', { class: 'caption' }, t('stand.goalNoEstimate'))) : null;
+    h('p', { class: 'caption' }, !spark || !spark.estimateOn ? t('stand.goalNoEstimate') : spark.estimateOn > c.today ? t('stand.goalEstimateOn', { date: label(spark.estimateOn) }) : t('stand.goalEstimateReady'))) : null;
   /** @type {HTMLElement | null} */ let mocks = null;
   if (mode === 'folded' && rows.length) {
     const panel = h('div', { class: 'reveal-answer stand-mocks-panel', id: 'stand-mocks' }, h('div', null, h('ul', { class: 'mbars stand-list' }, rows)));
