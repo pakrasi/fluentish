@@ -232,13 +232,13 @@ test('speech: recording goes through services/recorder.js (one MediaRecorder pat
   await assert.rejects(none.record());
 });
 
-test('only services/ touch the microphone, the recogniser, the voices, the player, vibrate and share; no feature hard-codes de-DE', () => {
+test('only services/ touch the microphone, the recogniser, the level meter, the voices, the player, vibrate and share; no feature hard-codes de-DE', () => {
   const bad = [];
   const walk = d => { for (const n of readdirSync(d)) { const p = path.join(d, n); if (statSync(p).isDirectory()) { if (n !== 'vendor') walk(p); } else if (p.endsWith('.js')) {
     const rel = path.relative(ROOT, p);
     if (rel.startsWith('src/services/')) continue;
     const src = readFileSync(p, 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
-    if (/new Audio\(|MediaRecorder|speechSynthesis\.|SpeechSynthesisUtterance|SpeechRecognition|getUserMedia|navigator\.vibrate|navigator\.share/.test(src)) bad.push(rel);
+    if (/new Audio\(|MediaRecorder|speechSynthesis\.|SpeechSynthesisUtterance|SpeechRecognition|getUserMedia|AudioContext|createAnalyser|getFloatTimeDomainData|navigator\.vibrate|navigator\.share/.test(src)) bad.push(rel);
     if (rel.startsWith('src/features/') && /['"]de-DE['"]/.test(src)) bad.push(`${rel} (a hard-coded de-DE: use core/lang.js)`);
   } } };
   walk(path.join(ROOT, 'src'));

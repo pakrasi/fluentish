@@ -45,13 +45,14 @@ export const meter = db => Math.max(0, Math.min(1, (db + 70) / 60));
 const pct = (xs, p) => xs[Math.min(xs.length - 1, Math.max(0, Math.round(p * (xs.length - 1))))];
 
 /**
- * The room before he speaks. null when there are too few frames (the meter could not open).
+ * The room before he speaks. null when there are too few frames or only digital silence (the meter could not open).
  * @param {number[]} dbs one dBFS value a frame
  * @returns {Ambient | null}
  */
 export function ambient(dbs) {
   const xs = (dbs || []).filter(Number.isFinite).slice().sort((a, b) => a - b);
   if (xs.length < NOISE.minFrames) return null;
+  if (xs[xs.length - 1] <= -100) return null;   // digital silence: the meter read nothing (a suspended audio context), not a quiet room
   const db = pct(xs, 0.5), peak = pct(xs, 0.9);
   const loud = db >= NOISE.loudDb;
   const gusty = peak >= NOISE.gustDb && peak - db >= NOISE.gustSpread;

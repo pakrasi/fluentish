@@ -25,6 +25,7 @@ test('noise check: a quiet room, a street, wind gusts, and no verdict without fr
   assert.equal(H.ambient(Array(10).fill(H.NOISE.loudDb)).loud, true);
   assert.equal(H.ambient(Array(10).fill(H.NOISE.loudDb - 1)).loud, false);
   assert.equal(H.ambient([-60, -60]), null, 'too few frames');
+  assert.equal(H.ambient(Array(20).fill(-100)), null, 'digital silence: the meter read nothing');
   assert.equal(H.ambient([-60, NaN, -60, -60, -60, -60]).db, -60, 'non-numbers are dropped');
   assert.equal(H.floor([-30, -60, -58, -31, -29, -59, -28, -27, -26, -25]), -58);
 });
