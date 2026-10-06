@@ -204,6 +204,74 @@ MID_V2 = set(norm("deshalb deswegen darum trotzdem außerdem dennoch").split())
 # a main clause that starts with these after a missing comma or full stop (detect.js NEXT_MAIN)
 NEXT_MAIN = set(norm("dann so trotzdem deshalb deswegen darum außerdem danach").split())
 PARTICLES = set(norm("ab an auf aus ein mit vor zu zurück weg los fest teil statt vorbei hin her nach").split())
+# the Ersatzinfinitiv (detect.js ERSATZ_AUX, ersatzCluster): in a subordinate clause the finite haben or werden comes
+# before a cluster of lower-case infinitives that ends in a modal, lassen, sehen, hören, helfen or brauchen
+ERSATZ_AUX = set(norm("""hab habe hast hat haben habt hatte hattest hatten hattet hätte hättest hätten hättet werde wirst wird
+    werden werdet würde würdest würden würdet""").split())
+ERSATZ_LAST = set(norm("sollen müssen können dürfen wollen mögen lassen sehen hören helfen brauchen").split())
+ERSATZ_NOT = set(norm("""gestern morgen oben unten eben innen außen hinten vorn draußen drinnen zusammen nun wann wenn dann
+    denn wen ihnen einen keinen meinen deinen seinen ihren unseren euren diesen jenen allen vielen beiden anderen manchen
+    einigen solchen welchen zwischen davon daran darin woran wovon gegen""").split())
+
+
+def ersatz_cluster(rest, low):
+    """rest (the words after the finite haben/werden, to the clause end) is an Ersatzinfinitiv cluster (detect.js ersatzCluster)"""
+    if len(rest) < 2 or rest[-1] not in ERSATZ_LAST:
+        return False
+    for k, r in enumerate(rest[:-1]):
+        if r not in low:
+            return False
+        if rest[k + 1] == "werden":   # the participle of a passive: saniert werden müssen
+            ok = re.fullmatch(r"[a-z]{3,}(t|en)", r) and r not in NONVERB and r not in ERSATZ_NOT
+        else:
+            ok = re.fullmatch(r"[a-z]{2,}n", r) and (r == "sein" or (r not in NONVERB and r not in ERSATZ_NOT))
+        if not ok:
+            return False
+    return True
+
+
+# a comparison after the clause verb (detect.js comparisonAfter): "dass Schlaf genauso wichtig ist wie Bewegung"
+SO_WIE = set(norm("so genauso ebenso").split())
+COMPARATIVE = set(norm("mehr weniger lieber besser eher anders öfter").split())
+NOT_COMPARATIVE = set(norm("""aber oder immer wieder hier leider sicher über unter hinter außer vorher nachher früher später
+    jeder einer keiner dieser jener welcher mancher solcher unser euer ihrer seiner meiner deiner einander teuer sauer super
+    lecker sauber der er wer""").split())
+
+
+def comparison_after(toks, i, j, low):
+    rest = toks[j + 1:]
+    if len(rest) < 2 or any(r in FINITE for r in rest[1:-1]):
+        return False
+    if rest[0] == "wie":
+        return any(w in SO_WIE for w in toks[i + 1:j])
+    c = toks[j - 1]
+    return rest[0] == "als" and j - 1 > i and (c in COMPARATIVE or (c in low and bool(re.fullmatch(r"[a-z]{3,}er", c))
+                                                                   and c not in NOT_COMPARATIVE and c not in NONVERB))
+
+
+# während as a preposition with the genitive opens no clause (detect.js prepWaehrend): the main clause's finite verb
+# follows the genitive phrase before any subject (after der, einer … also a nominative pronoun after the verb)
+GEN_DET = set(norm("des eines meines deines seines ihres unseres eures").split())
+GEN_ES = set(norm("dieses jedes jenes").split())
+GEN_DER = set(norm("der einer dieser jener meiner deiner seiner ihrer unserer eurer keiner").split())
+GEN_ATTR = set(norm("des der einer eines").split())
+NOM_PRON = set(norm("ich du er wir man").split())
+
+
+def prep_waehrend(toks, i, fin):
+    if toks[i] != "waehrend" or i + 2 >= len(toks):
+        return False
+    a = toks[i + 1]
+    gen = a in GEN_DET or (a in GEN_ES and toks[i + 2].endswith("s"))
+    if not gen and a not in GEN_DER:
+        return False
+    for k in range(i + 2, len(toks)):
+        t = toks[k]
+        if (t in PRON or t in DET) and t not in GEN_ATTR:
+            return False
+        if t in fin:
+            return gen or (k + 1 < len(toks) and toks[k + 1] in NOM_PRON)
+    return False
 
 
 def clause_verbs(model):
@@ -243,6 +311,7 @@ def detect(text, model=None):
     for k in range(0, len(pieces), 2):
         clause = pieces[k]
         toks = norm(clause).split()
+        low = {norm(w) for w in re.findall(r"[\w'-]+", clause) if w == w.lower()}   # words in lower case (not nouns)
         before = pieces[k - 1] if k else ""
         if before == "," and len(toks) >= 3 and toks[0] in WH and WH_FRAME.search(norm(pieces[k - 2] if k >= 2 else "")):
             # "…, wie sieht deine Familie das": verb right after the question word, then a subject, verb not last
@@ -255,7 +324,7 @@ def detect(text, model=None):
                 if j is not None and j < len(toks) - 1 and toks[j] in fin and any(r not in fin for r in toks[j + 1:]):
                     out.add("verb-final")
                 continue
-            if t not in SUB_DETECT:
+            if t not in SUB_DETECT or prep_waehrend(toks, i, fin):
                 continue
             # a finite verb 1-4 words after the subordinator (after a subject or a phrase like "bei dir") that is not
             # the clause's last word: "weil ich muss arbeiten", "dass bei dir ist alles gut"
@@ -275,6 +344,11 @@ def detect(text, model=None):
                 if isfin(toks[j]) and len(rest) >= 2 and ((isfin(rest[0]) and rest[1] in PRON and rest[1] != "das")
                                                           or rest[0] in SUB_DETECT or (rest[0] in NEXT_MAIN and isfin(rest[1]))):
                     end = j + 1
+                    break
+                # the finite haben/werden before an Ersatzinfinitiv cluster, or the verb before a comparison: the clause is right
+                if toks[j] in ERSATZ_AUX and ersatz_cluster(rest, low):
+                    break
+                if toks[j] in fin and comparison_after(toks, i, j, low):
                     break
                 if toks[j] in fin and rest[0] not in ("oder", "und", "aber") and any(r not in fin for r in rest):
                     out.add("verb-final")
@@ -300,7 +374,7 @@ def detect(text, model=None):
             (head[1] in PRON or head[1] in DET or (len(raw0) > 1 and raw0[1][:1].isupper())) and \
             (head[-1] in fin or bool(FINITE_ANY(head[-1]))) and not any(w in FINITE for w in head[1:-1])
         if len(parts) == 2 and norm(parts[0]).split()[:1] and (norm(parts[0]).split()[0] in SUB_DETECT or lead) \
-                and "oder nicht" not in norm(parts[0]):
+                and not prep_waehrend(head, 0, fin) and "oder nicht" not in norm(parts[0]):
             rest = norm(parts[1]).split()
             j = subject_end(rest, 0)
             if j is not None and j < len(rest) and rest[j] in fin | FINITE_ANY(rest[j]):

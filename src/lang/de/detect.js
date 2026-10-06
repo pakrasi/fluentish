@@ -51,6 +51,62 @@ const LEAD_SUB = set('da als');
 // the auxiliaries: haben, sein, werden. In "weil wir haben gefeiert" the participle at the end is no finite verb
 const AUX = set('bin bist ist sind seid war warst waren habe hab hast hat haben habt hatte hatten werde wirst wird werden');
 const PARTICIPLE = /^(ab|an|auf|aus|ein|mit|vor|zu|zurueck|weg|los|fest|teil|vorbei|hin|her|nach|um|durch)?ge[a-z]{2,}(t|en)$/;
+// the Ersatzinfinitiv (B2): in a subordinate clause the finite haben or werden comes BEFORE a verb cluster that ends in a
+// modal, lassen, sehen, hören, helfen or brauchen as an infinitive ("dass er es hätte machen sollen", "weil er noch hat
+// arbeiten müssen", "dass die Brücke hätte saniert werden müssen"). Only a cluster of nothing but lower-case infinitives
+// (a participle only right before werden) to the end of the clause counts, so "weil er hat gearbeitet", "weil er hat
+// gestern arbeiten müssen" and "weil er hat Kuchen essen wollen" stay verb-final errors.
+const ERSATZ_AUX = set(`hab habe hast hat haben habt hatte hattest hatten hattet hätte hättest hätten hättet werde wirst wird
+  werden werdet würde würdest würden würdet`);
+const ERSATZ_LAST = set('sollen müssen können dürfen wollen mögen lassen sehen hören helfen brauchen');
+// words in -n that are no infinitive (NONVERB has the rest): adverbs, pronouns, inflected determiners
+const ERSATZ_NOT = set(`gestern morgen oben unten eben innen außen hinten vorn draußen drinnen zusammen nun wann wenn dann
+  denn wen ihnen einen keinen meinen deinen seinen ihren unseren euren diesen jenen allen vielen beiden anderen manchen
+  einigen solchen welchen zwischen davon daran darin woran wovon gegen`);
+/** @param {string[]} rest the words after the finite verb, to the end of the clause @param {Set<string>} low the words written in lower case */
+const ersatzCluster = (rest, low) => rest.length >= 2 && ERSATZ_LAST.has(rest[rest.length - 1]) && rest.slice(0, -1).every((r, k) => low.has(r) && (
+  rest[k + 1] === 'werden' ? /^[a-z]{3,}(t|en)$/.test(r) && !NONVERB.has(r) && !ERSATZ_NOT.has(r)   // the participle of a passive
+    : /^[a-z]{2,}n$/.test(r) && (r === 'sein' || (!NONVERB.has(r) && !ERSATZ_NOT.has(r)))));
+// a comparison after the clause verb (Ausklammerung): "dass Schlaf genauso wichtig ist wie Bewegung", "weil es billiger
+// war als der Zug". wie needs so, genauso or ebenso in the clause; als needs a comparative right before the verb.
+const SO_WIE = set('so genauso ebenso');
+const COMPARATIVE = set('mehr weniger lieber besser eher anders öfter');
+// lower-case words in -er that are no comparative here (früher and später also mean "formerly" and "later")
+const NOT_COMPARATIVE = set(`aber oder immer wieder hier leider sicher über unter hinter außer vorher nachher früher später
+  jeder einer keiner dieser jener welcher mancher solcher unser euer ihrer seiner meiner deiner einander teuer sauer super
+  lecker sauber der er wer`);
+/** @param {string[]} toks @param {number} i the subordinator @param {number} j the finite verb @param {Set<string>} low */
+const comparisonAfter = (toks, i, j, low) => {
+  const rest = toks.slice(j + 1);
+  if (rest.length < 2 || rest.slice(1, -1).some(r => FINITE.has(r))) return false;
+  if (rest[0] === 'wie') return toks.slice(i + 1, j).some(w => SO_WIE.has(w));
+  const c = toks[j - 1];
+  return rest[0] === 'als' && j - 1 > i && (COMPARATIVE.has(c) || (low.has(c) && /^[a-z]{3,}er$/.test(c) && !NOT_COMPARATIVE.has(c) && !NONVERB.has(c)));
+};
+// während is also a preposition with the genitive ("Während des Fluges habe ich …"): then it opens no clause. It is one
+// when the main clause's finite verb follows the genitive phrase before any subject: after des, eines, the -es
+// possessives (genitive only) and dieses, jedes, jenes with a genitive -s noun, any finite verb; after der, einer,
+// dieser … (also nominative: "während der Lehrer spricht") a finite verb and then a nominative pronoun ("Während der
+// Prüfung habe ich …"). A subject before the verb ("Während des Fluges ich habe …", "während der Chef redet …") or no
+// finite verb at all ("Während des Fluges, ich habe …") leaves the words to the clause rules, as before.
+const GEN_DET = set('des eines meines deines seines ihres unseres eures');
+const GEN_ES = set('dieses jedes jenes');
+const GEN_DER = set('der einer dieser jener meiner deiner seiner ihrer unserer eurer keiner');
+const GEN_ATTR = set('des der einer eines');   // a genitive attribute inside the phrase ("während des Besuchs der Ministerin")
+const NOM_PRON = set('ich du er wir man');
+/** @param {string[]} toks @param {number} i @param {Set<string>} fin */
+const prepWaehrend = (toks, i, fin) => {
+  if (toks[i] !== 'waehrend' || i + 2 >= toks.length) return false;
+  const a = toks[i + 1];
+  const gen = GEN_DET.has(a) || (GEN_ES.has(a) && /s$/.test(toks[i + 2]));
+  if (!gen && !GEN_DER.has(a)) return false;
+  for (let k = i + 2; k < toks.length; k++) {
+    const t = toks[k];
+    if ((PRON.has(t) || DET.has(t)) && !GEN_ATTR.has(t)) return false;
+    if (fin.has(t)) return gen || NOM_PRON.has(toks[k + 1]);
+  }
+  return false;
+};
 
 /** @param {unknown} model */
 function clauseVerbs(model) {
@@ -86,6 +142,8 @@ function order(text, model, verbs = null) {
   const pieces = String(text).split(/([,.;:!?])/);
   for (let k = 0; k < pieces.length; k += 2) {
     const toks = norm(pieces[k]).split(' ').filter(Boolean);
+    /** @type {Set<string>} */ const low = new Set();   // the clause's words written in lower case (not nouns)
+    for (const m of pieces[k].matchAll(/[\p{L}\p{N}_'-]+/gu)) if (m[0] === m[0].toLowerCase()) low.add(norm(m[0]));
     if (k && pieces[k - 1] === ',' && toks.length >= 3 && WH.has(toks[0]) && WH_FRAME.test(norm(k >= 2 ? pieces[k - 2] : ''))) {
       // "…, wie sieht deine Familie das": the verb right after the question word, then a subject, verb not last
       if (isFin(toks[1], fin) && (PRON.has(toks[2]) || DET.has(toks[2])) && !isFin(toks[toks.length - 1], fin)) out.push({ cls: 'verb-final', word: toks[0] });
@@ -96,7 +154,7 @@ function order(text, model, verbs = null) {
         if (j != null && j < toks.length - 1 && fin.has(toks[j]) && toks.slice(j + 1).some(r => !fin.has(r))) out.push({ cls: 'verb-final', word: t });
         return;
       }
-      if (!SUB.has(t)) return;
+      if (!SUB.has(t) || prepWaehrend(toks, i, fin)) return;
       if (i + 2 < toks.length && NEVER_ADV.has(t) && FINITE.has(toks[i + 1]) && (PRON.has(toks[i + 2]) || DET.has(toks[i + 2]))) { out.push({ cls: 'verb-final', word: t }); return; }   // "ob kann man …"
       if (i + 1 < toks.length && (FINITE.has(toks[i + 1]) || (verbs && fin.has(toks[i + 1])))) return;   // "Damit bin ich …", "Seitdem gehe ich …": an adverb
       let end = toks.length;   // the clause ends at a main clause that follows without a comma
@@ -107,6 +165,9 @@ function order(text, model, verbs = null) {
         // or a finite verb then another subordinator, or dann/so/trotzdem … + verb ("…, weil …", "… ist dann fahre ich")
         if (isFin(toks[j], fin) && rest.length >= 2 && ((isFin(rest[0], fin) && PRON.has(rest[1]) && rest[1] !== 'das') ||
           SUB.has(rest[0]) || (NEXT_MAIN.has(rest[0]) && isFin(rest[1], fin)))) { end = j + 1; break; }
+        // the finite haben/werden before an Ersatzinfinitiv cluster, or the verb before a comparison: the clause is right
+        if (ERSATZ_AUX.has(toks[j]) && ersatzCluster(rest, low)) break;
+        if (fin.has(toks[j]) && comparisonAfter(toks, i, j, low)) break;
         // with the word list's verbs: a verb group goes on (regnen würde, warten musstest), so decide at its last verb
         if (verbs && fin.has(toks[j]) && rest.length && fin.has(rest[0])) continue;
         if (fin.has(toks[j]) && !['oder', 'und', 'aber'].includes(rest[0]) && rest.some(r => (verbs ? !verbish(r) || (AUX.has(toks[j]) && PARTICIPLE.test(r)) : !fin.has(r)))) { out.push({ cls: 'verb-final', word: t }); return; }
@@ -125,7 +186,7 @@ function order(text, model, verbs = null) {
     if (!/\?\s*$/.test(sent) && hd.length >= 2 && hd[0] === 'wer' && rest.length >= 2 && WER_PRON.has(rest[0])) out.push({ cls: 'wer-der', word: 'wer' });
     const raw0 = sent.slice(0, k).match(/[\p{L}\p{N}_'-]+/gu) || [];
     const lead = LEAD_SUB.has(hd[0]) && hd.length >= 3 && !FINITE.has(hd[1]) && (PRON.has(hd[1]) || DET.has(hd[1]) || /^\p{Lu}/u.test(raw0[1] || '')) && isFin(hd[hd.length - 1], fin) && !hd.slice(1, -1).some(w => FINITE.has(w));
-    if (!(SUB.has(hd[0]) || lead) || norm(sent.slice(0, k)).includes('oder nicht')) continue;
+    if (!(SUB.has(hd[0]) || lead) || prepWaehrend(hd, 0, fin) || norm(sent.slice(0, k)).includes('oder nicht')) continue;
     const j = subjectEnd(rest, 0, fin);
     if (j != null && j < rest.length && isFin(rest[j], fin)) out.push({ cls: 'inversion', word: hd[0] });
     else if (rest.length >= 2 && PRON.has(rest[0]) && rest[0] !== 'das' && MEINEN.has(rest[1])) out.push({ cls: 'inversion', word: hd[0] });   // "Wenn …, Sie meinen"
