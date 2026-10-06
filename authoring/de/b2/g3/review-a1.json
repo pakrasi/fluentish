@@ -1,0 +1,373 @@
+[
+ {
+  "id": "ohne-statt-zu-dass.01",
+  "field": "answer",
+  "before": [
+   "Er ist gegangen, ohne sich zu verabschieden."
+  ],
+  "after": [
+   "Er ist gegangen, ohne sich zu verabschieden.",
+   "Er ist gegangen, ohne sich verabschiedet zu haben."
+  ],
+  "severity": "error",
+  "why": "Past infinitive is correct and accepted in .03/.04/.08; missing here."
+ },
+ {
+  "id": "ohne-statt-zu-dass.10",
+  "field": "answer",
+  "before": [
+   "Er ist gegangen, ohne zu bezahlen."
+  ],
+  "after": [
+   "Er ist gegangen, ohne zu bezahlen.",
+   "Er ist gegangen, ohne bezahlt zu haben."
+  ],
+  "severity": "improve",
+  "why": "Past infinitive is also correct; consistent with .03/.04/.08."
+ },
+ {
+  "id": "konzessiv-selbst-wenn.12",
+  "field": "answer",
+  "before": [
+   "Selbst wenn ich es gewusst hätte, hätte ich nicht helfen können.",
+   "Ich hätte nicht helfen können, selbst wenn ich es gewusst hätte."
+  ],
+  "after": [
+   "Selbst wenn ich es gewusst hätte, hätte ich nicht helfen können.",
+   "Ich hätte nicht helfen können, selbst wenn ich es gewusst hätte.",
+   "Selbst wenn ich das gewusst hätte, hätte ich nicht helfen können.",
+   "Ich hätte nicht helfen können, selbst wenn ich das gewusst hätte."
+  ],
+  "severity": "error",
+  "why": "'it' as 'das' is the most natural rendering for a native; must be accepted."
+ },
+ {
+  "id": "konzessiv-selbst-wenn.10",
+  "field": "answer",
+  "before": [
+   "Selbst wenn es teuer ist, kaufe ich es.",
+   "Ich kaufe es, selbst wenn es teuer ist."
+  ],
+  "after": [
+   "Selbst wenn es teuer ist, kaufe ich es.",
+   "Ich kaufe es, selbst wenn es teuer ist.",
+   "Selbst wenn es teuer ist, kaufe ich es trotzdem.",
+   "Ich kaufe es trotzdem, selbst wenn es teuer ist."
+  ],
+  "severity": "improve",
+  "why": "Natives very often add trotzdem in the main clause; correct and should pass."
+ },
+ {
+  "id": "konzessiv-selbst-wenn.01",
+  "field": "answer",
+  "before": [
+   "Auch wenn",
+   "Selbst wenn"
+  ],
+  "after": [
+   "Auch wenn",
+   "Selbst wenn",
+   "Sogar wenn"
+  ],
+  "severity": "improve",
+  "why": "sogar wenn = even if is correct standard German."
+ },
+ {
+  "id": "konzessiv-selbst-wenn.07",
+  "field": "task",
+  "before": "Fill the gap.",
+  "after": "Fill the gap with one word.",
+  "severity": "improve",
+  "why": "'noch so' (Wenn es noch so schwierig ist) also fits an unrestricted gap; restrict to one word."
+ },
+ {
+  "id": "futur-2-vermutung.09",
+  "field": "task",
+  "before": "Translate into German.",
+  "after": "Translate into German. Use the Futur II.",
+  "severity": "error",
+  "why": "Unconstrained, 'Er hat es wohl vergessen' is the most natural native rendering and would be marked wrong."
+ },
+ {
+  "id": "futur-2-vermutung.09",
+  "field": "answer",
+  "before": [
+   "Er wird es wohl vergessen haben.",
+   "Er wird es wahrscheinlich vergessen haben.",
+   "Er wird es vermutlich vergessen haben."
+  ],
+  "after": [
+   "Er wird es wohl vergessen haben.",
+   "Er wird es wahrscheinlich vergessen haben.",
+   "Er wird es vermutlich vergessen haben.",
+   "Er wird das wohl vergessen haben.",
+   "Er wird das wahrscheinlich vergessen haben.",
+   "Er wird das vermutlich vergessen haben."
+  ],
+  "severity": "error",
+  "why": "'it' as 'das' is natural and correct; missing."
+ },
+ {
+  "id": "lassen-konstruktionen.10",
+  "field": "answer",
+  "before": [
+   "Ich lasse mir morgen die Haare schneiden.",
+   "Morgen lasse ich mir die Haare schneiden."
+  ],
+  "after": [
+   "Ich lasse mir morgen die Haare schneiden.",
+   "Morgen lasse ich mir die Haare schneiden.",
+   "Ich lasse mir die Haare morgen schneiden.",
+   "Ich lasse morgen meine Haare schneiden.",
+   "Morgen lasse ich meine Haare schneiden."
+  ],
+  "severity": "error",
+  "why": "'meine Haare schneiden lassen' is correct, common German a learner will type; plus a valid adverb position."
+ },
+ {
+  "id": "relativsaetze-erweitert.04",
+  "field": "answer",
+  "before": [
+   "das"
+  ],
+  "after": [
+   "das",
+   "welches"
+  ],
+  "severity": "error",
+  "why": "welches is a correct (if formal) relative pronoun after a noun."
+ },
+ {
+  "id": "relativsaetze-erweitert.07",
+  "field": "answer",
+  "before": [
+   "mit der"
+  ],
+  "after": [
+   "mit der",
+   "mit welcher"
+  ],
+  "severity": "error",
+  "why": "mit welcher is correct (formal) after a noun."
+ },
+ {
+  "id": "wortstellung-mittelfeld.07",
+  "field": "answer",
+  "before": [
+   "Gestern hat sich mein Kollege krankgemeldet.",
+   "Gestern hat mein Kollege sich krankgemeldet.",
+   "sich mein Kollege krankgemeldet",
+   "mein Kollege sich krankgemeldet"
+  ],
+  "after": [
+   "Gestern hat sich mein Kollege krankgemeldet.",
+   "Gestern hat mein Kollege sich krankgemeldet.",
+   "sich mein Kollege krankgemeldet",
+   "mein Kollege sich krankgemeldet",
+   "Gestern hat sich mein Kollege krank gemeldet.",
+   "Gestern hat mein Kollege sich krank gemeldet.",
+   "sich mein Kollege krank gemeldet",
+   "mein Kollege sich krank gemeldet"
+  ],
+  "severity": "error",
+  "why": "Duden allows krankmelden / krank melden (resultative adjective + verb, §34); separate spelling is not wrong."
+ },
+ {
+  "id": "wortstellung-mittelfeld.07",
+  "field": "near",
+  "before": [
+   [
+    "Gestern hat sich mein Kollege krank gemeldet.",
+    "krankmelden is one word"
+   ],
+   [
+    "Gestern hat mein Kollege krankgemeldet sich.",
+    "the participle goes last"
+   ]
+  ],
+  "after": [
+   [
+    "Gestern hat mein Kollege krankgemeldet sich.",
+    "the participle goes last"
+   ],
+   [
+    "Gestern hat sich krankgemeldet mein Kollege.",
+    "the participle goes last"
+   ],
+   [
+    "Gestern mein Kollege hat sich krankgemeldet.",
+    "the verb comes second"
+   ]
+  ],
+  "severity": "error",
+  "why": "'krank gemeldet' is an allowed spelling, so it cannot be a near miss."
+ },
+ {
+  "id": "wortstellung-mittelfeld.05",
+  "field": "near",
+  "before": [
+   [
+    "Ich leihe ihr sie.",
+    "two pronouns: accusative first"
+   ],
+   [
+    "Ich leihe ihr die.",
+    "two pronouns: sie ihr"
+   ],
+   [
+    "Ich leihe sie sie.",
+    "meiner Nachbarin is dative: ihr"
+   ]
+  ],
+  "after": [
+   [
+    "Ich leihe ihr sie.",
+    "two pronouns: accusative first"
+   ],
+   [
+    "Ich leihe es ihr.",
+    "die Leiter is feminine: sie"
+   ],
+   [
+    "Ich leihe sie sie.",
+    "meiner Nachbarin is dative: ihr"
+   ]
+  ],
+  "severity": "error",
+  "why": "'Ich leihe ihr die.' (demonstrative die) is normal spoken German, not a clear error."
+ },
+ {
+  "id": "nomen-mit-praepositionen.01",
+  "field": "near",
+  "before": [
+   [
+    "für",
+    "Lust auf"
+   ],
+   [
+    "an",
+    "Lust auf"
+   ],
+   [
+    "zu",
+    "Lust auf (zu only before an infinitive)"
+   ]
+  ],
+  "after": [
+   [
+    "für",
+    "Lust auf"
+   ],
+   [
+    "an",
+    "Lust auf"
+   ],
+   [
+    "zu",
+    "with an accusative article: Lust auf einen …"
+   ]
+  ],
+  "severity": "improve",
+  "why": "'Lust zu etwas' exists (Duden); zu fails here because of the accusative einen, not because zu needs an infinitive."
+ },
+ {
+  "id": "nomen-mit-praepositionen.11",
+  "field": "answer",
+  "before": [
+   "Es gibt einen großen Bedarf an Wohnungen.",
+   "Es gibt großen Bedarf an Wohnungen.",
+   "Es gibt einen großen Bedarf an Wohnraum.",
+   "Es besteht ein großer Bedarf an Wohnungen.",
+   "Es besteht großer Bedarf an Wohnungen.",
+   "Es besteht ein großer Bedarf an Wohnraum."
+  ],
+  "after": [
+   "Es gibt einen großen Bedarf an Wohnungen.",
+   "Es gibt großen Bedarf an Wohnungen.",
+   "Es gibt einen großen Bedarf an Wohnraum.",
+   "Es gibt großen Bedarf an Wohnraum.",
+   "Es besteht ein großer Bedarf an Wohnungen.",
+   "Es besteht großer Bedarf an Wohnungen.",
+   "Es besteht ein großer Bedarf an Wohnraum.",
+   "Es besteht großer Bedarf an Wohnraum."
+  ],
+  "severity": "improve",
+  "why": "Two combinations of the listed variants were missing."
+ },
+ {
+  "id": "nominalisierung-praepositionen.01",
+  "field": "answer",
+  "before": [
+   "Wegen des Streiks fahren die Züge nicht.",
+   "Wegen des Streikes fahren die Züge nicht.",
+   "Wegen des Streiks fahren keine Züge."
+  ],
+  "after": [
+   "Wegen des Streiks fahren die Züge nicht.",
+   "Wegen des Streikes fahren die Züge nicht.",
+   "Wegen des Streiks fahren keine Züge.",
+   "Wegen des Streikes fahren keine Züge."
+  ],
+  "severity": "improve",
+  "why": "Missing combination of listed variants."
+ },
+ {
+  "id": "waehrend-wohingegen.07",
+  "field": "answer",
+  "before": [
+   "Ich arbeite gern im Büro. Meine Kollegin dagegen arbeitet lieber von zu Hause.",
+   "Ich arbeite gern im Büro. Meine Kollegin arbeitet dagegen lieber von zu Hause."
+  ],
+  "after": [
+   "Ich arbeite gern im Büro. Meine Kollegin dagegen arbeitet lieber von zu Hause.",
+   "Ich arbeite gern im Büro. Meine Kollegin arbeitet dagegen lieber von zu Hause.",
+   "Ich arbeite gern im Büro. Meine Kollegin dagegen arbeitet lieber von zuhause.",
+   "Ich arbeite gern im Büro. Meine Kollegin arbeitet dagegen lieber von zuhause."
+  ],
+  "severity": "improve",
+  "why": "zuhause is an allowed spelling (accepted in indem-dadurch-dass.10); spaces are not ignored by the grader."
+ },
+ {
+  "id": "waehrend-wohingegen.01",
+  "field": "answer",
+  "before": [
+   "während",
+   "wohingegen"
+  ],
+  "after": [
+   "während",
+   "wohingegen",
+   "wogegen"
+  ],
+  "severity": "improve",
+  "why": "wogegen is a standard adversative conjunction (= wohingegen) with verb last."
+ },
+ {
+  "id": "waehrend-wohingegen.11",
+  "field": "answer",
+  "before": [
+   "während",
+   "wohingegen"
+  ],
+  "after": [
+   "während",
+   "wohingegen",
+   "wogegen"
+  ],
+  "severity": "improve",
+  "why": "wogegen is a standard adversative conjunction (= wohingegen) with verb last."
+ },
+ {
+  "id": "sodass-so-dass.09",
+  "field": "answer",
+  "before": [
+   "Es war so laut, dass ich nicht schlafen konnte."
+  ],
+  "after": [
+   "Es war so laut, dass ich nicht schlafen konnte.",
+   "Es war so laut, dass ich nicht einschlafen konnte."
+  ],
+  "severity": "improve",
+  "why": "einschlafen is a natural rendering of 'couldn't sleep' here."
+ }
+]

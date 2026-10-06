@@ -579,5 +579,122 @@
   "description": "In the Perfekt, a modal verb or lassen with another infinitive stays an infinitive, and in a subordinate clause haben comes before both infinitives: Ich habe gehen müssen. / …, weil er hat arbeiten müssen.",
   "rank": 22,
   "fn": "narrate"
+ },
+ {
+  "id": "indem-dadurch-dass",
+  "name": "Mittel: indem / dadurch, dass",
+  "category": "clauses",
+  "level": "B2",
+  "description": "Saying how something is done, with indem or with dadurch in the main clause and a dass-clause: Man spart Zeit, indem man online bucht / Man spart dadurch Zeit, dass man online bucht.",
+  "rank": 23,
+  "fn": "means"
+ },
+ {
+  "id": "ohne-statt-zu-dass",
+  "name": "ohne/statt … zu und ohne dass / statt dass",
+  "category": "clauses",
+  "level": "B2",
+  "description": "Saying what does not happen or happens instead, with an infinitive for the same subject and a dass-clause for a new one: Er ging, ohne sich zu verabschieden / Er ging, ohne dass es jemand merkte.",
+  "rank": 24,
+  "fn": "contrast"
+ },
+ {
+  "id": "sodass-so-dass",
+  "name": "Folge: sodass / so …, dass",
+  "category": "clauses",
+  "level": "B2",
+  "description": "Giving a result, with sodass after the whole clause or so + adjective in the main clause and dass after it: Es regnete, sodass wir zu Hause blieben / Es war so kalt, dass wir zu Hause blieben.",
+  "rank": 25,
+  "fn": "consequence"
+ },
+ {
+  "id": "waehrend-wohingegen",
+  "name": "Gegensatz: während / wohingegen / im Gegensatz zu",
+  "category": "clauses",
+  "level": "B2",
+  "description": "Setting two facts against each other, with während or wohingegen + verb last, im Gegensatz zu + dative, or dagegen/hingegen with verb second: In der Stadt sind die Mieten hoch, während sie auf dem Land niedrig sind.",
+  "rank": 26,
+  "fn": "contrast"
+ },
+ {
+  "id": "konzessiv-selbst-wenn",
+  "name": "Konzessiv: selbst wenn, auch wenn, wenn … auch",
+  "category": "clauses",
+  "level": "B2",
+  "description": "Saying that something does not change the result, also for unreal cases with Konjunktiv II: Selbst wenn ich mehr Geld hätte, würde ich hier wohnen bleiben.",
+  "rank": 27,
+  "fn": "concession"
+ },
+ {
+  "id": "adjektive-mit-praepositionen",
+  "name": "Adjektive mit Präpositionen (stolz auf, abhängig von)",
+  "category": "prepositions",
+  "level": "B2",
+  "description": "Adjectives that take a fixed preposition and case, also with da(r)- before a clause: Ich bin stolz auf dich / Ich bin davon überzeugt, dass es klappt.",
+  "rank": 28,
+  "fn": "describe"
+ },
+ {
+  "id": "nomen-mit-praepositionen",
+  "name": "Nomen mit Präpositionen (Interesse an, Angst vor)",
+  "category": "prepositions",
+  "level": "B2",
+  "description": "Nouns that take a fixed preposition and case: Ich habe Angst vor der Prüfung / Das Interesse an dem Kurs ist groß.",
+  "rank": 29,
+  "fn": "describe"
+ },
+ {
+  "id": "adjektiv-als-nomen",
+  "name": "Nominalisierte Adjektive und Partizipien (der Angestellte, ein Angestellter)",
+  "category": "nouns-articles",
+  "level": "B2",
+  "description": "Adjectives and participles used as nouns keep their adjective endings: der Angestellte, ein Angestellter, viele Angestellte, etwas Neues.",
+  "rank": 30,
+  "fn": "describe"
+ },
+ {
+  "id": "relativsaetze-erweitert",
+  "name": "Relativsätze erweitert (wer, was, wo(r)+, dessen/deren)",
+  "category": "clauses",
+  "level": "B2",
+  "description": "Relative clauses with was after alles, nichts, das Beste or a whole clause, wo(r)- + preposition, wer …, der and dessen/deren: Das ist alles, was ich weiß / Er kam pünktlich, worüber ich mich freute.",
+  "rank": 31,
+  "fn": "describe"
+ },
+ {
+  "id": "futur-2-vermutung",
+  "name": "Futur II und Futur I als Vermutung (wird … gemacht haben)",
+  "category": "verbs-tenses",
+  "level": "B2",
+  "description": "werden + infinitive guesses about now and werden + Partizip II + haben/sein about the past, often with wohl: Sie wird wohl krank sein / Er wird den Zug verpasst haben.",
+  "rank": 32,
+  "fn": "guess"
+ },
+ {
+  "id": "lassen-konstruktionen",
+  "name": "lassen: veranlassen, erlauben, sich lassen (lässt sich lösen)",
+  "category": "verbs-tenses",
+  "level": "B2",
+  "description": "lassen + infinitive for having something done or allowing it, and sich lassen for what can be done: Ich lasse das Auto reparieren / Das lässt sich lösen.",
+  "rank": 33,
+  "fn": "means"
+ },
+ {
+  "id": "wortstellung-mittelfeld",
+  "name": "Wortstellung im Mittelfeld (Pronomen vor Nomen, Dativ vor Akkusativ)",
+  "category": "word-order",
+  "level": "B2",
+  "description": "The order of objects in the middle of the sentence: nouns dative before accusative, pronouns accusative before dative, pronouns before nouns: Ich gebe dem Kunden die Rechnung / Ich gebe sie ihm.",
+  "rank": 34,
+  "fn": "style"
+ },
+ {
+  "id": "nominalisierung-praepositionen",
+  "name": "Nominalisierung mit Präpositionen (wegen, trotz, bei)",
+  "category": "other",
+  "level": "B2",
+  "description": "Turning a clause into a prepositional phrase and back: weil es streikt → wegen des Streiks, wenn es regnet → bei Regen, um die Umwelt zu schützen → zum Schutz der Umwelt.",
+  "rank": 35,
+  "fn": "style"
  }
 ]

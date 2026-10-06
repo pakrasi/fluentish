@@ -1,0 +1,285 @@
+[
+ {
+  "id": "indem-dadurch-dass.02",
+  "field": "answer",
+  "before": [
+   "dadurch"
+  ],
+  "after": [
+   "dadurch",
+   "damit"
+  ],
+  "severity": "error",
+  "why": "„die Kosten damit gesenkt, dass …“ is standard German for the means; the open gap must accept it."
+ },
+ {
+  "id": "indem-dadurch-dass.02",
+  "field": "note",
+  "before": "dadurch in the main clause announces the dass-clause.",
+  "after": "dadurch (or damit) in the main clause announces the dass-clause.",
+  "severity": "improve",
+  "why": "Note matches the widened key."
+ },
+ {
+  "id": "indem-dadurch-dass.06",
+  "field": "near",
+  "before": [
+   [
+    "Sie hat die Prüfung bestanden, durch dass sie jeden Tag geübt hat.",
+    "„durch dass“ does not exist"
+   ],
+   [
+    "Sie hat die Prüfung dadurch bestanden, dass sie hat jeden Tag geübt.",
+    "the verb goes last in the dass-clause"
+   ],
+   [
+    "Sie hat die Prüfung damit bestanden, dass sie jeden Tag geübt hat.",
+    "the means is dadurch"
+   ]
+  ],
+  "after": [
+   [
+    "Sie hat die Prüfung bestanden, durch dass sie jeden Tag geübt hat.",
+    "„durch dass“ does not exist"
+   ],
+   [
+    "Sie hat die Prüfung dadurch bestanden, dass sie hat jeden Tag geübt.",
+    "the verb goes last in the dass-clause"
+   ],
+   [
+    "Sie hat die Prüfung dadurch bestanden, indem sie jeden Tag geübt hat.",
+    "dadurch goes with dass, not with indem"
+   ]
+  ],
+  "severity": "error",
+  "why": "„damit, dass“ for the means is correct German; it only breaks the task, so it is not a valid near miss."
+ },
+ {
+  "id": "ohne-statt-zu-dass.12",
+  "field": "answer",
+  "before": [
+   "Statt nur zu reden, sollten wir handeln."
+  ],
+  "after": [
+   "Statt nur zu reden, sollten wir handeln.",
+   "Statt zu reden, sollten wir handeln."
+  ],
+  "severity": "error",
+  "why": "Dropping „nur“ is a natural, correct join (statt already implies it); a learner will type it."
+ },
+ {
+  "id": "sodass-so-dass.12",
+  "field": "near",
+  "before": [
+   [
+    "sodass",
+    "sodass would repeat the dass"
+   ],
+   [
+    "damit",
+    "damit cannot be followed by „, dass“"
+   ],
+   [
+    "dort",
+    "dort cannot announce a dass-clause"
+   ]
+  ],
+  "after": [
+   [
+    "sodass",
+    "sodass would repeat the dass"
+   ],
+   [
+    "damit",
+    "here „so“ says how to place it; „Stell die Pflanze damit, dass …“ makes no sense"
+   ],
+   [
+    "dort",
+    "dort cannot announce a dass-clause"
+   ]
+  ],
+  "severity": "improve",
+  "why": "„damit, dass“ exists (means), so the old reason is false in general."
+ },
+ {
+  "id": "waehrend-wohingegen.09",
+  "field": "answer",
+  "before": [
+   "Während meine Schwester sehr ordentlich ist, bin ich eher chaotisch.",
+   "Ich bin eher chaotisch, während meine Schwester sehr ordentlich ist.",
+   "Meine Schwester ist sehr ordentlich, während ich eher chaotisch bin."
+  ],
+  "after": [
+   "Während meine Schwester sehr ordentlich ist, bin ich eher chaotisch.",
+   "Ich bin eher chaotisch, während meine Schwester sehr ordentlich ist.",
+   "Meine Schwester ist sehr ordentlich, während ich eher chaotisch bin.",
+   "Während meine Schwester sehr ordentlich ist, bin ich ziemlich chaotisch.",
+   "Ich bin ziemlich chaotisch, während meine Schwester sehr ordentlich ist.",
+   "Meine Schwester ist sehr ordentlich, während ich ziemlich chaotisch bin."
+  ],
+  "severity": "error",
+  "why": "„rather“ is commonly and correctly rendered ziemlich; key only had eher."
+ },
+ {
+  "id": "konzessiv-selbst-wenn.10",
+  "field": "answer",
+  "before": [
+   "Selbst wenn es teuer ist, kaufe ich es.",
+   "Ich kaufe es, selbst wenn es teuer ist.",
+   "Selbst wenn es teuer ist, kaufe ich es trotzdem.",
+   "Ich kaufe es trotzdem, selbst wenn es teuer ist."
+  ],
+  "after": [
+   "Selbst wenn es teuer ist, kaufe ich es.",
+   "Ich kaufe es, selbst wenn es teuer ist.",
+   "Selbst wenn es teuer ist, kaufe ich es trotzdem.",
+   "Ich kaufe es trotzdem, selbst wenn es teuer ist.",
+   "Selbst wenn es teuer ist, kaufe ich es mir.",
+   "Ich kaufe es mir, selbst wenn es teuer ist.",
+   "Selbst wenn es teuer ist, kaufe ich es mir trotzdem.",
+   "Ich kaufe es mir trotzdem, selbst wenn es teuer ist."
+  ],
+  "severity": "error",
+  "why": "„kaufe ich es mir“ is the everyday native rendering; extra word would fail the grader."
+ },
+ {
+  "id": "adjektive-mit-praepositionen.04",
+  "field": "answer",
+  "before": [
+   "für"
+  ],
+  "after": [
+   "für",
+   "durch"
+  ],
+  "severity": "error",
+  "why": "„bekannt durch ihren guten Wein“ is also correct (accusative fits); open gap must accept it."
+ },
+ {
+  "id": "adjektive-mit-praepositionen.04",
+  "field": "note",
+  "before": "bekannt für + accusative.",
+  "after": "bekannt für + accusative (also: bekannt durch).",
+  "severity": "improve",
+  "why": "Note matches the widened key."
+ },
+ {
+  "id": "nomen-mit-praepositionen.11",
+  "field": "task",
+  "before": "Translate into German. Use „Bedarf“.",
+  "after": "Translate into German. Use „Bedarf an“.",
+  "severity": "improve",
+  "why": "Excludes the equally correct compound „Wohnungsbedarf“ and keeps the key on the preposition point."
+ },
+ {
+  "id": "nomen-mit-praepositionen.11",
+  "field": "answer",
+  "before": [
+   "Es gibt einen großen Bedarf an Wohnungen.",
+   "Es gibt großen Bedarf an Wohnungen.",
+   "Es gibt einen großen Bedarf an Wohnraum.",
+   "Es gibt großen Bedarf an Wohnraum.",
+   "Es besteht ein großer Bedarf an Wohnungen.",
+   "Es besteht großer Bedarf an Wohnungen.",
+   "Es besteht ein großer Bedarf an Wohnraum.",
+   "Es besteht großer Bedarf an Wohnraum.",
+   "Es gibt einen hohen Bedarf an Wohnungen.",
+   "Es gibt hohen Bedarf an Wohnungen.",
+   "Es gibt einen hohen Bedarf an Wohnraum.",
+   "Es gibt hohen Bedarf an Wohnraum.",
+   "Es besteht ein hoher Bedarf an Wohnungen.",
+   "Es besteht hoher Bedarf an Wohnungen.",
+   "Es besteht ein hoher Bedarf an Wohnraum.",
+   "Es besteht hoher Bedarf an Wohnraum."
+  ],
+  "after": [
+   "Es gibt einen großen Bedarf an Wohnungen.",
+   "Es gibt großen Bedarf an Wohnungen.",
+   "Es gibt einen großen Bedarf an Wohnraum.",
+   "Es gibt großen Bedarf an Wohnraum.",
+   "Es besteht ein großer Bedarf an Wohnungen.",
+   "Es besteht großer Bedarf an Wohnungen.",
+   "Es besteht ein großer Bedarf an Wohnraum.",
+   "Es besteht großer Bedarf an Wohnraum.",
+   "Es gibt einen hohen Bedarf an Wohnungen.",
+   "Es gibt hohen Bedarf an Wohnungen.",
+   "Es gibt einen hohen Bedarf an Wohnraum.",
+   "Es gibt hohen Bedarf an Wohnraum.",
+   "Es besteht ein hoher Bedarf an Wohnungen.",
+   "Es besteht hoher Bedarf an Wohnungen.",
+   "Es besteht ein hoher Bedarf an Wohnraum.",
+   "Es besteht hoher Bedarf an Wohnraum.",
+   "Der Bedarf an Wohnungen ist groß.",
+   "Der Bedarf an Wohnungen ist hoch.",
+   "Der Bedarf an Wohnraum ist groß.",
+   "Der Bedarf an Wohnraum ist hoch."
+  ],
+  "severity": "error",
+  "why": "„Der Bedarf an Wohnungen ist groß/hoch.“ is a natural, correct rendering a strong learner types."
+ },
+ {
+  "id": "futur-2-vermutung.07",
+  "field": "answer",
+  "before": [
+   "Sie wird wohl lange gearbeitet haben."
+  ],
+  "after": [
+   "Sie wird wohl lange gearbeitet haben.",
+   "wird wohl lange gearbeitet haben"
+  ],
+  "severity": "error",
+  "why": "Every other order item accepts the part after the given start; this one rejects it."
+ },
+ {
+  "id": "lassen-konstruktionen.04",
+  "field": "answer",
+  "before": [
+   "Wir lassen die Heizung reparieren.",
+   "Wir lassen die Heizung von einem Handwerker reparieren.",
+   "Wir lassen einen Handwerker die Heizung reparieren."
+  ],
+  "after": [
+   "Wir lassen die Heizung reparieren.",
+   "Wir lassen die Heizung von einem Handwerker reparieren.",
+   "Wir lassen einen Handwerker die Heizung reparieren.",
+   "Wir lassen das von einem Handwerker machen.",
+   "Wir lassen das einen Handwerker machen."
+  ],
+  "severity": "error",
+  "why": "Keeping „macht das“ from the prompt gives a correct lassen-sentence a learner will type."
+ },
+ {
+  "id": "lassen-konstruktionen.10",
+  "field": "answer",
+  "before": [
+   "Ich lasse mir morgen die Haare schneiden.",
+   "Morgen lasse ich mir die Haare schneiden.",
+   "Ich lasse mir die Haare morgen schneiden.",
+   "Ich lasse morgen meine Haare schneiden.",
+   "Morgen lasse ich meine Haare schneiden."
+  ],
+  "after": [
+   "Ich lasse mir morgen die Haare schneiden.",
+   "Morgen lasse ich mir die Haare schneiden.",
+   "Ich lasse mir die Haare morgen schneiden.",
+   "Ich lasse morgen meine Haare schneiden.",
+   "Morgen lasse ich meine Haare schneiden.",
+   "Ich lasse meine Haare morgen schneiden."
+  ],
+  "severity": "error",
+  "why": "Word-order variant listed for the mir-version but missing for the meine-version."
+ },
+ {
+  "id": "nominalisierung-praepositionen.07",
+  "field": "answer",
+  "before": [
+   "Zum Schutz der Umwelt fahren viele mit dem Rad."
+  ],
+  "after": [
+   "Zum Schutz der Umwelt fahren viele mit dem Rad.",
+   "Zum Umweltschutz fahren viele mit dem Rad."
+  ],
+  "severity": "error",
+  "why": "„Zum Umweltschutz“ is correct, natural and uses zum + Schutz; a strong learner types it."
+ }
+]

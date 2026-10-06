@@ -1,0 +1,10 @@
+[
+  {"id": "lassen-konstruktionen.10", "field": "answer",
+   "before": ["Ich lasse mir morgen die Haare schneiden.", "Morgen lasse ich mir die Haare schneiden.", "Ich lasse mir die Haare morgen schneiden.", "Ich lasse morgen meine Haare schneiden.", "Morgen lasse ich meine Haare schneiden.", "Ich lasse meine Haare morgen schneiden."],
+   "after": ["Ich lasse mir morgen die Haare schneiden.", "Morgen lasse ich mir die Haare schneiden.", "Ich lasse mir die Haare morgen schneiden.", "Ich lasse morgen meine Haare schneiden.", "Morgen lasse ich meine Haare schneiden.", "Ich lasse meine Haare morgen schneiden.", "Ich werde mir morgen die Haare schneiden lassen.", "Morgen werde ich mir die Haare schneiden lassen.", "Ich werde morgen meine Haare schneiden lassen.", "Morgen werde ich meine Haare schneiden lassen."],
+   "severity": "error", "why": "The task fixes no tense; the Futur I with schneiden lassen is a correct, likely rendering of 'I'm having ... tomorrow' and is currently rejected."},
+  {"id": "lassen-konstruktionen.04", "field": "answer",
+   "before": ["Wir lassen die Heizung reparieren.", "Wir lassen die Heizung von einem Handwerker reparieren.", "Wir lassen einen Handwerker die Heizung reparieren.", "Wir lassen das von einem Handwerker machen.", "Wir lassen das einen Handwerker machen."],
+   "after": ["Wir lassen die Heizung reparieren.", "Wir lassen die Heizung von einem Handwerker reparieren.", "Wir lassen die Heizung durch einen Handwerker reparieren.", "Wir lassen einen Handwerker die Heizung reparieren.", "Wir lassen das von einem Handwerker machen.", "Wir lassen das einen Handwerker machen."],
+   "severity": "improve", "why": "durch einen Handwerker is a common written variant of the agent with lassen."}
+]

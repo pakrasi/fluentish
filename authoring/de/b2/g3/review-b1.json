@@ -1,0 +1,272 @@
+[
+ {
+  "id": "indem-dadurch-dass.01",
+  "field": "task",
+  "before": "Fill the gap with one word.",
+  "after": "Fill the gap with the connector that says how (the means).",
+  "severity": "error",
+  "why": "Open task: „wenn“ and „weil“ also give correct sentences here and would be marked wrong."
+ },
+ {
+  "id": "indem-dadurch-dass.06",
+  "field": "answer",
+  "before": [
+   "Sie hat die Prüfung dadurch bestanden, dass sie jeden Tag geübt hat.",
+   "Sie hat dadurch die Prüfung bestanden, dass sie jeden Tag geübt hat."
+  ],
+  "after": [
+   "Sie hat die Prüfung dadurch bestanden, dass sie jeden Tag geübt hat.",
+   "Sie hat dadurch die Prüfung bestanden, dass sie jeden Tag geübt hat.",
+   "Dadurch, dass sie jeden Tag geübt hat, hat sie die Prüfung bestanden."
+  ],
+  "severity": "error",
+  "why": "Fronted „Dadurch, dass …“ is correct and allowed by the task; missing."
+ },
+ {
+  "id": "indem-dadurch-dass.07",
+  "field": "answer",
+  "before": [
+   "Man vermeidet Fehler, indem man den Text zweimal liest."
+  ],
+  "after": [
+   "Man vermeidet Fehler, indem man den Text zweimal liest.",
+   "Indem man den Text zweimal liest, vermeidet man Fehler."
+  ],
+  "severity": "error",
+  "why": "Task does not fix the order; the fronted indem-clause is correct and missing."
+ },
+ {
+  "id": "indem-dadurch-dass.10",
+  "field": "answer",
+  "before": [
+   "Wir sparen Geld, indem wir zu Hause kochen.",
+   "Wir sparen Geld, indem wir zuhause kochen.",
+   "Wir sparen Geld, indem wir daheim kochen."
+  ],
+  "after": [
+   "Wir sparen Geld, indem wir zu Hause kochen.",
+   "Wir sparen Geld, indem wir zuhause kochen.",
+   "Wir sparen Geld, indem wir daheim kochen.",
+   "Indem wir zu Hause kochen, sparen wir Geld.",
+   "Indem wir zuhause kochen, sparen wir Geld.",
+   "Indem wir daheim kochen, sparen wir Geld."
+  ],
+  "severity": "error",
+  "why": "Fronted indem-clause is an equally natural translation; missing."
+ },
+ {
+  "id": "ohne-statt-zu-dass.11",
+  "field": "answer",
+  "before": [
+   "Die Preise sind gestiegen, ohne dass die Kunden informiert wurden."
+  ],
+  "after": [
+   "Die Preise sind gestiegen, ohne dass die Kunden informiert wurden.",
+   "Die Preise sind gestiegen, ohne dass die Kunden informiert worden sind."
+  ],
+  "severity": "error",
+  "why": "Perfekt passive (matching the main clause) is correct and likely; missing."
+ },
+ {
+  "id": "sodass-so-dass.01",
+  "field": "task",
+  "before": "Fill the gap.",
+  "after": "Fill the gap with „sodass“, „damit“ or „deshalb“.",
+  "severity": "error",
+  "why": "Open task: „weshalb“, „weswegen“, „wodurch“ (verb last) are also correct here and would be marked wrong."
+ },
+ {
+  "id": "sodass-so-dass.02",
+  "field": "answer",
+  "before": [
+   "so"
+  ],
+  "after": [
+   "so",
+   "derart",
+   "dermaßen"
+  ],
+  "severity": "error",
+  "why": "„derart/dermaßen langweilig, dass“ is correct standard German; a B2 learner may type it."
+ },
+ {
+  "id": "sodass-so-dass.10",
+  "field": "answer",
+  "before": [
+   "so viele"
+  ],
+  "after": [
+   "so viele",
+   "derart viele",
+   "dermaßen viele"
+  ],
+  "severity": "error",
+  "why": "„derart/dermaßen viele …, dass“ is correct; two words as asked."
+ },
+ {
+  "id": "waehrend-wohingegen.08",
+  "field": "answer",
+  "before": [
+   "Im Gegensatz zu ihren Eltern informiert sie sich online."
+  ],
+  "after": [
+   "Im Gegensatz zu ihren Eltern informiert sie sich online.",
+   "Im Gegensatz zu ihren Eltern, die Zeitung lesen, informiert sie sich online."
+  ],
+  "severity": "error",
+  "why": "Keeping the information in a relative clause is correct and natural; missing."
+ },
+ {
+  "id": "waehrend-wohingegen.09",
+  "field": "answer",
+  "before": [
+   "Während meine Schwester sehr ordentlich ist, bin ich eher chaotisch.",
+   "Ich bin eher chaotisch, während meine Schwester sehr ordentlich ist."
+  ],
+  "after": [
+   "Während meine Schwester sehr ordentlich ist, bin ich eher chaotisch.",
+   "Ich bin eher chaotisch, während meine Schwester sehr ordentlich ist.",
+   "Meine Schwester ist sehr ordentlich, während ich eher chaotisch bin."
+  ],
+  "severity": "error",
+  "why": "„X, während Y“ with the sister first is a correct rendering with während; missing."
+ },
+ {
+  "id": "konzessiv-selbst-wenn.07",
+  "field": "task",
+  "before": "Fill the gap with one word.",
+  "after": "Fill the gap with one word so that it means „even if it is difficult“.",
+  "severity": "error",
+  "why": "Open task: „Wenn es mal/sehr schwierig ist, gebe ich nicht auf.“ is correct German and would be marked wrong."
+ },
+ {
+  "id": "adjektive-mit-praepositionen.04",
+  "field": "near",
+  "before": [
+   [
+    "von",
+    "bekannt für"
+   ],
+   [
+    "wegen",
+    "bekannt für"
+   ],
+   [
+    "durch",
+    "bekannt für"
+   ]
+  ],
+  "after": [
+   [
+    "von",
+    "bekannt für"
+   ],
+   [
+    "wegen",
+    "bekannt für"
+   ],
+   [
+    "an",
+    "bekannt für"
+   ]
+  ],
+  "severity": "error",
+  "why": "„bekannt durch“ is correct German (Duden: bekannt für/durch); not a valid near miss."
+ },
+ {
+  "id": "adjektive-mit-praepositionen.08",
+  "field": "answer",
+  "before": [
+   "Ich bin davon überzeugt, dass das Projekt ein Erfolg wird."
+  ],
+  "after": [
+   "Ich bin davon überzeugt, dass das Projekt ein Erfolg wird.",
+   "Ich bin überzeugt davon, dass das Projekt ein Erfolg wird."
+  ],
+  "severity": "error",
+  "why": "„überzeugt davon, dass“ is very common and correct; missing."
+ },
+ {
+  "id": "nomen-mit-praepositionen.11",
+  "field": "answer",
+  "before": [
+   "Es gibt einen großen Bedarf an Wohnungen.",
+   "Es gibt großen Bedarf an Wohnungen.",
+   "Es gibt einen großen Bedarf an Wohnraum.",
+   "Es gibt großen Bedarf an Wohnraum.",
+   "Es besteht ein großer Bedarf an Wohnungen.",
+   "Es besteht großer Bedarf an Wohnungen.",
+   "Es besteht ein großer Bedarf an Wohnraum.",
+   "Es besteht großer Bedarf an Wohnraum."
+  ],
+  "after": [
+   "Es gibt einen großen Bedarf an Wohnungen.",
+   "Es gibt großen Bedarf an Wohnungen.",
+   "Es gibt einen großen Bedarf an Wohnraum.",
+   "Es gibt großen Bedarf an Wohnraum.",
+   "Es besteht ein großer Bedarf an Wohnungen.",
+   "Es besteht großer Bedarf an Wohnungen.",
+   "Es besteht ein großer Bedarf an Wohnraum.",
+   "Es besteht großer Bedarf an Wohnraum.",
+   "Es gibt einen hohen Bedarf an Wohnungen.",
+   "Es gibt hohen Bedarf an Wohnungen.",
+   "Es gibt einen hohen Bedarf an Wohnraum.",
+   "Es gibt hohen Bedarf an Wohnraum.",
+   "Es besteht ein hoher Bedarf an Wohnungen.",
+   "Es besteht hoher Bedarf an Wohnungen.",
+   "Es besteht ein hoher Bedarf an Wohnraum.",
+   "Es besteht hoher Bedarf an Wohnraum."
+  ],
+  "severity": "error",
+  "why": "„hoher Bedarf“ is the most usual collocation; all hoch variants missing."
+ },
+ {
+  "id": "relativsaetze-erweitert.01",
+  "field": "near",
+  "before": [
+   [
+    "das",
+    "after a superlative used as a noun: was"
+   ],
+   [
+    "dass",
+    "dass is a conjunction"
+   ],
+   [
+    "welches",
+    "after das Beste: was"
+   ]
+  ],
+  "after": [
+   [
+    "dass",
+    "dass is a conjunction"
+   ],
+   [
+    "wo",
+    "after das Beste: was"
+   ],
+   [
+    "wie",
+    "after das Beste: was"
+   ]
+  ],
+  "severity": "error",
+  "why": "„das Beste, das/welches …“ occurs in standard German when a concrete thing (a dish) is meant (Duden); not safe as a wrong answer."
+ },
+ {
+  "id": "lassen-konstruktionen.04",
+  "field": "answer",
+  "before": [
+   "Wir lassen die Heizung reparieren.",
+   "Wir lassen die Heizung von einem Handwerker reparieren."
+  ],
+  "after": [
+   "Wir lassen die Heizung reparieren.",
+   "Wir lassen die Heizung von einem Handwerker reparieren.",
+   "Wir lassen einen Handwerker die Heizung reparieren."
+  ],
+  "severity": "error",
+  "why": "„jemanden etwas tun lassen“ is correct and the obvious join; missing."
+ }
+]

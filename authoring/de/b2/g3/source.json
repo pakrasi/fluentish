@@ -1,0 +1,4371 @@
+{
+ "batch": "g3",
+ "about": "B2 grammar G3: means, contrast, result and concession connectors, adjectives and nouns with prepositions, nominalised adjectives, extended relative clauses, Futur II, lassen, Mittelfeld order and clause ↔ prepositional phrase.",
+ "concepts": [
+  {
+   "id": "indem-dadurch-dass",
+   "name": "Mittel: indem / dadurch, dass",
+   "category": "clauses",
+   "level": "B2",
+   "description": "Saying how something is done, with indem or with dadurch in the main clause and a dass-clause: Man spart Zeit, indem man online bucht / Man spart dadurch Zeit, dass man online bucht.",
+   "rank": 23,
+   "fn": "means"
+  },
+  {
+   "id": "ohne-statt-zu-dass",
+   "name": "ohne/statt … zu und ohne dass / statt dass",
+   "category": "clauses",
+   "level": "B2",
+   "description": "Saying what does not happen or happens instead, with an infinitive for the same subject and a dass-clause for a new one: Er ging, ohne sich zu verabschieden / Er ging, ohne dass es jemand merkte.",
+   "rank": 24,
+   "fn": "contrast"
+  },
+  {
+   "id": "sodass-so-dass",
+   "name": "Folge: sodass / so …, dass",
+   "category": "clauses",
+   "level": "B2",
+   "description": "Giving a result, with sodass after the whole clause or so + adjective in the main clause and dass after it: Es regnete, sodass wir zu Hause blieben / Es war so kalt, dass wir zu Hause blieben.",
+   "rank": 25,
+   "fn": "consequence"
+  },
+  {
+   "id": "waehrend-wohingegen",
+   "name": "Gegensatz: während / wohingegen / im Gegensatz zu",
+   "category": "clauses",
+   "level": "B2",
+   "description": "Setting two facts against each other, with während or wohingegen + verb last, im Gegensatz zu + dative, or dagegen/hingegen with verb second: In der Stadt sind die Mieten hoch, während sie auf dem Land niedrig sind.",
+   "rank": 26,
+   "fn": "contrast"
+  },
+  {
+   "id": "konzessiv-selbst-wenn",
+   "name": "Konzessiv: selbst wenn, auch wenn, wenn … auch",
+   "category": "clauses",
+   "level": "B2",
+   "description": "Saying that something does not change the result, also for unreal cases with Konjunktiv II: Selbst wenn ich mehr Geld hätte, würde ich hier wohnen bleiben.",
+   "rank": 27,
+   "fn": "concession"
+  },
+  {
+   "id": "adjektive-mit-praepositionen",
+   "name": "Adjektive mit Präpositionen (stolz auf, abhängig von)",
+   "category": "prepositions",
+   "level": "B2",
+   "description": "Adjectives that take a fixed preposition and case, also with da(r)- before a clause: Ich bin stolz auf dich / Ich bin davon überzeugt, dass es klappt.",
+   "rank": 28,
+   "fn": "describe"
+  },
+  {
+   "id": "nomen-mit-praepositionen",
+   "name": "Nomen mit Präpositionen (Interesse an, Angst vor)",
+   "category": "prepositions",
+   "level": "B2",
+   "description": "Nouns that take a fixed preposition and case: Ich habe Angst vor der Prüfung / Das Interesse an dem Kurs ist groß.",
+   "rank": 29,
+   "fn": "describe"
+  },
+  {
+   "id": "adjektiv-als-nomen",
+   "name": "Nominalisierte Adjektive und Partizipien (der Angestellte, ein Angestellter)",
+   "category": "nouns-articles",
+   "level": "B2",
+   "description": "Adjectives and participles used as nouns keep their adjective endings: der Angestellte, ein Angestellter, viele Angestellte, etwas Neues.",
+   "rank": 30,
+   "fn": "describe"
+  },
+  {
+   "id": "relativsaetze-erweitert",
+   "name": "Relativsätze erweitert (wer, was, wo(r)+, dessen/deren)",
+   "category": "clauses",
+   "level": "B2",
+   "description": "Relative clauses with was after alles, nichts, das Beste or a whole clause, wo(r)- + preposition, wer …, der and dessen/deren: Das ist alles, was ich weiß / Er kam pünktlich, worüber ich mich freute.",
+   "rank": 31,
+   "fn": "describe"
+  },
+  {
+   "id": "futur-2-vermutung",
+   "name": "Futur II und Futur I als Vermutung (wird … gemacht haben)",
+   "category": "verbs-tenses",
+   "level": "B2",
+   "description": "werden + infinitive guesses about now and werden + Partizip II + haben/sein about the past, often with wohl: Sie wird wohl krank sein / Er wird den Zug verpasst haben.",
+   "rank": 32,
+   "fn": "guess"
+  },
+  {
+   "id": "lassen-konstruktionen",
+   "name": "lassen: veranlassen, erlauben, sich lassen (lässt sich lösen)",
+   "category": "verbs-tenses",
+   "level": "B2",
+   "description": "lassen + infinitive for having something done or allowing it, and sich lassen for what can be done: Ich lasse das Auto reparieren / Das lässt sich lösen.",
+   "rank": 33,
+   "fn": "means"
+  },
+  {
+   "id": "wortstellung-mittelfeld",
+   "name": "Wortstellung im Mittelfeld (Pronomen vor Nomen, Dativ vor Akkusativ)",
+   "category": "word-order",
+   "level": "B2",
+   "description": "The order of objects in the middle of the sentence: nouns dative before accusative, pronouns accusative before dative, pronouns before nouns: Ich gebe dem Kunden die Rechnung / Ich gebe sie ihm.",
+   "rank": 34,
+   "fn": "style"
+  },
+  {
+   "id": "nominalisierung-praepositionen",
+   "name": "Nominalisierung mit Präpositionen (wegen, trotz, bei)",
+   "category": "other",
+   "level": "B2",
+   "description": "Turning a clause into a prepositional phrase and back: weil es streikt → wegen des Streiks, wenn es regnet → bei Regen, um die Umwelt zu schützen → zum Schutz der Umwelt.",
+   "rank": 35,
+   "fn": "style"
+  }
+ ],
+ "items": [
+  {
+   "id": "indem-dadurch-dass.01",
+   "concept": "indem-dadurch-dass",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with the connector that says how (the means).",
+   "prompt": "Viele Leute sparen Zeit, ___ sie ihre Termine online buchen.",
+   "answer": [
+    "indem"
+   ],
+   "note": "How? → indem + verb last.",
+   "strict_case": false,
+   "near": [
+    [
+     "damit",
+     "damit gives a purpose, not the means"
+    ],
+    [
+     "dadurch",
+     "dadurch needs „, dass“ after it"
+    ],
+    [
+     "durch",
+     "durch is a preposition, not a connector"
+    ]
+   ]
+  },
+  {
+   "id": "indem-dadurch-dass.02",
+   "concept": "indem-dadurch-dass",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "Wir haben die Kosten ___ gesenkt, dass wir weniger Papier verbrauchen.",
+   "answer": [
+    "dadurch",
+    "damit"
+   ],
+   "note": "dadurch (or damit) in the main clause announces the dass-clause.",
+   "strict_case": false,
+   "near": [
+    [
+     "durch",
+     "„durch, dass“ does not exist: dadurch"
+    ],
+    [
+     "indem",
+     "indem cannot be followed by „, dass“"
+    ],
+    [
+     "davon",
+     "the means is dadurch"
+    ]
+   ]
+  },
+  {
+   "id": "indem-dadurch-dass.03",
+   "concept": "indem-dadurch-dass",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with the word in brackets. Keep the order.",
+   "prompt": "Wir sparen Energie. Wir drehen nachts die Heizung herunter. (indem)",
+   "answer": [
+    "Wir sparen Energie, indem wir nachts die Heizung herunterdrehen.",
+    "Wir sparen Energie, indem wir die Heizung nachts herunterdrehen."
+   ],
+   "note": "indem + verb last; the separable verb stays one word.",
+   "strict_case": false,
+   "near": [
+    [
+     "Wir sparen Energie, indem wir drehen nachts die Heizung herunter.",
+     "indem sends the verb to the end"
+    ],
+    [
+     "Wir sparen Energie, indem wir nachts die Heizung herunter drehen.",
+     "herunterdrehen is one word at the end"
+    ],
+    [
+     "Wir sparen Energie, damit wir nachts die Heizung herunterdrehen.",
+     "damit gives a purpose, not the means"
+    ]
+   ]
+  },
+  {
+   "id": "indem-dadurch-dass.04",
+   "concept": "indem-dadurch-dass",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with „dadurch, dass“. Put „dadurch“ in the first sentence. Keep the tenses.",
+   "prompt": "Er hat sein Deutsch verbessert. Er hat jeden Tag Podcasts gehört.",
+   "answer": [
+    "Er hat sein Deutsch dadurch verbessert, dass er jeden Tag Podcasts gehört hat.",
+    "Er hat dadurch sein Deutsch verbessert, dass er jeden Tag Podcasts gehört hat."
+   ],
+   "note": "dadurch in the Mittelfeld of the main clause, then „, dass“ + verb last.",
+   "strict_case": false,
+   "near": [
+    [
+     "Er hat sein Deutsch durch verbessert, dass er jeden Tag Podcasts gehört hat.",
+     "durch alone cannot announce a clause"
+    ],
+    [
+     "Er hat sein Deutsch dadurch verbessert, dass er hat jeden Tag Podcasts gehört.",
+     "in the dass-clause the verb goes last"
+    ],
+    [
+     "Er hat sein Deutsch dadurch verbessert, indem er jeden Tag Podcasts gehört hat.",
+     "dadurch goes with dass, not with indem"
+    ]
+   ]
+  },
+  {
+   "id": "indem-dadurch-dass.05",
+   "concept": "indem-dadurch-dass",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Answer the question with „dadurch, dass“ and the words in brackets. Start with „Man spart Wasser“.",
+   "prompt": "Wie spart man Wasser? (kürzer duschen)",
+   "answer": [
+    "Man spart Wasser dadurch, dass man kürzer duscht."
+   ],
+   "note": "dadurch, dass + verb last answers „Wie?“.",
+   "strict_case": false,
+   "near": [
+    [
+     "Man spart Wasser durch, dass man kürzer duscht.",
+     "it is dadurch, not durch"
+    ],
+    [
+     "Man spart Wasser dadurch, dass man duscht kürzer.",
+     "the verb goes last"
+    ],
+    [
+     "Man spart Wasser dadurch, indem man kürzer duscht.",
+     "dadurch goes with dass"
+    ]
+   ]
+  },
+  {
+   "id": "indem-dadurch-dass.06",
+   "concept": "indem-dadurch-dass",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „dadurch, dass“. Keep the tenses.",
+   "prompt": "Sie hat die Prüfung bestanden, indem sie jeden Tag geübt hat.",
+   "answer": [
+    "Sie hat die Prüfung dadurch bestanden, dass sie jeden Tag geübt hat.",
+    "Sie hat dadurch die Prüfung bestanden, dass sie jeden Tag geübt hat.",
+    "Dadurch, dass sie jeden Tag geübt hat, hat sie die Prüfung bestanden."
+   ],
+   "note": "indem → dadurch (main clause) + dass.",
+   "strict_case": false,
+   "near": [
+    [
+     "Sie hat die Prüfung bestanden, durch dass sie jeden Tag geübt hat.",
+     "„durch dass“ does not exist"
+    ],
+    [
+     "Sie hat die Prüfung dadurch bestanden, dass sie hat jeden Tag geübt.",
+     "the verb goes last in the dass-clause"
+    ],
+    [
+     "Sie hat die Prüfung dadurch bestanden, indem sie jeden Tag geübt hat.",
+     "dadurch goes with dass, not with indem"
+    ]
+   ]
+  },
+  {
+   "id": "indem-dadurch-dass.07",
+   "concept": "indem-dadurch-dass",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „indem“.",
+   "prompt": "Man vermeidet Fehler dadurch, dass man den Text zweimal liest.",
+   "answer": [
+    "Man vermeidet Fehler, indem man den Text zweimal liest.",
+    "Indem man den Text zweimal liest, vermeidet man Fehler."
+   ],
+   "note": "With indem the main clause has no dadurch.",
+   "strict_case": false,
+   "near": [
+    [
+     "Man vermeidet Fehler dadurch, indem man den Text zweimal liest.",
+     "drop dadurch with indem"
+    ],
+    [
+     "Man vermeidet Fehler, indem man liest den Text zweimal.",
+     "indem sends the verb to the end"
+    ],
+    [
+     "Man vermeidet Fehler, indem man den Text zweimal lesen.",
+     "the verb agrees with man: liest"
+    ]
+   ]
+  },
+  {
+   "id": "indem-dadurch-dass.08",
+   "concept": "indem-dadurch-dass",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "Der Unfall ist ___ entstanden, dass der Fahrer zu schnell gefahren ist.",
+   "answer": [
+    "dadurch"
+   ],
+   "note": "A cause, not a person's method: dadurch, dass (indem does not fit).",
+   "strict_case": false,
+   "near": [
+    [
+     "indem",
+     "indem cannot be followed by „, dass“"
+    ],
+    [
+     "durch",
+     "it is dadurch, not durch"
+    ],
+    [
+     "deshalb",
+     "deshalb cannot announce a dass-clause"
+    ]
+   ]
+  },
+  {
+   "id": "indem-dadurch-dass.09",
+   "concept": "indem-dadurch-dass",
+   "level": "B2",
+   "kind": "order",
+   "task": "Put the words in order. Start with „Indem man regelmäßig lüftet,“.",
+   "prompt": "man / vermeidet / Schimmel",
+   "answer": [
+    "Indem man regelmäßig lüftet, vermeidet man Schimmel.",
+    "vermeidet man Schimmel"
+   ],
+   "note": "After the indem-clause the main verb comes first.",
+   "strict_case": false,
+   "near": [
+    [
+     "Indem man regelmäßig lüftet, man vermeidet Schimmel.",
+     "after the clause the verb comes first"
+    ],
+    [
+     "Indem man regelmäßig lüftet, Schimmel vermeidet man.",
+     "the clause is position 1; the verb follows it"
+    ]
+   ]
+  },
+  {
+   "id": "indem-dadurch-dass.10",
+   "concept": "indem-dadurch-dass",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German. Use „indem“.",
+   "prompt": "We save money by cooking at home.",
+   "answer": [
+    "Wir sparen Geld, indem wir zu Hause kochen.",
+    "Wir sparen Geld, indem wir zuhause kochen.",
+    "Wir sparen Geld, indem wir daheim kochen.",
+    "Indem wir zu Hause kochen, sparen wir Geld.",
+    "Indem wir zuhause kochen, sparen wir Geld.",
+    "Indem wir daheim kochen, sparen wir Geld."
+   ],
+   "note": "by + -ing → indem + verb last.",
+   "strict_case": false,
+   "near": [
+    [
+     "Wir sparen Geld, indem wir kochen zu Hause.",
+     "indem sends the verb to the end"
+    ],
+    [
+     "Wir sparen Geld durch wir zu Hause kochen.",
+     "durch is a preposition; use indem"
+    ],
+    [
+     "Wir sparen Geld, damit wir zu Hause kochen.",
+     "damit gives a purpose"
+    ]
+   ]
+  },
+  {
+   "id": "indem-dadurch-dass.11",
+   "concept": "indem-dadurch-dass",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „indem“. Start with „Er ist fit geblieben“.",
+   "prompt": "Durch regelmäßiges Training ist er fit geblieben.",
+   "answer": [
+    "Er ist fit geblieben, indem er regelmäßig trainiert hat.",
+    "Er ist fit geblieben, indem er regelmäßig trainierte."
+   ],
+   "note": "durch + noun → indem + verb.",
+   "strict_case": false,
+   "near": [
+    [
+     "Er ist fit geblieben, indem er hat regelmäßig trainiert.",
+     "the conjugated verb goes last"
+    ],
+    [
+     "Er ist fit geblieben, durch er regelmäßig trainiert hat.",
+     "durch is a preposition; use indem"
+    ],
+    [
+     "Er ist fit geblieben, indem regelmäßig trainiert.",
+     "the indem-clause needs its own subject"
+    ]
+   ]
+  },
+  {
+   "id": "indem-dadurch-dass.12",
+   "concept": "indem-dadurch-dass",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with „dadurch, dass“. Start with „Dadurch, dass“.",
+   "prompt": "Die Stadt baut mehr Radwege. Sie reduziert den Verkehr.",
+   "answer": [
+    "Dadurch, dass die Stadt mehr Radwege baut, reduziert sie den Verkehr.",
+    "Dadurch, dass sie mehr Radwege baut, reduziert die Stadt den Verkehr."
+   ],
+   "note": "Dadurch, dass … is position 1; then verb, then subject.",
+   "strict_case": false,
+   "near": [
+    [
+     "Dadurch, dass die Stadt mehr Radwege baut, sie reduziert den Verkehr.",
+     "after the clause the verb comes first"
+    ],
+    [
+     "Durch, dass die Stadt mehr Radwege baut, reduziert sie den Verkehr.",
+     "„durch, dass“ does not exist"
+    ],
+    [
+     "Dadurch, dass die Stadt baut mehr Radwege, reduziert sie den Verkehr.",
+     "the verb goes last in the dass-clause"
+    ]
+   ]
+  },
+  {
+   "id": "ohne-statt-zu-dass.01",
+   "concept": "ohne-statt-zu-dass",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with the words in brackets. Keep the order.",
+   "prompt": "Er ist gegangen. Er hat sich nicht verabschiedet. (ohne … zu)",
+   "answer": [
+    "Er ist gegangen, ohne sich zu verabschieden.",
+    "Er ist gegangen, ohne sich verabschiedet zu haben."
+   ],
+   "note": "Same subject: ohne … zu + infinitive; nicht disappears.",
+   "strict_case": false,
+   "near": [
+    [
+     "Er ist gegangen, ohne sich nicht zu verabschieden.",
+     "ohne already negates: drop nicht"
+    ],
+    [
+     "Er ist gegangen, ohne zu sich verabschieden.",
+     "zu goes right before the infinitive"
+    ],
+    [
+     "Er ist gegangen, ohne er sich verabschiedet hat.",
+     "ohne needs zu + infinitive or „dass“"
+    ]
+   ]
+  },
+  {
+   "id": "ohne-statt-zu-dass.02",
+   "concept": "ohne-statt-zu-dass",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with the words in brackets. Keep the order.",
+   "prompt": "Sie sieht fern. Sie lernt nicht für die Prüfung. (statt … zu)",
+   "answer": [
+    "Sie sieht fern, statt für die Prüfung zu lernen.",
+    "Sie sieht fern, anstatt für die Prüfung zu lernen."
+   ],
+   "note": "Same subject: (an)statt … zu + infinitive at the end.",
+   "strict_case": false,
+   "near": [
+    [
+     "Sie sieht fern, statt für die Prüfung nicht zu lernen.",
+     "statt already says it does not happen"
+    ],
+    [
+     "Sie sieht fern, statt zu lernen für die Prüfung.",
+     "zu + infinitive goes last"
+    ],
+    [
+     "Sie sieht fern, statt sie für die Prüfung lernt.",
+     "with a subject you need „statt dass“"
+    ]
+   ]
+  },
+  {
+   "id": "ohne-statt-zu-dass.03",
+   "concept": "ohne-statt-zu-dass",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Er hat die Wohnung gemietet, ohne sie vorher ___. (besichtigen)",
+   "answer": [
+    "zu besichtigen",
+    "besichtigt zu haben"
+   ],
+   "note": "ohne … zu + infinitive (or the past form: besichtigt zu haben).",
+   "strict_case": false,
+   "near": [
+    [
+     "besichtigen",
+     "ohne needs zu before the infinitive"
+    ],
+    [
+     "zu besichtigt",
+     "zu + infinitive, not the participle"
+    ],
+    [
+     "besichtigen zu",
+     "zu comes before the infinitive"
+    ]
+   ]
+  },
+  {
+   "id": "ohne-statt-zu-dass.04",
+   "concept": "ohne-statt-zu-dass",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Sie ist losgefahren, ohne vorher ___. (anrufen)",
+   "answer": [
+    "anzurufen",
+    "angerufen zu haben"
+   ],
+   "note": "Separable verb: zu goes inside (anzurufen).",
+   "strict_case": false,
+   "near": [
+    [
+     "zu anrufen",
+     "with a separable verb zu goes inside"
+    ],
+    [
+     "anrufen",
+     "ohne needs zu"
+    ],
+    [
+     "an zu rufen",
+     "anzurufen is one word"
+    ]
+   ]
+  },
+  {
+   "id": "ohne-statt-zu-dass.05",
+   "concept": "ohne-statt-zu-dass",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with „zu“ or „dass“.",
+   "prompt": "Er hat das Fahrrad repariert, ohne ___ ihm jemand geholfen hat.",
+   "answer": [
+    "dass"
+   ],
+   "note": "A new subject (jemand) → ohne dass + verb last.",
+   "strict_case": false,
+   "near": [
+    [
+     "zu",
+     "zu needs an infinitive; here a new subject follows"
+    ],
+    [
+     "das",
+     "the conjunction is dass"
+    ]
+   ]
+  },
+  {
+   "id": "ohne-statt-zu-dass.06",
+   "concept": "ohne-statt-zu-dass",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with the words in brackets. Keep the order.",
+   "prompt": "Er hat das Büro verlassen. Niemand hat es bemerkt. (ohne dass)",
+   "answer": [
+    "Er hat das Büro verlassen, ohne dass es jemand bemerkt hat.",
+    "Er hat das Büro verlassen, ohne dass jemand es bemerkt hat."
+   ],
+   "note": "ohne dass already negates: niemand → jemand.",
+   "strict_case": false,
+   "near": [
+    [
+     "Er hat das Büro verlassen, ohne dass es niemand bemerkt hat.",
+     "ohne dass + niemand is a double negative"
+    ],
+    [
+     "Er hat das Büro verlassen, ohne dass es jemand hat bemerkt.",
+     "the conjugated verb goes last"
+    ],
+    [
+     "Er hat das Büro verlassen, ohne es jemand zu bemerken.",
+     "a different subject needs „ohne dass“"
+    ]
+   ]
+  },
+  {
+   "id": "ohne-statt-zu-dass.07",
+   "concept": "ohne-statt-zu-dass",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with the words in brackets. Keep the order.",
+   "prompt": "Es wird nur diskutiert. Die Politik handelt nicht. (statt dass)",
+   "answer": [
+    "Es wird nur diskutiert, statt dass die Politik handelt.",
+    "Es wird nur diskutiert, anstatt dass die Politik handelt."
+   ],
+   "note": "Different subject: (an)statt dass + verb last, without nicht.",
+   "strict_case": false,
+   "near": [
+    [
+     "Es wird nur diskutiert, statt dass die Politik nicht handelt.",
+     "statt dass already negates: drop nicht"
+    ],
+    [
+     "Es wird nur diskutiert, statt dass die Politik handelt nicht.",
+     "the verb goes last"
+    ],
+    [
+     "Es wird nur diskutiert, statt die Politik zu handeln.",
+     "a different subject needs „statt dass“"
+    ]
+   ]
+  },
+  {
+   "id": "ohne-statt-zu-dass.08",
+   "concept": "ohne-statt-zu-dass",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „ohne … zu“.",
+   "prompt": "Er hat den Raum verlassen, ohne dass er etwas gesagt hat.",
+   "answer": [
+    "Er hat den Raum verlassen, ohne etwas zu sagen.",
+    "Er hat den Raum verlassen, ohne etwas gesagt zu haben."
+   ],
+   "note": "Same subject: ohne … zu is the normal form.",
+   "strict_case": false,
+   "near": [
+    [
+     "Er hat den Raum verlassen, ohne zu sagen etwas.",
+     "zu + infinitive goes last"
+    ],
+    [
+     "Er hat den Raum verlassen, ohne zu etwas sagen.",
+     "zu goes right before the infinitive"
+    ],
+    [
+     "Er hat den Raum verlassen, ohne nichts zu sagen.",
+     "ohne already negates: etwas"
+    ]
+   ]
+  },
+  {
+   "id": "ohne-statt-zu-dass.09",
+   "concept": "ohne-statt-zu-dass",
+   "level": "B2",
+   "kind": "order",
+   "task": "Put the words in order. Start with „Statt mit dem Auto zu fahren,“.",
+   "prompt": "nehme / ich / das Fahrrad",
+   "answer": [
+    "Statt mit dem Auto zu fahren, nehme ich das Fahrrad.",
+    "nehme ich das Fahrrad"
+   ],
+   "note": "The statt-clause is position 1; then the verb.",
+   "strict_case": false,
+   "near": [
+    [
+     "Statt mit dem Auto zu fahren, ich nehme das Fahrrad.",
+     "after the clause the verb comes first"
+    ],
+    [
+     "Statt mit dem Auto zu fahren, das Fahrrad nehme ich.",
+     "the verb follows the clause directly"
+    ]
+   ]
+  },
+  {
+   "id": "ohne-statt-zu-dass.10",
+   "concept": "ohne-statt-zu-dass",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German. Use „gehen“ in the Perfekt and „bezahlen“.",
+   "prompt": "He left without paying.",
+   "answer": [
+    "Er ist gegangen, ohne zu bezahlen.",
+    "Er ist gegangen, ohne bezahlt zu haben."
+   ],
+   "note": "without + -ing → ohne zu + infinitive.",
+   "strict_case": false,
+   "near": [
+    [
+     "Er ist gegangen, ohne bezahlen.",
+     "ohne needs zu"
+    ],
+    [
+     "Er hat gegangen, ohne zu bezahlen.",
+     "gehen takes sein"
+    ],
+    [
+     "Er ist gegangen, ohne zu bezahlt.",
+     "zu + infinitive"
+    ]
+   ]
+  },
+  {
+   "id": "ohne-statt-zu-dass.11",
+   "concept": "ohne-statt-zu-dass",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with the words in brackets. Keep the order.",
+   "prompt": "Die Preise sind gestiegen. Die Kunden wurden nicht informiert. (ohne dass)",
+   "answer": [
+    "Die Preise sind gestiegen, ohne dass die Kunden informiert wurden.",
+    "Die Preise sind gestiegen, ohne dass die Kunden informiert worden sind."
+   ],
+   "note": "Different subject: ohne dass; no nicht after it.",
+   "strict_case": false,
+   "near": [
+    [
+     "Die Preise sind gestiegen, ohne dass die Kunden nicht informiert wurden.",
+     "ohne dass already negates"
+    ],
+    [
+     "Die Preise sind gestiegen, ohne die Kunden zu informieren.",
+     "that would make the prices the ones who inform"
+    ],
+    [
+     "Die Preise sind gestiegen, ohne dass die Kunden wurden informiert.",
+     "the conjugated verb goes last"
+    ]
+   ]
+  },
+  {
+   "id": "ohne-statt-zu-dass.12",
+   "concept": "ohne-statt-zu-dass",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with the words in brackets. Start with „Statt“.",
+   "prompt": "Wir reden nur. Wir sollten handeln. (statt … zu)",
+   "answer": [
+    "Statt nur zu reden, sollten wir handeln.",
+    "Statt zu reden, sollten wir handeln."
+   ],
+   "note": "The infinitive clause is position 1; then the verb.",
+   "strict_case": false,
+   "near": [
+    [
+     "Statt nur zu reden, wir sollten handeln.",
+     "after the clause the verb comes first"
+    ],
+    [
+     "Statt nur reden, sollten wir handeln.",
+     "statt needs zu"
+    ],
+    [
+     "Statt dass wir nur reden, wir sollten handeln.",
+     "after the clause the verb comes first"
+    ]
+   ]
+  },
+  {
+   "id": "sodass-so-dass.01",
+   "concept": "sodass-so-dass",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with „sodass“, „damit“ or „deshalb“.",
+   "prompt": "Der Zug hatte Verspätung, ___ ich den Anschluss verpasst habe.",
+   "answer": [
+    "sodass",
+    "so dass"
+   ],
+   "note": "The clause gives the result: sodass (also so dass).",
+   "strict_case": false,
+   "near": [
+    [
+     "damit",
+     "damit gives a purpose, not a result"
+    ],
+    [
+     "dass",
+     "dass alone needs „so“ earlier in the sentence"
+    ],
+    [
+     "deshalb",
+     "deshalb needs the verb second"
+    ]
+   ]
+  },
+  {
+   "id": "sodass-so-dass.02",
+   "concept": "sodass-so-dass",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "Der Vortrag war ___ langweilig, dass viele eingeschlafen sind.",
+   "answer": [
+    "so",
+    "derart",
+    "dermaßen"
+   ],
+   "note": "so + adjective …, dass.",
+   "strict_case": false,
+   "near": [
+    [
+     "sodass",
+     "sodass does not go before an adjective"
+    ],
+    [
+     "zu",
+     "zu langweilig … dass is wrong; so … dass"
+    ],
+    [
+     "sehr",
+     "sehr cannot be followed by „dass“"
+    ]
+   ]
+  },
+  {
+   "id": "sodass-so-dass.03",
+   "concept": "sodass-so-dass",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with the word in brackets. Keep the order.",
+   "prompt": "Es hat die ganze Nacht geschneit. Die Straßen waren am Morgen gesperrt. (sodass)",
+   "answer": [
+    "Es hat die ganze Nacht geschneit, sodass die Straßen am Morgen gesperrt waren.",
+    "Es hat die ganze Nacht geschneit, so dass die Straßen am Morgen gesperrt waren."
+   ],
+   "note": "Comma, sodass, verb last.",
+   "strict_case": false,
+   "near": [
+    [
+     "Es hat die ganze Nacht geschneit, sodass die Straßen waren am Morgen gesperrt.",
+     "sodass sends the verb to the end"
+    ],
+    [
+     "Es hat die ganze Nacht geschneit, damit die Straßen am Morgen gesperrt waren.",
+     "damit gives a purpose"
+    ]
+   ]
+  },
+  {
+   "id": "sodass-so-dass.04",
+   "concept": "sodass-so-dass",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "Es war so heiß, ___ wir nicht schlafen konnten.",
+   "answer": [
+    "dass"
+   ],
+   "note": "so … earlier in the sentence → only dass here.",
+   "strict_case": false,
+   "near": [
+    [
+     "sodass",
+     "so is already there: so heiß, dass"
+    ],
+    [
+     "das",
+     "the conjunction is dass"
+    ],
+    [
+     "damit",
+     "a result, not a purpose"
+    ]
+   ]
+  },
+  {
+   "id": "sodass-so-dass.05",
+   "concept": "sodass-so-dass",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with „so …, dass“. Put „so“ where „sehr“ is.",
+   "prompt": "Die Wohnung war sehr teuer. Wir konnten sie nicht mieten.",
+   "answer": [
+    "Die Wohnung war so teuer, dass wir sie nicht mieten konnten."
+   ],
+   "note": "so + adjective in the main clause, dass + verb last.",
+   "strict_case": false,
+   "near": [
+    [
+     "Die Wohnung war sehr teuer, dass wir sie nicht mieten konnten.",
+     "dass needs „so“ before the adjective"
+    ],
+    [
+     "Die Wohnung war so teuer, dass wir konnten sie nicht mieten.",
+     "the verb goes last"
+    ],
+    [
+     "Die Wohnung war so teuer, sodass wir sie nicht mieten konnten.",
+     "so is already there: dass alone"
+    ]
+   ]
+  },
+  {
+   "id": "sodass-so-dass.06",
+   "concept": "sodass-so-dass",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as one sentence with „sodass“.",
+   "prompt": "Mein Handy war leer. Deshalb konnte ich dich nicht anrufen.",
+   "answer": [
+    "Mein Handy war leer, sodass ich dich nicht anrufen konnte.",
+    "Mein Handy war leer, so dass ich dich nicht anrufen konnte."
+   ],
+   "note": "deshalb (verb second) → sodass (verb last).",
+   "strict_case": false,
+   "near": [
+    [
+     "Mein Handy war leer, sodass ich konnte dich nicht anrufen.",
+     "sodass sends the verb to the end"
+    ],
+    [
+     "Mein Handy war leer, sodass deshalb ich dich nicht anrufen konnte.",
+     "sodass replaces deshalb"
+    ],
+    [
+     "Mein Handy war leer, damit ich dich nicht anrufen konnte.",
+     "damit gives a purpose"
+    ]
+   ]
+  },
+  {
+   "id": "sodass-so-dass.07",
+   "concept": "sodass-so-dass",
+   "level": "B2",
+   "kind": "order",
+   "task": "Put the words in order. Start with „Der Raum war so voll,“.",
+   "prompt": "dass / mussten / wir / stehen",
+   "answer": [
+    "Der Raum war so voll, dass wir stehen mussten.",
+    "dass wir stehen mussten"
+   ],
+   "note": "dass + verb last; the modal comes after the infinitive.",
+   "strict_case": false,
+   "near": [
+    [
+     "Der Raum war so voll, dass wir mussten stehen.",
+     "the modal goes last"
+    ],
+    [
+     "Der Raum war so voll, dass mussten wir stehen.",
+     "dass + subject, verb last"
+    ]
+   ]
+  },
+  {
+   "id": "sodass-so-dass.08",
+   "concept": "sodass-so-dass",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as one sentence with „so …, dass“.",
+   "prompt": "Er sprach sehr leise. Niemand verstand ihn.",
+   "answer": [
+    "Er sprach so leise, dass ihn niemand verstand.",
+    "Er sprach so leise, dass niemand ihn verstand."
+   ],
+   "note": "sehr → so; dass + verb last.",
+   "strict_case": false,
+   "near": [
+    [
+     "Er sprach sehr leise, dass niemand ihn verstand.",
+     "dass needs „so“ before the adverb"
+    ],
+    [
+     "Er sprach so leise, dass niemand verstand ihn.",
+     "the verb goes last"
+    ],
+    [
+     "Er sprach so leise, sodass niemand ihn verstand.",
+     "so is already there: dass alone"
+    ]
+   ]
+  },
+  {
+   "id": "sodass-so-dass.09",
+   "concept": "sodass-so-dass",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German.",
+   "prompt": "It was so loud that I couldn't sleep.",
+   "answer": [
+    "Es war so laut, dass ich nicht schlafen konnte.",
+    "Es war so laut, dass ich nicht einschlafen konnte."
+   ],
+   "note": "so + adjective, dass + modal last.",
+   "strict_case": false,
+   "near": [
+    [
+     "Es war so laut, dass ich konnte nicht schlafen.",
+     "the modal goes last"
+    ],
+    [
+     "Es war so laut, sodass ich nicht schlafen konnte.",
+     "so is already there: dass alone"
+    ],
+    [
+     "Es war sehr laut, dass ich nicht schlafen konnte.",
+     "so … dass, not sehr … dass"
+    ]
+   ]
+  },
+  {
+   "id": "sodass-so-dass.10",
+   "concept": "sodass-so-dass",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with two words.",
+   "prompt": "Es kamen ___ Gäste, dass die Stühle nicht reichten.",
+   "answer": [
+    "so viele",
+    "derart viele",
+    "dermaßen viele"
+   ],
+   "note": "so viele + plural noun …, dass.",
+   "strict_case": false,
+   "near": [
+    [
+     "zu viele",
+     "zu viele cannot be followed by „dass“"
+    ],
+    [
+     "sehr viele",
+     "sehr viele cannot be followed by „dass“"
+    ],
+    [
+     "sodass viele",
+     "sodass does not go inside the main clause"
+    ]
+   ]
+  },
+  {
+   "id": "sodass-so-dass.11",
+   "concept": "sodass-so-dass",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as one sentence with „so …, dass“.",
+   "prompt": "Sie hat sehr schnell gesprochen. Ich konnte nichts mitschreiben.",
+   "answer": [
+    "Sie hat so schnell gesprochen, dass ich nichts mitschreiben konnte."
+   ],
+   "note": "sehr → so; mitschreiben stays one word before the modal.",
+   "strict_case": false,
+   "near": [
+    [
+     "Sie hat so schnell gesprochen, dass ich konnte nichts mitschreiben.",
+     "the modal goes last"
+    ],
+    [
+     "Sie hat so schnell gesprochen, dass ich nichts mit schreiben konnte.",
+     "mitschreiben is one word"
+    ],
+    [
+     "Sie hat sehr schnell gesprochen, dass ich nichts mitschreiben konnte.",
+     "dass needs „so“ before the adverb"
+    ]
+   ]
+  },
+  {
+   "id": "sodass-so-dass.12",
+   "concept": "sodass-so-dass",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "Stell die Pflanze bitte ___, dass sie genug Licht bekommt.",
+   "answer": [
+    "so"
+   ],
+   "note": "so …, dass can also mean „in such a way that“: so stands in the main clause.",
+   "strict_case": false,
+   "near": [
+    [
+     "sodass",
+     "sodass would repeat the dass"
+    ],
+    [
+     "damit",
+     "here „so“ says how to place it; „Stell die Pflanze damit, dass …“ makes no sense"
+    ],
+    [
+     "dort",
+     "dort cannot announce a dass-clause"
+    ]
+   ]
+  },
+  {
+   "id": "waehrend-wohingegen.01",
+   "concept": "waehrend-wohingegen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with one word.",
+   "prompt": "Mein Bruder liebt Sport, ___ ich lieber lese.",
+   "answer": [
+    "während",
+    "wohingegen",
+    "wogegen"
+   ],
+   "note": "Contrast + verb last: während / wohingegen.",
+   "strict_case": false,
+   "near": [
+    [
+     "aber",
+     "aber needs the verb second: aber ich lese lieber"
+    ],
+    [
+     "dagegen",
+     "dagegen needs the verb second"
+    ],
+    [
+     "sondern",
+     "sondern corrects a negative"
+    ]
+   ]
+  },
+  {
+   "id": "waehrend-wohingegen.02",
+   "concept": "waehrend-wohingegen",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with the word in brackets. Keep the order.",
+   "prompt": "In der Stadt sind die Mieten hoch. Auf dem Land sind sie niedrig. (während)",
+   "answer": [
+    "In der Stadt sind die Mieten hoch, während sie auf dem Land niedrig sind."
+   ],
+   "note": "während here = contrast, not time; verb last.",
+   "strict_case": false,
+   "near": [
+    [
+     "In der Stadt sind die Mieten hoch, während sie sind auf dem Land niedrig.",
+     "während sends the verb to the end"
+    ],
+    [
+     "In der Stadt sind die Mieten hoch, während auf dem Land sind sie niedrig.",
+     "während is not followed by verb second"
+    ]
+   ]
+  },
+  {
+   "id": "waehrend-wohingegen.03",
+   "concept": "waehrend-wohingegen",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with the word in brackets. Keep the order.",
+   "prompt": "Früher hat man Briefe geschrieben. Heute schreibt man E-Mails. (wohingegen)",
+   "answer": [
+    "Früher hat man Briefe geschrieben, wohingegen man heute E-Mails schreibt."
+   ],
+   "note": "wohingegen + verb last.",
+   "strict_case": false,
+   "near": [
+    [
+     "Früher hat man Briefe geschrieben, wohingegen heute schreibt man E-Mails.",
+     "wohingegen sends the verb to the end"
+    ],
+    [
+     "Früher hat man Briefe geschrieben, wohingegen man heute E-Mails schreiben.",
+     "the verb agrees with man: schreibt"
+    ]
+   ]
+  },
+  {
+   "id": "waehrend-wohingegen.04",
+   "concept": "waehrend-wohingegen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with „dagegen“, „während“ or „wohingegen“.",
+   "prompt": "Im Norden regnet es viel. Im Süden ___ ist es meist trocken.",
+   "answer": [
+    "dagegen"
+   ],
+   "note": "dagegen is an adverb: the verb stays second.",
+   "strict_case": false,
+   "near": [
+    [
+     "während",
+     "während would send the verb to the end"
+    ],
+    [
+     "wohingegen",
+     "wohingegen would send the verb to the end"
+    ]
+   ]
+  },
+  {
+   "id": "waehrend-wohingegen.05",
+   "concept": "waehrend-wohingegen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Im Gegensatz zu ___ Bruder spricht sie fließend Englisch. (ihr)",
+   "answer": [
+    "ihrem"
+   ],
+   "note": "im Gegensatz zu + dative.",
+   "strict_case": false,
+   "near": [
+    [
+     "ihren",
+     "zu takes the dative: ihrem"
+    ],
+    [
+     "ihres",
+     "zu takes the dative, not the genitive"
+    ],
+    [
+     "ihr",
+     "masculine dative: ihrem"
+    ]
+   ]
+  },
+  {
+   "id": "waehrend-wohingegen.06",
+   "concept": "waehrend-wohingegen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with the preposition.",
+   "prompt": "Im Gegensatz ___ den meisten Kollegen fährt er mit dem Rad zur Arbeit.",
+   "answer": [
+    "zu"
+   ],
+   "note": "im Gegensatz zu + dative.",
+   "strict_case": false,
+   "near": [
+    [
+     "von",
+     "the phrase is „im Gegensatz zu“"
+    ],
+    [
+     "mit",
+     "the phrase is „im Gegensatz zu“"
+    ],
+    [
+     "gegen",
+     "the phrase is „im Gegensatz zu“"
+    ]
+   ]
+  },
+  {
+   "id": "waehrend-wohingegen.07",
+   "concept": "waehrend-wohingegen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as two sentences with „dagegen“. Start the second sentence with „Meine Kollegin“.",
+   "prompt": "Ich arbeite gern im Büro, während meine Kollegin lieber von zu Hause arbeitet.",
+   "answer": [
+    "Ich arbeite gern im Büro. Meine Kollegin dagegen arbeitet lieber von zu Hause.",
+    "Ich arbeite gern im Büro. Meine Kollegin arbeitet dagegen lieber von zu Hause.",
+    "Ich arbeite gern im Büro. Meine Kollegin dagegen arbeitet lieber von zuhause.",
+    "Ich arbeite gern im Büro. Meine Kollegin arbeitet dagegen lieber von zuhause."
+   ],
+   "note": "dagegen right after the subject or after the verb; the verb stays second.",
+   "strict_case": false,
+   "near": [
+    [
+     "Ich arbeite gern im Büro. Meine Kollegin dagegen lieber von zu Hause arbeitet.",
+     "with dagegen the verb stays second"
+    ],
+    [
+     "Ich arbeite gern im Büro. Meine Kollegin während arbeitet lieber von zu Hause.",
+     "während is a conjunction, not an adverb"
+    ]
+   ]
+  },
+  {
+   "id": "waehrend-wohingegen.08",
+   "concept": "waehrend-wohingegen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „im Gegensatz zu“. Start with „Im Gegensatz“.",
+   "prompt": "Während ihre Eltern Zeitung lesen, informiert sie sich online.",
+   "answer": [
+    "Im Gegensatz zu ihren Eltern informiert sie sich online.",
+    "Im Gegensatz zu ihren Eltern, die Zeitung lesen, informiert sie sich online."
+   ],
+   "note": "im Gegensatz zu + dative is position 1; then the verb.",
+   "strict_case": false,
+   "near": [
+    [
+     "Im Gegensatz zu ihre Eltern informiert sie sich online.",
+     "zu takes the dative: ihren Eltern"
+    ],
+    [
+     "Im Gegensatz zu ihren Eltern sie informiert sich online.",
+     "the phrase is position 1; the verb comes next"
+    ],
+    [
+     "Im Gegensatz von ihren Eltern informiert sie sich online.",
+     "the phrase is „im Gegensatz zu“"
+    ]
+   ]
+  },
+  {
+   "id": "waehrend-wohingegen.09",
+   "concept": "waehrend-wohingegen",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German. Use „während“.",
+   "prompt": "While my sister is very tidy, I am rather chaotic.",
+   "answer": [
+    "Während meine Schwester sehr ordentlich ist, bin ich eher chaotisch.",
+    "Ich bin eher chaotisch, während meine Schwester sehr ordentlich ist.",
+    "Meine Schwester ist sehr ordentlich, während ich eher chaotisch bin.",
+    "Während meine Schwester sehr ordentlich ist, bin ich ziemlich chaotisch.",
+    "Ich bin ziemlich chaotisch, während meine Schwester sehr ordentlich ist.",
+    "Meine Schwester ist sehr ordentlich, während ich ziemlich chaotisch bin."
+   ],
+   "note": "während (contrast) + verb last; then the main verb first.",
+   "strict_case": false,
+   "near": [
+    [
+     "Während meine Schwester sehr ordentlich ist, ich bin eher chaotisch.",
+     "after the clause the verb comes first"
+    ],
+    [
+     "Während meine Schwester ist sehr ordentlich, bin ich eher chaotisch.",
+     "während sends the verb to the end"
+    ]
+   ]
+  },
+  {
+   "id": "waehrend-wohingegen.10",
+   "concept": "waehrend-wohingegen",
+   "level": "B2",
+   "kind": "order",
+   "task": "Put the words in order. Start with „Während die Mieten in der Stadt steigen,“.",
+   "prompt": "sie / sinken / auf dem Land",
+   "answer": [
+    "Während die Mieten in der Stadt steigen, sinken sie auf dem Land.",
+    "sinken sie auf dem Land"
+   ],
+   "note": "After the während-clause the main verb comes first.",
+   "strict_case": false,
+   "near": [
+    [
+     "Während die Mieten in der Stadt steigen, sie sinken auf dem Land.",
+     "after the clause the verb comes first"
+    ],
+    [
+     "Während die Mieten in der Stadt steigen, auf dem Land sinken sie.",
+     "the clause already fills position 1"
+    ]
+   ]
+  },
+  {
+   "id": "waehrend-wohingegen.11",
+   "concept": "waehrend-wohingegen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with one word.",
+   "prompt": "Der erste Bewerber war sehr erfahren, ___ der zweite kaum Erfahrung hatte.",
+   "answer": [
+    "während",
+    "wohingegen",
+    "wogegen"
+   ],
+   "note": "Verb last (hatte) → a conjunction: während / wohingegen.",
+   "strict_case": false,
+   "near": [
+    [
+     "dagegen",
+     "dagegen needs the verb second"
+    ],
+    [
+     "hingegen",
+     "hingegen needs the verb second"
+    ],
+    [
+     "sondern",
+     "sondern corrects a negative"
+    ]
+   ]
+  },
+  {
+   "id": "waehrend-wohingegen.12",
+   "concept": "waehrend-wohingegen",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with „während“. Start with „Während“.",
+   "prompt": "Junge Leute kaufen viel online. Ältere Menschen kaufen lieber im Geschäft ein.",
+   "answer": [
+    "Während junge Leute viel online kaufen, kaufen ältere Menschen lieber im Geschäft ein."
+   ],
+   "note": "Clause first, then verb, subject; the separable prefix stays at the end.",
+   "strict_case": false,
+   "near": [
+    [
+     "Während junge Leute viel online kaufen, ältere Menschen kaufen lieber im Geschäft ein.",
+     "after the clause the verb comes first"
+    ],
+    [
+     "Während junge Leute kaufen viel online, kaufen ältere Menschen lieber im Geschäft ein.",
+     "während sends the verb to the end"
+    ],
+    [
+     "Während junge Leute viel online kaufen, einkaufen ältere Menschen lieber im Geschäft.",
+     "in a main clause the prefix goes to the end"
+    ]
+   ]
+  },
+  {
+   "id": "konzessiv-selbst-wenn.01",
+   "concept": "konzessiv-selbst-wenn",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with two words.",
+   "prompt": "___ es morgen regnet, findet das Fest statt.",
+   "answer": [
+    "Auch wenn",
+    "Selbst wenn",
+    "Sogar wenn"
+   ],
+   "note": "auch wenn / selbst wenn = even if; verb last.",
+   "strict_case": false,
+   "near": [
+    [
+     "Wenn auch",
+     "wenn auch is split: Wenn es auch regnet"
+    ],
+    [
+     "Auch dass",
+     "the connector is auch wenn"
+    ],
+    [
+     "Wenn selbst",
+     "selbst goes before wenn: selbst wenn"
+    ]
+   ]
+  },
+  {
+   "id": "konzessiv-selbst-wenn.02",
+   "concept": "konzessiv-selbst-wenn",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Selbst wenn ich mehr Geld ___, würde ich nicht in die Stadt ziehen. (haben)",
+   "answer": [
+    "hätte"
+   ],
+   "note": "Unreal: Konjunktiv II in both parts (hätte … würde).",
+   "strict_case": false,
+   "near": [
+    [
+     "hatte",
+     "unreal → Konjunktiv II: hätte"
+    ],
+    [
+     "habe",
+     "Konjunktiv I is for reported speech"
+    ],
+    [
+     "würde haben",
+     "haben has its own form: hätte"
+    ]
+   ]
+  },
+  {
+   "id": "konzessiv-selbst-wenn.03",
+   "concept": "konzessiv-selbst-wenn",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with „auch wenn“. Start with „Auch wenn“.",
+   "prompt": "Ich habe wenig Zeit. Ich komme trotzdem zu deiner Feier.",
+   "answer": [
+    "Auch wenn ich wenig Zeit habe, komme ich zu deiner Feier.",
+    "Auch wenn ich wenig Zeit habe, komme ich trotzdem zu deiner Feier."
+   ],
+   "note": "Auch wenn-clause first, then the verb; trotzdem may stay.",
+   "strict_case": false,
+   "near": [
+    [
+     "Auch wenn ich habe wenig Zeit, komme ich zu deiner Feier.",
+     "auch wenn sends the verb to the end"
+    ],
+    [
+     "Auch wenn ich wenig Zeit habe, trotzdem komme ich zu deiner Feier.",
+     "the clause fills position 1; trotzdem goes after the verb"
+    ]
+   ]
+  },
+  {
+   "id": "konzessiv-selbst-wenn.04",
+   "concept": "konzessiv-selbst-wenn",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Selbst wenn ich ___, könnte ich nicht früher kommen. (wollen)",
+   "answer": [
+    "wollte"
+   ],
+   "note": "Konjunktiv II of wollen: wollte (same as Präteritum).",
+   "strict_case": false,
+   "near": [
+    [
+     "will",
+     "unreal → Konjunktiv II"
+    ],
+    [
+     "wolle",
+     "Konjunktiv I is for reported speech"
+    ],
+    [
+     "wöllte",
+     "wollen has no umlaut: wollte"
+    ]
+   ]
+  },
+  {
+   "id": "konzessiv-selbst-wenn.05",
+   "concept": "konzessiv-selbst-wenn",
+   "level": "B2",
+   "kind": "order",
+   "task": "Put the words in order. Start with „Selbst wenn wir uns beeilen,“.",
+   "prompt": "wir / schaffen / es / nicht mehr",
+   "answer": [
+    "Selbst wenn wir uns beeilen, schaffen wir es nicht mehr.",
+    "schaffen wir es nicht mehr"
+   ],
+   "note": "After the clause: verb, subject, pronoun, nicht.",
+   "strict_case": false,
+   "near": [
+    [
+     "Selbst wenn wir uns beeilen, schaffen es wir nicht mehr.",
+     "a pronoun subject comes before es"
+    ],
+    [
+     "Selbst wenn wir uns beeilen, schaffen wir nicht mehr es.",
+     "the pronoun es comes before nicht"
+    ]
+   ]
+  },
+  {
+   "id": "konzessiv-selbst-wenn.06",
+   "concept": "konzessiv-selbst-wenn",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „wenn … auch“.",
+   "prompt": "Auch wenn das Gehalt niedrig ist, macht mir die Arbeit Spaß.",
+   "answer": [
+    "Wenn das Gehalt auch niedrig ist, macht mir die Arbeit Spaß."
+   ],
+   "note": "wenn … auch: auch moves into the clause.",
+   "strict_case": false,
+   "near": [
+    [
+     "Wenn das Gehalt ist auch niedrig, macht mir die Arbeit Spaß.",
+     "the verb stays last"
+    ],
+    [
+     "Wenn das Gehalt niedrig auch ist, macht mir die Arbeit Spaß.",
+     "auch goes before the adjective"
+    ],
+    [
+     "Wenn das Gehalt selbst niedrig ist, macht mir die Arbeit Spaß.",
+     "the form is wenn … auch"
+    ]
+   ]
+  },
+  {
+   "id": "konzessiv-selbst-wenn.07",
+   "concept": "konzessiv-selbst-wenn",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with one word so that it means „even if it is difficult“.",
+   "prompt": "Wenn es ___ schwierig ist, gebe ich nicht auf.",
+   "answer": [
+    "auch"
+   ],
+   "note": "wenn … auch = even if / although.",
+   "strict_case": false,
+   "near": [
+    [
+     "selbst",
+     "selbst goes before wenn, not after"
+    ],
+    [
+     "trotzdem",
+     "trotzdem belongs in the main clause"
+    ],
+    [
+     "obwohl",
+     "obwohl is a conjunction; the form is wenn … auch"
+    ]
+   ]
+  },
+  {
+   "id": "konzessiv-selbst-wenn.08",
+   "concept": "konzessiv-selbst-wenn",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Make it unreal: rewrite with Konjunktiv II in both parts.",
+   "prompt": "Auch wenn er Zeit hat, hilft er uns nicht.",
+   "answer": [
+    "Auch wenn er Zeit hätte, würde er uns nicht helfen."
+   ],
+   "note": "hat → hätte; hilft → würde … helfen.",
+   "strict_case": false,
+   "near": [
+    [
+     "Auch wenn er Zeit hatte, würde er uns nicht helfen.",
+     "unreal → hätte, not hatte"
+    ],
+    [
+     "Auch wenn er Zeit würde haben, würde er uns nicht helfen.",
+     "haben has its own form: hätte"
+    ],
+    [
+     "Auch wenn er Zeit hätte, würde er uns nicht geholfen.",
+     "würde + infinitive"
+    ]
+   ]
+  },
+  {
+   "id": "konzessiv-selbst-wenn.09",
+   "concept": "konzessiv-selbst-wenn",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Selbst wenn wir früher losgefahren ___, wären wir zu spät gekommen. (sein)",
+   "answer": [
+    "wären"
+   ],
+   "note": "Past unreal: wäre/hätte + Partizip II.",
+   "strict_case": false,
+   "near": [
+    [
+     "waren",
+     "unreal → Konjunktiv II: wären"
+    ],
+    [
+     "hätten",
+     "losfahren takes sein"
+    ],
+    [
+     "sind",
+     "unreal → Konjunktiv II"
+    ]
+   ]
+  },
+  {
+   "id": "konzessiv-selbst-wenn.10",
+   "concept": "konzessiv-selbst-wenn",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German. Use „selbst wenn“ and the present tense.",
+   "prompt": "Even if it is expensive, I'll buy it.",
+   "answer": [
+    "Selbst wenn es teuer ist, kaufe ich es.",
+    "Ich kaufe es, selbst wenn es teuer ist.",
+    "Selbst wenn es teuer ist, kaufe ich es trotzdem.",
+    "Ich kaufe es trotzdem, selbst wenn es teuer ist.",
+    "Selbst wenn es teuer ist, kaufe ich es mir.",
+    "Ich kaufe es mir, selbst wenn es teuer ist.",
+    "Selbst wenn es teuer ist, kaufe ich es mir trotzdem.",
+    "Ich kaufe es mir trotzdem, selbst wenn es teuer ist."
+   ],
+   "note": "selbst wenn + verb last; then the main verb first.",
+   "strict_case": false,
+   "near": [
+    [
+     "Selbst wenn es ist teuer, kaufe ich es.",
+     "selbst wenn sends the verb to the end"
+    ],
+    [
+     "Selbst wenn es teuer ist, ich es kaufe.",
+     "after the clause the verb comes first"
+    ],
+    [
+     "Selbst ob es teuer ist, kaufe ich es.",
+     "even if = selbst wenn"
+    ]
+   ]
+  },
+  {
+   "id": "konzessiv-selbst-wenn.11",
+   "concept": "konzessiv-selbst-wenn",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with „selbst wenn“. Start with „Selbst wenn“.",
+   "prompt": "Er hätte sich entschuldigt. Ich hätte ihm nicht verziehen.",
+   "answer": [
+    "Selbst wenn er sich entschuldigt hätte, hätte ich ihm nicht verziehen."
+   ],
+   "note": "Past unreal in both parts; hätte last in the clause, first after it.",
+   "strict_case": false,
+   "near": [
+    [
+     "Selbst wenn er sich hätte entschuldigt, hätte ich ihm nicht verziehen.",
+     "hätte goes last in the clause"
+    ],
+    [
+     "Selbst wenn er sich entschuldigt hatte, hätte ich ihm nicht verziehen.",
+     "unreal → hätte"
+    ],
+    [
+     "Selbst wenn er sich entschuldigt hätte, hätte ich ihm nicht verzeiht.",
+     "verzeihen → verziehen"
+    ]
+   ]
+  },
+  {
+   "id": "konzessiv-selbst-wenn.12",
+   "concept": "konzessiv-selbst-wenn",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German. Use „selbst wenn“.",
+   "prompt": "Even if I had known it, I couldn't have helped.",
+   "answer": [
+    "Selbst wenn ich es gewusst hätte, hätte ich nicht helfen können.",
+    "Ich hätte nicht helfen können, selbst wenn ich es gewusst hätte.",
+    "Selbst wenn ich das gewusst hätte, hätte ich nicht helfen können.",
+    "Ich hätte nicht helfen können, selbst wenn ich das gewusst hätte."
+   ],
+   "note": "Past unreal with a modal: hätte … helfen können.",
+   "strict_case": false,
+   "near": [
+    [
+     "Selbst wenn ich es gewusst hätte, hätte ich nicht helfen gekonnt.",
+     "with a modal: helfen können (infinitive)"
+    ],
+    [
+     "Selbst wenn ich es gewusst hätte, könnte ich nicht geholfen haben.",
+     "past unreal: hätte … helfen können"
+    ],
+    [
+     "Selbst wenn ich es gewusst hatte, hätte ich nicht helfen können.",
+     "unreal → hätte"
+    ]
+   ]
+  },
+  {
+   "id": "adjektive-mit-praepositionen.01",
+   "concept": "adjektive-mit-praepositionen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with the preposition.",
+   "prompt": "Die Eltern sind sehr stolz ___ ihre Tochter.",
+   "answer": [
+    "auf"
+   ],
+   "note": "stolz auf + accusative.",
+   "strict_case": false,
+   "near": [
+    [
+     "von",
+     "stolz auf"
+    ],
+    [
+     "über",
+     "stolz auf"
+    ],
+    [
+     "für",
+     "stolz auf"
+    ]
+   ]
+  },
+  {
+   "id": "adjektive-mit-praepositionen.02",
+   "concept": "adjektive-mit-praepositionen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with the preposition.",
+   "prompt": "Bist du ___ deiner neuen Wohnung zufrieden?",
+   "answer": [
+    "mit"
+   ],
+   "note": "zufrieden mit + dative.",
+   "strict_case": false,
+   "near": [
+    [
+     "über",
+     "zufrieden mit"
+    ],
+    [
+     "von",
+     "zufrieden mit"
+    ],
+    [
+     "an",
+     "zufrieden mit"
+    ]
+   ]
+  },
+  {
+   "id": "adjektive-mit-praepositionen.03",
+   "concept": "adjektive-mit-praepositionen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with the preposition.",
+   "prompt": "Sie ist sehr interessiert ___ Politik.",
+   "answer": [
+    "an"
+   ],
+   "note": "interessiert an + dative.",
+   "strict_case": false,
+   "near": [
+    [
+     "für",
+     "interessiert an (but: sich interessieren für)"
+    ],
+    [
+     "in",
+     "interessiert an"
+    ],
+    [
+     "über",
+     "interessiert an"
+    ]
+   ]
+  },
+  {
+   "id": "adjektive-mit-praepositionen.04",
+   "concept": "adjektive-mit-praepositionen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with the preposition.",
+   "prompt": "Die Region ist bekannt ___ ihren guten Wein.",
+   "answer": [
+    "für",
+    "durch"
+   ],
+   "note": "bekannt für + accusative (also: bekannt durch).",
+   "strict_case": false,
+   "near": [
+    [
+     "von",
+     "bekannt für"
+    ],
+    [
+     "wegen",
+     "bekannt für"
+    ],
+    [
+     "an",
+     "bekannt für"
+    ]
+   ]
+  },
+  {
+   "id": "adjektive-mit-praepositionen.05",
+   "concept": "adjektive-mit-praepositionen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with the preposition and the article, or one short form.",
+   "prompt": "Ob wir fahren, ist ___ Wetter abhängig.",
+   "answer": [
+    "vom",
+    "von dem"
+   ],
+   "note": "abhängig von + dative.",
+   "strict_case": false,
+   "near": [
+    [
+     "auf das",
+     "abhängig von"
+    ],
+    [
+     "am",
+     "abhängig von"
+    ],
+    [
+     "von das",
+     "von takes the dative: vom"
+    ]
+   ]
+  },
+  {
+   "id": "adjektive-mit-praepositionen.06",
+   "concept": "adjektive-mit-praepositionen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Die Kinder waren begeistert von ___ Ausflug. (der)",
+   "answer": [
+    "dem"
+   ],
+   "note": "begeistert von + dative.",
+   "strict_case": false,
+   "near": [
+    [
+     "den",
+     "von takes the dative: dem"
+    ],
+    [
+     "der",
+     "masculine dative: dem"
+    ],
+    [
+     "des",
+     "von takes the dative"
+    ]
+   ]
+  },
+  {
+   "id": "adjektive-mit-praepositionen.07",
+   "concept": "adjektive-mit-praepositionen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with the preposition.",
+   "prompt": "Sie ist ein bisschen neidisch ___ den Erfolg ihrer Schwester.",
+   "answer": [
+    "auf"
+   ],
+   "note": "neidisch auf + accusative.",
+   "strict_case": false,
+   "near": [
+    [
+     "über",
+     "neidisch auf"
+    ],
+    [
+     "von",
+     "neidisch auf"
+    ],
+    [
+     "für",
+     "neidisch auf"
+    ]
+   ]
+  },
+  {
+   "id": "adjektive-mit-praepositionen.08",
+   "concept": "adjektive-mit-praepositionen",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences. Use „davon“ in the first one.",
+   "prompt": "Ich bin überzeugt. Das Projekt wird ein Erfolg.",
+   "answer": [
+    "Ich bin davon überzeugt, dass das Projekt ein Erfolg wird.",
+    "Ich bin überzeugt davon, dass das Projekt ein Erfolg wird."
+   ],
+   "note": "überzeugt von → davon, dass + verb last.",
+   "strict_case": false,
+   "near": [
+    [
+     "Ich bin darüber überzeugt, dass das Projekt ein Erfolg wird.",
+     "überzeugt von → davon"
+    ],
+    [
+     "Ich bin davon überzeugt, dass das Projekt wird ein Erfolg.",
+     "the verb goes last"
+    ],
+    [
+     "Ich bin von überzeugt, dass das Projekt ein Erfolg wird.",
+     "before a clause: da(r) + preposition"
+    ]
+   ]
+  },
+  {
+   "id": "adjektive-mit-praepositionen.09",
+   "concept": "adjektive-mit-praepositionen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "Sie ist ___ verantwortlich, dass alle Termine eingehalten werden.",
+   "answer": [
+    "dafür"
+   ],
+   "note": "verantwortlich für → dafür, dass.",
+   "strict_case": false,
+   "near": [
+    [
+     "für",
+     "before a clause: dafür"
+    ],
+    [
+     "davon",
+     "verantwortlich für → dafür"
+    ],
+    [
+     "darüber",
+     "verantwortlich für → dafür"
+    ]
+   ]
+  },
+  {
+   "id": "adjektive-mit-praepositionen.10",
+   "concept": "adjektive-mit-praepositionen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "Wir sind ___ angewiesen, dass die Lieferung pünktlich kommt.",
+   "answer": [
+    "darauf"
+   ],
+   "note": "angewiesen auf → darauf, dass.",
+   "strict_case": false,
+   "near": [
+    [
+     "auf",
+     "before a clause: darauf"
+    ],
+    [
+     "davon",
+     "angewiesen auf → darauf"
+    ],
+    [
+     "dafür",
+     "angewiesen auf → darauf"
+    ]
+   ]
+  },
+  {
+   "id": "adjektive-mit-praepositionen.11",
+   "concept": "adjektive-mit-praepositionen",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German.",
+   "prompt": "I'm proud of you.",
+   "answer": [
+    "Ich bin stolz auf dich.",
+    "Ich bin stolz auf Sie.",
+    "Ich bin stolz auf euch."
+   ],
+   "note": "stolz auf + accusative.",
+   "strict_case": false,
+   "near": [
+    [
+     "Ich bin stolz von dir.",
+     "stolz auf"
+    ],
+    [
+     "Ich bin stolz auf dir.",
+     "auf takes the accusative here: dich"
+    ],
+    [
+     "Ich bin stolz über dich.",
+     "stolz auf"
+    ]
+   ]
+  },
+  {
+   "id": "adjektive-mit-praepositionen.12",
+   "concept": "adjektive-mit-praepositionen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Ask about the part „auf ihr Projekt“.",
+   "prompt": "Sie ist stolz auf ihr Projekt.",
+   "answer": [
+    "Worauf ist sie stolz?"
+   ],
+   "note": "Question about a thing: wo(r) + preposition.",
+   "strict_case": false,
+   "near": [
+    [
+     "Was ist sie stolz?",
+     "keep the preposition: worauf"
+    ],
+    [
+     "Wofür ist sie stolz?",
+     "stolz auf → worauf"
+    ],
+    [
+     "Woauf ist sie stolz?",
+     "before a vowel: wor-"
+    ]
+   ]
+  },
+  {
+   "id": "nomen-mit-praepositionen.01",
+   "concept": "nomen-mit-praepositionen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with the preposition.",
+   "prompt": "Ich habe heute keine Lust ___ einen langen Spaziergang.",
+   "answer": [
+    "auf"
+   ],
+   "note": "Lust auf + accusative.",
+   "strict_case": false,
+   "near": [
+    [
+     "für",
+     "Lust auf"
+    ],
+    [
+     "an",
+     "Lust auf"
+    ],
+    [
+     "zu",
+     "with an accusative article: Lust auf einen …"
+    ]
+   ]
+  },
+  {
+   "id": "nomen-mit-praepositionen.02",
+   "concept": "nomen-mit-praepositionen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with the preposition.",
+   "prompt": "Es gab viel Kritik ___ dem neuen Gesetz.",
+   "answer": [
+    "an"
+   ],
+   "note": "Kritik an + dative.",
+   "strict_case": false,
+   "near": [
+    [
+     "über",
+     "Kritik an"
+    ],
+    [
+     "von",
+     "Kritik an"
+    ],
+    [
+     "auf",
+     "Kritik an"
+    ]
+   ]
+  },
+  {
+   "id": "nomen-mit-praepositionen.03",
+   "concept": "nomen-mit-praepositionen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with the preposition.",
+   "prompt": "Das Wetter hat großen Einfluss ___ unsere Stimmung.",
+   "answer": [
+    "auf"
+   ],
+   "note": "Einfluss auf + accusative.",
+   "strict_case": false,
+   "near": [
+    [
+     "an",
+     "Einfluss auf"
+    ],
+    [
+     "über",
+     "Einfluss auf"
+    ],
+    [
+     "für",
+     "Einfluss auf"
+    ]
+   ]
+  },
+  {
+   "id": "nomen-mit-praepositionen.04",
+   "concept": "nomen-mit-praepositionen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with the preposition.",
+   "prompt": "Was ist der Grund ___ deine Verspätung?",
+   "answer": [
+    "für"
+   ],
+   "note": "Grund für + accusative.",
+   "strict_case": false,
+   "near": [
+    [
+     "von",
+     "Grund für"
+    ],
+    [
+     "über",
+     "Grund für"
+    ],
+    [
+     "wegen",
+     "Grund für"
+    ]
+   ]
+  },
+  {
+   "id": "nomen-mit-praepositionen.05",
+   "concept": "nomen-mit-praepositionen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with the preposition.",
+   "prompt": "Ich habe kein Verständnis ___ solches Verhalten.",
+   "answer": [
+    "für"
+   ],
+   "note": "Verständnis für + accusative.",
+   "strict_case": false,
+   "near": [
+    [
+     "über",
+     "Verständnis für"
+    ],
+    [
+     "von",
+     "Verständnis für"
+    ],
+    [
+     "an",
+     "Verständnis für"
+    ]
+   ]
+  },
+  {
+   "id": "nomen-mit-praepositionen.06",
+   "concept": "nomen-mit-praepositionen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with the preposition.",
+   "prompt": "Ich warte noch auf eine Antwort ___ meine E-Mail.",
+   "answer": [
+    "auf"
+   ],
+   "note": "Antwort auf + accusative (like antworten auf).",
+   "strict_case": false,
+   "near": [
+    [
+     "für",
+     "Antwort auf"
+    ],
+    [
+     "an",
+     "Antwort auf"
+    ],
+    [
+     "zu",
+     "Antwort auf"
+    ]
+   ]
+  },
+  {
+   "id": "nomen-mit-praepositionen.07",
+   "concept": "nomen-mit-praepositionen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with the preposition.",
+   "prompt": "Mein Chef hat meine Bitte ___ mehr Urlaub abgelehnt.",
+   "answer": [
+    "um"
+   ],
+   "note": "Bitte um + accusative (like bitten um).",
+   "strict_case": false,
+   "near": [
+    [
+     "für",
+     "Bitte um"
+    ],
+    [
+     "nach",
+     "Bitte um"
+    ],
+    [
+     "auf",
+     "Bitte um"
+    ]
+   ]
+  },
+  {
+   "id": "nomen-mit-praepositionen.08",
+   "concept": "nomen-mit-praepositionen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with the preposition and the article, or one short form.",
+   "prompt": "Jeder kann einen Beitrag ___ Umweltschutz leisten.",
+   "answer": [
+    "zum",
+    "zu dem"
+   ],
+   "note": "Beitrag zu + dative: zum.",
+   "strict_case": false,
+   "near": [
+    [
+     "am",
+     "Beitrag zu"
+    ],
+    [
+     "zu",
+     "zu + article: zum"
+    ],
+    [
+     "auf den",
+     "Beitrag zu"
+    ]
+   ]
+  },
+  {
+   "id": "nomen-mit-praepositionen.09",
+   "concept": "nomen-mit-praepositionen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Er zeigt großes Interesse an ___ Projekt. (unser)",
+   "answer": [
+    "unserem"
+   ],
+   "note": "Interesse an + dative.",
+   "strict_case": false,
+   "near": [
+    [
+     "unseren",
+     "neuter dative: unserem"
+    ],
+    [
+     "unser",
+     "an takes the dative here: unserem"
+    ],
+    [
+     "unseres",
+     "an takes the dative, not the genitive"
+    ]
+   ]
+  },
+  {
+   "id": "nomen-mit-praepositionen.10",
+   "concept": "nomen-mit-praepositionen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "Es gibt wenig Hoffnung ___, dass die Preise bald sinken.",
+   "answer": [
+    "darauf"
+   ],
+   "note": "Hoffnung auf → darauf, dass.",
+   "strict_case": false,
+   "near": [
+    [
+     "auf",
+     "before a clause: darauf"
+    ],
+    [
+     "davon",
+     "Hoffnung auf → darauf"
+    ],
+    [
+     "dafür",
+     "Hoffnung auf → darauf"
+    ]
+   ]
+  },
+  {
+   "id": "nomen-mit-praepositionen.11",
+   "concept": "nomen-mit-praepositionen",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German. Use „Bedarf an“.",
+   "prompt": "There is a great demand for housing.",
+   "answer": [
+    "Es gibt einen großen Bedarf an Wohnungen.",
+    "Es gibt großen Bedarf an Wohnungen.",
+    "Es gibt einen großen Bedarf an Wohnraum.",
+    "Es gibt großen Bedarf an Wohnraum.",
+    "Es besteht ein großer Bedarf an Wohnungen.",
+    "Es besteht großer Bedarf an Wohnungen.",
+    "Es besteht ein großer Bedarf an Wohnraum.",
+    "Es besteht großer Bedarf an Wohnraum.",
+    "Es gibt einen hohen Bedarf an Wohnungen.",
+    "Es gibt hohen Bedarf an Wohnungen.",
+    "Es gibt einen hohen Bedarf an Wohnraum.",
+    "Es gibt hohen Bedarf an Wohnraum.",
+    "Es besteht ein hoher Bedarf an Wohnungen.",
+    "Es besteht hoher Bedarf an Wohnungen.",
+    "Es besteht ein hoher Bedarf an Wohnraum.",
+    "Es besteht hoher Bedarf an Wohnraum.",
+    "Der Bedarf an Wohnungen ist groß.",
+    "Der Bedarf an Wohnungen ist hoch.",
+    "Der Bedarf an Wohnraum ist groß.",
+    "Der Bedarf an Wohnraum ist hoch."
+   ],
+   "note": "Bedarf an + dative.",
+   "strict_case": false,
+   "near": [
+    [
+     "Es gibt einen großen Bedarf von Wohnungen.",
+     "Bedarf an"
+    ],
+    [
+     "Es gibt einen großen Bedarf nach Wohnungen.",
+     "Bedarf an"
+    ],
+    [
+     "Es gibt einen großen Bedarf an Wohnungen haben.",
+     "es gibt + accusative, no second verb"
+    ]
+   ]
+  },
+  {
+   "id": "nomen-mit-praepositionen.12",
+   "concept": "nomen-mit-praepositionen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Ask about the part „vor der Prüfung“.",
+   "prompt": "Er hat Angst vor der Prüfung.",
+   "answer": [
+    "Wovor hat er Angst?"
+   ],
+   "note": "Question about a thing: wo(r) + preposition.",
+   "strict_case": false,
+   "near": [
+    [
+     "Wovon hat er Angst?",
+     "Angst vor → wovor"
+    ],
+    [
+     "Worvor hat er Angst?",
+     "before a consonant: wo-"
+    ],
+    [
+     "Was hat er Angst?",
+     "keep the preposition: wovor"
+    ]
+   ]
+  },
+  {
+   "id": "adjektiv-als-nomen.01",
+   "concept": "adjektiv-als-nomen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the noun in brackets with the right ending.",
+   "prompt": "Er arbeitet als ___ in einer Behörde. (Angestellte)",
+   "answer": [
+    "Angestellter"
+   ],
+   "note": "No article, masculine nominative: -er (ein Angestellter).",
+   "strict_case": false,
+   "near": [
+    [
+     "Angestellte",
+     "masculine without article: Angestellter"
+    ],
+    [
+     "Angestellten",
+     "nominative without article: Angestellter"
+    ],
+    [
+     "Angestellt",
+     "the noun keeps an adjective ending"
+    ]
+   ]
+  },
+  {
+   "id": "adjektiv-als-nomen.02",
+   "concept": "adjektiv-als-nomen",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German.",
+   "prompt": "two adults and one child",
+   "answer": [
+    "zwei Erwachsene und ein Kind"
+   ],
+   "note": "Plural without article: -e.",
+   "strict_case": false,
+   "near": [
+    [
+     "zwei Erwachsenen und ein Kind",
+     "plural without article: Erwachsene"
+    ],
+    [
+     "zwei Erwachsener und ein Kind",
+     "plural: Erwachsene"
+    ]
+   ]
+  },
+  {
+   "id": "adjektiv-als-nomen.03",
+   "concept": "adjektiv-als-nomen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the noun in brackets with the right ending.",
+   "prompt": "Die neuen ___ beginnen am Montag. (Angestellte)",
+   "answer": [
+    "Angestellten"
+   ],
+   "note": "Plural after die: -en.",
+   "strict_case": false,
+   "near": [
+    [
+     "Angestellte",
+     "plural after die: -en"
+    ],
+    [
+     "Angestellter",
+     "plural after die: -en"
+    ]
+   ]
+  },
+  {
+   "id": "adjektiv-als-nomen.04",
+   "concept": "adjektiv-als-nomen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the noun in brackets with the right ending.",
+   "prompt": "Viele ___ machen im Sommer Urlaub an der Ostsee. (Deutsche)",
+   "answer": [
+    "Deutsche"
+   ],
+   "note": "After viele: -e, like an adjective without article.",
+   "strict_case": false,
+   "near": [
+    [
+     "Deutschen",
+     "after viele: Deutsche"
+    ],
+    [
+     "Deutscher",
+     "plural: Deutsche"
+    ]
+   ]
+  },
+  {
+   "id": "adjektiv-als-nomen.05",
+   "concept": "adjektiv-als-nomen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with a noun made from the adjective. Start with „Ein“.",
+   "prompt": "Ein Mann, der krank ist, wartet im Flur.",
+   "answer": [
+    "Ein Kranker wartet im Flur."
+   ],
+   "note": "ein + masculine nominative: -er.",
+   "strict_case": false,
+   "near": [
+    [
+     "Ein Kranke wartet im Flur.",
+     "after ein, masculine: Kranker"
+    ],
+    [
+     "Ein Kranken wartet im Flur.",
+     "nominative: Kranker"
+    ],
+    [
+     "Ein Krank wartet im Flur.",
+     "the noun keeps an adjective ending"
+    ]
+   ]
+  },
+  {
+   "id": "adjektiv-als-nomen.06",
+   "concept": "adjektiv-als-nomen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the noun in brackets with the right ending.",
+   "prompt": "Für ___ unter 18 Jahren ist der Eintritt frei. (Jugendliche)",
+   "answer": [
+    "Jugendliche"
+   ],
+   "note": "Plural without article: -e.",
+   "strict_case": false,
+   "near": [
+    [
+     "Jugendlichen",
+     "plural without article: Jugendliche"
+    ],
+    [
+     "Jugendlicher",
+     "plural: Jugendliche"
+    ]
+   ]
+  },
+  {
+   "id": "adjektiv-als-nomen.07",
+   "concept": "adjektiv-als-nomen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the noun in brackets with the right ending.",
+   "prompt": "Im Zug habe ich mit einem ___ aus Kanada gesprochen. (Reisende)",
+   "answer": [
+    "Reisenden"
+   ],
+   "note": "Dative after einem: -en.",
+   "strict_case": false,
+   "near": [
+    [
+     "Reisender",
+     "dative after einem: Reisenden"
+    ],
+    [
+     "Reisende",
+     "dative after einem: Reisenden"
+    ],
+    [
+     "Reisendem",
+     "after einem the ending is -en"
+    ]
+   ]
+  },
+  {
+   "id": "adjektiv-als-nomen.08",
+   "concept": "adjektiv-als-nomen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the noun in brackets with the right ending.",
+   "prompt": "Das ist das Büro des ___. (Vorsitzende)",
+   "answer": [
+    "Vorsitzenden"
+   ],
+   "note": "Genitive after des: -en.",
+   "strict_case": false,
+   "near": [
+    [
+     "Vorsitzendes",
+     "genitive after des: -en, no -s"
+    ],
+    [
+     "Vorsitzende",
+     "genitive after des: -en"
+    ],
+    [
+     "Vorsitzender",
+     "genitive after des: -en"
+    ]
+   ]
+  },
+  {
+   "id": "adjektiv-als-nomen.09",
+   "concept": "adjektiv-als-nomen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the adjective as a noun with the right ending.",
+   "prompt": "Gibt es etwas ___? (neu)",
+   "answer": [
+    "Neues"
+   ],
+   "note": "etwas + noun from an adjective: -es, capital letter.",
+   "strict_case": false,
+   "near": [
+    [
+     "Neue",
+     "after etwas: -es"
+    ],
+    [
+     "Neuen",
+     "after etwas: -es"
+    ],
+    [
+     "Neu",
+     "after etwas: Neues"
+    ]
+   ]
+  },
+  {
+   "id": "adjektiv-als-nomen.10",
+   "concept": "adjektiv-als-nomen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the adjective as a noun with the right ending.",
+   "prompt": "Im Fernsehen kommt heute nichts ___. (besonders)",
+   "answer": [
+    "Besonderes"
+   ],
+   "note": "nichts + noun from an adjective: -es, capital letter.",
+   "strict_case": false,
+   "near": [
+    [
+     "Besondere",
+     "after nichts: -es"
+    ],
+    [
+     "Besonderen",
+     "after nichts: -es"
+    ],
+    [
+     "Besonders",
+     "the noun is das Besondere: nichts Besonderes"
+    ]
+   ]
+  },
+  {
+   "id": "adjektiv-als-nomen.11",
+   "concept": "adjektiv-als-nomen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the adjective as a noun with the right ending.",
+   "prompt": "Zum Geburtstag wünsche ich dir alles ___. (gut)",
+   "answer": [
+    "Gute"
+   ],
+   "note": "alles + weak ending: -e (but etwas/nichts/viel + -es).",
+   "strict_case": false,
+   "near": [
+    [
+     "Gutes",
+     "after alles: -e"
+    ],
+    [
+     "Guten",
+     "after alles, nominative/accusative: -e"
+    ],
+    [
+     "Gut",
+     "after alles: Gute"
+    ]
+   ]
+  },
+  {
+   "id": "adjektiv-als-nomen.12",
+   "concept": "adjektiv-als-nomen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with a noun made from the adjective. Start with „Viele“.",
+   "prompt": "Viele Menschen, die arbeitslos sind, suchen lange eine neue Stelle.",
+   "answer": [
+    "Viele Arbeitslose suchen lange eine neue Stelle."
+   ],
+   "note": "After viele: -e.",
+   "strict_case": false,
+   "near": [
+    [
+     "Viele Arbeitslosen suchen lange eine neue Stelle.",
+     "after viele: Arbeitslose"
+    ],
+    [
+     "Viele Arbeitsloser suchen lange eine neue Stelle.",
+     "plural: Arbeitslose"
+    ]
+   ]
+  },
+  {
+   "id": "relativsaetze-erweitert.01",
+   "concept": "relativsaetze-erweitert",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with the relative pronoun.",
+   "prompt": "Das ist das Beste, ___ ich je gegessen habe.",
+   "answer": [
+    "was"
+   ],
+   "note": "After das Beste, das Einzige, alles, nichts: was.",
+   "strict_case": false,
+   "near": [
+    [
+     "dass",
+     "dass is a conjunction"
+    ],
+    [
+     "wo",
+     "after das Beste: was"
+    ],
+    [
+     "wie",
+     "after das Beste: was"
+    ]
+   ]
+  },
+  {
+   "id": "relativsaetze-erweitert.02",
+   "concept": "relativsaetze-erweitert",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with the relative pronoun.",
+   "prompt": "Er hat die Prüfung beim ersten Versuch bestanden, ___ alle überrascht hat.",
+   "answer": [
+    "was"
+   ],
+   "note": "The relative refers to the whole clause: was.",
+   "strict_case": false,
+   "near": [
+    [
+     "das",
+     "it refers to the whole clause: was"
+    ],
+    [
+     "die",
+     "it refers to the whole clause, not to die Prüfung"
+    ],
+    [
+     "dass",
+     "dass is a conjunction"
+    ]
+   ]
+  },
+  {
+   "id": "relativsaetze-erweitert.03",
+   "concept": "relativsaetze-erweitert",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German.",
+   "prompt": "Everything you say is true.",
+   "answer": [
+    "Alles, was du sagst, ist wahr.",
+    "Alles, was Sie sagen, ist wahr.",
+    "Alles, was ihr sagt, ist wahr."
+   ],
+   "note": "alles, was + verb last.",
+   "strict_case": false,
+   "near": [
+    [
+     "Alles, das du sagst, ist wahr.",
+     "after alles: was"
+    ],
+    [
+     "Alles, was du sagst, wahr ist.",
+     "after the clause the verb comes first"
+    ],
+    [
+     "Alles, dass du sagst, ist wahr.",
+     "after alles: was"
+    ]
+   ]
+  },
+  {
+   "id": "relativsaetze-erweitert.04",
+   "concept": "relativsaetze-erweitert",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with the relative pronoun.",
+   "prompt": "Das ist ein Thema, ___ mich sehr interessiert.",
+   "answer": [
+    "das",
+    "welches"
+   ],
+   "note": "After a noun (das Thema): das, not was.",
+   "strict_case": false,
+   "near": [
+    [
+     "was",
+     "after a noun: das"
+    ],
+    [
+     "dass",
+     "dass is a conjunction"
+    ],
+    [
+     "der",
+     "das Thema is neuter: das"
+    ]
+   ]
+  },
+  {
+   "id": "relativsaetze-erweitert.05",
+   "concept": "relativsaetze-erweitert",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with the relative pronoun.",
+   "prompt": "Er hat sich bei mir entschuldigt, ___ ich mich sehr gefreut habe.",
+   "answer": [
+    "worüber"
+   ],
+   "note": "Whole clause + preposition: wo(r) + preposition.",
+   "strict_case": false,
+   "near": [
+    [
+     "darüber",
+     "darüber starts a main clause, not a relative clause"
+    ],
+    [
+     "wofür",
+     "sich freuen über → worüber"
+    ],
+    [
+     "über das",
+     "it refers to the whole clause: worüber"
+    ]
+   ]
+  },
+  {
+   "id": "relativsaetze-erweitert.06",
+   "concept": "relativsaetze-erweitert",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with the relative pronoun.",
+   "prompt": "Das ist alles, ___ ich mich erinnern kann.",
+   "answer": [
+    "woran"
+   ],
+   "note": "After alles + preposition: wo(r) + preposition.",
+   "strict_case": false,
+   "near": [
+    [
+     "an das",
+     "after alles: woran"
+    ],
+    [
+     "worauf",
+     "sich erinnern an → woran"
+    ],
+    [
+     "daran",
+     "daran starts a main clause"
+    ]
+   ]
+  },
+  {
+   "id": "relativsaetze-erweitert.07",
+   "concept": "relativsaetze-erweitert",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with „mit“ and the relative pronoun.",
+   "prompt": "Die Kollegin, ___ ich das Projekt mache, ist sehr nett.",
+   "answer": [
+    "mit der",
+    "mit welcher"
+   ],
+   "note": "Preposition + relative pronoun in the right case: mit der.",
+   "strict_case": false,
+   "near": [
+    [
+     "mit die",
+     "mit takes the dative: der"
+    ],
+    [
+     "mit dem",
+     "die Kollegin is feminine: der"
+    ],
+    [
+     "mit wem",
+     "after a noun: mit der"
+    ]
+   ]
+  },
+  {
+   "id": "relativsaetze-erweitert.08",
+   "concept": "relativsaetze-erweitert",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with the relative pronoun.",
+   "prompt": "Der Nachbar, mit ___ Sohn ich Fußball spiele, ist Arzt.",
+   "answer": [
+    "dessen"
+   ],
+   "note": "Possessive, masculine owner: dessen (the case comes from mit + Sohn).",
+   "strict_case": false,
+   "near": [
+    [
+     "dem",
+     "his son = dessen Sohn"
+    ],
+    [
+     "deren",
+     "the owner is masculine: dessen"
+    ],
+    [
+     "dessem",
+     "dessen never changes"
+    ]
+   ]
+  },
+  {
+   "id": "relativsaetze-erweitert.09",
+   "concept": "relativsaetze-erweitert",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the adjective with the right ending.",
+   "prompt": "Die Nachbarin, mit deren ___ Hund ich spazieren gehe, ist im Urlaub. (klein)",
+   "answer": [
+    "kleinem"
+   ],
+   "note": "After dessen/deren the adjective has the strong ending: mit kleinem Hund → mit deren kleinem Hund.",
+   "strict_case": false,
+   "near": [
+    [
+     "kleinen",
+     "after deren: strong ending, dative masculine -em"
+    ],
+    [
+     "kleiner",
+     "dative masculine: -em"
+    ],
+    [
+     "kleine",
+     "dative masculine: -em"
+    ]
+   ]
+  },
+  {
+   "id": "relativsaetze-erweitert.10",
+   "concept": "relativsaetze-erweitert",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with the right form of „der“.",
+   "prompt": "Wer mir hilft, ___ danke ich.",
+   "answer": [
+    "dem"
+   ],
+   "note": "wer …, dem: the second pronoun takes the case of the main clause (danken + dative).",
+   "strict_case": false,
+   "near": [
+    [
+     "der",
+     "danken takes the dative: dem"
+    ],
+    [
+     "den",
+     "danken takes the dative: dem"
+    ],
+    [
+     "wem",
+     "the main clause starts with der/dem"
+    ]
+   ]
+  },
+  {
+   "id": "relativsaetze-erweitert.11",
+   "concept": "relativsaetze-erweitert",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the sentences with a relative clause.",
+   "prompt": "Er hat mir nicht geantwortet. Das ärgert mich.",
+   "answer": [
+    "Er hat mir nicht geantwortet, was mich ärgert."
+   ],
+   "note": "It refers to the whole clause: was + verb last.",
+   "strict_case": false,
+   "near": [
+    [
+     "Er hat mir nicht geantwortet, das mich ärgert.",
+     "whole clause: was"
+    ],
+    [
+     "Er hat mir nicht geantwortet, was ärgert mich.",
+     "the verb goes last"
+    ],
+    [
+     "Er hat mir nicht geantwortet, dass mich ärgert.",
+     "whole clause: was"
+    ]
+   ]
+  },
+  {
+   "id": "relativsaetze-erweitert.12",
+   "concept": "relativsaetze-erweitert",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the sentences with a relative clause.",
+   "prompt": "Sie hat ihr Studium abgebrochen. Ihre Eltern waren darüber sehr enttäuscht.",
+   "answer": [
+    "Sie hat ihr Studium abgebrochen, worüber ihre Eltern sehr enttäuscht waren."
+   ],
+   "note": "darüber about the whole clause → worüber + verb last.",
+   "strict_case": false,
+   "near": [
+    [
+     "Sie hat ihr Studium abgebrochen, über das ihre Eltern sehr enttäuscht waren.",
+     "it refers to the whole clause: worüber"
+    ],
+    [
+     "Sie hat ihr Studium abgebrochen, darüber ihre Eltern sehr enttäuscht waren.",
+     "a relative clause needs worüber"
+    ],
+    [
+     "Sie hat ihr Studium abgebrochen, worüber ihre Eltern waren sehr enttäuscht.",
+     "the verb goes last"
+    ]
+   ]
+  },
+  {
+   "id": "futur-2-vermutung.01",
+   "concept": "futur-2-vermutung",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as a guess with „wohl“ and the Futur I.",
+   "prompt": "Der Chef ist vermutlich noch in einer Besprechung.",
+   "answer": [
+    "Der Chef wird wohl noch in einer Besprechung sein."
+   ],
+   "note": "Guess about now: wird wohl + infinitive.",
+   "strict_case": false,
+   "near": [
+    [
+     "Der Chef wird wohl noch in einer Besprechung gewesen sein.",
+     "that is a guess about the past"
+    ],
+    [
+     "Der Chef wird wohl noch in einer Besprechung ist.",
+     "werden + infinitive: sein"
+    ],
+    [
+     "Der Chef würde wohl noch in einer Besprechung sein.",
+     "a guess: wird, not würde"
+    ]
+   ]
+  },
+  {
+   "id": "futur-2-vermutung.02",
+   "concept": "futur-2-vermutung",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as a guess with „wohl“ and the Futur II.",
+   "prompt": "Er hat vermutlich den Zug verpasst.",
+   "answer": [
+    "Er wird wohl den Zug verpasst haben.",
+    "Er wird den Zug wohl verpasst haben."
+   ],
+   "note": "Guess about the past: wird + Partizip II + haben.",
+   "strict_case": false,
+   "near": [
+    [
+     "Er wird wohl den Zug verpassen haben.",
+     "Partizip II: verpasst haben"
+    ],
+    [
+     "Er wird wohl den Zug haben verpasst.",
+     "haben goes last"
+    ],
+    [
+     "Er hat wohl den Zug verpasst haben.",
+     "Futur II is built with werden"
+    ]
+   ]
+  },
+  {
+   "id": "futur-2-vermutung.03",
+   "concept": "futur-2-vermutung",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Keine Sorge, sie ___ den Termin bestimmt nicht vergessen haben. (werden)",
+   "answer": [
+    "wird",
+    "werden"
+   ],
+   "note": "Futur II: wird … vergessen haben.",
+   "strict_case": false,
+   "near": [
+    [
+     "hat",
+     "with „vergessen haben“ at the end: wird"
+    ],
+    [
+     "würde",
+     "a guess: wird"
+    ],
+    [
+     "wurde",
+     "wurde is Präteritum"
+    ]
+   ]
+  },
+  {
+   "id": "futur-2-vermutung.04",
+   "concept": "futur-2-vermutung",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the verb in brackets with the right auxiliary.",
+   "prompt": "Die Kinder werden schon ___. (einschlafen)",
+   "answer": [
+    "eingeschlafen sein"
+   ],
+   "note": "einschlafen takes sein: eingeschlafen sein.",
+   "strict_case": false,
+   "near": [
+    [
+     "eingeschlafen haben",
+     "einschlafen takes sein"
+    ],
+    [
+     "einschlafen sein",
+     "Partizip II: eingeschlafen"
+    ],
+    [
+     "eingeschlafen",
+     "Futur II needs sein at the end"
+    ]
+   ]
+  },
+  {
+   "id": "futur-2-vermutung.05",
+   "concept": "futur-2-vermutung",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Nach der langen Reise ___ du wohl müde sein. (werden)",
+   "answer": [
+    "wirst"
+   ],
+   "note": "Guess about now: du wirst … sein.",
+   "strict_case": false,
+   "near": [
+    [
+     "wird",
+     "du wirst"
+    ],
+    [
+     "würdest",
+     "a guess: wirst"
+    ],
+    [
+     "bist",
+     "with sein at the end: wirst"
+    ]
+   ]
+  },
+  {
+   "id": "futur-2-vermutung.06",
+   "concept": "futur-2-vermutung",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as a guess in the Futur II with „wohl“.",
+   "prompt": "Ich vermute, dass das Paket schon angekommen ist.",
+   "answer": [
+    "Das Paket wird wohl schon angekommen sein."
+   ],
+   "note": "ankommen takes sein: angekommen sein.",
+   "strict_case": false,
+   "near": [
+    [
+     "Das Paket wird wohl schon angekommen haben.",
+     "ankommen takes sein"
+    ],
+    [
+     "Das Paket ist wohl schon angekommen sein.",
+     "Futur II is built with werden"
+    ],
+    [
+     "Das Paket wird wohl schon ankommen sein.",
+     "Partizip II: angekommen"
+    ]
+   ]
+  },
+  {
+   "id": "futur-2-vermutung.07",
+   "concept": "futur-2-vermutung",
+   "level": "B2",
+   "kind": "order",
+   "task": "Put the words in order. Start with „Sie“.",
+   "prompt": "wird / gearbeitet / lange / haben / wohl",
+   "answer": [
+    "Sie wird wohl lange gearbeitet haben.",
+    "wird wohl lange gearbeitet haben"
+   ],
+   "note": "wird second; Partizip II + haben at the end.",
+   "strict_case": false,
+   "near": [
+    [
+     "Sie wird wohl lange haben gearbeitet.",
+     "haben goes last"
+    ],
+    [
+     "Sie wird wohl gearbeitet haben lange.",
+     "lange goes before the verbs at the end"
+    ]
+   ]
+  },
+  {
+   "id": "futur-2-vermutung.08",
+   "concept": "futur-2-vermutung",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Bis Freitag ___ wir das Projekt abgeschlossen haben. (werden)",
+   "answer": [
+    "werden"
+   ],
+   "note": "Futur II: done by a point in the future.",
+   "strict_case": false,
+   "near": [
+    [
+     "haben",
+     "with „abgeschlossen haben“ at the end: werden"
+    ],
+    [
+     "würden",
+     "a plan: werden"
+    ],
+    [
+     "sind",
+     "Futur II is built with werden"
+    ]
+   ]
+  },
+  {
+   "id": "futur-2-vermutung.09",
+   "concept": "futur-2-vermutung",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German. Use the Futur II.",
+   "prompt": "He will probably have forgotten it.",
+   "answer": [
+    "Er wird es wohl vergessen haben.",
+    "Er wird es wahrscheinlich vergessen haben.",
+    "Er wird es vermutlich vergessen haben.",
+    "Er wird das wohl vergessen haben.",
+    "Er wird das wahrscheinlich vergessen haben.",
+    "Er wird das vermutlich vergessen haben."
+   ],
+   "note": "Futur II: wird … vergessen haben.",
+   "strict_case": false,
+   "near": [
+    [
+     "Er wird es wohl vergessen.",
+     "that is Futur I: a guess about now or later"
+    ],
+    [
+     "Er wird es wohl vergessen sein.",
+     "vergessen takes haben"
+    ],
+    [
+     "Er würde es wohl vergessen haben.",
+     "a guess: wird"
+    ]
+   ]
+  },
+  {
+   "id": "futur-2-vermutung.10",
+   "concept": "futur-2-vermutung",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as a guess about the past (Futur II).",
+   "prompt": "Er wird wohl den Bus nehmen.",
+   "answer": [
+    "Er wird wohl den Bus genommen haben."
+   ],
+   "note": "Futur I → Futur II: Partizip II + haben.",
+   "strict_case": false,
+   "near": [
+    [
+     "Er wird wohl den Bus genommen sein.",
+     "nehmen takes haben"
+    ],
+    [
+     "Er wird wohl den Bus nehmen haben.",
+     "Partizip II: genommen"
+    ],
+    [
+     "Er hat wohl den Bus genommen haben.",
+     "Futur II is built with werden"
+    ]
+   ]
+  },
+  {
+   "id": "futur-2-vermutung.11",
+   "concept": "futur-2-vermutung",
+   "level": "B2",
+   "kind": "order",
+   "task": "Put the words in order. Start with „Bis nächste Woche“.",
+   "prompt": "werde / ich / die Arbeit / beendet / haben",
+   "answer": [
+    "Bis nächste Woche werde ich die Arbeit beendet haben.",
+    "werde ich die Arbeit beendet haben"
+   ],
+   "note": "Futur II for something finished by a future time.",
+   "strict_case": false,
+   "near": [
+    [
+     "Bis nächste Woche ich werde die Arbeit beendet haben.",
+     "the verb comes second"
+    ],
+    [
+     "Bis nächste Woche werde ich die Arbeit haben beendet.",
+     "haben goes last"
+    ]
+   ]
+  },
+  {
+   "id": "futur-2-vermutung.12",
+   "concept": "futur-2-vermutung",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as a guess with „werden“. Start with „Er wird“.",
+   "prompt": "Sicher hat er sie schon gelesen.",
+   "answer": [
+    "Er wird sie sicher schon gelesen haben."
+   ],
+   "note": "Pronoun right after the verb; then sicher, Partizip II + haben.",
+   "strict_case": false,
+   "near": [
+    [
+     "Er wird sicher sie schon gelesen haben.",
+     "the pronoun sie comes right after wird"
+    ],
+    [
+     "Er wird sie sicher schon gelesen sein.",
+     "lesen takes haben"
+    ],
+    [
+     "Er wird sie sicher schon lesen haben.",
+     "Partizip II: gelesen"
+    ]
+   ]
+  },
+  {
+   "id": "lassen-konstruktionen.01",
+   "concept": "lassen-konstruktionen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Ich ___ mein Auto in der Werkstatt reparieren. (lassen)",
+   "answer": [
+    "lasse"
+   ],
+   "note": "ich lasse.",
+   "strict_case": false,
+   "near": [
+    [
+     "lass",
+     "ich lasse"
+    ],
+    [
+     "lässt",
+     "er/sie lässt; ich lasse"
+    ],
+    [
+     "lassen",
+     "ich lasse"
+    ]
+   ]
+  },
+  {
+   "id": "lassen-konstruktionen.02",
+   "concept": "lassen-konstruktionen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Er ___ sich alle sechs Wochen die Haare schneiden. (lassen)",
+   "answer": [
+    "lässt"
+   ],
+   "note": "er lässt (with umlaut).",
+   "strict_case": false,
+   "near": [
+    [
+     "lasst",
+     "er lässt; ihr lasst"
+    ],
+    [
+     "last",
+     "er lässt"
+    ],
+    [
+     "lässen",
+     "er lässt"
+    ]
+   ]
+  },
+  {
+   "id": "lassen-konstruktionen.03",
+   "concept": "lassen-konstruktionen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "___ ihr eure Kinder allein in die Stadt fahren? (lassen)",
+   "answer": [
+    "Lasst"
+   ],
+   "note": "ihr lasst (no umlaut).",
+   "strict_case": false,
+   "near": [
+    [
+     "Lässt",
+     "ihr lasst (no umlaut)"
+    ],
+    [
+     "Lassen",
+     "ihr lasst"
+    ],
+    [
+     "Last",
+     "ihr lasst"
+    ]
+   ]
+  },
+  {
+   "id": "lassen-konstruktionen.04",
+   "concept": "lassen-konstruktionen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „lassen“. Start with „Wir“.",
+   "prompt": "Wir reparieren die Heizung nicht selbst. Ein Handwerker macht das.",
+   "answer": [
+    "Wir lassen die Heizung reparieren.",
+    "Wir lassen die Heizung von einem Handwerker reparieren.",
+    "Wir lassen die Heizung durch einen Handwerker reparieren.",
+    "Wir lassen einen Handwerker die Heizung reparieren.",
+    "Wir lassen das von einem Handwerker machen.",
+    "Wir lassen das einen Handwerker machen."
+   ],
+   "note": "Have something done: lassen + infinitive at the end.",
+   "strict_case": false,
+   "near": [
+    [
+     "Wir lassen die Heizung repariert.",
+     "lassen + infinitive: reparieren"
+    ],
+    [
+     "Wir lassen die Heizung zu reparieren.",
+     "no zu after lassen"
+    ],
+    [
+     "Wir lassen reparieren die Heizung.",
+     "the infinitive goes last"
+    ]
+   ]
+  },
+  {
+   "id": "lassen-konstruktionen.05",
+   "concept": "lassen-konstruktionen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „lassen“.",
+   "prompt": "Meine Eltern erlauben mir, das Auto zu nehmen.",
+   "answer": [
+    "Meine Eltern lassen mich das Auto nehmen."
+   ],
+   "note": "Allow: jemanden (accusative) etwas tun lassen.",
+   "strict_case": false,
+   "near": [
+    [
+     "Meine Eltern lassen mir das Auto nehmen.",
+     "lassen takes the accusative: mich"
+    ],
+    [
+     "Meine Eltern lassen mich das Auto zu nehmen.",
+     "no zu after lassen"
+    ],
+    [
+     "Meine Eltern lassen mich nehmen das Auto.",
+     "the infinitive goes last"
+    ]
+   ]
+  },
+  {
+   "id": "lassen-konstruktionen.06",
+   "concept": "lassen-konstruktionen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „sich lassen“.",
+   "prompt": "Der Fehler kann leicht behoben werden.",
+   "answer": [
+    "Der Fehler lässt sich leicht beheben."
+   ],
+   "note": "kann … werden → lässt sich + infinitive.",
+   "strict_case": false,
+   "near": [
+    [
+     "Der Fehler lässt sich leicht behoben.",
+     "sich lassen + infinitive: beheben"
+    ],
+    [
+     "Der Fehler lässt leicht beheben.",
+     "the reflexive sich is needed"
+    ],
+    [
+     "Der Fehler lässt sich leicht beheben werden.",
+     "no werden with sich lassen"
+    ]
+   ]
+  },
+  {
+   "id": "lassen-konstruktionen.07",
+   "concept": "lassen-konstruktionen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Diese Frage ___ sich nicht so einfach beantworten. (lassen)",
+   "answer": [
+    "lässt"
+   ],
+   "note": "sich lassen: die Frage lässt sich … beantworten.",
+   "strict_case": false,
+   "near": [
+    [
+     "lasst",
+     "die Frage lässt"
+    ],
+    [
+     "lassen",
+     "singular subject: lässt"
+    ],
+    [
+     "lässen",
+     "die Frage lässt"
+    ]
+   ]
+  },
+  {
+   "id": "lassen-konstruktionen.08",
+   "concept": "lassen-konstruktionen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite in the Perfekt.",
+   "prompt": "Ich lasse meinen Pass verlängern.",
+   "answer": [
+    "Ich habe meinen Pass verlängern lassen."
+   ],
+   "note": "With an infinitive: hat … verlängern lassen (lassen, not gelassen).",
+   "strict_case": false,
+   "near": [
+    [
+     "Ich habe meinen Pass verlängert lassen.",
+     "two infinitives: verlängern lassen"
+    ],
+    [
+     "Ich habe meinen Pass gelassen verlängern.",
+     "infinitive first, lassen last"
+    ],
+    [
+     "Ich bin meinen Pass verlängern lassen.",
+     "lassen takes haben"
+    ]
+   ]
+  },
+  {
+   "id": "lassen-konstruktionen.09",
+   "concept": "lassen-konstruktionen",
+   "level": "B2",
+   "kind": "order",
+   "task": "Put the words in order. Start with „Gestern“.",
+   "prompt": "habe / ich / mein Fahrrad / reparieren / lassen",
+   "answer": [
+    "Gestern habe ich mein Fahrrad reparieren lassen.",
+    "habe ich mein Fahrrad reparieren lassen"
+   ],
+   "note": "Perfekt with an infinitive: habe … reparieren lassen.",
+   "strict_case": false,
+   "near": [
+    [
+     "Gestern habe ich mein Fahrrad lassen reparieren.",
+     "the main verb comes before lassen"
+    ],
+    [
+     "Gestern ich habe mein Fahrrad reparieren lassen.",
+     "the verb comes second"
+    ]
+   ]
+  },
+  {
+   "id": "lassen-konstruktionen.10",
+   "concept": "lassen-konstruktionen",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German. Use „lassen“.",
+   "prompt": "I'm having my hair cut tomorrow.",
+   "answer": [
+    "Ich lasse mir morgen die Haare schneiden.",
+    "Morgen lasse ich mir die Haare schneiden.",
+    "Ich lasse mir die Haare morgen schneiden.",
+    "Ich lasse morgen meine Haare schneiden.",
+    "Morgen lasse ich meine Haare schneiden.",
+    "Ich lasse meine Haare morgen schneiden.",
+    "Ich werde mir morgen die Haare schneiden lassen.",
+    "Morgen werde ich mir die Haare schneiden lassen.",
+    "Ich werde morgen meine Haare schneiden lassen.",
+    "Morgen werde ich meine Haare schneiden lassen."
+   ],
+   "note": "sich (dative) etwas machen lassen.",
+   "strict_case": false,
+   "near": [
+    [
+     "Ich lasse mich morgen die Haare schneiden.",
+     "the hair is the object: mir (dative)"
+    ],
+    [
+     "Ich lasse mir morgen die Haare geschnitten.",
+     "lassen + infinitive"
+    ],
+    [
+     "Ich lasse morgen meine Haare zu schneiden.",
+     "no zu after lassen"
+    ]
+   ]
+  },
+  {
+   "id": "lassen-konstruktionen.11",
+   "concept": "lassen-konstruktionen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „sich lassen“. Keep the Präteritum.",
+   "prompt": "Die Ursache konnte nicht gefunden werden.",
+   "answer": [
+    "Die Ursache ließ sich nicht finden."
+   ],
+   "note": "konnte … werden → ließ sich + infinitive.",
+   "strict_case": false,
+   "near": [
+    [
+     "Die Ursache lässt sich nicht finden.",
+     "keep the Präteritum: ließ"
+    ],
+    [
+     "Die Ursache ließ sich nicht gefunden.",
+     "sich lassen + infinitive"
+    ],
+    [
+     "Die Ursache ließ nicht finden.",
+     "the reflexive sich is needed"
+    ]
+   ]
+  },
+  {
+   "id": "lassen-konstruktionen.12",
+   "concept": "lassen-konstruktionen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite the dass-clause in the Perfekt.",
+   "prompt": "Sie erzählt, dass sie ihre Küche renovieren lässt.",
+   "answer": [
+    "Sie erzählt, dass sie ihre Küche hat renovieren lassen."
+   ],
+   "note": "In a subordinate clause hat goes before the two infinitives.",
+   "strict_case": false,
+   "near": [
+    [
+     "Sie erzählt, dass sie ihre Küche renovieren lassen hat.",
+     "in standard German hat goes before the two infinitives"
+    ],
+    [
+     "Sie erzählt, dass sie ihre Küche renoviert lassen hat.",
+     "two infinitives: renovieren lassen"
+    ],
+    [
+     "Sie erzählt, dass sie hat ihre Küche renovieren lassen.",
+     "hat goes before the infinitives, after the object"
+    ]
+   ]
+  },
+  {
+   "id": "wortstellung-mittelfeld.01",
+   "concept": "wortstellung-mittelfeld",
+   "level": "B2",
+   "kind": "order",
+   "task": "Put the words in order. Start with „Ich schicke“.",
+   "prompt": "eine Rechnung / dem Kunden",
+   "answer": [
+    "Ich schicke dem Kunden eine Rechnung.",
+    "dem Kunden eine Rechnung"
+   ],
+   "note": "Two nouns: dative before accusative.",
+   "strict_case": false,
+   "near": [
+    [
+     "Ich schicke eine Rechnung dem Kunden.",
+     "two nouns: dative first"
+    ],
+    [
+     "eine Rechnung dem Kunden",
+     "two nouns: dative first"
+    ]
+   ]
+  },
+  {
+   "id": "wortstellung-mittelfeld.02",
+   "concept": "wortstellung-mittelfeld",
+   "level": "B2",
+   "kind": "order",
+   "task": "Put the words in order. Start with „Ich schicke“.",
+   "prompt": "ihm / sie",
+   "answer": [
+    "Ich schicke sie ihm.",
+    "sie ihm"
+   ],
+   "note": "Two pronouns: accusative before dative.",
+   "strict_case": false,
+   "near": [
+    [
+     "Ich schicke ihm sie.",
+     "two pronouns: accusative first"
+    ],
+    [
+     "ihm sie",
+     "two pronouns: accusative first"
+    ]
+   ]
+  },
+  {
+   "id": "wortstellung-mittelfeld.03",
+   "concept": "wortstellung-mittelfeld",
+   "level": "B2",
+   "kind": "order",
+   "task": "Put the words in order. Start with „Ich schicke“.",
+   "prompt": "die Rechnung / ihm",
+   "answer": [
+    "Ich schicke ihm die Rechnung.",
+    "ihm die Rechnung"
+   ],
+   "note": "Pronoun before noun.",
+   "strict_case": false,
+   "near": [
+    [
+     "Ich schicke die Rechnung ihm.",
+     "the pronoun comes before the noun"
+    ],
+    [
+     "die Rechnung ihm",
+     "the pronoun comes before the noun"
+    ]
+   ]
+  },
+  {
+   "id": "wortstellung-mittelfeld.04",
+   "concept": "wortstellung-mittelfeld",
+   "level": "B2",
+   "kind": "order",
+   "task": "Put the words in order. Start with „Ich schicke“.",
+   "prompt": "dem Kunden / sie",
+   "answer": [
+    "Ich schicke sie dem Kunden.",
+    "sie dem Kunden"
+   ],
+   "note": "Pronoun before noun, even when the pronoun is accusative.",
+   "strict_case": false,
+   "near": [
+    [
+     "Ich schicke dem Kunden sie.",
+     "the pronoun comes before the noun"
+    ],
+    [
+     "dem Kunden sie",
+     "the pronoun comes before the noun"
+    ]
+   ]
+  },
+  {
+   "id": "wortstellung-mittelfeld.05",
+   "concept": "wortstellung-mittelfeld",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Replace both objects with pronouns.",
+   "prompt": "Ich leihe meiner Nachbarin die Leiter.",
+   "answer": [
+    "Ich leihe sie ihr."
+   ],
+   "note": "Two pronouns: accusative (sie) before dative (ihr).",
+   "strict_case": false,
+   "near": [
+    [
+     "Ich leihe ihr sie.",
+     "two pronouns: accusative first"
+    ],
+    [
+     "Ich leihe es ihr.",
+     "die Leiter is feminine: sie"
+    ],
+    [
+     "Ich leihe sie sie.",
+     "meiner Nachbarin is dative: ihr"
+    ]
+   ]
+  },
+  {
+   "id": "wortstellung-mittelfeld.06",
+   "concept": "wortstellung-mittelfeld",
+   "level": "B2",
+   "kind": "order",
+   "task": "Put the words in order. Start with „Heute“.",
+   "prompt": "sich / er / ärgert / über den Lärm",
+   "answer": [
+    "Heute ärgert er sich über den Lärm.",
+    "ärgert er sich über den Lärm"
+   ],
+   "note": "Pronoun subject first, then the reflexive pronoun.",
+   "strict_case": false,
+   "near": [
+    [
+     "Heute ärgert sich er über den Lärm.",
+     "pronoun subject before sich"
+    ],
+    [
+     "Heute er ärgert sich über den Lärm.",
+     "the verb comes second"
+    ]
+   ]
+  },
+  {
+   "id": "wortstellung-mittelfeld.07",
+   "concept": "wortstellung-mittelfeld",
+   "level": "B2",
+   "kind": "order",
+   "task": "Put the words in order. Start with „Gestern hat“.",
+   "prompt": "sich / mein Kollege / krankgemeldet",
+   "answer": [
+    "Gestern hat sich mein Kollege krankgemeldet.",
+    "Gestern hat mein Kollege sich krankgemeldet.",
+    "sich mein Kollege krankgemeldet",
+    "mein Kollege sich krankgemeldet",
+    "Gestern hat sich mein Kollege krank gemeldet.",
+    "Gestern hat mein Kollege sich krank gemeldet.",
+    "sich mein Kollege krank gemeldet",
+    "mein Kollege sich krank gemeldet"
+   ],
+   "note": "With a noun subject, sich can come before or after it.",
+   "strict_case": false,
+   "near": [
+    [
+     "Gestern hat mein Kollege krankgemeldet sich.",
+     "the participle goes last"
+    ],
+    [
+     "Gestern hat sich krankgemeldet mein Kollege.",
+     "the participle goes last"
+    ],
+    [
+     "Gestern mein Kollege hat sich krankgemeldet.",
+     "the verb comes second"
+    ]
+   ]
+  },
+  {
+   "id": "wortstellung-mittelfeld.08",
+   "concept": "wortstellung-mittelfeld",
+   "level": "B2",
+   "kind": "order",
+   "task": "Put the words in order. Start with „Ich habe“.",
+   "prompt": "ihm / nicht / das Geld / gegeben",
+   "answer": [
+    "Ich habe ihm das Geld nicht gegeben.",
+    "ihm das Geld nicht gegeben"
+   ],
+   "note": "nicht for the whole sentence: after the objects, before the participle.",
+   "strict_case": false,
+   "near": [
+    [
+     "Ich habe ihm das Geld gegeben nicht.",
+     "nicht comes before the participle"
+    ],
+    [
+     "Ich habe das Geld ihm nicht gegeben.",
+     "pronoun before noun"
+    ]
+   ]
+  },
+  {
+   "id": "wortstellung-mittelfeld.09",
+   "concept": "wortstellung-mittelfeld",
+   "level": "B2",
+   "kind": "order",
+   "task": "Put the words in order. Start with „Hast du“.",
+   "prompt": "schon / es / deiner Mutter / erzählt",
+   "answer": [
+    "Hast du es deiner Mutter schon erzählt?",
+    "Hast du es schon deiner Mutter erzählt?",
+    "es deiner Mutter schon erzählt",
+    "es schon deiner Mutter erzählt"
+   ],
+   "note": "The pronoun es comes right after the subject.",
+   "strict_case": false,
+   "near": [
+    [
+     "Hast du deiner Mutter es schon erzählt?",
+     "pronoun before noun"
+    ],
+    [
+     "Hast du deiner Mutter schon es erzählt?",
+     "es comes right after du"
+    ]
+   ]
+  },
+  {
+   "id": "wortstellung-mittelfeld.10",
+   "concept": "wortstellung-mittelfeld",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German. Use „es“.",
+   "prompt": "Can you give it to me?",
+   "answer": [
+    "Kannst du es mir geben?",
+    "Können Sie es mir geben?",
+    "Könnt ihr es mir geben?"
+   ],
+   "note": "Two pronouns: accusative (es) before dative (mir).",
+   "strict_case": false,
+   "near": [
+    [
+     "Kannst du mir es geben?",
+     "two pronouns: accusative first"
+    ],
+    [
+     "Kannst du es mich geben?",
+     "geben + dative: mir"
+    ],
+    [
+     "Kannst du es mir gegeben?",
+     "modal + infinitive"
+    ]
+   ]
+  },
+  {
+   "id": "wortstellung-mittelfeld.11",
+   "concept": "wortstellung-mittelfeld",
+   "level": "B2",
+   "kind": "order",
+   "task": "Put the words in order. Start with „Gestern hat“.",
+   "prompt": "mich / mein Chef / angerufen",
+   "answer": [
+    "Gestern hat mich mein Chef angerufen.",
+    "Gestern hat mein Chef mich angerufen.",
+    "mich mein Chef angerufen",
+    "mein Chef mich angerufen"
+   ],
+   "note": "A pronoun object may come before a noun subject.",
+   "strict_case": false,
+   "near": [
+    [
+     "Gestern hat mich angerufen mein Chef.",
+     "the participle goes last"
+    ],
+    [
+     "Gestern hat mein Chef angerufen mich.",
+     "the participle goes last"
+    ]
+   ]
+  },
+  {
+   "id": "wortstellung-mittelfeld.12",
+   "concept": "wortstellung-mittelfeld",
+   "level": "B2",
+   "kind": "order",
+   "task": "Put the words in order. Start with „Ich glaube, dass“.",
+   "prompt": "es / ihm / der Kollege / gesagt / hat",
+   "answer": [
+    "Ich glaube, dass der Kollege es ihm gesagt hat.",
+    "Ich glaube, dass es ihm der Kollege gesagt hat.",
+    "der Kollege es ihm gesagt hat",
+    "es ihm der Kollege gesagt hat"
+   ],
+   "note": "Pronouns: accusative before dative; they may come before a noun subject.",
+   "strict_case": false,
+   "near": [
+    [
+     "Ich glaube, dass der Kollege ihm es gesagt hat.",
+     "two pronouns: accusative first"
+    ],
+    [
+     "Ich glaube, dass der Kollege es ihm hat gesagt.",
+     "hat goes last"
+    ]
+   ]
+  },
+  {
+   "id": "nominalisierung-praepositionen.01",
+   "concept": "nominalisierung-praepositionen",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German. Use „wegen“.",
+   "prompt": "Because of the strike, the trains are not running.",
+   "answer": [
+    "Wegen des Streiks fahren die Züge nicht.",
+    "Wegen des Streikes fahren die Züge nicht.",
+    "Wegen des Streiks fahren keine Züge.",
+    "Wegen des Streikes fahren keine Züge."
+   ],
+   "note": "wegen + genitive (des Streiks) in writing.",
+   "strict_case": false,
+   "near": [
+    [
+     "Wegen dem Streik fahren die Züge nicht.",
+     "in writing: wegen + genitive"
+    ],
+    [
+     "Wegen des Streiks die Züge fahren nicht.",
+     "the phrase is position 1; the verb comes next"
+    ],
+    [
+     "Wegen der Streik fahren die Züge nicht.",
+     "der Streik → des Streiks"
+    ]
+   ]
+  },
+  {
+   "id": "nominalisierung-praepositionen.02",
+   "concept": "nominalisierung-praepositionen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „trotz“ and „die Erkältung“.",
+   "prompt": "Obwohl sie erkältet war, ging sie zur Arbeit.",
+   "answer": [
+    "Trotz ihrer Erkältung ging sie zur Arbeit.",
+    "Trotz der Erkältung ging sie zur Arbeit."
+   ],
+   "note": "obwohl → trotz + genitive.",
+   "strict_case": false,
+   "near": [
+    [
+     "Trotz ihre Erkältung ging sie zur Arbeit.",
+     "trotz + genitive: ihrer"
+    ],
+    [
+     "Trotz ihrer Erkältung sie ging zur Arbeit.",
+     "the phrase is position 1; the verb comes next"
+    ],
+    [
+     "Obwohl ihrer Erkältung ging sie zur Arbeit.",
+     "obwohl needs a clause; with a noun: trotz"
+    ]
+   ]
+  },
+  {
+   "id": "nominalisierung-praepositionen.03",
+   "concept": "nominalisierung-praepositionen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „bei“.",
+   "prompt": "Wenn es regnet, findet das Konzert in der Halle statt.",
+   "answer": [
+    "Bei Regen findet das Konzert in der Halle statt."
+   ],
+   "note": "wenn → bei + dative (here without article).",
+   "strict_case": false,
+   "near": [
+    [
+     "Bei Regnen findet das Konzert in der Halle statt.",
+     "the noun is der Regen"
+    ],
+    [
+     "Bei Regen das Konzert findet in der Halle statt.",
+     "the phrase is position 1; the verb comes next"
+    ],
+    [
+     "Bei Regens findet das Konzert in der Halle statt.",
+     "bei takes the dative: Regen"
+    ]
+   ]
+  },
+  {
+   "id": "nominalisierung-praepositionen.04",
+   "concept": "nominalisierung-praepositionen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „nach“ and „der Abschluss“.",
+   "prompt": "Nachdem er das Studium abgeschlossen hatte, zog er nach Hamburg.",
+   "answer": [
+    "Nach dem Abschluss seines Studiums zog er nach Hamburg.",
+    "Nach Abschluss seines Studiums zog er nach Hamburg.",
+    "Nach dem Abschluss des Studiums zog er nach Hamburg.",
+    "Nach Abschluss des Studiums zog er nach Hamburg."
+   ],
+   "note": "nachdem → nach + dative; the object becomes a genitive.",
+   "strict_case": false,
+   "near": [
+    [
+     "Nach dem Abschluss seinem Studium zog er nach Hamburg.",
+     "the object becomes a genitive: seines Studiums"
+    ],
+    [
+     "Nach dem Abschluss seines Studiums er zog nach Hamburg.",
+     "the phrase is position 1; the verb comes next"
+    ],
+    [
+     "Nach den Abschluss seines Studiums zog er nach Hamburg.",
+     "nach takes the dative: dem"
+    ]
+   ]
+  },
+  {
+   "id": "nominalisierung-praepositionen.05",
+   "concept": "nominalisierung-praepositionen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „vor“ and „die Abreise“.",
+   "prompt": "Bevor wir abreisen, müssen wir das Zimmer räumen.",
+   "answer": [
+    "Vor der Abreise müssen wir das Zimmer räumen.",
+    "Vor unserer Abreise müssen wir das Zimmer räumen."
+   ],
+   "note": "bevor → vor + dative.",
+   "strict_case": false,
+   "near": [
+    [
+     "Vor die Abreise müssen wir das Zimmer räumen.",
+     "vor (time) takes the dative: der"
+    ],
+    [
+     "Vor unserer Abreise wir müssen das Zimmer räumen.",
+     "the phrase is position 1; the verb comes next"
+    ],
+    [
+     "Bevor der Abreise müssen wir das Zimmer räumen.",
+     "bevor needs a clause; with a noun: vor"
+    ]
+   ]
+  },
+  {
+   "id": "nominalisierung-praepositionen.06",
+   "concept": "nominalisierung-praepositionen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „während“ and „der Urlaub“.",
+   "prompt": "Während sie Urlaub machte, kümmerte sich ihr Nachbar um die Katze.",
+   "answer": [
+    "Während ihres Urlaubs kümmerte sich ihr Nachbar um die Katze.",
+    "Während ihres Urlaubes kümmerte sich ihr Nachbar um die Katze.",
+    "Während des Urlaubs kümmerte sich ihr Nachbar um die Katze.",
+    "Während des Urlaubes kümmerte sich ihr Nachbar um die Katze."
+   ],
+   "note": "während + genitive in writing.",
+   "strict_case": false,
+   "near": [
+    [
+     "Während ihrem Urlaub kümmerte sich ihr Nachbar um die Katze.",
+     "in writing: während + genitive"
+    ],
+    [
+     "Während ihres Urlaubs ihr Nachbar kümmerte sich um die Katze.",
+     "the phrase is position 1; the verb comes next"
+    ],
+    [
+     "Während ihr Urlaub kümmerte sich ihr Nachbar um die Katze.",
+     "während + genitive: ihres Urlaubs"
+    ]
+   ]
+  },
+  {
+   "id": "nominalisierung-praepositionen.07",
+   "concept": "nominalisierung-praepositionen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „zum“ and „der Schutz“.",
+   "prompt": "Um die Umwelt zu schützen, fahren viele mit dem Rad.",
+   "answer": [
+    "Zum Schutz der Umwelt fahren viele mit dem Rad.",
+    "Zum Umweltschutz fahren viele mit dem Rad."
+   ],
+   "note": "um … zu → zum/zur + noun; the object becomes a genitive.",
+   "strict_case": false,
+   "near": [
+    [
+     "Zum Schutz die Umwelt fahren viele mit dem Rad.",
+     "the object becomes a genitive: der Umwelt"
+    ],
+    [
+     "Zur Schutz der Umwelt fahren viele mit dem Rad.",
+     "der Schutz → zum"
+    ],
+    [
+     "Zum Schutz der Umwelt viele fahren mit dem Rad.",
+     "the phrase is position 1; the verb comes next"
+    ]
+   ]
+  },
+  {
+   "id": "nominalisierung-praepositionen.08",
+   "concept": "nominalisierung-praepositionen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „bei“ and „die Ankunft“.",
+   "prompt": "Als ich ankam, regnete es.",
+   "answer": [
+    "Bei meiner Ankunft regnete es."
+   ],
+   "note": "als (one moment) → bei + dative.",
+   "strict_case": false,
+   "near": [
+    [
+     "Bei meine Ankunft regnete es.",
+     "bei takes the dative: meiner"
+    ],
+    [
+     "Bei meiner Ankunft es regnete.",
+     "the phrase is position 1; the verb comes next"
+    ],
+    [
+     "Als meiner Ankunft regnete es.",
+     "als needs a clause; with a noun: bei"
+    ]
+   ]
+  },
+  {
+   "id": "nominalisierung-praepositionen.09",
+   "concept": "nominalisierung-praepositionen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Trotz ___ Warnungen fuhren viele Leute in die Berge. (die)",
+   "answer": [
+    "der"
+   ],
+   "note": "trotz + genitive plural: der.",
+   "strict_case": false,
+   "near": [
+    [
+     "den",
+     "in writing: trotz + genitive, der"
+    ],
+    [
+     "die",
+     "trotz + genitive: der"
+    ],
+    [
+     "des",
+     "plural genitive: der"
+    ]
+   ]
+  },
+  {
+   "id": "nominalisierung-praepositionen.10",
+   "concept": "nominalisierung-praepositionen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „weil“. Start with „Weil“.",
+   "prompt": "Wegen der hohen Mieten ziehen viele Familien aufs Land.",
+   "answer": [
+    "Weil die Mieten hoch sind, ziehen viele Familien aufs Land."
+   ],
+   "note": "wegen + noun → weil + clause with the verb last.",
+   "strict_case": false,
+   "near": [
+    [
+     "Weil die Mieten sind hoch, ziehen viele Familien aufs Land.",
+     "weil sends the verb to the end"
+    ],
+    [
+     "Weil die Mieten hoch sind, viele Familien ziehen aufs Land.",
+     "after the clause the verb comes first"
+    ],
+    [
+     "Weil der hohen Mieten ziehen viele Familien aufs Land.",
+     "weil needs a clause"
+    ]
+   ]
+  },
+  {
+   "id": "nominalisierung-praepositionen.11",
+   "concept": "nominalisierung-praepositionen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „obwohl“. Start with „Obwohl“.",
+   "prompt": "Trotz seiner Erfahrung fand er lange keine Stelle.",
+   "answer": [
+    "Obwohl er Erfahrung hatte, fand er lange keine Stelle.",
+    "Obwohl er erfahren war, fand er lange keine Stelle."
+   ],
+   "note": "trotz + noun → obwohl + clause with the verb last.",
+   "strict_case": false,
+   "near": [
+    [
+     "Obwohl er hatte Erfahrung, fand er lange keine Stelle.",
+     "obwohl sends the verb to the end"
+    ],
+    [
+     "Obwohl er Erfahrung hatte, er fand lange keine Stelle.",
+     "after the clause the verb comes first"
+    ],
+    [
+     "Obwohl seiner Erfahrung fand er lange keine Stelle.",
+     "obwohl needs a clause"
+    ]
+   ]
+  },
+  {
+   "id": "nominalisierung-praepositionen.12",
+   "concept": "nominalisierung-praepositionen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „wenn“. Start with „Wenn Sie“.",
+   "prompt": "Bei Fragen wenden Sie sich bitte an die Rezeption.",
+   "answer": [
+    "Wenn Sie Fragen haben, wenden Sie sich bitte an die Rezeption."
+   ],
+   "note": "bei + noun → wenn + clause; then the main verb first.",
+   "strict_case": false,
+   "near": [
+    [
+     "Wenn Sie haben Fragen, wenden Sie sich bitte an die Rezeption.",
+     "wenn sends the verb to the end"
+    ],
+    [
+     "Wenn Sie Fragen haben, Sie wenden sich bitte an die Rezeption.",
+     "after the clause the verb comes first"
+    ],
+    [
+     "Wenn Sie Fragen haben, wenden sich Sie bitte an die Rezeption.",
+     "pronoun subject before sich"
+    ]
+   ]
+  }
+ ],
+ "phrases": {}
+}
