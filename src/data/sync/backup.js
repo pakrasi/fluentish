@@ -65,6 +65,27 @@ export const prefixRule = name => (SNAPSHOT_PREFIX.find(([re]) => re.test(name))
 /** The kv names of a profile that match SNAPSHOT_PREFIX, sorted. @param {Record<string, any>} kv @returns {string[]} */
 export const prefixKeys = kv => Object.keys(kv || {}).filter(name => prefixRule(name) !== null).sort();
 
+/**
+ * Saved reading items whose words come from a private text: a phrase he marked (RP:). Their words and meaning
+ * (PRIVATE_ITEM_FIELDS) live only in device-only read.ctx (features/shared/read-data.js); read.words holds the
+ * numbers. A snapshot and an export without "Include reading texts" leave those fields out even of an entry written
+ * before round 4's fix and not yet moved (read-data.js migratePhrases), so they never leave the device.
+ */
+export const PRIVATE_ITEM = /^RP:/;
+export const PRIVATE_ITEM_FIELDS = /** @type {const} */ (['lemma', 'head', 'gloss']);
+/** A saved entry without its private words. @param {any} w */
+export const publicEntry = w => (w && typeof w === 'object' ? { ...w, lemma: '', head: '', gloss: null } : w);
+/**
+ * A collection as it may leave the device: read.words without the words of a marked phrase; anything else as it is.
+ * @param {string} name @param {any} v
+ */
+export function withoutPrivate(name, v) {
+  if (name !== 'read.words' || !v || typeof v !== 'object') return v;
+  /** @type {Record<string, any>} */ const out = {};
+  for (const [id, w] of Object.entries(v)) out[id] = PRIVATE_ITEM.test(id) ? publicEntry(w) : w;
+  return out;
+}
+
 /** Device-scope collection with the backup's state (store.js DEVICE_SCOPE): never exported or uploaded. */
 export const STATE_KV = 'backup';
 export const SNAPSHOT_SCHEMA = 'fluentish-snapshot@1';
@@ -159,7 +180,7 @@ export function snapshotOf(store, { now = Date.now(), build = null } = {}) {
     n += Object.keys(recs).length;
   }
   /** @type {Record<string, any>} */ const kv = {};
-  for (const name of [...Object.keys(SNAPSHOT_KV), ...prefixKeys(store.kv)]) { const v = store.get(name); if (v !== undefined && v !== null) kv[name] = v; }
+  for (const name of [...Object.keys(SNAPSHOT_KV), ...prefixKeys(store.kv)]) { const v = store.get(name); if (v !== undefined && v !== null) kv[name] = withoutPrivate(name, v); }
   return {
     schema: SNAPSHOT_SCHEMA, deviceId: store.device.deviceId, profileId: store.profile.id, at: isoWithOffset(new Date(now)),
     day: store.clock.today(), seq: store.device.seq || 0, build, counts: { cards: n }, cards, kv,

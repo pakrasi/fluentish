@@ -5,20 +5,28 @@
      kv 'reads'        { [readId]: read@1 }   device-only: the texts he pasted (title, source note, sentences), the
                        graded texts he opened (an id, no text), his mode and place in each. Never in a backup, a log or
                        an export unless he ticks "Include reading texts" (data/transfer.js).
-     kv 'read.ctx'     { [cardId]: [{readId, sentenceId, de, surface}] }   device-only: the sentence each saved word or
-                       phrase was met in (at most 3, each at most 240 characters). The review round gaps the word in it.
+     kv 'read.ctx'     { [cardId]: [{readId, sentenceId, de, surface, item?}] }   device-only: the sentence each saved
+                       word or phrase was met in (at most 3, each at most 240 characters). The review round gaps the
+                       word in it. A phrase he marked (RP:) keeps its words and meaning here too, as item {lemma, head,
+                       gloss} on each of its entries; when its text is deleted, one entry without a sentence keeps the
+                       item (readId null, de ''), so the saved phrase can still be reviewed on this device.
      kv 'read.cache'   { [readId]: {q: {promptVersion, model, textHash, items}, tr: {[sentenceId]: en}, gloss} }
                        device-only: what Claude wrote for a text.
      kv 'read.words'   { [cardId]: entry }   backed up (data/sync/backup.js SNAPSHOT_KV, rule fill): what he saved, with
                        no sentence and no title: {lemma, head, gloss, from, level, zipf, kind, home, ref, first, last, n}.
                        first/last/n make it the reading evidence of knowledge.js (data/knowledge.js EVIDENCE_KV.read).
+                       A marked phrase (RP:) is stored here with lemma '', head '' and gloss null: its words are in
+                       read.ctx (savedWords() puts them back for the screens). Entries saved before that fix are moved
+                       once (migratePhrases, practice-read/boot.js), keeping their ids.
      deck '<lang>:read' ('de:read')   the cards of saved items that had no card anywhere else: W:<id> (a listed word or
-                       phrase), RW:<slug> (a word off the list), RP:<slug> (a phrase he marked). A record never holds
-                       text; its card.reviewed events are learning progress and backed up like every other deck's.
+                       phrase), RW:<slug> (a word off the list), RP:h<hash> (a phrase he marked; RP:<slug> before round
+                       4's privacy fix). A record never holds text; its card.reviewed events are learning progress and backed up like every other deck's.
 
    One card per item: an item that already has a card in another deck of the course (b1, clusters, script, build,
    speak) keeps it; saving it while reading only adds the sentence (home names that deck). */
 import { deckId } from '../../domain/decks.js';
+import { PRIVATE_ITEM, PRIVATE_ITEM_FIELDS, publicEntry, scriptText } from '../../data/sync/backup.js';
+import { forget } from '../../core/log.js';
 import * as RD from '../../domain/b1ready.js';
 import * as FS from '../../domain/fsrs.js';
 
@@ -77,26 +85,93 @@ export function updateProgress(store, id, fn) {
   }, {});
 }
 
+/** Whether a saved item's words stay on this device (a phrase he marked: RP:). @param {string} cardId */
+export const isPrivateItem = cardId => PRIVATE_ITEM.test(String(cardId || ''));
+
+/** The private words of an item from its read.ctx entries, or null. @param {any[] | undefined} list @returns {{lemma: string, head: string, gloss: string | null} | null} */
+const itemOf = list => ((list || []).find(x => x && x.item && typeof x.item === 'object') || {}).item || null;
+
+/**
+ * An item's read.ctx entries with its private words on each (a stub entry without a sentence when it has none).
+ * @param {any[]} list @param {{lemma: string, head: string, gloss: string | null}} item
+ */
+const withItem = (list, item) => (list.length ? list.map(x => ({ ...x, item })) : [{ readId: null, sentenceId: null, de: '', surface: '', item }]);
+
 /**
  * Delete a text: its sentences go (a tombstone stays), and so do the sentences of saved words that came from it and
- * what Claude wrote for it. The saved words and their cards stay.
+ * what Claude wrote for it. The saved words and their cards stay (a marked phrase keeps its words in an entry without
+ * a sentence). The error log forgets every line that quotes the text (core/log.js forget), so the next log upload
+ * cannot carry it.
  * @param {any} store @param {string} id
  */
 export function deleteRead(store, id) {
+  const read = allReads(store)[id];
+  const sentences = read && Array.isArray(read.sections) ? read.sections.flatMap((/** @type {any} */ s) => (s && s.sentences) || []).map((/** @type {any} */ x) => x && x.de) : [];
+  const ctxs = store.get(CTX, {}) || {};
+  const quoted = Object.values(ctxs).flat().filter((/** @type {any} */ x) => x && x.readId === id).map((/** @type {any} */ x) => x.de);
+  forget(scriptText({ [`read:${id}`]: { title: read && read.title, sections: [{ sentences: [...sentences, ...quoted].map(de => ({ de })) }] } }));
   store.update(READS, (/** @type {any} */ m) => ({ ...(m || {}), [id]: { id, deletedAt: new Date().toISOString(), rev: Date.now() } }), {});
   store.update(CTX, (/** @type {any} */ m) => {
     /** @type {Record<string, any[]>} */ const out = {};
-    for (const [k, list] of Object.entries(m || {})) { const keep = (/** @type {any[]} */ (list) || []).filter(x => x && x.readId !== id); if (keep.length) out[k] = keep; }
+    for (const [k, list] of Object.entries(m || {})) {
+      const all = /** @type {any[]} */ (list) || [];
+      const keep = all.filter(x => x && x.readId !== id);
+      const item = isPrivateItem(k) ? itemOf(all) : null;
+      if (item) out[k] = withItem(keep.filter(x => x.de), item);
+      else if (keep.length) out[k] = keep;
+    }
     return out;
   }, {});
   store.update(CACHE, (/** @type {any} */ m) => { const n = { ...(m || {}) }; delete n[id]; return n; }, {});
 }
 
-/** The saved items. @param {any} store @returns {Record<string, ReadWord>} */
-export const savedWords = store => store.get(WORDS, {}) || {};
+/**
+ * The saved items, as the screens read them: a marked phrase with its words from read.ctx (on this device only).
+ * @param {any} store @returns {Record<string, ReadWord>}
+ */
+export function savedWords(store) {
+  const ws = store.get(WORDS, {}) || {};
+  const ctxs = store.get(CTX, {}) || {};
+  /** @type {Record<string, ReadWord> | null} */ let out = null;
+  for (const id of Object.keys(ws)) {
+    if (!isPrivateItem(id)) continue;
+    const item = itemOf(ctxs[id]);
+    if (!item) continue;
+    const o = out || (out = { ...ws });
+    o[id] = { ...ws[id], lemma: item.lemma || ws[id].lemma || '', head: item.head || ws[id].head || '', gloss: item.gloss ?? ws[id].gloss ?? null };
+  }
+  return out || ws;
+}
 
-/** The sentences an item was saved in, newest first. @param {any} store @param {string} cardId @returns {any[]} */
-export const contextOf = (store, cardId) => ((store.get(CTX, {}) || {})[cardId] || []);
+/** The sentences an item was saved in, newest first (an entry kept only for a phrase's words has none). @param {any} store @param {string} cardId @returns {any[]} */
+export const contextOf = (store, cardId) => ((store.get(CTX, {}) || {})[cardId] || []).filter((/** @type {any} */ x) => x && x.de);
+
+/**
+ * Move the words of phrases saved before round 4's privacy fix out of read.words (backed up) into read.ctx (this
+ * device): the card ids stay as they are (RP:<slug>, never re-keyed); words already in read.ctx are kept. Idempotent.
+ * @param {any} store @returns {number} entries moved
+ */
+export function migratePhrases(store) {
+  const ws = store.get(WORDS, {}) || {};
+  const ids = Object.keys(ws).filter(id => isPrivateItem(id) && ws[id] && PRIVATE_ITEM_FIELDS.some(f => ws[id][f]));
+  if (!ids.length) return 0;
+  // the words reach read.ctx first, so nothing is lost if the second write never happens
+  store.update(CTX, (/** @type {any} */ m) => {
+    const out = { ...(m || {}) };
+    for (const id of ids) {
+      const w = ws[id], have = itemOf(out[id]);
+      const item = { lemma: have?.lemma || w.lemma || '', head: have?.head || w.head || w.lemma || '', gloss: have?.gloss ?? w.gloss ?? null };
+      out[id] = withItem(out[id] || [], item);
+    }
+    return out;
+  }, {});
+  store.update(WORDS, (/** @type {any} */ m) => {
+    const out = { ...(m || {}) };
+    for (const id of ids) if (out[id]) out[id] = publicEntry(out[id]);
+    return out;
+  }, {});
+  return ids.length;
+}
 
 /**
  * Save an item while reading: its entry in read.words (first, last, n) and its sentence in read.ctx (device-only, at
@@ -106,28 +181,39 @@ export const contextOf = (store, cardId) => ((store.get(CTX, {}) || {})[cardId] 
  * @returns {ReadWord}
  */
 export function saveWord(store, { cardId, entry, today, ctx }) {
-  /** @type {ReadWord} */ let out = /** @type {any} */ (null);
-  store.update(WORDS, (/** @type {any} */ m) => {
-    const cur = (m || {})[cardId];
-    out = cur
-      ? { ...cur, ...entry, gloss: entry.gloss || cur.gloss, from: entry.gloss ? entry.from : cur.from, home: cur.home && cur.home !== entry.home && entry.home === '' ? cur.home : entry.home || cur.home,
-        ref: cur.ref && entry.ref, first: cur.first || today, last: today, n: (cur.n || 0) + 1 }
-      : { ...entry, first: today, last: today, n: 1 };
-    return { ...(m || {}), [cardId]: out };
-  }, {});
-  if (ctx) {
-    const one = { readId: ctx.readId, sentenceId: ctx.sentenceId, de: String(ctx.de || '').slice(0, CTX_CHARS), surface: String(ctx.surface || '').slice(0, 60) };
+  const priv = isPrivateItem(cardId);
+  const cur = savedWords(store)[cardId];
+  /** @type {ReadWord} */ const out = cur
+    ? { ...cur, ...entry, gloss: entry.gloss || cur.gloss, from: entry.gloss ? entry.from : cur.from, home: cur.home && cur.home !== entry.home && entry.home === '' ? cur.home : entry.home || cur.home,
+      ref: cur.ref && entry.ref, first: cur.first || today, last: today, n: (cur.n || 0) + 1 }
+    : { ...entry, first: today, last: today, n: 1 };
+  // a marked phrase: its words go to read.ctx first (this device), read.words gets the entry without them
+  const one = ctx ? { readId: ctx.readId, sentenceId: ctx.sentenceId, de: String(ctx.de || '').slice(0, CTX_CHARS), surface: String(ctx.surface || '').slice(0, 60) } : null;
+  if (one || priv) {
     store.update(CTX, (/** @type {any} */ m) => {
-      const list = ((m || {})[cardId] || []).filter((/** @type {any} */ x) => !(x.readId === one.readId && x.sentenceId === one.sentenceId));
-      return { ...(m || {}), [cardId]: [one, ...list].slice(0, CTX_MAX) };
+      const was = ((m || {})[cardId] || []);
+      const list = one ? [one, ...was.filter((/** @type {any} */ x) => x && x.de && !(x.readId === one.readId && x.sentenceId === one.sentenceId))].slice(0, CTX_MAX) : was;
+      return { ...(m || {}), [cardId]: priv ? withItem(list.filter((/** @type {any} */ x) => x && x.de), { lemma: out.lemma, head: out.head, gloss: out.gloss ?? null }) : list };
     }, {});
   }
+  store.update(WORDS, (/** @type {any} */ m) => ({ ...(m || {}), [cardId]: priv ? publicEntry(out) : out }), {});
   return out;
 }
 
-/** Change a saved item's fields (a meaning he typed, reference or review). @param {any} store @param {string} cardId @param {Partial<ReadWord>} patch */
+/** Change a saved item's fields (a meaning he typed, reference or review); a marked phrase's words stay in read.ctx. @param {any} store @param {string} cardId @param {Partial<ReadWord>} patch */
 export function patchWord(store, cardId, patch) {
-  store.update(WORDS, (/** @type {any} */ m) => ((m || {})[cardId] ? { ...(m || {}), [cardId]: { ...m[cardId], ...patch } } : (m || {})), {});
+  if (!(store.get(WORDS, {}) || {})[cardId]) return;
+  /** @type {Record<string, any>} */ const pub = { ...patch };
+  if (isPrivateItem(cardId)) {
+    /** @type {Record<string, any>} */ const mine = {};
+    for (const f of PRIVATE_ITEM_FIELDS) if (f in pub) { mine[f] = pub[f]; delete pub[f]; }
+    if (Object.keys(mine).length) {
+      const w = savedWords(store)[cardId];
+      store.update(CTX, (/** @type {any} */ m) => ({ ...(m || {}), [cardId]: withItem(((m || {})[cardId] || []).filter((/** @type {any} */ x) => x && x.de),
+        { lemma: w.lemma, head: w.head, gloss: w.gloss ?? null, ...mine }) }), {});
+    }
+  }
+  store.update(WORDS, (/** @type {any} */ m) => ((m || {})[cardId] ? { ...(m || {}), [cardId]: { ...m[cardId], ...pub } } : (m || {})), {});
 }
 
 /**

@@ -43,6 +43,19 @@ export function log(where, err) {
 
 export const entries = () => [...ring];
 
+/**
+ * Drop every entry whose message or place matches (a deleted reading text or conversation: its sentences must not
+ * stay in the ring, which is uploaded once a day). Saved at once. @param {(text: string) => boolean} match
+ * @returns {number} entries dropped
+ */
+export function forget(match) {
+  const before = ring.length;
+  ring = ring.filter(e => !match(e.message) && !match(e.where));
+  const n = before - ring.length;
+  if (n && sink) { if (timer) clearTimeout(timer); timer = null; sink.putKV('device', 'log', ring).catch(() => { /* storage is gone: the log stays in memory */ }); }
+  return n;
+}
+
 /** Write the ring a second after the last entry (errors come in bursts). */
 function save() {
   if (!sink) return;

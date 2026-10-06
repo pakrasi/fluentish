@@ -17,6 +17,8 @@ import { packFor } from '../../core/lang.js';
 import { langCode } from '../../data/settings.js';
 import * as C from '../../domain/conversation.js';
 import { config } from '../../core/config.js';
+import { forget } from '../../core/log.js';
+import { scriptText } from '../../data/sync/backup.js';
 
 export const SESSIONS = 'conv.sessions';
 export const TRANSCRIPTS = 'conv.transcripts';
@@ -51,6 +53,7 @@ export const SPEND = 'conv.spend';
  * @property {boolean} closing      the closing note has been sent
  * @property {boolean} counted      its minutes went into the activity log
  * @property {number} cards         mistakes added as cards
+ * @property {number} [feedbackTries] feedback requests billed (round 4: past the monthly cap, no second one)
  * @property {'open' | 'ended' | 'finished'} status
  * @property {string | null} deletedAt
  */
@@ -76,8 +79,19 @@ export const getFeedback = (store, id) => (store.get(FEEDBACK, {}) || {})[id] ||
 /** @param {any} store @param {any} fb */
 export const putFeedback = (store, fb) => store.update(FEEDBACK, (/** @type {any} */ all) => ({ ...(all || {}), [fb.sessionId]: fb }), {});
 
-/** Delete a conversation: its transcript and feedback go; the session's numbers stay, marked deleted; its cards stay. @param {any} store @param {string} id */
+/**
+ * Delete a conversation: its transcript and feedback go; the session's numbers stay, marked deleted; its cards stay.
+ * The error log forgets every line that quotes it (core/log.js forget), so the next log upload cannot carry it.
+ * @param {any} store @param {string} id
+ */
 export function deleteConversation(store, id) {
+  const tr = getTranscript(store, id);
+  const fb = getFeedback(store, id);
+  if (tr || fb) {
+    const quoted = [...(tr && Array.isArray(tr.turns) ? tr.turns.map((/** @type {any} */ x) => String(x && x.text || '').replace(/<\/?r\b[^>]*>/g, '')) : []),
+      ...(fb ? JSON.stringify(fb.raw || {}).match(/"(?:[^"\\]|\\.){12,}"/g) || [] : []).map(q => q.slice(1, -1))];
+    forget(scriptText({ [`conv:${id}`]: { title: tr && typeof tr.title === 'string' ? tr.title : null, sections: [{ sentences: quoted.map(de => ({ de })) }] } }));
+  }
   store.update(TRANSCRIPTS, (/** @type {any} */ all) => { const n = { ...(all || {}) }; delete n[id]; return n; }, {});
   store.update(FEEDBACK, (/** @type {any} */ all) => { const n = { ...(all || {}) }; delete n[id]; return n; }, {});
   patchSession(store, id, { deletedAt: new Date().toISOString() });

@@ -7,6 +7,7 @@ import { validate } from '../core/schema.js';
 import { mergeSettings } from './settings.js';
 import { planMigration } from './migrate.js';
 import { isMonthKey, mergeMonth } from '../domain/progress.js';
+import { withoutPrivate } from './sync/backup.js';
 
 const SCHEMA = {
   type: 'object', required: ['schema', 'exportedAt', 'profile', 'kv', 'cards', 'attempts', 'events'],
@@ -15,7 +16,10 @@ const SCHEMA = {
     kv: { type: 'object' }, cards: { type: 'object' }, attempts: { type: 'array' }, events: { type: 'array' },
   },
 };
-const NOT_EXPORTED = new Set(['secrets', 'prefs', 'palace', 'backup', 'progress.device', 'hours.external', 'exams.vocabAudio']);   // the word-audio index is a cache of the results repo; backup is device state
+// the word-audio index is a cache of the results repo; backup is device state; exam.window (the exam window's recap),
+// today.anyway (Study anyway, a day's choice) and conv.spend (this device's Claude spend) belong to this device: an
+// imported recap mark could suppress the recap on a new device, and spend is counted per device
+export const NOT_EXPORTED = new Set(['secrets', 'prefs', 'palace', 'backup', 'progress.device', 'hours.external', 'exams.vocabAudio', 'exam.window', 'today.anyway', 'conv.spend']);
 
 // Script mode (features/practice/script): his scripts are private to the device and leave it only when he ticks
 // "Include scripts": their collections, the 'script' deck and the reviews marked local.
@@ -39,7 +43,8 @@ export function exportBundle(store, { profile, includeScripts = false, includeRe
     schema: 'fluentish-export@1',
     exportedAt: new Date().toISOString(),
     profile: { id: profile.id, name: profile.name, createdAt: profile.createdAt },
-    kv: Object.fromEntries(Object.entries(store.kv).filter(([k]) => !NOT_EXPORTED.has(k) && !CONV_KV.has(k) && (includeScripts || !SCRIPT_KV.has(k)) && (includeReads || !READ_KV.has(k)))),
+    kv: Object.fromEntries(Object.entries(store.kv).filter(([k]) => !NOT_EXPORTED.has(k) && !CONV_KV.has(k) && (includeScripts || !SCRIPT_KV.has(k)) && (includeReads || !READ_KV.has(k)))
+      .map(([k, v]) => [k, includeReads ? v : withoutPrivate(k, v)])),
     cards: includeScripts ? store.cardsByDeck : Object.fromEntries(Object.entries(store.cardsByDeck).filter(([d]) => !SCRIPT_DECKS.has(d))),
     attempts: store.attempts(),
     events: [...events.values()].sort((a, b) => (a.seq || 0) - (b.seq || 0)).filter(e => includeScripts || !(e && e.payload && e.payload.local)),
@@ -86,9 +91,10 @@ export async function importFile(text, { store, bus }) {
     for (const [k, v] of Object.entries(data.kv)) {
       if (NOT_EXPORTED.has(k) || CONV_KV.has(k)) continue;
       if (k === 'settings') { store.set('settings', mergeSettings(store.get('settings'), v)); bus?.emit('settings:changed', { key: '*' }); }
-      // scripts merge by id, so a file made with "Include scripts" never leaves its script cards without their
-      // script on a device that already has scripts (the device's own copy of the same id wins)
-      else if (SCRIPT_KV.has(k) && v && typeof v === 'object' && !Array.isArray(v)) store.update(k, (/** @type {any} */ m) => ({ ...v, ...(m || {}) }), {});
+      // scripts and reading texts merge by id, so a file made with "Include scripts" never leaves its script cards
+      // without their script on a device that already has scripts, and an import never drops the texts already here
+      // (the device's own copy of the same id wins)
+      else if ((SCRIPT_KV.has(k) || READ_KV.has(k)) && v && typeof v === 'object' && !Array.isArray(v)) store.update(k, (/** @type {any} */ m) => ({ ...v, ...(m || {}) }), {});
       // the progress log merges per day (domain/progress.js), like the backup's restore
       else if (isMonthKey(k) && v && typeof v === 'object') store.set(k, mergeMonth(store.get(k) ?? null, v));
       else if (store.get(k) == null) store.set(k, v);

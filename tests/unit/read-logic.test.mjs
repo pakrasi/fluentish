@@ -114,7 +114,12 @@ test('triage: rare words above his level are kept for reference; common ones, ph
   assert.equal(L.triage({ zipf: null, level: null, kind: 'word' }, 'B1'), 'review', 'off the list');
   assert.equal(L.triage({ zipf: 1, level: 'C2', kind: 'phrase' }, 'B1'), 'review');
   assert.equal(L.itemFor({ kind: 'word', lemma: 'Quaxelei', entry: null }), 'RW:quaxelei');
-  assert.equal(L.itemFor({ kind: 'phrase', lemma: 'auf dem Schirm haben', entry: null }), 'RP:auf-dem-schirm-haben');
+  // a marked phrase's id is a hash, never its words (round 4 privacy, audit P1-4); the same phrase, the same id
+  const rp = L.itemFor({ kind: 'phrase', lemma: 'auf dem Schirm haben', entry: null });
+  assert.match(rp, /^RP:h[0-9a-z]{11}$/);
+  assert.equal(L.itemFor({ kind: 'phrase', lemma: 'Auf dem  Schirm haben!', entry: null }), rp, 'case and punctuation do not change it (keyed on the slug, as before)');
+  assert.notEqual(L.itemFor({ kind: 'phrase', lemma: 'auf dem Schirm hatten', entry: null }), rp);
+  assert.ok(!/schirm/i.test(rp));
   assert.equal(L.itemFor({ kind: 'phrase', lemma: 'x', entry: /** @type {any} */ ({ id: 'eine_Rolle_spielen.phrase' }) }), 'W:eine_Rolle_spielen.phrase');
 });
 

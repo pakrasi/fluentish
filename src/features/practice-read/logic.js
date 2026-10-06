@@ -17,7 +17,7 @@ import { parseScript, idMaker } from '../../domain/script/parse.js';
 import { tokenize, splitSentences } from '../../domain/text/tokens.js';
 import { classify, capSuggest } from '../../domain/text/suggest.js';
 import { personalCoverage, levelRank, LEVELS, bandOf } from '../../domain/text/estimate.js';
-import { slug } from '../../domain/itemids.js';
+import { slug, phraseKey } from '../../domain/itemids.js';
 import { fnv1a } from '../../data/ids.js';
 
 /** @typedef {import('../../lang/types.js').LanguagePack} LanguagePack */
@@ -261,12 +261,13 @@ export function phrasesIn(lemmas, phrases) {
 
 /**
  * The card id of a saved item: the word list's W: id for a listed word or phrase (the same card everywhere), RW:<slug>
- * for a word off the list, RP:<slug> for a phrase he marked.
+ * for a word off the list, RP:h<hash> for a phrase he marked (domain/itemids.js phraseKey: the id holds no words of
+ * the text; the phrase itself stays in device-only read.ctx, features/shared/read-data.js).
  * @param {{kind: 'word' | 'phrase', lemma: string, entry: Word | null}} o
  */
 export function itemFor({ kind, lemma, entry }) {
   if (entry && entry.id) return `W:${entry.id}`;
-  return `${kind === 'phrase' ? 'RP' : 'RW'}:${slug(lemma)}`;
+  return kind === 'phrase' ? `RP:${phraseKey(lemma)}` : `RW:${slug(lemma)}`;
 }
 
 /**

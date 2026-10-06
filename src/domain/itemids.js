@@ -27,7 +27,9 @@
    rehearsals) and SW:<slug> (script words not in the list) in deck 'script'.
    Reading (round 4) saves to deck '<lang>:read': W:<word id> for a listed word, and
      RW:<slug>        a word read and saved that is not in the word list   area words
-     RP:<slug>        a phrase read and saved (not in the chunk bank)       area speaking
+     RP:h<hash>       a phrase read and saved (not in the chunk bank)       area speaking
+                      (phraseKey: a hash of the phrase, so the id never holds the text of a private reading text;
+                      phrases saved before round 4's privacy fix keep their RP:<slug> ids, never re-keyed)
 
    Pure; tested in node (tests/unit/practice-ids.test.mjs). */
 
@@ -78,6 +80,22 @@ export function kindOf(id) {
   const tag = tagOf(id);
   return tag ? { tag, ...TAGS[tag] } : null;
 }
+
+/**
+ * A 53-bit hash of a string (cyrb53), as 11 base-36 characters. Not for security: the same phrase gives the same id on
+ * every device, so someone who guesses a phrase word for word can confirm it; the id itself holds no text.
+ * @param {string} str
+ */
+export function hash53(str) {
+  let h1 = 0xdeadbeef, h2 = 0x41c6ce57;
+  for (let i = 0; i < str.length; i++) { const ch = str.charCodeAt(i); h1 = Math.imul(h1 ^ ch, 2654435761); h2 = Math.imul(h2 ^ ch, 1597334677); }
+  h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^ Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+  h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^ Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+  return (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(36).padStart(11, '0');
+}
+
+/** The key of a phrase he marked while reading (RP:<key>): 'h' and a hash of its slug, never its words. @param {string} text */
+export const phraseKey = text => `h${hash53(slug(text))}`;
 
 /** ASCII slug for ids: umlauts spelled out, everything else to '-'. @param {string} s */
 export const slug = s => String(s).normalize('NFC').toLowerCase()

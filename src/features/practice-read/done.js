@@ -1,6 +1,7 @@
 /* Reading: the finish screen (#/practice/read/<id>/done). What he read (words, minutes, look-ups), the questions'
    score, the items he saved from this text, and what next: the reading round, "Learn to say it" (a copy of the text
-   as a Retell script in Scripts, which turns it into something he can say), the library. */
+   as a Retell script in Scripts, which turns it into something he can say), the library. A pasted text can be
+   deleted here (features/shared/read-data.js deleteRead). */
 import { h, replace } from '../../core/dom.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
 import * as St from '../../data/scripts.js';
@@ -53,7 +54,15 @@ export async function mountDone(el, ctx, read) {
       say,
       h('a', { class: 'btn btn-quiet pressable', href: '#/practice/read' }, t('read.toLibrary'))),
     h('p', { class: 'caption', lang: langAttr(), dir: dirAttr() }, r.title),
-    h('p', { class: 'caption' }, t('read.done.sayHint'))));
+    h('p', { class: 'caption' }, t('read.done.sayHint')),
+    // a pasted text can be deleted (its sentences leave this device and the error log; the saved words stay)
+    r.source?.kind !== 'graded' ? h('div', { class: 'rd-tail' }, h('button', { type: 'button', class: 'btn btn-quiet pressable rd-delete', onclick: (/** @type {Event} */ e) => {
+      const b = /** @type {HTMLButtonElement} */ (e.currentTarget);
+      if (b.dataset.sure !== '1') { b.dataset.sure = '1'; b.textContent = t('read.delete.sure'); return; }
+      R.deleteRead(store, r.id);
+      ctx.toast(t('read.delete.done'));
+      ctx.go('/practice/read');
+    } }, t('read.delete'))) : null));
   const stop = hero.start();
   requestAnimationFrame(() => list?.classList.add('is-in'));
   return () => stop();
