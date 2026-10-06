@@ -48,7 +48,7 @@ export async function mount(el, ctx) {
   /** Hours on an axis. @param {number} v */
   const hAxis = v => t('pg.h', { h: Number.isInteger(v) ? v : v.toFixed(1) });
   const signed = (/** @type {number} */ n) => `${n > 0 ? '+' : n < 0 ? '−' : ''}${nf.format(Math.abs(n))}`;
-  const monthOf = (/** @type {string} */ d) => (D8.parse(d).getDate() <= 7 ? new Intl.DateTimeFormat('en-GB', { month: 'short' }).format(D8.parse(d)) : null);
+  const monthOf = (/** @type {string} */ d) => (D8.parse(d).getDate() <= 7 ? new Intl.DateTimeFormat('en-GB', { month: 'short' }).format(D8.parse(d)).replace(/^Sept$/, 'Sep') : null);
 
   const back = h('a', { class: 'pg-back pressable', href: '#/today' }, icon('back', { size: 16 }), t('pg.back'));
   const page = h('div', { class: 'progress' });
@@ -67,8 +67,12 @@ export async function mount(el, ctx) {
     stops = [];
     const ps = course ? M.points(recorded(store, course.id)) : [];
     if (ps.length < 2) {
+      // the Words known frame, empty: axes and the grid, so the page shows what will fill in
+      const fr = C.frame(C.emptyLine({ text: t('pg.firstWeek'), aria: t('pg.emptyAria') }));
+      stops.push(fr.stop);
       replace(page, back, h('header', { class: 'page-head' }, h('h1', null, t('pg.title'))),
-        h('p', { class: 'lead pg-empty' }, t(ps.length ? 'pg.one' : 'pg.empty')), tip.el);
+        h('p', { class: 'pg-empty' }, t(ps.length ? 'pg.one' : 'pg.empty')),
+        h('section', { class: 'section pg-sec pg-empty-sec', 'aria-label': t('pg.known.title') }, h('p', { class: 'pg-empty-title', 'aria-hidden': 'true' }, t('pg.known.title')), fr.el), tip.el);
       return;
     }
     const first = ps[0].day;
@@ -91,12 +95,15 @@ export async function mount(el, ctx) {
       kpi(sum.learnt, x => nf.format(x), t('pg.kpi.learnt')),
       kpi(sum.min, x => hm(x), t('pg.kpi.time')));
 
+    // rows that compare sit side by side from 960 px: how much I know; the two weekly columns; study days across;
+    // the goal and the milestones. On a phone they stack in the same order.
+    const kinds = kindSection(ws);
     replace(body,
-      h('div', { class: 'pg-cols' },
-        h('div', { class: 'pg-col' }, knownSection(ps, inRange, from, exactFrom, all, animate), levelsSection(inRange, ws, from), learntSection(ws, sum, animate)),
-        h('div', { class: 'pg-col' }, timeSection(ws, from, animate), daysSection(ps, from))),
-      goalSection(ps, exactFrom),
-      milestonesSection(all, exactFrom),
+      h('div', { class: 'pg-row' }, knownSection(ps, inRange, from, exactFrom, all, animate), levelsSection(inRange, ws, from)),
+      h('div', { class: 'pg-row pg-row-weekly' }, learntSection(ws, sum, animate), timeSection(ws, from, animate)),
+      daysSection(ps, from),
+      kinds,
+      h('div', { class: 'pg-row' }, goalSection(ps, exactFrom), milestonesSection(all, exactFrom)),
       logSection(ws));
     replace(page, back,
       h('header', { class: 'page-head' }, h('h1', null, t('pg.title'))),
@@ -115,12 +122,14 @@ export async function mount(el, ctx) {
     for (const c of M.poolChanges(ps)) if (c.day >= start) marks.push({ day: c.day, kind: 'pool', text: t('pg.known.pool', { n: signed(c.delta) }) });
     const pts = inRange.map(p => ({ day: p.day, v: p.known, est: p.est }));
     const fr = C.frame(C.lineChart({
-      points: pts, from: start, to: today, yFormat: v => nf.format(v), marks, tipEl: tip,
+      points: pts, from: start, to: today, yFormat: v => nf.format(v), marks, tipEl: tip, endLabel: p => nf.format(p.v),
       tip: p => [{ value: t(p.est ? 'pg.known.tipEst' : 'pg.known.tip', { n: nf.format(p.v) }), label: label(p.day) }],
       aria: t('pg.known.aria', { from: label(start), to: label(last.day), a: nf.format(pts[0]?.v ?? 0), b: nf.format(last.known) }),
     }));
     stops.push(fr.stop);
-    if (animate) requestAnimationFrame(() => C.drawIn(/** @type {any} */ (fr.svg())?.line || null));
+    if (animate) requestAnimationFrame(() => C.drawIn(fr.svg()));
+    // Today's Progress row and this chart share a name: opening the page morphs the small line into this one
+    fr.el.classList.add('pg-known-frame');
     const est = inRange.some(p => p.est);
     const key = (/** @type {string} */ cls) => { const v = C.s('svg', { class: 'pg-key', viewBox: '0 0 22 10', width: 22, height: 10, 'aria-hidden': 'true' }); v.append(cls === 'est' ? C.s('line', { class: 'pg-line pg-est', x1: 2, x2: 20, y1: 5, y2: 5 }) : C.s('rect', { class: 'pg-diamond', x: 7, y: 1.5, width: 7, height: 7, transform: 'rotate(45 10.5 5)' })); return v; };
     const sec = section(t('pg.known.title'),
@@ -148,7 +157,7 @@ export async function mount(el, ctx) {
       }), { min: 120 });
       stops.push(fr.stop);
       return h('div', { class: 'pg-multiple' },
-        h('p', { class: 'pg-m-head' }, h('b', null, L), h('span', { class: 'caption tnum' }, t('pg.levels.of', { k: nf.format(last.lk[i]), n: nf.format(last.ln[i]) }))),
+        h('p', { class: 'pg-m-head' }, h('b', null, L, ' ', h('span', { class: 'pg-m-share tnum' }, `${Math.round((last.lk[i] / last.ln[i]) * 100)}%`)), h('span', { class: 'caption tnum' }, t('pg.levels.of', { k: nf.format(last.lk[i]), n: nf.format(last.ln[i]) }))),
         fr.el,
         h('p', { class: 'caption tnum' }, t('pg.levels.change', { d: signed(last.lk[i] - firstP.lk[i]) })));
     }).filter(Boolean);
@@ -167,8 +176,10 @@ export async function mount(el, ctx) {
   /* ---------- learnt per week ---------- */
   function learntSection(/** @type {M.Week[]} */ ws, /** @type {ReturnType<typeof M.summary>} */ sum, /** @type {boolean} */ animate) {
     const cols = ws.map(w => ({ key: w.mon, v: w.learnt, partial: w.partial, label: label(w.mon) }));
+    const avg = M.weeklyAverage(ws.map(w => ({ min: w.learnt, partial: w.partial })), 8);
     const fr = C.frame(C.columns({
-      cols, yFormat: v => nf.format(v), tipEl: tip, xLabel: c => monthOf(c.key),
+      cols, yFormat: v => nf.format(v), tipEl: tip, xLabel: c => monthOf(c.key), soFar: t('pg.soFar'),
+      avg: avg ? { v: avg, text: t('pg.avg', { v: nf.format(avg) }) } : null,
       tip: c => [{ value: t('pg.learnt.tip', { n: nf.format(c.v) }), label: `${t('pg.log.week', { day: c.label })}${c.partial ? `, ${t('pg.soFar')}` : ''}` }],
       aria: t('pg.learnt.aria', { n: ws.length, total: nf.format(sum.learnt) }),
     }));
@@ -193,12 +204,18 @@ export async function mount(el, ctx) {
       else trackedTime(holder, from, anim);
     };
     fill(animate);
-    const sec = section(t('pg.time.title'), h('div', { class: 'pg-seg-row' }, sourceSeg), holder);
-    sec.classList.add('pg-sec');
+    const sec = section(t('pg.time.title'), holder);
+    sec.classList.add('pg-sec', 'pg-time-sec');
+    // the source switch sits in the heading's row, so this chart's plot lines up with Learnt per week beside it
+    const head = h('div', { class: 'pg-sec-head' });
+    const h2 = /** @type {HTMLElement} */ (sec.querySelector('h2'));
+    h2.replaceWith(head);
+    head.append(h2, h('div', { class: 'pg-seg-row' }, sourceSeg));
     return sec;
   }
 
   function appTime(/** @type {M.Week[]} */ ws, /** @type {boolean} */ animate) {
+    const groups = /** @type {string[]} */ ([...M.GROUPS, 'other']).filter(g => ws.some(w => w.groups[g] > 0));
     const settings = normalizeSettings(store.get('settings'));
     const week = courseWeek(settings);
     const plan = week ? weekMinutes(week) : 0;
@@ -207,13 +224,26 @@ export async function mount(el, ctx) {
     const byMon = new Map(ws.map(w => [w.mon, w]));
     const fr = C.frame(C.columns({
       cols, yFormat: hAxis, tipEl: tip, xLabel: c => monthOf(c.key), ref: plan ? { v: plan / 60, text: t('pg.time.plan', { t: hm(plan) }) } : null,
+      soFar: t('pg.soFar'), avg: avg != null ? { v: avg / 60, text: t('pg.avg', { v: hm(avg) }) } : null,
       tip: c => { const w = /** @type {M.Week} */ (byMon.get(c.key)); return [{ value: t('pg.time.tip', { t: hm(w.min), d: w.days }), label: `${t('pg.log.week', { day: c.label })}${c.partial ? `, ${t('pg.soFar')}` : ''}` }]; },
       aria: t('pg.time.aria', { n: ws.length }),
     }));
     stops.push(fr.stop);
     if (animate) requestAnimationFrame(() => C.riseIn(fr.svg()));
-    // by kind: small multiples on one scale, one per group with minutes in the range
+    return [
+      h('p', { class: 'caption section-sub' }, t('pg.time.appSub'), ' ', avg != null ? t('pg.time.avg', { t: hm(avg) }) : null),
+      fr.el,
+      plan ? h('p', { class: 'caption pg-note' }, t('pg.time.planNote', { t: hm(plan) })) : null,
+      C.tableTwin(t('pg.table'), t('pg.time.caption'), [t('pg.th.week'), t('pg.th.time'), ...groups.map(g => t(`pg.group.${g}`)), t('pg.th.days'), t('pg.th.devices')],
+        ws.slice().reverse().map(w => [label(w.mon) + (w.partial ? ` (${t('pg.soFar')})` : ''), hm(w.min), ...groups.map(g => hm(w.groups[g])), w.days, w.devices]),
+        { numeric: Array.from({ length: groups.length + 3 }, (_, i) => i + 1) }),
+    ];
+  }
+
+  /* ---------- time in Fluentish by kind: small multiples on one scale, across the page from 960 px ---------- */
+  function kindSection(/** @type {M.Week[]} */ ws) {
     const groups = /** @type {string[]} */ ([...M.GROUPS, 'other']).filter(g => ws.some(w => w.groups[g] > 0));
+    if (!groups.length) return null;
     const top = Math.max(0, ...ws.flatMap(w => groups.map(g => w.groups[g] / 60)));
     const multiples = groups.map(g => {
       const total = ws.reduce((n, w) => n + w.groups[g], 0);
@@ -226,17 +256,11 @@ export async function mount(el, ctx) {
       return h('div', { class: 'pg-multiple' },
         h('p', { class: 'pg-m-head' }, h('b', null, t(`pg.group.${g}`)), h('span', { class: 'caption tnum' }, hm(total))), kfr.el);
     });
-    return [
-      h('p', { class: 'caption section-sub' }, t('pg.time.appSub'), ' ', avg != null ? t('pg.time.avg', { t: hm(avg) }) : null),
-      fr.el,
-      plan ? h('p', { class: 'caption pg-note' }, t('pg.time.planNote', { t: hm(plan) })) : null,
-      groups.length ? h('h3', { class: 'pg-h3' }, t('pg.time.byKind')) : null,
-      groups.length ? h('p', { class: 'caption' }, t('pg.time.byKindSub'), groups.includes('practice') ? ` ${t('pg.group.practiceSub')}` : '') : null,
-      groups.length ? h('div', { class: 'pg-multiples pg-multiples-kind' }, multiples) : null,
-      C.tableTwin(t('pg.table'), t('pg.time.caption'), [t('pg.th.week'), t('pg.th.time'), ...groups.map(g => t(`pg.group.${g}`)), t('pg.th.days'), t('pg.th.devices')],
-        ws.slice().reverse().map(w => [label(w.mon) + (w.partial ? ` (${t('pg.soFar')})` : ''), hm(w.min), ...groups.map(g => hm(w.groups[g])), w.days, w.devices]),
-        { numeric: Array.from({ length: groups.length + 3 }, (_, i) => i + 1) }),
-    ];
+    const sec = section(t('pg.time.byKind'),
+      h('p', { class: 'caption section-sub' }, t('pg.time.byKindSub'), groups.includes('practice') ? ` ${t('pg.group.practiceSub')}` : ''),
+      h('div', { class: 'pg-multiples pg-multiples-kind' }, multiples));
+    sec.classList.add('pg-sec', 'pg-kind-sec');
+    return sec;
   }
 
   /** The study hours file: read once a day (a copy stays on the device), drawn on its own. */
@@ -246,8 +270,10 @@ export async function mount(el, ctx) {
     const lang = src.lang || langIdOf(course?.lang || 'de') || 'german';
     const url = M.hoursUrl(src);
     const have = url ? cached(store, url) : null;
-    const draw = (/** @type {import('./hours.js').Cached | null} */ data, /** @type {string | null} */ error, /** @type {boolean} */ loading) => {
-      if (!holder.isConnected && !loading) return;
+    // Every branch ends in the chart or a status line, never an empty holder. The first draw runs before the holder is
+    // in the page (a range switch builds the section first), so only a late answer checks that it is still shown.
+    const draw = (/** @type {import('./hours.js').Cached | null} */ data, /** @type {string | null} */ error, /** @type {boolean} */ loading, late = false) => {
+      if (late && !holder.isConnected) return;
       /** @type {any[]} */ const parts = [h('p', { class: 'caption section-sub' }, t('pg.hours.sub', { lang: cap(lang) }))];
       if (data) {
         const byDay = M.hoursByDay({ entries: data.entries }, lang);
@@ -260,6 +286,7 @@ export async function mount(el, ctx) {
           const byMon = new Map(hw.map(w => [w.mon, w]));
           const fr = C.frame(C.columns({
             cols: hw.map(w => ({ key: w.mon, v: w.min / 60, partial: w.partial, label: label(w.mon) })), yFormat: hAxis, tipEl: tip, xLabel: c => monthOf(c.key),
+            soFar: t('pg.soFar'), avg: avg != null ? { v: avg / 60, text: t('pg.avg', { v: hm(avg) }) } : null,
             tip: c => { const w = /** @type {any} */ (byMon.get(c.key)); return [{ value: t('pg.hours.tip', { t: hm(w.min), d: w.days }), label: `${t('pg.log.week', { day: c.label })}${c.partial ? `, ${t('pg.soFar')}` : ''}` }]; },
             aria: t('pg.hours.aria', { n: hw.length }),
           }));
@@ -275,7 +302,7 @@ export async function mount(el, ctx) {
       replace(holder, ...parts);
     };
     draw(have, null, !have || have.day !== today);
-    if (!have || have.day !== today) loadHours(ctx, src).then(r => { if (hours === 'tracked' && holder.isConnected) draw(r.data, r.error, false); });
+    if (!have || have.day !== today) loadHours(ctx, src).then(r => { if (hours === 'tracked') draw(r.data, r.error, false, true); });
   }
 
   /** Where the hours come from, with Read again and Change source. */

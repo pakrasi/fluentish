@@ -185,8 +185,8 @@ test('study days ramp: three ink steps in order, the lightest step clear of the 
   const cl = canvas(/--canvas: (#[0-9a-f]{6})/), cd = canvas(/\[data-theme="dark"\][^}]*--canvas: (#[0-9a-f]{6})/s);
   for (const [r, c, name] of [[light, cl, 'light'], [dark, cd, 'dark']]) {
     const rs = r.map(x => ratio(x, c));
-    assert.ok(rs[0] >= 2, `${name}: the lightest step at ${rs[0].toFixed(2)}:1`);
+    assert.ok(rs[0] >= 3, `${name}: the lightest step at ${rs[0].toFixed(2)}:1 (3:1 for a graphical object)`);
     assert.ok(rs[0] < rs[1] && rs[1] < rs[2], `${name}: steps grow away from the canvas`);
   }
-  assert.ok(css.includes(':root:not([data-theme="light"]) .progress { --pg-k1: #4a4d56'), 'the dark ramp under the system setting too');
+  assert.ok(css.includes(':root:not([data-theme="light"]) .progress { --pg-k1: #5c5f68'), 'the dark ramp under the system setting too');
 });

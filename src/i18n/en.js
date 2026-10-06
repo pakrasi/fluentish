@@ -2435,6 +2435,9 @@ export default {
   'pg.th.note': 'Note',
   'pg.estimated': 'estimated',
   'pg.soFar': 'so far',
+  'pg.avg': 'avg {v}',
+  'pg.firstWeek': 'Your first week',
+  'pg.emptyAria': 'An empty chart of words and phrases known.',
   // Words and phrases known
   'pg.known.title': 'Words and phrases known',
   'pg.known.sub': '{k} of {n} on the map. Known means you would recall it now with 90% or more.',
@@ -2442,7 +2445,7 @@ export default {
   'pg.known.est': 'Before {day}: estimated from each card’s answer history.',
   'pg.known.milestone': 'A milestone, listed under Milestones.',
   'pg.known.igloo': 'Igloo import +{n}',
-  'pg.known.pool': 'Map {n} items',
+  'pg.known.pool': 'Word list {n} items',
   'pg.known.tip': '{n} known',
   'pg.known.tipEst': '{n} known, estimated',
   'pg.known.caption': 'Words and phrases known by day',

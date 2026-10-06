@@ -64,7 +64,7 @@ test('Progress over a seeded log: charts with table twins, the range row, milest
   const all = await learnt.textContent();
   await page.getByRole('group', { name: 'Range' }).getByRole('button', { name: 'All' }).click();
   await expect(knownSec.locator('svg text', { hasText: /^Igloo import \+/ })).toHaveCount(1);
-  await expect(knownSec.locator('svg text', { hasText: /^Map \+/ })).toHaveCount(1);
+  await expect(knownSec.locator('svg text', { hasText: /^Word list \+/ })).toHaveCount(1);
   await expect(page).toHaveURL(/r=all/);
   await expect(learnt).not.toHaveText(String(all));
   await page.getByRole('group', { name: 'Range' }).getByRole('button', { name: '12 weeks' }).click();
@@ -118,6 +118,10 @@ test('Progress › All tracked: the study hours file on its own, never added to 
   await page.getByRole('group', { name: 'Which hours' }).getByRole('button', { name: 'All tracked' }).click();
   await expect(time.getByText(/includes the time you spent in Fluentish/)).toBeVisible();
   expect(reads).toBe(1);
+  // a range switch with All tracked keeps the chart (it was once an empty holder: round 4 design review P0-1)
+  await page.getByRole('group', { name: 'Range' }).getByRole('button', { name: 'All' }).click();
+  await expect(time.locator('svg.pg-chart')).toHaveCount(1);
+  await expect(time.getByText(/includes the time you spent in Fluentish/)).toBeVisible();
   // the source can be changed; a malformed one is refused
   await time.getByRole('button', { name: 'Change source' }).click();
   await time.getByLabel('Repository (owner/name)').fill('not a repo');

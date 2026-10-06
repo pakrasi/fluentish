@@ -1,18 +1,22 @@
 /* Today › Progress (src/features/today/progress/). Kit tokens only, plus the study-days ramp below.
    Charts: ink is the data, the accent marks you, now (today's point, this week's column); hairline solid grid;
-   2 px lines; columns at most 24 px with a 4 px rounded top. Estimated days are a dotted ink-3 line.
+   2 px lines; history columns are pg-col (the ramp's middle step), min(16 px, 55 % of the slot), 4 px rounded top.
+   Estimated days are a dotted ink-3 line.
    The study-days ramp is three ink steps, validated with the dataviz validator (--ordinal) against the canvas:
-   light #a2a4a8 #6a6d74 #2c2e36 (light end 2.27:1), dark #4a4d56 #8b8e97 #d6d7dc (2.29:1). "No study" is cell-empty. */
-.progress { --pg-k1: #a2a4a8; --pg-k2: #6a6d74; --pg-k3: #2c2e36; min-width: 0; }
+   light #8a8c91 #6a6d74 #2c2e36 (light end 3.05:1), dark #5c5f68 #8b8e97 #d6d7dc (3.03:1). "No study" is cell-empty.
+   pg-col: light #6a6d74 (4.70:1 on canvas), dark #8b8e97 (5.89:1). */
+.progress { --pg-k1: #8a8c91; --pg-k2: #6a6d74; --pg-k3: #2c2e36; --pg-col: #6a6d74; min-width: 0; }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .progress { --pg-k1: #4a4d56; --pg-k2: #8b8e97; --pg-k3: #d6d7dc; }
+  :root:not([data-theme="light"]) .progress { --pg-k1: #5c5f68; --pg-k2: #8b8e97; --pg-k3: #d6d7dc; --pg-col: #8b8e97; }
 }
-:root[data-theme="dark"] .progress { --pg-k1: #4a4d56; --pg-k2: #8b8e97; --pg-k3: #d6d7dc; }
+:root[data-theme="dark"] .progress { --pg-k1: #5c5f68; --pg-k2: #8b8e97; --pg-k3: #d6d7dc; --pg-col: #8b8e97; }
 
 .progress > * { min-width: 0; }
 .pg-back { display: inline-flex; align-items: center; gap: 6px; min-height: var(--tap); padding-top: var(--s-2); color: var(--ink-2); text-decoration: none; font-size: 14px; }
 .pg-back + .page-head { padding-top: 0; }
-.pg-empty { max-width: 60ch; margin-top: var(--s-4); }
+.pg-empty { max-width: 60ch; margin-top: var(--s-4); font: 400 15px/1.55 var(--font-ui); color: var(--ink-2); }
+.pg-empty-sec { margin-top: var(--s-6); }
+.pg-empty-title { margin: 0; font: 600 13px/1.35 var(--font-ui); color: var(--ink-3); }
 
 .pg-filter { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s-3); margin-top: var(--s-4); }
 .pg-kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-3); margin-top: var(--s-6); padding-bottom: var(--s-2); }
@@ -25,8 +29,9 @@
 .pg-note { display: flex; align-items: center; gap: 8px; margin-top: var(--s-2); }
 .pg-note .pg-key { flex: none; }
 .pg-warn { color: var(--ink-2); }
-.pg-h3 { margin-top: var(--s-6); font-size: 15px; }
-.pg-seg-row { margin-top: var(--s-3); }
+.pg-sec-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s-2) var(--s-3); }
+.pg-sec-head h2 { margin: 0; }
+.pg-seg-row { flex: none; }
 
 /* charts */
 .pg-frame { position: relative; width: 100%; min-width: 0; margin-top: var(--s-3); }
@@ -34,6 +39,8 @@
 .pg-chart:focus { outline: none; }
 .pg-chart:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
 .pg-axis { font-size: 11px; fill: var(--ink-3); font-variant-numeric: tabular-nums; }
+.pg-axis-year { font-weight: 600; fill: var(--ink-2); }
+.pg-end { font: 600 12px/1 var(--font-ui); fill: var(--ink); font-variant-numeric: tabular-nums; }
 .pg-grid { stroke: var(--hairline); stroke-width: 1; }
 .pg-base { stroke: var(--hairline-strong); stroke-width: 1; }
 .pg-line { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
@@ -41,12 +48,19 @@
 .pg-wash { fill: var(--ink); fill-opacity: 0.1; }
 .pg-now { fill: var(--accent); stroke: var(--canvas); stroke-width: 2; }
 .pg-diamond { fill: var(--ink); stroke: var(--canvas); stroke-width: 2; }
-.pg-marker { stroke: var(--ink-3); stroke-width: 1; }
+.pg-now, g.pg-diamond { transform-box: fill-box; transform-origin: center; }
+.pg-marker { stroke: var(--hairline-strong); stroke-width: 1; }
 .pg-cross { stroke: var(--hairline-strong); stroke-width: 1; }
 .pg-hot { fill: var(--ink); stroke: var(--canvas); stroke-width: 2; }
-.pg-bar { fill: var(--cell-known); transform-box: fill-box; transform-origin: 50% 100%; }
-.pg-bar-now { fill: var(--accent); }
+.pg-bar { fill: var(--pg-col); transform-box: fill-box; transform-origin: 50% 100%; }
+.pg-bar-now { fill: color-mix(in oklab, var(--accent) 25%, transparent); stroke: var(--accent); stroke-width: 1.5; }
 .pg-bar.is-hot { fill-opacity: 0.78; }
+.pg-bar-now.is-hot { fill-opacity: 1; fill: color-mix(in oklab, var(--accent) 40%, transparent); }
+.pg-sofar { fill: var(--ink-3); }
+.pg-avg { stroke: var(--ink-2); stroke-width: 1; stroke-opacity: 0.7; }
+.pg-avg-label, .pg-ref-label { fill: var(--ink-2); }
+/* labels that sit over marks keep a canvas halo, so they read over a column */
+.pg-avg-label, .pg-ref-label, .pg-sofar, .pg-end, .pg-marker-label { paint-order: stroke; stroke: var(--canvas); stroke-width: 3px; stroke-linejoin: round; }
 .pg-slot { fill: var(--ink); fill-opacity: 0.05; }
 .pg-ref { stroke: var(--ink-2); stroke-width: 1; }
 .pg-band { fill: var(--ink); fill-opacity: 0.2; }
@@ -76,6 +90,7 @@
 .pg-multiple > .caption { margin-top: 4px; }
 .pg-m-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
 .pg-m-head b { font-size: 13px; font-weight: 600; }
+.pg-m-share { margin-inline-start: 4px; color: var(--ink); }
 
 /* the readout */
 .pg-tip { position: fixed; top: 0; z-index: var(--z-toast); pointer-events: none; opacity: 0; display: grid; gap: 2px; max-width: 240px; padding: 8px 10px; border-radius: var(--r-tile); background: var(--surface); box-shadow: var(--shadow-lift), 0 0 0 1px var(--hairline); transition: opacity var(--dur-quick) var(--ease-out); }
@@ -117,11 +132,15 @@
 .pg-source-form { display: grid; gap: var(--s-3); max-width: 420px; }
 .pg-source-form .input { width: 100%; font-size: 16px; }
 
+/* From 960 px, charts that compare sit side by side (Words known | By level; Learnt | Time per week, plot tops
+   aligned; Goal | Milestones). Study days and By kind run across the page. */
 @media (min-width: 960px) {
-  .pg-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 56px; align-items: start; }
-  .pg-col > .pg-sec:first-child { margin-top: var(--s-8); }
+  .pg-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 56px; align-items: start; }
+  .pg-row > .pg-sec { margin-top: var(--s-10, 40px); }
+  .pg-row-weekly .pg-sec-head, .pg-row-weekly .pg-sec > h2 { min-height: 44px; display: flex; align-items: center; }
+  .pg-row-weekly .section-sub { min-height: calc(2 * 1.4em); }
   .pg-multiples { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .pg-multiples-kind { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pg-multiples-kind { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .pg-kpis { max-width: 640px; }
 }
 

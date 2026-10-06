@@ -368,9 +368,18 @@ export function weeklyAverage(ws, n) {
   return Math.round(full.slice(-n).reduce((s, w) => s + w.min, 0) / n);
 }
 
-/** Map releases inside the log: the days the pool changed size, with the change. @param {Point[]} ps */
+/**
+ * Map releases inside the log: the days the pool changed size, with the change. Only a map not seen before counts: two
+ * devices on different releases that write alternate days switch back and forth between two maps, which is one release.
+ * @param {Point[]} ps
+ */
 export function poolChanges(ps) {
   /** @type {{day: string, delta: number}[]} */ const out = [];
-  for (let i = 1; i < ps.length; i++) if (ps[i].of !== ps[i - 1].of && ps[i].atlas !== ps[i - 1].atlas) out.push({ day: ps[i].day, delta: ps[i].of - ps[i - 1].of });
+  const seen = new Set(ps.length ? [ps[0].atlas] : []);
+  for (let i = 1; i < ps.length; i++) {
+    const p = ps[i];
+    if (p.of !== ps[i - 1].of && p.atlas !== ps[i - 1].atlas && !seen.has(p.atlas)) out.push({ day: p.day, delta: p.of - ps[i - 1].of });
+    seen.add(p.atlas);
+  }
   return out;
 }
