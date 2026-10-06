@@ -83,6 +83,7 @@ test('progress backup to the (mock) results repository, Delete all, Restore from
   await seed(page);
   await open(page, `#/profile?token=${FAKE_TOKEN}`);
   await expect(page.locator('.toast').filter({ hasText: 'Device linked.' })).toBeVisible();
+  await page.waitForLoadState('networkidle');
   await open(page, '#/profile/data');
   await page.getByRole('button', { name: 'Restore from backup' }).click();
   const panel = page.locator('.restore-panel');
@@ -97,7 +98,10 @@ test('progress backup to the (mock) results repository, Delete all, Restore from
   expect(logDays(back)).toEqual([day]);
   expect(Object.values(back)[0][day].day).toEqual(rec0.day);
   expect(Object.values(back)[0][day].seen).toEqual(rec0.seen);
-  // and the app shows it after a reload
+  // and the app shows it after a reload (once the restore's own reads are done: WebKit reports a fetch the reload
+  // cuts off, here the atlas the progress log reads, as a page error)
+  await page.waitForLoadState('networkidle');
+  await settle(page);
   await page.reload();
   expect(Object.keys(await storedCards(page, 'b1')).sort()).toEqual(Object.keys(before).sort());
 });
