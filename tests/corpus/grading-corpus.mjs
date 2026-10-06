@@ -14,6 +14,8 @@ import { readFileSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { RIGHT_VARIANTS } from './right-variants.mjs';
+import { verbIndex, nounNumbers, morphErrorsIn, formalLowercase, setOf, MORPH_CLASSES } from './morph-errors.mjs';
+import { REVIEW4_CASES } from './review4-cases.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 export const ROOT = path.resolve(HERE, '../..');
@@ -516,6 +518,7 @@ export function variantsOf(s) {
 
 /* ---------- the corpus ---------- */
 const typeOf = it => {
+  if (it.layer === 'b2') return it.kind === 'grammar' ? (it.gap ? 'B2 grammar gap' : 'B2 grammar transform') : setOf(it) === 'B2 collocations' ? 'B2 collocation' : 'B2 phrase';
   if (it.src === 'wordbuild') return `word building ${it.wb}`;
   if (it.src === 'script') return it.gap ? 'script word gap' : 'script word meaning';
   if (it.area === 'clusters') return `cluster ${it.kind}`;
@@ -549,7 +552,18 @@ export async function buildData({ root = ROOT, codeRoot = ROOT } = {}) {
   const words = SYN_WORDS.map(w => W.toItem({ id: `W:corpus-${w.lemma}`, lemma: w.lemma, art: w.art, pl: null, pos: w.pos, gloss: ['x'], sent: w.sent, form: w.form, ex: null, cluster: null, day: 1, module: 'lesen', teil: null, examDays: 1, level: 'B1', conf: null, zipf: 3 }, wx)).filter(Boolean);
   let schreiben = null;
   try { schreiben = J(root, 'content/b1/schreiben.json'); } catch { /* a checkout from before the Schreiben content */ }
-  const data = buildPool({ ...content, mistakes, words, schreiben, lexWords: J(root, 'content/igloo/words/de.json'), lexTexts: Object.values(J(root, 'content/igloo/chunks/german.json').chunks).map(c => c.ex).filter(Boolean) });
+  // the B2 layer (pool.js b2Layer): its grammar items and phrases, graded as the round grades them (round 4)
+  let b2 = null;
+  try {
+    b2 = { grammar: J(root, 'content/igloo/grammar/items_de.json'), concepts: J(root, 'content/igloo/grammar/concepts_de.json'), annot: J(root, 'content/b1/annot.json'),
+      en: J(root, 'content/igloo/chunks/en.json'), de: J(root, 'content/igloo/chunks/german.json').chunks, accept: J(root, 'content/igloo/chunks/accept_german.json') };
+  } catch { /* a checkout from before the B2 layer */ }
+  let formsTable = null;
+  try { formsTable = J(root, 'content/b1/forms.json'); } catch { /* none */ }
+  const data = buildPool({ ...content, mistakes, words, schreiben, b2, forms: formsTable, lexWords: J(root, 'content/igloo/words/de.json'), lexTexts: Object.values(J(root, 'content/igloo/chunks/german.json').chunks).map(c => c.ex).filter(Boolean) });
+  if (!data.b2) data.b2 = [];
+  // the phrase's function group (collocation, opinion …) for the report's sets
+  try { const ch = J(root, 'content/igloo/chunks/german.json').chunks; for (const it of data.b2) if (it.id.startsWith('K:')) it.b2fn = (ch[it.id.slice(2)] || {}).fn || null; } catch { /* no chunks */ }
   // Build an email: every line of every task as the item the builder grades (features/practice-write/build.js partItem)
   /** @type {any[]} */ const parts = [];
   if (schreiben) {
@@ -618,6 +632,10 @@ export const SYN_SCRIPT = [
   ['Das Gerät misst die Temperatur genau.', 'Gerät', 'Gerät', 'das', 'device'],
 ];
 
+const norm1 = (/** @type {string} */ x) => String(x).toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+/** Mutations an item's accepted answers hold (listed by --list accepted-mutation; each one is checked by hand). */
+export const acceptedMutations = [];
+
 /** Build the corpus with this checkout's helpers: [{id, type, cls, text, want: 'wrong'|'right', move?}] */
 export async function buildCorpus({ root = ROOT } = {}) {
   const lex = lexicon(root);
@@ -625,8 +643,8 @@ export async function buildCorpus({ root = ROOT } = {}) {
   garbage = p => { const r = Match.renderPattern(p); return r.includes('…') ? r.replace('…', 'blorf quazz') : null; };
   const data = await buildData({ root });
   const out = [];
-  const add = (it, cls, text, want, move = null) => { if (text && text.trim()) out.push({ id: it.id, type: typeOf(it), cls, text, want, move }); };
-  for (const it of [...data.pool, ...(data.parts || [])]) {
+  const add = (it, cls, text, want, move = null) => { if (text && text.trim()) out.push({ id: it.id, type: typeOf(it), set: setOf(it), cls, text, want, move }); };
+  for (const it of [...data.pool, ...(data.b2 || []), ...(data.parts || [])]) {
     if (it.kind === 'reply') {
       for (const mv of it.moves) {
         add(it, 'model', mv.model, 'right', mv.key);
@@ -637,7 +655,8 @@ export async function buildCorpus({ root = ROOT } = {}) {
       continue;
     }
     if (!it.model || /…/.test(it.model)) continue;
-    const model = it.model;
+    // a B2 phrase card's model is its phrase (Zum Opfer fallen); the sentence he types is the example
+    const model = it.layer === 'b2' && it.sentence ? it.sentence : it.model;
     add(it, 'model', model, 'right');
     if (/[äöüß]/.test(model)) add(it, 'ae-oe-ue-ss', umlautSpelled(model), 'right');
     add(it, 'no-punctuation', model.replace(/[.,!?;:]/g, ''), 'right');
@@ -657,7 +676,9 @@ export async function buildCorpus({ root = ROOT } = {}) {
         // a phrase that ends in aber/denn (tut mir leid, aber) keeps the normal order after it: it cannot stand
         // where an inverting adverb stood (Leider sind wir … → not "Tut mir leid, aber sind wir …")
         const coord = (/** @type {string} */ p) => /\b(aber|denn|und|oder|sondern)$/.test(p.trim());
-        for (const q of plain.filter(q => q !== own && Match.sameShape(Match.shapeOf(q), Match.shapeOf(own)) && coord(q) === coord(own)).slice(0, 3)) {
+        // and a phrase with zu stands only where the model's has zu (um Dampf abzulassen, not *um Dampf ablassen)
+        const zuOf = (/** @type {string} */ p) => /(^|\s)zu(\s|$)|\S+zu\S+en(\s|$)/.test(p.trim());
+        for (const q of plain.filter(q => q !== own && Match.sameShape(Match.shapeOf(q), Match.shapeOf(own)) && coord(q) === coord(own) && zuOf(q) === zuOf(own)).slice(0, 3)) {
           let rep = q.replace(/[\p{L}-]+/gu, w => cased.get(w.toLowerCase()) || w);
           if (m.index === 0 || /[.!?:]\s*$/.test(model.slice(0, m.index))) rep = rep[0].toUpperCase() + rep.slice(1);
           add(it, 'other-phrase', model.slice(0, m.index) + rep + model.slice(m.index + m[0].length), 'right');
@@ -789,6 +810,28 @@ export async function buildCorpus({ root = ROOT } = {}) {
     if (!it.model || /…/.test(it.model) || it.gap || it.literal || it.kind === 'reply' || !(it.anywhere || it.src === 'build')) continue;
     for (const v of variantsOf(it.model)) out.push({ id: it.id, type: typeOf(it), cls: v.cls, text: v.text, want: 'right', move: null, variant: true });
   }
+  // the morphology errors (morph-errors.mjs, round 4) on every phrase, collocation, grammar and Schreiben item, B1 and B2:
+  // the model sentence (a phrase card's example sentence) and, for a grammar item, each accepted whole answer
+  const ix = verbIndex(root), nouns = nounNumbers(root);
+  for (const it of [...data.pool, ...(data.b2 || []), ...(data.parts || [])]) {
+    if (!setOf(it)) continue;
+    const bases = it.kind === 'reply' ? it.moves.map(m => [m.model, m.key]) : [[it.sentence || it.model, null]];
+    if (it.kind === 'grammar' && !it.gap) for (const a of it.accept || []) if (/\s/.test(a) && !/[[(…]/.test(a)) bases.push([a, null]);
+    const accepted = new Set((it.gap ? Match.acceptedForGap(it.prompt, it.accept || []) : it.literal ? it.accept || [] : []).map(norm1));
+    const seen1 = new Set();
+    for (const [s0, mv] of bases) {
+      if (!s0 || /…/.test(s0)) continue;
+      for (const e of [...morphErrorsIn(s0, { ix, nouns }), ...formalLowercase(s0)]) {
+        if (seen1.has(e.text)) continue;
+        seen1.add(e.text);
+        // a mutation that the item lists as an accepted answer is not counted (tools: --list accepted-mutation)
+        if (accepted.has(norm1(e.text))) { acceptedMutations.push(`${it.id}: ${e.cls}: ${e.text}`); continue; }
+        add(it, e.cls, e.text, 'wrong', mv);
+      }
+    }
+  }
+  // the round 4 German review's hand-written cases (reviews4: 622 answers on its seeded sample, written before any fix)
+  for (const [id, text, want, why] of REVIEW4_CASES) { const it = data.byId.get(id); if (it) out.push({ id, type: 'held-out (review 4)', cls: `review 4: ${why}`, text, want, move: null }); }
   for (const [id, text, want, why] of SCHREIBEN_HELD) { const it = data.byId.get(id); if (it) out.push({ id, type: 'held-out (Schreiben)', cls: `schreiben held-out: ${why}`, text, want, move: null }); }
   for (const [id, text, want, why] of HELD_OUT) { const it = data.byId.get(id); if (it) out.push({ id, type: 'held-out', cls: `held-out: ${why}`, text, want, move: null }); }
   // his answer, exactly
@@ -850,6 +893,15 @@ export function report(corpus) {
   for (const [t, r] of [...rows, ['ALL', all]]) lines.push(`${t} | ${r.wrong} | ${r.fp} (${pct(r.fp, r.wrong)}) | ${r.pw} (${pct(r.pw, r.wrong)}) | ${r.right} | ${r.fn} (${pct(r.fn, r.right)}) | ${r.soft} (${pct(r.soft, r.right)}) | ${r.vRight} | ${r.vFn} (${pct(r.vFn, r.vRight)}) | ${r.vSoft} (${pct(r.vSoft, r.vRight)})`);
   const cls = new Map();
   for (const c of corpus.filter(c => c.want === 'wrong')) { const r = cls.get(c.cls) || [0, 0]; r[0]++; if (c.fp) r[1]++; cls.set(c.cls, r); }
+  // the morphology classes by set (round 4): false positives (graded right) and wrong answers graded partly right
+  const sets = ['B1 phrases', 'B1 Schreiben', 'B1 situations', 'B1 grammar', 'B2 Redemittel', 'B2 collocations', 'B2 grammar'];
+  const setOfType = (/** @type {any} */ c) => c.set;
+  lines.push('', `morphology class | ${sets.join(' | ')} | all`, `---|${sets.map(() => '---:').join('|')}|---:`);
+  for (const k of MORPH_CLASSES) {
+    const cell = (/** @type {any[]} */ cs) => { const n = cs.length, f = cs.filter(c => c.fp).length; return n ? `${f}/${n} (${pct(f, n)})` : '-'; };
+    const of = corpus.filter(c => c.cls === k && c.verdict !== 'missing');
+    lines.push(`${k} | ${sets.map(st => cell(of.filter(c => setOfType(c) === st))).join(' | ')} | ${cell(of)}`);
+  }
   lines.push('', 'error class | wrong answers | false positives', '---|---:|---:');
   for (const [k, [n, f]] of [...cls.entries()].sort()) lines.push(`${k} | ${n} | ${f} (${pct(f, n)})`);
   return lines.join('\n');
