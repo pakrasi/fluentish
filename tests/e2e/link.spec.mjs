@@ -42,7 +42,8 @@ for (const form of ['#token=', '#/profile?token=']) {
 
     await expect(page.locator('.toast').filter({ hasText: 'Device linked.' })).toBeVisible();
     await expect(page).toHaveURL(/#\/profile$/);
-    await expect(page.locator('#view')).toContainText('This device is linked to pakrasi/b1-exam.');
+    await expect(page.locator('#view')).toContainText('Connected to pakrasi/b1-exam.');
+    await expect(page.locator('#view')).toContainText('The token expires on 2099-01-01.');
 
     // stored through the secrets path: device scope, kv 'secrets'
     const kv = /** @type {any[][]} */ (await allKv(page));
@@ -101,4 +102,16 @@ test('a link whose token is not usable is scrubbed too and says so; nothing is s
   const kv = /** @type {any[][]} */ (await allKv(page));
   expect(kv.find(([scope, name]) => scope === 'device' && name === 'secrets')?.[2]?.githubToken ?? null).toBe(null);
   expect(lines.filter(l => l.includes('nope'))).toEqual([]);
+});
+
+test('an expired link is refused and scrubbed; nothing is stored and GitHub is not asked', async ({ page, gh }) => {
+  await seed(page);
+  const lines = await openLink(page, `#/profile?token=${FAKE_TOKEN}&exp=1`);
+  await expect(page.locator('.toast').filter({ hasText: 'This link has expired.' })).toBeVisible();
+  expect(page.url()).not.toContain('token');
+  const kv = /** @type {any[][]} */ (await allKv(page));
+  expect(kv.find(([scope, name]) => scope === 'device' && name === 'secrets')?.[2]?.githubToken ?? null).toBe(null);
+  expect(gh.calls.length).toBe(0);
+  await expect(page.locator('#view')).toContainText('Not connected. Your progress stays in this browser.');
+  expect(lines.filter(l => l.includes(FAKE_TOKEN))).toEqual([]);
 });

@@ -65,6 +65,8 @@ function githubMock() {
     const auth = req.headers()['authorization'] || '';
     if (auth !== `Bearer ${FAKE_TOKEN}` && auth !== `token ${FAKE_TOKEN}`) { gh.badTokens++; return json({ message: 'Bad credentials (e2e mock: only the fake token is answered)' }, 401); }
     if (u.pathname === `/repos/${REPO}`) return json({ full_name: REPO, private: true, permissions: { push: true } }, 200, { 'github-authentication-token-expiration': '2099-01-01 00:00:00 UTC' });
+    // the token check (src/data/sync/token-check.js): a fine-grained token for this one repository
+    if (u.pathname === '/user/repos') return json([{ full_name: REPO, private: true }], 200, { 'github-authentication-token-expiration': '2099-01-01 00:00:00 UTC' });
     const prefix = `/repos/${REPO}/contents/`;
     if (!u.pathname.startsWith(prefix)) return json({ message: 'Not Found' }, 404);
     const p = decodeURIComponent(u.pathname.slice(prefix.length));

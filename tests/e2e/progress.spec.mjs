@@ -87,7 +87,8 @@ test('Progress › All tracked: the study hours file on its own, never added to 
   const today = await appToday(page);
   const kv = syntheticLog(today);
   const hours = syntheticHours(today);
-  await seed(page, { examInDays: null, kv });
+  // the owner's device (a token on it): the boot migration keeps his study hours file (data/connection.js)
+  await seed(page, { examInDays: null, kv: { ...kv, ui: { importSeen: true } }, token: true });
   let reads = 0;
   await page.route(HOURS_URL, route => { reads++; return route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(hours) }); });
   await open(page, '#/today/progress?r=12w');

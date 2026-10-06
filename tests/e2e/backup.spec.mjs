@@ -1,4 +1,4 @@
-import { test, expect, seed, open, settle, checkA11y, storedCards, REPO } from './fixtures.mjs';
+import { test, expect, seed, open, settle, checkA11y, storedCards, REPO, FAKE_TOKEN } from './fixtures.mjs';
 import { answerCard } from './helpers.mjs';
 
 /** A short round: answer `n` cards, then End (the answers are saved as they are given). @param {import('@playwright/test').Page} page */
@@ -78,8 +78,11 @@ test('progress backup to the (mock) results repository, Delete all, Restore from
 
   await deleteAll(page);
 
-  // the same learner links this device again (a fresh profile, the token entered again)
-  await seed(page, { token: true });
+  // the same learner links this device again: a fresh profile, then the device link (b1-token.py), which connects the
+  // owner's repository once GitHub accepts the token (data/connection.js applyOwnerLink)
+  await seed(page);
+  await open(page, `#/profile?token=${FAKE_TOKEN}`);
+  await expect(page.locator('.toast').filter({ hasText: 'Device linked.' })).toBeVisible();
   await open(page, '#/profile/data');
   await page.getByRole('button', { name: 'Restore from backup' }).click();
   const panel = page.locator('.restore-panel');

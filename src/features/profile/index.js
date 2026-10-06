@@ -16,7 +16,7 @@ import { previewText } from '../../data/cutover.js';
 import { exportBundle, importFile } from '../../data/transfer.js';
 import { deleteProfile } from '../../data/session.js';
 import { results } from '../../data/sync/index.js';
-import { connectionState, resultsRepo, validRepo, connect, disconnectDevice, forgetRepo } from '../../data/connection.js';
+import { connectionState, resultsRepo, validRepo, connect, disconnectDevice, forgetRepo, CHECK_KV } from '../../data/connection.js';
 import { checkToken, keepCheck, lastCheck, recheck } from '../../data/sync/token-check.js';
 import { backupBlock } from './backup.js';
 import { goalsPage } from './goals.js';
@@ -207,6 +207,8 @@ export async function mount(el, ctx) {
     const state = connectionState(store);
     const repo = resultsRepo(store);
     const redraw = () => swapSection(connections());
+    // connecting or disconnecting changes Data too (the backup block): the whole page is drawn again, focus on this box
+    const redrawAll = () => { render(); /** @type {HTMLElement | null} */ (document.querySelector('#profile-sync button, #profile-sync summary'))?.focus({ preventScroll: true }); };
     const status = h('p', { class: 'caption status', 'aria-live': 'polite' });
     const err = (/** @type {any} */ f, /** @type {string} */ key, /** @type {Record<string, any>} */ p = {}) => { f.setError(t(key, p)); };
 
@@ -231,7 +233,7 @@ export async function mount(el, ctx) {
       tokIn.value = '';
       await keepCheck(store, tok, c, ctx.clock.today());
       ctx.toast(t('conn.sync.savedToast'));
-      redraw();
+      redrawAll();
       bus.emit('sync:request', { force: true });
     };
 
@@ -273,13 +275,13 @@ export async function mount(el, ctx) {
     const confirmBox = h('div', { class: 'confirm', hidden: true, role: 'alertdialog', 'aria-modal': 'false', 'aria-labelledby': 'disc-q' },
       h('p', { id: 'disc-q' }, t('conn.disconnect.confirm', { repo })),
       h('div', { class: 'row-actions' },
-        h('button', { type: 'button', class: 'btn btn-danger pressable', onclick: () => { disconnectDevice(store); ctx.toast(t('conn.disconnect.done')); redraw(); } }, t('conn.disconnect.yes')),
+        h('button', { type: 'button', class: 'btn btn-danger pressable', onclick: () => { disconnectDevice(store); ctx.toast(t('conn.disconnect.done')); redrawAll(); } }, t('conn.disconnect.yes')),
         h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => { confirmBox.hidden = true; disc.setAttribute('aria-expanded', 'false'); disc.focus(); } }, t('data.delete.no'))));
     const disc = h('button', { type: 'button', class: 'btn btn-quiet danger pressable', 'aria-expanded': 'false', onclick: () => {
       confirmBox.hidden = false; disc.setAttribute('aria-expanded', 'true');
       /** @type {HTMLElement | null} */ (confirmBox.querySelector('button'))?.focus();
     } }, t('conn.disconnect'));
-    const forget = h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => { forgetRepo(a); ctx.toast(t('conn.forget.done')); redraw(); } }, t('conn.forget'));
+    const forget = h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => { forgetRepo(a); ctx.toast(t('conn.forget.done')); redrawAll(); } }, t('conn.forget'));
     const pending = results(store).notSent();   // results-sync events only, the same count as the Exam tab
     parts.push(
       h('p', { class: 'field-hint' }, t('conn.sync.about')),
@@ -350,7 +352,8 @@ export async function mount(el, ctx) {
         h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => { confirm.hidden = true; deleteBtn.setAttribute('aria-expanded', 'false'); deleteBtn.focus(); } }, t('data.delete.no'))));
     let includeScripts = false;   // scripts are private to the device (practice/script): out of the file unless ticked
     let includeReads = false;     // so are reading texts (practice-read, round 4)
-    sec.append(
+    // DOM append writes a null as the text "null": the optional parts are left out instead
+    sec.append(...[
       meta.preview && !meta.summary ? h('div', { class: 'import-summary' }, h('h3', null, t('data.moved')), h('p', null, previewText(meta.preview, t))) : null,
       meta.summary ? h('div', { class: 'import-summary' },
         h('h3', null, t('data.moved')),
@@ -372,7 +375,7 @@ export async function mount(el, ctx) {
       h('p', { class: 'field-hint' }, t('data.hint')),
       result, confirm,
       // a local-only profile (no results repository): where its progress lives and how to keep it; no backup block
-      connectionState(store) === 'none' ? localBlock() : backupBlock(ctx, () => swapSection(data())));
+      connectionState(store) === 'none' ? localBlock() : backupBlock(ctx, () => swapSection(data()))].filter(x => x != null));
     return sec;
   }
 
@@ -409,4 +412,7 @@ export async function mount(el, ctx) {
   }
 
   render();
+  // the start's token check (main.js) may finish after this page is drawn: its expiry and warnings show when it does
+  const off = store.subscribe(CHECK_KV, () => { if (document.getElementById('profile-sync')) swapSection(connections()); });
+  return { unmount: off };
 }
