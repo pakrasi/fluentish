@@ -61,7 +61,11 @@
 {
 "id": "ENG_CHUNK_0412",
 "t": "Es lohnt sich, [zu + Infinitiv]",
-"ex": "Es lohnt sich, für einen Direktflug etwas mehr zu bezahlen."
+"ex": "Es lohnt sich, für einen Direktflug etwas mehr zu bezahlen.",
+"fn": "opinion",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0413",
@@ -100,7 +104,11 @@
 {
 "id": "ENG_CHUNK_0419",
 "t": "Fang bloß nicht mit [Nomen, Dativ] an!",
-"ex": "Parken in der Innenstadt? Fang bloß nicht davon an!"
+"ex": "Parken in der Innenstadt? Fang bloß nicht davon an!",
+"fn": "react",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0420",
@@ -112,7 +120,11 @@
 "id": "ENG_CHUNK_0421",
 "t": "Gut, dass [Satz] / Zum Glück [Satz]",
 "ex": "Gut, dass wir früh losgefahren sind, der Verkehr ist furchtbar.",
-"n": "After \"dass\" the verb goes to the end."
+"n": "After \"dass\" the verb goes to the end.",
+"fn": "react",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0422",
@@ -141,7 +153,11 @@
 {
 "id": "ENG_CHUNK_0426",
 "t": "Das nenne ich [Nomen]!",
-"ex": "Wow, das nenne ich mal ein Frühstück!"
+"ex": "Wow, das nenne ich mal ein Frühstück!",
+"fn": "react",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0427",
@@ -407,7 +423,11 @@
 {
 "id": "ENG_CHUNK_0476",
 "t": "Es liegt mir auf der Zunge",
-"ex": "Wie heißt das Wort noch? Es liegt mir auf der Zunge."
+"ex": "Wie heißt das Wort noch? Es liegt mir auf der Zunge.",
+"fn": "discuss",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0477",
@@ -533,7 +553,11 @@
 "id": "ENG_CHUNK_0499",
 "t": "So [Satz] / Dann [Satz]",
 "ex": "Lass uns um sechs losfahren. Dann kommen wir nicht in den Stau.",
-"n": "\"So/Dann\" takes position 1: verb follows."
+"n": "\"So/Dann\" takes position 1: verb follows.",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0500",

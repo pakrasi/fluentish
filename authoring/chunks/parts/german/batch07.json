@@ -128,8 +128,12 @@
 {
 "id": "ENG_CHUNK_0622",
 "t": "Ich zeig dir mal Schritt für Schritt, wie [Nomen] funktioniert",
-"ex": "Ich zeig dir mal, wie die neue App funktioniert, ist ganz einfach.",
-"n": "wie opens a subordinate clause: verb to the end (wie ... funktioniert)."
+"ex": "Ich zeig dir mal, wie die neue App funktioniert, das ist ganz einfach.",
+"n": "wie opens a subordinate clause: verb to the end (wie ... funktioniert).",
+"fn": "present",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0623",
@@ -311,7 +315,11 @@
 "id": "ENG_CHUNK_0653",
 "t": "voreilige Schlüsse ziehen",
 "ex": "Lass uns keine voreiligen Schlüsse ziehen, bevor wir von ihr hören.",
-"n": "bevor sends the verb to the end: bevor wir von ihr hören."
+"n": "bevor sends the verb to the end: bevor wir von ihr hören.",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0654",
@@ -341,31 +349,51 @@
 "id": "ENG_CHUNK_0658",
 "t": "wegen [Nomen] nachhaken / sich wegen [Nomen] nochmal melden",
 "ex": "Ich wollte nur nochmal wegen meiner E-Mail vom Montag nachhaken.",
-"n": "Ich wollte nur ... is the polite past-tense softener in German emails and calls."
+"n": "Ich wollte nur ... is the polite past-tense softener in German emails and calls.",
+"fn": "formal",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0659",
-"t": "[Person] nach der Meinung zu [Nomen] fragen / [Nomen] mit [Person] abklopfen",
-"ex": "Kann ich dich mal nach deiner Meinung zu einer Idee fragen?",
-"n": "No fixed equivalent; Was hältst du von ...? is the everyday way in."
+"t": "[Person, Dativ] [Nomen] vorstellen / [Nomen] mit [Person] besprechen",
+"ex": "Kann ich dir mal eine Idee vorstellen?",
+"n": "No fixed equivalent; Was hältst du von ...? is the everyday way in.",
+"fn": "formal",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0660",
 "t": "[Person] auf den neuesten Stand bringen / updaten",
 "ex": "Ich hab das Meeting verpasst. Kannst du mich auf den neuesten Stand bringen?",
-"n": "Colloquial: Kannst du mich kurz updaten?"
+"n": "Colloquial: Kannst du mich kurz updaten?",
+"fn": "formal",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0661",
 "t": "sich kurz mit [Person] abstimmen / kurzschließen",
 "ex": "Wir sollten uns am Freitag kurz mit dem Team abstimmen.",
-"n": "sich kurzschließen mit = touch base; common in offices."
+"n": "sich kurzschließen mit = touch base; common in offices.",
+"fn": "formal",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0662",
 "t": "[Person] vorwarnen / [Person] Bescheid sagen",
 "ex": "Danke, dass du mich wegen des Staus vorgewarnt hast.",
-"n": "dass sends the verb to the end: dass du mich vorgewarnt hast."
+"n": "dass sends the verb to the end: dass du mich vorgewarnt hast.",
+"fn": "formal",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0663",
@@ -524,7 +552,11 @@
 "id": "ENG_CHUNK_0690",
 "t": "Das wäre doch nicht nötig gewesen!",
 "ex": "Blumen? Oh, das wäre doch nicht nötig gewesen!",
-"n": "Konjunktiv II past (wäre ... gewesen). Also: Das ist aber lieb!"
+"n": "Konjunktiv II past (wäre ... gewesen). Also: Das ist aber lieb!",
+"fn": "social",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0691",
@@ -542,7 +574,11 @@
 "id": "ENG_CHUNK_0693",
 "t": "Das Gleiche gilt für",
 "ex": "Du solltest mehr Wasser trinken. Das Gleiche gilt für mich.",
-"n": "Also short: Ich auch / Genauso wie ich."
+"n": "Also short: Ich auch / Genauso wie ich.",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0694",
@@ -572,7 +608,10 @@
 "id": "ENG_CHUNK_0698",
 "t": "Alles in allem",
 "ex": "Alles in allem war es ein toller Urlaub.",
-"n": "Inversion: Alles in allem war es ..."
+"n": "Inversion: Alles in allem war es ...",
+"fn": "conclude",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0699",

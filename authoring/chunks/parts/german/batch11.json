@@ -2,7 +2,11 @@
 {
 "id": "ENG_CHUNK_1001",
 "t": "[Nomen] hat durchaus was für sich / Es hat was, [zu + Infinitiv]",
-"ex": "Es hat schon was, an Silvester zu Hause zu bleiben."
+"ex": "Es hat schon was, an Silvester zu Hause zu bleiben.",
+"fn": "concede",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1002",
@@ -26,7 +30,11 @@
 "id": "ENG_CHUNK_1005",
 "t": "Ich würde mal behaupten, [Satz] / Ich glaube schon, dass [Satz]",
 "ex": "Ich würde mal behaupten, dass ich ziemlich gut koche.",
-"n": "dass: verb last."
+"n": "dass: verb last.",
+"fn": "opinion",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1006",
@@ -73,7 +81,11 @@
 "id": "ENG_CHUNK_1013",
 "t": "Lustig, dass du [Nomen] erwähnst",
 "ex": "Lustig, dass du Hamburg erwähnst. Da fahr ich nächste Woche hin.",
-"n": "dass: verb last. Also: Witzig, dass du ... sagst."
+"n": "dass: verb last. Also: Witzig, dass du ... sagst.",
+"fn": "react",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1014",
@@ -120,13 +132,21 @@
 "id": "ENG_CHUNK_1021",
 "t": "Man muss schon [Adjektiv] sein, um [zu + Infinitiv]",
 "ex": "Man muss schon verrückt sein, um bei diesem Schnee Auto zu fahren.",
-"n": "um ... zu + infinitive at the end."
+"n": "um ... zu + infinitive at the end.",
+"fn": "opinion",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1022",
 "t": "Man kann über [Person] sagen, was man will, aber [Satz]",
 "ex": "Man kann über meinen Onkel sagen, was man will, aber er ist immer da, wenn man ihn braucht.",
-"n": "was man will: verb last; wenn: verb last."
+"n": "was man will: verb last; wenn: verb last.",
+"fn": "concede",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1023",
@@ -167,7 +187,11 @@
 "id": "ENG_CHUNK_1029",
 "t": "Man munkelt, dass [Satz] / Angeblich [Satz]",
 "ex": "Angeblich macht das Büro am Freitag früher zu.",
-"n": "Angeblich in position 1: verb follows (macht). munkeln is more gossipy."
+"n": "Angeblich in position 1: verb follows (macht). munkeln is more gossipy.",
+"fn": "report",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1030",
@@ -201,7 +225,11 @@
 {
 "id": "ENG_CHUNK_1035",
 "t": "Es ist eine Sache, [zu + Infinitiv], aber eine ganz andere, [zu + Infinitiv]",
-"ex": "Es ist eine Sache, ein Laufband zu kaufen, aber eine ganz andere, es auch zu benutzen."
+"ex": "Es ist eine Sache, ein Laufband zu kaufen, aber eine ganz andere, es auch zu benutzen.",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1036",
@@ -246,7 +274,11 @@
 "id": "ENG_CHUNK_1043",
 "t": "[Person] einen Vertrauensvorschuss geben / im Zweifel für [Person] entscheiden",
 "ex": "Er ist normalerweise pünktlich, also geben wir ihm erst mal einen Vertrauensvorschuss.",
-"n": "also in position 1 triggers inversion: also geben wir. Simpler: Geben wir ihm eine Chance."
+"n": "also in position 1 triggers inversion: also geben wir. Simpler: Geben wir ihm eine Chance.",
+"fn": "people",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1044",
@@ -429,13 +461,21 @@
 {
 "id": "ENG_CHUNK_1076",
 "t": "So kann man das auch sehen",
-"ex": "Den Job zu verlieren war eine Chance zu reisen? Na ja, so kann man das auch sehen."
+"ex": "Den Job zu verlieren war eine Chance zu reisen? Na ja, so kann man das auch sehen.",
+"fn": "agree",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1077",
 "t": "Bei allem Respekt",
 "ex": "Bei allem Respekt, ich glaube nicht, dass Sie den ganzen Bericht gelesen haben.",
-"n": "dass: verb last (gelesen haben)."
+"n": "dass: verb last (gelesen haben).",
+"fn": "agree",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1078",
@@ -450,7 +490,11 @@
 {
 "id": "ENG_CHUNK_1080",
 "t": "Da habe ich mich geirrt / Ich nehme alles zurück",
-"ex": "Ach, der macht um neun auf? Da hab ich mich geirrt."
+"ex": "Ach, der macht um neun auf? Da hab ich mich geirrt.",
+"fn": "concede",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1081",
@@ -500,7 +544,11 @@
 {
 "id": "ENG_CHUNK_1090",
 "t": "Ein Unglück kommt selten allein",
-"ex": "Erst ist das Auto kaputtgegangen, dann die Spülmaschine. Ein Unglück kommt selten allein."
+"ex": "Erst ist das Auto kaputtgegangen, dann die Spülmaschine. Ein Unglück kommt selten allein.",
+"fn": "react",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1091",
@@ -535,7 +583,11 @@
 "id": "ENG_CHUNK_1096",
 "t": "Beim jetzigen Stand / So wie die Dinge stehen",
 "ex": "So wie die Dinge stehen, können wir uns dieses Jahr keinen Urlaub leisten.",
-"n": "Inversion after the fronted clause: können wir."
+"n": "Inversion after the fronted clause: können wir.",
+"fn": "conclude",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1097",
@@ -546,8 +598,12 @@
 {
 "id": "ENG_CHUNK_1098",
 "t": "In dieser Hinsicht / Insofern",
-"ex": "Der Job zahlt weniger, aber er ist nah an zu Hause. Insofern ist er besser.",
-"n": "Inversion: Insofern ist er."
+"ex": "Der Job ist schlechter bezahlt, aber nicht weit von zu Hause. Insofern ist er besser.",
+"n": "Inversion: Insofern ist er.",
+"fn": "hedge",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1099",

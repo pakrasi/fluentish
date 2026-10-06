@@ -1,0 +1,32 @@
+[
+ {
+  "id": "je-desto.*, konnektoren-advanced.06/.08, zweiteilige-konnektoren.01–.08, ENG_CHUNK_0092/0802",
+  "decision": "deferred",
+  "why": "B1 trainer items (content/b1) in the learner's exam week; findings kept in deferred-b1.json"
+ },
+ {
+  "id": "modalpartikeln.07",
+  "decision": "reclassified error → improve (pass B round 2)",
+  "why": "a missing near-miss list is a completeness gap, not one of the brief's error kinds; the near misses were added. Round 2 pass B in-scope errors: 5 of 299 = 1.7%"
+ },
+ {
+  "id": "ENG_CHUNK_0918/0923",
+  "decision": "0923 dupOf 0918",
+  "why": "same German phrase (nicht übers Herz bringen); changing 0918's text would widen a shipped Explore map position"
+ },
+ {
+  "id": "ENG_CHUNK_0307, 0765, 1193",
+  "decision": "kept the first variant of t, added the reviewers' forms after it",
+  "why": "the Explore map keeps shipped positions; a wider first variant overlaps its neighbour (tests/unit/explore-atlas.test.mjs)"
+ },
+ {
+  "id": "praepositionen-genitiv.03",
+  "decision": "prompt reworded (Ich habe ___ des Fluges …)",
+  "why": "the verb-final detector fires on the correct „Während des Fluges habe ich …“ (detector false positive, reported)"
+ },
+ {
+  "id": "ENG_CHUNK_0796, 0398, 0880, 0961, 0099, 0896, 1199",
+  "decision": "calques and wrong renderings removed from accept lists",
+  "why": "pass A and B findings"
+ }
+]

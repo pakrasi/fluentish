@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "bb01aa663e8c",
+ "version": "a2938077de45",
  "languages": [
   {
    "id": "khasi",
@@ -265,8 +265,8 @@
    "id": "atlas.de",
    "path": "atlas/de.json",
    "schema": "atlas@1",
-   "bytes": 555915,
-   "sha256": "2bfbda0948c4f6167c9d8bbe79b510835cff95c0ccccd9a86417d0d1d8fced7a"
+   "bytes": 555874,
+   "sha256": "92ebb62fa4e9d52dc2ff212c9c468cb52c10ed5e8eb8019a7380fcbc63034a52"
   },
   {
    "id": "b1.annot",
@@ -580,8 +580,8 @@
    "id": "igloo.chunks.accept.german",
    "path": "igloo/chunks/accept_german.json",
    "schema": "phrases-accept@1",
-   "bytes": 311438,
-   "sha256": "8f47ee53358fc7e0d2064d2b377541f39911749bbbd9467169e1c3548c3a7085"
+   "bytes": 329561,
+   "sha256": "b5555d10b99d43a9a404664ac97a15bc5fd124e9c2410c248f75df7259fdacf4"
   },
   {
    "id": "igloo.chunks.arabic",
@@ -615,8 +615,8 @@
    "id": "igloo.chunks.german",
    "path": "igloo/chunks/german.json",
    "schema": "phrases@1",
-   "bytes": 225898,
-   "sha256": "a899488f9c08e056089f9d10a9e63d754727527c57b0e5aa061e26d5836279ad"
+   "bytes": 239605,
+   "sha256": "71ea13311bf676be6ade1c611596f0a3e5343a40d2aa05651e65fb729cafd3b5"
   },
   {
    "id": "igloo.chunks.hindi",
@@ -650,8 +650,8 @@
    "id": "igloo.chunks.priority.de",
    "path": "igloo/chunks/priority_de.json",
    "schema": "phrases-priority@1",
-   "bytes": 23222,
-   "sha256": "76e6ade7fe5ddb2b00f923d79bd7a8dab8d09fbffd90f688dce4c586ac219359"
+   "bytes": 28423,
+   "sha256": "12abb0a1fd7ccae953897917bcfeb8a6d2907d72da9a9a75084eccd722be96a5"
   },
   {
    "id": "igloo.chunks.spanish",
@@ -678,15 +678,15 @@
    "id": "igloo.grammar.concepts.de",
    "path": "igloo/grammar/concepts_de.json",
    "schema": "grammar-concepts@1",
-   "bytes": 10089,
-   "sha256": "35be2df44d7aaf0737565880066a00e5cbb69772a17d351ddf88fa2afb51a77a"
+   "bytes": 12094,
+   "sha256": "81fb79bd11d3cef7b8e5a4bf7f78d79616a38de8e3ec7486ae14d454f5b400a6"
   },
   {
    "id": "igloo.grammar.items.de",
    "path": "igloo/grammar/items_de.json",
    "schema": "grammar@1",
-   "bytes": 232153,
-   "sha256": "3976f31710faee121db7b0c4c16930288f044a975fc54cac43a11a41d63f95bf"
+   "bytes": 264221,
+   "sha256": "f7e19d406219f716f319dfa43d049f0a2cd6b0e7aceb30e28c7e86add478e9c0"
   },
   {
    "id": "igloo.lang.french",

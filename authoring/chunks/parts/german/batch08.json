@@ -27,7 +27,11 @@
 "id": "ENG_CHUNK_0705",
 "t": "Sind Sie schon dazu gekommen, [zu + Infinitiv]?",
 "ex": "Sind Sie schon dazu gekommen, sich meine E-Mail anzuschauen?",
-"n": "dazu kommen = find the time; zu-infinitive at the end. du: Bist du schon dazu gekommen ...?"
+"n": "dazu kommen = find the time; zu-infinitive at the end. du: Bist du schon dazu gekommen ...?",
+"fn": "request",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0706",
@@ -143,15 +147,23 @@
 },
 {
 "id": "ENG_CHUNK_0725",
-"t": "Es wäre besser, wenn du [Satz] / Du fährst besser [Nomen]",
+"t": "Es wäre besser, wenn du [Satz] / Du nimmst besser [Nomen]",
 "ex": "Ehrlich gesagt nimmst du besser den Zug.",
-"n": "Present + besser is the natural spoken form. wenn-clause: verb to the end."
+"n": "Present + besser is the natural spoken form. wenn-clause: verb to the end.",
+"fn": "request",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0726",
 "t": "Wäre es vielleicht möglich, dass Sie [Satz]? / Könntest du eventuell [Infinitiv]?",
 "ex": "Könntest du mich eventuell vom Flughafen abholen?",
-"n": "Konjunktiv II + eventuell/vielleicht makes the request tentative."
+"n": "Konjunktiv II + eventuell/vielleicht makes the request tentative.",
+"fn": "request",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0727",
@@ -163,13 +175,21 @@
 "id": "ENG_CHUNK_0728",
 "t": "Es ist ja nicht so, als ob [Satz]",
 "ex": "Nimm's einfach. Es ist ja nicht so, als ob ich es benutzen würde.",
-"n": "als ob sends the verb to the end, usually in Konjunktiv II."
+"n": "als ob sends the verb to the end, usually in Konjunktiv II.",
+"fn": "agree",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0729",
-"t": "Man wird nicht jeden Tag [Partizip] / So was passiert nicht jeden Tag",
+"t": "Man wird nicht jeden Tag [Alter] / So was passiert nicht jeden Tag",
 "ex": "Lass uns feiern! Man wird schließlich nicht jeden Tag vierzig.",
-"n": "No exact frame; Man wird nicht jeden Tag ... is the classic birthday line."
+"n": "No exact frame; Man wird nicht jeden Tag ... is the classic birthday line.",
+"fn": "react",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0730",
@@ -199,19 +219,30 @@
 "id": "ENG_CHUNK_0734",
 "t": "Ich sag ja nicht, dass [Satz], aber [Satz]",
 "ex": "Ich sag ja nicht, dass es schlecht ist, aber es könnte besser sein.",
-"n": "dass: verb last; after aber normal order returns."
+"n": "dass: verb last; after aber normal order returns.",
+"fn": "hedge",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0735",
 "t": "Es geht nicht um [Nomen], es geht um [Nomen]",
 "ex": "Es geht nicht ums Geld, es geht um Respekt.",
-"n": "es geht um + Akk = it's about. Very frequent frame."
+"n": "es geht um + Akk = it's about. Very frequent frame.",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0736",
 "t": "[Nomen] übernehmen",
 "ex": "Diesen Monat kann ich keine zusätzliche Arbeit übernehmen.",
-"n": "übernehmen is inseparable: ich übernehme, ich habe übernommen."
+"n": "übernehmen is inseparable: ich übernehme, ich habe übernommen.",
+"fn": "formal",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0737",
@@ -234,12 +265,20 @@
 "id": "ENG_CHUNK_0740",
 "t": "auf dem gleichen Stand sein / sich einig sein",
 "ex": "Bevor wir anfangen, lass uns sicherstellen, dass wir alle auf dem gleichen Stand sind.",
-"n": "dass: verb last (sind)."
+"n": "dass: verb last (sind).",
+"fn": "discuss",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0741",
 "t": "pfuschen / an der falschen Stelle sparen",
-"ex": "Bei der Renovierung haben sie gepfuscht, und jetzt ist das Dach undicht."
+"ex": "Bei der Renovierung haben sie gepfuscht, und jetzt ist das Dach undicht.",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0742",
@@ -284,7 +323,11 @@
 "id": "ENG_CHUNK_0749",
 "t": "spontan entscheiden / schauen, wie es läuft",
 "ex": "Lass uns nicht zu viel planen, wir entscheiden einfach spontan.",
-"n": "Also: Mal schauen / Wir gucken mal."
+"n": "Also: Mal schauen / Wir gucken mal.",
+"fn": "social",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0750",
@@ -306,7 +349,11 @@
 "id": "ENG_CHUNK_0753",
 "t": "über die Runden kommen",
 "ex": "Die beiden haben je zwei Jobs, nur um über die Runden zu kommen.",
-"n": "um ... zu + infinitive at the end."
+"n": "um ... zu + infinitive at the end.",
+"fn": "collocation",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0754",
@@ -335,7 +382,11 @@
 "id": "ENG_CHUNK_0758",
 "t": "etwas ausbrüten / sich [Nomen] einfangen",
 "ex": "Ich glaube, ich brüte eine Erkältung aus.",
-"n": "Also: Ich werde krank / Da ist was im Anmarsch."
+"n": "Also: Ich werde krank / Da ist was im Anmarsch.",
+"fn": "collocation",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0759",
@@ -375,9 +426,13 @@
 },
 {
 "id": "ENG_CHUNK_0765",
-"t": "sich mit [Nomen] abfinden",
-"ex": "Er muss sich immer noch damit abfinden, dass er seinen Job verloren hat.",
-"n": "damit, dass ...: verb last (verloren hat)."
+"t": "sich mit [Nomen] abfinden / an [Nomen] zu knabbern haben / [Nomen] verarbeiten",
+"ex": "Er hat immer noch daran zu knabbern, dass er seinen Job verloren hat.",
+"n": "an etwas zu knabbern haben = struggle to get over it; daran, dass …: verb last. sich mit etwas abfinden = resign yourself to it.",
+"fn": "react",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0766",
@@ -403,7 +458,11 @@
 {
 "id": "ENG_CHUNK_0770",
 "t": "Wenn du meinst",
-"ex": "Das ist total sicher? Na ja, wenn du meinst."
+"ex": "Das ist total sicher? Na ja, wenn du meinst.",
+"fn": "agree",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0771",
@@ -420,7 +479,11 @@
 "id": "ENG_CHUNK_0773",
 "t": "Wenn ich's mir recht überlege",
 "ex": "Wenn ich's mir recht überlege, hab ich Mike seit Wochen nicht gesehen.",
-"n": "Whole wenn-clause is position 1, so the verb comes next: hab ich."
+"n": "Whole wenn-clause is position 1, so the verb comes next: hab ich.",
+"fn": "hedge",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0774",
@@ -432,13 +495,21 @@
 "id": "ENG_CHUNK_0775",
 "t": "Korrigier mich, wenn ich falsch liege",
 "ex": "Korrigier mich, wenn ich falsch liege, aber haben wir das nicht schon bezahlt?",
-"n": "falsch liegen = be wrong. Sie: Korrigieren Sie mich ..."
+"n": "falsch liegen = be wrong. Sie: Korrigieren Sie mich ...",
+"fn": "hedge",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0776",
 "t": "Nur damit das klar ist / Fürs Protokoll",
 "ex": "Nur damit das klar ist: Ich hab nie gesagt, dass ich fahre.",
-"n": "damit sends the verb to the end: damit das klar ist."
+"n": "damit sends the verb to the end: damit das klar ist.",
+"fn": "opinion",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0777",
@@ -454,12 +525,20 @@
 "id": "ENG_CHUNK_0779",
 "t": "Ich denk nur laut nach",
 "ex": "Was, wenn wir das Sofa verschieben? Ich denk nur laut nach.",
-"n": "nachdenken is separable: ich denke nach."
+"n": "nachdenken is separable: ich denke nach.",
+"fn": "hedge",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0780",
 "t": "Spontan würde ich sagen / Aus dem Stegreif",
-"ex": "Spontan würde ich sagen, so um die fünfzig Leute."
+"ex": "Spontan würde ich sagen, so um die fünfzig Leute.",
+"fn": "hedge",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0781",
@@ -482,18 +561,30 @@
 {
 "id": "ENG_CHUNK_0784",
 "t": "Das ist doch das Mindeste / Gern geschehen",
-"ex": "Danke für die Blumen! Ach, das ist doch das Mindeste."
+"ex": "Danke für die Blumen! Ach, das ist doch das Mindeste.",
+"fn": "social",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0785",
 "t": "Ich will dich nicht länger aufhalten",
 "ex": "Na ja, ich will dich nicht länger aufhalten. Bis bald!",
-"n": "Infinitive at the end after the modal."
+"n": "Infinitive at the end after the modal.",
+"fn": "social",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0786",
 "t": "Lass mal wieder von dir hören!",
-"ex": "Schön, dich gesehen zu haben. Lass mal wieder von dir hören!"
+"ex": "Schön, dich gesehen zu haben. Lass mal wieder von dir hören!",
+"fn": "social",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0787",
@@ -509,13 +600,21 @@
 "id": "ENG_CHUNK_0789",
 "t": "Jetzt reicht's! / Das bringt das Fass zum Überlaufen",
 "ex": "Er kommt schon wieder zu spät? Jetzt reicht's mir.",
-"n": "Das ist der Tropfen, der das Fass zum Überlaufen bringt: relative clause, verb last."
+"n": "Das ist der Tropfen, der das Fass zum Überlaufen bringt: relative clause, verb last.",
+"fn": "react",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0790",
 "t": "Typisch! / Mal wieder typisch",
 "ex": "Kaum war ich draußen, hat es angefangen zu regnen. Typisch!",
-"n": "Also: So ein Pech! Ironic Na toll! works too."
+"n": "Also: So ein Pech! Ironic Na toll! works too.",
+"fn": "react",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0791",
@@ -527,31 +626,51 @@
 "id": "ENG_CHUNK_0792",
 "t": "Andererseits",
 "ex": "Das Hotel ist teuer. Andererseits liegt es direkt am Strand.",
-"n": "Adverb in position 1: verb second (liegt es)."
+"n": "Adverb in position 1: verb second (liegt es).",
+"fn": "concede",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0793",
 "t": "Trotzdem",
-"ex": "Es ist nur ein kleiner Schnitt. Trotzdem solltest du ihn sauber machen.",
-"n": "trotzdem in position 1 triggers inversion: Trotzdem solltest du. B1 key connector."
+"ex": "Es ist nur ein kleiner Schnitt. Trotzdem solltest du ihn desinfizieren.",
+"n": "trotzdem in position 1 triggers inversion: Trotzdem solltest du. B1 key connector.",
+"fn": "concede",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0794",
 "t": "ganz zu schweigen von [Nomen] / ganz abgesehen davon, dass [Satz]",
-"ex": "Die Wohnung ist riesig, ganz abgesehen davon, dass sie ganz nah an der Arbeit liegt.",
-"n": "dass: verb last."
+"ex": "Die Wohnung ist riesig, ganz abgesehen davon, dass sie nur ein paar Minuten von meiner Arbeit entfernt ist.",
+"n": "dass: verb last.",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0795",
 "t": "Und tatsächlich / Und prompt",
 "ex": "Ich hab gesagt, dass es regnen wird, und prompt hat es geschüttet.",
-"n": "Adverb in position 1 after und: prompt hat es."
+"n": "Adverb in position 1 after und: prompt hat es.",
+"fn": "narrate",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0796",
-"t": "Umso mehr ein Grund, [zu + Infinitiv]",
-"ex": "Du hast Geburtstag? Umso mehr ein Grund zu feiern!",
-"n": "Also: Dann erst recht!"
+"t": "Ein Grund mehr, [zu + Infinitiv] / Umso mehr Grund, [zu + Infinitiv]",
+"ex": "Du hast Geburtstag? Ein Grund mehr zu feiern!",
+"n": "Also: Dann erst recht!",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0797",

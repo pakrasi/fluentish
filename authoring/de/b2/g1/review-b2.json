@@ -1,0 +1,366 @@
+[
+ {
+  "id": "zustandspassiv.05",
+  "field": "near",
+  "before": [
+   [
+    "ist",
+    "gestern: past, war"
+   ],
+   [
+    "hatte",
+    "sein, not haben"
+   ],
+   [
+    "wäre",
+    "no Konjunktiv here"
+   ]
+  ],
+  "after": [
+   [
+    "ist",
+    "gestern: past, war"
+   ],
+   [
+    "wurde",
+    "the bracket gives sein: war; wurde geschlossen is the act of closing"
+   ],
+   [
+    "wäre",
+    "no Konjunktiv here"
+   ]
+  ],
+  "severity": "error",
+  "why": "„Gestern hatte das Büro den ganzen Tag geschlossen“ is standard German (geschlossen haben = be closed for business); the why „sein, not haben“ teaches a false rule."
+ },
+ {
+  "id": "ENG_CHUNK_1110",
+  "field": "accept",
+  "before": [
+   "wurde (auch) zeit dass",
+   "es wird zeit dass",
+   "es wird höchste zeit dass",
+   "wird höchste zeit dass",
+   "es wurde (auch) zeit dass",
+   "wird langsam zeit dass",
+   "wird (ja) (aber) (auch) zeit dass",
+   "es ist höchste zeit dass",
+   "es wird (höchste) zeit für"
+  ],
+  "after": [
+   "wird (ja) (aber) (auch) zeit dass",
+   "es wird (auch) zeit dass",
+   "es wird höchste zeit dass",
+   "wird höchste zeit dass",
+   "wird langsam zeit dass",
+   "es ist höchste zeit dass",
+   "es wird (höchste) zeit für"
+  ],
+  "severity": "error",
+  "why": "The example is about something not yet done (you should get a new phone); „Wurde auch Zeit, dass du dir ein neues Handy kaufst“ is the wrong tense. „Wurde auch Zeit“ only fits after the event. Also, the first pattern (shown as the model answer) should match t."
+ },
+ {
+  "id": "ENG_CHUNK_0923",
+  "field": "accept",
+  "before": [
+   "ich bringe es nicht übers herz",
+   "ich bring's nicht übers herz",
+   "nicht übers herz",
+   "ich (habe) (hab) nicht den mut",
+   "ich trau mich nicht",
+   "ich traue mich nicht",
+   "ich hab nicht das herz",
+   "ich habe nicht das herz"
+  ],
+  "after": [
+   "ich bringe es nicht übers herz",
+   "ich bring's nicht übers herz",
+   "nicht übers herz",
+   "ich (habe) (hab) nicht den mut",
+   "ich trau mich nicht",
+   "ich traue mich nicht",
+   "ich bringe es nicht fertig",
+   "ich bring's nicht fertig"
+  ],
+  "severity": "error",
+  "why": "„Ich habe nicht das Herz, …“ is a calque of the English. Drop it, and add the idiomatic „Ich bringe es nicht fertig“."
+ },
+ {
+  "id": "ENG_CHUNK_0765",
+  "field": "n",
+  "before": "damit, dass ...: verb last (verloren hat).",
+  "after": "an etwas zu knabbern haben = to struggle to come to terms with something; daran, dass …: verb last (verloren hat). sich mit etwas abfinden = to resign yourself to it.",
+  "severity": "error",
+  "why": "The note says „damit, dass“, but the example uses „daran …, dass“ (an etwas zu knabbern haben). The note contradicts the example."
+ },
+ {
+  "id": "ENG_CHUNK_0765",
+  "field": "t",
+  "before": "sich mit [Nomen] abfinden",
+  "after": "an [Nomen] zu knabbern haben / [Nomen] verarbeiten / sich mit [Nomen] abfinden",
+  "severity": "improve",
+  "why": "The example uses „zu knabbern haben“, which t does not list. „Still coming to terms with“ describes a process (knabbern, verarbeiten), not resignation (sich abfinden)."
+ },
+ {
+  "id": "modalpartikeln.07",
+  "field": "near",
+  "before": [],
+  "after": [
+   [
+    "ja",
+    "ja (surprise) is used in statements, not in w-questions"
+   ],
+   [
+    "doch",
+    "doch does not go into a real w-question"
+   ],
+   [
+    "mal",
+    "mal softens requests, not this question"
+   ]
+  ],
+  "severity": "error",
+  "why": "This item has no near misses; the brief requires 2–4 for every item."
+ },
+ {
+  "id": "zustandspassiv.02",
+  "field": "prompt",
+  "before": "Das Geschäft wird geöffnet.",
+  "after": "Das Fenster wird geöffnet.",
+  "severity": "improve",
+  "why": "For a shop, the normal state form is „Das Geschäft hat geöffnet“, which is correct German but not on the key. Use a noun that has no „hat geöffnet“ reading."
+ },
+ {
+  "id": "zustandspassiv.02",
+  "field": "answer",
+  "before": [
+   "Das Geschäft ist geöffnet."
+  ],
+  "after": [
+   "Das Fenster ist geöffnet."
+  ],
+  "severity": "improve",
+  "why": "Follows from the prompt change."
+ },
+ {
+  "id": "zustandspassiv.02",
+  "field": "near",
+  "before": [
+   [
+    "Das Geschäft ist geöffnen.",
+    "Partizip II: geöffnet"
+   ],
+   [
+    "Das Geschäft ist geöffnet geworden.",
+    "the state is just ist + Partizip II (passive Perfekt uses worden)"
+   ]
+  ],
+  "after": [
+   [
+    "Das Fenster ist geöffnen.",
+    "Partizip II: geöffnet"
+   ],
+   [
+    "Das Fenster ist geöffnet geworden.",
+    "the state is just ist + Partizip II (passive Perfekt uses worden)"
+   ],
+   [
+    "Das Fenster hat geöffnet.",
+    "state: sein + Partizip II"
+   ]
+  ],
+  "severity": "improve",
+  "why": "Follows from the prompt change. With a window, „hat geöffnet“ really is wrong, so it can be a near miss."
+ },
+ {
+  "id": "konnektoren-advanced.07",
+  "field": "answer",
+  "before": [
+   "Man kann Strom sparen, indem man das Licht ausmacht.",
+   "Indem man das Licht ausmacht.",
+   "Man spart Strom, indem man das Licht ausmacht.",
+   "Strom kann man sparen, indem man das Licht ausmacht.",
+   "Strom spart man, indem man das Licht ausmacht."
+  ],
+  "after": [
+   "Man kann Strom sparen, indem man das Licht ausmacht.",
+   "Indem man das Licht ausmacht.",
+   "Man spart Strom, indem man das Licht ausmacht.",
+   "Strom kann man sparen, indem man das Licht ausmacht.",
+   "Strom spart man, indem man das Licht ausmacht.",
+   "Indem man das Licht ausmacht, kann man Strom sparen.",
+   "Indem man das Licht ausmacht, spart man Strom."
+  ],
+  "severity": "error",
+  "why": "Missing answer: the fronted indem-clause („Indem man das Licht ausmacht, kann man Strom sparen.“) is correct and likely, because the item drills verb-final order after indem."
+ },
+ {
+  "id": "nomen-verb-verbindungen.05",
+  "field": "answer",
+  "before": [
+   "gegeben"
+  ],
+  "after": [
+   "gegeben",
+   "erteilt"
+  ],
+  "severity": "improve",
+  "why": "„einen Rat erteilen“ is correct, slightly formal German; a B2 learner may type it."
+ },
+ {
+  "id": "ENG_CHUNK_0307",
+  "field": "t",
+  "before": "Du hast jedes Recht, [zu + Infinitiv] / Du hast allen Grund, [zu + Infinitiv] / Es ist dein gutes Recht, [zu + Infinitiv]",
+  "after": "Du hast allen Grund, [zu + Infinitiv] / Es ist dein gutes Recht, [zu + Infinitiv]",
+  "severity": "improve",
+  "why": "„Du hast jedes Recht, …“ is a calque of the English. The idiomatic forms are „allen Grund“ and „dein gutes Recht“, and the example uses „allen Grund“. Keep „jedes Recht“ in accept, but not as the model phrase."
+ },
+ {
+  "id": "ENG_CHUNK_0307",
+  "field": "accept",
+  "before": [
+   "du hast das recht",
+   "sie haben das recht",
+   "es ist dein gutes recht",
+   "es ist ihr gutes recht",
+   "du hast (ja) (auch) allen grund",
+   "sie haben (ja) (auch) allen grund",
+   "ihr habt (ja) (auch) allen grund",
+   "du hast (ja) (auch) jedes recht",
+   "sie haben (ja) (auch) jedes recht"
+  ],
+  "after": [
+   "du hast (ja) (auch) allen grund",
+   "sie haben (ja) (auch) allen grund",
+   "ihr habt (ja) (auch) allen grund",
+   "es ist dein gutes recht",
+   "es ist ihr gutes recht",
+   "es ist euer gutes recht",
+   "du hast das recht",
+   "sie haben das recht",
+   "du hast (ja) (auch) jedes recht",
+   "sie haben (ja) (auch) jedes recht"
+  ],
+  "severity": "improve",
+  "why": "Put the pattern that matches t and the example first, since it is shown as the model answer. Add the ihr form „euer gutes Recht“."
+ },
+ {
+  "id": "ENG_CHUNK_0927",
+  "field": "t",
+  "before": "Ich würde lügen, wenn ich sagen würde, dass [Satz]",
+  "after": "Ich müsste lügen, wenn ich sagen würde, [Satz] / Es wäre gelogen, wenn ich sagen würde, [Satz]",
+  "severity": "improve",
+  "why": "„Ich würde lügen, wenn …“ is a calque. The established German idiom is „Ich müsste lügen, wenn …“ (or „Es wäre gelogen, …“). Both are already in accept."
+ },
+ {
+  "id": "ENG_CHUNK_0927",
+  "field": "ex",
+  "before": "Ich würde lügen, wenn ich sagen würde, ich wäre nicht nervös.",
+  "after": "Ich müsste lügen, wenn ich sagen würde, ich wäre nicht nervös.",
+  "severity": "improve",
+  "why": "Follows from the t change."
+ },
+ {
+  "id": "ENG_CHUNK_0927",
+  "field": "accept",
+  "before": [
+   "ich würde lügen wenn ich sagen würde",
+   "ich würde lügen",
+   "ich würd lügen",
+   "es wäre gelogen (wenn)",
+   "das wäre gelogen",
+   "ich müsste lügen",
+   "ich lüge wenn ich sage",
+   "würde ich lügen",
+   "wäre das (glatt) gelogen"
+  ],
+  "after": [
+   "ich müsste lügen",
+   "es wäre gelogen (wenn)",
+   "ich würde lügen",
+   "ich würd lügen",
+   "das wäre gelogen",
+   "ich lüge wenn ich sage",
+   "würde ich lügen",
+   "müsste ich lügen",
+   "wäre das (glatt) gelogen"
+  ],
+  "severity": "improve",
+  "why": "Put the idiomatic pattern first (model answer), and add the inverted form „müsste ich lügen“."
+ },
+ {
+  "id": "ENG_CHUNK_0269",
+  "field": "ex",
+  "before": "Er ist immer zu spät, aber fairerweise muss man sagen, der Verkehr war furchtbar.",
+  "after": "Er kommt immer zu spät, aber fairerweise muss man sagen, dass der Verkehr furchtbar war.",
+  "severity": "improve",
+  "why": "„Er ist immer zu spät“ is a calque of „he's always late“; the German is „Er kommt immer zu spät“. A dass-clause after „muss man sagen“ also reads better in writing."
+ },
+ {
+  "id": "ENG_CHUNK_1122",
+  "field": "accept",
+  "before": [
+   "kommt nie auf den gedanken",
+   "kommt niemals auf die idee",
+   "kommt nicht auf die idee",
+   "käme nie auf die idee",
+   "denkt nie daran",
+   "fällt es nie ein",
+   "es fällt [anything] nie ein",
+   "kommt (einfach) (natürlich) nie auf die idee",
+   "nie in den sinn"
+  ],
+  "after": [
+   "kommt (einfach) (natürlich) nie auf die idee",
+   "kommt nie auf den gedanken",
+   "kommt niemals auf die idee",
+   "kommt nicht auf die idee",
+   "käme nie auf die idee",
+   "denkt nie daran",
+   "fällt es nie ein",
+   "es fällt [anything] nie ein",
+   "nie in den sinn"
+  ],
+  "severity": "improve",
+  "why": "The first pattern (shown as the model answer) should match t: „kommt nie auf die Idee“."
+ },
+ {
+  "id": "ENG_CHUNK_0878",
+  "field": "accept",
+  "before": [
+   "merk dir das (mal) (kurz)",
+   "merke dir das (mal) (kurz)",
+   "merken sie sich das (mal) (kurz)",
+   "merkt euch das (mal) (kurz)",
+   "halt den gedanken fest",
+   "halte den gedanken fest",
+   "behalt den gedanken",
+   "moment",
+   "behalte den gedanken",
+   "halt den gedanken (mal) (kurz) fest",
+   "merk dir (mal) (kurz) was du"
+  ],
+  "after": [
+   "merk dir das (mal) (kurz)",
+   "merke dir das (mal) (kurz)",
+   "merken sie sich das (mal) (kurz)",
+   "merkt euch das (mal) (kurz)",
+   "halt den gedanken fest",
+   "halte den gedanken fest",
+   "behalt den gedanken",
+   "behalte den gedanken",
+   "halt den gedanken (mal) (kurz) fest",
+   "merk dir (mal) (kurz) was du"
+  ],
+  "severity": "improve",
+  "why": "„moment“ on its own is one generic word that passes almost any answer, and it does not render „hold that thought“."
+ },
+ {
+  "id": "pronomen-es",
+  "field": "name",
+  "before": "Pronomen „es\"",
+  "after": "Pronomen „es“",
+  "severity": "improve",
+  "why": "Mismatched quotation marks: „ must close with “."
+ }
+]

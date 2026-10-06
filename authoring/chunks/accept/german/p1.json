@@ -87,8 +87,16 @@
    "ich wollte [x] (schon) lange",
    "ich wollte [x] (schon) seit",
    "ich hatte (schon) lange vor",
-   "ich wollte (schon) ewig"
-  ]
+   "ich wollte (schon) ewig",
+   "ich wollte [x] (schon) die ganze zeit",
+   "ich wollte [x] schon längst",
+   "ich will [x] (schon) seit",
+   "ich will (dich) (schon) seit",
+   "ich habe (schon) seit wochen vor",
+   "ich hab (schon) seit wochen vor"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0009": {
   "core_en": "There's no point in",
@@ -99,8 +107,16 @@
    "das bringt nichts",
    "es lohnt sich nicht",
    "hat keinen sinn",
-   "bringt nichts"
-  ]
+   "bringt nichts",
+   "hat keinen zweck",
+   "macht keinen sinn",
+   "es ist sinnlos",
+   "das ist sinnlos",
+   "es ist zwecklos",
+   "lohnt sich nicht"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0010": {
   "core_en": "Why don't we",
@@ -1081,7 +1097,9 @@
    "wobei man sagen muss",
    "trotzdem",
    "dennoch"
-  ]
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0093": {
   "core_en": "In that case",
@@ -1149,9 +1167,10 @@
    "schließlich",
    "immerhin",
    "ja schließlich",
-   "letztendlich",
    "ja immerhin"
-  ]
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0100": {
   "core_en": "just in case",
@@ -2260,8 +2279,11 @@
    "auch wenn",
    "selbst wenn",
    "sogar wenn",
-   "wenn es auch"
-  ]
+   "auch dann wenn",
+   "selbst dann wenn"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0195": {
   "core_en": "at least",
@@ -2432,7 +2454,9 @@
    "da hast du recht aber",
    "da haben sie recht aber",
    "das ist wahr aber"
-  ]
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0210": {
   "core_en": "What's wrong with",
@@ -2949,7 +2973,9 @@
    "nervt",
    "geht mir [x] auf die nerven",
    "geht mir auf den keks"
-  ]
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0254": {
   "core_en": "count on",
@@ -3133,11 +3159,14 @@
   "accept": [
    "fairerweise muss man sagen",
    "fairerweise",
-   "um fair zu sein",
    "man muss aber sagen",
    "zugegeben",
-   "gerechterweise"
-  ]
+   "gerechterweise",
+   "der fairness halber",
+   "man muss (aber) dazu sagen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0270": {
   "core_en": "Sorry to interrupt",
@@ -3273,8 +3302,11 @@
    "sicher ist sicher",
    "vorsicht ist besser als nachsicht",
    "man weiß (ja) nie",
-   "lieber auf nummer sicher"
-  ]
+   "lieber auf nummer sicher",
+   "vorsicht ist die mutter der porzellankiste"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0282": {
   "core_en": "Easier said than done",
@@ -3283,7 +3315,9 @@
    "einfacher gesagt als getan",
    "das sagt sich (so) leicht",
    "das ist leicht gesagt"
-  ]
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0283": {
   "core_en": "Works for me",
@@ -3465,8 +3499,12 @@
    "was bedeutet dass",
    "was heißt dass",
    "das bedeutet",
-   "was heißt"
-  ]
+   "was heißt",
+   "sodass",
+   "so dass"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0299": {
   "core_en": "Thanks to",
@@ -3556,15 +3594,19 @@
  "ENG_CHUNK_0307": {
   "core_en": "You have every right to",
   "accept": [
-   "du hast allen grund",
-   "du hast jedes recht",
-   "sie haben allen grund",
-   "sie haben jedes recht",
+   "du hast (ja) (auch) allen grund",
+   "sie haben (ja) (auch) allen grund",
+   "ihr habt (ja) (auch) allen grund",
+   "es ist dein gutes recht",
+   "es ist ihr gutes recht",
+   "es ist euer gutes recht",
    "du hast das recht",
    "sie haben das recht",
-   "ihr habt allen grund",
-   "ihr habt jedes recht"
-  ]
+   "du hast (ja) (auch) jedes recht",
+   "sie haben (ja) (auch) jedes recht"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0308": {
   "core_en": "There's no way",
@@ -3854,8 +3896,14 @@
    "hätte nie gedacht",
    "ich hätte niemals gedacht",
    "ich hätte nie geglaubt",
-   "hätte ich nie gedacht"
-  ]
+   "hätte ich nie gedacht",
+   "ich hätte nicht gedacht",
+   "hätte nicht gedacht",
+   "nie hätte ich gedacht",
+   "ich hätte (es) nie für möglich gehalten"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0332": {
   "core_en": "You look",
@@ -4594,7 +4642,9 @@
    "bis [x] schon",
    "bis ich"
   ],
-  "weak": true
+  "weak": true,
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0394": {
   "core_en": "In the meantime",
@@ -4614,8 +4664,12 @@
    "jetzt da",
    "seitdem",
    "nun da",
-   "nun wo"
-  ]
+   "nun wo",
+   "seit die",
+   "da [x] jetzt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0396": {
   "core_en": "From now on",
@@ -4634,22 +4688,27 @@
   "accept": [
    "so oder so",
    "in beiden fällen",
+   "in jedem fall",
    "egal wie",
-   "wie auch immer",
    "sowieso",
-   "jedenfalls"
-  ]
+   "egal was wir machen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0398": {
   "core_en": "At the end of the day",
   "accept": [
    "letzten endes",
-   "am ende des tages",
    "letztendlich",
    "am ende",
    "schlussendlich",
-   "im endeffekt"
-  ]
+   "im endeffekt",
+   "im grunde",
+   "letztlich"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0399": {
   "core_en": "Back then",
@@ -4812,8 +4871,11 @@
    "lohnt sich",
    "es ist es wert",
    "das lohnt sich",
-   "es rentiert sich"
-  ]
+   "es rentiert sich",
+   "es zahlt sich aus"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0413": {
   "core_en": "The best thing to do is",
@@ -4888,15 +4950,21 @@
  "ENG_CHUNK_0419": {
   "core_en": "Don't get me started on",
   "accept": [
-   "fang bloß nicht (davon) an",
-   "fang bloß nicht mit [x] an",
+   "fang (mir) bloß nicht (davon) an",
+   "fang (mir) bloß nicht mit [x] an",
+   "fang (mir) (bloß) nicht damit an",
    "fangen sie bloß nicht (davon) an",
    "fang mir nicht mit [x] an",
-   "hör mir auf mit",
+   "hör mir (bloß) auf mit",
+   "hör mir (bloß) auf damit",
+   "hör (mir) bloß auf",
    "hören sie mir auf mit",
-   "fang nicht davon an",
-   "erinner mich nicht an"
-  ]
+   "fang (mir) gar nicht erst",
+   "fangen sie gar nicht erst",
+   "komm mir (bloß) nicht mit"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0420": {
   "core_en": "I'm glad",
@@ -4918,8 +4986,11 @@
    "ein glück dass",
    "wie gut dass",
    "gott sei dank",
-   "nur gut dass"
-  ]
+   "nur gut dass",
+   "glücklicherweise"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0422": {
   "core_en": "I'm worried",
@@ -4975,10 +5046,12 @@
   "accept": [
    "das nenne ich (mal)",
    "das nenn ich (mal)",
-   "das ist mal",
    "das ist ein richtiges",
-   "das nennt man"
-  ]
+   "das nennt man",
+   "das ist (doch) (ja) (aber) mal"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0427": {
   "core_en": "It's not fair that",
@@ -5578,7 +5651,9 @@
    "liegt mir auf der zunge",
    "das liegt mir auf der zunge",
    "mir auf der zunge"
-  ]
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0477": {
   "core_en": "Like what?",

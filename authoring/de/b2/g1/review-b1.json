@@ -1,0 +1,729 @@
+[
+ {
+  "id": "je-desto.06",
+  "field": "answer",
+  "before": [
+   "Je früher, desto besser.",
+   "Je früher, umso besser."
+  ],
+  "after": [
+   "Je früher, desto besser.",
+   "Je früher, umso besser.",
+   "Je eher, desto besser.",
+   "Je eher, umso besser."
+  ],
+  "severity": "error",
+  "why": "„Je eher, desto besser“ is the set idiom for this; a learner who knows it is marked wrong."
+ },
+ {
+  "id": "konnektoren-advanced.04",
+  "field": "answer",
+  "before": [
+   "Die Wohnung ist schön, allerdings ist sie sehr laut.",
+   "Die Wohnung ist schön. Allerdings ist sie sehr laut.",
+   "Die Wohnung ist schön, sie ist allerdings sehr laut.",
+   "Die Wohnung ist schön. Sie ist allerdings sehr laut."
+  ],
+  "after": [
+   "Die Wohnung ist schön, allerdings ist sie sehr laut.",
+   "Die Wohnung ist schön. Allerdings ist sie sehr laut.",
+   "Die Wohnung ist schön, sie ist allerdings sehr laut.",
+   "Die Wohnung ist schön. Sie ist allerdings sehr laut.",
+   "Die Wohnung ist schön, allerdings sehr laut."
+  ],
+  "severity": "error",
+  "why": "The short form „…, allerdings sehr laut“ is very common and correct."
+ },
+ {
+  "id": "konnektoren-advanced.08",
+  "field": "answer",
+  "before": [
+   "dennoch",
+   "trotzdem",
+   "allerdings"
+  ],
+  "after": [
+   "dennoch",
+   "trotzdem",
+   "allerdings",
+   "jedoch"
+  ],
+  "severity": "error",
+  "why": "jedoch in position 1 with inversion (…, jedoch hat er mir gefallen) is standard written German."
+ },
+ {
+  "id": "konnektoren-advanced.08",
+  "field": "note",
+  "before": "Contrast + verb directly after: dennoch/trotzdem.",
+  "after": "Contrast + verb directly after: dennoch/trotzdem (also jedoch, allerdings).",
+  "severity": "improve",
+  "why": "The note should cover every accepted answer."
+ },
+ {
+  "id": "zweiteilige-konnektoren.05",
+  "field": "answer",
+  "before": [
+   "aber"
+  ],
+  "after": [
+   "aber",
+   "doch",
+   "jedoch"
+  ],
+  "severity": "error",
+  "why": "zwar … doch / zwar … jedoch are standard; open gap task."
+ },
+ {
+  "id": "zweiteilige-konnektoren.10",
+  "field": "answer",
+  "before": [
+   "Er hat weder angerufen noch eine Nachricht geschrieben.",
+   "Er hat weder angerufen, noch hat er eine Nachricht geschrieben."
+  ],
+  "after": [
+   "Er hat weder angerufen noch eine Nachricht geschrieben.",
+   "Er hat weder angerufen, noch hat er eine Nachricht geschrieben.",
+   "Weder hat er angerufen, noch hat er eine Nachricht geschrieben."
+  ],
+  "severity": "error",
+  "why": "weder in position 1 with inversion is correct and the task does not fix the start."
+ },
+ {
+  "id": "zweiteilige-konnektoren.12",
+  "field": "answer",
+  "before": [
+   "Das Programm ist nicht nur kostenlos, sondern auch leicht zu bedienen."
+  ],
+  "after": [
+   "Das Programm ist nicht nur kostenlos, sondern auch leicht zu bedienen.",
+   "Das Programm ist nicht nur kostenlos, sondern es ist auch leicht zu bedienen."
+  ],
+  "severity": "error",
+  "why": "Repeating subject and verb after sondern is correct and a likely learner answer."
+ },
+ {
+  "id": "konjunktiv-2-vergangenheit.09",
+  "field": "answer",
+  "before": [
+   "Wenn wir den Wetterbericht gelesen hätten, wären wir nicht nass geworden."
+  ],
+  "after": [
+   "Wenn wir den Wetterbericht gelesen hätten, wären wir nicht nass geworden.",
+   "Wenn wir den Wetterbericht gelesen hätten, dann wären wir nicht nass geworden."
+  ],
+  "severity": "error",
+  "why": "„dann“ in the main clause is accepted in .01 and .06; same task here."
+ },
+ {
+  "id": "nomen-verb-verbindungen.01",
+  "field": "answer",
+  "before": [
+   "treffen"
+  ],
+  "after": [
+   "treffen",
+   "fällen"
+  ],
+  "severity": "error",
+  "why": "eine Entscheidung fällen is standard (Duden); the key rejects it."
+ },
+ {
+  "id": "nomen-verb-verbindungen.01",
+  "field": "note",
+  "before": "eine Entscheidung treffen.",
+  "after": "eine Entscheidung treffen (formal also: fällen).",
+  "severity": "improve",
+  "why": "Matches the added answer."
+ },
+ {
+  "id": "nomen-verb-verbindungen.09",
+  "field": "near",
+  "before": [
+   [
+    "gekommen",
+    "the fixed verb is geraten"
+   ],
+   [
+    "gefallen",
+    "the fixed verb is geraten"
+   ],
+   [
+    "getreten",
+    "in Kraft treten, but in die Kritik geraten"
+   ]
+  ],
+  "after": [
+   [
+    "gestellt",
+    "the fixed verb is geraten"
+   ],
+   [
+    "gefallen",
+    "the fixed verb is geraten"
+   ],
+   [
+    "getreten",
+    "in Kraft treten, but in die Kritik geraten"
+   ]
+  ],
+  "severity": "improve",
+  "why": "„in die Kritik kommen“ is attested in press German; use a clearly wrong verb as the near miss."
+ },
+ {
+  "id": "passiv-mit-modalverben.07",
+  "field": "answer",
+  "before": [
+   "Das Fenster kann nicht geöffnet werden.",
+   "Das Fenster lässt sich nicht öffnen.",
+   "Man kann das Fenster nicht öffnen."
+  ],
+  "after": [
+   "Das Fenster kann nicht geöffnet werden.",
+   "Das Fenster lässt sich nicht öffnen.",
+   "Man kann das Fenster nicht öffnen.",
+   "Das Fenster kann man nicht öffnen."
+  ],
+  "severity": "error",
+  "why": "Fronted object with man is the most natural spoken rendering."
+ },
+ {
+  "id": "zustandspassiv.11",
+  "field": "answer",
+  "before": [
+   "Alle Plätze sind reserviert."
+  ],
+  "after": [
+   "Alle Plätze sind reserviert.",
+   "Es sind alle Plätze reserviert."
+  ],
+  "severity": "error",
+  "why": "Placeholder es version is natural and correct."
+ },
+ {
+  "id": "modalpartikeln",
+  "field": "description",
+  "before": "Particles that colour spoken German: doch, ja, denn, mal, eben, halt, ruhig, bloß, etwa, wohl.",
+  "after": "Particles that colour spoken German (doch, ja, denn, mal, eben, halt, ruhig, bloß, etwa, wohl): Komm doch mit!",
+  "severity": "improve",
+  "why": "Description needs a German example sentence."
+ },
+ {
+  "id": "praepositionen-genitiv",
+  "field": "description",
+  "before": "Prepositions with the genitive, common in written German: wegen, trotz, während, statt, innerhalb, aufgrund, angesichts, anlässlich, außerhalb.",
+  "after": "Prepositions with the genitive, common in written German (wegen, trotz, während, statt, innerhalb, aufgrund, angesichts, anlässlich, außerhalb): Wegen des Regens fällt das Konzert aus.",
+  "severity": "improve",
+  "why": "Description needs a German example sentence."
+ },
+ {
+  "id": "ENG_CHUNK_0008",
+  "field": "accept",
+  "before": [
+   "ich wollte (schon) lange",
+   "ich wollte (dich) (schon) seit",
+   "ich wollte [x] (schon) lange",
+   "ich wollte [x] (schon) seit",
+   "ich hatte (schon) lange vor",
+   "ich wollte (schon) ewig"
+  ],
+  "after": [
+   "ich wollte (schon) lange",
+   "ich wollte (dich) (schon) seit",
+   "ich wollte [x] (schon) lange",
+   "ich wollte [x] (schon) seit",
+   "ich hatte (schon) lange vor",
+   "ich wollte (schon) ewig",
+   "ich wollte [x] (schon) die ganze zeit",
+   "ich wollte [x] schon längst"
+  ],
+  "severity": "improve",
+  "why": "„Ich wollte dich schon die ganze Zeit / schon längst anrufen“ are common renderings."
+ },
+ {
+  "id": "ENG_CHUNK_0092",
+  "field": "accept",
+  "before": [
+   "allerdings",
+   "wobei man sagen muss",
+   "trotzdem",
+   "dennoch"
+  ],
+  "after": [
+   "allerdings",
+   "wobei man sagen muss",
+   "trotzdem",
+   "dennoch",
+   "jedoch",
+   "andererseits",
+   "wobei"
+  ],
+  "severity": "improve",
+  "why": "jedoch, andererseits and colloquial „Wobei das Personal …“ are natural renderings."
+ },
+ {
+  "id": "ENG_CHUNK_0099",
+  "field": "n",
+  "before": "\"schließlich\" in mid-sentence = after all; at the start of a story it means \"finally\".",
+  "after": "\"schließlich\" giving a reason = after all (Er hat schließlich … / Schließlich hat er …); in a sequence of events it means \"finally\".",
+  "severity": "error",
+  "why": "Note implies position 1 = finally, but „Schließlich hat er die ganze Nacht gearbeitet“ also means after all."
+ },
+ {
+  "id": "ENG_CHUNK_0419",
+  "field": "accept",
+  "before": [
+   "fang (mir) bloß nicht (davon) an",
+   "fang (mir) bloß nicht mit [x] an",
+   "fangen sie bloß nicht (davon) an",
+   "fang mir nicht mit [x] an",
+   "hör mir (bloß) auf mit",
+   "hör mir (bloß) auf damit",
+   "hör (mir) bloß auf",
+   "hören sie mir auf mit"
+  ],
+  "after": [
+   "fang (mir) bloß nicht (davon) an",
+   "fang (mir) bloß nicht mit [x] an",
+   "fang (mir) (bloß) nicht damit an",
+   "fangen sie bloß nicht (davon) an",
+   "fang mir nicht mit [x] an",
+   "hör mir (bloß) auf mit",
+   "hör mir (bloß) auf damit",
+   "hör (mir) bloß auf",
+   "hören sie mir auf mit"
+  ],
+  "severity": "improve",
+  "why": "„Fang mir bloß nicht damit an“ is as common as davon."
+ },
+ {
+  "id": "ENG_CHUNK_0499",
+  "field": "accept",
+  "before": [
+   "so kommen wir",
+   "dann kommen wir",
+   "so sind wir",
+   "dann sind wir",
+   "auf diese weise",
+   "so umgehen wir",
+   "so vermeiden wir",
+   "dann stehen wir"
+  ],
+  "after": [
+   "so kommen wir",
+   "dann kommen wir",
+   "so sind wir",
+   "dann sind wir",
+   "auf diese weise",
+   "so umgehen wir",
+   "dann umgehen wir",
+   "so vermeiden wir",
+   "dann vermeiden wir",
+   "so stehen wir",
+   "dann stehen wir",
+   "so geraten wir",
+   "dann geraten wir"
+  ],
+  "severity": "error",
+  "why": "Accepted set is uneven: „dann vermeiden/umgehen wir“, „so stehen wir nicht“ and „geraten nicht in den Stau“ are rejected though equally natural."
+ },
+ {
+  "id": "ENG_CHUNK_0659",
+  "field": "t",
+  "before": "[Person] nach der Meinung zu [Nomen] fragen / [Nomen] mit [Person] abklopfen",
+  "after": "[Person, Dativ] [Nomen] vorstellen / [Nomen] mit [Person] besprechen",
+  "severity": "improve",
+  "why": "„etwas mit jemandem abklopfen“ is not idiomatic; vorstellen/besprechen is what people say."
+ },
+ {
+  "id": "ENG_CHUNK_0659",
+  "field": "ex",
+  "before": "Kann ich dich mal nach deiner Meinung zu einer Idee fragen?",
+  "after": "Kann ich dir mal eine Idee vorstellen?",
+  "severity": "improve",
+  "why": "Current ex is correct but stilted."
+ },
+ {
+  "id": "ENG_CHUNK_0659",
+  "field": "accept",
+  "before": [
+   "nach deiner meinung (zu)",
+   "nach ihrer meinung (zu)",
+   "was hältst du von",
+   "was halten sie von",
+   "was sagst du zu",
+   "was meinst du zu",
+   "dir (mal) eine idee vorstellen",
+   "ihnen (mal) eine idee vorstellen"
+  ],
+  "after": [
+   "dir (mal) eine idee vorstellen",
+   "ihnen (mal) eine idee vorstellen",
+   "nach deiner meinung (zu)",
+   "nach ihrer meinung (zu)",
+   "was hältst du von",
+   "was halten sie von",
+   "was sagst du zu",
+   "[x] mit dir besprechen",
+   "[x] mit ihnen besprechen"
+  ],
+  "severity": "improve",
+  "why": "Best-matching pattern first after ex change; add besprechen."
+ },
+ {
+  "id": "ENG_CHUNK_0660",
+  "field": "accept",
+  "before": [
+   "mich (kurz) auf den neuesten stand bringen",
+   "mich (kurz) auf den stand bringen",
+   "mich (kurz) updaten",
+   "mich (kurz) ins bild setzen",
+   "mich (kurz) informieren",
+   "mich (kurz) aufklären",
+   "mir (kurz) erzählen was"
+  ],
+  "after": [
+   "mich (kurz) auf den neuesten stand bringen",
+   "mich (kurz) auf den aktuellen stand bringen",
+   "mich (kurz) auf den stand bringen",
+   "mich (kurz) updaten",
+   "mich (kurz) ins bild setzen",
+   "mich (kurz) informieren",
+   "mich (kurz) aufklären",
+   "mir (kurz) erzählen was"
+  ],
+  "severity": "improve",
+  "why": "„auf den aktuellen Stand“ is as common as neuesten."
+ },
+ {
+  "id": "ENG_CHUNK_0693",
+  "field": "accept",
+  "before": [
+   "das gleiche gilt für",
+   "dasselbe gilt für",
+   "das selbe gilt für",
+   "gleiches gilt für",
+   "das gilt (auch) (genauso) (übrigens) für",
+   "ich auch",
+   "genau wie ich"
+  ],
+  "after": [
+   "das gleiche gilt für",
+   "dasselbe gilt für",
+   "gleiches gilt für",
+   "das gilt (auch) (genauso) (übrigens) für",
+   "ich auch",
+   "genau wie ich"
+  ],
+  "severity": "error",
+  "why": "„das selbe“ is a misspelling of dasselbe; brief says do not list misspellings."
+ },
+ {
+  "id": "ENG_CHUNK_0705",
+  "field": "accept",
+  "before": [
+   "sind sie (schon) dazu gekommen",
+   "bist du (schon) dazu gekommen",
+   "seid ihr (schon) dazu gekommen",
+   "hatten sie (schon) (mal) (die) gelegenheit",
+   "hattest du (schon) (mal) (die) gelegenheit",
+   "hattest du (schon) zeit",
+   "hatten sie (schon) zeit",
+   "konnten sie (schon)"
+  ],
+  "after": [
+   "sind sie (schon) dazu gekommen",
+   "bist du (schon) dazu gekommen",
+   "seid ihr (schon) dazu gekommen",
+   "hatten sie (schon) (mal) (die) gelegenheit",
+   "hattest du (schon) (mal) (die) gelegenheit",
+   "hattest du (schon) zeit",
+   "hatten sie (schon) zeit",
+   "konnten sie (schon)",
+   "konntest du (schon)"
+  ],
+  "severity": "improve",
+  "why": "du version of „Konnten Sie schon …“ missing."
+ },
+ {
+  "id": "ENG_CHUNK_0725",
+  "field": "accept",
+  "before": [
+   "am besten nimmst du",
+   "du nimmst am besten",
+   "nimmst du besser",
+   "du nimmst besser",
+   "es wäre besser (für dich) (wenn)",
+   "du solltest (lieber) (besser)",
+   "sie sollten (lieber) (besser)",
+   "am besten nehmen sie"
+  ],
+  "after": [
+   "am besten nimmst du",
+   "du nimmst am besten",
+   "nimmst du besser",
+   "du nimmst besser",
+   "fährst du besser",
+   "du fährst besser",
+   "es wäre besser (für dich) (wenn)",
+   "du solltest (lieber) (besser)",
+   "sie sollten (lieber) (besser)",
+   "am besten nehmen sie"
+  ],
+  "severity": "error",
+  "why": "t itself offers „Du fährst besser …“ but no pattern accepts it („fährst du besser mit dem Zug“)."
+ },
+ {
+  "id": "ENG_CHUNK_0740",
+  "field": "accept",
+  "before": [
+   "auf dem gleichen stand",
+   "auf demselben stand",
+   "auf dem selben stand",
+   "uns einig sind",
+   "uns einig",
+   "einer meinung",
+   "dasselbe meinen",
+   "das gleiche meinen"
+  ],
+  "after": [
+   "auf dem gleichen stand",
+   "auf demselben stand",
+   "uns einig sind",
+   "uns einig",
+   "einer meinung",
+   "dasselbe meinen",
+   "das gleiche meinen"
+  ],
+  "severity": "error",
+  "why": "„dem selben“ is a misspelling of demselben."
+ },
+ {
+  "id": "ENG_CHUNK_0758",
+  "field": "accept",
+  "before": [
+   "brüte [x] aus",
+   "ausbrüten",
+   "ich werde krank",
+   "ich werd krank",
+   "ich bekomme",
+   "ich krieg",
+   "im anmarsch",
+   "eingefangen"
+  ],
+  "after": [
+   "brüte [x] aus",
+   "ausbrüten",
+   "ich werde krank",
+   "ich werd krank",
+   "ich bekomme",
+   "ich krieg",
+   "ich kriege",
+   "im anmarsch",
+   "eingefangen",
+   "bahnt sich [x] an"
+  ],
+  "severity": "improve",
+  "why": "„ich kriege“ (full form) and „da bahnt sich eine Erkältung an“ are common."
+ },
+ {
+  "id": "ENG_CHUNK_0765",
+  "field": "accept",
+  "before": [
+   "sich mit [x] abfinden",
+   "abfinden",
+   "damit klarkommen",
+   "damit klarzukommen",
+   "kommt [x] damit klar",
+   "verarbeiten",
+   "akzeptieren"
+  ],
+  "after": [
+   "sich mit [x] abfinden",
+   "abfinden",
+   "damit klarkommen",
+   "damit klarzukommen",
+   "kommt [x] damit klar",
+   "verarbeiten",
+   "akzeptieren",
+   "verkraften",
+   "verkraftet",
+   "daran zu knabbern",
+   "dran zu knabbern"
+  ],
+  "severity": "improve",
+  "why": "verkraften and „hat noch daran zu knabbern“ are the most natural renderings and are missing."
+ },
+ {
+  "id": "ENG_CHUNK_0780",
+  "field": "accept",
+  "before": [
+   "spontan würde ich sagen",
+   "spontan",
+   "aus dem stegreif",
+   "auf die schnelle",
+   "aus dem bauch (heraus) (raus)",
+   "ohne nachzuschauen",
+   "grob geschätzt",
+   "aus dem kopf"
+  ],
+  "after": [
+   "spontan würde ich sagen",
+   "spontan",
+   "aus dem stegreif",
+   "auf die schnelle",
+   "auf anhieb",
+   "aus dem bauch (heraus) (raus)",
+   "ohne nachzuschauen",
+   "grob geschätzt",
+   "aus dem kopf",
+   "schätzungsweise"
+  ],
+  "severity": "improve",
+  "why": "„Auf Anhieb würde ich sagen …“ is a very common rendering."
+ },
+ {
+  "id": "ENG_CHUNK_0795",
+  "field": "accept",
+  "before": [
+   "und tatsächlich",
+   "und prompt",
+   "tatsächlich",
+   "prompt",
+   "wie erwartet",
+   "und natürlich",
+   "und wirklich"
+  ],
+  "after": [
+   "und tatsächlich",
+   "und prompt",
+   "tatsächlich",
+   "prompt",
+   "wie erwartet",
+   "und natürlich",
+   "und wirklich",
+   "und siehe da"
+  ],
+  "severity": "improve",
+  "why": "„und siehe da“ is idiomatic for sure enough."
+ },
+ {
+  "id": "ENG_CHUNK_0802",
+  "field": "accept",
+  "before": [
+   "ich verstehe (schon) was du meinst",
+   "ich versteh (schon) was du meinst",
+   "ich verstehe (schon) was sie meinen",
+   "ich verstehe (schon) was ihr meint",
+   "ich verstehe deinen punkt",
+   "ich verstehe ihren standpunkt",
+   "ich kann dich (schon) verstehen",
+   "ich kann sie (schon) verstehen"
+  ],
+  "after": [
+   "ich verstehe (schon) was du meinst",
+   "ich versteh (schon) was du meinst",
+   "ich verstehe (schon) was sie meinen",
+   "ich verstehe (schon) was ihr meint",
+   "ich verstehe deinen punkt",
+   "ich verstehe deinen standpunkt",
+   "ich verstehe ihren standpunkt",
+   "ich kann dich (schon) verstehen",
+   "ich kann sie (schon) verstehen",
+   "ich kann das (schon) nachvollziehen"
+  ],
+  "severity": "improve",
+  "why": "du form of Standpunkt and „Ich kann das schon nachvollziehen“ are natural."
+ },
+ {
+  "id": "ENG_CHUNK_0805",
+  "field": "t",
+  "before": "Man sollte meinen, dass [Satz] / Man würde ja denken, [Satz]",
+  "after": "Man sollte meinen, dass [Satz] / Man könnte meinen, [Satz]",
+  "severity": "improve",
+  "why": "„Man würde ja denken“ is a calque; „Man könnte meinen“ is the idiomatic second variant (keep the pattern as accepted)."
+ },
+ {
+  "id": "ENG_CHUNK_0849",
+  "field": "fn",
+  "before": "probability",
+  "after": "react",
+  "severity": "error",
+  "why": "„Damit hab ich nicht gerechnet!“ is a surprise reaction, not a guess or probability."
+ },
+ {
+  "id": "ENG_CHUNK_0862",
+  "field": "accept",
+  "before": [
+   "kommt nach",
+   "kommt [x] nach",
+   "ähnelt",
+   "ganz der vater",
+   "ganz die mutter",
+   "ganz der papa"
+  ],
+  "after": [
+   "kommt nach",
+   "kommt [x] nach",
+   "nach [x] geraten",
+   "ähnelt",
+   "ganz der vater",
+   "ganz die mutter",
+   "ganz der papa"
+  ],
+  "severity": "improve",
+  "why": "„Sie ist ganz nach ihrem Vater geraten“ is idiomatic."
+ },
+ {
+  "id": "ENG_CHUNK_0888",
+  "field": "accept",
+  "before": [
+   "ich möchte (gern) (gerne) einen toast ausbringen",
+   "einen toast ausbringen",
+   "einen toast (auf) [x] ausbringen",
+   "das glas [x] erheben",
+   "das glas erheben",
+   "lasst uns (auf) [x] anstoßen",
+   "lasst uns anstoßen",
+   "lassen sie uns anstoßen"
+  ],
+  "after": [
+   "ich möchte (gern) (gerne) einen toast ausbringen",
+   "einen toast ausbringen",
+   "einen toast (auf) [x] ausbringen",
+   "einen toast (auf) [x] aussprechen",
+   "das glas [x] erheben",
+   "das glas erheben",
+   "lasst uns (auf) [x] anstoßen",
+   "lasst uns anstoßen",
+   "lassen sie uns anstoßen"
+  ],
+  "severity": "improve",
+  "why": "„einen Toast aussprechen“ is common and correct."
+ },
+ {
+  "id": "ENG_CHUNK_0927",
+  "field": "ex",
+  "before": "Ich würde lügen, wenn ich sagen würde, ich wäre nicht nervös gewesen.",
+  "after": "Ich würde lügen, wenn ich sagen würde, ich wäre nicht nervös.",
+  "severity": "improve",
+  "why": "The English (backshifted „wasn't“) normally means nervous now; gewesen shifts it to the past."
+ },
+ {
+  "id": "ENG_CHUNK_1193",
+  "field": "accept",
+  "before": [
+   "mit [anything] und",
+   "bei [anything] und",
+   "wegen [anything] und",
+   "zwischen [anything] und"
+  ],
+  "after": [
+   "mit [anything] und",
+   "bei [anything] und",
+   "wegen [anything] und",
+   "durch [anything] und"
+  ],
+  "severity": "error",
+  "why": "„zwischen dem Baby und dem Umzug“ is a calque of English 'between'; durch is natural."
+ }
+]

@@ -983,5 +983,280 @@
    "de": "Leider ist [Nomen] beschädigt angekommen. Ich bitte Sie, [zu + Infinitiv]",
    "en": "Unfortunately [noun] arrived damaged. I ask you to [verb]"
   }
+ ],
+ "b2": [
+  {
+   "id": "opinion",
+   "en": "Giving and backing an opinion",
+   "chunk_ids": [
+    "ENG_CHUNK_0412",
+    "ENG_CHUNK_0596",
+    "ENG_CHUNK_0776",
+    "ENG_CHUNK_0814",
+    "ENG_CHUNK_0828",
+    "ENG_CHUNK_0866",
+    "ENG_CHUNK_0905",
+    "ENG_CHUNK_0915",
+    "ENG_CHUNK_0927",
+    "ENG_CHUNK_0970",
+    "ENG_CHUNK_1005",
+    "ENG_CHUNK_1021",
+    "ENG_CHUNK_1114"
+   ]
+  },
+  {
+   "id": "argue",
+   "en": "Arguing and giving examples",
+   "chunk_ids": [
+    "ENG_CHUNK_0009",
+    "ENG_CHUNK_0099",
+    "ENG_CHUNK_0499",
+    "ENG_CHUNK_0591",
+    "ENG_CHUNK_0653",
+    "ENG_CHUNK_0693",
+    "ENG_CHUNK_0735",
+    "ENG_CHUNK_0741",
+    "ENG_CHUNK_0794",
+    "ENG_CHUNK_0796",
+    "ENG_CHUNK_0801",
+    "ENG_CHUNK_0891",
+    "ENG_CHUNK_0893",
+    "ENG_CHUNK_0921",
+    "ENG_CHUNK_1000",
+    "ENG_CHUNK_1035",
+    "ENG_CHUNK_1103"
+   ]
+  },
+  {
+   "id": "hedge",
+   "en": "Hedging and qualifying",
+   "chunk_ids": [
+    "ENG_CHUNK_0734",
+    "ENG_CHUNK_0773",
+    "ENG_CHUNK_0775",
+    "ENG_CHUNK_0779",
+    "ENG_CHUNK_0780",
+    "ENG_CHUNK_0809",
+    "ENG_CHUNK_0825",
+    "ENG_CHUNK_0896",
+    "ENG_CHUNK_0897",
+    "ENG_CHUNK_0926",
+    "ENG_CHUNK_1098",
+    "ENG_CHUNK_1199"
+   ]
+  },
+  {
+   "id": "concede",
+   "en": "Conceding and countering",
+   "chunk_ids": [
+    "ENG_CHUNK_0092",
+    "ENG_CHUNK_0194",
+    "ENG_CHUNK_0209",
+    "ENG_CHUNK_0269",
+    "ENG_CHUNK_0792",
+    "ENG_CHUNK_0793",
+    "ENG_CHUNK_0875",
+    "ENG_CHUNK_0900",
+    "ENG_CHUNK_1001",
+    "ENG_CHUNK_1022",
+    "ENG_CHUNK_1080"
+   ]
+  },
+  {
+   "id": "agree",
+   "en": "Agreeing and disagreeing",
+   "chunk_ids": [
+    "ENG_CHUNK_0728",
+    "ENG_CHUNK_0770",
+    "ENG_CHUNK_0802",
+    "ENG_CHUNK_0820",
+    "ENG_CHUNK_0855",
+    "ENG_CHUNK_0858",
+    "ENG_CHUNK_0870",
+    "ENG_CHUNK_0871",
+    "ENG_CHUNK_0874",
+    "ENG_CHUNK_0880",
+    "ENG_CHUNK_0931",
+    "ENG_CHUNK_1076",
+    "ENG_CHUNK_1077",
+    "ENG_CHUNK_1195"
+   ]
+  },
+  {
+   "id": "probability",
+   "en": "Guesses and probability",
+   "chunk_ids": [
+    "ENG_CHUNK_0811",
+    "ENG_CHUNK_0815",
+    "ENG_CHUNK_0816",
+    "ENG_CHUNK_0817",
+    "ENG_CHUNK_0818",
+    "ENG_CHUNK_0819"
+   ]
+  },
+  {
+   "id": "conclude",
+   "en": "Weighing and concluding",
+   "chunk_ids": [
+    "ENG_CHUNK_0298",
+    "ENG_CHUNK_0397",
+    "ENG_CHUNK_0398",
+    "ENG_CHUNK_0698",
+    "ENG_CHUNK_0833",
+    "ENG_CHUNK_1096"
+   ]
+  },
+  {
+   "id": "report",
+   "en": "Reporting and summarising a source",
+   "chunk_ids": [
+    "ENG_CHUNK_1029"
+   ]
+  },
+  {
+   "id": "present",
+   "en": "Presentations",
+   "chunk_ids": [
+    "ENG_CHUNK_0622"
+   ]
+  },
+  {
+   "id": "discuss",
+   "en": "Taking part in a discussion",
+   "chunk_ids": [
+    "ENG_CHUNK_0476",
+    "ENG_CHUNK_0740",
+    "ENG_CHUNK_0868",
+    "ENG_CHUNK_0876",
+    "ENG_CHUNK_0877",
+    "ENG_CHUNK_0878",
+    "ENG_CHUNK_0879",
+    "ENG_CHUNK_0980"
+   ]
+  },
+  {
+   "id": "figures",
+   "en": "Describing graphs and figures",
+   "chunk_ids": [
+    "ENG_CHUNK_1145"
+   ]
+  },
+  {
+   "id": "formal",
+   "en": "Work and formal writing",
+   "chunk_ids": [
+    "ENG_CHUNK_0658",
+    "ENG_CHUNK_0659",
+    "ENG_CHUNK_0660",
+    "ENG_CHUNK_0661",
+    "ENG_CHUNK_0662",
+    "ENG_CHUNK_0736",
+    "ENG_CHUNK_0925",
+    "ENG_CHUNK_1127"
+   ]
+  },
+  {
+   "id": "react",
+   "en": "Reacting",
+   "chunk_ids": [
+    "ENG_CHUNK_0253",
+    "ENG_CHUNK_0281",
+    "ENG_CHUNK_0282",
+    "ENG_CHUNK_0307",
+    "ENG_CHUNK_0331",
+    "ENG_CHUNK_0419",
+    "ENG_CHUNK_0421",
+    "ENG_CHUNK_0426",
+    "ENG_CHUNK_0729",
+    "ENG_CHUNK_0765",
+    "ENG_CHUNK_0789",
+    "ENG_CHUNK_0790",
+    "ENG_CHUNK_0805",
+    "ENG_CHUNK_0807",
+    "ENG_CHUNK_0810",
+    "ENG_CHUNK_0822",
+    "ENG_CHUNK_0830",
+    "ENG_CHUNK_0849",
+    "ENG_CHUNK_0918",
+    "ENG_CHUNK_1013",
+    "ENG_CHUNK_1090",
+    "ENG_CHUNK_1110",
+    "ENG_CHUNK_1117",
+    "ENG_CHUNK_1120",
+    "ENG_CHUNK_1187",
+    "ENG_CHUNK_1189"
+   ]
+  },
+  {
+   "id": "request",
+   "en": "Requests, offers and advice",
+   "chunk_ids": [
+    "ENG_CHUNK_0705",
+    "ENG_CHUNK_0725",
+    "ENG_CHUNK_0726",
+    "ENG_CHUNK_0894",
+    "ENG_CHUNK_0901",
+    "ENG_CHUNK_0902",
+    "ENG_CHUNK_0903",
+    "ENG_CHUNK_0910"
+   ]
+  },
+  {
+   "id": "social",
+   "en": "Social formulas",
+   "chunk_ids": [
+    "ENG_CHUNK_0588",
+    "ENG_CHUNK_0690",
+    "ENG_CHUNK_0749",
+    "ENG_CHUNK_0784",
+    "ENG_CHUNK_0785",
+    "ENG_CHUNK_0786",
+    "ENG_CHUNK_0886",
+    "ENG_CHUNK_0887",
+    "ENG_CHUNK_0888",
+    "ENG_CHUNK_0889"
+   ]
+  },
+  {
+   "id": "narrate",
+   "en": "Telling and linking events",
+   "chunk_ids": [
+    "ENG_CHUNK_0008",
+    "ENG_CHUNK_0393",
+    "ENG_CHUNK_0395",
+    "ENG_CHUNK_0580",
+    "ENG_CHUNK_0795",
+    "ENG_CHUNK_0813",
+    "ENG_CHUNK_1192",
+    "ENG_CHUNK_1193"
+   ]
+  },
+  {
+   "id": "people",
+   "en": "People and relationships",
+   "chunk_ids": [
+    "ENG_CHUNK_0856",
+    "ENG_CHUNK_0862",
+    "ENG_CHUNK_0863",
+    "ENG_CHUNK_0865",
+    "ENG_CHUNK_0961",
+    "ENG_CHUNK_0962",
+    "ENG_CHUNK_1043",
+    "ENG_CHUNK_1122"
+   ]
+  },
+  {
+   "id": "collocation",
+   "en": "Collocations",
+   "chunk_ids": [
+    "ENG_CHUNK_0753",
+    "ENG_CHUNK_0758",
+    "ENG_CHUNK_0846",
+    "ENG_CHUNK_0847",
+    "ENG_CHUNK_0942",
+    "ENG_CHUNK_0955",
+    "ENG_CHUNK_1164"
+   ]
+  }
  ]
 }

@@ -153,9 +153,20 @@
    "so sind wir",
    "dann sind wir",
    "auf diese weise",
+   "so umgehen wir",
+   "dann umgehen wir",
+   "so vermeiden wir",
+   "dann vermeiden wir",
+   "so stehen wir",
+   "dann stehen wir",
+   "so geraten wir",
+   "dann geraten wir",
    "dadurch",
-   "so vermeiden wir"
-  ]
+   "so entgehen wir",
+   "dann entgehen wir"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0500": {
   "core_en": "if not",
@@ -1066,8 +1077,13 @@
    "das komische ist",
    "das komische daran ist",
    "lustigerweise",
-   "witzigerweise"
-  ]
+   "witzigerweise",
+   "das lustige (daran) war",
+   "das witzige (daran) war",
+   "das komische (daran) war"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0581": {
   "core_en": "Wish me luck",
@@ -1156,7 +1172,9 @@
   "accept": [
    "besser spät als nie",
    "lieber spät als nie"
-  ]
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0589": {
   "core_en": "it's a piece of cake",
@@ -1189,7 +1207,9 @@
    "sonst",
    "ansonsten",
    "andernfalls"
-  ]
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0592": {
   "core_en": "just like",
@@ -1242,8 +1262,11 @@
    "auf jeden fall",
    "was auch immer passiert",
    "komme was wolle",
-   "unter allen umständen"
-  ]
+   "unter allen umständen",
+   "was auch passiert"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0597": {
   "core_en": "only if",
@@ -1531,15 +1554,20 @@
  "ENG_CHUNK_0622": {
   "core_en": "Let me walk you through",
   "accept": [
-   "ich zeig dir (mal) (schritt für schritt) wie",
-   "ich zeige dir (mal) (schritt für schritt) wie",
-   "ich zeige ihnen (mal) (schritt für schritt) wie",
    "ich erklär dir (mal)",
    "ich erkläre dir (mal)",
    "ich erkläre ihnen (mal)",
    "ich gehe [x] mit dir durch",
-   "ich gehe [x] mit ihnen durch"
-  ]
+   "ich gehe [x] mit ihnen durch",
+   "ich zeig dir (mal)",
+   "ich zeige dir (mal)",
+   "ich zeige ihnen (mal)",
+   "ich führ dich (mal) durch",
+   "ich führe dich (mal) durch",
+   "ich führe sie (mal) durch"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0623": {
   "core_en": "I'm in charge of",
@@ -1898,8 +1926,13 @@
    "vorschnelle schlüsse",
    "vorschnellen schlüsse",
    "voreilige schlussfolgerungen",
-   "voreiligen schlussfolgerungen"
-  ]
+   "voreiligen schlussfolgerungen",
+   "vorschnell (zu) urteilen",
+   "voreilig (zu) urteilen",
+   "vorschnellen schlussfolgerungen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0654": {
   "core_en": "look into",
@@ -1955,33 +1988,51 @@
    "melde mich (noch) (mal) wegen",
    "mich (noch) (mal) wegen [x] melden",
    "hake [x] nach",
-   "frage [x] nach"
-  ]
+   "frage [x] nach",
+   "melde mich nochmal wegen",
+   "mich nochmal wegen [x] melden",
+   "komme (noch) (einmal) (mal) auf [x] zurück",
+   "komme nochmal auf [x] zurück"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0659": {
   "core_en": "run an idea by you",
   "accept": [
+   "dir (mal) eine idee vorstellen",
+   "ihnen (mal) eine idee vorstellen",
    "nach deiner meinung (zu)",
    "nach ihrer meinung (zu)",
    "was hältst du von",
    "was halten sie von",
    "was sagst du zu",
-   "was meinst du zu",
-   "dir (mal) eine idee vorstellen",
-   "ihnen (mal) eine idee vorstellen"
-  ]
+   "[x] mit dir besprechen",
+   "[x] mit ihnen besprechen",
+   "deine meinung zu",
+   "ihre meinung zu",
+   "[x] mit dir durchsprechen",
+   "[x] mit ihnen durchsprechen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0660": {
   "core_en": "fill me in",
   "accept": [
-   "mich (kurz) auf den neuesten stand bringen",
    "mich (kurz) auf den stand bringen",
-   "mich (kurz) updaten",
-   "mich (kurz) ins bild setzen",
    "mich (kurz) informieren",
    "mich (kurz) aufklären",
-   "mir (kurz) erzählen was"
-  ]
+   "mir (kurz) erzählen was",
+   "mich (mal) (kurz) auf den neuesten stand bringen",
+   "mich (mal) (kurz) auf den aktuellen stand bringen",
+   "mich (mal) (kurz) updaten",
+   "mich (mal) (kurz) ins bild setzen",
+   "mir (mal) (kurz) sagen was",
+   "mich (mal) (kurz) auf dem laufenden"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0661": {
   "core_en": "touch base with",
@@ -1991,8 +2042,12 @@
    "mit [x] kurzschließen",
    "mit [x] austauschen",
    "mit [x] rücksprache halten",
-   "uns [x] abstimmen"
-  ]
+   "uns [x] abstimmen",
+   "kurz mit [x] reden",
+   "kurz mit [x] sprechen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0662": {
   "core_en": "giving me a heads-up",
@@ -2004,8 +2059,11 @@
    "bescheid sagen",
    "bescheid geben",
    "danke für die warnung",
-   "danke für den hinweis"
-  ]
+   "danke für den hinweis",
+   "vorwarnung"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0663": {
   "core_en": "catching up on",
@@ -2317,12 +2375,17 @@
   "accept": [
    "das wäre (aber) (doch) nicht nötig gewesen",
    "das war (doch) nicht nötig",
-   "das hättest du nicht tun müssen",
    "das hätten sie nicht tun müssen",
    "das hättet ihr nicht tun müssen",
-   "das ist (aber) (so) lieb",
-   "das ist (aber) (so) nett"
-  ]
+   "das ist (aber) (so) nett",
+   "das hättest du (doch) (aber) nicht tun müssen",
+   "das hättest du (doch) (aber) nicht machen müssen",
+   "das hätten sie (doch) (aber) nicht machen müssen",
+   "das wär (doch) nicht nötig gewesen",
+   "das ist (aber) (ja) (so) lieb"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0691": {
   "core_en": "Until then",
@@ -2349,12 +2412,15 @@
   "accept": [
    "das gleiche gilt für",
    "dasselbe gilt für",
-   "das selbe gilt für",
    "gleiches gilt für",
    "das gilt (auch) (genauso) (übrigens) für",
    "ich auch",
-   "genau wie ich"
-  ]
+   "genau wie ich",
+   "für mich gilt",
+   "trifft (auch) auf mich zu"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0694": {
   "core_en": "the whole time",
@@ -2408,7 +2474,9 @@
    "im großen und ganzen",
    "unterm strich",
    "im ganzen"
-  ]
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0699": {
   "core_en": "That's how",
@@ -2496,8 +2564,15 @@
    "hattest du (schon) (mal) (die) gelegenheit",
    "hattest du (schon) zeit",
    "hatten sie (schon) zeit",
-   "konntest du (schon)"
-  ]
+   "konnten sie (schon)",
+   "konntest du (schon)",
+   "hast du (schon) zeit gehabt",
+   "haben sie (schon) zeit gehabt",
+   "hast du (schon) (die) gelegenheit gehabt",
+   "haben sie (schon) (die) gelegenheit gehabt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0706": {
   "core_en": "How long does it take to",
@@ -2716,28 +2791,45 @@
  "ENG_CHUNK_0725": {
   "core_en": "you'd be better off",
   "accept": [
-   "es wäre besser wenn du",
-   "es wäre besser (für dich)",
-   "du fährst besser",
+   "am besten nimmst du",
+   "du nimmst am besten",
    "nimmst du besser",
    "du nimmst besser",
-   "du solltest lieber",
-   "du solltest besser",
-   "sie sollten lieber"
-  ]
+   "fährst du besser",
+   "du fährst besser",
+   "es wäre besser (für dich) (wenn)",
+   "du solltest (lieber) (besser)",
+   "sie sollten (lieber) (besser)",
+   "am besten nehmen sie",
+   "nimm (doch) lieber",
+   "nimm (doch) besser",
+   "nimm am besten",
+   "fahr (doch) lieber",
+   "fahr am besten",
+   "du nimmst lieber",
+   "besser dran"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0726": {
   "core_en": "Is there any chance you could",
   "accept": [
+   "könntest du (mich) (vielleicht) (eventuell)",
+   "könnten sie (mich) (vielleicht) (eventuell)",
    "wäre es (vielleicht) (eventuell) möglich (dass)",
-   "könntest du (mich) (vielleicht) eventuell",
-   "könntest du (mich) (vielleicht)",
-   "könnten sie (mich) (vielleicht) eventuell",
-   "könnten sie (mich) (vielleicht)",
    "besteht die möglichkeit dass",
-   "gibt es eine chance dass",
-   "kannst du (mich) eventuell"
-  ]
+   "würdest du (mich) (vielleicht) (eventuell)",
+   "würden sie (mich) (vielleicht) (eventuell)",
+   "kannst du (mich) eventuell",
+   "hättest du (vielleicht) (eventuell) zeit",
+   "hätten sie (vielleicht) (eventuell) zeit",
+   "kannst du (mich) vielleicht",
+   "wäre es dir (vielleicht) (eventuell) möglich",
+   "wäre es ihnen (vielleicht) (eventuell) möglich"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0727": {
   "core_en": "I'd appreciate it if you could",
@@ -2760,7 +2852,9 @@
    "es ist (ja) (doch) nicht so dass",
    "ist (ja) (doch) nicht so dass",
    "ist (ja) nicht so"
-  ]
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0729": {
   "core_en": "It's not every day",
@@ -2769,7 +2863,9 @@
    "nicht jeden tag",
    "nicht alle tage",
    "(so) was hat man nicht alle tage"
-  ]
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0730": {
   "core_en": "When it comes to",
@@ -2829,7 +2925,9 @@
    "ich behaupte (ja) nicht dass",
    "ich meine (ja) nicht dass",
    "das heißt nicht dass"
-  ]
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0735": {
   "core_en": "It's not about",
@@ -2837,8 +2935,14 @@
    "es geht (hier) (mir) nicht um",
    "es geht (hier) (mir) nicht ums",
    "geht (doch) nicht um",
-   "geht (doch) nicht ums"
-  ]
+   "geht (doch) nicht ums",
+   "geht es (mir) (doch) nicht um",
+   "geht's (mir) (doch) nicht um",
+   "um [x] geht es (doch) (mir) (hier) nicht",
+   "ums [x] geht es (doch) (mir) (hier) nicht"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0736": {
   "core_en": "take on",
@@ -2848,7 +2952,9 @@
    "annehmen",
    "auf mich nehmen",
    "zusätzlich machen"
-  ]
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0737": {
   "core_en": "called in sick",
@@ -2893,13 +2999,17 @@
   "accept": [
    "auf dem gleichen stand",
    "auf demselben stand",
-   "auf dem selben stand",
    "uns einig sind",
    "uns einig",
    "einer meinung",
    "dasselbe meinen",
-   "das gleiche meinen"
-  ]
+   "das gleiche meinen",
+   "auf einer linie",
+   "über dasselbe reden",
+   "vom gleichen reden"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0741": {
   "core_en": "cut corners",
@@ -2909,8 +3019,14 @@
    "an der falschen stelle gespart",
    "an der falschen stelle sparen",
    "schlampig gearbeitet",
-   "geschlampt"
-  ]
+   "geschlampt",
+   "am falschen ende gespart",
+   "am falschen ende sparen",
+   "nachlässig gearbeitet",
+   "murks gemacht"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0742": {
   "core_en": "familiar with",
@@ -3004,8 +3120,13 @@
    "mal sehen",
    "wir gucken mal",
    "wir schauen (einfach) mal",
-   "spontan"
-  ]
+   "spontan",
+   "auf uns zukommen",
+   "mal gucken",
+   "wir sehen (dann) (einfach) (mal) weiter"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0750": {
   "core_en": "keep you company",
@@ -3054,7 +3175,9 @@
    "über wasser zu halten",
    "durchzukommen",
    "auszukommen"
-  ]
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0754": {
   "core_en": "paid off",
@@ -3113,9 +3236,16 @@
    "ich werd krank",
    "ich bekomme",
    "ich krieg",
+   "ich kriege",
    "im anmarsch",
-   "eingefangen"
-  ]
+   "eingefangen",
+   "bahnt sich [x] an",
+   "ich hole mir",
+   "ich hol mir",
+   "ich bekomm"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0759": {
   "core_en": "feeling under the weather",
@@ -3199,8 +3329,17 @@
    "damit klarzukommen",
    "kommt [x] damit klar",
    "verarbeiten",
-   "akzeptieren"
-  ]
+   "akzeptieren",
+   "verkraften",
+   "verkraftet",
+   "daran zu knabbern",
+   "dran zu knabbern",
+   "abzufinden",
+   "verarbeitet",
+   "zu verarbeiten"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0766": {
   "core_en": "Let's talk about something else",
@@ -3256,9 +3395,12 @@
    "wenn du meinst",
    "wenn sie meinen",
    "wenn ihr meint",
-   "wenn du (das) sagst",
-   "wenn sie (das) sagen"
-  ]
+   "wenn du (das) (es) sagst",
+   "wenn du's sagst",
+   "wenn sie (das) (es) sagen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0771": {
   "core_en": "Who knows?",
@@ -3292,8 +3434,13 @@
    "wenn ich (so) (darüber) (drüber) nachdenke",
    "jetzt wo du (es) sagst",
    "jetzt wo du's sagst",
-   "jetzt wo sie (es) sagen"
-  ]
+   "jetzt wo sie (es) sagen",
+   "wo ich gerade (so) (darüber) (drüber) nachdenke",
+   "mir fällt (gerade) (da) ein",
+   "fällt mir (gerade) ein"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0774": {
   "core_en": "The way I see it",
@@ -3315,8 +3462,13 @@
    "korrigiert mich (bitte) wenn ich (falsch liege) (mich irre)",
    "verbessere mich wenn ich",
    "wenn ich mich nicht irre",
-   "wenn ich mich nicht täusche"
-  ]
+   "wenn ich mich nicht täusche",
+   "korrigier mich (bitte) falls ich",
+   "korrigiere mich (bitte) falls ich",
+   "korrigieren sie mich (bitte) falls ich"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0776": {
   "core_en": "For the record",
@@ -3328,8 +3480,14 @@
    "nur dass du's weißt",
    "nur dass du (es) weißt",
    "nur dass sie (es) wissen",
-   "nur dass das klar ist"
-  ]
+   "nur dass das klar ist",
+   "(nur) damit du (es) weißt",
+   "(nur) damit du's weißt",
+   "(nur) damit sie (es) wissen",
+   "zur klarstellung"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0777": {
   "core_en": "Not necessarily",
@@ -3361,8 +3519,12 @@
    "ich überleg (ja) nur",
    "ich überlege (ja) nur",
    "nur (so) ein gedanke",
-   "nur (so) eine idee"
-  ]
+   "nur (so) eine idee",
+   "ich spinn (nur) (mal) (ein bisschen) rum",
+   "ich spinne (nur) (mal) (ein bisschen) rum"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0780": {
   "core_en": "Off the top of my head",
@@ -3371,11 +3533,17 @@
    "spontan",
    "aus dem stegreif",
    "auf die schnelle",
+   "auf anhieb",
    "aus dem bauch (heraus) (raus)",
    "ohne nachzuschauen",
    "grob geschätzt",
-   "aus dem kopf"
-  ]
+   "aus dem kopf",
+   "schätzungsweise",
+   "ich schätze mal",
+   "ich würde (jetzt) (mal) schätzen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0781": {
   "core_en": "can't complain",
@@ -3424,8 +3592,13 @@
    "gerne geschehen",
    "nicht der rede wert",
    "das ist (doch) selbstverständlich",
-   "das war (doch) selbstverständlich"
-  ]
+   "das war (doch) selbstverständlich",
+   "keine ursache",
+   "nichts zu danken",
+   "gern doch"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0785": {
   "core_en": "I'll let you go",
@@ -3437,8 +3610,15 @@
    "ich halte dich nicht länger auf",
    "ich halte sie nicht länger auf",
    "ich lass dich dann (mal)",
-   "ich lasse dich dann (mal)"
-  ]
+   "ich lasse dich dann (mal)",
+   "ich lass dich (dann) jetzt (mal)",
+   "ich lasse dich (dann) jetzt (mal)",
+   "ich will dich nicht (länger) (weiter) stören",
+   "ich will sie nicht (länger) (weiter) stören",
+   "ich möchte dich nicht (länger) aufhalten"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0786": {
   "core_en": "Don't be a stranger",
@@ -3449,8 +3629,14 @@
    "meld dich (mal) (wieder)",
    "melde dich (mal) (wieder)",
    "melden sie sich (mal) (wieder)",
-   "meldet euch (mal) (wieder)"
-  ]
+   "meldet euch (mal) (wieder)",
+   "lass dich (mal) (wieder) blicken",
+   "lassen sie sich (mal) (wieder) blicken",
+   "lass uns in kontakt bleiben",
+   "bleib in kontakt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0787": {
   "core_en": "You've got to be kidding me",
@@ -3488,8 +3674,11 @@
    "das fass zum überlaufen",
    "jetzt ist (endgültig) schluss",
    "das war's jetzt",
-   "jetzt ist das maß voll"
-  ]
+   "jetzt ist das maß voll",
+   "die nase (endgültig) voll"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0790": {
   "core_en": "Just my luck",
@@ -3499,8 +3688,12 @@
    "na toll",
    "war (ja) klar",
    "immer ich",
-   "so ist das immer bei mir"
-  ]
+   "so ist das immer bei mir",
+   "na super",
+   "na prima"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0791": {
   "core_en": "As usual",
@@ -3517,8 +3710,12 @@
   "accept": [
    "andererseits",
    "auf der anderen seite",
-   "allerdings"
-  ]
+   "allerdings",
+   "dafür",
+   "wobei"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0793": {
   "core_en": "Even so",
@@ -3526,8 +3723,10 @@
    "trotzdem",
    "dennoch",
    "trotz allem",
-   "trotzalledem"
-  ]
+   "trotz alledem"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0794": {
   "core_en": "not to mention",
@@ -3538,8 +3737,13 @@
    "und außerdem",
    "und dazu noch",
    "nicht zu vergessen",
-   "und obendrein"
-  ]
+   "und obendrein",
+   "und noch dazu",
+   "noch dazu",
+   "von [x] ganz zu schweigen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0795": {
   "core_en": "sure enough",
@@ -3550,20 +3754,24 @@
    "prompt",
    "wie erwartet",
    "und natürlich",
-   "und wirklich"
-  ]
+   "und wirklich",
+   "und siehe da"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0796": {
   "core_en": "All the more reason",
   "accept": [
-   "umso mehr ein grund",
+   "ein grund mehr",
    "umso mehr grund",
-   "um so mehr ein grund",
+   "um so mehr grund",
    "dann erst recht",
    "erst recht",
-   "ein grund mehr",
    "noch ein grund (mehr)"
-  ]
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0797": {
   "core_en": "On second thought",
@@ -3618,8 +3826,11 @@
    "heißt das (noch) (lange) nicht (dass)",
    "heißt (noch) (lange) nicht (dass)",
    "bedeutet das (noch) (lange) nicht (dass)",
-   "bedeutet (noch) (lange) nicht (dass)"
-  ]
+   "bedeutet (noch) (lange) nicht (dass)",
+   "bloß weil"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0802": {
   "core_en": "I see where you're coming from, but",
@@ -3632,7 +3843,9 @@
    "ich verstehe ihren standpunkt",
    "ich kann dich (schon) verstehen",
    "ich kann sie (schon) verstehen"
-  ]
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0803": {
   "core_en": "I can see why",
@@ -3662,15 +3875,19 @@
  "ENG_CHUNK_0805": {
   "core_en": "You'd think",
   "accept": [
-   "man sollte meinen",
    "man würde (ja) denken",
    "man sollte (doch) denken",
    "man würde (doch) meinen",
    "man könnte meinen",
-   "man sollte annehmen",
    "man möchte meinen",
-   "(eigentlich) sollte man denken"
-  ]
+   "(eigentlich) sollte man denken",
+   "man sollte (doch) (eigentlich) meinen",
+   "man sollte (doch) (eigentlich) annehmen",
+   "man sollte (doch) erwarten",
+   "eigentlich müsste"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0806": {
   "core_en": "No wonder",
@@ -3689,8 +3906,11 @@
    "sagen sie (mir) (bloß) (jetzt) nicht dass",
    "sagt (mir) (bloß) (jetzt) nicht dass",
    "erzähl mir (bloß) (jetzt) nicht dass",
-   "doch nicht etwa"
-  ]
+   "doch nicht etwa",
+   "du hast doch nicht (etwa)"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0808": {
   "core_en": "Are you telling me",
@@ -3715,19 +3935,26 @@
    "ich ging davon aus (dass)",
    "ich bin davon ausgegangen (dass)",
    "ich hab gedacht",
-   "ich habe gedacht"
-  ]
+   "ich habe gedacht",
+   "ich hatte das gefühl (dass)",
+   "ich hatte verstanden (dass)",
+   "ich hab das so verstanden"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0810": {
   "core_en": "I could have sworn",
   "accept": [
    "ich hätte schwören können (dass)",
    "hätte schwören können",
-   "ich hätte (drauf) wetten können",
    "ich war mir (ganz) (so) sicher (dass)",
-   "ich war (mir) fest überzeugt (dass)",
-   "ich war (mir) hundertprozentig sicher"
-  ]
+   "ich war (mir) hundertprozentig sicher",
+   "ich hätte (darauf) (drauf) wetten können",
+   "ich war fest (davon) überzeugt (dass)"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0811": {
   "core_en": "I take it",
@@ -3739,8 +3966,11 @@
    "ich gehe davon aus (dass)",
    "anscheinend",
    "offenbar",
-   "wohl"
-  ]
+   "wohl",
+   "(es) sieht so aus als"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0812": {
   "core_en": "I'm starting to think",
@@ -3763,21 +3993,34 @@
    "fiel mir (plötzlich) ein",
    "mir wurde (plötzlich) klar",
    "wurde mir (plötzlich) klar",
-   "ist mir (plötzlich) klar geworden",
-   "mir ist (plötzlich) klar geworden",
-   "ist mir (plötzlich) aufgefallen"
-  ]
+   "(ist) mir (plötzlich) klar geworden",
+   "dämmerte (es) mir",
+   "ist mir (plötzlich) aufgefallen",
+   "merkte ich",
+   "habe ich gemerkt",
+   "hab ich gemerkt",
+   "ich habe gemerkt",
+   "wurde mir bewusst",
+   "ist mir bewusst geworden",
+   "fiel mir auf"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0814": {
   "core_en": "There's more to life than",
   "accept": [
-   "es gibt (noch) mehr im leben als",
    "im leben gibt es (noch) mehr als",
    "das leben ist (doch) mehr als (nur)",
    "ist (doch) mehr als nur",
    "es gibt (noch) wichtigere dinge (im leben) als",
-   "es gibt (noch) mehr als (nur)"
-  ]
+   "es gibt (noch) mehr als (nur)",
+   "es gibt (doch) (noch) mehr im leben als",
+   "es gibt (doch) (noch) wichtigeres (im leben) als",
+   "das leben besteht (doch) nicht nur aus"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0815": {
   "core_en": "I wouldn't be surprised if",
@@ -3788,8 +4031,11 @@
    "mich würde es nicht wundern",
    "mich würde es nicht überraschen",
    "ich wäre nicht überrascht (wenn)",
-   "es wundert mich nicht wenn"
-  ]
+   "es wundert mich nicht wenn",
+   "wundern würde (es) mich nicht"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0816": {
   "core_en": "It's bound to",
@@ -3802,7 +4048,9 @@
    "auf jeden fall",
    "mit sicherheit",
    "sicherlich"
-  ]
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0817": {
   "core_en": "Knowing",
@@ -3811,7 +4059,9 @@
    "wie ich [x] kenne",
    "so gut wie ich [x] kenne",
    "ich kenne doch"
-  ]
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0818": {
   "core_en": "For all I know",
@@ -3821,8 +4071,11 @@
    "keine ahnung",
    "es kann (gut) (auch) sein dass",
    "gut möglich dass",
-   "könnte (auch) sein dass"
-  ]
+   "könnte (auch) sein dass",
+   "kann (gut) (auch) sein dass"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0819": {
   "core_en": "There's no telling",
@@ -3834,8 +4087,12 @@
    "wer weiß",
    "keine ahnung",
    "nicht abzusehen",
-   "man kann nicht vorhersagen"
-  ]
+   "man kann nicht vorhersagen",
+   "man weiß nicht",
+   "es lässt sich nicht sagen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0820": {
   "core_en": "What does my age have to do with anything",
@@ -3844,8 +4101,11 @@
    "was hat [x] damit zu tun",
    "was hat das damit zu tun",
    "was hat [x] zu tun",
-   "was spielt [x] (denn) für eine rolle"
-  ]
+   "was spielt [x] (denn) für eine rolle",
+   "was tut [x] zur sache"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0821": {
   "core_en": "I'm not convinced",
@@ -3865,13 +4125,17 @@
   "accept": [
    "das glaub ich erst (wenn)",
    "das glaube ich erst (wenn)",
-   "ich glaub's erst (wenn)",
-   "ich glaube es erst (wenn)",
    "ich glaub es erst (wenn)",
    "erst wenn ich (es) sehe",
    "das will ich sehen",
-   "das muss ich erst sehen"
-  ]
+   "das muss ich erst sehen",
+   "ich glaub's (erst) wenn",
+   "ich glaube es (erst) wenn",
+   "das glaub ich (erst) wenn",
+   "wer's glaubt wird selig"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0823": {
   "core_en": "we could always",
@@ -3908,8 +4172,12 @@
    "ich bin (ja) (eigentlich) nicht der typ der",
    "ich bin (ja) (eigentlich) keiner der",
    "ich bin (ja) (eigentlich) nicht jemand der",
-   "normalerweise [x] ich (ja) nicht"
-  ]
+   "normalerweise [x] ich (ja) nicht",
+   "ich will mich (ja) nicht beschweren",
+   "ich will (ja) nicht meckern"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0826": {
   "core_en": "It wouldn't hurt to",
@@ -3945,8 +4213,14 @@
    "es gibt keine ausrede (dafür) (für)",
    "keine ausrede (dafür) (für)",
    "ist unentschuldbar",
-   "nicht zu entschuldigen"
-  ]
+   "nicht zu entschuldigen",
+   "durch nichts zu entschuldigen",
+   "es gibt keinen grund (dafür)",
+   "nicht zu rechtfertigen",
+   "durch nichts zu rechtfertigen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0829": {
   "core_en": "Whatever you do, don't",
@@ -3972,7 +4246,9 @@
    "wag es (bloß) (ja) nicht",
    "wage es (bloß) (ja) nicht",
    "trau dich (bloß) (ja) nicht"
-  ]
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0831": {
   "core_en": "Don't bother",
@@ -4001,12 +4277,15 @@
   "core_en": "It's safe to say",
   "accept": [
    "man kann wohl sagen",
-   "man kann (ruhig) (getrost) (sicher) sagen",
    "man kann mit sicherheit sagen",
    "man darf (wohl) sagen",
    "man kann behaupten",
-   "es ist klar dass"
-  ]
+   "es ist klar dass",
+   "man kann (ruhig) (getrost) (sicher) (schon) (wohl) sagen",
+   "das kann man (wohl) (schon) sagen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0834": {
   "core_en": "I was going to ask if you wanted to",
@@ -4160,7 +4439,9 @@
    "von der seele",
    "loswerden",
    "ich muss (dir) (mal) (etwas) (was) beichten"
-  ]
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0847": {
   "core_en": "blow off steam",
@@ -4171,8 +4452,12 @@
    "stress abzubauen",
    "abreagieren",
    "abzureagieren",
-   "den kopf frei (zu) (kriegen) (bekommen)"
-  ]
+   "den kopf frei (zu) (kriegen) (bekommen)",
+   "abzuschalten",
+   "runterzukommen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0848": {
   "core_en": "have mixed feelings about",
@@ -4193,8 +4478,12 @@
    "das (habe) (hab) (hätte) ich nicht kommen sehen",
    "hab ich nicht mit gerechnet",
    "das hätte ich nicht gedacht",
-   "das kam (echt) unerwartet"
-  ]
+   "das kam (echt) unerwartet",
+   "das (habe) (hab) (hätte) ich nicht erwartet",
+   "hätte ich nicht gedacht"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0850": {
   "core_en": "let her down",
@@ -4265,8 +4554,12 @@
    "gleicher meinung",
    "derselben meinung",
    "einig",
-   "auf einer wellenlänge"
-  ]
+   "auf einer wellenlänge",
+   "gleicher ansicht",
+   "derselben ansicht"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0856": {
   "core_en": "on good terms with",
@@ -4278,8 +4571,12 @@
    "guten kontakt (zu) (mit)",
    "komme [x] gut mit [x] klar",
    "komme gut mit [x] klar",
-   "verstehen uns (immer noch) (noch) gut"
-  ]
+   "verstehen uns (immer noch) (noch) gut",
+   "verstehe ich mich (immer noch) (noch) gut",
+   "einen guten draht zu"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0857": {
   "core_en": "lost touch with",
@@ -4303,8 +4600,11 @@
    "kommst du mir [x] entgegen",
    "kommst du mir entgegen",
    "in der mitte treffen",
-   "einen kompromiss"
-  ]
+   "einen kompromiss",
+   "in der mitte einigen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0859": {
   "core_en": "cheating on her",
@@ -4346,11 +4646,17 @@
   "accept": [
    "kommt nach",
    "kommt [x] nach",
+   "nach [x] geraten",
    "ähnelt",
    "ganz der vater",
    "ganz die mutter",
-   "ganz der papa"
-  ]
+   "ganz der papa",
+   "schlägt [x] nach",
+   "schlägt nach",
+   "hat viel von"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0863": {
   "core_en": "It runs in the family",
@@ -4360,8 +4666,12 @@
    "in der familie",
    "das ist erblich",
    "liegt in den genen",
-   "familiär bedingt"
-  ]
+   "familiär bedingt",
+   "in den genen",
+   "das ist genetisch"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0864": {
   "core_en": "looked out for",
@@ -4385,8 +4695,12 @@
    "überredeten",
    "mich [x] beschwatzt",
    "beschwatzt",
-   "mich dazu gebracht"
-  ]
+   "mich dazu gebracht",
+   "breitgeschlagen",
+   "mich zum [x] gebracht"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0866": {
   "core_en": "As far as I'm concerned",
@@ -4397,7 +4711,9 @@
    "meiner meinung nach",
    "von mir aus",
    "aus meiner sicht"
-  ]
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0867": {
   "core_en": "Don't get me wrong",
@@ -4418,8 +4734,13 @@
    "habe ich (das) richtig verstanden",
    "verstehe ich (das) richtig",
    "versteh ich (das) richtig",
-   "noch mal zum mitschreiben"
-  ]
+   "noch mal zum mitschreiben",
+   "dass ich (das) (auch) richtig verstehe",
+   "sehe ich (das) richtig",
+   "seh ich (das) richtig"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0869": {
   "core_en": "Come again?",
@@ -4435,15 +4756,16 @@
  "ENG_CHUNK_0870": {
   "core_en": "I wouldn't go that far",
   "accept": [
-   "so weit würde ich nicht gehen",
-   "so weit würd ich nicht gehen",
-   "soweit würde ich nicht gehen",
-   "ich würde nicht so weit gehen",
-   "das würde ich (so) nicht sagen",
    "das würd ich (so) nicht sagen",
    "das ist (ein bisschen) übertrieben",
-   "übertreib (mal) nicht"
-  ]
+   "übertreib (mal) nicht",
+   "so weit würde ich (jetzt) nicht gehen",
+   "so weit würd ich (jetzt) nicht gehen",
+   "ich würde (jetzt) nicht so weit gehen",
+   "das würde ich (jetzt) (so) nicht sagen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0871": {
   "core_en": "up to a point",
@@ -4455,7 +4777,9 @@
    "zum teil",
    "in gewissem maße",
    "bedingt"
-  ]
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0872": {
   "core_en": "In a way",
@@ -4484,15 +4808,18 @@
  "ENG_CHUNK_0874": {
   "core_en": "point taken",
   "accept": [
-   "(du) hast recht",
    "punkt für dich",
-   "sie haben recht",
-   "ihr habt recht",
    "guter punkt",
    "verstanden",
    "angekommen",
-   "ich hab's kapiert"
-  ]
+   "ich hab's kapiert",
+   "(du) hast (ja) (schon) recht",
+   "sie haben (ja) (schon) recht",
+   "ihr habt (ja) (schon) recht",
+   "recht hast du"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0875": {
   "core_en": "I'll give you that",
@@ -4504,20 +4831,27 @@
    "das geb ich zu",
    "da haben sie recht",
    "da hast du recht",
-   "das muss ich (dir) (ihnen) lassen"
-  ]
+   "das muss ich (dir) (ihnen) lassen",
+   "das stimmt (schon)",
+   "zugegebenermaßen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0876": {
   "core_en": "hear me out",
   "accept": [
-   "hör mir (bitte) (erst) (mal) (einfach) zu",
-   "hören sie mir (bitte) (erst) (mal) (einfach) zu",
-   "hört mir (bitte) (erst) (mal) (einfach) zu",
    "hör (bitte) (erst) (mal) zu",
    "lass mich (bitte) (erst) (mal) ausreden",
    "lassen sie mich (bitte) (erst) (mal) ausreden",
-   "lasst mich (bitte) (erst) (mal) ausreden"
-  ]
+   "lasst mich (bitte) (erst) (mal) ausreden",
+   "hör mir (doch) (bitte) (einfach) (erst) (mal) zu",
+   "hören sie mir (doch) (bitte) (einfach) (erst) (mal) zu",
+   "hört mir (doch) (bitte) (einfach) (erst) (mal) zu",
+   "hör dir das (doch) (einfach) (erst) (mal) an"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0877": {
   "core_en": "Where do we go from here?",
@@ -4527,8 +4861,13 @@
    "was machen wir jetzt",
    "was nun",
    "wie machen wir (jetzt) weiter",
-   "und was jetzt"
-  ]
+   "und was jetzt",
+   "und jetzt",
+   "was machen wir (denn) (nun)",
+   "wie soll es (jetzt) (nun) weitergehen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0878": {
   "core_en": "Hold that thought",
@@ -4540,8 +4879,12 @@
    "halt den gedanken fest",
    "halte den gedanken fest",
    "behalt den gedanken",
-   "moment"
-  ]
+   "behalte den gedanken",
+   "halt den gedanken (mal) (kurz) fest",
+   "merk dir (mal) (kurz) was du"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0879": {
   "core_en": "Over to you",
@@ -4552,20 +4895,29 @@
    "ihr seid dran",
    "ich gebe (weiter) an",
    "ich übergebe an",
-   "ich gebe ab an"
-  ]
+   "ich gebe ab an",
+   "ich übergebe das wort an",
+   "du hast das wort",
+   "sie haben das wort"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0880": {
   "core_en": "Now you're talking",
   "accept": [
    "so gefällt mir das",
-   "das ist ein wort",
    "so gefällt's mir",
+   "das lässt sich hören",
    "das klingt (schon) (doch) (sehr) gut",
    "das hört sich (schon) (doch) gut an",
    "da bin ich dabei",
-   "jetzt reden wir"
-  ]
+   "das ist (doch) (mal) ein wort",
+   "jetzt kommen wir der sache (schon) näher",
+   "klingt (doch) (sehr) gut"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0881": {
   "core_en": "Here we go again",
@@ -4631,7 +4983,9 @@
    "ich drück dir die daumen",
    "ich drücke dir die daumen",
    "viel erfolg"
-  ]
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0887": {
   "core_en": "knock on wood",
@@ -4640,8 +4994,11 @@
    "klopf auf holz",
    "auf holz klopfen",
    "klopfen auf holz",
-   "unberufen"
-  ]
+   "unberufen",
+   "klopfe auf holz"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0888": {
   "core_en": "I'd like to propose a toast",
@@ -4649,12 +5006,20 @@
    "ich möchte (gern) (gerne) einen toast ausbringen",
    "einen toast ausbringen",
    "einen toast (auf) [x] ausbringen",
+   "einen toast (auf) [x] aussprechen",
    "das glas [x] erheben",
    "das glas erheben",
    "lasst uns (auf) [x] anstoßen",
    "lasst uns anstoßen",
-   "lassen sie uns anstoßen"
-  ]
+   "lassen sie uns anstoßen",
+   "mein glas [x] erheben",
+   "mein glas erheben",
+   "die gläser erheben",
+   "einen trinkspruch (auf) [x] ausbringen",
+   "ich möchte (gern) (gerne) auf [x] anstoßen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0889": {
   "core_en": "I'll drink to that",
@@ -4666,8 +5031,11 @@
    "da stoß ich (gern) (gerne) drauf an",
    "da stoße ich (gern) (gerne) drauf an",
    "darauf stoße ich (gern) (gerne) an",
-   "prost darauf"
-  ]
+   "prost darauf",
+   "dem schließe ich mich an"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0890": {
   "core_en": "I'm sorry for your loss",
@@ -4691,8 +5059,11 @@
    "darüber hinaus",
    "obendrein",
    "und noch dazu",
-   "noch dazu"
-  ]
+   "noch dazu",
+   "und das beste"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0892": {
   "core_en": "especially since",
@@ -4713,8 +5084,12 @@
    "ganz zu schweigen von",
    "von [x] ganz zu schweigen",
    "schon gar nicht",
-   "erst recht nicht"
-  ]
+   "erst recht nicht",
+   "schon gar keinen",
+   "erst recht keinen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0894": {
   "core_en": "Seeing as",
@@ -4726,8 +5101,14 @@
    "wenn du schon (mal)",
    "wenn du gerade",
    "wo sie schon (mal)",
-   "jetzt wo du"
-  ]
+   "jetzt wo du",
+   "wo du (ja) (eh) schon",
+   "da du (ja) (eh) schon",
+   "wenn du (ja) (eh) schon",
+   "weil du (ja) (eh) schon"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0895": {
   "core_en": "in the long run",
@@ -4747,8 +5128,10 @@
    "im gegenteil",
    "wenn überhaupt",
    "wenn dann",
-   "wenn schon"
-  ]
+   "eher sogar"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0897": {
   "core_en": "or rather",
@@ -4760,7 +5143,9 @@
    "oder vielmehr",
    "oder eher",
    "ich meine"
-  ]
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0898": {
   "core_en": "In any case",
@@ -4792,8 +5177,11 @@
    "aber trotzdem",
    "trotzdem",
    "dennoch",
-   "und doch"
-  ]
+   "und doch",
+   "und dabei"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0901": {
   "core_en": "Would you happen to have",
@@ -4805,8 +5193,13 @@
    "haben sie zufällig",
    "habt ihr zufällig",
    "hast du vielleicht",
-   "haben sie vielleicht"
-  ]
+   "haben sie vielleicht",
+   "hättest du vielleicht",
+   "hätten sie vielleicht",
+   "hättest du eventuell"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0902": {
   "core_en": "I'd rather you didn't",
@@ -4818,8 +5211,14 @@
    "es wäre mir lieber wenn",
    "ich hätte es lieber wenn",
    "ich fände es besser wenn",
-   "ich möchte nicht dass"
-  ]
+   "ich möchte nicht dass",
+   "wäre mir lieber wenn",
+   "mir wäre lieber wenn",
+   "ich würde es vorziehen wenn",
+   "ich fände es schön wenn"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0903": {
   "core_en": "I wish you wouldn't",
@@ -4828,11 +5227,17 @@
    "musst du (denn) (eigentlich) immer",
    "musst du [x] immer",
    "müssen sie (denn) immer",
-   "ich wünschte du würdest nicht",
-   "ich wünschte sie würden nicht",
    "es wäre schön wenn du nicht",
-   "könntest du (bitte) aufhören"
-  ]
+   "könntest du (bitte) aufhören",
+   "ich fände es (gut) (besser) (schön) wenn du [x] nicht",
+   "ich wünschte du würdest",
+   "ich wünschte sie würden",
+   "es wäre schön wenn du [x] nicht",
+   "kannst du (bitte) (mal) aufhören",
+   "lass (doch) (bitte) nicht immer"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0904": {
   "core_en": "If it were up to me, I'd",
@@ -4853,12 +5258,16 @@
    "ist mir tausendmal lieber als",
    "ist mir [x] lieber als",
    "ist mir lieber als",
-   "ich ziehe [x] vor",
    "ziehe ich [x] vor",
    "ich würde [x] jederzeit vorziehen",
    "jederzeit lieber",
-   "ich nehme [x] jederzeit"
-  ]
+   "ich nehme [x] jederzeit",
+   "ich ziehe [x] [x] vor",
+   "mir ist [x] lieber als",
+   "lieber [x] als"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0906": {
   "core_en": "Nothing beats",
@@ -4919,8 +5328,13 @@
    "nicht zu viel reininterpretieren",
    "nicht zu viel hineininterpretieren",
    "mach dir (da) (deswegen) keinen kopf",
-   "denk nicht zu viel darüber nach"
-  ]
+   "denk nicht zu viel darüber nach",
+   "interpretier (da) nichts",
+   "hat (bestimmt) (sicher) nichts zu bedeuten",
+   "denk nicht zu viel drüber nach"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0911": {
   "core_en": "Did you end up",
@@ -4983,8 +5397,13 @@
    "das liegt mir nicht",
    "liegt mir nicht",
    "ich bin (einfach) nicht der typ dafür",
-   "ich bin dafür nicht gemacht"
-  ]
+   "ich bin dafür nicht gemacht",
+   "ich bin nicht dafür gemacht",
+   "dafür bin ich (einfach) nicht geschaffen",
+   "dafür bin ich (einfach) nicht gemacht"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0916": {
   "core_en": "I'm swamped with",
@@ -5017,12 +5436,15 @@
   "accept": [
    "ich bringe es nicht übers herz",
    "nicht übers herz",
-   "ich kann mich nicht (dazu) überwinden",
    "ich schaffe es (einfach) nicht",
    "ich schaff es (einfach) nicht",
    "ich bring's (einfach) nicht fertig",
-   "ich bringe es (einfach) nicht fertig"
-  ]
+   "ich bringe es (einfach) nicht fertig",
+   "ich kann mich (einfach) nicht (dazu) überwinden",
+   "ich kann mich nicht (dazu) durchringen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0919": {
   "core_en": "I'm tempted to",
@@ -5059,8 +5481,12 @@
    "habe ich keine (andere) wahl",
    "hab ich keine (andere) wahl",
    "ich muss wohl",
-   "ich komme nicht drum herum"
-  ]
+   "ich komme nicht drum herum",
+   "ich komme nicht darum herum",
+   "wohl oder übel"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0922": {
   "core_en": "There's nothing I can do about",
@@ -5078,14 +5504,17 @@
  "ENG_CHUNK_0923": {
   "core_en": "I don't have the heart to",
   "accept": [
-   "ich (habe) (hab) nicht den mut",
    "ich bringe es nicht übers herz",
+   "ich bring's nicht übers herz",
    "nicht übers herz",
+   "ich (habe) (hab) nicht den mut",
    "ich trau mich nicht",
    "ich traue mich nicht",
-   "ich hab nicht das herz",
-   "ich habe nicht das herz"
-  ]
+   "ich bringe es nicht fertig",
+   "ich bring's nicht fertig"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0924": {
   "core_en": "The last thing I want to do is",
@@ -5109,8 +5538,12 @@
    "das darf ich (leider) nicht",
    "ich darf (das) (leider) nicht",
    "ich bin (leider) nicht berechtigt",
-   "das liegt (leider) nicht in meiner hand"
-  ]
+   "das liegt (leider) nicht in meiner hand",
+   "ich bin (leider) nicht in der lage",
+   "liegt (leider) nicht in meiner befugnis"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0926": {
   "core_en": "It's not my place to",
@@ -5121,20 +5554,30 @@
    "es ist nicht meine sache",
    "das geht mich nichts an",
    "es ist nicht meine aufgabe",
-   "es ist nicht an mir"
-  ]
+   "es ist nicht an mir",
+   "ich habe nicht das recht",
+   "ich hab nicht das recht",
+   "ich habe kein recht (dazu)",
+   "ich mische mich (da) nicht ein"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0927": {
   "core_en": "I'd be lying if I said",
   "accept": [
-   "ich würde lügen wenn ich sagen würde",
+   "ich müsste lügen",
+   "es wäre gelogen (wenn)",
    "ich würde lügen",
    "ich würd lügen",
-   "es wäre gelogen (wenn)",
    "das wäre gelogen",
-   "ich müsste lügen",
-   "ich lüge wenn ich sage"
-  ]
+   "ich lüge wenn ich sage",
+   "würde ich lügen",
+   "müsste ich lügen",
+   "wäre das (glatt) gelogen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0928": {
   "core_en": "I hate to say it, but",
@@ -5179,8 +5622,15 @@
    "ihr glaubt (doch) nicht im ernst",
    "du denkst (doch) nicht im ernst",
    "du denkst (doch) nicht ernsthaft",
-   "glaubst du im ernst"
-  ]
+   "glaubst du im ernst",
+   "du glaubst (doch) nicht wirklich",
+   "sie glauben (doch) nicht wirklich",
+   "du meinst (doch) nicht im ernst",
+   "glaubst du (etwa) wirklich",
+   "glaubst du (etwa) ernsthaft"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0932": {
   "core_en": "I'm with Sarah on this one",
@@ -5316,8 +5766,11 @@
    "kommt [x] ungestraft davon",
    "kommt (immer) davon",
    "kommt mit [x] davon",
-   "darf alles"
-  ]
+   "kann sich alles erlauben",
+   "darf sich alles erlauben"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0943": {
   "core_en": "get out of",
@@ -5471,7 +5924,9 @@
    "für selbstverständlich",
    "als selbstverständlich",
    "für uns selbstverständlich"
-  ]
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0956": {
   "core_en": "take turns",
@@ -5535,12 +5990,16 @@
    "die sache geklärt",
    "die sache klären",
    "uns ausgesprochen",
-   "ausgesprochen",
    "alles geklärt",
    "reinen tisch gemacht",
-   "die luft gereinigt",
-   "aus der welt geschafft"
-  ]
+   "aus der welt geschafft",
+   "ein klärendes gespräch",
+   "ausgeräumt",
+   "die wogen geglättet",
+   "uns (wieder) vertragen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0962": {
   "core_en": "holding a grudge",
@@ -5550,10 +6009,15 @@
    "nachtragen",
    "nachtragend",
    "ist [x] sauer auf",
-   "ist noch sauer",
    "hat [x] nicht verziehen",
-   "ist [x] beleidigt"
-  ]
+   "ist [x] beleidigt",
+   "ist (immer) noch sauer",
+   "grollt",
+   "eingeschnappt",
+   "nicht vergeben"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0963": {
   "core_en": "have anything in mind",

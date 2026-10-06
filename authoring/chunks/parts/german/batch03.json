@@ -48,7 +48,10 @@
 "id": "ENG_CHUNK_0209",
 "t": "Das stimmt, aber [Satz]",
 "ex": "Das stimmt, aber da draußen bräuchten wir trotzdem ein Auto.",
-"n": "After \"aber\" normal main-clause order."
+"n": "After \"aber\" normal main-clause order.",
+"fn": "concede",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0210",
@@ -292,7 +295,11 @@
 "id": "ENG_CHUNK_0253",
 "t": "[Person, Dativ] auf die Nerven gehen",
 "ex": "Der Lärm von oben geht mir echt auf die Nerven.",
-"n": "The irritation is the subject: Das geht mir auf die Nerven."
+"n": "The irritation is the subject: Das geht mir auf die Nerven.",
+"fn": "react",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0254",
@@ -377,7 +384,11 @@
 {
 "id": "ENG_CHUNK_0269",
 "t": "Fairerweise muss man sagen",
-"ex": "Er ist immer zu spät, aber fairerweise muss man sagen, der Verkehr war furchtbar."
+"ex": "Er kommt immer zu spät, aber fairerweise muss man sagen, dass der Verkehr furchtbar war.",
+"fn": "concede",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0270",
@@ -438,12 +449,20 @@
 {
 "id": "ENG_CHUNK_0281",
 "t": "Sicher ist sicher",
-"ex": "Ich hab noch einen Pullover eingepackt. Sicher ist sicher."
+"ex": "Ich hab noch einen Pullover eingepackt. Sicher ist sicher.",
+"fn": "react",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0282",
 "t": "Leichter gesagt als getan",
-"ex": "Einfach aufhören, mir Sorgen zu machen? Leichter gesagt als getan."
+"ex": "Einfach aufhören, mir Sorgen zu machen? Leichter gesagt als getan.",
+"fn": "react",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0283",
@@ -529,7 +548,11 @@
 "id": "ENG_CHUNK_0298",
 "t": "was bedeutet, dass [Satz] / das heißt",
 "ex": "Die Brücke ist gesperrt, das heißt, wir müssen einen Umweg fahren.",
-"n": "\"was bedeutet, dass\": verb to the end. \"das heißt\" keeps main-clause order."
+"n": "\"was bedeutet, dass\": verb to the end. \"das heißt\" keeps main-clause order.",
+"fn": "conclude",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0299",

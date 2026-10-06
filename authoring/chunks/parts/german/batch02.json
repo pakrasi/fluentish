@@ -509,7 +509,11 @@
 "id": "ENG_CHUNK_0194",
 "t": "selbst wenn / auch wenn",
 "ex": "Ich gehe an den Strand, auch wenn es regnet.",
-"n": "Subordinator: verb goes to the end."
+"n": "Subordinator: verb goes to the end.",
+"fn": "concede",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0195",

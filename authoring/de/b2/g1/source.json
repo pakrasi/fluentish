@@ -1,0 +1,5432 @@
+{
+ "batch": "g1",
+ "about": "Top-ups for the 12 existing B2 grammar concepts (8 → 12 items each), their rank and function, and fn tags on the 166 B2 phrases.",
+ "concepts": [
+  {
+   "id": "partizip-als-adjektiv",
+   "name": "Partizip I/II als Adjektiv",
+   "category": "adjectives",
+   "level": "B2",
+   "description": "Participles used as adjectives, also with one added word: der gerade ankommende Zug, die gestern angekommenen Gäste.",
+   "rank": 12,
+   "fn": "describe"
+  },
+  {
+   "id": "je-desto",
+   "name": "je...desto",
+   "category": "clauses",
+   "level": "B2",
+   "description": "Two comparatives that grow together: Je mehr du übst, desto besser sprichst du.",
+   "rank": 2,
+   "fn": "compare"
+  },
+  {
+   "id": "konnektoren-advanced",
+   "name": "Konnektoren II (dennoch, allerdings, indem, sodass)",
+   "category": "clauses",
+   "level": "B2",
+   "description": "Connectors for contrast, means and result, dennoch and allerdings with the verb second, indem and sodass with the verb last: Er spart Geld, indem er mit dem Fahrrad fährt.",
+   "rank": 3,
+   "fn": "link"
+  },
+  {
+   "id": "zweiteilige-konnektoren",
+   "name": "Zweiteilige Konnektoren (entweder...oder, ...)",
+   "category": "clauses",
+   "level": "B2",
+   "description": "Two-part connectors that link two parallel parts (entweder … oder, weder … noch, sowohl … als auch, nicht nur … sondern auch, zwar … aber, einerseits … andererseits): Ich trinke weder Kaffee noch Tee.",
+   "rank": 1,
+   "fn": "link"
+  },
+  {
+   "id": "konjunktiv-1",
+   "name": "Konjunktiv I (indirekte Rede)",
+   "category": "konjunktiv",
+   "level": "B2",
+   "description": "Konjunktiv I for reported speech in news and reports: Der Minister sagt, er habe nichts davon gewusst.",
+   "rank": 8,
+   "fn": "report"
+  },
+  {
+   "id": "konjunktiv-2-vergangenheit",
+   "name": "Konjunktiv II der Vergangenheit",
+   "category": "konjunktiv",
+   "level": "B2",
+   "description": "Unreal conditions and wishes about the past: Wenn ich das gewusst hätte, wäre ich gekommen.",
+   "rank": 7,
+   "fn": "condition"
+  },
+  {
+   "id": "nomen-verb-verbindungen",
+   "name": "Nomen-Verb-Verbindungen",
+   "category": "nouns-articles",
+   "level": "B2",
+   "description": "Fixed noun and verb pairs (Funktionsverbgefüge): eine Entscheidung treffen, in Kraft treten, zur Verfügung stehen.",
+   "rank": 9,
+   "fn": "style"
+  },
+  {
+   "id": "modalpartikeln",
+   "name": "Modalpartikeln (doch, ja, denn, mal, eben, wohl)",
+   "category": "other",
+   "level": "B2",
+   "description": "Particles that colour spoken German (doch, ja, denn, mal, eben, halt, ruhig, bloß, etwa, wohl): Komm doch mit!",
+   "rank": 10,
+   "fn": "speech"
+  },
+  {
+   "id": "passiv-mit-modalverben",
+   "name": "Passiv mit Modalverben",
+   "category": "passiv",
+   "level": "B2",
+   "description": "The passive with a modal verb: Das Formular muss ausgefüllt werden. In a subordinate clause: …, dass es ausgefüllt werden muss.",
+   "rank": 5,
+   "fn": "report"
+  },
+  {
+   "id": "zustandspassiv",
+   "name": "Zustandspassiv (sein + Partizip II)",
+   "category": "passiv",
+   "level": "B2",
+   "description": "The state after an action (sein + Partizip II) next to the action itself (werden + Partizip II): Die Tür ist geschlossen. / Die Tür wird geschlossen.",
+   "rank": 6,
+   "fn": "describe"
+  },
+  {
+   "id": "praepositionen-genitiv",
+   "name": "Präpositionen mit Genitiv",
+   "category": "prepositions",
+   "level": "B2",
+   "description": "Prepositions with the genitive, common in written German (wegen, trotz, während, statt, innerhalb, aufgrund, angesichts, anlässlich, außerhalb): Wegen des Regens fällt das Konzert aus.",
+   "rank": 4,
+   "fn": "style"
+  },
+  {
+   "id": "pronomen-es",
+   "name": "Pronomen „es“",
+   "category": "pronouns",
+   "level": "B2",
+   "description": "Uses of es: impersonal (es regnet, es gibt), placeholder in position 1 (es kamen viele Leute), and pointing forward to a clause (Ich finde es schade, dass …).",
+   "rank": 11,
+   "fn": "style"
+  }
+ ],
+ "items": [
+  {
+   "id": "praepositionen-genitiv.03",
+   "concept": "praepositionen-genitiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with „trotz“, „wegen“, „während“, „statt“ or „innerhalb“.",
+   "prompt": "Ich habe ___ des Fluges einen Film gesehen.",
+   "answer": [
+    "während"
+   ],
+   "note": "At the same time: während.",
+   "strict_case": false,
+   "near": [
+    [
+     "wegen",
+     "wegen gives a reason, not a time"
+    ],
+    [
+     "trotz",
+     "trotz = in spite of"
+    ]
+   ]
+  },
+  {
+   "id": "partizip-als-adjektiv.09",
+   "concept": "partizip-als-adjektiv",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Replace the relative clause with a participle before the noun.",
+   "prompt": "die Gäste, die gestern angekommen sind",
+   "answer": [
+    "die gestern angekommenen Gäste"
+   ],
+   "note": "angekommen + -en; the extra word (gestern) goes before the participle.",
+   "strict_case": false,
+   "near": [
+    [
+     "die gestern angekommene Gäste",
+     "ending: plural after die needs -en"
+    ],
+    [
+     "die angekommenen gestern Gäste",
+     "gestern goes before the participle"
+    ]
+   ]
+  },
+  {
+   "id": "partizip-als-adjektiv.10",
+   "concept": "partizip-als-adjektiv",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as a relative clause.",
+   "prompt": "die vor kurzem renovierte Wohnung",
+   "answer": [
+    "die Wohnung, die vor kurzem renoviert wurde",
+    "die Wohnung, die vor kurzem renoviert worden ist",
+    "die Wohnung, die vor kurzem renoviert worden war",
+    "die Wohnung, die man vor kurzem renoviert hat"
+   ],
+   "note": "Partizip II of a verb with an object = passive: die renoviert wurde.",
+   "strict_case": false,
+   "near": [
+    [
+     "die Wohnung, die vor kurzem renoviert hat",
+     "a flat does not renovate: passive needed"
+    ],
+    [
+     "die Wohnung, die vor kurzem renoviert geworden ist",
+     "passive Perfekt uses worden"
+    ],
+    [
+     "die Wohnung, die vor kurzem wurde renoviert",
+     "verb last in the relative clause"
+    ]
+   ]
+  },
+  {
+   "id": "partizip-als-adjektiv.11",
+   "concept": "partizip-als-adjektiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the verb as an adjective with the right ending.",
+   "prompt": "Wir suchen einen gut ___ Mitarbeiter. (ausbilden)",
+   "answer": [
+    "ausgebildeten"
+   ],
+   "note": "Partizip II ausgebildet + -en (accusative masculine after einen).",
+   "strict_case": false,
+   "near": [
+    [
+     "ausgebildete",
+     "ending: einen … -en"
+    ],
+    [
+     "ausbildenden",
+     "Partizip I = training others, not trained"
+    ],
+    [
+     "ausgebildeter",
+     "nominative ending"
+    ]
+   ]
+  },
+  {
+   "id": "partizip-als-adjektiv.12",
+   "concept": "partizip-als-adjektiv",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Replace the relative clause with a participle before the noun.",
+   "prompt": "ein Problem, das ständig wächst",
+   "answer": [
+    "ein ständig wachsendes Problem"
+   ],
+   "note": "Partizip I = happening now: wachsend + -es after ein (neuter).",
+   "strict_case": false,
+   "near": [
+    [
+     "ein ständig wachsende Problem",
+     "ending after ein (neuter): -es"
+    ],
+    [
+     "ein ständig gewachsenes Problem",
+     "Partizip II = finished; the problem is still growing"
+    ]
+   ]
+  },
+  {
+   "id": "je-desto.09",
+   "concept": "je-desto",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with „je ... desto“.",
+   "prompt": "Man wird älter. Man wird gelassener.",
+   "answer": [
+    "Je älter man wird, desto gelassener wird man.",
+    "Je älter man wird, umso gelassener wird man."
+   ],
+   "note": "je + verb last; desto + comparative + verb + subject.",
+   "strict_case": false,
+   "near": [
+    [
+     "Je älter man wird, desto gelassener man wird.",
+     "after desto + comparative the verb comes next"
+    ],
+    [
+     "Je man älter wird, desto gelassener wird man.",
+     "je goes directly with the comparative"
+    ],
+    [
+     "Je älter wird man, desto gelassener wird man.",
+     "verb last after je"
+    ]
+   ]
+  },
+  {
+   "id": "je-desto.10",
+   "concept": "je-desto",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Je ___ die Prüfung ist, desto gründlicher muss man sich vorbereiten. (schwierig)",
+   "answer": [
+    "schwieriger"
+   ],
+   "note": "je + comparative: schwierig → schwieriger.",
+   "strict_case": false,
+   "near": [
+    [
+     "schwierig",
+     "je needs the comparative"
+    ],
+    [
+     "schwierigste",
+     "superlative, not comparative"
+    ]
+   ]
+  },
+  {
+   "id": "je-desto.11",
+   "concept": "je-desto",
+   "level": "B2",
+   "kind": "order",
+   "task": "Put the words in order. Start with „Je mehr Menschen das Angebot nutzen,“.",
+   "prompt": "werden / desto / günstiger / die Preise",
+   "answer": [
+    "Je mehr Menschen das Angebot nutzen, desto günstiger werden die Preise.",
+    "desto günstiger werden die Preise"
+   ],
+   "note": "desto + comparative, then the verb, then the subject.",
+   "strict_case": false,
+   "near": [
+    [
+     "Je mehr Menschen das Angebot nutzen, desto günstiger die Preise werden.",
+     "verb directly after desto + comparative"
+    ],
+    [
+     "Je mehr Menschen das Angebot nutzen, desto die Preise werden günstiger.",
+     "the comparative goes with desto"
+    ]
+   ]
+  },
+  {
+   "id": "je-desto.12",
+   "concept": "je-desto",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German.",
+   "prompt": "The more I read about it, the less I understand it.",
+   "answer": [
+    "Je mehr ich darüber lese, desto weniger verstehe ich es.",
+    "Je mehr ich darüber lese, umso weniger verstehe ich es.",
+    "Je mehr ich darüber lese, desto weniger verstehe ich das.",
+    "Je mehr ich darüber lese, umso weniger verstehe ich das.",
+    "Je mehr ich darüber lese, desto weniger verstehe ich davon.",
+    "Je mehr ich darüber lese, umso weniger verstehe ich davon."
+   ],
+   "note": "mehr / weniger are the comparatives of viel / wenig.",
+   "strict_case": false,
+   "near": [
+    [
+     "Je mehr ich darüber lese, desto weniger ich es verstehe.",
+     "verb after desto weniger"
+    ],
+    [
+     "Je mehr ich lese darüber, desto weniger verstehe ich es.",
+     "verb last after je"
+    ]
+   ]
+  },
+  {
+   "id": "konnektoren-advanced.09",
+   "concept": "konnektoren-advanced",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with the word in brackets. Keep the order.",
+   "prompt": "Die Straße war gesperrt. Wir mussten einen Umweg fahren. (sodass)",
+   "answer": [
+    "Die Straße war gesperrt, sodass wir einen Umweg fahren mussten.",
+    "Die Straße war gesperrt, so dass wir einen Umweg fahren mussten."
+   ],
+   "note": "sodass gives the result; verb last.",
+   "strict_case": false,
+   "near": [
+    [
+     "Die Straße war gesperrt, sodass wir mussten einen Umweg fahren.",
+     "verb last after sodass"
+    ],
+    [
+     "Die Straße war gesperrt, sodass mussten wir einen Umweg fahren.",
+     "sodass is not an adverb: no inversion"
+    ]
+   ]
+  },
+  {
+   "id": "konnektoren-advanced.10",
+   "concept": "konnektoren-advanced",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with „indem“ or „sodass“.",
+   "prompt": "Sie hat ihre Präsentation verbessert, ___ sie mehr Beispiele eingebaut hat.",
+   "answer": [
+    "indem"
+   ],
+   "note": "The clause says how she did it: indem.",
+   "strict_case": false,
+   "near": [
+    [
+     "sodass",
+     "sodass gives a result, here the clause is the means"
+    ],
+    [
+     "damit",
+     "damit = purpose"
+    ]
+   ]
+  },
+  {
+   "id": "konnektoren-advanced.11",
+   "concept": "konnektoren-advanced",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with the word in brackets. Keep the order.",
+   "prompt": "Die Kritik war berechtigt. Sie wurde kaum beachtet. (dennoch)",
+   "answer": [
+    "Die Kritik war berechtigt, dennoch wurde sie kaum beachtet.",
+    "Die Kritik war berechtigt. Dennoch wurde sie kaum beachtet.",
+    "Die Kritik war berechtigt, und dennoch wurde sie kaum beachtet.",
+    "Die Kritik war berechtigt, sie wurde dennoch kaum beachtet.",
+    "Die Kritik war berechtigt. Sie wurde dennoch kaum beachtet.",
+    "Die Kritik war berechtigt, aber dennoch wurde sie kaum beachtet.",
+    "Die Kritik war berechtigt, aber sie wurde dennoch kaum beachtet."
+   ],
+   "note": "dennoch is an adverb: in position 1 the verb follows directly.",
+   "strict_case": false,
+   "near": [
+    [
+     "Die Kritik war berechtigt, dennoch sie wurde kaum beachtet.",
+     "verb directly after dennoch"
+    ],
+    [
+     "Die Kritik war berechtigt, dennoch sie kaum beachtet wurde.",
+     "dennoch does not send the verb to the end"
+    ]
+   ]
+  },
+  {
+   "id": "konnektoren-advanced.12",
+   "concept": "konnektoren-advanced",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „allerdings“ in position 1 of the second sentence.",
+   "prompt": "Der Vorschlag ist gut, aber er ist zu teuer.",
+   "answer": [
+    "Der Vorschlag ist gut. Allerdings ist er zu teuer.",
+    "Der Vorschlag ist gut, allerdings ist er zu teuer."
+   ],
+   "note": "allerdings in position 1: verb next, then the subject.",
+   "strict_case": false,
+   "near": [
+    [
+     "Der Vorschlag ist gut. Allerdings er ist zu teuer.",
+     "verb directly after allerdings"
+    ],
+    [
+     "Der Vorschlag ist gut, allerdings er zu teuer ist.",
+     "allerdings is an adverb: verb second"
+    ]
+   ]
+  },
+  {
+   "id": "zweiteilige-konnektoren.09",
+   "concept": "zweiteilige-konnektoren",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „einerseits ... andererseits“. Start with „Einerseits“.",
+   "prompt": "Das Stadtleben ist spannend, aber es ist auch anstrengend.",
+   "answer": [
+    "Einerseits ist das Stadtleben spannend, andererseits ist es anstrengend.",
+    "Einerseits ist das Stadtleben spannend, andererseits ist es auch anstrengend.",
+    "Einerseits ist das Stadtleben spannend, andererseits ist es aber auch anstrengend.",
+    "Einerseits ist das Stadtleben spannend, andererseits anstrengend.",
+    "Einerseits ist das Stadtleben spannend, andererseits auch anstrengend.",
+    "Einerseits ist das Stadtleben spannend, andererseits aber auch anstrengend."
+   ],
+   "note": "Both einerseits and andererseits take position 1: the verb follows.",
+   "strict_case": false,
+   "near": [
+    [
+     "Einerseits das Stadtleben ist spannend, andererseits es ist anstrengend.",
+     "verb directly after einerseits / andererseits"
+    ],
+    [
+     "Einerseits ist das Stadtleben spannend, andererseits es ist anstrengend.",
+     "verb directly after andererseits"
+    ]
+   ]
+  },
+  {
+   "id": "zweiteilige-konnektoren.10",
+   "concept": "zweiteilige-konnektoren",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „weder ... noch“.",
+   "prompt": "Er hat nicht angerufen, und er hat auch keine Nachricht geschrieben.",
+   "answer": [
+    "Er hat weder angerufen noch eine Nachricht geschrieben.",
+    "Er hat weder angerufen, noch hat er eine Nachricht geschrieben.",
+    "Weder hat er angerufen, noch hat er eine Nachricht geschrieben."
+   ],
+   "note": "weder … noch replaces nicht and kein.",
+   "strict_case": false,
+   "near": [
+    [
+     "Er hat weder angerufen noch keine Nachricht geschrieben.",
+     "weder … noch already negates: no kein"
+    ],
+    [
+     "Er hat nicht angerufen noch eine Nachricht geschrieben.",
+     "weder is needed with noch"
+    ]
+   ]
+  },
+  {
+   "id": "zweiteilige-konnektoren.11",
+   "concept": "zweiteilige-konnektoren",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „zwar ... aber“. Start with „Zwar“.",
+   "prompt": "Die Wohnung ist teuer, aber sie liegt sehr zentral.",
+   "answer": [
+    "Zwar ist die Wohnung teuer, aber sie liegt sehr zentral.",
+    "Zwar ist die Wohnung teuer, sie liegt aber sehr zentral."
+   ],
+   "note": "zwar in position 1 takes the verb next; aber does not change the order.",
+   "strict_case": false,
+   "near": [
+    [
+     "Zwar die Wohnung ist teuer, aber sie liegt sehr zentral.",
+     "verb directly after zwar"
+    ],
+    [
+     "Zwar ist die Wohnung teuer, aber liegt sie sehr zentral.",
+     "no inversion after aber"
+    ]
+   ]
+  },
+  {
+   "id": "zweiteilige-konnektoren.12",
+   "concept": "zweiteilige-konnektoren",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „nicht nur ... sondern auch“.",
+   "prompt": "Das Programm ist kostenlos. Es ist auch leicht zu bedienen.",
+   "answer": [
+    "Das Programm ist nicht nur kostenlos, sondern auch leicht zu bedienen.",
+    "Das Programm ist nicht nur kostenlos, sondern es ist auch leicht zu bedienen."
+   ],
+   "note": "nicht nur … sondern auch links two qualities of one subject.",
+   "strict_case": false,
+   "near": [
+    [
+     "Das Programm ist nicht nur kostenlos, aber auch leicht zu bedienen.",
+     "nicht nur pairs with sondern auch"
+    ],
+    [
+     "Das Programm ist nicht nur kostenlos, sondern leicht zu bedienen.",
+     "auch is part of the pair"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-1.09",
+   "concept": "konjunktiv-1",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as reported speech with Konjunktiv I.",
+   "prompt": "Der Sprecher erklärt: „Die Firma hat keine Fehler gemacht.“",
+   "answer": [
+    "Der Sprecher erklärt, die Firma habe keine Fehler gemacht.",
+    "Der Sprecher erklärt, dass die Firma keine Fehler gemacht habe."
+   ],
+   "note": "Past in reported speech: habe + Partizip II.",
+   "strict_case": false,
+   "near": [
+    [
+     "Der Sprecher erklärt, die Firma hat keine Fehler gemacht.",
+     "indicative, not Konjunktiv I"
+    ],
+    [
+     "Der Sprecher erklärt, die Firma hätte keine Fehler gemacht.",
+     "Konjunktiv II where Konjunktiv I (habe) is distinct"
+    ],
+    [
+     "Der Sprecher erklärt, die Firma habe keine Fehler machen.",
+     "past: habe + Partizip II"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-1.10",
+   "concept": "konjunktiv-1",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as reported speech with Konjunktiv I.",
+   "prompt": "Der Zeuge sagt: „Ich habe den Mann nicht gesehen.“",
+   "answer": [
+    "Der Zeuge sagt, er habe den Mann nicht gesehen.",
+    "Der Zeuge sagt, dass er den Mann nicht gesehen habe."
+   ],
+   "note": "ich → er; habe gesehen.",
+   "strict_case": false,
+   "near": [
+    [
+     "Der Zeuge sagt, ich habe den Mann nicht gesehen.",
+     "the pronoun changes to er"
+    ],
+    [
+     "Der Zeuge sagt, er hat den Mann nicht gesehen.",
+     "indicative, not Konjunktiv I"
+    ],
+    [
+     "Der Zeuge sagt, er hätte den Mann nicht gesehen.",
+     "Konjunktiv II where habe is distinct"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-1.11",
+   "concept": "konjunktiv-1",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in Konjunktiv I.",
+   "prompt": "Laut Polizei ___ niemand verletzt worden. (sein)",
+   "answer": [
+    "sei"
+   ],
+   "note": "sein → sei; passive Perfekt: sei … worden.",
+   "strict_case": false,
+   "near": [
+    [
+     "ist",
+     "indicative"
+    ],
+    [
+     "wäre",
+     "Konjunktiv II; sei is distinct"
+    ],
+    [
+     "war",
+     "indicative past"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-1.12",
+   "concept": "konjunktiv-1",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as reported speech with Konjunktiv I.",
+   "prompt": "Die Firma teilt mit: „Der Preis wird im Januar steigen.“",
+   "answer": [
+    "Die Firma teilt mit, der Preis werde im Januar steigen.",
+    "Die Firma teilt mit, dass der Preis im Januar steigen werde."
+   ],
+   "note": "Future in reported speech: werde + Infinitiv.",
+   "strict_case": false,
+   "near": [
+    [
+     "Die Firma teilt mit, der Preis wird im Januar steigen.",
+     "indicative, not Konjunktiv I"
+    ],
+    [
+     "Die Firma teilt mit, der Preis würde im Januar steigen.",
+     "Konjunktiv II where werde is distinct"
+    ],
+    [
+     "Die Firma teilt mit, dass der Preis werde im Januar steigen.",
+     "verb last in the dass-clause"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-vergangenheit.09",
+   "concept": "konjunktiv-2-vergangenheit",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as one unreal sentence starting with „Wenn“.",
+   "prompt": "Wir haben den Wetterbericht nicht gelesen. Deshalb sind wir nass geworden.",
+   "answer": [
+    "Wenn wir den Wetterbericht gelesen hätten, wären wir nicht nass geworden.",
+    "Wenn wir den Wetterbericht gelesen hätten, dann wären wir nicht nass geworden."
+   ],
+   "note": "hätten gelesen (haben-verb), wären geworden (sein-verb).",
+   "strict_case": false,
+   "near": [
+    [
+     "Wenn wir den Wetterbericht gelesen hatten, wären wir nicht nass geworden.",
+     "hatten (indicative) for hätten"
+    ],
+    [
+     "Wenn wir den Wetterbericht gelesen hätten, hätten wir nicht nass geworden.",
+     "werden takes sein: wären"
+    ],
+    [
+     "Wenn wir den Wetterbericht gelesen hätten, würden wir nicht nass geworden.",
+     "past: wären … geworden"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-vergangenheit.10",
+   "concept": "konjunktiv-2-vergangenheit",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the Konjunktiv II.",
+   "prompt": "Ohne deine Hilfe ___ ich das nie geschafft. (haben)",
+   "answer": [
+    "hätte"
+   ],
+   "note": "ohne + noun works like an unreal wenn-clause: hätte … geschafft.",
+   "strict_case": false,
+   "near": [
+    [
+     "hatte",
+     "indicative past"
+    ],
+    [
+     "habe",
+     "Konjunktiv I"
+    ],
+    [
+     "wäre",
+     "schaffen takes haben"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-vergangenheit.11",
+   "concept": "konjunktiv-2-vergangenheit",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as advice about the past. Start with „An deiner Stelle“.",
+   "prompt": "Du hast den Vertrag unterschrieben.",
+   "answer": [
+    "An deiner Stelle hätte ich den Vertrag nicht unterschrieben."
+   ],
+   "note": "An deiner Stelle + hätte … nicht + Partizip II.",
+   "strict_case": false,
+   "near": [
+    [
+     "An deiner Stelle hatte ich den Vertrag nicht unterschrieben.",
+     "hatte (indicative) for hätte"
+    ],
+    [
+     "An deiner Stelle ich hätte den Vertrag nicht unterschrieben.",
+     "verb second after An deiner Stelle"
+    ],
+    [
+     "An deiner Stelle würde ich den Vertrag nicht unterschrieben.",
+     "past: hätte + Partizip II"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-vergangenheit.12",
+   "concept": "konjunktiv-2-vergangenheit",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the Konjunktiv II.",
+   "prompt": "Wenn ich gestern nicht so lange gearbeitet hätte, ___ ich jetzt nicht so müde. (sein)",
+   "answer": [
+    "wäre"
+   ],
+   "note": "Past condition, present result: the result is about now (wäre).",
+   "strict_case": false,
+   "near": [
+    [
+     "war",
+     "indicative past"
+    ],
+    [
+     "wäre gewesen",
+     "the result is about now, not the past"
+    ],
+    [
+     "bin",
+     "indicative present"
+    ]
+   ]
+  },
+  {
+   "id": "nomen-verb-verbindungen.09",
+   "concept": "nomen-verb-verbindungen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "Die neuen Regeln sind heftig in die Kritik ___.",
+   "answer": [
+    "geraten"
+   ],
+   "note": "in die Kritik geraten = to come under criticism (Perfekt with sein).",
+   "strict_case": false,
+   "near": [
+    [
+     "gestellt",
+     "the fixed verb is geraten"
+    ],
+    [
+     "gefallen",
+     "the fixed verb is geraten"
+    ],
+    [
+     "getreten",
+     "in Kraft treten, but in die Kritik geraten"
+    ]
+   ]
+  },
+  {
+   "id": "nomen-verb-verbindungen.10",
+   "concept": "nomen-verb-verbindungen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "Bitte nehmen Sie bis Freitag zu dem Vorschlag ___.",
+   "answer": [
+    "Stellung"
+   ],
+   "note": "Stellung nehmen zu = to comment on, give your view.",
+   "strict_case": false,
+   "near": [
+    [
+     "Platz",
+     "Platz nehmen = sit down"
+    ],
+    [
+     "Rücksicht",
+     "Rücksicht nehmen auf, a different meaning"
+    ]
+   ]
+  },
+  {
+   "id": "nomen-verb-verbindungen.11",
+   "concept": "nomen-verb-verbindungen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „infrage stellen“.",
+   "prompt": "Viele Experten bezweifeln die Ergebnisse der Studie.",
+   "answer": [
+    "Viele Experten stellen die Ergebnisse der Studie infrage.",
+    "Viele Experten stellen die Ergebnisse der Studie in Frage."
+   ],
+   "note": "etwas infrage stellen (also: in Frage stellen) = to question.",
+   "strict_case": false,
+   "near": [
+    [
+     "Viele Experten stellen die Ergebnisse der Studie in die Frage.",
+     "no article: in Frage / infrage"
+    ],
+    [
+     "Viele Experten infrage stellen die Ergebnisse der Studie.",
+     "infrage goes to the end"
+    ],
+    [
+     "Viele Experten stellen den Ergebnissen der Studie infrage.",
+     "accusative object: die Ergebnisse"
+    ]
+   ]
+  },
+  {
+   "id": "nomen-verb-verbindungen.12",
+   "concept": "nomen-verb-verbindungen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "Die Firma muss die Folgen ihrer Entscheidung in Kauf ___.",
+   "answer": [
+    "nehmen"
+   ],
+   "note": "etwas in Kauf nehmen = to accept a downside.",
+   "strict_case": false,
+   "near": [
+    [
+     "nimmt",
+     "muss + infinitive"
+    ],
+    [
+     "bringen",
+     "the fixed verb is nehmen"
+    ],
+    [
+     "stellen",
+     "the fixed verb is nehmen"
+    ]
+   ]
+  },
+  {
+   "id": "modalpartikeln.09",
+   "concept": "modalpartikeln",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Add „ruhig“ to give permission.",
+   "prompt": "Du kannst mich anrufen.",
+   "answer": [
+    "Du kannst mich ruhig anrufen."
+   ],
+   "note": "ruhig = go ahead, feel free; after the pronoun object.",
+   "strict_case": false,
+   "near": [
+    [
+     "Du kannst ruhig mich anrufen.",
+     "the particle goes after the unstressed pronoun"
+    ],
+    [
+     "Ruhig kannst du mich anrufen.",
+     "a particle does not stand in position 1"
+    ]
+   ]
+  },
+  {
+   "id": "modalpartikeln.10",
+   "concept": "modalpartikeln",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Add „eben“ to say that it cannot be changed.",
+   "prompt": "Das ist so.",
+   "answer": [
+    "Das ist eben so."
+   ],
+   "note": "eben (colloquial also halt) = that’s how it is.",
+   "strict_case": false,
+   "near": [
+    [
+     "Eben ist das so.",
+     "a particle does not stand in position 1"
+    ],
+    [
+     "Das eben ist so.",
+     "the particle goes after the verb"
+    ]
+   ]
+  },
+  {
+   "id": "modalpartikeln.11",
+   "concept": "modalpartikeln",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with „bloß“, „etwa“ or „wohl“.",
+   "prompt": "Hast du ___ schon wieder dein Handy vergessen?",
+   "answer": [
+    "etwa"
+   ],
+   "note": "etwa in a yes/no question: surprised, the speaker hopes the answer is no.",
+   "strict_case": false,
+   "near": [
+    [
+     "wohl",
+     "wohl = probably, a guess, not a reproachful question"
+    ],
+    [
+     "bloß",
+     "bloß in questions asks how/what (Wie hast du das bloß gemacht?)"
+    ]
+   ]
+  },
+  {
+   "id": "modalpartikeln.12",
+   "concept": "modalpartikeln",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with „bloß“, „etwa“ or „wohl“.",
+   "prompt": "Er ist nicht mehr im Büro. Er ist ___ schon nach Hause gegangen.",
+   "answer": [
+    "wohl"
+   ],
+   "note": "wohl = probably: a guess.",
+   "strict_case": false,
+   "near": [
+    [
+     "etwa",
+     "etwa belongs in questions"
+    ],
+    [
+     "bloß",
+     "bloß = only, or a warning (Mach bloß keinen Fehler!)"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-mit-modalverben.09",
+   "concept": "passiv-mit-modalverben",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite in the passive, keeping the modal verb. Start with „Ich glaube, dass“.",
+   "prompt": "Man muss die Regeln ändern.",
+   "answer": [
+    "Ich glaube, dass die Regeln geändert werden müssen."
+   ],
+   "note": "In a subordinate clause: Partizip II + werden + modal at the end.",
+   "strict_case": false,
+   "near": [
+    [
+     "Ich glaube, dass die Regeln müssen geändert werden.",
+     "the modal goes to the end"
+    ],
+    [
+     "Ich glaube, dass die Regeln geändert müssen werden.",
+     "order: geändert werden müssen"
+    ],
+    [
+     "Ich glaube, dass die Regeln geändert werden muss.",
+     "plural: müssen"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-mit-modalverben.10",
+   "concept": "passiv-mit-modalverben",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite in the passive, keeping the modal verb.",
+   "prompt": "Man kann diese Frage nicht leicht beantworten.",
+   "answer": [
+    "Diese Frage kann nicht leicht beantwortet werden."
+   ],
+   "note": "kann … beantwortet werden.",
+   "strict_case": false,
+   "near": [
+    [
+     "Diese Frage kann nicht leicht beantwortet sein.",
+     "the passive takes werden"
+    ],
+    [
+     "Diese Frage wird nicht leicht beantwortet werden können.",
+     "keep the modal in the same tense: kann"
+    ],
+    [
+     "Diese Frage kann nicht leicht beantworten werden.",
+     "Partizip II needed: beantwortet"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-mit-modalverben.11",
+   "concept": "passiv-mit-modalverben",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the verb in brackets in the right form.",
+   "prompt": "Die Ergebnisse dürfen noch nicht ___ werden. (veröffentlichen)",
+   "answer": [
+    "veröffentlicht"
+   ],
+   "note": "Partizip II + werden; veröffentlichen has no ge- (ver- is inseparable).",
+   "strict_case": false,
+   "near": [
+    [
+     "geveröffentlicht",
+     "no ge- with ver-"
+    ],
+    [
+     "veröffentlichen",
+     "the passive needs the Partizip II"
+    ],
+    [
+     "veröffentlichte",
+     "Partizip II, not the past tense"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-mit-modalverben.12",
+   "concept": "passiv-mit-modalverben",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German. Use „absagen“.",
+   "prompt": "The meeting had to be cancelled.",
+   "answer": [
+    "Die Besprechung musste abgesagt werden.",
+    "Das Meeting musste abgesagt werden.",
+    "Die Sitzung musste abgesagt werden.",
+    "Das Treffen musste abgesagt werden."
+   ],
+   "note": "Past: musste + Partizip II + werden.",
+   "strict_case": false,
+   "near": [
+    [
+     "Die Besprechung musste abgesagt worden.",
+     "werden, not worden, after a modal"
+    ],
+    [
+     "Die Besprechung wurde abgesagt werden müssen.",
+     "the modal carries the tense: musste"
+    ],
+    [
+     "Die Besprechung musste absagt werden.",
+     "Partizip II of absagen: abgesagt"
+    ]
+   ]
+  },
+  {
+   "id": "zustandspassiv.09",
+   "concept": "zustandspassiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with „wird“ or „ist“.",
+   "prompt": "Keine Sorge, der Fehler ___ längst behoben.",
+   "answer": [
+    "ist"
+   ],
+   "note": "längst = the result is there: Zustandspassiv (ist behoben).",
+   "strict_case": false,
+   "near": [
+    [
+     "wird",
+     "wird behoben = the repair is happening"
+    ],
+    [
+     "wurde",
+     "only wird or ist allowed; wurde behoben names the past action, not the state"
+    ]
+   ]
+  },
+  {
+   "id": "zustandspassiv.10",
+   "concept": "zustandspassiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with „wird“ or „ist“.",
+   "prompt": "Die Brücke ___ gerade renoviert, deshalb ist sie gesperrt.",
+   "answer": [
+    "wird"
+   ],
+   "note": "gerade = the action is going on: Vorgangspassiv (wird renoviert).",
+   "strict_case": false,
+   "near": [
+    [
+     "ist",
+     "ist renoviert = the work is finished"
+    ]
+   ]
+  },
+  {
+   "id": "zustandspassiv.11",
+   "concept": "zustandspassiv",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite to describe the result (the state).",
+   "prompt": "Man hat alle Plätze reserviert.",
+   "answer": [
+    "Alle Plätze sind reserviert.",
+    "Es sind alle Plätze reserviert."
+   ],
+   "note": "State now: sind + Partizip II.",
+   "strict_case": false,
+   "near": [
+    [
+     "Alle Plätze werden reserviert.",
+     "that is the action, not the state"
+    ],
+    [
+     "Alle Plätze sind reserviert worden.",
+     "that is the passive Perfekt (the action); the state is sind reserviert"
+    ],
+    [
+     "Alle Plätze ist reserviert.",
+     "plural: sind"
+    ]
+   ]
+  },
+  {
+   "id": "zustandspassiv.12",
+   "concept": "zustandspassiv",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as a state in the past with „war“.",
+   "prompt": "Als wir ankamen, hatte man das Essen schon vorbereitet.",
+   "answer": [
+    "Als wir ankamen, war das Essen schon vorbereitet."
+   ],
+   "note": "Past state: war + Partizip II.",
+   "strict_case": false,
+   "near": [
+    [
+     "Als wir ankamen, wurde das Essen schon vorbereitet.",
+     "wurde = the action was going on"
+    ],
+    [
+     "Als wir ankamen, war das Essen schon vorbereitet worden.",
+     "that is the passive Plusquamperfekt"
+    ],
+    [
+     "Als wir ankamen, das Essen war schon vorbereitet.",
+     "verb first after the fronted als-clause"
+    ]
+   ]
+  },
+  {
+   "id": "praepositionen-genitiv.09",
+   "concept": "praepositionen-genitiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with „aufgrund“, „angesichts“, „außerhalb“ or „anlässlich“.",
+   "prompt": "___ des Streiks fallen heute viele Züge aus.",
+   "answer": [
+    "aufgrund"
+   ],
+   "note": "aufgrund = because of (the cause).",
+   "strict_case": false,
+   "near": [
+    [
+     "außerhalb",
+     "außerhalb = outside (place or time)"
+    ],
+    [
+     "anlässlich",
+     "anlässlich = on the occasion of"
+    ]
+   ]
+  },
+  {
+   "id": "praepositionen-genitiv.10",
+   "concept": "praepositionen-genitiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with „aufgrund“, „angesichts“, „außerhalb“ or „anlässlich“.",
+   "prompt": "___ seines 70. Geburtstags gab es ein großes Fest.",
+   "answer": [
+    "anlässlich"
+   ],
+   "note": "anlässlich = on the occasion of.",
+   "strict_case": false,
+   "near": [
+    [
+     "aufgrund",
+     "aufgrund gives a cause, not an occasion"
+    ],
+    [
+     "außerhalb",
+     "außerhalb = outside"
+    ]
+   ]
+  },
+  {
+   "id": "praepositionen-genitiv.11",
+   "concept": "praepositionen-genitiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with „aufgrund“, „angesichts“, „außerhalb“ or „anlässlich“.",
+   "prompt": "___ der Öffnungszeiten erreichen Sie uns per E-Mail.",
+   "answer": [
+    "außerhalb"
+   ],
+   "note": "außerhalb = outside (a time or a place).",
+   "strict_case": false,
+   "near": [
+    [
+     "angesichts",
+     "angesichts = in view of"
+    ],
+    [
+     "aufgrund",
+     "aufgrund = because of"
+    ]
+   ]
+  },
+  {
+   "id": "praepositionen-genitiv.12",
+   "concept": "praepositionen-genitiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the words in brackets in the right form.",
+   "prompt": "Angesichts ___ Kosten wurde das Projekt gestoppt. (die hohen)",
+   "answer": [
+    "der hohen"
+   ],
+   "note": "angesichts + genitive; plural: der hohen Kosten.",
+   "strict_case": false,
+   "near": [
+    [
+     "die hohen",
+     "genitive needed"
+    ],
+    [
+     "den hohen",
+     "dative; angesichts takes the genitive"
+    ],
+    [
+     "der hohe",
+     "genitive plural ending: -en"
+    ]
+   ]
+  },
+  {
+   "id": "pronomen-es.09",
+   "concept": "pronomen-es",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite starting with „Bis spät in die Nacht“.",
+   "prompt": "Es wurde bis spät in die Nacht gefeiert.",
+   "answer": [
+    "Bis spät in die Nacht wurde gefeiert."
+   ],
+   "note": "A placeholder es in an impersonal passive disappears when something else takes position 1.",
+   "strict_case": false,
+   "near": [
+    [
+     "Bis spät in die Nacht wurde es gefeiert.",
+     "the placeholder es must go"
+    ],
+    [
+     "Bis spät in die Nacht es wurde gefeiert.",
+     "verb second"
+    ]
+   ]
+  },
+  {
+   "id": "pronomen-es.10",
+   "concept": "pronomen-es",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "Ich halte ___ für wichtig, dass alle mitreden können.",
+   "answer": [
+    "es",
+    "das"
+   ],
+   "note": "es (or stressed das) points forward to the dass-clause (etwas für wichtig halten).",
+   "strict_case": false,
+   "near": [
+    [
+     "ihn",
+     "the object is the dass-clause: es"
+    ],
+    [
+     "sie",
+     "the object is the dass-clause: es"
+    ]
+   ]
+  },
+  {
+   "id": "pronomen-es.11",
+   "concept": "pronomen-es",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite starting with „Gestern“.",
+   "prompt": "Es klingelte gestern zweimal an der Tür.",
+   "answer": [
+    "Gestern klingelte es zweimal an der Tür."
+   ],
+   "note": "This es is the subject (es klingelt): it stays when another word comes first.",
+   "strict_case": false,
+   "near": [
+    [
+     "Gestern klingelte zweimal an der Tür.",
+     "this es is the subject and must stay"
+    ],
+    [
+     "Gestern es klingelte zweimal an der Tür.",
+     "verb second"
+    ]
+   ]
+  },
+  {
+   "id": "pronomen-es.12",
+   "concept": "pronomen-es",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "Es kommt ganz ___ an, wie viel Zeit wir haben.",
+   "answer": [
+    "darauf",
+    "drauf"
+   ],
+   "note": "es kommt darauf an, ob/wie … = it depends on.",
+   "strict_case": false,
+   "near": [
+    [
+     "davon",
+     "ankommen auf: darauf"
+    ],
+    [
+     "dafür",
+     "ankommen auf: darauf"
+    ],
+    [
+     "auf",
+     "the correlate needs da(r)-: darauf"
+    ]
+   ]
+  },
+  {
+   "id": "konnektoren-advanced.03",
+   "concept": "konnektoren-advanced",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with the word in brackets. Keep the order.",
+   "prompt": "Das Hotel war teuer. Wir haben dort übernachtet. (dennoch)",
+   "answer": [
+    "Das Hotel war teuer, dennoch haben wir dort übernachtet.",
+    "Das Hotel war teuer. Dennoch haben wir dort übernachtet.",
+    "Das Hotel war teuer, und dennoch haben wir dort übernachtet.",
+    "Das Hotel war teuer, wir haben dort dennoch übernachtet.",
+    "Das Hotel war teuer. Wir haben dort dennoch übernachtet.",
+    "Das Hotel war teuer, wir haben dennoch dort übernachtet.",
+    "Das Hotel war teuer. Wir haben dennoch dort übernachtet.",
+    "Das Hotel war teuer, aber dennoch haben wir dort übernachtet.",
+    "Das Hotel war teuer, aber wir haben dort dennoch übernachtet."
+   ],
+   "note": "dennoch in position 1 takes the verb next; it can also stand after the verb.",
+   "strict_case": false,
+   "near": [
+    [
+     "Das Hotel war teuer, dennoch wir haben dort übernachtet.",
+     "verb directly after dennoch"
+    ],
+    [
+     "Das Hotel war teuer, dennoch wir dort übernachtet haben.",
+     "dennoch does not send the verb to the end"
+    ]
+   ]
+  },
+  {
+   "id": "konnektoren-advanced.05",
+   "concept": "konnektoren-advanced",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with „indem“ or „sodass“.",
+   "prompt": "Er spart Geld, ___ er mit dem Fahrrad fährt.",
+   "answer": [
+    "indem"
+   ],
+   "note": "The clause says how: indem.",
+   "strict_case": false,
+   "near": [
+    [
+     "sodass",
+     "the clause is the means, not the result"
+    ],
+    [
+     "damit",
+     "damit = purpose"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-1.04",
+   "concept": "konjunktiv-1",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Die Firma erklärt, das Programm ___ auf aktuellen Daten. (beruhen)",
+   "answer": [
+    "beruhe"
+   ],
+   "note": "er/sie/es: stem + -e.",
+   "strict_case": false,
+   "near": [
+    [
+     "beruht",
+     "indicative"
+    ],
+    [
+     "beruhte",
+     "Präteritum / Konjunktiv II, not Konjunktiv I"
+    ],
+    [
+     "beruhen",
+     "er/sie/es: beruhe"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-1.08",
+   "concept": "konjunktiv-1",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as reported speech with Konjunktiv I.",
+   "prompt": "Sie sagt: „Ich komme später.“",
+   "answer": [
+    "Sie sagt, sie komme später.",
+    "Sie sagt, dass sie später komme."
+   ],
+   "note": "ich komme → sie komme.",
+   "strict_case": false,
+   "near": [
+    [
+     "Sie sagt, sie kommt später.",
+     "indicative, not Konjunktiv I"
+    ],
+    [
+     "Sie sagt, sie käme später.",
+     "Konjunktiv II; komme is distinct"
+    ],
+    [
+     "Sie sagt, ich komme später.",
+     "the pronoun changes to sie"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-vergangenheit.01",
+   "concept": "konjunktiv-2-vergangenheit",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as one unreal sentence starting with „Wenn“.",
+   "prompt": "Ich hatte keine Zeit. Deshalb bin ich nicht gekommen.",
+   "answer": [
+    "Wenn ich Zeit gehabt hätte, wäre ich gekommen.",
+    "Wenn ich Zeit gehabt hätte, dann wäre ich gekommen."
+   ],
+   "note": "hätte/wäre + Partizip II.",
+   "strict_case": false,
+   "near": [
+    [
+     "Wenn ich Zeit gehabt hatte, wäre ich gekommen.",
+     "hatte (indicative) for hätte"
+    ],
+    [
+     "Wenn ich Zeit gehabt hätte, hätte ich gekommen.",
+     "kommen takes sein: wäre"
+    ],
+    [
+     "Wenn ich Zeit hätte gehabt, wäre ich gekommen.",
+     "order in the wenn-clause: gehabt hätte"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-vergangenheit.06",
+   "concept": "konjunktiv-2-vergangenheit",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German.",
+   "prompt": "If I had known that, I would have come.",
+   "answer": [
+    "Wenn ich das gewusst hätte, wäre ich gekommen.",
+    "Hätte ich das gewusst, wäre ich gekommen.",
+    "Wenn ich das gewusst hätte, dann wäre ich gekommen.",
+    "Hätte ich das gewusst, dann wäre ich gekommen."
+   ],
+   "note": "hätte gewusst, wäre gekommen.",
+   "strict_case": false,
+   "near": [
+    [
+     "Wenn ich das gewusst hatte, wäre ich gekommen.",
+     "hatte (indicative) for hätte"
+    ],
+    [
+     "Wenn ich das gewusst hätte, hätte ich gekommen.",
+     "kommen takes sein: wäre"
+    ],
+    [
+     "Wenn ich das gewusst hätte, würde ich gekommen.",
+     "past: wäre … gekommen"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-mit-modalverben.07",
+   "concept": "passiv-mit-modalverben",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German.",
+   "prompt": "The window can't be opened.",
+   "answer": [
+    "Das Fenster kann nicht geöffnet werden.",
+    "Das Fenster lässt sich nicht öffnen.",
+    "Man kann das Fenster nicht öffnen.",
+    "Das Fenster kann man nicht öffnen.",
+    "Das Fenster kann nicht aufgemacht werden.",
+    "Das Fenster lässt sich nicht aufmachen.",
+    "Man kann das Fenster nicht aufmachen.",
+    "Das Fenster kann man nicht aufmachen."
+   ],
+   "note": "kann nicht geöffnet werden.",
+   "strict_case": false,
+   "near": [
+    [
+     "Das Fenster kann nicht geöffnet worden.",
+     "werden, not worden, after a modal"
+    ],
+    [
+     "Das Fenster kann nicht öffnen.",
+     "öffnen needs an object: passive or sich lassen"
+    ],
+    [
+     "Das Fenster lässt nicht öffnen.",
+     "sich lassen: lässt sich"
+    ]
+   ]
+  },
+  {
+   "id": "praepositionen-genitiv.08",
+   "concept": "praepositionen-genitiv",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German.",
+   "prompt": "during the week",
+   "answer": [
+    "während der Woche",
+    "unter der Woche",
+    "in der Woche"
+   ],
+   "note": "während + genitive.",
+   "strict_case": false,
+   "near": [
+    [
+     "während die Woche",
+     "während + genitive: der Woche"
+    ],
+    [
+     "während des Woche",
+     "Woche is feminine: der Woche"
+    ]
+   ]
+  },
+  {
+   "id": "konnektoren-advanced.04",
+   "concept": "konnektoren-advanced",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with the word in brackets. Keep the order.",
+   "prompt": "Die Wohnung ist schön. Sie ist sehr laut. (allerdings)",
+   "answer": [
+    "Die Wohnung ist schön, allerdings ist sie sehr laut.",
+    "Die Wohnung ist schön. Allerdings ist sie sehr laut.",
+    "Die Wohnung ist schön, sie ist allerdings sehr laut.",
+    "Die Wohnung ist schön. Sie ist allerdings sehr laut.",
+    "Die Wohnung ist schön, allerdings sehr laut."
+   ],
+   "note": "allerdings can stand in position 1 or in the middle.",
+   "strict_case": false,
+   "near": [
+    [
+     "Die Wohnung ist schön, allerdings sie ist sehr laut.",
+     "verb directly after allerdings"
+    ],
+    [
+     "Die Wohnung ist schön, allerdings sie sehr laut ist.",
+     "allerdings does not send the verb to the end"
+    ]
+   ]
+  },
+  {
+   "id": "nomen-verb-verbindungen.01",
+   "concept": "nomen-verb-verbindungen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "Wir müssen bald eine Entscheidung ___.",
+   "answer": [
+    "treffen",
+    "fällen"
+   ],
+   "note": "eine Entscheidung treffen (formal also: fällen).",
+   "strict_case": false,
+   "near": [
+    [
+     "machen",
+     "calque of make a decision"
+    ],
+    [
+     "nehmen",
+     "calque of take a decision"
+    ]
+   ]
+  },
+  {
+   "id": "konnektoren-advanced.07",
+   "concept": "konnektoren-advanced",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Answer with „indem“ and the words in brackets.",
+   "prompt": "Wie kann man Strom sparen? (das Licht ausmachen)",
+   "answer": [
+    "Man kann Strom sparen, indem man das Licht ausmacht.",
+    "Indem man das Licht ausmacht.",
+    "Man spart Strom, indem man das Licht ausmacht.",
+    "Strom kann man sparen, indem man das Licht ausmacht.",
+    "Strom spart man, indem man das Licht ausmacht.",
+    "Indem man das Licht ausmacht, kann man Strom sparen.",
+    "Indem man das Licht ausmacht, spart man Strom."
+   ],
+   "note": "indem + verb last.",
+   "strict_case": false,
+   "near": [
+    [
+     "Indem man macht das Licht aus.",
+     "verb last after indem: ausmacht"
+    ],
+    [
+     "Man kann Strom sparen, indem man das Licht ausmachen.",
+     "conjugate: man macht … aus → ausmacht"
+    ]
+   ]
+  },
+  {
+   "id": "pronomen-es.08",
+   "concept": "pronomen-es",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "Ich finde ___ schade, dass du gehst.",
+   "answer": [
+    "es",
+    "das"
+   ],
+   "note": "es (in speech also das) points forward to the dass-clause.",
+   "strict_case": false,
+   "near": [
+    [
+     "ihn",
+     "the object is the dass-clause: es"
+    ],
+    [
+     "sie",
+     "the object is the dass-clause: es"
+    ]
+   ]
+  },
+  {
+   "id": "partizip-als-adjektiv.01",
+   "concept": "partizip-als-adjektiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the verb as an adjective with the right ending.",
+   "prompt": "Das ___ Kind schläft endlich ein. (weinen)",
+   "answer": [
+    "weinende"
+   ],
+   "note": "Partizip I = happening now: weinend + -e.",
+   "strict_case": false,
+   "near": [
+    [
+     "weinend",
+     "needs an ending before the noun: weinende"
+    ],
+    [
+     "weinenden",
+     "after das (nominative neuter): -e"
+    ],
+    [
+     "geweinte",
+     "Partizip II = finished; the child is crying now"
+    ]
+   ]
+  },
+  {
+   "id": "partizip-als-adjektiv.02",
+   "concept": "partizip-als-adjektiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the verb as an adjective with the right ending.",
+   "prompt": "Ich kaufe ein ___ Fahrrad. (gebrauchen)",
+   "answer": [
+    "gebrauchtes"
+   ],
+   "note": "Partizip II = already done: gebraucht + -es.",
+   "strict_case": false,
+   "near": [
+    [
+     "gebrauchte",
+     "after ein (accusative neuter): -es"
+    ],
+    [
+     "gebrauchendes",
+     "Partizip I = active; the bike has been used"
+    ],
+    [
+     "gebraucht",
+     "needs an ending before the noun"
+    ]
+   ]
+  },
+  {
+   "id": "partizip-als-adjektiv.03",
+   "concept": "partizip-als-adjektiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the verb as an adjective with the right ending.",
+   "prompt": "Durch die ___ Tür kam kalte Luft. (öffnen)",
+   "answer": [
+    "geöffnete"
+   ],
+   "note": "Partizip II + -e.",
+   "strict_case": false,
+   "near": [
+    [
+     "geöffneten",
+     "after die (accusative feminine singular): -e"
+    ],
+    [
+     "öffnende",
+     "Partizip I would mean the door opens something"
+    ],
+    [
+     "geöffnet",
+     "needs an ending before the noun"
+    ]
+   ]
+  },
+  {
+   "id": "partizip-als-adjektiv.04",
+   "concept": "partizip-als-adjektiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the verb as an adjective with the right ending.",
+   "prompt": "Er sprach mit ___ Stimme. (zittern)",
+   "answer": [
+    "zitternder"
+   ],
+   "note": "Partizip I; dative feminine without article: -er.",
+   "strict_case": false,
+   "near": [
+    [
+     "zitternde",
+     "no article, dative feminine: -er"
+    ],
+    [
+     "zitterndem",
+     "-em is masculine/neuter; Stimme is feminine"
+    ],
+    [
+     "gezitterter",
+     "Partizip I: the voice is trembling now"
+    ]
+   ]
+  },
+  {
+   "id": "partizip-als-adjektiv.05",
+   "concept": "partizip-als-adjektiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the verb as an adjective with the right ending.",
+   "prompt": "Bitte bringen Sie das ___ Formular mit. (ausfüllen)",
+   "answer": [
+    "ausgefüllte"
+   ],
+   "note": "Partizip II of a separable verb + -e.",
+   "strict_case": false,
+   "near": [
+    [
+     "ausgefüllten",
+     "after das (accusative neuter): -e"
+    ],
+    [
+     "ausfüllende",
+     "Partizip I = filling in; the form has been filled in"
+    ],
+    [
+     "geausfüllte",
+     "ge- goes after the prefix: ausgefüllte"
+    ]
+   ]
+  },
+  {
+   "id": "partizip-als-adjektiv.06",
+   "concept": "partizip-als-adjektiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the verb as an adjective with the right ending.",
+   "prompt": "Die ___ Preise ärgern viele Kunden. (steigen)",
+   "answer": [
+    "steigenden",
+    "gestiegenen"
+   ],
+   "note": "Partizip I (still rising) or II (already risen) + -en.",
+   "strict_case": false,
+   "near": [
+    [
+     "steigende",
+     "plural after die: -en"
+    ],
+    [
+     "gestiegene",
+     "plural after die: -en"
+    ]
+   ]
+  },
+  {
+   "id": "partizip-als-adjektiv.07",
+   "concept": "partizip-als-adjektiv",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Replace the relative clause with a participle before the noun.",
+   "prompt": "der Zug, der gerade ankommt",
+   "answer": [
+    "der gerade ankommende Zug"
+   ],
+   "note": "ankommen → ankommend + -e.",
+   "strict_case": false,
+   "near": [
+    [
+     "der gerade ankommender Zug",
+     "after der: -e"
+    ],
+    [
+     "der ankommende gerade Zug",
+     "gerade goes before the participle"
+    ],
+    [
+     "der gerade angekommene Zug",
+     "Partizip II = already arrived; the train is arriving now"
+    ]
+   ]
+  },
+  {
+   "id": "partizip-als-adjektiv.08",
+   "concept": "partizip-als-adjektiv",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Replace the relative clause with a participle before the noun.",
+   "prompt": "die Briefe, die geschrieben wurden",
+   "answer": [
+    "die geschriebenen Briefe"
+   ],
+   "note": "Passive meaning → Partizip II.",
+   "strict_case": false,
+   "near": [
+    [
+     "die geschriebene Briefe",
+     "plural after die: -en"
+    ],
+    [
+     "die schreibenden Briefe",
+     "Partizip I = active; letters do not write"
+    ],
+    [
+     "die geschriebenden Briefe",
+     "no -d in Partizip II: geschriebenen"
+    ]
+   ]
+  },
+  {
+   "id": "konnektoren-advanced.01",
+   "concept": "konnektoren-advanced",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with the word in brackets. Keep the order.",
+   "prompt": "Er hat viel gelernt. Er hat die Prüfung bestanden. (sodass)",
+   "answer": [
+    "Er hat viel gelernt, sodass er die Prüfung bestanden hat.",
+    "Er hat viel gelernt, so dass er die Prüfung bestanden hat."
+   ],
+   "note": "sodass: result, verb last.",
+   "strict_case": false,
+   "near": [
+    [
+     "Er hat viel gelernt, sodass er hat die Prüfung bestanden.",
+     "verb last after sodass"
+    ],
+    [
+     "Er hat viel gelernt, sodass hat er die Prüfung bestanden.",
+     "sodass is a conjunction: no inversion"
+    ]
+   ]
+  },
+  {
+   "id": "konnektoren-advanced.02",
+   "concept": "konnektoren-advanced",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with the word in brackets. Keep the order.",
+   "prompt": "Man lernt eine Sprache gut. Man spricht jeden Tag. (indem)",
+   "answer": [
+    "Man lernt eine Sprache gut, indem man jeden Tag spricht."
+   ],
+   "note": "indem: how something happens, verb last.",
+   "strict_case": false,
+   "near": [
+    [
+     "Man lernt eine Sprache gut, indem man spricht jeden Tag.",
+     "verb last after indem"
+    ],
+    [
+     "Man lernt eine Sprache gut, indem spricht man jeden Tag.",
+     "indem is a conjunction: no inversion"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-1.01",
+   "concept": "konjunktiv-1",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as reported speech with Konjunktiv I.",
+   "prompt": "Er sagt: „Ich bin krank.“",
+   "answer": [
+    "Er sagt, er sei krank.",
+    "Er sagt, dass er krank sei."
+   ],
+   "note": "sein → sei.",
+   "strict_case": false,
+   "near": [
+    [
+     "Er sagt, er ist krank.",
+     "indicative, not Konjunktiv I"
+    ],
+    [
+     "Er sagt, er wäre krank.",
+     "Konjunktiv II; sei is distinct"
+    ],
+    [
+     "Er sagt, dass er sei krank.",
+     "verb last in the dass-clause"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-1.02",
+   "concept": "konjunktiv-1",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as reported speech with Konjunktiv I.",
+   "prompt": "Sie sagt: „Ich habe keine Zeit.“",
+   "answer": [
+    "Sie sagt, sie habe keine Zeit.",
+    "Sie sagt, dass sie keine Zeit habe."
+   ],
+   "note": "haben → habe.",
+   "strict_case": false,
+   "near": [
+    [
+     "Sie sagt, sie hat keine Zeit.",
+     "indicative, not Konjunktiv I"
+    ],
+    [
+     "Sie sagt, sie hätte keine Zeit.",
+     "Konjunktiv II; habe is distinct"
+    ],
+    [
+     "Sie sagt, dass sie habe keine Zeit.",
+     "verb last in the dass-clause"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-1.03",
+   "concept": "konjunktiv-1",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as reported speech with Konjunktiv I.",
+   "prompt": "Der Chef sagt: „Das Projekt beginnt im Mai.“",
+   "answer": [
+    "Der Chef sagt, das Projekt beginne im Mai.",
+    "Der Chef sagt, dass das Projekt im Mai beginne."
+   ],
+   "note": "beginnt → beginne.",
+   "strict_case": false,
+   "near": [
+    [
+     "Der Chef sagt, das Projekt beginnt im Mai.",
+     "indicative, not Konjunktiv I"
+    ],
+    [
+     "Der Chef sagt, das Projekt begänne im Mai.",
+     "Konjunktiv II; beginne is distinct"
+    ],
+    [
+     "Der Chef sagt, dass das Projekt beginne im Mai.",
+     "verb last in the dass-clause"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-1.05",
+   "concept": "konjunktiv-1",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Der Minister sagt, er ___ nichts davon gewusst. (haben)",
+   "answer": [
+    "habe"
+   ],
+   "note": "Past in reported speech: habe + Partizip II.",
+   "strict_case": false,
+   "near": [
+    [
+     "hat",
+     "indicative"
+    ],
+    [
+     "hätte",
+     "Konjunktiv II; habe is distinct"
+    ],
+    [
+     "hatte",
+     "indicative past"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-1.06",
+   "concept": "konjunktiv-1",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Die Lehrerin meint, die Schüler ___ sehr motiviert. (sein)",
+   "answer": [
+    "seien"
+   ],
+   "note": "sie (plural) → seien.",
+   "strict_case": false,
+   "near": [
+    [
+     "sind",
+     "indicative"
+    ],
+    [
+     "wären",
+     "Konjunktiv II; seien is distinct"
+    ],
+    [
+     "sei",
+     "plural subject: seien"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-1.07",
+   "concept": "konjunktiv-1",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as reported speech with Konjunktiv I.",
+   "prompt": "Er sagt: „Ich kann morgen kommen.“",
+   "answer": [
+    "Er sagt, er könne morgen kommen.",
+    "Er sagt, dass er morgen kommen könne."
+   ],
+   "note": "kann → könne.",
+   "strict_case": false,
+   "near": [
+    [
+     "Er sagt, er kann morgen kommen.",
+     "indicative, not Konjunktiv I"
+    ],
+    [
+     "Er sagt, er könnte morgen kommen.",
+     "Konjunktiv II; könne is distinct"
+    ],
+    [
+     "Er sagt, dass er könne morgen kommen.",
+     "verb last in the dass-clause"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-vergangenheit.02",
+   "concept": "konjunktiv-2-vergangenheit",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Wenn du früher aufgestanden ___, hättest du den Bus bekommen. (sein)",
+   "answer": [
+    "wärst",
+    "wärest"
+   ],
+   "note": "aufstehen takes sein: wärst.",
+   "strict_case": false,
+   "near": [
+    [
+     "warst",
+     "indicative"
+    ],
+    [
+     "hättest",
+     "aufstehen takes sein"
+    ],
+    [
+     "bist",
+     "indicative present"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-vergangenheit.03",
+   "concept": "konjunktiv-2-vergangenheit",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Ich ___ dir geholfen, aber du hast nicht gefragt. (haben)",
+   "answer": [
+    "hätte"
+   ],
+   "note": "hätte + Partizip II.",
+   "strict_case": false,
+   "near": [
+    [
+     "hatte",
+     "indicative: but you didn't ask, so it did not happen"
+    ],
+    [
+     "wäre",
+     "helfen takes haben"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-vergangenheit.04",
+   "concept": "konjunktiv-2-vergangenheit",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as a regret with „sollen“.",
+   "prompt": "Ich habe nicht mehr gelernt.",
+   "answer": [
+    "Ich hätte mehr lernen sollen."
+   ],
+   "note": "hätte + infinitive + sollen.",
+   "strict_case": false,
+   "near": [
+    [
+     "Ich hätte mehr lernen gesollt.",
+     "double infinitive: lernen sollen"
+    ],
+    [
+     "Ich hätte mehr gelernt sollen.",
+     "infinitive, not Partizip II: lernen sollen"
+    ],
+    [
+     "Ich hatte mehr lernen sollen.",
+     "hatte (indicative) for hätte"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-vergangenheit.05",
+   "concept": "konjunktiv-2-vergangenheit",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the Konjunktiv II.",
+   "prompt": "Das ___ ich nie gedacht! (haben)",
+   "answer": [
+    "hätte"
+   ],
+   "note": "hätte ... gedacht.",
+   "strict_case": false,
+   "near": [
+    [
+     "wäre",
+     "denken takes haben"
+    ],
+    [
+     "hätten",
+     "subject ich: hätte"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-vergangenheit.07",
+   "concept": "konjunktiv-2-vergangenheit",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as a wish, starting with „Ich wünschte,“.",
+   "prompt": "Ich bin nicht mitgefahren.",
+   "answer": [
+    "Ich wünschte, ich wäre mitgefahren.",
+    "ich wäre mitgefahren"
+   ],
+   "note": "wäre + Partizip II.",
+   "strict_case": false,
+   "near": [
+    [
+     "Ich wünschte, ich hätte mitgefahren.",
+     "mitfahren takes sein"
+    ],
+    [
+     "Ich wünschte, ich war mitgefahren.",
+     "indicative; a wish needs Konjunktiv II"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-vergangenheit.08",
+   "concept": "konjunktiv-2-vergangenheit",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the Konjunktiv II.",
+   "prompt": "Fast ___ ich den Zug verpasst. (haben)",
+   "answer": [
+    "hätte"
+   ],
+   "note": "fast + Konjunktiv II: it nearly happened.",
+   "strict_case": false,
+   "near": [
+    [
+     "wäre",
+     "verpassen takes haben"
+    ],
+    [
+     "hätten",
+     "subject ich: hätte"
+    ]
+   ]
+  },
+  {
+   "id": "nomen-verb-verbindungen.02",
+   "concept": "nomen-verb-verbindungen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "Darf ich Ihnen eine Frage ___?",
+   "answer": [
+    "stellen"
+   ],
+   "note": "eine Frage stellen.",
+   "strict_case": false,
+   "near": [
+    [
+     "fragen",
+     "eine Frage stellen"
+    ],
+    [
+     "machen",
+     "eine Frage stellen"
+    ]
+   ]
+  },
+  {
+   "id": "nomen-verb-verbindungen.03",
+   "concept": "nomen-verb-verbindungen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "Ich möchte mit Ihnen ein Gespräch ___.",
+   "answer": [
+    "führen"
+   ],
+   "note": "ein Gespräch führen.",
+   "strict_case": false,
+   "near": [
+    [
+     "machen",
+     "ein Gespräch führen"
+    ],
+    [
+     "halten",
+     "eine Rede halten, but ein Gespräch führen"
+    ]
+   ]
+  },
+  {
+   "id": "nomen-verb-verbindungen.04",
+   "concept": "nomen-verb-verbindungen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "Das neue Gesetz tritt morgen in ___.",
+   "answer": [
+    "Kraft"
+   ],
+   "note": "in Kraft treten.",
+   "strict_case": false,
+   "near": [
+    [
+     "Macht",
+     "in Kraft treten"
+    ],
+    [
+     "Wirkung",
+     "in Kraft treten"
+    ]
+   ]
+  },
+  {
+   "id": "nomen-verb-verbindungen.05",
+   "concept": "nomen-verb-verbindungen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "Er hat mir einen guten Rat ___.",
+   "answer": [
+    "gegeben",
+    "erteilt"
+   ],
+   "note": "einen Rat geben.",
+   "strict_case": false,
+   "near": [
+    [
+     "gemacht",
+     "einen Rat geben"
+    ],
+    [
+     "gesagt",
+     "einen Rat geben"
+    ]
+   ]
+  },
+  {
+   "id": "nomen-verb-verbindungen.06",
+   "concept": "nomen-verb-verbindungen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „zur Verfügung stehen“.",
+   "prompt": "Der Raum ist für Sie da.",
+   "answer": [
+    "Der Raum steht Ihnen zur Verfügung.",
+    "Der Raum steht für Sie zur Verfügung."
+   ],
+   "note": "zur Verfügung stehen + dative.",
+   "strict_case": false,
+   "near": [
+    [
+     "Der Raum steht Sie zur Verfügung.",
+     "dative: Ihnen"
+    ],
+    [
+     "Der Raum steht Ihnen zu Verfügung.",
+     "zur (zu der) Verfügung"
+    ],
+    [
+     "Der Raum ist Ihnen zur Verfügung.",
+     "the verb is stehen"
+    ]
+   ]
+  },
+  {
+   "id": "nomen-verb-verbindungen.07",
+   "concept": "nomen-verb-verbindungen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "Kannst du bitte auf die Kinder Rücksicht ___?",
+   "answer": [
+    "nehmen"
+   ],
+   "note": "Rücksicht nehmen auf.",
+   "strict_case": false,
+   "near": [
+    [
+     "geben",
+     "Rücksicht nehmen"
+    ],
+    [
+     "machen",
+     "Rücksicht nehmen"
+    ]
+   ]
+  },
+  {
+   "id": "nomen-verb-verbindungen.08",
+   "concept": "nomen-verb-verbindungen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "Die Firma hat ihm eine feste Stelle in Aussicht ___.",
+   "answer": [
+    "gestellt"
+   ],
+   "note": "in Aussicht stellen = promise.",
+   "strict_case": false,
+   "near": [
+    [
+     "gegeben",
+     "in Aussicht stellen"
+    ],
+    [
+     "gesetzt",
+     "in Aussicht stellen"
+    ]
+   ]
+  },
+  {
+   "id": "modalpartikeln.01",
+   "concept": "modalpartikeln",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "Hast du keine Zeit? — ___, ich habe Zeit.",
+   "answer": [
+    "doch"
+   ],
+   "note": "doch answers a negative question with yes.",
+   "strict_case": false,
+   "near": [
+    [
+     "ja",
+     "ja would agree with the negative question"
+    ],
+    [
+     "nein",
+     "nein would confirm you have no time"
+    ]
+   ]
+  },
+  {
+   "id": "modalpartikeln.02",
+   "concept": "modalpartikeln",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Add „denn“ to make the question friendlier.",
+   "prompt": "Wo wohnst du?",
+   "answer": [
+    "Wo wohnst du denn?"
+   ],
+   "note": "denn in questions sounds interested.",
+   "strict_case": false,
+   "near": [
+    [
+     "Wo denn wohnst du?",
+     "the particle goes after verb and subject"
+    ],
+    [
+     "Denn wo wohnst du?",
+     "a particle does not stand in position 1"
+    ]
+   ]
+  },
+  {
+   "id": "modalpartikeln.03",
+   "concept": "modalpartikeln",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Add „mal“ to soften the request.",
+   "prompt": "Gib mir das Salz.",
+   "answer": [
+    "Gib mir mal das Salz."
+   ],
+   "note": "mal softens a request.",
+   "strict_case": false,
+   "near": [
+    [
+     "Gib mal mir das Salz.",
+     "the particle goes after the unstressed pronoun"
+    ],
+    [
+     "Mal gib mir das Salz.",
+     "a particle does not stand in position 1"
+    ]
+   ]
+  },
+  {
+   "id": "modalpartikeln.04",
+   "concept": "modalpartikeln",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Add „ja“ to show surprise.",
+   "prompt": "Du bist schon da!",
+   "answer": [
+    "Du bist ja schon da!"
+   ],
+   "note": "ja marks surprise.",
+   "strict_case": false,
+   "near": [
+    [
+     "Du ja bist schon da!",
+     "the particle goes after the verb"
+    ],
+    [
+     "Du bist schon ja da!",
+     "ja comes before schon"
+    ]
+   ]
+  },
+  {
+   "id": "modalpartikeln.05",
+   "concept": "modalpartikeln",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Add „eigentlich“.",
+   "prompt": "Wie heißt du?",
+   "answer": [
+    "Wie heißt du eigentlich?"
+   ],
+   "note": "eigentlich = by the way, in questions.",
+   "strict_case": false,
+   "near": [
+    [
+     "Wie eigentlich heißt du?",
+     "the particle goes after verb and subject"
+    ],
+    [
+     "Wie du heißt eigentlich?",
+     "main-clause question: verb second"
+    ]
+   ]
+  },
+  {
+   "id": "modalpartikeln.06",
+   "concept": "modalpartikeln",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Add „doch“ to make it an encouraging request.",
+   "prompt": "Komm mit!",
+   "answer": [
+    "Komm doch mit!"
+   ],
+   "note": "doch in a request = go on.",
+   "strict_case": false,
+   "near": [
+    [
+     "Komm mit doch!",
+     "the particle goes before the separable prefix"
+    ],
+    [
+     "Komm denn mit!",
+     "denn is not used in requests"
+    ]
+   ]
+  },
+  {
+   "id": "modalpartikeln.08",
+   "concept": "modalpartikeln",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Add „doch“ to remind someone of something they know.",
+   "prompt": "Das habe ich dir gesagt!",
+   "answer": [
+    "Das habe ich dir doch gesagt!"
+   ],
+   "note": "doch = you know this.",
+   "strict_case": false,
+   "near": [
+    [
+     "Das habe ich dir gesagt doch!",
+     "the particle goes before the participle"
+    ],
+    [
+     "Das doch habe ich dir gesagt!",
+     "the particle goes after the verb"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-mit-modalverben.01",
+   "concept": "passiv-mit-modalverben",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite in the passive, keeping the modal verb.",
+   "prompt": "Man muss das Formular ausfüllen.",
+   "answer": [
+    "Das Formular muss ausgefüllt werden."
+   ],
+   "note": "Modal + Partizip II + werden.",
+   "strict_case": false,
+   "near": [
+    [
+     "Das Formular muss ausgefüllt worden.",
+     "werden, not worden, after a modal"
+    ],
+    [
+     "Das Formular muss ausfüllen werden.",
+     "Partizip II needed: ausgefüllt"
+    ],
+    [
+     "Das Formular wird ausgefüllt müssen.",
+     "the modal is the finite verb: muss … ausgefüllt werden"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-mit-modalverben.02",
+   "concept": "passiv-mit-modalverben",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite in the passive, keeping the modal verb.",
+   "prompt": "Man kann das Problem lösen.",
+   "answer": [
+    "Das Problem kann gelöst werden."
+   ],
+   "note": "kann ... gelöst werden.",
+   "strict_case": false,
+   "near": [
+    [
+     "Das Problem kann gelöst worden.",
+     "werden, not worden, after a modal"
+    ],
+    [
+     "Das Problem kann lösen werden.",
+     "Partizip II needed: gelöst"
+    ],
+    [
+     "Das Problem kann gelöst wird.",
+     "infinitive werden after the modal"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-mit-modalverben.03",
+   "concept": "passiv-mit-modalverben",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite in the passive, keeping the modal verb.",
+   "prompt": "Man darf hier nicht parken.",
+   "answer": [
+    "Hier darf nicht geparkt werden.",
+    "Es darf hier nicht geparkt werden."
+   ],
+   "note": "Impersonal: hier darf ... werden.",
+   "strict_case": false,
+   "near": [
+    [
+     "Hier darf es nicht geparkt werden.",
+     "es must go when hier takes position 1"
+    ],
+    [
+     "Hier darf nicht geparkt worden.",
+     "werden, not worden, after a modal"
+    ],
+    [
+     "Hier darf nicht parken werden.",
+     "Partizip II needed: geparkt"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-mit-modalverben.04",
+   "concept": "passiv-mit-modalverben",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite in the passive, keeping the modal verb.",
+   "prompt": "Man soll die Tabletten nach dem Essen nehmen.",
+   "answer": [
+    "Die Tabletten sollen nach dem Essen genommen werden.",
+    "Nach dem Essen sollen die Tabletten genommen werden."
+   ],
+   "note": "Plural: sollen ... genommen werden.",
+   "strict_case": false,
+   "near": [
+    [
+     "Die Tabletten soll nach dem Essen genommen werden.",
+     "plural: sollen"
+    ],
+    [
+     "Die Tabletten sollen nach dem Essen genommen worden.",
+     "werden, not worden, after a modal"
+    ],
+    [
+     "Die Tabletten sollen nach dem Essen nehmen werden.",
+     "Partizip II needed: genommen"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-mit-modalverben.05",
+   "concept": "passiv-mit-modalverben",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "Das Feedback muss richtig eingeordnet ___.",
+   "answer": [
+    "werden"
+   ],
+   "note": "Passive infinitive: eingeordnet werden.",
+   "strict_case": false,
+   "near": [
+    [
+     "worden",
+     "after a modal: werden"
+    ],
+    [
+     "wird",
+     "infinitive needed after muss"
+    ],
+    [
+     "geworden",
+     "the passive uses werden/worden, not geworden"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-mit-modalverben.06",
+   "concept": "passiv-mit-modalverben",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite in the passive, keeping the modal verb.",
+   "prompt": "Man musste den Termin verschieben.",
+   "answer": [
+    "Der Termin musste verschoben werden."
+   ],
+   "note": "musste ... verschoben werden.",
+   "strict_case": false,
+   "near": [
+    [
+     "Der Termin musste verschoben worden.",
+     "werden, not worden, after a modal"
+    ],
+    [
+     "Der Termin musste verschieben werden.",
+     "Partizip II needed: verschoben"
+    ],
+    [
+     "Der Termin wurde verschoben werden müssen.",
+     "the modal carries the tense: musste"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-mit-modalverben.08",
+   "concept": "passiv-mit-modalverben",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Die Rechnung ___ bis Freitag bezahlt werden. (müssen)",
+   "answer": [
+    "muss"
+   ],
+   "note": "muss ... bezahlt werden.",
+   "strict_case": false,
+   "near": [
+    [
+     "müssen",
+     "singular subject: muss"
+    ],
+    [
+     "musst",
+     "er/sie/es: muss"
+    ]
+   ]
+  },
+  {
+   "id": "zustandspassiv.01",
+   "concept": "zustandspassiv",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite to describe the result (the state).",
+   "prompt": "Die Tür wird geschlossen.",
+   "answer": [
+    "Die Tür ist geschlossen."
+   ],
+   "note": "State: sein + Partizip II.",
+   "strict_case": false,
+   "near": [
+    [
+     "Die Tür hat geschlossen.",
+     "state: sein + Partizip II"
+    ],
+    [
+     "Die Tür ist geschließt.",
+     "Partizip II of schließen: geschlossen"
+    ]
+   ]
+  },
+  {
+   "id": "zustandspassiv.02",
+   "concept": "zustandspassiv",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite to describe the result (the state).",
+   "prompt": "Das Fenster wird geöffnet.",
+   "answer": [
+    "Das Fenster ist geöffnet."
+   ],
+   "note": "ist geöffnet = open now.",
+   "strict_case": false,
+   "near": [
+    [
+     "Das Fenster ist geöffnen.",
+     "Partizip II: geöffnet"
+    ],
+    [
+     "Das Fenster ist geöffnet geworden.",
+     "the state is just ist + Partizip II (passive Perfekt uses worden)"
+    ],
+    [
+     "Das Fenster hat geöffnet.",
+     "state: sein + Partizip II"
+    ]
+   ]
+  },
+  {
+   "id": "zustandspassiv.03",
+   "concept": "zustandspassiv",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite to describe the result (the state).",
+   "prompt": "Der Tisch wird reserviert.",
+   "answer": [
+    "Der Tisch ist reserviert."
+   ],
+   "note": "ist reserviert.",
+   "strict_case": false,
+   "near": [
+    [
+     "Der Tisch hat reserviert.",
+     "state: sein + Partizip II"
+    ],
+    [
+     "Der Tisch ist reserviert geworden.",
+     "the state is just ist + Partizip II (passive Perfekt uses worden)"
+    ]
+   ]
+  },
+  {
+   "id": "zustandspassiv.04",
+   "concept": "zustandspassiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Keine Sorge, die Rechnung ___ schon bezahlt. (sein)",
+   "answer": [
+    "ist"
+   ],
+   "note": "State: ist bezahlt.",
+   "strict_case": false,
+   "near": [
+    [
+     "hat",
+     "state: sein + Partizip II"
+    ],
+    [
+     "sind",
+     "singular subject: ist"
+    ]
+   ]
+  },
+  {
+   "id": "zustandspassiv.05",
+   "concept": "zustandspassiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Gestern ___ das Büro den ganzen Tag geschlossen. (sein)",
+   "answer": [
+    "war"
+   ],
+   "note": "Past state: war geschlossen.",
+   "strict_case": false,
+   "near": [
+    [
+     "ist",
+     "gestern: past, war"
+    ],
+    [
+     "wurde",
+     "the bracket gives sein: war; wurde geschlossen is the act of closing"
+    ],
+    [
+     "wäre",
+     "no Konjunktiv here"
+    ]
+   ]
+  },
+  {
+   "id": "zustandspassiv.06",
+   "concept": "zustandspassiv",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German.",
+   "prompt": "The problem is solved.",
+   "answer": [
+    "Das Problem ist gelöst."
+   ],
+   "note": "State: ist gelöst.",
+   "strict_case": false,
+   "near": [
+    [
+     "Das Problem hat gelöst.",
+     "state: sein + Partizip II"
+    ],
+    [
+     "Das Problem ist gelöst geworden.",
+     "the state is just ist gelöst"
+    ]
+   ]
+  },
+  {
+   "id": "zustandspassiv.07",
+   "concept": "zustandspassiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Das Formular ist schon ___. (ausfüllen)",
+   "answer": [
+    "ausgefüllt"
+   ],
+   "note": "ist ausgefüllt.",
+   "strict_case": false,
+   "near": [
+    [
+     "ausfüllt",
+     "Partizip II: ausgefüllt"
+    ],
+    [
+     "geausfüllt",
+     "ge- goes after the prefix: ausgefüllt"
+    ],
+    [
+     "ausgefüllte",
+     "no ending after sein"
+    ]
+   ]
+  },
+  {
+   "id": "zustandspassiv.08",
+   "concept": "zustandspassiv",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite to describe the result (the state).",
+   "prompt": "Die Fenster werden geputzt.",
+   "answer": [
+    "Die Fenster sind geputzt."
+   ],
+   "note": "Plural: sind geputzt.",
+   "strict_case": false,
+   "near": [
+    [
+     "Die Fenster ist geputzt.",
+     "plural: sind"
+    ],
+    [
+     "Die Fenster haben geputzt.",
+     "state: sein + Partizip II"
+    ]
+   ]
+  },
+  {
+   "id": "praepositionen-genitiv.01",
+   "concept": "praepositionen-genitiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with „trotz“, „wegen“, „während“, „statt“ or „innerhalb“.",
+   "prompt": "___ des Regens fällt das Konzert heute aus.",
+   "answer": [
+    "wegen"
+   ],
+   "note": "Reason: wegen.",
+   "strict_case": false,
+   "near": [
+    [
+     "trotz",
+     "the rain is the reason: wegen"
+    ],
+    [
+     "statt",
+     "statt = instead of"
+    ]
+   ]
+  },
+  {
+   "id": "praepositionen-genitiv.02",
+   "concept": "praepositionen-genitiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with „trotz“, „wegen“, „während“, „statt“ or „innerhalb“.",
+   "prompt": "___ aller Probleme ist das Projekt pünktlich fertig geworden.",
+   "answer": [
+    "trotz"
+   ],
+   "note": "Contrast: trotz.",
+   "strict_case": false,
+   "near": [
+    [
+     "wegen",
+     "contrast needed: trotz"
+    ],
+    [
+     "während",
+     "contrast needed: trotz"
+    ]
+   ]
+  },
+  {
+   "id": "praepositionen-genitiv.04",
+   "concept": "praepositionen-genitiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with „trotz“, „wegen“, „während“, „statt“ or „innerhalb“.",
+   "prompt": "Bitte antworten Sie ___ einer Woche.",
+   "answer": [
+    "innerhalb"
+   ],
+   "note": "Within a time: innerhalb.",
+   "strict_case": false,
+   "near": [
+    [
+     "während",
+     "a deadline: innerhalb"
+    ],
+    [
+     "wegen",
+     "a deadline: innerhalb"
+    ]
+   ]
+  },
+  {
+   "id": "praepositionen-genitiv.05",
+   "concept": "praepositionen-genitiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with „trotz“, „wegen“, „während“, „statt“ or „innerhalb“.",
+   "prompt": "___ eines Autos hat sie ein Fahrrad gekauft.",
+   "answer": [
+    "statt",
+    "anstatt"
+   ],
+   "note": "Instead of: statt.",
+   "strict_case": false,
+   "near": [
+    [
+     "trotz",
+     "instead of: statt"
+    ],
+    [
+     "wegen",
+     "instead of: statt"
+    ]
+   ]
+  },
+  {
+   "id": "praepositionen-genitiv.06",
+   "concept": "praepositionen-genitiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Wegen ___ Arbeit habe ich keine Zeit. (die viele)",
+   "answer": [
+    "der vielen"
+   ],
+   "note": "Genitive feminine: der vielen.",
+   "strict_case": false,
+   "near": [
+    [
+     "die viele",
+     "genitive feminine: der vielen"
+    ],
+    [
+     "der viele",
+     "adjective ending after der: -en"
+    ],
+    [
+     "den vielen",
+     "Arbeit is feminine singular: der vielen"
+    ]
+   ]
+  },
+  {
+   "id": "praepositionen-genitiv.07",
+   "concept": "praepositionen-genitiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Trotz ___ Verspätung blieben alle ruhig. (die lange)",
+   "answer": [
+    "der langen"
+   ],
+   "note": "Genitive feminine: der langen.",
+   "strict_case": false,
+   "near": [
+    [
+     "die lange",
+     "genitive: der langen"
+    ],
+    [
+     "der lange",
+     "adjective ending after der: -en"
+    ],
+    [
+     "des langen",
+     "Verspätung is feminine: der langen"
+    ]
+   ]
+  },
+  {
+   "id": "pronomen-es.01",
+   "concept": "pronomen-es",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "___ regnet schon den ganzen Tag.",
+   "answer": [
+    "es"
+   ],
+   "note": "Weather verbs need es.",
+   "strict_case": false,
+   "near": [
+    [
+     "er",
+     "weather verbs take es"
+    ],
+    [
+     "das",
+     "weather verbs take es"
+    ]
+   ]
+  },
+  {
+   "id": "pronomen-es.02",
+   "concept": "pronomen-es",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "Wie geht ___ dir?",
+   "answer": [
+    "es"
+   ],
+   "note": "es geht + dative.",
+   "strict_case": false,
+   "near": [
+    [
+     "du",
+     "es is the subject: es geht dir"
+    ],
+    [
+     "dich",
+     "es is the subject: es geht dir"
+    ]
+   ]
+  },
+  {
+   "id": "pronomen-es.03",
+   "concept": "pronomen-es",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "Hier gibt ___ viele Cafés.",
+   "answer": [
+    "es"
+   ],
+   "note": "es gibt + accusative.",
+   "strict_case": false,
+   "near": [
+    [
+     "sie",
+     "es gibt"
+    ],
+    [
+     "da",
+     "es gibt needs es"
+    ]
+   ]
+  },
+  {
+   "id": "pronomen-es.04",
+   "concept": "pronomen-es",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite starting with „Heute“.",
+   "prompt": "Es regnet heute.",
+   "answer": [
+    "Heute regnet es."
+   ],
+   "note": "Weather es stays after the verb.",
+   "strict_case": false,
+   "near": [
+    [
+     "Heute es regnet.",
+     "verb second"
+    ],
+    [
+     "Heute regnet.",
+     "weather es must stay"
+    ]
+   ]
+  },
+  {
+   "id": "pronomen-es.05",
+   "concept": "pronomen-es",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite starting with „In der Stadt“.",
+   "prompt": "Es gibt in der Stadt viele Cafés.",
+   "answer": [
+    "In der Stadt gibt es viele Cafés."
+   ],
+   "note": "es gibt keeps its es.",
+   "strict_case": false,
+   "near": [
+    [
+     "In der Stadt gibt viele Cafés.",
+     "es gibt keeps its es"
+    ],
+    [
+     "In der Stadt es gibt viele Cafés.",
+     "verb second"
+    ]
+   ]
+  },
+  {
+   "id": "pronomen-es.06",
+   "concept": "pronomen-es",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite starting with „Viele Leute“.",
+   "prompt": "Es kamen viele Leute zur Party.",
+   "answer": [
+    "Viele Leute kamen zur Party."
+   ],
+   "note": "A placeholder es disappears when something else is in position 1.",
+   "strict_case": false,
+   "near": [
+    [
+     "Viele Leute kamen es zur Party.",
+     "the placeholder es disappears"
+    ],
+    [
+     "Viele Leute es kamen zur Party.",
+     "verb second, and no es"
+    ]
+   ]
+  },
+  {
+   "id": "pronomen-es.07",
+   "concept": "pronomen-es",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German.",
+   "prompt": "It's about money.",
+   "answer": [
+    "Es geht um Geld.",
+    "Es geht ums Geld.",
+    "Es geht um das Geld."
+   ],
+   "note": "es geht um.",
+   "strict_case": false,
+   "near": [
+    [
+     "Es ist über Geld.",
+     "calque: es geht um"
+    ],
+    [
+     "Es geht über Geld.",
+     "gehen um, not über"
+    ]
+   ]
+  },
+  {
+   "id": "modalpartikeln.07",
+   "concept": "modalpartikeln",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "Was ist ___ hier passiert? Alles ist nass!",
+   "answer": [
+    "denn",
+    "eigentlich"
+   ],
+   "note": "denn in a surprised question.",
+   "strict_case": false,
+   "near": [
+    [
+     "ja",
+     "ja (surprise) is used in statements, not in w-questions"
+    ],
+    [
+     "doch",
+     "doch does not go into a real w-question"
+    ],
+    [
+     "mal",
+     "mal softens requests, not this question"
+    ]
+   ]
+  }
+ ],
+ "phrases": {
+  "ENG_CHUNK_0008": {
+   "fn": "narrate",
+   "accept": [
+    "ich wollte (schon) lange",
+    "ich wollte (dich) (schon) seit",
+    "ich wollte [x] (schon) lange",
+    "ich wollte [x] (schon) seit",
+    "ich hatte (schon) lange vor",
+    "ich wollte (schon) ewig",
+    "ich wollte [x] (schon) die ganze zeit",
+    "ich wollte [x] schon längst",
+    "ich will [x] (schon) seit",
+    "ich will (dich) (schon) seit",
+    "ich habe (schon) seit wochen vor",
+    "ich hab (schon) seit wochen vor"
+   ]
+  },
+  "ENG_CHUNK_0009": {
+   "fn": "argue",
+   "accept": [
+    "es hat keinen sinn",
+    "es bringt nichts",
+    "das hat keinen sinn",
+    "das bringt nichts",
+    "es lohnt sich nicht",
+    "hat keinen sinn",
+    "bringt nichts",
+    "hat keinen zweck",
+    "macht keinen sinn",
+    "es ist sinnlos",
+    "das ist sinnlos",
+    "es ist zwecklos",
+    "lohnt sich nicht"
+   ],
+   "n": "\"Es macht keinen Sinn\" is very common and now accepted; \"Es hat keinen Sinn\" is the safer choice in writing."
+  },
+  "ENG_CHUNK_0092": {
+   "fn": "concede"
+  },
+  "ENG_CHUNK_0099": {
+   "fn": "argue",
+   "accept": [
+    "schließlich",
+    "immerhin",
+    "ja schließlich",
+    "ja immerhin"
+   ],
+   "n": "\"schließlich\" giving a reason = after all (Er hat schließlich … / Schließlich hat er …); in a sequence of events it means \"finally\"."
+  },
+  "ENG_CHUNK_0194": {
+   "fn": "concede",
+   "accept": [
+    "auch wenn",
+    "selbst wenn",
+    "sogar wenn",
+    "auch dann wenn",
+    "selbst dann wenn"
+   ]
+  },
+  "ENG_CHUNK_0209": {
+   "fn": "concede"
+  },
+  "ENG_CHUNK_0253": {
+   "fn": "react"
+  },
+  "ENG_CHUNK_0269": {
+   "fn": "concede",
+   "accept": [
+    "fairerweise muss man sagen",
+    "fairerweise",
+    "man muss aber sagen",
+    "zugegeben",
+    "gerechterweise",
+    "der fairness halber",
+    "man muss (aber) dazu sagen"
+   ],
+   "ex": "Er kommt immer zu spät, aber fairerweise muss man sagen, dass der Verkehr furchtbar war."
+  },
+  "ENG_CHUNK_0281": {
+   "fn": "react",
+   "accept": [
+    "sicher ist sicher",
+    "vorsicht ist besser als nachsicht",
+    "man weiß (ja) nie",
+    "lieber auf nummer sicher",
+    "vorsicht ist die mutter der porzellankiste"
+   ]
+  },
+  "ENG_CHUNK_0282": {
+   "fn": "react"
+  },
+  "ENG_CHUNK_0298": {
+   "fn": "conclude",
+   "accept": [
+    "das heißt",
+    "was bedeutet dass",
+    "was heißt dass",
+    "das bedeutet",
+    "was heißt",
+    "sodass",
+    "so dass"
+   ]
+  },
+  "ENG_CHUNK_0307": {
+   "fn": "react",
+   "accept": [
+    "du hast (ja) (auch) allen grund",
+    "sie haben (ja) (auch) allen grund",
+    "ihr habt (ja) (auch) allen grund",
+    "es ist dein gutes recht",
+    "es ist ihr gutes recht",
+    "es ist euer gutes recht",
+    "du hast das recht",
+    "sie haben das recht",
+    "du hast (ja) (auch) jedes recht",
+    "sie haben (ja) (auch) jedes recht"
+   ],
+   "t": "Du hast jedes Recht, [zu + Infinitiv] / Du hast allen Grund, [zu + Infinitiv]"
+  },
+  "ENG_CHUNK_0331": {
+   "fn": "react",
+   "accept": [
+    "ich hätte nie gedacht",
+    "hätte nie gedacht",
+    "ich hätte niemals gedacht",
+    "ich hätte nie geglaubt",
+    "hätte ich nie gedacht",
+    "ich hätte nicht gedacht",
+    "hätte nicht gedacht",
+    "nie hätte ich gedacht",
+    "ich hätte (es) nie für möglich gehalten"
+   ]
+  },
+  "ENG_CHUNK_0393": {
+   "fn": "narrate"
+  },
+  "ENG_CHUNK_0395": {
+   "fn": "narrate",
+   "accept": [
+    "jetzt wo",
+    "jetzt da",
+    "seitdem",
+    "nun da",
+    "nun wo",
+    "seit die",
+    "da [x] jetzt"
+   ]
+  },
+  "ENG_CHUNK_0397": {
+   "fn": "conclude",
+   "accept": [
+    "so oder so",
+    "in beiden fällen",
+    "in jedem fall",
+    "egal wie",
+    "sowieso",
+    "egal was wir machen"
+   ]
+  },
+  "ENG_CHUNK_0398": {
+   "fn": "conclude",
+   "t": "Letzten Endes / Letztendlich",
+   "accept": [
+    "letzten endes",
+    "letztendlich",
+    "am ende",
+    "schlussendlich",
+    "im endeffekt",
+    "im grunde",
+    "letztlich"
+   ],
+   "n": "Avoid the anglicism \"am Ende des Tages\"; say \"letzten Endes\" or \"letztendlich\"."
+  },
+  "ENG_CHUNK_0412": {
+   "fn": "opinion",
+   "accept": [
+    "es lohnt sich",
+    "lohnt sich",
+    "es ist es wert",
+    "das lohnt sich",
+    "es rentiert sich",
+    "es zahlt sich aus"
+   ]
+  },
+  "ENG_CHUNK_0419": {
+   "fn": "react",
+   "accept": [
+    "fang (mir) bloß nicht (davon) an",
+    "fang (mir) bloß nicht mit [x] an",
+    "fang (mir) (bloß) nicht damit an",
+    "fangen sie bloß nicht (davon) an",
+    "fang mir nicht mit [x] an",
+    "hör mir (bloß) auf mit",
+    "hör mir (bloß) auf damit",
+    "hör (mir) bloß auf",
+    "hören sie mir auf mit",
+    "fang (mir) gar nicht erst",
+    "fangen sie gar nicht erst",
+    "komm mir (bloß) nicht mit"
+   ]
+  },
+  "ENG_CHUNK_0421": {
+   "fn": "react",
+   "accept": [
+    "gut dass",
+    "zum glück",
+    "ein glück dass",
+    "wie gut dass",
+    "gott sei dank",
+    "nur gut dass",
+    "glücklicherweise"
+   ]
+  },
+  "ENG_CHUNK_0426": {
+   "fn": "react",
+   "accept": [
+    "das nenne ich (mal)",
+    "das nenn ich (mal)",
+    "das ist ein richtiges",
+    "das nennt man",
+    "das ist (doch) (ja) (aber) mal"
+   ]
+  },
+  "ENG_CHUNK_0476": {
+   "fn": "discuss"
+  },
+  "ENG_CHUNK_0499": {
+   "fn": "argue",
+   "accept": [
+    "so kommen wir",
+    "dann kommen wir",
+    "so sind wir",
+    "dann sind wir",
+    "auf diese weise",
+    "so umgehen wir",
+    "dann umgehen wir",
+    "so vermeiden wir",
+    "dann vermeiden wir",
+    "so stehen wir",
+    "dann stehen wir",
+    "so geraten wir",
+    "dann geraten wir",
+    "dadurch",
+    "so entgehen wir",
+    "dann entgehen wir"
+   ]
+  },
+  "ENG_CHUNK_0580": {
+   "fn": "narrate",
+   "ex": "Das Witzige ist, dass wir uns schon mal getroffen hatten und sich keiner von uns daran erinnern konnte.",
+   "accept": [
+    "das lustige ist",
+    "das witzige ist",
+    "das lustige daran ist",
+    "das witzige daran ist",
+    "das komische ist",
+    "das komische daran ist",
+    "lustigerweise",
+    "witzigerweise",
+    "das lustige (daran) war",
+    "das witzige (daran) war",
+    "das komische (daran) war"
+   ]
+  },
+  "ENG_CHUNK_0588": {
+   "fn": "social"
+  },
+  "ENG_CHUNK_0591": {
+   "fn": "argue"
+  },
+  "ENG_CHUNK_0596": {
+   "fn": "opinion",
+   "accept": [
+    "egal was passiert",
+    "egal was ist",
+    "egal was kommt",
+    "(ganz) egal was",
+    "auf jeden fall",
+    "was auch immer passiert",
+    "komme was wolle",
+    "unter allen umständen",
+    "was auch passiert"
+   ]
+  },
+  "ENG_CHUNK_0622": {
+   "fn": "present",
+   "ex": "Ich zeig dir mal, wie die neue App funktioniert, das ist ganz einfach.",
+   "accept": [
+    "ich erklär dir (mal)",
+    "ich erkläre dir (mal)",
+    "ich erkläre ihnen (mal)",
+    "ich gehe [x] mit dir durch",
+    "ich gehe [x] mit ihnen durch",
+    "ich zeig dir (mal)",
+    "ich zeige dir (mal)",
+    "ich zeige ihnen (mal)",
+    "ich führ dich (mal) durch",
+    "ich führe dich (mal) durch",
+    "ich führe sie (mal) durch"
+   ]
+  },
+  "ENG_CHUNK_0653": {
+   "fn": "argue",
+   "accept": [
+    "voreilige schlüsse ziehen",
+    "voreiligen schlüsse (ziehen)",
+    "voreilige schlüsse",
+    "vorschnelle schlüsse",
+    "vorschnellen schlüsse",
+    "voreilige schlussfolgerungen",
+    "voreiligen schlussfolgerungen",
+    "vorschnell (zu) urteilen",
+    "voreilig (zu) urteilen",
+    "vorschnellen schlussfolgerungen"
+   ]
+  },
+  "ENG_CHUNK_0658": {
+   "fn": "formal",
+   "accept": [
+    "nachhaken",
+    "nachgehakt",
+    "nachfragen",
+    "melde mich (noch) (mal) wegen",
+    "mich (noch) (mal) wegen [x] melden",
+    "hake [x] nach",
+    "frage [x] nach",
+    "melde mich nochmal wegen",
+    "mich nochmal wegen [x] melden",
+    "komme (noch) (einmal) (mal) auf [x] zurück",
+    "komme nochmal auf [x] zurück"
+   ]
+  },
+  "ENG_CHUNK_0659": {
+   "fn": "formal",
+   "t": "[Person, Dativ] [Nomen] vorstellen / [Nomen] mit [Person] besprechen",
+   "ex": "Kann ich dir mal eine Idee vorstellen?",
+   "accept": [
+    "dir (mal) eine idee vorstellen",
+    "ihnen (mal) eine idee vorstellen",
+    "nach deiner meinung (zu)",
+    "nach ihrer meinung (zu)",
+    "was hältst du von",
+    "was halten sie von",
+    "was sagst du zu",
+    "[x] mit dir besprechen",
+    "[x] mit ihnen besprechen",
+    "deine meinung zu",
+    "ihre meinung zu",
+    "[x] mit dir durchsprechen",
+    "[x] mit ihnen durchsprechen"
+   ]
+  },
+  "ENG_CHUNK_0660": {
+   "fn": "formal",
+   "accept": [
+    "mich (kurz) auf den stand bringen",
+    "mich (kurz) informieren",
+    "mich (kurz) aufklären",
+    "mir (kurz) erzählen was",
+    "mich (mal) (kurz) auf den neuesten stand bringen",
+    "mich (mal) (kurz) auf den aktuellen stand bringen",
+    "mich (mal) (kurz) updaten",
+    "mich (mal) (kurz) ins bild setzen",
+    "mir (mal) (kurz) sagen was",
+    "mich (mal) (kurz) auf dem laufenden"
+   ]
+  },
+  "ENG_CHUNK_0661": {
+   "fn": "formal",
+   "accept": [
+    "sich (kurz) mit [x] abstimmen",
+    "mit [x] abstimmen",
+    "mit [x] kurzschließen",
+    "mit [x] austauschen",
+    "mit [x] rücksprache halten",
+    "uns [x] abstimmen",
+    "kurz mit [x] reden",
+    "kurz mit [x] sprechen"
+   ]
+  },
+  "ENG_CHUNK_0662": {
+   "fn": "formal",
+   "accept": [
+    "vorwarnen",
+    "vorgewarnt",
+    "bescheid gesagt",
+    "bescheid gegeben",
+    "bescheid sagen",
+    "bescheid geben",
+    "danke für die warnung",
+    "danke für den hinweis",
+    "vorwarnung"
+   ]
+  },
+  "ENG_CHUNK_0690": {
+   "fn": "social",
+   "accept": [
+    "das wäre (aber) (doch) nicht nötig gewesen",
+    "das war (doch) nicht nötig",
+    "das hätten sie nicht tun müssen",
+    "das hättet ihr nicht tun müssen",
+    "das ist (aber) (so) nett",
+    "das hättest du (doch) (aber) nicht tun müssen",
+    "das hättest du (doch) (aber) nicht machen müssen",
+    "das hätten sie (doch) (aber) nicht machen müssen",
+    "das wär (doch) nicht nötig gewesen",
+    "das ist (aber) (ja) (so) lieb"
+   ]
+  },
+  "ENG_CHUNK_0693": {
+   "fn": "argue",
+   "accept": [
+    "das gleiche gilt für",
+    "dasselbe gilt für",
+    "gleiches gilt für",
+    "das gilt (auch) (genauso) (übrigens) für",
+    "ich auch",
+    "genau wie ich",
+    "für mich gilt",
+    "trifft (auch) auf mich zu"
+   ]
+  },
+  "ENG_CHUNK_0698": {
+   "fn": "conclude"
+  },
+  "ENG_CHUNK_0705": {
+   "fn": "request",
+   "accept": [
+    "sind sie (schon) dazu gekommen",
+    "bist du (schon) dazu gekommen",
+    "seid ihr (schon) dazu gekommen",
+    "hatten sie (schon) (mal) (die) gelegenheit",
+    "hattest du (schon) (mal) (die) gelegenheit",
+    "hattest du (schon) zeit",
+    "hatten sie (schon) zeit",
+    "konnten sie (schon)",
+    "konntest du (schon)",
+    "hast du (schon) zeit gehabt",
+    "haben sie (schon) zeit gehabt",
+    "hast du (schon) (die) gelegenheit gehabt",
+    "haben sie (schon) (die) gelegenheit gehabt"
+   ]
+  },
+  "ENG_CHUNK_0725": {
+   "fn": "request",
+   "accept": [
+    "am besten nimmst du",
+    "du nimmst am besten",
+    "nimmst du besser",
+    "du nimmst besser",
+    "fährst du besser",
+    "du fährst besser",
+    "es wäre besser (für dich) (wenn)",
+    "du solltest (lieber) (besser)",
+    "sie sollten (lieber) (besser)",
+    "am besten nehmen sie",
+    "nimm (doch) lieber",
+    "nimm (doch) besser",
+    "nimm am besten",
+    "fahr (doch) lieber",
+    "fahr am besten",
+    "du nimmst lieber",
+    "besser dran"
+   ],
+   "t": "Es wäre besser, wenn du [Satz] / Du nimmst besser [Nomen]"
+  },
+  "ENG_CHUNK_0726": {
+   "fn": "request",
+   "accept": [
+    "könntest du (mich) (vielleicht) (eventuell)",
+    "könnten sie (mich) (vielleicht) (eventuell)",
+    "wäre es (vielleicht) (eventuell) möglich (dass)",
+    "besteht die möglichkeit dass",
+    "würdest du (mich) (vielleicht) (eventuell)",
+    "würden sie (mich) (vielleicht) (eventuell)",
+    "kannst du (mich) eventuell",
+    "hättest du (vielleicht) (eventuell) zeit",
+    "hätten sie (vielleicht) (eventuell) zeit",
+    "kannst du (mich) vielleicht",
+    "wäre es dir (vielleicht) (eventuell) möglich",
+    "wäre es ihnen (vielleicht) (eventuell) möglich"
+   ]
+  },
+  "ENG_CHUNK_0728": {
+   "fn": "agree"
+  },
+  "ENG_CHUNK_0729": {
+   "fn": "react",
+   "t": "Man wird nicht jeden Tag [Alter] / So was passiert nicht jeden Tag"
+  },
+  "ENG_CHUNK_0734": {
+   "fn": "hedge"
+  },
+  "ENG_CHUNK_0735": {
+   "fn": "argue",
+   "accept": [
+    "es geht (hier) (mir) nicht um",
+    "es geht (hier) (mir) nicht ums",
+    "geht (doch) nicht um",
+    "geht (doch) nicht ums",
+    "geht es (mir) (doch) nicht um",
+    "geht's (mir) (doch) nicht um",
+    "um [x] geht es (doch) (mir) (hier) nicht",
+    "ums [x] geht es (doch) (mir) (hier) nicht"
+   ]
+  },
+  "ENG_CHUNK_0736": {
+   "fn": "formal"
+  },
+  "ENG_CHUNK_0740": {
+   "fn": "discuss",
+   "accept": [
+    "auf dem gleichen stand",
+    "auf demselben stand",
+    "uns einig sind",
+    "uns einig",
+    "einer meinung",
+    "dasselbe meinen",
+    "das gleiche meinen",
+    "auf einer linie",
+    "über dasselbe reden",
+    "vom gleichen reden"
+   ]
+  },
+  "ENG_CHUNK_0741": {
+   "fn": "argue",
+   "accept": [
+    "gepfuscht",
+    "pfuschen",
+    "an der falschen stelle gespart",
+    "an der falschen stelle sparen",
+    "schlampig gearbeitet",
+    "geschlampt",
+    "am falschen ende gespart",
+    "am falschen ende sparen",
+    "nachlässig gearbeitet",
+    "murks gemacht"
+   ]
+  },
+  "ENG_CHUNK_0749": {
+   "fn": "social",
+   "accept": [
+    "spontan entscheiden",
+    "entscheiden (einfach) spontan",
+    "schauen wie es läuft",
+    "(einfach) mal schauen",
+    "mal sehen",
+    "wir gucken mal",
+    "wir schauen (einfach) mal",
+    "spontan",
+    "auf uns zukommen",
+    "mal gucken",
+    "wir sehen (dann) (einfach) (mal) weiter"
+   ]
+  },
+  "ENG_CHUNK_0753": {
+   "fn": "collocation"
+  },
+  "ENG_CHUNK_0758": {
+   "fn": "collocation",
+   "accept": [
+    "brüte [x] aus",
+    "ausbrüten",
+    "ich werde krank",
+    "ich werd krank",
+    "ich bekomme",
+    "ich krieg",
+    "ich kriege",
+    "im anmarsch",
+    "eingefangen",
+    "bahnt sich [x] an",
+    "ich hole mir",
+    "ich hol mir",
+    "ich bekomm"
+   ]
+  },
+  "ENG_CHUNK_0765": {
+   "fn": "react",
+   "accept": [
+    "sich mit [x] abfinden",
+    "abfinden",
+    "damit klarkommen",
+    "damit klarzukommen",
+    "kommt [x] damit klar",
+    "verarbeiten",
+    "akzeptieren",
+    "verkraften",
+    "verkraftet",
+    "daran zu knabbern",
+    "dran zu knabbern",
+    "abzufinden",
+    "verarbeitet",
+    "zu verarbeiten"
+   ],
+   "ex": "Er hat immer noch daran zu knabbern, dass er seinen Job verloren hat.",
+   "n": "an etwas zu knabbern haben = struggle to get over it; daran, dass …: verb last. sich mit etwas abfinden = resign yourself to it.",
+   "t": "sich mit [Nomen] abfinden / an [Nomen] zu knabbern haben / [Nomen] verarbeiten"
+  },
+  "ENG_CHUNK_0770": {
+   "fn": "agree",
+   "accept": [
+    "wenn du meinst",
+    "wenn sie meinen",
+    "wenn ihr meint",
+    "wenn du (das) (es) sagst",
+    "wenn du's sagst",
+    "wenn sie (das) (es) sagen"
+   ]
+  },
+  "ENG_CHUNK_0773": {
+   "fn": "hedge",
+   "accept": [
+    "wenn ich's mir (recht) (so) überlege",
+    "wenn ich (es) mir (recht) (so) überlege",
+    "jetzt wo ich (so) (darüber) (drüber) nachdenke",
+    "wenn ich (so) (darüber) (drüber) nachdenke",
+    "jetzt wo du (es) sagst",
+    "jetzt wo du's sagst",
+    "jetzt wo sie (es) sagen",
+    "wo ich gerade (so) (darüber) (drüber) nachdenke",
+    "mir fällt (gerade) (da) ein",
+    "fällt mir (gerade) ein"
+   ]
+  },
+  "ENG_CHUNK_0775": {
+   "fn": "hedge",
+   "accept": [
+    "korrigier mich (bitte) wenn ich (falsch liege) (mich irre)",
+    "korrigiere mich (bitte) wenn ich (falsch liege) (mich irre)",
+    "korrigieren sie mich (bitte) wenn ich (falsch liege) (mich irre)",
+    "korrigiert mich (bitte) wenn ich (falsch liege) (mich irre)",
+    "verbessere mich wenn ich",
+    "wenn ich mich nicht irre",
+    "wenn ich mich nicht täusche",
+    "korrigier mich (bitte) falls ich",
+    "korrigiere mich (bitte) falls ich",
+    "korrigieren sie mich (bitte) falls ich"
+   ]
+  },
+  "ENG_CHUNK_0776": {
+   "fn": "opinion",
+   "accept": [
+    "(nur) damit das klar ist",
+    "fürs protokoll",
+    "nur zur info",
+    "nur zur information",
+    "nur dass du's weißt",
+    "nur dass du (es) weißt",
+    "nur dass sie (es) wissen",
+    "nur dass das klar ist",
+    "(nur) damit du (es) weißt",
+    "(nur) damit du's weißt",
+    "(nur) damit sie (es) wissen",
+    "zur klarstellung"
+   ]
+  },
+  "ENG_CHUNK_0779": {
+   "fn": "hedge",
+   "accept": [
+    "ich denk (nur) (mal) laut (nach)",
+    "ich denke (nur) (mal) laut (nach)",
+    "ich überleg (nur) (mal) laut",
+    "ich überlege (nur) (mal) laut",
+    "ich überleg (ja) nur",
+    "ich überlege (ja) nur",
+    "nur (so) ein gedanke",
+    "nur (so) eine idee",
+    "ich spinn (nur) (mal) (ein bisschen) rum",
+    "ich spinne (nur) (mal) (ein bisschen) rum"
+   ]
+  },
+  "ENG_CHUNK_0780": {
+   "fn": "hedge",
+   "accept": [
+    "spontan würde ich sagen",
+    "spontan",
+    "aus dem stegreif",
+    "auf die schnelle",
+    "auf anhieb",
+    "aus dem bauch (heraus) (raus)",
+    "ohne nachzuschauen",
+    "grob geschätzt",
+    "aus dem kopf",
+    "schätzungsweise",
+    "ich schätze mal",
+    "ich würde (jetzt) (mal) schätzen"
+   ]
+  },
+  "ENG_CHUNK_0784": {
+   "fn": "social",
+   "accept": [
+    "das ist (doch) das mindeste",
+    "das mindeste",
+    "gern geschehen",
+    "gerne geschehen",
+    "nicht der rede wert",
+    "das ist (doch) selbstverständlich",
+    "das war (doch) selbstverständlich",
+    "keine ursache",
+    "nichts zu danken",
+    "gern doch"
+   ]
+  },
+  "ENG_CHUNK_0785": {
+   "fn": "social",
+   "accept": [
+    "ich will dich nicht (länger) (weiter) aufhalten",
+    "ich will sie nicht (länger) (weiter) aufhalten",
+    "ich will euch nicht (länger) (weiter) aufhalten",
+    "ich möchte sie nicht (länger) aufhalten",
+    "ich halte dich nicht länger auf",
+    "ich halte sie nicht länger auf",
+    "ich lass dich dann (mal)",
+    "ich lasse dich dann (mal)",
+    "ich lass dich (dann) jetzt (mal)",
+    "ich lasse dich (dann) jetzt (mal)",
+    "ich will dich nicht (länger) (weiter) stören",
+    "ich will sie nicht (länger) (weiter) stören",
+    "ich möchte dich nicht (länger) aufhalten"
+   ]
+  },
+  "ENG_CHUNK_0786": {
+   "fn": "social",
+   "accept": [
+    "lass (mal) (wieder) von dir hören",
+    "lassen sie (mal) (wieder) von sich hören",
+    "lasst (mal) (wieder) von euch hören",
+    "meld dich (mal) (wieder)",
+    "melde dich (mal) (wieder)",
+    "melden sie sich (mal) (wieder)",
+    "meldet euch (mal) (wieder)",
+    "lass dich (mal) (wieder) blicken",
+    "lassen sie sich (mal) (wieder) blicken",
+    "lass uns in kontakt bleiben",
+    "bleib in kontakt"
+   ]
+  },
+  "ENG_CHUNK_0789": {
+   "fn": "react",
+   "accept": [
+    "jetzt reicht's",
+    "jetzt reicht es",
+    "mir reicht's",
+    "mir reicht es",
+    "das fass zum überlaufen",
+    "jetzt ist (endgültig) schluss",
+    "das war's jetzt",
+    "jetzt ist das maß voll",
+    "die nase (endgültig) voll"
+   ]
+  },
+  "ENG_CHUNK_0790": {
+   "fn": "react",
+   "accept": [
+    "typisch",
+    "so ein pech",
+    "na toll",
+    "war (ja) klar",
+    "immer ich",
+    "so ist das immer bei mir",
+    "na super",
+    "na prima"
+   ]
+  },
+  "ENG_CHUNK_0792": {
+   "fn": "concede",
+   "accept": [
+    "andererseits",
+    "auf der anderen seite",
+    "allerdings",
+    "dafür",
+    "wobei"
+   ]
+  },
+  "ENG_CHUNK_0793": {
+   "fn": "concede",
+   "accept": [
+    "trotzdem",
+    "dennoch",
+    "trotz allem",
+    "trotz alledem"
+   ],
+   "ex": "Es ist nur ein kleiner Schnitt. Trotzdem solltest du ihn desinfizieren."
+  },
+  "ENG_CHUNK_0794": {
+   "fn": "argue",
+   "ex": "Die Wohnung ist riesig, ganz abgesehen davon, dass sie nur ein paar Minuten von meiner Arbeit entfernt ist.",
+   "accept": [
+    "ganz zu schweigen von",
+    "(ganz) abgesehen davon (dass)",
+    "ganz zu schweigen davon dass",
+    "und außerdem",
+    "und dazu noch",
+    "nicht zu vergessen",
+    "und obendrein",
+    "und noch dazu",
+    "noch dazu",
+    "von [x] ganz zu schweigen"
+   ]
+  },
+  "ENG_CHUNK_0795": {
+   "fn": "narrate",
+   "accept": [
+    "und tatsächlich",
+    "und prompt",
+    "tatsächlich",
+    "prompt",
+    "wie erwartet",
+    "und natürlich",
+    "und wirklich",
+    "und siehe da"
+   ]
+  },
+  "ENG_CHUNK_0796": {
+   "fn": "argue",
+   "t": "Ein Grund mehr, [zu + Infinitiv] / Umso mehr Grund, [zu + Infinitiv]",
+   "ex": "Du hast Geburtstag? Ein Grund mehr zu feiern!",
+   "accept": [
+    "ein grund mehr",
+    "umso mehr grund",
+    "um so mehr grund",
+    "dann erst recht",
+    "erst recht",
+    "noch ein grund (mehr)"
+   ]
+  },
+  "ENG_CHUNK_0801": {
+   "fn": "argue",
+   "accept": [
+    "nur weil",
+    "heißt das (noch) (lange) nicht (dass)",
+    "heißt (noch) (lange) nicht (dass)",
+    "bedeutet das (noch) (lange) nicht (dass)",
+    "bedeutet (noch) (lange) nicht (dass)",
+    "bloß weil"
+   ]
+  },
+  "ENG_CHUNK_0802": {
+   "fn": "agree"
+  },
+  "ENG_CHUNK_0805": {
+   "fn": "react",
+   "ex": "Man sollte meinen, ein so teures Hotel hätte vernünftiges WLAN.",
+   "n": "Without dass the clause keeps main-clause order, often in Konjunktiv II (hätte); with dass the verb goes last.",
+   "t": "Man sollte meinen, dass [Satz] / Man könnte meinen, [Satz]",
+   "accept": [
+    "man würde (ja) denken",
+    "man sollte (doch) denken",
+    "man würde (doch) meinen",
+    "man könnte meinen",
+    "man möchte meinen",
+    "(eigentlich) sollte man denken",
+    "man sollte (doch) (eigentlich) meinen",
+    "man sollte (doch) (eigentlich) annehmen",
+    "man sollte (doch) erwarten",
+    "eigentlich müsste"
+   ]
+  },
+  "ENG_CHUNK_0807": {
+   "fn": "react",
+   "accept": [
+    "sag (mir) (bloß) (jetzt) (nur) nicht dass",
+    "sag bloß",
+    "sagen sie (mir) (bloß) (jetzt) nicht dass",
+    "sagt (mir) (bloß) (jetzt) nicht dass",
+    "erzähl mir (bloß) (jetzt) nicht dass",
+    "doch nicht etwa",
+    "du hast doch nicht (etwa)"
+   ]
+  },
+  "ENG_CHUNK_0809": {
+   "fn": "hedge",
+   "accept": [
+    "ich dachte (eigentlich)",
+    "ich war der meinung (dass)",
+    "ich war der auffassung (dass)",
+    "ich hatte den eindruck (dass)",
+    "ich ging davon aus (dass)",
+    "ich bin davon ausgegangen (dass)",
+    "ich hab gedacht",
+    "ich habe gedacht",
+    "ich hatte das gefühl (dass)",
+    "ich hatte verstanden (dass)",
+    "ich hab das so verstanden"
+   ]
+  },
+  "ENG_CHUNK_0810": {
+   "fn": "react",
+   "accept": [
+    "ich hätte schwören können (dass)",
+    "hätte schwören können",
+    "ich war mir (ganz) (so) sicher (dass)",
+    "ich war (mir) hundertprozentig sicher",
+    "ich hätte (darauf) (drauf) wetten können",
+    "ich war fest (davon) überzeugt (dass)"
+   ]
+  },
+  "ENG_CHUNK_0811": {
+   "fn": "probability",
+   "accept": [
+    "ich nehme an (dass)",
+    "ich nehme (mal) an",
+    "ich vermute (mal)",
+    "ich schätze (mal)",
+    "ich gehe davon aus (dass)",
+    "anscheinend",
+    "offenbar",
+    "wohl",
+    "(es) sieht so aus als"
+   ]
+  },
+  "ENG_CHUNK_0813": {
+   "fn": "narrate",
+   "accept": [
+    "ist mir (plötzlich) eingefallen",
+    "mir ist (plötzlich) eingefallen",
+    "fiel mir (plötzlich) ein",
+    "mir wurde (plötzlich) klar",
+    "wurde mir (plötzlich) klar",
+    "(ist) mir (plötzlich) klar geworden",
+    "dämmerte (es) mir",
+    "ist mir (plötzlich) aufgefallen",
+    "merkte ich",
+    "habe ich gemerkt",
+    "hab ich gemerkt",
+    "ich habe gemerkt",
+    "wurde mir bewusst",
+    "ist mir bewusst geworden",
+    "fiel mir auf"
+   ]
+  },
+  "ENG_CHUNK_0814": {
+   "fn": "opinion",
+   "accept": [
+    "im leben gibt es (noch) mehr als",
+    "das leben ist (doch) mehr als (nur)",
+    "ist (doch) mehr als nur",
+    "es gibt (noch) wichtigere dinge (im leben) als",
+    "es gibt (noch) mehr als (nur)",
+    "es gibt (doch) (noch) mehr im leben als",
+    "es gibt (doch) (noch) wichtigeres (im leben) als",
+    "das leben besteht (doch) nicht nur aus"
+   ]
+  },
+  "ENG_CHUNK_0815": {
+   "fn": "probability",
+   "accept": [
+    "es würde mich nicht wundern (wenn)",
+    "würde mich nicht wundern",
+    "würde mich nicht überraschen",
+    "mich würde es nicht wundern",
+    "mich würde es nicht überraschen",
+    "ich wäre nicht überrascht (wenn)",
+    "es wundert mich nicht wenn",
+    "wundern würde (es) mich nicht"
+   ]
+  },
+  "ENG_CHUNK_0816": {
+   "fn": "probability"
+  },
+  "ENG_CHUNK_0817": {
+   "fn": "probability"
+  },
+  "ENG_CHUNK_0818": {
+   "fn": "probability",
+   "accept": [
+    "was weiß ich",
+    "wer weiß",
+    "keine ahnung",
+    "es kann (gut) (auch) sein dass",
+    "gut möglich dass",
+    "könnte (auch) sein dass",
+    "kann (gut) (auch) sein dass"
+   ]
+  },
+  "ENG_CHUNK_0819": {
+   "fn": "probability",
+   "accept": [
+    "man weiß nie",
+    "man kann nie wissen",
+    "das weiß man nie",
+    "man kann nicht sagen",
+    "wer weiß",
+    "keine ahnung",
+    "nicht abzusehen",
+    "man kann nicht vorhersagen",
+    "man weiß nicht",
+    "es lässt sich nicht sagen"
+   ]
+  },
+  "ENG_CHUNK_0820": {
+   "fn": "agree",
+   "accept": [
+    "was hat [x] mit [x] zu tun",
+    "was hat [x] damit zu tun",
+    "was hat das damit zu tun",
+    "was hat [x] zu tun",
+    "was spielt [x] (denn) für eine rolle",
+    "was tut [x] zur sache"
+   ]
+  },
+  "ENG_CHUNK_0822": {
+   "fn": "react",
+   "accept": [
+    "das glaub ich erst (wenn)",
+    "das glaube ich erst (wenn)",
+    "ich glaub es erst (wenn)",
+    "erst wenn ich (es) sehe",
+    "das will ich sehen",
+    "das muss ich erst sehen",
+    "ich glaub's (erst) wenn",
+    "ich glaube es (erst) wenn",
+    "das glaub ich (erst) wenn",
+    "wer's glaubt wird selig"
+   ]
+  },
+  "ENG_CHUNK_0825": {
+   "fn": "hedge",
+   "accept": [
+    "ich beschwere mich (ja) nicht gern",
+    "ich [x] (ja) nicht gern",
+    "ich [x] (ja) nicht gerne",
+    "ich [x] (eigentlich) nicht gern",
+    "ich bin (ja) (eigentlich) nicht der typ der",
+    "ich bin (ja) (eigentlich) keiner der",
+    "ich bin (ja) (eigentlich) nicht jemand der",
+    "normalerweise [x] ich (ja) nicht",
+    "ich will mich (ja) nicht beschweren",
+    "ich will (ja) nicht meckern"
+   ]
+  },
+  "ENG_CHUNK_0828": {
+   "fn": "opinion",
+   "accept": [
+    "es gibt keine entschuldigung dafür",
+    "keine entschuldigung (dafür) (für)",
+    "es gibt keine ausrede (dafür) (für)",
+    "keine ausrede (dafür) (für)",
+    "ist unentschuldbar",
+    "nicht zu entschuldigen",
+    "durch nichts zu entschuldigen",
+    "es gibt keinen grund (dafür)",
+    "nicht zu rechtfertigen",
+    "durch nichts zu rechtfertigen"
+   ]
+  },
+  "ENG_CHUNK_0830": {
+   "fn": "react"
+  },
+  "ENG_CHUNK_0833": {
+   "fn": "conclude",
+   "accept": [
+    "man kann wohl sagen",
+    "man kann mit sicherheit sagen",
+    "man darf (wohl) sagen",
+    "man kann behaupten",
+    "es ist klar dass",
+    "man kann (ruhig) (getrost) (sicher) (schon) (wohl) sagen",
+    "das kann man (wohl) (schon) sagen"
+   ]
+  },
+  "ENG_CHUNK_0846": {
+   "fn": "collocation"
+  },
+  "ENG_CHUNK_0847": {
+   "fn": "collocation",
+   "accept": [
+    "dampf ablassen",
+    "dampf abzulassen",
+    "stress abbauen",
+    "stress abzubauen",
+    "abreagieren",
+    "abzureagieren",
+    "den kopf frei (zu) (kriegen) (bekommen)",
+    "abzuschalten",
+    "runterzukommen"
+   ]
+  },
+  "ENG_CHUNK_0849": {
+   "fn": "react",
+   "accept": [
+    "damit hab ich nicht gerechnet",
+    "damit (habe) (hab) (hätte) ich (echt) (gar) (überhaupt) nicht gerechnet",
+    "das (habe) (hab) (hätte) ich nicht kommen sehen",
+    "hab ich nicht mit gerechnet",
+    "das hätte ich nicht gedacht",
+    "das kam (echt) unerwartet",
+    "das (habe) (hab) (hätte) ich nicht erwartet",
+    "hätte ich nicht gedacht"
+   ]
+  },
+  "ENG_CHUNK_0855": {
+   "fn": "agree",
+   "accept": [
+    "einer meinung sein",
+    "einer meinung",
+    "gleicher meinung",
+    "derselben meinung",
+    "einig",
+    "auf einer wellenlänge",
+    "gleicher ansicht",
+    "derselben ansicht"
+   ]
+  },
+  "ENG_CHUNK_0856": {
+   "fn": "people",
+   "accept": [
+    "mich gut mit [x] verstehen",
+    "verstehe mich (immer noch) (noch) gut mit",
+    "verstehe mich [x] gut mit",
+    "ein gutes verhältnis (zu) (mit)",
+    "guten kontakt (zu) (mit)",
+    "komme [x] gut mit [x] klar",
+    "komme gut mit [x] klar",
+    "verstehen uns (immer noch) (noch) gut",
+    "verstehe ich mich (immer noch) (noch) gut",
+    "einen guten draht zu"
+   ]
+  },
+  "ENG_CHUNK_0858": {
+   "fn": "agree",
+   "accept": [
+    "entgegenkommen",
+    "mir [x] entgegenkommen",
+    "kommen sie mir [x] entgegen",
+    "kommen sie mir entgegen",
+    "kommst du mir [x] entgegen",
+    "kommst du mir entgegen",
+    "in der mitte treffen",
+    "einen kompromiss",
+    "in der mitte einigen"
+   ]
+  },
+  "ENG_CHUNK_0862": {
+   "fn": "people",
+   "accept": [
+    "kommt nach",
+    "kommt [x] nach",
+    "nach [x] geraten",
+    "ähnelt",
+    "ganz der vater",
+    "ganz die mutter",
+    "ganz der papa",
+    "schlägt [x] nach",
+    "schlägt nach",
+    "hat viel von"
+   ]
+  },
+  "ENG_CHUNK_0863": {
+   "fn": "people",
+   "accept": [
+    "das liegt in der familie",
+    "liegt (bei uns) in der familie",
+    "in der familie",
+    "das ist erblich",
+    "liegt in den genen",
+    "familiär bedingt",
+    "in den genen",
+    "das ist genetisch"
+   ]
+  },
+  "ENG_CHUNK_0865": {
+   "fn": "people",
+   "accept": [
+    "mich [x] überredet",
+    "überredet",
+    "überreden",
+    "überredeten",
+    "mich [x] beschwatzt",
+    "beschwatzt",
+    "mich dazu gebracht",
+    "breitgeschlagen",
+    "mich zum [x] gebracht"
+   ]
+  },
+  "ENG_CHUNK_0866": {
+   "fn": "opinion"
+  },
+  "ENG_CHUNK_0868": {
+   "fn": "discuss",
+   "accept": [
+    "moment (mal) damit ich (das) richtig verstehe",
+    "damit ich (das) (auch) richtig verstehe",
+    "hab ich (das) richtig verstanden",
+    "habe ich (das) richtig verstanden",
+    "verstehe ich (das) richtig",
+    "versteh ich (das) richtig",
+    "noch mal zum mitschreiben",
+    "dass ich (das) (auch) richtig verstehe",
+    "sehe ich (das) richtig",
+    "seh ich (das) richtig"
+   ]
+  },
+  "ENG_CHUNK_0870": {
+   "fn": "agree",
+   "accept": [
+    "das würd ich (so) nicht sagen",
+    "das ist (ein bisschen) übertrieben",
+    "übertreib (mal) nicht",
+    "so weit würde ich (jetzt) nicht gehen",
+    "so weit würd ich (jetzt) nicht gehen",
+    "ich würde (jetzt) nicht so weit gehen",
+    "das würde ich (jetzt) (so) nicht sagen"
+   ]
+  },
+  "ENG_CHUNK_0871": {
+   "fn": "agree"
+  },
+  "ENG_CHUNK_0874": {
+   "fn": "agree",
+   "accept": [
+    "punkt für dich",
+    "guter punkt",
+    "verstanden",
+    "angekommen",
+    "ich hab's kapiert",
+    "(du) hast (ja) (schon) recht",
+    "sie haben (ja) (schon) recht",
+    "ihr habt (ja) (schon) recht",
+    "recht hast du"
+   ]
+  },
+  "ENG_CHUNK_0875": {
+   "fn": "concede",
+   "accept": [
+    "zugegeben",
+    "das muss man zugeben",
+    "das muss ich zugeben",
+    "das gebe ich zu",
+    "das geb ich zu",
+    "da haben sie recht",
+    "da hast du recht",
+    "das muss ich (dir) (ihnen) lassen",
+    "das stimmt (schon)",
+    "zugegebenermaßen"
+   ]
+  },
+  "ENG_CHUNK_0876": {
+   "fn": "discuss",
+   "accept": [
+    "hör (bitte) (erst) (mal) zu",
+    "lass mich (bitte) (erst) (mal) ausreden",
+    "lassen sie mich (bitte) (erst) (mal) ausreden",
+    "lasst mich (bitte) (erst) (mal) ausreden",
+    "hör mir (doch) (bitte) (einfach) (erst) (mal) zu",
+    "hören sie mir (doch) (bitte) (einfach) (erst) (mal) zu",
+    "hört mir (doch) (bitte) (einfach) (erst) (mal) zu",
+    "hör dir das (doch) (einfach) (erst) (mal) an"
+   ]
+  },
+  "ENG_CHUNK_0877": {
+   "fn": "discuss",
+   "accept": [
+    "wie geht's (jetzt) (nun) weiter",
+    "wie geht es (jetzt) (nun) weiter",
+    "was machen wir jetzt",
+    "was nun",
+    "wie machen wir (jetzt) weiter",
+    "und was jetzt",
+    "und jetzt",
+    "was machen wir (denn) (nun)",
+    "wie soll es (jetzt) (nun) weitergehen"
+   ]
+  },
+  "ENG_CHUNK_0878": {
+   "fn": "discuss",
+   "accept": [
+    "merk dir das (mal) (kurz)",
+    "merke dir das (mal) (kurz)",
+    "merken sie sich das (mal) (kurz)",
+    "merkt euch das (mal) (kurz)",
+    "halt den gedanken fest",
+    "halte den gedanken fest",
+    "behalt den gedanken",
+    "behalte den gedanken",
+    "halt den gedanken (mal) (kurz) fest",
+    "merk dir (mal) (kurz) was du"
+   ]
+  },
+  "ENG_CHUNK_0879": {
+   "fn": "discuss",
+   "accept": [
+    "jetzt bist du dran",
+    "du bist dran",
+    "sie sind dran",
+    "ihr seid dran",
+    "ich gebe (weiter) an",
+    "ich übergebe an",
+    "ich gebe ab an",
+    "ich übergebe das wort an",
+    "du hast das wort",
+    "sie haben das wort"
+   ]
+  },
+  "ENG_CHUNK_0880": {
+   "fn": "agree",
+   "accept": [
+    "so gefällt mir das",
+    "so gefällt's mir",
+    "das lässt sich hören",
+    "das klingt (schon) (doch) (sehr) gut",
+    "das hört sich (schon) (doch) gut an",
+    "da bin ich dabei",
+    "das ist (doch) (mal) ein wort",
+    "jetzt kommen wir der sache (schon) näher",
+    "klingt (doch) (sehr) gut"
+   ]
+  },
+  "ENG_CHUNK_0886": {
+   "fn": "social"
+  },
+  "ENG_CHUNK_0887": {
+   "fn": "social",
+   "accept": [
+    "toi toi toi",
+    "klopf auf holz",
+    "auf holz klopfen",
+    "klopfen auf holz",
+    "unberufen",
+    "klopfe auf holz"
+   ]
+  },
+  "ENG_CHUNK_0888": {
+   "fn": "social",
+   "accept": [
+    "ich möchte (gern) (gerne) einen toast ausbringen",
+    "einen toast ausbringen",
+    "einen toast (auf) [x] ausbringen",
+    "einen toast (auf) [x] aussprechen",
+    "das glas [x] erheben",
+    "das glas erheben",
+    "lasst uns (auf) [x] anstoßen",
+    "lasst uns anstoßen",
+    "lassen sie uns anstoßen",
+    "mein glas [x] erheben",
+    "mein glas erheben",
+    "die gläser erheben",
+    "einen trinkspruch (auf) [x] ausbringen",
+    "ich möchte (gern) (gerne) auf [x] anstoßen"
+   ]
+  },
+  "ENG_CHUNK_0889": {
+   "fn": "social",
+   "accept": [
+    "darauf trinke ich",
+    "darauf trink ich",
+    "da trinke ich drauf",
+    "da trink ich drauf",
+    "da stoß ich (gern) (gerne) drauf an",
+    "da stoße ich (gern) (gerne) drauf an",
+    "darauf stoße ich (gern) (gerne) an",
+    "prost darauf",
+    "dem schließe ich mich an"
+   ]
+  },
+  "ENG_CHUNK_0891": {
+   "fn": "argue",
+   "accept": [
+    "außerdem",
+    "dazu kommt (dass)",
+    "hinzu kommt (dass)",
+    "zudem",
+    "darüber hinaus",
+    "obendrein",
+    "und noch dazu",
+    "noch dazu",
+    "und das beste"
+   ]
+  },
+  "ENG_CHUNK_0893": {
+   "fn": "argue",
+   "accept": [
+    "geschweige denn",
+    "ganz zu schweigen von",
+    "von [x] ganz zu schweigen",
+    "schon gar nicht",
+    "erst recht nicht",
+    "schon gar keinen",
+    "erst recht keinen"
+   ]
+  },
+  "ENG_CHUNK_0894": {
+   "fn": "request",
+   "accept": [
+    "wo du schon (mal)",
+    "wo du gerade",
+    "da du schon (mal)",
+    "da du gerade",
+    "wenn du schon (mal)",
+    "wenn du gerade",
+    "wo sie schon (mal)",
+    "jetzt wo du",
+    "wo du (ja) (eh) schon",
+    "da du (ja) (eh) schon",
+    "wenn du (ja) (eh) schon",
+    "weil du (ja) (eh) schon"
+   ]
+  },
+  "ENG_CHUNK_0896": {
+   "fn": "hedge",
+   "accept": [
+    "eher im gegenteil",
+    "im gegenteil",
+    "wenn überhaupt",
+    "wenn dann",
+    "eher sogar"
+   ]
+  },
+  "ENG_CHUNK_0897": {
+   "fn": "hedge"
+  },
+  "ENG_CHUNK_0900": {
+   "fn": "concede",
+   "accept": [
+    "und trotzdem",
+    "und dennoch",
+    "aber trotzdem",
+    "trotzdem",
+    "dennoch",
+    "und doch",
+    "und dabei"
+   ]
+  },
+  "ENG_CHUNK_0901": {
+   "fn": "request",
+   "accept": [
+    "hätten sie zufällig",
+    "hättest du zufällig",
+    "hättet ihr zufällig",
+    "hast du zufällig",
+    "haben sie zufällig",
+    "habt ihr zufällig",
+    "hast du vielleicht",
+    "haben sie vielleicht",
+    "hättest du vielleicht",
+    "hätten sie vielleicht",
+    "hättest du eventuell"
+   ]
+  },
+  "ENG_CHUNK_0902": {
+   "fn": "request",
+   "accept": [
+    "mir wäre es lieber wenn du (nicht)",
+    "mir wäre es lieber wenn sie (nicht)",
+    "mir wäre es lieber wenn ihr (nicht)",
+    "mir wär's lieber wenn",
+    "es wäre mir lieber wenn",
+    "ich hätte es lieber wenn",
+    "ich fände es besser wenn",
+    "ich möchte nicht dass",
+    "wäre mir lieber wenn",
+    "mir wäre lieber wenn",
+    "ich würde es vorziehen wenn",
+    "ich fände es schön wenn"
+   ]
+  },
+  "ENG_CHUNK_0903": {
+   "fn": "request",
+   "accept": [
+    "ich fände es (gut) (besser) (schön) wenn du nicht",
+    "musst du (denn) (eigentlich) immer",
+    "musst du [x] immer",
+    "müssen sie (denn) immer",
+    "es wäre schön wenn du nicht",
+    "könntest du (bitte) aufhören",
+    "ich fände es (gut) (besser) (schön) wenn du [x] nicht",
+    "ich wünschte du würdest",
+    "ich wünschte sie würden",
+    "es wäre schön wenn du [x] nicht",
+    "kannst du (bitte) (mal) aufhören",
+    "lass (doch) (bitte) nicht immer"
+   ]
+  },
+  "ENG_CHUNK_0905": {
+   "fn": "opinion",
+   "accept": [
+    "ist mir tausendmal lieber als",
+    "ist mir [x] lieber als",
+    "ist mir lieber als",
+    "ziehe ich [x] vor",
+    "ich würde [x] jederzeit vorziehen",
+    "jederzeit lieber",
+    "ich nehme [x] jederzeit",
+    "ich ziehe [x] [x] vor",
+    "mir ist [x] lieber als",
+    "lieber [x] als"
+   ]
+  },
+  "ENG_CHUNK_0910": {
+   "fn": "request",
+   "accept": [
+    "interpretier (da) nicht zu viel (in) (hinein) (rein)",
+    "interpretiere (da) nicht zu viel",
+    "interpretieren sie (da) nicht zu viel",
+    "nicht zu viel (hinein) (rein) interpretieren",
+    "nicht zu viel reininterpretieren",
+    "nicht zu viel hineininterpretieren",
+    "mach dir (da) (deswegen) keinen kopf",
+    "denk nicht zu viel darüber nach",
+    "interpretier (da) nichts",
+    "hat (bestimmt) (sicher) nichts zu bedeuten",
+    "denk nicht zu viel drüber nach"
+   ]
+  },
+  "ENG_CHUNK_0915": {
+   "fn": "opinion",
+   "accept": [
+    "ich bin nicht für [x] geschaffen",
+    "ich bin nicht dafür geschaffen",
+    "ich bin dafür nicht geschaffen",
+    "ist nichts für mich",
+    "das liegt mir nicht",
+    "liegt mir nicht",
+    "ich bin (einfach) nicht der typ dafür",
+    "ich bin dafür nicht gemacht",
+    "ich bin nicht dafür gemacht",
+    "dafür bin ich (einfach) nicht geschaffen",
+    "dafür bin ich (einfach) nicht gemacht"
+   ]
+  },
+  "ENG_CHUNK_0918": {
+   "fn": "react",
+   "accept": [
+    "ich bringe es nicht übers herz",
+    "nicht übers herz",
+    "ich schaffe es (einfach) nicht",
+    "ich schaff es (einfach) nicht",
+    "ich bring's (einfach) nicht fertig",
+    "ich bringe es (einfach) nicht fertig",
+    "ich kann mich (einfach) nicht (dazu) überwinden",
+    "ich kann mich nicht (dazu) durchringen"
+   ]
+  },
+  "ENG_CHUNK_0921": {
+   "fn": "argue",
+   "accept": [
+    "mir bleibt nichts (anderes) übrig",
+    "bleibt mir nichts (anderes) übrig",
+    "ich habe keine (andere) wahl",
+    "ich hab keine (andere) wahl",
+    "habe ich keine (andere) wahl",
+    "hab ich keine (andere) wahl",
+    "ich muss wohl",
+    "ich komme nicht drum herum",
+    "ich komme nicht darum herum",
+    "wohl oder übel"
+   ]
+  },
+  "ENG_CHUNK_0923": {
+   "fn": "react",
+   "t": "Ich bringe es nicht übers Herz, [zu + Infinitiv]",
+   "ex": "Ich bringe es nicht übers Herz, ihm zu sagen, dass sein Essen nicht schmeckt.",
+   "n": "etwas nicht übers Herz bringen = not have the heart to do it. dass: verb last (schmeckt).",
+   "dupOf": "ENG_CHUNK_0918",
+   "accept": [
+    "ich bringe es nicht übers herz",
+    "ich bring's nicht übers herz",
+    "nicht übers herz",
+    "ich (habe) (hab) nicht den mut",
+    "ich trau mich nicht",
+    "ich traue mich nicht",
+    "ich bringe es nicht fertig",
+    "ich bring's nicht fertig"
+   ]
+  },
+  "ENG_CHUNK_0925": {
+   "fn": "formal",
+   "accept": [
+    "ich bin (leider) nicht befugt",
+    "dazu bin ich (leider) nicht befugt",
+    "das kann ich (leider) nicht entscheiden",
+    "das kann ich (leider) nicht genehmigen",
+    "das darf ich (leider) nicht",
+    "ich darf (das) (leider) nicht",
+    "ich bin (leider) nicht berechtigt",
+    "das liegt (leider) nicht in meiner hand",
+    "ich bin (leider) nicht in der lage",
+    "liegt (leider) nicht in meiner befugnis"
+   ]
+  },
+  "ENG_CHUNK_0926": {
+   "fn": "hedge",
+   "accept": [
+    "es steht mir nicht zu",
+    "steht mir nicht zu",
+    "(das) ist nicht meine sache",
+    "es ist nicht meine sache",
+    "das geht mich nichts an",
+    "es ist nicht meine aufgabe",
+    "es ist nicht an mir",
+    "ich habe nicht das recht",
+    "ich hab nicht das recht",
+    "ich habe kein recht (dazu)",
+    "ich mische mich (da) nicht ein"
+   ]
+  },
+  "ENG_CHUNK_0927": {
+   "fn": "opinion",
+   "ex": "Ich müsste lügen, wenn ich sagen würde, ich wäre nicht nervös.",
+   "accept": [
+    "ich müsste lügen",
+    "es wäre gelogen (wenn)",
+    "ich würde lügen",
+    "ich würd lügen",
+    "das wäre gelogen",
+    "ich lüge wenn ich sage",
+    "würde ich lügen",
+    "müsste ich lügen",
+    "wäre das (glatt) gelogen"
+   ],
+   "t": "Ich müsste lügen, wenn ich sagen würde, [Satz] / Es wäre gelogen, wenn ich sagen würde, [Satz]"
+  },
+  "ENG_CHUNK_0931": {
+   "fn": "agree",
+   "accept": [
+    "du glaubst (doch) nicht im ernst",
+    "du glaubst (doch) nicht ernsthaft",
+    "sie glauben (doch) nicht im ernst",
+    "sie glauben (doch) nicht ernsthaft",
+    "ihr glaubt (doch) nicht im ernst",
+    "du denkst (doch) nicht im ernst",
+    "du denkst (doch) nicht ernsthaft",
+    "glaubst du im ernst",
+    "du glaubst (doch) nicht wirklich",
+    "sie glauben (doch) nicht wirklich",
+    "du meinst (doch) nicht im ernst",
+    "glaubst du (etwa) wirklich",
+    "glaubst du (etwa) ernsthaft"
+   ]
+  },
+  "ENG_CHUNK_0942": {
+   "fn": "collocation",
+   "accept": [
+    "kommt mit [x] durch",
+    "mit [x] durchkommen",
+    "damit durchkommen",
+    "ungestraft davon",
+    "kommt [x] ungestraft davon",
+    "kommt (immer) davon",
+    "kommt mit [x] davon",
+    "kann sich alles erlauben",
+    "darf sich alles erlauben"
+   ]
+  },
+  "ENG_CHUNK_0955": {
+   "fn": "collocation"
+  },
+  "ENG_CHUNK_0961": {
+   "fn": "people",
+   "accept": [
+    "die sache geklärt",
+    "die sache klären",
+    "uns ausgesprochen",
+    "alles geklärt",
+    "reinen tisch gemacht",
+    "aus der welt geschafft",
+    "ein klärendes gespräch",
+    "ausgeräumt",
+    "die wogen geglättet",
+    "uns (wieder) vertragen"
+   ]
+  },
+  "ENG_CHUNK_0962": {
+   "fn": "people",
+   "accept": [
+    "trägt [x] nach",
+    "trägt [x] [x] nach",
+    "nachtragen",
+    "nachtragend",
+    "ist [x] sauer auf",
+    "hat [x] nicht verziehen",
+    "ist [x] beleidigt",
+    "ist (immer) noch sauer",
+    "grollt",
+    "eingeschnappt",
+    "nicht vergeben"
+   ]
+  },
+  "ENG_CHUNK_0970": {
+   "fn": "opinion",
+   "t": "Wenn du mich fragst / Falls es dir was hilft",
+   "accept": [
+    "wenn du mich fragst",
+    "wenn sie mich fragen",
+    "nur (so) als meinung",
+    "nur meine meinung",
+    "meiner meinung nach",
+    "falls es dir was hilft",
+    "falls es ihnen was hilft",
+    "falls es dir hilft",
+    "falls es ihnen hilft",
+    "falls es dich tröstet",
+    "ich für meinen teil"
+   ]
+  },
+  "ENG_CHUNK_0980": {
+   "fn": "discuss",
+   "ex": "Okay, ich spiele mal den Advocatus Diaboli: Was ist, wenn es regnet?",
+   "accept": [
+    "lass mich (mal) den advocatus diaboli spielen",
+    "lassen sie mich (mal) den advocatus diaboli spielen",
+    "ich spiele (mal) den advocatus diaboli",
+    "(mal) andersrum gefragt",
+    "ich halte (mal) dagegen",
+    "ich spiele (mal) den anwalt des teufels",
+    "den anwalt des teufels spielen",
+    "ich spiele (mal) den teufelsadvokaten"
+   ]
+  },
+  "ENG_CHUNK_1000": {
+   "fn": "argue",
+   "accept": [
+    "statt zu",
+    "statt",
+    "anstatt zu",
+    "anstatt",
+    "im gegensatz zu",
+    "anstelle von",
+    "lieber als zu",
+    "lieber [x] als",
+    "im gegensatz zum"
+   ]
+  },
+  "ENG_CHUNK_1001": {
+   "fn": "concede",
+   "accept": [
+    "es hat (schon) was [anything] zu",
+    "hat (durchaus) was für sich",
+    "[anything] hat (durchaus) was für sich",
+    "es hat (schon) etwas [anything] zu",
+    "es spricht einiges dafür",
+    "es spricht (schon) einiges für",
+    "hat (durchaus) etwas für sich",
+    "hat (durchaus) (schon) (auch) seinen reiz"
+   ]
+  },
+  "ENG_CHUNK_1005": {
+   "fn": "opinion",
+   "accept": [
+    "ich würde (mal) behaupten",
+    "ich glaube schon dass",
+    "ich möchte meinen",
+    "ich würde (schon) sagen",
+    "ich denke schon dass",
+    "ich hoffe doch dass",
+    "ich würde behaupten",
+    "ich bilde mir ein",
+    "ich glaube doch"
+   ]
+  },
+  "ENG_CHUNK_1013": {
+   "fn": "react",
+   "accept": [
+    "lustig dass du [anything] erwähnst",
+    "lustig dass sie [anything] erwähnen",
+    "witzig dass du [anything] erwähnst",
+    "witzig dass sie [anything] erwähnen",
+    "komisch dass du [anything] erwähnst",
+    "lustig dass du [anything] ansprichst",
+    "lustig dass du von [anything] sprichst",
+    "lustig dass sie von [anything] sprechen",
+    "lustig dass du [anything] sagst",
+    "witzig dass du [anything] sagst",
+    "was für ein zufall"
+   ]
+  },
+  "ENG_CHUNK_1021": {
+   "fn": "opinion",
+   "accept": [
+    "man muss (schon) [anything] sein um",
+    "man müsste (schon) [anything] sein um",
+    "man muss (schon) [anything] sein wenn man",
+    "nur ein [anything] würde",
+    "du müsstest (schon) [anything] sein um",
+    "sie müssten (schon) [anything] sein um",
+    "wer [anything] muss (schon) [anything] sein",
+    "man wäre (ja) [anything]"
+   ]
+  },
+  "ENG_CHUNK_1022": {
+   "fn": "concede",
+   "accept": [
+    "man kann über [anything] sagen was man will",
+    "sag über [anything] was du willst",
+    "sagen sie über [anything] was sie wollen",
+    "sagt über [anything] was ihr wollt",
+    "man kann von [anything] halten was man will",
+    "halt von [anything] was du willst",
+    "egal was man über [anything] sagt",
+    "über [anything] kann man sagen was man will",
+    "von [anything] kann man halten was man will"
+   ]
+  },
+  "ENG_CHUNK_1029": {
+   "fn": "report",
+   "accept": [
+    "man munkelt dass",
+    "man munkelt",
+    "angeblich",
+    "es heißt dass",
+    "es heißt",
+    "gerüchten zufolge",
+    "man sagt dass",
+    "es geht das gerücht (um)",
+    "ich habe gehört (dass)",
+    "ich hab gehört (dass)",
+    "es wird gemunkelt",
+    "man erzählt sich",
+    "es gibt gerüchte"
+   ]
+  },
+  "ENG_CHUNK_1035": {
+   "fn": "argue",
+   "accept": [
+    "es ist eine sache [anything] aber eine (ganz) andere",
+    "es ist eine sache [anything] aber etwas (ganz) anderes",
+    "es ist eine sache [anything] aber was (ganz) anderes",
+    "es ist eine sache [anything] eine andere",
+    "[anything] ist eine sache [anything] eine andere",
+    "es ist das eine [anything] das andere",
+    "ist das eine [anything] das andere"
+   ]
+  },
+  "ENG_CHUNK_1043": {
+   "fn": "people",
+   "accept": [
+    "geben wir ihm (erst mal) einen vertrauensvorschuss",
+    "ihm (erst mal) einen vertrauensvorschuss geben",
+    "einen vertrauensvorschuss",
+    "im zweifel für den angeklagten",
+    "im zweifel für ihn",
+    "gehen wir (erst mal) vom besten aus",
+    "glauben wir ihm erst mal",
+    "geben wir ihm (erst mal) (noch) eine chance",
+    "ihm (erst mal) (noch) eine chance geben",
+    "vertrauen wir ihm (erst mal)"
+   ]
+  },
+  "ENG_CHUNK_1076": {
+   "fn": "agree",
+   "accept": [
+    "so kann man (das) auch sehen",
+    "so kann man (es) auch sehen",
+    "so kann man's auch sehen",
+    "das ist eine sichtweise",
+    "das ist (auch) eine sichtweise",
+    "so gesehen",
+    "auch eine art das zu sehen",
+    "man kann (es) (das) auch so sehen",
+    "man kann's auch so sehen",
+    "eine art (es) (das) zu sehen"
+   ]
+  },
+  "ENG_CHUNK_1077": {
+   "fn": "agree"
+  },
+  "ENG_CHUNK_1080": {
+   "fn": "concede",
+   "accept": [
+    "da habe ich mich geirrt",
+    "da hab ich mich geirrt",
+    "ich habe mich geirrt",
+    "ich hab mich geirrt",
+    "ich nehme alles zurück",
+    "ich nehm alles zurück",
+    "dann lag ich falsch",
+    "da lag ich falsch",
+    "habe ich mich geirrt",
+    "hab ich mich geirrt",
+    "mich vertan",
+    "mich getäuscht",
+    "ich korrigiere mich",
+    "mein fehler"
+   ]
+  },
+  "ENG_CHUNK_1090": {
+   "fn": "react",
+   "accept": [
+    "ein unglück kommt selten allein",
+    "es kommt immer alles auf einmal",
+    "es kommt alles auf einmal",
+    "wenn's kommt dann dicke",
+    "wenn es kommt dann dicke",
+    "es kommt (immer) knüppeldick"
+   ]
+  },
+  "ENG_CHUNK_1096": {
+   "fn": "conclude",
+   "accept": [
+    "(so) wie die dinge stehen",
+    "beim jetzigen stand",
+    "beim derzeitigen stand",
+    "nach jetzigem stand",
+    "nach aktuellem stand",
+    "(so) wie es aussieht",
+    "wie die dinge stehen",
+    "(so) wie es jetzt ist",
+    "stand jetzt",
+    "nach derzeitigem stand",
+    "(so) wie die lage (jetzt) ist"
+   ]
+  },
+  "ENG_CHUNK_1098": {
+   "fn": "hedge",
+   "ex": "Der Job ist schlechter bezahlt, aber nicht weit von zu Hause. Insofern ist er besser.",
+   "accept": [
+    "insofern",
+    "in dieser hinsicht",
+    "in der hinsicht",
+    "so gesehen",
+    "in diesem sinne",
+    "in dem sinne",
+    "insoweit",
+    "von daher"
+   ]
+  },
+  "ENG_CHUNK_1103": {
+   "fn": "argue",
+   "accept": [
+    "ohne [anything] hätte ich",
+    "wenn [anything] nicht gewesen wäre",
+    "wäre [anything] nicht gewesen",
+    "hätte ich [anything] nicht gehabt",
+    "ohne [anything] hätte",
+    "ohne [anything] wäre",
+    "gäbe es [anything] nicht",
+    "wenn ich [anything] nicht gehabt hätte",
+    "wenn es [anything] nicht gäbe"
+   ]
+  },
+  "ENG_CHUNK_1110": {
+   "fn": "react",
+   "accept": [
+    "wird (ja) (aber) (auch) zeit dass",
+    "es wird (auch) zeit dass",
+    "es wird höchste zeit dass",
+    "wird höchste zeit dass",
+    "wird langsam zeit dass",
+    "es ist höchste zeit dass",
+    "es wird (höchste) zeit für"
+   ]
+  },
+  "ENG_CHUNK_1114": {
+   "fn": "opinion",
+   "accept": [
+    "ich lege wert darauf",
+    "ich leg wert darauf",
+    "ich achte darauf",
+    "ich sorge dafür",
+    "mir ist wichtig",
+    "es ist mir wichtig",
+    "ich lege (immer) (großen) wert darauf",
+    "mir ist es wichtig",
+    "grundsätzlich",
+    "ich mache es mir zur regel"
+   ]
+  },
+  "ENG_CHUNK_1117": {
+   "fn": "react",
+   "accept": [
+    "ich will (ja) nicht dass",
+    "ich möchte (ja) nicht dass",
+    "nicht dass du",
+    "ich fände es schade wenn",
+    "ich wollte nicht dass",
+    "es wäre (doch) (echt) schade wenn",
+    "es wäre (doch) (echt) blöd wenn",
+    "ich möchte vermeiden dass"
+   ]
+  },
+  "ENG_CHUNK_1120": {
+   "fn": "react",
+   "t": "Das geschieht [Person, Dativ] recht",
+   "ex": "Er hat den Flug verpasst? Das geschieht ihm recht. Warum ist er auch so spät losgefahren?",
+   "n": "recht geschehen + Dativ. auch in the question = he should have known.",
+   "accept": [
+    "das geschieht ihm recht",
+    "geschieht [anything] recht",
+    "das geschieht [anything] recht",
+    "selbst schuld",
+    "selber schuld",
+    "das hat er davon",
+    "das hat er verdient",
+    "geschieht ihm (ganz) recht",
+    "das hat er sich selbst zuzuschreiben"
+   ]
+  },
+  "ENG_CHUNK_1122": {
+   "fn": "people",
+   "accept": [
+    "kommt (einfach) (natürlich) nie auf die idee",
+    "kommt nie auf den gedanken",
+    "kommt niemals auf die idee",
+    "kommt nicht auf die idee",
+    "käme nie auf die idee",
+    "denkt nie daran",
+    "fällt es nie ein",
+    "es fällt [anything] nie ein",
+    "nie in den sinn"
+   ]
+  },
+  "ENG_CHUNK_1127": {
+   "fn": "formal",
+   "accept": [
+    "habe ich [anything] fertig",
+    "ich habe [anything] fertig",
+    "hab ich [anything] fertig",
+    "ich hab [anything] fertig",
+    "ist [anything] fertig",
+    "bis [anything] ist [anything] fertig",
+    "ich mache [anything] bis [anything] fertig",
+    "ich werde [anything] fertig haben",
+    "ich werde [anything] fertigstellen",
+    "ich stelle [anything] fertig",
+    "kriege [anything] fertig",
+    "krieg [anything] fertig"
+   ]
+  },
+  "ENG_CHUNK_1145": {
+   "fn": "figures",
+   "ex": "Nach Abzug aller Kosten sind wir beim Kuchenverkauf gerade so plus minus null rausgekommen.",
+   "accept": [
+    "plus minus null rausgekommen",
+    "plus minus null herausgekommen",
+    "ohne verlust rausgekommen",
+    "ohne verlust herausgekommen",
+    "bei null rausgekommen",
+    "bei null herausgekommen",
+    "kostendeckend",
+    "die kosten gedeckt",
+    "weder gewinn noch verlust",
+    "kosten gedeckt",
+    "kosten (wieder) reingeholt"
+   ]
+  },
+  "ENG_CHUNK_1164": {
+   "fn": "collocation",
+   "accept": [
+    "setzen ihm (richtig) zu",
+    "setzen [anything] zu",
+    "zehren an ihm",
+    "zehren an [anything]",
+    "macht ihm zu schaffen",
+    "schlauchen ihn",
+    "machen ihm (richtig) (ganz schön) (echt) zu schaffen",
+    "nehmen ihn [anything] mit",
+    "nehmen ihn mit",
+    "gehen ihm (richtig) an die substanz",
+    "belasten ihn"
+   ]
+  },
+  "ENG_CHUNK_1187": {
+   "fn": "react",
+   "accept": [
+    "mal langsam",
+    "freu dich nicht zu früh",
+    "freuen sie sich nicht zu früh",
+    "freut euch nicht zu früh",
+    "nicht so schnell",
+    "immer langsam",
+    "eins nach dem anderen",
+    "nun (mal) langsam",
+    "immer mit der ruhe",
+    "nicht zu früh freuen",
+    "den tag nicht vor dem abend loben"
+   ]
+  },
+  "ENG_CHUNK_1189": {
+   "fn": "react"
+  },
+  "ENG_CHUNK_1192": {
+   "fn": "narrate",
+   "accept": [
+    "und zu allem überfluss",
+    "zu allem überfluss",
+    "und obendrein",
+    "obendrein",
+    "und zu allem übel",
+    "zu allem übel",
+    "und dann auch noch",
+    "und als krönung",
+    "und dann [anything] auch noch",
+    "und als ob das nicht genug wäre",
+    "und zur krönung"
+   ]
+  },
+  "ENG_CHUNK_1193": {
+   "fn": "narrate",
+   "t": "Bei [Nomen] und [Nomen] / Mit [Nomen] und [Nomen]",
+   "ex": "Mit dem Baby und dem Umzug haben wir kaum geschlafen.",
+   "n": "No exact equivalent; mit or bei + Dativ do the job.",
+   "accept": [
+    "mit [anything] und",
+    "bei [anything] und",
+    "wegen [anything] und",
+    "durch [anything] und",
+    "zwischen [anything] und"
+   ]
+  },
+  "ENG_CHUNK_1195": {
+   "fn": "agree"
+  },
+  "ENG_CHUNK_1199": {
+   "fn": "hedge",
+   "accept": [
+    "sozusagen",
+    "gewissermaßen",
+    "quasi",
+    "wenn man so will",
+    "wie man (so) (schön) sagt"
+   ]
+  }
+ }
+}

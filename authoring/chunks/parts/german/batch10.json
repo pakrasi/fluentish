@@ -3,19 +3,31 @@
 "id": "ENG_CHUNK_0901",
 "t": "Hätten Sie zufällig [Nomen]? / Hast du zufällig [Nomen]?",
 "ex": "Hättest du zufällig ein Ladekabel, das ich mir leihen könnte?",
-"n": "zufällig = happen to. Relative clause: verb last (leihen könnte)."
+"n": "zufällig = happen to. Relative clause: verb last (leihen könnte).",
+"fn": "request",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0902",
 "t": "Mir wäre es lieber, wenn du nicht [Verb am Ende]",
 "ex": "Mir wäre es lieber, wenn du im Auto nicht rauchen würdest.",
-"n": "wenn: verb last. Konjunktiv II wäre keeps it polite."
+"n": "wenn: verb last. Konjunktiv II wäre keeps it polite.",
+"fn": "request",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0903",
 "t": "Ich fände es gut, wenn du nicht [Verb am Ende] / Musst du immer [Infinitiv]?",
 "ex": "Musst du deine Schuhe immer im Flur stehen lassen?",
-"n": "Everyday complaint is the rhetorical Musst du immer ...? Ich wünschte, du würdest ... sounds bookish."
+"n": "Everyday complaint is the rhetorical Musst du immer ...? Ich wünschte, du würdest ... sounds bookish.",
+"fn": "request",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0904",
@@ -27,7 +39,11 @@
 "id": "ENG_CHUNK_0905",
 "t": "Mir ist [Nomen] tausendmal lieber als [Nomen]",
 "ex": "Ein ruhiger Abend zu Hause ist mir tausendmal lieber als eine große Party.",
-"n": "lieber sein + Dativ; also: Ich ziehe ... jederzeit ... vor."
+"n": "lieber sein + Dativ; also: Ich ziehe ... jederzeit ... vor.",
+"fn": "opinion",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0906",
@@ -56,7 +72,11 @@
 "id": "ENG_CHUNK_0910",
 "t": "Interpretier nicht zu viel in [Nomen] hinein",
 "ex": "Er hat nicht zurückgeschrieben? Interpretier da nicht zu viel rein.",
-"n": "hineininterpretieren is separable: da ... rein at the end."
+"n": "hineininterpretieren is separable: da ... rein at the end.",
+"fn": "request",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0911",
@@ -85,7 +105,11 @@
 {
 "id": "ENG_CHUNK_0915",
 "t": "Ich bin nicht für [Nomen] geschaffen / [Nomen] ist nichts für mich",
-"ex": "Ich habe ein Jahr lang unterrichtet, aber das ist nichts für mich."
+"ex": "Ich habe ein Jahr lang unterrichtet, aber das ist nichts für mich.",
+"fn": "opinion",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0916",
@@ -102,7 +126,11 @@
 "id": "ENG_CHUNK_0918",
 "t": "Ich bringe es nicht übers Herz, [zu + Infinitiv]",
 "ex": "Ich bringe es nicht übers Herz, seine alten Briefe wegzuwerfen.",
-"n": "zu inside separable verbs: wegzuwerfen."
+"n": "zu inside separable verbs: wegzuwerfen.",
+"fn": "react",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0919",
@@ -118,7 +146,11 @@
 "id": "ENG_CHUNK_0921",
 "t": "Mir bleibt nichts anderes übrig, als [zu + Infinitiv]",
 "ex": "Die Miete ist schon wieder gestiegen, also bleibt mir nichts anderes übrig, als umzuziehen.",
-"n": "also triggers inversion here: also bleibt mir. zu inside: umzuziehen."
+"n": "also triggers inversion here: also bleibt mir. zu inside: umzuziehen.",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0922",
@@ -128,9 +160,14 @@
 },
 {
 "id": "ENG_CHUNK_0923",
-"t": "Ich bringe es nicht übers Herz, [zu + Infinitiv] / Ich hab nicht den Mut, [zu + Infinitiv]",
-"ex": "Ich hab nicht den Mut, ihm zu sagen, dass sein Essen nicht schmeckt.",
-"n": "dass: verb last (schmeckt)."
+"t": "Ich bringe es nicht übers Herz, [zu + Infinitiv]",
+"ex": "Ich bringe es nicht übers Herz, ihm zu sagen, dass sein Essen nicht schmeckt.",
+"n": "etwas nicht übers Herz bringen = not have the heart to do it. dass: verb last (schmeckt).",
+"fn": "react",
+"layer": "b2",
+"dupOf": "ENG_CHUNK_0918",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0924",
@@ -142,19 +179,31 @@
 "id": "ENG_CHUNK_0925",
 "t": "Ich bin leider nicht befugt, [zu + Infinitiv] / Das kann ich leider nicht entscheiden",
 "ex": "Das kann ich leider nicht genehmigen.",
-"n": "befugt = authorised; formal, office register."
+"n": "befugt = authorised; formal, office register.",
+"fn": "formal",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0926",
 "t": "Es steht mir nicht zu, [zu + Infinitiv]",
 "ex": "Es steht mir nicht zu, ihr zu sagen, wie sie ihre Kinder erziehen soll.",
-"n": "wie: verb last (erziehen soll)."
+"n": "wie: verb last (erziehen soll).",
+"fn": "hedge",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0927",
-"t": "Ich würde lügen, wenn ich sagen würde, dass [Satz]",
-"ex": "Ich würde lügen, wenn ich sagen würde, ich wäre nicht nervös gewesen.",
-"n": "Double Konjunktiv II. wenn: verb last (sagen würde)."
+"t": "Ich müsste lügen, wenn ich sagen würde, [Satz] / Es wäre gelogen, wenn ich sagen würde, [Satz]",
+"ex": "Ich müsste lügen, wenn ich sagen würde, ich wäre nicht nervös.",
+"n": "Double Konjunktiv II. wenn: verb last (sagen würde).",
+"fn": "opinion",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0928",
@@ -176,7 +225,11 @@
 "id": "ENG_CHUNK_0931",
 "t": "Du glaubst doch nicht im Ernst, dass [Satz]?",
 "ex": "Du glaubst doch nicht im Ernst, dass wir um sechs da sind?",
-"n": "dass: verb last. doch + im Ernst = incredulity."
+"n": "dass: verb last. doch + im Ernst = incredulity.",
+"fn": "agree",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0932",
@@ -239,7 +292,11 @@
 {
 "id": "ENG_CHUNK_0942",
 "t": "mit [Nomen] durchkommen / ungestraft davonkommen",
-"ex": "Mein kleiner Bruder kommt mit allem durch."
+"ex": "Mein kleiner Bruder kommt mit allem durch.",
+"fn": "collocation",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0943",
@@ -313,7 +370,11 @@
 {
 "id": "ENG_CHUNK_0955",
 "t": "[Nomen] für selbstverständlich halten",
-"ex": "Wir halten sauberes Wasser für selbstverständlich."
+"ex": "Wir halten sauberes Wasser für selbstverständlich.",
+"fn": "collocation",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0956",
@@ -347,13 +408,21 @@
 "id": "ENG_CHUNK_0961",
 "t": "die Sache klären / sich aussprechen",
 "ex": "Wir haben uns lange unterhalten und uns ausgesprochen.",
-"n": "sich aussprechen = talk it out; reflexive + separable."
+"n": "sich aussprechen = talk it out; reflexive + separable.",
+"fn": "people",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0962",
 "t": "[Person] etwas nachtragen / sauer auf [Person] sein",
 "ex": "Sie trägt ihm die Sache mit der Hochzeit immer noch nach.",
-"n": "nachtragen: Dativ person + Akk thing; separable."
+"n": "nachtragen: Dativ person + Akk thing; separable.",
+"fn": "people",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0963",
@@ -396,9 +465,13 @@
 },
 {
 "id": "ENG_CHUNK_0970",
-"t": "Wenn du mich fragst / Nur so als Meinung",
+"t": "Wenn du mich fragst / Falls es dir was hilft",
 "ex": "Wenn du mich fragst, hast du die richtige Entscheidung getroffen.",
-"n": "wenn-clause in position 1: verb follows (hast du)."
+"n": "wenn-clause in position 1: verb follows (hast du).",
+"fn": "opinion",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0971",
@@ -450,7 +523,11 @@
 {
 "id": "ENG_CHUNK_0980",
 "t": "Lass mich mal den Advocatus Diaboli spielen / Mal andersrum gefragt",
-"ex": "Okay, mal andersrum gefragt: Was ist, wenn es regnet?"
+"ex": "Okay, ich spiele mal den Advocatus Diaboli: Was ist, wenn es regnet?",
+"fn": "discuss",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0981",
@@ -564,6 +641,10 @@
 "id": "ENG_CHUNK_1000",
 "t": "im Gegensatz zu [Nomen] / statt [zu + Infinitiv]",
 "ex": "Im Moment miete ich lieber, statt zu kaufen.",
-"n": "im Gegensatz zu + Dativ; statt ... zu + infinitive."
+"n": "im Gegensatz zu + Dativ; statt ... zu + infinitive.",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 }
 ]

@@ -7331,7 +7331,10 @@
    "weinende"
   ],
   "note": "Partizip I = happening now: weinend + -e.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "partizip-als-adjektiv.02",
@@ -7344,7 +7347,10 @@
    "gebrauchtes"
   ],
   "note": "Partizip II = already done: gebraucht + -es.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "partizip-als-adjektiv.03",
@@ -7357,7 +7363,10 @@
    "geöffnete"
   ],
   "note": "Partizip II + -e.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "partizip-als-adjektiv.04",
@@ -7370,7 +7379,10 @@
    "zitternder"
   ],
   "note": "Partizip I; dative feminine without article: -er.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "partizip-als-adjektiv.05",
@@ -7383,7 +7395,10 @@
    "ausgefüllte"
   ],
   "note": "Partizip II of a separable verb + -e.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "partizip-als-adjektiv.06",
@@ -7397,7 +7412,10 @@
    "gestiegenen"
   ],
   "note": "Partizip I (still rising) or II (already risen) + -en.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "partizip-als-adjektiv.07",
@@ -7410,7 +7428,10 @@
    "der gerade ankommende Zug"
   ],
   "note": "ankommen → ankommend + -e.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "partizip-als-adjektiv.08",
@@ -7423,7 +7444,77 @@
    "die geschriebenen Briefe"
   ],
   "note": "Passive meaning → Partizip II.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "partizip-als-adjektiv.09",
+  "concept": "partizip-als-adjektiv",
+  "level": "B2",
+  "kind": "transform",
+  "task": "Replace the relative clause with a participle before the noun.",
+  "prompt": "die Gäste, die gestern angekommen sind",
+  "answer": [
+   "die gestern angekommenen Gäste"
+  ],
+  "note": "angekommen + -en; the extra word (gestern) goes before the participle.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "partizip-als-adjektiv.10",
+  "concept": "partizip-als-adjektiv",
+  "level": "B2",
+  "kind": "transform",
+  "task": "Rewrite as a relative clause.",
+  "prompt": "die vor kurzem renovierte Wohnung",
+  "answer": [
+   "die Wohnung, die vor kurzem renoviert wurde",
+   "die Wohnung, die vor kurzem renoviert worden ist",
+   "die Wohnung, die vor kurzem renoviert worden war",
+   "die Wohnung, die man vor kurzem renoviert hat"
+  ],
+  "note": "Partizip II of a verb with an object = passive: die renoviert wurde.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "partizip-als-adjektiv.11",
+  "concept": "partizip-als-adjektiv",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Write the verb as an adjective with the right ending.",
+  "prompt": "Wir suchen einen gut ___ Mitarbeiter. (ausbilden)",
+  "answer": [
+   "ausgebildeten"
+  ],
+  "note": "Partizip II ausgebildet + -en (accusative masculine after einen).",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "partizip-als-adjektiv.12",
+  "concept": "partizip-als-adjektiv",
+  "level": "B2",
+  "kind": "transform",
+  "task": "Replace the relative clause with a participle before the noun.",
+  "prompt": "ein Problem, das ständig wächst",
+  "answer": [
+   "ein ständig wachsendes Problem"
+  ],
+  "note": "Partizip I = happening now: wachsend + -es after ein (neuter).",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "je-desto.01",
@@ -7537,6 +7628,77 @@
   "strict_case": false
  },
  {
+  "id": "je-desto.09",
+  "concept": "je-desto",
+  "level": "B2",
+  "kind": "join",
+  "task": "Join the two sentences with „je ... desto“.",
+  "prompt": "Man wird älter. Man wird gelassener.",
+  "answer": [
+   "Je älter man wird, desto gelassener wird man.",
+   "Je älter man wird, umso gelassener wird man."
+  ],
+  "note": "je + verb last; desto + comparative + verb + subject.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "je-desto.10",
+  "concept": "je-desto",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Write the word in brackets in the right form.",
+  "prompt": "Je ___ die Prüfung ist, desto gründlicher muss man sich vorbereiten. (schwierig)",
+  "answer": [
+   "schwieriger"
+  ],
+  "note": "je + comparative: schwierig → schwieriger.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "je-desto.11",
+  "concept": "je-desto",
+  "level": "B2",
+  "kind": "order",
+  "task": "Put the words in order. Start with „Je mehr Menschen das Angebot nutzen,“.",
+  "prompt": "werden / desto / günstiger / die Preise",
+  "answer": [
+   "Je mehr Menschen das Angebot nutzen, desto günstiger werden die Preise.",
+   "desto günstiger werden die Preise"
+  ],
+  "note": "desto + comparative, then the verb, then the subject.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "je-desto.12",
+  "concept": "je-desto",
+  "level": "B2",
+  "kind": "translate",
+  "task": "Translate into German.",
+  "prompt": "The more I read about it, the less I understand it.",
+  "answer": [
+   "Je mehr ich darüber lese, desto weniger verstehe ich es.",
+   "Je mehr ich darüber lese, umso weniger verstehe ich es.",
+   "Je mehr ich darüber lese, desto weniger verstehe ich das.",
+   "Je mehr ich darüber lese, umso weniger verstehe ich das.",
+   "Je mehr ich darüber lese, desto weniger verstehe ich davon.",
+   "Je mehr ich darüber lese, umso weniger verstehe ich davon."
+  ],
+  "note": "mehr / weniger are the comparatives of viel / wenig.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
   "id": "konnektoren-advanced.01",
   "concept": "konnektoren-advanced",
   "level": "B2",
@@ -7548,7 +7710,10 @@
    "Er hat viel gelernt, so dass er die Prüfung bestanden hat."
   ],
   "note": "sodass: result, verb last.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "konnektoren-advanced.02",
@@ -7561,7 +7726,10 @@
    "Man lernt eine Sprache gut, indem man jeden Tag spricht."
   ],
   "note": "indem: how something happens, verb last.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "konnektoren-advanced.03",
@@ -7574,10 +7742,18 @@
    "Das Hotel war teuer, dennoch haben wir dort übernachtet.",
    "Das Hotel war teuer. Dennoch haben wir dort übernachtet.",
    "Das Hotel war teuer, und dennoch haben wir dort übernachtet.",
-   "Das Hotel war teuer, wir haben dort dennoch übernachtet."
+   "Das Hotel war teuer, wir haben dort dennoch übernachtet.",
+   "Das Hotel war teuer. Wir haben dort dennoch übernachtet.",
+   "Das Hotel war teuer, wir haben dennoch dort übernachtet.",
+   "Das Hotel war teuer. Wir haben dennoch dort übernachtet.",
+   "Das Hotel war teuer, aber dennoch haben wir dort übernachtet.",
+   "Das Hotel war teuer, aber wir haben dort dennoch übernachtet."
   ],
-  "note": "dennoch in position 1, then the verb.",
-  "strict_case": false
+  "note": "dennoch in position 1 takes the verb next; it can also stand after the verb.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "konnektoren-advanced.04",
@@ -7590,23 +7766,30 @@
    "Die Wohnung ist schön, allerdings ist sie sehr laut.",
    "Die Wohnung ist schön. Allerdings ist sie sehr laut.",
    "Die Wohnung ist schön, sie ist allerdings sehr laut.",
-   "Die Wohnung ist schön. Sie ist allerdings sehr laut."
+   "Die Wohnung ist schön. Sie ist allerdings sehr laut.",
+   "Die Wohnung ist schön, allerdings sehr laut."
   ],
   "note": "allerdings can stand in position 1 or in the middle.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "konnektoren-advanced.05",
   "concept": "konnektoren-advanced",
   "level": "B2",
   "kind": "gap",
-  "task": "Fill the gap.",
+  "task": "Fill the gap with „indem“ or „sodass“.",
   "prompt": "Er spart Geld, ___ er mit dem Fahrrad fährt.",
   "answer": [
    "indem"
   ],
   "note": "The clause says how: indem.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "konnektoren-advanced.06",
@@ -7632,10 +7815,17 @@
   "answer": [
    "Man kann Strom sparen, indem man das Licht ausmacht.",
    "Indem man das Licht ausmacht.",
-   "Man spart Strom, indem man das Licht ausmacht."
+   "Man spart Strom, indem man das Licht ausmacht.",
+   "Strom kann man sparen, indem man das Licht ausmacht.",
+   "Strom spart man, indem man das Licht ausmacht.",
+   "Indem man das Licht ausmacht, kann man Strom sparen.",
+   "Indem man das Licht ausmacht, spart man Strom."
   ],
   "note": "indem + verb last.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "konnektoren-advanced.08",
@@ -7651,6 +7841,78 @@
   ],
   "note": "Contrast + verb directly after: dennoch/trotzdem.",
   "strict_case": false
+ },
+ {
+  "id": "konnektoren-advanced.09",
+  "concept": "konnektoren-advanced",
+  "level": "B2",
+  "kind": "join",
+  "task": "Join the two sentences with the word in brackets. Keep the order.",
+  "prompt": "Die Straße war gesperrt. Wir mussten einen Umweg fahren. (sodass)",
+  "answer": [
+   "Die Straße war gesperrt, sodass wir einen Umweg fahren mussten.",
+   "Die Straße war gesperrt, so dass wir einen Umweg fahren mussten."
+  ],
+  "note": "sodass gives the result; verb last.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "konnektoren-advanced.10",
+  "concept": "konnektoren-advanced",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Fill the gap with „indem“ or „sodass“.",
+  "prompt": "Sie hat ihre Präsentation verbessert, ___ sie mehr Beispiele eingebaut hat.",
+  "answer": [
+   "indem"
+  ],
+  "note": "The clause says how she did it: indem.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "konnektoren-advanced.11",
+  "concept": "konnektoren-advanced",
+  "level": "B2",
+  "kind": "join",
+  "task": "Join the two sentences with the word in brackets. Keep the order.",
+  "prompt": "Die Kritik war berechtigt. Sie wurde kaum beachtet. (dennoch)",
+  "answer": [
+   "Die Kritik war berechtigt, dennoch wurde sie kaum beachtet.",
+   "Die Kritik war berechtigt. Dennoch wurde sie kaum beachtet.",
+   "Die Kritik war berechtigt, und dennoch wurde sie kaum beachtet.",
+   "Die Kritik war berechtigt, sie wurde dennoch kaum beachtet.",
+   "Die Kritik war berechtigt. Sie wurde dennoch kaum beachtet.",
+   "Die Kritik war berechtigt, aber dennoch wurde sie kaum beachtet.",
+   "Die Kritik war berechtigt, aber sie wurde dennoch kaum beachtet."
+  ],
+  "note": "dennoch is an adverb: in position 1 the verb follows directly.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "konnektoren-advanced.12",
+  "concept": "konnektoren-advanced",
+  "level": "B2",
+  "kind": "transform",
+  "task": "Rewrite with „allerdings“ in position 1 of the second sentence.",
+  "prompt": "Der Vorschlag ist gut, aber er ist zu teuer.",
+  "answer": [
+   "Der Vorschlag ist gut. Allerdings ist er zu teuer.",
+   "Der Vorschlag ist gut, allerdings ist er zu teuer."
+  ],
+  "note": "allerdings in position 1: verb next, then the subject.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "zweiteilige-konnektoren.01",
@@ -7761,6 +8023,79 @@
   "strict_case": false
  },
  {
+  "id": "zweiteilige-konnektoren.09",
+  "concept": "zweiteilige-konnektoren",
+  "level": "B2",
+  "kind": "transform",
+  "task": "Rewrite with „einerseits ... andererseits“. Start with „Einerseits“.",
+  "prompt": "Das Stadtleben ist spannend, aber es ist auch anstrengend.",
+  "answer": [
+   "Einerseits ist das Stadtleben spannend, andererseits ist es anstrengend.",
+   "Einerseits ist das Stadtleben spannend, andererseits ist es auch anstrengend.",
+   "Einerseits ist das Stadtleben spannend, andererseits ist es aber auch anstrengend.",
+   "Einerseits ist das Stadtleben spannend, andererseits anstrengend.",
+   "Einerseits ist das Stadtleben spannend, andererseits auch anstrengend.",
+   "Einerseits ist das Stadtleben spannend, andererseits aber auch anstrengend."
+  ],
+  "note": "Both einerseits and andererseits take position 1: the verb follows.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "zweiteilige-konnektoren.10",
+  "concept": "zweiteilige-konnektoren",
+  "level": "B2",
+  "kind": "transform",
+  "task": "Rewrite with „weder ... noch“.",
+  "prompt": "Er hat nicht angerufen, und er hat auch keine Nachricht geschrieben.",
+  "answer": [
+   "Er hat weder angerufen noch eine Nachricht geschrieben.",
+   "Er hat weder angerufen, noch hat er eine Nachricht geschrieben.",
+   "Weder hat er angerufen, noch hat er eine Nachricht geschrieben."
+  ],
+  "note": "weder … noch replaces nicht and kein.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "zweiteilige-konnektoren.11",
+  "concept": "zweiteilige-konnektoren",
+  "level": "B2",
+  "kind": "transform",
+  "task": "Rewrite with „zwar ... aber“. Start with „Zwar“.",
+  "prompt": "Die Wohnung ist teuer, aber sie liegt sehr zentral.",
+  "answer": [
+   "Zwar ist die Wohnung teuer, aber sie liegt sehr zentral.",
+   "Zwar ist die Wohnung teuer, sie liegt aber sehr zentral."
+  ],
+  "note": "zwar in position 1 takes the verb next; aber does not change the order.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "zweiteilige-konnektoren.12",
+  "concept": "zweiteilige-konnektoren",
+  "level": "B2",
+  "kind": "transform",
+  "task": "Rewrite with „nicht nur ... sondern auch“.",
+  "prompt": "Das Programm ist kostenlos. Es ist auch leicht zu bedienen.",
+  "answer": [
+   "Das Programm ist nicht nur kostenlos, sondern auch leicht zu bedienen.",
+   "Das Programm ist nicht nur kostenlos, sondern es ist auch leicht zu bedienen."
+  ],
+  "note": "nicht nur … sondern auch links two qualities of one subject.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
   "id": "konjunktiv-1.01",
   "concept": "konjunktiv-1",
   "level": "B2",
@@ -7772,7 +8107,10 @@
    "Er sagt, dass er krank sei."
   ],
   "note": "sein → sei.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "konjunktiv-1.02",
@@ -7786,7 +8124,10 @@
    "Sie sagt, dass sie keine Zeit habe."
   ],
   "note": "haben → habe.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "konjunktiv-1.03",
@@ -7800,7 +8141,10 @@
    "Der Chef sagt, dass das Projekt im Mai beginne."
   ],
   "note": "beginnt → beginne.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "konjunktiv-1.04",
@@ -7808,12 +8152,15 @@
   "level": "B2",
   "kind": "gap",
   "task": "Write the word in brackets in the right form.",
-  "prompt": "Die Firma erklärt, das Programm ___ auf Daten. (beruhen)",
+  "prompt": "Die Firma erklärt, das Programm ___ auf aktuellen Daten. (beruhen)",
   "answer": [
    "beruhe"
   ],
   "note": "er/sie/es: stem + -e.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "konjunktiv-1.05",
@@ -7826,7 +8173,10 @@
    "habe"
   ],
   "note": "Past in reported speech: habe + Partizip II.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "konjunktiv-1.06",
@@ -7839,7 +8189,10 @@
    "seien"
   ],
   "note": "sie (plural) → seien.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "konjunktiv-1.07",
@@ -7853,7 +8206,10 @@
    "Er sagt, dass er morgen kommen könne."
   ],
   "note": "kann → könne.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "konjunktiv-1.08",
@@ -7866,8 +8222,78 @@
    "Sie sagt, sie komme später.",
    "Sie sagt, dass sie später komme."
   ],
-  "note": "kommt → komme.",
-  "strict_case": false
+  "note": "ich komme → sie komme.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "konjunktiv-1.09",
+  "concept": "konjunktiv-1",
+  "level": "B2",
+  "kind": "transform",
+  "task": "Rewrite as reported speech with Konjunktiv I.",
+  "prompt": "Der Sprecher erklärt: „Die Firma hat keine Fehler gemacht.“",
+  "answer": [
+   "Der Sprecher erklärt, die Firma habe keine Fehler gemacht.",
+   "Der Sprecher erklärt, dass die Firma keine Fehler gemacht habe."
+  ],
+  "note": "Past in reported speech: habe + Partizip II.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "konjunktiv-1.10",
+  "concept": "konjunktiv-1",
+  "level": "B2",
+  "kind": "transform",
+  "task": "Rewrite as reported speech with Konjunktiv I.",
+  "prompt": "Der Zeuge sagt: „Ich habe den Mann nicht gesehen.“",
+  "answer": [
+   "Der Zeuge sagt, er habe den Mann nicht gesehen.",
+   "Der Zeuge sagt, dass er den Mann nicht gesehen habe."
+  ],
+  "note": "ich → er; habe gesehen.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "konjunktiv-1.11",
+  "concept": "konjunktiv-1",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Write the word in brackets in Konjunktiv I.",
+  "prompt": "Laut Polizei ___ niemand verletzt worden. (sein)",
+  "answer": [
+   "sei"
+  ],
+  "note": "sein → sei; passive Perfekt: sei … worden.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "konjunktiv-1.12",
+  "concept": "konjunktiv-1",
+  "level": "B2",
+  "kind": "transform",
+  "task": "Rewrite as reported speech with Konjunktiv I.",
+  "prompt": "Die Firma teilt mit: „Der Preis wird im Januar steigen.“",
+  "answer": [
+   "Die Firma teilt mit, der Preis werde im Januar steigen.",
+   "Die Firma teilt mit, dass der Preis im Januar steigen werde."
+  ],
+  "note": "Future in reported speech: werde + Infinitiv.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "konjunktiv-2-vergangenheit.01",
@@ -7877,10 +8303,14 @@
   "task": "Rewrite as one unreal sentence starting with „Wenn“.",
   "prompt": "Ich hatte keine Zeit. Deshalb bin ich nicht gekommen.",
   "answer": [
-   "Wenn ich Zeit gehabt hätte, wäre ich gekommen."
+   "Wenn ich Zeit gehabt hätte, wäre ich gekommen.",
+   "Wenn ich Zeit gehabt hätte, dann wäre ich gekommen."
   ],
   "note": "hätte/wäre + Partizip II.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "konjunktiv-2-vergangenheit.02",
@@ -7894,7 +8324,10 @@
    "wärest"
   ],
   "note": "aufstehen takes sein: wärst.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "konjunktiv-2-vergangenheit.03",
@@ -7907,7 +8340,10 @@
    "hätte"
   ],
   "note": "hätte + Partizip II.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "konjunktiv-2-vergangenheit.04",
@@ -7920,7 +8356,10 @@
    "Ich hätte mehr lernen sollen."
   ],
   "note": "hätte + infinitive + sollen.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "konjunktiv-2-vergangenheit.05",
@@ -7933,7 +8372,10 @@
    "hätte"
   ],
   "note": "hätte ... gedacht.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "konjunktiv-2-vergangenheit.06",
@@ -7944,10 +8386,15 @@
   "prompt": "If I had known that, I would have come.",
   "answer": [
    "Wenn ich das gewusst hätte, wäre ich gekommen.",
-   "Hätte ich das gewusst, wäre ich gekommen."
+   "Hätte ich das gewusst, wäre ich gekommen.",
+   "Wenn ich das gewusst hätte, dann wäre ich gekommen.",
+   "Hätte ich das gewusst, dann wäre ich gekommen."
   ],
   "note": "hätte gewusst, wäre gekommen.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "konjunktiv-2-vergangenheit.07",
@@ -7961,7 +8408,10 @@
    "ich wäre mitgefahren"
   ],
   "note": "wäre + Partizip II.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "konjunktiv-2-vergangenheit.08",
@@ -7974,7 +8424,75 @@
    "hätte"
   ],
   "note": "fast + Konjunktiv II: it nearly happened.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "konjunktiv-2-vergangenheit.09",
+  "concept": "konjunktiv-2-vergangenheit",
+  "level": "B2",
+  "kind": "transform",
+  "task": "Rewrite as one unreal sentence starting with „Wenn“.",
+  "prompt": "Wir haben den Wetterbericht nicht gelesen. Deshalb sind wir nass geworden.",
+  "answer": [
+   "Wenn wir den Wetterbericht gelesen hätten, wären wir nicht nass geworden.",
+   "Wenn wir den Wetterbericht gelesen hätten, dann wären wir nicht nass geworden."
+  ],
+  "note": "hätten gelesen (haben-verb), wären geworden (sein-verb).",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "konjunktiv-2-vergangenheit.10",
+  "concept": "konjunktiv-2-vergangenheit",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Write the word in brackets in the Konjunktiv II.",
+  "prompt": "Ohne deine Hilfe ___ ich das nie geschafft. (haben)",
+  "answer": [
+   "hätte"
+  ],
+  "note": "ohne + noun works like an unreal wenn-clause: hätte … geschafft.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "konjunktiv-2-vergangenheit.11",
+  "concept": "konjunktiv-2-vergangenheit",
+  "level": "B2",
+  "kind": "transform",
+  "task": "Rewrite as advice about the past. Start with „An deiner Stelle“.",
+  "prompt": "Du hast den Vertrag unterschrieben.",
+  "answer": [
+   "An deiner Stelle hätte ich den Vertrag nicht unterschrieben."
+  ],
+  "note": "An deiner Stelle + hätte … nicht + Partizip II.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "konjunktiv-2-vergangenheit.12",
+  "concept": "konjunktiv-2-vergangenheit",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Write the word in brackets in the Konjunktiv II.",
+  "prompt": "Wenn ich gestern nicht so lange gearbeitet hätte, ___ ich jetzt nicht so müde. (sein)",
+  "answer": [
+   "wäre"
+  ],
+  "note": "Past condition, present result: the result is about now (wäre).",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "nomen-verb-verbindungen.01",
@@ -7984,10 +8502,14 @@
   "task": "Fill the gap.",
   "prompt": "Wir müssen bald eine Entscheidung ___.",
   "answer": [
-   "treffen"
+   "treffen",
+   "fällen"
   ],
-  "note": "eine Entscheidung treffen.",
-  "strict_case": false
+  "note": "eine Entscheidung treffen (formal also: fällen).",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "nomen-verb-verbindungen.02",
@@ -8000,7 +8522,10 @@
    "stellen"
   ],
   "note": "eine Frage stellen.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "nomen-verb-verbindungen.03",
@@ -8013,7 +8538,10 @@
    "führen"
   ],
   "note": "ein Gespräch führen.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "nomen-verb-verbindungen.04",
@@ -8026,7 +8554,10 @@
    "Kraft"
   ],
   "note": "in Kraft treten.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "nomen-verb-verbindungen.05",
@@ -8036,10 +8567,14 @@
   "task": "Fill the gap.",
   "prompt": "Er hat mir einen guten Rat ___.",
   "answer": [
-   "gegeben"
+   "gegeben",
+   "erteilt"
   ],
   "note": "einen Rat geben.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "nomen-verb-verbindungen.06",
@@ -8053,7 +8588,10 @@
    "Der Raum steht für Sie zur Verfügung."
   ],
   "note": "zur Verfügung stehen + dative.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "nomen-verb-verbindungen.07",
@@ -8066,7 +8604,10 @@
    "nehmen"
   ],
   "note": "Rücksicht nehmen auf.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "nomen-verb-verbindungen.08",
@@ -8079,7 +8620,75 @@
    "gestellt"
   ],
   "note": "in Aussicht stellen = promise.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "nomen-verb-verbindungen.09",
+  "concept": "nomen-verb-verbindungen",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Fill the gap.",
+  "prompt": "Die neuen Regeln sind heftig in die Kritik ___.",
+  "answer": [
+   "geraten"
+  ],
+  "note": "in die Kritik geraten = to come under criticism (Perfekt with sein).",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "nomen-verb-verbindungen.10",
+  "concept": "nomen-verb-verbindungen",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Fill the gap.",
+  "prompt": "Bitte nehmen Sie bis Freitag zu dem Vorschlag ___.",
+  "answer": [
+   "Stellung"
+  ],
+  "note": "Stellung nehmen zu = to comment on, give your view.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "nomen-verb-verbindungen.11",
+  "concept": "nomen-verb-verbindungen",
+  "level": "B2",
+  "kind": "transform",
+  "task": "Rewrite with „infrage stellen“.",
+  "prompt": "Viele Experten bezweifeln die Ergebnisse der Studie.",
+  "answer": [
+   "Viele Experten stellen die Ergebnisse der Studie infrage.",
+   "Viele Experten stellen die Ergebnisse der Studie in Frage."
+  ],
+  "note": "etwas infrage stellen (also: in Frage stellen) = to question.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "nomen-verb-verbindungen.12",
+  "concept": "nomen-verb-verbindungen",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Fill the gap.",
+  "prompt": "Die Firma muss die Folgen ihrer Entscheidung in Kauf ___.",
+  "answer": [
+   "nehmen"
+  ],
+  "note": "etwas in Kauf nehmen = to accept a downside.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "modalpartikeln.01",
@@ -8092,7 +8701,10 @@
    "doch"
   ],
   "note": "doch answers a negative question with yes.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "modalpartikeln.02",
@@ -8105,7 +8717,10 @@
    "Wo wohnst du denn?"
   ],
   "note": "denn in questions sounds interested.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "modalpartikeln.03",
@@ -8118,7 +8733,10 @@
    "Gib mir mal das Salz."
   ],
   "note": "mal softens a request.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "modalpartikeln.04",
@@ -8131,7 +8749,10 @@
    "Du bist ja schon da!"
   ],
   "note": "ja marks surprise.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "modalpartikeln.05",
@@ -8144,7 +8765,10 @@
    "Wie heißt du eigentlich?"
   ],
   "note": "eigentlich = by the way, in questions.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "modalpartikeln.06",
@@ -8157,7 +8781,10 @@
    "Komm doch mit!"
   ],
   "note": "doch in a request = go on.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "modalpartikeln.07",
@@ -8171,7 +8798,10 @@
    "eigentlich"
   ],
   "note": "denn in a surprised question.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "modalpartikeln.08",
@@ -8184,7 +8814,74 @@
    "Das habe ich dir doch gesagt!"
   ],
   "note": "doch = you know this.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "modalpartikeln.09",
+  "concept": "modalpartikeln",
+  "level": "B2",
+  "kind": "transform",
+  "task": "Add „ruhig“ to give permission.",
+  "prompt": "Du kannst mich anrufen.",
+  "answer": [
+   "Du kannst mich ruhig anrufen."
+  ],
+  "note": "ruhig = go ahead, feel free; after the pronoun object.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "modalpartikeln.10",
+  "concept": "modalpartikeln",
+  "level": "B2",
+  "kind": "transform",
+  "task": "Add „eben“ to say that it cannot be changed.",
+  "prompt": "Das ist so.",
+  "answer": [
+   "Das ist eben so."
+  ],
+  "note": "eben (colloquial also halt) = that’s how it is.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "modalpartikeln.11",
+  "concept": "modalpartikeln",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Fill the gap with „bloß“, „etwa“ or „wohl“.",
+  "prompt": "Hast du ___ schon wieder dein Handy vergessen?",
+  "answer": [
+   "etwa"
+  ],
+  "note": "etwa in a yes/no question: surprised, the speaker hopes the answer is no.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "modalpartikeln.12",
+  "concept": "modalpartikeln",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Fill the gap with „bloß“, „etwa“ or „wohl“.",
+  "prompt": "Er ist nicht mehr im Büro. Er ist ___ schon nach Hause gegangen.",
+  "answer": [
+   "wohl"
+  ],
+  "note": "wohl = probably: a guess.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "passiv-mit-modalverben.01",
@@ -8197,7 +8894,10 @@
    "Das Formular muss ausgefüllt werden."
   ],
   "note": "Modal + Partizip II + werden.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "passiv-mit-modalverben.02",
@@ -8210,7 +8910,10 @@
    "Das Problem kann gelöst werden."
   ],
   "note": "kann ... gelöst werden.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "passiv-mit-modalverben.03",
@@ -8224,7 +8927,10 @@
    "Es darf hier nicht geparkt werden."
   ],
   "note": "Impersonal: hier darf ... werden.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "passiv-mit-modalverben.04",
@@ -8238,7 +8944,10 @@
    "Nach dem Essen sollen die Tabletten genommen werden."
   ],
   "note": "Plural: sollen ... genommen werden.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "passiv-mit-modalverben.05",
@@ -8251,7 +8960,10 @@
    "werden"
   ],
   "note": "Passive infinitive: eingeordnet werden.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "passiv-mit-modalverben.06",
@@ -8264,7 +8976,10 @@
    "Der Termin musste verschoben werden."
   ],
   "note": "musste ... verschoben werden.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "passiv-mit-modalverben.07",
@@ -8275,10 +8990,19 @@
   "prompt": "The window can't be opened.",
   "answer": [
    "Das Fenster kann nicht geöffnet werden.",
-   "Das Fenster lässt sich nicht öffnen."
+   "Das Fenster lässt sich nicht öffnen.",
+   "Man kann das Fenster nicht öffnen.",
+   "Das Fenster kann man nicht öffnen.",
+   "Das Fenster kann nicht aufgemacht werden.",
+   "Das Fenster lässt sich nicht aufmachen.",
+   "Man kann das Fenster nicht aufmachen.",
+   "Das Fenster kann man nicht aufmachen."
   ],
   "note": "kann nicht geöffnet werden.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "passiv-mit-modalverben.08",
@@ -8291,7 +9015,77 @@
    "muss"
   ],
   "note": "muss ... bezahlt werden.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "passiv-mit-modalverben.09",
+  "concept": "passiv-mit-modalverben",
+  "level": "B2",
+  "kind": "transform",
+  "task": "Rewrite in the passive, keeping the modal verb. Start with „Ich glaube, dass“.",
+  "prompt": "Man muss die Regeln ändern.",
+  "answer": [
+   "Ich glaube, dass die Regeln geändert werden müssen."
+  ],
+  "note": "In a subordinate clause: Partizip II + werden + modal at the end.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "passiv-mit-modalverben.10",
+  "concept": "passiv-mit-modalverben",
+  "level": "B2",
+  "kind": "transform",
+  "task": "Rewrite in the passive, keeping the modal verb.",
+  "prompt": "Man kann diese Frage nicht leicht beantworten.",
+  "answer": [
+   "Diese Frage kann nicht leicht beantwortet werden."
+  ],
+  "note": "kann … beantwortet werden.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "passiv-mit-modalverben.11",
+  "concept": "passiv-mit-modalverben",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Write the verb in brackets in the right form.",
+  "prompt": "Die Ergebnisse dürfen noch nicht ___ werden. (veröffentlichen)",
+  "answer": [
+   "veröffentlicht"
+  ],
+  "note": "Partizip II + werden; veröffentlichen has no ge- (ver- is inseparable).",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "passiv-mit-modalverben.12",
+  "concept": "passiv-mit-modalverben",
+  "level": "B2",
+  "kind": "translate",
+  "task": "Translate into German. Use „absagen“.",
+  "prompt": "The meeting had to be cancelled.",
+  "answer": [
+   "Die Besprechung musste abgesagt werden.",
+   "Das Meeting musste abgesagt werden.",
+   "Die Sitzung musste abgesagt werden.",
+   "Das Treffen musste abgesagt werden."
+  ],
+  "note": "Past: musste + Partizip II + werden.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "zustandspassiv.01",
@@ -8304,7 +9098,10 @@
    "Die Tür ist geschlossen."
   ],
   "note": "State: sein + Partizip II.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "zustandspassiv.02",
@@ -8312,12 +9109,15 @@
   "level": "B2",
   "kind": "transform",
   "task": "Rewrite to describe the result (the state).",
-  "prompt": "Das Geschäft wird geöffnet.",
+  "prompt": "Das Fenster wird geöffnet.",
   "answer": [
-   "Das Geschäft ist geöffnet."
+   "Das Fenster ist geöffnet."
   ],
   "note": "ist geöffnet = open now.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "zustandspassiv.03",
@@ -8330,7 +9130,10 @@
    "Der Tisch ist reserviert."
   ],
   "note": "ist reserviert.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "zustandspassiv.04",
@@ -8343,7 +9146,10 @@
    "ist"
   ],
   "note": "State: ist bezahlt.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "zustandspassiv.05",
@@ -8356,7 +9162,10 @@
    "war"
   ],
   "note": "Past state: war geschlossen.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "zustandspassiv.06",
@@ -8369,7 +9178,10 @@
    "Das Problem ist gelöst."
   ],
   "note": "State: ist gelöst.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "zustandspassiv.07",
@@ -8382,7 +9194,10 @@
    "ausgefüllt"
   ],
   "note": "ist ausgefüllt.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "zustandspassiv.08",
@@ -8395,7 +9210,75 @@
    "Die Fenster sind geputzt."
   ],
   "note": "Plural: sind geputzt.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "zustandspassiv.09",
+  "concept": "zustandspassiv",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Fill the gap with „wird“ or „ist“.",
+  "prompt": "Keine Sorge, der Fehler ___ längst behoben.",
+  "answer": [
+   "ist"
+  ],
+  "note": "längst = the result is there: Zustandspassiv (ist behoben).",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "zustandspassiv.10",
+  "concept": "zustandspassiv",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Fill the gap with „wird“ or „ist“.",
+  "prompt": "Die Brücke ___ gerade renoviert, deshalb ist sie gesperrt.",
+  "answer": [
+   "wird"
+  ],
+  "note": "gerade = the action is going on: Vorgangspassiv (wird renoviert).",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "zustandspassiv.11",
+  "concept": "zustandspassiv",
+  "level": "B2",
+  "kind": "transform",
+  "task": "Rewrite to describe the result (the state).",
+  "prompt": "Man hat alle Plätze reserviert.",
+  "answer": [
+   "Alle Plätze sind reserviert.",
+   "Es sind alle Plätze reserviert."
+  ],
+  "note": "State now: sind + Partizip II.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "zustandspassiv.12",
+  "concept": "zustandspassiv",
+  "level": "B2",
+  "kind": "transform",
+  "task": "Rewrite as a state in the past with „war“.",
+  "prompt": "Als wir ankamen, hatte man das Essen schon vorbereitet.",
+  "answer": [
+   "Als wir ankamen, war das Essen schon vorbereitet."
+  ],
+  "note": "Past state: war + Partizip II.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "praepositionen-genitiv.01",
@@ -8408,7 +9291,10 @@
    "wegen"
   ],
   "note": "Reason: wegen.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "praepositionen-genitiv.02",
@@ -8421,7 +9307,10 @@
    "trotz"
   ],
   "note": "Contrast: trotz.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "praepositionen-genitiv.03",
@@ -8429,12 +9318,15 @@
   "level": "B2",
   "kind": "gap",
   "task": "Fill the gap with „trotz“, „wegen“, „während“, „statt“ or „innerhalb“.",
-  "prompt": "___ des Fluges habe ich einen Film gesehen.",
+  "prompt": "Ich habe ___ des Fluges einen Film gesehen.",
   "answer": [
    "während"
   ],
   "note": "At the same time: während.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "praepositionen-genitiv.04",
@@ -8447,7 +9339,10 @@
    "innerhalb"
   ],
   "note": "Within a time: innerhalb.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "praepositionen-genitiv.05",
@@ -8461,7 +9356,10 @@
    "anstatt"
   ],
   "note": "Instead of: statt.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "praepositionen-genitiv.06",
@@ -8474,7 +9372,10 @@
    "der vielen"
   ],
   "note": "Genitive feminine: der vielen.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "praepositionen-genitiv.07",
@@ -8487,7 +9388,10 @@
    "der langen"
   ],
   "note": "Genitive feminine: der langen.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "praepositionen-genitiv.08",
@@ -8498,10 +9402,78 @@
   "prompt": "during the week",
   "answer": [
    "während der Woche",
-   "unter der Woche"
+   "unter der Woche",
+   "in der Woche"
   ],
   "note": "während + genitive.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "praepositionen-genitiv.09",
+  "concept": "praepositionen-genitiv",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Fill the gap with „aufgrund“, „angesichts“, „außerhalb“ or „anlässlich“.",
+  "prompt": "___ des Streiks fallen heute viele Züge aus.",
+  "answer": [
+   "aufgrund"
+  ],
+  "note": "aufgrund = because of (the cause).",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "praepositionen-genitiv.10",
+  "concept": "praepositionen-genitiv",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Fill the gap with „aufgrund“, „angesichts“, „außerhalb“ or „anlässlich“.",
+  "prompt": "___ seines 70. Geburtstags gab es ein großes Fest.",
+  "answer": [
+   "anlässlich"
+  ],
+  "note": "anlässlich = on the occasion of.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "praepositionen-genitiv.11",
+  "concept": "praepositionen-genitiv",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Fill the gap with „aufgrund“, „angesichts“, „außerhalb“ or „anlässlich“.",
+  "prompt": "___ der Öffnungszeiten erreichen Sie uns per E-Mail.",
+  "answer": [
+   "außerhalb"
+  ],
+  "note": "außerhalb = outside (a time or a place).",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "praepositionen-genitiv.12",
+  "concept": "praepositionen-genitiv",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Write the words in brackets in the right form.",
+  "prompt": "Angesichts ___ Kosten wurde das Projekt gestoppt. (die hohen)",
+  "answer": [
+   "der hohen"
+  ],
+  "note": "angesichts + genitive; plural: der hohen Kosten.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "pronomen-es.01",
@@ -8514,7 +9486,10 @@
    "es"
   ],
   "note": "Weather verbs need es.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "pronomen-es.02",
@@ -8527,7 +9502,10 @@
    "es"
   ],
   "note": "es geht + dative.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "pronomen-es.03",
@@ -8540,7 +9518,10 @@
    "es"
   ],
   "note": "es gibt + accusative.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "pronomen-es.04",
@@ -8553,7 +9534,10 @@
    "Heute regnet es."
   ],
   "note": "Weather es stays after the verb.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "pronomen-es.05",
@@ -8566,7 +9550,10 @@
    "In der Stadt gibt es viele Cafés."
   ],
   "note": "es gibt keeps its es.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "pronomen-es.06",
@@ -8579,7 +9566,10 @@
    "Viele Leute kamen zur Party."
   ],
   "note": "A placeholder es disappears when something else is in position 1.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "pronomen-es.07",
@@ -8594,7 +9584,10 @@
    "Es geht um das Geld."
   ],
   "note": "es geht um.",
-  "strict_case": false
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "pronomen-es.08",
@@ -8604,10 +9597,80 @@
   "task": "Fill the gap.",
   "prompt": "Ich finde ___ schade, dass du gehst.",
   "answer": [
-   "es"
+   "es",
+   "das"
   ],
-  "note": "es points forward to the dass-clause.",
-  "strict_case": false
+  "note": "es (in speech also das) points forward to the dass-clause.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "pronomen-es.09",
+  "concept": "pronomen-es",
+  "level": "B2",
+  "kind": "transform",
+  "task": "Rewrite starting with „Bis spät in die Nacht“.",
+  "prompt": "Es wurde bis spät in die Nacht gefeiert.",
+  "answer": [
+   "Bis spät in die Nacht wurde gefeiert."
+  ],
+  "note": "A placeholder es in an impersonal passive disappears when something else takes position 1.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "pronomen-es.10",
+  "concept": "pronomen-es",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Fill the gap.",
+  "prompt": "Ich halte ___ für wichtig, dass alle mitreden können.",
+  "answer": [
+   "es",
+   "das"
+  ],
+  "note": "es (or stressed das) points forward to the dass-clause (etwas für wichtig halten).",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "pronomen-es.11",
+  "concept": "pronomen-es",
+  "level": "B2",
+  "kind": "transform",
+  "task": "Rewrite starting with „Gestern“.",
+  "prompt": "Es klingelte gestern zweimal an der Tür.",
+  "answer": [
+   "Gestern klingelte es zweimal an der Tür."
+  ],
+  "note": "This es is the subject (es klingelt): it stays when another word comes first.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "pronomen-es.12",
+  "concept": "pronomen-es",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Fill the gap.",
+  "prompt": "Es kommt ganz ___ an, wie viel Zeit wir haben.",
+  "answer": [
+   "darauf",
+   "drauf"
+  ],
+  "note": "es kommt darauf an, ob/wie … = it depends on.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  {
   "id": "nominalstil.01",

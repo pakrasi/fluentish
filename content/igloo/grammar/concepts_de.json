@@ -314,84 +314,108 @@
   "name": "Partizip I/II als Adjektiv",
   "category": "adjectives",
   "level": "B2",
-  "description": ""
+  "description": "Participles used as adjectives, also with one added word: der gerade ankommende Zug, die gestern angekommenen Gäste.",
+  "rank": 12,
+  "fn": "describe"
  },
  {
   "id": "je-desto",
   "name": "je...desto",
   "category": "clauses",
   "level": "B2",
-  "description": ""
+  "description": "Two comparatives that grow together: Je mehr du übst, desto besser sprichst du.",
+  "rank": 2,
+  "fn": "compare"
  },
  {
   "id": "konnektoren-advanced",
   "name": "Konnektoren II (dennoch, allerdings, indem, sodass)",
   "category": "clauses",
   "level": "B2",
-  "description": ""
+  "description": "Connectors for contrast, means and result, dennoch and allerdings with the verb second, indem and sodass with the verb last: Er spart Geld, indem er mit dem Fahrrad fährt.",
+  "rank": 3,
+  "fn": "link"
  },
  {
   "id": "zweiteilige-konnektoren",
   "name": "Zweiteilige Konnektoren (entweder...oder, ...)",
   "category": "clauses",
   "level": "B2",
-  "description": ""
+  "description": "Two-part connectors that link two parallel parts (entweder … oder, weder … noch, sowohl … als auch, nicht nur … sondern auch, zwar … aber, einerseits … andererseits): Ich trinke weder Kaffee noch Tee.",
+  "rank": 1,
+  "fn": "link"
  },
  {
   "id": "konjunktiv-1",
   "name": "Konjunktiv I (indirekte Rede)",
   "category": "konjunktiv",
   "level": "B2",
-  "description": ""
+  "description": "Konjunktiv I for reported speech in news and reports: Der Minister sagt, er habe nichts davon gewusst.",
+  "rank": 8,
+  "fn": "report"
  },
  {
   "id": "konjunktiv-2-vergangenheit",
   "name": "Konjunktiv II der Vergangenheit",
   "category": "konjunktiv",
   "level": "B2",
-  "description": ""
+  "description": "Unreal conditions and wishes about the past: Wenn ich das gewusst hätte, wäre ich gekommen.",
+  "rank": 7,
+  "fn": "condition"
  },
  {
   "id": "nomen-verb-verbindungen",
   "name": "Nomen-Verb-Verbindungen",
   "category": "nouns-articles",
   "level": "B2",
-  "description": ""
+  "description": "Fixed noun and verb pairs (Funktionsverbgefüge): eine Entscheidung treffen, in Kraft treten, zur Verfügung stehen.",
+  "rank": 9,
+  "fn": "style"
  },
  {
   "id": "modalpartikeln",
-  "name": "Modalpartikeln (doch, ja, eigentlich, zwar, immerhin)",
+  "name": "Modalpartikeln (doch, ja, denn, mal, eben, wohl)",
   "category": "other",
   "level": "B2",
-  "description": ""
+  "description": "Particles that colour spoken German (doch, ja, denn, mal, eben, halt, ruhig, bloß, etwa, wohl): Komm doch mit!",
+  "rank": 10,
+  "fn": "speech"
  },
  {
   "id": "passiv-mit-modalverben",
   "name": "Passiv mit Modalverben",
   "category": "passiv",
   "level": "B2",
-  "description": ""
+  "description": "The passive with a modal verb: Das Formular muss ausgefüllt werden. In a subordinate clause: …, dass es ausgefüllt werden muss.",
+  "rank": 5,
+  "fn": "report"
  },
  {
   "id": "zustandspassiv",
   "name": "Zustandspassiv (sein + Partizip II)",
   "category": "passiv",
   "level": "B2",
-  "description": ""
+  "description": "The state after an action (sein + Partizip II) next to the action itself (werden + Partizip II): Die Tür ist geschlossen. / Die Tür wird geschlossen.",
+  "rank": 6,
+  "fn": "describe"
  },
  {
   "id": "praepositionen-genitiv",
   "name": "Präpositionen mit Genitiv",
   "category": "prepositions",
   "level": "B2",
-  "description": ""
+  "description": "Prepositions with the genitive, common in written German (wegen, trotz, während, statt, innerhalb, aufgrund, angesichts, anlässlich, außerhalb): Wegen des Regens fällt das Konzert aus.",
+  "rank": 4,
+  "fn": "style"
  },
  {
   "id": "pronomen-es",
-  "name": "Pronomen „es\"",
+  "name": "Pronomen „es“",
   "category": "pronouns",
   "level": "B2",
-  "description": ""
+  "description": "Uses of es: impersonal (es regnet, es gibt), placeholder in position 1 (es kamen viele Leute), and pointing forward to a clause (Ich finde es schade, dass …).",
+  "rank": 11,
+  "fn": "style"
  },
  {
   "id": "noun-capitalization",

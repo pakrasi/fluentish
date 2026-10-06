@@ -32,8 +32,14 @@
    "nur meine meinung",
    "meiner meinung nach",
    "falls es dir was hilft",
-   "falls es ihnen was hilft"
-  ]
+   "falls es ihnen was hilft",
+   "falls es dir hilft",
+   "falls es ihnen hilft",
+   "falls es dich tröstet",
+   "ich für meinen teil"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0971": {
   "core_en": "No offense, but",
@@ -147,8 +153,12 @@
    "ich spiele (mal) den advocatus diaboli",
    "(mal) andersrum gefragt",
    "ich halte (mal) dagegen",
-   "ich spiele (mal) den teufelsanwalt"
-  ]
+   "ich spiele (mal) den anwalt des teufels",
+   "den anwalt des teufels spielen",
+   "ich spiele (mal) den teufelsadvokaten"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_0981": {
   "core_en": "No hard feelings",
@@ -382,8 +392,12 @@
    "anstatt",
    "im gegensatz zu",
    "anstelle von",
-   "lieber als zu"
-  ]
+   "lieber als zu",
+   "lieber [x] als",
+   "im gegensatz zum"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1001": {
   "core_en": "There's something to be said for",
@@ -394,8 +408,11 @@
    "es hat (schon) etwas [anything] zu",
    "es spricht einiges dafür",
    "es spricht (schon) einiges für",
-   "hat (durchaus) etwas für sich"
-  ]
+   "hat (durchaus) etwas für sich",
+   "hat (durchaus) (schon) (auch) seinen reiz"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1002": {
   "core_en": "it comes down to",
@@ -444,8 +461,12 @@
    "ich würde (schon) sagen",
    "ich denke schon dass",
    "ich hoffe doch dass",
-   "ich würde behaupten"
-  ]
+   "ich würde behaupten",
+   "ich bilde mir ein",
+   "ich glaube doch"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1006": {
   "core_en": "There's no such thing as",
@@ -540,8 +561,13 @@
    "komisch dass du [anything] erwähnst",
    "lustig dass du [anything] ansprichst",
    "lustig dass du von [anything] sprichst",
-   "lustig dass sie von [anything] sprechen"
-  ]
+   "lustig dass sie von [anything] sprechen",
+   "lustig dass du [anything] sagst",
+   "witzig dass du [anything] sagst",
+   "was für ein zufall"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1014": {
   "core_en": "If you're ever in",
@@ -635,8 +661,12 @@
    "man muss (schon) [anything] sein wenn man",
    "nur ein [anything] würde",
    "du müsstest (schon) [anything] sein um",
-   "sie müssten (schon) [anything] sein um"
-  ]
+   "sie müssten (schon) [anything] sein um",
+   "wer [anything] muss (schon) [anything] sein",
+   "man wäre (ja) [anything]"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1022": {
   "core_en": "Say what you want about",
@@ -647,8 +677,12 @@
    "sagt über [anything] was ihr wollt",
    "man kann von [anything] halten was man will",
    "halt von [anything] was du willst",
-   "egal was man über [anything] sagt"
-  ]
+   "egal was man über [anything] sagt",
+   "über [anything] kann man sagen was man will",
+   "von [anything] kann man halten was man will"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1023": {
   "core_en": "It got to the point where",
@@ -726,10 +760,17 @@
    "angeblich",
    "es heißt dass",
    "es heißt",
-   "es geht das gerücht um dass",
    "gerüchten zufolge",
-   "man sagt dass"
-  ]
+   "man sagt dass",
+   "es geht das gerücht (um)",
+   "ich habe gehört (dass)",
+   "ich hab gehört (dass)",
+   "es wird gemunkelt",
+   "man erzählt sich",
+   "es gibt gerüchte"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1030": {
   "core_en": "I got",
@@ -798,8 +839,11 @@
    "es ist eine sache [anything] aber was (ganz) anderes",
    "es ist eine sache [anything] eine andere",
    "[anything] ist eine sache [anything] eine andere",
-   "es ist das eine [anything] das andere"
-  ]
+   "es ist das eine [anything] das andere",
+   "ist das eine [anything] das andere"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1036": {
   "core_en": "set a goal",
@@ -899,10 +943,14 @@
    "einen vertrauensvorschuss",
    "im zweifel für den angeklagten",
    "im zweifel für ihn",
-   "lassen wir (es) ihm durchgehen",
-   "gehen wir vom besten aus",
-   "glauben wir ihm erst mal"
-  ]
+   "gehen wir (erst mal) vom besten aus",
+   "glauben wir ihm erst mal",
+   "geben wir ihm (erst mal) (noch) eine chance",
+   "ihm (erst mal) (noch) eine chance geben",
+   "vertrauen wir ihm (erst mal)"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1044": {
   "core_en": "paid me a compliment",
@@ -1320,8 +1368,13 @@
    "das ist eine sichtweise",
    "das ist (auch) eine sichtweise",
    "so gesehen",
-   "auch eine art das zu sehen"
-  ]
+   "auch eine art das zu sehen",
+   "man kann (es) (das) auch so sehen",
+   "man kann's auch so sehen",
+   "eine art (es) (das) zu sehen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1077": {
   "core_en": "With all due respect",
@@ -1331,7 +1384,9 @@
    "mit verlaub",
    "bei aller wertschätzung",
    "bei allem gebotenen respekt"
-  ]
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1078": {
   "core_en": "It's not that simple",
@@ -1368,8 +1423,16 @@
    "ich nehme alles zurück",
    "ich nehm alles zurück",
    "dann lag ich falsch",
-   "da lag ich falsch"
-  ]
+   "da lag ich falsch",
+   "habe ich mich geirrt",
+   "hab ich mich geirrt",
+   "mich vertan",
+   "mich getäuscht",
+   "ich korrigiere mich",
+   "mein fehler"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1081": {
   "core_en": "I'm all ears",
@@ -1490,8 +1553,10 @@
    "es kommt alles auf einmal",
    "wenn's kommt dann dicke",
    "wenn es kommt dann dicke",
-   "es kommt immer knüppeldick"
-  ]
+   "es kommt (immer) knüppeldick"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1091": {
   "core_en": "plus the fact that",
@@ -1563,8 +1628,13 @@
    "nach aktuellem stand",
    "(so) wie es aussieht",
    "wie die dinge stehen",
-   "(so) wie es jetzt ist"
-  ]
+   "(so) wie es jetzt ist",
+   "stand jetzt",
+   "nach derzeitigem stand",
+   "(so) wie die lage (jetzt) ist"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1097": {
   "core_en": "For the most part",
@@ -1587,8 +1657,11 @@
    "so gesehen",
    "in diesem sinne",
    "in dem sinne",
-   "insoweit"
-  ]
+   "insoweit",
+   "von daher"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1099": {
   "core_en": "Worst case scenario",
@@ -1646,8 +1719,12 @@
    "hätte ich [anything] nicht gehabt",
    "ohne [anything] hätte",
    "ohne [anything] wäre",
-   "gäbe es [anything] nicht"
-  ]
+   "gäbe es [anything] nicht",
+   "wenn ich [anything] nicht gehabt hätte",
+   "wenn es [anything] nicht gäbe"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1104": {
   "core_en": "If only",
@@ -1726,15 +1803,16 @@
  "ENG_CHUNK_1110": {
   "core_en": "It's about time",
   "accept": [
-   "wird (auch) zeit dass",
-   "wurde (auch) zeit dass",
-   "es wird zeit dass",
+   "wird (ja) (aber) (auch) zeit dass",
+   "es wird (auch) zeit dass",
    "es wird höchste zeit dass",
    "wird höchste zeit dass",
-   "es wurde (auch) zeit dass",
-   "wird aber (auch) zeit dass",
-   "wird langsam zeit dass"
-  ]
+   "wird langsam zeit dass",
+   "es ist höchste zeit dass",
+   "es wird (höchste) zeit für"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1111": {
   "core_en": "Since when",
@@ -1773,14 +1851,18 @@
   "core_en": "I make a point of",
   "accept": [
    "ich lege wert darauf",
-   "ich lege großen wert darauf",
    "ich leg wert darauf",
    "ich achte darauf",
    "ich sorge dafür",
    "mir ist wichtig",
    "es ist mir wichtig",
-   "ich lege immer wert darauf"
-  ]
+   "ich lege (immer) (großen) wert darauf",
+   "mir ist es wichtig",
+   "grundsätzlich",
+   "ich mache es mir zur regel"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1115": {
   "core_en": "I couldn't help",
@@ -1808,15 +1890,17 @@
  "ENG_CHUNK_1117": {
   "core_en": "I'd hate for",
   "accept": [
-   "ich will nicht dass",
-   "ich möchte nicht dass",
    "ich will (ja) nicht dass",
    "ich möchte (ja) nicht dass",
+   "nicht dass du",
    "ich fände es schade wenn",
-   "es wäre schade wenn",
-   "ich würde es hassen wenn",
-   "ich wollte nicht dass"
-  ]
+   "ich wollte nicht dass",
+   "es wäre (doch) (echt) schade wenn",
+   "es wäre (doch) (echt) blöd wenn",
+   "ich möchte vermeiden dass"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1118": {
   "core_en": "It would mean a lot to me if",
@@ -1847,15 +1931,18 @@
  "ENG_CHUNK_1120": {
   "core_en": "It serves him right for",
   "accept": [
-   "geschieht ihm recht",
    "das geschieht ihm recht",
    "geschieht [anything] recht",
    "das geschieht [anything] recht",
    "selbst schuld",
    "selber schuld",
    "das hat er davon",
-   "das hat er verdient"
-  ]
+   "das hat er verdient",
+   "geschieht ihm (ganz) recht",
+   "das hat er sich selbst zuzuschreiben"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1121": {
   "core_en": "It's typical of Dave to",
@@ -1872,15 +1959,18 @@
  "ENG_CHUNK_1122": {
   "core_en": "It never occurs to",
   "accept": [
-   "kommt nie auf die idee",
+   "kommt (einfach) (natürlich) nie auf die idee",
    "kommt nie auf den gedanken",
    "kommt niemals auf die idee",
    "kommt nicht auf die idee",
    "käme nie auf die idee",
    "denkt nie daran",
    "fällt es nie ein",
-   "es fällt [anything] nie ein"
-  ]
+   "es fällt [anything] nie ein",
+   "nie in den sinn"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1123": {
   "core_en": "There's nothing worse than",
@@ -1941,8 +2031,14 @@
    "ist [anything] fertig",
    "bis [anything] ist [anything] fertig",
    "ich mache [anything] bis [anything] fertig",
-   "ich werde [anything] fertig haben"
-  ]
+   "ich werde [anything] fertig haben",
+   "ich werde [anything] fertigstellen",
+   "ich stelle [anything] fertig",
+   "kriege [anything] fertig",
+   "krieg [anything] fertig"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1128": {
   "core_en": "Let's circle back to",
@@ -2171,8 +2267,13 @@
    "bei null rausgekommen",
    "bei null herausgekommen",
    "kostendeckend",
-   "die kosten gedeckt"
-  ]
+   "die kosten gedeckt",
+   "weder gewinn noch verlust",
+   "kosten gedeckt",
+   "kosten (wieder) reingeholt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1146": {
   "core_en": "I'm so jealous of you",
@@ -2414,10 +2515,15 @@
    "zehren an ihm",
    "zehren an [anything]",
    "macht ihm zu schaffen",
-   "machen ihm zu schaffen",
    "schlauchen ihn",
-   "gehen ihm an die substanz"
-  ]
+   "machen ihm (richtig) (ganz schön) (echt) zu schaffen",
+   "nehmen ihn [anything] mit",
+   "nehmen ihn mit",
+   "gehen ihm (richtig) an die substanz",
+   "belasten ihn"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1165": {
   "core_en": "get the ball rolling",
@@ -2696,8 +2802,13 @@
    "nicht so schnell",
    "immer langsam",
    "eins nach dem anderen",
-   "nun (mal) langsam"
-  ]
+   "nun (mal) langsam",
+   "immer mit der ruhe",
+   "nicht zu früh freuen",
+   "den tag nicht vor dem abend loben"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1188": {
   "core_en": "Sleep on it",
@@ -2722,7 +2833,9 @@
    "besser sie als ich",
    "also ich nicht",
    "ohne mich"
-  ]
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1190": {
   "core_en": "Dig in",
@@ -2758,19 +2871,26 @@
    "und zu allem übel",
    "zu allem übel",
    "und dann auch noch",
-   "und als krönung"
-  ]
+   "und als krönung",
+   "und dann [anything] auch noch",
+   "und als ob das nicht genug wäre",
+   "und zur krönung"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1193": {
   "core_en": "What with",
   "accept": [
-   "zwischen [anything] und",
-   "bei [anything] und",
    "mit [anything] und",
+   "bei [anything] und",
    "wegen [anything] und",
-   "durch [anything] und"
+   "durch [anything] und",
+   "zwischen [anything] und"
   ],
-  "weak": true
+  "weak": true,
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1194": {
   "core_en": "in spite of",
@@ -2791,7 +2911,9 @@
    "eher im gegenteil",
    "ganz und gar nicht",
    "(ganz) im gegenteil sogar"
-  ]
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1196": {
   "core_en": "in particular",
@@ -2834,11 +2956,11 @@
    "sozusagen",
    "gewissermaßen",
    "quasi",
-   "sogesagt",
    "wenn man so will",
-   "so gesehen",
-   "wie man (so) schön sagt"
-  ]
+   "wie man (so) (schön) sagt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
  },
  "ENG_CHUNK_1200": {
   "core_en": "last but not least",

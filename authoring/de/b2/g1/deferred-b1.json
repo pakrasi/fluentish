@@ -1,0 +1,258 @@
+[
+ {
+  "id": "je-desto.03",
+  "field": "answer",
+  "before": [
+   "Je größer die Wohnung ist, desto höher ist die Miete.",
+   "Je größer die Wohnung ist, umso höher ist die Miete."
+  ],
+  "after": [
+   "Je größer die Wohnung ist, desto höher ist die Miete.",
+   "Je größer die Wohnung ist, umso höher ist die Miete.",
+   "Je größer die Wohnung, desto höher die Miete.",
+   "Je größer die Wohnung, umso höher die Miete."
+  ],
+  "severity": "error",
+  "why": "the verbless short form is the most natural German and is correct"
+ },
+ {
+  "id": "je-desto.06",
+  "field": "answer",
+  "before": [
+   "Je früher, desto besser.",
+   "Je früher, umso besser."
+  ],
+  "after": [
+   "Je früher, desto besser.",
+   "Je früher, umso besser.",
+   "Je eher, desto besser.",
+   "Je eher, umso besser."
+  ],
+  "severity": "error",
+  "why": "Je eher, desto besser is the stock German saying for this"
+ },
+ {
+  "id": "konnektoren-advanced.06",
+  "field": "task",
+  "before": "Fill the gap.",
+  "after": "Fill the gap with „indem“ or „sodass“.",
+  "severity": "error",
+  "why": "open gap: weshalb, weswegen are also correct here"
+ },
+ {
+  "id": "konnektoren-advanced.08",
+  "field": "task",
+  "before": "Fill the gap.",
+  "after": "Fill the gap with „dennoch“, „indem“ or „sodass“.",
+  "severity": "error",
+  "why": "open gap: jedoch (and doch) are also correct but not listed; constrain the choice"
+ },
+ {
+  "id": "konnektoren-advanced.08",
+  "field": "answer",
+  "before": [
+   "dennoch",
+   "trotzdem",
+   "allerdings"
+  ],
+  "after": [
+   "dennoch"
+  ],
+  "severity": "error",
+  "why": "with the constrained task only dennoch fits"
+ },
+ {
+  "id": "konnektoren-advanced.08",
+  "field": "note",
+  "before": "Contrast + verb directly after: dennoch/trotzdem.",
+  "after": "Contrast: dennoch in position 1, the verb follows directly.",
+  "severity": "improve",
+  "why": "matches the new answer list"
+ },
+ {
+  "id": "zweiteilige-konnektoren.05",
+  "field": "answer",
+  "before": [
+   "aber"
+  ],
+  "after": [
+   "aber",
+   "doch",
+   "jedoch"
+  ],
+  "severity": "error",
+  "why": "zwar … doch / zwar … jedoch are standard and correct in the open gap"
+ },
+ {
+  "id": "zweiteilige-konnektoren.08",
+  "field": "answer",
+  "before": [
+   "Entweder rufst du mich an oder ich rufe dich an.",
+   "Entweder du rufst mich an oder ich rufe dich an.",
+   "Entweder rufen Sie mich an oder ich rufe Sie an.",
+   "Entweder Sie rufen mich an oder ich rufe Sie an."
+  ],
+  "after": [
+   "Entweder rufst du mich an oder ich rufe dich an.",
+   "Entweder du rufst mich an oder ich rufe dich an.",
+   "Entweder rufen Sie mich an oder ich rufe Sie an.",
+   "Entweder Sie rufen mich an oder ich rufe Sie an.",
+   "Entweder rufst du mich an oder ich dich.",
+   "Entweder du rufst mich an oder ich dich.",
+   "Entweder rufen Sie mich an oder ich Sie.",
+   "Entweder Sie rufen mich an oder ich Sie."
+  ],
+  "severity": "error",
+  "why": "the elliptical 'oder ich dich' is the most natural rendering"
+ },
+ {
+  "id": "ENG_CHUNK_0092",
+  "field": "accept",
+  "before": [
+   "allerdings",
+   "wobei man sagen muss",
+   "trotzdem",
+   "dennoch"
+  ],
+  "after": [
+   "allerdings",
+   "wobei man sagen muss",
+   "andererseits",
+   "dafür war",
+   "trotzdem",
+   "dennoch"
+  ],
+  "severity": "improve",
+  "why": "'Dafür war das Personal …' and 'andererseits' are the most idiomatic renderings"
+ },
+ {
+  "id": "ENG_CHUNK_0802",
+  "field": "accept",
+  "before": [
+   "ich verstehe (schon) was du meinst",
+   "ich versteh (schon) was du meinst",
+   "ich verstehe (schon) was sie meinen",
+   "ich verstehe (schon) was ihr meint",
+   "ich verstehe deinen punkt",
+   "ich verstehe ihren standpunkt",
+   "ich kann dich (schon) verstehen",
+   "ich kann sie (schon) verstehen"
+  ],
+  "after": [
+   "ich verstehe (schon) was du meinst",
+   "ich versteh (schon) was du meinst",
+   "ich verstehe (schon) was sie meinen",
+   "ich verstehe (schon) was ihr meint",
+   "ich verstehe deinen standpunkt",
+   "ich verstehe ihren standpunkt",
+   "ich kann dich (schon) verstehen",
+   "ich kann sie (schon) verstehen"
+  ],
+  "severity": "improve",
+  "why": "'deinen Punkt verstehen' is an anglicism; use Standpunkt"
+ },
+ {
+  "id": "je-desto.06",
+  "field": "answer",
+  "before": [
+   "Je früher, desto besser.",
+   "Je früher, umso besser."
+  ],
+  "after": [
+   "Je früher, desto besser.",
+   "Je früher, umso besser.",
+   "Je eher, desto besser.",
+   "Je eher, umso besser."
+  ],
+  "severity": "error",
+  "why": "„Je eher, desto besser“ is the set idiom for this; a learner who knows it is marked wrong."
+ },
+ {
+  "id": "konnektoren-advanced.08",
+  "field": "answer",
+  "before": [
+   "dennoch",
+   "trotzdem",
+   "allerdings"
+  ],
+  "after": [
+   "dennoch",
+   "trotzdem",
+   "allerdings",
+   "jedoch"
+  ],
+  "severity": "error",
+  "why": "jedoch in position 1 with inversion (…, jedoch hat er mir gefallen) is standard written German."
+ },
+ {
+  "id": "konnektoren-advanced.08",
+  "field": "note",
+  "before": "Contrast + verb directly after: dennoch/trotzdem.",
+  "after": "Contrast + verb directly after: dennoch/trotzdem (also jedoch, allerdings).",
+  "severity": "improve",
+  "why": "The note should cover every accepted answer."
+ },
+ {
+  "id": "zweiteilige-konnektoren.05",
+  "field": "answer",
+  "before": [
+   "aber"
+  ],
+  "after": [
+   "aber",
+   "doch",
+   "jedoch"
+  ],
+  "severity": "error",
+  "why": "zwar … doch / zwar … jedoch are standard; open gap task."
+ },
+ {
+  "id": "ENG_CHUNK_0092",
+  "field": "accept",
+  "before": [
+   "allerdings",
+   "wobei man sagen muss",
+   "trotzdem",
+   "dennoch"
+  ],
+  "after": [
+   "allerdings",
+   "wobei man sagen muss",
+   "trotzdem",
+   "dennoch",
+   "jedoch",
+   "andererseits",
+   "wobei"
+  ],
+  "severity": "improve",
+  "why": "jedoch, andererseits and colloquial „Wobei das Personal …“ are natural renderings."
+ },
+ {
+  "id": "ENG_CHUNK_0802",
+  "field": "accept",
+  "before": [
+   "ich verstehe (schon) was du meinst",
+   "ich versteh (schon) was du meinst",
+   "ich verstehe (schon) was sie meinen",
+   "ich verstehe (schon) was ihr meint",
+   "ich verstehe deinen punkt",
+   "ich verstehe ihren standpunkt",
+   "ich kann dich (schon) verstehen",
+   "ich kann sie (schon) verstehen"
+  ],
+  "after": [
+   "ich verstehe (schon) was du meinst",
+   "ich versteh (schon) was du meinst",
+   "ich verstehe (schon) was sie meinen",
+   "ich verstehe (schon) was ihr meint",
+   "ich verstehe deinen punkt",
+   "ich verstehe deinen standpunkt",
+   "ich verstehe ihren standpunkt",
+   "ich kann dich (schon) verstehen",
+   "ich kann sie (schon) verstehen",
+   "ich kann das (schon) nachvollziehen"
+  ],
+  "severity": "improve",
+  "why": "du form of Standpunkt and „Ich kann das schon nachvollziehen“ are natural."
+ }
+]

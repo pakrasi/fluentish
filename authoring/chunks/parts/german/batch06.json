@@ -431,8 +431,12 @@
 {
 "id": "ENG_CHUNK_0580",
 "t": "Das Lustige ist, [Satz] / Das Witzige daran ist, dass [Satz]",
-"ex": "Das Witzige ist, dass wir uns schon mal getroffen hatten und uns beide nicht erinnert haben.",
-"n": "After \"dass\" the verb goes to the end."
+"ex": "Das Witzige ist, dass wir uns schon mal getroffen hatten und sich keiner von uns daran erinnern konnte.",
+"n": "After \"dass\" the verb goes to the end.",
+"fn": "narrate",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0581",
@@ -472,7 +476,11 @@
 {
 "id": "ENG_CHUNK_0588",
 "t": "Besser spät als nie",
-"ex": "Du rufst endlich an! Besser spät als nie."
+"ex": "Du rufst endlich an! Besser spät als nie.",
+"fn": "social",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0589",
@@ -488,7 +496,11 @@
 "id": "ENG_CHUNK_0591",
 "t": "sonst",
 "ex": "Fahr jetzt los, sonst stehst du im Stau.",
-"n": "\"sonst\" takes position 1 of its clause: verb follows (sonst stehst du)."
+"n": "\"sonst\" takes position 1 of its clause: verb follows (sonst stehst du).",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0592",
@@ -516,7 +528,11 @@
 "id": "ENG_CHUNK_0596",
 "t": "egal, was passiert / auf jeden Fall",
 "ex": "Ich bin da, egal, was passiert.",
-"n": "\"was passiert\" is verb-final."
+"n": "\"was passiert\" is verb-final.",
+"fn": "opinion",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0597",

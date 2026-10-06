@@ -36,7 +36,11 @@
 {
 "id": "ENG_CHUNK_0307",
 "t": "Du hast jedes Recht, [zu + Infinitiv] / Du hast allen Grund, [zu + Infinitiv]",
-"ex": "Du hast allen Grund, sauer zu sein."
+"ex": "Du hast allen Grund, sauer zu sein.",
+"fn": "react",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0308",
@@ -176,7 +180,11 @@
 "id": "ENG_CHUNK_0331",
 "t": "Ich hätte nie gedacht, dass ich [Satz]",
 "ex": "Ich hätte nie gedacht, dass mir Laufen so viel Spaß macht.",
-"n": "After \"dass\" the verb goes to the end."
+"n": "After \"dass\" the verb goes to the end.",
+"fn": "react",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0332",
@@ -509,7 +517,11 @@
 "id": "ENG_CHUNK_0393",
 "t": "Als [Satz], [Verb] schon ... / Bis [Satz]",
 "ex": "Als wir ankamen, hatte der Film schon angefangen.",
-"n": "\"als\" is a subordinator: verb to the end; the main clause then starts with its verb. Plusquamperfekt for the earlier event."
+"n": "\"als\" is a subordinator: verb to the end; the main clause then starts with its verb. Plusquamperfekt for the earlier event.",
+"fn": "narrate",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0394",
@@ -520,7 +532,11 @@
 "id": "ENG_CHUNK_0395",
 "t": "Jetzt, wo [Satz] / Seitdem [Satz]",
 "ex": "Jetzt, wo die Kinder älter sind, reisen wir mehr.",
-"n": "\"wo\" here is a subordinator: verb to the end; then the main verb comes first."
+"n": "\"wo\" here is a subordinator: verb to the end; then the main verb comes first.",
+"fn": "narrate",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0396",
@@ -532,13 +548,21 @@
 "id": "ENG_CHUNK_0397",
 "t": "So oder so",
 "ex": "Wir können den Bus nehmen oder laufen. So oder so sind es zwanzig Minuten.",
-"n": "Takes position 1: verb follows."
+"n": "Takes position 1: verb follows.",
+"fn": "conclude",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0398",
-"t": "Letzten Endes / Am Ende des Tages",
+"t": "Letzten Endes / Letztendlich",
 "ex": "Letzten Endes ist es deine Entscheidung.",
-"n": "\"Am Ende des Tages\" is a common anglicism; \"letzten Endes\" is safer."
+"n": "Avoid the anglicism \"am Ende des Tages\"; say \"letzten Endes\" or \"letztendlich\".",
+"fn": "conclude",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0399",

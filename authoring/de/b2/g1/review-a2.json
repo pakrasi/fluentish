@@ -1,0 +1,5074 @@
+[
+ {
+  "id": "je-desto.12",
+  "field": "answer",
+  "before": [
+   "Je mehr ich darüber lese, desto weniger verstehe ich es.",
+   "Je mehr ich darüber lese, umso weniger verstehe ich es.",
+   "Je mehr ich darüber lese, desto weniger verstehe ich das.",
+   "Je mehr ich darüber lese, umso weniger verstehe ich das."
+  ],
+  "after": [
+   "Je mehr ich darüber lese, desto weniger verstehe ich es.",
+   "Je mehr ich darüber lese, umso weniger verstehe ich es.",
+   "Je mehr ich darüber lese, desto weniger verstehe ich das.",
+   "Je mehr ich darüber lese, umso weniger verstehe ich das.",
+   "Je mehr ich darüber lese, desto weniger verstehe ich davon.",
+   "Je mehr ich darüber lese, umso weniger verstehe ich davon."
+  ],
+  "severity": "error",
+  "why": "'verstehe ich davon' is a very natural native rendering"
+ },
+ {
+  "id": "konnektoren-advanced.03",
+  "field": "answer",
+  "before": [
+   "Das Hotel war teuer, dennoch haben wir dort übernachtet.",
+   "Das Hotel war teuer. Dennoch haben wir dort übernachtet.",
+   "Das Hotel war teuer, und dennoch haben wir dort übernachtet.",
+   "Das Hotel war teuer, wir haben dort dennoch übernachtet.",
+   "Das Hotel war teuer. Wir haben dort dennoch übernachtet.",
+   "Das Hotel war teuer, wir haben dennoch dort übernachtet.",
+   "Das Hotel war teuer. Wir haben dennoch dort übernachtet."
+  ],
+  "after": [
+   "Das Hotel war teuer, dennoch haben wir dort übernachtet.",
+   "Das Hotel war teuer. Dennoch haben wir dort übernachtet.",
+   "Das Hotel war teuer, und dennoch haben wir dort übernachtet.",
+   "Das Hotel war teuer, wir haben dort dennoch übernachtet.",
+   "Das Hotel war teuer. Wir haben dort dennoch übernachtet.",
+   "Das Hotel war teuer, wir haben dennoch dort übernachtet.",
+   "Das Hotel war teuer. Wir haben dennoch dort übernachtet.",
+   "Das Hotel war teuer, aber dennoch haben wir dort übernachtet.",
+   "Das Hotel war teuer, aber wir haben dort dennoch übernachtet."
+  ],
+  "severity": "error",
+  "why": "'aber dennoch' is standard and common; und-dennoch is already accepted"
+ },
+ {
+  "id": "konnektoren-advanced.11",
+  "field": "answer",
+  "before": [
+   "Die Kritik war berechtigt, dennoch wurde sie kaum beachtet.",
+   "Die Kritik war berechtigt. Dennoch wurde sie kaum beachtet.",
+   "Die Kritik war berechtigt, und dennoch wurde sie kaum beachtet.",
+   "Die Kritik war berechtigt, sie wurde dennoch kaum beachtet.",
+   "Die Kritik war berechtigt. Sie wurde dennoch kaum beachtet."
+  ],
+  "after": [
+   "Die Kritik war berechtigt, dennoch wurde sie kaum beachtet.",
+   "Die Kritik war berechtigt. Dennoch wurde sie kaum beachtet.",
+   "Die Kritik war berechtigt, und dennoch wurde sie kaum beachtet.",
+   "Die Kritik war berechtigt, sie wurde dennoch kaum beachtet.",
+   "Die Kritik war berechtigt. Sie wurde dennoch kaum beachtet.",
+   "Die Kritik war berechtigt, aber dennoch wurde sie kaum beachtet.",
+   "Die Kritik war berechtigt, aber sie wurde dennoch kaum beachtet."
+  ],
+  "severity": "error",
+  "why": "'aber dennoch' is standard and common; und-dennoch is already accepted"
+ },
+ {
+  "id": "konnektoren-advanced.07",
+  "field": "answer",
+  "before": [
+   "Man kann Strom sparen, indem man das Licht ausmacht.",
+   "Indem man das Licht ausmacht.",
+   "Man spart Strom, indem man das Licht ausmacht."
+  ],
+  "after": [
+   "Man kann Strom sparen, indem man das Licht ausmacht.",
+   "Indem man das Licht ausmacht.",
+   "Man spart Strom, indem man das Licht ausmacht.",
+   "Strom kann man sparen, indem man das Licht ausmacht.",
+   "Strom spart man, indem man das Licht ausmacht."
+  ],
+  "severity": "error",
+  "why": "fronted object is a natural answer to the question"
+ },
+ {
+  "id": "zweiteilige-konnektoren.09",
+  "field": "answer",
+  "before": [
+   "Einerseits ist das Stadtleben spannend, andererseits ist es anstrengend.",
+   "Einerseits ist das Stadtleben spannend, andererseits ist es auch anstrengend.",
+   "Einerseits ist das Stadtleben spannend, andererseits ist es aber auch anstrengend.",
+   "Einerseits ist das Stadtleben spannend, andererseits anstrengend.",
+   "Einerseits ist das Stadtleben spannend, andererseits auch anstrengend."
+  ],
+  "after": [
+   "Einerseits ist das Stadtleben spannend, andererseits ist es anstrengend.",
+   "Einerseits ist das Stadtleben spannend, andererseits ist es auch anstrengend.",
+   "Einerseits ist das Stadtleben spannend, andererseits ist es aber auch anstrengend.",
+   "Einerseits ist das Stadtleben spannend, andererseits anstrengend.",
+   "Einerseits ist das Stadtleben spannend, andererseits auch anstrengend.",
+   "Einerseits ist das Stadtleben spannend, andererseits aber auch anstrengend."
+  ],
+  "severity": "error",
+  "why": "elliptical form with 'aber auch' missing (full form with aber auch is accepted)"
+ },
+ {
+  "id": "passiv-mit-modalverben.07",
+  "field": "answer",
+  "before": [
+   "Das Fenster kann nicht geöffnet werden.",
+   "Das Fenster lässt sich nicht öffnen.",
+   "Man kann das Fenster nicht öffnen.",
+   "Das Fenster kann man nicht öffnen."
+  ],
+  "after": [
+   "Das Fenster kann nicht geöffnet werden.",
+   "Das Fenster lässt sich nicht öffnen.",
+   "Man kann das Fenster nicht öffnen.",
+   "Das Fenster kann man nicht öffnen.",
+   "Das Fenster kann nicht aufgemacht werden.",
+   "Das Fenster lässt sich nicht aufmachen.",
+   "Man kann das Fenster nicht aufmachen.",
+   "Das Fenster kann man nicht aufmachen."
+  ],
+  "severity": "error",
+  "why": "aufmachen is the everyday verb for open; a native would type it"
+ },
+ {
+  "id": "pronomen-es.08",
+  "field": "answer",
+  "before": [
+   "es"
+  ],
+  "after": [
+   "es",
+   "das"
+  ],
+  "severity": "error",
+  "why": "'Ich finde das schade, dass du gehst' is correct and very common (das as correlate)"
+ },
+ {
+  "id": "pronomen-es.10",
+  "field": "answer",
+  "before": [
+   "es"
+  ],
+  "after": [
+   "es",
+   "das"
+  ],
+  "severity": "error",
+  "why": "'Ich halte das für wichtig, dass …' is correct (das as correlate)"
+ },
+ {
+  "id": "pronomen-es.08",
+  "field": "note",
+  "before": "es points forward to the dass-clause.",
+  "after": "es (in speech also das) points forward to the dass-clause.",
+  "severity": "improve",
+  "why": "note must match the widened key"
+ },
+ {
+  "id": "pronomen-es.10",
+  "field": "note",
+  "before": "es points forward to the dass-clause (etwas für wichtig halten).",
+  "after": "es (or stressed das) points forward to the dass-clause (etwas für wichtig halten).",
+  "severity": "improve",
+  "why": "note must match the widened key"
+ },
+ {
+  "id": "partizip-als-adjektiv.01",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "weinend",
+    "needs an ending before the noun: weinende"
+   ],
+   [
+    "weinenden",
+    "after das (nominative neuter): -e"
+   ],
+   [
+    "geweinte",
+    "Partizip II = finished; the child is crying now"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "partizip-als-adjektiv.02",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "gebrauchte",
+    "after ein (accusative neuter): -es"
+   ],
+   [
+    "gebrauchendes",
+    "Partizip I = active; the bike has been used"
+   ],
+   [
+    "gebraucht",
+    "needs an ending before the noun"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "partizip-als-adjektiv.03",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "geöffneten",
+    "after die (accusative feminine singular): -e"
+   ],
+   [
+    "öffnende",
+    "Partizip I would mean the door opens something"
+   ],
+   [
+    "geöffnet",
+    "needs an ending before the noun"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "partizip-als-adjektiv.04",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "zitternde",
+    "no article, dative feminine: -er"
+   ],
+   [
+    "zitterndem",
+    "-em is masculine/neuter; Stimme is feminine"
+   ],
+   [
+    "gezitterter",
+    "Partizip I: the voice is trembling now"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "partizip-als-adjektiv.05",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "ausgefüllten",
+    "after das (accusative neuter): -e"
+   ],
+   [
+    "ausfüllende",
+    "Partizip I = filling in; the form has been filled in"
+   ],
+   [
+    "geausfüllte",
+    "ge- goes after the prefix: ausgefüllte"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "partizip-als-adjektiv.06",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "steigende",
+    "plural after die: -en"
+   ],
+   [
+    "gestiegene",
+    "plural after die: -en"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "partizip-als-adjektiv.07",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "der gerade ankommender Zug",
+    "after der: -e"
+   ],
+   [
+    "der ankommende gerade Zug",
+    "gerade goes before the participle"
+   ],
+   [
+    "der gerade angekommene Zug",
+    "Partizip II = already arrived; the train is arriving now"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "partizip-als-adjektiv.08",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "die geschriebene Briefe",
+    "plural after die: -en"
+   ],
+   [
+    "die schreibenden Briefe",
+    "Partizip I = active; letters do not write"
+   ],
+   [
+    "die geschriebenden Briefe",
+    "no -d in Partizip II: geschriebenen"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "konnektoren-advanced.01",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Er hat viel gelernt, sodass er hat die Prüfung bestanden.",
+    "verb last after sodass"
+   ],
+   [
+    "Er hat viel gelernt, sodass hat er die Prüfung bestanden.",
+    "sodass is a conjunction: no inversion"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "konnektoren-advanced.02",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Man lernt eine Sprache gut, indem man spricht jeden Tag.",
+    "verb last after indem"
+   ],
+   [
+    "Man lernt eine Sprache gut, indem spricht man jeden Tag.",
+    "indem is a conjunction: no inversion"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "konnektoren-advanced.03",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Das Hotel war teuer, dennoch wir haben dort übernachtet.",
+    "verb directly after dennoch"
+   ],
+   [
+    "Das Hotel war teuer, dennoch wir dort übernachtet haben.",
+    "dennoch does not send the verb to the end"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "konnektoren-advanced.04",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Die Wohnung ist schön, allerdings sie ist sehr laut.",
+    "verb directly after allerdings"
+   ],
+   [
+    "Die Wohnung ist schön, allerdings sie sehr laut ist.",
+    "allerdings does not send the verb to the end"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "konnektoren-advanced.05",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "sodass",
+    "the clause is the means, not the result"
+   ],
+   [
+    "damit",
+    "damit = purpose"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "konnektoren-advanced.07",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Indem man macht das Licht aus.",
+    "verb last after indem: ausmacht"
+   ],
+   [
+    "Man kann Strom sparen, indem man das Licht ausmachen.",
+    "conjugate: man macht … aus → ausmacht"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "konjunktiv-1.01",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Er sagt, er ist krank.",
+    "indicative, not Konjunktiv I"
+   ],
+   [
+    "Er sagt, er wäre krank.",
+    "Konjunktiv II; sei is distinct"
+   ],
+   [
+    "Er sagt, dass er sei krank.",
+    "verb last in the dass-clause"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "konjunktiv-1.02",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Sie sagt, sie hat keine Zeit.",
+    "indicative, not Konjunktiv I"
+   ],
+   [
+    "Sie sagt, sie hätte keine Zeit.",
+    "Konjunktiv II; habe is distinct"
+   ],
+   [
+    "Sie sagt, dass sie habe keine Zeit.",
+    "verb last in the dass-clause"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "konjunktiv-1.03",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Der Chef sagt, das Projekt beginnt im Mai.",
+    "indicative, not Konjunktiv I"
+   ],
+   [
+    "Der Chef sagt, das Projekt begänne im Mai.",
+    "Konjunktiv II; beginne is distinct"
+   ],
+   [
+    "Der Chef sagt, dass das Projekt beginne im Mai.",
+    "verb last in the dass-clause"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "konjunktiv-1.04",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "beruht",
+    "indicative"
+   ],
+   [
+    "beruhte",
+    "Präteritum / Konjunktiv II, not Konjunktiv I"
+   ],
+   [
+    "beruhen",
+    "er/sie/es: beruhe"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "konjunktiv-1.05",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "hat",
+    "indicative"
+   ],
+   [
+    "hätte",
+    "Konjunktiv II; habe is distinct"
+   ],
+   [
+    "hatte",
+    "indicative past"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "konjunktiv-1.06",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "sind",
+    "indicative"
+   ],
+   [
+    "wären",
+    "Konjunktiv II; seien is distinct"
+   ],
+   [
+    "sei",
+    "plural subject: seien"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "konjunktiv-1.07",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Er sagt, er kann morgen kommen.",
+    "indicative, not Konjunktiv I"
+   ],
+   [
+    "Er sagt, er könnte morgen kommen.",
+    "Konjunktiv II; könne is distinct"
+   ],
+   [
+    "Er sagt, dass er könne morgen kommen.",
+    "verb last in the dass-clause"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "konjunktiv-1.08",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Sie sagt, sie kommt später.",
+    "indicative, not Konjunktiv I"
+   ],
+   [
+    "Sie sagt, sie käme später.",
+    "Konjunktiv II; komme is distinct"
+   ],
+   [
+    "Sie sagt, ich komme später.",
+    "the pronoun changes to sie"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "konjunktiv-2-vergangenheit.01",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Wenn ich Zeit gehabt hatte, wäre ich gekommen.",
+    "hatte (indicative) for hätte"
+   ],
+   [
+    "Wenn ich Zeit gehabt hätte, hätte ich gekommen.",
+    "kommen takes sein: wäre"
+   ],
+   [
+    "Wenn ich Zeit hätte gehabt, wäre ich gekommen.",
+    "order in the wenn-clause: gehabt hätte"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "konjunktiv-2-vergangenheit.02",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "warst",
+    "indicative"
+   ],
+   [
+    "hättest",
+    "aufstehen takes sein"
+   ],
+   [
+    "bist",
+    "indicative present"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "konjunktiv-2-vergangenheit.03",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "hatte",
+    "indicative: but you didn't ask, so it did not happen"
+   ],
+   [
+    "wäre",
+    "helfen takes haben"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "konjunktiv-2-vergangenheit.04",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Ich hätte mehr lernen gesollt.",
+    "double infinitive: lernen sollen"
+   ],
+   [
+    "Ich hätte mehr gelernt sollen.",
+    "infinitive, not Partizip II: lernen sollen"
+   ],
+   [
+    "Ich hatte mehr lernen sollen.",
+    "hatte (indicative) for hätte"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "konjunktiv-2-vergangenheit.05",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "wäre",
+    "denken takes haben"
+   ],
+   [
+    "hätten",
+    "subject ich: hätte"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "konjunktiv-2-vergangenheit.06",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Wenn ich das gewusst hatte, wäre ich gekommen.",
+    "hatte (indicative) for hätte"
+   ],
+   [
+    "Wenn ich das gewusst hätte, hätte ich gekommen.",
+    "kommen takes sein: wäre"
+   ],
+   [
+    "Wenn ich das gewusst hätte, würde ich gekommen.",
+    "past: wäre … gekommen"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "konjunktiv-2-vergangenheit.07",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Ich wünschte, ich hätte mitgefahren.",
+    "mitfahren takes sein"
+   ],
+   [
+    "Ich wünschte, ich war mitgefahren.",
+    "indicative; a wish needs Konjunktiv II"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "konjunktiv-2-vergangenheit.08",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "wäre",
+    "verpassen takes haben"
+   ],
+   [
+    "hätten",
+    "subject ich: hätte"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "nomen-verb-verbindungen.01",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "machen",
+    "calque of make a decision"
+   ],
+   [
+    "nehmen",
+    "calque of take a decision"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "nomen-verb-verbindungen.02",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "fragen",
+    "eine Frage stellen"
+   ],
+   [
+    "machen",
+    "eine Frage stellen"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "nomen-verb-verbindungen.03",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "machen",
+    "ein Gespräch führen"
+   ],
+   [
+    "halten",
+    "eine Rede halten, but ein Gespräch führen"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "nomen-verb-verbindungen.04",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Macht",
+    "in Kraft treten"
+   ],
+   [
+    "Wirkung",
+    "in Kraft treten"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "nomen-verb-verbindungen.05",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "gemacht",
+    "einen Rat geben"
+   ],
+   [
+    "gesagt",
+    "einen Rat geben"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "nomen-verb-verbindungen.06",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Der Raum steht Sie zur Verfügung.",
+    "dative: Ihnen"
+   ],
+   [
+    "Der Raum steht Ihnen zu Verfügung.",
+    "zur (zu der) Verfügung"
+   ],
+   [
+    "Der Raum ist Ihnen zur Verfügung.",
+    "the verb is stehen"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "nomen-verb-verbindungen.07",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "geben",
+    "Rücksicht nehmen"
+   ],
+   [
+    "machen",
+    "Rücksicht nehmen"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "nomen-verb-verbindungen.08",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "gegeben",
+    "in Aussicht stellen"
+   ],
+   [
+    "gesetzt",
+    "in Aussicht stellen"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "modalpartikeln.01",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "ja",
+    "ja would agree with the negative question"
+   ],
+   [
+    "nein",
+    "nein would confirm you have no time"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "modalpartikeln.02",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Wo denn wohnst du?",
+    "the particle goes after verb and subject"
+   ],
+   [
+    "Denn wo wohnst du?",
+    "a particle does not stand in position 1"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "modalpartikeln.03",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Gib mal mir das Salz.",
+    "the particle goes after the unstressed pronoun"
+   ],
+   [
+    "Mal gib mir das Salz.",
+    "a particle does not stand in position 1"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "modalpartikeln.04",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Du ja bist schon da!",
+    "the particle goes after the verb"
+   ],
+   [
+    "Du bist schon ja da!",
+    "ja comes before schon"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "modalpartikeln.05",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Wie eigentlich heißt du?",
+    "the particle goes after verb and subject"
+   ],
+   [
+    "Wie du heißt eigentlich?",
+    "main-clause question: verb second"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "modalpartikeln.06",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Komm mit doch!",
+    "the particle goes before the separable prefix"
+   ],
+   [
+    "Komm denn mit!",
+    "denn is not used in requests"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "modalpartikeln.08",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Das habe ich dir gesagt doch!",
+    "the particle goes before the participle"
+   ],
+   [
+    "Das doch habe ich dir gesagt!",
+    "the particle goes after the verb"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "passiv-mit-modalverben.01",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Das Formular muss ausgefüllt worden.",
+    "werden, not worden, after a modal"
+   ],
+   [
+    "Das Formular muss ausfüllen werden.",
+    "Partizip II needed: ausgefüllt"
+   ],
+   [
+    "Das Formular wird ausgefüllt müssen.",
+    "the modal is the finite verb: muss … ausgefüllt werden"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "passiv-mit-modalverben.02",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Das Problem kann gelöst worden.",
+    "werden, not worden, after a modal"
+   ],
+   [
+    "Das Problem kann lösen werden.",
+    "Partizip II needed: gelöst"
+   ],
+   [
+    "Das Problem kann gelöst wird.",
+    "infinitive werden after the modal"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "passiv-mit-modalverben.03",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Hier darf es nicht geparkt werden.",
+    "es must go when hier takes position 1"
+   ],
+   [
+    "Hier darf nicht geparkt worden.",
+    "werden, not worden, after a modal"
+   ],
+   [
+    "Hier darf nicht parken werden.",
+    "Partizip II needed: geparkt"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "passiv-mit-modalverben.04",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Die Tabletten soll nach dem Essen genommen werden.",
+    "plural: sollen"
+   ],
+   [
+    "Die Tabletten sollen nach dem Essen genommen worden.",
+    "werden, not worden, after a modal"
+   ],
+   [
+    "Die Tabletten sollen nach dem Essen nehmen werden.",
+    "Partizip II needed: genommen"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "passiv-mit-modalverben.05",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "worden",
+    "after a modal: werden"
+   ],
+   [
+    "wird",
+    "infinitive needed after muss"
+   ],
+   [
+    "geworden",
+    "the passive uses werden/worden, not geworden"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "passiv-mit-modalverben.06",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Der Termin musste verschoben worden.",
+    "werden, not worden, after a modal"
+   ],
+   [
+    "Der Termin musste verschieben werden.",
+    "Partizip II needed: verschoben"
+   ],
+   [
+    "Der Termin wurde verschoben werden müssen.",
+    "the modal carries the tense: musste"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "passiv-mit-modalverben.07",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Das Fenster kann nicht geöffnet worden.",
+    "werden, not worden, after a modal"
+   ],
+   [
+    "Das Fenster kann nicht öffnen.",
+    "öffnen needs an object: passive or sich lassen"
+   ],
+   [
+    "Das Fenster lässt nicht öffnen.",
+    "sich lassen: lässt sich"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "passiv-mit-modalverben.08",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "müssen",
+    "singular subject: muss"
+   ],
+   [
+    "musst",
+    "er/sie/es: muss"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "zustandspassiv.01",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Die Tür hat geschlossen.",
+    "state: sein + Partizip II"
+   ],
+   [
+    "Die Tür ist geschließt.",
+    "Partizip II of schließen: geschlossen"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "zustandspassiv.02",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Das Geschäft ist geöffnen.",
+    "Partizip II: geöffnet"
+   ],
+   [
+    "Das Geschäft ist geöffnet geworden.",
+    "the state is just ist + Partizip II (passive Perfekt uses worden)"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "zustandspassiv.03",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Der Tisch hat reserviert.",
+    "state: sein + Partizip II"
+   ],
+   [
+    "Der Tisch ist reserviert geworden.",
+    "the state is just ist + Partizip II (passive Perfekt uses worden)"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "zustandspassiv.04",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "hat",
+    "state: sein + Partizip II"
+   ],
+   [
+    "sind",
+    "singular subject: ist"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "zustandspassiv.05",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "ist",
+    "gestern: past, war"
+   ],
+   [
+    "hatte",
+    "sein, not haben"
+   ],
+   [
+    "wäre",
+    "no Konjunktiv here"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "zustandspassiv.06",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Das Problem hat gelöst.",
+    "state: sein + Partizip II"
+   ],
+   [
+    "Das Problem ist gelöst geworden.",
+    "the state is just ist gelöst"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "zustandspassiv.07",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "ausfüllt",
+    "Partizip II: ausgefüllt"
+   ],
+   [
+    "geausfüllt",
+    "ge- goes after the prefix: ausgefüllt"
+   ],
+   [
+    "ausgefüllte",
+    "no ending after sein"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "zustandspassiv.08",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Die Fenster ist geputzt.",
+    "plural: sind"
+   ],
+   [
+    "Die Fenster haben geputzt.",
+    "state: sein + Partizip II"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "praepositionen-genitiv.01",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "trotz",
+    "the rain is the reason: wegen"
+   ],
+   [
+    "statt",
+    "statt = instead of"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "praepositionen-genitiv.02",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "wegen",
+    "contrast needed: trotz"
+   ],
+   [
+    "während",
+    "contrast needed: trotz"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "praepositionen-genitiv.04",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "während",
+    "a deadline: innerhalb"
+   ],
+   [
+    "wegen",
+    "a deadline: innerhalb"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "praepositionen-genitiv.05",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "trotz",
+    "instead of: statt"
+   ],
+   [
+    "wegen",
+    "instead of: statt"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "praepositionen-genitiv.06",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "die viele",
+    "genitive feminine: der vielen"
+   ],
+   [
+    "der viele",
+    "adjective ending after der: -en"
+   ],
+   [
+    "den vielen",
+    "Arbeit is feminine singular: der vielen"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "praepositionen-genitiv.07",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "die lange",
+    "genitive: der langen"
+   ],
+   [
+    "der lange",
+    "adjective ending after der: -en"
+   ],
+   [
+    "des langen",
+    "Verspätung is feminine: der langen"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "praepositionen-genitiv.08",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "während die Woche",
+    "während + genitive: der Woche"
+   ],
+   [
+    "während des Woche",
+    "Woche is feminine: der Woche"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "pronomen-es.01",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "er",
+    "weather verbs take es"
+   ],
+   [
+    "das",
+    "weather verbs take es"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "pronomen-es.02",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "du",
+    "es is the subject: es geht dir"
+   ],
+   [
+    "dich",
+    "es is the subject: es geht dir"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "pronomen-es.03",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "sie",
+    "es gibt"
+   ],
+   [
+    "da",
+    "es gibt needs es"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "pronomen-es.04",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Heute es regnet.",
+    "verb second"
+   ],
+   [
+    "Heute regnet.",
+    "weather es must stay"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "pronomen-es.05",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "In der Stadt gibt viele Cafés.",
+    "es gibt keeps its es"
+   ],
+   [
+    "In der Stadt es gibt viele Cafés.",
+    "verb second"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "pronomen-es.06",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Viele Leute kamen es zur Party.",
+    "the placeholder es disappears"
+   ],
+   [
+    "Viele Leute es kamen zur Party.",
+    "verb second, and no es"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "pronomen-es.07",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Es ist über Geld.",
+    "calque: es geht um"
+   ],
+   [
+    "Es geht über Geld.",
+    "gehen um, not über"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "pronomen-es.08",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "ihn",
+    "the object is the dass-clause: es"
+   ],
+   [
+    "sie",
+    "the object is the dass-clause: es"
+   ]
+  ],
+  "severity": "improve",
+  "why": "no near misses yet"
+ },
+ {
+  "id": "ENG_CHUNK_0008",
+  "field": "accept",
+  "before": [
+   "ich wollte (schon) lange",
+   "ich wollte (dich) (schon) seit",
+   "ich wollte [x] (schon) lange",
+   "ich wollte [x] (schon) seit",
+   "ich hatte (schon) lange vor",
+   "ich wollte (schon) ewig",
+   "ich wollte [x] (schon) die ganze zeit",
+   "ich wollte [x] schon längst"
+  ],
+  "after": [
+   "ich wollte (schon) lange",
+   "ich wollte (dich) (schon) seit",
+   "ich wollte [x] (schon) lange",
+   "ich wollte [x] (schon) seit",
+   "ich hatte (schon) lange vor",
+   "ich wollte (schon) ewig",
+   "ich wollte [x] (schon) die ganze zeit",
+   "ich wollte [x] schon längst",
+   "ich will [x] (schon) seit",
+   "ich will (dich) (schon) seit",
+   "ich habe (schon) seit wochen vor",
+   "ich hab (schon) seit wochen vor"
+  ],
+  "severity": "error",
+  "why": "present 'Ich will dich schon seit Wochen anrufen' is the most natural native form; 'habe … vor' only accepted in the past"
+ },
+ {
+  "id": "ENG_CHUNK_0009",
+  "field": "accept",
+  "before": [
+   "es hat keinen sinn",
+   "es bringt nichts",
+   "das hat keinen sinn",
+   "das bringt nichts",
+   "es lohnt sich nicht",
+   "hat keinen sinn",
+   "bringt nichts",
+   "hat keinen zweck",
+   "macht keinen sinn"
+  ],
+  "after": [
+   "es hat keinen sinn",
+   "es bringt nichts",
+   "das hat keinen sinn",
+   "das bringt nichts",
+   "es lohnt sich nicht",
+   "hat keinen sinn",
+   "bringt nichts",
+   "hat keinen zweck",
+   "macht keinen sinn",
+   "es ist sinnlos",
+   "das ist sinnlos",
+   "es ist zwecklos",
+   "lohnt sich nicht"
+  ],
+  "severity": "error",
+  "why": "'Es ist sinnlos/zwecklos zu warten' and 'Warten lohnt sich nicht' are standard"
+ },
+ {
+  "id": "ENG_CHUNK_0269",
+  "field": "accept",
+  "before": [
+   "fairerweise muss man sagen",
+   "fairerweise",
+   "man muss aber sagen",
+   "zugegeben",
+   "gerechterweise"
+  ],
+  "after": [
+   "fairerweise muss man sagen",
+   "fairerweise",
+   "man muss aber sagen",
+   "zugegeben",
+   "gerechterweise",
+   "der fairness halber",
+   "man muss (aber) dazu sagen"
+  ],
+  "severity": "error",
+  "why": "'der Fairness halber' and 'man muss dazu sagen' are the usual native renderings"
+ },
+ {
+  "id": "ENG_CHUNK_0281",
+  "field": "accept",
+  "before": [
+   "sicher ist sicher",
+   "vorsicht ist besser als nachsicht",
+   "man weiß (ja) nie",
+   "lieber auf nummer sicher"
+  ],
+  "after": [
+   "sicher ist sicher",
+   "vorsicht ist besser als nachsicht",
+   "man weiß (ja) nie",
+   "lieber auf nummer sicher",
+   "vorsicht ist die mutter der porzellankiste"
+  ],
+  "severity": "improve",
+  "why": "common idiom with the same function"
+ },
+ {
+  "id": "ENG_CHUNK_0298",
+  "field": "accept",
+  "before": [
+   "das heißt",
+   "was bedeutet dass",
+   "was heißt dass",
+   "das bedeutet",
+   "was heißt"
+  ],
+  "after": [
+   "das heißt",
+   "was bedeutet dass",
+   "was heißt dass",
+   "das bedeutet",
+   "was heißt",
+   "sodass",
+   "so dass"
+  ],
+  "severity": "error",
+  "why": "'…, sodass wir einen Umweg fahren müssen' is a natural rendering"
+ },
+ {
+  "id": "ENG_CHUNK_0307",
+  "field": "accept",
+  "before": [
+   "du hast allen grund",
+   "du hast jedes recht",
+   "sie haben allen grund",
+   "sie haben jedes recht",
+   "du hast das recht",
+   "sie haben das recht",
+   "es ist dein gutes recht",
+   "es ist ihr gutes recht"
+  ],
+  "after": [
+   "du hast das recht",
+   "sie haben das recht",
+   "es ist dein gutes recht",
+   "es ist ihr gutes recht",
+   "du hast (ja) (auch) allen grund",
+   "sie haben (ja) (auch) allen grund",
+   "ihr habt (ja) (auch) allen grund",
+   "du hast (ja) (auch) jedes recht",
+   "sie haben (ja) (auch) jedes recht"
+  ],
+  "severity": "error",
+  "why": "natives add ja/auch (Du hast ja allen Grund); ihr missing"
+ },
+ {
+  "id": "ENG_CHUNK_0307",
+  "field": "t",
+  "before": "Du hast jedes Recht, [zu + Infinitiv] / Du hast allen Grund, [zu + Infinitiv]",
+  "after": "Du hast allen Grund, [zu + Infinitiv] / Es ist dein gutes Recht, [zu + Infinitiv]",
+  "severity": "improve",
+  "why": "'jedes Recht' leans on the English; allen Grund / gutes Recht are the idiomatic forms (ex already uses allen Grund)"
+ },
+ {
+  "id": "ENG_CHUNK_0331",
+  "field": "accept",
+  "before": [
+   "ich hätte nie gedacht",
+   "hätte nie gedacht",
+   "ich hätte niemals gedacht",
+   "ich hätte nie geglaubt",
+   "hätte ich nie gedacht"
+  ],
+  "after": [
+   "ich hätte nie gedacht",
+   "hätte nie gedacht",
+   "ich hätte niemals gedacht",
+   "ich hätte nie geglaubt",
+   "hätte ich nie gedacht",
+   "ich hätte nicht gedacht",
+   "hätte nicht gedacht",
+   "nie hätte ich gedacht",
+   "ich hätte (es) nie für möglich gehalten"
+  ],
+  "severity": "error",
+  "why": "'Ich hätte nicht gedacht, dass …' (without nie) is the most frequent native form"
+ },
+ {
+  "id": "ENG_CHUNK_0395",
+  "field": "accept",
+  "before": [
+   "jetzt wo",
+   "jetzt da",
+   "seitdem",
+   "nun da",
+   "nun wo"
+  ],
+  "after": [
+   "jetzt wo",
+   "jetzt da",
+   "seitdem",
+   "nun da",
+   "nun wo",
+   "seit die",
+   "da [x] jetzt"
+  ],
+  "severity": "error",
+  "why": "conjunction 'seit' (Seit die Kinder älter sind) and 'Da die Kinder jetzt älter sind' are natural"
+ },
+ {
+  "id": "ENG_CHUNK_0398",
+  "field": "accept",
+  "before": [
+   "letzten endes",
+   "letztendlich",
+   "am ende",
+   "schlussendlich",
+   "im endeffekt",
+   "im grunde"
+  ],
+  "after": [
+   "letzten endes",
+   "letztendlich",
+   "am ende",
+   "schlussendlich",
+   "im endeffekt",
+   "im grunde",
+   "letztlich"
+  ],
+  "severity": "error",
+  "why": "letztlich is a standard synonym"
+ },
+ {
+  "id": "ENG_CHUNK_0419",
+  "field": "accept",
+  "before": [
+   "fang (mir) bloß nicht (davon) an",
+   "fang (mir) bloß nicht mit [x] an",
+   "fang (mir) (bloß) nicht damit an",
+   "fangen sie bloß nicht (davon) an",
+   "fang mir nicht mit [x] an",
+   "hör mir (bloß) auf mit",
+   "hör mir (bloß) auf damit",
+   "hör (mir) bloß auf",
+   "hören sie mir auf mit"
+  ],
+  "after": [
+   "fang (mir) bloß nicht (davon) an",
+   "fang (mir) bloß nicht mit [x] an",
+   "fang (mir) (bloß) nicht damit an",
+   "fangen sie bloß nicht (davon) an",
+   "fang mir nicht mit [x] an",
+   "hör mir (bloß) auf mit",
+   "hör mir (bloß) auf damit",
+   "hör (mir) bloß auf",
+   "hören sie mir auf mit",
+   "fang (mir) gar nicht erst",
+   "fangen sie gar nicht erst",
+   "komm mir (bloß) nicht mit"
+  ],
+  "severity": "error",
+  "why": "'Fang gar nicht erst damit an' / 'Komm mir bloß nicht mit Parken' are the most natural forms"
+ },
+ {
+  "id": "ENG_CHUNK_0421",
+  "field": "accept",
+  "before": [
+   "gut dass",
+   "zum glück",
+   "ein glück dass",
+   "wie gut dass",
+   "gott sei dank",
+   "nur gut dass"
+  ],
+  "after": [
+   "gut dass",
+   "zum glück",
+   "ein glück dass",
+   "wie gut dass",
+   "gott sei dank",
+   "nur gut dass",
+   "glücklicherweise"
+  ],
+  "severity": "error",
+  "why": "standard synonym of zum Glück"
+ },
+ {
+  "id": "ENG_CHUNK_0426",
+  "field": "accept",
+  "before": [
+   "das nenne ich (mal)",
+   "das nenn ich (mal)",
+   "das ist mal",
+   "das ist ein richtiges",
+   "das nennt man"
+  ],
+  "after": [
+   "das nenne ich (mal)",
+   "das nenn ich (mal)",
+   "das ist ein richtiges",
+   "das nennt man",
+   "das ist (doch) (ja) (aber) mal"
+  ],
+  "severity": "error",
+  "why": "'Das ist doch mal ein Frühstück!' is very common and was rejected"
+ },
+ {
+  "id": "ENG_CHUNK_0499",
+  "field": "accept",
+  "before": [
+   "so kommen wir",
+   "dann kommen wir",
+   "so sind wir",
+   "dann sind wir",
+   "auf diese weise",
+   "so umgehen wir",
+   "dann umgehen wir",
+   "so vermeiden wir",
+   "dann vermeiden wir",
+   "so stehen wir",
+   "dann stehen wir",
+   "so geraten wir",
+   "dann geraten wir"
+  ],
+  "after": [
+   "so kommen wir",
+   "dann kommen wir",
+   "so sind wir",
+   "dann sind wir",
+   "auf diese weise",
+   "so umgehen wir",
+   "dann umgehen wir",
+   "so vermeiden wir",
+   "dann vermeiden wir",
+   "so stehen wir",
+   "dann stehen wir",
+   "so geraten wir",
+   "dann geraten wir",
+   "dadurch",
+   "so entgehen wir",
+   "dann entgehen wir"
+  ],
+  "severity": "error",
+  "why": "'Dadurch umgehen wir den Stau' / 'So entgehen wir dem Stau' are natural"
+ },
+ {
+  "id": "ENG_CHUNK_0580",
+  "field": "accept",
+  "before": [
+   "das lustige ist",
+   "das witzige ist",
+   "das lustige daran ist",
+   "das witzige daran ist",
+   "das komische ist",
+   "das komische daran ist",
+   "lustigerweise",
+   "witzigerweise"
+  ],
+  "after": [
+   "das lustige ist",
+   "das witzige ist",
+   "das lustige daran ist",
+   "das witzige daran ist",
+   "das komische ist",
+   "das komische daran ist",
+   "lustigerweise",
+   "witzigerweise",
+   "das lustige (daran) war",
+   "das witzige (daran) war",
+   "das komische (daran) war"
+  ],
+  "severity": "error",
+  "why": "in a story natives say 'Das Witzige war, dass …' (past)"
+ },
+ {
+  "id": "ENG_CHUNK_0596",
+  "field": "accept",
+  "before": [
+   "egal was passiert",
+   "egal was ist",
+   "egal was kommt",
+   "(ganz) egal was",
+   "auf jeden fall",
+   "was auch immer passiert",
+   "komme was wolle",
+   "unter allen umständen"
+  ],
+  "after": [
+   "egal was passiert",
+   "egal was ist",
+   "egal was kommt",
+   "(ganz) egal was",
+   "auf jeden fall",
+   "was auch immer passiert",
+   "komme was wolle",
+   "unter allen umständen",
+   "was auch passiert"
+  ],
+  "severity": "error",
+  "why": "'was auch passiert' (without immer) is standard"
+ },
+ {
+  "id": "ENG_CHUNK_0622",
+  "field": "accept",
+  "before": [
+   "ich zeig dir (mal) (schritt für schritt) wie",
+   "ich zeige dir (mal) (schritt für schritt) wie",
+   "ich zeige ihnen (mal) (schritt für schritt) wie",
+   "ich erklär dir (mal)",
+   "ich erkläre dir (mal)",
+   "ich erkläre ihnen (mal)",
+   "ich gehe [x] mit dir durch",
+   "ich gehe [x] mit ihnen durch"
+  ],
+  "after": [
+   "ich erklär dir (mal)",
+   "ich erkläre dir (mal)",
+   "ich erkläre ihnen (mal)",
+   "ich gehe [x] mit dir durch",
+   "ich gehe [x] mit ihnen durch",
+   "ich zeig dir (mal)",
+   "ich zeige dir (mal)",
+   "ich zeige ihnen (mal)",
+   "ich führ dich (mal) durch",
+   "ich führe dich (mal) durch",
+   "ich führe sie (mal) durch"
+  ],
+  "severity": "error",
+  "why": "'Ich zeig dir mal die neue App' (no wie-clause) and 'Ich führ dich mal durch die App' were rejected"
+ },
+ {
+  "id": "ENG_CHUNK_0653",
+  "field": "accept",
+  "before": [
+   "voreilige schlüsse ziehen",
+   "voreiligen schlüsse (ziehen)",
+   "voreilige schlüsse",
+   "vorschnelle schlüsse",
+   "vorschnellen schlüsse",
+   "voreilige schlussfolgerungen",
+   "voreiligen schlussfolgerungen"
+  ],
+  "after": [
+   "voreilige schlüsse ziehen",
+   "voreiligen schlüsse (ziehen)",
+   "voreilige schlüsse",
+   "vorschnelle schlüsse",
+   "vorschnellen schlüsse",
+   "voreilige schlussfolgerungen",
+   "voreiligen schlussfolgerungen",
+   "vorschnell (zu) urteilen",
+   "voreilig (zu) urteilen",
+   "vorschnellen schlussfolgerungen"
+  ],
+  "severity": "error",
+  "why": "'Lass uns nicht vorschnell urteilen' is a very natural rendering"
+ },
+ {
+  "id": "ENG_CHUNK_0658",
+  "field": "accept",
+  "before": [
+   "nachhaken",
+   "nachgehakt",
+   "nachfragen",
+   "melde mich (noch) (mal) wegen",
+   "mich (noch) (mal) wegen [x] melden",
+   "hake [x] nach",
+   "frage [x] nach"
+  ],
+  "after": [
+   "nachhaken",
+   "nachgehakt",
+   "nachfragen",
+   "melde mich (noch) (mal) wegen",
+   "mich (noch) (mal) wegen [x] melden",
+   "hake [x] nach",
+   "frage [x] nach",
+   "melde mich nochmal wegen",
+   "mich nochmal wegen [x] melden",
+   "komme (noch) (einmal) (mal) auf [x] zurück",
+   "komme nochmal auf [x] zurück"
+  ],
+  "severity": "error",
+  "why": "'nochmal' spelt as one word did not match '(noch) (mal)'; 'auf meine E-Mail zurückkommen' is standard email German"
+ },
+ {
+  "id": "ENG_CHUNK_0659",
+  "field": "accept",
+  "before": [
+   "dir (mal) eine idee vorstellen",
+   "ihnen (mal) eine idee vorstellen",
+   "nach deiner meinung (zu)",
+   "nach ihrer meinung (zu)",
+   "was hältst du von",
+   "was halten sie von",
+   "was sagst du zu",
+   "[x] mit dir besprechen",
+   "[x] mit ihnen besprechen"
+  ],
+  "after": [
+   "dir (mal) eine idee vorstellen",
+   "ihnen (mal) eine idee vorstellen",
+   "nach deiner meinung (zu)",
+   "nach ihrer meinung (zu)",
+   "was hältst du von",
+   "was halten sie von",
+   "was sagst du zu",
+   "[x] mit dir besprechen",
+   "[x] mit ihnen besprechen",
+   "deine meinung zu",
+   "ihre meinung zu",
+   "[x] mit dir durchsprechen",
+   "[x] mit ihnen durchsprechen"
+  ],
+  "severity": "error",
+  "why": "'Kann ich mal deine Meinung zu einer Idee hören?' / 'mit dir durchsprechen' missing"
+ },
+ {
+  "id": "ENG_CHUNK_0660",
+  "field": "accept",
+  "before": [
+   "mich (kurz) auf den neuesten stand bringen",
+   "mich (kurz) auf den aktuellen stand bringen",
+   "mich (kurz) auf den stand bringen",
+   "mich (kurz) updaten",
+   "mich (kurz) ins bild setzen",
+   "mich (kurz) informieren",
+   "mich (kurz) aufklären",
+   "mir (kurz) erzählen was"
+  ],
+  "after": [
+   "mich (kurz) auf den stand bringen",
+   "mich (kurz) informieren",
+   "mich (kurz) aufklären",
+   "mir (kurz) erzählen was",
+   "mich (mal) (kurz) auf den neuesten stand bringen",
+   "mich (mal) (kurz) auf den aktuellen stand bringen",
+   "mich (mal) (kurz) updaten",
+   "mich (mal) (kurz) ins bild setzen",
+   "mir (mal) (kurz) sagen was",
+   "mich (mal) (kurz) auf dem laufenden"
+  ],
+  "severity": "error",
+  "why": "'mal kurz' is the usual filler and broke the match"
+ },
+ {
+  "id": "ENG_CHUNK_0661",
+  "field": "accept",
+  "before": [
+   "sich (kurz) mit [x] abstimmen",
+   "mit [x] abstimmen",
+   "mit [x] kurzschließen",
+   "mit [x] austauschen",
+   "mit [x] rücksprache halten",
+   "uns [x] abstimmen"
+  ],
+  "after": [
+   "sich (kurz) mit [x] abstimmen",
+   "mit [x] abstimmen",
+   "mit [x] kurzschließen",
+   "mit [x] austauschen",
+   "mit [x] rücksprache halten",
+   "uns [x] abstimmen",
+   "kurz mit [x] reden",
+   "kurz mit [x] sprechen"
+  ],
+  "severity": "improve",
+  "why": "'Lass uns am Freitag kurz mit dem Team reden' is the plain everyday form"
+ },
+ {
+  "id": "ENG_CHUNK_0662",
+  "field": "accept",
+  "before": [
+   "vorwarnen",
+   "vorgewarnt",
+   "bescheid gesagt",
+   "bescheid gegeben",
+   "bescheid sagen",
+   "bescheid geben",
+   "danke für die warnung",
+   "danke für den hinweis"
+  ],
+  "after": [
+   "vorwarnen",
+   "vorgewarnt",
+   "bescheid gesagt",
+   "bescheid gegeben",
+   "bescheid sagen",
+   "bescheid geben",
+   "danke für die warnung",
+   "danke für den hinweis",
+   "vorwarnung"
+  ],
+  "severity": "error",
+  "why": "'Danke für die Vorwarnung' is the most idiomatic rendering"
+ },
+ {
+  "id": "ENG_CHUNK_0690",
+  "field": "accept",
+  "before": [
+   "das wäre (aber) (doch) nicht nötig gewesen",
+   "das war (doch) nicht nötig",
+   "das hättest du nicht tun müssen",
+   "das hätten sie nicht tun müssen",
+   "das hättet ihr nicht tun müssen",
+   "das ist (aber) (so) lieb",
+   "das ist (aber) (so) nett"
+  ],
+  "after": [
+   "das wäre (aber) (doch) nicht nötig gewesen",
+   "das war (doch) nicht nötig",
+   "das hätten sie nicht tun müssen",
+   "das hättet ihr nicht tun müssen",
+   "das ist (aber) (so) nett",
+   "das hättest du (doch) (aber) nicht tun müssen",
+   "das hättest du (doch) (aber) nicht machen müssen",
+   "das hätten sie (doch) (aber) nicht machen müssen",
+   "das wär (doch) nicht nötig gewesen",
+   "das ist (aber) (ja) (so) lieb"
+  ],
+  "severity": "error",
+  "why": "'Das hättest du doch nicht machen müssen!' is the most common native reply and was rejected"
+ },
+ {
+  "id": "ENG_CHUNK_0693",
+  "field": "accept",
+  "before": [
+   "das gleiche gilt für",
+   "dasselbe gilt für",
+   "gleiches gilt für",
+   "das gilt (auch) (genauso) (übrigens) für",
+   "ich auch",
+   "genau wie ich"
+  ],
+  "after": [
+   "das gleiche gilt für",
+   "dasselbe gilt für",
+   "gleiches gilt für",
+   "das gilt (auch) (genauso) (übrigens) für",
+   "ich auch",
+   "genau wie ich",
+   "für mich gilt",
+   "trifft (auch) auf mich zu"
+  ],
+  "severity": "error",
+  "why": "fronted 'Für mich gilt das Gleiche' / 'Das trifft auch auf mich zu' missing"
+ },
+ {
+  "id": "ENG_CHUNK_0705",
+  "field": "accept",
+  "before": [
+   "sind sie (schon) dazu gekommen",
+   "bist du (schon) dazu gekommen",
+   "seid ihr (schon) dazu gekommen",
+   "hatten sie (schon) (mal) (die) gelegenheit",
+   "hattest du (schon) (mal) (die) gelegenheit",
+   "hattest du (schon) zeit",
+   "hatten sie (schon) zeit",
+   "konnten sie (schon)",
+   "konntest du (schon)"
+  ],
+  "after": [
+   "sind sie (schon) dazu gekommen",
+   "bist du (schon) dazu gekommen",
+   "seid ihr (schon) dazu gekommen",
+   "hatten sie (schon) (mal) (die) gelegenheit",
+   "hattest du (schon) (mal) (die) gelegenheit",
+   "hattest du (schon) zeit",
+   "hatten sie (schon) zeit",
+   "konnten sie (schon)",
+   "konntest du (schon)",
+   "hast du (schon) zeit gehabt",
+   "haben sie (schon) zeit gehabt",
+   "hast du (schon) (die) gelegenheit gehabt",
+   "haben sie (schon) (die) gelegenheit gehabt"
+  ],
+  "severity": "error",
+  "why": "Perfekt 'Haben Sie schon Zeit gehabt, …?' is the usual spoken form"
+ },
+ {
+  "id": "ENG_CHUNK_0725",
+  "field": "accept",
+  "before": [
+   "am besten nimmst du",
+   "du nimmst am besten",
+   "nimmst du besser",
+   "du nimmst besser",
+   "fährst du besser",
+   "du fährst besser",
+   "es wäre besser (für dich) (wenn)",
+   "du solltest (lieber) (besser)",
+   "sie sollten (lieber) (besser)",
+   "am besten nehmen sie"
+  ],
+  "after": [
+   "am besten nimmst du",
+   "du nimmst am besten",
+   "nimmst du besser",
+   "du nimmst besser",
+   "fährst du besser",
+   "du fährst besser",
+   "es wäre besser (für dich) (wenn)",
+   "du solltest (lieber) (besser)",
+   "sie sollten (lieber) (besser)",
+   "am besten nehmen sie",
+   "nimm (doch) lieber",
+   "nimm (doch) besser",
+   "nimm am besten",
+   "fahr (doch) lieber",
+   "fahr am besten",
+   "du nimmst lieber",
+   "besser dran"
+  ],
+  "severity": "error",
+  "why": "imperative 'Nimm lieber den Zug' and 'Du wärst mit dem Zug besser dran' missing"
+ },
+ {
+  "id": "ENG_CHUNK_0725",
+  "field": "t",
+  "before": "Es wäre besser, wenn du [Satz] / Du fährst besser [Nomen]",
+  "after": "Es wäre besser, wenn du [Satz] / Du nimmst besser [Nomen]",
+  "severity": "improve",
+  "why": "'fährst besser [Nomen]' does not fit a noun slot; ex uses nimmst"
+ },
+ {
+  "id": "ENG_CHUNK_0726",
+  "field": "accept",
+  "before": [
+   "könntest du (mich) (vielleicht) (eventuell)",
+   "könnten sie (mich) (vielleicht) (eventuell)",
+   "wäre es (vielleicht) (eventuell) möglich (dass)",
+   "besteht die möglichkeit dass",
+   "würdest du (mich) (vielleicht) (eventuell)",
+   "würden sie (mich) (vielleicht) (eventuell)",
+   "kannst du (mich) eventuell"
+  ],
+  "after": [
+   "könntest du (mich) (vielleicht) (eventuell)",
+   "könnten sie (mich) (vielleicht) (eventuell)",
+   "wäre es (vielleicht) (eventuell) möglich (dass)",
+   "besteht die möglichkeit dass",
+   "würdest du (mich) (vielleicht) (eventuell)",
+   "würden sie (mich) (vielleicht) (eventuell)",
+   "kannst du (mich) eventuell",
+   "hättest du (vielleicht) (eventuell) zeit",
+   "hätten sie (vielleicht) (eventuell) zeit",
+   "kannst du (mich) vielleicht",
+   "wäre es dir (vielleicht) (eventuell) möglich",
+   "wäre es ihnen (vielleicht) (eventuell) möglich"
+  ],
+  "severity": "error",
+  "why": "'Wäre es dir möglich …', 'Hättest du vielleicht Zeit …' and 'Kannst du mich vielleicht …' are standard tentative requests"
+ },
+ {
+  "id": "ENG_CHUNK_0729",
+  "field": "t",
+  "before": "Man wird nicht jeden Tag [Partizip] / So was passiert nicht jeden Tag",
+  "after": "Man wird nicht jeden Tag [Alter] / So was passiert nicht jeden Tag",
+  "severity": "improve",
+  "why": "the slot is an age (vierzig), not a participle"
+ },
+ {
+  "id": "ENG_CHUNK_0735",
+  "field": "accept",
+  "before": [
+   "es geht (hier) (mir) nicht um",
+   "es geht (hier) (mir) nicht ums",
+   "geht (doch) nicht um",
+   "geht (doch) nicht ums",
+   "geht es (mir) (doch) nicht um",
+   "geht's (mir) (doch) nicht um"
+  ],
+  "after": [
+   "es geht (hier) (mir) nicht um",
+   "es geht (hier) (mir) nicht ums",
+   "geht (doch) nicht um",
+   "geht (doch) nicht ums",
+   "geht es (mir) (doch) nicht um",
+   "geht's (mir) (doch) nicht um",
+   "um [x] geht es (doch) (mir) (hier) nicht",
+   "ums [x] geht es (doch) (mir) (hier) nicht"
+  ],
+  "severity": "error",
+  "why": "fronted 'Ums Geld geht es nicht, …' is very natural"
+ },
+ {
+  "id": "ENG_CHUNK_0740",
+  "field": "accept",
+  "before": [
+   "auf dem gleichen stand",
+   "auf demselben stand",
+   "uns einig sind",
+   "uns einig",
+   "einer meinung",
+   "dasselbe meinen",
+   "das gleiche meinen"
+  ],
+  "after": [
+   "auf dem gleichen stand",
+   "auf demselben stand",
+   "uns einig sind",
+   "uns einig",
+   "einer meinung",
+   "dasselbe meinen",
+   "das gleiche meinen",
+   "auf einer linie",
+   "über dasselbe reden",
+   "vom gleichen reden"
+  ],
+  "severity": "error",
+  "why": "'dass wir alle auf einer Linie sind' / 'vom Gleichen reden' are common renderings"
+ },
+ {
+  "id": "ENG_CHUNK_0741",
+  "field": "accept",
+  "before": [
+   "gepfuscht",
+   "pfuschen",
+   "an der falschen stelle gespart",
+   "an der falschen stelle sparen",
+   "schlampig gearbeitet",
+   "geschlampt"
+  ],
+  "after": [
+   "gepfuscht",
+   "pfuschen",
+   "an der falschen stelle gespart",
+   "an der falschen stelle sparen",
+   "schlampig gearbeitet",
+   "geschlampt",
+   "am falschen ende gespart",
+   "am falschen ende sparen",
+   "nachlässig gearbeitet",
+   "murks gemacht"
+  ],
+  "severity": "error",
+  "why": "'am falschen Ende sparen' is the standard idiom; only 'an der falschen Stelle' was accepted"
+ },
+ {
+  "id": "ENG_CHUNK_0749",
+  "field": "accept",
+  "before": [
+   "spontan entscheiden",
+   "entscheiden (einfach) spontan",
+   "schauen wie es läuft",
+   "(einfach) mal schauen",
+   "mal sehen",
+   "wir gucken mal",
+   "wir schauen (einfach) mal",
+   "spontan"
+  ],
+  "after": [
+   "spontan entscheiden",
+   "entscheiden (einfach) spontan",
+   "schauen wie es läuft",
+   "(einfach) mal schauen",
+   "mal sehen",
+   "wir gucken mal",
+   "wir schauen (einfach) mal",
+   "spontan",
+   "auf uns zukommen",
+   "mal gucken",
+   "wir sehen (dann) (einfach) (mal) weiter"
+  ],
+  "severity": "error",
+  "why": "'Wir lassen es einfach auf uns zukommen' is the idiomatic native rendering"
+ },
+ {
+  "id": "ENG_CHUNK_0758",
+  "field": "accept",
+  "before": [
+   "brüte [x] aus",
+   "ausbrüten",
+   "ich werde krank",
+   "ich werd krank",
+   "ich bekomme",
+   "ich krieg",
+   "ich kriege",
+   "im anmarsch",
+   "eingefangen",
+   "bahnt sich [x] an"
+  ],
+  "after": [
+   "brüte [x] aus",
+   "ausbrüten",
+   "ich werde krank",
+   "ich werd krank",
+   "ich bekomme",
+   "ich krieg",
+   "ich kriege",
+   "im anmarsch",
+   "eingefangen",
+   "bahnt sich [x] an",
+   "ich hole mir",
+   "ich hol mir",
+   "ich bekomm"
+  ],
+  "severity": "error",
+  "why": "'Ich glaube, ich hol mir eine Erkältung' is very common"
+ },
+ {
+  "id": "ENG_CHUNK_0765",
+  "field": "accept",
+  "before": [
+   "sich mit [x] abfinden",
+   "abfinden",
+   "damit klarkommen",
+   "damit klarzukommen",
+   "kommt [x] damit klar",
+   "verarbeiten",
+   "akzeptieren",
+   "verkraften",
+   "verkraftet",
+   "daran zu knabbern",
+   "dran zu knabbern"
+  ],
+  "after": [
+   "sich mit [x] abfinden",
+   "abfinden",
+   "damit klarkommen",
+   "damit klarzukommen",
+   "kommt [x] damit klar",
+   "verarbeiten",
+   "akzeptieren",
+   "verkraften",
+   "verkraftet",
+   "daran zu knabbern",
+   "dran zu knabbern",
+   "abzufinden",
+   "verarbeitet",
+   "zu verarbeiten"
+  ],
+  "severity": "error",
+  "why": "the zu-infinitive 'sich damit abzufinden' did not match 'abfinden'"
+ },
+ {
+  "id": "ENG_CHUNK_0765",
+  "field": "ex",
+  "before": "Er muss sich immer noch damit abfinden, dass er seinen Job verloren hat.",
+  "after": "Er hat immer noch daran zu knabbern, dass er seinen Job verloren hat.",
+  "severity": "improve",
+  "why": "'muss sich noch abfinden' says he still has to start; 'still coming to terms' = hat noch daran zu knabbern / kommt noch nicht damit klar"
+ },
+ {
+  "id": "ENG_CHUNK_0770",
+  "field": "accept",
+  "before": [
+   "wenn du meinst",
+   "wenn sie meinen",
+   "wenn ihr meint",
+   "wenn du (das) sagst",
+   "wenn sie (das) sagen"
+  ],
+  "after": [
+   "wenn du meinst",
+   "wenn sie meinen",
+   "wenn ihr meint",
+   "wenn du (das) (es) sagst",
+   "wenn du's sagst",
+   "wenn sie (das) (es) sagen"
+  ],
+  "severity": "improve",
+  "why": "'Wenn du es sagst' / 'wenn du's sagst' missing"
+ },
+ {
+  "id": "ENG_CHUNK_0773",
+  "field": "accept",
+  "before": [
+   "wenn ich's mir (recht) (so) überlege",
+   "wenn ich (es) mir (recht) (so) überlege",
+   "jetzt wo ich (so) (darüber) (drüber) nachdenke",
+   "wenn ich (so) (darüber) (drüber) nachdenke",
+   "jetzt wo du (es) sagst",
+   "jetzt wo du's sagst",
+   "jetzt wo sie (es) sagen"
+  ],
+  "after": [
+   "wenn ich's mir (recht) (so) überlege",
+   "wenn ich (es) mir (recht) (so) überlege",
+   "jetzt wo ich (so) (darüber) (drüber) nachdenke",
+   "wenn ich (so) (darüber) (drüber) nachdenke",
+   "jetzt wo du (es) sagst",
+   "jetzt wo du's sagst",
+   "jetzt wo sie (es) sagen",
+   "wo ich gerade (so) (darüber) (drüber) nachdenke",
+   "mir fällt (gerade) (da) ein",
+   "fällt mir (gerade) ein"
+  ],
+  "severity": "error",
+  "why": "'Mir fällt gerade ein, …' is the most common native rendering"
+ },
+ {
+  "id": "ENG_CHUNK_0775",
+  "field": "accept",
+  "before": [
+   "korrigier mich (bitte) wenn ich (falsch liege) (mich irre)",
+   "korrigiere mich (bitte) wenn ich (falsch liege) (mich irre)",
+   "korrigieren sie mich (bitte) wenn ich (falsch liege) (mich irre)",
+   "korrigiert mich (bitte) wenn ich (falsch liege) (mich irre)",
+   "verbessere mich wenn ich",
+   "wenn ich mich nicht irre",
+   "wenn ich mich nicht täusche"
+  ],
+  "after": [
+   "korrigier mich (bitte) wenn ich (falsch liege) (mich irre)",
+   "korrigiere mich (bitte) wenn ich (falsch liege) (mich irre)",
+   "korrigieren sie mich (bitte) wenn ich (falsch liege) (mich irre)",
+   "korrigiert mich (bitte) wenn ich (falsch liege) (mich irre)",
+   "verbessere mich wenn ich",
+   "wenn ich mich nicht irre",
+   "wenn ich mich nicht täusche",
+   "korrigier mich (bitte) falls ich",
+   "korrigiere mich (bitte) falls ich",
+   "korrigieren sie mich (bitte) falls ich"
+  ],
+  "severity": "error",
+  "why": "'Korrigier mich, falls ich falsch liege' is equally common"
+ },
+ {
+  "id": "ENG_CHUNK_0776",
+  "field": "accept",
+  "before": [
+   "(nur) damit das klar ist",
+   "fürs protokoll",
+   "nur zur info",
+   "nur zur information",
+   "nur dass du's weißt",
+   "nur dass du (es) weißt",
+   "nur dass sie (es) wissen",
+   "nur dass das klar ist"
+  ],
+  "after": [
+   "(nur) damit das klar ist",
+   "fürs protokoll",
+   "nur zur info",
+   "nur zur information",
+   "nur dass du's weißt",
+   "nur dass du (es) weißt",
+   "nur dass sie (es) wissen",
+   "nur dass das klar ist",
+   "(nur) damit du (es) weißt",
+   "(nur) damit du's weißt",
+   "(nur) damit sie (es) wissen",
+   "zur klarstellung"
+  ],
+  "severity": "error",
+  "why": "'Nur damit du es weißt' (standard damit) and 'Zur Klarstellung' missing"
+ },
+ {
+  "id": "ENG_CHUNK_0779",
+  "field": "accept",
+  "before": [
+   "ich denk (nur) (mal) laut (nach)",
+   "ich denke (nur) (mal) laut (nach)",
+   "ich überleg (nur) (mal) laut",
+   "ich überlege (nur) (mal) laut",
+   "ich überleg (ja) nur",
+   "ich überlege (ja) nur",
+   "nur (so) ein gedanke",
+   "nur (so) eine idee"
+  ],
+  "after": [
+   "ich denk (nur) (mal) laut (nach)",
+   "ich denke (nur) (mal) laut (nach)",
+   "ich überleg (nur) (mal) laut",
+   "ich überlege (nur) (mal) laut",
+   "ich überleg (ja) nur",
+   "ich überlege (ja) nur",
+   "nur (so) ein gedanke",
+   "nur (so) eine idee",
+   "ich spinn (nur) (mal) (ein bisschen) rum",
+   "ich spinne (nur) (mal) (ein bisschen) rum"
+  ],
+  "severity": "improve",
+  "why": "'Ich spinn nur ein bisschen rum' is a natural colloquial rendering"
+ },
+ {
+  "id": "ENG_CHUNK_0780",
+  "field": "accept",
+  "before": [
+   "spontan würde ich sagen",
+   "spontan",
+   "aus dem stegreif",
+   "auf die schnelle",
+   "auf anhieb",
+   "aus dem bauch (heraus) (raus)",
+   "ohne nachzuschauen",
+   "grob geschätzt",
+   "aus dem kopf",
+   "schätzungsweise"
+  ],
+  "after": [
+   "spontan würde ich sagen",
+   "spontan",
+   "aus dem stegreif",
+   "auf die schnelle",
+   "auf anhieb",
+   "aus dem bauch (heraus) (raus)",
+   "ohne nachzuschauen",
+   "grob geschätzt",
+   "aus dem kopf",
+   "schätzungsweise",
+   "ich schätze mal",
+   "ich würde (jetzt) (mal) schätzen"
+  ],
+  "severity": "improve",
+  "why": "'Ich schätze mal, so fünfzig' is the common spoken hedge"
+ },
+ {
+  "id": "ENG_CHUNK_0784",
+  "field": "accept",
+  "before": [
+   "das ist (doch) das mindeste",
+   "das mindeste",
+   "gern geschehen",
+   "gerne geschehen",
+   "nicht der rede wert",
+   "das ist (doch) selbstverständlich",
+   "das war (doch) selbstverständlich"
+  ],
+  "after": [
+   "das ist (doch) das mindeste",
+   "das mindeste",
+   "gern geschehen",
+   "gerne geschehen",
+   "nicht der rede wert",
+   "das ist (doch) selbstverständlich",
+   "das war (doch) selbstverständlich",
+   "keine ursache",
+   "nichts zu danken",
+   "gern doch"
+  ],
+  "severity": "error",
+  "why": "standard replies to thanks with the same modest function"
+ },
+ {
+  "id": "ENG_CHUNK_0785",
+  "field": "accept",
+  "before": [
+   "ich will dich nicht (länger) (weiter) aufhalten",
+   "ich will sie nicht (länger) (weiter) aufhalten",
+   "ich will euch nicht (länger) (weiter) aufhalten",
+   "ich möchte sie nicht (länger) aufhalten",
+   "ich halte dich nicht länger auf",
+   "ich halte sie nicht länger auf",
+   "ich lass dich dann (mal)",
+   "ich lasse dich dann (mal)"
+  ],
+  "after": [
+   "ich will dich nicht (länger) (weiter) aufhalten",
+   "ich will sie nicht (länger) (weiter) aufhalten",
+   "ich will euch nicht (länger) (weiter) aufhalten",
+   "ich möchte sie nicht (länger) aufhalten",
+   "ich halte dich nicht länger auf",
+   "ich halte sie nicht länger auf",
+   "ich lass dich dann (mal)",
+   "ich lasse dich dann (mal)",
+   "ich lass dich (dann) jetzt (mal)",
+   "ich lasse dich (dann) jetzt (mal)",
+   "ich will dich nicht (länger) (weiter) stören",
+   "ich will sie nicht (länger) (weiter) stören",
+   "ich möchte dich nicht (länger) aufhalten"
+  ],
+  "severity": "error",
+  "why": "'Ich lass dich jetzt mal' and 'Ich will dich nicht länger stören' were rejected; möchte only had Sie"
+ },
+ {
+  "id": "ENG_CHUNK_0786",
+  "field": "accept",
+  "before": [
+   "lass (mal) (wieder) von dir hören",
+   "lassen sie (mal) (wieder) von sich hören",
+   "lasst (mal) (wieder) von euch hören",
+   "meld dich (mal) (wieder)",
+   "melde dich (mal) (wieder)",
+   "melden sie sich (mal) (wieder)",
+   "meldet euch (mal) (wieder)"
+  ],
+  "after": [
+   "lass (mal) (wieder) von dir hören",
+   "lassen sie (mal) (wieder) von sich hören",
+   "lasst (mal) (wieder) von euch hören",
+   "meld dich (mal) (wieder)",
+   "melde dich (mal) (wieder)",
+   "melden sie sich (mal) (wieder)",
+   "meldet euch (mal) (wieder)",
+   "lass dich (mal) (wieder) blicken",
+   "lassen sie sich (mal) (wieder) blicken",
+   "lass uns in kontakt bleiben",
+   "bleib in kontakt"
+  ],
+  "severity": "error",
+  "why": "'Lass dich mal wieder blicken!' is the most idiomatic rendering"
+ },
+ {
+  "id": "ENG_CHUNK_0789",
+  "field": "accept",
+  "before": [
+   "jetzt reicht's",
+   "jetzt reicht es",
+   "mir reicht's",
+   "mir reicht es",
+   "das fass zum überlaufen",
+   "jetzt ist (endgültig) schluss",
+   "das war's jetzt",
+   "jetzt ist das maß voll"
+  ],
+  "after": [
+   "jetzt reicht's",
+   "jetzt reicht es",
+   "mir reicht's",
+   "mir reicht es",
+   "das fass zum überlaufen",
+   "jetzt ist (endgültig) schluss",
+   "das war's jetzt",
+   "jetzt ist das maß voll",
+   "die nase (endgültig) voll"
+  ],
+  "severity": "error",
+  "why": "'Jetzt hab ich die Nase voll' is a standard rendering"
+ },
+ {
+  "id": "ENG_CHUNK_0790",
+  "field": "accept",
+  "before": [
+   "typisch",
+   "so ein pech",
+   "na toll",
+   "war (ja) klar",
+   "immer ich",
+   "so ist das immer bei mir"
+  ],
+  "after": [
+   "typisch",
+   "so ein pech",
+   "na toll",
+   "war (ja) klar",
+   "immer ich",
+   "so ist das immer bei mir",
+   "na super",
+   "na prima"
+  ],
+  "severity": "improve",
+  "why": "ironic 'Na super!' is as common as 'Na toll!'"
+ },
+ {
+  "id": "ENG_CHUNK_0793",
+  "field": "ex",
+  "before": "Es ist nur ein kleiner Schnitt. Trotzdem solltest du ihn sauber machen.",
+  "after": "Es ist nur ein kleiner Schnitt. Trotzdem solltest du ihn desinfizieren.",
+  "severity": "improve",
+  "why": "'einen Schnitt sauber machen' is unidiomatic; a cut is desinfiziert/gereinigt"
+ },
+ {
+  "id": "ENG_CHUNK_0794",
+  "field": "accept",
+  "before": [
+   "ganz zu schweigen von",
+   "(ganz) abgesehen davon (dass)",
+   "ganz zu schweigen davon dass",
+   "und außerdem",
+   "und dazu noch",
+   "nicht zu vergessen",
+   "und obendrein"
+  ],
+  "after": [
+   "ganz zu schweigen von",
+   "(ganz) abgesehen davon (dass)",
+   "ganz zu schweigen davon dass",
+   "und außerdem",
+   "und dazu noch",
+   "nicht zu vergessen",
+   "und obendrein",
+   "und noch dazu",
+   "noch dazu",
+   "von [x] ganz zu schweigen"
+  ],
+  "severity": "error",
+  "why": "'und noch dazu' (only 'und dazu noch' accepted) and 'von … ganz zu schweigen' missing"
+ },
+ {
+  "id": "ENG_CHUNK_0801",
+  "field": "accept",
+  "before": [
+   "nur weil",
+   "heißt das (noch) (lange) nicht (dass)",
+   "heißt (noch) (lange) nicht (dass)",
+   "bedeutet das (noch) (lange) nicht (dass)",
+   "bedeutet (noch) (lange) nicht (dass)"
+  ],
+  "after": [
+   "nur weil",
+   "heißt das (noch) (lange) nicht (dass)",
+   "heißt (noch) (lange) nicht (dass)",
+   "bedeutet das (noch) (lange) nicht (dass)",
+   "bedeutet (noch) (lange) nicht (dass)",
+   "bloß weil"
+  ],
+  "severity": "error",
+  "why": "'Bloß weil …' is a standard synonym"
+ },
+ {
+  "id": "ENG_CHUNK_0805",
+  "field": "accept",
+  "before": [
+   "man sollte meinen",
+   "man würde (ja) denken",
+   "man sollte (doch) denken",
+   "man würde (doch) meinen",
+   "man könnte meinen",
+   "man sollte annehmen",
+   "man möchte meinen",
+   "(eigentlich) sollte man denken"
+  ],
+  "after": [
+   "man würde (ja) denken",
+   "man sollte (doch) denken",
+   "man würde (doch) meinen",
+   "man könnte meinen",
+   "man möchte meinen",
+   "(eigentlich) sollte man denken",
+   "man sollte (doch) (eigentlich) meinen",
+   "man sollte (doch) (eigentlich) annehmen",
+   "man sollte (doch) erwarten",
+   "eigentlich müsste"
+  ],
+  "severity": "error",
+  "why": "'Man sollte doch meinen …' was rejected; 'Eigentlich müsste ein so teures Hotel …' is very natural"
+ },
+ {
+  "id": "ENG_CHUNK_0807",
+  "field": "accept",
+  "before": [
+   "sag (mir) (bloß) (jetzt) (nur) nicht dass",
+   "sag bloß",
+   "sagen sie (mir) (bloß) (jetzt) nicht dass",
+   "sagt (mir) (bloß) (jetzt) nicht dass",
+   "erzähl mir (bloß) (jetzt) nicht dass",
+   "doch nicht etwa"
+  ],
+  "after": [
+   "sag (mir) (bloß) (jetzt) (nur) nicht dass",
+   "sag bloß",
+   "sagen sie (mir) (bloß) (jetzt) nicht dass",
+   "sagt (mir) (bloß) (jetzt) nicht dass",
+   "erzähl mir (bloß) (jetzt) nicht dass",
+   "doch nicht etwa",
+   "du hast doch nicht (etwa)"
+  ],
+  "severity": "improve",
+  "why": "'Du hast doch nicht etwa schon wieder …' is a natural rendering"
+ },
+ {
+  "id": "ENG_CHUNK_0809",
+  "field": "accept",
+  "before": [
+   "ich dachte (eigentlich)",
+   "ich war der meinung (dass)",
+   "ich war der auffassung (dass)",
+   "ich hatte den eindruck (dass)",
+   "ich ging davon aus (dass)",
+   "ich bin davon ausgegangen (dass)",
+   "ich hab gedacht",
+   "ich habe gedacht"
+  ],
+  "after": [
+   "ich dachte (eigentlich)",
+   "ich war der meinung (dass)",
+   "ich war der auffassung (dass)",
+   "ich hatte den eindruck (dass)",
+   "ich ging davon aus (dass)",
+   "ich bin davon ausgegangen (dass)",
+   "ich hab gedacht",
+   "ich habe gedacht",
+   "ich hatte das gefühl (dass)",
+   "ich hatte verstanden (dass)",
+   "ich hab das so verstanden"
+  ],
+  "severity": "error",
+  "why": "'Ich hatte verstanden, dass …' is the polite natural form"
+ },
+ {
+  "id": "ENG_CHUNK_0810",
+  "field": "accept",
+  "before": [
+   "ich hätte schwören können (dass)",
+   "hätte schwören können",
+   "ich hätte (drauf) wetten können",
+   "ich war mir (ganz) (so) sicher (dass)",
+   "ich war (mir) fest überzeugt (dass)",
+   "ich war (mir) hundertprozentig sicher"
+  ],
+  "after": [
+   "ich hätte schwören können (dass)",
+   "hätte schwören können",
+   "ich war mir (ganz) (so) sicher (dass)",
+   "ich war (mir) hundertprozentig sicher",
+   "ich hätte (darauf) (drauf) wetten können",
+   "ich war fest (davon) überzeugt (dass)"
+  ],
+  "severity": "error",
+  "why": "'ich war mir fest überzeugt' is wrong German (überzeugt sein takes no sich); 'darauf wetten' and 'fest davon überzeugt' were rejected"
+ },
+ {
+  "id": "ENG_CHUNK_0811",
+  "field": "accept",
+  "before": [
+   "ich nehme an (dass)",
+   "ich nehme (mal) an",
+   "ich vermute (mal)",
+   "ich schätze (mal)",
+   "ich gehe davon aus (dass)",
+   "anscheinend",
+   "offenbar",
+   "wohl"
+  ],
+  "after": [
+   "ich nehme an (dass)",
+   "ich nehme (mal) an",
+   "ich vermute (mal)",
+   "ich schätze (mal)",
+   "ich gehe davon aus (dass)",
+   "anscheinend",
+   "offenbar",
+   "wohl",
+   "(es) sieht so aus als"
+  ],
+  "severity": "improve",
+  "why": "'Sieht so aus, als hätte dir der Film nicht gefallen' is natural"
+ },
+ {
+  "id": "ENG_CHUNK_0813",
+  "field": "accept",
+  "before": [
+   "ist mir (plötzlich) eingefallen",
+   "mir ist (plötzlich) eingefallen",
+   "fiel mir (plötzlich) ein",
+   "mir wurde (plötzlich) klar",
+   "wurde mir (plötzlich) klar",
+   "(ist) mir (plötzlich) klar geworden",
+   "dämmerte (es) mir",
+   "ist mir (plötzlich) aufgefallen"
+  ],
+  "after": [
+   "ist mir (plötzlich) eingefallen",
+   "mir ist (plötzlich) eingefallen",
+   "fiel mir (plötzlich) ein",
+   "mir wurde (plötzlich) klar",
+   "wurde mir (plötzlich) klar",
+   "(ist) mir (plötzlich) klar geworden",
+   "dämmerte (es) mir",
+   "ist mir (plötzlich) aufgefallen",
+   "merkte ich",
+   "habe ich gemerkt",
+   "hab ich gemerkt",
+   "ich habe gemerkt",
+   "wurde mir bewusst",
+   "ist mir bewusst geworden",
+   "fiel mir auf"
+  ],
+  "severity": "error",
+  "why": "'… habe ich gemerkt, dass ich meinen Pass vergessen hatte' is the most common native rendering"
+ },
+ {
+  "id": "ENG_CHUNK_0814",
+  "field": "accept",
+  "before": [
+   "es gibt (noch) mehr im leben als",
+   "im leben gibt es (noch) mehr als",
+   "das leben ist (doch) mehr als (nur)",
+   "ist (doch) mehr als nur",
+   "es gibt (noch) wichtigere dinge (im leben) als",
+   "es gibt (noch) mehr als (nur)"
+  ],
+  "after": [
+   "im leben gibt es (noch) mehr als",
+   "das leben ist (doch) mehr als (nur)",
+   "ist (doch) mehr als nur",
+   "es gibt (noch) wichtigere dinge (im leben) als",
+   "es gibt (noch) mehr als (nur)",
+   "es gibt (doch) (noch) mehr im leben als",
+   "es gibt (doch) (noch) wichtigeres (im leben) als",
+   "das leben besteht (doch) nicht nur aus"
+  ],
+  "severity": "error",
+  "why": "'Es gibt doch Wichtigeres im Leben als Arbeit' / 'Das Leben besteht nicht nur aus Arbeit' are the idiomatic forms"
+ },
+ {
+  "id": "ENG_CHUNK_0815",
+  "field": "accept",
+  "before": [
+   "es würde mich nicht wundern (wenn)",
+   "würde mich nicht wundern",
+   "würde mich nicht überraschen",
+   "mich würde es nicht wundern",
+   "mich würde es nicht überraschen",
+   "ich wäre nicht überrascht (wenn)",
+   "es wundert mich nicht wenn"
+  ],
+  "after": [
+   "es würde mich nicht wundern (wenn)",
+   "würde mich nicht wundern",
+   "würde mich nicht überraschen",
+   "mich würde es nicht wundern",
+   "mich würde es nicht überraschen",
+   "ich wäre nicht überrascht (wenn)",
+   "es wundert mich nicht wenn",
+   "wundern würde (es) mich nicht"
+  ],
+  "severity": "improve",
+  "why": "fronted 'Wundern würde es mich nicht' is natural"
+ },
+ {
+  "id": "ENG_CHUNK_0818",
+  "field": "accept",
+  "before": [
+   "was weiß ich",
+   "wer weiß",
+   "keine ahnung",
+   "es kann (gut) (auch) sein dass",
+   "gut möglich dass",
+   "könnte (auch) sein dass"
+  ],
+  "after": [
+   "was weiß ich",
+   "wer weiß",
+   "keine ahnung",
+   "es kann (gut) (auch) sein dass",
+   "gut möglich dass",
+   "könnte (auch) sein dass",
+   "kann (gut) (auch) sein dass"
+  ],
+  "severity": "error",
+  "why": "short 'Kann gut sein, dass …' (without es) was rejected"
+ },
+ {
+  "id": "ENG_CHUNK_0819",
+  "field": "accept",
+  "before": [
+   "man weiß nie",
+   "man kann nie wissen",
+   "das weiß man nie",
+   "man kann nicht sagen",
+   "wer weiß",
+   "keine ahnung",
+   "nicht abzusehen",
+   "man kann nicht vorhersagen"
+  ],
+  "after": [
+   "man weiß nie",
+   "man kann nie wissen",
+   "das weiß man nie",
+   "man kann nicht sagen",
+   "wer weiß",
+   "keine ahnung",
+   "nicht abzusehen",
+   "man kann nicht vorhersagen",
+   "man weiß nicht",
+   "es lässt sich nicht sagen"
+  ],
+  "severity": "error",
+  "why": "'Man weiß nicht, wie lang …' is natural"
+ },
+ {
+  "id": "ENG_CHUNK_0822",
+  "field": "accept",
+  "before": [
+   "das glaub ich erst (wenn)",
+   "das glaube ich erst (wenn)",
+   "ich glaub's erst (wenn)",
+   "ich glaube es erst (wenn)",
+   "ich glaub es erst (wenn)",
+   "erst wenn ich (es) sehe",
+   "das will ich sehen",
+   "das muss ich erst sehen"
+  ],
+  "after": [
+   "das glaub ich erst (wenn)",
+   "das glaube ich erst (wenn)",
+   "ich glaub es erst (wenn)",
+   "erst wenn ich (es) sehe",
+   "das will ich sehen",
+   "das muss ich erst sehen",
+   "ich glaub's (erst) wenn",
+   "ich glaube es (erst) wenn",
+   "das glaub ich (erst) wenn",
+   "wer's glaubt wird selig"
+  ],
+  "severity": "error",
+  "why": "'Ich glaub's, wenn ich's sehe' (without erst) is also natural"
+ },
+ {
+  "id": "ENG_CHUNK_0825",
+  "field": "accept",
+  "before": [
+   "ich beschwere mich (ja) nicht gern",
+   "ich [x] (ja) nicht gern",
+   "ich [x] (ja) nicht gerne",
+   "ich [x] (eigentlich) nicht gern",
+   "ich bin (ja) (eigentlich) nicht der typ der",
+   "ich bin (ja) (eigentlich) keiner der",
+   "ich bin (ja) (eigentlich) nicht jemand der",
+   "normalerweise [x] ich (ja) nicht"
+  ],
+  "after": [
+   "ich beschwere mich (ja) nicht gern",
+   "ich [x] (ja) nicht gern",
+   "ich [x] (ja) nicht gerne",
+   "ich [x] (eigentlich) nicht gern",
+   "ich bin (ja) (eigentlich) nicht der typ der",
+   "ich bin (ja) (eigentlich) keiner der",
+   "ich bin (ja) (eigentlich) nicht jemand der",
+   "normalerweise [x] ich (ja) nicht",
+   "ich will mich (ja) nicht beschweren",
+   "ich will (ja) nicht meckern"
+  ],
+  "severity": "error",
+  "why": "'Ich will mich ja nicht beschweren, aber …' is the most natural rendering"
+ },
+ {
+  "id": "ENG_CHUNK_0828",
+  "field": "accept",
+  "before": [
+   "es gibt keine entschuldigung dafür",
+   "keine entschuldigung (dafür) (für)",
+   "es gibt keine ausrede (dafür) (für)",
+   "keine ausrede (dafür) (für)",
+   "ist unentschuldbar",
+   "nicht zu entschuldigen",
+   "durch nichts zu entschuldigen"
+  ],
+  "after": [
+   "es gibt keine entschuldigung dafür",
+   "keine entschuldigung (dafür) (für)",
+   "es gibt keine ausrede (dafür) (für)",
+   "keine ausrede (dafür) (für)",
+   "ist unentschuldbar",
+   "nicht zu entschuldigen",
+   "durch nichts zu entschuldigen",
+   "es gibt keinen grund (dafür)",
+   "nicht zu rechtfertigen",
+   "durch nichts zu rechtfertigen"
+  ],
+  "severity": "error",
+  "why": "'Es gibt keinen Grund, unhöflich zu sein' and 'nicht zu rechtfertigen' are natural"
+ },
+ {
+  "id": "ENG_CHUNK_0833",
+  "field": "accept",
+  "before": [
+   "man kann wohl sagen",
+   "man kann (ruhig) (getrost) (sicher) sagen",
+   "man kann mit sicherheit sagen",
+   "man darf (wohl) sagen",
+   "man kann behaupten",
+   "es ist klar dass"
+  ],
+  "after": [
+   "man kann wohl sagen",
+   "man kann mit sicherheit sagen",
+   "man darf (wohl) sagen",
+   "man kann behaupten",
+   "es ist klar dass",
+   "man kann (ruhig) (getrost) (sicher) (schon) (wohl) sagen",
+   "das kann man (wohl) (schon) sagen"
+  ],
+  "severity": "error",
+  "why": "'Man kann schon sagen, dass …' was rejected"
+ },
+ {
+  "id": "ENG_CHUNK_0847",
+  "field": "accept",
+  "before": [
+   "dampf ablassen",
+   "dampf abzulassen",
+   "stress abbauen",
+   "stress abzubauen",
+   "abreagieren",
+   "abzureagieren",
+   "den kopf frei (zu) (kriegen) (bekommen)"
+  ],
+  "after": [
+   "dampf ablassen",
+   "dampf abzulassen",
+   "stress abbauen",
+   "stress abzubauen",
+   "abreagieren",
+   "abzureagieren",
+   "den kopf frei (zu) (kriegen) (bekommen)",
+   "abzuschalten",
+   "runterzukommen"
+  ],
+  "severity": "error",
+  "why": "'um abzuschalten / runterzukommen' are natural"
+ },
+ {
+  "id": "ENG_CHUNK_0849",
+  "field": "accept",
+  "before": [
+   "damit hab ich nicht gerechnet",
+   "damit (habe) (hab) (hätte) ich (echt) (gar) (überhaupt) nicht gerechnet",
+   "das (habe) (hab) (hätte) ich nicht kommen sehen",
+   "hab ich nicht mit gerechnet",
+   "das hätte ich nicht gedacht",
+   "das kam (echt) unerwartet"
+  ],
+  "after": [
+   "damit hab ich nicht gerechnet",
+   "damit (habe) (hab) (hätte) ich (echt) (gar) (überhaupt) nicht gerechnet",
+   "das (habe) (hab) (hätte) ich nicht kommen sehen",
+   "hab ich nicht mit gerechnet",
+   "das hätte ich nicht gedacht",
+   "das kam (echt) unerwartet",
+   "das (habe) (hab) (hätte) ich nicht erwartet",
+   "hätte ich nicht gedacht"
+  ],
+  "severity": "error",
+  "why": "'Das hätte ich nicht erwartet' / short 'Hätte ich nicht gedacht' missing"
+ },
+ {
+  "id": "ENG_CHUNK_0855",
+  "field": "accept",
+  "before": [
+   "einer meinung sein",
+   "einer meinung",
+   "gleicher meinung",
+   "derselben meinung",
+   "einig",
+   "auf einer wellenlänge"
+  ],
+  "after": [
+   "einer meinung sein",
+   "einer meinung",
+   "gleicher meinung",
+   "derselben meinung",
+   "einig",
+   "auf einer wellenlänge",
+   "gleicher ansicht",
+   "derselben ansicht"
+  ],
+  "severity": "improve",
+  "why": "Ansicht variants are standard"
+ },
+ {
+  "id": "ENG_CHUNK_0856",
+  "field": "accept",
+  "before": [
+   "mich gut mit [x] verstehen",
+   "verstehe mich (immer noch) (noch) gut mit",
+   "verstehe mich [x] gut mit",
+   "ein gutes verhältnis (zu) (mit)",
+   "guten kontakt (zu) (mit)",
+   "komme [x] gut mit [x] klar",
+   "komme gut mit [x] klar",
+   "verstehen uns (immer noch) (noch) gut"
+  ],
+  "after": [
+   "mich gut mit [x] verstehen",
+   "verstehe mich (immer noch) (noch) gut mit",
+   "verstehe mich [x] gut mit",
+   "ein gutes verhältnis (zu) (mit)",
+   "guten kontakt (zu) (mit)",
+   "komme [x] gut mit [x] klar",
+   "komme gut mit [x] klar",
+   "verstehen uns (immer noch) (noch) gut",
+   "verstehe ich mich (immer noch) (noch) gut",
+   "einen guten draht zu"
+  ],
+  "severity": "error",
+  "why": "fronted 'Mit meinem Ex verstehe ich mich noch gut' was rejected"
+ },
+ {
+  "id": "ENG_CHUNK_0858",
+  "field": "accept",
+  "before": [
+   "entgegenkommen",
+   "mir [x] entgegenkommen",
+   "kommen sie mir [x] entgegen",
+   "kommen sie mir entgegen",
+   "kommst du mir [x] entgegen",
+   "kommst du mir entgegen",
+   "in der mitte treffen",
+   "einen kompromiss"
+  ],
+  "after": [
+   "entgegenkommen",
+   "mir [x] entgegenkommen",
+   "kommen sie mir [x] entgegen",
+   "kommen sie mir entgegen",
+   "kommst du mir [x] entgegen",
+   "kommst du mir entgegen",
+   "in der mitte treffen",
+   "einen kompromiss",
+   "in der mitte einigen"
+  ],
+  "severity": "improve",
+  "why": "'Können wir uns in der Mitte einigen?' is common"
+ },
+ {
+  "id": "ENG_CHUNK_0862",
+  "field": "accept",
+  "before": [
+   "kommt nach",
+   "kommt [x] nach",
+   "nach [x] geraten",
+   "ähnelt",
+   "ganz der vater",
+   "ganz die mutter",
+   "ganz der papa"
+  ],
+  "after": [
+   "kommt nach",
+   "kommt [x] nach",
+   "nach [x] geraten",
+   "ähnelt",
+   "ganz der vater",
+   "ganz die mutter",
+   "ganz der papa",
+   "schlägt [x] nach",
+   "schlägt nach",
+   "hat viel von"
+  ],
+  "severity": "error",
+  "why": "'Sie schlägt nach ihrem Vater' / 'hat viel von ihrem Vater' are standard"
+ },
+ {
+  "id": "ENG_CHUNK_0863",
+  "field": "accept",
+  "before": [
+   "das liegt in der familie",
+   "liegt (bei uns) in der familie",
+   "in der familie",
+   "das ist erblich",
+   "liegt in den genen",
+   "familiär bedingt"
+  ],
+  "after": [
+   "das liegt in der familie",
+   "liegt (bei uns) in der familie",
+   "in der familie",
+   "das ist erblich",
+   "liegt in den genen",
+   "familiär bedingt",
+   "in den genen",
+   "das ist genetisch"
+  ],
+  "severity": "improve",
+  "why": "'Das haben wir in den Genen' was rejected"
+ },
+ {
+  "id": "ENG_CHUNK_0865",
+  "field": "accept",
+  "before": [
+   "mich [x] überredet",
+   "überredet",
+   "überreden",
+   "überredeten",
+   "mich [x] beschwatzt",
+   "beschwatzt",
+   "mich dazu gebracht"
+  ],
+  "after": [
+   "mich [x] überredet",
+   "überredet",
+   "überreden",
+   "überredeten",
+   "mich [x] beschwatzt",
+   "beschwatzt",
+   "mich dazu gebracht",
+   "breitgeschlagen",
+   "mich zum [x] gebracht"
+  ],
+  "severity": "error",
+  "why": "'Meine Freunde haben mich breitgeschlagen' is very idiomatic"
+ },
+ {
+  "id": "ENG_CHUNK_0868",
+  "field": "accept",
+  "before": [
+   "moment (mal) damit ich (das) richtig verstehe",
+   "damit ich (das) (auch) richtig verstehe",
+   "hab ich (das) richtig verstanden",
+   "habe ich (das) richtig verstanden",
+   "verstehe ich (das) richtig",
+   "versteh ich (das) richtig",
+   "noch mal zum mitschreiben"
+  ],
+  "after": [
+   "moment (mal) damit ich (das) richtig verstehe",
+   "damit ich (das) (auch) richtig verstehe",
+   "hab ich (das) richtig verstanden",
+   "habe ich (das) richtig verstanden",
+   "verstehe ich (das) richtig",
+   "versteh ich (das) richtig",
+   "noch mal zum mitschreiben",
+   "dass ich (das) (auch) richtig verstehe",
+   "sehe ich (das) richtig",
+   "seh ich (das) richtig"
+  ],
+  "severity": "error",
+  "why": "'Nur dass ich das richtig verstehe' / 'Sehe ich das richtig?' missing"
+ },
+ {
+  "id": "ENG_CHUNK_0870",
+  "field": "accept",
+  "before": [
+   "so weit würde ich nicht gehen",
+   "so weit würd ich nicht gehen",
+   "soweit würde ich nicht gehen",
+   "ich würde nicht so weit gehen",
+   "das würde ich (so) nicht sagen",
+   "das würd ich (so) nicht sagen",
+   "das ist (ein bisschen) übertrieben",
+   "übertreib (mal) nicht"
+  ],
+  "after": [
+   "das würd ich (so) nicht sagen",
+   "das ist (ein bisschen) übertrieben",
+   "übertreib (mal) nicht",
+   "so weit würde ich (jetzt) nicht gehen",
+   "so weit würd ich (jetzt) nicht gehen",
+   "ich würde (jetzt) nicht so weit gehen",
+   "das würde ich (jetzt) (so) nicht sagen"
+  ],
+  "severity": "error",
+  "why": "'soweit' here is a misspelling (adverb: so weit); 'So weit würde ich jetzt nicht gehen' was rejected"
+ },
+ {
+  "id": "ENG_CHUNK_0874",
+  "field": "accept",
+  "before": [
+   "(du) hast recht",
+   "punkt für dich",
+   "sie haben recht",
+   "ihr habt recht",
+   "guter punkt",
+   "verstanden",
+   "angekommen",
+   "ich hab's kapiert"
+  ],
+  "after": [
+   "punkt für dich",
+   "guter punkt",
+   "verstanden",
+   "angekommen",
+   "ich hab's kapiert",
+   "(du) hast (ja) (schon) recht",
+   "sie haben (ja) (schon) recht",
+   "ihr habt (ja) (schon) recht",
+   "recht hast du"
+  ],
+  "severity": "error",
+  "why": "'Okay, du hast ja recht' was rejected"
+ },
+ {
+  "id": "ENG_CHUNK_0875",
+  "field": "accept",
+  "before": [
+   "zugegeben",
+   "das muss man zugeben",
+   "das muss ich zugeben",
+   "das gebe ich zu",
+   "das geb ich zu",
+   "da haben sie recht",
+   "da hast du recht",
+   "das muss ich (dir) (ihnen) lassen"
+  ],
+  "after": [
+   "zugegeben",
+   "das muss man zugeben",
+   "das muss ich zugeben",
+   "das gebe ich zu",
+   "das geb ich zu",
+   "da haben sie recht",
+   "da hast du recht",
+   "das muss ich (dir) (ihnen) lassen",
+   "das stimmt (schon)",
+   "zugegebenermaßen"
+  ],
+  "severity": "error",
+  "why": "'…, das stimmt, aber …' is the most common native concession"
+ },
+ {
+  "id": "ENG_CHUNK_0876",
+  "field": "accept",
+  "before": [
+   "hör mir (bitte) (erst) (mal) (einfach) zu",
+   "hören sie mir (bitte) (erst) (mal) (einfach) zu",
+   "hört mir (bitte) (erst) (mal) (einfach) zu",
+   "hör (bitte) (erst) (mal) zu",
+   "lass mich (bitte) (erst) (mal) ausreden",
+   "lassen sie mich (bitte) (erst) (mal) ausreden",
+   "lasst mich (bitte) (erst) (mal) ausreden"
+  ],
+  "after": [
+   "hör (bitte) (erst) (mal) zu",
+   "lass mich (bitte) (erst) (mal) ausreden",
+   "lassen sie mich (bitte) (erst) (mal) ausreden",
+   "lasst mich (bitte) (erst) (mal) ausreden",
+   "hör mir (doch) (bitte) (einfach) (erst) (mal) zu",
+   "hören sie mir (doch) (bitte) (einfach) (erst) (mal) zu",
+   "hört mir (doch) (bitte) (einfach) (erst) (mal) zu",
+   "hör dir das (doch) (einfach) (erst) (mal) an"
+  ],
+  "severity": "error",
+  "why": "'Hör mir doch einfach mal zu' failed (doch missing, einfach mal in wrong order)"
+ },
+ {
+  "id": "ENG_CHUNK_0877",
+  "field": "accept",
+  "before": [
+   "wie geht's (jetzt) (nun) weiter",
+   "wie geht es (jetzt) (nun) weiter",
+   "was machen wir jetzt",
+   "was nun",
+   "wie machen wir (jetzt) weiter",
+   "und was jetzt"
+  ],
+  "after": [
+   "wie geht's (jetzt) (nun) weiter",
+   "wie geht es (jetzt) (nun) weiter",
+   "was machen wir jetzt",
+   "was nun",
+   "wie machen wir (jetzt) weiter",
+   "und was jetzt",
+   "und jetzt",
+   "was machen wir (denn) (nun)",
+   "wie soll es (jetzt) (nun) weitergehen"
+  ],
+  "severity": "error",
+  "why": "'Und jetzt?' and 'Wie soll es jetzt weitergehen?' are natural"
+ },
+ {
+  "id": "ENG_CHUNK_0878",
+  "field": "accept",
+  "before": [
+   "merk dir das (mal) (kurz)",
+   "merke dir das (mal) (kurz)",
+   "merken sie sich das (mal) (kurz)",
+   "merkt euch das (mal) (kurz)",
+   "halt den gedanken fest",
+   "halte den gedanken fest",
+   "behalt den gedanken",
+   "moment"
+  ],
+  "after": [
+   "merk dir das (mal) (kurz)",
+   "merke dir das (mal) (kurz)",
+   "merken sie sich das (mal) (kurz)",
+   "merkt euch das (mal) (kurz)",
+   "halt den gedanken fest",
+   "halte den gedanken fest",
+   "behalt den gedanken",
+   "moment",
+   "behalte den gedanken",
+   "halt den gedanken (mal) (kurz) fest",
+   "merk dir (mal) (kurz) was du"
+  ],
+  "severity": "improve",
+  "why": "'Halt den Gedanken mal fest' / 'Merk dir, was du sagen wolltest' missing"
+ },
+ {
+  "id": "ENG_CHUNK_0879",
+  "field": "accept",
+  "before": [
+   "jetzt bist du dran",
+   "du bist dran",
+   "sie sind dran",
+   "ihr seid dran",
+   "ich gebe (weiter) an",
+   "ich übergebe an",
+   "ich gebe ab an"
+  ],
+  "after": [
+   "jetzt bist du dran",
+   "du bist dran",
+   "sie sind dran",
+   "ihr seid dran",
+   "ich gebe (weiter) an",
+   "ich übergebe an",
+   "ich gebe ab an",
+   "ich übergebe das wort an",
+   "du hast das wort",
+   "sie haben das wort"
+  ],
+  "severity": "improve",
+  "why": "'Ich übergebe das Wort an …' is the presentation formula"
+ },
+ {
+  "id": "ENG_CHUNK_0880",
+  "field": "accept",
+  "before": [
+   "so gefällt mir das",
+   "das ist ein wort",
+   "so gefällt's mir",
+   "das lässt sich hören",
+   "das klingt (schon) (doch) (sehr) gut",
+   "das hört sich (schon) (doch) gut an",
+   "da bin ich dabei"
+  ],
+  "after": [
+   "so gefällt mir das",
+   "so gefällt's mir",
+   "das lässt sich hören",
+   "das klingt (schon) (doch) (sehr) gut",
+   "das hört sich (schon) (doch) gut an",
+   "da bin ich dabei",
+   "das ist (doch) (mal) ein wort",
+   "jetzt kommen wir der sache (schon) näher",
+   "klingt (doch) (sehr) gut"
+  ],
+  "severity": "error",
+  "why": "'Das ist doch mal ein Wort!' was rejected"
+ },
+ {
+  "id": "ENG_CHUNK_0887",
+  "field": "accept",
+  "before": [
+   "toi toi toi",
+   "klopf auf holz",
+   "auf holz klopfen",
+   "klopfen auf holz",
+   "unberufen"
+  ],
+  "after": [
+   "toi toi toi",
+   "klopf auf holz",
+   "auf holz klopfen",
+   "klopfen auf holz",
+   "unberufen",
+   "klopfe auf holz"
+  ],
+  "severity": "improve",
+  "why": "'ich klopfe auf Holz' (full form) missing"
+ },
+ {
+  "id": "ENG_CHUNK_0888",
+  "field": "accept",
+  "before": [
+   "ich möchte (gern) (gerne) einen toast ausbringen",
+   "einen toast ausbringen",
+   "einen toast (auf) [x] ausbringen",
+   "einen toast (auf) [x] aussprechen",
+   "das glas [x] erheben",
+   "das glas erheben",
+   "lasst uns (auf) [x] anstoßen",
+   "lasst uns anstoßen",
+   "lassen sie uns anstoßen"
+  ],
+  "after": [
+   "ich möchte (gern) (gerne) einen toast ausbringen",
+   "einen toast ausbringen",
+   "einen toast (auf) [x] ausbringen",
+   "einen toast (auf) [x] aussprechen",
+   "das glas [x] erheben",
+   "das glas erheben",
+   "lasst uns (auf) [x] anstoßen",
+   "lasst uns anstoßen",
+   "lassen sie uns anstoßen",
+   "mein glas [x] erheben",
+   "mein glas erheben",
+   "die gläser erheben",
+   "einen trinkspruch (auf) [x] ausbringen",
+   "ich möchte (gern) (gerne) auf [x] anstoßen"
+  ],
+  "severity": "error",
+  "why": "'Ich möchte mein Glas auf das Brautpaar erheben' and 'Trinkspruch' were rejected"
+ },
+ {
+  "id": "ENG_CHUNK_0889",
+  "field": "accept",
+  "before": [
+   "darauf trinke ich",
+   "darauf trink ich",
+   "da trinke ich drauf",
+   "da trink ich drauf",
+   "da stoß ich (gern) (gerne) drauf an",
+   "da stoße ich (gern) (gerne) drauf an",
+   "darauf stoße ich (gern) (gerne) an",
+   "prost darauf"
+  ],
+  "after": [
+   "darauf trinke ich",
+   "darauf trink ich",
+   "da trinke ich drauf",
+   "da trink ich drauf",
+   "da stoß ich (gern) (gerne) drauf an",
+   "da stoße ich (gern) (gerne) drauf an",
+   "darauf stoße ich (gern) (gerne) an",
+   "prost darauf",
+   "dem schließe ich mich an"
+  ],
+  "severity": "improve",
+  "why": "common reply to a toast"
+ },
+ {
+  "id": "ENG_CHUNK_0891",
+  "field": "accept",
+  "before": [
+   "außerdem",
+   "dazu kommt (dass)",
+   "hinzu kommt (dass)",
+   "zudem",
+   "darüber hinaus",
+   "obendrein",
+   "und noch dazu",
+   "noch dazu"
+  ],
+  "after": [
+   "außerdem",
+   "dazu kommt (dass)",
+   "hinzu kommt (dass)",
+   "zudem",
+   "darüber hinaus",
+   "obendrein",
+   "und noch dazu",
+   "noch dazu",
+   "und das beste"
+  ],
+  "severity": "improve",
+  "why": "'Und das Beste: die Miete ist niedrig' is natural"
+ },
+ {
+  "id": "ENG_CHUNK_0893",
+  "field": "accept",
+  "before": [
+   "geschweige denn",
+   "ganz zu schweigen von",
+   "von [x] ganz zu schweigen",
+   "schon gar nicht",
+   "erst recht nicht"
+  ],
+  "after": [
+   "geschweige denn",
+   "ganz zu schweigen von",
+   "von [x] ganz zu schweigen",
+   "schon gar nicht",
+   "erst recht nicht",
+   "schon gar keinen",
+   "erst recht keinen"
+  ],
+  "severity": "error",
+  "why": "'… und schon gar keinen ganzen Truthahn' failed (kein- form)"
+ },
+ {
+  "id": "ENG_CHUNK_0894",
+  "field": "accept",
+  "before": [
+   "wo du schon (mal)",
+   "wo du gerade",
+   "da du schon (mal)",
+   "da du gerade",
+   "wenn du schon (mal)",
+   "wenn du gerade",
+   "wo sie schon (mal)",
+   "jetzt wo du"
+  ],
+  "after": [
+   "wo du schon (mal)",
+   "wo du gerade",
+   "da du schon (mal)",
+   "da du gerade",
+   "wenn du schon (mal)",
+   "wenn du gerade",
+   "wo sie schon (mal)",
+   "jetzt wo du",
+   "wo du (ja) (eh) schon",
+   "da du (ja) (eh) schon",
+   "wenn du (ja) (eh) schon",
+   "weil du (ja) (eh) schon"
+  ],
+  "severity": "error",
+  "why": "'Wo du ja eh schon stehst' / 'Weil du eh schon stehst' are natural"
+ },
+ {
+  "id": "ENG_CHUNK_0900",
+  "field": "accept",
+  "before": [
+   "und trotzdem",
+   "und dennoch",
+   "aber trotzdem",
+   "trotzdem",
+   "dennoch",
+   "und doch"
+  ],
+  "after": [
+   "und trotzdem",
+   "und dennoch",
+   "aber trotzdem",
+   "trotzdem",
+   "dennoch",
+   "und doch",
+   "und dabei"
+  ],
+  "severity": "error",
+  "why": "'… und dabei nimmt er nie zu' is very natural"
+ },
+ {
+  "id": "ENG_CHUNK_0901",
+  "field": "accept",
+  "before": [
+   "hätten sie zufällig",
+   "hättest du zufällig",
+   "hättet ihr zufällig",
+   "hast du zufällig",
+   "haben sie zufällig",
+   "habt ihr zufällig",
+   "hast du vielleicht",
+   "haben sie vielleicht"
+  ],
+  "after": [
+   "hätten sie zufällig",
+   "hättest du zufällig",
+   "hättet ihr zufällig",
+   "hast du zufällig",
+   "haben sie zufällig",
+   "habt ihr zufällig",
+   "hast du vielleicht",
+   "haben sie vielleicht",
+   "hättest du vielleicht",
+   "hätten sie vielleicht",
+   "hättest du eventuell"
+  ],
+  "severity": "error",
+  "why": "'Hättest du vielleicht ein Ladekabel?' was rejected"
+ },
+ {
+  "id": "ENG_CHUNK_0902",
+  "field": "accept",
+  "before": [
+   "mir wäre es lieber wenn du (nicht)",
+   "mir wäre es lieber wenn sie (nicht)",
+   "mir wäre es lieber wenn ihr (nicht)",
+   "mir wär's lieber wenn",
+   "es wäre mir lieber wenn",
+   "ich hätte es lieber wenn",
+   "ich fände es besser wenn",
+   "ich möchte nicht dass"
+  ],
+  "after": [
+   "mir wäre es lieber wenn du (nicht)",
+   "mir wäre es lieber wenn sie (nicht)",
+   "mir wäre es lieber wenn ihr (nicht)",
+   "mir wär's lieber wenn",
+   "es wäre mir lieber wenn",
+   "ich hätte es lieber wenn",
+   "ich fände es besser wenn",
+   "ich möchte nicht dass",
+   "wäre mir lieber wenn",
+   "mir wäre lieber wenn",
+   "ich würde es vorziehen wenn",
+   "ich fände es schön wenn"
+  ],
+  "severity": "error",
+  "why": "'Mir wäre lieber, wenn …' (without es) and 'Ich würde es vorziehen, wenn …' missing"
+ },
+ {
+  "id": "ENG_CHUNK_0903",
+  "field": "accept",
+  "before": [
+   "ich fände es (gut) (besser) (schön) wenn du nicht",
+   "musst du (denn) (eigentlich) immer",
+   "musst du [x] immer",
+   "müssen sie (denn) immer",
+   "ich wünschte du würdest nicht",
+   "ich wünschte sie würden nicht",
+   "es wäre schön wenn du nicht",
+   "könntest du (bitte) aufhören"
+  ],
+  "after": [
+   "ich fände es (gut) (besser) (schön) wenn du nicht",
+   "musst du (denn) (eigentlich) immer",
+   "musst du [x] immer",
+   "müssen sie (denn) immer",
+   "es wäre schön wenn du nicht",
+   "könntest du (bitte) aufhören",
+   "ich fände es (gut) (besser) (schön) wenn du [x] nicht",
+   "ich wünschte du würdest",
+   "ich wünschte sie würden",
+   "es wäre schön wenn du [x] nicht",
+   "kannst du (bitte) (mal) aufhören",
+   "lass (doch) (bitte) nicht immer"
+  ],
+  "severity": "error",
+  "why": "patterns needed 'nicht' right after 'du/würdest', so 'Ich wünschte, du würdest deine Schuhe nicht …' failed"
+ },
+ {
+  "id": "ENG_CHUNK_0905",
+  "field": "accept",
+  "before": [
+   "ist mir tausendmal lieber als",
+   "ist mir [x] lieber als",
+   "ist mir lieber als",
+   "ich ziehe [x] vor",
+   "ziehe ich [x] vor",
+   "ich würde [x] jederzeit vorziehen",
+   "jederzeit lieber",
+   "ich nehme [x] jederzeit"
+  ],
+  "after": [
+   "ist mir tausendmal lieber als",
+   "ist mir [x] lieber als",
+   "ist mir lieber als",
+   "ziehe ich [x] vor",
+   "ich würde [x] jederzeit vorziehen",
+   "jederzeit lieber",
+   "ich nehme [x] jederzeit",
+   "ich ziehe [x] [x] vor",
+   "mir ist [x] lieber als",
+   "lieber [x] als"
+  ],
+  "severity": "error",
+  "why": "'Ich ziehe einen ruhigen Abend zu Hause einer großen Party jederzeit vor' exceeds one 6-word slot; 'Lieber … als …' missing"
+ },
+ {
+  "id": "ENG_CHUNK_0910",
+  "field": "accept",
+  "before": [
+   "interpretier (da) nicht zu viel (in) (hinein) (rein)",
+   "interpretiere (da) nicht zu viel",
+   "interpretieren sie (da) nicht zu viel",
+   "nicht zu viel (hinein) (rein) interpretieren",
+   "nicht zu viel reininterpretieren",
+   "nicht zu viel hineininterpretieren",
+   "mach dir (da) (deswegen) keinen kopf",
+   "denk nicht zu viel darüber nach"
+  ],
+  "after": [
+   "interpretier (da) nicht zu viel (in) (hinein) (rein)",
+   "interpretiere (da) nicht zu viel",
+   "interpretieren sie (da) nicht zu viel",
+   "nicht zu viel (hinein) (rein) interpretieren",
+   "nicht zu viel reininterpretieren",
+   "nicht zu viel hineininterpretieren",
+   "mach dir (da) (deswegen) keinen kopf",
+   "denk nicht zu viel darüber nach",
+   "interpretier (da) nichts",
+   "hat (bestimmt) (sicher) nichts zu bedeuten",
+   "denk nicht zu viel drüber nach"
+  ],
+  "severity": "error",
+  "why": "'Das hat bestimmt nichts zu bedeuten' and 'Interpretier da nichts rein' are very natural"
+ },
+ {
+  "id": "ENG_CHUNK_0915",
+  "field": "accept",
+  "before": [
+   "ich bin nicht für [x] geschaffen",
+   "ich bin nicht dafür geschaffen",
+   "ich bin dafür nicht geschaffen",
+   "ist nichts für mich",
+   "das liegt mir nicht",
+   "liegt mir nicht",
+   "ich bin (einfach) nicht der typ dafür",
+   "ich bin dafür nicht gemacht"
+  ],
+  "after": [
+   "ich bin nicht für [x] geschaffen",
+   "ich bin nicht dafür geschaffen",
+   "ich bin dafür nicht geschaffen",
+   "ist nichts für mich",
+   "das liegt mir nicht",
+   "liegt mir nicht",
+   "ich bin (einfach) nicht der typ dafür",
+   "ich bin dafür nicht gemacht",
+   "ich bin nicht dafür gemacht",
+   "dafür bin ich (einfach) nicht geschaffen",
+   "dafür bin ich (einfach) nicht gemacht"
+  ],
+  "severity": "error",
+  "why": "'Dafür bin ich nicht gemacht' (fronted) was rejected"
+ },
+ {
+  "id": "ENG_CHUNK_0918",
+  "field": "accept",
+  "before": [
+   "ich bringe es nicht übers herz",
+   "nicht übers herz",
+   "ich kann mich nicht (dazu) überwinden",
+   "ich schaffe es (einfach) nicht",
+   "ich schaff es (einfach) nicht",
+   "ich bring's (einfach) nicht fertig",
+   "ich bringe es (einfach) nicht fertig"
+  ],
+  "after": [
+   "ich bringe es nicht übers herz",
+   "nicht übers herz",
+   "ich schaffe es (einfach) nicht",
+   "ich schaff es (einfach) nicht",
+   "ich bring's (einfach) nicht fertig",
+   "ich bringe es (einfach) nicht fertig",
+   "ich kann mich (einfach) nicht (dazu) überwinden",
+   "ich kann mich nicht (dazu) durchringen"
+  ],
+  "severity": "error",
+  "why": "'sich nicht durchringen können' is standard; 'einfach' broke the überwinden pattern"
+ },
+ {
+  "id": "ENG_CHUNK_0921",
+  "field": "accept",
+  "before": [
+   "mir bleibt nichts (anderes) übrig",
+   "bleibt mir nichts (anderes) übrig",
+   "ich habe keine (andere) wahl",
+   "ich hab keine (andere) wahl",
+   "habe ich keine (andere) wahl",
+   "hab ich keine (andere) wahl",
+   "ich muss wohl",
+   "ich komme nicht drum herum"
+  ],
+  "after": [
+   "mir bleibt nichts (anderes) übrig",
+   "bleibt mir nichts (anderes) übrig",
+   "ich habe keine (andere) wahl",
+   "ich hab keine (andere) wahl",
+   "habe ich keine (andere) wahl",
+   "hab ich keine (andere) wahl",
+   "ich muss wohl",
+   "ich komme nicht drum herum",
+   "ich komme nicht darum herum",
+   "wohl oder übel"
+  ],
+  "severity": "improve",
+  "why": "standard forms missing"
+ },
+ {
+  "id": "ENG_CHUNK_0925",
+  "field": "accept",
+  "before": [
+   "ich bin (leider) nicht befugt",
+   "dazu bin ich (leider) nicht befugt",
+   "das kann ich (leider) nicht entscheiden",
+   "das kann ich (leider) nicht genehmigen",
+   "das darf ich (leider) nicht",
+   "ich darf (das) (leider) nicht",
+   "ich bin (leider) nicht berechtigt",
+   "das liegt (leider) nicht in meiner hand"
+  ],
+  "after": [
+   "ich bin (leider) nicht befugt",
+   "dazu bin ich (leider) nicht befugt",
+   "das kann ich (leider) nicht entscheiden",
+   "das kann ich (leider) nicht genehmigen",
+   "das darf ich (leider) nicht",
+   "ich darf (das) (leider) nicht",
+   "ich bin (leider) nicht berechtigt",
+   "das liegt (leider) nicht in meiner hand",
+   "ich bin (leider) nicht in der lage",
+   "liegt (leider) nicht in meiner befugnis"
+  ],
+  "severity": "error",
+  "why": "'Ich bin leider nicht in der Lage, das zu genehmigen' is the standard formal rendering"
+ },
+ {
+  "id": "ENG_CHUNK_0926",
+  "field": "accept",
+  "before": [
+   "es steht mir nicht zu",
+   "steht mir nicht zu",
+   "(das) ist nicht meine sache",
+   "es ist nicht meine sache",
+   "das geht mich nichts an",
+   "es ist nicht meine aufgabe",
+   "es ist nicht an mir"
+  ],
+  "after": [
+   "es steht mir nicht zu",
+   "steht mir nicht zu",
+   "(das) ist nicht meine sache",
+   "es ist nicht meine sache",
+   "das geht mich nichts an",
+   "es ist nicht meine aufgabe",
+   "es ist nicht an mir",
+   "ich habe nicht das recht",
+   "ich hab nicht das recht",
+   "ich habe kein recht (dazu)",
+   "ich mische mich (da) nicht ein"
+  ],
+  "severity": "error",
+  "why": "'Ich habe nicht das Recht, …' is natural"
+ },
+ {
+  "id": "ENG_CHUNK_0927",
+  "field": "accept",
+  "before": [
+   "ich würde lügen wenn ich sagen würde",
+   "ich würde lügen",
+   "ich würd lügen",
+   "es wäre gelogen (wenn)",
+   "das wäre gelogen",
+   "ich müsste lügen",
+   "ich lüge wenn ich sage"
+  ],
+  "after": [
+   "ich würde lügen wenn ich sagen würde",
+   "ich würde lügen",
+   "ich würd lügen",
+   "es wäre gelogen (wenn)",
+   "das wäre gelogen",
+   "ich müsste lügen",
+   "ich lüge wenn ich sage",
+   "würde ich lügen",
+   "wäre das (glatt) gelogen"
+  ],
+  "severity": "error",
+  "why": "inverted 'dann würde ich lügen' / 'wäre das gelogen' were rejected"
+ },
+ {
+  "id": "ENG_CHUNK_0931",
+  "field": "accept",
+  "before": [
+   "du glaubst (doch) nicht im ernst",
+   "du glaubst (doch) nicht ernsthaft",
+   "sie glauben (doch) nicht im ernst",
+   "sie glauben (doch) nicht ernsthaft",
+   "ihr glaubt (doch) nicht im ernst",
+   "du denkst (doch) nicht im ernst",
+   "du denkst (doch) nicht ernsthaft",
+   "glaubst du im ernst"
+  ],
+  "after": [
+   "du glaubst (doch) nicht im ernst",
+   "du glaubst (doch) nicht ernsthaft",
+   "sie glauben (doch) nicht im ernst",
+   "sie glauben (doch) nicht ernsthaft",
+   "ihr glaubt (doch) nicht im ernst",
+   "du denkst (doch) nicht im ernst",
+   "du denkst (doch) nicht ernsthaft",
+   "glaubst du im ernst",
+   "du glaubst (doch) nicht wirklich",
+   "sie glauben (doch) nicht wirklich",
+   "du meinst (doch) nicht im ernst",
+   "glaubst du (etwa) wirklich",
+   "glaubst du (etwa) ernsthaft"
+  ],
+  "severity": "error",
+  "why": "'Du glaubst doch nicht wirklich, dass …' is very common"
+ },
+ {
+  "id": "ENG_CHUNK_0942",
+  "field": "accept",
+  "before": [
+   "kommt mit [x] durch",
+   "mit [x] durchkommen",
+   "damit durchkommen",
+   "ungestraft davon",
+   "kommt [x] ungestraft davon",
+   "kommt (immer) davon",
+   "kommt mit [x] davon"
+  ],
+  "after": [
+   "kommt mit [x] durch",
+   "mit [x] durchkommen",
+   "damit durchkommen",
+   "ungestraft davon",
+   "kommt [x] ungestraft davon",
+   "kommt (immer) davon",
+   "kommt mit [x] davon",
+   "kann sich alles erlauben",
+   "darf sich alles erlauben"
+  ],
+  "severity": "improve",
+  "why": "natural rendering"
+ },
+ {
+  "id": "ENG_CHUNK_0961",
+  "field": "accept",
+  "before": [
+   "die sache geklärt",
+   "die sache klären",
+   "uns ausgesprochen",
+   "alles geklärt",
+   "reinen tisch gemacht",
+   "aus der welt geschafft",
+   "ein klärendes gespräch"
+  ],
+  "after": [
+   "die sache geklärt",
+   "die sache klären",
+   "uns ausgesprochen",
+   "alles geklärt",
+   "reinen tisch gemacht",
+   "aus der welt geschafft",
+   "ein klärendes gespräch",
+   "ausgeräumt",
+   "die wogen geglättet",
+   "uns (wieder) vertragen"
+  ],
+  "severity": "error",
+  "why": "'Missverständnisse ausgeräumt' / 'uns wieder vertragen' are natural"
+ },
+ {
+  "id": "ENG_CHUNK_0962",
+  "field": "accept",
+  "before": [
+   "trägt [x] nach",
+   "trägt [x] [x] nach",
+   "nachtragen",
+   "nachtragend",
+   "ist [x] sauer auf",
+   "ist noch sauer",
+   "hat [x] nicht verziehen",
+   "ist [x] beleidigt"
+  ],
+  "after": [
+   "trägt [x] nach",
+   "trägt [x] [x] nach",
+   "nachtragen",
+   "nachtragend",
+   "ist [x] sauer auf",
+   "hat [x] nicht verziehen",
+   "ist [x] beleidigt",
+   "ist (immer) noch sauer",
+   "grollt",
+   "eingeschnappt",
+   "nicht vergeben"
+  ],
+  "severity": "error",
+  "why": "'Sie ist immer noch sauer …' was rejected"
+ },
+ {
+  "id": "ENG_CHUNK_0970",
+  "field": "accept",
+  "before": [
+   "wenn du mich fragst",
+   "wenn sie mich fragen",
+   "nur (so) als meinung",
+   "nur meine meinung",
+   "meiner meinung nach",
+   "falls es dir was hilft",
+   "falls es ihnen was hilft"
+  ],
+  "after": [
+   "wenn du mich fragst",
+   "wenn sie mich fragen",
+   "nur (so) als meinung",
+   "nur meine meinung",
+   "meiner meinung nach",
+   "falls es dir was hilft",
+   "falls es ihnen was hilft",
+   "falls es dir hilft",
+   "falls es ihnen hilft",
+   "falls es dich tröstet",
+   "ich für meinen teil"
+  ],
+  "severity": "error",
+  "why": "'Falls es dich tröstet' fits the reassurance use; 'falls es dir hilft' without 'was' was rejected"
+ },
+ {
+  "id": "ENG_CHUNK_0980",
+  "field": "accept",
+  "before": [
+   "lass mich (mal) den advocatus diaboli spielen",
+   "lassen sie mich (mal) den advocatus diaboli spielen",
+   "ich spiele (mal) den advocatus diaboli",
+   "(mal) andersrum gefragt",
+   "ich halte (mal) dagegen",
+   "ich spiele (mal) den teufelsanwalt"
+  ],
+  "after": [
+   "lass mich (mal) den advocatus diaboli spielen",
+   "lassen sie mich (mal) den advocatus diaboli spielen",
+   "ich spiele (mal) den advocatus diaboli",
+   "(mal) andersrum gefragt",
+   "ich halte (mal) dagegen",
+   "ich spiele (mal) den anwalt des teufels",
+   "den anwalt des teufels spielen",
+   "ich spiele (mal) den teufelsadvokaten"
+  ],
+  "severity": "error",
+  "why": "'Teufelsanwalt' is not standard (Teufelsadvokat / Anwalt des Teufels)"
+ },
+ {
+  "id": "ENG_CHUNK_1000",
+  "field": "accept",
+  "before": [
+   "statt zu",
+   "statt",
+   "anstatt zu",
+   "anstatt",
+   "im gegensatz zu",
+   "anstelle von",
+   "lieber als zu"
+  ],
+  "after": [
+   "statt zu",
+   "statt",
+   "anstatt zu",
+   "anstatt",
+   "im gegensatz zu",
+   "anstelle von",
+   "lieber als zu",
+   "lieber [x] als",
+   "im gegensatz zum"
+  ],
+  "severity": "error",
+  "why": "'Ich würde lieber mieten als kaufen' and 'im Gegensatz zum Kaufen' were rejected"
+ },
+ {
+  "id": "ENG_CHUNK_1001",
+  "field": "accept",
+  "before": [
+   "es hat (schon) was [anything] zu",
+   "hat (durchaus) was für sich",
+   "[anything] hat (durchaus) was für sich",
+   "es hat (schon) etwas [anything] zu",
+   "es spricht einiges dafür",
+   "es spricht (schon) einiges für",
+   "hat (durchaus) etwas für sich"
+  ],
+  "after": [
+   "es hat (schon) was [anything] zu",
+   "hat (durchaus) was für sich",
+   "[anything] hat (durchaus) was für sich",
+   "es hat (schon) etwas [anything] zu",
+   "es spricht einiges dafür",
+   "es spricht (schon) einiges für",
+   "hat (durchaus) etwas für sich",
+   "hat (durchaus) (schon) (auch) seinen reiz"
+  ],
+  "severity": "error",
+  "why": "'Es hat schon seinen Reiz, …' is the most idiomatic form"
+ },
+ {
+  "id": "ENG_CHUNK_1005",
+  "field": "accept",
+  "before": [
+   "ich würde (mal) behaupten",
+   "ich glaube schon dass",
+   "ich möchte meinen",
+   "ich würde (schon) sagen",
+   "ich denke schon dass",
+   "ich hoffe doch dass",
+   "ich würde behaupten"
+  ],
+  "after": [
+   "ich würde (mal) behaupten",
+   "ich glaube schon dass",
+   "ich möchte meinen",
+   "ich würde (schon) sagen",
+   "ich denke schon dass",
+   "ich hoffe doch dass",
+   "ich würde behaupten",
+   "ich bilde mir ein",
+   "ich glaube doch"
+  ],
+  "severity": "error",
+  "why": "'Ich bilde mir ein, ganz gut zu kochen' is the closest native equivalent"
+ },
+ {
+  "id": "ENG_CHUNK_1013",
+  "field": "accept",
+  "before": [
+   "lustig dass du [anything] erwähnst",
+   "lustig dass sie [anything] erwähnen",
+   "witzig dass du [anything] erwähnst",
+   "witzig dass sie [anything] erwähnen",
+   "komisch dass du [anything] erwähnst",
+   "lustig dass du [anything] ansprichst",
+   "lustig dass du von [anything] sprichst",
+   "lustig dass sie von [anything] sprechen"
+  ],
+  "after": [
+   "lustig dass du [anything] erwähnst",
+   "lustig dass sie [anything] erwähnen",
+   "witzig dass du [anything] erwähnst",
+   "witzig dass sie [anything] erwähnen",
+   "komisch dass du [anything] erwähnst",
+   "lustig dass du [anything] ansprichst",
+   "lustig dass du von [anything] sprichst",
+   "lustig dass sie von [anything] sprechen",
+   "lustig dass du [anything] sagst",
+   "witzig dass du [anything] sagst",
+   "was für ein zufall"
+  ],
+  "severity": "error",
+  "why": "the note teaches 'Witzig, dass du … sagst' but it was not accepted"
+ },
+ {
+  "id": "ENG_CHUNK_1021",
+  "field": "accept",
+  "before": [
+   "man muss (schon) [anything] sein um",
+   "man müsste (schon) [anything] sein um",
+   "man muss (schon) [anything] sein wenn man",
+   "nur ein [anything] würde",
+   "du müsstest (schon) [anything] sein um",
+   "sie müssten (schon) [anything] sein um"
+  ],
+  "after": [
+   "man muss (schon) [anything] sein um",
+   "man müsste (schon) [anything] sein um",
+   "man muss (schon) [anything] sein wenn man",
+   "nur ein [anything] würde",
+   "du müsstest (schon) [anything] sein um",
+   "sie müssten (schon) [anything] sein um",
+   "wer [anything] muss (schon) [anything] sein",
+   "man wäre (ja) [anything]"
+  ],
+  "severity": "improve",
+  "why": "'Wer bei dem Schnee Auto fährt, muss verrückt sein' is natural"
+ },
+ {
+  "id": "ENG_CHUNK_1022",
+  "field": "accept",
+  "before": [
+   "man kann über [anything] sagen was man will",
+   "sag über [anything] was du willst",
+   "sagen sie über [anything] was sie wollen",
+   "sagt über [anything] was ihr wollt",
+   "man kann von [anything] halten was man will",
+   "halt von [anything] was du willst",
+   "egal was man über [anything] sagt"
+  ],
+  "after": [
+   "man kann über [anything] sagen was man will",
+   "sag über [anything] was du willst",
+   "sagen sie über [anything] was sie wollen",
+   "sagt über [anything] was ihr wollt",
+   "man kann von [anything] halten was man will",
+   "halt von [anything] was du willst",
+   "egal was man über [anything] sagt",
+   "über [anything] kann man sagen was man will",
+   "von [anything] kann man halten was man will"
+  ],
+  "severity": "error",
+  "why": "fronted 'Über meinen Onkel kann man sagen, was man will' was rejected"
+ },
+ {
+  "id": "ENG_CHUNK_1029",
+  "field": "accept",
+  "before": [
+   "man munkelt dass",
+   "man munkelt",
+   "angeblich",
+   "es heißt dass",
+   "es heißt",
+   "es geht das gerücht um dass",
+   "gerüchten zufolge",
+   "man sagt dass"
+  ],
+  "after": [
+   "man munkelt dass",
+   "man munkelt",
+   "angeblich",
+   "es heißt dass",
+   "es heißt",
+   "gerüchten zufolge",
+   "man sagt dass",
+   "es geht das gerücht (um)",
+   "ich habe gehört (dass)",
+   "ich hab gehört (dass)",
+   "es wird gemunkelt",
+   "man erzählt sich",
+   "es gibt gerüchte"
+  ],
+  "severity": "error",
+  "why": "'Ich hab gehört, dass …' and 'Es geht das Gerücht, dass …' (without um) missing"
+ },
+ {
+  "id": "ENG_CHUNK_1035",
+  "field": "accept",
+  "before": [
+   "es ist eine sache [anything] aber eine (ganz) andere",
+   "es ist eine sache [anything] aber etwas (ganz) anderes",
+   "es ist eine sache [anything] aber was (ganz) anderes",
+   "es ist eine sache [anything] eine andere",
+   "[anything] ist eine sache [anything] eine andere",
+   "es ist das eine [anything] das andere"
+  ],
+  "after": [
+   "es ist eine sache [anything] aber eine (ganz) andere",
+   "es ist eine sache [anything] aber etwas (ganz) anderes",
+   "es ist eine sache [anything] aber was (ganz) anderes",
+   "es ist eine sache [anything] eine andere",
+   "[anything] ist eine sache [anything] eine andere",
+   "es ist das eine [anything] das andere",
+   "ist das eine [anything] das andere"
+  ],
+  "severity": "error",
+  "why": "'Ein Laufband kaufen ist das eine, es benutzen das andere' was rejected"
+ },
+ {
+  "id": "ENG_CHUNK_1043",
+  "field": "accept",
+  "before": [
+   "geben wir ihm (erst mal) einen vertrauensvorschuss",
+   "ihm (erst mal) einen vertrauensvorschuss geben",
+   "einen vertrauensvorschuss",
+   "im zweifel für den angeklagten",
+   "im zweifel für ihn",
+   "gehen wir (erst mal) vom besten aus",
+   "glauben wir ihm erst mal"
+  ],
+  "after": [
+   "geben wir ihm (erst mal) einen vertrauensvorschuss",
+   "ihm (erst mal) einen vertrauensvorschuss geben",
+   "einen vertrauensvorschuss",
+   "im zweifel für den angeklagten",
+   "im zweifel für ihn",
+   "gehen wir (erst mal) vom besten aus",
+   "glauben wir ihm erst mal",
+   "geben wir ihm (erst mal) (noch) eine chance",
+   "ihm (erst mal) (noch) eine chance geben",
+   "vertrauen wir ihm (erst mal)"
+  ],
+  "severity": "error",
+  "why": "the note teaches 'Geben wir ihm eine Chance' but it was not accepted"
+ },
+ {
+  "id": "ENG_CHUNK_1076",
+  "field": "accept",
+  "before": [
+   "so kann man (das) auch sehen",
+   "so kann man (es) auch sehen",
+   "so kann man's auch sehen",
+   "das ist eine sichtweise",
+   "das ist (auch) eine sichtweise",
+   "so gesehen",
+   "auch eine art das zu sehen"
+  ],
+  "after": [
+   "so kann man (das) auch sehen",
+   "so kann man (es) auch sehen",
+   "so kann man's auch sehen",
+   "das ist eine sichtweise",
+   "das ist (auch) eine sichtweise",
+   "so gesehen",
+   "auch eine art das zu sehen",
+   "man kann (es) (das) auch so sehen",
+   "man kann's auch so sehen",
+   "eine art (es) (das) zu sehen"
+  ],
+  "severity": "error",
+  "why": "'Man kann es auch so sehen' was rejected"
+ },
+ {
+  "id": "ENG_CHUNK_1080",
+  "field": "accept",
+  "before": [
+   "da habe ich mich geirrt",
+   "da hab ich mich geirrt",
+   "ich habe mich geirrt",
+   "ich hab mich geirrt",
+   "ich nehme alles zurück",
+   "ich nehm alles zurück",
+   "dann lag ich falsch",
+   "da lag ich falsch"
+  ],
+  "after": [
+   "da habe ich mich geirrt",
+   "da hab ich mich geirrt",
+   "ich habe mich geirrt",
+   "ich hab mich geirrt",
+   "ich nehme alles zurück",
+   "ich nehm alles zurück",
+   "dann lag ich falsch",
+   "da lag ich falsch",
+   "habe ich mich geirrt",
+   "hab ich mich geirrt",
+   "mich vertan",
+   "mich getäuscht",
+   "ich korrigiere mich",
+   "mein fehler"
+  ],
+  "severity": "error",
+  "why": "'Ich korrigiere mich' / 'Ich hab mich vertan' are the natural renderings; inverted 'dann habe ich mich geirrt' failed"
+ },
+ {
+  "id": "ENG_CHUNK_1090",
+  "field": "accept",
+  "before": [
+   "ein unglück kommt selten allein",
+   "es kommt immer alles auf einmal",
+   "es kommt alles auf einmal",
+   "wenn's kommt dann dicke",
+   "wenn es kommt dann dicke",
+   "es kommt immer knüppeldick"
+  ],
+  "after": [
+   "ein unglück kommt selten allein",
+   "es kommt immer alles auf einmal",
+   "es kommt alles auf einmal",
+   "wenn's kommt dann dicke",
+   "wenn es kommt dann dicke",
+   "es kommt (immer) knüppeldick"
+  ],
+  "severity": "improve",
+  "why": "'Es kommt knüppeldick' without immer"
+ },
+ {
+  "id": "ENG_CHUNK_1096",
+  "field": "accept",
+  "before": [
+   "(so) wie die dinge stehen",
+   "beim jetzigen stand",
+   "beim derzeitigen stand",
+   "nach jetzigem stand",
+   "nach aktuellem stand",
+   "(so) wie es aussieht",
+   "wie die dinge stehen",
+   "(so) wie es jetzt ist"
+  ],
+  "after": [
+   "(so) wie die dinge stehen",
+   "beim jetzigen stand",
+   "beim derzeitigen stand",
+   "nach jetzigem stand",
+   "nach aktuellem stand",
+   "(so) wie es aussieht",
+   "wie die dinge stehen",
+   "(so) wie es jetzt ist",
+   "stand jetzt",
+   "nach derzeitigem stand",
+   "(so) wie die lage (jetzt) ist"
+  ],
+  "severity": "error",
+  "why": "'Stand jetzt' and 'nach derzeitigem Stand' are common"
+ },
+ {
+  "id": "ENG_CHUNK_1098",
+  "field": "accept",
+  "before": [
+   "insofern",
+   "in dieser hinsicht",
+   "in der hinsicht",
+   "so gesehen",
+   "in diesem sinne",
+   "in dem sinne",
+   "insoweit"
+  ],
+  "after": [
+   "insofern",
+   "in dieser hinsicht",
+   "in der hinsicht",
+   "so gesehen",
+   "in diesem sinne",
+   "in dem sinne",
+   "insoweit",
+   "von daher"
+  ],
+  "severity": "error",
+  "why": "'Von daher ist er besser' is the common spoken form"
+ },
+ {
+  "id": "ENG_CHUNK_1103",
+  "field": "accept",
+  "before": [
+   "ohne [anything] hätte ich",
+   "wenn [anything] nicht gewesen wäre",
+   "wäre [anything] nicht gewesen",
+   "hätte ich [anything] nicht gehabt",
+   "ohne [anything] hätte",
+   "ohne [anything] wäre",
+   "gäbe es [anything] nicht"
+  ],
+  "after": [
+   "ohne [anything] hätte ich",
+   "wenn [anything] nicht gewesen wäre",
+   "wäre [anything] nicht gewesen",
+   "hätte ich [anything] nicht gehabt",
+   "ohne [anything] hätte",
+   "ohne [anything] wäre",
+   "gäbe es [anything] nicht",
+   "wenn ich [anything] nicht gehabt hätte",
+   "wenn es [anything] nicht gäbe"
+  ],
+  "severity": "error",
+  "why": "'Wenn ich meine Schwester nicht gehabt hätte' was rejected"
+ },
+ {
+  "id": "ENG_CHUNK_1110",
+  "field": "accept",
+  "before": [
+   "wird (auch) zeit dass",
+   "wurde (auch) zeit dass",
+   "es wird zeit dass",
+   "es wird höchste zeit dass",
+   "wird höchste zeit dass",
+   "es wurde (auch) zeit dass",
+   "wird aber (auch) zeit dass",
+   "wird langsam zeit dass"
+  ],
+  "after": [
+   "wurde (auch) zeit dass",
+   "es wird zeit dass",
+   "es wird höchste zeit dass",
+   "wird höchste zeit dass",
+   "es wurde (auch) zeit dass",
+   "wird langsam zeit dass",
+   "wird (ja) (aber) (auch) zeit dass",
+   "es ist höchste zeit dass",
+   "es wird (höchste) zeit für"
+  ],
+  "severity": "error",
+  "why": "'Wird ja auch Zeit' and 'Es ist höchste Zeit, dass …' were rejected"
+ },
+ {
+  "id": "ENG_CHUNK_1114",
+  "field": "accept",
+  "before": [
+   "ich lege wert darauf",
+   "ich lege großen wert darauf",
+   "ich leg wert darauf",
+   "ich achte darauf",
+   "ich sorge dafür",
+   "mir ist wichtig",
+   "es ist mir wichtig",
+   "ich lege immer wert darauf"
+  ],
+  "after": [
+   "ich lege wert darauf",
+   "ich leg wert darauf",
+   "ich achte darauf",
+   "ich sorge dafür",
+   "mir ist wichtig",
+   "es ist mir wichtig",
+   "ich lege (immer) (großen) wert darauf",
+   "mir ist es wichtig",
+   "grundsätzlich",
+   "ich mache es mir zur regel"
+  ],
+  "severity": "error",
+  "why": "note teaches 'grundsätzlich' but it was not accepted; 'Mir ist es wichtig' failed"
+ },
+ {
+  "id": "ENG_CHUNK_1117",
+  "field": "accept",
+  "before": [
+   "ich will (ja) nicht dass",
+   "ich möchte (ja) nicht dass",
+   "nicht dass du",
+   "ich fände es schade wenn",
+   "es wäre schade wenn",
+   "ich wollte nicht dass"
+  ],
+  "after": [
+   "ich will (ja) nicht dass",
+   "ich möchte (ja) nicht dass",
+   "nicht dass du",
+   "ich fände es schade wenn",
+   "ich wollte nicht dass",
+   "es wäre (doch) (echt) schade wenn",
+   "es wäre (doch) (echt) blöd wenn",
+   "ich möchte vermeiden dass"
+  ],
+  "severity": "error",
+  "why": "'Es wäre doch blöd/schade, wenn …' is the natural form"
+ },
+ {
+  "id": "ENG_CHUNK_1120",
+  "field": "accept",
+  "before": [
+   "geschieht ihm recht",
+   "das geschieht ihm recht",
+   "geschieht [anything] recht",
+   "das geschieht [anything] recht",
+   "selbst schuld",
+   "selber schuld",
+   "das hat er davon",
+   "das hat er verdient"
+  ],
+  "after": [
+   "das geschieht ihm recht",
+   "geschieht [anything] recht",
+   "das geschieht [anything] recht",
+   "selbst schuld",
+   "selber schuld",
+   "das hat er davon",
+   "das hat er verdient",
+   "geschieht ihm (ganz) recht",
+   "das hat er sich selbst zuzuschreiben"
+  ],
+  "severity": "error",
+  "why": "'Das geschieht ihm ganz recht' was rejected"
+ },
+ {
+  "id": "ENG_CHUNK_1122",
+  "field": "accept",
+  "before": [
+   "kommt nie auf die idee",
+   "kommt nie auf den gedanken",
+   "kommt niemals auf die idee",
+   "kommt nicht auf die idee",
+   "käme nie auf die idee",
+   "denkt nie daran",
+   "fällt es nie ein",
+   "es fällt [anything] nie ein"
+  ],
+  "after": [
+   "kommt nie auf den gedanken",
+   "kommt niemals auf die idee",
+   "kommt nicht auf die idee",
+   "käme nie auf die idee",
+   "denkt nie daran",
+   "fällt es nie ein",
+   "es fällt [anything] nie ein",
+   "kommt (einfach) (natürlich) nie auf die idee",
+   "nie in den sinn"
+  ],
+  "severity": "error",
+  "why": "'kommt einfach nie auf die Idee' was rejected"
+ },
+ {
+  "id": "ENG_CHUNK_1127",
+  "field": "accept",
+  "before": [
+   "habe ich [anything] fertig",
+   "ich habe [anything] fertig",
+   "hab ich [anything] fertig",
+   "ich hab [anything] fertig",
+   "ist [anything] fertig",
+   "bis [anything] ist [anything] fertig",
+   "ich mache [anything] bis [anything] fertig",
+   "ich werde [anything] fertig haben"
+  ],
+  "after": [
+   "habe ich [anything] fertig",
+   "ich habe [anything] fertig",
+   "hab ich [anything] fertig",
+   "ich hab [anything] fertig",
+   "ist [anything] fertig",
+   "bis [anything] ist [anything] fertig",
+   "ich mache [anything] bis [anything] fertig",
+   "ich werde [anything] fertig haben",
+   "ich werde [anything] fertigstellen",
+   "ich stelle [anything] fertig",
+   "kriege [anything] fertig",
+   "krieg [anything] fertig"
+  ],
+  "severity": "improve",
+  "why": "'Ich kriege den Bericht bis Freitag fertig' is natural"
+ },
+ {
+  "id": "ENG_CHUNK_1145",
+  "field": "accept",
+  "before": [
+   "plus minus null rausgekommen",
+   "plus minus null herausgekommen",
+   "ohne verlust rausgekommen",
+   "ohne verlust herausgekommen",
+   "bei null rausgekommen",
+   "bei null herausgekommen",
+   "kostendeckend",
+   "die kosten gedeckt"
+  ],
+  "after": [
+   "plus minus null rausgekommen",
+   "plus minus null herausgekommen",
+   "ohne verlust rausgekommen",
+   "ohne verlust herausgekommen",
+   "bei null rausgekommen",
+   "bei null herausgekommen",
+   "kostendeckend",
+   "die kosten gedeckt",
+   "weder gewinn noch verlust",
+   "kosten gedeckt",
+   "kosten (wieder) reingeholt"
+  ],
+  "severity": "error",
+  "why": "'weder Gewinn noch Verlust gemacht' is the plain standard rendering"
+ },
+ {
+  "id": "ENG_CHUNK_1164",
+  "field": "accept",
+  "before": [
+   "setzen ihm (richtig) zu",
+   "setzen [anything] zu",
+   "zehren an ihm",
+   "zehren an [anything]",
+   "macht ihm zu schaffen",
+   "machen ihm zu schaffen",
+   "schlauchen ihn",
+   "gehen ihm an die substanz"
+  ],
+  "after": [
+   "setzen ihm (richtig) zu",
+   "setzen [anything] zu",
+   "zehren an ihm",
+   "zehren an [anything]",
+   "macht ihm zu schaffen",
+   "schlauchen ihn",
+   "machen ihm (richtig) (ganz schön) (echt) zu schaffen",
+   "nehmen ihn [anything] mit",
+   "nehmen ihn mit",
+   "gehen ihm (richtig) an die substanz",
+   "belasten ihn"
+  ],
+  "severity": "error",
+  "why": "'Die Nachtschichten nehmen ihn richtig mit' and 'machen ihm richtig zu schaffen' were rejected"
+ },
+ {
+  "id": "ENG_CHUNK_1187",
+  "field": "accept",
+  "before": [
+   "mal langsam",
+   "freu dich nicht zu früh",
+   "freuen sie sich nicht zu früh",
+   "freut euch nicht zu früh",
+   "nicht so schnell",
+   "immer langsam",
+   "eins nach dem anderen",
+   "nun (mal) langsam"
+  ],
+  "after": [
+   "mal langsam",
+   "freu dich nicht zu früh",
+   "freuen sie sich nicht zu früh",
+   "freut euch nicht zu früh",
+   "nicht so schnell",
+   "immer langsam",
+   "eins nach dem anderen",
+   "nun (mal) langsam",
+   "immer mit der ruhe",
+   "nicht zu früh freuen",
+   "den tag nicht vor dem abend loben"
+  ],
+  "severity": "error",
+  "why": "'Man soll den Tag nicht vor dem Abend loben' / 'Lass uns uns nicht zu früh freuen' are the idiomatic forms"
+ },
+ {
+  "id": "ENG_CHUNK_1192",
+  "field": "accept",
+  "before": [
+   "und zu allem überfluss",
+   "zu allem überfluss",
+   "und obendrein",
+   "obendrein",
+   "und zu allem übel",
+   "zu allem übel",
+   "und dann auch noch",
+   "und als krönung"
+  ],
+  "after": [
+   "und zu allem überfluss",
+   "zu allem überfluss",
+   "und obendrein",
+   "obendrein",
+   "und zu allem übel",
+   "zu allem übel",
+   "und dann auch noch",
+   "und als krönung",
+   "und dann [anything] auch noch",
+   "und als ob das nicht genug wäre",
+   "und zur krönung"
+  ],
+  "severity": "error",
+  "why": "'und dann hat es auch noch geregnet' failed (verb splits 'dann auch noch')"
+ },
+ {
+  "id": "ENG_CHUNK_1193",
+  "field": "accept",
+  "before": [
+   "mit [anything] und",
+   "bei [anything] und",
+   "wegen [anything] und",
+   "durch [anything] und"
+  ],
+  "after": [
+   "mit [anything] und",
+   "bei [anything] und",
+   "wegen [anything] und",
+   "durch [anything] und",
+   "zwischen [anything] und"
+  ],
+  "severity": "improve",
+  "why": "'Zwischen Baby und Umzug …' is natural"
+ },
+ {
+  "id": "ENG_CHUNK_1199",
+  "field": "accept",
+  "before": [
+   "sozusagen",
+   "gewissermaßen",
+   "quasi",
+   "wenn man so will",
+   "wie man (so) schön sagt"
+  ],
+  "after": [
+   "sozusagen",
+   "gewissermaßen",
+   "quasi",
+   "wenn man so will",
+   "wie man (so) (schön) sagt"
+  ],
+  "severity": "improve",
+  "why": "'wie man so sagt' without schön"
+ }
+]

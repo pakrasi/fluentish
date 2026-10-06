@@ -44,13 +44,21 @@
 "id": "ENG_CHUNK_0008",
 "t": "Ich wollte schon lange [Infinitiv]",
 "ex": "Ich wollte dich schon seit Wochen anrufen.",
-"n": "No perfect continuous in German: modal in Präteritum + \"schon lange/seit Wochen\"."
+"n": "No perfect continuous in German: modal in Präteritum + \"schon lange/seit Wochen\".",
+"fn": "narrate",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0009",
 "t": "Es hat keinen Sinn, [zu + Infinitiv] / Es bringt nichts, [zu + Infinitiv]",
 "ex": "Es hat keinen Sinn zu warten, die kommen nicht mehr.",
-"n": "\"Es macht keinen Sinn\" is common in speech but criticised as an anglicism; \"Es hat keinen Sinn\" is safe."
+"n": "\"Es macht keinen Sinn\" is very common and now accepted; \"Es hat keinen Sinn\" is the safer choice in writing.",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0010",
@@ -506,7 +514,10 @@
 "id": "ENG_CHUNK_0092",
 "t": "Allerdings / Wobei man sagen muss",
 "ex": "Das Hotel war etwas alt. Allerdings war das Personal total nett.",
-"n": "\"Allerdings\" takes position 1, so the verb follows (Allerdings war ...). \"Wobei\" is a subordinator: verb-final."
+"n": "\"Allerdings\" takes position 1, so the verb follows (Allerdings war ...). \"Wobei\" is a subordinator: verb-final.",
+"fn": "concede",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0093",
@@ -547,7 +558,11 @@
 "id": "ENG_CHUNK_0099",
 "t": "Schließlich / Immerhin",
 "ex": "Lass ihn schlafen. Er hat schließlich die ganze Nacht gearbeitet.",
-"n": "\"schließlich\" in mid-sentence = after all; at the start of a story it means \"finally\"."
+"n": "\"schließlich\" giving a reason = after all (Er hat schließlich … / Schließlich hat er …); in a sequence of events it means \"finally\".",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_0100",

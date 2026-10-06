@@ -15,7 +15,11 @@
 "id": "ENG_CHUNK_1103",
 "t": "Wenn [Nomen] nicht gewesen wäre, [Satz] / Ohne [Nomen] [Satz]",
 "ex": "Ohne meine Schwester hätte ich diese Wohnung nie gefunden.",
-"n": "Ohne + Akk replaces the whole wenn-clause; then Konjunktiv II past: hätte ich ... gefunden."
+"n": "Ohne + Akk replaces the whole wenn-clause; then Konjunktiv II past: hätte ich ... gefunden.",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1104",
@@ -57,7 +61,11 @@
 "id": "ENG_CHUNK_1110",
 "t": "Wird auch Zeit, dass [Satz]",
 "ex": "Wird auch Zeit, dass du dir ein neues Handy kaufst. Das alte ist uralt.",
-"n": "dass: verb last. Wird auch Zeit! alone is common."
+"n": "dass: verb last. Wird auch Zeit! alone is common.",
+"fn": "react",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1111",
@@ -80,7 +88,11 @@
 "id": "ENG_CHUNK_1114",
 "t": "Ich lege Wert darauf, [zu + Infinitiv]",
 "ex": "Ich lege Wert darauf, jeden Sonntag meine Oma anzurufen.",
-"n": "Wert legen auf; darauf + zu-infinitive. Also: Ich rufe grundsätzlich ..."
+"n": "Wert legen auf; darauf + zu-infinitive. Also: Ich rufe grundsätzlich ...",
+"fn": "opinion",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1115",
@@ -98,7 +110,11 @@
 "id": "ENG_CHUNK_1117",
 "t": "Ich will nicht, dass [Person] [Verb am Ende]",
 "ex": "Lass uns vorher anrufen. Ich will nicht, dass du den ganzen Weg umsonst fährst.",
-"n": "dass: verb last. English 'for X to' becomes a dass-clause."
+"n": "dass: verb last. English 'for X to' becomes a dass-clause.",
+"fn": "react",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1118",
@@ -114,9 +130,13 @@
 },
 {
 "id": "ENG_CHUNK_1120",
-"t": "Das geschieht [Person] recht, wenn [Satz]",
-"ex": "Er hat den Flug verpasst? Geschieht ihm recht, wenn er so spät losfährt.",
-"n": "Dativ: ihm, ihr. wenn: verb last."
+"t": "Das geschieht [Person, Dativ] recht",
+"ex": "Er hat den Flug verpasst? Das geschieht ihm recht. Warum ist er auch so spät losgefahren?",
+"n": "recht geschehen + Dativ. auch in the question = he should have known.",
+"fn": "react",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1121",
@@ -127,7 +147,11 @@
 {
 "id": "ENG_CHUNK_1122",
 "t": "[Person] kommt nie auf die Idee, [zu + Infinitiv]",
-"ex": "Mein Mitbewohner kommt nie auf die Idee, Klopapier zu kaufen."
+"ex": "Mein Mitbewohner kommt nie auf die Idee, Klopapier zu kaufen.",
+"fn": "people",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1123",
@@ -155,7 +179,11 @@
 "id": "ENG_CHUNK_1127",
 "t": "Ich habe [Nomen] bis [Zeitpunkt] fertig",
 "ex": "Keine Sorge, bis Freitag habe ich den Bericht fertig.",
-"n": "fertig haben = have done. bis Freitag in position 1: habe ich."
+"n": "fertig haben = have done. bis Freitag in position 1: habe ich.",
+"fn": "formal",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1128",
@@ -257,7 +285,11 @@
 {
 "id": "ENG_CHUNK_1145",
 "t": "ohne Verlust rauskommen / plus minus null rauskommen",
-"ex": "Nach allen Kosten sind wir beim Kuchenverkauf gerade so plus minus null rausgekommen."
+"ex": "Nach Abzug aller Kosten sind wir beim Kuchenverkauf gerade so plus minus null rausgekommen.",
+"fn": "figures",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1146",
@@ -366,7 +398,11 @@
 "id": "ENG_CHUNK_1164",
 "t": "[Person] zusetzen / an [Person] zehren",
 "ex": "Die Nachtschichten setzen ihm richtig zu.",
-"n": "zusetzen + Dativ; separable."
+"n": "zusetzen + Dativ; separable.",
+"fn": "collocation",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1165",
@@ -484,7 +520,11 @@
 {
 "id": "ENG_CHUNK_1187",
 "t": "Mal langsam! / Freu dich nicht zu früh",
-"ex": "Ein gutes Vorstellungsgespräch heißt noch nicht, dass du den Job hast. Mal langsam."
+"ex": "Ein gutes Vorstellungsgespräch heißt noch nicht, dass du den Job hast. Mal langsam.",
+"fn": "react",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1188",
@@ -494,7 +534,11 @@
 {
 "id": "ENG_CHUNK_1189",
 "t": "Lieber du als ich",
-"ex": "Du läufst bei dieser Hitze einen Marathon? Lieber du als ich."
+"ex": "Du läufst bei dieser Hitze einen Marathon? Lieber du als ich.",
+"fn": "react",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1190",
@@ -511,13 +555,21 @@
 "id": "ENG_CHUNK_1192",
 "t": "Und zu allem Überfluss",
 "ex": "Mein Auto ist liegen geblieben, ich kam zu spät, und zu allem Überfluss hat es auch noch geregnet.",
-"n": "Inversion after the fronted phrase: hat es."
+"n": "Inversion after the fronted phrase: hat es.",
+"fn": "narrate",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1193",
-"t": "Bei [Nomen] und [Nomen] / Zwischen [Nomen] und [Nomen]",
-"ex": "Zwischen dem Baby und dem Umzug haben wir kaum geschlafen.",
-"n": "No exact equivalent; bei or zwischen + Dativ do the job."
+"t": "Bei [Nomen] und [Nomen] / Mit [Nomen] und [Nomen]",
+"ex": "Mit dem Baby und dem Umzug haben wir kaum geschlafen.",
+"n": "No exact equivalent; mit or bei + Dativ do the job.",
+"fn": "narrate",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1194",
@@ -529,7 +581,11 @@
 "id": "ENG_CHUNK_1195",
 "t": "Im Gegenteil",
 "ex": "Du störst mich nicht. Im Gegenteil, ich freue mich, dass du anrufst.",
-"n": "dass: verb last."
+"n": "dass: verb last.",
+"fn": "agree",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1196",
@@ -551,7 +607,11 @@
 {
 "id": "ENG_CHUNK_1199",
 "t": "sozusagen",
-"ex": "Ich bin im Moment sozusagen zwischen zwei Jobs."
+"ex": "Ich bin im Moment sozusagen zwischen zwei Jobs.",
+"fn": "hedge",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
 },
 {
 "id": "ENG_CHUNK_1200",

@@ -1,0 +1,1201 @@
+[
+ {
+  "id": "modalpartikeln",
+  "field": "name",
+  "before": "Modalpartikeln (doch, ja, eigentlich, zwar, immerhin)",
+  "after": "Modalpartikeln (doch, ja, denn, mal, eben, wohl)",
+  "severity": "error",
+  "why": "zwar is not a modal particle; name should match the particles the items test"
+ },
+ {
+  "id": "zweiteilige-konnektoren",
+  "field": "description",
+  "before": "Two-part connectors that link two parallel parts: entweder … oder, weder … noch, sowohl … als auch, nicht nur … sondern auch, zwar … aber, einerseits … andererseits.",
+  "after": "Two-part connectors that link two parallel parts (entweder … oder, weder … noch, sowohl … als auch, nicht nur … sondern auch, zwar … aber, einerseits … andererseits): Ich trinke weder Kaffee noch Tee.",
+  "severity": "improve",
+  "why": "description needs a German example sentence"
+ },
+ {
+  "id": "konnektoren-advanced",
+  "field": "description",
+  "before": "Connectors for contrast, means and result: dennoch, allerdings (verb second), indem, sodass (verb last).",
+  "after": "Connectors for contrast, means and result, dennoch and allerdings with the verb second, indem and sodass with the verb last: Er spart Geld, indem er mit dem Fahrrad fährt.",
+  "severity": "improve",
+  "why": "description needs a German example sentence"
+ },
+ {
+  "id": "partizip-als-adjektiv.10",
+  "field": "answer",
+  "before": [
+   "die Wohnung, die vor kurzem renoviert wurde",
+   "die Wohnung, die vor kurzem renoviert worden ist",
+   "die Wohnung, die vor kurzem renoviert worden war"
+  ],
+  "after": [
+   "die Wohnung, die vor kurzem renoviert wurde",
+   "die Wohnung, die vor kurzem renoviert worden ist",
+   "die Wohnung, die vor kurzem renoviert worden war",
+   "die Wohnung, die man vor kurzem renoviert hat"
+  ],
+  "severity": "error",
+  "why": "active relative clause with man is correct and a likely learner answer"
+ },
+ {
+  "id": "je-desto.03",
+  "field": "answer",
+  "before": [
+   "Je größer die Wohnung ist, desto höher ist die Miete.",
+   "Je größer die Wohnung ist, umso höher ist die Miete."
+  ],
+  "after": [
+   "Je größer die Wohnung ist, desto höher ist die Miete.",
+   "Je größer die Wohnung ist, umso höher ist die Miete.",
+   "Je größer die Wohnung, desto höher die Miete.",
+   "Je größer die Wohnung, umso höher die Miete."
+  ],
+  "severity": "error",
+  "why": "the verbless short form is the most natural German and is correct"
+ },
+ {
+  "id": "je-desto.06",
+  "field": "answer",
+  "before": [
+   "Je früher, desto besser.",
+   "Je früher, umso besser."
+  ],
+  "after": [
+   "Je früher, desto besser.",
+   "Je früher, umso besser.",
+   "Je eher, desto besser.",
+   "Je eher, umso besser."
+  ],
+  "severity": "error",
+  "why": "Je eher, desto besser is the stock German saying for this"
+ },
+ {
+  "id": "konnektoren-advanced.03",
+  "field": "answer",
+  "before": [
+   "Das Hotel war teuer, dennoch haben wir dort übernachtet.",
+   "Das Hotel war teuer. Dennoch haben wir dort übernachtet.",
+   "Das Hotel war teuer, und dennoch haben wir dort übernachtet.",
+   "Das Hotel war teuer, wir haben dort dennoch übernachtet."
+  ],
+  "after": [
+   "Das Hotel war teuer, dennoch haben wir dort übernachtet.",
+   "Das Hotel war teuer. Dennoch haben wir dort übernachtet.",
+   "Das Hotel war teuer, und dennoch haben wir dort übernachtet.",
+   "Das Hotel war teuer, wir haben dort dennoch übernachtet.",
+   "Das Hotel war teuer. Wir haben dort dennoch übernachtet.",
+   "Das Hotel war teuer, wir haben dennoch dort übernachtet.",
+   "Das Hotel war teuer. Wir haben dennoch dort übernachtet."
+  ],
+  "severity": "error",
+  "why": "mid-position with a full stop and the order dennoch dort are also correct (item .11 already lists the full-stop variant)"
+ },
+ {
+  "id": "konnektoren-advanced.03",
+  "field": "note",
+  "before": "dennoch in position 1, then the verb.",
+  "after": "dennoch in position 1 takes the verb next; it can also stand after the verb.",
+  "severity": "improve",
+  "why": "note contradicts the accepted mid-position answers"
+ },
+ {
+  "id": "konnektoren-advanced.05",
+  "field": "task",
+  "before": "Fill the gap.",
+  "after": "Fill the gap with „indem“ or „sodass“.",
+  "severity": "error",
+  "why": "open gap: weil, da, wenn are also correct here"
+ },
+ {
+  "id": "konnektoren-advanced.06",
+  "field": "task",
+  "before": "Fill the gap.",
+  "after": "Fill the gap with „indem“ or „sodass“.",
+  "severity": "error",
+  "why": "open gap: weshalb, weswegen are also correct here"
+ },
+ {
+  "id": "konnektoren-advanced.08",
+  "field": "task",
+  "before": "Fill the gap.",
+  "after": "Fill the gap with „dennoch“, „indem“ or „sodass“.",
+  "severity": "error",
+  "why": "open gap: jedoch (and doch) are also correct but not listed; constrain the choice"
+ },
+ {
+  "id": "konnektoren-advanced.08",
+  "field": "answer",
+  "before": [
+   "dennoch",
+   "trotzdem",
+   "allerdings"
+  ],
+  "after": [
+   "dennoch"
+  ],
+  "severity": "error",
+  "why": "with the constrained task only dennoch fits"
+ },
+ {
+  "id": "konnektoren-advanced.08",
+  "field": "note",
+  "before": "Contrast + verb directly after: dennoch/trotzdem.",
+  "after": "Contrast: dennoch in position 1, the verb follows directly.",
+  "severity": "improve",
+  "why": "matches the new answer list"
+ },
+ {
+  "id": "zweiteilige-konnektoren.05",
+  "field": "answer",
+  "before": [
+   "aber"
+  ],
+  "after": [
+   "aber",
+   "doch",
+   "jedoch"
+  ],
+  "severity": "error",
+  "why": "zwar … doch / zwar … jedoch are standard and correct in the open gap"
+ },
+ {
+  "id": "zweiteilige-konnektoren.08",
+  "field": "answer",
+  "before": [
+   "Entweder rufst du mich an oder ich rufe dich an.",
+   "Entweder du rufst mich an oder ich rufe dich an.",
+   "Entweder rufen Sie mich an oder ich rufe Sie an.",
+   "Entweder Sie rufen mich an oder ich rufe Sie an."
+  ],
+  "after": [
+   "Entweder rufst du mich an oder ich rufe dich an.",
+   "Entweder du rufst mich an oder ich rufe dich an.",
+   "Entweder rufen Sie mich an oder ich rufe Sie an.",
+   "Entweder Sie rufen mich an oder ich rufe Sie an.",
+   "Entweder rufst du mich an oder ich dich.",
+   "Entweder du rufst mich an oder ich dich.",
+   "Entweder rufen Sie mich an oder ich Sie.",
+   "Entweder Sie rufen mich an oder ich Sie."
+  ],
+  "severity": "error",
+  "why": "the elliptical 'oder ich dich' is the most natural rendering"
+ },
+ {
+  "id": "zweiteilige-konnektoren.09",
+  "field": "answer",
+  "before": [
+   "Einerseits ist das Stadtleben spannend, andererseits ist es anstrengend.",
+   "Einerseits ist das Stadtleben spannend, andererseits ist es auch anstrengend.",
+   "Einerseits ist das Stadtleben spannend, andererseits ist es aber auch anstrengend.",
+   "Einerseits ist das Stadtleben spannend, andererseits anstrengend."
+  ],
+  "after": [
+   "Einerseits ist das Stadtleben spannend, andererseits ist es anstrengend.",
+   "Einerseits ist das Stadtleben spannend, andererseits ist es auch anstrengend.",
+   "Einerseits ist das Stadtleben spannend, andererseits ist es aber auch anstrengend.",
+   "Einerseits ist das Stadtleben spannend, andererseits anstrengend.",
+   "Einerseits ist das Stadtleben spannend, andererseits auch anstrengend."
+  ],
+  "severity": "error",
+  "why": "short form with auch is correct and follows the prompt"
+ },
+ {
+  "id": "zweiteilige-konnektoren.10",
+  "field": "answer",
+  "before": [
+   "Er hat weder angerufen noch eine Nachricht geschrieben."
+  ],
+  "after": [
+   "Er hat weder angerufen noch eine Nachricht geschrieben.",
+   "Er hat weder angerufen, noch hat er eine Nachricht geschrieben."
+  ],
+  "severity": "error",
+  "why": "noch + inversion with a repeated subject is also correct"
+ },
+ {
+  "id": "zweiteilige-konnektoren.11",
+  "field": "answer",
+  "before": [
+   "Zwar ist die Wohnung teuer, aber sie liegt sehr zentral."
+  ],
+  "after": [
+   "Zwar ist die Wohnung teuer, aber sie liegt sehr zentral.",
+   "Zwar ist die Wohnung teuer, sie liegt aber sehr zentral."
+  ],
+  "severity": "error",
+  "why": "aber in mid-position is equally correct"
+ },
+ {
+  "id": "konjunktiv-1.04",
+  "field": "prompt",
+  "before": "Die Firma erklärt, das Programm ___ auf Daten. (beruhen)",
+  "after": "Die Firma erklärt, das Programm ___ auf aktuellen Daten. (beruhen)",
+  "severity": "improve",
+  "why": "'beruht auf Daten' alone is vague and unnatural"
+ },
+ {
+  "id": "konjunktiv-1.08",
+  "field": "note",
+  "before": "kommt → komme.",
+  "after": "ich komme → sie komme.",
+  "severity": "improve",
+  "why": "direct speech has 'ich komme', not 'kommt'"
+ },
+ {
+  "id": "konjunktiv-2-vergangenheit.01",
+  "field": "answer",
+  "before": [
+   "Wenn ich Zeit gehabt hätte, wäre ich gekommen."
+  ],
+  "after": [
+   "Wenn ich Zeit gehabt hätte, wäre ich gekommen.",
+   "Wenn ich Zeit gehabt hätte, dann wäre ich gekommen."
+  ],
+  "severity": "error",
+  "why": "dann before the main clause is common and correct"
+ },
+ {
+  "id": "konjunktiv-2-vergangenheit.06",
+  "field": "answer",
+  "before": [
+   "Wenn ich das gewusst hätte, wäre ich gekommen.",
+   "Hätte ich das gewusst, wäre ich gekommen."
+  ],
+  "after": [
+   "Wenn ich das gewusst hätte, wäre ich gekommen.",
+   "Hätte ich das gewusst, wäre ich gekommen.",
+   "Wenn ich das gewusst hätte, dann wäre ich gekommen.",
+   "Hätte ich das gewusst, dann wäre ich gekommen."
+  ],
+  "severity": "error",
+  "why": "dann variants are natural and correct"
+ },
+ {
+  "id": "modalpartikeln.10",
+  "field": "note",
+  "before": "eben (in the south also halt) = that’s how it is.",
+  "after": "eben (colloquial also halt) = that’s how it is.",
+  "severity": "improve",
+  "why": "halt is now common colloquially all over Germany, not only in the south"
+ },
+ {
+  "id": "passiv-mit-modalverben.07",
+  "field": "answer",
+  "before": [
+   "Das Fenster kann nicht geöffnet werden.",
+   "Das Fenster lässt sich nicht öffnen."
+  ],
+  "after": [
+   "Das Fenster kann nicht geöffnet werden.",
+   "Das Fenster lässt sich nicht öffnen.",
+   "Man kann das Fenster nicht öffnen."
+  ],
+  "severity": "error",
+  "why": "man-version is a correct translation; the key already accepts a non-passive form. Alternatively add 'Use the passive.' to the task and drop both"
+ },
+ {
+  "id": "zustandspassiv.09",
+  "field": "near",
+  "before": [
+   [
+    "wird",
+    "wird behoben = the repair is happening"
+   ],
+   [
+    "wurde",
+    "Fill the gap with wird or ist"
+   ]
+  ],
+  "after": [
+   [
+    "wird",
+    "wird behoben = the repair is happening"
+   ],
+   [
+    "wurde",
+    "only wird or ist allowed; wurde behoben names the past action, not the state"
+   ]
+  ],
+  "severity": "improve",
+  "why": "reason for wurde was a task echo, not an explanation"
+ },
+ {
+  "id": "praepositionen-genitiv.08",
+  "field": "answer",
+  "before": [
+   "während der Woche",
+   "unter der Woche"
+  ],
+  "after": [
+   "während der Woche",
+   "unter der Woche",
+   "in der Woche"
+  ],
+  "severity": "error",
+  "why": "'in der Woche' is a common, correct rendering"
+ },
+ {
+  "id": "pronomen-es.10",
+  "field": "near",
+  "before": [
+   [
+    "das",
+    "das would point back, not forward"
+   ],
+   [
+    "ihn",
+    "the object is the dass-clause: es"
+   ]
+  ],
+  "after": [
+   [
+    "ihn",
+    "the object is the dass-clause: es"
+   ],
+   [
+    "sie",
+    "the object is the dass-clause: es"
+   ]
+  ],
+  "severity": "improve",
+  "why": "'Ich halte das für wichtig, dass …' is common in speech; not a clean near miss"
+ },
+ {
+  "id": "ENG_CHUNK_0009",
+  "field": "accept",
+  "before": [
+   "es hat keinen sinn",
+   "es bringt nichts",
+   "das hat keinen sinn",
+   "das bringt nichts",
+   "es lohnt sich nicht",
+   "hat keinen sinn",
+   "bringt nichts"
+  ],
+  "after": [
+   "es hat keinen sinn",
+   "es bringt nichts",
+   "das hat keinen sinn",
+   "das bringt nichts",
+   "es lohnt sich nicht",
+   "hat keinen sinn",
+   "bringt nichts",
+   "hat keinen zweck",
+   "macht keinen sinn"
+  ],
+  "severity": "error",
+  "why": "'Es hat keinen Zweck' is standard; 'macht keinen Sinn' is now everyday German (Duden lists it) and learners will type it"
+ },
+ {
+  "id": "ENG_CHUNK_0009",
+  "field": "n",
+  "before": "\"Es macht keinen Sinn\" is common in speech but criticised as an anglicism; \"Es hat keinen Sinn\" is safe.",
+  "after": "\"Es macht keinen Sinn\" is very common and now accepted; \"Es hat keinen Sinn\" is the safer choice in writing.",
+  "severity": "improve",
+  "why": "align note with accepting 'macht keinen Sinn'"
+ },
+ {
+  "id": "ENG_CHUNK_0092",
+  "field": "accept",
+  "before": [
+   "allerdings",
+   "wobei man sagen muss",
+   "trotzdem",
+   "dennoch"
+  ],
+  "after": [
+   "allerdings",
+   "wobei man sagen muss",
+   "andererseits",
+   "dafür war",
+   "trotzdem",
+   "dennoch"
+  ],
+  "severity": "improve",
+  "why": "'Dafür war das Personal …' and 'andererseits' are the most idiomatic renderings"
+ },
+ {
+  "id": "ENG_CHUNK_0099",
+  "field": "accept",
+  "before": [
+   "schließlich",
+   "immerhin",
+   "ja schließlich",
+   "letztendlich",
+   "ja immerhin"
+  ],
+  "after": [
+   "schließlich",
+   "immerhin",
+   "ja schließlich",
+   "ja immerhin"
+  ],
+  "severity": "error",
+  "why": "letztendlich = 'in the end', not the justifying 'after all'"
+ },
+ {
+  "id": "ENG_CHUNK_0194",
+  "field": "accept",
+  "before": [
+   "auch wenn",
+   "selbst wenn",
+   "sogar wenn",
+   "wenn es auch"
+  ],
+  "after": [
+   "auch wenn",
+   "selbst wenn",
+   "sogar wenn",
+   "auch dann wenn",
+   "selbst dann wenn"
+  ],
+  "severity": "improve",
+  "why": "'wenn es auch' is archaic here and tied to es; add the common 'auch dann, wenn'"
+ },
+ {
+  "id": "ENG_CHUNK_0269",
+  "field": "accept",
+  "before": [
+   "fairerweise muss man sagen",
+   "fairerweise",
+   "um fair zu sein",
+   "man muss aber sagen",
+   "zugegeben",
+   "gerechterweise"
+  ],
+  "after": [
+   "fairerweise muss man sagen",
+   "fairerweise",
+   "man muss aber sagen",
+   "zugegeben",
+   "gerechterweise"
+  ],
+  "severity": "improve",
+  "why": "'um fair zu sein' is a calque of 'to be fair'"
+ },
+ {
+  "id": "ENG_CHUNK_0307",
+  "field": "accept",
+  "before": [
+   "du hast allen grund",
+   "du hast jedes recht",
+   "sie haben allen grund",
+   "sie haben jedes recht",
+   "du hast das recht",
+   "sie haben das recht",
+   "ihr habt allen grund",
+   "ihr habt jedes recht"
+  ],
+  "after": [
+   "du hast allen grund",
+   "du hast jedes recht",
+   "sie haben allen grund",
+   "sie haben jedes recht",
+   "du hast das recht",
+   "sie haben das recht",
+   "es ist dein gutes recht",
+   "es ist ihr gutes recht"
+  ],
+  "severity": "improve",
+  "why": "'Es ist dein gutes Recht' is the idiomatic German; ihr-forms rarely needed (keeps 8 patterns)"
+ },
+ {
+  "id": "ENG_CHUNK_0397",
+  "field": "accept",
+  "before": [
+   "so oder so",
+   "in beiden fällen",
+   "egal wie",
+   "wie auch immer",
+   "sowieso",
+   "jedenfalls"
+  ],
+  "after": [
+   "so oder so",
+   "in beiden fällen",
+   "in jedem fall",
+   "egal wie",
+   "sowieso",
+   "egal was wir machen"
+  ],
+  "severity": "improve",
+  "why": "'jedenfalls' and 'wie auch immer' mean 'anyway', a different function"
+ },
+ {
+  "id": "ENG_CHUNK_0398",
+  "field": "t",
+  "before": "Letzten Endes / Am Ende des Tages",
+  "after": "Letzten Endes / Letztendlich",
+  "severity": "error",
+  "why": "brief names 'am Ende des Tages' as an anglicism not to teach"
+ },
+ {
+  "id": "ENG_CHUNK_0398",
+  "field": "accept",
+  "before": [
+   "letzten endes",
+   "am ende des tages",
+   "letztendlich",
+   "am ende",
+   "schlussendlich",
+   "im endeffekt"
+  ],
+  "after": [
+   "letzten endes",
+   "letztendlich",
+   "am ende",
+   "schlussendlich",
+   "im endeffekt",
+   "im grunde"
+  ],
+  "severity": "error",
+  "why": "do not accept the anglicism the brief bans"
+ },
+ {
+  "id": "ENG_CHUNK_0398",
+  "field": "n",
+  "before": "\"Am Ende des Tages\" is a common anglicism; \"letzten Endes\" is safer.",
+  "after": "Avoid the anglicism \"am Ende des Tages\"; say \"letzten Endes\" or \"letztendlich\".",
+  "severity": "improve",
+  "why": "matches the t change"
+ },
+ {
+  "id": "ENG_CHUNK_0412",
+  "field": "accept",
+  "before": [
+   "es lohnt sich",
+   "lohnt sich",
+   "es ist es wert",
+   "das lohnt sich",
+   "es rentiert sich"
+  ],
+  "after": [
+   "es lohnt sich",
+   "lohnt sich",
+   "es ist es wert",
+   "das lohnt sich",
+   "es rentiert sich",
+   "es zahlt sich aus"
+  ],
+  "severity": "improve",
+  "why": "common alternative"
+ },
+ {
+  "id": "ENG_CHUNK_0419",
+  "field": "accept",
+  "before": [
+   "fang bloß nicht (davon) an",
+   "fang bloß nicht mit [x] an",
+   "fangen sie bloß nicht (davon) an",
+   "fang mir nicht mit [x] an",
+   "hör mir auf mit",
+   "hören sie mir auf mit",
+   "fang nicht davon an",
+   "erinner mich nicht an"
+  ],
+  "after": [
+   "fang (mir) bloß nicht (davon) an",
+   "fang (mir) bloß nicht mit [x] an",
+   "fangen sie bloß nicht (davon) an",
+   "fang mir nicht mit [x] an",
+   "hör mir (bloß) auf mit",
+   "hör mir (bloß) auf damit",
+   "hör (mir) bloß auf",
+   "hören sie mir auf mit"
+  ],
+  "severity": "improve",
+  "why": "'Hör mir bloß auf (damit)!' is the commonest rendering; 'Fang mir bloß nicht …' is natural; 'erinner mich nicht' is a different function"
+ },
+ {
+  "id": "ENG_CHUNK_0499",
+  "field": "accept",
+  "before": [
+   "so kommen wir",
+   "dann kommen wir",
+   "so sind wir",
+   "dann sind wir",
+   "auf diese weise",
+   "dadurch",
+   "so vermeiden wir"
+  ],
+  "after": [
+   "so kommen wir",
+   "dann kommen wir",
+   "so sind wir",
+   "dann sind wir",
+   "auf diese weise",
+   "so umgehen wir",
+   "so vermeiden wir",
+   "dann stehen wir"
+  ],
+  "severity": "improve",
+  "why": "patterns too tied to kommen/sein; 'so umgehen wir den Stau', 'dann stehen wir nicht im Stau' are natural; bare 'dadurch' is stiff"
+ },
+ {
+  "id": "ENG_CHUNK_0580",
+  "field": "ex",
+  "before": "Das Witzige ist, dass wir uns schon mal getroffen hatten und uns beide nicht erinnert haben.",
+  "after": "Das Witzige ist, dass wir uns schon mal getroffen hatten und sich keiner von uns daran erinnern konnte.",
+  "severity": "improve",
+  "why": "'uns beide nicht erinnert haben' is clumsy (missing daran, tense switch)"
+ },
+ {
+  "id": "ENG_CHUNK_0705",
+  "field": "accept",
+  "before": [
+   "sind sie (schon) dazu gekommen",
+   "bist du (schon) dazu gekommen",
+   "seid ihr (schon) dazu gekommen",
+   "hatten sie (schon) (mal) (die) gelegenheit",
+   "hattest du (schon) (mal) (die) gelegenheit",
+   "hattest du (schon) zeit",
+   "hatten sie (schon) zeit",
+   "konntest du (schon)"
+  ],
+  "after": [
+   "sind sie (schon) dazu gekommen",
+   "bist du (schon) dazu gekommen",
+   "seid ihr (schon) dazu gekommen",
+   "hatten sie (schon) (mal) (die) gelegenheit",
+   "hattest du (schon) (mal) (die) gelegenheit",
+   "hattest du (schon) zeit",
+   "hatten sie (schon) zeit",
+   "konnten sie (schon)"
+  ],
+  "severity": "improve",
+  "why": "t and ex are Sie; the Sie form of 'konntest du' was missing (du already covered by others)"
+ },
+ {
+  "id": "ENG_CHUNK_0725",
+  "field": "accept",
+  "before": [
+   "es wäre besser wenn du",
+   "es wäre besser (für dich)",
+   "du fährst besser",
+   "nimmst du besser",
+   "du nimmst besser",
+   "du solltest lieber",
+   "du solltest besser",
+   "sie sollten lieber"
+  ],
+  "after": [
+   "am besten nimmst du",
+   "du nimmst am besten",
+   "nimmst du besser",
+   "du nimmst besser",
+   "es wäre besser (für dich) (wenn)",
+   "du solltest (lieber) (besser)",
+   "sie sollten (lieber) (besser)",
+   "am besten nehmen sie"
+  ],
+  "severity": "error",
+  "why": "'Am besten nimmst du den Zug' is the most natural rendering and was missing; merged the du/Sie modal variants"
+ },
+ {
+  "id": "ENG_CHUNK_0726",
+  "field": "accept",
+  "before": [
+   "wäre es (vielleicht) (eventuell) möglich (dass)",
+   "könntest du (mich) (vielleicht) eventuell",
+   "könntest du (mich) (vielleicht)",
+   "könnten sie (mich) (vielleicht) eventuell",
+   "könnten sie (mich) (vielleicht)",
+   "besteht die möglichkeit dass",
+   "gibt es eine chance dass",
+   "kannst du (mich) eventuell"
+  ],
+  "after": [
+   "könntest du (mich) (vielleicht) (eventuell)",
+   "könnten sie (mich) (vielleicht) (eventuell)",
+   "wäre es (vielleicht) (eventuell) möglich (dass)",
+   "besteht die möglichkeit dass",
+   "würdest du (mich) (vielleicht) (eventuell)",
+   "würden sie (mich) (vielleicht) (eventuell)",
+   "kannst du (mich) eventuell"
+  ],
+  "severity": "improve",
+  "why": "'gibt es eine Chance' is a calque; add the common würdest/würden-requests; put the ex form first"
+ },
+ {
+  "id": "ENG_CHUNK_0735",
+  "field": "accept",
+  "before": [
+   "es geht (hier) (mir) nicht um",
+   "es geht (hier) (mir) nicht ums",
+   "geht (doch) nicht um",
+   "geht (doch) nicht ums"
+  ],
+  "after": [
+   "es geht (hier) (mir) nicht um",
+   "es geht (hier) (mir) nicht ums",
+   "geht (doch) nicht um",
+   "geht (doch) nicht ums",
+   "geht es (mir) (doch) nicht um",
+   "geht's (mir) (doch) nicht um"
+  ],
+  "severity": "improve",
+  "why": "'Mir geht es nicht ums Geld' is common and did not match"
+ },
+ {
+  "id": "ENG_CHUNK_0792",
+  "field": "accept",
+  "before": [
+   "andererseits",
+   "auf der anderen seite",
+   "allerdings"
+  ],
+  "after": [
+   "andererseits",
+   "auf der anderen seite",
+   "allerdings",
+   "dafür",
+   "wobei"
+  ],
+  "severity": "improve",
+  "why": "'Dafür liegt es direkt am Strand' is a very natural rendering"
+ },
+ {
+  "id": "ENG_CHUNK_0793",
+  "field": "accept",
+  "before": [
+   "trotzdem",
+   "dennoch",
+   "trotz allem",
+   "trotzalledem"
+  ],
+  "after": [
+   "trotzdem",
+   "dennoch",
+   "trotz allem",
+   "trotz alledem"
+  ],
+  "severity": "error",
+  "why": "standard spelling is 'trotz alledem' (two words)"
+ },
+ {
+  "id": "ENG_CHUNK_0794",
+  "field": "ex",
+  "before": "Die Wohnung ist riesig, ganz abgesehen davon, dass sie ganz nah an der Arbeit liegt.",
+  "after": "Die Wohnung ist riesig, ganz abgesehen davon, dass sie nur ein paar Minuten von meiner Arbeit entfernt ist.",
+  "severity": "improve",
+  "why": "'nah an der Arbeit' is anglicised; ganz … ganz repetition"
+ },
+ {
+  "id": "ENG_CHUNK_0796",
+  "field": "t",
+  "before": "Umso mehr ein Grund, [zu + Infinitiv]",
+  "after": "Ein Grund mehr, [zu + Infinitiv] / Umso mehr Grund, [zu + Infinitiv]",
+  "severity": "error",
+  "why": "'umso mehr ein Grund' is a calque; German says 'ein Grund mehr' or 'umso mehr Grund'"
+ },
+ {
+  "id": "ENG_CHUNK_0796",
+  "field": "ex",
+  "before": "Du hast Geburtstag? Umso mehr ein Grund zu feiern!",
+  "after": "Du hast Geburtstag? Ein Grund mehr zu feiern!",
+  "severity": "error",
+  "why": "calque in the model sentence"
+ },
+ {
+  "id": "ENG_CHUNK_0796",
+  "field": "accept",
+  "before": [
+   "umso mehr ein grund",
+   "umso mehr grund",
+   "um so mehr ein grund",
+   "dann erst recht",
+   "erst recht",
+   "ein grund mehr",
+   "noch ein grund (mehr)"
+  ],
+  "after": [
+   "ein grund mehr",
+   "umso mehr grund",
+   "um so mehr grund",
+   "dann erst recht",
+   "erst recht",
+   "noch ein grund (mehr)"
+  ],
+  "severity": "error",
+  "why": "remove the calque; put the ex form first"
+ },
+ {
+  "id": "ENG_CHUNK_0802",
+  "field": "accept",
+  "before": [
+   "ich verstehe (schon) was du meinst",
+   "ich versteh (schon) was du meinst",
+   "ich verstehe (schon) was sie meinen",
+   "ich verstehe (schon) was ihr meint",
+   "ich verstehe deinen punkt",
+   "ich verstehe ihren standpunkt",
+   "ich kann dich (schon) verstehen",
+   "ich kann sie (schon) verstehen"
+  ],
+  "after": [
+   "ich verstehe (schon) was du meinst",
+   "ich versteh (schon) was du meinst",
+   "ich verstehe (schon) was sie meinen",
+   "ich verstehe (schon) was ihr meint",
+   "ich verstehe deinen standpunkt",
+   "ich verstehe ihren standpunkt",
+   "ich kann dich (schon) verstehen",
+   "ich kann sie (schon) verstehen"
+  ],
+  "severity": "improve",
+  "why": "'deinen Punkt verstehen' is an anglicism; use Standpunkt"
+ },
+ {
+  "id": "ENG_CHUNK_0805",
+  "field": "ex",
+  "before": "Man sollte meinen, ein so teures Hotel hat vernünftiges WLAN.",
+  "after": "Man sollte meinen, ein so teures Hotel hätte vernünftiges WLAN.",
+  "severity": "improve",
+  "why": "the counterfactual reading after 'man sollte meinen' is normally Konjunktiv II"
+ },
+ {
+  "id": "ENG_CHUNK_0805",
+  "field": "n",
+  "before": "Without dass the clause keeps main-clause order; with dass the verb goes last.",
+  "after": "Without dass the clause keeps main-clause order, often in Konjunktiv II (hätte); with dass the verb goes last.",
+  "severity": "improve",
+  "why": "matches the ex change"
+ },
+ {
+  "id": "ENG_CHUNK_0813",
+  "field": "accept",
+  "before": [
+   "ist mir (plötzlich) eingefallen",
+   "mir ist (plötzlich) eingefallen",
+   "fiel mir (plötzlich) ein",
+   "mir wurde (plötzlich) klar",
+   "wurde mir (plötzlich) klar",
+   "ist mir (plötzlich) klar geworden",
+   "mir ist (plötzlich) klar geworden",
+   "ist mir (plötzlich) aufgefallen"
+  ],
+  "after": [
+   "ist mir (plötzlich) eingefallen",
+   "mir ist (plötzlich) eingefallen",
+   "fiel mir (plötzlich) ein",
+   "mir wurde (plötzlich) klar",
+   "wurde mir (plötzlich) klar",
+   "(ist) mir (plötzlich) klar geworden",
+   "dämmerte (es) mir",
+   "ist mir (plötzlich) aufgefallen"
+  ],
+  "severity": "improve",
+  "why": "add the direct equivalent 'es dämmerte mir'; merged two klar-geworden patterns"
+ },
+ {
+  "id": "ENG_CHUNK_0820",
+  "field": "accept",
+  "before": [
+   "was hat [x] mit [x] zu tun",
+   "was hat [x] damit zu tun",
+   "was hat das damit zu tun",
+   "was hat [x] zu tun",
+   "was spielt [x] (denn) für eine rolle"
+  ],
+  "after": [
+   "was hat [x] mit [x] zu tun",
+   "was hat [x] damit zu tun",
+   "was hat das damit zu tun",
+   "was hat [x] zu tun",
+   "was spielt [x] (denn) für eine rolle",
+   "was tut [x] zur sache"
+  ],
+  "severity": "improve",
+  "why": "'Was tut mein Alter zur Sache?' is idiomatic"
+ },
+ {
+  "id": "ENG_CHUNK_0828",
+  "field": "accept",
+  "before": [
+   "es gibt keine entschuldigung dafür",
+   "keine entschuldigung (dafür) (für)",
+   "es gibt keine ausrede (dafür) (für)",
+   "keine ausrede (dafür) (für)",
+   "ist unentschuldbar",
+   "nicht zu entschuldigen"
+  ],
+  "after": [
+   "es gibt keine entschuldigung dafür",
+   "keine entschuldigung (dafür) (für)",
+   "es gibt keine ausrede (dafür) (für)",
+   "keine ausrede (dafür) (für)",
+   "ist unentschuldbar",
+   "nicht zu entschuldigen",
+   "durch nichts zu entschuldigen"
+  ],
+  "severity": "improve",
+  "why": "'durch nichts zu entschuldigen' is common and did not match"
+ },
+ {
+  "id": "ENG_CHUNK_0880",
+  "field": "accept",
+  "before": [
+   "so gefällt mir das",
+   "das ist ein wort",
+   "so gefällt's mir",
+   "das klingt (schon) (doch) (sehr) gut",
+   "das hört sich (schon) (doch) gut an",
+   "da bin ich dabei",
+   "jetzt reden wir"
+  ],
+  "after": [
+   "so gefällt mir das",
+   "das ist ein wort",
+   "so gefällt's mir",
+   "das lässt sich hören",
+   "das klingt (schon) (doch) (sehr) gut",
+   "das hört sich (schon) (doch) gut an",
+   "da bin ich dabei"
+  ],
+  "severity": "error",
+  "why": "'jetzt reden wir' is a calque, not German; 'das lässt sich hören' is idiomatic"
+ },
+ {
+  "id": "ENG_CHUNK_0896",
+  "field": "accept",
+  "before": [
+   "eher im gegenteil",
+   "im gegenteil",
+   "wenn überhaupt",
+   "wenn dann",
+   "wenn schon"
+  ],
+  "after": [
+   "eher im gegenteil",
+   "im gegenteil",
+   "wenn überhaupt",
+   "wenn dann",
+   "eher sogar"
+  ],
+  "severity": "error",
+  "why": "'wenn schon' does not mean 'if anything'"
+ },
+ {
+  "id": "ENG_CHUNK_0923",
+  "field": "accept",
+  "before": [
+   "ich (habe) (hab) nicht den mut",
+   "ich bringe es nicht übers herz",
+   "nicht übers herz",
+   "ich trau mich nicht",
+   "ich traue mich nicht",
+   "ich hab nicht das herz",
+   "ich habe nicht das herz"
+  ],
+  "after": [
+   "ich bringe es nicht übers herz",
+   "ich bring's nicht übers herz",
+   "nicht übers herz",
+   "ich (habe) (hab) nicht den mut",
+   "ich trau mich nicht",
+   "ich traue mich nicht",
+   "ich hab nicht das herz",
+   "ich habe nicht das herz"
+  ],
+  "severity": "improve",
+  "why": "first pattern is shown as model answer: it must match t"
+ },
+ {
+  "id": "ENG_CHUNK_0942",
+  "field": "accept",
+  "before": [
+   "kommt mit [x] durch",
+   "mit [x] durchkommen",
+   "damit durchkommen",
+   "ungestraft davon",
+   "kommt [x] ungestraft davon",
+   "kommt (immer) davon",
+   "kommt mit [x] davon",
+   "darf alles"
+  ],
+  "after": [
+   "kommt mit [x] durch",
+   "mit [x] durchkommen",
+   "damit durchkommen",
+   "ungestraft davon",
+   "kommt [x] ungestraft davon",
+   "kommt (immer) davon",
+   "kommt mit [x] davon"
+  ],
+  "severity": "improve",
+  "why": "'darf alles' = is allowed everything, a different meaning"
+ },
+ {
+  "id": "ENG_CHUNK_0961",
+  "field": "accept",
+  "before": [
+   "die sache geklärt",
+   "die sache klären",
+   "uns ausgesprochen",
+   "ausgesprochen",
+   "alles geklärt",
+   "reinen tisch gemacht",
+   "die luft gereinigt",
+   "aus der welt geschafft"
+  ],
+  "after": [
+   "die sache geklärt",
+   "die sache klären",
+   "uns ausgesprochen",
+   "alles geklärt",
+   "reinen tisch gemacht",
+   "aus der welt geschafft",
+   "ein klärendes gespräch"
+  ],
+  "severity": "error",
+  "why": "'die Luft gereinigt' is a calque; bare 'ausgesprochen' also matches the adverb (ausgesprochen = extremely)"
+ },
+ {
+  "id": "ENG_CHUNK_0970",
+  "field": "t",
+  "before": "Wenn du mich fragst / Nur so als Meinung",
+  "after": "Wenn du mich fragst / Falls es dir was hilft",
+  "severity": "improve",
+  "why": "'Nur so als Meinung' is not an established phrase"
+ },
+ {
+  "id": "ENG_CHUNK_0980",
+  "field": "ex",
+  "before": "Okay, mal andersrum gefragt: Was ist, wenn es regnet?",
+  "after": "Okay, ich spiele mal den Advocatus Diaboli: Was ist, wenn es regnet?",
+  "severity": "improve",
+  "why": "ex should render the highlighted phrase, which t gives first"
+ },
+ {
+  "id": "ENG_CHUNK_1043",
+  "field": "accept",
+  "before": [
+   "geben wir ihm (erst mal) einen vertrauensvorschuss",
+   "ihm (erst mal) einen vertrauensvorschuss geben",
+   "einen vertrauensvorschuss",
+   "im zweifel für den angeklagten",
+   "im zweifel für ihn",
+   "lassen wir (es) ihm durchgehen",
+   "gehen wir vom besten aus",
+   "glauben wir ihm erst mal"
+  ],
+  "after": [
+   "geben wir ihm (erst mal) einen vertrauensvorschuss",
+   "ihm (erst mal) einen vertrauensvorschuss geben",
+   "einen vertrauensvorschuss",
+   "im zweifel für den angeklagten",
+   "im zweifel für ihn",
+   "gehen wir (erst mal) vom besten aus",
+   "glauben wir ihm erst mal"
+  ],
+  "severity": "improve",
+  "why": "'jemandem etwas durchgehen lassen' = let him off, not trust him"
+ },
+ {
+  "id": "ENG_CHUNK_1098",
+  "field": "ex",
+  "before": "Der Job zahlt weniger, aber er ist nah an zu Hause. Insofern ist er besser.",
+  "after": "Der Job ist schlechter bezahlt, aber nicht weit von zu Hause. Insofern ist er besser.",
+  "severity": "error",
+  "why": "'nah an zu Hause' is not German"
+ },
+ {
+  "id": "ENG_CHUNK_1117",
+  "field": "accept",
+  "before": [
+   "ich will nicht dass",
+   "ich möchte nicht dass",
+   "ich will (ja) nicht dass",
+   "ich möchte (ja) nicht dass",
+   "ich fände es schade wenn",
+   "es wäre schade wenn",
+   "ich würde es hassen wenn",
+   "ich wollte nicht dass"
+  ],
+  "after": [
+   "ich will (ja) nicht dass",
+   "ich möchte (ja) nicht dass",
+   "nicht dass du",
+   "ich fände es schade wenn",
+   "es wäre schade wenn",
+   "ich wollte nicht dass"
+  ],
+  "severity": "improve",
+  "why": "'ich würde es hassen' is a calque; 'Nicht, dass du … umsonst fährst' is very idiomatic"
+ },
+ {
+  "id": "ENG_CHUNK_1145",
+  "field": "ex",
+  "before": "Nach allen Kosten sind wir beim Kuchenverkauf gerade so plus minus null rausgekommen.",
+  "after": "Nach Abzug aller Kosten sind wir beim Kuchenverkauf gerade so plus minus null rausgekommen.",
+  "severity": "improve",
+  "why": "'nach allen Kosten' is a calque"
+ },
+ {
+  "id": "ENG_CHUNK_1193",
+  "field": "t",
+  "before": "Bei [Nomen] und [Nomen] / Zwischen [Nomen] und [Nomen]",
+  "after": "Mit [Nomen] und [Nomen] / Bei [Nomen] und [Nomen]",
+  "severity": "improve",
+  "why": "causal 'zwischen' is a calque of 'between'; mit/bei are natural"
+ },
+ {
+  "id": "ENG_CHUNK_1193",
+  "field": "ex",
+  "before": "Zwischen dem Baby und dem Umzug haben wir kaum geschlafen.",
+  "after": "Mit dem Baby und dem Umzug haben wir kaum geschlafen.",
+  "severity": "improve",
+  "why": "calque; mit is the natural German"
+ },
+ {
+  "id": "ENG_CHUNK_1193",
+  "field": "n",
+  "before": "No exact equivalent; bei or zwischen + Dativ do the job.",
+  "after": "No exact equivalent; mit or bei + Dativ do the job.",
+  "severity": "improve",
+  "why": "matches t change"
+ },
+ {
+  "id": "ENG_CHUNK_1193",
+  "field": "accept",
+  "before": [
+   "zwischen [anything] und",
+   "bei [anything] und",
+   "mit [anything] und",
+   "wegen [anything] und",
+   "durch [anything] und"
+  ],
+  "after": [
+   "mit [anything] und",
+   "bei [anything] und",
+   "wegen [anything] und",
+   "zwischen [anything] und"
+  ],
+  "severity": "improve",
+  "why": "put the ex form first; drop 'durch' (unidiomatic for causes here)"
+ },
+ {
+  "id": "ENG_CHUNK_1199",
+  "field": "accept",
+  "before": [
+   "sozusagen",
+   "gewissermaßen",
+   "quasi",
+   "wenn man so will",
+   "so gesehen",
+   "wie man (so) schön sagt"
+  ],
+  "after": [
+   "sozusagen",
+   "gewissermaßen",
+   "quasi",
+   "wenn man so will",
+   "wie man (so) schön sagt"
+  ],
+  "severity": "improve",
+  "why": "'so gesehen' = seen that way, not 'so to speak'"
+ }
+]
