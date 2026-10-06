@@ -1,0 +1,22 @@
+[
+  {"id": "konditional-ohne-wenn.09", "field": "prompt",
+   "before": "Wären wir früher losgefahren, ___ wir den Zug noch bekommen. (haben)",
+   "after": "Wären wir früher losgefahren, ___ wir den Zug noch erreicht. (haben)",
+   "severity": "error",
+   "why": "bekommen is both infinitive and Partizip II, so the near miss 'würden' gives a correct mixed conditional ('würden wir den Zug noch bekommen' = we'd still make the train). With erreicht, würden is really wrong."},
+  {"id": "konjunktiv-2-passiv.08", "field": "task",
+   "before": "Write the word in brackets in the right form.",
+   "after": "Write the word in brackets in the Konjunktiv II.",
+   "severity": "error",
+   "why": "Nothing in the sentence makes it unreal: 'Der Antrag hatte/hat früher gestellt werden müssen' is correct indicative German, so the near miss 'hatte' (and 'hat') would be right. Naming the Konjunktiv II settles it."},
+  {"id": "konjunktiv-2-passiv.08", "field": "near",
+   "before": [["hatte", "Indicative: the statement is unreal"], ["wäre", "With a modal it is hätte"], ["würde", "würde does not fit here"]],
+   "after": [["hatte", "hatte is the indicative: the task asks for hätte"], ["wäre", "With a modal it is hätte"], ["würde", "The bracket is haben: hätte"]],
+   "severity": "error",
+   "why": "'Der Antrag würde früher gestellt werden müssen' is grammatical, so 'does not fit' is false; the reasons need to rest on the task and the bracket verb."},
+  {"id": "konditional-ohne-wenn.07", "field": "answer",
+   "before": ["Hätten wir früher gebucht, wäre es billiger gewesen.", "Hätten wir früher gebucht, es wäre billiger gewesen."],
+   "after": ["Hätten wir früher gebucht, wäre es billiger gewesen."],
+   "severity": "improve",
+   "why": "The non-integrated main clause (', es wäre …') is literary and marked. It contradicts this item's note ('both clauses start with the verb') and the near misses in .03, .06, .10 and .12, which mark that order wrong."}
+]

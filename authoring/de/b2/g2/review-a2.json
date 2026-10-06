@@ -1,0 +1,238 @@
+[
+ {
+  "id": "irreale-vergleichssaetze.06",
+  "field": "answer",
+  "before": [
+   "Sie tut so, als ob nichts gewesen wäre.",
+   "Sie tut so, als ob nichts gewesen sei."
+  ],
+  "after": [
+   "Sie tut so, als ob nichts gewesen wäre.",
+   "Sie tut so, als ob nichts gewesen sei.",
+   "Sie tut so, als ob es nichts gewesen wäre.",
+   "Sie tut so, als ob es nichts gewesen sei."
+  ],
+  "severity": "error",
+  "why": "Prompt 'Es ist nichts gewesen' also reads 'it was nothing' (es = subject); learners keeping es write a correct sentence."
+ },
+ {
+  "id": "irreale-vergleichssaetze.07",
+  "field": "answer",
+  "before": [
+   "Er benimmt sich, als ob er zu Hause wäre."
+  ],
+  "after": [
+   "Er benimmt sich, als ob er zu Hause wäre.",
+   "Er benimmt sich, als ob er zuhause wäre."
+  ],
+  "severity": "error",
+  "why": "Duden allows 'zuhause' beside 'zu Hause'; spaces are not ignored by the grader."
+ },
+ {
+  "id": "irreale-vergleichssaetze.08",
+  "field": "answer",
+  "before": [
+   "Es fühlt sich an, als ob es Sommer wäre.",
+   "Es fühlt sich an, als wäre es Sommer.",
+   "Es fühlt sich so an, als ob es Sommer wäre.",
+   "Es fühlt sich so an, als wäre es Sommer.",
+   "Es fühlt sich an, als ob es Sommer sei.",
+   "Es fühlt sich an, als sei es Sommer.",
+   "Es fühlt sich so an, als ob es Sommer sei.",
+   "Es fühlt sich so an, als sei es Sommer."
+  ],
+  "after": [
+   "Es fühlt sich an, als ob es Sommer wäre.",
+   "Es fühlt sich an, als wäre es Sommer.",
+   "Es fühlt sich so an, als ob es Sommer wäre.",
+   "Es fühlt sich so an, als wäre es Sommer.",
+   "Es fühlt sich an, als ob es Sommer sei.",
+   "Es fühlt sich an, als sei es Sommer.",
+   "Es fühlt sich so an, als ob es Sommer sei.",
+   "Es fühlt sich so an, als sei es Sommer.",
+   "Es fühlt sich an, als ob wir Sommer hätten.",
+   "Es fühlt sich an, als hätten wir Sommer.",
+   "Es fühlt sich so an, als ob wir Sommer hätten.",
+   "Es fühlt sich so an, als hätten wir Sommer."
+  ],
+  "severity": "error",
+  "why": "'als hätten wir Sommer' is a very common native rendering of 'as if it were summer' and tests the same point."
+ },
+ {
+  "id": "irreale-vergleichssaetze.12",
+  "field": "answer",
+  "before": [
+   "Er sah aus, als hätte er einen Geist gesehen.",
+   "Er sah so aus, als hätte er einen Geist gesehen.",
+   "Er sah aus, als habe er einen Geist gesehen.",
+   "Er sah so aus, als habe er einen Geist gesehen."
+  ],
+  "after": [
+   "Er sah aus, als hätte er einen Geist gesehen.",
+   "Er sah so aus, als hätte er einen Geist gesehen.",
+   "Er sah aus, als habe er einen Geist gesehen.",
+   "Er sah so aus, als habe er einen Geist gesehen.",
+   "Er sah aus, als hätte er ein Gespenst gesehen.",
+   "Er sah so aus, als hätte er ein Gespenst gesehen.",
+   "Er sah aus, als habe er ein Gespenst gesehen.",
+   "Er sah so aus, als habe er ein Gespenst gesehen."
+  ],
+  "severity": "error",
+  "why": "'als hätte er ein Gespenst gesehen' is the fixed idiom natives use; Gespenst is the standard word for ghost here."
+ },
+ {
+  "id": "konjunktiv-2-wunsch.09",
+  "field": "answer",
+  "before": [
+   "Ich wünschte, ich hätte das nicht gesagt.",
+   "Ich wünschte, ich hätte es nicht gesagt."
+  ],
+  "after": [
+   "Ich wünschte, ich hätte das nicht gesagt.",
+   "Ich wünschte, ich hätte es nicht gesagt.",
+   "Ich wünschte, das hätte ich nicht gesagt."
+  ],
+  "severity": "error",
+  "why": "Object-first V2 'das hätte ich nicht gesagt' is natural and correct after 'Ich wünschte,'."
+ },
+ {
+  "id": "konjunktiv-2-wunsch.11",
+  "field": "near",
+  "before": [
+   [
+    "Wenn ich doch hätte die Prüfung bestanden!",
+    "hätte goes to the end"
+   ],
+   [
+    "Wenn ich doch die Prüfung hätte bestanden!",
+    "hätte comes after the Partizip II"
+   ],
+   [
+    "Wenn doch ich die Prüfung bestanden hätte!",
+    "The subject comes right after wenn"
+   ]
+  ],
+  "after": [
+   [
+    "Wenn ich doch hätte die Prüfung bestanden!",
+    "hätte goes to the end"
+   ],
+   [
+    "Wenn ich doch die Prüfung hätte bestanden!",
+    "hätte comes after the Partizip II"
+   ],
+   [
+    "Wenn ich doch die Prüfung bestanden hatte!",
+    "hatte is the indicative"
+   ]
+  ],
+  "severity": "improve",
+  "why": "'Wenn doch ich …' is possible with contrastive stress on ich; use a clearly wrong near miss."
+ },
+ {
+  "id": "konjunktiv-2-modal-vergangenheit.05",
+  "field": "answer",
+  "before": [
+   "Du hättest das nicht bezahlen sollen.",
+   "Das hättest du nicht bezahlen sollen.",
+   "Sie hätten das nicht bezahlen sollen.",
+   "Das hätten Sie nicht bezahlen sollen.",
+   "Ihr hättet das nicht bezahlen sollen.",
+   "Das hättet ihr nicht bezahlen sollen.",
+   "Du hättest das nicht zahlen sollen.",
+   "Das hättest du nicht zahlen sollen.",
+   "Sie hätten das nicht zahlen sollen.",
+   "Das hätten Sie nicht zahlen sollen.",
+   "Ihr hättet das nicht zahlen sollen.",
+   "Das hättet ihr nicht zahlen sollen."
+  ],
+  "after": [
+   "Du hättest das nicht bezahlen sollen.",
+   "Das hättest du nicht bezahlen sollen.",
+   "Sie hätten das nicht bezahlen sollen.",
+   "Das hätten Sie nicht bezahlen sollen.",
+   "Ihr hättet das nicht bezahlen sollen.",
+   "Das hättet ihr nicht bezahlen sollen.",
+   "Du hättest das nicht zahlen sollen.",
+   "Das hättest du nicht zahlen sollen.",
+   "Sie hätten das nicht zahlen sollen.",
+   "Das hätten Sie nicht zahlen sollen.",
+   "Ihr hättet das nicht zahlen sollen.",
+   "Das hättet ihr nicht zahlen sollen.",
+   "Du hättest es nicht bezahlen sollen.",
+   "Sie hätten es nicht bezahlen sollen.",
+   "Ihr hättet es nicht bezahlen sollen.",
+   "Du hättest es nicht zahlen sollen.",
+   "Sie hätten es nicht zahlen sollen.",
+   "Ihr hättet es nicht zahlen sollen."
+  ],
+  "severity": "error",
+  "why": "'that' → es is correct too (konjunktiv-2-wunsch.09 already accepts es for 'that')."
+ },
+ {
+  "id": "konditional-ohne-wenn.07",
+  "field": "answer",
+  "before": [
+   "Hätten wir früher gebucht, wäre es billiger gewesen."
+  ],
+  "after": [
+   "Hätten wir früher gebucht, wäre es billiger gewesen.",
+   "Hätten wir früher gebucht, es wäre billiger gewesen."
+  ],
+  "severity": "error",
+  "why": "After an unreal verb-first condition a non-integrated V2 main clause is standard (Duden: 'Hätte ich das gewusst, ich wäre gekommen'); all words given."
+ },
+ {
+  "id": "konditional-ohne-wenn.11",
+  "field": "task",
+  "before": "Join into one unreal sentence without „wenn“. Start with „Hätte“.",
+  "after": "Join into one unreal sentence without „wenn“. Start with „Hätte“ and use „jemand“.",
+  "severity": "error",
+  "why": "Task leaves open 'hätte man ihm geholfen' / 'wäre ihm geholfen worden', both natural and correct but not in the key."
+ },
+ {
+  "id": "passiv-perfekt.12",
+  "field": "answer",
+  "before": [
+   "Das Problem ist immer größer geworden, und schließlich ist die Firma verkauft worden.",
+   "Das Problem ist immer größer geworden und schließlich ist die Firma verkauft worden."
+  ],
+  "after": [
+   "Das Problem ist immer größer geworden, und schließlich ist die Firma verkauft worden."
+  ],
+  "severity": "improve",
+  "why": "The two answers differ only by a comma, which the grader ignores."
+ },
+ {
+  "id": "indirekte-rede-ersatz.12",
+  "field": "answer",
+  "before": [
+   "Die Experten sagen, die Preise würden weiter steigen.",
+   "Die Experten sagen, dass die Preise weiter steigen würden."
+  ],
+  "after": [
+   "Die Experten sagen, die Preise würden weiter steigen.",
+   "Die Experten sagen, dass die Preise weiter steigen würden.",
+   "Die Experten sagen, die Preise würden weitersteigen.",
+   "Die Experten sagen, dass die Preise weitersteigen würden."
+  ],
+  "severity": "error",
+  "why": "'weitersteigen' (continue rising) is also a valid spelling; the grader does not ignore spaces."
+ },
+ {
+  "id": "indirekte-rede-fragen-aufforderungen.09",
+  "field": "answer",
+  "before": [
+   "Er fragt, ob wir kämen.",
+   "Er fragt, ob wir kommen würden."
+  ],
+  "after": [
+   "Er fragt, ob wir kämen.",
+   "Er fragt, ob wir kommen würden.",
+   "Er fragt, ob wir mitkämen.",
+   "Er fragt, ob wir mitkommen würden."
+  ],
+  "severity": "error",
+  "why": "'whether we are coming (along)' is very often rendered with mitkommen by natives."
+ }
+]

@@ -1,0 +1,153 @@
+[
+ {
+  "id": "irreale-vergleichssaetze.06",
+  "field": "answer",
+  "before": [
+   "Sie lacht, als ob nichts passiert wäre."
+  ],
+  "after": [
+   "Sie lacht, als ob nichts passiert wäre.",
+   "Sie lacht, als ob nichts passiert sei."
+  ],
+  "severity": "error",
+  "why": "Konjunktiv I after als ob is correct written German and is accepted in items .01/.04/.09/.12; sei must count here too."
+ },
+ {
+  "id": "irreale-vergleichssaetze.06",
+  "field": "note",
+  "before": "Past: wäre + Partizip II (passieren takes sein).",
+  "after": "Past: wäre (written also: sei) + Partizip II; passieren takes sein.",
+  "severity": "improve",
+  "why": "Note matches the added variant."
+ },
+ {
+  "id": "irreale-vergleichssaetze.08",
+  "field": "answer",
+  "before": [
+   "Es fühlt sich an, als ob es Sommer wäre.",
+   "Es fühlt sich an, als wäre es Sommer.",
+   "Es fühlt sich so an, als ob es Sommer wäre.",
+   "Es fühlt sich so an, als wäre es Sommer."
+  ],
+  "after": [
+   "Es fühlt sich an, als ob es Sommer wäre.",
+   "Es fühlt sich an, als wäre es Sommer.",
+   "Es fühlt sich so an, als ob es Sommer wäre.",
+   "Es fühlt sich so an, als wäre es Sommer.",
+   "Es fühlt sich an, als ob es Sommer sei.",
+   "Es fühlt sich an, als sei es Sommer.",
+   "Es fühlt sich so an, als ob es Sommer sei.",
+   "Es fühlt sich so an, als sei es Sommer."
+  ],
+  "severity": "error",
+  "why": "als (ob) + sei is correct and accepted elsewhere in this concept (.04, .09, .12)."
+ },
+ {
+  "id": "konjunktiv-2-modal-vergangenheit.05",
+  "field": "answer",
+  "before": [
+   "Du hättest das nicht bezahlen sollen.",
+   "Das hättest du nicht bezahlen sollen.",
+   "Sie hätten das nicht bezahlen sollen.",
+   "Das hätten Sie nicht bezahlen sollen.",
+   "Du hättest das nicht zahlen sollen.",
+   "Das hättest du nicht zahlen sollen.",
+   "Sie hätten das nicht zahlen sollen.",
+   "Das hätten Sie nicht zahlen sollen."
+  ],
+  "after": [
+   "Du hättest das nicht bezahlen sollen.",
+   "Das hättest du nicht bezahlen sollen.",
+   "Sie hätten das nicht bezahlen sollen.",
+   "Das hätten Sie nicht bezahlen sollen.",
+   "Ihr hättet das nicht bezahlen sollen.",
+   "Das hättet ihr nicht bezahlen sollen.",
+   "Du hättest das nicht zahlen sollen.",
+   "Das hättest du nicht zahlen sollen.",
+   "Sie hätten das nicht zahlen sollen.",
+   "Das hätten Sie nicht zahlen sollen.",
+   "Ihr hättet das nicht zahlen sollen.",
+   "Das hättet ihr nicht zahlen sollen."
+  ],
+  "severity": "error",
+  "why": "English 'you' is open: the brief requires the ihr versions too."
+ },
+ {
+  "id": "passiv-von-durch.08",
+  "field": "prompt",
+  "before": "Das Projekt wird ___ Studierenden organisiert. (von + die)",
+  "after": "Das Projekt wird ___ Eltern organisiert. (von + die)",
+  "severity": "error",
+  "why": "'die Studierenden' can be read as feminine singular (die Studierende), so 'von der' (der Studierenden) is also correct and is rejected; Eltern is plural only."
+ },
+ {
+  "id": "passiv-von-durch.08",
+  "field": "note",
+  "before": "Plural dative after von: den Studierenden.",
+  "after": "Plural dative after von: den Eltern.",
+  "severity": "error",
+  "why": "Follows the prompt change."
+ },
+ {
+  "id": "passiv-von-durch.08",
+  "field": "near",
+  "before": [
+   [
+    "von die",
+    "von takes the dative: den"
+   ],
+   [
+    "durch die",
+    "People who act take von"
+   ],
+   [
+    "vom",
+    "vom is singular masculine/neuter"
+   ]
+  ],
+  "after": [
+   [
+    "von die",
+    "von takes the dative: den"
+   ],
+   [
+    "durch die",
+    "People who act take von"
+   ],
+   [
+    "vom",
+    "vom is singular masculine/neuter"
+   ],
+   [
+    "von der",
+    "die Eltern is plural: den"
+   ]
+  ],
+  "severity": "improve",
+  "why": "With Eltern, 'von der' becomes a real near miss."
+ },
+ {
+  "id": "konjunktiv-2-passiv.10",
+  "field": "task",
+  "before": "Translate into German.",
+  "after": "Translate into German. Use the passive.",
+  "severity": "error",
+  "why": "'Man hätte den Unfall vermeiden/verhindern können' is the most natural rendering and would be rejected."
+ },
+ {
+  "id": "passiv-perfekt.10",
+  "field": "task",
+  "before": "Translate into German. Use „die Sitzung“ and „absagen“.",
+  "after": "Translate into German in the passive. Use „die Sitzung“ and „absagen“.",
+  "severity": "improve",
+  "why": "'Man hatte die Sitzung schon abgesagt' is a correct translation the key rejects."
+ },
+ {
+  "id": "passiv-von-durch.09",
+  "field": "task",
+  "before": "Translate into German, in the Präteritum.",
+  "after": "Translate into German, in the passive (Präteritum).",
+  "severity": "improve",
+  "why": "'Der Sturm beschädigte das Haus' is a correct translation the key rejects."
+ }
+]

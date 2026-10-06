@@ -1,0 +1,3390 @@
+{
+ "batch": "g2",
+ "about": "B2 grammar: Konjunktiv II (wishes, past modals, conditions without wenn, passive), indirect speech (Ersatz, questions, requests), passive Perfekt and von/durch, Ersatzinfinitiv.",
+ "concepts": [
+  {
+   "id": "konjunktiv-2-wunsch",
+   "name": "Konjunktiv II: Wünsche (Wenn … doch/nur …! Hätte ich nur …)",
+   "category": "konjunktiv",
+   "level": "B2",
+   "description": "Unreal wishes with Konjunktiv II, about the present or the past: Wenn ich doch mehr Zeit hätte! / Hätte ich nur früher angefangen!",
+   "rank": 13,
+   "fn": "wish"
+  },
+  {
+   "id": "konjunktiv-2-modal-vergangenheit",
+   "name": "Konjunktiv II: Modalverben in der Vergangenheit (hätte … machen sollen)",
+   "category": "konjunktiv",
+   "level": "B2",
+   "description": "What should, could or had to have happened: hätte + infinitive + modal infinitive, with hätte before both infinitives in a subordinate clause: Du hättest anrufen sollen. / …, dass er es hätte machen sollen.",
+   "rank": 14,
+   "fn": "regret"
+  },
+  {
+   "id": "konditional-ohne-wenn",
+   "name": "Konditionalsätze ohne wenn (Hätte ich Zeit, …; Sollte …, …)",
+   "category": "konjunktiv",
+   "level": "B2",
+   "description": "Conditions without wenn: the verb comes first, and the main clause starts with its verb (or dann/so): Sollte es regnen, bleiben wir zu Hause. / Wäre das Wetter besser, könnten wir grillen.",
+   "rank": 15,
+   "fn": "condition"
+  },
+  {
+   "id": "irreale-vergleichssaetze",
+   "name": "Irreale Vergleichssätze (als ob / als)",
+   "category": "konjunktiv",
+   "level": "B2",
+   "description": "Unreal comparisons with Konjunktiv II: Er tut so, als ob er nichts wüsste / als wüsste er nichts.",
+   "rank": 16,
+   "fn": "compare"
+  },
+  {
+   "id": "passiv-perfekt",
+   "name": "Passiv Perfekt und Plusquamperfekt (ist … worden, war … worden)",
+   "category": "passiv",
+   "level": "B2",
+   "description": "The passive in the Perfekt and Plusquamperfekt, also in subordinate clauses and without a subject: Nachdem alles besprochen worden war, … / Gestern ist viel diskutiert worden.",
+   "rank": 17,
+   "fn": "report"
+  },
+  {
+   "id": "passiv-von-durch",
+   "name": "Passiv mit Agens: von oder durch",
+   "category": "passiv",
+   "level": "B2",
+   "description": "Naming the doer in the passive: von + dative for a person or agent, durch + accusative for a means or cause: Der Brief wurde von der Chefin unterschrieben. / Die Stadt wurde durch ein Erdbeben zerstört.",
+   "rank": 18,
+   "fn": "report"
+  },
+  {
+   "id": "konjunktiv-2-passiv",
+   "name": "Konjunktiv II im Passiv (müsste repariert werden; wäre gemacht worden)",
+   "category": "konjunktiv",
+   "level": "B2",
+   "description": "Konjunktiv II in the passive, present and past: Die Heizung müsste repariert werden. / Ohne dich wäre das nie gemacht worden. / Das hätte verhindert werden können.",
+   "rank": 19,
+   "fn": "condition"
+  },
+  {
+   "id": "indirekte-rede-ersatz",
+   "name": "Indirekte Rede: Konjunktiv II als Ersatz (sie hätten, sie würden kommen)",
+   "category": "konjunktiv",
+   "level": "B2",
+   "description": "Where Konjunktiv I looks like the indicative, reported speech uses Konjunktiv II: Sie sagen, sie hätten keine Zeit. / Er sagt, seine Eltern kämen morgen.",
+   "rank": 20,
+   "fn": "report"
+  },
+  {
+   "id": "indirekte-rede-fragen-aufforderungen",
+   "name": "Indirekte Rede: Fragen und Aufforderungen (ob, w-Fragen, sollen/mögen)",
+   "category": "konjunktiv",
+   "level": "B2",
+   "description": "Reported questions with ob or a question word and the verb last, and reported requests with sollen or mögen: Er fragt, ob ich Zeit habe. / Der Arzt sagt, ich solle mehr trinken.",
+   "rank": 21,
+   "fn": "report"
+  },
+  {
+   "id": "ersatzinfinitiv",
+   "name": "Ersatzinfinitiv (hat kommen müssen; dass er hat kommen müssen)",
+   "category": "verbs-tenses",
+   "level": "B2",
+   "description": "In the Perfekt, a modal verb or lassen with another infinitive stays an infinitive, and in a subordinate clause haben comes before both infinitives: Ich habe gehen müssen. / …, weil er hat arbeiten müssen.",
+   "rank": 22,
+   "fn": "narrate"
+  }
+ ],
+ "items": [
+  {
+   "id": "konjunktiv-2-wunsch.01",
+   "concept": "konjunktiv-2-wunsch",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Wenn ich doch nur mehr Zeit ___! (haben)",
+   "answer": [
+    "hätte"
+   ],
+   "note": "Unreal wish: wenn … doch/nur + hätte, verb last.",
+   "strict_case": false,
+   "near": [
+    [
+     "hatte",
+     "Indicative past, not a wish"
+    ],
+    [
+     "habe",
+     "Konjunktiv I, not a wish"
+    ],
+    [
+     "haben würde",
+     "haben uses hätte, not würde haben"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-wunsch.02",
+   "concept": "konjunktiv-2-wunsch",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Wenn der Bus doch endlich ___! (kommen)",
+   "answer": [
+    "käme",
+    "kommen würde"
+   ],
+   "note": "Wish with wenn: käme or kommen würde, verb last.",
+   "strict_case": false,
+   "near": [
+    [
+     "kam",
+     "Indicative past"
+    ],
+    [
+     "kommt",
+     "Indicative, not a wish"
+    ],
+    [
+     "würde kommen",
+     "In the wenn-clause würde goes last"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-wunsch.03",
+   "concept": "konjunktiv-2-wunsch",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "___ es doch nur schon Wochenende! (sein)",
+   "answer": [
+    "Wäre"
+   ],
+   "note": "Wish without wenn: the verb (wäre) comes first.",
+   "strict_case": false,
+   "near": [
+    [
+     "War",
+     "Indicative past, not a wish"
+    ],
+    [
+     "Ist",
+     "Indicative, not a wish"
+    ],
+    [
+     "Sei",
+     "Konjunktiv I, not a wish"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-wunsch.04",
+   "concept": "konjunktiv-2-wunsch",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as a wish. Start with „Wenn ich doch“.",
+   "prompt": "Ich habe keinen Garten.",
+   "answer": [
+    "Wenn ich doch einen Garten hätte!",
+    "Wenn ich doch nur einen Garten hätte!"
+   ],
+   "note": "Wish: wenn + doch + hätte at the end; keinen becomes einen.",
+   "strict_case": false,
+   "near": [
+    [
+     "Wenn ich doch einen Garten hatte!",
+     "hatte is the indicative past"
+    ],
+    [
+     "Wenn ich doch einen Garten haben würde!",
+     "haben uses hätte, not würde haben"
+    ],
+    [
+     "Wenn ich doch hätte einen Garten!",
+     "In a wenn-clause the verb goes last"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-wunsch.05",
+   "concept": "konjunktiv-2-wunsch",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as a wish. Start with „Wäre“ and use „nur“.",
+   "prompt": "Die Wohnung ist nicht größer.",
+   "answer": [
+    "Wäre die Wohnung nur größer!",
+    "Wäre die Wohnung doch nur größer!"
+   ],
+   "note": "Wish without wenn: Wäre first, then the subject, then nur.",
+   "strict_case": false,
+   "near": [
+    [
+     "War die Wohnung nur größer!",
+     "War is the indicative past"
+    ],
+    [
+     "Wäre die Wohnung nur größer ist!",
+     "Only one finite verb"
+    ],
+    [
+     "Wäre nur größer die Wohnung!",
+     "The subject comes right after the verb"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-wunsch.06",
+   "concept": "konjunktiv-2-wunsch",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as a wish about the past. Start with „Wenn ich doch“.",
+   "prompt": "Ich bin nicht früher losgefahren.",
+   "answer": [
+    "Wenn ich doch früher losgefahren wäre!",
+    "Wenn ich doch nur früher losgefahren wäre!"
+   ],
+   "note": "Past wish: wäre/hätte + Partizip II; losfahren takes sein.",
+   "strict_case": false,
+   "near": [
+    [
+     "Wenn ich doch früher losgefahren hätte!",
+     "losfahren forms its past with sein: wäre"
+    ],
+    [
+     "Wenn ich doch früher losgefahren war!",
+     "war is the indicative"
+    ],
+    [
+     "Wenn ich doch früher losfahren würde!",
+     "That is a wish about now, not the past"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-wunsch.07",
+   "concept": "konjunktiv-2-wunsch",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as a wish about the past. Start with „Hätte“ and use „doch“.",
+   "prompt": "Ich habe nicht auf meine Ärztin gehört.",
+   "answer": [
+    "Hätte ich doch auf meine Ärztin gehört!",
+    "Hätte ich doch nur auf meine Ärztin gehört!"
+   ],
+   "note": "Past wish without wenn: Hätte first, Partizip II last.",
+   "strict_case": false,
+   "near": [
+    [
+     "Hatte ich doch auf meine Ärztin gehört!",
+     "Hatte is the indicative past"
+    ],
+    [
+     "Hätte ich doch auf meine Ärztin hören!",
+     "The past needs the Partizip II: gehört"
+    ],
+    [
+     "Wäre ich doch auf meine Ärztin gehört!",
+     "hören forms its past with haben"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-wunsch.08",
+   "concept": "konjunktiv-2-wunsch",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Ich wünschte, ich ___ gestern nicht so viel gegessen. (haben)",
+   "answer": [
+    "hätte"
+   ],
+   "note": "ich wünschte + past wish: hätte + Partizip II.",
+   "strict_case": false,
+   "near": [
+    [
+     "hatte",
+     "Indicative past, not a wish"
+    ],
+    [
+     "habe",
+     "Konjunktiv I, not a wish"
+    ],
+    [
+     "würde",
+     "würde + Partizip II is not a past form here"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-wunsch.09",
+   "concept": "konjunktiv-2-wunsch",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German. Start with „Ich wünschte“.",
+   "prompt": "I wish I hadn't said that.",
+   "answer": [
+    "Ich wünschte, ich hätte das nicht gesagt.",
+    "Ich wünschte, ich hätte es nicht gesagt.",
+    "Ich wünschte, das hätte ich nicht gesagt."
+   ],
+   "note": "I wish I hadn't … = Ich wünschte, ich hätte … nicht + Partizip II.",
+   "strict_case": false,
+   "near": [
+    [
+     "Ich wünschte, ich hatte das nicht gesagt.",
+     "hatte is the indicative"
+    ],
+    [
+     "Ich wünschte, ich habe das nicht gesagt.",
+     "habe is not a wish form"
+    ],
+    [
+     "Ich wünschte, ich hätte das nicht sagen.",
+     "The past needs the Partizip II: gesagt"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-wunsch.10",
+   "concept": "konjunktiv-2-wunsch",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Wenn sie doch nur endlich anrufen ___! (werden)",
+   "answer": [
+    "würde"
+   ],
+   "note": "Wish with würde + infinitive: würde (with umlaut) last.",
+   "strict_case": false,
+   "near": [
+    [
+     "wurde",
+     "wurde is the indicative past"
+    ],
+    [
+     "wird",
+     "Indicative, not a wish"
+    ],
+    [
+     "werde",
+     "Konjunktiv I, not a wish"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-wunsch.11",
+   "concept": "konjunktiv-2-wunsch",
+   "level": "B2",
+   "kind": "order",
+   "task": "Put the words in order. Start with „Wenn“.",
+   "prompt": "doch / ich / die Prüfung / bestanden / hätte",
+   "answer": [
+    "Wenn ich doch die Prüfung bestanden hätte!",
+    "Wenn ich die Prüfung doch bestanden hätte!"
+   ],
+   "note": "wenn-wish: subject after wenn, hätte last after the Partizip II.",
+   "strict_case": false,
+   "near": [
+    [
+     "Wenn ich doch hätte die Prüfung bestanden!",
+     "hätte goes to the end"
+    ],
+    [
+     "Wenn ich doch die Prüfung hätte bestanden!",
+     "hätte comes after the Partizip II"
+    ],
+    [
+     "Wenn ich doch die Prüfung bestanden hatte!",
+     "hatte is the indicative"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-wunsch.12",
+   "concept": "konjunktiv-2-wunsch",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as a wish about the past. Start with the verb and use „doch“.",
+   "prompt": "Du bist nicht mitgekommen.",
+   "answer": [
+    "Wärst du doch mitgekommen!",
+    "Wärest du doch mitgekommen!",
+    "Wärst du doch nur mitgekommen!",
+    "Wärest du doch nur mitgekommen!"
+   ],
+   "note": "Past wish without wenn: wärst first; mitkommen takes sein.",
+   "strict_case": false,
+   "near": [
+    [
+     "Hättest du doch mitgekommen!",
+     "mitkommen forms its past with sein: wärst"
+    ],
+    [
+     "Warst du doch mitgekommen!",
+     "Warst is the indicative"
+    ],
+    [
+     "Wärst du doch mitkommen!",
+     "The past needs the Partizip II: mitgekommen"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-modal-vergangenheit.01",
+   "concept": "konjunktiv-2-modal-vergangenheit",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as a criticism with „sollen“.",
+   "prompt": "Du hast nicht angerufen.",
+   "answer": [
+    "Du hättest anrufen sollen."
+   ],
+   "note": "hätte + infinitive + sollen (not gesollt).",
+   "strict_case": false,
+   "near": [
+    [
+     "Du hättest anrufen gesollt.",
+     "With an infinitive the modal stays an infinitive: sollen"
+    ],
+    [
+     "Du hattest anrufen sollen.",
+     "hattest is the indicative"
+    ],
+    [
+     "Du hättest angerufen sollen.",
+     "The main verb is an infinitive: anrufen"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-modal-vergangenheit.02",
+   "concept": "konjunktiv-2-modal-vergangenheit",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the Konjunktiv II.",
+   "prompt": "Wir ___ den Termin absagen können. (haben)",
+   "answer": [
+    "hätten"
+   ],
+   "note": "Missed chance: hätten + infinitive + können.",
+   "strict_case": false,
+   "near": [
+    [
+     "hatten",
+     "Indicative past: no unreal meaning"
+    ],
+    [
+     "wären",
+     "Modal verbs form this with haben"
+    ],
+    [
+     "haben",
+     "Indicative: no unreal meaning"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-modal-vergangenheit.03",
+   "concept": "konjunktiv-2-modal-vergangenheit",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Sie hätte das nicht allein machen ___. (müssen)",
+   "answer": [
+    "müssen"
+   ],
+   "note": "After hätte + infinitive the modal is an infinitive too: müssen.",
+   "strict_case": false,
+   "near": [
+    [
+     "gemusst",
+     "With an infinitive the modal stays an infinitive"
+    ],
+    [
+     "müsste",
+     "Only one finite verb: hätte"
+    ],
+    [
+     "musste",
+     "Only one finite verb: hätte"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-modal-vergangenheit.04",
+   "concept": "konjunktiv-2-modal-vergangenheit",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „können“: it was possible, but it did not happen.",
+   "prompt": "Ich habe dir nicht geholfen.",
+   "answer": [
+    "Ich hätte dir helfen können."
+   ],
+   "note": "Unused possibility: hätte + infinitive + können.",
+   "strict_case": false,
+   "near": [
+    [
+     "Ich hätte dir geholfen können.",
+     "The main verb is an infinitive: helfen"
+    ],
+    [
+     "Ich hätte dir helfen gekonnt.",
+     "With an infinitive the modal stays können"
+    ],
+    [
+     "Ich hatte dir helfen können.",
+     "hatte is the indicative"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-modal-vergangenheit.05",
+   "concept": "konjunktiv-2-modal-vergangenheit",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German.",
+   "prompt": "You shouldn't have paid that.",
+   "answer": [
+    "Du hättest das nicht bezahlen sollen.",
+    "Das hättest du nicht bezahlen sollen.",
+    "Sie hätten das nicht bezahlen sollen.",
+    "Das hätten Sie nicht bezahlen sollen.",
+    "Ihr hättet das nicht bezahlen sollen.",
+    "Das hättet ihr nicht bezahlen sollen.",
+    "Du hättest das nicht zahlen sollen.",
+    "Das hättest du nicht zahlen sollen.",
+    "Sie hätten das nicht zahlen sollen.",
+    "Das hätten Sie nicht zahlen sollen.",
+    "Ihr hättet das nicht zahlen sollen.",
+    "Das hättet ihr nicht zahlen sollen.",
+    "Du hättest es nicht bezahlen sollen.",
+    "Sie hätten es nicht bezahlen sollen.",
+    "Ihr hättet es nicht bezahlen sollen.",
+    "Du hättest es nicht zahlen sollen.",
+    "Sie hätten es nicht zahlen sollen.",
+    "Ihr hättet es nicht zahlen sollen."
+   ],
+   "note": "shouldn't have … = hätte … nicht + infinitive + sollen.",
+   "strict_case": false,
+   "near": [
+    [
+     "Du hättest das nicht bezahlt sollen.",
+     "The main verb is an infinitive: bezahlen"
+    ],
+    [
+     "Du hättest das nicht bezahlen gesollt.",
+     "With an infinitive the modal stays sollen"
+    ],
+    [
+     "Du hattest das nicht bezahlen sollen.",
+     "hattest is the indicative"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-modal-vergangenheit.06",
+   "concept": "konjunktiv-2-modal-vergangenheit",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the Konjunktiv II.",
+   "prompt": "Mit dem Ticket ___ du kostenlos fahren dürfen. (haben)",
+   "answer": [
+    "hättest"
+   ],
+   "note": "Unused permission: hättest + infinitive + dürfen.",
+   "strict_case": false,
+   "near": [
+    [
+     "hattest",
+     "Indicative past: no unreal meaning"
+    ],
+    [
+     "wärst",
+     "Modal verbs form this with haben"
+    ],
+    [
+     "hätte",
+     "du needs hättest"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-modal-vergangenheit.07",
+   "concept": "konjunktiv-2-modal-vergangenheit",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with the word in brackets. Keep the order.",
+   "prompt": "Ich weiß. Ich hätte früher fragen sollen. (dass)",
+   "answer": [
+    "Ich weiß, dass ich früher hätte fragen sollen."
+   ],
+   "note": "In a dass-clause hätte comes before the two infinitives.",
+   "strict_case": false,
+   "near": [
+    [
+     "Ich weiß, dass ich früher fragen sollen hätte.",
+     "hätte goes before both infinitives"
+    ],
+    [
+     "Ich weiß, dass ich früher hätte fragen gesollt.",
+     "With an infinitive the modal stays sollen"
+    ],
+    [
+     "Ich weiß, dass ich hätte früher fragen sollen hätte.",
+     "Only one hätte"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-modal-vergangenheit.08",
+   "concept": "konjunktiv-2-modal-vergangenheit",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with the word in brackets. Keep the order.",
+   "prompt": "Er ärgert sich. Er hätte die Rechnung früher bezahlen müssen. (weil)",
+   "answer": [
+    "Er ärgert sich, weil er die Rechnung früher hätte bezahlen müssen."
+   ],
+   "note": "weil-clause: … hätte + infinitive + müssen at the end.",
+   "strict_case": false,
+   "near": [
+    [
+     "Er ärgert sich, weil er die Rechnung früher bezahlen müssen hätte.",
+     "hätte goes before both infinitives"
+    ],
+    [
+     "Er ärgert sich, weil er hätte die Rechnung früher bezahlen müssen hätte.",
+     "Only one hätte"
+    ],
+    [
+     "Er ärgert sich, weil er die Rechnung früher hätte bezahlt müssen.",
+     "The main verb is an infinitive: bezahlen"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-modal-vergangenheit.09",
+   "concept": "konjunktiv-2-modal-vergangenheit",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Say it was wrong, with „dürfen“.",
+   "prompt": "Ich habe das Geheimnis verraten.",
+   "answer": [
+    "Ich hätte das Geheimnis nicht verraten dürfen."
+   ],
+   "note": "It wasn't allowed / it was wrong: hätte … nicht + infinitive + dürfen.",
+   "strict_case": false,
+   "near": [
+    [
+     "Ich hätte das Geheimnis nicht verraten gedurft.",
+     "With an infinitive the modal stays dürfen"
+    ],
+    [
+     "Ich hatte das Geheimnis nicht verraten dürfen.",
+     "hatte is the indicative"
+    ],
+    [
+     "Ich hätte das Geheimnis nicht dürfen verraten.",
+     "dürfen goes last"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-modal-vergangenheit.10",
+   "concept": "konjunktiv-2-modal-vergangenheit",
+   "level": "B2",
+   "kind": "order",
+   "task": "Put the words in order. Start with „Ich glaube, dass“.",
+   "prompt": "wir / hätten / mehr / sparen / müssen",
+   "answer": [
+    "Ich glaube, dass wir mehr hätten sparen müssen."
+   ],
+   "note": "Subordinate clause: hätten + infinitive + müssen at the end.",
+   "strict_case": false,
+   "near": [
+    [
+     "Ich glaube, dass wir mehr sparen müssen hätten.",
+     "hätten goes before both infinitives"
+    ],
+    [
+     "Ich glaube, dass wir hätten mehr sparen müssen hätten.",
+     "Only one hätten"
+    ],
+    [
+     "Ich glaube, dass hätten wir mehr sparen müssen.",
+     "In a dass-clause the subject comes first"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-modal-vergangenheit.11",
+   "concept": "konjunktiv-2-modal-vergangenheit",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German.",
+   "prompt": "He could have asked me.",
+   "answer": [
+    "Er hätte mich fragen können."
+   ],
+   "note": "could have … = hätte + infinitive + können.",
+   "strict_case": false,
+   "near": [
+    [
+     "Er hätte mich gefragt können.",
+     "The main verb is an infinitive: fragen"
+    ],
+    [
+     "Er hätte mich fragen gekonnt.",
+     "With an infinitive the modal stays können"
+    ],
+    [
+     "Er hatte mich fragen können.",
+     "hatte is the indicative"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-modal-vergangenheit.12",
+   "concept": "konjunktiv-2-modal-vergangenheit",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with the word in brackets. Keep the order.",
+   "prompt": "Sie hat die Stelle abgelehnt. Sie hätte sie bekommen können. (obwohl)",
+   "answer": [
+    "Sie hat die Stelle abgelehnt, obwohl sie sie hätte bekommen können."
+   ],
+   "note": "obwohl-clause: hätte before bekommen können.",
+   "strict_case": false,
+   "near": [
+    [
+     "Sie hat die Stelle abgelehnt, obwohl sie sie bekommen können hätte.",
+     "hätte goes before both infinitives"
+    ],
+    [
+     "Sie hat die Stelle abgelehnt, obwohl sie sie hätte bekommen gekonnt.",
+     "With an infinitive the modal stays können"
+    ],
+    [
+     "Sie hat die Stelle abgelehnt, obwohl sie hätte sie bekommen können.",
+     "The object pronoun comes before hätte"
+    ]
+   ]
+  },
+  {
+   "id": "konditional-ohne-wenn.01",
+   "concept": "konditional-ohne-wenn",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite without „wenn“. Start with the verb.",
+   "prompt": "Wenn du Fragen hast, melde dich.",
+   "answer": [
+    "Hast du Fragen, melde dich.",
+    "Hast du Fragen, dann melde dich.",
+    "Hast du Fragen, so melde dich."
+   ],
+   "note": "Without wenn the verb comes first: Hast du Fragen, …",
+   "strict_case": false,
+   "near": [
+    [
+     "Wenn hast du Fragen, melde dich.",
+     "Either wenn (verb last) or verb first, not both"
+    ],
+    [
+     "Hast Fragen du, melde dich.",
+     "The subject comes right after the verb"
+    ]
+   ]
+  },
+  {
+   "id": "konditional-ohne-wenn.02",
+   "concept": "konditional-ohne-wenn",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "___ es morgen regnen, bleiben wir zu Hause. (sollen)",
+   "answer": [
+    "Sollte"
+   ],
+   "note": "Sollte + infinitive at the start = if (by chance).",
+   "strict_case": false,
+   "near": [
+    [
+     "Soll",
+     "The condition needs sollte"
+    ],
+    [
+     "Sollten",
+     "es needs sollte"
+    ],
+    [
+     "Solle",
+     "The condition needs sollte"
+    ]
+   ]
+  },
+  {
+   "id": "konditional-ohne-wenn.03",
+   "concept": "konditional-ohne-wenn",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „Sollte“ at the start.",
+   "prompt": "Wenn der Zug Verspätung hat, rufe ich dich an.",
+   "answer": [
+    "Sollte der Zug Verspätung haben, rufe ich dich an.",
+    "Sollte der Zug Verspätung haben, dann rufe ich dich an.",
+    "Sollte der Zug Verspätung haben, so rufe ich dich an."
+   ],
+   "note": "Sollte … + infinitive, then the main clause starts with its verb.",
+   "strict_case": false,
+   "near": [
+    [
+     "Sollte der Zug Verspätung hat, rufe ich dich an.",
+     "After sollte the verb is an infinitive: haben"
+    ],
+    [
+     "Sollte der Zug Verspätung haben, ich rufe dich an.",
+     "The main clause starts with its verb: rufe ich"
+    ],
+    [
+     "Sollte der Zug Verspätung haben, rufe ich dich anrufen.",
+     "Only one form of anrufen"
+    ]
+   ]
+  },
+  {
+   "id": "konditional-ohne-wenn.04",
+   "concept": "konditional-ohne-wenn",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite without „wenn“. Start with the verb.",
+   "prompt": "Wenn das Wetter besser wäre, könnten wir draußen essen.",
+   "answer": [
+    "Wäre das Wetter besser, könnten wir draußen essen.",
+    "Wäre das Wetter besser, dann könnten wir draußen essen.",
+    "Wäre das Wetter besser, so könnten wir draußen essen."
+   ],
+   "note": "Unreal condition without wenn: Wäre first.",
+   "strict_case": false,
+   "near": [
+    [
+     "War das Wetter besser, könnten wir draußen essen.",
+     "War is the indicative"
+    ],
+    [
+     "Das Wetter wäre besser, könnten wir draußen essen.",
+     "Without wenn the verb comes first"
+    ],
+    [
+     "Wäre das Wetter besser, können wir draußen essen.",
+     "The result is unreal too: könnten"
+    ]
+   ]
+  },
+  {
+   "id": "konditional-ohne-wenn.05",
+   "concept": "konditional-ohne-wenn",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "___ ich das gewusst, hätte ich dich gewarnt. (haben)",
+   "answer": [
+    "Hätte"
+   ],
+   "note": "Past unreal condition without wenn: Hätte first.",
+   "strict_case": false,
+   "near": [
+    [
+     "Hatte",
+     "Indicative: the condition is unreal"
+    ],
+    [
+     "Habe",
+     "Not a Konjunktiv II form"
+    ],
+    [
+     "Wäre",
+     "wissen forms its past with haben"
+    ]
+   ]
+  },
+  {
+   "id": "konditional-ohne-wenn.06",
+   "concept": "konditional-ohne-wenn",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite without „wenn“. Start with „Sollten“.",
+   "prompt": "Wenn Sie Fragen haben, wenden Sie sich an unser Team.",
+   "answer": [
+    "Sollten Sie Fragen haben, wenden Sie sich an unser Team.",
+    "Sollten Sie Fragen haben, dann wenden Sie sich an unser Team.",
+    "Sollten Sie Fragen haben, so wenden Sie sich an unser Team."
+   ],
+   "note": "Formal letters: Sollten Sie … haben, wenden Sie sich …",
+   "strict_case": false,
+   "near": [
+    [
+     "Sollte Sie Fragen haben, wenden Sie sich an unser Team.",
+     "Sie needs sollten"
+    ],
+    [
+     "Sollten Sie Fragen hätten, wenden Sie sich an unser Team.",
+     "After sollten the verb is an infinitive: haben"
+    ],
+    [
+     "Sollten Sie Fragen haben, Sie wenden sich an unser Team.",
+     "The main clause starts with its verb"
+    ]
+   ]
+  },
+  {
+   "id": "konditional-ohne-wenn.07",
+   "concept": "konditional-ohne-wenn",
+   "level": "B2",
+   "kind": "order",
+   "task": "Put the words in order. Start with „Hätten“.",
+   "prompt": "wir / früher / gebucht / hätten / wäre / es / billiger / gewesen",
+   "answer": [
+    "Hätten wir früher gebucht, wäre es billiger gewesen."
+   ],
+   "note": "Hätten … gebucht, wäre … gewesen: both clauses start with the verb.",
+   "strict_case": false,
+   "near": [
+    [
+     "Hätten wir früher gebucht, wäre es gewesen billiger.",
+     "The Partizip II gewesen goes last"
+    ],
+    [
+     "Hätten wir gebucht früher, wäre es billiger gewesen.",
+     "The Partizip II goes last"
+    ],
+    [
+     "Hätten wir früher gebucht, wäre billiger es gewesen.",
+     "es comes right after wäre"
+    ]
+   ]
+  },
+  {
+   "id": "konditional-ohne-wenn.08",
+   "concept": "konditional-ohne-wenn",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite without „wenn“. Start with the verb.",
+   "prompt": "Wenn man genauer hinsieht, erkennt man den Fehler.",
+   "answer": [
+    "Sieht man genauer hin, erkennt man den Fehler.",
+    "Sieht man genauer hin, dann erkennt man den Fehler.",
+    "Sieht man genauer hin, so erkennt man den Fehler."
+   ],
+   "note": "Verb first; a separable prefix (hin) goes to the end.",
+   "strict_case": false,
+   "near": [
+    [
+     "Hinsieht man genauer, erkennt man den Fehler.",
+     "The prefix hin goes to the end"
+    ],
+    [
+     "Sieht man genauer hinsieht, erkennt man den Fehler.",
+     "Only one sieht"
+    ],
+    [
+     "Sieht man genauer hin, erkennt man den Fehler hin.",
+     "hin belongs to sieht, not erkennt"
+    ]
+   ]
+  },
+  {
+   "id": "konditional-ohne-wenn.09",
+   "concept": "konditional-ohne-wenn",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Wären wir früher losgefahren, ___ wir den Zug noch erreicht. (haben)",
+   "answer": [
+    "hätten"
+   ],
+   "note": "Unreal result in the past: hätten + Partizip II.",
+   "strict_case": false,
+   "near": [
+    [
+     "hatten",
+     "Indicative: the result is unreal"
+    ],
+    [
+     "wären",
+     "bekommen forms its past with haben"
+    ],
+    [
+     "würden",
+     "würden + Partizip II is not a past form here"
+    ]
+   ]
+  },
+  {
+   "id": "konditional-ohne-wenn.10",
+   "concept": "konditional-ohne-wenn",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „wenn“. Keep „sollte“ and the order.",
+   "prompt": "Sollte die Heizung ausfallen, melden Sie sich bitte beim Hausmeister.",
+   "answer": [
+    "Wenn die Heizung ausfallen sollte, melden Sie sich bitte beim Hausmeister.",
+    "Wenn die Heizung ausfallen sollte, dann melden Sie sich bitte beim Hausmeister."
+   ],
+   "note": "With wenn, sollte goes to the end of the clause.",
+   "strict_case": false,
+   "near": [
+    [
+     "Wenn die Heizung sollte ausfallen, melden Sie sich bitte beim Hausmeister.",
+     "In a wenn-clause sollte goes last"
+    ],
+    [
+     "Wenn sollte die Heizung ausfallen, melden Sie sich bitte beim Hausmeister.",
+     "Either wenn or verb first, not both"
+    ],
+    [
+     "Wenn die Heizung ausfallen sollte, Sie melden sich bitte beim Hausmeister.",
+     "The main clause starts with its verb"
+    ]
+   ]
+  },
+  {
+   "id": "konditional-ohne-wenn.11",
+   "concept": "konditional-ohne-wenn",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join into one unreal sentence without „wenn“. Start with „Hätte“ and use „jemand“.",
+   "prompt": "Er hat nicht gefragt. Deshalb hat ihm niemand geholfen.",
+   "answer": [
+    "Hätte er gefragt, hätte ihm jemand geholfen.",
+    "Hätte er gefragt, dann hätte ihm jemand geholfen.",
+    "Hätte er gefragt, so hätte ihm jemand geholfen."
+   ],
+   "note": "Hätte … gefragt, hätte … geholfen; nicht/niemand turn positive.",
+   "strict_case": false,
+   "near": [
+    [
+     "Hatte er gefragt, hätte ihm jemand geholfen.",
+     "Hatte is the indicative"
+    ],
+    [
+     "Hätte er gefragt, würde ihm jemand geholfen.",
+     "The past result needs hätte + Partizip II"
+    ],
+    [
+     "Hätte er gefragt, wäre ihm jemand geholfen.",
+     "helfen forms its past with haben"
+    ]
+   ]
+  },
+  {
+   "id": "konditional-ohne-wenn.12",
+   "concept": "konditional-ohne-wenn",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite without „wenn“. Start with the verb.",
+   "prompt": "Wenn der Antrag nicht rechtzeitig eingereicht wird, verfällt der Anspruch.",
+   "answer": [
+    "Wird der Antrag nicht rechtzeitig eingereicht, verfällt der Anspruch.",
+    "Wird der Antrag nicht rechtzeitig eingereicht, dann verfällt der Anspruch.",
+    "Wird der Antrag nicht rechtzeitig eingereicht, so verfällt der Anspruch."
+   ],
+   "note": "In the passive the finite werden comes first: Wird … eingereicht, …",
+   "strict_case": false,
+   "near": [
+    [
+     "Wird der Antrag nicht rechtzeitig eingereicht wird, verfällt der Anspruch.",
+     "Only one wird"
+    ],
+    [
+     "Wurde der Antrag nicht rechtzeitig eingereicht, verfällt der Anspruch.",
+     "Keep the present: wird"
+    ],
+    [
+     "Wird der Antrag nicht rechtzeitig eingereicht, der Anspruch verfällt.",
+     "The main clause starts with its verb"
+    ]
+   ]
+  },
+  {
+   "id": "irreale-vergleichssaetze.09",
+   "concept": "irreale-vergleichssaetze",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with the word in brackets. Keep the order.",
+   "prompt": "Er tat so. Er hatte nichts bemerkt. (als)",
+   "answer": [
+    "Er tat so, als hätte er nichts bemerkt.",
+    "Er tat so, als habe er nichts bemerkt."
+   ],
+   "note": "als + hätte/habe + subject, Partizip II last.",
+   "strict_case": false,
+   "near": [
+    [
+     "Er tat so, als er hätte nichts bemerkt.",
+     "After als the verb comes right after it"
+    ],
+    [
+     "Er tat so, als hatte er nichts bemerkt.",
+     "hatte is the indicative"
+    ],
+    [
+     "Er tat so, als hätte er nichts bemerkt hätte.",
+     "Only one hätte"
+    ]
+   ]
+  },
+  {
+   "id": "irreale-vergleichssaetze.10",
+   "concept": "irreale-vergleichssaetze",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Draußen ist es so dunkel, als ob es gleich ein Gewitter geben ___. (werden)",
+   "answer": [
+    "würde",
+    "werde"
+   ],
+   "note": "als ob + infinitive + würde at the end.",
+   "strict_case": false,
+   "near": [
+    [
+     "wurde",
+     "wurde is the indicative past"
+    ],
+    [
+     "wird",
+     "Indicative: the comparison is unreal"
+    ],
+    [
+     "würden",
+     "es needs würde"
+    ]
+   ]
+  },
+  {
+   "id": "irreale-vergleichssaetze.11",
+   "concept": "irreale-vergleichssaetze",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite with „als“ instead of „als ob“.",
+   "prompt": "Du redest, als ob du dabei gewesen wärst.",
+   "answer": [
+    "Du redest, als wärst du dabei gewesen.",
+    "Du redest, als wärest du dabei gewesen."
+   ],
+   "note": "With als the verb (wärst) comes right after it.",
+   "strict_case": false,
+   "near": [
+    [
+     "Du redest, als du wärst dabei gewesen.",
+     "After als the verb comes right after it"
+    ],
+    [
+     "Du redest, als warst du dabei gewesen.",
+     "warst is the indicative"
+    ],
+    [
+     "Du redest, als wärst du dabei gewesen wärst.",
+     "Only one wärst"
+    ]
+   ]
+  },
+  {
+   "id": "irreale-vergleichssaetze.12",
+   "concept": "irreale-vergleichssaetze",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German. Use „als“ without „ob“.",
+   "prompt": "He looked as if he had seen a ghost.",
+   "answer": [
+    "Er sah aus, als hätte er einen Geist gesehen.",
+    "Er sah so aus, als hätte er einen Geist gesehen.",
+    "Er sah aus, als habe er einen Geist gesehen.",
+    "Er sah so aus, als habe er einen Geist gesehen.",
+    "Er sah aus, als hätte er ein Gespenst gesehen.",
+    "Er sah so aus, als hätte er ein Gespenst gesehen.",
+    "Er sah aus, als habe er ein Gespenst gesehen.",
+    "Er sah so aus, als habe er ein Gespenst gesehen."
+   ],
+   "note": "as if he had … = als hätte er … + Partizip II.",
+   "strict_case": false,
+   "near": [
+    [
+     "Er sah aus, als er hätte einen Geist gesehen.",
+     "After als the verb comes right after it"
+    ],
+    [
+     "Er sah aus, als hatte er einen Geist gesehen.",
+     "hatte is the indicative"
+    ],
+    [
+     "Er sah aus, als wäre er einen Geist gesehen.",
+     "sehen forms its past with haben"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-perfekt.01",
+   "concept": "passiv-perfekt",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite in the passive, Plusquamperfekt.",
+   "prompt": "Man hatte die Straße gesperrt.",
+   "answer": [
+    "Die Straße war gesperrt worden."
+   ],
+   "note": "Passive Plusquamperfekt: war + Partizip II + worden.",
+   "strict_case": false,
+   "near": [
+    [
+     "Die Straße war gesperrt geworden.",
+     "In the passive it is worden, not geworden"
+    ],
+    [
+     "Die Straße hatte gesperrt worden.",
+     "The passive takes sein: war"
+    ],
+    [
+     "Die Straße ist gesperrt worden.",
+     "That is the Perfekt, not the Plusquamperfekt"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-perfekt.02",
+   "concept": "passiv-perfekt",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Als wir ankamen, ___ das Essen schon serviert worden. (sein)",
+   "answer": [
+    "war"
+   ],
+   "note": "Before another past event: war … worden.",
+   "strict_case": false,
+   "near": [
+    [
+     "ist",
+     "The earlier past needs war"
+    ],
+    [
+     "hatte",
+     "The passive takes sein"
+    ],
+    [
+     "wurde",
+     "wurde does not go with worden"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-perfekt.03",
+   "concept": "passiv-perfekt",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with „worden“ or „geworden“.",
+   "prompt": "Mein Bruder ist letztes Jahr Vater ___.",
+   "answer": [
+    "geworden"
+   ],
+   "note": "werden as a full verb (become): ist … geworden.",
+   "strict_case": false,
+   "near": [
+    [
+     "worden",
+     "worden is only for the passive"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-perfekt.04",
+   "concept": "passiv-perfekt",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with „worden“ or „geworden“.",
+   "prompt": "Der Patient ist gestern operiert ___.",
+   "answer": [
+    "worden"
+   ],
+   "note": "Passive (Partizip II + werden): ist … worden.",
+   "strict_case": false,
+   "near": [
+    [
+     "geworden",
+     "In the passive it is worden, not geworden"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-perfekt.05",
+   "concept": "passiv-perfekt",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with the word in brackets. Keep the order.",
+   "prompt": "Ich habe gehört. Das Paket ist schon geschickt worden. (dass)",
+   "answer": [
+    "Ich habe gehört, dass das Paket schon geschickt worden ist."
+   ],
+   "note": "Subordinate clause: … geschickt worden ist (ist last).",
+   "strict_case": false,
+   "near": [
+    [
+     "Ich habe gehört, dass das Paket schon geschickt ist worden.",
+     "ist goes last: geschickt worden ist"
+    ],
+    [
+     "Ich habe gehört, dass das Paket schon ist geschickt worden.",
+     "ist goes last"
+    ],
+    [
+     "Ich habe gehört, dass das Paket schon geschickt geworden ist.",
+     "In the passive it is worden"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-perfekt.06",
+   "concept": "passiv-perfekt",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite in the passive, Perfekt. Start with „Gestern“.",
+   "prompt": "Gestern hat man im Büro viel diskutiert.",
+   "answer": [
+    "Gestern ist im Büro viel diskutiert worden."
+   ],
+   "note": "No object: impersonal passive, no es when something else comes first.",
+   "strict_case": false,
+   "near": [
+    [
+     "Gestern ist es im Büro viel diskutiert worden.",
+     "No es when another word comes first"
+    ],
+    [
+     "Gestern hat im Büro viel diskutiert worden.",
+     "The passive takes sein"
+    ],
+    [
+     "Gestern ist im Büro viel diskutiert geworden.",
+     "In the passive it is worden"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-perfekt.07",
+   "concept": "passiv-perfekt",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite in the passive, Perfekt. Start with „Es“.",
+   "prompt": "Man hat lange über das Thema gesprochen.",
+   "answer": [
+    "Es ist lange über das Thema gesprochen worden."
+   ],
+   "note": "Impersonal passive: es only fills the first position.",
+   "strict_case": false,
+   "near": [
+    [
+     "Es hat lange über das Thema gesprochen worden.",
+     "The passive takes sein"
+    ],
+    [
+     "Es ist lange über das Thema gesprochen geworden.",
+     "In the passive it is worden"
+    ],
+    [
+     "Es wurde lange über das Thema gesprochen worden.",
+     "wurde does not go with worden"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-perfekt.08",
+   "concept": "passiv-perfekt",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with the word in brackets. Keep the order.",
+   "prompt": "Die Wohnung war renoviert worden. Wir zogen ein. (nachdem)",
+   "answer": [
+    "Nachdem die Wohnung renoviert worden war, zogen wir ein."
+   ],
+   "note": "nachdem + Plusquamperfekt: … renoviert worden war.",
+   "strict_case": false,
+   "near": [
+    [
+     "Nachdem die Wohnung renoviert war worden, zogen wir ein.",
+     "war goes last: renoviert worden war"
+    ],
+    [
+     "Nachdem die Wohnung renoviert worden war, wir zogen ein.",
+     "The main clause starts with its verb"
+    ],
+    [
+     "Nachdem die Wohnung renoviert geworden war, zogen wir ein.",
+     "In the passive it is worden"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-perfekt.09",
+   "concept": "passiv-perfekt",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite in the passive, Perfekt. Keep the order.",
+   "prompt": "Ich glaube, dass man den Fehler inzwischen behoben hat.",
+   "answer": [
+    "Ich glaube, dass der Fehler inzwischen behoben worden ist."
+   ],
+   "note": "dass-clause: Partizip II + worden + ist.",
+   "strict_case": false,
+   "near": [
+    [
+     "Ich glaube, dass der Fehler inzwischen behoben ist worden.",
+     "ist goes last"
+    ],
+    [
+     "Ich glaube, dass der Fehler inzwischen behoben geworden ist.",
+     "In the passive it is worden"
+    ],
+    [
+     "Ich glaube, dass der Fehler inzwischen behoben worden hat.",
+     "The passive takes sein"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-perfekt.10",
+   "concept": "passiv-perfekt",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German in the passive. Use „die Sitzung“ and „absagen“.",
+   "prompt": "The meeting had already been cancelled.",
+   "answer": [
+    "Die Sitzung war schon abgesagt worden.",
+    "Die Sitzung war bereits abgesagt worden."
+   ],
+   "note": "had been + participle = war + Partizip II + worden.",
+   "strict_case": false,
+   "near": [
+    [
+     "Die Sitzung war schon abgesagt geworden.",
+     "In the passive it is worden"
+    ],
+    [
+     "Die Sitzung hatte schon abgesagt worden.",
+     "The passive takes sein"
+    ],
+    [
+     "Die Sitzung wurde schon abgesagt worden.",
+     "wurde does not go with worden"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-perfekt.11",
+   "concept": "passiv-perfekt",
+   "level": "B2",
+   "kind": "order",
+   "task": "Put the words in order. Start with „Ich weiß nicht, warum“.",
+   "prompt": "ich / eingeladen / bin / nicht / worden",
+   "answer": [
+    "Ich weiß nicht, warum ich nicht eingeladen worden bin."
+   ],
+   "note": "w-clause: … eingeladen worden bin (bin last).",
+   "strict_case": false,
+   "near": [
+    [
+     "Ich weiß nicht, warum ich nicht eingeladen bin worden.",
+     "bin goes last"
+    ],
+    [
+     "Ich weiß nicht, warum ich bin nicht eingeladen worden.",
+     "bin goes last"
+    ],
+    [
+     "Ich weiß nicht, warum ich nicht eingeladen geworden bin.",
+     "In the passive it is worden"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-perfekt.12",
+   "concept": "passiv-perfekt",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite in the Perfekt.",
+   "prompt": "Das Problem wurde immer größer, und schließlich wurde die Firma verkauft.",
+   "answer": [
+    "Das Problem ist immer größer geworden, und schließlich ist die Firma verkauft worden."
+   ],
+   "note": "become = ist … geworden; passive = ist … worden.",
+   "strict_case": false,
+   "near": [
+    [
+     "Das Problem ist immer größer worden, und schließlich ist die Firma verkauft worden.",
+     "become (größer werden) needs geworden"
+    ],
+    [
+     "Das Problem ist immer größer geworden, und schließlich ist die Firma verkauft geworden.",
+     "In the passive it is worden"
+    ],
+    [
+     "Das Problem hat immer größer geworden, und schließlich ist die Firma verkauft worden.",
+     "werden forms its Perfekt with sein"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-von-durch.01",
+   "concept": "passiv-von-durch",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Der Brief wurde ___ Chefin unterschrieben. (von + die)",
+   "answer": [
+    "von der"
+   ],
+   "note": "Person: von + dative (die → der).",
+   "strict_case": false,
+   "near": [
+    [
+     "von die",
+     "von takes the dative: der"
+    ],
+    [
+     "durch die",
+     "A person who acts takes von"
+    ],
+    [
+     "vom",
+     "vom = von dem (masculine/neuter)"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-von-durch.02",
+   "concept": "passiv-von-durch",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Das Paket wurde ___ Nachbarn angenommen. (von + der)",
+   "answer": [
+    "vom",
+    "von dem"
+   ],
+   "note": "von + dem → vom.",
+   "strict_case": false,
+   "near": [
+    [
+     "von der",
+     "der Nachbar is masculine: von dem/vom"
+    ],
+    [
+     "von den",
+     "The bracket gives der (one neighbour): dem Nachbarn"
+    ],
+    [
+     "durch den",
+     "A person who acts takes von"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-von-durch.03",
+   "concept": "passiv-von-durch",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite in the passive. Keep the doer.",
+   "prompt": "Der Hausmeister repariert die Heizung.",
+   "answer": [
+    "Die Heizung wird vom Hausmeister repariert.",
+    "Die Heizung wird von dem Hausmeister repariert."
+   ],
+   "note": "The doer: von + dative (vom Hausmeister).",
+   "strict_case": false,
+   "near": [
+    [
+     "Die Heizung wird von den Hausmeister repariert.",
+     "von takes the dative: dem"
+    ],
+    [
+     "Die Heizung wird vom Hausmeister reparieren.",
+     "The passive needs the Partizip II"
+    ],
+    [
+     "Die Heizung wird von der Hausmeister repariert.",
+     "der Hausmeister: dative dem"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-von-durch.04",
+   "concept": "passiv-von-durch",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with „von“ or „durch“.",
+   "prompt": "Die Stadt wurde ___ ein Erdbeben zerstört.",
+   "answer": [
+    "durch"
+   ],
+   "note": "Cause or event: durch + accusative (ein Erdbeben).",
+   "strict_case": false,
+   "near": [
+    [
+     "von",
+     "von would need the dative: einem"
+    ],
+    [
+     "vom",
+     "vom does not fit before ein"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-von-durch.05",
+   "concept": "passiv-von-durch",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with „von“ or „durch“.",
+   "prompt": "Die Mail wurde ___ einer Kollegin weitergeleitet.",
+   "answer": [
+    "von"
+   ],
+   "note": "Person: von + dative (einer Kollegin).",
+   "strict_case": false,
+   "near": [
+    [
+     "durch",
+     "durch takes the accusative; for a person use von"
+    ],
+    [
+     "vom",
+     "vom does not fit before einer"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-von-durch.06",
+   "concept": "passiv-von-durch",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap with „von“ or „durch“.",
+   "prompt": "Wir wurden ___ einen Anruf geweckt.",
+   "answer": [
+    "durch"
+   ],
+   "note": "Cause: durch + accusative (einen Anruf).",
+   "strict_case": false,
+   "near": [
+    [
+     "von",
+     "von would need the dative: einem"
+    ],
+    [
+     "vom",
+     "vom does not fit before einen"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-von-durch.07",
+   "concept": "passiv-von-durch",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite in the passive, Präteritum. Use „durch“.",
+   "prompt": "Ein Kurzschluss verursachte den Brand.",
+   "answer": [
+    "Der Brand wurde durch einen Kurzschluss verursacht."
+   ],
+   "note": "Cause: durch + accusative (einen Kurzschluss).",
+   "strict_case": false,
+   "near": [
+    [
+     "Der Brand wurde durch einem Kurzschluss verursacht.",
+     "durch takes the accusative: einen"
+    ],
+    [
+     "Der Brand wurde durch ein Kurzschluss verursacht.",
+     "der Kurzschluss: accusative einen"
+    ],
+    [
+     "Der Brand wurde durch einen Kurzschluss verursachen.",
+     "The passive needs the Partizip II"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-von-durch.08",
+   "concept": "passiv-von-durch",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Das Projekt wird ___ Eltern organisiert. (von + die)",
+   "answer": [
+    "von den"
+   ],
+   "note": "Plural dative after von: den Eltern.",
+   "strict_case": false,
+   "near": [
+    [
+     "von die",
+     "von takes the dative: den"
+    ],
+    [
+     "durch die",
+     "People who act take von"
+    ],
+    [
+     "vom",
+     "vom is singular masculine/neuter"
+    ],
+    [
+     "von der",
+     "die Eltern is plural: den"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-von-durch.09",
+   "concept": "passiv-von-durch",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German, in the passive (Präteritum).",
+   "prompt": "The house was damaged by the storm.",
+   "answer": [
+    "Das Haus wurde vom Sturm beschädigt.",
+    "Das Haus wurde von dem Sturm beschädigt.",
+    "Das Haus wurde durch den Sturm beschädigt."
+   ],
+   "note": "A natural force: von + dative or durch + accusative.",
+   "strict_case": false,
+   "near": [
+    [
+     "Das Haus wurde durch dem Sturm beschädigt.",
+     "durch takes the accusative: den"
+    ],
+    [
+     "Das Haus wurde von den Sturm beschädigt.",
+     "von takes the dative: dem"
+    ],
+    [
+     "Das Haus wurde mit dem Sturm beschädigt.",
+     "The cause takes von or durch, not mit"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-von-durch.10",
+   "concept": "passiv-von-durch",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite in the passive, Präteritum. Keep the doer.",
+   "prompt": "Ein Tierarzt untersuchte den Hund.",
+   "answer": [
+    "Der Hund wurde von einem Tierarzt untersucht."
+   ],
+   "note": "Person: von + dative (einem Tierarzt).",
+   "strict_case": false,
+   "near": [
+    [
+     "Der Hund wurde von einen Tierarzt untersucht.",
+     "von takes the dative: einem"
+    ],
+    [
+     "Der Hund wurde durch ein Tierarzt untersucht.",
+     "A person takes von + dative"
+    ],
+    [
+     "Der Hund wurde vom einem Tierarzt untersucht.",
+     "vom already contains dem"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-von-durch.11",
+   "concept": "passiv-von-durch",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite in the passive. Use „durch“.",
+   "prompt": "Neue Regeln verbessern die Sicherheit.",
+   "answer": [
+    "Die Sicherheit wird durch neue Regeln verbessert."
+   ],
+   "note": "Means: durch + accusative plural (neue Regeln).",
+   "strict_case": false,
+   "near": [
+    [
+     "Die Sicherheit wird durch neuen Regeln verbessert.",
+     "durch takes the accusative: neue Regeln"
+    ],
+    [
+     "Die Sicherheit werden durch neue Regeln verbessert.",
+     "The subject is die Sicherheit: wird"
+    ],
+    [
+     "Die Sicherheit wird durch neue Regeln verbessern.",
+     "The passive needs the Partizip II"
+    ]
+   ]
+  },
+  {
+   "id": "passiv-von-durch.12",
+   "concept": "passiv-von-durch",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite in the passive, Präteritum. Keep the cause.",
+   "prompt": "Der Lärm der Baustelle störte die Nachbarn.",
+   "answer": [
+    "Die Nachbarn wurden durch den Lärm der Baustelle gestört.",
+    "Die Nachbarn wurden vom Lärm der Baustelle gestört.",
+    "Die Nachbarn wurden von dem Lärm der Baustelle gestört."
+   ],
+   "note": "A cause can take durch (accusative) or von (dative).",
+   "strict_case": false,
+   "near": [
+    [
+     "Die Nachbarn wurden durch dem Lärm der Baustelle gestört.",
+     "durch takes the accusative: den"
+    ],
+    [
+     "Die Nachbarn wurden von den Lärm der Baustelle gestört.",
+     "von takes the dative: dem"
+    ],
+    [
+     "Die Nachbarn wurde durch den Lärm der Baustelle gestört.",
+     "die Nachbarn is plural: wurden"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-passiv.01",
+   "concept": "konjunktiv-2-passiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the Konjunktiv II.",
+   "prompt": "Die Heizung ___ dringend repariert werden. (müssen)",
+   "answer": [
+    "müsste"
+   ],
+   "note": "müsste + Partizip II + werden.",
+   "strict_case": false,
+   "near": [
+    [
+     "musste",
+     "musste is the indicative past"
+    ],
+    [
+     "muss",
+     "Indicative"
+    ],
+    [
+     "müsse",
+     "Konjunktiv I"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-passiv.02",
+   "concept": "konjunktiv-2-passiv",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as an unreal condition.",
+   "prompt": "Wenn mehr Geld da ist, wird die Schule renoviert.",
+   "answer": [
+    "Wenn mehr Geld da wäre, würde die Schule renoviert werden.",
+    "Wenn mehr Geld da wäre, würde die Schule renoviert.",
+    "Wäre mehr Geld da, würde die Schule renoviert werden.",
+    "Wäre mehr Geld da, würde die Schule renoviert."
+   ],
+   "note": "Passive Konjunktiv II: würde + Partizip II (+ werden).",
+   "strict_case": false,
+   "near": [
+    [
+     "Wenn mehr Geld da wäre, wurde die Schule renoviert werden.",
+     "wurde is the indicative: würde"
+    ],
+    [
+     "Wenn mehr Geld da wäre, würde die Schule renoviert geworden.",
+     "Here the infinitive is werden"
+    ],
+    [
+     "Wenn mehr Geld da war, würde die Schule renoviert werden.",
+     "The condition is unreal too: wäre"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-passiv.03",
+   "concept": "konjunktiv-2-passiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Ohne deine Hilfe ___ das Problem nie gelöst worden. (sein)",
+   "answer": [
+    "wäre"
+   ],
+   "note": "Past passive Konjunktiv II: wäre + Partizip II + worden.",
+   "strict_case": false,
+   "near": [
+    [
+     "war",
+     "Indicative: the statement is unreal"
+    ],
+    [
+     "hätte",
+     "The passive takes sein: wäre"
+    ],
+    [
+     "würde",
+     "würde does not go with worden"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-passiv.04",
+   "concept": "konjunktiv-2-passiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "Das Problem wäre schneller gelöst ___, wenn man früher reagiert hätte.",
+   "answer": [
+    "worden"
+   ],
+   "note": "wäre … gelöst worden: the passive participle is worden.",
+   "strict_case": false,
+   "near": [
+    [
+     "geworden",
+     "In the passive it is worden"
+    ],
+    [
+     "werden",
+     "After wäre + Partizip II comes worden"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-passiv.05",
+   "concept": "konjunktiv-2-passiv",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite in the passive, keeping the modal verb.",
+   "prompt": "Man könnte die Kosten senken.",
+   "answer": [
+    "Die Kosten könnten gesenkt werden."
+   ],
+   "note": "könnte(n) + Partizip II + werden.",
+   "strict_case": false,
+   "near": [
+    [
+     "Die Kosten konnten gesenkt werden.",
+     "konnten is the indicative past"
+    ],
+    [
+     "Die Kosten könnten gesenkt worden.",
+     "After a modal the infinitive is werden"
+    ],
+    [
+     "Die Kosten könnte gesenkt werden.",
+     "die Kosten is plural: könnten"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-passiv.06",
+   "concept": "konjunktiv-2-passiv",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite in the passive, keeping the modal verb.",
+   "prompt": "Man sollte das Thema öffentlich diskutieren.",
+   "answer": [
+    "Das Thema sollte öffentlich diskutiert werden."
+   ],
+   "note": "sollte + Partizip II + werden.",
+   "strict_case": false,
+   "near": [
+    [
+     "Das Thema sollte öffentlich diskutiert worden.",
+     "After a modal the infinitive is werden"
+    ],
+    [
+     "Das Thema sollte öffentlich diskutieren werden.",
+     "The passive needs the Partizip II"
+    ],
+    [
+     "Das Thema sollte öffentlich werden diskutiert.",
+     "The Partizip II comes before werden"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-passiv.07",
+   "concept": "konjunktiv-2-passiv",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite in the Konjunktiv II of the past.",
+   "prompt": "Ohne den Rauchmelder würde das Feuer nicht bemerkt werden.",
+   "answer": [
+    "Ohne den Rauchmelder wäre das Feuer nicht bemerkt worden."
+   ],
+   "note": "würde … werden → wäre … worden.",
+   "strict_case": false,
+   "near": [
+    [
+     "Ohne den Rauchmelder hätte das Feuer nicht bemerkt worden.",
+     "The passive takes sein: wäre"
+    ],
+    [
+     "Ohne den Rauchmelder wäre das Feuer nicht bemerkt geworden.",
+     "In the passive it is worden"
+    ],
+    [
+     "Ohne den Rauchmelder würde das Feuer nicht bemerkt worden.",
+     "The past needs wäre"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-passiv.08",
+   "concept": "konjunktiv-2-passiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the Konjunktiv II.",
+   "prompt": "Der Antrag ___ früher gestellt werden müssen. (haben)",
+   "answer": [
+    "hätte"
+   ],
+   "note": "Past with a modal: hätte + Partizip II + werden + müssen.",
+   "strict_case": false,
+   "near": [
+    [
+     "hatte",
+     "hatte is the indicative: the task asks for hätte"
+    ],
+    [
+     "wäre",
+     "With a modal it is hätte"
+    ],
+    [
+     "würde",
+     "The bracket is haben: hätte"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-passiv.09",
+   "concept": "konjunktiv-2-passiv",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite in the Konjunktiv II of the past.",
+   "prompt": "Die Straße müsste repariert werden.",
+   "answer": [
+    "Die Straße hätte repariert werden müssen."
+   ],
+   "note": "müsste … werden → hätte … werden müssen.",
+   "strict_case": false,
+   "near": [
+    [
+     "Die Straße wäre repariert werden müssen.",
+     "With a modal it is hätte"
+    ],
+    [
+     "Die Straße hätte repariert werden gemusst.",
+     "With an infinitive the modal stays müssen"
+    ],
+    [
+     "Die Straße hätte repariert worden müssen.",
+     "Before a modal the infinitive is werden"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-passiv.10",
+   "concept": "konjunktiv-2-passiv",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German. Use the passive.",
+   "prompt": "The accident could have been avoided.",
+   "answer": [
+    "Der Unfall hätte vermieden werden können.",
+    "Der Unfall hätte verhindert werden können."
+   ],
+   "note": "could have been done = hätte + Partizip II + werden + können.",
+   "strict_case": false,
+   "near": [
+    [
+     "Der Unfall hätte vermieden worden können.",
+     "Before a modal the infinitive is werden"
+    ],
+    [
+     "Der Unfall wäre vermieden werden können.",
+     "With a modal it is hätte"
+    ],
+    [
+     "Der Unfall hätte vermeiden werden können.",
+     "The passive needs the Partizip II"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-passiv.11",
+   "concept": "konjunktiv-2-passiv",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with the word in brackets. Keep the order.",
+   "prompt": "Alle sind sich einig. Die Brücke hätte früher saniert werden müssen. (dass)",
+   "answer": [
+    "Alle sind sich einig, dass die Brücke früher hätte saniert werden müssen."
+   ],
+   "note": "Subordinate clause: hätte comes before Partizip II + werden + müssen.",
+   "strict_case": false,
+   "near": [
+    [
+     "Alle sind sich einig, dass die Brücke früher saniert werden müssen hätte.",
+     "hätte goes before the infinitives"
+    ],
+    [
+     "Alle sind sich einig, dass die Brücke früher hätte saniert worden müssen.",
+     "Before a modal the infinitive is werden"
+    ],
+    [
+     "Alle sind sich einig, dass die Brücke früher hätte saniert werden gemusst.",
+     "With an infinitive the modal stays müssen"
+    ]
+   ]
+  },
+  {
+   "id": "konjunktiv-2-passiv.12",
+   "concept": "konjunktiv-2-passiv",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as one unreal sentence starting with „Wenn“.",
+   "prompt": "Die Kunden wurden nicht rechtzeitig informiert. Deshalb gab es Beschwerden.",
+   "answer": [
+    "Wenn die Kunden rechtzeitig informiert worden wären, hätte es keine Beschwerden gegeben.",
+    "Wenn die Kunden rechtzeitig informiert worden wären, dann hätte es keine Beschwerden gegeben."
+   ],
+   "note": "Past passive in the wenn-clause: informiert worden wären.",
+   "strict_case": false,
+   "near": [
+    [
+     "Wenn die Kunden rechtzeitig informiert geworden wären, hätte es keine Beschwerden gegeben.",
+     "In the passive it is worden"
+    ],
+    [
+     "Wenn die Kunden rechtzeitig informiert wären worden, hätte es keine Beschwerden gegeben.",
+     "wären goes last"
+    ],
+    [
+     "Wenn die Kunden rechtzeitig informiert worden hätten, hätte es keine Beschwerden gegeben.",
+     "The passive takes sein: wären"
+    ]
+   ]
+  },
+  {
+   "id": "indirekte-rede-ersatz.01",
+   "concept": "indirekte-rede-ersatz",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as reported speech in the Konjunktiv, as in a written report.",
+   "prompt": "Die Nachbarn sagen: „Wir haben keine Zeit.“",
+   "answer": [
+    "Die Nachbarn sagen, sie hätten keine Zeit.",
+    "Die Nachbarn sagen, dass sie keine Zeit hätten."
+   ],
+   "note": "sie haben (Konj. I) = indicative, so use Konjunktiv II: hätten.",
+   "strict_case": false,
+   "near": [
+    [
+     "Die Nachbarn sagen, sie hatten keine Zeit.",
+     "hatten is the indicative past"
+    ],
+    [
+     "Die Nachbarn sagen, sie würden keine Zeit haben.",
+     "haben uses hätten, not würden haben"
+    ],
+    [
+     "Die Nachbarn sagen, wir hätten keine Zeit.",
+     "Shift the pronoun: wir → sie"
+    ]
+   ]
+  },
+  {
+   "id": "indirekte-rede-ersatz.02",
+   "concept": "indirekte-rede-ersatz",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the Konjunktiv, as in a written report.",
+   "prompt": "Die Kinder sagen, sie ___ Hunger. (haben)",
+   "answer": [
+    "hätten"
+   ],
+   "note": "sie haben looks like the indicative → hätten.",
+   "strict_case": false,
+   "near": [
+    [
+     "haben",
+     "Konjunktiv I here looks like the indicative: use hätten"
+    ],
+    [
+     "hatten",
+     "hatten is the indicative past"
+    ],
+    [
+     "habe",
+     "sie (plural) is not habe"
+    ]
+   ]
+  },
+  {
+   "id": "indirekte-rede-ersatz.03",
+   "concept": "indirekte-rede-ersatz",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the Konjunktiv, as in a written report.",
+   "prompt": "Er erzählt, seine Eltern ___ morgen. (kommen)",
+   "answer": [
+    "kämen"
+   ],
+   "note": "sie kommen looks like the indicative → kämen (or: würden morgen kommen).",
+   "strict_case": false,
+   "near": [
+    [
+     "kommen",
+     "Konjunktiv I here looks like the indicative: use kämen"
+    ],
+    [
+     "kamen",
+     "kamen is the indicative past"
+    ],
+    [
+     "komme",
+     "seine Eltern is plural"
+    ]
+   ]
+  },
+  {
+   "id": "indirekte-rede-ersatz.04",
+   "concept": "indirekte-rede-ersatz",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as reported speech in the Konjunktiv, as in a written report.",
+   "prompt": "Meine Kollegen sagen: „Wir arbeiten am Wochenende.“",
+   "answer": [
+    "Meine Kollegen sagen, sie würden am Wochenende arbeiten.",
+    "Meine Kollegen sagen, dass sie am Wochenende arbeiten würden."
+   ],
+   "note": "Weak verb: arbeiten/arbeiteten both look like the indicative → würden + infinitive.",
+   "strict_case": false,
+   "near": [
+    [
+     "Meine Kollegen sagen, sie wurden am Wochenende arbeiten.",
+     "wurden is the indicative: würden"
+    ],
+    [
+     "Meine Kollegen sagen, wir würden am Wochenende arbeiten.",
+     "Shift the pronoun: wir → sie"
+    ],
+    [
+     "Meine Kollegen sagen, dass sie würden am Wochenende arbeiten.",
+     "In a dass-clause würden goes last"
+    ]
+   ]
+  },
+  {
+   "id": "indirekte-rede-ersatz.05",
+   "concept": "indirekte-rede-ersatz",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as reported speech with Konjunktiv I.",
+   "prompt": "Der Arzt sagt: „Der Patient hat Fieber.“",
+   "answer": [
+    "Der Arzt sagt, der Patient habe Fieber.",
+    "Der Arzt sagt, dass der Patient Fieber habe."
+   ],
+   "note": "er/sie/es habe differs from the indicative, so Konjunktiv I stays.",
+   "strict_case": false,
+   "near": [
+    [
+     "Der Arzt sagt, der Patient hätte Fieber.",
+     "The task asks for Konjunktiv I: habe"
+    ],
+    [
+     "Der Arzt sagt, der Patient haben Fieber.",
+     "der Patient is singular: habe"
+    ],
+    [
+     "Der Arzt sagt, dass der Patient habe Fieber.",
+     "In a dass-clause habe goes last"
+    ]
+   ]
+  },
+  {
+   "id": "indirekte-rede-ersatz.06",
+   "concept": "indirekte-rede-ersatz",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the Konjunktiv, as in a written report.",
+   "prompt": "Die Mitarbeiter sagen, sie ___ nicht länger warten. (können)",
+   "answer": [
+    "könnten"
+   ],
+   "note": "sie können looks like the indicative → könnten.",
+   "strict_case": false,
+   "near": [
+    [
+     "können",
+     "Konjunktiv I here looks like the indicative: use könnten"
+    ],
+    [
+     "konnten",
+     "konnten is the indicative past"
+    ],
+    [
+     "könne",
+     "die Mitarbeiter is plural"
+    ]
+   ]
+  },
+  {
+   "id": "indirekte-rede-ersatz.07",
+   "concept": "indirekte-rede-ersatz",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as reported speech in the Konjunktiv, as in a written report.",
+   "prompt": "Ich sagte zu ihm: „Ich komme später.“",
+   "answer": [
+    "Ich sagte zu ihm, ich käme später.",
+    "Ich sagte zu ihm, ich würde später kommen.",
+    "Ich sagte zu ihm, dass ich später käme.",
+    "Ich sagte zu ihm, dass ich später kommen würde."
+   ],
+   "note": "ich komme looks like the indicative → käme or würde kommen.",
+   "strict_case": false,
+   "near": [
+    [
+     "Ich sagte zu ihm, ich kam später.",
+     "kam is the indicative past"
+    ],
+    [
+     "Ich sagte zu ihm, ich wurde später kommen.",
+     "wurde is the indicative: würde"
+    ],
+    [
+     "Ich sagte zu ihm, dass ich später kommen wurde.",
+     "wurde is the indicative: würde"
+    ]
+   ]
+  },
+  {
+   "id": "indirekte-rede-ersatz.08",
+   "concept": "indirekte-rede-ersatz",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the Konjunktiv, as in a written report.",
+   "prompt": "Die Gäste behaupten, sie ___ nichts davon gewusst. (haben)",
+   "answer": [
+    "hätten"
+   ],
+   "note": "Past in reported speech: hätten + Partizip II (sie haben = indicative).",
+   "strict_case": false,
+   "near": [
+    [
+     "haben",
+     "Konjunktiv I here looks like the indicative: use hätten"
+    ],
+    [
+     "hatten",
+     "hatten is the indicative past"
+    ],
+    [
+     "wären",
+     "wissen forms its past with haben"
+    ]
+   ]
+  },
+  {
+   "id": "indirekte-rede-ersatz.09",
+   "concept": "indirekte-rede-ersatz",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the Konjunktiv I.",
+   "prompt": "Die Firma teilt mit, der Server ___ wieder in Betrieb. (sein)",
+   "answer": [
+    "sei"
+   ],
+   "note": "sei differs from ist, so Konjunktiv I is used, not wäre.",
+   "strict_case": false,
+   "near": [
+    [
+     "wäre",
+     "The task asks for Konjunktiv I: sei"
+    ],
+    [
+     "ist",
+     "ist is the indicative"
+    ],
+    [
+     "seie",
+     "The form is sei"
+    ]
+   ]
+  },
+  {
+   "id": "indirekte-rede-ersatz.10",
+   "concept": "indirekte-rede-ersatz",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German, in the Konjunktiv.",
+   "prompt": "They said they had no time.",
+   "answer": [
+    "Sie sagten, sie hätten keine Zeit.",
+    "Sie sagten, dass sie keine Zeit hätten.",
+    "Sie haben gesagt, sie hätten keine Zeit.",
+    "Sie haben gesagt, dass sie keine Zeit hätten."
+   ],
+   "note": "Reported speech: sie hätten (sie haben would look like the indicative).",
+   "strict_case": false,
+   "near": [
+    [
+     "Sie sagten, sie hatten keine Zeit.",
+     "hatten is the indicative past"
+    ],
+    [
+     "Sie sagten, sie würden keine Zeit haben.",
+     "haben uses hätten, not würden haben"
+    ],
+    [
+     "Sie sagten, dass sie hätten keine Zeit.",
+     "In a dass-clause hätten goes last"
+    ]
+   ]
+  },
+  {
+   "id": "indirekte-rede-ersatz.11",
+   "concept": "indirekte-rede-ersatz",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as reported speech in the Konjunktiv, as in a written report.",
+   "prompt": "Die Schüler sagen: „Wir haben das Buch gelesen.“",
+   "answer": [
+    "Die Schüler sagen, sie hätten das Buch gelesen.",
+    "Die Schüler sagen, dass sie das Buch gelesen hätten."
+   ],
+   "note": "Past: hätten + Partizip II (sie haben = indicative).",
+   "strict_case": false,
+   "near": [
+    [
+     "Die Schüler sagen, sie hatten das Buch gelesen.",
+     "hatten is the indicative past"
+    ],
+    [
+     "Die Schüler sagen, sie würden das Buch gelesen haben.",
+     "The past needs hätten + Partizip II"
+    ],
+    [
+     "Die Schüler sagen, wir hätten das Buch gelesen.",
+     "Shift the pronoun: wir → sie"
+    ]
+   ]
+  },
+  {
+   "id": "indirekte-rede-ersatz.12",
+   "concept": "indirekte-rede-ersatz",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite as reported speech in the Konjunktiv, as in a written report.",
+   "prompt": "Die Experten sagen: „Die Preise steigen weiter.“",
+   "answer": [
+    "Die Experten sagen, die Preise würden weiter steigen.",
+    "Die Experten sagen, dass die Preise weiter steigen würden.",
+    "Die Experten sagen, die Preise würden weitersteigen.",
+    "Die Experten sagen, dass die Preise weitersteigen würden."
+   ],
+   "note": "steigen and stiegen both look like the indicative → würden + infinitive.",
+   "strict_case": false,
+   "near": [
+    [
+     "Die Experten sagen, die Preise wurden weiter steigen.",
+     "wurden is the indicative: würden"
+    ],
+    [
+     "Die Experten sagen, die Preise stiegten weiter.",
+     "No such form"
+    ],
+    [
+     "Die Experten sagen, dass die Preise würden weiter steigen.",
+     "In a dass-clause würden goes last"
+    ]
+   ]
+  },
+  {
+   "id": "indirekte-rede-fragen-aufforderungen.01",
+   "concept": "indirekte-rede-fragen-aufforderungen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Report the question.",
+   "prompt": "Er fragt mich: „Hast du heute Zeit?“",
+   "answer": [
+    "Er fragt mich, ob ich heute Zeit habe.",
+    "Er fragt mich, ob ich heute Zeit hätte."
+   ],
+   "note": "Yes/no question → ob, verb last; du → ich.",
+   "strict_case": false,
+   "near": [
+    [
+     "Er fragt mich, dass ich heute Zeit habe.",
+     "A reported question takes ob, not dass"
+    ],
+    [
+     "Er fragt mich, ob ich habe heute Zeit.",
+     "After ob the verb goes last"
+    ],
+    [
+     "Er fragt mich, ob hast du heute Zeit.",
+     "After ob the verb goes last, and du → ich"
+    ]
+   ]
+  },
+  {
+   "id": "indirekte-rede-fragen-aufforderungen.02",
+   "concept": "indirekte-rede-fragen-aufforderungen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Fill the gap.",
+   "prompt": "Die Kundin will wissen, ___ das Angebot noch gilt.",
+   "answer": [
+    "ob"
+   ],
+   "note": "Reported yes/no question: ob.",
+   "strict_case": false,
+   "near": [
+    [
+     "dass",
+     "A reported question takes ob"
+    ],
+    [
+     "wenn",
+     "In standard German a reported question takes ob"
+    ]
+   ]
+  },
+  {
+   "id": "indirekte-rede-fragen-aufforderungen.03",
+   "concept": "indirekte-rede-fragen-aufforderungen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Report the question in the Konjunktiv I. Start with „Sie fragt,“.",
+   "prompt": "Sie fragt: „Wann beginnt der Kurs?“",
+   "answer": [
+    "Sie fragt, wann der Kurs beginne."
+   ],
+   "note": "w-question: the question word, then the verb last (beginne).",
+   "strict_case": false,
+   "near": [
+    [
+     "Sie fragt, wann beginne der Kurs.",
+     "After the question word the verb goes last"
+    ],
+    [
+     "Sie fragt, ob wann der Kurs beginne.",
+     "A w-question keeps its question word, no ob"
+    ],
+    [
+     "Sie fragt, dass der Kurs wann beginne.",
+     "A reported question never takes dass"
+    ]
+   ]
+  },
+  {
+   "id": "indirekte-rede-fragen-aufforderungen.04",
+   "concept": "indirekte-rede-fragen-aufforderungen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Report the request in the Konjunktiv I with „sollen“. Start with „Der Arzt sagt,“.",
+   "prompt": "Der Arzt sagt zu mir: „Trinken Sie mehr Wasser!“",
+   "answer": [
+    "Der Arzt sagt, ich solle mehr Wasser trinken.",
+    "Der Arzt sagt, dass ich mehr Wasser trinken solle."
+   ],
+   "note": "Imperative → sollen: ich solle + infinitive.",
+   "strict_case": false,
+   "near": [
+    [
+     "Der Arzt sagt, Sie trinken mehr Wasser.",
+     "A reported command needs sollen"
+    ],
+    [
+     "Der Arzt sagt, dass ich solle mehr Wasser trinken.",
+     "In a dass-clause solle goes last"
+    ],
+    [
+     "Der Arzt sagt, ich sollen mehr Wasser trinken.",
+     "ich needs solle"
+    ]
+   ]
+  },
+  {
+   "id": "indirekte-rede-fragen-aufforderungen.05",
+   "concept": "indirekte-rede-fragen-aufforderungen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the Konjunktiv, as in a written report.",
+   "prompt": "Die Chefin sagt, wir ___ den Bericht bis Freitag schicken. (sollen)",
+   "answer": [
+    "sollten"
+   ],
+   "note": "wir sollen looks like the indicative → sollten.",
+   "strict_case": false,
+   "near": [
+    [
+     "sollen",
+     "Konjunktiv I here looks like the indicative: use sollten"
+    ],
+    [
+     "solle",
+     "wir needs a plural form"
+    ],
+    [
+     "sollte",
+     "wir needs sollten"
+    ]
+   ]
+  },
+  {
+   "id": "indirekte-rede-fragen-aufforderungen.06",
+   "concept": "indirekte-rede-fragen-aufforderungen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Report the polite request with „mögen“. Start with „Frau Berger lässt ausrichten, er“.",
+   "prompt": "Frau Berger zu Herrn Wolf: „Bitte rufen Sie mich zurück.“",
+   "answer": [
+    "Frau Berger lässt ausrichten, er möge sie zurückrufen.",
+    "Frau Berger lässt ausrichten, er möge sie bitte zurückrufen.",
+    "Frau Berger lässt ausrichten, er möchte sie zurückrufen.",
+    "Frau Berger lässt ausrichten, er möchte sie bitte zurückrufen."
+   ],
+   "note": "Polite request: er möge + infinitive; mich → sie.",
+   "strict_case": false,
+   "near": [
+    [
+     "Frau Berger lässt ausrichten, er mag sie zurückrufen.",
+     "A request needs Konjunktiv I: möge"
+    ],
+    [
+     "Frau Berger lässt ausrichten, er möge mich zurückrufen.",
+     "Shift the pronoun: mich → sie"
+    ],
+    [
+     "Frau Berger lässt ausrichten, er möge sie zurückruft.",
+     "After möge comes the infinitive"
+    ]
+   ]
+  },
+  {
+   "id": "indirekte-rede-fragen-aufforderungen.07",
+   "concept": "indirekte-rede-fragen-aufforderungen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the Konjunktiv.",
+   "prompt": "Er wollte wissen, wo ich so gut Deutsch gelernt ___. (haben)",
+   "answer": [
+    "habe",
+    "hätte"
+   ],
+   "note": "w-question: Partizip II + habe/hätte at the end.",
+   "strict_case": false,
+   "near": [
+    [
+     "hat",
+     "ich needs habe or hätte"
+    ],
+    [
+     "hatte",
+     "The task asks for the Konjunktiv: habe or hätte"
+    ],
+    [
+     "wäre",
+     "lernen forms its past with haben"
+    ]
+   ]
+  },
+  {
+   "id": "indirekte-rede-fragen-aufforderungen.08",
+   "concept": "indirekte-rede-fragen-aufforderungen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Report the question. Start with „Sie fragte mich,“ and use „am nächsten Tag“.",
+   "prompt": "„Hast du morgen Zeit?“",
+   "answer": [
+    "Sie fragte mich, ob ich am nächsten Tag Zeit habe.",
+    "Sie fragte mich, ob ich am nächsten Tag Zeit hätte."
+   ],
+   "note": "ob + verb last; du → ich, morgen → am nächsten Tag.",
+   "strict_case": false,
+   "near": [
+    [
+     "Sie fragte mich, ob du am nächsten Tag Zeit hast.",
+     "Shift the pronoun: du → ich"
+    ],
+    [
+     "Sie fragte mich, dass ich am nächsten Tag Zeit habe.",
+     "A reported question takes ob"
+    ],
+    [
+     "Sie fragte mich, ob ich hätte am nächsten Tag Zeit.",
+     "After ob the verb goes last"
+    ]
+   ]
+  },
+  {
+   "id": "indirekte-rede-fragen-aufforderungen.09",
+   "concept": "indirekte-rede-fragen-aufforderungen",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German, in the Konjunktiv.",
+   "prompt": "He asks whether we are coming.",
+   "answer": [
+    "Er fragt, ob wir kämen.",
+    "Er fragt, ob wir kommen würden.",
+    "Er fragt, ob wir mitkämen.",
+    "Er fragt, ob wir mitkommen würden."
+   ],
+   "note": "wir kommen looks like the indicative → kämen / kommen würden.",
+   "strict_case": false,
+   "near": [
+    [
+     "Er fragt, dass wir kommen würden.",
+     "A reported question takes ob"
+    ],
+    [
+     "Er fragt, ob wir würden kommen.",
+     "After ob würden goes last"
+    ],
+    [
+     "Er fragt, ob wir kamen.",
+     "kamen is the indicative past"
+    ]
+   ]
+  },
+  {
+   "id": "indirekte-rede-fragen-aufforderungen.10",
+   "concept": "indirekte-rede-fragen-aufforderungen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Report the instruction in the Konjunktiv I with „sollen“. Start with „Die Lehrerin sagt,“.",
+   "prompt": "Die Lehrerin sagt zu Tom: „Vergiss deine Hausaufgaben nicht!“",
+   "answer": [
+    "Die Lehrerin sagt, er solle seine Hausaufgaben nicht vergessen.",
+    "Die Lehrerin sagt, dass er seine Hausaufgaben nicht vergessen solle.",
+    "Die Lehrerin sagt, Tom solle seine Hausaufgaben nicht vergessen.",
+    "Die Lehrerin sagt, dass Tom seine Hausaufgaben nicht vergessen solle."
+   ],
+   "note": "Imperative → er solle + infinitive; deine → seine.",
+   "strict_case": false,
+   "near": [
+    [
+     "Die Lehrerin sagt, er solle deine Hausaufgaben nicht vergessen.",
+     "Shift the pronoun: deine → seine"
+    ],
+    [
+     "Die Lehrerin sagt, dass er solle seine Hausaufgaben nicht vergessen.",
+     "In a dass-clause solle goes last"
+    ],
+    [
+     "Die Lehrerin sagt, er solle seine Hausaufgaben vergessen nicht.",
+     "nicht comes before the infinitive"
+    ]
+   ]
+  },
+  {
+   "id": "indirekte-rede-fragen-aufforderungen.11",
+   "concept": "indirekte-rede-fragen-aufforderungen",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the Konjunktiv I.",
+   "prompt": "Er fragte, ob er das Fenster öffnen ___. (dürfen)",
+   "answer": [
+    "dürfe"
+   ],
+   "note": "er dürfe: Konjunktiv I of dürfen.",
+   "strict_case": false,
+   "near": [
+    [
+     "darf",
+     "darf is the indicative"
+    ],
+    [
+     "durfte",
+     "durfte is the indicative past"
+    ],
+    [
+     "dürfte",
+     "The task asks for Konjunktiv I: dürfe"
+    ]
+   ]
+  },
+  {
+   "id": "indirekte-rede-fragen-aufforderungen.12",
+   "concept": "indirekte-rede-fragen-aufforderungen",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Report the question in the Konjunktiv. Start with „Die Nachbarn fragten uns,“.",
+   "prompt": "„Warum habt ihr uns nicht eingeladen?“",
+   "answer": [
+    "Die Nachbarn fragten uns, warum wir sie nicht eingeladen hätten."
+   ],
+   "note": "warum + verb last; ihr → wir, uns → sie; wir haben → hätten.",
+   "strict_case": false,
+   "near": [
+    [
+     "Die Nachbarn fragten uns, warum ihr uns nicht eingeladen habt.",
+     "Shift the pronouns: ihr → wir, uns → sie"
+    ],
+    [
+     "Die Nachbarn fragten uns, warum hätten wir sie nicht eingeladen.",
+     "After warum the verb goes last"
+    ],
+    [
+     "Die Nachbarn fragten uns, warum wir sie nicht eingeladen hatten.",
+     "hatten is the indicative past"
+    ]
+   ]
+  },
+  {
+   "id": "ersatzinfinitiv.01",
+   "concept": "ersatzinfinitiv",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite in the Perfekt.",
+   "prompt": "Ich musste lange warten.",
+   "answer": [
+    "Ich habe lange warten müssen."
+   ],
+   "note": "Modal + infinitive in the Perfekt: habe … warten müssen.",
+   "strict_case": false,
+   "near": [
+    [
+     "Ich habe lange warten gemusst.",
+     "With an infinitive the modal stays müssen"
+    ],
+    [
+     "Ich habe lange gewartet müssen.",
+     "The main verb stays an infinitive: warten"
+    ],
+    [
+     "Ich bin lange warten müssen.",
+     "Modal verbs take haben"
+    ]
+   ]
+  },
+  {
+   "id": "ersatzinfinitiv.02",
+   "concept": "ersatzinfinitiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Wir haben gestern nicht kommen ___. (können)",
+   "answer": [
+    "können"
+   ],
+   "note": "haben + infinitive + können (not gekonnt).",
+   "strict_case": false,
+   "near": [
+    [
+     "gekonnt",
+     "With an infinitive the modal stays können"
+    ],
+    [
+     "konnten",
+     "Only one finite verb: haben"
+    ],
+    [
+     "könnten",
+     "Only one finite verb: haben"
+    ]
+   ]
+  },
+  {
+   "id": "ersatzinfinitiv.03",
+   "concept": "ersatzinfinitiv",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite in the Perfekt.",
+   "prompt": "Sie ließ das Auto reparieren.",
+   "answer": [
+    "Sie hat das Auto reparieren lassen."
+   ],
+   "note": "lassen + infinitive in the Perfekt: hat … reparieren lassen.",
+   "strict_case": false,
+   "near": [
+    [
+     "Sie hat das Auto reparieren gelassen.",
+     "With an infinitive it is lassen, not gelassen"
+    ],
+    [
+     "Sie hat das Auto repariert lassen.",
+     "The main verb stays an infinitive: reparieren"
+    ],
+    [
+     "Sie ist das Auto reparieren lassen.",
+     "lassen takes haben"
+    ]
+   ]
+  },
+  {
+   "id": "ersatzinfinitiv.04",
+   "concept": "ersatzinfinitiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Ich habe das wirklich nicht ___. (wollen)",
+   "answer": [
+    "gewollt"
+   ],
+   "note": "No other infinitive: the normal Partizip II gewollt.",
+   "strict_case": false,
+   "near": [
+    [
+     "wollen",
+     "wollen is only used next to another infinitive"
+    ],
+    [
+     "gewolltet",
+     "The form is gewollt"
+    ]
+   ]
+  },
+  {
+   "id": "ersatzinfinitiv.05",
+   "concept": "ersatzinfinitiv",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite in the Perfekt.",
+   "prompt": "Wir sahen ihn kommen.",
+   "answer": [
+    "Wir haben ihn kommen sehen.",
+    "Wir haben ihn kommen gesehen."
+   ],
+   "note": "sehen + infinitive: kommen sehen (kommen gesehen is also correct).",
+   "strict_case": false,
+   "near": [
+    [
+     "Wir haben ihn gekommen sehen.",
+     "The main verb stays an infinitive: kommen"
+    ],
+    [
+     "Wir sind ihn kommen sehen.",
+     "sehen takes haben"
+    ],
+    [
+     "Wir haben ihn kommen gesieht.",
+     "The participle is gesehen"
+    ]
+   ]
+  },
+  {
+   "id": "ersatzinfinitiv.06",
+   "concept": "ersatzinfinitiv",
+   "level": "B2",
+   "kind": "join",
+   "task": "Join the two sentences with the word in brackets. Keep the order.",
+   "prompt": "Er kam zu spät. Er hat noch arbeiten müssen. (weil)",
+   "answer": [
+    "Er kam zu spät, weil er noch hat arbeiten müssen."
+   ],
+   "note": "Subordinate clause: hat comes before both infinitives.",
+   "strict_case": false,
+   "near": [
+    [
+     "Er kam zu spät, weil er noch arbeiten müssen hat.",
+     "hat goes before both infinitives"
+    ],
+    [
+     "Er kam zu spät, weil er noch arbeiten gemusst hat.",
+     "With an infinitive the modal stays müssen"
+    ],
+    [
+     "Er kam zu spät, weil er noch hat gearbeitet müssen.",
+     "The main verb stays an infinitive: arbeiten"
+    ]
+   ]
+  },
+  {
+   "id": "ersatzinfinitiv.07",
+   "concept": "ersatzinfinitiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Es tut mir leid, dass ich dich gestern ___ warten lassen. (haben)",
+   "answer": [
+    "habe"
+   ],
+   "note": "dass-clause: habe before warten lassen.",
+   "strict_case": false,
+   "near": [
+    [
+     "hat",
+     "ich needs habe"
+    ],
+    [
+     "bin",
+     "lassen takes haben"
+    ]
+   ]
+  },
+  {
+   "id": "ersatzinfinitiv.08",
+   "concept": "ersatzinfinitiv",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite in the Perfekt. Keep the order.",
+   "prompt": "Ich glaube, dass sie nicht mitkommen wollte.",
+   "answer": [
+    "Ich glaube, dass sie nicht hat mitkommen wollen."
+   ],
+   "note": "dass-clause: hat + infinitive + wollen.",
+   "strict_case": false,
+   "near": [
+    [
+     "Ich glaube, dass sie nicht mitkommen wollen hat.",
+     "hat goes before both infinitives"
+    ],
+    [
+     "Ich glaube, dass sie nicht hat mitkommen gewollt.",
+     "With an infinitive the modal stays wollen"
+    ],
+    [
+     "Ich glaube, dass sie nicht mitkommen gewollt hat.",
+     "With an infinitive the modal stays wollen"
+    ]
+   ]
+  },
+  {
+   "id": "ersatzinfinitiv.09",
+   "concept": "ersatzinfinitiv",
+   "level": "B2",
+   "kind": "translate",
+   "task": "Translate into German, in the Perfekt.",
+   "prompt": "I had to cancel the appointment.",
+   "answer": [
+    "Ich habe den Termin absagen müssen."
+   ],
+   "note": "had to (Perfekt) = habe + infinitive + müssen.",
+   "strict_case": false,
+   "near": [
+    [
+     "Ich habe den Termin absagen gemusst.",
+     "With an infinitive the modal stays müssen"
+    ],
+    [
+     "Ich habe den Termin abgesagt müssen.",
+     "The main verb stays an infinitive: absagen"
+    ],
+    [
+     "Ich habe müssen den Termin absagen.",
+     "The infinitives go to the end"
+    ]
+   ]
+  },
+  {
+   "id": "ersatzinfinitiv.10",
+   "concept": "ersatzinfinitiv",
+   "level": "B2",
+   "kind": "order",
+   "task": "Put the words in order. Start with „Ich weiß nicht, warum“.",
+   "prompt": "wir / haben / so früh / gehen / müssen",
+   "answer": [
+    "Ich weiß nicht, warum wir so früh haben gehen müssen."
+   ],
+   "note": "w-clause: haben before gehen müssen.",
+   "strict_case": false,
+   "near": [
+    [
+     "Ich weiß nicht, warum wir so früh gehen müssen haben.",
+     "haben goes before both infinitives"
+    ],
+    [
+     "Ich weiß nicht, warum haben wir so früh gehen müssen.",
+     "In the w-clause the subject comes first"
+    ],
+    [
+     "Ich weiß nicht, warum wir so früh haben gehen gemusst.",
+     "With an infinitive the modal stays müssen"
+    ]
+   ]
+  },
+  {
+   "id": "ersatzinfinitiv.11",
+   "concept": "ersatzinfinitiv",
+   "level": "B2",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Wir haben die Fenster putzen ___. (lassen)",
+   "answer": [
+    "lassen"
+   ],
+   "note": "haben + infinitive + lassen (not gelassen).",
+   "strict_case": false,
+   "near": [
+    [
+     "gelassen",
+     "With an infinitive it is lassen, not gelassen"
+    ],
+    [
+     "ließen",
+     "Only one finite verb: haben"
+    ]
+   ]
+  },
+  {
+   "id": "ersatzinfinitiv.12",
+   "concept": "ersatzinfinitiv",
+   "level": "B2",
+   "kind": "transform",
+   "task": "Rewrite in the Plusquamperfekt. Keep the order.",
+   "prompt": "Er war müde, weil er die ganze Nacht arbeiten musste.",
+   "answer": [
+    "Er war müde, weil er die ganze Nacht hatte arbeiten müssen."
+   ],
+   "note": "Plusquamperfekt: hatte + infinitive + müssen, hatte before both.",
+   "strict_case": false,
+   "near": [
+    [
+     "Er war müde, weil er die ganze Nacht arbeiten müssen hatte.",
+     "hatte goes before both infinitives"
+    ],
+    [
+     "Er war müde, weil er die ganze Nacht hatte arbeiten gemusst.",
+     "With an infinitive the modal stays müssen"
+    ],
+    [
+     "Er war müde, weil er die ganze Nacht arbeiten gemusst hatte.",
+     "With an infinitive the modal stays müssen"
+    ]
+   ]
+  },
+  {
+   "id": "irreale-vergleichssaetze.01",
+   "concept": "irreale-vergleichssaetze",
+   "level": "C1",
+   "kind": "join",
+   "task": "Join the two sentences with the word in brackets. Keep the order.",
+   "prompt": "Er tut so. Er weiß alles. (als ob)",
+   "answer": [
+    "Er tut so, als ob er alles wüsste.",
+    "Er tut so, als ob er alles wissen würde.",
+    "Er tut so, als ob er alles wisse."
+   ],
+   "note": "als ob + Konjunktiv II, verb last.",
+   "strict_case": false,
+   "near": [
+    [
+     "Er tut so, als ob er wüsste alles.",
+     "With als ob the verb goes last"
+    ],
+    [
+     "Er tut so, als ob er alles wusste.",
+     "wusste is the indicative past"
+    ],
+    [
+     "Er tut so, als ob wüsste er alles.",
+     "With als ob the verb goes last"
+    ]
+   ]
+  },
+  {
+   "id": "irreale-vergleichssaetze.02",
+   "concept": "irreale-vergleichssaetze",
+   "level": "C1",
+   "kind": "transform",
+   "task": "Rewrite with „als“ instead of „als ob“.",
+   "prompt": "Sie sieht aus, als ob sie müde wäre.",
+   "answer": [
+    "Sie sieht aus, als wäre sie müde."
+   ],
+   "note": "With als the verb comes right after it.",
+   "strict_case": false,
+   "near": [
+    [
+     "Sie sieht aus, als sie müde wäre.",
+     "After als the verb comes right after it"
+    ],
+    [
+     "Sie sieht aus, als war sie müde.",
+     "war is the indicative"
+    ]
+   ]
+  },
+  {
+   "id": "irreale-vergleichssaetze.03",
+   "concept": "irreale-vergleichssaetze",
+   "level": "C1",
+   "kind": "join",
+   "task": "Join the two sentences with the word in brackets. Keep the order.",
+   "prompt": "Du tust so. Du hast keine Zeit. (als)",
+   "answer": [
+    "Du tust so, als hättest du keine Zeit."
+   ],
+   "note": "als + Konjunktiv II + subject.",
+   "strict_case": false,
+   "near": [
+    [
+     "Du tust so, als du hättest keine Zeit.",
+     "After als the verb comes right after it"
+    ],
+    [
+     "Du tust so, als hattest du keine Zeit.",
+     "hattest is the indicative"
+    ]
+   ]
+  },
+  {
+   "id": "irreale-vergleichssaetze.04",
+   "concept": "irreale-vergleichssaetze",
+   "level": "C1",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Er redet, als ob er der Chef ___. (sein)",
+   "answer": [
+    "wäre",
+    "sei"
+   ],
+   "note": "als ob + wäre (written also: sei), verb last.",
+   "strict_case": false,
+   "near": [
+    [
+     "war",
+     "war is the indicative: the comparison is unreal"
+    ],
+    [
+     "wären",
+     "er needs wäre"
+    ]
+   ]
+  },
+  {
+   "id": "irreale-vergleichssaetze.05",
+   "concept": "irreale-vergleichssaetze",
+   "level": "C1",
+   "kind": "gap",
+   "task": "Write the word in brackets in the right form.",
+   "prompt": "Es sieht aus, als ___ es gleich regnen. (werden)",
+   "answer": [
+    "würde",
+    "werde"
+   ],
+   "note": "als + würde + infinitive.",
+   "strict_case": false,
+   "near": [
+    [
+     "wurde",
+     "wurde is the indicative past"
+    ],
+    [
+     "wird",
+     "Indicative: the comparison is unreal"
+    ],
+    [
+     "würden",
+     "es needs würde"
+    ]
+   ]
+  },
+  {
+   "id": "irreale-vergleichssaetze.06",
+   "concept": "irreale-vergleichssaetze",
+   "level": "C1",
+   "kind": "join",
+   "task": "Join the two sentences with the word in brackets. Keep the order.",
+   "prompt": "Sie tut so. Es ist nichts gewesen. (als ob)",
+   "answer": [
+    "Sie tut so, als ob nichts gewesen wäre.",
+    "Sie tut so, als ob nichts gewesen sei.",
+    "Sie tut so, als ob es nichts gewesen wäre.",
+    "Sie tut so, als ob es nichts gewesen sei."
+   ],
+   "note": "Past: wäre (written also: sei) + gewesen; als ob nichts gewesen wäre = as if nothing had happened.",
+   "strict_case": false,
+   "near": [
+    [
+     "Sie tut so, als ob nichts gewesen hätte.",
+     "sein forms its past with sein: wäre"
+    ],
+    [
+     "Sie tut so, als ob nichts gewesen war.",
+     "war is the indicative"
+    ],
+    [
+     "Sie tut so, als ob nichts wäre gewesen.",
+     "With als ob the verb goes last"
+    ]
+   ]
+  },
+  {
+   "id": "irreale-vergleichssaetze.07",
+   "concept": "irreale-vergleichssaetze",
+   "level": "C1",
+   "kind": "transform",
+   "task": "Rewrite with „als ob“ instead of „als“.",
+   "prompt": "Er benimmt sich, als wäre er zu Hause.",
+   "answer": [
+    "Er benimmt sich, als ob er zu Hause wäre.",
+    "Er benimmt sich, als ob er zuhause wäre."
+   ],
+   "note": "als ob sends the verb to the end.",
+   "strict_case": false,
+   "near": [
+    [
+     "Er benimmt sich, als ob er wäre zu Hause.",
+     "With als ob the verb goes last"
+    ],
+    [
+     "Er benimmt sich, als ob wäre er zu Hause.",
+     "With als ob the verb goes last"
+    ],
+    [
+     "Er benimmt sich, als ob er zu Hause war.",
+     "war is the indicative"
+    ]
+   ]
+  },
+  {
+   "id": "irreale-vergleichssaetze.08",
+   "concept": "irreale-vergleichssaetze",
+   "level": "C1",
+   "kind": "translate",
+   "task": "Translate into German.",
+   "prompt": "It feels as if it were summer.",
+   "answer": [
+    "Es fühlt sich an, als ob es Sommer wäre.",
+    "Es fühlt sich an, als wäre es Sommer.",
+    "Es fühlt sich so an, als ob es Sommer wäre.",
+    "Es fühlt sich so an, als wäre es Sommer.",
+    "Es fühlt sich an, als ob es Sommer sei.",
+    "Es fühlt sich an, als sei es Sommer.",
+    "Es fühlt sich so an, als ob es Sommer sei.",
+    "Es fühlt sich so an, als sei es Sommer.",
+    "Es fühlt sich an, als ob wir Sommer hätten.",
+    "Es fühlt sich an, als hätten wir Sommer.",
+    "Es fühlt sich so an, als ob wir Sommer hätten.",
+    "Es fühlt sich so an, als hätten wir Sommer."
+   ],
+   "note": "als ob / als + wäre.",
+   "strict_case": false,
+   "near": [
+    [
+     "Es fühlt sich an, als ob es Sommer war.",
+     "war is the indicative"
+    ],
+    [
+     "Es fühlt sich an, als ob es wäre Sommer.",
+     "With als ob the verb goes last"
+    ],
+    [
+     "Es fühlt sich an, als es Sommer wäre.",
+     "After als the verb comes right after it"
+    ]
+   ]
+  }
+ ],
+ "phrases": {}
+}

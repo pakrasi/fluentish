@@ -1,0 +1,572 @@
+[
+ {
+  "id": "irreale-vergleichssaetze.01",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Er tut so, als ob er wüsste alles.",
+    "With als ob the verb goes last"
+   ],
+   [
+    "Er tut so, als ob er alles wusste.",
+    "wusste is the indicative past"
+   ],
+   [
+    "Er tut so, als ob wüsste er alles.",
+    "With als ob the verb goes last"
+   ]
+  ],
+  "severity": "improve",
+  "why": "Brief: every item needs 2-4 near misses"
+ },
+ {
+  "id": "irreale-vergleichssaetze.02",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Sie sieht aus, als sie müde wäre.",
+    "After als the verb comes right after it"
+   ],
+   [
+    "Sie sieht aus, als war sie müde.",
+    "war is the indicative"
+   ]
+  ],
+  "severity": "improve",
+  "why": "Brief: every item needs near misses"
+ },
+ {
+  "id": "irreale-vergleichssaetze.03",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Du tust so, als du hättest keine Zeit.",
+    "After als the verb comes right after it"
+   ],
+   [
+    "Du tust so, als hattest du keine Zeit.",
+    "hattest is the indicative"
+   ]
+  ],
+  "severity": "improve",
+  "why": "Brief: every item needs near misses"
+ },
+ {
+  "id": "irreale-vergleichssaetze.04",
+  "field": "answer",
+  "before": [
+   "wäre"
+  ],
+  "after": [
+   "wäre",
+   "sei"
+  ],
+  "severity": "error",
+  "why": "als ob + Konjunktiv I (sei) is standard written German; .01/.09/.12 already accept Konj. I"
+ },
+ {
+  "id": "irreale-vergleichssaetze.04",
+  "field": "note",
+  "before": "als ob + wäre.",
+  "after": "als ob + wäre (written also: sei), verb last.",
+  "severity": "improve",
+  "why": "Note matches the widened key"
+ },
+ {
+  "id": "irreale-vergleichssaetze.04",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "war",
+    "war is the indicative: the comparison is unreal"
+   ],
+   [
+    "wären",
+    "er needs wäre"
+   ]
+  ],
+  "severity": "improve",
+  "why": "Brief: every item needs near misses"
+ },
+ {
+  "id": "irreale-vergleichssaetze.05",
+  "field": "answer",
+  "before": [
+   "würde"
+  ],
+  "after": [
+   "würde",
+   "werde"
+  ],
+  "severity": "error",
+  "why": "als werde es gleich regnen is correct (Konj. I after als); consistent with .09/.12"
+ },
+ {
+  "id": "irreale-vergleichssaetze.05",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "wurde",
+    "wurde is the indicative past"
+   ],
+   [
+    "wird",
+    "Indicative: the comparison is unreal"
+   ],
+   [
+    "würden",
+    "es needs würde"
+   ]
+  ],
+  "severity": "improve",
+  "why": "Brief: every item needs near misses"
+ },
+ {
+  "id": "irreale-vergleichssaetze.06",
+  "field": "prompt",
+  "before": "Sie lacht. Sie hat nichts gehört. (als ob)",
+  "after": "Sie lacht. Es ist nichts passiert. (als ob)",
+  "severity": "improve",
+  "why": "'lacht, als ob sie nichts gehört hätte' is semantically odd; 'als ob nichts passiert wäre' is the idiomatic pattern"
+ },
+ {
+  "id": "irreale-vergleichssaetze.06",
+  "field": "answer",
+  "before": [
+   "Sie lacht, als ob sie nichts gehört hätte."
+  ],
+  "after": [
+   "Sie lacht, als ob nichts passiert wäre.",
+   "Sie lacht, als ob nichts passiert sei."
+  ],
+  "severity": "improve",
+  "why": "Follows the new prompt; Konj. I variant as in .01"
+ },
+ {
+  "id": "irreale-vergleichssaetze.06",
+  "field": "note",
+  "before": "Past: hätte + Partizip II.",
+  "after": "Past: wäre + Partizip II (passieren takes sein).",
+  "severity": "improve",
+  "why": "Follows the new prompt"
+ },
+ {
+  "id": "irreale-vergleichssaetze.06",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Sie lacht, als ob nichts passiert hätte.",
+    "passieren forms its past with sein: wäre"
+   ],
+   [
+    "Sie lacht, als ob nichts passiert war.",
+    "war is the indicative"
+   ],
+   [
+    "Sie lacht, als ob nichts wäre passiert.",
+    "With als ob the verb goes last"
+   ]
+  ],
+  "severity": "improve",
+  "why": "Brief: every item needs near misses"
+ },
+ {
+  "id": "irreale-vergleichssaetze.07",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Er benimmt sich, als ob er wäre zu Hause.",
+    "With als ob the verb goes last"
+   ],
+   [
+    "Er benimmt sich, als ob wäre er zu Hause.",
+    "With als ob the verb goes last"
+   ],
+   [
+    "Er benimmt sich, als ob er zu Hause war.",
+    "war is the indicative"
+   ]
+  ],
+  "severity": "improve",
+  "why": "Brief: every item needs near misses"
+ },
+ {
+  "id": "irreale-vergleichssaetze.08",
+  "field": "near",
+  "before": null,
+  "after": [
+   [
+    "Es fühlt sich an, als ob es Sommer war.",
+    "war is the indicative"
+   ],
+   [
+    "Es fühlt sich an, als ob es wäre Sommer.",
+    "With als ob the verb goes last"
+   ],
+   [
+    "Es fühlt sich an, als es Sommer wäre.",
+    "After als the verb comes right after it"
+   ]
+  ],
+  "severity": "improve",
+  "why": "Brief: every item needs near misses"
+ },
+ {
+  "id": "irreale-vergleichssaetze.10",
+  "field": "answer",
+  "before": [
+   "würde"
+  ],
+  "after": [
+   "würde",
+   "werde"
+  ],
+  "severity": "error",
+  "why": "als ob es ... geben werde (Konj. I) is correct; consistent with .01/.09/.12"
+ },
+ {
+  "id": "konjunktiv-2-wunsch.04",
+  "field": "answer",
+  "before": [
+   "Wenn ich doch einen Garten hätte!"
+  ],
+  "after": [
+   "Wenn ich doch einen Garten hätte!",
+   "Wenn ich doch nur einen Garten hätte!"
+  ],
+  "severity": "error",
+  "why": "'doch nur' is the most common wish form; accepted in .05/.07/.12 but missing here"
+ },
+ {
+  "id": "konjunktiv-2-wunsch.06",
+  "field": "answer",
+  "before": [
+   "Wenn ich doch früher losgefahren wäre!"
+  ],
+  "after": [
+   "Wenn ich doch früher losgefahren wäre!",
+   "Wenn ich doch nur früher losgefahren wäre!"
+  ],
+  "severity": "error",
+  "why": "'doch nur' variant missing, as in .04"
+ },
+ {
+  "id": "konjunktiv-2-modal-vergangenheit.05",
+  "field": "answer",
+  "before": [
+   "Du hättest das nicht bezahlen sollen.",
+   "Das hättest du nicht bezahlen sollen.",
+   "Sie hätten das nicht bezahlen sollen.",
+   "Das hätten Sie nicht bezahlen sollen."
+  ],
+  "after": [
+   "Du hättest das nicht bezahlen sollen.",
+   "Das hättest du nicht bezahlen sollen.",
+   "Sie hätten das nicht bezahlen sollen.",
+   "Das hätten Sie nicht bezahlen sollen.",
+   "Du hättest das nicht zahlen sollen.",
+   "Das hättest du nicht zahlen sollen.",
+   "Sie hätten das nicht zahlen sollen.",
+   "Das hätten Sie nicht zahlen sollen."
+  ],
+  "severity": "error",
+  "why": "'zahlen' is an equally natural rendering of 'pay' and a learner will type it"
+ },
+ {
+  "id": "konditional-ohne-wenn.01",
+  "field": "answer",
+  "before": [
+   "Hast du Fragen, melde dich.",
+   "Hast du Fragen, dann melde dich."
+  ],
+  "after": [
+   "Hast du Fragen, melde dich.",
+   "Hast du Fragen, dann melde dich.",
+   "Hast du Fragen, so melde dich."
+  ],
+  "severity": "error",
+  "why": "'so' variant is accepted in .03/.04/.06/.08/.12 but missing here"
+ },
+ {
+  "id": "konditional-ohne-wenn.11",
+  "field": "answer",
+  "before": [
+   "Hätte er gefragt, hätte ihm jemand geholfen.",
+   "Hätte er gefragt, dann hätte ihm jemand geholfen."
+  ],
+  "after": [
+   "Hätte er gefragt, hätte ihm jemand geholfen.",
+   "Hätte er gefragt, dann hätte ihm jemand geholfen.",
+   "Hätte er gefragt, so hätte ihm jemand geholfen."
+  ],
+  "severity": "error",
+  "why": "'so' variant missing (accepted elsewhere in the concept)"
+ },
+ {
+  "id": "passiv-von-durch.02",
+  "field": "near",
+  "before": [
+   [
+    "von der",
+    "der Nachbar is masculine: von dem/vom"
+   ],
+   [
+    "von den",
+    "One neighbour: dem Nachbarn"
+   ],
+   [
+    "durch den",
+    "A person who acts takes von"
+   ]
+  ],
+  "after": [
+   [
+    "von der",
+    "der Nachbar is masculine: von dem/vom"
+   ],
+   [
+    "von den",
+    "The bracket gives der (one neighbour): dem Nachbarn"
+   ],
+   [
+    "durch den",
+    "A person who acts takes von"
+   ]
+  ],
+  "severity": "improve",
+  "why": "'von den Nachbarn' is good German in itself; the why should point to the bracket"
+ },
+ {
+  "id": "konjunktiv-2-passiv.11",
+  "field": "prompt",
+  "before": "Alle wissen es. Die Brücke hätte früher saniert werden müssen. (dass)",
+  "after": "Alle sind sich einig. Die Brücke hätte früher saniert werden müssen. (dass)",
+  "severity": "error",
+  "why": "Keeping 'es' (Alle wissen es, dass …) is an acceptable Korrelat but is rejected; avoid the trap"
+ },
+ {
+  "id": "konjunktiv-2-passiv.11",
+  "field": "answer",
+  "before": [
+   "Alle wissen, dass die Brücke früher hätte saniert werden müssen."
+  ],
+  "after": [
+   "Alle sind sich einig, dass die Brücke früher hätte saniert werden müssen."
+  ],
+  "severity": "error",
+  "why": "Follows the new prompt"
+ },
+ {
+  "id": "konjunktiv-2-passiv.11",
+  "field": "near",
+  "before": [
+   [
+    "Alle wissen, dass die Brücke früher saniert werden müssen hätte.",
+    "hätte goes before the infinitives"
+   ],
+   [
+    "Alle wissen, dass die Brücke früher hätte saniert worden müssen.",
+    "Before a modal the infinitive is werden"
+   ],
+   [
+    "Alle wissen es, dass die Brücke früher hätte saniert werden müssen hätte.",
+    "Only one hätte"
+   ]
+  ],
+  "after": [
+   [
+    "Alle sind sich einig, dass die Brücke früher saniert werden müssen hätte.",
+    "hätte goes before the infinitives"
+   ],
+   [
+    "Alle sind sich einig, dass die Brücke früher hätte saniert worden müssen.",
+    "Before a modal the infinitive is werden"
+   ],
+   [
+    "Alle sind sich einig, dass die Brücke früher hätte saniert werden gemusst.",
+    "With an infinitive the modal stays müssen"
+   ]
+  ],
+  "severity": "error",
+  "why": "Follows the new prompt; old third near mixed two errors and an acceptable 'es'"
+ },
+ {
+  "id": "indirekte-rede-ersatz.02",
+  "field": "task",
+  "before": "Write the word in brackets in the form used in reported speech.",
+  "after": "Write the word in brackets in the Konjunktiv, as in a written report.",
+  "severity": "improve",
+  "why": "Indicative is also used in reported speech; name the Konjunktiv so the indicative near miss is clearly wrong"
+ },
+ {
+  "id": "indirekte-rede-ersatz.03",
+  "field": "task",
+  "before": "Write the word in brackets in the form used in reported speech.",
+  "after": "Write the word in brackets in the Konjunktiv, as in a written report.",
+  "severity": "improve",
+  "why": "Indicative is also used in reported speech; name the Konjunktiv so the indicative near miss is clearly wrong"
+ },
+ {
+  "id": "indirekte-rede-ersatz.06",
+  "field": "task",
+  "before": "Write the word in brackets in the form used in reported speech.",
+  "after": "Write the word in brackets in the Konjunktiv, as in a written report.",
+  "severity": "improve",
+  "why": "Indicative is also used in reported speech; name the Konjunktiv so the indicative near miss is clearly wrong"
+ },
+ {
+  "id": "indirekte-rede-ersatz.08",
+  "field": "task",
+  "before": "Write the word in brackets in the form used in reported speech.",
+  "after": "Write the word in brackets in the Konjunktiv, as in a written report.",
+  "severity": "improve",
+  "why": "Indicative is also used in reported speech; name the Konjunktiv so the indicative near miss is clearly wrong"
+ },
+ {
+  "id": "indirekte-rede-fragen-aufforderungen.05",
+  "field": "task",
+  "before": "Write the word in brackets in the form used in reported speech.",
+  "after": "Write the word in brackets in the Konjunktiv, as in a written report.",
+  "severity": "improve",
+  "why": "Same as indirekte-rede-ersatz: 'wir sollen' is common in reported speech; name the Konjunktiv"
+ },
+ {
+  "id": "indirekte-rede-fragen-aufforderungen.06",
+  "field": "answer",
+  "before": [
+   "Frau Berger lässt ausrichten, er möge sie zurückrufen.",
+   "Frau Berger lässt ausrichten, er möge sie bitte zurückrufen."
+  ],
+  "after": [
+   "Frau Berger lässt ausrichten, er möge sie zurückrufen.",
+   "Frau Berger lässt ausrichten, er möge sie bitte zurückrufen.",
+   "Frau Berger lässt ausrichten, er möchte sie zurückrufen.",
+   "Frau Berger lässt ausrichten, er möchte sie bitte zurückrufen."
+  ],
+  "severity": "error",
+  "why": "'er möchte' (Konj. II of mögen) is standard and very common for reported requests; the task only says 'with mögen'"
+ },
+ {
+  "id": "indirekte-rede-fragen-aufforderungen.07",
+  "field": "task",
+  "before": "Write the word in brackets in the right form.",
+  "after": "Write the word in brackets in the Konjunktiv.",
+  "severity": "error",
+  "why": "'wo ich … gelernt hatte' (indicative) is correct German for 'right form' but is rejected"
+ },
+ {
+  "id": "indirekte-rede-fragen-aufforderungen.07",
+  "field": "near",
+  "before": [
+   [
+    "hat",
+    "ich needs habe or hätte"
+   ],
+   [
+    "wäre",
+    "lernen forms its past with haben"
+   ]
+  ],
+  "after": [
+   [
+    "hat",
+    "ich needs habe or hätte"
+   ],
+   [
+    "hatte",
+    "The task asks for the Konjunktiv: habe or hätte"
+   ],
+   [
+    "wäre",
+    "lernen forms its past with haben"
+   ]
+  ],
+  "severity": "improve",
+  "why": "hatte is the typical miss once the task names the Konjunktiv"
+ },
+ {
+  "id": "indirekte-rede-fragen-aufforderungen.10",
+  "field": "answer",
+  "before": [
+   "Die Lehrerin sagt, er solle seine Hausaufgaben nicht vergessen.",
+   "Die Lehrerin sagt, dass er seine Hausaufgaben nicht vergessen solle."
+  ],
+  "after": [
+   "Die Lehrerin sagt, er solle seine Hausaufgaben nicht vergessen.",
+   "Die Lehrerin sagt, dass er seine Hausaufgaben nicht vergessen solle.",
+   "Die Lehrerin sagt, Tom solle seine Hausaufgaben nicht vergessen.",
+   "Die Lehrerin sagt, dass Tom seine Hausaufgaben nicht vergessen solle."
+  ],
+  "severity": "error",
+  "why": "Naming Tom instead of er is correct and likely"
+ },
+ {
+  "id": "indirekte-rede-fragen-aufforderungen.12",
+  "field": "task",
+  "before": "Report the question in the Konjunktiv. Start with „Die Gäste fragten uns,“.",
+  "after": "Report the question in the Konjunktiv. Start with „Die Nachbarn fragten uns,“.",
+  "severity": "improve",
+  "why": "'Guests' complaining they were not invited is illogical"
+ },
+ {
+  "id": "indirekte-rede-fragen-aufforderungen.12",
+  "field": "answer",
+  "before": [
+   "Die Gäste fragten uns, warum wir sie nicht eingeladen hätten."
+  ],
+  "after": [
+   "Die Nachbarn fragten uns, warum wir sie nicht eingeladen hätten."
+  ],
+  "severity": "improve",
+  "why": "Follows the new task"
+ },
+ {
+  "id": "indirekte-rede-fragen-aufforderungen.12",
+  "field": "near",
+  "before": [
+   [
+    "Die Gäste fragten uns, warum ihr uns nicht eingeladen habt.",
+    "Shift the pronouns: ihr → wir, uns → sie"
+   ],
+   [
+    "Die Gäste fragten uns, warum hätten wir sie nicht eingeladen.",
+    "After warum the verb goes last"
+   ],
+   [
+    "Die Gäste fragten uns, warum wir sie nicht eingeladen hatten.",
+    "hatten is the indicative past"
+   ]
+  ],
+  "after": [
+   [
+    "Die Nachbarn fragten uns, warum ihr uns nicht eingeladen habt.",
+    "Shift the pronouns: ihr → wir, uns → sie"
+   ],
+   [
+    "Die Nachbarn fragten uns, warum hätten wir sie nicht eingeladen.",
+    "After warum the verb goes last"
+   ],
+   [
+    "Die Nachbarn fragten uns, warum wir sie nicht eingeladen hatten.",
+    "hatten is the indicative past"
+   ]
+  ],
+  "severity": "improve",
+  "why": "Follows the new task"
+ },
+ {
+  "id": "ersatzinfinitiv",
+  "field": "fn",
+  "before": "report",
+  "after": "narrate",
+  "severity": "improve",
+  "why": "The Ersatzinfinitiv is about telling past events, not reporting a source"
+ }
+]

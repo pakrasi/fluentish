@@ -1,0 +1,22 @@
+[
+ {
+  "id": "irreale-vergleichssaetze",
+  "decision": "level C1 → B2 (id unchanged), 4 items added",
+  "why": "CONTENT-INPUT-PLAN §2.1: Goethe B2 and Profile deutsch place als ob at B2"
+ },
+ {
+  "id": "irreale-vergleichssaetze.06",
+  "decision": "prompt changed to „Sie tut so. Es ist nichts gewesen.“",
+  "why": "with the word list's verb forms the verb-final detector fires on the correct „… als ob nichts passiert sei“ (passiert read as finite): a detector false positive, reported"
+ },
+ {
+  "id": "konditional-ohne-wenn.07",
+  "decision": "„…, es wäre billiger gewesen“ neither keyed nor a near miss",
+  "why": "pass A round 2 added it, pass B round 2 removed it as literary and inconsistent with the concept; adjudicated for B"
+ },
+ {
+  "id": "indirekte-rede-fragen-aufforderungen.10",
+  "decision": "„Tom solle …“ keyed",
+  "why": "blind self-consistency answer; pass A found it too"
+ }
+]

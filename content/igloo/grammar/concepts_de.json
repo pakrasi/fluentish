@@ -494,7 +494,90 @@
   "id": "irreale-vergleichssaetze",
   "name": "Irreale Vergleichssätze (als ob / als)",
   "category": "konjunktiv",
-  "level": "C1",
-  "description": "Unreal comparisons with Konjunktiv II: Er tut so, als ob er nichts wüsste / als wüsste er nichts."
+  "level": "B2",
+  "description": "Unreal comparisons with Konjunktiv II: Er tut so, als ob er nichts wüsste / als wüsste er nichts.",
+  "rank": 16,
+  "fn": "compare"
+ },
+ {
+  "id": "konjunktiv-2-wunsch",
+  "name": "Konjunktiv II: Wünsche (Wenn … doch/nur …! Hätte ich nur …)",
+  "category": "konjunktiv",
+  "level": "B2",
+  "description": "Unreal wishes with Konjunktiv II, about the present or the past: Wenn ich doch mehr Zeit hätte! / Hätte ich nur früher angefangen!",
+  "rank": 13,
+  "fn": "wish"
+ },
+ {
+  "id": "konjunktiv-2-modal-vergangenheit",
+  "name": "Konjunktiv II: Modalverben in der Vergangenheit (hätte … machen sollen)",
+  "category": "konjunktiv",
+  "level": "B2",
+  "description": "What should, could or had to have happened: hätte + infinitive + modal infinitive, with hätte before both infinitives in a subordinate clause: Du hättest anrufen sollen. / …, dass er es hätte machen sollen.",
+  "rank": 14,
+  "fn": "regret"
+ },
+ {
+  "id": "konditional-ohne-wenn",
+  "name": "Konditionalsätze ohne wenn (Hätte ich Zeit, …; Sollte …, …)",
+  "category": "konjunktiv",
+  "level": "B2",
+  "description": "Conditions without wenn: the verb comes first, and the main clause starts with its verb (or dann/so): Sollte es regnen, bleiben wir zu Hause. / Wäre das Wetter besser, könnten wir grillen.",
+  "rank": 15,
+  "fn": "condition"
+ },
+ {
+  "id": "passiv-perfekt",
+  "name": "Passiv Perfekt und Plusquamperfekt (ist … worden, war … worden)",
+  "category": "passiv",
+  "level": "B2",
+  "description": "The passive in the Perfekt and Plusquamperfekt, also in subordinate clauses and without a subject: Nachdem alles besprochen worden war, … / Gestern ist viel diskutiert worden.",
+  "rank": 17,
+  "fn": "report"
+ },
+ {
+  "id": "passiv-von-durch",
+  "name": "Passiv mit Agens: von oder durch",
+  "category": "passiv",
+  "level": "B2",
+  "description": "Naming the doer in the passive: von + dative for a person or agent, durch + accusative for a means or cause: Der Brief wurde von der Chefin unterschrieben. / Die Stadt wurde durch ein Erdbeben zerstört.",
+  "rank": 18,
+  "fn": "report"
+ },
+ {
+  "id": "konjunktiv-2-passiv",
+  "name": "Konjunktiv II im Passiv (müsste repariert werden; wäre gemacht worden)",
+  "category": "konjunktiv",
+  "level": "B2",
+  "description": "Konjunktiv II in the passive, present and past: Die Heizung müsste repariert werden. / Ohne dich wäre das nie gemacht worden. / Das hätte verhindert werden können.",
+  "rank": 19,
+  "fn": "condition"
+ },
+ {
+  "id": "indirekte-rede-ersatz",
+  "name": "Indirekte Rede: Konjunktiv II als Ersatz (sie hätten, sie würden kommen)",
+  "category": "konjunktiv",
+  "level": "B2",
+  "description": "Where Konjunktiv I looks like the indicative, reported speech uses Konjunktiv II: Sie sagen, sie hätten keine Zeit. / Er sagt, seine Eltern kämen morgen.",
+  "rank": 20,
+  "fn": "report"
+ },
+ {
+  "id": "indirekte-rede-fragen-aufforderungen",
+  "name": "Indirekte Rede: Fragen und Aufforderungen (ob, w-Fragen, sollen/mögen)",
+  "category": "konjunktiv",
+  "level": "B2",
+  "description": "Reported questions with ob or a question word and the verb last, and reported requests with sollen or mögen: Er fragt, ob ich Zeit habe. / Der Arzt sagt, ich solle mehr trinken.",
+  "rank": 21,
+  "fn": "report"
+ },
+ {
+  "id": "ersatzinfinitiv",
+  "name": "Ersatzinfinitiv (hat kommen müssen; dass er hat kommen müssen)",
+  "category": "verbs-tenses",
+  "level": "B2",
+  "description": "In the Perfekt, a modal verb or lassen with another infinitive stays an infinitive, and in a subordinate clause haben comes before both infinitives: Ich habe gehen müssen. / …, weil er hat arbeiten müssen.",
+  "rank": 22,
+  "fn": "narrate"
  }
 ]
