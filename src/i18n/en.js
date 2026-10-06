@@ -222,7 +222,7 @@ export default {
   'stand.words': 'Words and phrases',
   'stand.wordsOf': '{k} of {n} known',
   'stand.week': 'This week: {learnt} learnt, {lapsed} missed after being learnt.',
-  'stand.def': 'Known: you would recall it now with 90% or more and have not missed it in the last 7 days. A miss counts from the next day, so a round never lowers these numbers. The map counts the same way.',
+  'stand.def': "Known: you would recall it now (90% or more) and haven't missed it in 7 days. Today's misses count from tomorrow.",
 
   // phase notices
   'phase.lastNew': 'Last day for new items. From tomorrow it is reviews only.',
@@ -595,7 +595,7 @@ export default {
   'practice.phase.day': 'Exam today. A 3-minute warm-up with items you know well.',
   'practice.offline': 'Offline. Rounds work; Claude checks and exam word updates wait for a connection.',
   'practice.first.title': 'Your first round',
-  'practice.first.body': '12 questions, about 4 minutes. Type the German. A late answer still counts, a little less. New items have no timer: type it if you know it, or tap Show me.',
+  'practice.first.body': '{n} questions, about {min} minutes. Type the German. A late answer still counts, a little less. New items have no timer: type it if you know it, or tap Show me.',
   'practice.first.umlauts': 'No German keyboard? Type ae, oe, ue and ss.',
   'practice.more': { one: '{n} more', other: '{n} more' },
   'practice.missed': { one: 'Missed in the last 3 days: {n}', other: 'Missed in the last 3 days: {n}' },
@@ -631,6 +631,7 @@ export default {
   'practice.peak': '{date}: about {n} due. An extra round before then makes that day lighter.',
   'practice.tomorrow': { one: 'Tomorrow, {date}: about {n} due.', other: 'Tomorrow, {date}: about {n} due.' },
   'practice.tomorrowNone': 'Nothing due tomorrow, {date}.',
+  'practice.tomorrowPeak': 'Tomorrow, {date}: about {n} due. An extra round today makes it lighter.',
   'practice.plan.mistakes': 'Your mistakes from corrections',
   'practice.plan.mistakes.detail': { one: '{n} sentence', other: '{n} sentences' },
   'practice.plan.mistakes.action': 'Practise mistakes · {n} sentences, {min} min',
@@ -1956,7 +1957,7 @@ export default {
   'week.why.reviewsDue': 'No new items today: the reviews due fill the day.',
   'week.why.offWindow': 'Off day, but the exam is close: today plans your reviews and a few new items.',
   'week.why.lightWindow': 'Light day, but the exam is close: today plans your reviews and a few new items.',
-  'week.why.reviewsHigh': { one: '{n} new (fewer this week: reviews are high)', other: '{n} new (fewer this week: reviews are high)' },
+  'week.why.reviewsHigh': { one: '{n} new (fewer: reviews are high this fortnight)', other: '{n} new (fewer: reviews are high this fortnight)' },
   // the level gate (domain/levels.js)
   'goal.gate.strand.g': 'B2 grammar',
   'goal.gate.strand.p': 'B2 phrases',
@@ -2082,7 +2083,7 @@ export default {
   'week.examNote': 'In exam weeks the exam plans each day; Light and Off days still have no new items.',
   'week.kindHint.n': 'Reviews, new items and practice',
   'week.kindHint.light': 'Reviews only, no new items',
-  'week.kindHint.read': 'A text or a recording you choose',
+  'week.kindHint.read': 'A text you choose, or the next graded text',
   'week.kindHint.write': 'A short text, corrected, mistakes become cards',
   'week.kindHint.talk': 'A conversation with Claude',
   'week.kindHint.off': 'No plan. Reviews wait for the next day',

@@ -17,6 +17,7 @@ import { countTo, disclose } from '../../core/motion.js';
 import { label, add } from '../../core/clock.js';
 import * as RD from '../../domain/b1ready.js';
 import { ROUND_MIN } from '../../domain/budget.js';
+import { roundMinutes } from '../../domain/today.js';
 import * as C from '../shared/compose.js';
 import { todayBudget, roundAction, simToday, clusterToday } from '../../domain/allowance.js';
 import { DECK as SIM_DECK, KV as SIM_KV } from '../../domain/sim.js';
@@ -97,7 +98,7 @@ export async function mountHub(el, ctx) {
     const phaseKey = { lastNew: 'phase.lastNew', eve: 'practice.phase.eve', day: 'practice.phase.day' }[/** @type {string} */ (c.phase)];
     if (phaseKey) notices.push(notice({ children: [h('p', null, t(phaseKey, { n: dueN }))] }));
     if (!navigator.onLine) notices.push(notice({ children: [h('p', null, t('practice.offline'))] }));
-    if (firstTime) notices.push(notice({ children: [h('p', { class: 'notice-title' }, t('practice.first.title')), h('p', null, t('practice.first.body')),
+    if (firstTime) notices.push(notice({ children: [h('p', { class: 'notice-title' }, t('practice.first.title')), h('p', null, t('practice.first.body', { n: nRound, min: roundMinutes(nRound) })),
       matchMedia('(pointer: coarse)').matches && !data.course ? h('p', null, t('practice.first.umlauts')) : null] }));
 
     /** Put the page in, keeping focus on the heading, and count the figure up. @param {HTMLElement} view */
@@ -205,8 +206,11 @@ export async function mountHub(el, ctx) {
           : t('practice.paceShort', { reach: pace.reach, date })));
     }
     const peak = fc.slice(1).filter(x => !c.exam || x.day < c.exam).sort((p, q) => q.n - p.n)[0];
-    if (peak && peak.n >= 30 && c.phase !== 'after') foot.push(h('p', { class: 'caption' }, t('practice.peak', { date: label(peak.day), n: peak.n })));
-    foot.push(h('p', { class: 'caption' }, tomorrow ? t('practice.tomorrow', { n: tomorrow, date: label(add(c.today, 1)) }) : t('practice.tomorrowNone', { date: label(add(c.today, 1)) })));
+    // one line when the busiest day is tomorrow (it said the same day twice)
+    const peakTomorrow = peak && peak.n >= 30 && c.phase !== 'after' && peak.day === add(c.today, 1);
+    if (peak && peak.n >= 30 && c.phase !== 'after' && !peakTomorrow) foot.push(h('p', { class: 'caption' }, t('practice.peak', { date: label(peak.day), n: peak.n })));
+    foot.push(h('p', { class: 'caption' }, peakTomorrow ? t('practice.tomorrowPeak', { n: tomorrow, date: label(add(c.today, 1)) })
+      : tomorrow ? t('practice.tomorrow', { n: tomorrow, date: label(add(c.today, 1)) }) : t('practice.tomorrowNone', { date: label(add(c.today, 1)) })));
 
     const view = h('div', { class: ['practice', 'stack', startBtn && 'has-dock'] },
       h('div', { class: 'page-head' }, h('h1', null, t('practice.title'))),
