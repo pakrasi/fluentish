@@ -111,7 +111,9 @@ test('budget: a share of the one allowance; its setting is its want; paused whil
   const after = context({ today: TODAY, exam: '2026-10-09' });
   const decks = { b1: { due: 30 }, build: { due: 6, open: 10, shown: 2 } };
   const a = allowance({ c: after, settings: s, decks, goals: { build: true } });
-  assert.deepEqual([a.mode, a.decks.build.newPerDay, a.decks.build.newLeft, a.decks.build.due], ['maintenance', 5, 3, 6]);
+  // hotfix: the day's number is at most the sustainable rate (15 at 60 min a day), shared by the decks' wants, so
+  // Word building gets 3 of its 5 (2 shown, 1 left)
+  assert.deepEqual([a.mode, a.decks.build.newPerDay, a.decks.build.newLeft, a.decks.build.due], ['maintenance', 3, 1, 6]);
   assert.equal(a.reviews.due, 36, 'its reviews count with every other deck');
   const week = context({ today: TODAY, exam: '2026-10-20' }), eve = context({ today: '2026-10-19', exam: '2026-10-20' });
   const w = allowance({ c: week, settings: { ...s, exam: { ...s.exam, date: '2026-10-20' } }, decks, goals: { build: true } });
@@ -157,11 +159,12 @@ test("Today: Word building's rows (a goal after the exam; due cards only while a
   assert.deepEqual(rows.map(x => x.id), ['build.round']);
   const r = rows[0];
   assert.equal(r.priority, 56); assert.ok(r.noCut); assert.match(r.detail, /plan\.build\.due \{"n":1\}/); assert.equal(r.reviews, 1);
-  // after the exam: a goal (priority 35), 1 due + 4 new (its want is 5, 4 are open), and the game
+  // after the exam: a goal (priority 35), 1 due + 2 new (its want is 5, 4 are open; hotfix: its share of the
+  // sustainable rate, 15 at 60 min a day, is 2), and the game
   const after = context({ today: TODAY, exam: '2026-10-09' });
   const ra = planItems({ store: mk(cards, { build: { stats: { day: TODAY, open: 4 } } }), c: after, settings: { ...settings, exam: { ...settings.exam, date: '2026-10-09' } }, t });
   assert.deepEqual(ra.map(x => x.id), ['build.round', 'build.game']);
-  assert.equal(ra[0].priority, 35); assert.match(ra[0].detail, /"due":1,"n":4/); assert.ok(ra[1].optional);
+  assert.equal(ra[0].priority, 35); assert.match(ra[0].detail, /"due":1,"n":2/); assert.ok(ra[1].optional);
   // the exam day: nothing
   assert.deepEqual(planItems({ store: mk(cards), c: context({ today: exam, exam }), settings, t }), []);
   // played today: the game row shows done

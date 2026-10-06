@@ -151,10 +151,17 @@ test('property: the allowance keeps its invariants over goals × day kinds × Au
     }
     assert.equal(DECKS.reduce((s, id) => s + a.decks[id].newPerDay, 0), a.newPerDay, where());
     assert.equal(DECKS.reduce((s, id) => s + a.decks[id].newLeft, 0), a.newLeft, where());
-    // the eve, the exam day, Light and Off days: no new items, a chosen number included
-    if (c.phase === 'eve' || c.phase === 'day' || (day.planned && (day.kind === 'light' || day.kind === 'off'))) {
+    // the eve, the exam day, Light and Off days: no new items, a chosen number included. Hotfix (code audit P0-1):
+    // inside the exam window a Light or Off day has fewer new items than a Normal one, never more
+    if (c.phase === 'eve' || c.phase === 'day' || (day.planned && !WINDOW.has(c.phase) && (day.kind === 'light' || day.kind === 'off'))) {
       assert.equal(a.newPerDay, 0, where()); assert.equal(a.newLeft, 0, where());
     }
+    if (day.planned && WINDOW.has(c.phase) && (day.kind === 'light' || day.kind === 'off')) {
+      const normal = allowance({ c, settings, ...inp, day: { ...day, kind: 'n' } });
+      assert.ok(a.newPerDay <= normal.newPerDay, where());
+    }
+    // hotfix: Auto in maintenance and the first week never goes past the sustainable rate of the week's minutes
+    if (!B.newPerDayChosen(settings) && (a.mode === 'maintenance' || a.mode === 'start')) assert.ok(a.newPerDay <= B.steadyRate(7 * (day.planned ? day.minutes : settings.minutesPerDay || 60)), where());
     // side decks pause only inside the exam window
     for (const id of DECKS) if (a.decks[id].paused) { assert.ok(SIDE.includes(id), where()); assert.ok(WINDOW.has(c.phase), where()); }
     if (!WINDOW.has(c.phase)) assert.ok(DECKS.every(id => !a.decks[id].paused), where());
@@ -168,7 +175,8 @@ test('property: the allowance keeps its invariants over goals × day kinds × Au
     assert.ok(p, where());
     assert.equal(p.kind, day.kind, where());
     assert.ok(p.reviewsToday >= 0 && p.reviewsToday <= due, where());
-    if (day.kind === 'off') assert.equal(p.reviewsToday, 0, where());
+    // an Off day plans no reviews, except inside the exam window, where reviews are never dropped (code audit P0-1)
+    if (day.kind === 'off' && !WINDOW.has(c.phase)) assert.equal(p.reviewsToday, 0, where());
     else if (!p.break) assert.equal(p.reviewsToday, due, where());
     else {
       seen.break++;
@@ -181,7 +189,8 @@ test('property: the allowance keeps its invariants over goals × day kinds × Au
     if (p.forecast && p.forecast.cut) {
       seen.cut++;
       assert.equal(p.why, 'reviewsHigh', where());
-      assert.ok(p.forecast.reviewMin > FORECAST_LIMIT * p.forecast.plannedMin, where());
+      // hotfix: the forecast counts the reviews today's new items bring (fromNew)
+      assert.ok(p.forecast.reviewMin + p.forecast.fromNew > FORECAST_LIMIT * p.forecast.plannedMin, where());
     }
     // the forecast cap only ever takes new items away; a chosen number is never cut
     const free = allowance({ c, settings, ...inp, day, forecast: null });
@@ -209,11 +218,15 @@ test('forecast cap: over 55 % of the planned minutes, each day loses its overflo
   const planned = 14 * 45;   // 630
   const base = allowance({ c, settings: s, decks, day });
   const at = (/** @type {number} */ reviewMin) => allowance({ c, settings: s, decks, day, forecast: { reviewMin, plannedMin: planned, days: 14 } });
-  // at the limit: nothing changes
-  const limit = FORECAST_LIMIT * planned;   // 346.5
+  // hotfix: the forecast counts the reviews today's new items will bring in the 14 days (NEW_REVIEWS_14 each), so
+  // the limit is reached that much sooner. base: the sustainable rate at 45 min a day, 11
+  assert.equal(base.newPerDay, B.steadyRate(7 * 45));
+  const fromNew = base.newPerDay * B.NEW_REVIEWS_14 * B.REVIEW_COST.b1;   // 12.8 min
+  const limit = FORECAST_LIMIT * planned - fromNew;   // 346.5 − 12.8
   assert.equal(at(limit).newPerDay, base.newPerDay);
-  assert.deepEqual(at(limit).plan?.forecast, { reviewMin: 346.5, plannedMin: 630, ratio: 0.55, cut: 0 });
+  assert.equal(at(limit).plan?.forecast?.cut, 0);
   assert.equal(at(limit).plan?.why, null);
+  assert.equal(at(FORECAST_LIMIT * planned).plan?.forecast?.cut, 2, 'at the old limit, its own new items put it over');
   // 70 min over the horizon is 5 min a day: 7 fewer new items (5 ÷ 0.75, rounded up)
   const over = at(limit + 70);
   assert.equal(over.plan?.forecast?.cut, Math.ceil(5 / NEW_ITEM_MIN));
@@ -268,11 +281,16 @@ test('back after a break: urgent reviews first, the rest over 3 days, no new ite
   const fits = allowance({ c: MAINT, settings: auto, decks: { b1: { due: 60, open: 300 } }, day: dayPlan(auto, MAINT) });
   assert.equal(fits.plan?.why, null);
   assert.ok(fits.newPerDay > 0);
-  // in the exam window the window's rules plan the day: no break, no spread
+  // in the exam window the window's rules plan the day: no break, no spread. Hotfix (UX review item 7): the 164
+  // reviews do not fit the day, so no new items but his mistakes (none here), and the plan says why
   const ex = context({ today: MON, exam: D8.add(MON, 9) });
   const w = allowance({ c: ex, settings: auto, decks: { b1: { due: 164, open: 300 } }, day: dayPlan(auto, ex), priorityLeft: 50 });
   assert.equal(w.plan?.break, false);
-  assert.ok(w.newPerDay > 0);
+  assert.equal(w.newPerDay, 0);
+  assert.equal(w.plan?.why, 'reviewsDue');
+  assert.equal(w.plan?.reviewsToday, 164, 'every review planned');
+  const wl = allowance({ c: ex, settings: auto, decks: { b1: { due: 20, open: 300 } }, day: dayPlan(auto, ex), priorityLeft: 50 });
+  assert.ok(wl.newPerDay > 0, 'when the reviews fit, new items come');
 });
 
 test('Light and Off days: reviews only, or none planned; a chosen number waits; Off reviews stay counted', () => {
@@ -370,8 +388,10 @@ test('reading: deck read gets its share of new items (practice.readNew) on a nor
   const decks = { b1: { due: 10, open: 300 }, read: { due: 2, open: 30 } };
   const s = withWeek(german({ practice: { readAloud: true, readNew: 5 } }), flat('n', 45));
   const n = allowance({ c: MAINT, settings: s, decks, day: dayPlan(s, MAINT) });
-  assert.equal(n.decks.read.newPerDay, 5);
-  assert.equal(n.decks.read.newLeft, 5);
+  // hotfix: the day's number is the sustainable rate (11 at 45 min a day), split by the decks' wants
+  assert.ok(n.newPerDay <= B.steadyRate(7 * 45));
+  assert.ok(n.decks.read.newPerDay > 0 && n.decks.read.newPerDay <= 5);
+  assert.equal(n.decks.read.newLeft, n.decks.read.newPerDay);
   for (const [kind, min] of /** @type {const} */ ([['light', 20], ['off', 0]])) {
     const w = withWeek(s, flat(kind, min));
     const a = allowance({ c: MAINT, settings: w, decks, day: dayPlan(w, MAINT) });
@@ -385,5 +405,5 @@ test('reading: deck read gets its share of new items (practice.readNew) on a nor
   const r = withWeek(s, flat('read', 45));
   const rd = allowance({ c: MAINT, settings: r, decks, day: dayPlan(r, MAINT, { live: ['read'] }) });
   assert.deepEqual([rd.plan?.slot, rd.plan?.slotMin], ['read', 15]);
-  assert.equal(rd.decks.read.newPerDay, 5);
+  assert.ok(rd.decks.read.newPerDay > 0 && rd.decks.read.newPerDay <= 5);
 });

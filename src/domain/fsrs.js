@@ -40,14 +40,37 @@ function rate(o) {
 // retention, no cap. Cards scheduled then are pulled in once when the window opens (features/day.js windowRecap).
 const open = phase => phase === 'after' || phase === 'none';
 const retention = phase => open(phase) ? 0.90 : 0.92;
-// due date for a review with stability S, capped at exam−1 (load-balanced over exam−3 … exam−1) unless R(exam) ≥ 0.95
+/** The recall an exam-deck card must still have on the exam day to need no review before it (round 4 hotfix: was 0.95). */
+const EXAM_RECALL = 0.90;
+/** A script's delivery date (ctx.delivery, domain/script/plan.js fsCtx) keeps the rule it was built with. */
+const DELIVERY_RECALL = 0.95;
+// due date for a review with stability S. While an exam is ahead an exam deck's card is capped before the exam unless
+// R(exam) ≥ EXAM_RECALL: it goes on the day from tomorrow to exam − 2 with the fewest reviews (ctx.forecast; later
+// days win ties), and on exam − 1 only when no earlier day is left. A side deck's card (ctx.side, b1ready.sideCap)
+// keeps its interval: an exam never pulls Word clusters, Word building, situations or reading forward.
 function dueFor(S, ctx) {
   const t = ctx.today;
   let ivl = interval(S, retention(ctx.phase));
   if (open(ctx.phase) || !ctx.exam) return D8.add(t, Math.min(ivl, 365));
   const due = D8.add(t, ivl), cap = D8.add(ctx.exam, -1);
-  if (due <= cap) return due;
-  if (R(D8.diff(t, ctx.exam), S) >= 0.95) return due;
+  if (due <= cap || ctx.side) return due;
+  if (ctx.delivery) return deliveryFor(S, ctx, due, cap);
+  if (R(D8.diff(t, ctx.exam), S) >= EXAM_RECALL) return due;
+  if (D8.add(t, 1) > cap) return D8.add(t, 1);
+  const lo = D8.add(t, 1), hi = D8.add(ctx.exam, -2);
+  if (lo > hi) return cap;
+  let best = hi, bestN = Infinity;
+  for (let d = hi; d >= lo; d = D8.add(d, -1)) {   // later days win ties
+    const n = ctx.forecast ? ctx.forecast(d) : 0;
+    if (n < bestN) { bestN = n; best = d; }
+  }
+  return best;
+}
+// a script's delivery date: R(day) ≥ 0.95, else load-balanced over day − 3 … day − 1 (the rule before the hotfix)
+/** @param {number} S @param {any} ctx @param {string} due @param {string} cap @returns {string} */
+function deliveryFor(S, ctx, due, cap) {
+  const t = ctx.today;
+  if (R(D8.diff(t, ctx.exam), S) >= DELIVERY_RECALL) return due;
   if (D8.add(t, 1) > cap) return D8.add(t, 1);
   let lo = D8.add(ctx.exam, -3); if (lo < D8.add(t, 1)) lo = D8.add(t, 1);
   let best = cap, bestN = Infinity;
@@ -111,34 +134,99 @@ function schedule(rec0, o, ctx, now = Date.now()) {
 // retrievability on a given day (unseen = 0); learning items count with their initial S from their last answer
 const Ron = (rec, day) => rec && rec.reps ? R(D8.diff(rec.last, day), rec.S) : 0;
 
+/* The exam window's recap (features/day.js windowRecap runs it once per exam date; round 4 hotfix).
+   A card "pulled" by an earlier build: a settled card whose due is on exam − 3 … exam − 1, later than the day after
+   its last review, while its own interval (at the normal 0.90 retention) ends after exam − 1. The old rule
+   (R(exam) < 0.95, then exam − 3 … exam − 1) put cards there. Sent back, it goes to that date: it is recalled on the
+   exam day with EXAM_RECALL or more, or it is not sent back. */
+/** The day a settled card's own interval ends (the normal 0.90 retention, at most a year). @param {any} r */
+const naturalDue = r => D8.add(r.last, Math.min(interval(r.S, 0.90), 365));
+/** @param {any} r */
+const settled = r => !!(r && r.reps && r.due && r.last && r.learn == null && !r.relearn && Number.isFinite(r.S) && r.S > 0);
+/** @param {any} r @param {string} exam */
+const pulled = (r, exam) => settled(r) && r.due >= D8.add(exam, -3) && r.due <= D8.add(exam, -1) && r.due > D8.add(r.last, 1) && naturalDue(r) > D8.add(exam, -1) && r.due < naturalDue(r);
+
 /**
- * The exam moved EARLIER: every card due after the new cap (exam−1) would miss its pre-exam review, so clamp it.
- * Clamped cards are spread over cap−2 … cap by count (fewest first, later days win ties), never before tomorrow.
- * Moving the date later changes nothing. Returns {id: newDue} for the cards that move; the caller writes them.
- * @param {Record<string, {due?: string, reps?: number}>} store
- * @param {{today: string, exam: string|null, phase: string}} ctx  the context for the NEW date
+ * The reviews an exam deck owes before the exam, spread over the window by load. ctx: the clock context {today,
+ * exam, phase}; capacity(day): how many of the exam decks' reviews that day can hold (Infinity when not given).
+ *   - a card due after exam − 1 that would be recalled on the exam day with less than EXAM_RECALL (0.90) owes one
+ *     review before it
+ *   - a pulled card (above) that would be recalled with EXAM_RECALL or more goes back to its own due date, after the
+ *     exam (later, never earlier); one that owes the review keeps its day while that day has room
+ *   - every other card due in the window stays where it is: its own schedule is the day's load
+ *   - each owed review goes on the latest day from exam − 1 back to the day after its last review (and tomorrow at
+ *     the earliest) that still has room under its capacity; with no room left anywhere, on the day of that range
+ *     that is least over its capacity (later days win ties). Owed reviews are placed in id order, the least likely to
+ *     be recalled on the day first.
+ * Cards due today or before, learning cards and cards marked known (their one check stays where it is) never move.
+ * Returns {id: newDue} for the cards that move; the caller writes them (only `due` changes).
+ * @param {Record<string, any>} store
+ * @param {{today: string, exam: string|null, phase: string}} ctx
+ * @param {(day: string) => number} [capacity]
  * @returns {Record<string, string>}
  */
-function recap(store, ctx) {
+function recap(store, ctx, capacity = () => Infinity) {
   /** @type {Record<string, string>} */
   const out = {};
   if (!ctx.exam || open(ctx.phase) || ctx.phase === 'day') return out;
-  const cap = D8.add(ctx.exam, -1), tomorrow = D8.add(ctx.today, 1);
+  const exam = ctx.exam, cap = D8.add(exam, -1), tomorrow = D8.add(ctx.today, 1);
   if (cap < tomorrow) return out;
   /** @type {string[]} */ const days = [];
-  for (let d = cap; d >= D8.add(cap, -2) && d >= tomorrow; d = D8.add(d, -1)) days.push(d);
+  for (let d = tomorrow; d <= cap; d = D8.add(d, 1)) days.push(d);
   /** @type {Record<string, number>} */ const load = Object.fromEntries(days.map(d => [d, 0]));
-  for (const rec of Object.values(store)) if (rec && rec.reps && rec.due && load[rec.due] != null) load[rec.due]++;
-  // a card marked known keeps its one check where it is (domain/known.js): clamping hundreds of them before the exam
-  // would bury the days that matter
-  const ids = Object.keys(store).filter(id => { const r = /** @type {any} */ (store[id]); return r && r.reps && r.due && r.due > cap && !(r.known && !r.known.checked); }).sort();
-  for (const id of ids) {
-    let best = days[0];
-    for (const d of days) if (load[d] < load[best]) best = d;
-    out[id] = best; load[best]++;
+  /** @type {Record<string, number>} */ const room = Object.fromEntries(days.map(d => [d, Math.max(0, Math.floor(capacity(d)))]));
+  /** @type {{id: string, r: number, from: string, at: string}[]} */ const owed = [];
+  for (const id of Object.keys(store).sort()) {
+    const r = /** @type {any} */ (store[id]);
+    if (!r || !r.reps || !r.due) continue;
+    const marked = r.known && !r.known.checked;
+    if (r.due >= tomorrow && r.due <= cap && (marked || !settled(r))) { load[r.due]++; continue; }
+    if (marked || !settled(r)) continue;
+    const rx = R(D8.diff(r.last, exam), r.S);
+    const from = D8.add(r.last, 1) > tomorrow ? D8.add(r.last, 1) : tomorrow;
+    if (r.due > cap) { if (rx < EXAM_RECALL && from <= cap) owed.push({ id, r: rx, from, at: '' }); continue; }
+    if (r.due < tomorrow) continue;
+    if (pulled(r, exam)) {
+      if (rx >= EXAM_RECALL) out[id] = naturalDue(r);
+      else owed.push({ id, r: rx, from, at: r.due });
+      continue;
+    }
+    load[r.due]++;
+  }
+  owed.sort((a, b) => a.r - b.r || a.id.localeCompare(b.id));
+  // a pulled card that owes the review keeps its day while the day has room
+  for (const o of owed) if (o.at && load[o.at] < room[o.at]) { load[o.at]++; o.at = '!' + o.at; }
+  for (const o of owed) {
+    if (o.at.startsWith('!')) { o.at = o.at.slice(1); continue; }
+    let best = '', bestOver = Infinity;
+    for (let i = days.length - 1; i >= 0 && days[i] >= o.from; i--) {
+      const d = days[i];
+      if (load[d] < room[d]) { best = d; bestOver = -1; break; }
+      const over = room[d] ? (load[d] + 1) / room[d] : Infinity;
+      if (over < bestOver || !best) { best = d; bestOver = over; }
+    }
+    load[best]++; o.at = best;
+  }
+  for (const o of owed) if (store[o.id].due !== o.at) out[o.id] = o.at;
+  return out;
+}
+
+/**
+ * A side deck's cards pulled before the exam by an earlier build (above) go back to their own due date (later, never
+ * earlier): an exam never schedules Word clusters, Word building, situations or reading. {id: newDue}.
+ * @param {Record<string, any>} store @param {{today: string, exam: string|null, phase: string}} ctx
+ * @returns {Record<string, string>}
+ */
+function unpull(store, ctx) {
+  /** @type {Record<string, string>} */
+  const out = {};
+  if (!ctx.exam || open(ctx.phase) || ctx.phase === 'day') return out;
+  for (const id of Object.keys(store).sort()) {
+    const r = /** @type {any} */ (store[id]);
+    if (r && !(r.known && !r.known.checked) && r.due > ctx.today && pulled(r, ctx.exam)) out[id] = naturalDue(r);
   }
   return out;
 }
-const api = { W, R, Ron, interval, init, next, rate, schedule, dueFor, D0, recap };
+const api = { W, R, Ron, interval, init, next, rate, schedule, dueFor, D0, recap, unpull, EXAM_RECALL, DELIVERY_RECALL };
 export default api;
-export { W, R, Ron, interval, init, next, rate, schedule, dueFor, D0, recap };
+export { W, R, Ron, interval, init, next, rate, schedule, dueFor, D0, recap, unpull, EXAM_RECALL, DELIVERY_RECALL };

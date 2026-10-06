@@ -19,23 +19,38 @@ test("no exam date: no cap, 'after' retention, stage may reach 3", () => {
 test('a long interval is capped at exam−1 with a date, and not without one', () => {
   const withDate = FS.schedule(strong, { g: 3, ms: 3000, onTime: true }, { ...context({ today: '2026-10-04', exam: '2026-10-09' }), forecast: () => 0 }).rec;
   const without = FS.schedule(strong, { g: 3, ms: 3000, onTime: true }, context({ today: '2026-10-04', exam: null })).rec;
-  assert.ok(withDate.due <= '2026-10-08' || FS.R(diff('2026-10-04', '2026-10-09'), withDate.S) >= 0.95);
+  assert.ok(withDate.due <= '2026-10-08' || FS.R(diff('2026-10-04', '2026-10-09'), withDate.S) >= FS.EXAM_RECALL);
   assert.ok(without.due > '2026-10-08');
 });
 
-test('recap: moving the exam earlier clamps later reviews, spread over cap−2 … cap', () => {
+test('recap (hotfix): owed reviews go as late as each day holds, from exam − 1 back; never earlier than needed', () => {
+  // exam 10 Oct, today 3 Oct: window days 4 … 9 Oct. Cards a–c are due after the exam and would be recalled on the
+  // day with less than 0.90; d will be (S 400); e and f are already due inside the window; g is not answered yet.
+  const R0 = (/** @type {number} */ S, /** @type {string} */ last, /** @type {string} */ due) => ({ S, D: 5, reps: 3, last, due, learn: null, relearn: false });
   const store = {
-    a: { reps: 3, due: '2026-10-20' }, b: { reps: 3, due: '2026-10-25' }, c: { reps: 3, due: '2026-10-30' },
-    d: { reps: 3, due: '2026-10-07' }, e: { reps: 2, due: '2026-10-08' }, f: { reps: 0, due: '2026-11-30' },
+    a: R0(3, '2026-10-01', '2026-10-20'), b: R0(4, '2026-10-01', '2026-10-25'), c: R0(5, '2026-10-02', '2026-10-30'),
+    d: R0(400, '2026-10-01', '2026-12-30'), e: R0(6, '2026-10-02', '2026-10-09'), f: R0(6, '2026-10-02', '2026-10-08'), g: { reps: 0, due: '2026-11-30' },
   };
-  const ctx = context({ today: '2026-10-03', exam: '2026-10-10' });   // cap = 9 Oct, window 7 … 9 Oct
-  const moved = FS.recap(store, ctx);
-  assert.deepEqual(Object.keys(moved).sort(), ['a', 'b', 'c'], 'only seen cards due after the cap move');
-  for (const d of Object.values(moved)) assert.ok(d >= '2026-10-07' && d <= '2026-10-09');
-  // 7 Oct and 8 Oct already hold one card each, so the first clamped card goes to the empty cap day
-  assert.equal(moved.a, '2026-10-09');
-  // then the least-loaded day, later days winning ties: 9 Oct (1 → 2), then 8 Oct (1 → 2); every day ends at 1–2 cards
-  assert.deepEqual([moved.b, moved.c], ['2026-10-09', '2026-10-08']);
+  const ctx = context({ today: '2026-10-03', exam: '2026-10-10' });
+  for (const id of ['a', 'b', 'c']) assert.ok(FS.R(diff(store[id].last, '2026-10-10'), store[id].S) < FS.EXAM_RECALL, id);
+  // no limit: every owed review on exam − 1
+  assert.deepEqual(FS.recap(store, ctx), { a: '2026-10-09', b: '2026-10-09', c: '2026-10-09' });
+  // 2 reviews a day (1 on the eve): the eve keeps e, the owed ones go back day by day, the most stable furthest (an early review costs it least)
+  const cap = (/** @type {string} */ d) => (d === '2026-10-09' ? 1 : 2);
+  const m = FS.recap(store, ctx, cap);
+  assert.deepEqual(m, { a: '2026-10-08', b: '2026-10-07', c: '2026-10-07' });
+  const load = /** @type {Record<string, number>} */ ({});
+  for (const [id, r] of Object.entries(store)) { const d = m[id] || r.due; if (r.reps && d <= '2026-10-09') load[d] = (load[d] || 0) + 1; }
+  for (const [d, n] of Object.entries(load)) assert.ok(n <= cap(d), `${d}: ${n}`);
+  // a card pulled by the old rule (exam − 3 … − 1) that is recalled on the day anyway goes back to its own date
+  const old = { p: R0(30, '2026-10-02', '2026-10-08') };
+  const back = FS.recap(old, ctx);
+  assert.ok(back.p > '2026-10-09' && back.p === add('2026-10-02', FS.interval(30, 0.90)), 'its own interval, later');
+  // the same card due the day after its last review (a learning step's +1) is never touched
+  assert.deepEqual(FS.recap({ p: R0(30, '2026-10-07', '2026-10-08') }, ctx), {});
+  // idempotent
+  const after = Object.fromEntries(Object.entries(store).map(([id, r]) => [id, m[id] ? { ...r, due: m[id] } : r]));
+  assert.deepEqual(FS.recap(after, ctx, cap), {});
 });
 
 test('recap: nothing moves without a date, after the exam, on the day, or when the cap is not ahead', () => {
@@ -70,8 +85,8 @@ test('the exam cap is applied when due dates are read: moving the date 9 → 5 �
   store.set('settings', { exam: { type: 'goethe-b1', date: exam, modules: [] } });
   const cards = {
     a: { S: 3, D: 5, reps: 3, last: '2026-10-02', due: '2026-10-06', learn: null },
-    b: { S: 4, D: 5, reps: 3, last: '2026-10-02', due: '2026-10-20', learn: null },
-    c: { S: 5, D: 5, reps: 3, last: '2026-10-01', due: '2026-10-11', learn: null },
+    b: { S: 1.5, D: 5, reps: 3, last: '2026-10-02', due: '2026-10-20', learn: null },
+    c: { S: 2, D: 5, reps: 3, last: '2026-10-01', due: '2026-10-11', learn: null },
     d: { S: 400, D: 2, reps: 9, last: '2026-10-02', due: '2026-12-01', learn: null },
   };
   store.putCards('b1', Object.entries(cards));

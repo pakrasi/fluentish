@@ -12,7 +12,7 @@
    not lapsed). Choosing a start level ("Start at B1") opens everything up to it at once. */
 import * as FS from './fsrs.js';
 import * as D8 from './days.js';
-import { isDue } from './b1ready.js';
+import { isDue, sideCap } from './b1ready.js';
 import * as Sp from './speech.js';
 
 export const LEVELS = /** @type {const} */ (['A1', 'A2', 'B1', 'B2']);
@@ -218,7 +218,8 @@ export function interleave(list) {
 export function compose({ items, cards, c, pick, start, newLeft, size = ROUND_SIZE }) {
   const open = openLevels(levelStates(items, cards, start));
   const pool = items.filter(it => inPick(it, pick));
-  const due = pool.filter(it => cards[it.id]?.reps && isDue(cards[it.id], c.today, c))
+  // situations keep their own schedule through an exam window (b1ready.sideCap)
+  const due = pool.filter(it => cards[it.id]?.reps && isDue(cards[it.id], c.today, sideCap(c)))
     .sort((a, b) => String(cards[a.id].due).localeCompare(String(cards[b.id].due)) || idx(a.lv) - idx(b.lv)).slice(0, size);
   const cap = !c.newItems ? 0 : pick.kind === 'mixed' ? Math.max(0, newLeft) : PICK_NEW;
   const fresh = newOrder(pool, cards, start, open).slice(0, Math.max(0, Math.min(cap, size - due.length)));
@@ -239,9 +240,10 @@ export function buckets({ items, cards, c, pick, start, newLeft }) {
   const pool = items.filter(it => inPick(it, pick));
   const seen = (/** @type {any} */ it) => !!cards[it.id]?.reps;
   const weak = (/** @type {any} */ a, /** @type {any} */ b) => FS.Ron(cards[a.id], c.today) - FS.Ron(cards[b.id], c.today);
-  return { due: pool.filter(it => seen(it) && isDue(cards[it.id], c.today, c)).sort(weak).map(it => it.id),
+  const sc = sideCap(c);
+  return { due: pool.filter(it => seen(it) && isDue(cards[it.id], c.today, sc)).sort(weak).map(it => it.id),
     fresh: newOrder(pool, cards, start, open).map(it => it.id),
-    rest: pool.filter(it => seen(it) && !isDue(cards[it.id], c.today, c)).sort(weak).map(it => it.id),
+    rest: pool.filter(it => seen(it) && !isDue(cards[it.id], c.today, sc)).sort(weak).map(it => it.id),
     newLeft: !c.newItems ? 0 : pick.kind === 'mixed' ? Math.max(0, newLeft) : PICK_NEW, daily: pick.kind === 'mixed' };
 }
 
@@ -261,7 +263,8 @@ export const resumable = (r, today, now) => !!(r && Array.isArray(r.queue) && r.
  * @returns {{rec: any, reinsert: null | 'learn' | 'lapse', wrote: boolean}}
  */
 export function gradeCard({ rec, g, c, now, ms = 0, forecast = () => 0, src = 'speech' }) {
-  const ctx = { ...c, forecast };
+  // a situation keeps its own interval through an exam window (fsrs.dueFor ctx.side)
+  const ctx = { ...sideCap(c), forecast };
   const res = FS.schedule(rec, { g, ms, onTime: g >= 3, flags: '', mode: 's', src }, ctx, now);
   if (g === 4 && res.reinsert === 'learn' && res.rec && (!rec || !rec.reps)) {
     return { rec: { ...res.rec, learn: null, due: FS.dueFor(res.rec.S, ctx) }, reinsert: null, wrote: res.wrote };
@@ -334,10 +337,10 @@ export function summary(round, byId) {
 /* ------------------------------------------------------------------ */
 
 /**
- * Due cards in deck 'speak' (only SS: ids count; due dates capped for the exam as everywhere).
+ * Due cards in deck 'speak' (only SS: ids count; at their own due dates: an exam never pulls situations forward).
  * @param {Record<string, any>} cards @param {any} c
  */
-export const dueCount = (cards, c) => Object.entries(cards || {}).filter(([id, r]) => id.startsWith(PREFIX) && isDue(r, c.today, c)).length;
+export const dueCount = (cards, c) => { const sc = sideCap(c); return Object.entries(cards || {}).filter(([id, r]) => id.startsWith(PREFIX) && isDue(r, c.today, sc)).length; };
 
 /**
  * The stats Today reads without loading the bank: unseen items in open levels.

@@ -22,7 +22,7 @@ import { courseWeek, weekMinutes } from '../../domain/week.js';
 import { courseGoal } from '../../domain/levels.js';
 import { summary as progressSummary } from '../../data/progress.js';
 import { activeCourse } from '../../data/settings.js';
-import { newPerDayChosen, buildShare } from '../../domain/budget.js';
+import { newPerDayChosen, buildShare, steadyFor } from '../../domain/budget.js';
 import * as Conv from '../../domain/conversation.js';
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
@@ -143,7 +143,9 @@ export async function mount(el, ctx) {
       seg({ label: t('practice.newPerDay'), value: newPerDayChosen(s) ? String(s.newPerDay) : 'auto',
         options: [['auto', t('practice.newAuto')], ...[10, 20, 30, 40].map(n => /** @type {[string, string]} */ ([String(n), String(n)]))],
         onChange: v => write('newPerDay', v === 'auto' ? null : Number(v)) }),
-      h('p', { class: 'field-hint' }, t('practice.newPerDay.hint')));
+      h('p', { class: 'field-hint' }, t('practice.newPerDay.hint')),
+      // the sustainable rate next to the number (a chosen number is never capped by it)
+      h('p', { class: 'field-hint', id: 'profile-steady' }, t('practice.newPerDay.steady', { n: steadyFor(s) })));
     // Word building's share of those new items (it was a chip row on Word building's page; one allowance, one place)
     const buildNew = h('div', { class: 'form-field', id: 'profile-build-new' }, h('p', { class: 'field-label' }, t('profile.buildNew')),
       seg({ label: t('profile.buildNew'), value: String(buildShare(s)), options: [0, 3, 5, 8, 12].map(n => /** @type {[string, string]} */ ([String(n), String(n)])),

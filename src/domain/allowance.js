@@ -28,8 +28,8 @@
    that more than one screen shows (todayBudget, simToday, clusterToday, dueTomorrow, roundAction), and the week's day
    as plan providers read it (todayPlan), the 14-day review forecast (reviewForecast) and the days away (awayDays),
    round 4 lane L1b. dayAllowance is kept per store revision (store.rev) and day. */
-import { isDue, dueOn } from './b1ready.js';
-import { allowance, mode as modeOf, ROUND, REVIEW_COST, FORECAST_DAYS } from './budget.js';
+import { isDue, dueOn, sideCap, deckCap } from './b1ready.js';
+import { allowance, mode as modeOf, ROUND, REVIEW_COST, FORECAST_DAYS, plannedWeekMin } from './budget.js';
 import { isWriting } from './itemids.js';
 import { writingFocus } from './modules.js';
 import { shownToday as buildShown } from './wordbuild-plan.js';
@@ -146,6 +146,8 @@ export function deckInputs({ store, c, settings }) {
     if (s.deliverOn === c.today) continue;
     const w = scriptWords(s, cardOf, c); sDue += w.due.filter(id => cardOf(id)?.deck === St.DECK).length; sOpen += w.fresh.length;
   }
+  // the side decks keep their own schedule through an exam window (b1ready.sideCap)
+  const sc = sideCap(c);
   const bCards = store.cards('build') || {};
   const bStats = (store.get('build', {}) || {}).stats;
   const clCards = store.cards('clusters') || {};
@@ -156,10 +158,10 @@ export function deckInputs({ store, c, settings }) {
       b1: { due, open: stats ? (stats.unseen ?? Math.max(0, stats.pool - Object.keys(cards).length)) : Infinity, shown: b1Shown },
       writing: { due: wDue, open: stats && stats.writing ? stats.writing.unseen : 0, shown: by.w || 0 },
       mistakes: { due: mDue, open: mOpen, shown: by.m || 0 },
-      speak: { due: dueCount(store.cards(SIM_DECK), c), open: sim.stats && Number.isFinite(sim.stats.unseen) ? sim.stats.unseen : Infinity, shown: simD.newShown || 0 },
+      speak: { due: dueCount(store.cards(SIM_DECK), sc), open: sim.stats && Number.isFinite(sim.stats.unseen) ? sim.stats.unseen : Infinity, shown: simD.newShown || 0 },
       script: { due: sDue, open: sOpen, shown: newShownToday(store.get(St.PROGRESS, {}) || {}, c.today) },
-      build: { due: Object.values(bCards).filter(r => r && r.reps && isDue(r, c.today, c)).length, open: bStats && bStats.day === c.today ? bStats.open : 0, shown: buildShown(bCards, c.today).all },
-      clusters: { due: Object.values(clCards).filter(r => r && r.reps && isDue(r, c.today, c)).length, open: Infinity, shown: cl && cl.day === c.today ? cl.newShown || 0 : 0 },
+      build: { due: Object.values(bCards).filter(r => r && r.reps && isDue(r, c.today, sc)).length, open: bStats && bStats.day === c.today ? bStats.open : 0, shown: buildShown(bCards, c.today).all },
+      clusters: { due: Object.values(clCards).filter(r => r && r.reps && isDue(r, c.today, sc)).length, open: Infinity, shown: cl && cl.day === c.today ? cl.newShown || 0 : 0 },
       // no legacy deck: the course's '<lang>:read' decks add to it (withNamed)
       read: { due: 0, open: 0, shown: 0 },
     },
@@ -186,7 +188,8 @@ function withNamed(store, c, settings, inp) {
     // reading's open items are the words its feature recorded today (none without a record): a saved word is new
     // only once the reader says so, and a reading card alone never takes a share from b1 (L1b)
     const open = st && st.day === c.today && Number.isFinite(st.open) ? Math.max(0, /** @type {number} */ (st.open)) : k === 'read' ? 0 : Infinity;
-    x.due += cards.filter(r => r && r.reps && isDue(r, c.today, c)).length;
+    const cap = deckCap(c, deck);
+    x.due += cards.filter(r => r && r.reps && isDue(r, c.today, cap)).length;
     x.shown += cards.filter(r => r && r.reps && r.first === c.today).length;
     x.open = (x.open || 0) + open;
     if (k in inp.started && cards.some(r => r && r.reps)) inp.started[k] = true;
@@ -232,9 +235,10 @@ export function reviewForecast({ store, c, settings }) {
     // a legacy deck is its own allowance kind (speak, build … at their cost); a course deck counts as its name says
     const kind = /** @type {import('./budget.js').DeckId} */ (LEGACY_DECKS.includes(deck) ? deck : allowanceDeck(deck));
     const cost = REVIEW_COST[kind] ?? REVIEW_COST.b1;
+    const cap = deckCap(c, deck);
     for (const [id, r] of Object.entries(store.cards(deck) || {})) {
       if (!r || !r.reps || /^SR:/.test(id)) continue;
-      if (isDue(r, c.today, c) || (dueOn(r, c) || '') <= last) reviewMin += cost;
+      if (isDue(r, c.today, cap) || (dueOn(r, cap) || '') <= last) reviewMin += cost;
     }
   }
   const plannedMin = daysAhead(settings, c.today, FORECAST_DAYS).reduce((n, x) => n + x.minutes, 0);
@@ -289,7 +293,7 @@ function computeDay({ store, c, settings }) {
     c, settings, decks: inp.decks, priorityLeft: inp.stats ? inp.stats.priorityLeft ?? null : null, focus, fixedMin, fresh,
     goals: { script: inp.scripts.length > 0, build: md === 'maintenance' || inp.started.build, clusters: inp.started.clusters },
     examDecks: { script: md === 'exam' ? inp.scripts.length : 0 }, scripts: inp.scripts.length,
-    day, forecast: day.planned && md === 'maintenance' ? reviewForecast({ store, c, settings }) : null,
+    day, forecast: day.planned && md === 'maintenance' ? reviewForecast({ store, c, settings }) : null, weekMin: plannedWeekMin(settings),
   });
   const plan = a.plan ? { ...a.plan, ...(day.asked ? { asked: day.asked } : {}), away: awayDays(store, c.today) } : undefined;
   return { ...a, ...(plan ? { plan } : {}), task, fresh, started: inp.started, stats: inp.stats, day: inp.day };
@@ -371,9 +375,10 @@ export function dueTomorrow({ store, c, settings }) {
   let n = 0;
   const mine = courseDecks(settings);
   for (const deck of [...['b1', SIM_DECK, 'script', 'build', 'clusters'].filter(d => mine.includes(d)), ...courseNamed(store, settings)]) {
+    const cap = deckCap(c, deck);
     for (const [id, r] of Object.entries(store.cards(deck) || {})) {
       if (!r || !r.reps || /^SR:/.test(id)) continue;
-      if ((dueOn(r, c) || '') <= tomorrow || r.learn != null || r.relearn) n++;
+      if ((dueOn(r, cap) || '') <= tomorrow || r.learn != null || r.relearn) n++;
     }
   }
   return n;

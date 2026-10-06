@@ -278,9 +278,10 @@ test('Today: a situations row from deck speak, kept out of the B1 review count; 
   // nothing left after a round today: the row shows done
   const done = store({ speak: { 'SS:greet-01': learntRec({ due: '2026-10-06' }) }, kv: { 'speak.sim': { stats: { day: '2026-10-04', unseen: 0 }, day: { day: '2026-10-04', newShown: 3, rounds: 1 } } } });
   assert.equal(planItems({ store: done, c, settings, exam: null, t }).find(r => r.id === 'practice.situations').done, true);
-  // the eve: reviews only
+  // the eve: reviews only. Hotfix: situations are a side deck, so the one due on the exam day stays there (it is no
+  // longer pulled onto the eve); the eve has the one due before it
   const eve = planItems({ store: store({ speak }), c: context({ today: '2026-10-08', exam: EXAM }), settings, exam: null, t }).find(r => r.id === 'practice.situations');
-  assert.match(eve.detail, /plan.sim.detail \{"n":2\}/);
+  assert.match(eve.detail, /plan.sim.detail \{"n":1\}/);
 });
 
 test('ids: SS: names a speaking situation', () => {

@@ -21,7 +21,7 @@ import { langAttr, dirAttr } from '../../core/lang.js';
 import { MODES, summarise, nextUp } from '../../domain/atlas.js';
 import { TYPES } from '../../domain/clusters.js';
 import { roundMinutes } from '../../domain/today.js';
-import { isDue } from '../../domain/b1ready.js';
+import { isDue, sideCap } from '../../domain/b1ready.js';
 import { skipsNew } from '../../domain/known.js';
 import { marked } from '../../data/known.js';
 import { loadAtlas, layoutOf, scores, loadDetails, prefs, setPrefs } from '../../data/atlas.js';
@@ -141,7 +141,7 @@ export async function mountGroup(el, ctx, type, id) {
   /** @type {HTMLElement | null} */ let primary = null, say = null;
   if (cl && CL) {
     const c = ctx.clock.ctx(), mk = marked(store);
-    const plan = compose({ ids: cardIds(cl, CL.ix), cards: store.cards(DECK) || {}, c, isDue: rec => isDue(rec, c.today, /** @type {any} */ (c)), recall: recallOf(c), skip: x => skipsNew(mk, x), zipf: zipfOf(CL.ix) });
+    const plan = compose({ ids: cardIds(cl, CL.ix), cards: store.cards(DECK) || {}, c, isDue: rec => isDue(rec, c.today, sideCap(c)), recall: recallOf(c), skip: x => skipsNew(mk, x), zipf: zipfOf(CL.ix) });
     const n = plan.ids.length;
     if (n) {
       primary = h('a', { class: 'btn btn-primary pressable', href: `#/practice/round?kind=${encodeURIComponent(`cluster:${key}`)}&from=${encodeURIComponent(from)}` },

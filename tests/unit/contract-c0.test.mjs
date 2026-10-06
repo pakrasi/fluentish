@@ -136,8 +136,9 @@ test('decks: <lang>:read counts in the read allowance deck, a side deck that cos
   assert.deepEqual(without.decks.read, { want: 0, newPerDay: 0, newLeft: 0, shown: 0, due: 0, rounds: 0, minutes: 0, paused: false });
   // L1b: in maintenance the read deck wants practice.readNew (6 by default) of its open items, shared like the others
   assert.equal(withRead.decks.read.want, 6);
-  assert.equal(withRead.decks.read.newPerDay, 6);
-  assert.equal(withRead.newPerDay, withRead.decks.b1.newPerDay + 6);
+  // hotfix: the day's number is the sustainable rate, which the decks share by their wants (read 3 of its 6)
+  assert.equal(withRead.decks.read.newPerDay, 3);
+  assert.equal(withRead.newPerDay, withRead.decks.b1.newPerDay + 3);
   assert.equal(allowance({ c: MAINT, settings: { ...settings, practice: { ...settings.practice, readNew: 2 } }, decks: { b1: { due: 10, open: 50 }, read: { open: 40 } } }).decks.read.want, 2);
   assert.equal(allowance({ c: EXAM, settings, decks: { b1: { due: 10, open: 50 }, read: { open: 40 } } }).decks.read.newPerDay, 0, 'none in exam week');
   const due = allowance({ c: MAINT, settings, decks: { b1: { due: 10, open: 50 }, read: { due: 6, open: 40 } } });

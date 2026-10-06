@@ -348,6 +348,7 @@ export default {
 
   'practice.newPerDay': 'New items per day',
   'practice.newPerDay.hint': 'Auto fits new items into your minutes and stops two days before the exam.',
+  'practice.newPerDay.steady': { one: 'Your weekly minutes hold about {n} new item a day with its reviews. Auto takes at most that many.', other: 'Your weekly minutes hold about {n} new items a day with their reviews. Auto takes at most that many.' },
   'profile.buildNew': 'Word building: new cards a day',
   'profile.buildNew.hint': 'Part of your new items a day, not added to them. Paused while an exam is days away.',
   'practice.newAuto': 'Auto',
@@ -1953,6 +1954,8 @@ export default {
   'week.why.break': 'You were away {d} days. {n} reviews are due. Today takes the {k} most urgent; the rest are spread over the next 3 days. New items come back when one day can hold the reviews.',
   'week.why.breakDue': '{n} reviews are due. Today takes the {k} most urgent; the rest are spread over the next 3 days. New items come back when one day can hold the reviews.',
   'week.why.reviewsDue': 'No new items today: the reviews due fill the day.',
+  'week.why.offWindow': 'Off day, but the exam is close: today plans your reviews and a few new items.',
+  'week.why.lightWindow': 'Light day, but the exam is close: today plans your reviews and a few new items.',
   'week.why.reviewsHigh': { one: '{n} new (fewer this week: reviews are high)', other: '{n} new (fewer this week: reviews are high)' },
   // the level gate (domain/levels.js)
   'goal.gate.strand.g': 'B2 grammar',

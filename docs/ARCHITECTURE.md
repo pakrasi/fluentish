@@ -229,7 +229,7 @@ The repo is public; a learner's results, recordings, vocab, mistakes and keys ne
 | Phase | When | Effect |
 |---|---|---|
 | `none` | no date, or more than 14 days before it | no countdown, no caps; FSRS and readiness use the `after` rules (retention 0.90, recall measured today); Today offers "Set an exam date" only for an exam goal with no date |
-| `week` | 14 … 3 days | countdown and runway; new items allowed; reviews capped at exam−1, load-balanced over exam−3…exam−1 |
+| `week` | 14 … 3 days | countdown and runway; new items allowed; an exam deck's card that would be recalled on the day under 0.90 gets one review before it, placed as late as each window day's minutes allow (the eve lightest); side decks keep their own schedule (CONTRIBUTING-FEATURES, the exam window) |
 | `lastNew` | exam−2 | last day for new items |
 | `eve` | exam−1 | no mock, no new items: reviews and the Sprechen frames |
 | `day` | exam day | a 3-minute warm-up only; FSRS writes nothing |

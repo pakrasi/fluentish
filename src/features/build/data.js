@@ -58,7 +58,7 @@ export function today(ctx, d, k = null) {
   const c = ctx.clock.ctx();
   const cards = cardsOf(ctx.store);
   const known = new Set(Object.keys(cards));
-  const dueIds = Object.entries(cards).filter(([id, r]) => r && r.reps && RD.isDue(r, c.today, c) && known.has(id)).map(([id]) => id);
+  const dueIds = Object.entries(cards).filter(([id, r]) => r && r.reps && RD.isDue(r, c.today, RD.sideCap(c)) && known.has(id)).map(([id]) => id);
   const game = ctx.store.get(GAME, null);
   const root = (/** @type {string} */ id) => { const r = d.R.get(id); const s = k && r ? k.get(`W:${r.lemma}`) : null; return { state: s ? s.state : 'unseen', zipf: r ? d.zipf(r.lemma) : 0 }; };
   const open = openNew({ content: d.c, cards, today: c.today, root, missed: recentMisses(game, c.today, D8.diff) });
@@ -79,7 +79,7 @@ function writeStats(store, today, open) {
 }
 
 /** isDue and recall for the composer. @param {any} c clock ctx */
-export const dueFns = c => ({ isDue: (/** @type {any} */ r) => RD.isDue(r, c.today, c), recall: (/** @type {any} */ r) => FS.Ron(r, c.today) });
+export const dueFns = c => ({ isDue: (/** @type {any} */ r) => RD.isDue(r, c.today, RD.sideCap(c)), recall: (/** @type {any} */ r) => FS.Ron(r, c.today) });
 
 /** The time zone for card.reviewed ctx. */
 const tz = () => { try { return Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC'; } catch { return 'UTC'; } };
@@ -93,9 +93,9 @@ export function saveAnswer(ctx, { id, g, ms = 0, flags = '', mode = 't' }) {
   const c = ctx.clock.ctx();
   const cards = cardsOf(ctx.store);
   const before = cards[id] ? structuredClone(cards[id]) : null;
-  const fc = RD.forecast(cards, c.today, 8, c);
+  const fc = RD.forecast(cards, c.today, 8, RD.sideCap(c));
   const forecast = (/** @type {string} */ day) => (fc.find((/** @type {any} */ x) => x.day === day) || {}).n || 0;
-  const res = FS.schedule(before, { g, ms, onTime: g >= 3, flags, mode, src: 'practice' }, { ...c, forecast }, Date.now());
+  const res = FS.schedule(before, { g, ms, onTime: g >= 3, flags, mode, src: 'practice' }, { ...RD.sideCap(c), forecast }, Date.now());
   if (res.rec) {
     ctx.store.putCards(DECK, [[id, res.rec]]);
     ctx.store.append('card.reviewed', { deck: DECK, itemId: id, g, ms: Math.round(ms), flags, mode, ctx: { exam: c.exam, phase: c.phase, tz: tz() },
@@ -111,7 +111,7 @@ export function saveAnswer(ctx, { id, g, ms = 0, flags = '', mode = 't' }) {
 export function whenFor(ctx, rec, t) {
   const c = ctx.clock.ctx();
   return [1, 2, 3, 4].map(g => {
-    const r = FS.schedule(rec ? structuredClone(rec) : null, { g: /** @type {1|2|3|4} */ (g) }, { ...c }, Date.now());
+    const r = FS.schedule(rec ? structuredClone(rec) : null, { g: /** @type {1|2|3|4} */ (g) }, { ...RD.sideCap(c) }, Date.now());
     if (!r.rec || r.reinsert) return t('build.when.round');
     const n = D8.diff(c.today, r.rec.due);
     return n <= 0 ? t('build.when.round') : t('build.when.days', { n });

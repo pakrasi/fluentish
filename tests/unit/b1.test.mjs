@@ -67,18 +67,18 @@ test('FSRS-4.5, hand calculation for the sequence 3, 3, 1, 3', () => {
     assert.equal(rec.lapses, 1); assert.equal(reinsert, 'lapse'); assert.equal(rec.due, '2026-10-04');
     ({ rec } = FS.schedule(rec, { g: 3, ms: 4000 }, ctx('2026-10-04')));
     assert.equal(rec.relearn, false); assert.equal(rec.due, '2026-10-05', 'one correct reinsertion → tomorrow');
-    // the cap: a long interval lands on exam−3 … exam−1, on the least-loaded day
+    // the cap (hotfix: R(exam) < EXAM_RECALL 0.90): a long interval lands from tomorrow to exam−2, on the least-loaded day
     const strong = { S: 40, D: 4, reps: 5, lapses: 0, last: '2026-10-03', due: '2026-10-04', stage: 2, streak: 0, learn: null, hist: [] };
     const load = { '2026-10-06': 30, '2026-10-07': 10, '2026-10-08': 50 };
     ({ rec } = FS.schedule(strong, { g: 3, ms: 3000, onTime: true }, ctx('2026-10-04', { forecast: d => load[d] || 0 })));
-    assert.ok(rec.due <= '2026-10-08' || FS.R(D.diff('2026-10-04', exam), rec.S) >= 0.95, 'capped before the exam');
+    assert.ok(rec.due <= '2026-10-08' || FS.R(D.diff('2026-10-04', exam), rec.S) >= FS.EXAM_RECALL, 'capped before the exam');
     if (rec.due <= '2026-10-08') assert.equal(rec.due, '2026-10-07', 'least-loaded day');
     const weak = { S: 6, D: 6, reps: 3, lapses: 0, last: '2026-10-02', due: '2026-10-03', stage: 1, streak: 0, learn: null, hist: [] };
     for (const today of ['2026-10-03', '2026-10-05', '2026-10-07']) {
       const r = FS.schedule(weak, { g: 3, ms: 3000 }, ctx(today, { forecast: () => 0 })).rec;
-      assert.ok(r.due <= '2026-10-08' || FS.R(D.diff(today, exam), r.S) >= 0.95, `due ${r.due} ≤ exam−1 unless R(exam) ≥ 0.95 (from ${today})`);
+      assert.ok(r.due <= '2026-10-08' || FS.R(D.diff(today, exam), r.S) >= FS.EXAM_RECALL, `due ${r.due} ≤ exam−1 unless R(exam) ≥ 0.90 (from ${today})`);
     }
-    const eve = FS.schedule({ ...weak, S: 0.6, last: '2026-10-07' }, { g: 2, ms: 3000 }, ctx('2026-10-08')).rec; assert.ok(eve.due === '2026-10-09' || FS.R(1, eve.S) >= 0.95, 'eve: due on the exam day at the latest');
+    const eve = FS.schedule({ ...weak, S: 0.6, last: '2026-10-07' }, { g: 2, ms: 3000 }, ctx('2026-10-08')).rec; assert.ok(eve.due === '2026-10-09' || FS.R(1, eve.S) >= FS.EXAM_RECALL, 'eve: due on the exam day at the latest');
     const day = FS.schedule(weak, { g: 1, ms: 3000 }, ctx('2026-10-09'));
     assert.equal(day.wrote, false); assert.equal(day.rec.S, weak.S, 'exam day: log only');
     assert.equal(FS.schedule(null, { g: 3 }, ctx('2026-10-09')).rec, null, 'exam day: no new records');

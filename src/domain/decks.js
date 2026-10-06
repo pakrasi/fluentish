@@ -98,6 +98,17 @@ export function allowanceDeck(deck) {
 }
 
 /**
+ * Whether an exam date schedules a deck's cards (the in-window cap and recap, b1ready.dueOn, fsrs.dueFor, fsrs.recap):
+ * the exam's own decks, deck b1 (its review round, Schreiben phrases and mistakes) and a course's decks of the same
+ * kinds (fr:core, fr:writing …). Word clusters, Word building, situations, scripts and reading keep their own schedule
+ * through an exam window. @param {string} deck
+ */
+export function examDeck(deck) {
+  const k = deck === 'b1' ? 'b1' : LEGACY_DECKS.includes(deck) ? deck : allowanceDeck(deck);
+  return k === 'b1' || k === 'writing' || k === 'mistakes';
+}
+
+/**
  * The kv collection where a course deck's feature records how many new items it has open today ({[deck]: {day,
  * open}}), as 'b1.session' stats do for deck b1. Read by domain/allowance.js; a deck without a record today has any
  * number open (as clusters).

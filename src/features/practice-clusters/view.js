@@ -29,7 +29,7 @@ import * as S from '../../domain/sim.js';
 import { forecaster, tz, addActivity } from '../shared/data.js';
 import { loadClusters, loadKnowledge, countsOf, cellsOf, dueCards, recallOf, state, update, dayOf, DECK } from '../shared/cluster-data.js';
 import { cardIds, itemFor, compose, zipfOf } from '../shared/cluster-items.js';
-import { isDue } from '../../domain/b1ready.js';
+import { isDue, sideCap } from '../../domain/b1ready.js';
 import { marked } from '../../data/known.js';
 import { skipsNew } from '../../domain/known.js';
 import { knowButton, isKnowKey, knowCard, knownResult } from '../shared/iknow.js';
@@ -119,7 +119,7 @@ async function mountSay(el, ctx, key) {
   if (!cl) { ctx.go('/practice/clusters', { replace: true }); return restore; }
   let c = ctx.clock.ctx();
   const mk = marked(store);
-  const plan = compose({ ids: cardIds(cl, data.ix), cards: store.cards(DECK) || {}, c, isDue: rec => isDue(rec, c.today, c), recall: recallOf(c), skip: x => skipsNew(mk, x), zipf: zipfOf(data.ix) });
+  const plan = compose({ ids: cardIds(cl, data.ix), cards: store.cards(DECK) || {}, c, isDue: rec => isDue(rec, c.today, sideCap(c)), recall: recallOf(c), skip: x => skipsNew(mk, x), zipf: zipfOf(data.ix) });
   if (!plan.ids.length) { ctx.go(backTo.slice(1), { replace: true }); return restore; }
   const round = { queue: plan.ids.map(id => ({ id })), i: 0, results: /** @type {any[]} */ ([]), planned: plan.ids.length };
   /** @type {Record<string, any>} */ const prev = {};

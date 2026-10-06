@@ -252,9 +252,13 @@ test('a new learner\'s first week: level-fit, a few decks, nothing for the exam'
   const items = [...planItems({ store, c, settings, exam: null, t }), ...buildItems({ store, c, settings, t })];
   assert.deepEqual(items.map(r => r.id), ['practice.round'], 'a first round, no Schreiben phrases, no Word building, no game');
   assert.match(items[0].title, /plan\.firstRound/);
-  // day 3: situations open (4 new)
+  // day 3: situations open, but the day's whole number is the sustainable rate (hotfix: 8 at 30 min a day), which
+  // the b1 items take first
   kv.activity = { '2026-10-02': { minutes: 20, rounds: 2 } };
-  assert.equal(todayBudget({ store, c, settings }).decks.speak.newPerDay, 4);
+  const d3 = todayBudget({ store, c, settings });
+  assert.equal(d3.decks.speak.want, 4, 'situations want 4 from day 3');
+  assert.equal(d3.newPerDay, 8, 'at most the sustainable rate');
+  assert.equal(d3.decks.speak.newPerDay, 0);
   // day 8: the first week is over
   kv.activity = { '2026-09-26': { minutes: 20, rounds: 2 } };
   assert.equal(todayBudget({ store, c, settings }).mode, 'maintenance');

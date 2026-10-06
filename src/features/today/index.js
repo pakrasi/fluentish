@@ -243,8 +243,13 @@ export async function mount(el, ctx) {
           h('button', { type: 'button', class: 'btn pressable', onclick: () => { store.set(ANYWAY_KV, { day: c.today }); rerender(); } }, t('week.studyAnyway'))),
         laterEl);
     }
-    const why = calm ? whyLine(allow.plan, allow.reviews.due) : null;
-    const whyEl = !why ? null : why.welcome
+    // inside the exam window the exam plans the day (code audit P0-1): an Off or Light day still has its reviews and a
+    // few new items, and "Study anyway" makes an Off day a Normal one; no new items while the reviews fill the day
+    const winKind = !calm && allow.plan && (allow.plan.kind === 'off' || allow.plan.kind === 'light') && c.phase !== 'day' ? allow.plan.kind : null;
+    const examFull = !calm && (allow.why === 'reviewsDue' || allow.plan?.why === 'reviewsDue');
+    const why = calm ? whyLine(allow.plan, allow.reviews.due) : examFull ? { key: 'week.why.reviewsDue' } : winKind ? { key: winKind === 'off' ? 'week.why.offWindow' : 'week.why.lightWindow' } : null;
+    const anywayBtn = winKind === 'off' ? h('button', { type: 'button', class: 'btn pressable', onclick: () => { store.set(ANYWAY_KV, { day: c.today }); rerender(); } }, t('week.studyAnyway')) : null;
+    const whyEl = !why ? null : anywayBtn ? h('div', { class: 'plan-off' }, h('p', { class: 'caption plan-note plan-why' }, t(why.key, why.vars)), anywayBtn) : why.welcome
       ? notice({ children: [h('p', { class: 'notice-title' }, t('today.welcome')), h('p', null, t(why.key, why.vars))] })
       : h('p', { class: 'caption plan-note plan-why' }, t(why.key, why.vars));
     // "Welcome back" rises in once a day; reduced motion shows it in place

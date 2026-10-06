@@ -11,7 +11,7 @@ import FS from '../../src/domain/fsrs.js';
 import RD from '../../src/domain/b1ready.js';
 import { mode, allowance } from '../../src/domain/budget.js';
 import { hasMockExam, writingFocus } from '../../src/domain/modules.js';
-import { windowStep, windowRecap, windowDecks, examWindow, setupRows, WINDOW_KV } from '../../src/features/day.js';
+import { windowStep, windowRecap, windowDecks, windowCapacity, examWindow, setupRows, WINDOW_KV } from '../../src/features/day.js';
 import { Store } from '../../src/data/store.js';
 import { createMemoryAdapter } from '../../src/data/adapters/memory.js';
 import { createHlc } from '../../src/data/ids.js';
@@ -129,7 +129,7 @@ test('B1 in its window: allowance, mode and the scheduler are what they were bef
 test('windowStep: a date seen outside its window recaps once when time brings the window; a moved date never does', () => {
   const at = (/** @type {number} */ n, exam = EXAM) => context({ today: add(EXAM, -n), exam });
   let st = windowStep(null, at(60));
-  assert.equal(st.recap, false); assert.deepEqual(st.next, { exam: EXAM, outside: true, recapped: {} });
+  assert.equal(st.recap, false); assert.deepEqual(st.next, { exam: EXAM, outside: true, recapped: {}, v: 2 });
   const k = st.next;
   st = windowStep(k, at(30)); assert.equal(st.next, k, 'nothing to write while outside');
   st = windowStep(k, at(14)); assert.equal(st.recap, true, 'the window opens');
@@ -141,7 +141,7 @@ test('windowStep: a date seen outside its window recaps once when time brings th
   assert.equal(windowStep(back, at(12)).recap, false);
   // first sight of a date already inside its window (set, moved there, or the first start of this build): no recap
   assert.equal(windowStep(null, at(8)).recap, false);
-  assert.deepEqual(windowStep(null, at(8)).next, { exam: EXAM, outside: false, recapped: {} });
+  assert.deepEqual(windowStep(null, at(8)).next, { exam: EXAM, outside: false, recapped: {}, v: 2 });
   // moved from far straight into the window: no recap (the read-time cap covers it, as before)
   const moved = windowStep(k, context({ today: add(EXAM, -60), exam: add(EXAM, -50) }));
   assert.equal(moved.recap, false); assert.equal(moved.next.outside, false);
@@ -180,6 +180,12 @@ function farCards() {
     const rec = { S: s, D: 5, reps: 3, lapses: 0, last, first: add(last, -30), stage: 1, streak: 0, learn: null, relearn: false, hist: [] };
     out[`W:w${String(i).padStart(2, '0')}`] = { ...rec, due: FS.dueFor(s, { ...context({ today: last, exam: EXAM }), forecast: () => 0 }) };
   }
+  // records whose due date is far past what their stability gives (an older app's schedule): the cards that owe a
+  // review at a 0.90 target (a 0.90 schedule made before the window already meets it by construction)
+  for (let i = 0; i < 12; i++) {
+    const last = add(EXAM, -(16 + (i % 5)));
+    out[`W:old${String(i).padStart(2, '0')}`] = { S: 2 + (i % 4), D: 6, reps: 4, lapses: 1, last, first: add(last, -60), stage: 1, streak: 0, learn: null, relearn: false, hist: [], due: add(EXAM, 5 + i) };
+  }
   out['W:new'] = { src: 'practice' };   // never answered
   out['W:learning'] = { S: 1, D: 5, reps: 1, last: add(EXAM, -16), due: add(EXAM, -16), learn: 1, hist: [] };
   out['W:marked'] = { S: 400, D: 3, reps: 1, last: add(EXAM, -30), due: add(EXAM, 90), known: { by: 'sort', on: add(EXAM, -30) }, hist: [] };
@@ -200,7 +206,7 @@ test('examWindow: the reviews owed before the exam are written once at window en
   assert.equal(examWindow({ store, c: context({ today: add(EXAM, -60), exam: EXAM }), settings }), 0);
   assert.equal(examWindow({ store, c: context({ today: add(EXAM, -20), exam: EXAM }), settings }), 0);
   assert.equal(puts.length, 0);
-  assert.deepEqual(store.get(WINDOW_KV), { exam: EXAM, outside: true, recapped: {} });
+  assert.deepEqual(store.get(WINDOW_KV), { exam: EXAM, outside: true, recapped: {}, v: 2 });
 
   // the window opens (the app was not opened on exam − 14 itself: exam − 13)
   const c = context({ today: add(EXAM, -13), exam: EXAM }), cap = add(EXAM, -1);
@@ -209,17 +215,23 @@ test('examWindow: the reviews owed before the exam are written once at window en
   assert.ok(want.b1.length >= 5, 'the fixture has cards that owe a review');
   assert.ok(Object.values(before.b1).some(r => r.reps && r.due > cap && !owed(r)), 'and cards that will still be recalled on the day');
   const n = examWindow({ store, c, settings });
-  assert.equal(n, want.b1.length + want.speak.length);
-  assert.deepEqual(puts.map(([d, e]) => [d, e.map(x => x[0])]), [['b1', want.b1], ['speak', want.speak]], 'script cards follow their delivery date, never the exam');
+  assert.equal(n, want.b1.length);
+  // hotfix: only the exam's deck is pulled in; situations (speak) and script cards keep their own dates
+  assert.deepEqual(puts.map(([d, e]) => [d, e.map(x => x[0])]), [['b1', want.b1]], 'side decks and scripts are never pulled in');
+  const capacity = windowCapacity(settings, c);
   for (const [deck, entries] of puts) for (const [id, rec] of entries) {
-    assert.ok(rec.due >= add(cap, -2) && rec.due <= cap && rec.due > c.today, `${id} lands on exam−3 … exam−1`);
+    assert.ok(rec.due > c.today && rec.due <= cap, `${id} lands in the window, from tomorrow to exam − 1`);
     assert.deepEqual({ ...rec, due: null }, { ...before[deck][id], due: null }, 'only due changes (u kept: a recap never wins over an answer)');
   }
   for (const [deck, cs] of Object.entries(before)) for (const [id, rec] of Object.entries(cs)) {
     if (!want[deck]?.includes(id)) assert.deepEqual(store.cards(deck)[id], rec, `${deck} ${id} untouched`);
   }
+  // each window day holds at most what his minutes give the exam deck's reviews
+  /** @type {Record<string, number>} */ const load = {};
+  for (const rec of Object.values(store.cards('b1'))) if (rec.reps && rec.due > c.today && rec.due <= cap) load[rec.due] = (load[rec.due] || 0) + 1;
+  for (const [d, k] of Object.entries(load)) assert.ok(k <= capacity(d), `${d}: ${k} ≤ ${capacity(d)}`);
   // every card now has its review by exam − 1 or will be recalled on the day
-  for (const rec of Object.values(store.cards('b1'))) if (rec.reps && rec.learn == null) assert.ok(rec.due <= cap || FS.R(diff(rec.last, EXAM), rec.S) >= 0.95 || (rec.known && !rec.known.checked));
+  for (const rec of Object.values(store.cards('b1'))) if (rec.reps && rec.learn == null) assert.ok(rec.due <= cap || FS.R(diff(rec.last, EXAM), rec.S) >= FS.EXAM_RECALL || (rec.known && !rec.known.checked));
   assert.deepEqual(store.get(WINDOW_KV).recapped, { [EXAM]: { on: c.today, moved: n } });
 
   // exactly once: later days in the window write nothing
@@ -227,7 +239,7 @@ test('examWindow: the reviews owed before the exam are written once at window en
   for (const d of [12, 10, 3, 2, 1]) examWindow({ store, c: context({ today: add(EXAM, -d), exam: EXAM }), settings });
   assert.equal(puts.length, 0);
   // and running the recap itself again would move nothing either (idempotent)
-  assert.deepEqual(windowRecap({ b1: store.cards('b1'), speak: store.cards('speak') }, c), {});
+  assert.deepEqual(windowRecap({ b1: store.cards('b1'), speak: store.cards('speak') }, c, capacity), {});
 });
 
 test('setting, moving and removing the date never write a card, nor does the next Today', async () => {
@@ -250,10 +262,10 @@ test('setting, moving and removing the date never write a card, nor does the nex
 
 test('a date moved into the window keeps the read-time cap: due counts as before, nothing written', async () => {
   const today = add(EXAM, -60), near = add(today, 9);
-  const rec = { S: 20, D: 5, reps: 3, lapses: 0, last: add(today, -5), due: add(today, 30), learn: null, hist: [] };
+  const rec = { S: 5, D: 5, reps: 3, lapses: 0, last: add(today, -5), due: add(today, 30), learn: null, hist: [] };
   const c = context({ today, exam: near });
   // dueOn caps on read, as it always has for a date moved earlier; windowStep saw this date first inside its window
-  assert.ok(FS.R(diff(rec.last, near), rec.S) < 0.95);
+  assert.ok(FS.R(diff(rec.last, near), rec.S) < FS.EXAM_RECALL);
   assert.ok(RD.dueOn(rec, c) <= add(near, -1) && RD.dueOn(rec, c) > today, 'the pre-exam review is there on read');
   assert.equal(RD.dueOn(rec, context({ today, exam: EXAM })), rec.due, 'the far date: its own due date');
   assert.equal(windowStep({ exam: EXAM, outside: true, recapped: {} }, c).recap, false);

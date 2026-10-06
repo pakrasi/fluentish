@@ -65,7 +65,7 @@ export async function listInfo(ctx, href) {
     const CI = await import('./cluster-items.js');
     const { marked } = await import('../../data/known.js');
     const { skipsNew } = await import('../../domain/known.js');
-    const { isDue } = await import('../../domain/b1ready.js');
+    const { isDue, sideCap } = await import('../../domain/b1ready.js');
     const data = await loadClusters(ctx);
     const ck = CI.parseClusterKind(kind);
     if (!ck) return null;
@@ -76,7 +76,7 @@ export async function listInfo(ctx, href) {
     const newLeft = clusterToday({ store, c, settings: ctx.settings() }).newLeft;
     // a map group's gaps (kind=cluster:gaps&ids=…): the words in the address
     const gapIds = ck.gaps ? CI.pickIds(l.query.get('ids'), CI.GAPS_MAX).filter(id => CI.typable(data.ix.word(id.slice(2)))) : null;
-    const o = { ids: cl ? CI.cardIds(cl, data.ix) : gapIds || dueCards(store, c), cards, c, isDue: (/** @type {any} */ r) => isDue(r, c.today, c), recall: recallOf(c), skip: (/** @type {string} */ id) => skipsNew(mk, id), zipf: CI.zipfOf(data.ix),
+    const o = { ids: cl ? CI.cardIds(cl, data.ix) : gapIds || dueCards(store, c), cards, c, isDue: (/** @type {any} */ r) => isDue(r, c.today, sideCap(c)), recall: recallOf(c), skip: (/** @type {string} */ id) => skipsNew(mk, id), zipf: CI.zipfOf(data.ix),
       newLeft, newCap: Math.min(CI.NEW_PER_ROUND, newLeft) };
     let rec = CI.compose(o).ids;
     if (ck.due) rec = rec.filter(id => cards[id]?.reps);

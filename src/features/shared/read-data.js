@@ -153,7 +153,8 @@ export function readBuckets(store, c, deck, newLeft) {
   const ws = savedWords(store);
   const ids = Object.keys(ws).filter(id => inRound(ws[id], deck));
   const R = (/** @type {string} */ id) => FS.Ron(cards[id], c.today);
-  const due = ids.filter(id => cards[id]?.reps && RD.isDue(cards[id], c.today, c)).sort((a, b) => R(a) - R(b));
+  // saved words keep their own schedule through an exam window (b1ready.sideCap)
+  const due = ids.filter(id => cards[id]?.reps && RD.isDue(cards[id], c.today, RD.sideCap(c))).sort((a, b) => R(a) - R(b));
   const dueSet = new Set(due);
   const fresh = ids.filter(id => !cards[id]?.reps).sort((a, b) => String(ws[a].first).localeCompare(String(ws[b].first)) || 0);
   const rest = ids.filter(id => cards[id]?.reps && !dueSet.has(id)).sort((a, b) => R(a) - R(b));

@@ -160,7 +160,7 @@ export async function mountRound(el, ctx) {
       // new cluster cards take the clusters' share of the day's allowance (paused in exam week); a pick from the map
       // takes all its words (it may go over: they count as shown today, so the other decks' share shrinks)
       const clNew = clusterToday({ store, c: c0, settings: ctx.settings() }).newLeft;
-      const co = { ids: pool, cards: cards0, c: c0, isDue: (/** @type {any} */ rec) => RD.isDue(rec, c0.today, c0), recall: recallOf(c0), skip: (/** @type {string} */ id) => skipsNew(mk, id), zipf: zipfOf(clusters.ix),
+      const co = { ids: pool, cards: cards0, c: c0, isDue: (/** @type {any} */ rec) => RD.isDue(rec, c0.today, RD.sideCap(c0)), recall: recallOf(c0), skip: (/** @type {string} */ id) => skipsNew(mk, id), zipf: zipfOf(clusters.ix),
         newLeft: clNew, newCap: Math.min(NEW_PER_ROUND, clNew) };
       ids = sized && sized !== 'rec' ? RS.pick(clusterBuckets(co), sized).ids
         : composeCluster({ ...co, ...(ck.pick && !ck.gaps ? { size: picked.length, newCap: picked.length } : {}) }).ids;

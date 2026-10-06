@@ -118,7 +118,11 @@ test('new items a day follow the exam date and the minutes', () => {
   const short = at('2026-10-03', { priorityLeft: 1000 });
   assert.equal(short.newPerDay, 35, 'minutes win');
   assert.equal(short.decks.b1.newPerDay, 31);
-  assert.equal(at('2026-10-03', { exam: null, settings: { ...settings, exam: { type: null } }, priorityLeft: 1000 }).decks.b1.newPerDay, 20, 'no date: a steady trickle');
+  // no date: a steady trickle. Hotfix: the day's number is the sustainable rate (15 at 60 min a day), b1 and
+  // situations sharing it by their wants
+  const none = at('2026-10-03', { exam: null, settings: { ...settings, exam: { type: null } }, priorityLeft: 1000 });
+  assert.equal(none.newPerDay, 15);
+  assert.equal(none.decks.b1.newPerDay, 10, 'no date: a steady trickle');
   // quota split 40 : 15
   const s = state('2026-10-03', {}, { newPerDay: 55 });
   assert.equal(C.quota(s, 'p'), 40); assert.equal(C.quota(s, 'g'), 15);

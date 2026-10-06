@@ -17,7 +17,7 @@ import * as FS from '../../domain/fsrs.js';
 import * as T from '../../domain/timer.js';
 import { stream } from './compose.js';
 import { origin } from '../../domain/itemids.js';
-import { deckName } from '../../domain/decks.js';
+import { deckName, examDeck } from '../../domain/decks.js';
 
 /** @param {string[]} ids @param {{kind: string, area?: string, topic?: string}} spec @param {string} today @param {number} now */
 export function startRound(ids, spec, today, now) {
@@ -66,6 +66,9 @@ export function current(round, byId, cards) {
   return null;
 }
 
+/** The scheduler context's side flag for a round of a side deck (domain/decks.js examDeck). @param {any} round */
+const sideOf = round => (round.deck && !examDeck(round.deck) ? { side: true } : {});
+
 /**
  * Event payload for card.reviewed (event@1, review B4).
  * @param {string} itemId @param {any} before @param {any} rec @param {{g: number, ms: number, flags: string, mode: string}} o
@@ -110,7 +113,8 @@ export function answer({ round, entry, o, cards, day, c, forecast = () => 0, now
   if (entry.isNew && own) { const st = stream(entry.item); if (st === 'p' || st === 'g') day.newShown++; day.newBy = day.newBy || {}; day.newBy[st] = (day.newBy[st] || 0) + 1; }
   if (own && !day.shown.includes(id)) day.shown.push(id);
   const src = entry.item.origin || (entry.item.area === 'words' ? 'exam' : origin(id, 'b1'));
-  const res = FS.schedule(rec, { g, ms: o.ms, onTime: !!(entry.limit && o.ms <= entry.limit * 1000), flags, mode: 't', logOnly, src, study }, { ...c, forecast }, now);
+  // a side deck's round (clusters, reading) keeps its own intervals through an exam window (fsrs.dueFor ctx.side)
+  const res = FS.schedule(rec, { g, ms: o.ms, onTime: !!(entry.limit && o.ms <= entry.limit * 1000), flags, mode: 't', logOnly, src, study }, { ...c, forecast, ...sideOf(round) }, now);
   // reinsert misses and learning steps: +4, then +10. A mistake from a correction typed right the first time is not
   // asked again in its own round: it comes back on its schedule.
   const times = round.queue.filter((/** @type {any} */ q) => q.id === id).length;
@@ -129,7 +133,7 @@ export function answer({ round, entry, o, cards, day, c, forecast = () => 0, now
  */
 export function override({ round, entry, ms, c, forecast = () => 0, now, tz = 'UTC' }) {
   const id = entry.item.id;
-  const res = FS.schedule(entry.before, { g: 2, ms: ms || 0, flags: 'a' }, { ...c, forecast }, now);
+  const res = FS.schedule(entry.before, { g: 2, ms: ms || 0, flags: 'a' }, { ...c, forecast, ...sideOf(round) }, now);
   round.queue = round.queue.filter((/** @type {any} */ q, /** @type {number} */ k) => k <= round.i || !(q.id === id && q.re));
   const last = round.results[round.results.length - 1];
   if (last && last.id === id) { last.ok = true; last.g = 2; }

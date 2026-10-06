@@ -3,7 +3,7 @@
      kv 'clusters'   { day: {day, rounds, newShown}, last: '<type>:<id>', shown: { '<type>:<id>': known count last shown } } */
 import { index } from '../../domain/clusters.js';
 import { loadKnowledge } from '../../data/knowledge.js';
-import { isDue } from '../../domain/b1ready.js';
+import { isDue, sideCap } from '../../domain/b1ready.js';
 import * as FS from '../../domain/fsrs.js';
 import { cardIds, itemFor, itemIds } from './cluster-items.js';
 import { loadWordIx } from './wordix.js';
@@ -46,9 +46,10 @@ export function cellsOf(cl, k) {
   return itemIds(cl).map(id => { const s = k.get(id); return s.state === 'known' ? (s.today ? 3 : 2) : s.state === 'unseen' ? 0 : 1; });
 }
 
-/** Cards in deck 'clusters' due today (all clusters). @param {any} store @param {any} c */
+/** Cards in deck 'clusters' due today (all clusters; at their own due dates through an exam window). @param {any} store @param {any} c */
 export function dueCards(store, c) {
-  return Object.entries(store.cards(DECK) || {}).filter(([, r]) => r && r.reps && isDue(r, c.today, c)).map(([id]) => id);
+  const sc = sideCap(c);
+  return Object.entries(store.cards(DECK) || {}).filter(([, r]) => r && r.reps && isDue(r, c.today, sc)).map(([id]) => id);
 }
 
 /** Recall of a card today (unseen 0). @param {any} c */

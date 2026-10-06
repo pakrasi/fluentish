@@ -7,27 +7,53 @@
    rescaled to the areas that have items. */
 import * as D8 from './days.js';
 import * as FS from './fsrs.js';
+import { examDeck } from './decks.js';
 const AREAS = ['speaking', 'grammar', 'reading', 'words', 'writing'];
 // writing: the Schreiben phrases (a quarter of the exam); weights are rescaled to the areas a pool has
 const WEIGHTS = { speaking: 0.40, grammar: 0.30, reading: 0.15, words: 0.15, writing: 0.25 };
 const w = it => (it.star || it.trap ? 2 : 1);
 const seenRec = rec => !!(rec && rec.reps);
-// The due date a card has while the exam is ahead: its stored due, capped at exam−1 (spread over exam−3 … exam−1 and
-// never before the day after its last review) unless it will still be recalled on the exam day (R ≥ 0.95), the rule
-// the scheduler applies to new intervals (fsrs.dueFor). The cap is applied on READ, so moving the exam date never
-// rewrites a card: move it 9 → 5 → 9 and every due count is what it was. cap = the clock context {today, exam, phase}.
+// The due date a card has while the exam is ahead: its stored due, capped before the exam unless it will still be
+// recalled on the exam day (R ≥ FS.EXAM_RECALL, 0.90), the rule the scheduler applies to new intervals (fsrs.dueFor).
+// At 0.90 that is rare (an interval scheduled at 0.90 or 0.92 retention that ends on the exam day); the window's
+// recap (fsrs.recap) spreads the real load. A capped card is read on one of the READ_SPREAD days before the eve
+// (exam − 4 … exam − 2, never before the day after its last review), stable per record; exam − 1 only when no earlier
+// day is left, so the eve stays light.
+// Only the exam's decks are capped: a context from sideCap() (Word clusters, Word building, situations, reading;
+// domain/decks.js examDeck) reads every card at its own due date. The cap is applied on READ, so moving the exam
+// date never rewrites a card: move it 9 → 5 → 9 and every due count is what it was. cap = the clock context
+// {today, exam, phase} (side: true from sideCap).
 const AHEAD = new Set(['week', 'lastNew', 'eve']);
+const READ_SPREAD = 3;
+/** @param {any} rec @param {any} [cap] the clock context (null: no cap) @returns {string | undefined} */
 function dueOn(rec, cap = null) {
-  if (!rec || !rec.due || !cap || !cap.exam || !AHEAD.has(cap.phase)) return rec ? rec.due : undefined;
+  if (!rec || !rec.due || !cap || !cap.exam || cap.side || !AHEAD.has(cap.phase)) return rec ? rec.due : undefined;
   const capDay = D8.add(cap.exam, -1);
   if (rec.due <= capDay) return rec.due;
   const last = rec.last || cap.today;
-  if (FS.R(D8.diff(last, cap.exam), rec.S) >= 0.95) return rec.due;
+  if (cap.delivery) return deliveryDue(rec, capDay, last, cap.exam);
+  if (FS.R(D8.diff(last, cap.exam), rec.S) >= FS.EXAM_RECALL) return rec.due;
+  const earliest = D8.add(last, 1);
+  if (earliest > capDay) return rec.due;
+  const first = D8.add(cap.exam, -READ_SPREAD - 1);
+  const lo = earliest > first ? earliest : first, hi = D8.add(cap.exam, -2);
+  if (lo > hi) return capDay;
+  return D8.add(lo, Math.abs(Math.round((rec.S || 0) * 1000)) % (D8.diff(lo, hi) + 1));   // stable per record
+}
+/* A script's delivery date (domain/script/plan.js fsCtx, delivery: true) keeps the rule it was built with: R ≥ 0.95
+   on the day, else read on exam − 3 … exam − 1. */
+/** @param {any} rec @param {string} capDay @param {string} last @param {string} exam @returns {string} */
+function deliveryDue(rec, capDay, last, exam) {
+  if (FS.R(D8.diff(last, exam), rec.S) >= FS.DELIVERY_RECALL) return rec.due;
   const earliest = D8.add(last, 1);
   if (earliest > capDay) return rec.due;
   const d = D8.add(capDay, -(Math.abs(Math.round((rec.S || 0) * 1000)) % 3));   // stable per record
   return d < earliest ? earliest : d;
 }
+/** The clock context for a side deck: its cards are never capped for the exam (dueOn, fsrs.dueFor). @param {any} c */
+const sideCap = c => (!c || c.side ? c : { ...c, side: true });
+/** The clock context a deck's cards are read and scheduled with: the exam's decks get c, the others sideCap(c). @param {any} c @param {string} deck */
+const deckCap = (c, deck) => (examDeck(deck) ? c : sideCap(c));
 // due today: due ≤ today, or still learning / relearning, and not already answered today unless it's in a step
 function isDue(rec, today, cap = null) {
   if (!seenRec(rec)) return false;
@@ -83,6 +109,6 @@ function forecast(store, today, n = 7, cap = null) {
   return out;
 }
 
-const api = { compute, forecast, isDue, dueOn, recallDay, WEIGHTS, AREAS, weightOf: w };
+const api = { compute, forecast, isDue, dueOn, sideCap, deckCap, recallDay, WEIGHTS, AREAS, weightOf: w };
 export default api;
-export { compute, forecast, isDue, dueOn, recallDay, WEIGHTS, AREAS };
+export { compute, forecast, isDue, dueOn, sideCap, deckCap, recallDay, WEIGHTS, AREAS };

@@ -64,7 +64,7 @@ test('rate: self-grades on a section card, no same-day relearning, the delivery 
   const rec0 = { S: 20, D: 5, reps: 3, lapses: 0, last: '2026-10-25', due: '2026-11-01', hist: [] };
   const free = Lad.rate(rec0, 3, ctx, 1).rec;
   assert.ok(free.due > '2026-11-19', free.due);
-  const cap = { today: '2026-11-01', exam: '2026-11-20', phase: 'week' };
+  const cap = { today: '2026-11-01', exam: '2026-11-20', phase: 'week', delivery: true };   // as plan.js fsCtx gives it
   const e = Lad.rate(rec0, 3, cap, 1).rec;
   assert.ok(e.due <= '2026-11-19', e.due);
   assert.equal(Lad.rate(a, 3, { ...cap, today: '2026-11-06', phase: 'day' }).wrote, false, 'nothing is written on the day');

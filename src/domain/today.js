@@ -7,6 +7,8 @@
      - on the exam day only a short warm-up (and things to read)
      - rows are taken in priority order while they fit the day's minutes (the first always fits), at most five open rows;
        one mock module may run over, because a timed module cannot be split
+     - the review round is never left out: when it does not fit at its turn it is cut to the minutes left (one round
+       at least) and the rows after it are tested against what is left, so side decks and games give way first
      - when the day runs over the minutes, the review round shrinks to what is left, one round at least, and says so
        (minutes.cut); next to a long mock module that is often one round. The cut happens as soon as the mock is
        placed, so the rows after it are tested against the minutes as they will be
@@ -106,6 +108,15 @@ export function composeToday({ ctx, budget, items, feedback = [], modules = [], 
       rows.push(it); planned += it.minutes;
       // the cut happens here, before the next row's fit test, so later rows see the minutes as they will be
       if (mockOverrun) { overrun = true; cutReviews(); }
+    } else if (roundRow(it)) {
+      // the review round never goes to "If you have time": it is cut to the minutes left, one round at least, and
+      // the rows after it (side decks, games) are tested against what is left, so they give way first
+      const room = Math.max(ROUND_MIN, Math.floor((budget - planned) / ROUND_MIN) * ROUND_MIN);
+      if (room < it.minutes) {
+        const rounds = room / ROUND_MIN;
+        rows.push({ ...it, minutes: room, rounds, cut: true, action: it.actionFor ? it.actionFor(rounds) : it.action });
+        planned += room; cut = true;
+      } else { rows.push(it); planned += it.minutes; }
     } else { extra.push(it); skipped = true; }
   }
   if (planned > budget) cutReviews();
@@ -129,6 +140,12 @@ export function composeToday({ ctx, budget, items, feedback = [], modules = [], 
     modules,
   };
 }
+
+/**
+ * The daily review round (and a round of new items): a row that is cut to fit rather than left out. Side-deck rows
+ * (noCut) and optional rows are left out instead. @param {PlanItem} it
+ */
+const roundRow = it => (it.kind === 'review' || it.kind === 'new') && !it.noCut && !it.optional && !it.mock;
 
 /**
  * Minutes for a review round of n items (12 items ≈ 4 minutes, as the B1 trainer measured), at least one round.

@@ -21,6 +21,9 @@
 
 import * as D8 from './days.js';
 
+/** The clock phases of an exam window (core/clock.js planPhase): the exam's rules plan those days. */
+const WINDOW_PHASES = new Set(['week', 'lastNew', 'eve', 'day']);
+
 /** The kinds of day, in the order the week editor lists them. */
 export const DAY_KINDS = /** @type {const} */ (['n', 'light', 'read', 'write', 'talk', 'off']);
 /** @typedef {typeof DAY_KINDS[number]} DayKind */
@@ -84,7 +87,7 @@ export function courseWeek(settings) {
 /**
  * Today's plan from the week (see the header).
  * @param {any} settings normalised settings
- * @param {{today: string}} c the clock context
+ * @param {{today: string, phase?: string}} c the clock context (phase: inside an exam window an Off day keeps its minutes)
  * @param {{anyway?: boolean, live?: readonly string[]}} [o]  anyway: "Study anyway" was chosen on today's Off day;
  *   live: the slots that have a feature (LIVE_SLOTS)
  * @returns {DayPlan}
@@ -98,6 +101,9 @@ export function dayPlan(settings, c, { anyway = false, live = LIVE_SLOTS } = {})
   let minutes = week.min[i];
   if (minutes === 0 || kind === 'off') { kind = 'off'; minutes = 0; }
   if (kind === 'off' && anyway) { kind = 'n'; minutes = base; }
+  // inside the exam window the exam plans the day (code audit P0-1): an Off day keeps the day's minutes for its
+  // reviews (budget.js gives it fewer new items, never none for that reason); "Study anyway" makes it a Normal day
+  else if (kind === 'off' && c.phase && WINDOW_PHASES.has(c.phase)) minutes = base;
   /** @type {DayPlan} */ const out = { kind, minutes, slot: null, slotMin: 0, planned: true };
   if (kind === 'read' || kind === 'write' || kind === 'talk') {
     if (live.includes(kind)) { out.slot = kind; out.slotMin = Math.round(minutes * SLOT_SHARE); } else { out.kind = 'n'; out.asked = kind; }

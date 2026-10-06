@@ -199,7 +199,9 @@ test('a batch spreads its checks: no more than about 20 a day, all from day 60',
 
 test('moving the exam earlier never clamps a marked card before the exam', () => {
   const marked = K.markRec(null, { today });
-  const plain = { ...review(60), due: D8.add(today, 30) };
+  // (hotfix: the recap moves a card only when the exam day would find it under 0.90 recall, so the plain card is a
+  // weak one: S 4, last reviewed 3 days ago, 15 days before the exam)
+  const plain = { ...review(4), due: D8.add(today, 30) };
   const out = FS.recap({ 'W:m': marked, 'W:p': plain }, { today, exam: '2026-10-20', phase: 'week' });
   assert.ok(!('W:m' in out));
   assert.ok('W:p' in out);

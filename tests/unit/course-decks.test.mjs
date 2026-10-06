@@ -10,6 +10,7 @@ import { Store } from '../../src/data/store.js';
 import { createHlc } from '../../src/data/ids.js';
 import * as S from '../../src/data/settings.js';
 import { allowanceDeck, namedDecks, DECK_STATS_KV } from '../../src/domain/decks.js';
+import { steadyFor } from '../../src/domain/budget.js';
 import { scopeItem, splitItem } from '../../src/domain/itemids.js';
 import { knowledgeDecks } from '../../src/data/knowledge.js';
 import { dayAllowance, todayBudget, dueTomorrow, firstWeek } from '../../src/domain/allowance.js';
@@ -89,7 +90,8 @@ test('a French course with cards gets a real allowance: its decks counted, Today
   for (const k of ['mistakes', 'writing', 'script', 'build', 'clusters']) assert.equal(/** @type {any} */ (a.decks)[k].due, 0, k);
   // new items: a real share for the round and the situations, one already shown today
   assert.equal(a.mode, 'maintenance');
-  assert.ok(a.newPerDay >= 20, `newPerDay ${a.newPerDay}`);
+  // hotfix: Auto is at most the sustainable rate of his minutes (budget.js steadyFor)
+  assert.ok(a.newPerDay >= 8 && a.newPerDay <= steadyFor(fs), `newPerDay ${a.newPerDay}`);
   assert.ok(a.decks.b1.newPerDay > 0 && a.decks.speak.newPerDay > 0);
   assert.equal(a.decks.b1.shown, 1);
   assert.equal(a.shown, 1);

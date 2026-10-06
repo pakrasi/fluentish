@@ -36,8 +36,8 @@ export function scriptPhase(today, deliverOn) {
   return d >= 8 ? 'build' : d >= 2 ? 'polish' : d === 1 ? 'eve' : d === 0 ? 'day' : 'after';
 }
 
-/** The scheduler context for a script's cards: the delivery date plays the exam date. @param {{deliverOn: string | null}} script @param {string} today */
-export const fsCtx = (script, today) => ({ today, exam: script.deliverOn || null, phase: clockPhase(today, script.deliverOn || null) });
+/** The scheduler context for a script's cards: the delivery date plays the exam date, with the rule it was built with (delivery: R ≥ 0.95 on the day, else day − 3 … day − 1; the exam hotfix does not touch scripts). @param {{deliverOn: string | null}} script @param {string} today */
+export const fsCtx = (script, today) => ({ today, exam: script.deliverOn || null, phase: clockPhase(today, script.deliverOn || null), delivery: true });
 
 /** Card ids of the marked words, one per lemma. @param {any} script @returns {string[]} */
 export function wordIds(script) {

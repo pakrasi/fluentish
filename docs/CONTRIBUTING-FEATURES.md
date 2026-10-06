@@ -42,10 +42,11 @@ Round 4, lane L1b. Everything below is pure domain code, tested in node (`tests/
 
 | Export | What |
 |---|---|
-| `dayAllowance({store, c, settings})` | the allowance as before (`mode`, `newPerDay`, `newLeft`, `decks`, `reviews`, `pace`, `room` …), plus `plan` when the course has a week: `{kind, minutes, slot, slotMin, why, reviewsToday, break, forecast, away, asked?}`. Kept per store revision and day (`store.rev`), so call it as often as you like; each call returns its own copy |
+| `dayAllowance({store, c, settings})` | the allowance as before (`mode`, `newPerDay`, `newLeft`, `decks`, `reviews`, `pace`, `room` …), plus `plan` when the course has a week: `{kind, minutes, slot, slotMin, why, reviewsToday, break, forecast, steady, away, asked?}`; in exam week without a week, `why: 'reviewsDue'` when the reviews fill the day. Kept per store revision and day (`store.rev`), so call it as often as you like; each call returns its own copy |
 | `todayBudget(ctx)` | the same with the review round's numbers (unchanged) |
 | `todayPlan(ctx)` | what plan providers get as `ctx.day`: `dayPlan` with the slot fitted to today's reviews, and `why`, `reviewsToday`, `break`, `away` on a day from a week. `features/day.js` passes it; Today's budget is `day.minutes` on a day from a week |
-| `reviewForecast(ctx)` | `{reviewMin, plannedMin, days: 14}`: the cards of the course's decks due in the next 14 days at their review cost, and the week's planned minutes on those days |
+| `reviewForecast(ctx)` | `{reviewMin, plannedMin, days: 14}`: the cards of the course's decks due in the next 14 days at their review cost, and the week's planned minutes on those days. `allowance()` adds the reviews today's new items will bring (`NEW_REVIEWS_14` each, `plan.forecast.fromNew`) |
+| `steadyRate(weekMin)`, `steadyFor(settings)` (`domain/budget.js`) | the sustainable rate: the new items a day the week's minutes hold with their first month of reviews (`STEADY_SHARE` 0.7 of the minutes ÷ `STEADY_ITEM_MIN` 2.75 min): 9 on a 4 h 05 week, 11 at 45 min a day. Auto in maintenance and the first week never goes past it; a chosen number is not capped, and Profile shows the rate next to it |
 | `awayDays(store, today)` | whole days without study before today (null: never studied): "You were away 6 days" |
 | `ANYWAY_KV`, `studyAnyway(store, c)` | "Study anyway" on an Off day: write `store.set(ANYWAY_KV, {day: c.today})` (device kv, one day); that day is planned as a Normal day |
 
@@ -56,13 +57,27 @@ Round 4, lane L1b. Everything below is pure domain code, tested in node (`tests/
 | `'off'` | an Off day: no new items, `reviewsToday` 0, the reviews stay counted in `reviews.due` | `week.why.off` {n: reviews.due} |
 | `'light'` | a Light day: reviews only | `week.why.light` |
 | `'break'` | back after a break (maintenance or first week): the reviews due take more than 1.5 × the day's minutes. `reviewsToday` is the most urgent share (at least a third, more if the day holds more), no new items, the slot shrinks to 5 min | `week.why.break` {d: plan.away, n: reviews.due, k: reviewsToday}; `week.why.breakDue` without `away` |
-| `'reviewsDue'` | the reviews and today's fixed rows do not fit the day: no Auto new items | `week.why.reviewsDue` |
-| `'reviewsHigh'` | the sustainable rate: the 14-day forecast is over 55 % (`FORECAST_LIMIT`) of the planned minutes, so the overflow came off the new items (`plan.forecast.cut`) | `week.why.reviewsHigh` {n: newPerDay} |
+| `'reviewsDue'` | the reviews and today's fixed rows do not fit the day: no Auto new items. In exam week: the exam decks' reviews (side decks left out) and the fixed rows do not fit the day's room, so no Auto new items but his mistakes (also `why` at the top level without a week) | `week.why.reviewsDue` |
+| `'reviewsHigh'` | the forecast cap: the 14-day forecast, with the reviews today's new items will bring, is over 55 % (`FORECAST_LIMIT`) of the planned minutes, so the overflow came off the new items (`plan.forecast.cut`) | `week.why.reviewsHigh` {n: newPerDay} |
 | `null` | new items as Auto or his chosen number give | |
 
-Light, Off and a break beat a number he chose; the forecast cap and `reviewsDue` do not (his number wins). Inside the
-exam window the window plans the day: no slot, no break, no cap (Light and Off still give no new items). Reviews are
-never dropped: `reviews.due` and every deck's `due` are always what the decks hold.
+Light, Off and a break beat a number he chose; the forecast cap, the sustainable rate and `reviewsDue` do not (his
+number wins). Inside the exam window the window plans the day: no slot, no break, no cap. An Off day there keeps
+`minutesPerDay` and plans every review (`reviewsToday` is all of them), and Light and Off days give fewer new items (the
+exam floor at most), never none for that reason; Today says so (`week.why.offWindow`, `week.why.lightWindow`) and
+offers "Study anyway" on an Off day (code audit P0-1). Reviews are never dropped: `reviews.due` and every deck's `due`
+are always what the decks hold.
+
+**The exam window** (`features/day.js`, `domain/fsrs.js`, `domain/b1ready.js`; hotfix before the B1). Only the exam's
+decks are scheduled by the date (`domain/decks.js examDeck`: deck `b1`, a course's core, writing and mistakes decks).
+An exam deck's card owes one review before the exam when it would be recalled on the day with less than
+`FS.EXAM_RECALL` (0.90). The recap that runs once when the window opens places those reviews as late as each day has
+room (`windowCapacity`: `WINDOW_REVIEW_SHARE` 0.4 of the day's minutes, the eve `EVE_REVIEW_SHARE` 0.2) and never
+moves the cards that are due anyway. Word clusters, Word building, situations, scripts and reading keep their own
+schedule: read them with `RD.sideCap(c)` (or `RD.deckCap(c, deck)`), and schedule a side deck's answers with
+`side: true` in the scheduler context. A window record from an earlier build (no `v: 2`) gets the same pass once, which
+sends the cards the old rule (R < 0.95, exam − 3 … exam − 1) crammed back to their own dates where the 0.90 target
+allows. Script delivery dates keep their own rule (`fsCtx`, `delivery: true`).
 
 **The level gate** (`src/domain/levels.js`). New items of the B2 layer join a strand (grammar `g`, phrases `p`, words
 `w`) only with a level goal of B2 or above (`goal.level`), never inside the window of an exam below B2:

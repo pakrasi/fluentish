@@ -5,75 +5,114 @@ import { composeToday } from '../domain/today.js';
 import { planProviders } from './registry.js';
 import { todayPlan } from '../domain/allowance.js';
 import FS from '../domain/fsrs.js';
-import { dueOn } from '../domain/b1ready.js';
-import { add } from '../domain/days.js';
-import { courseLang, inLang, LEGACY_DECKS, namedDecks, deckName } from '../domain/decks.js';
+import { courseLang, inLang, LEGACY_DECKS, namedDecks, deckName, examDeck } from '../domain/decks.js';
+import { dayPlan } from '../domain/week.js';
+import { REVIEW_COST, WINDOW_REVIEW_SHARE, EVE_REVIEW_SHARE } from '../domain/budget.js';
+import { context as clockContext } from '../core/clock.js';
 
-/* ---------- the exam window (round 4, PLAN-REVIEW B3) ----------
+/* ---------- the exam window (round 4, PLAN-REVIEW B3; the scheduler hotfix before the B1) ----------
    Before an exam's window (core/clock.js planPhase: 'none' until exam − 14) cards are scheduled as with no date:
    0.90 retention and no cap, so some fall due after exam − 1. The scheduler's in-window rule (fsrs.dueFor, and
-   b1ready.dueOn when due dates are read) owes those cards one review before the exam unless they will still be
-   recalled on the exam day (R ≥ 0.95). When the window opens, windowRecap writes that review into the cards once
-   (fsrs.recap: spread over exam−3 … exam−1 by load), so every deck and every reader sees it.
+   b1ready.dueOn when due dates are read) owes an exam deck's card one review before the exam unless it will still be
+   recalled on the exam day with 0.90 or more (fsrs.EXAM_RECALL). When the window opens, windowRecap writes those
+   reviews into the cards once (fsrs.recap: spread from tomorrow to exam − 1, each day holding at most what his
+   minutes give reviews, windowCapacity, the eve least), so every deck and every reader sees it. Only the exam's decks
+   (domain/decks.js examDeck: deck b1) are pulled in; Word clusters, Word building, situations and reading keep their
+   own schedule, and a side card an earlier build pulled before the exam goes back to its own date (fsrs.unpull).
    It runs once per exam date, and only when the window is entered by the passage of time: the date was seen outside
    its window and is unchanged since. Setting, moving or removing a date never writes a card (the read-time cap
-   covers a date moved into the window, as before). Device-only, no personal text:
+   covers a date moved into the window, as before). One more pass runs once: a record an earlier build wrote (no `v`)
+   on a day inside the window gets the spread above for what is still ahead, so the reviews the old rule (R < 0.95,
+   exam − 3 … exam − 1) put on the last three days are spread or sent back; the record then has `v: 2`.
+   Device-only, no personal text:
      kv 'exam.window'  { exam: the date last seen | null, outside: it was seen before its window,
-                         recapped: { [date]: { on: day, moved: n } } }
+                         recapped: { [date]: { on: day, moved: n, spread?: {on, moved} } }, v: 2 }
    Running it again for a date writes nothing: a recapped card is due by exam − 1, which dueOn leaves as it is. */
 
 export const WINDOW_KV = 'exam.window';
+/** The window record's version: 2 from the hotfix (a record without it was written by an earlier build). */
+export const WINDOW_V = 2;
 const AHEAD = new Set(['week', 'lastNew', 'eve']);
 
 /**
- * The next window record, and whether the window opened today for a date seen outside it (pure).
+ * The next window record, and whether to recap today: the window opened today for a date seen outside it, or a
+ * record from an earlier build is in its window (the one-time re-spread, `spread`). Pure.
  * @param {any} prev kv 'exam.window' @param {{today: string, exam: string|null, phase: string}} c
- * @returns {{next: any, recap: boolean}}  next === prev when nothing changed
+ * @returns {{next: any, recap: boolean, spread?: boolean}}  next === prev when nothing changed
  */
 export function windowStep(prev, c) {
   const p = prev && typeof prev === 'object' ? prev : {};
   const recapped = p.recapped && typeof p.recapped === 'object' ? p.recapped : {};
   const exam = c.exam || null;
+  const legacy = !!prev && p.v !== WINDOW_V;
   // a date set, moved or removed: remember it, never recap on it
   if (exam !== (p.exam ?? null)) {
     const keep = Object.fromEntries(Object.entries(recapped).filter(([d]) => d >= c.today));
-    return { next: { exam, outside: !!exam && c.phase === 'none', recapped: keep }, recap: false };
+    return { next: { exam, outside: !!exam && c.phase === 'none', recapped: keep, v: WINDOW_V }, recap: false };
   }
   if (!exam) return { next: prev, recap: false };
-  if (c.phase === 'none') return p.outside ? { next: prev, recap: false } : { next: { ...p, outside: true, recapped }, recap: false };
+  if (c.phase === 'none') return p.outside ? { next: prev, recap: false } : { next: { ...p, outside: true, recapped, v: WINDOW_V }, recap: false };
+  if (p.outside && AHEAD.has(c.phase) && !recapped[exam]) {
+    // the window has opened since the date was seen outside it
+    return { next: { ...p, outside: false, recapped: { ...recapped, [exam]: { on: c.today, moved: 0 } }, v: WINDOW_V }, recap: true };
+  }
+  if (legacy && AHEAD.has(c.phase)) {
+    // an earlier build's record inside the window: spread what is still ahead, once
+    const was = recapped[exam] || { on: c.today, moved: 0 };
+    return { next: { ...p, outside: false, recapped: { ...recapped, [exam]: { ...was, spread: { on: c.today, moved: 0 } } }, v: WINDOW_V }, recap: true, spread: true };
+  }
   if (!p.outside) return { next: prev, recap: false };
-  // the window has opened since the date was seen outside it
-  const recap = AHEAD.has(c.phase) && !recapped[exam];
-  return { next: { ...p, outside: false, recapped: recap ? { ...recapped, [exam]: { on: c.today, moved: 0 } } : recapped }, recap };
+  return { next: { ...p, outside: false, ...(legacy ? {} : { v: WINDOW_V }) }, recap: false };
 }
 
 /**
  * The decks a course's exam date schedules: its legacy decks (German) and its '<lang>:<name>' decks. Script cards are
- * left out: they are capped by their script's delivery date (domain/script/plan.js fsCtx), never by the exam.
+ * left out: they are capped by their script's delivery date (domain/script/plan.js fsCtx), never by the exam. The
+ * recap pulls in only the exam decks among them (examDeck); the others are only checked for cards an earlier build
+ * pulled in (fsrs.unpull).
  * @param {string[]} names the decks the store holds @param {string | null} lang
  */
 export const windowDecks = (names, lang) => [...LEGACY_DECKS.filter(d => !lang || inLang(d, lang)), ...namedDecks(names, lang)]
   .filter(d => deckName(d) !== 'script');
 
 /**
- * The cards the opening window pulls in (pure): per deck, every card due after exam − 1 that the in-window rule owes a
- * review before the exam (b1ready.dueOn moves it), given a due date by fsrs.recap. Cards due by exam − 1 are passed
- * too, so recap spreads by the real load; they never move. Records are copied with only `due` changed.
+ * How many of the exam decks' reviews each window day can hold: a share of the day's planned minutes
+ * (WINDOW_REVIEW_SHARE, the eve EVE_REVIEW_SHARE) at a review's cost. The rest of the day is the Schreiben task, a
+ * mock, the situations and the side decks. Pure.
+ * @param {any} settings normalised settings @param {{exam: string|null}} c
+ * @returns {(day: string) => number}
+ */
+export function windowCapacity(settings, c) {
+  return day => {
+    const dc = clockContext({ today: day, exam: c.exam });
+    const eve = dc.phase === 'eve';
+    return Math.floor((dayPlan(settings, dc).minutes * (eve ? EVE_REVIEW_SHARE : WINDOW_REVIEW_SHARE)) / REVIEW_COST.b1 + 1e-9);
+  };
+}
+
+/**
+ * The cards the window moves (pure): the exam decks' reviews owed before the exam, spread by fsrs.recap over every
+ * exam deck together, and the side decks' cards an earlier build pulled in, sent back (fsrs.unpull). Cards due by
+ * exam − 1 are passed too, so recap spreads by the real load. Records are copied with only `due` changed.
  * @param {Record<string, Record<string, any>>} cardsByDeck @param {any} c the clock context
+ * @param {(day: string) => number} [capacity] exam-deck reviews a day holds (none given: no limit)
  * @returns {Record<string, [string, any][]>}
  */
-export function windowRecap(cardsByDeck, c) {
+export function windowRecap(cardsByDeck, c, capacity = () => Infinity) {
   /** @type {Record<string, [string, any][]>} */ const out = {};
   if (!c.exam || !AHEAD.has(c.phase)) return out;
-  const cap = add(c.exam, -1);
+  const SEP = '\n';
+  /** @type {Record<string, any>} */ const joint = {};
+  for (const [deck, cards] of Object.entries(cardsByDeck)) if (examDeck(deck)) for (const [id, rec] of Object.entries(cards || {})) joint[deck + SEP + id] = rec;
+  const moved = FS.recap(joint, c, capacity);
+  for (const key of Object.keys(moved).sort()) {
+    const [deck, id] = [key.slice(0, key.indexOf(SEP)), key.slice(key.indexOf(SEP) + 1)];
+    (out[deck] || (out[deck] = [])).push([id, { ...cardsByDeck[deck][id], due: moved[key] }]);
+  }
   for (const [deck, cards] of Object.entries(cardsByDeck)) {
-    /** @type {Record<string, any>} */ const pick = {};
-    for (const [id, rec] of Object.entries(cards || {})) {
-      if (!rec || !rec.reps || !rec.due) continue;
-      if (rec.due <= cap || dueOn(rec, c) !== rec.due) pick[id] = rec;
-    }
-    const moved = FS.recap(pick, c);
-    /** @type {[string, any][]} */ const entries = Object.keys(moved).sort().map(id => [id, { ...cards[id], due: moved[id] }]);
+    if (examDeck(deck)) continue;
+    const back = FS.unpull(cards || {}, c);
+    const entries = /** @type {[string, any][]} */ (Object.keys(back).sort().map(id => [id, { ...cards[id], due: back[id] }]));
     if (entries.length) out[deck] = entries;
   }
   return out;
@@ -85,13 +124,14 @@ export function windowRecap(cardsByDeck, c) {
  */
 export function examWindow({ store, c, settings }) {
   const prev = store.get(WINDOW_KV, null);
-  const { next, recap } = windowStep(prev, c);
+  const { next, recap, spread } = windowStep(prev, c);
   let moved = 0;
   if (recap) {
     const decks = windowDecks(Object.keys(store.cardsByDeck || {}), courseLang(settings));
-    const puts = windowRecap(Object.fromEntries(decks.map(d => [d, store.cards(d)])), c);
+    const puts = windowRecap(Object.fromEntries(decks.map(d => [d, store.cards(d)])), c, windowCapacity(settings, c));
     for (const [deck, entries] of Object.entries(puts)) { store.putCards(deck, entries); moved += entries.length; }
-    next.recapped[/** @type {string} */ (c.exam)] = { on: c.today, moved };
+    const k = /** @type {string} */ (c.exam);
+    next.recapped[k] = spread ? { ...next.recapped[k], spread: { on: c.today, moved } } : { on: c.today, moved };
   }
   if (next !== prev) store.set(WINDOW_KV, next);
   return moved;
