@@ -209,5 +209,15 @@ test('Today: a Read day gives the Reading row the slot\'s minutes; no text and n
   assert.equal(row.id, 'read.text');
   assert.equal(row.minutes, 15);
   assert.equal(row.optional, false);
-  assert.equal(row.href, '#/practice/read/new');
+  // no graded text worked out yet (fit.js): the library, where the graded texts are
+  assert.equal(row.href, '#/practice/read');
+});
+
+test('Read day: the next graded text is the first unread one that fits, never one too hard unless all are', async () => {
+  const { nextOf } = await import('../../src/features/practice-read/fit.js');
+  const f = (/** @type {string} */ id, /** @type {string} */ band, /** @type {number} */ coverage, read = false, level = 'B1') => ({ id, slug: id, title: id, level, words: 240, lit: false, coverage, band, by: null, read, share: read ? 1 : 0 });
+  assert.equal(nextOf([f('a', 'study', 0.96, true), f('b', 'study', 0.95), f('c', 'easy', 0.99)])?.id, 'b', 'unread first, in the given order');
+  assert.equal(nextOf([f('a', 'hard', 0.85), f('b', 'stretch', 0.91)])?.id, 'b', 'a stretch before a text too hard');
+  assert.equal(nextOf([f('a', 'hard', 0.80), f('b', 'hard', 0.86), f('c', 'hard', 0.88, false, 'B2')], 'B1')?.id, 'b', 'all too hard: the one at his level he knows most of');
+  assert.equal(nextOf([], 'B1'), null);
 });
