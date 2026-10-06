@@ -1,0 +1,17 @@
+[
+ {
+  "id": "read/de/b1p-news-01 targets",
+  "decision": "W:ehrenamtlich.adj dropped",
+  "why": "both passes flagged it: the text uses the noun, which has no word-list entry"
+ },
+ {
+  "id": "read/de/b1p-politics-01#a16",
+  "decision": "„Zum Schluss zeigte sich, dass …“",
+  "why": "the v2 detector fires on the correct „Am Ende der Diskussion zeigte sich, dass …“ (false positive, reported)"
+ },
+ {
+  "id": "read/de/b1p-health-01",
+  "decision": "each interview question its own section",
+  "why": "editor pass: questions and answers ran together in one paragraph"
+ }
+]

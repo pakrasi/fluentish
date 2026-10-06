@@ -1,0 +1,292 @@
+[
+ {
+  "id": "read/de/b1p-work-01#a2",
+  "field": "de",
+  "before": "Rund 180 Beschäftigte sollen dann nur noch von Montag bis Donnerstag arbeiten, bei gleichem Gehalt.",
+  "after": "Rund 180 Beschäftigte sollen dann nur noch an vier Tagen pro Woche arbeiten, bei gleichem Gehalt.",
+  "severity": "error",
+  "why": "Contradicts a8/a9: Bürgerbüros stay open Fridays with shift work, so not all staff work Mon-Thu."
+ },
+ {
+  "id": "read/de/b1p-work-01#a2",
+  "field": "en",
+  "before": "Around 180 employees will then only work from Monday to Thursday, on the same salary.",
+  "after": "Around 180 employees will then only work four days a week, on the same salary.",
+  "severity": "error",
+  "why": "Follows the German fix."
+ },
+ {
+  "id": "read/de/b1p-work-01#q2",
+  "field": "skill",
+  "before": "global",
+  "after": "detail",
+  "severity": "improve",
+  "why": "Asks about one fact (the vote), not the gist."
+ },
+ {
+  "id": "read/de/b1p-environment-01#a15",
+  "field": "de",
+  "before": "Für die Umwelt ist das ein kleiner, aber messbarer Beitrag, denn jedes reparierte Gerät muss nicht neu produziert werden.",
+  "after": "Für die Umwelt ist das ein kleiner, aber messbarer Beitrag, denn für jedes reparierte Gerät muss kein neues produziert werden.",
+  "severity": "improve",
+  "why": "'jedes reparierte Gerät muss nicht neu produziert werden' is clumsy and literally odd (a repaired device is never produced anew)."
+ },
+ {
+  "id": "read/de/b1p-environment-01#a15",
+  "field": "en",
+  "before": "For the environment, this is a small but measurable contribution, because every repaired appliance does not need to be newly produced.",
+  "after": "For the environment, this is a small but measurable contribution, because no new appliance has to be produced for each one that is repaired.",
+  "severity": "improve",
+  "why": "Follows the German fix."
+ },
+ {
+  "id": "read/de/b1p-environment-02#a11",
+  "field": "en",
+  "before": "A fee has to be paid for every kilometre on the rails, while fuel for planes is usually not taxed.",
+  "after": "A fee has to be paid for every kilometre on the rails, while kerosene for planes is usually not taxed.",
+  "severity": "improve",
+  "why": "'Kerosin' is jet fuel/kerosene, not fuel in general."
+ },
+ {
+  "id": "read/de/b1p-health-01#a8",
+  "field": "en",
+  "before": "Even with a mild cold, I can often decide by video whether someone needs a sick note.",
+  "after": "With a mild cold, too, I can often decide by video whether someone needs a sick note.",
+  "severity": "improve",
+  "why": "'Auch bei' = 'also with', not 'even with'."
+ },
+ {
+  "id": "read/de/b1p-health-01#q5",
+  "field": "q",
+  "before": "Was sollten Patienten nach dem Interview vor einem Videotermin tun?",
+  "after": "Was sollten Patienten laut Interview vor einem Videotermin beachten?",
+  "severity": "improve",
+  "why": "'nach dem Interview' can be read temporally ('after the interview')."
+ },
+ {
+  "id": "read/de/b1p-health-02#a3",
+  "field": "de",
+  "before": "Deshalb kühlt es in der Innenstadt oft kaum ab, während es am Stadtrand schon angenehm ist.",
+  "after": "Deshalb kühlt es in der Innenstadt nachts oft kaum ab, während es am Stadtrand schon angenehm kühl ist.",
+  "severity": "improve",
+  "why": "q2 asks about night; make the sentence state it. 'angenehm kühl' is the natural pairing."
+ },
+ {
+  "id": "read/de/b1p-health-02#a3",
+  "field": "en",
+  "before": "That is why the city centre often hardly cools down, while it is already pleasant on the outskirts.",
+  "after": "That is why the city centre often hardly cools down at night, while it is already pleasantly cool on the outskirts.",
+  "severity": "improve",
+  "why": "Follows the German fix."
+ },
+ {
+  "id": "read/de/b1p-health-02#q2",
+  "field": "evidence",
+  "before": "Deshalb kühlt es in der Innenstadt oft kaum ab",
+  "after": "Deshalb kühlt es in der Innenstadt nachts oft kaum ab",
+  "severity": "improve",
+  "why": "Evidence now carries 'nachts'."
+ },
+ {
+  "id": "read/de/b1p-health-02#a5",
+  "field": "de",
+  "before": "Trinken Sie regelmäßig, auch wenn Sie keinen Durst haben, am besten Wasser oder ungesüßten Tee.",
+  "after": "Trinken Sie regelmäßig, am besten Wasser oder ungesüßten Tee, auch wenn Sie keinen Durst haben.",
+  "severity": "improve",
+  "why": "'am besten Wasser ...' belongs next to 'trinken'; after the wenn-clause it dangles."
+ },
+ {
+  "id": "read/de/b1p-health-02#a5",
+  "field": "en",
+  "before": "Drink regularly, even if you are not thirsty, ideally water or unsweetened tea.",
+  "after": "Drink regularly, ideally water or unsweetened tea, even if you are not thirsty.",
+  "severity": "improve",
+  "why": "Follows the German order."
+ },
+ {
+  "id": "read/de/b1p-health-02#q1",
+  "field": "evidence",
+  "before": "Trinken Sie regelmäßig, auch wenn Sie keinen Durst haben",
+  "after": "Trinken Sie regelmäßig, am besten Wasser oder ungesüßten Tee",
+  "severity": "improve",
+  "why": "Old evidence no longer a substring after a5 fix."
+ },
+ {
+  "id": "read/de/b1p-health-02#a9",
+  "field": "en",
+  "before": "Light, pale clothing and a head covering give extra protection.",
+  "after": "Light, light-coloured clothing and a head covering give extra protection.",
+  "severity": "improve",
+  "why": "'helle' = light-coloured; 'pale' is wrong for clothes."
+ },
+ {
+  "id": "read/de/b1p-tech-01#a1",
+  "field": "en",
+  "before": "In the spring I noticed that I spend two to three hours on my phone every evening.",
+  "after": "In the spring I noticed that I was spending two to three hours on my phone every evening.",
+  "severity": "improve",
+  "why": "English needs backshift after 'noticed'."
+ },
+ {
+  "id": "read/de/b1p-tech-01#a8",
+  "field": "en",
+  "before": "In fact, not a single message that would really have been urgent came in during those four weeks.",
+  "after": "In fact, in those four weeks not a single message came in that was really urgent.",
+  "severity": "improve",
+  "why": "'would really have been urgent' is unnatural English."
+ },
+ {
+  "id": "read/de/b1p-tech-01#a10",
+  "field": "de",
+  "before": "Ab der zweiten Woche hat sich mein Abend deutlich verändert.",
+  "after": "Ab der zweiten Woche haben sich meine Abende deutlich verändert.",
+  "severity": "improve",
+  "why": "Generic singular 'mein Abend' sounds odd; plural is what natives write."
+ },
+ {
+  "id": "read/de/b1p-tech-01#a16",
+  "field": "de",
+  "before": "Für die Wettervorhersage oder den Fahrplan habe ich manchmal doch kurz nachgesehen.",
+  "after": "Wegen der Wettervorhersage oder des Fahrplans habe ich manchmal doch kurz aufs Handy geschaut.",
+  "severity": "improve",
+  "why": "'Für die Wettervorhersage ... nachgesehen' is unidiomatic; 'nachsehen' wants 'nach' or an object."
+ },
+ {
+  "id": "read/de/b1p-tech-01#a16",
+  "field": "en",
+  "before": "I did sometimes take a quick look for the weather forecast or the timetable.",
+  "after": "I did sometimes take a quick look at my phone for the weather forecast or the timetable.",
+  "severity": "improve",
+  "why": "Follows the German fix."
+ },
+ {
+  "id": "read/de/b1p-economy-01#q3",
+  "field": "options",
+  "before": [
+   "Sie hat keine Bankkarte.",
+   "So behält sie den Überblick über ihr Geld.",
+   "In ihrem Café kann man nur bar bezahlen."
+  ],
+  "after": [
+   "Sie findet Kartenzahlung zu teuer.",
+   "So behält sie den Überblick über ihr Geld.",
+   "In ihrem Café kann man nur bar bezahlen."
+  ],
+  "severity": "error",
+  "why": "Distractor 'Sie hat keine Bankkarte' is not disproved; a8 even suggests she cannot pay by card, so two answers look right."
+ },
+ {
+  "id": "read/de/b1p-work-02#a10",
+  "field": "de",
+  "before": "Eine Wärmepumpe kann nicht einfach wie ein altes Gerät ausgetauscht werden.",
+  "after": "Eine alte Heizung kann aber nicht einfach gegen eine Wärmepumpe ausgetauscht werden.",
+  "severity": "error",
+  "why": "'Eine Wärmepumpe kann nicht einfach wie ein altes Gerät ausgetauscht werden' is illogical: the old heating is what gets swapped."
+ },
+ {
+  "id": "read/de/b1p-work-02#a10",
+  "field": "en",
+  "before": "A heat pump cannot simply be swapped in like an old appliance.",
+  "after": "But an old heating system cannot simply be swapped for a heat pump.",
+  "severity": "error",
+  "why": "Follows the German fix."
+ },
+ {
+  "id": "read/de/b1p-work-02#a17",
+  "field": "de",
+  "before": "In zwei Jahren möchte sie die Meisterprüfung machen und später vielleicht einen eigenen Betrieb übernehmen.",
+  "after": "In zwei Jahren möchte sie die Meisterprüfung machen und später vielleicht einen Betrieb übernehmen.",
+  "severity": "improve",
+  "why": "'einen eigenen Betrieb übernehmen' mixes gründen/übernehmen; one takes over an existing business."
+ },
+ {
+  "id": "read/de/b1p-work-02#a17",
+  "field": "en",
+  "before": "In two years she wants to take her master craftsman's exam and perhaps later take over a business of her own.",
+  "after": "In two years she wants to take her master craftsman's exam and perhaps later take over a business.",
+  "severity": "improve",
+  "why": "Follows the German fix."
+ },
+ {
+  "id": "read/de/b1p-politics-01#a6",
+  "field": "de",
+  "before": "Wer ein Jahr lang mit Menschen aus ganz anderen Lebenswelten arbeite, entwickle mehr Verständnis füreinander, sagte die Vertreterin eines Sozialverbands.",
+  "after": "Wer ein Jahr lang mit Menschen aus ganz anderen Lebenswelten arbeite, entwickle mehr Verständnis für andere, sagte die Vertreterin eines Sozialverbands.",
+  "severity": "error",
+  "why": "'füreinander' needs a plural subject; with singular 'wer' it is illogical."
+ },
+ {
+  "id": "read/de/b1p-politics-01#a8",
+  "field": "en",
+  "before": "Many young people don't know what they want to be after school anyway, she argued.",
+  "after": "Many young people don't yet know what they want to do after leaving school anyway, she argued.",
+  "severity": "improve",
+  "why": "English was ambiguous ('want to be after school')."
+ },
+ {
+  "id": "read/de/b1p-news-01#a8",
+  "field": "en",
+  "before": "But many of these products, she said, can still be eaten without any problem.",
+  "after": "Many of these products, she said, can still be eaten without any problem.",
+  "severity": "improve",
+  "why": "Added 'But' not in the German (and repeats a7's 'But')."
+ },
+ {
+  "id": "read/de/b1p-news-01",
+  "field": "targets",
+  "before": [
+   "W:ehrenamtlich.adj",
+   "W:zuständig.adj",
+   "W:der_Haushalt",
+   "W:unter_anderem.phrase",
+   "W:spenden.verb",
+   "W:die_Möglichkeit",
+   "W:das_Produkt",
+   "W:vorgehen.verb",
+   "W:abgelaufen.adj",
+   "GC:konjunktiv-1",
+   "GC:je-desto",
+   "GC:passiv-mit-modalverben"
+  ],
+  "after": [
+   "W:der_Ehrenamtliche",
+   "W:zuständig.adj",
+   "W:der_Haushalt",
+   "W:unter_anderem.phrase",
+   "W:spenden.verb",
+   "W:die_Möglichkeit",
+   "W:das_Produkt",
+   "W:vorgehen.verb",
+   "W:abgelaufen.adj",
+   "GC:konjunktiv-1",
+   "GC:je-desto",
+   "GC:passiv-mit-modalverben"
+  ],
+  "severity": "improve",
+  "why": "Text uses the noun 'Ehrenamtlichen', not the adjective."
+ },
+ {
+  "id": "read/de/b1p-news-01#q5",
+  "field": "skill",
+  "before": "inference",
+  "after": "detail",
+  "severity": "improve",
+  "why": "Answer is stated directly in a13-a14."
+ },
+ {
+  "id": "read/de/b1p-society-01#a10",
+  "field": "de",
+  "before": "Ein schriftlicher Vertrag regelt, welche Aufgaben übernommen werden und wie viel Privatsphäre jeder braucht.",
+  "after": "Ein schriftlicher Vertrag regelt, welche Aufgaben übernommen werden und welche Räume gemeinsam genutzt werden.",
+  "severity": "improve",
+  "why": "A contract cannot regulate 'how much privacy each person needs'; it regulates arrangements."
+ },
+ {
+  "id": "read/de/b1p-society-01#a10",
+  "field": "en",
+  "before": "A written agreement sets out which tasks are taken on and how much privacy each person needs.",
+  "after": "A written agreement sets out which tasks are taken on and which rooms are shared.",
+  "severity": "improve",
+  "why": "Follows the German fix."
+ }
+]

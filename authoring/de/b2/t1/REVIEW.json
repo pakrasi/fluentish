@@ -1,0 +1,45 @@
+{
+ "batch": "t1",
+ "about": "12 bridge texts (B1+ towards B2, about 240 words), each with 5 reviewed questions",
+ "reviewedBy": "model-2pass",
+ "reviewedAt": "2026-10-05",
+ "process": "author → machine gates (readers@1 shape, verbatim evidence, answer ranges, targets exist, no sticky-error detector on a sentence) → editor pass → pass A (native de-DE newspaper and textbook editor persona) → pass B (second native editor persona, blind to pass A) → reconcile. Entries are sentences (German and English) and questions. Both passes are model personas: reviewedBy is model-2pass.",
+ "rounds": [
+  {
+   "round": 1,
+   "a": {
+    "log": "review-a1.json",
+    "entries": 271,
+    "changes": 32,
+    "errors": 6,
+    "improves": 26,
+    "entriesWithError": 4,
+    "errorRate": 0.0148
+   },
+   "b": {
+    "log": "review-b1.json",
+    "entries": 271,
+    "changes": 20,
+    "errors": 2,
+    "improves": 18,
+    "entriesWithError": 1,
+    "errorRate": 0.0037
+   },
+   "result": "pass B under 2%: done"
+  }
+ ],
+ "ids": [
+  "read/de/b1p-work-01",
+  "read/de/b1p-environment-01",
+  "read/de/b1p-environment-02",
+  "read/de/b1p-health-01",
+  "read/de/b1p-health-02",
+  "read/de/b1p-tech-01",
+  "read/de/b1p-economy-01",
+  "read/de/b1p-work-02",
+  "read/de/b1p-science-01",
+  "read/de/b1p-politics-01",
+  "read/de/b1p-news-01",
+  "read/de/b1p-society-01"
+ ]
+}

@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "a2938077de45",
+ "version": "706d33d32db4",
  "languages": [
   {
    "id": "khasi",
@@ -214,6 +214,7 @@
    "igloo.lang.german",
    "igloo.sentences.german",
    "igloo.words.de",
+   "read.de",
    "speak.situations"
   ],
   "fr": [
@@ -827,6 +828,13 @@
    "schema": "lexicon-themes@1",
    "bytes": 1715,
    "sha256": "a2bde1bee7b155216181ebea7603559b2d3d1d0246e02e187165644debf0228f"
+  },
+  {
+   "id": "read.de",
+   "path": "read/de.json",
+   "schema": "readers@1",
+   "bytes": 85083,
+   "sha256": "aa50d68a4804d50251deb05b39a113bcc759212cb0fe0d2809e98ed3e6d65ea6"
   },
   {
    "id": "speak.situations",

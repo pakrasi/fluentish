@@ -1,0 +1,2449 @@
+{
+ "lang": "de",
+ "texts": [
+  {
+   "id": "read/de/b1p-work-01",
+   "level": "B1",
+   "dom": [
+    "work"
+   ],
+   "title": "Stadtverwaltung testet die Vier-Tage-Woche",
+   "licence": "own",
+   "source": null,
+   "words": 241,
+   "sections": [
+    {
+     "id": "s1",
+     "sentences": [
+      {
+       "id": "a1",
+       "text": "Die Stadtverwaltung von Lindenfeld testet ab Januar ein Jahr lang die Vier-Tage-Woche.",
+       "en": "The town administration of Lindenfeld will test the four-day week for one year starting in January."
+      },
+      {
+       "id": "a2",
+       "text": "Rund 180 Beschäftigte sollen dann nur noch an vier Tagen pro Woche arbeiten, bei gleichem Gehalt.",
+       "en": "Around 180 employees will then only work four days a week, on the same salary."
+      },
+      {
+       "id": "a3",
+       "text": "Die Wochenarbeitszeit wird dabei von 39 auf 36 Stunden reduziert.",
+       "en": "Weekly working hours will be reduced from 39 to 36 hours."
+      },
+      {
+       "id": "a4",
+       "text": "Das hat der Stadtrat am Dienstagabend mit knapper Mehrheit beschlossen.",
+       "en": "The town council decided this on Tuesday evening by a narrow majority."
+      }
+     ]
+    },
+    {
+     "id": "s2",
+     "sentences": [
+      {
+       "id": "a5",
+       "text": "Der Bürgermeister erklärte, die Stadt finde kaum noch Personal für offene Stellen.",
+       "en": "The mayor explained that the town can hardly find staff for vacant positions any more."
+      },
+      {
+       "id": "a6",
+       "text": "Mit dem neuen Modell wolle man als Arbeitgeber attraktiver werden und Fachkräfte länger halten.",
+       "en": "With the new model, he said, the town wants to become a more attractive employer and keep skilled workers longer."
+      },
+      {
+       "id": "a7",
+       "text": "Ähnliche Versuche in anderen Städten hätten gezeigt, dass die Beschäftigten dann seltener krank seien.",
+       "en": "According to him, similar trials in other towns have shown that employees are then ill less often."
+      },
+      {
+       "id": "a8",
+       "text": "Damit die Bürgerinnen und Bürger keine Nachteile haben, bleiben die Bürgerbüros auch freitags geöffnet.",
+       "en": "So that residents are not at a disadvantage, the citizens' offices will stay open on Fridays too."
+      },
+      {
+       "id": "a9",
+       "text": "Dort soll in zwei Schichten gearbeitet werden, die im Voraus genau geplant werden müssen.",
+       "en": "There, staff will work in two shifts, which have to be planned carefully in advance."
+      }
+     ]
+    },
+    {
+     "id": "s3",
+     "sentences": [
+      {
+       "id": "a10",
+       "text": "Kritik kommt von der Opposition im Stadtrat.",
+       "en": "Criticism comes from the opposition on the town council."
+      },
+      {
+       "id": "a11",
+       "text": "Sie befürchtet, dass Anträge in Zukunft noch langsamer bearbeitet werden.",
+       "en": "It fears that applications will be processed even more slowly in future."
+      },
+      {
+       "id": "a12",
+       "text": "Schon jetzt warte man in manchen Ämtern mehrere Wochen auf einen Termin, hieß es.",
+       "en": "Even now, it said, people wait several weeks for an appointment at some offices."
+      },
+      {
+       "id": "a13",
+       "text": "„Je kürzer die Arbeitswoche ist, desto länger werden die Wartezeiten“, warnte ein Stadtrat der Opposition.",
+       "en": "\"The shorter the working week, the longer the waiting times will be,\" warned an opposition councillor."
+      },
+      {
+       "id": "a14",
+       "text": "Die Verwaltung hält dagegen, dass viele Abläufe inzwischen digital erledigt werden können.",
+       "en": "The administration counters that many procedures can now be done digitally."
+      },
+      {
+       "id": "a15",
+       "text": "So kann zum Beispiel ein Parkausweis für Anwohner bereits online beantragt werden.",
+       "en": "For example, a residents' parking permit can already be applied for online."
+      }
+     ]
+    },
+    {
+     "id": "s4",
+     "sentences": [
+      {
+       "id": "a16",
+       "text": "Nach sechs Monaten soll eine erste Bilanz gezogen werden.",
+       "en": "A first assessment is to be made after six months."
+      },
+      {
+       "id": "a17",
+       "text": "Dafür werden die Beschäftigten befragt, außerdem wird gemessen, wie lange die Bearbeitung von Anträgen dauert.",
+       "en": "For this, the employees will be surveyed, and it will also be measured how long it takes to process applications."
+      },
+      {
+       "id": "a18",
+       "text": "Erst danach will der Stadtrat entscheiden, ob das Modell dauerhaft eingeführt wird.",
+       "en": "Only then will the town council decide whether the model will be introduced permanently."
+      },
+      {
+       "id": "a19",
+       "text": "Die Gewerkschaft begrüßt den Versuch, fordert aber, dass niemand in vier Tagen die Arbeit von fünf Tagen erledigen muss.",
+       "en": "The trade union welcomes the trial but insists that nobody should have to do five days' work in four days."
+      }
+     ]
+    }
+   ],
+   "targets": [
+    "W:die_Beschäftigte",
+    "W:das_Gehalt",
+    "W:die_Mehrheit",
+    "W:der_Arbeitgeber",
+    "W:der_Antrag",
+    "W:die_Bilanz",
+    "W:dauerhaft.adj",
+    "W:die_Verwaltung",
+    "W:das_Personal",
+    "GC:konjunktiv-1",
+    "GC:je-desto",
+    "GC:passiv-mit-modalverben"
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "mc",
+     "skill": "global",
+     "q": "Worum geht es in dem Text?",
+     "options": [
+      "Eine Stadtverwaltung probiert eine kürzere Arbeitswoche aus.",
+      "Eine Stadt schließt ihre Bürgerbüros am Freitag.",
+      "Die Beschäftigten einer Stadt bekommen weniger Gehalt."
+     ],
+     "answer": 0,
+     "evidence": "testet ab Januar ein Jahr lang die Vier-Tage-Woche"
+    },
+    {
+     "id": "q2",
+     "type": "tf",
+     "skill": "detail",
+     "q": "Der Stadtrat hat dem Versuch ohne Gegenstimmen zugestimmt.",
+     "options": [
+      "richtig",
+      "falsch"
+     ],
+     "answer": 1,
+     "evidence": "mit knapper Mehrheit beschlossen"
+    },
+    {
+     "id": "q3",
+     "type": "mc",
+     "skill": "detail",
+     "q": "Warum will die Stadt das neue Modell einführen?",
+     "options": [
+      "Sie will Geld für Gehälter sparen.",
+      "Sie findet kaum Personal und will Fachkräfte halten.",
+      "Die Bürgerbüros haben freitags wenig Besucher."
+     ],
+     "answer": 1,
+     "evidence": "die Stadt finde kaum noch Personal für offene Stellen"
+    },
+    {
+     "id": "q4",
+     "type": "tf",
+     "skill": "detail",
+     "q": "Während des Versuchs sind die Bürgerbüros am Freitag geschlossen.",
+     "options": [
+      "richtig",
+      "falsch"
+     ],
+     "answer": 1,
+     "evidence": "bleiben die Bürgerbüros auch freitags geöffnet"
+    },
+    {
+     "id": "q5",
+     "type": "mc",
+     "skill": "detail",
+     "q": "Was ist noch nicht entschieden?",
+     "options": [
+      "ob die Bürgerbüros freitags öffnen",
+      "ob die Vier-Tage-Woche auf Dauer bleibt",
+      "wie viele Stunden die Beschäftigten im Versuch arbeiten"
+     ],
+     "answer": 1,
+     "evidence": "ob das Modell dauerhaft eingeführt wird"
+    }
+   ],
+   "reviewedBy": "model-2pass",
+   "reviewedAt": "2026-10-05"
+  },
+  {
+   "id": "read/de/b1p-environment-01",
+   "level": "B1",
+   "dom": [
+    "environment",
+    "society"
+   ],
+   "title": "Ein Samstag im Repair-Café",
+   "licence": "own",
+   "source": null,
+   "words": 237,
+   "sections": [
+    {
+     "id": "s1",
+     "sentences": [
+      {
+       "id": "a1",
+       "text": "Jeden ersten Samstag im Monat wird der Gemeindesaal in der Gartenstraße zur Werkstatt.",
+       "en": "Every first Saturday of the month, the community hall on Gartenstraße turns into a workshop."
+      },
+      {
+       "id": "a2",
+       "text": "Auf langen Tischen liegen Schraubenzieher, Lötkolben und Nähgarn, daneben stehen kaputte Toaster, Lampen und Kaffeemaschinen.",
+       "en": "Screwdrivers, soldering irons and sewing thread lie on long tables, next to broken toasters, lamps and coffee machines."
+      },
+      {
+       "id": "a3",
+       "text": "Wer etwas mitbringt, trägt sich zuerst in eine Liste ein und wartet dann bei Kaffee und Kuchen.",
+       "en": "Anyone who brings something first puts their name on a list and then waits over coffee and cake."
+      },
+      {
+       "id": "a4",
+       "text": "Die Reparatur selbst ist kostenlos, über eine Spende freut sich das Team aber.",
+       "en": "The repair itself is free, but the team is glad of a donation."
+      }
+     ]
+    },
+    {
+     "id": "s2",
+     "sentences": [
+      {
+       "id": "a5",
+       "text": "Die meisten Helfer sind Rentner, die früher als Elektriker, Schneiderin oder Ingenieur gearbeitet haben.",
+       "en": "Most of the helpers are retired people who used to work as electricians, tailors or engineers."
+      },
+      {
+       "id": "a6",
+       "text": "Einer von ihnen ist der 71-jährige Werner, der heute einen Staubsauger auseinanderbaut.",
+       "en": "One of them is 71-year-old Werner, who is taking a vacuum cleaner apart today."
+      },
+      {
+       "id": "a7",
+       "text": "„Das Gerät ist zwar zwölf Jahre alt, aber der Motor ist noch völlig in Ordnung“, sagt er.",
+       "en": "\"The appliance may be twelve years old, but the motor is still perfectly fine,\" he says."
+      },
+      {
+       "id": "a8",
+       "text": "Schuld ist nur ein gebrochenes Kabel, das in zwanzig Minuten ersetzt ist.",
+       "en": "The only problem is a broken cable, which takes twenty minutes to replace."
+      },
+      {
+       "id": "a9",
+       "text": "Die Besitzerin, eine junge Studentin, schaut ihm genau zu, denn beim nächsten Mal möchte sie es selbst versuchen.",
+       "en": "The owner, a young student, watches him closely, because next time she wants to try it herself."
+      },
+      {
+       "id": "a10",
+       "text": "Genau darum geht es: Die Besucher sollen nicht nur ihr Gerät zurückbekommen, sondern auch etwas lernen.",
+       "en": "That is exactly the point: visitors should not only get their appliance back but also learn something."
+      }
+     ]
+    },
+    {
+     "id": "s3",
+     "sentences": [
+      {
+       "id": "a11",
+       "text": "Nicht jede Reparatur gelingt.",
+       "en": "Not every repair succeeds."
+      },
+      {
+       "id": "a12",
+       "text": "Bei vielen modernen Geräten ist das Gehäuse verklebt, und Ersatzteile sind teuer oder gar nicht erhältlich.",
+       "en": "On many modern appliances the casing is glued shut, and spare parts are expensive or not available at all."
+      },
+      {
+       "id": "a13",
+       "text": "„Manches hätten wir retten können, wenn der Hersteller die Teile noch verkaufen würde“, sagt Werner.",
+       "en": "\"We could have saved some things if the manufacturer still sold the parts,\" says Werner."
+      },
+      {
+       "id": "a14",
+       "text": "Trotzdem schätzt das Team, dass etwa zwei Drittel der Dinge wieder funktionieren, wenn sie den Saal verlassen.",
+       "en": "Even so, the team estimates that about two thirds of the items are working again when they leave the hall."
+      },
+      {
+       "id": "a15",
+       "text": "Für die Umwelt ist das ein kleiner, aber messbarer Beitrag, denn für jedes reparierte Gerät muss kein neues produziert werden.",
+       "en": "For the environment, this is a small but measurable contribution, because no new appliance has to be produced for each one that is repaired."
+      },
+      {
+       "id": "a16",
+       "text": "Und viele Besucher kommen inzwischen auch wegen der Gespräche, denn hier lernt man Leute aus der Nachbarschaft kennen.",
+       "en": "And many visitors now also come for the conversations, because this is where you get to know people from the neighbourhood."
+      }
+     ]
+    }
+   ],
+   "targets": [
+    "W:der_Hersteller",
+    "W:die_Spende",
+    "W:der_Beitrag",
+    "W:die_Nachbarschaft",
+    "W:der_Besucher",
+    "W:völlig.adv",
+    "W:der_Staubsauger",
+    "GC:zweiteilige-konnektoren",
+    "GC:konjunktiv-2-vergangenheit",
+    "GC:partizip-als-adjektiv",
+    "GC:relativsaetze"
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "mc",
+     "skill": "global",
+     "q": "Was ist das Hauptthema des Textes?",
+     "options": [
+      "ein Treffen, bei dem Freiwillige mit Besuchern kaputte Geräte reparieren",
+      "ein Geschäft, das gebrauchte Elektrogeräte verkauft",
+      "ein Kurs, in dem Rentner zu Elektrikern ausgebildet werden"
+     ],
+     "answer": 0,
+     "evidence": "Die Besucher sollen nicht nur ihr Gerät zurückbekommen, sondern auch etwas lernen."
+    },
+    {
+     "id": "q2",
+     "type": "tf",
+     "skill": "detail",
+     "q": "Laut Text gelingt im Repair-Café jede Reparatur.",
+     "options": [
+      "richtig",
+      "falsch"
+     ],
+     "answer": 1,
+     "evidence": "Nicht jede Reparatur gelingt."
+    },
+    {
+     "id": "q3",
+     "type": "mc",
+     "skill": "detail",
+     "q": "Was war an dem Staubsauger kaputt?",
+     "options": [
+      "der Motor",
+      "ein Kabel",
+      "das Gehäuse"
+     ],
+     "answer": 1,
+     "evidence": "Schuld ist nur ein gebrochenes Kabel"
+    },
+    {
+     "id": "q4",
+     "type": "tf",
+     "skill": "detail",
+     "q": "Für eine Reparatur muss man nichts bezahlen.",
+     "options": [
+      "richtig",
+      "falsch"
+     ],
+     "answer": 0,
+     "evidence": "Die Reparatur selbst ist kostenlos"
+    },
+    {
+     "id": "q5",
+     "type": "mc",
+     "skill": "inference",
+     "q": "Was kritisiert Werner indirekt?",
+     "options": [
+      "dass Besucher zu lange warten müssen",
+      "dass Hersteller keine Ersatzteile mehr anbieten",
+      "dass moderne Motoren schnell kaputtgehen"
+     ],
+     "answer": 1,
+     "evidence": "wenn der Hersteller die Teile noch verkaufen würde"
+    }
+   ],
+   "reviewedBy": "model-2pass",
+   "reviewedAt": "2026-10-05"
+  },
+  {
+   "id": "read/de/b1p-environment-02",
+   "level": "B1",
+   "dom": [
+    "environment",
+    "politics"
+   ],
+   "title": "Der Nachtzug verdient eine zweite Chance",
+   "licence": "own",
+   "source": null,
+   "words": 232,
+   "sections": [
+    {
+     "id": "s1",
+     "sentences": [
+      {
+       "id": "a1",
+       "text": "Vor einigen Jahren schien der Nachtzug in Europa fast verschwunden zu sein.",
+       "en": "A few years ago, the night train seemed to have almost disappeared in Europe."
+      },
+      {
+       "id": "a2",
+       "text": "Viele Verbindungen wurden gestrichen, weil sie sich angeblich nicht mehr lohnten.",
+       "en": "Many connections were cut because they supposedly no longer paid off."
+      },
+      {
+       "id": "a3",
+       "text": "Heute erleben die Züge ein kleines Comeback, und ich finde: zu Recht.",
+       "en": "Today the trains are making a small comeback, and I think rightly so."
+      },
+      {
+       "id": "a4",
+       "text": "Wer abends in Hamburg einsteigt und morgens in Wien aufwacht, spart nicht nur ein Hotelzimmer, sondern auch einen ganzen Reisetag.",
+       "en": "If you get on in Hamburg in the evening and wake up in Vienna in the morning, you save not only a hotel room but also a whole day of travel."
+      }
+     ]
+    },
+    {
+     "id": "s2",
+     "sentences": [
+      {
+       "id": "a5",
+       "text": "Natürlich hat das Angebot noch Schwächen.",
+       "en": "Of course the service still has weaknesses."
+      },
+      {
+       "id": "a6",
+       "text": "Die Tickets sind oft teurer als ein Flug, und die beliebten Schlafwagen sind schnell ausgebucht.",
+       "en": "Tickets are often more expensive than a flight, and the popular sleeping cars are booked up quickly."
+      },
+      {
+       "id": "a7",
+       "text": "Wer im Liegewagen mit fünf Fremden in einem Abteil schläft, kommt zwar ans Ziel, aber selten ausgeschlafen.",
+       "en": "If you sleep in a couchette car in a compartment with five strangers, you do reach your destination, but rarely well rested."
+      },
+      {
+       "id": "a8",
+       "text": "Und wenn ein Zug ausfällt, erfährt man das manchmal erst kurz vor der Abfahrt.",
+       "en": "And if a train is cancelled, you sometimes only find out shortly before departure."
+      },
+      {
+       "id": "a9",
+       "text": "Diese Probleme sind ärgerlich, aber sie lassen sich lösen.",
+       "en": "These problems are annoying, but they can be solved."
+      }
+     ]
+    },
+    {
+     "id": "s3",
+     "sentences": [
+      {
+       "id": "a10",
+       "text": "Das eigentliche Problem ist ein politisches.",
+       "en": "The real problem is a political one."
+      },
+      {
+       "id": "a11",
+       "text": "Für jeden Kilometer auf der Schiene muss eine Gebühr bezahlt werden, während das Kerosin für Flugzeuge in der Regel nicht besteuert wird.",
+       "en": "A fee has to be paid for every kilometre on the rails, while kerosene for planes is usually not taxed."
+      },
+      {
+       "id": "a12",
+       "text": "Solange das so bleibt, kann der Nachtzug beim Preis kaum mithalten.",
+       "en": "As long as that stays the same, the night train can hardly compete on price."
+      },
+      {
+       "id": "a13",
+       "text": "Hätte man vor zwanzig Jahren in neue Wagen investiert, müssten heute nicht so viele alte Fahrzeuge repariert werden.",
+       "en": "If people had invested in new carriages twenty years ago, not so many old vehicles would have to be repaired today."
+      },
+      {
+       "id": "a14",
+       "text": "Die Politik sollte daher die Gebühren für Nachtzüge senken und den Kauf neuer Wagen fördern.",
+       "en": "Politicians should therefore lower the fees for night trains and support the purchase of new carriages."
+      }
+     ]
+    },
+    {
+     "id": "s4",
+     "sentences": [
+      {
+       "id": "a15",
+       "text": "Je bequemer und günstiger die Reise wird, desto mehr Menschen werden auf das Flugzeug verzichten.",
+       "en": "The more comfortable and cheaper the journey becomes, the more people will give up flying."
+      },
+      {
+       "id": "a16",
+       "text": "Ich selbst fahre seit drei Jahren mit dem Nachtzug zu meiner Familie nach Wien.",
+       "en": "I myself have been taking the night train to my family in Vienna for three years."
+      },
+      {
+       "id": "a17",
+       "text": "Ich habe es kein einziges Mal bereut, auch wenn ich nicht immer gut geschlafen habe.",
+       "en": "I have not regretted it a single time, even if I have not always slept well."
+      }
+     ]
+    }
+   ],
+   "targets": [
+    "W:angeblich.adv",
+    "W:fördern.verb",
+    "W:senken.verb",
+    "W:das_Fahrzeug",
+    "W:das_Abteil",
+    "W:die_Verbindung",
+    "W:lösen.verb",
+    "W:solange.conj",
+    "GC:je-desto",
+    "GC:zweiteilige-konnektoren",
+    "GC:konjunktiv-2-vergangenheit",
+    "GC:passiv-mit-modalverben"
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "mc",
+     "skill": "global",
+     "q": "Welche Meinung vertritt der Autor?",
+     "options": [
+      "Nachtzüge sind zu teuer und sollten abgeschafft werden.",
+      "Nachtzüge sind sinnvoll, brauchen aber mehr Unterstützung von der Politik.",
+      "Nachtzüge sind schon heute in jeder Hinsicht besser als Flüge."
+     ],
+     "answer": 1,
+     "evidence": "Die Politik sollte daher die Gebühren für Nachtzüge senken"
+    },
+    {
+     "id": "q2",
+     "type": "tf",
+     "skill": "global",
+     "q": "Der Autor sieht das größte Problem in der Politik.",
+     "options": [
+      "richtig",
+      "falsch"
+     ],
+     "answer": 0,
+     "evidence": "Das eigentliche Problem ist ein politisches."
+    },
+    {
+     "id": "q3",
+     "type": "mc",
+     "skill": "detail",
+     "q": "Was ist laut Text ein Nachteil des Liegewagens?",
+     "options": [
+      "Man teilt das Abteil mit Fremden und ist am Morgen oft nicht ausgeschlafen.",
+      "Er ist meistens schon Monate vorher ausgebucht.",
+      "Er fährt nur bis Hamburg."
+     ],
+     "answer": 0,
+     "evidence": "kommt zwar ans Ziel, aber selten ausgeschlafen"
+    },
+    {
+     "id": "q4",
+     "type": "tf",
+     "skill": "detail",
+     "q": "Laut Autor wird das Kerosin für Flugzeuge meistens hoch besteuert.",
+     "options": [
+      "richtig",
+      "falsch"
+     ],
+     "answer": 1,
+     "evidence": "in der Regel nicht besteuert wird"
+    },
+    {
+     "id": "q5",
+     "type": "mc",
+     "skill": "attitude",
+     "q": "Wie beurteilt der Autor seine eigenen Fahrten mit dem Nachtzug?",
+     "options": [
+      "Er ist enttäuscht und fliegt bald wieder.",
+      "Er ist zufrieden, obwohl nicht alles perfekt war.",
+      "Er findet sie zu anstrengend für eine Familie."
+     ],
+     "answer": 1,
+     "evidence": "Ich habe es kein einziges Mal bereut"
+    }
+   ],
+   "reviewedBy": "model-2pass",
+   "reviewedAt": "2026-10-05"
+  },
+  {
+   "id": "read/de/b1p-health-01",
+   "level": "B1",
+   "dom": [
+    "health",
+    "tech"
+   ],
+   "title": "Sprechstunde per Video: Was geht und was nicht",
+   "licence": "own",
+   "source": null,
+   "words": 240,
+   "sections": [
+    {
+     "id": "s1",
+     "sentences": [
+      {
+       "id": "a1",
+       "text": "Seit zwei Jahren bietet die Hausärztin Anna Berger in ihrer Praxis auch Videosprechstunden an.",
+       "en": "For two years, the family doctor Anna Berger has also been offering video consultations at her practice."
+      },
+      {
+       "id": "a2",
+       "text": "Wir haben sie gefragt, für wen das Angebot sinnvoll ist und wo es an seine Grenzen stößt.",
+       "en": "We asked her who the service makes sense for and where it reaches its limits."
+      }
+     ]
+    },
+    {
+     "id": "s2",
+     "sentences": [
+      {
+       "id": "a3",
+       "text": "Frau Berger, wer nutzt die Videosprechstunde am häufigsten?",
+       "en": "Ms Berger, who uses the video consultation most often?"
+      }
+     ]
+    },
+    {
+     "id": "s3",
+     "sentences": [
+      {
+       "id": "a4",
+       "text": "Vor allem Berufstätige und Eltern mit kleinen Kindern, die nicht stundenlang im Wartezimmer sitzen wollen.",
+       "en": "Mainly working people and parents with small children who don't want to sit in the waiting room for hours."
+      },
+      {
+       "id": "a5",
+       "text": "Aber auch ältere Patienten, die nicht mehr so mobil sind, schätzen das Angebot sehr.",
+       "en": "But older patients who are no longer so mobile also value the service a lot."
+      }
+     ]
+    },
+    {
+     "id": "s4",
+     "sentences": [
+      {
+       "id": "a6",
+       "text": "Bei welchen Beschwerden ist ein Videotermin geeignet?",
+       "en": "For which complaints is a video appointment suitable?"
+      }
+     ]
+    },
+    {
+     "id": "s5",
+     "sentences": [
+      {
+       "id": "a7",
+       "text": "Zum Beispiel, wenn Laborwerte besprochen werden müssen oder ein Rezept verlängert werden soll.",
+       "en": "For example, when lab results need to be discussed or a prescription is to be renewed."
+      },
+      {
+       "id": "a8",
+       "text": "Auch bei einer leichten Erkältung kann ich oft per Video entscheiden, ob jemand eine Krankschreibung braucht.",
+       "en": "With a mild cold, too, I can often decide by video whether someone needs a sick note."
+      },
+      {
+       "id": "a9",
+       "text": "Das spart den Patienten Zeit und verhindert, dass sie andere Menschen im Wartezimmer anstecken.",
+       "en": "That saves patients time and stops them from infecting other people in the waiting room."
+      }
+     ]
+    },
+    {
+     "id": "s6",
+     "sentences": [
+      {
+       "id": "a10",
+       "text": "Und wann kommt ein Videotermin nicht infrage?",
+       "en": "And when is a video appointment out of the question?"
+      }
+     ]
+    },
+    {
+     "id": "s7",
+     "sentences": [
+      {
+       "id": "a11",
+       "text": "Sobald ich jemanden abhören oder untersuchen muss, geht es nicht ohne Besuch in der Praxis.",
+       "en": "As soon as I have to listen to someone's chest or examine them, it doesn't work without a visit to the practice."
+      },
+      {
+       "id": "a12",
+       "text": "Bei Brustschmerzen oder Atemnot sollte man auf keinen Fall auf einen Videotermin warten, sondern sofort den Notruf wählen.",
+       "en": "With chest pain or shortness of breath, you should on no account wait for a video appointment but call the emergency number at once."
+      }
+     ]
+    },
+    {
+     "id": "s8",
+     "sentences": [
+      {
+       "id": "a13",
+       "text": "Gibt es auch Probleme mit der Technik?",
+       "en": "Are there also problems with the technology?"
+      }
+     ]
+    },
+    {
+     "id": "s9",
+     "sentences": [
+      {
+       "id": "a14",
+       "text": "Am Anfang schon, da ist die Verbindung manchmal mitten im Gespräch abgebrochen.",
+       "en": "At the beginning, yes; the connection sometimes broke off in the middle of a conversation."
+      },
+      {
+       "id": "a15",
+       "text": "Heute klappt es meistens, aber eine stabile Internetverbindung und ein ruhiger Raum sind wichtig.",
+       "en": "Today it usually works, but a stable internet connection and a quiet room are important."
+      },
+      {
+       "id": "a16",
+       "text": "Manche Patienten sitzen dabei im Bus oder im Großraumbüro, das ist natürlich nicht ideal.",
+       "en": "Some patients sit on the bus or in an open-plan office while doing it, which is of course not ideal."
+      }
+     ]
+    },
+    {
+     "id": "s10",
+     "sentences": [
+      {
+       "id": "a17",
+       "text": "Würden Sie das Angebot weiterempfehlen?",
+       "en": "Would you recommend the service?"
+      }
+     ]
+    },
+    {
+     "id": "s11",
+     "sentences": [
+      {
+       "id": "a18",
+       "text": "Ja, wenn man es als Ergänzung versteht und nicht als Ersatz.",
+       "en": "Yes, if you see it as an addition and not as a replacement."
+      },
+      {
+       "id": "a19",
+       "text": "Der persönliche Kontakt bleibt für mich der Kern der hausärztlichen Arbeit, gerade bei Patienten, die ich seit Jahren kenne.",
+       "en": "For me, personal contact remains the core of a family doctor's work, especially with patients I have known for years."
+      }
+     ]
+    }
+   ],
+   "targets": [
+    "W:die_Beschwerden",
+    "W:geeignet.adj",
+    "W:stabil.adj",
+    "W:der_Ersatz",
+    "W:die_Krankschreibung",
+    "W:sobald.conj",
+    "W:das_Wartezimmer",
+    "W:verlängern.verb",
+    "GC:passiv-mit-modalverben",
+    "GC:relativsaetze",
+    "GC:konjunktiv-2-wuerde"
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "mc",
+     "skill": "global",
+     "q": "Wie steht die Ärztin insgesamt zur Videosprechstunde?",
+     "options": [
+      "Sie lehnt sie ab.",
+      "Sie findet sie nützlich, aber nur als Ergänzung.",
+      "Sie möchte nur noch per Video arbeiten."
+     ],
+     "answer": 1,
+     "evidence": "wenn man es als Ergänzung versteht und nicht als Ersatz"
+    },
+    {
+     "id": "q2",
+     "type": "tf",
+     "skill": "global",
+     "q": "Im Interview geht es auch um die Grenzen der Videosprechstunde.",
+     "options": [
+      "richtig",
+      "falsch"
+     ],
+     "answer": 0,
+     "evidence": "Und wann kommt ein Videotermin nicht infrage?"
+    },
+    {
+     "id": "q3",
+     "type": "mc",
+     "skill": "detail",
+     "q": "Wann ist ein Videotermin laut der Ärztin geeignet?",
+     "options": [
+      "bei Brustschmerzen",
+      "wenn Laborwerte besprochen werden müssen",
+      "wenn ein Patient abgehört werden muss"
+     ],
+     "answer": 1,
+     "evidence": "wenn Laborwerte besprochen werden müssen"
+    },
+    {
+     "id": "q4",
+     "type": "tf",
+     "skill": "detail",
+     "q": "Bei Atemnot soll man einen Videotermin vereinbaren.",
+     "options": [
+      "richtig",
+      "falsch"
+     ],
+     "answer": 1,
+     "evidence": "sofort den Notruf wählen"
+    },
+    {
+     "id": "q5",
+     "type": "mc",
+     "skill": "detail",
+     "q": "Was sollten Patienten laut Interview vor einem Videotermin beachten?",
+     "options": [
+      "sich einen ruhigen Ort mit gutem Internet suchen",
+      "ihre Laborwerte selbst messen",
+      "vorher in der Praxis anrufen, um die Technik zu testen"
+     ],
+     "answer": 0,
+     "evidence": "eine stabile Internetverbindung und ein ruhiger Raum sind wichtig"
+    }
+   ],
+   "reviewedBy": "model-2pass",
+   "reviewedAt": "2026-10-05"
+  },
+  {
+   "id": "read/de/b1p-health-02",
+   "level": "B1",
+   "dom": [
+    "health",
+    "environment"
+   ],
+   "title": "Hitze in der Stadt: So schützen Sie sich",
+   "licence": "own",
+   "source": null,
+   "words": 242,
+   "sections": [
+    {
+     "id": "s1",
+     "sentences": [
+      {
+       "id": "a1",
+       "text": "Hitzewellen kommen in Deutschland häufiger vor als früher und dauern oft länger.",
+       "en": "Heatwaves occur more often in Germany than they used to and often last longer."
+      },
+      {
+       "id": "a2",
+       "text": "In Städten ist die Belastung besonders hoch, weil Beton und Asphalt die Wärme speichern und nachts wieder abgeben.",
+       "en": "In cities the strain is especially high, because concrete and asphalt store the heat and release it again at night."
+      },
+      {
+       "id": "a3",
+       "text": "Deshalb kühlt es in der Innenstadt nachts oft kaum ab, während es am Stadtrand schon angenehm kühl ist.",
+       "en": "That is why the city centre often hardly cools down at night, while it is already pleasantly cool on the outskirts."
+      },
+      {
+       "id": "a4",
+       "text": "Gefährdet sind vor allem ältere Menschen, Säuglinge, Schwangere und Menschen mit chronischen Krankheiten.",
+       "en": "Those most at risk are older people, babies, pregnant women and people with chronic illnesses."
+      }
+     ]
+    },
+    {
+     "id": "s2",
+     "sentences": [
+      {
+       "id": "a5",
+       "text": "Trinken Sie regelmäßig, am besten Wasser oder ungesüßten Tee, auch wenn Sie keinen Durst haben.",
+       "en": "Drink regularly, ideally water or unsweetened tea, even if you are not thirsty."
+      },
+      {
+       "id": "a6",
+       "text": "Lüften Sie Ihre Wohnung früh am Morgen oder spät am Abend und halten Sie tagsüber Fenster und Vorhänge geschlossen.",
+       "en": "Air your flat early in the morning or late in the evening, and keep windows and curtains closed during the day."
+      },
+      {
+       "id": "a7",
+       "text": "Anstrengende Arbeiten im Garten oder Sport sollten in die kühleren Morgenstunden verlegt werden.",
+       "en": "Strenuous work in the garden or sport should be moved to the cooler morning hours."
+      },
+      {
+       "id": "a8",
+       "text": "Bleiben Sie zwischen 11 und 17 Uhr möglichst im Schatten oder in Innenräumen.",
+       "en": "Stay in the shade or indoors between 11 a.m. and 5 p.m. if possible."
+      },
+      {
+       "id": "a9",
+       "text": "Leichte, helle Kleidung und eine Kopfbedeckung bieten zusätzlichen Schutz.",
+       "en": "Light, light-coloured clothing and a head covering give extra protection."
+      }
+     ]
+    },
+    {
+     "id": "s3",
+     "sentences": [
+      {
+       "id": "a10",
+       "text": "Achten Sie auch auf Ihre Nachbarn, besonders wenn sie allein leben.",
+       "en": "Keep an eye on your neighbours too, especially if they live alone."
+      },
+      {
+       "id": "a11",
+       "text": "Ein kurzer Anruf oder ein Besuch kann helfen, Warnzeichen früh zu erkennen.",
+       "en": "A short call or a visit can help to spot warning signs early."
+      },
+      {
+       "id": "a12",
+       "text": "Typische Anzeichen eines Hitzschlags sind Kopfschmerzen, Übelkeit, Verwirrung und eine stark erhöhte Körpertemperatur.",
+       "en": "Typical signs of heatstroke are headache, nausea, confusion and a greatly raised body temperature."
+      },
+      {
+       "id": "a13",
+       "text": "In diesem Fall sollte die betroffene Person sofort in den Schatten gebracht und gekühlt werden.",
+       "en": "In this case, the person affected should be taken into the shade and cooled down immediately."
+      },
+      {
+       "id": "a14",
+       "text": "Rufen Sie außerdem den Rettungsdienst unter der Nummer 112.",
+       "en": "Also call the emergency services on 112."
+      }
+     ]
+    },
+    {
+     "id": "s4",
+     "sentences": [
+      {
+       "id": "a15",
+       "text": "Die Stadt hat in diesem Sommer zusätzliche Trinkbrunnen aufgestellt und mehrere kühle Orte ausgewählt, an denen man sich bei Hitze aufhalten kann.",
+       "en": "This summer the city has put up extra drinking fountains and chosen several cool places where people can spend time in the heat."
+      },
+      {
+       "id": "a16",
+       "text": "Dazu gehören zum Beispiel die Stadtbibliothek und einige Kirchen, die während einer Hitzewelle länger geöffnet sind.",
+       "en": "These include, for example, the city library and some churches, which stay open longer during a heatwave."
+      },
+      {
+       "id": "a17",
+       "text": "Eine Karte mit allen Orten finden Sie auf unserer Website unter dem Stichwort „Hitzeschutz“.",
+       "en": "You can find a map of all the places on our website under the keyword \"heat protection\"."
+      }
+     ]
+    }
+   ],
+   "targets": [
+    "W:die_Hitzewelle",
+    "W:die_Übelkeit",
+    "W:chronisch.adj",
+    "W:die_Belastung",
+    "W:der_Säugling",
+    "W:tagsüber.adv",
+    "W:lüften.verb",
+    "W:der_Schutz",
+    "GC:passiv-mit-modalverben",
+    "GC:partizip-als-adjektiv",
+    "GC:relativsaetze"
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "mc",
+     "skill": "global",
+     "q": "Was ist das Ziel des Textes?",
+     "options": [
+      "Er informiert über die Gefahren der Hitze und gibt praktische Tipps.",
+      "Er erklärt, warum es in Deutschland immer heißer wird.",
+      "Er wirbt für neue Wohnungen am Stadtrand."
+     ],
+     "answer": 0,
+     "evidence": "Trinken Sie regelmäßig, am besten Wasser oder ungesüßten Tee"
+    },
+    {
+     "id": "q2",
+     "type": "tf",
+     "skill": "global",
+     "q": "Laut Text ist es in der Innenstadt nachts oft wärmer als am Stadtrand.",
+     "options": [
+      "richtig",
+      "falsch"
+     ],
+     "answer": 0,
+     "evidence": "Deshalb kühlt es in der Innenstadt nachts oft kaum ab"
+    },
+    {
+     "id": "q3",
+     "type": "mc",
+     "skill": "detail",
+     "q": "Wann sollte man die Wohnung lüften?",
+     "options": [
+      "am Nachmittag, wenn die Sonne schwächer wird",
+      "früh am Morgen oder spät am Abend",
+      "zwischen 11 und 17 Uhr"
+     ],
+     "answer": 1,
+     "evidence": "Lüften Sie Ihre Wohnung früh am Morgen oder spät am Abend"
+    },
+    {
+     "id": "q4",
+     "type": "tf",
+     "skill": "detail",
+     "q": "Bei Anzeichen eines Hitzschlags soll man die 112 anrufen.",
+     "options": [
+      "richtig",
+      "falsch"
+     ],
+     "answer": 0,
+     "evidence": "Rufen Sie außerdem den Rettungsdienst unter der Nummer 112."
+    },
+    {
+     "id": "q5",
+     "type": "mc",
+     "skill": "inference",
+     "q": "Warum soll man sich besonders um allein lebende Nachbarn kümmern?",
+     "options": [
+      "Weil sonst vielleicht niemand bemerkt, dass es ihnen schlecht geht.",
+      "Weil sie die Trinkbrunnen nicht kennen.",
+      "Weil die Stadt dafür bezahlt."
+     ],
+     "answer": 0,
+     "evidence": "Ein kurzer Anruf oder ein Besuch kann helfen, Warnzeichen früh zu erkennen."
+    }
+   ],
+   "reviewedBy": "model-2pass",
+   "reviewedAt": "2026-10-05"
+  },
+  {
+   "id": "read/de/b1p-tech-01",
+   "level": "B1",
+   "dom": [
+    "tech",
+    "society"
+   ],
+   "title": "Vier Wochen ohne Handy am Abend",
+   "licence": "own",
+   "source": null,
+   "words": 244,
+   "sections": [
+    {
+     "id": "s1",
+     "sentences": [
+      {
+       "id": "a1",
+       "text": "Im Frühjahr habe ich gemerkt, dass ich jeden Abend zwei bis drei Stunden am Handy verbringe.",
+       "en": "In the spring I noticed that I was spending two to three hours on my phone every evening."
+      },
+      {
+       "id": "a2",
+       "text": "Ich habe Nachrichten gelesen, kurze Videos angeschaut und Mails beantwortet, die bis zum nächsten Morgen hätten warten können.",
+       "en": "I read the news, watched short videos and answered emails that could have waited until the next morning."
+      },
+      {
+       "id": "a3",
+       "text": "Danach war ich müde, aber trotzdem unruhig, und ich bin selten vor Mitternacht eingeschlafen.",
+       "en": "Afterwards I was tired but still restless, and I rarely fell asleep before midnight."
+      },
+      {
+       "id": "a4",
+       "text": "Deshalb habe ich mir eine einfache Regel gegeben: Ab 20 Uhr bleibt das Handy in der Küche.",
+       "en": "So I gave myself a simple rule: from 8 p.m., the phone stays in the kitchen."
+      }
+     ]
+    },
+    {
+     "id": "s2",
+     "sentences": [
+      {
+       "id": "a5",
+       "text": "Die erste Woche war schwieriger, als ich erwartet hatte.",
+       "en": "The first week was harder than I had expected."
+      },
+      {
+       "id": "a6",
+       "text": "Immer wieder habe ich automatisch in die Hosentasche gegriffen, obwohl das Handy gar nicht da war.",
+       "en": "Again and again I automatically reached into my trouser pocket, although the phone wasn't even there."
+      },
+      {
+       "id": "a7",
+       "text": "Ich hatte ständig das Gefühl, etwas Wichtiges zu verpassen.",
+       "en": "I constantly had the feeling of missing something important."
+      },
+      {
+       "id": "a8",
+       "text": "Tatsächlich ist in den vier Wochen keine einzige Nachricht gekommen, die wirklich dringend gewesen wäre.",
+       "en": "In fact, in those four weeks not a single message came in that was really urgent."
+      },
+      {
+       "id": "a9",
+       "text": "Meine Familie wusste Bescheid und hätte mich im Notfall auf dem Festnetz angerufen.",
+       "en": "My family knew about it and would have called me on the landline in an emergency."
+      }
+     ]
+    },
+    {
+     "id": "s3",
+     "sentences": [
+      {
+       "id": "a10",
+       "text": "Ab der zweiten Woche haben sich meine Abende deutlich verändert.",
+       "en": "From the second week on, my evenings changed noticeably."
+      },
+      {
+       "id": "a11",
+       "text": "Ich habe wieder Bücher gelesen, die seit Monaten ungelesen im Regal standen.",
+       "en": "I read books again that had been standing unread on the shelf for months."
+      },
+      {
+       "id": "a12",
+       "text": "Mit meinem Mitbewohner habe ich öfter gekocht und mich länger unterhalten.",
+       "en": "I cooked with my flatmate more often and talked with him for longer."
+      },
+      {
+       "id": "a13",
+       "text": "Am auffälligsten war aber der Schlaf: Ich bin früher eingeschlafen und morgens ausgeruhter aufgewacht.",
+       "en": "But the most striking thing was sleep: I fell asleep earlier and woke up more rested in the morning."
+      },
+      {
+       "id": "a14",
+       "text": "Je weniger ich abends auf den Bildschirm geschaut habe, desto ruhiger bin ich geworden.",
+       "en": "The less I looked at the screen in the evening, the calmer I became."
+      }
+     ]
+    },
+    {
+     "id": "s4",
+     "sentences": [
+      {
+       "id": "a15",
+       "text": "Ganz konsequent bin ich allerdings nicht geblieben.",
+       "en": "I did not stick to it completely, though."
+      },
+      {
+       "id": "a16",
+       "text": "Wegen der Wettervorhersage oder des Fahrplans habe ich manchmal doch kurz aufs Handy geschaut.",
+       "en": "I did sometimes take a quick look at my phone for the weather forecast or the timetable."
+      },
+      {
+       "id": "a17",
+       "text": "Trotzdem will ich die Regel beibehalten, vielleicht nicht jeden Tag, aber an den meisten Abenden.",
+       "en": "Even so, I want to keep the rule, maybe not every day, but on most evenings."
+      },
+      {
+       "id": "a18",
+       "text": "Wer es selbst ausprobieren möchte, sollte mit einer festen Uhrzeit anfangen und das Handy wirklich in einen anderen Raum legen.",
+       "en": "Anyone who wants to try it should start with a fixed time and really put the phone in another room."
+      }
+     ]
+    }
+   ],
+   "targets": [
+    "W:beibehalten.verb",
+    "W:das_Frühjahr",
+    "W:tatsächlich.adv",
+    "W:ständig.adv",
+    "W:auffällig.adj",
+    "W:der_Notfall",
+    "W:deutlich.adj",
+    "W:allerdings.adv",
+    "GC:je-desto",
+    "GC:konjunktiv-2-vergangenheit",
+    "GC:relativsaetze"
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "mc",
+     "skill": "global",
+     "q": "Worüber berichtet der Text?",
+     "options": [
+      "über ein persönliches Experiment mit weniger Zeit am Handy",
+      "über eine Studie zum Schlaf von Jugendlichen",
+      "über den Kauf eines neuen Handys"
+     ],
+     "answer": 0,
+     "evidence": "Ab 20 Uhr bleibt das Handy in der Küche."
+    },
+    {
+     "id": "q2",
+     "type": "tf",
+     "skill": "global",
+     "q": "Das Experiment hat sich für die Person insgesamt gelohnt.",
+     "options": [
+      "richtig",
+      "falsch"
+     ],
+     "answer": 0,
+     "evidence": "Trotzdem will ich die Regel beibehalten"
+    },
+    {
+     "id": "q3",
+     "type": "tf",
+     "skill": "detail",
+     "q": "In den vier Wochen hat die Person eine dringende Nachricht verpasst.",
+     "options": [
+      "richtig",
+      "falsch"
+     ],
+     "answer": 1,
+     "evidence": "keine einzige Nachricht gekommen, die wirklich dringend gewesen wäre"
+    },
+    {
+     "id": "q4",
+     "type": "mc",
+     "skill": "detail",
+     "q": "Was war die auffälligste Veränderung?",
+     "options": [
+      "Die Person hat mehr Sport gemacht.",
+      "Die Person hat besser geschlafen.",
+      "Die Person hat mehr Mails geschrieben."
+     ],
+     "answer": 1,
+     "evidence": "Am auffälligsten war aber der Schlaf"
+    },
+    {
+     "id": "q5",
+     "type": "mc",
+     "skill": "attitude",
+     "q": "Wie ehrlich beschreibt die Person ihr Experiment?",
+     "options": [
+      "Sie behauptet, die Regel immer perfekt eingehalten zu haben.",
+      "Sie gibt zu, dass sie manchmal doch aufs Handy geschaut hat.",
+      "Sie verschweigt, dass sie das Experiment nach einer Woche abgebrochen hat."
+     ],
+     "answer": 1,
+     "evidence": "Ganz konsequent bin ich allerdings nicht geblieben."
+    }
+   ],
+   "reviewedBy": "model-2pass",
+   "reviewedAt": "2026-10-05"
+  },
+  {
+   "id": "read/de/b1p-economy-01",
+   "level": "B1",
+   "dom": [
+    "economy",
+    "society"
+   ],
+   "title": "Leserbrief: Bargeld muss bleiben",
+   "licence": "own",
+   "source": null,
+   "words": 239,
+   "sections": [
+    {
+     "id": "s1",
+     "sentences": [
+      {
+       "id": "a1",
+       "text": "Zu Ihrem Artikel „Bald nur noch mit Karte?“ vom 12. September möchte ich etwas ergänzen.",
+       "en": "I would like to add something to your article \"Soon card only?\" of 12 September."
+      },
+      {
+       "id": "a2",
+       "text": "Sie berichten, dass immer mehr Geschäfte und Cafés kein Bargeld mehr annehmen.",
+       "en": "You report that more and more shops and cafés no longer accept cash."
+      },
+      {
+       "id": "a3",
+       "text": "Für junge Leute mag das praktisch sein, für viele andere ist es ein echtes Problem.",
+       "en": "That may be practical for young people, but for many others it is a real problem."
+      }
+     ]
+    },
+    {
+     "id": "s2",
+     "sentences": [
+      {
+       "id": "a4",
+       "text": "Meine Mutter ist 84 Jahre alt und hat nie gelernt, mit dem Smartphone zu bezahlen.",
+       "en": "My mother is 84 years old and has never learned to pay with a smartphone."
+      },
+      {
+       "id": "a5",
+       "text": "Sie teilt ihre Rente jeden Monat auf mehrere Umschläge auf und weiß so immer genau, wie viel sie noch ausgeben kann.",
+       "en": "Every month she divides her pension into several envelopes, and that way she always knows exactly how much she can still spend."
+      },
+      {
+       "id": "a6",
+       "text": "Mit Bargeld behält sie den Überblick, mit einer Karte würde sie ihn schnell verlieren.",
+       "en": "With cash she keeps track; with a card she would quickly lose it."
+      },
+      {
+       "id": "a7",
+       "text": "Neulich wurde sie in ihrem Stammcafé gebeten, mit Karte zu zahlen.",
+       "en": "Recently she was asked to pay by card in her regular café."
+      },
+      {
+       "id": "a8",
+       "text": "Wäre ich an diesem Tag nicht dabei gewesen, hätte sie ihren Kaffee nicht einmal bezahlen können.",
+       "en": "If I had not been with her that day, she would not even have been able to pay for her coffee."
+      },
+      {
+       "id": "a9",
+       "text": "Seitdem geht sie dort nicht mehr hin.",
+       "en": "She hasn't gone there since."
+      }
+     ]
+    },
+    {
+     "id": "s3",
+     "sentences": [
+      {
+       "id": "a10",
+       "text": "Ich bin zwar keine Gegnerin der Kartenzahlung, aber ich halte es für falsch, Bargeld nach und nach zu verdrängen.",
+       "en": "I am not against paying by card, but I think it is wrong to push cash out bit by bit."
+      },
+      {
+       "id": "a11",
+       "text": "Es geht dabei nicht nur um ältere Menschen, sondern auch um den Datenschutz.",
+       "en": "This is not only about older people but also about data protection."
+      },
+      {
+       "id": "a12",
+       "text": "Jede Zahlung mit Karte hinterlässt Spuren, die gespeichert und ausgewertet werden können.",
+       "en": "Every card payment leaves traces that can be stored and analysed."
+      },
+      {
+       "id": "a13",
+       "text": "Außerdem funktioniert Bargeld auch dann, wenn das Netz ausfällt oder ein Kartenterminal gestört ist.",
+       "en": "Besides, cash still works when the network goes down or a card terminal is out of order."
+      },
+      {
+       "id": "a14",
+       "text": "Gerade bei einem längeren Stromausfall wäre man ohne Münzen und Scheine ziemlich hilflos.",
+       "en": "Especially during a longer power cut, you would be fairly helpless without coins and notes."
+      }
+     ]
+    },
+    {
+     "id": "s4",
+     "sentences": [
+      {
+       "id": "a15",
+       "text": "Ich wünsche mir deshalb, dass Geschäfte des täglichen Bedarfs verpflichtet werden, weiterhin Bargeld anzunehmen.",
+       "en": "I would therefore like shops selling everyday goods to be required to keep accepting cash."
+      },
+      {
+       "id": "a16",
+       "text": "Die Entscheidung, wie man bezahlt, sollte bei den Kunden liegen und nicht beim Geschäft.",
+       "en": "The decision on how to pay should lie with the customers and not with the shop."
+      },
+      {
+       "id": "a17",
+       "text": "Ich würde mich freuen, wenn Ihre Zeitung an diesem Thema dranbleibt.",
+       "en": "I would be glad if your newspaper stayed on this topic."
+      },
+      {
+       "id": "a18",
+       "text": "Martina Lehnert, Kassel",
+       "en": "Martina Lehnert, Kassel"
+      }
+     ]
+    }
+   ],
+   "targets": [
+    "W:ergänzen.verb",
+    "W:die_Zahlung",
+    "W:der_Bedarf",
+    "W:der_Datenschutz",
+    "W:neulich.adv",
+    "W:die_Rente",
+    "W:annehmen.verb",
+    "GC:zweiteilige-konnektoren",
+    "GC:konjunktiv-2-vergangenheit",
+    "GC:passiv-mit-modalverben"
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "mc",
+     "skill": "global",
+     "q": "Was fordert die Verfasserin des Briefes?",
+     "options": [
+      "dass Bargeld als Zahlungsmittel erhalten bleibt",
+      "dass ältere Menschen das Bezahlen mit dem Handy lernen",
+      "dass Kartenzahlung in Cafés verboten wird"
+     ],
+     "answer": 0,
+     "evidence": "verpflichtet werden, weiterhin Bargeld anzunehmen"
+    },
+    {
+     "id": "q2",
+     "type": "tf",
+     "skill": "global",
+     "q": "Die Verfasserin lehnt Kartenzahlung grundsätzlich ab.",
+     "options": [
+      "richtig",
+      "falsch"
+     ],
+     "answer": 1,
+     "evidence": "Ich bin zwar keine Gegnerin der Kartenzahlung"
+    },
+    {
+     "id": "q3",
+     "type": "mc",
+     "skill": "detail",
+     "q": "Warum bezahlt die Mutter lieber mit Bargeld?",
+     "options": [
+      "Sie findet Kartenzahlung zu teuer.",
+      "So behält sie den Überblick über ihr Geld.",
+      "In ihrem Café kann man nur bar bezahlen."
+     ],
+     "answer": 1,
+     "evidence": "Mit Bargeld behält sie den Überblick"
+    },
+    {
+     "id": "q4",
+     "type": "tf",
+     "skill": "detail",
+     "q": "Die Verfasserin nennt auch den Datenschutz als Argument.",
+     "options": [
+      "richtig",
+      "falsch"
+     ],
+     "answer": 0,
+     "evidence": "sondern auch um den Datenschutz"
+    },
+    {
+     "id": "q5",
+     "type": "mc",
+     "skill": "inference",
+     "q": "Was ist im Café passiert?",
+     "options": [
+      "Die Mutter durfte dort plötzlich nicht mehr mit Karte zahlen.",
+      "Die Mutter konnte nur mit Hilfe ihrer Tochter bezahlen.",
+      "Das Café war wegen eines Netzausfalls geschlossen."
+     ],
+     "answer": 1,
+     "evidence": "hätte sie ihren Kaffee nicht einmal bezahlen können"
+    }
+   ],
+   "reviewedBy": "model-2pass",
+   "reviewedAt": "2026-10-05"
+  },
+  {
+   "id": "read/de/b1p-work-02",
+   "level": "B1",
+   "dom": [
+    "work",
+    "environment"
+   ],
+   "title": "Beruf: Anlagenmechanikerin",
+   "licence": "own",
+   "source": null,
+   "words": 238,
+   "sections": [
+    {
+     "id": "s1",
+     "sentences": [
+      {
+       "id": "a1",
+       "text": "Wenn Leonie Hartmann morgens ihren Werkzeugkoffer ins Auto lädt, weiß sie oft noch nicht genau, was sie erwartet.",
+       "en": "When Leonie Hartmann loads her toolbox into the car in the morning, she often doesn't know exactly what awaits her."
+      },
+      {
+       "id": "a2",
+       "text": "Die 24-Jährige arbeitet als Anlagenmechanikerin für Sanitär-, Heizungs- und Klimatechnik in einem kleinen Familienbetrieb.",
+       "en": "The 24-year-old works as a plumbing, heating and air-conditioning technician in a small family business."
+      },
+      {
+       "id": "a3",
+       "text": "Sie installiert Bäder, wartet Heizungen und baut immer häufiger Wärmepumpen ein.",
+       "en": "She installs bathrooms, services heating systems and fits heat pumps more and more often."
+      }
+     ]
+    },
+    {
+     "id": "s2",
+     "sentences": [
+      {
+       "id": "a4",
+       "text": "Nach dem Abitur hatte sie zunächst ein Studium der Betriebswirtschaft begonnen.",
+       "en": "After her school-leaving exams she had first started a degree in business studies."
+      },
+      {
+       "id": "a5",
+       "text": "„Ich habe zwar gute Noten bekommen, aber ich saß den ganzen Tag nur am Schreibtisch“, erzählt sie.",
+       "en": "\"I did get good marks, but I just sat at a desk all day,\" she says."
+      },
+      {
+       "id": "a6",
+       "text": "Nach zwei Semestern brach sie das Studium ab und bewarb sich um einen Ausbildungsplatz.",
+       "en": "After two semesters she dropped out and applied for an apprenticeship."
+      },
+      {
+       "id": "a7",
+       "text": "Die Ausbildung dauert dreieinhalb Jahre und findet im Betrieb und in der Berufsschule statt.",
+       "en": "The training takes three and a half years and takes place at the company and at vocational school."
+      },
+      {
+       "id": "a8",
+       "text": "Neben handwerklichem Geschick braucht man gute Kenntnisse in Mathematik und Physik, denn Leitungen und Anlagen müssen genau berechnet werden.",
+       "en": "Besides practical skill, you need a good knowledge of maths and physics, because pipes and systems have to be calculated precisely."
+      }
+     ]
+    },
+    {
+     "id": "s3",
+     "sentences": [
+      {
+       "id": "a9",
+       "text": "Besonders gefragt ist ihr Beruf, seit viele Hausbesitzer ihre alte Öl- oder Gasheizung ersetzen wollen.",
+       "en": "Her trade has been in particular demand since many homeowners started wanting to replace their old oil or gas heating."
+      },
+      {
+       "id": "a10",
+       "text": "Eine alte Heizung kann aber nicht einfach gegen eine Wärmepumpe ausgetauscht werden.",
+       "en": "But an old heating system cannot simply be swapped for a heat pump."
+      },
+      {
+       "id": "a11",
+       "text": "Vorher muss geprüft werden, ob das Haus gut genug gedämmt ist und welche Heizkörper vorhanden sind.",
+       "en": "First it has to be checked whether the house is insulated well enough and which radiators are there."
+      },
+      {
+       "id": "a12",
+       "text": "Leonie berät die Kunden deshalb oft ausführlich, bevor ein Angebot geschrieben wird.",
+       "en": "So Leonie often advises customers in detail before a quote is written."
+      },
+      {
+       "id": "a13",
+       "text": "Die Betriebe in der Region suchen dringend Nachwuchs, und Kunden warten manchmal mehrere Monate auf einen Termin.",
+       "en": "Companies in the region urgently need young people to join the trade, and customers sometimes wait several months for an appointment."
+      }
+     ]
+    },
+    {
+     "id": "s4",
+     "sentences": [
+      {
+       "id": "a14",
+       "text": "Frauen sind in dem Beruf noch selten, und auf Baustellen sieht Leonie manchmal überraschte Gesichter.",
+       "en": "Women are still rare in the trade, and on building sites Leonie sometimes sees surprised faces."
+      },
+      {
+       "id": "a15",
+       "text": "„Manche Kunden fragen mich, wann denn der Monteur kommt“, sagt sie und lacht.",
+       "en": "\"Some customers ask me when the fitter is coming,\" she says, laughing."
+      },
+      {
+       "id": "a16",
+       "text": "Bereut hat sie ihre Entscheidung nie.",
+       "en": "She has never regretted her decision."
+      },
+      {
+       "id": "a17",
+       "text": "In zwei Jahren möchte sie die Meisterprüfung machen und später vielleicht einen Betrieb übernehmen.",
+       "en": "In two years she wants to take her master craftsman's exam and perhaps later take over a business."
+      }
+     ]
+    }
+   ],
+   "targets": [
+    "W:vorhanden.adj",
+    "W:ausführlich.adj",
+    "W:der_Nachwuchs",
+    "W:die_Kenntnisse",
+    "W:das_Abitur",
+    "W:der_Ausbildungsplatz",
+    "W:die_Baustelle",
+    "W:ersetzen.verb",
+    "W:berechnen.verb",
+    "W:übernehmen.verb",
+    "GC:passiv-mit-modalverben",
+    "GC:zweiteilige-konnektoren"
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "mc",
+     "skill": "global",
+     "q": "Was beschreibt der Text?",
+     "options": [
+      "den Berufsweg und den Arbeitsalltag einer jungen Handwerkerin",
+      "die Geschichte eines Familienbetriebs",
+      "wie eine Wärmepumpe technisch funktioniert"
+     ],
+     "answer": 0,
+     "evidence": "arbeitet als Anlagenmechanikerin für Sanitär-, Heizungs- und Klimatechnik"
+    },
+    {
+     "id": "q2",
+     "type": "tf",
+     "skill": "detail",
+     "q": "Laut Text suchen die Betriebe in der Region dringend Nachwuchs.",
+     "options": [
+      "richtig",
+      "falsch"
+     ],
+     "answer": 0,
+     "evidence": "Die Betriebe in der Region suchen dringend Nachwuchs"
+    },
+    {
+     "id": "q3",
+     "type": "mc",
+     "skill": "detail",
+     "q": "Warum hat Leonie ihr Studium abgebrochen?",
+     "options": [
+      "Ihre Noten waren zu schlecht.",
+      "Sie wollte nicht den ganzen Tag am Schreibtisch sitzen.",
+      "Das Studium war ihr zu teuer."
+     ],
+     "answer": 1,
+     "evidence": "aber ich saß den ganzen Tag nur am Schreibtisch"
+    },
+    {
+     "id": "q4",
+     "type": "tf",
+     "skill": "detail",
+     "q": "Die Ausbildung dauert drei Jahre.",
+     "options": [
+      "richtig",
+      "falsch"
+     ],
+     "answer": 1,
+     "evidence": "Die Ausbildung dauert dreieinhalb Jahre"
+    },
+    {
+     "id": "q5",
+     "type": "mc",
+     "skill": "inference",
+     "q": "Was zeigt die Frage nach dem „Monteur“?",
+     "options": [
+      "Manche Kunden erwarten, dass ein Mann die Arbeit macht.",
+      "Leonie kommt oft zu spät zu ihren Kunden.",
+      "Die Kunden möchten lieber mit dem Chef sprechen."
+     ],
+     "answer": 0,
+     "evidence": "wann denn der Monteur kommt"
+    }
+   ],
+   "reviewedBy": "model-2pass",
+   "reviewedAt": "2026-10-05"
+  },
+  {
+   "id": "read/de/b1p-science-01",
+   "level": "B1",
+   "dom": [
+    "science",
+    "health"
+   ],
+   "title": "Studie: Verkehrslärm stört den Schlaf mehr als gedacht",
+   "licence": "own",
+   "source": null,
+   "words": 242,
+   "sections": [
+    {
+     "id": "s1",
+     "sentences": [
+      {
+       "id": "a1",
+       "text": "Wer an einer viel befahrenen Straße wohnt, schläft schlechter, auch wenn er glaubt, sich an den Lärm gewöhnt zu haben.",
+       "en": "People who live on a busy road sleep worse, even if they believe they have got used to the noise."
+      },
+      {
+       "id": "a2",
+       "text": "Zu diesem Ergebnis kommt eine neue Studie, die ein Forschungsteam einer Universität in Norddeutschland durchgeführt hat.",
+       "en": "This is the finding of a new study carried out by a research team at a university in northern Germany."
+      }
+     ]
+    },
+    {
+     "id": "s2",
+     "sentences": [
+      {
+       "id": "a3",
+       "text": "Für die Untersuchung wurden rund 300 Erwachsene drei Wochen lang in ihren eigenen Wohnungen begleitet.",
+       "en": "For the study, around 300 adults were followed for three weeks in their own homes."
+      },
+      {
+       "id": "a4",
+       "text": "Die Wohnungen lagen an Straßen mit unterschiedlich viel Verkehr; manche Schlafzimmer lagen zur Straße, andere zum Hof.",
+       "en": "The flats were on streets with differing amounts of traffic, some bedrooms facing the street, others the courtyard."
+      },
+      {
+       "id": "a5",
+       "text": "Die Teilnehmenden trugen nachts ein kleines Messgerät am Handgelenk, das Herzschlag und Bewegungen aufzeichnete.",
+       "en": "At night the participants wore a small measuring device on their wrist that recorded heartbeat and movements."
+      },
+      {
+       "id": "a6",
+       "text": "Gleichzeitig wurde in jedem Schlafzimmer gemessen, wie laut es war.",
+       "en": "At the same time, the noise level in each bedroom was measured."
+      },
+      {
+       "id": "a7",
+       "text": "Morgens sollten die Teilnehmenden in einem kurzen Fragebogen angeben, wie gut sie geschlafen hatten.",
+       "en": "In the morning, the participants were asked to state in a short questionnaire how well they had slept."
+      }
+     ]
+    },
+    {
+     "id": "s3",
+     "sentences": [
+      {
+       "id": "a8",
+       "text": "Die Auswertung zeigt einen deutlichen Zusammenhang.",
+       "en": "The analysis shows a clear connection."
+      },
+      {
+       "id": "a9",
+       "text": "Je lauter es in der Nacht war, desto häufiger stieg der Puls der Schlafenden kurz an, oft ohne dass sie aufwachten.",
+       "en": "The louder it was at night, the more often the sleepers' pulse briefly rose, often without them waking up."
+      },
+      {
+       "id": "a10",
+       "text": "Besonders störend waren nicht gleichmäßige Geräusche, sondern einzelne laute Ereignisse wie vorbeifahrende Lastwagen oder Motorräder.",
+       "en": "What was especially disturbing was not steady noise but single loud events such as passing lorries or motorbikes."
+      },
+      {
+       "id": "a11",
+       "text": "Bemerkenswert ist, dass viele Betroffene in den Fragebögen angaben, gut geschlafen zu haben.",
+       "en": "It is remarkable that many of those affected stated in the questionnaires that they had slept well."
+      },
+      {
+       "id": "a12",
+       "text": "Der Körper reagiere auf Lärm, auch wenn das Gehirn ihn nicht bewusst wahrnehme, erklärt die Leiterin der Studie.",
+       "en": "The body reacts to noise even if the brain does not consciously perceive it, the head of the study explains."
+      }
+     ]
+    },
+    {
+     "id": "s4",
+     "sentences": [
+      {
+       "id": "a13",
+       "text": "Die Forschenden weisen aber auch auf Grenzen ihrer Untersuchung hin.",
+       "en": "However, the researchers also point out the limits of their study."
+      },
+      {
+       "id": "a14",
+       "text": "Die Zahl der Teilnehmenden sei relativ klein, und langfristige Folgen für die Gesundheit habe man nicht untersucht.",
+       "en": "They say the number of participants was relatively small, and long-term effects on health were not examined."
+      },
+      {
+       "id": "a15",
+       "text": "Eine größere Untersuchung mit mehr Teilnehmenden sei bereits geplant.",
+       "en": "A larger study with more participants, they say, is already planned."
+      },
+      {
+       "id": "a16",
+       "text": "Dennoch empfehlen sie, das Schlafzimmer möglichst auf der ruhigen Seite einer Wohnung einzurichten.",
+       "en": "Nevertheless, they recommend putting the bedroom on the quiet side of a flat where possible."
+      },
+      {
+       "id": "a17",
+       "text": "Außerdem sollten Städte prüfen, ob nachts auf mehr Straßen Tempo 30 eingeführt werden könnte.",
+       "en": "In addition, they say, cities should check whether a 30 km/h limit could be introduced on more roads at night."
+      }
+     ]
+    }
+   ],
+   "targets": [
+    "W:wahrnehmen.verb",
+    "W:der_Lastwagen",
+    "W:dennoch.adv",
+    "W:der_Zusammenhang",
+    "W:die_Untersuchung",
+    "W:das_Ergebnis",
+    "W:das_Handgelenk",
+    "W:das_Ereignis",
+    "W:gleichzeitig.adv",
+    "GC:konjunktiv-1",
+    "GC:je-desto",
+    "GC:partizip-als-adjektiv"
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "mc",
+     "skill": "global",
+     "q": "Was ist das wichtigste Ergebnis der Studie?",
+     "options": [
+      "Verkehrslärm beeinflusst den Schlaf, auch wenn man es selbst nicht merkt.",
+      "Nach drei Wochen gewöhnt sich der Körper an den Lärm.",
+      "Gleichmäßige Geräusche sind besonders schädlich."
+     ],
+     "answer": 0,
+     "evidence": "Der Körper reagiere auf Lärm, auch wenn das Gehirn ihn nicht bewusst wahrnehme"
+    },
+    {
+     "id": "q2",
+     "type": "tf",
+     "skill": "global",
+     "q": "Die Forschenden sind der Meinung, dass ihre Untersuchung alle Fragen beantwortet.",
+     "options": [
+      "richtig",
+      "falsch"
+     ],
+     "answer": 1,
+     "evidence": "weisen aber auch auf Grenzen ihrer Untersuchung hin"
+    },
+    {
+     "id": "q3",
+     "type": "mc",
+     "skill": "detail",
+     "q": "Was hat das Gerät am Handgelenk aufgezeichnet?",
+     "options": [
+      "wie laut es im Schlafzimmer war",
+      "Herzschlag und Bewegungen",
+      "wie lange die Teilnehmenden geträumt haben"
+     ],
+     "answer": 1,
+     "evidence": "das Herzschlag und Bewegungen aufzeichnete"
+    },
+    {
+     "id": "q4",
+     "type": "tf",
+     "skill": "detail",
+     "q": "Einzelne laute Geräusche störten mehr als gleichmäßige.",
+     "options": [
+      "richtig",
+      "falsch"
+     ],
+     "answer": 0,
+     "evidence": "sondern einzelne laute Ereignisse wie vorbeifahrende Lastwagen oder Motorräder"
+    },
+    {
+     "id": "q5",
+     "type": "mc",
+     "skill": "inference",
+     "q": "Warum reichen die Fragebögen allein nicht aus, um den Schlaf zu beurteilen?",
+     "options": [
+      "Viele Teilnehmende haben sie nicht ausgefüllt.",
+      "Viele gaben guten Schlaf an, obwohl ihr Körper auf den Lärm reagierte.",
+      "Die Fragebögen waren zu lang und zu kompliziert."
+     ],
+     "answer": 1,
+     "evidence": "viele Betroffene in den Fragebögen angaben, gut geschlafen zu haben"
+    }
+   ],
+   "reviewedBy": "model-2pass",
+   "reviewedAt": "2026-10-05"
+  },
+  {
+   "id": "read/de/b1p-politics-01",
+   "level": "B1",
+   "dom": [
+    "politics",
+    "society"
+   ],
+   "title": "Ein soziales Pflichtjahr für alle?",
+   "licence": "own",
+   "source": null,
+   "words": 241,
+   "sections": [
+    {
+     "id": "s1",
+     "sentences": [
+      {
+       "id": "a1",
+       "text": "Seit einiger Zeit wird in Deutschland wieder über ein soziales Pflichtjahr diskutiert.",
+       "en": "For some time now, there has again been a debate in Germany about a compulsory year of social service."
+      },
+      {
+       "id": "a2",
+       "text": "Nach diesem Vorschlag müssten junge Menschen nach der Schule ein Jahr lang zum Beispiel in einem Krankenhaus, in einem Pflegeheim oder beim Katastrophenschutz arbeiten.",
+       "en": "Under this proposal, young people would have to work for a year after school, for example in a hospital, a care home or for disaster relief."
+      },
+      {
+       "id": "a3",
+       "text": "Bei einer Podiumsdiskussion in der Volkshochschule wurden die wichtigsten Argumente ausgetauscht.",
+       "en": "At a panel discussion at the adult education centre, the main arguments were exchanged."
+      },
+      {
+       "id": "a4",
+       "text": "Auf dem Podium saßen Vertreterinnen und Vertreter von Sozialverbänden, Studierende und eine Juristin.",
+       "en": "On the panel were representatives of social welfare associations, students and a lawyer."
+      }
+     ]
+    },
+    {
+     "id": "s2",
+     "sentences": [
+      {
+       "id": "a5",
+       "text": "Die Befürworter betonen vor allem den Zusammenhalt in der Gesellschaft.",
+       "en": "Supporters stress above all cohesion in society."
+      },
+      {
+       "id": "a6",
+       "text": "Wer ein Jahr lang mit Menschen aus ganz anderen Lebenswelten arbeite, entwickle mehr Verständnis für andere, sagte die Vertreterin eines Sozialverbands.",
+       "en": "Anyone who works for a year with people from completely different walks of life develops more understanding for others, said the representative of a social welfare association."
+      },
+      {
+       "id": "a7",
+       "text": "Außerdem könnten Einrichtungen, in denen Personal fehlt, durch zusätzliche Helfer entlastet werden.",
+       "en": "In addition, she said, facilities that are short of staff could be relieved by extra helpers."
+      },
+      {
+       "id": "a8",
+       "text": "Viele junge Leute wüssten nach der Schule ohnehin noch nicht, was sie werden wollen.",
+       "en": "Many young people don't yet know what they want to do after leaving school anyway, she argued."
+      },
+      {
+       "id": "a9",
+       "text": "Ein Jahr Orientierung könne bei dieser Entscheidung helfen.",
+       "en": "A year to find their bearings could help with this decision."
+      }
+     ]
+    },
+    {
+     "id": "s3",
+     "sentences": [
+      {
+       "id": "a10",
+       "text": "Die Gegner halten eine Pflicht dagegen für den falschen Weg.",
+       "en": "Opponents, on the other hand, consider compulsion the wrong approach."
+      },
+      {
+       "id": "a11",
+       "text": "Ein Student auf dem Podium sagte, man dürfe nicht ausgerechnet der jungen Generation noch mehr Pflichten auferlegen.",
+       "en": "A student on the panel said that one should not impose even more obligations on the young generation of all people."
+      },
+      {
+       "id": "a12",
+       "text": "Diese Generation habe schon in der Pandemie auf vieles verzichten müssen.",
+       "en": "This generation, he said, had already had to give up a lot during the pandemic."
+      },
+      {
+       "id": "a13",
+       "text": "Zudem sei fraglich, ob unmotivierte Hilfskräfte in der Pflege wirklich eine Entlastung wären.",
+       "en": "Moreover, he said, it was questionable whether unmotivated assistants in care would really take any pressure off."
+      },
+      {
+       "id": "a14",
+       "text": "Auch rechtlich ist ein Pflichtjahr umstritten, denn dafür müsste wahrscheinlich das Grundgesetz geändert werden.",
+       "en": "A compulsory year is also legally controversial, because the constitution would probably have to be changed for it."
+      },
+      {
+       "id": "a15",
+       "text": "Statt einer Pflicht fordern die Kritiker, freiwillige Dienste attraktiver zu machen, etwa durch ein höheres Taschengeld.",
+       "en": "Instead of compulsion, the critics call for voluntary service to be made more attractive, for example through higher pocket money."
+      }
+     ]
+    },
+    {
+     "id": "s4",
+     "sentences": [
+      {
+       "id": "a16",
+       "text": "Zum Schluss zeigte sich, dass beide Seiten ein gemeinsames Ziel haben.",
+       "en": "In the end it became clear that both sides share a common goal."
+      },
+      {
+       "id": "a17",
+       "text": "Sie wollen, dass sich mehr junge Menschen für das Gemeinwohl engagieren.",
+       "en": "They want more young people to get involved for the common good."
+      },
+      {
+       "id": "a18",
+       "text": "Umstritten bleibt, ob man das besser mit Zwang oder mit besseren Angeboten erreicht.",
+       "en": "What remains disputed is whether this is better achieved through compulsion or through better opportunities."
+      }
+     ]
+    }
+   ],
+   "targets": [
+    "W:zudem.adv",
+    "W:ohnehin.adv",
+    "W:betonen.verb",
+    "W:der_Zusammenhalt",
+    "W:rechtlich.adj",
+    "W:umstritten.adj",
+    "W:der_Kritiker",
+    "W:ausgerechnet.adv",
+    "W:die_Einrichtung",
+    "GC:konjunktiv-1",
+    "GC:passiv-mit-modalverben"
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "mc",
+     "skill": "global",
+     "q": "Was gibt der Text wieder?",
+     "options": [
+      "eine Diskussion über Vor- und Nachteile eines Pflichtjahres",
+      "ein neues Gesetz, das ein Pflichtjahr einführt",
+      "die Erfahrungen einer Freiwilligen im Pflegeheim"
+     ],
+     "answer": 0,
+     "evidence": "wurden die wichtigsten Argumente ausgetauscht"
+    },
+    {
+     "id": "q2",
+     "type": "tf",
+     "skill": "global",
+     "q": "Am Ende der Diskussion zeigt sich, dass Befürworter und Gegner ein gemeinsames Ziel haben.",
+     "options": [
+      "richtig",
+      "falsch"
+     ],
+     "answer": 0,
+     "evidence": "dass beide Seiten ein gemeinsames Ziel haben"
+    },
+    {
+     "id": "q3",
+     "type": "mc",
+     "skill": "detail",
+     "q": "Welches Argument nennen die Befürworter?",
+     "options": [
+      "Ein Pflichtjahr könnte bei der Berufswahl helfen.",
+      "Freiwillige sollten mehr Taschengeld bekommen.",
+      "Das Grundgesetz müsste geändert werden."
+     ],
+     "answer": 0,
+     "evidence": "Ein Jahr Orientierung könne bei dieser Entscheidung helfen."
+    },
+    {
+     "id": "q4",
+     "type": "tf",
+     "skill": "detail",
+     "q": "Die Kritiker wollen die freiwilligen Dienste abschaffen.",
+     "options": [
+      "richtig",
+      "falsch"
+     ],
+     "answer": 1,
+     "evidence": "freiwillige Dienste attraktiver zu machen"
+    },
+    {
+     "id": "q5",
+     "type": "mc",
+     "skill": "inference",
+     "q": "Warum zweifeln die Gegner am Nutzen für die Pflege?",
+     "options": [
+      "Weil Pflegeheime genug Personal haben.",
+      "Weil Menschen, die zu etwas gezwungen werden, oft wenig motiviert sind.",
+      "Weil junge Menschen in der Pflege zu wenig verdienen würden."
+     ],
+     "answer": 1,
+     "evidence": "ob unmotivierte Hilfskräfte in der Pflege wirklich eine Entlastung wären"
+    }
+   ],
+   "reviewedBy": "model-2pass",
+   "reviewedAt": "2026-10-05"
+  },
+  {
+   "id": "read/de/b1p-news-01",
+   "level": "B1",
+   "dom": [
+    "news",
+    "environment"
+   ],
+   "title": "Öffentliche Kühlschränke gegen Lebensmittelverschwendung",
+   "licence": "own",
+   "source": null,
+   "words": 245,
+   "sections": [
+    {
+     "id": "s1",
+     "sentences": [
+      {
+       "id": "a1",
+       "text": "Die Stadt Felsheim will mit öffentlichen Kühlschränken gegen die Verschwendung von Lebensmitteln vorgehen.",
+       "en": "The town of Felsheim wants to tackle food waste with public fridges."
+      },
+      {
+       "id": "a2",
+       "text": "Ab November werden an fünf Orten, unter anderem am Bahnhof und vor dem Rathaus, Kühlschränke aufgestellt.",
+       "en": "From November, fridges will be set up in five places, including at the station and in front of the town hall."
+      },
+      {
+       "id": "a3",
+       "text": "Dort kann jeder Lebensmittel abgeben, die er selbst nicht mehr braucht, und andere können sie kostenlos mitnehmen.",
+       "en": "Anyone can leave food there that they no longer need themselves, and others can take it away for free."
+      },
+      {
+       "id": "a4",
+       "text": "Ähnliche Projekte gibt es bereits in mehreren deutschen Städten.",
+       "en": "Similar projects already exist in several German cities."
+      }
+     ]
+    },
+    {
+     "id": "s2",
+     "sentences": [
+      {
+       "id": "a5",
+       "text": "Wie die zuständige Stadträtin am Montag mitteilte, landen in privaten Haushalten jedes Jahr große Mengen genießbarer Lebensmittel im Müll.",
+       "en": "As the councillor responsible announced on Monday, large amounts of edible food end up in the bin in private households every year."
+      },
+      {
+       "id": "a6",
+       "text": "Oft würden Joghurt oder Käse weggeworfen, nur weil das Mindesthaltbarkeitsdatum überschritten sei.",
+       "en": "Yogurt or cheese is often thrown away, she said, just because the best-before date has passed."
+      },
+      {
+       "id": "a7",
+       "text": "Dieses Datum zeige aber nur, bis wann der Hersteller die Qualität garantiere, und nicht, ab wann ein Produkt schlecht sei.",
+       "en": "But this date, she said, only shows until when the manufacturer guarantees the quality, not from when a product has gone off."
+      },
+      {
+       "id": "a8",
+       "text": "Viele dieser Produkte könne man noch problemlos essen.",
+       "en": "Many of these products, she said, can still be eaten without any problem."
+      },
+      {
+       "id": "a9",
+       "text": "Die Kühlschränke sollen von Ehrenamtlichen betreut werden, die sie täglich kontrollieren und reinigen.",
+       "en": "The fridges are to be looked after by volunteers, who will check and clean them every day."
+      },
+      {
+       "id": "a10",
+       "text": "Bestimmte Lebensmittel dürfen allerdings nicht abgegeben werden, zum Beispiel rohes Fleisch, roher Fisch und Speisen mit rohen Eiern.",
+       "en": "Certain foods may not be left there, however, for example raw meat, raw fish and dishes containing raw eggs."
+      },
+      {
+       "id": "a11",
+       "text": "Auch Lebensmittel, deren Verbrauchsdatum abgelaufen ist, sind ausgeschlossen.",
+       "en": "Food whose use-by date has passed is also excluded."
+      }
+     ]
+    },
+    {
+     "id": "s3",
+     "sentences": [
+      {
+       "id": "a12",
+       "text": "Bei den Supermärkten der Stadt stößt das Projekt auf ein geteiltes Echo.",
+       "en": "The project has met with a mixed response from the town's supermarkets."
+      },
+      {
+       "id": "a13",
+       "text": "Ein Filialleiter sagte, man spende übrige Waren schon heute an eine gemeinnützige Lebensmittelausgabe.",
+       "en": "A branch manager said that they already donate leftover goods to a charitable food bank."
+      },
+      {
+       "id": "a14",
+       "text": "Zusätzliche Kühlschränke seien deshalb aus seiner Sicht nicht nötig.",
+       "en": "In his view, additional fridges were therefore not necessary."
+      },
+      {
+       "id": "a15",
+       "text": "Der Verein, der die Lebensmittelausgabe betreibt, begrüßt dagegen die Idee.",
+       "en": "The association that runs the food bank, on the other hand, welcomes the idea."
+      },
+      {
+       "id": "a16",
+       "text": "Je mehr Möglichkeiten es gebe, Lebensmittel weiterzugeben, desto weniger lande im Müll, sagte die Vorsitzende.",
+       "en": "The more ways there are to pass food on, the less ends up in the bin, said the chairwoman."
+      },
+      {
+       "id": "a17",
+       "text": "Die Stadt will das Projekt nach einem Jahr auswerten und es gegebenenfalls auf weitere Stadtteile ausweiten.",
+       "en": "The town wants to evaluate the project after a year and, if appropriate, extend it to other districts."
+      },
+      {
+       "id": "a18",
+       "text": "Für Strom, Reinigung und Reparaturen stellt die Stadt im ersten Jahr rund 20.000 Euro zur Verfügung.",
+       "en": "The town is providing around 20,000 euros in the first year for electricity, cleaning and repairs."
+      }
+     ]
+    }
+   ],
+   "targets": [
+    "W:zuständig.adj",
+    "W:der_Haushalt",
+    "W:unter_anderem.phrase",
+    "W:spenden.verb",
+    "W:die_Möglichkeit",
+    "W:das_Produkt",
+    "W:vorgehen.verb",
+    "W:abgelaufen.adj",
+    "GC:konjunktiv-1",
+    "GC:je-desto",
+    "GC:passiv-mit-modalverben"
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "mc",
+     "skill": "global",
+     "q": "Worum geht es in der Meldung?",
+     "options": [
+      "um ein Projekt der Stadt gegen Lebensmittelverschwendung",
+      "um ein neues Gesetz für Supermärkte",
+      "um die Schließung einer Lebensmittelausgabe"
+     ],
+     "answer": 0,
+     "evidence": "gegen die Verschwendung von Lebensmitteln vorgehen"
+    },
+    {
+     "id": "q2",
+     "type": "tf",
+     "skill": "global",
+     "q": "Alle Beteiligten finden das Projekt gut.",
+     "options": [
+      "richtig",
+      "falsch"
+     ],
+     "answer": 1,
+     "evidence": "stößt das Projekt auf ein geteiltes Echo"
+    },
+    {
+     "id": "q3",
+     "type": "mc",
+     "skill": "detail",
+     "q": "Wer kümmert sich um die Kühlschränke?",
+     "options": [
+      "Angestellte der Supermärkte",
+      "Ehrenamtliche",
+      "die Stadträtin selbst"
+     ],
+     "answer": 1,
+     "evidence": "von Ehrenamtlichen betreut werden"
+    },
+    {
+     "id": "q4",
+     "type": "tf",
+     "skill": "detail",
+     "q": "Lebensmittel, deren Verbrauchsdatum abgelaufen ist, darf man in die Kühlschränke legen.",
+     "options": [
+      "richtig",
+      "falsch"
+     ],
+     "answer": 1,
+     "evidence": "deren Verbrauchsdatum abgelaufen ist, sind ausgeschlossen"
+    },
+    {
+     "id": "q5",
+     "type": "mc",
+     "skill": "detail",
+     "q": "Warum hält der Filialleiter die Kühlschränke für unnötig?",
+     "options": [
+      "Sein Supermarkt gibt übrige Waren bereits weiter.",
+      "Er glaubt, dass niemand die Kühlschränke benutzen wird.",
+      "Die Kühlschränke stehen zu weit von seinem Supermarkt entfernt."
+     ],
+     "answer": 0,
+     "evidence": "man spende übrige Waren schon heute an eine gemeinnützige Lebensmittelausgabe"
+    }
+   ],
+   "reviewedBy": "model-2pass",
+   "reviewedAt": "2026-10-05"
+  },
+  {
+   "id": "read/de/b1p-society-01",
+   "level": "B1",
+   "dom": [
+    "society"
+   ],
+   "title": "Wohnen für Hilfe: Wenn Jung und Alt zusammenziehen",
+   "licence": "own",
+   "source": null,
+   "words": 242,
+   "sections": [
+    {
+     "id": "s1",
+     "sentences": [
+      {
+       "id": "a1",
+       "text": "Gerda Wolff ist 79 und lebte nach dem Tod ihres Mannes lange allein in einer Vierzimmerwohnung.",
+       "en": "Gerda Wolff is 79 and, after her husband died, lived alone in a four-room flat for a long time."
+      },
+      {
+       "id": "a2",
+       "text": "Die Wohnung liegt nur zehn Minuten von der Universität entfernt.",
+       "en": "The flat is only ten minutes from the university."
+      },
+      {
+       "id": "a3",
+       "text": "Seit einem Jahr wohnt bei ihr die Studentin Mira, die sonst kaum ein bezahlbares Zimmer gefunden hätte.",
+       "en": "For a year, the student Mira has been living with her; otherwise Mira would hardly have found an affordable room."
+      },
+      {
+       "id": "a4",
+       "text": "Miete zahlt Mira fast keine, nur einen Anteil an den Nebenkosten.",
+       "en": "Mira pays almost no rent, just a share of the utility costs."
+      },
+      {
+       "id": "a5",
+       "text": "Dafür hilft sie im Haushalt: Sie kauft ein, trägt die Getränkekisten in den dritten Stock und erklärt Frau Wolff das Tablet.",
+       "en": "In return she helps in the household: she does the shopping, carries the crates of drinks up to the third floor and explains the tablet to Ms Wolff."
+      }
+     ]
+    },
+    {
+     "id": "s2",
+     "sentences": [
+      {
+       "id": "a6",
+       "text": "Das Modell heißt „Wohnen für Hilfe“ und wird in vielen deutschen Universitätsstädten angeboten.",
+       "en": "The scheme is called \"Living for Help\" and is offered in many German university towns."
+      },
+      {
+       "id": "a7",
+       "text": "Die Faustregel lautet: Für jeden Quadratmeter Wohnraum leistet man etwa eine Stunde Hilfe im Monat.",
+       "en": "The rule of thumb is: for every square metre of living space you give about one hour of help a month."
+      },
+      {
+       "id": "a8",
+       "text": "Pflege gehört ausdrücklich nicht dazu, denn sie muss von ausgebildeten Fachkräften übernommen werden.",
+       "en": "Nursing care is explicitly not part of it, because it has to be done by trained professionals."
+      },
+      {
+       "id": "a9",
+       "text": "Vermittelt werden die Wohnpartnerschaften meist von sozialen Einrichtungen, die vorher mit beiden Seiten ausführliche Gespräche führen.",
+       "en": "The housing partnerships are usually arranged by social organisations, which hold detailed talks with both sides beforehand."
+      },
+      {
+       "id": "a10",
+       "text": "Ein schriftlicher Vertrag regelt, welche Aufgaben übernommen werden und welche Räume gemeinsam genutzt werden.",
+       "en": "A written agreement sets out which tasks are taken on and which rooms are shared."
+      }
+     ]
+    },
+    {
+     "id": "s3",
+     "sentences": [
+      {
+       "id": "a11",
+       "text": "Ganz ohne Konflikte geht es nicht.",
+       "en": "It doesn't work entirely without conflicts."
+      },
+      {
+       "id": "a12",
+       "text": "„Am Anfang hat mich gestört, dass Mira so spät nach Hause kam“, sagt Frau Wolff.",
+       "en": "\"At first it bothered me that Mira came home so late,\" says Ms Wolff."
+      },
+      {
+       "id": "a13",
+       "text": "Inzwischen schreibt Mira eine kurze Nachricht, wenn es später wird, und beide sind zufrieden.",
+       "en": "Now Mira sends a short message when she will be late, and both are happy."
+      },
+      {
+       "id": "a14",
+       "text": "Frau Wolff hat dadurch nicht nur Hilfe im Alltag, sondern auch Gesellschaft beim Abendessen.",
+       "en": "As a result, Ms Wolff has not only help in everyday life but also company at dinner."
+      },
+      {
+       "id": "a15",
+       "text": "Und Mira sagt, sie habe von ihrer Mitbewohnerin mehr über die Geschichte der Stadt gelernt als in manchem Seminar.",
+       "en": "And Mira says she has learned more about the history of the city from her flatmate than in many a seminar."
+      },
+      {
+       "id": "a16",
+       "text": "Hätte ihr vor zwei Jahren jemand gesagt, dass sie mit einer fast Achtzigjährigen zusammenziehen würde, hätte sie gelacht.",
+       "en": "If someone had told her two years ago that she would move in with a woman of almost eighty, she would have laughed."
+      },
+      {
+       "id": "a17",
+       "text": "Heute kann sie sich eine normale WG kaum noch vorstellen.",
+       "en": "Today she can hardly imagine an ordinary shared flat any more."
+      }
+     ]
+    }
+   ],
+   "targets": [
+    "W:der_Anteil",
+    "W:ausführlich.adj",
+    "W:vermitteln.verb",
+    "W:schriftlich.adj",
+    "W:der_Haushalt",
+    "W:der_Konflikt",
+    "W:das_Seminar",
+    "W:die_Pflege",
+    "GC:konjunktiv-2-vergangenheit",
+    "GC:zweiteilige-konnektoren",
+    "GC:konjunktiv-1"
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "mc",
+     "skill": "global",
+     "q": "Was ist „Wohnen für Hilfe“?",
+     "options": [
+      "Studierende wohnen günstig bei älteren Menschen und helfen dafür im Alltag.",
+      "Ältere Menschen ziehen in ein Studentenwohnheim.",
+      "Studierende pflegen ältere Menschen gegen Bezahlung."
+     ],
+     "answer": 0,
+     "evidence": "Für jeden Quadratmeter Wohnraum leistet man etwa eine Stunde Hilfe im Monat."
+    },
+    {
+     "id": "q2",
+     "type": "tf",
+     "skill": "global",
+     "q": "Das Zusammenleben von Frau Wolff und Mira funktioniert inzwischen gut.",
+     "options": [
+      "richtig",
+      "falsch"
+     ],
+     "answer": 0,
+     "evidence": "und beide sind zufrieden"
+    },
+    {
+     "id": "q3",
+     "type": "mc",
+     "skill": "detail",
+     "q": "Welche Aufgabe gehört nicht zu „Wohnen für Hilfe“?",
+     "options": [
+      "Einkaufen",
+      "Pflege",
+      "Hilfe mit dem Tablet"
+     ],
+     "answer": 1,
+     "evidence": "Pflege gehört ausdrücklich nicht dazu"
+    },
+    {
+     "id": "q4",
+     "type": "tf",
+     "skill": "detail",
+     "q": "Mira zahlt die volle Miete.",
+     "options": [
+      "richtig",
+      "falsch"
+     ],
+     "answer": 1,
+     "evidence": "Miete zahlt Mira fast keine"
+    },
+    {
+     "id": "q5",
+     "type": "mc",
+     "skill": "inference",
+     "q": "Wie hätte Mira vor zwei Jahren auf die Idee reagiert?",
+     "options": [
+      "Sie hätte sie sofort gut gefunden.",
+      "Sie hätte sie nicht ernst genommen.",
+      "Sie hätte sich darüber geärgert."
+     ],
+     "answer": 1,
+     "evidence": "hätte sie gelacht"
+    }
+   ],
+   "reviewedBy": "model-2pass",
+   "reviewedAt": "2026-10-05"
+  }
+ ]
+}
