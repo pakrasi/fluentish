@@ -1,0 +1,1748 @@
+[
+{
+"id": "ENG_CHUNK_1451",
+"t": "Ich vertrete die Auffassung, dass [Satz]",
+"ex": "Ich vertrete die Auffassung, dass Städte mehr in Radwege investieren sollten.",
+"n": "Formal. Also: die Ansicht/Meinung vertreten. dass: verb last.",
+"fn": "opinion",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1452",
+"t": "Ich bin fest davon überzeugt, dass [Satz]",
+"ex": "Ich bin fest davon überzeugt, dass das Homeoffice viele Teams produktiver macht.",
+"n": "überzeugt sein von: davon + dass-Satz.",
+"fn": "opinion",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1453",
+"t": "Ich stehe auf dem Standpunkt, dass [Satz]",
+"ex": "Ich stehe auf dem Standpunkt, dass Prüfungen allein nicht zeigen, was Studierende können.",
+"n": "auf dem Standpunkt stehen (Dativ); den Standpunkt vertreten (Akkusativ).",
+"fn": "opinion",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1454",
+"t": "Für mich steht fest, dass [Satz]",
+"ex": "Für mich steht fest, dass wir strengere Regeln für Plastikverpackungen brauchen.",
+"fn": "opinion",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1455",
+"t": "Ich halte es für [Adjektiv], [zu + Infinitiv]",
+"ex": "Ich halte es für unerlässlich, Kindern beizubringen, wie man Falschmeldungen erkennt.",
+"n": "halten für + Akk (not als): Ich halte es für sinnvoll, … / Ich halte das für einen Fehler.",
+"fn": "opinion",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1456",
+"t": "Ich halte nicht viel von [Nomen, Dativ]",
+"ex": "Ich halte nicht viel von Apps, die versprechen, dass man in einem Monat fließend spricht.",
+"n": "halten von + Dativ = think of. Opposite: Ich halte viel von …",
+"fn": "opinion",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1457",
+"t": "Ich bin entschieden dagegen, dass [Satz]",
+"ex": "Ich bin entschieden dagegen, dass Kinder in der Grundschule ein Smartphone haben.",
+"n": "Before a dass-clause: dagegen/dafür, not gegen/für.",
+"fn": "opinion",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1458",
+"t": "Ich spreche mich für [Nomen, Akk] aus",
+"ex": "Ich spreche mich für eine Vier-Tage-Woche aus, solange die Gehälter gleich bleiben.",
+"n": "Formal: sich für/gegen etwas aussprechen; aus goes to the end.",
+"fn": "opinion",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1459",
+"t": "Meiner Erfahrung nach [Satz]",
+"ex": "Meiner Erfahrung nach lernen Menschen schneller, wenn sie Fehler machen dürfen.",
+"n": "Verb comes next: Meiner Erfahrung nach lernen … Also: Nach meiner Erfahrung …",
+"fn": "opinion",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1460",
+"t": "Ich sage das, weil [Satz]",
+"ex": "Ich sage das, weil ich gesehen habe, wie stressig ein langer Arbeitsweg sein kann.",
+"fn": "opinion",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1461",
+"t": "Der Grund dafür ist, dass [Satz]",
+"ex": "Viele junge Leute verlassen die Region. Der Grund dafür ist, dass es kaum Arbeitsplätze gibt.",
+"n": "In writing: Der Grund ist, dass … (not weil).",
+"fn": "opinion",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1462",
+"t": "Es steht außer Frage, dass [Satz]",
+"ex": "Es steht außer Frage, dass wir in Großstädten mehr bezahlbaren Wohnraum brauchen.",
+"n": "Fixed: außer Frage, no article.",
+"fn": "opinion",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1463",
+"t": "Ich stehe voll und ganz hinter [Nomen, Dativ]",
+"ex": "Ich stehe voll und ganz hinter der Entscheidung, die Altstadt für Autos zu sperren.",
+"n": "hinter etwas stehen + Dativ = support it.",
+"fn": "opinion",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1464",
+"t": "Was ich wichtig finde, ist, dass [Satz]",
+"ex": "Was ich wichtig finde, ist, dass alle die gleichen Informationen bekommen.",
+"n": "Two commas: Was ich wichtig finde, ist, dass …",
+"fn": "opinion",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1465",
+"t": "Fakt ist, dass [Satz] / Tatsache ist, dass [Satz]",
+"ex": "Fakt ist, dass die meisten Leute nur die Überschriften lesen.",
+"n": "No article. Fakt ist is spoken; in writing Tatsache ist.",
+"fn": "opinion",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1466",
+"t": "Für [Nomen] spricht vor allem, dass [Satz] / Dafür spricht vor allem, dass [Satz]",
+"ex": "Für längere Öffnungszeiten spricht vor allem, dass viele Menschen bis spät arbeiten.",
+"n": "sprechen für = be an argument for; dafür before a dass-clause.",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1467",
+"t": "Gegen [Nomen] spricht, dass [Satz] / Dagegen spricht, dass [Satz]",
+"ex": "Gegen ein Verbot spricht, dass die Leute die Produkte einfach online kaufen würden.",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1468",
+"t": "Ein gutes Beispiel dafür ist [Nomen]",
+"ex": "Ein gutes Beispiel dafür ist das Leihradsystem in unserer Stadt.",
+"n": "Beispiel für: dafür (not davon).",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1469",
+"t": "Das zeigt sich zum Beispiel daran, dass [Satz]",
+"ex": "Das zeigt sich zum Beispiel daran, dass immer mehr Schüler mit dem Rad zur Schule fahren.",
+"n": "sich zeigen an + Dativ: daran, dass …",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1470",
+"t": "Um ein Beispiel zu nennen: [Satz]",
+"ex": "Um ein Beispiel zu nennen: Letztes Jahr hat unser Team seinen Papierverbrauch halbiert.",
+"n": "ein Beispiel nennen is the usual verb. for example = zum Beispiel.",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1471",
+"t": "Es liegt auf der Hand, dass [Satz]",
+"ex": "Es liegt auf der Hand, dass günstigere Tickets mehr Menschen in Busse und Bahnen bringen würden.",
+"n": "auf der Hand liegen = be obvious.",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1472",
+"t": "Ein weiterer Punkt ist, dass [Satz]",
+"ex": "Ein weiterer Punkt ist, dass Onlinekurse oft günstiger sind.",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1473",
+"t": "Das führt dazu, dass [Satz]",
+"ex": "Die Mieten steigen ständig. Das führt dazu, dass viele Familien aus der Stadt wegziehen.",
+"n": "führen zu: before a clause dazu, dass.",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1474",
+"t": "Wie das Beispiel [Nomen, Genitiv] zeigt, [Satz]",
+"ex": "Wie das Beispiel Dänemarks zeigt, kann Radfahren sicher und beliebt sein.",
+"n": "Verb comes right after the comma. Also: das Beispiel Dänemark.",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1475",
+"t": "Man denke nur an [Nomen, Akk]",
+"ex": "Man denke nur an all die Menschen, die täglich Stunden am Handy verbringen.",
+"n": "Written; spoken: Denken Sie nur an … denken an + Akk.",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1476",
+"t": "Es ist erwiesen, dass [Satz]",
+"ex": "Es ist erwiesen, dass regelmäßige Bewegung Stress reduziert.",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1477",
+"t": "Häufig wird argumentiert, dass [Satz]",
+"ex": "Häufig wird argumentiert, dass soziale Medien Jugendliche einsam machen.",
+"n": "es is only a placeholder: drop it when another word comes first (Häufig wird argumentiert, dass …).",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1478",
+"t": "Studien belegen, dass [Satz]",
+"ex": "Studien belegen, dass Menschen schlechter schlafen, wenn sie spätabends Bildschirme nutzen.",
+"n": "belegen = prove with evidence; also: Studien zeigen, dass …",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1479",
+"t": "Das gilt vor allem für [Nomen, Akk]",
+"ex": "Viele Menschen fühlen sich bei der Arbeit gestresst. Das gilt vor allem für junge Eltern.",
+"n": "gelten für + Akk; zutreffen auf + Akk.",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1480",
+"t": "Die Erfahrung hat gezeigt, dass [Satz]",
+"ex": "Die Erfahrung hat gezeigt, dass kleine Klassen zu besseren Ergebnissen führen.",
+"fn": "argue",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1481",
+"t": "Das trifft nur bedingt zu",
+"ex": "Das trifft nur bedingt zu, denn viele ältere Menschen sind online sehr aktiv.",
+"n": "zutreffen: separable (trifft … zu). bedingt = to a limited extent.",
+"fn": "hedge",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1482",
+"t": "Soweit ich das beurteilen kann, [Satz]",
+"ex": "Soweit ich das beurteilen kann, funktioniert das neue System gut.",
+"n": "The verb follows the comma: …, funktioniert das System gut.",
+"fn": "hedge",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1483",
+"t": "Das kann man so pauschal nicht sagen",
+"ex": "Das kann man so pauschal nicht sagen, es hängt vom Unternehmen ab.",
+"n": "pauschal = across the board.",
+"fn": "hedge",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1484",
+"t": "Unter Umständen [Satz]",
+"ex": "Unter Umständen übernimmt Ihre Krankenkasse die Kosten.",
+"n": "Short: u. U. The verb comes next.",
+"fn": "hedge",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1485",
+"t": "Mit gewissen Einschränkungen [Satz]",
+"ex": "Mit gewissen Einschränkungen würde ich den Kurs Anfängern empfehlen.",
+"fn": "hedge",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1486",
+"t": "Streng genommen [Satz]",
+"ex": "Streng genommen ist der Vertrag schon letzten Monat ausgelaufen.",
+"n": "The verb comes next. Also: genau genommen.",
+"fn": "hedge",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1487",
+"t": "Das ist nur die halbe Wahrheit",
+"ex": "Billigflüge sind gut für Reisende, aber das ist nur die halbe Wahrheit.",
+"fn": "hedge",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1488",
+"t": "In den meisten Fällen [Satz]",
+"ex": "In den meisten Fällen verschwinden die Symptome nach ein paar Tagen.",
+"fn": "hedge",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1489",
+"t": "Wenn ich das richtig sehe, [Satz]",
+"ex": "Wenn ich das richtig sehe, wurde die Frist auf Freitag verschoben.",
+"fn": "hedge",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1490",
+"t": "[Nomen] ist eine Frage der Definition",
+"ex": "Ob das als Erfolg zählt, ist eine Frage der Definition.",
+"fn": "hedge",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1491",
+"t": "mit Vorsicht zu genießen sein",
+"ex": "Diese Zahlen sind mit Vorsicht zu genießen.",
+"n": "sein + zu + Infinitiv = should be …",
+"fn": "hedge",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1492",
+"t": "in erster Linie",
+"ex": "Die neuen Regeln richten sich in erster Linie an kleine Unternehmen.",
+"n": "Fixed: in erster Linie, no article.",
+"fn": "hedge",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1493",
+"t": "Mir scheint, dass [Satz]",
+"ex": "Mir scheint, dass es eher um Kommunikation als um Geld geht.",
+"n": "Dativ: mir scheint. Also: Es scheint mir, dass …",
+"fn": "hedge",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1494",
+"t": "Ganz so schwarz-weiß ist das nicht",
+"ex": "Ganz so schwarz-weiß ist das nicht: Manche Regeln schützen die Beschäftigten durchaus.",
+"fn": "hedge",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1495",
+"t": "Ich würde das etwas vorsichtiger formulieren",
+"ex": "Ich würde das etwas vorsichtiger formulieren: Der Plan hat Risiken, ist aber kein Misserfolg.",
+"fn": "hedge",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1496",
+"t": "Zwar [Satz], aber [Satz] / [Satz] zwar …, aber [Satz]",
+"ex": "Die Bahn ist zwar teurer, aber deutlich entspannter.",
+"n": "zwar after the verb (or first); the aber clause is normal word order.",
+"fn": "concede",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1497",
+"t": "Das mag sein, allerdings [Satz]",
+"ex": "Das mag sein, allerdings sind die Kosten immer noch zu hoch.",
+"n": "allerdings fills position 1: allerdings sind die Kosten …",
+"fn": "concede",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1498",
+"t": "Es ist sicher richtig, dass [Satz], trotzdem [Satz]",
+"ex": "Es ist sicher richtig, dass Autos praktisch sind. Trotzdem brauchen wir in den Städten weniger davon.",
+"fn": "concede",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1499",
+"t": "Man darf aber nicht vergessen, dass [Satz]",
+"ex": "Man darf aber nicht vergessen, dass viele ältere Menschen kein Smartphone nutzen.",
+"n": "mustn't = darf nicht; muss nicht = needn't.",
+"fn": "concede",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1500",
+"t": "Das ist ein berechtigter Einwand, aber [Satz]",
+"ex": "Das ist ein berechtigter Einwand, aber die Alternativen sind noch teurer.",
+"fn": "concede",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1501",
+"t": "[Nomen] hat sicher (auch) seine Vorteile, aber [Satz]",
+"ex": "Das Homeoffice hat sicher seine Vorteile, aber man kann sich auch einsam fühlen.",
+"fn": "concede",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1502",
+"t": "Trotzdem bleibt die Frage, ob [Satz]",
+"ex": "Trotzdem bleibt die Frage, ob sich die Stadt das leisten kann.",
+"n": "ob-clause: verb last.",
+"fn": "concede",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1503",
+"t": "Das ändert aber nichts daran, dass [Satz]",
+"ex": "Das ändert aber nichts daran, dass die Miete zu hoch ist.",
+"n": "etwas ändern an + Dativ: daran, dass …",
+"fn": "concede",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1504",
+"t": "Es lässt sich nicht leugnen, dass [Satz]",
+"ex": "Es lässt sich nicht leugnen, dass die Stadt teurer geworden ist.",
+"n": "lässt sich + Infinitiv = can be …",
+"fn": "concede",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1505",
+"t": "[Nomen] ist nicht von der Hand zu weisen",
+"ex": "Die Gefahr von Datenlecks ist nicht von der Hand zu weisen.",
+"n": "sein + zu + Infinitiv; formal.",
+"fn": "concede",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1506",
+"t": "Auf den ersten Blick [Satz], aber [Satz]",
+"ex": "Auf den ersten Blick wirkt das Angebot günstig, aber es gibt versteckte Kosten.",
+"n": "Verb next: Auf den ersten Blick wirkt …",
+"fn": "concede",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1507",
+"t": "In der Praxis sieht das (allerdings) anders aus",
+"ex": "Theoretisch klingt der Plan gut, aber in der Praxis sieht das anders aus.",
+"n": "aussehen: separable (sieht … aus).",
+"fn": "concede",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1508",
+"t": "Dem steht gegenüber, dass [Satz]",
+"ex": "Elektroautos sind leise. Dem steht gegenüber, dass ihre Batterien seltene Rohstoffe benötigen.",
+"n": "gegenüberstehen + Dativ: dem. Formal, written.",
+"fn": "concede",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1509",
+"t": "Was dabei oft übersehen wird, ist, dass [Satz]",
+"ex": "Was dabei oft übersehen wird, ist, dass sich viele Menschen das nicht leisten können.",
+"fn": "concede",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1510",
+"t": "Das gilt allerdings nur, wenn [Satz]",
+"ex": "Das gilt allerdings nur, wenn man mindestens ein Jahr dort gearbeitet hat.",
+"fn": "concede",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1511",
+"t": "Ich teile Ihre Auffassung, dass [Satz]",
+"ex": "Ich teile Ihre Auffassung, dass die Besprechung kürzer sein sollte.",
+"fn": "agree",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1512",
+"t": "Dem schließe ich mich an",
+"ex": "Dem schließe ich mich an: Wir sollten die Markteinführung verschieben.",
+"n": "sich anschließen + Dativ: dem, Ihnen, Ihrer Meinung.",
+"fn": "agree",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1513",
+"t": "Da kann ich Ihnen nur bedingt zustimmen",
+"ex": "Da kann ich Ihnen nur bedingt zustimmen: Der Plan ist gut, aber zu teuer.",
+"n": "zustimmen + Dativ: Ihnen / dir.",
+"fn": "agree",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1514",
+"t": "Das kann ich nur unterstreichen",
+"ex": "Eine gute Ausbildung ist entscheidend – das kann ich nur unterstreichen.",
+"fn": "agree",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1515",
+"t": "Genau darum geht es",
+"ex": "Genau darum geht es: Wir brauchen Lösungen, nicht noch mehr Besprechungen.",
+"fn": "agree",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1516",
+"t": "Sie haben insofern recht, als [Satz]",
+"ex": "Sie haben insofern recht, als die Kosten steigen, aber die Ursache ist eine andere.",
+"n": "insofern … als: the als-clause has the verb last.",
+"fn": "agree",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1517",
+"t": "Da haben Sie einen wichtigen Punkt angesprochen",
+"ex": "Da haben Sie einen wichtigen Punkt angesprochen: Wer soll das bezahlen?",
+"fn": "agree",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1518",
+"t": "Das sehe ich genauso",
+"ex": "Das sehe ich genauso: Die Frist ist zu knapp.",
+"fn": "agree",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1519",
+"t": "Das stimmt so nicht ganz",
+"ex": "Das stimmt so nicht ganz: Das Angebot galt nur bis Mai.",
+"fn": "agree",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1520",
+"t": "Das würde ich so nicht unterschreiben",
+"ex": "Junge Leute lesen weniger als früher? Das würde ich so nicht unterschreiben.",
+"fn": "agree",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1521",
+"t": "Da gehen unsere Meinungen auseinander",
+"ex": "Da gehen unsere Meinungen auseinander: Ich halte Atomkraft für zu riskant.",
+"n": "auseinandergehen: separable.",
+"fn": "agree",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1522",
+"t": "[Nomen] ist Ansichtssache",
+"ex": "Ob das Design modern wirkt, ist Ansichtssache.",
+"fn": "agree",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1523",
+"t": "Da irren Sie sich",
+"ex": "Da irren Sie sich: Das Gesetz ist schon seit Januar in Kraft.",
+"n": "sich irren: reflexive.",
+"fn": "agree",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1524",
+"t": "Davon kann keine Rede sein",
+"ex": "Günstiger? Davon kann keine Rede sein – der Preis hat sich verdoppelt.",
+"fn": "agree",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1525",
+"t": "Das kann ich so nicht stehen lassen",
+"ex": "Tut mir leid, aber das kann ich so nicht stehen lassen: Die Zahlen sind falsch.",
+"fn": "agree",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1526",
+"t": "Es ist davon auszugehen, dass [Satz]",
+"ex": "Es ist davon auszugehen, dass die Preise weiter steigen werden.",
+"n": "sein + zu + Infinitiv = man kann/muss …",
+"fn": "probability",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1527",
+"t": "Es ist kaum anzunehmen, dass [Satz]",
+"ex": "Es ist kaum anzunehmen, dass die neue Bahnstrecke rechtzeitig fertig wird.",
+"fn": "probability",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1528",
+"t": "Aller Voraussicht nach [Satz]",
+"ex": "Aller Voraussicht nach treten die neuen Regeln nächstes Jahr in Kraft.",
+"n": "Genitiv, fixed; the verb comes next.",
+"fn": "probability",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1529",
+"t": "höchstwahrscheinlich",
+"ex": "Die Besprechung wird höchstwahrscheinlich abgesagt.",
+"fn": "probability",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1530",
+"t": "Es ist nicht ausgeschlossen, dass [Satz]",
+"ex": "Es ist nicht ausgeschlossen, dass sich das Virus weiter ausbreitet.",
+"fn": "probability",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1531",
+"t": "Vieles spricht dafür, dass [Satz]",
+"ex": "Vieles spricht dafür, dass sich der Trend fortsetzt.",
+"n": "sprechen für = point to; dafür before a dass-clause.",
+"fn": "probability",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1532",
+"t": "Ich könnte mir vorstellen, dass [Satz]",
+"ex": "Ich könnte mir vorstellen, dass viele Menschen einen kürzeren Arbeitstag bevorzugen würden.",
+"n": "sich (Dativ) etwas vorstellen: mir.",
+"fn": "probability",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1533",
+"t": "Es ist durchaus möglich, dass [Satz]",
+"ex": "Es ist durchaus möglich, dass das Vorstellungsgespräch online stattfindet.",
+"n": "durchaus = quite, definitely.",
+"fn": "probability",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1534",
+"t": "[Nomen] dürfte [Infinitiv]",
+"ex": "Die neue Regel dürfte kleinen Läden Probleme bereiten.",
+"n": "dürfte (Konjunktiv II of dürfen) = probably will: Das dürfte schwierig werden.",
+"fn": "probability",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1535",
+"t": "Es ist zu befürchten, dass [Satz]",
+"ex": "Es ist zu befürchten, dass viele kleine Bauernhöfe schließen müssen.",
+"fn": "probability",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1536",
+"t": "Es ist fraglich, ob [Satz]",
+"ex": "Es ist fraglich, ob das neue Gesetz den Mietern wirklich hilft.",
+"n": "fraglich, ob (not dass).",
+"fn": "probability",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1537",
+"t": "Es ist nur eine Frage der Zeit, bis [Satz]",
+"ex": "Es ist nur eine Frage der Zeit, bis selbstfahrende Busse auf unseren Straßen unterwegs sind.",
+"n": "Frage der Zeit, bis (not bevor).",
+"fn": "probability",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1538",
+"t": "Es ist noch offen, ob [Satz]",
+"ex": "Es ist noch offen, ob das Festival dieses Jahr stattfindet.",
+"fn": "probability",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1539",
+"t": "Es besteht die Gefahr, dass [Satz]",
+"ex": "Es besteht die Gefahr, dass ältere Menschen abgehängt werden.",
+"n": "bestehen = exist (formal).",
+"fn": "probability",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1540",
+"t": "Alles deutet darauf hin, dass [Satz]",
+"ex": "Alles deutet darauf hin, dass das Unternehmen verkauft wird.",
+"n": "hindeuten auf: hin goes to the end; darauf + dass-Satz.",
+"fn": "probability",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1541",
+"t": "Wägt man die Vor- und Nachteile ab, [Satz]",
+"ex": "Wägt man die Vor- und Nachteile ab, ist die günstigere Variante die bessere Wahl.",
+"n": "Verb first = wenn-clause: Wägt man … ab, ist … (abwägen: wägt ab).",
+"fn": "conclude",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1542",
+"t": "Zusammenfassend lässt sich sagen, dass [Satz]",
+"ex": "Zusammenfassend lässt sich sagen, dass das Projekt trotz der Verzögerungen ein Erfolg war.",
+"n": "lässt sich sagen = man kann sagen (no es).",
+"fn": "conclude",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1543",
+"t": "Abschließend möchte ich [Infinitiv]",
+"ex": "Abschließend möchte ich allen danken, die an der Umfrage teilgenommen haben.",
+"n": "Verb second: Abschließend möchte ich …",
+"fn": "conclude",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1544",
+"t": "Daraus folgt, dass [Satz]",
+"ex": "Die Daten sind unvollständig. Daraus folgt, dass wir keine sicheren Schlüsse ziehen können.",
+"n": "folgen aus: daraus.",
+"fn": "conclude",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1545",
+"t": "Ich bin zu dem Schluss gekommen, dass [Satz]",
+"ex": "Ich bin zu dem Schluss gekommen, dass das alte System besser war.",
+"n": "kommen: Perfekt with sein.",
+"fn": "conclude",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1546",
+"t": "Die Vorteile überwiegen (die Nachteile)",
+"ex": "Für mich überwiegen ganz klar die Vorteile.",
+"n": "überwiegen is inseparable: Die Vorteile überwiegen.",
+"fn": "conclude",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1547",
+"t": "Mein Fazit lautet: [Satz]",
+"ex": "Mein Fazit lautet: Die App ist nützlich, aber zu teuer.",
+"n": "Fazit = conclusion of a text or talk; ein Fazit ziehen.",
+"fn": "conclude",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1548",
+"t": "Es bleibt festzuhalten, dass [Satz]",
+"ex": "Es bleibt festzuhalten, dass die meisten Menschen immer noch mit dem Auto zur Arbeit fahren.",
+"fn": "conclude",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1549",
+"t": "Es spricht mehr dafür als dagegen",
+"ex": "Insgesamt spricht mehr dafür als dagegen.",
+"fn": "conclude",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1550",
+"t": "Aus all diesen Gründen [Satz]",
+"ex": "Aus all diesen Gründen bin ich gegen die neue Autobahn.",
+"n": "aus … Gründen (not für). The verb comes next.",
+"fn": "conclude",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1551",
+"t": "[Nomen] lässt sich nicht eindeutig beantworten",
+"ex": "Die Frage, ob Schuluniformen helfen, lässt sich also nicht eindeutig beantworten.",
+"fn": "conclude",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1552",
+"t": "Letztlich muss jeder selbst entscheiden, ob [Satz]",
+"ex": "Letztlich muss jeder selbst entscheiden, ob er in den sozialen Medien aktiv sein möchte.",
+"n": "jeder … er (or: er oder sie).",
+"fn": "conclude",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1553",
+"t": "Ein guter Kompromiss wäre, [zu + Infinitiv]",
+"ex": "Ein guter Kompromiss wäre, zwei Tage pro Woche von zu Hause aus zu arbeiten.",
+"fn": "conclude",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1554",
+"t": "Nach reiflicher Überlegung [Satz]",
+"ex": "Nach reiflicher Überlegung haben wir uns entschieden, die Filiale zu schließen.",
+"n": "reiflich is used almost only in this phrase. The verb comes next.",
+"fn": "conclude",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1555",
+"t": "Ich würde mich für [Nomen, Akk] entscheiden",
+"ex": "Deshalb würde ich mich für die kleinere Wohnung im Zentrum entscheiden.",
+"n": "sich entscheiden für + Akk.",
+"fn": "conclude",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1556",
+"t": "Der Autor vertritt die These, dass [Satz]",
+"ex": "Der Autor vertritt die These, dass die Schule morgens später beginnen sollte.",
+"n": "Akkusativ: die These vertreten.",
+"fn": "report",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1557",
+"t": "In dem Artikel geht es um [Nomen, Akk]",
+"ex": "In dem Artikel geht es um die Auswirkungen von Lärm auf unsere Gesundheit.",
+"n": "es geht um + Akk; the subject is always es.",
+"fn": "report",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1558",
+"t": "Der Text befasst sich mit [Nomen, Dativ]",
+"ex": "Der Text befasst sich mit der Frage, wie Städte mit Hitzewellen umgehen können.",
+"n": "sich befassen mit + Dativ.",
+"fn": "report",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1559",
+"t": "Der Artikel ist in [Nomen, Dativ] erschienen",
+"ex": "Der Artikel ist im letzten Frühjahr in einer Regionalzeitung erschienen.",
+"n": "erscheinen: Perfekt with sein.",
+"fn": "report",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1560",
+"t": "Wie aus [Nomen, Dativ] hervorgeht, [Satz]",
+"ex": "Wie aus dem Bericht hervorgeht, ziehen mehr junge Menschen aufs Land.",
+"n": "hervorgehen aus + Dativ. The verb comes right after the comma.",
+"fn": "report",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1561",
+"t": "Im Text wird behauptet, dass [Satz]",
+"ex": "Im Text wird behauptet, dass die meisten Menschen alle zehn Minuten auf ihr Handy schauen.",
+"n": "behaupten = claim (not necessarily true).",
+"fn": "report",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1562",
+"t": "Der Autor betont, dass [Satz]",
+"ex": "Der Autor betont, dass die Studie nur Großstädte untersucht hat.",
+"fn": "report",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1563",
+"t": "Der Autor kritisiert, dass [Satz]",
+"ex": "Der Autor kritisiert, dass viele Apps zu viele Daten sammeln.",
+"n": "kritisieren, dass … (no die Tatsache needed).",
+"fn": "report",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1564",
+"t": "Der Autor nennt [Nomen] als Beispiel",
+"ex": "Der Autor nennt Kopenhagen als Beispiel für eine fahrradfreundliche Stadt.",
+"n": "als Beispiel (not wie); Beispiel für.",
+"fn": "report",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1565",
+"t": "Der Autor stützt sich auf [Nomen, Akk]",
+"ex": "Der Autor stützt sich auf Daten aus mehreren europäischen Ländern.",
+"n": "sich stützen auf + Akk.",
+"fn": "report",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1566",
+"t": "Der Autor kommt zu dem Ergebnis, dass [Satz]",
+"ex": "Der Autor kommt zu dem Ergebnis, dass das Verbot wenig bewirkt hat.",
+"fn": "report",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1567",
+"t": "Die Hauptaussage des Textes ist, dass [Satz]",
+"ex": "Die Hauptaussage des Textes ist, dass Schlaf und Bewegung gleich wichtig sind.",
+"fn": "report",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1568",
+"t": "Der Autor geht der Frage nach, ob [Satz]",
+"ex": "Der Autor geht der Frage nach, ob Roboter Pflegekräfte ersetzen werden.",
+"n": "nachgehen + Dativ: der Frage.",
+"fn": "report",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1569",
+"t": "Der Text gibt einen Überblick über [Nomen, Akk]",
+"ex": "Der Text gibt einen Überblick über die häufigsten Schlafstörungen.",
+"n": "Überblick über + Akk.",
+"fn": "report",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1570",
+"t": "Es wird deutlich, dass [Satz]",
+"ex": "Im Interview wird deutlich, dass sich die Beschäftigten übergangen fühlen.",
+"n": "es drops when another part comes first: Im Interview wird deutlich, dass …",
+"fn": "report",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1571",
+"t": "In meiner Präsentation geht es um [Nomen, Akk]",
+"ex": "In meiner Präsentation geht es um den Einfluss sozialer Medien auf junge Menschen.",
+"n": "es geht um + Akk; the subject is es.",
+"fn": "present",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1572",
+"t": "Ich habe mich für dieses Thema entschieden, weil [Satz]",
+"ex": "Ich habe mich für dieses Thema entschieden, weil es uns alle betrifft.",
+"n": "sich entscheiden für + Akk.",
+"fn": "present",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1573",
+"t": "Meine Präsentation gliedert sich in [Zahl] Teile",
+"ex": "Meine Präsentation gliedert sich in drei Teile.",
+"n": "sich gliedern in + Akk.",
+"fn": "present",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1574",
+"t": "Zunächst möchte ich [Infinitiv]",
+"ex": "Zunächst möchte ich ein paar wichtige Begriffe erklären.",
+"n": "Verb second: Zunächst möchte ich …",
+"fn": "present",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1575",
+"t": "Wie Sie sicher wissen, [Satz]",
+"ex": "Wie Sie sicher wissen, arbeiten immer mehr Menschen im Homeoffice.",
+"n": "The verb comes right after the comma.",
+"fn": "present",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1576",
+"t": "Wie Sie auf dieser Folie sehen, [Satz]",
+"ex": "Wie Sie auf dieser Folie sehen, sind die Verkaufszahlen seit März gesunken.",
+"n": "auf der Folie (not in).",
+"fn": "present",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1577",
+"t": "Ich möchte kurz auf [Nomen, Akk] eingehen",
+"ex": "Ich möchte kurz auf die Kosten eingehen.",
+"n": "eingehen auf + Akk.",
+"fn": "present",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1578",
+"t": "Lassen Sie mich das an einem Beispiel verdeutlichen",
+"ex": "Lassen Sie mich das an einem Beispiel aus meiner eigenen Arbeit verdeutlichen.",
+"n": "an einem Beispiel zeigen/erklären/verdeutlichen.",
+"fn": "present",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1579",
+"t": "An dieser Stelle möchte ich [Infinitiv]",
+"ex": "An dieser Stelle möchte ich Ihnen ein kurzes Video zeigen.",
+"fn": "present",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1580",
+"t": "Das bringt mich zu [Nomen, Dativ]",
+"ex": "Das bringt mich zu der Frage, wie wir das Projekt finanzieren können.",
+"n": "zu + Dativ: zu der (zur) Frage, zum Thema.",
+"fn": "present",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1581",
+"t": "Lassen Sie mich mit einer Frage beginnen",
+"ex": "Lassen Sie mich mit einer Frage beginnen: Wer von Ihnen hat heute schon aufs Handy geschaut?",
+"fn": "present",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1582",
+"t": "Ich fasse kurz [Nomen] zusammen",
+"ex": "Ich fasse kurz die wichtigsten Punkte zusammen.",
+"n": "zusammenfassen: separable (ich fasse … zusammen).",
+"fn": "present",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1583",
+"t": "Ich komme jetzt zum Schluss",
+"ex": "Ich komme jetzt zum Schluss meiner Präsentation.",
+"fn": "present",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1584",
+"t": "Gern beantworte ich jetzt Ihre Fragen",
+"ex": "Das war es von meiner Seite. Jetzt beantworte ich gern Ihre Fragen.",
+"fn": "present",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1585",
+"t": "Vielen Dank für Ihre Aufmerksamkeit",
+"ex": "Vielen Dank für Ihre Aufmerksamkeit.",
+"fn": "present",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1586",
+"t": "Wenn ich da kurz einhaken darf",
+"ex": "Wenn ich da kurz einhaken darf: Das Budget wurde bereits gekürzt.",
+"n": "einhaken = come in on a point.",
+"fn": "discuss",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1587",
+"t": "Darf ich dazu etwas sagen?",
+"ex": "Darf ich dazu etwas sagen? Ich habe da andere Erfahrungen gemacht.",
+"fn": "discuss",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1588",
+"t": "Ich möchte an das anknüpfen, was [Satz]",
+"ex": "Ich möchte an das anknüpfen, was vorhin über Weiterbildung gesagt wurde.",
+"n": "anknüpfen an + Akk.",
+"fn": "discuss",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1589",
+"t": "Ich möchte noch etwas ergänzen",
+"ex": "Ich möchte noch etwas ergänzen: Das Angebot gilt nur bis Freitag.",
+"n": "ergänzen / hinzufügen (not addieren, which is maths).",
+"fn": "discuss",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1590",
+"t": "Ich möchte nur kurz anmerken, dass [Satz]",
+"ex": "Ich möchte nur kurz anmerken, dass der Raum bis vier Uhr gebucht ist.",
+"fn": "discuss",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1591",
+"t": "Ich möchte zu bedenken geben, dass [Satz]",
+"ex": "Ich möchte zu bedenken geben, dass die Kosten steigen könnten.",
+"n": "zu bedenken geben = raise as a concern.",
+"fn": "discuss",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1592",
+"t": "Wie sehen Sie das?",
+"ex": "Wir könnten das Budget für den Ausflug kürzen. Wie sehen Sie das?",
+"fn": "discuss",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1593",
+"t": "Mich würde interessieren, wie [Satz]",
+"ex": "Mich würde interessieren, wie andere Unternehmen damit umgehen.",
+"n": "Akkusativ: mich (es interessiert mich).",
+"fn": "discuss",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1594",
+"t": "Könnten Sie das näher erläutern?",
+"ex": "Könnten Sie das näher erläutern? Ich bin mir nicht sicher, was Sie meinen.",
+"n": "erläutern = explain (formal).",
+"fn": "discuss",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1595",
+"t": "Wir kommen vom Thema ab",
+"ex": "Ich glaube, wir kommen vom Thema ab.",
+"n": "abkommen von: separable.",
+"fn": "discuss",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1596",
+"t": "Wer möchte anfangen?",
+"ex": "Gut, legen wir los. Wer möchte anfangen?",
+"fn": "discuss",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1597",
+"t": "Möchte noch jemand etwas dazu sagen?",
+"ex": "Danke. Möchte noch jemand etwas dazu sagen?",
+"fn": "discuss",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1598",
+"t": "Halten wir (das) fest: [Satz]",
+"ex": "Halten wir das fest: Der Bericht ist am Montag fällig.",
+"n": "festhalten: separable.",
+"fn": "discuss",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1599",
+"t": "Wir müssen langsam zum Ende kommen",
+"ex": "Es ist gleich zwölf, also müssen wir langsam zum Ende kommen.",
+"fn": "discuss",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1600",
+"t": "Ich bitte Sie, sich kurz zu fassen",
+"ex": "Wir haben nur noch zehn Minuten, deshalb bitte ich Sie, sich kurz zu fassen.",
+"n": "sich kurz fassen = keep it short.",
+"fn": "discuss",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1601",
+"t": "Die Grafik zeigt [Nomen]",
+"ex": "Die Grafik zeigt, wie viele Stunden Menschen täglich online verbringen.",
+"n": "Also: Die Grafik gibt Auskunft über … / Aus der Grafik geht hervor, …",
+"fn": "figures",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1602",
+"t": "Die Daten stammen aus [Nomen, Dativ]",
+"ex": "Die Daten stammen aus einer Umfrage, die 2023 durchgeführt wurde.",
+"n": "stammen aus + Dativ.",
+"fn": "figures",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1603",
+"t": "[Nomen] ist um [Zahl] Prozent gestiegen",
+"ex": "Der Anteil der Menschen, die im Homeoffice arbeiten, ist um 15 Prozent gestiegen.",
+"n": "um = by (the difference); auf = to (the new value). steigen: Perfekt with sein.",
+"fn": "figures",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1604",
+"t": "[Nomen] ist von [Zahl] auf [Zahl] Prozent gesunken",
+"ex": "Die Arbeitslosenquote ist von 8 auf 6 Prozent gesunken.",
+"n": "from … to = von … auf.",
+"fn": "figures",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1605",
+"t": "[Nomen] ist stark zurückgegangen",
+"ex": "Die Zahl der Raucher ist in den letzten Jahren stark zurückgegangen.",
+"n": "zurückgehen: Perfekt with sein.",
+"fn": "figures",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1606",
+"t": "[Nomen] hat sich verdoppelt",
+"ex": "Die Zahl der Onlinebestellungen hat sich seit 2019 verdoppelt.",
+"n": "sich verdoppeln / verdreifachen: reflexive.",
+"fn": "figures",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1607",
+"t": "[Nomen] machen den größten Anteil aus",
+"ex": "Junge Menschen machen den größten Anteil der Nutzer aus.",
+"n": "ausmachen: separable (machen … aus).",
+"fn": "figures",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1608",
+"t": "An erster Stelle steht [Nomen]",
+"ex": "An erster Stelle steht das Radfahren, gefolgt vom Zufußgehen.",
+"n": "gefolgt von + Dativ.",
+"fn": "figures",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1609",
+"t": "Mehr als die Hälfte [Nomen, Genitiv]",
+"ex": "Mehr als die Hälfte der Befragten nutzt das Handy im Bett.",
+"n": "Genitiv: die Hälfte der Befragten; the verb is usually singular.",
+"fn": "figures",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1610",
+"t": "Knapp ein Drittel [Nomen, Genitiv]",
+"ex": "Knapp ein Drittel der Beschäftigten würde gern in Teilzeit arbeiten.",
+"n": "knapp = just under; gut = just over (gut ein Drittel).",
+"fn": "figures",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1611",
+"t": "Der Wert für [Nomen] liegt bei [Zahl]",
+"ex": "Der Wert für Deutschland liegt bei 42 Prozent.",
+"n": "liegen bei = be (a value).",
+"fn": "figures",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1612",
+"t": "[Nomen] ist nahezu konstant geblieben",
+"ex": "Die Zahl der Mitglieder ist nahezu konstant geblieben.",
+"n": "bleiben: Perfekt with sein.",
+"fn": "figures",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1613",
+"t": "Auffällig ist, dass [Satz]",
+"ex": "Auffällig ist, dass Frauen öfter öffentliche Verkehrsmittel nutzen als Männer.",
+"fn": "figures",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1614",
+"t": "Bei [Nomen] ist ein deutlicher Anstieg zu verzeichnen",
+"ex": "Seit 2020 ist beim Onlinelernen ein deutlicher Anstieg zu verzeichnen.",
+"n": "verzeichnen = record (formal). Nominativ: ein deutlicher Anstieg.",
+"fn": "figures",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1615",
+"t": "Im Zeitraum von [Jahr] bis [Jahr] [Satz]",
+"ex": "Im Zeitraum von 2015 bis 2020 stieg die Zahl der Studierenden stark an.",
+"n": "The verb comes after the time phrase.",
+"fn": "figures",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1616",
+"t": "Bezug nehmend auf Ihr Schreiben vom [Datum] [Satz]",
+"ex": "Bezug nehmend auf Ihr Schreiben vom 3. Mai möchte ich den Termin bestätigen.",
+"n": "Both Bezug nehmend and bezugnehmend are correct. Plainer: Ich beziehe mich auf Ihr Schreiben vom …",
+"fn": "formal",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1617",
+"t": "Ich wende mich an Sie, weil [Satz]",
+"ex": "Ich wende mich an Sie, weil ich meine Kaution noch nicht zurückbekommen habe.",
+"n": "sich wenden an + Akk.",
+"fn": "formal",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1618",
+"t": "Wie telefonisch besprochen, [Satz]",
+"ex": "Wie telefonisch besprochen, sende ich Ihnen den unterschriebenen Vertrag.",
+"fn": "formal",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1619",
+"t": "Mit großem Interesse habe ich Ihre Stellenanzeige gelesen",
+"ex": "Mit großem Interesse habe ich Ihre Stellenanzeige gelesen.",
+"n": "mit großem Interesse: Dativ (das Interesse).",
+"fn": "formal",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1620",
+"t": "Leider musste ich feststellen, dass [Satz]",
+"ex": "Leider musste ich feststellen, dass die Heizung in meiner Wohnung immer noch nicht funktioniert.",
+"n": "Perfekt: habe … feststellen müssen (double infinitive).",
+"fn": "formal",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1621",
+"t": "Ich erwarte, dass [Satz]",
+"ex": "Ich erwarte, dass der Schaden bis Ende des Monats behoben wird.",
+"n": "erwarten = expect; warten auf = wait for.",
+"fn": "formal",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1622",
+"t": "Andernfalls sehe ich mich gezwungen, [zu + Infinitiv]",
+"ex": "Andernfalls sehe ich mich gezwungen, rechtliche Schritte einzuleiten.",
+"n": "sich gezwungen sehen + zu-Infinitiv.",
+"fn": "formal",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1623",
+"t": "Ich bitte Sie daher, [zu + Infinitiv]",
+"ex": "Ich bitte Sie daher, mir den vollen Betrag zu erstatten.",
+"n": "bitten + Akk: Sie / dich.",
+"fn": "formal",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1624",
+"t": "Ich möchte Ihnen mitteilen, dass [Satz]",
+"ex": "Ich möchte Ihnen mitteilen, dass ich vom 1. bis 15. August nicht im Büro bin.",
+"n": "mitteilen + Dativ: Ihnen / dir.",
+"fn": "formal",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1625",
+"t": "Hiermit [kündige/beantrage/bestätige] ich [Nomen]",
+"ex": "Hiermit kündige ich meine Mitgliedschaft im Fitnessstudio zum 30. Juni.",
+"n": "Verb second: Hiermit kündige ich …",
+"fn": "formal",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1626",
+"t": "Im Anhang finden Sie [Nomen]",
+"ex": "Im Anhang finden Sie meinen Lebenslauf und meine Zeugnisse.",
+"n": "Not: Bitte finden Sie … (a calque).",
+"fn": "formal",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1627",
+"t": "Ich bitte / Wir bitten um Ihr Verständnis",
+"ex": "Wir entschuldigen uns für die Verzögerung und bitten um Ihr Verständnis.",
+"n": "bitten um + Akk.",
+"fn": "formal",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1628",
+"t": "Ich bitte um eine kurze Rückmeldung bis [Datum]",
+"ex": "Ich bitte um eine kurze Rückmeldung bis Freitag.",
+"fn": "formal",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1629",
+"t": "Ich hoffe auf eine baldige Lösung",
+"ex": "Ich hoffe auf eine baldige Lösung.",
+"n": "hoffen auf + Akk.",
+"fn": "formal",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+},
+{
+"id": "ENG_CHUNK_1630",
+"t": "Für Rückfragen stehe ich Ihnen gern zur Verfügung",
+"ex": "Für Rückfragen stehe ich Ihnen gern zur Verfügung.",
+"n": "zur Verfügung stehen + Dativ: Ihnen.",
+"fn": "formal",
+"layer": "b2",
+"reviewedBy": "model-2pass",
+"reviewedAt": "2026-10-05"
+}
+]

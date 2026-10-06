@@ -1,0 +1,1114 @@
+[
+ {
+  "id": "ENG_CHUNK_1459",
+  "field": "near",
+  "before": "«Nach meiner Erfahrung nach lernen Menschen schneller, wenn sie Fehler machen dürfen.» (either meiner Erfahrung nach or nach meiner Erfahrung)",
+  "after": [
+   [
+    "In meiner Erfahrung lernen Menschen schneller, wenn sie Fehler machen dürfen.",
+    "calque of 'in my experience': meiner Erfahrung nach / nach meiner Erfahrung"
+   ]
+  ],
+  "severity": "error",
+  "why": "current near is accepted by pattern «nach meiner erfahrung» (extra nach falls outside it); use an in-span calque instead"
+ },
+ {
+  "id": "ENG_CHUNK_1461",
+  "field": "accept",
+  "before": [
+   "der grund dafür ist (dass)",
+   "der grund hierfür ist (dass)",
+   "der hauptgrund dafür ist (dass)",
+   "der grund ist (dass)",
+   "das liegt daran (dass)",
+   "das hat den grund (dass)"
+  ],
+  "after": [
+   "der grund dafür ist dass",
+   "der grund hierfür ist dass",
+   "der hauptgrund dafür ist dass",
+   "der grund ist dass",
+   "das liegt daran dass",
+   "das liegt vor allem daran dass"
+  ],
+  "severity": "error",
+  "why": "optional (dass) accepts the near miss 'Der Grund dafür ist, weil'; span includes 'that'. Dropped stilted 'das hat den grund (dass)'"
+ },
+ {
+  "id": "ENG_CHUNK_1463",
+  "field": "accept",
+  "before": [
+   "ich stehe voll und ganz hinter",
+   "ich stehe (ganz) hinter",
+   "ich stehe voll hinter",
+   "ich unterstütze [x] voll und ganz",
+   "ich befürworte [x] voll und ganz"
+  ],
+  "after": [
+   "ich stehe voll und ganz hinter der",
+   "ich stehe voll und ganz hinter dem",
+   "ich stehe (ganz) hinter der",
+   "ich stehe (ganz) hinter dem",
+   "ich stehe voll hinter der",
+   "ich stehe voll hinter dem",
+   "ich unterstütze [x] voll und ganz",
+   "ich befürworte [x] voll und ganz"
+  ],
+  "severity": "error",
+  "why": "patterns ending in 'hinter' accept the near miss 'hinter die Entscheidung'; include the Dativ article"
+ },
+ {
+  "id": "ENG_CHUNK_1464",
+  "field": "accept",
+  "before": [
+   "was ich (besonders) wichtig finde ist",
+   "was mir (besonders) wichtig ist ist",
+   "was ich für wichtig halte ist",
+   "wichtig finde ich (vor allem) (dass)",
+   "was ich entscheidend finde ist"
+  ],
+  "after": [
+   "was ich (besonders) wichtig finde ist",
+   "was mir (besonders) wichtig ist ist",
+   "was ich für wichtig halte ist",
+   "wichtig finde ich (vor allem) (dass)",
+   "was ich entscheidend finde ist",
+   "ich finde es (besonders) wichtig (dass)",
+   "mir ist (besonders) wichtig (dass)"
+  ],
+  "severity": "error",
+  "why": "'Ich finde es wichtig, dass …' / 'Mir ist wichtig, dass …' are natural renderings and missing"
+ },
+ {
+  "id": "ENG_CHUNK_1466",
+  "field": "accept",
+  "before": [
+   "für [x] spricht vor allem (dass)",
+   "dafür spricht vor allem (dass)",
+   "vor allem spricht für [x] dass",
+   "das wichtigste argument für [x] ist (dass)",
+   "das stärkste argument für [x] ist (dass)",
+   "das hauptargument für [x] ist (dass)"
+  ],
+  "after": [
+   "für [x] spricht vor allem dass",
+   "dafür spricht vor allem dass",
+   "vor allem spricht für [x] dass",
+   "das wichtigste argument für [x] ist dass",
+   "das stärkste argument für [x] ist dass",
+   "das hauptargument für [x] ist dass"
+  ],
+  "severity": "error",
+  "why": "optional (dass) accepts the near miss '…spricht vor allem, weil'"
+ },
+ {
+  "id": "ENG_CHUNK_1466",
+  "field": "core_en",
+  "before": "The main argument for",
+  "after": "The main argument for longer opening hours is that",
+  "severity": "improve",
+  "why": "the German frame needs the 'is that' part; span should cover it (patterns already reach past the slot)"
+ },
+ {
+  "id": "ENG_CHUNK_1467",
+  "field": "accept",
+  "before": [
+   "gegen [x] spricht (allerdings) (jedoch) (dass)",
+   "dagegen spricht (allerdings) (dass)",
+   "ein argument gegen [x] ist (dass)",
+   "was gegen [x] spricht ist (dass)",
+   "ein argument dagegen ist (dass)"
+  ],
+  "after": [
+   "gegen [x] spricht (allerdings) (jedoch) dass",
+   "dagegen spricht (allerdings) dass",
+   "ein argument gegen [x] ist dass",
+   "was gegen [x] spricht ist dass",
+   "ein argument dagegen ist dass",
+   "ein gegenargument ist dass"
+  ],
+  "severity": "error",
+  "why": "optional (dass) accepts the near miss 'Gegen ein Verbot spricht, weil'"
+ },
+ {
+  "id": "ENG_CHUNK_1467",
+  "field": "core_en",
+  "before": "One argument against",
+  "after": "One argument against a ban is that",
+  "severity": "improve",
+  "why": "span should cover the 'is that' part the German frame renders"
+ },
+ {
+  "id": "ENG_CHUNK_1475",
+  "field": "accept",
+  "before": [
+   "man denke nur an",
+   "denken sie nur an",
+   "denk nur an",
+   "denkt nur an",
+   "denken wir nur an",
+   "man braucht nur an [x] zu denken",
+   "man muss nur an [x] denken"
+  ],
+  "after": [
+   "man denke (doch) nur an",
+   "denken sie (doch) nur an",
+   "denk (doch) nur an",
+   "denkt (doch) nur an",
+   "denken wir (doch) nur an",
+   "man braucht nur an [x] zu denken",
+   "man muss nur an [x] denken"
+  ],
+  "severity": "error",
+  "why": "'Denk/Denken Sie doch nur an' (filler doch) is the commonest spoken form and was not matched"
+ },
+ {
+  "id": "ENG_CHUNK_1477",
+  "field": "accept",
+  "before": [
+   "häufig wird argumentiert (dass)",
+   "oft wird argumentiert (dass)",
+   "es wird (häufig) (oft) argumentiert (dass)",
+   "häufig wird behauptet (dass)",
+   "oft wird behauptet (dass)",
+   "es wird (häufig) (oft) behauptet (dass)",
+   "man argumentiert (häufig) (oft) (dass)"
+  ],
+  "after": [
+   "häufig wird argumentiert (dass)",
+   "oft wird argumentiert (dass)",
+   "es wird (häufig) (oft) argumentiert (dass)",
+   "häufig wird behauptet (dass)",
+   "oft wird behauptet (dass)",
+   "es wird (häufig) (oft) behauptet (dass)",
+   "man argumentiert (häufig) (oft) (dass)",
+   "oft heißt es (dass)"
+  ],
+  "severity": "improve",
+  "why": "'Oft heißt es, dass …' is a common native rendering"
+ },
+ {
+  "id": "ENG_CHUNK_1483",
+  "field": "accept",
+  "before": [
+   "das kann man so pauschal nicht sagen",
+   "das kann man nicht so pauschal sagen",
+   "das kann man (so) nicht pauschal sagen",
+   "man kann das (so) nicht pauschal sagen",
+   "das lässt sich (so) nicht pauschal sagen",
+   "das kann man (so) nicht verallgemeinern",
+   "das lässt sich (so) nicht verallgemeinern"
+  ],
+  "after": [
+   "das kann man so pauschal nicht sagen",
+   "das kann man nicht so pauschal sagen",
+   "das kann man (so) nicht pauschal sagen",
+   "man kann das (so) nicht pauschal sagen",
+   "man kann das nicht so pauschal sagen",
+   "das kann man (so) nicht verallgemeinern",
+   "das kann man nicht so verallgemeinern",
+   "man kann das (so) nicht verallgemeinern"
+  ],
+  "severity": "error",
+  "why": "word orders 'nicht so verallgemeinern' / 'man kann das nicht so pauschal sagen' missing; trimmed to 8"
+ },
+ {
+  "id": "ENG_CHUNK_1490",
+  "field": "accept",
+  "before": [
+   "ist eine frage der definition",
+   "ist (eine) definitionssache",
+   "hängt von der definition ab",
+   "kommt auf die definition an",
+   "ist eine frage der perspektive"
+  ],
+  "after": [
+   "ist eine frage der definition",
+   "ist (eine) definitionssache",
+   "hängt von der definition ab",
+   "kommt auf die definition an"
+  ],
+  "severity": "improve",
+  "why": "'Frage der Perspektive' changes the meaning (definition vs viewpoint)"
+ },
+ {
+  "id": "ENG_CHUNK_1496",
+  "field": "accept",
+  "before": [
+   "zwar [x] aber",
+   "zwar [x] doch",
+   "zwar [x] jedoch",
+   "zwar [x] allerdings"
+  ],
+  "after": [
+   "zwar [x] aber",
+   "zwar [x] doch",
+   "zwar [x] jedoch",
+   "zwar [x] allerdings",
+   "mag [x] sein aber",
+   "mag [x] sein doch"
+  ],
+  "severity": "error",
+  "why": "concessive mögen ('Die Bahn mag (zwar) teurer sein, aber …') is the closest rendering of 'may be …, but' and is missing"
+ },
+ {
+  "id": "ENG_CHUNK_1497",
+  "field": "accept",
+  "before": [
+   "das mag (ja) sein",
+   "das mag (ja) (schon) stimmen",
+   "das mag (ja) richtig sein",
+   "mag sein",
+   "es mag sein (dass)",
+   "das kann (schon) sein aber"
+  ],
+  "after": [
+   "das mag (ja) sein aber",
+   "das mag (ja) sein allerdings sind",
+   "das mag (ja) sein doch",
+   "das mag (ja) stimmen aber",
+   "das mag (ja) richtig sein aber",
+   "mag sein aber",
+   "das kann (schon) sein aber",
+   "es mag sein dass [x] aber"
+  ],
+  "severity": "error",
+  "why": "span includes 'but'; patterns without the connector accept the near miss 'allerdings die Kosten sind'"
+ },
+ {
+  "id": "ENG_CHUNK_1501",
+  "field": "accept",
+  "before": [
+   "hat sicher (auch) seine vorteile",
+   "hat sicherlich (auch) seine vorteile",
+   "hat natürlich (auch) seine vorteile",
+   "hat zweifellos (auch) seine vorteile",
+   "hat zwar (auch) seine vorteile",
+   "hat sicher (auch) vorteile"
+  ],
+  "after": [
+   "hat sicher (auch) seine vorteile",
+   "hat sicherlich (auch) seine vorteile",
+   "hat natürlich (auch) seine vorteile",
+   "hat zweifellos (auch) seine vorteile",
+   "hat zwar (auch) seine vorteile",
+   "hat sicher (auch) vorteile",
+   "hat bestimmt (auch) seine vorteile"
+  ],
+  "severity": "improve",
+  "why": "'bestimmt' is a common rendering of 'certainly'"
+ },
+ {
+  "id": "ENG_CHUNK_1505",
+  "field": "accept",
+  "before": [
+   "ist nicht (einfach) von der hand zu weisen",
+   "lässt sich nicht (einfach) von der hand weisen",
+   "kann man nicht (einfach) von der hand weisen",
+   "ist nicht (einfach) abzutun",
+   "kann man nicht einfach abtun"
+  ],
+  "after": [
+   "ist nicht (einfach) von der hand zu weisen",
+   "lässt sich nicht (einfach) von der hand weisen",
+   "kann man nicht (einfach) von der hand weisen",
+   "ist nicht (einfach) abzutun",
+   "kann man nicht einfach abtun",
+   "kann nicht (einfach) abgetan werden",
+   "kann nicht (einfach) ignoriert werden",
+   "darf nicht (einfach) ignoriert werden"
+  ],
+  "severity": "error",
+  "why": "passive renderings of 'can't simply be dismissed' (abgetan/ignoriert werden) are correct and what learners type"
+ },
+ {
+  "id": "ENG_CHUNK_1510",
+  "field": "accept",
+  "before": [
+   "das gilt allerdings nur (dann) (wenn)",
+   "das gilt (aber) (jedoch) nur (dann) (wenn)",
+   "dies gilt allerdings nur (wenn)",
+   "das trifft allerdings nur zu (wenn)",
+   "das gilt nur unter der bedingung (dass)"
+  ],
+  "after": [
+   "das gilt allerdings nur (dann) (wenn)",
+   "das gilt (aber) (jedoch) nur (dann) (wenn)",
+   "dies gilt allerdings nur (wenn)",
+   "das trifft allerdings nur zu (wenn)",
+   "das gilt nur unter der bedingung (dass)",
+   "allerdings gilt das nur (dann) (wenn)"
+  ],
+  "severity": "error",
+  "why": "fronted 'Allerdings gilt das nur, wenn …' is a normal word order and missing"
+ },
+ {
+  "id": "ENG_CHUNK_1512",
+  "field": "accept",
+  "before": [
+   "dem schließe ich mich an",
+   "ich schließe mich dem an",
+   "da schließe ich mich an",
+   "ich schließe mich ihrer meinung an",
+   "ich schließe mich deiner meinung an",
+   "dem kann ich mich (nur) anschließen",
+   "da kann ich mich (nur) anschließen"
+  ],
+  "after": [
+   "dem schließe ich mich an",
+   "ich schließe mich (dem) an",
+   "da schließe ich mich an",
+   "ich schließe mich ihrer meinung an",
+   "ich schließe mich deiner meinung an",
+   "dem kann ich mich (nur) anschließen",
+   "da kann ich mich (nur) anschließen",
+   "ich kann mich dem (nur) anschließen"
+  ],
+  "severity": "error",
+  "why": "plain 'Ich schließe mich an' (very common) missing"
+ },
+ {
+  "id": "ENG_CHUNK_1513",
+  "field": "accept",
+  "before": [
+   "da kann ich ihnen nur bedingt zustimmen",
+   "da kann ich dir nur bedingt zustimmen",
+   "da kann ich ihnen nur teilweise zustimmen",
+   "da kann ich dir nur teilweise zustimmen",
+   "da kann ich ihnen nur zum teil zustimmen",
+   "ich stimme ihnen nur (teilweise) (bedingt) zu",
+   "ich stimme dir nur (teilweise) (bedingt) zu"
+  ],
+  "after": [
+   "da kann ich ihnen nur bedingt zustimmen",
+   "da kann ich dir nur bedingt zustimmen",
+   "da kann ich ihnen nur teilweise zustimmen",
+   "da kann ich dir nur teilweise zustimmen",
+   "ich kann ihnen (da) nur teilweise zustimmen",
+   "ich kann dir (da) nur teilweise zustimmen",
+   "ich stimme ihnen (da) nur teilweise zu",
+   "ich stimme dir (da) nur teilweise zu"
+  ],
+  "severity": "error",
+  "why": "'Ich kann Ihnen (da) nur teilweise zustimmen' missing; '(teilweise) (bedingt)' both optional accepted 'ich stimme Ihnen nur zu' (full agreement)"
+ },
+ {
+  "id": "ENG_CHUNK_1514",
+  "field": "accept",
+  "before": [
+   "das kann ich nur unterstreichen",
+   "das kann ich nur bestätigen",
+   "das kann ich nur unterschreiben",
+   "dem kann ich nur zustimmen",
+   "da kann ich nur zustimmen",
+   "das unterstreiche ich"
+  ],
+  "after": [
+   "das kann ich nur unterstreichen",
+   "das kann ich nur bestätigen",
+   "das kann ich nur unterschreiben",
+   "dem kann ich nur zustimmen",
+   "da kann ich nur zustimmen",
+   "das unterstreiche ich",
+   "ich kann das nur unterstreichen"
+  ],
+  "severity": "improve",
+  "why": "subject-first order"
+ },
+ {
+  "id": "ENG_CHUNK_1516",
+  "field": "accept",
+  "before": [
+   "sie haben insofern recht (als)",
+   "du hast insofern recht (als)",
+   "insofern haben sie recht (als)",
+   "insofern hast du recht (als)",
+   "sie haben insoweit recht (als)",
+   "ihr habt insofern recht (als)"
+  ],
+  "after": [
+   "sie haben insofern recht als",
+   "du hast insofern recht als",
+   "insofern haben sie recht als",
+   "insofern hast du recht als",
+   "sie haben insoweit recht als",
+   "ihr habt insofern recht als"
+  ],
+  "severity": "error",
+  "why": "optional (als) accepts the near miss 'insofern recht, dass'; span includes 'as'"
+ },
+ {
+  "id": "ENG_CHUNK_1520",
+  "field": "accept",
+  "before": [
+   "das würde ich (so) nicht unterschreiben",
+   "das würd ich (so) nicht unterschreiben",
+   "das kann ich so nicht unterschreiben",
+   "das würde ich so nicht sagen",
+   "das sehe ich (so) nicht"
+  ],
+  "after": [
+   "das würde ich (so) nicht unterschreiben",
+   "das würd ich (so) nicht unterschreiben",
+   "das kann ich so nicht unterschreiben",
+   "das würde ich so nicht sagen",
+   "das sehe ich (so) nicht",
+   "dem würde ich (so) nicht zustimmen",
+   "da würde ich nicht mitgehen"
+  ],
+  "severity": "error",
+  "why": "'Dem würde ich (so) nicht zustimmen' is the most likely correct learner rendering and is missing"
+ },
+ {
+  "id": "ENG_CHUNK_1524",
+  "field": "accept",
+  "before": [
+   "davon kann (gar) (überhaupt) keine rede sein",
+   "das ist (gar) (überhaupt) nicht der fall",
+   "das ist überhaupt nicht so",
+   "davon kann man nicht sprechen"
+  ],
+  "after": [
+   "davon kann (gar) (überhaupt) keine rede sein",
+   "das ist (gar) (überhaupt) nicht der fall",
+   "das ist überhaupt nicht so",
+   "das stimmt überhaupt nicht",
+   "das stimmt gar nicht"
+  ],
+  "severity": "error",
+  "why": "'davon kann man nicht sprechen' is not idiomatic for this meaning; added 'Das stimmt überhaupt nicht'"
+ },
+ {
+  "id": "ENG_CHUNK_1534",
+  "field": "accept",
+  "before": [
+   "dürfte",
+   "dürften",
+   "wird wahrscheinlich",
+   "wird vermutlich",
+   "wird voraussichtlich",
+   "wird wohl"
+  ],
+  "after": [
+   "dürfte",
+   "dürften",
+   "wahrscheinlich",
+   "vermutlich",
+   "voraussichtlich",
+   "wird wohl",
+   "es ist wahrscheinlich dass"
+  ],
+  "severity": "error",
+  "why": "present-tense 'bereitet wahrscheinlich …' and 'Es ist wahrscheinlich, dass …' are natural and were rejected"
+ },
+ {
+  "id": "ENG_CHUNK_1535",
+  "field": "accept",
+  "before": [
+   "es ist zu befürchten (dass)",
+   "es steht zu befürchten (dass)",
+   "man befürchtet (dass)",
+   "es wird befürchtet (dass)",
+   "man muss befürchten (dass)",
+   "ich befürchte (dass)"
+  ],
+  "after": [
+   "es ist zu befürchten (dass)",
+   "es steht zu befürchten (dass)",
+   "man befürchtet (dass)",
+   "es wird befürchtet (dass)",
+   "man muss befürchten (dass)"
+  ],
+  "severity": "improve",
+  "why": "'ich befürchte' changes the impersonal reporting stance of 'It is feared'"
+ },
+ {
+  "id": "ENG_CHUNK_1536",
+  "field": "accept",
+  "before": [
+   "es ist fraglich (ob)",
+   "fraglich ist (ob)",
+   "es bleibt fraglich (ob)",
+   "es ist zweifelhaft (ob)",
+   "es ist unklar (ob)",
+   "ich bezweifle (dass)"
+  ],
+  "after": [
+   "es ist fraglich ob",
+   "fraglich ist ob",
+   "es bleibt fraglich ob",
+   "es ist zweifelhaft ob",
+   "es ist unklar ob",
+   "ich bezweifle (dass)"
+  ],
+  "severity": "error",
+  "why": "optional (ob) accepts the near miss 'fraglich, dass'"
+ },
+ {
+  "id": "ENG_CHUNK_1537",
+  "field": "accept",
+  "before": [
+   "es ist nur (noch) eine frage der zeit",
+   "es ist bloß (noch) eine frage der zeit",
+   "es ist eine frage der zeit",
+   "nur (noch) eine frage der zeit"
+  ],
+  "after": [
+   "es ist nur (noch) eine frage der zeit bis",
+   "es ist bloß (noch) eine frage der zeit bis",
+   "es ist eine frage der zeit bis",
+   "nur (noch) eine frage der zeit bis"
+  ],
+  "severity": "error",
+  "why": "span includes 'before'; without 'bis' the near miss with 'bevor' is accepted"
+ },
+ {
+  "id": "ENG_CHUNK_1541",
+  "field": "natural_example",
+  "before": "Weighing up the pros and cons, the cheaper option is the better choice.",
+  "after": "Weighing up the pros and cons, I'd say the cheaper option is the better choice.",
+  "severity": "improve",
+  "why": "dangling participle: the option is not weighing anything"
+ },
+ {
+  "id": "ENG_CHUNK_1541",
+  "field": "accept",
+  "before": [
+   "wägt man die vor- und nachteile ab",
+   "wägt man die vor und nachteile ab",
+   "wenn man die vor- und nachteile abwägt",
+   "wenn man die vor und nachteile abwägt",
+   "wenn ich die vor- und nachteile abwäge",
+   "wägt man das für und wider ab",
+   "wenn man das für und wider abwägt",
+   "nach abwägung (aller) (der) vor- und nachteile"
+  ],
+  "after": [
+   "wägt man die vor- und nachteile (gegeneinander) ab",
+   "wägt man die vor und nachteile (gegeneinander) ab",
+   "wenn man die vor- und nachteile (gegeneinander) abwägt",
+   "wenn man die vor und nachteile (gegeneinander) abwägt",
+   "wenn ich die vor- und nachteile (gegeneinander) abwäge",
+   "wägt man das für und wider ab",
+   "wenn man das für und wider abwägt",
+   "nach abwägung (aller) (der) vor- und nachteile"
+  ],
+  "severity": "improve",
+  "why": "allow common 'gegeneinander'"
+ },
+ {
+  "id": "ENG_CHUNK_1542",
+  "field": "accept",
+  "before": [
+   "zusammenfassend lässt sich sagen (dass)",
+   "zusammenfassend kann man sagen (dass)",
+   "zusammenfassend möchte ich sagen",
+   "zusammenfassend lässt sich festhalten",
+   "zusammenfassend",
+   "zusammengefasst"
+  ],
+  "after": [
+   "zusammenfassend lässt sich sagen (dass)",
+   "zusammenfassend kann man sagen (dass)",
+   "zusammenfassend möchte ich sagen",
+   "zusammenfassend lässt sich festhalten",
+   "zusammenfassend ist zu sagen",
+   "zusammenfassend kann man festhalten",
+   "zusammengefasst"
+  ],
+  "severity": "error",
+  "why": "bare 'zusammenfassend' accepts the near miss 'lässt es sich sagen'"
+ },
+ {
+  "id": "ENG_CHUNK_1547",
+  "field": "accept",
+  "before": [
+   "mein fazit lautet",
+   "mein fazit ist",
+   "mein fazit",
+   "als fazit kann man sagen",
+   "als fazit lässt sich sagen",
+   "ich ziehe folgendes fazit"
+  ],
+  "after": [
+   "mein fazit lautet",
+   "mein fazit ist",
+   "mein fazit",
+   "als fazit kann man sagen",
+   "als fazit lässt sich sagen",
+   "ich ziehe folgendes fazit",
+   "meine schlussfolgerung ist",
+   "meine schlussfolgerung lautet"
+  ],
+  "severity": "error",
+  "why": "'Meine Schlussfolgerung ist/lautet' is correct and what learners type"
+ },
+ {
+  "id": "ENG_CHUNK_1552",
+  "field": "accept",
+  "before": [
+   "letztlich muss jeder (für sich) selbst entscheiden",
+   "letztendlich muss jeder (für sich) selbst entscheiden",
+   "letztlich muss jeder (für sich) selber entscheiden",
+   "am ende muss jeder (für sich) selbst entscheiden",
+   "jeder muss (letztlich) (für sich) selbst entscheiden",
+   "das muss (letztlich) jeder (für sich) selbst entscheiden"
+  ],
+  "after": [
+   "letztlich muss jeder (für sich) selbst entscheiden",
+   "letztendlich muss jeder (für sich) selbst entscheiden",
+   "letztlich muss jeder (für sich) selber entscheiden",
+   "am ende muss jeder (für sich) selbst entscheiden",
+   "jeder muss (letztlich) (für sich) selbst entscheiden",
+   "das muss (letztlich) jeder (für sich) selbst entscheiden",
+   "letzten endes muss jeder (für sich) selbst entscheiden"
+  ],
+  "severity": "improve",
+  "why": "'letzten Endes' is common"
+ },
+ {
+  "id": "ENG_CHUNK_1555",
+  "field": "accept",
+  "before": [
+   "würde ich mich (deshalb) für [x] entscheiden",
+   "ich würde mich (deshalb) für [x] entscheiden",
+   "würde ich [x] wählen",
+   "würde ich [x] vorziehen",
+   "entscheide ich mich für",
+   "ich entscheide mich für"
+  ],
+  "after": [
+   "würde ich mich (deshalb) für [x] entscheiden",
+   "ich würde mich (deshalb) für [x] entscheiden",
+   "würde ich [x] wählen",
+   "würde ich [x] vorziehen",
+   "entscheide ich mich für",
+   "ich entscheide mich für",
+   "ich würde [x] wählen",
+   "ich würde [x] nehmen"
+  ],
+  "severity": "error",
+  "why": "subject-first 'Ich würde die kleinere Wohnung wählen/nehmen' missing"
+ },
+ {
+  "id": "ENG_CHUNK_1558",
+  "field": "accept",
+  "before": [
+   "der text befasst sich mit",
+   "der text beschäftigt sich mit",
+   "der artikel befasst sich mit",
+   "der artikel beschäftigt sich mit",
+   "der text setzt sich mit [x] auseinander",
+   "der text behandelt",
+   "der text thematisiert"
+  ],
+  "after": [
+   "der text befasst sich mit",
+   "der text beschäftigt sich mit",
+   "der artikel befasst sich mit",
+   "der artikel beschäftigt sich mit",
+   "der text setzt sich mit [x] auseinander",
+   "der text behandelt",
+   "der text thematisiert",
+   "der text handelt von"
+  ],
+  "severity": "improve",
+  "why": "common rendering of 'deals with'"
+ },
+ {
+  "id": "ENG_CHUNK_1564",
+  "field": "accept",
+  "before": [
+   "der autor nennt [x] als beispiel",
+   "der autor nennt als beispiel",
+   "als beispiel nennt der autor",
+   "der autor führt [x] als beispiel an",
+   "als beispiel führt der autor [x] an",
+   "die autorin nennt [x] als beispiel"
+  ],
+  "after": [
+   "der autor nennt [x] als beispiel",
+   "der autor nennt als beispiel",
+   "als beispiel nennt der autor",
+   "der autor führt [x] als beispiel an",
+   "als beispiel führt der autor [x] an",
+   "die autorin nennt [x] als beispiel",
+   "der autor gibt [x] als beispiel an"
+  ],
+  "severity": "improve",
+  "why": "'als Beispiel angeben' is correct and close to 'gives'"
+ },
+ {
+  "id": "ENG_CHUNK_1575",
+  "field": "near",
+  "before": "«Wie Sie sicher wissen, immer mehr Menschen arbeiten im Homeoffice.» (verb right after the comma)",
+  "after": [
+   [
+    "Wie Sie sicher kennen, arbeiten immer mehr Menschen im Homeoffice.",
+    "wissen (a fact/clause), not kennen"
+   ]
+  ],
+  "severity": "error",
+  "why": "current near is accepted: «wie sie sicher wissen» matches and the word-order error lies outside the span"
+ },
+ {
+  "id": "ENG_CHUNK_1580",
+  "field": "accept",
+  "before": [
+   "das bringt mich zu",
+   "das bringt mich zur",
+   "das bringt mich zum",
+   "damit komme ich zu",
+   "damit komme ich zur",
+   "damit komme ich zum",
+   "das führt mich zu",
+   "das führt mich zur"
+  ],
+  "after": [
+   "das bringt mich zur",
+   "das bringt mich zu der",
+   "das bringt mich zum",
+   "das bringt mich zu den",
+   "damit komme ich zur",
+   "damit komme ich zu der",
+   "damit komme ich zum",
+   "das führt mich zur"
+  ],
+  "severity": "error",
+  "why": "bare 'das bringt mich zu' accepts the near miss 'zu die Frage'"
+ },
+ {
+  "id": "ENG_CHUNK_1582",
+  "field": "accept",
+  "before": [
+   "ich fasse [x] zusammen",
+   "ich fasse (noch einmal) (noch mal) kurz zusammen",
+   "ich fass [x] zusammen",
+   "lassen sie mich [x] zusammenfassen",
+   "ich möchte [x] zusammenfassen",
+   "ich würde gern [x] zusammenfassen"
+  ],
+  "after": [
+   "ich fasse [x] zusammen",
+   "ich fasse (noch einmal) (noch mal) kurz zusammen",
+   "ich fass [x] zusammen",
+   "lassen sie mich [x] zusammenfassen",
+   "ich möchte [x] zusammenfassen",
+   "ich würde gern [x] zusammenfassen",
+   "lass mich [x] zusammenfassen"
+  ],
+  "severity": "improve",
+  "why": "du form"
+ },
+ {
+  "id": "ENG_CHUNK_1584",
+  "field": "accept",
+  "before": [
+   "beantworte ich gern ihre fragen",
+   "beantworte ich gerne ihre fragen",
+   "ich beantworte gern ihre fragen",
+   "ich beantworte gerne ihre fragen",
+   "gern beantworte ich (jetzt) ihre fragen",
+   "gibt es (noch) fragen",
+   "haben sie (noch) fragen",
+   "ich beantworte gern eure fragen"
+  ],
+  "after": [
+   "gern beantworte ich (jetzt) ihre fragen",
+   "beantworte ich (jetzt) (nun) gern ihre fragen",
+   "beantworte ich (jetzt) (nun) gerne ihre fragen",
+   "ich beantworte (jetzt) (nun) gern ihre fragen",
+   "ich beantworte (jetzt) (nun) gerne ihre fragen",
+   "ich beantworte (jetzt) gern eure fragen",
+   "ich freue mich auf ihre fragen",
+   "haben sie (noch) fragen"
+  ],
+  "severity": "error",
+  "why": "'Ich beantworte jetzt gern Ihre Fragen' (jetzt inside) was rejected; 'gibt es fragen' dropped for space"
+ },
+ {
+  "id": "ENG_CHUNK_1588",
+  "field": "accept",
+  "before": [
+   "ich möchte an das anknüpfen was",
+   "ich würde gern an das anknüpfen was",
+   "ich knüpfe an das an was",
+   "ich möchte daran anknüpfen",
+   "da möchte ich anknüpfen",
+   "ich möchte an [x] anknüpfen",
+   "ich möchte an das anschließen was"
+  ],
+  "after": [
+   "ich möchte an das anknüpfen was",
+   "ich würde gern an das anknüpfen was",
+   "ich knüpfe an das an was",
+   "ich möchte daran anknüpfen",
+   "da möchte ich anknüpfen",
+   "ich möchte an [x] anknüpfen",
+   "ich möchte an das anschließen was",
+   "ich möchte auf dem aufbauen was"
+  ],
+  "severity": "improve",
+  "why": "'auf dem aufbauen, was …' is correct and a likely rendering of 'build on'"
+ },
+ {
+  "id": "ENG_CHUNK_1590",
+  "field": "accept",
+  "before": [
+   "ich möchte nur (kurz) anmerken (dass)",
+   "ich möchte (kurz) anmerken (dass)",
+   "ich wollte nur (kurz) anmerken (dass)",
+   "ich würde gern (kurz) anmerken (dass)",
+   "ich möchte nur (kurz) darauf hinweisen (dass)",
+   "ich möchte (kurz) darauf hinweisen (dass)",
+   "ich möchte nur (kurz) erwähnen (dass)"
+  ],
+  "after": [
+   "ich möchte nur (kurz) anmerken (dass)",
+   "ich möchte (kurz) anmerken (dass)",
+   "ich wollte nur (kurz) anmerken (dass)",
+   "ich würde gern (kurz) anmerken (dass)",
+   "ich möchte nur (kurz) darauf hinweisen (dass)",
+   "ich möchte (kurz) darauf hinweisen (dass)",
+   "ich möchte nur (kurz) erwähnen (dass)",
+   "ich wollte nur (kurz) darauf hinweisen (dass)"
+  ],
+  "severity": "improve",
+  "why": "common spoken politeness form"
+ },
+ {
+  "id": "ENG_CHUNK_1591",
+  "field": "accept",
+  "before": [
+   "ich möchte zu bedenken geben (dass)",
+   "ich gebe zu bedenken (dass)",
+   "ich würde gern zu bedenken geben (dass)",
+   "ich möchte (sie) bitten zu bedenken (dass)",
+   "bedenken sie (bitte) (dass)",
+   "man sollte bedenken (dass)"
+  ],
+  "after": [
+   "ich möchte zu bedenken geben (dass)",
+   "ich gebe zu bedenken (dass)",
+   "ich würde gern zu bedenken geben (dass)",
+   "ich würde sie bitten zu bedenken (dass)",
+   "ich möchte sie bitten zu bedenken (dass)",
+   "ich bitte sie zu bedenken (dass)",
+   "bedenken sie (bitte) (dass)",
+   "ich würde dich bitten zu bedenken (dass)"
+  ],
+  "severity": "error",
+  "why": "the direct rendering 'Ich würde Sie bitten zu bedenken' and a du form were missing; 'man sollte bedenken' drops the request"
+ },
+ {
+  "id": "ENG_CHUNK_1592",
+  "field": "accept",
+  "before": [
+   "wie sehen sie das",
+   "wie siehst du das",
+   "wie seht ihr das",
+   "was meinen sie dazu",
+   "was sagen sie dazu",
+   "was halten sie davon",
+   "wie ist ihre meinung dazu",
+   "was denken sie darüber"
+  ],
+  "after": [
+   "wie sehen sie das",
+   "wie siehst du das",
+   "wie seht ihr das",
+   "was meinen sie dazu",
+   "was meinst du dazu",
+   "was halten sie davon",
+   "was hältst du davon",
+   "wie ist ihre meinung dazu"
+  ],
+  "severity": "improve",
+  "why": "du forms for the common alternatives; 'was denken sie darüber' is calque-ish"
+ },
+ {
+  "id": "ENG_CHUNK_1597",
+  "field": "accept",
+  "before": [
+   "möchte (noch) jemand (anderes) etwas dazu sagen",
+   "möchte (noch) jemand (anderes) was dazu sagen",
+   "will noch jemand etwas dazu sagen",
+   "hat noch jemand etwas dazu zu sagen",
+   "möchte sich noch jemand dazu äußern",
+   "gibt es noch weitere wortmeldungen",
+   "gibt es (noch) weitere meinungen dazu"
+  ],
+  "after": [
+   "möchte (sonst) (noch) jemand (anderes) etwas dazu sagen",
+   "möchte (sonst) (noch) jemand (anderes) was dazu sagen",
+   "will (sonst) noch jemand etwas dazu sagen",
+   "hat noch jemand etwas dazu zu sagen",
+   "möchte sich noch jemand dazu äußern",
+   "gibt es noch weitere wortmeldungen",
+   "gibt es (noch) weitere meinungen dazu"
+  ],
+  "severity": "improve",
+  "why": "'sonst noch jemand' is the natural rendering of 'anyone else'"
+ },
+ {
+  "id": "ENG_CHUNK_1598",
+  "field": "accept",
+  "before": [
+   "halten wir (das) (also) fest",
+   "lassen sie uns (das) festhalten",
+   "lasst uns (das) festhalten",
+   "wir halten (das) (also) fest",
+   "ich halte (also) fest",
+   "wir können (also) festhalten"
+  ],
+  "after": [
+   "halten wir (das) (also) fest",
+   "lassen sie uns (das) festhalten",
+   "lasst uns (das) festhalten",
+   "wir halten (das) (also) fest",
+   "ich halte (also) fest",
+   "wir können (also) festhalten",
+   "notieren wir (uns) das",
+   "lasst uns das notieren"
+  ],
+  "severity": "improve",
+  "why": "plain 'notieren' rendering"
+ },
+ {
+  "id": "ENG_CHUNK_1613",
+  "field": "accept",
+  "before": [
+   "auffällig ist (dass)",
+   "besonders auffällig ist (dass)",
+   "es ist auffällig (dass)",
+   "es fällt auf (dass)",
+   "bemerkenswert ist (dass)",
+   "interessant ist (dass)"
+  ],
+  "after": [
+   "auffällig ist (dass)",
+   "besonders auffällig ist (dass)",
+   "es ist auffällig (dass)",
+   "es fällt auf (dass)",
+   "bemerkenswert ist (dass)",
+   "interessant ist (dass)",
+   "was (besonders) auffällt ist (dass)"
+  ],
+  "severity": "error",
+  "why": "'Was auffällt, ist, dass …' is the direct rendering and missing"
+ },
+ {
+  "id": "ENG_CHUNK_1625",
+  "field": "accept",
+  "before": [
+   "hiermit kündige ich",
+   "hiermit [x] ich",
+   "ich kündige hiermit",
+   "hiermit möchte ich [x] kündigen",
+   "hiermit beantrage ich",
+   "hiermit bestätige ich"
+  ],
+  "after": [
+   "hiermit kündige ich",
+   "ich kündige hiermit",
+   "kündige ich hiermit",
+   "hiermit möchte ich [x] kündigen",
+   "hiermit erkläre ich die kündigung"
+  ],
+  "severity": "error",
+  "why": "'hiermit [x] ich', 'beantrage', 'bestätige' accept wrong verbs for 'I hereby cancel'"
+ },
+ {
+  "id": "ENG_CHUNK_1627",
+  "field": "accept",
+  "before": [
+   "bitten um ihr verständnis",
+   "bitte um ihr verständnis",
+   "bitten (sie) um (ihr) verständnis",
+   "bitte (sie) um (ihr) verständnis",
+   "wir bitten um verständnis",
+   "danke für ihr verständnis",
+   "vielen dank für ihr verständnis"
+  ],
+  "after": [
+   "bitten um ihr verständnis",
+   "bitte um ihr verständnis",
+   "bitten (sie) um (ihr) verständnis",
+   "bitte (sie) um (ihr) verständnis",
+   "wir bitten um verständnis"
+  ],
+  "severity": "improve",
+  "why": "'Danke für Ihr Verständnis' thanks rather than asks"
+ },
+ {
+  "id": "ENG_CHUNK_1628",
+  "field": "accept",
+  "before": [
+   "ich bitte um (eine) (kurze) rückmeldung",
+   "ich bitte um (eine) (kurze) antwort",
+   "ich bitte um ihre rückmeldung",
+   "ich bitte um eine baldige antwort",
+   "über eine (kurze) rückmeldung würde ich mich freuen",
+   "ich würde mich über eine (kurze) rückmeldung freuen",
+   "ich freue mich auf ihre rückmeldung"
+  ],
+  "after": [
+   "ich bitte um (eine) (kurze) rückmeldung",
+   "ich bitte um (eine) (kurze) antwort",
+   "ich bitte um eine baldige antwort",
+   "über eine (kurze) rückmeldung würde ich mich freuen",
+   "ich würde mich über eine (kurze) rückmeldung freuen",
+   "für eine (kurze) rückmeldung wäre ich ihnen (sehr) dankbar",
+   "ich wäre ihnen für eine (kurze) rückmeldung (sehr) dankbar",
+   "ich freue mich auf ihre rückmeldung"
+  ],
+  "severity": "error",
+  "why": "'Für eine kurze Rückmeldung wäre ich Ihnen dankbar' is the closest rendering of 'I would appreciate' and was missing"
+ },
+ {
+  "id": "ENG_CHUNK_1629",
+  "field": "accept",
+  "before": [
+   "ich hoffe (sehr) auf eine (baldige) (schnelle) lösung",
+   "ich hoffe auf eine zügige lösung",
+   "ich hoffe dass sich [x] (bald) (schnell) lösen lässt",
+   "ich hoffe dass [x] (bald) (schnell) gelöst werden kann",
+   "ich hoffe dass [x] bald gelöst wird"
+  ],
+  "after": [
+   "ich hoffe (sehr) auf eine (baldige) (schnelle) lösung",
+   "ich hoffe auf eine zügige lösung",
+   "ich hoffe dass sich [x] (bald) (schnell) lösen lässt",
+   "ich hoffe dass [x] (bald) (schnell) gelöst werden kann",
+   "ich hoffe dass [x] bald gelöst wird",
+   "ich hoffe dass [x] (bald) (schnell) geklärt werden kann"
+  ],
+  "severity": "improve",
+  "why": "'geklärt werden' is the usual verb for a matter"
+ },
+ {
+  "id": "ENG_CHUNK_1630",
+  "field": "accept",
+  "before": [
+   "für rückfragen stehe ich ihnen (gern) (gerne) zur verfügung",
+   "für (weitere) fragen stehe ich ihnen (gern) (gerne) zur verfügung",
+   "bei (weiteren) fragen stehe ich ihnen (gern) (gerne) zur verfügung",
+   "bei rückfragen stehe ich ihnen (gern) (gerne) zur verfügung",
+   "für rückfragen stehe ich (gern) (gerne) zur verfügung",
+   "bei fragen können sie sich gern an mich wenden",
+   "bei fragen melden sie sich gern"
+  ],
+  "after": [
+   "für rückfragen stehe ich ihnen (gern) (gerne) zur verfügung",
+   "für (weitere) fragen stehe ich ihnen (gern) (gerne) zur verfügung",
+   "bei (weiteren) fragen stehe ich ihnen (gern) (gerne) zur verfügung",
+   "bei rückfragen stehe ich ihnen (gern) (gerne) zur verfügung",
+   "für rückfragen stehe ich (gern) (gerne) zur verfügung",
+   "bei (weiteren) fragen können sie sich (gern) (gerne) an mich wenden",
+   "bei (weiteren) fragen wenden sie sich (bitte) (gern) an mich",
+   "bei (weiteren) fragen melden sie sich (gern) (gerne) (bei mir)"
+  ],
+  "severity": "error",
+  "why": "'Bei weiteren Fragen können Sie sich gerne an mich wenden' / 'wenden Sie sich bitte an mich' were rejected"
+ }
+]

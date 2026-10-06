@@ -1,0 +1,1622 @@
+[
+{
+"id": "ENG_CHUNK_1451",
+"chunk": "I take the view that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating a considered opinion",
+"register": "formal",
+"natural_example": "I take the view that cities should invest more in cycle lanes.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1452",
+"chunk": "I'm firmly convinced that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating a strong conviction",
+"register": "neutral",
+"natural_example": "I'm firmly convinced that working from home makes many teams more productive.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1453",
+"chunk": "My position is that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating a position in a debate",
+"register": "formal",
+"natural_example": "My position is that exams alone don't show what students can do.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1454",
+"chunk": "For me, it's clear that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating a firm conclusion of your own",
+"register": "neutral",
+"natural_example": "For me, it's clear that we need stricter rules on plastic packaging.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1455",
+"chunk": "I consider it [adjective] to [verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Giving an evaluation of an action",
+"register": "formal",
+"natural_example": "I consider it essential to teach children how to recognise fake news.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1456",
+"chunk": "I don't think much of [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Expressing a low opinion of something",
+"register": "neutral",
+"natural_example": "I don't think much of apps that promise you'll be fluent in a month.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1457",
+"chunk": "I'm strongly against [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating strong opposition",
+"register": "neutral",
+"natural_example": "I'm strongly against children having smartphones at primary school.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1458",
+"chunk": "I'm in favour of [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating support for a proposal",
+"register": "formal",
+"natural_example": "I'm in favour of a four-day week, as long as salaries stay the same.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1459",
+"chunk": "In my experience, [clause]",
+"category": "discourse_connector",
+"pragmatic_function": "Backing an opinion with personal experience",
+"register": "neutral",
+"natural_example": "In my experience, people learn faster when they are allowed to make mistakes.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1460",
+"chunk": "I say this because [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Giving the reason behind your opinion",
+"register": "neutral",
+"natural_example": "I say this because I've seen how stressful a long commute can be.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1461",
+"chunk": "The reason for this is that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Explaining the reason behind a claim",
+"register": "neutral",
+"natural_example": "Many young people leave the region. The reason for this is that there are hardly any jobs.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1462",
+"chunk": "There's no question that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating something as beyond doubt",
+"register": "formal",
+"natural_example": "There's no question that we need more affordable housing in big cities.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1463",
+"chunk": "I'm fully behind [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating full support for a decision",
+"register": "neutral",
+"natural_example": "I'm fully behind the decision to ban cars from the old town.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1464",
+"chunk": "What I think is important is [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Highlighting what matters most to you",
+"register": "neutral",
+"natural_example": "What I think is important is that everyone gets the same information.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1465",
+"chunk": "The fact is [clause]",
+"category": "discourse_connector",
+"pragmatic_function": "Stating a fact to back an opinion",
+"register": "neutral",
+"natural_example": "The fact is that most people only read the headlines.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1466",
+"chunk": "The main argument for [noun] is that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Giving the strongest argument for something",
+"register": "neutral",
+"natural_example": "The main argument for longer opening hours is that many people work late.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1467",
+"chunk": "One argument against [noun] is that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Giving an argument against something",
+"register": "neutral",
+"natural_example": "One argument against a ban is that people would simply buy the products online.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1468",
+"chunk": "A good example of this is [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Introducing an example",
+"register": "neutral",
+"natural_example": "A good example of this is the bike-sharing scheme in our town.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1469",
+"chunk": "You can see this, for example, in the fact that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Supporting a claim with evidence",
+"register": "neutral",
+"natural_example": "You can see this, for example, in the fact that more and more pupils cycle to school.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1470",
+"chunk": "To give you an example, [clause]",
+"category": "discourse_connector",
+"pragmatic_function": "Introducing an example",
+"register": "neutral",
+"natural_example": "To give you an example: last year our team cut its paper use by half.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1471",
+"chunk": "It's obvious that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Presenting something as obvious",
+"register": "neutral",
+"natural_example": "It's obvious that cheaper tickets would get more people onto buses and trains.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1472",
+"chunk": "Another point is that [clause]",
+"category": "discourse_connector",
+"pragmatic_function": "Adding a further argument",
+"register": "neutral",
+"natural_example": "Another point is that online courses are often cheaper.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1473",
+"chunk": "This leads to [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating a consequence",
+"register": "neutral",
+"natural_example": "Rents keep rising. This leads to many families moving out of the city.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1474",
+"chunk": "As the example of [noun] shows, [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Backing a claim with an example",
+"register": "neutral",
+"natural_example": "As the example of Denmark shows, cycling can be safe and popular.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1475",
+"chunk": "Just think of [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Pointing to an obvious example",
+"register": "formal",
+"natural_example": "Just think of all the people who spend hours a day on their phones.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1476",
+"chunk": "It has been proven that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Backing a claim with established facts",
+"register": "formal",
+"natural_example": "It has been proven that regular exercise reduces stress.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1477",
+"chunk": "It's often argued that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Introducing a common argument",
+"register": "formal",
+"natural_example": "It's often argued that social media makes teenagers lonely.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1478",
+"chunk": "Studies show that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Backing a claim with research",
+"register": "neutral",
+"natural_example": "Studies show that people sleep worse when they use screens late at night.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1479",
+"chunk": "This is especially true of [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Narrowing a claim to a group",
+"register": "neutral",
+"natural_example": "Many people feel stressed at work. This is especially true of young parents.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1480",
+"chunk": "Experience has shown that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Backing a claim with general experience",
+"register": "neutral",
+"natural_example": "Experience has shown that small classes lead to better results.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1481",
+"chunk": "That's only partly true",
+"category": "gambit_filler",
+"pragmatic_function": "Qualifying a claim",
+"register": "neutral",
+"natural_example": "That's only partly true, because many older people are very active online.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1482",
+"chunk": "As far as I can judge, [clause]",
+"category": "discourse_connector",
+"pragmatic_function": "Limiting a claim to your own judgement",
+"register": "neutral",
+"natural_example": "As far as I can judge, the new system works well.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1483",
+"chunk": "You can't generalise like that",
+"category": "gambit_filler",
+"pragmatic_function": "Rejecting a sweeping statement",
+"register": "neutral",
+"natural_example": "You can't generalise like that; it depends on the company.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1484",
+"chunk": "Under certain circumstances, [clause]",
+"category": "discourse_connector",
+"pragmatic_function": "Limiting a statement to some cases",
+"register": "formal",
+"natural_example": "Under certain circumstances, your health insurance may cover the costs.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1485",
+"chunk": "With certain reservations, [clause]",
+"category": "discourse_connector",
+"pragmatic_function": "Giving qualified approval",
+"register": "formal",
+"natural_example": "With certain reservations, I'd recommend the course to beginners.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1486",
+"chunk": "Strictly speaking, [clause]",
+"category": "discourse_connector",
+"pragmatic_function": "Being precise about a claim",
+"register": "neutral",
+"natural_example": "Strictly speaking, the contract already ended last month.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1487",
+"chunk": "That's only half the story",
+"category": "fixed_formula",
+"pragmatic_function": "Pointing out that something is incomplete",
+"register": "neutral",
+"natural_example": "Cheap flights are good for travellers, but that's only half the story.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1488",
+"chunk": "In most cases, [clause]",
+"category": "discourse_connector",
+"pragmatic_function": "Generalising with care",
+"register": "neutral",
+"natural_example": "In most cases, the symptoms disappear after a few days.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1489",
+"chunk": "If I'm reading this right, [clause]",
+"category": "discourse_connector",
+"pragmatic_function": "Checking your understanding while making a point",
+"register": "neutral",
+"natural_example": "If I'm reading this right, the deadline has been moved to Friday.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1490",
+"chunk": "[noun] is a matter of definition",
+"category": "sentence_frame",
+"pragmatic_function": "Pointing out that a judgement depends on definitions",
+"register": "neutral",
+"natural_example": "Whether that counts as a success is a matter of definition.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1491",
+"chunk": "should be taken with a pinch of salt",
+"category": "fixed_formula",
+"pragmatic_function": "Warning that information may be unreliable",
+"register": "neutral",
+"natural_example": "These figures should be taken with a pinch of salt.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1492",
+"chunk": "first and foremost",
+"category": "discourse_connector",
+"pragmatic_function": "Stating the main focus",
+"register": "neutral",
+"natural_example": "The new rules are aimed first and foremost at small businesses.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1493",
+"chunk": "It seems to me that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Giving a tentative impression",
+"register": "neutral",
+"natural_example": "It seems to me that the problem is more about communication than money.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1494",
+"chunk": "It's not quite that black and white",
+"category": "fixed_formula",
+"pragmatic_function": "Rejecting an oversimplification",
+"register": "neutral",
+"natural_example": "It's not quite that black and white: some of the rules do protect workers.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1495",
+"chunk": "I'd put that a bit more carefully",
+"category": "gambit_filler",
+"pragmatic_function": "Softening someone else's claim",
+"register": "neutral",
+"natural_example": "I'd put that a bit more carefully: the plan has risks, but it isn't a failure.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1496",
+"chunk": "[clause] may be [adjective], but [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Conceding a point before countering",
+"register": "neutral",
+"natural_example": "The train may be more expensive, but it is far more relaxing.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1497",
+"chunk": "That may be true, but [clause]",
+"category": "gambit_filler",
+"pragmatic_function": "Conceding a point before countering",
+"register": "neutral",
+"natural_example": "That may be true, but the costs are still too high.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1498",
+"chunk": "It's certainly true that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Conceding a point before countering",
+"register": "neutral",
+"natural_example": "It's certainly true that cars are practical. Even so, we need fewer of them in cities.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1499",
+"chunk": "But we mustn't forget that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Adding a counterpoint",
+"register": "neutral",
+"natural_example": "But we mustn't forget that many older people don't use smartphones.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1500",
+"chunk": "That's a fair objection, but [clause]",
+"category": "gambit_filler",
+"pragmatic_function": "Acknowledging an objection",
+"register": "neutral",
+"natural_example": "That's a fair objection, but the alternatives are even more expensive.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1501",
+"chunk": "[noun] certainly has its advantages, but [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Conceding advantages before countering",
+"register": "neutral",
+"natural_example": "Working from home certainly has its advantages, but it can be lonely.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1502",
+"chunk": "Even so, the question remains whether [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Raising a remaining doubt",
+"register": "neutral",
+"natural_example": "Even so, the question remains whether the town can afford it.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1503",
+"chunk": "But that doesn't change the fact that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Insisting on a point after a concession",
+"register": "neutral",
+"natural_example": "But that doesn't change the fact that the rent is too high.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1504",
+"chunk": "There's no denying that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Conceding an undeniable point",
+"register": "formal",
+"natural_example": "There's no denying that the city has become more expensive.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1505",
+"chunk": "can't simply be dismissed",
+"category": "fixed_formula",
+"pragmatic_function": "Conceding that a point is valid",
+"register": "formal",
+"natural_example": "The risk of data leaks can't simply be dismissed.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1506",
+"chunk": "At first glance, [clause], but [clause]",
+"category": "discourse_connector",
+"pragmatic_function": "Contrasting first impression and reality",
+"register": "neutral",
+"natural_example": "At first glance the offer looks cheap, but there are hidden costs.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1507",
+"chunk": "in practice, things look different",
+"category": "fixed_formula",
+"pragmatic_function": "Contrasting theory and practice",
+"register": "neutral",
+"natural_example": "In theory the plan sounds good, but in practice things look different.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1508",
+"chunk": "Against this is the fact that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Setting a counterargument against a point",
+"register": "formal",
+"natural_example": "Electric cars are quiet. Against this is the fact that their batteries need rare raw materials.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1509",
+"chunk": "What is often overlooked is [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Pointing out a neglected aspect",
+"register": "neutral",
+"natural_example": "What is often overlooked is that many people can't afford it.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1510",
+"chunk": "That only applies, though, if [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Limiting a point to a condition",
+"register": "neutral",
+"natural_example": "That only applies, though, if you've worked there for at least a year.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1511",
+"chunk": "I share your view that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Agreeing formally",
+"register": "formal",
+"natural_example": "I share your view that the meeting should be shorter.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1512",
+"chunk": "I second that",
+"category": "gambit_filler",
+"pragmatic_function": "Agreeing with what was just said",
+"register": "neutral",
+"natural_example": "I second that: we should postpone the launch.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1513",
+"chunk": "I can only partly agree with you there",
+"category": "gambit_filler",
+"pragmatic_function": "Giving partial agreement",
+"register": "neutral",
+"natural_example": "I can only partly agree with you there: the plan is good, but too expensive.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1514",
+"chunk": "I can only underline that",
+"category": "gambit_filler",
+"pragmatic_function": "Agreeing emphatically",
+"register": "neutral",
+"natural_example": "Good training is essential – I can only underline that.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1515",
+"chunk": "That's exactly the point",
+"category": "gambit_filler",
+"pragmatic_function": "Agreeing that something is the key issue",
+"register": "neutral",
+"natural_example": "That's exactly the point: we need solutions, not more meetings.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1516",
+"chunk": "You're right insofar as [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Agreeing only in part",
+"register": "neutral",
+"natural_example": "You're right insofar as costs are rising, but the cause is different.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1517",
+"chunk": "You've raised an important point there",
+"category": "gambit_filler",
+"pragmatic_function": "Acknowledging a contribution",
+"register": "neutral",
+"natural_example": "You've raised an important point there: who is going to pay for it?",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1518",
+"chunk": "I see it the same way",
+"category": "gambit_filler",
+"pragmatic_function": "Agreeing with someone",
+"register": "neutral",
+"natural_example": "I see it the same way: the deadline is too tight.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1519",
+"chunk": "That's not quite right",
+"category": "gambit_filler",
+"pragmatic_function": "Correcting someone politely",
+"register": "neutral",
+"natural_example": "That's not quite right: the offer was only valid until May.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1520",
+"chunk": "I wouldn't go along with that",
+"category": "gambit_filler",
+"pragmatic_function": "Disagreeing politely",
+"register": "neutral",
+"natural_example": "Young people read less than before? I wouldn't go along with that.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1521",
+"chunk": "That's where our opinions differ",
+"category": "gambit_filler",
+"pragmatic_function": "Acknowledging disagreement",
+"register": "neutral",
+"natural_example": "That's where our opinions differ: I think nuclear power is too risky.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1522",
+"chunk": "[noun] is a matter of opinion",
+"category": "sentence_frame",
+"pragmatic_function": "Saying that a question has no right answer",
+"register": "neutral",
+"natural_example": "Whether the design looks modern is a matter of opinion.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1523",
+"chunk": "You're wrong there",
+"category": "gambit_filler",
+"pragmatic_function": "Contradicting someone directly",
+"register": "neutral",
+"natural_example": "You're wrong there: the law has been in force since January.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1524",
+"chunk": "That's not the case at all",
+"category": "gambit_filler",
+"pragmatic_function": "Rejecting a claim firmly",
+"register": "neutral",
+"natural_example": "Cheaper? That's not the case at all – the price has doubled.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1525",
+"chunk": "I can't let that pass",
+"category": "gambit_filler",
+"pragmatic_function": "Objecting to a statement",
+"register": "neutral",
+"natural_example": "I'm sorry, but I can't let that pass: the figures are wrong.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1526",
+"chunk": "It can be assumed that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating a likely assumption",
+"register": "formal",
+"natural_example": "It can be assumed that prices will continue to rise.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1527",
+"chunk": "It's hardly likely that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Saying something is unlikely",
+"register": "formal",
+"natural_example": "It's hardly likely that the new train line will be finished on time.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1528",
+"chunk": "In all likelihood, [clause]",
+"category": "discourse_connector",
+"pragmatic_function": "Predicting with high probability",
+"register": "formal",
+"natural_example": "In all likelihood, the new rules will come into force next year.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1529",
+"chunk": "most likely",
+"category": "discourse_connector",
+"pragmatic_function": "Saying something is very probable",
+"register": "neutral",
+"natural_example": "The meeting will most likely be cancelled.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1530",
+"chunk": "It can't be ruled out that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Admitting a possibility",
+"register": "formal",
+"natural_example": "It can't be ruled out that the virus will spread further.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1531",
+"chunk": "There's a lot to suggest that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Saying the evidence points one way",
+"register": "neutral",
+"natural_example": "There's a lot to suggest that the trend will continue.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1532",
+"chunk": "I could imagine that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Making a tentative guess",
+"register": "neutral",
+"natural_example": "I could imagine that many people would prefer a shorter working day.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1533",
+"chunk": "It's quite possible that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating a real possibility",
+"register": "neutral",
+"natural_example": "It's quite possible that the interview will be held online.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1534",
+"chunk": "[noun] is likely to [verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Making a confident guess",
+"register": "neutral",
+"natural_example": "The new rule is likely to cause problems for small shops.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1535",
+"chunk": "It is feared that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Reporting a likely negative outcome",
+"register": "formal",
+"natural_example": "It is feared that many small farms will have to close.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1536",
+"chunk": "It's questionable whether [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Expressing doubt about an outcome",
+"register": "neutral",
+"natural_example": "It's questionable whether the new law will really help tenants.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1537",
+"chunk": "It's only a matter of time before [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Predicting something as inevitable",
+"register": "neutral",
+"natural_example": "It's only a matter of time before self-driving buses are on our roads.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1538",
+"chunk": "It's still unclear whether [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Saying an outcome is not yet decided",
+"register": "neutral",
+"natural_example": "It's still unclear whether the festival will take place this year.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1539",
+"chunk": "There's a risk that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Warning of a possible negative outcome",
+"register": "neutral",
+"natural_example": "There's a risk that older people will be left behind.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1540",
+"chunk": "Everything points to [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Drawing a conclusion from signs",
+"register": "neutral",
+"natural_example": "Everything points to the company being sold.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1541",
+"chunk": "Weighing up the pros and cons, [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Concluding after weighing arguments",
+"register": "formal",
+"natural_example": "Weighing up the pros and cons, I'd say the cheaper option is the better choice.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1542",
+"chunk": "To sum up, [clause]",
+"category": "discourse_connector",
+"pragmatic_function": "Summarising a discussion",
+"register": "formal",
+"natural_example": "To sum up, the project was a success despite the delays.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1543",
+"chunk": "Finally, I'd like to [verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Introducing a final point",
+"register": "neutral",
+"natural_example": "Finally, I'd like to thank everyone who took part in the survey.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1544",
+"chunk": "It follows that [clause]",
+"category": "discourse_connector",
+"pragmatic_function": "Drawing a logical conclusion",
+"register": "formal",
+"natural_example": "The data is incomplete. It follows that we can't draw any firm conclusions.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1545",
+"chunk": "I've come to the conclusion that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating your own conclusion",
+"register": "neutral",
+"natural_example": "I've come to the conclusion that the old system was better.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1546",
+"chunk": "the advantages clearly outweigh the drawbacks",
+"category": "fixed_formula",
+"pragmatic_function": "Concluding a pros-and-cons comparison",
+"register": "neutral",
+"natural_example": "For me, the advantages clearly outweigh the drawbacks.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1547",
+"chunk": "My conclusion is: [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating the overall conclusion",
+"register": "neutral",
+"natural_example": "My conclusion is: the app is useful, but too expensive.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1548",
+"chunk": "The fact remains that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating what remains true after discussion",
+"register": "formal",
+"natural_example": "The fact remains that most people still drive to work.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1549",
+"chunk": "there are more arguments for it than against",
+"category": "fixed_formula",
+"pragmatic_function": "Concluding in favour of something",
+"register": "neutral",
+"natural_example": "On balance, there are more arguments for it than against.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1550",
+"chunk": "For all these reasons, [clause]",
+"category": "discourse_connector",
+"pragmatic_function": "Concluding from several reasons",
+"register": "neutral",
+"natural_example": "For all these reasons, I'm against the new motorway.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1551",
+"chunk": "[noun] can't be answered clearly",
+"category": "sentence_frame",
+"pragmatic_function": "Concluding that there is no simple answer",
+"register": "neutral",
+"natural_example": "So the question of whether school uniforms help can't be answered clearly.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1552",
+"chunk": "Ultimately, everyone has to decide for themselves whether [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Ending a discussion by leaving the choice open",
+"register": "neutral",
+"natural_example": "Ultimately, everyone has to decide for themselves whether they want to be on social media.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1553",
+"chunk": "A good compromise would be [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Proposing a middle way",
+"register": "neutral",
+"natural_example": "A good compromise would be to work from home two days a week.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1554",
+"chunk": "After careful consideration, [clause]",
+"category": "discourse_connector",
+"pragmatic_function": "Announcing a considered decision",
+"register": "formal",
+"natural_example": "After careful consideration, we have decided to close the branch.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1555",
+"chunk": "I would opt for [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating your final choice",
+"register": "neutral",
+"natural_example": "That is why I would opt for the smaller flat in the centre.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1556",
+"chunk": "The author argues that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Reporting a text's main claim",
+"register": "formal",
+"natural_example": "The author argues that schools should start later in the morning.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1557",
+"chunk": "The article is about [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating the topic of a text",
+"register": "neutral",
+"natural_example": "The article is about the effects of noise on our health.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1558",
+"chunk": "The text deals with [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating the topic of a text",
+"register": "formal",
+"natural_example": "The text deals with the question of how cities can cope with heatwaves.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1559",
+"chunk": "The article appeared in [source]",
+"category": "sentence_frame",
+"pragmatic_function": "Naming the source of a text",
+"register": "neutral",
+"natural_example": "The article appeared in a regional newspaper last spring.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1560",
+"chunk": "As can be seen from [noun], [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Citing a source as evidence",
+"register": "formal",
+"natural_example": "As can be seen from the report, more young people are moving to the countryside.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1561",
+"chunk": "The text claims that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Reporting a claim with distance",
+"register": "neutral",
+"natural_example": "The text claims that most people check their phones every ten minutes.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1562",
+"chunk": "The author stresses that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Reporting an emphasis in a source",
+"register": "neutral",
+"natural_example": "The author stresses that the study only looked at large cities.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1563",
+"chunk": "The author criticises the fact that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Reporting criticism in a source",
+"register": "neutral",
+"natural_example": "The author criticises the fact that many apps collect too much data.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1564",
+"chunk": "The author gives [noun] as an example",
+"category": "sentence_frame",
+"pragmatic_function": "Reporting an example from a source",
+"register": "neutral",
+"natural_example": "The author gives Copenhagen as an example of a cycle-friendly city.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1565",
+"chunk": "The author draws on [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Reporting the evidence a source uses",
+"register": "formal",
+"natural_example": "The author draws on data from several European countries.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1566",
+"chunk": "The author concludes that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Reporting a source's conclusion",
+"register": "neutral",
+"natural_example": "The author concludes that the ban has had little effect.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1567",
+"chunk": "The main point of the text is that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Summarising the core message of a text",
+"register": "neutral",
+"natural_example": "The main point of the text is that sleep is just as important as exercise.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1568",
+"chunk": "The author looks into the question of whether [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating what a text investigates",
+"register": "formal",
+"natural_example": "The author looks into the question of whether robots will replace care workers.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1569",
+"chunk": "The text gives an overview of [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Describing what a text covers",
+"register": "neutral",
+"natural_example": "The text gives an overview of the most common sleep disorders.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1570",
+"chunk": "it becomes clear that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating what a source reveals",
+"register": "neutral",
+"natural_example": "In the interview, it becomes clear that the staff feel ignored.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1571",
+"chunk": "My presentation is about [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Opening a presentation",
+"register": "neutral",
+"natural_example": "My presentation is about the influence of social media on young people.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1572",
+"chunk": "I chose this topic because [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Explaining your choice of topic",
+"register": "neutral",
+"natural_example": "I chose this topic because it affects all of us.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1573",
+"chunk": "My presentation is divided into [number] parts",
+"category": "sentence_frame",
+"pragmatic_function": "Giving the outline of a presentation",
+"register": "neutral",
+"natural_example": "My presentation is divided into three parts.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1574",
+"chunk": "First, I'd like to [verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Starting the first part of a presentation",
+"register": "neutral",
+"natural_example": "First, I'd like to explain a few key terms.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1575",
+"chunk": "As you probably know, [clause]",
+"category": "discourse_connector",
+"pragmatic_function": "Connecting with the audience",
+"register": "neutral",
+"natural_example": "As you probably know, more and more people work from home.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1576",
+"chunk": "As you can see on this slide, [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Referring to a slide",
+"register": "neutral",
+"natural_example": "As you can see on this slide, sales have fallen since March.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1577",
+"chunk": "I'd like to briefly address [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Turning to a subtopic",
+"register": "neutral",
+"natural_example": "I'd like to briefly address the costs.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1578",
+"chunk": "Let me illustrate this with an example",
+"category": "sentence_frame",
+"pragmatic_function": "Introducing an illustrative example",
+"register": "formal",
+"natural_example": "Let me illustrate this with an example from my own job.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1579",
+"chunk": "At this point I'd like to [verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Signposting a step in a presentation",
+"register": "neutral",
+"natural_example": "At this point, I'd like to show you a short video.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1580",
+"chunk": "That brings me to [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Moving to the next topic",
+"register": "neutral",
+"natural_example": "That brings me to the question of how we can finance the project.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1581",
+"chunk": "Let me start with a question",
+"category": "sentence_frame",
+"pragmatic_function": "Opening a talk with a question",
+"register": "neutral",
+"natural_example": "Let me start with a question: who here has already checked their phone today?",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1582",
+"chunk": "Let me briefly sum up [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Summarising before closing",
+"register": "neutral",
+"natural_example": "Let me briefly sum up the most important points.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1583",
+"chunk": "I'm now coming to the end",
+"category": "sentence_frame",
+"pragmatic_function": "Signalling the end of a presentation",
+"register": "neutral",
+"natural_example": "I'm now coming to the end of my presentation.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1584",
+"chunk": "I'm happy to answer your questions",
+"category": "sentence_frame",
+"pragmatic_function": "Inviting questions after a talk",
+"register": "neutral",
+"natural_example": "That's all from me. I'm now happy to answer your questions.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1585",
+"chunk": "Thank you for your attention",
+"category": "fixed_formula",
+"pragmatic_function": "Closing a presentation",
+"register": "neutral",
+"natural_example": "Thank you for your attention.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1586",
+"chunk": "If I could just come in here",
+"category": "gambit_filler",
+"pragmatic_function": "Taking the floor",
+"register": "neutral",
+"natural_example": "If I could just come in here: the budget has already been cut.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1587",
+"chunk": "May I say something about that?",
+"category": "gambit_filler",
+"pragmatic_function": "Asking to speak",
+"register": "neutral",
+"natural_example": "May I say something about that? I've had a different experience.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1588",
+"chunk": "I'd like to build on what [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Linking your point to an earlier one",
+"register": "formal",
+"natural_example": "I'd like to build on what was said earlier about training.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1589",
+"chunk": "I'd like to add something",
+"category": "gambit_filler",
+"pragmatic_function": "Adding to a point",
+"register": "neutral",
+"natural_example": "I'd like to add something: the offer is only valid until Friday.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1590",
+"chunk": "I'd just like to point out that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Making a brief remark",
+"register": "neutral",
+"natural_example": "I'd just like to point out that the room is booked until four.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1591",
+"chunk": "I'd ask you to bear in mind that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Raising a concern",
+"register": "formal",
+"natural_example": "I'd ask you to bear in mind that the costs could rise.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1592",
+"chunk": "What's your view?",
+"category": "gambit_filler",
+"pragmatic_function": "Asking for someone's opinion",
+"register": "neutral",
+"natural_example": "We could cut the budget for the trip. What's your view?",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1593",
+"chunk": "I'd be interested to know [how/whether clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Asking a question politely",
+"register": "neutral",
+"natural_example": "I'd be interested to know how other companies deal with this.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1594",
+"chunk": "Could you explain that in more detail?",
+"category": "gambit_filler",
+"pragmatic_function": "Asking for clarification",
+"register": "formal",
+"natural_example": "Could you explain that in more detail? I'm not sure what you mean.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1595",
+"chunk": "We're getting off the topic",
+"category": "gambit_filler",
+"pragmatic_function": "Steering a discussion back",
+"register": "neutral",
+"natural_example": "I think we're getting off the topic.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1596",
+"chunk": "Who would like to start?",
+"category": "gambit_filler",
+"pragmatic_function": "Opening a round of discussion",
+"register": "neutral",
+"natural_example": "Right, let's begin. Who would like to start?",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1597",
+"chunk": "Would anyone else like to say something about this?",
+"category": "gambit_filler",
+"pragmatic_function": "Inviting more contributions",
+"register": "neutral",
+"natural_example": "Thank you. Would anyone else like to say something about this?",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1598",
+"chunk": "Let's make a note of that: [clause]",
+"category": "gambit_filler",
+"pragmatic_function": "Recording an agreed point",
+"register": "neutral",
+"natural_example": "Let's make a note of that: the report is due on Monday.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1599",
+"chunk": "We need to start wrapping up",
+"category": "gambit_filler",
+"pragmatic_function": "Bringing a discussion to an end",
+"register": "neutral",
+"natural_example": "It's almost twelve, so we need to start wrapping up.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1600",
+"chunk": "I'd ask you to keep it brief",
+"category": "gambit_filler",
+"pragmatic_function": "Asking speakers to be brief",
+"register": "formal",
+"natural_example": "We only have ten minutes left, so I'd ask you to keep it brief.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1601",
+"chunk": "The chart shows [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Introducing a chart",
+"register": "neutral",
+"natural_example": "The chart shows how many hours people spend online each day.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1602",
+"chunk": "The data comes from [source]",
+"category": "sentence_frame",
+"pragmatic_function": "Naming the source of figures",
+"register": "neutral",
+"natural_example": "The data comes from a survey carried out in 2023.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1603",
+"chunk": "has risen by [number] percent",
+"category": "sentence_frame",
+"pragmatic_function": "Describing an increase",
+"register": "neutral",
+"natural_example": "The proportion of people who work from home has risen by 15 percent.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1604",
+"chunk": "has fallen from [number] to [number] percent",
+"category": "sentence_frame",
+"pragmatic_function": "Describing a decrease between two values",
+"register": "neutral",
+"natural_example": "Unemployment has fallen from 8 to 6 percent.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1605",
+"chunk": "has fallen sharply",
+"category": "sentence_frame",
+"pragmatic_function": "Describing a strong decrease",
+"register": "neutral",
+"natural_example": "The number of smokers has fallen sharply in recent years.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1606",
+"chunk": "has doubled",
+"category": "sentence_frame",
+"pragmatic_function": "Describing a doubling",
+"register": "neutral",
+"natural_example": "The number of online orders has doubled since 2019.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1607",
+"chunk": "make up the largest share [of noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Naming the largest group in a chart",
+"register": "neutral",
+"natural_example": "Young people make up the largest share of users.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1608",
+"chunk": "In first place is [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Describing a ranking",
+"register": "neutral",
+"natural_example": "In first place is cycling, followed by walking.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1609",
+"chunk": "More than half of [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Describing a proportion",
+"register": "neutral",
+"natural_example": "More than half of those surveyed use their phone in bed.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1610",
+"chunk": "Just under a third of [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Describing a proportion precisely",
+"register": "neutral",
+"natural_example": "Just under a third of employees would like to work part-time.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1611",
+"chunk": "The figure for [noun] is [number]",
+"category": "sentence_frame",
+"pragmatic_function": "Giving a value from a chart",
+"register": "neutral",
+"natural_example": "The figure for Germany is 42 percent.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1612",
+"chunk": "has remained almost constant",
+"category": "sentence_frame",
+"pragmatic_function": "Describing a stable trend",
+"register": "neutral",
+"natural_example": "The number of members has remained almost constant.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1613",
+"chunk": "What stands out is that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Highlighting a notable result",
+"register": "neutral",
+"natural_example": "What stands out is that women use public transport more often than men.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1614",
+"chunk": "there has been a clear increase in [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Describing a trend formally",
+"register": "formal",
+"natural_example": "Since 2020, there has been a clear increase in online learning.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1615",
+"chunk": "In the period from [year] to [year], [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Giving the time frame of data",
+"register": "neutral",
+"natural_example": "In the period from 2015 to 2020, the number of students rose sharply.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1616",
+"chunk": "With reference to your letter of [date], [clause]",
+"category": "fixed_formula",
+"pragmatic_function": "Opening a formal reply",
+"register": "formal",
+"natural_example": "With reference to your letter of 3 May, I would like to confirm the appointment.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1617",
+"chunk": "I am writing to you because [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating the reason for writing",
+"register": "formal",
+"natural_example": "I am writing to you because I have not yet received my deposit back.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1618",
+"chunk": "As discussed on the phone, [clause]",
+"category": "fixed_formula",
+"pragmatic_function": "Referring to an earlier phone call",
+"register": "formal",
+"natural_example": "As discussed on the phone, I am sending you the signed contract.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1619",
+"chunk": "I read your job advertisement with great interest",
+"category": "fixed_formula",
+"pragmatic_function": "Opening a job application",
+"register": "formal",
+"natural_example": "I read your job advertisement with great interest.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1620",
+"chunk": "Unfortunately, I found that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating a problem in a complaint",
+"register": "formal",
+"natural_example": "Unfortunately, I found that the heating in my flat still doesn't work.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1621",
+"chunk": "I expect [noun] to [verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating a demand in a complaint",
+"register": "formal",
+"natural_example": "I expect the damage to be repaired by the end of the month.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1622",
+"chunk": "Otherwise I will be forced to [verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Announcing consequences in a complaint",
+"register": "formal",
+"natural_example": "Otherwise I will be forced to take legal action.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1623",
+"chunk": "I would therefore ask you to [verb]",
+"category": "sentence_frame",
+"pragmatic_function": "Making a formal request",
+"register": "formal",
+"natural_example": "I would therefore ask you to refund the full amount.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1624",
+"chunk": "I'd like to let you know that [clause]",
+"category": "sentence_frame",
+"pragmatic_function": "Giving formal information",
+"register": "formal",
+"natural_example": "I'd like to let you know that I will be away from 1 to 15 August.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1625",
+"chunk": "I hereby [verb] [noun]",
+"category": "sentence_frame",
+"pragmatic_function": "Stating a formal act in writing",
+"register": "formal",
+"natural_example": "I hereby cancel my gym membership with effect from 30 June.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1626",
+"chunk": "Please find attached [noun]",
+"category": "fixed_formula",
+"pragmatic_function": "Mentioning attachments",
+"register": "formal",
+"natural_example": "Please find attached my CV and references.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1627",
+"chunk": "ask for your understanding",
+"category": "fixed_formula",
+"pragmatic_function": "Apologising formally for an inconvenience",
+"register": "formal",
+"natural_example": "We apologise for the delay and ask for your understanding.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1628",
+"chunk": "I would appreciate a brief reply by [date]",
+"category": "sentence_frame",
+"pragmatic_function": "Asking for a reply by a deadline",
+"register": "formal",
+"natural_example": "I would appreciate a brief reply by Friday.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1629",
+"chunk": "I hope this matter can be resolved quickly",
+"category": "sentence_frame",
+"pragmatic_function": "Ending a complaint constructively",
+"register": "formal",
+"natural_example": "I hope this matter can be resolved quickly.",
+"cefr_level": "B2"
+},
+{
+"id": "ENG_CHUNK_1630",
+"chunk": "If you have any further questions, please do not hesitate to contact me",
+"category": "fixed_formula",
+"pragmatic_function": "Closing a formal letter",
+"register": "formal",
+"natural_example": "If you have any further questions, please do not hesitate to contact me.",
+"cefr_level": "B2"
+}
+]

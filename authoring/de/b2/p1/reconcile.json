@@ -1,0 +1,27 @@
+[
+ {
+  "id": "ENG_CHUNK_1567",
+  "decision": "example kept; the one remaining blind answer graded wrong is a detector false positive (genauso … wie after the verb read as verb-final)",
+  "why": "handed to the grader lane; the example itself passes"
+ },
+ {
+  "id": "ENG_CHUNK_1493",
+  "decision": "als is required after es kommt mir so vor",
+  "why": "round 3 pass A: the optional (als ob) let 'es kommt mir so vor, dass' through"
+ },
+ {
+  "id": "ENG_CHUNK_1566",
+  "decision": "'die Studie kommt zu dem Ergebnis' removed",
+  "why": "round 3 pass A: the wrong subject for 'the author concludes'"
+ },
+ {
+  "id": "ENG_CHUNK_1621",
+  "decision": "bare 'ich erwarte' pattern removed",
+  "why": "round 3 pass B: it let the erwarten + zu calque through"
+ },
+ {
+  "id": "severity",
+  "decision": "round 3 uses the calibrated error definition",
+  "why": "rounds 1-2 counted every missing alternative as an error, which made pass A rates high without wrong German; round 3 counts as an error only what accepts wrong German, rejects the 2-3 most natural renderings, or wrong German in t/ex/n"
+ }
+]

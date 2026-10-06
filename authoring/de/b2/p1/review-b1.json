@@ -1,0 +1,602 @@
+[
+ {
+  "id": "ENG_CHUNK_1482",
+  "field": "accept",
+  "before": [
+   "soweit ich das beurteilen kann",
+   "soweit ich es beurteilen kann",
+   "so weit ich das beurteilen kann",
+   "soweit ich das einschätzen kann",
+   "soweit ich es einschätzen kann",
+   "soweit ich das sehe",
+   "soweit ich das sehen kann"
+  ],
+  "after": [
+   "soweit ich das beurteilen kann",
+   "soweit ich es beurteilen kann",
+   "soweit ich das einschätzen kann",
+   "soweit ich es einschätzen kann",
+   "soweit ich das sehe",
+   "soweit ich das sehen kann",
+   "meiner einschätzung nach"
+  ],
+  "severity": "error",
+  "why": "The conjunction is written soweit; 'so weit' is the adverb+adjective spelling and wrong here (grader does not ignore spaces)."
+ },
+ {
+  "id": "ENG_CHUNK_1491",
+  "field": "accept",
+  "before": [
+   "mit vorsicht zu genießen",
+   "mit vorsicht zu betrachten",
+   "mit vorsicht zu behandeln",
+   "mit vorsicht zu sehen",
+   "mit vorsicht genießen",
+   "mit vorsicht betrachten"
+  ],
+  "after": [
+   "mit vorsicht zu genießen",
+   "mit vorsicht zu betrachten",
+   "mit vorsicht zu behandeln",
+   "mit vorsicht zu sehen",
+   "mit vorsicht genießen",
+   "mit vorsicht betrachten",
+   "mit vorsicht betrachtet werden",
+   "mit vorsicht behandelt werden"
+  ],
+  "severity": "error",
+  "why": "'Diese Zahlen sollten mit Vorsicht betrachtet werden' is the likeliest learner rendering of 'should be taken' and is rejected."
+ },
+ {
+  "id": "ENG_CHUNK_1494",
+  "field": "accept",
+  "before": [
+   "so schwarz-weiß ist das nicht",
+   "so schwarzweiß ist das nicht",
+   "das ist nicht (ganz) so schwarz-weiß",
+   "das ist nicht (ganz) so schwarzweiß",
+   "man kann das nicht (so) schwarz-weiß sehen",
+   "man kann das nicht (so) schwarzweiß sehen"
+  ],
+  "after": [
+   "so schwarz-weiß ist das nicht",
+   "so schwarzweiß ist das nicht",
+   "das ist nicht (ganz) so schwarz-weiß",
+   "das ist nicht (ganz) so schwarzweiß",
+   "es ist nicht (ganz) so schwarz-weiß",
+   "es ist nicht (ganz) so schwarzweiß",
+   "man kann das nicht (so) schwarz-weiß sehen",
+   "man kann das nicht (so) schwarzweiß sehen"
+  ],
+  "severity": "error",
+  "why": "'Es ist nicht ganz so schwarz-weiß' is correct, idiomatic and the direct rendering of 'It's not quite that black and white'; it is rejected."
+ },
+ {
+  "id": "ENG_CHUNK_1513",
+  "field": "accept",
+  "before": [
+   "da kann ich ihnen nur bedingt zustimmen",
+   "da kann ich dir nur bedingt zustimmen",
+   "da kann ich ihnen nur teilweise zustimmen",
+   "da kann ich dir nur teilweise zustimmen",
+   "ich kann ihnen (da) nur teilweise zustimmen",
+   "ich kann dir (da) nur teilweise zustimmen",
+   "ich stimme ihnen (da) nur teilweise zu",
+   "ich stimme dir (da) nur teilweise zu"
+  ],
+  "after": [
+   "da kann ich ihnen nur bedingt zustimmen",
+   "da kann ich dir nur bedingt zustimmen",
+   "da kann ich ihnen nur teilweise zustimmen",
+   "da kann ich dir nur teilweise zustimmen",
+   "ich kann ihnen (da) nur teilweise zustimmen",
+   "ich kann dir (da) nur teilweise zustimmen",
+   "ich stimme ihnen (da) nur teilweise zu",
+   "ich stimme dir (da) nur teilweise zu",
+   "da stimme ich ihnen nur teilweise zu",
+   "da stimme ich dir nur teilweise zu"
+  ],
+  "severity": "error",
+  "why": "'Da stimme ich Ihnen nur teilweise zu' (inverted after da, the most natural spoken form) matches no pattern."
+ },
+ {
+  "id": "ENG_CHUNK_1557",
+  "field": "accept",
+  "before": [
+   "in dem artikel geht es um",
+   "im artikel geht es um",
+   "in dem text geht es um",
+   "im text geht es um",
+   "es geht in dem artikel um",
+   "der artikel handelt von",
+   "der text handelt von",
+   "der artikel beschäftigt sich mit"
+  ],
+  "after": [
+   "in dem artikel geht es um",
+   "im artikel geht es um",
+   "in dem text geht es um",
+   "im text geht es um",
+   "es geht in dem artikel um",
+   "es geht im artikel um",
+   "der artikel handelt von",
+   "der artikel dreht sich um",
+   "der artikel beschäftigt sich mit"
+  ],
+  "severity": "error",
+  "why": "'Es geht im Artikel um …' (contracted im) and 'Der Artikel dreht sich um …' are common correct renderings and are rejected."
+ },
+ {
+  "id": "ENG_CHUNK_1594",
+  "field": "accept",
+  "before": [
+   "könnten sie das (bitte) (etwas) näher erläutern",
+   "können sie das (bitte) (etwas) näher erläutern",
+   "könnten sie das (bitte) (etwas) näher erklären",
+   "könnten sie das (bitte) (etwas) genauer erklären",
+   "können sie das (bitte) (etwas) genauer erklären",
+   "könnten sie das (bitte) (etwas) näher ausführen",
+   "könntest du das (bitte) (etwas) genauer erklären",
+   "kannst du das (bitte) (etwas) genauer erklären"
+  ],
+  "after": [
+   "könnten sie das (bitte) (etwas) näher erläutern",
+   "können sie das (bitte) (etwas) näher erläutern",
+   "könnten sie das (bitte) (etwas) näher erklären",
+   "können sie das (bitte) (etwas) näher erklären",
+   "könnten sie das (bitte) (etwas) genauer erklären",
+   "können sie das (bitte) (etwas) genauer erklären",
+   "könnten sie das (bitte) ausführlicher erklären",
+   "können sie das (bitte) ausführlicher erklären",
+   "könnten sie das (bitte) (etwas) näher ausführen",
+   "könntest du das (bitte) (etwas) genauer erklären",
+   "kannst du das (bitte) (etwas) genauer erklären"
+  ],
+  "severity": "error",
+  "why": "'in more detail' = ausführlicher is the likeliest learner choice and was missing; also 'Können Sie das näher erklären'."
+ },
+ {
+  "id": "ENG_CHUNK_1630",
+  "field": "accept",
+  "before": [
+   "für rückfragen stehe ich ihnen (gern) (gerne) zur verfügung",
+   "für (weitere) fragen stehe ich ihnen (gern) (gerne) zur verfügung",
+   "bei (weiteren) fragen stehe ich ihnen (gern) (gerne) zur verfügung",
+   "bei rückfragen stehe ich ihnen (gern) (gerne) zur verfügung",
+   "für rückfragen stehe ich (gern) (gerne) zur verfügung",
+   "bei (weiteren) fragen können sie sich (gern) (gerne) an mich wenden",
+   "bei (weiteren) fragen wenden sie sich (bitte) (gern) an mich",
+   "bei (weiteren) fragen melden sie sich (gern) (gerne) (bei mir)"
+  ],
+  "after": [
+   "für rückfragen stehe ich ihnen (gern) (gerne) zur verfügung",
+   "stehe ich ihnen (gern) (gerne) (jederzeit) zur verfügung",
+   "ich stehe ihnen (gern) (gerne) für rückfragen zur verfügung",
+   "ich stehe ihnen (gern) (gerne) für (weitere) fragen zur verfügung",
+   "für rückfragen stehe ich (gern) (gerne) zur verfügung",
+   "können sie sich (jederzeit) (gern) (gerne) an mich wenden",
+   "sie können sich (jederzeit) (gern) (gerne) an mich wenden",
+   "wenden sie sich (bitte) (gern) (gerne) (jederzeit) an mich",
+   "melden sie sich (gern) (gerne) (bei mir)"
+  ],
+  "severity": "error",
+  "why": "The whole sentence is highlighted, so learners write 'Wenn Sie weitere Fragen haben, …' or 'Ich stehe Ihnen für Rückfragen … zur Verfügung'; every pattern required a bei/für opening and rejected these."
+ },
+ {
+  "id": "ENG_CHUNK_1458",
+  "field": "accept",
+  "before": [
+   "ich spreche mich für [x] aus",
+   "ich bin für",
+   "ich befürworte",
+   "ich bin ein befürworter",
+   "ich bin eine befürworterin",
+   "ich plädiere für"
+  ],
+  "after": [
+   "ich spreche mich für [x] aus",
+   "ich bin für",
+   "ich befürworte",
+   "ich bin (ein) befürworter",
+   "ich bin (eine) befürworterin",
+   "ich plädiere für"
+  ],
+  "severity": "improve",
+  "why": "'Ich bin Befürworter einer …' (no article) is equally normal."
+ },
+ {
+  "id": "ENG_CHUNK_1469",
+  "field": "accept",
+  "before": [
+   "das zeigt sich (zum beispiel) (etwa) daran (dass)",
+   "das sieht man (zum beispiel) daran (dass)",
+   "das erkennt man (zum beispiel) daran (dass)",
+   "das lässt sich (zum beispiel) daran erkennen (dass)",
+   "das wird (zum beispiel) daran deutlich (dass)",
+   "das zeigt sich (zum beispiel) darin (dass)"
+  ],
+  "after": [
+   "das zeigt sich (zum beispiel) (etwa) daran (dass)",
+   "das sieht man (zum beispiel) daran (dass)",
+   "man sieht das (zum beispiel) daran (dass)",
+   "das erkennt man (zum beispiel) daran (dass)",
+   "man erkennt das (zum beispiel) daran (dass)",
+   "das lässt sich (zum beispiel) daran erkennen (dass)",
+   "das wird (zum beispiel) daran deutlich (dass)",
+   "das zeigt sich (zum beispiel) darin (dass)"
+  ],
+  "severity": "improve",
+  "why": "'You can see this' is often rendered with man first: 'Man sieht das zum Beispiel daran, dass …'."
+ },
+ {
+  "id": "ENG_CHUNK_1523",
+  "field": "accept",
+  "before": [
+   "da irren sie sich",
+   "da irrst du dich",
+   "da irrt ihr euch",
+   "sie irren sich",
+   "du irrst dich",
+   "da liegen sie falsch",
+   "da liegst du falsch",
+   "da täuschen sie sich"
+  ],
+  "after": [
+   "da irren sie sich",
+   "da irrst du dich",
+   "da irrt ihr euch",
+   "sie irren sich",
+   "du irrst dich",
+   "da liegen sie falsch",
+   "da liegst du falsch",
+   "da täuschen sie sich",
+   "da haben sie unrecht",
+   "da hast du unrecht"
+  ],
+  "severity": "improve",
+  "why": "'Da haben Sie unrecht' is a common equivalent."
+ },
+ {
+  "id": "ENG_CHUNK_1552",
+  "field": "accept",
+  "before": [
+   "letztlich muss jeder (für sich) selbst entscheiden",
+   "letztendlich muss jeder (für sich) selbst entscheiden",
+   "letztlich muss jeder (für sich) selber entscheiden",
+   "am ende muss jeder (für sich) selbst entscheiden",
+   "jeder muss (letztlich) (für sich) selbst entscheiden",
+   "das muss (letztlich) jeder (für sich) selbst entscheiden",
+   "letzten endes muss jeder (für sich) selbst entscheiden"
+  ],
+  "after": [
+   "letztlich muss jeder (für sich) selbst entscheiden",
+   "letztendlich muss jeder (für sich) selbst entscheiden",
+   "letztlich muss jeder (für sich) selber entscheiden",
+   "letztlich muss jeder für sich entscheiden",
+   "am ende muss jeder (für sich) selbst entscheiden",
+   "jeder muss (letztlich) (für sich) selbst entscheiden",
+   "das muss (letztlich) jeder (für sich) selbst entscheiden",
+   "letzten endes muss jeder (für sich) selbst entscheiden"
+  ],
+  "severity": "improve",
+  "why": "'Letztlich muss jeder für sich entscheiden' (für sich carries 'for themselves', no selbst) is natural."
+ },
+ {
+  "id": "ENG_CHUNK_1575",
+  "field": "accept",
+  "before": [
+   "wie sie sicher wissen",
+   "wie sie sicherlich wissen",
+   "wie sie bestimmt wissen",
+   "wie sie vielleicht wissen",
+   "wie sie wahrscheinlich wissen",
+   "wie ihr sicher wisst",
+   "wie du sicher weißt"
+  ],
+  "after": [
+   "wie sie sicher wissen",
+   "wie sie sicherlich wissen",
+   "wie sie bestimmt wissen",
+   "wie sie vielleicht wissen",
+   "wie sie wahrscheinlich wissen",
+   "wie ihr sicher wisst",
+   "wie ihr wahrscheinlich wisst",
+   "wie du sicher weißt",
+   "wie du wahrscheinlich weißt"
+  ],
+  "severity": "improve",
+  "why": "du/ihr forms only had sicher; 'probably' is most often typed as wahrscheinlich."
+ },
+ {
+  "id": "ENG_CHUNK_1577",
+  "field": "accept",
+  "before": [
+   "ich möchte (noch) (kurz) auf [x] eingehen",
+   "ich würde gern (noch) (kurz) auf [x] eingehen",
+   "ich gehe (noch) kurz auf [x] ein",
+   "ich möchte (noch) kurz [x] ansprechen",
+   "ich möchte (noch) kurz etwas zu [x] sagen"
+  ],
+  "after": [
+   "ich möchte (noch) (kurz) auf [x] eingehen",
+   "ich würde gern (noch) (kurz) auf [x] eingehen",
+   "ich würde gerne (noch) (kurz) auf [x] eingehen",
+   "ich gehe (noch) kurz auf [x] ein",
+   "ich möchte (noch) kurz auf [x] zu sprechen kommen",
+   "ich möchte (noch) kurz [x] ansprechen",
+   "ich möchte (noch) kurz etwas zu [x] sagen"
+  ],
+  "severity": "improve",
+  "why": "Add gerne twin and 'kurz auf … zu sprechen kommen', a standard presentation phrase."
+ },
+ {
+  "id": "ENG_CHUNK_1574",
+  "field": "accept",
+  "before": [
+   "zunächst möchte ich",
+   "zuerst möchte ich",
+   "als erstes möchte ich",
+   "zu beginn möchte ich",
+   "zunächst würde ich gern",
+   "zunächst würde ich gerne",
+   "zuerst würde ich gern",
+   "erstens möchte ich"
+  ],
+  "after": [
+   "zunächst möchte ich",
+   "zuerst möchte ich",
+   "als erstes möchte ich",
+   "zu beginn möchte ich",
+   "zunächst würde ich gern",
+   "zunächst würde ich gerne",
+   "zuerst würde ich gern",
+   "zuerst würde ich gerne",
+   "erstens möchte ich"
+  ],
+  "severity": "improve",
+  "why": "gern-only patterns get a gerne twin (grader does not equate them)."
+ },
+ {
+  "id": "ENG_CHUNK_1582",
+  "field": "accept",
+  "before": [
+   "ich fasse [x] zusammen",
+   "ich fasse (noch einmal) (noch mal) kurz zusammen",
+   "ich fass [x] zusammen",
+   "lassen sie mich [x] zusammenfassen",
+   "ich möchte [x] zusammenfassen",
+   "ich würde gern [x] zusammenfassen",
+   "lass mich [x] zusammenfassen"
+  ],
+  "after": [
+   "ich fasse [x] zusammen",
+   "ich fasse (noch einmal) (noch mal) kurz zusammen",
+   "ich fass [x] zusammen",
+   "lassen sie mich [x] zusammenfassen",
+   "ich möchte [x] zusammenfassen",
+   "ich würde gern [x] zusammenfassen",
+   "ich würde gerne [x] zusammenfassen",
+   "lass mich [x] zusammenfassen"
+  ],
+  "severity": "improve",
+  "why": "gern-only patterns get a gerne twin (grader does not equate them)."
+ },
+ {
+  "id": "ENG_CHUNK_1586",
+  "field": "accept",
+  "before": [
+   "wenn ich (da) (mal) (kurz) einhaken darf",
+   "wenn ich (da) (mal) (kurz) einhaken dürfte",
+   "darf ich (da) (mal) (kurz) einhaken",
+   "ich möchte (da) (kurz) einhaken",
+   "ich würde (da) gern (kurz) einhaken",
+   "wenn ich (sie) (kurz) unterbrechen darf",
+   "darf ich (sie) (kurz) unterbrechen",
+   "wenn ich hier (mal) (kurz) einhaken darf"
+  ],
+  "after": [
+   "wenn ich (da) (mal) (kurz) einhaken darf",
+   "wenn ich (da) (mal) (kurz) einhaken dürfte",
+   "darf ich (da) (mal) (kurz) einhaken",
+   "ich möchte (da) (kurz) einhaken",
+   "ich würde (da) (gern) (gerne) (kurz) einhaken",
+   "wenn ich (sie) (kurz) unterbrechen darf",
+   "darf ich (sie) (kurz) unterbrechen",
+   "wenn ich hier (mal) (kurz) einhaken darf"
+  ],
+  "severity": "improve",
+  "why": "gern-only patterns get a gerne twin (grader does not equate them)."
+ },
+ {
+  "id": "ENG_CHUNK_1587",
+  "field": "accept",
+  "before": [
+   "darf ich dazu (kurz) (auch) etwas sagen",
+   "darf ich dazu (kurz) (auch) was sagen",
+   "darf ich kurz etwas dazu sagen",
+   "dürfte ich dazu etwas sagen",
+   "kann ich dazu etwas sagen",
+   "ich würde dazu gern etwas sagen",
+   "ich möchte dazu (gern) etwas sagen",
+   "dazu möchte ich etwas sagen"
+  ],
+  "after": [
+   "darf ich dazu (kurz) (auch) etwas sagen",
+   "darf ich dazu (kurz) (auch) was sagen",
+   "darf ich kurz etwas dazu sagen",
+   "dürfte ich dazu etwas sagen",
+   "kann ich dazu etwas sagen",
+   "ich würde dazu (gern) (gerne) etwas sagen",
+   "ich möchte dazu (gern) (gerne) etwas sagen",
+   "dazu möchte ich etwas sagen"
+  ],
+  "severity": "improve",
+  "why": "gern-only patterns get a gerne twin (grader does not equate them)."
+ },
+ {
+  "id": "ENG_CHUNK_1588",
+  "field": "accept",
+  "before": [
+   "ich möchte an das anknüpfen was",
+   "ich würde gern an das anknüpfen was",
+   "ich knüpfe an das an was",
+   "ich möchte daran anknüpfen",
+   "da möchte ich anknüpfen",
+   "ich möchte an [x] anknüpfen",
+   "ich möchte an das anschließen was",
+   "ich möchte auf dem aufbauen was"
+  ],
+  "after": [
+   "ich möchte an das anknüpfen was",
+   "ich würde (gern) (gerne) an das anknüpfen was",
+   "ich knüpfe an das an was",
+   "ich möchte daran anknüpfen",
+   "da möchte ich anknüpfen",
+   "ich möchte an [x] anknüpfen",
+   "ich möchte an das anschließen was",
+   "ich möchte auf dem aufbauen was"
+  ],
+  "severity": "improve",
+  "why": "gern-only patterns get a gerne twin (grader does not equate them)."
+ },
+ {
+  "id": "ENG_CHUNK_1590",
+  "field": "accept",
+  "before": [
+   "ich möchte nur (kurz) anmerken (dass)",
+   "ich möchte (kurz) anmerken (dass)",
+   "ich wollte nur (kurz) anmerken (dass)",
+   "ich würde gern (kurz) anmerken (dass)",
+   "ich möchte nur (kurz) darauf hinweisen (dass)",
+   "ich möchte (kurz) darauf hinweisen (dass)",
+   "ich möchte nur (kurz) erwähnen (dass)",
+   "ich wollte nur (kurz) darauf hinweisen (dass)"
+  ],
+  "after": [
+   "ich möchte nur (kurz) anmerken (dass)",
+   "ich möchte (kurz) anmerken (dass)",
+   "ich wollte nur (kurz) anmerken (dass)",
+   "ich würde (gern) (gerne) (nur) (kurz) anmerken (dass)",
+   "ich möchte nur (kurz) darauf hinweisen (dass)",
+   "ich möchte (kurz) darauf hinweisen (dass)",
+   "ich möchte nur (kurz) erwähnen (dass)",
+   "ich wollte nur (kurz) darauf hinweisen (dass)"
+  ],
+  "severity": "improve",
+  "why": "gern-only patterns get a gerne twin (grader does not equate them)."
+ },
+ {
+  "id": "ENG_CHUNK_1591",
+  "field": "accept",
+  "before": [
+   "ich möchte zu bedenken geben (dass)",
+   "ich gebe zu bedenken (dass)",
+   "ich würde gern zu bedenken geben (dass)",
+   "ich würde sie bitten zu bedenken (dass)",
+   "ich möchte sie bitten zu bedenken (dass)",
+   "ich bitte sie zu bedenken (dass)",
+   "bedenken sie (bitte) (dass)",
+   "ich würde dich bitten zu bedenken (dass)"
+  ],
+  "after": [
+   "ich möchte zu bedenken geben (dass)",
+   "ich gebe zu bedenken (dass)",
+   "ich würde (gern) (gerne) zu bedenken geben (dass)",
+   "ich würde sie bitten zu bedenken (dass)",
+   "ich möchte sie bitten zu bedenken (dass)",
+   "ich bitte sie zu bedenken (dass)",
+   "bedenken sie (bitte) (dass)",
+   "ich würde dich bitten zu bedenken (dass)"
+  ],
+  "severity": "improve",
+  "why": "gern-only patterns get a gerne twin (grader does not equate them)."
+ },
+ {
+  "id": "ENG_CHUNK_1584",
+  "field": "accept",
+  "before": [
+   "gern beantworte ich (jetzt) ihre fragen",
+   "beantworte ich (jetzt) (nun) gern ihre fragen",
+   "beantworte ich (jetzt) (nun) gerne ihre fragen",
+   "ich beantworte (jetzt) (nun) gern ihre fragen",
+   "ich beantworte (jetzt) (nun) gerne ihre fragen",
+   "ich beantworte (jetzt) gern eure fragen",
+   "ich freue mich auf ihre fragen",
+   "haben sie (noch) fragen"
+  ],
+  "after": [
+   "gern beantworte ich (jetzt) ihre fragen",
+   "gerne beantworte ich (jetzt) ihre fragen",
+   "beantworte ich (jetzt) (nun) gern ihre fragen",
+   "beantworte ich (jetzt) (nun) gerne ihre fragen",
+   "ich beantworte (jetzt) (nun) gern ihre fragen",
+   "ich beantworte (jetzt) (nun) gerne ihre fragen",
+   "ich beantworte (jetzt) (gern) (gerne) eure fragen",
+   "ich stehe (jetzt) (gern) (gerne) für fragen zur verfügung",
+   "ich freue mich auf ihre fragen",
+   "haben sie (noch) fragen"
+  ],
+  "severity": "improve",
+  "why": "gern-only patterns get a gerne twin (grader does not equate them); add 'stehe … für Fragen zur Verfügung'."
+ },
+ {
+  "id": "ENG_CHUNK_1614",
+  "field": "accept",
+  "before": [
+   "ein deutlicher anstieg zu verzeichnen",
+   "ein deutlicher anstieg [x] zu verzeichnen",
+   "ein starker anstieg zu verzeichnen",
+   "ein deutlicher anstieg zu beobachten",
+   "ein deutlicher anstieg festzustellen",
+   "gibt es einen deutlichen anstieg",
+   "gab es einen deutlichen anstieg"
+  ],
+  "after": [
+   "ein deutlicher anstieg zu verzeichnen",
+   "ein deutlicher anstieg [x] zu verzeichnen",
+   "ein starker anstieg zu verzeichnen",
+   "ein deutlicher anstieg zu beobachten",
+   "ein deutlicher anstieg festzustellen",
+   "gibt es einen deutlichen anstieg",
+   "gab es einen deutlichen anstieg",
+   "hat [x] deutlich zugenommen"
+  ],
+  "severity": "improve",
+  "why": "'Seit 2020 hat das Onlinelernen deutlich zugenommen' is the plain natural rendering."
+ },
+ {
+  "id": "ENG_CHUNK_1616",
+  "field": "accept",
+  "before": [
+   "bezug nehmend auf ihr schreiben",
+   "bezugnehmend auf ihr schreiben",
+   "ich beziehe mich auf ihr schreiben",
+   "mit bezug auf ihr schreiben",
+   "unter bezugnahme auf ihr schreiben",
+   "bezug nehmend auf ihren brief",
+   "bezugnehmend auf ihren brief",
+   "ich beziehe mich auf ihren brief"
+  ],
+  "after": [
+   "bezug nehmend auf ihr schreiben",
+   "bezugnehmend auf ihr schreiben",
+   "ich beziehe mich auf ihr schreiben",
+   "mit bezug auf ihr schreiben",
+   "in bezug auf ihr schreiben",
+   "unter bezugnahme auf ihr schreiben",
+   "bezug nehmend auf ihren brief",
+   "bezugnehmend auf ihren brief",
+   "ich beziehe mich auf ihren brief"
+  ],
+  "severity": "improve",
+  "why": "'In Bezug auf Ihr Schreiben vom …' is a common correct opening."
+ },
+ {
+  "id": "ENG_CHUNK_1477",
+  "field": "n",
+  "before": "Impersonal passive: no es when another word comes first.",
+  "after": "es is only a placeholder: drop it when another word comes first (Häufig wird argumentiert, dass …).",
+  "severity": "improve",
+  "why": "With a dass-clause as subject this is not strictly an impersonal passive; the rule is the placeholder es."
+ }
+]

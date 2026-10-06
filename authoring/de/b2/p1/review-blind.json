@@ -1,0 +1,236 @@
+[
+ {
+  "id": "ENG_CHUNK_1483",
+  "field": "accept",
+  "before": [
+   "das kann man so pauschal nicht sagen",
+   "das kann man nicht so pauschal sagen",
+   "das kann man (so) nicht pauschal sagen",
+   "man kann das (so) nicht pauschal sagen",
+   "man kann das nicht so pauschal sagen",
+   "das kann man (so) nicht verallgemeinern",
+   "das kann man nicht so verallgemeinern",
+   "man kann das (so) nicht verallgemeinern"
+  ],
+  "after": [
+   "das kann man so pauschal nicht sagen",
+   "das kann man nicht so pauschal sagen",
+   "das kann man (so) nicht pauschal sagen",
+   "man kann das (so) nicht pauschal sagen",
+   "man kann das nicht so pauschal sagen",
+   "das kann man (so) nicht verallgemeinern",
+   "das kann man nicht so verallgemeinern",
+   "man kann das (so) nicht verallgemeinern",
+   "so pauschal kann man das nicht sagen"
+  ],
+  "severity": "error",
+  "why": "blind self-consistency translation was graded wrong: so pauschal kann man das nicht sagen",
+  "source": "self-consistency"
+ },
+ {
+  "id": "ENG_CHUNK_1498",
+  "field": "accept",
+  "before": [
+   "es ist sicher richtig (dass)",
+   "es ist sicherlich richtig (dass)",
+   "es ist (zwar) richtig (dass)",
+   "es ist durchaus richtig (dass)",
+   "es stimmt sicher (dass)",
+   "es stimmt zwar (dass)",
+   "es ist sicher wahr (dass)",
+   "sicher ist es richtig (dass)"
+  ],
+  "after": [
+   "es ist sicher richtig (dass)",
+   "es ist sicherlich richtig (dass)",
+   "es ist (zwar) richtig (dass)",
+   "es ist durchaus richtig (dass)",
+   "es stimmt sicher (dass)",
+   "es stimmt zwar (dass)",
+   "es ist sicher wahr (dass)",
+   "sicher ist es richtig (dass)",
+   "es stimmt sicherlich (dass)"
+  ],
+  "severity": "error",
+  "why": "blind self-consistency translation was graded wrong: es stimmt sicherlich (dass)",
+  "source": "self-consistency"
+ },
+ {
+  "id": "ENG_CHUNK_1548",
+  "field": "accept",
+  "before": [
+   "es bleibt festzuhalten (dass)",
+   "festzuhalten bleibt (dass)",
+   "festzuhalten ist (dass)",
+   "tatsache bleibt (dass)",
+   "fest steht (dass)",
+   "man kann festhalten (dass)"
+  ],
+  "after": [
+   "es bleibt festzuhalten (dass)",
+   "festzuhalten bleibt (dass)",
+   "festzuhalten ist (dass)",
+   "tatsache bleibt (dass)",
+   "fest steht (dass)",
+   "man kann festhalten (dass)",
+   "fakt ist und bleibt (dass)"
+  ],
+  "severity": "error",
+  "why": "blind self-consistency translation was graded wrong: fakt ist und bleibt (dass)",
+  "source": "self-consistency"
+ },
+ {
+  "id": "ENG_CHUNK_1549",
+  "field": "accept",
+  "before": [
+   "spricht mehr dafür als dagegen",
+   "mehr spricht dafür als dagegen",
+   "es gibt mehr argumente dafür als dagegen",
+   "mehr argumente sprechen dafür als dagegen",
+   "die argumente dafür überwiegen"
+  ],
+  "after": [
+   "spricht mehr dafür als dagegen",
+   "mehr spricht dafür als dagegen",
+   "es gibt mehr argumente dafür als dagegen",
+   "mehr argumente sprechen dafür als dagegen",
+   "die argumente dafür überwiegen",
+   "gibt es mehr argumente dafür als dagegen"
+  ],
+  "severity": "error",
+  "why": "blind self-consistency translation was graded wrong: gibt es mehr argumente dafür als dagegen",
+  "source": "self-consistency"
+ },
+ {
+  "id": "ENG_CHUNK_1564",
+  "field": "accept",
+  "before": [
+   "der autor nennt [x] als beispiel",
+   "der autor nennt als beispiel",
+   "als beispiel nennt der autor",
+   "der autor führt [x] als beispiel an",
+   "als beispiel führt der autor [x] an",
+   "die autorin nennt [x] als beispiel",
+   "der autor gibt [x] als beispiel an"
+  ],
+  "after": [
+   "der autor nennt [x] als beispiel",
+   "der autor nennt als beispiel",
+   "als beispiel nennt der autor",
+   "der autor führt [x] als beispiel an",
+   "als beispiel führt der autor [x] an",
+   "die autorin nennt [x] als beispiel",
+   "der autor gibt [x] als beispiel an",
+   "der autor führt [x] als beispiel [x] an"
+  ],
+  "severity": "error",
+  "why": "blind self-consistency translation was graded wrong: der autor führt [x] als beispiel [x] an",
+  "source": "self-consistency"
+ },
+ {
+  "id": "ENG_CHUNK_1586",
+  "field": "accept",
+  "before": [
+   "wenn ich (da) (mal) (kurz) einhaken darf",
+   "wenn ich (da) (mal) (kurz) einhaken dürfte",
+   "darf ich (da) (mal) (kurz) einhaken",
+   "ich möchte (da) (kurz) einhaken",
+   "ich würde (da) gern (kurz) einhaken",
+   "wenn ich (sie) (kurz) unterbrechen darf",
+   "darf ich (sie) (kurz) unterbrechen"
+  ],
+  "after": [
+   "wenn ich (da) (mal) (kurz) einhaken darf",
+   "wenn ich (da) (mal) (kurz) einhaken dürfte",
+   "darf ich (da) (mal) (kurz) einhaken",
+   "ich möchte (da) (kurz) einhaken",
+   "ich würde (da) gern (kurz) einhaken",
+   "wenn ich (sie) (kurz) unterbrechen darf",
+   "darf ich (sie) (kurz) unterbrechen",
+   "wenn ich hier (mal) (kurz) einhaken darf"
+  ],
+  "severity": "error",
+  "why": "blind self-consistency translation was graded wrong: wenn ich hier (mal) (kurz) einhaken darf",
+  "source": "self-consistency"
+ },
+ {
+  "id": "ENG_CHUNK_1599",
+  "field": "accept",
+  "before": [
+   "müssen wir langsam zum ende kommen",
+   "wir müssen langsam zum ende kommen",
+   "wir sollten langsam zum ende kommen",
+   "sollten wir langsam zum ende kommen",
+   "wir müssen langsam zum schluss kommen",
+   "müssen wir langsam zum schluss kommen",
+   "wir müssen langsam aufhören",
+   "müssen wir langsam abschließen"
+  ],
+  "after": [
+   "müssen wir langsam zum ende kommen",
+   "wir müssen langsam zum ende kommen",
+   "wir sollten langsam zum ende kommen",
+   "sollten wir langsam zum ende kommen",
+   "wir müssen langsam zum schluss kommen",
+   "müssen wir langsam zum schluss kommen",
+   "wir müssen langsam aufhören",
+   "müssen wir langsam abschließen",
+   "wir müssen also langsam zum ende kommen"
+  ],
+  "severity": "error",
+  "why": "blind self-consistency translation was graded wrong: wir müssen also langsam zum ende kommen",
+  "source": "self-consistency"
+ },
+ {
+  "id": "ENG_CHUNK_1628",
+  "field": "accept",
+  "before": [
+   "ich bitte um (eine) (kurze) rückmeldung",
+   "ich bitte um (eine) (kurze) antwort",
+   "ich bitte um eine baldige antwort",
+   "über eine (kurze) rückmeldung würde ich mich freuen",
+   "ich würde mich über eine (kurze) rückmeldung freuen",
+   "für eine (kurze) rückmeldung wäre ich ihnen (sehr) dankbar",
+   "ich wäre ihnen für eine (kurze) rückmeldung (sehr) dankbar",
+   "ich freue mich auf ihre rückmeldung"
+  ],
+  "after": [
+   "ich bitte um (eine) (kurze) rückmeldung",
+   "ich bitte um (eine) (kurze) antwort",
+   "ich bitte um eine baldige antwort",
+   "über eine (kurze) rückmeldung würde ich mich freuen",
+   "ich würde mich über eine (kurze) rückmeldung freuen",
+   "für eine (kurze) rückmeldung wäre ich ihnen (sehr) dankbar",
+   "ich wäre ihnen für eine (kurze) rückmeldung (sehr) dankbar",
+   "ich freue mich auf ihre rückmeldung",
+   "über eine (kurze) rückmeldung [x] würde ich mich freuen"
+  ],
+  "severity": "error",
+  "why": "blind self-consistency translation was graded wrong: über eine (kurze) rückmeldung [x] würde ich mich freuen",
+  "source": "self-consistency"
+ },
+ {
+  "id": "ENG_CHUNK_1629",
+  "field": "accept",
+  "before": [
+   "ich hoffe (sehr) auf eine (baldige) (schnelle) lösung",
+   "ich hoffe auf eine zügige lösung",
+   "ich hoffe dass sich [x] (bald) (schnell) lösen lässt",
+   "ich hoffe dass [x] (bald) (schnell) gelöst werden kann",
+   "ich hoffe dass [x] bald gelöst wird",
+   "ich hoffe dass [x] (bald) (schnell) geklärt werden kann"
+  ],
+  "after": [
+   "ich hoffe (sehr) auf eine (baldige) (schnelle) lösung",
+   "ich hoffe auf eine zügige lösung",
+   "ich hoffe dass sich [x] (bald) (schnell) lösen lässt",
+   "ich hoffe dass [x] (bald) (schnell) gelöst werden kann",
+   "ich hoffe dass [x] bald gelöst wird",
+   "ich hoffe dass [x] (bald) (schnell) geklärt werden kann",
+   "ich hoffe dass sich [x] (bald) (schnell) klären lässt"
+  ],
+  "severity": "error",
+  "why": "blind self-consistency translation was graded wrong: ich hoffe dass sich [x] (bald) (schnell) klären lässt",
+  "source": "self-consistency"
+ }
+]

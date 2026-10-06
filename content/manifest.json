@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "c00ff51fe037",
+ "version": "00a92284bf38",
  "languages": [
   {
    "id": "khasi",
@@ -350,8 +350,8 @@
    "id": "clusters.de",
    "path": "clusters/de.json",
    "schema": "clusters@1",
-   "bytes": 370561,
-   "sha256": "41cb1893ddf913d82c44d91839fec9bd44f648ea785352e92da3e1456fd45af9"
+   "bytes": 377401,
+   "sha256": "0ced2785f0adde04cebf2762504deec1b633351042536cd40cf146c93119df28"
   },
   {
    "id": "course.fr",
@@ -581,8 +581,8 @@
    "id": "igloo.chunks.accept.german",
    "path": "igloo/chunks/accept_german.json",
    "schema": "phrases-accept@1",
-   "bytes": 329647,
-   "sha256": "44ea57014b3d6c5b1ac549b4ee7ffb8d626b5adab0831b7c45f8e576f7a68ace"
+   "bytes": 441192,
+   "sha256": "8f0308ee1125eeb1ad22bea2282b2d673d9ce7555b3f36a622b6f62a19a36f87"
   },
   {
    "id": "igloo.chunks.arabic",
@@ -602,8 +602,8 @@
    "id": "igloo.chunks.en",
    "path": "igloo/chunks/en.json",
    "schema": "phrases-source@1",
-   "bytes": 645922,
-   "sha256": "4cca0fd7d05de0d07130727362b1c4d73703347911d85b344c6990c6c5f9e216"
+   "bytes": 704692,
+   "sha256": "987d206de8149d59a69ec5d9d1b2b90b4851d5ee644982204f0c0540ca3b209c"
   },
   {
    "id": "igloo.chunks.french",
@@ -616,8 +616,8 @@
    "id": "igloo.chunks.german",
    "path": "igloo/chunks/german.json",
    "schema": "phrases@1",
-   "bytes": 239605,
-   "sha256": "71ea13311bf676be6ade1c611596f0a3e5343a40d2aa05651e65fb729cafd3b5"
+   "bytes": 285862,
+   "sha256": "304ee48dc167a031cf52084d8ea87bc10430b1af0cf778957914aab9d5dff891"
   },
   {
    "id": "igloo.chunks.hindi",
@@ -651,8 +651,8 @@
    "id": "igloo.chunks.priority.de",
    "path": "igloo/chunks/priority_de.json",
    "schema": "phrases-priority@1",
-   "bytes": 28423,
-   "sha256": "12abb0a1fd7ccae953897917bcfeb8a6d2907d72da9a9a75084eccd722be96a5"
+   "bytes": 32383,
+   "sha256": "b6d47b29b943ed98ed78427cf17f07401afa09c3846ae41cf00ed7c7ca7cef21"
   },
   {
    "id": "igloo.chunks.spanish",
