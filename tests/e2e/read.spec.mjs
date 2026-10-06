@@ -40,9 +40,26 @@ test('reading: paste, the estimate, a word sheet, save to the tray; the review r
   await expect(page.locator('#view')).toContainText('Paste an article');
   await checkA11y(page, 'Reading › library');
   await paste(page);
-  await expect(page.locator('.rd-badge').first()).toHaveText(/About [ABC][12]/);
+  await expect(page.locator('.rd-meta')).toHaveText(/words · [0-9.]+% known/);
   await expect(page.getByRole('progressbar', { name: 'How far you have read' })).toBeAttached();
   await checkA11y(page, 'Reading › reader');
+
+  // the text reads as prose: no button per word; the keyboard steps into the words and only the word in hand is one
+  const textEl = page.locator('.tv-text');
+  await expect(textEl.locator('[role="button"], button')).toHaveCount(0);
+  await textEl.focus();
+  await page.keyboard.press('ArrowRight');
+  await expect(textEl.locator('[role="button"]')).toHaveCount(1);
+  await page.keyboard.press('ArrowRight');
+  await expect(textEl.locator('[role="button"]')).toHaveCount(1);
+  await page.keyboard.press('Enter');
+  await expect(page.locator('dialog.tv-sheet')).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(page.locator('dialog.tv-sheet')).toHaveCount(0);
+  await expect(textEl.locator('[role="button"]')).toBeFocused();
+  await page.keyboard.press('Escape');
+  await expect(textEl).toBeFocused();
+  await expect(textEl.locator('[role="button"]')).toHaveCount(0);
 
   // the word sheet: the meaning from the list, the sentence, Add to review
   await page.locator('.tv-w', { hasText: /^Branche$/ }).click();
@@ -192,7 +209,7 @@ test('reading: a graded text opens in the reader with its own reviewed questions
   await expect(page.locator('#view')).toContainText('Graded texts');
   await page.locator('a[href^="#/practice/read/lib/"]').first().click();
   await expect(page.locator('#view h1.rd-title')).toBeVisible();
-  await expect(page.locator('#view')).toContainText('Graded text, B1');
+  await expect(page.locator('#view')).toContainText('Graded text at B1');
   await checkA11y(page, 'Reading › graded text');
   await page.getByRole('link', { name: 'Questions' }).click();
   await expect(page.locator('.rd-q').first()).toBeVisible();

@@ -34,7 +34,8 @@ import * as R from '../shared/read-data.js';
 import { textView, sheet, tray, hairline, quote } from '../shared/textview.js';
 import * as L from './logic.js';
 import { language, knowledgeNow, otherDecks, sectionsFor, gradedText } from './load.js';
-import { back, levelLine, pct, errLine } from './ui.js';
+import { back, pct, errLine } from './ui.js';
+import { levelRank } from '../../domain/text/estimate.js';
 
 /** Minutes a visit to the reader counts at most (a phone left open on the page is not an hour of reading). */
 const VISIT_MAX_MIN = 45;
@@ -83,7 +84,8 @@ export async function mountReader(el, ctx, read0, given) {
   /** @param {boolean} marks */
   const analyse = marks => L.analyse(sentences, { pack, idx, lexicon: Lg.lexicon, level, know, card, has, wordmap: Lg.wordmap, suggest: marks });
   let an = analyse(read.mode !== 'extensive');
-  const est0 = read.estimate && read.estimate.ver === L.ESTIMATE_VER ? read.estimate : { ...L.estimate(analyse(false), { pack, idx, view: view0, level }), at: c.today };
+  const met = R.metSet(store);
+  const est0 = read.estimate && read.estimate.ver === L.ESTIMATE_VER ? read.estimate : { ...L.estimate(analyse(false), { pack, idx, view: view0, level, met }), at: c.today };
   // a graded text has a reviewed level of its own; the estimate's level is for pasted texts (his coverage stays his)
   const est = src.graded && src.graded.level ? { ...est0, level: src.graded.level } : est0;
   read = { ...read, estimate: est };
@@ -112,7 +114,7 @@ export async function mountReader(el, ctx, read0, given) {
     const marks = read.mode !== 'extensive';
     const lit = savedLemmas();
     tv = textView({ sentences: an.map((s, si) => ({ id: sentences[si].id, p: sentences[si].p, toks: s.toks, cls: s.cls, bands: marks ? bandsOf[si].map(b => ({ id: b.phrase.id, at: b.at })) : [] })),
-      marks, saved: lemma => lit.has(String(lemma).toLowerCase()), onWord, label: t('read.textLabel') });
+      marks, saved: lemma => lit.has(String(lemma).toLowerCase()), onWord, label: t('read.textLabel'), hint: t('read.textKeys') });
     replace(textSlot, tv.el);
     primary.textContent = marks ? t('read.questions') : t('read.done');
     primary.setAttribute('href', marks ? `#/practice/read/${read.id}/questions` : `#/practice/read/${read.id}/done`);
@@ -125,30 +127,37 @@ export async function mountReader(el, ctx, read0, given) {
       drawText();
       announce(t(read.mode === 'extensive' ? 'read.mode.onNow' : 'read.mode.studyNow'));
     } });
+  // the head: the title first, then one meta line and a 3 px meter (ink is known, the track the rest, so it needs no
+  // legend); the band's advice only when it says something (a stretch or too hard), and "assumed" said plainly
   const known = Math.max(0, Math.min(1, est.coverage));
-  const bar = h('div', { class: 'rd-cov', role: 'img', 'aria-label': t('read.cov.aria', { pct: pct(known) }) },
-    h('span', { class: 'rd-cov-known', style: { flexGrow: String(known) } }), h('span', { class: 'rd-cov-new', style: { flexGrow: String(1 - known) } }));
+  const by = est.by || {};
+  const assumed = (by.assumed || 0) + (by.read || 0);
+  const source = read.source?.kind === 'graded'
+    ? t(src.graded?.source ? 'read.meta.literature' : 'read.meta.graded', { level: src.graded?.level || est.level })
+    : t('read.meta.pasted', { date: label(String(read.createdAt || c.today).slice(0, 10)) });
+  const meta = [[source, t('read.paste.words', { n: est.words })].join(', '), t('read.meta.known', { pct: pct(known) })].join(' · ');
   const n1 = L.oneIn(est.coverage);
-  const meta = [read.source?.kind === 'graded' ? t('read.meta.graded', { level: src.graded?.level || est.level }) : t('read.meta.pasted', { date: label(String(read.createdAt || c.today).slice(0, 10)) }),
-    t('read.paste.words', { n: est.words }), read.source?.label || null].filter(Boolean).join(' · ');
+  const notes = [
+    assumed > (est.known || 0) / 2 ? t('read.est.assumed') : null,
+    est.band === 'hard' || est.band === 'stretch' ? [t(`read.band.${est.band}.hint`), n1 >= 5 ? ` ${t('read.est.line', { n: n1 })}` : ''].join('') : null,
+  ].filter(Boolean);
+  const bar = h('div', { class: 'rd-cov', role: 'img', 'aria-label': t('read.cov.aria', { pct: pct(known) }) },
+    h('span', { class: 'rd-cov-known', style: { transform: `scaleX(${known.toFixed(3)})` } }));
   const line = h('div', { class: 'rd-head' }, back('#/practice/read', t('read.title')));
   const hair = hairline(textSlot, s => { share = Math.max(share, s); });
   let share = Number(read.progress?.share) || 0;
   replace(el, h('div', { class: 'practice rd-reader', 'data-title': t('read.title') },
     hair.el,
     line,
-    h('div', { class: 'rd-modes' }, modeSeg),
-    h('div', { class: 'rd-est' },
-      h('span', { class: ['rd-badge', `is-${est.band}`] }, t('read.level.about', { level: est.level })),
-      h('p', { class: 'caption rd-est-line' }, n1 ? t('read.est.line', { pct: pct(est.coverage), n: n1 }) : t('read.est.all', { pct: pct(est.coverage) }), ' ', t(`read.band.${est.band}.hint`)),
+    h('header', { class: 'rd-top' },
+      h('h1', { class: 'rd-title', lang: langAttr(), dir: dirAttr() }, read.title),
+      h('p', { class: 'caption rd-meta tnum' }, meta),
       bar,
-      h('p', { class: 'caption rd-legend', 'aria-hidden': 'true' }, h('span', { class: 'rd-key is-known' }), t('read.cov.known'), h('span', { class: 'rd-key is-new' }), t('read.cov.new'))),
-    h('h1', { class: 'rd-title', lang: langAttr(), dir: dirAttr() }, read.title),
-    h('p', { class: 'caption rd-meta' }, meta),
+      notes.length ? h('p', { class: 'caption rd-note-line' }, notes.join(' ')) : null),
     textSlot,
     h('div', { class: 'rd-end' }, h('p', { class: 'caption' }, t('read.end')),
       h('a', { class: 'btn pressable', href: `#/practice/read/${read.id}/done` }, t('read.finish'))),
-    h('div', { class: 'rd-dock' }, h('div', { class: 'rd-dock-row' }, trayEl.el, primary))));
+    h('div', { class: 'rd-dock' }, h('div', { class: 'rd-dock-in' }, h('div', { class: 'rd-dock-row' }, h('div', { class: 'rd-modes' }, modeSeg), trayEl.el, primary)))));
   drawText();
   drawTray();
   // back to where he stopped
@@ -156,9 +165,15 @@ export async function mountReader(el, ctx, read0, given) {
 
   // ---------- the word sheet ----------
   let looked = 0;
+  /** The words he tapped (sentence:token), and their items: never counted as read without a look-up. */
+  const tapped = new Set();
+  /** @type {Set<string>} */ const looked_ids = new Set();
   /** @param {number} si @param {number} ti @param {HTMLElement} btn */
   function onWord(si, ti, btn) {
     looked++;
+    tapped.add(`${si}:${ti}`);
+    const e = an[si]?.cls[ti]?.entry;
+    if (e && e.id) looked_ids.add(`W:${e.id}`);
     const band = read.mode !== 'extensive' ? bandsOf[si].find(b => b.at.includes(ti)) : null;
     if (band) openPhrase(si, ti, band, btn); else openWord(si, ti, btn);
   }
@@ -363,6 +378,23 @@ export async function mountReader(el, ctx, read0, given) {
     }
   }
 
+  /** The item ids of the listed content words in the part he read, that he did not look up. @param {number} upTo share of the text */
+  function readPast(upTo) {
+    const ws = tv.words();
+    const last = Math.floor(ws.length * Math.min(1, upTo));
+    const top = levelRank(level) + 1;
+    /** @type {Set<string>} */ const out = new Set();
+    for (const [si, ti] of ws.slice(0, last)) {
+      if (tapped.has(`${si}:${ti}`)) continue;
+      const x = an[si]?.cls[ti];
+      const e = x && x.entry;
+      if (!e || !e.id || e.pos === 'phrase' || levelRank(e.level) > top) continue;
+      out.add(`W:${e.id}`);
+    }
+    for (const id of looked_ids) out.delete(id);
+    return [...out];
+  }
+
   // ---------- time and place ----------
   const t0 = Date.now();
   let hidden0 = 0, hiddenMs = 0;
@@ -379,5 +411,8 @@ export async function mountReader(el, ctx, read0, given) {
     R.updateProgress(store, read.id, p => ({ ...p, share: Math.max(p.share || 0, share), ms: (p.ms || 0) + Math.min(ms, VISIT_MAX_MIN * 60000), looked: (p.looked || 0) + looked,
       words: Math.max(p.words || 0, words), last: c.today }));
     if (min >= 0.25) addActivity(store, ctx.clock.ctx().today, { minutes: min, kind: 'read' });
+    // the listed words he read past without a look-up, up to one level above his: reading evidence for the estimate
+    // (domain/text/estimate.js 'read'; coverage only, never a card or a known count)
+    if (share > 0.2) R.addMet(store, c.today, readPast(share));
   };
 }

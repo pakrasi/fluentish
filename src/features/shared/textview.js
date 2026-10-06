@@ -1,10 +1,13 @@
 /* A text to read, with every word a tap target (round 4, reading; conversation can use it for its transcripts). A
    library: it draws and animates, and the caller decides what a tap does.
 
-     textView(o)     the text in Newsreader: one button per word (44 px on touch), suggested words dotted, phrase bands
-                     under multi-word items, saved words underlined, names and numbers plain text. One tab stop for the
-                     whole text (arrows move between words). light(si, at) lights the tokens of one word across its
-                     sentence (both halves of a separable verb), clear() puts them out.
+     textView(o)     the text in Newsreader, read by a screen reader as prose: each word is a plain span (44 px tap
+                     target on touch), suggested words dotted, one band under each multi-word item, saved words on an
+                     accent wash, names and numbers plain text. The text block is one tab stop; from it the arrow keys,
+                     Enter or Space step into the words, and only the word in hand is a button (role, tabindex 0), so
+                     the accessibility tree never holds a button per word (round 4 audit, ruling 6). Esc leaves the
+                     words. light(si, at) lights the tokens of one word across its sentence (both halves of a separable
+                     verb), clear() puts them out.
      sheet(o)        a bottom sheet (<dialog>, modal): Esc, the backdrop and Close dismiss it; a route change removes it
      tray(o)         the dock's line of saved words: a count and the newest few. lift(btn) sends a copy of a word into
                      it (core/motion.js fling); reduced motion: no flight, the count just changes
@@ -31,65 +34,109 @@ import { langAttr, dirAttr } from '../../core/lang.js';
 
 /**
  * @param {{sentences: ViewSentence[], marks?: boolean, saved?: (lemma: string, si: number, ti: number) => boolean,
- *   onWord: (si: number, ti: number, btn: HTMLElement) => void, label?: string}} o
- *   marks: dotted suggestions and phrase bands (Study mode); saved: a word already saved shows its underline
+ *   onWord: (si: number, ti: number, btn: HTMLElement) => void, label?: string, hint?: string}} o
+ *   marks: dotted suggestions and phrase bands (Study mode); saved: a word already saved shows its wash;
+ *   hint: how the keys work, read once when the text block takes the focus
  */
-export function textView({ sentences, marks = true, saved = () => false, onWord, label }) {
-  const el = h('div', { class: ['tv-text', !marks && 'is-plain'], lang: langAttr(), dir: dirAttr(), role: 'group', 'aria-label': label || null });
+export function textView({ sentences, marks = true, saved = () => false, onWord, label, hint }) {
+  const hintId = `tv-hint-${Math.random().toString(36).slice(2, 8)}`;
+  const el = h('div', { class: ['tv-text', !marks && 'is-plain'], lang: langAttr(), dir: dirAttr(), tabindex: '0', 'aria-label': label || null, 'aria-describedby': hint ? hintId : null });
+  const hintEl = hint ? h('span', { class: 'sr-only', id: hintId, lang: 'en', dir: 'ltr' }, hint) : null;
   /** @type {HTMLElement[]} */ let all = [];
   /** @type {Map<string, HTMLElement>} */ const at = new Map();
   /** @type {HTMLElement[]} */ let lit = [];
+  /** @type {HTMLElement | null} */ let cur = null;
 
   function draw() {
-    all = []; at.clear();
+    all = []; at.clear(); cur = null;
     /** @type {any[][]} */ const paras = [];
     /** @type {any[]} */ let para = [];
     sentences.forEach((s, si) => {
       if (s.p && para.length) { paras.push(para); para = []; }
       const band = new Map();
       for (const b of s.bands || []) for (const k of b.at) band.set(k, b.id);
-      const kids = s.toks.map((tok, ti) => {
+      /** @type {any[]} */ const kids = [];
+      /** @type {{id: string, el: HTMLElement} | null} */ let run = null;
+      s.toks.forEach((tok, ti) => {
         const x = s.cls[ti];
         const space = tok.sp ? ' ' : '';
-        if (!x || x.type === 'skip') return space + tok.t;
-        if (x.type === 'name') return [space, h('span', { class: 'tv-name' }, tok.t)];
-        const inBand = marks && band.has(ti);
-        const b = h('button', { type: 'button', tabindex: '-1', class: ['tv-w', marks && x.suggest && 'is-sug', inBand && 'is-band', saved(x.lemma, si, ti) && 'is-saved'],
-          dataset: { s: String(si), k: String(ti), band: inBand ? band.get(ti) : null }, onclick: () => onWord(si, ti, b) }, tok.t);
-        all.push(b); at.set(`${si}:${ti}`, b);
-        return [space, b];
+        const bid = marks ? band.get(ti) : undefined;
+        // one band per phrase: its words and the spaces between them sit in one element
+        if (run && run.id !== bid) run = null;
+        const put = (/** @type {any[]} */ ...nodes) => {
+          if (bid !== undefined) {
+            if (!run) { run = { id: bid, el: h('span', { class: 'tv-band' }) }; kids.push(space); run.el.append(...nodes.filter(n => n !== space)); kids.push(run.el); return; }
+            run.el.append(...nodes);
+          } else kids.push(...nodes);
+        };
+        if (!x || x.type === 'skip') { put(space, tok.t); return; }
+        if (x.type === 'name') { put(space, h('span', { class: 'tv-name' }, tok.t)); return; }
+        const w = h('span', { class: ['tv-w', marks && x.suggest && 'is-sug', bid !== undefined && 'is-band', saved(x.lemma, si, ti) && 'is-saved'],
+          dataset: { s: String(si), k: String(ti), band: bid !== undefined ? bid : null } }, tok.t);
+        all.push(w); at.set(`${si}:${ti}`, w);
+        put(space, w);
       });
       para.push(h('span', { class: 'tv-sent', dataset: { s: String(si) } }, kids), ' ');
     });
     if (para.length) paras.push(para);
-    replace(el, paras.map(p => h('p', { class: 'tv-para' }, p)));
-    if (all[0]) all[0].tabIndex = 0;
+    replace(el, hintEl, paras.map(p => h('p', { class: 'tv-para' }, p)));
   }
+
+  /** Hand the focus to one word: it alone is a button. @param {HTMLElement | null} w */
+  function take(w) {
+    if (cur && cur !== w) { cur.removeAttribute('role'); cur.removeAttribute('tabindex'); }
+    cur = w;
+    if (!w) return;
+    w.setAttribute('role', 'button'); w.tabIndex = 0;
+    el.tabIndex = -1;
+    w.focus();
+  }
+  /** Back to the text block (Esc, or the focus left the words). */
+  function leave() {
+    if (cur) { cur.removeAttribute('role'); cur.removeAttribute('tabindex'); cur = null; }
+    el.tabIndex = 0;
+  }
+  el.addEventListener('click', e => {
+    const w = /** @type {HTMLElement | null} */ (/** @type {HTMLElement} */ (e.target).closest('.tv-w'));
+    if (!w || !el.contains(w)) return;
+    // the tapped word is the one in hand, so a sheet it opens gives the focus back to it (not to the whole text)
+    take(w);
+    onWord(Number(w.dataset.s), Number(w.dataset.k), w);
+  });
   el.addEventListener('keydown', e => {
+    if (e.target === el) {
+      if (!['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp', 'Home', 'End', 'Enter', ' '].includes(e.key) || !all.length) return;
+      e.preventDefault();
+      take(e.key === 'End' || e.key === 'ArrowLeft' || e.key === 'ArrowUp' ? all[e.key === 'End' ? all.length - 1 : 0] : all[0]);
+      return;
+    }
     const i = all.indexOf(/** @type {HTMLElement} */ (e.target));
     if (i < 0) return;
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onWord(Number(all[i].dataset.s), Number(all[i].dataset.k), all[i]); return; }
+    if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); leave(); el.focus(); return; }
     const to = e.key === 'ArrowRight' || e.key === 'ArrowDown' ? i + 1 : e.key === 'ArrowLeft' || e.key === 'ArrowUp' ? i - 1 : e.key === 'Home' ? 0 : e.key === 'End' ? all.length - 1 : -2;
     if (to === -2) return;
     e.preventDefault();
-    const b = all[Math.max(0, Math.min(all.length - 1, to))];
-    all[i].tabIndex = -1; b.tabIndex = 0; b.focus();
+    take(all[Math.max(0, Math.min(all.length - 1, to))]);
   });
-  el.addEventListener('focusin', e => {
-    const b = /** @type {HTMLElement} */ (e.target);
-    if (!all.includes(b)) return;
-    for (const x of all) x.tabIndex = x === b ? 0 : -1;
+  el.addEventListener('focusout', e => {
+    const next = /** @type {Node | null} */ (/** @type {FocusEvent} */ (e).relatedTarget);
+    // a sheet opened from a word keeps that word in hand (the focus comes back to it); leaving the text drops it
+    if (next && !el.contains(next) && !(/** @type {Element} */ (next)).closest?.('dialog')) leave();
   });
   draw();
   return {
     el,
     redraw: draw,
-    /** The button of a token. @param {number} si @param {number} ti */
+    /** The element of a token. @param {number} si @param {number} ti */
     button: (si, ti) => at.get(`${si}:${ti}`) || null,
     /** Light the tokens of one word (a separable verb's two halves) or phrase. @param {number} si @param {number[]} ks */
     light(si, ks) { this.clear(); lit = ks.map(k => at.get(`${si}:${k}`)).filter(/** @returns {b is HTMLElement} */ b => !!b); lit.forEach(b => b.classList.add('is-lit')); },
     clear() { lit.forEach(b => b.classList.remove('is-lit')); lit = []; },
     /** Mark the tokens of a lemma as saved, everywhere in the text. @param {(si: number, ti: number) => boolean} test */
     markSaved(test) { for (const b of all) if (test(Number(b.dataset.s), Number(b.dataset.k))) { b.classList.add('is-saved'); b.classList.remove('is-sug'); } },
+    /** The words of the text, in order, as [sentence, token] pairs. */
+    words: () => all.map(b => [Number(b.dataset.s), Number(b.dataset.k)]),
   };
 }
 
@@ -105,7 +152,9 @@ export function closeSheets() { for (const s of [...open]) s.dismiss(); }
  */
 export function sheet({ title, titleLang = false, children, onClose, cls }) {
   const opener = /** @type {HTMLElement | null} */ (document.activeElement);
-  const head = h('div', { class: 'tv-sheet-head' }, h('h2', { class: 'tv-sheet-title', lang: titleLang ? langAttr() : null, dir: titleLang ? dirAttr() : null }, title),
+  // the focus goes to the title (no ring), not to Close: a 44 px ring on × was the loudest thing in the sheet
+  const titleEl = h('h2', { class: 'tv-sheet-title', tabindex: '-1', lang: titleLang ? langAttr() : null, dir: titleLang ? dirAttr() : null }, title);
+  const head = h('div', { class: 'tv-sheet-head' }, titleEl,
     h('button', { type: 'button', class: 'btn btn-quiet pressable tv-sheet-x', 'aria-label': tr('read.close'), onclick: () => close() }, icon('close', { size: 18 })));
   const body = h('div', { class: 'tv-sheet-body' }, children);
   const d = /** @type {HTMLDialogElement} */ (h('dialog', { class: ['tv-sheet', cls], 'aria-label': title }, h('span', { class: 'tv-grab', 'aria-hidden': 'true' }), head, body));
@@ -125,20 +174,23 @@ export function sheet({ title, titleLang = false, children, onClose, cls }) {
   d.addEventListener('cancel', e => { e.preventDefault(); close(); });
   d.addEventListener('click', e => { if (e.target === d) close(); });
   d.showModal();
+  titleEl.focus({ preventScroll: true });
   requestAnimationFrame(() => d.classList.add('is-in'));
   return { el: d, body, close, set: (/** @type {any[]} */ ...kids) => replace(body, ...kids) };
 }
 
 /**
- * The dock's tray: "2 words to review · beibehalten · Branche". A tap opens the list (onOpen).
+ * The dock's tray: "2 words to review", then the newest few, each with a 4 px accent dot (the wash's mark in the
+ * text). With nothing saved it says what a tap does. A tap opens the list (onOpen).
  * @param {{onOpen: () => void}} o
  */
 export function tray({ onOpen }) {
   const countEl = h('b', { class: 'tnum tv-tray-n' }, '0');
-  const what = h('span', { class: 'tv-tray-label' });
+  const what = h('span', { class: 'tv-tray-label tv-tray-long' });
+  const whatShort = h('span', { class: 'tv-tray-label tv-tray-short' });
+  const top = h('span', { class: 'tv-tray-top' }, countEl, ' ', what, whatShort);
   const list = h('span', { class: 'tv-tray-list', lang: langAttr(), dir: dirAttr() });
-  const el = h('button', { type: 'button', class: 'tv-tray pressable', 'aria-haspopup': 'dialog', onclick: onOpen },
-    h('span', { class: 'tv-tray-top' }, countEl, ' ', what), list);
+  const el = h('button', { type: 'button', class: 'tv-tray pressable', 'aria-haspopup': 'dialog', onclick: onOpen }, top, list);
   let n = 0;
   return {
     el,
@@ -146,10 +198,18 @@ export function tray({ onOpen }) {
     set(lemmas, { animate = false } = {}) {
       const was = n;
       n = lemmas.length;
-      if (animate && !reduced() && n !== was) countTo(countEl, n, { duration: 420 }); else { countEl.textContent = String(n); countEl.dataset.value = String(n); }
-      what.textContent = tr('read.tray.label', { n });
-      replace(list, lemmas.slice(0, 3).join(' · '));
-      el.setAttribute('aria-label', `${tr('read.tray.words', { n })}${n ? `: ${lemmas.slice(0, 3).join(', ')}` : ''}`);
+      el.classList.toggle('is-empty', !n);
+      if (!n) { replace(top, h('span', { class: 'tv-tray-label tv-tray-long' }, tr('read.tray.tap')), h('span', { class: 'tv-tray-label tv-tray-short' }, tr('read.tray.tapShort'))); replace(list); el.setAttribute('aria-label', tr('read.tray.tapAria')); return; }
+      if (!top.contains(countEl)) replace(top, countEl, ' ', what, whatShort);
+      // the noun changes on the frame the digit lands on, never before ("0 word" mid-motion)
+      const noun = () => { what.textContent = tr('read.tray.label', { n }); whatShort.textContent = tr('read.tray.labelShort', { n }); };
+      if (animate && !reduced() && n !== was) {
+        countTo(countEl, n, { duration: 420 }).then(noun);
+        const watch = () => { if (countEl.textContent === String(n)) noun(); else if (countEl.dataset.value === String(n)) requestAnimationFrame(watch); };
+        requestAnimationFrame(watch);
+      } else { countEl.textContent = String(n); countEl.dataset.value = String(n); noun(); }
+      replace(list, lemmas.slice(0, 3).map(w => h('span', { class: 'tv-tray-w' }, w)));
+      el.setAttribute('aria-label', `${tr('read.tray.words', { n })}: ${lemmas.slice(0, 3).join(', ')}`);
     },
     /** A copy of the word flies into the count. @param {HTMLElement | null} from */
     lift(from) { return from ? fling(from, countEl, { duration: 420 }) : Promise.resolve(); },
