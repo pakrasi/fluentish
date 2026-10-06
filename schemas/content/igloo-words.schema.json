@@ -128,6 +128,26 @@
       "before": {
         "type": "boolean",
         "description": "French adjectives: goes before the noun."
+      },
+      "dom": {
+        "type": "array",
+        "minItems": 1,
+        "uniqueItems": true,
+        "items": {
+          "enum": [
+            "work",
+            "economy",
+            "news",
+            "politics",
+            "science",
+            "tech",
+            "health",
+            "environment",
+            "society",
+            "general"
+          ]
+        },
+        "description": "Subject domains of a B2 or C1 word (round 4): where a learner meets it in news, work and public life. 'general' stands alone."
       }
     }
   }

@@ -37,7 +37,10 @@ export const FILES = {
   en: 'content/igloo/chunks/en.json',
   priority: 'content/igloo/chunks/priority_de.json',
   read: 'content/read/de.json',
+  words: 'content/igloo/words/de.json',
+  morph: 'authoring/clusters/morph.de.json',
 };
+const WORD_KEYS = ['id', 'w', 'art', 'pl', 'pos', 'en', 'alt', 'level', 'theme', 'rank', 'zipf', 'ex', 'exen', 'forms', 'mine'];
 const PARTS = 'authoring/chunks/parts/german', ACCEPT = 'authoring/chunks/accept/german', SRC = 'authoring/chunks/src';
 const SRC_KEYS = ['id', 'chunk', 'category', 'pragmatic_function', 'register', 'natural_example', 'cefr_level'];
 /** The phrase function groups (B2_BRIEF.md): id → label. The first twelve are the B2 Redemittel groups. */
@@ -230,9 +233,65 @@ export function applyTexts(bs, tokenize) {
   return texts.length ? { [FILES.read]: JSON.stringify({ lang: 'de', texts }, null, 1) + '\n' } : {};
 }
 
+/**
+ * Words: a batch's `words` (new B2 entries with id and zipf computed when authored) go after the last B2 word with
+ * ranks after the level's last; its `dom` ({word id: [domains]}) tags existing words; its `morph` ({word id: {pre,
+ * stem, suf, sep?}}) joins authoring/clusters/morph.de.json, which tools/build-clusters.mjs reads for every word.
+ * @param {ReturnType<typeof batches>} bs
+ */
+export function applyWords(bs) {
+  if (!bs.some(b => b.source.words || b.source.dom || b.source.morph)) return {};
+  /** @type {any[]} */ const words = J(FILES.words);
+  /** @type {Record<string, any>} */ const morph = J(FILES.morph);
+  const tidy = (/** @type {any} */ w) => {
+    const out = /** @type {any} */ ({});
+    for (const k of WORD_KEYS) if (w[k] !== undefined) out[k] = w[k];
+    if (w.dom) out.dom = w.dom;
+    if (w.reviewedBy) Object.assign(out, { reviewedBy: w.reviewedBy, reviewedAt: w.reviewedAt });
+    return out;
+  };
+  for (const b of bs) {
+    const stamp = b.review ? { reviewedBy: b.review.reviewedBy, reviewedAt: b.review.reviewedAt } : null;
+    const reviewed = new Set((b.review && b.review.ids) || []);
+    for (const [id, dom] of Object.entries(b.source.dom || {})) {
+      const i = words.findIndex(w => w.id === id);
+      if (i < 0) throw new Error(`${b.name}: dom for ${id}, which is not in the word list`);
+      words[i] = tidy({ ...words[i], dom });
+    }
+    let last = -1, rank = 0;
+    words.forEach((w, i) => { if (w.level === 'B2') { last = i; rank = Math.max(rank, w.rank || 0); } });
+    const add = [];
+    for (const w of b.source.words || []) {
+      const cur = words.findIndex(x => x.id === w.id);
+      const entry = tidy({ ...w, rank: cur >= 0 ? words[cur].rank : ++rank, alt: w.alt || [], ...(stamp && reviewed.has(`W:${w.id}`) ? stamp : {}) });
+      if (cur >= 0) words[cur] = entry; else add.push(entry);
+    }
+    words.splice(last + 1, 0, ...add);
+    for (const [id, m] of Object.entries(b.source.morph || {})) morph[id] = m;
+  }
+  const morphText = '{\n' + Object.entries(morph).map(([k, v]) => `${JSON.stringify(k)}: ${JSON.stringify(v).replace(/,"/g, ', "').replace(/":/g, '": ')}`).join(',\n') + '\n}\n';
+  // unchanged entries keep their text as it is on disk (parts were written by Python, which spells a float 6.0)
+  const raw = new Map(rawEntries(readFileSync(path.join(ROOT, FILES.words), 'utf8')).map(t => [JSON.parse(t).id, t]));
+  const text = '[' + words.map(w => { const r = raw.get(w.id); return r && JSON.stringify(JSON.parse(r)) === JSON.stringify(w) ? r : JSON.stringify(w); }).join(',') + ']\n';
+  return { [FILES.words]: text, [FILES.morph]: morphText };
+}
+
+/** The top-level entries of a JSON array of objects, as their own text. @param {string} text */
+function rawEntries(text) {
+  const out = []; let depth = 0, start = -1, str = false, esc = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (str) { if (esc) esc = false; else if (c === '\\') esc = true; else if (c === '"') str = false; continue; }
+    if (c === '"') str = true;
+    else if (c === '{') { if (depth++ === 0) start = i; }
+    else if (c === '}') { if (--depth === 0) out.push(text.slice(start, i + 1)); }
+  }
+  return out;
+}
+
 /** Every batch applied, as {path: text}. */
 export function applyAll(bs = batches()) {
-  return { ...applyGrammar(bs), ...applyPhrases(bs), ...applyTexts(bs, tokenizeDe) };
+  return { ...applyGrammar(bs), ...applyPhrases(bs), ...applyTexts(bs, tokenizeDe), ...applyWords(bs) };
 }
 
 /* ---------- machine gates ---------- */
@@ -338,9 +397,35 @@ export async function gates({ only = null, bs = batches() } = {}) {
     const det = Det.run(b.ex, { model: b.ex }, null, { verbs: data.verbs });
     if (det) problems.push({ id, cls: 'detector-fires', text: b.ex, why: `${det.cls}: ${det.hint}` });
     if (Det.classes(b.ex, b.ex).length) problems.push({ id, cls: 'classes-fire', text: b.ex, why: Det.classes(b.ex, b.ex).join(',') });
+    for (const [text, why] of pnear.get(id) || []) if (text.trim().split(/\s+/).length < 2 || !why.trim()) problems.push({ id, cls: 'near-shape', text, why: 'a near miss is a sentence with its reason' });
     for (const [text, why] of pnear.get(id) || []) {
       const g = gradeAnswer(it, text, null, opts); wrongs++;
       if (g.ok && !(g.rest && g.rest.status === 'differs')) problems.push({ id, cls: 'near-miss-right', text, why });
+    }
+  }
+  // words: forms, the example holds the word, no detector on the example, a prompt no other word shows, valid domains
+  let nWords = 0;
+  if (bs.some(b => b.source.words || b.source.dom)) {
+    const F = await import(pathToFileURL(path.join(ROOT, 'src/domain/forms.js')).href);
+    const files = applyAll(bs);
+    const words = JSON.parse(files[FILES.words]);
+    for (const e of F.validateForms(J('content/b1/forms.json'), words)) problems.push({ id: 'forms', cls: 'forms', text: e, why: '' });
+    const ix = F.formsIndex(words, J('content/b1/forms.json'));
+    const shown = (/** @type {any} */ w) => (w.en || []).slice(0, 3).join('; ').trim().toLowerCase();
+    const prompts = new Map(); for (const w of words) { const k = shown(w); prompts.set(k, [...(prompts.get(k) || []), w.id]); }
+    const DOMS = new Set(['work', 'economy', 'news', 'politics', 'science', 'tech', 'health', 'environment', 'society', 'general']);
+    const mine = new Set(bs.flatMap(b => (b.source.words || []).map((/** @type {any} */ w) => w.id)));
+    for (const w of words) {
+      if (w.dom && (!w.dom.length || w.dom.some((/** @type {string} */ d) => !DOMS.has(d)) || (w.dom.includes('general') && w.dom.length > 1))) problems.push({ id: w.id, cls: 'dom', text: w.dom.join(','), why: 'domains from the list; general alone' });
+      if (['B2', 'C1'].includes(w.level) && !w.dom) problems.push({ id: w.id, cls: 'dom', text: '', why: 'a B2/C1 word without dom' });
+      if (!mine.has(w.id) || (only && !only.has(w.id))) continue;
+      nWords++;
+      if (w.level !== 'B2') problems.push({ id: w.id, cls: 'level', text: w.level, why: 'new words stay at B2 (B1 numbers must not move)' });
+      const f = F.formsOf(ix, { lemma: w.w, pos: w.pos, id: `W:${w.id}` });
+      if (!w.ex || !F.findForm(w.ex, [w.w, ...((f && f.surface) || [])])) problems.push({ id: w.id, cls: 'example', text: w.ex, why: 'the example does not hold the word' });
+      const det = w.ex ? Det.run(w.ex, { model: w.ex }, null, { verbs: data.verbs }) : null;
+      if (det) problems.push({ id: w.id, cls: 'detector-fires', text: w.ex, why: det.cls });
+      if ((prompts.get(shown(w)) || []).length > 1) problems.push({ id: w.id, cls: 'prompt', text: shown(w), why: `also ${prompts.get(shown(w)).filter((/** @type {string} */ x) => x !== w.id).join(', ')}` });
     }
   }
   // graded texts
@@ -350,7 +435,7 @@ export async function gates({ only = null, bs = batches() } = {}) {
     nTexts += texts.length;
     for (const e of await textErrors(texts, { verbs: data.verbs })) problems.push({ id: b.name, cls: 'text', text: e, why: '' });
   }
-  return { problems, counts: { items: only ? [...only].filter(x => !/^(ENG_CHUNK|read\/)/.test(x)).length : b2.length, phrases: nPhrases, texts: nTexts, rights, nearMisses: wrongs, generated: gen } };
+  return { problems, counts: { items: only ? [...only].filter(x => /^[a-z0-9-]+\.\d{2}$/.test(x)).length : b2.length, phrases: nPhrases, texts: nTexts, words: nWords, rights, nearMisses: wrongs, generated: gen } };
 }
 const norm = (/** @type {string} */ s) => String(s).toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
 /** The words a filled gap sentence has in the gap's place, or null when the error is outside the gap. @param {string} prompt @param {string} filled */
@@ -446,7 +531,11 @@ export async function textErrors(texts, { verbs = null } = {}) {
 /** phrase id → [[text, why]] from every batch's source.json phrases[id].near. */
 export function phraseNear(bs = batches()) {
   /** @type {Map<string, [string, string][]>} */ const m = new Map();
-  for (const b of bs) for (const [id, p] of Object.entries(b.source.phrases || {})) if (/** @type {any} */ (p).near) m.set(id, /** @type {any} */ (p).near);
+  const pair = (/** @type {any} */ x) => (Array.isArray(x) ? [String(x[0]), String(x[1] || '')] : typeof x === 'string' ? [x, ''] : [String(x.text || x.answer || ''), String(x.why || '')]);
+  for (const b of bs) for (const [id, p] of Object.entries(b.source.phrases || {})) {
+    const n = /** @type {any} */ (p).near;
+    if (n) m.set(id, /** @type {[string, string][]} */ ((Array.isArray(n) ? n : [n]).map(pair)));
+  }
   return m;
 }
 
@@ -481,11 +570,11 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.a
       bs = [...bs.filter(x => x.name !== b.name), b];
     } else if (name) b = bs.find(x => x.name === name) || null;
     if (name && !b) { console.error(`no batch ${name}`); process.exit(2); }
-    const only = b ? new Set([...(b.source.items || []).map((/** @type {any} */ x) => x.id), ...Object.keys(b.source.phrases || {}), ...(b.source.texts || []).map((/** @type {any} */ t) => t.id)]) : null;
+    const only = b ? new Set([...(b.source.items || []).map((/** @type {any} */ x) => x.id), ...Object.keys(b.source.phrases || {}), ...(b.source.texts || []).map((/** @type {any} */ t) => t.id), ...(b.source.words || []).map((/** @type {any} */ w) => w.id)]) : null;
     const { problems, counts } = await gates({ only, bs });
     for (const p of problems) errs.push(`${p.cls} ${p.id}: ${p.text} (${p.why})`);
     for (const e of errs) console.error(e);
-    console.log(`b2 ${cmd}${name ? ` ${name}` : ''}: ${counts.items} items, ${counts.phrases} phrases, ${counts.texts} texts, ${counts.rights} answers, ${counts.nearMisses} near misses, ${counts.generated} generated errors; ${errs.length} problem(s)`);
+    console.log(`b2 ${cmd}${name ? ` ${name}` : ''}: ${counts.items} items, ${counts.phrases} phrases, ${counts.texts} texts, ${counts.words || 0} words, ${counts.rights} answers, ${counts.nearMisses} near misses, ${counts.generated} generated errors; ${errs.length} problem(s)`);
     process.exit(errs.length ? 1 : 0);
   } else if (cmd === 'packet') {
     // node tools/b2.mjs packet <batch|source.json>: the batch as reviewers read it (applied, so existing items show too)
