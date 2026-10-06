@@ -26,6 +26,8 @@ import { glossSheet, sentSheet } from './sheets.js';
 /** Waits before retrying a request that failed for a passing reason (rate, overloaded, offline, a broken stream). */
 const RETRY_MS = [1000, 3000, 8000];
 const PASSING = new Set(['rate', 'overloaded', 'offline', 'stream']);
+/** A tap on Stop this soon after Send is the second half of a double tap, not a stop (the request is billed either way). */
+const STOP_GRACE_MS = 400;
 
 /**
  * @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx @param {D.Session} s0
@@ -38,6 +40,8 @@ export async function mountChat(el, ctx, s0) {
   let alive = true;
   /** @type {AbortController | null} */ let ctl = null;
   let busy = false;
+  let sentAt = 0;
+  /** @type {string | null | undefined} */ let lastWhy;   // the composer's last closed state (undefined: not drawn yet)
   const id = s0.id;
   const sess = () => /** @type {D.Session} */ (D.getSession(store, id));
   let tr = /** @type {C.Transcript} */ (D.getTranscript(store, id));
@@ -70,7 +74,7 @@ export async function mountChat(el, ctx, s0) {
       if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); sendTyped(); }
     } }));
   const count = h('span', { class: 'caption tnum cv-count', 'aria-live': 'polite' });
-  const sendBtn = h('button', { type: 'button', class: 'cv-send pressable', 'aria-label': t('conv.send'), onclick: () => (busy ? stop() : sendTyped()) }, icon('next', { size: 20 }));
+  const sendBtn = h('button', { type: 'button', class: 'cv-send pressable', 'aria-label': t('conv.send'), onclick: () => (busy ? stopTap() : sendTyped()) }, icon('next', { size: 20 }));
   const chips = h('div', { class: 'cv-helpers', role: 'group', 'aria-label': t('conv.helpers') },
     (conv?.chips || []).map((/** @type {string} */ c) => h('button', { type: 'button', class: 'chip pressable cv-helper', lang: langAttr(), dir: dirAttr(), onclick: () => insert(c) }, c)));
   const closedBox = h('div', { class: 'cv-closed', hidden: true });
@@ -181,13 +185,20 @@ export async function mountChat(el, ctx, s0) {
 
   const scrollEnd = (/** @type {Element} */ x) => { try { x.scrollIntoView({ block: 'end', behavior: reduced() ? 'auto' : 'smooth' }); } catch { /* old engines */ } };
 
-  /** The composer's state: closed at a limit, or for a missing key. */
-  function drawComposer() {
+  /**
+   * The composer's state: closed at a limit, or for a missing key. say: a reply to announce first (one announcement,
+   * so the closing line never cuts the reply off).
+   * @param {string} [say]
+   */
+  function drawComposer(say = '') {
     const s = sess();
     const c = ctx.clock.ctx();
     const load = C.sessionLoad({ turns: s.turns, startedAt: s.startedAt, usage: s.usage }, Date.now());
     const month = C.monthLoad(D.monthSpent(store, c.today), D.convSettings(ctx.settings()).monthlyCapUsd);
     const why = !D.claudeKey(store) ? 'key' : load.closed ? 'session' : month.over ? 'month' : null;
+    const hadFocus = document.activeElement === field;
+    const closing = !!why && why !== lastWhy && lastWhy !== undefined;
+    lastWhy = why;
     composer.classList.toggle('is-closed', !!why);
     field.disabled = !!why;
     sendBtn.toggleAttribute('disabled', !!why && !busy);
@@ -197,9 +208,13 @@ export async function mountChat(el, ctx, s0) {
       replace(closedBox, h('p', null, why === 'key' ? t('conv.closed.key') : why === 'month' ? t('conv.closed.month', { cap: D.money(month.cap) }) : t('conv.closed.session')),
         why === 'key' ? h('a', { class: 'btn pressable', href: '#/profile/connections' }, t('conv.noKey.link'))
           : h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: () => end() }, t('conv.feedback.get')));
+      // the field just closed under him: say why (a screen reader hears it) and give focus to the way on (audit P1-13)
+      if (closing) say = [say, /** @type {HTMLElement} */ (closedBox.firstChild).textContent || ''].filter(Boolean).join(' ');
+      if (hadFocus || (closing && document.activeElement === document.body)) /** @type {HTMLElement | null} */ (closedBox.querySelector('a, button'))?.focus();
     } else if (load.warn) {
       status.replaceChildren(h('p', { class: 'caption' }, t('conv.nearEnd')));
     }
+    if (say) announce(say);
     return why;
   }
 
@@ -218,7 +233,8 @@ export async function mountChat(el, ctx, s0) {
     if (busy || !alive) return;
     const key = D.claudeKey(store);
     if (!tr.system || !conv) { status.replaceChildren(h('p', { class: 'caption' }, t('conv.noPack'))); return; }
-    if (drawComposer() && user != null) return;
+    // closed at a limit: no request at all, the opening's "Try again" included (audit P1-3)
+    if (drawComposer()) return;
     if (!key) return;
     const s = sess();
     const load = C.sessionLoad({ turns: s.turns, startedAt: s.startedAt, usage: s.usage }, Date.now());
@@ -229,6 +245,7 @@ export async function mountChat(el, ctx, s0) {
     if (user != null && load.warn && !s.closing) systems.push(closingNote());
     const body = C.turnRequest({ model: s.models.turn, base: tr.system.base, session: tr.system.session, messages: C.nextMessages(tr, user, systems) });
     busy = true;
+    sentAt = Date.now();
     hush();
     status.replaceChildren();
     sendBtn.setAttribute('aria-label', t('conv.stop'));
@@ -248,6 +265,8 @@ export async function mountChat(el, ctx, s0) {
         res = await stream({ key, body, signal: ctl.signal, onText: text => { lineEl.textContent = C.visibleText(text); } });
         break;
       } catch (e) {
+        // a request the API took is billed even when it failed, was stopped or the page was left: count it now
+        if (e instanceof ClaudeError && e.usage) D.charge(store, id, ctx.clock.ctx().today, s.models.turn, e.usage);
         const code = e instanceof ClaudeError ? e.code : 'other';
         if (code === 'aborted' || !alive) { failed = 'aborted'; break; }
         if (PASSING.has(code) && attempt < RETRY_MS.length) {
@@ -263,13 +282,13 @@ export async function mountChat(el, ctx, s0) {
     }
     ctl = null;
     busy = false;
+    // counted before anything else, so leaving the page mid-reply never loses a charge
+    if (res) D.charge(store, id, ctx.clock.ctx().today, res.model || s.models.turn, res.usage);
     composer.classList.remove('is-busy');
     sendBtn.setAttribute('aria-label', t('conv.send'));
     replace(sendBtn, icon('next', { size: 20 }));
     if (!alive) return;
     status.replaceChildren();
-    const day = ctx.clock.ctx().today;
-    if (res) D.charge(store, id, day, res.model || s.models.turn, res.usage);
     const text = res ? String(res.text || '').trim() : '';
     const cut = res && res.stop === 'max_tokens' && !/[.!?…]["“”»]?$/.test(text);
     if (failed || !res || res.stop === 'refusal' || !text || cut) {
@@ -296,14 +315,15 @@ export async function mountChat(el, ctx, s0) {
     const b = partnerBubble(turn, lastLearner, { fresh: true });
     pending.replaceWith(b.li);
     if (b.recast) requestAnimationFrame(() => requestAnimationFrame(() => b.recast?.classList.add('is-drawn')));
-    announce(C.parseReply(text, lastLearner).plain);
     haptic();
     scrollEnd(b.li);
     drawMeta();
-    drawComposer();
+    drawComposer(C.parseReply(text, lastLearner).plain);
   }
 
   function stop() { ctl?.abort(); }
+  /** The send button while a reply streams: Stop, but not in the first STOP_GRACE_MS (a quick second tap on Send). */
+  function stopTap() { if (Date.now() - sentAt >= STOP_GRACE_MS) stop(); }
 
   function toggleSlower() {
     const s = sess();

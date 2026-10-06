@@ -14,7 +14,7 @@ import { tokenize } from '../../domain/text/tokens.js';
 import { headOf, glossOf } from '../../domain/text/suggest.js';
 import * as C from '../../domain/conversation.js';
 import { glossPrompt, IDS } from './prompts.js';
-import { claudeKey, charge, money, USED } from './data.js';
+import { claudeKey, charge, money, monthSpent, convSettings, USED } from './data.js';
 
 /**
  * @param {import('../contract.js').ViewCtx} ctx
@@ -29,7 +29,7 @@ export function sentSheet(ctx, { interests, cap, spent }) {
     children: [
       h('h3', { class: 'cv-sheet-h' }, t('conv.sent.goes')),
       h('ul', { class: 'cv-list' }, li('conv.sent.goes.messages'), li('conv.sent.goes.replies'), li('conv.sent.goes.level'),
-        interests.length ? li('conv.sent.goes.interests', { list: interests.join(', ') }) : li('conv.sent.goes.noInterests')),
+        interests.length ? li('conv.sent.goes.interests', { list: interests.join(', ') }) : li('conv.sent.goes.noInterests'), li('conv.sent.goes.gloss')),
       h('p', { class: 'caption' }, t('conv.sent.anthropic')),
       h('h3', { class: 'cv-sheet-h' }, t('conv.sent.never')),
       h('ul', { class: 'cv-list' }, li('conv.sent.never.profile'), li('conv.sent.never.cards')),
@@ -74,7 +74,10 @@ export function glossSheet(ctx, { word, sentence, lang, sessionId }) {
   const playable = canSay(bcp47(), { localOnly: true });
   const play = playable ? h('button', { type: 'button', class: 'btn pressable', onclick: () => { say(head, bcp47(), { localOnly: true }); } }, icon('speaker', { size: 18 }), t('conv.play')) : null;
   /** @type {HTMLButtonElement | null} */ let askBtn = null;
-  if (!entry && claudeKey(store)) {
+  const today = ctx.clock.ctx().today;
+  const monthOver = C.monthLoad(monthSpent(store, today), convSettings(ctx.settings()).monthlyCapUsd).over;
+  if (!entry && claudeKey(store) && monthOver) out.replaceChildren(h('p', { class: 'caption' }, t('conv.gloss.month')));
+  else if (!entry && claudeKey(store)) {
     const b = /** @type {HTMLButtonElement} */ (h('button', { type: 'button', class: 'btn pressable' }, t('conv.gloss.ask')));
     b.onclick = async () => {
       b.disabled = true;
@@ -90,6 +93,7 @@ export function glossSheet(ctx, { word, sentence, lang, sessionId }) {
           h('p', { class: 'caption' }, t('conv.gloss.fromClaude')));
         b.remove();
       } catch (e) {
+        if (e instanceof ClaudeError && e.usage) charge(store, sessionId, ctx.clock.ctx().today, config.anthropic.models.check, e.usage);
         b.disabled = false;
         out.replaceChildren(h('p', { class: 'caption' }, t(`conv.err.${e instanceof ClaudeError ? e.code : 'other'}`)));
       }

@@ -16,6 +16,9 @@ import * as F from '../../domain/conversation-feedback.js';
 import * as D from './data.js';
 import { feedbackSystem, IDS } from './prompts.js';
 
+/** Sessions whose feedback request is out now: one at a time per conversation (a reopened page waits for it). */
+const inflight = new Set();
+
 /** Words of b that are not in a's longest common run (the changed words of a correction). @param {string} a @param {string} b */
 export function changed(a, b) {
   const x = a.split(/\s+/).filter(Boolean), y = b.split(/\s+/).filter(Boolean);
@@ -52,13 +55,24 @@ export async function mountFeedback(el, ctx, s0) {
     const key = D.claudeKey(store);
     if (!tr || !conv) { drawError('gone'); return; }
     if (!key) { drawError('nokey'); return; }
-    replace(el, frame(h('div', { class: 'page-head' }, h('h1', null, t('conv.fb.title'))),
-      h('p', { class: 'cv-wait', role: 'status' }, h('span', { class: 'cv-typing', 'aria-hidden': 'true' }, h('i'), h('i'), h('i')), ' ', t('conv.fb.writing'))));
+    const today = ctx.clock.ctx().today;
+    const month = C.monthLoad(D.monthSpent(store, today), D.convSettings(ctx.settings()).monthlyCapUsd);
+    const tries = D.getSession(store, id)?.feedbackTries || 0;
+    const gate = C.feedbackGate({ tries, running: inflight.has(id), monthOver: month.over });
+    if (gate === 'month') { drawError('month', { cap: D.money(month.cap) }); return; }
+    if (gate === 'running') { drawWait(); waitFor(); return; }
+    inflight.add(id);
+    drawWait();
+    // a try counts once it was billed (a request never sent costs nothing and does not use up the try past the cap)
+    const billed = (/** @type {string} */ model, /** @type {C.Usage} */ usage) => {
+      D.charge(store, id, today, model, usage);
+      D.patchSession(store, id, { feedbackTries: (D.getSession(store, id)?.feedbackTries || 0) + 1 });
+    };
     const s = /** @type {D.Session} */ (D.getSession(store, id));
     try {
       const r = await ask({ key, system: feedbackSystem(conv, s.level, s.partnerLevel), user: C.feedbackTranscript(tr.turns), model: s.models.feedback, maxTokens: 16000, effort: 'medium',
         format: { type: 'json_schema', schema: F.feedbackSchema() } });
-      D.charge(store, id, ctx.clock.ctx().today, r.model || s.models.feedback, C.usageOf(r.usage));
+      billed(r.model || s.models.feedback, C.usageOf(r.usage));
       /** @type {any} */ let raw;
       try { raw = JSON.parse(r.text); } catch { throw new ClaudeError('format'); }
       const live = listMistakes(store).filter(m => m.source.attemptId !== attemptId);
@@ -67,18 +81,34 @@ export async function mountFeedback(el, ctx, s0) {
         raw, dropped: checked.dropped, added: (D.getFeedback(store, id)?.added) || [] });
       if (alive) draw();
     } catch (e) {
+      // a cut-off, refused or empty reply was billed: count it (it carries its usage)
+      if (e instanceof ClaudeError && e.usage) billed(s.models.feedback, e.usage);
       if (alive) drawError(e instanceof ClaudeError ? e.code : 'other');
+    } finally {
+      inflight.delete(id);
     }
   }
 
-  /** @param {string} code */
-  function drawError(code) {
+  /** Another page of this conversation asked first: draw what it gets. */
+  async function waitFor() {
+    while (alive && inflight.has(id)) await new Promise(r => setTimeout(r, 500));
+    if (!alive) return;
+    if (D.getFeedback(store, id)) draw(); else drawError('other');
+  }
+
+  function drawWait() {
     replace(el, frame(h('div', { class: 'page-head' }, h('h1', null, t('conv.fb.title'))),
-      h('p', { class: 'cv-error', role: 'alert' }, t(`conv.err.${code}`)),
+      h('p', { class: 'cv-wait', role: 'status' }, h('span', { class: 'cv-typing', 'aria-hidden': 'true' }, h('i'), h('i'), h('i')), ' ', t('conv.fb.writing'))));
+  }
+
+  /** @param {string} code @param {Record<string, any>} [vars] */
+  function drawError(code, vars = {}) {
+    replace(el, frame(h('div', { class: 'page-head' }, h('h1', null, t('conv.fb.title'))),
+      h('p', { class: 'cv-error', role: 'alert' }, t(`conv.err.${code}`, vars)),
       h('p', { class: 'caption' }, t('conv.fb.kept')),
       h('div', { class: 'row-actions wrap' },
         ['key', 'nokey', 'credit', 'forbidden'].includes(code) ? h('a', { class: 'btn pressable', href: '#/profile/connections' }, t('conv.noKey.link'))
-          : code !== 'gone' ? h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: () => run() }, t('conv.tryAgain')) : null,
+          : code !== 'gone' && code !== 'month' ? h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: () => run() }, t('conv.tryAgain')) : null,
         h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => finish([]) }, t('conv.fb.finishNone')))));
   }
 

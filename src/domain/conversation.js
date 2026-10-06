@@ -294,6 +294,18 @@ export function monthLoad(usd, cap) {
   return { cap: c, usd, share, warn: share >= LIMITS.warn - EPS, over: share >= 1 - EPS };
 }
 
+/**
+ * Whether the feedback may be asked for (again): never while a request for it is out (a reopened page waits for it);
+ * past the monthly cap only the first time (the conversation that reached the cap still gets its review; Try again
+ * waits for next month or a higher limit). tries: feedback requests of this conversation already billed.
+ * @param {{tries: number, running: boolean, monthOver: boolean}} o @returns {'ok' | 'running' | 'month'}
+ */
+export function feedbackGate({ tries, running, monthOver }) {
+  if (running) return 'running';
+  if (monthOver && tries >= 1) return 'month';
+  return 'ok';
+}
+
 /** What the next session will probably cost: the mean of his last 10 sessions that cost something. @param {any[]} sessions */
 export function estimateNext(sessions) {
   const done = sessions.filter(s => s && !s.deletedAt && Number(s.costUsd) > 0).sort((a, b) => (a.startedAt || 0) - (b.startedAt || 0)).slice(-10);

@@ -52,9 +52,37 @@ export function graderMessage(ex, texts) {
 }
 
 export class ClaudeError extends Error {
-  /** @param {string} code a short code the UI turns into a sentence @param {string} [detail] */
-  constructor(code, detail = '') { super(detail || code); this.code = code; }
+  /**
+   * @param {string} code a short code the UI turns into a sentence @param {string} [detail]
+   * @param {Usage | null} [usage] what the request was billed when it failed after the API took it (a reply cut off,
+   *   refused or empty, a stream that broke or was stopped): the API's own numbers, or a conservative estimate
+   *   (billedEstimate) where they never arrived. null: nothing was billed (an HTTP error, a request never sent).
+   */
+  constructor(code, detail = '', usage = null) { super(detail || code); this.code = code; this.usage = usage; }
 }
+
+/* ---------- what a failed request cost ----------
+   Every request the API took is billed, whether or not a reply arrives. A failed call carries its usage on the
+   ClaudeError so the caller can count it (conversation practice: data.js charge). Where the API's numbers never
+   arrived, the estimate errs high: input at 3 characters a token of the whole request body (cache reads counted as
+   full input), output at 3 characters a token of what arrived plus LOST_OUT_MARGIN (the server goes on writing until
+   it sees the connection close), and a request whose response never came at all, after LOST_MS, at its max_tokens. */
+
+/** A request out this long before it failed was taken by the API (counted); a quicker failure was never sent. */
+export const LOST_MS = 1500;
+/** Output tokens added to an estimate from the text that arrived. */
+export const LOST_OUT_MARGIN = 50;
+/** Tokens of a text, estimated high (German averages about 4 characters a token). @param {number} chars */
+export const tokensOf = chars => Math.ceil(Math.max(0, chars) / 3);
+
+/** The API's usage object as a Usage. @param {any} u @returns {Usage} */
+export const apiUsage = u => ({ in: u?.input_tokens || 0, cacheRead: u?.cache_read_input_tokens || 0, cacheWrite: u?.cache_creation_input_tokens || 0, out: u?.output_tokens || 0 });
+
+/**
+ * The usage of a request whose response never arrived: its whole body as input, max_tokens as output.
+ * @param {Record<string, any>} body @returns {Usage}
+ */
+export const billedEstimate = body => ({ in: tokensOf(JSON.stringify(body || {}).length), cacheRead: 0, cacheWrite: 0, out: Number(body?.max_tokens) || 0 });
 
 /** HTTP status and message → a ClaudeError code. @param {number} status @param {string} msg */
 export function errorCode(status, msg) {
@@ -98,16 +126,19 @@ export async function ask({ key, system = '', user, model = config.anthropic.mod
   if (format) body.output_config = { ...(body.output_config || {}), format };
   if (fallback) body.fallbacks = 'default';
   let r;
+  const t0 = Date.now();
   try {
     r = await f(config.anthropic.api, { method: 'POST', headers, body: JSON.stringify(body) });
-  } catch (e) { throw new ClaudeError('offline'); }
+  } catch (e) { throw new ClaudeError('offline', '', Date.now() - t0 >= LOST_MS ? billedEstimate(body) : null); }
   /** @type {any} */ let j = null;
   try { j = await r.json(); } catch { /* not json */ }
   if (!r.ok) throw new ClaudeError(errorCode(r.status, j?.error?.message || ''), j?.error?.message || r.statusText);
-  if (j?.stop_reason === 'refusal') throw new ClaudeError('refusal');
-  if (j?.stop_reason === 'max_tokens') throw new ClaudeError('cut');
+  // from here the request was billed: a failure carries what it cost
+  const usage = j?.usage ? apiUsage(j.usage) : billedEstimate(body);
+  if (j?.stop_reason === 'refusal') throw new ClaudeError('refusal', '', usage);
+  if (j?.stop_reason === 'max_tokens') throw new ClaudeError('cut', '', usage);
   const text = (j?.content || []).filter((/** @type {any} */ b) => b.type === 'text').map((/** @type {any} */ b) => b.text).join('').trim();
-  if (!text) throw new ClaudeError('empty');
+  if (!text) throw new ClaudeError('empty', '', usage);
   return { text, model: j.model || model, usage: j.usage || null };
 }
 
@@ -173,7 +204,7 @@ export function sseParser() {
 /**
  * The message being streamed, built event by event.
  * @returns {{apply: (e: SSEvent) => void, content: any[], text: () => string, stop: () => string | null, stopDetails: () => any,
- *   usage: () => Usage, model: () => string | null, error: () => {type: string, message: string} | null, done: () => boolean}}
+ *   usage: () => Usage, seen: () => {start: boolean, delta: boolean}, model: () => string | null, error: () => {type: string, message: string} | null, done: () => boolean}}
  */
 export function accumulate() {
   /** @type {any[]} */ const content = [];
@@ -183,6 +214,7 @@ export function accumulate() {
   /** @type {{type: string, message: string} | null} */ let error = null;
   let done = false;
   /** @type {Usage} */ const usage = { in: 0, cacheRead: 0, cacheWrite: 0, out: 0 };
+  const seen = { start: false, delta: false };
   /** @param {any} u */
   const take = u => {
     if (!u) return;
@@ -195,7 +227,7 @@ export function accumulate() {
     content,
     apply({ type, data }) {
       const d = data || {};
-      if (type === 'message_start') { model = d.message?.model || null; take(d.message?.usage); }
+      if (type === 'message_start') { model = d.message?.model || null; take(d.message?.usage); seen.start = !!d.message?.usage; }
       else if (type === 'content_block_start' && Number.isInteger(d.index)) content[d.index] = structuredClone(d.content_block || {});
       else if (type === 'content_block_delta' && Number.isInteger(d.index)) {
         const b = content[d.index] || (content[d.index] = { type: 'text', text: '' });
@@ -209,6 +241,7 @@ export function accumulate() {
         if (d.delta && 'stop_reason' in d.delta) stop = d.delta.stop_reason;
         if (d.delta && d.delta.stop_details) stopDetails = d.delta.stop_details;
         take(d.usage);
+        if (d.usage && Number.isFinite(d.usage.output_tokens)) seen.delta = true;
       } else if (type === 'message_stop') done = true;
       else if (type === 'error') error = { type: d.error?.type || 'error', message: d.error?.message || '' };
     },
@@ -216,6 +249,7 @@ export function accumulate() {
     stop: () => stop,
     stopDetails: () => stopDetails,
     usage: () => ({ ...usage }),
+    seen: () => ({ ...seen }),
     model: () => model,
     error: () => error,
     done: () => done,
@@ -246,10 +280,11 @@ export async function stream({ key, body, beta = null, signal, onText, fetch: f 
   };
   if (beta) headers['anthropic-beta'] = beta;
   let r;
+  const t0 = Date.now();
   try {
     r = await f(config.anthropic.api, { method: 'POST', headers, body: JSON.stringify({ ...body, stream: true }), signal });
   } catch (e) {
-    throw new ClaudeError(signal?.aborted ? 'aborted' : 'offline');
+    throw new ClaudeError(signal?.aborted ? 'aborted' : 'offline', '', Date.now() - t0 >= LOST_MS ? billedEstimate(body) : null);
   }
   if (!r.ok) {
     /** @type {any} */ let j = null;
@@ -260,16 +295,30 @@ export async function stream({ key, body, beta = null, signal, onText, fetch: f 
   const msg = accumulate();
   const dec = new TextDecoder();
   let last = '';
+  /**
+   * What the request has been billed so far: the API's numbers (message_start's input, message_delta's output), with
+   * what never arrived estimated high (see LOST_MS above). Billed from the moment the response began.
+   * @returns {Usage}
+   */
+  const billed = () => {
+    const u = msg.usage(), seen = msg.seen();
+    if (!seen.start) { const est = billedEstimate(body); u.in = Math.max(u.in, est.in); }
+    if (!seen.delta) {
+      const chars = msg.content.reduce((n, b) => n + String((b && (b.text || b.thinking || b.partial_json)) || '').length, 0);
+      u.out = Math.max(u.out, tokensOf(chars) + LOST_OUT_MARGIN);
+    }
+    return u;
+  };
   /** @param {SSEvent[]} evs */
   const feed = evs => {
     for (const e of evs) msg.apply(e);
     const err = msg.error();
-    if (err) throw new ClaudeError(streamErrorCode(err.type), err.message);
+    if (err) throw new ClaudeError(streamErrorCode(err.type), err.message, billed());
     const now = msg.text();
     if (now !== last) { last = now; onText?.(now); }
   };
   const reader = r.body?.getReader();
-  if (!reader) throw new ClaudeError('stream');
+  if (!reader) throw new ClaudeError('stream', '', billed());
   try {
     for (;;) {
       const { value, done } = await reader.read();
@@ -280,11 +329,11 @@ export async function stream({ key, body, beta = null, signal, onText, fetch: f 
     feed(parse.end());
   } catch (e) {
     if (e instanceof ClaudeError) throw e;
-    throw new ClaudeError(signal?.aborted ? 'aborted' : 'stream');
+    throw new ClaudeError(signal?.aborted ? 'aborted' : 'stream', '', billed());
   } finally {
     try { reader.releaseLock(); } catch { /* released */ }
   }
-  if (!msg.done()) throw new ClaudeError(signal?.aborted ? 'aborted' : 'stream');
+  if (!msg.done()) throw new ClaudeError(signal?.aborted ? 'aborted' : 'stream', '', billed());
   return { content: msg.content.filter(Boolean), text: msg.text(), stop: msg.stop(), stopDetails: msg.stopDetails(), usage: msg.usage(), model: msg.model() || String(body.model || '') };
 }
 
@@ -306,7 +355,7 @@ export function isCorrection(text) {
 export async function correctSchreiben({ key, ex, texts, learnerNotes, fetch: f }) {
   const res = await ask({ key, system: graderSystem(learnerNotes), user: graderMessage(ex, texts), fetch: f });
   const body = res.text.replace(/^```[a-z]*\n?|\n?```$/g, '').trim();
-  if (!isCorrection(body)) throw new ClaudeError('format', body.slice(0, 200));
+  if (!isCorrection(body)) throw new ClaudeError('format');   // never the reply itself: it can quote his writing, and errors reach the log
   return { body, model: res.model, promptVersion: PROMPTS.schreibenExam };
 }
 
@@ -349,7 +398,7 @@ export function isTaskCorrection(text) {
 export async function correctTask({ key, task, text, words, fetch: f }) {
   const res = await ask({ key, system: TASK_GRADER, user: taskMessage(task, text, words), maxTokens: 6000, fetch: f });
   const body = res.text.replace(/^```[a-z]*\n?|\n?```$/g, '').trim();
-  if (!isTaskCorrection(body)) throw new ClaudeError('format', body.slice(0, 200));
+  if (!isTaskCorrection(body)) throw new ClaudeError('format');
   return { body, model: res.model, promptVersion: PROMPTS.schreibenTask };
 }
 
