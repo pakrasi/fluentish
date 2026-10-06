@@ -1,0 +1,27 @@
+[
+ {
+  "id": "ENG_CHUNK_1758",
+  "decision": "example kept; the blind answer 'Während des Praktikums …' graded wrong is a detector false positive",
+  "why": "handed to the grader lane"
+ },
+ {
+  "id": "ENG_CHUNK_1816",
+  "decision": "near misses: zahlbaren Wohnraum (restored), bezahlbares Wohnraum, bezahlbaren Wohnungen",
+  "why": "a round 2 edit had stored the near list as one string; the near-shape gate now catches that"
+ },
+ {
+  "id": "ENG_CHUNK_1638, 1646, 1678, 1725, 1747",
+  "decision": "bare noun patterns tied to their verb (führen, Erste Hilfe leisten, stoßen auf, in Betracht ziehen, unter Naturschutz stellen)",
+  "why": "round 3 pass A: the bare pattern accepted the verb error the item teaches"
+ },
+ {
+  "id": "nomen-verb-verbindungen.06",
+  "decision": "'Ihnen steht der Raum zur Verfügung.' keyed",
+  "why": "round 3 pass B"
+ },
+ {
+  "id": "severity",
+  "decision": "round 3 uses the calibrated error definition",
+  "why": "as in P1"
+ }
+]

@@ -8585,7 +8585,8 @@
   "prompt": "Der Raum ist für Sie da.",
   "answer": [
    "Der Raum steht Ihnen zur Verfügung.",
-   "Der Raum steht für Sie zur Verfügung."
+   "Der Raum steht für Sie zur Verfügung.",
+   "Ihnen steht der Raum zur Verfügung."
   ],
   "note": "zur Verfügung stehen + dative.",
   "strict_case": false,
@@ -8685,6 +8686,206 @@
    "nehmen"
   ],
   "note": "etwas in Kauf nehmen = to accept a downside.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "nomen-verb-verbindungen.13",
+  "concept": "nomen-verb-verbindungen",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Write the word in brackets in the Präteritum.",
+  "prompt": "Der Ausschuss ___ den Bericht ohne Kommentar zur Kenntnis. (nehmen)",
+  "answer": [
+   "nahm"
+  ],
+  "note": "etwas zur Kenntnis nehmen = to take note of it.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "nomen-verb-verbindungen.14",
+  "concept": "nomen-verb-verbindungen",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Fill the gap with the noun that means \"effect\".",
+  "prompt": "Die neuen Regeln zeigen bereits ___.",
+  "answer": [
+   "Wirkung"
+  ],
+  "note": "Wirkung zeigen = to have an effect.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "nomen-verb-verbindungen.15",
+  "concept": "nomen-verb-verbindungen",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Fill the gap.",
+  "prompt": "Die Bauarbeiten sind ins Stocken ___.",
+  "answer": [
+   "geraten",
+   "gekommen"
+  ],
+  "note": "ins Stocken geraten (also: kommen) = to stall (Perfekt with sein).",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "nomen-verb-verbindungen.16",
+  "concept": "nomen-verb-verbindungen",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Fill the gap.",
+  "prompt": "Gewerkschaften und Arbeitgeber haben eine Einigung ___.",
+  "answer": [
+   "erzielt",
+   "erreicht",
+   "gefunden"
+  ],
+  "note": "eine Einigung erzielen/erreichen (also: finden) = to reach an agreement.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "nomen-verb-verbindungen.17",
+  "concept": "nomen-verb-verbindungen",
+  "level": "B2",
+  "kind": "transform",
+  "task": "Rewrite with „zur Verfügung stellen“.",
+  "prompt": "Die Firma gibt den Forschern ihre Daten kostenlos.",
+  "answer": [
+   "Die Firma stellt den Forschern ihre Daten kostenlos zur Verfügung.",
+   "Die Firma stellt ihre Daten den Forschern kostenlos zur Verfügung.",
+   "Die Firma stellt den Forschern kostenlos ihre Daten zur Verfügung.",
+   "Die Firma stellt ihre Daten kostenlos den Forschern zur Verfügung."
+  ],
+  "note": "zur Verfügung stellen + dative for who gets it.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "nomen-verb-verbindungen.18",
+  "concept": "nomen-verb-verbindungen",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Fill the gap.",
+  "prompt": "Nur wenige Mieter machen von diesem Recht ___.",
+  "answer": [
+   "Gebrauch"
+  ],
+  "note": "von etwas Gebrauch machen = to make use of it.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "nomen-verb-verbindungen.19",
+  "concept": "nomen-verb-verbindungen",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Write the word in brackets in the right form.",
+  "prompt": "Die Staatsanwaltschaft hat Anklage gegen zwei Manager ___. (erheben)",
+  "answer": [
+   "erhoben"
+  ],
+  "note": "Anklage erheben = to bring charges.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "nomen-verb-verbindungen.20",
+  "concept": "nomen-verb-verbindungen",
+  "level": "B2",
+  "kind": "transform",
+  "task": "Rewrite with „in Angriff nehmen“.",
+  "prompt": "Die Regierung will die Wohnungsnot endlich angehen.",
+  "answer": [
+   "Die Regierung will die Wohnungsnot endlich in Angriff nehmen.",
+   "Die Regierung will endlich die Wohnungsnot in Angriff nehmen."
+  ],
+  "note": "etwas in Angriff nehmen = to tackle it.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "nomen-verb-verbindungen.21",
+  "concept": "nomen-verb-verbindungen",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Fill the gap.",
+  "prompt": "Bitte setzen Sie mich über alle Änderungen in ___.",
+  "answer": [
+   "Kenntnis"
+  ],
+  "note": "jemanden in Kenntnis setzen = to inform someone (formal).",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "nomen-verb-verbindungen.22",
+  "concept": "nomen-verb-verbindungen",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Write the word in brackets in the right form.",
+  "prompt": "Mehrere Nachbarn haben Einspruch gegen den Bau ___. (erheben)",
+  "answer": [
+   "erhoben"
+  ],
+  "note": "Einspruch erheben (also: einlegen) = to lodge an objection.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "nomen-verb-verbindungen.23",
+  "concept": "nomen-verb-verbindungen",
+  "level": "B2",
+  "kind": "transform",
+  "task": "Rewrite with „zum Ausdruck bringen“.",
+  "prompt": "Sie hat ihre Enttäuschung deutlich gezeigt.",
+  "answer": [
+   "Sie hat ihre Enttäuschung deutlich zum Ausdruck gebracht.",
+   "Sie hat deutlich ihre Enttäuschung zum Ausdruck gebracht."
+  ],
+  "note": "etwas zum Ausdruck bringen = to express it.",
+  "strict_case": false,
+  "layer": "b2",
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ {
+  "id": "nomen-verb-verbindungen.24",
+  "concept": "nomen-verb-verbindungen",
+  "level": "B2",
+  "kind": "gap",
+  "task": "Fill the gap.",
+  "prompt": "Bei dem Unfall sind zwei Menschen ums Leben ___.",
+  "answer": [
+   "gekommen"
+  ],
+  "note": "ums Leben kommen = to be killed (accidents, disasters).",
   "strict_case": false,
   "layer": "b2",
   "reviewedBy": "model-2pass",

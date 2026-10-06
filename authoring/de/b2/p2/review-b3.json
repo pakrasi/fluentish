@@ -1,0 +1,90 @@
+[
+ {
+  "id": "nomen-verb-verbindungen.06",
+  "field": "answer",
+  "before": [
+   "Der Raum steht Ihnen zur Verfügung.",
+   "Der Raum steht für Sie zur Verfügung."
+  ],
+  "after": [
+   "Der Raum steht Ihnen zur Verfügung.",
+   "Der Raum steht für Sie zur Verfügung.",
+   "Ihnen steht der Raum zur Verfügung."
+  ],
+  "severity": "improve",
+  "why": "Fronted dative is a natural order the task does not exclude."
+ },
+ {
+  "id": "ENG_CHUNK_1743",
+  "field": "n",
+  "before": "Change of state: unter Verdacht geraten.",
+  "after": "Change of state: unter Verdacht geraten. With a zu-clause, im Verdacht stehen is more usual: Sie stehen im Verdacht, … zu haben.",
+  "severity": "improve",
+  "why": "With a zu-infinitive, 'im Verdacht stehen' is the standard collocation; learner should see it."
+ },
+ {
+  "id": "ENG_CHUNK_1781",
+  "field": "n",
+  "before": "Bedenken is plural only. Also: Bedenken anmelden.",
+  "after": "Bedenken is almost always plural (das Bedenken). Also: Bedenken anmelden.",
+  "severity": "improve",
+  "why": "'plural only' overstates it; Duden: das Bedenken, meist Plural."
+ },
+ {
+  "id": "ENG_CHUNK_1688",
+  "field": "accept",
+  "before": [
+   "sich gedanken über [x] machen",
+   "gedanken ([x]) (zu) machen",
+   "gedanken ([x]) gemacht",
+   "macht ([x]) gedanken",
+   "machen ([x]) gedanken",
+   "gedanken ([x]) macht",
+   "über [x] nachdenken",
+   "nachdenken über"
+  ],
+  "after": [
+   "sich gedanken über [x] machen",
+   "gedanken ([x]) (zu) machen",
+   "gedanken ([x]) gemacht",
+   "macht ([x]) gedanken",
+   "machen ([x]) gedanken",
+   "gedanken ([x]) macht",
+   "über [x] nachdenken",
+   "nachdenken über",
+   "müssen uns ([x]) überlegen"
+  ],
+  "severity": "improve",
+  "why": "'Wir müssen uns überlegen, …' is a very common rendering of 'give some thought to'."
+ },
+ {
+  "id": "ENG_CHUNK_1672",
+  "field": "accept",
+  "before": [
+   "einen beschluss fassen",
+   "beschluss ([x]) (zu) fassen",
+   "beschluss ([x]) gefasst",
+   "fasst ([x]) beschluss",
+   "fassen ([x]) beschluss",
+   "beschluss ([x]) fasst",
+   "fasste(n) ([x]) beschluss",
+   "beschluss ([x]) fasste(n)",
+   "beschlossen"
+  ],
+  "after": [
+   "einen beschluss fassen",
+   "beschluss ([x]) (zu) fassen",
+   "beschluss ([x]) gefasst",
+   "fasst ([x]) beschluss",
+   "fassen ([x]) beschluss",
+   "beschluss ([x]) fasst",
+   "fasste(n) ([x]) beschluss",
+   "beschluss ([x]) fasste(n)",
+   "beschlossen",
+   "beschluss ([x]) verabschiedet",
+   "verabschiedete(n) ([x]) beschluss"
+  ],
+  "severity": "improve",
+  "why": "'einen Beschluss verabschieden' is standard for councils passing a resolution."
+ }
+]

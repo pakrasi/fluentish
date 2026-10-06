@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "93c59c5997c4",
+ "version": "284212b848ee",
  "languages": [
   {
    "id": "khasi",
@@ -351,8 +351,8 @@
    "id": "clusters.de",
    "path": "clusters/de.json",
    "schema": "clusters@1",
-   "bytes": 377401,
-   "sha256": "0ced2785f0adde04cebf2762504deec1b633351042536cd40cf146c93119df28"
+   "bytes": 385001,
+   "sha256": "a5e91684524d94570ca5625cf9215e2aa128487251beb70d23d3d4959c65235d"
   },
   {
    "id": "conversation.de",
@@ -589,8 +589,8 @@
    "id": "igloo.chunks.accept.german",
    "path": "igloo/chunks/accept_german.json",
    "schema": "phrases-accept@1",
-   "bytes": 441192,
-   "sha256": "8f0308ee1125eeb1ad22bea2282b2d673d9ce7555b3f36a622b6f62a19a36f87"
+   "bytes": 535713,
+   "sha256": "e453aca5d3fba00d05500d3e78ef8974b606ed242ab998f9a1abd2b626ed8aad"
   },
   {
    "id": "igloo.chunks.arabic",
@@ -610,8 +610,8 @@
    "id": "igloo.chunks.en",
    "path": "igloo/chunks/en.json",
    "schema": "phrases-source@1",
-   "bytes": 704692,
-   "sha256": "987d206de8149d59a69ec5d9d1b2b90b4851d5ee644982204f0c0540ca3b209c"
+   "bytes": 764444,
+   "sha256": "b8001ac8b63592ef9ee9207daa0a1706fcc356e095c25d2c7d10c916ce5868b9"
   },
   {
    "id": "igloo.chunks.french",
@@ -624,8 +624,8 @@
    "id": "igloo.chunks.german",
    "path": "igloo/chunks/german.json",
    "schema": "phrases@1",
-   "bytes": 285862,
-   "sha256": "304ee48dc167a031cf52084d8ea87bc10430b1af0cf778957914aab9d5dff891"
+   "bytes": 349959,
+   "sha256": "ba30b8e74510cdb5c656d6446f95de1604998631c860876c748ac3e5cf003d8e"
   },
   {
    "id": "igloo.chunks.hindi",
@@ -659,8 +659,8 @@
    "id": "igloo.chunks.priority.de",
    "path": "igloo/chunks/priority_de.json",
    "schema": "phrases-priority@1",
-   "bytes": 32383,
-   "sha256": "b6d47b29b943ed98ed78427cf17f07401afa09c3846ae41cf00ed7c7ca7cef21"
+   "bytes": 36783,
+   "sha256": "c953052c53a4f25e38dfaa916b85baebc23d09c632712414ba019e265d17b964"
   },
   {
    "id": "igloo.chunks.spanish",
@@ -694,8 +694,8 @@
    "id": "igloo.grammar.items.de",
    "path": "igloo/grammar/items_de.json",
    "schema": "grammar@1",
-   "bytes": 402240,
-   "sha256": "e099c61afc9e58a3759189d32c3793933728fa2c52190530c55c2f3c6f3fc765"
+   "bytes": 408004,
+   "sha256": "3a04d2fb57497b7ac4db7c33c4356bfc589573f09d2809c8d13c9ec3a860d274"
   },
   {
    "id": "igloo.lang.french",

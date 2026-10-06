@@ -1,0 +1,4003 @@
+{
+ "ENG_CHUNK_1631": {
+  "core_en": "makes its data available",
+  "accept": [
+   "zur verfügung stellen",
+   "zur verfügung ([x]) (zu) stellen",
+   "zur verfügung ([x]) gestellt",
+   "stellt ([x]) zur verfügung",
+   "stellen ([x]) zur verfügung",
+   "zur verfügung ([x]) stellt",
+   "stellt [x] bereit",
+   "bereitstellen",
+   "bereitgestellt",
+   "macht ([x]) verfügbar",
+   "verfügbar ([x]) machen",
+   "macht ([x]) zugänglich",
+   "zugänglich ([x]) machen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1632": {
+  "core_en": "calls the old model into question",
+  "accept": [
+   "infrage stellen",
+   "infrage ([x]) (zu) stellen",
+   "infrage ([x]) gestellt",
+   "stellt ([x]) infrage",
+   "stellen ([x]) infrage",
+   "infrage ([x]) stellt",
+   "in frage ([x]) (zu) stellen",
+   "in frage ([x]) gestellt",
+   "stellt ([x]) in frage",
+   "stellen ([x]) in frage",
+   "in frage ([x]) stellt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1633": {
+  "core_en": "make a contribution",
+  "accept": [
+   "einen beitrag ([x]) leisten",
+   "beitrag ([x]) (zu) leisten",
+   "beitrag ([x]) geleistet",
+   "leistet ([x]) beitrag",
+   "leisten ([x]) beitrag",
+   "beitrag ([x]) leistet",
+   "beitragen",
+   "trägt ([x]) bei",
+   "tragen ([x]) bei",
+   "beigetragen",
+   "beitrag ([x]) (zu) liefern",
+   "beitrag ([x]) geliefert",
+   "liefert ([x]) beitrag",
+   "liefern ([x]) beitrag"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1634": {
+  "core_en": "exert influence on",
+  "accept": [
+   "einfluss auf [x] nehmen",
+   "einfluss ([x]) (zu) nehmen",
+   "einfluss ([x]) genommen",
+   "nimmt ([x]) einfluss",
+   "nehmen ([x]) einfluss",
+   "einfluss ([x]) nimmt",
+   "einfluss ([x]) ausüben",
+   "einfluss ([x]) auszuüben",
+   "einfluss ([x]) ausgeübt",
+   "übt ([x]) einfluss ([x]) aus",
+   "üben ([x]) einfluss ([x]) aus",
+   "einfluss ([x]) ausübt",
+   "beeinflussen",
+   "beeinflusst"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1635": {
+  "core_en": "submit an application",
+  "accept": [
+   "einen antrag ([x]) stellen",
+   "antrag ([x]) (zu) stellen",
+   "antrag ([x]) gestellt",
+   "stellt ([x]) antrag",
+   "stellen ([x]) antrag",
+   "antrag ([x]) stellt",
+   "antrag ([x]) einreichen",
+   "antrag ([x]) einzureichen",
+   "antrag ([x]) eingereicht",
+   "reicht ([x]) antrag ([x]) ein",
+   "reichen ([x]) antrag ([x]) ein",
+   "antrag ([x]) einreicht",
+   "beantragen",
+   "beantragt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1636": {
+  "core_en": "are used",
+  "accept": [
+   "zum einsatz kommen",
+   "zum einsatz ([x]) (zu) kommen",
+   "zum einsatz ([x]) gekommen",
+   "kommt ([x]) zum einsatz",
+   "kommen ([x]) zum einsatz",
+   "zum einsatz ([x]) kommt",
+   "werden ([x]) eingesetzt",
+   "eingesetzt werden",
+   "werden ([x]) verwendet",
+   "werden ([x]) genutzt",
+   "werden ([x]) benutzt",
+   "setzt man ([x]) ein"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1637": {
+  "core_en": "took note of",
+  "accept": [
+   "zur kenntnis nehmen",
+   "zur kenntnis ([x]) (zu) nehmen",
+   "zur kenntnis ([x]) genommen",
+   "nimmt ([x]) zur kenntnis",
+   "nehmen ([x]) zur kenntnis",
+   "zur kenntnis ([x]) nimmt",
+   "nahm(en) ([x]) zur kenntnis",
+   "zur kenntnis ([x]) nahm(en)"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1638": {
+  "core_en": "holds a one-to-one talk",
+  "accept": [
+   "ein gespräch führen",
+   "(einzel)gespräch ([x]) (zu) führen",
+   "(einzel)gespräch ([x]) geführt",
+   "führt ([x]) (einzel)gespräch",
+   "führen ([x]) (einzel)gespräch",
+   "(einzel)gespräch ([x]) führt",
+   "führte(n) ([x]) (einzel)gespräch",
+   "(einzel)gespräch ([x]) führte(n)",
+   "vier-augen-gespräch ([x]) (zu) führen",
+   "vier-augen-gespräch ([x]) geführt",
+   "führt ([x]) vier-augen-gespräch",
+   "führen ([x]) vier-augen-gespräch"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1639": {
+  "core_en": "put into operation",
+  "accept": [
+   "in betrieb nehmen",
+   "in betrieb ([x]) (zu) nehmen",
+   "in betrieb ([x]) genommen",
+   "nimmt ([x]) in betrieb",
+   "nehmen ([x]) in betrieb",
+   "in betrieb ([x]) nimmt",
+   "in betrieb ([x]) (zu) gehen",
+   "in betrieb ([x]) gegangen",
+   "geht ([x]) in betrieb",
+   "gehen ([x]) in betrieb",
+   "in betrieb ([x]) geht",
+   "ans netz ([x]) (zu) gehen",
+   "ans netz ([x]) gegangen",
+   "geht ([x]) ans netz",
+   "ans netz ([x]) genommen",
+   "in betrieb ([x]) gesetzt",
+   "in betrieb ([x]) (zu) setzen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1640": {
+  "core_en": "bear responsibility",
+  "accept": [
+   "die verantwortung ([x]) tragen",
+   "verantwortung ([x]) (zu) tragen",
+   "verantwortung ([x]) getragen",
+   "trägt ([x]) verantwortung",
+   "tragen ([x]) verantwortung",
+   "verantwortung ([x]) trägt",
+   "sind ([x]) verantwortlich",
+   "ist ([x]) verantwortlich"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1641": {
+  "core_en": "made an arrangement",
+  "accept": [
+   "eine vereinbarung treffen",
+   "vereinbarung ([x]) (zu) treffen",
+   "vereinbarung ([x]) getroffen",
+   "trifft ([x]) vereinbarung",
+   "treffen ([x]) vereinbarung",
+   "vereinbarung ([x]) trifft",
+   "traf(en) ([x]) vereinbarung",
+   "vereinbarung ([x]) traf(en)",
+   "absprache ([x]) (zu) treffen",
+   "absprache ([x]) getroffen",
+   "trifft ([x]) absprache",
+   "treffen ([x]) absprache",
+   "absprache ([x]) trifft",
+   "traf(en) ([x]) absprache",
+   "absprache ([x]) traf(en)",
+   "abmachung ([x]) (zu) treffen",
+   "abmachung ([x]) getroffen",
+   "trafen ([x]) abmachung",
+   "vereinbarung ([x]) geschlossen",
+   "abgesprochen",
+   "vereinbart"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1642": {
+  "core_en": "putting pressure on",
+  "accept": [
+   "druck auf [x] ausüben",
+   "druck ([x]) ausüben",
+   "druck ([x]) auszuüben",
+   "druck ([x]) ausgeübt",
+   "übt ([x]) druck ([x]) aus",
+   "üben ([x]) druck ([x]) aus",
+   "druck ([x]) ausübt",
+   "macht ([x]) druck",
+   "machen ([x]) druck",
+   "druck ([x]) machen",
+   "setzt ([x]) unter druck",
+   "setzen ([x]) unter druck",
+   "unter druck ([x]) (zu) setzen",
+   "unter druck ([x]) gesetzt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1643": {
+  "core_en": "put the plans up for discussion",
+  "accept": [
+   "zur diskussion stellen",
+   "zur diskussion ([x]) (zu) stellen",
+   "zur diskussion ([x]) gestellt",
+   "stellt ([x]) zur diskussion",
+   "stellen ([x]) zur diskussion",
+   "zur diskussion ([x]) stellt",
+   "zur debatte ([x]) (zu) stellen",
+   "zur debatte ([x]) gestellt",
+   "stellt ([x]) zur debatte",
+   "stellen ([x]) zur debatte",
+   "zur debatte ([x]) stellt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1644": {
+  "core_en": "comes into conflict with",
+  "accept": [
+   "in konflikt geraten",
+   "in konflikt ([x]) (zu) geraten",
+   "in konflikt ([x]) geraten",
+   "gerät ([x]) in konflikt",
+   "geraten ([x]) in konflikt",
+   "in konflikt ([x]) gerät",
+   "geriet(en) ([x]) in konflikt",
+   "in konflikt ([x]) geriet(en)",
+   "steht ([x]) im konflikt",
+   "im widerspruch",
+   "kommt ([x]) in konflikt",
+   "kommen ([x]) in konflikt",
+   "in konflikt ([x]) (zu) kommen",
+   "in konflikt ([x]) gekommen",
+   "steht ([x]) in konflikt",
+   "kollidiert",
+   "gerät ([x]) in einen konflikt",
+   "in einen konflikt ([x]) gerät"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1645": {
+  "core_en": "puts children in danger",
+  "accept": [
+   "in gefahr bringen",
+   "in gefahr ([x]) (zu) bringen",
+   "in gefahr ([x]) gebracht",
+   "bringt ([x]) in gefahr",
+   "bringen ([x]) in gefahr",
+   "in gefahr ([x]) bringt",
+   "gefährdet",
+   "gefährden"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1646": {
+  "core_en": "gave first aid",
+  "accept": [
+   "erste hilfe leisten",
+   "erste hilfe ([x]) (zu) leisten",
+   "erste hilfe ([x]) geleistet",
+   "leistet ([x]) erste hilfe",
+   "leisten ([x]) erste hilfe",
+   "erste hilfe ([x]) leistet",
+   "leistete(n) ([x]) erste hilfe",
+   "erste hilfe ([x]) leistete(n)"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1647": {
+  "core_en": "were killed",
+  "accept": [
+   "ums leben kommen",
+   "ums leben ([x]) (zu) kommen",
+   "ums leben ([x]) gekommen",
+   "kommt ([x]) ums leben",
+   "kommen ([x]) ums leben",
+   "ums leben ([x]) kommt",
+   "kam(en) ([x]) ums leben",
+   "ums leben ([x]) kam(en)",
+   "wurden ([x]) getötet",
+   "starben",
+   "sind ([x]) gestorben",
+   "sind ([x]) getötet worden",
+   "tödlich verunglückt",
+   "verunglückten ([x]) tödlich"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1648": {
+  "core_en": "met with criticism",
+  "accept": [
+   "auf kritik stoßen",
+   "auf ([x]) kritik ([x]) (zu) stoßen",
+   "auf ([x]) kritik ([x]) gestoßen",
+   "stößt ([x]) auf ([x]) kritik",
+   "stoßen ([x]) auf ([x]) kritik",
+   "auf ([x]) kritik ([x]) stößt",
+   "stieß(en) ([x]) auf ([x]) kritik",
+   "auf ([x]) kritik ([x]) stieß(en)",
+   "wurde ([x]) kritisiert",
+   "erntete ([x]) kritik",
+   "kritik ([x]) geerntet"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1649": {
+  "core_en": "come under criticism",
+  "accept": [
+   "in die kritik geraten",
+   "in die kritik ([x]) (zu) geraten",
+   "in die kritik ([x]) geraten",
+   "gerät ([x]) in die kritik",
+   "geraten ([x]) in die kritik",
+   "in die kritik ([x]) gerät",
+   "geriet(en) ([x]) in die kritik",
+   "in die kritik ([x]) geriet(en)",
+   "steht ([x]) in der kritik",
+   "stehen ([x]) in der kritik",
+   "kritisiert worden",
+   "wird ([x]) kritisiert"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1650": {
+  "core_en": "is widely used",
+  "accept": [
+   "anwendung finden",
+   "anwendung ([x]) (zu) finden",
+   "anwendung ([x]) gefunden",
+   "findet ([x]) anwendung",
+   "finden ([x]) anwendung",
+   "anwendung ([x]) findet",
+   "wird ([x]) angewendet",
+   "wird ([x]) angewandt",
+   "wird ([x]) eingesetzt",
+   "wird ([x]) verwendet",
+   "kommt ([x]) zur anwendung",
+   "zur anwendung ([x]) kommt",
+   "weit verbreitet",
+   "wird ([x]) genutzt",
+   "wird ([x]) benutzt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1651": {
+  "core_en": "held out the prospect of",
+  "accept": [
+   "in aussicht stellen",
+   "in aussicht ([x]) (zu) stellen",
+   "in aussicht ([x]) gestellt",
+   "stellt ([x]) in aussicht",
+   "stellen ([x]) in aussicht",
+   "in aussicht ([x]) stellt",
+   "stellte(n) ([x]) in aussicht",
+   "in aussicht ([x]) stellte(n)"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1652": {
+  "core_en": "bring the project to a close",
+  "accept": [
+   "zum abschluss bringen",
+   "zum abschluss ([x]) (zu) bringen",
+   "zum abschluss ([x]) gebracht",
+   "bringt ([x]) zum abschluss",
+   "bringen ([x]) zum abschluss",
+   "zum abschluss ([x]) bringt",
+   "abschließen",
+   "abgeschlossen",
+   "zu ende ([x]) (zu) bringen",
+   "zu ende ([x]) gebracht",
+   "bringt ([x]) zu ende",
+   "bringen ([x]) zu ende",
+   "beenden",
+   "fertigstellen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1653": {
+  "core_en": "came true",
+  "accept": [
+   "in erfüllung gehen",
+   "in erfüllung ([x]) (zu) gehen",
+   "in erfüllung ([x]) gegangen",
+   "geht ([x]) in erfüllung",
+   "gehen ([x]) in erfüllung",
+   "in erfüllung ([x]) geht",
+   "ging(en) ([x]) in erfüllung",
+   "in erfüllung ([x]) ging(en)",
+   "wurde ([x]) wahr",
+   "wahr geworden",
+   "erfüllte sich",
+   "hat sich ([x]) erfüllt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1654": {
+  "core_en": "reached an agreement",
+  "accept": [
+   "eine einigung erzielen",
+   "einigung ([x]) (zu) erzielen",
+   "einigung ([x]) erzielt",
+   "erzielt ([x]) einigung",
+   "erzielen ([x]) einigung",
+   "erzielte(n) ([x]) einigung",
+   "einigung ([x]) erzielte(n)",
+   "einigung ([x]) erreicht",
+   "haben sich ([x]) geeinigt",
+   "einigten sich",
+   "zu einer einigung gekommen",
+   "einigung ([x]) gefunden",
+   "einigung ([x]) (zu) finden"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1655": {
+  "core_en": "make use of",
+  "accept": [
+   "von [x] gebrauch machen",
+   "gebrauch ([x]) (zu) machen",
+   "gebrauch ([x]) gemacht",
+   "macht ([x]) gebrauch",
+   "machen ([x]) gebrauch",
+   "gebrauch ([x]) macht",
+   "nutzen ([x]) dieses recht",
+   "recht ([x]) geltend",
+   "recht ([x]) (zu) nutzen",
+   "in anspruch ([x]) (zu) nehmen",
+   "nehmen ([x]) in anspruch",
+   "nehmen ([x]) recht ([x]) wahr",
+   "recht ([x]) wahr(zu)nehmen",
+   "recht ([x]) wahrgenommen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1656": {
+  "core_en": "are entitled to",
+  "accept": [
+   "anspruch auf [x] haben",
+   "anspruch ([x]) (zu) haben",
+   "anspruch ([x]) gehabt",
+   "hat ([x]) anspruch",
+   "haben ([x]) anspruch",
+   "anspruch ([x]) hat",
+   "anspruch auf",
+   "ein recht auf",
+   "haben ([x]) recht auf",
+   "steht ([x]) zu",
+   "stehen ([x]) zu",
+   "zustehen",
+   "anrecht auf",
+   "zu [x] berechtigt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1657": {
+  "core_en": "made clear demands",
+  "accept": [
+   "forderungen stellen",
+   "forderungen ([x]) (zu) stellen",
+   "forderungen ([x]) gestellt",
+   "stellt ([x]) forderungen",
+   "stellen ([x]) forderungen",
+   "forderungen ([x]) stellt",
+   "stellte(n) ([x]) forderungen",
+   "forderungen ([x]) stellte(n)",
+   "forderungen ([x]) (zu) erheben",
+   "forderungen ([x]) erhoben",
+   "erhebt ([x]) forderungen",
+   "erheben ([x]) forderungen",
+   "forderungen ([x]) erhebt",
+   "forderungen ([x]) aufgestellt",
+   "stellt ([x]) forderungen ([x]) auf",
+   "forderungen ([x]) aufzustellen",
+   "forderungen ([x]) formuliert"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1658": {
+  "core_en": "made serious accusations against",
+  "accept": [
+   "vorwürfe gegen [x] erheben",
+   "vorwürfe ([x]) (zu) erheben",
+   "vorwürfe ([x]) erhoben",
+   "erhebt ([x]) vorwürfe",
+   "erheben ([x]) vorwürfe",
+   "vorwürfe ([x]) erhebt",
+   "erhob(en) ([x]) vorwürfe",
+   "vorwürfe ([x]) erhob(en)",
+   "dem unternehmen ([x]) vorwürfe ([x]) gemacht",
+   "dem unternehmen ([x]) vorwürfe ([x]) (zu) machen",
+   "machten dem unternehmen ([x]) vorwürfe",
+   "beschuldigt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1659": {
+  "core_en": "given any details about",
+  "accept": [
+   "angaben zu [x] machen",
+   "angaben ([x]) (zu) machen",
+   "angaben ([x]) gemacht",
+   "macht ([x]) angaben",
+   "machen ([x]) angaben",
+   "angaben ([x]) macht",
+   "machte(n) ([x]) angaben",
+   "angaben ([x]) machte(n)",
+   "einzelheiten ([x]) genannt",
+   "einzelheiten ([x]) bekannt gegeben",
+   "details ([x]) genannt",
+   "einzelheiten ([x]) mitgeteilt",
+   "details ([x]) bekannt gegeben",
+   "details ([x]) mitgeteilt",
+   "zur ursache ([x]) geäußert",
+   "einzelheiten ([x]) bekanntgegeben",
+   "details ([x]) bekanntgegeben"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1660": {
+  "core_en": "make a statement",
+  "accept": [
+   "eine erklärung abgeben",
+   "erklärung ([x]) abgeben",
+   "erklärung ([x]) abzugeben",
+   "erklärung ([x]) abgegeben",
+   "gibt ([x]) erklärung ([x]) ab",
+   "geben ([x]) erklärung ([x]) ab",
+   "erklärung ([x]) abgibt",
+   "stellungnahme ([x]) abgeben",
+   "stellungnahme ([x]) abzugeben",
+   "stellungnahme ([x]) abgegeben",
+   "gibt ([x]) stellungnahme ([x]) ab",
+   "geben ([x]) stellungnahme ([x]) ab",
+   "stellungnahme ([x]) abgibt",
+   "stellung nehmen",
+   "nimmt ([x]) stellung",
+   "wird sich ([x]) äußern"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1661": {
+  "core_en": "proved its flexibility",
+  "accept": [
+   "unter beweis stellen",
+   "unter beweis ([x]) (zu) stellen",
+   "unter beweis ([x]) gestellt",
+   "stellt ([x]) unter beweis",
+   "stellen ([x]) unter beweis",
+   "unter beweis ([x]) stellt",
+   "stellte(n) ([x]) unter beweis",
+   "unter beweis ([x]) stellte(n)",
+   "bewiesen",
+   "bewies",
+   "als flexibel erwiesen",
+   "erwies sich ([x]) als flexibel",
+   "flexibilität ([x]) gezeigt",
+   "zeigte ([x]) flexibilität"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1662": {
+  "core_en": "makes high demands on",
+  "accept": [
+   "anforderungen an [x] stellen",
+   "anforderungen ([x]) (zu) stellen",
+   "anforderungen ([x]) gestellt",
+   "stellt ([x]) anforderungen",
+   "stellen ([x]) anforderungen",
+   "anforderungen ([x]) stellt",
+   "ansprüche an [x] stellen",
+   "stellt ([x]) ansprüche",
+   "ansprüche ([x]) stellt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1663": {
+  "core_en": "met with resistance",
+  "accept": [
+   "auf widerstand stoßen",
+   "auf ([x]) widerstand ([x]) (zu) stoßen",
+   "auf ([x]) widerstand ([x]) gestoßen",
+   "stößt ([x]) auf ([x]) widerstand",
+   "stoßen ([x]) auf ([x]) widerstand",
+   "auf ([x]) widerstand ([x]) stößt",
+   "stieß(en) ([x]) auf ([x]) widerstand",
+   "auf ([x]) widerstand ([x]) stieß(en)",
+   "trifft ([x]) auf ([x]) widerstand",
+   "traf(en) ([x]) auf ([x]) widerstand",
+   "auf ([x]) widerstand ([x]) getroffen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1664": {
+  "core_en": "is at the centre of",
+  "accept": [
+   "im mittelpunkt stehen",
+   "im mittelpunkt ([x]) (zu) stehen",
+   "im mittelpunkt ([x]) gestanden",
+   "steht ([x]) im mittelpunkt",
+   "stehen ([x]) im mittelpunkt",
+   "im mittelpunkt ([x]) steht",
+   "im zentrum ([x]) (zu) stehen",
+   "im zentrum ([x]) gestanden",
+   "steht ([x]) im zentrum",
+   "stehen ([x]) im zentrum",
+   "im zentrum ([x]) steht",
+   "im fokus ([x]) (zu) stehen",
+   "im fokus ([x]) gestanden",
+   "steht ([x]) im fokus",
+   "stehen ([x]) im fokus",
+   "im fokus ([x]) steht",
+   "steht ([x]) im vordergrund",
+   "im vordergrund ([x]) steht"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1665": {
+  "core_en": "are at stake",
+  "accept": [
+   "auf dem spiel stehen",
+   "auf dem spiel ([x]) (zu) stehen",
+   "auf dem spiel ([x]) gestanden",
+   "steht ([x]) auf dem spiel",
+   "stehen ([x]) auf dem spiel",
+   "auf dem spiel ([x]) steht",
+   "sind ([x]) gefährdet",
+   "sind ([x]) in gefahr"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1666": {
+  "core_en": "linking the fire to",
+  "accept": [
+   "in verbindung bringen",
+   "in verbindung ([x]) (zu) bringen",
+   "in verbindung ([x]) gebracht",
+   "bringt ([x]) in verbindung",
+   "bringen ([x]) in verbindung",
+   "in verbindung ([x]) bringt",
+   "in zusammenhang ([x]) (zu) bringen",
+   "in zusammenhang ([x]) gebracht",
+   "bringt ([x]) in zusammenhang",
+   "bringen ([x]) in zusammenhang",
+   "in zusammenhang ([x]) bringt",
+   "einen zusammenhang zwischen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1667": {
+  "core_en": "is linked to",
+  "accept": [
+   "im zusammenhang mit [x] stehen",
+   "im zusammenhang ([x]) (zu) stehen",
+   "im zusammenhang ([x]) gestanden",
+   "steht ([x]) im zusammenhang",
+   "stehen ([x]) im zusammenhang",
+   "im zusammenhang ([x]) steht",
+   "in zusammenhang ([x]) (zu) stehen",
+   "in zusammenhang ([x]) gestanden",
+   "steht ([x]) in zusammenhang",
+   "stehen ([x]) in zusammenhang",
+   "in zusammenhang ([x]) steht",
+   "hängt ([x]) zusammen",
+   "ist mit [x] verbunden",
+   "ist mit [x] verknüpft",
+   "steht ([x]) in verbindung mit"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1668": {
+  "core_en": "comes to an end",
+  "accept": [
+   "zu ende gehen",
+   "zu ende ([x]) (zu) gehen",
+   "zu ende ([x]) gegangen",
+   "geht ([x]) zu ende",
+   "gehen ([x]) zu ende",
+   "zu ende ([x]) geht",
+   "endet",
+   "ist ([x]) zu ende"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1669": {
+  "core_en": "opened an investigation",
+  "accept": [
+   "ermittlungen einleiten",
+   "ermittlungen ([x]) einleiten",
+   "ermittlungen ([x]) einzuleiten",
+   "ermittlungen ([x]) eingeleitet",
+   "leitet ([x]) ermittlungen ([x]) ein",
+   "leiten ([x]) ermittlungen ([x]) ein",
+   "ermittlungen ([x]) einleitet",
+   "leitete(n) ([x]) ermittlungen ([x]) ein",
+   "ermittlungen ([x]) einleitete(n)",
+   "ermittlungen ([x]) aufnehmen",
+   "ermittlungen ([x]) aufzunehmen",
+   "ermittlungen ([x]) aufgenommen",
+   "nimmt ([x]) ermittlungen ([x]) auf",
+   "nehmen ([x]) ermittlungen ([x]) auf",
+   "ermittlungen ([x]) aufnimmt",
+   "ermittlungsverfahren ([x]) eingeleitet",
+   "ermittlungsverfahren ([x]) einleiten",
+   "leitet ([x]) ermittlungsverfahren ([x]) ein"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1670": {
+  "core_en": "conducting the negotiations",
+  "accept": [
+   "verhandlungen führen",
+   "verhandlungen ([x]) (zu) führen",
+   "verhandlungen ([x]) geführt",
+   "führt ([x]) verhandlungen",
+   "führen ([x]) verhandlungen",
+   "verhandlungen ([x]) führt",
+   "verhandeln"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1671": {
+  "core_en": "set a lot of changes in motion",
+  "accept": [
+   "in gang setzen",
+   "in gang ([x]) (zu) setzen",
+   "in gang ([x]) gesetzt",
+   "setzt ([x]) in gang",
+   "setzen ([x]) in gang",
+   "in gang ([x]) setzt",
+   "setzte(n) ([x]) in gang",
+   "in gang ([x]) setzte(n)",
+   "in gang ([x]) (zu) bringen",
+   "in gang ([x]) gebracht",
+   "bringt ([x]) in gang",
+   "bringen ([x]) in gang",
+   "in gang ([x]) bringt",
+   "brachte(n) ([x]) in gang",
+   "in gang ([x]) brachte(n)",
+   "in bewegung ([x]) gesetzt",
+   "ausgelöst",
+   "angestoßen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1672": {
+  "core_en": "passed a resolution",
+  "accept": [
+   "einen beschluss fassen",
+   "beschluss ([x]) (zu) fassen",
+   "beschluss ([x]) gefasst",
+   "fasst ([x]) beschluss",
+   "fassen ([x]) beschluss",
+   "beschluss ([x]) fasst",
+   "fasste(n) ([x]) beschluss",
+   "beschluss ([x]) fasste(n)",
+   "beschlossen",
+   "beschluss ([x]) verabschiedet",
+   "verabschiedete(n) ([x]) beschluss"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1673": {
+  "core_en": "taking precautions",
+  "accept": [
+   "vorkehrungen treffen",
+   "vorkehrungen ([x]) (zu) treffen",
+   "vorkehrungen ([x]) getroffen",
+   "trifft ([x]) vorkehrungen",
+   "treffen ([x]) vorkehrungen",
+   "vorkehrungen ([x]) trifft",
+   "vorsichtsmaßnahmen ([x]) (zu) treffen",
+   "vorsichtsmaßnahmen ([x]) getroffen",
+   "trifft ([x]) vorsichtsmaßnahmen",
+   "treffen ([x]) vorsichtsmaßnahmen",
+   "vorsichtsmaßnahmen ([x]) trifft",
+   "vorsorge ([x]) (zu) treffen",
+   "vorsorge ([x]) getroffen",
+   "trifft ([x]) vorsorge",
+   "treffen ([x]) vorsorge",
+   "vorsorge ([x]) trifft",
+   "maßnahmen ([x]) (zu) treffen",
+   "maßnahmen ([x]) getroffen",
+   "trifft ([x]) maßnahmen",
+   "treffen ([x]) maßnahmen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1674": {
+  "core_en": "remedy the situation",
+  "accept": [
+   "abhilfe schaffen",
+   "abhilfe ([x]) (zu) schaffen",
+   "abhilfe ([x]) geschaffen",
+   "schafft ([x]) abhilfe",
+   "schaffen ([x]) abhilfe",
+   "abhilfe ([x]) schafft",
+   "für abhilfe ([x]) (zu) sorgen",
+   "sorgt ([x]) für abhilfe",
+   "situation ([x]) (zu) verbessern",
+   "lage ([x]) (zu) verbessern",
+   "situation ([x]) (zu) entschärfen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1675": {
+  "core_en": "brought clarity",
+  "accept": [
+   "klarheit schaffen",
+   "klarheit ([x]) (zu) schaffen",
+   "klarheit ([x]) geschaffen",
+   "schafft ([x]) klarheit",
+   "schaffen ([x]) klarheit",
+   "klarheit ([x]) schafft",
+   "schuf(en) ([x]) klarheit",
+   "klarheit ([x]) schuf(en)",
+   "klarheit ([x]) gebracht",
+   "für ([x]) klarheit ([x]) gesorgt",
+   "sorgt ([x]) für ([x]) klarheit",
+   "klarheit ([x]) verschafft"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1676": {
+  "core_en": "creates the conditions for",
+  "accept": [
+   "die voraussetzungen für [x] schaffen",
+   "voraussetzungen ([x]) (zu) schaffen",
+   "voraussetzungen ([x]) geschaffen",
+   "schafft ([x]) voraussetzungen",
+   "schaffen ([x]) voraussetzungen",
+   "voraussetzungen ([x]) schafft",
+   "bedingungen ([x]) (zu) schaffen",
+   "bedingungen ([x]) geschaffen",
+   "schafft ([x]) bedingungen",
+   "schaffen ([x]) bedingungen",
+   "bedingungen ([x]) schafft",
+   "ebnet ([x]) den weg"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1677": {
+  "core_en": "having an effect",
+  "accept": [
+   "wirkung zeigen",
+   "wirkung ([x]) (zu) zeigen",
+   "wirkung ([x]) gezeigt",
+   "zeigt ([x]) wirkung",
+   "zeigen ([x]) wirkung",
+   "wirkung ([x]) zeigt",
+   "wirkung ([x]) (zu) haben",
+   "wirkung ([x]) gehabt",
+   "hat ([x]) wirkung",
+   "haben ([x]) wirkung",
+   "wirkung ([x]) hat",
+   "wirken",
+   "greifen",
+   "haben ([x]) effekt",
+   "hat ([x]) effekt",
+   "wirken sich ([x]) aus"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1678": {
+  "core_en": "met with broad approval",
+  "accept": [
+   "zustimmung finden",
+   "zustimmung ([x]) (zu) finden",
+   "zustimmung ([x]) gefunden",
+   "findet ([x]) zustimmung",
+   "finden ([x]) zustimmung",
+   "zustimmung ([x]) findet",
+   "fand(en) ([x]) zustimmung",
+   "zustimmung ([x]) fand(en)",
+   "stieß ([x]) auf ([x]) zustimmung",
+   "stößt ([x]) auf ([x]) zustimmung",
+   "auf ([x]) zustimmung ([x]) gestoßen",
+   "erhielt ([x]) zustimmung",
+   "bekam ([x]) zustimmung",
+   "fand ([x]) anklang",
+   "anklang ([x]) gefunden"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1679": {
+  "core_en": "gets the recognition",
+  "accept": [
+   "anerkennung finden",
+   "anerkennung ([x]) (zu) finden",
+   "anerkennung ([x]) gefunden",
+   "findet ([x]) anerkennung",
+   "finden ([x]) anerkennung",
+   "anerkennung ([x]) findet",
+   "bekommt ([x]) anerkennung",
+   "erhält ([x]) anerkennung",
+   "erfährt ([x]) anerkennung",
+   "wird ([x]) anerkannt",
+   "wertgeschätzt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1680": {
+  "core_en": "got out of control",
+  "accept": [
+   "außer kontrolle geraten",
+   "außer kontrolle ([x]) (zu) geraten",
+   "außer kontrolle ([x]) geraten",
+   "gerät ([x]) außer kontrolle",
+   "geraten ([x]) außer kontrolle",
+   "außer kontrolle ([x]) gerät",
+   "geriet(en) ([x]) außer kontrolle",
+   "außer kontrolle ([x]) geriet(en)",
+   "aus dem ruder"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1681": {
+  "core_en": "run into difficulties",
+  "accept": [
+   "in schwierigkeiten geraten",
+   "in ([x]) schwierigkeiten ([x]) (zu) geraten",
+   "in ([x]) schwierigkeiten ([x]) geraten",
+   "gerät ([x]) in ([x]) schwierigkeiten",
+   "geraten ([x]) in ([x]) schwierigkeiten",
+   "in ([x]) schwierigkeiten ([x]) gerät",
+   "geriet(en) ([x]) in ([x]) schwierigkeiten",
+   "in ([x]) schwierigkeiten ([x]) geriet(en)",
+   "in ([x]) schwierigkeiten ([x]) gekommen",
+   "kommt ([x]) in ([x]) schwierigkeiten",
+   "in ([x]) schieflage geraten"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1682": {
+  "core_en": "panicked",
+  "accept": [
+   "in panik geraten",
+   "in panik ([x]) (zu) geraten",
+   "in panik ([x]) geraten",
+   "gerät ([x]) in panik",
+   "geraten ([x]) in panik",
+   "in panik ([x]) gerät",
+   "geriet(en) ([x]) in panik",
+   "in panik ([x]) geriet(en)",
+   "panik ([x]) bekommen",
+   "bekamen ([x]) panik",
+   "in panik ([x]) (zu) verfallen",
+   "in panik ([x]) verfallen",
+   "verfällt ([x]) in panik",
+   "verfielen ([x]) in panik",
+   "verfallen ([x]) in panik",
+   "reagierten ([x]) panisch"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1683": {
+  "core_en": "has stalled",
+  "accept": [
+   "ins stocken geraten",
+   "ins stocken ([x]) (zu) geraten",
+   "ins stocken ([x]) geraten",
+   "gerät ([x]) ins stocken",
+   "geraten ([x]) ins stocken",
+   "ins stocken ([x]) gerät",
+   "geriet(en) ([x]) ins stocken",
+   "ins stocken ([x]) geriet(en)",
+   "ins stocken ([x]) (zu) kommen",
+   "ins stocken ([x]) gekommen",
+   "kommt ([x]) ins stocken",
+   "kam(en) ([x]) ins stocken",
+   "bauarbeiten stocken",
+   "bauarbeiten stockten",
+   "kommen ([x]) nicht ([x]) voran",
+   "zum stillstand ([x]) gekommen",
+   "stehen ([x]) still"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1684": {
+  "core_en": "brought the fire under control",
+  "accept": [
+   "unter kontrolle bringen",
+   "unter kontrolle ([x]) (zu) bringen",
+   "unter kontrolle ([x]) gebracht",
+   "bringt ([x]) unter kontrolle",
+   "bringen ([x]) unter kontrolle",
+   "unter kontrolle ([x]) bringt",
+   "brachte(n) ([x]) unter kontrolle",
+   "unter kontrolle ([x]) brachte(n)",
+   "unter kontrolle ([x]) bekommen",
+   "bekam ([x]) unter kontrolle",
+   "bekamen ([x]) unter kontrolle"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1685": {
+  "core_en": "be held accountable",
+  "accept": [
+   "zur verantwortung ziehen",
+   "zur verantwortung ([x]) (zu) ziehen",
+   "zur verantwortung ([x]) gezogen",
+   "zieht ([x]) zur verantwortung",
+   "ziehen ([x]) zur verantwortung",
+   "zur verantwortung ([x]) zieht",
+   "zur rechenschaft ([x]) (zu) ziehen",
+   "zur rechenschaft ([x]) gezogen",
+   "zieht ([x]) zur rechenschaft",
+   "ziehen ([x]) zur rechenschaft",
+   "zur rechenschaft ([x]) zieht",
+   "sich ([x]) verantworten"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1686": {
+  "core_en": "learn lessons from",
+  "accept": [
+   "lehren aus [x] ziehen",
+   "lehren ([x]) (zu) ziehen",
+   "lehren ([x]) gezogen",
+   "zieht ([x]) lehren",
+   "ziehen ([x]) lehren",
+   "lehren ([x]) zieht",
+   "eine lehre ([x]) (zu) ziehen",
+   "die lehre ([x]) (zu) ziehen",
+   "ziehen ([x]) eine lehre",
+   "ziehen ([x]) die lehre",
+   "aus der pandemie lernen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1687": {
+  "core_en": "ensure",
+  "accept": [
+   "dafür sorge tragen",
+   "sorge ([x]) (zu) tragen",
+   "sorge ([x]) getragen",
+   "trägt ([x]) sorge",
+   "tragen ([x]) sorge",
+   "sorge ([x]) trägt",
+   "dafür ([x]) sorgen",
+   "sicherstellen",
+   "gewährleisten"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1688": {
+  "core_en": "give some thought to",
+  "accept": [
+   "sich gedanken über [x] machen",
+   "gedanken ([x]) (zu) machen",
+   "gedanken ([x]) gemacht",
+   "macht ([x]) gedanken",
+   "machen ([x]) gedanken",
+   "gedanken ([x]) macht",
+   "über [x] nachdenken",
+   "nachdenken über",
+   "müssen uns ([x]) überlegen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1689": {
+  "core_en": "enjoy a high level of trust",
+  "accept": [
+   "vertrauen genießen",
+   "vertrauen ([x]) (zu) genießen",
+   "vertrauen ([x]) genossen",
+   "genießt ([x]) vertrauen",
+   "genießen ([x]) vertrauen",
+   "vertrauen ([x]) genießt",
+   "erfreuen sich ([x]) vertrauens",
+   "vertrauen ([x]) entgegengebracht"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1690": {
+  "core_en": "taken a clear position",
+  "accept": [
+   "position beziehen",
+   "position ([x]) (zu) beziehen",
+   "position ([x]) bezogen",
+   "bezieht ([x]) position",
+   "beziehen ([x]) position",
+   "position ([x]) bezieht",
+   "bezog(en) ([x]) position",
+   "position ([x]) bezog(en)",
+   "stellung ([x]) (zu) beziehen",
+   "stellung ([x]) bezogen",
+   "bezieht ([x]) stellung",
+   "beziehen ([x]) stellung",
+   "stellung ([x]) bezieht",
+   "bezog(en) ([x]) stellung",
+   "stellung ([x]) bezog(en)",
+   "stellung ([x]) (zu) nehmen",
+   "stellung ([x]) genommen",
+   "nimmt ([x]) stellung",
+   "nehmen ([x]) stellung",
+   "nahm(en) ([x]) stellung",
+   "position ([x]) eingenommen",
+   "nimmt ([x]) position ([x]) ein",
+   "positioniert"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1691": {
+  "core_en": "make a clear diagnosis",
+  "accept": [
+   "eine diagnose stellen",
+   "diagnose ([x]) (zu) stellen",
+   "diagnose ([x]) gestellt",
+   "stellt ([x]) diagnose",
+   "stellen ([x]) diagnose",
+   "diagnose ([x]) stellt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1692": {
+  "core_en": "charged us for the spare parts",
+  "accept": [
+   "in rechnung stellen",
+   "in rechnung ([x]) (zu) stellen",
+   "in rechnung ([x]) gestellt",
+   "stellt ([x]) in rechnung",
+   "stellen ([x]) in rechnung",
+   "in rechnung ([x]) stellt",
+   "stellte(n) ([x]) in rechnung",
+   "in rechnung ([x]) stellte(n)",
+   "berechnet",
+   "verrechnet"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1693": {
+  "core_en": "putting the power grid to the test",
+  "accept": [
+   "auf die probe stellen",
+   "auf ([x]) probe ([x]) (zu) stellen",
+   "auf ([x]) probe ([x]) gestellt",
+   "stellt ([x]) auf ([x]) probe",
+   "stellen ([x]) auf ([x]) probe",
+   "auf ([x]) probe ([x]) stellt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1694": {
+  "core_en": "setting the course for",
+  "accept": [
+   "die weichen für [x] stellen",
+   "weichen ([x]) (zu) stellen",
+   "weichen ([x]) gestellt",
+   "stellt ([x]) weichen",
+   "stellen ([x]) weichen",
+   "weichen ([x]) stellt",
+   "kurs auf [x] (zu) setzen",
+   "setzt ([x]) kurs auf",
+   "nimmt ([x]) kurs auf",
+   "kurs auf [x] (zu) nehmen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1695": {
+  "core_en": "stand for re-election",
+  "accept": [
+   "sich zur wahl stellen",
+   "zur wahl ([x]) (zu) stellen",
+   "zur wahl ([x]) gestellt",
+   "stellt ([x]) zur wahl",
+   "stellen ([x]) zur wahl",
+   "zur wahl ([x]) stellt",
+   "zur wiederwahl ([x]) (zu) stellen",
+   "zur wiederwahl ([x]) gestellt",
+   "stellt ([x]) zur wiederwahl",
+   "stellen ([x]) zur wiederwahl",
+   "zur wiederwahl ([x]) stellt",
+   "kandidieren",
+   "kandidiert",
+   "nicht ([x]) antreten",
+   "tritt ([x]) nicht ([x]) an"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1696": {
+  "core_en": "put to a vote",
+  "accept": [
+   "zur abstimmung stellen",
+   "zur abstimmung ([x]) (zu) stellen",
+   "zur abstimmung ([x]) gestellt",
+   "stellt ([x]) zur abstimmung",
+   "stellen ([x]) zur abstimmung",
+   "zur abstimmung ([x]) stellt",
+   "zur abstimmung ([x]) (zu) kommen",
+   "zur abstimmung ([x]) gekommen",
+   "kommt ([x]) zur abstimmung",
+   "kommen ([x]) zur abstimmung",
+   "zur abstimmung ([x]) kommt",
+   "abgestimmt",
+   "zur abstimmung ([x]) gebracht",
+   "steht ([x]) zur abstimmung"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1697": {
+  "core_en": "launch the new model",
+  "accept": [
+   "auf den markt bringen",
+   "auf den markt ([x]) (zu) bringen",
+   "auf den markt ([x]) gebracht",
+   "bringt ([x]) auf den markt",
+   "bringen ([x]) auf den markt",
+   "auf den markt ([x]) bringt",
+   "bringt ([x]) heraus",
+   "herausbringen",
+   "herausgebracht",
+   "führt ([x]) modell ([x]) ein",
+   "modell ([x]) einführen",
+   "lanciert",
+   "lancieren"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1698": {
+  "core_en": "ascertain",
+  "accept": [
+   "in erfahrung bringen",
+   "in erfahrung ([x]) (zu) bringen",
+   "in erfahrung ([x]) gebracht",
+   "bringt ([x]) in erfahrung",
+   "bringen ([x]) in erfahrung",
+   "in erfahrung ([x]) bringt",
+   "brachte(n) ([x]) in erfahrung",
+   "in erfahrung ([x]) brachte(n)",
+   "herausfinden",
+   "herausgefunden",
+   "ermitteln",
+   "feststellen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1699": {
+  "core_en": "reconcile work and family",
+  "accept": [
+   "in einklang bringen",
+   "in einklang ([x]) (zu) bringen",
+   "in einklang ([x]) gebracht",
+   "bringt ([x]) in einklang",
+   "bringen ([x]) in einklang",
+   "in einklang ([x]) bringt",
+   "zu vereinbaren",
+   "vereinbaren",
+   "unter einen hut ([x]) bringen",
+   "zu verbinden",
+   "miteinander ([x]) verbinden"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1700": {
+  "core_en": "brought down the reform",
+  "accept": [
+   "zu fall bringen",
+   "zu fall ([x]) (zu) bringen",
+   "zu fall ([x]) gebracht",
+   "bringt ([x]) zu fall",
+   "bringen ([x]) zu fall",
+   "zu fall ([x]) bringt",
+   "brachte(n) ([x]) zu fall",
+   "zu fall ([x]) brachte(n)",
+   "scheitern lassen",
+   "ließ ([x]) scheitern",
+   "kippte",
+   "zum scheitern ([x]) gebracht",
+   "brachte ([x]) zum scheitern"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1701": {
+  "core_en": "came to a standstill",
+  "accept": [
+   "zum erliegen kommen",
+   "zum erliegen ([x]) (zu) kommen",
+   "zum erliegen ([x]) gekommen",
+   "kommt ([x]) zum erliegen",
+   "kommen ([x]) zum erliegen",
+   "zum erliegen ([x]) kommt",
+   "kam(en) ([x]) zum erliegen",
+   "zum erliegen ([x]) kam(en)",
+   "zum stillstand ([x]) (zu) kommen",
+   "zum stillstand ([x]) gekommen",
+   "kommt ([x]) zum stillstand",
+   "kommen ([x]) zum stillstand",
+   "zum stillstand ([x]) kommt",
+   "kam(en) ([x]) zum stillstand",
+   "zum stillstand ([x]) kam(en)",
+   "stand ([x]) still",
+   "zum stehen",
+   "brach ([x]) zusammen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1702": {
+  "core_en": "came into play",
+  "accept": [
+   "zum tragen kommen",
+   "zum tragen ([x]) (zu) kommen",
+   "zum tragen ([x]) gekommen",
+   "kommt ([x]) zum tragen",
+   "kommen ([x]) zum tragen",
+   "zum tragen ([x]) kommt",
+   "kam(en) ([x]) zum tragen",
+   "zum tragen ([x]) kam(en)",
+   "ins spiel ([x]) (zu) kommen",
+   "ins spiel ([x]) gekommen",
+   "kommt ([x]) ins spiel",
+   "kommen ([x]) ins spiel",
+   "ins spiel ([x]) kommt",
+   "kam(en) ([x]) ins spiel",
+   "ins spiel ([x]) kam(en)",
+   "zahlte sich ([x]) aus",
+   "zur geltung"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1703": {
+  "core_en": "came to light",
+  "accept": [
+   "ans licht kommen",
+   "ans licht ([x]) (zu) kommen",
+   "ans licht ([x]) gekommen",
+   "kommt ([x]) ans licht",
+   "kommen ([x]) ans licht",
+   "ans licht ([x]) kommt",
+   "kam(en) ([x]) ans licht",
+   "ans licht ([x]) kam(en)",
+   "an die öffentlichkeit",
+   "ans tageslicht",
+   "wurden ([x]) bekannt",
+   "kamen ([x]) heraus",
+   "flogen ([x]) auf",
+   "wurden ([x]) aufgedeckt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1704": {
+  "core_en": "make room for",
+  "accept": [
+   "platz für [x] schaffen",
+   "platz ([x]) (zu) schaffen",
+   "platz ([x]) geschaffen",
+   "schafft ([x]) platz",
+   "schaffen ([x]) platz",
+   "platz ([x]) schafft",
+   "platz ([x]) (zu) machen",
+   "platz ([x]) gemacht",
+   "macht ([x]) platz",
+   "machen ([x]) platz",
+   "platz ([x]) macht",
+   "raum ([x]) (zu) schaffen",
+   "raum ([x]) geschaffen",
+   "schafft ([x]) raum"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1705": {
+  "core_en": "brought a new location into play",
+  "accept": [
+   "ins spiel bringen",
+   "ins spiel ([x]) (zu) bringen",
+   "ins spiel ([x]) gebracht",
+   "bringt ([x]) ins spiel",
+   "bringen ([x]) ins spiel",
+   "ins spiel ([x]) bringt",
+   "brachte(n) ([x]) ins spiel",
+   "ins spiel ([x]) brachte(n)",
+   "ins gespräch ([x]) (zu) bringen",
+   "ins gespräch ([x]) gebracht",
+   "bringt ([x]) ins gespräch",
+   "in die diskussion ([x]) gebracht",
+   "vorgeschlagen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1706": {
+  "core_en": "set up a new fund",
+  "accept": [
+   "ins leben rufen",
+   "ins leben ([x]) (zu) rufen",
+   "ins leben ([x]) gerufen",
+   "ruft ([x]) ins leben",
+   "rufen ([x]) ins leben",
+   "ins leben ([x]) ruft",
+   "rief(en) ([x]) ins leben",
+   "ins leben ([x]) rief(en)",
+   "eingerichtet",
+   "aufgelegt",
+   "gegründet",
+   "geschaffen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1707": {
+  "core_en": "tackle the housing shortage",
+  "accept": [
+   "in angriff nehmen",
+   "in angriff ([x]) (zu) nehmen",
+   "in angriff ([x]) genommen",
+   "nimmt ([x]) in angriff",
+   "nehmen ([x]) in angriff",
+   "in angriff ([x]) nimmt",
+   "angehen",
+   "anpacken",
+   "bekämpfen",
+   "etwas gegen [x] (zu) unternehmen",
+   "etwas gegen [x] (zu) tun"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1708": {
+  "core_en": "stood up for",
+  "accept": [
+   "in schutz nehmen",
+   "in schutz ([x]) (zu) nehmen",
+   "in schutz ([x]) genommen",
+   "nimmt ([x]) in schutz",
+   "nehmen ([x]) in schutz",
+   "in schutz ([x]) nimmt",
+   "nahm(en) ([x]) in schutz",
+   "in schutz ([x]) nahm(en)",
+   "verteidigten",
+   "verteidigt",
+   "stellten sich ([x]) hinter",
+   "sich hinter [x] (zu) stellen",
+   "setzten sich ([x]) für [x] ein",
+   "setzten sich für [x] ein",
+   "haben sich für [x] eingesetzt",
+   "setzen sich für [x] ein",
+   "hielten ([x]) zu",
+   "ergriffen ([x]) partei",
+   "stärkten ([x]) den rücken",
+   "sich ([x]) hinter [x] gestellt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1709": {
+  "core_en": "take delivery of the parcel",
+  "accept": [
+   "in empfang nehmen",
+   "in empfang ([x]) (zu) nehmen",
+   "in empfang ([x]) genommen",
+   "nimmt ([x]) in empfang",
+   "nehmen ([x]) in empfang",
+   "in empfang ([x]) nimmt",
+   "entgegennehmen",
+   "erhalten",
+   "annehmen",
+   "das paket bekommen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1710": {
+  "core_en": "took the initiative",
+  "accept": [
+   "die initiative ergreifen",
+   "initiative ([x]) (zu) ergreifen",
+   "initiative ([x]) ergriffen",
+   "ergreift ([x]) initiative",
+   "ergreifen ([x]) initiative",
+   "initiative ([x]) ergreift",
+   "ergriff(en) ([x]) initiative",
+   "initiative ([x]) ergriff(en)",
+   "selbst aktiv",
+   "selbst in die hand"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1711": {
+  "core_en": "fell victim to",
+  "accept": [
+   "zum opfer fallen",
+   "zum opfer ([x]) (zu) fallen",
+   "zum opfer ([x]) gefallen",
+   "fällt ([x]) zum opfer",
+   "fallen ([x]) zum opfer",
+   "zum opfer ([x]) fällt",
+   "fiel(en) ([x]) zum opfer",
+   "zum opfer ([x]) fiel(en)",
+   "wurden ([x]) opfer"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1712": {
+  "core_en": "took a surprising turn",
+  "accept": [
+   "eine wende nehmen",
+   "wende ([x]) (zu) nehmen",
+   "wende ([x]) genommen",
+   "nimmt ([x]) wende",
+   "nehmen ([x]) wende",
+   "wende ([x]) nimmt",
+   "nahm(en) ([x]) wende",
+   "wende ([x]) nahm(en)",
+   "eine wendung nehmen",
+   "wendung ([x]) genommen",
+   "nimmt ([x]) wendung",
+   "nahm(en) ([x]) wendung",
+   "wendung ([x]) nahm(en)"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1713": {
+  "core_en": "taking shape",
+  "accept": [
+   "gestalt annehmen",
+   "gestalt ([x]) annehmen",
+   "gestalt ([x]) anzunehmen",
+   "gestalt ([x]) angenommen",
+   "nimmt ([x]) gestalt ([x]) an",
+   "nehmen ([x]) gestalt ([x]) an",
+   "gestalt ([x]) annimmt",
+   "form(en) ([x]) annehmen",
+   "form(en) ([x]) anzunehmen",
+   "form(en) ([x]) angenommen",
+   "nimmt ([x]) form(en) ([x]) an",
+   "nehmen ([x]) form(en) ([x]) an",
+   "form(en) ([x]) annimmt",
+   "werden ([x]) konkret",
+   "werden ([x]) konkreter"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1714": {
+  "core_en": "taken on alarming proportions",
+  "accept": [
+   "ausmaße annehmen",
+   "ausmaße ([x]) annehmen",
+   "ausmaße ([x]) anzunehmen",
+   "ausmaße ([x]) angenommen",
+   "nimmt ([x]) ausmaße ([x]) an",
+   "nehmen ([x]) ausmaße ([x]) an",
+   "ausmaße ([x]) annimmt",
+   "nahm(en) ([x]) ausmaße ([x]) an",
+   "ausmaße ([x]) annahm(en)",
+   "dimensionen ([x]) angenommen",
+   "dimensionen ([x]) annehmen",
+   "nimmt ([x]) dimensionen ([x]) an",
+   "ausmaße ([x]) erreicht",
+   "dimensionen ([x]) erreicht"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1715": {
+  "core_en": "pay more attention to",
+  "accept": [
+   "aufmerksamkeit schenken",
+   "aufmerksamkeit ([x]) (zu) schenken",
+   "aufmerksamkeit ([x]) geschenkt",
+   "schenkt ([x]) aufmerksamkeit",
+   "schenken ([x]) aufmerksamkeit",
+   "aufmerksamkeit ([x]) schenkt",
+   "beachtung ([x]) (zu) schenken",
+   "beachtung ([x]) geschenkt",
+   "schenkt ([x]) beachtung",
+   "schenken ([x]) beachtung",
+   "beachtung ([x]) schenkt",
+   "mehr auf [x] achten",
+   "aufmerksamkeit ([x]) (zu) widmen",
+   "widmen ([x]) aufmerksamkeit",
+   "aufmerksamkeit auf [x] (zu) richten",
+   "aufmerksamkeit auf [x] (zu) lenken"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1716": {
+  "core_en": "gave credence to",
+  "accept": [
+   "glauben schenken",
+   "glauben ([x]) (zu) schenken",
+   "glauben ([x]) geschenkt",
+   "schenkt ([x]) glauben",
+   "schenken ([x]) glauben",
+   "glauben ([x]) schenkt",
+   "schenkte(n) ([x]) glauben",
+   "glauben ([x]) schenkte(n)",
+   "glaubten",
+   "hielten ([x]) für wahr",
+   "für glaubwürdig"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1717": {
+  "core_en": "caused a stir",
+  "accept": [
+   "aufsehen erregen",
+   "aufsehen ([x]) (zu) erregen",
+   "aufsehen ([x]) erregt",
+   "erregt ([x]) aufsehen",
+   "erregen ([x]) aufsehen",
+   "erregte(n) ([x]) aufsehen",
+   "aufsehen ([x]) erregte(n)",
+   "für ([x]) aufsehen ([x]) gesorgt",
+   "sorgte ([x]) für ([x]) aufsehen",
+   "für ([x]) wirbel",
+   "wellen geschlagen",
+   "schlug ([x]) wellen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1718": {
+  "core_en": "putting up resistance",
+  "accept": [
+   "widerstand leisten",
+   "widerstand ([x]) (zu) leisten",
+   "widerstand ([x]) geleistet",
+   "leistet ([x]) widerstand",
+   "leisten ([x]) widerstand",
+   "widerstand ([x]) leistet",
+   "wehren sich",
+   "setzen sich ([x]) zur wehr"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1719": {
+  "core_en": "showing restraint",
+  "accept": [
+   "zurückhaltung üben",
+   "zurückhaltung ([x]) (zu) üben",
+   "zurückhaltung ([x]) geübt",
+   "übt ([x]) zurückhaltung",
+   "üben ([x]) zurückhaltung",
+   "zurückhaltung ([x]) übt",
+   "zurückhaltung ([x]) (zu) zeigen",
+   "zurückhaltung ([x]) gezeigt",
+   "zeigt ([x]) zurückhaltung",
+   "zeigen ([x]) zurückhaltung",
+   "zurückhaltung ([x]) zeigt",
+   "hält sich ([x]) zurück",
+   "halten sich ([x]) zurück",
+   "ist ([x]) zurückhaltend"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1720": {
+  "core_en": "lodged an objection",
+  "accept": [
+   "einspruch erheben",
+   "einspruch ([x]) (zu) erheben",
+   "einspruch ([x]) erhoben",
+   "erhebt ([x]) einspruch",
+   "erheben ([x]) einspruch",
+   "einspruch ([x]) erhebt",
+   "erhob(en) ([x]) einspruch",
+   "einspruch ([x]) erhob(en)",
+   "einspruch ([x]) einlegen",
+   "einspruch ([x]) einzulegen",
+   "einspruch ([x]) eingelegt",
+   "legt ([x]) einspruch ([x]) ein",
+   "legen ([x]) einspruch ([x]) ein",
+   "einspruch ([x]) einlegt",
+   "legte(n) ([x]) einspruch ([x]) ein",
+   "einspruch ([x]) einlegte(n)",
+   "widerspruch ([x]) eingelegt",
+   "widerspruch ([x]) erhoben",
+   "einwände ([x]) erhoben"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1721": {
+  "core_en": "appeal against the decision",
+  "accept": [
+   "widerspruch einlegen",
+   "widerspruch ([x]) einlegen",
+   "widerspruch ([x]) einzulegen",
+   "widerspruch ([x]) eingelegt",
+   "legt ([x]) widerspruch ([x]) ein",
+   "legen ([x]) widerspruch ([x]) ein",
+   "widerspruch ([x]) einlegt",
+   "einspruch ([x]) einlegen",
+   "einspruch ([x]) einzulegen",
+   "einspruch ([x]) eingelegt",
+   "legt ([x]) einspruch ([x]) ein",
+   "legen ([x]) einspruch ([x]) ein",
+   "einspruch ([x]) einlegt",
+   "einspruch ([x]) (zu) erheben",
+   "einspruch ([x]) erhoben",
+   "erhebt ([x]) einspruch",
+   "erheben ([x]) einspruch",
+   "einspruch ([x]) erhebt",
+   "anfechten",
+   "anzufechten",
+   "widerspruch ([x]) (zu) erheben",
+   "widerspruch ([x]) erhoben"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1722": {
+  "core_en": "brought charges against",
+  "accept": [
+   "anklage erheben",
+   "anklage ([x]) (zu) erheben",
+   "anklage ([x]) erhoben",
+   "erhebt ([x]) anklage",
+   "erheben ([x]) anklage",
+   "anklage ([x]) erhebt",
+   "erhob(en) ([x]) anklage",
+   "anklage ([x]) erhob(en)",
+   "angeklagt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1723": {
+  "core_en": "resolved to",
+  "accept": [
+   "den entschluss fassen",
+   "entschluss ([x]) (zu) fassen",
+   "entschluss ([x]) gefasst",
+   "fasst ([x]) entschluss",
+   "fassen ([x]) entschluss",
+   "entschluss ([x]) fasst",
+   "fasste(n) ([x]) entschluss",
+   "entschluss ([x]) fasste(n)",
+   "entschied sich",
+   "beschloss",
+   "entschloss sich",
+   "entschloss ([x]) sich",
+   "hat sich ([x]) entschlossen",
+   "entschied ([x]) sich",
+   "sich ([x]) entschieden",
+   "sich ([x]) entschlossen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1724": {
+  "core_en": "gained a foothold in",
+  "accept": [
+   "fuß fassen",
+   "fuß ([x]) (zu) fassen",
+   "fuß ([x]) gefasst",
+   "fasst ([x]) fuß",
+   "fassen ([x]) fuß",
+   "fuß ([x]) fasst",
+   "fasste(n) ([x]) fuß",
+   "fuß ([x]) fasste(n)",
+   "sich ([x]) etabliert"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1725": {
+  "core_en": "contemplating a move",
+  "accept": [
+   "ins auge fassen",
+   "ins auge ([x]) (zu) fassen",
+   "ins auge ([x]) gefasst",
+   "fasst ([x]) ins auge",
+   "fassen ([x]) ins auge",
+   "ins auge ([x]) fasst",
+   "erwägt",
+   "zieht ([x]) in betracht",
+   "in betracht ([x]) (zu) ziehen",
+   "in betracht gezogen",
+   "denkt ([x]) über [x] nach",
+   "überlegt",
+   "zieht ([x]) in erwägung",
+   "spielt mit dem gedanken"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1726": {
+  "core_en": "put an end to",
+  "accept": [
+   "ein ende setzen",
+   "ein ende ([x]) (zu) setzen",
+   "ein ende ([x]) gesetzt",
+   "setzt ([x]) ein ende",
+   "setzen ([x]) ein ende",
+   "ein ende ([x]) setzt",
+   "ein ende ([x]) (zu) machen",
+   "ein ende ([x]) gemacht",
+   "macht ([x]) ein ende",
+   "machen ([x]) ein ende",
+   "ein ende ([x]) macht",
+   "beenden",
+   "ein ende ([x]) (zu) bereiten",
+   "bereitet ([x]) ein ende"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1727": {
+  "core_en": "set clear limits",
+  "accept": [
+   "grenzen setzen",
+   "grenzen ([x]) (zu) setzen",
+   "grenzen ([x]) gesetzt",
+   "setzt ([x]) grenzen",
+   "setzen ([x]) grenzen",
+   "grenzen ([x]) setzt",
+   "begrenzen",
+   "grenzen ([x]) (zu) ziehen",
+   "regeln ([x]) aufstellen",
+   "regeln ([x]) festlegen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1728": {
+  "core_en": "set priorities",
+  "accept": [
+   "prioritäten setzen",
+   "prioritäten ([x]) (zu) setzen",
+   "prioritäten ([x]) gesetzt",
+   "setzt ([x]) prioritäten",
+   "setzen ([x]) prioritäten",
+   "prioritäten ([x]) setzt",
+   "schwerpunkte ([x]) (zu) setzen",
+   "schwerpunkte ([x]) gesetzt",
+   "setzt ([x]) schwerpunkte",
+   "setzen ([x]) schwerpunkte",
+   "schwerpunkte ([x]) setzt",
+   "prioritäten ([x]) festlegen",
+   "prioritäten ([x]) festzulegen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1729": {
+  "core_en": "send a signal",
+  "accept": [
+   "ein zeichen setzen",
+   "zeichen ([x]) (zu) setzen",
+   "zeichen ([x]) gesetzt",
+   "setzt ([x]) zeichen",
+   "setzen ([x]) zeichen",
+   "zeichen ([x]) setzt",
+   "signal ([x]) (zu) setzen",
+   "signal ([x]) gesetzt",
+   "setzt ([x]) signal",
+   "setzen ([x]) signal",
+   "signal ([x]) setzt",
+   "signal ([x]) (zu) senden",
+   "signal ([x]) (zu) geben",
+   "signal ([x]) aussenden"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1730": {
+  "core_en": "risking its reputation",
+  "accept": [
+   "aufs spiel setzen",
+   "aufs spiel ([x]) (zu) setzen",
+   "aufs spiel ([x]) gesetzt",
+   "setzt ([x]) aufs spiel",
+   "setzen ([x]) aufs spiel",
+   "aufs spiel ([x]) setzt",
+   "auf das spiel ([x]) (zu) setzen",
+   "auf das spiel ([x]) gesetzt",
+   "setzt ([x]) auf das spiel",
+   "setzen ([x]) auf das spiel",
+   "auf das spiel ([x]) setzt",
+   "riskiert",
+   "gefährdet"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1731": {
+  "core_en": "inform you",
+  "accept": [
+   "in kenntnis setzen",
+   "in kenntnis ([x]) (zu) setzen",
+   "in kenntnis ([x]) gesetzt",
+   "setzt ([x]) in kenntnis",
+   "setzen ([x]) in kenntnis",
+   "in kenntnis ([x]) setzt",
+   "informieren",
+   "benachrichtigen",
+   "mitteilen",
+   "unterrichten",
+   "bescheid ([x]) geben",
+   "verständigen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1732": {
+  "core_en": "overturned the new regulation",
+  "accept": [
+   "außer kraft setzen",
+   "außer kraft ([x]) (zu) setzen",
+   "außer kraft ([x]) gesetzt",
+   "setzt ([x]) außer kraft",
+   "setzen ([x]) außer kraft",
+   "außer kraft ([x]) setzt",
+   "setzte(n) ([x]) außer kraft",
+   "außer kraft ([x]) setzte(n)",
+   "aufgehoben",
+   "gekippt",
+   "für ungültig erklärt",
+   "für nichtig erklärt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1733": {
+  "core_en": "pinning their hopes on",
+  "accept": [
+   "hoffnungen in [x] setzen",
+   "hoffnung(en) ([x]) (zu) setzen",
+   "hoffnung(en) ([x]) gesetzt",
+   "setzt ([x]) hoffnung(en)",
+   "setzen ([x]) hoffnung(en)",
+   "hoffnung(en) ([x]) setzt",
+   "hoffen ([x]) auf"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1734": {
+  "core_en": "sets standards",
+  "accept": [
+   "maßstäbe setzen",
+   "maßstäbe ([x]) (zu) setzen",
+   "maßstäbe ([x]) gesetzt",
+   "setzt ([x]) maßstäbe",
+   "setzen ([x]) maßstäbe",
+   "maßstäbe ([x]) setzt",
+   "standards ([x]) (zu) setzen",
+   "standards ([x]) gesetzt",
+   "setzt ([x]) standards",
+   "setzen ([x]) standards",
+   "standards ([x]) setzt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1735": {
+  "core_en": "keep up with",
+  "accept": [
+   "mit [x] schritt halten",
+   "schritt ([x]) (zu) halten",
+   "schritt ([x]) gehalten",
+   "hält ([x]) schritt",
+   "halten ([x]) schritt",
+   "schritt ([x]) hält",
+   "mithalten",
+   "nicht hinterher",
+   "hinken ([x]) hinterher"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1736": {
+  "core_en": "keep your distance",
+  "accept": [
+   "abstand halten",
+   "abstand ([x]) (zu) halten",
+   "abstand ([x]) gehalten",
+   "hält ([x]) abstand",
+   "halten ([x]) abstand",
+   "abstand ([x]) hält",
+   "halte ([x]) abstand",
+   "haltet ([x]) abstand",
+   "abstand ([x]) wahren",
+   "wahren sie ([x]) abstand",
+   "bleiben sie ([x]) zurück",
+   "zurückbleiben"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1737": {
+  "core_en": "on the lookout for",
+  "accept": [
+   "nach [x] ausschau halten",
+   "ausschau ([x]) (zu) halten",
+   "ausschau ([x]) gehalten",
+   "hält ([x]) ausschau",
+   "halten ([x]) ausschau",
+   "ausschau ([x]) hält",
+   "suchen ([x]) nach",
+   "auf der suche nach",
+   "suchen ([x]) fachkräfte"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1738": {
+  "core_en": "was limited",
+  "accept": [
+   "sich in grenzen halten",
+   "in grenzen ([x]) (zu) halten",
+   "in grenzen ([x]) gehalten",
+   "hält ([x]) in grenzen",
+   "halten ([x]) in grenzen",
+   "in grenzen ([x]) hält",
+   "hielt(en) ([x]) in grenzen",
+   "in grenzen ([x]) hielt(en)",
+   "war ([x]) gering",
+   "begrenzt",
+   "blieb ([x]) gering",
+   "überschaubar",
+   "fiel ([x]) gering ([x]) aus"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1739": {
+  "core_en": "takes priority over",
+  "accept": [
+   "vorrang vor [x] haben",
+   "hat ([x]) vorrang vor",
+   "haben ([x]) vorrang vor",
+   "vorrang vor [x] hat",
+   "vorrang vor [x] (zu) haben",
+   "vorrang vor [x] gehabt",
+   "hat ([x]) priorität vor",
+   "haben ([x]) priorität vor",
+   "geht ([x]) vor",
+   "kommt vor",
+   "steht über",
+   "ist wichtiger als",
+   "hat ([x]) vorrang gegenüber",
+   "haben ([x]) vorrang gegenüber"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1740": {
+  "core_en": "met with great interest",
+  "accept": [
+   "auf interesse stoßen",
+   "auf ([x]) interesse ([x]) (zu) stoßen",
+   "auf ([x]) interesse ([x]) gestoßen",
+   "stößt ([x]) auf ([x]) interesse",
+   "stoßen ([x]) auf ([x]) interesse",
+   "auf ([x]) interesse ([x]) stößt",
+   "stieß(en) ([x]) auf ([x]) interesse",
+   "auf ([x]) interesse ([x]) stieß(en)",
+   "interesse ([x]) (zu) finden",
+   "interesse ([x]) gefunden",
+   "findet ([x]) interesse",
+   "finden ([x]) interesse",
+   "interesse ([x]) findet",
+   "fand(en) ([x]) interesse",
+   "interesse ([x]) fand(en)",
+   "weckte ([x]) interesse",
+   "interesse ([x]) geweckt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1741": {
+  "core_en": "gone down well with",
+  "accept": [
+   "anklang finden",
+   "anklang ([x]) (zu) finden",
+   "anklang ([x]) gefunden",
+   "findet ([x]) anklang",
+   "finden ([x]) anklang",
+   "anklang ([x]) findet",
+   "fand(en) ([x]) anklang",
+   "anklang ([x]) fand(en)",
+   "gut angekommen",
+   "kommt ([x]) gut an",
+   "kam ([x]) gut an",
+   "gut gefallen",
+   "gefällt ([x]) gut"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1742": {
+  "core_en": "taking a liking to",
+  "accept": [
+   "gefallen an [x] finden",
+   "gefallen ([x]) (zu) finden",
+   "gefallen ([x]) gefunden",
+   "findet ([x]) gefallen",
+   "finden ([x]) gefallen",
+   "gefallen ([x]) findet",
+   "begeistern sich ([x]) für",
+   "entdecken ([x]) für sich",
+   "geschmack an [x] finden",
+   "finden ([x]) geschmack an",
+   "findet ([x]) geschmack an"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1743": {
+  "core_en": "are under suspicion",
+  "accept": [
+   "unter verdacht stehen",
+   "unter verdacht ([x]) (zu) stehen",
+   "unter verdacht ([x]) gestanden",
+   "steht ([x]) unter verdacht",
+   "stehen ([x]) unter verdacht",
+   "unter verdacht ([x]) steht",
+   "werden ([x]) verdächtigt",
+   "im verdacht",
+   "unter dem verdacht"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1744": {
+  "core_en": "support you",
+  "accept": [
+   "zur seite stehen",
+   "zur seite ([x]) (zu) stehen",
+   "zur seite ([x]) gestanden",
+   "steht ([x]) zur seite",
+   "stehen ([x]) zur seite",
+   "zur seite ([x]) steht",
+   "helfen ihnen",
+   "helfen dir",
+   "begleiten sie",
+   "begleiten dich",
+   "betreuen sie",
+   "betreuen dich",
+   "unterstützen sie",
+   "unterstützen dich",
+   "sie ([x]) unterstützen",
+   "dich ([x]) unterstützen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1745": {
+  "core_en": "are in competition with",
+  "accept": [
+   "in konkurrenz stehen",
+   "in konkurrenz ([x]) (zu) stehen",
+   "in konkurrenz ([x]) gestanden",
+   "steht ([x]) in konkurrenz",
+   "stehen ([x]) in konkurrenz",
+   "in konkurrenz ([x]) steht",
+   "im wettbewerb ([x]) (zu) stehen",
+   "im wettbewerb ([x]) gestanden",
+   "steht ([x]) im wettbewerb",
+   "stehen ([x]) im wettbewerb",
+   "im wettbewerb ([x]) steht",
+   "konkurrieren"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1746": {
+  "core_en": "be a burden to",
+  "accept": [
+   "zur last fallen",
+   "zur last ([x]) (zu) fallen",
+   "zur last ([x]) gefallen",
+   "fällt ([x]) zur last",
+   "fallen ([x]) zur last",
+   "zur last ([x]) fällt",
+   "eine last sein",
+   "keine last sein",
+   "eine belastung sein",
+   "zur belastung werden",
+   "keine belastung sein",
+   "zur last ([x]) werden",
+   "auf der tasche",
+   "belasten"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1747": {
+  "core_en": "placed under protection",
+  "accept": [
+   "unter schutz stellen",
+   "unter schutz ([x]) (zu) stellen",
+   "unter schutz ([x]) gestellt",
+   "stellt ([x]) unter schutz",
+   "stellen ([x]) unter schutz",
+   "unter schutz ([x]) stellt",
+   "stellte(n) ([x]) unter schutz",
+   "unter schutz ([x]) stellte(n)",
+   "unter naturschutz ([x]) gestellt",
+   "unter naturschutz ([x]) (zu) stellen",
+   "stellt ([x]) unter naturschutz",
+   "zum schutzgebiet erklärt",
+   "zum naturschutzgebiet erklärt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1748": {
+  "core_en": "make sacrifices",
+  "accept": [
+   "opfer bringen",
+   "opfer ([x]) (zu) bringen",
+   "opfer ([x]) gebracht",
+   "bringt ([x]) opfer",
+   "bringen ([x]) opfer",
+   "opfer ([x]) bringt",
+   "brachte(n) ([x]) opfer",
+   "opfer ([x]) brachte(n)",
+   "verzichten",
+   "abstriche ([x]) machen",
+   "zurückstecken"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1749": {
+  "core_en": "shown understanding for",
+  "accept": [
+   "verständnis für [x] zeigen",
+   "verständnis für [x] (zu) zeigen",
+   "verständnis für [x] gezeigt",
+   "zeigt ([x]) verständnis für",
+   "zeigen ([x]) verständnis für",
+   "zeigte(n) ([x]) verständnis für",
+   "verständnis für [x] zeigt",
+   "verständnis für [x] aufbringen",
+   "verständnis für [x] aufzubringen",
+   "verständnis für [x] aufgebracht",
+   "bringt ([x]) verständnis für [x] auf",
+   "bringen ([x]) verständnis für [x] auf",
+   "verständnis für [x] (zu) haben",
+   "verständnis für [x] gehabt",
+   "hat ([x]) verständnis für",
+   "haben ([x]) verständnis für",
+   "hatte(n) ([x]) verständnis für",
+   "verständnis dafür",
+   "verständnisvoll"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1750": {
+  "core_en": "account for its spending",
+  "accept": [
+   "rechenschaft ablegen",
+   "rechenschaft ([x]) ablegen",
+   "rechenschaft ([x]) abzulegen",
+   "rechenschaft ([x]) abgelegt",
+   "legt ([x]) rechenschaft ([x]) ab",
+   "legen ([x]) rechenschaft ([x]) ab",
+   "rechenschaft ([x]) ablegt",
+   "rechenschaft ([x]) (zu) geben",
+   "rechenschaft ([x]) gegeben",
+   "gibt ([x]) rechenschaft",
+   "geben ([x]) rechenschaft",
+   "rechenschaft ([x]) gibt",
+   "rechtfertigen",
+   "sich ([x]) verantworten"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1751": {
+  "core_en": "takes stock",
+  "accept": [
+   "bilanz ziehen",
+   "bilanz ([x]) (zu) ziehen",
+   "bilanz ([x]) gezogen",
+   "zieht ([x]) bilanz",
+   "ziehen ([x]) bilanz",
+   "bilanz ([x]) zieht",
+   "zog(en) ([x]) bilanz",
+   "bilanz ([x]) zog(en)",
+   "fazit ([x]) (zu) ziehen",
+   "zieht ([x]) fazit",
+   "zwischenbilanz"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1752": {
+  "core_en": "create 500 jobs",
+  "accept": [
+   "arbeitsplätze schaffen",
+   "arbeitsplätze ([x]) (zu) schaffen",
+   "arbeitsplätze ([x]) geschaffen",
+   "schafft ([x]) arbeitsplätze",
+   "schaffen ([x]) arbeitsplätze",
+   "arbeitsplätze ([x]) schafft",
+   "jobs ([x]) (zu) schaffen",
+   "jobs ([x]) geschaffen",
+   "schafft ([x]) jobs",
+   "schaffen ([x]) jobs",
+   "jobs ([x]) schafft",
+   "stellen ([x]) (zu) schaffen",
+   "stellen ([x]) geschaffen",
+   "schafft ([x]) stellen",
+   "schaffen ([x]) stellen",
+   "stellen ([x]) schafft"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1753": {
+  "core_en": "made a profit",
+  "accept": [
+   "einen gewinn erzielen",
+   "gewinn(e) ([x]) (zu) erzielen",
+   "gewinn(e) ([x]) erzielt",
+   "erzielt ([x]) gewinn(e)",
+   "erzielen ([x]) gewinn(e)",
+   "erzielte(n) ([x]) gewinn(e)",
+   "gewinn(e) ([x]) erzielte(n)",
+   "gewinn(e) ([x]) (zu) machen",
+   "gewinn(e) ([x]) gemacht",
+   "macht ([x]) gewinn(e)",
+   "machen ([x]) gewinn(e)",
+   "gewinn(e) ([x]) macht",
+   "machte(n) ([x]) gewinn(e)",
+   "gewinn(e) ([x]) machte(n)",
+   "schrieb ([x]) schwarze zahlen",
+   "schwarze zahlen ([x]) geschrieben",
+   "schreibt ([x]) schwarze zahlen",
+   "gewinn(e) ([x]) erwirtschaftet",
+   "erwirtschaftet ([x]) gewinn(e)",
+   "in die gewinnzone"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1754": {
+  "core_en": "in the red",
+  "accept": [
+   "rote zahlen schreiben",
+   "rote zahlen ([x]) (zu) schreiben",
+   "rote zahlen ([x]) geschrieben",
+   "schreibt ([x]) rote zahlen",
+   "schreiben ([x]) rote zahlen",
+   "rote zahlen ([x]) schreibt",
+   "in den roten zahlen",
+   "im minus",
+   "macht ([x]) verluste",
+   "schrieb(en) ([x]) rote zahlen",
+   "in die roten zahlen",
+   "schreibt ([x]) verluste"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1755": {
+  "core_en": "bears the costs",
+  "accept": [
+   "die kosten tragen",
+   "kosten ([x]) (zu) tragen",
+   "kosten ([x]) getragen",
+   "trägt ([x]) kosten",
+   "tragen ([x]) kosten",
+   "kosten ([x]) trägt",
+   "kosten ([x]) (zu) übernehmen",
+   "kosten ([x]) übernommen",
+   "übernimmt ([x]) kosten",
+   "übernehmen ([x]) kosten",
+   "kosten ([x]) übernimmt",
+   "für die kosten ([x]) auf",
+   "zahlt ([x]) weiterbildung",
+   "bezahlt ([x]) weiterbildung"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1756": {
+  "core_en": "concluded a contract",
+  "accept": [
+   "einen vertrag abschließen",
+   "vertrag ([x]) abschließen",
+   "vertrag ([x]) abzuschließen",
+   "vertrag ([x]) abgeschlossen",
+   "schließt ([x]) vertrag ([x]) ab",
+   "schließen ([x]) vertrag ([x]) ab",
+   "vertrag ([x]) abschließt",
+   "schloss(en) ([x]) vertrag ([x]) ab",
+   "vertrag ([x]) abschloss(en)",
+   "vertrag ([x]) (zu) schließen",
+   "vertrag ([x]) geschlossen",
+   "schließt ([x]) vertrag",
+   "schließen ([x]) vertrag",
+   "vertrag ([x]) schließt",
+   "schloss(en) ([x]) vertrag",
+   "vertrag ([x]) schloss(en)",
+   "vertrag ([x]) unterzeichnet",
+   "vertrag ([x]) unterschrieben"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1757": {
+  "core_en": "handed in her notice",
+  "accept": [
+   "die kündigung einreichen",
+   "kündigung ([x]) einreichen",
+   "kündigung ([x]) einzureichen",
+   "kündigung ([x]) eingereicht",
+   "reicht ([x]) kündigung ([x]) ein",
+   "reichen ([x]) kündigung ([x]) ein",
+   "kündigung ([x]) einreicht",
+   "reichte(n) ([x]) kündigung ([x]) ein",
+   "kündigung ([x]) einreichte(n)",
+   "kündigung ([x]) abgeben",
+   "kündigung ([x]) abzugeben",
+   "kündigung ([x]) abgegeben",
+   "gibt ([x]) kündigung ([x]) ab",
+   "geben ([x]) kündigung ([x]) ab",
+   "kündigung ([x]) abgibt",
+   "gab(en) ([x]) kündigung ([x]) ab",
+   "kündigung ([x]) abgab(en)",
+   "gekündigt",
+   "kündigte"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1758": {
+  "core_en": "gain practical experience",
+  "accept": [
+   "erfahrungen sammeln",
+   "erfahrung(en) ([x]) (zu) sammeln",
+   "erfahrung(en) ([x]) gesammelt",
+   "sammelt ([x]) erfahrung(en)",
+   "sammeln ([x]) erfahrung(en)",
+   "erfahrung(en) ([x]) sammelt",
+   "erfahrung(en) ([x]) (zu) gewinnen",
+   "erfahrung(en) ([x]) gewonnen",
+   "gewinnt ([x]) erfahrung(en)",
+   "gewinnen ([x]) erfahrung(en)",
+   "erfahrung(en) ([x]) gewinnt",
+   "sammelst ([x]) erfahrung",
+   "sammelst ([x]) erfahrungen",
+   "gewinnst ([x]) erfahrungen",
+   "praxiserfahrung ([x]) (zu) sammeln",
+   "praxiserfahrungen ([x]) (zu) sammeln",
+   "erfahrung(en) ([x]) (zu) erwerben",
+   "erfahrung(en) ([x]) erworben"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1759": {
+  "core_en": "advertised ten new jobs",
+  "accept": [
+   "eine stelle ausschreiben",
+   "stellen ([x]) ausschreiben",
+   "stellen ([x]) auszuschreiben",
+   "stellen ([x]) ausgeschrieben",
+   "schreibt ([x]) stellen ([x]) aus",
+   "schreiben ([x]) stellen ([x]) aus",
+   "stellen ([x]) ausschreibt",
+   "schrieb(en) ([x]) stellen ([x]) aus",
+   "stellen ([x]) ausschrieb(en)",
+   "pflegestellen ([x]) ausgeschrieben"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1760": {
+  "core_en": "awarded the contract to",
+  "accept": [
+   "einen auftrag erteilen",
+   "auftrag ([x]) (zu) erteilen",
+   "auftrag ([x]) erteilt",
+   "erteilt ([x]) auftrag",
+   "erteilen ([x]) auftrag",
+   "erteilte(n) ([x]) auftrag",
+   "auftrag ([x]) erteilte(n)",
+   "auftrag ([x]) (zu) vergeben",
+   "auftrag ([x]) vergeben",
+   "vergibt ([x]) auftrag",
+   "vergeben ([x]) auftrag",
+   "auftrag ([x]) vergibt",
+   "vergab(en) ([x]) auftrag",
+   "auftrag ([x]) vergab(en)",
+   "beauftragt",
+   "zuschlag ([x]) erteilt",
+   "zuschlag ([x]) gegeben"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1761": {
+  "core_en": "granted permission",
+  "accept": [
+   "eine genehmigung erteilen",
+   "genehmigung ([x]) (zu) erteilen",
+   "genehmigung ([x]) erteilt",
+   "erteilt ([x]) genehmigung",
+   "erteilen ([x]) genehmigung",
+   "erteilte(n) ([x]) genehmigung",
+   "genehmigung ([x]) erteilte(n)",
+   "genehmigt",
+   "erlaubnis ([x]) erteilt",
+   "erteilt ([x]) erlaubnis",
+   "bewilligung ([x]) erteilt",
+   "bewilligt",
+   "erlaubnis ([x]) gegeben"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1762": {
+  "core_en": "meet the demand",
+  "accept": [
+   "den bedarf decken",
+   "bedarf ([x]) (zu) decken",
+   "bedarf ([x]) gedeckt",
+   "deckt ([x]) bedarf",
+   "decken ([x]) bedarf",
+   "bedarf ([x]) deckt",
+   "nachfrage ([x]) (zu) decken",
+   "nachfrage ([x]) gedeckt",
+   "nachfrage ([x]) (zu) befriedigen",
+   "bedarf ([x]) abzudecken",
+   "bedarf ([x]) abdecken",
+   "bedarf ([x]) abgedeckt",
+   "nachfrage ([x]) abzudecken"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1763": {
+  "core_en": "attend the appointment",
+  "accept": [
+   "einen termin wahrnehmen",
+   "termin ([x]) wahrnehmen",
+   "termin ([x]) wahrzunehmen",
+   "termin ([x]) wahrgenommen",
+   "nimmt ([x]) termin ([x]) wahr",
+   "nehmen ([x]) termin ([x]) wahr",
+   "termin ([x]) wahrnimmt",
+   "zum termin ([x]) kommen",
+   "zu dem termin ([x]) kommen",
+   "termin ([x]) einhalten",
+   "zum termin ([x]) erscheinen",
+   "zu dem termin ([x]) erscheinen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1764": {
+  "core_en": "represents the interests of",
+  "accept": [
+   "die interessen vertreten",
+   "interessen ([x]) (zu) vertreten",
+   "interessen ([x]) vertreten",
+   "vertritt ([x]) interessen",
+   "vertreten ([x]) interessen",
+   "interessen ([x]) vertritt",
+   "für die interessen",
+   "nimmt ([x]) interessen ([x]) wahr",
+   "interessen ([x]) wahrnimmt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1765": {
+  "core_en": "evaded taxes",
+  "accept": [
+   "steuern hinterziehen",
+   "steuern ([x]) (zu) hinterziehen",
+   "steuern ([x]) hinterzogen",
+   "hinterzieht ([x]) steuern",
+   "hinterziehen ([x]) steuern",
+   "steuern ([x]) hinterzieht",
+   "hinterzog(en) ([x]) steuern",
+   "steuern ([x]) hinterzog(en)"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1766": {
+  "core_en": "fight inflation",
+  "accept": [
+   "die inflation bekämpfen",
+   "inflation ([x]) (zu) bekämpfen",
+   "inflation ([x]) bekämpft",
+   "bekämpft ([x]) inflation",
+   "bekämpfen ([x]) inflation",
+   "gegen die inflation ([x]) kämpfen",
+   "inflation ([x]) eindämmen",
+   "inflation ([x]) einzudämmen",
+   "inflation entgegenzuwirken",
+   "inflation ([x]) (zu) dämpfen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1767": {
+  "core_en": "Demand for electric cars is rising",
+  "accept": [
+   "die nachfrage nach [x] steigt",
+   "nachfrage nach [x] steigt",
+   "nachfrage nach [x] wächst",
+   "nachfrage nach [x] nimmt ([x]) zu",
+   "nachfrage nach [x] ist ([x]) gestiegen",
+   "steigt ([x]) die nachfrage nach"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1768": {
+  "core_en": "suffering from a shortage of skilled workers",
+  "accept": [
+   "unter fachkräftemangel leiden",
+   "unter (dem) fachkräftemangel",
+   "unter einem mangel an fachkräften",
+   "unter dem mangel an fachkräften",
+   "fehlen ([x]) fachkräfte",
+   "unter einem fachkräftemangel",
+   "leidet ([x]) unter ([x]) mangel an fachkräften",
+   "mit ([x]) fachkräftemangel zu kämpfen",
+   "unter ([x]) fachkräftemangel",
+   "fachkräfte fehlen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1769": {
+  "core_en": "reached its highest level",
+  "accept": [
+   "den höchsten stand erreichen",
+   "höchsten stand ([x]) erreicht",
+   "erreicht ([x]) höchsten stand",
+   "höchststand ([x]) erreicht",
+   "erreicht ([x]) höchststand",
+   "zehnjahreshoch erreicht",
+   "auf den höchsten stand",
+   "auf ([x]) höchststand",
+   "höchstwert ([x]) erreicht",
+   "erreichte ([x]) höchsten stand",
+   "so hoch wie seit"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1770": {
+  "core_en": "fallen to a record low",
+  "accept": [
+   "auf ein rekordtief fallen",
+   "auf einen tiefstand fallen",
+   "fiel ([x]) auf ein rekordtief",
+   "sank ([x]) auf ein rekordtief",
+   "auf ([x]) tiefstand ([x]) gefallen",
+   "auf ([x]) tiefstand ([x]) gesunken",
+   "auf ein rekordtief ([x]) gefallen",
+   "auf ein rekordtief ([x]) gesunken",
+   "fiel ([x]) auf ([x]) tiefstand",
+   "sank ([x]) auf ([x]) tiefstand",
+   "auf einen rekordtiefstand",
+   "auf ([x]) rekordtief ([x]) gefallen",
+   "auf ([x]) rekordtief ([x]) gesunken",
+   "rekordtief ([x]) erreicht",
+   "tiefstand ([x]) erreicht",
+   "auf ([x]) tiefststand",
+   "so niedrig wie nie"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1771": {
+  "core_en": "has been approved",
+  "accept": [
+   "einen antrag bewilligen",
+   "bewilligt",
+   "genehmigt",
+   "bewilligen",
+   "genehmigen",
+   "stattgegeben"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1772": {
+  "core_en": "generates electricity",
+  "accept": [
+   "strom erzeugen",
+   "strom ([x]) (zu) erzeugen",
+   "strom ([x]) erzeugt",
+   "erzeugt ([x]) strom",
+   "erzeugen ([x]) strom",
+   "strom ([x]) (zu) produzieren",
+   "strom ([x]) produziert",
+   "produziert ([x]) strom",
+   "produzieren ([x]) strom",
+   "energie ([x]) (zu) erzeugen",
+   "energie ([x]) erzeugt",
+   "erzeugt ([x]) energie",
+   "erzeugen ([x]) energie",
+   "liefert ([x]) strom",
+   "mit strom"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1773": {
+  "core_en": "passed the new law",
+  "accept": [
+   "ein gesetz verabschieden",
+   "gesetz ([x]) (zu) verabschieden",
+   "gesetz ([x]) verabschiedet",
+   "verabschiedet ([x]) gesetz",
+   "verabschieden ([x]) gesetz",
+   "verabschiedete(n) ([x]) gesetz",
+   "gesetz ([x]) verabschiedete(n)",
+   "gesetz ([x]) (zu) beschließen",
+   "gesetz ([x]) beschlossen",
+   "beschließt ([x]) gesetz",
+   "beschließen ([x]) gesetz",
+   "gesetz ([x]) beschließt",
+   "beschloss(en) ([x]) gesetz",
+   "gesetz ([x]) beschloss(en)",
+   "gesetz ([x]) angenommen",
+   "nahm ([x]) gesetz ([x]) an"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1774": {
+  "core_en": "takes office",
+  "accept": [
+   "das amt antreten",
+   "amt ([x]) antreten",
+   "amt ([x]) anzutreten",
+   "amt ([x]) angetreten",
+   "tritt ([x]) amt ([x]) an",
+   "treten ([x]) amt ([x]) an",
+   "amt ([x]) antritt",
+   "amt ([x]) übernehmen",
+   "übernimmt ([x]) amt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1775": {
+  "core_en": "calling for the minister's resignation",
+  "accept": [
+   "den rücktritt fordern",
+   "rücktritt ([x]) (zu) fordern",
+   "rücktritt ([x]) gefordert",
+   "fordert ([x]) rücktritt",
+   "fordern ([x]) rücktritt",
+   "rücktritt ([x]) fordert",
+   "rücktritt ([x]) (zu) verlangen",
+   "rücktritt ([x]) verlangt",
+   "verlangt ([x]) rücktritt",
+   "verlangen ([x]) rücktritt",
+   "zum rücktritt auf",
+   "zum rücktritt aufgefordert",
+   "zum rücktritt aufzufordern"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1776": {
+  "core_en": "imposed new sanctions",
+  "accept": [
+   "sanktionen verhängen",
+   "sanktionen ([x]) (zu) verhängen",
+   "sanktionen ([x]) verhängt",
+   "verhängt ([x]) sanktionen",
+   "verhängen ([x]) sanktionen",
+   "verhängte(n) ([x]) sanktionen",
+   "sanktionen ([x]) verhängte(n)",
+   "sanktionen ([x]) erlassen",
+   "sanktionen ([x]) beschlossen",
+   "beschließt ([x]) sanktionen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1777": {
+  "core_en": "made headlines",
+  "accept": [
+   "schlagzeilen machen",
+   "schlagzeilen ([x]) (zu) machen",
+   "schlagzeilen ([x]) gemacht",
+   "macht ([x]) schlagzeilen",
+   "machen ([x]) schlagzeilen",
+   "schlagzeilen ([x]) macht",
+   "machte(n) ([x]) schlagzeilen",
+   "schlagzeilen ([x]) machte(n)",
+   "für schlagzeilen",
+   "in die schlagzeilen",
+   "von sich reden"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1778": {
+  "core_en": "rejects all allegations",
+  "accept": [
+   "die vorwürfe zurückweisen",
+   "vorwürfe ([x]) zurückweisen",
+   "vorwürfe ([x]) zurückzuweisen",
+   "vorwürfe ([x]) zurückgewiesen",
+   "weist ([x]) vorwürfe ([x]) zurück",
+   "weisen ([x]) vorwürfe ([x]) zurück",
+   "vorwürfe ([x]) zurückweist",
+   "wies(en) ([x]) vorwürfe ([x]) zurück",
+   "vorwürfe ([x]) zurückwies(en)",
+   "bestreitet ([x]) vorwürfe",
+   "vorwürfe ([x]) bestritten",
+   "bestreiten ([x]) vorwürfe",
+   "weist ([x]) vorwürfe ([x]) von sich",
+   "weisen ([x]) vorwürfe ([x]) von sich"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1779": {
+  "core_en": "spreading rumours",
+  "accept": [
+   "gerüchte verbreiten",
+   "gerüchte ([x]) (zu) verbreiten",
+   "gerüchte ([x]) verbreitet",
+   "verbreitet ([x]) gerüchte",
+   "verbreiten ([x]) gerüchte",
+   "verbreitete(n) ([x]) gerüchte",
+   "gerüchte ([x]) verbreitete(n)",
+   "gerüchte ([x]) (zu) streuen",
+   "gerüchte ([x]) gestreut",
+   "streut ([x]) gerüchte",
+   "streuen ([x]) gerüchte",
+   "gerüchte ([x]) streut",
+   "streute(n) ([x]) gerüchte",
+   "gerüchte ([x]) streute(n)",
+   "verbreitet ([x]) ein gerücht",
+   "gerüchte ([x]) in die welt",
+   "in umlauf"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1780": {
+  "core_en": "raises questions",
+  "accept": [
+   "fragen aufwerfen",
+   "fragen ([x]) aufwerfen",
+   "fragen ([x]) aufzuwerfen",
+   "fragen ([x]) aufgeworfen",
+   "wirft ([x]) fragen ([x]) auf",
+   "werfen ([x]) fragen ([x]) auf",
+   "fragen ([x]) aufwirft",
+   "warf(en) ([x]) fragen ([x]) auf",
+   "fragen ([x]) aufwarf(en)",
+   "wirft ([x]) die frage ([x]) auf",
+   "wirft ([x]) eine frage ([x]) auf",
+   "fragen ([x]) aufkommen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1781": {
+  "core_en": "raised concerns",
+  "accept": [
+   "bedenken äußern",
+   "bedenken ([x]) (zu) äußern",
+   "bedenken ([x]) geäußert",
+   "äußert ([x]) bedenken",
+   "äußern ([x]) bedenken",
+   "bedenken ([x]) äußert",
+   "äußerte(n) ([x]) bedenken",
+   "bedenken ([x]) äußerte(n)",
+   "bedenken ([x]) anmelden",
+   "bedenken ([x]) anzumelden",
+   "bedenken ([x]) angemeldet",
+   "meldet ([x]) bedenken ([x]) an",
+   "melden ([x]) bedenken ([x]) an",
+   "bedenken ([x]) anmeldet",
+   "meldete(n) ([x]) bedenken ([x]) an",
+   "bedenken ([x]) anmeldete(n)",
+   "bedenken ([x]) vorgebracht",
+   "sorgen ([x]) geäußert",
+   "bedenken ([x]) erhoben",
+   "erheben ([x]) bedenken"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1782": {
+  "core_en": "reached a compromise",
+  "accept": [
+   "einen kompromiss schließen",
+   "kompromiss ([x]) (zu) schließen",
+   "kompromiss ([x]) geschlossen",
+   "schließt ([x]) kompromiss",
+   "schließen ([x]) kompromiss",
+   "kompromiss ([x]) schließt",
+   "schloss(en) ([x]) kompromiss",
+   "kompromiss ([x]) schloss(en)",
+   "kompromiss ([x]) (zu) finden",
+   "kompromiss ([x]) gefunden",
+   "findet ([x]) kompromiss",
+   "finden ([x]) kompromiss",
+   "kompromiss ([x]) findet",
+   "fand(en) ([x]) kompromiss",
+   "kompromiss ([x]) fand(en)",
+   "kompromiss ([x]) eingehen",
+   "kompromiss ([x]) einzugehen",
+   "kompromiss ([x]) eingegangen",
+   "geht ([x]) kompromiss ([x]) ein",
+   "gehen ([x]) kompromiss ([x]) ein",
+   "kompromiss ([x]) eingeht",
+   "ging(en) ([x]) kompromiss ([x]) ein",
+   "kompromiss ([x]) einging(en)",
+   "auf einen kompromiss geeinigt",
+   "kompromiss ([x]) erzielt",
+   "erzielte(n) ([x]) kompromiss",
+   "kompromiss ([x]) (zu) erzielen",
+   "einigten sich ([x]) auf einen kompromiss",
+   "kompromiss ([x]) erreicht"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1783": {
+  "core_en": "gave a short speech",
+  "accept": [
+   "eine rede halten",
+   "rede ([x]) (zu) halten",
+   "rede ([x]) gehalten",
+   "hält ([x]) rede",
+   "halten ([x]) rede",
+   "rede ([x]) hält",
+   "hielt(en) ([x]) rede",
+   "rede ([x]) hielt(en)",
+   "ansprache ([x]) (zu) halten",
+   "ansprache ([x]) gehalten",
+   "hält ([x]) ansprache",
+   "halten ([x]) ansprache",
+   "ansprache ([x]) hält",
+   "hielt(en) ([x]) ansprache",
+   "ansprache ([x]) hielt(en)"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1784": {
+  "core_en": "admitted a mistake",
+  "accept": [
+   "einen fehler einräumen",
+   "fehler ([x]) einräumen",
+   "fehler ([x]) einzuräumen",
+   "fehler ([x]) eingeräumt",
+   "räumt ([x]) fehler ([x]) ein",
+   "räumen ([x]) fehler ([x]) ein",
+   "fehler ([x]) einräumt",
+   "räumte(n) ([x]) fehler ([x]) ein",
+   "fehler ([x]) einräumte(n)",
+   "fehler ([x]) zugeben",
+   "fehler ([x]) zuzugeben",
+   "fehler ([x]) zugegeben",
+   "gibt ([x]) fehler ([x]) zu",
+   "geben ([x]) fehler ([x]) zu",
+   "fehler ([x]) zugibt",
+   "gab(en) ([x]) fehler ([x]) zu",
+   "fehler ([x]) zugab(en)",
+   "fehler ([x]) eingestanden",
+   "gesteht ([x]) fehler ([x]) ein",
+   "fehler ([x]) eingestehen",
+   "gestand ([x]) fehler ([x]) ein"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1785": {
+  "core_en": "push the project forward",
+  "accept": [
+   "ein projekt vorantreiben",
+   "projekt ([x]) vorantreiben",
+   "projekt ([x]) voranzutreiben",
+   "projekt ([x]) vorangetrieben",
+   "treibt ([x]) projekt ([x]) voran",
+   "treiben ([x]) projekt ([x]) voran",
+   "projekt ([x]) vorantreibt",
+   "projekt ([x]) voranbringen",
+   "bringt ([x]) projekt ([x]) voran",
+   "projekt ([x]) voranzubringen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1786": {
+  "core_en": "by a narrow majority",
+  "accept": [
+   "mit knapper mehrheit",
+   "mit einer knappen mehrheit",
+   "eine knappe mehrheit",
+   "mit hauchdünner mehrheit",
+   "mit einer hauchdünnen mehrheit",
+   "knapp angenommen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1787": {
+  "core_en": "the general public",
+  "accept": [
+   "der breiten öffentlichkeit",
+   "für die breite öffentlichkeit",
+   "der allgemeinen öffentlichkeit",
+   "für die allgemeine öffentlichkeit",
+   "öffentlich zugänglich",
+   "der öffentlichkeit",
+   "für die öffentlichkeit",
+   "der allgemeinheit",
+   "allen zugänglich",
+   "für alle zugänglich"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1788": {
+  "core_en": "a sensitive subject",
+  "accept": [
+   "ein heikles thema",
+   "ein sensibles thema",
+   "ein brisantes thema",
+   "ein schwieriges thema",
+   "ein tabuthema",
+   "eine heikle angelegenheit",
+   "ein delikates thema"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1789": {
+  "core_en": "serious consequences",
+  "accept": [
+   "erhebliche folgen",
+   "schwerwiegende folgen",
+   "gravierende folgen",
+   "ernste folgen",
+   "schwere folgen",
+   "ernsthafte folgen",
+   "erhebliche auswirkungen",
+   "schwerwiegende auswirkungen",
+   "gravierende auswirkungen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1790": {
+  "core_en": "a valid reason",
+  "accept": [
+   "einen triftigen grund",
+   "einen wichtigen grund",
+   "einen guten grund",
+   "einen stichhaltigen grund",
+   "einen berechtigten grund"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1791": {
+  "core_en": "carrying out a study",
+  "accept": [
+   "eine studie durchführen",
+   "studie ([x]) durchführen",
+   "studie ([x]) durchzuführen",
+   "studie ([x]) durchgeführt",
+   "führt ([x]) studie ([x]) durch",
+   "führen ([x]) studie ([x]) durch",
+   "studie ([x]) durchführt",
+   "führte(n) ([x]) studie ([x]) durch",
+   "studie ([x]) durchführte(n)",
+   "untersuchung ([x]) durchführen",
+   "untersuchung ([x]) durchzuführen",
+   "untersuchung ([x]) durchgeführt",
+   "führt ([x]) untersuchung ([x]) durch",
+   "führen ([x]) untersuchung ([x]) durch",
+   "untersuchung ([x]) durchführt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1792": {
+  "core_en": "collects data",
+  "accept": [
+   "daten erheben",
+   "daten ([x]) (zu) erheben",
+   "daten ([x]) erhoben",
+   "erhebt ([x]) daten",
+   "erheben ([x]) daten",
+   "daten ([x]) erhebt",
+   "erhob(en) ([x]) daten",
+   "daten ([x]) erhob(en)",
+   "daten ([x]) (zu) sammeln",
+   "daten ([x]) gesammelt",
+   "sammelt ([x]) daten",
+   "sammeln ([x]) daten",
+   "daten ([x]) sammelt",
+   "sammelte(n) ([x]) daten",
+   "daten ([x]) sammelte(n)",
+   "erfasst ([x]) daten",
+   "daten ([x]) erfasst"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1793": {
+  "core_en": "put forward a new hypothesis",
+  "accept": [
+   "eine hypothese aufstellen",
+   "hypothese ([x]) aufstellen",
+   "hypothese ([x]) aufzustellen",
+   "hypothese ([x]) aufgestellt",
+   "stellt ([x]) hypothese ([x]) auf",
+   "stellen ([x]) hypothese ([x]) auf",
+   "hypothese ([x]) aufstellt",
+   "stellte(n) ([x]) hypothese ([x]) auf",
+   "hypothese ([x]) aufstellte(n)",
+   "these ([x]) aufstellen",
+   "these ([x]) aufzustellen",
+   "these ([x]) aufgestellt",
+   "stellt ([x]) these ([x]) auf",
+   "stellen ([x]) these ([x]) auf",
+   "these ([x]) aufstellt",
+   "stellte(n) ([x]) these ([x]) auf",
+   "these ([x]) aufstellte(n)",
+   "hypothese ([x]) formuliert",
+   "these ([x]) formuliert"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1794": {
+  "core_en": "present its findings",
+  "accept": [
+   "ergebnisse vorlegen",
+   "ergebnisse ([x]) vorlegen",
+   "ergebnisse ([x]) vorzulegen",
+   "ergebnisse ([x]) vorgelegt",
+   "legt ([x]) ergebnisse ([x]) vor",
+   "legen ([x]) ergebnisse ([x]) vor",
+   "ergebnisse ([x]) vorlegt",
+   "ergebnisse ([x]) vorstellen",
+   "ergebnisse ([x]) vorzustellen",
+   "ergebnisse ([x]) vorgestellt",
+   "stellt ([x]) ergebnisse ([x]) vor",
+   "stellen ([x]) ergebnisse ([x]) vor",
+   "ergebnisse ([x]) vorstellt",
+   "ergebnisse ([x]) (zu) präsentieren",
+   "ergebnisse ([x]) präsentiert",
+   "präsentiert ([x]) ergebnisse",
+   "präsentieren ([x]) ergebnisse",
+   "erkenntnisse ([x]) vorlegen",
+   "erkenntnisse ([x]) vorstellen",
+   "erkenntnisse ([x]) (zu) präsentieren",
+   "legt ([x]) erkenntnisse ([x]) vor",
+   "stellt ([x]) erkenntnisse ([x]) vor",
+   "präsentiert ([x]) erkenntnisse"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1795": {
+  "core_en": "analysing the data",
+  "accept": [
+   "daten auswerten",
+   "daten ([x]) auswerten",
+   "daten ([x]) auszuwerten",
+   "daten ([x]) ausgewertet",
+   "wertet ([x]) daten ([x]) aus",
+   "werten ([x]) daten ([x]) aus",
+   "daten ([x]) auswertet",
+   "daten ([x]) (zu) analysieren",
+   "daten ([x]) analysiert",
+   "analysiert ([x]) daten",
+   "analysieren ([x]) daten"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1796": {
+  "core_en": "gained new insights into",
+  "accept": [
+   "erkenntnisse gewinnen",
+   "erkenntnisse ([x]) (zu) gewinnen",
+   "erkenntnisse ([x]) gewonnen",
+   "gewinnt ([x]) erkenntnisse",
+   "gewinnen ([x]) erkenntnisse",
+   "erkenntnisse ([x]) gewinnt",
+   "gewann(en) ([x]) erkenntnisse",
+   "erkenntnisse ([x]) gewann(en)",
+   "erkenntnisse ([x]) erlangt",
+   "einblicke ([x]) gewonnen",
+   "einblicke ([x]) erhalten"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1797": {
+  "core_en": "disprove the theory",
+  "accept": [
+   "eine theorie widerlegen",
+   "theorie ([x]) (zu) widerlegen",
+   "theorie ([x]) widerlegt",
+   "widerlegt ([x]) theorie",
+   "widerlegen ([x]) theorie",
+   "widerlegte(n) ([x]) theorie",
+   "theorie ([x]) widerlegte(n)",
+   "these ([x]) (zu) widerlegen",
+   "these ([x]) widerlegt",
+   "widerlegt ([x]) these",
+   "widerlegen ([x]) these"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1798": {
+  "core_en": "set a new record",
+  "accept": [
+   "einen rekord aufstellen",
+   "rekord ([x]) aufstellen",
+   "rekord ([x]) aufzustellen",
+   "rekord ([x]) aufgestellt",
+   "stellt ([x]) rekord ([x]) auf",
+   "stellen ([x]) rekord ([x]) auf",
+   "rekord ([x]) aufstellt",
+   "stellte(n) ([x]) rekord ([x]) auf",
+   "rekord ([x]) aufstellte(n)",
+   "weltrekord ([x]) aufstellen",
+   "weltrekord ([x]) aufzustellen",
+   "weltrekord ([x]) aufgestellt",
+   "stellt ([x]) weltrekord ([x]) auf",
+   "stellen ([x]) weltrekord ([x]) auf",
+   "weltrekord ([x]) aufstellt",
+   "stellte(n) ([x]) weltrekord ([x]) auf",
+   "weltrekord ([x]) aufstellte(n)",
+   "rekord ([x]) gelaufen",
+   "lief ([x]) rekord"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1799": {
+  "core_en": "closes a serious security gap",
+  "accept": [
+   "eine sicherheitslücke schließen",
+   "sicherheitslücke ([x]) (zu) schließen",
+   "sicherheitslücke ([x]) geschlossen",
+   "schließt ([x]) sicherheitslücke",
+   "schließen ([x]) sicherheitslücke",
+   "sicherheitslücke ([x]) schließt",
+   "schloss(en) ([x]) sicherheitslücke",
+   "sicherheitslücke ([x]) schloss(en)",
+   "sicherheitslücke ([x]) (zu) stopfen",
+   "sicherheitslücke ([x]) gestopft",
+   "stopft ([x]) sicherheitslücke",
+   "stopfen ([x]) sicherheitslücke",
+   "sicherheitslücke ([x]) stopft",
+   "sicherheitslücke ([x]) (zu) beheben",
+   "sicherheitslücke ([x]) behoben",
+   "behebt ([x]) sicherheitslücke",
+   "beheben ([x]) sicherheitslücke",
+   "sicherheitslücke ([x]) behebt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1800": {
+  "core_en": "fixed the error",
+  "accept": [
+   "einen fehler beheben",
+   "fehler ([x]) (zu) beheben",
+   "fehler ([x]) behoben",
+   "behebt ([x]) fehler",
+   "beheben ([x]) fehler",
+   "fehler ([x]) behebt",
+   "behob(en) ([x]) fehler",
+   "fehler ([x]) behob(en)",
+   "fehler ([x]) (zu) beseitigen",
+   "fehler ([x]) beseitigt",
+   "beseitigt ([x]) fehler",
+   "beseitigen ([x]) fehler",
+   "beseitigte(n) ([x]) fehler",
+   "fehler ([x]) beseitigte(n)",
+   "fehler ([x]) gefixt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1801": {
+  "core_en": "have access to",
+  "accept": [
+   "zugriff auf [x] haben",
+   "zugriff auf",
+   "zugang zu",
+   "zugang zum",
+   "zugang zur",
+   "zugreifen",
+   "greifen ([x]) auf [x] zu",
+   "einsehen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1802": {
+  "core_en": "guarantee data protection",
+  "accept": [
+   "den datenschutz gewährleisten",
+   "datenschutz ([x]) (zu) gewährleisten",
+   "datenschutz ([x]) gewährleistet",
+   "gewährleistet ([x]) datenschutz",
+   "gewährleisten ([x]) datenschutz",
+   "datenschutz ([x]) (zu) garantieren",
+   "datenschutz ([x]) garantiert",
+   "garantiert ([x]) datenschutz",
+   "garantieren ([x]) datenschutz",
+   "datenschutz ([x]) sicherstellen",
+   "für den datenschutz ([x]) sorgen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1803": {
+  "core_en": "Back up your data",
+  "accept": [
+   "daten sichern",
+   "sichern sie ([x]) daten",
+   "sichere ([x]) daten",
+   "sichert ([x]) daten",
+   "daten ([x]) (zu) sichern",
+   "daten ([x]) gesichert",
+   "sichern ([x]) daten",
+   "daten ([x]) sichert",
+   "backup",
+   "sicherungskopie",
+   "datensicherung"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1804": {
+  "core_en": "prevent heart disease",
+  "accept": [
+   "herzkrankheiten vorbeugen",
+   "herzkrankheiten vorzubeugen",
+   "herzerkrankungen vorzubeugen",
+   "herzerkrankungen vorbeugen",
+   "beugt ([x]) herzkrankheiten vor",
+   "herzkrankheiten ([x]) verhindern",
+   "herzkrankheiten zu verhindern",
+   "herzkrankheiten zu vermeiden",
+   "herzerkrankungen zu vermeiden",
+   "beugt ([x]) herzerkrankungen vor",
+   "vor herzkrankheiten ([x]) (zu) schützen",
+   "vor herzerkrankungen ([x]) (zu) schützen",
+   "risiko für herzkrankheiten",
+   "risiko für herzerkrankungen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1805": {
+  "core_en": "relieves the symptoms",
+  "accept": [
+   "die beschwerden lindern",
+   "beschwerden ([x]) (zu) lindern",
+   "beschwerden ([x]) gelindert",
+   "lindert ([x]) beschwerden",
+   "lindern ([x]) beschwerden",
+   "beschwerden ([x]) lindert",
+   "symptome ([x]) (zu) lindern",
+   "symptome ([x]) gelindert",
+   "lindert ([x]) symptome",
+   "lindern ([x]) symptome",
+   "symptome ([x]) lindert"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1806": {
+  "core_en": "wrote me a prescription",
+  "accept": [
+   "ein rezept ausstellen",
+   "rezept ([x]) ausstellen",
+   "rezept ([x]) auszustellen",
+   "rezept ([x]) ausgestellt",
+   "stellt ([x]) rezept ([x]) aus",
+   "stellen ([x]) rezept ([x]) aus",
+   "rezept ([x]) ausstellt",
+   "stellte(n) ([x]) rezept ([x]) aus",
+   "rezept ([x]) ausstellte(n)",
+   "rezept ([x]) geschrieben",
+   "rezept ([x]) aufgeschrieben",
+   "verschrieben",
+   "rezept ([x]) gegeben",
+   "verschrieb",
+   "schrieb ([x]) rezept"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1807": {
+  "core_en": "undergo an operation",
+  "accept": [
+   "sich einer operation unterziehen",
+   "einer operation ([x]) (zu) unterziehen",
+   "einer operation ([x]) unterzogen",
+   "unterzieht ([x]) einer operation",
+   "unterziehen ([x]) einer operation",
+   "einer operation ([x]) unterzieht",
+   "unterzog(en) ([x]) einer operation",
+   "einer operation ([x]) unterzog(en)",
+   "operiert werden",
+   "operieren lassen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1808": {
+  "core_en": "suffered a relapse",
+  "accept": [
+   "einen rückfall erleiden",
+   "rückfall ([x]) (zu) erleiden",
+   "rückfall ([x]) erlitten",
+   "erleidet ([x]) rückfall",
+   "erleiden ([x]) rückfall",
+   "rückfall ([x]) erleidet",
+   "erlitt(en) ([x]) rückfall",
+   "rückfall ([x]) erlitt(en)",
+   "rückfall ([x]) (zu) haben",
+   "rückfall ([x]) gehabt",
+   "hat ([x]) rückfall",
+   "haben ([x]) rückfall",
+   "rückfall ([x]) hat",
+   "hatte(n) ([x]) rückfall",
+   "rückfall ([x]) hatte(n)",
+   "bekam ([x]) rückfall",
+   "rückfall ([x]) bekommen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1809": {
+  "core_en": "cut its emissions",
+  "accept": [
+   "emissionen senken",
+   "emissionen ([x]) (zu) senken",
+   "emissionen ([x]) gesenkt",
+   "senkt ([x]) emissionen",
+   "senken ([x]) emissionen",
+   "emissionen ([x]) senkt",
+   "emissionen ([x]) (zu) reduzieren",
+   "emissionen ([x]) reduziert",
+   "reduziert ([x]) emissionen",
+   "reduzieren ([x]) emissionen",
+   "emissionen ([x]) (zu) verringern",
+   "emissionen ([x]) verringert",
+   "verringert ([x]) emissionen",
+   "verringern ([x]) emissionen",
+   "emissionen halbieren",
+   "ausstoß ([x]) (zu) senken",
+   "ausstoß ([x]) (zu) reduzieren",
+   "ausstoß ([x]) (zu) verringern",
+   "ausstoß ([x]) halbieren"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1810": {
+  "core_en": "saves resources",
+  "accept": [
+   "ressourcen schonen",
+   "ressourcen ([x]) (zu) schonen",
+   "ressourcen ([x]) geschont",
+   "schont ([x]) ressourcen",
+   "schonen ([x]) ressourcen",
+   "ressourcen ([x]) schont",
+   "ressourcen ([x]) (zu) sparen",
+   "ressourcen ([x]) gespart",
+   "spart ([x]) ressourcen",
+   "sparen ([x]) ressourcen",
+   "ressourcen ([x]) spart",
+   "ressourcenschonend"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1811": {
+  "core_en": "limit global warming",
+  "accept": [
+   "die erderwärmung begrenzen",
+   "erderwärmung auf [x] (zu) begrenzen",
+   "erderwärmung auf [x] begrenzt",
+   "erwärmung auf [x] (zu) begrenzen",
+   "erderwärmung auf [x] (zu) limitieren",
+   "klimaerwärmung auf [x] (zu) begrenzen",
+   "temperaturanstieg auf [x] (zu) begrenzen",
+   "erderhitzung auf [x] (zu) begrenzen",
+   "erderwärmung auf [x] (zu) beschränken"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1812": {
+  "core_en": "expand renewable energy",
+  "accept": [
+   "die erneuerbaren energien ([x]) ausbauen",
+   "die erneuerbaren energien ([x]) auszubauen",
+   "die erneuerbaren energien ([x]) ausgebaut",
+   "erneuerbare energien ([x]) ausbauen",
+   "erneuerbare energien ([x]) auszubauen",
+   "erneuerbare energien ([x]) ausgebaut",
+   "baut ([x]) erneuerbare energien ([x]) aus",
+   "baut ([x]) die erneuerbaren energien ([x]) aus",
+   "den ausbau der erneuerbaren energien",
+   "den ausbau erneuerbarer energien"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1813": {
+  "core_en": "places a heavy burden on the environment",
+  "accept": [
+   "die umwelt belasten",
+   "umwelt ([x]) (zu) belasten",
+   "umwelt ([x]) belastet",
+   "belastet ([x]) umwelt",
+   "belasten ([x]) umwelt",
+   "umweltbelastung",
+   "schadet ([x]) umwelt",
+   "belastung für die umwelt"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1814": {
+  "core_en": "threatened with extinction",
+  "accept": [
+   "vom aussterben bedroht",
+   "droht ([x]) aussterben",
+   "drohen auszusterben"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1815": {
+  "core_en": "break down prejudices",
+  "accept": [
+   "vorurteile abbauen",
+   "vorurteile ([x]) abbauen",
+   "vorurteile ([x]) abzubauen",
+   "vorurteile ([x]) abgebaut",
+   "baut ([x]) vorurteile ([x]) ab",
+   "bauen ([x]) vorurteile ([x]) ab",
+   "vorurteile ([x]) abbaut",
+   "vorurteile ([x]) (zu) überwinden",
+   "vorurteile ([x]) auszuräumen",
+   "vorurteile ([x]) ausräumen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1816": {
+  "core_en": "affordable housing",
+  "accept": [
+   "bezahlbaren wohnraum",
+   "bezahlbare wohnungen",
+   "günstigen wohnraum",
+   "erschwinglichen wohnraum",
+   "preiswerten wohnraum",
+   "bezahlbares wohnen",
+   "günstige wohnungen",
+   "erschwingliche wohnungen",
+   "preiswerte wohnungen",
+   "leistbaren wohnraum",
+   "leistbare wohnungen",
+   "leistbares wohnen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1817": {
+  "core_en": "The gap between rich and poor is widening",
+  "accept": [
+   "die schere zwischen arm und reich geht ([x]) auseinander",
+   "schere zwischen reich und arm geht ([x]) auseinander",
+   "schere zwischen arm und reich klafft ([x]) auseinander",
+   "schere zwischen reich und arm klafft ([x]) auseinander",
+   "schere zwischen arm und reich öffnet sich",
+   "schere zwischen arm und reich wird ([x]) größer",
+   "kluft zwischen arm und reich wird ([x]) größer",
+   "kluft zwischen reich und arm wird ([x]) größer",
+   "kluft zwischen arm und reich wächst",
+   "kluft zwischen arm und reich vergrößert sich",
+   "unterschied zwischen arm und reich wird ([x]) größer",
+   "unterschied zwischen reich und arm wird ([x]) größer",
+   "unterschied zwischen arm und reich wächst"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1818": {
+  "core_en": "create equal opportunities",
+  "accept": [
+   "chancengleichheit schaffen",
+   "chancengleichheit ([x]) (zu) schaffen",
+   "chancengleichheit ([x]) geschaffen",
+   "schafft ([x]) chancengleichheit",
+   "schaffen ([x]) chancengleichheit",
+   "chancengleichheit ([x]) schafft",
+   "gleiche chancen ([x]) (zu) schaffen",
+   "gleiche chancen ([x]) geschaffen",
+   "schafft ([x]) gleiche chancen",
+   "schaffen ([x]) gleiche chancen",
+   "gleiche chancen ([x]) schafft",
+   "chancengleichheit ([x]) herstellen",
+   "für gleiche chancen ([x]) (zu) sorgen",
+   "chancengerechtigkeit ([x]) (zu) schaffen",
+   "für chancengleichheit sorgen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1819": {
+  "core_en": "draws attention to",
+  "accept": [
+   "auf [x] aufmerksam machen",
+   "macht ([x]) aufmerksam",
+   "aufmerksam ([x]) machen",
+   "aufmerksamkeit auf [x] lenken",
+   "lenkt ([x]) aufmerksamkeit auf",
+   "weist ([x]) auf [x] hin",
+   "in den fokus",
+   "ins bewusstsein",
+   "lenkt ([x]) blick auf"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1820": {
+  "core_en": "sparked a heated debate",
+  "accept": [
+   "eine debatte auslösen",
+   "debatte ([x]) auslösen",
+   "debatte ([x]) auszulösen",
+   "debatte ([x]) ausgelöst",
+   "löst ([x]) debatte ([x]) aus",
+   "lösen ([x]) debatte ([x]) aus",
+   "debatte ([x]) auslöst",
+   "löste(n) ([x]) debatte ([x]) aus",
+   "debatte ([x]) auslöste(n)",
+   "diskussion ([x]) auslösen",
+   "diskussion ([x]) auszulösen",
+   "diskussion ([x]) ausgelöst",
+   "löst ([x]) diskussion ([x]) aus",
+   "lösen ([x]) diskussion ([x]) aus",
+   "diskussion ([x]) auslöst",
+   "löste(n) ([x]) diskussion ([x]) aus",
+   "diskussion ([x]) auslöste(n)",
+   "debatte ([x]) entfacht",
+   "diskussion ([x]) entfacht",
+   "für ([x]) debatte ([x]) gesorgt",
+   "für ([x]) diskussion ([x]) gesorgt",
+   "debatte ([x]) angestoßen",
+   "diskussion ([x]) angestoßen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1821": {
+  "core_en": "drew fierce criticism",
+  "accept": [
+   "heftige kritik ernten",
+   "kritik ([x]) (zu) ernten",
+   "kritik ([x]) geerntet",
+   "erntet ([x]) kritik",
+   "ernten ([x]) kritik",
+   "kritik ([x]) erntet",
+   "erntete(n) ([x]) kritik",
+   "kritik ([x]) erntete(n)",
+   "kritik ([x]) ausgelöst",
+   "löste ([x]) kritik aus",
+   "stieß ([x]) auf ([x]) kritik",
+   "zog ([x]) kritik auf sich",
+   "wurde ([x]) kritisiert",
+   "kritik ([x]) einstecken",
+   "sorgte ([x]) für ([x]) kritik",
+   "rief ([x]) kritik hervor"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1822": {
+  "core_en": "take out a loan",
+  "accept": [
+   "einen kredit aufnehmen",
+   "kredit ([x]) aufnehmen",
+   "kredit ([x]) aufzunehmen",
+   "kredit ([x]) aufgenommen",
+   "nimmt ([x]) kredit ([x]) auf",
+   "nehmen ([x]) kredit ([x]) auf",
+   "kredit ([x]) aufnimmt",
+   "darlehen ([x]) aufnehmen",
+   "darlehen ([x]) aufzunehmen",
+   "darlehen ([x]) aufgenommen",
+   "nimmt ([x]) darlehen ([x]) auf",
+   "nehmen ([x]) darlehen ([x]) auf",
+   "darlehen ([x]) aufnimmt",
+   "baukredit ([x]) aufnehmen",
+   "nehmen ([x]) baukredit ([x]) auf"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1823": {
+  "core_en": "invest their money",
+  "accept": [
+   "geld anlegen",
+   "geld ([x]) anlegen",
+   "geld ([x]) anzulegen",
+   "geld ([x]) angelegt",
+   "legt ([x]) geld ([x]) an",
+   "legen ([x]) geld ([x]) an",
+   "geld ([x]) anlegt",
+   "geld ([x]) (zu) investieren",
+   "geld ([x]) investiert",
+   "investiert ([x]) geld",
+   "investieren ([x]) geld",
+   "stecken ([x]) geld ([x]) in"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1824": {
+  "core_en": "settle the invoice",
+  "accept": [
+   "eine rechnung begleichen",
+   "begleichen sie ([x]) rechnung",
+   "rechnung ([x]) (zu) begleichen",
+   "rechnung ([x]) beglichen",
+   "begleicht ([x]) rechnung",
+   "begleichen ([x]) rechnung",
+   "rechnung ([x]) begleicht",
+   "zahlen sie ([x]) rechnung",
+   "bezahlen sie ([x]) rechnung",
+   "rechnung ([x]) (zu) bezahlen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1825": {
+  "core_en": "filed a lawsuit against",
+  "accept": [
+   "klage einreichen",
+   "klage ([x]) einreichen",
+   "klage ([x]) einzureichen",
+   "klage ([x]) eingereicht",
+   "reicht ([x]) klage ([x]) ein",
+   "reichen ([x]) klage ([x]) ein",
+   "klage ([x]) einreicht",
+   "reichte(n) ([x]) klage ([x]) ein",
+   "klage ([x]) einreichte(n)",
+   "klage ([x]) (zu) erheben",
+   "klage ([x]) erhoben",
+   "erhebt ([x]) klage",
+   "erheben ([x]) klage",
+   "klage ([x]) erhebt",
+   "erhob(en) ([x]) klage",
+   "klage ([x]) erhob(en)",
+   "verklagt",
+   "geklagt",
+   "verklagten",
+   "vor gericht gezogen",
+   "zogen ([x]) vor gericht"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1826": {
+  "core_en": "charges a fee",
+  "accept": [
+   "eine gebühr erheben",
+   "eine gebühr ([x]) (zu) erheben",
+   "gebühren ([x]) (zu) erheben",
+   "eine gebühr ([x]) erhoben",
+   "gebühren ([x]) erhoben",
+   "erhebt ([x]) eine gebühr",
+   "erhebt ([x]) gebühren",
+   "eine gebühr ([x]) erhebt",
+   "gebühren ([x]) erhebt",
+   "eine gebühr ([x]) (zu) verlangen",
+   "gebühren ([x]) (zu) verlangen",
+   "verlangt ([x]) eine gebühr",
+   "verlangt ([x]) gebühren",
+   "berechnet ([x]) eine gebühr",
+   "berechnet ([x]) gebühren",
+   "nimmt ([x]) eine gebühr",
+   "nimmt ([x]) gebühren"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1827": {
+  "core_en": "implemented the first measures",
+  "accept": [
+   "maßnahmen umsetzen",
+   "maßnahmen ([x]) umsetzen",
+   "maßnahmen ([x]) umzusetzen",
+   "maßnahmen ([x]) umgesetzt",
+   "setzt ([x]) maßnahmen ([x]) um",
+   "setzen ([x]) maßnahmen ([x]) um",
+   "maßnahmen ([x]) umsetzt",
+   "setzte(n) ([x]) maßnahmen ([x]) um",
+   "maßnahmen ([x]) umsetzte(n)",
+   "maßnahmen ([x]) durchführen",
+   "maßnahmen ([x]) durchzuführen",
+   "maßnahmen ([x]) durchgeführt",
+   "führt ([x]) maßnahmen ([x]) durch",
+   "führen ([x]) maßnahmen ([x]) durch",
+   "maßnahmen ([x]) durchführt",
+   "führte(n) ([x]) maßnahmen ([x]) durch",
+   "maßnahmen ([x]) durchführte(n)",
+   "maßnahmen ([x]) ergriffen"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1828": {
+  "core_en": "attract skilled workers",
+  "accept": [
+   "fachkräfte gewinnen",
+   "fachkräfte ([x]) (zu) gewinnen",
+   "fachkräfte ([x]) gewonnen",
+   "gewinnt ([x]) fachkräfte",
+   "gewinnen ([x]) fachkräfte",
+   "fachkräfte ([x]) gewinnt",
+   "fachkräfte ([x]) anwerben",
+   "fachkräfte ([x]) anzuwerben",
+   "fachkräfte ([x]) angeworben",
+   "wirbt ([x]) fachkräfte ([x]) an",
+   "werben ([x]) fachkräfte ([x]) an",
+   "fachkräfte ([x]) anwirbt",
+   "fachkräfte ([x]) (zu) finden",
+   "fachkräfte ([x]) gefunden",
+   "findet ([x]) fachkräfte",
+   "finden ([x]) fachkräfte",
+   "fachkräfte ([x]) findet",
+   "fachkräfte ([x]) (zu) rekrutieren",
+   "fachkräfte ([x]) anzuziehen",
+   "fachkräfte ([x]) anziehen",
+   "fachkräfte ([x]) anzulocken",
+   "fachkräfte ([x]) anlocken"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1829": {
+  "core_en": "a high degree of",
+  "accept": [
+   "ein hohes maß an",
+   "einem hohen maß an",
+   "ein großes maß an",
+   "viel flexibilität",
+   "große flexibilität",
+   "hohe flexibilität"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ },
+ "ENG_CHUNK_1830": {
+  "core_en": "an essential part of",
+  "accept": [
+   "ein wesentlicher bestandteil",
+   "wesentlicher bestandteil",
+   "wichtiger bestandteil",
+   "zentraler bestandteil",
+   "wesentlicher teil",
+   "fester bestandteil",
+   "unverzichtbarer bestandteil",
+   "essenzieller bestandteil",
+   "wichtiger teil",
+   "integraler bestandteil"
+  ],
+  "reviewedBy": "model-2pass",
+  "reviewedAt": "2026-10-05"
+ }
+}

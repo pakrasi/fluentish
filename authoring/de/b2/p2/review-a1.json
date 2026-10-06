@@ -1,0 +1,2344 @@
+[
+ {
+  "id": "nomen-verb-verbindungen.13",
+  "field": "task",
+  "before": "Write the word in brackets in the right form.",
+  "after": "Write the word in brackets in the Präteritum.",
+  "severity": "error",
+  "why": "„nimmt“ (Präsens) is equally correct in this gap; name the tense."
+ },
+ {
+  "id": "nomen-verb-verbindungen.14",
+  "field": "task",
+  "before": "Fill the gap.",
+  "after": "Fill the gap with the noun that means \"effect\".",
+  "severity": "error",
+  "why": "Unconstrained gap: „Erfolge“, „Schwächen“ etc. also fit the sentence."
+ },
+ {
+  "id": "nomen-verb-verbindungen.14",
+  "field": "near",
+  "before": [
+   [
+    "Effekt",
+    "the fixed noun is Wirkung"
+   ],
+   [
+    "Erfolge",
+    "Wirkung zeigen is the fixed pair"
+   ]
+  ],
+  "after": [
+   [
+    "Effekt",
+    "the fixed noun is Wirkung"
+   ],
+   [
+    "Auswirkung",
+    "Wirkung zeigen; Auswirkungen haben is a different pair"
+   ]
+  ],
+  "severity": "error",
+  "why": "„Die neuen Regeln zeigen bereits Erfolge.“ is correct German, so it cannot be a near miss."
+ },
+ {
+  "id": "nomen-verb-verbindungen.15",
+  "field": "answer",
+  "before": [
+   "geraten"
+  ],
+  "after": [
+   "geraten",
+   "gekommen"
+  ],
+  "severity": "error",
+  "why": "Duden: ins Stocken geraten/kommen; „ins Stocken gekommen“ is standard."
+ },
+ {
+  "id": "nomen-verb-verbindungen.15",
+  "field": "near",
+  "before": [
+   [
+    "gekommen",
+    "the fixed verb is geraten"
+   ],
+   [
+    "gegangen",
+    "the fixed verb is geraten"
+   ]
+  ],
+  "after": [
+   [
+    "gegangen",
+    "the fixed verb is geraten (or kommen)"
+   ],
+   [
+    "gefallen",
+    "the fixed verb is geraten (or kommen)"
+   ]
+  ],
+  "severity": "error",
+  "why": "„gekommen“ is correct, so it is not a near miss."
+ },
+ {
+  "id": "nomen-verb-verbindungen.15",
+  "field": "note",
+  "before": "ins Stocken geraten = to stall (Perfekt with sein).",
+  "after": "ins Stocken geraten (also: kommen) = to stall (Perfekt with sein).",
+  "severity": "improve",
+  "why": "Mention the accepted variant."
+ },
+ {
+  "id": "nomen-verb-verbindungen.16",
+  "field": "answer",
+  "before": [
+   "erzielt",
+   "erreicht"
+  ],
+  "after": [
+   "erzielt",
+   "erreicht",
+   "gefunden"
+  ],
+  "severity": "error",
+  "why": "„eine Einigung gefunden“ is a standard collocation."
+ },
+ {
+  "id": "nomen-verb-verbindungen.20",
+  "field": "answer",
+  "before": [
+   "Die Regierung will die Wohnungsnot endlich in Angriff nehmen."
+  ],
+  "after": [
+   "Die Regierung will die Wohnungsnot endlich in Angriff nehmen.",
+   "Die Regierung will endlich die Wohnungsnot in Angriff nehmen."
+  ],
+  "severity": "improve",
+  "why": "Task allows free order; the adverb-first order is also natural."
+ },
+ {
+  "id": "ENG_CHUNK_1631",
+  "field": "accept",
+  "before": [
+   "zur verfügung stellen",
+   "zur verfügung ([x]) (zu) stellen",
+   "zur verfügung ([x]) gestellt",
+   "stellt ([x]) zur verfügung",
+   "stellen ([x]) zur verfügung",
+   "zur verfügung ([x]) stellt",
+   "stellt [x] bereit",
+   "bereitstellen",
+   "bereitgestellt"
+  ],
+  "after": [
+   "zur verfügung stellen",
+   "zur verfügung ([x]) (zu) stellen",
+   "zur verfügung ([x]) gestellt",
+   "stellt ([x]) zur verfügung",
+   "stellen ([x]) zur verfügung",
+   "zur verfügung ([x]) stellt",
+   "stellt [x] bereit",
+   "bereitstellen",
+   "bereitgestellt",
+   "macht ([x]) verfügbar",
+   "verfügbar ([x]) machen",
+   "macht ([x]) zugänglich",
+   "zugänglich ([x]) machen"
+  ],
+  "severity": "error",
+  "why": "„macht seine Daten verfügbar/zugänglich“ is natural and a likely learner answer."
+ },
+ {
+  "id": "ENG_CHUNK_1636",
+  "field": "accept",
+  "before": [
+   "zum einsatz kommen",
+   "zum einsatz ([x]) (zu) kommen",
+   "zum einsatz ([x]) gekommen",
+   "kommt ([x]) zum einsatz",
+   "kommen ([x]) zum einsatz",
+   "zum einsatz ([x]) kommt",
+   "werden ([x]) eingesetzt",
+   "eingesetzt werden"
+  ],
+  "after": [
+   "zum einsatz kommen",
+   "zum einsatz ([x]) (zu) kommen",
+   "zum einsatz ([x]) gekommen",
+   "kommt ([x]) zum einsatz",
+   "kommen ([x]) zum einsatz",
+   "zum einsatz ([x]) kommt",
+   "werden ([x]) eingesetzt",
+   "eingesetzt werden",
+   "werden ([x]) verwendet",
+   "werden ([x]) genutzt"
+  ],
+  "severity": "error",
+  "why": "Span is plain „are used“; other natural passives must pass."
+ },
+ {
+  "id": "ENG_CHUNK_1642",
+  "field": "accept",
+  "before": [
+   "druck auf [x] ausüben",
+   "druck ([x]) ausüben",
+   "druck ([x]) auszuüben",
+   "druck ([x]) ausgeübt",
+   "übt ([x]) druck ([x]) aus",
+   "üben ([x]) druck ([x]) aus",
+   "druck ([x]) ausübt",
+   "macht ([x]) druck",
+   "machen ([x]) druck",
+   "druck ([x]) machen"
+  ],
+  "after": [
+   "druck auf [x] ausüben",
+   "druck ([x]) ausüben",
+   "druck ([x]) auszuüben",
+   "druck ([x]) ausgeübt",
+   "übt ([x]) druck ([x]) aus",
+   "üben ([x]) druck ([x]) aus",
+   "druck ([x]) ausübt",
+   "macht ([x]) druck",
+   "machen ([x]) druck",
+   "druck ([x]) machen",
+   "setzt ([x]) unter druck",
+   "setzen ([x]) unter druck",
+   "unter druck ([x]) (zu) setzen",
+   "unter druck ([x]) gesetzt"
+  ],
+  "severity": "error",
+  "why": "jemanden unter Druck setzen is named in n but not accepted."
+ },
+ {
+  "id": "ENG_CHUNK_1644",
+  "field": "accept",
+  "before": [
+   "in konflikt geraten",
+   "in konflikt ([x]) (zu) geraten",
+   "in konflikt ([x]) geraten",
+   "gerät ([x]) in konflikt",
+   "geraten ([x]) in konflikt",
+   "in konflikt ([x]) gerät",
+   "geriet(en) ([x]) in konflikt",
+   "in konflikt ([x]) geriet(en)",
+   "steht ([x]) im konflikt",
+   "im widerspruch"
+  ],
+  "after": [
+   "in konflikt geraten",
+   "in konflikt ([x]) (zu) geraten",
+   "in konflikt ([x]) geraten",
+   "gerät ([x]) in konflikt",
+   "geraten ([x]) in konflikt",
+   "in konflikt ([x]) gerät",
+   "geriet(en) ([x]) in konflikt",
+   "in konflikt ([x]) geriet(en)",
+   "steht ([x]) im konflikt",
+   "im widerspruch",
+   "kommt ([x]) in konflikt",
+   "kommen ([x]) in konflikt",
+   "in konflikt ([x]) (zu) kommen",
+   "in konflikt ([x]) gekommen",
+   "steht ([x]) in konflikt"
+  ],
+  "severity": "error",
+  "why": "Duden: mit etwas in Konflikt kommen/geraten; both are standard."
+ },
+ {
+  "id": "ENG_CHUNK_1644",
+  "field": "near",
+  "before": [
+   [
+    "Die neue Straße kommt in Konflikt mit dem Naturschutz.",
+    "calque of come into: in Konflikt geraten"
+   ]
+  ],
+  "after": [
+   [
+    "Die neue Straße gerät in den Konflikt mit dem Naturschutz.",
+    "no article: in Konflikt geraten"
+   ]
+  ],
+  "severity": "error",
+  "why": "„kommt in Konflikt mit“ is correct German, not a near miss."
+ },
+ {
+  "id": "ENG_CHUNK_1649",
+  "field": "accept",
+  "before": [
+   "in die kritik geraten",
+   "in die kritik ([x]) (zu) geraten",
+   "in die kritik ([x]) geraten",
+   "gerät ([x]) in die kritik",
+   "geraten ([x]) in die kritik",
+   "in die kritik ([x]) gerät",
+   "geriet(en) ([x]) in die kritik",
+   "in die kritik ([x]) geriet(en)",
+   "in der kritik"
+  ],
+  "after": [
+   "in die kritik geraten",
+   "in die kritik ([x]) (zu) geraten",
+   "in die kritik ([x]) geraten",
+   "gerät ([x]) in die kritik",
+   "geraten ([x]) in die kritik",
+   "in die kritik ([x]) gerät",
+   "geriet(en) ([x]) in die kritik",
+   "in die kritik ([x]) geriet(en)",
+   "steht ([x]) in der kritik",
+   "stehen ([x]) in der kritik"
+  ],
+  "severity": "error",
+  "why": "Bare „in der kritik“ accepts the classic case error „ist in der Kritik geraten“."
+ },
+ {
+  "id": "ENG_CHUNK_1650",
+  "field": "accept",
+  "before": [
+   "anwendung finden",
+   "anwendung ([x]) (zu) finden",
+   "anwendung ([x]) gefunden",
+   "findet ([x]) anwendung",
+   "finden ([x]) anwendung",
+   "anwendung ([x]) findet",
+   "wird ([x]) angewendet",
+   "wird ([x]) angewandt",
+   "wird ([x]) eingesetzt",
+   "wird ([x]) verwendet"
+  ],
+  "after": [
+   "anwendung finden",
+   "anwendung ([x]) (zu) finden",
+   "anwendung ([x]) gefunden",
+   "findet ([x]) anwendung",
+   "finden ([x]) anwendung",
+   "anwendung ([x]) findet",
+   "wird ([x]) angewendet",
+   "wird ([x]) angewandt",
+   "wird ([x]) eingesetzt",
+   "wird ([x]) verwendet",
+   "kommt ([x]) zur anwendung",
+   "zur anwendung ([x]) kommt",
+   "weit verbreitet"
+  ],
+  "severity": "error",
+  "why": "zur Anwendung kommen is in n but not accepted; „ist weit verbreitet“ is the natural rendering of widely used."
+ },
+ {
+  "id": "ENG_CHUNK_1652",
+  "field": "accept",
+  "before": [
+   "zum abschluss bringen",
+   "zum abschluss ([x]) (zu) bringen",
+   "zum abschluss ([x]) gebracht",
+   "bringt ([x]) zum abschluss",
+   "bringen ([x]) zum abschluss",
+   "zum abschluss ([x]) bringt",
+   "abschließen",
+   "abgeschlossen"
+  ],
+  "after": [
+   "zum abschluss bringen",
+   "zum abschluss ([x]) (zu) bringen",
+   "zum abschluss ([x]) gebracht",
+   "bringt ([x]) zum abschluss",
+   "bringen ([x]) zum abschluss",
+   "zum abschluss ([x]) bringt",
+   "abschließen",
+   "abgeschlossen",
+   "zu ende ([x]) (zu) bringen",
+   "zu ende ([x]) gebracht",
+   "bringt ([x]) zu ende",
+   "bringen ([x]) zu ende"
+  ],
+  "severity": "error",
+  "why": "zu Ende bringen is a standard alternative."
+ },
+ {
+  "id": "ENG_CHUNK_1654",
+  "field": "accept",
+  "before": [
+   "eine einigung erzielen",
+   "einigung ([x]) (zu) erzielen",
+   "einigung ([x]) erzielt",
+   "erzielt ([x]) einigung",
+   "erzielen ([x]) einigung",
+   "erzielte(n) ([x]) einigung",
+   "einigung ([x]) erzielte(n)",
+   "einigung ([x]) erreicht",
+   "haben sich ([x]) geeinigt",
+   "einigten sich",
+   "zu einer einigung gekommen"
+  ],
+  "after": [
+   "eine einigung erzielen",
+   "einigung ([x]) (zu) erzielen",
+   "einigung ([x]) erzielt",
+   "erzielt ([x]) einigung",
+   "erzielen ([x]) einigung",
+   "erzielte(n) ([x]) einigung",
+   "einigung ([x]) erzielte(n)",
+   "einigung ([x]) erreicht",
+   "haben sich ([x]) geeinigt",
+   "einigten sich",
+   "zu einer einigung gekommen",
+   "einigung ([x]) gefunden",
+   "einigung ([x]) (zu) finden"
+  ],
+  "severity": "error",
+  "why": "eine Einigung finden is standard."
+ },
+ {
+  "id": "ENG_CHUNK_1658",
+  "field": "accept",
+  "before": [
+   "vorwürfe gegen [x] erheben",
+   "vorwürfe ([x]) (zu) erheben",
+   "vorwürfe ([x]) erhoben",
+   "erhebt ([x]) vorwürfe",
+   "erheben ([x]) vorwürfe",
+   "vorwürfe ([x]) erhebt",
+   "erhob(en) ([x]) vorwürfe",
+   "vorwürfe ([x]) erhob(en)"
+  ],
+  "after": [
+   "vorwürfe gegen [x] erheben",
+   "vorwürfe ([x]) (zu) erheben",
+   "vorwürfe ([x]) erhoben",
+   "erhebt ([x]) vorwürfe",
+   "erheben ([x]) vorwürfe",
+   "vorwürfe ([x]) erhebt",
+   "erhob(en) ([x]) vorwürfe",
+   "vorwürfe ([x]) erhob(en)",
+   "vorwürfe ([x]) gemacht",
+   "vorwürfe ([x]) (zu) machen",
+   "macht ([x]) vorwürfe",
+   "machen ([x]) vorwürfe",
+   "machten ([x]) vorwürfe"
+  ],
+  "severity": "error",
+  "why": "„haben dem Unternehmen schwere Vorwürfe gemacht“ is standard news German."
+ },
+ {
+  "id": "ENG_CHUNK_1658",
+  "field": "n",
+  "before": "jemandem Vorwürfe machen = to reproach someone (personal).",
+  "after": "jemandem Vorwürfe machen (dative, no gegen) is also common, in the news too.",
+  "severity": "improve",
+  "why": "Current n wrongly limits Vorwürfe machen to personal reproach."
+ },
+ {
+  "id": "ENG_CHUNK_1682",
+  "field": "accept",
+  "before": [
+   "in panik geraten",
+   "in panik ([x]) (zu) geraten",
+   "in panik ([x]) geraten",
+   "gerät ([x]) in panik",
+   "geraten ([x]) in panik",
+   "in panik ([x]) gerät",
+   "geriet(en) ([x]) in panik",
+   "in panik ([x]) geriet(en)",
+   "panik ([x]) bekommen",
+   "bekamen ([x]) panik"
+  ],
+  "after": [
+   "in panik geraten",
+   "in panik ([x]) (zu) geraten",
+   "in panik ([x]) geraten",
+   "gerät ([x]) in panik",
+   "geraten ([x]) in panik",
+   "in panik ([x]) gerät",
+   "geriet(en) ([x]) in panik",
+   "in panik ([x]) geriet(en)",
+   "panik ([x]) bekommen",
+   "bekamen ([x]) panik",
+   "in panik ([x]) (zu) verfallen",
+   "in panik ([x]) verfallen",
+   "verfällt ([x]) in panik",
+   "verfielen ([x]) in panik",
+   "verfallen ([x]) in panik"
+  ],
+  "severity": "error",
+  "why": "in Panik verfallen is as common as in Panik geraten."
+ },
+ {
+  "id": "ENG_CHUNK_1683",
+  "field": "accept",
+  "before": [
+   "ins stocken geraten",
+   "ins stocken ([x]) (zu) geraten",
+   "ins stocken ([x]) geraten",
+   "gerät ([x]) ins stocken",
+   "geraten ([x]) ins stocken",
+   "ins stocken ([x]) gerät",
+   "geriet(en) ([x]) ins stocken",
+   "ins stocken ([x]) geriet(en)",
+   "stocken"
+  ],
+  "after": [
+   "ins stocken geraten",
+   "ins stocken ([x]) (zu) geraten",
+   "ins stocken ([x]) geraten",
+   "gerät ([x]) ins stocken",
+   "geraten ([x]) ins stocken",
+   "ins stocken ([x]) gerät",
+   "geriet(en) ([x]) ins stocken",
+   "ins stocken ([x]) geriet(en)",
+   "ins stocken ([x]) (zu) kommen",
+   "ins stocken ([x]) gekommen",
+   "kommt ([x]) ins stocken",
+   "kam(en) ([x]) ins stocken",
+   "bauarbeiten stocken",
+   "bauarbeiten stockten"
+  ],
+  "severity": "error",
+  "why": "Bare „stocken“ accepts the near miss „ins Stocken gegangen“; ins Stocken kommen is standard (Duden)."
+ },
+ {
+  "id": "ENG_CHUNK_1690",
+  "field": "accept",
+  "before": [
+   "position beziehen",
+   "position ([x]) (zu) beziehen",
+   "position ([x]) bezogen",
+   "bezieht ([x]) position",
+   "beziehen ([x]) position",
+   "position ([x]) bezieht",
+   "bezog(en) ([x]) position",
+   "position ([x]) bezog(en)",
+   "stellung ([x]) (zu) beziehen",
+   "stellung ([x]) bezogen",
+   "bezieht ([x]) stellung",
+   "beziehen ([x]) stellung",
+   "stellung ([x]) bezieht",
+   "bezog(en) ([x]) stellung",
+   "stellung ([x]) bezog(en)"
+  ],
+  "after": [
+   "position beziehen",
+   "position ([x]) (zu) beziehen",
+   "position ([x]) bezogen",
+   "bezieht ([x]) position",
+   "beziehen ([x]) position",
+   "position ([x]) bezieht",
+   "bezog(en) ([x]) position",
+   "position ([x]) bezog(en)",
+   "stellung ([x]) (zu) beziehen",
+   "stellung ([x]) bezogen",
+   "bezieht ([x]) stellung",
+   "beziehen ([x]) stellung",
+   "stellung ([x]) bezieht",
+   "bezog(en) ([x]) stellung",
+   "stellung ([x]) bezog(en)",
+   "stellung ([x]) (zu) nehmen",
+   "stellung ([x]) genommen",
+   "nimmt ([x]) stellung",
+   "nehmen ([x]) stellung",
+   "nahm(en) ([x]) stellung",
+   "position ([x]) eingenommen",
+   "nimmt ([x]) position ([x]) ein"
+  ],
+  "severity": "error",
+  "why": "Stellung nehmen (named in the near why) and eine Position einnehmen are correct."
+ },
+ {
+  "id": "ENG_CHUNK_1703",
+  "field": "accept",
+  "before": [
+   "ans licht kommen",
+   "ans licht ([x]) (zu) kommen",
+   "ans licht ([x]) gekommen",
+   "kommt ([x]) ans licht",
+   "kommen ([x]) ans licht",
+   "ans licht ([x]) kommt",
+   "kam(en) ([x]) ans licht",
+   "ans licht ([x]) kam(en)",
+   "an die öffentlichkeit"
+  ],
+  "after": [
+   "ans licht kommen",
+   "ans licht ([x]) (zu) kommen",
+   "ans licht ([x]) gekommen",
+   "kommt ([x]) ans licht",
+   "kommen ([x]) ans licht",
+   "ans licht ([x]) kommt",
+   "kam(en) ([x]) ans licht",
+   "ans licht ([x]) kam(en)",
+   "an die öffentlichkeit",
+   "ans tageslicht",
+   "wurden ([x]) bekannt"
+  ],
+  "severity": "error",
+  "why": "ans Tageslicht kommen is the most common variant."
+ },
+ {
+  "id": "ENG_CHUNK_1708",
+  "field": "accept",
+  "before": [
+   "in schutz nehmen",
+   "in schutz ([x]) (zu) nehmen",
+   "in schutz ([x]) genommen",
+   "nimmt ([x]) in schutz",
+   "nehmen ([x]) in schutz",
+   "in schutz ([x]) nimmt",
+   "nahm(en) ([x]) in schutz",
+   "in schutz ([x]) nahm(en)",
+   "verteidigten",
+   "verteidigt"
+  ],
+  "after": [
+   "in schutz nehmen",
+   "in schutz ([x]) (zu) nehmen",
+   "in schutz ([x]) genommen",
+   "nimmt ([x]) in schutz",
+   "nehmen ([x]) in schutz",
+   "in schutz ([x]) nimmt",
+   "nahm(en) ([x]) in schutz",
+   "in schutz ([x]) nahm(en)",
+   "verteidigten",
+   "verteidigt",
+   "stellten sich ([x]) hinter",
+   "sich hinter [x] (zu) stellen",
+   "setzten sich ([x]) für [x] ein"
+  ],
+  "severity": "error",
+  "why": "sich hinter jemanden stellen / sich für jemanden einsetzen are natural renderings."
+ },
+ {
+  "id": "ENG_CHUNK_1709",
+  "field": "accept",
+  "before": [
+   "in empfang nehmen",
+   "in empfang ([x]) (zu) nehmen",
+   "in empfang ([x]) genommen",
+   "nimmt ([x]) in empfang",
+   "nehmen ([x]) in empfang",
+   "in empfang ([x]) nimmt",
+   "entgegennehmen",
+   "erhalten",
+   "annehmen",
+   "bekommen"
+  ],
+  "after": [
+   "in empfang nehmen",
+   "in empfang ([x]) (zu) nehmen",
+   "in empfang ([x]) genommen",
+   "nimmt ([x]) in empfang",
+   "nehmen ([x]) in empfang",
+   "in empfang ([x]) nimmt",
+   "entgegennehmen",
+   "erhalten",
+   "annehmen",
+   "das paket bekommen"
+  ],
+  "severity": "error",
+  "why": "Bare „bekommen“ accepts the near miss „in Empfang bekommen“."
+ },
+ {
+  "id": "ENG_CHUNK_1712",
+  "field": "accept",
+  "before": [
+   "eine wende nehmen",
+   "wende ([x]) (zu) nehmen",
+   "wende ([x]) genommen",
+   "nimmt ([x]) wende",
+   "nehmen ([x]) wende",
+   "wende ([x]) nimmt",
+   "nahm(en) ([x]) wende",
+   "wende ([x]) nahm(en)"
+  ],
+  "after": [
+   "eine wende nehmen",
+   "wende ([x]) (zu) nehmen",
+   "wende ([x]) genommen",
+   "nimmt ([x]) wende",
+   "nehmen ([x]) wende",
+   "wende ([x]) nimmt",
+   "nahm(en) ([x]) wende",
+   "wende ([x]) nahm(en)",
+   "eine wendung nehmen",
+   "wendung ([x]) genommen",
+   "nimmt ([x]) wendung",
+   "nahm(en) ([x]) wendung",
+   "wendung ([x]) nahm(en)"
+  ],
+  "severity": "error",
+  "why": "eine (überraschende) Wendung nehmen is the more common form."
+ },
+ {
+  "id": "ENG_CHUNK_1723",
+  "field": "accept",
+  "before": [
+   "den entschluss fassen",
+   "entschluss ([x]) (zu) fassen",
+   "entschluss ([x]) gefasst",
+   "fasst ([x]) entschluss",
+   "fassen ([x]) entschluss",
+   "entschluss ([x]) fasst",
+   "fasste(n) ([x]) entschluss",
+   "entschluss ([x]) fasste(n)",
+   "entschied sich",
+   "beschloss"
+  ],
+  "after": [
+   "den entschluss fassen",
+   "entschluss ([x]) (zu) fassen",
+   "entschluss ([x]) gefasst",
+   "fasst ([x]) entschluss",
+   "fassen ([x]) entschluss",
+   "entschluss ([x]) fasst",
+   "fasste(n) ([x]) entschluss",
+   "entschluss ([x]) fasste(n)",
+   "entschied sich",
+   "beschloss",
+   "entschloss sich",
+   "entschloss ([x]) sich",
+   "hat sich ([x]) entschlossen"
+  ],
+  "severity": "error",
+  "why": "sich entschließen is the most natural plain rendering of resolved to."
+ },
+ {
+  "id": "ENG_CHUNK_1737",
+  "field": "accept",
+  "before": [
+   "nach [x] ausschau halten",
+   "ausschau ([x]) (zu) halten",
+   "ausschau ([x]) gehalten",
+   "hält ([x]) ausschau",
+   "halten ([x]) ausschau",
+   "ausschau ([x]) hält",
+   "suchen ([x]) nach"
+  ],
+  "after": [
+   "nach [x] ausschau halten",
+   "ausschau ([x]) (zu) halten",
+   "ausschau ([x]) gehalten",
+   "hält ([x]) ausschau",
+   "halten ([x]) ausschau",
+   "ausschau ([x]) hält",
+   "suchen ([x]) nach",
+   "auf der suche nach",
+   "suchen ([x]) fachkräfte"
+  ],
+  "severity": "error",
+  "why": "„sind auf der Suche nach“ and „suchen Fachkräfte“ are natural."
+ },
+ {
+  "id": "ENG_CHUNK_1743",
+  "field": "accept",
+  "before": [
+   "unter verdacht stehen",
+   "unter verdacht ([x]) (zu) stehen",
+   "unter verdacht ([x]) gestanden",
+   "steht ([x]) unter verdacht",
+   "stehen ([x]) unter verdacht",
+   "unter verdacht ([x]) steht",
+   "werden verdächtigt"
+  ],
+  "after": [
+   "unter verdacht stehen",
+   "unter verdacht ([x]) (zu) stehen",
+   "unter verdacht ([x]) gestanden",
+   "steht ([x]) unter verdacht",
+   "stehen ([x]) unter verdacht",
+   "unter verdacht ([x]) steht",
+   "werden verdächtigt",
+   "im verdacht",
+   "unter dem verdacht"
+  ],
+  "severity": "error",
+  "why": "„stehen im Verdacht, …“ is the usual news form."
+ },
+ {
+  "id": "ENG_CHUNK_1749",
+  "field": "accept",
+  "before": [
+   "verständnis für [x] zeigen",
+   "verständnis ([x]) (zu) zeigen",
+   "verständnis ([x]) gezeigt",
+   "zeigt ([x]) verständnis",
+   "zeigen ([x]) verständnis",
+   "verständnis ([x]) zeigt",
+   "zeigte(n) ([x]) verständnis",
+   "verständnis ([x]) zeigte(n)",
+   "verständnis ([x]) aufbringen",
+   "verständnis ([x]) aufzubringen",
+   "verständnis ([x]) aufgebracht",
+   "bringt ([x]) verständnis ([x]) auf",
+   "bringen ([x]) verständnis ([x]) auf",
+   "verständnis ([x]) aufbringt",
+   "brachte(n) ([x]) verständnis ([x]) auf",
+   "verständnis ([x]) aufbrachte(n)",
+   "verständnis ([x]) (zu) haben",
+   "verständnis ([x]) gehabt",
+   "hat ([x]) verständnis",
+   "haben ([x]) verständnis",
+   "verständnis ([x]) hat",
+   "hatte(n) ([x]) verständnis",
+   "verständnis ([x]) hatte(n)"
+  ],
+  "after": [
+   "verständnis für [x] zeigen",
+   "verständnis für [x] (zu) zeigen",
+   "verständnis für [x] gezeigt",
+   "zeigt ([x]) verständnis für",
+   "zeigen ([x]) verständnis für",
+   "zeigte(n) ([x]) verständnis für",
+   "verständnis für [x] zeigt",
+   "verständnis für [x] aufbringen",
+   "verständnis für [x] aufzubringen",
+   "verständnis für [x] aufgebracht",
+   "bringt ([x]) verständnis für [x] auf",
+   "bringen ([x]) verständnis für [x] auf",
+   "verständnis für [x] (zu) haben",
+   "verständnis für [x] gehabt",
+   "hat ([x]) verständnis für",
+   "haben ([x]) verständnis für",
+   "hatte(n) ([x]) verständnis für",
+   "verständnis dafür"
+  ],
+  "severity": "error",
+  "why": "Without „für“ in the patterns the near miss „Verständnis zum Lärm gezeigt“ is accepted."
+ },
+ {
+  "id": "ENG_CHUNK_1762",
+  "field": "accept",
+  "before": [
+   "den bedarf decken",
+   "bedarf ([x]) (zu) decken",
+   "bedarf ([x]) gedeckt",
+   "deckt ([x]) bedarf",
+   "decken ([x]) bedarf",
+   "bedarf ([x]) deckt"
+  ],
+  "after": [
+   "den bedarf decken",
+   "bedarf ([x]) (zu) decken",
+   "bedarf ([x]) gedeckt",
+   "deckt ([x]) bedarf",
+   "decken ([x]) bedarf",
+   "bedarf ([x]) deckt",
+   "nachfrage ([x]) (zu) decken",
+   "nachfrage ([x]) gedeckt",
+   "nachfrage ([x]) (zu) befriedigen"
+  ],
+  "severity": "error",
+  "why": "demand → die Nachfrage decken is correct and the likeliest learner answer."
+ },
+ {
+  "id": "ENG_CHUNK_1763",
+  "field": "accept",
+  "before": [
+   "einen termin wahrnehmen",
+   "termin ([x]) wahrnehmen",
+   "termin ([x]) wahrzunehmen",
+   "termin ([x]) wahrgenommen",
+   "nimmt ([x]) termin ([x]) wahr",
+   "nehmen ([x]) termin ([x]) wahr",
+   "termin ([x]) wahrnimmt",
+   "zum termin ([x]) kommen",
+   "zu dem termin ([x]) kommen",
+   "termin einhalten"
+  ],
+  "after": [
+   "einen termin wahrnehmen",
+   "termin ([x]) wahrnehmen",
+   "termin ([x]) wahrzunehmen",
+   "termin ([x]) wahrgenommen",
+   "nimmt ([x]) termin ([x]) wahr",
+   "nehmen ([x]) termin ([x]) wahr",
+   "termin ([x]) wahrnimmt",
+   "zum termin ([x]) kommen",
+   "zu dem termin ([x]) kommen",
+   "termin ([x]) einhalten"
+  ],
+  "severity": "error",
+  "why": "„den Termin nicht einhalten“ has nicht inside; the contiguous pattern fails."
+ },
+ {
+  "id": "ENG_CHUNK_1768",
+  "field": "accept",
+  "before": [
+   "unter fachkräftemangel leiden",
+   "unter (dem) fachkräftemangel",
+   "unter einem mangel an fachkräften",
+   "unter dem mangel an fachkräften",
+   "fehlen ([x]) fachkräfte"
+  ],
+  "after": [
+   "unter fachkräftemangel leiden",
+   "unter (dem) fachkräftemangel",
+   "unter einem mangel an fachkräften",
+   "unter dem mangel an fachkräften",
+   "fehlen ([x]) fachkräfte",
+   "unter einem fachkräftemangel",
+   "leidet ([x]) unter ([x]) mangel an fachkräften"
+  ],
+  "severity": "error",
+  "why": "„leidet unter einem Fachkräftemangel“ is not covered."
+ },
+ {
+  "id": "ENG_CHUNK_1775",
+  "field": "accept",
+  "before": [
+   "den rücktritt fordern",
+   "rücktritt ([x]) (zu) fordern",
+   "rücktritt ([x]) gefordert",
+   "fordert ([x]) rücktritt",
+   "fordern ([x]) rücktritt",
+   "rücktritt ([x]) fordert",
+   "rücktritt ([x]) (zu) verlangen",
+   "rücktritt ([x]) verlangt",
+   "verlangt ([x]) rücktritt",
+   "verlangen ([x]) rücktritt"
+  ],
+  "after": [
+   "den rücktritt fordern",
+   "rücktritt ([x]) (zu) fordern",
+   "rücktritt ([x]) gefordert",
+   "fordert ([x]) rücktritt",
+   "fordern ([x]) rücktritt",
+   "rücktritt ([x]) fordert",
+   "rücktritt ([x]) (zu) verlangen",
+   "rücktritt ([x]) verlangt",
+   "verlangt ([x]) rücktritt",
+   "verlangen ([x]) rücktritt",
+   "zum rücktritt auf",
+   "zum rücktritt aufgefordert",
+   "zum rücktritt aufzufordern"
+  ],
+  "severity": "error",
+  "why": "jemanden zum Rücktritt auffordern is the common news form."
+ },
+ {
+  "id": "ENG_CHUNK_1782",
+  "field": "accept",
+  "before": [
+   "einen kompromiss schließen",
+   "kompromiss ([x]) (zu) schließen",
+   "kompromiss ([x]) geschlossen",
+   "schließt ([x]) kompromiss",
+   "schließen ([x]) kompromiss",
+   "kompromiss ([x]) schließt",
+   "schloss(en) ([x]) kompromiss",
+   "kompromiss ([x]) schloss(en)",
+   "kompromiss ([x]) (zu) finden",
+   "kompromiss ([x]) gefunden",
+   "findet ([x]) kompromiss",
+   "finden ([x]) kompromiss",
+   "kompromiss ([x]) findet",
+   "fand(en) ([x]) kompromiss",
+   "kompromiss ([x]) fand(en)",
+   "kompromiss ([x]) eingehen",
+   "kompromiss ([x]) einzugehen",
+   "kompromiss ([x]) eingegangen",
+   "geht ([x]) kompromiss ([x]) ein",
+   "gehen ([x]) kompromiss ([x]) ein",
+   "kompromiss ([x]) eingeht",
+   "ging(en) ([x]) kompromiss ([x]) ein",
+   "kompromiss ([x]) einging(en)",
+   "auf einen kompromiss geeinigt"
+  ],
+  "after": [
+   "einen kompromiss schließen",
+   "kompromiss ([x]) (zu) schließen",
+   "kompromiss ([x]) geschlossen",
+   "schließt ([x]) kompromiss",
+   "schließen ([x]) kompromiss",
+   "kompromiss ([x]) schließt",
+   "schloss(en) ([x]) kompromiss",
+   "kompromiss ([x]) schloss(en)",
+   "kompromiss ([x]) (zu) finden",
+   "kompromiss ([x]) gefunden",
+   "findet ([x]) kompromiss",
+   "finden ([x]) kompromiss",
+   "kompromiss ([x]) findet",
+   "fand(en) ([x]) kompromiss",
+   "kompromiss ([x]) fand(en)",
+   "kompromiss ([x]) eingehen",
+   "kompromiss ([x]) einzugehen",
+   "kompromiss ([x]) eingegangen",
+   "geht ([x]) kompromiss ([x]) ein",
+   "gehen ([x]) kompromiss ([x]) ein",
+   "kompromiss ([x]) eingeht",
+   "ging(en) ([x]) kompromiss ([x]) ein",
+   "kompromiss ([x]) einging(en)",
+   "auf einen kompromiss geeinigt",
+   "kompromiss ([x]) erzielt",
+   "erzielte(n) ([x]) kompromiss",
+   "kompromiss ([x]) (zu) erzielen"
+  ],
+  "severity": "error",
+  "why": "einen Kompromiss erzielen is standard."
+ },
+ {
+  "id": "ENG_CHUNK_1787",
+  "field": "accept",
+  "before": [
+   "die breite öffentlichkeit",
+   "der breiten öffentlichkeit",
+   "die allgemeine öffentlichkeit",
+   "der allgemeinen öffentlichkeit",
+   "öffentlich zugänglich"
+  ],
+  "after": [
+   "die breite öffentlichkeit",
+   "der breiten öffentlichkeit",
+   "die allgemeine öffentlichkeit",
+   "der allgemeinen öffentlichkeit",
+   "öffentlich zugänglich",
+   "der öffentlichkeit",
+   "für die öffentlichkeit",
+   "der allgemeinheit"
+  ],
+  "severity": "error",
+  "why": "„ist jetzt der Öffentlichkeit/Allgemeinheit zugänglich“ is natural."
+ },
+ {
+  "id": "ENG_CHUNK_1635",
+  "field": "accept",
+  "before": [
+   "einen antrag ([x]) stellen",
+   "antrag ([x]) (zu) stellen",
+   "antrag ([x]) gestellt",
+   "stellt ([x]) antrag",
+   "stellen ([x]) antrag",
+   "antrag ([x]) stellt",
+   "antrag ([x]) einreichen",
+   "antrag ([x]) einzureichen",
+   "antrag ([x]) eingereicht",
+   "reicht ([x]) antrag ([x]) ein",
+   "reichen ([x]) antrag ([x]) ein",
+   "antrag ([x]) einreicht"
+  ],
+  "after": [
+   "einen antrag ([x]) stellen",
+   "antrag ([x]) (zu) stellen",
+   "antrag ([x]) gestellt",
+   "stellt ([x]) antrag",
+   "stellen ([x]) antrag",
+   "antrag ([x]) stellt",
+   "antrag ([x]) einreichen",
+   "antrag ([x]) einzureichen",
+   "antrag ([x]) eingereicht",
+   "reicht ([x]) antrag ([x]) ein",
+   "reichen ([x]) antrag ([x]) ein",
+   "antrag ([x]) einreicht",
+   "beantragen",
+   "beantragt"
+  ],
+  "severity": "improve",
+  "why": "„Wohngeld online beantragen“ is the most natural rendering."
+ },
+ {
+  "id": "ENG_CHUNK_1647",
+  "field": "accept",
+  "before": [
+   "ums leben kommen",
+   "ums leben ([x]) (zu) kommen",
+   "ums leben ([x]) gekommen",
+   "kommt ([x]) ums leben",
+   "kommen ([x]) ums leben",
+   "ums leben ([x]) kommt",
+   "kam(en) ([x]) ums leben",
+   "ums leben ([x]) kam(en)",
+   "wurden ([x]) getötet",
+   "starben"
+  ],
+  "after": [
+   "ums leben kommen",
+   "ums leben ([x]) (zu) kommen",
+   "ums leben ([x]) gekommen",
+   "kommt ([x]) ums leben",
+   "kommen ([x]) ums leben",
+   "ums leben ([x]) kommt",
+   "kam(en) ([x]) ums leben",
+   "ums leben ([x]) kam(en)",
+   "wurden ([x]) getötet",
+   "starben",
+   "sind ([x]) gestorben",
+   "sind ([x]) getötet worden"
+  ],
+  "severity": "improve",
+  "why": "Perfekt forms of the accepted plain verbs."
+ },
+ {
+  "id": "ENG_CHUNK_1655",
+  "field": "accept",
+  "before": [
+   "von [x] gebrauch machen",
+   "gebrauch ([x]) (zu) machen",
+   "gebrauch ([x]) gemacht",
+   "macht ([x]) gebrauch",
+   "machen ([x]) gebrauch",
+   "gebrauch ([x]) macht",
+   "nutzen dieses recht"
+  ],
+  "after": [
+   "von [x] gebrauch machen",
+   "gebrauch ([x]) (zu) machen",
+   "gebrauch ([x]) gemacht",
+   "macht ([x]) gebrauch",
+   "machen ([x]) gebrauch",
+   "gebrauch ([x]) macht",
+   "nutzen dieses recht",
+   "in anspruch ([x]) (zu) nehmen",
+   "nehmen ([x]) in anspruch"
+  ],
+  "severity": "improve",
+  "why": "ein Recht in Anspruch nehmen is formal and natural."
+ },
+ {
+  "id": "ENG_CHUNK_1656",
+  "field": "accept",
+  "before": [
+   "anspruch auf [x] haben",
+   "anspruch ([x]) (zu) haben",
+   "anspruch ([x]) gehabt",
+   "hat ([x]) anspruch",
+   "haben ([x]) anspruch",
+   "anspruch ([x]) hat",
+   "anspruch auf"
+  ],
+  "after": [
+   "anspruch auf [x] haben",
+   "anspruch ([x]) (zu) haben",
+   "anspruch ([x]) gehabt",
+   "hat ([x]) anspruch",
+   "haben ([x]) anspruch",
+   "anspruch ([x]) hat",
+   "anspruch auf",
+   "ein recht auf",
+   "haben ([x]) recht auf"
+  ],
+  "severity": "improve",
+  "why": "„haben ein Recht auf 30 Tage Urlaub“ is natural."
+ },
+ {
+  "id": "ENG_CHUNK_1659",
+  "field": "accept",
+  "before": [
+   "angaben zu [x] machen",
+   "angaben ([x]) (zu) machen",
+   "angaben ([x]) gemacht",
+   "macht ([x]) angaben",
+   "machen ([x]) angaben",
+   "angaben ([x]) macht",
+   "machte(n) ([x]) angaben",
+   "angaben ([x]) machte(n)"
+  ],
+  "after": [
+   "angaben zu [x] machen",
+   "angaben ([x]) (zu) machen",
+   "angaben ([x]) gemacht",
+   "macht ([x]) angaben",
+   "machen ([x]) angaben",
+   "angaben ([x]) macht",
+   "machte(n) ([x]) angaben",
+   "angaben ([x]) machte(n)",
+   "einzelheiten ([x]) genannt",
+   "einzelheiten ([x]) bekannt gegeben",
+   "details ([x]) genannt"
+  ],
+  "severity": "improve",
+  "why": "Natural alternative for given details."
+ },
+ {
+  "id": "ENG_CHUNK_1665",
+  "field": "accept",
+  "before": [
+   "auf dem spiel stehen",
+   "auf dem spiel ([x]) (zu) stehen",
+   "auf dem spiel ([x]) gestanden",
+   "steht ([x]) auf dem spiel",
+   "stehen ([x]) auf dem spiel",
+   "auf dem spiel ([x]) steht"
+  ],
+  "after": [
+   "auf dem spiel stehen",
+   "auf dem spiel ([x]) (zu) stehen",
+   "auf dem spiel ([x]) gestanden",
+   "steht ([x]) auf dem spiel",
+   "stehen ([x]) auf dem spiel",
+   "auf dem spiel ([x]) steht",
+   "sind ([x]) gefährdet",
+   "sind ([x]) in gefahr"
+  ],
+  "severity": "improve",
+  "why": "„Arbeitsplätze sind gefährdet“ is natural."
+ },
+ {
+  "id": "ENG_CHUNK_1671",
+  "field": "accept",
+  "before": [
+   "in gang setzen",
+   "in gang ([x]) (zu) setzen",
+   "in gang ([x]) gesetzt",
+   "setzt ([x]) in gang",
+   "setzen ([x]) in gang",
+   "in gang ([x]) setzt",
+   "setzte(n) ([x]) in gang",
+   "in gang ([x]) setzte(n)",
+   "in gang ([x]) (zu) bringen",
+   "in gang ([x]) gebracht",
+   "bringt ([x]) in gang",
+   "bringen ([x]) in gang",
+   "in gang ([x]) bringt",
+   "brachte(n) ([x]) in gang",
+   "in gang ([x]) brachte(n)",
+   "in bewegung ([x]) gesetzt"
+  ],
+  "after": [
+   "in gang setzen",
+   "in gang ([x]) (zu) setzen",
+   "in gang ([x]) gesetzt",
+   "setzt ([x]) in gang",
+   "setzen ([x]) in gang",
+   "in gang ([x]) setzt",
+   "setzte(n) ([x]) in gang",
+   "in gang ([x]) setzte(n)",
+   "in gang ([x]) (zu) bringen",
+   "in gang ([x]) gebracht",
+   "bringt ([x]) in gang",
+   "bringen ([x]) in gang",
+   "in gang ([x]) bringt",
+   "brachte(n) ([x]) in gang",
+   "in gang ([x]) brachte(n)",
+   "in bewegung ([x]) gesetzt",
+   "ausgelöst",
+   "angestoßen"
+  ],
+  "severity": "improve",
+  "why": "„hat viele Veränderungen ausgelöst/angestoßen“ is natural."
+ },
+ {
+  "id": "ENG_CHUNK_1673",
+  "field": "accept",
+  "before": [
+   "vorkehrungen treffen",
+   "vorkehrungen ([x]) (zu) treffen",
+   "vorkehrungen ([x]) getroffen",
+   "trifft ([x]) vorkehrungen",
+   "treffen ([x]) vorkehrungen",
+   "vorkehrungen ([x]) trifft",
+   "vorsichtsmaßnahmen ([x]) (zu) treffen",
+   "vorsichtsmaßnahmen ([x]) getroffen",
+   "trifft ([x]) vorsichtsmaßnahmen",
+   "treffen ([x]) vorsichtsmaßnahmen",
+   "vorsichtsmaßnahmen ([x]) trifft",
+   "vorsorge ([x]) (zu) treffen",
+   "vorsorge ([x]) getroffen",
+   "trifft ([x]) vorsorge",
+   "treffen ([x]) vorsorge",
+   "vorsorge ([x]) trifft"
+  ],
+  "after": [
+   "vorkehrungen treffen",
+   "vorkehrungen ([x]) (zu) treffen",
+   "vorkehrungen ([x]) getroffen",
+   "trifft ([x]) vorkehrungen",
+   "treffen ([x]) vorkehrungen",
+   "vorkehrungen ([x]) trifft",
+   "vorsichtsmaßnahmen ([x]) (zu) treffen",
+   "vorsichtsmaßnahmen ([x]) getroffen",
+   "trifft ([x]) vorsichtsmaßnahmen",
+   "treffen ([x]) vorsichtsmaßnahmen",
+   "vorsichtsmaßnahmen ([x]) trifft",
+   "vorsorge ([x]) (zu) treffen",
+   "vorsorge ([x]) getroffen",
+   "trifft ([x]) vorsorge",
+   "treffen ([x]) vorsorge",
+   "vorsorge ([x]) trifft",
+   "maßnahmen ([x]) (zu) treffen",
+   "maßnahmen ([x]) getroffen",
+   "trifft ([x]) maßnahmen",
+   "treffen ([x]) maßnahmen"
+  ],
+  "severity": "improve",
+  "why": "Maßnahmen treffen is named in n."
+ },
+ {
+  "id": "ENG_CHUNK_1680",
+  "field": "accept",
+  "before": [
+   "außer kontrolle geraten",
+   "außer kontrolle ([x]) (zu) geraten",
+   "außer kontrolle ([x]) geraten",
+   "gerät ([x]) außer kontrolle",
+   "geraten ([x]) außer kontrolle",
+   "außer kontrolle ([x]) gerät",
+   "geriet(en) ([x]) außer kontrolle",
+   "außer kontrolle ([x]) geriet(en)"
+  ],
+  "after": [
+   "außer kontrolle geraten",
+   "außer kontrolle ([x]) (zu) geraten",
+   "außer kontrolle ([x]) geraten",
+   "gerät ([x]) außer kontrolle",
+   "geraten ([x]) außer kontrolle",
+   "außer kontrolle ([x]) gerät",
+   "geriet(en) ([x]) außer kontrolle",
+   "außer kontrolle ([x]) geriet(en)",
+   "aus dem ruder"
+  ],
+  "severity": "improve",
+  "why": "„Die Kosten liefen aus dem Ruder“ is the idiom for costs."
+ },
+ {
+  "id": "ENG_CHUNK_1681",
+  "field": "accept",
+  "before": [
+   "in schwierigkeiten geraten",
+   "in ([x]) schwierigkeiten ([x]) (zu) geraten",
+   "in ([x]) schwierigkeiten ([x]) geraten",
+   "gerät ([x]) in ([x]) schwierigkeiten",
+   "geraten ([x]) in ([x]) schwierigkeiten",
+   "in ([x]) schwierigkeiten ([x]) gerät",
+   "geriet(en) ([x]) in ([x]) schwierigkeiten",
+   "in ([x]) schwierigkeiten ([x]) geriet(en)"
+  ],
+  "after": [
+   "in schwierigkeiten geraten",
+   "in ([x]) schwierigkeiten ([x]) (zu) geraten",
+   "in ([x]) schwierigkeiten ([x]) geraten",
+   "gerät ([x]) in ([x]) schwierigkeiten",
+   "geraten ([x]) in ([x]) schwierigkeiten",
+   "in ([x]) schwierigkeiten ([x]) gerät",
+   "geriet(en) ([x]) in ([x]) schwierigkeiten",
+   "in ([x]) schwierigkeiten ([x]) geriet(en)",
+   "in ([x]) schwierigkeiten ([x]) gekommen",
+   "kommt ([x]) in ([x]) schwierigkeiten"
+  ],
+  "severity": "improve",
+  "why": "in Schwierigkeiten kommen is also standard."
+ },
+ {
+  "id": "ENG_CHUNK_1686",
+  "field": "accept",
+  "before": [
+   "lehren aus [x] ziehen",
+   "lehre(n) ([x]) (zu) ziehen",
+   "lehre(n) ([x]) gezogen",
+   "zieht ([x]) lehre(n)",
+   "ziehen ([x]) lehre(n)",
+   "lehre(n) ([x]) zieht"
+  ],
+  "after": [
+   "lehren aus [x] ziehen",
+   "lehre(n) ([x]) (zu) ziehen",
+   "lehre(n) ([x]) gezogen",
+   "zieht ([x]) lehre(n)",
+   "ziehen ([x]) lehre(n)",
+   "lehre(n) ([x]) zieht",
+   "aus der pandemie lernen"
+  ],
+  "severity": "improve",
+  "why": "„aus der Pandemie lernen“ is natural (kept specific so the near „Lektionen lernen“ still fails)."
+ },
+ {
+  "id": "ENG_CHUNK_1687",
+  "field": "accept",
+  "before": [
+   "dafür sorge tragen",
+   "sorge ([x]) (zu) tragen",
+   "sorge ([x]) getragen",
+   "trägt ([x]) sorge",
+   "tragen ([x]) sorge",
+   "sorge ([x]) trägt",
+   "dafür ([x]) sorgen",
+   "sicherstellen"
+  ],
+  "after": [
+   "dafür sorge tragen",
+   "sorge ([x]) (zu) tragen",
+   "sorge ([x]) getragen",
+   "trägt ([x]) sorge",
+   "tragen ([x]) sorge",
+   "sorge ([x]) trägt",
+   "dafür ([x]) sorgen",
+   "sicherstellen",
+   "gewährleisten"
+  ],
+  "severity": "improve",
+  "why": "Formal synonym a learner may type."
+ },
+ {
+  "id": "ENG_CHUNK_1688",
+  "field": "accept",
+  "before": [
+   "sich gedanken über [x] machen",
+   "gedanken ([x]) (zu) machen",
+   "gedanken ([x]) gemacht",
+   "macht ([x]) gedanken",
+   "machen ([x]) gedanken",
+   "gedanken ([x]) macht"
+  ],
+  "after": [
+   "sich gedanken über [x] machen",
+   "gedanken ([x]) (zu) machen",
+   "gedanken ([x]) gemacht",
+   "macht ([x]) gedanken",
+   "machen ([x]) gedanken",
+   "gedanken ([x]) macht",
+   "über [x] nachdenken",
+   "nachdenken über"
+  ],
+  "severity": "improve",
+  "why": "„über die Zukunft nachdenken“ is a natural rendering."
+ },
+ {
+  "id": "ENG_CHUNK_1694",
+  "field": "accept",
+  "before": [
+   "die weichen für [x] stellen",
+   "weichen ([x]) (zu) stellen",
+   "weichen ([x]) gestellt",
+   "stellt ([x]) weichen",
+   "stellen ([x]) weichen",
+   "weichen ([x]) stellt"
+  ],
+  "after": [
+   "die weichen für [x] stellen",
+   "weichen ([x]) (zu) stellen",
+   "weichen ([x]) gestellt",
+   "stellt ([x]) weichen",
+   "stellen ([x]) weichen",
+   "weichen ([x]) stellt",
+   "kurs auf [x] (zu) setzen",
+   "setzt ([x]) kurs auf"
+  ],
+  "severity": "improve",
+  "why": "„Kurs auf Klimaneutralität setzen“ is natural."
+ },
+ {
+  "id": "ENG_CHUNK_1695",
+  "field": "accept",
+  "before": [
+   "sich zur wahl stellen",
+   "zur wahl ([x]) (zu) stellen",
+   "zur wahl ([x]) gestellt",
+   "stellt ([x]) zur wahl",
+   "stellen ([x]) zur wahl",
+   "zur wahl ([x]) stellt",
+   "zur wiederwahl ([x]) (zu) stellen",
+   "zur wiederwahl ([x]) gestellt",
+   "stellt ([x]) zur wiederwahl",
+   "stellen ([x]) zur wiederwahl",
+   "zur wiederwahl ([x]) stellt",
+   "kandidieren",
+   "kandidiert"
+  ],
+  "after": [
+   "sich zur wahl stellen",
+   "zur wahl ([x]) (zu) stellen",
+   "zur wahl ([x]) gestellt",
+   "stellt ([x]) zur wahl",
+   "stellen ([x]) zur wahl",
+   "zur wahl ([x]) stellt",
+   "zur wiederwahl ([x]) (zu) stellen",
+   "zur wiederwahl ([x]) gestellt",
+   "stellt ([x]) zur wiederwahl",
+   "stellen ([x]) zur wiederwahl",
+   "zur wiederwahl ([x]) stellt",
+   "kandidieren",
+   "kandidiert",
+   "nicht ([x]) antreten",
+   "tritt ([x]) nicht ([x]) an"
+  ],
+  "severity": "improve",
+  "why": "„wird nicht wieder antreten“ is the usual spoken form."
+ },
+ {
+  "id": "ENG_CHUNK_1697",
+  "field": "accept",
+  "before": [
+   "auf den markt bringen",
+   "auf den markt ([x]) (zu) bringen",
+   "auf den markt ([x]) gebracht",
+   "bringt ([x]) auf den markt",
+   "bringen ([x]) auf den markt",
+   "auf den markt ([x]) bringt"
+  ],
+  "after": [
+   "auf den markt bringen",
+   "auf den markt ([x]) (zu) bringen",
+   "auf den markt ([x]) gebracht",
+   "bringt ([x]) auf den markt",
+   "bringen ([x]) auf den markt",
+   "auf den markt ([x]) bringt",
+   "bringt ([x]) heraus",
+   "herausbringen",
+   "herausgebracht"
+  ],
+  "severity": "improve",
+  "why": "etwas herausbringen is a common alternative."
+ },
+ {
+  "id": "ENG_CHUNK_1700",
+  "field": "accept",
+  "before": [
+   "zu fall bringen",
+   "zu fall ([x]) (zu) bringen",
+   "zu fall ([x]) gebracht",
+   "bringt ([x]) zu fall",
+   "bringen ([x]) zu fall",
+   "zu fall ([x]) bringt",
+   "brachte(n) ([x]) zu fall",
+   "zu fall ([x]) brachte(n)"
+  ],
+  "after": [
+   "zu fall bringen",
+   "zu fall ([x]) (zu) bringen",
+   "zu fall ([x]) gebracht",
+   "bringt ([x]) zu fall",
+   "bringen ([x]) zu fall",
+   "zu fall ([x]) bringt",
+   "brachte(n) ([x]) zu fall",
+   "zu fall ([x]) brachte(n)",
+   "scheitern lassen",
+   "ließ ([x]) scheitern",
+   "kippte"
+  ],
+  "severity": "improve",
+  "why": "„ließ die Reform scheitern“ / „kippte die Reform“ are natural."
+ },
+ {
+  "id": "ENG_CHUNK_1701",
+  "field": "accept",
+  "before": [
+   "zum erliegen kommen",
+   "zum erliegen ([x]) (zu) kommen",
+   "zum erliegen ([x]) gekommen",
+   "kommt ([x]) zum erliegen",
+   "kommen ([x]) zum erliegen",
+   "zum erliegen ([x]) kommt",
+   "kam(en) ([x]) zum erliegen",
+   "zum erliegen ([x]) kam(en)",
+   "zum stillstand ([x]) (zu) kommen",
+   "zum stillstand ([x]) gekommen",
+   "kommt ([x]) zum stillstand",
+   "kommen ([x]) zum stillstand",
+   "zum stillstand ([x]) kommt",
+   "kam(en) ([x]) zum stillstand",
+   "zum stillstand ([x]) kam(en)"
+  ],
+  "after": [
+   "zum erliegen kommen",
+   "zum erliegen ([x]) (zu) kommen",
+   "zum erliegen ([x]) gekommen",
+   "kommt ([x]) zum erliegen",
+   "kommen ([x]) zum erliegen",
+   "zum erliegen ([x]) kommt",
+   "kam(en) ([x]) zum erliegen",
+   "zum erliegen ([x]) kam(en)",
+   "zum stillstand ([x]) (zu) kommen",
+   "zum stillstand ([x]) gekommen",
+   "kommt ([x]) zum stillstand",
+   "kommen ([x]) zum stillstand",
+   "zum stillstand ([x]) kommt",
+   "kam(en) ([x]) zum stillstand",
+   "zum stillstand ([x]) kam(en)",
+   "stand ([x]) still",
+   "zum stehen"
+  ],
+  "severity": "improve",
+  "why": "„Der Verkehr stand still“ is natural."
+ },
+ {
+  "id": "ENG_CHUNK_1704",
+  "field": "accept",
+  "before": [
+   "platz für [x] schaffen",
+   "platz ([x]) (zu) schaffen",
+   "platz ([x]) geschaffen",
+   "schafft ([x]) platz",
+   "schaffen ([x]) platz",
+   "platz ([x]) schafft",
+   "platz ([x]) (zu) machen",
+   "platz ([x]) gemacht",
+   "macht ([x]) platz",
+   "machen ([x]) platz",
+   "platz ([x]) macht"
+  ],
+  "after": [
+   "platz für [x] schaffen",
+   "platz ([x]) (zu) schaffen",
+   "platz ([x]) geschaffen",
+   "schafft ([x]) platz",
+   "schaffen ([x]) platz",
+   "platz ([x]) schafft",
+   "platz ([x]) (zu) machen",
+   "platz ([x]) gemacht",
+   "macht ([x]) platz",
+   "machen ([x]) platz",
+   "platz ([x]) macht",
+   "raum ([x]) (zu) schaffen",
+   "raum ([x]) geschaffen",
+   "schafft ([x]) raum"
+  ],
+  "severity": "improve",
+  "why": "Raum schaffen is named in n."
+ },
+ {
+  "id": "ENG_CHUNK_1705",
+  "field": "accept",
+  "before": [
+   "ins spiel bringen",
+   "ins spiel ([x]) (zu) bringen",
+   "ins spiel ([x]) gebracht",
+   "bringt ([x]) ins spiel",
+   "bringen ([x]) ins spiel",
+   "ins spiel ([x]) bringt",
+   "brachte(n) ([x]) ins spiel",
+   "ins spiel ([x]) brachte(n)"
+  ],
+  "after": [
+   "ins spiel bringen",
+   "ins spiel ([x]) (zu) bringen",
+   "ins spiel ([x]) gebracht",
+   "bringt ([x]) ins spiel",
+   "bringen ([x]) ins spiel",
+   "ins spiel ([x]) bringt",
+   "brachte(n) ([x]) ins spiel",
+   "ins spiel ([x]) brachte(n)",
+   "ins gespräch ([x]) (zu) bringen",
+   "ins gespräch ([x]) gebracht",
+   "bringt ([x]) ins gespräch"
+  ],
+  "severity": "improve",
+  "why": "ins Gespräch bringen is the usual phrase for proposing a location."
+ },
+ {
+  "id": "ENG_CHUNK_1714",
+  "field": "accept",
+  "before": [
+   "ausmaße annehmen",
+   "ausmaße ([x]) annehmen",
+   "ausmaße ([x]) anzunehmen",
+   "ausmaße ([x]) angenommen",
+   "nimmt ([x]) ausmaße ([x]) an",
+   "nehmen ([x]) ausmaße ([x]) an",
+   "ausmaße ([x]) annimmt",
+   "nahm(en) ([x]) ausmaße ([x]) an",
+   "ausmaße ([x]) annahm(en)"
+  ],
+  "after": [
+   "ausmaße annehmen",
+   "ausmaße ([x]) annehmen",
+   "ausmaße ([x]) anzunehmen",
+   "ausmaße ([x]) angenommen",
+   "nimmt ([x]) ausmaße ([x]) an",
+   "nehmen ([x]) ausmaße ([x]) an",
+   "ausmaße ([x]) annimmt",
+   "nahm(en) ([x]) ausmaße ([x]) an",
+   "ausmaße ([x]) annahm(en)",
+   "dimensionen ([x]) angenommen",
+   "dimensionen ([x]) annehmen",
+   "nimmt ([x]) dimensionen ([x]) an"
+  ],
+  "severity": "improve",
+  "why": "bedrohliche Dimensionen annehmen is common."
+ },
+ {
+  "id": "ENG_CHUNK_1719",
+  "field": "accept",
+  "before": [
+   "zurückhaltung üben",
+   "zurückhaltung ([x]) (zu) üben",
+   "zurückhaltung ([x]) geübt",
+   "übt ([x]) zurückhaltung",
+   "üben ([x]) zurückhaltung",
+   "zurückhaltung ([x]) übt",
+   "zurückhaltung ([x]) (zu) zeigen",
+   "zurückhaltung ([x]) gezeigt",
+   "zeigt ([x]) zurückhaltung",
+   "zeigen ([x]) zurückhaltung",
+   "zurückhaltung ([x]) zeigt"
+  ],
+  "after": [
+   "zurückhaltung üben",
+   "zurückhaltung ([x]) (zu) üben",
+   "zurückhaltung ([x]) geübt",
+   "übt ([x]) zurückhaltung",
+   "üben ([x]) zurückhaltung",
+   "zurückhaltung ([x]) übt",
+   "zurückhaltung ([x]) (zu) zeigen",
+   "zurückhaltung ([x]) gezeigt",
+   "zeigt ([x]) zurückhaltung",
+   "zeigen ([x]) zurückhaltung",
+   "zurückhaltung ([x]) zeigt",
+   "hält sich ([x]) zurück",
+   "halten sich ([x]) zurück"
+  ],
+  "severity": "improve",
+  "why": "„hält sich bei den Zinsen zurück“ is the everyday form."
+ },
+ {
+  "id": "ENG_CHUNK_1721",
+  "field": "accept",
+  "before": [
+   "widerspruch einlegen",
+   "widerspruch ([x]) einlegen",
+   "widerspruch ([x]) einzulegen",
+   "widerspruch ([x]) eingelegt",
+   "legt ([x]) widerspruch ([x]) ein",
+   "legen ([x]) widerspruch ([x]) ein",
+   "widerspruch ([x]) einlegt",
+   "einspruch ([x]) einlegen",
+   "einspruch ([x]) einzulegen",
+   "einspruch ([x]) eingelegt",
+   "legt ([x]) einspruch ([x]) ein",
+   "legen ([x]) einspruch ([x]) ein",
+   "einspruch ([x]) einlegt",
+   "einspruch ([x]) (zu) erheben",
+   "einspruch ([x]) erhoben",
+   "erhebt ([x]) einspruch",
+   "erheben ([x]) einspruch",
+   "einspruch ([x]) erhebt"
+  ],
+  "after": [
+   "widerspruch einlegen",
+   "widerspruch ([x]) einlegen",
+   "widerspruch ([x]) einzulegen",
+   "widerspruch ([x]) eingelegt",
+   "legt ([x]) widerspruch ([x]) ein",
+   "legen ([x]) widerspruch ([x]) ein",
+   "widerspruch ([x]) einlegt",
+   "einspruch ([x]) einlegen",
+   "einspruch ([x]) einzulegen",
+   "einspruch ([x]) eingelegt",
+   "legt ([x]) einspruch ([x]) ein",
+   "legen ([x]) einspruch ([x]) ein",
+   "einspruch ([x]) einlegt",
+   "einspruch ([x]) (zu) erheben",
+   "einspruch ([x]) erhoben",
+   "erhebt ([x]) einspruch",
+   "erheben ([x]) einspruch",
+   "einspruch ([x]) erhebt",
+   "anfechten",
+   "anzufechten"
+  ],
+  "severity": "improve",
+  "why": "eine Entscheidung anfechten is a natural rendering."
+ },
+ {
+  "id": "ENG_CHUNK_1725",
+  "field": "accept",
+  "before": [
+   "ins auge fassen",
+   "ins auge ([x]) (zu) fassen",
+   "ins auge ([x]) gefasst",
+   "fasst ([x]) ins auge",
+   "fassen ([x]) ins auge",
+   "ins auge ([x]) fasst",
+   "erwägt",
+   "in betracht"
+  ],
+  "after": [
+   "ins auge fassen",
+   "ins auge ([x]) (zu) fassen",
+   "ins auge ([x]) gefasst",
+   "fasst ([x]) ins auge",
+   "fassen ([x]) ins auge",
+   "ins auge ([x]) fasst",
+   "erwägt",
+   "in betracht",
+   "denkt ([x]) über [x] nach",
+   "überlegt",
+   "zieht ([x]) in erwägung"
+  ],
+  "severity": "improve",
+  "why": "Natural plain renderings of contemplating."
+ },
+ {
+  "id": "ENG_CHUNK_1729",
+  "field": "accept",
+  "before": [
+   "ein zeichen setzen",
+   "zeichen ([x]) (zu) setzen",
+   "zeichen ([x]) gesetzt",
+   "setzt ([x]) zeichen",
+   "setzen ([x]) zeichen",
+   "zeichen ([x]) setzt",
+   "signal ([x]) (zu) setzen",
+   "signal ([x]) gesetzt",
+   "setzt ([x]) signal",
+   "setzen ([x]) signal",
+   "signal ([x]) setzt",
+   "signal senden"
+  ],
+  "after": [
+   "ein zeichen setzen",
+   "zeichen ([x]) (zu) setzen",
+   "zeichen ([x]) gesetzt",
+   "setzt ([x]) zeichen",
+   "setzen ([x]) zeichen",
+   "zeichen ([x]) setzt",
+   "signal ([x]) (zu) setzen",
+   "signal ([x]) gesetzt",
+   "setzt ([x]) signal",
+   "setzen ([x]) signal",
+   "signal ([x]) setzt",
+   "signal senden",
+   "signal ([x]) (zu) geben",
+   "signal ([x]) aussenden"
+  ],
+  "severity": "improve",
+  "why": "ein Signal geben/aussenden are common."
+ },
+ {
+  "id": "ENG_CHUNK_1738",
+  "field": "accept",
+  "before": [
+   "sich in grenzen halten",
+   "in grenzen ([x]) (zu) halten",
+   "in grenzen ([x]) gehalten",
+   "hält ([x]) in grenzen",
+   "halten ([x]) in grenzen",
+   "in grenzen ([x]) hält",
+   "hielt(en) ([x]) in grenzen",
+   "in grenzen ([x]) hielt(en)",
+   "war ([x]) gering",
+   "begrenzt"
+  ],
+  "after": [
+   "sich in grenzen halten",
+   "in grenzen ([x]) (zu) halten",
+   "in grenzen ([x]) gehalten",
+   "hält ([x]) in grenzen",
+   "halten ([x]) in grenzen",
+   "in grenzen ([x]) hält",
+   "hielt(en) ([x]) in grenzen",
+   "in grenzen ([x]) hielt(en)",
+   "war ([x]) gering",
+   "begrenzt",
+   "blieb ([x]) gering",
+   "überschaubar"
+  ],
+  "severity": "improve",
+  "why": "„blieb gering / war überschaubar“ are natural."
+ },
+ {
+  "id": "ENG_CHUNK_1746",
+  "field": "accept",
+  "before": [
+   "zur last fallen",
+   "zur last ([x]) (zu) fallen",
+   "zur last ([x]) gefallen",
+   "fällt ([x]) zur last",
+   "fallen ([x]) zur last",
+   "zur last ([x]) fällt",
+   "eine last sein",
+   "keine last sein"
+  ],
+  "after": [
+   "zur last fallen",
+   "zur last ([x]) (zu) fallen",
+   "zur last ([x]) gefallen",
+   "fällt ([x]) zur last",
+   "fallen ([x]) zur last",
+   "zur last ([x]) fällt",
+   "eine last sein",
+   "keine last sein",
+   "eine belastung sein",
+   "zur belastung werden",
+   "keine belastung sein"
+  ],
+  "severity": "improve",
+  "why": "Natural alternatives."
+ },
+ {
+  "id": "ENG_CHUNK_1750",
+  "field": "accept",
+  "before": [
+   "rechenschaft ablegen",
+   "rechenschaft ([x]) ablegen",
+   "rechenschaft ([x]) abzulegen",
+   "rechenschaft ([x]) abgelegt",
+   "legt ([x]) rechenschaft ([x]) ab",
+   "legen ([x]) rechenschaft ([x]) ab",
+   "rechenschaft ([x]) ablegt",
+   "rechenschaft ([x]) (zu) geben",
+   "rechenschaft ([x]) gegeben",
+   "gibt ([x]) rechenschaft",
+   "geben ([x]) rechenschaft",
+   "rechenschaft ([x]) gibt"
+  ],
+  "after": [
+   "rechenschaft ablegen",
+   "rechenschaft ([x]) ablegen",
+   "rechenschaft ([x]) abzulegen",
+   "rechenschaft ([x]) abgelegt",
+   "legt ([x]) rechenschaft ([x]) ab",
+   "legen ([x]) rechenschaft ([x]) ab",
+   "rechenschaft ([x]) ablegt",
+   "rechenschaft ([x]) (zu) geben",
+   "rechenschaft ([x]) gegeben",
+   "gibt ([x]) rechenschaft",
+   "geben ([x]) rechenschaft",
+   "rechenschaft ([x]) gibt",
+   "rechtfertigen"
+  ],
+  "severity": "improve",
+  "why": "„muss seine Ausgaben rechtfertigen“ is natural."
+ },
+ {
+  "id": "ENG_CHUNK_1753",
+  "field": "accept",
+  "before": [
+   "einen gewinn erzielen",
+   "gewinn(e) ([x]) (zu) erzielen",
+   "gewinn(e) ([x]) erzielt",
+   "erzielt ([x]) gewinn(e)",
+   "erzielen ([x]) gewinn(e)",
+   "erzielte(n) ([x]) gewinn(e)",
+   "gewinn(e) ([x]) erzielte(n)",
+   "gewinn(e) ([x]) (zu) machen",
+   "gewinn(e) ([x]) gemacht",
+   "macht ([x]) gewinn(e)",
+   "machen ([x]) gewinn(e)",
+   "gewinn(e) ([x]) macht",
+   "machte(n) ([x]) gewinn(e)",
+   "gewinn(e) ([x]) machte(n)",
+   "schrieb ([x]) schwarze zahlen"
+  ],
+  "after": [
+   "einen gewinn erzielen",
+   "gewinn(e) ([x]) (zu) erzielen",
+   "gewinn(e) ([x]) erzielt",
+   "erzielt ([x]) gewinn(e)",
+   "erzielen ([x]) gewinn(e)",
+   "erzielte(n) ([x]) gewinn(e)",
+   "gewinn(e) ([x]) erzielte(n)",
+   "gewinn(e) ([x]) (zu) machen",
+   "gewinn(e) ([x]) gemacht",
+   "macht ([x]) gewinn(e)",
+   "machen ([x]) gewinn(e)",
+   "gewinn(e) ([x]) macht",
+   "machte(n) ([x]) gewinn(e)",
+   "gewinn(e) ([x]) machte(n)",
+   "schrieb ([x]) schwarze zahlen",
+   "schwarze zahlen ([x]) geschrieben",
+   "schreibt ([x]) schwarze zahlen"
+  ],
+  "severity": "improve",
+  "why": "Perfekt/present of the variant named in n."
+ },
+ {
+  "id": "ENG_CHUNK_1754",
+  "field": "accept",
+  "before": [
+   "rote zahlen schreiben",
+   "rote(n) zahlen ([x]) (zu) schreiben",
+   "rote(n) zahlen ([x]) geschrieben",
+   "schreibt ([x]) rote(n) zahlen",
+   "schreiben ([x]) rote(n) zahlen",
+   "rote(n) zahlen ([x]) schreibt",
+   "in den roten zahlen"
+  ],
+  "after": [
+   "rote zahlen schreiben",
+   "rote(n) zahlen ([x]) (zu) schreiben",
+   "rote(n) zahlen ([x]) geschrieben",
+   "schreibt ([x]) rote(n) zahlen",
+   "schreiben ([x]) rote(n) zahlen",
+   "rote(n) zahlen ([x]) schreibt",
+   "in den roten zahlen",
+   "im minus",
+   "macht ([x]) verluste"
+  ],
+  "severity": "improve",
+  "why": "„ist wieder im Minus / macht wieder Verluste“ are natural."
+ },
+ {
+  "id": "ENG_CHUNK_1761",
+  "field": "accept",
+  "before": [
+   "eine genehmigung erteilen",
+   "genehmigung ([x]) (zu) erteilen",
+   "genehmigung ([x]) erteilt",
+   "erteilt ([x]) genehmigung",
+   "erteilen ([x]) genehmigung",
+   "erteilte(n) ([x]) genehmigung",
+   "genehmigung ([x]) erteilte(n)",
+   "genehmigt"
+  ],
+  "after": [
+   "eine genehmigung erteilen",
+   "genehmigung ([x]) (zu) erteilen",
+   "genehmigung ([x]) erteilt",
+   "erteilt ([x]) genehmigung",
+   "erteilen ([x]) genehmigung",
+   "erteilte(n) ([x]) genehmigung",
+   "genehmigung ([x]) erteilte(n)",
+   "genehmigt",
+   "erlaubnis ([x]) erteilt",
+   "erteilt ([x]) erlaubnis"
+  ],
+  "severity": "improve",
+  "why": "Named in n."
+ },
+ {
+  "id": "ENG_CHUNK_1769",
+  "field": "accept",
+  "before": [
+   "den höchsten stand erreichen",
+   "höchsten stand ([x]) erreicht",
+   "erreicht ([x]) höchsten stand",
+   "höchststand ([x]) erreicht",
+   "erreicht ([x]) höchststand",
+   "zehnjahreshoch erreicht"
+  ],
+  "after": [
+   "den höchsten stand erreichen",
+   "höchsten stand ([x]) erreicht",
+   "erreicht ([x]) höchsten stand",
+   "höchststand ([x]) erreicht",
+   "erreicht ([x]) höchststand",
+   "zehnjahreshoch erreicht",
+   "auf den höchsten stand",
+   "auf ([x]) höchststand",
+   "höchstwert ([x]) erreicht"
+  ],
+  "severity": "improve",
+  "why": "„ist auf den höchsten Stand seit … gestiegen“ is natural."
+ },
+ {
+  "id": "ENG_CHUNK_1774",
+  "field": "accept",
+  "before": [
+   "das amt antreten",
+   "amt ([x]) antreten",
+   "amt ([x]) anzutreten",
+   "amt ([x]) angetreten",
+   "tritt ([x]) amt ([x]) an",
+   "treten ([x]) amt ([x]) an",
+   "amt ([x]) antritt"
+  ],
+  "after": [
+   "das amt antreten",
+   "amt ([x]) antreten",
+   "amt ([x]) anzutreten",
+   "amt ([x]) angetreten",
+   "tritt ([x]) amt ([x]) an",
+   "treten ([x]) amt ([x]) an",
+   "amt ([x]) antritt",
+   "amt ([x]) übernehmen",
+   "übernimmt ([x]) amt"
+  ],
+  "severity": "improve",
+  "why": "das Amt übernehmen is a common alternative."
+ },
+ {
+  "id": "ENG_CHUNK_1776",
+  "field": "accept",
+  "before": [
+   "sanktionen verhängen",
+   "sanktionen ([x]) (zu) verhängen",
+   "sanktionen ([x]) verhängt",
+   "verhängt ([x]) sanktionen",
+   "verhängen ([x]) sanktionen",
+   "verhängte(n) ([x]) sanktionen",
+   "sanktionen ([x]) verhängte(n)",
+   "sanktionen ([x]) erlassen"
+  ],
+  "after": [
+   "sanktionen verhängen",
+   "sanktionen ([x]) (zu) verhängen",
+   "sanktionen ([x]) verhängt",
+   "verhängt ([x]) sanktionen",
+   "verhängen ([x]) sanktionen",
+   "verhängte(n) ([x]) sanktionen",
+   "sanktionen ([x]) verhängte(n)",
+   "sanktionen ([x]) erlassen",
+   "sanktionen ([x]) beschlossen",
+   "beschließt ([x]) sanktionen"
+  ],
+  "severity": "improve",
+  "why": "„Die EU hat neue Sanktionen beschlossen“ is common news German."
+ },
+ {
+  "id": "ENG_CHUNK_1778",
+  "field": "accept",
+  "before": [
+   "die vorwürfe zurückweisen",
+   "vorwürfe ([x]) zurückweisen",
+   "vorwürfe ([x]) zurückzuweisen",
+   "vorwürfe ([x]) zurückgewiesen",
+   "weist ([x]) vorwürfe ([x]) zurück",
+   "weisen ([x]) vorwürfe ([x]) zurück",
+   "vorwürfe ([x]) zurückweist",
+   "wies(en) ([x]) vorwürfe ([x]) zurück",
+   "vorwürfe ([x]) zurückwies(en)",
+   "bestreitet ([x]) vorwürfe"
+  ],
+  "after": [
+   "die vorwürfe zurückweisen",
+   "vorwürfe ([x]) zurückweisen",
+   "vorwürfe ([x]) zurückzuweisen",
+   "vorwürfe ([x]) zurückgewiesen",
+   "weist ([x]) vorwürfe ([x]) zurück",
+   "weisen ([x]) vorwürfe ([x]) zurück",
+   "vorwürfe ([x]) zurückweist",
+   "wies(en) ([x]) vorwürfe ([x]) zurück",
+   "vorwürfe ([x]) zurückwies(en)",
+   "bestreitet ([x]) vorwürfe",
+   "vorwürfe ([x]) bestritten",
+   "bestreiten ([x]) vorwürfe"
+  ],
+  "severity": "improve",
+  "why": "Other forms of the accepted bestreiten."
+ },
+ {
+  "id": "ENG_CHUNK_1778",
+  "field": "near",
+  "before": [
+   [
+    "Das Unternehmen lehnt alle Vorwürfe zurück.",
+    "zurückweisen or ablehnen: lehnt … zurück mixes them"
+   ]
+  ],
+  "after": [
+   [
+    "Das Unternehmen lehnt alle Vorwürfe zurück.",
+    "Vorwürfe zurückweisen / bestreiten; lehnt … zurück mixes zurückweisen and ablehnen"
+   ]
+  ],
+  "severity": "improve",
+  "why": "„Vorwürfe ablehnen“ is not idiomatic; the why should not suggest it."
+ },
+ {
+  "id": "ENG_CHUNK_1781",
+  "field": "accept",
+  "before": [
+   "bedenken äußern",
+   "bedenken ([x]) (zu) äußern",
+   "bedenken ([x]) geäußert",
+   "äußert ([x]) bedenken",
+   "äußern ([x]) bedenken",
+   "bedenken ([x]) äußert",
+   "äußerte(n) ([x]) bedenken",
+   "bedenken ([x]) äußerte(n)",
+   "bedenken ([x]) anmelden",
+   "bedenken ([x]) anzumelden",
+   "bedenken ([x]) angemeldet",
+   "meldet ([x]) bedenken ([x]) an",
+   "melden ([x]) bedenken ([x]) an",
+   "bedenken ([x]) anmeldet",
+   "meldete(n) ([x]) bedenken ([x]) an",
+   "bedenken ([x]) anmeldete(n)"
+  ],
+  "after": [
+   "bedenken äußern",
+   "bedenken ([x]) (zu) äußern",
+   "bedenken ([x]) geäußert",
+   "äußert ([x]) bedenken",
+   "äußern ([x]) bedenken",
+   "bedenken ([x]) äußert",
+   "äußerte(n) ([x]) bedenken",
+   "bedenken ([x]) äußerte(n)",
+   "bedenken ([x]) anmelden",
+   "bedenken ([x]) anzumelden",
+   "bedenken ([x]) angemeldet",
+   "meldet ([x]) bedenken ([x]) an",
+   "melden ([x]) bedenken ([x]) an",
+   "bedenken ([x]) anmeldet",
+   "meldete(n) ([x]) bedenken ([x]) an",
+   "bedenken ([x]) anmeldete(n)",
+   "bedenken ([x]) vorgebracht",
+   "sorgen ([x]) geäußert"
+  ],
+  "severity": "improve",
+  "why": "Natural alternatives."
+ },
+ {
+  "id": "ENG_CHUNK_1784",
+  "field": "accept",
+  "before": [
+   "einen fehler einräumen",
+   "fehler ([x]) einräumen",
+   "fehler ([x]) einzuräumen",
+   "fehler ([x]) eingeräumt",
+   "räumt ([x]) fehler ([x]) ein",
+   "räumen ([x]) fehler ([x]) ein",
+   "fehler ([x]) einräumt",
+   "räumte(n) ([x]) fehler ([x]) ein",
+   "fehler ([x]) einräumte(n)",
+   "fehler ([x]) zugeben",
+   "fehler ([x]) zuzugeben",
+   "fehler ([x]) zugegeben",
+   "gibt ([x]) fehler ([x]) zu",
+   "geben ([x]) fehler ([x]) zu",
+   "fehler ([x]) zugibt",
+   "gab(en) ([x]) fehler ([x]) zu",
+   "fehler ([x]) zugab(en)"
+  ],
+  "after": [
+   "einen fehler einräumen",
+   "fehler ([x]) einräumen",
+   "fehler ([x]) einzuräumen",
+   "fehler ([x]) eingeräumt",
+   "räumt ([x]) fehler ([x]) ein",
+   "räumen ([x]) fehler ([x]) ein",
+   "fehler ([x]) einräumt",
+   "räumte(n) ([x]) fehler ([x]) ein",
+   "fehler ([x]) einräumte(n)",
+   "fehler ([x]) zugeben",
+   "fehler ([x]) zuzugeben",
+   "fehler ([x]) zugegeben",
+   "gibt ([x]) fehler ([x]) zu",
+   "geben ([x]) fehler ([x]) zu",
+   "fehler ([x]) zugibt",
+   "gab(en) ([x]) fehler ([x]) zu",
+   "fehler ([x]) zugab(en)",
+   "fehler ([x]) eingestanden",
+   "gesteht ([x]) fehler ([x]) ein",
+   "fehler ([x]) eingestehen"
+  ],
+  "severity": "improve",
+  "why": "einen Fehler eingestehen is common."
+ },
+ {
+  "id": "ENG_CHUNK_1785",
+  "field": "accept",
+  "before": [
+   "ein projekt vorantreiben",
+   "projekt ([x]) vorantreiben",
+   "projekt ([x]) voranzutreiben",
+   "projekt ([x]) vorangetrieben",
+   "treibt ([x]) projekt ([x]) voran",
+   "treiben ([x]) projekt ([x]) voran",
+   "projekt ([x]) vorantreibt"
+  ],
+  "after": [
+   "ein projekt vorantreiben",
+   "projekt ([x]) vorantreiben",
+   "projekt ([x]) voranzutreiben",
+   "projekt ([x]) vorangetrieben",
+   "treibt ([x]) projekt ([x]) voran",
+   "treiben ([x]) projekt ([x]) voran",
+   "projekt ([x]) vorantreibt",
+   "projekt ([x]) voranbringen",
+   "bringt ([x]) projekt ([x]) voran",
+   "projekt ([x]) voranzubringen"
+  ],
+  "severity": "improve",
+  "why": "voranbringen is a common alternative."
+ },
+ {
+  "id": "ENG_CHUNK_1804",
+  "field": "accept",
+  "before": [
+   "herzkrankheiten vorbeugen",
+   "herzkrankheiten vorzubeugen",
+   "herzerkrankungen vorzubeugen",
+   "herzerkrankungen vorbeugen",
+   "beugt ([x]) herzkrankheiten vor",
+   "herzkrankheiten ([x]) verhindern",
+   "herzkrankheiten zu verhindern"
+  ],
+  "after": [
+   "herzkrankheiten vorbeugen",
+   "herzkrankheiten vorzubeugen",
+   "herzerkrankungen vorzubeugen",
+   "herzerkrankungen vorbeugen",
+   "beugt ([x]) herzkrankheiten vor",
+   "herzkrankheiten ([x]) verhindern",
+   "herzkrankheiten zu verhindern",
+   "herzkrankheiten zu vermeiden"
+  ],
+  "severity": "improve",
+  "why": "Natural alternative."
+ },
+ {
+  "id": "ENG_CHUNK_1811",
+  "field": "accept",
+  "before": [
+   "die erderwärmung begrenzen",
+   "erderwärmung auf [x] (zu) begrenzen",
+   "erderwärmung auf [x] begrenzt",
+   "erwärmung auf [x] (zu) begrenzen",
+   "erderwärmung auf [x] (zu) limitieren"
+  ],
+  "after": [
+   "die erderwärmung begrenzen",
+   "erderwärmung auf [x] (zu) begrenzen",
+   "erderwärmung auf [x] begrenzt",
+   "erwärmung auf [x] (zu) begrenzen",
+   "erderwärmung auf [x] (zu) limitieren",
+   "klimaerwärmung auf [x] (zu) begrenzen"
+  ],
+  "severity": "improve",
+  "why": "Klimaerwärmung is as common as Erderwärmung."
+ },
+ {
+  "id": "ENG_CHUNK_1814",
+  "field": "accept",
+  "before": [
+   "vom aussterben bedroht"
+  ],
+  "after": [
+   "vom aussterben bedroht",
+   "droht ([x]) aussterben",
+   "drohen auszusterben"
+  ],
+  "severity": "improve",
+  "why": "„Vielen Arten droht das Aussterben“ is natural."
+ },
+ {
+  "id": "ENG_CHUNK_1819",
+  "field": "accept",
+  "before": [
+   "auf [x] aufmerksam machen",
+   "macht ([x]) aufmerksam",
+   "aufmerksam ([x]) machen",
+   "aufmerksamkeit auf [x] lenken",
+   "lenkt ([x]) aufmerksamkeit auf"
+  ],
+  "after": [
+   "auf [x] aufmerksam machen",
+   "macht ([x]) aufmerksam",
+   "aufmerksam ([x]) machen",
+   "aufmerksamkeit auf [x] lenken",
+   "lenkt ([x]) aufmerksamkeit auf",
+   "weist ([x]) auf [x] hin"
+  ],
+  "severity": "improve",
+  "why": "„weist auf den Mangel hin“ is natural."
+ },
+ {
+  "id": "ENG_CHUNK_1709",
+  "field": "natural_example",
+  "before": "Please sign when you receive the parcel.",
+  "after": "Please sign when you take delivery of the parcel.",
+  "severity": "improve",
+  "why": "Example should contain the headword phrase."
+ },
+ {
+  "id": "ENG_CHUNK_1709",
+  "field": "core_en",
+  "before": "receive the parcel",
+  "after": "take delivery of the parcel",
+  "severity": "improve",
+  "why": "Matches the new example."
+ },
+ {
+  "id": "ENG_CHUNK_1751",
+  "field": "natural_example",
+  "before": "At the end of the year, the company takes stock.",
+  "after": "After ten years in office, the mayor takes stock.",
+  "severity": "improve",
+  "why": "At year end a company \"takes stock\" literally (Inventur); use a figurative context."
+ },
+ {
+  "id": "ENG_CHUNK_1751",
+  "field": "ex",
+  "before": "Am Ende des Jahres zieht das Unternehmen Bilanz.",
+  "after": "Nach zehn Jahren im Amt zieht der Bürgermeister Bilanz.",
+  "severity": "improve",
+  "why": "Matches the new example."
+ }
+]

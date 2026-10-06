@@ -1,0 +1,682 @@
+[
+ {
+  "id": "nomen-verb-verbindungen.17",
+  "field": "answer",
+  "before": [
+   "Die Firma stellt den Forschern ihre Daten kostenlos zur Verfügung.",
+   "Die Firma stellt ihre Daten den Forschern kostenlos zur Verfügung."
+  ],
+  "after": [
+   "Die Firma stellt den Forschern ihre Daten kostenlos zur Verfügung.",
+   "Die Firma stellt ihre Daten den Forschern kostenlos zur Verfügung.",
+   "Die Firma stellt den Forschern kostenlos ihre Daten zur Verfügung."
+  ],
+  "severity": "improve",
+  "why": "Adverb before the object is equally natural and the task does not say keep the order."
+ },
+ {
+  "id": "nomen-verb-verbindungen.16",
+  "field": "near",
+  "before": [
+   [
+    "gemacht",
+    "calque: eine Einigung erzielen"
+   ],
+   [
+    "getroffen",
+    "eine Vereinbarung treffen, but eine Einigung erzielen"
+   ]
+  ],
+  "after": [
+   [
+    "gemacht",
+    "calque: eine Einigung erzielen"
+   ],
+   [
+    "geschlossen",
+    "einen Vertrag / Kompromiss schließen, but eine Einigung erzielen"
+   ]
+  ],
+  "severity": "improve",
+  "why": "\"eine Einigung treffen\" is common in news (esp. Austria) and borderline, so it is a weak near miss; geschlossen is clearly wrong."
+ },
+ {
+  "id": "ENG_CHUNK_1633",
+  "field": "accept",
+  "before": [
+   "einen beitrag ([x]) leisten",
+   "beitrag ([x]) (zu) leisten",
+   "beitrag ([x]) geleistet",
+   "leistet ([x]) beitrag",
+   "leisten ([x]) beitrag",
+   "beitrag ([x]) leistet"
+  ],
+  "after": [
+   "einen beitrag ([x]) leisten",
+   "beitrag ([x]) (zu) leisten",
+   "beitrag ([x]) geleistet",
+   "leistet ([x]) beitrag",
+   "leisten ([x]) beitrag",
+   "beitrag ([x]) leistet",
+   "beitragen",
+   "trägt ([x]) bei",
+   "tragen ([x]) bei",
+   "beigetragen"
+  ],
+  "severity": "error",
+  "why": "\"kann zum Klimaschutz beitragen\" is the most natural rendering and is rejected."
+ },
+ {
+  "id": "ENG_CHUNK_1634",
+  "field": "accept",
+  "before": [
+   "einfluss auf [x] nehmen",
+   "einfluss ([x]) (zu) nehmen",
+   "einfluss ([x]) genommen",
+   "nimmt ([x]) einfluss",
+   "nehmen ([x]) einfluss",
+   "einfluss ([x]) nimmt",
+   "einfluss ([x]) ausüben",
+   "einfluss ([x]) auszuüben",
+   "einfluss ([x]) ausgeübt",
+   "übt ([x]) einfluss ([x]) aus",
+   "üben ([x]) einfluss ([x]) aus",
+   "einfluss ([x]) ausübt"
+  ],
+  "after": [
+   "einfluss auf [x] nehmen",
+   "einfluss ([x]) (zu) nehmen",
+   "einfluss ([x]) genommen",
+   "nimmt ([x]) einfluss",
+   "nehmen ([x]) einfluss",
+   "einfluss ([x]) nimmt",
+   "einfluss ([x]) ausüben",
+   "einfluss ([x]) auszuüben",
+   "einfluss ([x]) ausgeübt",
+   "übt ([x]) einfluss ([x]) aus",
+   "üben ([x]) einfluss ([x]) aus",
+   "einfluss ([x]) ausübt",
+   "beeinflussen",
+   "beeinflusst"
+  ],
+  "severity": "error",
+  "why": "\"versuchen, das Gesetz zu beeinflussen\" is a natural rendering; one-verb alternatives are accepted elsewhere."
+ },
+ {
+  "id": "ENG_CHUNK_1640",
+  "field": "accept",
+  "before": [
+   "die verantwortung ([x]) tragen",
+   "verantwortung ([x]) (zu) tragen",
+   "verantwortung ([x]) getragen",
+   "trägt ([x]) verantwortung",
+   "tragen ([x]) verantwortung",
+   "verantwortung ([x]) trägt"
+  ],
+  "after": [
+   "die verantwortung ([x]) tragen",
+   "verantwortung ([x]) (zu) tragen",
+   "verantwortung ([x]) getragen",
+   "trägt ([x]) verantwortung",
+   "tragen ([x]) verantwortung",
+   "verantwortung ([x]) trägt",
+   "sind ([x]) verantwortlich",
+   "ist ([x]) verantwortlich"
+  ],
+  "severity": "improve",
+  "why": "\"Eltern sind für die Sicherheit … verantwortlich\" is a common rendering of bear responsibility."
+ },
+ {
+  "id": "ENG_CHUNK_1655",
+  "field": "accept",
+  "before": [
+   "von [x] gebrauch machen",
+   "gebrauch ([x]) (zu) machen",
+   "gebrauch ([x]) gemacht",
+   "macht ([x]) gebrauch",
+   "machen ([x]) gebrauch",
+   "gebrauch ([x]) macht",
+   "nutzen dieses recht",
+   "in anspruch ([x]) (zu) nehmen",
+   "nehmen ([x]) in anspruch"
+  ],
+  "after": [
+   "von [x] gebrauch machen",
+   "gebrauch ([x]) (zu) machen",
+   "gebrauch ([x]) gemacht",
+   "macht ([x]) gebrauch",
+   "machen ([x]) gebrauch",
+   "gebrauch ([x]) macht",
+   "nutzen ([x]) recht",
+   "recht ([x]) (zu) nutzen",
+   "in anspruch ([x]) (zu) nehmen",
+   "nehmen ([x]) in anspruch",
+   "nehmen ([x]) recht ([x]) wahr",
+   "recht ([x]) wahr(zu)nehmen",
+   "recht ([x]) wahrgenommen"
+  ],
+  "severity": "error",
+  "why": "\"nehmen dieses Recht wahr\" (ein Recht wahrnehmen) is the standard alternative and missing; nutzen pattern too narrow."
+ },
+ {
+  "id": "ENG_CHUNK_1656",
+  "field": "accept",
+  "before": [
+   "anspruch auf [x] haben",
+   "anspruch ([x]) (zu) haben",
+   "anspruch ([x]) gehabt",
+   "hat ([x]) anspruch",
+   "haben ([x]) anspruch",
+   "anspruch ([x]) hat",
+   "anspruch auf",
+   "ein recht auf",
+   "haben ([x]) recht auf"
+  ],
+  "after": [
+   "anspruch auf [x] haben",
+   "anspruch ([x]) (zu) haben",
+   "anspruch ([x]) gehabt",
+   "hat ([x]) anspruch",
+   "haben ([x]) anspruch",
+   "anspruch ([x]) hat",
+   "anspruch auf",
+   "ein recht auf",
+   "haben ([x]) recht auf",
+   "steht ([x]) zu",
+   "stehen ([x]) zu",
+   "zustehen"
+  ],
+  "severity": "error",
+  "why": "\"Den Beschäftigten stehen 30 Tage Urlaub zu\" is the standard way to say entitled to and is rejected."
+ },
+ {
+  "id": "ENG_CHUNK_1657",
+  "field": "accept",
+  "before": [
+   "forderungen stellen",
+   "forderung(en) ([x]) (zu) stellen",
+   "forderung(en) ([x]) gestellt",
+   "stellt ([x]) forderung(en)",
+   "stellen ([x]) forderung(en)",
+   "forderung(en) ([x]) stellt",
+   "stellte(n) ([x]) forderung(en)",
+   "forderung(en) ([x]) stellte(n)",
+   "forderung(en) ([x]) (zu) erheben",
+   "forderung(en) ([x]) erhoben",
+   "erhebt ([x]) forderung(en)",
+   "erheben ([x]) forderung(en)",
+   "forderung(en) ([x]) erhebt"
+  ],
+  "after": [
+   "forderungen stellen",
+   "forderung(en) ([x]) (zu) stellen",
+   "forderung(en) ([x]) gestellt",
+   "stellt ([x]) forderung(en)",
+   "stellen ([x]) forderung(en)",
+   "forderung(en) ([x]) stellt",
+   "stellte(n) ([x]) forderung(en)",
+   "forderung(en) ([x]) stellte(n)",
+   "forderung(en) ([x]) (zu) erheben",
+   "forderung(en) ([x]) erhoben",
+   "erhebt ([x]) forderung(en)",
+   "erheben ([x]) forderung(en)",
+   "forderung(en) ([x]) erhebt",
+   "forderung(en) ([x]) aufgestellt",
+   "stellt ([x]) forderung(en) ([x]) auf",
+   "forderung(en) ([x]) aufzustellen"
+  ],
+  "severity": "improve",
+  "why": "\"Forderungen aufstellen\" is a common variant (gestellt does not match aufgestellt)."
+ },
+ {
+  "id": "ENG_CHUNK_1662",
+  "field": "accept",
+  "before": [
+   "anforderungen an [x] stellen",
+   "anforderungen ([x]) (zu) stellen",
+   "anforderungen ([x]) gestellt",
+   "stellt ([x]) anforderungen",
+   "stellen ([x]) anforderungen",
+   "anforderungen ([x]) stellt"
+  ],
+  "after": [
+   "anforderungen an [x] stellen",
+   "anforderungen ([x]) (zu) stellen",
+   "anforderungen ([x]) gestellt",
+   "stellt ([x]) anforderungen",
+   "stellen ([x]) anforderungen",
+   "anforderungen ([x]) stellt",
+   "ansprüche an [x] stellen",
+   "stellt ([x]) ansprüche",
+   "ansprüche ([x]) stellt"
+  ],
+  "severity": "improve",
+  "why": "\"hohe Ansprüche an die Hardware stellen\" is equally common."
+ },
+ {
+  "id": "ENG_CHUNK_1663",
+  "field": "accept",
+  "before": [
+   "auf widerstand stoßen",
+   "auf ([x]) widerstand ([x]) (zu) stoßen",
+   "auf ([x]) widerstand ([x]) gestoßen",
+   "stößt ([x]) auf ([x]) widerstand",
+   "stoßen ([x]) auf ([x]) widerstand",
+   "auf ([x]) widerstand ([x]) stößt",
+   "stieß(en) ([x]) auf ([x]) widerstand",
+   "auf ([x]) widerstand ([x]) stieß(en)"
+  ],
+  "after": [
+   "auf widerstand stoßen",
+   "auf ([x]) widerstand ([x]) (zu) stoßen",
+   "auf ([x]) widerstand ([x]) gestoßen",
+   "stößt ([x]) auf ([x]) widerstand",
+   "stoßen ([x]) auf ([x]) widerstand",
+   "auf ([x]) widerstand ([x]) stößt",
+   "stieß(en) ([x]) auf ([x]) widerstand",
+   "auf ([x]) widerstand ([x]) stieß(en)",
+   "trifft ([x]) auf ([x]) widerstand",
+   "traf(en) ([x]) auf ([x]) widerstand",
+   "auf ([x]) widerstand ([x]) getroffen"
+  ],
+  "severity": "improve",
+  "why": "\"auf Widerstand treffen\" is also standard news German."
+ },
+ {
+  "id": "ENG_CHUNK_1653",
+  "field": "accept",
+  "before": [
+   "in erfüllung gehen",
+   "in erfüllung ([x]) (zu) gehen",
+   "in erfüllung ([x]) gegangen",
+   "geht ([x]) in erfüllung",
+   "gehen ([x]) in erfüllung",
+   "in erfüllung ([x]) geht",
+   "ging(en) ([x]) in erfüllung",
+   "in erfüllung ([x]) ging(en)",
+   "wurde ([x]) wahr",
+   "wahr geworden"
+  ],
+  "after": [
+   "in erfüllung gehen",
+   "in erfüllung ([x]) (zu) gehen",
+   "in erfüllung ([x]) gegangen",
+   "geht ([x]) in erfüllung",
+   "gehen ([x]) in erfüllung",
+   "in erfüllung ([x]) geht",
+   "ging(en) ([x]) in erfüllung",
+   "in erfüllung ([x]) ging(en)",
+   "wurde ([x]) wahr",
+   "wahr geworden",
+   "erfüllte sich",
+   "hat sich ([x]) erfüllt"
+  ],
+  "severity": "improve",
+  "why": "\"erfüllte sich ein Traum\" is a natural rendering."
+ },
+ {
+  "id": "ENG_CHUNK_1694",
+  "field": "accept",
+  "before": [
+   "die weichen für [x] stellen",
+   "weichen ([x]) (zu) stellen",
+   "weichen ([x]) gestellt",
+   "stellt ([x]) weichen",
+   "stellen ([x]) weichen",
+   "weichen ([x]) stellt",
+   "kurs auf [x] (zu) setzen",
+   "setzt ([x]) kurs auf"
+  ],
+  "after": [
+   "die weichen für [x] stellen",
+   "weichen ([x]) (zu) stellen",
+   "weichen ([x]) gestellt",
+   "stellt ([x]) weichen",
+   "stellen ([x]) weichen",
+   "weichen ([x]) stellt",
+   "kurs auf [x] (zu) setzen",
+   "setzt ([x]) kurs auf",
+   "nimmt ([x]) kurs auf",
+   "kurs auf [x] (zu) nehmen"
+  ],
+  "severity": "improve",
+  "why": "\"Kurs nehmen auf\" is the more established form beside \"Kurs setzen auf\"."
+ },
+ {
+  "id": "ENG_CHUNK_1717",
+  "field": "near",
+  "before": [
+   [
+    "Die Entscheidung machte europaweit Aufsehen.",
+    "Aufsehen erregen / für Aufsehen sorgen"
+   ]
+  ],
+  "after": [
+   [
+    "Die Entscheidung erregte europaweit Ansehen.",
+    "Ansehen = reputation; a stir is Aufsehen erregen"
+   ]
+  ],
+  "severity": "improve",
+  "why": "\"Aufsehen machen\" is attested (Duden-style examples), so it is not a safe near miss."
+ },
+ {
+  "id": "ENG_CHUNK_1739",
+  "field": "accept",
+  "before": [
+   "vorrang vor [x] haben",
+   "vorrang ([x]) (zu) haben",
+   "vorrang ([x]) gehabt",
+   "hat ([x]) vorrang",
+   "haben ([x]) vorrang",
+   "vorrang ([x]) hat",
+   "geht vor"
+  ],
+  "after": [
+   "vorrang vor [x] haben",
+   "vorrang ([x]) (zu) haben",
+   "vorrang ([x]) gehabt",
+   "hat ([x]) vorrang",
+   "haben ([x]) vorrang",
+   "vorrang ([x]) hat",
+   "geht vor",
+   "hat ([x]) priorität",
+   "haben ([x]) priorität"
+  ],
+  "severity": "error",
+  "why": "\"Sicherheit hat Priorität (vor …)\" is correct, common German and rejected."
+ },
+ {
+  "id": "ENG_CHUNK_1751",
+  "field": "near",
+  "before": [
+   [
+    "Am Ende des Jahres macht das Unternehmen Bilanz.",
+    "the fixed form is Bilanz ziehen"
+   ]
+  ],
+  "after": [
+   [
+    "Nach zehn Jahren im Amt macht der Bürgermeister Bilanz.",
+    "the fixed form is Bilanz ziehen"
+   ]
+  ],
+  "severity": "improve",
+  "why": "Near miss should be the learner error on this example sentence."
+ },
+ {
+  "id": "ENG_CHUNK_1753",
+  "field": "accept",
+  "before": [
+   "einen gewinn erzielen",
+   "gewinn(e) ([x]) (zu) erzielen",
+   "gewinn(e) ([x]) erzielt",
+   "erzielt ([x]) gewinn(e)",
+   "erzielen ([x]) gewinn(e)",
+   "erzielte(n) ([x]) gewinn(e)",
+   "gewinn(e) ([x]) erzielte(n)",
+   "gewinn(e) ([x]) (zu) machen",
+   "gewinn(e) ([x]) gemacht",
+   "macht ([x]) gewinn(e)",
+   "machen ([x]) gewinn(e)",
+   "gewinn(e) ([x]) macht",
+   "machte(n) ([x]) gewinn(e)",
+   "gewinn(e) ([x]) machte(n)",
+   "schrieb ([x]) schwarze zahlen",
+   "schwarze zahlen ([x]) geschrieben",
+   "schreibt ([x]) schwarze zahlen"
+  ],
+  "after": [
+   "einen gewinn erzielen",
+   "gewinn(e) ([x]) (zu) erzielen",
+   "gewinn(e) ([x]) erzielt",
+   "erzielt ([x]) gewinn(e)",
+   "erzielen ([x]) gewinn(e)",
+   "erzielte(n) ([x]) gewinn(e)",
+   "gewinn(e) ([x]) erzielte(n)",
+   "gewinn(e) ([x]) (zu) machen",
+   "gewinn(e) ([x]) gemacht",
+   "macht ([x]) gewinn(e)",
+   "machen ([x]) gewinn(e)",
+   "gewinn(e) ([x]) macht",
+   "machte(n) ([x]) gewinn(e)",
+   "gewinn(e) ([x]) machte(n)",
+   "schrieb ([x]) schwarze zahlen",
+   "schwarze zahlen ([x]) geschrieben",
+   "schreibt ([x]) schwarze zahlen",
+   "gewinn(e) ([x]) erwirtschaftet",
+   "erwirtschaftet ([x]) gewinn(e)"
+  ],
+  "severity": "improve",
+  "why": "\"Gewinn erwirtschaften\" is standard business German."
+ },
+ {
+  "id": "ENG_CHUNK_1754",
+  "field": "accept",
+  "before": [
+   "rote zahlen schreiben",
+   "rote(n) zahlen ([x]) (zu) schreiben",
+   "rote(n) zahlen ([x]) geschrieben",
+   "schreibt ([x]) rote(n) zahlen",
+   "schreiben ([x]) rote(n) zahlen",
+   "rote(n) zahlen ([x]) schreibt",
+   "in den roten zahlen",
+   "im minus",
+   "macht ([x]) verluste"
+  ],
+  "after": [
+   "rote zahlen schreiben",
+   "rote zahlen ([x]) (zu) schreiben",
+   "rote zahlen ([x]) geschrieben",
+   "schreibt ([x]) rote zahlen",
+   "schreiben ([x]) rote zahlen",
+   "rote zahlen ([x]) schreibt",
+   "in den roten zahlen",
+   "im minus",
+   "macht ([x]) verluste",
+   "schrieb(en) ([x]) rote zahlen"
+  ],
+  "severity": "error",
+  "why": "\"(n)\" accepts the wrong ending \"schreibt roten Zahlen\"; the idiom has no article, so only \"rote\"."
+ },
+ {
+  "id": "ENG_CHUNK_1763",
+  "field": "accept",
+  "before": [
+   "einen termin wahrnehmen",
+   "termin ([x]) wahrnehmen",
+   "termin ([x]) wahrzunehmen",
+   "termin ([x]) wahrgenommen",
+   "nimmt ([x]) termin ([x]) wahr",
+   "nehmen ([x]) termin ([x]) wahr",
+   "termin ([x]) wahrnimmt",
+   "zum termin ([x]) kommen",
+   "zu dem termin ([x]) kommen",
+   "termin ([x]) einhalten"
+  ],
+  "after": [
+   "einen termin wahrnehmen",
+   "termin ([x]) wahrnehmen",
+   "termin ([x]) wahrzunehmen",
+   "termin ([x]) wahrgenommen",
+   "nimmt ([x]) termin ([x]) wahr",
+   "nehmen ([x]) termin ([x]) wahr",
+   "termin ([x]) wahrnimmt",
+   "zum termin ([x]) kommen",
+   "zu dem termin ([x]) kommen",
+   "termin ([x]) einhalten",
+   "zum termin ([x]) erscheinen",
+   "zu dem termin ([x]) erscheinen"
+  ],
+  "severity": "error",
+  "why": "\"nicht zum Termin erscheinen können\" is the usual formal rendering and is rejected."
+ },
+ {
+  "id": "ENG_CHUNK_1768",
+  "field": "accept",
+  "before": [
+   "unter fachkräftemangel leiden",
+   "unter (dem) fachkräftemangel",
+   "unter einem mangel an fachkräften",
+   "unter dem mangel an fachkräften",
+   "fehlen ([x]) fachkräfte",
+   "unter einem fachkräftemangel",
+   "leidet ([x]) unter ([x]) mangel an fachkräften"
+  ],
+  "after": [
+   "unter fachkräftemangel leiden",
+   "unter (dem) fachkräftemangel",
+   "unter einem mangel an fachkräften",
+   "unter dem mangel an fachkräften",
+   "fehlen ([x]) fachkräfte",
+   "unter einem fachkräftemangel",
+   "leidet ([x]) unter ([x]) mangel an fachkräften",
+   "mit ([x]) fachkräftemangel zu kämpfen"
+  ],
+  "severity": "improve",
+  "why": "\"hat mit Fachkräftemangel zu kämpfen\" is a very common rendering."
+ },
+ {
+  "id": "ENG_CHUNK_1812",
+  "field": "accept",
+  "before": [
+   "erneuerbare energien ausbauen",
+   "erneuerbare(n) energien ([x]) ausbauen",
+   "erneuerbare(n) energien ([x]) auszubauen",
+   "erneuerbare(n) energien ([x]) ausgebaut",
+   "baut ([x]) erneuerbare(n) energien ([x]) aus",
+   "bauen ([x]) erneuerbare(n) energien ([x]) aus",
+   "erneuerbare(n) energien ([x]) ausbaut"
+  ],
+  "after": [
+   "erneuerbare energien ausbauen",
+   "erneuerbare energien ([x]) ausbauen",
+   "die erneuerbaren energien ([x]) ausbauen",
+   "erneuerbare energien ([x]) auszubauen",
+   "die erneuerbaren energien ([x]) auszubauen",
+   "erneuerbare energien ([x]) ausgebaut",
+   "die erneuerbaren energien ([x]) ausgebaut",
+   "baut ([x]) erneuerbare energien ([x]) aus",
+   "baut ([x]) die erneuerbaren energien ([x]) aus",
+   "bauen ([x]) erneuerbare energien ([x]) aus",
+   "bauen ([x]) die erneuerbaren energien ([x]) aus",
+   "erneuerbare(n) energien ([x]) ausbaut"
+  ],
+  "severity": "improve",
+  "why": "\"(n)\" accepts \"will erneuerbaren Energien ausbauen\" (no article, wrong ending); tie -n to the article."
+ },
+ {
+  "id": "ENG_CHUNK_1816",
+  "field": "accept",
+  "before": [
+   "bezahlbare(n) wohnraum",
+   "bezahlbare wohnungen",
+   "günstige(n) wohnraum",
+   "erschwingliche(n) wohnraum",
+   "bezahlbares wohnen"
+  ],
+  "after": [
+   "bezahlbaren wohnraum",
+   "bezahlbarer wohnraum",
+   "bezahlbare wohnungen",
+   "günstigen wohnraum",
+   "günstiger wohnraum",
+   "erschwinglichen wohnraum",
+   "erschwinglicher wohnraum",
+   "bezahlbares wohnen",
+   "günstige wohnungen"
+  ],
+  "severity": "error",
+  "why": "\"(n)\" accepts \"brauchen bezahlbare Wohnraum\" (wrong ending); also add günstige Wohnungen."
+ },
+ {
+  "id": "ENG_CHUNK_1817",
+  "field": "accept",
+  "before": [
+   "die schere zwischen arm und reich geht ([x]) auseinander",
+   "schere zwischen arm und reich",
+   "schere zwischen reich und arm",
+   "kluft zwischen arm und reich",
+   "kluft zwischen reich und arm"
+  ],
+  "after": [
+   "die schere zwischen arm und reich geht ([x]) auseinander",
+   "schere zwischen arm und reich",
+   "schere zwischen reich und arm",
+   "kluft zwischen arm und reich",
+   "kluft zwischen reich und arm",
+   "unterschied zwischen arm und reich",
+   "unterschied zwischen reich und arm"
+  ],
+  "severity": "improve",
+  "why": "\"Der Unterschied zwischen Arm und Reich wird größer\" is a plain, correct rendering."
+ },
+ {
+  "id": "ENG_CHUNK_1821",
+  "field": "accept",
+  "before": [
+   "heftige kritik ernten",
+   "kritik ([x]) (zu) ernten",
+   "kritik ([x]) geerntet",
+   "erntet ([x]) kritik",
+   "ernten ([x]) kritik",
+   "kritik ([x]) erntet",
+   "erntete(n) ([x]) kritik",
+   "kritik ([x]) erntete(n)",
+   "kritik ([x]) ausgelöst",
+   "löste ([x]) kritik aus",
+   "stieß ([x]) auf ([x]) kritik",
+   "zog ([x]) kritik auf sich"
+  ],
+  "after": [
+   "heftige kritik ernten",
+   "kritik ([x]) (zu) ernten",
+   "kritik ([x]) geerntet",
+   "erntet ([x]) kritik",
+   "ernten ([x]) kritik",
+   "kritik ([x]) erntet",
+   "erntete(n) ([x]) kritik",
+   "kritik ([x]) erntete(n)",
+   "kritik ([x]) ausgelöst",
+   "löste ([x]) kritik aus",
+   "stieß ([x]) auf ([x]) kritik",
+   "zog ([x]) kritik auf sich",
+   "wurde ([x]) kritisiert"
+  ],
+  "severity": "improve",
+  "why": "Consistent with ENG_CHUNK_1648; \"wurde heftig kritisiert\" is a natural rendering."
+ },
+ {
+  "id": "ENG_CHUNK_1826",
+  "field": "accept",
+  "before": [
+   "eine gebühr erheben",
+   "gebühr(en) ([x]) (zu) erheben",
+   "gebühr(en) ([x]) erhoben",
+   "erhebt ([x]) gebühr(en)",
+   "erheben ([x]) gebühr(en)",
+   "gebühr(en) ([x]) erhebt",
+   "gebühr(en) ([x]) (zu) verlangen",
+   "gebühr(en) ([x]) verlangt",
+   "verlangt ([x]) gebühr(en)",
+   "verlangen ([x]) gebühr(en)"
+  ],
+  "after": [
+   "eine gebühr erheben",
+   "gebühr(en) ([x]) (zu) erheben",
+   "gebühr(en) ([x]) erhoben",
+   "erhebt ([x]) gebühr(en)",
+   "erheben ([x]) gebühr(en)",
+   "gebühr(en) ([x]) erhebt",
+   "gebühr(en) ([x]) (zu) verlangen",
+   "gebühr(en) ([x]) verlangt",
+   "verlangt ([x]) gebühr(en)",
+   "verlangen ([x]) gebühr(en)",
+   "berechnet ([x]) gebühr(en)",
+   "gebühr(en) ([x]) berechnet",
+   "nimmt ([x]) gebühr(en)"
+  ],
+  "severity": "error",
+  "why": "\"berechnet für Führungen eine Gebühr\" is a common correct rendering and is rejected."
+ }
+]
