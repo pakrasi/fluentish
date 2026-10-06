@@ -169,11 +169,52 @@
  * @property {LemmaFn} [lemma]                     a token's dictionary form in its sentence (round 4, optional; de:
  *                                                 separable particles joined across the clause, participles,
  *                                                 compounds). Readers check for it and fall back to the token's key
+ * @property {(words: WordEntry[]) => WordIndex} [index]   the word list indexed for lemma() and lookup() (de: forms,
+ *                                                 plurals and verb forms; articles stripped)
+ * @property {LookupFn} [lookup]                   one word against the word list, with its entry (Scripts' lemma:
+ *                                                 the word sheet, suggestions and card ids)
  */
 
 /**
- * A token's lemma candidates in context, best first ([] when unknown). index: the token's place in sentence.
- * @typedef {(token: Token, sentence: Token[], index: number) => string[]} LemmaFn
+ * A token of running text (domain/text/tokens.js): words and the punctuation between them.
+ * @typedef {object} TextToken
+ * @property {string} t      the text as written (with its punctuation for non-word tokens)
+ * @property {boolean} w     a word (letters or digits)
+ * @property {number} k      word index in the sentence (-1 for punctuation)
+ * @property {boolean} [num] a number
+ * @property {boolean} [sp]  a space comes before it
+ */
+
+/**
+ * One entry of a word list (content igloo.words.<lang>).
+ * @typedef {object} WordEntry
+ * @property {string} id @property {string} w @property {string} [art] @property {string | null} [pl] @property {string} pos
+ * @property {string[]} [en] @property {string} level @property {string} [forms] @property {string[]} [alt] @property {number} [zipf]
+ */
+/**
+ * A word list indexed by every written form it lists (lower case).
+ * @typedef {{forms: Map<string, WordEntry[]>, lemmas: Map<string, WordEntry[]>, words: WordEntry[]}} WordIndex
+ */
+/**
+ * A word's lemma against the word list.
+ * @typedef {object} LemmaInfo
+ * @property {string} lemma           dictionary form ('Schnittstelle', 'anstoßen')
+ * @property {WordEntry | null} entry the word-list entry when the lemma is listed
+ * @property {'list' | 'form' | 'rule' | 'prefix' | 'compound' | 'guess'} how
+ * @property {WordEntry | null} [part]  for a compound: its listed last part
+ * @property {boolean} [guess]       a local guess to confirm before a card is made (unknown word, an adjective ending
+ *                                   stripped, or a listed word that is also a verb form)
+ */
+/**
+ * One word against the word list. start: the word starts its sentence (its capital says nothing); prev: the word
+ * before it, lower case.
+ * @typedef {(surface: string, idx: WordIndex, o?: {start?: boolean, prev?: string}) => LemmaInfo} LookupFn
+ */
+
+/**
+ * A token's lemma candidates in context, best first ([] when unknown). index: the token's place in sentence. idx:
+ * the word list (morphology.index); without it only the rules that need no list apply.
+ * @typedef {(token: TextToken, sentence: TextToken[], index: number, idx?: WordIndex) => string[]} LemmaFn
  */
 
 /**
@@ -182,9 +223,13 @@
  * @property {ReadonlySet<string>} stop              function words a reader never offers to save (folded keys)
  * @property {RegExp | null} cognate                 a word that is the same in English (shown, not suggested)
  * @property {Record<string, string>} spelling       older spellings → modern (de: daß → dass), for public-domain texts
- * @property {{id: string, concept: string | null, test: (sentence: Token[]) => boolean}[]} constructions
+ * @property {{id: string, concept: string | null, test: (sentence: TextToken[]) => boolean}[]} constructions
  *                                                   constructions the level estimate looks for (de: Konjunktiv I …)
- * @property {(token: Token, sentence: Token[], index: number) => boolean} [foreign]   a word from another language
+ * @property {(token: TextToken, sentence: TextToken[], index: number) => boolean} [foreign]   a word from another
+ *                                                   language (de: English letter patterns and English function words)
+ * @property {ReadonlySet<string>} [foreignWords]    lower-case function words of that language that are not words of
+ *                                                   this one: a capitalised unknown word beside one is part of a name
+ * @property {ReadonlySet<string>} [abbreviations]   lower-case abbreviations a full stop does not end a sentence after
  */
 
 /**

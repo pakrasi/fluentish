@@ -8,6 +8,8 @@ import * as S from './syntax.js';
 import * as D from './detect.js';
 import * as M from './morph.js';
 import * as forms from './forms.js';
+import * as LM from './lemma.js';
+import * as R from './reading.js';
 /** @typedef {import('../types.js').LanguagePack} LanguagePack */
 
 /** @type {LanguagePack} */
@@ -54,7 +56,13 @@ const de = {
       questionStarts: S.QUESTION, determinerLike: S.DETLIKE, openers: S.OPENERS, polite: S.POLITE, interjections: S.INTERJ,
       contractions: S.CONTRACTIONS, contrast: 'aber',
     },
-    morphology: { inseparable: M.INSEPARABLE, prefixes: M.PREFIX_SET, prepCases: M.PREP_CASES, notHeads: M.NOT_HEADS, notIn: M.NOT_IN },
+    morphology: { inseparable: M.INSEPARABLE, prefixes: M.PREFIX_SET, prepCases: M.PREP_CASES, notHeads: M.NOT_HEADS, notIn: M.NOT_IN,
+      lemma: LM.lemma, index: LM.buildIndex, lookup: LM.lemmaOf },
+  },
+
+  reading: {
+    stop: R.STOP, cognate: R.COGNATE, spelling: R.SPELLING, constructions: R.CONSTRUCTIONS, foreign: R.foreign, foreignWords: R.FOREIGN_WORDS,
+    abbreviations: R.ABBREVIATIONS,
   },
 
   exams: ['goethe-b1'],

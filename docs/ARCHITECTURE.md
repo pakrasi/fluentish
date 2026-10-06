@@ -28,7 +28,8 @@ src/
   services/           platform services behind interfaces (§2.2): speech, voice, audio, recorder, share, haptics; claude, sw
   data/               store, adapters/{idb,memory}, session, settings, migrate, transfer, content, ids
   domain/             pure, tested in node: fsrs, match, detect, speech, timer, readiness, b1ready, days, today
-                      (match, detect, punct and forms are language-neutral engines over a language pack)
+                      (match, detect, punct and forms are language-neutral engines over a language pack);
+                      text/ is the text layer Scripts, Reading and Conversation share (§2.3)
   features/           registry, contract, day; today/, profile/, welcome/, exam/, lookup/, explore/ (Look up › Map; palace/ is its 3D view, loaded on demand);
                       Practice as sibling features: practice/ (hub, exam words), practice-round/, practice-write/,
                       practice-speak/, practice-script/, practice-clusters/, build/ (Word building); shared/ is the
@@ -108,6 +109,19 @@ detectors (avoir with an être verb, ne … pas order, agreement after elle, eli
 every French sentence of the content (`tests/unit/lang-fr.test.mjs`); `grading.sentenceStart` lets a capital follow
 « ». `tests/corpus/grading-corpus.fr.mjs` is the French corpus (0 wrong answers graded right). No engine changed
 behaviour for German: the golden vectors and the German corpus are unchanged.
+
+**The text layer** (round 4, L2a): `domain/text/tokens.js` (sentences and tokens), `suggest.js` (which words to
+underline, names and foreign words, card ids) and `estimate.js` (CEFR ranks, personal coverage and its band: easy from
+98 %, study from 95 %, stretch from 90 %, else hard) are language-neutral and take a pack per call. The pack supplies
+`grammar.morphology.index` (the word list indexed), `lookup` (one word against the list; Scripts' lemma),
+`lemma(token, sentence, i, idx)` (a word in its sentence: German joins a separable particle at the end of the clause
+to its verb, drops the zu of a zu-infinitive and reads Konjunktiv II and irregular adjective stems), and `reading`
+(stop words, the cognate pattern, older spellings, the constructions the level estimate looks for, the foreign-word
+checks and the abbreviations a full stop does not end a sentence after). German's are `src/lang/de/lemma.js` and
+`reading.js`, moved from `practice-script`; Scripts bind the German pack in `features/practice-script/lemma.js` and
+`suggest.js` and in `domain/script/parse.js`. The move changed no Script result (unit tests, parse fixtures and
+`script.spec` unchanged). `tests/fixtures/lemma.de.json` is the lemma regression corpus (separable verbs at the clause
+end, Funktionsverbgefüge, compounds, Konjunktiv, adjective endings), reviewed in a German pass.
 
 **A course in another language** (`features/shared/course.js`): its review round lives in deck `<lang>:core` and
 kv `<lang>.session` (German keeps `b1` and `b1.session`); its pool is the reviewed course file `course.<lang>`

@@ -13,6 +13,8 @@
                        **ROLLUP** (a new section), *(Folien 1–2)* (a section note) */
 
 import { SECTION_MAX, SECTION_SPLIT_AT, LONG_SENTENCE } from './config.js';
+import * as T from '../text/tokens.js';
+import de from '../../lang/de/index.js';
 
 const DE_STOP = new Set('der die das und ist nicht ich ein eine zu mit auf für von den dem sich es wir sie auch aber wie wenn dass oder noch so im ins zum zur wird werden hat haben sind war man nur schon sehr kann können mehr dann denn weil also hier da was wer bei aus nach über unter einen einem einer auch ja nein euch ihr uns mir mich dir dich doch immer gibt heute'.split(' '));
 const EN_STOP = new Set('the and is to of a in that it for you with on are this was be have i we they not but at what so an as by from or my your our their can will would there here about which when just like do does did has had been were how why who me us them it\'s i\'m don\'t we\'re let\'s into than then very also'.split(' '));
@@ -76,64 +78,11 @@ function alternating(lines) {
 /* Sentences and tokens                                                 */
 /* ------------------------------------------------------------------ */
 
-const ABBR = new Set(['z', 'b', 'd', 'h', 'u', 'a', 'bzw', 'ca', 'dr', 'prof', 'nr', 'usw', 'etc', 'vgl', 'evtl', 'ggf', 'inkl', 'bspw', 'mio', 'mrd', 'str', 'tel', 'hr', 'fr', 'st', 'e', 'v', 'chr', 'jh', 'mr', 'mrs', 'ms', 'vs', 'max', 'min']);
-
-/**
- * German sentences. Splits after . ! ? … when the next word starts a sentence; never after an abbreviation
- * ("z. B.", "Dr.") or a number ("am 3. Oktober").
- * @param {string} text @returns {string[]}
- */
-export function splitSentences(text) {
-  const s = String(text || '').replace(/\s+/g, ' ').trim();
-  if (!s) return [];
-  /** @type {string[]} */ const out = [];
-  let start = 0;
-  const re = /([.!?…]+)(["“”»«'’)]*)\s+(?=[„"“«»'(]?[\p{Lu}\d])/gu;
-  let m;
-  while ((m = re.exec(s))) {
-    const end = m.index + m[1].length + m[2].length;
-    const before = s.slice(start, m.index);
-    const last = (before.match(/([\p{L}\d]+)$/u) || [])[1] || '';
-    if (m[1] === '.' && (ABBR.has(last.toLowerCase()) || /^\d+$/.test(last) || /^\p{L}$/u.test(last))) continue;
-    out.push(s.slice(start, end).trim());
-    start = end;
-  }
-  const tail = s.slice(start).trim();
-  if (tail) out.push(tail);
-  return out;
-}
-
-/**
- * @typedef {object} Token
- * @property {string} t      the text as written (with its punctuation for non-word tokens)
- * @property {boolean} w     a word (letters or digits)
- * @property {number} k      word index in the sentence (-1 for punctuation)
- * @property {boolean} [num] a number
- * @property {boolean} [sp]  a space comes before it
- */
-
-/**
- * Tokens of one sentence: words (hyphenated compounds are one word), and punctuation and quotes as their own tokens.
- * @param {string} sentence @returns {Token[]}
- */
-export function tokenize(sentence) {
-  /** @type {Token[]} */ const out = [];
-  let k = 0;
-  for (const chunk of String(sentence || '').split(/(\s+)/)) {
-    if (!chunk || /^\s+$/.test(chunk)) continue;
-    const m = /^([^\p{L}\p{N}]*)(.*?)([^\p{L}\p{N}]*)$/u.exec(chunk) || ['', '', chunk, ''];
-    const [, lead, core, trail] = m;
-    let first = true;
-    const push = (/** @type {Token} */ tok) => { if (first) { tok.sp = out.length > 0; first = false; } out.push(tok); };
-    if (lead) push({ t: lead, w: false, k: -1 });
-    if (core) push({ t: core, w: true, k: k++, num: /^[\d.,:]+$/.test(core) });
-    if (trail) push({ t: trail, w: false, k: -1 });
-  }
-  return out;
-}
-
-/** Words in a text. @param {string} s */
-export const wordCount = s => tokenize(s).filter(x => x.w).length;
+// sentences and tokens: the shared text layer (domain/text/tokens.js), with the German pack's abbreviations
+/** @typedef {import('../text/tokens.js').Token} Token */
+/** @param {string} text @returns {string[]} */
+export const splitSentences = text => T.splitSentences(text, de);
+export const { tokenize, wordCount } = T;
 
 /** A sentence too long to say comfortably. @param {string} s */
 export const isLong = s => wordCount(s) > LONG_SENTENCE;
