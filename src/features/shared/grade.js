@@ -68,9 +68,10 @@ export const isSituation = it => it.kind === 'topic' || it.kind === 'reply';
  * @param {any} item
  * @param {string} input
  * @param {any} [move]    for reply items: the move the learner picked
- * @param {{nouns?: Record<string, string>, traps?: Map<string, any>, lexicon?: Set<string>, variants?: Map<string, string[]>, verbs?: Set<string> | null, pool?: any[]}} [data]
+ * @param {{nouns?: Record<string, string>, traps?: Map<string, any>, lexicon?: Set<string>, variants?: Map<string, string[]>, verbs?: Set<string> | null, pool?: any[], conj?: any}} [data]
  *   lexicon: folded German word forms (pool.js buildLexicon); variants: item id → whole answers Claude confirmed right;
- *   verbs: finite verb forms of the word list (detect.js verbForms), for the word-order detectors
+ *   verbs: finite verb forms of the word list (detect.js verbForms), for the word-order detectors; conj: the verb forms
+ *   index (pool.js verbIndex): misbuilt forms are no typos, and the model's verb keeps the form its sentence needs
  * @returns {Grade}
  */
 export function gradeAnswer(item, input, move = null, data = {}) {
@@ -80,7 +81,7 @@ export function gradeAnswer(item, input, move = null, data = {}) {
   if (!ref) { ref = caseRef(it, data.nouns || {}); refCache.set(it, ref); }
   /** @type {any} */
   const o = { anywhere: !!it.anywhere, slotMax: 10, endings: true, umlaut: true, strict: it.strict || [], caseRef: ref, strictCase: !!it.strictCase,
-    lexicon: data.lexicon || null, never: neverWords(it, accepted) };
+    lexicon: data.lexicon || null, never: neverWords(it, accepted), conj: data.conj || null };
   if (it.loose || it.gap) {
     o.loose = Match.gapLoose(it.prompt);
     // the gap word itself is never a carried-over word, even when the sentence uses it elsewhere too
@@ -90,7 +91,13 @@ export function gradeAnswer(item, input, move = null, data = {}) {
   // (Vielen Dank für ihre E-Mail: ihre is not sentence-initial there)
   const alone = it.gap && wordsIn(input) && wordsIn(input) <= Math.max(...(it.accept || ['']).map(wordsIn)) && Match.gapFill(it.prompt, input.trim());
   const r = Match.check(alone ? alone.text : input, accepted, o);
-  const det = Detect.run(input, it, r, { verbs: data.verbs || null });
+  // a polite form of the model typed in lower case outside the graded phrase (da kann ich ihnen nicht helfen): wrong
+  // too, as inside it (strict)
+  if (r.ok && it.strict && it.strict.length) {
+    const pm = politeMiss(r.input, it.sentence || it.model, it.strict);
+    if (pm.length) { r.focusMiss = [...(r.focusMiss || []), ...pm]; r.ok = false; r.exact = false; }
+  }
+  const det = Detect.run(input, it, r, { verbs: data.verbs || null, conj: data.conj || null });
   /** @type {Rest | null} */ let rest = null;
   if (r.ok && !det) {
     if (isPhraseCard(it)) {
@@ -255,6 +262,29 @@ function modelCase(model) {
 
 /** @param {string} s */
 const wordsIn = s => Match.words(String(s || '')).length;
+
+/**
+ * The model's strict capitalised words (Sie, Ihnen, Ihre …) that the answer has in lower case, matched word for word
+ * (the longest common run of words), past the first word of a sentence. @param {string} input @param {string} model
+ * @param {string[]} strict @returns {{typed: string, expected: string, start: number, end: number}[]}
+ */
+function politeMiss(input, model, strict) {
+  const S = new Set(strict.filter(w => /^\p{Lu}/u.test(w)));
+  if (!S.size || !model) return [];
+  const A = Match.words(input), B = Match.words(model), n = A.length, m = B.length;
+  const T = Array.from({ length: n + 1 }, () => new Array(m + 1).fill(0));
+  for (let i = n - 1; i >= 0; i--) for (let j = m - 1; j >= 0; j--) T[i][j] = A[i].n === B[j].n ? T[i + 1][j + 1] + 1 : Math.max(T[i + 1][j], T[i][j + 1]);
+  const out = [];
+  for (let i = 0, j = 0; i < n && j < m;) {
+    if (A[i].n === B[j].n) {
+      const a = A[i], b = B[j];
+      const initial = !i || /[.!?:]\s*["„“]?\s*$/.test(input.slice(0, a.start));
+      if (S.has(b.raw) && /^\p{Ll}/u.test(a.raw) && !initial) out.push({ typed: a.raw, expected: b.raw, start: a.start, end: a.end });
+      i++; j++;
+    } else if (T[i + 1][j] >= T[i][j + 1]) i++; else j++;
+  }
+  return out;
+}
 
 /** @param {{start: number}} t @param {{start: number}[]} list */
 const overlaps = (t, list) => list.some(x => x.start === t.start);

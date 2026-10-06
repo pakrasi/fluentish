@@ -323,7 +323,7 @@ export async function gradingData(files = applyAll()) {
   const data = buildPool({ items: J('content/b1/items.json'), grammar: [...J('content/b1/grammar.json'), ...b2.map((/** @type {any} */ g) => ({ ...g, topic: g.concept }))],
     bank, plan: { ...plan, topics }, nouns: J('content/b1/nouns.json'),
     lexWords: J('content/igloo/words/de.json'), lexTexts: Object.values(J('content/igloo/chunks/german.json').chunks).map((/** @type {any} */ c) => c.ex).filter(Boolean),
-    schreiben: J('content/b1/schreiben.json') });
+    schreiben: J('content/b1/schreiben.json'), forms: J('content/b1/forms.json') });
   return { data, b2, phrases, bank, german };
 }
 

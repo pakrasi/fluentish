@@ -4,6 +4,8 @@
    agree on every model and wrong answer in content/b1/items.json and on Igloo's German example sentences.
    DETECTORS is the pack's list, in the order the runner (domain/detect.js run) tries them. */
 // @ts-check
+import { tokenize } from './text.js';
+import { clashes } from './conj.js';
 /** @typedef {{cls: string, word: string}} Hit  one word-order error and the word to name in the hint */
 /** @typedef {import('../types.js').Detector} Detector */
 /** @typedef {import('../types.js').DetectContext} DetectContext */
@@ -289,6 +291,20 @@ export const DETECTORS = [
   { cls: 'v2', find: ctx => { const x = pick(ctx, 'v2'); return x ? { word: x.word, hint: `Check the word order after ${it(x.word)}.` } : null; } },
   { cls: 'wer-der', find: ctx => pick(ctx, 'wer-der') ? { word: 'wer', hint: 'Check the word after the comma.' } : null },
   { cls: 'connector-order', find: ctx => { const x = pick(ctx, 'connector-order'); return x ? { word: x.word, hint: `Check the word order after ${it(x.word)}.` } : null; } },
+  // the model's verb in a form its frame does not allow (round 4): the infinitive for the participle (hat … Steuern
+  // hinterziehen), the participle after a modal, zu left out or put in, the person and number of the subject (Die Stadt
+  // treffen). Phrase cards only: their answer is the model sentence with his phrase in it (conj.js clashes)
+  { cls: 'verb-form', find: ({ text, item, conj }) => {
+    if (!conj || !item || !item.anywhere || !item.hl || (item.promptLang || item.prompt_lang) !== 'en' || item.kind === 'topic' || item.kind === 'reply') return null;
+    const model = item.sentence || item.model;
+    if (!model || /…/.test(model)) return null;
+    const A = tokenize(text), B = tokenize(model);
+    const c = clashes(A, B, model, conj)[0];
+    if (!c) return null;
+    if (c.kind === 'zu-missing') { const w = A.find(t => t.n === B[c.b].n); return { word: B[c.b].raw, hint: `Check the form of ${it(w ? w.raw : B[c.b].raw)}.` }; }
+    if (c.kind === 'zu-extra') return { word: B[c.b].raw, hint: `Check the zu before ${it(B[c.b].raw)}.` };
+    return { word: A[c.a].raw, hint: `Check the form of ${it(A[c.a].raw)}.` };
+  } },
   // für / vor where the model has the other one (fear and warning take vor)
   { cls: 'fuer-vor', find: ({ text, model, item }) => {
     const mw = words(model).map(w => w.toLowerCase()), iw = words(text).map(w => w.toLowerCase());

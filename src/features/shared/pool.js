@@ -13,6 +13,7 @@
    (data.byId has every item). */
 import * as Match from '../../domain/match.js';
 import { verbForms } from '../../domain/detect.js';
+import { activePack } from '../../lang/registry.js';
 
 const TEIL_GROUP = /** @type {Record<string, [string, string]>} */ ({ 'Sprechen T1': ['S1', 'S1'], 'Sprechen T2': ['S2', 'S2'], 'Sprechen T3': ['S3', 'S3'], Forum: ['opinion', 'S3'] });
 const PLAN_OF_KIND = /** @type {Record<string, string>} */ ({ transform: 'transform', join: 'transform', order: 'transform', gap: 'recall', 'choose-article': 'recall', translate: 'recall' });
@@ -39,6 +40,18 @@ export function mistakeItem(m) {
 const POLITE = new Set(['Sie', 'Ihnen', 'Ihr', 'Ihre', 'Ihren', 'Ihrem', 'Ihrer', 'Ihres']);
 /** Polite forms in a sentence, not counting a sentence's first word. @param {string} s */
 export const politeIn = s => String(s || '').split(/(?<=[.!?:])\s+/).flatMap(sent => (sent.match(/[\p{L}]+/gu) || []).slice(1).filter(w => POLITE.has(w)));
+/**
+ * The polite forms a sentence addresses someone with, to be typed with their capital (round 4: "ihre Stellenanzeige"
+ * is her or their advertisement, "Könnten sie" asks about them): its Sie, Ihnen, Ihr … past a sentence's first word,
+ * except a word the sentence also writes in lower case (Wie finden Sie sie?).
+ * @param {(string | null | undefined)[]} sentences
+ */
+export function politeStrict(...sentences) {
+  const lower = new Set(sentences.flatMap(s => String(s || '').split(/(?<=[.!?:])\s+/).flatMap(sent => (sent.match(/[\p{L}]+/gu) || []).slice(1).filter(w => /^\p{Ll}/u.test(w)))));
+  return [...new Set(sentences.flatMap(s => politeIn(s)))].filter(w => !lower.has(w.toLowerCase()));
+}
+/** @param {string[] | undefined} a @param {string[]} b */
+const withStrict = (a, b) => (b.length ? [...new Set([...(a || []), ...b])] : a || []);
 
 /**
  * Folded German word forms the content writes: models and accepted answers, grammar answers, the noun list (with
@@ -62,13 +75,13 @@ export function buildLexicon({ items = [], grammar = [], bank = {}, nouns = {}, 
 }
 
 /**
- * @param {{items?: any[], grammar?: any[], bank?: Record<string, any>, plan: any, nouns?: Record<string, string>, words?: any[], mistakes?: any[], lexWords?: any[] | null, lexTexts?: string[] | null, schreiben?: any, b2?: Parameters<typeof b2Layer>[0] | null}} o
+ * @param {{items?: any[], grammar?: any[], bank?: Record<string, any>, plan: any, nouns?: Record<string, string>, words?: any[], mistakes?: any[], lexWords?: any[] | null, lexTexts?: string[] | null, schreiben?: any, b2?: Parameters<typeof b2Layer>[0] | null, forms?: any}} o
  *   words: round items from words.js toItem(); mistakes: mistake records; lexWords: the German word list (igloo.words.de)
  *   and lexTexts: the chunk examples (igloo.chunks.german), both optional, for the grader's lexicon; schreiben: the
  *   Schreiben content (b1-schreiben@1), optional; b2: the B2 layer's sources (b2Layer), optional: data.b2 is empty
- *   without them
+ *   without them; forms: the forms table (content b1.forms), optional, for the verb forms index (data.conj)
  */
-export function buildPool({ items = [], grammar = [], bank = {}, plan, nouns = {}, words = [], mistakes = [], lexWords = null, lexTexts = null, schreiben = null, b2 = null }) {
+export function buildPool({ items = [], grammar = [], bank = {}, plan, nouns = {}, words = [], mistakes = [], lexWords = null, lexTexts = null, schreiben = null, b2 = null, forms = null }) {
   const topics = new Map(plan.topics.map((/** @type {any} */ t) => [t.id, t]));
   /** @type {Map<string, any>} */ const byId = new Map();
   /** @type {any[]} */ const pool = [];
@@ -81,7 +94,8 @@ export function buildPool({ items = [], grammar = [], bank = {}, plan, nouns = {
     const ln = linked[a.id];
     // a letter item filed under Schreiben: its polite Sie, Ihnen, Ihr … must be typed with the capital (in lower
     // case it is another word), as the Schreiben items have it
-    add({ ...a, promptLang: a.prompt_lang, gap: String(a.prompt).includes('___'), mine: false,
+    // a sentence that addresses someone as Sie: its polite forms keep their capital, as in a letter (round 4)
+    add({ ...a, promptLang: a.prompt_lang, gap: String(a.prompt).includes('___'), mine: false, strict: withStrict(a.strict, politeStrict(a.model, ...(a.moves || []).map((/** @type {any} */ m) => m.model))),
       ...(ln ? { area: 'writing', group: a.teil, wfn: ln.fn, rank: ln.rank, tier: 1, aufgabe: `A${String(a.teil).slice(1)}`,
         strict: [...new Set([...(a.strict || []), ...politeIn(a.model)])] } : {}) });
   }
@@ -89,7 +103,7 @@ export function buildPool({ items = [], grammar = [], bank = {}, plan, nouns = {
   for (const [cid, b] of Object.entries(bank)) {
     if (twins.has(cid)) continue;
     const [group, teil] = TEIL_GROUP[b.part] || ['opinion', 'S3'];
-    add({ id: 'K:' + cid, kind: 'phrase', area: 'speaking', group, teil, fn: b.fn, star: b.prio === 1, trap: null, focus: ['chunk'], strict: [], plan: 'recall',
+    add({ id: 'K:' + cid, kind: 'phrase', area: 'speaking', group, teil, fn: b.fn, star: b.prio === 1, trap: null, focus: ['chunk'], strict: politeStrict(b.ex), plan: 'recall',
       task: null, prompt: b.en, promptLang: 'en', hl: b.hl, partner: null, prefill: null, accept: b.accept, anywhere: true,
       model: b.ex && Match.matches(b.ex, b.accept[0]) ? b.ex : Match.renderPattern(b.accept[0], b.ex), wrong: [], rule: b.n || '', src: 'bank', level: b.level, bank: true,
       // the whole German sentence for the English one (the rest of the answer is checked against it)
@@ -101,7 +115,7 @@ export function buildPool({ items = [], grammar = [], bank = {}, plan, nouns = {
     const lead = (String(g.prompt).match(/→\s*(.+?)\s*…\s*$/) || [])[1];
     const short = lead ? ans.filter((/** @type {string} */ a) => a.startsWith(lead)).map((/** @type {string} */ a) => a.slice(lead.length).trim()).filter(Boolean) : [];
     add({ id: 'G:' + g.id, kind: 'grammar', area: 'grammar', group: g.topic, teil: null, fn: null, star: !!t.trap, trap: g.trap || null, focus: g.focus || [],
-      strict: g.strict || [], plan: PLAN_OF_KIND[g.kind] || 'recall', task: g.task, prompt: g.prompt, promptLang: g.kind === 'translate' ? 'en' : 'de', hl: null,
+      strict: withStrict(g.strict, politeStrict(gap ? Match.gapFill(g.prompt, ans[0])?.text : ans[0])), plan: PLAN_OF_KIND[g.kind] || 'recall', task: g.task, prompt: g.prompt, promptLang: g.kind === 'translate' ? 'en' : 'de', hl: null,
       partner: null, prefill: null, accept: [...ans, ...short], anywhere: false, literal: true, gap, loose: gap || g.kind !== 'translate',
       model: gap ? (Match.gapFill(g.prompt, ans[0])?.text || ans[0]) : ans[0], wrong: g.wrong || [], rule: g.rule || g.note || '', src: 'igloo', level: g.level,
       strictCase: !!g.strict_case, rank: t.rank });
@@ -114,7 +128,39 @@ export function buildPool({ items = [], grammar = [], bank = {}, plan, nouns = {
   // the B2 layer: beside the pool, never in it (readiness, pace and the lexicon read the pool only)
   const layer = b2 ? b2Layer(b2, id => byId.has(id), new Set([...twins].map(String))) : [];
   for (const it of layer) byId.set(it.id, it);
-  return { pool, b2: layer, byId, plan, topics, traps, fnInfo, nouns, writing, verbs: lexWords ? verbForms(lexWords) : null, lexicon: buildLexicon({ items, grammar, bank, nouns, lexWords, lexTexts, schreiben }) };
+  const lexicon = buildLexicon({ items, grammar, bank, nouns, lexWords, lexTexts, schreiben });
+  const conj = verbIndex({ lexWords, forms, items, grammar, bank, b2, nouns });
+  // every form of every verb is a German word: never a typo or a slip of another (tragt, gedroht)
+  if (conj) for (const k of conj.forms()) lexicon.add(k);
+  return { pool, b2: layer, byId, plan, topics, traps, fnInfo, nouns, writing, verbs: lexWords ? verbForms(lexWords) : null, lexicon, conj };
+}
+
+/**
+ * The verb forms index the grader reads (the pack's grammar.verbs.build, round 4): the word list's verbs and the forms
+ * table's, and the verbs the content uses that both lack (the collocations' verbs, a word after zu, a pattern's last
+ * word), built from their base verb or as regular verbs. null without a word list or a pack with verb rules.
+ * @param {{lexWords?: any[] | null, forms?: any, items?: any[], grammar?: any[], bank?: Record<string, any>, b2?: any, nouns?: Record<string, string>}} o
+ */
+export function verbIndex({ lexWords = null, forms = null, items = [], grammar = [], bank = {}, b2 = null, nouns = {} }) {
+  const V = activePack().grammar.verbs;
+  if (!V || !lexWords) return null;
+  const key = (/** @type {string} */ w) => Match.words(w)[0]?.n || '';
+  /** @type {Set<string>} */ const not = new Set(Object.keys(nouns).map(key));
+  for (const w of lexWords) {
+    if (w.pos === 'noun') { not.add(key(w.w)); if (w.pl) not.add(key(w.pl)); }
+    if (w.pos === 'adj' || w.pos === 'adv') for (const e of ['', 'e', 'en', 'em', 'er', 'es']) not.add(key(w.w + e));
+  }
+  const texts = [];
+  for (const it of items) texts.push(...(it.accept || []), ...(it.moves || []).flatMap((/** @type {any} */ m) => m.accept || []));
+  for (const g of grammar) texts.push(...[].concat(g.answer));
+  for (const b of Object.values(bank)) texts.push(...(b.accept || []));
+  /** @type {string[]} */ const fvg = [];
+  if (b2) {
+    for (const a of Object.values(b2.accept || {})) texts.push(...(/** @type {any} */ (a).accept || []));
+    for (const d of Object.values(b2.de || {})) if (d && d.fvg && d.fvg.verb) fvg.push(d.fvg.verb);
+  }
+  const extra = [...fvg, ...V.infinitives(texts, n => Match.CLOSED.has(n) || not.has(n))];
+  return V.build(lexWords, forms, extra);
 }
 
 /**
@@ -140,7 +186,7 @@ export function b2Layer({ grammar = null, concepts = null, annot = null, en = nu
       if (a.skip || g.dupOf) continue;   // dupOf: the content marks a duplicate of another item; only that one is scheduled
       const ans = /** @type {string[]} */ ([].concat(g.answer)), gap = String(g.prompt).includes('___');
       push({ id: 'G:' + g.id, kind: 'grammar', area: 'grammar', group: cid, teil: null, fn: null, star: false, trap: a.trap || null, focus: a.focus || [],
-        strict: a.strict || [], plan: PLAN_OF_KIND[g.kind] || 'recall', task: g.task, prompt: g.prompt, promptLang: g.kind === 'translate' ? 'en' : 'de', hl: null,
+        strict: withStrict(a.strict, politeStrict(gap ? Match.gapFill(g.prompt, ans[0])?.text : ans[0])), plan: PLAN_OF_KIND[g.kind] || 'recall', task: g.task, prompt: g.prompt, promptLang: g.kind === 'translate' ? 'en' : 'de', hl: null,
         partner: null, prefill: null, accept: ans, anywhere: false, literal: true, gap, loose: gap || g.kind !== 'translate',
         model: gap ? (Match.gapFill(g.prompt, ans[0])?.text || ans[0]) : ans[0], wrong: a.wrong || [], rule: a.rule || g.note || '', src: 'igloo', level: 'B2',
         strictCase: !!g.strict_case, rank: rank.get(cid), layer: 'b2' });
@@ -151,7 +197,7 @@ export function b2Layer({ grammar = null, concepts = null, annot = null, en = nu
     if (!c || !(level(c.level) === 'B2' || (d && d.layer === 'b2')) || twins.has(c.id)) continue;
     if (!d || !a || !Array.isArray(a.accept) || !a.accept.length || a.weak || d.dupOf || c.dupOf) continue;
     if (!a.core_en || !String(c.natural_example || '').toLowerCase().includes(String(a.core_en).toLowerCase())) continue;
-    push({ id: 'K:' + c.id, kind: 'phrase', area: 'speaking', group: 'b2', teil: null, fn: null, star: false, trap: null, focus: ['chunk'], strict: [], plan: 'recall',
+    push({ id: 'K:' + c.id, kind: 'phrase', area: 'speaking', group: 'b2', teil: null, fn: null, star: false, trap: null, focus: ['chunk'], strict: politeStrict(d.ex), plan: 'recall',
       task: null, prompt: c.natural_example, promptLang: 'en', hl: a.core_en, partner: null, prefill: null, accept: a.accept, anywhere: true,
       model: d.ex && Match.matches(d.ex, a.accept[0]) ? d.ex : Match.renderPattern(a.accept[0], d.ex), wrong: [], rule: d.n || '', src: 'bank', level: 'B2', bank: true,
       sentence: d.ex && a.accept.some((/** @type {string} */ p) => Match.matches(d.ex, p)) ? d.ex : null, layer: 'b2' });

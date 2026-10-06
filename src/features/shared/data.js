@@ -29,6 +29,8 @@ import { DECK_STATS_KV } from '../../domain/decks.js';
 const FILES = ['b1.items', 'b1.grammar', 'b1.bank', 'b1.plan', 'b1.nouns', 'b1.wordmap', 'igloo.words.de', 'igloo.chunks.german', 'b1.schreiben'];
 // the B2 layer's sources (pool.js b2Layer; round 4, L1b), all in the German pack's precache; without them data.b2 is empty
 const B2_FILES = ['igloo.grammar.items.de', 'igloo.grammar.concepts.de', 'b1.annot', 'igloo.chunks.en', 'igloo.chunks.accept.german'];
+// the forms table, for the grader's verb forms (pool.js verbIndex; round 4); without it the word list's verbs only
+const FORM_FILES = ['b1.forms'];
 export const VOCAB_URL = `${config.github.api}/repos/${config.resultsRepo}/contents/data/vocab.json`;
 
 /** @type {{key: string, data: any, words: any[]} | null} */ let memo = null;
@@ -49,7 +51,7 @@ export const roundOf = ctx => courseRound(langCode(ctx.settings().language));
 export async function loadData(ctx) {
   const cr = roundOf(ctx);
   if (!cr.trainer) return loadCourse(ctx, cr.lang);
-  const [items, grammar, bank, plan, nouns, wordmap, lexWords, chunksDe, schreiben, b2Grammar, b2Concepts, annot, chunksEn, accept] = await Promise.all([...FILES, ...B2_FILES].map(id => ctx.content.load(id).catch(e => {
+  const [items, grammar, bank, plan, nouns, wordmap, lexWords, chunksDe, schreiben, b2Grammar, b2Concepts, annot, chunksEn, accept, formsTable] = await Promise.all([...FILES, ...B2_FILES, ...FORM_FILES].map(id => ctx.content.load(id).catch(e => {
     if (id === 'b1.plan') throw e;
     return null;
   })));
@@ -62,7 +64,7 @@ export async function loadData(ctx) {
   const wx = Array.isArray(lexWords) ? await loadWordIx(ctx, lexWords).catch(() => null) : null;
   const data = /** @type {any} */ (buildPool({ items: items || [], grammar: grammar || [], bank: bank || {}, plan, nouns: nouns || {},
     words: wordItems(wc?.words, c.phase, wx || {}), mistakes, lexWords: Array.isArray(lexWords) ? lexWords : null, lexTexts: chunkExamples(chunksDe),
-    schreiben: schreiben && Array.isArray(schreiben.items) ? schreiben : null,
+    schreiben: schreiben && Array.isArray(schreiben.items) ? schreiben : null, forms: formsTable || null,
     b2: Array.isArray(b2Grammar) || Array.isArray(chunksEn) ? { grammar: Array.isArray(b2Grammar) ? b2Grammar : null, concepts: Array.isArray(b2Concepts) ? b2Concepts : null,
       annot: annot || null, en: Array.isArray(chunksEn) ? chunksEn : null, de: chunksDe && chunksDe.chunks ? chunksDe.chunks : null, accept: accept || null } : null }));
   data.wordmap = wordmap || {};

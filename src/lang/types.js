@@ -83,6 +83,8 @@
  * @property {(toks: Token[], i: number) => boolean} eitherCase   a word written either way (de: recht/Recht haben)
  * @property {readonly RegExp[]} paradigms           closed-class families (der/den/dem …): another member is the same
  *                                                   word in another form (formCheck)
+ * @property {(typed: string, want: string) => boolean} [prefixSwap]  keys: the typed word is the pattern word with
+ *                                                   another prefix (de: gedroht for bedroht), never a typo
  */
 
 /** @typedef {{clause: string, order: string, sein: boolean, haben: boolean}} Shape  a pattern's clause structure */
@@ -130,6 +132,7 @@
  * @typedef {object} DetectContext
  * @property {string} text  @property {string} model  @property {any} item  @property {any} r  the Match.check result
  * @property {Set<string> | null} verbs  finite verb forms from the word list
+ * @property {Conj | null} [conj]  the verb forms index (VerbRules.build), when the caller has one
  * @property {Map<string, any>} memo
  */
 /**
@@ -259,6 +262,27 @@
  * @property {SlotRules} slots
  * @property {LineRules} lines
  * @property {MorphologyRules | null} morphology
+ * @property {VerbRules} [verbs]   the verb forms of a word list and the frames that decide them (de: src/lang/de/conj.js)
+ */
+
+/**
+ * Verb forms (round 4): an index of every verb's forms by slot, built from a word list, and where a typed sentence puts
+ * the model's verb in a form the model's frame does not allow.
+ * @typedef {object} VerbRules
+ * @property {(words: any[] | null | undefined, table?: any, extra?: Iterable<string>) => Conj} build
+ * @property {(A: Token[], B: Token[], textB: string, conj: Conj | null | undefined) => {a: number, b: number, kind: string}[]} clashes
+ * @property {(texts: Iterable<string>, skip: (n: string) => boolean) => Set<string>} infinitives
+ * @property {(text: string, T: Token[], conj: Conj) => {lemmas: Set<string>, slots: Set<string>}[]} frameSlots   each
+ *   word's lemmas and the slots its sentence gives it
+ * @property {ReadonlySet<string>} frameOpt   optional pattern words the sentence decides, kept as the model has them
+ *   (de: zu in "bedarf ([x]) (zu) decken")
+ */
+/**
+ * @typedef {object} Conj
+ * @property {(n: string) => {lemma: string, slot: string, strong: boolean}[]} lookup   a key's analyses
+ * @property {(n: string) => boolean} misbuilt   a non-word made from a strong verb with the regular endings (fallten)
+ * @property {() => IterableIterator<string>} forms   every key of the index
+ * @property {Map<string, any>} lemmas
  */
 
 /**

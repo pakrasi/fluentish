@@ -10,6 +10,7 @@ import * as M from './morph.js';
 import * as forms from './forms.js';
 import * as LM from './lemma.js';
 import * as R from './reading.js';
+import * as CJ from './conj.js';
 /** @typedef {import('../types.js').LanguagePack} LanguagePack */
 
 /** @type {LanguagePack} */
@@ -33,6 +34,7 @@ const de = {
     caseSensitive: 'nouns',
     eitherCase: G.eitherCase,
     paradigms: G.FAMILY,
+    prefixSwap: CJ.prefixSwap,
   },
 
   grammar: {
@@ -44,6 +46,7 @@ const de = {
     },
     cases: ['nom', 'akk', 'dat', 'gen'],
     forms,
+    verbs: { build: CJ.build, clashes: CJ.clashes, frameSlots: CJ.frameSlots, infinitives: CJ.infinitivesIn, frameOpt: new Set(['zu']) },
     detectors: D.DETECTORS,
     wordOrder: { classes: D.classes, norm: D.norm, verbForms: D.verbForms, fronted: D.fronted, setFronted: D.setFronted },
     punctuation: {

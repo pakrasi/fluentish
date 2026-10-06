@@ -18,7 +18,8 @@ const wordOrder = (/** @type {unknown} */ p) => packOf(p).grammar.wordOrder;
 /**
  * The first sticky error in an answer, or null.
  * @param {string} input @param {any} [item] @param {any} [r] the Match.check result
- * @param {{verbs?: Set<string> | null}} [opts] verbs: finite verb forms (verbForms()) for answers no model covers
+ * @param {{verbs?: Set<string> | null, conj?: any}} [opts] verbs: finite verb forms (verbForms()) for answers no model
+ *   covers; conj: the pack's verb forms index (grammar.verbs.build), for the verb-form detector
  * @param {LanguagePack} [pack]
  * @returns {{cls: string, word: string, hint: string} | null}  word is null only for a für/vor at the answer's start
  */
@@ -26,7 +27,7 @@ function run(input, item = {}, r = null, opts = {}, pack) {
   const text = String(input || '');
   if (!text.trim()) return null;
   /** @type {DetectContext} */
-  const ctx = { text, model: item.model || '', item, r, verbs: (opts && opts.verbs) || null, memo: new Map() };
+  const ctx = { text, model: item.model || '', item, r, verbs: (opts && opts.verbs) || null, conj: (opts && opts.conj) || null, memo: new Map() };
   for (const d of packOf(pack).grammar.detectors) {
     const hit = d.find(ctx);
     if (hit) return { cls: d.cls, word: hit.word, hint: hit.hint };
