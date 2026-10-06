@@ -3,13 +3,13 @@
    Schreiben phrases' own rounds. Numbers from the one daily allowance (domain/allowance.js). */
 import { roundMinutes } from '../../domain/today.js';
 import { ROUND } from '../../domain/budget.js';
-import { todayBudget } from '../../domain/allowance.js';
+import { todayBudget, nextWritingTask } from '../../domain/allowance.js';
 
 /**
  * @param {import('../contract.js').PlanCtx} ctx
  * @returns {import('../../domain/today.js').PlanItem[]}
  */
-export function planItems({ store, c, settings, t }) {
+export function planItems({ store, c, settings, t, day }) {
   if (settings.language !== 'german' || c.phase === 'day') return [];   // German content only; the exam day is the round's warm-up
   const b = todayBudget({ store, c, settings });
   /** @type {import('../../domain/today.js').PlanItem[]} */
@@ -21,6 +21,18 @@ export function planItems({ store, c, settings, t }) {
       ? { id: 'practice.schreiben', source: 'practice-write', kind: 'write', title: t('plan.schreiben'), detail: t('plan.schreiben.done', { n: task.a.slice(1) }), minutes: 0, href: '#/practice/write', priority: 18, done: true }
       : { id: 'practice.schreiben', source: 'practice-write', kind: 'write', title: t('plan.schreiben'), detail: t('plan.schreiben.detail', { n: task.a.slice(1), title: task.title }),
         minutes: task.min, href: `#/practice/write/build/${task.id}/free`, priority: 18, action: t('plan.schreiben.action', { min: task.min }) });
+  }
+  // a Write day (the week plan's slot, round 4 ruling 8): the slot's minutes go to one task written from memory, unless
+  // the Schreiben task above already is today's (it is the same practice)
+  if (!task && day && day.slot === 'write') {
+    const next = nextWritingTask({ store, c });
+    const min = day.slotMin > 0 ? day.slotMin : 15;
+    out.push(next
+      ? next.done
+        ? { id: 'write.slot', source: 'practice-write', kind: 'write', title: t('plan.writeSlot'), detail: t('plan.schreiben.done', { n: next.a.slice(1) }), minutes: 0, href: '#/practice/write', priority: 45, done: true }
+        : { id: 'write.slot', source: 'practice-write', kind: 'write', title: t('plan.writeSlot'), detail: t('plan.writeSlot.detail', { n: next.a.slice(1), title: next.title }),
+          minutes: min, href: `#/practice/write/build/${next.id}/free`, priority: 45, noCut: true, action: t('plan.schreiben.action', { min }) }
+      : { id: 'write.slot', source: 'practice-write', kind: 'write', title: t('plan.writeSlot'), detail: t('plan.writeSlot.pick'), minutes: min, href: '#/practice/write', priority: 45, noCut: true, action: t('plan.writeSlot.pickAction', { min }) });
   }
   // Schreiben phrases: their own rounds; right after the review round while Schreiben is the weakest module
   const w = b.writing;

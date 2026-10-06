@@ -41,15 +41,16 @@ test('week: no week is the round 3 day; a week gives each weekday its minutes an
   assert.deepEqual(days.map(d => d.day), ['2026-10-19', '2026-10-20', '2026-10-21', '2026-10-22', '2026-10-23', '2026-10-24', '2026-10-25']);
   assert.deepEqual(days.map(d => weekday(d.day)), [0, 1, 2, 3, 4, 5, 6]);
   assert.deepEqual(days.map(d => d.minutes), [45, 45, 20, 45, 30, 60, 0]);
-  // Reading (L2b) and Conversation (L4) have shipped: a Read or Talk day has its slot; Write has no feature yet, so its
-  // day is a Normal day that remembers what was asked
-  assert.deepEqual(LIVE_SLOTS, ['read', 'talk']);
-  assert.deepEqual(days.map(d => d.kind), ['n', 'read', 'light', 'n', 'n', 'talk', 'off']);
-  assert.deepEqual(days.map(d => d.asked || null), [null, null, null, 'write', null, null, null]);
-  assert.deepEqual(days.map(d => d.slot), [null, 'read', null, null, null, 'talk', null]);
+  // Reading (L2b), Conversation (L4) and Writing (round 4 ruling 8: the Schreiben task as the slot) have shipped: a
+  // Read, Write or Talk day has its slot
+  assert.deepEqual(LIVE_SLOTS, ['read', 'write', 'talk']);
+  assert.deepEqual(days.map(d => d.kind), ['n', 'read', 'light', 'write', 'n', 'talk', 'off']);
+  assert.deepEqual(days.map(d => d.asked || null), [null, null, null, null, null, null, null]);
+  assert.deepEqual(days.map(d => d.slot), [null, 'read', null, 'write', null, 'talk', null]);
   assert.equal(days[1].slotMin, Math.round(45 * SLOT_SHARE));
+  assert.equal(days[3].slotMin, Math.round(45 * SLOT_SHARE));
   assert.equal(days[5].slotMin, Math.round(60 * SLOT_SHARE));
-  assert.ok(days.every(d => d.planned && (d.slot === 'read' || d.slot === 'talk' || d.slotMin === 0)));
+  assert.ok(days.every(d => d.planned && (d.slot === 'read' || d.slot === 'write' || d.slot === 'talk' || d.slotMin === 0)));
 });
 
 test('week: a live slot takes a third of the day; 0 minutes is an Off day; Study anyway makes an Off day Normal', () => {

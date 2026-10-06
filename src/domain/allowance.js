@@ -93,6 +93,15 @@ export function firstWeek(store, today, settings = null) {
 export function writingTask({ store, c, settings, tasks = null }) {
   // the eve is for reviews and the Sprechen frames (domain/today.js), the exam day for a warm-up: no task then
   if (c.phase === 'day' || c.phase === 'eve' || !writingFocus({ store, c, settings })) return null;
+  return nextWritingTask({ store, c, tasks });
+}
+
+/**
+ * The Schreiben task to write next, whatever the weakest module (a Write day's slot, round 4 ruling 8): the one written
+ * today (done), else the Aufgabe written least recently and in it the task written longest ago. Null without tasks.
+ * @param {{store: any, c: any, tasks?: {id: string, a: string, title: string, min: number}[] | null}} o
+ */
+export function nextWritingTask({ store, c, tasks = null }) {
   const list = tasks || (session(store).stats?.tasks) || [];
   if (!list.length) return null;
   const written = /** @type {Record<string, string>} */ ((store.get(WRITE_KV, {}) || {}).written || {});

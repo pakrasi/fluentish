@@ -47,13 +47,13 @@ test('a week set on Goals and week: Today names the kind of day and draws the we
   // the week editor: the strip, then seven rows on a phone (each opens a sheet) or the strip's columns as tabs
   const phone = await page.locator('button[name="week:day:0"]').isVisible();
   await expect(page.locator('.week-ed .wk-strip .runway-day')).toHaveCount(7);
-  if (phone) await expect(page.locator('button[name="week:day:3"]')).toContainText('45 min · Write (later)');
+  if (phone) await expect(page.locator('button[name="week:day:3"]')).toContainText('45 min · Write');
   /** Open day i: its sheet on a phone, its tab from 720 px. @param {number} i */
   const openDay = async i => { if (phone) await page.locator(`button[name="week:day:${i}"]`).click(); else await page.locator(`#wk-tab-${i}`).click(); };
-  // kinds whose feature has not shipped say so
+  // every kind has shipped (Write: round 4 ruling 8): no day says "coming later"
   await openDay(3);
-  await expect(page.getByText('Write days are coming later. Until then this is a normal day.')).toBeVisible();
-  await expect(page.locator('button[name="week:3:kind:write"]')).toHaveClass(/is-later/);
+  await expect(page.getByText(/coming later/)).toHaveCount(0);
+  await expect(page.locator('button[name="week:3:kind:write"]')).not.toHaveClass(/is-later/);
   if (phone) await page.keyboard.press('Escape');
   // Read has shipped (L2b: 'read' in LIVE_SLOTS): its day is a read day, not "coming later"
   await openDay(1);
