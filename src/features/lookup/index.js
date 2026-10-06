@@ -24,6 +24,7 @@ import { play, stop, prefetchAudio } from '../../services/audio.js';
 import { markSeen } from '../../data/seen.js';
 import { refreshWords, loadData, stateFor, secrets } from '../shared/data.js';
 import { COLLECTION as EXAM_WORDS, inQueue } from '../shared/words.js';
+import { recheckCount } from '../shared/recheck.js';
 
 const UI_KEY = 'lookup.ui';
 const DEBOUNCE_MS = 120;
@@ -439,12 +440,15 @@ export async function mount(el, ctx) {
     const w = !own || st.opts.w === 'all' ? 'all' : 'mine';
     const toggle = !own ? null : seg({ label: t('lookup.words.view'), value: w, options: [['mine', t('lookup.words.mine')], ['all', t('lookup.words.all')]], onChange: v => setOpt('w', v === 'mine' ? '' : v) });
     if (toggle) toggle.classList.add('lk-seg');
+    // Recheck by typing: the words he sorted to Learn in Quick sort (shared/recheck.js); nothing changes until he types
+    const nRe = own ? await recheckCount(ctx).catch(() => 0) : 0;
+    const recheck = nRe ? h('p', { class: 'lk-sort lk-recheck' }, h('a', { class: 'btn pressable', href: '#/practice/sort?recheck=1&from=lookup' }, t('practice.sort.recheck', { n: nRe }))) : null;
     if (w === 'all') {
       const dict = await D.dictionary(ctx.content, lang);
       const level = LEVELS.includes(st.opts.level) ? st.opts.level : '';
       const rows = level ? dict.rows.filter(r => r.level === level) : dict.rows;
       if (own) prefetchAudio(ctx.content, ctx.store);
-      return h('div', null, toggle,
+      return h('div', null, toggle, recheck,
         chips(t('lookup.words.level'), 'level', [['', t('lookup.words.levelAll')], ...LEVELS.map(l => /** @type {[string, string]} */ ([l, l]))], level),
         caption(t('lookup.words.listCount', { n: num(rows.length) })),
         // Quick sort the level's words: Know / Learn, one word at a time (Practice › sort)
@@ -452,7 +456,7 @@ export async function mount(el, ctx) {
         list(rows, r => dictRow(r, '')));
     }
     const mw = await D.myWords(store);
-    const out = h('div', null, toggle, await examHead());
+    const out = h('div', null, toggle, recheck, await examHead());
     if (mw.status === 'nolink' || mw.status === 'auth') {
       out.append(notice({ kind: mw.status === 'auth' ? 'warning' : 'info', children: [
         h('p', { class: 'notice-title' }, t('lookup.words.link.title')),

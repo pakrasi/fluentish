@@ -4,7 +4,8 @@
    The cards merge by the B4 rule (domain/cardmerge.js: join the snapshots and this device's cards, newest record
    wins; then replay the events, taking `post` when `base` matches and otherwise the newest review). The learning
    collections merge by their rule in SNAPSHOT_KV (settings per field by HLC, then each settings.changed event;
-   activity per day, each device's minutes added up; mistakes by id with deletions kept; Look up views per item; the
+   activity per day, each device's minutes added up; mistakes by id with deletions kept; Look up views per item; typed
+   checks per item and field, the later (domain/checks.js joinChecks); the
    rest only when this device has none), and the progress log per day (domain/progress.js: the counts of the most
    complete record of a day, every device's minutes). Script mode's deck and collections are never read or written here. Card ids and record shapes are as they
    were; nothing is deleted except what an event deleted (an undone mark).
@@ -27,6 +28,7 @@ import { mergeSettings, normalizeSettings, defaultSettings } from './settings.js
 import { fnv1a, isoWithOffset } from './ids.js';
 import { joinActivity } from '../domain/activity.js';
 import { mergeMonth } from '../domain/progress.js';
+import { joinChecks } from '../domain/checks.js';
 import * as B from './sync/backup.js';
 
 export const JOURNAL_KV = 'backup.journal';
@@ -214,6 +216,7 @@ export function planRestore(store, { snapshots, events }) {
     } else if (rule === 'activity') next = incoming.reduce(joinActivity, cur || {});
     else if (rule === 'mistakes') next = incoming.reduce(joinMistakes, cur || {});
     else if (rule === 'seen') next = incoming.reduce(joinSeen, cur || {});
+    else if (rule === 'checks') next = incoming.reduce(joinChecks, cur || {});
     else if (isEmpty(cur)) next = incoming.find(v => !isEmpty(v)) ?? cur;
     if (canon(next ?? null) === canon(cur ?? null) || (isEmpty(next) && isEmpty(cur))) continue;
     kv[name] = next;

@@ -27,6 +27,7 @@ const ALLOWED = {
   'read.words': 'fill',   // saved reading words: lemma, meaning, level, first/last/n; no sentence, no title (lane L2b)
   'conv.sessions': 'fill',   // conversation sessions: numbers and ids, no free text (lane L4, PLAN-REVIEW B6)
   'conv.used': 'seen',       // words he used in conversations: the conversation evidence (lane L4)
+  'known.checks': 'checks',  // typed production checks and Quick sort's Learn picks: item ids, days, results (round 5)
 };
 
 /** Collections found by pattern, and their rule. */

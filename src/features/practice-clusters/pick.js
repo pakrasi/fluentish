@@ -58,3 +58,15 @@ export function sample(ids, n, rand = Math.random) {
 /** Whether a check passes: at most MAX_MISSES misses. @param {number} misses */
 export const passes = misses => misses <= MAX_MISSES;
 
+
+/**
+ * Quick sort's Produce check: the grader's verdict on a typed word (grade.js over match.js, the grading corpus rules:
+ * the article, endings and umlauts count). Right only when the grader accepts it and nothing is left half right.
+ * @param {any} item the word's typed card (cluster-items.js itemFor) @param {string} typed
+ * @param {any} data the grader's data (shared/data.js loadData) @param {(it: any, s: string, m: any, d: any) => any} grade gradeAnswer
+ * @returns {{ok: boolean, right: string}}
+ */
+export function gradeProduce(item, typed, data, grade) {
+  const g = grade(item, typed, null, data || {});
+  return { ok: !!g.ok && !g.partial, right: String((g.ok ? item.model : g.right) || item.model) };
+}

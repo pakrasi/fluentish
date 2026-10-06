@@ -27,7 +27,7 @@ import { fnv1a, isoWithOffset } from '../ids.js';
 import { MONTH_KEY } from '../../domain/progress.js';
 
 /** Event types that carry learning state (review B4: card events carry base and post). */
-export const BACKUP_TYPES = new Set(['card.reviewed', 'card.marked_known', 'card.unmarked_known', 'settings.changed']);
+export const BACKUP_TYPES = new Set(['card.reviewed', 'card.marked_known', 'card.unmarked_known', 'card.checked', 'settings.changed']);
 /** Decks that never leave the device (Script mode, practice/script/store.js). */
 export const PRIVATE_DECKS = new Set(['script']);
 /**
@@ -37,7 +37,8 @@ export const PRIVATE_DECKS = new Set(['script']);
  *   mistakes   by id; a deleted mistake stays deleted
  *   seen       by item: first the earliest, last the latest, n the larger
  *   fill       taken only when this device has none (logs that belong to one device: the day's new-item counts …)
- * @type {Record<string, 'settings' | 'activity' | 'mistakes' | 'seen' | 'fill'>}
+ *   checks     typed production checks and Quick sort's Learn picks: per item and field, the later (domain/checks.js joinChecks)
+ * @type {Record<string, 'settings' | 'activity' | 'mistakes' | 'seen' | 'fill' | 'checks'>}
  */
 export const SNAPSHOT_KV = {
   settings: 'settings', activity: 'activity', mistakes: 'mistakes', 'lookup.seen': 'seen', known: 'fill',
@@ -50,6 +51,8 @@ export const SNAPSHOT_KV = {
   // conversation practice (round 4): each session's numbers and ids, no free text (the title and the transcript stay
   // in conv.transcripts, device-only), and the words he used (conversation evidence, merged like lookup.seen)
   'conv.sessions': 'fill', 'conv.used': 'seen',
+  // typed production checks and the words he sorted to Learn (round 5, domain/checks.js): item ids, days and results only
+  'known.checks': 'checks',
 };
 /**
  * Collections found by an exact name pattern rather than a fixed name, with their merge rule (data/restore.js). Only

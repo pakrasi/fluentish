@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "event@1",
   "title": "Progress event",
-  "description": "Append-only, the unit of sync. card.reviewed carries ctx, base and post so another device or a server can rebuild the card without replaying load balancing (review B4). card.marked_known and card.unmarked_known carry {deck, by, items: [{itemId, base, post}], ctx} (src/domain/known.js).",
+  "description": "Append-only, the unit of sync. card.reviewed carries ctx, base and post so another device or a server can rebuild the card without replaying load balancing (review B4). card.marked_known and card.unmarked_known carry {deck, by, items: [{itemId, base, post}], ctx} (src/domain/known.js). card.checked carries {deck, itemId, mode: recognise | produce, ok, from, learn?, typo?, undo?, ctx}: a typed production check or a Quick sort Learn, with no card (src/domain/checks.js); additive, round 5.",
   "type": "object",
   "required": [
     "id",
@@ -47,6 +47,7 @@
         "card.reviewed",
         "card.marked_known",
         "card.unmarked_known",
+        "card.checked",
         "exam.attempt",
         "exam.voice",
         "vocab.captured",
@@ -211,6 +212,76 @@
                       }
                     }
                   }
+                },
+                "ctx": {
+                  "type": "object",
+                  "required": [
+                    "exam",
+                    "phase",
+                    "tz"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "anyOf": [
+        {
+          "properties": {
+            "type": {
+              "not": {
+                "const": "card.checked"
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "payload": {
+              "type": "object",
+              "required": [
+                "deck",
+                "itemId",
+                "mode",
+                "ok",
+                "from",
+                "ctx"
+              ],
+              "properties": {
+                "deck": {
+                  "type": "string"
+                },
+                "itemId": {
+                  "type": "string"
+                },
+                "mode": {
+                  "enum": [
+                    "recognise",
+                    "produce"
+                  ]
+                },
+                "ok": {
+                  "type": "boolean"
+                },
+                "from": {
+                  "enum": [
+                    "sort",
+                    "recheck",
+                    "know",
+                    "spot"
+                  ]
+                },
+                "learn": {
+                  "const": true
+                },
+                "typo": {
+                  "const": true
+                },
+                "undo": {
+                  "const": true
                 },
                 "ctx": {
                   "type": "object",

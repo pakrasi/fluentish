@@ -445,7 +445,7 @@ mark.sim-chunk { background: repeating-linear-gradient(90deg, var(--ink-3) 0 2px
 .qs-btn.is-learn .qs-btn-top { justify-content: flex-end; }
 .qs-btn-label { font: 600 20px/1.2 var(--font-ui); letter-spacing: -0.01em; }
 .qs-btn kbd { font: 500 11px/1 var(--font-mono); color: var(--ink-3); padding: 3px 5px; border-radius: 5px; border: 1px solid var(--hairline-strong); }
-@media (hover: none) { .qs-btn kbd, .qs-meaning kbd, .qs-tools kbd { display: none; } }
+@media (hover: none) { .qs-btn kbd, .qs-meaning kbd, .qs-tools kbd, .qs-produce kbd { display: none; } }
 .qs-stack { display: flex; align-items: baseline; gap: 6px; }
 .qs-btn.is-learn .qs-stack { justify-content: flex-end; }
 .qs-n { display: inline-block; font: 300 30px/1 var(--font-display); font-variant-numeric: tabular-nums lining-nums; transform-origin: 50% 70%; }
@@ -455,6 +455,21 @@ mark.sim-chunk { background: repeating-linear-gradient(90deg, var(--ink-3) 0 2px
 .qs-level .wp-meta { justify-content: center; }
 .qs-panel { width: 100%; max-width: 40ch; text-align: start; }
 .qs-panel:empty { display: none; }
+/* Quick sort, Produce mode: the meaning, the typed answer, the grader's verdict (sort.js) */
+.qs-tools .qs-mode { margin-inline-end: auto; }
+.qs-produce { display: grid; gap: var(--s-2); width: 100%; max-width: 32rem; text-align: start; }
+.qs-produce[hidden], .qs-recognise[hidden] { display: none; }
+.qs-recognise { display: grid; justify-items: center; gap: var(--s-2); }
+.qs-task { margin: 0; }
+.qs-prompt { font: 400 clamp(26px, 7vw, 36px)/1.2 var(--font-display); letter-spacing: -0.01em; color: var(--ink); margin: 0; }
+.qs-produce .reveal-answer .btn, .qs-skip { justify-self: start; min-height: var(--tap); }
+.qs-btn:disabled { opacity: 0.45; cursor: default; }
+/* Check by typing before "I know this" on a card said aloud (shared/typecheck.js) */
+.pr-typecheck { display: grid; gap: var(--s-2); margin-top: var(--s-4); padding-top: var(--s-3); border-top: 1px solid var(--hairline); }
+.pr-typecheck .label, .pr-typecheck .caption { margin: 0; }
+.pr-typecheck-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.pr-typecheck-actions .btn { min-height: var(--tap); }
+@media (hover: none) { .pr-typecheck kbd { display: none; } }
 .cl-wmeta:empty { display: none; }
 
 /* ---------- the round size picker (picker.js): a bottom sheet on a phone, a card from 720px ---------- */
