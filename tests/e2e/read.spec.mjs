@@ -179,3 +179,16 @@ test('reading: Today offers the text once there is one', async ({ page }) => {
   await open(page, '#/today');
   await expect(page.locator('#view')).toContainText('Reading');
 });
+
+test('reading: a graded text opens in the reader with its own reviewed questions, no key needed', async ({ page }) => {
+  await seed(page, { veteran: true, examInDays: null });
+  await open(page, '#/practice/read');
+  await expect(page.locator('#view')).toContainText('Graded texts');
+  await page.locator('a[href^="#/practice/read/lib/"]').first().click();
+  await expect(page.locator('#view h1.rd-title')).toBeVisible();
+  await expect(page.locator('#view')).toContainText('Graded text, B1');
+  await checkA11y(page, 'Reading › graded text');
+  await page.getByRole('link', { name: 'Questions' }).click();
+  await expect(page.locator('.rd-q').first()).toBeVisible();
+  await checkA11y(page, 'Reading › graded questions');
+});

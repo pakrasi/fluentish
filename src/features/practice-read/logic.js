@@ -27,9 +27,10 @@ import { fnv1a } from '../../data/ids.js';
 /** @typedef {import('../../domain/text/suggest.js').Classified} Classified */
 
 /** The estimator's version: a stored estimate from another version is made again. */
-export const ESTIMATE_VER = 1;
-/** The share of running words a level's word list must cover for the text to be at that level. */
-export const LEVEL_COVER = 0.95;
+export const ESTIMATE_VER = 2;
+/** The share of listed content words a level's word list must cover for the text to be at that level (calibrated on
+    the graded texts: tests/unit/read-logic.test.mjs). */
+export const LEVEL_COVER = 0.92;
 /** Longest text he can paste (characters): a long article. */
 export const MAX_CHARS = 60000;
 
@@ -118,7 +119,7 @@ export function analyse(sentences, o) {
 /**
  * The text's level from the word list: the lowest CEFR level whose words cover LEVEL_COVER of its listed content
  * words (function words and words off the list are left out); one level higher when the pack's harder
- * constructions come more than once per 100 words or the sentences are long (over 22 words on average).
+ * constructions come more than twice per 100 words or the sentences are long (over 22 words on average).
  * @param {{toks: Token[], cls: Classified[]}[]} an @param {LanguagePack} pack @param {Index} [idx]
  * @returns {string}
  */
@@ -144,7 +145,7 @@ export function textLevel(an, pack, idx) {
   const cons = pack.reading?.constructions || [];
   const hits = an.reduce((k, s) => k + cons.filter(c => { try { return c.test(s.toks); } catch { return false; } }).length, 0);
   const mean = all / Math.max(1, an.length);
-  if ((all >= 50 && (hits * 100) / all > 1) || mean > 22) at = Math.min(LEVELS.length - 1, at + 1);
+  if ((all >= 50 && (hits * 100) / all > 2) || mean > 22) at = Math.min(LEVELS.length - 1, at + 1);
   return LEVELS[at];
 }
 

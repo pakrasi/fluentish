@@ -151,8 +151,9 @@ test('the round: his sentence with the word gapped, every other review from the 
 });
 
 test('estimator calibration: the graded texts\' levels, within one level', () => {
-  const texts = [...json('tests/fixtures/readers-synthetic.json').texts, ...json('tests/fixtures/read-calibration.json').texts];
-  assert.ok(texts.length >= 4);
+  // the C0 fixture, the synthetic calibration texts and the reviewed graded texts of the content (L3 T1 on)
+  const texts = [...json('tests/fixtures/readers-synthetic.json').texts, ...json('tests/fixtures/read-calibration.json').texts, ...json('content/read/de.json').texts];
+  assert.ok(texts.length >= 16);
   /** @type {string[]} */ const rows = [];
   for (const x of texts) {
     const an = L.analyse(L.sentencesOf({ sections: L.gradedSections(x) }), { pack: de, idx, suggest: false });
