@@ -95,8 +95,8 @@ def check_part(path, en, tr, fold=fold_german):
         if cid not in en:
             errors.append(f"{cid}: unknown id")
             continue
-        if not {"core_en", "accept"} <= set(e) <= {"core_en", "accept", "weak"}:
-            errors.append(f"{cid}: keys must be core_en, accept (and optional weak)")
+        if not {"core_en", "accept"} <= set(e) <= {"core_en", "accept", "weak", "reviewedBy", "reviewedAt"}:
+            errors.append(f"{cid}: keys must be core_en, accept (and optional weak, reviewedBy, reviewedAt)")
             continue
         ex_en = en[cid]["natural_example"]
         if e["core_en"].lower() not in ex_en.lower():

@@ -38,6 +38,15 @@
       },
       "sticky": {
         "type": "boolean"
+      },
+      "rank": {
+        "type": "integer",
+        "minimum": 1,
+        "description": "Order of introduction inside the level (B2 layer, round 4)."
+      },
+      "fn": {
+        "type": "string",
+        "description": "The function the concept serves (B2 layer: report, condition, link …)."
       }
     }
   }

@@ -47,6 +47,58 @@
             "type": "string",
             "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
             "description": "Native review: the day it was reviewed (YYYY-MM-DD). Set together with reviewedBy."
+          },
+          "fn": {
+            "type": "string",
+            "description": "The phrase's function group (B2 layer, round 4: authoring/briefs/B2_BRIEF.md)."
+          },
+          "layer": {
+            "enum": [
+              "b2"
+            ],
+            "description": "The B2 layer: a B2 phrase outside the B1 trainer's bank (tools/b2.mjs)."
+          },
+          "dupOf": {
+            "type": "string",
+            "pattern": "^ENG_CHUNK_\\d{4}$",
+            "description": "The same German phrase as another entry; practice uses that one."
+          },
+          "fvg": {
+            "type": "object",
+            "description": "A Funktionsverbgefüge or collocation (B2 layer): its verb, noun, preposition and case, and other verbs that also go with the noun.",
+            "required": [
+              "verb",
+              "noun"
+            ],
+            "properties": {
+              "verb": {
+                "type": "string"
+              },
+              "noun": {
+                "type": "string"
+              },
+              "prep": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "case": {
+                "enum": [
+                  "nom",
+                  "akk",
+                  "dat",
+                  "gen",
+                  null
+                ]
+              },
+              "alt": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       }

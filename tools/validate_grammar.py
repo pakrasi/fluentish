@@ -42,7 +42,10 @@ for n, it in enumerate(items):
     per[c["id"]] += 1
 for cid, c in C.items():
     k, lv = per[cid], c["level"]
-    if lv in ("B2", "C1"):
+    if lv == "B2":
+        # the B2 layer (round 4): 12 items per concept, more for a concept a batch grows (nomen-verb-verbindungen)
+        if k < 12: errs.append(f"{cid} ({lv}): needs 12+ items, has {k}")
+    elif lv == "C1":
         if k != 8: errs.append(f"{cid} ({lv}): needs exactly 8 items, has {k}")
     else:
         need = 14 if c.get("sticky") else 8

@@ -38,7 +38,9 @@ if arg == '--assemble':
     out = {}
     for b in batches:
         for r in json.loads((root / f'authoring/chunks/parts/{lang}/{b}.json').read_text()):
-            out[r['id']] = {k: r[k] for k in ('t', 'tr', 'ex', 'extr', 'n') if r.get(k)}
+            # fn/fvg/layer/dupOf: the B2 layer's function tag and Funktionsverbgefüge parts (round 4); reviewedBy/reviewedAt: native review stamps.
+            # tools/b2.mjs ASSEMBLE_KEYS keeps the same list.
+            out[r['id']] = {k: r[k] for k in ('t', 'tr', 'ex', 'extr', 'n', 'fn', 'fvg', 'layer', 'dupOf', 'reviewedBy', 'reviewedAt') if r.get(k)}
     (root / f'content/igloo/chunks/{lang}.json').write_text(json.dumps({'lang': lang, 'chunks': out}, ensure_ascii=False, separators=(',', ':')))
     print(f'OK assembled content/igloo/chunks/{lang}.json: {len(out)} chunks'); sys.exit(0)
 todo = [arg] if arg else [b for b in batches if (root / f'authoring/chunks/parts/{lang}/{b}.json').exists()]

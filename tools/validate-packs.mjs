@@ -33,6 +33,8 @@ export const PLUGINS = /** @type {Record<string, string[][]>} */ ({
     node('tools/build-clusters.mjs', '--check'),
     node('tools/build-wordbuild.mjs', '--check'),
     py('tools/build_schreiben.py', '--check'),
+    // the B2 layer (round 4): content agrees with the reviewed batches, stamps, and the machine gates
+    node('tools/b2.mjs', 'check'),
   ],
   // the French course (C3b): its phrases, word list and accepted answers built from the reviewed parts, every model
   // sentence graded right and no detector firing on one, with the app's matcher and the French pack

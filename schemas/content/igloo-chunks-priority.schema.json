@@ -55,6 +55,32 @@
       "items": {
         "type": "object"
       }
+    },
+    "b2": {
+      "type": "array",
+      "description": "The B2 function groups (round 4), built from the phrases' fn tags by tools/b2.mjs.",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "en",
+          "chunk_ids"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "en": {
+            "type": "string"
+          },
+          "chunk_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
     }
   }
 }

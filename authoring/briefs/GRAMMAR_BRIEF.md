@@ -36,7 +36,8 @@ How to build the typed grammar test pool for one language. German (`de`) is the 
 | --- | --- |
 | A1–B1 | 8–12 |
 | A1–B1, sticky | 14–16 |
-| B2, C1 | exactly 8 |
+| B2 | 12 or more (round 4: `B2_BRIEF.md`) |
+| C1 | exactly 8 |
 
 A concept counts as known at 80% or more correct across at least 8 items, so every concept needs 8 or more.
 
