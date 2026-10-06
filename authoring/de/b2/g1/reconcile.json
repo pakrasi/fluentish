@@ -28,5 +28,10 @@
   "id": "ENG_CHUNK_0796, 0398, 0880, 0961, 0099, 0896, 1199",
   "decision": "calques and wrong renderings removed from accept lists",
   "why": "pass A and B findings"
+ },
+ {
+  "id": "ENG_CHUNK_0784, ENG_CHUNK_0825",
+  "decision": "gerne twins added to three accept patterns after the review",
+  "why": "a later gate (tools/b2.mjs: the grader treats gern and gerne as different words) found patterns with gern only; mechanical, no other change"
  }
 ]

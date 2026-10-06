@@ -3595,7 +3595,8 @@
    "das war (doch) selbstverständlich",
    "keine ursache",
    "nichts zu danken",
-   "gern doch"
+   "gern doch",
+   "gerne doch"
   ],
   "reviewedBy": "model-2pass",
   "reviewedAt": "2026-10-05"
@@ -4166,9 +4167,11 @@
   "core_en": "I'm not one to",
   "accept": [
    "ich beschwere mich (ja) nicht gern",
+   "ich beschwere mich (ja) nicht gerne",
    "ich [x] (ja) nicht gern",
    "ich [x] (ja) nicht gerne",
    "ich [x] (eigentlich) nicht gern",
+   "ich [x] (eigentlich) nicht gerne",
    "ich bin (ja) (eigentlich) nicht der typ der",
    "ich bin (ja) (eigentlich) keiner der",
    "ich bin (ja) (eigentlich) nicht jemand der",

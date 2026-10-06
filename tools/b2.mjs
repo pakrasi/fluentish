@@ -158,7 +158,8 @@ export function applyPhrases(bs = batches()) {
         const sr = /** @type {any[]} */ (srcs.get(f));
         const srow = Object.fromEntries(SRC_KEYS.map(k => [k, k === 'id' ? id : ov.en[k]]));
         const si = sr.findIndex(x => x.id === id); if (si >= 0) sr[si] = srow; else sr.push(srow);
-        const af = ov.acceptPart || `p${b.name}.json`;
+        const af = ov.acceptPart || b.source.acceptPart;
+        if (!/^p\d+\.json$/.test(af || '')) throw new Error(`${b.name}: new phrase ${id} needs acceptPart p<N>.json (source.acceptPart)`);
         if (!accOf(id)) { if (!acc.has(af)) acc.set(af, {}); /** @type {any} */ (acc.get(af))[id] = {}; }
       }
       const r = rowOf(id), a = accOf(id);
@@ -321,6 +322,11 @@ export async function gates({ only = null, bs = batches() } = {}) {
     if (!it) { problems.push({ id, cls: 'missing', text: '', why: 'phrase not built into the pool' }); continue; }
     if (!String(b.en).toLowerCase().includes(String(b.hl).toLowerCase())) problems.push({ id, cls: 'core-en', text: b.hl, why: 'not in the English example' });
     if (!b.ex) { problems.push({ id, cls: 'no-example', text: '', why: 'no German example' }); continue; }
+    // the grader treats gern and gerne as different words: a pattern with one has a twin with the other
+    for (const pat of b.accept) {
+      const has = (/** @type {string} */ w) => new RegExp(`(^|[\\s(])${w}([\\s)]|$)`).test(pat);
+      if (has('gern') && !has('gerne') && !b.accept.includes(pat.replace(/\bgern\b/g, 'gerne'))) problems.push({ id, cls: 'gern-gerne', text: pat, why: 'add the gerne twin (or (gern) (gerne))' });
+    }
     // tools/validate_chunks.py's limits
     const d = german[id] || {};
     if (String(d.t || '').length > 120) problems.push({ id, cls: 'length', text: d.t, why: 't over 120 characters' });
@@ -526,10 +532,11 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.a
     const ans = JSON.parse(readFileSync(path.resolve(process.argv[4]), 'utf8'));
     let n = 0, bad = 0;
     for (const [id, a] of Object.entries(ans)) {
-      const it = data.byId.get('G:' + id); if (!it) { console.log(`${id}: no item`); continue; }
+      const it = data.byId.get('G:' + id) || data.byId.get('K:' + id); if (!it) { console.log(`${id}: no item`); continue; }
       n++;
       const r = gradeAnswer(it, a, null, { ...data, nouns: data.nouns, traps: data.traps });
       if (!r.ok) { bad++; console.log(`${id}\t${a}\t(key: ${it.accept.join(' | ')})${r.det ? ` [detector ${r.det.cls}]` : ''}`); }
+      else if (r.rest && r.rest.status === 'differs') console.log(`${id}\tphrase right, rest differs: ${a}`);
     }
     console.log(`blind answers: ${n}, graded wrong: ${bad}`);
   } else if (cmd === 'tutor') {

@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "63bc800e65ca",
+ "version": "923092271a6c",
  "languages": [
   {
    "id": "khasi",
@@ -581,8 +581,8 @@
    "id": "igloo.chunks.accept.german",
    "path": "igloo/chunks/accept_german.json",
    "schema": "phrases-accept@1",
-   "bytes": 329561,
-   "sha256": "b5555d10b99d43a9a404664ac97a15bc5fd124e9c2410c248f75df7259fdacf4"
+   "bytes": 329647,
+   "sha256": "44ea57014b3d6c5b1ac549b4ee7ffb8d626b5adab0831b7c45f8e576f7a68ace"
   },
   {
    "id": "igloo.chunks.arabic",
