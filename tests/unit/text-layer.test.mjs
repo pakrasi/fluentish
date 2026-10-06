@@ -119,7 +119,8 @@ test('personal coverage: common words two levels below his are known unless he m
   // Zeit: A1, zipf 6; for a B1 learner it counts as known, for an A2 learner it does not
   const z = classified('Zeit');
   assert.equal(Est.personalCoverage(z, { pack: de, view: none, level: 'B1', idx }).by.easy, 1);
-  assert.equal(Est.personalCoverage(z, { pack: de, view: none, level: 'A2', idx }).by.unknown, 1);
+  // for an A2 learner it is assumed from his level (at or below it, common: round 4, UX review #4)
+  assert.equal(Est.personalCoverage(z, { pack: de, view: none, level: 'A2', idx }).by.assumed, 1);
   const missed = knowledge({ today: TODAY, decks: { b1: { 'W:die_Zeit': { reps: 2, S: 1, D: 5, last: '2026-09-01', due: '2026-09-02', hist: [['2026-09-01', 1]], lapses: 1 } } } });
   assert.equal(Est.personalCoverage(z, { pack: de, view: missed, level: 'B1', idx }).by.unknown, 1, 'missed: unknown');
   // an international word off the list reads at once; a name and a number are not running words
@@ -133,7 +134,25 @@ test('personal coverage: a compound counts when he knows its last part; the unkn
   const r = Est.personalCoverage(classified('Die Apfelbäume sind alt. Ein Rahmen, noch ein Rahmen und eine Schnittstelle.'), { pack: de, view, level: 'B1', idx });
   assert.equal(r.by.compound, 1);
   assert.deepEqual(r.unknown, ['Rahmen', 'Schnittstelle']);
-  assert.deepEqual(Est.personalCoverage([], { pack: de, view, idx }), { words: 0, known: 0, coverage: 1, band: 'easy', unknown: [], by: { known: 0, stop: 0, easy: 0, cognate: 0, compound: 0, unknown: 0 } }, 'no words: nothing to miss');
+  assert.deepEqual(Est.personalCoverage([], { pack: de, view, idx }), { words: 0, known: 0, coverage: 1, band: 'easy', unknown: [], by: { known: 0, stop: 0, easy: 0, cognate: 0, compound: 0, assumed: 0, read: 0, unknown: 0 } }, 'no words: nothing to miss');
+});
+
+test('personal coverage: words at or below his level are assumed known, words above it are not; a word read without a look-up counts', () => {
+  const none = knowledge({ today: TODAY, decks: {} });
+  const text = classified('Der Rahmen ist eine Schnittstelle.');
+  // Rahmen is B2: above a B1 learner, assumed for a B2 learner when it is common enough
+  const b1 = Est.personalCoverage(text, { pack: de, view: none, level: 'B1', idx });
+  assert.ok(b1.unknown.includes('Rahmen'), 'above his level: unknown');
+  assert.equal(b1.by.assumed, 0);
+  const rahmen = idx.lemmas.get('rahmen')[0];
+  const b2 = Est.personalCoverage(text, { pack: de, view: none, level: 'B2', idx });
+  assert.equal(b2.unknown.includes('Rahmen'), (rahmen.zipf ?? 0) < Est.ASSUMED_ZIPF, 'at his level: assumed when common');
+  // read in a text without looking it up (kv read.met): counts for coverage
+  const met = Est.personalCoverage(text, { pack: de, view: none, level: 'B1', idx, met: new Set([`W:${rahmen.id}`]) });
+  assert.equal(met.by.read, 1); assert.ok(!met.unknown.includes('Rahmen'));
+  // a word he missed is never assumed
+  const missed = knowledge({ today: TODAY, decks: { b1: { [`W:${rahmen.id}`]: { reps: 2, S: 1, D: 5, last: '2026-09-01', due: '2026-09-02', hist: [['2026-09-01', 1]], lapses: 1 } } } });
+  assert.ok(Est.personalCoverage(text, { pack: de, view: missed, level: 'B2', idx, met: new Set([`W:${rahmen.id}`]) }).unknown.includes('Rahmen'));
 });
 
 test('personal coverage for a pack without reading rules: only his scores count', () => {

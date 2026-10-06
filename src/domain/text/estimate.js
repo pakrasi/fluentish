@@ -8,7 +8,13 @@
      - its word-list level is at least two levels below his, it is common (zipf 5 or more), and he has never missed it
        (no score of unknown);
      - a word off the list that an English speaker reads at once (pack.reading.cognate, as Scripts use it);
-     - a compound whose listed last part he knows.
+     - a compound whose listed last part he knows;
+     - assumed from his level (round 4, UX review #4): a listed word at or below his level, zipf 3.5 or more, that he
+       has never missed (no score of unknown). His evidence in the app is thin next to what a B1 learner knows, so
+       without this a B1 news text read as "too hard". It counts for coverage only: never as a card, never in Where
+       you stand's known counts. The reader says so ("most of it assumed from your level");
+     - read: a listed word he read in a text without looking it up (kv read.met, written on leaving the reader). Also
+       for coverage only.
    Names, foreign words and numbers are not running words (classify() marks them). Unseen words at or above his level
    are unknown.
 
@@ -42,7 +48,10 @@ export function bandOf(coverage) {
  * One classified word, as domain/text/suggest.js classify() returns it (only the fields read here).
  * @typedef {{type: 'skip' | 'name' | 'word', lemma: string, entry: import('../../lang/types.js').WordEntry | null, how: string}} Classified
  */
-/** @typedef {'known' | 'stop' | 'easy' | 'cognate' | 'compound' | 'unknown'} Why */
+/** @typedef {'known' | 'stop' | 'easy' | 'cognate' | 'compound' | 'assumed' | 'read' | 'unknown'} Why */
+
+/** The lowest zipf of a word assumed known from his level. */
+export const ASSUMED_ZIPF = 3.5;
 
 /**
  * His coverage of a text: known running words over all running words, and the band.
@@ -53,10 +62,11 @@ export function bandOf(coverage) {
  * @param {string} [o.level]          his level ('B1')
  * @param {Index} [o.idx]             the pack's word list, for a compound's last part
  * @param {Set<string>} [o.known]     lemmas (lower case) to count as known whatever the score (words he unmarked)
+ * @param {Set<string>} [o.met]       item ids he read without looking them up (kv read.met)
  * @returns {{words: number, known: number, coverage: number, band: Band, unknown: string[], by: Record<Why, number>}}
  *   unknown: the unknown lemmas, most frequent in the text first
  */
-export function personalCoverage(sentences, { pack, view, level = 'B1', idx, known: mark = new Set() }) {
+export function personalCoverage(sentences, { pack, view, level = 'B1', idx, known: mark = new Set(), met = new Set() }) {
   const mine = levelRank(level);
   const stop = pack.reading?.stop || new Set();
   const cognate = pack.reading?.cognate || null;
@@ -65,7 +75,7 @@ export function personalCoverage(sentences, { pack, view, level = 'B1', idx, kno
   const item = (/** @type {{id: string}} */ e) => scopeItem(pack.id, `W:${e.id}`);
   const state = (/** @type {{id: string} | null | undefined} */ e) => (e && e.id ? view.get(item(e)).state : 'unseen');
   const knows = (/** @type {State} */ s) => s === 'known' || s === 'shaky';
-  /** @type {Record<Why, number>} */ const by = { known: 0, stop: 0, easy: 0, cognate: 0, compound: 0, unknown: 0 };
+  /** @type {Record<Why, number>} */ const by = { known: 0, stop: 0, easy: 0, cognate: 0, compound: 0, assumed: 0, read: 0, unknown: 0 };
   /** @type {Map<string, number>} */ const unknown = new Map();
   let n = 0;
   for (const sentence of sentences) for (const x of sentence) {
@@ -79,6 +89,8 @@ export function personalCoverage(sentences, { pack, view, level = 'B1', idx, kno
     else if (x.entry && st !== 'unknown' && levelRank(x.entry.level) <= mine - 2 && (x.entry.zipf ?? 0) >= 5) why = 'easy';
     else if (cognate && !x.entry && cognate.test(x.lemma)) why = 'cognate';
     else if (x.how === 'compound' && look && idx && knows(state(look(x.lemma, idx).part))) why = 'compound';
+    else if (x.entry && st !== 'unknown' && levelRank(x.entry.level) <= mine && (x.entry.zipf ?? 0) >= ASSUMED_ZIPF) why = 'assumed';
+    else if (x.entry && st !== 'unknown' && x.entry.id && met.has(item(x.entry))) why = 'read';
     by[why]++;
     if (why === 'unknown') unknown.set(x.lemma, (unknown.get(x.lemma) || 0) + 1);
   }

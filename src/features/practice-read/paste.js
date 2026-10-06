@@ -32,7 +32,7 @@ export async function mountPaste(el, ctx) {
     const [Lg, K] = await Promise.all([L0, K0]);
     const r = L.makeRead({ raw, title: '', id: 'x', lang: Lg.lang, now: '', untitled: '' });
     const an = L.analyse(L.sentencesOf(r), { pack: Lg.pack, idx: Lg.idx, lexicon: Lg.lexicon, level: ctx.settings().level || 'B1', suggest: false });
-    const e = L.estimate(an, { pack: Lg.pack, idx: Lg.idx, view: K || { get: () => ({ state: 'unseen' }) }, level: ctx.settings().level || 'B1' });
+    const e = L.estimate(an, { pack: Lg.pack, idx: Lg.idx, view: K || { get: () => ({ state: 'unseen' }) }, level: ctx.settings().level || 'B1', met: R.metSet(ctx.store) });
     last = e;
     est.textContent = [format !== 'de' ? t(`read.paste.format.${format}`) : null, t('read.paste.words', { n: e.words }), levelLine(e, t)].filter(Boolean).join(' · ');
   }

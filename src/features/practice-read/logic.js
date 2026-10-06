@@ -27,7 +27,7 @@ import { fnv1a } from '../../data/ids.js';
 /** @typedef {import('../../domain/text/suggest.js').Classified} Classified */
 
 /** The estimator's version: a stored estimate from another version is made again. */
-export const ESTIMATE_VER = 2;
+export const ESTIMATE_VER = 3;   // 3: words assumed from his level and words read without a look-up count (round 4)
 /** The share of listed content words a level's word list must cover for the text to be at that level (calibrated on
     the graded texts: tests/unit/read-logic.test.mjs). */
 export const LEVEL_COVER = 0.92;
@@ -152,10 +152,10 @@ export function textLevel(an, pack, idx) {
 /**
  * The estimate shown with a text: its level, his coverage and the band.
  * @param {{toks: Token[], cls: Classified[]}[]} an
- * @param {{pack: LanguagePack, idx: Index, view: {get: (id: string) => {state: any}}, level?: string, known?: Set<string>}} o
+ * @param {{pack: LanguagePack, idx: Index, view: {get: (id: string) => {state: any}}, level?: string, known?: Set<string>, met?: Set<string>}} o
  */
-export function estimate(an, { pack, idx, view, level = 'B1', known }) {
-  const cov = personalCoverage(an.map(s => s.cls), { pack, view, level, idx, known });
+export function estimate(an, { pack, idx, view, level = 'B1', known, met }) {
+  const cov = personalCoverage(an.map(s => s.cls), { pack, view, level, idx, known, met });
   return { level: textLevel(an, pack, idx), coverage: Math.round(cov.coverage * 1000) / 1000, band: cov.band, words: cov.words, known: cov.known, unknown: cov.unknown.slice(0, 40), by: cov.by, ver: ESTIMATE_VER };
 }
 

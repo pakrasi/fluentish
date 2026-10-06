@@ -18,6 +18,10 @@
                        A marked phrase (RP:) is stored here with lemma '', head '' and gloss null: its words are in
                        read.ctx (savedWords() puts them back for the screens). Entries saved before that fix are moved
                        once (migratePhrases, practice-read/boot.js), keeping their ids.
+     kv 'read.met'     { [item id]: {first, last, n} }   the listed words he read past in a text without looking them up
+                       (round 4, UX review #4): word-list item ids only, no text. The reader's estimate counts them as
+                       read for coverage (domain/text/estimate.js); they are never a card and never in a known count.
+                       Not backed up.
      deck '<lang>:read' ('de:read')   the cards of saved items that had no card anywhere else: W:<id> (a listed word or
                        phrase), RW:<slug> (a word off the list), RP:h<hash> (a phrase he marked; RP:<slug> before round
                        4's privacy fix). A record never holds text; its card.reviewed events are learning progress and backed up like every other deck's.
@@ -34,6 +38,26 @@ export const READS = 'reads';
 export const CTX = 'read.ctx';
 export const CACHE = 'read.cache';
 export const WORDS = 'read.words';
+export const MET = 'read.met';
+
+/** The item ids read without a look-up (kv read.met). @param {any} store @returns {Set<string>} */
+export const metSet = store => new Set(Object.keys(store.get(MET, {}) || {}));
+
+/**
+ * Record items read without a look-up today (one count a day per item). @param {any} store @param {string} today
+ * @param {string[]} ids
+ */
+export function addMet(store, today, ids) {
+  if (!ids.length) return;
+  store.update(MET, (/** @type {any} */ m) => {
+    const out = { ...(m || {}) };
+    for (const id of ids) {
+      const was = out[id];
+      out[id] = was ? (was.last === today ? was : { ...was, last: today, n: (was.n || 1) + 1 }) : { first: today, last: today, n: 1 };
+    }
+    return out;
+  }, {});
+}
 /** The deck of saved reading items in a language ('de:read'). @param {string | null | undefined} lang */
 export const readDeck = lang => deckId(lang || 'de', 'read');
 /** Sentences kept per saved item, and the longest one kept. */
