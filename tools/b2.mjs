@@ -267,6 +267,8 @@ export async function gates({ only = null, bs = batches() } = {}) {
       const det = Det.run(s, { model: s }, null, { verbs: data.verbs });
       if (det) problems.push({ id: g.id, cls: 'detector-fires', text: s, why: `${det.cls}: ${det.hint}` });
     }
+    // the word-order classes without the word list (tests/unit/b1.test.mjs: no fires on right Igloo sentences)
+    for (const a of ans) if (String(a).split(' ').length > 2 && Det.classes(a, a).length) problems.push({ id: g.id, cls: 'classes-fire', text: a, why: Det.classes(a, a).join(',') });
     // near misses: wrong
     for (const [text, why] of near.get(g.id) || []) {
       const r = grade(text); wrongs++;
@@ -301,6 +303,7 @@ export async function gates({ only = null, bs = batches() } = {}) {
     else if (r.rest && r.rest.status === 'differs') problems.push({ id, cls: 'model-partial', text: b.ex, why: 'the rest of the example differs from itself' });
     const det = Det.run(b.ex, { model: b.ex }, null, { verbs: data.verbs });
     if (det) problems.push({ id, cls: 'detector-fires', text: b.ex, why: `${det.cls}: ${det.hint}` });
+    if (Det.classes(b.ex, b.ex).length) problems.push({ id, cls: 'classes-fire', text: b.ex, why: Det.classes(b.ex, b.ex).join(',') });
     for (const [text, why] of pnear.get(id) || []) {
       const g = gradeAnswer(it, text, null, opts); wrongs++;
       if (g.ok && !(g.rest && g.rest.status === 'differs')) problems.push({ id, cls: 'near-miss-right', text, why });
