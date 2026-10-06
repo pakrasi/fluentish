@@ -17,6 +17,7 @@ import { at } from '../../domain/progress.js';
 import { add as addDays } from '../../domain/days.js';
 import { recorded } from '../../data/progress.js';
 import { activeCourse } from '../../data/settings.js';
+import { points } from './progress/model.js';
 
 
 const AHEAD = new Set(['week', 'lastNew', 'eve']);
@@ -94,6 +95,46 @@ function withGain(levels, store, today) {
   return levels.map(x => ({ ...x, was: at(r.known, 'w', x.level) + at(r.known, 'p', x.level) + at(r.known, 'g', x.level) }));
 }
 
+const NS = 'http://www.w3.org/2000/svg';
+/**
+ * Known over the last 12 weeks from the progress log, for the Progress row's sparkline, and the change over the last
+ * 4 weeks. Null with fewer than two records. @param {any} store @param {string} today
+ * @returns {{pts: {day: string, v: number}[], gain: number | null} | null}
+ */
+export function sparkOf(store, today) {
+  const course = activeCourse(store.get('settings'));
+  if (!course) return null;
+  const all = points(recorded(store, course.id));
+  const from = addDays(today, -84);
+  const pts = all.filter(p => p.day >= from && p.day <= today).map(p => ({ day: p.day, v: p.known }));
+  if (pts.length < 2) return null;
+  const then = all.filter(p => p.day <= addDays(today, -28)).pop();
+  return { pts, gain: then ? pts[pts.length - 1].v - then.known : null };
+}
+
+/**
+ * A 96×28 sparkline: a 2 px ink line, the accent end dot. It shares a view-transition name with the Progress page's
+ * known line, so opening Progress morphs the one into the other (reduced motion: the route's crossfade).
+ * @param {{day: string, v: number}[]} pts
+ */
+function sparkline(pts) {
+  const W = 96, H = 28, P = 3;
+  const lo = Math.min(...pts.map(p => p.v)), hi = Math.max(...pts.map(p => p.v));
+  const x0 = Date.parse(pts[0].day), x1 = Date.parse(pts[pts.length - 1].day);
+  const X = (/** @type {string} */ d) => P + ((Date.parse(d) - x0) / Math.max(1, x1 - x0)) * (W - 2 * P);
+  const Y = (/** @type {number} */ v) => H - P - ((v - lo) / Math.max(1, hi - lo)) * (H - 2 * P);
+  const svg = document.createElementNS(NS, 'svg');
+  for (const [k, v] of Object.entries({ class: 'stand-spark', viewBox: `0 0 ${W} ${H}`, width: W, height: H, 'aria-hidden': 'true' })) svg.setAttribute(k, String(v));
+  const line = document.createElementNS(NS, 'path');
+  line.setAttribute('d', pts.map((p, i) => `${i ? 'L' : 'M'}${X(p.day).toFixed(1)},${Y(p.v).toFixed(1)}`).join(''));
+  line.setAttribute('class', 'stand-spark-line');
+  const end = document.createElementNS(NS, 'circle');
+  const last = pts[pts.length - 1];
+  for (const [k, v] of Object.entries({ cx: X(last.day).toFixed(1), cy: Y(last.v).toFixed(1), r: 2.75, class: 'stand-spark-end' })) end.setAttribute(k, String(v));
+  svg.append(line, end);
+  return svg;
+}
+
 /**
  * The section. Returns the element and a fill(counts) for the counts that come later.
  *   rows 'open' (an exam in its window, or up to 14 days after it): per module the latest mock score, the items known
@@ -102,10 +143,11 @@ function withGain(levels, store, today) {
  *     was learnt in the last 4 weeks, from the progress log), the level goal, and the mock results folded behind one
  *     button ('folded') or left out ('none').
  * @param {{plan: any, c: any, t: (k: string, v?: any) => string, course?: boolean, rows?: 'open' | 'folded' | 'none',
- *   goal?: {level: string, month: string | null} | null, examName?: string}} o  course: a course in another language
+ *   goal?: {level: string, month: string | null} | null, examName?: string, spark?: ReturnType<typeof sparkOf>}} o
+ *   spark: known over the last 12 weeks, for the Progress row; course: a course in another language
  *   than German, whose words line counts its course's items and opens Practice (there is no map for it)
  */
-export function renderStanding({ plan, c, t, course = false, rows: mode = 'open', goal = null, examName = '' }) {
+export function renderStanding({ plan, c, t, course = false, rows: mode = 'open', goal = null, examName = '', spark = null }) {
   const ahead = !!c.exam && AHEAD.has(c.phase);
   const ms0 = modulesStanding({ modules: plan.modules, pool: [], get: () => ({ state: 'unseen' }) });
   // one next action per module while there are study days left before the exam (not on the eve: reviews only)
@@ -126,8 +168,13 @@ export function renderStanding({ plan, c, t, course = false, rows: mode = 'open'
   });
   const weekEl = h('p', { class: 'caption stand-week', hidden: true });
   const def = h('p', { class: 'caption stand-def' }, t('stand.def'));
-  // Today › Progress (L5): the long view from the progress log
-  const progress = () => h('a', { class: 'stand-words pressable', href: '#/today/progress' }, h('span', { class: 'row-title' }, t('pg.link')));
+  // Today › Progress (L5): the long view from the progress log. A 64 px row: the title, the last 4 weeks' change, a
+  // sparkline of known over 12 weeks and the chevron the plan rows use (design review round 4, P1-8)
+  const progress = () => h('a', { class: 'stand-progress pressable', href: '#/today/progress' },
+    h('span', { class: 'row-main' }, h('span', { class: 'row-title' }, t('pg.link')),
+      spark && spark.gain != null ? h('span', { class: 'row-detail tnum' }, t('stand.progressGain', { d: `${spark.gain >= 0 ? '+' : '−'}${nf.format(Math.abs(spark.gain))}` })) : null),
+    spark ? sparkline(spark.pts) : null,
+    icon('next', { size: 16 }));
   if (mode === 'open' || course) {
     const wordsEl = h('span', { class: 'tnum' }, '…');
     const sub = ahead ? t('stand.sub', { date: label(/** @type {string} */ (c.exam)) }) : c.phase === 'after' && c.exam ? t('stand.subAfter', { date: label(c.exam) }) : null;
@@ -179,10 +226,11 @@ export function renderStanding({ plan, c, t, course = false, rows: mode = 'open'
   const sec = section(t('stand.title'),
     h('a', { class: 'stand-figure pressable', href: '#/lookup/map' }, figure, ofEl),
     weekEl,
+    progress(),
     levelsEl, keyEl,
     goalCard,
     mocks,
-    def, progress());
+    def);
   sec.classList.add('today-stand', 'is-calm');
   return {
     el: sec,
@@ -193,8 +241,11 @@ export function renderStanding({ plan, c, t, course = false, rows: mode = 'open'
       if (n.words) { figure.textContent = nf.format(n.words.known); ofEl.textContent = t('stand.knownOf', { n: nf.format(n.words.n) }); } else figure.textContent = '';
       if (n.week.learnt || n.week.lapsed) { weekEl.textContent = t('stand.week', { learnt: n.week.learnt, lapsed: n.week.lapsed }); weekEl.hidden = false; }
       const levels = n.levels || [];
+      // nothing known yet: one sentence instead of six empty tracks
+      const none = levels.length > 0 && levels.every(x => !x.k);
+      if (none && levelsEl.isConnected) levelsEl.replaceWith(h('p', { class: 'caption stand-none' }, t('stand.noneKnown')));
       let gained = false;
-      levelsEl.replaceChildren(...levels.map(x => {
+      levelsEl.replaceChildren(...(none ? [] : levels).map(x => {
         const gain = x.was != null && x.k > x.was ? x.k - x.was : 0;
         if (gain) gained = true;
         const base = (x.k - gain) / x.n, add = gain / x.n;

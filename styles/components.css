@@ -163,12 +163,16 @@
 .toast .btn { min-height: 34px; padding: 0 12px; background: transparent; color: inherit; border-color: color-mix(in oklab, var(--on-ink) 35%, transparent); }
 
 /* ---------- atmosphere (brand.js Atmosphere) ---------- */
+/* The CSS gradient is the shader's first frame, stop for stop where it matters (the cobalt at the top and bottom of
+   the right edge, a softer cast at the left middle, the light diagonal between them), so the canvas that mounts after
+   idle only fades in over it (640 ms, opacity only) and nothing visibly changes on Today at rest. */
 .atmo { position: absolute; inset: 0; z-index: var(--z-atmo); overflow: hidden; pointer-events: none;
   background:
-    radial-gradient(70% 60% at 85% 0%, var(--atmo-4), transparent 70%),
-    radial-gradient(60% 55% at 0% 100%, var(--atmo-2), transparent 72%),
-    linear-gradient(170deg, var(--atmo-1), var(--atmo-3)); }
-.atmo canvas { position: absolute; inset: 0; width: 100% !important; height: 100% !important; opacity: 0; transition: opacity 900ms ease; }
+    radial-gradient(60% 85% at 100% 0%, var(--atmo-4) 10%, transparent 85%),
+    radial-gradient(78% 80% at 78% 108%, var(--atmo-2) 15%, transparent 86%),
+    radial-gradient(42% 52% at -4% 58%, color-mix(in oklab, var(--atmo-2) 75%, transparent), transparent 72%),
+    linear-gradient(160deg, var(--atmo-1) 30%, var(--atmo-3)); }
+.atmo canvas { position: absolute; inset: 0; width: 100% !important; height: 100% !important; opacity: 0; transition: opacity var(--dur-fill) var(--ease-out); }
 .atmo.is-live canvas { opacity: 1; }
 .hero { position: relative; isolation: isolate; overflow: hidden; border-radius: var(--r-card); padding: var(--s-6) var(--s-5) var(--s-5); }
 .hero > :not(.atmo) { position: relative; z-index: var(--z-content); }

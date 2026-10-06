@@ -22,7 +22,7 @@ import { courseGoal } from '../../domain/levels.js';
 import { fmtMin, weekDays, weekTotals, laterThisWeek, kindLine, whyLine, examRows } from './week.js';
 import { results } from '../../data/sync/index.js';
 import { config } from '../../core/config.js';
-import { renderStanding, standingCounts } from './standing.js';
+import { renderStanding, standingCounts, sparkOf } from './standing.js';
 
 /** What the hero showed last (kept across visits to Today in one session): the week strip fills from it. */
 const shown = /** @type {{week: string | null, ratios: number[], done: number | null, kind: string | null, welcome: string | null}} */ ({ week: null, ratios: [], done: null, kind: null, welcome: null });
@@ -55,7 +55,7 @@ export async function mount(el, ctx) {
     const goalLevel = courseGoal(s).goal;
     const goalBy = activeCourse(s)?.goal?.by || null;
     const rows = examRows(c, (plan.modules || []).some((/** @type {any} */ m) => m.score != null));
-    const stand = s.language ? renderStanding({ plan, c, t, rows, examName, goal: goalLevel ? { level: goalLevel, month: goalBy ? monthLabel(goalBy) : null } : null,
+    const stand = s.language ? renderStanding({ plan, c, t, rows, examName, goal: goalLevel ? { level: goalLevel, month: goalBy ? monthLabel(goalBy) : null } : null, spark: sparkOf(store, c.today),
       ...(s.language !== 'german' ? { course: true } : {}) }) : null;
     const page = h('div', { class: 'today' },
       h('header', { class: 'page-head' }, h('h1', null, t('today.title')), h('p', { class: 'caption' }, label(c.today))),
@@ -161,7 +161,7 @@ export async function mount(el, ctx) {
           shown.week = key; shown.ratios = weekStrip(stripEl, cols, { from });
           const prev = shown.done;
           shown.done = tot.done;
-          countTo(doneEl, tot.done, /** @type {any} */ ({ from: prev ?? tot.done, duration: 600, format: (/** @type {number} */ n) => fmtMin(t, n) }));
+          countTo(doneEl, tot.done, /** @type {any} */ ({ from: prev ?? 0, duration: 600, format: (/** @type {number} */ n) => fmtMin(t, n) }));
         }
         // the kind of day crosses over when it changes ("Study anyway")
         if (kindEl && shown.kind && shown.kind !== kindEl.textContent && !reduced()) kindEl.classList.add('is-new');

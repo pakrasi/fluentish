@@ -1995,6 +1995,8 @@ export default {
   'today.next.off': 'Day off',
   'today.next.normal': 'Normal day',
   'stand.byLevel': 'Known by level',
+  'stand.progressGain': '{d} known in 4 weeks',
+  'stand.noneKnown': 'Known items show here after your first reviews.',
   'stand.level': '{k} of {n}',
   'stand.levelAria': '{level}: {k} of {n} known',
   'stand.levelGain': '{level}: {k} of {n} known, {d} more than 4 weeks ago',
