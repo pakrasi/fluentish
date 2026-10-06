@@ -83,7 +83,9 @@ export async function mountReader(el, ctx, read0, given) {
   /** @param {boolean} marks */
   const analyse = marks => L.analyse(sentences, { pack, idx, lexicon: Lg.lexicon, level, know, card, has, wordmap: Lg.wordmap, suggest: marks });
   let an = analyse(read.mode !== 'extensive');
-  const est = read.estimate && read.estimate.ver === L.ESTIMATE_VER ? read.estimate : { ...L.estimate(analyse(false), { pack, idx, view: view0, level }), at: c.today };
+  const est0 = read.estimate && read.estimate.ver === L.ESTIMATE_VER ? read.estimate : { ...L.estimate(analyse(false), { pack, idx, view: view0, level }), at: c.today };
+  // a graded text has a reviewed level of its own; the estimate's level is for pasted texts (his coverage stays his)
+  const est = src.graded && src.graded.level ? { ...est0, level: src.graded.level } : est0;
   read = { ...read, estimate: est };
   R.putRead(store, read);
   // each token's lemma candidates (lower case), for phrase bands and the sheet

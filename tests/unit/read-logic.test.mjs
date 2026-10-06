@@ -151,8 +151,11 @@ test('the round: his sentence with the word gapped, every other review from the 
 });
 
 test('estimator calibration: the graded texts\' levels, within one level', () => {
-  // the C0 fixture, the synthetic calibration texts and the reviewed graded texts of the content (L3 T1 on)
-  const texts = [...json('tests/fixtures/readers-synthetic.json').texts, ...json('tests/fixtures/read-calibration.json').texts, ...json('content/read/de.json').texts];
+  // the C0 fixture, the synthetic calibration texts and the graded texts written for the app (L3 T1, T2). The public-
+  // domain classics are left out: their level is literary style (Kafka in plain words), which a word-list estimate
+  // cannot see, so the reader shows a graded text's own level and keeps the estimate for pasted texts
+  const graded = json('content/read/de.json').texts;
+  const texts = [...json('tests/fixtures/readers-synthetic.json').texts, ...json('tests/fixtures/read-calibration.json').texts, ...graded.filter((/** @type {any} */ x) => x.licence !== 'PD')];
   assert.ok(texts.length >= 16);
   /** @type {string[]} */ const rows = [];
   for (const x of texts) {
