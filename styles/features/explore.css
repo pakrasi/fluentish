@@ -76,6 +76,8 @@ body.ex-page { overscroll-behavior: none; }
 .ex-modebtn { gap: 6px; padding-inline: 14px 10px; background: var(--surface); color: var(--ink); }
 .ex-chev { display: inline-grid; color: var(--ink-3); transform: rotate(90deg); transition: transform var(--dur-quick) var(--ease-out); }
 .ex-modebtn[aria-expanded="true"] .ex-chev { transform: rotate(-90deg); }
+@media (prefers-reduced-motion: reduce) { :root:not([data-motion="full"]) .ex-chev { transition: none; } }
+:root[data-motion="reduce"] .ex-chev { transition: none; }
 .ex-modepanel { display: none; }
 .ex-modes .chip.is-landed, .ex-modebtn.is-landed { animation: ex-chip-land 520ms var(--spring-pop); }
 @keyframes ex-chip-land { 0% { transform: scale(calc(1 - 0.1 * var(--move))); } 100% { transform: none; } }
