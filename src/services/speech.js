@@ -18,7 +18,8 @@
      checkNoise(ms?): Promise<Ambient | null>   measure the room now (the Teil 2 talk, before the mic check)
      blocked(): boolean                         the user or the browser refused the microphone
      canRecord(): boolean
-     record({ onLevel? }?): Promise<{ stop(): Promise<Blob | null> }>   throws when the microphone is refused
+     record({ onLevel? }?): Promise<{ stop(): Promise<Blob | null>, floor(): number | null }>
+                                                throws when the microphone is refused; floor: the noise under the take
      cancel(): void                             stop listening and recording
    }
    Heard: { text, error, spans, alts, confidence, restarts, ambient, floor, hold }
@@ -201,7 +202,8 @@ export function webSpeech({ recorder = () => createRecorder(), meter = () => cre
     /** One take with services/recorder.js. Throws when the microphone is refused or missing. @param {{ onLevel?: (x: number) => void }} [o] */
     async record({ onLevel } = {}) {
       const r = recorder();
-      await r.start(onLevel ? { onLevel: (/** @type {number} */ db) => onLevel(H.meter(db)) } : {});
+      /** @type {number[]} */ const dbs = [];
+      await r.start(onLevel ? { onLevel: (/** @type {number} */ db) => { if (dbs.length < 4000) dbs.push(db); onLevel(H.meter(db)); } } : {});
       /** @type {Promise<Blob | null> | null} */ let stopping = null;
       const stop = () => {
         live.delete(halt);
@@ -210,7 +212,9 @@ export function webSpeech({ recorder = () => createRecorder(), meter = () => cre
       };
       const halt = () => { stop(); };
       live.add(halt);
-      return { stop };
+      /** the noise under the take (dBFS, the quietest fifth of frames); null without a meter */
+      const floor = () => H.floor(dbs);
+      return { stop, floor };
     },
     cancel() {
       for (const stop of [...live]) stop();

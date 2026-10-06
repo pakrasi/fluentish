@@ -223,3 +223,25 @@ test('I know this on a situation asks Check by typing first: a miss marks nothin
   await page.locator('.pr-typecheck textarea').press('Enter');
   await expect.poll(async () => Object.values(await storedCards(page, 'speak')).filter(r => r.known).length).toBe(1);
 });
+
+test('mic check outdoors: a reading the phone was unsure of is read again or kept, never counted silently', async ({ page }) => {
+  await page.addInitScript(fakeRecogniser);
+  await page.addInitScript(fakeMic);
+  await seed(page, { veteran: true, examInDays: null });
+  await open(page, '#/practice/speak/aloud/check');
+  await expect(page.locator('.pr-card .tnum')).toHaveText(/^1 of 12/);
+  const sentence = String(await page.locator('.pr-card .prompt').textContent());
+  await page.evaluate(s => { const w = /** @type {any} */ (window); w.__amp = 0.05; w.__heard = s; w.__conf = 0.3; }, sentence);
+  await page.getByRole('button', { name: 'Speak' }).click();
+  await expect(page.locator('.pr-unsure')).toContainText("The phone wasn't sure what it heard.");
+  await expect(page.locator('.pr-loud')).toBeVisible();
+  await expect(page.locator('.pr-card .tnum')).toHaveText(/^1 of 12/);
+  await checkA11y(page, 'mic check, unsure');
+  await page.evaluate(() => { /** @type {any} */ (window).__conf = 0.95; });
+  await page.locator('.pr-unsure').getByRole('button', { name: 'Try again' }).click();
+  await expect(page.locator('.pr-card .tnum')).toHaveText(/^2 of 12/);
+  await page.evaluate(() => { /** @type {any} */ (window).__conf = 0.3; });
+  await page.getByRole('button', { name: 'Speak' }).click();
+  await page.locator('.pr-unsure').getByRole('button', { name: 'Keep it' }).click();
+  await expect(page.locator('.pr-card .tnum')).toHaveText(/^3 of 12/);
+});
