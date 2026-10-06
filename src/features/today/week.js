@@ -61,11 +61,12 @@ export function kindLine(plan, { anyway = false } = {}) {
 /**
  * The plan's note on why new items are fewer or none today (the day kind line already says Light and Off).
  * @param {any} plan dayAllowance().plan
- * @returns {{key: string, vars?: Record<string, any>, welcome?: boolean} | null}
+ * @returns {{key: string, vars?: Record<string, any>} | null}
  */
 export function whyLine(plan, reviewsDue = 0) {
   if (!plan || !plan.why) return null;
-  if (plan.why === 'break') return plan.away ? { key: 'week.why.break', vars: { d: plan.away, n: reviewsDue, k: plan.reviewsToday }, welcome: true } : { key: 'week.why.breakDue', vars: { n: reviewsDue, k: plan.reviewsToday }, welcome: true };
+  // the days away are the hero's ("Welcome back", after 3 days or more): the plan says what today takes
+  if (plan.why === 'break') return { key: 'week.why.breakDue', vars: { n: reviewsDue, k: plan.reviewsToday } };
   if (plan.why === 'reviewsHigh') return { key: 'today.why.reviewsHigh' };
   if (plan.why === 'reviewsDue') return { key: 'week.why.reviewsDue' };
   return null;
@@ -75,13 +76,15 @@ export function whyLine(plan, reviewsDue = 0) {
 export const EXAM_ROWS_AFTER = 14;
 
 /**
- * Where you stand's exam module rows: 'open' while an exam is ahead in its window, on its day and for 14 days after;
+ * Where you stand's exam module rows: 'open' while an exam is ahead in its window, on its day and, with a score, for 14 days after;
  * 'folded' (behind "Goethe B1 mock results") when there are scores to show otherwise; 'none' when there is nothing.
  * @param {{phase: string, exam: string | null, today: string}} c the clock context @param {boolean} scored any module has a score
  * @returns {'open' | 'folded' | 'none'}
  */
 export function examRows(c, scored) {
   if (c.exam && (c.phase === 'week' || c.phase === 'lastNew' || c.phase === 'eve' || c.phase === 'day')) return 'open';
-  if (c.exam && c.phase === 'after' && diff(c.exam, c.today) <= EXAM_ROWS_AFTER) return 'open';
+  // after the exam its rows stay open for 14 days only when there is a score to show; otherwise Where you stand
+  // follows the goal (UX review round 4, #10)
+  if (c.exam && c.phase === 'after' && diff(c.exam, c.today) <= EXAM_ROWS_AFTER && scored) return 'open';
   return scored ? 'folded' : 'none';
 }

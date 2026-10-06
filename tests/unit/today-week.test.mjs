@@ -46,9 +46,9 @@ test('kindLine: the kind of a day from a week, none without one; coming later an
   assert.deepEqual(kindLine({ kind: 'n' }, { anyway: true }), { key: 'week.day.anyway' });
 });
 
-test('whyLine: a break is a welcome back with the numbers; the forecast cap and a full day say why; light and off are the kind line', () => {
-  assert.deepEqual(whyLine({ why: 'break', away: 6, reviewsToday: 58 }, 164), { key: 'week.why.break', vars: { d: 6, n: 164, k: 58 }, welcome: true });
-  assert.deepEqual(whyLine({ why: 'break', away: null, reviewsToday: 58 }, 164), { key: 'week.why.breakDue', vars: { n: 164, k: 58 }, welcome: true });
+test('whyLine: a break says what today takes (the hero says welcome back); the forecast cap and a full day say why; light and off are the kind line', () => {
+  assert.deepEqual(whyLine({ why: 'break', away: 6, reviewsToday: 58 }, 164), { key: 'week.why.breakDue', vars: { n: 164, k: 58 } });
+  assert.deepEqual(whyLine({ why: 'break', away: null, reviewsToday: 58 }, 164), { key: 'week.why.breakDue', vars: { n: 164, k: 58 } });
   assert.deepEqual(whyLine({ why: 'reviewsHigh' }), { key: 'today.why.reviewsHigh' });
   assert.deepEqual(whyLine({ why: 'reviewsDue' }), { key: 'week.why.reviewsDue' });
   assert.equal(whyLine({ why: 'light' }), null);
@@ -56,11 +56,13 @@ test('whyLine: a break is a welcome back with the numbers; the forecast cap and 
   assert.equal(whyLine({ why: null }), null);
 });
 
-test('examRows: open in the window and for 14 days after; folded otherwise when there are scores; none without', () => {
+test('examRows: open in the window and, with a score, for 14 days after; folded otherwise when there are scores; none without', () => {
   const c = (/** @type {string} */ phase, /** @type {string | null} */ exam, today = '2026-10-20') => ({ phase, exam, today });
   assert.equal(examRows(c('week', '2026-10-25'), false), 'open');
   assert.equal(examRows(c('day', '2026-10-20'), false), 'open');
   assert.equal(examRows(c('after', '2026-10-13'), true), 'open');
+  // after the exam without a mock score: Where you stand follows the goal (UX review #10), no "No score yet" rows
+  assert.equal(examRows(c('after', '2026-10-13'), false), 'none');
   assert.equal(examRows(c('after', '2026-10-13', '2026-10-27'), true), 'open');
   assert.equal(examRows(c('after', '2026-10-13', '2026-10-28'), true), 'folded');
   assert.equal(examRows(c('none', '2027-06-12'), true), 'folded');

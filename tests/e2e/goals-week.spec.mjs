@@ -96,13 +96,22 @@ test('a week set on Goals and week: Today names the kind of day and draws the we
 test('an Off day: no plan, the reviews wait; Study anyway makes it a normal day', async ({ page }) => {
   await seed(page, { examInDays: null, veteran: true, week: every(0, 'off'), cards: { b1: dueCards(12) } });
   await open(page, '#/today');
-  await expect(page.getByRole('region', { name: 'Review queue' }).getByText('Day off', { exact: true })).toBeVisible();
+  // the hero states the day, never the debt: "Day off" in the numeral's place, what waits under it
+  const hero = page.getByRole('region', { name: 'Review queue' });
+  await expect(hero.getByText('Day off', { exact: true })).toBeVisible();
+  await expect(hero.getByText('12 reviews wait for tomorrow.')).toBeVisible();
+  await expect(hero.locator('.numeral')).toHaveCount(0);
   await expect(page.getByText(/Day off\. 12 reviews are due; they will be in tomorrow's plan\./)).toBeVisible();
   await expect(page.locator('.dock')).toHaveCount(0);
   await expect(page.locator('.plan-row')).toHaveCount(0);
   await checkA11y(page, 'Today, off day');
+  // Study anyway changes the hero in place: the same background and strip, today's column labelled Anyway
+  const atmo = await page.locator('.today-hero .atmo').elementHandle();
   await page.getByRole('button', { name: 'Study anyway' }).click();
   await expect(page.getByText('Day off, studying anyway: a normal day')).toBeVisible();
+  expect(await atmo?.evaluate(n => n.isConnected)).toBe(true);
+  await expect(hero.locator('.wk-strip .is-today small')).toHaveText('Anyway');
+  await expect(hero.locator('.numeral')).toHaveText('12');
   await expect(page.locator('.plan-row').filter({ hasText: 'Review round' })).toBeVisible();
   await expect(page.locator('.dock')).toHaveCount(1);
 });
@@ -110,8 +119,12 @@ test('an Off day: no plan, the reviews wait; Study anyway makes it a normal day'
 test('back after a break: welcome back, the most urgent reviews first, no new items', async ({ page }) => {
   await seed(page, { examInDays: null, week: every(15, 'n'), cards: { b1: dueCards(150) }, kv: { activity: { [day(-6)]: { minutes: 30, rounds: 2 }, [day(-40)]: { minutes: 30, rounds: 2 } } } });
   await open(page, '#/today');
-  await expect(page.getByText('Welcome back.')).toBeVisible();
-  await expect(page.getByText(/^You were away \d days\. 150 reviews are due\. Today takes the \d+ most urgent; the rest are spread over the next 3 days\./)).toBeVisible();
+  // the welcome is in the hero (after 3 days or more away); the numeral is today's share, the rest said under it
+  const hero = page.getByRole('region', { name: 'Review queue' });
+  await expect(hero.getByText(/^Welcome back\. You were away 5 days; today starts with the most urgent\./)).toBeVisible();
+  await expect(hero.locator('.unit')).toHaveText('today');
+  await expect(hero.getByText(/^of 150 due\. The rest are spread over the next 3 days\./)).toBeVisible();
+  await expect(page.getByText(/^150 reviews are due\. Today takes the \d+ most urgent; the rest are spread over the next 3 days\./)).toBeVisible();
   await expect(page.getByText(/\d+ new/)).toHaveCount(0);
   await checkA11y(page, 'Today, back after a break');
 });

@@ -263,7 +263,13 @@ input[type="date"].input { min-height: var(--tap); }
 .hero-weekline b { color: var(--ink); font-weight: 600; }
 .hero-edit-week { display: inline-flex; align-items: center; min-height: var(--tap); margin-block: calc(-1 * var(--s-3)); color: var(--accent-ink); }
 .hero-kind { margin-top: var(--s-3); color: var(--ink); }
-.hero-kind.is-new { animation: vt-fade-in var(--dur-base) var(--ease-out) both; }
+.hero-kind.is-new, .hero-count.is-new { animation: vt-fade-in var(--dur-base) var(--ease-out) both; }
+/* an Off day: the numeral's place says it (typography.h1), never a count of debt */
+.hero-dayoff { font: 400 var(--fs-h1, 32px)/1.08 var(--font-display); letter-spacing: -0.02em; color: var(--ink); }
+@media (min-width: 720px) { .hero-dayoff { font-size: 40px; } }
+.hero-count.is-off { padding-block: var(--s-2) var(--s-1); }
+/* "Welcome back": one sentence in the hero, under the kind of day */
+.hero-welcome { margin-top: var(--s-2); max-width: var(--measure); color: var(--ink-2); font-size: 14px; line-height: 1.45; }
 .plan-why { margin-top: var(--s-2); }
 .plan-off { display: grid; gap: var(--s-3); justify-items: start; margin-top: var(--s-3); }
 .plan-off p { margin: 0; color: var(--ink-2); max-width: var(--measure); }

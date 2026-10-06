@@ -24,6 +24,7 @@ export default {
   // units
   'unit.days': { one: 'day', other: 'days' },
   'unit.due': 'due',
+  'unit.today': 'today',
   'unit.newToday': 'new today',
   'unit.min': '{n} min',
 
@@ -1948,11 +1949,15 @@ export default {
   'week.kind.write': 'Write',
   'week.kind.talk': 'Talk',
   'week.kind.off': 'Off',
+  'week.kind.anyway': 'Anyway',
   'week.comingLater': 'coming later',
   'week.studyAnyway': 'Study anyway',
   'week.why.off': { one: "Day off. {n} review is due; it will be in tomorrow's plan.", other: "Day off. {n} reviews are due; they will be in tomorrow's plan." },
   'week.why.light': 'Light day: reviews only, no new items.',
   'week.why.break': 'You were away {d} days. {n} reviews are due. Today takes the {k} most urgent; the rest are spread over the next 3 days. New items come back when one day can hold the reviews.',
+  'today.welcomeBack': { one: 'Welcome back. You were away {d} day; today starts with the most urgent.', other: 'Welcome back. You were away {d} days; today starts with the most urgent.' },
+  'today.offWait': { one: '{n} review waits for tomorrow.', other: '{n} reviews wait for tomorrow.' },
+  'today.breakOf': 'of {n} due. The rest are spread over the next 3 days.',
   'week.why.breakDue': '{n} reviews are due. Today takes the {k} most urgent; the rest are spread over the next 3 days. New items come back when one day can hold the reviews.',
   'week.why.reviewsDue': 'No new items today: the reviews due fill the day.',
   'week.why.offWindow': 'Off day, but the exam is close: today plans your reviews and a few new items.',

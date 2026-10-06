@@ -10,14 +10,14 @@ import { label, parse, add, iso, weekdayShort } from '../../core/clock.js';
 import { icon } from '../../core/icons.js';
 import { notice, section, nextId } from '../../core/ui.js';
 import { odometer, fill, reveal, countTo, reduced } from '../../core/motion.js';
-import { runway, weekStrip, atmosphere } from '../../core/brand.js';
+import { runway, weekStrip, weekStripUpdate, atmosphere } from '../../core/brand.js';
 import { composeDay } from '../day.js';
 import { summaryText } from '../../data/migrate.js';
 import { examDate, activeCourse } from '../../data/settings.js';
 import { previewText } from '../../data/cutover.js';
 import { dueTomorrow } from '../../domain/allowance.js';
 import { dayAllowance, ANYWAY_KV, studyAnyway } from '../../domain/allowance.js';
-import { courseWeek } from '../../domain/week.js';
+import { courseWeek, dayPlan } from '../../domain/week.js';
 import { courseGoal } from '../../domain/levels.js';
 import { fmtMin, weekDays, weekTotals, laterThisWeek, kindLine, whyLine, examRows } from './week.js';
 import { results } from '../../data/sync/index.js';
@@ -36,6 +36,8 @@ export async function mount(el, ctx) {
   /** @type {any} */ let atmo = null;
   let alive = true, gen = 0;
   let pending = /** @type {Promise<void> | null} */ (null);
+  /** "Study anyway" was just tapped: the next render changes the hero in place instead of drawing it again. */
+  let anywayNext = false;
 
   async function render() {
     const { plan, exam, lang, c, settings: s, activity } = await composeDay(ctx);
@@ -64,12 +66,28 @@ export async function mount(el, ctx) {
         h('div', { class: 'today-b' }, feedbackSec, renderPlan(plan, c, allow)),
         stand ? h('div', { class: 'today-c' }, stand.el) : null),
       primary ? h('div', { class: 'dock' }, h('a', { class: 'btn btn-primary btn-wide pressable', href: fromToday(primary.href) }, primaryLabel(primary))) : null);
+    // Study anyway (design review P1-4): keep the atmosphere and the week strip that are on screen, so the background
+    // does not mount again and today's column rises from its baseline; the plan discloses; the numeral does not roll
+    const morph = anywayNext && !!el.querySelector('.today-hero');
+    anywayNext = false;
+    const oldAtmo = morph ? el.querySelector('.today-hero .atmo') : null;
+    const oldStrip = morph ? /** @type {HTMLElement | null} */ (el.querySelector('.today-hero .wk-strip')) : null;
+    if (oldAtmo) page.querySelector('.today-hero .atmo')?.replaceWith(oldAtmo);
     replace(el, page);
     page.classList.toggle('has-dock', !!primary);
-    hero.after();
+    hero.after(morph ? { strip: oldStrip } : null);
+    if (morph && !reduced()) {
+      const list = /** @type {HTMLElement | null} */ (page.querySelector('.today-b .section ol.plan'));
+      if (list) {
+        const panel = h('div', { class: 'reveal-answer plan-disclose' });
+        list.replaceWith(panel); panel.append(h('div', null, list));
+        requestAnimationFrame(() => requestAnimationFrame(() => panel.classList.add('is-open')));
+      }
+    }
     if (stand) standingCounts(ctx, plan.modules).then(n => { if (alive && my === gen) stand.fill(n); });
     reveal(page);
     for (const tr of page.querySelectorAll('.mbar .track')) fill(/** @type {HTMLElement} */ (tr), Number(/** @type {HTMLElement} */ (tr).dataset.p));
+    if (oldAtmo) return;
     const atmoEl = /** @type {HTMLElement | null} */ (page.querySelector('.atmo'));
     if (atmo) { atmo.destroy(); atmo = null; }
     if (atmoEl) atmosphere(atmoEl).then(a => { if (alive) atmo = a; else a.destroy(); }).catch(() => {});
@@ -79,7 +97,7 @@ export async function mount(el, ctx) {
   function renderHero({ s, c, plan, activity, examName, lang, allow, primary }) {
     const countdown = c.phase === 'week' || c.phase === 'lastNew' || c.phase === 'eve' || c.phase === 'day';
     const minutesLine = c.phase === 'day' ? h('p', { class: 'label' }, t('today.warmupOnly'))
-      : h('p', { class: 'label' }, h('b', { class: 'tnum ink' }, String(Math.round(plan.minutes.done))), ' ', t('today.minutesOf', { n: s.minutesPerDay }));
+      : h('p', { class: 'label' }, h('b', { class: 'tnum ink' }, String(Math.round(plan.minutes.done))), ' ', t('today.minutesOf', { n: plan.minutes.budget }));
     const heroBtn = primary ? h('a', { class: 'btn btn-primary pressable hero-btn', href: fromToday(primary.href) }, primaryLabel(primary)) : null;
     const atmoEl = h('div', { class: 'atmo', 'aria-hidden': 'true' });
     if (countdown) {
@@ -100,7 +118,9 @@ export async function mount(el, ctx) {
         el,
         after() {
           const ex = /** @type {string} */ (c.exam);
-          const planned = (/** @type {string} */ d) => (d === add(ex, -1) ? Math.min(s.minutesPerDay, 30) : s.minutesPerDay);
+          // each day's own minutes from the week plan (minutes a day without one), as the plan below counts them
+          const mins = (/** @type {string} */ d) => dayPlan(s, { today: d, phase: c.phase }).minutes;
+          const planned = (/** @type {string} */ d) => (d === add(ex, -1) ? Math.min(mins(d), 30) : mins(d));
           runway(runEl, {
             exam: parse(ex), today: parse(c.today), past: 2, locale: 'en-GB',
             plan: d => planned(iso(d)), done: d => (activity[iso(d)]?.minutes || 0),
@@ -115,7 +135,11 @@ export async function mount(el, ctx) {
     // day) and, with a week plan, the kind of day. There is no count of days in a row: a missed day costs only the
     // reviews it carried, and the week is the measure.
     const fresh = !allow.reviews.due && !Object.keys(store.cards('b1')).length;
-    const value = fresh ? allow.newLeft : allow.reviews.due;
+    // the hero states today's job, never a debt (design review round 4, P1-6): on an Off day "Day off" with what waits
+    // for tomorrow; after a break the reviews today takes (the capped number), with the rest said under it
+    const dayOff = allow.plan?.kind === 'off';
+    const capped = !fresh && allow.plan?.why === 'break' && Number.isFinite(allow.plan.reviewsToday) && allow.plan.reviewsToday < allow.reviews.due ? allow.plan.reviewsToday : null;
+    const value = fresh ? allow.newLeft : capped ?? allow.reviews.due;
     const num = h('span', { class: 'numeral' }, String(value));
     const goal = courseGoal(s);
     const by = activeCourse(s)?.goal?.by || null;
@@ -130,35 +154,51 @@ export async function mount(el, ctx) {
     const hasWeek = !!courseWeek(s);
     const stripEl = h('div', { class: 'runway' });
     const kl = kindLine(allow.plan, { anyway });
-    const kindEl = kl ? h('p', { class: 'label hero-kind', dataset: { kind: allow.plan.kind } }, t(kl.key, kl.vars && kl.vars.kind ? { kind: t(`week.kind.${kl.vars.kind}`) } : kl.vars)) : null;
+    // (on an Off day the numeral's place says "Day off": no kind line under it)
+    const kindEl = kl && allow.plan?.kind !== 'off' ? h('p', { class: 'label hero-kind', dataset: { kind: allow.plan.kind } }, t(kl.key, kl.vars && kl.vars.kind ? { kind: t(`week.kind.${kl.vars.kind}`) } : kl.vars)) : null;
     const off = allow.plan?.kind === 'off';
     const todayLine = off ? null : h('p', { class: 'label' }, h('b', { class: 'tnum ink' }, String(Math.round(plan.minutes.done))), ' ', t('today.minutesOf', { n: plan.minutes.budget }));
     const doneEl = h('b', { class: 'tnum' }, fmtMin(t, tot.done));
     const weekLine = h('div', { class: 'hero-weekline' },
       h('p', { class: 'label' }, ...(tot.plan ? splitAround(t('today.week.of', { done: '\u0000', plan: fmtMin(t, tot.plan) }), doneEl) : splitAround(t('today.week.done', { done: '\u0000' }), doneEl))),
       h('a', { class: 'caption hero-edit-week', href: '#/profile/week' }, hasWeek ? t('today.week.edit') : t('today.week.set')));
-    const el = h('section', { class: 'hero today-hero', 'aria-label': t('today.summary') }, atmoEl,
+    // "Welcome back" after 3 days or more away (UX review #8), in the hero under the kind of day: one sentence, no box;
+    // it rises once a day
+    const away = allow.plan?.away;
+    const welcomeEl = Number.isFinite(away) && away >= 3 ? h('p', { class: 'hero-welcome' }, t('today.welcomeBack', { d: away })) : null;
+    const countEl = dayOff
+      ? h('div', { class: 'hero-count is-off' }, h('span', { class: 'hero-dayoff' }, t('week.day.off')))
+      : h('div', { class: 'hero-count' }, num, h('span', { class: 'unit' }, fresh ? t('unit.newToday') : capped != null ? t('unit.today') : t('unit.due')));
+    const defText = fresh ? null : dayOff ? (allow.reviews.due ? t('today.offWait', { n: allow.reviews.due }) : null)
+      : capped != null ? t('today.breakOf', { n: allow.reviews.due }) : t('today.dueAll');
+    const el = h('section', { class: ['hero', 'today-hero', dayOff && 'is-off'], 'aria-label': t('today.summary') }, atmoEl,
       h('p', { class: 'label' }, lead),
-      h('div', { class: 'hero-count' }, num, h('span', { class: 'unit' }, fresh ? t('unit.newToday') : t('unit.due'))),
-      fresh ? null : h('p', { class: 'caption hero-def' }, t('today.dueAll')),
+      countEl,
+      defText ? h('p', { class: 'caption hero-def' }, defText) : null,
       fresh ? null : h('div', { class: 'hero-week' }, stripEl),
       fresh ? null : weekLine,
       kindEl,
+      welcomeEl,
       h('div', { class: 'hero-foot' }, todayLine, heroBtn));
     return {
       el,
-      after() {
+      /** @param {{strip: HTMLElement | null} | null} [patch] Study anyway: the strip on screen to change in place */
+      after(patch = null) {
         if (!fresh) {
           const cols = days.map(d => {
             const dayName = label(d.day);
             const text = d.plan ? t('today.week.day', { day: dayName, kind: t(`week.kind.${d.kind === 'off' ? 'n' : d.kind}`), done: d.done, plan: d.plan })
               : d.done ? t('today.week.dayOffDone', { day: dayName, done: d.done }) : t('today.week.dayOff', { day: dayName });
-            return { label: weekdayShort(d.day), sub: d.kind === 'n' || !hasWeek ? '' : t(`week.kind.${d.kind}`), plan: d.plan, done: d.done, today: d.today, past: d.past, aria: d.today ? t('today.week.today', { text }) : text };
+            // an Off day he studies anyway says so under its column (P2-3)
+            const sub = d.today && anyway && d.kind === 'off' ? t('week.kind.anyway') : d.kind === 'n' || !hasWeek ? '' : t(`week.kind.${d.kind}`);
+            return { label: weekdayShort(d.day), sub, plan: d.plan, done: d.done, today: d.today, past: d.past, aria: d.today ? t('today.week.today', { text }) : text };
           });
           // the columns fill from what was shown last time (back from a round, only the round's minutes fill)
           const key = days[0].day;
           const from = shown.week === key ? shown.ratios : [];
-          shown.week = key; shown.ratios = weekStrip(stripEl, cols, { from });
+          // Study anyway: the strip already on screen changes in place, so today's column rises from its baseline
+          if (patch && patch.strip) { weekStripUpdate(patch.strip, cols, days.findIndex(d => d.today)); stripEl.replaceWith(patch.strip); shown.week = key; }
+          else { shown.week = key; shown.ratios = weekStrip(stripEl, cols, { from }); }
           const prev = shown.done;
           shown.done = tot.done;
           countTo(doneEl, tot.done, /** @type {any} */ ({ from: prev ?? 0, duration: 600, format: (/** @type {number} */ n) => fmtMin(t, n) }));
@@ -166,7 +206,11 @@ export async function mount(el, ctx) {
         // the kind of day crosses over when it changes ("Study anyway")
         if (kindEl && shown.kind && shown.kind !== kindEl.textContent && !reduced()) kindEl.classList.add('is-new');
         shown.kind = kindEl ? kindEl.textContent : null;
-        odometer(num, value, { label: fresh ? t('today.newLabel', { n: value }) : t('today.dueLabel', { n: value }) });
+        if (welcomeEl && shown.welcome !== c.today) { shown.welcome = c.today; if (!reduced()) welcomeEl.classList.add('fx-rise'); }
+        if (dayOff) return;
+        // the number is the odometer's only when it changes: Study anyway shows the count without a roll
+        if (patch) { num.textContent = String(value); num.setAttribute('aria-label', fresh ? t('today.newLabel', { n: value }) : t('today.dueLabel', { n: value })); if (!reduced()) countEl.classList.add('is-new'); }
+        else odometer(num, value, { label: fresh ? t('today.newLabel', { n: value }) : t('today.dueLabel', { n: value }) });
       },
     };
   }
@@ -240,7 +284,7 @@ export async function mount(el, ctx) {
       return section(t('today.plan'),
         h('div', { class: 'plan-off' },
           h('p', null, due ? t('week.why.off', { n: due }) : t('today.offNone')),
-          h('button', { type: 'button', class: 'btn pressable', onclick: () => { store.set(ANYWAY_KV, { day: c.today }); rerender(); } }, t('week.studyAnyway'))),
+          h('button', { type: 'button', class: 'btn pressable', onclick: () => { anywayNext = true; store.set(ANYWAY_KV, { day: c.today }); rerender(); } }, t('week.studyAnyway'))),
         laterEl);
     }
     // inside the exam window the exam plans the day (code audit P0-1): an Off or Light day still has its reviews and a
@@ -248,12 +292,9 @@ export async function mount(el, ctx) {
     const winKind = !calm && allow.plan && (allow.plan.kind === 'off' || allow.plan.kind === 'light') && c.phase !== 'day' ? allow.plan.kind : null;
     const examFull = !calm && (allow.why === 'reviewsDue' || allow.plan?.why === 'reviewsDue');
     const why = calm ? whyLine(allow.plan, allow.reviews.due) : examFull ? { key: 'week.why.reviewsDue' } : winKind ? { key: winKind === 'off' ? 'week.why.offWindow' : 'week.why.lightWindow' } : null;
-    const anywayBtn = winKind === 'off' ? h('button', { type: 'button', class: 'btn pressable', onclick: () => { store.set(ANYWAY_KV, { day: c.today }); rerender(); } }, t('week.studyAnyway')) : null;
-    const whyEl = !why ? null : anywayBtn ? h('div', { class: 'plan-off' }, h('p', { class: 'caption plan-note plan-why' }, t(why.key, why.vars)), anywayBtn) : why.welcome
-      ? notice({ children: [h('p', { class: 'notice-title' }, t('today.welcome')), h('p', null, t(why.key, why.vars))] })
+    const anywayBtn = winKind === 'off' ? h('button', { type: 'button', class: 'btn pressable', onclick: () => { anywayNext = true; store.set(ANYWAY_KV, { day: c.today }); rerender(); } }, t('week.studyAnyway')) : null;
+    const whyEl = !why ? null : anywayBtn ? h('div', { class: 'plan-off' }, h('p', { class: 'caption plan-note plan-why' }, t(why.key, why.vars)), anywayBtn)
       : h('p', { class: 'caption plan-note plan-why' }, t(why.key, why.vars));
-    // "Welcome back" rises in once a day; reduced motion shows it in place
-    if (why?.welcome && whyEl && shown.welcome !== c.today) { shown.welcome = c.today; if (!reduced()) whyEl.classList.add('fx-rise'); }
     const work = plan.rows.filter(r => r.kind !== 'setup');
     const head = plan.state === 'done'
       ? h('p', { class: 'plan-done' }, icon('check', { size: 18 }), t('today.done', { n: dueTomorrow({ store, c, settings: ctx.settings(), exam: null, t }) }))
