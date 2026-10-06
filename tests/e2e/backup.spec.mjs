@@ -12,6 +12,29 @@ async function studyALittle(page, n = 3) {
   return cards;
 }
 
+/** Requests in flight per page, so a reload can wait for none (page.waitForLoadState('networkidle') does not wait
+   again once the page has loaded). @type {WeakMap<import('@playwright/test').Page, Set<any>>} */
+const inFlight = new WeakMap();
+/** @param {import('@playwright/test').Page} page */
+function track(page) {
+  const set = new Set();
+  inFlight.set(page, set);
+  page.on('request', r => set.add(r));
+  page.on('requestfinished', r => set.delete(r));
+  page.on('requestfailed', r => set.delete(r));
+}
+/** Wait until no request has been in flight for 500 ms (at most 15 s). @param {import('@playwright/test').Page} page */
+async function quiet(page) {
+  const set = inFlight.get(page) || new Set();
+  const t0 = Date.now();
+  let since = Date.now();
+  while (Date.now() - t0 < 15000) {
+    if (set.size) since = Date.now();
+    else if (Date.now() - since >= 500) return;
+    await page.waitForTimeout(100);
+  }
+}
+
 /** The progress log's months in IndexedDB (kv progress.<course>.<YYYY-MM>, data/progress.js). @param {import('@playwright/test').Page} page */
 async function progressLog(page) {
   return page.evaluate(() => new Promise((resolve, reject) => {
@@ -46,12 +69,16 @@ async function deleteAll(page) {
 }
 
 test('progress backup to the (mock) results repository, Delete all, Restore from backup', async ({ page, gh }) => {
+  track(page);
   await seed(page, { token: true });
   const before = await studyALittle(page);
   // the next open records the study day in the progress log (data/progress.js), which goes in the snapshot
   await open(page, '#/today');
   await page.waitForLoadState('networkidle');
   await settle(page);
+  // no request in flight (the atlas the progress log reads may still be loading): WebKit reports a read the reload
+  // cuts off as a page error
+  await quiet(page);
   await page.reload();
   await expect(page.locator('html.booted')).toHaveCount(1);
   await expect.poll(async () => logDays(await progressLog(page)).length).toBe(1);
@@ -98,10 +125,8 @@ test('progress backup to the (mock) results repository, Delete all, Restore from
   expect(logDays(back)).toEqual([day]);
   expect(Object.values(back)[0][day].day).toEqual(rec0.day);
   expect(Object.values(back)[0][day].seen).toEqual(rec0.seen);
-  // and the app shows it after a reload (once the restore's own reads are done: WebKit reports a fetch the reload
-  // cuts off, here the atlas the progress log reads, as a page error)
-  await page.waitForLoadState('networkidle');
-  await settle(page);
+  // and the app shows it after a reload (once the restore's own reads are done, as above)
+  await quiet(page);
   await page.reload();
   expect(Object.keys(await storedCards(page, 'b1')).sort()).toEqual(Object.keys(before).sort());
 });
