@@ -21,7 +21,7 @@ import { fmt } from './timer.js';
 import { stampMs } from '../../domain/grade.js';
 import { at, fill } from '../../domain/examdef.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
-import { fill, reduced } from '../../core/motion.js';
+import { fill as fillBar, reduced } from '../../core/motion.js';
 import { meter as level01 } from '../../domain/hearing.js';
 
 /** @param {HTMLElement} el @param {any} ctx @param {{ exam: any, n: number, ex: any, def: any }} o */
@@ -86,7 +86,7 @@ export function runSprechen(el, ctx, { exam, n, ex, def }) {
     // the level while recording, so he sees the phone hearing him (kit .track .fill; stepped with reduced motion)
     const meterEl = h('div', { class: 'track ex-meter', 'aria-hidden': 'true', hidden: true }, h('span', { class: 'fill' }));
     let meterAt = 0;
-    const onLevel = (/** @type {number} */ db) => { const now = performance.now(); if (reduced() && now - meterAt < 250) return; meterAt = now; fill(meterEl, level01(db)); };
+    const onLevel = (/** @type {number} */ db) => { const now = performance.now(); if (reduced() && now - meterAt < 250) return; meterAt = now; fillBar(meterEl, level01(db)); };
     const status = h('p', { class: 'caption', 'aria-live': 'polite' });
     const list = h('ul', { class: 'ex-takes' });
     let t0 = 0;
@@ -131,7 +131,7 @@ export function runSprechen(el, ctx, { exam, n, ex, def }) {
       if (!recording) return;
       recording = false; activeStop = null; flushTake = null;
       clearInterval(iv);
-      meterEl.hidden = true; fill(meterEl, 0);
+      meterEl.hidden = true; fillBar(meterEl, 0);
       const id = takeId;
       try {
         const { blob, mime } = await rec.stop();
