@@ -13,7 +13,8 @@
 // fsrs.json      domain/fsrs.js: rate() over its flags, schedule() over answer sequences in every phase, dueFor(),
 //                R(), interval(), recap()
 // clock.json     core/clock.js: phase(), context(), today() at local times around the 04:00 cutoff, the labels
-// budget.json    domain/budget.js: allowance() over modes, settings and decks, mode, buildShare, streamQuota
+// budget.json    domain/budget.js: allowance() over modes, settings and decks, mode, buildShare, streamQuota; and
+//                allowance() on a day from a week (allowance.week: kinds, slots, Auto and chosen, the forecast cap)
 //
 // When a change alters results on purpose, write the vectors in a commit of their own and list every changed entry
 // with its reason in the commit message (round 3, lane A2).
@@ -198,6 +199,24 @@ export async function budgetVectors() {
   }
   for (const s of settingsList) rows.push({ fn: 'buildShare', in: s, out: B.buildShare(s) }, { fn: 'newPerDayChosen', in: s, out: B.newPerDayChosen(s) });
   for (const n of [0, 1, 4, 11, 20, 55]) for (const st of ['p', 'g']) rows.push({ fn: 'streamQuota', in: [n, st], out: B.streamQuota(n, st) });
+  // the week (round 4, L1b): a day from a week, by kind, with the slots live, Auto and chosen, with and without the
+  // review forecast (appended, so every row above stays as it was)
+  const W = await imp('src/domain/week.js');
+  const LIVE = ['read', 'write', 'talk'];
+  const weekCtxs = [['2026-10-19', null], ['2026-10-05', EXAM], ['2026-10-12', EXAM]];
+  const weekSettings = [{ minutesPerDay: 60, newPerDay: null }, { minutesPerDay: 60, newPerDay: 15, rev: { newPerDay: 'x' } }];
+  const forecasts = [null, { reviewMin: 200, plannedMin: 630, days: 14 }, { reviewMin: 600, plannedMin: 630, days: 14 }];
+  for (const [today, exam] of weekCtxs) {
+    const c = context({ today, exam });
+    for (const kind of W.DAY_KINDS) for (const base of weekSettings) {
+      const min = kind === 'light' ? 20 : 45;
+      const settings = { ...base, activeCourse: 'de', courses: [{ id: 'de', lang: 'de', week: { min: Array(7).fill(min), kind: Array(7).fill(kind) } }] };
+      const day = W.dayPlan(settings, c, { live: LIVE });
+      for (let a = 0; a < deckSets.length; a++) for (const forecast of forecasts) {
+        rows.push({ fn: 'allowance.week', in: { today, exam, settings, live: LIVE, decks: deckSets[a], forecast }, out: B.allowance({ c, settings, decks: deckSets[a], day, forecast }) });
+      }
+    }
+  }
   return lines(header('budget', 'domain/budget.js outputs (allowance, mode, buildShare, newPerDayChosen, streamQuota). Infinity is written as null.'), rows);
 }
 
