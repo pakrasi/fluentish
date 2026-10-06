@@ -39,6 +39,7 @@ export const FILES = {
   read: 'content/read/de.json',
   words: 'content/igloo/words/de.json',
   morph: 'authoring/clusters/morph.de.json',
+  added: 'authoring/clusters/words-added.de.json',
 };
 const WORD_KEYS = ['id', 'w', 'art', 'pl', 'pos', 'en', 'alt', 'level', 'theme', 'rank', 'zipf', 'ex', 'exen', 'forms', 'mine'];
 const PARTS = 'authoring/chunks/parts/german', ACCEPT = 'authoring/chunks/accept/german', SRC = 'authoring/chunks/src';
@@ -273,7 +274,11 @@ export function applyWords(bs) {
   // unchanged entries keep their text as it is on disk (parts were written by Python, which spells a float 6.0)
   const raw = new Map(rawEntries(readFileSync(path.join(ROOT, FILES.words), 'utf8')).map(t => [JSON.parse(t).id, t]));
   const text = '[' + words.map(w => { const r = raw.get(w.id); return r && JSON.stringify(JSON.parse(r)) === JSON.stringify(w) ? r : JSON.stringify(w); }).join(',') + ']\n';
-  return { [FILES.words]: text, [FILES.morph]: morphText };
+  // tools/build-clusters.mjs wants its added words to equal their entries in the list ("edit both")
+  const byId = new Map(words.map(w => [w.id, w]));
+  /** @type {any[]} */ const added = J(FILES.added);
+  const addedText = JSON.stringify(added.map(a => byId.get(a.id) || a), null, 1) + '\n';
+  return { [FILES.words]: text, [FILES.morph]: morphText, [FILES.added]: addedText };
 }
 
 /** The top-level entries of a JSON array of objects, as their own text. @param {string} text */
