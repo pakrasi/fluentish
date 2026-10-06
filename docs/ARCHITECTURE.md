@@ -71,7 +71,8 @@ implementation with one setter and every caller stays as it is (Arch #8, round 3
 
 | Service | Interface | Native later |
 |---|---|---|
-| `speech.js` | `speech().listen({lang})`, `record()` (through `recorder.js`, the one MediaRecorder path), `blocked()`, `cancel()`; `setSpeech()` | SFSpeechRecognizer |
+| `speech.js` | `speech().listen({lang, hold, check, onLevel, onPhase})` (every alternative with its confidence; a session that ends early restarted inside the attempt; a take ended when its words stop changing; a ~1 s noise check once a minute), `noise()`, `checkNoise()`, `record({onLevel})` (through `recorder.js`, the one MediaRecorder path), `blocked()`, `cancel()`; `setSpeech()`. The rules are `domain/hearing.js` (noise thresholds, restarts, `trust`) | SFSpeechRecognizer |
+| `level.js` | `createMeter()` (AnalyserNode RMS → dBFS) and `audioConstraints()` (echo cancellation, noise suppression, gain as ideals; iOS Safari applies echo cancellation only) | AVAudioSession metering |
 | `voice.js` | `say(text, bcp47, {prefer, avoid, rate, localOnly, onWord})`, `canSay`, `unlock()` (a silent utterance inside the tap), `hush()`; `setVoice()`. Voices come from the language's list in `core/lang.js`; "Multilingual" voices are never used | AVSpeechSynthesizer |
 | `audio.js` | the only player: `clip(url, {stallMs})` (words, situation lines, exam cues, the sound check), `track(url, {limit, used, onCount})` (Hören: preload none, a play counts once it started), `stop()`, `setAudioHooks({duck})`; and word audio `play(content, text, store, bcp47)`. Both start inside the caller's tap; one thing plays at a time | AVAudioSession (ducking, routes, background) |
 | `recorder.js` | `createRecorder()` | AVAudioRecorder |

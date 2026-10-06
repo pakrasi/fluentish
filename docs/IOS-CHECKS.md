@@ -55,3 +55,41 @@ Read from the code on `main` 5d4aca4, with the platform facts from MDN's browser
   plain booleans, which a browser may ignore and never fail on. They help on a Mac.
 - **Grading.** `sim.js micCheck` suggested Again whenever the chunk was missing from the transcript, and the table
   said "Wrong". A misheard answer outdoors was a suggested Again; Enter takes the suggestion.
+
+### What the app does now
+- The first mic tap in a minute measures the room for about a second ("One moment: checking how loud it is."). A loud
+  or gusty room says "It's loud here. Hold the phone closer, or type instead." and offers Hold to talk.
+- A level bar under the mic moves while it listens (and while an exam take records).
+- A session that ends with nothing heard restarts by itself, up to twice. Hold to talk keeps listening through pauses
+  until you let go. A take whose words stop changing for 2.5 s ends by itself, and no take runs past 20 s.
+- Every alternative the phone offers is checked; the best one counts.
+- When the phone isn't sure (low confidence, a garbled transcript, or a loud room and little of the answer came
+  through), nothing is marked Wrong: the card shows what it heard with "Not sure", and "That's not what I said" leads
+  to Try again or Type instead. Show answer leaves the grade to you, and Good is suggested.
+- Each attempt is logged on this device only (kv `speech.log`: the room's level, confidence, flags; no words, no audio).
+
+### Checks on the street
+Use Safari in a tab (the Home Screen icon has no speech recognition). Turn on Check with the mic in a situation round.
+- [ ] Quiet room first: the first tap shows "One moment" for about a second, then "Listening". The bar moves when you
+      speak and drops when you stop. The answer is checked as before.
+- [ ] On a busy street: the first tap says "It's loud here. Hold the phone closer, or type instead." and Hold to talk
+      is underlined.
+- [ ] Say the right answer at arm's length in the noise. If the phone gets it wrong, the card says "Not sure", never
+      "Wrong", and the answer stays closed.
+- [ ] "That's not what I said" → Try again works; Type instead takes a typed answer and checks it.
+- [ ] Turn on Hold to talk. Hold the mic button, speak with a pause in the middle (or in a gust), let go: both halves
+      are in the transcript. A long press opens no menu and selects no text.
+- [ ] With the wind on the mic, tap and speak one sentence and stop: listening ends by itself within a few seconds.
+- [ ] After a check, the model answer plays at full volume (the mic is released first).
+- [ ] The bar and recognition together: if the phone stops hearing you the moment the bar appears, note it. The app
+      falls back to listening without the bar for the rest of the visit.
+- [ ] Mic check in a loud place: a reading the phone wasn't sure of offers Try again or Keep it.
+- [ ] Teil 2 talk outdoors: the bar moves during the run; after a loud run there is no speech rate, and the line
+      says why.
+- [ ] Exam › Sprechen: the bar moves while a take records; the take plays back.
+- [ ] Settings › Accessibility › Motion › Reduce Motion on: the bar steps about four times a second, without the spring.
+
+Unverified on the device, to note when you run these: the confidence values iOS gives (MDN documents the 0 to 1
+range; Firefox always reports 1, Safari is not documented), whether the meter's stream and the recogniser share the
+microphone (WebKit's source mutes capture in other pages only), and the noise thresholds (`domain/hearing.js NOISE`,
+first guesses: median −42 dBFS is loud). `speech.log` keeps the numbers to tune them.
