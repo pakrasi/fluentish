@@ -100,13 +100,11 @@ test('saving: one entry per item (n counts), at most three sentences, cut to 240
   assert.deepEqual(b, { due: [], fresh: ['W:Branche.n'], rest: [], newLeft: 6, daily: true });
 });
 
-test('new reading items a day: the allowance\'s share once it has one, else practice.readNew; none when new items stop', () => {
-  const c = { newItems: true };
-  assert.equal(R.readNewLeft(/** @type {any} */ ({ decks: { read: { want: 0, newLeft: 0, paused: false } } }), {}, c, 2), 4, 'C0: want.read is 0, his own 6 a day');
-  assert.equal(R.readNewLeft(/** @type {any} */ ({ decks: { read: { want: 0, newLeft: 0, paused: false } } }), { practice: { readNew: 3 } }, c, 1), 2);
-  assert.equal(R.readNewLeft(/** @type {any} */ ({ decks: { read: { want: 5, newLeft: 3, paused: false } } }), {}, c, 2), 3, 'the allowance decides once it has a share');
-  assert.equal(R.readNewLeft(/** @type {any} */ ({ decks: { read: { want: 5, newLeft: 3, paused: true } } }), {}, c, 0), 0, 'paused in an exam\'s last week');
-  assert.equal(R.readNewLeft(null, {}, { newItems: false }, 0), 0, 'the eve and the day of an exam');
+test('new reading items a day: the allowance\'s share of deck read; none when it is paused or there is no budget', () => {
+  assert.equal(R.readNewLeft(/** @type {any} */ ({ decks: { read: { want: 6, newLeft: 4, paused: false } } })), 4);
+  assert.equal(R.readNewLeft(/** @type {any} */ ({ decks: { read: { want: 0, newLeft: 0, paused: false } } })), 0, 'a Light or Off day: 0, no fallback');
+  assert.equal(R.readNewLeft(/** @type {any} */ ({ decks: { read: { want: 5, newLeft: 3, paused: true } } })), 0, 'paused in an exam\'s last week');
+  assert.equal(R.readNewLeft(null), 0);
 });
 
 test('triage: rare words above his level are kept for reference; common ones, phrases and unknown ones are reviewed', () => {
@@ -188,4 +186,19 @@ test('prompt templates fill with the language and the text only', async () => {
   assert.match(q, /\["richtig", "falsch"\]/);
   assert.ok(q.endsWith('Ein Text.'));
   assert.throws(() => fill(TEMPLATES['read-translate@1'], { language: 'German' }), /sentence/);
+});
+
+test('Today: a Read day gives the Reading row the slot\'s minutes; no text and no Read day, no row', async () => {
+  const { planItems } = await import('../../src/features/practice-read/plan.js');
+  /** @type {Record<string, any>} */ const kv = {};
+  const store = { get: (/** @type {string} */ n, /** @type {any} */ d) => (n in kv ? kv[n] : d), cards: () => ({}), cardsByDeck: {} };
+  const c = { today: DAY, exam: null, phase: 'none', newItems: true };
+  const t = (/** @type {string} */ k) => k;
+  const base = { store, c, settings: { language: 'german' }, t, exam: null };
+  assert.deepEqual(planItems(/** @type {any} */ ({ ...base, day: { kind: 'n', minutes: 60, slot: null, slotMin: 0 } })), []);
+  const [row] = planItems(/** @type {any} */ ({ ...base, day: { kind: 'read', minutes: 45, slot: 'read', slotMin: 15 } }));
+  assert.equal(row.id, 'read.text');
+  assert.equal(row.minutes, 15);
+  assert.equal(row.optional, false);
+  assert.equal(row.href, '#/practice/read/new');
 });

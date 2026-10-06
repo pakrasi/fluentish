@@ -25,7 +25,7 @@ export async function mountLibrary(el, ctx) {
     const words = R.savedWords(store);
     let b = null;
     try { b = todayBudget({ store, c, settings: ctx.settings() }); } catch { b = null; }
-    const bk = R.readBuckets(store, c, deck, R.readNewLeft(/** @type {any} */ (b), ctx.settings(), c, R.shownToday(store, deck, c.today)));
+    const bk = R.readBuckets(store, c, deck, R.readNewLeft(/** @type {any} */ (b)));
     const fresh = Math.min(bk.fresh.length, bk.newLeft);
     const ctxs = Object.values(store.get(R.CTX, {}) || {});
     const savedIn = (/** @type {string} */ id) => ctxs.filter((/** @type {any} */ l) => (l || []).some((/** @type {any} */ x) => x.readId === id)).length;

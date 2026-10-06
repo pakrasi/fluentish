@@ -36,7 +36,7 @@ export async function mountRound(el, ctx) {
   const backTo = '#/practice/read';
   let b = null;
   try { b = todayBudget({ store, c, settings }); } catch { b = null; }
-  const newLeft = R.readNewLeft(/** @type {any} */ (b), settings, c, R.shownToday(store, deck, c.today));
+  const newLeft = R.readNewLeft(/** @type {any} */ (b));
   const bk = R.readBuckets(store, c, deck, newLeft);
   const sized = RS.parseSize(ctx.query.get('size'));
   const ids = c.phase === 'day' ? [] : sized && sized !== 'rec' ? RS.pick(bk, sized).ids : [...bk.due, ...bk.fresh.slice(0, newLeft)].slice(0, R.ROUND);

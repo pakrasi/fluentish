@@ -20,7 +20,7 @@ export function planItems({ store, c, settings, t, day }) {
   let b = null;
   try { b = todayBudget({ store, c, settings }); } catch { b = null; }
   const maint = !b || b.mode === 'maintenance' || b.mode === 'start';
-  const bk = R.readBuckets(store, c, deck, R.readNewLeft(/** @type {any} */ (b), settings, c, R.shownToday(store, deck, c.today)));
+  const bk = R.readBuckets(store, c, deck, R.readNewLeft(/** @type {any} */ (b)));
   const fresh = Math.min(bk.fresh.length, bk.newLeft);
   const due = bk.due.length;
   if (due + fresh > 0) {

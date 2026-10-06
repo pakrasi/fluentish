@@ -116,7 +116,7 @@ export async function listInfo(ctx, href) {
     const deck = R.readDeck(langCode(settings.language) || 'de');
     let b = null;
     try { b = todayBudget({ store, c, settings }); } catch { /* no budget: his own daily cap */ }
-    const newLeft = R.readNewLeft(/** @type {any} */ (b), settings, c, R.shownToday(store, deck, c.today));
+    const newLeft = R.readNewLeft(/** @type {any} */ (b));
     const bk = R.readBuckets(store, c, deck, newLeft);
     const rec = [...bk.due, ...bk.fresh.slice(0, newLeft)].slice(0, R.ROUND);
     return { type: 'read', title: t('read.round.title'), b: bk, rec, minutes: n => roundMinutes(n), paused: null };

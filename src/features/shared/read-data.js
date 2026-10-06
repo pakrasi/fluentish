@@ -31,8 +31,7 @@ export const readDeck = lang => deckId(lang || 'de', 'read');
 /** Sentences kept per saved item, and the longest one kept. */
 export const CTX_MAX = 3;
 export const CTX_CHARS = 240;
-/** practice.readNew and practice.readMin when he has set neither (C0 seam 1b). */
-export const READ_NEW = 6;
+/** practice.readMin when he has not set it (C0 seam 1b): the Reading row's minutes on a day without a Read slot. */
 export const READ_MIN = 10;
 /** A reading round's questions (Recommended). */
 export const ROUND = 12;
@@ -167,18 +166,14 @@ export function shownToday(store, deck, today) {
 }
 
 /**
- * New reading items left today. The allowance's share of deck read once the week plan gives it one (domain/budget.js
- * want.read, lane L1b); until then his own practice.readNew a day. None while the clock allows no new items, and none
- * while side decks are paused (an exam's last week).
- * @param {{decks: Record<string, any>}} b the day's allowance (domain/allowance.js todayBudget) @param {any} settings
- * @param {any} c clock ctx @param {number} shown
+ * New reading items left today: the allowance's share of deck read (domain/budget.js: practice.readNew in maintenance,
+ * 0 on a Light or Off day, a break, an exam's eve and day, and paused in an exam's last week).
+ * @param {{decks: Record<string, any>} | null} b the day's allowance (domain/allowance.js todayBudget)
  */
-export function readNewLeft(b, settings, c, shown) {
+export function readNewLeft(b) {
   const d = b && b.decks && b.decks.read;
-  if (c.newItems === false || (d && d.paused)) return 0;
-  if (d && d.want > 0) return Math.max(0, d.newLeft);
-  const cap = Number.isFinite(settings?.practice?.readNew) ? settings.practice.readNew : READ_NEW;
-  return Math.max(0, cap - shown);
+  if (!d || d.paused) return 0;
+  return Math.max(0, d.newLeft || 0);
 }
 
 /** Record how many new reading items are open today, for the allowance (kv deck.stats). @param {any} store @param {string} deck @param {string} today @param {number} open */

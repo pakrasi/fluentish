@@ -56,7 +56,7 @@ export const SLOT_SHARE = 1 / 3;
  * L4 'talk', the free-write corrections 'write'); until then that kind of day is a Normal day.
  * @type {readonly ('read' | 'write' | 'talk')[]}
  */
-export const LIVE_SLOTS = Object.freeze([]);
+export const LIVE_SLOTS = Object.freeze(/** @type {const} */ (['read']));
 
 /**
  * The week the editor proposes (MAINTENANCE-PLAN §1.3): 4 h 05 a week, Monday first. It is never applied by itself:
