@@ -110,6 +110,17 @@ every French sentence of the content (`tests/unit/lang-fr.test.mjs`); `grading.s
 « ». `tests/corpus/grading-corpus.fr.mjs` is the French corpus (0 wrong answers graded right). No engine changed
 behaviour for German: the golden vectors and the German corpus are unchanged.
 
+**Verb forms** (round 4, the B2 grader review): `src/lang/de/conj.js` (pack `grammar.verbs`) indexes every verb of the
+word list, the forms table, a table of strong base verbs and the prefixed and regular verbs the content uses, by slot
+(infinitive, zu-infinitive, participle, person and number). The grader (`pool.js verbIndex` → `data.conj`) uses it so
+that a misbuilt form (fallten, geratet) or a prefix swap (gedroht for bedroht) is never a typo, a phrase card's answer
+with the model's verb in a form its frame does not take (hat … hinterziehen, um … decken, Die Stadt treffen) is wrong
+(detector `verb-form`; on situations, formCheck flags it), and restCheck puts another accepted phrase into the model
+only where its verb form fits and no article of the model's noun changes; the sentence shown for the model's own
+phrase is the model itself. The polite Sie, Ihnen, Ihr … of a sentence that addresses someone formally are strict in
+every item. `tests/corpus/morph-errors.mjs` makes these errors on every phrase, collocation and grammar item (its own
+small conjugator), and the corpus test keeps each class at zero graded right.
+
 **The text layer** (round 4, L2a): `domain/text/tokens.js` (sentences and tokens), `suggest.js` (which words to
 underline, names and foreign words, card ids) and `estimate.js` (CEFR ranks, personal coverage and its band: easy from
 98 %, study from 95 %, stretch from 90 %, else hard) are language-neutral and take a pack per call. The pack supplies

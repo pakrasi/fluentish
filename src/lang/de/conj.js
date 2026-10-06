@@ -24,8 +24,8 @@
 import { tokenize, fold } from './text.js';
 /** @typedef {import('../types.js').Token} Token */
 /** @typedef {'inf'|'zu'|'pp'|'1s'|'2s'|'3s'|'1p'|'2p'} Slot */
-/** @typedef {{lemma: string, slot: Slot, strong: boolean}} Analysis */
-/** @typedef {{lookup: (n: string) => Analysis[], misbuilt: (n: string) => boolean, forms: () => IterableIterator<string>, lemmas: Map<string, any>}} Conj */
+/** @typedef {{lemma: string, slot: string, strong: boolean}} Analysis */
+/** @typedef {import('../types.js').Conj} Conj */
 
 const key = (/** @type {string} */ s) => fold(String(s).toLowerCase());
 const FINITE = new Set(['1s', '2s', '3s', '1p', '2p']);
@@ -254,9 +254,11 @@ const FRAME = new Set(['dass', 'weil', 'ob', 'wenn', 'obwohl', 'damit', 'bevor',
 // sein and haben with a zu-infinitive are a frame of their own (es ist nicht auszuschliessen, er hat viel zu tun)
 const SEIN_HABEN = new Set(['bin', 'bist', 'ist', 'sind', 'seid', 'war', 'warst', 'waren', 'wart', 'sein', 'hab', 'habe', 'hast', 'hat', 'haben', 'habt', 'hatte', 'hatten']);
 
-/** @param {Token[]} T @returns {number[][]} the clauses: token indexes between , ; : . ! ? (a digit's full stop is no end) */
-function clausesOf(/** @type {string} */ text, T) {
-  /** @type {number[][]} */ const out = []; /** @type {number[]} */ let cur = [];
+/** @param {string} text @param {Token[]} T @returns {number[][]} the clauses: token indexes between , ; : . ! ? (a digit's full stop is no end) */
+function clausesOf(text, T) {
+  /** @type {number[][]} */ const out = [];
+  /** @type {number[]} */
+  let cur = [];
   T.forEach((t, k) => {
     cur.push(k);
     const gap = text.slice(t.end, T[k + 1] ? T[k + 1].start : text.length);
@@ -269,7 +271,7 @@ function clausesOf(/** @type {string} */ text, T) {
 /**
  * The slots the model's word k has in its sentence: a participle after haben, sein or werden, an infinitive after a
  * modal or werden or zu, else its finite readings (the helper and the modal themselves are finite).
- * @param {Token[]} T @param {number} k @param {number[]} clause @param {Conj} conj @returns {Set<Slot>}
+ * @param {Token[]} T @param {number} k @param {number[]} clause @param {Conj} conj @returns {Set<string>}
  */
 function slotsIn(T, k, clause, conj) {
   const a = conj.lookup(T[k].n);

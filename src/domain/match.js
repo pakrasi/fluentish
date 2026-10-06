@@ -623,7 +623,7 @@ function renderIn(mid, base, caseRef, initial, conj = null) {
     const own = e.alts.find(a => B.some(b => b.n === a.n));
     if (own) return own.word;
     if (!fr) return null;
-    const fit = e.alts.find(a => { const an = conj.lookup(a.n); return fr.some(f => an.some((/** @type {any} */ x) => f.lemmas.has(x.lemma) && f.slots.has(x.slot))); });
+    const fit = e.alts.find(a => { const an = conj.lookup(a.n); return fr.some((/** @type {any} */ f) => an.some((/** @type {any} */ x) => f.lemmas.has(x.lemma) && f.slots.has(x.slot))); });
     return fit ? fit.word : null;
   };
   let out = display(compile(mid, true, false), '', null, pick).replace(L.text.wordRe, w => ref.get(w.toLowerCase()) || (caseRef && caseRef.get(fold(w.toLowerCase()))) || w.toLowerCase());

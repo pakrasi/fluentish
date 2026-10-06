@@ -8,7 +8,7 @@
    does not have (igloo.grammar.items.de, topic = their concept, skipped as b1.annot says) and the chunk bank's B2
    phrases with an accept list (igloo.chunks.en/german/accept.german), leaving out what the content marks dupOf (a
    duplicate of another item, which alone is scheduled), built by b2Layer() into data.b2, never into
-   data.pool. Each carries layer: 'b2'. data.pool, its readiness, its ★/trap pace and the lexicon are what they were;
+   data.pool. Each carries layer: 'b2'. data.pool, its readiness and its ★/trap pace are what they were (the lexicon also holds every verb form, round 4);
    the composer mixes the layer in through the level gate, and a B2 card's reviews come due like any card's
    (data.byId has every item). */
 import * as Match from '../../domain/match.js';
@@ -48,7 +48,7 @@ export const politeIn = s => String(s || '').split(/(?<=[.!?:])\s+/).flatMap(sen
  */
 export function politeStrict(...sentences) {
   const lower = new Set(sentences.flatMap(s => String(s || '').split(/(?<=[.!?:])\s+/).flatMap(sent => (sent.match(/[\p{L}]+/gu) || []).slice(1).filter(w => /^\p{Ll}/u.test(w)))));
-  return [...new Set(sentences.flatMap(s => politeIn(s)))].filter(w => !lower.has(w.toLowerCase()));
+  return [...new Set(sentences.flatMap(s => politeIn(s || '')))].filter(w => !lower.has(w.toLowerCase()));
 }
 /** @param {string[] | undefined} a @param {string[]} b */
 const withStrict = (a, b) => (b.length ? [...new Set([...(a || []), ...b])] : a || []);
