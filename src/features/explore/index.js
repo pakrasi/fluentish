@@ -7,14 +7,17 @@
    with links to its opposite and its family that fly there; tapping a group opens its sheet (name, count, the four
    states) with one button, "Open the group", whose disc grows into the page's header (core/motion.js handoff).
    ?g= opens a group's sheet; ?cluster= opens the map group of a Practice word cluster.
-   The header says how much he knows (the same number as Today's Where you stand, shared/data.js wordsKnown, after
-   Igloo's placement import) and suggests the next best group (domain/atlas.js nextBestGroup) with a one-tap round.
+   The header is two short rows (round 5): back, the title and the view control with Find in it; then one status line
+   ("767 known · Next: Food and drink", the same number as Today's Where you stand, shared/data.js wordsKnown, after
+   Igloo's placement import; the next best group, domain/atlas.js nextBestGroup, opens its sheet) and Group by. Over
+   the bottom of the map: one study action that follows the screen ("Study the gaps here" over a group with words not
+   known, else "Study 12" for the next best group), select mode, Key and groups (one panel), and zoom with a pointer.
    After a study round started from the map, the map comes back to the group it started from, with its sheet open.
    The List view is the accessible alternative: every group with the sheet's counts and its page, every item with
    its state in words. On the canvas, Tab steps through the groups and Enter opens one.
    The 3D view (palace/, loaded with import() when the 3D segment opens) is the same map raised: the same layout, the
    same sheets, its own camera; a word that became known plays the learned moment there once. "Study the gaps here"
-   sends the district's words not known (domain/atlas.js gapsOf) to the round size picker (kind=cluster:gaps).
+   (2D and 3D) sends the group's words not known (domain/atlas.js gapsOf) to the round size picker (kind=cluster:gaps).
    Explore writes cards only in select mode (select.js: tap the words you know, through data/known.js); its own kv
    'explore' keeps the mode, the gaps filter, what it already showed, the group a study round started from and the
    count each group page showed last. */
@@ -106,6 +109,8 @@ async function mountMap(el, ctx, offs) {
   const layout = (/** @type {string} */ m) => { let l = layouts.get(m); if (!l) { l = layoutOf(A, m, K); layouts.set(m, l); } return l; };
   /** @type {any[]} */ let counts = [];
   let openItem = -1, openGroupIdx = -1;     // what the sheet shows
+  let knownLong = '';                       // "767 of 6,723 words and phrases known"
+  /** @type {{gi: number, n: number, ids: number[]} | null} */ let best = null;   // the next best group of this mode
   const stateOf = (/** @type {string} */ id) => ({ state: /** @type {any} */ (CODE_STATE[K.st[/** @type {number} */ (A.index.get(id))]]), today: !!K.today[/** @type {number} */ (A.index.get(id))] });
   const weight = (/** @type {string} */ id) => A.F[/** @type {number} */ (A.index.get(id))] || 1;
   const idsOf = (/** @type {any} */ g) => g.items.map((/** @type {number} */ i) => A.ids[i]);
@@ -117,36 +122,56 @@ async function mountMap(el, ctx, offs) {
   const labelOf = g => groupName(t, g);
 
   /* ---------- the page ---------- */
+  // Group by: the six modes. From 720 px a row of chips in the header; on a phone one button with the current mode
+  // ("Topic", with a chevron) opens them as a panel under it, so the header is two short rows (DESIGN.md, Explore › Chrome)
   const modeChips = h('div', { class: 'ex-modes', role: 'group', 'aria-label': t('explore.modes') },
-    MODES.map(m => h('button', { type: 'button', class: 'chip pressable', 'aria-pressed': String(m === mode), dataset: { mode: m }, onclick: () => (m === mode ? cur().fit() : setMode(m)) }, t(`explore.mode.${m}`))));
+    MODES.map(m => h('button', { type: 'button', class: 'chip pressable', 'aria-pressed': String(m === mode), dataset: { mode: m }, onclick: () => pickMode(m) }, t(`explore.mode.${m}`))));
+  const modeName = h('span', { class: 'ex-modebtn-name' }, t(`explore.mode.${mode}`));
+  const modeBtn = h('button', { type: 'button', class: 'chip pressable ex-modebtn', 'aria-expanded': 'false', 'aria-controls': 'ex-modepanel', 'aria-label': t('explore.modeBtn', { mode: t(`explore.mode.${mode}`) }), onclick: () => toggleModes() },
+    modeName, h('span', { class: 'ex-chev', 'aria-hidden': 'true' }, icon('next', { size: 14 })));
+  const modePanel = h('div', { class: 'ex-modepanel', id: 'ex-modepanel' }, h('p', { class: 'label ex-modes-title', 'aria-hidden': 'true' }, t('explore.modes')), modeChips);
   const viewSeg = seg({ label: t('explore.view'), value: view, options: [['map', t('explore.view.map')], ['3d', t('explore.view.3d')], ['list', t('explore.view.list')]],
     onChange: v => { void setView(/** @type {'map' | '3d' | 'list'} */ (v)); } });
-  const findBtn = h('button', { type: 'button', class: 'ex-icon pressable', 'aria-label': t('explore.find'), onclick: () => openSearch() }, icon('lookup', { size: 20 }));
+  const findBtn = h('button', { type: 'button', class: 'ex-icon ex-findbtn pressable', 'aria-label': t('explore.find'), onclick: () => openSearch() }, icon('lookup', { size: 20 }));
   const keysHelp = h('p', { class: 'sr-only', id: 'ex-keys' }, t('explore.keys'));
   const canvas = /** @type {HTMLCanvasElement} */ (h('canvas', { class: 'ex-canvas', tabindex: '0', role: 'application', 'aria-roledescription': t('explore.mapRole'), 'aria-describedby': 'ex-keys' }));
   const hereEl = h('div', { class: 'ex-here', hidden: true }, h('b'), h('span', { class: 'tnum' }));
   const totalEl = h('span', { class: 'ex-total caption tnum' });
-  const legend = h('div', { class: 'ex-legend', id: 'ex-legend', role: 'group', 'aria-label': t('explore.key') },
+  const legend = h('div', { class: 'ex-legend', role: 'group', 'aria-label': t('explore.key') },
     ...(['known', 'shaky', 'unknown', 'unseen', 'today']).map(s => h('span', { class: `ex-key is-${s}` }, h('i', { lang: langAttr(), dir: dirAttr(), 'aria-hidden': 'true' }, 'Aa'), t(`explore.state.${s}`))));
-  const keyBtn = h('button', { type: 'button', class: 'chip pressable ex-keybtn', 'aria-expanded': 'false', 'aria-controls': 'ex-legend', onclick: () => toggleKey() }, t('explore.key'));
+  legend.append(h('span', { class: 'ex-key pl-height' }, t('explore.3d.height')));
   const gapsBtn = h('button', { type: 'button', class: 'chip pressable ex-gaps', 'aria-pressed': String(gaps), onclick: () => setGaps(!gaps) }, t('explore.gaps'));
   const zoom = h('div', { class: 'ex-zoom' },
     h('button', { type: 'button', class: 'ex-icon ex-fit pressable', 'aria-label': t('explore.fit'), onclick: () => cur().fit() }, glyph('fit')),
     h('button', { type: 'button', class: 'ex-icon pressable', 'aria-label': t('explore.zoomOut'), onclick: () => cur().zoomBy(0.5) }, glyph('minus')),
     h('button', { type: 'button', class: 'ex-icon pressable', 'aria-label': t('explore.zoomIn'), onclick: () => cur().zoomBy(2) }, glyph('plus')));
-  // 3D: the districts list is the keyboard and screen-reader way around the city
+  // Key and groups: one panel over the bottom right of the map. On a phone it holds the whole count, the key, Gaps only
+  // (2D) and the groups; from 720 px the key and Gaps only sit in the bottom row itself and the panel lists the groups.
+  // The groups are the keyboard and screen-reader way around the map and the city.
   const distList = h('ul', { class: 'pl-dist-list', role: 'list' });
-  const distPanel = h('div', { class: 'pl-dist', id: 'pl-dist', role: 'group', 'aria-label': t('explore.3d.districts'), hidden: true }, h('p', { class: 'label pl-dist-title' }, t('explore.3d.goTo')), distList);
-  const distBtn = h('button', { type: 'button', class: 'chip pressable pl-distbtn', 'aria-expanded': 'false', 'aria-controls': 'pl-dist', onclick: () => toggleDistricts() }, t('explore.3d.districts'));
-  legend.append(h('span', { class: 'ex-key pl-height' }, t('explore.3d.height')));
-  // 3D: the open scaffolds and empty plots of the district he is in, as a round (through the round size picker)
-  const gaps3d = h('button', { type: 'button', class: 'chip pressable pl-gapsbtn', hidden: true, onclick: () => studyGaps() }, t('explore.3d.gaps'));
-  const hud = h('div', { class: 'ex-hud' }, totalEl, gaps3d, h('div', { class: 'ex-ctl' }, keyBtn, gapsBtn, distBtn), legend);
-  // the header: words and phrases known (the same number as Today's Where you stand) and the next best group
-  const knownEl = h('p', { class: 'ex-known caption tnum' });
+  const panelTotal = h('p', { class: 'ex-panel-total tnum' });
+  const panelKey = h('div', { class: 'ex-panel-key' });
+  const distPanel = h('div', { class: 'pl-dist', id: 'pl-dist', role: 'group', 'aria-label': t('explore.panel'), hidden: true },
+    panelTotal, panelKey, h('p', { class: 'label pl-dist-title' }, t('explore.3d.goTo')), distList);
+  const distBtn = h('button', { type: 'button', class: 'chip pressable pl-distbtn', 'aria-expanded': 'false', 'aria-controls': 'pl-dist', onclick: () => toggleDistricts() },
+    h('span', { class: 'ex-panel-long' }, t('explore.panel')), h('span', { class: 'ex-panel-short' }, t('explore.3d.districts')));
+  // the one study action, over the bottom left of the map: "Study the gaps here" while a group fills the middle of the
+  // screen (its words not known, through the round size picker), else "Study 12" (the next best group's most common)
+  const gaps3d = h('button', { type: 'button', class: 'btn btn-primary pressable ex-study pl-gapsbtn', hidden: true, onclick: () => studyGaps() }, t('explore.3d.gaps'));
+  const nextBtn = h('a', { class: 'btn btn-primary pressable ex-study ex-nextbtn', hidden: true });
+  const hudKey = h('div', { class: 'ex-hudkey' });
+  const ctl = h('div', { class: 'ex-ctl' }, distBtn, zoom);
+  const hud = h('div', { class: 'ex-hud' }, totalEl, nextBtn, gaps3d, hudKey, ctl);
+  // where the key and Gaps only live: in the panel on a phone, in the bottom row from 720 px
+  const wide = matchMedia('(min-width: 720px)');
+  const placeKey = () => { if (wide.matches) { hudKey.append(legend, gapsBtn); } else { panelKey.append(legend, gapsBtn); } };
+  placeKey();
+  wide.addEventListener('change', placeKey);
+  offs.push(() => wide.removeEventListener('change', placeKey));
+  // the header's second row: how much he knows and the next best group, in one line (the details are in its sheet)
+  const knownEl = h('p', { class: 'ex-known tnum' });
   const nextEl = h('p', { class: 'ex-nextbest' });
-  const nextBtn = h('a', { class: 'btn btn-primary pressable ex-nextbtn', hidden: true });
-  const meta = h('div', { class: 'ex-meta' }, h('div', { class: 'ex-meta-text' }, knownEl, nextEl), nextBtn);
+  const meta = h('div', { class: 'ex-statusrow' }, h('div', { class: 'ex-status-text' }, knownEl, nextEl), h('div', { class: 'ex-modewrap' }, modeBtn, modePanel));
   const keys3 = h('p', { class: 'sr-only', id: 'pl-keys' }, t('explore.3d.keys'));
   const labels3 = h('div', { class: 'pl-labels', 'aria-hidden': 'true' });
   /** @type {HTMLCanvasElement | null} */ let canvas3 = null;
@@ -161,15 +186,15 @@ async function mountMap(el, ctx, offs) {
   const findEl = h('div', { class: 'ex-find', role: 'dialog', 'aria-label': t('explore.find'), hidden: true },
     h('div', { class: 'ex-find-row' }, findInput, h('button', { type: 'button', class: 'ex-icon pressable', 'aria-label': t('explore.find.close'), onclick: () => closeSearch() }, icon('close', { size: 18 }))), findList);
   const stage = h('div', { class: 'ex-stage' }, canvas, keysHelp, keys3, labels3, hereEl, hud, distPanel, listEl);
+  // the head row: back, the title, and the view control with Find at its end (one control)
   const page = h('div', { class: 'explore' },
-    h('div', { class: 'ex-head' }, backLink(t), h1, h('div', { class: 'ex-head-tools' }, viewSeg, findBtn)),
-    meta, h('div', { class: 'ex-chiprow' }, modeChips, zoom), stage, findEl);
+    h('div', { class: 'ex-head' }, backLink(t), h1, h('div', { class: 'ex-viewctl' }, viewSeg, findBtn)),
+    meta, stage, findEl);
   replace(el, page);
   // select mode (select.js): tap the words you know to mark them known; the List is not re-drawn while it is on
   const sel = createSelect({ ctx, A, page, score: i => K.score(i), rescore: () => rescore(), stateKey: i => stateKey(i), onOff: () => { if (listOn) renderList(); } });
-  // in the chip row next to zoom (the head row at 390 px holds back, title, Map · 3D · List and Find at 44 px each);
-  // select mode is a 2D tool: the button hides in 3D, and opening 3D ends it
-  zoom.before(sel.btn);
+  // in the bottom row before Key and groups; select mode is a 2D tool: the button hides in 3D, and opening 3D ends it
+  distBtn.before(sel.btn);
   stage.append(sel.bar);
   // where the map starts on screen (the desktop card sits over its top right) and how tall a phone sheet's peek is
   const measure = () => {
@@ -185,9 +210,6 @@ async function mountMap(el, ctx, offs) {
   sheet.classList.add('ex-sheet-root');
   document.body.append(sheet);
   offs.push(() => sheet.remove());
-  const chipIntoView = (/** @type {boolean} */ smooth) => /** @type {HTMLElement | null} */ (modeChips.querySelector('[aria-pressed="true"]'))
-    ?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: smooth && !reduced() ? 'smooth' : 'auto' });
-  requestAnimationFrame(() => chipIntoView(false));
 
   /* ---------- the map ---------- */
   let hereGi = -1;   // the group the camera is inside (the "where you are" pill), -1 for none
@@ -201,7 +223,7 @@ async function mountMap(el, ctx, offs) {
     onGroup: (gi, far) => openGroup(gi, far, { opener: canvas }),
     onEmpty: () => closeSheet(),
     onHere: gi => {
-      hereGi = gi;
+      hereGi = gi; drawStudy();
       hereEl.hidden = gi < 0 || listOn;
       if (gi < 0) return;
       const g = layout(mode).groups[gi], cn = counts[gi];
@@ -215,7 +237,7 @@ async function mountMap(el, ctx, offs) {
   });
   offs.push(() => map.destroy());
   // the focus ring shows when the map is reached with the keyboard, not on every tap
-  canvas.addEventListener('pointerdown', () => { delete canvas.dataset.kbd; closeKey(); });
+  canvas.addEventListener('pointerdown', () => { delete canvas.dataset.kbd; closeModes(); closeDistricts(); });
   canvas.addEventListener('keyup', e => { if (e.key === 'Tab') canvas.dataset.kbd = '1'; });
   map.setLayout(layout(mode));
   canvas.setAttribute('aria-label', t('explore.canvas', { mode: t(`explore.mode.${mode}`).toLowerCase() }));
@@ -292,7 +314,7 @@ async function mountMap(el, ctx, offs) {
       palaceP = import('./palace/index.js').then(async P => {
         canvas3 = /** @type {HTMLCanvasElement} */ (h('canvas', { class: 'ex-canvas pl-canvas', tabindex: '0', role: 'application', 'aria-roledescription': t('explore.3d.role'), 'aria-describedby': 'pl-keys', 'aria-label': t('explore.3d.canvas'), hidden: true }));
         stage.insertBefore(canvas3, keysHelp);
-        canvas3.addEventListener('pointerdown', () => { if (canvas3) delete canvas3.dataset.kbd; closeKey(); closeDistricts(); });
+        canvas3.addEventListener('pointerdown', () => { if (canvas3) delete canvas3.dataset.kbd; closeModes(); closeDistricts(); });
         canvas3.addEventListener('keyup', e => { if (e.key === 'Tab' && canvas3) canvas3.dataset.kbd = '1'; });
         const p = await P.createPalace(canvas3, {
           A, layout: layout(mode), st: K.st, today: K.today, S: K.S, reduced, labels: labels3,
@@ -302,9 +324,9 @@ async function mountMap(el, ctx, offs) {
           onWord: i => openWord(i, { opener: canvas3 }),
           onGroup: gi => openGroup(gi, true, { opener: canvas3 }),
           onEmpty: () => closeSheet(),
-          onCentre: gi => { centreGi = gi; drawGaps3d(); },
+          onCentre: gi => { centreGi = gi; drawStudy(); },
           onHere: gi => {
-            hereGi = gi; drawGaps3d();
+            hereGi = gi; drawStudy();
             hereEl.hidden = gi < 0 || view !== '3d';
             if (gi < 0) return;
             const g = layout(mode).groups[gi], cn = counts[gi];
@@ -394,7 +416,8 @@ async function mountMap(el, ctx, offs) {
   }
   function toggleDistricts() {
     if (!distPanel.hidden) { closeDistricts(); distBtn.focus(); return; }
-    closeKey(); closeSheet(); buildDistricts();
+    closeModes(); closeSheet(); buildDistricts();
+    panelTotal.textContent = knownLong;
     distPanel.hidden = false; distBtn.setAttribute('aria-expanded', 'true');
     /** @type {HTMLElement | null} */ (distList.querySelector('button'))?.focus();
   }
@@ -408,6 +431,8 @@ async function mountMap(el, ctx, offs) {
     mode = m;
     closeSheet({ keepSelection: true });
     for (const b of modeChips.querySelectorAll('button')) b.setAttribute('aria-pressed', String(/** @type {HTMLElement} */ (b).dataset.mode === m));
+    modeName.textContent = t(`explore.mode.${m}`);
+    modeBtn.setAttribute('aria-label', t('explore.modeBtn', { mode: t(`explore.mode.${m}`) }));
     const next = layout(m);
     recount();
     if (view === '3d' && palace) {
@@ -422,9 +447,8 @@ async function mountMap(el, ctx, offs) {
     address();
     renderTotals();
     if (listOn) renderList();
-    chipIntoView(true);
     // when the words have settled, the chip that caused it lands, so cause and effect connect
-    const chip = /** @type {HTMLElement | null} */ (modeChips.querySelector(`[data-mode="${m}"]`));
+    const chip = /** @type {HTMLElement | null} */ (wide.matches ? modeChips.querySelector(`[data-mode="${m}"]`) : modeBtn);
     if (chip && !reduced()) { chip.classList.remove('is-landed'); setTimeout(() => { if (alive && mode === m) { void chip.offsetWidth; chip.classList.add('is-landed'); } }, listOn ? 0 : 1000); }
   }
   /**
@@ -445,8 +469,8 @@ async function mountMap(el, ctx, offs) {
     view = v; listOn = v === 'list';
     selectSeg(v);
     page.classList.toggle('is-list', listOn); page.classList.toggle('is-3d', v === '3d');
-    listEl.hidden = !listOn; hud.hidden = listOn; hereEl.hidden = true;
-    closeKey(); closeDistricts(); closeSheet();
+    listEl.hidden = !listOn; hud.hidden = listOn; hereEl.hidden = true; hereGi = -1;
+    closeModes(); closeDistricts(); closeSheet();
     if (v !== 'list') setPrefs(store, s => ({ ...s, view: v }));
     if (!initial) address();
     if (listOn) {
@@ -485,7 +509,7 @@ async function mountMap(el, ctx, offs) {
     if (tg >= 0) openGroup(tg, true);
   }
   function selectSeg(/** @type {string} */ v) {
-    queueMicrotask(drawGaps3d);
+    queueMicrotask(drawStudy);
     for (const b of viewSeg.querySelectorAll('button')) b.setAttribute('aria-pressed', String(/** @type {HTMLButtonElement} */ (b).value === v));
     const b = /** @type {HTMLElement | null} */ (viewSeg.querySelector('button[aria-pressed="true"]')), th = /** @type {HTMLElement | null} */ (viewSeg.querySelector('.seg-thumb'));
     if (b && th) { th.style.width = `${b.offsetWidth}px`; th.style.transform = `translateX(${b.offsetLeft}px)`; }
@@ -494,8 +518,20 @@ async function mountMap(el, ctx, offs) {
     gaps = on; gapsBtn.setAttribute('aria-pressed', String(on)); map.setGaps(on);
     setPrefs(store, s => ({ ...s, gaps: on }));
   }
-  function toggleKey() { if (legend.classList.contains('is-open')) closeKey(); else { legend.classList.add('is-open'); keyBtn.setAttribute('aria-expanded', 'true'); } }
-  function closeKey() { legend.classList.remove('is-open'); keyBtn.setAttribute('aria-expanded', 'false'); }
+  /** Group by on a phone: the panel under the mode button. A tap on the current mode frames the whole map. @param {string} m */
+  function pickMode(m) {
+    const wasOpen = modeBtn.getAttribute('aria-expanded') === 'true';
+    closeModes();
+    if (wasOpen) modeBtn.focus({ preventScroll: true });
+    if (m === mode) cur().fit(); else setMode(m);
+  }
+  function toggleModes() {
+    if (modeBtn.getAttribute('aria-expanded') === 'true') { closeModes(); return; }
+    closeDistricts();
+    modeBtn.setAttribute('aria-expanded', 'true'); modePanel.classList.add('is-open');
+    /** @type {HTMLElement | null} */ (modeChips.querySelector('[aria-pressed="true"]'))?.focus();
+  }
+  function closeModes() { modeBtn.setAttribute('aria-expanded', 'false'); modePanel.classList.remove('is-open'); }
   function address() {
     const sp = new URLSearchParams();
     if (mode !== 'topic') sp.set('mode', mode);
@@ -507,36 +543,52 @@ async function mountMap(el, ctx, offs) {
   // wordsKnown, data/atlas.js totals over the knowledge score); then the next best group of this mode
   function renderTotals() {
     const x = totals(A, K);
-    knownEl.textContent = t('explore.total', { k: num(x.known), n: num(x.n) });
+    knownLong = t('explore.total', { k: num(x.known), n: num(x.n) });
+    // a phone says "767 known"; the whole sentence is the panel's first line there, and the header's from 720 px
+    replace(knownEl, h('span', { class: 'ex-known-long' }, knownLong), h('span', { class: 'ex-known-short', 'aria-hidden': 'true' }, t('explore.totalShort', { k: num(x.known) })));
+    panelTotal.textContent = knownLong;
     if (!totalEl.classList.contains('is-loading3d')) totalEl.textContent = '';
     renderNext();
-    drawGaps3d();
+    drawStudy();
   }
-  /** The next best group (domain/atlas.js nextBestGroup): its name opens its page, the button studies its words. */
+  /**
+   * The next best group (domain/atlas.js nextBestGroup): its name in the header opens its sheet on the map (which says
+   * how many common words it has to learn, with Study and Open the group); "Study 12" in the bottom row studies them.
+   */
   function renderNext() {
     const L = layout(mode);
-    const best = nextBestGroup(L.groups, { kind: A.kind, level: A.level, F: A.F, st: K.st, text: A.text, upTo: ctx.settings().level });
+    best = nextBestGroup(L.groups, { kind: A.kind, level: A.level, F: A.F, st: K.st, text: A.text, upTo: ctx.settings().level });
     if (!best) { replace(nextEl, t('explore.next.none')); nextBtn.hidden = true; return; }
-    const g = L.groups[best.gi], name = labelOf(g);
-    replace(nextEl, h('span', { class: 'ex-next-label' }, t('explore.next')), ' ',
-      h('a', { class: 'ex-next-name pressable', href: pageHref(g.key), onclick: () => discTo(best.gi) }, name),
-      h('span', { class: 'ex-next-n' }, ', ', t('explore.next.detail', { n: best.n })));
-    nextBtn.hidden = false;
-    nextBtn.setAttribute('href', `#/practice/round?kind=cluster%3Apick&ids=${encodeURIComponent(best.ids.map(i => A.ids[i].slice(2)).join(','))}&from=map`);
-    nextBtn.textContent = t('explore.next.study', { n: best.ids.length });
-    nextBtn.setAttribute('aria-label', t('explore.next.studyLabel', { n: best.ids.length, name }));
-    nextBtn.onclick = () => { setPrefs(store, s => ({ ...s, ret: { mode, key: g.key, at: Date.now() } })); };
+    const gi = best.gi, g = L.groups[gi], name = labelOf(g);
+    const nameBtn = h('button', { type: 'button', class: 'ex-next-name pressable', 'aria-label': t('explore.next.open', { name }), onclick: () => openGroup(gi, true, { opener: nameBtn }) }, name);
+    replace(nextEl, h('span', { class: 'ex-sep', 'aria-hidden': 'true' }, '·'), h('span', { class: 'ex-next-label' }, t('explore.next')), ' ', nameBtn);
+    setStudy(nextBtn, gi);
   }
-  /** 3D: "Study the gaps here" shows while the camera is over a district with words not known. */
-  function drawGaps3d() {
-    const gi = view === '3d' ? (hereGi >= 0 ? hereGi : centreGi >= 0 ? centreGi : openGroupIdx) : -1;
+  /** Make a link the next best group's round ("Study 12"). @param {HTMLElement} a @param {number} gi */
+  function setStudy(a, gi) {
+    if (!best) return;
+    const g = layout(mode).groups[gi], ids = best.ids;
+    a.setAttribute('href', `#/practice/round?kind=cluster%3Apick&ids=${encodeURIComponent(ids.map(i => A.ids[i].slice(2)).join(','))}&from=map`);
+    a.textContent = t('explore.next.study', { n: ids.length });
+    a.setAttribute('aria-label', t('explore.next.studyLabel', { n: ids.length, name: labelOf(g) }));
+    a.onclick = () => { setPrefs(store, s => ({ ...s, ret: { mode, key: g.key, at: Date.now() } })); };
+  }
+  /** The group the study action is about: the one in the middle of the screen (3D: however far), else the open one. */
+  function studyGi() { return listOn ? -1 : hereGi >= 0 ? hereGi : view === '3d' && centreGi >= 0 ? centreGi : openGroupIdx; }
+  /**
+   * The one study action in the bottom row: "Study the gaps here" while a group with words not known fills the middle
+   * of the screen, else "Study 12" for the next best group, else nothing.
+   */
+  function drawStudy() {
+    const gi = studyGi();
     const n = gi >= 0 ? gapsOf(layout(mode).groups[gi]?.items || [], { kind: A.kind, F: A.F, st: K.st, text: A.text }).length : 0;
     gaps3d.hidden = !n;
+    nextBtn.hidden = !!n || !best;
     if (n) { const name = labelOf(layout(mode).groups[gi]); gaps3d.setAttribute('aria-label', t('explore.3d.gapsLabel', { n, name })); }
   }
   /** The district's gaps as a round: the round size picker first (Recommended, a number, or all of them). */
   function studyGaps() {
-    const gi = hereGi >= 0 ? hereGi : centreGi >= 0 ? centreGi : openGroupIdx;
+    const gi = studyGi();
     const g = gi >= 0 ? layout(mode).groups[gi] : null;
     if (!g) return;
     const idx = gapsOf(g.items, { kind: A.kind, F: A.F, st: K.st, text: A.text }).slice(0, GAPS_MAX);
@@ -729,14 +781,14 @@ async function mountMap(el, ctx, offs) {
   /**
    * What a group's sheet and its List entry show: the four states as a bar and in numbers, and one button that opens
    * the group's page (group.js), where its words are studied. The map is for browsing; the page is for studying.
-   * @param {number} gi @param {boolean} inList
+   * @param {number} gi @param {boolean} inList @param {boolean} [quiet] the open button is not the primary one
    */
-  function groupParts(gi, inList) {
+  function groupParts(gi, inList, quiet = false) {
     const L = layout(mode), g = L.groups[gi], cn = counts[gi];
     const stack = h('div', { class: 'ex-stack', 'aria-hidden': 'true' },
       ...STATES.map(s => (cn[s] ? h('span', { class: `is-${s}`, style: { flexGrow: String(cn[s]) } }) : null)));
     const countsEl = h('p', { class: 'ex-counts caption tnum' }, ...STATES.map(s => h('span', null, swatch(s), t(`explore.sheet.${s}`, { n: num(cn[s]) }))));
-    const open = h('a', { class: 'btn btn-primary pressable ex-open', href: pageHref(g.key), onclick: () => { if (!inList) discTo(gi); } },
+    const open = h('a', { class: ['btn', 'pressable', 'ex-open', !quiet && 'btn-primary'], href: pageHref(g.key), onclick: () => { if (!inList) discTo(gi); } },
       t('explore.sheet.open'), h('span', { class: 'sr-only' }, `: ${labelOf(g)}`));
     return { parts: [stack, countsEl, cn.n && cn.known === cn.n ? h('p', { class: 'ex-allknown' }, t('explore.sheet.allKnown')) : null], actions: h('div', { class: 'ex-actions' }, open) };
   }
@@ -749,14 +801,18 @@ async function mountMap(el, ctx, offs) {
     const head = [h('p', { class: 'ex-meta caption' }, h('span', null, t(`explore.mode.${mode}`))),
       h('h2', { id: 'ex-sheet-title', class: 'ex-group-title' }, labelOf(g)),
       h('p', { class: 'ex-group-known' }, t('explore.known', { k: num(cn.known), n: num(cn.n) }))];
-    const p = groupParts(gi, false);
+    // the next best group's sheet says how many common words it has to learn, and studies them first
+    const isBest = !!best && best.gi === gi;
+    if (isBest) head.push(h('p', { class: 'ex-group-next caption' }, t('explore.next.detail', { n: /** @type {any} */ (best).n })));
+    const p = groupParts(gi, false, isBest);
+    if (isBest) { const st = h('a', { class: 'btn btn-primary pressable' }); setStudy(st, gi); p.actions.prepend(st); }
     replace(sheetBody, ...head, p.actions, ...p.parts);
     if (!keep) crossfade();
     showSheet(keep ? undefined : from === undefined ? null : from);
     if (fly) void cur().flyToGroup(gi, { below: sheetBelow(), right: sheetRight() });
     // 3D: the words to study next get the open tile hovering over them
     if (view === '3d' && palace) palace.studyTiles(studyNext(gi).map(x => /** @type {number} */ (A.index.get(x))));
-    drawGaps3d();
+    drawStudy();
     void far;
   }
 
@@ -824,7 +880,7 @@ async function mountMap(el, ctx, offs) {
     if (e.key !== 'Escape') return;
     if (!findEl.hidden) closeSearch();
     else if (!distPanel.hidden) { closeDistricts(); distBtn.focus(); }
-    else if (legend.classList.contains('is-open')) { closeKey(); keyBtn.focus(); }
+    else if (modePanel.classList.contains('is-open')) { closeModes(); modeBtn.focus(); }
     else if (!sheet.hidden) closeSheet({ restore: true });
     else if (sel.on) sel.set(false);
   };
@@ -832,7 +888,7 @@ async function mountMap(el, ctx, offs) {
   offs.push(() => document.removeEventListener('keydown', onKey));
   const onDown = (/** @type {PointerEvent} */ e) => {
     const tg = /** @type {Node} */ (e.target);
-    if (legend.classList.contains('is-open') && !legend.contains(tg) && !keyBtn.contains(tg)) closeKey();
+    if (modePanel.classList.contains('is-open') && !modePanel.contains(tg) && !modeBtn.contains(tg)) closeModes();
     if (!distPanel.hidden && !distPanel.contains(tg) && !distBtn.contains(tg)) closeDistricts();
   };
   document.addEventListener('pointerdown', onDown);
