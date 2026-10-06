@@ -162,6 +162,8 @@
 .hero > :not(.atmo) { position: relative; z-index: var(--z-content); }
 @media (forced-colors: active) {
   .atmo { display: none; }
+  /* the segmented control's thumb is a background: the pressed option gets an outline instead (audit P1-12) */
+  .seg button[aria-pressed="true"] { outline: 2px solid Highlight; outline-offset: -2px; }
   /* data drawn only with background colour would vanish: outline it, fill it with the system colours */
   .runway-bar, .days i, .track, .segments i { border: 1px solid CanvasText; }
   .runway-bar > span, .days i.on, .track .fill, .segments i::after { background: CanvasText; forced-color-adjust: none; }

@@ -195,3 +195,20 @@ body.cv-in-chat #view { max-width: none; padding: 0; }
 .cv-dock .btn-primary { box-shadow: var(--shadow-lift); }
 .cv-tail { display: flex; justify-content: center; margin-top: var(--s-4); }
 .cv-delete { color: var(--ink-3); font-size: 14px; }
+
+/* forced colours (Windows contrast themes): box-shadow edges and gradient backgrounds are dropped there, so the bars,
+   the composer, fields, bubbles and choices get real borders and system colours, and the picked topic, the focused
+   field, a ticked box and a recast stay visible (audit P1-11) */
+@media (forced-colors: active) {
+  .cv-bar, .cv-composer, .cv-dock { background: Canvas; }
+  .cv-composer { border-top: 1px solid CanvasText; }
+  .cv-field, .cv-bubble, .cv-choice, .cv-closed { border: 1px solid CanvasText; }
+  .cv-send { border: 1px solid ButtonText; }
+  .cv-field:focus-within { outline: 2px solid Highlight; outline-offset: 1px; }
+  .cv-choice.is-on { border: 2px solid Highlight; outline: 2px solid Highlight; outline-offset: 1px; }
+  .cv-add input { border: 1.5px solid CanvasText; }
+  .cv-add input:checked { forced-color-adjust: none; background: Highlight; }
+  .cv-add input:checked::after { border-color: HighlightText; }
+  .cv-recast { background: none; text-decoration: underline dotted; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  .cv-recast[aria-expanded="true"] { outline: 1px solid Highlight; }
+}

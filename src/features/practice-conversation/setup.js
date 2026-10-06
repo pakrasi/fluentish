@@ -11,6 +11,7 @@ import { config } from '../../core/config.js';
 import * as C from '../../domain/conversation.js';
 import * as D from './data.js';
 import { sentSheet } from './sheets.js';
+import { radioKeys } from '../../core/radiogroup.js';
 import { IDS } from './prompts.js';
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
@@ -105,6 +106,8 @@ export async function mountSetup(el, ctx) {
             icon('next', { size: 16 })));
         }))) : null);
     replace(el, view);
+    // the topic and scene lists: one tab stop each, arrow keys choose (core/radiogroup.js)
+    for (const g of el.querySelectorAll('.cv-choices[role="radiogroup"]')) radioKeys(g, { root: el });
   }
 
   function start() {

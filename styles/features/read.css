@@ -141,3 +141,12 @@
 .rd-saved.is-in .rd-saved-w { opacity: 1; transform: none; }
 :root[data-motion="reduce"] .rd-saved-w { opacity: 1; transform: none; transition: none; }
 @media (prefers-reduced-motion: reduce) { :root:not([data-motion="full"]) .rd-saved-w { opacity: 1; transform: none; transition: none; } }
+
+/* forced colours (Windows contrast themes): background tints are dropped there, so the word open in the sheet, the
+   marked phrase and the word quoted in the sheet are drawn in the system highlight (audit P1-12) */
+@media (forced-colors: active) {
+  .tv-hl, .tv-w.is-lit { forced-color-adjust: none; background: Highlight; color: HighlightText; text-decoration-color: HighlightText; }
+  .rd-dock { background: Canvas; border-top: 1px solid CanvasText; }
+}
+.rd-tail { display: flex; justify-content: center; margin-top: var(--s-4); }
+.rd-delete { color: var(--ink-3); font-size: 14px; }
