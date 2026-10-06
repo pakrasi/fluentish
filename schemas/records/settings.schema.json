@@ -330,8 +330,16 @@
     "connections": {
       "type": "object",
       "additionalProperties": false,
-      "description": "Outside data he connects (round 4, optional). Repository names live here, never in code.",
+      "description": "Outside data he connects (round 4, optional). Repository names live here, never in code. results (docs/SHARING.md): the private GitHub repository the results sync, the progress backup and restore use; null or missing for a local-only profile. The owner's devices get theirs from a one-time migration (src/data/connection.js).",
       "properties": {
+        "results": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[A-Za-z0-9-]{1,39}/[A-Za-z0-9_.-]{1,100}$",
+          "description": "the profile's results repository, owner/name"
+        },
         "hours": {
           "type": [
             "object",
@@ -358,7 +366,8 @@
                 "string",
                 "null"
               ],
-              "pattern": "^[a-z]{2,3}$"
+              "pattern": "^[a-z][a-z_-]{1,31}$",
+              "description": "the project name in the file (german), or a language code"
             }
           }
         }

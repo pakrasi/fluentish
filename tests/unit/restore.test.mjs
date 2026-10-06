@@ -14,7 +14,7 @@ import { JOURNAL_KV } from '../../src/data/restore.js';
 import { canon, mergeCards, compare, matchesBase } from '../../src/domain/cardmerge.js';
 import { markRec, unmarkRec } from '../../src/domain/known.js';
 import { config } from '../../src/core/config.js';
-import { mockGithubFor } from './sync-harness.mjs';
+import { mockGithubFor, OWNER_REPO, ownerConnect } from './sync-harness.mjs';
 
 const PID = '0192a3b4-c5d6-7e8f-9a0b-0000000000c1';
 const TOKEN = 'test-token-not-real-0003';
@@ -25,6 +25,7 @@ const CTX = { exam: null, phase: 'none', tz: 'UTC' };
 async function device(deviceId, { adapter = createMemoryAdapter(), pid = PID, day = DAY } = {}) {
   const store = await Store.open({ adapter, profile: { id: pid, name: '', kind: 'local' }, device: { deviceId, seq: 0 }, clock: { today: () => day } });
   store.set('secrets', { githubToken: TOKEN });
+  ownerConnect(store);
   await store.flush();
   return store;
 }
@@ -51,7 +52,7 @@ function unmark(store, id, at, deck = 'b1') {
   store.append('card.unmarked_known', { deck, by: 'self', items: [{ itemId: id, base: cur, post: back }], ctx: CTX }, { day: DAY, at: new Date(at) });
 }
 
-const gh = () => mockGithubFor(config.resultsRepo);
+const gh = () => mockGithubFor(OWNER_REPO);
 const backUp = async (store, mock) => { resetThrottle(); const r = await sync(store, { fetch: mock.fetch, pull: false, backupNow: true }); assert.equal(r.backup?.error ?? r.error, null); return r; };
 const shared = store => Object.fromEntries(Object.entries(store.cardsByDeck).filter(([d, v]) => d !== 'script' && Object.keys(v).length));
 async function restoreAll(store, mock) {
@@ -71,6 +72,7 @@ async function studied(id = 'iph') {
   s.putCards('script', [['SW:rahmen', { reps: 1, u: T0, origin: ['script:bike01'] }]]);
   s.set('scripts', { bike01: { id: 'bike01', title: 'Private talk', sections: [] } });
   s.set('settings', { v: 1, language: 'german', level: 'B1', exam: { type: 'goethe-b1', date: null, modules: ['lesen'] }, minutesPerDay: 30, rev: { minutesPerDay: '0001790000000000-0000-iph', language: '0001790000000001-0000-iph' } });
+  ownerConnect(s);
   s.set('mistakes', { 'F:a1-1': { id: 'F:a1-1', v: 1, wrong: 'ich habe gegangen', right: 'ich bin gegangen', rule: 'sein', source: { attemptId: 'a1' }, createdAt: '2026-10-04T08:00:00Z', deletedAt: null } });
   s.putCards('b1', [['F:a1-1', { reps: 1, u: T0 + 5000, S: 1 }]]);
   s.set('activity', { [DAY]: { minutes: 25, rounds: 2 } });
@@ -136,8 +138,10 @@ test('two devices with overlapping reviews converge, deterministically, and stay
   mark(mac, 'BP:y', T0 + 300);
   answer(iph, 'K:one', T0 + 400); answer(mac, 'K:two', T0 + 500);
   iph.set('settings', { v: 1, minutesPerDay: 15, rev: { minutesPerDay: '0001790000000005-0000-iph' } });
+  ownerConnect(iph);
   iph.append('settings.changed', { key: 'minutesPerDay', value: 15, rev: '0001790000000005-0000-iph' });
   mac.set('settings', { v: 1, minutesPerDay: 90, rev: { minutesPerDay: '0001790000000009-0000-mac' } });
+  ownerConnect(mac);
   mac.append('settings.changed', { key: 'minutesPerDay', value: 90, rev: '0001790000000009-0000-mac' });
   iph.set('activity', { [DAY]: { minutes: 20, rounds: 1 } }); mac.set('activity', { [DAY]: { minutes: 35, rounds: 3 } });
   await backUp(iph, mock); await backUp(mac, mock);
@@ -228,9 +232,11 @@ test('a restore cut off mid-way is rolled back at the next start, and can be run
   const base = createMemoryAdapter();
   const s1 = await openSession({ adapter: base, legacyStorage: null, clock: { today: () => DAY } });
   s1.store.set('secrets', { githubToken: TOKEN });
+  ownerConnect(s1.store);
   answer(s1.store, 'BP:a', T0 + 50);
   answer(s1.store, 'BP:mine', T0 + 60);
   s1.store.set('settings', { v: 1, minutesPerDay: 60, onboarded: 'x', rev: { onboarded: '0001700000000000-0000-own' } });
+  ownerConnect(s1.store);
   await s1.store.flush();
   const before = canon({ c: shared(s1.store), s: s1.store.get('settings') });
   const found = await restore(s1.store, { fetch: mock.fetch }).find();

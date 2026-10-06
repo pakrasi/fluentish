@@ -23,7 +23,8 @@ import { todayBudget, roundAction, simToday, clusterToday } from '../../domain/a
 import { DECK as SIM_DECK, KV as SIM_KV } from '../../domain/sim.js';
 import { refreshSimStats } from '../shared/sim-data.js';
 import { resumable, savedRound } from '../shared/session.js';
-import { loadData, stateFor, session, refreshWords, secrets, wordsState, roundOf } from '../shared/data.js';
+import { loadData, stateFor, session, refreshWords, wordsState, roundOf } from '../shared/data.js';
+import { connected } from '../../data/connection.js';
 import { COLLECTION as WORDS } from '../shared/words.js';
 import { hubRow as scriptsRow } from '../shared/script-row.js';
 import { readRow, listReads } from '../shared/read-data.js';
@@ -171,7 +172,7 @@ export async function mountHub(el, ctx) {
     const cl = clusterToday({ store, c, settings: ctx.settings() });
     const bd = b.decks.build ? b.decks.build.due : 0;
     const wordsArea = rd.areas.words;
-    const tok = !!secrets(store).githubToken, wc = store.get(WORDS, null);
+    const tok = connected(store), wc = store.get(WORDS, null);
     const examWords = wc ? (wc.words || []).length : 0;
     const wordsRow = !tok && !wc ? null   // nothing linked and nothing saved: no row (Profile › Connections links it)
       : examWords && wordsArea && wordsArea.n
@@ -261,7 +262,7 @@ export async function mountHub(el, ctx) {
   const own = roundOf(ctx);
   if (own.trainer) refreshSimStats(ctx);
   // exam words: at most one request every 10 minutes; a change rebuilds the pool
-  if (own.trainer && secrets(store).githubToken) {
+  if (own.trainer && connected(store)) {
     refreshWords(ctx).then(res => {
       if (alive && res.state === 'error') rerender();
       if (!alive || res.state !== 'ok') return;

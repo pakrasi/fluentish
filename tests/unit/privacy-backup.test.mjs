@@ -27,7 +27,7 @@ import * as C from '../../src/domain/conversation.js';
 import * as D from '../../src/features/practice-conversation/data.js';
 import { usedIds } from '../../src/features/practice-conversation/lang.js';
 import de from '../../src/lang/de/index.js';
-import { mockGithubFor } from './sync-harness.mjs';
+import { mockGithubFor, OWNER_REPO, ownerConnect } from './sync-harness.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const PID = '0192a3b4-c5d6-7e8f-9a0b-00000000p1a0';
@@ -42,7 +42,9 @@ async function device() {
   resetLog();
   const store = await Store.open({ adapter: createMemoryAdapter(), profile: { id: PID, name: '', kind: 'local' }, device: { deviceId: 'dev1', seq: 0 }, clock: { today: () => DAY } });
   store.set('settings', { v: 1, language: 'german', level: 'B1', exam: { type: null, date: null, modules: [] }, minutesPerDay: 60, newPerDay: null, practice: {}, onboarded: '2026-10-01T09:00:00.000+02:00', rev: {} });
+  ownerConnect(store);
   store.set('secrets', { githubToken: TOKEN });
+  ownerConnect(store);
   // a card, so the snapshot is written (a profile without cards writes none)
   store.putCards('b1', [['W:Haus.n', { S: 3, D: 5, due: '2026-10-25', reps: 1, lapses: 0, last: DAY, first: DAY, stage: 1, streak: 0, learn: null, relearn: false, u: 1, hist: [] }]]);
   await store.flush();
@@ -77,7 +79,7 @@ function review(store, deck, id) {
 
 test('a phrase marked in a private text, its meaning, a review of it and an error quoting the text: nothing of the text is uploaded', async () => {
   const store = await device();
-  const gh = mockGithubFor(config.resultsRepo);
+  const gh = mockGithubFor(OWNER_REPO);
   const deck = R.readDeck('de');
   const read = L.makeRead({ raw: TEXT, title: 'Vier Tage', id: 'r1', lang: 'de', now: '2026-10-20T08:00:00Z', untitled: 'x' });
   R.putRead(store, read);
@@ -118,7 +120,7 @@ test('a phrase marked in a private text, its meaning, a review of it and an erro
 
 test('a phrase saved before the fix: its id stays, its words move to read.ctx (additive, idempotent), the snapshot carries none', async () => {
   const store = await device();
-  const gh = mockGithubFor(config.resultsRepo);
+  const gh = mockGithubFor(OWNER_REPO);
   const deck = R.readDeck('de');
   const legacy = 'RP:auf-dem-schirm-haben';   // an id from before the fix (the slug of a public phrase here)
   store.set(R.WORDS, { [legacy]: { lemma: 'auf dem Schirm haben', head: 'auf dem Schirm haben', gloss: `notice ${SENTINEL}`, from: 'me', level: null, zipf: null, kind: 'phrase', home: deck, ref: false, first: DAY, last: DAY, n: 1 } });
@@ -148,7 +150,7 @@ test('a phrase saved before the fix: its id stays, its words move to read.ctx (a
 
 test('delete a text, then the day\'s log upload: the error log carries none of its sentences', async () => {
   const store = await device();
-  const gh = mockGithubFor(config.resultsRepo);
+  const gh = mockGithubFor(OWNER_REPO);
   const read = L.makeRead({ raw: 'Mein Chef Herr Quorxelbrandt hat mich heute gekündigt.', title: 'x', id: 'r1', lang: 'de', now: '', untitled: 'x' });
   R.putRead(store, read);
   quiet(() => log('read', new Error('could not read Mein Chef Herr Quorxelbrandt hat mich heute gekündigt.')));
@@ -164,7 +166,7 @@ test('delete a text, then the day\'s log upload: the error log carries none of i
 
 test('delete a conversation, then the day\'s log upload: its lines are gone; the words he used go up as ids only', async () => {
   const store = await device();
-  const gh = mockGithubFor(config.resultsRepo);
+  const gh = mockGithubFor(OWNER_REPO);
   const SID = '0192f0aa-7c3b-7d1e-9a00-0000000000aa';
   const his = `Ich arbeite bei der Firma ${SENTINEL} seit zwei Jahren.`;
   D.putSession(store, { id: SID, v: 1, mode: 'free', topic: { kind: 'own', ref: null }, level: 'B1', partnerLevel: 'B2', register: 'du', day: DAY, startedAt: 1, endedAt: null,

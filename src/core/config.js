@@ -19,14 +19,13 @@ export const config = {
      the first start of a device that opened the preview merges that work into its real profile (data/session.js
      keepPreview). Dev servers create local profiles either way. */
   deployShadow: false,
-  /** Private repository the results sync writes to (stage C); the device link stores a token for it. */
-  resultsRepo: 'pakrasi/b1-exam',
-  /** The study hours file Progress reads when settings.connections.hours is not set (hours-json@1, a public GitHub
-     Pages file, same origin as the deployed app). Settings › the Progress page can point it elsewhere. */
-  hoursDefault: { repo: 'pakrasi/language-stack', path: 'data/toggl.json', lang: 'german' },
+  /* No repository is named here (docs/SHARING.md): the results repository and the study hours file are a profile's
+     own connections (settings.connections.results and .hours, data/connection.js). A new profile has neither. */
   github: {
     api: 'https://api.github.com',
     newTokenUrl: 'https://github.com/settings/personal-access-tokens/new',
+    /** Where a token is revoked (Profile › Connections › Lost a device?). */
+    tokensUrl: 'https://github.com/settings/personal-access-tokens',
   },
   anthropic: {
     api: 'https://api.anthropic.com/v1/messages',

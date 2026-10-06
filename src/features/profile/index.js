@@ -16,6 +16,8 @@ import { previewText } from '../../data/cutover.js';
 import { exportBundle, importFile } from '../../data/transfer.js';
 import { deleteProfile } from '../../data/session.js';
 import { results } from '../../data/sync/index.js';
+import { connectionState, resultsRepo, validRepo, connect, disconnectDevice, forgetRepo } from '../../data/connection.js';
+import { checkToken, keepCheck, lastCheck, recheck } from '../../data/sync/token-check.js';
 import { backupBlock } from './backup.js';
 import { goalsPage } from './goals.js';
 import { courseWeek, weekMinutes } from '../../domain/week.js';
@@ -195,34 +197,101 @@ export async function mount(el, ctx) {
         h('button', { type: 'button', class: 'btn pressable', onclick: () => { const v = keyIn.value.trim(); if (!v) { keyField.setError(t('conn.key.empty')); return; } setSecret('anthropicKey', v); ctx.toast(t('conn.key.savedToast')); } }, t('conn.save')),
         secrets().anthropicKey ? h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => setSecret('anthropicKey', null) }, t('conn.remove')) : null));
 
-    // results sync: link this device to the private results repository with a fine-grained token
-    const tokIn = /** @type {HTMLInputElement} */ (h('input', { class: 'input', type: 'password', autocomplete: 'off', spellcheck: 'false', placeholder: secrets().githubToken ? t('conn.key.saved') : 'github_pat_…' }));
-    const tokField = field({ label: t('conn.token'), input: tokIn, hint: h('span', null, t('conn.token.hint', { repo: config.resultsRepo }), ' ', h('a', { href: config.github.newTokenUrl, target: '_blank', rel: 'noopener noreferrer' }, t('conn.token.create'))) });
-    const status = h('p', { class: 'caption status', 'aria-live': 'polite' }, secrets().githubToken ? t('conn.sync.linked', { repo: config.resultsRepo }) : t('conn.sync.notLinked'));
-    const check = async () => {
-      const tok = secrets().githubToken;
-      if (!tok) return;
-      status.textContent = t('conn.sync.checking');
-      try {
-        const r = await fetch(`${config.github.api}/repos/${config.resultsRepo}`, { headers: { Authorization: `Bearer ${tok}`, Accept: 'application/vnd.github+json' }, cache: 'no-store' });
-        const exp = r.headers.get('github-authentication-token-expiration');
-        status.textContent = r.ok ? t('conn.sync.ok', { repo: config.resultsRepo }) + (exp ? ` ${t('conn.sync.expires', { date: exp.slice(0, 10) })}` : '') : t('conn.sync.fail', { status: r.status });
-      } catch { status.textContent = t('conn.sync.offline'); }
-    };
-    const pending = results(store).notSent();   // results-sync events only, the same count as the Exam tab
-    const syncBox = h('div', { class: 'conn' },
-      h('h3', null, t('conn.sync')),
-      h('p', { class: 'field-hint' }, t('conn.sync.about')),
-      status,
-      tokField,
-      h('div', { class: 'row-actions' },
-        h('button', { type: 'button', class: 'btn pressable', onclick: () => { const v = tokIn.value.trim(); if (!v) { tokField.setError(t('conn.token.empty')); return; } setSecret('githubToken', v); ctx.toast(t('conn.sync.savedToast')); } }, secrets().githubToken ? t('conn.replace') : t('conn.link')),
-        secrets().githubToken ? h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: check }, t('conn.check')) : null,
-        secrets().githubToken ? h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => setSecret('githubToken', null) }, t('conn.unlink')) : null),
-      h('p', { class: 'caption' }, pending ? t('conn.sync.pending', { n: pending }) : t('conn.sync.nonePending')));
-    sec.append(keyBox, syncBox, h('p', { class: 'caption' }, t('conn.device')));
+    sec.append(keyBox, syncBox(), h('p', { class: 'caption' }, t('conn.device')));
     return sec;
   }
+
+  /* ---------- results sync: the profile's own repository and this device's token (data/connection.js) ---------- */
+  function syncBox() {
+    const a = appCtx();
+    const state = connectionState(store);
+    const repo = resultsRepo(store);
+    const redraw = () => swapSection(connections());
+    const status = h('p', { class: 'caption status', 'aria-live': 'polite' });
+    const err = (/** @type {any} */ f, /** @type {string} */ key, /** @type {Record<string, any>} */ p = {}) => { f.setError(t(key, p)); };
+
+    // the token field (never shows a token: a password field, emptied after use, nothing saved goes back into it)
+    const tokIn = /** @type {HTMLInputElement} */ (h('input', { class: 'input', type: 'password', name: 'gh-token', autocomplete: 'off', spellcheck: 'false', placeholder: 'github_pat_…' }));
+    const tokField = field({ label: t('conn.token'), input: tokIn, hint: h('span', null, t('conn.token.hintOwn'), ' ', h('a', { href: config.github.newTokenUrl, target: '_blank', rel: 'noopener noreferrer' }, t('conn.token.create'))) });
+    const repoIn = /** @type {HTMLInputElement} */ (h('input', { class: 'input', type: 'text', name: 'gh-repo', value: repo || '', placeholder: 'owner/name', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false' }));
+    const repoField = field({ label: t('conn.repo'), input: repoIn, hint: t('conn.repo.hint') });
+
+    /** Check the token with GitHub, then keep both. @param {HTMLElement} btn */
+    const connectNow = async btn => {
+      const r = state === 'none' ? repoIn.value.trim() : /** @type {string} */ (repo);
+      const tok = tokIn.value.trim();
+      if (!validRepo(r)) { err(repoField, 'conn.repo.bad'); return; }
+      if (!tok) { err(tokField, 'conn.token.empty'); return; }
+      btn.setAttribute('disabled', '');
+      status.textContent = t('conn.sync.checking');
+      const c = await checkToken({ token: tok, repo: r, api: config.github.api });
+      btn.removeAttribute('disabled');
+      if (c.status !== 'ok') { tokIn.value = ''; status.textContent = ''; err(tokField, `conn.check.${c.status}`, { repo: r }); return; }
+      connect(a, r, tok);
+      tokIn.value = '';
+      await keepCheck(store, tok, c, ctx.clock.today());
+      ctx.toast(t('conn.sync.savedToast'));
+      redraw();
+      bus.emit('sync:request', { force: true });
+    };
+
+    /** @type {any[]} */ const parts = [h('h3', null, t('conn.sync'))];
+    if (state === 'none') {
+      status.textContent = t('conn.sync.none');
+      const btn = h('button', { type: 'button', class: 'btn pressable', onclick: () => connectNow(btn) }, t('conn.connect'));
+      parts.push(status, h('p', { class: 'field-hint' }, t('conn.sync.aboutNone')),
+        h('details', { class: 'conn-setup' }, h('summary', null, t('conn.setup')), repoField, tokField, h('div', { class: 'row-actions' }, btn)));
+      return h('div', { class: 'conn', id: 'profile-sync' }, parts);
+    }
+
+    const c = lastCheck(store);
+    const lines = [];
+    if (state === 'connected') {
+      lines.push(t('conn.sync.connected', { repo }));
+      if (c && c.status === 'ok') lines.push(c.expires ? t('conn.sync.expires', { date: c.expires }) : '');
+      if (c && c.status === 'denied') lines.push(t('conn.check.deniedNow', { repo }));
+    } else {
+      lines.push(t('conn.sync.deviceOff', { repo }));
+      if (c && c.status === 'refused') lines.push(t('conn.check.removed'));
+    }
+    status.textContent = lines.filter(Boolean).join(' ');
+    const warnings = state === 'connected' && c && c.status === 'ok' ? c.warnings.map(w => h('p', { class: 'field-error conn-warn' }, t(`conn.warn.${w}`, { repo }))) : [];
+
+    const check = h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: async () => {
+      check.setAttribute('disabled', '');
+      status.textContent = t('conn.sync.checking');
+      const r = await recheck(store, { api: config.github.api, today: ctx.clock.today(), force: true }).catch(() => null);
+      if (r?.status === 'refused') ctx.toast(t('conn.check.removedToast'));
+      else if (r?.status === 'offline') ctx.toast(t('conn.sync.offline'));
+      redraw();
+    } }, t('conn.check'));
+    const tokenForm = h('div', { class: 'conn-token', hidden: state === 'connected' }, tokField,
+      h('div', { class: 'row-actions' }, h('button', { type: 'button', class: 'btn pressable', onclick: (/** @type {Event} */ e) => connectNow(/** @type {HTMLElement} */ (e.currentTarget)) }, state === 'connected' ? t('conn.replaceSave') : t('conn.connectDevice'))));
+    const replaceBtn = h('button', { type: 'button', class: 'btn btn-quiet pressable', 'aria-expanded': 'false', onclick: () => {
+      tokenForm.hidden = false; replaceBtn.hidden = true; replaceBtn.setAttribute('aria-expanded', 'true'); tokIn.focus();
+    } }, t('conn.replace'));
+    const confirmBox = h('div', { class: 'confirm', hidden: true, role: 'alertdialog', 'aria-modal': 'false', 'aria-labelledby': 'disc-q' },
+      h('p', { id: 'disc-q' }, t('conn.disconnect.confirm', { repo })),
+      h('div', { class: 'row-actions' },
+        h('button', { type: 'button', class: 'btn btn-danger pressable', onclick: () => { disconnectDevice(store); ctx.toast(t('conn.disconnect.done')); redraw(); } }, t('conn.disconnect.yes')),
+        h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => { confirmBox.hidden = true; disc.setAttribute('aria-expanded', 'false'); disc.focus(); } }, t('data.delete.no'))));
+    const disc = h('button', { type: 'button', class: 'btn btn-quiet danger pressable', 'aria-expanded': 'false', onclick: () => {
+      confirmBox.hidden = false; disc.setAttribute('aria-expanded', 'true');
+      /** @type {HTMLElement | null} */ (confirmBox.querySelector('button'))?.focus();
+    } }, t('conn.disconnect'));
+    const forget = h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => { forgetRepo(a); ctx.toast(t('conn.forget.done')); redraw(); } }, t('conn.forget'));
+    const pending = results(store).notSent();   // results-sync events only, the same count as the Exam tab
+    parts.push(
+      h('p', { class: 'field-hint' }, t('conn.sync.about')),
+      status, ...warnings,
+      tokenForm,
+      h('div', { class: 'row-actions wrap' }, state === 'connected' ? [check, replaceBtn, disc] : [forget]),
+      confirmBox,
+      state === 'connected' ? h('p', { class: 'caption' }, pending ? t('conn.sync.pending', { n: pending }) : t('conn.sync.nonePending')) : null,
+      h('p', { class: 'caption' }, t('conn.lost'), ' ', h('a', { href: config.github.tokensUrl, target: '_blank', rel: 'noopener noreferrer' }, t('conn.lost.link'))));
+    return h('div', { class: 'conn', id: 'profile-sync' }, parts);
+  }
+
 
   /* ---------- appearance ---------- */
   function appearance() {
@@ -302,8 +371,18 @@ export async function mount(el, ctx) {
         deleteBtn),
       h('p', { class: 'field-hint' }, t('data.hint')),
       result, confirm,
-      backupBlock(ctx, () => swapSection(data())));
+      // a local-only profile (no results repository): where its progress lives and how to keep it; no backup block
+      connectionState(store) === 'none' ? localBlock() : backupBlock(ctx, () => swapSection(data())));
     return sec;
+  }
+
+  /** Profile › Data for a profile without a repository: progress stays in this browser; export to keep a copy. */
+  function localBlock() {
+    return h('div', { class: 'conn local-data', id: 'profile-local' },
+      h('h3', null, t('local.title')),
+      h('p', null, t('local.here')),
+      h('p', null, t('local.export')),
+      h('p', { class: 'caption' }, t('local.accounts')));
   }
 
   /* ---------- diagnostics ---------- */

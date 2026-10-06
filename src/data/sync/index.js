@@ -19,6 +19,7 @@ import * as GH from './github-b1exam.js';
 import * as B from './backup.js';
 import * as R from '../restore.js';
 import { entries as logEntries } from '../../core/log.js';
+import { resultsRepo, githubToken, connected } from '../connection.js';
 
 /**
  * @typedef {{acked: string[], rejected: {id: string, error: string}[], error: {message: string, auth?: boolean, offline?: boolean} | null}} PushResult
@@ -70,13 +71,14 @@ export function results(store) {
 
 /**
  * Flush: send results, back up progress, read what the Mac wrote. At most once a minute unless forced; one tab at a
- * time; skips by itself when the device is not linked or the profile is a preview.
+ * time; skips by itself when the profile connects no repository, the device holds no token or the profile is a preview.
  * @param {any} store
  * @param {{force?: boolean, pull?: boolean, emit?: (type: string, data: any) => void, fetch?: typeof fetch, now?: () => number,
  *          backupNow?: boolean}} [o]  backupNow: "Back up now" (events and a snapshot, whatever their cadence)
  */
 export function sync(store, { force = false, pull = true, emit, fetch: f, now, backupNow = false } = {}) {
-  return GH.syncResults(store, { repo: config.resultsRepo, api: config.github.api, force: force || backupNow, pull, emit, fetch: f, now, backupNow, build: config.build,
+  // the profile's own repository (data/connection.js); a profile without one sends nothing and reads nothing
+  return GH.syncResults(store, { repo: resultsRepo(store), api: config.github.api, force: force || backupNow, pull, emit, fetch: f, now, backupNow, build: config.build,
     // the error log goes once a day with the backup (core/log.js)
     extra: ({ files, secrets, now: n }) => B.uploadLog(store, files, { entries: logEntries(), now: n, secrets, build: config.build }).then(() => {}) });
 }
@@ -86,7 +88,7 @@ export function sync(store, { force = false, pull = true, emit, fetch: f, now, b
  * @param {any} store @param {{fetch?: typeof fetch}} [o]
  */
 export function backupFiles(store, { fetch: f } = {}) {
-  return GH.createGithubB1Exam({ token: () => (store.get('secrets', {}) || {}).githubToken || null, repo: config.resultsRepo, api: config.github.api, fetch: f }).files;
+  return GH.createGithubB1Exam({ token: () => githubToken(store), repo: resultsRepo(store) || '', api: config.github.api, fetch: f }).files;
 }
 
 /**
@@ -95,8 +97,8 @@ export function backupFiles(store, { fetch: f } = {}) {
  */
 export function backup(store) {
   return {
-    /** Whether this device links to the results repository (the backup goes there). */
-    linked: () => !!(store.get('secrets', {}) || {}).githubToken,
+    /** Whether this device links to the profile's results repository (the backup goes there). */
+    linked: () => connected(store),
     /** Uploads may start (an import notice has been seen); the backup waits like the results do. */
     allowed: () => GH.uploadsAllowed(store) && store.profile?.kind !== 'shadow',
     on: () => B.backupOn(store),
@@ -106,7 +108,8 @@ export function backup(store) {
     waiting: () => B.waiting(store),
     /** {at, error, snapshot: {day, at, cards}} of the last run on this device. */
     state: () => B.state(store),
-    repo: config.resultsRepo,
+    /** The profile's repository, or null (a local-only profile: no backup block at all). */
+    repo: resultsRepo(store),
   };
 }
 

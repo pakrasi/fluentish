@@ -1,9 +1,9 @@
 /* The study hours file for Progress › Time per week › All tracked (hours-json@1: {entries: [{date, hours, lang?}]}).
-   Where it is: settings.connections.hours ({repo: 'owner/name', path, lang}), else config.hoursDefault. It is a public
+   Where it is: settings.connections.hours ({repo: 'owner/name', path, lang}); without it there is no file and Progress
+   shows the app's minutes only (no default: docs/SHARING.md). It is a public
    GitHub Pages file (https://owner.github.io/name/path), read directly, at most once a study day, and kept in the
    device kv 'hours.external' (a copy of a public file: never exported, uploaded or backed up). Its hours are shown on
    their own and never added to the app's minutes: the file already includes the time spent in Fluentish. */
-import { config } from '../../../core/config.js';
 import { hoursUrl } from './model.js';
 
 export const HOURS_KV = 'hours.external';
@@ -12,11 +12,11 @@ const TIMEOUT_MS = 10e3;
 /** @typedef {import('./model.js').HoursSource} HoursSource */
 /** @typedef {{url: string, day: string, at: string, syncedAt: string | null, entries: {date: string, hours: number, lang: string | null}[]}} Cached */
 
-/** The source in use: his setting, else the default. @param {any} settings normalised settings @returns {HoursSource & {custom: boolean}} */
+/** The source the learner entered, or null (none: "All tracked" is not offered). @param {any} settings normalised settings @returns {HoursSource | null} */
 export function hoursSource(settings) {
   const s = settings?.connections?.hours;
-  if (s && typeof s.repo === 'string' && typeof s.path === 'string') return { repo: s.repo, path: s.path, lang: s.lang ?? null, custom: true };
-  return { ...config.hoursDefault, custom: false };
+  if (s && typeof s.repo === 'string' && typeof s.path === 'string') return { repo: s.repo, path: s.path, lang: s.lang ?? null };
+  return null;
 }
 
 /** The copy kept on this device, when it is of this url. @param {any} store @param {string} url @returns {Cached | null} */

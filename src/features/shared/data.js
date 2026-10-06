@@ -8,6 +8,7 @@
      activity          { [day]: { minutes, rounds } } for Today's runway and study days
    and appends card.reviewed events to the outbox. */
 import { config } from '../../core/config.js';
+import { resultsRepo, githubToken } from '../../data/connection.js';
 import { listMistakes, backfillContext } from '../../data/mistakes.js';
 import * as RD from '../../domain/b1ready.js';
 import { buildPool } from './pool.js';
@@ -31,7 +32,8 @@ const FILES = ['b1.items', 'b1.grammar', 'b1.bank', 'b1.plan', 'b1.nouns', 'b1.w
 const B2_FILES = ['igloo.grammar.items.de', 'igloo.grammar.concepts.de', 'b1.annot', 'igloo.chunks.en', 'igloo.chunks.accept.german'];
 // the forms table, for the grader's verb forms (pool.js verbIndex; round 4); without it the word list's verbs only
 const FORM_FILES = ['b1.forms'];
-export const VOCAB_URL = `${config.github.api}/repos/${config.resultsRepo}/contents/data/vocab.json`;
+/** The exam words file in the profile's results repository (data/connection.js), or null without one. @param {any} store */
+export const vocabUrl = store => { const r = resultsRepo(store); return r ? `${config.github.api}/repos/${r}/contents/data/vocab.json` : null; };
 
 /** @type {{key: string, data: any, words: any[]} | null} */ let memo = null;
 /** @type {{key: string, data: any} | null} */ let courseMemo = null;
@@ -293,7 +295,7 @@ export const secrets = store => store.get('secrets', {}) || {};
 export async function refreshWords(ctx, { force = false } = {}) {
   const wordmap = await ctx.content.load('b1.wordmap').catch(() => ({}));
   const cached = ctx.store.get(WORDS, null);
-  const res = await fetchWords({ token: secrets(ctx.store).githubToken || null, cached, wordmap, url: VOCAB_URL, fetch: (...a) => fetch(...a), has: (/** @type {string} */ id) => !!ctx.store.cards('b1')[id]?.reps,
+  const res = await fetchWords({ token: githubToken(ctx.store), cached, wordmap, url: vocabUrl(ctx.store) || '', fetch: (...a) => fetch(...a), has: (/** @type {string} */ id) => !!ctx.store.cards('b1')[id]?.reps,
     now: Date.now(), online: navigator.onLine, force });
   if (res.cache && res.cache !== cached) ctx.store.set(WORDS, res.cache);
   wordsState = res.state;

@@ -48,6 +48,6 @@ test('takeLinkToken: a token that does not look like one is scrubbed too, and re
 test('main.js takes the token before anything else runs (the error log, the router, storage)', () => {
   const src = readFileSync(new URL('../../src/main.js', import.meta.url), 'utf8');
   const body = src.replace(/^import[^;]+;\s*$/gm, '').replace(/^\s*\/\/.*$/gm, '').replace(/\/\*[\s\S]*?\*\//g, '').trim();
-  assert.match(body, /^const linkToken = takeLinkToken\(\);/, 'the first statement');
-  assert.ok(!/log\([^)]*linkToken/.test(src), 'never logged');
+  assert.match(body, /^const link = takeLink\(\);/, 'the first statement');
+  assert.ok(!/log\([^)]*link\b/.test(src), 'never logged');
 });

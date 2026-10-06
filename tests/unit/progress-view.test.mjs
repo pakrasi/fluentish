@@ -158,9 +158,10 @@ test('study hours file: read once a study day, kept on this device only, an old 
   let day = '2026-10-05', calls = 0, fail = false;
   const ctx = { store, clock: { today: () => day } };
   const fetch = async url => { calls++; if (fail) throw new Error('offline'); return { ok: true, json: async () => ({ syncedAt: 'x', entries: [{ date: '2026-10-05', hours: 1, lang: 'german', note: 'class 60m' }] }), url }; };
-  const src = hoursSource({});
-  assert.deepEqual({ repo: src.repo, path: src.path }, { repo: config.hoursDefault.repo, path: config.hoursDefault.path });
-  assert.equal(hoursSource({ connections: { hours: { repo: 'a/b', path: 'h.json', lang: 'french' } } }).custom, true);
+  assert.equal(hoursSource({}), null, 'no default source: All tracked needs a file the learner entered (docs/SHARING.md)');
+  assert.equal(hoursSource({ connections: { hours: null } }), null);
+  const src = /** @type {any} */ (hoursSource({ connections: { hours: { repo: 'someone/hours', path: 'data/h.json', lang: 'german' } } }));
+  assert.deepEqual(src, { repo: 'someone/hours', path: 'data/h.json', lang: 'german' });
   let r = await loadHours(ctx, src, { fetch });
   assert.equal(r.error, null); assert.equal(r.data.entries.length, 1); assert.equal(r.data.entries[0].note, undefined, 'only what the chart needs');
   await loadHours(ctx, src, { fetch });

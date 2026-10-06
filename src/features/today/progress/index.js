@@ -197,10 +197,13 @@ export async function mount(el, ctx) {
   /* ---------- time per week: the app's minutes, or the study hours file, never both ---------- */
   function timeSection(/** @type {M.Week[]} */ ws, /** @type {string} */ from, /** @type {boolean} */ animate) {
     const holder = h('div', { class: 'pg-time' });
-    const sourceSeg = seg({ label: t('pg.time.source'), value: hours, options: [['app', t('pg.time.app')], ['tracked', t('pg.time.tracked')]],
+    // "All tracked" exists only once the learner entered a study hours file of their own (no default: docs/SHARING.md)
+    const hasSource = !!hoursSource(normalizeSettings(store.get('settings')));
+    if (!hasSource) hours = 'app';
+    const sourceSeg = !hasSource ? null : seg({ label: t('pg.time.source'), value: hours, options: [['app', t('pg.time.app')], ['tracked', t('pg.time.tracked')]],
       onChange: v => { hours = v === 'tracked' ? 'tracked' : 'app'; remember(); fill(false); } });
     const fill = (/** @type {boolean} */ anim) => {
-      if (hours === 'app') replace(holder, ...appTime(ws, anim));
+      if (hours === 'app') { replace(holder, ...appTime(ws, anim)); if (!hasSource) holder.append(addSource()); }
       else trackedTime(holder, from, anim);
     };
     fill(animate);
@@ -210,7 +213,8 @@ export async function mount(el, ctx) {
     const head = h('div', { class: 'pg-sec-head' });
     const h2 = /** @type {HTMLElement} */ (sec.querySelector('h2'));
     h2.replaceWith(head);
-    head.append(h2, h('div', { class: 'pg-seg-row' }, sourceSeg));
+    head.append(h2);
+    if (sourceSeg) head.append(h('div', { class: 'pg-seg-row' }, sourceSeg));
     return sec;
   }
 
@@ -267,6 +271,7 @@ export async function mount(el, ctx) {
   function trackedTime(/** @type {HTMLElement} */ holder, /** @type {string} */ from, /** @type {boolean} */ animate) {
     const settings = normalizeSettings(store.get('settings'));
     const src = hoursSource(settings);
+    if (!src) { hours = 'app'; remember(); render(); return; }
     const lang = src.lang || langIdOf(course?.lang || 'de') || 'german';
     const url = M.hoursUrl(src);
     const have = url ? cached(store, url) : null;
@@ -305,8 +310,45 @@ export async function mount(el, ctx) {
     if (!have || have.day !== today) loadHours(ctx, src).then(r => { if (hours === 'tracked') draw(r.data, r.error, false, true); });
   }
 
+  /** No study hours file yet: a quiet button that opens the form for one. */
+  function addSource() {
+    const add = h('button', { type: 'button', class: 'btn btn-quiet pressable', 'aria-expanded': 'false', onclick: () => {
+      add.setAttribute('aria-expanded', 'true');
+      add.hidden = true;
+      form.hidden = false;
+      /** @type {HTMLElement | null} */ (form.querySelector('input'))?.focus();
+    } }, t('pg.hours.add'));
+    const form = sourceForm(null, () => { hours = 'tracked'; remember(); render(); }, () => { form.hidden = true; add.hidden = false; add.setAttribute('aria-expanded', 'false'); add.focus(); });
+    return h('div', { class: 'pg-source' }, h('p', { class: 'caption' }, t('pg.hours.addHint')), h('div', { class: 'row-actions' }, add), form);
+  }
+
+  /**
+   * The form for the study hours file: repository, path and project. Saving writes settings.connections.hours.
+   * @param {import('./hours.js').HoursSource | null} src @param {() => void} saved @param {() => void} cancel
+   */
+  function sourceForm(src, saved, cancel) {
+    const repo = h('input', { type: 'text', class: 'input', value: src?.repo || '', placeholder: 'owner/name', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false' });
+    const path = h('input', { type: 'text', class: 'input', value: src?.path || '', placeholder: 'data/hours.json', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false' });
+    const langIn = h('input', { type: 'text', class: 'input', value: src?.lang || '', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false' });
+    const repoF = field({ label: t('pg.hours.repo'), input: repo, hint: t('pg.hours.hint') });
+    const form = h('form', { class: 'pg-source-form', hidden: true, onsubmit: (/** @type {Event} */ e) => {
+      e.preventDefault();
+      const next = { repo: /** @type {HTMLInputElement} */ (repo).value.trim(), path: /** @type {HTMLInputElement} */ (path).value.trim(), lang: /** @type {HTMLInputElement} */ (langIn).value.trim().toLowerCase() || null };
+      if (!M.hoursUrl(next) || !/\.json$/i.test(next.path)) { repoF.setError(t('pg.hours.bad')); return; }
+      setSetting(app, 'connections.hours', next);
+      toast(t('pg.hours.saved'));
+      saved();
+    } },
+    repoF, field({ label: t('pg.hours.path'), input: path }), field({ label: t('pg.hours.lang'), input: langIn, hint: t('pg.hours.langHint') }),
+    h('div', { class: 'row-actions' },
+      h('button', { type: 'submit', class: 'btn btn-primary pressable' }, t('pg.hours.save')),
+      h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: cancel }, t('pg.hours.cancel')),
+      src ? h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => { setSetting(app, 'connections.hours', null); toast(t('pg.hours.removed')); hours = 'app'; remember(); render(); } }, t('pg.hours.remove')) : null));
+    return form;
+  }
+
   /** Where the hours come from, with Read again and Change source. */
-  function sourceRow(/** @type {ReturnType<typeof hoursSource>} */ src, /** @type {any} */ data, /** @type {HTMLElement} */ holder, /** @type {string} */ from) {
+  function sourceRow(/** @type {import('./hours.js').HoursSource} */ src, /** @type {any} */ data, /** @type {HTMLElement} */ holder, /** @type {string} */ from) {
     const line = h('p', { class: 'caption' }, data ? t('pg.hours.from', { repo: src.repo, path: src.path, when: label(data.day) }) : t('pg.hours.fromNever', { repo: src.repo, path: src.path }));
     const again = h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: async () => {
       /** @type {HTMLButtonElement} */ (again).disabled = true;
@@ -319,23 +361,7 @@ export async function mount(el, ctx) {
       form.hidden = false;
       /** @type {HTMLElement | null} */ (form.querySelector('input'))?.focus();
     } }, t('pg.hours.change'));
-    const repo = h('input', { type: 'text', class: 'input', value: src.repo, autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false' });
-    const path = h('input', { type: 'text', class: 'input', value: src.path, autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false' });
-    const langIn = h('input', { type: 'text', class: 'input', value: src.lang || '', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false' });
-    const repoF = field({ label: t('pg.hours.repo'), input: repo, hint: t('pg.hours.hint') });
-    const form = h('form', { class: 'pg-source-form', hidden: true, onsubmit: (/** @type {Event} */ e) => {
-      e.preventDefault();
-      const next = { repo: /** @type {HTMLInputElement} */ (repo).value.trim(), path: /** @type {HTMLInputElement} */ (path).value.trim(), lang: /** @type {HTMLInputElement} */ (langIn).value.trim().toLowerCase() || null };
-      if (!M.hoursUrl(next) || !/\.json$/i.test(next.path)) { repoF.setError(t('pg.hours.bad')); return; }
-      setSetting(app, 'connections.hours', next);
-      toast(t('pg.hours.saved'));
-      trackedTime(holder, from, false);
-    } },
-    repoF, field({ label: t('pg.hours.path'), input: path }), field({ label: t('pg.hours.lang'), input: langIn, hint: t('pg.hours.langHint') }),
-    h('div', { class: 'row-actions' },
-      h('button', { type: 'submit', class: 'btn btn-primary pressable' }, t('pg.hours.save')),
-      h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => { form.hidden = true; edit.hidden = false; edit.setAttribute('aria-expanded', 'false'); edit.focus(); } }, t('pg.hours.cancel')),
-      src.custom ? h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => { setSetting(app, 'connections.hours', null); toast(t('pg.hours.saved')); trackedTime(holder, from, false); } }, t('pg.hours.default')) : null));
+    const form = sourceForm(src, () => trackedTime(holder, from, false), () => { form.hidden = true; edit.hidden = false; edit.setAttribute('aria-expanded', 'false'); edit.focus(); });
     return h('div', { class: 'pg-source' }, line, h('div', { class: 'row-actions' }, again, edit), form);
   }
 

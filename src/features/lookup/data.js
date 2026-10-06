@@ -3,6 +3,7 @@
    sections or opening a word sheet never reloads or re-indexes anything. Exam words come from the private results
    repository through the device's GitHub token (Profile › Connections) and are refetched after ten minutes. */
 import { config } from '../../core/config.js';
+import { resultsRepo, githubToken } from '../../data/connection.js';
 import { buildIndex } from './search.js';
 import { LANGS, phraseRows, dictRows, layerRows, topicRows, frameGroups, phraseDocs, dictDocs, layerDocs, topicDocs, frameDocs, myWordDocs } from './sources.js';
 import { fetchVocab, mergeVocab, lemmaGroups, byImportance, headword, VocabError } from './words.js';
@@ -78,14 +79,14 @@ const FRESH_MS = 10 * 60 * 1000;
  * @returns {Promise<MyWords>}
  */
 export async function myWords(store, { force = false, fetch: f } = {}) {
-  const token = (store.get('secrets', {}) || {}).githubToken || null;
+  const token = githubToken(store), repo = resultsRepo(store);
   const local = store.get('vocab.local', []) || [], events = store.get('vocab.events', []) || [];
   /** @type {MyWords['status']} */ let status = 'nolink';
   /** @type {any[]} */ let words = [];
-  if (token) {
+  if (token && repo) {
     const key = String(token).slice(-6);
     if (force || !remote || remote.key !== key || Date.now() - remote.at > FRESH_MS) {
-      const p = fetchVocab({ token, repo: config.resultsRepo, api: config.github.api, fetch: f });
+      const p = fetchVocab({ token, repo, api: config.github.api, fetch: f });
       remote = { at: Date.now(), key, p };
       p.catch(() => { if (remote && remote.p === p) remote = null; });
     }

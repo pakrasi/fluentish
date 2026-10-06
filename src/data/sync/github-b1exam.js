@@ -398,7 +398,7 @@ let lastFlush = 0;
  * Send what is waiting, back up progress and read what the Mac wrote. At most once a minute unless forced; one tab
  * at a time.
  * @param {any} store
- * @param {{ repo: string, api?: string, fetch?: typeof fetch, force?: boolean, pull?: boolean, now?: () => number,
+ * @param {{ repo: string | null, api?: string, fetch?: typeof fetch, force?: boolean, pull?: boolean, now?: () => number,
  *           emit?: (type: string, data: any) => void, backupNow?: boolean, build?: string | null,
  *           extra?: (o: {files: any, secrets: any, now: () => number}) => Promise<void> }} o
  *   backupNow: "Back up now" (the events and a snapshot whatever their cadence); extra: the daily error-log upload
@@ -406,7 +406,8 @@ let lastFlush = 0;
  */
 export function syncResults(store, { repo, api, fetch: f, force = false, pull = true, now = Date.now, emit, backupNow = false, build = null, extra }) {
   const token = () => (store.get('secrets', {}) || {}).githubToken || null;
-  if (!token() || store.profile?.kind === 'shadow') return Promise.resolve({ ok: 0, fail: 0, pending: notSentCount(store), error: null, skipped: true });
+  // no repository (a local-only profile, data/connection.js) or no token: nothing is sent and nothing is read
+  if (!repo || !token() || store.profile?.kind === 'shadow') return Promise.resolve({ ok: 0, fail: 0, pending: notSentCount(store), error: null, skipped: true });
   if (flushing) return flushing;
   if (!force && now() - lastFlush < 60000) return Promise.resolve({ ok: 0, fail: 0, pending: notSentCount(store), error: null, skipped: true });
   lastFlush = now();

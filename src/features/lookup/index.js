@@ -22,7 +22,8 @@ import { triage, cardId, headword, examples, details, freqBand, sources, frequen
 import { hl, glyph, paged, markForm, caption } from './ui.js';
 import { play, stop, prefetchAudio } from '../../services/audio.js';
 import { markSeen } from '../../data/seen.js';
-import { refreshWords, loadData, stateFor, secrets } from '../shared/data.js';
+import { refreshWords, loadData, stateFor } from '../shared/data.js';
+import { connected, resultsRepo } from '../../data/connection.js';
 import { COLLECTION as EXAM_WORDS, inQueue } from '../shared/words.js';
 import { recheckCount } from '../shared/recheck.js';
 
@@ -302,7 +303,7 @@ export async function mount(el, ctx) {
   /* ---------- the sections and the search ---------- */
 
   const ui = store.get(UI_KEY, {}) || {};
-  const hasWords = () => !!((store.get('secrets', {}) || {}).githubToken || (store.get('vocab.local', []) || []).length);
+  const hasWords = () => !!(connected(store) || (store.get('vocab.local', []) || []).length);
   const st = { tab: route.tab, q: route.q, opts: { ...route.opts } };
   if (!st.tab) st.tab = st.q ? 'all' : (TABS.includes(ui.tab) ? ui.tab : hasWords() ? 'words' : 'phrases');
   const sync = () => {
@@ -457,7 +458,8 @@ export async function mount(el, ctx) {
     }
     const mw = await D.myWords(store);
     const out = h('div', null, toggle, recheck, await examHead());
-    if (mw.status === 'nolink' || mw.status === 'auth') {
+    // a local-only profile (no results repository, data/connection.js) has its own saved words only: no link notice
+    if ((mw.status === 'nolink' && resultsRepo(store)) || mw.status === 'auth') {
       out.append(notice({ kind: mw.status === 'auth' ? 'warning' : 'info', children: [
         h('p', { class: 'notice-title' }, t('lookup.words.link.title')),
         h('p', null, t(mw.status === 'auth' ? 'lookup.words.auth' : 'lookup.words.link.body')),
@@ -494,7 +496,7 @@ export async function mount(el, ctx) {
    * of those he has seen, the round, and Update now. Practice keeps only the round (Practice › Words › Exam words).
    */
   async function examHead() {
-    const wc = store.get(EXAM_WORDS, null), c = today(), tok = !!secrets(store).githubToken;
+    const wc = store.get(EXAM_WORDS, null), c = today(), tok = connected(store);
     if (!wc && !tok) return null;
     const n = wc ? (wc.words || []).filter((/** @type {any} */ w) => inQueue(w, c.phase)).length : 0;
     let seen = null;

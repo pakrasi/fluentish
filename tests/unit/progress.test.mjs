@@ -21,7 +21,7 @@ import { recordToday, catchUp, backfill, summary, DEVICE_KV, writeDay } from '..
 import { addActivity } from '../../src/data/activity.js';
 import { exportBundle, importFile } from '../../src/data/transfer.js';
 import { config } from '../../src/core/config.js';
-import { mockGithubFor } from './sync-harness.mjs';
+import { mockGithubFor, OWNER_REPO, ownerConnect } from './sync-harness.mjs';
 import { readFileSync } from 'node:fs';
 import { recordErrors } from '../../src/data/records.js';
 import { validate, unsupported } from '../../src/core/schema.js';
@@ -52,7 +52,9 @@ async function device(deviceId, { adapter = createMemoryAdapter(), day = D1, set
   const clock = { today: () => clock.day, day };
   const store = await Store.open({ adapter, profile: { id: PID, name: '', kind: 'local' }, device: { deviceId, seq: 0 }, clock });
   store.set('secrets', { githubToken: TOKEN });
+  ownerConnect(store);
   store.set('settings', settings);
+  ownerConnect(store);
   await store.flush();
   return { store, clock, content, ctx: { store, clock, content } };
 }
@@ -69,7 +71,7 @@ function answer(store, id, d, { deck = 'b1', g = 3, h = 9 } = {}) {
 /** A new word learnt: two right answers the same day graduate it. */
 const learn = (store, id, d, o = {}) => { answer(store, id, d, o); return answer(store, id, d, { ...o, h: (o.h || 9) + 1 }); };
 
-const mock = () => mockGithubFor(config.resultsRepo);
+const mock = () => mockGithubFor(OWNER_REPO);
 const backUp = async (store, m) => { resetThrottle(); const r = await sync(store, { fetch: m.fetch, pull: false, backupNow: true }); assert.equal(r.backup?.error ?? r.error, null); return r; };
 const rec = (store, d, course = 'de') => (store.get(P.monthKey(course, d)) || {})[d];
 

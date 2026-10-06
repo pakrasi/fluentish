@@ -21,7 +21,7 @@ import { courseWeek, dayPlan } from '../../domain/week.js';
 import { courseGoal } from '../../domain/levels.js';
 import { fmtMin, weekDays, weekTotals, laterThisWeek, kindLine, whyLine, examRows } from './week.js';
 import { results } from '../../data/sync/index.js';
-import { config } from '../../core/config.js';
+import { connected, resultsRepo } from '../../data/connection.js';
 import { renderStanding, standingCounts, sparkOf } from './standing.js';
 
 /** What the hero showed last (kept across visits to Today in one session): the week strip fills from it. */
@@ -234,7 +234,7 @@ export async function mount(el, ctx) {
     if (!(meta.summary && !ui.importSeen) && !preview) return null;
     const s = ctx.settings();
     const id = nextId('imp');
-    const linked = !!(store.get('secrets', {}) || {}).githubToken;
+    const linked = connected(store), repo = resultsRepo(store);
     const unsent = linked && !ui.sendLegacy ? results(store).legacyCount() : 0;
     const close = (/** @type {boolean} */ send) => {
       store.update('ui', (/** @type {any} */ u) => ({ ...(u || {}), importSeen: true, ...(meta.preview ? { previewSeen: true } : {}) }), {});
@@ -251,8 +251,8 @@ export async function mount(el, ctx) {
       meta.summary ? h('p', null, summaryText(meta.summary, t, { afterPreview: !!preview })) : null,
       h('p', null, examDate(s) ? t('import.examDate', { date: label(/** @type {string} */ (examDate(s))) }) : t('import.noDate')),
       meta.summary && Number.isInteger(meta.summary.newPerDay) && !s.rev?.newPerDay ? h('p', null, t('import.newPerDay', { n: meta.summary.newPerDay })) : null,
-      preview && linked && preview.toSend ? h('p', null, t('preview.toSend', { n: preview.toSend, repo: config.resultsRepo })) : null,
-      unsent ? h('p', null, t('import.unsent', { n: unsent, repo: config.resultsRepo })) : null,
+      preview && linked && preview.toSend ? h('p', null, t('preview.toSend', { n: preview.toSend, repo })) : null,
+      unsent ? h('p', null, t('import.unsent', { n: unsent, repo })) : null,
       h('div', { class: 'notice-actions' },
         unsent ? h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: () => close(true) }, t('import.sendLegacy', { n: unsent })) : null,
         h('a', { class: 'btn pressable', href: '#/profile/goal' }, t('import.change')),

@@ -11,6 +11,7 @@
    Attempts live in the attempts store; each new one also gets an exam.attempt event whose file path is fixed then. */
 import { uuidv7, isoWithOffset } from '../../data/ids.js';
 import { results, sync as syncAll, audioExt } from '../../data/sync/index.js';
+import { connected, resultsRepo } from '../../data/connection.js';
 import { latestByTestModule, fbSplit, stampMs, wordCount, attemptIds } from '../../domain/grade.js';
 import { testPath, section } from '../../domain/examdef.js';
 import { adapterFor } from '../../domain/exam-results.js';
@@ -367,4 +368,7 @@ export const notSentCount = store => results(store).notSent();
 export const allowLegacy = store => results(store).allowLegacy();
 
 /** Whether this device is linked to the results repository. @param {any} store */
-export const linked = store => !!(store.get('secrets', {}) || {}).githubToken;
+export const linked = store => connected(store);
+
+/** Whether the profile connects a results repository at all (data/connection.js); without one the Exam tab says nothing about sending. @param {any} store */
+export const hasRepo = store => !!resultsRepo(store);

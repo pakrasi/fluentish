@@ -4,7 +4,7 @@ import { h, replace } from '../../core/dom.js';
 import { label } from '../../core/clock.js';
 import { section, notice } from '../../core/ui.js';
 import { scoreLine, scoreNum, passes } from '../../domain/grade.js';
-import { latest, allAttempts, feedbackFor, isStarted, draft, loadTest, sync, notSentCount, allowLegacy, linked, saveDraft, mediaUrl, sectionOf, kindOf } from './data.js';
+import { latest, allAttempts, feedbackFor, isStarted, draft, loadTest, sync, notSentCount, allowLegacy, linked, hasRepo, saveDraft, mediaUrl, sectionOf, kindOf } from './data.js';
 import { at } from '../../domain/examdef.js';
 import { backLink, statusBar, confirmPanel } from './parts.js';
 import { nextModule, modulesFitting, scoreReader, draftTouched, RESUME_MS, planMinutes, minutesLabel } from './plan.js';
@@ -33,6 +33,7 @@ export function moduleStatus(ctx, exam, def, a, n) {
 /** The sync line: "3 not sent · Send now", or how to link the device. @param {any} ctx @param {() => void} redraw */
 function syncLine(ctx, redraw) {
   const { t, store } = ctx;
+  if (!hasRepo(store)) return null;   // a local-only profile: results stay on the device and nothing says otherwise
   if (!linked(store)) return h('p', { class: 'caption ex-sync' }, t('exam.sync.notLinked'), ' ', h('a', { href: '#/profile/connections' }, t('exam.sync.link')));
   const n = notSentCount(store);
   const st = store.get('exams.syncStatus', null);

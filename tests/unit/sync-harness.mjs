@@ -98,3 +98,14 @@ export function syncPyWorkspace() {
     done: () => rmSync(tmp, { recursive: true, force: true }),
   };
 }
+
+/* The owner's connection (src/data/connection.js): the sync tests run as one of the owner's profiles, which the boot
+   migration connects to OWNER.results. A profile without it sends nothing (tests/unit/sharing.test.mjs). */
+import { OWNER } from '../../src/data/connection.js';
+export const OWNER_REPO = OWNER.results;
+/** Connect a test store to the owner's repository, as the migration does on his devices. @param {any} store @param {string} [repo] */
+export function ownerConnect(store, repo = OWNER_REPO) {
+  const s = store.get('settings', null) || {};
+  store.set('settings', { ...s, connections: { ...(s.connections || {}), results: repo } });
+  return store;
+}

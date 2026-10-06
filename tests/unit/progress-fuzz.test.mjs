@@ -15,7 +15,7 @@ import { markRec } from '../../src/domain/known.js';
 import { recordToday, backfill, DEVICE_KV } from '../../src/data/progress.js';
 import { addActivity } from '../../src/data/activity.js';
 import { config } from '../../src/core/config.js';
-import { mockGithubFor } from './sync-harness.mjs';
+import { mockGithubFor, OWNER_REPO, ownerConnect } from './sync-harness.mjs';
 
 const PID = '0192a3b4-c5d6-7e8f-9a0b-0000000000f1';
 const TOKEN = 'test-token-not-real-0005';
@@ -50,7 +50,9 @@ async function device(deviceId, adapter = createMemoryAdapter()) {
   const clock = { today: () => clock.day, day: START };
   const store = await Store.open({ adapter, profile: { id: PID, name: '', kind: 'local' }, device: { deviceId, seq: 0 }, clock });
   store.set('secrets', { githubToken: TOKEN });
+  ownerConnect(store);
   store.set('settings', SETTINGS);
+  ownerConnect(store);
   await store.flush();
   return { store, clock, ctx: { store, clock, content } };
 }
@@ -147,7 +149,7 @@ test('fuzz: a backfilled day equals the live day record (one device, its own eve
 
 test('fuzz: a backfilled day equals the live day record (from the backup: snapshots and event files)', async () => {
   for (let seed = 101; seed <= 106; seed++) {
-    const mock = mockGithubFor(config.resultsRepo);
+    const mock = mockGithubFor(OWNER_REPO);
     const x = await device('mac');
     x.mock = mock;
     const r = rng(seed * 7);
@@ -208,7 +210,7 @@ test('resumable: a backfill cut off mid-way goes on from its checkpoint; the day
 });
 
 test('resumable with the backup: snapshots are read one at a time as the walk reaches them, never all at once', async () => {
-  const mock = mockGithubFor(config.resultsRepo);
+  const mock = mockGithubFor(OWNER_REPO);
   const x = await device('mac');
   x.mock = mock;
   const live = await simulate(x, 301, 24, { backupOn: () => true });

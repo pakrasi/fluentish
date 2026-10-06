@@ -21,12 +21,14 @@ import { startProgress } from './data/progress.js';
 import { TABS, routes, startFeatures } from './features/registry.js';
 import { createSw } from './services/sw.js';
 import { loadRecordSchemas, recordChecker } from './data/records.js';
-import { takeLinkToken } from './core/link.js';
+import { takeLink } from './core/link.js';
+import { migrateConnections, resultsRepo, validRepo, connect, applyOwnerLink, OWNER } from './data/connection.js';
+import { checkToken, keepCheck, recheck } from './data/sync/token-check.js';
 import { setLanguage, language } from './core/lang.js';
 import { hasMockExam } from './domain/modules.js';
 
 // first, before anything can log or navigate: a device-link token in the address is taken out of it (core/link.js)
-const linkToken = takeLinkToken();
+const link = takeLink();
 installErrorLog();
 
 /** localStorage for reading the legacy keys; null when the browser blocks it. */
@@ -89,8 +91,34 @@ async function main() {
   bus.on('prefs:changed', () => applyPrefs(store.get('prefs')));
   setLanguage(settings().language);
   bus.on('settings:changed', ({ key }) => { if (key === 'language') setLanguage(settings().language); });
-  // the device link from b1-token.py: stored through the secrets path (device scope, never exported or synced)
-  const linked = linkToken ? (store.set('secrets', { anthropicKey: null, githubToken: null, ...(store.get('secrets', {}) || {}), githubToken: linkToken }), true) : false;
+  // the owner's devices keep their repository and study hours file (data/connection.js; once per profile, additive)
+  migrateConnections({ store, hlc: session.hlc, bus });
+  // the device link from b1-token.py: checked with GitHub first, then stored through the secrets path (device scope,
+  // never exported or synced); see docs/SHARING.md
+  const linkOutcome = link ? await linkDevice(link) : null;
+  /**
+   * Link this device from a link: the token must reach the repository (the link's repo=, else the profile's, else the
+   * owner's for a profile that connects none yet) and pass the token check. Returns the outcome's message key.
+   * @param {{token: string, repo: string | null, expired: boolean}} l @returns {Promise<string>}
+   */
+  async function linkDevice(l) {
+    if (l.expired) return 'expired';
+    if (!l.token) return 'bad';
+    const own = resultsRepo(store);
+    const repo = l.repo && validRepo(l.repo) ? l.repo : own || OWNER.results;
+    if (own && repo !== own) return 'otherRepo';   // a link never moves a profile to another repository
+    /** @type {import('./data/sync/token-check.js').TokenCheck | null} */ let c = null;
+    try {
+      c = await Promise.race([checkToken({ token: l.token, repo, api: config.github.api }), new Promise(r => setTimeout(() => r(null), 12_000))]);
+    } catch { c = null; }
+    if (!c || c.status === 'offline') return 'offline';
+    if (c.status !== 'ok') return c.status;   // 'refused' or 'denied': nothing is stored
+    const a = { store, hlc: session.hlc, bus };
+    if (repo === OWNER.results) applyOwnerLink(a);
+    connect(a, repo, l.token);
+    await keepCheck(store, l.token, c, clock.today());
+    return c.warnings.includes('broad') || c.warnings.includes('noExpiry') ? 'okWarn' : 'ok';
+  }
   const flush = () => { store.flush(); };
   addEventListener('pagehide', flush);
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') flush(); });
@@ -151,8 +179,7 @@ async function main() {
   if (session.cutoverError) toast(t('preview.retry'), { ms: 10000 });
   // a restore from the backup cut off last time was put back (data/restore.js)
   if (session.restoreRecovered === 'rolledBack') toast(t('restore.rolledBack'), { ms: 10000 });
-  if (linked) toast(t('conn.sync.savedToast'), { ms: 6000 });
-  else if (linkToken === '') toast(t('conn.link.bad'), { ms: 8000 });
+  if (linkOutcome) toast(t(`conn.link.${linkOutcome}`), { ms: linkOutcome === 'ok' ? 6000 : 10000 });
 
   // ---------- router ----------
   const router = createRouter({
@@ -212,6 +239,10 @@ async function main() {
   autoSync();
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') autoSync(); });
   addEventListener('online', autoSync);
+  // the token on this device, checked with GitHub at most once a study day: scope, expiry (data/sync/token-check.js)
+  if (navigator.onLine) recheck(store, { api: config.github.api, today: clock.today() })
+    .then(c => { if (c?.status === 'refused') toast(t('conn.check.removedToast'), { ms: 12000 }); })
+    .catch((/** @type {any} */ e) => log('token-check', e));
   bus.on('sync:request', () => { lastSync = performance.now(); sync(store, { force: true, emit: (type, data) => bus.emit(type, data) }).catch((/** @type {any} */ e) => log('sync', e)); });
 }
 

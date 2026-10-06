@@ -18,7 +18,7 @@ import {
 } from '../../src/data/sync/github-b1exam.js';
 import { results, ref, sync as seamSync } from '../../src/data/sync/index.js';
 import { config } from '../../src/core/config.js';
-import { mockGithubFor, B1, haveSyncPy } from './sync-harness.mjs';
+import { mockGithubFor, B1, haveSyncPy, OWNER_REPO, ownerConnect } from './sync-harness.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const PID = '0192a3b4-c5d6-7e8f-9a0b-000000000001';
@@ -29,6 +29,7 @@ async function fresh(secrets = { githubToken: 'test-token-not-real' }) {
   const adapter = createMemoryAdapter();
   const store = await Store.open({ adapter, profile: { id: PID, name: '', kind: 'local' }, device: { deviceId: 'dev1', seq: 0 }, clock: { today: () => '2026-10-03' } });
   store.set('secrets', secrets);
+  ownerConnect(store);   // one of the owner's profiles (src/data/connection.js)
   await store.flush();
   return { adapter, store };
 }
@@ -91,7 +92,7 @@ test('the sync seam: record() stores no path, and the target derives the same pi
 test('the sync seam: sync() sends recorded results under their derived names', async () => {
   resetThrottle();
   const { store } = await fresh();
-  const gh = mockGithubFor(config.resultsRepo);   // a mock: the seam writes to the configured repository
+  const gh = mockGithubFor(OWNER_REPO);   // a mock: the seam writes to the configured repository
   const r = results(store);
   const e = r.record('feedback.created', { day: 1, module: 'schreiben', attempt_id: 'u', attempt_file: null, body: 'x', created_at: 'c' }, AT);
   const out = await seamSync(store, { fetch: gh.fetch, force: true, pull: false });
@@ -164,6 +165,7 @@ test('auth errors stop the flush and keep everything; no token means nothing is 
   let r = await syncResults(store, { repo: REPO, fetch: gh.fetch, force: true });
   assert.equal(r.skipped, true); assert.equal(gh.calls.length, 0); assert.equal(r.pending, 1);
   store.set('secrets', { githubToken: 'test-token-not-real' });
+  ownerConnect(store);
   gh.mode = 'auth';
   r = await syncResults(store, { repo: REPO, fetch: gh.fetch, force: true });
   assert.match(r.error, /token/); assert.equal(r.pending, 1);

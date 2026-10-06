@@ -10,7 +10,7 @@ import { sync } from '../../src/data/sync/index.js';
 import { resetThrottle } from '../../src/data/sync/github-b1exam.js';
 import * as B from '../../src/data/sync/backup.js';
 import { config } from '../../src/core/config.js';
-import { mockGithubFor } from './sync-harness.mjs';
+import { mockGithubFor, OWNER_REPO, ownerConnect } from './sync-harness.mjs';
 
 const TOKEN = 'test-token-not-real-0004';
 const quiet = fn => { const e = console.error; console.error = () => {}; try { return fn(); } finally { console.error = e; } };
@@ -54,6 +54,7 @@ test('uploaded once a study day with the backup: only new entries, script text r
   let day = '2026-10-04';
   const store = await Store.open({ adapter, profile: { id: '0192a3b4-c5d6-7e8f-9a0b-0000000000d1', name: '', kind: 'local' }, device: { deviceId: 'dev1', seq: 0 }, clock: { today: () => day } });
   store.set('secrets', { githubToken: TOKEN });
+  ownerConnect(store);
   store.set('scripts', { s1: { id: 's1', title: 'Fahrradladen', sections: [{ id: 'a', title: 'Anfang', sentences: [{ id: 'x', de: 'Die Kette überträgt die Kraft auf das Hinterrad.' }] }] } });
   await attachLogStore(adapter);
   quiet(() => {
@@ -61,7 +62,7 @@ test('uploaded once a study day with the backup: only new entries, script text r
     log('script', 'Fahrradladen: parse failed');
     log('sync', new Error('GitHub 500: server error'));
   });
-  const gh = mockGithubFor(config.resultsRepo);
+  const gh = mockGithubFor(OWNER_REPO);
   resetThrottle();
   await sync(store, { fetch: gh.fetch, pull: false, backupNow: true });
   const p = 'data/logs/dev1/2026-10-04.ndjson';

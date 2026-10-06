@@ -7,7 +7,7 @@ import { corrections, scoreLine, wordCount, stampMs } from '../../domain/grade.j
 import { correctSchreiben, ClaudeError } from '../../services/claude.js';
 import { render as md } from './md.js';
 import { backLink } from './parts.js';
-import { feedbackFor, markSeen, saveCorrection, learnerNotes, queueMistakes, mistakeContexts, mistakesQueued, allAttempts, recordings, linked, sectionOf } from './data.js';
+import { feedbackFor, markSeen, saveCorrection, learnerNotes, queueMistakes, mistakeContexts, mistakesQueued, allAttempts, recordings, linked, hasRepo, sectionOf } from './data.js';
 import { at } from '../../domain/examdef.js';
 import { nextModule, scoreReader } from './plan.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
@@ -64,7 +64,7 @@ export function feedbackBlock({ ctx, exam, attempt, fb, ex = null, autoCorrect =
   } else if (kind === 'writing') {
     box.append(correctionBlock({ ctx, exam, attempt, ex, auto: autoCorrect }));
   } else if (kind === 'speaking') {
-    box.append(h('p', { class: 'caption' }, linked(store) ? t('exam.fb.sprechenWait') : t('exam.fb.sprechenNotLinked')));
+    box.append(h('p', { class: 'caption' }, linked(store) ? t('exam.fb.sprechenWait') : hasRepo(store) ? t('exam.fb.sprechenNotLinked') : t('exam.fb.sprechenLocal')));
   } else {
     return fb.older.length ? h('section', { class: 'ex-feedback' }, older(ctx, fb.older)) : null;
   }

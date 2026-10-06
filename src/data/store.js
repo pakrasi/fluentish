@@ -23,6 +23,8 @@
                                  numbers only, never a transcript or audio; never exported or uploaded
      hours.external device       the study hours file Progress last fetched (features/today/progress/hours.js); a
                                  copy of a public file, never exported or uploaded
+     connection.check device   the last check of the GitHub token (data/sync/token-check.js): scope, expiry, warnings;
+                                 never exported or uploaded
      meta      profile           migration record, import summary
      activity  profile           { [day]: { minutes, rounds, by?, lang?, dev? } } for the runway and study days
                                  (domain/activity.js: minutes per device and kind)
@@ -35,7 +37,7 @@ import { uuidv7, isoWithOffset } from './ids.js';
 import { deckLang } from '../domain/decks.js';
 import { joinActivity } from '../domain/activity.js';
 
-export const DEVICE_SCOPE = new Set(['prefs', 'secrets', 'palace', 'backup', 'progress.device', 'hours.external', 'speech.log']);
+export const DEVICE_SCOPE = new Set(['prefs', 'secrets', 'palace', 'backup', 'progress.device', 'hours.external', 'speech.log', 'connection.check']);
 const DEBOUNCED = new Set(['settings', 'prefs', 'ui', 'activity']);
 const DEBOUNCE_MS = 250;
 
