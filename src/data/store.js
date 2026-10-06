@@ -19,6 +19,8 @@
      prefs     device            theme, motion, locale
      secrets   device            anthropicKey, githubToken; never exported or synced
      backup    device            the progress backup's state (data/sync/backup.js); never exported or uploaded
+     speech.log device           the speaking attempts' room, confidence and flags (features/practice-speak/mic.js):
+                                 numbers only, never a transcript or audio; never exported or uploaded
      hours.external device       the study hours file Progress last fetched (features/today/progress/hours.js); a
                                  copy of a public file, never exported or uploaded
      meta      profile           migration record, import summary
@@ -33,7 +35,7 @@ import { uuidv7, isoWithOffset } from './ids.js';
 import { deckLang } from '../domain/decks.js';
 import { joinActivity } from '../domain/activity.js';
 
-export const DEVICE_SCOPE = new Set(['prefs', 'secrets', 'palace', 'backup', 'progress.device', 'hours.external']);
+export const DEVICE_SCOPE = new Set(['prefs', 'secrets', 'palace', 'backup', 'progress.device', 'hours.external', 'speech.log']);
 const DEBOUNCED = new Set(['settings', 'prefs', 'ui', 'activity']);
 const DEBOUNCE_MS = 250;
 

@@ -222,3 +222,12 @@ test('level meter: an analyser frame becomes dBFS on a timer; stop closes the co
   assert.deepEqual([closed.length, stopped.length], [1, 1]);
   assert.equal(createMeter({ mediaDevices: md, AC: undefined }).supported, false);
 });
+
+test('the speaking log stays on the device: device scope, never exported, never in a snapshot', async () => {
+  const { DEVICE_SCOPE } = await import('../../src/data/store.js');
+  const { NOT_EXPORTED } = await import('../../src/data/transfer.js');
+  const { SNAPSHOT_KV } = await import('../../src/data/sync/backup.js');
+  assert.equal(DEVICE_SCOPE.has('speech.log'), true);
+  assert.equal(NOT_EXPORTED.has('speech.log'), true);
+  assert.equal('speech.log' in SNAPSHOT_KV, false);
+});

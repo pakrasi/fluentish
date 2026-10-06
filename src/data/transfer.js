@@ -19,7 +19,7 @@ const SCHEMA = {
 // the word-audio index is a cache of the results repo; backup is device state; exam.window (the exam window's recap),
 // today.anyway (Study anyway, a day's choice) and conv.spend (this device's Claude spend) belong to this device: an
 // imported recap mark could suppress the recap on a new device, and spend is counted per device
-export const NOT_EXPORTED = new Set(['secrets', 'prefs', 'palace', 'backup', 'progress.device', 'hours.external', 'exams.vocabAudio', 'exam.window', 'today.anyway', 'conv.spend']);
+export const NOT_EXPORTED = new Set(['secrets', 'prefs', 'palace', 'backup', 'progress.device', 'hours.external', 'exams.vocabAudio', 'exam.window', 'today.anyway', 'conv.spend', 'speech.log']);
 
 // Script mode (features/practice/script): his scripts are private to the device and leave it only when he ticks
 // "Include scripts": their collections, the 'script' deck and the reviews marked local.

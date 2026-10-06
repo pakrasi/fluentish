@@ -74,6 +74,7 @@ export function webSpeech({ recorder = () => createRecorder(), meter = () => cre
     let over = false;
     const finish = () => { if (over) return; over = true; const a = H.ambient(dbs); if (a) room = { at: now(), a }; resolve(a); };
     m.start((/** @type {number} */ db) => { if (!over) dbs.push(db); onDb?.(db); }).then(() => setTimeout(finish, ms), () => finish());
+    setTimeout(finish, ms + 1500);   // a microphone prompt left open never holds up listening
   });
 
   return {

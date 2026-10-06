@@ -164,6 +164,23 @@ body.pr-in-round #view { max-width: none; padding: 0; }
 .pr-mic[data-state="error"] { background: var(--surface-2); color: var(--ink-2); }
 .pr-mic-l { text-align: center; max-width: 34ch; }
 .pr-heard { min-height: 1.5em; font: 400 20px/1.35 var(--font-display); color: var(--ink-2); }
+/* outdoors: the level meter (kit .track .fill, quick and linear; still with reduced motion: JS steps it 4 times a
+   second), the loud-room line, hold to talk and typing instead */
+.pr-meter { width: 120px; height: 4px; }
+.pr-meter[hidden] { display: none; }
+.pr-meter .fill { background: var(--accent); transition-duration: 90ms; transition-timing-function: linear; }
+.pr-meter.is-still .fill { transition: none; }
+.pr-loud { text-align: center; max-width: 34ch; color: var(--ink); }
+.pr-loud[hidden] { display: none; }
+.pr-micopts { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--s-2); }
+.pr-micopts[hidden] { display: none; }
+.pr-holdtoggle[aria-pressed="true"] { color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink-2); }
+.pr-holdtoggle.is-offered { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.pr-type { display: flex; gap: var(--s-2); width: 100%; }
+.pr-type[hidden] { display: none; }
+.pr-unsure { display: grid; gap: 4px; width: 100%; justify-items: start; }
+.pr-unsure[hidden] { display: none; }
+.pr-mic { touch-action: manipulation; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
 .pr-spoken { min-height: 52px; padding: 10px 0; margin-top: var(--s-5); }
 .pr-checks { width: 100%; border-collapse: collapse; font-size: 14px; }
 .pr-checks td { padding: 8px 0; border-bottom: 1px solid var(--hairline); }

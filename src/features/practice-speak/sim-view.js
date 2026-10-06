@@ -35,6 +35,7 @@ import { speech } from '../../services/speech.js';
 import { asrLocale, dirAttr } from '../../core/lang.js';
 import { session } from '../shared/data.js';
 import { langAttr } from '../../core/lang.js';
+import { meter, holdable, logAttempt } from './mic.js';
 
 const pct = (/** @type {number} */ x) => new Intl.NumberFormat('en-GB', { style: 'percent', maximumFractionDigits: 0 }).format(x || 0);
 const back = (/** @type {string} */ href, /** @type {string} */ text) => h('a', { class: 'pr-backlink pressable', href }, icon('prev', { size: 16 }), text);
@@ -218,9 +219,21 @@ async function mountRound(el, ctx) {
   const canMic = sp.canListen();
   let micOn = canMic && !!simState(store).mic;
   /** @type {any} */ let live = null;
+  // outdoors: the meter, the loud-room line, hold to talk (kv speak.sim hold), typing instead, and the unsure result
+  let holdOn = canMic && !!simState(store).hold;
   const micLabel = h('p', { class: 'caption pr-mic-l', 'aria-live': 'polite' });
-  const micBtn = h('button', { type: 'button', class: 'pr-mic sim-mic pressable', 'aria-label': t('practice.sim.mic.say'), onclick: () => listen() }, icon('mic', { size: 26 }));
-  const micBox = h('div', { class: 'pr-micbox sim-micbox', hidden: true }, micBtn, micLabel);
+  const micBtn = h('button', { type: 'button', class: 'pr-mic sim-mic pressable', 'aria-label': t('practice.sim.mic.say') }, icon('mic', { size: 26 }));
+  holdable(micBtn, { isHold: () => holdOn, onDown: () => listen(true), onUp: () => { if (live) live.stop(); }, onClick: () => listen(false) });
+  const level = meter();
+  const loudLine = h('p', { class: 'caption pr-loud', hidden: true }, t('practice.speak.loud'));
+  const holdToggle = h('button', { type: 'button', class: 'btn btn-quiet pressable pr-holdtoggle', 'aria-pressed': String(holdOn), onclick: () => setHold(!holdOn) }, t('practice.speak.hold'));
+  const typeBtn = h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => openType() }, t('practice.speak.typeInstead'));
+  const typeIn = /** @type {HTMLInputElement} */ (h('input', { type: 'text', class: 'input', lang: langAttr(), dir: dirAttr(), 'aria-label': t('practice.speak.typeLabel'), autocomplete: 'off', autocapitalize: 'sentences', spellcheck: 'false' }));
+  const typeForm = h('form', { class: 'pr-type', hidden: true, onsubmit: (/** @type {Event} */ e) => { e.preventDefault(); checkTyped(); } },
+    typeIn, h('button', { type: 'submit', class: 'btn pressable' }, t('practice.speak.typeCheck')));
+  const unsureBox = h('div', { class: 'pr-unsure', hidden: true });
+  const micBox = h('div', { class: 'pr-micbox sim-micbox', hidden: true }, micBtn, level.el, micLabel, loudLine,
+    h('div', { class: 'pr-micopts' }, holdToggle, typeBtn), typeForm, unsureBox);
   const micToggle = canMic ? h('button', { type: 'button', class: 'btn btn-quiet pressable sim-mictoggle', 'aria-pressed': String(micOn), onclick: () => setMic(!micOn) },
     icon('mic', { size: 16 }), t('practice.sim.mic')) : null;
   const card = h('article', { class: 'card pr-card sim-card' }, h('div', { class: 'card-meta' }, meta, micToggle), setup, them, status, goal, say, micBox, reveal);
@@ -326,33 +339,111 @@ async function mountRound(el, ctx) {
     micBox.hidden = !(micOn && state === 'think');
     micBtn.dataset.state = 'idle';
     micBtn.setAttribute('aria-pressed', 'false');
-    micLabel.textContent = sp.blocked() ? t('practice.speak.err.blocked') : t('practice.sim.mic.tap');
+    micBtn.setAttribute('aria-label', holdOn ? t('practice.speak.hold') : t('practice.sim.mic.say'));
+    micLabel.textContent = sp.blocked() ? t('practice.speak.err.blocked') : holdOn ? t('practice.speak.holdHint') : t('practice.sim.mic.tap');
+    level.show(false);
+    showLoud(sp.noise());
+    typeForm.hidden = true; typeIn.value = '';
+    unsureBox.hidden = true; replace(unsureBox);
+  }
+  /** @param {boolean} on */
+  function setHold(on) {
+    holdOn = on;
+    holdToggle.setAttribute('aria-pressed', String(on));
+    updateSim(store, s => ({ ...s, hold: on }));
+    if (!live) drawMic();
+  }
+  /** The loud-room line, and hold to talk offered first. @param {any} a the room (domain/hearing.js ambient) */
+  function showLoud(a) {
+    const noisy = !!(a && a.noisy);
+    loudLine.hidden = !noisy;
+    holdToggle.classList.toggle('is-offered', noisy && !holdOn);
+  }
+  function openType() {
+    if (state !== 'think') return;
+    stopListening();
+    typeForm.hidden = false;
+    typeIn.focus();
+  }
+  function checkTyped() {
+    const text = typeIn.value.trim();
+    if (!item || state !== 'think' || !text) return;
+    // typed text is what he meant: checked as written, with no allowance for the phone
+    const chk = { ...S.micCheck(text, item, null), unsure: false };
+    logAttempt(store, { where: 'sim', typed: true });
+    showResult(chk, true);
   }
   function stopListening() { if (live) { const l = live; live = null; l.stop(); } }
-  async function listen() {
+  /** @param {boolean} [hold] hold to talk: until he lets go */
+  async function listen(hold = false) {
     if (!item || state !== 'think' || busy) return;
     if (live) { live.stop(); micLabel.textContent = t('practice.speak.checking'); return; }
     stopLine();
     const it = item;
+    unsureBox.hidden = true; typeForm.hidden = true;
     micBtn.dataset.state = 'listening'; micBtn.setAttribute('aria-pressed', 'true');
-    micLabel.textContent = t('practice.speak.listening');
-    const mine = live = sp.listen({ lang: asrLocale(), onInterim: (/** @type {string} */ x) => { micLabel.textContent = x; } });
+    const listening = hold ? t('practice.speak.holding') : t('practice.speak.listening');
+    micLabel.textContent = listening;
+    level.show(true);
+    const mine = live = sp.listen({ lang: asrLocale(), hold, check: true, onLevel: (/** @type {number} */ x) => level.set(x),
+      onInterim: (/** @type {string} */ x) => { micLabel.textContent = x; },
+      onPhase: (/** @type {string} */ p, /** @type {any} */ a) => { micLabel.textContent = p === 'checking' ? t('practice.speak.checkingRoom') : listening; if (p === 'listening') showLoud(a); } });
     const res = await mine.done;
     if (live === mine) live = null;
+    level.show(false);
     if (!alive || item !== it || state !== 'think') return;
+    showLoud(res.ambient || sp.noise());
     if (!res.text) {
       micBtn.dataset.state = sp.blocked() ? 'error' : 'idle'; micBtn.setAttribute('aria-pressed', 'false');
       micLabel.textContent = sp.blocked() ? t('practice.speak.err.blocked') : res.error === 'network' ? t('practice.speak.err.network') : t('practice.speak.err.none');
+      if (!sp.blocked()) logAttempt(store, { where: 'sim', heard: res, unsure: true, why: ['none'] });
       return;
     }
-    const chk = S.micCheck(res.text, it, session(store).cal || null);
-    const CHECK = /** @type {Record<string, string>} */ ({ true: t('practice.speak.ok'), false: t('practice.speak.bad'), off: t('practice.speak.off') });
+    const chk = S.micCheckHeard(res, it, session(store).cal || null);
+    logAttempt(store, { where: 'sim', heard: res, unsure: chk.unsure, why: chk.why });
+    if (chk.unsure) { showUnsure(chk); return; }
+    showResult(chk, false);
+  }
+  const CHECK = () => /** @type {Record<string, string>} */ ({ true: t('practice.speak.ok'), false: t('practice.speak.bad'), off: t('practice.speak.off'), unsure: t('practice.speak.notSure') });
+  /** @param {any} chk */
+  function checksTable(chk) {
     const row = (/** @type {string} */ name, /** @type {any} */ v) => (v === 'not-in' || v == null ? null
-      : h('tr', null, h('td', null, name), h('td', { class: v === true ? 'is-ok' : v === false ? 'is-bad' : 'caption' }, CHECK[String(v)] || String(v))));
-    replace(heardSlot, h('div', { class: 'sim-heard' },
-      h('p', { class: 'caption' }, t('practice.speak.youSaid')), h('p', { class: 'pr-heard', lang: langAttr(), dir: dirAttr() }, `„${chk.text}“`),
-      h('table', { class: 'pr-checks' }, h('tbody', null, row(t('practice.speak.c.phrase'), chk.chunk), row(t('practice.speak.c.verbFinalShort'), chk.verbFinal), row(t('practice.speak.c.fuerVor'), chk.fuerVor))),
-      h('p', { class: 'caption' }, t('practice.sim.mic.grade'))));
+      : h('tr', null, h('td', null, name), h('td', { class: v === true ? 'is-ok' : v === false ? 'is-bad' : 'caption' }, CHECK()[String(v)] || String(v))));
+    return h('table', { class: 'pr-checks' }, h('tbody', null, row(t('practice.speak.c.phrase'), chk.chunk), row(t('practice.speak.c.verbFinalShort'), chk.verbFinal), row(t('practice.speak.c.fuerVor'), chk.fuerVor)));
+  }
+  /** The phone wasn't sure: what it heard, nothing marked wrong; retry, type, or Show answer and grade it himself. @param {any} chk */
+  function showUnsure(chk) {
+    micBtn.dataset.state = 'idle'; micBtn.setAttribute('aria-pressed', 'false');
+    micLabel.textContent = '';
+    const choices = h('div', { class: 'pr-micopts', hidden: true },
+      h('button', { type: 'button', class: 'btn pressable', onclick: () => listen(false) }, t('practice.speak.tryAgain')),
+      h('button', { type: 'button', class: 'btn pressable', onclick: () => openType() }, t('practice.speak.typeInstead')));
+    const notMe = h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => {
+      notMe.hidden = true; choices.hidden = false; logAttempt(store, { where: 'sim', misheard: true });
+      /** @type {HTMLElement} */ (choices.firstChild).focus();
+    } }, t('practice.speak.notWhatISaid'));
+    replace(unsureBox, h('p', { class: 'caption' }, t('practice.speak.heard')), h('p', { class: 'pr-heard', lang: langAttr(), dir: dirAttr() }, `„${chk.text}“`),
+      checksTable(chk), h('p', { class: 'caption' }, t('practice.speak.unsure')), notMe, choices);
+    unsureBox.hidden = false;
+    // Show answer from here: the reveal keeps what it heard, unmarked
+    replace(heardSlot, h('div', { class: 'sim-heard' }, h('p', { class: 'caption' }, t('practice.speak.heard')), h('p', { class: 'pr-heard', lang: langAttr(), dir: dirAttr() }, `„${chk.text}“`),
+      h('p', { class: 'caption' }, t('practice.speak.setAside'))));
+    announce(t('practice.speak.unsure'));
+  }
+  /** A result he can trust (or typed): the checks, a suggested grade, and "That's not what I said" sets them aside.
+   * @param {any} chk @param {boolean} typed */
+  function showResult(chk, typed) {
+    unsureBox.hidden = true;
+    const notMe = typed ? null : h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => {
+      logAttempt(store, { where: 'sim', misheard: true });
+      replace(heard, h('p', { class: 'caption' }, t('practice.speak.youSaid')), h('p', { class: 'pr-heard', lang: langAttr(), dir: dirAttr() }, `„${chk.text}“`),
+        h('p', { class: 'caption' }, t('practice.speak.setAside')));
+      grades.show({ suggest: 3 });
+    } }, t('practice.speak.notWhatISaid'));
+    const heard = h('div', { class: 'sim-heard' },
+      h('p', { class: 'caption' }, typed ? t('practice.speak.youTyped') : t('practice.speak.youSaid')), h('p', { class: 'pr-heard', lang: langAttr(), dir: dirAttr() }, `„${chk.text}“`),
+      checksTable(chk), h('p', { class: 'caption' }, t('practice.sim.mic.grade')), notMe);
+    replace(heardSlot, heard);
     doReveal(chk.suggest);
   }
   async function playAnswer() {
@@ -464,6 +555,7 @@ async function mountRound(el, ctx) {
     const onButton = e.target instanceof HTMLElement && e.target.closest('button, a');
     if (state === 'typing') return;   // the Check by typing panel has its own keys
     if (e.key === 'Escape') { e.preventDefault(); end(); return; }
+    if (e.target instanceof HTMLElement && e.target.closest('input, textarea')) return;   // typing his answer
     if ((e.key === ' ' || e.key === 'Enter') && !onButton) {
       e.preventDefault();
       if (state === 'think') doReveal(); else if (state === 'revealed') grades.pick(grades.suggested);
