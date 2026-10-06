@@ -19,6 +19,69 @@ The day's numbers (every deck's due cards and the one allowance of new items) ar
 (`dayAllowance`, `todayBudget`, `simToday`, `clusterToday`, `dueTomorrow`), so Today and every feature read them from
 `domain/` and never from each other.
 
+## The week, the allowance and the level gate (the domain API Today and Goals read)
+
+Round 4, lane L1b. Everything below is pure domain code, tested in node (`tests/unit/week-allowance.test.mjs`,
+`tests/unit/levels.test.mjs`). A screen reads it; it never computes a number of its own.
+
+**The week** (`src/domain/week.js`). A course may have `week: {min[7], kind[7]}`, Monday first, written whole through
+`setCourse(app, id, {week})`; `null` or missing means no week.
+
+| Export | What |
+|---|---|
+| `DAY_KINDS` | `['n', 'light', 'read', 'write', 'talk', 'off']`, in the editor's order; labels `week.kind.<kind>` in `en.js` |
+| `isWeek(w)` | the check `setCourse` applies (seven whole minutes 0 to 240, seven kinds) |
+| `defaultWeek()` | the week the editor proposes: 45 45 20 45 30 60 0 min, Normal Read Light Write Normal Talk Off (4 h 05). Never applied by itself |
+| `weekMinutes(w)` | a week's minutes (Off days 0): the Goals page's "4 h 05 a week" |
+| `courseWeek(settings)` | the active course's week or null |
+| `dayPlan(settings, c, {anyway?, live?})` | `{kind, minutes, slot, slotMin, planned, asked?}` for `c.today`. No week: `{kind: 'n', minutes: minutesPerDay, slot: null, slotMin: 0, planned: false}` and nothing changes anywhere. 0 minutes is an Off day. A Read, Write or Talk day takes a third of the day as its slot when its kind is in `LIVE_SLOTS`; otherwise it is a Normal day with `asked` set ("coming later") |
+| `daysAhead(settings, today, n)` | the plan of n days from today, each with its `day`: Today's "This week" and the week strip's planned heights |
+| `LIVE_SLOTS` | the slots whose feature has shipped. **A slot lane adds its kind here in the commit that ships its row** (L2b `read`, L4 `talk`) |
+
+**Today's numbers** (`src/domain/allowance.js`; the rules in the header of `src/domain/budget.js`).
+
+| Export | What |
+|---|---|
+| `dayAllowance({store, c, settings})` | the allowance as before (`mode`, `newPerDay`, `newLeft`, `decks`, `reviews`, `pace`, `room` …), plus `plan` when the course has a week: `{kind, minutes, slot, slotMin, why, reviewsToday, break, forecast, away, asked?}`. Kept per store revision and day (`store.rev`), so call it as often as you like; each call returns its own copy |
+| `todayBudget(ctx)` | the same with the review round's numbers (unchanged) |
+| `todayPlan(ctx)` | what plan providers get as `ctx.day`: `dayPlan` with the slot fitted to today's reviews, and `why`, `reviewsToday`, `break`, `away` on a day from a week. `features/day.js` passes it; Today's budget is `day.minutes` on a day from a week |
+| `reviewForecast(ctx)` | `{reviewMin, plannedMin, days: 14}`: the cards of the course's decks due in the next 14 days at their review cost, and the week's planned minutes on those days |
+| `awayDays(store, today)` | whole days without study before today (null: never studied): "You were away 6 days" |
+| `ANYWAY_KV`, `studyAnyway(store, c)` | "Study anyway" on an Off day: write `store.set(ANYWAY_KV, {day: c.today})` (device kv, one day); that day is planned as a Normal day |
+
+`plan.why` says why new items are fewer or none today, and has its copy in `en.js` (Goals and week section):
+
+| `why` | When | String |
+|---|---|---|
+| `'off'` | an Off day: no new items, `reviewsToday` 0, the reviews stay counted in `reviews.due` | `week.why.off` {n: reviews.due} |
+| `'light'` | a Light day: reviews only | `week.why.light` |
+| `'break'` | back after a break (maintenance or first week): the reviews due take more than 1.5 × the day's minutes. `reviewsToday` is the most urgent share (at least a third, more if the day holds more), no new items, the slot shrinks to 5 min | `week.why.break` {d: plan.away, n: reviews.due, k: reviewsToday}; `week.why.breakDue` without `away` |
+| `'reviewsDue'` | the reviews and today's fixed rows do not fit the day: no Auto new items | `week.why.reviewsDue` |
+| `'reviewsHigh'` | the sustainable rate: the 14-day forecast is over 55 % (`FORECAST_LIMIT`) of the planned minutes, so the overflow came off the new items (`plan.forecast.cut`) | `week.why.reviewsHigh` {n: newPerDay} |
+| `null` | new items as Auto or his chosen number give | |
+
+Light, Off and a break beat a number he chose; the forecast cap and `reviewsDue` do not (his number wins). Inside the
+exam window the window plans the day: no slot, no break, no cap (Light and Off still give no new items). Reviews are
+never dropped: `reviews.due` and every deck's `due` are always what the decks hold.
+
+**The level gate** (`src/domain/levels.js`). New items of the B2 layer join a strand (grammar `g`, phrases `p`, words
+`w`) only with a level goal of B2 or above (`goal.level`), never inside the window of an exam below B2:
+
+| B1 items of the strand seen | B2 among the strand's new items |
+|---|---|
+| under 50 % (`GATE_MIX`) | none |
+| 50 % to 80 % | 1 in 4 (`MIX_EVERY`) |
+| 80 % or more (`GATE_OPEN`), or the course's own level is B2 | B2 first, B1 leftovers 1 in 3 (`OPEN_B1_EVERY`) |
+
+"Seen" is an answered card or an item marked known, out of the B1 pool's items the order can introduce (mistakes and
+Schreiben left out); a strand with no B1 items is open. `levelGate({goal, exam, level, phase, counts})` returns
+`{level, paused, reason: 'noGoal' | 'examWindow' | null, strands: {g, p, w: {state: 'closed' | 'mix' | 'open', n, seen, share}}}`;
+`courseGoal(settings)` reads goal, exam and level; `examLevel('goethe-b1')` is `'B1'`. Practice computes it as
+`state.gate` (`features/shared/compose.js gateFor`, set by `features/shared/data.js stateFor`); a Goals screen that
+wants the strand lines reads `stateFor(ctx, await loadData(ctx)).gate`. Copy: `goal.gate.*`.
+The layer's items (`data.b2`, `layer: 'b2'`, ids `G:`/`K:` in deck `b1`) are kept out of B1 readiness, the ★/trap
+pace and the lexicon, so every B1 number stays what it was. Their reviews are never gated.
+
 ## The rules
 
 1. **Stay in your folder.** `src/features/<id>/**` plus your own CSS in `styles/features/<id>.css` (add the `<link>` to `index.html` in the same commit). Anything you need from core goes through `ctx` or a core import (`core/*`, `data/*`, `domain/*`). If core is missing something, add it in a separate, reviewed commit.
@@ -71,7 +134,7 @@ Routes listed with `chrome: false` in the registry hide the header and tab bar (
 Today asks every feature what it offers and composes the day with `composeToday()` (`src/domain/today.js`). The composer, not your feature, applies the exam-date rules: no mock on the eve or the day, no new items from exam−1, only `warmup`/`read` items on the exam day, rows in priority order while they fit the minutes (the first always fits, one mock may run over), at most five open rows; a row done today always stays with its check.
 
 ```js
-/** @param {import('../contract.js').PlanCtx} ctx  { store, c: clockCtx, settings, exam: manifestExam | null, t, day: DayPlan (domain/week.js) } */
+/** @param {import('../contract.js').PlanCtx} ctx  { store, c: clockCtx, settings, exam: manifestExam | null, t, day: todayPlan() (domain/allowance.js) } */
 export function planItems(ctx) { return [/* PlanItem */]; }          // may be async; no DOM, no network
 export async function prepare(viewCtx) {}                           // optional: refresh cached stats (may load content) before Today composes
 export function todayFeedback(ctx) { return [/* FeedbackRow */]; }   // optional

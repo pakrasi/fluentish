@@ -81,6 +81,8 @@ export class Store {
     /** @type {((path: string) => void) | null} */ this.onWriteError = null;
     /** another tab deleted this profile @type {(() => void) | null} */ this.onDeleted = null;
     this.deleted = false;
+    /** A counter every change bumps (each notify, and a load): domain memos key on it (domain/allowance.js). */
+    this.rev = 0;
     /** Dev and tests only (data/records.js): validates each set of a checked collection and each appended event against
         schemas/records before it is written. Null in the deployed app. @type {((kind: 'event' | 'kv', name: string, value: any) => void) | null} */
     this.check = null;
@@ -102,6 +104,7 @@ export class Store {
     this.cardsByDeck = data.cards;
     this.attemptsById = new Map(data.attempts.map((/** @type {any} */ a) => [a.id, a]));
     this.events = new Map(data.outbox.map((/** @type {Event} */ e) => [e.id, e]));
+    this.rev++;
   }
 
   /* ---------- key-value collections ---------- */
@@ -219,6 +222,7 @@ export class Store {
 
   /** @param {string} name @param {any} value */
   notify(name, value) {
+    this.rev++;
     for (const fn of [...(this.subs.get(name) || [])]) { try { fn(value); } catch (e) { console.error(e); } }
     this.bus?.emit('store:changed', { name });
   }

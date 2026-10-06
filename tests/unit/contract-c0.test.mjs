@@ -133,8 +133,13 @@ test('decks: <lang>:read counts in the read allowance deck, a side deck that cos
   const settings = S.normalizeSettings(german());
   const without = allowance({ c: MAINT, settings, decks: { b1: { due: 10, open: 50 } } });
   const withRead = allowance({ c: MAINT, settings, decks: { b1: { due: 10, open: 50 }, read: { due: 0, open: 40, shown: 0 } } });
-  assert.deepEqual(withRead, without, 'a read deck with nothing due changes nothing: it wants no new items yet');
   assert.deepEqual(without.decks.read, { want: 0, newPerDay: 0, newLeft: 0, shown: 0, due: 0, rounds: 0, minutes: 0, paused: false });
+  // L1b: in maintenance the read deck wants practice.readNew (6 by default) of its open items, shared like the others
+  assert.equal(withRead.decks.read.want, 6);
+  assert.equal(withRead.decks.read.newPerDay, 6);
+  assert.equal(withRead.newPerDay, withRead.decks.b1.newPerDay + 6);
+  assert.equal(allowance({ c: MAINT, settings: { ...settings, practice: { ...settings.practice, readNew: 2 } }, decks: { b1: { due: 10, open: 50 }, read: { open: 40 } } }).decks.read.want, 2);
+  assert.equal(allowance({ c: EXAM, settings, decks: { b1: { due: 10, open: 50 }, read: { open: 40 } } }).decks.read.newPerDay, 0, 'none in exam week');
   const due = allowance({ c: MAINT, settings, decks: { b1: { due: 10, open: 50 }, read: { due: 6, open: 40 } } });
   assert.equal(due.reviews.due, 16, 'its reviews are counted, never hidden');
   assert.equal(due.decks.read.due, 6);
@@ -163,14 +168,14 @@ test('decks: a German store with a de:read card gives the same b1 numbers as bef
   assert.equal(todayBudget({ store: c.store, c: MAINT, settings }).next, todayBudget({ store: d.store, c: MAINT, settings }).next);
 });
 
-/* ---------------- 3. the day plan (stub) ---------------- */
+/* ---------------- 3. the day plan (C0 stub; the week itself since L1b, tests/unit/week-allowance.test.mjs) ---------------- */
 
-test('day plan: a Normal day of minutesPerDay with no slot, whatever the week; allowance({day}) gives the same numbers', () => {
+test('day plan: without a week, a Normal day of minutesPerDay with no slot; a plan not from a week gives the same numbers', () => {
   const s = S.normalizeSettings(german());
-  assert.deepEqual(dayPlan(s, MAINT), { kind: 'n', minutes: 60, slot: null, slotMin: 0 });
+  assert.deepEqual(dayPlan(s, MAINT), { kind: 'n', minutes: 60, slot: null, slotMin: 0, planned: false });
   assert.deepEqual(dayPlan({ ...s, minutesPerDay: 25 }, MAINT).minutes, 25);
   const withWeek = { ...s, courses: s.courses.map((/** @type {any} */ c) => ({ ...c, week: { min: [0, 0, 0, 0, 0, 0, 0], kind: ['off', 'off', 'off', 'off', 'off', 'off', 'off'] } })) };
-  assert.deepEqual(dayPlan(withWeek, MAINT), dayPlan(s, MAINT), 'the stub does not read the week yet');
+  assert.deepEqual(dayPlan(withWeek, MAINT), { kind: 'off', minutes: 0, slot: null, slotMin: 0, planned: true }, 'L1b: the week is read');
   assert.deepEqual(DAY_KINDS, ['n', 'light', 'read', 'write', 'talk', 'off']);
   assert.ok(isWeek({ min: [0, 0, 0, 0, 0, 0, 240], kind: ['off', 'off', 'off', 'off', 'off', 'off', 'n'] }));
   assert.ok(!isWeek({ min: [0, 0, 0, 0, 0, 0, 241], kind: ['off', 'off', 'off', 'off', 'off', 'off', 'n'] }));

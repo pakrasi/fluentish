@@ -13,7 +13,8 @@
      script     deck script word cards due (SW:), words of active scripts not met yet; shown: newBy per day
      build      deck build due; open: kv 'build'.stats.open; shown: cards first answered today
      clusters   deck clusters due; shown: kv 'clusters'.day.newShown
-     read       no legacy deck: only the '<lang>:read' decks below count in it (round 4, C0)
+     read       no legacy deck: only the '<lang>:read' decks below count in it (round 4, C0); its open count is the
+                one its feature records in 'deck.stats' (none without a record, L1b)
    A course in another language (C3a) has '<lang>:<name>' decks (domain/decks.js): the legacy decks count nothing for
    it and its own decks count instead, each in the allowance deck its name gives (allowanceDeck: fr:speak in speak,
    fr:core and any other in b1, '<lang>:read' in read): due cards, cards first answered today (shown) and the new items
@@ -24,9 +25,11 @@
 
    Pure over the store object it is given (get, cards; no writes, no DOM, no content), so Today, Practice's features
    and the rounds all import it from domain/ and never from one another. Also here: the numbers built on the allowance
-   that more than one screen shows (todayBudget, simToday, clusterToday, dueTomorrow, roundAction). */
+   that more than one screen shows (todayBudget, simToday, clusterToday, dueTomorrow, roundAction), and the week's day
+   as plan providers read it (todayPlan), the 14-day review forecast (reviewForecast) and the days away (awayDays),
+   round 4 lane L1b. dayAllowance is kept per store revision (store.rev) and day. */
 import { isDue, dueOn } from './b1ready.js';
-import { allowance, mode as modeOf, ROUND } from './budget.js';
+import { allowance, mode as modeOf, ROUND, REVIEW_COST, FORECAST_DAYS } from './budget.js';
 import { isWriting } from './itemids.js';
 import { writingFocus } from './modules.js';
 import { shownToday as buildShown } from './wordbuild-plan.js';
@@ -36,7 +39,7 @@ import * as St from './script/store.js';
 import { words as scriptWords, newShownToday } from './script/plan.js';
 import { scriptPlanItems } from './script/today.js';
 import { roundMinutes } from './today.js';
-import { dayPlan } from './week.js';
+import { dayPlan, daysAhead } from './week.js';
 import { courseLang, inLang, LEGACY_DECKS, namedDecks, allowanceDeck, DECK_STATS_KV } from './decks.js';
 
 const WRITE_KV = 'practice.write';
@@ -180,7 +183,9 @@ function withNamed(store, c, settings, inp) {
     const k = allowanceDeck(deck), x = inp.decks[k];
     const cards = Object.values(store.cards(deck) || {});
     const st = stats[deck];
-    const open = st && st.day === c.today && Number.isFinite(st.open) ? Math.max(0, /** @type {number} */ (st.open)) : Infinity;
+    // reading's open items are the words its feature recorded today (none without a record): a saved word is new
+    // only once the reader says so, and a reading card alone never takes a share from b1 (L1b)
+    const open = st && st.day === c.today && Number.isFinite(st.open) ? Math.max(0, /** @type {number} */ (st.open)) : k === 'read' ? 0 : Infinity;
     x.due += cards.filter(r => r && r.reps && isDue(r, c.today, c)).length;
     x.shown += cards.filter(r => r && r.reps && r.first === c.today).length;
     x.open = (x.open || 0) + open;
@@ -206,11 +211,68 @@ function inCourse(settings, inp) {
   return inp;
 }
 
+/** Device kv: the day "Study anyway" was chosen on an Off day ({day}); that day is planned as a Normal one. */
+export const ANYWAY_KV = 'today.anyway';
+
+/** Whether "Study anyway" was chosen today. @param {any} store @param {{today: string}} c */
+export const studyAnyway = (store, c) => ((store.get(ANYWAY_KV, null) || {}).day === c.today);
+
+/**
+ * The reviews forecast for the next FORECAST_DAYS days, today first (the sustainable rate, domain/budget.js): every
+ * card of the course's decks that is due by then (as dueTomorrow reads them: script run cards left out), at the
+ * minutes its allowance deck says a review takes, and the minutes the week plans on those days (Off days 0). A card
+ * counts once however often it comes back inside the horizon.
+ * @param {{store: any, c: any, settings: any}} ctx @returns {{reviewMin: number, plannedMin: number, days: number}}
+ */
+export function reviewForecast({ store, c, settings }) {
+  const last = D8.add(c.today, FORECAST_DAYS - 1);
+  let reviewMin = 0;
+  const mine = courseDecks(settings);
+  for (const deck of [...['b1', SIM_DECK, 'script', 'build', 'clusters'].filter(d => mine.includes(d)), ...courseNamed(store, settings)]) {
+    // a legacy deck is its own allowance kind (speak, build … at their cost); a course deck counts as its name says
+    const kind = /** @type {import('./budget.js').DeckId} */ (LEGACY_DECKS.includes(deck) ? deck : allowanceDeck(deck));
+    const cost = REVIEW_COST[kind] ?? REVIEW_COST.b1;
+    for (const [id, r] of Object.entries(store.cards(deck) || {})) {
+      if (!r || !r.reps || /^SR:/.test(id)) continue;
+      if (isDue(r, c.today, c) || (dueOn(r, c) || '') <= last) reviewMin += cost;
+    }
+  }
+  const plannedMin = daysAhead(settings, c.today, FORECAST_DAYS).reduce((n, x) => n + x.minutes, 0);
+  return { reviewMin, plannedMin, days: FORECAST_DAYS };
+}
+
+/**
+ * Whole days without study before today (Today's "You were away 6 days"): 0 after yesterday's study, null when he
+ * has never studied. @param {any} store @param {string} today
+ */
+export function awayDays(store, today) {
+  let last = '';
+  for (const [d, a] of Object.entries(store.get('activity', {}) || {})) if (d < today && a && (a.minutes || a.rounds) && d > last) last = d;
+  return last ? Math.max(0, D8.diff(last, today) - 1) : null;
+}
+
+/* dayAllowance runs several times for one render (todayBudget, simToday, clusterToday, the plan rows): its result is
+   kept per store and recomputed when the store has changed (store.rev, bumped by every write) or the day, the clock
+   or the settings differ (PLAN-REVIEW S8). A store without rev (the node tests' fakes) is never cached. */
+/** @type {WeakMap<object, {key: string, value: any}>} */ const memo = new WeakMap();
+
 /**
  * Today's allowance and the numbers around it: the plan rows, the hub, the rounds and the Today hero all read this.
+ * Each call returns its own copy.
  * @param {{store: any, c: any, settings: any}} ctx
  */
 export function dayAllowance({ store, c, settings }) {
+  const cacheable = store && typeof store === 'object' && Number.isInteger(store.rev);
+  const key = cacheable ? JSON.stringify([store.rev, c.today, c.exam, c.phase, c.newItems, settings]) : '';
+  const hit = cacheable ? memo.get(store) : null;
+  if (hit && hit.key === key) return structuredClone(hit.value);
+  const value = computeDay({ store, c, settings });
+  if (cacheable) memo.set(store, { key, value: structuredClone(value) });
+  return value;
+}
+
+/** @param {{store: any, c: any, settings: any}} ctx */
+function computeDay({ store, c, settings }) {
   const inp = deckInputs({ store, c, settings });
   const fresh = (c.phase === 'none' || c.phase === 'after') ? firstWeek(store, c.today, settings) : null;
   const md = modeOf(c, fresh);
@@ -221,13 +283,29 @@ export function dayAllowance({ store, c, settings }) {
   const scriptMin = inp.scripts.length ? scriptPlanItems({ store, c: { ...c, dayNewLeft: 0 }, settings, t: () => '' })
     .filter(r => !r.done && !r.reviews && !r.introducesNew).reduce((n, r) => n + (r.minutes || 0), 0) : 0;
   const fixedMin = (task && !task.done ? task.min : 0) + scriptMin;
+  // the week's plan for today (domain/week.js); without a week it is not read and every number is the round 3 one
+  const day = dayPlan(settings, c, { anyway: studyAnyway(store, c) });
   const a = allowance({
     c, settings, decks: inp.decks, priorityLeft: inp.stats ? inp.stats.priorityLeft ?? null : null, focus, fixedMin, fresh,
     goals: { script: inp.scripts.length > 0, build: md === 'maintenance' || inp.started.build, clusters: inp.started.clusters },
     examDecks: { script: md === 'exam' ? inp.scripts.length : 0 }, scripts: inp.scripts.length,
-    day: dayPlan(settings, c),   // the week's plan for today (C0: passed, not read yet)
+    day, forecast: day.planned && md === 'maintenance' ? reviewForecast({ store, c, settings }) : null,
   });
-  return { ...a, task, fresh, started: inp.started, stats: inp.stats, day: inp.day };
+  const plan = a.plan ? { ...a.plan, ...(day.asked ? { asked: day.asked } : {}), away: awayDays(store, c.today) } : undefined;
+  return { ...a, ...(plan ? { plan } : {}), task, fresh, started: inp.started, stats: inp.stats, day: inp.day };
+}
+
+/**
+ * Today's plan as the plan providers read it (features/day.js passes it as PlanCtx.day): the week's day with its slot
+ * fitted to the reviews (domain/budget.js), and why new items are fewer. Without a week: dayPlan's Normal day.
+ * @param {{store: any, c: any, settings: any}} ctx
+ * @returns {import('./week.js').DayPlan & {why?: import('./budget.js').Why, reviewsToday?: number, break?: boolean, away?: number | null}}
+ */
+export function todayPlan({ store, c, settings }) {
+  const day = dayPlan(settings, c, { anyway: studyAnyway(store, c) });
+  if (!day.planned) return day;
+  const p = dayAllowance({ store, c, settings }).plan;
+  return p ? { ...day, slot: p.slot, slotMin: p.slotMin, why: p.why, reviewsToday: p.reviewsToday, break: p.break, away: p.away } : day;
 }
 
 /**

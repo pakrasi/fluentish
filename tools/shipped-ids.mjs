@@ -9,7 +9,7 @@
 //   node tools/shipped-ids.mjs --write    append the ids the content creates now that are not in the ledger yet
 //
 // The ledger only grows: --write never removes a line. What it covers: the B1 pool (BP/BL/BG/BT/BR/BS/K/G, as
-// features/shared/pool.js builds it), every word of the word list (W:<word id>, the id Look up, Explore, Word
+// features/shared/pool.js builds it) and its B2 layer (G:/K:, pool.js b2Layer), every word of the word list (W:<word id>, the id Look up, Explore, Word
 // clusters and the exam words use), every Word cluster card (CO/CF/CP and family heads), and the speaking situations
 // (SS:), and every Word building card (PX/PD/PV/PS/SX/PW). Ids made from a learner's own data (F:, BW: exam words, SR:/SW: script cards) are not content and are not
 // listed.
@@ -30,8 +30,12 @@ export async function currentIds() {
   const { cardIds } = await imp('src/features/shared/cluster-items.js');
   const ids = new Set();
   const data = buildPool({ items: J('content/b1/items.json'), grammar: J('content/b1/grammar.json'), bank: J('content/b1/bank.json'), plan: J('content/b1/plan.json'),
-    nouns: J('content/b1/nouns.json'), schreiben: J('content/b1/schreiben.json') });
+    nouns: J('content/b1/nouns.json'), schreiben: J('content/b1/schreiben.json'),
+    // the B2 layer (round 4, L1b): reachable through the level gate
+    b2: { grammar: J('content/igloo/grammar/items_de.json'), concepts: J('content/igloo/grammar/concepts_de.json'), annot: J('content/b1/annot.json'),
+      en: J('content/igloo/chunks/en.json'), de: J('content/igloo/chunks/german.json').chunks, accept: J('content/igloo/chunks/accept_german.json') } });
   for (const it of data.pool) ids.add(it.id);
+  for (const it of data.b2) ids.add(it.id);
   const words = J('content/igloo/words/de.json');
   for (const w of words) ids.add(`W:${w.id}`);
   for (const [, [id]] of Object.entries(J('content/b1/wordmap.json'))) ids.add(`W:${id}`);

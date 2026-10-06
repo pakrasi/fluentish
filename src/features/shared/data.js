@@ -27,6 +27,8 @@ import { DECK_STATS_KV } from '../../domain/decks.js';
 // igloo.words.de and igloo.chunks.german (both precached) only feed the grader's lexicon of German word forms; without
 // them the B1 content's own words do
 const FILES = ['b1.items', 'b1.grammar', 'b1.bank', 'b1.plan', 'b1.nouns', 'b1.wordmap', 'igloo.words.de', 'igloo.chunks.german', 'b1.schreiben'];
+// the B2 layer's sources (pool.js b2Layer; round 4, L1b), all in the German pack's precache; without them data.b2 is empty
+const B2_FILES = ['igloo.grammar.items.de', 'igloo.grammar.concepts.de', 'b1.annot', 'igloo.chunks.en', 'igloo.chunks.accept.german'];
 export const VOCAB_URL = `${config.github.api}/repos/${config.resultsRepo}/contents/data/vocab.json`;
 
 /** @type {{key: string, data: any, words: any[]} | null} */ let memo = null;
@@ -47,7 +49,7 @@ export const roundOf = ctx => courseRound(langCode(ctx.settings().language));
 export async function loadData(ctx) {
   const cr = roundOf(ctx);
   if (!cr.trainer) return loadCourse(ctx, cr.lang);
-  const [items, grammar, bank, plan, nouns, wordmap, lexWords, chunksDe, schreiben] = await Promise.all(FILES.map(id => ctx.content.load(id).catch(e => {
+  const [items, grammar, bank, plan, nouns, wordmap, lexWords, chunksDe, schreiben, b2Grammar, b2Concepts, annot, chunksEn, accept] = await Promise.all([...FILES, ...B2_FILES].map(id => ctx.content.load(id).catch(e => {
     if (id === 'b1.plan') throw e;
     return null;
   })));
@@ -60,7 +62,9 @@ export async function loadData(ctx) {
   const wx = Array.isArray(lexWords) ? await loadWordIx(ctx, lexWords).catch(() => null) : null;
   const data = /** @type {any} */ (buildPool({ items: items || [], grammar: grammar || [], bank: bank || {}, plan, nouns: nouns || {},
     words: wordItems(wc?.words, c.phase, wx || {}), mistakes, lexWords: Array.isArray(lexWords) ? lexWords : null, lexTexts: chunkExamples(chunksDe),
-    schreiben: schreiben && Array.isArray(schreiben.items) ? schreiben : null }));
+    schreiben: schreiben && Array.isArray(schreiben.items) ? schreiben : null,
+    b2: Array.isArray(b2Grammar) || Array.isArray(chunksEn) ? { grammar: Array.isArray(b2Grammar) ? b2Grammar : null, concepts: Array.isArray(b2Concepts) ? b2Concepts : null,
+      annot: annot || null, en: Array.isArray(chunksEn) ? chunksEn : null, de: chunksDe && chunksDe.chunks ? chunksDe.chunks : null, accept: accept || null } : null }));
   data.wordmap = wordmap || {};
   memo = { key, data, words: Array.isArray(lexWords) ? lexWords : [] };
   placeOnce(ctx, data, memo.words);
@@ -171,6 +175,8 @@ export function stateFor(ctx, data) {
   // level first, and only those in his first week (compose.js newOrder)
   const fresh = firstWeek(ctx.store, c.today, settings);
   const base = { data, cards, day, c, newPerDay: 0, marked: marked(ctx.store), level: settings.level || null, fresh: !!fresh };
+  // the level gate (domain/levels.js): which strands take B2 new items today; shut without a B2 level goal
+  /** @type {any} */ (base).gate = C.gateFor(base, settings);
   let unseen = 0, wUnseen = 0;
   for (const it of data.pool) {
     if (it.area === 'mistakes' || cards[it.id]?.reps) continue;
@@ -178,6 +184,8 @@ export function stateFor(ctx, data) {
   }
   // cards in deck b1 that no round can ask (an exam word the triage leaves out today, a deleted mistake): they are
   // not reviews he can do, so no count shows them
+  // the B2 items the gate lets in are open new items of the b1 deck too (none while it is shut)
+  unseen += C.layerOpen(base);
   const outside = Object.keys(cards).filter(id => !data.byId.has(id) && cards[id]?.reps).sort();
   const pLeft = C.priorityLeft(base);
   const tasks = data.writing ? data.writing.tasks.map((/** @type {any} */ x) => ({ id: x.id, a: x.aufgabe, title: x.title,

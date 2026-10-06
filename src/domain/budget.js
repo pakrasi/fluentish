@@ -47,6 +47,7 @@
      script    8 a script in use; in exam week only for a script delivered on or before the exam
      build     Word building's setting (Profile, default 5), maintenance only
      clusters  6 once he uses clusters, maintenance only (first week from day 5)
+     read      words saved while reading: practice.readNew (default 6), maintenance only
    Side decks (script, build, clusters) pause in exam week: no new items until after the exam, reviews as always.
    A want never exceeds what the deck has open.
 
@@ -55,6 +56,25 @@
    In maintenance mistakes come first and the rest is split in proportion to the wants. A round that goes over its
    share (a map pick, "Practice all") uses up the day: what is left for the other decks shrinks with it, lowest
    value first, and never goes below 0.
+
+   The week (round 4, lane L1b; domain/week.js dayPlan). Without a week the day is the round 3 day above, number for
+   number (the plan is ignored and the output has no `plan`). With a week (day.planned):
+     - the day's minutes are the week's for today (settings.minutesPerDay is the fallback only)
+     - Light and Off days give no new items, a chosen number included; an Off day plans no reviews (they wait and
+       stay counted in reviews.due)
+     - the day's slot (Read, Write, Talk) is fixed time after the reviews: its minutes are the plan's third of the day,
+       at most what the reviews leave, and none inside the exam window (the window plans the day)
+     - back after a break (maintenance and first week): when the reviews due take more than BREAK_FACTOR (1.5) times
+       the day's minutes, today takes the most urgent (plan.reviewsToday: at least a third of them, more when the day
+       holds more; the composer orders by lowest recall), the rest spread over the next BREAK_SPREAD (3) days, no new
+       items (a chosen number included), and the slot shrinks to BREAK_SLOT_MIN minutes
+     - and while the reviews and today's fixed rows do not fit in the day's minutes, Auto gives no new items
+     - the sustainable rate (maintenance, Auto): the reviews forecast for the next FORECAST_DAYS (14) days may take
+       at most FORECAST_LIMIT (55 %) of those days' planned minutes. Past it, each day's overflow comes off the new
+       items (overflow minutes a day ÷ 0.75), down to 0, and plan.why says so ('reviewsHigh')
+     - the output gains `plan`: {kind, minutes, slot, slotMin, why, reviewsToday, break, forecast}. why names the
+       reason new items are fewer or none today: 'off', 'light', 'break', 'reviewsDue', 'reviewsHigh' or null.
+   Reviews are never dropped by any of it: reviews.due and every deck's due stay what the decks have.
 
    Minutes: a review round is 12 questions, about 4 minutes; a new item costs about 0.75 min inside rounds (shown,
    learnt, seen again); a situation 0.2 min (a new one is shown twice); a Word building card 0.4 min. Rounds are whole,
@@ -89,7 +109,27 @@ export const CLUSTER_NEW = 6;
 export const BUILD_NEW_DEFAULT = 5;
 export const BUILD_NEW_MAX = 20;
 export const BUILD_CARD_MIN = 0.4;
+export const READ_NEW_DEFAULT = 6;
+export const READ_NEW_MAX = 20;
 const CAP = { exam: 60, maintenance: 40, start: 20 };
+
+/** The sustainable rate: the reviews forecast for the next FORECAST_DAYS days may take at most this share of their
+ * planned minutes before Auto new items shrink (MAINTENANCE-PLAN §1.1). The one constant of the forecast cap. */
+export const FORECAST_LIMIT = 0.55;
+/** The forecast's horizon in days, today included. */
+export const FORECAST_DAYS = 14;
+/** Back after a break: the reviews due take more than this many times the day's minutes. */
+export const BREAK_FACTOR = 1.5;
+/** Back after a break: the reviews are spread over this many days, today first. */
+export const BREAK_SPREAD = 3;
+/** Back after a break: the day's slot shrinks to at most this many minutes (a short read). */
+export const BREAK_SLOT_MIN = 5;
+
+/** Reading's want: practice.readNew when it is a whole number (at most 20), else 6. @param {any} settings */
+export function readShare(settings) {
+  const n = settings?.practice?.readNew;
+  return Number.isInteger(n) && n >= 0 ? Math.min(n, READ_NEW_MAX) : READ_NEW_DEFAULT;
+}
 
 /** Whether the learner chose a number of new items in this app (not Auto, not a value carried over). @param {any} settings */
 export const newPerDayChosen = settings => Number.isInteger(settings?.newPerDay) && !!settings?.rev?.newPerDay;
@@ -145,6 +185,26 @@ export function mode(c, fresh = null) {
  * @property {boolean} focus      Schreiben is the weakest module (exam ahead): it gets its share first
  * @property {{minutes: number, fixed: number, floor: number}} room  the minutes new items and reviews share (half the
  *           day while a mock is planned), today's fixed rows, and the floor of new items (Auto only; 0 otherwise)
+ * @property {DayOut} [plan]      only for a day from a week (day.planned): what the week made of today
+ */
+/** Why new items are fewer or none today (a day from a week): see the header. @typedef {'off'|'light'|'break'|'reviewsDue'|'reviewsHigh'|null} Why */
+/**
+ * @typedef {object} DayOut
+ * @property {import('./week.js').DayKind} kind  the day's kind
+ * @property {number} minutes       the day's planned minutes
+ * @property {'read'|'write'|'talk'|null} slot  the day's practice slot
+ * @property {number} slotMin       its minutes today, after the reviews (0 without a slot)
+ * @property {Why} why              why new items are fewer or none (null: as Auto or his number gives)
+ * @property {number} reviewsToday  the reviews today's plan takes (reviews.due, but 0 on an Off day and the most
+ *                                  urgent share after a break)
+ * @property {boolean} break        back after a break
+ * @property {{reviewMin: number, plannedMin: number, ratio: number, cut: number} | null} forecast  the sustainable
+ *           rate's inputs and the new items it took off (maintenance, Auto; null otherwise)
+ */
+/**
+ * The reviews forecast over the next FORECAST_DAYS days and the minutes planned on them (domain/allowance.js
+ * reviewForecast reads both from the store and the week).
+ * @typedef {{reviewMin: number, plannedMin: number, days?: number}} Forecast
  */
 
 /**
@@ -160,13 +220,16 @@ export function mode(c, fresh = null) {
  * @param {{script?: boolean, build?: boolean, clusters?: boolean}} [o.goals]  the decks he uses (maintenance shares)
  * @param {{script?: number}} [o.examDecks] exam week: scripts delivered on or before the exam (their number)
  * @param {number} [o.scripts]             scripts in use (each wants SCRIPT_NEW)
- * @param {import('./week.js').DayPlan | null} [o.day]  the day's plan (domain/week.js dayPlan). A contract seam (C0):
- *                                         accepted and not read yet, so every number is the same with or without it
+ * @param {import('./week.js').DayPlan | null} [o.day]  the day's plan (domain/week.js dayPlan). Read only when it comes
+ *                                         from a week (planned); otherwise every number is the round 3 one
+ * @param {Forecast | null} [o.forecast]   the reviews forecast (a planned day in maintenance; no cap without it)
  * @returns {Allowance}
  */
-export function allowance({ c, settings, decks = {}, priorityLeft = null, focus = false, fixedMin = 0, fresh = null, goals = {}, examDecks = {}, scripts = 0, day = null }) {
+export function allowance({ c, settings, decks = {}, priorityLeft = null, focus = false, fixedMin = 0, fresh = null, goals = {}, examDecks = {}, scripts = 0, day = null, forecast = null }) {
   const md = mode(c, fresh);
-  const minutes = settings?.minutesPerDay || 60;
+  const planned = !!(day && day.planned);
+  const kind = planned && day ? day.kind : 'n';
+  const minutes = planned && day ? Math.max(0, day.minutes) : settings?.minutesPerDay || 60;
   /** @type {Record<DeckId, Required<DeckIn>>} */
   const d = /** @type {any} */ (Object.fromEntries(DECKS.map(id => {
     // a deck not given has nothing open; a deck given without its open count may introduce any number
@@ -199,6 +262,7 @@ export function allowance({ c, settings, decks = {}, priorityLeft = null, focus 
     want.script = goals.script ? Math.max(1, scripts) * SCRIPT_NEW : 0;
     want.build = goals.build ? buildShare(settings) : 0;
     want.clusters = goals.clusters ? CLUSTER_NEW : 0;
+    want.read = readShare(settings);
   } else if (md === 'start') {
     const day = fresh ? fresh.day : 0;
     want.b1 = Math.max(6, Math.min(15, Math.round(minutes / 4)));
@@ -209,17 +273,37 @@ export function allowance({ c, settings, decks = {}, priorityLeft = null, focus 
   for (const id of DECKS) want[id] = Math.max(0, Math.min(want[id], d[id].open + d[id].shown));
   const wantSum = DECKS.reduce((n, id) => n + want[id], 0);
 
+  // ---- the week's day (planned only) ----
+  const share0 = examWeek && hasMockExam(settings) ? 0.5 : 1;
+  const calm = md === 'maintenance' || md === 'start';
+  const fixed = Math.max(0, fixedMin);
+  const dueAll = DECKS.reduce((n, id) => n + d[id].due, 0);
+  const isBreak = planned && calm && kind !== 'off' && reviewMin > BREAK_FACTOR * minutes;
+  const after = Math.max(0, Math.floor(minutes * share0 - reviewMin - fixed));
+  const slotMin = planned && day && day.slot && calm ? Math.min(day.slotMin, isBreak ? BREAK_SLOT_MIN : after) : 0;
+  /** @type {Why} */ let why = null;
+  /** @type {DayOut['forecast']} */ let fc = null;
+
   // ---- the day's number ----
   let total = 0, floor = 0;
-  const share0 = examWeek && hasMockExam(settings) ? 0.5 : 1;
-  if (c.newItems && md !== 'eve' && md !== 'day') {
+  const blocked = planned ? (kind === 'off' ? 'off' : kind === 'light' ? 'light' : isBreak ? 'break' : null) : null;
+  if (c.newItems && md !== 'eve' && md !== 'day' && blocked) why = blocked;
+  else if (c.newItems && md !== 'eve' && md !== 'day') {
     if (newPerDayChosen(settings)) total = Math.max(0, settings.newPerDay);
     else {
       const share = share0;
-      const fit = Math.max(0, Math.floor((minutes * share - reviewMin - Math.max(0, fixedMin)) / NEW_ITEM_MIN));
+      const fit = Math.max(0, Math.floor((minutes * share - reviewMin - fixed - slotMin) / NEW_ITEM_MIN));
       floor = examWeek ? want.writing + Math.min(4, want.b1) + Math.min(4, want.speak) + want.mistakes : Math.min(4, wantSum);
       const cap = examWeek ? CAP.exam + want.mistakes : md === 'start' ? CAP.start : CAP.maintenance;
       total = Math.min(wantSum, cap, Math.max(fit, floor));
+      if (planned && calm && reviewMin + fixed > minutes) { total = 0; floor = 0; why = 'reviewsDue'; }
+      else if (planned && md === 'maintenance' && forecast && forecast.plannedMin > 0) {
+        const days = forecast.days || FORECAST_DAYS;
+        const over = forecast.reviewMin - FORECAST_LIMIT * forecast.plannedMin;
+        const cut = over > 0 ? Math.min(total, Math.ceil(over / days / NEW_ITEM_MIN - 1e-9)) : 0;
+        fc = { reviewMin: round1(forecast.reviewMin), plannedMin: forecast.plannedMin, ratio: Math.round((forecast.reviewMin / forecast.plannedMin) * 1000) / 1000, cut };
+        if (cut > 0) { total -= cut; why = 'reviewsHigh'; }
+      }
     }
   }
 
@@ -237,7 +321,7 @@ export function allowance({ c, settings, decks = {}, priorityLeft = null, focus 
     order = ['mistakes', 'b1', 'speak', 'script', 'clusters'];
     for (const id of order) take(id, Infinity);
   } else {
-    order = ['mistakes', 'b1', 'script', 'build', 'clusters', 'speak', 'writing'];
+    order = ['mistakes', 'b1', 'script', 'build', 'clusters', 'speak', 'writing', 'read'];
     take('mistakes', Infinity);
     proportional(order.slice(1), want, share, left);
     left = total - DECKS.reduce((n, id) => n + share[id], 0);
@@ -270,10 +354,21 @@ export function allowance({ c, settings, decks = {}, priorityLeft = null, focus 
     const needed = Math.ceil(priorityLeft / newDays);
     pace = { lastNew: c.lastNewDay, left: priorityLeft, needed, reach: Math.min(priorityLeft, share.b1 * newDays), fits: share.b1 >= needed };
   }
-  return { mode: md, newPerDay: total, newLeft: DECKS.reduce((n, id) => n + newLeft[id], 0), shown, decks: out,
-    reviews: { due: DECKS.reduce((n, id) => n + d[id].due, 0), minutes: Math.round(reviewMin * 10) / 10 }, pace, focus: examWeek && focus,
+  /** @type {Allowance} */
+  const res = { mode: md, newPerDay: total, newLeft: DECKS.reduce((n, id) => n + newLeft[id], 0), shown, decks: out,
+    reviews: { due: dueAll, minutes: Math.round(reviewMin * 10) / 10 }, pace, focus: examWeek && focus,
     room: { minutes: minutes * share0, fixed: Math.max(0, fixedMin), floor } };
+  if (planned && day) {
+    // after a break: the most urgent third at least, or as many as the day holds when that is more
+    const fitCards = dueAll && reviewMin > 0 ? Math.floor(minutes / (reviewMin / dueAll)) : dueAll;
+    const reviewsToday = kind === 'off' ? 0 : isBreak ? Math.min(dueAll, Math.max(Math.ceil(dueAll / BREAK_SPREAD), fitCards)) : dueAll;
+    res.plan = { kind, minutes, slot: calm ? day.slot : null, slotMin, why, reviewsToday, break: isBreak, forecast: fc };
+  }
+  return res;
 }
+
+/** @param {number} x */
+const round1 = x => Math.round(x * 10) / 10;
 
 /** Whole rounds for raw minutes of n questions: at least one round when there is anything. @param {number} raw @param {number} n */
 const roundsOf = (raw, n) => { const rounds = n > 0 ? Math.max(1, Math.ceil(raw / ROUND_MIN - 1e-9)) : 0; return { rounds, minutes: rounds * ROUND_MIN }; };

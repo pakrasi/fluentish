@@ -3,7 +3,14 @@
    without a B1 twin), Igloo grammar (b1/grammar.json, ranked by plan topics), exam words (words.js) and mistakes
    from corrections (data/mistakes.js). Ids keep their kind prefix (domain/itemids.js).
    Schreiben (b1/schreiben.json): the BS: phrases, and the trainer's letter items it links, go in area writing, grouped
-   by Aufgabe (W1, W2, W3) and function (wfn), introduced in the content's rank order. */
+   by Aufgabe (W1, W2, W3) and function (wfn), introduced in the content's rank order.
+   The B2 layer (round 4, lane L1b; domain/levels.js): the pack's grammar items of B2 concepts that the B1 trainer
+   does not have (igloo.grammar.items.de, topic = their concept, skipped as b1.annot says) and the chunk bank's B2
+   phrases with an accept list (igloo.chunks.en/german/accept.german), leaving out what the content marks dupOf (a
+   duplicate of another item, which alone is scheduled), built by b2Layer() into data.b2, never into
+   data.pool. Each carries layer: 'b2'. data.pool, its readiness, its ★/trap pace and the lexicon are what they were;
+   the composer mixes the layer in through the level gate, and a B2 card's reviews come due like any card's
+   (data.byId has every item). */
 import * as Match from '../../domain/match.js';
 import { verbForms } from '../../domain/detect.js';
 
@@ -55,12 +62,13 @@ export function buildLexicon({ items = [], grammar = [], bank = {}, nouns = {}, 
 }
 
 /**
- * @param {{items?: any[], grammar?: any[], bank?: Record<string, any>, plan: any, nouns?: Record<string, string>, words?: any[], mistakes?: any[], lexWords?: any[] | null, lexTexts?: string[] | null, schreiben?: any}} o
+ * @param {{items?: any[], grammar?: any[], bank?: Record<string, any>, plan: any, nouns?: Record<string, string>, words?: any[], mistakes?: any[], lexWords?: any[] | null, lexTexts?: string[] | null, schreiben?: any, b2?: Parameters<typeof b2Layer>[0] | null}} o
  *   words: round items from words.js toItem(); mistakes: mistake records; lexWords: the German word list (igloo.words.de)
  *   and lexTexts: the chunk examples (igloo.chunks.german), both optional, for the grader's lexicon; schreiben: the
- *   Schreiben content (b1-schreiben@1), optional
+ *   Schreiben content (b1-schreiben@1), optional; b2: the B2 layer's sources (b2Layer), optional: data.b2 is empty
+ *   without them
  */
-export function buildPool({ items = [], grammar = [], bank = {}, plan, nouns = {}, words = [], mistakes = [], lexWords = null, lexTexts = null, schreiben = null }) {
+export function buildPool({ items = [], grammar = [], bank = {}, plan, nouns = {}, words = [], mistakes = [], lexWords = null, lexTexts = null, schreiben = null, b2 = null }) {
   const topics = new Map(plan.topics.map((/** @type {any} */ t) => [t.id, t]));
   /** @type {Map<string, any>} */ const byId = new Map();
   /** @type {any[]} */ const pool = [];
@@ -103,7 +111,52 @@ export function buildPool({ items = [], grammar = [], bank = {}, plan, nouns = {
   const traps = new Map(plan.traps.map((/** @type {any} */ t) => [t.id, t]));
   const fnInfo = new Map(plan.functions.map((/** @type {any} */ f) => [f.id, f]));
   const writing = schreiben ? { aufgaben: schreiben.aufgaben || [], functions: schreiben.functions || [], tasks: schreiben.tasks || [] } : null;
-  return { pool, byId, plan, topics, traps, fnInfo, nouns, writing, verbs: lexWords ? verbForms(lexWords) : null, lexicon: buildLexicon({ items, grammar, bank, nouns, lexWords, lexTexts, schreiben }) };
+  // the B2 layer: beside the pool, never in it (readiness, pace and the lexicon read the pool only)
+  const layer = b2 ? b2Layer(b2, id => byId.has(id), new Set([...twins].map(String))) : [];
+  for (const it of layer) byId.set(it.id, it);
+  return { pool, b2: layer, byId, plan, topics, traps, fnInfo, nouns, writing, verbs: lexWords ? verbForms(lexWords) : null, lexicon: buildLexicon({ items, grammar, bank, nouns, lexWords, lexTexts, schreiben }) };
+}
+
+/**
+ * The B2 layer (see the header): items with layer 'b2', grammar first in concept order, then phrases in bank order.
+ * Ids already in the B1 pool (`has`) are left to it.
+ * @param {{grammar?: any[] | null, concepts?: any[] | null, annot?: Record<string, any> | null, en?: any[] | null, de?: Record<string, any> | null, accept?: Record<string, any> | null}} src
+ * @param {(id: string) => boolean} [has] @param {Set<string>} [twins] chunk ids that are B1 items' twins
+ */
+export function b2Layer({ grammar = null, concepts = null, annot = null, en = null, de = null, accept = null }, has = () => false, twins = new Set()) {
+  /** @type {any[]} */ const out = [];
+  const seen = new Set();
+  const push = (/** @type {any} */ it) => { if (!has(it.id) && !seen.has(it.id)) { seen.add(it.id); out.push(it); } };
+  const level = (/** @type {any} */ x) => String(x || '').toUpperCase();
+  const b2c = (concepts || []).filter(c => c && level(c.level) === 'B2');
+  // a concept's rank inside the level when the content gives one (round 4 content), else its place in the file
+  const rank = new Map(b2c.map((c, i) => [c.id, 100 + (Number.isFinite(c.rank) ? c.rank : i)]));
+  const byConcept = new Map(b2c.map(c => [c.id, /** @type {any[]} */ ([])]));
+  // an item the content tags layer 'b2', or a B2 item, of a B2 concept
+  for (const g of grammar || []) if (g && (g.layer === 'b2' || level(g.level) === 'B2') && byConcept.has(g.concept)) /** @type {any[]} */ (byConcept.get(g.concept)).push(g);
+  for (const [cid, list] of byConcept) {
+    for (const g of list) {
+      const a = (annot || {})['G:' + g.id] || {};
+      if (a.skip || g.dupOf) continue;   // dupOf: the content marks a duplicate of another item; only that one is scheduled
+      const ans = /** @type {string[]} */ ([].concat(g.answer)), gap = String(g.prompt).includes('___');
+      push({ id: 'G:' + g.id, kind: 'grammar', area: 'grammar', group: cid, teil: null, fn: null, star: false, trap: a.trap || null, focus: a.focus || [],
+        strict: a.strict || [], plan: PLAN_OF_KIND[g.kind] || 'recall', task: g.task, prompt: g.prompt, promptLang: g.kind === 'translate' ? 'en' : 'de', hl: null,
+        partner: null, prefill: null, accept: ans, anywhere: false, literal: true, gap, loose: gap || g.kind !== 'translate',
+        model: gap ? (Match.gapFill(g.prompt, ans[0])?.text || ans[0]) : ans[0], wrong: a.wrong || [], rule: a.rule || g.note || '', src: 'igloo', level: 'B2',
+        strictCase: !!g.strict_case, rank: rank.get(cid), layer: 'b2' });
+    }
+  }
+  for (const c of en || []) {
+    const d = (de || {})[c.id], a = (accept || {})[c.id];
+    if (!c || !(level(c.level) === 'B2' || (d && d.layer === 'b2')) || twins.has(c.id)) continue;
+    if (!d || !a || !Array.isArray(a.accept) || !a.accept.length || a.weak || d.dupOf || c.dupOf) continue;
+    if (!a.core_en || !String(c.natural_example || '').toLowerCase().includes(String(a.core_en).toLowerCase())) continue;
+    push({ id: 'K:' + c.id, kind: 'phrase', area: 'speaking', group: 'b2', teil: null, fn: null, star: false, trap: null, focus: ['chunk'], strict: [], plan: 'recall',
+      task: null, prompt: c.natural_example, promptLang: 'en', hl: a.core_en, partner: null, prefill: null, accept: a.accept, anywhere: true,
+      model: d.ex && Match.matches(d.ex, a.accept[0]) ? d.ex : Match.renderPattern(a.accept[0], d.ex), wrong: [], rule: d.n || '', src: 'bank', level: 'B2', bank: true,
+      sentence: d.ex && a.accept.some((/** @type {string} */ p) => Match.matches(d.ex, p)) ? d.ex : null, layer: 'b2' });
+  }
+  return out;
 }
 
 /** Add items to a built pool (exam words that arrive after a fetch). Returns how many were new. @param {ReturnType<typeof buildPool>} data @param {any[]} list */

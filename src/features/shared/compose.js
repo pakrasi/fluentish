@@ -13,6 +13,9 @@
        first study week only items of his level
      - situations come in once two phrases with that job have graduated
      - the exam day is a warm-up of well-known items; nothing new on the eve or the day
+     - the B2 layer (data.b2, layer 'b2'; round 4, L1b): its due cards come in the rounds like any card; its new items
+       join the order strand by strand as the level gate says (state.gate, domain/levels.js levelGate; gateFor below).
+       Without a gate, or with every strand closed, the order is the B1 order exactly
 
    state = { data (pool.js buildPool), cards (deck 'b1': id → FSRS record), day (session day log), c (clock ctx),
              newPerDay (the b1 share of the allowance), writingNew, mistakesNew, level, fresh } */
@@ -22,6 +25,7 @@ import * as RD from '../../domain/b1ready.js';
 import { roundMinutes } from '../../domain/today.js';
 import { ROUND, SPLIT, NEW_ITEM_MIN, streamQuota } from '../../domain/budget.js';
 import { skipsNew } from '../../domain/known.js';
+import { levelGate, gateCounts, mixLayers, courseGoal, LAYER } from '../../domain/levels.js';
 
 export { ROUND, NEW_ITEM_MIN };
 
@@ -37,7 +41,13 @@ export { ROUND, NEW_ITEM_MIN };
  * @property {Set<string>} [marked]   items marked known in any deck (domain/known.js markedItems): never introduced as new
  * @property {string | null} [level] the learner's level (settings.level)
  * @property {boolean} [fresh]       his first study week: only items of his level are new
+ * @property {import('../../domain/levels.js').Gate | null} [gate]  the level gate (gateFor): which strands take B2 new items
  */
+
+/** Every item a round can ask: the B1 pool, then the B2 layer. @param {State} s @returns {any[]} */
+export const roundItems = s => (s.data.b2 && s.data.b2.length ? s.data.pool.concat(s.data.b2) : s.data.pool);
+/** An item of the B2 layer. @param {any} it */
+export const isLayer = it => !!it && it.layer === LAYER;
 
 /** @param {State} s @param {any} it */
 export const unseen = (s, it) => !(s.cards[it.id] && s.cards[it.id].reps);
@@ -96,6 +106,9 @@ export function topicReady(s, it) {
   return false;
 }
 
+/** Items the order never introduces as new: rank 21 (misc) grammar, and Präteritum phrases. @param {any} it */
+export const eligible = it => it.rank !== 21 && !(it.group === 'praeteritum' && it.kind !== 'grammar');
+
 /** Unseen items in the order they are introduced (P14). @param {State} s @param {any[]} pool @param {boolean} [anyTopic] */
 export function newOrder(s, pool, anyTopic = false) {
   const topics = s.data.topics;
@@ -115,14 +128,16 @@ export function newOrder(s, pool, anyTopic = false) {
     if (it.area === 'writing') return 12;
     return 11;
   };
-  const eligible = (/** @type {any} */ it) => it.rank !== 21 && !(it.group === 'praeteritum' && it.kind !== 'grammar');
   // a learner below B1 meets his level first (band 0), then the next; in his first week only his level
   const band = levelBand(s.level);
-  const list = pool.filter(it => unseen(s, it) && eligible(it) && (anyTopic || topicReady(s, it)) && !(s.marked && skipsNew(s.marked, it.id, it.chunk))
+  const all = pool.filter(it => unseen(s, it) && eligible(it) && (anyTopic || topicReady(s, it)) && !(s.marked && skipsNew(s.marked, it.id, it.chunk))
     && !(s.fresh && band(it) > 0 && !it.mine));
+  const list = all.filter(it => !isLayer(it));
   // inside a level band and a tier: rank (grammar, Schreiben), ★ first, then the more common word first (zipf; exam words carry it)
-  const base = list.filter(it => !it.mine).map((it, i) => /** @type {[number, number, number, number, number, any, number, number]} */ ([tier(it), it.area === 'grammar' || it.area === 'writing' ? it.rank ?? 99 : 0, it.star ? 0 : 1, it.bank ? 1 : 0, i, it, -(Number(it.zipf) || 0), band(it)]))
+  const b1 = list.filter(it => !it.mine).map((it, i) => /** @type {[number, number, number, number, number, any, number, number]} */ ([tier(it), it.area === 'grammar' || it.area === 'writing' ? it.rank ?? 99 : 0, it.star ? 0 : 1, it.bank ? 1 : 0, i, it, -(Number(it.zipf) || 0), band(it)]))
     .sort((a, b) => a[7] - b[7] || a[0] - b[0] || a[1] - b[1] || a[2] - b[2] || a[6] - b[6] || a[3] - b[3] || a[4] - b[4]).map(x => x[5]);
+  // the B2 layer, strand by strand as the level gate says (in its own order: concept rank, then the bank's)
+  const base = s.gate ? mixLayers(b1, all.filter(isLayer), s.gate) : b1;
   // mistakes from corrections are spread through the front of the order: one in every three
   const mine = list.filter(it => it.mine), out = [];
   while (base.length || mine.length) { if (mine.length) out.push(mine.shift()); for (let k = 0; k < 2 && base.length; k++) out.push(base.shift()); }
@@ -161,9 +176,31 @@ export function nextNew(s, pool, n, left = { p: newLeftOf(s, 'p'), g: newLeftOf(
   return out;
 }
 
-/** ★ and trap items not seen yet (the pace count for Auto new items). @param {State} s */
+/** ★ and trap items not seen yet (the pace count for Auto new items): the B1 pool's only. @param {State} s */
 export function priorityLeft(s) {
-  return s.data.pool.filter(it => (it.star || it.trap) && it.area !== 'writing' && unseen(s, it)).length;
+  return s.data.pool.filter(it => (it.star || it.trap) && it.area !== 'writing' && !isLayer(it) && unseen(s, it)).length;
+}
+
+/**
+ * The level gate for a state (domain/levels.js): the course's level goal and exam from settings, the clock's phase,
+ * and how much of each strand of the B1 pool he has seen (an answered card, or marked known), counting the items the
+ * order can introduce.
+ * @param {State} s @param {any} settings normalised settings
+ */
+export function gateFor(s, settings) {
+  const items = s.data.pool.filter(it => !isLayer(it) && !it.mine && eligible(it));
+  const seen = (/** @type {any} */ it) => !!(s.cards[it.id] && s.cards[it.id].reps) || !!(s.marked && skipsNew(s.marked, it.id, it.chunk));
+  return levelGate({ ...courseGoal(settings), phase: s.c.phase, counts: gateCounts(items, seen) });
+}
+
+/**
+ * The B2 layer's items the gate lets in as new today and he has not seen (they add to the b1 deck's open count).
+ * @param {State} s
+ */
+export function layerOpen(s) {
+  const g = s.gate;
+  if (!g || !s.data.b2 || !s.data.b2.length) return 0;
+  return mixLayers([], s.data.b2.filter(it => unseen(s, it) && eligible(it) && !(s.marked && skipsNew(s.marked, it.id, it.chunk))), g).length;
 }
 
 /** The day's trap set: 2 per sticky-error class, 2 more from mistakes; most-flagged and weakest first. @param {State} s */
@@ -190,7 +227,7 @@ function lastMiss(s, it) {
 /** Items missed (rated 1) in the last 3 days, latest first; a study step on a new item (Show me) is not a miss. @param {State} s */
 export function missed(s) {
   const since = D8.add(s.c.today, -3);
-  return s.data.pool.filter(it => (s.cards[it.id]?.hist || []).some((/** @type {any[]} */ h) => h[0] >= since && isMiss(h))).sort((a, b) => lastMiss(s, b) - lastMiss(s, a));
+  return roundItems(s).filter(it => (s.cards[it.id]?.hist || []).some((/** @type {any[]} */ h) => h[0] >= since && isMiss(h))).sort((a, b) => lastMiss(s, b) - lastMiss(s, a));
 }
 
 /** New items between reviews: r r n r r n … @param {State} s @param {any[]} list */
@@ -231,7 +268,7 @@ export function compose(s, { kind = 'today', area, topic, size = ROUND } = {}) {
   const c = s.c, today = c.today, data = s.data;
   const situation = kind === 'situation';
   const write = kind === 'write';
-  let pool = data.pool.filter(it => (!area || it.area === area)
+  let pool = roundItems(s).filter(it => (!area || it.area === area)
     && (!topic || it.group === topic || (data.topics.get(topic)?.confusable || []).includes(it.group))
     && (!situation || it.kind === 'topic' || it.kind === 'reply'));
   // mistakes stay out of the other area rounds; the daily round and their own round take them
@@ -299,7 +336,7 @@ export function buckets(s, { kind = 'today', area, topic } = {}) {
   if (kind === 'missed') pool = missed(s);
   else if (kind === 'mistakes') pool = data.pool.filter(it => it.area === 'mistakes');
   else {
-    pool = data.pool.filter(it => (!area || it.area === area) && (!topic || it.group === topic || (data.topics.get(topic)?.confusable || []).includes(it.group)) && it.area !== 'mistakes');
+    pool = roundItems(s).filter(it => (!area || it.area === area) && (!topic || it.group === topic || (data.topics.get(topic)?.confusable || []).includes(it.group)) && it.area !== 'mistakes');
     if (kind === 'today') pool = pool.filter(it => it.area !== 'writing');
   }
   const weak = (/** @type {any} */ a, /** @type {any} */ b) => R(s, a, today) - R(s, b, today);

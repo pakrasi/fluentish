@@ -1940,6 +1940,29 @@ export default {
 
   // ---- Goals and week (Profile › Goals and week, Today's week strip; lane L1) ----
   'goal.derived.far': { one: '{n} day left. Exam weeks start {start}.', other: '{n} days left. Exam weeks start {start}.' },
+  // day kinds (domain/week.js DAY_KINDS) and why new items are fewer today (domain/budget.js plan.why; L1b)
+  'week.kind.n': 'Normal',
+  'week.kind.light': 'Light',
+  'week.kind.read': 'Read',
+  'week.kind.write': 'Write',
+  'week.kind.talk': 'Talk',
+  'week.kind.off': 'Off',
+  'week.comingLater': 'coming later',
+  'week.studyAnyway': 'Study anyway',
+  'week.why.off': { one: "Day off. {n} review is due; it will be in tomorrow's plan.", other: "Day off. {n} reviews are due; they will be in tomorrow's plan." },
+  'week.why.light': 'Light day: reviews only, no new items.',
+  'week.why.break': 'You were away {d} days. {n} reviews are due. Today takes the {k} most urgent; the rest are spread over the next 3 days. New items come back when one day can hold the reviews.',
+  'week.why.breakDue': '{n} reviews are due. Today takes the {k} most urgent; the rest are spread over the next 3 days. New items come back when one day can hold the reviews.',
+  'week.why.reviewsDue': 'No new items today: the reviews due fill the day.',
+  'week.why.reviewsHigh': { one: '{n} new (fewer this week: reviews are high)', other: '{n} new (fewer this week: reviews are high)' },
+  // the level gate (domain/levels.js)
+  'goal.gate.strand.g': 'B2 grammar',
+  'goal.gate.strand.p': 'B2 phrases',
+  'goal.gate.strand.w': 'B2 words',
+  'goal.gate.closed': 'Starts when you have seen half of the B1 items ({seen} of {n})',
+  'goal.gate.mix': '1 in 4 new items',
+  'goal.gate.open': 'Open: B2 items first',
+  'goal.gate.examWindow': 'B2 items wait until after the exam.',
   // ---- end of Goals and week ----
 
   // ---- Reading (features/practice-read, shared/textview; lane L2) ----

@@ -15,9 +15,11 @@
  * @property {any} settings                                 normalised settings@1 (the exam date: data/settings.js examDate(), the active course's goal.date)
  * @property {any | null} exam                              the exam definition from content/manifest.json, or null
  * @property {(key: string, vars?: Record<string, any>) => string} t
- * @property {import('../domain/week.js').DayPlan} day      today's plan from the week (domain/week.js dayPlan): kind, minutes,
- *                                                          the practice slot and its minutes (round 4; a Normal day until
- *                                                          the week plan lands)
+ * @property {ReturnType<typeof import('../domain/allowance.js').todayPlan>} day  today's plan from the week (domain/allowance.js
+ *                                                          todayPlan): kind, minutes, the practice slot and its minutes fitted
+ *                                                          to today's reviews, why new items are fewer (round 4, L1b). A Normal
+ *                                                          day of minutesPerDay with planned false when the course has no week.
+ *                                                          A slot provider shows its row when day.slot is its kind.
  */
 
 /**

@@ -1,6 +1,6 @@
 /* B1 trainer: readiness, due counts and the forecast. Pure.
    Readiness is defined on a set that does not depend on the exam date: every item in the B1 pool (mistakes from
-   corrections excluded by the caller). recall = Σ w·R(day) / Σ w, where day is the exam day while the exam is ahead
+   corrections excluded by the caller; the B2 layer's items, layer 'b2', are never counted: domain/levels.js). recall = Σ w·R(day) / Σ w, where day is the exam day while the exam is ahead
    and today otherwise, and R of an item never seen is 0: "the chance of recalling each exam item on that day if
    you stopped reviewing now". coverage = Σ w·seen / Σ w; w = 2 for ★ and trap items. Moving the date changes the
    day recall is measured on, never the set, so the percentage cannot jump because the set shrank. Area bars are
@@ -52,6 +52,7 @@ function compute(ctx) {
   const areas = {}, groups = {};
   let dueAll = 0;
   for (const it of pool) {
+    if (it.layer === 'b2') continue;   // B1 readiness is the B1 pool's (PLAN-REVIEW B7)
     const rec = store[it.id];
     if (isDue(rec, today, ctx)) dueAll++;
     const a = areas[it.area] || (areas[it.area] = bucket());

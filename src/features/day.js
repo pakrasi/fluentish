@@ -3,7 +3,7 @@
    module through the registry and arranges what they offer with arrange() before domain/today.js composes the day. */
 import { composeToday } from '../domain/today.js';
 import { planProviders } from './registry.js';
-import { dayPlan } from '../domain/week.js';
+import { todayPlan } from '../domain/allowance.js';
 import FS from '../domain/fsrs.js';
 import { dueOn } from '../domain/b1ready.js';
 import { add } from '../domain/days.js';
@@ -162,10 +162,12 @@ export async function composeDay(ctx, { prepare = true } = {}) {
   const lang = manifest && s.language ? manifest.languages.find((/** @type {any} */ l) => l.id === s.language) : null;
   // the exam window opening: pull in the reviews owed before the exam, once (above), before any plan reads a card
   try { examWindow({ store, c, settings: s }); } catch (e) { console.error('today: exam window', e); }
-  const pctx = { store, c, settings: s, exam, t, day: dayPlan(s, c) };
   /** @type {any[]} */ const items = [], feedback = [], modules = [];
   const providers = /** @type {any[]} */ (await planProviders());
   if (prepare) await Promise.all(providers.map(p => p.mod.prepare?.(ctx)));   // e.g. Practice's pool stats, so both tabs read one budget
+  // today's plan from the week (domain/allowance.js todayPlan: the slot fitted to today's reviews, after the stats
+  // above); the round 3 day without a week
+  const pctx = { store, c, settings: s, exam, t, day: todayPlan({ store, c, settings: s }) };
   for (const { id, mod } of providers) {
     try {
       items.push(...((await mod.planItems?.(pctx)) || []));
@@ -177,6 +179,6 @@ export async function composeDay(ctx, { prepare = true } = {}) {
   const a = arrange(items, feedback, t);
   const activity = store.get('activity', {}) || {};
   // on the exam day nothing asks for work: no corrections to read, only the warm-up
-  const plan = composeToday({ ctx: c, budget: s.minutesPerDay, items: a.items, feedback: c.phase === 'day' ? [] : a.feedback, modules, doneMinutes: activity[c.today]?.minutes || 0 });
+  const plan = composeToday({ ctx: c, budget: pctx.day.planned ? pctx.day.minutes : s.minutesPerDay, items: a.items, feedback: c.phase === 'day' ? [] : a.feedback, modules, doneMinutes: activity[c.today]?.minutes || 0 });
   return { plan, exam, lang, c, settings: s, activity };
 }
