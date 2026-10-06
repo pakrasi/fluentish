@@ -214,7 +214,7 @@ export async function mountFeedback(el, ctx, s0) {
     if (finished) primary.onclick = () => ctx.go(back.slice(1));
     sync();
     replace(el, view);
-    if (!reduced()) countTo(fig, st.words, { from: 0, duration: 640 });
+    if (!reduced()) countTo(fig, st.words, /** @type {any} */ ({ from: 0, duration: 640 }));
     h1.focus({ preventScroll: true });
     reveal(/** @type {any} */ (view));
   }

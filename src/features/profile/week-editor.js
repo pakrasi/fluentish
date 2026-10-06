@@ -54,7 +54,7 @@ export function weekEditor({ t, days, week, setDay, fmt, onDone }) {
         plan: k === 'off' ? 0 : w.min[i], done: 0, today: false, aria: `${d}: ${dayText(w, i)}` };
     });
   };
-  const sumText = () => t('week.sum', { t: fmt(weekMinutes(week())) });
+  const sumText = () => t('week.sum', { t: fmt(weekMinutes(/** @type {any} */ (week()))) });
 
   function draw() {
     weekStrip(strip, cols(), { plan: true });

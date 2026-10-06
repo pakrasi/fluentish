@@ -297,7 +297,11 @@ const colHeight = (c, maxPlan, planOnly) => {
   return Math.round(22 + 42 * ((off ? c.done : c.plan) / maxPlan));
 };
 
-/** Set one column's classes, height, labels and aria; returns its fill share. @param {HTMLElement} col */
+/**
+ * Set one column's classes, height, labels and aria; returns its fill share.
+ * @param {HTMLElement} col @param {{label: string, sub: string, plan: number, done: number, today: boolean, past?: boolean, aria: string}} c
+ * @param {number} maxPlan @param {boolean} planOnly
+ */
 function paintColumn(col, c, maxPlan, planOnly) {
   const off = !c.plan;
   const state = planOnly ? 'plan' : c.today ? 'today' : c.past ? (c.done > 0 ? 'done' : off ? 'off' : 'missed') : 'future';
@@ -306,8 +310,9 @@ function paintColumn(col, c, maxPlan, planOnly) {
   col.title = c.aria;
   const bar = /** @type {HTMLElement} */ (col.firstElementChild);
   bar.style.setProperty('--h', `${colHeight(c, maxPlan, planOnly)}px`);
-  col.querySelector('abbr').textContent = c.label;
-  col.querySelector('small').textContent = c.sub;
+  const lab = col.querySelector('abbr'), sub = col.querySelector('small');
+  if (lab) lab.textContent = c.label;
+  if (sub) sub.textContent = c.sub;
   return planOnly ? 0 : off ? (c.done ? 1 : 0) : Math.min(1, c.done / c.plan);
 }
 
@@ -324,7 +329,7 @@ export function weekStripUpdate(el, cols, changed) {
   const days = /** @type {HTMLElement[]} */ ([...el.children]);
   const before = days.map(d => /** @type {HTMLElement} */ (d.firstElementChild).getBoundingClientRect().height);
   const subs = days.map(d => d.querySelector('small')?.textContent || '');
-  cols.forEach((c, i) => { const r = paintColumn(days[i], c, maxPlan, planOnly); days[i].querySelector('.runway-bar > span')?.style.setProperty('--p', String(r)); });
+  cols.forEach((c, i) => { const r = paintColumn(days[i], c, maxPlan, planOnly); /** @type {HTMLElement | null} */ (days[i].querySelector('.runway-bar > span'))?.style.setProperty('--p', String(r)); });
   if (reduced()) return;
   const soft = getComputedStyle(root).getPropertyValue('--spring-soft').trim() || 'cubic-bezier(0.22, 1, 0.36, 1)';
   days.forEach((d, i) => {

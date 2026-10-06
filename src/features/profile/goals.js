@@ -60,7 +60,7 @@ export function goalsPage(ctx, { exams, languages }) {
   const examName = (/** @type {string | null} */ id) => (!id ? '' : id === 'other' ? t('goal.exam.other')
     : exams.find(x => x.id === id)?.name || (DATE_ONLY.german.includes(id) ? t(`goals.exam.name.${id}`) : id));
 
-  /** The week editor of the page now (stopped when the page is rebuilt). @type {{stop: () => void} | null} */ let editor = null;
+  /** The week editor of the page now (stopped when the page is rebuilt). @type {{el: HTMLElement, stop: () => void} | null} */ let editor = null;
   /** Rebuild the page in place and keep the focus on the same control (matched by name, else by id). */
   function rerender() {
     const a = /** @type {HTMLElement | null} */ (document.activeElement);

@@ -61,7 +61,7 @@ export function fits(ctx) {
           read: !!(r && (r.progress?.done || share >= 0.9)), share };
       });
       const me = levelRank(level);
-      out.sort((a, b) => Number(a.read) - Number(b.read) || (ORDER[/** @type {keyof ORDER} */ (a.band || 'hard')] - ORDER[/** @type {keyof ORDER} */ (b.band || 'hard')])
+      out.sort((/** @type {Fit} */ a, /** @type {Fit} */ b) => Number(a.read) - Number(b.read) || (ORDER[/** @type {keyof ORDER} */ (a.band || 'hard')] - ORDER[/** @type {keyof ORDER} */ (b.band || 'hard')])
         || (b.coverage ?? 0) - (a.coverage ?? 0) || Math.abs(levelRank(a.level) - me) - Math.abs(levelRank(b.level) - me) || a.id.localeCompare(b.id));
       last = out; lastLevel = level;
       return out;
