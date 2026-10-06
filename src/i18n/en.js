@@ -348,7 +348,7 @@ export default {
 
   'practice.newPerDay': 'New items per day',
   'practice.newPerDay.hint': 'Auto fits new items into your minutes and stops two days before the exam.',
-  'practice.newPerDay.steady': { one: 'Your weekly minutes hold about {n} new item a day with its reviews. Auto takes at most that many.', other: 'Your weekly minutes hold about {n} new items a day with their reviews. Auto takes at most that many.' },
+  'practice.newPerDay.steady': { one: 'Your weekly minutes hold about {n} new item a day with its reviews. Auto takes at most that many, except in the two weeks before an exam, when the exam plans each day.', other: 'Your weekly minutes hold about {n} new items a day with their reviews. Auto takes at most that many, except in the two weeks before an exam, when the exam plans each day.' },
   'profile.buildNew': 'Word building: new cards a day',
   'profile.buildNew.hint': 'Part of your new items a day, not added to them. Paused while an exam is days away.',
   'practice.newAuto': 'Auto',
