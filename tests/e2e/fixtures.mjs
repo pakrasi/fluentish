@@ -158,6 +158,13 @@ const fixtures = {
       if (u.hostname === 'api.anthropic.com') {
         claude.calls.push(JSON.parse(req.postData() || '{}'));
         const next = claude.replies.shift();
+        // {delay: ms}: the answer comes this late (a slow reply he may stop or leave); a request the page gave up on
+        // meanwhile is not answered
+        if (next && next.delay) {
+          await new Promise(r => setTimeout(r, next.delay));
+          const body = typeof next.sse === 'string' ? next.sse : JSON.stringify({ type: 'error', error: { type: 'overloaded_error', message: 'e2e mock' } });
+          return route.fulfill({ status: typeof next.sse === 'string' ? 200 : 503, contentType: typeof next.sse === 'string' ? 'text/event-stream' : 'application/json', headers, body }).catch(() => {});
+        }
         // a streamed reply (conversation practice): {sse: '<the event stream>'} is answered as text/event-stream
         if (next && typeof next.sse === 'string') return route.fulfill({ status: 200, contentType: 'text/event-stream', headers, body: next.sse });
         if (next) return route.fulfill({ status: 200, contentType: 'application/json', headers, body: JSON.stringify(next) });
