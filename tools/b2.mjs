@@ -20,11 +20,12 @@
 //   - a German B2 item added in round 4 carries reviewedBy and reviewedAt (S10: the handle is model-2pass, not a person).
 //   - near misses (source.json `near`) are graded wrong by the app's grader; every accepted answer is graded right; no
 //     sticky-error detector fires on a model sentence (the same rules as tools/build-course.mjs).
-import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const { tokenize: tokenizeDe } = await import(pathToFileURL(path.join(path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'), 'src/lang/de/text.js')).href);
 export const DIR = path.join(ROOT, 'authoring/de/b2');
 const J = (/** @type {string} */ p) => JSON.parse(readFileSync(path.join(ROOT, p), 'utf8'));
 const out1 = (/** @type {any} */ d) => JSON.stringify(d, null, 1) + '\n';
@@ -35,6 +36,7 @@ export const FILES = {
   accept: 'content/igloo/chunks/accept_german.json',
   en: 'content/igloo/chunks/en.json',
   priority: 'content/igloo/chunks/priority_de.json',
+  read: 'content/read/de.json',
 };
 const PARTS = 'authoring/chunks/parts/german', ACCEPT = 'authoring/chunks/accept/german', SRC = 'authoring/chunks/src';
 const SRC_KEYS = ['id', 'chunk', 'category', 'pragmatic_function', 'register', 'natural_example', 'cefr_level'];
@@ -201,9 +203,35 @@ export function applyPhrases(bs = batches()) {
   return files;
 }
 
+/**
+ * Graded texts: every batch's `texts`, in readers@1 shape (C0), into content/read/de.json. The authoring shape keeps a
+ * sentence's German in `de` and may carry notes (type, spelling for old texts, a source's collection); readers@1 has
+ * `text`, the schema's fields only, `words` counted with the pack's tokenizer, and the review stamp per text. A bridge
+ * text ("B1+") is level B1 in readers@1; its id (read/de/b1p-…) keeps it apart.
+ * @param {ReturnType<typeof batches>} bs @param {(s: string) => any[]} tokenize
+ */
+export function applyTexts(bs, tokenize) {
+  /** @type {any[]} */ const texts = [];
+  for (const b of bs) {
+    const stamp = b.review ? { reviewedBy: b.review.reviewedBy, reviewedAt: b.review.reviewedAt } : null;
+    const reviewed = new Set((b.review && b.review.ids) || []);
+    for (const t of b.source.texts || []) {
+      const sections = t.sections.map((/** @type {any} */ x) => ({ id: x.id, ...(x.title ? { title: x.title } : {}),
+        sentences: x.sentences.map((/** @type {any} */ y) => ({ id: y.id, text: y.de ?? y.text, en: y.en ?? null })) }));
+      const body = sections.flatMap(x => x.sentences.map(y => y.text)).join(' ').replace(/\s+/g, ' ').trim();
+      const src = t.source ? { author: t.source.author, work: t.source.work, ...(t.source.year ? { year: t.source.year } : {}), ...(t.source.url ? { url: t.source.url } : {}) } : null;
+      texts.push({ id: t.id, level: t.level === 'B1+' ? 'B1' : t.level, ...(t.dom ? { dom: t.dom } : {}), title: t.title, licence: t.licence, source: src,
+        words: tokenize(body).length, sections, targets: t.targets,
+        questions: t.questions.map((/** @type {any} */ q) => ({ id: q.id, type: q.type, skill: q.skill, q: q.q, options: q.options, answer: q.answer, evidence: q.evidence })),
+        ...(stamp && reviewed.has(t.id) ? stamp : {}) });
+    }
+  }
+  return texts.length ? { [FILES.read]: JSON.stringify({ lang: 'de', texts }, null, 1) + '\n' } : {};
+}
+
 /** Every batch applied, as {path: text}. */
 export function applyAll(bs = batches()) {
-  return { ...applyGrammar(bs), ...applyPhrases(bs) };
+  return { ...applyGrammar(bs), ...applyPhrases(bs), ...applyTexts(bs, tokenizeDe) };
 }
 
 /* ---------- machine gates ---------- */
@@ -350,6 +378,7 @@ export function stampErrors(bs = batches()) {
     const ids = new Set(b.review.ids || []);
     for (const x of b.source.items || []) if (!ids.has(`G:${x.id}`)) out.push(`${b.name}: G:${x.id} is not in REVIEW.json ids`);
     for (const id of Object.keys(b.source.phrases || {})) if (!ids.has(`K:${id}`)) out.push(`${b.name}: K:${id} is not in REVIEW.json ids`);
+    for (const t of b.source.texts || []) if (!ids.has(t.id)) out.push(`${b.name}: ${t.id} is not in REVIEW.json ids`);
   }
   for (const x of J(FILES.items)) if (x.layer === 'b2' && !x.reviewedBy) out.push(`G:${x.id}: a B2-layer item without reviewedBy`);
   for (const [id, c] of Object.entries(J(FILES.german).chunks)) if (/** @type {any} */ (c).layer === 'b2' && !/** @type {any} */ (c).reviewedBy) out.push(`K:${id}: a B2-layer phrase without reviewedBy`);
@@ -429,13 +458,13 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.a
   const cmd = process.argv[2] || 'check';
   if (cmd === 'apply') {
     for (const [p, text] of Object.entries(applyAll())) {
-      const cur = readFileSync(path.join(ROOT, p), 'utf8');
-      if (cur !== text) { writeFileSync(path.join(ROOT, p), text); console.log(`wrote ${p}`); }
+      const cur = existsSync(path.join(ROOT, p)) ? readFileSync(path.join(ROOT, p), 'utf8') : null;
+      if (cur !== text) { mkdirSync(path.dirname(path.join(ROOT, p)), { recursive: true }); writeFileSync(path.join(ROOT, p), text); console.log(`wrote ${p}`); }
     }
   } else if (cmd === 'check' || cmd === 'gates') {
     const errs = [];
     if (cmd === 'check') {
-      for (const [p, text] of Object.entries(applyAll())) if (readFileSync(path.join(ROOT, p), 'utf8') !== text) errs.push(`${p} is out of date: run node tools/b2.mjs apply`);
+      for (const [p, text] of Object.entries(applyAll())) if (!existsSync(path.join(ROOT, p)) || readFileSync(path.join(ROOT, p), 'utf8') !== text) errs.push(`${p} is out of date: run node tools/b2.mjs apply`);
       errs.push(...stampErrors());
     }
     // gates <batch>: one batch of authoring/de/b2; gates <path/source.json>: a draft outside the repo, on top of them
