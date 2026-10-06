@@ -81,12 +81,20 @@ class Ctx:
                     (self.nouns if w.get("pos") == "noun" and t[:1].isupper() else lower).add(t if w.get("pos") == "noun" else t.lower())
         # words seen in lowercase mid-sentence in Igloo's German (glaube, essen, leben): never flagged as nouns
         texts = [w.get("ex") or "" for w in words]
-        texts += [c.get("ex") or "" for c in (load_json(ROOT / "content/igloo/chunks/german.json", {}) or {}).get("chunks", {}).values()]
+        chunks = (load_json(ROOT / "content/igloo/chunks/german.json", {}) or {}).get("chunks", {}).values()
+        texts += [c.get("ex") or "" for c in chunks if c.get("layer") != "b2"]
+        b2 = [c.get("ex") or "" for c in chunks if c.get("layer") == "b2"]
         for g in self.gitems.values():
-            texts += g["answer"] if isinstance(g["answer"], list) else [g["answer"]]
+            (b2 if g.get("layer") == "b2" else texts).extend(g["answer"] if isinstance(g["answer"], list) else [g["answer"]])
         for t in texts:
             for sent in re.split(r"(?<=[.!?:])\s+", t):
                 lower |= {w for w in re.findall(r"[a-zäöüß]+", sent[1:])}
+        # the B2 layer (round 4) adds whole lower-case words after the first only: the scan above also takes the tail of
+        # a capitalised word (Wende gives "ende", a one-word answer "werde" gives "erde"), and the B1 noun list is
+        # built on it as it is
+        for t in b2:
+            for sent in re.split(r"(?<=[.!?:])\s+", t):
+                lower |= {w for w in re.findall(r"[\wäöüß]+", sent)[1:] if re.fullmatch(r"[a-zäöüß]+", w)}
         self.lower_ok = lower
         self.cheat = load_json(ROOT / "authoring/b1-cheatsheet-rows.json", [])
         prev = load_json(ROOT / "content/b1/items.json", [])
