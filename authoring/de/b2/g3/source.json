@@ -1703,7 +1703,8 @@
    "task": "Join the two sentences with „selbst wenn“. Start with „Selbst wenn“.",
    "prompt": "Er hätte sich entschuldigt. Ich hätte ihm nicht verziehen.",
    "answer": [
-    "Selbst wenn er sich entschuldigt hätte, hätte ich ihm nicht verziehen."
+    "Selbst wenn er sich entschuldigt hätte, hätte ich ihm nicht verziehen.",
+    "Selbst wenn er sich entschuldigt hätte, ich hätte ihm nicht verziehen."
    ],
    "note": "Past unreal in both parts; hätte last in the clause, first after it.",
    "strict_case": false,
@@ -2636,7 +2637,7 @@
     "Neues"
    ],
    "note": "etwas + noun from an adjective: -es, capital letter.",
-   "strict_case": false,
+   "strict_case": true,
    "near": [
     [
      "Neue",
@@ -2658,12 +2659,12 @@
    "level": "B2",
    "kind": "gap",
    "task": "Write the adjective as a noun with the right ending.",
-   "prompt": "Im Fernsehen kommt heute nichts ___. (besonders)",
+   "prompt": "Im Fernsehen kommt heute nichts ___. (besondere)",
    "answer": [
     "Besonderes"
    ],
    "note": "nichts + noun from an adjective: -es, capital letter.",
-   "strict_case": false,
+   "strict_case": true,
    "near": [
     [
      "Besondere",
@@ -2690,7 +2691,7 @@
     "Gute"
    ],
    "note": "alles + weak ending: -e (but etwas/nichts/viel + -es).",
-   "strict_case": false,
+   "strict_case": true,
    "near": [
     [
      "Gutes",
@@ -4292,7 +4293,8 @@
    "task": "Rewrite with „weil“. Start with „Weil“.",
    "prompt": "Wegen der hohen Mieten ziehen viele Familien aufs Land.",
    "answer": [
-    "Weil die Mieten hoch sind, ziehen viele Familien aufs Land."
+    "Weil die Mieten hoch sind, ziehen viele Familien aufs Land.",
+    "Weil die Mieten so hoch sind, ziehen viele Familien aufs Land."
    ],
    "note": "wegen + noun → weil + clause with the verb last.",
    "strict_case": false,

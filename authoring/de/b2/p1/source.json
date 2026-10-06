@@ -3243,18 +3243,18 @@
   },
   "ENG_CHUNK_1548": {
    "en": {
-    "chunk": "The fact remains that [clause]",
+    "chunk": "It should be noted that [clause] (summing up)",
     "category": "sentence_frame",
     "pragmatic_function": "Stating what remains true after discussion",
     "register": "formal",
-    "natural_example": "The fact remains that most people still drive to work.",
+    "natural_example": "In the end, it should be noted that most people still drive to work.",
     "cefr_level": "B2",
     "level": "B2",
     "level_reason": "formal sein + zu + Infinitiv"
    },
    "t": "Es bleibt festzuhalten, dass [Satz]",
    "ex": "Es bleibt festzuhalten, dass die meisten Menschen immer noch mit dem Auto zur Arbeit fahren.",
-   "core_en": "The fact remains that",
+   "core_en": "it should be noted that",
    "accept": [
     "es bleibt festzuhalten (dass)",
     "festzuhalten bleibt (dass)",

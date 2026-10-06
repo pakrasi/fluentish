@@ -7690,7 +7690,9 @@
    "Je mehr ich darüber lese, desto weniger verstehe ich das.",
    "Je mehr ich darüber lese, umso weniger verstehe ich das.",
    "Je mehr ich darüber lese, desto weniger verstehe ich davon.",
-   "Je mehr ich darüber lese, umso weniger verstehe ich davon."
+   "Je mehr ich darüber lese, umso weniger verstehe ich davon.",
+   "Je mehr ich darüber lese, desto weniger verstehe ich.",
+   "Je mehr ich darüber lese, umso weniger verstehe ich."
   ],
   "note": "mehr / weniger are the comparatives of viel / wenig.",
   "strict_case": false,
@@ -8388,7 +8390,11 @@
    "Wenn ich das gewusst hätte, wäre ich gekommen.",
    "Hätte ich das gewusst, wäre ich gekommen.",
    "Wenn ich das gewusst hätte, dann wäre ich gekommen.",
-   "Hätte ich das gewusst, dann wäre ich gekommen."
+   "Hätte ich das gewusst, dann wäre ich gekommen.",
+   "Wenn ich es gewusst hätte, wäre ich gekommen.",
+   "Hätte ich es gewusst, wäre ich gekommen.",
+   "Wenn ich es gewusst hätte, dann wäre ich gekommen.",
+   "Hätte ich es gewusst, dann wäre ich gekommen."
   ],
   "note": "hätte gewusst, wäre gekommen.",
   "strict_case": false,
@@ -9280,7 +9286,11 @@
    "Die Besprechung musste abgesagt werden.",
    "Das Meeting musste abgesagt werden.",
    "Die Sitzung musste abgesagt werden.",
-   "Das Treffen musste abgesagt werden."
+   "Das Treffen musste abgesagt werden.",
+   "Die Besprechung hat abgesagt werden müssen.",
+   "Das Meeting hat abgesagt werden müssen.",
+   "Die Sitzung hat abgesagt werden müssen.",
+   "Das Treffen hat abgesagt werden müssen."
   ],
   "note": "Past: musste + Partizip II + werden.",
   "strict_case": false,
@@ -13436,7 +13446,8 @@
   "task": "Join the two sentences with „selbst wenn“. Start with „Selbst wenn“.",
   "prompt": "Er hätte sich entschuldigt. Ich hätte ihm nicht verziehen.",
   "answer": [
-   "Selbst wenn er sich entschuldigt hätte, hätte ich ihm nicht verziehen."
+   "Selbst wenn er sich entschuldigt hätte, hätte ich ihm nicht verziehen.",
+   "Selbst wenn er sich entschuldigt hätte, ich hätte ihm nicht verziehen."
   ],
   "note": "Past unreal in both parts; hätte last in the clause, first after it.",
   "strict_case": false,
@@ -14011,7 +14022,7 @@
    "Neues"
   ],
   "note": "etwas + noun from an adjective: -es, capital letter.",
-  "strict_case": false,
+  "strict_case": true,
   "layer": "b2",
   "reviewedBy": "model-2pass",
   "reviewedAt": "2026-10-05"
@@ -14022,12 +14033,12 @@
   "level": "B2",
   "kind": "gap",
   "task": "Write the adjective as a noun with the right ending.",
-  "prompt": "Im Fernsehen kommt heute nichts ___. (besonders)",
+  "prompt": "Im Fernsehen kommt heute nichts ___. (besondere)",
   "answer": [
    "Besonderes"
   ],
   "note": "nichts + noun from an adjective: -es, capital letter.",
-  "strict_case": false,
+  "strict_case": true,
   "layer": "b2",
   "reviewedBy": "model-2pass",
   "reviewedAt": "2026-10-05"
@@ -14043,7 +14054,7 @@
    "Gute"
   ],
   "note": "alles + weak ending: -e (but etwas/nichts/viel + -es).",
-  "strict_case": false,
+  "strict_case": true,
   "layer": "b2",
   "reviewedBy": "model-2pass",
   "reviewedAt": "2026-10-05"
@@ -15048,7 +15059,8 @@
   "task": "Rewrite with „weil“. Start with „Weil“.",
   "prompt": "Wegen der hohen Mieten ziehen viele Familien aufs Land.",
   "answer": [
-   "Weil die Mieten hoch sind, ziehen viele Familien aufs Land."
+   "Weil die Mieten hoch sind, ziehen viele Familien aufs Land.",
+   "Weil die Mieten so hoch sind, ziehen viele Familien aufs Land."
   ],
   "note": "wegen + noun → weil + clause with the verb last.",
   "strict_case": false,

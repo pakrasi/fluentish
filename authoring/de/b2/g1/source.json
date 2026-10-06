@@ -326,7 +326,9 @@
     "Je mehr ich darüber lese, desto weniger verstehe ich das.",
     "Je mehr ich darüber lese, umso weniger verstehe ich das.",
     "Je mehr ich darüber lese, desto weniger verstehe ich davon.",
-    "Je mehr ich darüber lese, umso weniger verstehe ich davon."
+    "Je mehr ich darüber lese, umso weniger verstehe ich davon.",
+    "Je mehr ich darüber lese, desto weniger verstehe ich.",
+    "Je mehr ich darüber lese, umso weniger verstehe ich."
    ],
    "note": "mehr / weniger are the comparatives of viel / wenig.",
    "strict_case": false,
@@ -1051,7 +1053,11 @@
     "Die Besprechung musste abgesagt werden.",
     "Das Meeting musste abgesagt werden.",
     "Die Sitzung musste abgesagt werden.",
-    "Das Treffen musste abgesagt werden."
+    "Das Treffen musste abgesagt werden.",
+    "Die Besprechung hat abgesagt werden müssen.",
+    "Das Meeting hat abgesagt werden müssen.",
+    "Die Sitzung hat abgesagt werden müssen.",
+    "Das Treffen hat abgesagt werden müssen."
    ],
    "note": "Past: musste + Partizip II + werden.",
    "strict_case": false,
@@ -1509,7 +1515,11 @@
     "Wenn ich das gewusst hätte, wäre ich gekommen.",
     "Hätte ich das gewusst, wäre ich gekommen.",
     "Wenn ich das gewusst hätte, dann wäre ich gekommen.",
-    "Hätte ich das gewusst, dann wäre ich gekommen."
+    "Hätte ich das gewusst, dann wäre ich gekommen.",
+    "Wenn ich es gewusst hätte, wäre ich gekommen.",
+    "Hätte ich es gewusst, wäre ich gekommen.",
+    "Wenn ich es gewusst hätte, dann wäre ich gekommen.",
+    "Hätte ich es gewusst, dann wäre ich gekommen."
    ],
    "note": "hätte gewusst, wäre gekommen.",
    "strict_case": false,
