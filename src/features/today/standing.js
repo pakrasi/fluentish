@@ -7,10 +7,17 @@
    (the pool, the knowledge score, the map) fill in when they are loaded. */
 import { h } from '../../core/dom.js';
 import { section } from '../../core/ui.js';
+import { icon } from '../../core/icons.js';
+import { disclose, fill as fillTo } from '../../core/motion.js';
 import { label, diff } from '../../core/clock.js';
 import { modulesStanding, weakest, week, knownOf } from '../../domain/standing.js';
 import { loadKnowledge, knowledgeDecks } from '../../data/knowledge.js';
 import { scopeItem } from '../../domain/itemids.js';
+import { at } from '../../domain/progress.js';
+import { add as addDays } from '../../domain/days.js';
+import { recorded } from '../../data/progress.js';
+import { activeCourse } from '../../data/settings.js';
+
 
 const AHEAD = new Set(['week', 'lastNew', 'eve']);
 const nf = new Intl.NumberFormat('en-GB');
@@ -43,28 +50,62 @@ export function nextActions(plan, ms, t) {
  */
 export async function standingCounts(ctx, modules) {
   try {
-    const { loadData, wordsKnown } = await import('../shared/data.js');
+    const { loadData } = await import('../shared/data.js');
     // the pool first: loading it runs Igloo's placement import once, so every count below sees its marks
     const data = await loadData(ctx);
     // a course in another language (C3b) has no map: its words and phrases known are its course's items, scoped by
     // its language (domain/itemids.js)
     const course = data.course || null;
-    const [k, mapWords] = await Promise.all([loadKnowledge(ctx), course ? null : wordsKnown(ctx)]);
+    const [k, map] = await Promise.all([loadKnowledge(ctx), course ? null : mapCounts(ctx)]);
+    const mapWords = map ? map.words : null;
     const get = (/** @type {string} */ id) => k.get(course ? scopeItem(course, k.maps.resolve(id, 'core') || id) : k.maps.resolve(id, 'b1') || id);
     const words = course ? knownOf(data.pool.map((/** @type {any} */ it) => it.id), get) : mapWords;
     const ms = modulesStanding({ modules, pool: data.pool, get });
     const c = ctx.clock.ctx();
     const decks = Object.fromEntries(knowledgeDecks(ctx.store).map(d => [d, ctx.store.cards(d) || {}]));   // the active course's
-    return { ms, words, week: week(decks, c.today, diff), known: knownOf };
+    return { ms, words, week: week(decks, c.today, diff), known: knownOf, levels: map ? withGain(map.levels, ctx.store, c.today) : null };
   } catch { return null; }
 }
 
 /**
+ * The map's items known, in all and by level, from one scoring pass (the count the map and Where you stand share);
+ * null for a course without a map. @param {any} ctx
+ */
+async function mapCounts(ctx) {
+  const { roundOf, ensurePlacement } = await import('../shared/data.js');
+  if (!roundOf(ctx).trainer) return null;
+  await ensurePlacement(ctx);
+  const { loadAtlas, scores, totals, byLevel } = await import('../../data/atlas.js');
+  /** @type {any} */ const A = await /** @type {Promise<any>} */ (loadAtlas(ctx)).catch(() => null);
+  if (!A) return null;
+  const K = await scores(ctx, A);
+  return { words: totals(A, K), levels: byLevel(A, K) };
+}
+
+/**
+ * Each level's gain over the last 4 weeks, from the progress log (the record of 28 days ago or the latest before it;
+ * none while the log is younger). @param {{level: string, k: number, n: number}[]} levels @param {any} store @param {string} today
+ */
+function withGain(levels, store, today) {
+  const course = activeCourse(store.get('settings'));
+  const then = course ? recorded(store, course.id).filter(([d]) => d <= addDays(today, -28)).pop() : null;
+  if (!then) return levels.map(x => ({ ...x, was: null }));
+  const r = then[1];
+  return levels.map(x => ({ ...x, was: at(r.known, 'w', x.level) + at(r.known, 'p', x.level) + at(r.known, 'g', x.level) }));
+}
+
+/**
  * The section. Returns the element and a fill(counts) for the counts that come later.
- * @param {{plan: any, c: any, t: (k: string, v?: any) => string, course?: boolean}} o  course: a course in another language
+ *   rows 'open' (an exam in its window, or up to 14 days after it): per module the latest mock score, the items known
+ *     and one next action, then words and phrases known (as before round 4).
+ *   rows 'folded' or 'none' (maintenance): words and phrases known as a figure, known by level (the accent is what
+ *     was learnt in the last 4 weeks, from the progress log), the level goal, and the mock results folded behind one
+ *     button ('folded') or left out ('none').
+ * @param {{plan: any, c: any, t: (k: string, v?: any) => string, course?: boolean, rows?: 'open' | 'folded' | 'none',
+ *   goal?: {level: string, month: string | null} | null, examName?: string}} o  course: a course in another language
  *   than German, whose words line counts its course's items and opens Practice (there is no map for it)
  */
-export function renderStanding({ plan, c, t, course = false }) {
+export function renderStanding({ plan, c, t, course = false, rows: mode = 'open', goal = null, examName = '' }) {
   const ahead = !!c.exam && AHEAD.has(c.phase);
   const ms0 = modulesStanding({ modules: plan.modules, pool: [], get: () => ({ state: 'unseen' }) });
   // one next action per module while there are study days left before the exam (not on the eve: reviews only)
@@ -83,29 +124,93 @@ export function renderStanding({ plan, c, t, course = false }) {
       h('p', { class: 'stand-meta' }, m.id === weak ? h('b', { class: 'stand-weak' }, t('stand.weakest')) : null, itemsEl[m.id]),
       act ? h('a', { class: 'btn btn-quiet pressable stand-act', href: act.href }, t('stand.next', { what: act.text })) : null);
   });
-  const wordsEl = h('span', { class: 'tnum' }, '…');
   const weekEl = h('p', { class: 'caption stand-week', hidden: true });
-  const sub = ahead ? t('stand.sub', { date: label(/** @type {string} */ (c.exam)) }) : c.phase === 'after' && c.exam ? t('stand.subAfter', { date: label(c.exam) }) : null;
+  const def = h('p', { class: 'caption stand-def' }, t('stand.def'));
+  // Today › Progress (L5): the long view from the progress log
+  const progress = () => h('a', { class: 'stand-words pressable', href: '#/today/progress' }, h('span', { class: 'row-title' }, t('pg.link')));
+  if (mode === 'open' || course) {
+    const wordsEl = h('span', { class: 'tnum' }, '…');
+    const sub = ahead ? t('stand.sub', { date: label(/** @type {string} */ (c.exam)) }) : c.phase === 'after' && c.exam ? t('stand.subAfter', { date: label(c.exam) }) : null;
+    const sec = section(t('stand.title'),
+      sub && mode === 'open' ? h('p', { class: 'caption section-sub' }, sub) : null,
+      rows.length && mode === 'open' ? h('ul', { class: 'mbars stand-list' }, rows) : null,
+      h('a', { class: 'stand-words pressable', href: course ? '#/practice' : '#/lookup/map' },
+        h('span', { class: 'row-title' }, t('stand.words')), h('span', { class: 'row-trail' }, wordsEl)),
+      weekEl, def, progress());
+    sec.classList.add('today-stand');
+    return {
+      el: sec,
+      /** @param {Awaited<ReturnType<typeof standingCounts>>} n */
+      fill(n) {
+        if (!n) { wordsEl.textContent = ''; return; }
+        fillItems(n);
+        wordsEl.textContent = n.words ? t('stand.wordsOf', { k: nf.format(n.words.known), n: nf.format(n.words.n) }) : '';
+        if (!ahead && (n.week.learnt || n.week.lapsed)) { weekEl.textContent = t('stand.week', { learnt: n.week.learnt, lapsed: n.week.lapsed }); weekEl.hidden = false; }
+      },
+    };
+  }
+  /** @param {any} n */
+  function fillItems(n) {
+    for (const m of n.ms) {
+      const el = itemsEl[m.id]; if (!el) continue;
+      el.textContent = m.items.n ? t(`stand.items.${m.id}`, { k: nf.format(m.items.known), n: nf.format(m.items.n) }) : t('stand.items.none');
+    }
+  }
+
+  // maintenance
+  const figure = h('span', { class: 'figure tnum-no' }, '…');
+  const ofEl = h('span', { class: 'label' });
+  const levelsEl = h('ul', { class: 'stand-levels', 'aria-label': t('stand.byLevel') });
+  const keyEl = h('p', { class: 'caption stand-key', hidden: true }, h('i', { class: 'stand-key-swatch', 'aria-hidden': 'true' }), t('stand.gainKey'));
+  const goalShare = h('p', { class: 'caption' });
+  const goalCard = goal ? h('div', { class: 'stand-goal' },
+    h('p', { class: 'label' }, goal.month ? t('stand.goalBy', { level: goal.level, month: goal.month }) : t('stand.goal', { level: goal.level })),
+    goalShare,
+    h('p', { class: 'caption' }, t('stand.goalNoEstimate'))) : null;
+  /** @type {HTMLElement | null} */ let mocks = null;
+  if (mode === 'folded' && rows.length) {
+    const panel = h('div', { class: 'reveal-answer stand-mocks-panel', id: 'stand-mocks' }, h('div', null, h('ul', { class: 'mbars stand-list' }, rows)));
+    panel.inert = true;
+    const btn = h('button', { type: 'button', class: 'stand-mocks-btn pressable', 'aria-expanded': 'false', 'aria-controls': 'stand-mocks',
+      onclick: () => disclose(btn, panel, btn.getAttribute('aria-expanded') !== 'true') },
+    h('span', { class: 'row-title' }, t('stand.mocks', { exam: examName })), icon('next', { size: 16 }));
+    mocks = h('div', { class: 'stand-mocks' }, btn, panel);
+  }
   const sec = section(t('stand.title'),
-    sub ? h('p', { class: 'caption section-sub' }, sub) : null,
-    rows.length ? h('ul', { class: 'mbars stand-list' }, rows) : null,
-    h('a', { class: 'stand-words pressable', href: course ? '#/practice' : '#/lookup/map' },
-      h('span', { class: 'row-title' }, t('stand.words')), h('span', { class: 'row-trail' }, wordsEl)),
+    h('a', { class: 'stand-figure pressable', href: '#/lookup/map' }, figure, ofEl),
     weekEl,
-    h('p', { class: 'caption stand-def' }, t('stand.def')),
-    h('a', { class: 'stand-words pressable', href: '#/today/progress' }, h('span', { class: 'row-title' }, t('pg.link'))));
-  sec.classList.add('today-stand');
+    levelsEl, keyEl,
+    goalCard,
+    mocks,
+    def, progress());
+  sec.classList.add('today-stand', 'is-calm');
   return {
     el: sec,
     /** @param {Awaited<ReturnType<typeof standingCounts>>} n */
     fill(n) {
-      if (!n) { wordsEl.textContent = ''; return; }
-      for (const m of n.ms) {
-        const el = itemsEl[m.id]; if (!el) continue;
-        el.textContent = m.items.n ? t(`stand.items.${m.id}`, { k: nf.format(m.items.known), n: nf.format(m.items.n) }) : t('stand.items.none');
+      if (!n) { figure.textContent = ''; return; }
+      fillItems(n);
+      if (n.words) { figure.textContent = nf.format(n.words.known); ofEl.textContent = t('stand.knownOf', { n: nf.format(n.words.n) }); } else figure.textContent = '';
+      if (n.week.learnt || n.week.lapsed) { weekEl.textContent = t('stand.week', { learnt: n.week.learnt, lapsed: n.week.lapsed }); weekEl.hidden = false; }
+      const levels = n.levels || [];
+      let gained = false;
+      levelsEl.replaceChildren(...levels.map(x => {
+        const gain = x.was != null && x.k > x.was ? x.k - x.was : 0;
+        if (gain) gained = true;
+        const base = (x.k - gain) / x.n, add = gain / x.n;
+        return h('li', { class: 'stand-level', 'aria-label': gain ? t('stand.levelGain', { level: x.level, k: nf.format(x.k), n: nf.format(x.n), d: nf.format(gain) }) : t('stand.levelAria', { level: x.level, k: nf.format(x.k), n: nf.format(x.n) }) },
+          h('span', { class: 'stand-level-name', 'aria-hidden': 'true' }, x.level),
+          h('span', { class: 'track lv-track', 'aria-hidden': 'true' },
+            h('span', { class: 'fill lv-known', dataset: { p: String(base) } }),
+            gain ? h('span', { class: 'lv-gain', style: { insetInlineStart: `${base * 100}%`, width: `${add * 100}%` } }) : null),
+          h('span', { class: 'caption tnum', 'aria-hidden': 'true' }, t('stand.level', { k: nf.format(x.k), n: nf.format(x.n) })));
+      }));
+      keyEl.hidden = !gained;
+      for (const f of levelsEl.querySelectorAll('.lv-known')) fillTo(/** @type {HTMLElement} */ (f), Number(/** @type {HTMLElement} */ (f).dataset.p));
+      if (goal) {
+        const x = levels.find(l => l.level === goal.level);
+        goalShare.textContent = x ? t('stand.goalShare', { p: Math.round((x.k / x.n) * 100), level: goal.level, k: nf.format(x.k), n: nf.format(x.n) }) : '';
       }
-      wordsEl.textContent = n.words ? t('stand.wordsOf', { k: nf.format(n.words.known), n: nf.format(n.words.n) }) : '';
-      if (!ahead && (n.week.learnt || n.week.lapsed)) { weekEl.textContent = t('stand.week', { learnt: n.week.learnt, lapsed: n.week.lapsed }); weekEl.hidden = false; }
     },
   };
 }

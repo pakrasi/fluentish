@@ -6,20 +6,29 @@
    unfinished row. Every number comes from the one daily allowance (domain/allowance.js), the same as Practice's.
    Re-renders when the settings, cards, attempts or activity change. */
 import { h, replace } from '../../core/dom.js';
-import { label, parse, add, iso } from '../../core/clock.js';
+import { label, parse, add, iso, weekdayShort } from '../../core/clock.js';
 import { icon } from '../../core/icons.js';
 import { notice, section, nextId } from '../../core/ui.js';
-import { odometer, fill, reveal } from '../../core/motion.js';
-import { runway, studyDays, atmosphere } from '../../core/brand.js';
+import { odometer, fill, reveal, countTo, reduced } from '../../core/motion.js';
+import { runway, weekStrip, atmosphere } from '../../core/brand.js';
 import { composeDay } from '../day.js';
 import { summaryText } from '../../data/migrate.js';
-import { examDate } from '../../data/settings.js';
+import { examDate, activeCourse } from '../../data/settings.js';
 import { previewText } from '../../data/cutover.js';
 import { dueTomorrow } from '../../domain/allowance.js';
-import { dayAllowance, firstWeek } from '../../domain/allowance.js';
+import { dayAllowance, ANYWAY_KV, studyAnyway } from '../../domain/allowance.js';
+import { courseWeek } from '../../domain/week.js';
+import { courseGoal } from '../../domain/levels.js';
+import { fmtMin, weekDays, weekTotals, laterThisWeek, kindLine, whyLine, examRows } from './week.js';
 import { results } from '../../data/sync/index.js';
 import { config } from '../../core/config.js';
 import { renderStanding, standingCounts } from './standing.js';
+
+/** What the hero showed last (kept across visits to Today in one session): the week strip fills from it. */
+const shown = /** @type {{week: string | null, ratios: number[], done: number | null, kind: string | null, welcome: string | null}} */ ({ week: null, ratios: [], done: null, kind: null, welcome: null });
+const COUNTDOWN = new Set(['week', 'lastNew', 'eve', 'day']);
+/** "Wednesday" of a day. @param {string} d */
+const weekdayLong = d => new Intl.DateTimeFormat('en-GB', { weekday: 'long' }).format(parse(d));
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
 export async function mount(el, ctx) {
@@ -35,22 +44,28 @@ export async function mount(el, ctx) {
     const allow = dayAllowance({ store, c, settings: s });
 
     const examName = exam ? exam.short : t('exam.generic');
-    const hero = renderHero({ s, c, plan, activity, examName, lang, allow });
+    // an Off day in maintenance has no rows to start (Study anyway brings them)
+    const primary = !COUNTDOWN.has(c.phase) && allow.plan?.kind === 'off' ? null : plan.primary;
+    const hero = renderHero({ s, c, plan, activity, examName, lang, allow, primary });
     const feedbackSec = plan.feedback.length ? section(t('today.feedback'),
       h('ul', { class: 'list' }, plan.feedback.map(f => h('li', { class: 'list-item' },
         h('div', { class: 'row-main' }, h('span', { class: 'row-title' }, f.title), h('span', { class: 'row-detail' }, f.status)),
         f.action ? h('a', { class: 'btn pressable', href: f.href, 'aria-label': f.label || null }, f.action) : null))),
       plan.feedbackMore ? h('p', { class: 'caption more' }, t('today.feedbackMore', { n: plan.feedbackMore })) : null) : null;
-    const stand = s.language ? renderStanding({ plan, c, t, ...(s.language !== 'german' ? { course: true } : {}) }) : null;
+    const goalLevel = courseGoal(s).goal;
+    const goalBy = activeCourse(s)?.goal?.by || null;
+    const rows = examRows(c, (plan.modules || []).some((/** @type {any} */ m) => m.score != null));
+    const stand = s.language ? renderStanding({ plan, c, t, rows, examName, goal: goalLevel ? { level: goalLevel, month: goalBy ? monthLabel(goalBy) : null } : null,
+      ...(s.language !== 'german' ? { course: true } : {}) }) : null;
     const page = h('div', { class: 'today' },
       h('header', { class: 'page-head' }, h('h1', null, t('today.title')), h('p', { class: 'caption' }, label(c.today))),
       h('div', { class: 'today-grid' },
         h('div', { class: 'today-a' }, hero.el, phaseNotice(c), importNotice()),
         h('div', { class: 'today-b' }, feedbackSec, renderPlan(plan, c, allow)),
         stand ? h('div', { class: 'today-c' }, stand.el) : null),
-      plan.primary ? h('div', { class: 'dock' }, h('a', { class: 'btn btn-primary btn-wide pressable', href: fromToday(plan.primary.href) }, primaryLabel(plan.primary))) : null);
+      primary ? h('div', { class: 'dock' }, h('a', { class: 'btn btn-primary btn-wide pressable', href: fromToday(primary.href) }, primaryLabel(primary))) : null);
     replace(el, page);
-    page.classList.toggle('has-dock', !!plan.primary);
+    page.classList.toggle('has-dock', !!primary);
     hero.after();
     if (stand) standingCounts(ctx, plan.modules).then(n => { if (alive && my === gen) stand.fill(n); });
     reveal(page);
@@ -61,11 +76,11 @@ export async function mount(el, ctx) {
   }
 
   /** @param {any} o */
-  function renderHero({ s, c, plan, activity, examName, lang, allow }) {
+  function renderHero({ s, c, plan, activity, examName, lang, allow, primary }) {
     const countdown = c.phase === 'week' || c.phase === 'lastNew' || c.phase === 'eve' || c.phase === 'day';
     const minutesLine = c.phase === 'day' ? h('p', { class: 'label' }, t('today.warmupOnly'))
       : h('p', { class: 'label' }, h('b', { class: 'tnum ink' }, String(Math.round(plan.minutes.done))), ' ', t('today.minutesOf', { n: s.minutesPerDay }));
-    const heroBtn = plan.primary ? h('a', { class: 'btn btn-primary pressable hero-btn', href: fromToday(plan.primary.href) }, primaryLabel(plan.primary)) : null;
+    const heroBtn = primary ? h('a', { class: 'btn btn-primary pressable hero-btn', href: fromToday(primary.href) }, primaryLabel(primary)) : null;
     const atmoEl = h('div', { class: 'atmo', 'aria-hidden': 'true' });
     if (countdown) {
       const num = h('span', { class: 'numeral' }, String(c.daysLeft));
@@ -95,37 +110,71 @@ export async function mount(el, ctx) {
         },
       };
     }
-    // no date, or after the exam: today's reviews from every deck are the number (Practice shows the same), new items
-    // for a learner with no reviews yet; the last 28 days below it once he has studied for a week
+    // no exam ahead in its window (maintenance): today's reviews from every deck are the number (Practice shows the
+    // same), new items for a learner with no reviews yet; under it this week's strip (planned and done minutes per
+    // day) and, with a week plan, the kind of day. There is no count of days in a row: a missed day costs only the
+    // reviews it carried, and the week is the measure.
     const fresh = !allow.reviews.due && !Object.keys(store.cards('b1')).length;
     const value = fresh ? allow.newLeft : allow.reviews.due;
     const num = h('span', { class: 'numeral' }, String(value));
-    const daysEl = h('div', { class: 'days' });
-    const lead = c.phase === 'after'
-      ? t('today.examWas', { exam: examName, date: label(/** @type {string} */ (c.exam)) })
-      : [lang ? lang.name : null, s.level].filter(Boolean).join(' · ') || t('today.noGoal');
-    const studied = Object.values(activity).some((/** @type {any} */ a) => (a?.minutes || 0) > 0) && !firstWeek(store, c.today, s);
-    const runText = h('p', { class: 'caption hero-date' });
+    const goal = courseGoal(s);
+    const by = activeCourse(s)?.goal?.by || null;
+    const name = lang ? lang.name : null;
+    const recentExam = c.phase === 'after' && c.exam && examRows(c, true) === 'open';
+    const lead = recentExam ? t('today.examWas', { exam: examName, date: label(/** @type {string} */ (c.exam)) })
+      : name && goal.goal ? t(by ? 'today.leadGoalBy' : 'today.leadGoal', { lang: name, level: goal.goal, month: monthLabel(by) })
+        : [name, s.level].filter(Boolean).join(' · ') || t('today.noGoal');
+    const anyway = studyAnyway(store, c);
+    const days = weekDays({ settings: s, today: c.today, activity, anyway });
+    const tot = weekTotals(days);
+    const hasWeek = !!courseWeek(s);
+    const stripEl = h('div', { class: 'runway' });
+    const kl = kindLine(allow.plan, { anyway });
+    const kindEl = kl ? h('p', { class: 'label hero-kind', dataset: { kind: allow.plan.kind } }, t(kl.key, kl.vars && kl.vars.kind ? { kind: t(`week.kind.${kl.vars.kind}`) } : kl.vars)) : null;
+    const off = allow.plan?.kind === 'off';
+    const todayLine = off ? null : h('p', { class: 'label' }, h('b', { class: 'tnum ink' }, String(Math.round(plan.minutes.done))), ' ', t('today.minutesOf', { n: plan.minutes.budget }));
+    const doneEl = h('b', { class: 'tnum' }, fmtMin(t, tot.done));
+    const weekLine = h('div', { class: 'hero-weekline' },
+      h('p', { class: 'label' }, ...(tot.plan ? splitAround(t('today.week.of', { done: '\u0000', plan: fmtMin(t, tot.plan) }), doneEl) : splitAround(t('today.week.done', { done: '\u0000' }), doneEl))),
+      h('a', { class: 'caption hero-edit-week', href: '#/profile/week' }, hasWeek ? t('today.week.edit') : t('today.week.set')));
     const el = h('section', { class: 'hero today-hero', 'aria-label': t('today.summary') }, atmoEl,
       h('p', { class: 'label' }, lead),
       h('div', { class: 'hero-count' }, num, h('span', { class: 'unit' }, fresh ? t('unit.newToday') : t('unit.due'))),
       fresh ? null : h('p', { class: 'caption hero-def' }, t('today.dueAll')),
-      studied ? runText : null,
-      studied ? h('div', { class: 'hero-days' }, daysEl) : null,
-      h('div', { class: 'hero-foot' }, minutesLine, heroBtn));
+      fresh ? null : h('div', { class: 'hero-week' }, stripEl),
+      fresh ? null : weekLine,
+      kindEl,
+      h('div', { class: 'hero-foot' }, todayLine, heroBtn));
     return {
       el,
       after() {
-        if (studied) {
-          const hist = Array.from({ length: 28 }, (_, i) => (activity[add(c.today, i - 27)]?.minutes || 0) > 0);
-          const run = studyDays(daysEl, hist);
-          const n = hist.filter(Boolean).length;
-          runText.textContent = run >= 2 ? `${t('today.studied', { n })} ${t('today.inARow', { n: run })}` : t('today.studied', { n });
+        if (!fresh) {
+          const cols = days.map(d => {
+            const dayName = label(d.day);
+            const text = d.plan ? t('today.week.day', { day: dayName, kind: t(`week.kind.${d.kind === 'off' ? 'n' : d.kind}`), done: d.done, plan: d.plan })
+              : d.done ? t('today.week.dayOffDone', { day: dayName, done: d.done }) : t('today.week.dayOff', { day: dayName });
+            return { label: weekdayShort(d.day), sub: d.kind === 'n' || !hasWeek ? '' : t(`week.kind.${d.kind}`), plan: d.plan, done: d.done, today: d.today, aria: d.today ? t('today.week.today', { text }) : text };
+          });
+          // the columns fill from what was shown last time (back from a round, only the round's minutes fill)
+          const key = days[0].day;
+          const from = shown.week === key ? shown.ratios : [];
+          shown.week = key; shown.ratios = weekStrip(stripEl, cols, { from });
+          const prev = shown.done;
+          shown.done = tot.done;
+          countTo(doneEl, tot.done, /** @type {any} */ ({ from: prev ?? tot.done, duration: 600, format: (/** @type {number} */ n) => fmtMin(t, n) }));
         }
+        // the kind of day crosses over when it changes ("Study anyway")
+        if (kindEl && shown.kind && shown.kind !== kindEl.textContent && !reduced()) kindEl.classList.add('is-new');
+        shown.kind = kindEl ? kindEl.textContent : null;
         odometer(num, value, { label: fresh ? t('today.newLabel', { n: value }) : t('today.dueLabel', { n: value }) });
       },
     };
   }
+
+  /** 'YYYY-MM' as "June 2027". @param {string | null} m */
+  const monthLabel = m => (m ? new Intl.DateTimeFormat('en-GB', { month: 'long', year: 'numeric' }).format(parse(`${m}-01`)) : '');
+  /** A string with one placeholder (U+0000) around an element. @param {string} text @param {HTMLElement} node */
+  const splitAround = (text, node) => { const [a, b = ''] = text.split('\u0000'); return [a, node, b].filter(x => x !== ''); };
 
   /** A round started here comes back here when it ends. @param {string} href */
   const fromToday = href => (href.startsWith('#/practice/round') ? `${href}${href.includes('?') ? '&' : '?'}from=today` : href);
@@ -177,6 +226,29 @@ export async function mount(el, ctx) {
 
   /** @param {any} plan @param {any} c @param {any} allow the day's allowance */
   function renderPlan(plan, c, allow) {
+    const s = ctx.settings();
+    const calm = !COUNTDOWN.has(/** @type {string} */ (c.phase));
+    // with a week plan in maintenance: the days still to come this week (Things' short list)
+    const later = calm && courseWeek(s) ? laterThisWeek(weekDays({ settings: s, today: c.today, activity: store.get('activity', {}) || {} })) : [];
+    const laterEl = later.length ? h('div', { class: 'plan-later' }, h('h3', { class: 'label' }, t('today.next')),
+      h('ul', { class: 'list' }, later.map(d => h('li', { class: 'plan-later-row' },
+        h('span', { class: 'plan-later-day' }, weekdayLong(d.day)),
+        h('span', { class: 'caption' }, d.plan ? t('today.next.day', { kind: d.as === 'n' ? t('today.next.normal') : t(`week.day.${d.as}`), min: d.plan }) : t('today.next.off')))))) : null;
+    // an Off day: no rows; the reviews wait for tomorrow, and "Study anyway" makes today a normal day
+    if (calm && allow.plan && allow.plan.kind === 'off') {
+      const due = allow.reviews.due;
+      return section(t('today.plan'),
+        h('div', { class: 'plan-off' },
+          h('p', null, due ? t('week.why.off', { n: due }) : t('today.offNone')),
+          h('button', { type: 'button', class: 'btn pressable', onclick: () => { store.set(ANYWAY_KV, { day: c.today }); rerender(); } }, t('week.studyAnyway'))),
+        laterEl);
+    }
+    const why = calm ? whyLine(allow.plan, allow.reviews.due) : null;
+    const whyEl = !why ? null : why.welcome
+      ? notice({ children: [h('p', { class: 'notice-title' }, t('today.welcome')), h('p', null, t(why.key, why.vars))] })
+      : h('p', { class: 'caption plan-note plan-why' }, t(why.key, why.vars));
+    // "Welcome back" rises in once a day; reduced motion shows it in place
+    if (why?.welcome && whyEl && shown.welcome !== c.today) { shown.welcome = c.today; if (!reduced()) whyEl.classList.add('fx-rise'); }
     const work = plan.rows.filter(r => r.kind !== 'setup');
     const head = plan.state === 'done'
       ? h('p', { class: 'plan-done' }, icon('check', { size: 18 }), t('today.done', { n: dueTomorrow({ store, c, settings: ctx.settings(), exam: null, t }) }))
@@ -192,7 +264,7 @@ export async function mount(el, ctx) {
       ? h('p', { class: 'caption plan-note' }, t('today.paused', { date: label(c.exam) })) : null;
     return section(t('today.plan'),
       work.length ? h('p', { class: 'caption section-sub' }, sub) : null,
-      head, reviewsLine,
+      whyEl, head, reviewsLine,
       plan.rows.length ? h('ol', { class: 'plan' }, plan.rows.map(r => h('li', { class: ['plan-item', r.done && 'is-done', r.kind === 'setup' && 'is-setup'] },
         h('a', { class: 'plan-row pressable', href: fromToday(r.href) },
           h('span', { class: 'plan-state', 'aria-hidden': 'true' }, r.done ? icon('check', { size: 14 }) : r.kind === 'setup' ? icon('calendar', { size: 14 }) : null),
@@ -205,7 +277,7 @@ export async function mount(el, ctx) {
           h('span', { class: 'row-main' }, h('span', { class: 'row-title' }, r.title), r.detail ? h('span', { class: 'row-detail' }, r.detail) : null),
           r.minutes ? h('span', { class: 'row-trail tnum' }, t('unit.min', { n: r.minutes })) : h('span'),
           icon('next', { size: 16 })))))) : null,
-      paused);
+      paused, laterEl);
   }
 
   const rerender = () => { if (!pending) pending = render().finally(() => { pending = null; }); };

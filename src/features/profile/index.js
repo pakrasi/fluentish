@@ -1,22 +1,25 @@
 /* Profile: the one settings page, opened from the avatar (UX §4.11).
-   Courses (one per language; the active one is what Today and Practice are about) · Goal of the active course (with
-   the exam date: its single source) · Practice · Connections (Claude key, results sync device link) ·
-   Appearance (theme, motion) · Data (export, import, the import summary, delete) · Diagnostics.
-   #/profile/<section> scrolls to that section. */
+   Courses (one per language; the active one is what Today and Practice are about) · Goals and week of the active
+   course (its own page, #/profile/goal and #/profile/week: profile/goals.js; the exam date's single source) ·
+   Practice · Connections (Claude key, results sync device link) · Appearance (theme, motion) · Data (export, import,
+   the import summary, delete) · Diagnostics. #/profile/<section> scrolls to that section. */
 import { h, replace } from '../../core/dom.js';
 import { shareFile } from '../../services/share.js';
-import { label, windowStart } from '../../core/clock.js';
+import { label } from '../../core/clock.js';
 import { config } from '../../core/config.js';
 import { icon } from '../../core/icons.js';
-import { section, seg, field, switchRow, notice, avatar, nextId, chipChoice } from '../../core/ui.js';
+import { section, seg, field, switchRow, notice, avatar, nextId, linkRow } from '../../core/ui.js';
 import { entries as logEntries } from '../../core/log.js';
-import { setSetting, setExamDate, setCourse, setActiveCourse, addCourse, langCode, examDate, MODULES, defaultPrefs } from '../../data/settings.js';
+import { setSetting, setActiveCourse, addCourse, langCode, examDate, defaultPrefs } from '../../data/settings.js';
 import { summaryText } from '../../data/migrate.js';
 import { previewText } from '../../data/cutover.js';
 import { exportBundle, importFile } from '../../data/transfer.js';
 import { deleteProfile } from '../../data/session.js';
 import { results } from '../../data/sync/index.js';
 import { backupBlock } from './backup.js';
+import { goalsPage } from './goals.js';
+import { courseWeek, weekMinutes } from '../../domain/week.js';
+import { courseGoal } from '../../domain/levels.js';
 import { summary as progressSummary } from '../../data/progress.js';
 import { activeCourse } from '../../data/settings.js';
 import { newPerDayChosen, buildShare } from '../../domain/budget.js';
@@ -38,16 +41,21 @@ export async function mount(el, ctx) {
     if (cap) cap.textContent = goalLine(ctx.settings());
     if (key) /** @type {HTMLElement | null} */ (sec.querySelector(`[name="${CSS.escape(key)}"]`))?.focus();
   }
-  const renderGoal = () => { swapSection(goal(ctx.settings())); swapSection(courses(ctx.settings())); };
 
   function render() {
+    // Goals and week is its own page (#/profile/goal, #/profile/week scrolls to the week plan)
+    if (ctx.params.rest === 'goal' || ctx.params.rest === 'week') {
+      replace(el, goalsPage(ctx, { exams, languages, render }));
+      if (ctx.params.rest === 'week') requestAnimationFrame(() => document.getElementById('profile-week')?.scrollIntoView({ block: 'start' }));
+      return;
+    }
     const s = ctx.settings();
     const page = h('div', { class: 'profile stack' },
       h('header', { class: 'profile-head' },
         avatar(app.profile, ''),
         h('div', null, h('h1', null, t('profile.title')), h('p', { class: 'caption' }, goalLine(s)))),
       nameField(),
-      courses(s), goal(s), practice(s), connections(), appearance(), data(), diagnostics());
+      courses(s), goalRow(s), practice(s), connections(), appearance(), data(), diagnostics());
     replace(el, page);
     const target = ctx.params.rest;
     if (target) requestAnimationFrame(() => document.getElementById(`profile-${target}`)?.scrollIntoView({ block: 'start' }));
@@ -108,69 +116,23 @@ export async function mount(el, ctx) {
     return sec;
   }
 
-  /* ---------- goal ---------- */
+  /* ---------- goals and week: a row to its own page ---------- */
   /** @param {any} s */
-  function goal(s) {
-    const c = ctx.clock.ctx();
+  function goalRow(s) {
     const sec = section(t('profile.goal'));
-    sec.id = 'profile-goal';
-    const levelSeg = seg({ label: t('profile.level'), value: s.level || '', options: config.levels.map(l => [l, l]), onChange: v => { writeCourse({ level: v }); renderGoal(); } });
-    const examOptions = [...exams.filter((/** @type {any} */ x) => x.language === s.language).map((/** @type {any} */ x) => [x.id, x.name]), ['other', t('goal.exam.other')], ['', t('goal.exam.none')]];
-    const examSel = chipChoice({ label: t('goal.exam'), name: 'exam', value: s.exam.type || '', options: /** @type {any} */ (examOptions), onChange: v => {
-      writeCourse({ 'goal.exam': v || null });
-      if (!v && examDate(s)) setExamDate(appCtx(), null);
-      renderGoal();
-    } });
-    const dateInput = /** @type {HTMLInputElement} */ (h('input', { class: 'input', type: 'date', name: 'exam-date', value: examDate(s) || '', min: c.today }));
-    const dateField = field({ label: t('goal.date'), input: dateInput, hint: t('goal.date.hint') });
-    dateInput.addEventListener('change', () => {
-      const prev = examDate(s);
-      const r = setExamDate(appCtx(), dateInput.value || null);
-      if (!r.ok) { dateField.setError(t(/** @type {string} */ (r.error))); return; }
-      dateField.setError(null);
-      if (!prev && dateInput.value && !s.exam.type) writeCourse({ 'goal.exam': exams.find((/** @type {any} */ x) => x.language === s.language)?.id || 'other' });
-      // no toast: the derived line under the field is live and says what the new date changes
-      renderGoal();
-    });
-    const clearBtn = examDate(s) ? h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => { setExamDate(appCtx(), null); ctx.toast(t('goal.date.cleared')); renderGoal(); } }, t('goal.date.clear')) : null;
-    const isMock = exams.some((/** @type {any} */ x) => x.id === s.exam.type);
-    const modules = isMock ? h('div', { class: 'form-field' }, h('p', { class: 'field-label', id: 'mods-l' }, t('goal.modules')),
-      h('div', { class: 'chips', role: 'group', 'aria-labelledby': 'mods-l' }, MODULES.map(m => {
-        const def = exams.find((/** @type {any} */ x) => x.id === s.exam.type).modules.find((/** @type {any} */ x) => x.id === m);
-        const on = s.exam.modules.includes(m);
-        return h('button', { type: 'button', name: `module:${m}`, class: 'chip pressable', 'aria-pressed': String(on), onclick: () => {
-          const next = on ? s.exam.modules.filter((/** @type {string} */ x) => x !== m) : MODULES.filter(x => x === m || s.exam.modules.includes(x));
-          if (next.length) { write('exam.modules', next); renderGoal(); }
-        } }, def ? def.name : m);
-      }))) : null;
-    const minutes = h('div', { class: 'form-field' }, h('p', { class: 'field-label' }, t('goal.minutes')),
-      seg({ label: t('goal.minutes'), value: String(s.minutesPerDay), options: config.minutesOptions.map(n => [String(n), t('unit.min', { n })]), onChange: v => { write('minutesPerDay', Number(v)); renderGoal(); } }));
-    // the date first: it drives the countdown, the caps and the pacing
-    // (Element.append writes a null as the text "null": the fields a goal without an exam does not have are left out)
-    sec.append(...[
-      s.exam.type ? h('div', { class: 'date-row' }, dateField, clearBtn) : null,
-      h('p', { class: 'derived', 'aria-live': 'polite' }, derived(c)),
-      examSel,
-      modules, minutes,
-      h('div', { class: 'form-field' }, h('p', { class: 'field-label' }, t('profile.level')), levelSeg)].filter(x => x != null));
+    sec.id = 'profile-goals';
+    const g = courseGoal(s), week = courseWeek(s);
+    const exam = s.exam.type ? (exams.find((/** @type {any} */ x) => x.id === s.exam.type)?.short || (s.exam.type === 'other' ? t('goal.exam.other') : t(`goals.exam.short.${s.exam.type}`))) : null;
+    const date = examDate(s);
+    const detail = [g.goal ? t('goals.level.what', { level: g.goal }) : null, exam ? (date ? `${exam} ${label(date)}` : exam) : null,
+      week ? t('goals.time.week', { t: fmtWeek(weekMinutes(week)) }) : t('goals.time.day', { t: t('unit.min', { n: s.minutesPerDay }) })].filter(Boolean).join(' · ');
+    sec.append(h('ul', { class: 'list' }, h('li', null, linkRow({ href: '#/profile/goal', title: t('goals.row'), detail }))));
     return sec;
   }
-
-  /** What the date controls, restated under the field so a change shows at once (UX §4.11). @param {any} c */
-  function derived(c) {
-    // a date before its exam window: planned as without one until then (core/clock.js planPhase)
-    if (c.phase === 'none' && c.exam) return t('goal.derived.far', { n: c.daysLeft, start: label(windowStart(c.exam)) });
-    if (c.phase === 'none') return t('goal.derived.none');
-    if (c.phase === 'after') return t('goal.derived.after', { date: label(c.exam) });
-    if (c.phase === 'day') return t('goal.derived.day');
-    if (c.phase === 'eve') return t('goal.derived.eve');
-    if (c.phase === 'lastNew') return t('goal.derived.lastNew', { cap: label(c.capDay) });
-    return t('goal.derived.week', { n: c.daysLeft, lastNew: label(c.lastNewDay), cap: label(c.capDay) });
-  }
+  /** @param {number} n */
+  const fmtWeek = n => (n < 60 ? t('unit.min', { n }) : n % 60 ? t('unit.hm', { h: Math.floor(n / 60), m: String(n % 60).padStart(2, '0') }) : t('unit.h', { h: n / 60 }));
 
   const appCtx = () => ({ store, hlc: app.hlc, bus, clock: ctx.clock });
-  /** The goal fields belong to the active course: written through its one writer (data/settings.js setCourse). @param {Record<string, any>} patch */
-  const writeCourse = patch => { const id = ctx.settings().activeCourse; if (id) setCourse(appCtx(), id, patch); else for (const [k, v] of Object.entries(patch)) write(k === 'goal.exam' ? 'exam.type' : k, v); };
 
   /* ---------- practice ---------- */
   /** @param {any} s */

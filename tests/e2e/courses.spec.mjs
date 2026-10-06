@@ -49,6 +49,7 @@ test('Profile › Courses: the German course with its goal and minutes; French c
 test('the exam date set in Goal is the course\'s, and the plan follows it', async ({ page }) => {
   await seed(page, { examInDays: 30 });
   await open(page, '#/profile/goal');
+  await page.getByRole('button', { name: 'Move', exact: true }).click();   // Goals and week (round 4): the date is behind Move
   const input = page.locator('input[name="exam-date"]');
   const moved = await page.evaluate(() => { const d = new Date(); d.setDate(d.getDate() + 20); return d.toISOString().slice(0, 10); });
   await input.fill(moved);

@@ -207,17 +207,18 @@ export { expect };
  * A synthetic learner: one local profile, onboarded, German B1 with a Goethe B1 goal `examInDays` away, written into
  * IndexedDB through the app's own data layer (the stamped modules), before the app boots.
  * @param {import('@playwright/test').Page} page
- * @param {{examInDays?: number | null, examType?: string, level?: string, minutes?: number, token?: boolean, motion?: 'reduce' | 'full' | 'system', cards?: Record<string, Record<string, any>>, kv?: Record<string, any>, origin?: string, veteran?: boolean}} [o]
+ * @param {{examInDays?: number | null, examType?: string, level?: string, minutes?: number, token?: boolean, motion?: 'reduce' | 'full' | 'system', cards?: Record<string, Record<string, any>>, kv?: Record<string, any>, origin?: string, veteran?: boolean, week?: {min: number[], kind: string[]} | null, goalLevel?: string | null}} [o]
  *   examType: the exam goal (a date-only one such as 'goethe-b2' has no mocks); origin: another e2e server than the
  *   config's (the offline spec); veteran: he started studying a month ago (past
- *   the first week, whose plan is level-fit with few decks: domain/budget.js mode 'start')
+ *   the first week, whose plan is level-fit with few decks: domain/budget.js mode 'start'); week, goalLevel: the
+ *   course's week plan and level goal (round 4)
  */
-export async function seed(page, { examInDays = 60, examType = 'goethe-b1', level = 'B1', minutes = 60, token = false, motion = 'reduce', cards = {}, kv = {}, origin = '', veteran = false } = {}) {
+export async function seed(page, { examInDays = 60, examType = 'goethe-b1', level = 'B1', minutes = 60, token = false, motion = 'reduce', cards = {}, kv = {}, origin = '', veteran = false, week = null, goalLevel = null } = {}) {
   await leaveQuietly(page);
   await page.goto(`${origin}${APP}version.json`);
-  await page.evaluate(async ({ sha, examInDays, examType, level, minutes, token, fake, motion, cards, kv, veteran }) => {
+  await page.evaluate(async ({ sha, examInDays, examType, level, minutes, token, fake, motion, cards, kv, veteran, week, goalLevel }) => {
     const v = `/fluentish/v/${sha}/src/`;
-    const [{ createIdbAdapter }, { openSession }, { setSetting }, clockM] = await Promise.all([
+    const [{ createIdbAdapter }, { openSession }, { setSetting, setCourse }, clockM] = await Promise.all([
       import(v + 'data/adapters/idb.js'), import(v + 'data/session.js'), import(v + 'data/settings.js'), import(v + 'core/clock.js')]);
     const adapter = await createIdbAdapter();
     const clock = clockM.createClock({ exam: () => null, now: () => new Date() });
@@ -230,6 +231,8 @@ export async function seed(page, { examInDays = 60, examType = 'goethe-b1', leve
     setSetting(app, 'minutesPerDay', minutes);
     if (examInDays != null) setSetting(app, 'exam.date', clockM.add(clock.today(), examInDays));
     setSetting(app, 'onboarded', new Date().toISOString());
+    // round 4: a week plan and a level goal on the course (domain/week.js, data/settings.js setCourse)
+    if (week || goalLevel) setCourse(app, s.store.get('settings').activeCourse, { ...(week ? { week } : {}), ...(goalLevel ? { 'goal.level': goalLevel } : {}) });
     // motion off by default: the tests wait for content, not for animations (one spec turns it on)
     s.store.set('prefs', { theme: 'light', motion, locale: 'en' });
     if (token) s.store.set('secrets', { anthropicKey: null, githubToken: fake });
@@ -239,7 +242,7 @@ export async function seed(page, { examInDays = 60, examType = 'goethe-b1', leve
     await s.store.flush();
     s.store.close();
     adapter.close?.();
-  }, { sha: SHA, examInDays, examType, level, minutes, token, fake: FAKE_TOKEN, motion, cards, kv, veteran });
+  }, { sha: SHA, examInDays, examType, level, minutes, token, fake: FAKE_TOKEN, motion, cards, kv, veteran, week, goalLevel });
 }
 
 /**
