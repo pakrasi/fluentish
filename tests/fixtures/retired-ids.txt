@@ -1,2 +1,3 @@
 # Card ids that content shipped and that were retired on purpose, one per line with a reason after #.
 # Only after the cards under that id have been migrated (see tools/shipped-ids.mjs).
+K:ENG_CHUNK_0923 # duplicate of K:ENG_CHUNK_0918 (same phrase, "Ich bringe es nicht übers Herz"), marked dupOf in B2 G1; in the ledger only since L1b (584543b), behind the B2 level gate, so no card was ever scheduled under it
