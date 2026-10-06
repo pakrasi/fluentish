@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "706d33d32db4",
+ "version": "90251ca53605",
  "languages": [
   {
    "id": "khasi",
@@ -266,8 +266,8 @@
    "id": "atlas.de",
    "path": "atlas/de.json",
    "schema": "atlas@1",
-   "bytes": 555874,
-   "sha256": "92ebb62fa4e9d52dc2ff212c9c468cb52c10ed5e8eb8019a7380fcbc63034a52"
+   "bytes": 557311,
+   "sha256": "f37e120a3d9ed30afba075ec4b043a616c1f59ef04a8f1bd6fe29bc5ebf45628"
   },
   {
    "id": "b1.annot",
@@ -679,15 +679,15 @@
    "id": "igloo.grammar.concepts.de",
    "path": "igloo/grammar/concepts_de.json",
    "schema": "grammar-concepts@1",
-   "bytes": 12094,
-   "sha256": "81fb79bd11d3cef7b8e5a4bf7f78d79616a38de8e3ec7486ae14d454f5b400a6"
+   "bytes": 15701,
+   "sha256": "26b9ff7d39b12ac37e83d9774d63cfde7999190d191e55a092e47b08c5299efa"
   },
   {
    "id": "igloo.grammar.items.de",
    "path": "igloo/grammar/items_de.json",
    "schema": "grammar@1",
-   "bytes": 264221,
-   "sha256": "f7e19d406219f716f319dfa43d049f0a2cd6b0e7aceb30e28c7e86add478e9c0"
+   "bytes": 323462,
+   "sha256": "f5366044e1f6a14f9cd15188ada168345a2f0160d876e7daeaca592080356c46"
   },
   {
    "id": "igloo.lang.french",
