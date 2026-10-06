@@ -87,6 +87,12 @@ test('conversation: setup, a streamed chat with a correction and a gloss, Slower
   await expect(gloss.locator('.tv-sheet-title')).toContainText('Ausstellung');
   await expect(gloss).toContainText('From the word list on this device.');
   await checkA11y(page, 'Conversation › gloss');
+  // Add to review means what it means in the Reader: a saved word of the reading deck, Claude's sentence on this device
+  await gloss.getByRole('button', { name: 'Add to review' }).click();
+  await expect(gloss.getByRole('button', { name: 'Saved' })).toBeDisabled();
+  await expect.poll(async () => Object.keys((await kv(page, 'read.words')) || {}).find(k => /ausstellung/i.test(k)) || null, { message: 'Ausstellung is a saved word' }).not.toBeNull();
+  const savedId = /** @type {string} */ (Object.keys((await kv(page, 'read.words')) || {}).find(k => /ausstellung/i.test(k)));
+  await expect.poll(async () => (((await kv(page, 'read.ctx')) || {})[savedId] || [])[0]?.readId || '').toMatch(/^conv:/);
   await gloss.getByRole('button', { name: 'Close' }).click();
   await expect(gloss).toHaveCount(0);
 
@@ -103,7 +109,7 @@ test('conversation: setup, a streamed chat with a correction and a gloss, Slower
 
   // End: the feedback card
   await page.getByRole('button', { name: 'End', exact: true }).click();
-  await expect(page.locator('#view h1')).toHaveText(/minute(s)? in German/);
+  await expect(page.locator('#view h1')).toHaveText(/^\d+ words?$/);
   const fb = claude.calls[3];
   expect(fb.model).toBe('claude-opus-5-5');
   expect(fb.output_config.format.type).toBe('json_schema');

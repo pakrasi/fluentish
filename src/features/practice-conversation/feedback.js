@@ -6,7 +6,7 @@
    (motion.js reveal; at once with reduced motion). */
 import { h, replace } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
-import { reveal } from '../../core/motion.js';
+import { reveal, countTo, reduced } from '../../core/motion.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
 import { ask, ClaudeError } from '../../services/claude.js';
 import { addMistakes, listMistakes } from '../../data/mistakes.js';
@@ -171,13 +171,22 @@ export async function mountFeedback(el, ctx, s0) {
     };
 
     const lang = conv?.language || '';
+    // the done hero (DESIGN.md components.done-hero, drawn here without its atmosphere: this page is mostly text): the
+    // topic as the label, one figure (the words he wrote), its line, and the data object, this conversation's bubbles
+    // in miniature (his outlined in accent, Claude's surface-2, a 2 px tick under a turn with a mistake)
+    const fig = h('span', { class: 'figure tnum' }, String(st.words));
+    const missed = new Set(v.mistakes.map(m => m.turn));
+    const strip = h('div', { class: 'cv-strip-mini', role: 'img', 'aria-label': t('conv.fb.stripAria', { n: tr.turns.length, k: missed.size }) },
+      tr.turns.map((/** @type {any} */ x) => h('span', { class: ['cv-mini', x.who === 'learner' ? 'is-you' : 'is-them', x.who === 'learner' && missed.has(x.i) && 'has-miss'],
+        style: { '--w': String(Math.max(0.18, Math.min(1, C.wordsIn(x.text || '') / 24))) } })));
+    const h1 = h('h1', { tabindex: '-1' }, fig, ' ', h('span', { class: 'pr-done-of' }, t('conv.fb.words', { n: st.words })));
     const view = frame(
-      h('p', { class: 'label', 'data-reveal': '' }, t(`conv.mode.${s.mode}`), ' · ', h('span', { lang: langAttr(), dir: dirAttr() }, tr.title)),
-      h('div', { class: 'page-head cv-fb-head' }, h('h1', null, t('conv.fb.minutes', { n: st.minutes, lang }))),
-      h('div', { class: 'cv-stats', 'data-reveal': '' },
-        h('div', { class: 'cv-stat' }, h('b', { class: 'tnum' }, String(st.turns)), h('span', null, t('conv.fb.turns', { n: st.turns }))),
-        h('div', { class: 'cv-stat' }, h('b', { class: 'tnum' }, String(st.words)), h('span', null, t('conv.fb.words', { n: st.words }))),
-        h('div', { class: 'cv-stat' }, h('b', { class: 'tnum' }, String(st.perTurn)), h('span', null, t('conv.fb.perTurn')))),
+      h('div', { class: 'pr-done-top cv-fb-top' },
+        h('section', { class: 'hero pr-done-hero cv-fb-hero' },
+          h('p', { class: 'label' }, h('span', { lang: langAttr(), dir: dirAttr() }, tr.title)),
+          h1,
+          h('p', { class: 'caption tnum' }, t('conv.fb.line', { n: st.turns, min: st.minutes, lang }))),
+        h('div', { class: 'pr-done-data' }, strip)),
       v.summary ? h('p', { class: 'cv-summary', 'data-reveal': '' }, v.summary) : null,
       h('section', { class: 'cv-sec', 'data-reveal': '', 'aria-labelledby': 'cv-s-m' },
         h('h2', { class: 'cv-sec-h', id: 'cv-s-m' }, t('conv.fb.mistakes'), h('span', { class: 'tnum' }, String(v.mistakes.length))),
@@ -205,6 +214,8 @@ export async function mountFeedback(el, ctx, s0) {
     if (finished) primary.onclick = () => ctx.go(back.slice(1));
     sync();
     replace(el, view);
+    if (!reduced()) countTo(fig, st.words, { from: 0, duration: 640 });
+    h1.focus({ preventScroll: true });
     reveal(/** @type {any} */ (view));
   }
 

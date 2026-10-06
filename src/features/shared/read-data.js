@@ -135,18 +135,26 @@ export function deleteRead(store, id) {
   const quoted = Object.values(ctxs).flat().filter((/** @type {any} */ x) => x && x.readId === id).map((/** @type {any} */ x) => x.de);
   forget(scriptText({ [`read:${id}`]: { title: read && read.title, sections: [{ sentences: [...sentences, ...quoted].map(de => ({ de })) }] } }));
   store.update(READS, (/** @type {any} */ m) => ({ ...(m || {}), [id]: { id, deletedAt: new Date().toISOString(), rev: Date.now() } }), {});
+  dropContext(store, id);
+  store.update(CACHE, (/** @type {any} */ m) => { const n = { ...(m || {}) }; delete n[id]; return n; }, {});
+}
+
+/**
+ * Remove the sentences that came from one source (a text, or a conversation: 'conv:<id>') from every saved item.
+ * @param {any} store @param {string} readId
+ */
+export function dropContext(store, readId) {
   store.update(CTX, (/** @type {any} */ m) => {
     /** @type {Record<string, any[]>} */ const out = {};
     for (const [k, list] of Object.entries(m || {})) {
       const all = /** @type {any[]} */ (list) || [];
-      const keep = all.filter(x => x && x.readId !== id);
+      const keep = all.filter(x => x && x.readId !== readId);
       const item = isPrivateItem(k) ? itemOf(all) : null;
       if (item) out[k] = withItem(keep.filter(x => x.de), item);
       else if (keep.length) out[k] = keep;
     }
     return out;
   }, {});
-  store.update(CACHE, (/** @type {any} */ m) => { const n = { ...(m || {}) }; delete n[id]; return n; }, {});
 }
 
 /**

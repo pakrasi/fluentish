@@ -19,6 +19,7 @@ import * as C from '../../domain/conversation.js';
 import { config } from '../../core/config.js';
 import { forget } from '../../core/log.js';
 import { scriptText } from '../../data/sync/backup.js';
+import { dropContext } from '../shared/read-data.js';
 
 export const SESSIONS = 'conv.sessions';
 export const TRANSCRIPTS = 'conv.transcripts';
@@ -94,6 +95,7 @@ export function deleteConversation(store, id) {
   }
   store.update(TRANSCRIPTS, (/** @type {any} */ all) => { const n = { ...(all || {}) }; delete n[id]; return n; }, {});
   store.update(FEEDBACK, (/** @type {any} */ all) => { const n = { ...(all || {}) }; delete n[id]; return n; }, {});
+  dropContext(store, `conv:${id}`);   // the sentences of words added to review from its replies (sheets.js glossSheet)
   patchSession(store, id, { deletedAt: new Date().toISOString() });
 }
 

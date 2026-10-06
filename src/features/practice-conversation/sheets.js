@@ -15,6 +15,8 @@ import { headOf, glossOf } from '../../domain/text/suggest.js';
 import * as C from '../../domain/conversation.js';
 import { glossPrompt, IDS } from './prompts.js';
 import { claudeKey, charge, money, monthSpent, convSettings, USED } from './data.js';
+import * as R from '../shared/read-data.js';
+import { knowledgeDecks } from '../../data/knowledge.js';
 
 /**
  * @param {import('../contract.js').ViewCtx} ctx
@@ -61,12 +63,19 @@ export function glossSheet(ctx, { word, sentence, lang, sessionId }) {
   const head = wc ? wc.card.head : entry ? headOf(entry, lemma) : lemma;
   const gloss = entry ? glossOf(entry) : null;
   const itemId = entry && entry.id ? `W:${entry.id}` : null;
-  const saved = () => !!(itemId && ((store.get(USED, {}) || {})[itemId]));
+  // "Add to review" means what it means in the Reader (UX review #9): the item joins the saved words of the reading
+  // deck with Claude's sentence (device-only, removed when the conversation is deleted), and an item with a card in
+  // another deck keeps that card. It also counts as met in a conversation.
+  const saved = () => !!(itemId && R.savedWords(store)[itemId]);
   const out = h('div', { class: 'cv-gloss-out', 'aria-live': 'polite' });
   const save = /** @type {HTMLButtonElement} */ (h('button', { type: 'button', class: 'btn btn-primary pressable', disabled: !itemId || saved(), onclick: () => {
     if (!itemId) return;
     const day = ctx.clock.ctx().today;
     store.update(USED, (/** @type {any} */ u) => C.addEvidence(u || {}, [itemId], day), {});
+    const deck = R.readDeck(lang.pack?.id || 'de');
+    const home = knowledgeDecks(store).find(d => d !== deck && (store.cards(d) || {})[itemId]?.reps) || deck;
+    R.saveWord(store, { cardId: itemId, today: day, entry: { lemma, head, gloss, from: gloss ? 'list' : null, level: entry.level || null, zipf: entry.zipf ?? null, kind: entry.pos === 'phrase' ? 'phrase' : 'word', home, ref: false },
+      ctx: { readId: `conv:${sessionId}`, sentenceId: `t${Math.abs(hashOf(sentence))}`, de: sentence, surface: word } });
     save.disabled = true;
     save.textContent = t('conv.gloss.saved');
     ctx.toast(t('conv.gloss.savedToast', { word: head }));
@@ -115,6 +124,9 @@ export function glossSheet(ctx, { word, sentence, lang, sessionId }) {
     ],
   });
 }
+
+/** A short number for a sentence (its id among a conversation's sentences). @param {string} s */
+const hashOf = s => { let x = 0; for (let i = 0; i < s.length; i++) x = (x * 31 + s.charCodeAt(i)) | 0; return x; };
 
 /** The gloss reply (structured output; every object closed). */
 export const GLOSS_SCHEMA = {

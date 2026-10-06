@@ -3,6 +3,7 @@
 import { h, replace } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
 import { seg, notice } from '../../core/ui.js';
+import { reduced } from '../../core/motion.js';
 import { label } from '../../core/clock.js';
 import { add } from '../../domain/days.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
@@ -23,6 +24,7 @@ export async function mountSetup(el, ctx) {
   const remembered = (store.get('ui', {}) || {}).convMode;
   if (remembered === 'roleplay' || remembered === 'free') ui.mode = remembered;
   let alive = true;
+  /** The scene whose goal is open (it opens once, when picked). @type {string | null} */ let shownGoal = null;
 
   function draw() {
     if (!alive) return;
@@ -57,8 +59,10 @@ export async function mountSetup(el, ctx) {
     const more = topics.filter(x => !suggested.includes(x));
     const freeBlock = h('div', { class: 'cv-block' },
       h('h2', { class: 'cv-h' }, t('conv.topics')),
-      cs.interests.length ? h('p', { class: 'caption' }, t('conv.topics.by', { list: cs.interests.join(', ') }), ' ', h('a', { href: '#/profile/practice' }, t('conv.topics.change')))
-        : h('p', { class: 'caption' }, t('conv.topics.none'), ' ', h('a', { href: '#/profile/practice' }, t('conv.topics.add'))),
+      // the link to Profile is a quiet 44 px button after the sentence (an inline link was 14 px tall)
+      h('div', { class: 'cv-interests' },
+        h('p', { class: 'caption' }, cs.interests.length ? t('conv.topics.by', { list: cs.interests.join(', ') }) : t('conv.topics.none')),
+        h('a', { class: 'btn btn-quiet pressable cv-interests-btn', href: '#/profile/practice' }, cs.interests.length ? t('conv.topics.change') : t('conv.topics.add'))),
       h('div', { class: 'cv-choices', role: 'radiogroup', 'aria-label': t('conv.topics') }, suggested.map(x => choice(x.id, x.de, x.en, x.lv))),
       more.length ? h('details', { class: 'cv-more' }, h('summary', { class: 'pressable' }, t('conv.topics.more', { n: more.length })),
         h('div', { class: 'cv-choices', role: 'radiogroup', 'aria-label': t('conv.topics.all') }, more.map(x => choice(x.id, x.de, x.en, x.lv)))) : null,
@@ -68,8 +72,18 @@ export async function mountSetup(el, ctx) {
       h('h2', { class: 'cv-h' }, t('conv.scenarios')),
       h('p', { class: 'caption' }, t('conv.scenarios.lead')),
       h('div', { class: 'cv-choices', role: 'radiogroup', 'aria-label': t('conv.scenarios') },
-        scenarios.map(s => choice(s.id, s.title, s.en, `${s.lv} · ${conv?.register?.[s.reg] || s.reg}`))));
-    const picked = ui.mode === 'roleplay' ? scenarios.find(s => s.id === ui.pick) : null;
+        // the selected scene's goal opens under it (motion.js disclose), not under the whole list
+        scenarios.flatMap(s => [choice(s.id, s.title, s.en, `${s.lv} · ${conv?.register?.[s.reg] || s.reg}`),
+          s.id === ui.pick ? goalPanel(s) : null].filter(Boolean))));
+
+    /** @param {C.Scenario} sc */
+    function goalPanel(sc) {
+      const panel = h('div', { class: 'reveal-answer cv-goal-panel', id: `cv-goal-${sc.id}` },
+        h('div', null, h('p', { class: 'callout cv-goal' }, h('span', { class: 'label' }, t('conv.goal')), ' ', sc.goal)));
+      if (shownGoal === sc.id) panel.classList.add('is-open');
+      else { shownGoal = sc.id; requestAnimationFrame(() => requestAnimationFrame(() => { if (reduced()) { panel.style.transition = 'none'; } panel.classList.add('is-open'); })); }
+      return panel;
+    }
 
     const offline = typeof navigator !== 'undefined' && navigator.onLine === false;
     const why = !conv || !content ? t('conv.noPack') : !key ? null : offline ? t('conv.offline') : month.over ? t('conv.month.over', { cap: D.money(month.cap) }) : null;
@@ -82,12 +96,11 @@ export async function mountSetup(el, ctx) {
     const view = h('div', { class: 'practice stack cv cv-setup' },
       h('a', { class: 'btn btn-quiet pressable cv-back', href: '#/practice' }, icon('back', { size: 18 }), t('practice.title')),
       h('div', { class: 'page-head' }, h('h1', null, t('conv.title'))),
-      h('p', { class: 'lead' }, t('conv.lead', { lang: conv?.language || '' })),
+      h('p', { class: 'cv-lede' }, t('conv.lead', { lang: conv?.language || '' })),
       !key ? notice({ kind: 'warning', children: [h('p', { class: 'notice-title' }, t('conv.noKey')), h('p', null, h('a', { href: '#/profile/connections' }, t('conv.noKey.link')))] }) : null,
       seg({ label: t('conv.mode'), value: ui.mode, options: [['free', t('conv.mode.free')], ['roleplay', t('conv.mode.roleplay')]],
         onChange: v => { ui.mode = /** @type {any} */ (v); ui.pick = null; ui.own = ''; store.update('ui', (/** @type {any} */ u) => ({ ...(u || {}), convMode: v }), {}); draw(); } }),
       ui.mode === 'free' ? freeBlock : roleBlock,
-      picked ? h('p', { class: 'callout cv-goal' }, h('span', { class: 'label' }, t('conv.goal')), ' ', picked.goal) : null,
       h('div', { class: 'cv-disclose' },
         h('p', null, t(cs.interests.length && ui.mode === 'free' ? 'conv.disclose.interests' : 'conv.disclose')),
         h('p', null, t('conv.invent')),
