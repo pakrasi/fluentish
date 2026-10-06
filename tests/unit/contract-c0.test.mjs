@@ -209,9 +209,9 @@ test('knowledge: evidence by origin; seen is evidence.lookup, with the same resu
   assert.deepEqual(c.get('W:tisch.n').sources, ['conversation', 'lookup']);
   assert.equal(c.get('W:tisch.n').state, 'unknown', 'evidence never makes an item known');
   assert.equal(c.get('W:baum.n').state, 'unseen', 'an entry without n or last is not evidence');
-  assert.deepEqual(EVIDENCE_KV, { lookup: 'lookup.seen' });
+  assert.deepEqual(EVIDENCE_KV, { lookup: 'lookup.seen', read: 'read.words' });
   const kv = { 'lookup.seen': seen };
-  assert.deepEqual(evidenceOf({ get: (/** @type {string} */ n, /** @type {any} */ d) => kv[n] ?? d }), { lookup: seen });
+  assert.deepEqual(evidenceOf({ get: (/** @type {string} */ n, /** @type {any} */ d) => kv[n] ?? d }), { lookup: seen, read: {} });
 });
 
 /* ---------------- 6. claude.js: structured output ---------------- */

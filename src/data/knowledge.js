@@ -15,6 +15,7 @@ import { activeCourse, langIdOf } from './settings.js';
  */
 export const EVIDENCE_KV = {
   lookup: SEEN,
+  read: 'read.words',   // words and phrases saved while reading (features/shared/read-data.js; their entries carry first, last, n)
 };
 
 /** The evidence collections of a store, by origin. @param {any} store */

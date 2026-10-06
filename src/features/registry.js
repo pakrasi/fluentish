@@ -29,6 +29,8 @@
 
 /** A script's words round is #/practice/round?kind=script:<id> (the scripts own it, ahead of practice-round). */
 const scriptRound = { path: '/practice/round', when: (/** @type {URLSearchParams} */ q) => /^script:/.test(q.get('kind') || '') };
+/** Reading's review round is #/practice/round?kind=read (practice-read owns it, ahead of practice-round; round 4). */
+const readRound = { path: '/practice/round', when: (/** @type {URLSearchParams} */ q) => q.get('kind') === 'read' };
 
 /** @type {Feature[]} */
 export const FEATURES = [
@@ -36,6 +38,7 @@ export const FEATURES = [
   // Practice: sibling features under #/practice, listed before the hub so their paths win the match
   { id: 'build', paths: ['/practice/build', '/practice/build/*'], tab: 'practice', view: () => import('./build/index.js'), plan: () => import('./build/plan.js') },
   { id: 'practice-script', paths: [scriptRound, '/practice/scripts', '/practice/scripts/*'], tab: 'practice', view: () => import('./practice-script/index.js'), plan: () => import('./practice-script/plan.js') },
+  { id: 'practice-read', paths: [readRound, '/practice/read', '/practice/read/*'], tab: 'practice', view: () => import('./practice-read/index.js'), plan: () => import('./practice-read/plan.js') },
   { id: 'practice-round', paths: ['/practice/round'], tab: 'practice', view: () => import('./practice-round/index.js'), plan: () => import('./practice-round/plan.js') },
   { id: 'practice-write', paths: ['/practice/write', '/practice/write/*'], tab: 'practice', view: () => import('./practice-write/index.js'), plan: () => import('./practice-write/plan.js') },
   { id: 'practice-speak', paths: ['/practice/speak', '/practice/speak/*', '/practice/situations', '/practice/situations/*', '/practice/teil2'], tab: 'practice', view: () => import('./practice-speak/index.js'), plan: () => import('./practice-speak/plan.js') },

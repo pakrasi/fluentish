@@ -25,6 +25,7 @@ import { resumable, savedRound } from '../shared/session.js';
 import { loadData, stateFor, session, refreshWords, secrets, wordsState, roundOf } from '../shared/data.js';
 import { COLLECTION as WORDS } from '../shared/words.js';
 import { hubRow as scriptsRow } from '../shared/script-row.js';
+import { readRow, listReads } from '../shared/read-data.js';
 import * as St from '../../domain/script/store.js';
 
 const pct = (/** @type {number} */ x) => new Intl.NumberFormat('en-GB', { style: 'percent', maximumFractionDigits: 0 }).format(x || 0);
@@ -183,7 +184,7 @@ export async function mountHub(el, ctx) {
     // a group opens by itself when it has work today; the side decks rest while the exam is ahead (their new items
     // pause, domain/budget.js), so Words opens then only with cards due. His own choice on this device wins.
     const opened = /** @type {Record<string, boolean>} */ ({ ...((store.get('ui', {}) || {}).practiceGroups || {}) });
-    const auto = { exam: true, words: wordsDue > 0 || b.mode !== 'exam', own: scriptsN > 0 || b.mode === 'maintenance' };
+    const auto = { exam: true, words: wordsDue > 0 || b.mode !== 'exam', own: scriptsN > 0 || listReads(store).length > 0 || b.mode === 'maintenance' };
     const group = (/** @type {'exam' | 'words' | 'own'} */ id, /** @type {string} */ title, /** @type {number} */ due, /** @type {any[]} */ rows) =>
       practiceGroup({ id, title, trail: due ? t('practice.group.due', { n: due }) : null, open: opened[id] ?? auto[id], rows });
 
@@ -205,7 +206,7 @@ export async function mountHub(el, ctx) {
       notices, queue,
       group('exam', examGroup, examDue, examRows),
       group('words', t('practice.group.words'), wordsDue, wordRows),
-      group('own', t('practice.group.own'), 0, [scriptsRow(store, c, t)]),
+      group('own', t('practice.group.own'), 0, [scriptsRow(store, c, t), linkRow(readRow(store, t))]),
       h('div', { class: 'pr-foot stack' }, foot));
     show(view);
   }
@@ -256,6 +257,6 @@ export async function mountHub(el, ctx) {
       if (res.added.length) ctx.toast(t('practice.words.addedToast', { n: res.added.length }));
     }).catch(() => {});
   }
-  const offs = [store.subscribe('cards:b1', rerender), ...(own.trainer ? [] : [store.subscribe(`cards:${own.deck}`, rerender)]), store.subscribe(`cards:${SIM_DECK}`, rerender), store.subscribe(SIM_KV, rerender), store.subscribe(WORDS, rerender), store.subscribe('mistakes', rerender), ctx.bus.on('settings:changed', rerender), store.subscribe('scripts', rerender)];
+  const offs = [store.subscribe('cards:b1', rerender), ...(own.trainer ? [] : [store.subscribe(`cards:${own.deck}`, rerender)]), store.subscribe(`cards:${SIM_DECK}`, rerender), store.subscribe(SIM_KV, rerender), store.subscribe(WORDS, rerender), store.subscribe('mistakes', rerender), ctx.bus.on('settings:changed', rerender), store.subscribe('scripts', rerender), store.subscribe('reads', rerender)];
   return () => { alive = false; offs.forEach(f => f()); };
 }

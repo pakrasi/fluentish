@@ -45,6 +45,8 @@ export const SNAPSHOT_KV = {
   'exams.seen': 'fill', 'exams.learnerNotes': 'fill', 'vocab.local': 'fill', 'vocab.events': 'fill',
   // the French course's round session (C3b; a course's cards are in its deck fr:core, which every snapshot carries)
   'fr.session': 'fill',
+  // what he saved while reading (round 4; no sentence and no title: those stay in read.ctx and reads, device-only)
+  'read.words': 'fill',
 };
 /**
  * Collections found by an exact name pattern rather than a fixed name, with their merge rule (data/restore.js). Only
@@ -332,6 +334,19 @@ export function scriptText(scripts) {
 }
 
 /**
+ * The reading texts on this device in Scripts' shape ({title, sections: [{sentences: [{de}]}]}): the texts he pasted
+ * and the sentences his saved words were met in, for the log check.
+ * @param {any} store @returns {Record<string, any>}
+ */
+export function readTexts(store) {
+  /** @type {Record<string, any>} */ const out = {};
+  for (const [id, r] of Object.entries(store.get('reads', {}) || {})) if (r && r.sections) out[`read:${id}`] = { title: r.title, sections: r.sections };
+  const ctx = Object.values(store.get('read.ctx', {}) || {}).flat().map((/** @type {any} */ x) => ({ de: x && x.de }));
+  if (ctx.length) out['read:ctx'] = { title: null, sections: [{ sentences: ctx }] };
+  return out;
+}
+
+/**
  * Upload the error log once a study day: the entries logged since the last upload, to data/logs/<device>/<day>.ndjson,
  * each checked again for script text (a match is replaced, never sent).
  * @param {any} store @param {Files} files
@@ -345,7 +360,8 @@ export async function uploadLog(store, files, { entries, now, secrets, build = n
   const since = st.logAt || '';
   const fresh = entries.filter(e => e && typeof e.at === 'string' && e.at > since);
   if (!fresh.length) { setState(store, { logDay: today }); return 0; }
-  const isScript = scriptText(store.get('scripts', {}) || {});
+  // reading texts (kv reads, read.ctx) have Scripts' shape, so the same check finds them (round 4)
+  const isScript = scriptText({ ...(store.get('scripts', {}) || {}), ...readTexts(store) });
   const lines = fresh.map(e => JSON.stringify({ at: e.at, where: String(e.where || '').slice(0, 40), message: isScript(e.message) || isScript(e.where) ? '[removed: script text]' : String(e.message || '').slice(0, 300), build }));
   await writeOwned(files, logPath(store.device.deviceId, today), old => {
     const have = new Set(String(old || '').split('\n').filter(Boolean));

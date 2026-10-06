@@ -22,7 +22,7 @@ export const sizedKind = spec => ['area', 'topic', 'write', 'missed', 'mistakes'
 /**
  * The list behind a round address, or null when the address has no picker.
  * @param {string} href "#/practice/round?kind=area:grammar", "#/practice/situations/round?pick=fn:decline", …
- * @returns {{runner: 'round' | 'sim' | 'script', type: string, query: URLSearchParams} | null}
+ * @returns {{runner: 'round' | 'sim' | 'script' | 'read', type: string, query: URLSearchParams} | null}
  */
 export function listOf(href) {
   const m = /^#\/practice\/(round|situations\/round)(?:\?(.*))?$/.exec(String(href || ''));
@@ -32,6 +32,7 @@ export function listOf(href) {
   if (m[1] === 'situations/round') return { runner: 'sim', type: 'situations', query: q };
   const kind = q.get('kind') || '';
   if (/^script:/.test(kind)) return kind === 'script:words' ? null : { runner: 'script', type: 'script', query: q };
+  if (kind === 'read') return { runner: 'read', type: 'read', query: q };
   if (/^cluster:/.test(kind)) return kind === 'cluster:pick' ? null : { runner: 'round', type: 'cluster', query: q };
   const spec = C.parseKind(kind);
   if (!sizedKind(spec)) return null;
@@ -105,6 +106,20 @@ export async function listInfo(ctx, href) {
     const paused = SM.resumable(sim.round, c.today, Date.now()) && sim.round.pick === SM.pickKey(pick) ? sim.round.queue.length - sim.round.i : null;
     // a situation card takes about 12 s, a new one comes twice (domain/budget.js SIM_CARD_MIN)
     return { type: 'situations', title, b: SM.buckets(o), rec: SM.compose(o).ids, minutes: (n, fresh) => Math.max(1, Math.ceil((n + fresh) * 0.2)), paused };
+  }
+  if (l.runner === 'read') {
+    // reading's saved words (features/practice-read/round.js builds its round from the same buckets)
+    const R = await import('./read-data.js');
+    const { todayBudget } = await import('../../domain/allowance.js');
+    const { langCode } = await import('../../data/settings.js');
+    const settings = ctx.settings();
+    const deck = R.readDeck(langCode(settings.language) || 'de');
+    let b = null;
+    try { b = todayBudget({ store, c, settings }); } catch { /* no budget: his own daily cap */ }
+    const newLeft = R.readNewLeft(/** @type {any} */ (b), settings, c, R.shownToday(store, deck, c.today));
+    const bk = R.readBuckets(store, c, deck, newLeft);
+    const rec = [...bk.due, ...bk.fresh.slice(0, newLeft)].slice(0, R.ROUND);
+    return { type: 'read', title: t('read.round.title'), b: bk, rec, minutes: n => roundMinutes(n), paused: null };
   }
   // a script's words
   const St = await import('../../data/scripts.js');

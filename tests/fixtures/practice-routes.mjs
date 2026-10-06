@@ -35,4 +35,9 @@ export const PRACTICE_ROUTES = [
   ['#/practice/known/A1', 'practice-clusters'],
   ['#/practice/build', 'build'],
   ['#/practice/build/prefixes', 'build'],
+  // round 4: Reading (lane L2b)
+  ['#/practice/read', 'practice-read'],
+  ['#/practice/read/new', 'practice-read'],
+  ['#/practice/read/e2e-none', 'practice-read'],
+  ['#/practice/round?kind=read', 'practice-read'],
 ];

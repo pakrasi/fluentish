@@ -24,6 +24,7 @@ const ALLOWED = {
   'vocab.local': 'fill',
   'vocab.events': 'fill',
   'fr.session': 'fill',
+  'read.words': 'fill',   // saved reading words: lemma, meaning, level, first/last/n; no sentence, no title (lane L2b)
 };
 
 /** Collections found by pattern, and their rule. */

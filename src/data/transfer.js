@@ -21,20 +21,23 @@ const NOT_EXPORTED = new Set(['secrets', 'prefs', 'palace', 'backup', 'progress.
 // "Include scripts": their collections, the 'script' deck and the reviews marked local.
 const SCRIPT_KV = new Set(['scripts', 'scripts.progress', 'scripts.words']);
 const SCRIPT_DECKS = new Set(['script']);
+// Reading (round 4): the texts he pasted, the sentences around saved words and what Claude wrote for a text stay on the
+// device and leave it only when he ticks "Include reading texts". The saved words and their cards are progress.
+const READ_KV = new Set(['reads', 'read.ctx', 'read.cache']);
 
 /**
  * @param {import('./store.js').Store} store
- * @param {{profile: any, includeScripts?: boolean, archived?: any[]}} o  archived: the events in the outbox archive
- *   (store.archived()); an export holds every event, archived or not
+ * @param {{profile: any, includeScripts?: boolean, includeReads?: boolean, archived?: any[]}} o  archived: the events in the
+ *   outbox archive (store.archived()); an export holds every event, archived or not
  */
-export function exportBundle(store, { profile, includeScripts = false, archived = [] }) {
+export function exportBundle(store, { profile, includeScripts = false, includeReads = false, archived = [] }) {
   /** @type {Map<string, any>} */ const events = new Map();
   for (const e of [...archived, ...store.events.values()]) if (e && e.id) events.set(e.id, e);
   return {
     schema: 'fluentish-export@1',
     exportedAt: new Date().toISOString(),
     profile: { id: profile.id, name: profile.name, createdAt: profile.createdAt },
-    kv: Object.fromEntries(Object.entries(store.kv).filter(([k]) => !NOT_EXPORTED.has(k) && (includeScripts || !SCRIPT_KV.has(k)))),
+    kv: Object.fromEntries(Object.entries(store.kv).filter(([k]) => !NOT_EXPORTED.has(k) && (includeScripts || !SCRIPT_KV.has(k)) && (includeReads || !READ_KV.has(k)))),
     cards: includeScripts ? store.cardsByDeck : Object.fromEntries(Object.entries(store.cardsByDeck).filter(([d]) => !SCRIPT_DECKS.has(d))),
     attempts: store.attempts(),
     events: [...events.values()].sort((a, b) => (a.seq || 0) - (b.seq || 0)).filter(e => includeScripts || !(e && e.payload && e.payload.local)),

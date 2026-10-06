@@ -18,6 +18,9 @@ const h = (/** @type {string} */ s) => createHash('sha256').update(s).digest('he
 const PINS = {
   // ---- read.js (lane L2: read-gloss, read-translate, read-questions) ----
   'read.js': {
+    'read-questions@1': 'a35ee1e4234e',
+    'read-translate@1': 'cf1b2a97d64a',
+    'read-gloss@1': '0e2cdf13b3f3',
   },
   // ---- conversation.js (lane L4: conversation-turn, conversation-feedback, conversation-gloss) ----
   'conversation.js': {

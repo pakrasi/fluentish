@@ -1,0 +1,43 @@
+{
+  "lang": "de",
+  "about": "Synthetic graded texts for the reading level estimator's calibration (tests/unit/read-estimate.test.mjs). Written for the test, labelled by hand; never shipped as content.",
+  "texts": [
+    {
+      "id": "read/de/cal-a2-wochenende",
+      "level": "A2",
+      "sections": [{ "id": "s1", "sentences": [
+        { "id": "a1", "text": "Am Samstag stehe ich spät auf." },
+        { "id": "a2", "text": "Zuerst trinke ich einen Kaffee und lese die Zeitung." },
+        { "id": "a3", "text": "Dann gehe ich mit meiner Schwester in die Stadt." },
+        { "id": "a4", "text": "Wir kaufen Brot, Obst und Käse auf dem Markt." },
+        { "id": "a5", "text": "Am Nachmittag fahren wir mit dem Fahrrad an den See." },
+        { "id": "a6", "text": "Das Wetter ist schön, aber das Wasser ist noch kalt." },
+        { "id": "a7", "text": "Am Abend kochen wir zusammen und sehen einen Film." }
+      ] }]
+    },
+    {
+      "id": "read/de/cal-b1-umzug",
+      "level": "B1",
+      "sections": [{ "id": "s1", "sentences": [
+        { "id": "a1", "text": "Letztes Jahr bin ich in eine andere Stadt gezogen, weil ich dort eine neue Stelle bekommen habe." },
+        { "id": "a2", "text": "Am Anfang war es nicht leicht, eine günstige Wohnung zu finden." },
+        { "id": "a3", "text": "Viele Vermieter wollten einen Arbeitsvertrag und eine Bescheinigung über mein Einkommen sehen." },
+        { "id": "a4", "text": "Nach drei Wochen habe ich endlich eine kleine Wohnung in der Nähe vom Bahnhof gefunden." },
+        { "id": "a5", "text": "Inzwischen habe ich mich gut eingelebt und schon ein paar Kollegen kennengelernt." },
+        { "id": "a6", "text": "Trotzdem vermisse ich manchmal meine Freunde und meine Familie." }
+      ] }]
+    },
+    {
+      "id": "read/de/cal-b2-arbeitszeit",
+      "level": "B2",
+      "sections": [{ "id": "s1", "sentences": [
+        { "id": "a1", "text": "Seit einigen Jahren wird in Deutschland über eine Verkürzung der Arbeitszeit diskutiert." },
+        { "id": "a2", "text": "Befürworter argumentieren, dass ausgeruhte Beschäftigte konzentrierter arbeiten und seltener krank werden." },
+        { "id": "a3", "text": "Kritiker befürchten hingegen, dass die Produktivität sinkt und die Kosten für die Unternehmen steigen." },
+        { "id": "a4", "text": "Ein Pilotprojekt mit mehreren Dutzend Betrieben sollte diese Annahmen überprüfen." },
+        { "id": "a5", "text": "Die Ergebnisse deuten darauf hin, dass sich die Belastung verringert, ohne dass die Leistung nachlässt." },
+        { "id": "a6", "text": "Ob sich das Modell auf alle Branchen übertragen lässt, ist allerdings umstritten." }
+      ] }]
+    }
+  ]
+}
