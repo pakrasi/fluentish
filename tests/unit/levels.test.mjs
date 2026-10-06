@@ -197,6 +197,13 @@ test('gate opening: with a B2 goal and enough of a strand seen, B2 items join th
   // a B2 exam in its window: open
   const b2exam = state(NEW, seen({ g: 0.85, p: 0.9, w: 1 }), win, settings('B2', 'goethe-b2', win.exam));
   assert.ok(C.newOrder(b2exam, C.roundItems(b2exam)).some(it => it.layer === 'b2'));
+  // the gate counts items he knows, not items he has seen (UX review round 4, #6): the same cards still in their
+  // learning steps, or long forgotten, keep it closed
+  const learning = Object.fromEntries(Object.entries(seen({ g: 0.85, p: 0.9, w: 0 })).map(([id, r]) => [id, { ...r, learn: 0 }]));
+  assert.equal(state(NEW, learning, ctx, settings('B2')).gate.strands.g.state, 'closed');
+  const old = D8.add(TODAY, -400);
+  const forgotten = Object.fromEntries(Object.entries(seen({ g: 0.85, p: 0.9, w: 0 })).map(([id, r]) => [id, { ...r, S: 2, last: old, due: D8.add(old, 2) }]));
+  assert.equal(state(NEW, forgotten, ctx, settings('B2')).gate.strands.p.state, 'closed');
 });
 
 test('property: B2 new items appear only when the gate has an open strand, never in a B1 exam window (seeded)', () => {

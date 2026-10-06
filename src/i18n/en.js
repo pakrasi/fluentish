@@ -1967,9 +1967,10 @@ export default {
   'goal.gate.strand.g': 'B2 grammar',
   'goal.gate.strand.p': 'B2 phrases',
   'goal.gate.strand.w': 'B2 words',
-  'goal.gate.closed': 'Starts when you have seen half of the B1 items ({seen} of {n})',
+  'goal.gate.closed': 'Starts when you know half of the B1 items ({seen} of {n})',
+  'goal.gate.wordsNote': 'B2 words come through Word clusters and reading.',
   'goal.gate.mix': '1 in 4 new items',
-  'goal.gate.open': 'Open: B2 items first',
+  'goal.gate.open': 'B2 items first, B1 items still mixed in',
   'goal.gate.examWindow': 'B2 items wait until after the exam.',
   // Today in maintenance: the week strip, the kind of day and why (features/today; L1c)
   'unit.hm': '{h} h {m}',

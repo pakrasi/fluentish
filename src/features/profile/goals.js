@@ -163,14 +163,17 @@ export function goalsPage(ctx, { exams, languages }) {
     // one row per strand: its name, its state, and a 4 px meter of how far the gate is (the share of the B1 items it
     // counts, against the half it needs), so "0 of 473" reads as a meter
     return h('div', { class: 'goal-gate' }, h('p', { class: 'goal-meta' }, h('b', null, t('goals.gate.title'))),
-      h('ul', { class: 'goal-gate-list' }, ['g', 'p', 'w'].filter(k => gt.strands && gt.strands[k]).map(k => {
+      // the B2 layer has grammar and phrases; B2 words reach him through Word clusters and reading (pool.js b2Layer
+      // makes no word items), so the words strand is not listed as if it opened something (UX review #6)
+      h('ul', { class: 'goal-gate-list' }, ['g', 'p'].filter(k => gt.strands && gt.strands[k]).map(k => {
         const st = gt.strands[k];
         const share = st.n ? Math.min(1, (st.seen || 0) / Math.max(1, Math.ceil(st.n / 2))) : 0;
         return h('li', { class: 'goal-gate-row' },
           h('span', { class: 'goal-gate-name' }, t(`goal.gate.strand.${k}`)),
           h('span', { class: 'goal-gate-state' }, st.state === 'open' ? t('goal.gate.open') : st.state === 'mix' ? t('goal.gate.mix') : t('goal.gate.closed', { seen: nf.format(st.seen), n: nf.format(st.n) })),
           st.state === 'closed' ? h('span', { class: 'track goal-gate-track', 'aria-hidden': 'true' }, h('span', { class: 'fill', style: { transform: `scaleX(${share.toFixed(3)})` } })) : null);
-      })));
+      })),
+      h('p', { class: 'goal-meta' }, t('goal.gate.wordsNote')));
   }
 
   /** @param {any} s @param {{goal: string | null, level: string | null}} g @param {string | null} by */

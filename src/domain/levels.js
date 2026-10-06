@@ -2,9 +2,11 @@
    join a learner's new items. Pure, no storage or clock reads; tested in node (tests/unit/levels.test.mjs).
 
    Strands: grammar ('g', area grammar), phrases ('p', phrase items) and words ('w', area words). Each strand opens on
-   its own, by how much of the B1 pool's items of that strand he has seen:
-     seen = an item with a card he has answered, or one he marked known; the items counted are those the B1 pool can
-     introduce as new (features/shared/compose.js newOrder's eligible items, mistakes and Schreiben left out)
+   its own, by how much of the B1 pool's items of that strand he knows (round 4, UX review #6; the field is still
+   called `seen`):
+     known = a graduated card he would recall now at 70 % or more (known or shaky), or an item he marked known; the
+     items counted are those the B1 pool can introduce as new (features/shared/compose.js gateFor, mistakes and
+     Schreiben left out)
      under GATE_MIX (50 %) seen     closed: no B2 items among his new items (consolidate first)
      GATE_MIX to GATE_OPEN (80 %)   mix:    1 in MIX_EVERY (4) new items of the strand is a B2 item
      GATE_OPEN or more              open:   B2 first, B1 leftovers spread through (1 in OPEN_B1_EVERY, 3)

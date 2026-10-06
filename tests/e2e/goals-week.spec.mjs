@@ -136,8 +136,8 @@ test('a B2 level goal: the gate says when B2 items join, and Today names the goa
   await page.locator('button[name="goal-level:B2"]').click();
   await expect.poll(async () => (await storedSettings(page))?.courses?.[0]?.goal?.level).toBe('B2');
   await expect(page.getByText('B2 items in your new items')).toBeVisible();
-  await expect(page.locator('.goal-gate-list li')).toHaveCount(3);
-  await expect(page.locator('.goal-gate-list')).toContainText(/Starts when you have seen half of the B1 items \(\d+ of [\d,]+\)|1 in 4 new items|Open: B2 items first/);
+  await expect(page.locator('.goal-gate-list li')).toHaveCount(2);
+  await expect(page.locator('.goal-gate-list')).toContainText(/Starts when you know half of the B1 items \(\d+ of [\d,]+\)|1 in 4 new items|B2 items first, B1 items still mixed in/);
   await page.locator('input[name="goal-by"]').fill('2027-06');
   await page.locator('input[name="goal-by"]').dispatchEvent('change');
   await expect.poll(async () => (await storedSettings(page))?.courses?.[0]?.goal?.by).toBe('2027-06');

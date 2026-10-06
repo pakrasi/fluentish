@@ -27,6 +27,9 @@ import { ROUND, SPLIT, NEW_ITEM_MIN, streamQuota } from '../../domain/budget.js'
 import { skipsNew } from '../../domain/known.js';
 import { levelGate, gateCounts, mixLayers, courseGoal, LAYER } from '../../domain/levels.js';
 
+/** The recall at which an item counts for the level gate (domain/knowledge.js SHAKY_R: known or shaky). */
+const GATE_RECALL = 0.7;
+
 export { ROUND, NEW_ITEM_MIN };
 
 /**
@@ -183,13 +186,19 @@ export function priorityLeft(s) {
 
 /**
  * The level gate for a state (domain/levels.js): the course's level goal and exam from settings, the clock's phase,
- * and how much of each strand of the B1 pool he has seen (an answered card, or marked known), counting the items the
- * order can introduce.
+ * and how much of each strand of the B1 pool he knows (round 4, UX review #6: the gate opens on mastery, not exposure):
+ * a graduated card he would recall now at 70 % or more (known or shaky, domain/knowledge.js), or an item he marked
+ * known; counting the items the order can introduce.
  * @param {State} s @param {any} settings normalised settings
  */
 export function gateFor(s, settings) {
   const items = s.data.pool.filter(it => !isLayer(it) && !it.mine && eligible(it));
-  const seen = (/** @type {any} */ it) => !!(s.cards[it.id] && s.cards[it.id].reps) || !!(s.marked && skipsNew(s.marked, it.id, it.chunk));
+  const known = (/** @type {any} */ it) => {
+    const r = s.cards[it.id];
+    if (r && r.reps && r.learn == null && !r.relearn && FS.Ron(r, s.c.today) >= GATE_RECALL) return true;
+    return !!(s.marked && skipsNew(s.marked, it.id, it.chunk));
+  };
+  const seen = known;
   return levelGate({ ...courseGoal(settings), phase: s.c.phase, counts: gateCounts(items, seen) });
 }
 
