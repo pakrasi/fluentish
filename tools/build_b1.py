@@ -61,6 +61,8 @@ def main():
     for g in json.loads((ROOT / "content/igloo/grammar/items_de.json").read_text()):
         if g["concept"] not in concept_topic:
             continue
+        if g.get("layer") == "b2":   # the B2 layer (round 4) never enters the B1 trainer (PLAN-REVIEW B7)
+            continue
         a = annot.get("G:" + g["id"], {})
         if a.get("skip"):
             skipped += 1
