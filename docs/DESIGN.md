@@ -36,6 +36,11 @@ colors:                       # light
   x-bar-new: "rgba(20,21,25,0.13)"        # not-seen bar at far zoom
   x-today: "{colors.accent}"              # practised today, always with a hairline under it
   x-glow: "accent 26% on canvas"          # the plate under a word just learned (fades in 1.3 s)
+  pg-col: "#6a6d74"                       # Progress columns (history); 4.70:1 on canvas. This week stays accent.
+  pg-k1: "#8a8c91"                        # study days light step; 3.05:1 on canvas (ramp #8a8c91 #6a6d74 #2c2e36, --ordinal passes)
+  read-saved: "accent 12% on canvas"      # the wash behind a word he saved; the text stays ink
+  read-band: "{colors.surface-2}"         # a phrase band, one element per phrase; never a role colour
+  wk-plan: "ink 14% on surface"           # the week strip's opaque plan fill (dark: ink 20%), with the field-border edge
 colors-dark:
   canvas: "#0d0e11"
   surface: "#15171b"
@@ -66,6 +71,8 @@ colors-dark:
   x-new: "#7f8189"                        # 4.97:1 on canvas, 4.62:1 on surface
   x-bar-new: "rgba(236,235,230,0.12)"
   x-glow: "accent 34% on canvas"
+  pg-col: "#8b8e97"                       # 5.89:1 on canvas
+  pg-k1: "#5c5f68"                        # 3.03:1 (ramp #5c5f68 #8b8e97 #d6d7dc)
 
 typography:
   numeral:  { fontFamily: Newsreader, fontSize: "clamp(84px,24vw,168px)", fontWeight: 300, lineHeight: 0.84, letterSpacing: -0.045em, numeric: "lining proportional" }
@@ -81,6 +88,8 @@ typography:
   tile:     { fontFamily: Geist, fontSize: 18px, fontWeight: 500, lineHeight: 1.25 }
   mono:     { fontFamily: "Geist Mono", fontSize: 12.5px, fontWeight: 400 }            # role labels on tiles, key hints, diagnostics ids only; never levels
   german-list: { fontFamily: Newsreader, fontSize: 19px, fontWeight: 400, lineHeight: 1.35 }   # lists of German sentences (round done, missed)
+  reading:  { fontFamily: Newsreader, fontSize: 20px, fontWeight: 400, lineHeight: 1.72, letterSpacing: -0.003em, measure: 32em }   # the Reader's text; 21px/1.7 >=720px
+  reading-mark-suggest: { decoration: "1px dotted, ink 28%, offset 0.28em" }
 
 rounded: { tile: 6px, ctl: 12px, card: 20px, pill: 999px, cell: 2px }
 spacing: { 1: 4px, 2: 8px, 3: 12px, 4: 16px, 5: 20px, 6: 24px, 8: 32px, 10: 40px, 12: 48px, 16: 64px, gutter: "16px phone / 24px >=720px", tap: 44px }
@@ -103,7 +112,8 @@ components:
   segmented:      { backgroundColor: "{colors.surface-2}", rounded: "{rounded.ctl}", height: "40px fine / 44px touch (the buttons themselves, thumb inset 3px)", thumb: "{colors.surface}, slides with spring-snappy" }
   timer-bar:      { height: 2px, fill: "{colors.hairline-strong}" }   # a timer is never accent
   callout:        { backgroundColor: "{colors.surface-2}", rounded: "{rounded.tile}", padding: "10px 12px", border: none }   # rule lines; no side stripes
-  odometer:       { mask: "bottom fade only: #000 0-84%, transparent 96%" }
+  odometer:       { mask: "top and bottom fade: transparent 0, #000 12%, #000 84%, transparent 96%" }
+  sheet-open:     { motion: "translateY(100%) to 0 on spring-snappy (card duration), opacity stays 1; only the backdrop fades; reduced motion: a 140 ms fade", focus: "the sheet's title (tabindex -1, no ring)" }
   primary-width:  "phone 100%; desktop min(100%, 360px)"
   study-card:     { backgroundColor: "{colors.surface}", rounded: "{rounded.card}", padding: "24px 20px 20px", shadow: card, viewTransitionName: fx-card }
   answer-field:   { border: "bottom 1px {colors.field-border}", typography: "{typography.input}", caret: "{colors.accent}", height: 52px }
@@ -112,7 +122,15 @@ components:
   ring:           { stroke: "5.5/100 of size", caps: butt, gap: 5deg, arc: ink, today: accent }
   field:          { cell: "7px phone / 9px desktop; 6px round strip; 5px round-done", gap: "2px (1px at 5px)", rounded: "{rounded.cell}", notStarted: "cell-empty + 1px hairline-strong outline" }
   runway:         { bar: "22-64px by planned minutes (62% under 420px)", fill: "cell-plan + 1px field-border inset", rounded: 4px, today: "accent outline + accent fill", exam: "14px diamond, ink", forcedColors: "CanvasText outline and fill, Highlight today" }
-  week-strip:     { columns: "7, Monday first (brand.js weekStrip)", bar: "the runway's bar, max 30px wide, height by planned minutes", fill: "minutes done, from the share shown last", today: "accent", off: "1px field-border baseline (a bar of the minutes when he studied anyway)", labels: "weekday 11px ink-3, kind 10px ink-3 (none for Normal)" }
+  week-strip:     { columns: "7, Monday first (brand.js weekStrip), spread to the card's inner width", bar: "max 30px wide, centred, height by planned minutes",
+                    states: { done: "ink fill over the plan fill", missed: "the plan fill only ({colors.wk-plan} + field-border edge)", future: "field-border outline, no fill", today: "accent outline + accent-soft, minutes done in accent", off: "1px field-border baseline (a bar of the minutes when he studied anyway)" },
+                    labels: "weekday 11px ink-3, kind 10px ink-3 (none for Normal)", plan: "plan mode (the week editor): every day the plan fill", update: "weekStripUpdate: one column grows from its old height (scaleY, spring-soft), its label crosses over" }
+  week-editor:    { phone: "the strip, then seven 56px rows ('Thursday  45 min · Write (later)  ›'); a row opens a bottom sheet (rs-sheet) with the minute and kind chips wrapped, one line on the kind, ‹ day / day › steps", wide: ">=720px: the strip's columns are tabs (selected: 1.5px ink inset), the day's editor in a surface panel under them", keys: "roving tabindex: one tab stop, arrows, Home, End", code: "src/features/profile/week-editor.js" }
+  progress-column: { width: "min(16px, 55% of slot)", fill: "{colors.pg-col}", top: "4px rounded", now: "accent outline 1.5px + accent 25% fill, labelled 'so far'", average: "ink-2 hairline at the 8-week average, labelled at the right edge only" }
+  progress-line:  { endLabel: "the value at the end, Geist 12/600 ink, with a canvas halo", markers: "diamonds and the end dot pop in (spring-pop) as the draw passes them; the label fades in last" }
+  progress-row:   { use: "Today › Where you stand: the door to Progress", height: 64px, parts: "title, the last 4 weeks' change (caption, tabular), a 96x28 sparkline of known over 12 weeks (2px ink, accent end dot), chevron", morph: "view-transition-name pg-known on the sparkline and on Progress's known chart" }
+  reader-head:    { parts: "h1 (Newsreader 30, 34 >=720px), one meta line ('Graded text at B1, 241 words · 90.5% known'), a 3px meter (ink known, surface-2 track, no legend), a caption only for a stretch or a hard text and for 'assumed from your level'" }
+  reader-marks:   { suggested: "{typography.reading-mark-suggest}", saved: "ink text on {colors.read-saved} (+2px of the same as a halo); a 4px accent dot after the word in the tray only", band: "{colors.read-band}, one element across the phrase's words and spaces" }
   toast:          { backgroundColor: "{colors.ink}", textColor: "{colors.on-ink}", rounded: "{rounded.pill}", position: "fixed, above tab bar" }
   tab-bar:        { position: "fixed bottom on phone, inline links >=900px", current: "ink label + 18x2px accent dash", glass: "92% canvas + blur; solid canvas under prefers-reduced-transparency" }
   dock:           { position: "fixed above the tab bar on phone (<900px)", use: "Today and Practice's one Start button; the element itself, never an aria-hidden copy", scrollPadding: "html scroll-padding-bottom covers dock + tab bar" }
@@ -153,7 +171,7 @@ Dials (taste-skill): VARIANCE 4, MOTION 5, DENSITY 5. App UI, not a landing page
 - **Who is who in a conversation**: the other person's voice and bubble are ink and surface-2; the model answer ("what you could say") is a surface bubble with a thin accent edge (45 %), never an accent fill. Its chunk is a dotted ink-3 rule, not an accent underline (that reads as a link).
 - **Feedback on a right answer is never red.** A capital or umlaut to fix shows the word once with the changed letters underlined in accent, and a caption ("Capitals: Damen, Herren."). Red is for real misses only.
 - **Cells** (empty, learning, known) are ink at three strengths. "Known" is quiet ink, never green, so a full field looks finished rather than loud.
-- **Atmosphere** (`--atmo-1..4`): near-canvas tones with a faint cobalt cast. Only behind the Today hero.
+- **Atmosphere** (`--atmo-1..4`): near-canvas tones with a faint cobalt cast. Only behind the Today hero. The CSS gradient in `.atmo` is drawn as the shader's first frame (cobalt at the top and bottom of the right edge, a softer cast at the left middle), and the canvas fades in over it (--dur-fill, opacity only), so the hero does not change colour after load.
 - Light canvas is a neutral paper (#f4f4f1), not cream. No warm beige, no brass.
 - All text pairs pass WCAG AA on canvas and surface in both themes (checked: lowest is role-glue light at 4.66:1, ink-3 light at 5.8:1).
 
@@ -198,7 +216,11 @@ All in `styles/components.css`. The kit demo page stays with the design work (de
 - **Toast**: ink pill above the tab bar, optional Undo, 4 s.
 - **Word panel** (core/wordpanel.js): every card whose item is one word (exam words, Word clusters, word-list cards, Quick sort). Before the answer a quiet line over the prompt: word type, CEFR level, a 5-bar frequency meter from zipf (ink-2 bars on cell-empty) and "very common / common / less common". After it, on surface-2: the key forms in Newsreader ("ziehen – zog – hat/ist gezogen"; the dashes are the German dictionary convention, content not chrome), "Present: er fährt" when irregular, "Plural: die Zäune", then ONE example sentence with the word in semibold over a 2 px accent underline, and its source ("From Test 2 · Lesen") or its English. A prompt never shows its answer: forms of the answer in a gloss become "…".
 - **Where you stand in maintenance** (round 4): the map's known count as a figure, known by level (A1 to C2, 4px tracks: known in cell-known, the last 4 weeks' gain from the progress log in accent, with a key), the level goal card (share of that level known; no date estimate until the log holds 8 weeks), and the exam's mock rows folded behind one "Goethe B1 mock results" button (motion.js disclose) once the exam is more than 14 days past, far ahead or gone.
-- **Goals and week** (Profile, #/profile/goal): goal cards (kind, what, one action, what follows), "Add a goal" chips, an inline sheet for an exam with its effects listed, and the week editor: per weekday a scrolling chip row of minutes and one of kinds; a kind whose feature has not shipped has a dashed chip and says "coming later".
+- **Goals and week** (Profile, #/profile/goal): goal cards (kind, what, one action, what follows), "Add a goal" chips, an inline panel for an exam with its effects listed (it opens with `motion.js disclose`), the B2 gate as one row per strand (name, state, a 4 px meter of the way to the gate; stacked on a phone, side by side from 720 px, at most 520 px), and the week editor (components.week-editor): the week strip in plan mode over seven rows on a phone, each opening a day sheet with wrapped chips, or the strip's columns as tabs with the day's editor under them from 720 px. A kind whose feature has not shipped has a dashed chip, "(later)" in the row and a line that says it is planned as a normal day.
+
+**Reading** (Practice › your material, `src/features/practice-read/`, `src/features/shared/textview.js`). The text is the page and the calmest thing in the app: typography.reading at 32em, the head first (components.reader-head), the marks of components.reader-marks. The dock holds Study / Read on (a compact segmented control), the tray and Questions; it sits in the page's own column so it starts where the text starts; with nothing saved the tray says "Tap a word". The word sheet rises (components.sheet-open), its quote is a callout. For a screen reader the text is prose: words are spans; the text block is one tab stop, the arrow keys or Enter step into the words and only the word in hand is a button. The library: his texts first, then the graded texts one level at a time (B1 · B2 · C1, his goal level first), each with level, length, his coverage on a 3 px meter and a check when read, sorted by fit.
+
+**Conversation feedback** is a done hero (components.done-hero, without the atmosphere: the page is text): the topic, the words he wrote as the figure, "In 3 messages · 4 min", and the conversation in miniature as the data object (one 6 px bar per message by length, his outlined in accent, Claude's surface-2, a 2 px bad tick under a message of his with a mistake). Topics and scenes are a hairline list; the selected row has a 2 px ink edge at its start; a scene's goal opens under it. The composer (helper chips and the field) is one block on the canvas with a hairline.
 - **Practice groups** (features/practice/hub.js, round 3): under the now card (the plan's next row with its button, the due and new counts), three groups: Exam modules ("Skills" without an exam goal), Words, Your own material. The heading is one button (h2 type, 44 px, the due count as a trail, a chevron that turns); the rows open and close with the answer reveal's motion (`motion.js disclose`: grid rows 0fr to 1fr and a fade, at once with reduced motion), and a closed group is inert. A group with work today opens by itself; his own choice on the device wins.
 - **Round size sheet** (features/shared/picker.js): before a round of a Practice list. "Practice all" waits behind a quiet "More choices" button unless it was the last choice for the list. A bottom sheet (surface, r-card top corners, shadow-sheet, grab handle) on a phone, a 440 px card from 720 px. Three 56 px options, the selected one outlined in ink with its key (1, 2, 3) filled: Recommended with its count in Newsreader and one line on why; Custom with a 44 px stepper and "of N"; Practice all N. A plain note on surface-2 when the choice adds new items beyond today's allowance. Start is the primary button with the question count and minutes. Motion: the sheet rises on spring-snappy (card duration) and leaves in 160 ms ease-in; the number ticks 45 % up or down on spring-snappy; reduced motion keeps only the fade. Press and hold a list starts Recommended at once (the tip shows on touch only).
 
@@ -278,15 +300,16 @@ State is never carried by height alone: the roofs keep the Atlas type encodings.
 `src/features/today/progress/`, `styles/features/progress.css`, `#/today/progress`: a child page of Today (Today's tab stays current), linked from Where you stand. The long view, drawn from the progress log (one record per study day). Apple Fitness trends and a Strava training log, held to the plain-copy rule: no streaks, no "in a row", no celebration screen; milestones are dated facts.
 
 - **One filter row** (12 weeks, 6 months, All) above everything it scopes: the three summary numbers (known, net change; learnt; time in Fluentish), every chart and the weekly log. The level goal and the milestones read the whole log and say so.
-- **Charts** (dataviz method): one measure per chart, one y axis from 0, no dual axis. Lines 2 px ink; columns at most 24 px with a 4 px rounded top on `cell-known`; hairline solid grid; axis text 11 px ink-3, tabular. Charts are drawn for their container's width (ResizeObserver), so text never scales. The accent is "you, now" only: the last point, this week's column, today's cell. A single series has no legend box.
+- **Charts** (dataviz method): one measure per chart, one y axis from 0, no dual axis. Lines 2 px ink with the value at the end (components.progress-line); columns per components.progress-column (mid-grey `pg-col`, this week an accent outline labelled "so far", the 8-week average as a labelled hairline); hairline solid grid; axis text 11 px ink-3, tabular. Months carry no year; across a year, January is written as the year in 600 weight. From 960 px the charts that compare sit side by side: Words known | By level, Learnt | Time per week (plot tops aligned), Study days and By kind across the page, Goal | Milestones. Charts are drawn for their container's width (ResizeObserver), so text never scales. The accent is "you, now" only: the last point, this week's column, today's cell. A single series has no legend box.
   - Words and phrases known: a line; estimated days (before the backup's first snapshot) are a dotted ink-3 line with a note (the documented deviation: dots mean "not measured"); Igloo's import and map releases are hairline markers labelled at the top; milestones are ink diamonds with a canvas ring.
   - By level: small multiples, every one 0 to 100% of that day's own pool, a 10% ink wash under the line.
   - Learnt per week, time per week: columns. Time per week shows **either** In Fluentish (with the week plan as a labelled ink-2 line) **or** All tracked (the study hours file); they are never added, because the file includes the time spent here. By kind: small multiples on one shared scale (reviews, new items, practice, mock exams, not split by kind), never a stacked hue palette.
-  - Study days: a calendar field, a column per week, three ink steps validated with the dataviz validator (`--ordinal`): light `#a2a4a8 #6a6d74 #2c2e36` (light end 2.27:1 on canvas), dark `#4a4d56 #8b8e97 #d6d7dc` (2.29:1). No study is `cell-empty`. Marks: ink 16.6:1, cell-known 12.3:1, accent 6.6:1, ink-3 5.8:1 on the light canvas; 16.2, 13.5, 7.7 and 7.1:1 on dark.
+  - Study days: a calendar field, a column per week, three ink steps validated with the dataviz validator (`--ordinal`): light `#8a8c91 #6a6d74 #2c2e36` (light end 3.05:1 on canvas), dark `#5c5f68 #8b8e97 #d6d7dc` (3.03:1). No study is `cell-empty`. Marks: ink 16.6:1, cell-known 12.3:1, accent 6.6:1, ink-3 5.8:1 on the light canvas; 16.2, 13.5, 7.7 and 7.1:1 on dark.
   - The level goal: a sentence with the 10th to 90th percentile months, and a strip from today: the range as an ink band (20%), the middle as a 2 px tick, his month as an ink-2 line. Hidden until 8 full weeks of exact records, with the reason in words.
 - **Readout**: hover and the arrow keys move a crosshair (lines) or a highlighted slot (columns, cells) with a small surface card: value first in ink, the day or week under it in ink-3. It is aria-hidden; every chart has a "Show as a table" twin with the same values, and an aria-label that summarises it.
 - **Numbers**: the summary figures are Newsreader 28 (title size, not the one numeral) and tick with `countTo`.
-- **Motion**: on the first open of a day the known line draws in (900 ms, ease-out) and the columns rise (640 ms, the last 8 staggered 28 ms); a range switch crossfades in 240 ms and never redraws. Reduced motion: end states only. Nothing moves at rest.
+- **Motion**: on the first open of a day the known line draws in (900 ms, ease-out), its milestones and end dot landing as it reaches them, and the columns rise (640 ms, the last 8 staggered 28 ms); a range switch crossfades in 240 ms and never redraws. Opening Progress from Today morphs the Progress row's sparkline into the known chart (pg-known). Reduced motion: end states only. Nothing moves at rest.
+- **Empty**: one sentence (Geist 15 ink-2) over the Words known frame drawn empty (axis and grid, "Your first week").
 - **Forced colours**: marks use CanvasText, the accent marks Highlight.
 
 ## Earned moments (round 2)
@@ -299,6 +322,9 @@ Each runs once per event, never at rest, and is dropped under reduced motion (th
 - **Situation card**: the line types in word by word with the audio, the model answer arrives as a reply bubble, the grades rise in on a stagger.
 - **Card lift** ("I know this" on a new card, every round type): the card rises 40 px and fades (300 ms, ease-out) and the next card rises into its place (spring-soft): `swap(…, { kind: 'lift' })`. Reduced motion: a crossfade.
 - **The week fills** (Today in maintenance, round 4): each column of the week strip fills from the share it showed last time (640 ms spring-soft, 28 ms stagger), so back from a round only that round's minutes fill, and "N of 4 h 05 this week" ticks with countTo. The kind-of-day line cross-fades (base duration) when it changes (Study anyway). "Welcome back" after a break rises in once a day (fx-rise). Reduced motion: end states at once.
+- **Known line arrives** (Progress): the draw-in passes each milestone, which pops on spring-pop; the end dot lands last, then its value.
+- **Today to Progress**: the Progress row's sparkline and the known chart share `view-transition-name: pg-known`, so the small line grows into the large one (520 ms, spring-snappy). Reduced motion: the route's crossfade.
+- **A day of the week changes** (Goals and week): that column of the strip grows or shrinks from its old height (scaleY, spring-soft) and its kind crosses over.
 - **Quick sort fling** (Practice › Quick sort): a copy of the word flies on a short arc into the Know or Learn button and shrinks into its count (440 ms), which lands on spring-pop; the next word rises in at once, so input never waits: `fling()` in core/motion.js. Reduced motion: only the counts change.
 
 Done screens (components.done-hero) are ordinary pages: the hero's start() brings the header and tab bar back and unlocks the page scroll (`leaveRound()`), the actions row follows the hero and stays on screen above the tab bar (sticky), and a cluster round shows its own words plus the cluster as a compact field, never the whole cluster as type. `tests/unit/done-screens.test.mjs` guards this.
