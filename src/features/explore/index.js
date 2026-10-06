@@ -637,6 +637,7 @@ async function mountMap(el, ctx, offs) {
   function closeSheet({ keepSelection = false, restore = false } = {}) {
     if (!keepSelection) cur().clear();
     openItem = -1; openGroupIdx = -1;
+    drawStudy();
     if (pendingMoments && view === '3d') { const mq = pendingMoments; pendingMoments = null; setTimeout(() => { if (alive && sheet.hidden) void playMoments(mq); }, 200); }
     if (sheet.hidden) return;
     sheet.classList.remove('is-in');
