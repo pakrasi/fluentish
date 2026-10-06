@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "1909c38cf79a",
+ "version": "44f7e0588006",
  "languages": [
   {
    "id": "khasi",
@@ -351,8 +351,8 @@
    "id": "clusters.de",
    "path": "clusters/de.json",
    "schema": "clusters@1",
-   "bytes": 385001,
-   "sha256": "a5e91684524d94570ca5625cf9215e2aa128487251beb70d23d3d4959c65235d"
+   "bytes": 408612,
+   "sha256": "cdee551d63cddfcfdc9872e45d692e9f9662b69bd293ac135bc2d9d1c9ad79fb"
   },
   {
    "id": "conversation.de",
@@ -820,8 +820,8 @@
    "id": "igloo.words.de",
    "path": "igloo/words/de.json",
    "schema": "lexicon@1",
-   "bytes": 1136533,
-   "sha256": "c72daf706704659d2e2c40efcb2c8bfc6d5e146daff8bb317dfc694a9338e833"
+   "bytes": 1326561,
+   "sha256": "b645a741afddf9dd75e57b30fe554fa56fc01afed8cf2087381498abd01c6870"
   },
   {
    "id": "igloo.words.fr",

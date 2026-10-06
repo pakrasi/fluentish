@@ -1,0 +1,837 @@
+[
+ {
+  "id": "die_Heilung",
+  "field": "en",
+  "before": [
+   "recovery (healing)",
+   "cure"
+  ],
+  "after": [
+   "healing",
+   "cure"
+  ],
+  "severity": "error",
+  "why": "'recovery' prompts die Genesung / genesen (both in list); Heilung = healing, cure"
+ },
+ {
+  "id": "demnach.adv",
+  "field": "en",
+  "before": [
+   "accordingly",
+   "according to that"
+  ],
+  "after": [
+   "according to this (source)",
+   "so (as stated)"
+  ],
+  "severity": "error",
+  "why": "'accordingly' is the prompt-word of dementsprechend; demnach = according to this/that"
+ },
+ {
+  "id": "hauptberuflich.adj",
+  "field": "en",
+  "before": [
+   "as one's main job",
+   "full-time (main occupation)"
+  ],
+  "after": [
+   "as one's main job",
+   "in one's main occupation"
+  ],
+  "severity": "error",
+  "why": "hauptberuflich is not 'full-time' (= in Vollzeit); a part-timer can work hauptberuflich"
+ },
+ {
+  "id": "hauptberuflich.adj",
+  "field": "exen",
+  "before": "She works full-time as a translator.",
+  "after": "She works as a translator as her main job.",
+  "severity": "error",
+  "why": "mistranslation: hauptberuflich ≠ full-time"
+ },
+ {
+  "id": "die_Spezies",
+  "field": "alt",
+  "before": [],
+  "after": [
+   "die Art"
+  ],
+  "severity": "error",
+  "why": "'species' prompts die Art first for any native speaker; Art is the normal word, Spezies is scientific/formal"
+ },
+ {
+  "id": "die_Spezies",
+  "field": "ex",
+  "before": "Jeden Tag sterben Spezies aus.",
+  "after": "Der Mensch ist eine junge Spezies.",
+  "severity": "improve",
+  "why": "'Arten sterben aus' is the idiom; Spezies sounds stilted in that sentence"
+ },
+ {
+  "id": "die_Spezies",
+  "field": "exen",
+  "before": "Species die out every day.",
+  "after": "Humans are a young species.",
+  "severity": "improve",
+  "why": "matches new example"
+ },
+ {
+  "id": "übertragen.verb",
+  "field": "alt",
+  "before": [],
+  "after": [
+   "ausstrahlen"
+  ],
+  "severity": "error",
+  "why": "'to broadcast' is also the first gloss of ausstrahlen (B2, in list); a learner typing ausstrahlen is right"
+ },
+ {
+  "id": "übertragen.verb",
+  "field": "en",
+  "before": [
+   "to broadcast",
+   "to transmit"
+  ],
+  "after": [
+   "to broadcast (live)",
+   "to transmit"
+  ],
+  "severity": "improve",
+  "why": "separate from ausstrahlen ('to air')"
+ },
+ {
+  "id": "das_Arzneimittel",
+  "field": "alt",
+  "before": [],
+  "after": [
+   "das Medikament"
+  ],
+  "severity": "improve",
+  "why": "'drug (medicine)' / 'medicinal product' is answered equally well with Medikament"
+ },
+ {
+  "id": "die_Herstellung",
+  "field": "alt",
+  "before": [],
+  "after": [
+   "die Produktion"
+  ],
+  "severity": "improve",
+  "why": "true synonym for 'production'"
+ },
+ {
+  "id": "die_Tagung",
+  "field": "alt",
+  "before": [],
+  "after": [
+   "die Konferenz"
+  ],
+  "severity": "improve",
+  "why": "'conference' is just as correct as Konferenz"
+ },
+ {
+  "id": "zugleich.adv",
+  "field": "alt",
+  "before": [],
+  "after": [
+   "gleichzeitig"
+  ],
+  "severity": "improve",
+  "why": "'at the same time' → gleichzeitig is the first answer most learners type"
+ },
+ {
+  "id": "letztlich.adv",
+  "field": "alt",
+  "before": [],
+  "after": [
+   "letztendlich"
+  ],
+  "severity": "improve",
+  "why": "letztendlich (C1 in list) has the same prompt 'ultimately'"
+ },
+ {
+  "id": "womöglich.adv",
+  "field": "alt",
+  "before": [],
+  "after": [
+   "möglicherweise"
+  ],
+  "severity": "improve",
+  "why": "'possibly' is equally möglicherweise"
+ },
+ {
+  "id": "vorab.adv",
+  "field": "alt",
+  "before": [],
+  "after": [
+   "im Voraus"
+  ],
+  "severity": "improve",
+  "why": "'in advance' → im Voraus is the common answer"
+ },
+ {
+  "id": "beruhen.verb",
+  "field": "alt",
+  "before": [],
+  "after": [
+   "basieren"
+  ],
+  "severity": "improve",
+  "why": "'to be based (on)' = basieren auf, true synonym"
+ },
+ {
+  "id": "sich_befassen.verb",
+  "field": "alt",
+  "before": [],
+  "after": [
+   "sich beschäftigen"
+  ],
+  "severity": "improve",
+  "why": "'to deal (with a topic)' = sich beschäftigen mit"
+ },
+ {
+  "id": "eigenständig.adj",
+  "field": "alt",
+  "before": [],
+  "after": [
+   "selbstständig",
+   "selbständig"
+  ],
+  "severity": "improve",
+  "why": "'independent (on one's own)' = selbstständig, both spellings allowed"
+ },
+ {
+  "id": "sich_verschlimmern.verb",
+  "field": "alt",
+  "before": [],
+  "after": [
+   "sich verschlechtern"
+  ],
+  "severity": "improve",
+  "why": "'to get worse' = sich verschlechtern"
+ },
+ {
+  "id": "das_Mandat",
+  "field": "alt",
+  "before": [],
+  "after": [
+   "der Sitz"
+  ],
+  "severity": "improve",
+  "why": "'seat (in parliament)' → der Sitz is equally correct"
+ },
+ {
+  "id": "der_Benutzername",
+  "field": "alt",
+  "before": [],
+  "after": [
+   "der Nutzername"
+  ],
+  "severity": "improve",
+  "why": "Nutzername is equally common in de-DE"
+ },
+ {
+  "id": "der_Onlinehandel",
+  "field": "alt",
+  "before": [],
+  "after": [
+   "der Online-Handel"
+  ],
+  "severity": "improve",
+  "why": "hyphenated spelling is equally standard (Duden)"
+ },
+ {
+  "id": "aufweisen.verb",
+  "field": "en",
+  "before": [
+   "to show",
+   "to exhibit (features)"
+  ],
+  "after": [
+   "to exhibit (features, defects)",
+   "to have (show)"
+  ],
+  "severity": "improve",
+  "why": "'to show' prompts zeigen"
+ },
+ {
+  "id": "die_Organspende",
+  "field": "ex",
+  "before": "Sie hat einen Ausweis für die Organspende.",
+  "after": "Sie hat sich für die Organspende entschieden.",
+  "severity": "improve",
+  "why": "native speakers say Organspendeausweis; the paraphrase sounds translated"
+ },
+ {
+  "id": "die_Organspende",
+  "field": "exen",
+  "before": "She has an organ donor card.",
+  "after": "She has decided to become an organ donor.",
+  "severity": "improve",
+  "why": "matches new example"
+ },
+ {
+  "id": "bundesweit.adj",
+  "field": "ex",
+  "before": "Die Streiks gab es bundesweit.",
+  "after": "Es gab bundesweit Streiks.",
+  "severity": "improve",
+  "why": "more natural word order"
+ },
+ {
+  "id": "bundesweit.adj",
+  "field": "exen",
+  "before": "The strikes took place nationwide.",
+  "after": "There were strikes nationwide.",
+  "severity": "improve",
+  "why": "matches new example"
+ },
+ {
+  "id": "ankündigen.verb",
+  "field": "dom",
+  "before": [
+   "politics"
+  ],
+  "after": [
+   "news"
+  ],
+  "severity": "improve",
+  "why": "announcements of strikes, products, plans: news/general, not specifically politics"
+ },
+ {
+  "id": "anonym.adj",
+  "field": "dom",
+  "before": [
+   "tech"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "anonymous surveys, letters, donors; example is not tech"
+ },
+ {
+  "id": "stellenweise.adv",
+  "field": "dom",
+  "before": [
+   "environment"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "error",
+  "why": "general adverb ('in places'), mostly met in weather reports and everyday speech"
+ },
+ {
+  "id": "das_Cybermobbing",
+  "field": "dom",
+  "before": [
+   "tech"
+  ],
+  "after": [
+   "society",
+   "tech"
+  ],
+  "severity": "improve",
+  "why": "met mainly as a social/school issue"
+ },
+ {
+  "id": "die_Hassrede",
+  "field": "dom",
+  "before": [
+   "tech"
+  ],
+  "after": [
+   "society",
+   "tech"
+  ],
+  "severity": "improve",
+  "why": "met in society/politics debate, not only tech"
+ },
+ {
+  "id": "die_Propaganda",
+  "field": "dom",
+  "before": [
+   "news"
+  ],
+  "after": [
+   "politics",
+   "news"
+  ],
+  "severity": "improve",
+  "why": "propaganda is primarily political"
+ },
+ {
+  "id": "das_Placebo",
+  "field": "dom",
+  "before": [
+   "science"
+  ],
+  "after": [
+   "science",
+   "health"
+  ],
+  "severity": "improve",
+  "why": "met in medicine/health contexts"
+ },
+ {
+  "id": "das_Stromnetz",
+  "field": "dom",
+  "before": [
+   "environment"
+  ],
+  "after": [
+   "environment",
+   "tech"
+  ],
+  "severity": "improve",
+  "why": "energy infrastructure"
+ },
+ {
+  "id": "glaubwürdig.adj",
+  "field": "dom",
+  "before": [
+   "news"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "credible witness/person/story; everyday word, example is a witness"
+ },
+ {
+  "id": "die_Selbstbestimmung",
+  "field": "dom",
+  "before": [
+   "general"
+  ],
+  "after": [
+   "society"
+  ],
+  "severity": "improve",
+  "why": "self-determination is a society/politics term"
+ },
+ {
+  "id": "die_Schwiegermutter",
+  "field": "dom",
+  "before": [
+   "society"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "family word, met in private life, not in the society domain"
+ },
+ {
+  "id": "der_Schwiegervater",
+  "field": "dom",
+  "before": [
+   "society"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "family word, met in private life, not in the society domain"
+ },
+ {
+  "id": "der_Stiefvater",
+  "field": "dom",
+  "before": [
+   "society"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "family word, met in private life, not in the society domain"
+ },
+ {
+  "id": "die_Stiefmutter",
+  "field": "dom",
+  "before": [
+   "society"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "family word, met in private life, not in the society domain"
+ },
+ {
+  "id": "der_Ehepartner",
+  "field": "dom",
+  "before": [
+   "society"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "family word, met in private life, not in the society domain"
+ },
+ {
+  "id": "der_Lebensgefährte",
+  "field": "dom",
+  "before": [
+   "society"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "family word, met in private life, not in the society domain"
+ },
+ {
+  "id": "die_Verwandtschaft",
+  "field": "dom",
+  "before": [
+   "society"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "family word, met in private life, not in the society domain"
+ },
+ {
+  "id": "die_Witwe",
+  "field": "dom",
+  "before": [
+   "society"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "family word, met in private life, not in the society domain"
+ },
+ {
+  "id": "das_Kleinkind",
+  "field": "dom",
+  "before": [
+   "society"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "everyday family word"
+ },
+ {
+  "id": "der_Säugling",
+  "field": "dom",
+  "before": [
+   "society"
+  ],
+  "after": [
+   "health"
+  ],
+  "severity": "improve",
+  "why": "formal/medical word for baby"
+ },
+ {
+  "id": "der_Radweg",
+  "field": "dom",
+  "before": [
+   "society"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "everyday city/transport word"
+ },
+ {
+  "id": "der_Wochenmarkt",
+  "field": "dom",
+  "before": [
+   "society"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "everyday shopping word"
+ },
+ {
+  "id": "die_Sicherheitskontrolle",
+  "field": "dom",
+  "before": [
+   "society"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "airport/travel word"
+ },
+ {
+  "id": "die_Mitfahrgelegenheit",
+  "field": "dom",
+  "before": [
+   "society"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "travel/everyday word"
+ },
+ {
+  "id": "die_Müllabfuhr",
+  "field": "dom",
+  "before": [
+   "society"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "everyday household word"
+ },
+ {
+  "id": "der_Untermieter",
+  "field": "dom",
+  "before": [
+   "society"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "housing/everyday word"
+ },
+ {
+  "id": "sitzenbleiben.verb",
+  "field": "dom",
+  "before": [
+   "society"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "school/everyday word"
+ },
+ {
+  "id": "die_Gaststätte",
+  "field": "dom",
+  "before": [
+   "society"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "eating out, everyday"
+ },
+ {
+  "id": "die_Anbindung",
+  "field": "dom",
+  "before": [
+   "society"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "transport link, everyday/housing"
+ },
+ {
+  "id": "das_Wahrzeichen",
+  "field": "dom",
+  "before": [
+   "society"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "tourism/city word"
+ },
+ {
+  "id": "die_Einreise",
+  "field": "dom",
+  "before": [
+   "politics"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "met mainly in travel (Einreisebestimmungen)"
+ },
+ {
+  "id": "die_Ausreise",
+  "field": "dom",
+  "before": [
+   "politics"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "met mainly in travel"
+ },
+ {
+  "id": "die_Knete",
+  "field": "dom",
+  "before": [
+   "economy"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "error",
+  "why": "colloquial slang for money; never met in the economy domain"
+ },
+ {
+  "id": "der_Influencer",
+  "field": "dom",
+  "before": [
+   "news"
+  ],
+  "after": [
+   "tech",
+   "society"
+  ],
+  "severity": "improve",
+  "why": "social-media word, not news"
+ },
+ {
+  "id": "fettig.adj",
+  "field": "dom",
+  "before": [
+   "health"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "greasy food/hair, everyday"
+ },
+ {
+  "id": "das_Kinn",
+  "field": "dom",
+  "before": [
+   "health"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "body part met in description, not health"
+ },
+ {
+  "id": "die_Wange",
+  "field": "dom",
+  "before": [
+   "health"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "body part met in description, not health"
+ },
+ {
+  "id": "die_Hülsenfrüchte",
+  "field": "dom",
+  "before": [
+   "health"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "food word; other food items are general"
+ },
+ {
+  "id": "das_Vollkornbrot",
+  "field": "dom",
+  "before": [
+   "health"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "food word; other food items are general"
+ },
+ {
+  "id": "die_Wahrscheinlichkeit",
+  "field": "dom",
+  "before": [
+   "science"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "'mit hoher Wahrscheinlichkeit' is everyday/news language"
+ },
+ {
+  "id": "die_Rücksendung",
+  "field": "dom",
+  "before": [
+   "economy"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "online shopping, everyday"
+ },
+ {
+  "id": "zerlegen.verb",
+  "field": "dom",
+  "before": [
+   "tech"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "taking apart furniture etc., everyday"
+ },
+ {
+  "id": "festlegen.verb",
+  "field": "dom",
+  "before": [
+   "work"
+  ],
+  "after": [
+   "general"
+  ],
+  "severity": "improve",
+  "why": "fixing dates, rules: general"
+ },
+ {
+  "id": "der_Einbrecher",
+  "field": "dom",
+  "before": [
+   "society"
+  ],
+  "after": [
+   "news",
+   "society"
+  ],
+  "severity": "improve",
+  "why": "match Einbruch/einbrechen (news,society)"
+ },
+ {
+  "id": "der_Leistungsdruck",
+  "field": "dom",
+  "before": [
+   "society"
+  ],
+  "after": [
+   "work",
+   "society"
+  ],
+  "severity": "improve",
+  "why": "pressure to perform at school and work"
+ }
+]

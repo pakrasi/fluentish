@@ -364,7 +364,10 @@
   "rank": 895,
   "zipf": 4.03,
   "ex": "Das war eine indirekte Kritik.",
-  "exen": "That was indirect criticism."
+  "exen": "That was indirect criticism.",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "unbekannt.adj",
@@ -594,7 +597,10 @@
   "rank": 896,
   "zipf": 3.75,
   "ex": "Ohne Handy fühle ich mich hilflos.",
-  "exen": "Without my phone I feel helpless."
+  "exen": "Without my phone I feel helpless.",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "auffällig.adj",
@@ -647,7 +653,11 @@
   "rank": 897,
   "zipf": 3.96,
   "ex": "Das Medikament ist sehr wirksam.",
-  "exen": "The medicine is very effective."
+  "exen": "The medicine is very effective.",
+  "dom": [
+   "health",
+   "science"
+  ]
  },
  {
   "id": "passend.adj",
@@ -719,7 +729,10 @@
   "rank": 898,
   "zipf": 4.04,
   "ex": "Das dürfen Sie keinesfalls vergessen.",
-  "exen": "You must under no circumstances forget that."
+  "exen": "You must under no circumstances forget that.",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "später.adv",
@@ -1081,7 +1094,10 @@
   "rank": 899,
   "zipf": 3.36,
   "ex": "Aus einem Misserfolg kann man viel lernen.",
-  "exen": "You can learn a lot from a failure."
+  "exen": "You can learn a lot from a failure.",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "die_Nachfrage",
@@ -1098,7 +1114,10 @@
   "rank": 900,
   "zipf": 4.44,
   "ex": "Die Nachfrage nach Wohnungen ist groß.",
-  "exen": "The demand for flats is high."
+  "exen": "The demand for flats is high.",
+  "dom": [
+   "economy"
+  ]
  },
  {
   "id": "die_Ablehnung",
@@ -1116,7 +1135,10 @@
   "rank": 901,
   "zipf": 4.17,
   "ex": "Ich habe eine Ablehnung bekommen.",
-  "exen": "I got a rejection."
+  "exen": "I got a rejection.",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "der_Import",
@@ -1133,7 +1155,10 @@
   "rank": 902,
   "zipf": 3.7,
   "ex": "Der Import von Obst ist teuer.",
-  "exen": "Importing fruit is expensive."
+  "exen": "Importing fruit is expensive.",
+  "dom": [
+   "economy"
+  ]
  },
  {
   "id": "der_Export",
@@ -1150,7 +1175,10 @@
   "rank": 903,
   "zipf": 3.92,
   "ex": "Deutschland lebt vom Export.",
-  "exen": "Germany lives off its exports."
+  "exen": "Germany lives off its exports.",
+  "dom": [
+   "economy"
+  ]
  },
  {
   "id": "das_Inland",
@@ -1168,7 +1196,10 @@
   "rank": 904,
   "zipf": 3.77,
   "ex": "Die Preise im Inland steigen.",
-  "exen": "Prices at home are rising."
+  "exen": "Prices at home are rising.",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "der_Raum",
@@ -1342,7 +1373,7 @@
   "level": "A2",
   "theme": "clothes",
   "rank": 755,
-  "zipf": 4.0,
+  "zipf": 4,
   "ex": "Ich muss noch den Einkauf machen.",
   "exen": "I still have to do the shopping."
  },
@@ -1465,7 +1496,10 @@
   "rank": 905,
   "zipf": 4.31,
   "ex": "Ich habe Ihre E-Mail zur Kenntnis genommen.",
-  "exen": "I have taken note of your email."
+  "exen": "I have taken note of your email.",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "die_Schrift",
@@ -1520,7 +1554,10 @@
   "rank": 906,
   "zipf": 4.35,
   "ex": "Wir brauchen einen Ersatz für den Kollegen.",
-  "exen": "We need a replacement for our colleague."
+  "exen": "We need a replacement for our colleague.",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "der_Einsatz",
@@ -1539,7 +1576,10 @@
   "rank": 907,
   "zipf": 5.09,
   "ex": "Danke für Ihren Einsatz!",
-  "exen": "Thank you for your commitment!"
+  "exen": "Thank you for your commitment!",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "der_Bezug",
@@ -1557,7 +1597,10 @@
   "rank": 908,
   "zipf": 4.72,
   "ex": "In Bezug auf Ihre E-Mail habe ich eine Frage.",
-  "exen": "With reference to your email, I have a question."
+  "exen": "With reference to your email, I have a question.",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "die_Aussicht",
@@ -1627,7 +1670,10 @@
   "rank": 909,
   "zipf": 4.5,
   "ex": "Hier ist eine Übersicht über die Kosten.",
-  "exen": "Here is an overview of the costs."
+  "exen": "Here is an overview of the costs.",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "die_Hinsicht",
@@ -1644,7 +1690,10 @@
   "rank": 910,
   "zipf": 4.37,
   "ex": "In dieser Hinsicht hast du recht.",
-  "exen": "In this respect you're right."
+  "exen": "In this respect you're right.",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "die_Überlegung",
@@ -1662,7 +1711,10 @@
   "rank": 911,
   "zipf": 3.72,
   "ex": "Nach langer Überlegung habe ich zugesagt.",
-  "exen": "After a lot of thought I accepted."
+  "exen": "After a lot of thought I accepted.",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "die_Wiederholung",
@@ -1749,7 +1801,10 @@
   "rank": 912,
   "zipf": 3.3,
   "ex": "Das war ein guter Einfall!",
-  "exen": "That was a good idea!"
+  "exen": "That was a good idea!",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "der_Anfall",
@@ -1767,7 +1822,10 @@
   "rank": 913,
   "zipf": 3.58,
   "ex": "Der Patient hatte in der Nacht einen Anfall.",
-  "exen": "The patient had a fit during the night."
+  "exen": "The patient had a fit during the night.",
+  "dom": [
+   "health"
+  ]
  },
  {
   "id": "der_Verfall",
@@ -1786,7 +1844,10 @@
   "rank": 645,
   "zipf": 3.68,
   "ex": "Der Verfall des alten Hauses ist traurig.",
-  "exen": "The decay of the old house is sad."
+  "exen": "The decay of the old house is sad.",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "der_Zerfall",
@@ -1804,7 +1865,10 @@
   "rank": 646,
   "zipf": 3.55,
   "ex": "Der Zerfall des Reiches dauerte viele Jahre.",
-  "exen": "The empire's collapse took many years."
+  "exen": "The empire's collapse took many years.",
+  "dom": [
+   "science"
+  ]
  },
  {
   "id": "der_Beifall",
@@ -1821,7 +1885,10 @@
   "rank": 914,
   "zipf": 3.9,
   "ex": "Am Ende gab es lauten Beifall.",
-  "exen": "At the end there was loud applause."
+  "exen": "At the end there was loud applause.",
+  "dom": [
+   "society"
+  ]
  },
  {
   "id": "umfallen.verb",
@@ -1895,7 +1962,10 @@
   "zipf": 3.82,
   "ex": "Das Ticket verfällt am Ende des Monats.",
   "exen": "The ticket expires at the end of the month.",
-  "forms": "verfällt · verfiel · ist verfallen"
+  "forms": "verfällt · verfiel · ist verfallen",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "zerfallen.verb",
@@ -1914,7 +1984,10 @@
   "zipf": 3.28,
   "ex": "Das alte Papier zerfällt langsam.",
   "exen": "The old paper is slowly falling apart.",
-  "forms": "zerfällt · zerfiel · ist zerfallen"
+  "forms": "zerfällt · zerfiel · ist zerfallen",
+  "dom": [
+   "science"
+  ]
  },
  {
   "id": "anfallen.verb",
@@ -1932,7 +2005,10 @@
   "zipf": 3.47,
   "ex": "Für die Reparatur fallen Kosten an.",
   "exen": "There will be costs for the repair.",
-  "forms": "fällt an · fiel an · ist angefallen"
+  "forms": "fällt an · fiel an · ist angefallen",
+  "dom": [
+   "economy"
+  ]
  },
  {
   "id": "weisen.verb",
@@ -1951,7 +2027,10 @@
   "zipf": 4.45,
   "ex": "Das Schild weist nach Norden.",
   "exen": "The sign points north.",
-  "forms": "weist · wies · hat gewiesen"
+  "forms": "weist · wies · hat gewiesen",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "verweisen.verb",
@@ -1970,7 +2049,10 @@
   "zipf": 3.98,
   "ex": "Ich verweise auf meine letzte E-Mail.",
   "exen": "I refer to my last email.",
-  "forms": "verweist · verwies · hat verwiesen"
+  "forms": "verweist · verwies · hat verwiesen",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "entsprechen.verb",
@@ -2026,7 +2108,10 @@
   "zipf": 4.08,
   "ex": "Die Bremsen haben versagt.",
   "exen": "The brakes failed.",
-  "forms": "versagt · versagte · hat versagt"
+  "forms": "versagt · versagte · hat versagt",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "bestimmen.verb",
@@ -2064,7 +2149,10 @@
   "zipf": 3.45,
   "ex": "Ich stimme mit dir völlig überein.",
   "exen": "I completely agree with you.",
-  "forms": "stimmt überein · stimmte überein · hat übereingestimmt"
+  "forms": "stimmt überein · stimmte überein · hat übereingestimmt",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "überlegen.verb",
@@ -2102,7 +2190,10 @@
   "zipf": 4.05,
   "ex": "Wir müssen das Treffen auf Freitag verlegen.",
   "exen": "We have to move the meeting to Friday.",
-  "forms": "verlegt · verlegte · hat verlegt"
+  "forms": "verlegt · verlegte · hat verlegt",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "anlegen.verb",
@@ -2122,7 +2213,10 @@
   "zipf": 4.13,
   "ex": "Er hat sein Geld gut angelegt.",
   "exen": "He invested his money well.",
-  "forms": "legt an · legte an · hat angelegt"
+  "forms": "legt an · legte an · hat angelegt",
+  "dom": [
+   "economy"
+  ]
  },
  {
   "id": "festlegen.verb",
@@ -2141,7 +2235,10 @@
   "zipf": 3.83,
   "ex": "Wir sollten einen Termin festlegen.",
   "exen": "We should set a date.",
-  "forms": "legt fest · legte fest · hat festgelegt"
+  "forms": "legt fest · legte fest · hat festgelegt",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "ablegen.verb",
@@ -2160,7 +2257,10 @@
   "zipf": 3.84,
   "ex": "Er hat die Prüfung erfolgreich abgelegt.",
   "exen": "He passed the exam.",
-  "forms": "legt ab · legte ab · hat abgelegt"
+  "forms": "legt ab · legte ab · hat abgelegt",
+  "dom": [
+   "science"
+  ]
  },
  {
   "id": "vorlegen.verb",
@@ -2179,7 +2279,10 @@
   "zipf": 3.68,
   "ex": "Bitte legen Sie Ihren Ausweis vor.",
   "exen": "Please show your ID.",
-  "forms": "legt vor · legte vor · hat vorgelegt"
+  "forms": "legt vor · legte vor · hat vorgelegt",
+  "dom": [
+   "politics"
+  ]
  },
  {
   "id": "hinlegen.verb",
@@ -2291,7 +2394,10 @@
   "zipf": 4.47,
   "ex": "Ich verfolge die Nachrichten jeden Tag.",
   "exen": "I follow the news every day.",
-  "forms": "verfolgt · verfolgte · hat verfolgt"
+  "forms": "verfolgt · verfolgte · hat verfolgt",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "sorgen.verb",
@@ -2348,7 +2454,10 @@
   "zipf": 4.07,
   "ex": "Die Krankenschwester versorgt die Wunde.",
   "exen": "The nurse treats the wound.",
-  "forms": "versorgt · versorgte · hat versorgt"
+  "forms": "versorgt · versorgte · hat versorgt",
+  "dom": [
+   "health"
+  ]
  },
  {
   "id": "trauen.verb",
@@ -2367,7 +2476,10 @@
   "zipf": 4.12,
   "ex": "Ich traue ihm nicht.",
   "exen": "I don't trust him.",
-  "forms": "traut · traute · hat getraut"
+  "forms": "traut · traute · hat getraut",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "anpassen.verb",
@@ -2478,7 +2590,10 @@
   "zipf": 3.96,
   "ex": "Rauchen gefährdet die Gesundheit.",
   "exen": "Smoking endangers your health.",
-  "forms": "gefährdet · gefährdete · hat gefährdet"
+  "forms": "gefährdet · gefährdete · hat gefährdet",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "loben.verb",
@@ -2571,7 +2686,10 @@
   "zipf": 4.31,
   "ex": "Hier kann man kein Signal empfangen.",
   "exen": "You can't get a signal here.",
-  "forms": "empfängt · empfing · hat empfangen"
+  "forms": "empfängt · empfing · hat empfangen",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "erhöhen.verb",
@@ -2609,7 +2727,10 @@
   "zipf": 4.1,
   "ex": "Die Stadt will die Kosten senken.",
   "exen": "The city wants to reduce costs.",
-  "forms": "senkt · senkte · hat gesenkt"
+  "forms": "senkt · senkte · hat gesenkt",
+  "dom": [
+   "economy"
+  ]
  },
  {
   "id": "anmachen.verb",
@@ -2887,7 +3008,10 @@
   "zipf": 2.99,
   "ex": "Die Post stellt Briefe auch am Samstag zu.",
   "exen": "The post office delivers letters on Saturdays too.",
-  "forms": "stellt zu · stellte zu · hat zugestellt"
+  "forms": "stellt zu · stellte zu · hat zugestellt",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "umstellen.verb",
@@ -2927,7 +3051,10 @@
   "zipf": 3.27,
   "ex": "Kannst du den Sitz etwas nach vorne verstellen?",
   "exen": "Can you move the seat forward a bit?",
-  "forms": "verstellt · verstellte · hat verstellt"
+  "forms": "verstellt · verstellte · hat verstellt",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "entstellen.verb",
@@ -2946,7 +3073,10 @@
   "zipf": 2.53,
   "ex": "Der Bericht entstellt die Tatsachen.",
   "exen": "The report distorts the facts.",
-  "forms": "entstellt · entstellte · hat entstellt"
+  "forms": "entstellt · entstellte · hat entstellt",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "erstellen.verb",
@@ -3024,7 +3154,10 @@
   "zipf": 3.04,
   "ex": "Mein Großvater legt alle zwei Stunden Holz nach.",
   "exen": "My grandfather puts more wood on every two hours.",
-  "forms": "legt nach · legte nach · hat nachgelegt"
+  "forms": "legt nach · legte nach · hat nachgelegt",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "zulegen.verb",
@@ -3044,7 +3177,10 @@
   "zipf": 3.72,
   "ex": "Wir legen uns bald einen Hund zu.",
   "exen": "We're going to get a dog soon.",
-  "forms": "legt zu · legte zu · hat zugelegt"
+  "forms": "legt zu · legte zu · hat zugelegt",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "zerlegen.verb",
@@ -3063,7 +3199,10 @@
   "zipf": 3.39,
   "ex": "Für den Umzug zerlegen wir das Bett.",
   "exen": "We're taking the bed apart for the move.",
-  "forms": "zerlegt · zerlegte · hat zerlegt"
+  "forms": "zerlegt · zerlegte · hat zerlegt",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "absetzen.verb",
@@ -3102,7 +3241,10 @@
   "zipf": 3.64,
   "ex": "Der Chef setzt die Besprechung für neun Uhr an.",
   "exen": "The boss is setting the meeting for nine o'clock.",
-  "forms": "setzt an · setzte an · hat angesetzt"
+  "forms": "setzt an · setzte an · hat angesetzt",
+  "dom": [
+   "work"
+  ]
  },
  {
   "id": "aufsetzen.verb",
@@ -3142,7 +3284,10 @@
   "zipf": 3.66,
   "ex": "Mit dem Training setze ich eine Woche aus.",
   "exen": "I'm taking a week off training.",
-  "forms": "setzt aus · setzte aus · hat ausgesetzt"
+  "forms": "setzt aus · setzte aus · hat ausgesetzt",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "besetzen.verb",
@@ -3218,7 +3363,7 @@
   "level": "B1",
   "theme": "core",
   "rank": 1033,
-  "zipf": 4.0,
+  "zipf": 4,
   "ex": "Dieses Jahr nehme ich mir vor, mehr zu lesen.",
   "exen": "This year I've resolved to read more.",
   "forms": "nimmt sich vor · nahm sich vor · hat sich vorgenommen"
@@ -3297,7 +3442,10 @@
   "zipf": 3.98,
   "ex": "Die Details entnehmen Sie bitte dem Anhang.",
   "exen": "Please see the attachment for the details.",
-  "forms": "entnimmt · entnahm · hat entnommen"
+  "forms": "entnimmt · entnahm · hat entnommen",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "angeben.verb",
@@ -3355,7 +3503,10 @@
   "zipf": 3.41,
   "ex": "Meine Mutter gibt fast nie nach.",
   "exen": "My mother almost never gives in.",
-  "forms": "gibt nach · gab nach · hat nachgegeben"
+  "forms": "gibt nach · gab nach · hat nachgegeben",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "zugeben.verb",
@@ -3392,7 +3543,10 @@
   "zipf": 4.21,
   "ex": "Das Dorf ist von Bergen umgeben.",
   "exen": "The village is surrounded by mountains.",
-  "forms": "umgibt · umgab · hat umgeben"
+  "forms": "umgibt · umgab · hat umgeben",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "übergeben.verb",
@@ -3410,7 +3564,10 @@
   "zipf": 4.38,
   "ex": "Der Fahrer übergibt das Paket persönlich.",
   "exen": "The driver hands over the parcel in person.",
-  "forms": "übergibt · übergab · hat übergeben"
+  "forms": "übergibt · übergab · hat übergeben",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "vergeben.verb",
@@ -3449,7 +3606,10 @@
   "zipf": 4.26,
   "ex": "Der Fahrer kam bei Glatteis von der Straße ab.",
   "exen": "The driver came off the road on black ice.",
-  "forms": "kommt ab · kam ab · ist abgekommen"
+  "forms": "kommt ab · kam ab · ist abgekommen",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "aufkommen.verb",
@@ -3469,7 +3629,10 @@
   "zipf": 4.03,
   "ex": "Am Nachmittag kommt starker Wind auf.",
   "exen": "In the afternoon a strong wind picks up.",
-  "forms": "kommt auf · kam auf · ist aufgekommen"
+  "forms": "kommt auf · kam auf · ist aufgekommen",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "auskommen.verb",
@@ -3528,7 +3691,10 @@
   "zipf": 2.74,
   "ex": "Bei dem Erdbeben kamen viele Menschen um.",
   "exen": "Many people died in the earthquake.",
-  "forms": "kommt um · kam um · ist umgekommen"
+  "forms": "kommt um · kam um · ist umgekommen",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "durchkommen.verb",
@@ -3567,7 +3733,10 @@
   "zipf": 3.05,
   "ex": "Während des Festivals kommen wir bei meiner Tante unter.",
   "exen": "During the festival we're staying with my aunt.",
-  "forms": "kommt unter · kam unter · ist untergekommen"
+  "forms": "kommt unter · kam unter · ist untergekommen",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "entkommen.verb",
@@ -3586,7 +3755,10 @@
   "zipf": 3.94,
   "ex": "Zwei Häftlinge sind aus dem Gefängnis entkommen.",
   "exen": "Two prisoners have escaped from prison.",
-  "forms": "entkommt · entkam · ist entkommen"
+  "forms": "entkommt · entkam · ist entkommen",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "angehen.verb",
@@ -3646,7 +3818,10 @@
   "zipf": 4.26,
   "ex": "Der Lehrer geht auf jede Frage genau ein.",
   "exen": "The teacher deals with every question carefully.",
-  "forms": "geht ein · ging ein · ist eingegangen"
+  "forms": "geht ein · ging ein · ist eingegangen",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "vorgehen.verb",
@@ -3764,7 +3939,10 @@
   "zipf": 3.96,
   "ex": "Der junge Mann hat einen Diebstahl begangen.",
   "exen": "The young man has committed a theft.",
-  "forms": "begeht · beging · hat begangen"
+  "forms": "begeht · beging · hat begangen",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "entgehen.verb",
@@ -3784,7 +3962,10 @@
   "zipf": 3.99,
   "ex": "Diese Chance lasse ich mir nicht entgehen.",
   "exen": "I'm not going to miss this chance.",
-  "forms": "entgeht · entging · ist entgangen"
+  "forms": "entgeht · entging · ist entgangen",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "anziehen.verb",
@@ -3824,7 +4005,10 @@
   "zipf": 3.76,
   "ex": "Vom Preis ziehen wir zehn Prozent ab.",
   "exen": "We'll take ten per cent off the price.",
-  "forms": "zieht ab · zog ab · hat abgezogen"
+  "forms": "zieht ab · zog ab · hat abgezogen",
+  "dom": [
+   "economy"
+  ]
  },
  {
   "id": "aufziehen.verb",
@@ -3844,7 +4028,10 @@
   "zipf": 3.43,
   "ex": "Meine Großeltern haben mich aufgezogen.",
   "exen": "My grandparents brought me up.",
-  "forms": "zieht auf · zog auf · hat aufgezogen"
+  "forms": "zieht auf · zog auf · hat aufgezogen",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "vorziehen.verb",
@@ -3883,7 +4070,10 @@
   "zipf": 2.94,
   "ex": "Zieh bitte die Tür hinter dir zu!",
   "exen": "Please pull the door shut behind you!",
-  "forms": "zieht zu · zog zu · hat zugezogen"
+  "forms": "zieht zu · zog zu · hat zugezogen",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "überziehen.verb",
@@ -3902,7 +4092,10 @@
   "zipf": 3.26,
   "ex": "Wer sein Konto überzieht, zahlt hohe Zinsen.",
   "exen": "Anyone who overdraws their account pays high interest.",
-  "forms": "überzieht · überzog · hat überzogen"
+  "forms": "überzieht · überzog · hat überzogen",
+  "dom": [
+   "economy"
+  ]
  },
  {
   "id": "verziehen.verb",
@@ -3922,7 +4115,10 @@
   "zipf": 3.42,
   "ex": "Das Kind verzieht beim Gemüse das Gesicht.",
   "exen": "The child pulls a face at the vegetables.",
-  "forms": "verzieht · verzog · hat verzogen"
+  "forms": "verzieht · verzog · hat verzogen",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "entziehen.verb",
@@ -3942,7 +4138,10 @@
   "zipf": 3.92,
   "ex": "Salz entzieht dem Gemüse Wasser.",
   "exen": "Salt draws water out of the vegetables.",
-  "forms": "entzieht · entzog · hat entzogen"
+  "forms": "entzieht · entzog · hat entzogen",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "zufallen.verb",
@@ -3962,7 +4161,10 @@
   "zipf": 2.73,
   "ex": "Mir fallen vor Müdigkeit fast die Augen zu.",
   "exen": "I'm so tired my eyes are almost closing.",
-  "forms": "fällt zu · fiel zu · ist zugefallen"
+  "forms": "fällt zu · fiel zu · ist zugefallen",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "überfallen.verb",
@@ -3982,7 +4184,10 @@
   "zipf": 3.96,
   "ex": "Ein Mann hat gestern eine Tankstelle überfallen.",
   "exen": "Yesterday a man held up a petrol station.",
-  "forms": "überfällt · überfiel · hat überfallen"
+  "forms": "überfällt · überfiel · hat überfallen",
+  "dom": [
+   "news"
+  ]
  },
  {
   "id": "entfallen.verb",
@@ -4002,7 +4207,10 @@
   "zipf": 3.85,
   "ex": "Sein Name ist mir leider entfallen.",
   "exen": "Unfortunately his name has slipped my mind.",
-  "forms": "entfällt · entfiel · ist entfallen"
+  "forms": "entfällt · entfiel · ist entfallen",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "abhalten.verb",
@@ -4021,7 +4229,10 @@
   "zipf": 3.89,
   "ex": "Der Regen hält uns nicht vom Spaziergang ab.",
   "exen": "The rain won't stop us going for a walk.",
-  "forms": "hält ab · hielt ab · hat abgehalten"
+  "forms": "hält ab · hielt ab · hat abgehalten",
+  "dom": [
+   "work"
+  ]
  },
  {
   "id": "anhalten.verb",
@@ -4216,7 +4427,10 @@
   "zipf": 2.79,
   "ex": "Das Gericht spricht der Mutter das Sorgerecht zu.",
   "exen": "The court awards custody to the mother.",
-  "forms": "spricht zu · sprach zu · hat zugesprochen"
+  "forms": "spricht zu · sprach zu · hat zugesprochen",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "durchsprechen.verb",
@@ -4235,7 +4449,10 @@
   "zipf": 2.01,
   "ex": "Vor dem Treffen sprechen wir alle Punkte durch.",
   "exen": "Before the meeting we talk through all the points.",
-  "forms": "spricht durch · sprach durch · hat durchgesprochen"
+  "forms": "spricht durch · sprach durch · hat durchgesprochen",
+  "dom": [
+   "work"
+  ]
  },
  {
   "id": "anschreiben.verb",
@@ -4292,7 +4509,10 @@
   "zipf": 3.05,
   "ex": "Die Universität schreibt jedes Jahr zwanzig Stipendien aus.",
   "exen": "The university advertises twenty scholarships every year.",
-  "forms": "schreibt aus · schrieb aus · hat ausgeschrieben"
+  "forms": "schreibt aus · schrieb aus · hat ausgeschrieben",
+  "dom": [
+   "work"
+  ]
  },
  {
   "id": "sich_einschreiben.verb",
@@ -4351,7 +4571,10 @@
   "zipf": 3.45,
   "ex": "Meine Eltern schreiben mir nicht vor, was ich studiere.",
   "exen": "My parents don't tell me what to study.",
-  "forms": "schreibt vor · schrieb vor · hat vorgeschrieben"
+  "forms": "schreibt vor · schrieb vor · hat vorgeschrieben",
+  "dom": [
+   "politics"
+  ]
  },
  {
   "id": "umschreiben.verb",
@@ -4370,7 +4593,10 @@
   "zipf": 3.23,
   "ex": "Nach dem Feedback schreibe ich die Einleitung noch einmal um.",
   "exen": "After the feedback I'm rewriting the introduction.",
-  "forms": "schreibt um · schrieb um · hat umgeschrieben"
+  "forms": "schreibt um · schrieb um · hat umgeschrieben",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "ansehen.verb",
@@ -4408,7 +4634,10 @@
   "zipf": 3.79,
   "ex": "Als ich hereinkam, sah niemand auf.",
   "exen": "When I came in, nobody looked up.",
-  "forms": "sieht auf · sah auf · hat aufgesehen"
+  "forms": "sieht auf · sah auf · hat aufgesehen",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "aussehen.verb",
@@ -4447,7 +4676,10 @@
   "zipf": 3.86,
   "ex": "Endlich sieht er ein, dass er Hilfe braucht.",
   "exen": "At last he realises that he needs help.",
-  "forms": "sieht ein · sah ein · hat eingesehen"
+  "forms": "sieht ein · sah ein · hat eingesehen",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "nachsehen.verb",
@@ -4487,7 +4719,10 @@
   "zipf": 3.18,
   "ex": "Das Programm sieht am Abend ein gemeinsames Essen vor.",
   "exen": "The programme includes a dinner together in the evening.",
-  "forms": "sieht vor · sah vor · hat vorgesehen"
+  "forms": "sieht vor · sah vor · hat vorgesehen",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "zusehen.verb",
@@ -4544,7 +4779,10 @@
   "zipf": 2.6,
   "ex": "Die Lehrerin sieht am Abend die Hausaufgaben durch.",
   "exen": "The teacher looks through the homework in the evening.",
-  "forms": "sieht durch · sah durch · hat durchgesehen"
+  "forms": "sieht durch · sah durch · hat durchgesehen",
+  "dom": [
+   "work"
+  ]
  },
  {
   "id": "übersehen.verb",
@@ -4621,7 +4859,10 @@
   "zipf": 3.22,
   "ex": "Wir fahren ohne Pause bis Wien durch.",
   "exen": "We're driving straight through to Vienna without a break.",
-  "forms": "fährt durch · fuhr durch · ist durchgefahren"
+  "forms": "fährt durch · fuhr durch · ist durchgefahren",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "umfahren.verb",
@@ -4640,7 +4881,10 @@
   "zipf": 3.14,
   "ex": "Der Lkw fuhr beim Wenden eine Laterne um.",
   "exen": "The lorry knocked down a lamp post while turning.",
-  "forms": "fährt um · fuhr um · hat umgefahren"
+  "forms": "fährt um · fuhr um · hat umgefahren",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "überfahren.verb",
@@ -4660,7 +4904,10 @@
   "zipf": 3.71,
   "ex": "Ein Auto hat gestern den Hund der Nachbarn überfahren.",
   "exen": "Yesterday a car ran over the neighbours' dog.",
-  "forms": "überfährt · überfuhr · hat überfahren"
+  "forms": "überfährt · überfuhr · hat überfahren",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "befahren.verb",
@@ -4680,7 +4927,10 @@
   "zipf": 3.59,
   "ex": "Nur Busse dürfen diese Spur befahren.",
   "exen": "Only buses may use this lane.",
-  "forms": "befährt · befuhr · hat befahren"
+  "forms": "befährt · befuhr · hat befahren",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "sich_verfahren.verb",
@@ -4696,7 +4946,7 @@
   "level": "B1",
   "theme": "travel",
   "rank": 1109,
-  "zipf": 3.0,
+  "zipf": 3,
   "ex": "Wir haben uns in der Altstadt verfahren.",
   "exen": "We got lost driving in the old town.",
   "forms": "verfährt sich · verfuhr sich · hat sich verfahren"
@@ -4738,7 +4988,10 @@
   "zipf": 3.77,
   "ex": "Ich muss dir etwas gestehen.",
   "exen": "I have to confess something to you.",
-  "forms": "gesteht · gestand · hat gestanden"
+  "forms": "gesteht · gestand · hat gestanden",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "überstehen.verb",
@@ -4758,7 +5011,10 @@
   "zipf": 3.69,
   "ex": "Die Pflanze hat den kalten Winter gut überstanden.",
   "exen": "The plant came through the cold winter well.",
-  "forms": "übersteht · überstand · hat überstanden"
+  "forms": "übersteht · überstand · hat überstanden",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "widerstehen.verb",
@@ -4776,7 +5032,10 @@
   "zipf": 3.7,
   "ex": "Einem guten Stück Kuchen kann ich nie widerstehen.",
   "exen": "I can never resist a nice piece of cake.",
-  "forms": "widersteht · widerstand · hat widerstanden"
+  "forms": "widersteht · widerstand · hat widerstanden",
+  "dom": [
+   "general"
+  ]
  },
  {
   "id": "setzen.verb",

@@ -1,0 +1,995 @@
+[
+ {
+  "id": "der_Botschafter",
+  "field": "ex",
+  "before": "Der Botschafter wurde ins Außenministerium bestellt.",
+  "after": "Der Botschafter wurde ins Außenministerium einbestellt.",
+  "severity": "error",
+  "why": "Diplomatic term is 'einbestellen'; 'bestellen' here is wrong German"
+ },
+ {
+  "id": "der_Koalitionsvertrag",
+  "field": "exen",
+  "before": "The project is in the coalition agreement in those terms.",
+  "after": "That is how the project is set out in the coalition agreement.",
+  "severity": "improve",
+  "why": "Unidiomatic English"
+ },
+ {
+  "id": "der_Mobilfunk",
+  "field": "en",
+  "before": [
+   "mobile network"
+  ],
+  "after": [
+   "mobile communications",
+   "mobile network"
+  ],
+  "severity": "improve",
+  "why": "Mobilfunk is the service/technology; 'mobile network' prompts das Mobilfunknetz"
+ },
+ {
+  "id": "der_Mobilfunk",
+  "field": "ex",
+  "before": "Auf dem Land ist das Mobilfunknetz oft schlecht.",
+  "after": "Der Ausbau des Mobilfunks geht auf dem Land nur langsam voran.",
+  "severity": "improve",
+  "why": "Example used the compound Mobilfunknetz, not the lemma"
+ },
+ {
+  "id": "der_Mobilfunk",
+  "field": "exen",
+  "before": "The mobile network is often poor in the countryside.",
+  "after": "The expansion of mobile communications in rural areas is slow.",
+  "severity": "improve",
+  "why": "Matches new example"
+ },
+ {
+  "id": "die_Glasfaser",
+  "field": "exen",
+  "before": "Our village is finally getting fibre optics.",
+  "after": "Our village is finally getting fibre-optic broadband.",
+  "severity": "improve",
+  "why": "'Glasfaser bekommen' = fibre broadband connection"
+ },
+ {
+  "id": "das_Eiweiß",
+  "field": "alt",
+  "before": [],
+  "after": [
+   "das Protein"
+  ],
+  "severity": "improve",
+  "why": "Protein is an equally common answer for the prompt 'protein'"
+ },
+ {
+  "id": "der_Entzug",
+  "field": "exen",
+  "before": "He is currently going through withdrawal in a clinic.",
+  "after": "He is currently in detox at a clinic.",
+  "severity": "improve",
+  "why": "'einen Entzug machen' = undergo detox treatment"
+ },
+ {
+  "id": "sich_selbstständig_machen.verb",
+  "field": "alt",
+  "before": [],
+  "after": [
+   "sich selbständig machen"
+  ],
+  "severity": "improve",
+  "why": "Duden accepts both selbstständig and selbständig"
+ },
+ {
+  "id": "die_Selbstständigkeit",
+  "field": "alt",
+  "before": [],
+  "after": [
+   "die Selbständigkeit"
+  ],
+  "severity": "improve",
+  "why": "Duden accepts both spellings; also check the list for a duplicate under 'Selbständigkeit'"
+ },
+ {
+  "id": "bekannt_geben.verb",
+  "field": "alt",
+  "before": [],
+  "after": [
+   "bekanntgeben"
+  ],
+  "severity": "improve",
+  "why": "Duden allows bekannt geben / bekanntgeben"
+ },
+ {
+  "id": "mithilfe.prep",
+  "field": "alt",
+  "before": [],
+  "after": [
+   "mit Hilfe"
+  ],
+  "severity": "improve",
+  "why": "Both spellings correct (reform variant)"
+ },
+ {
+  "id": "zulasten.prep",
+  "field": "alt",
+  "before": [],
+  "after": [
+   "zu Lasten"
+  ],
+  "severity": "improve",
+  "why": "Both spellings correct (reform variant)"
+ },
+ {
+  "id": "hauptberuflich.adj",
+  "field": "en",
+  "before": [
+   "full-time (as one's main job)"
+  ],
+  "after": [
+   "as one's main job",
+   "full-time (main occupation)"
+  ],
+  "severity": "improve",
+  "why": "'full-time' alone prompts Vollzeit; lead with the distinguishing sense"
+ },
+ {
+  "id": "demnach.adv",
+  "field": "exen",
+  "before": "Accordingly, prices will keep rising.",
+  "after": "According to this, prices will keep rising.",
+  "severity": "improve",
+  "why": "demnach at sentence start reports a source ('according to this')"
+ },
+ {
+  "id": "der_Gutachter",
+  "field": "en",
+  "before": [
+   "assessor (expert)"
+  ],
+  "after": [
+   "expert (who writes an assessment)",
+   "reviewer (of a paper)"
+  ],
+  "severity": "improve",
+  "why": "'assessor' is vague; example uses the peer-review sense"
+ },
+ {
+  "id": "der_Kanzler",
+  "field": "alt",
+  "before": [],
+  "after": [
+   "der Bundeskanzler"
+  ],
+  "severity": "improve",
+  "why": "Bundeskanzler is in the list (B2) and answers 'chancellor' equally well"
+ },
+ {
+  "id": "die_Windkraft",
+  "field": "alt",
+  "before": [],
+  "after": [
+   "die Windenergie"
+  ],
+  "severity": "improve",
+  "why": "Windenergie (existing B2 word) is a true synonym"
+ },
+ {
+  "id": "das_Feedback",
+  "field": "alt",
+  "before": [],
+  "after": [
+   "die Rückmeldung"
+  ],
+  "severity": "improve",
+  "why": "Rückmeldung is the common German synonym (existing B2 word)"
+ },
+ {
+  "id": "die_Versorgung",
+  "field": "dom",
+  "before": "environment",
+  "after": "economy",
+  "severity": "improve",
+  "why": "Supply of essentials is economy/infrastructure, not environment"
+ },
+ {
+  "id": "warnen.verb",
+  "field": "dom",
+  "before": "politics",
+  "after": "news",
+  "severity": "improve",
+  "why": "Typical in news reports ('Experten warnen'), not politics-specific"
+ },
+ {
+  "id": "der_Steuerzahler",
+  "field": "dom",
+  "before": "politics",
+  "after": "economy,politics",
+  "severity": "improve",
+  "why": "Economy domain missing"
+ },
+ {
+  "id": "der_Onlinehandel",
+  "field": "dom",
+  "before": "tech",
+  "after": "economy,tech",
+  "severity": "improve",
+  "why": "Economy domain missing"
+ },
+ {
+  "id": "die_Barrierefreiheit",
+  "field": "dom",
+  "before": "tech",
+  "after": "society,tech",
+  "severity": "improve",
+  "why": "Mainly a social-policy term"
+ },
+ {
+  "id": "die_Medienkompetenz",
+  "field": "dom",
+  "before": "tech",
+  "after": "society,tech",
+  "severity": "improve",
+  "why": "Education/society topic"
+ },
+ {
+  "id": "der_Nachfolger",
+  "field": "dom",
+  "before": "politics",
+  "after": "work,politics",
+  "severity": "improve",
+  "why": "Common in work/business contexts too"
+ },
+ {
+  "id": "der_Vorgänger",
+  "field": "dom",
+  "before": "politics",
+  "after": "work,politics",
+  "severity": "improve",
+  "why": "Common in work/business contexts too"
+ },
+ {
+  "id": "der_Sprecher",
+  "field": "dom",
+  "before": "politics",
+  "after": "politics,news",
+  "severity": "improve",
+  "why": "News domain missing"
+ },
+ {
+  "id": "effizient.adj",
+  "field": "dom",
+  "before": "environment",
+  "after": "general",
+  "severity": "improve",
+  "why": "General adjective, not environment-specific"
+ },
+ {
+  "id": "schädlich.adj",
+  "field": "dom",
+  "before": "environment",
+  "after": "environment,health",
+  "severity": "improve",
+  "why": "Example is about health"
+ },
+ {
+  "id": "hierarchisch.adj",
+  "field": "dom",
+  "before": "economy",
+  "after": "work",
+  "severity": "improve",
+  "why": "Organisational/workplace term"
+ },
+ {
+  "id": "die_Kategorie",
+  "field": "dom",
+  "before": "science",
+  "after": "general",
+  "severity": "improve",
+  "why": "General word"
+ },
+ {
+  "id": "der_Trend",
+  "field": "dom",
+  "before": "science",
+  "after": "society",
+  "severity": "improve",
+  "why": "Trends are typically social/economic, not science"
+ },
+ {
+  "id": "der_Rückgang",
+  "field": "dom",
+  "before": "science",
+  "after": "general",
+  "severity": "improve",
+  "why": "General word (sales, numbers, insects)"
+ },
+ {
+  "id": "schwanken.verb",
+  "field": "dom",
+  "before": "science",
+  "after": "general",
+  "severity": "improve",
+  "why": "Prices/moods fluctuate; general word"
+ },
+ {
+  "id": "der_Täter",
+  "field": "dom",
+  "before": "politics",
+  "after": "news,society",
+  "severity": "error",
+  "why": "Crime/private-law word, not politics; learner meets it in news or everyday life"
+ },
+ {
+  "id": "der_Verdacht",
+  "field": "dom",
+  "before": "politics",
+  "after": "news",
+  "severity": "error",
+  "why": "Crime/private-law word, not politics; learner meets it in news or everyday life"
+ },
+ {
+  "id": "das_Gefängnis",
+  "field": "dom",
+  "before": "politics",
+  "after": "news,society",
+  "severity": "error",
+  "why": "Crime/private-law word, not politics; learner meets it in news or everyday life"
+ },
+ {
+  "id": "der_Betrug",
+  "field": "dom",
+  "before": "politics",
+  "after": "news,economy",
+  "severity": "error",
+  "why": "Crime/private-law word, not politics; learner meets it in news or everyday life"
+ },
+ {
+  "id": "ermitteln.verb",
+  "field": "dom",
+  "before": "politics",
+  "after": "news",
+  "severity": "error",
+  "why": "Crime/private-law word, not politics; learner meets it in news or everyday life"
+ },
+ {
+  "id": "die_Ermittlung",
+  "field": "dom",
+  "before": "politics",
+  "after": "news",
+  "severity": "error",
+  "why": "Crime/private-law word, not politics; learner meets it in news or everyday life"
+ },
+ {
+  "id": "anzeige_erstatten.phrase",
+  "field": "dom",
+  "before": "politics",
+  "after": "society",
+  "severity": "error",
+  "why": "Crime/private-law word, not politics; learner meets it in news or everyday life"
+ },
+ {
+  "id": "verdächtig.adj",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "error",
+  "why": "Crime/private-law word, not politics; learner meets it in news or everyday life"
+ },
+ {
+  "id": "betrügen.verb",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "error",
+  "why": "Crime/private-law word, not politics; learner meets it in news or everyday life"
+ },
+ {
+  "id": "der_Mord",
+  "field": "dom",
+  "before": "politics",
+  "after": "news",
+  "severity": "error",
+  "why": "Crime/private-law word, not politics; learner meets it in news or everyday life"
+ },
+ {
+  "id": "aussagen.verb",
+  "field": "dom",
+  "before": "politics",
+  "after": "news",
+  "severity": "error",
+  "why": "Crime/private-law word, not politics; learner meets it in news or everyday life"
+ },
+ {
+  "id": "das_Testament",
+  "field": "dom",
+  "before": "politics",
+  "after": "society",
+  "severity": "error",
+  "why": "Crime/private-law word, not politics; learner meets it in news or everyday life"
+ },
+ {
+  "id": "die_Straftat",
+  "field": "dom",
+  "before": "politics",
+  "after": "news,society",
+  "severity": "error",
+  "why": "Crime/private-law word, not politics; learner meets it in news or everyday life"
+ },
+ {
+  "id": "erben.verb",
+  "field": "dom",
+  "before": "politics",
+  "after": "economy",
+  "severity": "error",
+  "why": "Crime/private-law word, not politics; learner meets it in news or everyday life"
+ },
+ {
+  "id": "festnehmen.verb",
+  "field": "dom",
+  "before": "politics",
+  "after": "news",
+  "severity": "error",
+  "why": "Crime/private-law word, not politics; learner meets it in news or everyday life"
+ },
+ {
+  "id": "einbrechen.verb",
+  "field": "dom",
+  "before": "politics",
+  "after": "news,society",
+  "severity": "error",
+  "why": "Crime/private-law word, not politics; learner meets it in news or everyday life"
+ },
+ {
+  "id": "unschuldig.adj",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "error",
+  "why": "Crime/private-law word, not politics; learner meets it in news or everyday life"
+ },
+ {
+  "id": "entkommen.verb",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "error",
+  "why": "Crime/private-law word, not politics; learner meets it in news or everyday life"
+ },
+ {
+  "id": "überfallen.verb",
+  "field": "dom",
+  "before": "politics",
+  "after": "news",
+  "severity": "error",
+  "why": "Crime/private-law word, not politics; learner meets it in news or everyday life"
+ },
+ {
+  "id": "gestehen.verb",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "error",
+  "why": "Crime/private-law word, not politics; learner meets it in news or everyday life"
+ },
+ {
+  "id": "der_Prozess",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "error",
+  "why": "First gloss is 'process' (general); trial sense is secondary"
+ },
+ {
+  "id": "das_Urteil",
+  "field": "dom",
+  "before": "politics",
+  "after": "news,politics",
+  "severity": "improve",
+  "why": "Court verdicts mostly met in news"
+ },
+ {
+  "id": "die_Zusammenfassung",
+  "field": "dom",
+  "before": "science",
+  "after": "general",
+  "severity": "improve",
+  "why": "General study/work word"
+ },
+ {
+  "id": "das_Verfahren",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "improve",
+  "why": "Mainly 'procedure' in any field"
+ },
+ {
+  "id": "der_Mangel",
+  "field": "dom",
+  "before": "economy",
+  "after": "general",
+  "severity": "improve",
+  "why": "General word (lack)"
+ },
+ {
+  "id": "die_Klage",
+  "field": "dom",
+  "before": "politics",
+  "after": "news",
+  "severity": "improve",
+  "why": "Lawsuit: news/legal, not politics"
+ },
+ {
+  "id": "verurteilen.verb",
+  "field": "dom",
+  "before": "politics",
+  "after": "news,politics",
+  "severity": "improve",
+  "why": "News domain missing"
+ },
+ {
+  "id": "die_Kräuter",
+  "field": "dom",
+  "before": "health",
+  "after": "general",
+  "severity": "improve",
+  "why": "Mainly cooking"
+ },
+ {
+  "id": "verarbeiten.verb",
+  "field": "dom",
+  "before": "tech",
+  "after": "general",
+  "severity": "improve",
+  "why": "Food, experiences, data; general"
+ },
+ {
+  "id": "verpflichtet.adj",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "improve",
+  "why": "General word"
+ },
+ {
+  "id": "umsetzen.verb",
+  "field": "dom",
+  "before": "politics",
+  "after": "work,politics",
+  "severity": "improve",
+  "why": "Common at work"
+ },
+ {
+  "id": "das_Fahrzeug",
+  "field": "dom",
+  "before": "tech",
+  "after": "general",
+  "severity": "improve",
+  "why": "Everyday/traffic word"
+ },
+ {
+  "id": "die_Einbahnstraße",
+  "field": "dom",
+  "before": "society",
+  "after": "general",
+  "severity": "improve",
+  "why": "Everyday traffic word"
+ },
+ {
+  "id": "die_Stornierung",
+  "field": "dom",
+  "before": "economy",
+  "after": "general",
+  "severity": "improve",
+  "why": "Bookings, everyday"
+ },
+ {
+  "id": "einreichen.verb",
+  "field": "dom",
+  "before": "politics",
+  "after": "work",
+  "severity": "improve",
+  "why": "Applications/documents, mainly work/admin"
+ },
+ {
+  "id": "die_Einschränkung",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "improve",
+  "why": "General word"
+ },
+ {
+  "id": "berechtigt.adj",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "improve",
+  "why": "General word"
+ },
+ {
+  "id": "die_Verpflichtung",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "improve",
+  "why": "General word"
+ },
+ {
+  "id": "die_Sackgasse",
+  "field": "dom",
+  "before": "society",
+  "after": "general",
+  "severity": "improve",
+  "why": "Everyday/figurative"
+ },
+ {
+  "id": "verdorben.adj",
+  "field": "dom",
+  "before": "health",
+  "after": "general",
+  "severity": "improve",
+  "why": "Food; everyday"
+ },
+ {
+  "id": "der_Einbruch",
+  "field": "dom",
+  "before": "society",
+  "after": "news,society",
+  "severity": "improve",
+  "why": "News domain missing"
+ },
+ {
+  "id": "der_Staatsanwalt",
+  "field": "dom",
+  "before": "politics",
+  "after": "news",
+  "severity": "improve",
+  "why": "Justice, met in news"
+ },
+ {
+  "id": "die_Anklage",
+  "field": "dom",
+  "before": "politics",
+  "after": "news",
+  "severity": "improve",
+  "why": "Justice, met in news"
+ },
+ {
+  "id": "der_Anspruch",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "improve",
+  "why": "General word"
+ },
+ {
+  "id": "die_Bewährung",
+  "field": "dom",
+  "before": "politics",
+  "after": "news",
+  "severity": "improve",
+  "why": "Justice, met in news"
+ },
+ {
+  "id": "die_Annahme",
+  "field": "dom",
+  "before": "science",
+  "after": "general",
+  "severity": "improve",
+  "why": "General word"
+ },
+ {
+  "id": "die_Stabilität",
+  "field": "dom",
+  "before": "economy",
+  "after": "general",
+  "severity": "improve",
+  "why": "General word"
+ },
+ {
+  "id": "der_Anschlag",
+  "field": "dom",
+  "before": "politics",
+  "after": "news,politics",
+  "severity": "improve",
+  "why": "News domain missing"
+ },
+ {
+  "id": "die_Belastung",
+  "field": "dom",
+  "before": "work",
+  "after": "general",
+  "severity": "improve",
+  "why": "General word"
+ },
+ {
+  "id": "anklagen.verb",
+  "field": "dom",
+  "before": "politics",
+  "after": "news",
+  "severity": "improve",
+  "why": "Justice, met in news"
+ },
+ {
+  "id": "künstlich.adj",
+  "field": "dom",
+  "before": "tech",
+  "after": "general",
+  "severity": "improve",
+  "why": "General word"
+ },
+ {
+  "id": "freisprechen.verb",
+  "field": "dom",
+  "before": "politics",
+  "after": "news",
+  "severity": "improve",
+  "why": "Justice, met in news"
+ },
+ {
+  "id": "das_Einfamilienhaus",
+  "field": "dom",
+  "before": "economy",
+  "after": "general",
+  "severity": "improve",
+  "why": "Housing, everyday"
+ },
+ {
+  "id": "die_Geburtsurkunde",
+  "field": "dom",
+  "before": "politics",
+  "after": "society",
+  "severity": "improve",
+  "why": "Admin/everyday document"
+ },
+ {
+  "id": "die_Rahmenbedingungen",
+  "field": "dom",
+  "before": "work",
+  "after": "general",
+  "severity": "improve",
+  "why": "General word"
+ },
+ {
+  "id": "die_Haftung",
+  "field": "dom",
+  "before": "politics",
+  "after": "economy",
+  "severity": "improve",
+  "why": "Liability: economy/insurance"
+ },
+ {
+  "id": "haften.verb",
+  "field": "dom",
+  "before": "politics",
+  "after": "economy",
+  "severity": "improve",
+  "why": "Liability: economy/insurance"
+ },
+ {
+  "id": "die_Einwilligung",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "improve",
+  "why": "Consent in health, data, contracts"
+ },
+ {
+  "id": "verklagen.verb",
+  "field": "dom",
+  "before": "politics",
+  "after": "news",
+  "severity": "improve",
+  "why": "Justice, met in news"
+ },
+ {
+  "id": "zulässig.adj",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "improve",
+  "why": "General word"
+ },
+ {
+  "id": "verbindlich.adj",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "improve",
+  "why": "General word"
+ },
+ {
+  "id": "verstoßen.verb",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "improve",
+  "why": "Rules in general"
+ },
+ {
+  "id": "der_Verstoß",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "improve",
+  "why": "Rules in general"
+ },
+ {
+  "id": "das_Bußgeld",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "improve",
+  "why": "Traffic/everyday fines"
+ },
+ {
+  "id": "rechtskräftig.adj",
+  "field": "dom",
+  "before": "politics",
+  "after": "news",
+  "severity": "improve",
+  "why": "Justice, met in news"
+ },
+ {
+  "id": "der_Antragsteller",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "improve",
+  "why": "Admin/everyday"
+ },
+ {
+  "id": "die_Vollmacht",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "improve",
+  "why": "Admin/everyday"
+ },
+ {
+  "id": "das_Aktenzeichen",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "improve",
+  "why": "Admin/everyday"
+ },
+ {
+  "id": "der_Kläger",
+  "field": "dom",
+  "before": "politics",
+  "after": "news",
+  "severity": "improve",
+  "why": "Justice, met in news"
+ },
+ {
+  "id": "der_Angeklagte",
+  "field": "dom",
+  "before": "politics",
+  "after": "news",
+  "severity": "improve",
+  "why": "Justice, met in news"
+ },
+ {
+  "id": "die_Auslegung",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "improve",
+  "why": "Interpretation of any text/rule"
+ },
+ {
+  "id": "beglaubigen.verb",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "improve",
+  "why": "Admin/everyday"
+ },
+ {
+  "id": "entrichten.verb",
+  "field": "dom",
+  "before": "politics",
+  "after": "economy",
+  "severity": "improve",
+  "why": "Paying fees"
+ },
+ {
+  "id": "einwilligen.verb",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "improve",
+  "why": "General formal word"
+ },
+ {
+  "id": "die_Grauzone",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "improve",
+  "why": "General word"
+ },
+ {
+  "id": "die_Gewährleistung",
+  "field": "dom",
+  "before": "politics,economy",
+  "after": "economy",
+  "severity": "improve",
+  "why": "Consumer warranty, economy"
+ },
+ {
+  "id": "widerrufen.verb",
+  "field": "dom",
+  "before": "politics,economy",
+  "after": "economy",
+  "severity": "improve",
+  "why": "Contracts/consumer"
+ },
+ {
+  "id": "einvernehmlich.adj",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "improve",
+  "why": "Separations, contracts; general"
+ },
+ {
+  "id": "beanstanden.verb",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "improve",
+  "why": "Complaints in general"
+ },
+ {
+  "id": "die_Glotze",
+  "field": "dom",
+  "before": "news",
+  "after": "general",
+  "severity": "improve",
+  "why": "Colloquial everyday word"
+ },
+ {
+  "id": "begehen.verb",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "improve",
+  "why": "Mistakes, anniversaries; general"
+ },
+ {
+  "id": "zusprechen.verb",
+  "field": "dom",
+  "before": "politics",
+  "after": "general",
+  "severity": "improve",
+  "why": "General word"
+ },
+ {
+  "id": "der_Einsatz",
+  "field": "dom",
+  "before": "work",
+  "after": "general",
+  "severity": "improve",
+  "why": "General word"
+ },
+ {
+  "id": "verlegen.verb",
+  "field": "dom",
+  "before": "work",
+  "after": "general",
+  "severity": "improve",
+  "why": "General word"
+ },
+ {
+  "id": "aufziehen.verb",
+  "field": "dom",
+  "before": "society",
+  "after": "general",
+  "severity": "improve",
+  "why": "General word"
+ }
+]

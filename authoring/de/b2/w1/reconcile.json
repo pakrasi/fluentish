@@ -1,0 +1,32 @@
+[
+ {
+  "id": "crime and court words",
+  "decision": "dom news (with society where it fits) instead of politics",
+  "why": "pass A: Urteil, Täter, Gefängnis, Betrug and the like meet a learner in the news, not in politics"
+ },
+ {
+  "id": "der_Redakteur",
+  "decision": "example rewritten to hold the masculine form",
+  "why": "machine gate: the example held only Redakteurin"
+ },
+ {
+  "id": "die_Hassrede",
+  "decision": "prompt 'hate speech (the legal and online term)'",
+  "why": "pass B: the bare prompt is also Hetze's first gloss"
+ },
+ {
+  "id": "interpretieren.verb",
+  "decision": "alt deuten",
+  "why": "pass B: deuten's prompt is 'to interpret'"
+ },
+ {
+  "id": "dom values",
+  "decision": "lists, never comma-joined strings",
+  "why": "pass A wrote some as strings; normalised before the gates"
+ },
+ {
+  "id": "simulieren.verb",
+  "decision": "dropped (449 words)",
+  "why": "a transparent international word: the reading helper rightly does not suggest it, so it has no place in a list to learn"
+ }
+]
