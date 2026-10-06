@@ -22,9 +22,8 @@ import { KINDS as ATLAS_KINDS, LEVELS as ATLAS_LEVELS } from '../domain/atlas.js
 import * as P from '../domain/progress.js';
 import { minutesFor, devices } from '../domain/activity.js';
 import * as D8 from '../domain/days.js';
-import { itemMaps, legacy } from './knowledge.js';
+import { itemMaps, legacy, evidenceOf } from './knowledge.js';
 import { normalizeSettings, langIdOf } from './settings.js';
-import { COLLECTION as SEEN } from './seen.js';
 import { fnv1a } from './ids.js';
 import * as B from './sync/backup.js';
 import * as R from './restore.js';
@@ -102,7 +101,7 @@ async function environment(ctx) {
   const wc = store.get('words.exam', null);
   const examWords = wc && Array.isArray(wc.words) ? wc.words.map((/** @type {any} */ w) => maps.resolve(w.id, 'b1')).filter(Boolean) : [];
   return { maps, migrated, jumpDay, know: migrated ? legacy('doors.know.v1') : {}, srs: migrated ? legacy('doors.srs.v1') : {}, examWords,
-    seen: /** @type {Record<string, any>} */ (store.get(SEEN, {}) || {}), activity: store.get('activity', {}) || {}, legacyLang: LEGACY_DECK_LANG.b1, deviceId: store.device.deviceId };
+    evidence: /** @type {Record<string, Record<string, any>>} */ (evidenceOf(store)), activity: store.get('activity', {}) || {}, legacyLang: LEGACY_DECK_LANG.b1, deviceId: store.device.deviceId };
 }
 /** @typedef {Awaited<ReturnType<typeof environment>>} Env */
 
@@ -112,10 +111,14 @@ async function environment(ctx) {
  * @param {Record<string, Record<string, any>>} decks @param {boolean} igloo  Igloo's legacy results count
  */
 function states(env, pool, course, day, decks, igloo) {
-  /** @type {Record<string, any>} */ const seen = {};
-  for (const [id, v] of Object.entries(env.seen)) if (v && v.first && v.first <= day) seen[id] = v;
+  // evidence without a card (Look up views, and any origin data/knowledge.js EVIDENCE_KV lists) as it was that day
+  /** @type {Record<string, Record<string, any>>} */ const evidence = {};
+  for (const [o, m] of Object.entries(env.evidence)) {
+    evidence[o] = {};
+    for (const [id, v] of Object.entries(m || {})) if (v && v.first && v.first <= day) evidence[o][id] = v;
+  }
   const k = knowledge({ today: day, epoch: P.epochOf(day), decks, resolve: env.maps.resolve, know: igloo ? env.know : {}, srs: igloo ? env.srs : {},
-    lang: langIdOf(course.lang) || 'german', itemLang: course.lang, examWords: env.examWords, seen });
+    lang: langIdOf(course.lang) || 'german', itemLang: course.lang, examWords: env.examWords, evidence });
   const concepts = /** @type {Record<string, string[]>} */ (env.maps.concepts || {});
   return (/** @type {P.PoolItem} */ it) => (pool.concepts && it.kind === 'g' ? k.concept(it.id.slice(3), concepts[it.id.slice(3)] || []).state : k.get(it.id).state);
 }

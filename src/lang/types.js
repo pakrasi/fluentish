@@ -166,6 +166,35 @@
  * @property {ReadonlySet<string | null>} prepCases  the cases a preposition note may name
  * @property {string[]} notHeads                   word ids that must never head a family
  * @property {[string, string][]} notIn            known false families [word id, family]
+ * @property {LemmaFn} [lemma]                     a token's dictionary form in its sentence (round 4, optional; de:
+ *                                                 separable particles joined across the clause, participles,
+ *                                                 compounds). Readers check for it and fall back to the token's key
+ */
+
+/**
+ * A token's lemma candidates in context, best first ([] when unknown). index: the token's place in sentence.
+ * @typedef {(token: Token, sentence: Token[], index: number) => string[]} LemmaFn
+ */
+
+/**
+ * What reading needs to know about a language (round 4, optional; domain/text/ engines take it per call).
+ * @typedef {object} ReadingRules
+ * @property {ReadonlySet<string>} stop              function words a reader never offers to save (folded keys)
+ * @property {RegExp | null} cognate                 a word that is the same in English (shown, not suggested)
+ * @property {Record<string, string>} spelling       older spellings → modern (de: daß → dass), for public-domain texts
+ * @property {{id: string, concept: string | null, test: (sentence: Token[]) => boolean}[]} constructions
+ *                                                   constructions the level estimate looks for (de: Konjunktiv I …)
+ * @property {(token: Token, sentence: Token[], index: number) => boolean} [foreign]   a word from another language
+ */
+
+/**
+ * What conversation practice needs from a language (round 4, optional). Prompts are English with slots; these fill them.
+ * @typedef {object} ConversationRules
+ * @property {string} language                       the language's English name in prompts ('German')
+ * @property {Record<string, string>} register       register id → how to address the learner ({du: 'du', sie: 'Sie'})
+ * @property {string[]} connectors                   connectors debate practice uses and invites
+ * @property {string[]} chips                        helper phrases offered under the composer ('Wie sagt man …?')
+ * @property {string} [example]                      one example line in the language for the system prompt
  */
 
 /**
@@ -206,10 +235,18 @@
  */
 
 /**
- * A full language pack.
+ * A pack's content ids (content/manifest.json). read and conversation (round 4) are optional: graded texts
+ * (readers@1, 'read.<lang>') and conversation topics and scenarios ('conversation.<lang>').
+ * @typedef {Record<string, string> & {read?: string, conversation?: string}} PackContent
+ */
+
+/**
+ * A full language pack. reading and conversation (round 4) are optional: a feature that needs one checks for it and
+ * offers nothing for a language without it (tests/unit/lang-contract.test.mjs: a pack is valid without them).
  * @typedef {LanguageMeta & {
  *   text: TextRules, input: InputRules, grading: GradingRules, grammar: GrammarRules,
- *   exams: string[], content: Record<string, string>
+ *   reading?: ReadingRules, conversation?: ConversationRules,
+ *   exams: string[], content: PackContent
  * }} LanguagePack
  */
 

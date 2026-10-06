@@ -1627,6 +1627,8 @@ export default {
   'explore.group.source.exam': 'Mock exams',
   'explore.group.source.script': 'Scripts',
   'explore.group.source.speech': 'Speaking practice',
+  'explore.group.source.read': 'Reading',
+  'explore.group.source.conversation': 'Conversations',
   'explore.group.source.practice': 'Practice rounds',
   'explore.group.source.test': 'Igloo tests and drill',
   'explore.group.source.lookup': 'Look up',
@@ -1932,4 +1934,19 @@ export default {
   'plan.game.detail': 'Does the prefix split off? 60 seconds',
   'plan.game.done': 'Played today',
   'plan.game.action': 'Play Split or stay · 1 min',
+
+  /* Round 4 sections (C0). Each lane adds its strings inside its own section, above the section's end line, so
+     parallel lanes never edit the same lines. */
+
+  // ---- Goals and week (Profile › Goals and week, Today's week strip; lane L1) ----
+  // ---- end of Goals and week ----
+
+  // ---- Reading (features/practice-read, shared/textview; lane L2) ----
+  // ---- end of Reading ----
+
+  // ---- Conversation (features/practice-conversation; lane L4) ----
+  // ---- end of Conversation ----
+
+  // ---- Progress (Today › Progress; lane L5) ----
+  // ---- end of Progress ----
 };

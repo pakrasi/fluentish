@@ -14,6 +14,8 @@ import { build as buildAtlas, sources as atlasSources, OUT as ATLAS_OUT, METRICS
 import { build as buildClusters, serialise as serialiseClusters, withAdded, OUT as CLUSTERS_OUT, WORDS as WORDS_PATH } from './build-clusters.mjs';
 import { build as buildWordbuild, serialise as serialiseWordbuild, OUT as WORDBUILD_OUT } from './build-wordbuild.mjs';
 import { validateBuild } from '../src/domain/wordbuild.js';
+import { readersErrors } from '../src/domain/readers.js';
+import { PACKS } from '../src/lang/registry.js';
 
 const schemas = new Map();
 for (const f of readdirSync(path.join(ROOT, 'schemas/content'))) {
@@ -42,6 +44,8 @@ for (const f of manifest.files) {
   const errs = validate(schema, data);
   errs.forEach(e => errors.push(`${f.path} ${e}`));
   errors.push(...reviewErrors(data).map(e => `${f.path} ${e}`));
+  // graded texts (readers@1, round 4): the rules a schema cannot say, with the language's text rules
+  if (canonical(f.schema) === 'readers@1') errors.push(...readersErrors(data, /** @type {any} */ (PACKS)[data.lang]?.text || {}).map(e => `${f.path} ${e}`));
   n++;
 }
 // packs (C3a): every file in exactly one language pack, the pack its id names

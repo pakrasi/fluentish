@@ -71,7 +71,7 @@ Routes listed with `chrome: false` in the registry hide the header and tab bar (
 Today asks every feature what it offers and composes the day with `composeToday()` (`src/domain/today.js`). The composer, not your feature, applies the exam-date rules: no mock on the eve or the day, no new items from exam−1, only `warmup`/`read` items on the exam day, rows in priority order while they fit the minutes (the first always fits, one mock may run over), at most five open rows; a row done today always stays with its check.
 
 ```js
-/** @param {import('../contract.js').PlanCtx} ctx  { store, c: clockCtx, settings, exam: manifestExam | null, t } */
+/** @param {import('../contract.js').PlanCtx} ctx  { store, c: clockCtx, settings, exam: manifestExam | null, t, day: DayPlan (domain/week.js) } */
 export function planItems(ctx) { return [/* PlanItem */]; }          // may be async; no DOM, no network
 export async function prepare(viewCtx) {}                           // optional: refresh cached stats (may load content) before Today composes
 export function todayFeedback(ctx) { return [/* FeedbackRow */]; }   // optional

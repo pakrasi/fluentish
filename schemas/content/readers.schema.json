@@ -1,0 +1,252 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "readers@1",
+  "title": "Graded reading texts of one language",
+  "description": "Round 4 (C0 contract; lanes L2 and L3). content/read/<lang>.json, manifest id read.<lang> in pack <lang>. A text's id is 'read/<lang>/<slug>' (never a card-id shape: knowledge's resolver reads /^[A-Z]{1,2}:/ as a card). Sentences are in the language in 'text' with an optional English 'en'. Each question quotes its evidence verbatim from the text. The rules a schema cannot say (unique ids, evidence found in the text, answer in range, licence and source) are domain/readers.js readersErrors, run by tools/validate-content.mjs for every readers@1 file.",
+  "type": "object",
+  "required": [
+    "lang",
+    "texts"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "lang": {
+      "type": "string",
+      "pattern": "^[a-z]{2,3}$"
+    },
+    "reviewedBy": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]*$"
+    },
+    "reviewedAt": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "texts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/text"
+      }
+    }
+  },
+  "$defs": {
+    "text": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "level",
+        "title",
+        "licence",
+        "source",
+        "words",
+        "sections",
+        "targets",
+        "questions"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^read/[a-z]{2,3}/[a-z0-9][a-z0-9-]*$"
+        },
+        "level": {
+          "enum": [
+            "A1",
+            "A2",
+            "B1",
+            "B2",
+            "C1"
+          ]
+        },
+        "dom": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]*$"
+          }
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "licence": {
+          "enum": [
+            "own",
+            "PD",
+            "CC-BY-4.0"
+          ]
+        },
+        "source": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "author",
+                "work"
+              ],
+              "properties": {
+                "author": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "work": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "year": {
+                  "type": "integer",
+                  "minimum": 1000,
+                  "maximum": 2100
+                },
+                "url": {
+                  "type": "string",
+                  "pattern": "^https://"
+                }
+              }
+            }
+          ]
+        },
+        "words": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sections": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "sentences"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z0-9-]+$"
+              },
+              "title": {
+                "type": "string"
+              },
+              "sentences": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "id",
+                    "text"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9-]+$"
+                    },
+                    "text": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "en": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "targets": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Z]{1,2}:.+$"
+          },
+          "description": "item ids the text revises (W:, K:, GC: …)"
+        },
+        "questions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "type",
+              "skill",
+              "q",
+              "options",
+              "answer",
+              "evidence"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^q[0-9]+$"
+              },
+              "type": {
+                "enum": [
+                  "mc",
+                  "tf"
+                ]
+              },
+              "skill": {
+                "enum": [
+                  "global",
+                  "detail",
+                  "inference",
+                  "attitude"
+                ]
+              },
+              "q": {
+                "type": "string",
+                "minLength": 1
+              },
+              "options": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 4,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "answer": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "evidence": {
+                "type": "string",
+                "minLength": 1
+              },
+              "reviewedBy": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9._-]*$"
+              },
+              "reviewedAt": {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              }
+            }
+          }
+        },
+        "reviewedBy": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9._-]*$"
+        },
+        "reviewedAt": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        }
+      }
+    }
+  }
+}

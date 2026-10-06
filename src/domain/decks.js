@@ -87,13 +87,14 @@ export function namedDecks(names, lang) {
 /**
  * The allowance deck (domain/budget.js DeckId) a namespaced deck's cards count in (C3a): by its name, the decks that
  * share a name with a legacy kind count as that kind (fr:speak → speak, fr:script → script, fr:build, fr:clusters,
- * fr:writing, fr:mistakes); every other deck of a course (fr:core, fr:words, fr:grammar …) is part of its daily
- * review round, the b1 share. A legacy deck is its own kind and is never mapped here.
- * @param {string} deck @returns {'mistakes'|'b1'|'writing'|'speak'|'script'|'build'|'clusters'}
+ * fr:writing, fr:mistakes, and '<lang>:read' (round 4: words saved while reading, de:read too) → read); every other
+ * deck of a course (fr:core, fr:words, fr:grammar …) is part of its daily review round, the b1 share. A legacy deck is
+ * its own kind and is never mapped here.
+ * @param {string} deck @returns {import('./budget.js').DeckId}
  */
 export function allowanceDeck(deck) {
   const n = deckName(deck);
-  return n === 'speak' || n === 'script' || n === 'build' || n === 'clusters' || n === 'writing' || n === 'mistakes' ? n : 'b1';
+  return n === 'speak' || n === 'script' || n === 'build' || n === 'clusters' || n === 'writing' || n === 'mistakes' || n === 'read' ? n : 'b1';
 }
 
 /**

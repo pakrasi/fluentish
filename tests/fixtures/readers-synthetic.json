@@ -1,0 +1,31 @@
+{
+  "lang": "de",
+  "reviewedBy": "fixture",
+  "reviewedAt": "2026-10-05",
+  "texts": [
+    {
+      "id": "read/de/fixture-garten-01",
+      "level": "B1",
+      "dom": ["environment"],
+      "title": "Ein Garten auf dem Dach",
+      "licence": "own",
+      "source": null,
+      "words": 36,
+      "sections": [
+        {
+          "id": "s1",
+          "sentences": [
+            { "id": "a1", "text": "In unserer Stadt gibt es seit einem Jahr einen Garten auf dem Dach der Bibliothek.", "en": "In our town there has been a garden on the library roof for a year." },
+            { "id": "a2", "text": "Jeden Samstag treffen sich dort Nachbarn, um Gemüse zu pflanzen.", "en": null },
+            { "id": "a3", "text": "Die Ernte wird geteilt, und was übrig bleibt, bekommt die Schulküche.", "en": "The harvest is shared, and what is left goes to the school kitchen." }
+          ]
+        }
+      ],
+      "targets": ["W:fixture-ernte"],
+      "questions": [
+        { "id": "q1", "type": "mc", "skill": "detail", "q": "Wann treffen sich die Nachbarn?", "options": ["Jeden Samstag", "Jeden Montag", "Einmal im Jahr"], "answer": 0, "evidence": "Jeden Samstag treffen sich dort Nachbarn" },
+        { "id": "q2", "type": "tf", "skill": "global", "q": "Der Garten liegt auf dem Dach der Bibliothek.", "options": ["richtig", "falsch"], "answer": 0, "evidence": "einen Garten auf dem Dach der Bibliothek" }
+      ]
+    }
+  ]
+}

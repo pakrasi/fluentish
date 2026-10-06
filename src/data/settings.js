@@ -14,6 +14,12 @@
    with the revs those fields had (no new stamps, so every device derives the same record), and the migration in
    data/session.js (migrateCourses) stores it once. Deriving is pure and idempotent; the mirror is unchanged by it.
 
+   Forward compatibility (round 4, C0). A course keeps every field it holds, known or not: courseList() normalises the
+   known ones and carries the rest (and any unknown goal.* field) through unchanged, so a device running an older
+   build never drops a field a newer one wrote (its rev is kept too, and mergeSettings copies any path by rev). The
+   optional course fields (OPTIONAL_FIELDS: goal.level, goal.by, week) mean "no goal of that kind" when missing: a new
+   course is not stamped with them, and they are written only through setCourse() like the others.
+
    The exam date has exactly one home, the active course's goal.date (mirrored to settings.exam.date), and one
    reader, core/clock.js through examDate(). setExamDate() is its writer: it validates the date, writes it through
    setCourse() (recorded per field on the hybrid logical clock, a settings.changed event, settings:changed on the
@@ -22,6 +28,7 @@
 import { isDay } from '../core/clock.js';
 import { LANGS } from '../core/lang.js';
 import { LEGACY_DECKS } from '../domain/decks.js';
+import { isWeek } from '../domain/week.js';
 
 export const MODULES = /** @type {const} */ (['lesen', 'hoeren', 'schreiben', 'sprechen']);
 
@@ -66,16 +73,27 @@ export function normalizeSettings(s) {
 /* ---------- courses ---------- */
 
 /**
- * @typedef {{exam: string | null, date: string | null}} Goal
- * @typedef {{id: string, lang: string, level: string | null, goal: Goal, decks: string[]}} Course
+ * @typedef {{exam: string | null, date: string | null, level?: string | null, by?: string | null}} Goal
+ *   level: the level he works towards; by: an optional month for it ('YYYY-MM'). Both optional (round 4).
+ * @typedef {{id: string, lang: string, level: string | null, goal: Goal, decks: string[],
+ *   week?: import('../domain/week.js').Week | null}} Course  week: minutes and a kind per weekday (round 4, optional)
  */
 
 /** The mirror: a field from before courses and the active course's field it shows. */
 export const MIRROR = /** @type {const} */ ([['language', 'lang'], ['level', 'level'], ['exam.type', 'goal.exam'], ['exam.date', 'goal.date']]);
 /** @type {Map<string, string>} */ const MIRRORED = new Map(MIRROR.map(([legacy, field]) => [legacy, field]));
 /** @type {Map<string, string>} */ const LEGACY_OF = new Map(MIRROR.map(([legacy, field]) => [field, legacy]));
-/** A course's fields that carry a rev each. */
-export const COURSE_FIELDS = /** @type {const} */ (['lang', 'level', 'goal.exam', 'goal.date', 'decks']);
+/** The fields every course has: a new course is stamped with each of them. */
+export const BASE_FIELDS = /** @type {const} */ (['lang', 'level', 'goal.exam', 'goal.date', 'decks']);
+/** Fields a course may have (round 4): missing means "no goal of that kind"; never stamped on a new course. */
+export const OPTIONAL_FIELDS = /** @type {const} */ (['goal.level', 'goal.by', 'week']);
+/** A course's fields that carry a rev each (setCourse writes only these). */
+export const COURSE_FIELDS = /** @type {const} */ ([...BASE_FIELDS, ...OPTIONAL_FIELDS]);
+/** The fields courseList normalises; any other field of a course or its goal is carried through as it is. */
+const KNOWN = new Set(['id', 'lang', 'level', 'goal', 'decks']);
+const KNOWN_GOAL = new Set(['exam', 'date']);
+const LEVEL = /** @type {readonly (string | null)[]} */ (['A1', 'A2', 'B1', 'B2', 'C1', null]);
+const MONTH = /^\d{4}-(0[1-9]|1[0-2])$/;
 const LANG_CODE = /^[a-z]{2,3}$/;
 
 /** The short code of a language id ('german' → 'de'), or null. @param {string | null | undefined} id */
@@ -104,14 +122,20 @@ function courseList(x) {
   for (const c of raw) {
     if (!c || typeof c !== 'object' || typeof c.id !== 'string' || !c.id) continue;
     const b = blankCourse(c.id, typeof c.lang === 'string' ? c.lang : null);
+    // fields this build does not know (or knows as optional) are kept, after the known ones (forward compatibility)
+    const g = c.goal && typeof c.goal === 'object' ? c.goal : {};
     byId.set(c.id, {
       id: c.id, lang: b.lang, level: c.level ?? null,
-      goal: { exam: c.goal?.exam ?? null, date: c.goal?.date ?? null },
+      goal: { exam: g.exam ?? null, date: g.date ?? null, ...unknown(g, KNOWN_GOAL) },
       decks: Array.isArray(c.decks) ? c.decks.filter((/** @type {any} */ d) => typeof d === 'string') : b.decks,
+      ...unknown(c, KNOWN),
     });
   }
   return [...byId.values()].sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
 }
+
+/** The fields of o outside known whose value is not undefined. @param {any} o @param {Set<string>} known */
+const unknown = (o, known) => Object.fromEntries(Object.entries(o).filter(([k, v]) => !known.has(k) && v !== undefined));
 
 /** The course a record from before courses describes, or null (no language chosen yet). @param {any} s @returns {Course | null} */
 function legacyCourse(s) {
@@ -260,8 +284,8 @@ export function setSetting(app, path, value) {
 }
 
 /**
- * The one writer of a course's fields. patch: any of lang, level, 'goal.exam', 'goal.date', decks (or goal: {exam,
- * date}). A course that does not exist yet is made. Each field that changes gets its own rev; on the active course the
+ * The one writer of a course's fields. patch: any of lang, level, 'goal.exam', 'goal.date', decks, and the optional
+ * 'goal.level', 'goal.by', week (or goal: {exam, date, level, by}). A course that does not exist yet is made. Each field that changes gets its own rev; on the active course the
  * mirror is written in the same step with the same rev. Returns the fields that changed.
  * @param {{store: any, hlc: {tick: () => string}, bus?: any}} app
  * @param {string} id
@@ -281,14 +305,17 @@ export function setCourse(app, id, patch) {
   if (made) {
     const lang = fields.find(([k]) => k === 'lang')?.[1] ?? null;
     next.courses.push(blankCourse(id, lang));
-    // every field of a new course is stamped, so it reaches other devices whole
-    for (const f of COURSE_FIELDS) if (!fields.some(([k]) => k === f)) fields.push([f, getField(next, `courses.${id}.${f}`)]);
+    // every base field of a new course is stamped, so it reaches other devices whole (the optional ones only when given)
+    for (const f of BASE_FIELDS) if (!fields.some(([k]) => k === f)) fields.push([f, getField(next, `courses.${id}.${f}`)]);
   }
   const active = next.activeCourse === id;
   for (const [f, v] of fields) {
     if (!(/** @type {readonly string[]} */ (COURSE_FIELDS)).includes(f)) throw new Error(`course: unknown field ${f}`);
     if (f === 'lang' && !(typeof v === 'string' && LANG_CODE.test(v))) throw new Error(`course: bad language ${v}`);
     if (f === 'goal.date' && v != null && !isDay(v)) throw new Error(`course: bad date ${v}`);
+    if (f === 'goal.level' && !LEVEL.includes(v ?? null)) throw new Error(`course: bad level ${v}`);
+    if (f === 'goal.by' && v != null && !(typeof v === 'string' && MONTH.test(v))) throw new Error(`course: bad month ${v}`);
+    if (f === 'week' && v != null && !isWeek(v)) throw new Error('course: bad week');
     const path = `courses.${id}.${f}`;
     const prev = getField(next, path);
     if (!made && JSON.stringify(prev) === JSON.stringify(v) && next.rev[path]) continue;

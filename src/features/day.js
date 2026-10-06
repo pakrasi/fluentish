@@ -3,6 +3,7 @@
    module through the registry and arranges what they offer with arrange() before domain/today.js composes the day. */
 import { composeToday } from '../domain/today.js';
 import { planProviders } from './registry.js';
+import { dayPlan } from '../domain/week.js';
 
 /**
  * The rules that need more than one feature's rows (pure, tested in node):
@@ -51,7 +52,7 @@ export async function composeDay(ctx, { prepare = true } = {}) {
   const manifest = await ctx.content.manifest().catch(() => null);
   const exam = manifest && s.exam.type ? manifest.exams.find((/** @type {any} */ e) => e.id === s.exam.type) || null : null;
   const lang = manifest && s.language ? manifest.languages.find((/** @type {any} */ l) => l.id === s.language) : null;
-  const pctx = { store, c, settings: s, exam, t };
+  const pctx = { store, c, settings: s, exam, t, day: dayPlan(s, c) };
   /** @type {any[]} */ const items = [], feedback = [], modules = [];
   const providers = /** @type {any[]} */ (await planProviders());
   if (prepare) await Promise.all(providers.map(p => p.mod.prepare?.(ctx)));   // e.g. Practice's pool stats, so both tabs read one budget

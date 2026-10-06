@@ -7,6 +7,19 @@ import { lemmaMaps } from '../domain/wordbuild.js';
 import { LEGACY_DECKS, decksOf } from '../domain/decks.js';
 import { activeCourse, langIdOf } from './settings.js';
 
+/**
+ * Evidence without a card (domain/knowledge.js Input.evidence): origin → the profile kv collection of
+ * {[item id]: {first, last, n}} it is read from. A feature that records where items were met adds one line here
+ * (round 4: reading, conversation); the collection's owner is the only writer.
+ * @type {Partial<Record<import('../domain/itemids.js').Origin, string>>}
+ */
+export const EVIDENCE_KV = {
+  lookup: SEEN,
+};
+
+/** The evidence collections of a store, by origin. @param {any} store */
+export const evidenceOf = store => Object.fromEntries(Object.entries(EVIDENCE_KV).map(([o, kv]) => [o, store.get(kv, {}) || {}]));
+
 /** Decks of the one review schedule whose cards are items (the decks from before courses: all German). */
 export const DECKS = [...LEGACY_DECKS];
 
@@ -70,6 +83,6 @@ export async function loadKnowledge(ctx, { patch = {} } = {}) {
   // Igloo's data on this device belongs to the profile the legacy import ran for, not to every profile
   const migrated = !!(ctx.store.get('meta', {}) || {}).migratedAt;
   const k = knowledge({ today: c.today, epoch: ctx.clock.epochDay(), decks, resolve: m.resolve, know: migrated ? legacy('doors.know.v1') : {}, srs: migrated ? legacy('doors.srs.v1') : {},
-    lang: iglooLang(ctx.store), itemLang: activeCourse(ctx.store.get('settings'))?.lang || 'de', examWords, seen: ctx.store.get(SEEN, {}) || {} });
+    lang: iglooLang(ctx.store), itemLang: activeCourse(ctx.store.get('settings'))?.lang || 'de', examWords, evidence: evidenceOf(ctx.store) });
   return { ...k, maps: m };
 }

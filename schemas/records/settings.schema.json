@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "settings@1",
   "title": "Profile settings",
-  "description": "Profile-scoped and synced: the goal and practice options. courses (round 3) holds one course per language and activeCourse names the one the app is about; language, level and exam (type, date) are the active course's mirror, written only through data/settings.js setCourse(). The active course's goal.date is the single source of the exam date (core/clock.js reads it through data/settings.js examDate). Merged per field, last write wins on the hybrid logical clock in rev (course fields under 'courses.<id>.<field>').",
+  "description": "Profile-scoped and synced: the goal and practice options. courses (round 3) holds one course per language and activeCourse names the one the app is about; language, level and exam (type, date) are the active course's mirror, written only through data/settings.js setCourse(). The active course's goal.date is the single source of the exam date (core/clock.js reads it through data/settings.js examDate). Merged per field, last write wins on the hybrid logical clock in rev (course fields under 'courses.<id>.<field>'). Round 4 (C0) adds optional fields: course goal.level, goal.by and week, practice.readNew and readMin, conversation, connections. A course keeps fields this build does not know (data/settings.js courseList), so an older device never drops them.",
   "type": "object",
   "required": [
     "v",
@@ -109,6 +109,18 @@
           "minimum": 0,
           "maximum": 20,
           "description": "Word building: new cards a day (its own cap; default 5 when missing)"
+        },
+        "readNew": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 30,
+          "description": "Reading: new words a day from saved reading words (default 6 when missing; round 4)"
+        },
+        "readMin": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 120,
+          "description": "Reading: minutes of the Read slot (default 10 when missing; round 4)"
         }
       }
     },
@@ -175,6 +187,25 @@
                 ],
                 "format": "date",
                 "description": "the exam date of this course; the active course's is the exam date"
+              },
+              "level": {
+                "enum": [
+                  "A1",
+                  "A2",
+                  "B1",
+                  "B2",
+                  "C1",
+                  null
+                ],
+                "description": "the level he works towards (round 4, optional; missing means no level goal)"
+              },
+              "by": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^\\d{4}-(0[1-9]|1[0-2])$",
+                "description": "an optional month for the level goal ('YYYY-MM'; round 4)"
               }
             }
           },
@@ -186,6 +217,45 @@
               "pattern": "^([a-z0-9]+|[a-z]{2,3}:[a-z0-9][a-z0-9._-]*)$"
             },
             "description": "the course's decks: legacy names (b1, speak, script, clusters, build) for German, '<lang>:<name>' for any new deck (domain/decks.js)"
+          },
+          "week": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": false,
+            "required": [
+              "min",
+              "kind"
+            ],
+            "description": "the week plan, Monday first (round 4, optional; domain/week.js). Missing or null: every day is Normal with minutesPerDay",
+            "properties": {
+              "min": {
+                "type": "array",
+                "minItems": 7,
+                "maxItems": 7,
+                "items": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 240
+                }
+              },
+              "kind": {
+                "type": "array",
+                "minItems": 7,
+                "maxItems": 7,
+                "items": {
+                  "enum": [
+                    "n",
+                    "light",
+                    "read",
+                    "write",
+                    "talk",
+                    "off"
+                  ]
+                }
+              }
+            }
           }
         }
       }
@@ -202,6 +272,96 @@
       "additionalProperties": {
         "type": "string",
         "pattern": "^\\d{13}-\\d{4}-[\\w-]+$"
+      }
+    },
+    "conversation": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Conversation practice options (round 4, optional; written only through data/settings.js). A record without it uses the defaults.",
+      "properties": {
+        "interests": {
+          "type": "array",
+          "maxItems": 8,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40
+          },
+          "description": "topics he typed, for free chat suggestions"
+        },
+        "perWeek": {
+          "enum": [
+            0,
+            2,
+            3
+          ]
+        },
+        "readAloud": {
+          "type": "boolean"
+        },
+        "showRecasts": {
+          "type": "boolean"
+        },
+        "input": {
+          "enum": [
+            "voice",
+            "typing"
+          ]
+        },
+        "backupDefault": {
+          "type": "boolean",
+          "description": "whether a new session is backed up by default (transcripts are device-only unless he opts in)"
+        },
+        "keepDays": {
+          "enum": [
+            30,
+            90,
+            null
+          ],
+          "description": "days a transcript is kept on the device; null keeps it"
+        },
+        "monthlyCapUsd": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "connections": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Outside data he connects (round 4, optional). Repository names live here, never in code.",
+      "properties": {
+        "hours": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "required": [
+            "repo",
+            "path"
+          ],
+          "description": "study hours from a JSON file (hours-json@1), shown apart from app minutes",
+          "properties": {
+            "repo": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+            },
+            "path": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "lang": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^[a-z]{2,3}$"
+            }
+          }
+        }
       }
     }
   }

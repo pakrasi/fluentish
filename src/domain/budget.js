@@ -14,6 +14,9 @@
      script     words marked in his scripts (deck script)
      build      Word building (deck build)
      clusters   word clusters (deck clusters)
+     read       words and phrases saved while reading (decks '<lang>:read', domain/decks.js allowanceDeck; round 4).
+                A contract seam (C0): it is counted (due, shown) and paused in exam week like the other side decks,
+                but wants no new items yet, so every number is what it was before the deck existed
 
    Mode, from the clock and the learner (mode()):
      exam         an exam date ahead with new days left (phases week, lastNew)
@@ -64,16 +67,16 @@ export const NEW_ITEM_MIN = 0.75;
 /** Phrases, situations and words ('p') against grammar ('g'), inside the b1 deck's share. */
 export const SPLIT = /** @type {Record<'p'|'g', number>} */ ({ p: 40 / 55, g: 15 / 55 });
 
-/** @typedef {'mistakes'|'b1'|'writing'|'speak'|'script'|'build'|'clusters'} DeckId */
+/** @typedef {'mistakes'|'b1'|'writing'|'speak'|'script'|'build'|'clusters'|'read'} DeckId */
 /** Every deck of the allowance, highest value first (the order Today lists their reviews in). */
-export const DECKS = /** @type {DeckId[]} */ (['mistakes', 'b1', 'writing', 'speak', 'script', 'build', 'clusters']);
+export const DECKS = /** @type {DeckId[]} */ (['mistakes', 'b1', 'writing', 'speak', 'script', 'build', 'clusters', 'read']);
 /** Decks that pause their new items in exam week. */
-export const SIDE = /** @type {DeckId[]} */ (['script', 'build', 'clusters']);
+export const SIDE = /** @type {DeckId[]} */ (['script', 'build', 'clusters', 'read']);
 
 /** Minutes a due card takes. */
-export const REVIEW_COST = /** @type {Record<DeckId, number>} */ ({ mistakes: ROUND_MIN / ROUND, b1: ROUND_MIN / ROUND, writing: ROUND_MIN / ROUND, speak: 0.2, script: ROUND_MIN / ROUND, build: 0.4, clusters: ROUND_MIN / ROUND });
+export const REVIEW_COST = /** @type {Record<DeckId, number>} */ ({ mistakes: ROUND_MIN / ROUND, b1: ROUND_MIN / ROUND, writing: ROUND_MIN / ROUND, speak: 0.2, script: ROUND_MIN / ROUND, build: 0.4, clusters: ROUND_MIN / ROUND, read: ROUND_MIN / ROUND });
 /** Minutes a new item takes (a new situation is shown twice). */
-export const NEW_COST = /** @type {Record<DeckId, number>} */ ({ mistakes: NEW_ITEM_MIN, b1: NEW_ITEM_MIN, writing: NEW_ITEM_MIN, speak: 0.4, script: NEW_ITEM_MIN, build: NEW_ITEM_MIN, clusters: NEW_ITEM_MIN });
+export const NEW_COST = /** @type {Record<DeckId, number>} */ ({ mistakes: NEW_ITEM_MIN, b1: NEW_ITEM_MIN, writing: NEW_ITEM_MIN, speak: 0.4, script: NEW_ITEM_MIN, build: NEW_ITEM_MIN, clusters: NEW_ITEM_MIN, read: NEW_ITEM_MIN });
 
 export const WRITE_SHARE = 0.3;
 /** Minutes a day for Schreiben phrases while Schreiben is the focus (two rounds); the rest of its share is writing. */
@@ -156,9 +159,11 @@ export function mode(c, fresh = null) {
  * @param {{script?: boolean, build?: boolean, clusters?: boolean}} [o.goals]  the decks he uses (maintenance shares)
  * @param {{script?: number}} [o.examDecks] exam week: scripts delivered on or before the exam (their number)
  * @param {number} [o.scripts]             scripts in use (each wants SCRIPT_NEW)
+ * @param {import('./week.js').DayPlan | null} [o.day]  the day's plan (domain/week.js dayPlan). A contract seam (C0):
+ *                                         accepted and not read yet, so every number is the same with or without it
  * @returns {Allowance}
  */
-export function allowance({ c, settings, decks = {}, priorityLeft = null, focus = false, fixedMin = 0, fresh = null, goals = {}, examDecks = {}, scripts = 0 }) {
+export function allowance({ c, settings, decks = {}, priorityLeft = null, focus = false, fixedMin = 0, fresh = null, goals = {}, examDecks = {}, scripts = 0, day = null }) {
   const md = mode(c, fresh);
   const minutes = settings?.minutesPerDay || 60;
   /** @type {Record<DeckId, Required<DeckIn>>} */
@@ -173,7 +178,7 @@ export function allowance({ c, settings, decks = {}, priorityLeft = null, focus 
   const newDays = examWeek && c.lastNewDay ? Math.max(1, D8.diff(c.today, c.lastNewDay) + 1) : 1;
 
   // ---- each deck's want ----
-  /** @type {Record<DeckId, number>} */ const want = { mistakes: 0, b1: 0, writing: 0, speak: 0, script: 0, build: 0, clusters: 0 };
+  /** @type {Record<DeckId, number>} */ const want = { mistakes: 0, b1: 0, writing: 0, speak: 0, script: 0, build: 0, clusters: 0, read: 0 };
   const sim = Math.max(4, Math.min(SIM_NEW_MAX, Math.round(minutes / 6)));
   want.mistakes = Math.min(d.mistakes.open + d.mistakes.shown, CAP.exam);
   if (examWeek) {
@@ -218,13 +223,13 @@ export function allowance({ c, settings, decks = {}, priorityLeft = null, focus 
   }
 
   // ---- shares ----
-  /** @type {Record<DeckId, number>} */ const share = { mistakes: 0, b1: 0, writing: 0, speak: 0, script: 0, build: 0, clusters: 0 };
+  /** @type {Record<DeckId, number>} */ const share = { mistakes: 0, b1: 0, writing: 0, speak: 0, script: 0, build: 0, clusters: 0, read: 0 };
   let left = total;
   const take = (/** @type {DeckId} */ id, /** @type {number} */ n) => { const k = Math.max(0, Math.min(n, want[id] - share[id], left)); share[id] += k; left -= k; };
   /** @type {DeckId[]} */ let order;
   if (examWeek) {
     order = focus ? ['mistakes', 'writing', 'b1', 'speak', 'script'] : ['mistakes', 'b1', 'speak', 'writing', 'script'];
-    const floors = /** @type {Record<DeckId, number>} */ ({ mistakes: want.mistakes, writing: want.writing, b1: 4, speak: 4, script: 0, build: 0, clusters: 0 });
+    const floors = /** @type {Record<DeckId, number>} */ ({ mistakes: want.mistakes, writing: want.writing, b1: 4, speak: 4, script: 0, build: 0, clusters: 0, read: 0 });
     for (const id of order) take(id, floors[id]);
     for (const id of order) take(id, Infinity);
   } else if (md === 'start') {

@@ -67,13 +67,21 @@ export function errorCode(status, msg) {
 }
 
 /**
+ * A structured-output format (output_config.format): the reply is JSON that matches the schema. Every object in the
+ * schema needs additionalProperties: false. The text ask() returns is that JSON; the caller parses and validates it.
+ * @typedef {{type: 'json_schema', schema: Record<string, any>}} OutputFormat
+ */
+
+/**
  * One Messages API call; returns the text. Refusals and cut-off answers are errors.
  * `effort` and `fallback` apply to the Opus line (the grader). Claude Haiku 4.5 (the answer check) rejects effort and
  * has no server-side fallback, so that caller passes `effort: null, fallback: false`. An empty `system` is left out.
- * @param {{ key: string, system?: string, user: string, model?: string, maxTokens?: number, effort?: string | null, fallback?: boolean, fetch?: typeof fetch }} o
+ * `format` (round 4, C0) asks for structured output: it is passed through as output_config.format, beside effort;
+ * without it the request is exactly what it was before.
+ * @param {{ key: string, system?: string, user: string, model?: string, maxTokens?: number, effort?: string | null, fallback?: boolean, format?: OutputFormat | null, fetch?: typeof fetch }} o
  * @returns {Promise<{ text: string, model: string, usage: any }>}
  */
-export async function ask({ key, system = '', user, model = config.anthropic.models.grade, maxTokens = 16000, effort = 'medium', fallback = true, fetch: f = (...a) => fetch(...a) }) {
+export async function ask({ key, system = '', user, model = config.anthropic.models.grade, maxTokens = 16000, effort = 'medium', fallback = true, format = null, fetch: f = (...a) => fetch(...a) }) {
   if (!key) throw new ClaudeError('nokey');
   /** @type {Record<string, string>} */
   const headers = {
@@ -87,6 +95,7 @@ export async function ask({ key, system = '', user, model = config.anthropic.mod
   const body = { model, max_tokens: maxTokens, messages: [{ role: 'user', content: user }] };
   if (system) body.system = [{ type: 'text', text: system, cache_control: { type: 'ephemeral' } }];
   if (effort) body.output_config = { effort };
+  if (format) body.output_config = { ...(body.output_config || {}), format };
   if (fallback) body.fallbacks = 'default';
   let r;
   try {

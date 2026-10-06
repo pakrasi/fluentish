@@ -34,8 +34,9 @@ export const MODES = /** @type {const} */ (['topic', 'family', 'opp', 'level', '
 export const BUILT_MODES = /** @type {const} */ (['topic', 'family', 'opp', 'level', 'type']);
 /** Word-type groups in map order (nouns by their article first). */
 export const TYPE_GROUPS = [...ARTICLES.slice(1), 'verb', 'adj', 'adv', 'prep', 'conj', 'setphrase', 'other', 'phrase', 'grammar'];
-/** Source groups in map order (knowledge.js Origin values); an item sits in the first one it has. */
-export const SOURCE_GROUPS = ['exam', 'script', 'speech', 'practice', 'test', 'lookup', 'self'];
+/** Source groups in map order (knowledge.js Origin values); an item sits in the first one it has. read and
+   conversation (round 4) are empty until those features record items; an empty group is not drawn. */
+export const SOURCE_GROUPS = ['exam', 'script', 'speech', 'read', 'conversation', 'practice', 'test', 'lookup', 'self'];
 
 /**
  * @typedef {object} Item

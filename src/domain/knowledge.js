@@ -35,9 +35,10 @@
                          only seen in an exam or in Look up ("not known" in the legend)
                'unseen'  no record anywhere
      today     practised today with Good or Easy (the accent on the map)
-     sources   where the item was met: exam, speech, practice, lookup, script, test (a card's src, or origin() for
-               cards made before src was recorded; Igloo data is test; exam words exam; Look up lookup), and self for
-               an item he marked known (domain/known.js; Igloo's placement marks count as test)
+     sources   where the item was met: exam, speech, practice, lookup, script, test, read, conversation (a card's src,
+               or origin() for cards made before src was recorded; Igloo data is test; exam words exam; Look up lookup;
+               evidence without a card by its origin, Input.evidence), and self for an item he marked known
+               (domain/known.js; Igloo's placement marks count as test)
      marked    'self' | 'igloo' while a mark waits for its check, else null. A marked card is S 60 days, reviewed the
                day it was marked, so its recall is about 1 and it reads as known at once
    A concept: recall = the mean recall of its items (unseen items count 0), coverage = share of items seen; 'known'
@@ -48,7 +49,7 @@
    Nothing here changes a card. Where you stand (domain/standing.js) and the map's known count read this score. */
 import * as FS from './fsrs.js';
 import * as D8 from './days.js';
-import { tagOf, slug, origin, scopeItem } from './itemids.js';
+import { tagOf, slug, origin, scopeItem, ORIGINS } from './itemids.js';
 import { deckName, deckLang } from './decks.js';
 import { itemResolver } from './wordbuild.js';
 
@@ -118,7 +119,12 @@ export function resolver({ words = [], chunkOf = {}, gapPrep = {}, build = {} } 
  * @property {string} [itemLang]                     the course's language ('de'): Igloo's items are scoped to it
  *                                                   (domain/itemids.js scopeItem; German's stay unscoped)
  * @property {string[]} [examWords]                  item ids of the words captured in mock exams
- * @property {Record<string, {first?: string, last?: string, n?: number}>} [seen]   lookup.seen: item id → views
+ * @property {Record<string, {first?: string, last?: string, n?: number}>} [seen]   lookup.seen: item id → views (the
+ *                                                   same as evidence.lookup; both are read)
+ * @property {Partial<Record<Origin, Record<string, {first?: string, last?: string, n?: number}>>>} [evidence]
+ *           where items were met without a card (round 4): origin → item id → {first, last, n}. An entry with n or last
+ *           adds its origin to the item's sources and nothing else (never a recall, never 'known'). data/knowledge.js
+ *           EVIDENCE_KV names the collection each origin is read from.
  */
 
 /** @param {any} rec @param {string} today */
@@ -138,7 +144,7 @@ export function stateOf(recall, graduated, lapse) {
  * @param {Input} input
  */
 export function knowledge(input) {
-  const { today, decks = {}, know = {}, srs = {}, lang = 'german', itemLang = 'de', examWords = [], seen = {} } = input;
+  const { today, decks = {}, know = {}, srs = {}, lang = 'german', itemLang = 'de', examWords = [], seen = {}, evidence = {} } = input;
   const resolve = input.resolve || resolver();
   const examSet = new Set(examWords);
   /** @type {Map<string, {R: number, S: number, grad: boolean, lapse: boolean, last: string | null, today: boolean, marked: string | null, sources: Set<Origin>, cards: string[]}>} */
@@ -198,7 +204,9 @@ export function knowledge(input) {
     }
   }
   for (const id of examSet) slot(id).sources.add('exam');
-  for (const [id, v] of Object.entries(seen || {})) if (v && (v.n || v.last)) slot(id).sources.add('lookup');
+  // evidence without a card: Look up views (seen, kept as evidence.lookup), then every other origin's, in origin order
+  /** @type {Partial<Record<Origin, Record<string, any>>>} */ const ev = { ...(evidence || {}), lookup: { ...(seen || {}), ...((evidence || {}).lookup || {}) } };
+  for (const o of ORIGINS) for (const [id, v] of Object.entries(ev[o] || {})) if (v && (v.n || v.last)) slot(id).sources.add(o);
   /** @type {Map<string, Score>} */ const items = new Map();
   for (const [id, a] of acc) {
     items.set(id, { id, state: stateOf(a.R, a.grad, a.lapse), recall: a.grad ? a.R : Math.min(a.R, SHAKY_R - 0.01), stability: a.grad ? a.S : 0,

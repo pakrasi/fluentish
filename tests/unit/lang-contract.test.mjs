@@ -116,3 +116,44 @@ test('ar: Arabic punctuation splits words; text stays in logical order with a La
   const m = languageMeta('arabic');
   assert.deepEqual([m?.id, m?.script, m?.dir, m?.speech.tts.locales[0]], ['ar', 'Arab', 'rtl', 'ar-SA']);
 });
+
+/* ---- optional parts (round 4, C0): a pack is valid without them; when it has one, it has the documented shape ---- */
+import { PACKS } from '../../src/lang/registry.js';
+/** Checks of the optional parts of a pack (src/lang/types.js): absent is valid; present must have the shape. @param {any} p */
+function optionalPartErrors(p) {
+  const out = [];
+  const lemma = p.grammar?.morphology?.lemma;
+  if (lemma !== undefined && typeof lemma !== 'function') out.push('grammar.morphology.lemma: not a function');
+  if (p.reading !== undefined) {
+    const r = p.reading;
+    if (!(r && r.stop instanceof Set)) out.push('reading.stop: not a Set');
+    if (!(r && (r.cognate === null || r.cognate instanceof RegExp))) out.push('reading.cognate: not a RegExp or null');
+    if (!(r && r.spelling && typeof r.spelling === 'object')) out.push('reading.spelling: not an object');
+    if (!(r && Array.isArray(r.constructions) && r.constructions.every((/** @type {any} */ c) => c && typeof c.id === 'string' && typeof c.test === 'function'))) out.push('reading.constructions: not a list of {id, test}');
+  }
+  if (p.conversation !== undefined) {
+    const c = p.conversation;
+    if (!(c && typeof c.language === 'string' && c.language)) out.push('conversation.language: missing');
+    if (!(c && c.register && typeof c.register === 'object')) out.push('conversation.register: missing');
+    if (!(c && Array.isArray(c.connectors) && Array.isArray(c.chips))) out.push('conversation.connectors/chips: not lists');
+  }
+  for (const k of ['read', 'conversation']) if (p.content?.[k] !== undefined && typeof p.content[k] !== 'string') out.push(`content.${k}: not a content id`);
+  return out;
+}
+
+for (const [id, pack] of Object.entries(PACKS)) {
+  test(`optional pack parts (${id}): the pack is valid as it is, and without reading, conversation and lemma`, () => {
+    assert.deepEqual(optionalPartErrors(pack), []);
+    const bare = { ...pack, reading: undefined, conversation: undefined, content: { ...pack.content },
+      grammar: { ...pack.grammar, morphology: pack.grammar.morphology ? { ...pack.grammar.morphology, lemma: undefined } : null } };
+    delete bare.content.read; delete bare.content.conversation;
+    assert.deepEqual(optionalPartErrors(bare), [], 'absent is valid');
+    // the engines do not need them: text and grading work on the bare pack
+    assert.ok(bare.text.tokenize(bare.text.normalize('a b')).length >= 1);
+  });
+}
+test('optional pack parts: a malformed part is reported', () => {
+  const bad = { ...de, reading: { stop: [], cognate: 'x', spelling: null, constructions: [{}] }, conversation: { language: '' }, content: { ...de.content, read: 3 },
+    grammar: { ...de.grammar, morphology: { ...de.grammar.morphology, lemma: 'no' } } };
+  assert.equal(optionalPartErrors(bad).length, 9);
+});

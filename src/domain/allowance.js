@@ -13,11 +13,13 @@
      script     deck script word cards due (SW:), words of active scripts not met yet; shown: newBy per day
      build      deck build due; open: kv 'build'.stats.open; shown: cards first answered today
      clusters   deck clusters due; shown: kv 'clusters'.day.newShown
+     read       no legacy deck: only the '<lang>:read' decks below count in it (round 4, C0)
    A course in another language (C3a) has '<lang>:<name>' decks (domain/decks.js): the legacy decks count nothing for
    it and its own decks count instead, each in the allowance deck its name gives (allowanceDeck: fr:speak in speak,
-   fr:core and any other in b1): due cards, cards first answered today (shown) and the new items its feature recorded
-   open today in kv 'deck.stats' (any number without a record). German has no such decks; its numbers are the legacy
-   reading above, unchanged.
+   fr:core and any other in b1, '<lang>:read' in read): due cards, cards first answered today (shown) and the new items
+   its feature recorded open today in kv 'deck.stats' (any number without a record). German's only such deck is de:read
+   (round 4), which counts in read alone; its b1 numbers are the legacy reading above, unchanged (todayBudget keeps
+   reading deck b1 for a course that has the legacy decks).
    The learner's first study week (firstWeek) and the decks he uses (goals) come from the same store.
 
    Pure over the store object it is given (get, cards; no writes, no DOM, no content), so Today, Practice's features
@@ -34,6 +36,7 @@ import * as St from './script/store.js';
 import { words as scriptWords, newShownToday } from './script/plan.js';
 import { scriptPlanItems } from './script/today.js';
 import { roundMinutes } from './today.js';
+import { dayPlan } from './week.js';
 import { courseLang, inLang, LEGACY_DECKS, namedDecks, allowanceDeck, DECK_STATS_KV } from './decks.js';
 
 const WRITE_KV = 'practice.write';
@@ -43,7 +46,7 @@ const EXAM_AHEAD = new Set(['week', 'lastNew', 'eve', 'day']);
 const session = store => store.get('b1.session', {}) || {};
 
 /** The store deck each of the allowance's decks reads (mistakes and Schreiben phrases are cards in deck b1). */
-const STORE_DECK = /** @type {Record<string, string>} */ ({ b1: 'b1', writing: 'b1', mistakes: 'b1', speak: 'speak', script: 'script', build: 'build', clusters: 'clusters' });
+const STORE_DECK = /** @type {Record<string, string>} */ ({ b1: 'b1', writing: 'b1', mistakes: 'b1', speak: 'speak', script: 'script', build: 'build', clusters: 'clusters', read: '' });
 
 /**
  * The legacy decks the active course reads (Arch #12): all of them for German, none for a course in another language,
@@ -154,6 +157,8 @@ export function deckInputs({ store, c, settings }) {
       script: { due: sDue, open: sOpen, shown: newShownToday(store.get(St.PROGRESS, {}) || {}, c.today) },
       build: { due: Object.values(bCards).filter(r => r && r.reps && isDue(r, c.today, c)).length, open: bStats && bStats.day === c.today ? bStats.open : 0, shown: buildShown(bCards, c.today).all },
       clusters: { due: Object.values(clCards).filter(r => r && r.reps && isDue(r, c.today, c)).length, open: Infinity, shown: cl && cl.day === c.today ? cl.newShown || 0 : 0 },
+      // no legacy deck: the course's '<lang>:read' decks add to it (withNamed)
+      read: { due: 0, open: 0, shown: 0 },
     },
     scripts,
     started: { build: Object.values(bCards).some(r => r && r.reps), clusters: Object.values(clCards).some(r => r && r.reps) },
@@ -220,6 +225,7 @@ export function dayAllowance({ store, c, settings }) {
     c, settings, decks: inp.decks, priorityLeft: inp.stats ? inp.stats.priorityLeft ?? null : null, focus, fixedMin, fresh,
     goals: { script: inp.scripts.length > 0, build: md === 'maintenance' || inp.started.build, clusters: inp.started.clusters },
     examDecks: { script: md === 'exam' ? inp.scripts.length : 0 }, scripts: inp.scripts.length,
+    day: dayPlan(settings, c),   // the week's plan for today (C0: passed, not read yet)
   });
   return { ...a, task, fresh, started: inp.started, stats: inp.stats, day: inp.day };
 }
@@ -235,8 +241,9 @@ export function todayBudget({ store, c, settings }) {
   const act = (store.get('activity', {}) || {})[c.today];
   const day = a.day;
   const roundsToday = Math.max(act ? act.rounds || 0 : 0, day ? day.rounds || 0 : 0);
-  // a course in another language (C3b) has its round in its own decks, and its next round's size in 'deck.stats'
-  const named = courseNamed(store, settings).filter(d => allowanceDeck(d) === 'b1');
+  // a course in another language (C3b) has its round in its own decks, and its next round's size in 'deck.stats';
+  // a course with the legacy decks (German) always reads deck b1, whatever named decks it has (de:read, round 4)
+  const named = courseDecks(settings).includes('b1') ? [] : courseNamed(store, settings).filter(d => allowanceDeck(d) === 'b1');
   const cards = named.length ? Object.assign({}, ...named.map(d => store.cards(d) || {})) : store.cards('b1');
   const firstEver = !Object.values(cards).some(r => r && r.hist && r.hist.length);
   const ds = named.length ? /** @type {Record<string, any>} */ (store.get(DECK_STATS_KV, {}) || {}) : {};

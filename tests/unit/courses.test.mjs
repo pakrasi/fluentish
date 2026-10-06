@@ -256,7 +256,8 @@ test('onboarding: addCourse makes the first course and the mirror; setSetting("l
   let s = a.store.get('settings');
   assert.deepEqual([s.language, s.level, s.exam.type, s.exam.date, s.activeCourse], ['german', 'A2', 'goethe-b1', '2026-11-20', 'de']);
   assert.deepEqual(s.courses[0].decks, [...LEGACY_DECKS], 'a German course reads the decks from before courses');
-  for (const f of S.COURSE_FIELDS) assert.ok(s.rev[`courses.de.${f}`], `stamped: ${f}`);
+  for (const f of S.BASE_FIELDS) assert.ok(s.rev[`courses.de.${f}`], `stamped: ${f}`);
+  for (const f of S.OPTIONAL_FIELDS) assert.equal(s.rev[`courses.de.${f}`], undefined, `optional, not stamped: ${f}`);
   assert.ok(a.events.some(([, x]) => x.key === 'language'), 'main.js hears the language');
   valid(SETTINGS_SCHEMA, s);
   // the e2e fixture's way: field by field through setSetting
