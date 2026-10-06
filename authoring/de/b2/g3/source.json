@@ -4349,7 +4349,8 @@
    "task": "Rewrite with „wenn“. Start with „Wenn Sie“.",
    "prompt": "Bei Fragen wenden Sie sich bitte an die Rezeption.",
    "answer": [
-    "Wenn Sie Fragen haben, wenden Sie sich bitte an die Rezeption."
+    "Wenn Sie Fragen haben, wenden Sie sich bitte an die Rezeption.",
+    "Wenn Sie Fragen haben, dann wenden Sie sich bitte an die Rezeption."
    ],
    "note": "bei + noun → wenn + clause; then the main verb first.",
    "strict_case": false,

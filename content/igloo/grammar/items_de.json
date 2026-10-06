@@ -11677,7 +11677,9 @@
    "Wenn mehr Geld da wäre, würde die Schule renoviert werden.",
    "Wenn mehr Geld da wäre, würde die Schule renoviert.",
    "Wäre mehr Geld da, würde die Schule renoviert werden.",
-   "Wäre mehr Geld da, würde die Schule renoviert."
+   "Wäre mehr Geld da, würde die Schule renoviert.",
+   "Wenn mehr Geld da wäre, dann würde die Schule renoviert werden.",
+   "Wenn mehr Geld da wäre, dann würde die Schule renoviert."
   ],
   "note": "Passive Konjunktiv II: würde + Partizip II (+ werden).",
   "strict_case": false,
@@ -15093,7 +15095,8 @@
   "task": "Rewrite with „wenn“. Start with „Wenn Sie“.",
   "prompt": "Bei Fragen wenden Sie sich bitte an die Rezeption.",
   "answer": [
-   "Wenn Sie Fragen haben, wenden Sie sich bitte an die Rezeption."
+   "Wenn Sie Fragen haben, wenden Sie sich bitte an die Rezeption.",
+   "Wenn Sie Fragen haben, dann wenden Sie sich bitte an die Rezeption."
   ],
   "note": "bei + noun → wenn + clause; then the main verb first.",
   "strict_case": false,
