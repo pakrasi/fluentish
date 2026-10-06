@@ -20,7 +20,7 @@ import * as RD from '../../domain/b1ready.js';
 import { roundMinutes } from '../../domain/today.js';
 import { ROUND } from '../../domain/budget.js';
 import { correctTask, ClaudeError } from '../../services/claude.js';
-import { addMistakes, freeWriteMistakes, listMistakes, COLLECTION as MISTAKES } from '../../data/mistakes.js';
+import { addMistakes, freeWriteMistakes, listMistakes, backfillContext, COLLECTION as MISTAKES } from '../../data/mistakes.js';
 import * as B from './build.js';
 import * as S from '../shared/session.js';
 import { loadData, stateFor, session, secrets } from '../shared/data.js';
@@ -517,7 +517,7 @@ function drawFree(el, ctx, task, aufgabe) {
       const at = Date.now();
       putKv(store, v => ({ ...v, drafts: { ...(v.drafts || {}), [task.id]: area.value }, corrections: { ...(v.corrections || {}), [task.id]: { body: res.body, text, at } },
         written: { ...(v.written || {}), [task.id]: today } }));
-      replace(result, correctionNodes(res.body), practiseRow(queue({ body: res.body, at })));
+      replace(result, correctionNodes(res.body), practiseRow(queue({ body: res.body, at, text })));
     } catch (e) {
       replace(result, h('p', { class: 'pr-res is-bad' }, t(`exam.correct.err.${e instanceof ClaudeError ? e.code : 'other'}`)));
     }
@@ -526,12 +526,14 @@ function drawFree(el, ctx, task, aufgabe) {
   /**
    * The correction's lines become mistake cards (once per correction; a correction he already turned into cards and
    * then deleted them from is left alone). Returns how many of its mistakes are live.
-   * @param {{body: string, at: number}} cr @param {boolean} [onlyNew] a correction made before this was added
+   * @param {{body: string, at: number, text?: string}} cr @param {boolean} [onlyNew] a correction made before this was added
    */
   function queue(cr, onlyNew = false) {
-    const o = freeWriteMistakes({ taskId: task.id, at: cr.at, label: t('practice.build.mistakeLabel', { n: task.aufgabe.slice(1), title: task.title }), body: cr.body });
+    const o = freeWriteMistakes({ taskId: task.id, at: cr.at, label: t('practice.build.mistakeLabel', { n: task.aufgabe.slice(1), title: task.title }), body: cr.body, text: cr.text || null });
     const known = Object.values(store.get(MISTAKES, {}) || {}).some((/** @type {any} */ m) => m && m.source && m.source.attemptId === o.attemptId);
     if (!(onlyNew && known) && o.items.length) addMistakes(store, o);
+    // mistakes made before round 5: the words around them, from this saved text
+    else if (known) backfillContext(store);
     return listMistakes(store).filter(m => m.source.attemptId === o.attemptId).length;
   }
   /** "Practise these 4 mistakes · 2 min" after a correction. @param {number} n */

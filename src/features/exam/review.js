@@ -7,7 +7,7 @@ import { corrections, scoreLine, wordCount, stampMs } from '../../domain/grade.j
 import { correctSchreiben, ClaudeError } from '../../services/claude.js';
 import { render as md } from './md.js';
 import { backLink } from './parts.js';
-import { feedbackFor, markSeen, saveCorrection, learnerNotes, queueMistakes, mistakesQueued, allAttempts, recordings, linked, sectionOf } from './data.js';
+import { feedbackFor, markSeen, saveCorrection, learnerNotes, queueMistakes, mistakeContexts, mistakesQueued, allAttempts, recordings, linked, sectionOf } from './data.js';
 import { at } from '../../domain/examdef.js';
 import { nextModule, scoreReader } from './plan.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
@@ -79,6 +79,8 @@ const older = (ctx, list) => h('details', { class: 'ex-older' }, h('summary', nu
 function mistakesButton(ctx, attempt, cur, n) {
   const { t, store } = ctx;
   const wrap = h('div', { class: 'ex-mistakes' });
+  // mistakes queued before round 5 get the words around them from this attempt's texts
+  if (mistakesQueued(store, attempt)) mistakeContexts(store, { attempt, feedback: cur });
   const draw = () => {
     const queued = mistakesQueued(store, attempt);
     replace(wrap, queued

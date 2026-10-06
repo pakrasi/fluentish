@@ -8,7 +8,7 @@
      activity          { [day]: { minutes, rounds } } for Today's runway and study days
    and appends card.reviewed events to the outbox. */
 import { config } from '../../core/config.js';
-import { listMistakes } from '../../data/mistakes.js';
+import { listMistakes, backfillContext } from '../../data/mistakes.js';
 import * as RD from '../../domain/b1ready.js';
 import { buildPool } from './pool.js';
 import { wordItems, fetchWords, COLLECTION as WORDS } from './words.js';
@@ -57,8 +57,10 @@ export async function loadData(ctx) {
   })));
   const c = ctx.clock.ctx();
   const wc = ctx.store.get(WORDS, null);
+  // mistakes from before round 5: the words around them in the text they came from, written once (an added field)
+  try { backfillContext(ctx.store, { feedback: ctx.store.get('exams.feedbackLocal', []) || [] }); } catch { /* a card without context still works */ }
   const mistakes = listMistakes(ctx.store);
-  const key = [wc?.fetchedAt || 0, c.phase, mistakes.map(m => m.id).join(',')].join('|');
+  const key = [wc?.fetchedAt || 0, c.phase, mistakes.map(m => (m.context ? `${m.id}+` : m.id)).join(',')].join('|');
   // the placement import is per profile, the pool is not: a pool built for another profile still imports for this one
   if (memo && memo.key === key) { placeOnce(ctx, memo.data, memo.words); return memo.data; }
   const wx = Array.isArray(lexWords) ? await loadWordIx(ctx, lexWords).catch(() => null) : null;

@@ -11,11 +11,11 @@
    Attempts live in the attempts store; each new one also gets an exam.attempt event whose file path is fixed then. */
 import { uuidv7, isoWithOffset } from '../../data/ids.js';
 import { results, sync as syncAll, audioExt } from '../../data/sync/index.js';
-import { latestByTestModule, fbSplit, stampMs, wordCount, corrections, attemptIds } from '../../domain/grade.js';
+import { latestByTestModule, fbSplit, stampMs, wordCount, attemptIds } from '../../domain/grade.js';
 import { testPath, section } from '../../domain/examdef.js';
 import { adapterFor } from '../../domain/exam-results.js';
 import { createTx } from './locale.js';
-import { addMistakes, listMistakes } from '../../data/mistakes.js';
+import { addMistakes, listMistakes, correctionItems, backfillContext } from '../../data/mistakes.js';
 import { addActivity } from '../../data/activity.js';
 import * as T from './timer.js';
 
@@ -331,9 +331,21 @@ export function learnerNotes(store) {
  * @param {any} store @param {{ attempt: any, feedback: any[] }} o @returns {number} the attempt's live mistakes
  */
 export function queueMistakes(store, { attempt, feedback }) {
-  const items = feedback.flatMap(f => corrections(f.body));
+  // each with the words around it in his Aufgaben (round 5: the greeting before a small letter, the clause around a verb)
+  const texts = (attempt.writings || []).map((/** @type {any} */ w) => w && w.text);
+  const items = feedback.flatMap(f => correctionItems(f.body, texts));
   addMistakes(store, { attemptId: attempt.id, test: attempt.day ?? null, module: attempt.module || null, label: null, items });
   return mistakesQueued(store, attempt);
+}
+
+/**
+ * Older mistakes of this attempt get the words around them (round 5), once, from its Aufgaben and this feedback.
+ * @param {any} store @param {{ attempt: any, feedback: any[] }} o @returns {number} how many got them
+ */
+export function mistakeContexts(store, { attempt, feedback }) {
+  const one = { get: (/** @type {string} */ n, /** @type {any} */ f) => store.get(n, f), set: (/** @type {string} */ n, /** @type {any} */ v) => store.set(n, v),
+    attempts: () => [{ id: attempt.id, writings: attempt.writings || [] }] };
+  return backfillContext(one, { feedback: feedback.map(f => ({ attempt_id: attempt.id, body: f.body })) });
 }
 
 /** How many of this attempt's mistakes are in Practice. @param {any} store @param {any} attempt */

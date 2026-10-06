@@ -33,7 +33,9 @@ test('pool: every item is tagged in its id, mistakes become items', () => {
   for (const it of data.pool) assert.ok(kindOf(it.id), `untagged id ${it.id}`);
   assert.ok(data.byId.has('F:att-1-1') && !data.byId.has('F:att-1-3'), 'deleted mistakes stay out');
   const m = data.byId.get('F:att-1-1');
-  assert.equal(m.task, 'Rewrite this sentence correctly.');
+  // the card's task line comes from the catalog (practice.mistake.task) with the kinds of change (round 5)
+  assert.equal(m.task, null);
+  assert.deepEqual(m.kinds, ['order']);
   assert.equal(m.source, 'Schreiben Test 2');
   assert.equal(mistakeItem({ ...mistakes[0], source: { ...mistakes[0].source, module: 'hoeren', label: null } }).source, 'Hören Test 2');
 });

@@ -14,12 +14,17 @@
 import * as Match from '../../domain/match.js';
 import { verbForms } from '../../domain/detect.js';
 import { activePack } from '../../lang/registry.js';
+import { mistakeKinds, mistakeFixes } from '../../domain/mistake.js';
 
 const TEIL_GROUP = /** @type {Record<string, [string, string]>} */ ({ 'Sprechen T1': ['S1', 'S1'], 'Sprechen T2': ['S2', 'S2'], 'Sprechen T3': ['S3', 'S3'], Forum: ['opinion', 'S3'] });
 const PLAN_OF_KIND = /** @type {Record<string, string>} */ ({ transform: 'transform', join: 'transform', order: 'transform', gap: 'recall', 'choose-article': 'recall', translate: 'recall' });
 
 /**
- * A mistake record → a round item: his sentence, rewrite it correctly.
+ * A mistake record → a round item: his sentence as he wrote it (the prompt), to rewrite correctly. The card says what
+ * to do and gives what he needs to do it (round 5): the kinds of change the correction made ("2 things to fix: an
+ * ending, the word order"; domain/mistake.js mistakeKinds), the words around it in his text (m.context: the greeting
+ * before "vielen Dank für deine Nachricht!", the weil-clause around "mein Hotel einen Pool hat") and its English when the
+ * record has it (m.en). A change the matcher cannot see (a capital, a comma) is checked on its own (fixes).
  * @param {import('../../data/mistakes.js').Mistake} m
  */
 export function mistakeItem(m) {
@@ -28,11 +33,14 @@ export function mistakeItem(m) {
   // "Wohnnung" for "Wohnung" or "Freunde" for "Freund" is a miss)
   const inWrong = new Set(Match.words(m.wrong).map((/** @type {any} */ w) => w.n));
   const fixed = [...new Set(Match.words(m.right).filter((/** @type {any} */ w) => !inWrong.has(w.n)).map((/** @type {any} */ w) => w.raw))];
+  const fixes = mistakeFixes(m.wrong, m.right);
   return {
     id: m.id, kind: 'mistake', area: 'mistakes', group: m.source.module || 'mistakes', teil: null, fn: null, star: true, trap: null,
-    focus: [], strict: fixed, plan: 'transform', task: 'Rewrite this sentence correctly.', prompt: m.wrong, promptLang: 'de', hl: null,
+    focus: [], strict: fixed, plan: 'transform', task: null, prompt: m.wrong, promptLang: 'de', hl: null,
     partner: null, prefill: null, accept: [m.right], anywhere: false, literal: true, loose: false, model: m.right, wrong: [m.wrong],
     rule: m.rule || '', src: 'mistake', level: 'B1', mine: true,
+    kinds: mistakeKinds(m.wrong, m.right), fixes: fixes.caseWords.length || fixes.commas.length ? fixes : null,
+    context: m.context && (m.context.before || m.context.after) ? m.context : null, gloss: m.en || null,
     source: m.source.label || [mod, m.source.test ? `Test ${m.source.test}` : null].filter(Boolean).join(' '),
   };
 }
