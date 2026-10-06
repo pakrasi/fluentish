@@ -6,7 +6,7 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildPool } from '../../src/features/shared/pool.js';
-import { gradeAnswer, retypeOk } from '../../src/features/shared/grade.js';
+import { gradeAnswer, retypeOk, rightSentences } from '../../src/features/shared/grade.js';
 import * as Match from '../../src/domain/match.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
@@ -16,7 +16,7 @@ const data = buildPool({ items: J('content/b1/items.json'), grammar: J('content/
 const item = prompt => { const it = data.pool.find(x => String(x.prompt).startsWith(prompt)); assert.ok(it, prompt); return it; };
 const plain = s => s.toLowerCase().replace(/[.,!?;:]/g, '');
 
-test('A: the target is the whole model sentence, with its capitals and comma', () => {
+test('A: the target is a whole right sentence, with its capitals and comma: the model, or the model with the accepted word he used', () => {
   const it = item('One argument in favour is that you can learn from anywhere');
   for (const a of ['Ein vorteil ist, dass man nicht lernt', 'Ein Argument dafür ist dass man lernen kann', '-']) {
     const g = gradeAnswer(it, a, null, data);
@@ -27,20 +27,25 @@ test('A: the target is the whole model sentence, with its capitals and comma', (
   }
   const g = gradeAnswer(it, 'Ein vorteil ist, dass man nicht lernt', null, data);
   assert.equal(g.right, it.model, 'the wrong answer shows the sentence he types');
+  // round 5: an accepted word one word apart from the model is kept (Danach for Dann), never struck
+  assert.equal(gradeAnswer(item("Then I'll name the pros and cons"), 'Danach nenne ich die Vorteile', null, data).target, 'Danach nenne ich die Vor- und Nachteile, und am Ende sage ich meine Meinung.');
 });
 
 test('B: typing exactly the shown sentence passes', () => {
   const it = item('There are buses, admittedly, but they are often late');
-  const g = gradeAnswer(it, 'Es gibt Busse aber die sind spät', null, data);
+  const g = gradeAnswer(it, 'Es gibt Busse aber sie kommen spät', null, data);
   assert.equal(g.target, 'Es gibt zwar Busse, aber sie kommen oft zu spät.');
   assert.equal(g.right, g.target);
   assert.ok(retypeOk(it, g.target, g.target));
   assert.ok(retypeOk(it, 'Es gibt zwar Busse aber sie kommen oft zu spät', g.target));
   assert.ok(!retypeOk(it, 'Es gibt zwar Busse aber sie sind zu spät', g.target));
-  // a partial answer (studyCard on a new card): the target is still the model, never the assembled rest
+  // his accepted wording stays in the sentence he is shown (round 5): sind for kommen, die for sie
+  assert.equal(gradeAnswer(it, 'Es gibt Busse aber sie sind spät', null, data).target, 'Es gibt zwar Busse, aber sie sind oft zu spät.');
+  assert.equal(gradeAnswer(it, 'Es gibt Busse aber die sind spät', null, data).target, 'Es gibt zwar Busse, aber die kommen oft zu spät.');
+  // a partial answer (studyCard on a new card): the target is a whole right sentence, never the assembled rest
   const p = gradeAnswer(it, 'Es gibt zwar Busse aber sie sind zu spät', null, data);
   assert.ok(p.partial);
-  assert.equal(p.target, it.model);
+  assert.equal(p.target, 'Es gibt zwar Busse, aber sie sind oft zu spät.', 'a whole right sentence with his wording (round 5)');
 });
 
 test('C: the rest of the sentence has no doubled word and keeps the comma before dass', () => {
@@ -72,6 +77,8 @@ test('every item: the retype target is a whole model sentence, and typing it bac
       const it = mv ? { ...it0, model: mv.model, accept: mv.accept } : it0;
       const whole = [it.sentence, it.model].filter(s => s && !/…/.test(s));
       if (!whole.length) continue;
+      // the model, or the model with another accepted phrase in it (round 5)
+      whole.push(...rightSentences(it, data));
       const answers = ['-', ...(it.wrong || []), ...(it.accept || []).map(p => Match.renderPattern(p, it.model))];
       for (const a of answers) {
         const g = gradeAnswer(it0, a, mv, data);

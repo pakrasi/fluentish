@@ -930,6 +930,131 @@ function restCheck(input, base, accepted, opts = {}) {
   }
   return { ...out, status: 'differs', ref: best, ...markDiff(inp, best) };
 }
+/**
+ * Whole right sentences an item's accepted phrases make in its model sentence, one word apart: for every accepted
+ * pattern the model itself matches, every other accepted pattern that is the same pattern with one word swapped for
+ * another (danach nenne ich [x] (und) am ende … for dann nenne ich [x] (und) am ende …; aber die kommen for aber sie
+ * kommen) gives the model with that one word swapped (Danach nenne ich die Vor- und Nachteile, und am Ende sage ich
+ * meine Meinung.). Nothing else of the model changes, so the sentence keeps its commas and its other words. Left out:
+ * a swapped word next to a slot or an optional word, a new word the sentence already has, a polite form the model
+ * does not use, another member of the old word's paradigm (habe → bin), a word the model has more than once, a new
+ * word whose capital is not known (a noun no noun list has), a sentence
+ * whose verb the model's frame does not take (opts.conj, brokenForms). A model that asks and a new first word that does
+ * not open a question (Fangen wir … an) end with a full stop. The model's own sentence is not among them. Cached.
+ * (Round 5: a wider generator, other patterns with the model's slot words, failed a German review on about 30 % of
+ * its sentences: doubled words at the joins, lost commas, register switches. One word apart keeps the model's German.)
+ * @param {string} base @param {string[]} accepted @param {{caseRef?: Map<string, string> | null, conj?: any}} [opts]
+ * @returns {string[]}
+ */
+function sentencesFor(base, accepted, opts = {}) {
+  const list = (Array.isArray(accepted) ? accepted : [accepted]).filter(a => a != null && String(a).trim() !== '');
+  if (!base || !list.length || /…/.test(base)) return [];
+  const key = `${L.id}|${base}|${list.join('|')}`;
+  const hit = SENTENCES.get(key);
+  if (hit && hit.ref === (opts.caseRef || null) && hit.conj === (opts.conj || null)) return hit.out;
+  const conj = opts.conj || null, ref = opts.caseRef || null;
+  const B = words(base);
+  const seen = new Set([B.map(w => w.n).join(' ')]);
+  const toks = (/** @type {string} */ x) => String(x).trim().split(/\s+/);
+  const plain = (/** @type {string} */ x) => /^[\p{L}][\p{L}'-]*$/u.test(x);
+  /** @type {string[]} */ const out = [];
+  for (const q of list) {
+    const tq = toks(q);
+    for (const p of list) {
+      if (p === q) continue;
+      const tp = toks(p);
+      if (tp.length !== tq.length) continue;
+      const diff = tp.flatMap((x, k) => (x !== tq[k] ? [k] : []));
+      if (diff.length !== 1) continue;
+      const k = diff[0], oldW = words(tq[k])[0], newW = words(tp[k])[0];
+      if (!plain(tq[k]) || !plain(tp[k]) || !oldW || !newW || oldW.n === newW.n) continue;
+      // a fixed word before it and after it, or the pattern's edge: a word next to a slot may depend on what the slot
+      // holds (ein Picknick … machen / picknicken)
+      // (an optional slot after it is fine: sie kommen ([x]) zu spät / sie sind ([x]) zu spät)
+      if ((k > 0 && !plain(tq[k - 1])) || (k + 1 < tq.length && !plain(tq[k + 1]) && tq[k + 1] !== '([x])')) continue;
+      // the model holds q, and the swapped word once
+      if (!check(base, [q], { anywhere: true, slotMax: 10, typos: false }).ok) continue;
+      const at = B.filter(w => w.n === oldW.n);
+      if (at.length !== 1) continue;
+      const w = at[0], i = B.indexOf(w);
+      // a word the sentence has already (Okay, so machen wir das so), a polite form the model does not use (ihre
+      // Einladung, ihnen: her, them), another member of the same paradigm (habe → bin: the participle decides)
+      if (B.some(x => x.n === newW.n) || L.grammar.lines.polite.has(newW.n)) continue;
+      const fam = L.grading.paradigms.findIndex(re => re.test(oldW.n));
+      if (fam >= 0 && L.grading.paradigms[fam].test(newW.n)) continue;
+      const initial = i === 0 || /[.!?:]\s*["„“]?\s*$/.test(base.slice(B[i - 1].end, w.start));
+      // the capital: a sentence's first word takes one; elsewhere the new word is written as the old one is (a small
+      // letter for toll → klasse, berichte), a capital only for a noun the noun list knows
+      let raw = newW.low;
+      const known = ref && ref.get(newW.n);
+      if (initial) raw = raw.charAt(0).toUpperCase() + raw.slice(1);
+      else if (/^\p{Lu}/u.test(w.raw)) { if (!known || !/^\p{Lu}/u.test(known)) continue; raw = known; }
+      else if (known && /^\p{Lu}/u.test(known)) continue;   // also a noun (Berichte): which one it is here is not known
+      // never a word twice in a row (das passt gut gut)
+      if ((B[i - 1] && B[i - 1].n === newW.n) || (B[i + 1] && B[i + 1].n === newW.n)) continue;
+      let text = base.slice(0, w.start) + raw + base.slice(w.end);
+      if (i === 0 && /\?\s*$/.test(text) && !L.grammar.lines.questionStarts.has(newW.n)) text = text.replace(/\?\s*$/, '.');
+      if (conj && brokenForms(text, base, conj)) continue;
+      const kk = words(text).map(x => x.n).join(' ');
+      if (seen.has(kk)) continue;
+      seen.add(kk); out.push(text);
+    }
+  }
+  if (SENTENCES.size > 5000) SENTENCES.clear();
+  SENTENCES.set(key, { ref, conj, out });
+  return out;
+}
+/** @type {Map<string, {ref: any, conj: any, out: string[]}>} */ const SENTENCES = new Map();
+
+/**
+ * The phrase he typed, written right: "<phrase> is right" names the accepted phrase, never his slips. The words of his
+ * span with each slip (typo, umlaut, capital) replaced by its right form, the model's spelling and capitals of each word
+ * the model has, slot words as …, and the model's commas instead of his (Ein Nachteil ist, allerdings, dass man … kontakt
+ * hat → Ein Nachteil ist allerdings, dass man … Kontakt hat).
+ * @param {string} input the answer as check() saw it (res.input)
+ * @param {[number, number] | null | undefined} span @param {string[] | null | undefined} fills
+ * @param {{start: number, end: number, expected: string}[]} slips
+ * @param {string | null | undefined} base the model sentence
+ * @param {Map<string, string> | null} [caseRef]
+ */
+function phraseText(input, span, fills, slips, base, caseRef = null) {
+  if (!span) return null;
+  const [s0, s1] = span;
+  // his words in the span, slips fixed, slot words as one … per slot
+  const slotRanges = [];
+  let from = s0;
+  for (const f of fills || []) {
+    if (!f) continue;
+    const at = input.indexOf(f, from);
+    if (at < 0 || at >= s1) continue;
+    slotRanges.push([at, at + f.length]); from = at + f.length;
+  }
+  const fix = new Map((slips || []).map(x => [x.start, x]));
+  const ref = new Map();
+  if (base) String(base).normalize('NFC').split(/(?<=[.!?:])\s+/).forEach(sent => words(sent).forEach((w, i) => { if (i && !ref.has(w.n)) ref.set(w.n, w.raw); }));
+  const out = [];
+  let inSlot = -1;
+  for (const w of words(input)) {
+    if (w.start < s0 || w.end > s1) continue;
+    const k = slotRanges.findIndex(([a, b]) => w.start >= a && w.end <= b);
+    if (k >= 0) { if (k !== inSlot) out.push('…'); inSlot = k; continue; }
+    inSlot = -1;
+    const slip = fix.get(w.start);
+    let raw = slip ? slip.expected : w.raw;
+    const r = ref.get(fold(String(raw).toLowerCase())) || (caseRef && caseRef.get(fold(String(raw).toLowerCase())));
+    if (r && r.toLowerCase() === String(raw).toLowerCase()) raw = r;
+    out.push(raw);
+  }
+  if (!out.length) return null;
+  let text = out.join(' ');
+  if (base) text = commasFrom(base, punctFrom(base, text));
+  // the first word at the start of a sentence: written as the model starts (Ein Nachteil …, die Zeitung)
+  if ((s0 === 0 || /[.!?]\s*$/.test(input.slice(0, s0))) && base) {
+    const up = /^\P{L}*\p{Lu}/u.test(String(base));
+    text = text.replace(/^(\P{L}*)(\p{L})/u, (_, a, b) => a + (up ? b.toUpperCase() : b));
+  }
+  return text.replace(/[\s,.;:!?]+$/u, '').trim() || null;
+}
 /** @param {Word[]} A @param {Word[]} B @param {(a: Word, b: Word) => boolean} [eq] */
 function lcsTable(A, B, eq = (a, b) => a.n === b.n) {
   const L = Array.from({ length: A.length + 1 }, () => new Array(B.length + 1).fill(0));
@@ -1260,7 +1385,7 @@ const E = {
   restCheck: scoped(restCheck, optAt(3)), alsoLines: scoped(alsoLines, a => asPack(a[5])), shapeOf: scoped(shapeOf), sameShape: scoped(sameShape),
   formCheck: scoped(formCheck, optAt(2)), renderPattern: scoped(renderPattern), acceptedForWord: scoped(acceptedForWord), acceptedForChunk,
   acceptedForGap, gapFill, gapLoose: scoped(gapLoose), nounForm, nounPrompt, toIndef: scoped(toIndef), clean: scoped(clean), fold: scoped(fold),
-  dl, dl1, words: scoped(words), ending: scoped(ending),
+  dl, dl1, words: scoped(words), ending: scoped(ending), phraseText: scoped(phraseText), sentencesFor: scoped(sentencesFor),
 };
 /** The default pack's closed-class words (kept for callers that read Match.CLOSED; a pack's own: pack.grading.closedClass). */
 const CLOSED = activePack().grading.closedClass;
@@ -1269,9 +1394,9 @@ export default api;
 const {
   check: checkX, matches: matchesX, diffWords: diffWordsX, markDiff: markDiffX, restCheck: restCheckX, alsoLines: alsoLinesX, shapeOf: shapeOfX,
   sameShape: sameShapeX, formCheck: formCheckX, renderPattern: renderPatternX, acceptedForWord: acceptedForWordX, gapLoose: gapLooseX, toIndef: toIndefX,
-  clean: cleanX, fold: foldX, words: wordsX, ending: endingX,
+  clean: cleanX, fold: foldX, words: wordsX, ending: endingX, phraseText: phraseTextX, sentencesFor: sentencesForX,
 } = E;
 export { checkX as check, matchesX as matches, diffWordsX as diffWords, markDiffX as markDiff, restCheckX as restCheck, alsoLinesX as alsoLines,
   shapeOfX as shapeOf, sameShapeX as sameShape, formCheckX as formCheck, renderPatternX as renderPattern, acceptedForWordX as acceptedForWord,
   acceptedForChunk, acceptedForGap, gapFill, gapLooseX as gapLoose, nounForm, nounPrompt, toIndefX as toIndef, cleanX as clean, foldX as fold, dl, dl1,
-  wordsX as words, endingX as ending, CLOSED };
+  wordsX as words, endingX as ending, phraseTextX as phraseText, sentencesForX as sentencesFor, CLOSED };

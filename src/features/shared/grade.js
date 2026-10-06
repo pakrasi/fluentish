@@ -12,6 +12,11 @@
 import * as Match from '../../domain/match.js';
 import * as Detect from '../../domain/detect.js';
 import { punctCheck } from '../../domain/punct.js';
+import { answerNotes, ruleApplies } from '../../domain/notes.js';
+import { fixMissed } from '../../domain/mistake.js';
+
+// subject pronouns: one moved past the verb is a word-order error (Am Ende ich sage)
+const SUBJECTS = new Set(['ich', 'du', 'er', 'sie', 'es', 'wir', 'ihr', 'man']);
 
 /** @param {string} s */
 export const norm = s => Match.fold(String(s).toLowerCase()).replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
@@ -45,6 +50,10 @@ const refCache = new WeakMap();
  * @property {string | null} phrase  the phrase he typed (slot words as …)
  * @property {import('../../domain/punct.js').PunctMiss[]} punctMiss  punctuation rules of a Schreiben item the right
  *                                   answer breaks (a slip: shown and rated Hard)
+ * @property {import('../../domain/notes.js').Note[]} notes  what he got wrong (wrong or partly right answers), each from
+ *                                   an error in his answer (domain/notes.js)
+ * @property {string | null} rule    the rule to show: a detector's, a usage note, a mistake's own, or the item's rule
+ *                                   when it is about one of his errors (ruleApplies); never a rule that does not apply
  */
 
 /**
@@ -97,11 +106,15 @@ export function gradeAnswer(item, input, move = null, data = {}) {
     const pm = politeMiss(r.input, it.sentence || it.model, it.strict);
     if (pm.length) { r.focusMiss = [...(r.focusMiss || []), ...pm]; r.ok = false; r.exact = false; }
   }
+  // a mistake card: a capital or a comma the correction changed must be changed (the matcher ignores both, so typing
+  // his own "Vielen Dank für deine Nachricht!" back would pass)
+  const fixMiss = it.fixes ? fixMissed(input, it.fixes) : [];
+  if (r.ok && fixMiss.length) { r.ok = false; r.exact = false; }
   const det = Detect.run(input, it, r, { verbs: data.verbs || null, conj: data.conj || null });
   /** @type {Rest | null} */ let rest = null;
   if (r.ok && !det) {
     if (isPhraseCard(it)) {
-      const v = data.variants && typeof data.variants.get === 'function' ? data.variants.get(it.id) || [] : [];
+      const v = [...(it.sentences || []), ...(data.variants && typeof data.variants.get === 'function' ? data.variants.get(it.id) || [] : [])];
       rest = Match.restCheck(r.input, it.sentence || it.model, accepted, { ...o, anywhere: false, matched: r.matched, variants: v });
     } else if (isSituation(it)) {
       rest = junkSlots(r, data.lexicon) || (it.model ? Match.formCheck(r.input, it.model, { ...o, lone: it.src === 'build' }) : null);
@@ -148,28 +161,59 @@ export function gradeAnswer(item, input, move = null, data = {}) {
   // slips in the rest of the sentence show like the phrase's own
   const typos = [...(r.typos || []), ...(rest && rest.status === 'ok' ? (rest.typos || []).filter((/** @type {any} */ t) => !overlaps(t, r.typos || [])) : [])];
   const umlautMiss = [...(r.umlautMiss || []), ...(rest && rest.status === 'ok' ? (rest.umlautMiss || []).filter((/** @type {any} */ t) => !overlaps(t, r.umlautMiss || [])) : [])];
+  // what he got wrong, against the sentence he is shown (the closest right one; the rest's sentence on a partial answer),
+  // and the item's rule only when it is about one of those errors (a detector's rule always: it found his error)
+  const shownAs = partial && rest ? rest.ref : !(r.ok && !det) ? target : null;
+  const found = shownAs ? answerNotes(input, shownAs, it, { lexicon: data.lexicon || null }) : null;
+  // the fixes a mistake card checks: named first (a capital at the start of the line counts here)
+  if (found && fixMiss.length) {
+    const key = (/** @type {any} */ n) => `${n.code}|${n.word || ''}|${n.a || ''}|${n.b || ''}`;
+    const have = new Set(found.notes.map(key));
+    found.notes = [...fixMiss.filter(n => !have.has(key(n))), ...found.notes];
+  }
+  const rule = it.usage || (det ? detRule || null : null) || (it.area === 'mistakes' ? it.rule || null : found && ruleApplies(it, found, { verbs: data.verbs || null, subjects: SUBJECTS }) ? it.rule : null);
   return {
+    notes: found ? found.notes : [], rule,
     ok: r.ok && !det, matchOk: r.ok, det, input: r.input, typos, capMiss: r.capMiss || [], umlautMiss,
     right: partial && rest && rest.ref ? rest.ref : right, target, alsoCorrect: also.slice(0, 8), primary: !!(r.ok && r.matched === accepted[0] && r.exact && !partial), detRule, pattern,
-    rest, partial, phrase: r.ok ? phraseOf(r) : null, punctMiss,
+    rest, partial, phrase: r.ok ? phraseOf(r, it.sentence || it.model, ref) : null, punctMiss,
   };
 }
 
 /**
- * The sentence to type once: the model (the bank's example sentence when the model has an open slot), or the variant
- * Claude confirmed for this item that shares the most words with the answer. Gap and literal items keep their answer.
- * @param {any} it @param {string} input @param {{variants?: Map<string, string[]>}} data @param {string} fallback
+ * The sentence to type once and to show after a miss: of the whole right sentences (rightSentences), the one that
+ * shares the most words with the answer, the model on a tie. Gap and literal items keep their answer.
+ * @param {any} it @param {string} input @param {{variants?: Map<string, string[]>, conj?: any}} data @param {string} fallback
  */
 function retypeTarget(it, input, data, fallback) {
   if (it.gap || it.literal) return it.model && !/…/.test(it.model) ? it.model : fallback;
-  const whole = [it.sentence, it.model].find(s => s && !/…/.test(s));   // a bank chunk: its example sentence first
-  if (!whole) return fallback;
-  const v = data.variants && typeof data.variants.get === 'function' ? data.variants.get(it.id) || [] : [];
+  const all = rightSentences(it, data);
+  if (!all.length) return fallback;
   const mine = Match.words(String(input || '')).map((/** @type {any} */ w) => w.n);
   const common = (/** @type {string} */ s) => { const ws = new Set(Match.words(s).map((/** @type {any} */ w) => w.n)); return mine.filter(w => ws.has(w)).length; };
-  let best = whole, n = common(whole);
-  for (const s of v) if (s && !/…/.test(s) && common(s) > n) { best = s; n = common(s); }
+  let best = all[0], n = common(best);
+  for (const s of all.slice(1)) if (common(s) > n) { best = s; n = common(s); }
   return best;
+}
+
+/**
+ * The whole right sentences of a phrase item, the model (a bank chunk: its example sentence) first: the content's
+ * other sentences (it.sentences), Claude's confirmed answers for it, and the model with each other accepted phrase in
+ * it (Match.sentencesFor: Danach … for Dann …), so a word he got right is never struck. Gap and literal items: none.
+ * @param {any} it @param {{variants?: Map<string, string[]>, conj?: any, nouns?: Record<string, string>}} data
+ * @returns {string[]}
+ */
+export function rightSentences(it, data) {
+  if (it.gap || it.literal) return [];
+  const whole = [it.sentence, it.model].find(s => s && !/…/.test(s));
+  if (!whole) return [];
+  const v = data.variants && typeof data.variants.get === 'function' ? data.variants.get(it.id) || [] : [];
+  let ref = refCache.get(it);
+  if (!ref) { ref = caseRef(it, data.nouns || {}); refCache.set(it, ref); }
+  const accepted = it.accept || [];
+  // (a phrase card's own phrases: a bank chunk's alternatives are for the chunk alone, not for every sentence it is in)
+  const made = isPhraseCard(it) && !it.bank && accepted.length ? Match.sentencesFor(whole, accepted, { caseRef: ref, conj: data.conj || null }) : [];
+  return [...new Set([whole, ...(it.sentences || []), ...v, ...made].filter(s => s && !/…/.test(s)))];
 }
 
 /**
@@ -184,6 +228,7 @@ export function retypeOk(it, typed, target) {
   const a = Match.words(String(typed || '')), b = Match.words(String(target || ''));
   if (!b.length || a.length !== b.length) return false;
   const strict = new Set(it && it.strict || []);
+  if (it && it.fixes && fixMissed(String(typed || ''), it.fixes).length) return false;
   return b.every((/** @type {any} */ w, /** @type {number} */ i) => a[i].n === w.n && (i === 0 || !strict.has(w.raw) || a[i].raw === w.raw));
 }
 
@@ -289,12 +334,14 @@ function politeMiss(input, model, strict) {
 /** @param {{start: number}} t @param {{start: number}[]} list */
 const overlaps = (t, list) => list.some(x => x.start === t.start);
 
-/** The phrase he typed (slot words as …), for "<phrase> is right". @param {any} r */
-function phraseOf(r) {
+/**
+ * The phrase he typed, written right (slot words as …), for "<phrase> is right": his slips fixed and the model's commas
+ * and capitals, never his errors (Match.phraseText). @param {any} r @param {string | null | undefined} base
+ * @param {Map<string, string>} caseRef
+ */
+function phraseOf(r, base, caseRef) {
   if (!r.span) return null;
-  let s = r.input.slice(r.span[0], r.span[1]);
-  for (const f of r.fills || []) if (f) s = s.replace(f, '…');
-  return s.replace(/[\s,.;:!?]+$/u, '').trim() || null;
+  return Match.phraseText(r.input, r.span, r.fills || [], [...(r.typos || []), ...(r.umlautMiss || []), ...(r.capMiss || [])], base, caseRef);
 }
 
 /** Words from the item's known wrong answers that no accepted answer has: never a typo or slip. @param {any} it @param {string[]} accepted */
