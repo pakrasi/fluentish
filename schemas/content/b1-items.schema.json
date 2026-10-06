@@ -149,6 +149,24 @@
           "type": "object"
         }
       },
+      "sentences": {
+        "description": "Whole right sentences besides the model (round 5): the rest of a phrase card is checked against them too, and a wrong answer is shown the closest one",
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "notes": {
+        "description": "One line on a wrong word he may use, shown only when his answer has that word (round 5)",
+        "type": "object",
+        "minProperties": 1,
+        "additionalProperties": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
       "wrong_move": {
         "type": [
           "object",

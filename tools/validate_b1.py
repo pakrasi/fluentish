@@ -45,7 +45,9 @@ NOT_VERB_END = set(norm("""der die das den dem des ein eine einen einem einer ei
     schon sehr gern gerne mal doch ja so dann da hier dort heute morgen und oder aber""").split()) | SUBORD
 OPINION_VERBS = ["glaube", "glauben", "denke", "denken", "finde", "finden", "meine", "meinen", "sage", "sagen",
                  "hoffe", "hoffen"]
-OPTIONAL_KEYS = {"moves", "wrong_move", "extra"}
+# sentences: whole right sentences besides the model (the rest of a phrase card is checked against them too, and a
+#   wrong answer is shown the closest one); notes: {word: one line} on a wrong word he may use (shown only when he does)
+OPTIONAL_KEYS = {"moves", "wrong_move", "extra", "sentences", "notes"}
 KEYS = ["id", "kind", "area", "group", "teil", "fn", "star", "trap", "focus", "strict", "plan", "task", "prompt",
         "prompt_lang", "hl", "partner", "prefill", "accept", "anywhere", "model", "wrong", "rule", "src", "chunk", "level"]
 HINT_RE = re.compile(r"\b(verbs?|ans Ende|Nebensatz|Hauptsatz|Akkusativ|Dativ|Genitiv|Nominativ|accusative|dative|"
@@ -514,6 +516,28 @@ def check_item(it, ctx, where):
             E.append(f"{at}: grammar group must be a plan.json topic id, not {grp!r}")
         if teil is not None or fn is not None:
             E.append(f"{at}: teil and fn are null for grammar items")
+    if "sentences" in it:
+        ss = it["sentences"]
+        if not isinstance(ss, list) or not ss or not all(isinstance(x, str) and x.strip() for x in ss):
+            E.append(f"{at}: sentences must be a non-empty list of strings")
+        else:
+            for x in ss:
+                if not re.match(r"^[A-ZÄÖÜ]", x) or not re.search(r"[.!?]$", x):
+                    E.append(f"{at}: sentence {x!r} must start with a capital and end with . ! or ?")
+                if x == it["model"]:
+                    E.append(f"{at}: sentence {x!r} is the model")
+            if len(set(ss)) != len(ss):
+                E.append(f"{at}: sentences has duplicates")
+    if "notes" in it:
+        nt = it["notes"]
+        if not isinstance(nt, dict) or not nt:
+            E.append(f"{at}: notes must be an object {{word: line}}")
+        else:
+            for k, v in nt.items():
+                if not re.fullmatch(r"[a-zäöüß]+", k) or not isinstance(v, str) or not v.strip():
+                    E.append(f"{at}: note {k!r} needs a lower-case word and a line")
+                elif "\u2014" in v:
+                    E.append(f"{at}: note {k!r} has an em dash")
     for k in ("star", "anywhere"):
         if not isinstance(it[k], bool):
             E.append(f"{at}: {k} must be true or false")

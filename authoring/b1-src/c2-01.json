@@ -194,19 +194,22 @@
    "danach nenne ich [x] (und) am ende sage ich meine meinung",
    "dann nenne ich [x] (und) zum schluss sage ich meine meinung",
    "dann nenne ich [x] (und) am schluss sage ich meine meinung",
-   "dann nenne ich [x] (und) am ende sage ich (ihnen) meine (eigene) meinung",
-   "dann nenne ich [x] (und) am ende erzähle ich meine meinung"
+   "dann nenne ich [x] (und) am ende sage ich (ihnen) meine (eigene) meinung"
   ],
   "anywhere": true,
   "model": "Dann nenne ich die Vor- und Nachteile, und am Ende sage ich meine Meinung.",
   "wrong": [
    "Dann ich nenne die Vor- und Nachteile, und am Ende ich sage meine Meinung.",
-   "Dann nenne ich die Vor- und Nachteile. Am Ende, ich sage meine Meinung."
+   "Dann nenne ich die Vor- und Nachteile. Am Ende, ich sage meine Meinung.",
+   "Dann nenne ich die Vor- und Nachteile, und am Ende erzähle ich meine Meinung."
   ],
   "rule": "After Am Ende, the verb comes next, then the subject: Am Ende sage ich meine Meinung.",
   "src": "cheatsheet §5 Folie 1 Thema und Aufbau",
   "chunk": null,
-  "level": "B1"
+  "level": "B1",
+  "notes": {
+   "erzähle": "With Meinung the verb is sagen: Am Ende sage ich meine Meinung. Erzählen is for a story or an experience."
+  }
  },
  {
   "id": "BP:s2-folie2-ich-persoenlich",
@@ -883,7 +886,17 @@
   "rule": "After dass, the verb goes to the end.",
   "src": "cheatsheet §5 Folie 4 Vor-/Nachteile und Meinung",
   "chunk": null,
-  "level": "B1"
+  "level": "B1",
+  "sentences": [
+   "Ein Nachteil ist allerdings, dass man weniger Kontakt mit Kollegen hat.",
+   "Ein Nachteil ist allerdings, dass man mit Kollegen weniger Kontakt hat.",
+   "Ein Nachteil ist allerdings, dass man weniger Kontakt zu seinen Kollegen hat.",
+   "Ein Nachteil ist allerdings, dass man mit seinen Kollegen weniger Kontakt hat."
+  ],
+  "notes": {
+   "ihrem": "After man, his or her is sein: mit seinen Kollegen.",
+   "ihren": "After man, his or her is sein: mit seinen Kollegen."
+  }
  },
  {
   "id": "BP:s2-folie4-dagegen-spricht",
