@@ -48,7 +48,7 @@ export function itemMaps(content) {
 }
 
 /** A legacy localStorage value, read-only; {} when it is missing or blocked. @param {string} key */
-function legacy(key) {
+export function legacy(key) {
   try { const v = globalThis.localStorage && localStorage.getItem(key); return v ? JSON.parse(v) || {} : {}; } catch { return {}; }
 }
 

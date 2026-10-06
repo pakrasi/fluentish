@@ -110,7 +110,7 @@ export async function mountGame(el, ctx) {
       over = true; stopAll();
       const c = ctx.clock.ctx();
       store.update(GAME, (/** @type {any} */ log) => logGame(log, { day: c.today, n, right: score, missed: [...new Set(misses.map(m => m.id))], timed: !untimed }), {});
-      addActivity(store, c.today, { minutes: untimed ? 2 : 1 });
+      addActivity(store, c.today, { minutes: untimed ? 2 : 1, kind: 'build' });
       const fig = h('p', { class: 'wb-figure tnum' }, String(score));
       replace(el, h('div', { class: 'wb stack wb-game' },
         backLink(back, ctx.query.get('from') === 'today' ? t('build.toToday') : t('build.title')),

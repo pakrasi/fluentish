@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "progress@1",
+  "title": "Progress log, one month",
+  "description": "kv progress.<course>.<YYYY-MM> (profile scope, in the backup's snapshots): one record per study day of what the learner knew that day (src/domain/progress.js; docs/SCHEMA.md › Progress log). Counts are arrays by CEFR level [A1, A2, B1, B2, C1, C2, none] with trailing zeros left out. Additive: new fields may be added, none removed.",
+  "type": "object",
+  "propertyNames": { "type": "string", "pattern": "^\\d{4}-\\d\\d-\\d\\d$" },
+  "additionalProperties": { "$ref": "#/$defs/day" },
+  "$defs": {
+    "levels": { "type": "array", "maxItems": 7, "items": { "type": "integer", "minimum": 0 } },
+    "counts": {
+      "type": "object", "required": ["w", "p", "g"],
+      "properties": { "w": { "$ref": "#/$defs/levels" }, "p": { "$ref": "#/$defs/levels" }, "g": { "$ref": "#/$defs/levels" } }
+    },
+    "kinds": { "type": "object", "additionalProperties": { "type": "number", "minimum": 0 } },
+    "day": {
+      "type": "object",
+      "required": ["v", "at", "dev", "src", "atlas", "known", "shaky", "seen", "of", "day", "min"],
+      "properties": {
+        "v": { "const": 1 },
+        "at": { "type": "string" },
+        "dev": { "type": "string" },
+        "src": { "enum": ["live", "replay", "estimate"] },
+        "estimated": { "const": true },
+        "fin": { "const": true },
+        "atlas": { "type": ["string", "null"] },
+        "known": { "$ref": "#/$defs/counts" },
+        "shaky": { "$ref": "#/$defs/counts" },
+        "seen": { "$ref": "#/$defs/counts" },
+        "of": { "$ref": "#/$defs/counts" },
+        "day": {
+          "type": "object", "required": ["new", "learnt", "missed", "reviews", "again"],
+          "properties": {
+            "new": { "type": "integer", "minimum": 0 }, "learnt": { "type": "integer", "minimum": 0 }, "missed": { "type": "integer", "minimum": 0 },
+            "reviews": { "type": "integer", "minimum": 0 }, "again": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "min": {
+          "type": "object", "required": ["total", "rounds", "dev"],
+          "properties": {
+            "total": { "type": "number", "minimum": 0 },
+            "rounds": { "type": "number", "minimum": 0 },
+            "dev": { "type": "object", "additionalProperties": { "type": "object", "required": ["m"], "properties": { "m": { "type": "number", "minimum": 0 }, "by": { "$ref": "#/$defs/kinds" } } } },
+            "by": { "$ref": "#/$defs/kinds" }
+          }
+        },
+        "jump": { "type": "object", "required": ["from", "known"], "properties": { "from": { "type": "string" }, "known": { "type": "integer" } } }
+      }
+    }
+  }
+}

@@ -700,11 +700,19 @@ export async function mountRound(el, ctx) {
     voice.hush();
   }
   function minutesSpent() { return Math.min(30, (performance.now() - roundT0) / 60000); }
+  /** The kind of the round's minutes (data/activity.js): a writing round is write; otherwise shared between new and
+      review items by count. */
+  function kindOf() {
+    if (round.kind === 'write') return { kind: 'write' };
+    const firsts = round.results.filter((/** @type {any} */ r) => r.first);
+    const fresh = firsts.filter((/** @type {any} */ r) => r.isNew).length;
+    return { kind: 'review', split: { new: fresh, review: firsts.length - fresh } };
+  }
   function end() {
     if (!alive) return;
     cleanup();
     const done = round.results.filter((/** @type {any} */ r) => r.first).length;
-    addActivity(store, st.c.today, { minutes: minutesSpent() });
+    addActivity(store, st.c.today, { minutes: minutesSpent(), ...kindOf() });
     saveLogs(store, { round, slot }, kv);
     ctx.go(backTo);
     setTimeout(() => ctx.toast(t('practice.saved', { n: done, total: round.planned })), 60);
@@ -714,7 +722,7 @@ export async function mountRound(el, ctx) {
     if (ck) {   // a cluster round: its own day log and done screen; the B1 day log and readiness stay out of it
       saveLogs(store, { round: null, slot }, kv);
       updateClusters(store, x => { const d = clusterDay(store, st.c.today); return { ...x, day: { ...d, rounds: d.rounds + 1 } }; });
-      addActivity(store, st.c.today, { minutes: minutesSpent(), rounds: 1 });
+      addActivity(store, st.c.today, { minutes: minutesSpent(), rounds: 1, ...kindOf() });
       const firsts = round.results.filter((/** @type {any} */ r) => r.first && !r.known);
       drawClusterDone(el, ctx, { key: ck.key, right: firsts.filter((/** @type {any} */ r) => r.ok).length, total: firsts.length, prev: round.prev || {}, again: ck.pick ? `#/practice/round?${ctx.query}` : S.roundHref(round), back: backTo.startsWith('/lookup/map') ? `#${backTo}` : null,
         known: round.results.filter((/** @type {any} */ r) => r.known).length });
@@ -723,7 +731,7 @@ export async function mountRound(el, ctx) {
     day.rounds = (day.rounds || 0) + 1;
     if (round.kind === 'write') day.writeRounds = (day.writeRounds || 0) + 1;
     saveLogs(store, { round: null, slot, day }, kv);
-    addActivity(store, st.c.today, { minutes: minutesSpent(), rounds: 1 });
+    addActivity(store, st.c.today, { minutes: minutesSpent(), rounds: 1, ...kindOf() });
     drawDone(el, ctx, data, round, backTo);
   }
   function drawNothing() {

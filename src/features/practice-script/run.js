@@ -139,7 +139,7 @@ export function mountRun(el, ctx, script) {
         if (gg === 1) St.updateProgress(store, script.id, x => ({ ...x, sections: { ...x.sections, [s.id]: Lad.graded(x.sections[s.id], s, 'cue', 1, c.today) } }));
       });
       St.updateProgress(store, script.id, x => ({ ...x, runs: [...(x.runs || []), { day: c.today, ms: Math.round(total), splits: splits.map(Math.round), grade: g, stuck: [...stuck] }].slice(-20) }));
-      addActivity(store, c.today, { minutes: Math.min(60, total / 60000) });
+      addActivity(store, c.today, { minutes: Math.min(60, total / 60000), kind: 'script' });
       setTimeout(() => ctx.go(`/practice/scripts/${script.id}`), reduced() ? 0 : 420);
     }
   }

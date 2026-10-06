@@ -4,8 +4,9 @@
    The cards merge by the B4 rule (domain/cardmerge.js: join the snapshots and this device's cards, newest record
    wins; then replay the events, taking `post` when `base` matches and otherwise the newest review). The learning
    collections merge by their rule in SNAPSHOT_KV (settings per field by HLC, then each settings.changed event;
-   activity per day; mistakes by id with deletions kept; Look up views per item; the rest only when this device has
-   none). Script mode's deck and collections are never read or written here. Card ids and record shapes are as they
+   activity per day, each device's minutes added up; mistakes by id with deletions kept; Look up views per item; the
+   rest only when this device has none), and the progress log per day (domain/progress.js: the counts of the most
+   complete record of a day, every device's minutes). Script mode's deck and collections are never read or written here. Card ids and record shapes are as they
    were; nothing is deleted except what an event deleted (an undone mark).
 
    Applying is journaled in the device-scope kv 'backup.journal' (never exported or uploaded):
@@ -24,6 +25,8 @@
 import { mergeCards, canon } from '../domain/cardmerge.js';
 import { mergeSettings, normalizeSettings, defaultSettings } from './settings.js';
 import { fnv1a, isoWithOffset } from './ids.js';
+import { joinActivity } from '../domain/activity.js';
+import { mergeMonth } from '../domain/progress.js';
 import * as B from './sync/backup.js';
 
 export const JOURNAL_KV = 'backup.journal';
@@ -74,17 +77,17 @@ export function span(d) {
 
 /**
  * Read each device's newest snapshot and its event files. seen: path → sha already merged (those are skipped);
- * skip: a device id to leave out (this device, for the automatic merge).
+ * skip: a device id to leave out (this device, for the automatic merge); all: every snapshot of every day, not only
+ * the newest (the progress log's backfill, data/progress.js).
  * @param {B.Files} files @param {DeviceBackup[]} devices
- * @param {{seen?: Record<string, string>, skip?: string | null, onProgress?: (done: number, total: number) => void}} [o]
+ * @param {{seen?: Record<string, string>, skip?: string | null, all?: boolean, onProgress?: (done: number, total: number) => void}} [o]
  * @returns {Promise<BackupData>}
  */
-export async function readBackups(files, devices, { seen = {}, skip = null, onProgress } = {}) {
+export async function readBackups(files, devices, { seen = {}, skip = null, all = false, onProgress } = {}) {
   /** @type {FileRef[]} */ const jobs = [];
   for (const d of devices) {
     if (d.deviceId === skip) continue;
-    const snap = d.snapshots[d.snapshots.length - 1];
-    if (snap && seen[snap.path] !== snap.sha) jobs.push(snap);
+    for (const snap of all ? d.snapshots : d.snapshots.slice(-1)) if (seen[snap.path] !== snap.sha) jobs.push(snap);
     for (const f of d.events) if (seen[f.path] !== f.sha) jobs.push(f);
   }
   /** @type {BackupData} */ const out = { snapshots: [], events: [], read: {}, failed: [] };
@@ -145,16 +148,6 @@ function fillUnstamped(next, incoming) {
   return out;
 }
 
-/** Activity per day: the larger minutes and rounds (commutative). @param {any} a @param {any} b */
-function joinActivity(a, b) {
-  /** @type {Record<string, any>} */ const out = { ...(a || {}) };
-  for (const [day, y] of Object.entries(b || {})) {
-    const x = out[day];
-    if (!x) { out[day] = y; continue; }
-    out[day] = { ...y, ...x, minutes: Math.max(Number(x.minutes) || 0, Number(y?.minutes) || 0), rounds: Math.max(Number(x.rounds) || 0, Number(y?.rounds) || 0) };
-  }
-  return out;
-}
 /** Mistakes by id: a deleted one stays deleted, otherwise one fixed choice. @param {any} a @param {any} b */
 function joinMistakes(a, b) {
   /** @type {Record<string, any>} */ const out = { ...(a || {}) };
@@ -211,6 +204,17 @@ export function planRestore(store, { snapshots, events }) {
     counts.collections++;
     if (rule === 'mistakes') counts.mistakes = Object.keys(next).filter(id => !(cur || {})[id]).length;
     if (rule === 'activity') counts.days = Object.keys(next).filter(d => !(cur || {})[d]).length;
+  }
+  // collections named by pattern (B.SNAPSHOT_PREFIX): the progress log's months, found here or in a snapshot, per day
+  const names = new Set([...Object.keys(store.kv || {}), ...snapshots.flatMap(s => Object.keys(s.kv || {}))].filter(n => B.prefixRule(n) !== null));
+  for (const name of [...names].sort()) {
+    const rule = B.prefixRule(name);
+    const cur = store.get(name);
+    const incoming = snapshots.map(s => s.kv?.[name]).filter(v => v && typeof v === 'object');
+    const next = rule === 'progressDays' ? incoming.reduce((a, b) => mergeMonth(a, b), cur ?? null) : cur;
+    if (next == null || canon(next) === canon(cur ?? null)) continue;
+    kv[name] = next;
+    counts.collections++;
   }
   const empty = !Object.keys(merged.changes).length && !Object.keys(kv).length;
   return { cards: merged.changes, kv, counts, empty };

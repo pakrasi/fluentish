@@ -265,13 +265,8 @@ export function saveLogs(store, logs, kv = 'b1.session') {
   store.set(kv, next);
 }
 
-/** Add minutes and a round to today's activity (Today's runway and study days). @param {any} store @param {string} day @param {{minutes: number, rounds?: number}} o */
-export function addActivity(store, day, { minutes, rounds = 0 }) {
-  store.update('activity', (/** @type {any} */ a) => {
-    const cur = (a || {})[day] || { minutes: 0, rounds: 0 };
-    return { ...(a || {}), [day]: { ...cur, minutes: Math.round(((cur.minutes || 0) + minutes) * 10) / 10, rounds: (cur.rounds || 0) + rounds } };
-  }, {});
-}
+/** Add minutes and a round to today's activity (Today's runway and study days), per device and kind (data/activity.js). */
+export { addActivity } from '../../data/activity.js';
 
 /** The last exam-word refresh this session: 'ok' | 'cached' | 'no-token' | 'error' | null (not tried yet). */
 export let wordsState = /** @type {string | null} */ (null);

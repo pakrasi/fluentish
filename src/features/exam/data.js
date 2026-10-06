@@ -16,6 +16,7 @@ import { testPath, section } from '../../domain/examdef.js';
 import { adapterFor } from '../../domain/exam-results.js';
 import { createTx } from './locale.js';
 import { addMistakes, listMistakes } from '../../data/mistakes.js';
+import { addActivity } from '../../data/activity.js';
 import * as T from './timer.js';
 
 export const pad2 = (/** @type {number} */ n) => String(n).padStart(2, '0');
@@ -206,11 +207,7 @@ export async function submitAttempt(ctx, { exam, n, module, clock, now = Date.no
   const sec = exam.def ? sectionOf(exam, module) : null;
   clearDraft(store, n, module, sec ? sec.parts.some((/** @type {any} */ p) => p.audio) : undefined);
   const day = ctx.clock.today();
-  store.update('activity', (/** @type {any} */ a) => {
-    const x = { minutes: 0, rounds: 0, ...((a || {})[day] || {}) };
-    x.minutes += Math.max(1, Math.round(saved.duration_s / 60));
-    return { ...(a || {}), [day]: x };
-  }, {});
+  addActivity(store, day, { minutes: Math.max(1, Math.round(saved.duration_s / 60)), kind: 'exam' });
   sync(ctx, true);
   return saved;
 }

@@ -16,7 +16,8 @@ import { createMemoryAdapter } from './data/adapters/memory.js';
 import { openSession } from './data/session.js';
 import { normalizeSettings, defaultPrefs, examDate } from './data/settings.js';
 import { createContent } from './data/content.js';
-import { sync, restore } from './data/sync/index.js';
+import { sync, restore, backup, backupFiles } from './data/sync/index.js';
+import { startProgress } from './data/progress.js';
 import { TABS, routes, startFeatures } from './features/registry.js';
 import { createSw } from './services/sw.js';
 import { loadRecordSchemas, recordChecker } from './data/records.js';
@@ -188,6 +189,11 @@ async function main() {
 
   // what features do once the app has started (the exam keeps a Sprechen take a reload cut off)
   startFeatures({ store, bus, t, toast, log });
+
+  // ---------- progress log ----------
+  // one record per study day (data/progress.js): the past once per device (with the backup when this device is
+  // linked), missed days, then today after study
+  startProgress({ store, clock, content, bus, log, files: () => (backup(store).linked() && backup(store).allowed() && navigator.onLine ? backupFiles(store) : null) });
 
   // ---------- results sync ----------
   // On start and whenever the page becomes visible again, at most once a minute. sync() skips by itself when

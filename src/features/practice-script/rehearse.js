@@ -397,6 +397,6 @@ export function mountRehearse(el, ctx, script, sectionId) {
   document.addEventListener('keydown', onKey);
   return () => {
     alive = false; stop(); offV(); stopHero(); variant.destroy(); document.removeEventListener('keydown', onKey); restore();
-    addActivity(store, c.today, { minutes: Math.min(30, (performance.now() - t0) / 60000) });
+    addActivity(store, c.today, { minutes: Math.min(30, (performance.now() - t0) / 60000), kind: 'script' });
   };
 }

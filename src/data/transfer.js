@@ -6,6 +6,7 @@
 import { validate } from '../core/schema.js';
 import { mergeSettings } from './settings.js';
 import { planMigration } from './migrate.js';
+import { isMonthKey, mergeMonth } from '../domain/progress.js';
 
 const SCHEMA = {
   type: 'object', required: ['schema', 'exportedAt', 'profile', 'kv', 'cards', 'attempts', 'events'],
@@ -14,7 +15,7 @@ const SCHEMA = {
     kv: { type: 'object' }, cards: { type: 'object' }, attempts: { type: 'array' }, events: { type: 'array' },
   },
 };
-const NOT_EXPORTED = new Set(['secrets', 'prefs', 'palace', 'backup', 'exams.vocabAudio']);   // the word-audio index is a cache of the results repo; backup is device state
+const NOT_EXPORTED = new Set(['secrets', 'prefs', 'palace', 'backup', 'progress.device', 'exams.vocabAudio']);   // the word-audio index is a cache of the results repo; backup is device state
 
 // Script mode (features/practice/script): his scripts are private to the device and leave it only when he ticks
 // "Include scripts": their collections, the 'script' deck and the reviews marked local.
@@ -83,6 +84,8 @@ export async function importFile(text, { store, bus }) {
       // scripts merge by id, so a file made with "Include scripts" never leaves its script cards without their
       // script on a device that already has scripts (the device's own copy of the same id wins)
       else if (SCRIPT_KV.has(k) && v && typeof v === 'object' && !Array.isArray(v)) store.update(k, (/** @type {any} */ m) => ({ ...v, ...(m || {}) }), {});
+      // the progress log merges per day (domain/progress.js), like the backup's restore
+      else if (isMonthKey(k) && v && typeof v === 'object') store.set(k, mergeMonth(store.get(k) ?? null, v));
       else if (store.get(k) == null) store.set(k, v);
     }
     return { kind: 'fluentish', cards, attempts: newAttempts.length };

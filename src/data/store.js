@@ -20,14 +20,18 @@
      secrets   device            anthropicKey, githubToken; never exported or synced
      backup    device            the progress backup's state (data/sync/backup.js); never exported or uploaded
      meta      profile           migration record, import summary
-     activity  profile           { [day]: { minutes, rounds } } for the runway and study days
+     activity  profile           { [day]: { minutes, rounds, by?, lang?, dev? } } for the runway and study days
+                                 (domain/activity.js: minutes per device and kind)
+     progress.<course>.<YYYY-MM>, progress.<course>.frames.<YYYY>
+               profile           the progress log (domain/progress.js, data/progress.js)
      ui        profile           dismissed notices
      b1.session, exams.drafts, exams.training, exams.voice, exams.seen, exams.feedbackLocal, vocab.local,
      vocab.events                carried over from the legacy apps for the stage-B features */
 import { uuidv7, isoWithOffset } from './ids.js';
 import { deckLang } from '../domain/decks.js';
+import { joinActivity } from '../domain/activity.js';
 
-export const DEVICE_SCOPE = new Set(['prefs', 'secrets', 'palace', 'backup']);
+export const DEVICE_SCOPE = new Set(['prefs', 'secrets', 'palace', 'backup', 'progress.device']);
 const DEBOUNCED = new Set(['settings', 'prefs', 'ui', 'activity']);
 const DEBOUNCE_MS = 250;
 
@@ -41,19 +45,12 @@ const DEBOUNCE_MS = 250;
 
 /**
  * Two tabs changed the same collection before either wrote it: keep both. Study minutes per day take the larger
- * count of each tab (they were added on top of the same value); for other collections this tab's pending change
- * wins, as it would have without the merge.
+ * count of each tab for each device (they were added on top of the same value; domain/activity.js joinActivity); for
+ * other collections this tab's pending change wins, as it would have without the merge.
  * @param {string} name @param {any} local @param {any} remote
  */
 export function mergeKV(name, local, remote) {
-  if (name === 'activity' && local && remote && typeof local === 'object' && typeof remote === 'object') {
-    /** @type {Record<string, any>} */ const out = { ...remote };
-    for (const [day, x] of Object.entries(local)) {
-      const y = out[day] || {};
-      out[day] = { ...y, ...x, minutes: Math.max(x?.minutes || 0, y.minutes || 0), rounds: Math.max(x?.rounds || 0, y.rounds || 0) };
-    }
-    return out;
-  }
+  if (name === 'activity' && local && remote && typeof local === 'object' && typeof remote === 'object') return joinActivity(remote, local);
   return local;
 }
 

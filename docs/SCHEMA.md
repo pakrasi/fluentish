@@ -95,9 +95,33 @@ Every client-created record carries `id` (UUIDv7), `profileId`, `deviceId` and `
 |---|---|---|
 | `data/events/<deviceId>/<day>.ndjson` | one `event@1` per line without `synced` and `path`, by `seq`; the learning events (`card.reviewed`, `card.marked_known`, `card.unmarked_known`, `settings.changed`) of that study day, except reviews marked `local` and events of deck `script` | this device only; lines are only added (read with sha, merge by id, write with sha) |
 | `data/logs/<deviceId>/<day>.ndjson` | `{at, where, message, build}` per line: the error log entries since the last upload, scrubbed (`core/log.js`), script text replaced | this device, once a study day |
-| `data/snapshots/<deviceId>/<day>.json.gz` (or `.json`) | `fluentish-snapshot@1`: `{schema, deviceId, profileId, at, day, seq, build, counts: {cards}, cards: {deck: {itemId: card-fsrs@1}}, kv: {settings, activity, mistakes, lookup.seen, known, b1.session, speak.sim, clusters, practice.write, exams.feedbackLocal, exams.seen, exams.learnerNotes, vocab.local, vocab.events}}`, every deck except `script` | this device only; rewritten in place during the study day |
+| `data/snapshots/<deviceId>/<day>.json.gz` (or `.json`) | `fluentish-snapshot@1`: `{schema, deviceId, profileId, at, day, seq, build, counts: {cards}, cards: {deck: {itemId: card-fsrs@1}}, kv: {settings, activity, mistakes, lookup.seen, known, b1.session, speak.sim, clusters, practice.write, exams.feedbackLocal, exams.seen, exams.learnerNotes, vocab.local, vocab.events, fr.session, and every progress-log month progress.<course>.<YYYY-MM>}}`, every deck except `script`. Collections matched by name pattern (`backup.js SNAPSHOT_PREFIX`: only `^progress\.[a-z0-9-]+\.\d{4}-\d\d$`, rule `progressDays`) are additive: a reader from before round 4 reads only the fixed names and passes them by | this device only; rewritten in place during the study day |
 
 The device's backup state is the device-scope kv `backup` (`{on, at, error, eventsAt, snapshot: {day, at, hash, path, sha, profileId, cards}, autoMerge: {since} | null, mergedAt, mergeSeen: {profileId, files: {path: sha}}}`); the last restore or merge is the device-scope kv `backup.journal` (`{id, at, kind: 'restore' | 'merge', profileId, stage: 'applying' | 'done' | 'rolledBack' | 'undoing' | 'undone', counts, sources, before: {cards: {deck: {itemId: record | null}}, kv: {name: value | null}}, after: {cards: {deck: {itemId: hash}}, kv: {name: hash}}}`). Neither is exported or uploaded; "Delete all" clears both. The device record gains `previousDeviceIds` (the ids before each "Delete all").
+
+### Study minutes (`activity`, `src/domain/activity.js`)
+
+`activity[day] = {minutes, rounds, by?: {[kind]: minutes}, lang?: {[lang]: minutes}, dev?: {[deviceId]: {minutes, rounds, by?, lang?}}}` (round 4, additive). Every feature writes through `data/activity.js addActivity(store, day, {minutes, rounds, kind, split})`; kinds are exactly `review`, `new`, `write`, `speak`, `read`, `talk`, `build`, `script`, `exam` (a mixed round passes `split: {review, new}` and its minutes are shared by item count; any other kind counts without one). `minutes`, `rounds`, `by` and `lang` are the sums over `dev`, so Today, the allowance and the runway read the same numbers as before. Merging (restore, the automatic merge, two tabs): each device's larger numbers, totals summed, so two devices on one day add up. Minutes no device is named for (days from before `dev`) sit under device `_` and merge by the larger, the old rule; a day with only those keeps the old shape `{minutes, rounds}`.
+
+### Progress log (`progress.<course>.<YYYY-MM>`, `src/domain/progress.js`, `src/data/progress.js`)
+
+Profile kv, one key per course and month, `progress@1` (`schemas/records/progress.schema.json`): `{[day]: record}`, one record per study day.
+
+```js
+{ v: 1, at, dev, src: 'live' | 'replay' | 'estimate', estimated?: true, fin?: true, atlas: '<hash of the pool files>',
+  known: {w, p, g}, shaky: {w, p, g}, seen: {w, p, g}, of: {w, p, g},   // by CEFR level [A1, A2, B1, B2, C1, C2, none], trailing zeros left out
+  day: {new, learnt, missed, reviews, again},
+  min: {total, rounds, dev: {[deviceId]: {m, by?}}, by?},
+  jump?: {from: 'igloo', known} }
+```
+- **Counts:** `domain/knowledge.js` states over the course's pool (the map `atlas.<lang>` for German, else `course.<lang>` phrases and `igloo.words.<lang>`), the definition Where you stand and the map use. `of` is that day's pool, `atlas` its version. Words / phrases / grammar concepts.
+- **Day:** cards first answered that day (`new`), of them graduated by its end (`learnt`), misses on cards learnt before (`missed`), cards reviewed that were not new (`reviews`), cards with a miss (`again`).
+- **Minutes:** the course's minutes that day per device (`activity` `lang`, or every minute without a language for the first course, German), with kinds when the day's study was all this course's.
+- **When:** today's record (`src: 'live'`) when the app opens and 20 s after study; missed days of the last 60 when the app opens or a new day starts, computed again from the cards and this device's events (`fin: true`); the past once per device (`backfill`, below). A record is written only when its picture changed.
+- **Merge** (restore, merge, import): per day the counts of the more complete record (exact before estimated, then more of that day's study, then more items seen, then `fin`, then later `at`); minutes: each device's larger entry, totals summed.
+- **Backfill** (device kv `progress.device`: `{profileId, at, from, exactFrom, jumpDay, withBackup, days, estimated}`, never exported or uploaded; "Delete all" clears it): every study day from the first answered card to yesterday. The cards of a past day are each backup snapshot of that day or before plus every card not changed since, with the learning events up to that day replayed on them (`cardsAt`, the merge's own order); a card that changed later and is in neither is estimated from its answer history (`estimateCard`: the last 12 answers replayed through the scheduler), and its day is `estimated: true`. With the backup readable (a linked device), every snapshot and event file of every device is read through `data/restore.js`, so the days from the first snapshot on are exact. Igloo's placement results count from the day they were imported (`known.placement`, else the migration's day), whose record carries `jump`. It runs again once if it ran before the backup could be read; running it again changes nothing.
+- **Size:** about 600 bytes a study day with two devices: about 230 KB a year raw, under 10 KB gzipped in the snapshot.
+- No map frames are stored: the daily snapshots are exact from the day they began, so per-item pictures can be computed from them later.
 
 ### Decks and languages (`src/domain/decks.js`)
 
@@ -119,7 +143,7 @@ Every card id names its kind by prefix (`src/domain/itemids.js`): `BP:` B1 phras
 
 ### Key-value collections
 
-`settings`, `prefs`, `secrets`, `meta` (migration record: `migratedAt`, `legacyDeviceId`, a per-key fingerprint for the delta re-merge, `summary`), `activity` (`{[day]: {minutes, rounds}}` for the runway and study days), `ui` (dismissed notices), and the collections carried over for stage B: `b1.session`, `exams.drafts` (`{"N:module": {answers, start, pause, seen, tab, meta, prepStart}, "plays:N": {...}}`), `exams.training`, `exams.voice`, `exams.seen`, `exams.feedbackLocal`, `vocab.local`, `vocab.events`. Practice adds `practice.write` (Schreiben, device-local: `{builds: {[task]: {day, right, total}}, drafts: {[task]: text}, corrections: {[task]: {body, text, at}}}`).
+`settings`, `prefs`, `secrets`, `meta` (migration record: `migratedAt`, `legacyDeviceId`, a per-key fingerprint for the delta re-merge, `summary`), `activity` (`{[day]: {minutes, rounds, by?, lang?, dev?}}` for the runway and study days; see Study minutes below), `ui` (dismissed notices), and the collections carried over for stage B: `b1.session`, `exams.drafts` (`{"N:module": {answers, start, pause, seen, tab, meta, prepStart}, "plays:N": {...}}`), `exams.training`, `exams.voice`, `exams.seen`, `exams.feedbackLocal`, `vocab.local`, `vocab.events`. Practice adds `practice.write` (Schreiben, device-local: `{builds: {[task]: {day, right, total}}, drafts: {[task]: text}, corrections: {[task]: {body, text, at}}}`).
 
 ## Legacy localStorage keys (read once, never written)
 

@@ -396,7 +396,7 @@ export async function mountRound(el, ctx) {
   function end() {
     if (!alive) return;
     cleanup();
-    addActivity(store, c.today, { minutes: minutes() });
+    addActivity(store, c.today, { minutes: minutes(), kind: 'build' });
     const done = round.results.filter((/** @type {any} */ r) => r.first).length;
     ctx.go(backTo);
     setTimeout(() => ctx.toast(t('build.saved.round', { n: done, total: round.planned })), 60);
@@ -404,7 +404,7 @@ export async function mountRound(el, ctx) {
   function finish() {
     cleanup();
     store.update(KV, (/** @type {any} */ s) => ({ ...(s || {}), round: null }), {});
-    addActivity(store, c.today, { minutes: minutes(), rounds: 1 });
+    addActivity(store, c.today, { minutes: minutes(), rounds: 1, kind: 'build' });
     countRound(store, c.today);
     restore();
     // each card's first real answer (a new card's study view is not an answer)

@@ -17,6 +17,8 @@ import { exportBundle, importFile } from '../../data/transfer.js';
 import { deleteProfile } from '../../data/session.js';
 import { results } from '../../data/sync/index.js';
 import { backupBlock } from './backup.js';
+import { summary as progressSummary } from '../../data/progress.js';
+import { activeCourse } from '../../data/settings.js';
 import { newPerDayChosen, buildShare } from '../../domain/budget.js';
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
@@ -327,6 +329,7 @@ export async function mount(el, ctx) {
       storage.textContent = !e ? t('diag.storage.memory') : `${e.persisted ? t('diag.storage.persisted') : t('diag.storage.notPersisted')}${e.usage != null ? ` · ${Math.round(e.usage / 1024)} KB` : ''}`;
     });
     const errs = logEntries();
+    const log = progressSummary(store, activeCourse(store.get('settings'))?.id || null);
     sec.append(h('p', { class: 'field-hint' }, t('diag.safari')));
     const det = h('details', { class: 'diag-details' }, h('summary', null, t('diag.show')));
     sec.append(det);
@@ -335,6 +338,7 @@ export async function mount(el, ctx) {
       h('dt', null, t('diag.storage')), storage,
       h('dt', null, t('diag.device')), h('dd', { class: 'mono' }, app.device.deviceId),
       h('dt', null, t('diag.events')), h('dd', null, t('diag.eventsVal', { n: store.pending().length })),
+      h('dt', null, t('diag.progress')), h('dd', null, t('diag.progressVal', { n: log.days, m: log.estimated })),
       h('dt', null, t('diag.errors')), h('dd', null, errs.length ? errs.slice(-3).map(e => h('span', { class: 'mono block' }, `${e.where}: ${e.message}`)) : t('diag.none'))));
     return sec;
   }

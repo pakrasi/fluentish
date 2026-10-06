@@ -223,7 +223,7 @@ async function mountSay(el, ctx, key) {
   function finish(/** @type {boolean} */ early) {
     if (!alive) return;
     alive = false; cleanup();
-    addActivity(store, c.today, { minutes: Math.min(30, (performance.now() - t0r) / 60000), rounds: early ? 0 : 1 });
+    addActivity(store, c.today, { minutes: Math.min(30, (performance.now() - t0r) / 60000), rounds: early ? 0 : 1, kind: 'review' });
     if (!early) update(store, s => { const d = dayOf(store, c.today); return { ...s, day: { ...d, rounds: d.rounds + 1 } }; });
     const firsts = round.results.filter((/** @type {any} */ r) => r.first && !r.known);
     const known = round.results.filter((/** @type {any} */ r) => r.known).length;

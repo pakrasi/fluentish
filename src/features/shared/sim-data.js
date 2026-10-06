@@ -70,5 +70,5 @@ export const saveRound = (store, round) => updateSim(store, s => ({ ...s, round 
  */
 export function finishRound(store, today, minutes) {
   updateSim(store, s => { const day = S.dayOf(s, today); return { ...s, round: null, day: { ...day, rounds: (day.rounds || 0) + 1 } }; });
-  if (minutes > 0) addActivity(store, today, { minutes });
+  if (minutes > 0) addActivity(store, today, { minutes, kind: 'speak' });
 }

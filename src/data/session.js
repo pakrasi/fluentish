@@ -252,6 +252,7 @@ export async function deleteProfile(adapter, device, profile) {
   await adapter.putKV('device', 'secrets', undefined);
   await adapter.putKV('device', 'backup', undefined);
   await adapter.putKV('device', 'backup.journal', undefined);
+  await adapter.putKV('device', 'progress.device', undefined);
   device.previousDeviceIds = [...new Set([...(device.previousDeviceIds || []), device.deviceId])].slice(-8);
   device.deviceId = newDeviceId();
   device.activeProfile = null;

@@ -9,7 +9,10 @@
                                                 already there are kept, new ones are added by id).
      data/snapshots/<deviceId>/<day>.json.gz    fluentish-snapshot@1, gzip (plain .json where the browser has no
                                                 CompressionStream): every card outside the private decks and the
-                                                learning collections (SNAPSHOT_KV), so a restore does not depend on
+                                                learning collections (SNAPSHOT_KV) and the progress log's
+                                                months (SNAPSHOT_PREFIX: kv progress.<course>.<YYYY-MM>,
+                                                domain/progress.js; added in round 4, which a reader from before
+                                                ignores), so a restore does not depend on
                                                 replaying every event. Rewritten in place during the day (at most every
                                                 SNAPSHOT_EVERY_MS, when it changed); a new file each study day.
      data/logs/<deviceId>/<day>.ndjson          the scrubbed error log (core/log.js), once a study day: {at, where,
@@ -21,6 +24,7 @@
    been seen), not a preview profile, at most one flush a minute, stopped by a connection or token error. The
    learner can turn the backup off in Profile › Data (kv 'backup'.on === false). */
 import { fnv1a, isoWithOffset } from '../ids.js';
+import { MONTH_KEY } from '../../domain/progress.js';
 
 /** Event types that carry learning state (review B4: card events carry base and post). */
 export const BACKUP_TYPES = new Set(['card.reviewed', 'card.marked_known', 'card.unmarked_known', 'settings.changed']);
@@ -29,7 +33,7 @@ export const PRIVATE_DECKS = new Set(['script']);
 /**
  * Profile collections a snapshot carries, with the rule data/restore.js merges each by:
  *   settings   per field by HLC (data/settings.js mergeSettings)
- *   activity   per day, the larger minutes and rounds
+ *   activity   per day, each device's minutes added up (domain/activity.js joinActivity)
  *   mistakes   by id; a deleted mistake stays deleted
  *   seen       by item: first the earliest, last the latest, n the larger
  *   fill       taken only when this device has none (logs that belong to one device: the day's new-item counts …)
@@ -42,6 +46,20 @@ export const SNAPSHOT_KV = {
   // the French course's round session (C3b; a course's cards are in its deck fr:core, which every snapshot carries)
   'fr.session': 'fill',
 };
+/**
+ * Collections found by an exact name pattern rather than a fixed name, with their merge rule (data/restore.js). Only
+ * the progress log's months match (^progress\.[a-z0-9-]+\.\d{4}-\d\d$): a later collection under progress.* gets
+ * a rule of its own. A snapshot reader from before round 4 reads only SNAPSHOT_KV and passes these by.
+ * @type {[RegExp, 'progressDays'][]}
+ */
+export const SNAPSHOT_PREFIX = [[MONTH_KEY, 'progressDays']];
+
+/** The rule of a collection named by pattern, or null. @param {string} name */
+export const prefixRule = name => (SNAPSHOT_PREFIX.find(([re]) => re.test(name)) || [])[1] || null;
+
+/** The kv names of a profile that match SNAPSHOT_PREFIX, sorted. @param {Record<string, any>} kv @returns {string[]} */
+export const prefixKeys = kv => Object.keys(kv || {}).filter(name => prefixRule(name) !== null).sort();
+
 /** Device-scope collection with the backup's state (store.js DEVICE_SCOPE): never exported or uploaded. */
 export const STATE_KV = 'backup';
 export const SNAPSHOT_SCHEMA = 'fluentish-snapshot@1';
@@ -136,7 +154,7 @@ export function snapshotOf(store, { now = Date.now(), build = null } = {}) {
     n += Object.keys(recs).length;
   }
   /** @type {Record<string, any>} */ const kv = {};
-  for (const name of Object.keys(SNAPSHOT_KV)) { const v = store.get(name); if (v !== undefined && v !== null) kv[name] = v; }
+  for (const name of [...Object.keys(SNAPSHOT_KV), ...prefixKeys(store.kv)]) { const v = store.get(name); if (v !== undefined && v !== null) kv[name] = v; }
   return {
     schema: SNAPSHOT_SCHEMA, deviceId: store.device.deviceId, profileId: store.profile.id, at: isoWithOffset(new Date(now)),
     day: store.clock.today(), seq: store.device.seq || 0, build, counts: { cards: n }, cards, kv,

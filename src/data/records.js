@@ -10,12 +10,14 @@
      kv         settings                                      settings@1
                 prefs                                         prefs@1
                 exams.feedbackLocal (a list)                  feedback@1 per item
+                progress.<course>.<YYYY-MM> (by name pattern)  progress@1
      profile    a profile record written to the adapter       profile@1
    Pure apart from loadRecordSchemas (a fetch); the validator is core/schema.js, the same one CI uses for content. */
 import { validate } from '../core/schema.js';
+import { MONTH_KEY } from '../domain/progress.js';
 
 /** Schema files under schemas/records/, by the name the checker uses. */
-export const RECORD_SCHEMAS = /** @type {const} */ (['event', 'settings', 'prefs', 'profile', 'feedback']);
+export const RECORD_SCHEMAS = /** @type {const} */ (['event', 'settings', 'prefs', 'profile', 'feedback', 'progress']);
 
 /** Which schema checks which key-value collection; `list` collections are arrays of that record. */
 export const KV_SCHEMAS = /** @type {Record<string, {schema: string, list?: boolean}>} */ ({
@@ -24,6 +26,9 @@ export const KV_SCHEMAS = /** @type {Record<string, {schema: string, list?: bool
   'exams.feedbackLocal': { schema: 'feedback', list: true },
 });
 
+/** Collections checked by name pattern: the progress log's months (domain/progress.js MONTH_KEY). */
+export const KV_PATTERNS = /** @type {[RegExp, {schema: string}][]} */ ([[MONTH_KEY, { schema: 'progress' }]]);
+
 /**
  * The errors of one record. kind 'kv' looks the schema up by collection name; others by kind.
  * @param {Record<string, any>} schemas name → JSON Schema @param {'event' | 'kv' | 'profile'} kind @param {string} name @param {any} value
@@ -31,7 +36,7 @@ export const KV_SCHEMAS = /** @type {Record<string, {schema: string, list?: bool
  */
 export function recordErrors(schemas, kind, name, value) {
   if (kind === 'kv') {
-    const m = KV_SCHEMAS[name];
+    const m = KV_SCHEMAS[name] || (KV_PATTERNS.find(([re]) => re.test(name)) || [])[1];
     if (!m || value === undefined || !schemas[m.schema]) return [];
     if (!m.list) return validate(schemas[m.schema], value);
     if (!Array.isArray(value)) return [`/: ${name} must be a list`];

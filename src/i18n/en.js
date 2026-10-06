@@ -492,6 +492,8 @@ export default {
   'diag.device': 'Device',
   'diag.events': 'Outbox',
   'diag.eventsVal': { one: '{n} event in the outbox', other: '{n} events in the outbox' },
+  'diag.progress': 'Progress log',
+  'diag.progressVal': { one: '{n} day recorded ({m} estimated)', other: '{n} days recorded ({m} estimated)' },
   'diag.errors': 'Recent errors',
   'diag.none': 'None',
   'diag.notLoaded': 'Not loaded',

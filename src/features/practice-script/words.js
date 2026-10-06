@@ -205,7 +205,7 @@ export async function mountWords(el, ctx) {
   }
   function finish() {
     cleanup();
-    addActivity(store, c.today, { minutes: Math.min(30, (performance.now() - t0) / 60000), rounds: 0 });
+    addActivity(store, c.today, { minutes: Math.min(30, (performance.now() - t0) / 60000), rounds: 0, kind: 'script' });
     // the done hero; its data object is the round's words, each in the state it ended in
     const list = h('ul', { class: 'sc-wdone', lang: langAttr(), dir: dirAttr() }, Object.entries(firstOk).map(([id, ok], k) => h('li', { class: ['sc-wdone-w', ok ? 'is-ok' : 'is-miss'], style: { '--i': String(Math.min(k, 12)) } },
       info.get(id)?.head || info.get(id)?.lemma || id, h('span', { class: 'sr-only' }, ok ? ` (${t('practice.script.words.gotIt')})` : ` (${t('practice.script.words.again')})`))));

@@ -123,13 +123,8 @@ export function logCalib(store, x) {
   store.update(KV, (/** @type {any} */ s) => ({ ...(s || {}), calib: [...((s && s.calib) || []), x].slice(-300) }), {});
 }
 
-/** Minutes and a round to today's activity (Today's runway and study days). @param {any} store @param {string} day @param {{minutes: number, rounds?: number}} o */
-export function addActivity(store, day, { minutes, rounds = 0 }) {
-  store.update('activity', (/** @type {any} */ a) => {
-    const cur = (a || {})[day] || { minutes: 0, rounds: 0 };
-    return { ...(a || {}), [day]: { ...cur, minutes: Math.round(((cur.minutes || 0) + minutes) * 10) / 10, rounds: (cur.rounds || 0) + rounds } };
-  }, {});
-}
+/** Minutes and a round to today's activity, per device and kind (data/activity.js). */
+export { addActivity } from '../../data/activity.js';
 
 /** Count a finished round today (Today's row shows done when nothing is due). @param {any} store @param {string} day */
 export function countRound(store, day) {
