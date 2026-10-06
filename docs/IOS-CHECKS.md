@@ -36,3 +36,22 @@ Each check takes under a minute.
 ## Device link
 - [ ] On the Mac, `b1-token.py --reuse` shows a QR code. Scan it with the iPhone camera: Fluentish opens on Profile with "Device linked.", the address bar shows `#/profile` with no token, and Connections says the device is linked.
 - [ ] The QR opens Safari. If you study from the Home Screen icon, link it from Profile › Connections instead (it has its own storage).
+
+## Speaking outdoors
+
+### What went wrong outdoors (diagnosis, round 5)
+Read from the code on `main` 5d4aca4, with the platform facts from MDN's browser-compat data (8.1.4) and WebKit:
+- **Recognition ends early.** `listen()` was one shot: Safari's recogniser (the Siri engine, `webkitSpeechRecognition`
+  since iOS 14.5) ends the session on `no-speech`, on a gust it can't segment, or on a network blip, and the card said
+  "Nothing heard". Only the Teil 2 talk restarted it.
+- **Low confidence ignored.** Only `results[i][0].transcript` was read. `confidence` (0 to 1, iOS 14.5+) and the other
+  `maxAlternatives` were dropped, so a guess in the wind was graded like a clean take.
+- **Wrong guesses.** `lang` is fixed to the course locale, so the recogniser doesn't switch language, but in noise it
+  maps traffic and wind onto short German words, or keeps English fragments. The check then misses the chunk.
+- **The level never drops.** Safari ends an utterance on silence. With wind or traffic there is no silence, so a take
+  ran until he tapped stop, and the interim text kept changing under noise. There was no meter to show it.
+- **No capture processing.** `recorder.js` asked for `{ audio: true }`. On iOS Safari only `echoCancellation` is
+  supported (since iOS 11); `noiseSuppression` and `autoGainControl` are not (MDN BCD), so they are requested as
+  plain booleans, which a browser may ignore and never fail on. They help on a Mac.
+- **Grading.** `sim.js micCheck` suggested Again whenever the chunk was missing from the transcript, and the table
+  said "Wrong". A misheard answer outdoors was a suggested Again; Enter takes the suggestion.
