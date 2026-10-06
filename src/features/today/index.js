@@ -153,7 +153,7 @@ export async function mount(el, ctx) {
             const dayName = label(d.day);
             const text = d.plan ? t('today.week.day', { day: dayName, kind: t(`week.kind.${d.kind === 'off' ? 'n' : d.kind}`), done: d.done, plan: d.plan })
               : d.done ? t('today.week.dayOffDone', { day: dayName, done: d.done }) : t('today.week.dayOff', { day: dayName });
-            return { label: weekdayShort(d.day), sub: d.kind === 'n' || !hasWeek ? '' : t(`week.kind.${d.kind}`), plan: d.plan, done: d.done, today: d.today, aria: d.today ? t('today.week.today', { text }) : text };
+            return { label: weekdayShort(d.day), sub: d.kind === 'n' || !hasWeek ? '' : t(`week.kind.${d.kind}`), plan: d.plan, done: d.done, today: d.today, past: d.past, aria: d.today ? t('today.week.today', { text }) : text };
           });
           // the columns fill from what was shown last time (back from a round, only the round's minutes fill)
           const key = days[0].day;

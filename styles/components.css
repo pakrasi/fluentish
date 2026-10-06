@@ -131,9 +131,21 @@
 .runway-day small { font: 400 10px/1 var(--font-ui); color: var(--ink-3); min-height: 10px; }
 .runway-day.is-today small { color: var(--accent-ink); }
 /* this week's strip (brand.js weekStrip): an Off day is a baseline, or a bar of what he studied anyway */
-.wk-strip { gap: 10px; }
-.wk-strip .runway-bar { max-width: 30px; }
+/* the week strip (brand.js weekStrip): it spreads to its card's width, bars at most 30 px centred in their column.
+   States (round 4): done = ink fill over the plan fill; missed = the plan fill only; future = an outline, no fill;
+   today = accent outline, accent-soft, the minutes done in accent; off = a 1 px baseline. The plan fill is opaque
+   (ink 14 % on the surface, 20 % dark), so an equal plan looks equal over the atmosphere; it keeps the field-border
+   edge (3.3:1), so a planned bar clears 3:1 as a graphical object; a future day is that edge alone. */
+.wk-strip { --wk-plan: color-mix(in oklab, var(--ink) 14%, var(--surface)); gap: 10px; justify-items: center; }
+.wk-strip .runway-day { width: 100%; }
+.wk-strip .runway-bar { max-width: 30px; transform-origin: bottom; background: var(--wk-plan); box-shadow: inset 0 0 0 1px var(--field-border); }
+.wk-strip .runway-day.is-future .runway-bar, .wk-strip .runway-day.is-plan .runway-bar { background: none; box-shadow: inset 0 0 0 1px var(--field-border); }
+.wk-strip.is-plan .runway-day .runway-bar { background: var(--wk-plan); box-shadow: inset 0 0 0 1px var(--field-border); }
+.wk-strip .runway-day.is-done .runway-bar > span { background: var(--ink); }
+.wk-strip .runway-day.is-today .runway-bar { background: var(--accent-soft); box-shadow: inset 0 0 0 1.5px var(--accent); }
 .wk-strip .runway-day.is-off:not(.is-extra) .runway-bar { height: 1px; background: var(--field-border); box-shadow: none; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .wk-strip { --wk-plan: color-mix(in oklab, var(--ink) 20%, var(--surface)); } }
+:root[data-theme="dark"] .wk-strip { --wk-plan: color-mix(in oklab, var(--ink) 20%, var(--surface)); }
 
 /* ---------- study days strip ---------- */
 .days { display: grid; grid-template-columns: repeat(var(--n, 28), 1fr); gap: 3px; }

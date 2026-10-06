@@ -253,44 +253,91 @@ function chunk(a, n) { const out = []; for (let i = 0; i < a.length; i += n) out
 /* ------------------------------------------------------------------ */
 
 /**
- * Seven columns, Monday first, drawn like the runway: bar height = planned minutes, fill = minutes done, today in
- * accent, an Off day a baseline (a bar of its minutes when he studied anyway). Each column fills once from `from`
- * (the share shown last time, so coming back from a round fills only what the round added); under reduced motion the
- * fills are set at once.
- *   weekStrip(el, [{ label: 'Mo', sub: 'Light', plan: 20, done: 12, today: false, aria: 'Mon 5 Oct, …' }, …], { from })
+ * Seven columns, Monday first, drawn like the runway: bar height = planned minutes, fill = minutes done, an Off day a
+ * baseline (a bar of its minutes when he studied anyway). Each column says what kind of day it was (round 4 design
+ * review, week-strip states): done (ink fill over the plan fill), missed (a past day with a plan and no minutes: the
+ * plan fill only), future (an outline, no fill), today (accent outline and accent-soft, the minutes done in accent).
+ * With `plan: true` (the week editor) every day is drawn as a plan, with no fill and no today. Each column fills once
+ * from `from` (the share shown last time, so coming back from a round fills only what the round added); under
+ * reduced motion the fills are set at once.
+ *   weekStrip(el, [{ label: 'Mo', sub: 'Light', plan: 20, done: 12, today: false, past: true, aria: 'Mon 5 Oct, …' }, …], { from })
  * @param {HTMLElement} el
- * @param {{label: string, sub: string, plan: number, done: number, today: boolean, aria: string}[]} cols
- * @param {{from?: (number | null)[]}} [o] each column's share shown before (null: from empty)
+ * @param {{label: string, sub: string, plan: number, done: number, today: boolean, past?: boolean, aria: string}[]} cols
+ * @param {{from?: (number | null)[], plan?: boolean}} [o] from: each column's share shown before (null: from empty)
  */
-export function weekStrip(el, cols, { from = [] } = {}) {
-  const maxPlan = Math.max(1, ...cols.map(c => Math.max(c.plan, c.done)));
-  el.className = 'runway wk-strip'; el.style.setProperty('--n', String(cols.length));
+export function weekStrip(el, cols, { from = [], plan: planOnly = false } = {}) {
+  const maxPlan = Math.max(1, ...cols.map(c => Math.max(c.plan, planOnly ? 0 : c.done)));
+  el.className = 'runway wk-strip' + (planOnly ? ' is-plan' : ''); el.style.setProperty('--n', String(cols.length));
   el.setAttribute('role', 'list');
   el.textContent = '';
   const fills = cols.map((c, i) => {
     const col = document.createElement('div');
-    const off = !c.plan;
-    col.className = 'runway-day' + (c.today ? ' is-today' : '') + (off ? ' is-off' : '') + (off && c.done ? ' is-extra' : '');
     col.setAttribute('role', 'listitem');
-    col.setAttribute('aria-label', c.aria);
-    col.title = c.aria;
     col.style.setProperty('--i', String(i));
     const bar = document.createElement('div'); bar.className = 'runway-bar';
-    const h = off && !c.done ? 0 : Math.round(22 + 42 * ((off ? c.done : c.plan) / maxPlan));
-    bar.style.setProperty('--h', `${h}px`);
     const fillEl = document.createElement('span');
     bar.append(fillEl);
-    const lab = document.createElement('abbr'); lab.textContent = c.label; lab.setAttribute('aria-hidden', 'true');
-    const sub = document.createElement('small'); sub.textContent = c.sub; sub.setAttribute('aria-hidden', 'true');
+    const lab = document.createElement('abbr'); lab.setAttribute('aria-hidden', 'true');
+    const sub = document.createElement('small'); sub.setAttribute('aria-hidden', 'true');
     col.append(bar, lab, sub);
     el.append(col);
-    const ratio = off ? (c.done ? 1 : 0) : Math.min(1, c.done / c.plan);
-    const start = reduced() ? ratio : Math.max(0, Math.min(1, from[i] ?? 0));
+    const ratio = paintColumn(col, c, maxPlan, planOnly);
+    const start = reduced() || planOnly ? ratio : Math.max(0, Math.min(1, from[i] ?? 0));
     fillEl.style.setProperty('--p', String(start));
     return { fillEl, ratio, start };
   });
   if (!reduced()) requestAnimationFrame(() => requestAnimationFrame(() => fills.forEach(f => { if (f.ratio !== f.start) f.fillEl.style.setProperty('--p', String(f.ratio)); })));
   return fills.map(f => f.ratio);
+}
+
+/** A column's height (px) for its planned minutes. @param {{plan: number, done: number}} c @param {number} maxPlan @param {boolean} planOnly */
+const colHeight = (c, maxPlan, planOnly) => {
+  const off = !c.plan;
+  if (off && (planOnly || !c.done)) return 0;
+  return Math.round(22 + 42 * ((off ? c.done : c.plan) / maxPlan));
+};
+
+/** Set one column's classes, height, labels and aria; returns its fill share. @param {HTMLElement} col */
+function paintColumn(col, c, maxPlan, planOnly) {
+  const off = !c.plan;
+  const state = planOnly ? 'plan' : c.today ? 'today' : c.past ? (c.done > 0 ? 'done' : off ? 'off' : 'missed') : 'future';
+  col.className = 'runway-day is-' + state + (c.today && !planOnly ? ' is-today' : '') + (c.past ? ' is-past' : '') + (off ? ' is-off' : '') + (off && c.done && !planOnly ? ' is-extra' : '');
+  col.setAttribute('aria-label', c.aria);
+  col.title = c.aria;
+  const bar = /** @type {HTMLElement} */ (col.firstElementChild);
+  bar.style.setProperty('--h', `${colHeight(c, maxPlan, planOnly)}px`);
+  col.querySelector('abbr').textContent = c.label;
+  col.querySelector('small').textContent = c.sub;
+  return planOnly ? 0 : off ? (c.done ? 1 : 0) : Math.min(1, c.done / c.plan);
+}
+
+/**
+ * Change one column of a drawn week strip in place: its bar grows or shrinks to the new height from the old one
+ * (a scaleY from the baseline on spring-soft, transform only) and its kind label crosses over. The other columns keep
+ * their heights unless the week's longest day changed, when they move the same way. Reduced motion: the new state at
+ * once. @param {HTMLElement} el the strip @param {{label: string, sub: string, plan: number, done: number, today: boolean, past?: boolean, aria: string}[]} cols
+ * the whole week, as weekStrip() takes it @param {number} changed the column that changed
+ */
+export function weekStripUpdate(el, cols, changed) {
+  const planOnly = el.classList.contains('is-plan');
+  const maxPlan = Math.max(1, ...cols.map(c => Math.max(c.plan, planOnly ? 0 : c.done)));
+  const days = /** @type {HTMLElement[]} */ ([...el.children]);
+  const before = days.map(d => /** @type {HTMLElement} */ (d.firstElementChild).getBoundingClientRect().height);
+  const subs = days.map(d => d.querySelector('small')?.textContent || '');
+  cols.forEach((c, i) => { const r = paintColumn(days[i], c, maxPlan, planOnly); days[i].querySelector('.runway-bar > span')?.style.setProperty('--p', String(r)); });
+  if (reduced()) return;
+  const soft = getComputedStyle(root).getPropertyValue('--spring-soft').trim() || 'cubic-bezier(0.22, 1, 0.36, 1)';
+  days.forEach((d, i) => {
+    const bar = /** @type {HTMLElement} */ (d.firstElementChild);
+    const after = bar.getBoundingClientRect().height;
+    if (Math.abs(after - before[i]) > 0.5) {
+      // from the old height to the new one, by transform only: grow from (or shrink to) the baseline
+      const from = after > 0 ? Math.max(0.02, before[i] / after) : 1;
+      if (after > 0) bar.animate([{ transform: `scaleY(${from})` }, { transform: 'scaleY(1)' }], { duration: 640, easing: soft });
+    }
+    const sub = d.querySelector('small');
+    if (sub && (i === changed || subs[i] !== sub.textContent)) sub.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 240, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' });
+  });
 }
 
 /* ------------------------------------------------------------------ */

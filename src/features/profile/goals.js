@@ -13,15 +13,15 @@ import { config } from '../../core/config.js';
 import { icon } from '../../core/icons.js';
 import { section, seg, field, nextId } from '../../core/ui.js';
 import { setSetting, setExamDate, setCourse, examDate, activeCourse, MODULES } from '../../data/settings.js';
-import { DAY_KINDS, LIVE_SLOTS, defaultWeek, weekMinutes, courseWeek } from '../../domain/week.js';
+import { defaultWeek, weekMinutes, courseWeek } from '../../domain/week.js';
 import { courseGoal } from '../../domain/levels.js';
 import { hasMockExam } from '../../domain/modules.js';
 import * as St from '../../domain/script/store.js';
+import { disclose } from '../../core/motion.js';
+import { weekEditor } from './week-editor.js';
 
 /** Exams a goal may name that have no mock tests in this build yet: date only (PLAN-REVIEW S9), per language. */
 const DATE_ONLY = /** @type {Record<string, string[]>} */ ({ german: ['goethe-b2'] });
-/** The week editor's minute choices (a day's own value is added when it is not one of them). */
-const MINS = [0, 15, 20, 30, 45, 60, 90];
 const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const TARGETS = ['B1', 'B2', 'C1'];
 const nf = new Intl.NumberFormat('en-GB');
@@ -46,6 +46,7 @@ export function goalsPage(ctx, { exams, languages }) {
   const appCtx = () => ({ store, hlc: app.hlc, bus, clock: ctx.clock });
   /** @type {'level' | 'exam' | 'remove' | 'add' | null} */ let open = null;
   /** @type {string | null} */ let addPick = null;
+  let justOpened = false;
   /** @type {any} */ let gate = null;
   /** @type {{level: string, k: number, n: number}[] | null} */ let levels = null;
 
@@ -59,10 +60,12 @@ export function goalsPage(ctx, { exams, languages }) {
   const examName = (/** @type {string | null} */ id) => (!id ? '' : id === 'other' ? t('goal.exam.other')
     : exams.find(x => x.id === id)?.name || (DATE_ONLY.german.includes(id) ? t(`goals.exam.name.${id}`) : id));
 
+  /** The week editor of the page now (stopped when the page is rebuilt). @type {{stop: () => void} | null} */ let editor = null;
   /** Rebuild the page in place and keep the focus on the same control (matched by name, else by id). */
   function rerender() {
     const a = /** @type {HTMLElement | null} */ (document.activeElement);
     const key = a?.getAttribute('name'), id = a?.id;
+    editor?.stop(); editor = null;
     page.replaceChildren(...parts());
     const back = key ? page.querySelector(`[name="${CSS.escape(key)}"]`) : id ? page.querySelector(`#${CSS.escape(id)}`) : null;
     /** @type {HTMLElement | null} */ (back)?.focus({ preventScroll: true });
@@ -96,8 +99,8 @@ export function goalsPage(ctx, { exams, languages }) {
 
     // time
     const week = courseWeek(s);
-    cards.push(card('time', week ? t('goals.time.week', { t: fmtMin(t, weekMinutes(week)) }) : t('goals.time.day', { t: fmtMin(t, s.minutesPerDay) }),
-      h('a', { class: 'btn pressable', href: '#/profile/week', onclick: (/** @type {Event} */ e) => { e.preventDefault(); document.getElementById('profile-week')?.scrollIntoView({ block: 'start' }); } }, t('goals.time.edit')),
+    // (no button: the week plan is the next section)
+    cards.push(card('time', week ? t('goals.time.week', { t: fmtMin(t, weekMinutes(week)) }) : t('goals.time.day', { t: fmtMin(t, s.minutesPerDay) }), null,
       h('p', { class: 'goal-meta' }, week ? t('goals.time.metaWeek') : t('goals.time.metaDay'))));
 
     // scripts with a delivery date
@@ -109,13 +112,21 @@ export function goalsPage(ctx, { exams, languages }) {
 
     // add a goal
     const add = [
-      !s.exam.type ? h('button', { type: 'button', class: 'chip pressable', name: 'add:exam', 'aria-expanded': String(open === 'add'), onclick: () => { open = open === 'add' ? null : 'add'; addPick = null; rerender(); } }, t('goals.kind.exam')) : null,
+      !s.exam.type ? h('button', { type: 'button', class: 'chip pressable', name: 'add:exam', 'aria-expanded': String(open === 'add'), 'aria-controls': 'goal-add-panel', onclick: () => { open = open === 'add' ? null : 'add'; justOpened = open === 'add'; addPick = null; rerender(); } }, t('goals.kind.exam')) : null,
       !g.goal && open !== 'level' ? h('button', { type: 'button', class: 'chip pressable', name: 'add:level', onclick: () => { open = 'level'; rerender(); } }, t('goals.kind.level')) : null,
     ].filter(Boolean);
     // (Element.append writes a null as the text "null")
+    // the add-exam panel opens with the disclosure motion (motion.js disclose), as Practice's groups do
+    /** @type {HTMLElement | null} */ let addPanel = null;
+    if (open === 'add' && !s.exam.type) {
+      addPanel = h('div', { class: 'reveal-answer goal-add-panel', id: 'goal-add-panel' }, h('div', null, addExam(s)));
+      const btn = /** @type {HTMLElement | undefined} */ (add.find(b => b && b.getAttribute('name') === 'add:exam'));
+      if (justOpened && btn) { justOpened = false; requestAnimationFrame(() => requestAnimationFrame(() => { if (addPanel) disclose(btn, addPanel, true); })); }
+      else addPanel.classList.add('is-open');
+    }
     sec.append(...[...cards,
       add.length ? h('div', { class: 'goal-add' }, h('p', { class: 'field-label' }, t('goals.add')), h('div', { class: 'chips' }, add)) : null,
-      open === 'add' && !s.exam.type ? addExam(s) : null].filter(x => x != null));
+      addPanel].filter(x => x != null));
     return sec;
   }
 
@@ -149,11 +160,16 @@ export function goalsPage(ctx, { exams, languages }) {
   function gateLines(gt) {
     if (gt.reason === 'examWindow') return h('p', { class: 'goal-meta goal-gate' }, t('goal.gate.examWindow'));
     if (gt.reason) return null;
+    // one row per strand: its name, its state, and a 4 px meter of how far the gate is (the share of the B1 items it
+    // counts, against the half it needs), so "0 of 473" reads as a meter
     return h('div', { class: 'goal-gate' }, h('p', { class: 'goal-meta' }, h('b', null, t('goals.gate.title'))),
       h('ul', { class: 'goal-gate-list' }, ['g', 'p', 'w'].filter(k => gt.strands && gt.strands[k]).map(k => {
         const st = gt.strands[k];
-        return h('li', null, h('span', null, t(`goal.gate.strand.${k}`)), h('span', { class: 'caption' },
-          st.state === 'open' ? t('goal.gate.open') : st.state === 'mix' ? t('goal.gate.mix') : t('goal.gate.closed', { seen: nf.format(st.seen), n: nf.format(st.n) })));
+        const share = st.n ? Math.min(1, (st.seen || 0) / Math.max(1, Math.ceil(st.n / 2))) : 0;
+        return h('li', { class: 'goal-gate-row' },
+          h('span', { class: 'goal-gate-name' }, t(`goal.gate.strand.${k}`)),
+          h('span', { class: 'goal-gate-state' }, st.state === 'open' ? t('goal.gate.open') : st.state === 'mix' ? t('goal.gate.mix') : t('goal.gate.closed', { seen: nf.format(st.seen), n: nf.format(st.n) })),
+          st.state === 'closed' ? h('span', { class: 'track goal-gate-track', 'aria-hidden': 'true' }, h('span', { class: 'fill', style: { transform: `scaleX(${share.toFixed(3)})` } })) : null);
       })));
   }
 
@@ -291,9 +307,10 @@ export function goalsPage(ctx, { exams, languages }) {
           h('p', { class: 'field-hint' }, t('week.useHint'))));
       return sec;
     }
-    /** @param {number} i @param {{min?: number, kind?: string}} change */
+    /** Write one day (no page rebuild: the editor moves the strip and the row in place). @param {number} i @param {{min?: number, kind?: string}} change */
     const setDay = (i, change) => {
-      const w = { min: [...week.min], kind: /** @type {any[]} */ ([...week.kind]) };
+      const cur = /** @type {any} */ (courseWeek(ctx.settings())) || week;
+      const w = { min: [...cur.min], kind: /** @type {any[]} */ ([...cur.kind]) };
       if (change.min != null) {
         w.min[i] = change.min;
         if (!change.min) w.kind[i] = 'off';
@@ -301,31 +318,13 @@ export function goalsPage(ctx, { exams, languages }) {
       }
       if (change.kind) { w.kind[i] = change.kind; if (change.kind !== 'off' && !w.min[i]) w.min[i] = 30; }
       writeCourse({ week: w });
-      rerender();
     };
-    const of = (/** @type {string} */ k) => DAYS.filter((_, i) => week.kind[i] === k && week.min[i] > 0).map(d => d.slice(0, 3)).join(', ');
-    const summary = [t('week.sum', { t: fmtMin(t, weekMinutes(week)) }),
-      ...['light', 'read', 'write', 'talk'].filter(k => of(k)).map(k => t('week.sumKind', { kind: t(`week.kind.${k}`), days: of(k) }))].join(' ');
-    const days = DAYS.map((d, i) => {
-      const off = week.kind[i] === 'off' || !week.min[i];
-      const kind = off ? 'off' : week.kind[i];
-      const later = (kind === 'read' || kind === 'write' || kind === 'talk') && !(/** @type {readonly string[]} */ (LIVE_SLOTS)).includes(kind);
-      const mins = [...new Set([...MINS, week.min[i]])].sort((a, b) => a - b);
-      return h('div', { class: 'week-day', role: 'group', 'aria-label': d },
-        h('div', { class: 'week-day-head' }, h('b', null, d), h('span', { class: 'caption' }, later ? t('week.later', { kind: t(`week.kind.${kind}`) }) : t(`week.kindHint.${kind}`))),
-        h('div', { class: 'week-day-body' },
-          h('div', { class: 'chips week-chips', role: 'group', 'aria-label': t('week.minutes', { day: d }) }, mins.map(m => h('button', { type: 'button', class: 'chip tnum pressable', name: `week:${i}:min:${m}`, 'aria-pressed': String(off ? m === 0 : week.min[i] === m),
-            onclick: () => setDay(i, { min: m }) }, m ? t('unit.min', { n: m }) : t('week.kind.off')))),
-          off ? null : h('div', { class: 'chips week-chips', role: 'group', 'aria-label': t('week.kinds', { day: d }) }, DAY_KINDS.filter(k => k !== 'off').map(k => {
-            const soon = (k === 'read' || k === 'write' || k === 'talk') && !(/** @type {readonly string[]} */ (LIVE_SLOTS)).includes(k);
-            return h('button', { type: 'button', class: ['chip', 'pressable', soon && 'is-later'], name: `week:${i}:kind:${k}`, 'aria-pressed': String(week.kind[i] === k),
-              onclick: () => setDay(i, { kind: k }) }, t(`week.kind.${k}`), soon ? h('span', { class: 'sr-only' }, `, ${t('week.comingLater')}`) : null);
-          }))));
-    });
+    // the goals above show the week's total: refresh them when the editor's changes settle
+    const refreshGoals = () => { const old = page.querySelector('#profile-goal'); if (old) old.replaceWith(goals(ctx.settings())); };
+    editor = weekEditor({ t, days: DAYS, week: () => /** @type {any} */ (courseWeek(ctx.settings())) || week, setDay, fmt: n => fmtMin(t, n), onDone: refreshGoals });
     sec.append(...[
-      h('p', { class: 'label week-sum tnum', 'aria-live': 'polite' }, summary),
       inWindow ? h('p', { class: 'caption' }, t('week.examNote')) : null,
-      h('div', { class: 'week-days' }, days),
+      editor.el,
       h('p', { class: 'callout week-away' }, t('week.away')),
       h('button', { type: 'button', class: 'btn btn-quiet pressable', name: 'week:remove', onclick: () => {
         writeCourse({ week: null }); ctx.toast(t('week.removed', { t: fmtMin(t, ctx.settings().minutesPerDay) })); rerender();

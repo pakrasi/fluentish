@@ -44,18 +44,43 @@ test('a week set on Goals and week: Today names the kind of day and draws the we
   await page.getByRole('button', { name: 'Use a week plan' }).click();
   await expect(page.locator('.week-sum')).toHaveText(/^4 h 05 a week\./);
   await expect.poll(async () => (await storedSettings(page))?.courses?.[0]?.week?.min).toEqual([45, 45, 20, 45, 30, 60, 0]);
+  // the week editor: the strip, then seven rows on a phone (each opens a sheet) or the strip's columns as tabs
+  const phone = await page.locator('button[name="week:day:0"]').isVisible();
+  await expect(page.locator('.week-ed .wk-strip .runway-day')).toHaveCount(7);
+  if (phone) await expect(page.locator('button[name="week:day:3"]')).toContainText('45 min · Write (later)');
+  /** Open day i: its sheet on a phone, its tab from 720 px. @param {number} i */
+  const openDay = async i => { if (phone) await page.locator(`button[name="week:day:${i}"]`).click(); else await page.locator(`#wk-tab-${i}`).click(); };
   // kinds whose feature has not shipped say so
+  await openDay(3);
   await expect(page.getByText('Write days are coming later. Until then this is a normal day.')).toBeVisible();
+  await expect(page.locator('button[name="week:3:kind:write"]')).toHaveClass(/is-later/);
+  if (phone) await page.keyboard.press('Escape');
   // Read has shipped (L2b: 'read' in LIVE_SLOTS): its day is a read day, not "coming later"
+  await openDay(1);
   await expect(page.getByText('Read days are coming later. Until then this is a normal day.')).toHaveCount(0);
   await expect(page.locator('button[name="week:1:kind:read"]')).not.toHaveClass(/is-later/);
-  await expect(page.locator('button[name="week:3:kind:write"]')).toHaveClass(/is-later/);
-  await checkA11y(page, 'Goals and week');
-  // every day light
+  await checkA11y(page, phone ? 'Goals and week, day sheet' : 'Goals and week');
+  if (phone) { await page.keyboard.press('Escape'); await expect(page.locator('dialog.rs-sheet')).toHaveCount(0); await checkA11y(page, 'Goals and week'); }
+  // every day light: on a phone in one sheet, stepping from day to day
+  if (phone) await openDay(0);
   for (let i = 0; i < 7; i++) {
-    const btn = page.locator(`button[name="week:${i}:min:20"]`);
-    await btn.click();
+    if (!phone) await openDay(i);
+    await page.locator(`button[name="week:${i}:min:20"]`).click();
     await page.locator(`button[name="week:${i}:kind:light"]`).click();
+    if (phone && i < 6) await page.getByRole('button', { name: `Go to ${['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'][i + 1]}` }).click();
+  }
+  if (phone) await page.keyboard.press('Escape');
+  // the rows (or the columns) are one tab stop; the arrow keys move between days
+  if (phone) {
+    await page.locator('button[name="week:day:0"]').focus();
+    await page.keyboard.press('ArrowDown');
+    await expect(page.locator('button[name="week:day:1"]')).toBeFocused();
+    await expect(page.locator('.week-rows [tabindex="0"]')).toHaveCount(1);
+  } else {
+    await page.locator('#wk-tab-0').focus();
+    await page.keyboard.press('ArrowRight');
+    await expect(page.locator('#wk-tab-1')).toBeFocused();
+    await expect(page.locator('#wk-tab-1')).toHaveAttribute('aria-selected', 'true');
   }
   await expect.poll(async () => (await storedSettings(page))?.courses?.[0]?.week).toEqual(every(20, 'light'));
   await open(page, '#/today');
