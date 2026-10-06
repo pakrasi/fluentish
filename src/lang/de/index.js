@@ -54,7 +54,7 @@ const de = {
       beforeOk: S.BEFORE_OK, politeCaps: S.POLITE_CAPS, nounKey: S.nounKey,
     },
     clauses: { subordinators: S.VERB_LAST, shape: S.shape, same: S.sameShape },
-    slots: { helpers: S.HELPERS, prepositions: S.PREPS, adverbs: S.ADVERBS, timePhrase: S.TIME_RE, particles: S.PARTICLES },
+    slots: { subjects: new Set(['ich', 'du', 'er', 'sie', 'es', 'wir', 'ihr', 'man']), helpers: S.HELPERS, prepositions: S.PREPS, adverbs: S.ADVERBS, timePhrase: S.TIME_RE, particles: S.PARTICLES },
     lines: {
       questionStarts: S.QUESTION, determinerLike: S.DETLIKE, openers: S.OPENERS, polite: S.POLITE, interjections: S.INTERJ,
       contractions: S.CONTRACTIONS, contrast: 'aber',

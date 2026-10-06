@@ -639,6 +639,25 @@ function commasFrom(base, text) {
   if (!want.size) return text;
   return String(text).replace(/(?<=[\p{L}\p{N}])(\s+)(\p{L}+)/gu, (all, sp, w) => want.has(fold(w.toLowerCase())) ? `,${sp}${w}` : all);
 }
+/**
+ * Whether a sentence made by putting another phrase into the model is the model with one of its forms broken: the
+ * model's verb in a form its frame does not take (the pack's clashes), or an article of the model's noun in another
+ * case or gender (zu den Frage for zu der Frage: one word for one word, the same family, the noun after it kept).
+ * Other wordings (was sie meinen for was du meinst) are not judged here.
+ * @param {string} text @param {string} base @param {any} conj
+ */
+function brokenForms(text, base, conj) {
+  const A = words(text), B = words(base), V = L.grammar.verbs;
+  if (V && V.clashes(A, B, base, conj).length) return true;
+  const G = gaps(A, B).gaps;
+  return G.some(g => {
+    if (g.a.length !== 1 || g.b.length !== 1) return false;
+    const a = A[g.a[0]], b = B[g.b[0]], f = family(a.n);
+    return f >= 0 && f === family(b.n) && a.n !== b.n && L.grading.articles.includes(b.n) && g.b[0] + 1 < B.length && A[g.a[0] + 1] && A[g.a[0] + 1].n === B[g.b[0] + 1].n && /^\p{Lu}/u.test(B[g.b[0] + 1].raw);
+  });
+}
+/** @param {any} mr a check() result with a span */
+const span0Of = mr => /** @type {[number, number]} */ (mr.span)[0];
 // per verb index: each model sentence's frame (the pack's frameSlots) and which patterns keep its forms (restCheck)
 /** @type {WeakMap<object, Map<string, any>>} */ const FRAMES = new WeakMap();
 /** @type {WeakMap<object, Map<string, Map<string, boolean>>>} */ const FORMS_OK = new WeakMap();
@@ -737,16 +756,29 @@ function restCheck(input, base, accepted, opts = {}) {
   // gefallen without a helper: no), and an optional word the frame decides (zu) is kept as the model has it
   const conj = opts.conj || null, V = L.grammar.verbs || null;
   const BT = words(base), fr = conj && V ? frameOf(conj, String(base)) : null;
-  const spanIdx = BT.flatMap((t, k) => (t.start >= /** @type {[number, number]} */ (mr.span)[0] && t.end <= /** @type {[number, number]} */ (mr.span)[1] ? [k] : []));
+  // the model's verbs in its phrase whose frame is outside the phrase: a phrase that starts the verb's clause brings its
+  // own frame (es ist zu befürchten → man befürchtet)
+  const span0 = /** @type {[number, number]} */ (mr.span)[0];
+  const clauseStart = (/** @type {number} */ k) => { let j = k; while (j > 0 && !/[,;:!?]|(?<!\d)\./.test(String(base).slice(BT[j - 1].end, BT[j].start))) j--; return BT[j].start; };
+  const spanIdx = BT.flatMap((t, k) => (t.start >= span0 && t.end <= /** @type {[number, number]} */ (mr.span)[1] && clauseStart(k) < span0 ? [k] : []));
+  // the model's determiner before the phrase stays: another phrase that starts with another noun would take it with the
+  // wrong gender or case (um den Bedarf → *um den Nachfrage)
+  const preDet = (() => { const pw = words(pre); const l = pw[pw.length - 1]; return !!l && L.grading.articles.includes(l.n) && !/[,;:.!?]\s*$/.test(pre); })();
+  const spanFirst = words(base.slice(span0Of(mr), /** @type {[number, number]} */ (mr.span)[1]))[0];
   const fitsFrame = (/** @type {string} */ p) => {
+    const els = compile(p, true, false).els;
+    if (preDet && spanFirst && els[0] && els[0].t === 'w' && !els[0].alts.some(a => a.n === spanFirst.n)) return false;
     if (!fr || !conj) return true;
-    for (const e of compile(p, true, false).els) for (const w of e.t === 'w' ? [e] : e.t === 'opt' ? e.words : []) {
+    // a phrase with its own subject (was meinen Sie for was meinst du) brings its verb's person: only the infinitive,
+    // participle and zu are the frame's then
+    const ownSubject = els.some(e => e.t === 'w' && L.grammar.slots.subjects && L.grammar.slots.subjects.has(e.alts[0].n));
+    for (const e of els) for (const w of e.t === 'w' ? [e] : e.t === 'opt' ? e.words : []) {
       let shared = false, fits = false;
       for (const a of w.alts) {
         const an = conj.lookup(a.n);
         for (const k of spanIdx) {
           const f = fr[k], sh = an.filter(x => f.lemmas.has(x.lemma));
-          if (!sh.length || !f.slots.size) continue;
+          if (!sh.length || !f.slots.size || (ownSubject && [...f.slots].every(x => /^[12][sp]|3s$/.test(x)))) continue;
           shared = true;
           if (sh.some(x => f.slots.has(x.slot))) fits = true;
         }
@@ -787,7 +819,7 @@ function restCheck(input, base, accepted, opts = {}) {
     if (v === undefined) {
       const m2 = mid.replace(/(?<!\p{L})\((?!\[)([^)]*)\)/gu, (_, g) => words(g).every(w => inBase.has(w.n)) ? g : ' ');
       const t2 = punctFrom(base, commasFrom(base, joinText(pre, renderIn(m2, base, opts.caseRef, !/\p{L}/u.test(pre), conj), post)));
-      v = formCheck(t2, base, { ...opts, conj }).status !== 'differs';
+      v = !brokenForms(t2, base, conj);
       if (seenForms) seenForms.set(p, v);
     }
     return v;

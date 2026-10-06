@@ -103,6 +103,7 @@
  * @property {ReadonlySet<string>} adverbs       stand anywhere in a clause
  * @property {RegExp} timePhrase                 a time phrase (folded): moves freely
  * @property {ReadonlySet<string>} particles     words that only add emphasis: may be added, dropped or swapped in a slot
+ * @property {ReadonlySet<string>} [subjects]    subject pronouns: a phrase with one brings its verb's person (restCheck)
  */
 /**
  * When an "also correct" line cannot be written faithfully from the model (alsoLines).

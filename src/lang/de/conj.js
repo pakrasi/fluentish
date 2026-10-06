@@ -169,7 +169,7 @@ export function build(words, table = null, extra = []) {
       return true;
     }
     // no base verb known: a regular (weak) verb, which a strong one never is here (its base is in STRONG or the lists)
-    if (!/^[a-zäöüß]{5,}(en|ern|eln)$/.test(inf)) return false;
+    if (!/^[a-zäöüß]{3,}(en|ern|eln)$/.test(inf)) return false;
     const p = PREFIXES.find(q => inf.startsWith(q) && inf.length - q.length >= 4 && (sepOf(q) || q === 'um') && /(en|ern|eln)$/.test(inf.slice(q.length)));
     const base = p ? inf.slice(p.length) : inf, st = stemOf(base), e = needsE(st) ? 'e' : '';
     const ge = INSEP.some(q => base.startsWith(q) && base.length - q.length >= 4) || /ieren$/.test(base) ? '' : 'ge';
@@ -178,7 +178,11 @@ export function build(words, table = null, extra = []) {
   };
   // an extra word that is already a form of a listed verb (gezogen, the last word of "zum opfer ([x]) gezogen") is no
   // infinitive of its own
-  for (const x of extra) { const inf = String(x).trim().replace(/^sich\s+/, ''); if (!lemmas.has(inf) && !byForm.has(key(inf))) derive(inf); }
+  // (a separable verb's base form, decken in "deckt ab", is still an infinitive of its own)
+  for (const x of extra) {
+    const inf = String(x).trim().replace(/^sich\s+/, '');
+    if (!lemmas.has(inf) && !(byForm.get(key(inf)) || []).some(a => a.slot === 'pp' || a.slot === 'inf')) derive(inf);
+  }
   // stems of the strong and irregular verbs, for misbuilt(): present and past stems, umlauts folded
   /** @type {Set<string>} */ const strongStems = new Set();
   const plain = (/** @type {string} */ s) => key(s).replace(/ae/g, 'a').replace(/oe/g, 'o').replace(/ue/g, 'u');
@@ -217,7 +221,7 @@ export function build(words, table = null, extra = []) {
  */
 export function infinitivesIn(texts, skip) {
   /** @type {Set<string>} */ const out = new Set();
-  const ok = (/** @type {string} */ w) => /^[a-zäöüß]{5,}(en|ern|eln)$/.test(w) && !skip(key(w));
+  const ok = (/** @type {string} */ w) => /^[a-zäöüß]{4,}(en|ern|eln)$/.test(w) && !skip(key(w));
   for (const t of texts) {
     const ws = String(t || '').replace(/\[[^\]]*\]|\([^)]*\)/g, ' ').split(/[^\p{L}]+/u).filter(Boolean);
     ws.forEach((w, i) => {
@@ -344,6 +348,11 @@ export function clashes(A, B, textB, conj) {
       if (others.some(x => [...x.a.map(q => A[q]), ...x.b.map(q => B[q])].some(verbish))) continue;
       out.push({ a: g.a[0], b: kb, kind: 'form' });
       continue;
+    }
+    // zu written apart before a separable verb (zu abbauen for abzubauen)
+    if (g.a.length === 2 && g.b.length === 1 && A[g.a[0]].n === 'zu' && conj.lookup(B[g.b[0]].n).some(x => x.slot === 'zu')) {
+      const lb = lemmasOf(B[g.b[0]]);
+      if ([...lemmasOf(A[g.a[1]])].some(x => lb.has(x))) { out.push({ a: g.a[1], b: g.b[0], kind: 'form' }); continue; }
     }
     // zu left out before the model's infinitive, or put in where the model has none
     if (!g.a.length && g.b.length === 1 && B[g.b[0]].n === 'zu') {
