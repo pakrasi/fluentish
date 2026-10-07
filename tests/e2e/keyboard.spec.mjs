@@ -6,7 +6,7 @@
 //   - nothing runs off the side (no horizontal overflow, every visible button inside the screen);
 //   - the keyboard stays up across cards: the same field keeps the focus after Check, Next and Send.
 // What the phone itself must still show is in docs/IOS-CHECKS.md (Keyboard).
-import { test, expect, seed, open, checkA11y } from './fixtures.mjs';
+import { test, expect, seed, open, checkA11y, SHA } from './fixtures.mjs';
 import { sse } from '../fixtures/conversation-sse.mjs';
 
 test.skip(({ browserName }) => browserName !== 'webkit', 'the on-screen keyboard is a phone matter (WebKit at 390 px)');
@@ -358,4 +358,72 @@ test('the round size picker, the spot check and Profile: the action is in reach;
   await key.fill('e2e-fake-claude-key-0002');
   await key.press('Enter');
   await expect(page.locator('.toast')).toContainText(/saved/i);
+});
+
+/** Where the field and the primary button sit, and how the prompt is set. @param {import('@playwright/test').Page} page @param {string} field @param {string} primary @param {string} prompt */
+const layoutOf = (page, field, primary, prompt) => page.evaluate(([f, b, p]) => {
+  const r = (/** @type {string} */ s) => /** @type {HTMLElement} */ (document.querySelector(s)).getBoundingClientRect();
+  const pe = /** @type {HTMLElement} */ (document.querySelector(p));
+  const zoneTop = /** @type {HTMLElement} */ (document.querySelector('.pr-top, .qs-top')).getBoundingClientRect().bottom;
+  return { field: Math.round(r(f).top), primary: Math.round(r(b).top), font: parseFloat(getComputedStyle(pe).fontSize),
+    // the prompt's middle against the middle of the band between the header and the field
+    off: Math.round((r(p).top + r(p).bottom) / 2 - (zoneTop + r(f).top) / 2) };
+}, [field, primary, prompt]);
+
+test('a short prompt uses the empty band: larger, in the middle above the field; the field and its row do not move', async ({ page }) => {
+  await setup(page);
+  await seed(page, { examInDays: 10 });
+  await open(page, '#/practice/round');
+  await expect(page.locator('#pr-input')).toBeFocused();
+  for (const h of [460, 400]) {
+    await keyboard(page, h);
+    await expect(page.locator('.pr-promptbox .prompt')).toHaveClass(/kb-short/);
+    const a = await layoutOf(page, '#pr-input', '.pr-primary', '.pr-promptbox .prompt');
+    expect(a.font, `@${h}: a short prompt grows toward the prompt size`).toBeGreaterThanOrEqual(28);
+    expect(Math.abs(a.off), `@${h}: the prompt sits near the middle of the band`).toBeLessThan(90);
+    // a miss: the answer opens, the prompt goes back to 22 px at the top, the field stays put
+    await page.locator('#pr-input').fill('falsch falsch');
+    await page.locator('.pr-primary').click();
+    await keyboard(page, h);
+    const b = await layoutOf(page, '#pr-input', '.pr-primary', '.pr-promptbox .prompt');
+    expect(b.font, `@${h}: with feedback open the prompt is 22 px`).toBe(22);
+    expect(b.field, `@${h}: the field did not move`).toBe(a.field);
+    expect(b.primary, `@${h}: the row did not move`).toBe(a.primary);
+    // on to the next card (Skip, then the round moves on): same place for the field and the row
+    await page.getByRole('button', { name: /^Skip/ }).click();
+    await expect(page.locator('.pr-primary')).toHaveText(/^Check/);
+    await keyboard(page, h);
+    const c = await layoutOf(page, '#pr-input', '.pr-primary', '.pr-promptbox .prompt');
+    expect(c.field, `@${h}: the next card's field is where the last one was`).toBe(a.field);
+    expect(c.primary, `@${h}: the next card's row is where the last one was`).toBe(a.primary);
+  }
+});
+
+test('Quick sort: a short prompt grows and centres, a long one keeps 22 px; the field and Check stay put', async ({ page }) => {
+  await setup(page);
+  await seed(page);
+  await open(page, '#/practice/sort?level=A1');
+  await expect(page.locator('#qs-input')).toBeFocused();
+  await keyboard(page, 460);
+  const a = await layoutOf(page, '#qs-input', '.qs-kbrow .btn-primary', '.qs-prompt');
+  expect(a.font).toBeGreaterThanOrEqual(28);
+  expect(Math.abs(a.off)).toBeLessThan(90);
+  // the next word (Skip): same place
+  await page.locator('.qs-kbrow .btn-quiet').first().click();
+  await keyboard(page, 460);
+  const b = await layoutOf(page, '#qs-input', '.qs-kbrow .btn-primary', '.qs-prompt');
+  expect(b.field).toBe(a.field);
+  expect(b.primary).toBe(a.primary);
+  // a long prompt: the 22 px, three-line clamp, at the top; the field still in the same place
+  await page.evaluate(async sha => {
+    const k = await import(`/fluentish/v/${sha}/src/core/keyboard.js`);
+    const p = /** @type {HTMLElement} */ (document.querySelector('.qs-prompt'));
+    p.textContent = 'shut (colloquial: die Tür ist ...); closed, as a shop that is closed for the rest of the day';
+    k.fitPrompt(p);
+  }, SHA);
+  await keyboard(page, 460);
+  const c = await layoutOf(page, '#qs-input', '.qs-kbrow .btn-primary', '.qs-prompt');
+  expect(c.font).toBe(22);
+  expect(c.field).toBe(a.field);
+  expect(c.primary).toBe(a.primary);
 });

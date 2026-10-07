@@ -167,3 +167,16 @@ test('enterMovesTo: Return in a title moves to the next field, with enterkeyhint
   const e2 = title.dispatch('keydown', { key: 'a', isComposing: false, shiftKey: false });
   assert.equal(e2.prevented, undefined);
 });
+
+test('fitPrompt: a prompt up to 64 characters is short (it may grow over the empty band); a longer one keeps the clamp', () => {
+  const p = el('P', { textContent: 'I suggest that we buy the present together.' });
+  K.fitPrompt(/** @type {any} */ (p));
+  assert.equal(p.classList.contains('kb-short'), true);
+  p.textContent = 'shut (colloquial: die Tür ist ...); closed, as in a shop that has closed for the day';
+  K.fitPrompt(/** @type {any} */ (p));
+  assert.equal(p.classList.contains('kb-short'), false);
+  p.textContent = `  ${'x'.repeat(K.SHORT_PROMPT)}  `;
+  K.fitPrompt(/** @type {any} */ (p));
+  assert.equal(p.classList.contains('kb-short'), true, 'spaces around it do not count');
+  K.fitPrompt(null);   // no prompt on the card: nothing happens
+});
