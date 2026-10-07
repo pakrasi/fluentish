@@ -153,3 +153,10 @@ mark.lk-turn { background: color-mix(in oklab, var(--role-turn) var(--role-mix),
 }
 .lk-notes > * { min-width: 0; }
 .lk-sort { margin: var(--s-2) 0 var(--s-3); }
+
+/* keyboard mode (core/keyboard.js): the title and the Map card give way, the search sits at the top of the visible
+   screen (it follows iOS's pan, --vv-top) and the results start right under it; Return closes the keyboard */
+body.kb .lookup { padding-top: var(--s-2); }
+body.kb .lk-top > h1 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); margin: 0; }
+body.kb .lk-top > .lk-map { display: none; }
+body.kb .lk-search { top: var(--vv-top, 0px); }

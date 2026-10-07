@@ -256,3 +256,13 @@ html[data-motion="reduce"] .ex-rec.is-on .ex-rec-dot { animation: none; }
 .ex-meter .fill { background: var(--accent); transition-duration: 90ms; transition-timing-function: linear; }
 @media (prefers-reduced-motion: reduce) { :root:not([data-motion="full"]) .ex-meter .fill { transition: none; } }
 :root[data-motion="reduce"] .ex-meter .fill { transition: none; }
+
+/* Schreiben with the keyboard up: the header (back, word count, clock, Abgeben) is held at the top of the visible
+   screen (styles/app.css .kb-stick), the page keeps its place under it, a long text field fits the screen */
+.ex-kbwc { display: none; white-space: nowrap; }
+body.kb .ex-kbwc { display: inline; }
+body.kb .ex-runhead.kb-stick { margin: 0; padding-top: 6px; }
+body.kb .ex-run:has(> .kb-stick) { padding-top: 57px; }
+body.kb .ex-write { min-height: 140px; max-height: calc(var(--vv-h, 100dvh) - 150px); }
+/* the back link keeps its name for a screen reader but shows only its chevron, so the row fits a phone */
+body.kb .ex-runhead.kb-stick .ex-back span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }

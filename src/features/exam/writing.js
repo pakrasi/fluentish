@@ -32,15 +32,20 @@ export function runSchreiben(el, ctx, { exam, n, ex, def }) {
     jumps[k].classList.toggle('is-met', met);
   };
   let saveT = /** @type {any} */ (null);
+  // with the keyboard up the header stays at the top of the visible screen (.kb-stick) and shows the word count of
+  // the task being written (its own line is under the field, behind the keyboard)
+  const kbWc = h('span', { class: 'caption tnum ex-kbwc', 'aria-hidden': 'true' });
   const area = (/** @type {string} */ k) => {
     const ta = /** @type {HTMLTextAreaElement} */ (h('textarea', {
       class: 'ex-write', 'aria-label': tx('taskArea', { i: KEYS.indexOf(k) + 1 }), spellcheck: 'false', autocorrect: 'off', autocapitalize: 'sentences', autocomplete: 'off', lang: langAttr(), dir: dirAttr(),
       oninput: (/** @type {Event} */ e) => {
         texts[k] = /** @type {HTMLTextAreaElement} */ (e.target).value;
         upd(k);
+        kbWc.textContent = jumps[k].textContent;
         clearTimeout(saveT);                       // at most every 300 ms while typing; always on blur and pagehide
         saveT = setTimeout(() => saveDraft(store, n, module, { answers: { ...texts } }), 300);
       },
+      onfocus: () => { kbWc.textContent = jumps[k].textContent; },
       onblur: () => { clearTimeout(saveT); saveDraft(store, n, module, { answers: { ...texts } }); },
     }));
     ta.value = texts[k] || '';
@@ -103,8 +108,8 @@ export function runSchreiben(el, ctx, { exam, n, ex, def }) {
   addEventListener('pagehide', flushText);
   document.addEventListener('visibilitychange', onVis);
   replace(el, h('div', { class: 'ex-run', lang: langAttr(), dir: dirAttr() },
-    h('header', { class: 'ex-runhead' }, backLink(`#/exam/${n}`, t('exam.backTest', { n })),
-      h('div', { class: 'ex-runhead-end' }, clock.el, h('button', { type: 'button', class: 'btn btn-primary pressable ex-submit-top', onclick: () => askSubmit() }, tx('submit')))),
+    h('header', { class: 'ex-runhead kb-stick' }, backLink(`#/exam/${n}`, t('exam.backTest', { n })),
+      h('div', { class: 'ex-runhead-end' }, kbWc, clock.el, h('button', { type: 'button', class: 'btn btn-primary pressable ex-submit-top', onclick: () => askSubmit() }, tx('submit')))),
     over, h('h1', { class: 'ex-run-title' }, def.name, h('span', { class: 'caption' }, ` · ${ex.topic}`)), cover, body));
   return {
     unmount() {
