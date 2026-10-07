@@ -1,6 +1,6 @@
 # Fluentish architecture
 
-This is the merged plan: the architecture plan (v1), with the principal-engineer review's **amended decisions** applied everywhere they override it, the UX plan's information architecture, and the design kit. Where the build differs from the plan, the "As built" notes say so. Stage A (this repo's first state) built the foundation; stage B adds Practice, Exam and Look up as feature modules (`docs/CONTRIBUTING-FEATURES.md`); stage C adds results sync, the service worker and the deploy.
+This is the merged plan: the architecture plan (v1), with the principal-engineer review's **amended decisions** applied everywhere they override it, the UX plan's information architecture, and the design kit. Where the build differs from the plan, the "As built" notes say so. Stage A (this repo's first state) built the foundation; stage B adds Practice, Exam and Look up as feature modules (`docs/CONTRIBUTING-FEATURES.md`); stage C adds results sync, the service worker and the deploy. Rounds 2 to 5 are described in the sections they changed; this file is kept current with the code (last checked at `beb84c7`, round 5). Next steps are in `docs/ROADMAP.md`, the build history in `docs/history/`.
 
 ## 1. What it is
 
@@ -8,7 +8,7 @@ One app that replaces two: Igloo (chunk bank, drill, the B1 trainer) and the B1 
 
 **Information architecture (UX §3):** four tabs, **Today · Practice · Exam · Look up**; Exam shows only when the profile has an exam goal. Settings live under the avatar (`#/profile`). English chrome, target-language content, exam screens in the exam's language. Routes are path-shaped so they map one to one onto an iOS navigation stack and deep links:
 
-`#/today` · `#/practice[/round?kind=…|/write[/build/<task>[/free]]|/speak[/teil2|/aloud/check]|/situations[/round?pick=…]]` · `#/exam[/<test>[/<module>[/review/<attempt>]]]` · `#/lookup[/words|/phrases|/grammar|/frames|/map[?mode=…]]` · `#/profile[/goal|/practice|/connections|/appearance|/data|/diagnostics]` · `#/welcome`.
+`#/today[/progress]` · `#/practice[/round?kind=…|/write[/build/<task>[/free]]|/speak[/teil2|/aloud/check]|/situations[/round?pick=…]|/scripts[/…]|/clusters[/…]|/sort|/known|/build[/…]|/read[/…]|/conversation[/…]|/words]` · `#/exam[/<test>[/<module>[/review/<attempt>]]]` · `#/lookup[/words|/phrases|/grammar|/frames|/map[?mode=…]]` · `#/profile[/goal|/week|/practice|/connections|/appearance|/data|/diagnostics]` · `#/welcome`. The registry (`src/features/registry.js`) is the full list.
 
 ## 2. Repository layout
 
@@ -25,14 +25,17 @@ src/
                       language pack), link (device link)
   lang/               language packs (§2.3): types.js (the LanguagePack interface), registry.js (the ten languages,
                       the active pack), de/ (German: text, grading, syntax, detectors, forms, morphology)
-  services/           platform services behind interfaces (§2.2): speech, voice, audio, recorder, share, haptics; claude, sw
+  services/           platform services behind interfaces (§2.2): speech, level, voice, audio, recorder, share, haptics;
+                      claude (ask, stream), prompts/ (versioned, hash-pinned templates), sw
   data/               store, adapters/{idb,memory}, session, settings, migrate, transfer, content, ids
   domain/             pure, tested in node: fsrs, match, detect, speech, timer, readiness, b1ready, days, today
                       (match, detect, punct and forms are language-neutral engines over a language pack);
                       text/ is the text layer Scripts, Reading and Conversation share (§2.3)
-  features/           registry, contract, day; today/, profile/, welcome/, exam/, lookup/, explore/ (Look up › Map; palace/ is its 3D view, loaded on demand);
-                      Practice as sibling features: practice/ (hub, exam words), practice-round/, practice-write/,
-                      practice-speak/, practice-script/, practice-clusters/, build/ (Word building); shared/ is the
+  features/           registry, contract, day; today/ (progress/ is Today › Progress), profile/ (goals, the week
+                      editor, backup), welcome/, exam/, lookup/, explore/ (Look up › Map; palace/ is its 3D view,
+                      loaded on demand); Practice as sibling features: practice/ (hub, exam words), practice-round/,
+                      practice-write/, practice-speak/, practice-script/, practice-clusters/ (clusters, Quick sort),
+                      build/ (Word building), practice-read/ (the Reader), practice-conversation/; shared/ is the
                       practice runtime they share (a library). Features never import each other (§2.1)
   i18n/               en.js, de.js (partial; falls back to English)
   vendor/paper-shaders/   @paper-design/shaders 0.0.81, vendored (VENDOR.md)
@@ -46,7 +49,8 @@ tests/unit/           node:test; tests/fixtures/ (synthetic only); tests/private
 tests/e2e/            @playwright/test against the stamped _site/ (WebKit 390 px, Chromium desktop), axe; §8
 .githooks/            pre-commit, pre-push (privacy + dates)
 .github/workflows/    ci.yml (the gates, the e2e included), deploy.yml (Pages, after ci)
-docs/                 ARCHITECTURE.md (this), DESIGN.md, SCHEMA.md, CONTRIBUTING-FEATURES.md
+docs/                 ARCHITECTURE.md (this), DESIGN.md, SCHEMA.md, CONTRIBUTING-FEATURES.md, SHARING.md, IOS-CHECKS.md,
+                      CUTOVER.md, ROADMAP.md (next steps), LEARNINGS.md, history/ (rounds and historical specs)
 ```
 
 ### 2.1 Module graph
@@ -259,7 +263,7 @@ Readiness is measured on a set that never depends on the date (the whole B1 pool
 
 How much a day holds has one answer: `domain/budget.js allowance()`, read from the store by `domain/allowance.js dayAllowance()`. Today's rows, hero and button, Practice's hub, every feature's `plan.js` and every round's composer read it; no deck has a cap of its own. Igloo's carried-over "new items per day" counts as Auto (a number counts only when chosen here, with a rev stamp, and then it is the whole day's, every deck included).
 
-- **Decks:** mistakes (`F:`), b1 (the daily review round), writing (Schreiben phrases), speak (situations), script, build (Word building), clusters.
+- **Decks:** mistakes (`F:`, including mistakes from corrections and conversations), b1 (the daily review round; the B2 layer's `G:`/`K:` items too), writing (Schreiben phrases), speak (situations), script, build (Word building), clusters, read (`de:read`, words and phrases saved in the Reader, `RW:`/`RP:`). A course in another language has `<lang>:core` (§2.3).
 - **Mode** from the clock and the learner: `exam` (week, lastNew), `eve`, `day`, `maintenance` (after the exam or no date), `start` (no exam ahead and his first study week, from the earliest study day in any deck).
 - **One number of new items** (Auto): what fits in the minutes after every deck's reviews and today's fixed rows (the Schreiben task, script steps), half the day while a mock is planned; at most the decks' wants together and 60 / 40 / 20 (exam / maintenance / first week); never under a small floor. None on the eve or the exam day.
 - **Shares:** exam week in a fixed order after a floor each (mistakes, Schreiben when it is the weakest module, b1 at the ★/trap pace, situations, Schreiben otherwise, scripts delivered before the exam); Word building, clusters and other scripts **pause** their new items until after the exam. Maintenance: mistakes first, then in proportion to the wants of b1, script, Word building, clusters, situations, Schreiben. First week: b1 items of his level (8 on 30 minutes), situations from day 3, clusters from day 5 once used, no Schreiben or Word building. A deck that goes over its share (a map pick, "Practice all") uses up the day; the others' shares shrink, lowest value first.
@@ -294,8 +298,9 @@ The plan was a freeze until the exam, then shadow, cutover and clean-up from 10 
 | Shadow | 4 Oct (morning) | first deploy to `pakrasi.github.io/fluentish/`, in shadow mode (`config.deployShadow: true`, c85d042): preview profiles that never sync, a banner. Real exam-week work was done in the preview |
 | Cutover | 4 Oct, 10:12–10:21 | Fluentish left shadow mode (41fec5c): each device merges its preview profiles into its real profile on its first start, then archives them (`archivedAt`, purged after 30 days). The same morning language-doors (c2c395f) and b1-exam (4de23a5) were switched: the B1 trainer and the exam app redirect to Fluentish (all hashes), Igloo keeps Drill, Test, Write and Look up and its own worker |
 | Since | 5 Oct | Fluentish is the only writer of B1 and exam data. Progress backup and restore, the sync seam, the bounded outbox and the persisted error log shipped on 5 Oct (§3.2, §8) |
-| Clean-up | after the exam (planned) | port Drill, Test, Write and Look up; migrate Igloo's SM-2 deck; redirect the remaining Igloo routes; retire Igloo's worker; the `/b1-review` skill text and `b1-token.py` (CUTOVER step 6, open) |
-| Growth | later | accounts and a server, iOS, a media repository (§9) |
+| Clean-up | later (docs/ROADMAP.md) | port Drill, Test, Write and Look up; migrate Igloo's SM-2 deck; redirect the remaining Igloo routes; retire Igloo's worker; the `/b1-review` skill text (CUTOVER step 6, open; `b1-token.py` is done and sends `repo` and `exp`) |
+| Since | 5 to 6 Oct | rounds 3 to 5: one learning loop, language packs and exams as data, maintenance and B2, Reader, Conversation, Progress, share-safe connections (docs/history/) |
+| Growth | later | accounts and a server, iOS, a media repository (§9, docs/ROADMAP.md) |
 
 The router keeps the legacy hash map (`core/router.js mapLegacy`): `#b1…`, `#drill`, `#test`, `#write/<id>`, `#lookup/<tab>` from Igloo and `#/tag/N[/m][?review=ID]`, `#/woerter`, `#/training`, `#/fortschritt`, `#/einstellungen`, `#/export` from the exam app.
 
@@ -320,6 +325,9 @@ Not covered there: the mic, the speaker and the mute switch, the keyboard, hapti
 
 ## 9. Phase 4 (recorded so today's choices point at it)
 
+The order and acceptance criteria for these are in `docs/ROADMAP.md` (Later).
+
+
 Supabase (Postgres + RLS + Auth with anonymous-to-linked accounts, Sign in with Apple, email codes; Storage for recordings), a Claude proxy as an Edge Function (platform key, per-user quotas, optional bring-your-own key encrypted with Vault), Cloudflare R2 for public media, a custom domain, a Capacitor iOS shell (native speech, notifications, filesystem content packs, Sign in with Apple, share sheet, haptics) with platform services behind interfaces, and re-licensed TTS audio. Native SwiftUI stays possible: it would read `content/manifest.json` and the schemas directly and run the JS domain core in JavaScriptCore or a Swift port tested against the golden vectors.
 
 ## 10. Stage A: built, deferred, and where it differs from the plan
@@ -337,4 +345,4 @@ Deferred from stage A, and built since: the results sync and its outbox flush (s
 
 Also built in round 3: golden vectors (§8), and the grader (`match.js`, `detect.js`, `speech.js`) in strict types, with a ratchet for every other module (`tools/typecheck-ratchet.mjs`: the error count may only fall).
 
-Still deferred: the boot-time delta re-merge (§6); strict types for the modules under the ratchet; self-hosted fonts; LICENSE files (the owner chooses the licence).
+Still deferred, and tracked in `docs/ROADMAP.md`: strict types for the modules under the ratchet; self-hosted fonts; LICENSE files (the owner chooses the licence; content sources and licences are in `content/NOTICE.md`). Dropped: the boot-time delta re-merge (§6).
