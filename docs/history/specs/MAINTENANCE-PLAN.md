@@ -206,7 +206,7 @@ Where you stand
 ```
 ‹ Today
 Progress
-[12 weeks | 6 months | All]            Tue 13 Oct to today
+[12 weeks | 6 months | All]            <first day> to today
 +880 known, net    1,043 learnt     85 h in Fluentish
 Words and phrases known        (line, 0-based, ◆ milestones,
  3,000 ─────────────────────●   dotted = estimated, crosshair)
