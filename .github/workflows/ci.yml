@@ -93,7 +93,9 @@ jobs:
   # server), so no token can reach GitHub. axe serious/critical findings and any console error fail it.
   e2e:
     runs-on: ubuntu-24.04
-    timeout-minutes: 12
+    # the suite runs in about 7 minutes; installing the browsers' system libraries from apt has taken up to 6 on its
+    # own (7 Oct 2026), which cancelled main's e2e twice at the old 12-minute cap
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
