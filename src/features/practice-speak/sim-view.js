@@ -509,7 +509,8 @@ async function mountRound(el, ctx) {
     panel.focus();
     // with the keyboard up the panel sits at the bottom of the card, over the keyboard: what he is asked to say
     // (the goal line) goes right above it
-    revealEl(goal, { avoid: checkEl });
+    revealEl(them, { block: 'start', avoid: checkEl, instant: true });   // the line from its start when it fits with the goal,
+    revealEl(goal, { avoid: checkEl });                    // and the goal in any case
   }
   function markKnown() {
     if (state !== 'think' || busy || !item) return;

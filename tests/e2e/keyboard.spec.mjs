@@ -6,7 +6,7 @@
 //   - nothing runs off the side (no horizontal overflow, every visible button inside the screen);
 //   - the keyboard stays up across cards: the same field keeps the focus after Check, Next and Send.
 // What the phone itself must still show is in docs/IOS-CHECKS.md (Keyboard).
-import { test, expect, seed, open } from './fixtures.mjs';
+import { test, expect, seed, open, checkA11y } from './fixtures.mjs';
 import { sse } from '../fixtures/conversation-sse.mjs';
 
 test.skip(({ browserName }) => browserName !== 'webkit', 'the on-screen keyboard is a phone matter (WebKit at 390 px)');
@@ -117,6 +117,7 @@ test('Quick sort, Produce: a two-line prompt, the field and Check all show; the 
   await atBothHeights(page, 'Quick sort', { prompt: page.locator('.qs-prompt'), field: input, check, learn: page.locator('.qs-kbrow .btn-quiet').nth(1), tally: page.locator('.qs-tally') });
   await expect(page.locator('.qs-btns')).toBeHidden();
   await expect(page.locator('.qs-how')).toBeHidden();
+  await checkA11y(page, 'Quick sort with the keyboard up');
   expect(await input.evaluate(e => getComputedStyle(e).resize)).toBe('none');
   // a miss: the answer and "I knew it, typo" open above the field, in view; Check and Next keep the keyboard
   await tagFocus(page);
@@ -189,6 +190,7 @@ test('Situations, Check by typing: the panel is the last row over the keyboard, 
   const field = page.locator('.pr-typecheck textarea');
   await expect(field).toBeFocused();
   await atBothHeights(page, 'Situations check', { goal: page.locator('.sim-goal'), field, check: page.locator('.pr-typecheck .btn-primary'), back: page.getByRole('button', { name: 'Back' }) });
+  await checkA11y(page, 'Situations, Check by typing with the keyboard up');
   // Check keeps the focus in the field (a wrong answer: the answer opens above it)
   await tagFocus(page);
   await field.fill('falsch');
@@ -277,6 +279,7 @@ test('Conversation: a fitted column, the bar stays, Send keeps the keyboard; set
   await field.fill('Im Winter fahre ich');
   await atBothHeights(page, 'Conversation', { bar: page.locator('.cv-bar'), last: page.locator('.cv-log > li').last(), field, send: page.locator('.cv-send') });
   await expect(page.locator('.cv-helpers')).toBeHidden();   // hidden while the field has text
+  await checkA11y(page, 'Conversation with the keyboard up');
   // iOS has nothing to pan: the page itself does not scroll
   expect(await page.evaluate(() => document.scrollingElement?.scrollHeight || 0)).toBeLessThanOrEqual(await page.evaluate(() => innerHeight + 1));
 });
@@ -324,6 +327,7 @@ test('Look up: while searching the title and the Map card give way and the first
   await page.waitForTimeout(400);
   await atBothHeights(page, 'Look up', { search: input, first: page.locator('.lk-list .lk-row, .lk-list li').first() });
   await expect(page.locator('.lk-map')).toBeHidden();
+  await checkA11y(page, 'Look up with the keyboard up');
   await input.press('Enter');
   await expect(input).not.toBeFocused();
 });

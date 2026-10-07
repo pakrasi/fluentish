@@ -630,3 +630,4 @@ body.kb .wr-kbbar .wr-kbcount { flex: 1; }
 body.kb .wr-kbbar .btn-primary { flex: none; padding: 0 var(--s-5); }
 body.kb .wr-freepage .wr-free { min-height: 140px; max-height: calc(var(--vv-h, 100dvh) - 132px); }
 body.kb .wr-freepage { padding-bottom: 64px; }
+body.kb .pr-typecheck > .answer { margin-top: 0; }
