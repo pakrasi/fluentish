@@ -63,6 +63,9 @@ export function revealDelta(r, top, bot, block = 'nearest') {
 }
 
 let started = false;
+/** The last thing reveal() brought into view: kept in view when the visible height changes (the keyboard opens, the
+    QuickType bar shows), while it is still on the page. @type {{el: Element, o: any} | null} */
+let lastReveal = null;
 let isKb = false;
 /** @type {{emit: (name: string, data?: any) => void} | null} */ let theBus = null;
 
@@ -89,10 +92,12 @@ export function startKeyboard({ bus } = {}) {
     const m = measure({ innerHeight, base, vv });
     const key = `${m.h}|${m.top}|${m.kb}`;
     if (key !== last) {
+      const grew = last && Number(last.split('|')[0]) !== m.h;
       last = key;
       root.style.setProperty('--vv-h', `${m.h}px`);
       root.style.setProperty('--vv-top', `${m.top}px`);
       root.style.setProperty('--kb', `${m.kb}px`);
+      if (grew && typing && lastReveal?.el.isConnected) { const r = lastReveal; requestAnimationFrame(() => reveal(r.el, { ...r.o, instant: true })); }
     }
     const open = isOpen(typing, m.screen);
     if (open !== isKb) {
@@ -145,13 +150,14 @@ export const keep = keepHandler;
  * Scroll an element into the visible part of the screen (the visual viewport), through every scroll container
  * around it and then the page. Smooth unless motion is reduced.
  * avoid: an element pinned over the bottom of the scroller (a sticky answer field), whose height is kept clear.
- * @param {Element | null | undefined} el @param {{block?: 'nearest'|'start'|'end', margin?: number, avoid?: Element | null}} [o]
+ * @param {Element | null | undefined} el @param {{block?: 'nearest'|'start'|'end', margin?: number, avoid?: Element | null, instant?: boolean}} [o]
  */
-export function reveal(el, { block = 'nearest', margin = 8, avoid = null } = {}) {
+export function reveal(el, { block = 'nearest', margin = 8, avoid = null, instant = false } = {}) {
   if (!el || !el.isConnected) return;
+  lastReveal = { el, o: { block, margin, avoid } };
   const vv = window.visualViewport;
   const vTop = vv ? vv.offsetTop : 0, vBot = vTop + (vv ? vv.height : innerHeight);
-  const behavior = reduced() ? 'auto' : 'smooth';
+  const behavior = instant || reduced() ? 'auto' : 'smooth';
   let shift = 0;   // what the inner scrollers already moved (smooth scrolling has not happened yet when we measure on)
   const r0 = el.getBoundingClientRect();
   /** @type {Element[]} */ const scrollers = [];

@@ -39,7 +39,7 @@ import { recordCheck, undoChecks, checksOf } from '../../data/checks.js';
 import { startMode, produced, isMode } from '../../domain/checks.js';
 import { recheckWords } from '../shared/recheck.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
-import { keep } from '../../core/keyboard.js';
+import { keep, fitToKeyboard, keyboardOpen, reveal as revealEl } from '../../core/keyboard.js';
 
 const MODE_KEY = 'fluentish.sortMode';
 /** The mode remembered on this device (it may be missing or blocked). */
@@ -128,8 +128,13 @@ export async function mountSort(el, ctx) {
   const endBtn = h('button', { type: 'button', class: 'btn btn-quiet pressable pr-end', onpointerdown: keep, onclick: () => end() }, t('practice.sort.end'), h('kbd', null, 'Esc'));
   const modeSeg = recheck ? null : seg({ label: t('practice.sort.mode'), value: S.mode, options: [['recognise', t('practice.sort.recognise')], ['produce', t('practice.sort.produce')]], onChange: v => setMode(v) });
   modeSeg?.classList.add('qs-mode');
+  // with the keyboard up the tiles give way: their counts become this tally in the header row (aria-hidden: the
+  // tiles' counts are announced)
+  const knowT = h('b', { class: 'tnum' }, '0'), learnT = h('b', { class: 'tnum' }, '0');
+  const knowTL = h('span'), learnTL = h('span');
+  const tally = h('span', { class: 'caption qs-tally', 'aria-hidden': 'true' }, h('span', null, knowTL, ' ', knowT), h('span', null, learnTL, ' ', learnT));
   const top = h('div', { class: 'pr-top qs-top' }, h('div', { class: 'track qs-track', 'aria-hidden': 'true' }, tfill),
-    h('div', { class: 'pr-top-row' }, h('span', { class: 'label qs-name' }, t('practice.sort.titleOf', { name })), count),
+    h('div', { class: 'pr-top-row' }, h('span', { class: 'label qs-name' }, t('practice.sort.titleOf', { name })), count, tally),
     h('div', { class: 'pr-top-row qs-tools' }, modeSeg, undoBtn, endBtn));
   // Recognise: the German word
   const art = h('span', { class: 'qs-art' });
@@ -139,10 +144,10 @@ export async function mountSort(el, ctx) {
   const meaningBtn = h('button', { type: 'button', class: 'btn btn-quiet pressable qs-meaning', 'aria-expanded': 'false', onclick: () => toggleMeaning() }, t('practice.sort.meaning'), h('kbd', null, 'Space'));
   // Produce: the English meaning, typed answer, feedback
   const task = h('p', { class: 'pr-task qs-task' });
-  const prompt = h('p', { class: 'qs-prompt', lang: 'en', dir: 'ltr' });
+  const prompt = h('p', { class: 'qs-prompt kb-clamp kb-flip', lang: 'en', dir: 'ltr' });
   const input = /** @type {HTMLTextAreaElement} */ (h('textarea', { class: 'answer-input', id: 'qs-input', rows: 1, lang: langAttr(), dir: dirAttr(), autocapitalize: 'off', autocomplete: 'off', spellcheck: 'false', enterkeyhint: 'go', 'aria-label': t('practice.answerLabel'), placeholder: t('practice.ph.german') }));
   input.setAttribute('autocorrect', 'off');
-  const answerEl = h('div', { class: 'answer qs-answer' }, input);
+  const answerEl = h('div', { class: 'answer qs-answer kb-flip' }, input);
   const fb = h('div', { class: 'pr-fb', 'aria-live': 'polite' });
   const typoBtn = h('button', { type: 'button', class: 'btn btn-quiet pressable qs-typo', onpointerdown: keep, onclick: () => typo(), hidden: true }, t('practice.sort.typo'), h('kbd', null, '⌥T'));
   const skipBtn = h('button', { type: 'button', class: 'btn btn-quiet pressable qs-skip', onpointerdown: keep, onclick: () => skip() }, t('practice.sort.skip'), h('kbd', null, '⌥S'));
@@ -165,17 +170,21 @@ export async function mountSort(el, ctx) {
     h('span', { class: 'qs-btn-top' }, knowKbd, knowLabel), h('span', { class: 'qs-stack' }, knowN)));
   const learnBtn = /** @type {HTMLButtonElement} */ (h('button', { type: 'button', class: 'qs-btn is-learn pressable', onpointerdown: keep, onclick: () => right() },
     h('span', { class: 'qs-btn-top' }, learnLabel, learnKbd), h('span', { class: 'qs-stack' }, learnN)));
-  const how = h('p', { class: 'caption qs-how' });
+  const how = h('p', { class: 'caption qs-how kb-fade' });
   const actions = h('div', { class: 'qs-actions' }, h('div', { class: 'qs-btns' }, knowBtn, learnBtn), how);
-  const box = h('div', { class: 'pr-round qs-round', role: 'region', 'aria-label': title }, top, h('div', { class: 'pr-scroll qs-scroll' }, stage), actions);
+  // Produce with the keyboard up (AUDIT §5.5): one row on the keyboard, Skip and Learn quiet, Check (Next) primary
+  const skipKb = h('button', { type: 'button', class: 'btn btn-quiet pressable', onpointerdown: keep, onclick: () => skip() }, t('practice.sort.skip'));
+  const learnKb = /** @type {HTMLButtonElement} */ (h('button', { type: 'button', class: 'btn btn-quiet pressable', onpointerdown: keep, onclick: () => right() }));
+  const checkKb = h('button', { type: 'button', class: 'btn btn-primary pressable', onpointerdown: keep, onclick: () => left() });
+  const kbRow = h('div', { class: 'card-actions qs-kbrow' }, skipKb, learnKb, checkKb);
+  const box = h('div', { class: 'pr-round qs-round', role: 'region', 'aria-label': title }, top, h('div', { class: 'pr-scroll qs-scroll' }, stage), actions, kbRow);
   const h1 = h('h1', { class: 'sr-only' }, t('practice.sort.titleOf', { name }));
   const keysEl = h('p', { class: 'sr-only' });
   replace(el, h1, box, keysEl);
   // the router focuses the page's h1 after mount; in Produce the answer field keeps the focus (and the keyboard)
   h1.addEventListener('focus', () => { if (alive && produce() && !finished) input.focus({ preventScroll: true }); });
-  const vv = window.visualViewport;
-  const fit = () => { box.style.height = `${vv ? vv.height : innerHeight}px`; };
-  vv?.addEventListener('resize', fit); addEventListener('resize', fit); fit();
+  // the box follows the visual viewport, so the row sits on the keyboard (core/keyboard.js)
+  const unfit = fitToKeyboard(box);
 
   const produce = () => S.mode === 'produce';
   /** The labels and hints of the mode. */
@@ -184,6 +193,8 @@ export async function mountSort(el, ctx) {
     recogniseBox.hidden = produce(); meaningBtn.hidden = produce(); produceBox.hidden = !produce();
     knowLabel.textContent = t(produce() ? 'practice.sort.check' : 'practice.sort.know');
     learnLabel.textContent = t(recheck ? 'practice.sort.notYet' : 'practice.sort.learn');
+    knowTL.textContent = knowLabel.textContent; learnTL.textContent = learnLabel.textContent;
+    checkKb.textContent = knowLabel.textContent; learnKb.textContent = learnLabel.textContent;
     knowKbd.textContent = produce() ? '↵' : '←';
     learnKbd.textContent = produce() ? '⌥L' : '→';
     undoKbd.textContent = produce() ? '⌥Z' : 'Z';
@@ -193,6 +204,7 @@ export async function mountSort(el, ctx) {
   function drawCounts() {
     const n = S.counts();
     knowN.textContent = String(n.know); learnN.textContent = String(recheck ? n.stay : n.learn);
+    knowT.textContent = knowN.textContent; learnT.textContent = learnN.textContent;
     undoBtn.disabled = !S.picks.length;
   }
   function drawWord(enter = true) {
@@ -209,9 +221,9 @@ export async function mountSort(el, ctx) {
       const it = itemOf(id);
       task.textContent = it?.task || '';
       prompt.textContent = it?.prompt || (w.en || []).slice(0, 3).join('; ');
-      resetAnswer(answerEl, reveal); replace(fb); typoBtn.hidden = true; skipBtn.hidden = false;
-      input.value = ''; input.readOnly = false;
-      knowBtn.disabled = false; learnBtn.disabled = false;
+      resetAnswer(answerEl, reveal); replace(fb); typoBtn.hidden = true; skipBtn.hidden = false; skipKb.hidden = false;
+      input.value = '';
+      knowBtn.disabled = false; learnBtn.disabled = false; learnKb.hidden = false;
       input.focus({ preventScroll: true });
       announce(t('practice.sort.announcePrompt', { prompt: `${task.textContent} ${prompt.textContent}`.trim(), n: S.i + 1, total }));
     } else {
@@ -243,6 +255,8 @@ export async function mountSort(el, ctx) {
     announce(t(v === 'produce' ? 'practice.sort.produceOn' : 'practice.sort.recogniseOn'));
   }
   const flyFrom = () => (produce() ? prompt : wordEl);
+  // with the keyboard up the counts are the header's tally
+  const knowTo = () => (keyboardOpen() ? knowT : knowN), learnTo = () => (keyboardOpen() ? learnT : learnN);
   /** Move on after a choice: the next word, or the summary. */
   function after() {
     drawCounts();
@@ -259,24 +273,26 @@ export async function mountSort(el, ctx) {
   /** The right tile: Learn (Recognise and Produce), Not yet (Recheck). */
   function right() {
     if (finished || !alive || busy || S.phase !== 'answer') return;
-    void fling(flyFrom(), learnN, { duration: 420 });
+    void fling(flyFrom(), learnTo(), { duration: 420 });
     S.learn(); haptic(); after();
   }
   function submit() {
     const v = S.submit(input.value);
     if (!v) return;
-    input.readOnly = true; skipBtn.hidden = true;
-    learnBtn.disabled = true;
+    // the field stays writable and focused (a read-only field can drop the iPhone keyboard): a key moves on (onKey)
+    skipBtn.hidden = true; skipKb.hidden = true;
+    learnBtn.disabled = true; learnKb.hidden = true;
     const w = word(S.list[S.i]);
     if (v.ok) {
       busy = true;
       replace(fb, h('p', { class: 'pr-res is-ok' }, t('practice.check.right')));
       reveal.classList.add('is-open');
       void fxCorrect(answerEl, { hold: 0 });
-      void fling(prompt, knowN, { duration: 420 });
+      void fling(prompt, knowTo(), { duration: 420 });
       drawCounts();
       announce(t('practice.sort.rightMarked', { word: form(w) }));
-      setTimeout(() => { busy = false; if (alive && S.phase === 'feedback') next(); }, reduced() ? 250 : 650);
+      const i0 = S.i;   // typing may already have moved on (onKey): only this word's hold ends here
+      setTimeout(() => { if (S.i !== i0) return; busy = false; if (alive && S.phase === 'feedback') next(); }, reduced() ? 250 : 650);
       return;
     }
     replace(fb, h('p', { class: 'pr-res is-bad' }, t('practice.wrong')),
@@ -286,8 +302,11 @@ export async function mountSort(el, ctx) {
     typoBtn.hidden = false;
     fxWrong(answerEl, { revealEl: /** @type {any} */ (reveal) });
     reveal.classList.add('is-open');
-    knowLabel.textContent = t('practice.sort.next');
-    void fling(prompt, learnN, { duration: 420 });
+    knowLabel.textContent = t('practice.sort.next'); checkKb.textContent = knowLabel.textContent;
+    void fling(prompt, learnTo(), { duration: 420 });
+    // the answer, the word panel and "I knew it, typo" open above the field: into view
+    const show = () => { if (alive) revealEl(reveal, { block: 'end', avoid: answerEl }); };
+    requestAnimationFrame(show); if (!reduced()) setTimeout(show, 320);
     drawCounts();
     announce(`${t('practice.wrong')}. ${t('practice.rightIs')} ${v.right}. ${t(recheck ? 'practice.sort.wrongRecheck' : 'practice.sort.wrongLearn')}`);
   }
@@ -365,7 +384,9 @@ export async function mountSort(el, ctx) {
         if (act) { e.preventDefault(); act(); }
         return;
       }
-      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); left(); }
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); left(); return; }
+      // after a check, typing moves on (the key lands in the next answer); during the hold after a right answer too
+      if (S.phase === 'feedback' && e.key.length === 1) { busy = false; next(); }
       return;
     }
     if (e.altKey) return;
@@ -380,7 +401,7 @@ export async function mountSort(el, ctx) {
     if (!alive) return;
     alive = false;
     document.removeEventListener('keydown', onKey);
-    vv?.removeEventListener('resize', fit); removeEventListener('resize', fit);
+    unfit();
   }
   drawWord(false);
   drawCounts();

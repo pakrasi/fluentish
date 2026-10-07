@@ -573,3 +573,33 @@ mark.sim-chunk { background: repeating-linear-gradient(90deg, var(--ink-3) 0 2px
   .rs-grab { display: none; }
 }
 @media (hover: hover) and (pointer: fine) { .rs-tip { display: none; } }
+
+/* ---------- Quick sort with the keyboard up (AUDIT §5.5) ----------
+   The header is one row: the name, "3 of 400", the tally (the tiles' counts) and End; the mode switch and Undo wait
+   until the keyboard closes. The word's line, the task and the prompt (22 px, three lines) start at the top; the
+   answer, the word panel and "I knew it, typo" open above the field; the field sits on the row of Skip, Learn and
+   Check, which sits on the keyboard. */
+.qs-answer .answer-input { resize: none; overflow: hidden; line-height: 24px; padding: 14px 0 12px; }
+.qs-tally, .qs-kbrow { display: none; }
+body.kb .qs-top { grid-template-columns: minmax(0, 1fr) auto auto auto; row-gap: 0; }
+body.kb .qs-top > .qs-track { grid-column: 1 / -1; grid-row: 1; margin-top: var(--s-1); }
+body.kb .qs-top .qs-name, body.kb .qs-top .caption { grid-row: 2; }
+body.kb .qs-top .qs-mode, body.kb .qs-top .qs-undo { display: none; }
+body.kb .qs-top .pr-end { grid-row: 2; }
+body.kb .qs-tally { display: inline-flex; gap: var(--s-3); white-space: nowrap; }
+body.kb .qs-tally b { font-weight: 600; color: var(--ink); }
+body.kb .qs-round.is-produce .qs-scroll { display: flex; flex-direction: column; }
+body.kb .qs-round.is-produce .qs-stage { flex: 1 0 auto; display: flex; flex-direction: column; align-items: stretch; text-align: start; gap: var(--s-2); padding: var(--s-1) 0 0; }
+body.kb .qs-round.is-produce .qs-produce { display: contents; }
+body.kb .qs-round.is-produce .qs-level .wp-meta { justify-content: flex-start; }
+body.kb .qs-round.is-produce .qs-prompt { font-size: 22px; line-height: 1.25; --kb-lines: 3; }
+body.kb .qs-round.is-produce .qs-panel { order: 1; max-width: none; }
+body.kb .qs-round.is-produce .qs-produce > .reveal-answer { order: 2; }
+body.kb .qs-round.is-produce .qs-typo { margin-inline-start: -12px; }
+body.kb .qs-round.is-produce .qs-answer { order: 3; position: sticky; bottom: 0; z-index: 1; margin-top: auto; padding-top: var(--s-2); background: var(--canvas); }
+body.kb .qs-round.is-produce .qs-skip { display: none; }
+body.kb .qs-round.is-produce .qs-actions { display: none; }
+body.kb .qs-round.is-produce .qs-kbrow { display: flex; align-items: center; max-width: 640px; width: 100%; margin: 0 auto; padding: 4px 0 6px; background: var(--canvas); }
+body.kb .qs-kbrow .btn { min-height: var(--tap); }
+body.kb .qs-kbrow .btn-quiet { padding: 0 12px; }
+body.kb .qs-kbrow .btn[hidden] { display: none; }
