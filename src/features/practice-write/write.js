@@ -28,6 +28,7 @@ import { recallBar } from '../shared/recall-bar.js';
 import { checkMark } from '../shared/check-mark.js';
 import { doneHero } from '../shared/done-hero.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
+import { keep } from '../../core/keyboard.js';
 
 export const COLLECTION = 'practice.write';
 const pct = (/** @type {number} */ x) => new Intl.NumberFormat('en-GB', { style: 'percent', maximumFractionDigits: 0 }).format(x || 0);
@@ -213,7 +214,9 @@ function mountBuild(el, ctx, data, task) {
   const slots = new Map(task.parts.map((/** @type {any} */ p) => [p.key, h('li', { class: ['wr-line', `is-${p.key}`, p.point && 'is-point'], 'data-key': p.key },
     h('span', { class: 'wr-slot', 'aria-label': partLabel(p, task, t) }, h('span', { class: 'wr-slot-label', 'aria-hidden': 'true' }, p.point ? String(p.point) : t(`practice.build.part.${p.key}`))))]));
   const letter = h('ol', { class: ['wr-letter', task.aufgabe === 'A2' && 'is-post'], 'aria-label': t('practice.build.yourEmail'), lang: langAttr(), dir: dirAttr() }, [...slots.values()]);
-  const letterBox = h('section', { class: 'wr-letterbox', 'aria-live': 'polite' }, h('p', { class: 'label' }, task.aufgabe === 'A2' ? t('practice.build.yourPost') : t('practice.build.yourEmail')), letter);
+  // with the keyboard up the letter folds to one line: how many of its lines are written (styles: .wr-prog)
+  const prog = h('span', { class: 'caption tnum wr-prog', 'aria-hidden': 'true' });
+  const letterBox = h('section', { class: 'wr-letterbox', 'aria-live': 'polite' }, h('p', { class: 'label' }, task.aufgabe === 'A2' ? t('practice.build.yourPost') : t('practice.build.yourEmail'), ' ', prog), letter);
 
   // ---------- the task ----------
   const points = h('ol', { class: 'wr-points', lang: langAttr(), dir: dirAttr() }, task.points.map((/** @type {string} */ p, /** @type {number} */ k) => h('li', { 'data-point': String(k + 1) }, p)));
@@ -237,10 +240,11 @@ function mountBuild(el, ctx, data, task) {
   const answerEl = h('div', { class: 'answer wr-answer' }, input, checkMark());
   const fb = h('div', { class: 'pr-fb', 'aria-live': 'polite' });
   const reveal = h('div', { class: 'reveal-answer' }, h('div', null, fb));
-  const secondary = h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => onSecondary() });
-  const primary = h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: () => onPrimary() });
+  const secondary = h('button', { type: 'button', class: 'btn btn-quiet pressable', onpointerdown: keep, onclick: () => onSecondary() });
+  const primary = h('button', { type: 'button', class: 'btn btn-primary pressable', onpointerdown: keep, onclick: () => onPrimary() });
+  // with the keyboard up the card's buttons sit on the keyboard (styles/app.css .kb-dock)
   const card = h('article', { class: 'card wr-card' }, h('div', { class: 'card-meta' }, meta, count), pointEl, cueEl, frameEl, answerEl, reveal,
-    h('div', { class: 'card-actions' }, secondary, primary));
+    h('div', { class: 'card-actions kb-dock' }, secondary, primary));
   const work = h('div', { class: 'wr-work stack' }, segs, card);
 
   const page = h('div', { class: 'practice stack wr-build' },
@@ -257,6 +261,7 @@ function mountBuild(el, ctx, data, task) {
   });
 
   function dots() {
+    prog.textContent = t('practice.build.linesDone', { n: Object.values(results).filter(r => r.ok).length, total });
     segments(segs, task.parts.map((/** @type {any} */ p, /** @type {number} */ k) => {
       const r = results[p.key];
       if (r) return r.first && r.ok ? 'done' : r.ok ? 'done' : 'miss';
@@ -496,9 +501,14 @@ function drawFree(el, ctx, task, aufgabe) {
   const result = h('div', { class: 'wr-correction', 'aria-live': 'polite' });
   const hasKey = !!secrets(store).anthropicKey;
   const btn = /** @type {HTMLButtonElement} */ (h('button', { type: 'button', class: 'btn btn-primary pressable', disabled: !hasKey, onclick: () => run() }, t('feedback.correct')));
+  // with the keyboard up: one slim row on the keyboard with the word count, the clock and Correct (its twin)
+  const wcKb = h('span', { class: 'caption tnum wr-kbcount', 'aria-hidden': 'true' });
+  const clockKb = h('span', { class: 'caption tnum wr-clock', 'aria-hidden': 'true' });
+  const btnKb = /** @type {HTMLButtonElement} */ (h('button', { type: 'button', class: 'btn btn-primary pressable', disabled: !hasKey, onpointerdown: keep, onclick: () => run() }, t('feedback.correct')));
+  const kbBar = h('div', { class: 'kb-dock kb-only wr-kbbar' }, wcKb, clockKb, btnKb);
   let timer = /** @type {any} */ (null);
   const words = () => B.wordCount(area.value);
-  const showCount = () => { wc.textContent = t('practice.build.wordsNow', { n: words(), target }); };
+  const showCount = () => { wc.textContent = t('practice.build.wordsNow', { n: words(), target }); wcKb.textContent = wc.textContent; };
   area.addEventListener('input', () => {
     showCount();
     clearTimeout(timer);
@@ -510,7 +520,7 @@ function drawFree(el, ctx, task, aufgabe) {
   async function run() {
     const text = area.value.trim();
     if (!text) { area.focus(); return; }
-    btn.disabled = true; btn.textContent = t('exam.correct.running');
+    btn.disabled = true; btn.textContent = t('exam.correct.running'); btnKb.disabled = true; btnKb.textContent = btn.textContent;
     replace(result, h('p', { class: 'caption' }, t('practice.build.correcting')));
     try {
       const res = await correctTask({ key: secrets(store).anthropicKey, task, text, words: target });
@@ -521,7 +531,7 @@ function drawFree(el, ctx, task, aufgabe) {
     } catch (e) {
       replace(result, h('p', { class: 'pr-res is-bad' }, t(`exam.correct.err.${e instanceof ClaudeError ? e.code : 'other'}`)));
     }
-    btn.disabled = false; btn.textContent = t('feedback.correct');
+    btn.disabled = false; btn.textContent = t('feedback.correct'); btnKb.disabled = false; btnKb.textContent = btn.textContent;
   }
   /**
    * The correction's lines become mistake cards (once per correction; a correction he already turned into cards and
@@ -547,12 +557,12 @@ function drawFree(el, ctx, task, aufgabe) {
   let tick = /** @type {any} */ (null);
   const timeBtn = /** @type {HTMLButtonElement} */ (h('button', { type: 'button', class: 'chip pressable wr-time', 'aria-pressed': 'false', onclick: () => toggleTime() }, t('practice.build.timeIt', { min: mins })));
   function toggleTime() {
-    if (tick) { clearInterval(tick); tick = null; timeBtn.setAttribute('aria-pressed', 'false'); clock.textContent = ''; return; }
+    if (tick) { clearInterval(tick); tick = null; timeBtn.setAttribute('aria-pressed', 'false'); clock.textContent = ''; clockKb.textContent = ''; return; }
     const end = Date.now() + mins * 60e3;
     timeBtn.setAttribute('aria-pressed', 'true');
     const draw = () => {
       const left = Math.max(0, Math.round((end - Date.now()) / 1000));
-      clock.textContent = left ? t('practice.build.timeLeft', { t: `${Math.floor(left / 60)}:${String(left % 60).padStart(2, '0')}` }) : t('practice.build.timeUp');
+      clockKb.textContent = clock.textContent = left ? t('practice.build.timeLeft', { t: `${Math.floor(left / 60)}:${String(left % 60).padStart(2, '0')}` }) : t('practice.build.timeUp');
       if (!left) { clearInterval(tick); tick = null; timeBtn.setAttribute('aria-pressed', 'false'); announce(t('practice.build.timeUp')); }
     };
     draw(); tick = setInterval(draw, 1000);
@@ -566,7 +576,7 @@ function drawFree(el, ctx, task, aufgabe) {
       h('ol', { class: 'wr-points', lang: langAttr(), dir: dirAttr() }, task.points.map((/** @type {string} */ p) => h('li', null, p)))),
     h('p', { class: 'caption' }, t('practice.build.freeAbout')),
     h('div', { class: 'wr-freehead' }, h('label', { class: 'label', for: 'wr-free' }, t('practice.build.freeLabel')), h('span', { class: 'wr-timebox' }, clock, timeBtn)),
-    area, wc,
+    area, wc, kbBar,
     h('div', { class: 'pr-done-actions' }, btn, h('a', { class: 'btn pressable', href: `#/practice/write/build/${task.id}` }, t('practice.build.again'))),
     hasKey ? h('p', { class: 'caption' }, t('practice.build.privacy')) : notice({ children: [h('p', null, t('exam.correct.needKey')), h('p', null, h('a', { href: '#/profile/connections' }, t('exam.correct.addKey')))] }),
     result,

@@ -1314,6 +1314,7 @@ export default {
   'practice.build.rowDone': '{right} of {total} right',
   'practice.build.label': 'Build an email · Aufgabe {n}',
   'practice.build.task': 'The task',
+  'practice.build.linesDone': '{n} of {total} lines',
   'practice.build.yourEmail': 'Your email',
   'practice.build.yourPost': 'Your post',
   'practice.build.model': 'Model',

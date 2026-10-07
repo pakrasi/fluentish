@@ -11,6 +11,7 @@
 import { h, replace, announce } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
 import { reduced, haptic } from '../../core/motion.js';
+import { fitToKeyboard, keep, reveal as revealEl } from '../../core/keyboard.js';
 import { langAttr, dirAttr, bcp47 } from '../../core/lang.js';
 import { setSetting } from '../../data/settings.js';
 import { say, hush, canSay } from '../../services/voice.js';
@@ -70,20 +71,23 @@ export async function mountChat(el, ctx, s0) {
   const log = h('ol', { class: 'cv-log', 'aria-label': t('conv.log') });
   const status = h('div', { class: 'cv-status', role: 'status' });
   const field = /** @type {HTMLTextAreaElement} */ (h('textarea', { class: 'cv-input', rows: '1', lang: langAttr(), dir: dirAttr(), maxlength: String(C.LIMITS.inputChars), autocomplete: 'off',
-    autocapitalize: 'sentences', spellcheck: 'false', 'aria-label': t('conv.input', { lang: conv?.language || '' }), placeholder: t('conv.input.ph', { lang: conv?.language || '' }), oninput: () => fit(), onkeydown: (/** @type {KeyboardEvent} */ e) => {
+    autocapitalize: 'sentences', spellcheck: 'false', enterkeyhint: 'send', 'aria-label': t('conv.input', { lang: conv?.language || '' }), placeholder: t('conv.input.ph', { lang: conv?.language || '' }), oninput: () => fit(), onkeydown: (/** @type {KeyboardEvent} */ e) => {
       if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); sendTyped(); }
     } }));
   const count = h('span', { class: 'caption tnum cv-count', 'aria-live': 'polite' });
-  const sendBtn = h('button', { type: 'button', class: 'cv-send pressable', 'aria-label': t('conv.send'), onclick: () => (busy ? stopTap() : sendTyped()) }, icon('next', { size: 20 }));
+  // Send and the helper phrases keep the focus in the field, so the keyboard stays up from one message to the next
+  const sendBtn = h('button', { type: 'button', class: 'cv-send pressable', 'aria-label': t('conv.send'), onpointerdown: keep, onclick: () => (busy ? stopTap() : sendTyped()) }, icon('next', { size: 20 }));
   const chips = h('div', { class: 'cv-helpers', role: 'group', 'aria-label': t('conv.helpers') },
-    (conv?.chips || []).map((/** @type {string} */ c) => h('button', { type: 'button', class: 'chip pressable cv-helper', lang: langAttr(), dir: dirAttr(), onclick: () => insert(c) }, c)));
+    (conv?.chips || []).map((/** @type {string} */ c) => h('button', { type: 'button', class: 'chip pressable cv-helper', lang: langAttr(), dir: dirAttr(), onpointerdown: keep, onclick: () => insert(c) }, c)));
   const closedBox = h('div', { class: 'cv-closed', hidden: true });
   const composer = h('div', { class: 'cv-composer' }, h('div', { class: 'cv-wrap' }, chips, closedBox, h('div', { class: 'cv-field' }, field, sendBtn), count));
   const view = h('div', { class: 'cv cv-chat' },
     h('header', { class: 'cv-bar' }, h('div', { class: 'cv-wrap cv-bar-row' },
       h('a', { class: 'btn btn-quiet pressable cv-back', href: '#/practice/conversation' }, icon('back', { size: 18 }), t('conv.back')),
       h('h1', { class: 'cv-bar-title', tabindex: '-1' }, t('conv.chat')), endBtn)),
-    h('main', { class: 'cv-wrap cv-main' },
+    // a column sized to the visible screen (core/keyboard.js): the bar, the conversation (the one scroller) and the
+    // composer, which sits on the keyboard. iOS has nothing to pan, so the bar never leaves the screen.
+    h('main', { class: 'cv-main' }, h('div', { class: 'cv-wrap' },
       h('div', { class: 'cv-strip' },
         h('p', { class: 'label' }, t(`conv.mode.${s0.mode}`)),
         h('p', { class: 'cv-topic', lang: langAttr(), dir: dirAttr() }, tr.title),
@@ -95,9 +99,10 @@ export async function mountChat(el, ctx, s0) {
             const cs = D.convSettings(ctx.settings());
             sentSheet(ctx, { interests: tr.system?.interests || [], cap: cs.monthlyCapUsd, spent: D.monthSpent(store, c.today) });
           } }, t('conv.sent.open')))),
-      log, status),
+      log, status)),
     composer);
   replace(el, view);
+  const unfit = fitToKeyboard(view);
 
   // ---------- drawing ----------
   function drawMeta() {
@@ -178,12 +183,13 @@ export async function mountChat(el, ctx, s0) {
     const v = field.value.trim();
     field.value = (v ? `${v} ` : '') + before + after;
     const at = (v ? v.length + 1 : 0) + before.length;
-    field.focus();
+    field.focus({ preventScroll: true });
     field.setSelectionRange(at, at);
     fit();
   }
 
-  const scrollEnd = (/** @type {Element} */ x) => { try { x.scrollIntoView({ block: 'end', behavior: reduced() ? 'auto' : 'smooth' }); } catch { /* old engines */ } };
+  // the newest message to the bottom of the conversation; kept there when the keyboard opens (core/keyboard.js)
+  const scrollEnd = (/** @type {Element} */ x) => revealEl(x, { block: 'end' });
 
   /**
    * The composer's state: closed at a limit, or for a missing key. say: a reply to announce first (one announcement,
@@ -380,6 +386,7 @@ export async function mountChat(el, ctx, s0) {
       ctl?.abort();
       hush();
       removeEventListener('online', onNet);
+      unfit();
       document.body.dataset.chrome = 'on';
       document.body.classList.remove('cv-in-chat');
     },

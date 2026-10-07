@@ -328,7 +328,6 @@ body.wb-in-round #view { max-width: none; padding: 0; }
 
 /* keyboard mode (core/keyboard.js): the header is one row, the card fills the column, the answer opens above the
    field, the field sits on the action row, which sits on the keyboard (no safe-area padding) */
-body.kb .wb-round { padding-top: 0; }
 body.kb .wb-rtop { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; column-gap: var(--s-3); min-height: 32px; padding-top: 0; }
 body.kb .wb-rtop-row { display: contents; }
 body.kb .wb-rtop .btn { min-height: 32px; position: relative; }

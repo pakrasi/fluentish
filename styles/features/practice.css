@@ -134,7 +134,6 @@ body.pr-in-round #view { max-width: none; padding: 0; }
    its padding and fills the column; the prompt is 22 px and three lines at most; feedback, the answer to retype and
    the word panel open above the field; the field sits at the bottom of the column, right over the action row, which
    sits on the keyboard (44 px buttons, no safe-area padding). */
-body.kb .pr-round { padding-top: 0; }
 body.kb .pr-top { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; column-gap: var(--s-3); min-height: 32px; padding-top: 0; }
 body.kb .pr-top > .segments { margin-top: 0; grid-row: 1; }
 body.kb .pr-top .pr-again, body.kb .pr-top .pr-strip, body.kb .pr-top kbd { display: none; }
@@ -618,3 +617,16 @@ body.kb .pr-typecheck-actions .btn[hidden] { display: none; }
 body.kb .pr-round:has(.pr-typecheck) > .pr-actions { display: none; }
 body.kb .pr-typecheck > .pr-fb:empty { display: none; }
 body.kb .pr-typecheck-actions .btn-quiet { padding: 0 12px; }
+
+/* Build an email and Write it yourself with the keyboard up: the email folds to "3 of 7 lines", the card's buttons
+   and the free text's word count, clock and Correct sit on the keyboard (styles/app.css .kb-dock) */
+.wr-prog { display: none; margin-inline-start: var(--s-2); color: var(--ink-3); font-weight: 400; }
+body.kb .wr-prog { display: inline; }
+body.kb .wr-letterbox { padding: var(--s-2) var(--s-4); }
+body.kb .wr-letterbox > .label { margin-bottom: 0; }
+body.kb .wr-letterbox > .wr-letter { display: none; }
+body.kb .wr-build .wr-card { scroll-margin-bottom: 64px; }
+body.kb .wr-kbbar .wr-kbcount { flex: 1; }
+body.kb .wr-kbbar .btn-primary { flex: none; padding: 0 var(--s-5); }
+body.kb .wr-freepage .wr-free { min-height: 140px; max-height: calc(var(--vv-h, 100dvh) - 132px); }
+body.kb .wr-freepage { padding-bottom: 64px; }

@@ -149,19 +149,19 @@ export async function flip(els, mutate, { duration, easing = 'var(--spring-snapp
  */
 export async function kbShift(apply) {
   if (reduced() || typeof document === 'undefined') { apply(); return; }
-  const els = [...document.querySelectorAll('.kb-flip')].filter(el => /** @type {HTMLElement} */ (el).offsetParent);
+  const els = [...document.querySelectorAll('.kb-flip')].filter(el => el.getClientRects().length > 0);
   const first = new Map(els.map(el => [el, el.getBoundingClientRect().top]));
   apply();
   const ease = getComputedStyle(root).getPropertyValue('--spring-snappy').trim() || 'ease-out';
   for (const el of els) {
-    if (!/** @type {HTMLElement} */ (el).offsetParent) continue;
+    if (!el.getClientRects().length) continue;
     const dy = /** @type {number} */ (first.get(el)) - el.getBoundingClientRect().top;
     if (Math.abs(dy) < 1) continue;
     el.animate([{ transform: `translateY(${dy}px)` }, { transform: 'none' }], { duration: 200, easing: ease });
   }
   if (!document.body.classList.contains('kb')) {
     for (const el of document.querySelectorAll('.kb-fade')) {
-      if (/** @type {HTMLElement} */ (el).offsetParent) el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 200, easing: 'ease-out' });
+      if (el.getClientRects().length) el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 200, easing: 'ease-out' });
     }
   }
 }

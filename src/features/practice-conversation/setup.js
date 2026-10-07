@@ -49,7 +49,7 @@ export async function mountSetup(el, ctx) {
       h('span', { class: 'cv-choice-main' }, h('span', { class: 'cv-choice-de', lang: langAttr(), dir: dirAttr() }, de), h('span', { class: 'cv-choice-en' }, en)),
       h('span', { class: 'cv-choice-meta tnum' }, meta));
 
-    const ownIn = /** @type {HTMLInputElement} */ (h('input', { class: 'input', id: 'cv-own', maxlength: '80', autocomplete: 'off', lang: langAttr(), dir: dirAttr(), value: ui.own,
+    const ownIn = /** @type {HTMLInputElement} */ (h('input', { class: 'input', id: 'cv-own', maxlength: '80', autocomplete: 'off', enterkeyhint: 'go', lang: langAttr(), dir: dirAttr(), value: ui.own,
       placeholder: t('conv.own.ph', { lang: conv?.language || '' }), oninput: () => {
         ui.own = ownIn.value;
         for (const b of /** @type {NodeListOf<HTMLElement>} */ (el.querySelectorAll('.cv-choice'))) { const on = !ui.own.trim() && b.dataset.id === ui.pick; b.classList.toggle('is-on', on); b.setAttribute('aria-checked', String(on)); }
@@ -66,7 +66,9 @@ export async function mountSetup(el, ctx) {
       h('div', { class: 'cv-choices', role: 'radiogroup', 'aria-label': t('conv.topics') }, suggested.map(x => choice(x.id, x.de, x.en, x.lv))),
       more.length ? h('details', { class: 'cv-more' }, h('summary', { class: 'pressable' }, t('conv.topics.more', { n: more.length })),
         h('div', { class: 'cv-choices', role: 'radiogroup', 'aria-label': t('conv.topics.all') }, more.map(x => choice(x.id, x.de, x.en, x.lv)))) : null,
-      h('div', { class: 'form-field cv-own' }, h('label', { class: 'field-label', for: 'cv-own' }, t('conv.own')), ownIn, h('p', { class: 'field-hint' }, t('conv.own.hint'))));
+      // a form, so Return (Go) starts the conversation with his own topic
+      h('form', { class: 'form-field cv-own', onsubmit: (/** @type {Event} */ e) => { e.preventDefault(); if (!startBtn.disabled) start(); } },
+        h('label', { class: 'field-label', for: 'cv-own' }, t('conv.own')), ownIn, h('p', { class: 'field-hint' }, t('conv.own.hint'))));
 
     const roleBlock = h('div', { class: 'cv-block' },
       h('h2', { class: 'cv-h' }, t('conv.scenarios')),
@@ -108,7 +110,8 @@ export async function mountSetup(el, ctx) {
       h('p', { class: ['caption', 'cv-month', month.warn && 'is-warn'] }, month.over ? t('conv.month.over', { cap: D.money(month.cap) })
         : month.warn ? t('conv.month.warn', { spent: D.money(spent), cap: D.money(month.cap) }) : t('conv.month', { spent: D.money(spent), cap: D.money(month.cap) })),
       why ? h('p', { class: 'caption cv-why', role: 'status' }, why) : null,
-      h('div', { class: 'cv-startbar' }, startBtn),
+      // with the keyboard up (his own topic) Start sits on the keyboard (styles/app.css .kb-dock)
+      h('div', { class: 'cv-startbar kb-dock' }, startBtn),
       earlier.length ? h('section', { class: 'cv-earlier' }, h('h2', { class: 'cv-h' }, t('conv.earlier')),
         h('ul', { class: 'cv-earlier-list' }, earlier.map(s => {
           const tr = D.getTranscript(store, s.id);

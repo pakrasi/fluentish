@@ -55,8 +55,12 @@
 
 /* ---------- the chat ---------- */
 body.cv-in-chat #view { max-width: none; padding: 0; }
-.cv-chat { min-height: 100dvh; }
-.cv-bar { position: sticky; top: 0; z-index: var(--z-bar); padding-top: env(safe-area-inset-top); background: color-mix(in oklab, var(--canvas) 92%, transparent);
+/* one column the height of the visible screen (core/keyboard.js fitToKeyboard): the bar, the conversation (the only
+   scroller) and the composer on the keyboard. The page itself never scrolls, so iOS has nothing to pan (AUDIT R1 #13). */
+body.cv-in-chat { overflow: hidden; }
+.cv-chat { position: fixed; inset: 0 0 auto 0; z-index: var(--z-bar); height: 100dvh; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; background: var(--canvas); }
+.cv-main { min-height: 0; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+.cv-bar { position: relative; z-index: 1; padding-top: env(safe-area-inset-top); background: color-mix(in oklab, var(--canvas) 92%, transparent);
   -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid var(--hairline); }
 @media (prefers-reduced-transparency: reduce) { .cv-bar { background: var(--canvas); } }
 .cv-bar-row { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: var(--s-2); min-height: 52px; }
@@ -74,7 +78,7 @@ body.cv-in-chat #view { max-width: none; padding: 0; }
 .cv-inline-link::before { content: ""; position: absolute; inset: -14px -6px; }
 .cv-tok { white-space: nowrap; }
 
-.cv-log { display: grid; gap: var(--s-3); margin: 0; padding: var(--s-4) 0 calc(180px + env(safe-area-inset-bottom)); list-style: none; }
+.cv-log { display: grid; gap: var(--s-3); margin: 0; padding: var(--s-4) 0 var(--s-3); list-style: none; }
 .cv-msg { display: flex; min-width: 0; }
 .cv-you { justify-content: flex-end; }
 .cv-bubble { width: fit-content; max-width: 90%; min-width: 0; padding: 12px 16px 8px; border-radius: 20px; box-sizing: border-box; }
@@ -127,10 +131,12 @@ body.cv-in-chat #view { max-width: none; padding: 0; }
 .cv-error { margin: 0 0 var(--s-2); color: var(--bad); font-size: 14px; }
 
 /* the composer: helper phrases, the field, send (stop while a reply streams) */
-.cv-composer { position: fixed; inset-inline: 0; bottom: 0; z-index: calc(var(--z-bar) - 1); padding: var(--s-2) 0 calc(10px + env(safe-area-inset-bottom));
-  background: var(--canvas); border-top: 1px solid var(--hairline); }
-/* the last message scrolls clear of the composer (chips row plus field) */
-:root:has(.cv-composer) { scroll-padding-bottom: calc(150px + env(safe-area-inset-bottom)); }
+.cv-composer { padding: var(--s-2) 0 calc(10px + env(safe-area-inset-bottom)); background: var(--canvas); border-top: 1px solid var(--hairline); }
+/* keyboard mode: a 44 px bar, no safe-area padding under the composer, the helper phrases only while the field is empty */
+body.kb .cv-bar-row { min-height: var(--tap); }
+body.kb .cv-composer { padding: 6px 0; }
+body.kb .cv-composer:has(.cv-input:not(:placeholder-shown)) .cv-helpers { display: none; }
+body.kb .cv-helpers { padding-bottom: 6px; }
 .cv-helpers { display: flex; gap: var(--s-2); overflow-x: auto; padding-bottom: var(--s-2); scrollbar-width: none;
   -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 24px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 24px), transparent); }
 .cv-helpers::-webkit-scrollbar { display: none; }

@@ -5,6 +5,8 @@
      --vv-h   the visual viewport's height (px)
      --vv-top its offsetTop (px)
      --kb     the part of the layout viewport under the keyboard (innerHeight - vv.height - vv.offsetTop, >= 0)
+     --kb-screen  the keyboard's height on the screen while a field has the focus (room a page adds at its end, so
+              a field low on the page can scroll up above the keyboard instead of iOS panning the whole page)
    and body.kb is set while a text field has the focus AND the keyboard is up (more than 120 px tall, so a hardware
    keyboard or an iPad's split view never trips it). In a browser that shrinks the layout viewport instead, the drop
    from the tallest height seen at this width counts as the keyboard.
@@ -90,13 +92,14 @@ export function startKeyboard({ bus } = {}) {
     const typing = isTextField(document.activeElement);
     base = Math.max(base, innerHeight);   // a keyboard only ever lowers it
     const m = measure({ innerHeight, base, vv });
-    const key = `${m.h}|${m.top}|${m.kb}`;
+    const key = `${m.h}|${m.top}|${m.kb}|${m.screen}`;
     if (key !== last) {
       const grew = last && Number(last.split('|')[0]) !== m.h;
       last = key;
       root.style.setProperty('--vv-h', `${m.h}px`);
       root.style.setProperty('--vv-top', `${m.top}px`);
       root.style.setProperty('--kb', `${m.kb}px`);
+      root.style.setProperty('--kb-screen', `${typing ? m.screen : 0}px`);
       if (grew && typing) {
         // the visible height changed: keep the newest revealed content in view, and the field itself
         const r = lastReveal?.el.isConnected ? lastReveal : null, f = document.activeElement;
@@ -162,7 +165,7 @@ export function reveal(el, { block = 'nearest', margin = 8, avoid = null, instan
   if (keep) lastReveal = { el, o: { block, margin, avoid } };
   const vv = window.visualViewport;
   const vTop = vv ? vv.offsetTop : 0, vBot = vTop + (vv ? vv.height : innerHeight);
-  const behavior = instant || reduced() ? 'auto' : 'smooth';
+  const behavior = instant || reduced() ? 'instant' : 'smooth';   // not 'auto': that follows the page's scroll-behavior
   let shift = 0;   // what the inner scrollers already moved (smooth scrolling has not happened yet when we measure on)
   const r0 = el.getBoundingClientRect();
   /** @type {Element[]} */ const scrollers = [];
@@ -182,7 +185,10 @@ export function reveal(el, { block = 'nearest', margin = 8, avoid = null, instan
   }
   const doc = document.scrollingElement;
   if (doc && doc.scrollHeight > innerHeight + 1 && getComputedStyle(document.body).overflowY !== 'hidden') {
-    const d = revealDelta({ top: r0.top - shift, bottom: r0.bottom - shift }, vTop + margin, vBot - margin, block);
+    // a form's action row docked on the keyboard (.kb-dock) and a header held at the top (.kb-stick) cover the page
+    const cover = (/** @type {string} */ sel) => [...document.querySelectorAll(sel)].filter(x => !x.contains(el) && x.getClientRects().length > 0 && getComputedStyle(x).position === 'fixed')
+      .reduce((n, x) => Math.max(n, x.getBoundingClientRect().height), 0);
+    const d = revealDelta({ top: r0.top - shift, bottom: r0.bottom - shift }, vTop + margin + cover('.kb-stick'), vBot - margin - cover('.kb-dock'), block);
     if (d) window.scrollTo({ top: Math.max(0, scrollY + d), behavior });
   }
 }
