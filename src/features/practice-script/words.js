@@ -21,7 +21,7 @@ import { doneHero } from '../shared/done-hero.js';
 import { swap } from '../../core/motion.js';
 import { knowButton, isKnowKey, knowCard } from '../shared/iknow.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
-import { keep } from '../../core/keyboard.js';
+import { keep, fitToKeyboard } from '../../core/keyboard.js';
 
 const ROUND = 12;
 
@@ -88,10 +88,13 @@ export async function mountWords(el, ctx) {
   const secondary = h('button', { type: 'button', class: 'btn btn-quiet pressable', onpointerdown: keep, onclick: () => showMe() }, t('practice.showMe'));
   const primary = h('button', { type: 'button', class: 'btn btn-primary pressable pr-primary', onpointerdown: keep, onclick: () => onReturn() });
   const knowBtn = knowButton(t, () => knowThis(), { typed: true });
-  const box = h('div', { class: 'pr-round is-flow', role: 'region', 'aria-label': t('practice.script.words.title'), 'data-title': t('practice.script.title') },
+  // docked like every round (the actions sit on the keyboard), unless he chose the simple input layout
+  const docked = !ctx.settings().practice.simpleInput;
+  const box = h('div', { class: ['pr-round', docked ? 'is-docked' : 'is-flow'], role: 'region', 'aria-label': t('practice.script.words.title'), 'data-title': t('practice.script.title') },
     h('div', { class: 'pr-top' }, segs, h('div', { class: 'pr-top-row' }, count, endBtn)), h('div', { class: 'pr-scroll' }, card), h('div', { class: 'card-actions pr-actions' }, knowBtn, secondary, primary));
   /** @type {Set<string>} */ const knownIds = new Set();
   replace(el, h('h1', { class: 'sr-only' }, t('practice.script.words.title')), box);
+  const unfit = docked ? fitToKeyboard(box) : () => {};
 
   let state = 'answer', revealed = false, cardT0 = 0, holding = false;
   /** @type {any} */ let item = null, cur = /** @type {any} */ (null);
@@ -224,7 +227,7 @@ export async function mountWords(el, ctx) {
     else if (isKnowKey(e, true) && !knowBtn.hidden) { e.preventDefault(); knowThis(); }
   };
   input.addEventListener('keydown', onKey);
-  function cleanup() { input.removeEventListener('keydown', onKey); }
+  function cleanup() { input.removeEventListener('keydown', onKey); unfit(); }
   draw();
   return () => { cleanup(); restore(); };
 }
