@@ -82,6 +82,10 @@ logical commits that each pass the gates cost little and make crashes, reviews, 
 - *Service-worker claim timing.* Reloading to get a page under the worker raced the worker's claim, and in WebKit a
   navigation fulfilled by a context route is never handed to the worker. Wait for the worker to control the page
   instead of reloading for it (`offline.spec`, `5cc36eb`).
+- *A seed that depends on today.* The synthetic progress log skips random days, and which days depends on today's
+  date. On 7 Oct the day meant to hold a map release was skipped, so `progress.spec` failed on a docs-only branch. A
+  seeded event must land on the first recorded day on or after its day (`progress-seed.mjs`, `d96896c`), and a
+  fixture built from "today" should be checked across a range of dates.
 
 **The shared origin is a standing risk.** Every site under `pakrasi.github.io` is one browser origin, so any page
 there can read Fluentish's IndexedDB, tokens included. The mitigations are no third-party script on the origin and a
