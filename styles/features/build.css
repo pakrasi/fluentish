@@ -242,7 +242,7 @@ table.wb-pt { border-collapse: separate; border-spacing: 2px; font-size: 12px; }
 /* ---------- the round (full screen, no chrome) ---------- */
 body.wb-in-round { overflow: hidden; }
 body.wb-in-round #view { max-width: none; padding: 0; }
-.wb-round { position: fixed; inset: 0 0 auto 0; height: 100dvh; z-index: var(--z-bar, 30); display: grid; grid-template-rows: auto minmax(0, 1fr) auto; background: var(--canvas);
+.wb-round { position: fixed; inset: 0 0 auto 0; height: 100dvh; z-index: var(--z-bar, 30); display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr) auto; background: var(--canvas);
   padding: env(safe-area-inset-top) max(var(--gutter), env(safe-area-inset-left)) 0; }
 .wb-rtop { width: 100%; max-width: 640px; margin: 0 auto; padding-top: var(--s-3); view-transition-name: fx-roundhead; }
 .wb-rtop-row { display: flex; justify-content: space-between; align-items: center; gap: var(--s-3); margin-top: 2px; }

@@ -58,7 +58,7 @@ body.cv-in-chat #view { max-width: none; padding: 0; }
 /* one column the height of the visible screen (core/keyboard.js fitToKeyboard): the bar, the conversation (the only
    scroller) and the composer on the keyboard. The page itself never scrolls, so iOS has nothing to pan (AUDIT R1 #13). */
 body.cv-in-chat { overflow: hidden; }
-.cv-chat { position: fixed; inset: 0 0 auto 0; z-index: var(--z-bar); height: 100dvh; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; background: var(--canvas); }
+.cv-chat { position: fixed; inset: 0 0 auto 0; z-index: var(--z-bar); height: 100dvh; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr) auto; background: var(--canvas); }
 .cv-main { min-height: 0; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
 .cv-bar { position: relative; z-index: 1; padding-top: env(safe-area-inset-top); background: color-mix(in oklab, var(--canvas) 92%, transparent);
   -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid var(--hairline); }
