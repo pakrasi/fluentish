@@ -26,17 +26,21 @@ export function syntheticLog(today, { days = 210, seed = 7, course = 'de', estim
   /** @type {Record<string, Record<string, any>>} */ const kv = {};
   const awayFrom = add(today, -95), awayTo = add(today, -82);
   let atlas = 'e2e0a1b2';
+  // the Igloo jump and the map release land on the first study day on or after their day, so a skipped day never
+  // drops them (which day is skipped depends on today's date)
+  let jumped = false, released = false;
   for (let i = 0; i <= days; i++) {
     const day = add(start, i);
     const dow = new Date(`${day}T12:00:00Z`).getUTCDay();
     if (day !== today && ((day >= awayFrom && day <= awayTo) || r() < (dow === 0 ? 0.55 : 0.18))) continue;
     /** @type {any} */ let jump = null;
-    if (i === estimatedDays) {   // Igloo's placement results come in
+    if (!jumped && i >= estimatedDays) {   // Igloo's placement results come in
+      jumped = true;
       const before = [...known.w, ...known.p, ...known.g].reduce((a, b) => a + b, 0);
       for (let L = 0; L < 3; L++) { known.w[L] = Math.min(of.w[L], known.w[L] + [260, 180, 90][L]); known.p[L] = Math.min(of.p[L], known.p[L] + [120, 90, 30][L]); }
       jump = { from: 'igloo', known: [...known.w, ...known.p, ...known.g].reduce((a, b) => a + b, 0) - before };
     }
-    if (i === 130) { of.w[3] += 220; of.p[3] += 80; of.g[3] += 6; atlas = 'e2e0c3d4'; }   // a map release grows B2
+    if (!released && i >= 130) { released = true; of.w[3] += 220; of.p[3] += 80; of.g[3] += 6; atlas = 'e2e0c3d4'; }   // a map release grows B2
     const learnt = 4 + Math.floor(r() * 14), missed = Math.floor(r() * 4);
     for (let k = 0; k < learnt; k++) {
       const L = Math.min(LEVELS - 1, Math.floor(r() * (i > 70 ? 4.6 : 3.2)));
