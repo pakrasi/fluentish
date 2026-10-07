@@ -39,7 +39,7 @@ import { recordCheck, undoChecks, checksOf } from '../../data/checks.js';
 import { startMode, produced, isMode } from '../../domain/checks.js';
 import { recheckWords } from '../shared/recheck.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
-import { keep, fitToKeyboard, keyboardOpen, reveal as revealEl } from '../../core/keyboard.js';
+import { keep, fitToKeyboard, keyboardOpen, reveal as revealEl, fitPrompt } from '../../core/keyboard.js';
 
 const MODE_KEY = 'fluentish.sortMode';
 /** The mode remembered on this device (it may be missing or blocked). */
@@ -221,6 +221,7 @@ export async function mountSort(el, ctx) {
       const it = itemOf(id);
       task.textContent = it?.task || '';
       prompt.textContent = it?.prompt || (w.en || []).slice(0, 3).join('; ');
+      fitPrompt(prompt);   // a short prompt uses the band above the field (keyboard mode)
       resetAnswer(answerEl, reveal); replace(fb); typoBtn.hidden = true; skipBtn.hidden = false; skipKb.hidden = false;
       input.value = '';
       knowBtn.disabled = false; learnBtn.disabled = false; learnKb.hidden = false;

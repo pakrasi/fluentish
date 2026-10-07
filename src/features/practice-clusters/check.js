@@ -17,7 +17,7 @@ import { loadData } from '../shared/data.js';
 import { markWords, unmarkCards } from '../../data/known.js';
 import { recordCheck } from '../../data/checks.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
-import { keep, fitToKeyboard } from '../../core/keyboard.js';
+import { keep, fitToKeyboard, fitPrompt } from '../../core/keyboard.js';
 
 const LEVELS = ['A1', 'A2'];
 
@@ -83,6 +83,7 @@ export async function mountCheck(el, ctx, level) {
       resetAnswer(answerEl, reveal); replace(fb);
       task.textContent = it.task || '';
       prompt.textContent = it.prompt;
+      fitPrompt(prompt);
       count.textContent = t('practice.count', { n: i + 1, total: n });
       replace(primary, t('practice.check'), h('kbd', null, 'Enter'));
       input.value = ''; input.focus({ preventScroll: true });

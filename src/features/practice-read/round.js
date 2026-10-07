@@ -20,7 +20,7 @@ import { checkMark } from '../shared/check-mark.js';
 import * as R from '../shared/read-data.js';
 import * as L from './logic.js';
 import { language } from './load.js';
-import { keep, fitToKeyboard } from '../../core/keyboard.js';
+import { keep, fitToKeyboard, fitPrompt } from '../../core/keyboard.js';
 
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
@@ -109,6 +109,7 @@ export async function mountRound(el, ctx) {
       it.task ? h('p', { class: 'pr-task' }, it.task) : null,
       h('p', { class: 'prompt', lang: it.promptLang === 'en' ? 'en' : langAttr() }, gapAt >= 0 ? [it.prompt.slice(0, gapAt), h('span', { class: 'pr-gap' }, h('span', { class: 'sr-only' }, t('read.round.gap'))), it.prompt.slice(gapAt + 3)] : it.prompt),
       it.gloss ? h('p', { class: 'prompt-hint' }, it.gloss) : null);
+    fitPrompt(promptBox.querySelector('.prompt'));
     input.value = ''; input.placeholder = it.gap ? t('practice.ph.gap') : t('practice.ph.german');
     secondary.hidden = false;
     primary.textContent = t('practice.check');

@@ -45,7 +45,7 @@ import { wordMeta, wordPanel } from '../../core/wordpanel.js';
 import { langAttr, languageName } from '../../core/lang.js';
 import { courseRound } from '../shared/course.js';
 import { scopeItem } from '../../domain/itemids.js';
-import { keep, fitToKeyboard, reveal as revealEl } from '../../core/keyboard.js';
+import { keep, fitToKeyboard, reveal as revealEl, fitPrompt } from '../../core/keyboard.js';
 
 const TEIL = /** @type {Record<string, string>} */ ({ S1: 'Teil 1', S2: 'Teil 2', S3: 'Teil 3', W1: 'Aufgabe 1', W2: 'Aufgabe 2', W3: 'Aufgabe 3', L2: 'Teil 2', L3: 'Teil 3', L5: 'Teil 5' });
 const fmtS = (/** @type {number} */ ms) => `${(ms / 1000).toFixed(1).replace(/\.0$/, '')} s`;
@@ -336,6 +336,7 @@ export async function mountRound(el, ctx) {
     if (it.source) kids.push(h('p', { class: 'caption pr-source' }, it.area === 'mistakes' ? t('practice.from.mistake', { src: it.source }) : it.source));
     if (entry.isNew && it.area !== 'mistakes') kids.push(h('p', { class: 'caption pr-help' }, t('practice.typeIfKnown')));
     replace(promptBox, kids);
+    fitPrompt(promptBox.querySelector('.prompt'));   // a short prompt uses the band above the field (keyboard mode)
     const pf = String(it.prefill || ''), k = pf.search(/[.!?]\s+\S[^.!?]*$/);
     prefill.hidden = !it.prefill; prefill.textContent = k >= 0 ? `… ${pf.slice(k + 1).trim()}` : pf;
     input.value = ''; grow();

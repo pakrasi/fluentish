@@ -221,3 +221,16 @@ export function enterMovesTo(input, next) {
   });
   return input;
 }
+
+/** A prompt this short fits three lines at the full prompt size on a phone (about 27 characters a line at 30 px). */
+export const SHORT_PROMPT = 64;
+/**
+ * Mark a prompt short or long for keyboard mode (call it whenever its text changes). A short one (.kb-short) uses the
+ * empty band above the field: it grows toward the normal prompt size and sits in the middle of the space above the
+ * field (styles/app.css); a long one keeps the 22 px, three-line clamp. The field and its row never move.
+ * @param {Element | null | undefined} el
+ */
+export function fitPrompt(el) {
+  if (!el) return;
+  el.classList.toggle('kb-short', String(el.textContent || '').replace(/\s+/g, ' ').trim().length <= SHORT_PROMPT);
+}

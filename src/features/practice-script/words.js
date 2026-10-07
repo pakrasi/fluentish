@@ -21,7 +21,7 @@ import { doneHero } from '../shared/done-hero.js';
 import { swap } from '../../core/motion.js';
 import { knowButton, isKnowKey, knowCard } from '../shared/iknow.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
-import { keep, fitToKeyboard } from '../../core/keyboard.js';
+import { keep, fitToKeyboard, fitPrompt } from '../../core/keyboard.js';
 
 const ROUND = 12;
 
@@ -137,6 +137,7 @@ export async function mountWords(el, ctx) {
       h('p', { class: 'prompt', lang: item.promptLang }, gapAt >= 0 ? [item.prompt.slice(0, gapAt), h('span', { class: 'pr-gap', 'aria-label': 'gap' }, ' '), item.prompt.slice(gapAt + 3)] : item.prompt),
       item.gloss ? h('p', { class: 'prompt-hint' }, item.gloss) : null,
       w.section ? h('p', { class: 'caption pr-source' }, w.section) : null);
+    fitPrompt(promptBox.querySelector('.prompt'));
     input.value = ''; input.placeholder = item.gap ? t('practice.ph.gap') : t('practice.ph.german');
     secondary.hidden = false;
     primary.textContent = t('practice.check');

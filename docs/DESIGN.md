@@ -206,6 +206,10 @@ He types on an iPhone many times a day, so the screen with the keyboard open is 
   and the primary at the end. The field sits at the bottom of the column (sticky), and feedback, the answer key and the
   sentence to retype open **above** it and are revealed (`reveal()`). The prompt is 22 px, at most three lines (a tap
   shows all of it); a mistake card's task and context two.
+- **A short prompt uses the empty band.** While nothing but a plain "Right" is open on the card, a prompt of up to 64
+  characters (`fitPrompt()`, `.kb-short`) grows toward the prompt size with the visible height (30 px from 400 px up,
+  never under 22) and sits in the middle of the space above the field. Once feedback opens it is 22 px at the top again.
+  The field and its row stay where they are on every card; a long prompt keeps 22 px and three lines.
 - **Quick sort** in Produce: the Check/Learn tiles become a tally in the header ("Check 3  Learn 1") and a row of Skip,
   Learn and Check; the mode switch and Undo wait for the keyboard to close.
 - **Pages with a form** keep their chrome; the action row docks on the keyboard (`.kb-dock`), a header that must stay is

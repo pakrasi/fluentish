@@ -27,7 +27,7 @@ import { buildLine, swapLine, tray, fromTray, ruleNode, tileLegend } from './mac
 import { drawTree, landArticle } from './chain.js';
 import { play, css, nudge, pop, reduced, finishAll } from './fx.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
-import { fitToKeyboard, keep, reveal as revealEl } from '../../core/keyboard.js';
+import { fitToKeyboard, keep, reveal as revealEl, fitPrompt } from '../../core/keyboard.js';
 
 const KINDS = ['review', 'prefixes', 'verbs', 'sentences', 'suffixes', 'drill', 'pick'];
 const SIX_HOURS = 6 * 3600e3;
@@ -321,6 +321,7 @@ export async function mountRound(el, ctx) {
     const fb = h('div', { class: 'wb-fb', 'aria-live': 'polite' });
     const reveal = h('div', { class: 'reveal-answer' }, h('div', null, fb));
     replace(cbody, kids);
+    fitPrompt(cbody.querySelector('.prompt'));   // a short prompt uses the band above the field (keyboard mode)
     replace(tail, o.kind === 'ps' ? h('p', { class: 'caption kb-hide' }, t('build.ps.howTo')) : null, reveal);
     answerEl.hidden = false;
     resetAnswer(answerEl, reveal);
