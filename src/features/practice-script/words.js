@@ -21,9 +21,9 @@ import { doneHero } from '../shared/done-hero.js';
 import { swap } from '../../core/motion.js';
 import { knowButton, isKnowKey, knowCard } from '../shared/iknow.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
+import { keep } from '../../core/keyboard.js';
 
 const ROUND = 12;
-const keep = (/** @type {Event} */ e) => e.preventDefault();
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
 export async function mountWords(el, ctx) {

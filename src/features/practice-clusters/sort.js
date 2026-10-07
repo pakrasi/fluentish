@@ -39,13 +39,13 @@ import { recordCheck, undoChecks, checksOf } from '../../data/checks.js';
 import { startMode, produced, isMode } from '../../domain/checks.js';
 import { recheckWords } from '../shared/recheck.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
+import { keep } from '../../core/keyboard.js';
 
 const MODE_KEY = 'fluentish.sortMode';
 /** The mode remembered on this device (it may be missing or blocked). */
 const rememberedMode = () => { try { return globalThis.localStorage?.getItem(MODE_KEY) || null; } catch { return null; } };
 /** @param {string} m */
 const rememberMode = m => { try { globalThis.localStorage?.setItem(MODE_KEY, m); } catch { /* private mode */ } };
-const keep = (/** @type {Event} */ e) => e.preventDefault();
 
 /** Where Done goes. @param {URLSearchParams} q @param {any} src */
 function backOf(q, src) {

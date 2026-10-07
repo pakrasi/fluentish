@@ -8,6 +8,7 @@ import { h, replace, $ } from './core/dom.js';
 import { icon } from './core/icons.js';
 import { markNode } from './core/brand.js';
 import { swap, toast as kitToast } from './core/motion.js';
+import { startKeyboard } from './core/keyboard.js';
 import { createRouter } from './core/router.js';
 import { avatar } from './core/ui.js';
 import { log, installErrorLog, attachLogStore } from './core/log.js';
@@ -180,6 +181,9 @@ async function main() {
   // a restore from the backup cut off last time was put back (data/restore.js)
   if (session.restoreRecovered === 'rolledBack') toast(t('restore.rolledBack'), { ms: 10000 });
   if (linkOutcome) toast(t(`conn.link.${linkOutcome}`), { ms: linkOutcome === 'ok' ? 6000 : 10000 });
+
+  // the on-screen keyboard: --vv-h, --vv-top, --kb and body.kb for every typing screen (core/keyboard.js)
+  startKeyboard({ bus });
 
   // ---------- router ----------
   const router = createRouter({

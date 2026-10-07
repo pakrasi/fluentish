@@ -5,8 +5,8 @@
    result in the round is {known: true}, which the done screens count apart from right answers. */
 import { h } from '../../core/dom.js';
 import { markCards } from '../../data/known.js';
+import { keep } from '../../core/keyboard.js';
 
-const keep = (/** @type {Event} */ e) => e.preventDefault();
 
 /**
  * The button. typed: the round has an answer field, so the key is ⌥K.

@@ -141,6 +141,32 @@ export async function flip(els, mutate, { duration, easing = 'var(--spring-snapp
 }
 
 /**
+ * Keyboard mode on or off (core/keyboard.js): apply() toggles body.kb, the chrome collapses or comes back, and what
+ * stays on screen and marked .kb-flip (a prompt, the answer field) slides from its old place to its new one on the
+ * snappy spring in 200 ms, translation only. Hints that come back fade in. Only this toggle animates, never the
+ * per-frame viewport events. Reduced motion: the swap is instant.
+ * @param {() => void} apply
+ */
+export async function kbShift(apply) {
+  if (reduced() || typeof document === 'undefined') { apply(); return; }
+  const els = [...document.querySelectorAll('.kb-flip')].filter(el => /** @type {HTMLElement} */ (el).offsetParent);
+  const first = new Map(els.map(el => [el, el.getBoundingClientRect().top]));
+  apply();
+  const ease = getComputedStyle(root).getPropertyValue('--spring-snappy').trim() || 'ease-out';
+  for (const el of els) {
+    if (!/** @type {HTMLElement} */ (el).offsetParent) continue;
+    const dy = /** @type {number} */ (first.get(el)) - el.getBoundingClientRect().top;
+    if (Math.abs(dy) < 1) continue;
+    el.animate([{ transform: `translateY(${dy}px)` }, { transform: 'none' }], { duration: 200, easing: ease });
+  }
+  if (!document.body.classList.contains('kb')) {
+    for (const el of document.querySelectorAll('.kb-fade')) {
+      if (/** @type {HTMLElement} */ (el).offsetParent) el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 200, easing: 'ease-out' });
+    }
+  }
+}
+
+/**
  * Open or close a disclosure: the panel (.reveal-answer, one child) grows from 0fr to 1fr rows and fades in, the
  * same layout animation as the answer reveal; with reduced motion it switches at once. The trigger's aria-expanded
  * follows, and a closed panel is inert (out of the tab order and the accessibility tree).

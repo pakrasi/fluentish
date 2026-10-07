@@ -15,8 +15,8 @@ import { gradeAnswer } from './grade.js';
 import { recordCheck } from '../../data/checks.js';
 import { itemOf } from '../../domain/known.js';
 export { typedItem as situationItem } from '../../domain/sim.js';
+import { keep } from '../../core/keyboard.js';
 
-const keep = (/** @type {Event} */ e) => e.preventDefault();
 
 /**
  * The panel. grade: the grader's data (shared/data.js loadData), loaded by the caller.

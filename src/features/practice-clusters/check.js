@@ -17,9 +17,9 @@ import { loadData } from '../shared/data.js';
 import { markWords, unmarkCards } from '../../data/known.js';
 import { recordCheck } from '../../data/checks.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
+import { keep } from '../../core/keyboard.js';
 
 const LEVELS = ['A1', 'A2'];
-const keep = (/** @type {Event} */ e) => e.preventDefault();
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx @param {string} level */
 export async function mountCheck(el, ctx, level) {

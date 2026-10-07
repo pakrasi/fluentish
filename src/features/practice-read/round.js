@@ -20,8 +20,8 @@ import { checkMark } from '../shared/check-mark.js';
 import * as R from '../shared/read-data.js';
 import * as L from './logic.js';
 import { language } from './load.js';
+import { keep } from '../../core/keyboard.js';
 
-const keep = (/** @type {Event} */ e) => e.preventDefault();
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
 export async function mountRound(el, ctx) {

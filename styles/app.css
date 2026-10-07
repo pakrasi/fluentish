@@ -369,3 +369,22 @@ input[type="date"].input { min-height: var(--tap); }
   .goal-gate-state { text-align: end; }
 }
 .week-away { padding: 10px 12px; border-radius: var(--r-tile); background: var(--surface-2); font-size: 13px; color: var(--ink-2); max-width: var(--measure); }
+
+/* ---------- keyboard mode (core/keyboard.js, round 6) ----------
+   body.kb is on while a text field has the focus and the on-screen keyboard is up. The chrome gives way: no app bar,
+   tab bar, docks or hints, no safe-area padding at the bottom (there is no home indicator under the content while the
+   keyboard is up). Every typing screen ends in one row on the keyboard: the field, then at most three 44 px buttons
+   with the primary at the end. A .kb-fit box is sized to the visual viewport (--vv-h) and follows its pan (--vv-top). */
+:root .kb-fit { height: var(--vv-h, 100dvh); transform: translateY(var(--vv-top, 0px)); }
+body.kb .bar, body.kb #tabs-slot, body.kb #banner, body.kb .dock, body.kb .rd-dock, body.kb .pr-queue-btn, body.kb .sc-mark-dock,
+body.kb .kb-hide, body.kb .field-hint, body.kb .rs-tip { display: none; }
+body.kb .toast { bottom: calc(var(--kb, 0px) + var(--s-3)); }
+/* a long prompt keeps to three lines (two for a mistake card's task and context); a tap shows all of it */
+body.kb .kb-clamp:not(.is-full) { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: var(--kb-lines, 3); line-clamp: var(--kb-lines, 3); overflow: hidden; cursor: pointer; }
+/* a sticky header on a form page stays on screen while iOS pans the page to the caret */
+body.kb .kb-stick { position: fixed; inset-inline: 0; top: var(--vv-top, 0px); z-index: var(--z-bar); }
+/* a form's action row on the keyboard: fixed to the bottom of the visual viewport */
+body.kb .kb-dock { position: fixed; inset-inline: 0; top: calc(var(--vv-top, 0px) + var(--vv-h, 100dvh)); transform: translateY(-100%); z-index: var(--z-bar);
+  display: flex; align-items: center; gap: var(--s-2); margin: 0; padding: 6px max(var(--gutter), env(safe-area-inset-left)); background: var(--canvas); border-top: 1px solid var(--hairline); }
+body.kb .kb-dock .btn { min-height: var(--tap); }
+body.kb .kb-dock .btn-primary { flex: 1; max-width: none; }

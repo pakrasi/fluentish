@@ -45,10 +45,10 @@ import { wordMeta, wordPanel } from '../../core/wordpanel.js';
 import { langAttr, languageName } from '../../core/lang.js';
 import { courseRound } from '../shared/course.js';
 import { scopeItem } from '../../domain/itemids.js';
+import { keep, fitToKeyboard, reveal as revealEl } from '../../core/keyboard.js';
 
 const TEIL = /** @type {Record<string, string>} */ ({ S1: 'Teil 1', S2: 'Teil 2', S3: 'Teil 3', W1: 'Aufgabe 1', W2: 'Aufgabe 2', W3: 'Aufgabe 3', L2: 'Teil 2', L3: 'Teil 3', L5: 'Teil 5' });
 const fmtS = (/** @type {number} */ ms) => `${(ms / 1000).toFixed(1).replace(/\.0$/, '')} s`;
-const keep = (/** @type {Event} */ e) => e.preventDefault();   // buttons never take focus from the answer field
 
 
 /** ~n words around the gap, so a long Lesen sentence never pushes the gap out of view. @param {string} text */
@@ -198,7 +198,7 @@ export async function mountRound(el, ctx) {
   const input = /** @type {HTMLTextAreaElement} */ (h('textarea', { class: 'answer-input', id: 'pr-input', rows: 1, lang: langAttr(), dir: dirAttr(), autocapitalize: 'off', autocomplete: 'off',
     spellcheck: 'false', enterkeyhint: 'go', 'aria-label': t('practice.answerLabel') }));
   input.setAttribute('autocorrect', 'off');
-  const answerEl = h('div', { class: 'answer' }, prefill, input, checkMark());
+  const answerEl = h('div', { class: 'answer kb-flip' }, prefill, input, checkMark());
   const moves = h('div', { class: 'pr-moves', role: 'group', 'aria-label': t('practice.pickMove'), hidden: true });
   const fb = h('div', { class: 'pr-fb', 'aria-live': 'polite' });
   const reveal = h('div', { class: 'reveal-answer' }, h('div', null, fb));
@@ -215,14 +215,8 @@ export async function mountRound(el, ctx) {
   // the router focuses the page's h1 after mount; in a round the answer field keeps focus (and the keyboard)
   h1.addEventListener('focus', () => focusInput());
 
-  // the round box follows the visual viewport, so the buttons sit on the keyboard
-  const vv = window.visualViewport;
-  function fit() {
-    if (!docked) return;
-    const H = vv ? vv.height : innerHeight, y = vv ? vv.offsetTop : 0;
-    box.style.height = `${H}px`; box.style.transform = y ? `translateY(${y}px)` : '';
-  }
-  vv?.addEventListener('resize', fit); vv?.addEventListener('scroll', fit); addEventListener('resize', fit); fit();
+  // the round box follows the visual viewport, so the buttons sit on the keyboard (core/keyboard.js)
+  const unfit = docked ? fitToKeyboard(box) : () => {};
   const grow = () => { input.style.height = 'auto'; input.style.height = `${Math.min(input.scrollHeight, 3 * 24 + 16)}px`; };
   input.addEventListener('input', () => { grow(); lastKey = performance.now(); if (state === 'retype') answerEl.classList.remove('is-shake'); });
 
@@ -328,16 +322,16 @@ export async function mountRound(el, ctx) {
     replace(meta, entry.isNew ? h('span', { class: 'pr-newtag' }, t('practice.new')) : t('practice.review'), ` · ${where(it)}`);
     /** @type {any[]} */ const kids = [];
     if (it.card?.type) kids.push(wordMeta(it.card));
-    if (it.task) kids.push(h('p', { class: 'pr-task' }, it.task));
+    if (it.task) kids.push(h('p', { class: 'pr-task kb-clamp' }, it.task));
     // a mistake card says what to do and what kind of change it needs (round 5)
-    if (it.area === 'mistakes') kids.push(h('p', { class: 'pr-task' }, t('practice.mistake.task'), it.kinds && it.kinds.length ? ` ${kindsLine(it.kinds)}` : null));
+    if (it.area === 'mistakes') kids.push(h('p', { class: 'pr-task kb-clamp' }, t('practice.mistake.task'), it.kinds && it.kinds.length ? ` ${kindsLine(it.kinds)}` : null));
     if (it.partner) kids.push(h('p', { class: 'caption' }, t('practice.partner')), h('p', { class: 'pr-partner', lang: langAttr(), dir: dirAttr() }, `„${it.partner}“`));
-    if (it.gap || it.showGap) kids.push(h('p', { class: 'prompt', lang: langAttr(), dir: dirAttr() }, gapNodes(gapWindow(it.prompt, 20))));
-    else kids.push(h('p', { class: 'prompt', lang: it.promptLang === 'de' ? 'de' : 'en' }, it.hl ? highlight(it.prompt, it.hl) : it.prompt));
+    if (it.gap || it.showGap) kids.push(h('p', { class: 'prompt kb-flip', lang: langAttr(), dir: dirAttr() }, gapNodes(gapWindow(it.prompt, 20))));
+    else kids.push(h('p', { class: 'prompt kb-clamp kb-flip', lang: it.promptLang === 'de' ? 'de' : 'en' }, it.hl ? highlight(it.prompt, it.hl) : it.prompt));
     if (it.gloss) kids.push(h('p', { class: 'prompt-hint' }, it.gloss));
     // where it stood in his text: the greeting before a small letter, the clause around a verb (his other mistakes
     // there corrected); ___ is the sentence above
-    if (it.area === 'mistakes' && it.context) kids.push(h('p', { class: 'caption pr-context' }, h('span', null, t('practice.mistake.context')), ' ',
+    if (it.area === 'mistakes' && it.context) kids.push(h('p', { class: 'caption pr-context kb-clamp' }, h('span', null, t('practice.mistake.context')), ' ',
       h('span', { lang: langAttr(), dir: dirAttr() }, [it.context.before, '___', it.context.after].filter(Boolean).join(' ').replace(/\s+([.!?,])/g, '$1'))));
     if (it.source) kids.push(h('p', { class: 'caption pr-source' }, it.area === 'mistakes' ? t('practice.from.mistake', { src: it.source }) : it.source));
     if (entry.isNew && it.area !== 'mistakes') kids.push(h('p', { class: 'caption pr-help' }, t('practice.typeIfKnown')));
@@ -408,6 +402,7 @@ export async function mountRound(el, ctx) {
       det = g.det; state = 'repair';
       replace(fb, h('p', { class: 'pr-hint' }, hintNodes(det.hint)));
       reveal.classList.add('is-open');
+      showFb(fb.firstElementChild);
       outcome = { ms, g, typed };
       setButtons();
       startTimer(Math.max(4000, (limitMs || 12000) * 0.5));
@@ -574,6 +569,7 @@ export async function mountRound(el, ctx) {
     replace(fb, kids, wordCard(it));
     setButtons();
     reveal.classList.add('is-open');
+    showFb(fb.firstElementChild);
     sayAnswer(g.rest?.ref || g.right);
     announce(`${t('practice.partial.right', { phrase: g.phrase || '' })} ${g.rest?.ref ? `${t('practice.partial.rest')} ${g.rest.ref}` : t('practice.partial.junk')}`);
     tbar.hidden = true; secs.textContent = fmtS(ms);   // no check mark: the answer as a whole was not right
@@ -671,8 +667,16 @@ export async function mountRound(el, ctx) {
     state = 'retype'; entry.right = right;
     tbar.hidden = true; secs.textContent = '';
     setButtons();
-    const go = () => { if (state !== 'retype') return; input.value = ''; grow(); answerEl.classList.add('is-retype'); input.placeholder = t('practice.ph.retype'); focusInput(); };
+    // the sentence to type sits above the field: scroll it into view (it may be below the fold of the card)
+    const go = () => { if (state !== 'retype') return; input.value = ''; grow(); answerEl.classList.add('is-retype'); input.placeholder = t('practice.ph.retype'); focusInput(); showKey(); };
     if (delay && !reduced()) setTimeout(go, delay); else go();
+  }
+  /** The answer key (the sentence to retype) into view, clear of the field pinned over the card's bottom. */
+  function showKey() { showFb(fb.querySelector('.answer-key') || fb.lastElementChild); }
+  /** Feedback that opened above the field into view, once the reveal has opened (it grows over --dur-base). @param {Element | null} el */
+  function showFb(el) {
+    const go = () => { if (alive && el?.isConnected) revealEl(el, { block: 'nearest', avoid: answerEl }); };
+    requestAnimationFrame(go); if (!reduced()) setTimeout(go, 320);
   }
   function checkRetype(/** @type {string} */ typed) {
     if (retypeOk(entry.item, full(typed), entry.right) || retypeOk(entry.item, typed, entry.right)) {   // exactly the sentence he was shown (case and commas aside)
@@ -724,7 +728,7 @@ export async function mountRound(el, ctx) {
     clearInterval(tick); clearTimeout(auto);
     document.removeEventListener('visibilitychange', onVis);
     document.removeEventListener('keydown', onDocKey);
-    vv?.removeEventListener('resize', fit); vv?.removeEventListener('scroll', fit); removeEventListener('resize', fit);
+    unfit();
     voice.hush();
   }
   function minutesSpent() { return Math.min(30, (performance.now() - roundT0) / 60000); }
@@ -778,7 +782,6 @@ export async function mountRound(el, ctx) {
   if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) {
     /** @type {any} */ (window).__practice = { get state() { return state; }, get entry() { return entry; }, input, onReturn, onSecondary, pick, knowThis };
   }
-  fit();
   // answers already given in a resumed round show in the strip
   const firstOk = new Map(round.results.filter((/** @type {any} */ r) => r.first).map((/** @type {any} */ r) => [r.id, r.known ? 2 : r.ok ? 3 : 1]));
   /** @type {Field | null} */ const strip = new Field(/** @type {HTMLCanvasElement} */ (stripEl), stripIds.map(id => firstOk.get(id) || 0), { cell: 6, gap: 2, label: null });

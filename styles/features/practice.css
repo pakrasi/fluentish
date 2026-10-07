@@ -129,6 +129,32 @@ body.pr-in-round #view { max-width: none; padding: 0; }
 .pr-actions .btn-primary { flex: 1; min-height: 52px; font-size: 16px; }
 .pr-actions .btn-quiet { min-height: 52px; }
 .pr-round .segments { margin-top: var(--s-1); }
+
+/* keyboard mode (core/keyboard.js, AUDIT §5.5): the header is one 32 px row (segments, count, End); the card loses
+   its padding and fills the column; the prompt is 22 px and three lines at most; feedback, the answer to retype and
+   the word panel open above the field; the field sits at the bottom of the column, right over the action row, which
+   sits on the keyboard (44 px buttons, no safe-area padding). */
+body.kb .pr-round { padding-top: 0; }
+body.kb .pr-top { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; column-gap: var(--s-3); min-height: 32px; padding-top: 0; }
+body.kb .pr-top > .segments { margin-top: 0; grid-row: 1; }
+body.kb .pr-top .pr-again, body.kb .pr-top .pr-strip, body.kb .pr-top kbd { display: none; }
+body.kb .pr-top-row { display: contents; }
+body.kb .pr-top .pr-end { position: relative; min-height: 32px; }
+body.kb .pr-top .pr-end::before { content: ""; position: absolute; inset: -6px 0; }   /* a 44 px target in a 32 px row */
+body.kb .pr-scroll { display: flex; flex-direction: column; padding: var(--s-1) 0 0; }
+body.kb .pr-scroll > .pr-card { flex: 1 0 auto; display: flex; flex-direction: column; width: 100%; padding: 0; background: transparent; box-shadow: none; border-radius: 0; }
+body.kb .pr-card .prompt { margin-top: var(--s-2); font-size: 22px; line-height: 1.25; }
+body.kb .pr-card .prompt:not(:has(.pr-gap)) { --kb-lines: 3; }
+body.kb .pr-card .pr-task, body.kb .pr-card .pr-context { --kb-lines: 2; }
+body.kb .pr-card .pr-tbar { margin-top: var(--s-2); }
+body.kb .pr-card .pr-source, body.kb .pr-card .pr-help { margin-top: var(--s-1); }
+body.kb .pr-card > .reveal-answer { order: 1; }
+body.kb .pr-card > .pr-moves { order: 2; }
+body.kb .pr-card > .answer { order: 3; position: sticky; bottom: 0; z-index: 1; margin-top: auto; padding-top: var(--s-2); background: var(--canvas); }
+body.kb .pr-card .pr-fb { padding-top: var(--s-3); padding-bottom: var(--s-2); }
+body.kb .pr-actions { padding: 4px 0 6px; }
+body.kb .pr-actions .btn-primary, body.kb .pr-actions .btn-quiet { min-height: var(--tap); }
+body.kb .pr-actions kbd { display: none; }
 @media (min-width: 720px) {
   .pr-card { padding: var(--s-8) var(--s-8) var(--s-6); }
   .pr-scroll { padding-top: var(--s-6); }
