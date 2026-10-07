@@ -27,6 +27,7 @@ import { buildLine, swapLine, tray, fromTray, ruleNode, tileLegend } from './mac
 import { drawTree, landArticle } from './chain.js';
 import { play, css, nudge, pop, reduced, finishAll } from './fx.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
+import { fitToKeyboard, keep, reveal as revealEl } from '../../core/keyboard.js';
 
 const KINDS = ['review', 'prefixes', 'verbs', 'sentences', 'suffixes', 'drill', 'pick'];
 const SIX_HOURS = 6 * 3600e3;
@@ -63,14 +64,27 @@ export async function mountRound(el, ctx) {
   // ---------- layout ----------
   const segs = h('div', { class: 'segments wb-segs', style: { '--n': String(round.planned) }, 'aria-hidden': 'true' });
   const count = h('span', { class: 'caption tnum' });
-  const endBtn = h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => end() }, t('build.end'), h('kbd', null, 'Esc'));
+  const endBtn = h('button', { type: 'button', class: 'btn btn-quiet pressable wb-end', onpointerdown: keep, onclick: () => end() }, t('build.end'), h('kbd', null, 'Esc'));
   const top = h('div', { class: 'wb-rtop' }, segs, h('div', { class: 'wb-rtop-row' }, count, endBtn));
-  const card = h('article', { class: 'card wb-rcard' });
+  // the typed cards share ONE field for the whole round (DESIGN.md, Study card): only the prompt changes, so the
+  // focus and the iPhone keyboard stay up from one typed card to the next. The card is its body (replaced per card),
+  // the field, and the tail (a typed card's note and its reveal).
+  const input = /** @type {HTMLInputElement} */ (h('input', { class: 'answer-input', type: 'text', lang: langAttr(), dir: dirAttr(), autocapitalize: 'off', autocomplete: 'off', spellcheck: 'false', enterkeyhint: 'go', 'aria-label': t('build.answer') }));
+  input.setAttribute('autocorrect', 'off');
+  const checkSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  checkSvg.setAttribute('class', 'check'); checkSvg.setAttribute('viewBox', '0 0 24 24'); checkSvg.setAttribute('fill', 'none'); checkSvg.setAttribute('stroke', 'currentColor'); checkSvg.setAttribute('stroke-width', '2.2'); checkSvg.setAttribute('aria-hidden', 'true');
+  const checkPath = document.createElementNS(checkSvg.namespaceURI, 'path'); checkPath.setAttribute('d', 'M5 12.5l4.5 4.5L19 7.5'); checkSvg.append(checkPath);
+  const answerEl = h('div', { class: 'answer wb-answer kb-flip', hidden: true }, input, checkSvg);
+  const cbody = h('div', { class: 'wb-cbody' });
+  const tail = h('div', { class: 'wb-ctail' });
+  input.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.isComposing) { e.preventDefault(); cur?.enter?.(); } });
+  const card = h('article', { class: 'card wb-rcard' }, cbody, answerEl, tail);
   const actions = h('div', { class: 'wb-ractions' });
   const scroll = h('div', { class: 'wb-rscroll' }, card);
   const box = h('div', { class: 'wb wb-round', role: 'region', 'aria-label': t('build.round') }, h('h1', { class: 'sr-only' }, t('build.round')), top, scroll, actions);
   replace(el, box);
-  let alive = true;
+  const unfit = fitToKeyboard(box);   // the action row sits on the keyboard (core/keyboard.js)
+  let alive = true, typedNow = false;
   /** @type {any} */ let cur = null;   // the current card's handlers: { key(e), primary() }
 
   function progress(answered = false) {
@@ -106,7 +120,7 @@ export async function mountRound(el, ctx) {
   let cardT0 = performance.now();
 
   function setActions(/** @type {any[]} */ ...btns) { replace(actions, btns.filter(Boolean)); }
-  const nextBtn = (label = t('build.next')) => h('button', { type: 'button', class: 'btn btn-primary pressable wb-next', onclick: () => next() }, label, h('kbd', null, '↵'));
+  const nextBtn = (label = t('build.next')) => h('button', { type: 'button', class: 'btn btn-primary pressable wb-next', onpointerdown: keep, onclick: () => next() }, label, h('kbd', null, '↵'));
 
   async function draw(first = false) {
     finishAll();
@@ -117,7 +131,9 @@ export async function mountRound(el, ctx) {
       progress(false);
       const rec = cardsOf(store)[q.id];
       const isNew = !rec || !rec.reps;
+      typedNow = false;
       cur = renderCard(q.id, isNew && !q.re);
+      if (!typedNow) { answerEl.hidden = true; replace(tail); }   // the field stays put (and focused) between typed cards
       if (!cur) { round.i++; saveRound(); draw(); }
     };
     if (first) fill(); else await swap(fill, { kind: 'forward', fallbackEl: card });
@@ -152,7 +168,7 @@ export async function mountRound(el, ctx) {
     const say = h('div', { class: 'wb-seeline', 'aria-live': 'polite' });
     if (isNew) {
       // study first: the prefix joins the root and its card shows; the question comes later in the round
-      replace(card, meta(true, t('build.where.prefix')), h('p', { class: 'wb-dq' }, t('build.see.learn', { p: `${p.id}-` })), cs.stage, prefixCard(d, p, root, t));
+      replace(cbody, meta(true, t('build.where.prefix')), h('p', { class: 'wb-dq' }, t('build.see.learn', { p: `${p.id}-` })), cs.stage, prefixCard(d, p, root, t));
       cs.press(p.id);
       const w = wordNode({ pre: p.id, stem: root, kind, t, big: true });
       replace(cs.slot, w);
@@ -161,7 +177,7 @@ export async function mountRound(el, ctx) {
       setActions(h('button', { type: 'button', class: 'btn btn-primary pressable wb-next', onclick: () => { record(1, { flags: 'r', intro: true }); next(); } }, t('build.gotIt'), h('kbd', null, '↵')));
       return { primary: () => { record(1, { flags: 'r', intro: true }); next(); } };
     }
-    replace(card, meta(false, t('build.where.prefix')), h('p', { class: 'wb-dq' }, t('build.see.ask')), say, cs.stage, cs.rows);
+    replace(cbody, meta(false, t('build.where.prefix')), h('p', { class: 'wb-dq' }, t('build.see.ask')), say, cs.stage, cs.rows);
     setTimeout(() => { if (alive && !answered) sc.play(); }, reduced() ? 0 : 200);
     const again = h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => sc.play() }, icon('replay', { size: 16 }), t('build.see.again'));
     setActions(again);
@@ -195,14 +211,14 @@ export async function mountRound(el, ctx) {
   function pxSay(/** @type {any} */ p) {
     const root = rootOf(p.id);
     const show = h('button', { type: 'button', class: 'btn btn-primary pressable wb-next', onclick: () => reveal() }, t('build.show'), h('kbd', null, '↵'));
-    replace(card, meta(false, t('build.where.prefix')), h('p', { class: 'wb-big', lang: langAttr(), dir: dirAttr() }, `${p.id}-`), h('p', { class: 'prompt-hint' }, t('build.say.ask')));
+    replace(cbody, meta(false, t('build.where.prefix')), h('p', { class: 'wb-big', lang: langAttr(), dir: dirAttr() }, `${p.id}-`), h('p', { class: 'prompt-hint' }, t('build.say.ask')));
     setActions(show);
     let shown = false;
     function reveal() {
       if (shown) return; shown = true;
       const rec = cardsOf(store)[`PX:${p.id}.say`];
       const row = gradeRow({ t, label: t('build.say.grade'), when: whenFor(ctx, rec, t), onGrade: g => { record(g, { mode: 's' }); setActions(nextBtn()); } });
-      card.append(prefixCard(d, p, root, t), row.el);
+      cbody.append(prefixCard(d, p, root, t), row.el);
       setActions();
       cur.key = (/** @type {KeyboardEvent} */ e) => row.key(e);
       row.focus();
@@ -220,7 +236,7 @@ export async function mountRound(el, ctx) {
     }));
     const word = wordNode({ pre: v.pre, stem: bare(v.inf).slice(v.pre.length), kind: v.kind, t, big: true });
     const calib = h('div', { class: 'wb-calib' }, h('p', { class: 'label' }, t('build.predict.ask')), chips);
-    replace(card, meta(!cardsOf(store)[`PD:${v.id}`]?.reps, t('build.where.verb')), h('p', { class: 'wb-vq' }, word, h('span', { 'aria-hidden': 'true' }, '?')),
+    replace(cbody, meta(!cardsOf(store)[`PD:${v.id}`]?.reps, t('build.where.verb')), h('p', { class: 'wb-vq' }, word, h('span', { 'aria-hidden': 'true' }, '?')),
       h('p', { class: 'wb-vsum' }, h('span', { lang: langAttr(), dir: dirAttr() }, `${v.pre}-`), ` ${p.short}  +  `, h('span', { lang: langAttr(), dir: dirAttr() }, r.id), ` ${r.en}`), calib);
     if (v.kind === 's') play(word.querySelector('.wb-dot'), [{ opacity: 0, transform: 'scale(0)' }, { opacity: 1, transform: 'scale(1)' }], { duration: 420, easing: css('--spring-pop') }); else weld(word);
     const show = h('button', { type: 'button', class: 'btn btn-primary pressable wb-next', onclick: () => reveal() }, t('build.predict.show'), h('kbd', null, '↵'));
@@ -231,7 +247,7 @@ export async function mountRound(el, ctx) {
       if (guess) logCalib(store, { id, guess, truth: v.grade, day: c.today });
       calib.remove();
       const row = gradeRow({ t, label: t('build.grade.know'), when: whenFor(ctx, cardsOf(store)[id] || null, t), onGrade: g => { record(g, { mode: 's' }); setActions(nextBtn()); } });
-      card.append(verbReveal({ d, v, guess, t, ctx }), row.el);
+      cbody.append(verbReveal({ d, v, guess, t, ctx }), row.el);
       setActions();
       cur.key = (/** @type {KeyboardEvent} */ e) => row.key(e);
       row.focus();
@@ -245,12 +261,12 @@ export async function mountRound(el, ctx) {
     const exLine = h('p', { class: 'wb-ex', lang: langAttr(), dir: dirAttr() }, examples.map((/** @type {any} */ n, /** @type {number} */ i) => [i ? ' · ' : '', h('span', { class: 'wb-nw' }, pwAnswer(n))]));
     const ruleBox = () => h('div', { class: 'wb-rulebox' }, h('p', { class: 'wb-rule' }, h('b', { lang: langAttr(), dir: dirAttr() }, `${s.label}: `), s.rule), examples.length ? exLine : null);
     if (s.cls === 'adj' || !s.art) {
-      replace(card, meta(isNew, t('build.where.suffix')), h('p', { class: 'wb-big', lang: langAttr(), dir: dirAttr() }, s.label), h('p', { class: 'prompt-hint' }, t('build.sx.adjAsk')));
+      replace(cbody, meta(isNew, t('build.where.suffix')), h('p', { class: 'wb-big', lang: langAttr(), dir: dirAttr() }, s.label), h('p', { class: 'prompt-hint' }, t('build.sx.adjAsk')));
       let shown = false;
       const reveal = () => {
         if (shown) return; shown = true;
         const row = gradeRow({ t, label: t('build.say.grade'), when: whenFor(ctx, cardsOf(store)[`SX:${s.id}`] || null, t), onGrade: g => { record(g, { mode: 's' }); setActions(nextBtn()); } });
-        card.append(ruleBox(), row.el); setActions(); cur.key = (/** @type {KeyboardEvent} */ e) => row.key(e); row.focus();
+        cbody.append(ruleBox(), row.el); setActions(); cur.key = (/** @type {KeyboardEvent} */ e) => row.key(e); row.focus();
       };
       setActions(h('button', { type: 'button', class: 'btn btn-primary pressable wb-next', onclick: reveal }, t('build.show'), h('kbd', null, '↵')));
       return { primary: () => (shown ? null : reveal()), key: () => false };
@@ -258,7 +274,7 @@ export async function mountRound(el, ctx) {
     let answered = false;
     const res = h('div', { 'aria-live': 'polite' });
     const btns = h('div', { class: 'wb-artguess is-big', role: 'group', 'aria-label': t('build.sx.ask') }, ['der', 'die', 'das'].map(a => h('button', { type: 'button', class: 'pressable', lang: langAttr(), dir: dirAttr(), onclick: (/** @type {Event} */ e) => pick(a, /** @type {HTMLElement} */ (e.currentTarget)) }, a)));
-    replace(card, meta(isNew, t('build.where.suffix')), h('p', { class: 'wb-big', lang: langAttr(), dir: dirAttr() }, s.label), h('p', { class: 'prompt-hint' }, t(isNew ? 'build.sx.askNew' : 'build.sx.ask')), btns, res);
+    replace(cbody, meta(isNew, t('build.where.suffix')), h('p', { class: 'wb-big', lang: langAttr(), dir: dirAttr() }, s.label), h('p', { class: 'prompt-hint' }, t(isNew ? 'build.sx.askNew' : 'build.sx.ask')), btns, res);
     function pick(/** @type {string} */ a, /** @type {HTMLElement} */ btn) {
       if (answered) return; answered = true;
       const ok = a === s.art;
@@ -299,27 +315,23 @@ export async function mountRound(el, ctx) {
       accept = [pwAnswer(n)]; noun = !!n.art;
       kids.push(meta(isNew, t('build.where.word')), h('p', { class: 'prompt', lang: langAttr(), dir: dirAttr() }, pwPrompt(n, parent, d.S.get(n.add))), h('p', { class: 'prompt-hint' }, n.en));
     }
-    const input = /** @type {HTMLInputElement} */ (h('input', { class: 'answer-input', type: 'text', lang: langAttr(), dir: dirAttr(), autocapitalize: 'off', autocomplete: 'off', spellcheck: 'false', enterkeyhint: 'go',
-      'aria-label': t('build.answer'), placeholder: o.kind === 'ps' ? t('build.ph.pieces') : o.kind === 'pv' ? t('build.ph.verb') : noun ? t('build.ph.noun') : t('build.ph.word') }));
-    input.setAttribute('autocorrect', 'off');
-    const check = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    check.setAttribute('class', 'check'); check.setAttribute('viewBox', '0 0 24 24'); check.setAttribute('fill', 'none'); check.setAttribute('stroke', 'currentColor'); check.setAttribute('stroke-width', '2.2'); check.setAttribute('aria-hidden', 'true');
-    const cp = document.createElementNS(check.namespaceURI, 'path'); cp.setAttribute('d', 'M5 12.5l4.5 4.5L19 7.5'); check.append(cp);
-    const answerEl = h('div', { class: 'answer' }, input, check);
+    typedNow = true;
+    input.placeholder = o.kind === 'ps' ? t('build.ph.pieces') : o.kind === 'pv' ? t('build.ph.verb') : noun ? t('build.ph.noun') : t('build.ph.word');
+    input.value = '';
     const fb = h('div', { class: 'wb-fb', 'aria-live': 'polite' });
     const reveal = h('div', { class: 'reveal-answer' }, h('div', null, fb));
-    kids.push(answerEl, o.kind === 'ps' ? h('p', { class: 'caption' }, t('build.ps.howTo')) : null, reveal);
-    replace(card, kids);
+    replace(cbody, kids);
+    replace(tail, o.kind === 'ps' ? h('p', { class: 'caption kb-hide' }, t('build.ps.howTo')) : null, reveal);
+    answerEl.hidden = false;
     resetAnswer(answerEl, reveal);
     let done = false;
-    const show = h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => submit(true) }, t(isNew ? 'build.showMe' : 'build.show'));
-    const checkBtn = h('button', { type: 'button', class: 'btn btn-primary pressable wb-next', onclick: () => submit(false) }, t('build.check'), h('kbd', null, '↵'));
+    const show = h('button', { type: 'button', class: 'btn btn-quiet pressable', onpointerdown: keep, onclick: () => submit(true) }, t(isNew ? 'build.showMe' : 'build.show'));
+    const checkBtn = h('button', { type: 'button', class: 'btn btn-primary pressable wb-next', onpointerdown: keep, onclick: () => submit(false) }, t('build.check'), h('kbd', null, '↵'));
     setActions(show, checkBtn);
-    input.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.isComposing) { e.preventDefault(); if (done) next(); else if (input.value.trim()) submit(false); } });
     async function submit(/** @type {boolean} */ shown) {
       if (done) return;
       const val = input.value.trim();
-      if (!shown && !val) { input.focus(); return; }
+      if (!shown && !val) { input.focus({ preventScroll: true }); return; }
       done = true;
       const g = gradeTyped(shown ? '' : val, { accept, noun, lexicon: d.lex });
       const rating = typedRating(g, shown);
@@ -339,8 +351,12 @@ export async function mountRound(el, ctx) {
       announce(`${g.ok ? t('build.right') : t('build.wrong')} ${right}`);
       replace(actions, nextBtn());
       afterReveal(o, fb);
+      // the answer opened above the field: into view
+      const into = () => { if (alive && fb.isConnected) revealEl(fb, { block: 'nearest', avoid: answerEl }); };
+      requestAnimationFrame(into); if (!reduced()) setTimeout(into, 320);
     }
-    return { primary: () => (done ? next() : submit(false)), focus: () => input.focus({ preventScroll: true }), key: () => false };
+    return { primary: () => (done ? next() : submit(false)), enter: () => { if (done) next(); else if (input.value.trim()) submit(false); },
+      focus: () => input.focus({ preventScroll: true }), key: () => false };
   }
   /** What the reveal of a typed card shows under the answer. @param {any} o */
   function explain(o) {
@@ -392,7 +408,7 @@ export async function mountRound(el, ctx) {
   document.addEventListener('keydown', onKey);
 
   function minutes() { return Math.min(30, (performance.now() - t0) / 60000); }
-  function cleanup() { alive = false; finishAll(); document.removeEventListener('keydown', onKey); }
+  function cleanup() { alive = false; finishAll(); document.removeEventListener('keydown', onKey); unfit(); }
   function end() {
     if (!alive) return;
     cleanup();

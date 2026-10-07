@@ -97,7 +97,11 @@ export function startKeyboard({ bus } = {}) {
       root.style.setProperty('--vv-h', `${m.h}px`);
       root.style.setProperty('--vv-top', `${m.top}px`);
       root.style.setProperty('--kb', `${m.kb}px`);
-      if (grew && typing && lastReveal?.el.isConnected) { const r = lastReveal; requestAnimationFrame(() => reveal(r.el, { ...r.o, instant: true })); }
+      if (grew && typing) {
+        // the visible height changed: keep the newest revealed content in view, and the field itself
+        const r = lastReveal?.el.isConnected ? lastReveal : null, f = document.activeElement;
+        requestAnimationFrame(() => { if (r) reveal(r.el, { ...r.o, instant: true, keep: false }); if (f?.isConnected) reveal(f, { instant: true, keep: false }); });
+      }
     }
     const open = isOpen(typing, m.screen);
     if (open !== isKb) {
@@ -150,11 +154,12 @@ export const keep = keepHandler;
  * Scroll an element into the visible part of the screen (the visual viewport), through every scroll container
  * around it and then the page. Smooth unless motion is reduced.
  * avoid: an element pinned over the bottom of the scroller (a sticky answer field), whose height is kept clear.
- * @param {Element | null | undefined} el @param {{block?: 'nearest'|'start'|'end', margin?: number, avoid?: Element | null, instant?: boolean}} [o]
+ * @param {Element | null | undefined} el @param {{block?: 'nearest'|'start'|'end', margin?: number, avoid?: Element | null, instant?: boolean, keep?: boolean}} [o]
+ *   keep: remember it, so it stays in view when the visible height changes (the default)
  */
-export function reveal(el, { block = 'nearest', margin = 8, avoid = null, instant = false } = {}) {
+export function reveal(el, { block = 'nearest', margin = 8, avoid = null, instant = false, keep = true } = {}) {
   if (!el || !el.isConnected) return;
-  lastReveal = { el, o: { block, margin, avoid } };
+  if (keep) lastReveal = { el, o: { block, margin, avoid } };
   const vv = window.visualViewport;
   const vTop = vv ? vv.offsetTop : 0, vBot = vTop + (vv ? vv.height : innerHeight);
   const behavior = instant || reduced() ? 'auto' : 'smooth';

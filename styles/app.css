@@ -388,3 +388,7 @@ body.kb .kb-dock { position: fixed; inset-inline: 0; top: calc(var(--vv-top, 0px
   display: flex; align-items: center; gap: var(--s-2); margin: 0; padding: 6px max(var(--gutter), env(safe-area-inset-left)); background: var(--canvas); border-top: 1px solid var(--hairline); }
 body.kb .kb-dock .btn { min-height: var(--tap); }
 body.kb .kb-dock .btn-primary { flex: 1; max-width: none; }
+/* a button with a shorter label for the keyboard row */
+.kb-short { display: none; }
+body.kb .kb-long { display: none; }
+body.kb .kb-short { display: inline; }

@@ -33,7 +33,8 @@ export function typeCheck({ ctx, deck, id, item, data, onKnown, onClose }) {
   const fb = h('div', { class: 'pr-fb', 'aria-live': 'polite' });
   const checkBtn = h('button', { type: 'button', class: 'btn btn-primary pressable', onpointerdown: keep, onclick: () => check() }, t('practice.typecheck.check'), h('kbd', null, 'Enter'));
   const typoBtn = h('button', { type: 'button', class: 'btn btn-quiet pressable', onpointerdown: keep, onclick: () => typo(), hidden: true }, t('practice.sort.typo'));
-  const plainBtn = h('button', { type: 'button', class: 'btn btn-quiet pressable', onpointerdown: keep, onclick: () => done(false, false) }, t('practice.typecheck.plain'));
+  const plainBtn = h('button', { type: 'button', class: 'btn btn-quiet pressable', onpointerdown: keep, onclick: () => done(false, false), 'aria-label': t('practice.typecheck.plain') },
+    h('span', { class: 'kb-long' }, t('practice.typecheck.plain')), h('span', { class: 'kb-short' }, t('practice.typecheck.plainShort')));
   const backBtn = h('button', { type: 'button', class: 'btn btn-quiet pressable', onpointerdown: keep, onclick: () => close() }, t('practice.typecheck.back'), h('kbd', null, 'Esc'));
   const el = h('section', { class: 'pr-typecheck', 'aria-label': t('practice.typecheck.title') },
     h('p', { class: 'label' }, t('practice.typecheck.title')), h('p', { class: 'caption' }, t('practice.typecheck.lead')),
@@ -60,8 +61,7 @@ export function typeCheck({ ctx, deck, id, item, data, onKnown, onClose }) {
       done(false, true);
       return;
     }
-    state = 'wrong';
-    input.readOnly = true;
+    state = 'wrong';   // the field stays writable and focused, so the keyboard stays up; Enter goes on
     fxWrong(answerEl);
     replace(fb, h('p', { class: 'pr-res is-bad' }, t('practice.wrong')),
       h('p', { class: 'pr-diff answer-key', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, t('practice.rightIs')), ' ', g.right || item.model),

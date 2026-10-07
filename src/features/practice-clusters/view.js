@@ -36,6 +36,7 @@ import { skipsNew } from '../../domain/known.js';
 import { knowButton, isKnowKey, knowCard, knownResult } from '../shared/iknow.js';
 import { drawClusterDone } from '../shared/cluster-layout.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
+import { fitToKeyboard, reveal as revealEl } from '../../core/keyboard.js';
 
 const back = (/** @type {string} */ href, /** @type {string} */ text) => h('a', { class: 'pr-backlink pressable', href }, icon('prev', { size: 16 }), text);
 
@@ -146,9 +147,7 @@ async function mountSay(el, ctx, key) {
   const box = h('div', { class: 'pr-round sim-round is-docked', role: 'region', 'aria-label': t('practice.clusters.sayTitle') },
     h('div', { class: 'pr-top' }, segs, again, h('div', { class: 'pr-top-row' }, count, endBtn)), h('div', { class: 'pr-scroll' }, card), h('div', { class: 'card-actions pr-actions sim-actions' }, knowBtn, showBtn, grades.el));
   replace(el, h('h1', { class: 'sr-only' }, t('practice.clusters.sayTitle')), box);
-  const vv = window.visualViewport;
-  const fit = () => { box.style.height = `${vv ? vv.height : innerHeight}px`; };
-  vv?.addEventListener('resize', fit); addEventListener('resize', fit); fit();
+  const unfit = fitToKeyboard(box);   // Check by typing's row sits on the keyboard (core/keyboard.js)
 
   let st = 'think', busy = false, t0 = 0, alive = true;
   /** @type {any} */ let it = null;
@@ -212,6 +211,7 @@ async function mountSay(el, ctx, key) {
     checkEl = panel.el;
     card.append(checkEl);
     panel.focus();
+    revealEl(prompt, { avoid: checkEl });
   }
   function markKnown() {
     if (st !== 'think' || busy) return;
@@ -253,7 +253,7 @@ async function mountSay(el, ctx, key) {
     if (st === 'revealed' && (e.key === ' ' || e.key === 'Enter') && !(e.target instanceof HTMLElement && e.target.closest('button'))) { e.preventDefault(); grades.pick(grades.suggested); }
   };
   document.addEventListener('keydown', onKey);
-  const cleanup = () => { document.removeEventListener('keydown', onKey); vv?.removeEventListener('resize', fit); removeEventListener('resize', fit); };
+  const cleanup = () => { document.removeEventListener('keydown', onKey); unfit(); };
   fill();
   return () => { if (alive) { alive = false; cleanup(); } restore(); };
 }

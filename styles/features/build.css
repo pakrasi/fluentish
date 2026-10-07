@@ -249,7 +249,9 @@ body.wb-in-round #view { max-width: none; padding: 0; }
 .wb-rtop-row .btn { min-height: var(--tap); padding: 0 10px; margin-inline-end: -10px; }
 .wb-rscroll { overflow-y: auto; overscroll-behavior: contain; padding: var(--s-2) 0 var(--s-3); -webkit-overflow-scrolling: touch; }
 .wb-rcard { width: 100%; max-width: 640px; margin: 0 auto; padding: var(--s-5) var(--s-4) var(--s-4); display: grid; gap: var(--s-3); align-content: start; }
-.wb-rcard > .card-meta { margin-bottom: 2px; }
+.wb-rcard > .card-meta, .wb-cbody > .card-meta { margin-bottom: 2px; }
+.wb-cbody { display: grid; gap: var(--s-3); align-content: start; min-width: 0; }
+.wb-ctail:empty, .wb-answer[hidden] { display: none; }
 .wb-rcard .prompt { font-size: clamp(22px, 6.4vw, var(--fs-prompt)); }
 .wb-rcard .wb-stage { max-width: 420px; }
 .wb-rcard .answer { margin-top: var(--s-4); }
@@ -323,3 +325,20 @@ body.wb-in-round #view { max-width: none; padding: 0; }
 .wb .seg button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgb(0 0 0 / 0.08), 0 0 0 1px var(--hairline); }
 @media (pointer: coarse) { .wb .seg button { min-height: var(--tap); } }
 @media (min-width: 960px) { .wb.stack:not(.wb-round) { max-width: 760px; } }
+
+/* keyboard mode (core/keyboard.js): the header is one row, the card fills the column, the answer opens above the
+   field, the field sits on the action row, which sits on the keyboard (no safe-area padding) */
+body.kb .wb-round { padding-top: 0; }
+body.kb .wb-rtop { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; column-gap: var(--s-3); min-height: 32px; padding-top: 0; }
+body.kb .wb-rtop-row { display: contents; }
+body.kb .wb-rtop .btn { min-height: 32px; position: relative; }
+body.kb .wb-rtop .btn::before { content: ""; position: absolute; inset: -6px 0; }
+body.kb .wb-rtop kbd, body.kb .wb-ractions kbd { display: none; }
+body.kb .wb-rscroll { display: flex; flex-direction: column; padding: var(--s-1) 0 0; }
+body.kb .wb-rscroll > .wb-rcard { flex: 1 0 auto; display: flex; flex-direction: column; gap: 0; padding: 0; background: transparent; box-shadow: none; border-radius: 0; }
+body.kb .wb-cbody { gap: var(--s-2); }
+body.kb .wb-rcard .prompt { font-size: 22px; line-height: 1.25; }
+body.kb .wb-ctail { order: 1; }
+body.kb .wb-rcard > .wb-answer { order: 2; position: sticky; bottom: 0; z-index: 1; margin-top: auto; padding-top: var(--s-2); background: var(--canvas); }
+body.kb .wb-ractions { padding: 4px 0 6px; }
+body.kb .wb-ractions .btn { min-height: var(--tap); }

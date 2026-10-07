@@ -603,3 +603,18 @@ body.kb .qs-round.is-produce .qs-kbrow { display: flex; align-items: center; max
 body.kb .qs-kbrow .btn { min-height: var(--tap); }
 body.kb .qs-kbrow .btn-quiet { padding: 0 12px; }
 body.kb .qs-kbrow .btn[hidden] { display: none; }
+
+/* Check by typing (shared/typecheck.js) with the keyboard up: the panel is the card's last row, over the keyboard;
+   the answer opens above the field, the buttons are one row with Check at the end, and the round's own action row
+   waits (AUDIT R3: the field was below the fold of a 741 px card) */
+body.kb .sim-card { gap: var(--s-3); }
+body.kb .pr-card > .pr-typecheck { order: 4; position: sticky; bottom: 0; z-index: 1; margin-top: auto; padding: var(--s-2) 0 6px; background: var(--canvas); }
+body.kb .pr-typecheck > .caption { display: none; }
+body.kb .pr-typecheck > .pr-fb { order: 1; padding-top: 0; }
+body.kb .pr-typecheck > .answer { order: 2; }
+body.kb .pr-typecheck > .pr-typecheck-actions { order: 3; flex-wrap: nowrap; }
+body.kb .pr-typecheck-actions > .btn-primary { order: 3; flex: 1; }
+body.kb .pr-typecheck-actions .btn[hidden] { display: none; }
+body.kb .pr-round:has(.pr-typecheck) > .pr-actions { display: none; }
+body.kb .pr-typecheck > .pr-fb:empty { display: none; }
+body.kb .pr-typecheck-actions .btn-quiet { padding: 0 12px; }

@@ -17,7 +17,7 @@ import { loadData } from '../shared/data.js';
 import { markWords, unmarkCards } from '../../data/known.js';
 import { recordCheck } from '../../data/checks.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
-import { keep } from '../../core/keyboard.js';
+import { keep, fitToKeyboard } from '../../core/keyboard.js';
 
 const LEVELS = ['A1', 'A2'];
 
@@ -62,7 +62,7 @@ export async function mountCheck(el, ctx, level) {
     const count = h('span', { class: 'caption tnum' });
     const meta = h('span', { class: 'label' }, t('practice.check.label', { level: lv }));
     const task = h('p', { class: 'pr-task' });
-    const prompt = h('p', { class: 'prompt', lang: 'en', dir: 'ltr' });
+    const prompt = h('p', { class: 'prompt kb-clamp kb-flip', lang: 'en', dir: 'ltr' });
     const input = /** @type {HTMLTextAreaElement} */ (h('textarea', { class: 'answer-input', rows: 1, lang: langAttr(), dir: dirAttr(), autocapitalize: 'off', autocomplete: 'off', spellcheck: 'false', enterkeyhint: 'go', 'aria-label': t('practice.answerLabel'), placeholder: t('practice.ph.german') }));
     input.setAttribute('autocorrect', 'off');
     const answerEl = h('div', { class: 'answer' }, input);
@@ -74,9 +74,7 @@ export async function mountCheck(el, ctx, level) {
       h('div', { class: 'pr-top' }, segs, h('div', { class: 'pr-top-row' }, h('span', { class: 'caption' }), h('button', { type: 'button', class: 'btn btn-quiet pressable pr-end', onpointerdown: keep, onclick: () => quit() }, t('practice.end'), h('kbd', null, 'Esc')))),
       h('div', { class: 'pr-scroll' }, card), h('div', { class: 'card-actions pr-actions' }, primary));
     replace(el, h('h1', { class: 'sr-only' }, t('practice.check.title', { level: lv })), box);
-    const vv = window.visualViewport;
-    const fit = () => { box.style.height = `${vv ? vv.height : innerHeight}px`; };
-    vv?.addEventListener('resize', fit); addEventListener('resize', fit); fit();
+    const unfit = fitToKeyboard(box);   // the row sits on the keyboard (core/keyboard.js)
     /** @type {string[]} */ const states = pick.map(() => '');
     const segments = () => drawSegs(segs, states.map((s, j) => s || (j === i ? 'now' : '')));
     function draw() {
@@ -122,7 +120,7 @@ export async function mountCheck(el, ctx, level) {
     };
     function quit() { cleanup(); leaveRound(); ctx.go(backTo.slice(1)); }
     input.addEventListener('keydown', onKey);
-    function cleanup() { if (!alive) return; alive = false; input.removeEventListener('keydown', onKey); vv?.removeEventListener('resize', fit); removeEventListener('resize', fit); }
+    function cleanup() { if (!alive) return; alive = false; input.removeEventListener('keydown', onKey); unfit(); }
     stopRun = cleanup;
     function finish() {
       cleanup();

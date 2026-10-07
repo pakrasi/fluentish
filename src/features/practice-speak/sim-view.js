@@ -36,6 +36,7 @@ import { asrLocale, dirAttr } from '../../core/lang.js';
 import { session } from '../shared/data.js';
 import { langAttr } from '../../core/lang.js';
 import { meter, holdable, logAttempt } from './mic.js';
+import { fitToKeyboard, keep, reveal as revealEl } from '../../core/keyboard.js';
 
 const pct = (/** @type {number} */ x) => new Intl.NumberFormat('en-GB', { style: 'percent', maximumFractionDigits: 0 }).format(x || 0);
 const back = (/** @type {string} */ href, /** @type {string} */ text) => h('a', { class: 'pr-backlink pressable', href }, icon('prev', { size: 16 }), text);
@@ -230,7 +231,7 @@ async function mountRound(el, ctx) {
   const typeBtn = h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => openType() }, t('practice.speak.typeInstead'));
   const typeIn = /** @type {HTMLInputElement} */ (h('input', { type: 'text', class: 'input', lang: langAttr(), dir: dirAttr(), 'aria-label': t('practice.speak.typeLabel'), autocomplete: 'off', autocapitalize: 'sentences', spellcheck: 'false' }));
   const typeForm = h('form', { class: 'pr-type', hidden: true, onsubmit: (/** @type {Event} */ e) => { e.preventDefault(); checkTyped(); } },
-    typeIn, h('button', { type: 'submit', class: 'btn pressable' }, t('practice.speak.typeCheck')));
+    typeIn, h('button', { type: 'submit', class: 'btn pressable', onpointerdown: keep }, t('practice.speak.typeCheck')));
   const unsureBox = h('div', { class: 'pr-unsure', hidden: true });
   const micBox = h('div', { class: 'pr-micbox sim-micbox', hidden: true }, micBtn, level.el, micLabel, loudLine,
     h('div', { class: 'pr-micopts' }, holdToggle, typeBtn), typeForm, unsureBox);
@@ -247,9 +248,7 @@ async function mountRound(el, ctx) {
   const h1 = h('h1', { class: 'sr-only' }, t('practice.sim.round'));
   replace(el, h1, box);
 
-  const vv = window.visualViewport;
-  function fit() { const H = vv ? vv.height : innerHeight; box.style.height = `${H}px`; }
-  vv?.addEventListener('resize', fit); addEventListener('resize', fit); fit();
+  const unfit = fitToKeyboard(box);   // the rows sit on the keyboard (core/keyboard.js)
 
   // the strip: one cell per situation of the round; answers already given in a resumed round show
   const firstG = new Map();
@@ -508,6 +507,9 @@ async function mountRound(el, ctx) {
     checkEl = panel.el;
     card.append(checkEl);
     panel.focus();
+    // with the keyboard up the panel sits at the bottom of the card, over the keyboard: what he is asked to say
+    // (the goal line) goes right above it
+    revealEl(goal, { avoid: checkEl });
   }
   function markKnown() {
     if (state !== 'think' || busy || !item) return;
@@ -576,7 +578,7 @@ async function mountRound(el, ctx) {
     stopListening();
     strip.destroy();
     document.removeEventListener('keydown', onKey);
-    vv?.removeEventListener('resize', fit); removeEventListener('resize', fit);
+    unfit();
     if (chrome) restore();
   }
 

@@ -857,6 +857,7 @@ export default {
   'practice.typecheck.lead': 'Type the German. Right: it is marked known.',
   'practice.typecheck.check': 'Check',
   'practice.typecheck.plain': 'Mark known without typing',
+  'practice.typecheck.plainShort': 'Mark known',
   'practice.typecheck.back': 'Back',
   'practice.typecheck.goOn': 'Go on',
   'practice.typecheck.right': 'Right. Marked as known.',
