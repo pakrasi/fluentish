@@ -1,16 +1,17 @@
-# Building a feature (stage B and later)
+# Building a feature
 
-Practice, Exam and Look up are built as **feature modules** on top of the stage-A core. Each one lives in its own folder and can be built in parallel without touching core, the router or another feature.
+Every screen past the core (Practice and its sibling products, Exam, Look up, Explore) is a **feature module** on top of the core. Each one lives in its own folder and can be built in parallel without touching core, the router or another feature.
 
 ```
 src/features/
   registry.js          lists every feature once: its paths, its tab, its view, plan and boot modules (core)
   contract.js          the ctx types below, as JSDoc
   day.js               Today's plan, composed once for Today and Practice (core)
-  today/  profile/  welcome/        core screens (stage A)
+  today/  profile/  welcome/        core screens (today/progress/ is Today › Progress; profile/ has Goals and week)
   exam/ lookup/ explore/            features: index.js (view) + plan.js (Today provider)
   practice/ practice-round/ practice-write/ practice-speak/ practice-script/ practice-clusters/ build/
-                       Practice: sibling features under #/practice, each with its own routes and plan.js (round 3)
+  practice-read/ practice-conversation/
+                       Practice: sibling features under #/practice, each with its own routes and plan.js (rounds 3, 4)
   shared/              the practice runtime the Practice features share (pool, round state, grading, picker, done
                        hero, self-grade, progress, recall bar, cluster layout); a library: no routes, no plan
 ```
@@ -105,7 +106,7 @@ pace and the lexicon, so every B1 number stays what it was. Their reviews are ne
 4. **Only `clock` knows dates.** Read today and the exam through `ctx.clock.ctx()` (`today`, `exam`, `phase`, `daysLeft`, `lastNewDay`, `capDay`, `newItems`, `mocks`). Never `new Date()` for a study day, never a literal date (CI fails on `20NN-MM-DD` in `src/`). Labels: `label(day)` → "Fri 9 Oct", `labelDe(day)` → "9. Okt.".
 5. **Only `data/settings.js` writes settings,** and only `setExamDate()` writes the exam date.
 6. **No markup from strings.** Build with `h()` from `core/dom.js`; it throws on `html`/`innerHTML`. Render Claude's or anyone's text as text nodes. CSP is `script-src 'self'` with no inline styles: set styles through `el.style` / `style: {…}` in `h()`, never a `style` attribute string, and don't use `<select>` (WebKit reports it under the CSP; use chips or the segmented control).
-7. **The device through `services/`, the language through `core/lang.js`.** Microphone, recogniser, voices, playback, share and haptics only through `services/` (speech, voice, audio, share, haptics; ARCHITECTURE §2.2): never `new Audio`, `speechSynthesis`, `MediaRecorder` or `navigator.share` in a feature. Pass the tag from `core/lang.js` (`bcp47()`, `asrLocale()`), and mark study-language text with `lang: langAttr()`, not a literal `'de'` (Look up and Explore still have a few) and never `'de-DE'`. Start audio inside the tap (iOS plays only from a user gesture).
+7. **The device through `services/`, the language through `core/lang.js`.** Microphone, recogniser, voices, playback, share and haptics only through `services/` (speech, voice, audio, share, haptics; ARCHITECTURE §2.2): never `new Audio`, `speechSynthesis`, `MediaRecorder` or `navigator.share` in a feature. Pass the tag from `core/lang.js` (`bcp47()`, `asrLocale()`), and mark study-language text with `lang: langAttr()`, never a literal `'de'` or `'de-DE'`. Start audio inside the tap (iOS plays only from a user gesture).
 8. **Strings go through `t()`.** Add keys to `src/i18n/en.js` under your feature's prefix (`practice.*`, `exam.*`, `lookup.*`).  The exam runner's own strings (in the exam's language) go in its exam-locale catalog and through `exam.tx()` (ARCHITECTURE §3.4). Copy rules: labels name the thing, no slogans or praise, numbers with units, one middle dot per line at most, no em or en dashes. Study-language content carries `lang: langAttr()`.
 9. **Motion from the kit only** (`core/motion.js`, `core/brand.js`), so reduced motion is handled once.
 10. **Tests in node.** Keep logic in pure functions (in your folder or `src/domain/`) and test them in `tests/unit/<feature>-*.test.mjs` with `node:test`. Fixtures are synthetic; real data goes in the git-ignored `tests/private/`.
@@ -177,9 +178,9 @@ export function todayModules(ctx) { return [/* ModuleBar */]; }      // optional
 
 `FeedbackRow`: `{ id, title, status, href, action? }` (at most three show). `ModuleBar`: `{ id, name, score | null, max, pass, href? }`.
 
-What stage A already provides (replace freely inside your folder):
-- Practice's rows, one plan.js per sibling feature (round 3): `practice-round` the warm-up, the review round and mistakes from corrections; `practice-write` the Schreiben task from memory and the Schreiben phrases; `practice-speak` speaking situations, the frames on the eve and the Teil 2 talk; `practice-script` the scripts; `practice-clusters` word clusters; `build` Word building. Row ids keep their `practice.*` names; the composer orders by priority, then id, so the split changes no plan.
-- `exam/plan.js`: `nextModule()` (a started draft, else Schreiben/Sprechen never attempted, else the lowest latest score, on the first test not yet done), uncorrected Schreiben and unread local corrections as feedback, and the module bars against the manifest's pass lines. Stage B: the full run on exam−4/−3, Fritz's feedback from the results sync, "fits before the exam" counts.
+The providers that exist (replace freely inside your folder):
+- Practice's rows, one plan.js per sibling feature: `practice-round` the warm-up, the review round and mistakes from corrections; `practice-write` the Schreiben task from memory (also a Write day's slot) and the Schreiben phrases; `practice-speak` speaking situations, the frames on the eve and the Teil 2 talk; `practice-script` the scripts; `practice-clusters` word clusters; `build` Word building; `practice-read` the reading review round (`read.review`) and a Read day's text (`read.text`); `practice-conversation` a Talk day's conversation (`conversation.talk`). Read, Write and Talk rows read the day's slot from `ctx.day` (`slot`, `slotMin`). Row ids keep their names; the composer orders by priority, then id.
+- `exam/plan.js`: `nextModule()` (a started draft, else Schreiben/Sprechen never attempted, else the lowest latest score, on the first test not yet done), uncorrected Schreiben and unread local corrections as feedback, and the module bars against the manifest's pass lines. The full exam run in one sitting was deferred and is not planned (docs/ROADMAP.md).
 
 ## Data you will find in the store
 
@@ -199,19 +200,19 @@ Calling it again for the same attempt replaces its list and keeps the ids (and s
 
 ### Card ids are append-only
 
-Card ids made from content (B1 phrases and grammar, `BS:` Schreiben phrases, `W:` words, `CO:`/`CF:`/`CP:` cluster cards, `SS:` situations) are listed in `tests/fixtures/shipped-ids.txt`. `tests/unit/item-ids.test.mjs` fails when one of them is no longer created by the content (a renamed slug, a word moved from family member to family head, a deleted gap), because the learner's card under that id would lose its schedule. Keep the old id, or migrate its cards and list it in `tests/fixtures/retired-ids.txt` with a reason. After adding content, run `node tools/shipped-ids.mjs --write`; it only ever appends.
+Card ids made from content (B1 phrases and grammar, the B2 layer's `G:`/`K:` items, `BS:` Schreiben phrases, `W:` words, `CO:`/`CF:`/`CP:` cluster cards, `SS:` situations, Word building's `PX:`/`PD:`/`PV:`/`PS:`/`SX:`/`PW:`) are listed in `tests/fixtures/shipped-ids.txt`. `tests/unit/item-ids.test.mjs` fails when one of them is no longer created by the content (a renamed slug, a word moved from family member to family head, a deleted gap), because the learner's card under that id would lose its schedule. Keep the old id, or migrate its cards and list it in `tests/fixtures/retired-ids.txt` with a reason. After adding content, run `node tools/shipped-ids.mjs --write`; it only ever appends.
 
-## Before you open a PR
+## Before you push
 
 ```
 npm test                      # node:test, all unit tests
 npm run test:tz               # the same in three time zones
 npm run typecheck             # strict on core, data and the new domain modules
-node tools/validate-content.mjs
-node tools/check-privacy.mjs --all && node tools/check-dates.mjs
+npm run check:content         # manifest, schemas and every language pack's validators
+npm run check:privacy && npm run check:dates
 npm run serve                 # http://localhost:8430/ ; ?today=YYYY-MM-DD works on localhost only
 npm run test:e2e              # the stamped site in WebKit 390 px and Chromium, mocks for every other host, axe
 ```
-A feature with a new screen or flow adds a spec in `tests/e2e/<feature>.spec.mjs`: start from `seed(page)` (a synthetic profile), `open(page, '#/…')`, drive it by role and label, assert what was stored with `storedCards(page, deck)`, and call `checkA11y(page, '<screen>')` on each new screen. A spec fails on any console error, any request to a host the fixtures do not mock, an HTML string written into the DOM (the Trusted Types tripwire), and any record that does not match `schemas/records` (a new field goes into its schema in the same commit). `main` takes only commits whose `ci` jobs, the e2e among them, passed on a branch first.
+A feature with a new screen or flow adds a spec in `tests/e2e/<feature>.spec.mjs`: start from `seed(page)` (a synthetic profile), `open(page, '#/…')`, drive it by role and label, assert what was stored with `storedCards(page, deck)`, and call `checkA11y(page, '<screen>')` on each new screen. A spec fails on any console error, any request to a host the fixtures do not mock, an HTML string written into the DOM (the Trusted Types tripwire), and any record that does not match `schemas/records` (a new field goes into its schema in the same commit). `main` takes only commits whose `ci` jobs, the e2e among them, passed on a branch first. Commit in small steps, push your branch and let CI run; the coordinator merges to `main`, with the owner's approval for visual or planning changes. Add your feature's next steps to `docs/ROADMAP.md`, not to a doc of your own.
 
 Look at your screens at 390 px (WebKit, light and dark, reduced motion) and 1280 px. Playwright's WebKit screenshots inject a style that this CSP reports, so read the console **before** taking a screenshot.
