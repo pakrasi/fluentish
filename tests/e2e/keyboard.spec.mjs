@@ -229,6 +229,7 @@ test('Reading round and Script words: docked, Check on the keyboard', async ({ p
   await open(page, '#/practice/read/new');
   await page.getByRole('textbox', { name: 'Title' }).fill('Vier Tage');
   await page.getByRole('textbox', { name: 'Text' }).fill('Die Woche wird kürzer\n\nSeit einigen Jahren wird über eine kürzere Arbeitswoche diskutiert. In der Firma Nordlicht arbeiten alle nur noch vier Tage, und die ganze Branche schaut genau hin.');
+  await expect(page.getByRole('button', { name: 'Save and read' })).toBeEnabled();
   await page.getByRole('button', { name: 'Save and read' }).click();
   await page.locator('.tv-w', { hasText: /^Branche$/ }).click();
   await page.locator('dialog.tv-sheet').getByRole('button', { name: 'Add to review' }).click();
@@ -242,7 +243,9 @@ test('Reading round and Script words: docked, Check on the keyboard', async ({ p
   await open(page, '#/practice/scripts/new');
   await page.getByRole('textbox', { name: 'Title' }).fill('Fahrrad');
   await page.getByRole('textbox', { name: 'Your script' }).fill('# Einleitung\n\nHallo zusammen, heute erkläre ich euch, wie ein Fahrrad funktioniert. Das Herz jedes Fahrrads ist der Rahmen.\n\n# Bremsen\n\nScheibenbremsen funktionieren auch bei Regen zuverlässig. Vielen Dank fürs Zuhören!');
+  await expect(page.locator('.sc-detect')).toContainText('2 sections');   // the text is read first (a slow runner)
   await page.getByRole('button', { name: 'Continue' }).click();
+  await expect(page).toHaveURL(/\/mark/);
   await page.getByRole('button', { name: 'Rahmen', exact: true }).click();
   await page.keyboard.press('Escape');
   const sid = /scripts\/([^/?]+)/.exec(page.url())?.[1];
