@@ -95,6 +95,8 @@ export async function mountWords(el, ctx) {
   /** @type {Set<string>} */ const knownIds = new Set();
   replace(el, h('h1', { class: 'sr-only' }, t('practice.script.words.title')), box);
   const unfit = docked ? fitToKeyboard(box) : () => {};
+  // the router focuses the page's h1 after mount; in a round the answer field keeps the focus (and the keyboard)
+  el.querySelector('h1')?.addEventListener('focus', () => input.focus({ preventScroll: true }));
 
   let state = 'answer', revealed = false, cardT0 = 0, holding = false;
   /** @type {any} */ let item = null, cur = /** @type {any} */ (null);

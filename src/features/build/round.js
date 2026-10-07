@@ -353,7 +353,7 @@ export async function mountRound(el, ctx) {
       afterReveal(o, fb);
       // the answer opened above the field: into view
       const into = () => { if (alive && fb.isConnected) revealEl(fb, { block: 'nearest', avoid: answerEl }); };
-      requestAnimationFrame(into); if (!reduced()) setTimeout(into, 320);
+      requestAnimationFrame(into); setTimeout(into, 320);
     }
     return { primary: () => (done ? next() : submit(false)), enter: () => { if (done) next(); else if (input.value.trim()) submit(false); },
       focus: () => input.focus({ preventScroll: true }), key: () => false };

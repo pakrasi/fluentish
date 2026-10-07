@@ -91,6 +91,8 @@ export async function mountRound(el, ctx) {
     h('div', { class: 'pr-top' }, segs, h('div', { class: 'pr-top-row' }, count, endBtn)), h('div', { class: 'pr-scroll' }, cardEl), h('div', { class: 'card-actions pr-actions' }, secondary, primary));
   replace(el, h('h1', { class: 'sr-only' }, t('read.round.title')), box);
   const unfit = docked ? fitToKeyboard(box) : () => {};
+  // the router focuses the page's h1 after mount; in a round the answer field keeps the focus (and the keyboard)
+  el.querySelector('h1')?.addEventListener('focus', () => input.focus({ preventScroll: true }));
 
   let state = 'answer', revealed = false, cardT0 = 0, holding = false;
   /** @type {any} */ let entry = null;

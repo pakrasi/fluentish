@@ -306,7 +306,7 @@ export async function mountSort(el, ctx) {
     void fling(prompt, learnTo(), { duration: 420 });
     // the answer, the word panel and "I knew it, typo" open above the field: into view
     const show = () => { if (alive) revealEl(reveal, { block: 'end', avoid: answerEl }); };
-    requestAnimationFrame(show); if (!reduced()) setTimeout(show, 320);
+    requestAnimationFrame(show); setTimeout(show, 320);
     drawCounts();
     announce(`${t('practice.wrong')}. ${t('practice.rightIs')} ${v.right}. ${t(recheck ? 'practice.sort.wrongRecheck' : 'practice.sort.wrongLearn')}`);
   }

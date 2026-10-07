@@ -676,7 +676,7 @@ export async function mountRound(el, ctx) {
   /** Feedback that opened above the field into view, once the reveal has opened (it grows over --dur-base). @param {Element | null} el */
   function showFb(el) {
     const go = () => { if (alive && el?.isConnected) revealEl(el, { block: 'nearest', avoid: answerEl }); };
-    requestAnimationFrame(go); if (!reduced()) setTimeout(go, 320);
+    requestAnimationFrame(go); setTimeout(go, 320);   // the reveal opens over --dur-base, reduced motion too
   }
   function checkRetype(/** @type {string} */ typed) {
     if (retypeOk(entry.item, full(typed), entry.right) || retypeOk(entry.item, typed, entry.right)) {   // exactly the sentence he was shown (case and commas aside)
