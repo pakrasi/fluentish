@@ -93,3 +93,33 @@ Unverified on the device, to note when you run these: the confidence values iOS 
 range; Firefox always reports 1, Safari is not documented), whether the meter's stream and the recogniser share the
 microphone (WebKit's source mutes capture in other pages only), and the noise thresholds (`domain/hearing.js NOISE`,
 first guesses: median −42 dBFS is loud). `speech.log` keeps the numbers to tune them.
+
+## Round 4 surfaces
+
+Added 7 Oct. Not run yet (ROADMAP › Run the iPhone checks backlog). Use synthetic or your own data; note results
+here as ticks, or as an item in `docs/ROADMAP.md`.
+
+### Explore 3D at 120 Hz
+- [ ] Look up › Map › 3D on the iPhone (ProMotion): orbit and zoom feel smooth, with no visible stutter while the
+      city settles. Diagnostics or Safari's Web Inspector timeline shows frames near 120 per second while moving, and
+      the page goes idle (no frames) when nothing moves.
+- [ ] Back from a round started with "Study the gaps here": the learned moment plays once, then the scene is still.
+- [ ] Low Power Mode on: it still runs (at 60 Hz) without the phone getting warm in a minute of use.
+
+### VoiceOver in the Reader and Progress
+- [ ] Practice › Reading, a graded text: VoiceOver reads the text as prose, sentence by sentence, not one word button
+      at a time. The interactive layer (tap a word) is reachable and announces the word.
+- [ ] The word sheet: focus moves into it when it opens and back to the word when it closes; Save is announced.
+- [ ] Today › Progress: each chart has a name, and its table twin reads the same numbers. The range switch and the
+      sources are reachable in order.
+
+### Conversation on the real API
+- [ ] With a Claude key: a Free chat reply appears word by word (streaming), not all at once after a pause.
+- [ ] Stop during a reply, and leaving the page during a reply: the chat stays usable, and Profile's spend line moved.
+- [ ] End the session: the feedback card appears; its mistakes are things you actually wrote.
+- [ ] The spend shown matches the provider's usage page for that day, within a few cents.
+
+### The week sheet
+- [ ] Profile › Goals and week on the phone: tapping a day opens its sheet; minutes and kind change with 44 px
+      targets; the keyboard never hides the sheet's buttons; closing it returns focus to that day.
+- [ ] Today's week strip shows the change at once, and a past missed day looks different from a planned future one.
