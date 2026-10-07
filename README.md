@@ -1,8 +1,22 @@
 # Fluentish
 
-A daily language study app: one plan for today, one review queue, mock exams in the Goethe-Zertifikat B1 format, and a reference. Phone first. It replaces two earlier sites (Igloo and the B1 mock-exam app) and moves their progress over once, without touching them.
+A language study app for daily use over years, phone first. Live at **https://pakrasi.github.io/fluentish/**.
 
-Static site, native ES modules, no build step for development. Practice in the format of the Goethe-Zertifikat B1; not affiliated with the Goethe-Institut.
+What it does today (German is the full course; French has a course and its review round; eight more languages are
+listed as later):
+
+- **Today:** one plan for the day from one daily allowance across every deck, reviews first; the week plan (Normal,
+  Light, Read, Write, Talk and Off days); Where you stand; Progress over weeks and months.
+- **Practice:** typed review rounds with a strict grader; Schreiben (phrases, Build an email, writing from memory);
+  Sprechen (speaking situations, the mic check, the Teil 2 talk, Conversation with Claude); words (clusters, Word
+  building, Quick sort, exam words); your own material (Scripts, the Reader with graded B1+ and B2 texts).
+- **Exam:** timed mock exams in the Goethe-Zertifikat B1 format, defined as data, with reviews and corrections.
+  An exam is a goal you can set, move or remove; exam behaviour starts 14 days before its date.
+- **Look up:** words, phrases, grammar and frames with one search, and Explore: a map of everything with a 3D view.
+
+It replaced two earlier sites (Igloo and a B1 mock-exam app) and moved their progress over once. Static site,
+native ES modules, no build step for development. Practice in the format of the Goethe-Zertifikat B1; not affiliated
+with the Goethe-Institut.
 
 ## Run it
 
@@ -11,7 +25,13 @@ npm run serve            # http://localhost:8430/  (no-cache dev server)
 npm test                 # unit tests (node:test); npm run test:tz runs them in three time zones
 npm run typecheck        # tsc strict on core, data and the new domain modules (npm ci first)
 npm run test:e2e         # stamps _site/ and runs the browser e2e suite (WebKit 390 px + Chromium); once: npx playwright install chromium webkit
-sh tools/install-hooks.sh   # once per clone: privacy and date checks before every commit and push
+npm run hooks            # once per clone: privacy and date checks before every commit and push
+```
+
+The gates every commit must pass (CI runs them too, plus the e2e suite):
+
+```
+npm test && npm run test:tz && npm run typecheck && npm run check:privacy && npm run check:dates && npm run check:content
 ```
 
 On localhost, `?today=YYYY-MM-DD` pretends it is another day (never on a deployed site). On the dev server every record the app writes is checked against `schemas/records/`; a mismatch is a console error (`src/data/records.js`).
@@ -20,13 +40,28 @@ On localhost, `?today=YYYY-MM-DD` pretends it is another day (never on a deploye
 
 | | |
 |---|---|
-| `src/` | the app: `core/` (clock, router, DOM helpers, i18n, kit motion and brand), `data/` (store, IndexedDB, migration, settings), `domain/` (scheduler, answer matching, readiness, Today's plan; pure, tested in node), `features/` (one folder per screen) |
+| `src/` | the app: `core/` (clock, router, DOM helpers, i18n, kit motion and brand), `data/` (store, IndexedDB, migration, settings, sync and backup), `domain/` (scheduler, grader engines, the allowance, Today's plan; pure, tested in node), `lang/` (language packs), `services/` (speech, voice, audio, recorder, Claude), `features/` (one folder per screen or Practice product) |
 | `content/` | public content and `manifest.json`, the entry point for the web app and a future iOS app |
 | `authoring/` | sources that are built into `content/`, and the briefs they were written to |
 | `schemas/` | JSON Schemas for content and for learner records |
 | `tools/` | validators, builders, the privacy and date gates, the dev server |
 | `tests/` | `unit/` (node:test, synthetic fixtures in `fixtures/`), `corpus/` (grading), `e2e/` (Playwright against the stamped site, with mocks for every other host) |
-| `docs/` | [ARCHITECTURE](docs/ARCHITECTURE.md) · [DESIGN](docs/DESIGN.md) · [SCHEMA](docs/SCHEMA.md) · [CONTRIBUTING-FEATURES](docs/CONTRIBUTING-FEATURES.md) |
+| `docs/` | the documentation, below |
+
+## Documentation
+
+| Doc | Read it for |
+|---|---|
+| [ROADMAP](docs/ROADMAP.md) | the single list of next steps (Now, Next, Later) and the scorecard history |
+| [LEARNINGS](docs/LEARNINGS.md) | product decisions and engineering lessons, and how the agents worked together |
+| [ARCHITECTURE](docs/ARCHITECTURE.md) | how the app is built: layers, data, sync and backup, language packs, exams as data, the clock |
+| [CONTRIBUTING-FEATURES](docs/CONTRIBUTING-FEATURES.md) | the feature contract, the day's allowance and week API, and the checks before you push |
+| [DESIGN](docs/DESIGN.md) | the design system: tokens, components, motion, copy |
+| [SCHEMA](docs/SCHEMA.md) | record and content formats, the backup files |
+| [SHARING](docs/SHARING.md) | what a visitor can reach, token safety, the device link |
+| [IOS-CHECKS](docs/IOS-CHECKS.md) | the checks to run on a real iPhone |
+| [CUTOVER](docs/CUTOVER.md) | how the old apps were switched over (done 4 Oct), and the rollback |
+| [history/](docs/history/) | one summary per build round, and the historical design specs (not maintained) |
 
 ## Content
 
@@ -38,7 +73,7 @@ python3 tools/build_turns.py
 node tools/build-manifest.mjs && node tools/validate-content.mjs
 ```
 
-Other validators: `tools/validate.py content/igloo/lang/<lang>.json`, `validate_sentences.py`, `validate_grammar.py de`, `validate_accept.py german`, `validate_chunks.py german`, `validate_levels.py`, `validate_exam.py`, `validate_exam_why.py`. CI runs all of them.
+`npm run check:content` runs `tools/validate-content.mjs` (manifest, hashes, every file against its schema) and `tools/validate-packs.mjs` (each language pack's validators, each exam's validators); CI runs both. Other builders: `tools/build-speak.mjs` (speaking situations), `tools/build-wordbuild.mjs` (Word building), `tools/build-course.mjs` (courses in other languages), `tools/b2.mjs` (the reviewed B2 batches and graded texts), `tools/build-atlas.mjs` (the Explore map layout). After adding content, `node tools/shipped-ids.mjs --write` appends the new card ids to the ledger; ids that shipped never disappear.
 
 ## Privacy
 
@@ -48,12 +83,12 @@ The exam date is a setting. No date is written in `src/`; `tools/check-dates.mjs
 
 ## Deploy
 
-Live at **https://pakrasi.github.io/fluentish/** (GitHub Pages, source "GitHub Actions"). Shadow mode is off (`config.deployShadow: false`, the cutover of 4 Oct): the site makes local profiles that sync results to the b1-exam repo. A device that opened the preview keeps that work: on its first start the preview profile is merged into the real one (newest per item, the preview's results queued with their original file names), archived, and purged 30 days later. What was kept is listed once on Today and in Profile › Data. Details and rollback: docs/CUTOVER.md.
+Live at **https://pakrasi.github.io/fluentish/** (GitHub Pages, source "GitHub Actions"). A profile keeps its progress in the browser. A profile that connects its own private results repository (Profile › Connections, docs/SHARING.md) also sends exam results there and backs up its learning progress; one without a connection sends nothing. The switch from the old apps happened on 4 Oct (docs/CUTOVER.md).
 
 How a change goes live:
 
 1. Push a branch. `ci.yml` runs the gates on it: unit tests in three time zones, `tsc`, the privacy check (tracked files and every version in history), the date gate, the content validators, a trial build, and the browser e2e suite (`e2e`: the stamped site in WebKit at 390 px and in Chromium, with axe, all other hosts mocked; about 3 minutes).
-2. Fast-forward `main` to that commit and push. `main` is protected: it only takes a commit whose `ci` jobs passed (required status checks, admins included), so a commit that never ran in a browser cannot reach it.
+2. The coordinator fast-forwards `main` to that commit and pushes (with the owner's approval for visual or planning changes). `main` is protected: it only takes a commit whose `ci` jobs passed (required status checks, admins included), so a commit that never ran in a browser cannot reach it.
 3. When `ci` passes for the push to `main`, `deploy.yml` checks that the `e2e` job passed for that commit, checks out the commit and runs `node tools/build-manifest.mjs --check` and `node tools/stamp.mjs`, which writes `_site/`:
    - code under `v/<sha>/src` and `v/<sha>/styles`, plus the two previously deployed versions, so a cached `index.html` never mixes modules from two deploys inside Pages' 10-minute cache
    - `index.html` with `modulepreload` for the boot graph, `404.html` (deep paths → `#/<path>`), `sw.js` stamped with the version and precache list, `version.json`, `assets/`, `content/`
