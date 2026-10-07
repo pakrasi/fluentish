@@ -1,6 +1,6 @@
 # Fluentish: notes for Claude
 
-Fluentish is a static language-study app (daily plan, review rounds, Goethe B1 mock exams, look up) that is live at https://pakrasi.github.io/fluentish/ and used daily by the owner. It uses native ES modules with no bundler, a strict CSP and vanilla JS. Read `docs/ARCHITECTURE.md` and `docs/CONTRIBUTING-FEATURES.md` before changing code, and `docs/DESIGN.md` before changing anything visual.
+Fluentish is a static language-study app (daily plan, review rounds, Goethe B1 mock exams, look up) that is live at https://pakrasi.github.io/fluentish/ and used daily by the owner. It uses native ES modules with no bundler, a strict CSP and vanilla JS. Read `docs/ARCHITECTURE.md` and `docs/CONTRIBUTING-FEATURES.md` before changing code, and `docs/DESIGN.md` before changing anything visual. Next steps live only in `docs/ROADMAP.md`; why things are the way they are is in `docs/LEARNINGS.md`.
 
 ## Rules
 - **Public repo, private learner.** Never commit personal data: scores, mistakes, saved words, recordings, real exports, names, employer, tokens. Fixtures are synthetic. `.privacy-terms` and `authoring/private/` are git-ignored and exist only on the owner's Mac. In a cloud session they're missing, so the privacy check only runs its generic patterns. Treat anything about a real person as private.
@@ -10,6 +10,7 @@ Fluentish is a static language-study app (daily plan, review rounds, Goethe B1 m
 - **Copy.** Use plain labels that name the thing. No slogans, no "X, not Y", no metaphors or rule-of-three flourishes, and no em dashes in UI strings. Interface strings go in `src/i18n/en.js`. The exam runner speaks the exam's language (Goethe B1: German, Sie); its strings go in the exam-locale catalog `content/exams/<id>/locale.<lang>.json` (ARCHITECTURE §3.4). Everything else is English chrome with German content.
 - **Phone first** (390 px), 44 px tap targets on touch, reduced motion respected. Motion comes only from `core/motion.js` and `core/brand.js`.
 - No runtime CDN imports. Vendor any library under `src/vendor/` with its hash.
+- **Commits and merges.** Commit in small steps; never push untested commits to `main`. Merges to `main` go through the coordinator, with the owner's approval for visual or planning changes.
 - **Deploys.** Never push to `main` from a cloud session; open a pull request. A merge to `main` deploys to production through `.github/workflows/deploy.yml` once CI passes.
 
 ## Before every commit
