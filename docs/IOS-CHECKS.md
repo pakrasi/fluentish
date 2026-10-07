@@ -101,7 +101,7 @@ here as ticks, or as an item in `docs/ROADMAP.md`.
 
 ### Explore 3D at 120 Hz
 - [ ] Look up › Map › 3D on the iPhone (ProMotion): orbit and zoom feel smooth, with no visible stutter while the
-      city settles. Diagnostics or Safari's Web Inspector timeline shows frames near 120 per second while moving, and
+      city settles. Safari's Web Inspector (Timelines, from the Mac) shows frames near 120 per second while moving, and
       the page goes idle (no frames) when nothing moves.
 - [ ] Back from a round started with "Study the gaps here": the learned moment plays once, then the scene is still.
 - [ ] Low Power Mode on: it still runs (at 60 Hz) without the phone getting warm in a minute of use.
