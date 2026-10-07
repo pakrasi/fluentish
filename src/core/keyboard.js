@@ -103,7 +103,7 @@ export function startKeyboard({ bus } = {}) {
       if (grew && typing) {
         // the visible height changed: keep the newest revealed content in view, and the field itself
         const r = lastReveal?.el.isConnected ? lastReveal : null, f = document.activeElement;
-        requestAnimationFrame(() => { if (r) reveal(r.el, { ...r.o, instant: true, keep: false }); if (f?.isConnected) reveal(f, { instant: true, keep: false }); });
+        requestAnimationFrame(() => { if (r) reveal(r.el, { ...r.o, instant: true, keep: false }); if (f?.isConnected) reveal(withAction(f, m.h), { instant: true, keep: false }); });
       }
     }
     const open = isOpen(typing, m.screen);
@@ -137,6 +137,18 @@ export function startKeyboard({ bus } = {}) {
 export function fitToKeyboard(box) {
   box.classList.add('kb-fit');
   return () => box.classList.remove('kb-fit');
+}
+
+/**
+ * What to keep in view for a focused field: its form (with the form's button) when the form fits the visible
+ * height, else the field alone. A form's own row docked on the keyboard (.kb-dock) is already in view.
+ * @param {Element} f @param {number} h
+ */
+function withAction(f, h) {
+  const form = f.closest('form');
+  if (!form || form.closest('.pr-round, .kb-fit')) return f;
+  const r = form.getBoundingClientRect();
+  return r.height > 0 && r.height <= h - 80 ? form : f;
 }
 
 /** @param {Event} e */
@@ -191,4 +203,21 @@ export function reveal(el, { block = 'nearest', margin = 8, avoid = null, instan
     const d = revealDelta({ top: r0.top - shift, bottom: r0.bottom - shift }, vTop + margin + cover('.kb-stick'), vBot - margin - cover('.kb-dock'), block);
     if (d) window.scrollTo({ top: Math.max(0, scrollY + d), behavior });
   }
+}
+
+/**
+ * A single-line field whose Return moves on to the next field (a title over a text): enterkeyhint "next", and Return
+ * focuses `next` instead of doing nothing. Returns the field.
+ * @param {HTMLInputElement} input @param {() => HTMLElement | null} next
+ */
+export function enterMovesTo(input, next) {
+  input.setAttribute('enterkeyhint', 'next');
+  input.addEventListener('keydown', e => {
+    if (e.key !== 'Enter' || e.isComposing || e.shiftKey) return;
+    const to = next();
+    if (!to) return;
+    e.preventDefault();
+    to.focus();
+  });
+  return input;
 }

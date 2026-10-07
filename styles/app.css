@@ -384,7 +384,7 @@ body.kb .kb-clamp:not(.is-full) { display: -webkit-box; -webkit-box-orient: vert
 /* a sticky header on a form page stays on screen while iOS pans the page to the caret */
 body.kb .kb-stick { position: fixed; inset-inline: 0; top: var(--vv-top, 0px); z-index: var(--z-bar); }
 /* a form's action row on the keyboard: fixed to the bottom of the visual viewport */
-body.kb .kb-dock { position: fixed; inset-inline: 0; top: calc(var(--vv-top, 0px) + var(--vv-h, 100dvh)); transform: translateY(-100%); z-index: var(--z-bar);
+body.kb .kb-dock { position: fixed; inset-inline: 0; bottom: var(--kb, 0px); z-index: var(--z-bar);
   display: flex; align-items: center; gap: var(--s-2); margin: 0; padding: 6px max(var(--gutter), env(safe-area-inset-left)); background: var(--canvas); border-top: 1px solid var(--hairline); }
 body.kb .kb-dock .btn { min-height: var(--tap); }
 body.kb .kb-dock .btn-primary { flex: 1; max-width: none; }
@@ -397,3 +397,9 @@ body.kb .kb-short { display: inline; }
 /* a page (not a fitted round) gets room at its end, so a field low on it scrolls above the keyboard instead of iOS
    panning the whole page (the jump of 200 to 450 px in the audit) */
 body.kb main.page { padding-bottom: calc(var(--kb-screen, 0px) + var(--s-4)); }
+/* bottom sheets with a field (the round size picker, the reader's word sheet, the script's marked words): on the
+   keyboard, no taller than the visible screen, their buttons in reach (the picker's Start is sticky at its end) */
+body.kb .rs-sheet, body.kb .tv-sheet, body.kb .sc-sheet { bottom: var(--kb, 0px); max-height: var(--vv-h, 100dvh); }
+body.kb .rs-panel { max-height: var(--vv-h, 100dvh); padding-bottom: var(--s-3); }
+body.kb .tv-sheet, body.kb .sc-sheet { padding-bottom: var(--s-3); }
+body.kb .rs-start { position: sticky; bottom: 0; z-index: 1; box-shadow: 0 0 0 6px var(--surface); }

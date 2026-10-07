@@ -9,6 +9,7 @@ import * as R from '../shared/read-data.js';
 import * as L from './logic.js';
 import { language, knowledgeNow } from './load.js';
 import { back, levelLine } from './ui.js';
+import { enterMovesTo } from '../../core/keyboard.js';
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
 export async function mountPaste(el, ctx) {
@@ -16,6 +17,8 @@ export async function mountPaste(el, ctx) {
   const title = /** @type {HTMLInputElement} */ (h('input', { class: 'input', autocomplete: 'off', maxlength: '120', lang: langAttr(), dir: dirAttr() }));
   const note = /** @type {HTMLInputElement} */ (h('input', { class: 'input', autocomplete: 'off', maxlength: '120', placeholder: t('read.paste.notePh') }));
   const text = /** @type {HTMLTextAreaElement} */ (h('textarea', { class: 'input rd-paste', rows: 10, lang: langAttr(), dir: dirAttr(), autocomplete: 'off', spellcheck: 'false', placeholder: t('read.paste.textPh') }));
+  // Return in the title and the note moves on to the next field
+  enterMovesTo(title, () => note); enterMovesTo(note, () => text);
   const est = h('p', { class: 'caption rd-est', 'aria-live': 'polite' });
   const go = /** @type {HTMLButtonElement} */ (h('button', { type: 'button', class: 'btn btn-primary pressable', disabled: true, onclick: () => save() }, t('read.paste.save')));
   /** @type {any} */ let last = null;

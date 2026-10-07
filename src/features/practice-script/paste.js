@@ -11,6 +11,7 @@ import { cardId } from './suggest.js';
 import { MAX_CHARS, LONG_SCRIPT_WORDS, MIN_WORDS, DEFAULT_SECTION_KIND, DEFAULT_REGISTER } from '../../domain/script/config.js';
 import { back, num } from './ui.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
+import { enterMovesTo } from '../../core/keyboard.js';
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
 export function mountPaste(el, ctx) {
@@ -21,6 +22,7 @@ export function mountPaste(el, ctx) {
   const text = /** @type {HTMLTextAreaElement} */ (h('textarea', { class: 'input sc-paste', name: 'script-text', rows: 10, lang: langAttr(), dir: dirAttr(), spellcheck: 'false', autocapitalize: 'off',
     placeholder: t('practice.script.paste.ph') }));
   text.setAttribute('autocorrect', 'off');
+  enterMovesTo(title, () => text);   // Return in the title moves on to the text
   const textField = field({ label: t('practice.script.paste.text'), input: text });
   const found = h('div', { class: 'sc-detect', 'aria-live': 'polite' });
   const date = /** @type {HTMLInputElement} */ (h('input', { class: 'input', type: 'date', name: 'deliver-on', min: c.today }));

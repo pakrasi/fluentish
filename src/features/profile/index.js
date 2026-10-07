@@ -70,7 +70,9 @@ export async function mount(el, ctx) {
   }
 
   function nameField() {
-    const input = h('input', { class: 'input', type: 'text', value: app.profile.name || '', maxlength: '40', autocomplete: 'nickname',
+    const input = h('input', { class: 'input', type: 'text', value: app.profile.name || '', maxlength: '40', autocomplete: 'nickname', enterkeyhint: 'done',
+      // Return saves (change) and closes the keyboard
+      onkeydown: (/** @type {KeyboardEvent} */ e) => { if (e.key === 'Enter' && !e.isComposing) { e.preventDefault(); /** @type {HTMLInputElement} */ (e.target).blur(); } },
       onchange: async (/** @type {Event} */ e) => {
         app.profile.name = /** @type {HTMLInputElement} */ (e.target).value.trim().slice(0, 40);
         await app.adapter.putProfile(app.profile);
@@ -168,7 +170,8 @@ export async function mount(el, ctx) {
     const cv = s.conversation || {};
     const interests = Array.isArray(cv.interests) ? cv.interests : [];
     const cap = Number.isFinite(cv.monthlyCapUsd) && cv.monthlyCapUsd > 0 ? cv.monthlyCapUsd : Conv.MONTHLY_CAP;
-    const input = /** @type {HTMLInputElement} */ (h('input', { class: 'input', id: 'profile-interests', autocomplete: 'off', value: interests.join(', '), maxlength: '400',
+    const input = /** @type {HTMLInputElement} */ (h('input', { class: 'input', id: 'profile-interests', autocomplete: 'off', value: interests.join(', '), maxlength: '400', enterkeyhint: 'done',
+      onkeydown: (/** @type {KeyboardEvent} */ e) => { if (e.key === 'Enter' && !e.isComposing) { e.preventDefault(); input.blur(); } },   // Return saves (change) and closes the keyboard
       onchange: () => { const next = Conv.parseInterests(input.value); write('conversation.interests', next); input.value = next.join(', '); } }));
     const opts = [...new Set([...Conv.CAP_OPTIONS, cap])].sort((a, b) => a - b);
     return h('div', { class: 'stack', id: 'profile-conversation' },
@@ -187,14 +190,16 @@ export async function mount(el, ctx) {
     const setSecret = (/** @type {string} */ k, /** @type {any} */ v) => { store.set('secrets', { ...secrets(), [k]: v }); swapSection(connections()); };
 
     // Claude API key
-    const keyIn = /** @type {HTMLInputElement} */ (h('input', { class: 'input', type: 'password', autocomplete: 'off', spellcheck: 'false', placeholder: secrets().anthropicKey ? t('conn.key.saved') : 'sk-ant-…' }));
+    const keyIn = /** @type {HTMLInputElement} */ (h('input', { class: 'input', type: 'password', autocomplete: 'off', spellcheck: 'false', enterkeyhint: 'done', placeholder: secrets().anthropicKey ? t('conn.key.saved') : 'sk-ant-…' }));
     const keyField = field({ label: t('conn.key'), input: keyIn, hint: t('conn.key.hint') });
-    const keyBox = h('div', { class: 'conn' },
+    const saveKey = () => { const v = keyIn.value.trim(); if (!v) { keyField.setError(t('conn.key.empty')); return; } setSecret('anthropicKey', v); ctx.toast(t('conn.key.savedToast')); };
+    // a form, so Return saves the key
+    const keyBox = h('form', { class: 'conn', onsubmit: (/** @type {Event} */ e) => { e.preventDefault(); saveKey(); } },
       h('h3', null, t('conn.claude')),
       h('p', { class: 'caption status' }, secrets().anthropicKey ? t('conn.key.status.on') : t('conn.key.status.off')),
       keyField,
       h('div', { class: 'row-actions' },
-        h('button', { type: 'button', class: 'btn pressable', onclick: () => { const v = keyIn.value.trim(); if (!v) { keyField.setError(t('conn.key.empty')); return; } setSecret('anthropicKey', v); ctx.toast(t('conn.key.savedToast')); } }, t('conn.save')),
+        h('button', { type: 'submit', class: 'btn pressable' }, t('conn.save')),
         secrets().anthropicKey ? h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => setSecret('anthropicKey', null) }, t('conn.remove')) : null));
 
     sec.append(keyBox, syncBox(), h('p', { class: 'caption' }, t('conn.device')));
@@ -213,9 +218,11 @@ export async function mount(el, ctx) {
     const err = (/** @type {any} */ f, /** @type {string} */ key, /** @type {Record<string, any>} */ p = {}) => { f.setError(t(key, p)); };
 
     // the token field (never shows a token: a password field, emptied after use, nothing saved goes back into it)
-    const tokIn = /** @type {HTMLInputElement} */ (h('input', { class: 'input', type: 'password', name: 'gh-token', autocomplete: 'off', spellcheck: 'false', placeholder: 'github_pat_…' }));
+    const tokIn = /** @type {HTMLInputElement} */ (h('input', { class: 'input', type: 'password', name: 'gh-token', autocomplete: 'off', spellcheck: 'false', enterkeyhint: 'go', placeholder: 'github_pat_…' }));
     const tokField = field({ label: t('conn.token'), input: tokIn, hint: h('span', null, t('conn.token.hintOwn'), ' ', h('a', { href: config.github.newTokenUrl, target: '_blank', rel: 'noopener noreferrer' }, t('conn.token.create'))) });
-    const repoIn = /** @type {HTMLInputElement} */ (h('input', { class: 'input', type: 'text', name: 'gh-repo', value: repo || '', placeholder: 'owner/name', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false' }));
+    const repoIn = /** @type {HTMLInputElement} */ (h('input', { class: 'input', type: 'text', name: 'gh-repo', value: repo || '', placeholder: 'owner/name', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false', enterkeyhint: 'next',
+      // Return on the repository moves on to the token; Return on the token connects (the form below)
+      onkeydown: (/** @type {KeyboardEvent} */ e) => { if (e.key === 'Enter' && !e.isComposing) { e.preventDefault(); tokIn.focus(); } } }));
     const repoField = field({ label: t('conn.repo'), input: repoIn, hint: t('conn.repo.hint') });
 
     /** Check the token with GitHub, then keep both. @param {HTMLElement} btn */
@@ -240,9 +247,10 @@ export async function mount(el, ctx) {
     /** @type {any[]} */ const parts = [h('h3', null, t('conn.sync'))];
     if (state === 'none') {
       status.textContent = t('conn.sync.none');
-      const btn = h('button', { type: 'button', class: 'btn pressable', onclick: () => connectNow(btn) }, t('conn.connect'));
+      const btn = h('button', { type: 'submit', class: 'btn pressable' }, t('conn.connect'));
       parts.push(status, h('p', { class: 'field-hint' }, t('conn.sync.aboutNone')),
-        h('details', { class: 'conn-setup' }, h('summary', null, t('conn.setup')), repoField, tokField, h('div', { class: 'row-actions' }, btn)));
+        h('details', { class: 'conn-setup' }, h('summary', null, t('conn.setup')),
+          h('form', { onsubmit: (/** @type {Event} */ e) => { e.preventDefault(); void connectNow(btn); } }, repoField, tokField, h('div', { class: 'row-actions' }, btn))));
       return h('div', { class: 'conn', id: 'profile-sync' }, parts);
     }
 
@@ -267,8 +275,9 @@ export async function mount(el, ctx) {
       else if (r?.status === 'offline') ctx.toast(t('conn.sync.offline'));
       redraw();
     } }, t('conn.check'));
-    const tokenForm = h('div', { class: 'conn-token', hidden: state === 'connected' }, tokField,
-      h('div', { class: 'row-actions' }, h('button', { type: 'button', class: 'btn pressable', onclick: (/** @type {Event} */ e) => connectNow(/** @type {HTMLElement} */ (e.currentTarget)) }, state === 'connected' ? t('conn.replaceSave') : t('conn.connectDevice'))));
+    const tokBtn = h('button', { type: 'submit', class: 'btn pressable' }, state === 'connected' ? t('conn.replaceSave') : t('conn.connectDevice'));
+    const tokenForm = h('form', { class: 'conn-token', hidden: state === 'connected', onsubmit: (/** @type {Event} */ e) => { e.preventDefault(); void connectNow(tokBtn); } }, tokField,
+      h('div', { class: 'row-actions' }, tokBtn));
     const replaceBtn = h('button', { type: 'button', class: 'btn btn-quiet pressable', 'aria-expanded': 'false', onclick: () => {
       tokenForm.hidden = false; replaceBtn.hidden = true; replaceBtn.setAttribute('aria-expanded', 'true'); tokIn.focus();
     } }, t('conn.replace'));
