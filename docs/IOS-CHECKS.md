@@ -115,7 +115,7 @@ here as ticks, or as an item in `docs/ROADMAP.md`.
 
 ### Conversation on the real API
 - [ ] With a Claude key: a Free chat reply appears word by word (streaming), not all at once after a pause.
-- [ ] Stop during a reply, and leaving the page during a reply: the chat stays usable, and Profile's spend line moved.
+- [ ] Stop during a reply, and leaving the page during a reply: the chat stays usable, and the month's spend in "What is sent" (Cost) went up.
 - [ ] End the session: the feedback card appears; its mistakes are things you actually wrote.
 - [ ] The spend shown matches the provider's usage page for that day, within a few cents.
 
