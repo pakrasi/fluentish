@@ -102,6 +102,13 @@ one-schedule promise; round 4 a scheduler that over-fed new items and crammed th
 that went uncounted, a reading phrase copied into the backup, and B2 collocation grading wrong on a third of a sample.
 Plan a review and a fix pass into every round; they are not optional extras.
 
+**The keyboard is a layout, not an afterthought.** Round 6 found the field he types in hidden on several phone
+screens. Five screens had their own copy of a visualViewport fit (one of them right), seven had a keep-focus copy, six
+had nothing, and none of it was testable. One core module now owns it (variables and a body class, pages size
+themselves in CSS), a lint stops new copies, and an e2e spec fakes the iOS visual viewport (the layout viewport keeps
+its height; only `visualViewport` shrinks and pans) to assert the field and its action are in view at 460 and 400 px.
+Resizing the browser window does not reproduce iOS: it is the other model (`shrink`), and it hides the bug.
+
 **Small things worth keeping.**
 - Keep the docs in the commit that changes the behaviour; drift crept in whenever docs were left for later.
 - Stamp model-written reviews honestly (`reviewedBy: 'model-2pass'`), never as a native reviewer.

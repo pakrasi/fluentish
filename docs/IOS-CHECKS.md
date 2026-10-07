@@ -123,3 +123,15 @@ here as ticks, or as an item in `docs/ROADMAP.md`.
 - [ ] Profile › Goals and week on the phone: tapping a day opens its sheet; minutes and kind change with 44 px
       targets; the keyboard never hides the sheet's buttons; closing it returns focus to that day.
 - [ ] Today's week strip shows the change at once, and a past missed day looks different from a planned future one.
+
+## Keyboard (round 6)
+Run these after a change to `src/core/keyboard.js`, a round's layout, or any screen with a text field. The browser
+tests fake the keyboard (`tests/e2e/keyboard.spec.mjs`); only the phone shows the real one, its QuickType bar and how
+iOS pans. Turn QuickType (predictive text) on for the second check.
+- [ ] Quick sort in Produce, on a word with a two-line prompt ("shut (colloquial: die Tür ist …); closed"): the prompt,
+      the field and Check all show above the keyboard; the tiles come back when the keyboard closes.
+- [ ] A typed round, a card answered wrong, with QuickType on: the sentence to type once shows above the field while
+      you type it.
+- [ ] Conversation: send 3 messages in a row; the keyboard never closes, and the bar (Topics, End) never scrolls away.
+- [ ] Situations › I know this: the field and Check show as the keyboard opens, with the goal right above them.
+- [ ] Word building: 3 typed cards in a row (a verb, a sentence, a word); the keyboard stays up from one to the next.

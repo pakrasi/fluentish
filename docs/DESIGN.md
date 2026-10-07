@@ -193,6 +193,31 @@ Dials (taste-skill): VARIANCE 4, MOTION 5, DENSITY 5. App UI, not a landing page
 - Sections separate with 40px and a hairline, not boxes. The study card is the one elevated surface in a round.
 - Direction: write inline spacing and position with logical properties (`margin-inline-start`, `padding-inline`, `inset-inline-end`, `text-align: start`), never left/right, so a right-to-left course mirrors (`tests/unit/lang-dir.test.mjs` lists the few physical exceptions). Study-language text carries `lang` and `dir` (`core/lang.js`).
 
+## Keyboard mode (round 6)
+
+He types on an iPhone many times a day, so the screen with the keyboard open is a layout of its own, owned by
+`src/core/keyboard.js` (the only module that reads `visualViewport`; `tests/unit/keyboard-lint.test.mjs` keeps it so).
+- **Variables, not measurements.** `--vv-h`, `--vv-top` and `--kb` on `<html>`; `body.kb` while a text field has the
+  focus and a keyboard over 120 px is up. A full-screen typing screen is a `fitToKeyboard()` box (`.kb-fit`: height
+  `--vv-h`, following `--vv-top`), so its last row sits on the keyboard and iOS has nothing to pan.
+- **Chrome gives way.** In `body.kb`: no app bar, tab bar, docks or hints; a round's header is one 32 px row (segments or
+  track, count, End); no safe-area padding at the bottom.
+- **One row on the keyboard.** Every typing screen ends in the field, then at most three 44 px buttons, quiet ones first
+  and the primary at the end. The field sits at the bottom of the column (sticky), and feedback, the answer key and the
+  sentence to retype open **above** it and are revealed (`reveal()`). The prompt is 22 px, at most three lines (a tap
+  shows all of it); a mistake card's task and context two.
+- **Quick sort** in Produce: the Check/Learn tiles become a tally in the header ("Check 3  Learn 1") and a row of Skip,
+  Learn and Check; the mode switch and Undo wait for the keyboard to close.
+- **Pages with a form** keep their chrome; the action row docks on the keyboard (`.kb-dock`), a header that must stay is
+  held at the top of the visible screen (`.kb-stick`, the exam runner), and the page gains room at its end
+  (`--kb-screen`) so a low field scrolls up instead of iOS panning the page. Return does the expected thing: a form
+  submits, a title moves to the next field (`enterMovesTo`), the composer sends; `enterkeyhint` says which.
+- **The keyboard stays up.** One persistent field per round (Word building too); every button on a typing screen keeps
+  the focus (`keep` / `keepFocus`); a field is never made read-only while focused.
+- **Motion.** Only the class toggle animates: what stays on screen slides to its new place in 200 ms on spring-snappy
+  (`motion.js kbShift`), returning hints fade in; reduced motion swaps at once. Nothing animates on the per-frame
+  viewport events.
+
 ## Elevation & Depth
 
 - Flat by default. Three elevations only: `shadow-card` (study card), `shadow-lift` (toast, popovers), `shadow-sheet` (bottom sheets). Shadows are tinted to the neutral, never pure black on light.
