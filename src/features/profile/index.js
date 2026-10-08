@@ -4,6 +4,7 @@
    Practice · Connections (Claude key, results sync device link) · Appearance (theme, motion) · Data (export, import,
    the import summary, delete) · Diagnostics. #/profile/<section> scrolls to that section. */
 import { h, replace } from '../../core/dom.js';
+import { langAttr, dirAttr } from '../../core/lang.js';
 import { shareFile } from '../../services/share.js';
 import { label } from '../../core/clock.js';
 import { config } from '../../core/config.js';
@@ -406,6 +407,13 @@ export async function mount(el, ctx) {
       storage.textContent = !e ? t('diag.storage.memory') : `${e.persisted ? t('diag.storage.persisted') : t('diag.storage.notPersisted')}${e.usage != null ? ` · ${Math.round(e.usage / 1024)} KB` : ''}`;
     });
     const errs = logEntries();
+    // round 7: words he reported in a family card (kv build.reports): on this device only, never sent
+    const reports = /** @type {{form: string, root: string, word: string, day: string}[]} */ (Array.isArray(store.get('build.reports', null)) ? store.get('build.reports', null) : []);
+    const reportsDd = h('dd', null, reports.length
+      ? [h('ul', { class: 'diag-reports' }, reports.map(r => h('li', null, h('span', { lang: langAttr(), dir: dirAttr() }, r.word), ` (${r.root}) · ${r.day}`))),
+        h('p', { class: 'caption' }, t('diag.reportsNote')),
+        h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => { store.set('build.reports', []); replace(reportsDd, t('diag.none')); } }, t('diag.reportsClear'))]
+      : t('diag.none'));
     const log = progressSummary(store, activeCourse(store.get('settings'))?.id || null);
     sec.append(h('p', { class: 'field-hint' }, t('diag.safari')));
     const det = h('details', { class: 'diag-details' }, h('summary', null, t('diag.show')));
@@ -416,7 +424,8 @@ export async function mount(el, ctx) {
       h('dt', null, t('diag.device')), h('dd', { class: 'mono' }, app.device.deviceId),
       h('dt', null, t('diag.events')), h('dd', null, t('diag.eventsVal', { n: store.pending().length })),
       h('dt', null, t('diag.progress')), h('dd', null, t('diag.progressVal', { n: log.days, m: log.estimated })),
-      h('dt', null, t('diag.errors')), h('dd', null, errs.length ? errs.slice(-3).map(e => h('span', { class: 'mono block' }, `${e.where}: ${e.message}`)) : t('diag.none'))));
+      h('dt', null, t('diag.errors')), h('dd', null, errs.length ? errs.slice(-3).map(e => h('span', { class: 'mono block' }, `${e.where}: ${e.message}`)) : t('diag.none')),
+      h('dt', null, t('diag.reports')), reportsDd));
     return sec;
   }
 

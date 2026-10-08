@@ -8,6 +8,7 @@
      PS:<f>.<x>   the sentence with gaps → type the verb pieces; the machine then plays the answer from the infinitive
      SX:<s>       a noun ending → tap der, die or das; an adjective ending → say what it makes, self-graded
      PW:<word>    parent + ending → type the word (a noun with its article)
+     PF:<form>    a family form (round 7): its meaning → type the word (a noun with its article)
    A new card shows first as a study card and comes back later in the round (a learning step), as in every round.
    Scheduling is FSRS (domain/fsrs.js) through data.js saveAnswer: right first try Good (3), a slip Hard (2), wrong
    or shown Again (1); a miss or a learning step comes back +4 then +10 cards, at most three showings. The round
@@ -28,6 +29,9 @@ import { drawTree, landArticle } from './chain.js';
 import { play, css, nudge, pop, reduced, finishAll } from './fx.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
 import { fitToKeyboard, keep, reveal as revealEl, fitPrompt } from '../../core/keyboard.js';
+import { familiesOf } from './family-data.js';
+import { formWord } from './fword.js';
+import { familyLink } from '../shared/family-link.js';
 
 const KINDS = ['review', 'prefixes', 'verbs', 'sentences', 'suffixes', 'drill', 'pick'];
 const SIX_HOURS = 6 * 3600e3;
@@ -41,7 +45,10 @@ export async function mountRound(el, ctx) {
   document.body.classList.add('wb-in-round');
   const restore = () => { document.body.dataset.chrome = 'on'; document.body.classList.remove('wb-in-round'); };
   replace(el, h('div', { class: 'wb wb-round' }, h('h1', { class: 'sr-only' }, t('build.round')), h('p', { class: 'caption' }, t('build.loading'))));
-  let d, k;
+  /** @type {any} */
+  let d;
+  /** @type {any} */
+  let k;
   try { [d, k] = await Promise.all([loadContent(ctx), knowledge(ctx).catch(() => null)]); } catch {
     replace(el, h('div', { class: 'wb stack page-pad' }, h('h1', null, t('build.round')), h('p', null, t('build.loadFailed')), h('a', { class: 'btn pressable', href: '#/practice/build' }, t('build.back'))));
     return restore;
@@ -152,6 +159,12 @@ export async function mountRound(el, ctx) {
     if ((m = /^PS:(.+)\.(\w+)$/.exec(id)) && d.F.has(m[1]) && FORMS.includes(/** @type {any} */ (m[2]))) return typed({ kind: 'ps', f: d.F.get(m[1]), form: m[2] }, isNew);
     if ((m = /^SX:(.+)$/.exec(id)) && d.S.has(m[1])) return sx(d.S.get(m[1]), isNew);
     if ((m = /^PW:(.+)$/.exec(id))) { const hit = pwNode(m[1]); if (hit) return typed({ kind: 'pw', ...hit }, isNew); }
+    if ((m = /^PF:(.+)$/.exec(id))) { const hit = pfForm(id); if (hit) return typed({ kind: 'pf', ...hit }, isNew); }
+    return null;
+  }
+  /** A family form by its PF: card (round 7). @param {string} id */
+  function pfForm(id) {
+    for (const fam of familiesOf(d).values()) { const f = fam.byCard.get(id); if (f) return { f, fam }; }
     return null;
   }
   const meta = (/** @type {boolean} */ isNew, /** @type {string} */ what) => h('div', { class: 'card-meta' }, h('span', { class: 'label' }, isNew ? h('span', { class: 'wb-newtag' }, t('build.new')) : t('build.review'), ` · ${what}`));
@@ -310,13 +323,17 @@ export async function mountRound(el, ctx) {
       kids.push(meta(isNew, t('build.where.sentence')),
         h('p', { class: 'prompt wb-gapped', lang: langAttr(), dir: dirAttr() }, g.parts.map((/** @type {any} */ x, /** @type {number} */ i) => [i && !(x.text === '.' || x.text === '!' || x.text === '?') ? ' ' : '', x.gap ? h('span', { class: 'wb-gap', 'aria-label': t('build.gap') }, ' ') : x.text])),
         h('p', { class: 'prompt-hint' }, h('span', { lang: langAttr(), dir: dirAttr() }, o.f.inf), ` (${o.f.en}) · ${t(`build.form.${o.form}`)}`));
+    } else if (o.kind === 'pf') {
+      const f = o.f;
+      accept = [`${f.art ? `${f.art} ` : ''}${f.word}`, ...(f.inf && f.inf !== f.word ? [f.inf] : [])]; noun = !!f.art;
+      kids.push(meta(isNew, t('build.where.family')), h('p', { class: 'prompt' }, f.clue), h('p', { class: 'prompt-hint' }, t('build.pf.hint', { root: o.fam.root })));
     } else {
       const { n, parent } = o;
       accept = [pwAnswer(n)]; noun = !!n.art;
       kids.push(meta(isNew, t('build.where.word')), h('p', { class: 'prompt', lang: langAttr(), dir: dirAttr() }, pwPrompt(n, parent, d.S.get(n.add))), h('p', { class: 'prompt-hint' }, n.en));
     }
     typedNow = true;
-    input.placeholder = o.kind === 'ps' ? t('build.ph.pieces') : o.kind === 'pv' ? t('build.ph.verb') : noun ? t('build.ph.noun') : t('build.ph.word');
+    input.placeholder = o.kind === 'ps' ? t('build.ph.pieces') : o.kind === 'pv' || (o.kind === 'pf' && o.f.cls === 'verb') ? t('build.ph.verb') : noun ? t('build.ph.noun') : t('build.ph.word');
     input.value = '';
     const fb = h('div', { class: 'wb-fb', 'aria-live': 'polite' });
     const reveal = h('div', { class: 'reveal-answer' }, h('div', null, fb));
@@ -363,7 +380,13 @@ export async function mountRound(el, ctx) {
   function explain(o) {
     if (o.kind === 'pv') {
       const v = o.v;
-      return h('div', { class: 'wb-explain' }, h('p', { class: 'wb-vq' }, wordNode({ pre: v.pre, stem: bare(v.inf).slice(v.pre.length), kind: v.kind, t, big: true })), exampleNode(v), h('p', { class: 'caption' }, v.exEn, ' · ', h('span', { lang: langAttr(), dir: dirAttr() }, `${v.aux} ${v.pp}`)));
+      return h('div', { class: 'wb-explain' }, h('p', { class: 'wb-vq' }, wordNode({ pre: v.pre, stem: bare(v.inf).slice(v.pre.length), kind: v.kind, t, big: true })), exampleNode(v), h('p', { class: 'caption' }, v.exEn, ' · ', h('span', { lang: langAttr(), dir: dirAttr() }, `${v.aux} ${v.pp}`)),
+        familyLink(ctx, v.lemma, { inRound: true, keep }));
+    }
+    if (o.kind === 'pf') {
+      const f = o.f;
+      return h('div', { class: 'wb-explain' }, h('p', { class: 'wb-vq' }, formWord(f, { t, cls: 'is-big' })), f.ex ? h('p', { class: 'wb-ex', lang: langAttr(), dir: dirAttr() }, f.ex) : null,
+        f.exEn ? h('p', { class: 'caption' }, f.exEn) : null, familyLink(ctx, f.lemma, { inRound: true, keep }));
     }
     if (o.kind === 'ps') {
       const tr = tray(o.f, t);
@@ -371,7 +394,7 @@ export async function mountRound(el, ctx) {
       return h('div', { class: 'wb-explain' }, stage, ruleNode(o.f, o.form, t), tileLegend(t));
     }
     const box = h('div', { class: 'wb-tree is-inline' });
-    return h('div', { class: 'wb-explain' }, box, o.n.note ? null : null);
+    return h('div', { class: 'wb-explain' }, box, familyLink(ctx, o.n.lemma, { inRound: true, keep }));
   }
   /** Motion after the reveal: the machine plays the answer from the infinitive; the chain grows the word. @param {any} o @param {HTMLElement} fb */
   function afterReveal(o, fb) {
@@ -452,6 +475,7 @@ export async function mountRound(el, ctx) {
     if ((m = /^PS:(.+)\.(\w+)$/.exec(id))) { const f = d.F.get(m[1]); return f ? sentenceOf(f.forms[m[2]] || [], f.kind) : id; }
     if ((m = /^SX:(.+)$/.exec(id))) return d.S.get(m[1])?.label || id;
     if ((m = /^PW:(.+)$/.exec(id))) { const hit = pwNode(m[1]); return hit ? pwAnswer(hit.n) : m[1]; }
+    if (/^PF:/.test(id)) { const hit = pfForm(id); return hit ? `${hit.f.art ? `${hit.f.art} ` : ''}${hit.f.word}` : id.slice(3); }
     return id;
   }
   function drawNothing() {
