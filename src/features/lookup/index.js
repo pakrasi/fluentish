@@ -7,7 +7,7 @@
    words/<lemma> (word sheet), grammar/<topic> (a B1 topic). Search and sub-filters update the address in place with
    history.replaceState, so typing never remounts the view and a copied link reopens the same results.
    Content and the search index are built once per session (data.js); long lists render in pages (ui.js paged). */
-import { h, replace, on, announce } from '../../core/dom.js';
+import { h, replace, on, announce, append } from '../../core/dom.js';
 import { label } from '../../core/clock.js';
 import { notice, seg } from '../../core/ui.js';
 import { icon } from '../../core/icons.js';
@@ -33,6 +33,9 @@ const ALL_LIMIT = 5;
 const LEVELS = ['A1', 'A2', 'B1', 'B2'];
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
+/** Append children, skipping null and false (Element.append(null) writes the text "null"). @param {Node} p @param {...any} xs */
+const add = (p, ...xs) => append(p, xs);
+
 export async function mount(el, ctx) {
   const { t, store } = ctx;
   const route = parseRoute(ctx.params.rest, ctx.query);
@@ -210,7 +213,7 @@ export async function mount(el, ctx) {
   function wordSheet(id, g, r) {
     const wrap = h('div', { class: 'lookup lk-sheet' }, back(hashFor({ tab: 'words', opts: { ...langOpt(), w: g ? null : 'all' } })));
     if (!g && !r) {
-      wrap.append(h('h1', null, de(id)), h('p', { class: 'lk-empty' }, t('lookup.sheet.notFound', { id })));
+      add(wrap, h('h1', null, de(id)), h('p', { class: 'lk-empty' }, t('lookup.sheet.notFound', { id })));
       return wrap;
     }
     // a view counts as "seen" for the knowledge score (data/seen.js)
@@ -223,31 +226,31 @@ export async function mount(el, ctx) {
       plural && plural !== '–' ? [t('lookup.sheet.pluralLabel'), ' ', de(plural)] : null,
       r?.level ? t('lookup.sheet.level', { level: r.level }) : null,
     ].filter(Boolean);
-    wrap.append(
+    add(wrap, 
       h('div', { class: 'lk-sheet-head' }, h('h1', null, de(headParts(g, r, hw))), sayBtn(hw)),
       facts.length ? h('p', { class: 'lk-facts' }, facts.map((f, i) => [i ? ', ' : null, f])) : null);
     const meaning = g?.gloss || (r ? r.en.join(', ') : null);
     const fromList = !!(g && !g.gloss && r);   // a captured word still waiting: the word list already knows its meaning
-    wrap.append(meaning ? h('p', { class: 'lk-meaning' }, meaning) : h('p', { class: 'lk-meaning is-muted' }, t('lookup.sheet.waiting')),
+    add(wrap, meaning ? h('p', { class: 'lk-meaning' }, meaning) : h('p', { class: 'lk-meaning is-muted' }, t('lookup.sheet.waiting')),
       fromList ? h('p', { class: 'caption' }, t('lookup.sheet.fromList')) : null);
-    if (g?.note) wrap.append(h('p', { class: 'lk-note' }, de(g.note)));
+    if (g?.note) add(wrap, h('p', { class: 'lk-note' }, de(g.note)));
     const stats = [g?.exam_days ? t('lookup.sheet.tests', { n: g.exam_days, total: testsTotal }) : null, band ? t(`lookup.sheet.freq.${band}`) : null].filter(Boolean);
     if (g) {
       const s = wordState(g);
       const state = fromList && s.cls === 'is-waiting' ? null : s;
-      wrap.append(h('div', { class: 'lk-status' },
+      add(wrap, h('div', { class: 'lk-status' },
         state ? h('span', { class: ['lk-state', state.cls] }, state.text) : null, stats.length ? h('span', { class: 'caption' }, stats.join(', ')) : null));
-      if (g.gloss) wrap.append(h('div', { class: 'row-actions' }, h('a', { class: 'btn pressable', href: '#/practice/round?kind=area:words' }, t('lookup.sheet.practise'))));
-    } else if (stats.length) wrap.append(h('p', { class: 'caption' }, stats.join(', ')));
+      if (g.gloss) add(wrap, h('div', { class: 'row-actions' }, h('a', { class: 'btn pressable', href: '#/practice/round?kind=area:words' }, t('lookup.sheet.practise'))));
+    } else if (stats.length) add(wrap, h('p', { class: 'caption' }, stats.join(', ')));
 
     const exs = g ? examples(g) : r?.ex ? [{ de: r.ex, en: r.exen, form: r.w }] : [];
-    if (exs.length) wrap.append(h('section', { class: 'lk-sec' }, h('h2', null, t('lookup.sheet.examples')),
+    if (exs.length) add(wrap, h('section', { class: 'lk-sec' }, h('h2', null, t('lookup.sheet.examples')),
       h('ul', { class: 'lk-exs' }, exs.map(x => h('li', { class: 'lk-ex' }, sayBtn(x.de), h('div', null, de(markForm(x.de, x.form)), x.en ? h('div', { class: 'lk-sub' }, x.en) : null,
         x.exam ? h('div', { class: 'caption' }, t('lookup.sheet.inTest')) : null))))));
 
     if (g) {
       const src = sources(g, n => t('exam.test', { n }));
-      wrap.append(h('section', { class: 'lk-sec' }, h('h2', null, t('lookup.sheet.fromTest')),
+      add(wrap, h('section', { class: 'lk-sec' }, h('h2', null, t('lookup.sheet.fromTest')),
         h('ul', { class: 'lk-plain' }, src.map(s => h('li', null, s))),
         g.forms.length ? h('p', { class: 'lk-note' }, t('lookup.sheet.seen'), ': ', de(g.forms.join(', '))) : null));
       const d = details(g);
@@ -261,11 +264,11 @@ export async function mount(el, ctx) {
         part('etymology', d.etymology ? h('p', null, d.etymology) : null),
         part('confusions', d.confusions ? h('p', null, d.confusions) : null),
       ].filter(Boolean);
-      wrap.append(h('section', { class: 'lk-sec' }, h('h2', null, t('lookup.sheet.details')), parts.length ? parts : h('p', { class: 'lk-empty' }, t('lookup.sheet.noDetails'))));
+      add(wrap, h('section', { class: 'lk-sec' }, h('h2', null, t('lookup.sheet.details')), parts.length ? parts : h('p', { class: 'lk-empty' }, t('lookup.sheet.noDetails'))));
     }
     const otherMeaning = g && r && r.en.join(', ') !== g.gloss ? r.en.join(', ') : null;
     if (r && (r.forms || otherMeaning)) {
-      wrap.append(h('section', { class: 'lk-sec' }, h('h2', null, t('lookup.sheet.wordList')),
+      add(wrap, h('section', { class: 'lk-sec' }, h('h2', null, t('lookup.sheet.wordList')),
         r.forms ? h('p', null, h('span', { class: 'caption' }, t('lookup.sheet.forms'), ' '), de(r.forms)) : null,
         otherMeaning ? h('p', { class: 'lk-note is-en' }, otherMeaning) : null));
     }
@@ -282,9 +285,9 @@ export async function mount(el, ctx) {
     if (!alive) return cleanup;
     const tp = gr.topics.find((/** @type {any} */ x) => x.id === id);
     const wrap = h('div', { class: 'lookup lk-sheet' }, back(hashFor({ tab: 'grammar', opts: langOpt() })));
-    if (!tp) { wrap.append(h('h1', null, t('lookup.grammar.topics')), h('p', { class: 'lk-empty' }, t('lookup.grammar.notFound', { id }))); replace(el, wrap); return cleanup; }
+    if (!tp) { add(wrap, h('h1', null, t('lookup.grammar.topics')), h('p', { class: 'lk-empty' }, t('lookup.grammar.notFound', { id }))); replace(el, wrap); return cleanup; }
     const conf = tp.confusable.map((/** @type {string} */ c) => gr.topics.find((/** @type {any} */ x) => x.id === c)).filter(Boolean);
-    wrap.append(
+    add(wrap, 
       h('h1', null, tp.name),
       h('p', { class: 'caption' }, t('lookup.grammar.rules', { n: tp.rules.length })),
       tp.trap ? notice({ kind: 'warning', children: [h('p', { class: 'notice-title' }, t('lookup.grammar.trap')), h('p', null, tp.trap.rule),
@@ -460,16 +463,16 @@ export async function mount(el, ctx) {
     const out = h('div', null, toggle, recheck, await examHead());
     // a local-only profile (no results repository, data/connection.js) has its own saved words only: no link notice
     if ((mw.status === 'nolink' && resultsRepo(store)) || mw.status === 'auth') {
-      out.append(notice({ kind: mw.status === 'auth' ? 'warning' : 'info', children: [
+      add(out, notice({ kind: mw.status === 'auth' ? 'warning' : 'info', children: [
         h('p', { class: 'notice-title' }, t('lookup.words.link.title')),
         h('p', null, t(mw.status === 'auth' ? 'lookup.words.auth' : 'lookup.words.link.body')),
         h('div', { class: 'notice-actions' }, h('a', { class: 'btn pressable', href: '#/profile/connections' }, t('lookup.words.link.action')))] }));
     } else if (mw.status !== 'ok') {
-      out.append(notice({ kind: 'warning', children: [h('p', null, t('lookup.words.net')),
+      add(out, notice({ kind: 'warning', children: [h('p', null, t('lookup.words.net')),
         h('div', { class: 'notice-actions' }, h('button', { type: 'button', class: 'btn pressable', onclick: async () => { await D.myWords(store, { force: true }); draw(); } }, t('lookup.retry')))] }));
     }
     if (!mw.groups.length) {
-      if (mw.status === 'ok') out.append(h('p', { class: 'lk-empty' }, t('lookup.words.empty')));
+      if (mw.status === 'ok') add(out, h('p', { class: 'lk-empty' }, t('lookup.words.empty')));
       return out;
     }
     prefetchAudio(ctx.content, ctx.store);
@@ -480,7 +483,7 @@ export async function mount(el, ctx) {
     const rows = mw.groups.filter(g => (!test || g.days.includes(test)) && (!freqOnly || frequent(g)));
     const waiting = mw.groups.filter(g => !g.gloss).length;
     const later = mw.groups.filter(g => triage(g, phase, wordmap) === 'later').length;
-    out.append(
+    add(out, 
       caption([t('lookup.words.count', { n: mw.groups.length, count: num(mw.groups.length) }), waiting ? t('lookup.words.waiting', { n: waiting }) : null].filter(Boolean).join(' · ')),
       later || mw.local ? caption([later ? t('lookup.words.later', { n: later }) : null, mw.local ? t('lookup.words.local', { n: mw.local }) : null].filter(Boolean).join(', ')) : null,
       h('div', { class: 'lk-filters' },
