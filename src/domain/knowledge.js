@@ -13,7 +13,7 @@
      deck clusters  W:<id> as is, CO:<a>~<b> → W:<b> (the opposite he types), CF:<id> → W:<id>, CP:<gap> → the gap's
                     preposition
      deck build     PX:<p>.see|say → PX:<p> (the prefix); PD:/PV:<verb> → W:<lemma> when the verb is in the word list,
-                    else PV:<verb>; PW:<word> → W:<id> likewise; PS: and SX: as they are (domain/wordbuild.js)
+                    else PV:<verb>; PW:<word> and PF:<form> → W:<id> likewise; PS: and SX: as they are (domain/wordbuild.js)
    Evidence from outside the schedule:
      Igloo          doors.know.v1 (Test results: known / shaky / unknown on a day) and doors.srs.v1 (Drill's SM-2
                     intervals), keyed '<lang>|<item id>', days as epoch days; read-only legacy data
@@ -80,7 +80,7 @@ const TEST = /** @type {Record<string, {R: number, S: number}>} */ ({ known: { R
  * @param {{id: string, w: string, zipf?: number}[]} [o.words]   the German word list: unifies BW:/SW: slugs with W: ids
  * @param {Record<string, string>} [o.chunkOf]   B1 phrase or situation id → chunk id (b1 items' chunk twins, SS: ck)
  * @param {Record<string, string>} [o.gapPrep]   cluster gap id → preposition word id
- * @param {{verbLemma?: Record<string, string>, wordLemma?: Record<string, string>}} [o.build]   Word building: verb id → word id, PW word → word id
+ * @param {{verbLemma?: Record<string, string>, wordLemma?: Record<string, string>, formLemma?: Record<string, string>}} [o.build]   Word building: verb id → word id, PW word → word id
  * @returns {(id: string, deck?: string) => string | null}
  */
 export function resolver({ words = [], chunkOf = {}, gapPrep = {}, build = {} } = {}) {
@@ -100,7 +100,7 @@ export function resolver({ words = [], chunkOf = {}, gapPrep = {}, build = {} } 
     if (tag === 'CO') { const to = s.slice(3).split('~')[1]; return to ? `W:${to}` : null; }
     if (tag === 'CF') return `W:${s.slice(3)}`;
     if (tag === 'CP') { const p = gapPrep[s.slice(3)]; return p ? `W:${p}` : null; }
-    if (tag === 'PX' || tag === 'PD' || tag === 'PV' || tag === 'PS' || tag === 'SX' || tag === 'PW') return buildItem(s);
+    if (tag === 'PX' || tag === 'PD' || tag === 'PV' || tag === 'PS' || tag === 'SX' || tag === 'PW' || tag === 'PF') return buildItem(s);
     if (chunkOf[s]) return `K:${chunkOf[s]}`;
     if (!tag && !/^[A-Z]{1,2}:/.test(s)) return null;
     return s || null;

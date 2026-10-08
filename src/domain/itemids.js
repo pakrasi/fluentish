@@ -23,6 +23,7 @@
      PS:<frame>.<form> Word building: the verb pieces in a sentence frame  deck 'build'
      SX:<suffix>      Word building: an ending and the article it gives   deck 'build'
      PW:<word>        Word building: parent word + ending → the new word  deck 'build'
+     PF:<form>        Word building: a family form with no PV/PW card: meaning → the word (round 7)  deck 'build'
    Cluster study also schedules W:<word id> (meaning → word) in deck 'clusters'. Script mode keeps SR: (section
    rehearsals) and SW:<slug> (script words not in the list) in deck 'script'.
    Reading (round 4) saves to deck '<lang>:read': W:<word id> for a listed word, and
@@ -58,6 +59,7 @@ export const TAGS = {
   PS: { kind: 'frame', area: 'build' },
   SX: { kind: 'suffix', area: 'build' },
   PW: { kind: 'pword', area: 'build' },
+  PF: { kind: 'pword', area: 'build' },
   RW: { kind: 'word', area: 'words' },
   RP: { kind: 'phrase', area: 'speaking' },
 };

@@ -15,7 +15,7 @@
      4. suffixes: the rule cards (SX:) open after twelve verbs were seen; a rule's words (PW:) after the rule card's
         first Good. A participle used as an adjective has no rule card and opens with the rule cards.
    New items of the day: the deck's own cap (domain/budget.js buildBudget), taken from the four streams in turn. */
-import { CORE, FORMS, hasSee, pwNodes, bare } from './wordbuild.js';
+import { CORE, FORMS, hasSee, pwNodes, bare, pfIds } from './wordbuild.js';
 
 /** @typedef {import('./wordbuild.js').BuildContent} BuildContent */
 /** @typedef {Record<string, any>} Cards  card id → FSRS record (deck 'build') */
@@ -36,7 +36,7 @@ export const seen = rec => !!(rec && rec.reps);
 /** A card that has had a Good (or Easy) answer: graduated, or a 3+ in its log. @param {any} rec */
 export const firstGood = rec => seen(rec) && (rec.learn == null || (rec.hist || []).some((/** @type {any[]} */ h) => h[1] >= 3));
 /** The stream a card id belongs to. @param {string} id @returns {Stream | null} */
-export const streamOf = id => (/^PX:/.test(id) ? 'px' : /^P[DV]:/.test(id) ? 'verbs' : /^PS:/.test(id) ? 'ps' : /^(SX|PW):/.test(id) ? 'sx' : null);
+export const streamOf = id => (/^PX:/.test(id) ? 'px' : /^P[DV]:/.test(id) ? 'verbs' : /^PS:/.test(id) ? 'ps' : /^(SX|PW|PF):/.test(id) ? 'sx' : null);
 
 /**
  * The open new items of each stream, in order.
@@ -202,6 +202,7 @@ function cardIdsOf(c) {
   for (const f of c.frames) for (const form of FORMS) if (f.forms[form]) out.push(`PS:${f.id}.${form}`);
   for (const s of c.suffixes) out.push(`SX:${s.id}`);
   for (const n of pwNodes(c)) out.push(`PW:${n.word}`);
+  out.push(...pfIds(c));
   return out;
 }
 

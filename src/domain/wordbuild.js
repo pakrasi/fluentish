@@ -27,7 +27,10 @@
      PV:<verb>    English → type the infinitive                        item W:<lemma>, else PV:<verb>
      PS:<frame>.<form>  type the verb pieces into the sentence         item as is
      SX:<suffix>  the ending → its article (or what it makes)          item as is
-     PW:<word>    parent + ending → type the word (with its article)   item W:<id> when listed, else as is */
+     PW:<word>    parent + ending → type the word (with its article)   item W:<id> when listed, else as is
+     PF:<form>    a family form (content key families) with no PV or PW card: meaning → the word, with its article
+                  (round 7, domain/wordbuild-family.js)                  item W:<form> when <form> is a word-list id, else as is */
+import { familyModel } from './wordbuild-family.js';
 
 /** @typedef {'s'|'i'|'d'} PrefixKind */
 /** @typedef {[string, string]} Tile */
@@ -143,7 +146,16 @@ export function cardIds(c) {
   for (const f of c.frames) for (const form of FORMS) if (f.forms[form]) out.push(`PS:${f.id}.${form}`);
   for (const s of c.suffixes) out.push(`SX:${s.id}`);
   for (const w of pwNodes(c)) out.push(`PW:${w.word}`);
+  out.push(...pfIds(c));
   return [...new Set(out)];
+}
+
+/** The PF: card ids of the families key: forms with no PV or PW card. @param {BuildContent} c */
+export function pfIds(c) {
+  if (!(/** @type {any} */ (c).families || []).length) return [];
+  /** @type {string[]} */ const out = [];
+  for (const fam of familyModel(c).values()) for (const id of fam.byCard.keys()) if (id.startsWith('PF:')) out.push(id);
+  return out;
 }
 
 /** A prefix has a motion card when it sits on the compass and has a picture. @param {Prefix} p */
@@ -158,10 +170,11 @@ export function pwNodes(c) {
 
 /**
  * Card id → knowledge item id for deck 'build' (data/knowledge.js passes this to domain/knowledge.js resolver()).
- * @param {{verbLemma?: Record<string, string>, wordLemma?: Record<string, string>}} maps verb id → word id, PW word → word id
+ * @param {{verbLemma?: Record<string, string>, wordLemma?: Record<string, string>, formLemma?: Record<string, string>}} maps verb id → word id,
+ *   PW word → word id, PF form → word id
  * @returns {(id: string) => string | null}
  */
-export function itemResolver({ verbLemma = {}, wordLemma = {} } = {}) {
+export function itemResolver({ verbLemma = {}, wordLemma = {}, formLemma = {} } = {}) {
   return id => {
     const s = String(id || '');
     let m = /^PX:([^.]+)\.(see|say)$/.exec(s);
@@ -170,6 +183,8 @@ export function itemResolver({ verbLemma = {}, wordLemma = {} } = {}) {
     if (m) return verbLemma[m[1]] ? `W:${verbLemma[m[1]]}` : `PV:${m[1]}`;
     m = /^PW:(.+)$/.exec(s);
     if (m) return wordLemma[m[1]] ? `W:${wordLemma[m[1]]}` : s;
+    m = /^PF:(.+)$/.exec(s);
+    if (m) return formLemma[m[1]] ? `W:${formLemma[m[1]]}` : s;
     if (/^(PS|SX):./.test(s)) return s;
     return null;
   };
@@ -181,7 +196,9 @@ export function lemmaMaps(c) {
   /** @type {Record<string, string>} */ const wordLemma = {};
   for (const v of c.verbs) if (v.lemma) verbLemma[v.id] = v.lemma;
   for (const n of pwNodes(c)) if (n.lemma) wordLemma[n.word] = n.lemma;
-  return { verbLemma, wordLemma };
+  /** @type {Record<string, string>} */ const formLemma = {};
+  for (const id of pfIds(c)) { const form = id.slice(3); const f = (/** @type {any[]} */ (/** @type {any} */ (c).families || [])).flatMap(x => x.forms || []).find(x => x.id === form); if (f && f.lemma) formLemma[form] = f.lemma; }
+  return { verbLemma, wordLemma, formLemma };
 }
 
 /**
