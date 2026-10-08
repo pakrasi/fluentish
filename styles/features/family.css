@@ -153,7 +153,7 @@
   .fv-grid { grid-template-columns: minmax(0, 440px) minmax(0, 1fr); align-items: start; }
   .fv-side { position: sticky; top: var(--s-4); }
   .fv-h1 h1 { font-size: 48px; }
-  .fv-chips { margin-inline: 0; padding-inline: 0; flex-wrap: wrap; overflow: visible; }
+  .fv-chips { margin-inline: 0; padding-inline: 0; }   /* 40 roots: one scrolling row, so the ring stays in view */
   .fv-main > .fv-sec:first-child, .fv-main > .fv-head:first-child { margin-top: var(--s-6); }
 }
 /* inside a sheet over a round: one column */
