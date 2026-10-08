@@ -23,6 +23,8 @@
 .fv-en { font: 400 19px/1.3 var(--font-display); color: var(--ink-2); }
 .fv-meta { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; margin-top: 6px; font: 400 13px/1.4 var(--font-ui); color: var(--ink-3); }
 .fv-fq { display: inline-flex; gap: 6px; align-items: center; }
+.fv-maplink { display: inline-flex; align-items: center; gap: 2px; min-height: var(--tap); margin-block: -12px; color: var(--accent-ink); text-decoration: none; font: 500 13px/1 var(--font-ui); }
+.fv-maplink:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
 .fv-freq { display: inline-flex; gap: 2px; align-items: flex-end; height: 10px; }
 .fv-freq i { width: 3px; border-radius: 1px; background: var(--cell-empty); }
 .fv-freq i:nth-child(1) { height: 4px; } .fv-freq i:nth-child(2) { height: 5.5px; } .fv-freq i:nth-child(3) { height: 7px; } .fv-freq i:nth-child(4) { height: 8.5px; } .fv-freq i:nth-child(5) { height: 10px; }

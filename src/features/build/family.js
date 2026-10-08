@@ -173,9 +173,11 @@ export async function mountFamily(el, ctx, rootArg, { sheet = false, close } = {
       const hw = Math.max(20, ((v.pre[0] || v.word).length * 8 + 12) / 2) + 6, hh = 13 + 14;
       const ca = Math.cos(a), sa = Math.sin(a);
       const reach = Math.min(Math.abs(ca) > 1e-3 ? hw / Math.abs(ca) : Infinity, Math.abs(sa) > 1e-3 ? hh / Math.abs(sa) : Infinity) + 4;
+      // a row across the top and bottom tiles and the diagonals, a column at the sides
+      const across = Math.abs(sa) > 0.5;
       ks.forEach((kf, i) => {
         const off = (i - (ks.length - 1) / 2) * 11;
-        const kx = p.x + ca * reach - sa * off, ky = p.y + sa * reach + ca * off;
+        const kx = across ? p.x + off : p.x + ca * reach, ky = across ? p.y + Math.sign(sa) * (hh + 4) : p.y + off;
         svg.append(s('rect', { class: `fv-kid is-${st(kf)}`, x: kx - 4, y: ky - 4, width: 8, height: 8, rx: 1.5 }));
       });
       wrap.append(verbButton(v, (preCount.get(v.pre[0] || '') || 0) > 1, { class: 'fv-node', style: { left: `${(p.x / W) * 100}%`, top: `${(p.y / H) * 100}%` } }));
@@ -330,6 +332,14 @@ export async function mountFamily(el, ctx, rootArg, { sheet = false, close } = {
     const hide = /** @type {(HTMLElement | null)[]} */ ([dot, joint, weld, art, add]);
     hide.forEach(x => { if (x) x.style.opacity = '0'; });
     let ghost = null;
+    // a noun from a verb takes its capital when its ending lands (a frame read "Ausstellen" before -ung came)
+    /** @type {Text | null} */ let capText = null; let capWas = '';
+    if (step === 'suf' && f.cls === 'noun' && parent && parent.cls !== 'noun') {
+      const first = /** @type {HTMLElement} */ (preEls[0] || baseEl);
+      const walker = document.createTreeWalker(first, NodeFilter.SHOW_TEXT);
+      capText = /** @type {Text | null} */ (walker.nextNode());
+      if (capText && capText.data) { capWas = capText.data; capText.data = capWas.charAt(0).toLowerCase() + capWas.slice(1); }
+    }
     if (step === 'suf' && parent && parent.cls === 'verb' && add) {
       // the parent's -en leaves as the ending comes
       ghost = h('span', { class: 'fv-pc fv-ghost', 'aria-hidden': 'true' }, parent.word.endsWith('n') ? parent.word.slice(-2) : '');
@@ -343,6 +353,7 @@ export async function mountFamily(el, ctx, rootArg, { sheet = false, close } = {
       if (step === 'pre') await play(add, [{ transform: 'translate(-46px, 0)', opacity: 0 }, { transform: 'translate(-22px, -18px)', opacity: 1, offset: 0.5 }, { transform: 'none', opacity: 1 }], { duration: 520, easing: css('--ease-out') });
       else await play(add, [{ transform: 'translateX(18px)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 420, easing: css('--spring-snappy') });
     }
+    if (capText && capWas) capText.data = capWas;
     if (joint) { joint.style.opacity = ''; play(joint, [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }], { duration: 240, easing: css('--spring-snappy') }); play(preEls[preEls.length - 1], [{ transform: 'translateY(-3px)' }, { transform: 'none' }], { duration: 240, easing: css('--spring-snappy') }); }
     if (weld) { weld.style.opacity = ''; play(weld, [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 260, delay: 120, easing: css('--ease-out') }); }
     if (parent && parent.cls !== f.cls) {
@@ -452,7 +463,9 @@ export async function mountFamily(el, ctx, rootArg, { sheet = false, close } = {
         h('div', { class: 'fv-h1' }, h('h1', { lang: langAttr(), dir: dirAttr() }, root), h('span', { class: 'fv-en' }, fam.en)),
         h('p', { class: 'fv-meta' }, h('span', null, typeName('verb')), r0.level ? h('span', { class: 'tnum' }, r0.level) : null,
           f0 ? h('span', { class: 'fv-fq' }, freqEl(r0.zipf), t(`word.freq.${f0.band}`)) : null,
-          rc ? h('span', { lang: langAttr(), dir: dirAttr() }, `${rc.pres3} · ${rc.pret} · ${rc.aux} ${rc.pp}`) : null),
+          rc ? h('span', { lang: langAttr(), dir: dirAttr() }, `${rc.pres3} · ${rc.pret} · ${rc.aux} ${rc.pp}`) : null,
+          // the Map's group of this family, in view at the top (it was only at the end of the tree)
+          !sheet && mapGroups.has(root) ? h('a', { class: 'fv-maplink pressable', href: `#/lookup/map/family/${encodeURIComponent(root)}` }, t('build.family.onMap'), icon('next', { size: 14 })) : null),
         seg,
         chipRow(t('build.family.roots'), [...fams.keys()].map(x => [x, x]), root, v => { root = v; openId = null; draw(); }),
         h('div', { class: 'fv-ring-card' }, ring(fam), summary(fam), legend()));
