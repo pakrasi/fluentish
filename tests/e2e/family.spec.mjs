@@ -40,7 +40,7 @@ async function solveOne(page) {
   const s = await page.evaluate(() => { const x = /** @type {any} */ (window).__family; const f = x.forms[x.idx]; return { card: x.day.cards[x.idx], pre: f.pre[0] || null, suf: f.suf[0] || null, art: f.art || null, join: f.cls === 'verb' ? f.join : null }; });
   const tiles = page.getByRole('region', { name: "Today's family" });
   if (s.pre) await tiles.getByRole('button', { name: `Prefix ${s.pre}-`, exact: true }).click();
-  if (s.suf) await tiles.getByRole('button', { name: `Ending -${s.suf}`, exact: true }).click();
+  if (s.suf) await tiles.locator(`button[data-suf="${s.suf}"]`).click();
   if (s.art) await tiles.getByRole('button', { name: `Article ${s.art}`, exact: true }).click();
   await tiles.getByRole('button', { name: /^Check/ }).click();
   if (s.join) {
@@ -152,7 +152,7 @@ test('inside a round the family opens as a sheet over it, and the round goes on'
   const sheet = page.getByRole('dialog', { name: 'Word family' });
   await expect(sheet).toBeVisible();
   await expect(sheet.getByRole('heading', { level: 1, name: 'stellen' })).toBeVisible();
-  await expect(sheet.locator('.fv-row[data-id="ausstellen"] > .fv-rowbtn')).toHaveAttribute('aria-expanded', 'true');
+  await expect(sheet.locator('.fv-row[data-id="ausstellen.verb"] > .fv-rowbtn')).toHaveAttribute('aria-expanded', 'true');
   await checkA11y(page, 'Word family sheet');
   await page.keyboard.press('Escape');
   await expect(sheet).toHaveCount(0);

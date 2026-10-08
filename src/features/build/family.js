@@ -110,7 +110,7 @@ export async function mountFamily(el, ctx, rootArg, { sheet = false, close } = {
   /* ---------------- the ring ---------------- */
   /** @param {Family} fam */
   function ring(fam) {
-    const verbs = kidsOf(fam, fam.root).filter(f => f.cls === 'verb');
+    const verbs = kidsOf(fam, fam.forms[0].id).filter(f => f.cls === 'verb');
     /** @type {Map<string, number>} */ const place = new Map();
     const used = new Set();
     for (const v of verbs) if (ANG[v.pre[0]] != null && v.join === 's' && !used.has(ANG[v.pre[0]])) { place.set(v.id, ANG[v.pre[0]]); used.add(ANG[v.pre[0]]); }
@@ -119,8 +119,16 @@ export async function mountFamily(el, ctx, rootArg, { sheet = false, close } = {
     // the between places, spread round the ring (opposite sides in turn), then the compass places left free
     const SPREAD = [-67.5, 112.5, 22.5, -157.5, -22.5, 157.5, 67.5, -112.5];
     const slots = [...SPREAD.filter(a => free.includes(a)), ...free.filter(a => !SPREAD.includes(a))];
-    verbs.filter(v => !place.has(v.id)).sort((a, b) => (a.join === 's' ? 0 : 1) - (b.join === 's' ? 0 : 1)).forEach((v, i) => place.set(v.id, slots[i % Math.max(1, slots.length)]));
-    const r = verbs.length > 14 ? 118 : 110, rk = r + 32;
+    // more verbs than places (16): the most common inside, the rest on an outer ring between them, and the nouns'
+    // squares left to the tree (WORDGAMES-DESIGN §10: the ring crowds above 16 verbs)
+    /** @type {Set<string>} */ const outer = new Set();
+    const rest = verbs.filter(v => !place.has(v.id)).sort((a, b) => (a.join === 's' ? 0 : 1) - (b.join === 's' ? 0 : 1) || (b.zipf || 0) - (a.zipf || 0));
+    const inner = rest.slice(0, slots.length), over = rest.slice(slots.length).sort((a, b) => (b.zipf || 0) - (a.zipf || 0));
+    inner.forEach((v, i) => place.set(v.id, slots[i]));
+    const OUT = [-78.75, 101.25, 11.25, -168.75, -33.75, 146.25, 56.25, -123.75, -11.25, 168.75, 33.75, -146.25];
+    over.forEach((v, i) => { place.set(v.id, OUT[i % OUT.length]); outer.add(v.id); });
+    const crowded = verbs.length > 16;
+    const r = verbs.length > 14 ? 104 : 110, rk = r + 32, ro = 146;
     const svg = s('svg', { class: 'fv-ring-svg', viewBox: `0 0 ${W} ${H}`, 'aria-hidden': 'true', focusable: 'false' });
     const wrap = h('div', { class: 'fv-ring', role: 'group', 'aria-label': t('build.family.ringName', { root: fam.root, n: verbs.length }) }, svg);
     const pos = (/** @type {number} */ a, /** @type {number} */ rad, k2 = 1) => ({ x: CX + rad * Math.cos(a), y: CY + rad * k2 * Math.sin(a) });
@@ -128,10 +136,10 @@ export async function mountFamily(el, ctx, rootArg, { sheet = false, close } = {
     const order = [...verbs].sort((a, b) => (((/** @type {number} */ (place.get(a.id)) + 90) + 360) % 360) - (((/** @type {number} */ (place.get(b.id)) + 90) + 360) % 360));
     for (const v of order) {
       const a = /** @type {number} */ (place.get(v.id)) * Math.PI / 180;
-      const p = pos(a, r);
+      const p = pos(a, outer.has(v.id) ? ro : r, outer.has(v.id) ? 0.98 : 1);
       const c0 = pos(a, 50, 0.5);
       svg.append(s('line', { class: ['fv-spoke', v.join === 'i' && 'is-i'].filter(Boolean).join(' '), x1: c0.x, y1: c0.y, x2: p.x - 22 * Math.cos(a), y2: p.y - 14 * Math.sin(a) }));
-      const ks = kidsOf(fam, v.id);
+      const ks = crowded ? [] : kidsOf(fam, v.id);
       ks.forEach((kf, i) => {
         const spread = (i - (ks.length - 1) / 2) * 0.15;
         const kp = pos(a + spread, rk, 0.94);
@@ -197,7 +205,7 @@ export async function mountFamily(el, ctx, rootArg, { sheet = false, close } = {
       items.forEach(f => walk(f, 0, ul));
       out.push(h('section', { class: 'fv-sec', 'aria-labelledby': `fv-h-${id}` }, h('h2', { id: `fv-h-${id}` }, title), h('p', { class: 'fv-rule' }, rule), ul));
     };
-    const kids = kidsOf(fam, fam.root);
+    const kids = kidsOf(fam, fam.forms[0].id);
     sec('s', t('build.family.splitsOff'), t('build.family.splitsRule'), kids.filter(f => f.cls === 'verb' && f.join === 's'));
     sec('i', t('build.family.neverSplits'), t('build.family.neverRule'), kids.filter(f => f.cls === 'verb' && f.join !== 's'));
     sec('r', t('build.family.fromRoot', { root: fam.root }), t('build.family.fromRule'), kids.filter(f => f.cls !== 'verb'));

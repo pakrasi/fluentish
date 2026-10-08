@@ -88,28 +88,39 @@ test('PF: ids: tag, stream, resolver, the ledger; nothing changes without a fami
   assert.equal(streamOf('PF:der_Hersteller'), 'sx');
   assert.deepEqual(pfIds(content()), [], 'the existing content creates no PF card');
   assert.deepEqual(cardIds(content()), cardIds({ ...content(), families: [] }), 'and its card ids are the same');
-  const ids = cardIds(withFamilies());
+  // PF ids are listed apart (familyCardIds / pfIds, the ledger adds them); cardIds stays the PX…PW cards
+  const ids = pfIds(withFamilies());
   assert.ok(ids.includes('PF:der_Hersteller') && ids.includes('PF:herstellen.verb'));
   assert.ok(!ids.some(id => id === 'PF:die_Bestellung'), 'one item, one build card');
   // id stability: the same content gives the same ids in the same order, and ids are the authored form ids
-  assert.deepEqual(cardIds(withFamilies()), ids);
+  assert.deepEqual(pfIds(withFamilies()), ids);
+  assert.ok(!cardIds(withFamilies()).some(id => id.startsWith('PF:')));
   const r = itemResolver(lemmaMaps(withFamilies()));
   assert.equal(r('PF:der_Hersteller'), 'W:der_Hersteller');
   assert.equal(r('PF:unlisted_form'), 'PF:unlisted_form');
   assert.equal(r('PW:Ausstellung'), 'W:die_Ausstellung');
 });
 
-test('the shipped content: every root has a family and a board; PF ids only from a families key', () => {
+test('the shipped content: every root has a family and a board; PF ids only from a families key', async () => {
   const c = JSON.parse(readFileSync(new URL('../../content/build/de.json', import.meta.url), 'utf8'));
   const m = F.familyModel(c);
-  assert.equal(m.size, c.roots.length);
+  assert.ok(m.size >= c.roots.length, 'a family for every build root (and the families key\'s own roots)');
+  for (const r of c.roots) assert.ok(m.has(r.id), r.id);
   for (const fam of m.values()) {
     assert.ok(fam.forms.filter(f => f.card && f.key).length >= 6, `${fam.root} has a board`);
     for (const f of fam.forms) if (f.card) assert.match(f.card, /^P[VWF]:/);
   }
-  assert.equal(pfIds(c).length, (c.families || []).length ? pfIds(c).length : 0);
+  const { familyCardIds } = await import('../../src/domain/wordbuild.js');
+  assert.deepEqual(new Set(pfIds(c)), new Set(familyCardIds(c)), 'the model\'s PF cards are the content\'s');
   const b = F.boardFor({ families: m, cards: {}, day: DAY, level: 'B1', newLeft: 3, isDue });
-  assert.ok(b && b.cards.length === 10);
+  assert.ok(b && b.cards.length >= 6);
+  // every family has a board at every level, and every board word can be built from the tiles
+  for (const level of ['A2', 'B1', 'B2']) for (const fam of m.values()) {
+    const x = F.boardFor({ families: m, cards: {}, day: DAY, level, newLeft: 3, isDue, root: fam.root });
+    assert.ok(x && x.cards.length >= 6, `${level} ${fam.root}`);
+    for (const id of x.cards) { const f = /** @type {F.Form} */ (fam.byCard.get(id)); assert.ok(f.key, id); if (f.pre[0]) assert.ok(x.tiles.pre.includes(f.pre[0]), `${fam.root} ${id}`); if (f.suf[0]) assert.ok(x.tiles.suf.includes(f.suf[0]), `${fam.root} ${id}`); }
+    assert.ok(x.tiles.pre.length <= 10);
+  }
 });
 
 test('the board is the same for the same day and inputs, and the root changes with the day', () => {

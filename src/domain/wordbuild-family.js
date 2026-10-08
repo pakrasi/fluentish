@@ -63,9 +63,10 @@
  * @property {string[]} [noneKeys] their tile keys (zer|)
  * @property {string[]} [stems] the written root stems (geben: geb, gab, gib, gäb); [0] is the centre tile
  * @property {any} [info] the root's forms (pres3, pret, aux, pp, level, zipf) when it is not a build root
+ * @property {Record<string, {words: string[], light?: string[]}>} [boards] the content's default boards by level
  */
 
-/** Endings that are tiles: a single written ending whose rule gives the word type (and a noun's article). */
+/** The written endings, in tile order (a board may also use the bare stem, the Partizip II and others: their own tiles). */
 export const TILE_ENDINGS = ['ung', 'er', 'e', 'in', 'heit', 'keit', 'schaft', 'nis', 'bar', 'lich', 'sam', 'ig'];
 export const ARTICLES = ['der', 'die', 'das'];
 /** Tries a clue gets before its word is shown. */
@@ -216,7 +217,7 @@ function fromFamily(fam, P, info) {
     byCard: new Map(forms.filter(f => f.card).map(f => [/** @type {string} */ (f.card), f])),
     none: (fam.none || []).map((/** @type {any} */ n) => (typeof n === 'string' ? n : n.word)),
     noneKeys: (fam.none || []).map((/** @type {any} */ n) => (typeof n === 'string' ? null : n.key)).filter(Boolean),
-    info: { pres3: fam.pres3, pret: fam.pret, aux: fam.aux, pp: fam.pp, level: fam.level || null, zipf: fam.zipf ?? null } };
+    info: { pres3: fam.pres3, pret: fam.pret, aux: fam.aux, pp: fam.pp, level: fam.level || null, zipf: fam.zipf ?? null }, boards: fam.boards || undefined };
 }
 
 /** A board clue when none is authored: "to …" for a verb, "the …" for a noun (FAMILY-SCHEMA's shape). @param {Form} f */
@@ -245,7 +246,7 @@ function nearestPrefixed(f, byId) {
 /** The tile key of a form: one prefix (or none) and one tile ending (or none). The root itself has none. @param {Form} f */
 export function keyOf(f) {
   if (!f.parent || f.side === 'pp' || f.pre.length > 1 || f.suf.length > 1) return null;
-  if (f.suf.length && !TILE_ENDINGS.includes(f.suf[0])) return null;
+  if (f.suf.length && !/^[a-zäöü]+$/.test(f.suf[0])) return null;
   if (f.cls === 'verb' && f.suf.length) return null;
   if (!f.pre.length && !f.suf.length) return null;
   if (f.pre[0] === 'un') return null;
@@ -355,7 +356,7 @@ export function boardFor({ families, cards, day, level = 'B1', light = false, ne
   const rest = new Set(recent.slice(-ROOT_REST));
   let pool = [...families.values()].filter(fam => playable(fam).length >= 6);
   if (root) pool = pool.filter(f => f.root === root);
-  if (!pool.length) return null;
+  if (!pool.length) return L <= 1 && root ? boardFor({ families, cards, day, level: 'B1', light: true, newLeft, paused, isDue, state, recent, reported, root }) : null;
   const fresh = pool.filter(f => !rest.has(f.root));
   const cands = (fresh.length ? fresh : pool).map(fam => {
     const p = playable(fam);
@@ -370,6 +371,8 @@ export function boardFor({ families, cards, day, level = 'B1', light = false, ne
     // below B2 one reading of a dual verb per board (two clues on the same tiles); the clues must differ
     if (L < 3 && keys.has(f.key)) return false;
     if (pick.some(x => x.clue === f.clue && x.cls === f.cls)) return false;
+    // ten prefixes round the root at most
+    if (f.pre[0] && !pick.some(x => x.pre[0] === f.pre[0]) && new Set(pick.map(x => x.pre[0]).filter(Boolean)).size >= 10) return false;
     pick.push(f); keys.add(f.key); return true;
   };
   const z = (/** @type {Form} */ f) => -(f.zipf || 0);
@@ -386,7 +389,15 @@ export function boardFor({ families, cards, day, level = 'B1', light = false, ne
   p.filter(f => seen(f) && !due(f)).sort((a, b) => (rank[state(a)] ?? 3) - (rank[state(b)] ?? 3) || z(a) - z(b)).forEach(take);
   // 4. practice: more unseen forms, which write nothing (not while new items pause)
   if (!paused) unseenForms.forEach(take);
-  if (pick.length < Math.min(6, size)) return null;
+  if (pick.length < Math.min(6, size) && fam.boards) {
+    // the content's default board for the level (FAMILY-SCHEMA boards: always valid), when the composition falls short
+    const lvlName = L <= 1 && fam.boards.A2 ? 'A2' : L >= 3 && fam.boards.B2 ? 'B2' : 'B1';
+    const def = fam.boards[lvlName] || fam.boards.B1;
+    const words = def ? (light && def.light && def.light.length ? def.light : def.words) : [];
+    for (const id of words) { const f = fam.byId.get(id); if (f && f.card && !reported.has(f.id) && !pick.includes(f)) pick.push(f); }
+  }
+  // an A2 board needs six forms at A1 to B1; else the family's B1 forms make a board of six (FAMILY-SCHEMA)
+  if (pick.length < Math.min(6, size)) return L <= 1 ? boardFor({ families, cards, day, level: 'B1', light: true, newLeft, paused, isDue, state, recent, reported, root: root || fam.root }) : null;
   // clues in the family's order: a verb and the nouns grown from it sit together
   pick.sort((a, b) => fam.forms.indexOf(a) - fam.forms.indexOf(b));
   const writes = pick.filter(f => due(f) || fresh2.includes(f)).map(f => /** @type {string} */ (f.card));
@@ -406,14 +417,16 @@ export function tilesFor(fam, pick, L) {
   const nonPre = [...fromKeys, ...fam.none.map(w => nonWordParts(fam, w)).filter(x => x && x.pre && !x.suf).map(x => /** @type {string} */ (x && x.pre))]
     .filter((p, i, a) => a.indexOf(p) === i && !pre.has(p) && !realPre.includes(p));
   const nReal = L <= 1 ? 1 : L === 2 ? 1 : 2, nNon = L <= 1 ? 0 : L === 2 ? 1 : 2;
-  for (const p of realPre.slice(0, nReal)) if (pre.size < 10) pre.add(p);
+  // the checked non-words first (B1: nine and one non-word), then the real distractors, ten round the root at most
   for (const p of nonPre.slice(0, nNon)) if (pre.size < 10) pre.add(p);
+  for (const p of realPre.slice(0, nReal)) if (pre.size < 10) pre.add(p);
   if (L >= 3) {
     const more = [...new Set(fam.forms.filter(f => f.key && f.suf.length === 1).map(f => f.suf[0]))].filter(s => !suf.has(s));
     for (const s of more) if (suf.size < 4) suf.add(s);
   }
   const ringIdx = (/** @type {string} */ p) => { const i = RING.indexOf(p); return i < 0 ? 99 : i; };
-  return { pre: [...pre].sort((a, b) => ringIdx(a) - ringIdx(b) || a.localeCompare(b)), suf: TILE_ENDINGS.filter(s => suf.has(s)) };
+  const sufIdx = (/** @type {string} */ x) => { const i = TILE_ENDINGS.indexOf(x); return i < 0 ? 50 : i; };
+  return { pre: [...pre].sort((a, b) => ringIdx(a) - ringIdx(b) || a.localeCompare(b)), suf: [...suf].sort((a, b) => sufIdx(a) - sufIdx(b) || a.localeCompare(b)) };
 }
 
 /** A checked non-word in parts (zerstellen → zer + stell + en). @param {Family} fam @param {string} w */

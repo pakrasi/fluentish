@@ -146,7 +146,6 @@ export function cardIds(c) {
   for (const f of c.frames) for (const form of FORMS) if (f.forms[form]) out.push(`PS:${f.id}.${form}`);
   for (const s of c.suffixes) out.push(`SX:${s.id}`);
   for (const w of pwNodes(c)) out.push(`PW:${w.word}`);
-  out.push(...pfIds(c));
   return [...new Set(out)];
 }
 

@@ -118,12 +118,22 @@ export async function mountToday(el, ctx) {
     hive.append(h('div', { class: 'hx is-centre', lang: langAttr(), dir: dirAttr(), role: 'img', 'aria-label': t('build.today.rootTile', { root: fam.root }) }, STEM, h('small', null, fam.root)),
       h('div', { class: 'hx-ripple', 'aria-hidden': 'true' }));
     replace(ends);
-    for (const x of day.tiles.suf) { const b = h('button', { type: 'button', class: 'hx pressable', lang: langAttr(), dir: dirAttr(), 'aria-pressed': 'false', 'aria-label': t('build.today.endingTile', { s: x }), onpointerdown: keep, onclick: () => pick('suf', x, b) }, `-${x}`); tileEls.set(tileKey('suf', x), b); ends.append(b); }
+    for (const x of day.tiles.suf) { const b = h('button', { type: 'button', class: 'hx pressable', lang: langAttr(), dir: dirAttr(), 'aria-pressed': 'false', 'aria-label': t('build.today.endingTile', { s: endLabel(x) }), 'data-suf': x, onpointerdown: keep, onclick: () => pick('suf', x, b) }, endLabel(x)); tileEls.set(tileKey('suf', x), b); ends.append(b); }
     if (nouns) {
       if (day.tiles.suf.length) ends.append(h('span', { class: 'pz-sep', 'aria-hidden': 'true' }));
       ARTICLES.forEach((x, i) => { const b = h('button', { type: 'button', class: 'hx is-art pressable', lang: langAttr(), dir: dirAttr(), 'aria-pressed': 'false', 'aria-label': t('build.today.articleTile', { a: x }), onpointerdown: keep, onclick: () => pick('art', x, b) }, x, h('kbd', null, String(i + 1))); tileEls.set(tileKey('art', x), b); ends.append(b); });
     }
     ends.hidden = !ends.children.length;
+  }
+  /** An ending that makes a noun (the build content's rule, the bare stem, the infinitive noun, -ling). @param {string} x */
+  function nounEnding(x) {
+    const sx = d.c.suffixes.find((/** @type {any} */ s) => s.id === x);
+    return sx ? sx.cls === 'noun' : ['stem', 'inf', 'ling'].includes(x);
+  }
+  /** An ending's tile: "-ung", "bare stem", "Partizip II" (the build content's labels). @param {string} x */
+  function endLabel(x) {
+    const sx = d.c.suffixes.find((/** @type {any} */ s) => s.id === x);
+    return x === 'pp' ? 'Partizip II' : x === 'ppr' ? 'Partizip I' : sx && /^-/.test(sx.label) ? sx.label.split(',')[0] : sx ? sx.label : `-${x}`;
   }
   function syncTiles() {
     for (const [key, b] of tileEls) { const [part, v] = key.split(':'); b.setAttribute('aria-pressed', String(S.b[/** @type {Part} */ (part)] === v)); }
@@ -173,11 +183,12 @@ export async function mountToday(el, ctx) {
       return h('span', { class: ['pt', `is-${part}`, st && `is-${st}`], 'data-part': part }, shown);
     };
     if (noun || S.b.art) parts.push(slot('art', S.b.art, S.b.art || ''));
-    const preText = S.b.pre ? (S.b.suf && S.b.suf !== 'bar' && S.b.suf !== 'lich' && S.b.suf !== 'sam' && S.b.suf !== 'ig' ? S.b.pre.charAt(0).toUpperCase() + S.b.pre.slice(1) : S.b.pre) : null;
+    const nounEnd = !!S.b.suf && nounEnding(S.b.suf);
+    const preText = S.b.pre ? (nounEnd ? S.b.pre.charAt(0).toUpperCase() + S.b.pre.slice(1) : S.b.pre) : null;
     parts.push(slot('pre', S.b.pre, preText || ''));
-    const rootText = !S.b.pre && S.b.suf && !['bar', 'lich', 'sam', 'ig'].includes(S.b.suf) ? STEM.charAt(0).toUpperCase() + STEM.slice(1) : STEM;
+    const rootText = !S.b.pre && nounEnd ? STEM.charAt(0).toUpperCase() + STEM.slice(1) : STEM;
     parts.push(h('span', { class: ['pt', 'is-root', S.b.pre && 'is-joined-s', S.b.suf && 'is-joined-e'], 'data-part': 'root' }, rootText, S.b.suf ? null : h('span', { class: 'pt-tail' }, fam.root.slice(STEM.length))));
-    if (noun || S.b.suf) parts.push(slot('suf', S.b.suf, S.b.suf || ''));
+    if (noun || S.b.suf) parts.push(slot('suf', S.b.suf, S.b.suf ? endLabel(S.b.suf).replace(/^-/, '') : ''));
     replace(build, parts);
     const spelled = S.b.pre || S.b.suf ? `${S.b.art ? `${S.b.art} ` : ''}${spell(fam, S.b)}` : '';
     build.setAttribute('aria-label', spelled ? t('build.today.yourWord', { w: spelled }) : t('build.today.yourWordNone'));
