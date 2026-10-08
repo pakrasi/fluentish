@@ -432,6 +432,9 @@ export function validateBuild(c, { words = [], morph = {}, clusterSuffixes = [] 
       if (n.cls === 'noun' && !['der', 'die', 'das'].includes(String(n.art))) bad(`${na}: a noun needs its article`);
       if (n.cls !== 'noun' && n.art) bad(`${na}: only nouns have an article`);
       if (!t.parent) continue;
+      // every grown word has an example (round 7: the family view and the game show it)
+      if (!n.ex || !n.exEn) bad(`${na}: an example (ex, exEn) is required`);
+      else { if (!/[.!?]$/.test(n.ex)) bad(`${na}: the example has no final punctuation`); if (DASH.test(n.ex)) bad(`${na}: a dash in the example`); english(`${na} exEn`, n.exEn); }
       if (n.side === 'pre') {
         if (!(P.has(n.add) || n.add === 'un')) bad(`${na}: unknown prefix ${n.add}`);
         if (!n.word.toLowerCase().startsWith(String(n.add)) || n.word.toLowerCase() !== String(n.add) + t.parent.node.word.toLowerCase()) bad(`${na}: is not ${n.add} + ${t.parent.node.word}`);

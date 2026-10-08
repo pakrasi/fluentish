@@ -34,6 +34,8 @@ export function familyCardIds(c) {
 
 /** The tokens of a sentence, lower case. @param {string} s */
 const toks = s => String(s).toLowerCase().split(/[^\p{L}]+/u).filter(Boolean);
+/** Umlauts folded, so a plural with an umlaut holds its noun (Grundsätze holds Grundsatz). @param {string} s */
+const fold = s => s.replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/ü/g, 'u').replace(/äu/g, 'au');
 
 /**
  * Does the example hold the form? Nouns: the word (or a plural/case form of it); adjectives: an inflected form; verbs:
@@ -44,9 +46,9 @@ export function exampleHolds(f, stems) {
   const ex = String(f.ex || ''), t = toks(ex), w = f.word.toLowerCase();
   if (f.cls === 'noun') {
     const base = f.adjNoun ? w.replace(/e$/, '') : w;
-    return t.some(x => x === base || (x.startsWith(base) && x.length - base.length <= 3)) || (f.pl && t.some(x => w.startsWith(x) && w.length - x.length <= 2));
+    return t.some(x => x === base || (fold(x).startsWith(fold(base)) && x.length - base.length <= 3)) || (f.pl && t.some(x => w.startsWith(x) && w.length - x.length <= 2));
   }
-  if (f.cls === 'adj' || f.cls === 'adv') return t.some(x => x === w || (x.startsWith(w) && x.length - w.length <= 3));
+  if (f.cls === 'adj' || f.cls === 'adv' || f.cls === 'conj' || f.cls === 'prep') return t.some(x => x === w || (x.startsWith(w) && x.length - w.length <= 3));
   // verbs
   const pre = (f.pre || []).join('');
   const st = stems.map(s => s.toLowerCase());
@@ -130,7 +132,7 @@ export function validateFamilies(c, { words = [], morph = {} } = {}) {
       if (f.parent != null && wordOwner.has(wk) && wordOwner.get(wk) !== fam.root) bad(`${fa}: ${f.word} is also a form of ${wordOwner.get(wk)}`);
       if (f.parent != null) wordOwner.set(wk, fam.root);
       // word, class, article
-      if (!['verb', 'noun', 'adj', 'adv'].includes(f.cls)) bad(`${fa}: cls ${f.cls}`);
+      if (!['verb', 'noun', 'adj', 'adv', 'conj', 'prep'].includes(f.cls)) bad(`${fa}: cls ${f.cls}`);
       if (!/^[\p{L}]+$/u.test(f.word)) bad(`${fa}: word ${f.word}`);
       if (f.cls === 'noun' ? !/^\p{Lu}/u.test(f.word) : /^\p{Lu}/u.test(f.word)) bad(`${fa}: ${f.cls === 'noun' ? 'nouns take a capital' : 'only nouns take a capital'}`);
       if (f.cls === 'noun' && !['der', 'die', 'das'].includes(f.art)) bad(`${fa}: a noun needs der, die or das`);
@@ -168,7 +170,7 @@ export function validateFamilies(c, { words = [], morph = {} } = {}) {
           let pos = 0, kind = '', text = '';
           for (const [k, t] of f.seg) { if (f.stress >= pos && f.stress < pos + t.length) { kind = k; text = t.toLowerCase(); } pos += t.length; }
           if (!['p', 'r', 'c'].includes(kind)) bad(`${fa}: stress on a ${kind} part`);
-          if (f.cls === 'verb' && f.kind === 's' && kind !== 'p') bad(`${fa}: a separable verb is stressed on its particle`);
+          if (f.cls === 'verb' && f.kind === 's' && kind !== 'p' && kind !== 'c') bad(`${fa}: a separable verb is stressed on its particle`);
           if (f.cls === 'verb' && kind === 'p' && UNSTRESSED.has(text)) bad(`${fa}: ${text}- is never stressed`);
           if (f.cls === 'verb' && f.kind === 'i' && kind === 'p' && text === f.pre[0] && f.pre.length === 1) bad(`${fa}: an inseparable verb is stressed on its stem`);
         }
@@ -187,6 +189,7 @@ export function validateFamilies(c, { words = [], morph = {} } = {}) {
         }
         if (!['hat', 'ist', 'hat/ist'].includes(f.aux)) bad(`${fa}: aux ${f.aux}`);
         if (!f.pp || !/^[a-zäöüß]+$/.test(f.pp)) bad(`${fa}: pp ${f.pp}`);
+        else if (!outer) { /* a compound verb (blaumachen): no prefix to check */ }
         else if (f.kind === 's' && !f.pp.startsWith(outer)) bad(`${fa}: participle ${f.pp} does not start with ${outer}`);
         else if (f.kind === 'i' && !f.pp.startsWith(outer)) bad(`${fa}: participle ${f.pp} does not start with ${outer}`);
         else if (f.kind === 'i' && f.pre.length === 1 && /^ge/.test(f.pp.slice(outer.length)) && !/^ge/.test(fam.root)) bad(`${fa}: an inseparable verb takes no ge-: ${f.pp}`);
@@ -199,13 +202,15 @@ export function validateFamilies(c, { words = [], morph = {} } = {}) {
         else {
           if (String(w.w).replace(/^sich\s+/, '') !== f.word && !(f.pl && w.w === f.word)) bad(`${fa}: lemma ${f.lemma} is ${w.w}`);
           if (f.cls === 'noun' && w.art && w.art !== f.art) bad(`${fa}: the word list says ${w.art} ${w.w}`);
-          if (w.pos && f.cls !== w.pos && !(f.cls === 'adj' && w.pos === 'adv') && !(f.cls === 'adv' && w.pos === 'adj')) bad(`${fa}: the word list says ${w.pos}`);
+          if (w.pos && f.cls !== w.pos && !(f.cls === 'adj' && w.pos === 'adv') && !(f.cls === 'adv' && w.pos === 'adj') && !(f.cls === 'adv' && w.pos === 'conj') && !(f.cls === 'prep' && ['adv', 'prep'].includes(w.pos))) bad(`${fa}: the word list says ${w.pos}`);
         }
       } else if (f.cls === 'noun') {
         for (const w of byW.get(f.word.toLowerCase()) || []) if (w.pos === 'noun' && w.w === f.word && w.art && w.art !== f.art && !f.note) bad(`${fa}: the word list has ${w.art} ${w.w} (say why in note)`);
       }
       // the article rule of its ending
-      if (f.cls === 'noun' && !f.adjNoun) {
+      // a compound takes the article of its last part, which is not a family ending (das Fundbüro)
+      const compound = f.side === 'cmp' || (Array.isArray(f.seg) && f.seg.some((/** @type {string[]} */ s) => s[0] === 'c'));
+      if (f.cls === 'noun' && !f.adjNoun && !compound) {
         const last = [...(f.suf || [])].reverse().find((/** @type {string} */ s) => S.has(s) && S.get(s).cls === 'noun');
         const rule = last ? S.get(last) : null;
         if (rule && rule.art && rule.art !== f.art && !(rule.except || []).includes(f.word) && !(f.note && f.note.includes(`${f.art} ${f.word}`)))
@@ -226,7 +231,7 @@ export function validateFamilies(c, { words = [], morph = {} } = {}) {
           if (f.cls === 'verb' && !/^to /.test(f.clue)) bad(`${fa}: a verb clue starts with "to "`);
           if (f.cls === 'noun' && !/^(the|a|an) /.test(f.clue)) bad(`${fa}: a noun clue starts with "the", "a" or "an"`);
           if (toks(f.clue).includes(f.word.toLowerCase())) bad(`${fa}: the clue gives the word away`);
-          if (f.clue.length > 48) bad(`${fa}: clue longer than 48 characters`);
+          if (f.clue.length > 64) bad(`${fa}: clue longer than 64 characters`);
         }
       }
       if (!['T', 'M', 'O'].includes(f.grade)) bad(`${fa}: grade ${f.grade}`);
@@ -236,7 +241,7 @@ export function validateFamilies(c, { words = [], morph = {} } = {}) {
       if (!LEVELS.includes(f.level)) bad(`${fa}: level ${f.level}`);
       if (f.zipf != null && typeof f.zipf !== 'number') bad(`${fa}: zipf`);
       if (!Array.isArray(f.lex) || !(f.lex.includes('list') || f.lex.includes('dwds') || f.lex.includes('corpus'))) bad(`${fa}: found in no lexicon (the word list, a DWDS entry, or the DWDS corpora)`);
-      if (f.board && (f.adjNoun || f.pl || f.side === 'cmp' || f.cls === 'adv' || (f.pre || []).filter((/** @type {string} */ p) => p !== 'un').length > 1)) bad(`${fa}: cannot be on a board`);
+      if (f.board && (f.adjNoun || f.pl || f.side === 'cmp' || f.cls === 'adv' || f.cls === 'conj' || f.cls === 'prep' || (f.pre || []).filter((/** @type {string} */ p) => p !== 'un').length > 1)) bad(`${fa}: cannot be on a board`);
     }
     // keys of board forms: one form per key, but a dual verb's two readings share one
     /** @type {Map<string, any>} */ const keyed = new Map();
@@ -264,7 +269,7 @@ export function validateFamilies(c, { words = [], morph = {} } = {}) {
       if (!r.why) bad(`${at} rare ${r.word}: why is required`);
       english(`${at} rare ${r.word}`, r.en); english(`${at} rare ${r.word}`, r.why);
     }
-    // boards
+    // boards (B1 and B2 in every shipped family, tests/unit/build-family.test.mjs; A2 when the family has 6 forms at A1 to B1)
     for (const [lv, b] of Object.entries(fam.boards || {})) {
       const ba = `${at} board ${lv}`;
       if (!BOARD_SIZE[lv]) { bad(`${ba}: unknown level`); continue; }

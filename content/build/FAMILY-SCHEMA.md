@@ -19,7 +19,7 @@ nodes gain `ex`/`exEn`). Two new top-level keys:
   "level": "A1", "zipf": 4.9,
   "stems": ["stell"],           // the written root stems the forms use (geben: ["geb","gab","gib","gäb"]); [0] is the centre tile
   "forms": [ Form, … ],         // the root itself first (parent null), then a tree: every form's parent is earlier
-  "boards": { "A2": Board, "B1": Board, "B2": Board },   // C1 uses B2
+  "boards": { "A2": Board, "B1": Board, "B2": Board },   // C1 uses B2; A2 only when the family has 6 board forms at A1 to B1 (else use B1)
   "none": [ { "key": "zer|", "word": "zerstellen", "chk": { "dwds": false, "wf": 0, "hits": 0 } } ],  // CHECKED non-words: the only words the game may call "not a German word"
   "rare": [ { "key": "ent|", "word": "entstellen", "why": "exists: disfigure" } ],  // combos checked and NOT safe to call wrong
   "reviewedBy": "model-2pass", "reviewedAt": "2026-10-08"
@@ -32,7 +32,7 @@ nodes gain `ex`/`exEn`). Two new top-level keys:
 | `id` | Stable forever. The word-list id when the word is listed (`der_Hersteller`, `herstellen.verb`), else the same shape (`die_Zustellung`, `zerlegbar.adj`); a dual verb's reading is `<verb id>.verb` (`umstellen-s.verb`). |
 | `card` | `PV:<verb>` (a `verbs[]` verb), `PW:<word>` (a chain word), `PF:<id>` (every other form), `null` for the root. One form, one build card. `familyCardIds(c)` lists the `PF:` ids. |
 | `word` | As written: nouns capitalised, no article, no `sich`. `pl: true` marks a plural-only noun (`Einnahmen`). |
-| `cls` | `verb` · `noun` · `adj` · `adv` |
+| `cls` | `verb` · `noun` · `adj` · `adv` · `conj` · `prep` |
 | `art` | Nouns: `der` · `die` · `das`. `adjNoun: true` = a participle/adjective noun (der/die Angestellte): never on a board. |
 | `kind` | Prefixed verbs: `s` splits (ich stelle … her), `i` never splits. `refl: true`: used with sich. `aux`, `pp` on verbs. |
 | `parent`, `add`, `side` | One step in the tree: parent form id, the prefix or ending id added, `pre` / `suf` / `cmp` (compound: `add` is the other element, e.g. `Arbeit`). |

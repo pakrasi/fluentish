@@ -77,7 +77,8 @@ test('family content: valid, every board the right size, PF ids never shadow a P
   assert.ok(pf.length > 300, `${pf.length} PF cards`);
   for (const id of pf) assert.ok(!old.has(id), id);
   for (const fam of C.families) {
-    for (const [lv, n] of Object.entries(BOARD_SIZE)) assert.equal(fam.boards[lv]?.words.length, n, `${fam.root} ${lv}`);
+    for (const [lv, n] of Object.entries(BOARD_SIZE)) if (lv !== 'A2' || fam.boards.A2) assert.equal(fam.boards[lv]?.words.length, n, `${fam.root} ${lv}`);
+    assert.ok(fam.boards.B1 && fam.boards.B2, `${fam.root}: B1 and B2 boards`);
     assert.ok(fam.none.length >= 1, `${fam.root}: no checked non-word`);
   }
 });

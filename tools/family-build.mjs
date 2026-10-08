@@ -22,7 +22,7 @@ const PARTICLE_STRESS = /** @type {Record<string, string>} */ ({
   hinaus: 'aus', hinein: 'ein', hinweg: 'weg', hinzu: 'zu', hinunter: 'un', hinauf: 'auf', zurück: 'rück', zusammen: 'sam',
   voraus: 'aus', vorbei: 'bei', voran: 'an', vorweg: 'weg', entgegen: 'ge', zurecht: 'recht', überein: 'ein', wieder: 'wie',
   hinter: 'hin', über: 'ü', unter: 'un', wider: 'wi', weiter: 'wei', durch: 'durch', empor: 'por', nieder: 'nie', davon: 'von',
-  dazu: 'zu', daran: 'an', darauf: 'auf', vorüber: 'ü', umher: 'her', zuvor: 'vor',
+  dazu: 'zu', daran: 'an', darauf: 'auf', vorüber: 'ü', umher: 'her', zuvor: 'vor', vorher: 'her',
 });
 const VOWEL = /[aeiouäöüy]/i;
 /** Endings that are not in suffixes[] but appear in family words. */
@@ -207,11 +207,12 @@ export function buildFamilies(authored, { words, verbs, chains, roots, lexcheck 
       if (w) {
         if (f.level == null) f.level = w.level;
         if (f.zipf == null && typeof w.zipf === 'number') f.zipf = w.zipf;
-        if (f.cls === 'verb' && !f.aux && w.forms) { const m = /(hat|ist)\s+(\S+)$/.exec(w.forms); if (m) { f.aux = m[1]; f.pp = m[2]; } }
+        if (f.cls === 'verb' && !f.aux && w.forms) { const m = /((?:hat\/ist)|hat|ist)\s+(\S+)$/.exec(w.forms); if (m) { f.aux = m[1]; f.pp = m[2]; } }
       }
       if (f.parent === null) {
         if (f.level == null && hw) f.level = hw.level;
-        if (f.aux == null) { f.aux = head.aux; f.pp = head.pp; }
+        if (f.aux == null) f.aux = head.aux;
+        if (f.pp == null) f.pp = head.pp;
       }
       const lw = lx[f.word.toLowerCase()];
       if (f.zipf == null && lw && typeof lw.wf === 'number') f.zipf = lw.wf;
@@ -226,7 +227,7 @@ export function buildFamilies(authored, { words, verbs, chains, roots, lexcheck 
       if (f.seg && typeof raw.stress !== 'number') f.stress = stressOf(f, parent);
       if (f.parent !== null && !f.card) f.card = `PF:${f.id}`;
       if (f.parent === null) f.card = null;
-      if (f.board === undefined) f.board = f.parent !== null && f.cls !== 'adv' && f.side !== 'cmp' && !f.pl && !f.adjNoun && !f.rare
+      if (f.board === undefined) f.board = f.parent !== null && f.cls !== 'adv' && f.cls !== 'conj' && f.cls !== 'prep' && f.side !== 'cmp' && !f.pl && !f.adjNoun && !f.rare
         && (f.pre.filter((/** @type {string} */ p) => p !== 'un').length <= 1);
       const built = ordered(f);
       F.set(f.id, built);
