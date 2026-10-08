@@ -97,7 +97,7 @@ test('a word sheet opens its family with the form open; Look up shows no stray "
   await open(page, '#/lookup/words/die_Ausstellung');
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Ausstellung');
   await expect(page.locator('#view')).not.toContainText('null');
-  const link = page.getByRole('link', { name: 'The family of stellen' });
+  const link = page.getByRole('link', { name: /^Family: stellen/ });
   await expect(link).toBeVisible();
   await link.click();
   await expect(page.getByRole('heading', { level: 1, name: 'stellen' })).toBeVisible();
@@ -221,7 +221,7 @@ test('inside a round the family opens as a sheet over it, and the round goes on'
   const round = page.getByRole('region', { name: 'Word building round' });
   await round.getByRole('textbox').fill('ausstellen');
   await round.getByRole('button', { name: /^Check/ }).click();
-  const link = round.getByRole('button', { name: 'The family of stellen' });
+  const link = round.getByRole('button', { name: /^Family: stellen/ });
   await expect(link).toBeVisible();
   await link.click();
   const sheet = page.getByRole('dialog', { name: 'Word family' });

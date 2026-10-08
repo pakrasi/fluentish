@@ -2094,7 +2094,7 @@ export default {
   'build.family.endingCount': { one: '1 word in the families so far', other: '{n} words in the families so far' },
   'build.family.linkLabel': 'Family:',
   'build.family.backRead': 'Back to the text',
-  'build.family.linkAria': 'The family of {root}',
+  'build.family.linkAria': 'Family: {root}, how its words are built',
   'build.family.close': 'Close',
   'build.family.howBuilt': 'How the words are built',
   'build.today.title': 'Today\'s family',

@@ -187,4 +187,8 @@ test('the family view: a few tab stops to the first word, a skip link, the tree 
   await open(page, '#/practice/build/today');
   await expect.poll(() => page.evaluate(() => !!(/** @type {any} */ (window).__family))).toBe(true);
   expect(await labelInName(page)).toEqual([]);
+  // the word page's "Family: stellen" link
+  await open(page, '#/lookup/words/die_Ausstellung');
+  await expect(page.getByRole('link', { name: /^Family: stellen/ })).toBeVisible();
+  expect(await labelInName(page)).toEqual([]);
 });
