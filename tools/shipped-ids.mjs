@@ -47,10 +47,12 @@ export async function currentIds() {
   for (const it of J('content/speak/situations.json').items) ids.add(it.id);
   // Word building (deck 'build'): prefix, verb, sentence, suffix and word cards (domain/wordbuild.js cardIds)
   const { cardIds: buildIds } = await imp('src/domain/wordbuild.js');
-  for (const id of buildIds(J('content/build/de.json'))) ids.add(id);
+  const { readBuild } = await imp('tools/family-files.mjs');
+  const build = readBuild(ROOT);
+  for (const id of buildIds(build)) ids.add(id);
   // word families (round 7): the PF:<form> cards (a form with a PV or PW card keeps that card)
   const { familyCardIds } = await imp('src/domain/wordbuild.js');
-  for (const id of familyCardIds(J('content/build/de.json'))) ids.add(id);
+  for (const id of familyCardIds(build)) ids.add(id);
   return ids;
 }
 

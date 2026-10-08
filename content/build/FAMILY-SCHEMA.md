@@ -1,4 +1,4 @@
-# Word families: `content/build/family/<root>.json` and the index in `content/build/de.json` (round 7)
+# Word families: `content/build/family/<slug>.json` and the index in `content/build/de.json` (round 7)
 
 The data behind **Word family** (`#/practice/build/family/<root>`) and **Today's family** (`#/practice/build/today`),
 WORDGAMES-DESIGN §7. Built by `tools/build-wordbuild.mjs` from `authoring/build/families/<root>.json` and
@@ -9,14 +9,16 @@ and `chains` keep their shapes (chain nodes gain `ex`/`exEn`).
 ## Where the families live (round 7, second pass: per-root lazy files)
 
 The families were 790 KB of the 930 KB `de.json` (193 KB of 225 KB gzipped), and Today's cold load waited for all of
-it to show one row about one root. They now live in one file per root; `de.json` keeps a small index.
+it to show one row about one root. They now live in one file per root; `de.json` keeps a small index. A file is named by the root's ASCII slug
+(`hören` → `hoeren.json`, `schließen` → `schliessen.json`: manifest ids are `[a-z0-9.-]`, and a non-ASCII file name
+can change its Unicode form between macOS and the web server); the index gives each root's manifest id as `file`.
 
 | file | manifest id | schema | holds |
 |---|---|---|---|
 | `content/build/de.json` | `build.de` | `build@1` | everything it held before except `families`, plus `particles` and `familyIndex` |
-| `content/build/family/<root>.json` | `build.family.<root>` | `build-family@1` | one family: exactly one entry of the old `families[]` (the shape below, unchanged) |
+| `content/build/family/<slug>.json` | `build.family.<slug>` | `build-family@1` | one family: exactly one entry of the old `families[]` (the shape below, unchanged) |
 
-**Merging is the identity.** `[...familyIndex.roots].map(r => load('build.family.' + r.root))` in index order is the old
+**Merging is the identity.** `familyIndex.roots.map(r => load(r.file))` in index order is the old
 `families[]`, deep-equal (`tests/unit/build-family-files.test.mjs` proves it on every build). Every pure function that
 took `c.families` (familyModel, lemmaMaps, lexiconOf, familyLexicon, pfIds, validateFamilies) behaves the same when
 handed `{...c, families}`. Node tools and tests read the merged content through `tools/family-files.mjs`
@@ -37,11 +39,11 @@ first and stores what it fetched, so a family file is cached after its first use
 ### `familyIndex` (in `de.json`)
 ```jsonc
 "familyIndex": {
-  "file": "build.family.{root}",            // the manifest id of a root's family file
   "roots": [ {                               // in families[] order (roots[] order, then the rest)
-    "root": "stellen", "lemma": "stellen.verb", "en": "put (upright), place", "level": "A1", "zipf": 4.9,
+    "root": "stellen", "file": "build.family.stellen",   // file: the manifest id of the root's family file
+    "lemma": "stellen.verb", "en": "put (upright), place", "level": "A1", "zipf": 4.9,
     "boards": ["A2", "B1", "B2"],            // the levels with a content board
-    "forms": [                               // EVERY form, in the family's order: [id, card, lemma, level, flags]
+    "forms": [                               // EVERY form, in the family file's order: [id, card, lemma, level, flags]
       ["stellen.verb", null, "stellen.verb", "A1", ""],
       ["abstellen.verb", "PV:abstellen", "abstellen.verb", "A2", "b"],
       ["der_Aufsteller", "PF:der_Aufsteller", null, "C1", "br"] ],
@@ -55,7 +57,14 @@ What it answers without loading a family: which roots exist and their level and 
 "Family: stellen ›" on a word page via a form's lemma), a card's root and lemma (PF cards in the Word building round,
 `lemmaMaps`), the known count ("3 of 41 known": every form's card and lemma), the typed-answer lexicon, and
 **Today's root**: `pickRoot` in `src/domain/wordbuild-family-index.js` takes the index's roots and returns the same
-root `boardFor` would (boardFor calls it), so the plan loads one file.
+root `boardFor` would (boardFor calls it), so the plan loads one file. The pure functions read the index when
+`families` is absent (`lemmaMaps`, `pfIds`, `cardIds`, `lexiconOf`, `familyLexicon`; `lemmaIndexOf` is
+`familyIndex(familyModel(…))` for word pages), with the same answers (tests/unit/build-family-files.test.mjs).
+
+**Until the per-root loader lands** (the UI lane), `src/features/build/family-data.js ensureFamilies` loads all 40
+files once a session through `src/data/build-content.js loadBuild`, and only where a family is needed: Today's plan
+when it makes the day's board, the Word building hub, a Word building round, the family view and Today's family.
+Today, knowledge, word pages and the Map read the index only.
 
 ## Board rules (round 7, second pass)
 

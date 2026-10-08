@@ -38,7 +38,10 @@ test('packs: every content file is in exactly one pack, named for its language',
 test('the German precache is what it was before packs, plus the two small shared files', () => {
   const OLD = /^(b1|exam|speak)\.|^igloo\.(framework|turns|chunks\.en)$|\.(german|de)$/;   // stamp.mjs CORE_CONTENT before C3a
   const old = new Set(manifest.files.filter((/** @type {any} */ f) => OLD.test(f.id)).map((/** @type {any} */ f) => f.id));
-  const now = new Set([...manifest.packs.shared, ...manifest.packs.de]);
+  // lazy files (the word families, one per root: round 7, second pass) are in the pack but not precached
+  const lazy = new Set(manifest.files.filter((/** @type {any} */ f) => f.lazy).map((/** @type {any} */ f) => f.id));
+  assert.ok([...lazy].every(id => /^build\.family\./.test(id)), 'only the word families are lazy');
+  const now = new Set([...manifest.packs.shared, ...manifest.packs.de].filter(id => !lazy.has(id)));
   assert.deepEqual([...old].filter(id => !now.has(id)), [], 'nothing German is dropped');
   assert.deepEqual([...now].filter(id => !old.has(id)).sort(), ['igloo.sentences.en', 'igloo.words.themes']);
 });
@@ -99,7 +102,8 @@ test('the service worker precaches the shared files and only the packs its URL n
 test('the stamped site gives every language its pack list (German as before)', () => {
   const { shared, packs } = contentPrecache(manifest);
   assert.equal(shared.length, manifest.packs.shared.length);
-  for (const [k, ids] of Object.entries(manifest.packs)) if (k !== 'shared') assert.equal(packs[k].length, /** @type {string[]} */ (ids).length, k);
+  const lazy = new Set(manifest.files.filter((/** @type {any} */ f) => f.lazy).map((/** @type {any} */ f) => f.id));
+  for (const [k, ids] of Object.entries(manifest.packs)) if (k !== 'shared') assert.equal(packs[k].length, /** @type {string[]} */ (ids).filter(id => !lazy.has(id)).length, k);
   assert.ok(packs.de.every(u => !/french|spanish|arabic/.test(u)));
   assert.ok(packs.fr.every(u => /french|\/fr\.json/.test(u)));
 });

@@ -4,6 +4,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { evaluate, table } from '../corpus/grading-corpus.mjs';
+import { readBuild } from '../../tools/family-files.mjs';
 
 // right answers the grader still marks wrong, each for a reason outside the grader: the item's accepted answers do not
 // list that wording, a capital the noun list asks for, or a missing full stop between two sentences
@@ -39,7 +40,7 @@ test('grading corpus: no wrong German is right, right German is not wrong', asyn
   for (const type of ['schreiben phrase', 'schreiben email line', 'situation', 'cluster word', 'cluster family', 'cluster opposite', 'cluster prep', 'script word gap', 'script word meaning', 'word building verb', 'word building sentence', 'word building word'])
     assert.ok(types.has(type), `no ${type} answers in the corpus`);
   // word families (round 7): every PF form typed from its clue
-  if (JSON.parse(readFileSync(new URL('../../content/build/de.json', import.meta.url), 'utf8')).families) assert.ok(types.has('word building family form'), 'no word building family form answers in the corpus');
+  if (readBuild().families) assert.ok(types.has('word building family form'), 'no word building family form answers in the corpus');
   // Today's family (round 7 fix): its typed judge, on every clue form, and the cross-word classes the German review
   // found graded right there (another form of the family sharing tiles: das Gebot for das Gebiet; a word one umlaut
   // apart: vertraglich for verträglich; a noun made from the infinitive and its verb: das Verhalten / verhalten).

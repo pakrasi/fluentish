@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "120ae3747830",
+ "version": "449766d29d4b",
  "languages": [
   {
    "id": "khasi",
@@ -175,6 +175,46 @@
    "b1.schreiben",
    "b1.wordmap",
    "build.de",
+   "build.family.arbeiten",
+   "build.family.bieten",
+   "build.family.brechen",
+   "build.family.bringen",
+   "build.family.fahren",
+   "build.family.fallen",
+   "build.family.finden",
+   "build.family.fragen",
+   "build.family.geben",
+   "build.family.gehen",
+   "build.family.halten",
+   "build.family.hoeren",
+   "build.family.kaufen",
+   "build.family.kommen",
+   "build.family.lassen",
+   "build.family.laufen",
+   "build.family.legen",
+   "build.family.leiten",
+   "build.family.machen",
+   "build.family.nehmen",
+   "build.family.richten",
+   "build.family.rufen",
+   "build.family.sagen",
+   "build.family.scheiden",
+   "build.family.schlagen",
+   "build.family.schliessen",
+   "build.family.schreiben",
+   "build.family.sehen",
+   "build.family.setzen",
+   "build.family.sprechen",
+   "build.family.stehen",
+   "build.family.stellen",
+   "build.family.stimmen",
+   "build.family.suchen",
+   "build.family.teilen",
+   "build.family.tragen",
+   "build.family.treten",
+   "build.family.weisen",
+   "build.family.zahlen",
+   "build.family.ziehen",
    "clusters.de",
    "conversation.de",
    "exam.goethe-b1.01",
@@ -344,8 +384,328 @@
    "id": "build.de",
    "path": "build/de.json",
    "schema": "build@1",
-   "bytes": 917621,
-   "sha256": "941718a69ff2f431f92feb58339e86b8782896835903661fdc2f3915757cae54"
+   "bytes": 235496,
+   "sha256": "38f06e4df955d92caec5aebd70132427e1f5e21f04144473a638de6e672e9d50"
+  },
+  {
+   "id": "build.family.arbeiten",
+   "path": "build/family/arbeiten.json",
+   "schema": "build-family@1",
+   "bytes": 21752,
+   "sha256": "cbe1c161d25cbb867d40c1cfe7e3980f10639e8e1f2a34a88d78f4d8db327d5b",
+   "lazy": true
+  },
+  {
+   "id": "build.family.bieten",
+   "path": "build/family/bieten.json",
+   "schema": "build-family@1",
+   "bytes": 15206,
+   "sha256": "76dd87e74d7486be46be16863f6e74da3a8c56d3fddd459f86e3711ae6975e6c",
+   "lazy": true
+  },
+  {
+   "id": "build.family.brechen",
+   "path": "build/family/brechen.json",
+   "schema": "build-family@1",
+   "bytes": 19252,
+   "sha256": "d6eb51d7875929d23b22bd6b954c37c6780d9d50a35e5983e2c622d5653c8814",
+   "lazy": true
+  },
+  {
+   "id": "build.family.bringen",
+   "path": "build/family/bringen.json",
+   "schema": "build-family@1",
+   "bytes": 15319,
+   "sha256": "9b45d69eb7740fb16fb837601d9ba1e0242d5b14c450ce08dd852a217285b7c7",
+   "lazy": true
+  },
+  {
+   "id": "build.family.fahren",
+   "path": "build/family/fahren.json",
+   "schema": "build-family@1",
+   "bytes": 21890,
+   "sha256": "75f6ad8abf4327a68ec2c09cc87ecab6d6c71e430deb60c176df36e9e9c36cac",
+   "lazy": true
+  },
+  {
+   "id": "build.family.fallen",
+   "path": "build/family/fallen.json",
+   "schema": "build-family@1",
+   "bytes": 28478,
+   "sha256": "ae713370322d364df89c1882d0fb141b3cb97c2190c59fedf87c01cbbd56bd29",
+   "lazy": true
+  },
+  {
+   "id": "build.family.finden",
+   "path": "build/family/finden.json",
+   "schema": "build-family@1",
+   "bytes": 17481,
+   "sha256": "eb8f09c610a5e5656ba83e6b839f5e17cbd6d19ca741a7c6fe8fd6a7ed10fd52",
+   "lazy": true
+  },
+  {
+   "id": "build.family.fragen",
+   "path": "build/family/fragen.json",
+   "schema": "build-family@1",
+   "bytes": 14533,
+   "sha256": "203b3970032b0f5f9cb86a42009408713f1bee421ea7494d81bc129ffdb08d98",
+   "lazy": true
+  },
+  {
+   "id": "build.family.geben",
+   "path": "build/family/geben.json",
+   "schema": "build-family@1",
+   "bytes": 21156,
+   "sha256": "dbbf0f68cc5b33be2f5e9d06ed21694ea9b84b93357eec011919d075400a29ea",
+   "lazy": true
+  },
+  {
+   "id": "build.family.gehen",
+   "path": "build/family/gehen.json",
+   "schema": "build-family@1",
+   "bytes": 22265,
+   "sha256": "c332a4ddce83c334a80fa050d08dd437e6c49bb227dd54745b5f6d68f77489f2",
+   "lazy": true
+  },
+  {
+   "id": "build.family.halten",
+   "path": "build/family/halten.json",
+   "schema": "build-family@1",
+   "bytes": 24056,
+   "sha256": "8463ae3e79099e4c5b8f774ac534ea9fb1c2cbb81125dd0166aecc50b0dfe2d1",
+   "lazy": true
+  },
+  {
+   "id": "build.family.hoeren",
+   "path": "build/family/hoeren.json",
+   "schema": "build-family@1",
+   "bytes": 15252,
+   "sha256": "31d82433689a4493336efbb0886316e8e2b78d4d40427eda6bf69deb0638ef66",
+   "lazy": true
+  },
+  {
+   "id": "build.family.kaufen",
+   "path": "build/family/kaufen.json",
+   "schema": "build-family@1",
+   "bytes": 14491,
+   "sha256": "25d3d035a9e3af0a841dc6e874ae30a2d58d5391416637257021d9991e8e0ee1",
+   "lazy": true
+  },
+  {
+   "id": "build.family.kommen",
+   "path": "build/family/kommen.json",
+   "schema": "build-family@1",
+   "bytes": 20215,
+   "sha256": "1916f5fb468adb7021bc69b9e1e8364b969da9b4e12528980d1df60c2b1a6451",
+   "lazy": true
+  },
+  {
+   "id": "build.family.lassen",
+   "path": "build/family/lassen.json",
+   "schema": "build-family@1",
+   "bytes": 21699,
+   "sha256": "94d582f2a26a4de67b7cb559718ef4cbbab6eb0388a09f82fc5ad3daf0b3e261",
+   "lazy": true
+  },
+  {
+   "id": "build.family.laufen",
+   "path": "build/family/laufen.json",
+   "schema": "build-family@1",
+   "bytes": 16537,
+   "sha256": "f43f74fe1ca7d6cdeaba600efe5abe347165aa879582ed01bec68df14932f254",
+   "lazy": true
+  },
+  {
+   "id": "build.family.legen",
+   "path": "build/family/legen.json",
+   "schema": "build-family@1",
+   "bytes": 21749,
+   "sha256": "64a316df2bd7f320da5a292cbab906d9ef01a7f5fe887f8c14b60d998e6dce4f",
+   "lazy": true
+  },
+  {
+   "id": "build.family.leiten",
+   "path": "build/family/leiten.json",
+   "schema": "build-family@1",
+   "bytes": 16688,
+   "sha256": "c2099b2d7b3c7ed168496a75069cd5e597e7296c0cde110921b928ececf51ca8",
+   "lazy": true
+  },
+  {
+   "id": "build.family.machen",
+   "path": "build/family/machen.json",
+   "schema": "build-family@1",
+   "bytes": 14519,
+   "sha256": "eb1d467715743b433e94d3b4795c725be3267ba4baef2a27839b2fe607d90297",
+   "lazy": true
+  },
+  {
+   "id": "build.family.nehmen",
+   "path": "build/family/nehmen.json",
+   "schema": "build-family@1",
+   "bytes": 24995,
+   "sha256": "5fa0fd5533e1371c8326a811f426f4e04274efd88c4c7512cea1dee80be256f4",
+   "lazy": true
+  },
+  {
+   "id": "build.family.richten",
+   "path": "build/family/richten.json",
+   "schema": "build-family@1",
+   "bytes": 19399,
+   "sha256": "392dabb38a268f53fb7586e12f25b2609f428e7e63be96500d41859daadf3f8b",
+   "lazy": true
+  },
+  {
+   "id": "build.family.rufen",
+   "path": "build/family/rufen.json",
+   "schema": "build-family@1",
+   "bytes": 14488,
+   "sha256": "81e596a88b638c49cb856eac4592f2f22dc876c3c32c5a6b6d2e73585eade1e5",
+   "lazy": true
+  },
+  {
+   "id": "build.family.sagen",
+   "path": "build/family/sagen.json",
+   "schema": "build-family@1",
+   "bytes": 16087,
+   "sha256": "fb9e27447f11e9fc5e3458e5415afa06b74615604a3bbf7fb24c1b73c4c9ba96",
+   "lazy": true
+  },
+  {
+   "id": "build.family.scheiden",
+   "path": "build/family/scheiden.json",
+   "schema": "build-family@1",
+   "bytes": 14353,
+   "sha256": "1cd0dcd285ad2e8d432df8698019e99cda3916165510bc786a160e5518f0681d",
+   "lazy": true
+  },
+  {
+   "id": "build.family.schlagen",
+   "path": "build/family/schlagen.json",
+   "schema": "build-family@1",
+   "bytes": 17918,
+   "sha256": "b74ab20693da6f322da8a7c542e0f763ec1724e997d23ddf38cab04342fabcf1",
+   "lazy": true
+  },
+  {
+   "id": "build.family.schliessen",
+   "path": "build/family/schliessen.json",
+   "schema": "build-family@1",
+   "bytes": 21861,
+   "sha256": "7a26b023501fcc9965150d29c1ddc199a6a19bab3f3cf5affd1de6ed6f72b800",
+   "lazy": true
+  },
+  {
+   "id": "build.family.schreiben",
+   "path": "build/family/schreiben.json",
+   "schema": "build-family@1",
+   "bytes": 20180,
+   "sha256": "c67e8fc9db29de97f67efc6492e096f8ce46a8aec3c867e1944a83c99f13d40f",
+   "lazy": true
+  },
+  {
+   "id": "build.family.sehen",
+   "path": "build/family/sehen.json",
+   "schema": "build-family@1",
+   "bytes": 21230,
+   "sha256": "96cf0e8f2bf97a73dc1408afe48bb58ca21098328479e89edbb6c92980379181",
+   "lazy": true
+  },
+  {
+   "id": "build.family.setzen",
+   "path": "build/family/setzen.json",
+   "schema": "build-family@1",
+   "bytes": 24043,
+   "sha256": "9d7cb477929f038660b88243a1a95291566f7a3cb96cfafb63fb32785f89fad4",
+   "lazy": true
+  },
+  {
+   "id": "build.family.sprechen",
+   "path": "build/family/sprechen.json",
+   "schema": "build-family@1",
+   "bytes": 22900,
+   "sha256": "b180a01ea9674ffb4192f0531686b878d3de7afaa9ca5389f0602035265bdf37",
+   "lazy": true
+  },
+  {
+   "id": "build.family.stehen",
+   "path": "build/family/stehen.json",
+   "schema": "build-family@1",
+   "bytes": 22631,
+   "sha256": "4317d38e28e516e1b2c6402a66d67c44da11583f9d88baba8c65124eb42ffd2a",
+   "lazy": true
+  },
+  {
+   "id": "build.family.stellen",
+   "path": "build/family/stellen.json",
+   "schema": "build-family@1",
+   "bytes": 28266,
+   "sha256": "d67082612041bdf39f66ddace152cbf94c02804b350e2ec2fadeb5b4d675a885",
+   "lazy": true
+  },
+  {
+   "id": "build.family.stimmen",
+   "path": "build/family/stimmen.json",
+   "schema": "build-family@1",
+   "bytes": 14170,
+   "sha256": "8c0cfdffc40b4a83e572a943a869658d6f0a50f34d3f7f5f3be4b9ccc4d85094",
+   "lazy": true
+  },
+  {
+   "id": "build.family.suchen",
+   "path": "build/family/suchen.json",
+   "schema": "build-family@1",
+   "bytes": 14976,
+   "sha256": "acea859825b5b2a19f9ae3a783dedf31f178b11647ecff397fe1dff4a00f89a1",
+   "lazy": true
+  },
+  {
+   "id": "build.family.teilen",
+   "path": "build/family/teilen.json",
+   "schema": "build-family@1",
+   "bytes": 20403,
+   "sha256": "7bc8de9911be4998958340f8ecb27f70cdc6d793b32c8622fe2e20de7bd80087",
+   "lazy": true
+  },
+  {
+   "id": "build.family.tragen",
+   "path": "build/family/tragen.json",
+   "schema": "build-family@1",
+   "bytes": 22616,
+   "sha256": "b26f2d8e37c358c23d317b9699fb12ec019e6d8a36bcbc08305673cb131f9f01",
+   "lazy": true
+  },
+  {
+   "id": "build.family.treten",
+   "path": "build/family/treten.json",
+   "schema": "build-family@1",
+   "bytes": 17176,
+   "sha256": "29273170a7d7f305340378c4f618be2005949c3286f0c3581f9b4cedcf3dd202",
+   "lazy": true
+  },
+  {
+   "id": "build.family.weisen",
+   "path": "build/family/weisen.json",
+   "schema": "build-family@1",
+   "bytes": 20448,
+   "sha256": "32945be5a1c883e34baf567c5238984674f4f2a0b39899e310c31bc9f2c5c826",
+   "lazy": true
+  },
+  {
+   "id": "build.family.zahlen",
+   "path": "build/family/zahlen.json",
+   "schema": "build-family@1",
+   "bytes": 15885,
+   "sha256": "ec6980e628434a5a3b6c51e8de68842d2fdb2379e0f0afcdc588b23170f3e247",
+   "lazy": true
+  },
+  {
+   "id": "build.family.ziehen",
+   "path": "build/family/ziehen.json",
+   "schema": "build-family@1",
+   "bytes": 22870,
+   "sha256": "b0b3e2bf34e871b2b686f78ea15754309eeeb1310d6d0dd1c7b986b6bdaaf480",
+   "lazy": true
   },
   {
    "id": "clusters.de",

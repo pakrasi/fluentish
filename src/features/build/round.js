@@ -29,7 +29,7 @@ import { drawTree, landArticle } from './chain.js';
 import { play, css, nudge, pop, reduced, finishAll } from './fx.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
 import { fitToKeyboard, keep, reveal as revealEl, fitPrompt } from '../../core/keyboard.js';
-import { familiesOf } from './family-data.js';
+import { familiesOf, ensureFamilies } from './family-data.js';
 import { formWord } from './fword.js';
 import { familyLink } from '../shared/family-link.js';
 
@@ -49,7 +49,7 @@ export async function mountRound(el, ctx) {
   let d;
   /** @type {any} */
   let k;
-  try { [d, k] = await Promise.all([loadContent(ctx), knowledge(ctx).catch(() => null)]); } catch {
+  try { [d, k] = await Promise.all([loadContent(ctx).then(x => ensureFamilies(ctx, x)), knowledge(ctx).catch(() => null)]); } catch {
     replace(el, h('div', { class: 'wb stack page-pad' }, h('h1', null, t('build.round')), h('p', null, t('build.loadFailed')), h('a', { class: 'btn pressable', href: '#/practice/build' }, t('build.back'))));
     return restore;
   }

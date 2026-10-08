@@ -3,8 +3,9 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { gradeTyped, typedRating, pvAccept, lexiconOf } from '../../src/domain/wordbuild-grade.js';
+import { readBuild } from '../../tools/family-files.mjs';
 
-const C = JSON.parse(readFileSync(new URL('../../content/build/de.json', import.meta.url), 'utf8'));
+const C = readBuild();
 const lexicon = lexiconOf(C);
 const ok = (input, accept, o = {}) => gradeTyped(input, { accept, lexicon, ...o });
 

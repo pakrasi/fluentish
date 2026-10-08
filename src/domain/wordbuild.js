@@ -65,7 +65,7 @@ import { familyModel } from './wordbuild-family.js';
  * @property {string} [ex] @property {string} [exEn]
  */
 /** @typedef {{id: string, title: string, nodes: ChainNode[]}} Chain */
-/** @typedef {{version: number, prefixes: Prefix[], roots: Root[], verbs: Verb[], frames: Frame[], suffixes: Suffix[], chains: Chain[], particles?: any[], families?: any[]}} BuildContent */
+/** @typedef {{version: number, prefixes: Prefix[], roots: Root[], verbs: Verb[], frames: Frame[], suffixes: Suffix[], chains: Chain[], particles?: any[], families?: any[], familyIndex?: {roots: any[]}}} BuildContent */
 
 import { validateFamilies, familyCardIds } from './wordbuild-family-check.js';
 export { familyCardIds };
@@ -151,8 +151,13 @@ export function cardIds(c) {
   return [...new Set(out)];
 }
 
-/** The PF: card ids of the families key: forms with no PV or PW card. @param {BuildContent} c */
+/**
+ * The PF: card ids of the families key: forms with no PV or PW card. Without the families (they are per-root files
+ * since round 7's second pass), the index in de.json lists the same ids in the same order.
+ * @param {BuildContent} c
+ */
 export function pfIds(c) {
+  if (!c.families && c.familyIndex) return c.familyIndex.roots.flatMap(r => r.forms.map((/** @type {any[]} */ x) => x[1]).filter((/** @type {any} */ id) => typeof id === 'string' && id.startsWith('PF:')));
   if (!(/** @type {any} */ (c).families || []).length) return [];
   /** @type {string[]} */ const out = [];
   for (const fam of familyModel(c).values()) for (const id of fam.byCard.keys()) if (id.startsWith('PF:')) out.push(id);
@@ -198,7 +203,11 @@ export function lemmaMaps(c) {
   for (const v of c.verbs) if (v.lemma) verbLemma[v.id] = v.lemma;
   for (const n of pwNodes(c)) if (n.lemma) wordLemma[n.word] = n.lemma;
   /** @type {Record<string, string>} */ const formLemma = {};
-  for (const id of pfIds(c)) { const form = id.slice(3); const f = (/** @type {any[]} */ (/** @type {any} */ (c).families || [])).flatMap(x => x.forms || []).find(x => x.id === form); if (f && f.lemma) formLemma[form] = f.lemma; }
+  // a form's lemma: from the families, or from the index (de.json without the per-root files)
+  const lemmaOf = new Map();
+  if (c.families) { for (const fam of c.families) for (const f of fam.forms || []) if (!lemmaOf.has(f.id)) lemmaOf.set(f.id, f.lemma); }
+  else for (const r of (c.familyIndex || { roots: [] }).roots) for (const x of r.forms) if (!lemmaOf.has(x[0])) lemmaOf.set(x[0], x[2]);
+  for (const id of pfIds(c)) { const form = id.slice(3); const l = lemmaOf.get(form); if (l) formLemma[form] = l; }
   return { verbLemma, wordLemma, formLemma };
 }
 

@@ -72,6 +72,8 @@ export function lexiconOf(c, extra = []) {
   for (const f of c.frames) for (const t of Object.values(f.forms)) for (const x of t || []) add(x[1]);
   for (const ch of c.chains) for (const n of ch.nodes) add(n.word);
   for (const fam of c.families || []) for (const f of fam.forms || []) { add(f.word); if (f.pp) add(f.pp); }
+  // without the per-root family files, the index holds the same words (every form's word and participle)
+  if (!c.families) for (const r of (c.familyIndex || { roots: [] }).roots) for (const w of r.words) add(w);
   for (const s of extra) add(s);
   return out;
 }

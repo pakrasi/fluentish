@@ -16,6 +16,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { RIGHT_VARIANTS } from './right-variants.mjs';
 import { verbIndex, nounNumbers, morphErrorsIn, formalLowercase, setOf, MORPH_CLASSES } from './morph-errors.mjs';
 import { REVIEW4_CASES } from './review4-cases.mjs';
+import { readBuild } from '../../tools/family-files.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 export const ROOT = path.resolve(HERE, '../..');
@@ -604,7 +605,7 @@ export async function buildData({ root = ROOT, codeRoot = ROOT } = {}) {
   try {
     const W = await import(pathToFileURL(path.join(codeRoot, 'src/domain/wordbuild.js')).href);
     const G = await import(pathToFileURL(path.join(codeRoot, 'src/domain/wordbuild-grade.js')).href);
-    const bc = J(root, 'content/build/de.json');
+    const bc = readBuild(root);
     for (const v of bc.verbs) wordbuild.push({ id: `PV:${v.id}`, src: 'wordbuild', wb: 'verb', accept: G.pvAccept(v), v, siblings: bc.verbs.filter(x => x.root === v.root && x.pre !== v.pre).map(x => W.bare(x.inf)) });
     for (const f of bc.frames) for (const form of W.FORMS) if (f.forms[form]) wordbuild.push({ id: `PS:${f.id}.${form}`, src: 'wordbuild', wb: 'sentence', accept: [W.gapped(f, form).answer], f, form });
     for (const n of W.pwNodes(bc)) wordbuild.push({ id: `PW:${n.word}`, src: 'wordbuild', wb: 'word', accept: [W.pwAnswer(n)], noun: !!n.art, n });

@@ -9,6 +9,7 @@ import * as F from '../../src/domain/wordbuild-family.js';
 import { cardIds, itemResolver, lemmaMaps, pfIds } from '../../src/domain/wordbuild.js';
 import { shownToday, streamOf, composeRound } from '../../src/domain/wordbuild-plan.js';
 import { tagOf, kindOf } from '../../src/domain/itemids.js';
+import { readBuild } from '../../tools/family-files.mjs';
 
 const V = (/** @type {string} */ root, /** @type {string} */ pre, /** @type {'s'|'i'} */ kind, /** @type {any} */ o = {}) => ({
   id: pre + root, root, pre, inf: pre + root, kind, grade: 'T', how: 'lit', en: `${pre}-${root}`, why: 'x', ex: 'x.', exEn: 'x', aux: 'hat', pp: 'x', lemma: `${pre}${root}.verb`, level: 'B1', ...o });
@@ -102,7 +103,7 @@ test('PF: ids: tag, stream, resolver, the ledger; nothing changes without a fami
 });
 
 test('the shipped content: every root has a family and a board; PF ids only from a families key', async () => {
-  const c = JSON.parse(readFileSync(new URL('../../content/build/de.json', import.meta.url), 'utf8'));
+  const c = readBuild();
   const m = F.familyModel(c);
   assert.ok(m.size >= c.roots.length, 'a family for every build root (and the families key\'s own roots)');
   for (const r of c.roots) assert.ok(m.has(r.id), r.id);

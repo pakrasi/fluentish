@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Content gate: the manifest is current, every listed file exists with the listed sha256, and every file validates
 // against its JSON Schema in schemas/content/. The schemas are checked for keywords the validator does not support.
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { validate, unsupported } from '../src/core/schema.js';
@@ -12,7 +12,9 @@ import { validateClusters } from '../src/domain/clusters.js';
 import { validateForms } from '../src/domain/forms.js';
 import { build as buildAtlas, sources as atlasSources, OUT as ATLAS_OUT, METRICS as ATLAS_METRICS } from './build-atlas.mjs';
 import { build as buildClusters, serialise as serialiseClusters, withAdded, OUT as CLUSTERS_OUT, WORDS as WORDS_PATH } from './build-clusters.mjs';
-import { build as buildWordbuild, serialise as serialiseWordbuild, OUT as WORDBUILD_OUT } from './build-wordbuild.mjs';
+import { build as buildWordbuild, outputs as wordbuildOutputs, OUT as WORDBUILD_OUT } from './build-wordbuild.mjs';
+import { withFamilies, familyDir } from './family-files.mjs';
+import { indexOf } from '../src/domain/wordbuild-family-index.js';
 import { validateBuild } from '../src/domain/wordbuild.js';
 import { readersErrors } from '../src/domain/readers.js';
 import { PACKS } from '../src/lang/registry.js';
@@ -90,9 +92,20 @@ try {
 try {
   const words = JSON.parse(readFileSync(WORDS_PATH, 'utf8'));
   const text = readFileSync(WORDBUILD_OUT, 'utf8');
-  if (serialiseWordbuild(buildWordbuild(words)) !== text) errors.push('content/build/de.json is out of date: run node tools/build-wordbuild.mjs');
+  const { main, files } = wordbuildOutputs(buildWordbuild(words));
+  if (main !== text) errors.push('content/build/de.json is out of date: run node tools/build-wordbuild.mjs');
+  for (const [slug, t] of files) if (!existsSync(path.join(familyDir(ROOT), `${slug}.json`)) || readFileSync(path.join(familyDir(ROOT), `${slug}.json`), 'utf8') !== t) errors.push(`content/build/family/${slug}.json is out of date: run node tools/build-wordbuild.mjs`);
   const clusters = JSON.parse(readFileSync(CLUSTERS_OUT, 'utf8'));
-  for (const e of validateBuild(JSON.parse(text), { words, morph: clusters.morph, clusterSuffixes: clusters.suffixes })) errors.push(`build/de.json ${e}`);
+  // the rules run on the merged content (the families back in, from their files)
+  const merged = withFamilies(JSON.parse(text), ROOT);
+  for (const e of validateBuild(merged, { words, morph: clusters.morph, clusterSuffixes: clusters.suffixes })) errors.push(`build/de.json ${e}`);
+  // the index is what the families say, and every family file is a lazy manifest file
+  if (merged.families && JSON.stringify(indexOf(merged)) !== JSON.stringify(JSON.parse(text).familyIndex)) errors.push('build/de.json familyIndex does not match the family files');
+  for (const r of (JSON.parse(text).familyIndex || { roots: [] }).roots) {
+    const f = manifest.files.find((/** @type {any} */ x) => x.id === r.file);
+    if (!f) errors.push(`build/de.json familyIndex: ${r.root}'s file ${r.file} is not in the manifest`);
+    else if (!f.lazy) errors.push(`manifest: ${r.file} must be lazy (not in the install precache)`);
+  }
 } catch (e) { errors.push(`word building: ${/** @type {Error} */ (e).message}`); }
 // the Explore map: what the content builds, keeping every position of the shipped map (tools/build-atlas.mjs)
 try {

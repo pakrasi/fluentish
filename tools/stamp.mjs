@@ -31,13 +31,15 @@ const git = (/** @type {string[]} */ ...a) => execFileSync('git', a, { cwd: ROOT
  * Content precached on install (C3a): the shared files plus the active course's language pack (manifest packs[lang]),
  * never another language's. sw.js holds the shared list in PRECACHE and each pack's list in PACKS, and installs the
  * packs its registration URL names (sw.js?packs=fr; none named is German, the language of every registration made
- * before courses). Everything else in content/ is cached the first time it is used.
- * @param {{packs: Record<string, string[]>, files: {id: string, path: string, sha256: string}[]}} manifest
+ * before courses). A lazy file (the word families, one per root) is in its pack but not precached. Everything else in
+ * content/ is cached the first time it is used.
+ * @param {{packs: Record<string, string[]>, files: {id: string, path: string, sha256: string, lazy?: boolean}[]}} manifest
  * @returns {{shared: string[], packs: Record<string, string[]>}} content URLs (path?h=<sha8>)
  */
 export function contentPrecache(manifest) {
   const url = new Map(manifest.files.map(f => [f.id, `content/${f.path}?h=${f.sha256.slice(0, 8)}`]));
-  const list = (/** @type {string[]} */ ids) => ids.map(id => /** @type {string} */ (url.get(id)));
+  const lazy = new Set(manifest.files.filter(f => f.lazy).map(f => f.id));
+  const list = (/** @type {string[]} */ ids) => ids.filter(id => !lazy.has(id)).map(id => /** @type {string} */ (url.get(id)));
   const { shared = [], ...langs } = manifest.packs;
   return { shared: list(shared), packs: Object.fromEntries(Object.entries(langs).map(([k, ids]) => [k, list(ids)])) };
 }

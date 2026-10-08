@@ -12,7 +12,7 @@ import { dayAllowance } from '../../domain/allowance.js';
 import { backLink } from './compass.js';
 import { loadContent, knowledge, today as todayOf } from './data.js';
 import { writeStats } from './plan.js';
-import { familiesOf, todayBoard } from './family-data.js';
+import { familiesOf, todayBoard, ensureFamilies } from './family-data.js';
 import { foundCount } from '../../domain/wordbuild-family.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
 
@@ -28,7 +28,7 @@ export async function mountHub(el, ctx) {
   let d;
   /** @type {any} */
   let k;
-  try { [d, k] = await Promise.all([loadContent(ctx), knowledge(ctx).catch(() => null)]); } catch {
+  try { [d, k] = await Promise.all([loadContent(ctx).then(x => ensureFamilies(ctx, x)), knowledge(ctx).catch(() => null)]); } catch {
     replace(el, h('div', { class: 'wb stack' }, backLink('#/practice', t('practice.title')), h('div', { class: 'page-head' }, h('h1', null, t('build.title'))), h('p', null, t('build.loadFailed'))));
     return () => {};
   }

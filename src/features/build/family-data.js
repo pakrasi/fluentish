@@ -12,17 +12,28 @@ import * as F from '../../domain/wordbuild-family.js';
 import { dayAllowance, todayPlan } from '../../domain/allowance.js';
 import { courseGoal } from '../../domain/levels.js';
 import { loadContent, cardsOf, dueFns, saveAnswer, today as todayState } from './data.js';
+import { loadBuild } from '../../data/build-content.js';
 
 export const FAMILY = 'build.family';
 export const REPORTS = 'build.reports';
 
 /** @type {WeakMap<any, Map<string, F.Family>>} */ const models = new WeakMap();
 
-/** The families of the content, with level, frequency and examples from the word list (once a session). @param {any} d loadContent() */
+/**
+ * Load the word families into d (content/build/family/<slug>.json, round 7's second pass: they are not in de.json).
+ * Call before familiesOf(d). Today's plan calls it only when it makes a board. A family file that fails to load
+ * costs only that family. @param {any} ctx @param {any} d loadContent()
+ */
+export async function ensureFamilies(ctx, d) {
+  if (!d.fc) d.fc = await loadBuild(ctx.content);
+  return d;
+}
+
+/** The families of the content, with level, frequency and examples from the word list (once a session). @param {any} d loadContent(), after ensureFamilies */
 export function familiesOf(d) {
   let m = models.get(d);
   if (!m) {
-    m = F.familyModel(d.c, { info: lemma => { const w = d.byId.get(lemma); return w ? { level: w.level || null, zipf: w.zipf ?? null, ex: w.ex || null, exEn: w.exen || null } : null; } });
+    m = F.familyModel(d.fc || d.c, { info: lemma => { const w = d.byId.get(lemma); return w ? { level: w.level || null, zipf: w.zipf ?? null, ex: w.ex || null, exEn: w.exen || null } : null; } });
     models.set(d, m);
   }
   return m;
@@ -30,7 +41,7 @@ export function familiesOf(d) {
 
 /** @param {any} ctx */
 export async function loadFamilies(ctx) {
-  const d = await loadContent(ctx);
+  const d = await ensureFamilies(ctx, await loadContent(ctx));
   return { d, fams: familiesOf(d) };
 }
 

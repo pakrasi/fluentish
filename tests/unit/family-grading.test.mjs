@@ -9,9 +9,10 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import * as F from '../../src/domain/wordbuild-family.js';
 import { gradeTyped } from '../../src/domain/wordbuild-grade.js';
+import { readBuild } from '../../tools/family-files.mjs';
 
 const J = (/** @type {string} */ p) => JSON.parse(readFileSync(new URL(`../../${p}`, import.meta.url), 'utf8'));
-const C = J('content/build/de.json');
+const C = readBuild();
 const WORDS = J('content/igloo/words/de.json');
 const fams = F.familyModel(C);
 const LEX = F.familyLexicon(C, WORDS);

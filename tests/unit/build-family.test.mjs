@@ -6,9 +6,10 @@ import { readFileSync } from 'node:fs';
 import { segOf, stressOf, showStress } from '../../tools/family-build.mjs';
 import { validateFamilies, familyCardIds, exampleHolds, BOARD_SIZE } from '../../src/domain/wordbuild-family-check.js';
 import { cardIds } from '../../src/domain/wordbuild.js';
+import { readBuild } from '../../tools/family-files.mjs';
 
 const J = (/** @type {string} */ p) => JSON.parse(readFileSync(new URL(`../../${p}`, import.meta.url), 'utf8'));
-const C = J('content/build/de.json');
+const C = readBuild();
 
 /** A form with its parts and stress, as the build makes it. @param {any} f @param {string[]} stems @param {any} [parent] */
 const built = (f, stems, parent = null) => { const g = { suf: [], pre: [], ...f }; g.seg = segOf(g, stems); g.stress = stressOf(g, parent); return g; };

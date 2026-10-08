@@ -33,6 +33,8 @@ export const MAP = [
   [/^course\/(\w+)\.json$/, m => `course.${m[1]}`, 'course@1'],
   [/^clusters\/(\w+)\.json$/, m => `clusters.${m[1]}`, 'clusters@1'],
   [/^build\/(\w+)\.json$/, m => `build.${m[1]}`, 'build@1'],
+  // the word families, one file per root (content/build/FAMILY-SCHEMA.md): German, and lazy (LAZY below)
+  [/^build\/family\/([a-z0-9-]+)\.json$/, m => `build.family.${m[1]}`, 'build-family@1'],
   [/^atlas\/(\w+)\.json$/, m => `atlas.${m[1]}`, 'atlas@1'],
   [/^read\/(\w+)\.json$/, m => `read.${m[1]}`, 'readers@1'],
   [/^conversation\/(\w+)\.json$/, m => `conversation.${m[1]}`, 'conversation@1'],
@@ -61,6 +63,12 @@ export function examEntries() {
   });
 }
 
+/**
+ * Files a client loads when it needs them, never in the install precache (tools/stamp.mjs contentPrecache): the word
+ * families, one per root (content/build/FAMILY-SCHEMA.md). The service worker caches each after its first use.
+ */
+export const LAZY = /^build\/family\//;
+
 /** Old schema id → its generic id (schemas/content-ids.json): the manifest names the generic one. */
 export const ALIASES = /** @type {Record<string, string>} */ (JSON.parse(readFileSync(path.join(ROOT, 'schemas/content-ids.json'), 'utf8')).aliases);
 /** The generic id of a schema id (itself when it has no alias). @param {string} id */
@@ -79,7 +87,7 @@ const PACK = new Map(LANGUAGES.flatMap(l => [[l.id, l.id], [l.legacyId, l.id]]))
  */
 export function packOf(id, exams) {
   if (SHARED.has(id)) return 'shared';
-  if (/^(b1|speak)\./.test(id)) return 'de';
+  if (/^(b1|speak|build\.family)\./.test(id)) return 'de';
   const ex = exams.find(e => id.startsWith(`exam.${e.id}.`));
   if (ex) { const p = PACK.get(ex.language); if (p) return p; }
   const last = id.split('.').pop() || '';
@@ -133,7 +141,7 @@ export function build() {
     const buf = readFileSync(path.join(CONTENT, p));
     let schema = hit[2] ?? `b1-${m[1]}@1`;
     if (schema.includes('%s')) schema = schema.replace('%s', m[1]);
-    out.push({ id: hit[1](m), path: p, schema: canonical(schema), bytes: buf.length, sha256: sha(buf) });
+    out.push({ id: hit[1](m), path: p, schema: canonical(schema), bytes: buf.length, sha256: sha(buf), ...(LAZY.test(p) ? { lazy: true } : {}) });
   }
   if (unmapped.length) throw new Error(`content files with no manifest rule: ${unmapped.join(', ')}`);
   const fw = JSON.parse(readFileSync(path.join(CONTENT, 'igloo/framework.json'), 'utf8'));

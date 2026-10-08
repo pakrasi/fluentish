@@ -8,8 +8,9 @@ import { allowance, buildShare } from '../../src/domain/budget.js';
 import * as P from '../../src/domain/wordbuild-plan.js';
 import { CORE } from '../../src/domain/wordbuild.js';
 import * as D8 from '../../src/domain/days.js';
+import { readBuild } from '../../tools/family-files.mjs';
 
-const C = JSON.parse(readFileSync(new URL('../../content/build/de.json', import.meta.url), 'utf8'));
+const C = readBuild();
 const TODAY = '2026-10-12';
 const good = (day = TODAY) => ({ S: 3, D: 5, reps: 2, lapses: 0, first: day, last: day, due: D8.add(day, 1), learn: null, hist: [[day, 3, 1000, 's', '']] });
 const learning = (day = TODAY) => ({ S: 1, D: 5, reps: 1, lapses: 0, first: day, last: day, due: day, learn: 0, hist: [[day, 1, 1000, 't', 'r']] });

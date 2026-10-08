@@ -111,6 +111,10 @@
           "sha256": {
             "type": "string",
             "pattern": "^[0-9a-f]{64}$"
+          },
+          "lazy": {
+            "description": "Loaded when used, never in the install precache (the word families, one file per root); the service worker caches it after its first use.",
+            "const": true
           }
         }
       }

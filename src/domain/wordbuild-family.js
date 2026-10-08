@@ -701,7 +701,9 @@ export function judgeTyped({ fam, cards, i, done, input, lexicon = null }) {
  * @param {BuildContent & {families?: any[]}} c @param {{w: string}[]} [words] the word list
  */
 export function familyLexicon(c, words = []) {
-  return lexiconOf(c, [...words.map(w => String(w.w || '')), ...(c.families || []).flatMap((/** @type {any} */ f) => (f.rare || []).map((/** @type {any} */ r) => String(r.word)))]);
+  const rare = c.families ? c.families.flatMap((/** @type {any} */ f) => (f.rare || []).map((/** @type {any} */ r) => String(r.word)))
+    : (c.familyIndex ? c.familyIndex.roots.flatMap(r => r.rare) : []);
+  return lexiconOf(c, [...words.map(w => String(w.w || '')), ...rare]);
 }
 
 /* ------------------------------------------------------------------ grades */

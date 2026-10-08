@@ -7,9 +7,10 @@ import { readFileSync } from 'node:fs';
 import * as W from '../../src/domain/wordbuild.js';
 import { resolver } from '../../src/domain/knowledge.js';
 import { tagOf, kindOf } from '../../src/domain/itemids.js';
+import { readBuild } from '../../tools/family-files.mjs';
 
 const J = p => JSON.parse(readFileSync(new URL(`../../${p}`, import.meta.url), 'utf8'));
-const C = J('content/build/de.json');
+const C = readBuild();
 const WORDS = J('content/igloo/words/de.json');
 const CL = J('content/clusters/de.json');
 const ctx = { words: WORDS, morph: CL.morph, clusterSuffixes: CL.suffixes };

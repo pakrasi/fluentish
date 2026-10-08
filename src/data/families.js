@@ -2,6 +2,7 @@
    "Family: stellen ›". Built once a session from the Word building content and the word clusters' families
    (domain/wordbuild-family.js familyIndex); a missing file only loses the links. */
 import { familyModel, familyIndex } from '../domain/wordbuild-family.js';
+import { lemmaIndexOf } from '../domain/wordbuild-family-index.js';
 
 /** @type {Promise<Map<string, {root: string, form: string | null}>> | null} */ let memo = null;
 
@@ -13,7 +14,11 @@ import { familyModel, familyIndex } from '../domain/wordbuild-family.js';
 export function familyIndexOf(content) {
   if (!memo) {
     memo = Promise.all([content.load('build.de'), content.load('clusters.de').catch(() => null)])
-      .then(([build, clusters]) => familyIndex(familyModel(build), clusters && Array.isArray(clusters.families) ? clusters.families : []));
+      .then(([build, clusters]) => {
+        const cf = clusters && Array.isArray(clusters.families) ? clusters.families : [];
+        // the index in de.json answers without loading a family (content/build/FAMILY-SCHEMA.md)
+        return build.familyIndex && !build.families ? lemmaIndexOf(build.familyIndex, cf) : familyIndex(familyModel(build), cf);
+      });
     memo.catch(() => { memo = null; });
   }
   return memo;
@@ -23,7 +28,7 @@ export function familyIndexOf(content) {
 /** The roots with family data (the Map's family groups link to their family view). @param {{load: (id: string) => Promise<any>}} content */
 export function familyRootsOf(content) {
   if (!roots) {
-    roots = content.load('build.de').then(b => new Set([...familyModel(b).keys()]));
+    roots = content.load('build.de').then(b => new Set(b.familyIndex && !b.families ? b.familyIndex.roots.map((/** @type {any} */ r) => r.root) : [...familyModel(b).keys()]));
     roots.catch(() => { roots = null; });
   }
   return roots;

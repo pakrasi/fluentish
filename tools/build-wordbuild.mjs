@@ -6,16 +6,21 @@
 //   frames.de.json     the sentence machine: one sentence per verb in five forms, written as tiles ("S:Ich | R:stehe | …")
 //   suffixes.de.json   the endings and the article (or word type) each one gives
 //   chains.de.json     word chains as trees
+// The word families go to one file per root, content/build/family/<root>.json, and de.json keeps their index
+// (content/build/FAMILY-SCHEMA.md "Where the families live"). build() returns the merged content (with `families`);
+// outputs() splits it into the files.
 // The build parses the frames, fills each verb's level from its word-list entry (a verb without one carries its own)
 // and links chain words to the word list. The rules are in src/domain/wordbuild.js validateBuild (run by
 // tools/validate-content.mjs).
 //   node tools/build-wordbuild.mjs           write the file
 //   node tools/build-wordbuild.mjs --check   exit 1 if the file is not what the sources build
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, unlinkSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseForm, lemmaFor, validateBuild } from '../src/domain/wordbuild.js';
 import { readFamilies, buildFamilies } from './family-build.mjs';
+import { indexOf, familySlug } from '../src/domain/wordbuild-family-index.js';
+import { familyDir } from './family-files.mjs';
 
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = path.join(ROOT, 'authoring/build');
@@ -65,35 +70,58 @@ function noneCheck(w, lexcheck) {
 /** --only stellen,legen: build and check these families alone (authoring; never written). */
 const ONLY = (() => { const i = process.argv.indexOf('--only'); return i > 0 ? String(process.argv[i + 1] || '').split(',').filter(Boolean) : []; })();
 
+/** A family as written: its head on one line, one form per line. @param {any} f @param {string} [pad] */
+const famText = (f, pad = '  ') => {
+  const { forms, ...head } = f;
+  const h = JSON.stringify(head);
+  return `${pad}${h.slice(0, -1)},"forms":[\n${forms.map((/** @type {any} */ x) => `${pad} ${JSON.stringify(x)}`).join(',\n')}]}`;
+};
+
 /** One entry per line: readable diffs. @param {any} data */
 export function serialise(data) {
-  const fam = (/** @type {any} */ f) => {
-    const { forms, ...head } = f;
-    const h = JSON.stringify(head);
-    return `  ${h.slice(0, -1)},"forms":[\n${forms.map((/** @type {any} */ x) => `   ${JSON.stringify(x)}`).join(',\n')}]}`;
-  };
   return `{\n${Object.entries(data).map(([k, v]) => Array.isArray(v)
-    ? ` ${JSON.stringify(k)}: [\n${v.map(x => (k === 'families' ? fam(x) : `  ${JSON.stringify(x)}`)).join(',\n')}\n ]`
-    : ` ${JSON.stringify(k)}: ${JSON.stringify(v)}`).join(',\n')}\n}\n`;
+    ? ` ${JSON.stringify(k)}: [\n${v.map(x => (k === 'families' ? famText(x) : `  ${JSON.stringify(x)}`)).join(',\n')}\n ]`
+    : k === 'familyIndex'
+      ? ` ${JSON.stringify(k)}: {"roots":[\n${v.roots.map((/** @type {any} */ r) => `  ${JSON.stringify(r)}`).join(',\n')}\n ]}`
+      : ` ${JSON.stringify(k)}: ${JSON.stringify(v)}`).join(',\n')}\n}\n`;
+}
+
+/**
+ * The files the build writes: content/build/de.json (without `families`, with `familyIndex`) and one file per root.
+ * @param {any} data build() @returns {{main: string, files: Map<string, string>}} files: file name (familySlug) → text
+ */
+export function outputs(data) {
+  if (!data.families) return { main: serialise(data), files: new Map() };
+  const { families, ...rest } = data;
+  const main = serialise({ ...rest, familyIndex: indexOf(data) });
+  return { main, files: new Map(families.map((/** @type {any} */ f) => [familySlug(f.root), `${famText(f, '')}\n`])) };
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
   const check = process.argv.includes('--check');
   const words = JSON.parse(readFileSync(path.join(ROOT, 'content/igloo/words/de.json'), 'utf8'));
   const data = build(words);
-  const out = serialise(data);
-  let cur = null;
-  try { cur = readFileSync(OUT, 'utf8'); } catch { /* first build */ }
+  const { main, files } = outputs(data);
   const clusters = JSON.parse(readFileSync(path.join(ROOT, 'content/clusters/de.json'), 'utf8'));
   const errs = validateBuild(data, { words, morph: clusters.morph, clusterSuffixes: clusters.suffixes });
   if (errs.length) { console.error(`build-wordbuild: ${errs.length} problem(s)`); errs.slice(0, 80).forEach(e => console.error(`  ${e}`)); process.exit(1); }
   if (ONLY.length) { console.log(`build-wordbuild: ${ONLY.join(', ')}: no problems (nothing written)`); process.exit(0); }
+  const dir = familyDir(ROOT);
+  const onDisk = existsSync(dir) ? readdirSync(dir).filter(f => f.endsWith('.json')).map(f => f.slice(0, -5)) : [];
+  const read = (/** @type {string} */ p) => { try { return readFileSync(p, 'utf8'); } catch { return null; } };
   if (check) {
-    if (cur !== out) { console.error('build-wordbuild: content/build/de.json is out of date (run node tools/build-wordbuild.mjs)'); process.exit(1); }
+    const stale = [];
+    if (read(OUT) !== main) stale.push('content/build/de.json');
+    for (const [r, text] of files) if (read(path.join(dir, `${r}.json`)) !== text) stale.push(`content/build/family/${r}.json`);
+    for (const r of onDisk) if (!files.has(r)) stale.push(`content/build/family/${r}.json (no such family)`);
+    if (stale.length) { console.error(`build-wordbuild: out of date (run node tools/build-wordbuild.mjs): ${stale.slice(0, 10).join(', ')}`); process.exit(1); }
     console.log('build-wordbuild: current');
   } else {
-    mkdirSync(path.dirname(OUT), { recursive: true });
-    writeFileSync(OUT, out);
-    console.log(`build-wordbuild: ${data.prefixes.length} prefixes, ${data.roots.length} roots, ${data.verbs.length} verbs, ${data.frames.length} frames, ${data.suffixes.length} suffixes, ${data.chains.length} chains; ${out.length} bytes`);
+    mkdirSync(dir, { recursive: true });
+    writeFileSync(OUT, main);
+    for (const [r, text] of files) writeFileSync(path.join(dir, `${r}.json`), text);
+    for (const r of onDisk) if (!files.has(r)) unlinkSync(path.join(dir, `${r}.json`));
+    const fb = [...files.values()].reduce((n, t) => n + t.length, 0);
+    console.log(`build-wordbuild: ${data.prefixes.length} prefixes, ${data.roots.length} roots, ${data.verbs.length} verbs, ${data.frames.length} frames, ${data.suffixes.length} suffixes, ${data.chains.length} chains; de.json ${main.length} bytes; ${files.size} family files, ${fb} bytes`);
   }
 }
