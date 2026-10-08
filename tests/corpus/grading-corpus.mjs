@@ -808,7 +808,7 @@ export async function buildCorpus({ root = ROOT } = {}) {
       const m = /^(der|die|das) (.+)$/.exec(a);
       if (m) { for (const o of OTHER_ART[m[1]] || []) add(it, 'wb-article', `${o} ${m[2]}`, 'wrong'); add(it, 'wb-no-article', m[2], 'wrong'); }
       for (const n of it.none.slice(0, 2)) add(it, 'wb-family-nonword', n, 'wrong');
-      if (it.f.kind === 's') add(it, 'wb-split', `${it.f.pre[0]} ${it.f.word.slice(it.f.pre[0].length)}`, 'wrong');
+      if (it.f.kind === 's' && it.f.pre.length) add(it, 'wb-split', `${it.f.pre[0]} ${it.f.word.slice(it.f.pre[0].length)}`, 'wrong');
       const w = it.f.word, ty = typoIn(w, { lex, eligible: () => true }); if (ty) add(it, 'wb-typo', m ? `${m[1]} ${ty}` : ty, 'wrong');
     } else {
       const m = /^(der|die|das) (.+)$/.exec(a);

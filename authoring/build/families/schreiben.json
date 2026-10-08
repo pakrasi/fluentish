@@ -1,0 +1,53 @@
+{
+ "root": "schreiben",
+ "stems": ["schreib", "schrieb", "schrift"],
+ "forms": [
+  {"id": "schreiben.verb", "parent": null, "ex": "Bitte schreiben Sie Ihren Namen hier.", "exEn": "Please write your name here."},
+  {"id": "abschreiben.verb", "verb": "abschreiben", "clue": "to copy (homework from someone)"},
+  {"id": "anschreiben.verb", "verb": "anschreiben", "clue": "to write to (a company, a person)"},
+  {"id": "aufschreiben.verb", "verb": "aufschreiben", "clue": "to write down (a number)"},
+  {"id": "ausschreiben.verb", "verb": "ausschreiben", "clue": "to advertise (a job); to write out in full"},
+  {"id": "sich_einschreiben.verb", "verb": "einschreiben", "clue": "to enrol (sich; on a course)"},
+  {"id": "mitschreiben.verb", "verb": "mitschreiben", "clue": "to take notes (while someone is speaking)"},
+  {"id": "vorschreiben.verb", "verb": "vorschreiben", "clue": "to require (by law), to dictate"},
+  {"id": "umschreiben-s.verb", "verb": "umschreiben-s", "clue": "to rewrite (a text)"},
+  {"id": "umschreiben-i.verb", "verb": "umschreiben-i", "clue": "to paraphrase, to say in other words"},
+  {"id": "unterschreiben.verb", "verb": "unterschreiben", "clue": "to sign (a contract)"},
+  {"id": "beschreiben.verb", "verb": "beschreiben", "clue": "to describe (a picture, a person)"},
+  {"id": "verschreiben.verb", "verb": "verschreiben", "clue": "to prescribe (medicine)"},
+  {"id": "überschreiben.verb", "word": "überschreiben", "cls": "verb", "parent": "schreiben.verb", "add": "über", "side": "pre", "kind": "i", "aux": "hat", "pp": "überschrieben", "en": "overwrite (a file); give a heading; transfer (property to someone)", "clue": "to overwrite (a file)", "why": "über = over: you write over the old text.", "grade": "M", "level": "C1", "ex": "Ich habe die alte Datei aus Versehen überschrieben.", "exEn": "I overwrote the old file by mistake."},
+  {"id": "krankschreiben.verb", "word": "krankschreiben", "cls": "verb", "parent": "schreiben.verb", "add": "krank", "side": "pre", "kind": "s", "aux": "hat", "pp": "krankgeschrieben", "en": "sign off sick (a doctor)", "clue": "to sign someone off sick (a doctor)", "why": "krank = ill: the doctor writes you ill on a form.", "grade": "M", "ex": "Die Ärztin hat mich für eine Woche krankgeschrieben.", "exEn": "The doctor signed me off sick for a week.", "level": "B1"},
+  {"id": "die_Krankschreibung", "word": "Krankschreibung", "cls": "noun", "art": "die", "parent": "krankschreiben.verb", "add": "ung", "side": "suf", "en": "sick note", "clue": "the sick note (from a doctor)", "grade": "T", "ex": "Ich brauche eine Krankschreibung für meinen Arbeitgeber.", "exEn": "I need a sick note for my employer."},
+  {"id": "das_Schreiben", "word": "Schreiben", "cls": "noun", "art": "das", "parent": "schreiben.verb", "add": "inf", "side": "suf", "en": "(formal) letter; writing", "clue": "the formal letter (from an office)", "grade": "T", "level": "B1", "ex": "Wir haben Ihr Schreiben vom Montag erhalten.", "exEn": "We have received your letter of Monday."},
+  {"id": "die_Schrift", "word": "Schrift", "cls": "noun", "art": "die", "parent": "schreiben.verb", "add": "t", "side": "suf", "en": "handwriting; script; font", "clue": "the handwriting; a script (alphabet)", "note": "-t on an old stem of schreiben: schrift, die.", "grade": "T", "ex": "Ich kann deine Schrift nicht lesen.", "exEn": "I can't read your handwriting."},
+  {"id": "schriftlich.adj", "word": "schriftlich", "cls": "adj", "parent": "die_Schrift", "add": "lich", "side": "suf", "en": "written; in writing", "clue": "in writing; written (an exam)", "grade": "T", "ex": "Bitte bestätigen Sie den Termin schriftlich.", "exEn": "Please confirm the appointment in writing."},
+  {"id": "die_Zeitschrift", "word": "Zeitschrift", "cls": "noun", "art": "die", "parent": "die_Schrift", "add": "Zeit", "side": "cmp", "seg": [["c", "Zeit"], ["r", "schrift"]], "en": "magazine", "clue": "the magazine", "why": "Zeit (time) + Schrift: writing that comes out at regular times.", "grade": "M", "ex": "Im Wartezimmer liegen viele alte Zeitschriften.", "exEn": "There are lots of old magazines in the waiting room."},
+  {"id": "der_Kugelschreiber", "word": "Kugelschreiber", "cls": "noun", "art": "der", "parent": "schreiben.verb", "add": "Kugel", "side": "cmp", "seg": [["c", "Kugel"], ["r", "schreib"], ["s", "er"]], "en": "ballpoint pen, biro", "clue": "the ballpoint pen", "why": "Kugel (ball) + Schreiber (writer): a pen with a ball at the tip.", "grade": "T", "ex": "Kannst du mir mal deinen Kugelschreiber leihen?", "exEn": "Can you lend me your pen?"},
+  {"id": "die_Rechtschreibung", "word": "Rechtschreibung", "cls": "noun", "art": "die", "parent": "schreiben.verb", "add": "Recht", "side": "cmp", "seg": [["c", "Recht"], ["r", "schreib"], ["s", "ung"]], "en": "spelling (correct spelling, orthography)", "clue": "the spelling (of a language)", "why": "recht (right) + Schreibung (writing): writing words correctly.", "grade": "T", "level": "B1", "ex": "Achte bitte auf die Rechtschreibung.", "exEn": "Please watch your spelling."},
+  {"id": "die_Beschreibung", "chain": "schreiben/n2", "clue": "the description", "level": "B1"},
+  {"id": "die_Unterschrift", "chain": "schreiben/n4", "clue": "the signature"},
+  {"id": "die_Vorschrift", "chain": "schreiben/n6", "clue": "the regulation, a rule"},
+  {"id": "die_Überschrift", "word": "Überschrift", "cls": "noun", "art": "die", "parent": "überschreiben.verb", "add": "t", "side": "suf", "en": "headline; heading", "clue": "the headline, the heading", "grade": "T", "ex": "Lies zuerst die Überschrift und dann den Text.", "exEn": "Read the headline first and then the text."},
+  {"id": "das_Anschreiben", "word": "Anschreiben", "cls": "noun", "art": "das", "parent": "anschreiben.verb", "add": "inf", "side": "suf", "en": "cover letter", "clue": "the cover letter (for a job application)", "grade": "T", "ex": "Ich schreibe gerade das Anschreiben für meine Bewerbung.", "exEn": "I'm writing the cover letter for my application."},
+  {"id": "die_Anschrift", "word": "Anschrift", "cls": "noun", "art": "die", "parent": "anschreiben.verb", "add": "t", "side": "suf", "en": "(postal) address", "clue": "the postal address (formal)", "why": "What you write on a letter so that it reaches someone.", "grade": "M", "level": "B1", "ex": "Bitte geben Sie Ihre Anschrift und Ihre Telefonnummer an.", "exEn": "Please give your address and your phone number."},
+  {"id": "die_Ausschreibung", "word": "Ausschreibung", "cls": "noun", "art": "die", "parent": "ausschreiben.verb", "add": "ung", "side": "suf", "en": "job posting; call for tenders", "clue": "the job posting; a call for tenders", "grade": "T", "ex": "Die Ausschreibung für die Stelle läuft bis Ende Mai.", "exEn": "The job posting runs until the end of May."},
+  {"id": "eingeschrieben.adj", "word": "eingeschrieben", "cls": "adj", "parent": "sich_einschreiben.verb", "add": "pp", "side": "suf", "en": "enrolled (student); registered (letter)", "clue": "enrolled (at a university)", "grade": "T", "ex": "Mein Sohn ist an der Universität eingeschrieben.", "exEn": "My son is enrolled at the university."},
+  {"id": "das_Einschreiben", "word": "Einschreiben", "cls": "noun", "art": "das", "parent": "sich_einschreiben.verb", "add": "inf", "side": "suf", "en": "registered letter", "clue": "the registered letter", "why": "einschreiben = write in: the post office writes the letter into a register.", "grade": "M", "level": "B1", "ex": "Den Vertrag schicke ich per Einschreiben.", "exEn": "I'm sending the contract by registered post."}
+ ],
+ "boards": {
+  "A2": {"words": ["unterschreiben.verb", "beschreiben.verb", "die_Beschreibung", "aufschreiben.verb", "anschreiben.verb", "mitschreiben.verb"], "light": ["unterschreiben.verb", "beschreiben.verb", "die_Beschreibung", "aufschreiben.verb", "anschreiben.verb", "mitschreiben.verb"], "tiles": {"pre": ["unter", "be", "auf", "an", "mit", "ab"], "suf": ["ung"]}, "distract": [{"pre": "ab", "is": "extra"}]},
+  "B1": {"words": ["unterschreiben.verb", "die_Unterschrift", "beschreiben.verb", "die_Beschreibung", "aufschreiben.verb", "anschreiben.verb", "die_Anschrift", "sich_einschreiben.verb", "verschreiben.verb", "mitschreiben.verb"], "light": ["unterschreiben.verb", "beschreiben.verb", "aufschreiben.verb", "die_Unterschrift", "verschreiben.verb", "die_Anschrift"], "tiles": {"pre": ["unter", "be", "auf", "an", "ein", "ver", "mit", "miss"], "suf": ["t", "ung"]}, "distract": [{"pre": "miss", "is": "none"}]},
+  "B2": {"words": ["vorschreiben.verb", "die_Vorschrift", "ausschreiben.verb", "die_Ausschreibung", "abschreiben.verb", "umschreiben-s.verb", "umschreiben-i.verb", "krankschreiben.verb", "die_Krankschreibung", "die_Überschrift", "schriftlich.adj", "die_Schrift"], "light": ["vorschreiben.verb", "die_Vorschrift", "ausschreiben.verb", "abschreiben.verb", "krankschreiben.verb", "die_Überschrift"], "tiles": {"pre": ["vor", "aus", "ab", "um", "krank", "über", "miss", "an"], "suf": ["t", "ung", "lich"]}, "distract": [{"pre": "miss", "is": "none"}, {"pre": "an", "is": "extra"}]}
+ },
+ "none": [
+  {"key": "miss|", "word": "missschreiben"}
+ ],
+ "rare": [
+  {"key": "zu|", "word": "zuschreiben", "why": "DWDS: zuschreiben = attribute to (jemandem etwas zuschreiben)"},
+  {"key": "nach|", "word": "nachschreiben", "why": "DWDS: nachschreiben = sit (an exam) later; write down what is said"},
+  {"key": "hin|", "word": "hinschreiben", "why": "DWDS: hinschreiben = write down (colloquial)"},
+  {"key": "wider|", "word": "widerschreiben", "why": "A reviewer was not certain it is never used (older or literary German), so the game never calls it wrong."}
+ ],
+ "reviewedBy": "model-2pass",
+ "reviewedAt": "2026-10-08"
+}

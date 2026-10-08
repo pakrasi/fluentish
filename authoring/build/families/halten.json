@@ -1,0 +1,59 @@
+{
+ "root": "halten",
+ "stems": ["halt", "hält", "hielt"],
+ "forms": [
+  {"id": "halten.verb", "parent": null, "ex": "Der Bus hält vor dem Rathaus.", "exEn": "The bus stops in front of the town hall."},
+  {"id": "abhalten.verb", "verb": "abhalten", "clue": "to keep someone from; to hold (a meeting)"},
+  {"id": "anhalten.verb", "verb": "anhalten", "clue": "to stop (a car); to last (rain)"},
+  {"id": "aufhalten.verb", "verb": "aufhalten", "clue": "to hold up, to delay; to stay (sich)"},
+  {"id": "aushalten.verb", "verb": "aushalten", "clue": "to bear, to stand (heat, pain)"},
+  {"id": "einhalten.verb", "verb": "einhalten", "clue": "to keep to (a deadline, a rule)"},
+  {"id": "durchhalten.verb", "verb": "durchhalten", "clue": "to keep going, not to give up (to the end)"},
+  {"id": "behalten.verb", "verb": "behalten", "clue": "to keep (not give back)"},
+  {"id": "sich_verhalten.verb", "verb": "verhalten", "clue": "to behave (sich)"},
+  {"id": "erhalten.verb", "verb": "erhalten", "clue": "to receive (formal); to preserve"},
+  {"id": "enthalten.verb", "verb": "enthalten", "clue": "to contain (sugar, alcohol)"},
+  {"id": "sich_unterhalten.verb", "verb": "unterhalten", "clue": "to chat (sich); to entertain"},
+  {"id": "festhalten.verb", "word": "festhalten", "cls": "verb", "parent": "halten.verb", "add": "fest", "side": "pre", "kind": "s", "aux": "hat", "pp": "festgehalten", "en": "hold on (to), hold tight; record (in writing); detain", "clue": "to hold on tight; to record (a result)", "why": "fest = firm: hold something firmly so it stays.", "grade": "T", "level": "B1", "ex": "Bitte halten Sie sich während der Fahrt fest.", "exEn": "Please hold on tight during the journey."},
+  {"id": "zurückhalten.verb", "word": "zurückhalten", "cls": "verb", "parent": "halten.verb", "add": "zurück", "side": "pre", "kind": "s", "aux": "hat", "pp": "zurückgehalten", "en": "hold back (tears, information); sich zurückhalten: restrain yourself", "clue": "to hold back (tears, information)", "why": "zurück = back: hold something back.", "grade": "T", "level": "B2", "ex": "Ich kann meine Tränen nicht zurückhalten.", "exEn": "I can't hold back my tears."},
+  {"id": "zurückhaltend.adj", "word": "zurückhaltend", "cls": "adj", "parent": "zurückhalten.verb", "add": "ppr", "side": "suf", "en": "reserved, restrained (a person); cautious", "clue": "reserved, quiet (a person)", "grade": "T", "level": "B2", "ex": "Er ist sehr zurückhaltend und spricht wenig.", "exEn": "He is very reserved and says little."},
+  {"id": "zusammenhalten.verb", "word": "zusammenhalten", "cls": "verb", "parent": "halten.verb", "add": "zusammen", "side": "pre", "kind": "s", "aux": "hat", "pp": "zusammengehalten", "en": "stick together (people); hold together", "clue": "to stick together (a team, a family)", "why": "zusammen = together: hold together.", "grade": "T", "level": "B2", "ex": "In schweren Zeiten halten wir zusammen.", "exEn": "In hard times we stick together."},
+  {"id": "der_Zusammenhalt", "word": "Zusammenhalt", "cls": "noun", "art": "der", "parent": "zusammenhalten.verb", "add": "stem", "side": "suf", "en": "cohesion, solidarity, togetherness", "clue": "the cohesion, the solidarity", "grade": "T", "ex": "Der Zusammenhalt in der Familie ist stark.", "exEn": "The family has a strong sense of togetherness."},
+  {"id": "beibehalten.verb", "word": "beibehalten", "cls": "verb", "parent": "behalten.verb", "add": "bei", "side": "pre", "kind": "s", "aux": "hat", "pp": "beibehalten", "en": "keep, retain (a system, a habit); maintain", "clue": "to keep up, to stick with (a habit, a system)", "why": "bei = with, beside: you keep something with you as it is.", "grade": "M", "ex": "Wir behalten das alte System bei.", "exEn": "We're keeping the old system."},
+  {"id": "vorbehalten.verb", "word": "vorbehalten", "cls": "verb", "parent": "behalten.verb", "add": "vor", "side": "pre", "kind": "s", "aux": "hat", "pp": "vorbehalten", "en": "sich etwas vorbehalten: reserve (a right); jemandem vorbehalten sein: be reserved for", "clue": "to reserve (a right; changes reserved)", "why": "vor = beforehand + behalten = keep: you keep a right back for yourself in advance.", "grade": "M", "level": "C1", "ex": "Wir behalten uns das Recht vor, die Preise zu ändern.", "exEn": "We reserve the right to change the prices."},
+  {"id": "der_Vorbehalt", "word": "Vorbehalt", "cls": "noun", "art": "der", "parent": "vorbehalten.verb", "add": "stem", "side": "suf", "en": "reservation (a doubt); condition", "clue": "the reservation (a doubt)", "grade": "T", "ex": "Ich habe große Vorbehalte gegen den Plan.", "exEn": "I have serious reservations about the plan."},
+  {"id": "die_Haltung", "word": "Haltung", "cls": "noun", "art": "die", "parent": "halten.verb", "add": "ung", "side": "suf", "en": "attitude (stance); posture", "clue": "the attitude (a stance); a posture", "why": "How you hold yourself: your body, or your opinion.", "grade": "M", "ex": "Welche Haltung hast du zu diesem Thema?", "exEn": "What's your stance on this issue?"},
+  {"id": "haltbar.adj", "chain": "halten/n1", "clue": "keeps (food, until a date); durable"},
+  {"id": "die_Haltbarkeit", "chain": "halten/n2", "clue": "the shelf life; durability", "level": "B2"},
+  {"id": "die_Haltestelle", "word": "Haltestelle", "cls": "noun", "art": "die", "parent": "halten.verb", "add": "Stelle", "side": "cmp", "seg": [["r", "Halt"], ["l", "e"], ["c", "stelle"]], "en": "stop (bus, tram)", "clue": "the stop (for a bus or tram)", "why": "halten (stop) + Stelle (place): the place where the bus stops.", "grade": "T", "ex": "Die Haltestelle ist direkt vor dem Haus.", "exEn": "The stop is right in front of the house."},
+  {"id": "der_Inhalt", "word": "Inhalt", "cls": "noun", "art": "der", "parent": "halten.verb", "add": "In", "side": "cmp", "seg": [["c", "In"], ["r", "halt"]], "en": "content(s)", "clue": "the content(s) (of a box, a book)", "why": "in + halt: what is held inside.", "grade": "T", "ex": "Fassen Sie den Inhalt des Textes kurz zusammen.", "exEn": "Summarise the content of the text briefly."},
+  {"id": "das_Gehalt", "word": "Gehalt", "cls": "noun", "art": "das", "parent": "halten.verb", "add": "ge", "side": "pre", "suf": ["stem"], "en": "salary", "clue": "the salary (paid every month)", "why": "Learn it as a word: ge- + halt once meant what keeps you, your upkeep, and now your pay.", "note": "das Gehalt (salary), against the der rule of a bare stem; der Gehalt means content (der Alkoholgehalt).", "grade": "O", "ex": "Das Gehalt ist leider nicht so hoch.", "exEn": "Unfortunately the salary isn't very high."},
+  {"id": "nachhaltig.adj", "word": "nachhaltig", "cls": "adj", "parent": "halten.verb", "add": "nach", "side": "pre", "suf": ["ig"], "en": "sustainable; lasting", "clue": "sustainable (good for the environment); lasting (an effect)", "why": "nach = after: it holds on afterwards, so it lasts.", "grade": "M", "ex": "Wir wollen nachhaltig leben und weniger Müll produzieren.", "exEn": "We want to live sustainably and produce less waste."},
+  {"id": "die_Nachhaltigkeit", "word": "Nachhaltigkeit", "cls": "noun", "art": "die", "parent": "nachhaltig.adj", "add": "keit", "side": "suf", "en": "sustainability", "clue": "the sustainability", "grade": "T", "ex": "Das Unternehmen setzt stark auf Nachhaltigkeit.", "exEn": "The company is putting a strong focus on sustainability."},
+  {"id": "der_Aufenthalt", "word": "Aufenthalt", "cls": "noun", "art": "der", "parent": "aufhalten.verb", "add": "stem", "side": "suf", "pre": ["auf", "ent"], "en": "stay (visit)", "clue": "the stay (at a hotel, abroad)", "why": "sich aufhalten = stay: the noun keeps an old ent- (from aufenthalten, hold back, stop).", "note": "auf + ent + halt: the ent- comes from an old verb aufenthalten.", "grade": "M", "ex": "Wir wünschen Ihnen einen schönen Aufenthalt.", "exEn": "We wish you a pleasant stay."},
+  {"id": "die_Einhaltung", "word": "Einhaltung", "cls": "noun", "art": "die", "parent": "einhalten.verb", "add": "ung", "side": "suf", "en": "compliance (with rules); keeping (a deadline)", "clue": "the compliance (with rules)", "grade": "T", "ex": "Die Polizei kontrolliert die Einhaltung der Regeln.", "exEn": "The police check that the rules are being followed."},
+  {"id": "der_Behälter", "chain": "halten/n4", "clue": "the container", "level": "B2"},
+  {"id": "das_Verhalten", "word": "Verhalten", "cls": "noun", "art": "das", "parent": "sich_verhalten.verb", "add": "inf", "side": "suf", "en": "behaviour", "clue": "the behaviour", "grade": "T", "ex": "Sein Verhalten ist nicht in Ordnung.", "exEn": "His behaviour is not OK."},
+  {"id": "das_Verhältnis", "word": "Verhältnis", "cls": "noun", "art": "das", "parent": "sich_verhalten.verb", "add": "nis", "side": "suf", "en": "relationship (between people); ratio, proportion", "clue": "the relationship (between people); a ratio", "why": "sich verhalten zu = relate to: how two people or numbers relate.", "note": "The stem takes an umlaut: hält.", "grade": "M", "ex": "Ich habe ein gutes Verhältnis zu meinen Eltern.", "exEn": "I have a good relationship with my parents."},
+  {"id": "erhältlich.adj", "chain": "halten/n6", "clue": "available (to buy)", "level": "B2"},
+  {"id": "die_Unterhaltung", "chain": "halten/n8", "clue": "the conversation; entertainment"},
+  {"id": "der_Unterhalt", "word": "Unterhalt", "cls": "noun", "art": "der", "parent": "sich_unterhalten.verb", "add": "stem", "side": "suf", "en": "maintenance (payments); upkeep, living costs", "clue": "the maintenance payments (for children)", "why": "unterhalten also means support, keep: the money for keeping someone.", "grade": "M", "ex": "Er zahlt Unterhalt für seine zwei Kinder.", "exEn": "He pays maintenance for his two children."}
+ ],
+ "boards": {
+  "A2": {"words": ["behalten.verb", "sich_unterhalten.verb", "anhalten.verb", "aushalten.verb", "erhalten.verb", "enthalten.verb"], "light": ["behalten.verb", "sich_unterhalten.verb", "anhalten.verb", "aushalten.verb", "erhalten.verb", "enthalten.verb"], "tiles": {"pre": ["be", "unter", "an", "aus", "er", "ent", "ab"], "suf": []}, "distract": [{"pre": "ab", "is": "extra"}]},
+  "B1": {"words": ["behalten.verb", "sich_unterhalten.verb", "die_Unterhaltung", "anhalten.verb", "aushalten.verb", "einhalten.verb", "die_Einhaltung", "sich_verhalten.verb", "das_Verhalten", "festhalten.verb"], "light": ["behalten.verb", "sich_unterhalten.verb", "anhalten.verb", "aushalten.verb", "sich_verhalten.verb", "festhalten.verb"], "tiles": {"pre": ["be", "unter", "an", "aus", "ein", "ver", "fest", "zer"], "suf": ["ung", "inf"]}, "distract": [{"pre": "zer", "is": "none"}]},
+  "B2": {"words": ["erhalten.verb", "erhältlich.adj", "enthalten.verb", "haltbar.adj", "die_Haltbarkeit", "die_Haltung", "durchhalten.verb", "abhalten.verb", "zurückhalten.verb", "das_Verhältnis", "der_Behälter", "nachhaltig.adj"], "light": ["erhalten.verb", "enthalten.verb", "haltbar.adj", "die_Haltung", "durchhalten.verb", "nachhaltig.adj"], "tiles": {"pre": ["er", "ent", "durch", "ab", "zurück", "ver", "be", "nach", "zer", "an"], "suf": ["lich", "bar", "keit", "ung", "nis", "er", "ig"]}, "distract": [{"pre": "zer", "is": "none"}, {"pre": "an", "is": "extra"}]}
+ },
+ "none": [
+  {"key": "zer|", "word": "zerhalten"},
+  {"key": "miss|", "word": "misshalten"}
+ ],
+ "rare": [
+  {"key": "vor|", "word": "vorhalten", "why": "DWDS: vorhalten = reproach (jemandem etwas vorhalten); keep in reserve"},
+  {"key": "zu|", "word": "zuhalten", "why": "DWDS: zuhalten = hold shut (die Nase, die Tür)"},
+  {"key": "mit|", "word": "mithalten", "why": "DWDS: mithalten = keep up (with others)"},
+  {"key": "her|", "word": "herhalten", "why": "DWDS: herhalten müssen = have to serve as (an excuse)"}
+ ],
+ "reviewedBy": "model-2pass",
+ "reviewedAt": "2026-10-08"
+}

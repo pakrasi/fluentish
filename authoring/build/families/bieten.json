@@ -1,0 +1,58 @@
+{
+ "root": "bieten",
+ "head": {"lemma": "bieten.verb", "en": "offer, provide; bid (at an auction)", "pres3": "bietet", "pret": "bot", "aux": "hat", "pp": "geboten"},
+ "stems": ["biet", "bot"],
+ "forms": [
+  {"id": "bieten.verb", "parent": null, "level": "B1", "ex": "Die Stadt bietet viele Möglichkeiten für junge Leute.", "exEn": "The city offers lots of opportunities for young people."},
+  {"id": "anbieten.verb", "chain": "bieten/n1", "kind": "s", "why": "an = on, toward: you hold something out toward someone.", "grade": "T", "clue": "to offer (a drink, a service)"},
+  {"id": "das_Angebot", "chain": "bieten/n2", "seg": [["p", "An"], ["i", "ge"], ["r", "bot"]], "clue": "the offer; supply (and demand)"},
+  {"id": "das_Sonderangebot", "word": "Sonderangebot", "cls": "noun", "art": "das", "parent": "das_Angebot", "add": "Sonder", "side": "cmp", "seg": [["c", "Sonder"], ["p", "an"], ["i", "ge"], ["r", "bot"]], "en": "special offer", "clue": "the special offer (a sale price)", "note": "das Sonderangebot, like das Angebot.", "grade": "T", "ex": "Die Erdbeeren sind diese Woche im Sonderangebot.", "exEn": "The strawberries are on special offer this week."},
+  {"id": "der_Anbieter", "word": "Anbieter", "cls": "noun", "art": "der", "parent": "anbieten.verb", "add": "er", "side": "suf", "en": "provider, supplier (of a service)", "clue": "the provider (of a service)", "grade": "T", "level": "B2", "ex": "Ich habe meinen Anbieter für das Internet gewechselt.", "exEn": "I've switched my internet provider."},
+  {"id": "die_Anbieterin", "word": "Anbieterin", "cls": "noun", "art": "die", "parent": "der_Anbieter", "add": "in", "side": "suf", "en": "provider, supplier (a woman)", "clue": "the (female) provider", "grade": "T", "level": "B2", "ex": "Als selbstständige Anbieterin von Yogakursen muss sie viel Werbung machen.", "exEn": "As a self-employed provider of yoga classes, she has to do a lot of advertising."},
+  {"id": "verbieten.verb", "chain": "bieten/n3", "kind": "i", "why": "ver- matches English for-, bieten matches bid: verbieten is literally for-bid.", "grade": "M", "clue": "to forbid, to ban"},
+  {"id": "das_Verbot", "chain": "bieten/n4", "clue": "the ban, the prohibition"},
+  {"id": "verboten.adj", "word": "verboten", "cls": "adj", "parent": "verbieten.verb", "add": "pp", "side": "suf", "en": "forbidden, not allowed", "clue": "not allowed, prohibited", "grade": "T", "ex": "Rauchen ist in diesem Gebäude verboten.", "exEn": "Smoking is not allowed in this building."},
+  {"id": "gebieten.verb", "word": "gebieten", "cls": "verb", "parent": "bieten.verb", "add": "ge", "side": "pre", "kind": "i", "aux": "hat", "pp": "geboten", "en": "call for, require (formal); command", "clue": "to call for, to demand (formal: caution)", "why": "Learn it as a word: an old verb for command; today mostly 'the situation calls for it'.", "grade": "O", "level": "C2", "rare": true, "ex": "Die Lage gebietet äußerste Vorsicht.", "exEn": "The situation calls for the utmost caution."},
+  {"id": "das_Gebiet", "word": "Gebiet", "cls": "noun", "art": "das", "parent": "gebieten.verb", "add": "stem", "side": "suf", "en": "area, region; field (of knowledge)", "clue": "the area, the region", "why": "The land a ruler commands (gebieten): his area.", "note": "das Gebiet: ge- + biet; nouns built with ge- are mostly das (das Gebot, das Gebäude).", "grade": "M", "level": "B1", "ex": "In diesem Gebiet gibt es viele Wölfe.", "exEn": "There are lots of wolves in this area."},
+  {"id": "das_Fachgebiet", "word": "Fachgebiet", "cls": "noun", "art": "das", "parent": "das_Gebiet", "add": "Fach", "side": "cmp", "seg": [["c", "Fach"], ["p", "ge"], ["r", "biet"]], "en": "field, specialist area", "clue": "the specialist field (of an expert)", "note": "das Fachgebiet, like das Gebiet.", "grade": "T", "ex": "Medizin ist leider nicht mein Fachgebiet.", "exEn": "Medicine isn't my field, I'm afraid."},
+  {"id": "das_Naturschutzgebiet", "word": "Naturschutzgebiet", "cls": "noun", "art": "das", "parent": "das_Gebiet", "add": "Naturschutz", "side": "cmp", "seg": [["c", "Naturschutz"], ["p", "ge"], ["r", "biet"]], "stress": 3, "en": "nature reserve", "clue": "the nature reserve", "note": "das Naturschutzgebiet, like das Gebiet. Stress on -tur-, as in Natur.", "grade": "T", "ex": "Im Naturschutzgebiet darf man keine Blumen pflücken.", "exEn": "You can't pick flowers in the nature reserve."},
+  {"id": "das_Gebot", "word": "Gebot", "cls": "noun", "art": "das", "parent": "gebieten.verb", "add": "stem", "side": "suf", "board": false, "en": "commandment; bid (at an auction); requirement", "clue": "the commandment; a bid (at auction)", "note": "das Gebot: ge- + bot, and ge- nouns are mostly das (like das Gebiet, das Angebot). Not on a board: it is built from the same tiles as das Gebiet.", "grade": "T", "level": "C1", "ex": "Er hat bei der Auktion das höchste Gebot abgegeben.", "exEn": "He made the highest bid at the auction."},
+  {"id": "überbieten.verb", "word": "überbieten", "cls": "verb", "parent": "bieten.verb", "add": "über", "side": "pre", "kind": "i", "aux": "hat", "pp": "überboten", "en": "outbid; beat, surpass (a record)", "clue": "to outbid; to beat (a record)", "why": "über = over, beyond: you offer more than the others.", "grade": "M", "level": "B2", "ex": "Sie hat den alten Rekord um zehn Zentimeter überboten.", "exEn": "She beat the old record by ten centimetres."},
+  {"id": "unterbieten.verb", "word": "unterbieten", "cls": "verb", "parent": "bieten.verb", "add": "unter", "side": "pre", "kind": "i", "aux": "hat", "pp": "unterboten", "en": "undercut (a price, a rival); beat (a time)", "clue": "to undercut (a rival's price)", "why": "unter = under: you offer at a lower price than the others.", "grade": "T", "level": "B2", "ex": "Der neue Laden unterbietet die Preise der Konkurrenz.", "exEn": "The new shop undercuts its competitors' prices."},
+  {"id": "darbieten.verb", "word": "darbieten", "cls": "verb", "parent": "bieten.verb", "add": "dar", "side": "pre", "kind": "s", "aux": "hat", "pp": "dargeboten", "en": "perform, present (on stage; formal)", "clue": "to perform, to present (on stage)", "why": "dar = there, in view: you offer something for people to see.", "grade": "M", "level": "C2", "rare": true, "ex": "Die Kinder haben ein kleines Theaterstück dargeboten.", "exEn": "The children performed a short play."},
+  {"id": "die_Darbietung", "word": "Darbietung", "cls": "noun", "art": "die", "parent": "darbieten.verb", "add": "ung", "side": "suf", "en": "performance, act (on stage)", "clue": "the performance (a stage act)", "grade": "T", "level": "C1", "ex": "Nach jeder Darbietung klatscht das Publikum laut.", "exEn": "After every act the audience claps loudly."},
+  {"id": "aufbieten.verb", "word": "aufbieten", "cls": "verb", "parent": "bieten.verb", "add": "auf", "side": "pre", "kind": "s", "aux": "hat", "pp": "aufgeboten", "en": "summon up, muster (all your strength); call out (the police)", "clue": "to summon up (all your strength)", "why": "auf = up: you call up everything you have.", "grade": "M", "level": "C2", "rare": true, "ex": "Sie musste all ihre Kraft aufbieten.", "exEn": "She had to summon up all her strength."},
+  {"id": "das_Aufgebot", "word": "Aufgebot", "cls": "noun", "art": "das", "parent": "aufbieten.verb", "add": "stem", "side": "suf", "seg": [["p", "Auf"], ["i", "ge"], ["r", "bot"]], "en": "large force, contingent (of police); banns (before a wedding)", "clue": "a large force (of police); the banns", "why": "What is called up (aufbieten): a contingent of police.", "note": "das Aufgebot: auf + ge + bot; the -ge- makes it das, like das Angebot.", "grade": "M", "level": "C1", "ex": "Die Polizei war mit einem großen Aufgebot vor Ort.", "exEn": "The police were there in large numbers."},
+  {"id": "der_Bieter", "word": "Bieter", "cls": "noun", "art": "der", "parent": "bieten.verb", "add": "er", "side": "suf", "en": "bidder", "clue": "the bidder (at an auction)", "grade": "T", "level": "C1", "ex": "Am Ende gab es nur noch zwei Bieter.", "exEn": "In the end there were only two bidders left."}
+ ],
+ "boards": {
+  "A2": {"words": ["anbieten.verb", "das_Angebot", "verbieten.verb", "das_Verbot", "verboten.adj", "das_Gebiet"], "light": ["anbieten.verb", "das_Angebot", "verbieten.verb", "das_Verbot", "verboten.adj", "das_Gebiet"], "tiles": {"pre": ["an", "ver", "ge", "über"], "suf": ["stem", "pp"]}, "distract": [{"pre": "über", "is": "extra"}]},
+  "B1": {"words": ["anbieten.verb", "das_Angebot", "der_Anbieter", "verbieten.verb", "das_Verbot", "verboten.adj", "das_Gebiet", "überbieten.verb", "unterbieten.verb", "die_Anbieterin"], "light": ["anbieten.verb", "das_Angebot", "der_Anbieter", "verbieten.verb", "das_Verbot", "das_Gebiet"], "tiles": {"pre": ["an", "ver", "ge", "über", "unter", "dar", "zer"], "suf": ["stem", "er", "pp", "ung", "in"]}, "distract": [{"pre": "zer", "is": "none"}]},
+  "B2": {"words": ["anbieten.verb", "das_Angebot", "der_Anbieter", "verbieten.verb", "das_Verbot", "verboten.adj", "das_Gebiet", "überbieten.verb", "unterbieten.verb", "die_Darbietung", "der_Bieter", "das_Aufgebot"], "light": ["der_Anbieter", "das_Gebiet", "überbieten.verb", "unterbieten.verb", "die_Darbietung", "das_Aufgebot"], "tiles": {"pre": ["an", "ver", "ge", "über", "unter", "dar", "auf", "zer", "miss"], "suf": ["stem", "er", "pp", "ung"]}, "distract": [{"pre": "zer", "is": "none"}, {"pre": "miss", "is": "none"}]}
+ },
+ "none": [
+  {"key": "zer|", "word": "zerbieten"},
+  {"key": "miss|", "word": "missbieten"},
+  {"key": "wider|", "word": "widerbieten"}
+ ],
+ "rare": [
+  {"key": "er|", "word": "erbieten", "why": "DWDS: formal, dated: sich erbieten, offer to do something"},
+  {"key": "ent|", "word": "entbieten", "why": "DWDS: elevated: extend (greetings)"},
+  {"key": "nach|", "word": "nachbieten", "why": "15 corpus hits (auctions: bid again): not safe to call wrong"},
+  {"key": "an|", "word": "anbieten", "why": "Found by the lexicon check: DWDS has an entry; 6562823 DWDS corpus hits; wordfreq 4.44."},
+  {"key": "ver|", "word": "verbieten", "why": "Found by the lexicon check: DWDS has an entry; 2372927 DWDS corpus hits; wordfreq 4.16."},
+  {"key": "an|ung", "word": "Anbietung", "why": "Found by the lexicon check: 513 DWDS corpus hits; wordfreq 1.09."},
+  {"key": "ver|er", "word": "Verbieter", "why": "Found by the lexicon check: 203 DWDS corpus hits."},
+  {"key": "ver|ung", "word": "Verbietung", "why": "Found by the lexicon check: 46 DWDS corpus hits."},
+  {"key": "ge|er", "word": "Gebieter", "why": "Found by the lexicon check: DWDS has an entry; 6407 DWDS corpus hits; wordfreq 2.79."},
+  {"key": "über|er", "word": "Überbieter", "why": "Found by the lexicon check: 35 DWDS corpus hits."},
+  {"key": "über|ung", "word": "Überbietung", "why": "Found by the lexicon check: DWDS has an entry; 5960 DWDS corpus hits; wordfreq 1.32."},
+  {"key": "unter|er", "word": "Unterbieter", "why": "Found by the lexicon check: 307 DWDS corpus hits."},
+  {"key": "unter|ung", "word": "Unterbietung", "why": "Found by the lexicon check: DWDS has an entry; 1241 DWDS corpus hits."},
+  {"key": "dar|er", "word": "Darbieter", "why": "Found by the lexicon check: 275 DWDS corpus hits."},
+  {"key": "auf|ung", "word": "Aufbietung", "why": "Found by the lexicon check: DWDS has an entry; 4884 DWDS corpus hits; wordfreq 1.72."}
+ ],
+ "reviewedBy": "model-2pass",
+ "reviewedAt": "2026-10-08",
+ "level": "B1"
+}

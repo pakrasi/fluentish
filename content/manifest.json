@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "81decfb41c88",
+ "version": "441390b5c6a3",
  "languages": [
   {
    "id": "khasi",
@@ -344,8 +344,8 @@
    "id": "build.de",
    "path": "build/de.json",
    "schema": "build@1",
-   "bytes": 133185,
-   "sha256": "c1eaaa0219b7650aeb73c29c5ff7b92f209734b47751cdd162efd8bc64e72dc3"
+   "bytes": 933092,
+   "sha256": "2510898073fbaddcb770ec9c4b36692567b4c3aa9f6a176442187966645d9a02"
   },
   {
    "id": "clusters.de",

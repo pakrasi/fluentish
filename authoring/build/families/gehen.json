@@ -1,0 +1,62 @@
+{
+ "root": "gehen",
+ "stems": ["geh", "ging", "gang", "gäng"],
+ "forms": [
+  {"id": "gehen.verb", "parent": null, "ex": "Ich gehe jetzt nach Hause.", "exEn": "I'm going home now."},
+  {"id": "angehen.verb", "verb": "angehen", "clue": "to concern (someone); to go on (a light)", "note": "Perfekt with sein: das Licht ist angegangen; wir sind das Problem angegangen (in the south also hat)."},
+  {"id": "aufgehen.verb", "verb": "aufgehen", "clue": "to rise (the sun); to open (a door)"},
+  {"id": "ausgehen.verb", "verb": "ausgehen", "clue": "to go out (in the evening); to run out"},
+  {"id": "eingehen.verb", "verb": "eingehen", "clue": "to respond to (auf); to shrink (clothes)"},
+  {"id": "nachgehen.verb", "verb": "nachgehen", "clue": "to be slow (a clock); to look into"},
+  {"id": "vorgehen.verb", "verb": "vorgehen", "clue": "to go on ahead; to proceed"},
+  {"id": "zugehen.verb", "verb": "zugehen", "clue": "to close (a door); to walk up to (auf)"},
+  {"id": "durchgehen.verb", "verb": "durchgehen", "clue": "to go through, to check (a text)"},
+  {"id": "umgehen-s.verb", "verb": "umgehen-s", "clue": "to deal with, to handle (mit)"},
+  {"id": "umgehen-i.verb", "verb": "umgehen-i", "clue": "to avoid, to bypass (a town, a rule)"},
+  {"id": "untergehen.verb", "verb": "untergehen", "clue": "to sink (a ship); to set (the sun)"},
+  {"id": "vergehen.verb", "verb": "vergehen", "clue": "to pass (time)"},
+  {"id": "begehen.verb", "verb": "begehen", "clue": "to commit (a crime, a mistake)"},
+  {"id": "entgehen.verb", "verb": "entgehen", "clue": "to escape (danger); to be missed by"},
+  {"id": "der_Ausgang", "chain": "gehen/n2", "clue": "the exit"},
+  {"id": "der_Eingang", "chain": "gehen/n4", "clue": "the entrance"},
+  {"id": "vergangen.adj", "chain": "gehen/n6", "clue": "past, last (last week)", "level": "B1"},
+  {"id": "die_Vergangenheit", "chain": "gehen/n7", "clue": "the past"},
+  {"id": "der_Zugang", "word": "Zugang", "cls": "noun", "art": "der", "parent": "zugehen.verb", "add": "stem", "side": "suf", "en": "access; way in", "clue": "the access (to the internet, to data)", "ex": "Nicht alle haben Zugang zum Internet.", "exEn": "Not everyone has access to the internet.", "why": "The way you go to something (zugehen auf): access.", "grade": "M"},
+  {"id": "der_Übergang", "word": "Übergang", "cls": "noun", "art": "der", "parent": "gehen.verb", "add": "stem", "side": "suf", "pre": ["über"], "en": "transition; crossing (for pedestrians, at a border)", "clue": "the transition; a crossing", "ex": "Der Übergang von der Schule zum Beruf ist nicht leicht.", "exEn": "The move from school to work isn't easy.", "why": "über = over, across: going over from one thing to the next.", "grade": "M"},
+  {"id": "der_Umgang", "word": "Umgang", "cls": "noun", "art": "der", "parent": "umgehen-s.verb", "add": "stem", "side": "suf", "en": "dealing with, handling; contact (with people)", "clue": "the handling (of); dealing with people", "ex": "Der Umgang mit Kunden macht mir Spaß.", "exEn": "I enjoy dealing with customers.", "grade": "T"},
+  {"id": "die_Umgehung", "word": "Umgehung", "cls": "noun", "art": "die", "parent": "umgehen-i.verb", "add": "ung", "side": "suf", "en": "bypass (road); getting round (a rule)", "clue": "the bypass (a road around a town)", "ex": "Die neue Umgehung entlastet die Innenstadt.", "exEn": "The new bypass takes traffic out of the town centre.", "grade": "T", "level": "C1"},
+  {"id": "der_Gang", "word": "Gang", "cls": "noun", "art": "der", "parent": "gehen.verb", "add": "stem", "side": "suf", "en": "corridor, aisle; gear (in a car); course (of a meal); walk (way of walking)", "clue": "the corridor; a gear (in a car)", "ex": "Die Toiletten sind am Ende des Gangs.", "exEn": "The toilets are at the end of the corridor.", "why": "The old stem of gehen (gegangen): a place where you go, or a step in a process.", "grade": "M", "level": "B1"},
+  {"id": "der_Spaziergang", "word": "Spaziergang", "cls": "noun", "art": "der", "parent": "der_Gang", "add": "Spazier", "side": "cmp", "seg": [["c", "Spazier"], ["r", "gang"]], "stress": 4, "en": "walk (for pleasure)", "clue": "a walk (for pleasure)", "ex": "Wir machen einen Spaziergang im Park.", "exEn": "We're going for a walk in the park.", "why": "spazieren (stroll) + Gang: a stroll.", "grade": "T"},
+  {"id": "der_Vorgang", "word": "Vorgang", "cls": "noun", "art": "der", "parent": "vorgehen.verb", "add": "stem", "side": "suf", "en": "process, event; file, case (in an office)", "clue": "the process (what happens, step by step)", "ex": "Der ganze Vorgang dauert nur ein paar Minuten.", "exEn": "The whole process only takes a few minutes.", "why": "What goes on (vorgeht): a process.", "grade": "M", "level": "B2"},
+  {"id": "der_Untergang", "word": "Untergang", "cls": "noun", "art": "der", "parent": "untergehen.verb", "add": "stem", "side": "suf", "en": "sinking (of a ship); downfall, end", "clue": "the sinking (of a ship); a downfall", "ex": "Viele Menschen sind beim Untergang des Schiffes gestorben.", "exEn": "Many people died when the ship sank.", "grade": "T", "level": "B2"},
+  {"id": "der_Sonnenuntergang", "word": "Sonnenuntergang", "cls": "noun", "art": "der", "parent": "der_Untergang", "add": "Sonnen", "side": "cmp", "seg": [["c", "Sonnen"], ["p", "unter"], ["r", "gang"]], "en": "sunset", "clue": "the sunset", "ex": "Wir haben uns am Strand den Sonnenuntergang angeschaut.", "exEn": "We watched the sunset on the beach.", "why": "Sonne + Untergang: the sun going down.", "grade": "T"},
+  {"id": "weggehen.verb", "word": "weggehen", "cls": "verb", "parent": "gehen.verb", "add": "weg", "side": "pre", "kind": "s", "aux": "ist", "pp": "weggegangen", "en": "leave, go away; (colloquial) go out (in the evening)", "clue": "to leave, to go away", "ex": "Geh nicht weg, ich bin gleich zurück.", "exEn": "Don't go away, I'll be right back.", "why": "weg = away.", "grade": "T", "level": "A2"},
+  {"id": "mitgehen.verb", "word": "mitgehen", "cls": "verb", "parent": "gehen.verb", "add": "mit", "side": "pre", "kind": "s", "aux": "ist", "pp": "mitgegangen", "en": "go along (with someone)", "clue": "to go along (with someone)", "ex": "Ich gehe heute Abend nicht mit.", "exEn": "I'm not going along tonight.", "why": "mit = along, with.", "grade": "T", "level": "A2"},
+  {"id": "zurückgehen.verb", "word": "zurückgehen", "cls": "verb", "parent": "gehen.verb", "add": "zurück", "side": "pre", "kind": "s", "aux": "ist", "pp": "zurückgegangen", "en": "go back, return; decrease, decline", "clue": "to go back; to decline (numbers)", "ex": "Die Zahl der Unfälle ist stark zurückgegangen.", "exEn": "The number of accidents has fallen sharply.", "why": "zurück = back: you go back; numbers go back down.", "grade": "M", "level": "B1"},
+  {"id": "der_Rückgang", "word": "Rückgang", "cls": "noun", "art": "der", "parent": "zurückgehen.verb", "add": "Rück", "side": "cmp", "seg": [["c", "Rück"], ["r", "gang"]], "en": "decline, decrease", "clue": "the decline, a decrease (in numbers)", "ex": "Die Firma meldet einen Rückgang der Verkäufe.", "exEn": "The company reports a fall in sales.", "why": "zurück becomes Rück- in nouns: zurückgehen, der Rückgang.", "grade": "T"},
+  {"id": "weitergehen.verb", "word": "weitergehen", "cls": "verb", "parent": "gehen.verb", "add": "weiter", "side": "pre", "kind": "s", "aux": "ist", "pp": "weitergegangen", "en": "go on, continue", "clue": "to continue, to carry on", "ex": "So kann es nicht weitergehen.", "exEn": "Things can't go on like this.", "why": "weiter = on, further.", "grade": "T", "level": "B1"},
+  {"id": "vorbeigehen.verb", "word": "vorbeigehen", "cls": "verb", "parent": "gehen.verb", "add": "vorbei", "side": "pre", "kind": "s", "aux": "ist", "pp": "vorbeigegangen", "en": "go past, pass; drop in (bei)", "clue": "to walk past (a shop)", "ex": "Ich gehe jeden Tag an der Bäckerei vorbei.", "exEn": "I walk past the bakery every day.", "why": "vorbei = past, by.", "grade": "T", "level": "A2"},
+  {"id": "der_Fußgänger", "word": "Fußgänger", "cls": "noun", "art": "der", "parent": "gehen.verb", "add": "Fuß", "side": "cmp", "seg": [["c", "Fuß"], ["r", "gäng"], ["s", "er"]], "en": "pedestrian", "clue": "the pedestrian", "ex": "Diese Straße ist nur für Fußgänger.", "exEn": "This street is for pedestrians only.", "why": "Fuß (foot) + Gang + -er: someone who goes on foot.", "grade": "T"}
+ ],
+ "boards": {
+  "A2": {"words": ["ausgehen.verb", "der_Ausgang", "weggehen.verb", "vorbeigehen.verb", "aufgehen.verb", "untergehen.verb"], "light": ["ausgehen.verb", "der_Ausgang", "weggehen.verb", "vorbeigehen.verb", "aufgehen.verb", "untergehen.verb"], "tiles": {"pre": ["aus", "weg", "vorbei", "auf", "unter", "ein"], "suf": ["stem"]}, "distract": [{"pre": "ein", "is": "extra"}]},
+  "B1": {"words": ["eingehen.verb", "der_Eingang", "zugehen.verb", "der_Zugang", "vergehen.verb", "vergangen.adj", "die_Vergangenheit", "zurückgehen.verb", "durchgehen.verb", "vorgehen.verb"], "light": ["eingehen.verb", "zugehen.verb", "vergehen.verb", "zurückgehen.verb", "durchgehen.verb", "vorgehen.verb"], "tiles": {"pre": ["ein", "zu", "ver", "zurück", "durch", "vor", "wider"], "suf": ["stem", "pp", "heit"]}, "distract": [{"pre": "wider", "is": "none"}]},
+  "B2": {"words": ["umgehen-s.verb", "umgehen-i.verb", "der_Umgang", "die_Umgehung", "angehen.verb", "nachgehen.verb", "begehen.verb", "entgehen.verb", "der_Vorgang", "der_Untergang", "der_Übergang", "weitergehen.verb"], "light": ["umgehen-s.verb", "angehen.verb", "nachgehen.verb", "begehen.verb", "entgehen.verb", "weitergehen.verb"], "tiles": {"pre": ["um", "an", "nach", "be", "ent", "vor", "unter", "über", "weiter", "wider", "aus"], "suf": ["stem", "ung"]}, "distract": [{"pre": "wider", "is": "none"}, {"pre": "aus", "is": "extra"}]}
+ },
+ "none": [
+  {"key": "wider|", "word": "widergehen"},
+  {"key": "emp|", "word": "empgehen"}
+ ],
+ "rare": [
+  {"key": "zer|", "word": "zergehen", "why": "DWDS: zergehen = melt, dissolve (auf der Zunge zergehen)"},
+  {"key": "er|", "word": "ergehen", "why": "DWDS: ergehen = fare (wie ist es dir ergangen?); be issued (a law)"},
+  {"key": "hin|", "word": "hingehen", "why": "DWDS: hingehen = go there"},
+  {"key": "über|", "word": "übergehen", "why": "DWDS: both readings exist: übergehen zu (move on to), übergehen (skip, ignore)"},
+  {"key": "miss|", "word": "missgehen", "why": "A reviewer was not certain it is never used (older or literary German), so the game never calls it wrong."},
+  {"key": "an|ung", "word": "Angehung", "why": "Found by the lexicon check: 16 DWDS corpus hits."},
+  {"key": "be|ung", "word": "Begehung", "why": "Found by the lexicon check: DWDS has an entry; 123068 DWDS corpus hits; wordfreq 3.27."},
+  {"key": "über|ung", "word": "Übergehung", "why": "Found by the lexicon check: DWDS has an entry; 774 DWDS corpus hits; wordfreq 1.15."}
+ ],
+ "reviewedBy": "model-2pass",
+ "reviewedAt": "2026-10-08"
+}

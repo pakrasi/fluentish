@@ -1,0 +1,57 @@
+{
+ "root": "sehen",
+ "stems": ["seh", "sieh", "sah", "sicht"],
+ "forms": [
+  {"id": "sehen.verb", "parent": null, "ex": "Wir sehen uns morgen.", "exEn": "See you tomorrow."},
+  {"id": "ansehen.verb", "verb": "ansehen", "clue": "to look at (someone); to watch (a film, sich)"},
+  {"id": "aufsehen.verb", "verb": "aufsehen", "clue": "to look up, raise your eyes (from a book)", "note": "The verb is fairly literary (everyday: aufblicken, hochsehen). Much more common is the noun das Aufsehen: stir, sensation (Aufsehen erregen)."},
+  {"id": "aussehen.verb", "verb": "aussehen", "clue": "to look (tired, good), to appear"},
+  {"id": "einsehen.verb", "verb": "einsehen", "clue": "to realise, to accept (a mistake)"},
+  {"id": "nachsehen.verb", "verb": "nachsehen", "clue": "to check, to look something up (in a dictionary)"},
+  {"id": "vorsehen.verb", "verb": "vorsehen", "clue": "to plan for, to include (as a rule or schedule does)", "note": "sich vorsehen (vor): be careful (of), look out (for); hence die Vorsicht."},
+  {"id": "zusehen.verb", "verb": "zusehen", "clue": "to watch (someone doing something)"},
+  {"id": "sich_umsehen.verb", "verb": "umsehen", "clue": "to look around (sich)"},
+  {"id": "durchsehen.verb", "verb": "durchsehen", "clue": "to look through (documents)"},
+  {"id": "übersehen.verb", "verb": "übersehen", "clue": "to overlook, to miss (a mistake)"},
+  {"id": "fernsehen.verb", "word": "fernsehen", "cls": "verb", "parent": "sehen.verb", "add": "fern", "side": "pre", "kind": "s", "aux": "hat", "pp": "ferngesehen", "en": "watch TV", "clue": "to watch TV", "why": "fern = far: you see far away, through the screen.", "grade": "M", "ex": "Am Abend sehe ich gern fern.", "exEn": "In the evening I like watching TV."},
+  {"id": "das_Fernsehen", "word": "Fernsehen", "cls": "noun", "art": "das", "parent": "fernsehen.verb", "add": "inf", "side": "suf", "en": "television (the medium)", "clue": "the television (the medium, what's on)", "grade": "T", "ex": "Was kommt heute im Fernsehen?", "exEn": "What's on TV today?"},
+  {"id": "der_Fernseher", "word": "Fernseher", "cls": "noun", "art": "der", "parent": "fernsehen.verb", "add": "er", "side": "suf", "en": "television (set), TV", "clue": "the TV set", "why": "-er for a thing that does the job.", "grade": "T", "ex": "Der Fernseher steht im Wohnzimmer.", "exEn": "The TV is in the living room."},
+  {"id": "wiedersehen.verb", "word": "wiedersehen", "cls": "verb", "parent": "sehen.verb", "add": "wieder", "side": "pre", "kind": "s", "aux": "hat", "pp": "wiedergesehen", "en": "see again, meet again", "clue": "to see again (an old friend)", "why": "wieder = again.", "grade": "T", "level": "B1", "ex": "Ich hoffe, wir sehen uns bald wieder.", "exEn": "I hope we'll see each other again soon."},
+  {"id": "das_Wiedersehen", "word": "Wiedersehen", "cls": "noun", "art": "das", "parent": "wiedersehen.verb", "add": "inf", "side": "suf", "en": "reunion, seeing someone again", "clue": "the reunion (after a long time)", "note": "Auf Wiedersehen = goodbye.", "grade": "T", "level": "A2", "ex": "Wir freuen uns sehr auf das Wiedersehen.", "exEn": "We are really looking forward to seeing each other again."},
+  {"id": "die_Sehenswürdigkeit", "word": "Sehenswürdigkeit", "cls": "noun", "art": "die", "parent": "sehen.verb", "add": "Würdigkeit", "side": "cmp", "seg": [["r", "Seh"], ["i", "en"], ["l", "s"], ["c", "würdigkeit"]], "en": "sight, tourist attraction", "clue": "the sight (a tourist attraction)", "why": "sehenswürdig = worth seeing: a thing worth seeing.", "grade": "M", "ex": "In Berlin gibt es viele Sehenswürdigkeiten.", "exEn": "There are lots of sights in Berlin."},
+  {"id": "die_Sicht", "word": "Sicht", "cls": "noun", "art": "die", "parent": "sehen.verb", "add": "t", "side": "suf", "en": "visibility; view; point of view (aus meiner Sicht)", "clue": "the visibility (in fog, on the road)", "note": "-sicht is an old noun stem of sehen: die Sicht, die Ansicht, die Vorsicht.", "grade": "T", "ex": "Bei Nebel ist die Sicht sehr schlecht.", "exEn": "In fog the visibility is very poor."},
+  {"id": "sichtbar.adj", "word": "sichtbar", "cls": "adj", "parent": "die_Sicht", "add": "bar", "side": "suf", "en": "visible", "clue": "visible", "grade": "T", "level": "B2", "ex": "Der Fehler ist kaum sichtbar.", "exEn": "The mistake is barely visible."},
+  {"id": "unsichtbar.adj", "word": "unsichtbar", "cls": "adj", "parent": "sichtbar.adj", "add": "un", "side": "pre", "en": "invisible", "clue": "invisible", "grade": "T", "level": "B2", "ex": "Viele Gefahren im Internet sind unsichtbar.", "exEn": "Many dangers on the internet are invisible."},
+  {"id": "die_Rücksicht", "word": "Rücksicht", "cls": "noun", "art": "die", "parent": "die_Sicht", "add": "Rück", "side": "cmp", "seg": [["c", "Rück"], ["r", "sicht"]], "en": "consideration (for others)", "clue": "the consideration (for other people)", "why": "Rück (back) + Sicht: you look back at the people around you.", "grade": "M", "ex": "Bitte nimm Rücksicht auf die Nachbarn.", "exEn": "Please be considerate of the neighbours."},
+  {"id": "absehen.verb", "word": "absehen", "cls": "verb", "parent": "sehen.verb", "add": "ab", "side": "pre", "kind": "s", "aux": "hat", "pp": "abgesehen", "en": "foresee (the end of something); von etwas absehen: refrain from; abgesehen von: apart from", "clue": "to see the end coming (nicht abzusehen); to refrain (von)", "why": "ab = off: look ahead to where something ends, or look away from it.", "grade": "M", "level": "C1", "ex": "Das Ende der Krise ist noch nicht abzusehen.", "exEn": "There is no end to the crisis in sight yet."},
+  {"id": "die_Absicht", "word": "Absicht", "cls": "noun", "art": "die", "parent": "absehen.verb", "add": "t", "side": "suf", "en": "intention", "clue": "the intention, a purpose", "why": "absehen auf once meant aim at: what you aim at.", "grade": "M", "ex": "Das habe ich nicht mit Absicht gemacht.", "exEn": "I didn't do that on purpose."},
+  {"id": "absichtlich.adj", "word": "absichtlich", "cls": "adj", "parent": "die_Absicht", "add": "lich", "side": "suf", "en": "on purpose, deliberate", "clue": "deliberately, on purpose", "grade": "T", "ex": "Er hat das Glas absichtlich fallen lassen.", "exEn": "He dropped the glass on purpose."},
+  {"id": "das_Aussehen", "chain": "sehen/n2", "clue": "the appearance, someone's looks"},
+  {"id": "die_Aussicht", "word": "Aussicht", "cls": "noun", "art": "die", "parent": "aussehen.verb", "add": "t", "side": "suf", "en": "view (from a window); prospect", "clue": "the view (from a window); a prospect", "why": "aussehen once meant look out: what you see when you look out.", "grade": "M", "ex": "Von hier hat man eine tolle Aussicht.", "exEn": "You get a great view from here."},
+  {"id": "die_Ansicht", "chain": "sehen/n4", "clue": "the opinion (in my opinion)", "grade": "M"},
+  {"id": "die_Einsicht", "word": "Einsicht", "cls": "noun", "art": "die", "parent": "einsehen.verb", "add": "t", "side": "suf", "en": "insight, realisation; access (to files)", "clue": "the insight, a realisation", "grade": "T", "ex": "Er ist endlich zur Einsicht gekommen.", "exEn": "He has finally seen sense.", "level": "B2"},
+  {"id": "die_Vorsicht", "chain": "sehen/n6", "clue": "the caution, care"},
+  {"id": "vorsichtig.adj", "chain": "sehen/n7", "clue": "careful"},
+  {"id": "die_Übersicht", "word": "Übersicht", "cls": "noun", "art": "die", "parent": "übersehen.verb", "add": "t", "side": "suf", "en": "overview, summary", "clue": "the overview (of the costs)", "why": "übersehen also means see over everything, as from a hill: an overview.", "grade": "M", "ex": "Die Tabelle gibt eine gute Übersicht über die Kosten.", "exEn": "The table gives a good overview of the costs."},
+  {"id": "übersichtlich.adj", "word": "übersichtlich", "cls": "adj", "parent": "die_Übersicht", "add": "lich", "side": "suf", "en": "clear, well laid out", "clue": "clear, well laid out (a website)", "grade": "T", "level": "B2", "ex": "Die neue Webseite ist sehr übersichtlich.", "exEn": "The new website is very clearly laid out."},
+  {"id": "versehen.verb", "word": "versehen", "cls": "verb", "parent": "sehen.verb", "add": "ver", "side": "pre", "kind": "i", "aux": "hat", "pp": "versehen", "en": "provide, fit (mit: with); sich versehen: make a slip", "clue": "to equip, to fit (mit: rooms with a TV)", "why": "ver- + sehen: see to it that something has what it needs; sich versehen = see wrongly.", "grade": "M", "level": "C1", "ex": "Alle Zimmer sind mit einem Fernseher versehen.", "exEn": "All the rooms are fitted with a TV."},
+  {"id": "das_Versehen", "word": "Versehen", "cls": "noun", "art": "das", "parent": "versehen.verb", "add": "inf", "side": "suf", "en": "oversight, mistake (aus Versehen: by mistake)", "clue": "the oversight, an honest mistake", "why": "sich versehen = see wrongly: a mistake you did not mean.", "grade": "M", "level": "B1", "ex": "Das ist aus Versehen passiert.", "exEn": "That happened by mistake."}
+ ],
+ "boards": {
+  "A2": {"words": ["ansehen.verb", "aussehen.verb", "fernsehen.verb", "nachsehen.verb", "sich_umsehen.verb", "zusehen.verb"], "light": ["ansehen.verb", "aussehen.verb", "fernsehen.verb", "nachsehen.verb", "sich_umsehen.verb", "zusehen.verb"], "tiles": {"pre": ["an", "aus", "fern", "nach", "um", "zu", "durch"], "suf": []}, "distract": [{"pre": "durch", "is": "extra"}]},
+  "B1": {"words": ["ansehen.verb", "die_Ansicht", "aussehen.verb", "die_Aussicht", "fernsehen.verb", "der_Fernseher", "die_Vorsicht", "übersehen.verb", "die_Absicht", "nachsehen.verb"], "light": ["ansehen.verb", "aussehen.verb", "fernsehen.verb", "der_Fernseher", "die_Vorsicht", "nachsehen.verb"], "tiles": {"pre": ["an", "aus", "fern", "vor", "über", "ab", "nach", "zer"], "suf": ["t", "er"]}, "distract": [{"pre": "zer", "is": "none"}]},
+  "B2": {"words": ["einsehen.verb", "die_Einsicht", "vorsehen.verb", "vorsichtig.adj", "die_Übersicht", "übersichtlich.adj", "absichtlich.adj", "die_Sicht", "sichtbar.adj", "unsichtbar.adj", "das_Versehen", "durchsehen.verb"], "light": ["einsehen.verb", "vorsehen.verb", "vorsichtig.adj", "die_Übersicht", "die_Sicht", "das_Versehen"], "tiles": {"pre": ["ein", "vor", "über", "ab", "un", "ver", "durch", "zer", "zu"], "suf": ["t", "ig", "lich", "bar", "inf"]}, "distract": [{"pre": "zer", "is": "none"}, {"pre": "zu", "is": "extra"}]}
+ },
+ "none": [
+  {"key": "zer|", "word": "zersehen"},
+  {"key": "miss|", "word": "misssehen"}
+ ],
+ "rare": [
+  {"key": "er|", "word": "ersehen", "why": "DWDS: ersehen = gather, see (from a document), formal"},
+  {"key": "be|", "word": "besehen", "why": "DWDS: besehen = look at closely (dated)"},
+  {"key": "hin|", "word": "hinsehen", "why": "DWDS: hinsehen = look (at something), look closely"},
+  {"key": "weg|", "word": "wegsehen", "why": "DWDS: wegsehen = look away"}
+ ],
+ "reviewedBy": "model-2pass",
+ "reviewedAt": "2026-10-08"
+}

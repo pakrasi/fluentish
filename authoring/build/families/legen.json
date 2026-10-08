@@ -1,0 +1,55 @@
+{
+ "root": "legen",
+ "stems": ["leg", "lag"],
+ "forms": [
+  {"id": "legen.verb", "parent": null, "ex": "Leg das Buch auf den Tisch.", "exEn": "Put the book on the table."},
+  {"id": "ablegen.verb", "verb": "ablegen", "clue": "to take off (a coat); to take (an exam)"},
+  {"id": "anlegen.verb", "verb": "anlegen", "clue": "to create (a file); to invest (money)"},
+  {"id": "auflegen.verb", "verb": "auflegen", "clue": "to hang up (the phone)"},
+  {"id": "einlegen.verb", "verb": "einlegen", "clue": "to put in; to take (a break)"},
+  {"id": "vorlegen.verb", "verb": "vorlegen", "clue": "to present, to show (a document)"},
+  {"id": "nachlegen.verb", "verb": "nachlegen", "clue": "to put more on (the fire)"},
+  {"id": "zulegen.verb", "verb": "zulegen", "clue": "to get yourself (a new car, sich); to gain"},
+  {"id": "überlegen.verb", "verb": "überlegen", "clue": "to think about, to consider"},
+  {"id": "belegen.verb", "verb": "belegen", "clue": "to take (a course); to prove"},
+  {"id": "verlegen.verb", "verb": "verlegen", "clue": "to postpone, to move; to misplace"},
+  {"id": "zerlegen.verb", "verb": "zerlegen", "clue": "to take apart, to dismantle"},
+  {"id": "die_Überlegung", "chain": "legen/n2", "clue": "the consideration, a thought"},
+  {"id": "der_Beleg", "chain": "legen/n4", "clue": "the receipt; a piece of proof"},
+  {"id": "zerlegbar.adj", "chain": "legen/n6", "clue": "can be taken apart (furniture)", "level": "C1"},
+  {"id": "hinlegen.verb", "word": "hinlegen", "cls": "verb", "parent": "legen.verb", "add": "hin", "side": "pre", "kind": "s", "aux": "hat", "pp": "hingelegt", "en": "put down; sich hinlegen: lie down", "clue": "to put down; to lie down (sich)", "ex": "Ich lege mich kurz hin.", "exEn": "I'm going to lie down for a bit.", "why": "hin = there, away from you: you lay a thing (or yourself) down there.", "grade": "T"},
+  {"id": "widerlegen.verb", "word": "widerlegen", "cls": "verb", "parent": "legen.verb", "add": "wider", "side": "pre", "kind": "i", "aux": "hat", "pp": "widerlegt", "en": "refute, disprove", "clue": "to refute, to disprove (a claim)", "ex": "Die neue Studie widerlegt diese Theorie.", "exEn": "The new study disproves this theory.", "why": "wider = against: you lay an argument against a claim until it falls.", "grade": "M"},
+  {"id": "darlegen.verb", "word": "darlegen", "cls": "verb", "parent": "legen.verb", "add": "dar", "side": "pre", "kind": "s", "aux": "hat", "pp": "dargelegt", "en": "set out, explain (in detail)", "clue": "to set out, to explain (your reasons)", "ex": "Sie hat ihre Gründe ausführlich dargelegt.", "exEn": "She set out her reasons in detail.", "why": "dar = there, in view: you lay your reasons out before people.", "grade": "M"},
+  {"id": "festlegen.verb", "word": "festlegen", "cls": "verb", "parent": "legen.verb", "add": "fest", "side": "pre", "kind": "s", "aux": "hat", "pp": "festgelegt", "en": "fix, set (a date, a price); lay down (rules)", "clue": "to fix, to set (a date, rules)", "ex": "Wir sollten einen Termin festlegen.", "exEn": "We should set a date.", "why": "fest = firm, fixed: you lay something down so that it stays.", "grade": "M"},
+  {"id": "die_Festlegung", "word": "Festlegung", "cls": "noun", "art": "die", "parent": "festlegen.verb", "add": "ung", "side": "suf", "en": "fixing, setting (of a date, a limit)", "clue": "the fixing (of a date, a limit)", "ex": "Die Festlegung des Termins hat lange gedauert.", "exEn": "Fixing the date took a long time.", "grade": "T", "level": "C1"},
+  {"id": "auslegen.verb", "word": "auslegen", "cls": "verb", "parent": "legen.verb", "add": "aus", "side": "pre", "kind": "s", "aux": "hat", "pp": "ausgelegt", "en": "interpret (a text, a law); lay out (goods); pay for someone for now (Geld auslegen); cover (a floor)", "clue": "to interpret (a law); to lay out (goods, a floor)", "ex": "Jeder Richter legt das Gesetz etwas anders aus.", "exEn": "Every judge interprets the law a little differently.", "why": "aus = out: you lay out what a text means, as you lay goods out on display.", "grade": "M", "level": "C1"},
+  {"id": "die_Auslegung", "word": "Auslegung", "cls": "noun", "art": "die", "parent": "auslegen.verb", "add": "ung", "side": "suf", "en": "interpretation (of a text, a rule)", "clue": "the interpretation (of a law)", "ex": "Das ist eine Frage der Auslegung.", "exEn": "That's a question of interpretation.", "grade": "T"},
+  {"id": "grundlegend.adj", "word": "grundlegend", "cls": "adj", "parent": "legen.verb", "add": "Grund", "side": "cmp", "seg": [["c", "grund"], ["r", "leg"], ["s", "end"]], "en": "fundamental, basic", "clue": "fundamental, basic", "ex": "Es gab grundlegende Änderungen.", "exEn": "There were fundamental changes.", "why": "den Grund legen = lay the foundation: what is grundlegend lays the foundation for the rest.", "grade": "M"},
+  {"id": "weglegen.verb", "word": "weglegen", "cls": "verb", "parent": "legen.verb", "add": "weg", "side": "pre", "kind": "s", "aux": "hat", "pp": "weggelegt", "en": "put away, put aside", "clue": "to put away (your phone)", "ex": "Leg bitte dein Handy weg.", "exEn": "Please put your phone away.", "why": "weg = away: you lay it away from you.", "grade": "T", "level": "B1"},
+  {"id": "zurücklegen.verb", "word": "zurücklegen", "cls": "verb", "parent": "legen.verb", "add": "zurück", "side": "pre", "kind": "s", "aux": "hat", "pp": "zurückgelegt", "en": "put back; put aside (money); cover (a distance)", "clue": "to put back; to cover (a distance)", "ex": "Wir haben heute zwanzig Kilometer zurückgelegt.", "exEn": "We covered twenty kilometres today.", "why": "zurück = back: you lay a thing back; a distance you have covered lies behind you.", "grade": "M", "level": "B1"},
+  {"id": "zusammenlegen.verb", "word": "zusammenlegen", "cls": "verb", "parent": "legen.verb", "add": "zusammen", "side": "pre", "kind": "s", "aux": "hat", "pp": "zusammengelegt", "en": "fold (clothes); merge, combine", "clue": "to fold (laundry); to merge", "ex": "Ich lege noch die Wäsche zusammen.", "exEn": "I'm just going to fold the laundry.", "why": "zusammen = together: you lay the parts together.", "grade": "T", "level": "B2"},
+  {"id": "beilegen.verb", "word": "beilegen", "cls": "verb", "parent": "legen.verb", "add": "bei", "side": "pre", "kind": "s", "aux": "hat", "pp": "beigelegt", "en": "enclose (with a letter); settle (a dispute)", "clue": "to enclose (in a letter); to settle", "ex": "Ich lege dem Brief eine Kopie bei.", "exEn": "I'm enclosing a copy with the letter.", "why": "bei = with, beside: you lay something beside the letter; a dispute is laid to rest.", "grade": "M", "level": "C1"},
+  {"id": "die_Beilage", "word": "Beilage", "cls": "noun", "art": "die", "parent": "beilegen.verb", "add": "e", "side": "suf", "en": "side dish; supplement (in a newspaper)", "clue": "the side dish", "ex": "Als Beilage gibt es Reis oder Kartoffeln.", "exEn": "It comes with rice or potatoes on the side.", "why": "What is laid beside the main dish. -lage nouns take the a of liegen/lag (legen itself is regular: legte), and -e makes them die.", "grade": "M"},
+  {"id": "die_Anlage", "word": "Anlage", "cls": "noun", "art": "die", "parent": "anlegen.verb", "add": "e", "side": "suf", "en": "attachment (to a letter, an email); facility, plant; investment", "clue": "the attachment (of an email); a facility", "ex": "Die Rechnung finden Sie in der Anlage.", "exEn": "You will find the invoice attached.", "why": "What is laid on (angelegt): a page laid on a letter, a site laid out, money laid in.", "grade": "M", "level": "B1"},
+  {"id": "die_Auflage", "word": "Auflage", "cls": "noun", "art": "die", "parent": "auflegen.verb", "add": "e", "side": "suf", "en": "edition, print run (of a book); condition, requirement", "clue": "the edition (of a book); a condition", "ex": "Das Buch erscheint bald in der dritten Auflage.", "exEn": "The book is coming out soon in its third edition.", "why": "A book is aufgelegt (put out in print); a condition is laid on you.", "grade": "M"},
+  {"id": "die_Vorlage", "word": "Vorlage", "cls": "noun", "art": "die", "parent": "vorlegen.verb", "add": "e", "side": "suf", "en": "template, model; submission (of a document)", "clue": "the template (for a letter, a CV)", "ex": "Ich nutze eine Vorlage für meinen Lebenslauf.", "exEn": "I use a template for my CV.", "why": "What is laid in front of you to follow or to check.", "grade": "M", "level": "B2"},
+  {"id": "die_Ablage", "word": "Ablage", "cls": "noun", "art": "die", "parent": "ablegen.verb", "add": "e", "side": "suf", "en": "filing (tray), filing system; shelf to put things on", "clue": "the filing tray; a place to put things", "ex": "Leg die Briefe bitte in die Ablage.", "exEn": "Please put the letters in the filing tray.", "grade": "T"},
+  {"id": "der_Verlag", "word": "Verlag", "cls": "noun", "art": "der", "parent": "verlegen.verb", "add": "stem", "side": "suf", "en": "publisher, publishing house", "clue": "the publishing house", "ex": "Sie arbeitet bei einem großen Verlag.", "exEn": "She works for a big publisher.", "why": "Learn it as a word: verlegen also means to publish books, and der Verlag is the firm that does it.", "grade": "O"}
+ ],
+ "boards": {
+  "A2": {"words": ["hinlegen.verb", "überlegen.verb", "auflegen.verb", "einlegen.verb", "weglegen.verb", "die_Anlage"], "light": ["hinlegen.verb", "überlegen.verb", "auflegen.verb", "einlegen.verb", "weglegen.verb", "die_Anlage"], "tiles": {"pre": ["hin", "über", "auf", "ein", "weg", "an", "ab"], "suf": ["e"]}, "distract": [{"pre": "ab", "is": "extra"}]},
+  "B1": {"words": ["überlegen.verb", "die_Überlegung", "ablegen.verb", "anlegen.verb", "die_Anlage", "festlegen.verb", "vorlegen.verb", "die_Vorlage", "verlegen.verb", "zurücklegen.verb"], "light": ["überlegen.verb", "ablegen.verb", "anlegen.verb", "festlegen.verb", "vorlegen.verb", "zurücklegen.verb"], "tiles": {"pre": ["über", "ab", "an", "fest", "vor", "ver", "zurück", "miss"], "suf": ["ung", "e"]}, "distract": [{"pre": "miss", "is": "none"}]},
+  "B2": {"words": ["widerlegen.verb", "darlegen.verb", "belegen.verb", "der_Beleg", "zerlegen.verb", "zerlegbar.adj", "auslegen.verb", "die_Auslegung", "die_Festlegung", "zulegen.verb", "beilegen.verb", "die_Beilage"], "light": ["widerlegen.verb", "darlegen.verb", "belegen.verb", "zerlegen.verb", "auslegen.verb", "beilegen.verb"], "tiles": {"pre": ["wider", "dar", "be", "zer", "aus", "fest", "zu", "bei", "miss", "ab"], "suf": ["stem", "bar", "ung", "e"]}, "distract": [{"pre": "miss", "is": "none"}, {"pre": "ab", "is": "extra"}]}
+ },
+ "none": [
+  {"key": "miss|", "word": "misslegen"},
+  {"key": "emp|", "word": "emplegen"}
+ ],
+ "rare": [
+  {"key": "ent|", "word": "entlegen", "why": "DWDS: entlegen is an adjective (remote, far away)"},
+  {"key": "er|", "word": "erlegen", "why": "DWDS: erlegen = kill (game, in hunting)"},
+  {"key": "unter|", "word": "unterlegen", "why": "DWDS: unterlegen = put underneath; also the adjective inferior"}
+ ],
+ "reviewedBy": "model-2pass",
+ "reviewedAt": "2026-10-08"
+}

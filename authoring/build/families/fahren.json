@@ -1,0 +1,60 @@
+{
+ "root": "fahren",
+ "stems": ["fahr", "fähr", "fuhr"],
+ "forms": [
+  {"id": "fahren.verb", "parent": null, "ex": "Ich fahre mit dem Zug nach Hamburg.", "exEn": "I'm going to Hamburg by train."},
+  {"id": "abfahren.verb", "verb": "abfahren", "clue": "to depart (a train, at the time on the timetable)"},
+  {"id": "einfahren.verb", "verb": "einfahren", "clue": "to pull in (a train, at a platform)"},
+  {"id": "mitfahren.verb", "verb": "mitfahren", "clue": "to ride along, to get a lift"},
+  {"id": "durchfahren.verb", "verb": "durchfahren", "clue": "to go through without stopping", "note": "There is also an inseparable durchfAhren (hat durchfahren): travel through, cross (ein Land durchfahren)."},
+  {"id": "umfahren-s.verb", "verb": "umfahren-s", "clue": "to knock down (a post, a bin) with a car"},
+  {"id": "umfahren-i.verb", "verb": "umfahren-i", "clue": "to drive around, to bypass (a jam)"},
+  {"id": "überfahren.verb", "verb": "überfahren", "clue": "to run over (the wheels go over it); to run a red light"},
+  {"id": "befahren.verb", "verb": "befahren", "clue": "to use, to drive on (a road)"},
+  {"id": "erfahren.verb", "verb": "erfahren", "clue": "to find out, to learn (news)"},
+  {"id": "sich_verfahren.verb", "verb": "verfahren", "clue": "to get lost (sich; driving)"},
+  {"id": "losfahren.verb", "word": "losfahren", "cls": "verb", "parent": "fahren.verb", "add": "los", "side": "pre", "kind": "s", "aux": "ist", "pp": "losgefahren", "en": "set off, leave (by car, bike)", "clue": "to start driving, to get going (at last)", "why": "los = off: start driving.", "grade": "T", "level": "A2", "ex": "Wann fahren wir morgen los?", "exEn": "When are we setting off tomorrow?"},
+  {"id": "wegfahren.verb", "word": "wegfahren", "cls": "verb", "parent": "fahren.verb", "add": "weg", "side": "pre", "kind": "s", "aux": "ist", "pp": "weggefahren", "en": "go away (on a trip); drive off", "clue": "to go away (for the weekend)", "why": "weg = away.", "grade": "T", "level": "A2", "ex": "Am Wochenende fahren wir weg.", "exEn": "We're going away at the weekend."},
+  {"id": "zurückfahren.verb", "word": "zurückfahren", "cls": "verb", "parent": "fahren.verb", "add": "zurück", "side": "pre", "kind": "s", "aux": "ist", "pp": "zurückgefahren", "en": "go back, drive back", "clue": "to go back, to drive back (home)", "why": "zurück = back.", "grade": "T", "level": "A2", "ex": "Morgen fahren wir nach Hause zurück.", "exEn": "Tomorrow we're going back home."},
+  {"id": "weiterfahren.verb", "word": "weiterfahren", "cls": "verb", "parent": "fahren.verb", "add": "weiter", "side": "pre", "kind": "s", "aux": "ist", "pp": "weitergefahren", "en": "drive on, continue (a journey)", "clue": "to drive on (after a break)", "why": "weiter = on, further.", "grade": "T", "level": "B1", "ex": "Nach einer kurzen Pause fahren wir weiter.", "exEn": "After a short break we'll drive on."},
+  {"id": "vorbeifahren.verb", "word": "vorbeifahren", "cls": "verb", "parent": "fahren.verb", "add": "vorbei", "side": "pre", "kind": "s", "aux": "ist", "pp": "vorbeigefahren", "en": "drive past, go past; drop by (bei jemandem)", "clue": "to drive past (someone)", "why": "vorbei = past, by.", "grade": "T", "level": "B1", "ex": "Der Bus ist einfach an uns vorbeigefahren.", "exEn": "The bus simply drove past us."},
+  {"id": "hinfahren.verb", "word": "hinfahren", "cls": "verb", "parent": "fahren.verb", "add": "hin", "side": "pre", "kind": "s", "aux": "ist", "pp": "hingefahren", "en": "go there (by car, train)", "clue": "to go there (by car or train)", "why": "hin = there, away from the speaker.", "grade": "T", "level": "A2", "ex": "Das Konzert ist in Hamburg, wir fahren mit dem Zug hin.", "exEn": "The concert is in Hamburg; we're going there by train."},
+  {"id": "die_Hinfahrt", "word": "Hinfahrt", "cls": "noun", "art": "die", "parent": "hinfahren.verb", "add": "t", "side": "suf", "en": "outward journey", "clue": "the outward journey", "grade": "T", "ex": "Auf der Hinfahrt hatte unser Zug Verspätung.", "exEn": "On the way there our train was late."},
+  {"id": "die_Fahrt", "word": "Fahrt", "cls": "noun", "art": "die", "parent": "fahren.verb", "add": "t", "side": "suf", "en": "journey; ride; trip", "clue": "the journey, the ride", "grade": "T", "ex": "Die Fahrt dauert drei Stunden.", "exEn": "The journey takes three hours."},
+  {"id": "die_Rückfahrt", "word": "Rückfahrt", "cls": "noun", "art": "die", "parent": "die_Fahrt", "add": "Rück", "side": "cmp", "seg": [["c", "Rück"], ["r", "fahr"], ["s", "t"]], "en": "return journey", "clue": "the return journey", "why": "Rück (back) + Fahrt.", "grade": "T", "ex": "Die Rückfahrt hat wegen des Staus länger gedauert.", "exEn": "The journey back took longer because of the traffic jam."},
+  {"id": "die_Vorfahrt", "word": "Vorfahrt", "cls": "noun", "art": "die", "parent": "fahren.verb", "add": "vor", "side": "pre", "suf": ["t"], "en": "right of way", "clue": "the right of way (at a junction)", "why": "vor = before: who may drive first.", "grade": "M", "ex": "An dieser Kreuzung hat der Bus Vorfahrt.", "exEn": "At this junction the bus has right of way."},
+  {"id": "die_Ausfahrt", "word": "Ausfahrt", "cls": "noun", "art": "die", "parent": "fahren.verb", "add": "aus", "side": "pre", "suf": ["t"], "en": "exit (motorway, garage)", "clue": "the exit (on a motorway)", "why": "aus = out: where you drive out.", "grade": "T", "level": "B1", "ex": "Nehmen Sie die nächste Ausfahrt.", "exEn": "Take the next exit."},
+  {"id": "der_Beifahrer", "word": "Beifahrer", "cls": "noun", "art": "der", "parent": "fahren.verb", "add": "bei", "side": "pre", "suf": ["er"], "en": "front-seat passenger", "clue": "the front-seat passenger", "why": "bei = beside: the one who rides beside the driver.", "grade": "T", "ex": "Der Beifahrer hat die Karte gelesen.", "exEn": "The front-seat passenger read the map."},
+  {"id": "die_Fähre", "word": "Fähre", "cls": "noun", "art": "die", "parent": "fahren.verb", "add": "e", "side": "suf", "en": "ferry", "clue": "the ferry", "why": "From fahren: the boat that carries you across the water.", "note": "The stem takes an umlaut: fähr.", "grade": "M", "ex": "Wir fahren mit der Fähre auf die Insel.", "exEn": "We're taking the ferry to the island."},
+  {"id": "das_Fahrrad", "word": "Fahrrad", "cls": "noun", "art": "das", "parent": "fahren.verb", "add": "Rad", "side": "cmp", "seg": [["r", "Fahr"], ["c", "rad"]], "en": "bicycle, bike", "clue": "the bicycle", "why": "fahren + Rad (wheel).", "grade": "T", "ex": "Ich fahre jeden Tag mit dem Fahrrad zur Arbeit.", "exEn": "I cycle to work every day."},
+  {"id": "die_Fahrkarte", "word": "Fahrkarte", "cls": "noun", "art": "die", "parent": "fahren.verb", "add": "Karte", "side": "cmp", "seg": [["r", "Fahr"], ["c", "karte"]], "en": "ticket (travel)", "clue": "the ticket (for a train or bus)", "why": "fahren + Karte (card).", "grade": "T", "ex": "Die Fahrkarte kaufe ich am Automaten.", "exEn": "I buy the ticket from the machine."},
+  {"id": "der_Fahrplan", "word": "Fahrplan", "cls": "noun", "art": "der", "parent": "fahren.verb", "add": "Plan", "side": "cmp", "seg": [["r", "Fahr"], ["c", "plan"]], "en": "timetable", "clue": "the timetable (of buses, trains)", "why": "fahren + Plan.", "grade": "T", "ex": "Laut Fahrplan kommt der Bus um zehn Uhr.", "exEn": "According to the timetable the bus comes at ten."},
+  {"id": "der_Fahrgast", "word": "Fahrgast", "cls": "noun", "art": "der", "parent": "fahren.verb", "add": "Gast", "side": "cmp", "seg": [["r", "Fahr"], ["c", "gast"]], "en": "passenger", "clue": "the passenger (on a bus or train)", "why": "fahren + Gast (guest).", "grade": "T", "ex": "Jeder Fahrgast braucht eine gültige Fahrkarte.", "exEn": "Every passenger needs a valid ticket."},
+  {"id": "das_Fahrzeug", "word": "Fahrzeug", "cls": "noun", "art": "das", "parent": "fahren.verb", "add": "Zeug", "side": "cmp", "seg": [["r", "Fahr"], ["c", "zeug"]], "en": "vehicle", "clue": "the vehicle", "why": "fahren + Zeug (gear, equipment): a thing to drive.", "grade": "T", "ex": "Bitte stellen Sie Ihr Fahrzeug hier ab.", "exEn": "Please park your vehicle here.", "level": "B1"},
+  {"id": "der_Fahrer", "chain": "fahren/n1", "clue": "the driver"},
+  {"id": "die_Fahrerin", "chain": "fahren/n2", "clue": "the (female) driver", "level": "A2"},
+  {"id": "die_Abfahrt", "chain": "fahren/n4", "clue": "the departure"},
+  {"id": "die_Einfahrt", "word": "Einfahrt", "cls": "noun", "art": "die", "parent": "einfahren.verb", "add": "t", "side": "suf", "en": "entrance (for vehicles), driveway; arrival (of a train)", "clue": "the driveway, an entrance (for cars)", "grade": "T", "level": "B1", "ex": "Bitte parken Sie nicht vor der Einfahrt.", "exEn": "Please don't park in front of the driveway."},
+  {"id": "die_Erfahrung", "chain": "fahren/n6", "clue": "the experience"},
+  {"id": "das_Verfahren", "word": "Verfahren", "cls": "noun", "art": "das", "parent": "sich_verfahren.verb", "add": "inf", "side": "suf", "en": "procedure, process; (legal) proceedings", "clue": "the procedure; legal proceedings", "why": "Learn it as a word: it comes from verfahren (to proceed, to deal with), not from sich verfahren (get lost).", "grade": "O", "ex": "Das Verfahren dauert mehrere Monate.", "exEn": "The procedure takes several months."}
+ ],
+ "boards": {
+  "A2": {"words": ["abfahren.verb", "die_Abfahrt", "mitfahren.verb", "wegfahren.verb", "zurückfahren.verb", "einfahren.verb"], "light": ["abfahren.verb", "die_Abfahrt", "mitfahren.verb", "wegfahren.verb", "zurückfahren.verb", "einfahren.verb"], "tiles": {"pre": ["ab", "mit", "weg", "zurück", "ein", "los"], "suf": ["t"]}, "distract": [{"pre": "los", "is": "extra"}]},
+  "B1": {"words": ["abfahren.verb", "die_Abfahrt", "einfahren.verb", "die_Einfahrt", "erfahren.verb", "die_Erfahrung", "losfahren.verb", "weiterfahren.verb", "vorbeifahren.verb", "hinfahren.verb"], "light": ["abfahren.verb", "die_Abfahrt", "erfahren.verb", "die_Erfahrung", "losfahren.verb", "hinfahren.verb"], "tiles": {"pre": ["ab", "ein", "er", "los", "weiter", "vorbei", "hin", "miss"], "suf": ["t", "ung"]}, "distract": [{"pre": "miss", "is": "none"}]},
+  "B2": {"words": ["überfahren.verb", "umfahren-s.verb", "umfahren-i.verb", "befahren.verb", "durchfahren.verb", "sich_verfahren.verb", "das_Verfahren", "die_Vorfahrt", "der_Beifahrer", "die_Ausfahrt", "die_Hinfahrt", "die_Fahrt"], "light": ["überfahren.verb", "befahren.verb", "sich_verfahren.verb", "das_Verfahren", "die_Vorfahrt", "die_Ausfahrt"], "tiles": {"pre": ["über", "um", "be", "durch", "ver", "vor", "bei", "aus", "hin", "miss", "mit"], "suf": ["inf", "t", "er"]}, "distract": [{"pre": "miss", "is": "none"}, {"pre": "mit", "is": "extra"}]}
+ },
+ "none": [
+  {"key": "miss|", "word": "missfahren"},
+  {"key": "emp|", "word": "empfahren"}
+ ],
+ "rare": [
+  {"key": "zer|", "word": "zerfahren", "why": "DWDS: zerfahren = ruin (a road) by driving; as an adjective: scatterbrained"},
+  {"key": "ent|", "word": "entfahren", "why": "DWDS: entfahren = slip out (a word, a sigh)"},
+  {"key": "wider|", "word": "widerfahren", "why": "DWDS: widerfahren = happen to, befall (formal)"},
+  {"key": "an|", "word": "anfahren", "why": "DWDS: anfahren = hit (with a car); start moving; snap at someone"},
+  {"key": "auf|", "word": "auffahren", "why": "DWDS: auffahren = drive into the back of; drive up close"},
+  {"key": "aus|", "word": "ausfahren", "why": "DWDS: ausfahren = deliver (by vehicle); extend (landing gear); take out for a drive"}
+ ],
+ "reviewedBy": "model-2pass",
+ "reviewedAt": "2026-10-08"
+}

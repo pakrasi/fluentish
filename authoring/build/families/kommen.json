@@ -1,0 +1,54 @@
+{
+ "root": "kommen",
+ "stems": ["komm", "kam", "kunft", "künft"],
+ "forms": [
+  {"id": "kommen.verb", "parent": null, "ex": "Woher kommen Sie?", "exEn": "Where do you come from?"},
+  {"id": "abkommen.verb", "verb": "abkommen", "clue": "to stray (from the path, the topic)"},
+  {"id": "ankommen.verb", "verb": "ankommen", "clue": "to arrive; to depend (es kommt darauf an)"},
+  {"id": "aufkommen.verb", "verb": "aufkommen", "clue": "to arise (doubts, wind); to pay for (für etwas)"},
+  {"id": "auskommen.verb", "verb": "auskommen", "clue": "to get by (on money); to get on (with)"},
+  {"id": "mitkommen.verb", "verb": "mitkommen", "clue": "to come along"},
+  {"id": "nachkommen.verb", "verb": "nachkommen", "clue": "to follow (later), to join later"},
+  {"id": "vorkommen.verb", "verb": "vorkommen", "clue": "to happen, to occur; to seem"},
+  {"id": "umkommen.verb", "verb": "umkommen", "clue": "to die (in an accident, a disaster)"},
+  {"id": "durchkommen.verb", "verb": "durchkommen", "clue": "to get through (a crowd, an exam)"},
+  {"id": "unterkommen.verb", "verb": "unterkommen", "clue": "to find a place to stay"},
+  {"id": "bekommen.verb", "verb": "bekommen", "clue": "to get, to receive"},
+  {"id": "entkommen.verb", "verb": "entkommen", "clue": "to escape (from)"},
+  {"id": "die_Ankunft", "chain": "kommen/n2", "clue": "the arrival"},
+  {"id": "zukommen.verb", "chain": "kommen/n3", "clue": "to come up to (auf jemanden); to lie ahead (auf uns)", "kind": "s", "aux": "ist", "pp": "zugekommen", "why": "zu = toward: something comes toward you, so it lies ahead.", "grade": "M", "level": "B2"},
+  {"id": "die_Zukunft", "chain": "kommen/n4", "clue": "the future"},
+  {"id": "das_Vorkommen", "chain": "kommen/n6", "clue": "a deposit (of oil, gas); the occurrence", "level": "C1"},
+  {"id": "vorbeikommen.verb", "word": "vorbeikommen", "cls": "verb", "parent": "kommen.verb", "add": "vorbei", "side": "pre", "kind": "s", "aux": "ist", "pp": "vorbeigekommen", "en": "drop by, come by; get past", "clue": "to drop by (for a visit)", "ex": "Kannst du morgen kurz vorbeikommen?", "exEn": "Can you drop by tomorrow?", "why": "vorbei = past, by: you come by someone's place.", "grade": "T"},
+  {"id": "das_Einkommen", "word": "Einkommen", "cls": "noun", "art": "das", "parent": "kommen.verb", "add": "inf", "side": "suf", "pre": ["ein"], "stress": 0, "en": "income", "clue": "the income (what you earn)", "ex": "Sie hat ein gutes Einkommen.", "exEn": "She has a good income.", "why": "The money that comes in: the infinitive as a noun, so das.", "grade": "M"},
+  {"id": "die_Auskunft", "word": "Auskunft", "cls": "noun", "art": "die", "parent": "kommen.verb", "add": "t", "side": "suf", "pre": ["aus"], "en": "information (given when you ask); information desk", "clue": "the information (you ask for); info desk", "ex": "Fragen Sie bitte an der Auskunft.", "exEn": "Please ask at the information desk.", "why": "Learn it as a word: -kunft is an old noun of kommen; it is not a noun of auskommen (get by).", "grade": "O"},
+  {"id": "herkommen.verb", "word": "herkommen", "cls": "verb", "parent": "kommen.verb", "add": "her", "side": "pre", "kind": "s", "aux": "ist", "pp": "hergekommen", "en": "come here; come from", "clue": "to come here; to come from (origin)", "ex": "Wo kommst du eigentlich her?", "exEn": "Where are you actually from?", "why": "her = here, toward the speaker; from a source.", "grade": "T", "level": "A2"},
+  {"id": "die_Herkunft", "word": "Herkunft", "cls": "noun", "art": "die", "parent": "herkommen.verb", "add": "t", "side": "suf", "en": "origin, background", "clue": "the origin, someone's background", "ex": "Seine Herkunft spielt bei uns keine Rolle.", "exEn": "His background doesn't matter to us.", "why": "Where you come from (herkommen). Nouns in -kunft are die.", "grade": "T"},
+  {"id": "die_Unterkunft", "word": "Unterkunft", "cls": "noun", "art": "die", "parent": "unterkommen.verb", "add": "t", "side": "suf", "en": "accommodation", "clue": "the accommodation (a place to stay)", "ex": "Wir suchen noch eine Unterkunft für drei Nächte.", "exEn": "We're still looking for accommodation for three nights.", "grade": "T"},
+  {"id": "das_Abkommen", "word": "Abkommen", "cls": "noun", "art": "das", "parent": "abkommen.verb", "add": "inf", "side": "suf", "en": "agreement, treaty", "clue": "the agreement (between countries)", "ex": "Die beiden Länder haben ein neues Abkommen unterzeichnet.", "exEn": "The two countries have signed a new agreement.", "why": "Learn it as a word: it does not come from vom Weg abkommen (stray).", "grade": "O"},
+  {"id": "der_Nachkomme", "word": "Nachkomme", "cls": "noun", "art": "der", "parent": "nachkommen.verb", "add": "e", "side": "suf", "en": "descendant", "clue": "the descendant", "ex": "Er ist ein Nachkomme einer alten Familie.", "exEn": "He is a descendant of an old family.", "why": "Those who come after (nachkommen) you.", "note": "der Nachkomme: a person, so der, not die like most -e nouns (des Nachkommen).", "grade": "M"},
+  {"id": "zurückkommen.verb", "word": "zurückkommen", "cls": "verb", "parent": "kommen.verb", "add": "zurück", "side": "pre", "kind": "s", "aux": "ist", "pp": "zurückgekommen", "en": "come back, return", "clue": "to come back", "ex": "Wann kommst du aus dem Urlaub zurück?", "exEn": "When are you coming back from holiday?", "why": "zurück = back.", "grade": "T", "level": "A2"},
+  {"id": "herauskommen.verb", "word": "herauskommen", "cls": "verb", "parent": "kommen.verb", "add": "heraus", "side": "pre", "kind": "s", "aux": "ist", "pp": "herausgekommen", "en": "come out; be released (a film, a book); turn out", "clue": "to come out (of a room; a new film)", "ex": "Der neue Film kommt nächste Woche heraus.", "exEn": "The new film comes out next week.", "why": "heraus = out: you come out of a room; a film comes out to the public.", "grade": "M", "level": "B1"},
+  {"id": "weiterkommen.verb", "word": "weiterkommen", "cls": "verb", "parent": "kommen.verb", "add": "weiter", "side": "pre", "kind": "s", "aux": "ist", "pp": "weitergekommen", "en": "make progress, get further", "clue": "to make progress, to get further", "ex": "Mit dieser Methode kommen wir nicht weiter.", "exEn": "We won't get any further with this method.", "why": "weiter = on, further: you come further along.", "grade": "M", "level": "B1"},
+  {"id": "zusammenkommen.verb", "word": "zusammenkommen", "cls": "verb", "parent": "kommen.verb", "add": "zusammen", "side": "pre", "kind": "s", "aux": "ist", "pp": "zusammengekommen", "en": "meet, gather; come together", "clue": "to meet, to gather (people)", "ex": "Die ganze Familie kommt an Weihnachten zusammen.", "exEn": "The whole family gets together at Christmas.", "why": "zusammen = together.", "grade": "T", "level": "B2"},
+  {"id": "entgegenkommen.verb", "word": "entgegenkommen", "cls": "verb", "parent": "kommen.verb", "add": "entgegen", "side": "pre", "kind": "s", "aux": "ist", "pp": "entgegengekommen", "en": "come towards; meet halfway, accommodate", "clue": "to meet (someone) halfway; to come the other way", "ex": "Der Vermieter ist uns beim Preis entgegengekommen.", "exEn": "The landlord met us halfway on the price.", "why": "entgegen = toward: you come toward someone, also in a deal.", "grade": "M", "level": "B2"},
+  {"id": "zukünftig.adj", "word": "zukünftig", "cls": "adj", "parent": "die_Zukunft", "add": "ig", "side": "suf", "en": "future (adjective); in future", "clue": "future (as in future plans)", "ex": "Das ist mein zukünftiger Chef.", "exEn": "That is my future boss.", "note": "The u of -kunft becomes ü before -ig.", "grade": "T"}
+ ],
+ "boards": {
+  "A2": {"words": ["ankommen.verb", "die_Ankunft", "mitkommen.verb", "bekommen.verb", "zurückkommen.verb", "vorbeikommen.verb"], "light": ["ankommen.verb", "die_Ankunft", "mitkommen.verb", "bekommen.verb", "zurückkommen.verb", "vorbeikommen.verb"], "tiles": {"pre": ["an", "mit", "be", "zurück", "vorbei", "aus"], "suf": ["t"]}, "distract": [{"pre": "aus", "is": "extra"}]},
+  "B1": {"words": ["ankommen.verb", "die_Ankunft", "auskommen.verb", "die_Auskunft", "herkommen.verb", "die_Herkunft", "unterkommen.verb", "die_Unterkunft", "vorkommen.verb", "weiterkommen.verb"], "light": ["ankommen.verb", "auskommen.verb", "herkommen.verb", "unterkommen.verb", "vorkommen.verb", "weiterkommen.verb"], "tiles": {"pre": ["an", "aus", "her", "unter", "vor", "weiter", "zer"], "suf": ["t"]}, "distract": [{"pre": "zer", "is": "none"}]},
+  "B2": {"words": ["zukommen.verb", "die_Zukunft", "zukünftig.adj", "aufkommen.verb", "abkommen.verb", "das_Abkommen", "nachkommen.verb", "der_Nachkomme", "entkommen.verb", "umkommen.verb", "entgegenkommen.verb", "zusammenkommen.verb"], "light": ["zukommen.verb", "aufkommen.verb", "abkommen.verb", "entkommen.verb", "umkommen.verb", "entgegenkommen.verb"], "tiles": {"pre": ["zu", "auf", "ab", "nach", "ent", "um", "entgegen", "zusammen", "zer", "mit"], "suf": ["t", "ig", "inf", "e"]}, "distract": [{"pre": "zer", "is": "none"}, {"pre": "mit", "is": "extra"}]}
+ },
+ "none": [
+  {"key": "zer|", "word": "zerkommen"},
+  {"key": "miss|", "word": "misskommen"}
+ ],
+ "rare": [
+  {"key": "ver|", "word": "verkommen", "why": "DWDS: verkommen = go to ruin, decay; run-down (adjective)"},
+  {"key": "hin|", "word": "hinkommen", "why": "DWDS: hinkommen = get there; manage (colloquial)"},
+  {"key": "über|", "word": "überkommen", "why": "DWDS: überkommen = overcome (a feeling comes over you); traditional (adjective)"},
+  {"key": "zu|", "word": "zukommen", "why": "Found by the lexicon check: DWDS has an entry; 869632 DWDS corpus hits; wordfreq 4.05."}
+ ],
+ "reviewedBy": "model-2pass",
+ "reviewedAt": "2026-10-08"
+}
