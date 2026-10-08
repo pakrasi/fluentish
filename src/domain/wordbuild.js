@@ -9,6 +9,8 @@
      verbs     [{ id, root, pre, inf, kind: 's'|'i', grade: 'T'|'M'|'O', how: 'lit'|'pic'|'hist'|'word', en, why, ex, exEn,
                   aux, pp, lemma, dual?, level, src? }]
                id: the infinitive without "sich", plus -s / -i for the two readings of a dual verb. Ids never change.
+               aux: hat, ist, or hat/ist for a verb with a sense of each (ausziehen: hat ausgezogen took off, ist
+               ausgezogen moved out; the why line says which); a frame's aux is the one its sentence uses.
                grade T literal (prefix sense + root sense), M one figurative step (a picture, or documented history),
                O a word to learn. lemma: the word-list id, or null when the list has no entry for this reading.
      frames    [{ id, verb, inf, pre, inner?, kind, en, aux, pp, note?, stress?, pair?, forms: { pres|perf|sub|modal|zu: Tile[] } }]
@@ -333,7 +335,7 @@ export function validateBuild(c, { words = [], morph = {}, clusterSuffixes = [] 
     // (be + stellt; ver + geben; ge + fallen)
     const want = v.kind === 's' ? v.pre + r.pp : v.pre + r.pp.replace(/^ge/, '');
     if (v.pp !== want) bad(`${at}: participle ${v.pp}, expected ${want}`);
-    if (!['hat', 'ist'].includes(v.aux)) bad(`${at}: aux ${v.aux}`);
+    if (!['hat', 'ist', 'hat/ist'].includes(v.aux)) bad(`${at}: aux ${v.aux}`);
     if (!LEVELS.includes(v.level)) bad(`${at}: level ${v.level}`);
     for (const k of /** @type {const} */ (['en', 'why', 'exEn'])) { if (!v[k]) bad(`${at}: ${k} is required`); english(`${at} ${k}`, v[k]); }
     // the example: a separable verb shows its particle on its own (Ich stelle … ab.), an inseparable one never splits
@@ -366,7 +368,7 @@ export function validateBuild(c, { words = [], morph = {}, clusterSuffixes = [] 
     if (!f.forms || !f.forms.perf) bad(`${at}: no Perfekt`);
     const v = f.verb ? V.get(f.verb) : null;
     if (f.verb && !v) bad(`${at}: unknown verb ${f.verb}`);
-    if (v && (v.kind !== f.kind || v.pp !== f.pp || v.aux !== f.aux || bare(v.inf) !== bare(f.inf))) bad(`${at}: does not agree with verb ${v.id}`);
+    if (v && (v.kind !== f.kind || v.pp !== f.pp || !String(v.aux).split('/').includes(f.aux) || bare(v.inf) !== bare(f.inf))) bad(`${at}: does not agree with verb ${v.id}`);
     if (f.pair && !(c.frames || []).some(g => g.id === f.pair && g.pair === f.id)) bad(`${at}: pair ${f.pair} does not point back`);
     const inf = bare(f.inf);
     if (!inf.startsWith(f.pre)) bad(`${at}: ${inf} does not start with ${f.pre}`);

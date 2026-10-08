@@ -66,7 +66,7 @@ test('German forms: participles, auxiliaries and the split the content teaches',
   assert.equal(by('übersetzen-s').pp, 'übergesetzt'); assert.equal(by('übersetzen-i').pp, 'übersetzt');
   assert.equal(by('umstellen-i').pp, 'umstellt'); assert.equal(by('umstellen-s').pp, 'umgestellt');
   assert.equal(by('gefallen').pp, 'gefallen'); assert.equal(by('vergeben').pp, 'vergeben');
-  assert.equal(by('aufstehen').aux, 'ist'); assert.equal(by('umziehen').aux, 'ist'); assert.equal(by('bekommen').aux, 'hat');
+  assert.equal(by('aufstehen').aux, 'ist'); assert.equal(by('umziehen').aux, 'hat/ist', 'move house: ist; get changed: hat sich umgezogen'); assert.equal(by('ausziehen').aux, 'hat/ist'); assert.equal(by('bekommen').aux, 'hat');
   // ge- prefixed verbs carry no meaning a learner can use: every ge- verb is a word to learn
   for (const v of C.verbs.filter(x => x.pre === 'ge')) assert.equal(v.grade, 'O', v.id);
   // um- reading "surround" is inseparable, "rearrange" separable (PREFIX-DESIGN §4.4)

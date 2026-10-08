@@ -224,7 +224,7 @@ export async function mountFamily(el, ctx, rootArg, { sheet = false, close } = {
     const facts = h('p', { class: 'fv-facts' },
       h('span', null, typeName(f.cls)), f.level ? h('span', { class: 'tnum' }, f.level) : null,
       f2 ? h('span', { class: 'fv-fq' }, freqEl(f.zipf), t(`word.freq.${f2.band}`)) : null,
-      f.pp ? h('span', null, t('build.family.perfekt'), ' ', h('span', { lang: langAttr(), dir: dirAttr() }, `${f.aux === 'ist' ? 'ist' : 'hat'} ${f.pp}`)) : null,
+      f.pp ? h('span', null, t('build.family.perfekt'), ' ', h('span', { lang: langAttr(), dir: dirAttr() }, `${String(f.aux || 'hat').replace('/', ' / ')} ${f.pp}`)) : null,
       f.cls === 'verb' && f.join ? h('span', null, t(f.join === 's' ? 'build.family.legend.split' : 'build.family.legend.stay')) : null,
       parent ? h('span', null, t('build.family.from'), ' ', h('span', { class: 'fv-de', lang: langAttr(), dir: dirAttr() }, parent.word)) : null,
       h('span', { class: 'fv-fq' }, stateSq(ss, todayOf(d, k, f)), STATE(ss)));

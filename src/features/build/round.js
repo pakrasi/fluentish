@@ -380,7 +380,7 @@ export async function mountRound(el, ctx) {
   function explain(o) {
     if (o.kind === 'pv') {
       const v = o.v;
-      return h('div', { class: 'wb-explain' }, h('p', { class: 'wb-vq' }, wordNode({ pre: v.pre, stem: bare(v.inf).slice(v.pre.length), kind: v.kind, t, big: true })), exampleNode(v), h('p', { class: 'caption' }, v.exEn, ' · ', h('span', { lang: langAttr(), dir: dirAttr() }, `${v.aux} ${v.pp}`)),
+      return h('div', { class: 'wb-explain' }, h('p', { class: 'wb-vq' }, wordNode({ pre: v.pre, stem: bare(v.inf).slice(v.pre.length), kind: v.kind, t, big: true })), exampleNode(v), h('p', { class: 'caption' }, v.exEn, ' · ', h('span', { lang: langAttr(), dir: dirAttr() }, `${v.aux.replace('/', ' / ')} ${v.pp}`)),
         familyLink(ctx, v.lemma, { inRound: true, keep }));
     }
     if (o.kind === 'pf') {

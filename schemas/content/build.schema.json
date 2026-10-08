@@ -65,7 +65,7 @@
           "inf": { "type": "string", "pattern": "^(sich )?[a-zäöüß]+$" },
           "kind": { "enum": ["s", "i"] }, "grade": { "enum": ["T", "M", "O"] }, "how": { "enum": ["lit", "pic", "hist", "word"] },
           "en": { "$ref": "#/$defs/text" }, "why": { "$ref": "#/$defs/text" }, "ex": { "$ref": "#/$defs/text" }, "exEn": { "$ref": "#/$defs/text" },
-          "aux": { "enum": ["hat", "ist"] }, "pp": { "type": "string", "pattern": "^[a-zäöüß]+$" },
+          "aux": { "enum": ["hat", "ist", "hat/ist"] }, "pp": { "type": "string", "pattern": "^[a-zäöüß]+$" },
           "lemma": { "type": ["string", "null"] }, "dual": { "$ref": "#/$defs/id" }, "level": { "$ref": "#/$defs/level" },
           "src": { "$ref": "#/$defs/text" }
         }

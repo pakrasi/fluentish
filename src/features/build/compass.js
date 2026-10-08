@@ -147,7 +147,7 @@ export function verbReveal({ d, v, guess, t, ctx }) {
     cal ? h('p', { class: 'wb-calnote' }, cal) : null,
     h('p', { class: 'wb-how' }, h('b', null, `${t(`build.how.${v.how}`)}: `), v.why),
     h('div', { class: 'wb-exrow' }, say, exampleNode(v)),
-    h('p', { class: 'caption' }, v.exEn, ' · ', h('span', { lang: langAttr(), dir: dirAttr() }, `${v.aux} ${v.pp}`), r ? null : null),
+    h('p', { class: 'caption' }, v.exEn, ' · ', h('span', { lang: langAttr(), dir: dirAttr() }, `${v.aux.replace('/', ' / ')} ${v.pp}`), r ? null : null),
     dual ? h('p', { class: 'caption wb-noaudio' }, t('build.reveal.noAudio')) : null);
 }
 
