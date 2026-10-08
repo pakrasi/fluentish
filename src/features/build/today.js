@@ -342,7 +342,8 @@ export async function mountToday(el, ctx) {
   /** The parts flip one after another (rotateX to 90°, the state, back): right, a real word with another meaning, not part of it. @param {Record<string, string | null>} states */
   async function flip(states) {
     drawBuild();
-    const parts = /** @type {HTMLElement[]} */ ([...build.querySelectorAll('.pt[data-part]')]).filter(p => p.dataset.part !== 'root' && states[/** @type {string} */ (p.dataset.part)]);
+    // only the parts he picked flip; an empty slot and the root never do
+    const parts = /** @type {HTMLElement[]} */ ([...build.querySelectorAll('.pt[data-part]:not(.is-empty)')]).filter(p => p.dataset.part !== 'root' && states[/** @type {string} */ (p.dataset.part)]);
     await Promise.all(parts.map(async (p, i) => {
       const st = states[/** @type {string} */ (p.dataset.part)];
       if (reduced()) { p.classList.add(`is-${st}`); return; }
@@ -470,11 +471,12 @@ export async function mountToday(el, ctx) {
     const n = ((i % N) + N) % N;
     if (n === S.idx) { if (!keepBuild) drawClue(); return; }
     const dir = n > S.idx ? 1 : -1;
+    // the new meaning is current at once: a tile tapped while the card slides counts for it (input is never blocked)
     S.idx = n; S.t0 = performance.now();
-    if (S.typing && !keepBuild) input.value = '';
+    if (!keepBuild) { S.b = { art: null, pre: null, suf: null }; syncTiles(); if (S.typing) input.value = ''; }
     if (!reduced()) await play(clue, [{ opacity: 1, transform: 'none' }, { opacity: 0, transform: `translateX(${-24 * dir}px)` }], { duration: 140, easing: css('--ease-in'), fill: 'forwards' });
     clue.getAnimations().forEach(a => a.cancel());
-    drawClue({ keepBuild });
+    drawClue({ keepBuild: true });
     if (!keepBuild) say();
     play(clue, [{ opacity: 0, transform: `translateX(${32 * dir}px)` }, { opacity: 1, transform: 'none' }], { duration: 380, easing: css('--spring-snappy') });
   }
@@ -496,7 +498,7 @@ export async function mountToday(el, ctx) {
     const grid = h('div', { class: 'pz-grid', role: 'img', 'aria-label': t('build.today.doneGrid', { f1: c('f1'), f2: c('f2'), shown: c('shown') }) }, day.cards.map(id => h('i', { class: `is-${day.done[id]}` })));
     const fig = h('span', { class: 'figure tnum pz-fig' }, '0');
     const sec = h('section', { class: 'pz-done', 'aria-labelledby': 'pz-done-h' },
-      h('h2', { id: 'pz-done-h', tabindex: '-1', lang: langAttr(), dir: dirAttr() }, fam.root),
+      h('h2', { id: 'pz-done-h', tabindex: '-1' }, t('build.today.doneTitle')),
       fig, h('p', { class: 'pz-done-of' }, t('build.today.doneOf', { n: N })), grid,
       h('p', { class: 'caption pz-done-line' }, [day.extras.length ? t('build.today.doneExtras', { n: day.extras.length }) : null,
         counted.length ? t('build.today.doneCounted', { words: counted.join(' and ') }) : t('build.today.doneNothing'), t('build.today.doneTomorrow')].filter(Boolean).join(' ')),

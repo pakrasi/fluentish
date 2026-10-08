@@ -51,7 +51,7 @@
  * @property {boolean} [board]  may be on a board (the content's flag; derived forms: when it has a key)
  * @property {number} [stressIdx] the stressed vowel's index in word (the content's stress)
  * @property {[string, string][]} [seg] the written parts (p prefix, r root, s ending, i inflection, c compound, l link)
- * @property {boolean} [adjNoun] @property {boolean} [pl]
+ * @property {boolean} [adjNoun] @property {boolean} [pl] @property {boolean} [clueAuthored]
  */
 /**
  * @typedef {object} Family
@@ -118,7 +118,7 @@ export function familyModel(c, { info = () => null } = {}) {
     // the prefixed verbs
     for (const v of (c.verbs || []).filter(x => x.root === rid)) {
       add({ id: v.id, word: bare(v.inf), inf: v.inf, cls: 'verb', parent: rid, add: v.pre, side: 'pre', pre: [v.pre], suf: [], kind: v.kind, join: v.kind, stress: v.kind === 's' ? 'pre' : 'stem',
-        grade: v.grade, how: v.how, en: v.en, clue: /** @type {any} */ (v).clue || v.en, ex: v.ex, exEn: v.exEn, why: v.why, level: v.level, lemma: v.lemma, pp: v.pp, aux: v.aux,
+        grade: v.grade, how: v.how, en: v.en, clue: /** @type {any} */ (v).clue || v.en, clueAuthored: !!(/** @type {any} */ (v).clue), ex: v.ex, exEn: v.exEn, why: v.why, level: v.level, lemma: v.lemma, pp: v.pp, aux: v.aux,
         dual: v.dual, card: `PV:${v.id}`, key: null });
     }
     // the chains that start at the root or at one of its verbs
@@ -135,7 +135,7 @@ export function familyModel(c, { info = () => null } = {}) {
         const side = /** @type {'pre'|'suf'} */ (n.side);
         const kind = n.cls === 'verb' && side === 'pre' ? (P.get(String(n.add))?.kind === 'i' ? 'i' : P.get(String(n.add))?.kind === 's' ? 's' : undefined) : undefined;
         const f = add({ id: formIdOf(n), word: n.word, art: n.art || null, cls: n.cls, parent: parent.id, add: n.add, side, pre: [...parent.pre, ...(side === 'pre' ? [String(n.add)] : [])],
-          suf: [...parent.suf, ...(side === 'suf' ? [String(n.add)] : [])], kind, join: null, stress: 'stem', en: n.en, clue: /** @type {any} */ (n).clue || n.en, note: n.note, rare: n.rare,
+          suf: [...parent.suf, ...(side === 'suf' ? [String(n.add)] : [])], kind, join: null, stress: 'stem', en: n.en, clue: /** @type {any} */ (n).clue || n.en, clueAuthored: !!(/** @type {any} */ (n).clue), note: n.note, rare: n.rare,
           // an ending on a word keeps its meaning (die Ausstellung from ausstellen): literal, unless authored otherwise
           grade: side === 'suf' ? 'T' : undefined,
           lemma: n.lemma || null, card: side === 'suf' && pwWords.has(n.word) ? `PW:${n.word}` : null, key: null });
@@ -153,7 +153,7 @@ export function familyModel(c, { info = () => null } = {}) {
         const side = x.side === 'pp' ? 'pp' : x.side === 'pre' ? 'pre' : 'suf';
         const verbId = x.cls === 'verb' && (c.verbs || []).some(v => v.id === x.id) ? x.id : null;
         const f = add({ id: x.id, word: x.word, art: x.art || null, cls: x.cls, parent: parent.id, add: x.add, side, pre: [...parent.pre, ...(side === 'pre' ? [x.add] : [])],
-          suf: [...parent.suf, ...(side === 'suf' ? [x.add] : [])], kind: x.kind, join: null, stress: 'stem', en: x.en, clue: x.clue || x.en, lemma: x.lemma || null,
+          suf: [...parent.suf, ...(side === 'suf' ? [x.add] : [])], kind: x.kind, join: null, stress: 'stem', en: x.en, clue: x.clue || x.en, clueAuthored: !!x.clue, lemma: x.lemma || null,
           card: verbId ? `PV:${verbId}` : side === 'suf' && pwWords.has(x.word) ? `PW:${x.word}` : `PF:${x.id}`, key: null, added: true });
         mergeFields(f, x);
       }
@@ -173,6 +173,7 @@ export function familyModel(c, { info = () => null } = {}) {
         if (!f.ex && w.ex) { f.ex = w.ex; if (!f.exEn && w.exEn) f.exEn = w.exEn; }
       }
     }
+    for (const f of forms) if (!f.clueAuthored) f.clue = clueOf(f);
     out.set(rid, { root: rid, stem: stemOf(rid), en, lemma: forms[0].lemma || null, forms: order(forms), byId, byCard: new Map(forms.filter(f => f.card).map(f => [/** @type {string} */ (f.card), f])), none });
   }
   return out;
@@ -189,7 +190,7 @@ function fromFamily(fam, P, info) {
   for (const x of fam.forms) {
     const pre = [...(x.pre || [])].reverse(), suf = [...(x.suf || [])];
     /** @type {Form} */ const f = { id: x.id, word: x.word, inf: x.cls === 'verb' && x.refl ? `sich ${x.word}` : undefined, art: x.art || null, cls: x.cls, parent: x.parent ?? null,
-      add: x.add, side: x.side === 'cmp' ? undefined : x.side, pre, suf, kind: x.kind, join: null, stress: 'stem', grade: x.grade, how: x.how, en: x.en, clue: x.clue || x.en,
+      add: x.add, side: x.side === 'cmp' ? undefined : x.side, pre, suf, kind: x.kind, join: null, stress: 'stem', grade: x.grade, how: x.how, en: x.en, clue: x.clue || x.en, clueAuthored: !!x.clue,
       ex: x.ex, exEn: x.exEn, why: x.why, note: x.note, level: x.level || null, zipf: x.zipf ?? null, lemma: x.lemma ?? null, rare: !!x.rare, pp: x.pp, aux: x.aux,
       card: x.parent == null ? null : x.card || null, key: null, board: !!x.board && !x.adjNoun && !x.pl, stressIdx: Number.isInteger(x.stress) ? x.stress : undefined,
       seg: Array.isArray(x.seg) ? x.seg : undefined, adjNoun: !!x.adjNoun, pl: !!x.pl };
@@ -209,6 +210,7 @@ function fromFamily(fam, P, info) {
       if (w) { if (!f.level && w.level) f.level = w.level; if (f.zipf == null && w.zipf != null) f.zipf = w.zipf; if (!f.ex && w.ex) { f.ex = w.ex; f.exEn = f.exEn || w.exEn; } }
     }
   }
+  for (const f of forms) if (!f.clueAuthored) f.clue = clueOf(f);
   const stems = Array.isArray(fam.stems) && fam.stems.length ? fam.stems.map(String) : [stemOf(fam.root)];
   return { root: fam.root, stem: stems[0], stems, en: fam.en, lemma: fam.lemma || null, forms: order(forms), byId,
     byCard: new Map(forms.filter(f => f.card).map(f => [/** @type {string} */ (f.card), f])),
@@ -217,9 +219,17 @@ function fromFamily(fam, P, info) {
     info: { pres3: fam.pres3, pret: fam.pret, aux: fam.aux, pp: fam.pp, level: fam.level || null, zipf: fam.zipf ?? null } };
 }
 
+/** A board clue when none is authored: "to …" for a verb, "the …" for a noun (FAMILY-SCHEMA's shape). @param {Form} f */
+export function clueOf(f) {
+  const en = String(f.en || '');
+  if (/^(to|the|a|an) /i.test(en) || !en) return en;
+  return f.cls === 'verb' ? `to ${en}` : f.cls === 'noun' ? `the ${en}` : en;
+}
+
 /** Fields a families entry may add to a form (never its id, card or tree). @param {Form} f @param {any} x */
 function mergeFields(f, x) {
   for (const k of ['clue', 'ex', 'exEn', 'why', 'note', 'level', 'lemma', 'grade', 'how', 'pp', 'aux']) if (x[k] != null && x[k] !== '') /** @type {any} */ (f)[k] = x[k];
+  if (x.clue) f.clueAuthored = true;
   if (x.stress === 'pre' || x.stress === 'stem') /** @type {any} */ (f).stressAt = x.stress;
   if (!f.en && x.en) f.en = x.en;
   if (x.kind === 's' || x.kind === 'i') f.kind = x.kind;

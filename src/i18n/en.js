@@ -2149,6 +2149,7 @@ export default {
   'build.today.sq.open': 'open',
   'build.today.extras': 'Extra words: {list}',
   'build.today.extrasNone': 'Extra words: real words of the family that are not on the board.',
+  'build.today.doneTitle': 'Today\'s board is done',
   'build.today.doneOf': { one: 'of 1 word found', other: 'of {n} words found' },
   'build.today.doneExtras': { one: '1 extra word.', other: '{n} extra words.' },
   'build.today.doneCounted': 'Counted toward today: {words}.',

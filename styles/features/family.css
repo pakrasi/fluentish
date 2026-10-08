@@ -43,7 +43,8 @@
 .fv-sq.is-shaky { background: var(--ink-3); }
 .fv-sq.is-unknown { box-shadow: inset 0 0 0 1.5px var(--x-box); }
 .fv-sq.is-unseen { outline: 1.5px dotted var(--x-box); outline-offset: -1.5px; }
-.fv-sq.is-today { box-shadow: 0 2px 0 -0.5px var(--accent); }
+.fv-sq { position: relative; }
+.fv-sq.is-today::after { content: ""; position: absolute; inset-inline: 0; bottom: -3px; height: 1.5px; border-radius: 1px; background: var(--accent); }
 .fv-gr { display: inline-block; flex: none; width: 18px; height: 6px; border-radius: 1px; position: relative; }
 .fv-gr.is-T { background: var(--ink); }
 .fv-gr.is-M { background: repeating-linear-gradient(-45deg, var(--ink) 0 1.5px, transparent 1.5px 3.5px); box-shadow: inset 0 0 0 1px var(--ink); }
@@ -323,3 +324,5 @@ body.kb .pz-head, body.kb .pz-root, body.kb .pz-msg:empty { display: none; }
 .fam-sheet .tv-sheet-body { padding-top: 0; }
 .cl-built:empty { display: none; }
 .diag-reports { margin: 0 0 4px; padding-inline-start: 1.1em; }
+
+.pz-done h2:focus, .fv h1:focus { outline: none; }
