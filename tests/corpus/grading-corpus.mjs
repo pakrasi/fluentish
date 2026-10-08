@@ -608,6 +608,14 @@ export async function buildData({ root = ROOT, codeRoot = ROOT } = {}) {
     for (const v of bc.verbs) wordbuild.push({ id: `PV:${v.id}`, src: 'wordbuild', wb: 'verb', accept: G.pvAccept(v), v, siblings: bc.verbs.filter(x => x.root === v.root && x.pre !== v.pre).map(x => W.bare(x.inf)) });
     for (const f of bc.frames) for (const form of W.FORMS) if (f.forms[form]) wordbuild.push({ id: `PS:${f.id}.${form}`, src: 'wordbuild', wb: 'sentence', accept: [W.gapped(f, form).answer], f, form });
     for (const n of W.pwNodes(bc)) wordbuild.push({ id: `PW:${n.word}`, src: 'wordbuild', wb: 'word', accept: [W.pwAnswer(n)], noun: !!n.art, n });
+    // word families (round 7): every PF form typed from its clue; siblings are the family's other forms with the same class
+    for (const fam of bc.families || []) for (const f of fam.forms) {
+      if (!f.card || !f.card.startsWith('PF:')) continue;
+      const answer = f.art ? `${f.art} ${f.word}` : f.word;
+      wordbuild.push({ id: f.card, src: 'wordbuild', wb: 'family form', accept: [answer], noun: !!f.art, f, fam,
+        siblings: fam.forms.filter((/** @type {any} */ x) => x !== f && x.cls === f.cls && x.word !== f.word).map((/** @type {any} */ x) => (x.art ? `${x.art} ${x.word}` : x.word)),
+        none: (fam.none || []).map((/** @type {any} */ n) => n.word) });
+    }
     for (const it of wordbuild) data.byId.set(it.id, it);
     data.wbLexicon = G.lexiconOf(bc);
   } catch (e) { if (!/Cannot find module|ERR_MODULE_NOT_FOUND|ENOENT/.test(String(e))) throw e; }
@@ -793,6 +801,15 @@ export async function buildCorpus({ root = ROOT } = {}) {
       }
       if (it.f.kind === 's' && (it.form === 'sub' || it.form === 'modal')) add(it, 'wb-split-end', `${it.f.pre} ${a.slice(it.f.pre.length)}`, 'wrong');
       if (it.form === 'pres' && it.f.kind === 's') add(it, 'wb-unsplit', `${it.f.pre}${pieces[0]}`, 'wrong');
+    } else if (it.wb === 'family form') {
+      // the family's other forms of the same class (a sibling prefix or ending), its article swapped or dropped, a typo,
+      // the checked non-words of its family, and a separable verb typed apart
+      for (const s of it.siblings.slice(0, 4)) add(it, 'wb-family-sibling', s, 'wrong');
+      const m = /^(der|die|das) (.+)$/.exec(a);
+      if (m) { for (const o of OTHER_ART[m[1]] || []) add(it, 'wb-article', `${o} ${m[2]}`, 'wrong'); add(it, 'wb-no-article', m[2], 'wrong'); }
+      for (const n of it.none.slice(0, 2)) add(it, 'wb-family-nonword', n, 'wrong');
+      if (it.f.kind === 's') add(it, 'wb-split', `${it.f.pre[0]} ${it.f.word.slice(it.f.pre[0].length)}`, 'wrong');
+      const w = it.f.word, ty = typoIn(w, { lex, eligible: () => true }); if (ty) add(it, 'wb-typo', m ? `${m[1]} ${ty}` : ty, 'wrong');
     } else {
       const m = /^(der|die|das) (.+)$/.exec(a);
       if (m) { for (const o of OTHER_ART[m[1]] || []) add(it, 'wb-article', `${o} ${m[2]}`, 'wrong'); add(it, 'wb-no-article', m[2], 'wrong'); }

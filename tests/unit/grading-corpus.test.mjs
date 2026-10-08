@@ -2,6 +2,7 @@
 // real content's sentences must never come back as right, and right variants must not be marked wrong.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { evaluate, table } from '../corpus/grading-corpus.mjs';
 
 // right answers the grader still marks wrong, each for a reason outside the grader: the item's accepted answers do not
@@ -37,6 +38,8 @@ test('grading corpus: no wrong German is right, right German is not wrong', asyn
   const types = new Set(rows.map(([type]) => type));
   for (const type of ['schreiben phrase', 'schreiben email line', 'situation', 'cluster word', 'cluster family', 'cluster opposite', 'cluster prep', 'script word gap', 'script word meaning', 'word building verb', 'word building sentence', 'word building word'])
     assert.ok(types.has(type), `no ${type} answers in the corpus`);
+  // word families (round 7): every PF form typed from its clue
+  if (JSON.parse(readFileSync(new URL('../../content/build/de.json', import.meta.url), 'utf8')).families) assert.ok(types.has('word building family form'), 'no word building family form answers in the corpus');
   const fp = corpus.filter(c => c.fp).map(c => `${c.type} ${c.cls} ${c.id}: ${c.text}`);
   assert.deepEqual(fp, [], 'false positives');
   // a B2 model typed without its commas: the clause rules read clauses by their commas (nachdem … war zogen wir ein), as

@@ -57,9 +57,13 @@
  * @typedef {object} ChainNode
  * @property {string} id @property {string} [from] @property {string} [add] @property {'pre'|'suf'} [side] @property {string} word
  * @property {'verb'|'noun'|'adj'} cls @property {string} [art] @property {string} en @property {string} [note] @property {boolean} [rare] @property {string | null} [lemma]
+ * @property {string} [ex] @property {string} [exEn]
  */
 /** @typedef {{id: string, title: string, nodes: ChainNode[]}} Chain */
-/** @typedef {{version: number, prefixes: Prefix[], roots: Root[], verbs: Verb[], frames: Frame[], suffixes: Suffix[], chains: Chain[]}} BuildContent */
+/** @typedef {{version: number, prefixes: Prefix[], roots: Root[], verbs: Verb[], frames: Frame[], suffixes: Suffix[], chains: Chain[], particles?: any[], families?: any[]}} BuildContent */
+
+import { validateFamilies, familyCardIds } from './wordbuild-family-check.js';
+export { familyCardIds };
 
 export const DECK = 'build';
 /** The sentence frames, in teaching order. */
@@ -233,7 +237,7 @@ export function pieces(n) {
   return hit ? { before: w.slice(0, w.length - hit.length), add: w.slice(w.length - hit.length), after: '' } : { before: w, add: '', after: '' };
 }
 /** The written endings of each suffix rule (for pieces() and the validator). */
-const SUFFIX_TEXT = /** @type {Record<string, string[]>} */ ({ ung: ['ung'], heit: ['heit'], keit: ['keit'], schaft: ['schaft'], nis: ['nis'], er: ['er'], in: ['in'],
+export const SUFFIX_TEXT = /** @type {Record<string, string[]>} */ ({ ung: ['ung'], heit: ['heit'], keit: ['keit'], schaft: ['schaft'], nis: ['nis'], er: ['er'], in: ['in'],
   e: ['e'], t: ['ft', 't'], bar: ['bar'], lich: ['lich'], sam: ['sam'], ig: ['ig'] });
 
 /** What a node's card asks: "vorstellen + -ung". @param {ChainNode} n @param {ChainNode} parent @param {Suffix | undefined} rule */
@@ -455,6 +459,8 @@ export function validateBuild(c, { words = [], morph = {}, clusterSuffixes = [] 
   }
   // a word in the word list with the same spelling and another article (die Vorstellung vs der …)
   if (words.length) for (const n of pwNodes(c)) for (const w of words) if (w.pos === 'noun' && w.w === n.word && n.art && w.art !== n.art) bad(`chain word ${n.word}: the word list says ${w.art}`);
+  // word families (round 7, content/build/FAMILY-SCHEMA.md)
+  if (c.families || c.particles) for (const e of validateFamilies(c, { words, morph })) bad(e);
   return out;
 }
 

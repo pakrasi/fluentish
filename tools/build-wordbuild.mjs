@@ -11,10 +11,11 @@
 // tools/validate-content.mjs).
 //   node tools/build-wordbuild.mjs           write the file
 //   node tools/build-wordbuild.mjs --check   exit 1 if the file is not what the sources build
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseForm, lemmaFor, validateBuild } from '../src/domain/wordbuild.js';
+import { readFamilies, buildFamilies } from './family-build.mjs';
 
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = path.join(ROOT, 'authoring/build');
@@ -39,13 +40,40 @@ export function build(words) {
     const lemma = 'lemma' in n ? n.lemma : lemmaFor(n, byW);
     return lemma ? { ...n, lemma } : n;
   }) }));
-  return { version: 1, prefixes: read('prefixes.de.json'), roots: read('roots.de.json'), verbs, frames, suffixes: read('suffixes.de.json'), chains };
+  const roots = read('roots.de.json');
+  /** @type {any} */ const out = { version: 1, prefixes: read('prefixes.de.json'), roots, verbs, frames, suffixes: read('suffixes.de.json'), chains };
+  // word families (round 7, content/build/FAMILY-SCHEMA.md)
+  const authored = readFamilies(path.join(SRC, 'families'), ONLY);
+  if (authored.length) {
+    const lexcheck = existsSync(path.join(SRC, 'family-lexcheck.de.json')) ? read('family-lexcheck.de.json') : { words: {} };
+    const { families, problems } = buildFamilies(authored, { words, verbs, chains, roots, lexcheck });
+    if (problems.length) throw new Error(`families: ${problems.length} problem(s)\n  ${problems.slice(0, 60).join('\n  ')}`);
+    for (const fam of families) {
+      fam.none = fam.none.map((/** @type {any} */ n) => ({ ...n, chk: noneCheck(n.word, lexcheck) }));
+    }
+    out.particles = read('particles.de.json');
+    out.families = families;
+  }
+  return out;
 }
+
+/** The recorded lexicon check of a non-word (tools/family_lexcheck.py): DWDS entry, and the highest wordfreq Zipf of its forms. @param {string} w @param {any} lexcheck */
+function noneCheck(w, lexcheck) {
+  const e = (lexcheck.words || {})[String(w).toLowerCase()];
+  return e ? { dwds: !!e.dwds, wf: Math.max(e.wf || 0, ...Object.values(e.forms || {}).map(Number)), hits: e.hits ?? null } : null;
+}
+/** --only stellen,legen: build and check these families alone (authoring; never written). */
+const ONLY = (() => { const i = process.argv.indexOf('--only'); return i > 0 ? String(process.argv[i + 1] || '').split(',').filter(Boolean) : []; })();
 
 /** One entry per line: readable diffs. @param {any} data */
 export function serialise(data) {
+  const fam = (/** @type {any} */ f) => {
+    const { forms, ...head } = f;
+    const h = JSON.stringify(head);
+    return `  ${h.slice(0, -1)},"forms":[\n${forms.map((/** @type {any} */ x) => `   ${JSON.stringify(x)}`).join(',\n')}]}`;
+  };
   return `{\n${Object.entries(data).map(([k, v]) => Array.isArray(v)
-    ? ` ${JSON.stringify(k)}: [\n${v.map(x => `  ${JSON.stringify(x)}`).join(',\n')}\n ]`
+    ? ` ${JSON.stringify(k)}: [\n${v.map(x => (k === 'families' ? fam(x) : `  ${JSON.stringify(x)}`)).join(',\n')}\n ]`
     : ` ${JSON.stringify(k)}: ${JSON.stringify(v)}`).join(',\n')}\n}\n`;
 }
 
@@ -59,6 +87,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const clusters = JSON.parse(readFileSync(path.join(ROOT, 'content/clusters/de.json'), 'utf8'));
   const errs = validateBuild(data, { words, morph: clusters.morph, clusterSuffixes: clusters.suffixes });
   if (errs.length) { console.error(`build-wordbuild: ${errs.length} problem(s)`); errs.slice(0, 80).forEach(e => console.error(`  ${e}`)); process.exit(1); }
+  if (ONLY.length) { console.log(`build-wordbuild: ${ONLY.join(', ')}: no problems (nothing written)`); process.exit(0); }
   if (check) {
     if (cur !== out) { console.error('build-wordbuild: content/build/de.json is out of date (run node tools/build-wordbuild.mjs)'); process.exit(1); }
     console.log('build-wordbuild: current');

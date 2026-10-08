@@ -71,6 +71,7 @@ export function lexiconOf(c, extra = []) {
   for (const v of c.verbs) { add(v.inf); add(v.pp); }
   for (const f of c.frames) for (const t of Object.values(f.forms)) for (const x of t || []) add(x[1]);
   for (const ch of c.chains) for (const n of ch.nodes) add(n.word);
+  for (const fam of c.families || []) for (const f of fam.forms || []) { add(f.word); if (f.pp) add(f.pp); }
   for (const s of extra) add(s);
   return out;
 }
