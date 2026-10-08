@@ -153,6 +153,15 @@ Small, safe and useful this week.
 - **Builds on:** `docs/CUTOVER.md` › `/b1-review` skill text.
 - **Done when:** the skill names Fluentish's routes and result files; CUTOVER's status line says step 6 is done.
 
+### Word families: what comes after round 7
+- **One word** (WORDGAMES-DESIGN §5.2, phase 3): a typed Wordle round on one form, offered on the done screen; the
+  seam is the done screen's action row in `features/build/today.js`.
+- **Level adaptation** (§5.3): two forms up after three all-found days, two down after two days with three shown; read
+  `kv build.family`.
+- **Add to my next round** for a form not seen (the family card), inside the allowance.
+- The content lane's families (40 roots, clues, examples, non-words): the model reads FAMILY-SCHEMA's full shape as
+  it is; check each batch's boards on a phone (long clues wrap the clue card to three lines).
+
 ## Later
 
 ### 15. Own domain and moving off the shared origin

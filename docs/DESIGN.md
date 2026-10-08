@@ -253,6 +253,28 @@ All in `styles/components.css`. The kit demo page stays with the design work (de
 - **Practice groups** (features/practice/hub.js, round 3): under the now card (the plan's next row with its button, the due and new counts), three groups: Exam modules ("Skills" without an exam goal), Words, Your own material. The heading is one button (h2 type, 44 px, the due count as a trail, a chevron that turns); the rows open and close with the answer reveal's motion (`motion.js disclose`: grid rows 0fr to 1fr and a fade, at once with reduced motion), and a closed group is inert. A group with work today opens by itself; his own choice on the device wins.
 - **Round size sheet** (features/shared/picker.js): before a round of a Practice list. "Practice all" waits behind a quiet "More choices" button unless it was the last choice for the list. A bottom sheet (surface, r-card top corners, shadow-sheet, grab handle) on a phone, a 440 px card from 720 px. Three 56 px options, the selected one outlined in ink with its key (1, 2, 3) filled: Recommended with its count in Newsreader and one line on why; Custom with a 44 px stepper and "of N"; Practice all N. A plain note on surface-2 when the choice adds new items beyond today's allowance. Start is the primary button with the question count and minutes. Motion: the sheet rises on spring-snappy (card duration) and leaves in 160 ms ease-in; the number ticks 45 % up or down on spring-snappy; reduced motion keeps only the fade. Press and hold a list starts Recommended at once (the tip shows on touch only).
 
+## Word families and Today's family (round 7)
+
+`src/features/build/family.js`, `today.js`, `fword.js`; `styles/features/family.css`; the model and the board are pure
+(`src/domain/wordbuild-family.js`). The owner's decisions of 8 Oct 2026: tiles first (typing optional), the count only
+("7 of 10 found", no ranks, no streaks, no sharing), a 6-word board on a Light day, the family view its own Word
+building page linked both ways with the Map's family group and from every word sheet.
+- **A word** is drawn the same everywhere: the article at 72 % ink-3, a separable verb's joint (a 1.5 px field-border
+  line where it comes apart), an inseparable verb's weld (a 1.5 px ink line under it), the stress dot under the stressed
+  vowel (the content's index when it has one). Joints and welds on verbs only; the marks are aria-hidden and the word's
+  name says them.
+- **Word family** (`#/practice/build/family/<root>`): the head, Root · Prefix · Ending, the root chips, the ring (verbs at
+  their compass places, solid spoke splits, dotted never splits; Atlas knowledge encodings; the derivability bar under
+  each tile; the nouns as 8 px squares outside) over the tree (Splits off / Never splits / From the root itself), the
+  tree being the list version. A row opens its card and the word builds itself (motion table of WORDGAMES-DESIGN §8).
+  From 900 px the head and ring are a sticky 440 px column. Inside a round it opens as a bottom sheet.
+- **Today's family** (`#/practice/build/today`): full screen, fits 390 × 664 without scrolling. Head, the root line, the
+  count with one square per meaning (ink first try, hatched later, outlined shown, accent now; also the board button),
+  the clue card (meaning, meta, tries, the build row), one status line, the hive (root 88 × 56 ink, prefix tiles
+  52 × 40 round it), endings and articles, the thumb row (Delete, Type, Check). Flips: right is ink, a real word with
+  another meaning is a dashed outline, not part of it is struck through in ink-3; shape carries every state. Splits /
+  Stays replaces the thumb row. Holds (1.5 s, 2.2 s after a missed split) are the same with reduced motion.
+
 ## Explore (Look up › Map)
 
 Explore (`src/features/explore/`, `#/lookup/map`) is a map of every word, phrase and grammar concept in the content, grouped by a chosen mode, showing what the learner knows. It is the one screen where the field idea (one mark per item, inked by knowledge) becomes the whole page. It lives under Look up (an entry card at the top of Look up) rather than as a fifth tab: it is a way of looking things up and choosing what to study, and the tab bar stays at four.
