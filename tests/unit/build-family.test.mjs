@@ -67,6 +67,9 @@ test('family validator: a clean family passes; each guard fires', () => {
   c = mini(); c.families[0].forms[2].lex = ['wf']; has(c, /found in no lexicon/);
   c = mini(); c.families[0].forms[2].seg = [['p', 'Her'], ['r', 'stel'], ['s', 'lung']]; has(c, /not one of the stems/);
   c = mini(); c.families[0].forms[2].stress = 0; has(c, /not on a vowel/);
+  // rare is "not in this family's list": never a form; a board form is one the tiles build (the game's tileKey)
+  c = mini(); c.families[0].rare = [{ key: 'her|ung', word: 'Herstellung', why: 'x' }]; has(c, /rare Herstellung: is a form of the family/);
+  c = mini(); Object.assign(c.families[0].forms[2], { pre: ['ab', 'her'], key: 'ab+her|ung', seg: [['p', 'Ab'], ['p', 'her'], ['r', 'stell'], ['s', 'ung']], word: 'Abherstellung' }); has(c, /cannot be on a board|tiles cannot build/);
 });
 
 test('family content: valid, every board the right size, PF ids never shadow a PV/PW card', () => {

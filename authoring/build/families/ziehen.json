@@ -53,8 +53,6 @@
   {"key": "unter|", "word": "unterziehen", "why": "DWDS: sich einer Prüfung unterziehen = undergo (a test); also unterziehen (stressed) = put on underneath"},
   {"key": "mit|", "word": "mitziehen", "why": "DWDS: mitziehen = go along with (a plan); pull along"},
   {"key": "zer|", "word": "zerziehen", "why": "A reviewer was not certain it is never used (older or literary German), so the game never calls it wrong."},
-  {"key": "er|ung", "word": "Erziehung", "why": "Found by the lexicon check: DWDS has an entry; 696980 DWDS corpus hits; wordfreq 4.25."},
-  {"key": "be|ung", "word": "Beziehung", "why": "Found by the lexicon check: DWDS has an entry; 3582947 DWDS corpus hits; wordfreq 4.79."},
   {"key": "be|er", "word": "Bezieher", "why": "Found by the lexicon check: DWDS has an entry; 59056 DWDS corpus hits; wordfreq 3.18."},
   {"key": "auf|ung", "word": "Aufziehung", "why": "Found by the lexicon check: 71 DWDS corpus hits."},
   {"key": "auf|er", "word": "Aufzieher", "why": "Found by the lexicon check: 86 DWDS corpus hits."},
@@ -66,7 +64,6 @@
   {"key": "zu|bar", "word": "zuziehbar", "why": "Found by the lexicon check: 142 DWDS corpus hits."},
   {"key": "ver|bar", "word": "verziehbar", "why": "Found by the lexicon check: 41 DWDS corpus hits."},
   {"key": "über|bar", "word": "überziehbar", "why": "Found by the lexicon check: 290 DWDS corpus hits."},
-  {"key": "aus|bar", "word": "ausziehbar", "why": "Found by the lexicon check: DWDS has an entry; 57016 DWDS corpus hits; wordfreq 1.92."},
   {"key": "zurück|bar", "word": "zurückziehbar", "why": "Found by the lexicon check: 335 DWDS corpus hits."},
   {"key": "ein|bar", "word": "einziehbar", "why": "Found by the lexicon check: DWDS has an entry; 6142 DWDS corpus hits; wordfreq 1.34."}
  ],

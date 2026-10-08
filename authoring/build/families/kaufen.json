@@ -38,10 +38,7 @@
  ],
  "rare": [
   {"key": "be|", "word": "bekaufen", "why": "DWDS has an entry (regional, colloquial: sich bekaufen = buy badly)"},
-  {"key": "ein|er", "word": "Einkaufer", "why": "Found by the lexicon check: 487 DWDS corpus hits."},
-  {"key": "ver|er", "word": "Verkaufer", "why": "Found by the lexicon check: 1303 DWDS corpus hits; wordfreq 1.17."},
-  {"key": "auf|er", "word": "Aufkaufer", "why": "Found by the lexicon check: 48 DWDS corpus hits."},
-  {"key": "ver|lich", "word": "verkauflich", "why": "Found by the lexicon check: 136 DWDS corpus hits."}
+  {"key": "auf|er", "word": "Aufkaufer", "why": "Found by the lexicon check: 48 DWDS corpus hits."}
  ],
  "reviewedBy": "model-2pass",
  "reviewedAt": "2026-10-08"

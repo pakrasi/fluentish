@@ -10,6 +10,8 @@
    - a word is called "not a German word" only when it is in no lexicon the build knows (the word list, the cluster
      morphology, every build word) and the recorded checks found it neither in DWDS nor in wordfreq. */
 
+import { tileKey } from './wordbuild-family.js';
+
 const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 const INSEP = new Set(['be', 'emp', 'ent', 'er', 'ge', 'miss', 'ver', 'zer']);
 const UNSTRESSED = new Set(['be', 'ge', 'er', 'ver', 'zer', 'ent', 'emp']);
@@ -241,6 +243,9 @@ export function validateFamilies(c, { words = [], morph = {} } = {}) {
       if (!LEVELS.includes(f.level)) bad(`${fa}: level ${f.level}`);
       if (f.zipf != null && typeof f.zipf !== 'number') bad(`${fa}: zipf`);
       if (!Array.isArray(f.lex) || !(f.lex.includes('list') || f.lex.includes('dwds') || f.lex.includes('corpus'))) bad(`${fa}: found in no lexicon (the word list, a DWDS entry, or the DWDS corpora)`);
+      // a board form must be one the tiles build: the game's rule (wordbuild-family.js tileKey), so the content's
+      // boards and the live boards agree (un- and one prefix, a chain of endings; no verb with an ending)
+      if (f.board && tileKey(f) !== f.key) bad(`${fa}: on a board, but the tiles cannot build ${f.key}`);
       if (f.board && (f.adjNoun || f.pl || f.side === 'cmp' || f.cls === 'adv' || f.cls === 'conj' || f.cls === 'prep' || (f.pre || []).filter((/** @type {string} */ p) => p !== 'un').length > 1)) bad(`${fa}: cannot be on a board`);
     }
     // keys of board forms: one form per key, but a dual verb's two readings share one
@@ -264,8 +269,11 @@ export function validateFamilies(c, { words = [], morph = {} } = {}) {
       if (morphWords.has(lw)) bad(`${na}: is in the word list's morphology`);
       if (!n.chk || n.chk.dwds !== false || n.chk.wf !== 0 || !(typeof n.chk.hits === 'number' && n.chk.hits <= NONE_MAX_HITS)) bad(`${na}: needs the recorded check (DWDS: no entry and at most ${NONE_MAX_HITS} corpus hits; wordfreq: 0 for every form)`);
     }
+    const formWords = new Set(fam.forms.map((/** @type {any} */ f) => String(f.word)));
     for (const r of fam.rare || []) {
       if (noneKeys.has(r.key)) bad(`${at} rare ${r.word}: also in none`);
+      // rare is "not in this family's list": a form is in it
+      if (formKeys.has(r.key) || formWords.has(String(r.word))) bad(`${at} rare ${r.word}: is a form of the family (${r.key})`);
       if (!r.why) bad(`${at} rare ${r.word}: why is required`);
       english(`${at} rare ${r.word}`, r.en); english(`${at} rare ${r.word}`, r.why);
     }
