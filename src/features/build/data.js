@@ -17,31 +17,60 @@ import { openNew, shownToday, recentMisses } from '../../domain/wordbuild-plan.j
 import { splitMisses, familyLexicon } from '../../domain/wordbuild-family.js';
 import { lexiconOf } from '../../domain/wordbuild-grade.js';
 import { loadKnowledge } from '../../data/knowledge.js';
+import { createFamilyFiles } from './family-files.js';
 import { setSetting } from '../../data/settings.js';
 
 export const KV = 'build';
 export const GAME = 'build.game';
 
 /** @type {Promise<any> | null} */ let memo = null;
+/** @type {Promise<any> | null} */ let coreMemo = null;
+/** @type {ReturnType<typeof createFamilyFiles> | null} */ let files = null;
 
-/** The content and its indexes (once a session). @param {{content: any}} ctx */
+/** The families' files of this session (family-files.js): inline in build.de, or one file per root. @param {{content: any}} ctx */
+export function familyFiles(ctx) {
+  if (!files) files = createFamilyFiles({ load: id => ctx.content.load(id) });
+  return files;
+}
+
+/** build.de and the word list, without waiting for families kept in their own files. @param {{content: any}} ctx */
+export function loadCore(ctx) {
+  if (!coreMemo) {
+    coreMemo = Promise.all([ctx.content.load('build.de'), ctx.content.load('igloo.words.de').catch(() => [])]).then(([c, words]) => indexes(c, words));
+    coreMemo.catch(() => { coreMemo = null; });
+  }
+  return coreMemo;
+}
+
+/**
+ * The content and its indexes (once a session), with every family: when the families are their own files they are
+ * fetched (in parallel; the service worker keeps them) and put in c.families, so every reader sees one shape.
+ * @param {{content: any}} ctx
+ */
 export function loadContent(ctx) {
   if (!memo) {
-    memo = Promise.all([ctx.content.load('build.de'), ctx.content.load('igloo.words.de').catch(() => [])]).then(([c, words]) => {
-      const byId = new Map((words || []).map((/** @type {any} */ w) => [w.id, w]));
-      const P = new Map(c.prefixes.map((/** @type {any} */ p) => [p.id, p]));
-      const R = new Map(c.roots.map((/** @type {any} */ r) => [r.id, r]));
-      const V = new Map(c.verbs.map((/** @type {any} */ v) => [v.id, v]));
-      const F = new Map(c.frames.map((/** @type {any} */ f) => [f.id, f]));
-      const S = new Map(c.suffixes.map((/** @type {any} */ s) => [s.id, s]));
-      const maps = lemmaMaps(c);
-      return { c, words: words || [], byId, P, R, V, F, S, resolve: itemResolver(maps), lex: lexiconOf(c),
-        // Today's family: the build words, the word list and the rare lists (domain/wordbuild-family.js judgeTyped)
-        flex: familyLexicon(c, words || []), zipf: (/** @type {string} */ id) => (byId.get(id) || {}).zipf || 0 };
+    memo = loadCore(ctx).then(async core => {
+      const ff = familyFiles(ctx);
+      if (!ff.split(core.c)) return core;
+      return indexes({ ...core.c, families: await ff.all(core.c) }, core.words);
     });
     memo.catch(() => { memo = null; });
   }
   return memo;
+}
+
+/** @param {any} c @param {any[]} words */
+function indexes(c, words) {
+  const byId = new Map((words || []).map((/** @type {any} */ w) => [w.id, w]));
+  const P = new Map(c.prefixes.map((/** @type {any} */ p) => [p.id, p]));
+  const R = new Map(c.roots.map((/** @type {any} */ r) => [r.id, r]));
+  const V = new Map(c.verbs.map((/** @type {any} */ v) => [v.id, v]));
+  const F = new Map(c.frames.map((/** @type {any} */ f) => [f.id, f]));
+  const S = new Map(c.suffixes.map((/** @type {any} */ s) => [s.id, s]));
+  const maps = lemmaMaps(c);
+  return { c, words: words || [], byId, P, R, V, F, S, resolve: itemResolver(maps), lex: lexiconOf(c),
+    // Today's family: the build words, the word list and the rare lists (domain/wordbuild-family.js judgeTyped)
+    flex: familyLexicon(c, words || []), zipf: (/** @type {string} */ id) => (byId.get(id) || {}).zipf || 0 };
 }
 
 /** @param {any} store @returns {Record<string, any>} */

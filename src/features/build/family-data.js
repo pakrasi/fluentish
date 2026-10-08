@@ -11,7 +11,7 @@
 import * as F from '../../domain/wordbuild-family.js';
 import { dayAllowance, todayPlan } from '../../domain/allowance.js';
 import { courseGoal } from '../../domain/levels.js';
-import { loadContent, cardsOf, dueFns, saveAnswer, today as todayState } from './data.js';
+import { loadContent, loadCore, familyFiles, cardsOf, dueFns, saveAnswer, today as todayState } from './data.js';
 import { loadBuild } from '../../data/build-content.js';
 import * as D8 from '../../domain/days.js';
 
@@ -40,11 +40,34 @@ export function familiesOf(d) {
   return m;
 }
 
-/** @param {any} ctx */
-export async function loadFamilies(ctx) {
-  const d = await ensureFamilies(ctx, await loadContent(ctx));
-  return { d, fams: familiesOf(d) };
+/**
+ * The content and its families. With a root, when the families are their own files and not all loaded yet: that
+ * root's family at once (partial: true; the rest of the content as it is), and `full` for every family when they come
+ * (family-files.js). A partial model never makes a board: it holds one root.
+ * @param {any} ctx @param {{root?: string | null}} [o]
+ * @returns {Promise<{d: any, fams: Map<string, F.Family>, partial: boolean, full: Promise<{d: any, fams: Map<string, F.Family>}> | null}>}
+ */
+export async function loadFamilies(ctx, { root = null } = {}) {
+  const ff = familyFiles(ctx);
+  if (root) {
+    const core = await loadCore(ctx);
+    if (ff.split(core.c) && !ff.index(core.c).every((/** @type {any} */ e) => ff.has(core.c, e.root))) {
+      const fam = await ff.one(core.c, root);
+      if (fam) {
+        const d = { ...core, c: { ...core.c, families: [fam], roots: (core.c.roots || []).filter((/** @type {any} */ r) => r.id === root) } };
+        return { d, fams: familiesOf(d), partial: true, full: afterPaint().then(() => loadContent(ctx)).then(d2 => ({ d: d2, fams: familiesOf(d2) })) };
+      }
+    }
+  }
+  const d = await loadContent(ctx);
+  return { d, fams: familiesOf(d), partial: false, full: null };
 }
+
+/** Resolves after the next frame is painted (at once where there are no frames: node). */
+const afterPaint = () => new Promise(r => { const g = /** @type {any} */ (globalThis); if (typeof g.requestAnimationFrame === 'function') g.requestAnimationFrame(() => setTimeout(r, 0)); else r(undefined); });
+
+/** The roots with a family, in the content's order (the index when the families are their own files). @param {any} ctx @param {any} d */
+export const familyRoots = (ctx, d) => /** @type {string[]} */ (familyFiles(ctx).index(d.c).map((/** @type {any} */ e) => String(e.root)));
 
 /** The knowledge state of a form (the Atlas encodings): its card's item, else its word. @param {any} d @param {any} k @param {F.Form} f */
 export function stateOf(d, k, f) {
@@ -61,7 +84,7 @@ export function todayOf(d, k, f) {
   return !!(item && k.get(item)?.today);
 }
 
-/** @param {any} store @returns {F.FamilyLog} */
+/** @param {any} store @returns {F.FamilyLog & {next?: {day: string, root: string}}} */
 export const logOf = store => store.get(FAMILY, null) || { days: [], recent: [] };
 /** @param {any} store @returns {{form: string, root: string, word: string, day: string}[]} */
 export const reportsOf = store => { const r = store.get(REPORTS, null); return Array.isArray(r) ? r : []; };

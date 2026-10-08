@@ -8,6 +8,6 @@
               "src/features/shared/check-mark.js", "src/domain/script/store.js", "src/features/exam/boot.js",
               "src/domain/week.js", "src/domain/readers.js", "src/domain/levels.js", "src/domain/conversation.js", "src/domain/conversation-feedback.js",
               "src/domain/text/**/*.js", "src/services/prompts/*.js",
-              "src/features/today/progress/model.js", "src/features/today/progress/hours.js"],
+              "src/features/today/progress/model.js", "src/features/today/progress/hours.js", "src/features/build/family-files.js"],
   "exclude": ["src/vendor"]
 }

@@ -509,12 +509,12 @@ export async function mountToday(el, ctx) {
     pc.suf.forEach((x, i) => { out.push(part('suf', `-${x}`, endSense(f.suf[i] || x))); });
     return h('p', { class: 'pz-parts' }, out.flatMap((x, i) => (i ? [h('span', { class: 'pz-plus', 'aria-hidden': 'true' }, '+'), x] : [x])));
   }
-  /** The content's line on how the parts give the meaning, without the "aus = out:" the parts already say. @param {Form} f */
+  /** The content's line on how the parts give the meaning, without the "aus = out:" the parts already say. @param {Form} f @returns {string} */
   function whyLine(f) {
     if (f.grade === 'O' && !f.why) return t('build.today.learnWhy').trim();
     // a noun or adjective without its own line has its verb's: die Ausstellung, from ausstellen (aus = out: …)
     const parent = !f.why && f.parent ? fam.byId.get(f.parent) : null;
-    if (parent && parent.why && parent.cls === 'verb') { const pw = whyLine(parent); return pw ? t('build.today.learn.from', { word: parent.word, why: pw.charAt(0).toLowerCase() + pw.slice(1) }) : ''; }
+    if (parent && parent.why && parent.cls === 'verb') { const pw = /** @type {string} */ (whyLine(parent)); return pw ? t('build.today.learn.from', { word: parent.word, why: pw.charAt(0).toLowerCase() + pw.slice(1) }) : ''; }
     const w = String(f.why || '');
     const p = f.pre.length ? [...f.pre].reverse()[f.pre.length - 1] : '';
     const m = p ? new RegExp(`^${p}-? = [^:]+:\\s*`, 'i').exec(w) : null;
@@ -566,7 +566,6 @@ export async function mountToday(el, ctx) {
     acts.classList.toggle('is-next', !!m);
     replace(checkBtn, t(m === 'finish' ? 'build.today.finish' : m ? 'build.today.nextBtn' : 'build.today.check'), h('kbd', null, '↵'));
   }
-  const hold = ms => new Promise(r => setTimeout(r, ms));
 
   /** The authored example with the verb's stem and its split-off particle underlined. @param {Form} f */
   function exampleLine(f) {
