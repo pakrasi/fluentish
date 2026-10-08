@@ -1,19 +1,93 @@
-# Word families in `content/build/de.json` (round 7)
+# Word families: `content/build/family/<root>.json` and the index in `content/build/de.json` (round 7)
 
 The data behind **Word family** (`#/practice/build/family/<root>`) and **Today's family** (`#/practice/build/today`),
 WORDGAMES-DESIGN §7. Built by `tools/build-wordbuild.mjs` from `authoring/build/families/<root>.json` and
-`authoring/build/particles.de.json`; checked by `src/domain/wordbuild.js validateFamilies` (run by `validateBuild`).
-Nothing existing changes: `prefixes`, `roots`, `verbs`, `frames`, `suffixes` and `chains` keep their shapes (chain
-nodes gain `ex`/`exEn`). Two new top-level keys:
+`authoring/build/particles.de.json`; checked by `src/domain/wordbuild-family-check.js validateFamilies` (run by
+`validateBuild` on the merged content). Nothing existing changes: `prefixes`, `roots`, `verbs`, `frames`, `suffixes`
+and `chains` keep their shapes (chain nodes gain `ex`/`exEn`).
 
+## Where the families live (round 7, second pass: per-root lazy files)
+
+The families were 790 KB of the 930 KB `de.json` (193 KB of 225 KB gzipped), and Today's cold load waited for all of
+it to show one row about one root. They now live in one file per root; `de.json` keeps a small index.
+
+| file | manifest id | schema | holds |
+|---|---|---|---|
+| `content/build/de.json` | `build.de` | `build@1` | everything it held before except `families`, plus `particles` and `familyIndex` |
+| `content/build/family/<root>.json` | `build.family.<root>` | `build-family@1` | one family: exactly one entry of the old `families[]` (the shape below, unchanged) |
+
+**Merging is the identity.** `[...familyIndex.roots].map(r => load('build.family.' + r.root))` in index order is the old
+`families[]`, deep-equal (`tests/unit/build-family-files.test.mjs` proves it on every build). Every pure function that
+took `c.families` (familyModel, lemmaMaps, lexiconOf, familyLexicon, pfIds, validateFamilies) behaves the same when
+handed `{...c, families}`. Node tools and tests read the merged content through `tools/family-files.mjs`
+(`readBuild()`, `withFamilies(c)`).
+
+**Manifest and precache.** Each family file is a manifest file with `"lazy": true`, in pack `de` (pack membership is
+the language it belongs to). `tools/stamp.mjs contentPrecache` leaves lazy files out of the install precache, so the
+core precache is unchanged in count and 160 KB lighter. The service worker already serves `content/*?h=<sha8>` cache
+first and stores what it fetched, so a family file is cached after its first use. Policy for the loader lane:
+- Today's plan loads `build.de` only, picks the day's root from the index (`pickRoot`, below), then loads that one
+  family file. The family view loads its root on open; Browse by prefix or ending loads the rest on demand.
+- Offline: a family he has opened is there. Warming the other files after first paint (idle, low priority) is allowed
+  and recommended; never block a screen on it.
+- Across deploys: lazy files are content-hashed (`?h=`), so a new service worker may copy any it finds in the old
+  cache, as install does for immutable precache entries, instead of dropping them (sw.js, the loader lane's call).
+- A missing family file costs only that family (the row and the view say it could not load); nothing else waits on it.
+
+### `familyIndex` (in `de.json`)
 ```jsonc
+"familyIndex": {
+  "file": "build.family.{root}",            // the manifest id of a root's family file
+  "roots": [ {                               // in families[] order (roots[] order, then the rest)
+    "root": "stellen", "lemma": "stellen.verb", "en": "put (upright), place", "level": "A1", "zipf": 4.9,
+    "boards": ["A2", "B1", "B2"],            // the levels with a content board
+    "forms": [                               // EVERY form, in the family's order: [id, card, lemma, level, flags]
+      ["stellen.verb", null, "stellen.verb", "A1", ""],
+      ["abstellen.verb", "PV:abstellen", "abstellen.verb", "A2", "b"],
+      ["der_Aufsteller", "PF:der_Aufsteller", null, "C1", "br"] ],
+                                             // flags: b = a board form the game can build (card, tile key, board,
+                                             //   clue: boardFor's `playable` before level and reports); r = rare
+    "words": ["stellen", "gestellt", "abstellen", "abgestellt", …],   // what lexiconOf adds: every form's word and pp
+    "rare": ["Aufsteller", …] } ]           // the rare words (familyLexicon)
+}
+```
+What it answers without loading a family: which roots exist and their level and meaning (the hub, the Map's links,
+"Family: stellen ›" on a word page via a form's lemma), a card's root and lemma (PF cards in the Word building round,
+`lemmaMaps`), the known count ("3 of 41 known": every form's card and lemma), the typed-answer lexicon, and
+**Today's root**: `pickRoot` in `src/domain/wordbuild-family-index.js` takes the index's roots and returns the same
+root `boardFor` would (boardFor calls it), so the plan loads one file.
+
+## Board rules (round 7, second pass)
+
+`boardFor` (the live board) and the content's default boards follow one set of rules
+(`src/domain/wordbuild-family-index.js BOARD_RULES`); the validator holds the content boards to them and
+`tests/unit/family-boards.test.mjs` simulates fresh learners at A2, B1 and B2 for 60 days and holds the live boards
+to them. "Where the family allows" means: unless the root has too few playable forms of that kind at that level.
+
+- **Rotation.** Today's root is the playable root (6 or more board forms at or under his level + 1) not used in the
+  last 14 days that was used **longest ago** (never used first), then the most due, then the most unseen, then the
+  day's hash. Every playable root comes round: 38 at A2 (stimmen and fragen have under six board forms at A1 to B1),
+  40 at B1 and B2. (Before: the most-unseen ranking cycled the same 15 roots every 15 days.)
+- **Verbs.** At least 40 % of a board's words are verbs (A2 and Light 3 of 6, B1 4 of 10, B2 5 of 12).
+- **Articles.** Every board noun has `artBy`: `ending` (the ending always gives it: -ung, -heit, -keit, -schaft,
+  -in, -er, the infinitive), `usual` (the ending usually gives it: the bare stem der, -e die, -t die, -nis das) or
+  `except` (against its ending's usual article: das Verbot, das Gehalt, der Nachkomme, das Gefälle, der Gefallen).
+  A board holds at most 2 (A2, Light), 3 (B1) or 4 (B2) `ending` nouns, at least 1 (A2) or 2 (B1, B2) `usual` or
+  `except` nouns, and from B1 an `except` noun when the family has one at the level.
+- Content boards: A2 where the family has six board forms at A1 to B1, B1 and B2 always; `light` is 6 of `words` with
+  the same verb rule.
+
+## A family (one file, and one entry of the old `families[]`)
+```jsonc
+// in de.json:
 "particles": [ { "id": "her", "kind": "s", "core": "here, toward the speaker", "short": "here, toward",
                  "senses": [{ "en": "making, producing", "ex": ["herstellen"] }], "sep": "…", "insep": "…" } ],
                // prefixes that only families use (fest, her, dar, hin, weg, zurück, zusammen, los, bei, wieder, statt,
                // teil, heraus, hinter …). Same meaning as `prefixes[]` (s splits, i never splits, d both); they are NOT
                // in `prefixes[]`, so the compass, the Table and the PX cards do not change. A family form's `pre` ids
                // are in `prefixes[]` ∪ `particles[]` ∪ {"un"}.
-"families": [ {
+// content/build/family/stellen.json (was families[i]):
+{
   "root": "stellen",            // stable id; for the 15 build roots it is the `roots[]` id
   "lemma": "stellen.verb", "en": "put (upright), place", "pres3": "stellt", "pret": "stellte", "aux": "hat", "pp": "gestellt",
   "level": "A1", "zipf": 4.9,
@@ -23,7 +97,7 @@ nodes gain `ex`/`exEn`). Two new top-level keys:
   "none": [ { "key": "zer|", "word": "zerstellen", "chk": { "dwds": false, "wf": 0, "hits": 0 } } ],  // CHECKED non-words: the only words the game may call "not a German word"
   "rare": [ { "key": "auf|er", "word": "Aufsteller", "why": "Found by the lexicon check: DWDS has an entry." } ],  // not in this family's list (may be rare): never called wrong, never called real
   "reviewedBy": "model-2pass", "reviewedAt": "2026-10-08"
-} ]
+}
 ```
 
 ## Form
@@ -46,6 +120,7 @@ nodes gain `ex`/`exEn`). Two new top-level keys:
 | `grade`, `how` | Derivability from its parent: `T` literal (`lit`), `M` picture (`pic`/`hist`), `O` learn as a word (`word`). |
 | `level`, `zipf` | CEFR (word list when listed) and Zipf frequency (wordfreq, CC BY-SA 4.0; word list value when listed). |
 | `rare` | Real but rare: never on A2/B1 boards. |
+| `artBy` | Nouns on a board (not compounds or adjNoun): `ending` · `usual` · `except`, how the article is known (Board rules). Built from `suffixes[]`. |
 | `board` | Eligible for a board: single article, at most one prefix (or `un` + one), not `pl`/`adjNoun`/`cmp`, a unique clue, and a key the tiles build (`tileKey`; the validator checks it). |
 | `lemma` | Word-list id or `null`. Knowledge item: `W:<lemma>` when set, else the card id (PV/PW rules as today). |
 | `lex` | Where the form was found: `list` (word list), `dwds` (a DWDS dictionary entry), `corpus` (200+ hits in the DWDS corpora), `wf` (wordfreq Zipf > 0). Every form has `list`, `dwds` or `corpus`. |
@@ -95,5 +170,5 @@ doubt goes to `rare` instead.
   a standard word a learner meets belongs in `forms` (round 7 moved zuhalten, der Besteller, die Übertretung,
   vernehmen, befallen and die Erarbeitung there).
 - A board word's key may also be a non-board form's key only for the two readings of a dual verb.
-- `content/build/de.json` is about 930 KB (190 KB gzipped) with the families; if the hub's first load suffers, the
-  families can move to their own file (`content/build/families.de.json`) without changing their shape.
+- The families are per-root files since the second pass (Where the families live). `de.json` with the index is
+  about 50 KB gzipped (it was 193 KB); a family file is 2 to 9 KB gzipped.
