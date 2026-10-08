@@ -40,6 +40,19 @@ test('grading corpus: no wrong German is right, right German is not wrong', asyn
     assert.ok(types.has(type), `no ${type} answers in the corpus`);
   // word families (round 7): every PF form typed from its clue
   if (JSON.parse(readFileSync(new URL('../../content/build/de.json', import.meta.url), 'utf8')).families) assert.ok(types.has('word building family form'), 'no word building family form answers in the corpus');
+  // Today's family (round 7 fix): its typed judge, on every clue form, and the cross-word classes the German review
+  // found graded right there (another form of the family sharing tiles: das Gebot for das Gebiet; a word one umlaut
+  // apart: vertraglich for verträglich; a noun made from the infinitive and its verb: das Verhalten / verhalten).
+  // Never right, in Today's family and in the round's typed cards (the round grader was already at 0: unchanged)
+  assert.ok(types.has('word building today family'), "no Today's family answers in the corpus");
+  const CROSS = { 'cross-lexeme-family': ['word building today family', 20000], 'cross-lexeme-umlaut': [null, 4], 'noun-verb-conversion': [null, 30] };
+  for (const [k, [only, n]] of Object.entries(CROSS)) {
+    const of = corpus.filter(c => c.cls === k && c.verdict !== 'missing');
+    assert.ok(of.length >= n, `${k}: ${of.length} wrong answers (at least ${n})`);
+    assert.deepEqual(of.filter(c => c.fp).map(c => `${c.type} ${c.id}: ${c.text}`), [], `${k} graded right`);
+    if (only) assert.ok(of.every(c => c.type === only));
+    else for (const t of ['word building today family', 'word building family form']) assert.ok(of.some(c => c.type === t), `${k}: no ${t} cases`);
+  }
   const fp = corpus.filter(c => c.fp).map(c => `${c.type} ${c.cls} ${c.id}: ${c.text}`);
   assert.deepEqual(fp, [], 'false positives');
   // a B2 model typed without its commas: the clause rules read clauses by their commas (nachdem … war zogen wir ein), as

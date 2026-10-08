@@ -616,8 +616,25 @@ export async function buildData({ root = ROOT, codeRoot = ROOT } = {}) {
         siblings: fam.forms.filter((/** @type {any} */ x) => x !== f && x.cls === f.cls && x.word !== f.word).map((/** @type {any} */ x) => (x.art ? `${x.art} ${x.word}` : x.word)),
         none: (fam.none || []).map((/** @type {any} */ n) => n.word) });
     }
+    // Today's family (round 7 fix): every clue form typed in the daily puzzle, as its judge grades it (judgeTyped
+    // with the game's lexicon); the item id is the card's with a "today:" prefix (not a card id)
+    try {
+      const FM = await import(pathToFileURL(path.join(codeRoot, 'src/domain/wordbuild-family.js')).href);
+      if (FM.judgeTyped && bc.families) {
+        const model = FM.familyModel(bc);
+        data.todayLexicon = FM.familyLexicon(bc, J(root, 'content/igloo/words/de.json'));
+        data.judgeTyped = FM.judgeTyped;
+        for (const fam of model.values()) for (const f of fam.forms) {
+          if (!f.card || !f.key || f.board === false || !f.clue) continue;
+          wordbuild.push({ id: `today:${f.card}`, src: 'wordbuild', wb: 'today family', accept: [f.art ? `${f.art} ${f.word}` : (f.inf || f.word)], noun: !!f.art, f, fam });
+        }
+      }
+    } catch (e) { if (!/Cannot find module|ERR_MODULE_NOT_FOUND|ENOENT/.test(String(e))) throw e; }
     for (const it of wordbuild) data.byId.set(it.id, it);
     data.wbLexicon = G.lexiconOf(bc);
+    // every word the build content and its families know, for the cross-word classes (another word of the family
+    // spelled alike: das Verhalten / verhalten; one umlaut apart: vertraglich / verträglich)
+    data.wbForms = (bc.families || []).flatMap((/** @type {any} */ fam) => fam.forms.filter((/** @type {any} */ f) => f.parent != null).map((/** @type {any} */ f) => ({ ...f, root: fam.root })));
   } catch (e) { if (!/Cannot find module|ERR_MODULE_NOT_FOUND|ENOENT/.test(String(e))) throw e; }
   return Object.assign(data, { parts, clusters, script, wordbuild });
 }
@@ -801,7 +818,32 @@ export async function buildCorpus({ root = ROOT } = {}) {
       }
       if (it.f.kind === 's' && (it.form === 'sub' || it.form === 'modal')) add(it, 'wb-split-end', `${it.f.pre} ${a.slice(it.f.pre.length)}`, 'wrong');
       if (it.form === 'pres' && it.f.kind === 's') add(it, 'wb-unsplit', `${it.f.pre}${pieces[0]}`, 'wrong');
-    } else if (it.wb === 'family form') {
+    } else if (it.wb === 'today family') {
+      if (it.f.art) { for (const o of OTHER_ART[it.f.art].filter(x => x !== 'den')) add(it, 'wb-article', `${o} ${it.f.word}`, 'wrong'); add(it, 'wb-no-article', it.f.word, 'wrong'); }
+      // every other form of the family, as written: the tiles they share are not the word (das Gebot, das Schloss);
+      // one spelled alike is the noun-verb class below, a dual verb's other reading is the same word
+      for (const g of it.fam.forms) if (g.parent && g.word.toLowerCase() !== it.f.word.toLowerCase()) add(it, 'cross-lexeme-family', g.art ? `${g.art} ${g.word}` : g.word, 'wrong');
+    }
+    if (it.wb === 'family form' || it.wb === 'today family' || it.wb === 'verb' || it.wb === 'word') {
+      // the cross-word classes on every typed word card, in the round and in Today's family
+      const a0 = it.accept[0], m0 = /^(der|die|das) (.+)$/.exec(a0);
+      const art = m0 ? m0[1] : null, w = (m0 ? m0[2] : a0).replace(/^sich /, '');
+      if (!/\s/.test(w)) {
+        const lw = w.toLowerCase(), cls = it.f ? it.f.cls : it.v ? 'verb' : it.n ? it.n.cls : null;
+        // a word one umlaut apart that is a word itself (vertraglich for verträglich, schon for schön)
+        const fold2 = (/** @type {string} */ x) => x.toLowerCase().replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss');
+        const L = data.todayLexicon || data.wbLexicon;
+        for (let k = 0; k < w.length; k++) {
+          const v = /** @type {Record<string, string>} */ ({ ä: 'a', ö: 'o', ü: 'u', a: 'ä', o: 'ö', u: 'ü' })[w[k]];
+          if (!v) continue;
+          const other = w.slice(0, k) + v + w.slice(k + 1);
+          if (L && L.has(fold2(other)) && fold2(other) !== fold2(w)) add(it, 'cross-lexeme-umlaut', art ? `${art} ${other}` : other, 'wrong');
+        }
+        // a noun made from the infinitive for its verb, and the verb for its noun (das Verhalten / sich verhalten)
+        for (const g of data.wbForms || []) if (g.word.toLowerCase() === lw && g.cls !== cls && (g.cls === 'noun' || cls === 'noun')) add(it, 'noun-verb-conversion', g.art ? `${g.art} ${g.word}` : g.word, 'wrong');
+      }
+    }
+    if (it.wb === 'family form') {
       // the family's other forms of the same class (a sibling prefix or ending), its article swapped or dropped, a typo,
       // the checked non-words of its family, and a separable verb typed apart
       for (const s of it.siblings.slice(0, 4)) add(it, 'wb-family-sibling', s, 'wrong');
@@ -810,7 +852,7 @@ export async function buildCorpus({ root = ROOT } = {}) {
       for (const n of it.none.slice(0, 2)) add(it, 'wb-family-nonword', n, 'wrong');
       if (it.f.kind === 's' && it.f.pre.length) add(it, 'wb-split', `${it.f.pre[0]} ${it.f.word.slice(it.f.pre[0].length)}`, 'wrong');
       const w = it.f.word, ty = typoIn(w, { lex, eligible: () => true }); if (ty) add(it, 'wb-typo', m ? `${m[1]} ${ty}` : ty, 'wrong');
-    } else {
+    } else if (it.wb === 'word') {
       const m = /^(der|die|das) (.+)$/.exec(a);
       if (m) { for (const o of OTHER_ART[m[1]] || []) add(it, 'wb-article', `${o} ${m[2]}`, 'wrong'); add(it, 'wb-no-article', m[2], 'wrong'); }
       const w = it.n.word, ty = typoIn(w, { lex, eligible: () => true }); if (ty) add(it, 'wb-typo', m ? `${m[1]} ${ty}` : ty, 'wrong');
@@ -874,7 +916,10 @@ export async function evaluate({ root = ROOT, codeRoot = root, dataRoot = root }
     const it = data.byId.get(c.id);
     if (!it) { c.verdict = 'missing'; c.fp = c.fn = c.soft = c.partialWrong = false; c.slips = []; continue; }
     const move = c.move ? it.moves.find(m => m.key === c.move) : null;
-    const g = it.src === 'wordbuild' && gradeTyped ? { ...gradeTyped(c.text, { accept: it.accept, noun: !!it.noun, lexicon: data.wbLexicon }), rest: null, typos: [], umlautMiss: [] } : gradeAnswer(it, c.text, move, opts);
+    // Today's family: right only when its judge says right (a slip is right, rated Hard, as in the round)
+    const today = it.wb === 'today family' && data.judgeTyped ? data.judgeTyped({ fam: it.fam, cards: [it.f.card], i: 0, done: {}, input: c.text, lexicon: data.todayLexicon }) : null;
+    const g = today ? { ok: today.outcome === 'right', rest: null, typos: [], umlautMiss: [] }
+      : it.src === 'wordbuild' && gradeTyped ? { ...gradeTyped(c.text, { accept: it.accept, noun: !!it.noun, lexicon: data.wbLexicon }), rest: null, typos: [], umlautMiss: [] } : gradeAnswer(it, c.text, move, opts);
     c.verdict = !g.ok ? 'wrong' : g.rest && g.rest.status === 'differs' ? 'partial' : 'right';
     c.fp = c.want === 'wrong' && c.verdict === 'right';
     c.fn = c.want === 'right' && c.verdict === 'wrong';
