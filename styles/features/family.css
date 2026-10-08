@@ -304,3 +304,12 @@ body.kb .pz-head, body.kb .pz-root, body.kb .pz-msg:empty { display: none; }
   .pt.is-ok, .hx[aria-pressed="true"], .pz-sqs i.is-f1, .pz-bsq.is-f1, .pz-grid i.is-f1 { background: CanvasText; color: Canvas; forced-color-adjust: none; }
   .pz-sqs i.is-now { outline: 2px solid Highlight; }
 }
+
+/* ---------- the Word building hub's top section (hub.js) ---------- */
+.wb-famtop { margin-bottom: 0; padding: 14px 16px 16px; border-radius: var(--r-card); background: var(--surface); box-shadow: var(--shadow-card); display: grid; gap: 6px; }
+.wb-famtop .label { color: var(--ink-3); }
+.wb-famtop-root { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.wb-famtop-root > span:first-child { font: 400 30px/1.1 var(--font-display); color: var(--ink); }
+.wb-famtop-acts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.wb-famtop-acts .btn-primary { flex: 1 1 auto; }
+.wb-gamerow { margin-top: var(--s-2); }

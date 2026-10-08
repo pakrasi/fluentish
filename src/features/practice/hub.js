@@ -180,7 +180,11 @@ export async function mountHub(el, ctx) {
           detail: wordsArea.seen ? t('practice.area.trail', { pct: pct(wordsArea.recall), n: wordsArea.due }) : t('practice.words.status.none', { n: examWords }) })
         : linkRow({ href: '#/lookup/words', title: t('practice.area.words'),
           detail: wc ? t('practice.words.status.none', { n: examWords }) : wordsState === 'error' ? t('practice.words.status.failed') : t('practice.words.status.loading') });
+    // round 7: Word families first (the family view of today's root; kv build.family holds the day's board and its known count)
+    const famDay = ((store.get('build.family', null) || {}).days || []).find((/** @type {any} */ x) => x.day === c.today) || null;
     const wordRows = [
+      linkRow({ href: famDay ? `#/practice/build/family/${encodeURIComponent(famDay.root)}` : '#/practice/build/family', title: t('practice.families.row'),
+        detail: famDay && famDay.stats ? t('practice.families.detail', { root: famDay.root, k: famDay.stats.known, n: famDay.stats.n }) : t('practice.families.detailNone') }),
       linkRow({ href: '#/practice/clusters', title: t('practice.clusters.title'), detail: cl.due ? t('practice.clusters.rowDue', { n: cl.due }) : t('practice.clusters.rowDetail') }),
       linkRow({ href: '#/practice/build', title: t('practice.wordbuild.row'), detail: bd ? t('practice.wordbuild.rowDue', { n: bd }) : t('practice.wordbuild.rowDetail') }),
       wordsRow,

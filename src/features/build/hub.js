@@ -12,6 +12,9 @@ import { dayAllowance } from '../../domain/allowance.js';
 import { backLink } from './compass.js';
 import { loadContent, knowledge, today as todayOf } from './data.js';
 import { writeStats } from './plan.js';
+import { familiesOf, todayBoard } from './family-data.js';
+import { foundCount } from '../../domain/wordbuild-family.js';
+import { langAttr, dirAttr } from '../../core/lang.js';
 
 const CELL = /** @type {Record<string, number>} */ ({ known: 2, shaky: 1, unknown: 1, unseen: 0 });
 
@@ -21,7 +24,10 @@ export async function mountHub(el, ctx) {
   let alive = true;
   /** @type {Field[]} */ let fields = [];
   replace(el, h('div', { class: 'wb stack' }, backLink('#/practice', t('practice.title')), h('div', { class: 'page-head' }, h('h1', null, t('build.title'))), h('p', { class: 'caption' }, t('build.loading'))));
-  let d, k;
+  /** @type {any} */
+  let d;
+  /** @type {any} */
+  let k;
   try { [d, k] = await Promise.all([loadContent(ctx), knowledge(ctx).catch(() => null)]); } catch {
     replace(el, h('div', { class: 'wb stack' }, backLink('#/practice', t('practice.title')), h('div', { class: 'page-head' }, h('h1', null, t('build.title'))), h('p', null, t('build.loadFailed'))));
     return () => {};
@@ -64,12 +70,27 @@ export async function mountHub(el, ctx) {
     const what = b.due && b.newLeft ? t('build.hub.dueNew', { due: b.due, n: b.newLeft }) : b.due ? t('build.hub.due', { n: b.due }) : b.newLeft ? t('build.hub.new', { n: b.newLeft }) : '';
     const start = b.n ? h('a', { class: 'btn btn-primary btn-wide pressable', href: '#/practice/build/round?kind=review' }, t('build.hub.review', { what, min: b.minutes })) : null;
     const dueEl = h('b', { class: 'tnum' }, '0');
+    // round 7: Today's family at the top (the day's root, how much of it he knows, play and see)
+    const fday = todayBoard(ctx, d, familiesOf(d), k);
+    const fdone = fday ? fday.cards.every(id => (fday.done || {})[id]) : false;
+    const famTop = fday ? h('section', { class: 'wb-famtop', 'aria-labelledby': 'wb-famtop-h' },
+      h('p', { class: 'label', id: 'wb-famtop-h' }, t('build.hub.familyTitle')),
+      h('p', { class: 'wb-famtop-root' }, h('span', { lang: langAttr(), dir: dirAttr() }, fday.root),
+        h('span', { class: 'caption tnum' }, fdone || Object.keys(fday.done || {}).length ? t('build.hub.familyDone', { n: foundCount(fday, fday.done || {}), total: fday.cards.length }) : fday.stats ? t('build.hub.familyKnown', { k: fday.stats.known, n: fday.stats.n }) : '')),
+      h('div', { class: 'wb-famtop-acts' },
+        fdone ? null : h('a', { class: 'btn btn-primary pressable', href: '#/practice/build/today' }, t('build.hub.familyPlay')),
+        h('a', { class: ['btn', 'pressable', fdone && 'btn-primary'], href: `#/practice/build/family/${encodeURIComponent(fday.root)}` }, t('build.hub.familySee'))))
+      : h('section', { class: 'wb-famtop' }, h('a', { class: 'btn pressable', href: '#/practice/build/family' }, t('build.hub.families')));
+    const gameRow = h('a', { class: 'wb-hrow pressable wb-gamerow', href: '#/practice/build/game' },
+      h('span', { class: 'wb-hrow-top' }, h('span', { class: 'row-title' }, t('build.hub.game')), icon('next', { size: 16 })), h('span', { class: 'row-detail' }, t('build.hub.gameDetail')));
     replace(el, h('div', { class: ['wb', 'stack', start && 'has-dock'] },
       backLink('#/practice', t('practice.title')),
       h('div', { class: 'page-head' }, h('h1', null, t('build.title'))),
+      famTop,
       h('p', { class: 'wb-lead' }, t('build.hub.lead')),
       h('p', { class: 'wb-hub-count' }, dueEl, ' ', b.n ? t('build.hub.today', { due: b.due, n: b.newLeft }) : t('build.hub.none')),
       rows,
+      gameRow,
       h('section', { class: 'section' }, capRow),
       start ? h('div', { class: 'dock' }, start) : null));
     countTo(dueEl, b.n, { from: 0, duration: 600 });
