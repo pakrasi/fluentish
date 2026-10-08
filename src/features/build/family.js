@@ -39,6 +39,32 @@ function s(tag, attrs = {}, ...kids) {
 /** Compass places of the separable prefixes (degrees, 0 = forward/right, -90 = up). */
 const ANG = /** @type {Record<string, number>} */ ({ auf: -90, vor: -45, ein: 0, an: 45, ab: 90, nach: 135, aus: 180, zu: -135 });
 const W = 360, H = 316, CX = 180, CY = 158;
+/** The ring's other places: beside the side compass points, where labels clear their neighbours at 360 px (e2e
+   family.spec measures every root). 8 compass places + these 4 = at most 12 verbs on the ring. */
+const BETWEEN = [-22.5, 157.5, 22.5, -157.5];
+
+/**
+ * One tab stop for a group of buttons (a toolbar): the arrow keys move the focus, Home and End go to the ends,
+ * Enter or Space presses. The stop follows the last focused button, else the pressed one, else the first.
+ * @param {HTMLElement} group @param {string} sel
+ */
+export function roving(group, sel) {
+  const all = () => /** @type {HTMLElement[]} */ ([...group.querySelectorAll(sel)]);
+  const set = (/** @type {HTMLElement} */ on) => { for (const b of all()) b.tabIndex = b === on ? 0 : -1; };
+  const first = all().find(b => b.getAttribute('aria-pressed') === 'true') || all()[0];
+  if (first) set(first);
+  group.addEventListener('focusin', e => { const b = /** @type {HTMLElement} */ (e.target); if (b.matches(sel)) set(b); });
+  group.addEventListener('keydown', e => {
+    const bs = all();
+    const i = bs.indexOf(/** @type {HTMLElement} */ (document.activeElement));
+    if (i < 0 || e.altKey || e.ctrlKey || e.metaKey) return;
+    const n = bs.length;
+    const to = e.key === 'ArrowRight' || e.key === 'ArrowDown' ? (i + 1) % n : e.key === 'ArrowLeft' || e.key === 'ArrowUp' ? (i - 1 + n) % n : e.key === 'Home' ? 0 : e.key === 'End' ? n - 1 : -1;
+    if (to < 0) return;
+    e.preventDefault();
+    bs[to].focus();
+  });
+}
 
 /**
  * @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx @param {string | undefined} rootArg
@@ -114,61 +140,71 @@ export async function mountFamily(el, ctx, rootArg, { sheet = false, close } = {
     const verbs = kidsOf(fam, fam.forms[0].id).filter(f => f.cls === 'verb');
     /** @type {Map<string, number>} */ const place = new Map();
     const used = new Set();
-    for (const v of verbs) if (ANG[v.pre[0]] != null && v.join === 's' && !used.has(ANG[v.pre[0]])) { place.set(v.id, ANG[v.pre[0]]); used.add(ANG[v.pre[0]]); }
-    /** @type {number[]} */ const free = [];
-    for (let a = -90 + 22.5; a < 270; a += 22.5) { const n = ((a + 180) % 360) - 180; if (!used.has(n)) free.push(n); }
-    // the between places, spread round the ring (opposite sides in turn), then the compass places left free
-    const SPREAD = [-67.5, 112.5, 22.5, -157.5, -22.5, 157.5, 67.5, -112.5];
-    const slots = [...SPREAD.filter(a => free.includes(a)), ...free.filter(a => !SPREAD.includes(a))];
-    // more verbs than places (16): the most common inside, the rest on an outer ring between them, and the nouns'
-    // squares left to the tree (WORDGAMES-DESIGN §10: the ring crowds above 16 verbs)
-    /** @type {Set<string>} */ const outer = new Set();
+    // the compass places first: the separable verb of each compass prefix, the most common when there are two
+    for (const v of [...verbs].sort((a, b) => (b.zipf || 0) - (a.zipf || 0))) if (ANG[v.pre[0]] != null && v.join === 's' && !used.has(ANG[v.pre[0]])) { place.set(v.id, ANG[v.pre[0]]); used.add(ANG[v.pre[0]]); }
+    // then the four places beside the side compass points (between them and the top or bottom the labels collide at
+    // 360 px), then compass places left free: separable verbs first, the most common first. A family with more verbs
+    // than places keeps the rest as chips under the ring, the most common first (review round 7: labels overlapped
+    // and one fell under the tab bar)
+    const COMPASS = Object.values(ANG);
+    const slots = [...BETWEEN, ...COMPASS.filter(a => !used.has(a))];
     const rest = verbs.filter(v => !place.has(v.id)).sort((a, b) => (a.join === 's' ? 0 : 1) - (b.join === 's' ? 0 : 1) || (b.zipf || 0) - (a.zipf || 0));
-    const inner = rest.slice(0, slots.length), over = rest.slice(slots.length).sort((a, b) => (b.zipf || 0) - (a.zipf || 0));
-    inner.forEach((v, i) => place.set(v.id, slots[i]));
-    const OUT = [-78.75, 101.25, 11.25, -168.75, -33.75, 146.25, 56.25, -123.75, -11.25, 168.75, 33.75, -146.25];
-    over.forEach((v, i) => { place.set(v.id, OUT[i % OUT.length]); outer.add(v.id); });
-    const crowded = verbs.length > 16;
-    const r = verbs.length > 14 ? 104 : 110, rk = r + 32, ro = 146;
+    rest.slice(0, slots.length).forEach((v, i) => place.set(v.id, slots[i]));
+    const more = rest.slice(slots.length).sort((a, b) => (b.zipf || 0) - (a.zipf || 0));
+    const dense = more.length > 0;
+    const onRing = verbs.filter(v => place.has(v.id));
+    // a prefix twice on the ring (a dual verb: umstellen splits, umstellen stays): each tile carries its joint or weld
+    /** @type {Map<string, number>} */ const preCount = new Map();
+    for (const v of verbs) preCount.set(v.pre[0] || '', (preCount.get(v.pre[0] || '') || 0) + 1);
+    const r = 110;
     const svg = s('svg', { class: 'fv-ring-svg', viewBox: `0 0 ${W} ${H}`, 'aria-hidden': 'true', focusable: 'false' });
-    const wrap = h('div', { class: 'fv-ring', role: 'group', 'aria-label': t('build.family.ringName', { root: fam.root, n: verbs.length }) }, svg);
+    const wrap = h('div', { class: 'fv-ring', role: 'group', 'aria-label': t(dense ? 'build.family.ringNameDense' : 'build.family.ringName', { root: fam.root, n: verbs.length, k: onRing.length }) }, svg);
     const pos = (/** @type {number} */ a, /** @type {number} */ rad, k2 = 1) => ({ x: CX + rad * Math.cos(a), y: CY + rad * k2 * Math.sin(a) });
     // compass order for the keyboard: clockwise from the top
-    const order = [...verbs].sort((a, b) => (((/** @type {number} */ (place.get(a.id)) + 90) + 360) % 360) - (((/** @type {number} */ (place.get(b.id)) + 90) + 360) % 360));
+    const order = [...onRing].sort((a, b) => (((/** @type {number} */ (place.get(a.id)) + 90) + 360) % 360) - (((/** @type {number} */ (place.get(b.id)) + 90) + 360) % 360));
     for (const v of order) {
       const a = /** @type {number} */ (place.get(v.id)) * Math.PI / 180;
-      const p = pos(a, outer.has(v.id) ? ro : r, outer.has(v.id) ? 0.98 : 1);
+      const p = pos(a, r);
       const c0 = pos(a, 50, 0.5);
       svg.append(s('line', { class: ['fv-spoke', v.join === 'i' && 'is-i'].filter(Boolean).join(' '), x1: c0.x, y1: c0.y, x2: p.x - 22 * Math.cos(a), y2: p.y - 14 * Math.sin(a) }));
-      const ks = crowded ? [] : kidsOf(fam, v.id);
+      const ks = kidsOf(fam, v.id);
+      // the nouns and adjectives grown from it: a short row of squares just outside the tile's box (its half width
+      // from the label's length), across the spoke, so none touches the tile or another square
+      const hw = Math.max(20, ((v.pre[0] || v.word).length * 8 + 12) / 2) + 6, hh = 13 + 14;
+      const ca = Math.cos(a), sa = Math.sin(a);
+      const reach = Math.min(Math.abs(ca) > 1e-3 ? hw / Math.abs(ca) : Infinity, Math.abs(sa) > 1e-3 ? hh / Math.abs(sa) : Infinity) + 4;
       ks.forEach((kf, i) => {
-        const spread = (i - (ks.length - 1) / 2) * 0.15;
-        const kp = pos(a + spread, rk, 0.94);
-        const ss = st(kf);
-        svg.append(s('line', { class: 'fv-kidline', x1: p.x + 22 * Math.cos(a + spread), y1: p.y + 14 * Math.sin(a + spread), x2: kp.x, y2: kp.y }));
-        svg.append(s('rect', { class: `fv-kid is-${ss}`, x: kp.x - 4, y: kp.y - 4, width: 8, height: 8, rx: 1.5 }));
+        const off = (i - (ks.length - 1) / 2) * 11;
+        const kx = p.x + ca * reach - sa * off, ky = p.y + sa * reach + ca * off;
+        svg.append(s('rect', { class: `fv-kid is-${st(kf)}`, x: kx - 4, y: ky - 4, width: 8, height: 8, rx: 1.5 }));
       });
-      const ss = st(v);
-      const name = t('build.family.nodeName', { word: v.word, en: v.en, join: t(v.join === 's' ? 'build.family.legend.split' : 'build.family.legend.stay'), grade: v.grade ? t(`build.family.legend.${v.grade}`) : '', state: STATE(ss) }).replace(/\s+\.\s/g, '. ');
-      const b = h('button', { type: 'button', class: ['fv-node', `is-${ss}`, todayOf(d, k, v) && 'is-today', 'pressable'], lang: langAttr(), dir: dirAttr(), 'aria-label': name, 'data-id': v.id,
-        style: { left: `${(p.x / W) * 100}%`, top: `${(p.y / H) * 100}%` }, onclick: () => toggle(v.id, true) },
-        h('span', { class: 'fv-node-t', 'aria-hidden': 'true' }, v.pre[0] || v.word), v.grade ? h('span', { class: ['fv-gr', `is-${v.grade}`], 'aria-hidden': 'true' }) : null);
-      wrap.append(b);
+      wrap.append(verbButton(v, (preCount.get(v.pre[0] || '') || 0) > 1, { class: 'fv-node', style: { left: `${(p.x / W) * 100}%`, top: `${(p.y / H) * 100}%` } }));
     }
     wrap.append(h('span', { class: 'fv-node-root', lang: langAttr(), dir: dirAttr(), 'aria-hidden': 'true', style: { left: '50%', top: `${(CY / H) * 100}%` } }, fam.root));
-    // arrow keys move round the ring (one tab stop per tile is fine, but the arrows follow the compass)
-    wrap.addEventListener('keydown', e => {
-      const btns = /** @type {HTMLElement[]} */ ([...wrap.querySelectorAll('.fv-node')]);
-      const i = btns.indexOf(/** @type {HTMLElement} */ (document.activeElement));
-      if (i < 0) return;
-      const step = e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : e.key === 'ArrowLeft' || e.key === 'ArrowUp' ? -1 : 0;
-      if (!step) return;
-      e.preventDefault();
-      btns[(i + step + btns.length) % btns.length].focus();
-    });
-    return wrap;
+    roving(wrap, '.fv-node');
+    if (!more.length) return wrap;
+    const chips = h('div', { class: 'fv-more-chips', role: 'group', 'aria-labelledby': 'fv-more-h' },
+      more.map(v => verbButton(v, (preCount.get(v.pre[0] || '') || 0) > 1, { class: 'fv-vchip' })));
+    roving(chips, '.fv-vchip');
+    return h('div', { class: 'fv-ring-wrap' }, wrap,
+      h('div', { class: 'fv-more' }, h('p', { class: 'fv-more-h', id: 'fv-more-h' }, t('build.family.moreVerbs', { n: more.length })), chips));
   }
 
+  /**
+   * A verb on the ring or among the chips under it: its prefix (the word, without one), the knowledge encodings, the
+   * derivability bar. Its name starts with the text it shows (WCAG 2.5.3: "auf, aufstellen: set up …"). A dual verb's
+   * two readings carry a joint (splits) or a weld (never splits), so the two tiles differ.
+   * @param {Form} v @param {boolean} dual @param {{class: string, style?: Record<string, string>}} o
+   */
+  function verbButton(v, dual, o) {
+    const ss = st(v);
+    const shown = v.pre[0] || v.word;
+    const rest = t('build.family.nodeName', { word: v.word, en: v.en, join: t(v.join === 's' ? 'build.family.legend.split' : 'build.family.legend.stay'), grade: v.grade ? t(`build.family.legend.${v.grade}`) : '', state: STATE(ss) }).replace(/\s+\.\s/g, '. ');
+    const name = v.pre[0] ? `${shown}, ${rest}` : rest;
+    return h('button', { type: 'button', class: [o.class, `is-${ss}`, todayOf(d, k, v) && 'is-today', dual && (v.join === 's' ? 'is-dual-s' : 'is-dual-i'), 'pressable'], lang: langAttr(), dir: dirAttr(), 'aria-label': name, 'data-id': v.id,
+      style: o.style || null, onclick: () => toggle(v.id, true) },
+    h('span', { class: 'fv-node-t' }, shown), v.grade ? h('span', { class: ['fv-gr', `is-${v.grade}`], 'aria-hidden': 'true' }) : null);
+  }
   /** @param {Family} fam */
   function summary(fam) {
     /** @type {Record<string, number>} */ const c = { known: 0, shaky: 0, unknown: 0, unseen: 0 };
@@ -393,8 +429,11 @@ export async function mountFamily(el, ctx, rootArg, { sheet = false, close } = {
 
   /* ---------------- the page ---------------- */
   function chipRow(/** @type {string} */ label, /** @type {[string, string][]} */ items, /** @type {string} */ cur, /** @type {(v: string) => void} */ pick, lang = true) {
-    return h('div', { class: 'fv-chips', role: 'group', 'aria-label': label }, items.map(([v, text]) =>
+    // one tab stop: the arrow keys move along the row (40 roots were 40 tab stops before the first word)
+    const row = h('div', { class: 'fv-chips', role: 'toolbar', 'aria-label': label }, items.map(([v, text]) =>
       h('button', { type: 'button', class: 'chip pressable', lang: lang ? langAttr() : null, dir: lang ? dirAttr() : null, 'aria-pressed': String(v === cur), onclick: () => pick(v) }, text)));
+    roving(row, '.chip');
+    return row;
   }
   function draw() {
     if (!alive) return;
@@ -436,7 +475,9 @@ export async function mountFamily(el, ctx, rootArg, { sheet = false, close } = {
         chipRow(t('build.family.endings'), list.map(e => [e, (S.get(e) || { label: `-${e}` }).label]), end, v => { end = v; draw(); }));
       main.append(...byEnding(end));
     }
-    replace(el, h('div', { class: ['wb', 'fv', sheet && 'fv-sheet'] }, back(), h('div', { class: 'fv-grid' }, side, main)));
+    // a skip link past the head, the chips and the ring to the first word (keyboard)
+    const skip = h('a', { class: 'skip-link fv-skip', href: '#', onclick: (/** @type {Event} */ e) => { e.preventDefault(); /** @type {HTMLElement | null} */ (main.querySelector('.fv-rowbtn'))?.focus(); } }, t('build.family.skip'));
+    replace(el, h('div', { class: ['wb', 'fv', sheet && 'fv-sheet'] }, back(), skip, h('div', { class: 'fv-grid' }, side, main)));
     setAddress();
     // the chip of the current root in view
     requestAnimationFrame(() => /** @type {HTMLElement | null} */ (el.querySelector('.fv-chips [aria-pressed="true"]'))?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'instant' }));

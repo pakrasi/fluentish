@@ -58,7 +58,6 @@
 .fv-ring-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .fv-spoke { stroke: var(--ink-3); stroke-width: 1.2; opacity: 0.6; }
 .fv-spoke.is-i { stroke-dasharray: 2 3; opacity: 0.85; }
-.fv-kidline { stroke: var(--hairline-strong); stroke-width: 1; }
 .fv-kid { fill: none; stroke: var(--x-box); stroke-width: 1.3; }
 .fv-kid.is-known { fill: var(--ink); stroke: none; }
 .fv-kid.is-shaky { fill: var(--ink-3); stroke: none; }
@@ -73,6 +72,26 @@
 .fv-node:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .fv-node .fv-gr { position: absolute; top: calc(100% + 4px); inset-inline-start: 50%; transform: translateX(-50%); width: 16px; height: 4px; }
 .fv-node .fv-gr.is-O { transform: translateX(calc(-50% - 3px)); }
+/* a dual verb's two readings on one prefix: a joint (splits) or a weld (never splits) on the tile */
+.fv-node.is-dual-s .fv-node-t, .fv-vchip.is-dual-s .fv-node-t { position: relative; padding-inline-end: 5px; }
+.fv-node.is-dual-s .fv-node-t::after, .fv-vchip.is-dual-s .fv-node-t::after { content: ""; position: absolute; inset-inline-end: 0; top: 15%; height: 70%; width: 1.5px; border-radius: 1px; background: currentColor; opacity: 0.55; }
+.fv-node.is-dual-i .fv-node-t, .fv-vchip.is-dual-i .fv-node-t { box-shadow: 0 1.5px 0 currentColor; }
+/* the rest of a dense family: chips under the ring, the most common first (same encodings as the ring) */
+.fv-more { margin: 14px 8px 0; }
+.fv-more-h { font: 500 12px/1.3 var(--font-ui); color: var(--ink-3); }
+.fv-more-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.fv-vchip { position: relative; min-width: 44px; height: 36px; padding: 0 10px 4px; border: 0; border-radius: var(--r-tile); background: var(--surface); box-shadow: inset 0 0 0 1.5px var(--x-box);
+  color: var(--ink); font: 400 16px/1 var(--font-display); cursor: pointer; display: inline-grid; place-items: center; }
+.fv-vchip::before { content: ""; position: absolute; inset: -4px -2px; }
+.fv-vchip.is-known { background: var(--ink); color: var(--on-ink); box-shadow: none; }
+.fv-vchip.is-shaky { background: var(--ink-3); color: var(--on-ink); box-shadow: none; }
+.fv-vchip.is-unseen { box-shadow: none; outline: 1.5px dotted var(--x-box); outline-offset: -1.5px; font-style: italic; color: var(--x-new); }
+.fv-vchip.is-today { box-shadow: 0 0 0 2px var(--canvas), 0 0 0 3.5px var(--accent); }
+.fv-vchip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.fv-vchip .fv-gr { position: absolute; bottom: 5px; inset-inline-start: 50%; transform: translateX(-50%); width: 14px; height: 3px; }
+.fv-vchip.is-known .fv-gr, .fv-vchip.is-shaky .fv-gr { --ink: var(--on-ink); }
+@media (pointer: coarse) { .fv-vchip { height: 44px; } }
+.fv-skip:not(:focus) { clip-path: inset(50%); }
 .fv-node-root { position: absolute; transform: translate(-50%, -50%); padding: 10px 16px; border-radius: 10px; background: var(--ink); color: var(--on-ink); font: 400 22px/1 var(--font-display); white-space: nowrap; }
 .fv-sum { display: flex; align-items: center; gap: 12px; margin: 14px 8px 0; font: 500 13px/1.3 var(--font-ui); color: var(--ink-2); }
 .fv-bar { flex: 1; display: flex; gap: 2px; height: 6px; }
