@@ -14,7 +14,7 @@
 import { h, replace, announce } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
-import { fling, countTo } from '../../core/motion.js';
+import { countTo } from '../../core/motion.js';
 import { fitToKeyboard, keep, reveal as revealEl } from '../../core/keyboard.js';
 import { ARTICLES, TRIES, judge, judgeTyped, doneOf, pointsOf, foundCount, piecesOf, spell, partsOf, tapTile, dropLast, endingChains, buildOf } from '../../domain/wordbuild-family.js';
 import { loadFamilies, todayBoard, saveDay, answerClue, stateOf } from './family-data.js';
@@ -78,7 +78,7 @@ export async function mountToday(el, ctx) {
   const level = day.level || 'B1';
   const easy = level === 'A1' || level === 'A2';
   const S = { idx: Math.max(0, day.cards.findIndex(id => !day.done[id])), b: /** @type {{art: string | null, pre: string | null, suf: string | null}} */ ({ art: null, pre: null, suf: null }),
-    busy: false, splitting: false, typing: false, t0: performance.now(), over: false };
+    busy: false, splitting: false, typing: false, learning: false, t0: performance.now(), over: false };
   // time on each clue: the time since he came to it, plus the time spent on it before (moving away keeps it)
   /** @type {Record<number, number>} */ const spent = {};
   const clueMs = () => (spent[S.idx] || 0) + performance.now() - S.t0;
@@ -106,6 +106,7 @@ export async function mountToday(el, ctx) {
   const hive = h('div', { class: 'pz-hive', role: 'group', 'aria-label': t('build.today.prefixes') });
   const ends = h('div', { class: 'pz-ends', role: 'group', 'aria-label': t('build.today.endings') });
   const playArea = h('div', { class: 'pz-play' }, hive, ends);
+  const learn = h('div', { class: 'pz-learn', hidden: true });
   const input = /** @type {HTMLInputElement} */ (h('input', { class: 'pz-type', type: 'text', lang: langAttr(), dir: dirAttr(), autocapitalize: 'off', autocomplete: 'off', spellcheck: 'false', enterkeyhint: 'go', 'aria-label': t('build.today.typeField'), hidden: true }));
   input.setAttribute('autocorrect', 'off');
   const typeBtn = h('button', { type: 'button', class: 'btn pressable', 'aria-pressed': 'false', onpointerdown: keep, onclick: () => setTyping(!S.typing) }, t('build.today.type'));
@@ -121,7 +122,7 @@ export async function mountToday(el, ctx) {
     h('a', { class: 'pz-root pressable', href: famHref, onpointerdown: keep }, h('span', { class: 'pz-root-w', lang: langAttr(), dir: dirAttr() }, fam.root), h('span', { class: 'pz-root-en' }, fam.en),
       h('span', { class: 'sr-only' }, `, ${t('build.today.seeFamily')}`)),
     prog);
-  const main = h('div', { class: 'pz-main' }, head, rootLine, squares, clue, msg, playArea, acts);
+  const main = h('div', { class: 'pz-main' }, head, rootLine, squares, clue, msg, playArea, learn, acts);
   const aside = h('aside', { class: 'pz-board', 'aria-label': t('build.today.board') });
   const box = h('div', { class: 'pz', role: 'region', 'aria-label': t('build.today.title') }, main, aside);
   replace(el, box);
@@ -147,8 +148,7 @@ export async function mountToday(el, ctx) {
       tileEls.set(tileKey('pre', p), b);
       hive.append(b);
     });
-    hive.append(h('div', { class: 'hx is-centre', lang: langAttr(), dir: dirAttr(), role: 'img', 'aria-label': t('build.today.rootTile', { root: fam.root }) }, STEM, h('small', null, fam.root)),
-      h('div', { class: 'hx-ripple', 'aria-hidden': 'true' }));
+    hive.append(h('div', { class: 'hx is-centre', lang: langAttr(), dir: dirAttr(), role: 'img', 'aria-label': t('build.today.rootTile', { root: fam.root }) }, STEM, h('small', null, fam.root)));
     replace(ends);
     const sufRow = h('div', { class: 'pz-ends-row' }), artRow = h('div', { class: 'pz-ends-row' });
     for (const x of day.tiles.suf) { const b = h('button', { type: 'button', class: 'hx pressable', lang: langAttr(), dir: dirAttr(), 'aria-pressed': 'false', 'aria-label': t('build.today.endingTile', { s: endLabel(x) }), 'data-suf': x, onpointerdown: keep, onclick: () => pick('suf', x, b) }, endLabel(x)); tileEls.set(tileKey('suf', x), b); sufRow.append(b); }
@@ -313,7 +313,7 @@ export async function mountToday(el, ctx) {
     if (S.busy || S.splitting || S.over) return;
     finishAll();
     const id = card(), f = cur();
-    if (day.done[id]) { nextOpen(); return; }
+    if (day.done[id]) { advance(); return; }
     let slip = false, typed = false, typedWord = '';
     /** @type {import('../../domain/wordbuild-family.js').Judged | null} */ let tres = null;
     const raw = S.typing ? input.value.trim() : null;
@@ -447,7 +447,7 @@ export async function mountToday(el, ctx) {
     finish({ ...o, splitMiss: !right });
   }
 
-  /* ---------------- a word found, or shown ---------------- */
+  /* ---------------- a word found, or shown: what its parts mean ---------------- */
   /** @param {{slip?: boolean, typed?: boolean, splitMiss?: boolean}} o */
   async function finish(o) {
     const f = cur(), id = card();
@@ -460,34 +460,112 @@ export async function mountToday(el, ctx) {
     day.ms = (day.ms || 0) + Math.round(ms);
     saveDay(store, day);
     answerClue(ctx, day, id, { tries, splitMiss: !!o.splitMiss, artMiss, slip: !!o.slip, typed: !!o.typed, ms });
-    const line = [];
-    if (o.splitMiss) line.push(t(f.join === 's' ? 'build.today.splitWrong.s' : 'build.today.splitWrong.i'), ' ');
-    if (f.ex) line.push(exampleLine(f)); else if (f.note) line.push(f.note);
-    say(...line);
+    say();
     drawClue();
-    pulse();
-    const wEl = /** @type {HTMLElement | null} */ (build.querySelector('.fw'));
-    if (wEl && !matchMedia('(min-width: 900px)').matches) fling(wEl, countEl, { duration: 560 });
+    // the word settles where it was built and its square fills (the word no longer flies across the meaning)
+    play(build.querySelector('.fw'), [{ transform: 'scale(1.06)' }, { transform: 'none' }], { duration: 420, easing: css('--spring-pop') });
     const sq = /** @type {HTMLElement | undefined} */ (squares.children[S.idx]);
-    if (sq) play(sq, [{ transform: 'scale(0.4)' }, { transform: 'scale(1)' }], { duration: 560, delay: 200, easing: css('--spring-pop') });
-    announce(`${f.art ? `${f.art} ` : ''}${f.word}. ${t('build.today.found', { n: foundCount(day, day.done), total: N })}`);
-    if (allDone()) { await hold(1500); return done(); }
-    // the example stays long enough to read, with or without motion
-    await hold(o.splitMiss ? 2200 : 1500);
-    if (alive && card() === id && !S.splitting) nextOpen();
+    if (sq) play(sq, [{ transform: 'scaleY(0.4)', opacity: 0.4 }, { transform: 'none', opacity: 1 }], { duration: 560, delay: 120, easing: css('--spring-pop') });
+    const lesson = teach(f, { splitMiss: !!o.splitMiss });
+    announce(`${f.art ? `${f.art} ` : ''}${f.word}. ${t('build.today.found', { n: foundCount(day, day.done), total: N })}. ${lesson}`);
   }
   async function show() {
     const f = cur(), id = card();
     day.done[id] = 'shown';
     saveDay(store, day);
     answerClue(ctx, day, id, { tries: day.tries[id] || TRIES, shown: true, ms: clueMs() });
-    const why = f.grade === 'O' ? t('build.today.learnWhy') : f.note ? `${f.note} ` : '';
-    say(t('build.today.shown', { word: `${f.art ? `${f.art} ` : ''}${f.word}`, why }));
+    say(t('build.today.shown', { word: `${f.art ? `${f.art} ` : ''}${f.word}`, why: '' }));
     drawClue();
-    if (allDone()) { await hold(2000); return done(); }
+    teach(f, { shown: true });
   }
   const allDone = () => day.cards.every(id => day.done[id]);
-  /** Holds are the same with reduced motion (the example must be readable). @param {number} ms */
+  /** After a found or shown word: the next open meaning, or the done screen. */
+  function advance() { if (allDone()) { hideLearn(); done(); } else nextOpen(); }
+
+  /* the lesson of a word, in place of the tiles until he moves on (Next, Enter, ‹ ›, a letter typed): its parts with
+     what each means (aus- out, stell put, -ung die), the content's line on how the parts give the meaning, the change
+     (splits off or never splits with the authored Perfekt; a noun's article from its ending), the example. No timer. */
+  const PX = new Map([...d.c.prefixes, ...(d.c.particles || [])].map((/** @type {any} */ p) => [p.id, p]));
+  const SX = new Map(d.c.suffixes.map((/** @type {any} */ x) => [x.id, x]));
+  /** @param {string} p */
+  const preSense = p => (p === 'un' ? t('build.today.learn.un') : (PX.get(p) || {}).short || (PX.get(p) || {}).core || '');
+  /** @param {string} x */
+  const endSense = x => {
+    const sx = SX.get(x);
+    if (sx && sx.cls === 'noun') return t('build.today.learn.nounEnd', { art: sx.art, short: sx.short });
+    if (sx) return sx.short || '';
+    return ['pp', 'ppr', 's', 'los', 'isch'].includes(x) ? t(`build.today.learn.end.${x}`) : '';
+  };
+  /** The parts of a word with their meanings, outermost prefix first. @param {Form} f */
+  function partsRow(f) {
+    const pc = piecesOf(f);
+    const ids = [...f.pre].reverse();
+    /** @type {any[]} */ const out = [];
+    const part = (/** @type {string} */ kind, /** @type {string} */ text, /** @type {string} */ sense) => h('span', { class: ['pz-part', `is-${kind}`] },
+      h('span', { class: 'pz-part-de', lang: langAttr(), dir: dirAttr() }, text), sense ? h('span', { class: 'pz-part-en' }, sense) : null);
+    // the prefix as a prefix (aus-, not the Aus- of a noun's spelling)
+    pc.pre.forEach((x, i) => { const id = ids[i] || x.toLowerCase(); out.push(part('pre', `${id}-`, preSense(id))); });
+    out.push(part('root', pc.base, String(fam.en).split(/[,;]/)[0].trim()));
+    pc.suf.forEach((x, i) => { out.push(part('suf', `-${x}`, endSense(f.suf[i] || x))); });
+    return h('p', { class: 'pz-parts' }, out.flatMap((x, i) => (i ? [h('span', { class: 'pz-plus', 'aria-hidden': 'true' }, '+'), x] : [x])));
+  }
+  /** The content's line on how the parts give the meaning, without the "aus = out:" the parts already say. @param {Form} f */
+  function whyLine(f) {
+    if (f.grade === 'O' && !f.why) return t('build.today.learnWhy').trim();
+    // a noun or adjective without its own line has its verb's: die Ausstellung, from ausstellen (aus = out: …)
+    const parent = !f.why && f.parent ? fam.byId.get(f.parent) : null;
+    if (parent && parent.why && parent.cls === 'verb') { const pw = whyLine(parent); return pw ? t('build.today.learn.from', { word: parent.word, why: pw.charAt(0).toLowerCase() + pw.slice(1) }) : ''; }
+    const w = String(f.why || '');
+    const p = f.pre.length ? [...f.pre].reverse()[f.pre.length - 1] : '';
+    const m = p ? new RegExp(`^${p}-? = [^:]+:\\s*`, 'i').exec(w) : null;
+    const rest = m ? w.slice(m[0].length) : w;
+    return rest ? rest.charAt(0).toUpperCase() + rest.slice(1) : '';
+  }
+  /** Splits off or never splits with the Perfekt; a noun's article and the rule of its ending; the derivability. @param {Form} f */
+  function changeRow(f) {
+    /** @type {any[]} */ const bits = [];
+    if (f.cls === 'verb' && f.join) {
+      bits.push(h('span', { class: ['pz-tag', f.join === 's' ? 'is-s' : 'is-i'] }, t(f.join === 's' ? 'build.family.legend.split' : 'build.family.legend.stay')));
+      if (f.pp) bits.push(h('span', null, t('build.family.perfekt'), ' ', h('span', { class: 'pz-de', lang: langAttr(), dir: dirAttr() }, `${String(f.aux || 'hat').replace('/', ' / ')} ${f.pp}`)));
+    } else if (f.cls === 'noun' && f.art) {
+      const sx = SX.get(f.suf[f.suf.length - 1]);
+      bits.push(h('span', { class: 'pz-tag is-art', lang: langAttr(), dir: dirAttr() }, f.art));
+      const rule = f.note || (sx ? `${sx.label}: ${String(sx.rule).split('. ')[0].replace(/\.$/, '')}.` : '');
+      if (rule) bits.push(h('span', null, rule));
+    } else if (f.note) bits.push(h('span', null, f.note));
+    if (f.grade) bits.push(h('span', { class: 'pz-grade' }, h('span', { class: ['fv-gr', `is-${f.grade}`], 'aria-hidden': 'true' }), t(`build.family.legend.${f.grade}`)));
+    return bits.length ? h('p', { class: 'pz-change' }, bits) : null;
+  }
+  /**
+   * Show the lesson in place of the tiles; returns its text for the announcement.
+   * @param {Form} f @param {{splitMiss?: boolean, shown?: boolean}} o
+   */
+  function teach(f, o) {
+    const why = whyLine(f);
+    const miss = o.splitMiss ? h('p', { class: 'pz-learn-miss' }, t(f.join === 's' ? 'build.today.splitWrong.s' : 'build.today.splitWrong.i')) : null;
+    replace(learn, miss, partsRow(f), why ? h('p', { class: 'pz-why' }, why) : null, changeRow(f),
+      f.ex ? h('p', { class: 'pz-learn-ex' }, exampleLine(f)) : null, f.ex && f.exEn ? h('p', { class: 'pz-exen' }, f.exEn) : null);
+    // the lesson takes the tiles' place at their height, so nothing below moves
+    const hgt = playArea.offsetHeight;
+    if (hgt) learn.style.minHeight = `${hgt}px`;
+    playArea.hidden = true; learn.hidden = false; S.learning = true;
+    box.classList.add('is-learning');
+    setNext(allDone() ? 'finish' : 'next');
+    if (!reduced()) [...learn.children].forEach((x, i) => play(x, [{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }], { duration: 320, delay: 60 + i * 50, easing: css('--ease-out') }));
+    return [o.splitMiss ? t(f.join === 's' ? 'build.today.splitWrong.s' : 'build.today.splitWrong.i') : '', why].filter(Boolean).join(' ');
+  }
+  function hideLearn() {
+    if (!S.learning) return;
+    S.learning = false;
+    learn.hidden = true; replace(learn); playArea.hidden = false;
+    box.classList.remove('is-learning');
+    setNext(null);
+  }
+  /** The thumb row's last button: Check, or Next (and Finish on the last word) while a lesson shows. @param {'next' | 'finish' | null} m */
+  function setNext(m) {
+    acts.classList.toggle('is-next', !!m);
+    replace(checkBtn, t(m === 'finish' ? 'build.today.finish' : m ? 'build.today.nextBtn' : 'build.today.check'), h('kbd', null, '↵'));
+  }
   const hold = ms => new Promise(r => setTimeout(r, ms));
 
   /** The authored example with the verb's stem and its split-off particle underlined. @param {Form} f */
@@ -511,19 +589,13 @@ export async function mountToday(el, ctx) {
     return i < 0 ? [text] : [text.slice(0, i), de(word), text.slice(i + word.length)];
   }
 
-  /** The hive answers once: each tile scales 1.07 in turn round the ring, and one accent ring leaves the root. */
-  function pulse() {
-    if (reduced()) return;
-    [...hive.querySelectorAll('.hx:not(.is-centre)')].forEach((x, i) => play(x, [{ transform: 'translate(-50%, -50%) scale(1)' }, { transform: 'translate(-50%, -50%) scale(1.07)' }, { transform: 'translate(-50%, -50%) scale(1)' }], { duration: 380, delay: i * 28, easing: css('--ease-out') }));
-    play(hive.querySelector('.hx-ripple'), [{ opacity: 0.8, transform: 'translate(-50%, -50%) scale(0.95)' }, { opacity: 0, transform: 'translate(-50%, -50%) scale(1.9, 2.3)' }], { duration: 720, easing: css('--ease-out') });
-  }
-
   /* ---------------- navigation ---------------- */
   /** @param {number} i @param {{keepBuild?: boolean}} [o] */
   async function go(i, { keepBuild = false } = {}) {
     if (S.splitting || S.over) return;
     const n = ((i % N) + N) % N;
     if (n === S.idx) { if (!keepBuild) drawClue(); return; }
+    hideLearn();
     const dir = n > S.idx ? 1 : -1;
     // the new meaning is current at once: a tile tapped while the card slides counts for it (input is never blocked)
     spent[S.idx] = clueMs();
@@ -588,7 +660,7 @@ export async function mountToday(el, ctx) {
     if (e.key === 'ArrowUp') { e.preventDefault(); go(S.idx - 1); return; }
     if (e.key === 'ArrowDown') { e.preventDefault(); go(S.idx + 1); return; }
     if (/^[1-3]$/.test(e.key) && nouns && !S.over) { const a = ARTICLES[Number(e.key) - 1]; pick('art', a, tileEls.get(tileKey('art', a)) || null); return; }
-    if (/^[a-zäöüß]$/i.test(e.key) && !S.over) { e.preventDefault(); setTyping(true, e.key); }
+    if (/^[a-zäöüß]$/i.test(e.key) && !S.over) { e.preventDefault(); if (S.learning) { if (allDone()) return; nextOpen(); } setTyping(true, e.key); }
   }
   document.addEventListener('keydown', onKey);
 
