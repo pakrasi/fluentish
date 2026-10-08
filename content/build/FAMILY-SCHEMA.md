@@ -21,7 +21,7 @@ nodes gain `ex`/`exEn`). Two new top-level keys:
   "forms": [ Form, … ],         // the root itself first (parent null), then a tree: every form's parent is earlier
   "boards": { "A2": Board, "B1": Board, "B2": Board },   // C1 uses B2; A2 only when the family has 6 board forms at A1 to B1 (else use B1)
   "none": [ { "key": "zer|", "word": "zerstellen", "chk": { "dwds": false, "wf": 0, "hits": 0 } } ],  // CHECKED non-words: the only words the game may call "not a German word"
-  "rare": [ { "key": "ent|", "word": "entstellen", "why": "exists: disfigure" } ],  // combos checked and NOT safe to call wrong
+  "rare": [ { "key": "auf|er", "word": "Aufsteller", "why": "Found by the lexicon check: DWDS has an entry." } ],  // real or possibly real: never called wrong
   "reviewedBy": "model-2pass", "reviewedAt": "2026-10-08"
 } ]
 ```
@@ -72,3 +72,11 @@ dictionary entry, at most 10 hits in the DWDS corpora (about 53 billion tokens),
 its finite forms. The validator also requires it to be in no lexicon the build knows (the word list, its morphology,
 every build and family word), and both model review passes must agree (`authoring/de/build/REVIEW.json`). Anything in
 doubt goes to `rare` instead.
+
+## Notes for the game
+- `rare` covers every tile combination with lexicon evidence (DWDS entry, more than 10 corpus hits, or a wordfreq
+  score) and the real words reviewers named. Show it as "a real word, not in this family's list" if you like; never as
+  a miss.
+- A board word's key may also be a non-board form's key only for the two readings of a dual verb.
+- `content/build/de.json` is about 930 KB (190 KB gzipped) with the families; if the hub's first load suffers, the
+  families can move to their own file (`content/build/families.de.json`) without changing their shape.

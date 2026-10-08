@@ -69,7 +69,7 @@ the lookup does not prove those.
   vorbeigekommen, hat wahrgenommen).
 - `en`: the meanings a B1/B2 learner needs, most common first, separated by `;`. Plain English, no em/en dashes.
 - `clue` (the puzzle shows it; he must produce exactly this word from it):
-  - verbs start `to `; nouns start `the ` / `a ` / `an `; adjectives plain; at most 48 characters, about 3 to 7 words.
+  - verbs start `to `; nouns start `the ` / `a ` / `an `; adjectives plain; at most 64 characters, about 3 to 8 words.
   - UNIQUE inside the family and **unambiguous among the family's forms**: "the order (you placed)" for die Bestellung,
     never just "order" (bestellen and die Ordnung exist). When two forms are near (die Darstellung / der Darsteller /
     darstellen; die Einstellung / einstellen), each clue must point to one of them only: noun vs verb by `to`/`the`,
