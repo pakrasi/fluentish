@@ -82,7 +82,7 @@ export async function mountToday(el, ctx) {
   const meta = h('p', { class: 'pz-meta' });
   const build = h('div', { class: 'pz-build', lang: langAttr(), dir: dirAttr() });
   const navBtn = (/** @type {number} */ dir) => h('button', { type: 'button', class: 'pz-nav pressable', 'aria-label': t(dir < 0 ? 'build.today.prev' : 'build.today.next'), onpointerdown: keep, onclick: () => go(S.idx + dir) }, icon(dir < 0 ? 'prev' : 'next', { size: 16 }));
-  const clue = h('section', { class: 'pz-clue', 'aria-label': t('build.today.title') }, h('div', { class: 'pz-clue-top' }, navBtn(-1), h('div', { class: 'pz-clue-mid' }, meaning, meta), navBtn(1)), build);
+  const clue = h('section', { class: 'pz-clue', 'aria-label': t('build.today.clueRegion') }, h('div', { class: 'pz-clue-top' }, navBtn(-1), h('div', { class: 'pz-clue-mid' }, meaning, meta), navBtn(1)), build);
   const hive = h('div', { class: 'pz-hive', role: 'group', 'aria-label': t('build.today.prefixes') });
   const ends = h('div', { class: 'pz-ends', role: 'group', 'aria-label': t('build.today.endings') });
   const playArea = h('div', { class: 'pz-play' }, hive, ends);

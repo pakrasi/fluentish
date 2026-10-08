@@ -417,6 +417,7 @@ export async function mountRound(el, ctx) {
   // ---------- keys ----------
   const onKey = (/** @type {KeyboardEvent} */ e) => {
     if (!alive) return;
+    if (document.querySelector('dialog[open]')) return;   // a sheet over the round (a word's family) has the keys
     if (e.key === 'Escape') { e.preventDefault(); end(); return; }
     if (cur && cur.key && cur.key(e)) return;
     const tag = /** @type {HTMLElement} */ (e.target).tagName;

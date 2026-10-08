@@ -2099,6 +2099,7 @@ export default {
   'build.today.found': '{n} of {total} found',
   'build.today.foundAria': '{n} of {total} found. Show the board.',
   'build.today.clueOf': '{n} of {total}',
+  'build.today.clueRegion': 'The meaning to build',
   'build.today.learnWord': 'learn as a word',
   'build.today.new': 'New',
   'build.today.triesLeft': { one: '1 of 3 tries left', other: '{n} of 3 tries left' },

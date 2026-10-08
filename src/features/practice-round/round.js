@@ -720,6 +720,7 @@ export async function mountRound(el, ctx) {
   });
   input.addEventListener('beforeinput', e => { if (/** @type {InputEvent} */ (e).inputType === 'insertLineBreak') { e.preventDefault(); onReturn(); } });
   const onDocKey = (/** @type {KeyboardEvent} */ e) => {
+    if (document.querySelector('dialog[open]')) return;   // a sheet over the round (a word's family) has the keys
     if (state === 'pick' && ['1', '2', '3'].includes(e.key)) { e.preventDefault(); pick(+e.key - 1); }
     else if (document.activeElement !== input && (isKnowKey(e, false) || isKnowKey(e, true)) && canKnow()) { e.preventDefault(); knowThis(); }
     else if (e.key === 'Escape' && document.activeElement !== input) end();

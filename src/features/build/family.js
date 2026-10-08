@@ -435,7 +435,7 @@ export async function mountFamily(el, ctx, rootArg, { sheet = false, close } = {
 
   draw();
   if (openId && by === 'root') { const id = openId; requestAnimationFrame(() => toggle(id, true)); }
-  if (close) el.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  // in a sheet, Esc is the dialog's own (it closes after the round's key handlers have seen the dialog open)
   return () => { alive = false; finishAll(); };
 }
 
