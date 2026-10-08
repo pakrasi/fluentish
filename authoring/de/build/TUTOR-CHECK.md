@@ -60,40 +60,38 @@ read it once. Quote the form id (in brackets) with a correction.
 
 - **legen**: entlegen; erlegen; unterlegen
 - **setzen**: zersetzen; entsetzen; widersetzen
-- **nehmen**: vernehmen; ausnehmen; durchnehmen
+- **nehmen**: ausnehmen; durchnehmen
 - **geben**: vorgeben; mitgeben; durchgeben; hingeben; freigeben
 - **kommen**: verkommen; hinkommen; überkommen
-- **gehen**: zergehen; ergehen; hingehen; übergehen; missgehen
-- **ziehen**: hinziehen; nachziehen; durchziehen; unterziehen; mitziehen; zerziehen
-- **fallen**: missfallen; befallen; herfallen; widerfallen
-- **halten**: vorhalten; zuhalten; mithalten; herhalten
+- **gehen**: zergehen; ergehen; hingehen; übergehen
+- **ziehen**: hinziehen; nachziehen; durchziehen; unterziehen; mitziehen
+- **fallen**: missfallen; herfallen
+- **halten**: vorhalten; mithalten; herhalten
 - **sprechen**: zersprechen; vorsprechen; mitsprechen; lossprechen
-- **schreiben**: zuschreiben; nachschreiben; hinschreiben; widerschreiben
+- **schreiben**: zuschreiben; nachschreiben; hinschreiben
 - **sehen**: ersehen; besehen; hinsehen; wegsehen
 - **fahren**: zerfahren; entfahren; widerfahren; anfahren; auffahren; ausfahren
 - **stehen**: erstehen; anstehen; zustehen
 - **arbeiten**: zerarbeiten; umarbeiten; nacharbeiten; vorarbeiten; zuarbeiten; herausarbeiten
 - **bieten**: erbieten; entbieten; nachbieten
 - **brechen**: entbrechen; umbrechen; gebrechen
-- **bringen**: zerbringen
 - **finden**: befindlich; empfindsam
 - **fragen**: umfragen; herumfragen; durchfragen
 - **hören**: misshören; erhören; hinhören
 - **kaufen**: bekaufen
 - **lassen**: zerlassen
-- **laufen**: zerlaufen; erlaufen; belaufen; widerlaufen
+- **laufen**: zerlaufen; erlaufen; belaufen
 - **leiten**: missleiten; herleiten; zuleiten
 - **machen**: bemachen
 - **richten**: zurichten; abrichten; vorrichten
 - **rufen**: errufen; verrufen
 - **sagen**: entsagen; widersagen
-- **scheiden**: verscheiden; abscheiden; zerscheiden; umscheiden
+- **scheiden**: verscheiden; abscheiden
 - **schlagen**: abschlagen; beschlagen; verschlagen; entschlagen; überschlagen
 - **stimmen**: mitstimmen; beistimmen; verstimmen
-- **teilen**: zerteilen; beteilen; beteiligen; entteilen
-- **treten**: zutreten; untertreten; umtreten; ertreten
+- **teilen**: zerteilen; beteilen; beteiligen
+- **treten**: zutreten; untertreten; umtreten
 - **weisen**: unterweisen
-- **zahlen**: verzahlen
 
 ## 3. Words to learn (grade O)
 

@@ -37,11 +37,8 @@
   {"key": "mit|", "word": "mitstimmen", "why": "DWDS entry: vote too, take part in a vote; rare"},
   {"key": "bei|", "word": "beistimmen", "why": "DWDS entry: agree (dated)"},
   {"key": "ver|", "word": "verstimmen", "why": "DWDS entry: put out of tune; annoy; the family has the adjective verstimmt"},
-  {"key": "zu|ig", "word": "zustimmig", "why": "Found by the lexicon check: 11 DWDS corpus hits."},
-  {"key": "ab|ig", "word": "abstimmig", "why": "Found by the lexicon check: 43 DWDS corpus hits."},
   {"key": "um|ung", "word": "Umstimmung", "why": "Found by the lexicon check: DWDS has an entry; 1066 DWDS corpus hits; wordfreq 1.3."},
-  {"key": "ein|ung", "word": "Einstimmung", "why": "Found by the lexicon check: DWDS has an entry; 124461 DWDS corpus hits; wordfreq 3.1."},
-  {"key": "an|ung", "word": "Anstimmung", "why": "Found by the lexicon check: 148 DWDS corpus hits."}
+  {"key": "ein|ung", "word": "Einstimmung", "why": "Found by the lexicon check: DWDS has an entry; 124461 DWDS corpus hits; wordfreq 3.1."}
  ],
  "reviewedBy": "model-2pass",
  "reviewedAt": "2026-10-08"

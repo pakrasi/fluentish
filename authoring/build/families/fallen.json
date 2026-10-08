@@ -60,8 +60,7 @@
  ],
  "rare": [
   {"key": "miss|", "word": "missfallen", "why": "DWDS: missfallen = displease (formal)"},
-  {"key": "her|", "word": "herfallen", "why": "DWDS: über jemanden herfallen = attack, pounce on"},
-  {"key": "wider|", "word": "widerfallen", "why": "A reviewer was not certain it is never used (older or literary German), so the game never calls it wrong."}
+  {"key": "her|", "word": "herfallen", "why": "DWDS: über jemanden herfallen = attack, pounce on"}
  ],
  "reviewedBy": "model-2pass",
  "reviewedAt": "2026-10-08"

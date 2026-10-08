@@ -1,0 +1,94 @@
+{
+ "pass": "review-r7-fix.json",
+ "about": "Round 7 fix pass (branch r7/wordgame-grading): the content changes made after the independent German review (round7 GERMAN-REVIEW.md, german-fixes.json), checked by a separate model pass (strict native de-DE lexicographer and DaF teacher persona) before they shipped. Model review, not a native speaker.",
+ "reviewedBy": "model-2pass",
+ "reviewedAt": "2026-10-08",
+ "changes": [
+  {
+   "what": "six rare entries promoted to forms",
+   "ids": [
+    "zuhalten.verb",
+    "der_Besteller",
+    "die_Übertretung",
+    "vernehmen.verb",
+    "befallen.verb",
+    "die_Erarbeitung"
+   ],
+   "verdict": "all fields right except one clue",
+   "findings": [
+    {
+     "id": "die_Erarbeitung",
+     "field": "clue",
+     "current": "the working out (of a concept, a plan)",
+     "corrected": "the development (of a concept, of teaching material)",
+     "why": "'working out a plan' points to die Ausarbeitung, a form of the same family",
+     "severity": "medium",
+     "status": "fixed (en reordered too)"
+    }
+   ]
+  },
+  {
+   "what": "der_Bescheid clue, the wahr particle note, ausziehen and umziehen aux hat/ist",
+   "verdict": "right",
+   "findings": []
+  },
+  {
+   "what": "25 rare entries that repeated a form's key removed (gebrechen kept: the archaic verb is not das Gebrechen)",
+   "verdict": "right: each removed word, or its umlauted spelling, is a form",
+   "findings": []
+  },
+  {
+   "what": "rare noise scan: the 183 rare entries with no DWDS dictionary entry",
+   "verdict": "agreed after these changes",
+   "findings": [
+    {
+     "words": [
+      "Aufkaufer",
+      "Austrager",
+      "eintraglich"
+     ],
+     "decision": "kept in rare, respelled Aufkäufer, Austräger, einträglich",
+     "why": "the lexicon check looked up the spelling without the umlaut; the real words have DWDS entries"
+    },
+    {
+     "words": [
+      "Wiederfindung",
+      "Auffinder"
+     ],
+     "decision": "kept in rare",
+     "why": "technical terms (Wiederfindungsrate; the finder in law and archaeology)"
+    },
+    {
+     "words": [
+      "zerbringen",
+      "widerfallen",
+      "missgehen",
+      "zerziehen",
+      "widerschreiben",
+      "entteilen",
+      "verzahlen"
+     ],
+     "decision": "unlisted",
+     "why": "0 to 9 corpus hits, at most obsolete; 'may be a rare word' would teach non-words. Unlisted is still never called wrong"
+    },
+    {
+     "count": 151,
+     "decision": "unlisted",
+     "why": "corpus noise: nonce -ung, -er and -bar formations (Betragung, Beitretung, Befinder), inflected nouns read as verbs (vorteilen, anteilen, nachteilen)"
+    }
+   ]
+  }
+ ],
+ "counts": {
+  "rareBefore": 423,
+  "rareAfter": 234,
+  "keptWithoutDwdsEntry": 25,
+  "formsAdded": 6,
+  "errors": {
+   "high": 0,
+   "medium": 1,
+   "low": 0
+  },
+  "allFixed": true
+ }
+}

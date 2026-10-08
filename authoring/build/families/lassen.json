@@ -46,18 +46,13 @@
  ],
  "rare": [
   {"key": "zer|", "word": "zerlassen", "why": "DWDS: zerlassen = melt (butter, in cooking)"},
-  {"key": "ver|ung", "word": "Verlassung", "why": "Found by the lexicon check: 284 DWDS corpus hits."},
-  {"key": "an|ung", "word": "Anlassung", "why": "Found by the lexicon check: 27 DWDS corpus hits."},
-  {"key": "nach|ung", "word": "Nachlassung", "why": "Found by the lexicon check: 76 DWDS corpus hits."},
   {"key": "über|ung", "word": "Überlassung", "why": "Found by the lexicon check: DWDS has an entry; 66662 DWDS corpus hits; wordfreq 3.01."},
   {"key": "hinter|ung", "word": "Hinterlassung", "why": "Found by the lexicon check: DWDS has an entry; 1344 DWDS corpus hits; wordfreq 1.56."},
   {"key": "aus|ung", "word": "Auslassung", "why": "Found by the lexicon check: DWDS has an entry; 23125 DWDS corpus hits; wordfreq 2.44."},
   {"key": "ein|ung", "word": "Einlassung", "why": "Found by the lexicon check: DWDS has an entry; 68319 DWDS corpus hits; wordfreq 2.69."},
   {"key": "zurück|ung", "word": "Zurücklassung", "why": "Found by the lexicon check: DWDS has an entry; 1431 DWDS corpus hits; wordfreq 1.77."},
   {"key": "unter|ung", "word": "Unterlassung", "why": "Found by the lexicon check: DWDS has an entry; 109575 DWDS corpus hits; wordfreq 3.08."},
-  {"key": "er|ung", "word": "Erlassung", "why": "Found by the lexicon check: DWDS has an entry; 2953 DWDS corpus hits; wordfreq 2.29."},
-  {"key": "an|ig", "word": "anlassig", "why": "Found by the lexicon check: 16 DWDS corpus hits."},
-  {"key": "ver|ig", "word": "verlassig", "why": "Found by the lexicon check: 25 DWDS corpus hits."}
+  {"key": "er|ung", "word": "Erlassung", "why": "Found by the lexicon check: DWDS has an entry; 2953 DWDS corpus hits; wordfreq 2.29."}
  ],
  "reviewedBy": "model-2pass",
  "reviewedAt": "2026-10-08"

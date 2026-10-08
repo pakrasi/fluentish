@@ -9,5 +9,8 @@
  {"id": "A2 boards of stimmen and fragen", "decision": "no A2 board", "why": "fewer than six board forms at A1 to B1; the game uses the B1 board"},
  {"id": "die Anbieterin", "decision": "added to fill the bieten B1 board after die Darbietung (C1) left it", "why": "bieten has few forms at B2 or below"},
  {"id": "clue length", "decision": "at most 64 characters (was 48)", "why": "disambiguating clues need a short context in brackets"},
- {"id": "existing verbs and chain words", "decision": "22 verbs[] entries and 2 chain nodes corrected in place (senses, examples, translations); no id, kind, participle or helper changed", "why": "PV/PW cards share their text with the family view"}
+ {"id": "existing verbs and chain words", "decision": "22 verbs[] entries and 2 chain nodes corrected in place (senses, examples, translations); no id, kind, participle or helper changed", "why": "PV/PW cards share their text with the family view"},
+ {"id": "rare list (round 7 fix)", "decision": "rare means 'not in this family's list (may be rare)': 423 → 234 entries; 25 repeated a form, 6 became forms, 158 corpus noise or doubtful combinations became unlisted; Aufkäufer, Austräger, einträglich respelled", "why": "the independent German review found about a quarter of rare was noise and six standard words in it; rare is never shown as 'a real word'"},
+ {"id": "missgehen, zerziehen, widerfallen, widerschreiben, zerbringen, entteilen", "decision": "moved from rare to unlisted (the round 7 decision moved them from none to rare)", "why": "0 to 7 corpus hits; 'may be a rare word' would teach them. Unlisted still never says 'not a German word'"},
+ {"id": "ausziehen, umziehen", "decision": "aux hat/ist in verbs[] (owner's coordinator asked for it; no id changes)", "why": "each has a haben sense (take off clothes, get changed) and a sein sense (move out, move house), as every other two-helper verb shows"}
 ]

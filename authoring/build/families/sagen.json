@@ -40,13 +40,8 @@
  "rare": [
   {"key": "ent|", "word": "entsagen", "why": "DWDS: entsagen = renounce (formal, dated)"},
   {"key": "wider|", "word": "widersagen", "why": "DWDS: widersagen = renounce, contradict (formal, religious)"},
-  {"key": "aus|er", "word": "Aussager", "why": "Found by the lexicon check: 40 DWDS corpus hits."},
-  {"key": "durch|er", "word": "Durchsager", "why": "Found by the lexicon check: 33 DWDS corpus hits."},
-  {"key": "be|er", "word": "Besager", "why": "Found by the lexicon check: 30 DWDS corpus hits."},
-  {"key": "nach|er", "word": "Nachsager", "why": "Found by the lexicon check: 27 DWDS corpus hits."},
   {"key": "auf|er", "word": "Aufsager", "why": "Found by the lexicon check: 980 DWDS corpus hits."},
-  {"key": "an|er", "word": "Ansager", "why": "Found by the lexicon check: DWDS has an entry; 13358 DWDS corpus hits; wordfreq 2.53."},
-  {"key": "weiter|er", "word": "Weitersager", "why": "Found by the lexicon check: 66 DWDS corpus hits."}
+  {"key": "an|er", "word": "Ansager", "why": "Found by the lexicon check: DWDS has an entry; 13358 DWDS corpus hits; wordfreq 2.53."}
  ],
  "reviewedBy": "model-2pass",
  "reviewedAt": "2026-10-08"

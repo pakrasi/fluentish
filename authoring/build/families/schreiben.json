@@ -45,8 +45,7 @@
  "rare": [
   {"key": "zu|", "word": "zuschreiben", "why": "DWDS: zuschreiben = attribute to (jemandem etwas zuschreiben)"},
   {"key": "nach|", "word": "nachschreiben", "why": "DWDS: nachschreiben = sit (an exam) later; write down what is said"},
-  {"key": "hin|", "word": "hinschreiben", "why": "DWDS: hinschreiben = write down (colloquial)"},
-  {"key": "wider|", "word": "widerschreiben", "why": "A reviewer was not certain it is never used (older or literary German), so the game never calls it wrong."}
+  {"key": "hin|", "word": "hinschreiben", "why": "DWDS: hinschreiben = write down (colloquial)"}
  ],
  "reviewedBy": "model-2pass",
  "reviewedAt": "2026-10-08"

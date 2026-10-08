@@ -38,12 +38,8 @@
   {"key": "um|", "word": "umfragen", "why": "DWDS entry: ask around (rare); die Umfrage hangs from the root"},
   {"key": "herum|", "word": "herumfragen", "why": "DWDS entry: ask around (colloquial); left out"},
   {"key": "durch|", "word": "durchfragen", "why": "DWDS entry: sich durchfragen = ask your way; rare"},
-  {"key": "nach|lich", "word": "nachfraglich", "why": "Found by the lexicon check: 11 DWDS corpus hits."},
-  {"key": "um|ung", "word": "Umfragung", "why": "Found by the lexicon check: 19 DWDS corpus hits."},
-  {"key": "ab|ung", "word": "Abfragung", "why": "Found by the lexicon check: 181 DWDS corpus hits."},
   {"key": "er|ung", "word": "Erfragung", "why": "Found by the lexicon check: DWDS has an entry; 801 DWDS corpus hits."},
-  {"key": "hinter|ung", "word": "Hinterfragung", "why": "Found by the lexicon check: DWDS has an entry; 6875 DWDS corpus hits; wordfreq 2.12."},
-  {"key": "aus|ung", "word": "Ausfragung", "why": "Found by the lexicon check: 32 DWDS corpus hits."}
+  {"key": "hinter|ung", "word": "Hinterfragung", "why": "Found by the lexicon check: DWDS has an entry; 6875 DWDS corpus hits; wordfreq 2.12."}
  ],
  "reviewedBy": "model-2pass",
  "reviewedAt": "2026-10-08"

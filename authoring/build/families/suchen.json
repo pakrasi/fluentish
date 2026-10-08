@@ -37,16 +37,9 @@
   {"key": "miss|", "word": "misssuchen"}
  ],
  "rare": [
-  {"key": "be|ung", "word": "Besuchung", "why": "Found by the lexicon check: 118 DWDS corpus hits."},
-  {"key": "aus|ung", "word": "Aussuchung", "why": "Found by the lexicon check: 14 DWDS corpus hits."},
   {"key": "auf|ung", "word": "Aufsuchung", "why": "Found by the lexicon check: DWDS has an entry; 1867 DWDS corpus hits; wordfreq 1.89."},
   {"key": "ver|er", "word": "Versucher", "why": "Found by the lexicon check: DWDS has an entry; 2392 DWDS corpus hits; wordfreq 1.84."},
-  {"key": "unter|er", "word": "Untersucher", "why": "Found by the lexicon check: DWDS has an entry; 4757 DWDS corpus hits; wordfreq 2.05."},
-  {"key": "auf|er", "word": "Aufsucher", "why": "Found by the lexicon check: 11 DWDS corpus hits."},
-  {"key": "aus|er", "word": "Aussucher", "why": "Found by the lexicon check: 22 DWDS corpus hits."},
-  {"key": "durch|er", "word": "Durchsucher", "why": "Found by the lexicon check: 57 DWDS corpus hits."},
-  {"key": "ab|ung", "word": "Absuchung", "why": "Found by the lexicon check: 46 DWDS corpus hits."},
-  {"key": "er|ung", "word": "Ersuchung", "why": "Found by the lexicon check: 32 DWDS corpus hits."}
+  {"key": "unter|er", "word": "Untersucher", "why": "Found by the lexicon check: DWDS has an entry; 4757 DWDS corpus hits; wordfreq 2.05."}
  ],
  "reviewedBy": "model-2pass",
  "reviewedAt": "2026-10-08"

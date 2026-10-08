@@ -36,17 +36,10 @@
  "rare": [
   {"key": "ver|", "word": "verscheiden", "why": "DWDS: elevated, pass away (die)"},
   {"key": "ab|", "word": "abscheiden", "why": "DWDS: technical, separate out (chemistry); dated, depart"},
-  {"key": "zer|", "word": "zerscheiden", "why": "no DWDS entry but 21 corpus hits: not safe to call wrong"},
-  {"key": "um|", "word": "umscheiden", "why": "no DWDS entry but 134 corpus hits: not safe to call wrong"},
   {"key": "ab|ung", "word": "Abscheidung", "why": "Found by the lexicon check: DWDS has an entry; 7929 DWDS corpus hits; wordfreq 2.49."},
   {"key": "aus|ung", "word": "Ausscheidung", "why": "Found by the lexicon check: DWDS has an entry; 69761 DWDS corpus hits; wordfreq 2.96."},
-  {"key": "unter|lich", "word": "unterscheidlich", "why": "Found by the lexicon check: 348 DWDS corpus hits."},
-  {"key": "ver|ung", "word": "Verscheidung", "why": "Found by the lexicon check: 14 DWDS corpus hits."},
   {"key": "be|ung", "word": "Bescheidung", "why": "Found by the lexicon check: DWDS has an entry; 6223 DWDS corpus hits; wordfreq 1.65."},
-  {"key": "be|lich", "word": "bescheidlich", "why": "Found by the lexicon check: 15 DWDS corpus hits."},
-  {"key": "aus|bar", "word": "ausscheidbar", "why": "Found by the lexicon check: 406 DWDS corpus hits."},
-  {"key": "ent|bar", "word": "entscheidbar", "why": "Found by the lexicon check: DWDS has an entry; 1616 DWDS corpus hits; wordfreq 1.83."},
-  {"key": "ab|bar", "word": "abscheidbar", "why": "Found by the lexicon check: 72 DWDS corpus hits."}
+  {"key": "ent|bar", "word": "entscheidbar", "why": "Found by the lexicon check: DWDS has an entry; 1616 DWDS corpus hits; wordfreq 1.83."}
  ],
  "reviewedBy": "model-2pass",
  "reviewedAt": "2026-10-08",

@@ -41,8 +41,6 @@
   {"key": "miss|", "word": "missleiten", "why": "DWDS: rare, mislead (irreführen is usual)"},
   {"key": "her|", "word": "herleiten", "why": "DWDS: derive, trace back; left out, too close to ableiten for a clue"},
   {"key": "zu|", "word": "zuleiten", "why": "DWDS: formal, pass on (to an office); supply (water)"},
-  {"key": "um|er", "word": "Umleiter", "why": "Found by the lexicon check: 134 DWDS corpus hits."},
-  {"key": "weiter|er", "word": "Weiterleiter", "why": "Found by the lexicon check: 148 DWDS corpus hits."},
   {"key": "an|er", "word": "Anleiter", "why": "Found by the lexicon check: DWDS has an entry; 4509 DWDS corpus hits; wordfreq 1.64."},
   {"key": "ein|er", "word": "Einleiter", "why": "Found by the lexicon check: 1544 DWDS corpus hits; wordfreq 1.49."},
   {"key": "ver|ung", "word": "Verleitung", "why": "Found by the lexicon check: DWDS has an entry; 3390 DWDS corpus hits; wordfreq 1.72."}

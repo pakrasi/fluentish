@@ -41,21 +41,11 @@
  "rare": [
   {"key": "be|lich", "word": "befindlich", "why": "DWDS: formal adjective (die im Haus befindlichen Möbel), left out"},
   {"key": "emp|sam", "word": "empfindsam", "why": "DWDS: literary adjective (sensitive), left out"},
-  {"key": "statt|ung", "word": "Stattfindung", "why": "Found by the lexicon check: 18 DWDS corpus hits."},
-  {"key": "heraus|ung", "word": "Herausfindung", "why": "Found by the lexicon check: 24 DWDS corpus hits."},
   {"key": "wieder|ung", "word": "Wiederfindung", "why": "Found by the lexicon check: 522 DWDS corpus hits; wordfreq 1.42."},
-  {"key": "be|ung", "word": "Befindung", "why": "Found by the lexicon check: 77 DWDS corpus hits."},
-  {"key": "statt|er", "word": "Stattfinder", "why": "Found by the lexicon check: 15 DWDS corpus hits."},
-  {"key": "heraus|er", "word": "Herausfinder", "why": "Found by the lexicon check: 14 DWDS corpus hits."},
-  {"key": "be|er", "word": "Befinder", "why": "Found by the lexicon check: 23 DWDS corpus hits."},
-  {"key": "emp|er", "word": "Empfinder", "why": "Found by the lexicon check: 29 DWDS corpus hits."},
-  {"key": "zurecht|ung", "word": "Zurechtfindung", "why": "Found by the lexicon check: 38 DWDS corpus hits."},
   {"key": "vor|lich", "word": "vorfindlich", "why": "Found by the lexicon check: DWDS has an entry; 1049 DWDS corpus hits."},
-  {"key": "vor|er", "word": "Vorfinder", "why": "Found by the lexicon check: 131 DWDS corpus hits."},
   {"key": "auf|ung", "word": "Auffindung", "why": "Found by the lexicon check: DWDS has an entry; 9617 DWDS corpus hits; wordfreq 2.62."},
   {"key": "auf|er", "word": "Auffinder", "why": "Found by the lexicon check: 63 DWDS corpus hits."},
-  {"key": "er|lich", "word": "erfindlich", "why": "Found by the lexicon check: DWDS has an entry; 607 DWDS corpus hits."},
-  {"key": "ein|ung", "word": "Einfindung", "why": "Found by the lexicon check: 198 DWDS corpus hits."}
+  {"key": "er|lich", "word": "erfindlich", "why": "Found by the lexicon check: DWDS has an entry; 607 DWDS corpus hits."}
  ],
  "reviewedBy": "model-2pass",
  "reviewedAt": "2026-10-08"

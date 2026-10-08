@@ -41,8 +41,7 @@
  "rare": [
   {"key": "zer|", "word": "zerlaufen", "why": "DWDS: melt, run (butter, colours)"},
   {"key": "er|", "word": "erlaufen", "why": "DWDS: reach or win by running (sport)"},
-  {"key": "be|", "word": "belaufen", "why": "exists: sich belaufen auf = amount to (costs)"},
-  {"key": "wider|", "word": "widerlaufen", "why": "not a verb on its own, but zuwiderlaufen (run counter to) exists; not safe to call wrong"}
+  {"key": "be|", "word": "belaufen", "why": "exists: sich belaufen auf = amount to (costs)"}
  ],
  "reviewedBy": "model-2pass",
  "reviewedAt": "2026-10-08"

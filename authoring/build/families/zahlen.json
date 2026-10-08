@@ -39,17 +39,11 @@
   {"key": "ent|", "word": "entzahlen"}
  ],
  "rare": [
-  {"key": "ver|", "word": "verzahlen", "why": "no DWDS entry, 9 corpus hits; a colloquial 'sich verzahlen' (pay the wrong amount) may exist, so not safe to call wrong"},
   {"key": "zurück|ung", "word": "Zurückzahlung", "why": "Found by the lexicon check: 1443 DWDS corpus hits; wordfreq 1.41."},
   {"key": "ab|ung", "word": "Abzahlung", "why": "Found by the lexicon check: DWDS has an entry; 5867 DWDS corpus hits; wordfreq 2.04."},
   {"key": "be|er", "word": "Bezahler", "why": "Found by the lexicon check: DWDS has an entry; 671 DWDS corpus hits."},
-  {"key": "an|er", "word": "Anzahler", "why": "Found by the lexicon check: 39 DWDS corpus hits."},
-  {"key": "nach|bar", "word": "nachzahlbar", "why": "Found by the lexicon check: 74 DWDS corpus hits."},
-  {"key": "nach|er", "word": "Nachzahler", "why": "Found by the lexicon check: 67 DWDS corpus hits."},
   {"key": "ab|bar", "word": "abzahlbar", "why": "Found by the lexicon check: DWDS has an entry; 81 DWDS corpus hits."},
   {"key": "aus|bar", "word": "auszahlbar", "why": "Found by the lexicon check: DWDS has an entry; 5328 DWDS corpus hits; wordfreq 1.27."},
-  {"key": "aus|er", "word": "Auszahler", "why": "Found by the lexicon check: 155 DWDS corpus hits."},
-  {"key": "ein|bar", "word": "einzahlbar", "why": "Found by the lexicon check: 76 DWDS corpus hits."},
   {"key": "ein|er", "word": "Einzahler", "why": "Found by the lexicon check: DWDS has an entry; 5577 DWDS corpus hits; wordfreq 1.9."}
  ],
  "reviewedBy": "model-2pass",

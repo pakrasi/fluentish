@@ -1,10 +1,10 @@
 {
  "batch": "word families",
- "about": "Word families for Practice › Word family and Today's family: 40 roots, 1161 forms, boards, 83 checked non-words and examples for the 139 chain words.",
+ "about": "Word families for Practice › Word family and Today's family: 40 roots, 1167 forms, boards, 83 checked non-words and examples for the 139 chain words.",
  "reviewedBy": "model-2pass",
  "reviewedAt": "2026-10-08",
  "process": "author (six model authors, DWDS/wordfreq lookup for every new word) → machine gates (schema; parts spell the word, prefixes from the tree, root stem from the family; articles against their ending; split shown in the example; clue unique; boards and tiles; every form in the word list, a DWDS entry or 200+ DWDS corpus hits; non-words in no lexicon with no DWDS entry, at most 10 corpus hits and wordfreq 0; the grader self-match and 7,481 wrong answers on every PF form) → pass A (strict native de-DE lexicographer persona) → pass B (native DaF teacher persona, blind to pass A) → pass B over 2%, so pass A again on the whole batch → a final blind pass (learner's-dictionary editor persona). All passes are model personas, not people: reviewedBy is model-2pass. A tutor sample is in TUTOR-CHECK.md.",
- "passes": [{"pass": "A1", "log": "review-a1.json", "entries": 1160, "errors": 20, "improves": 142, "errorRate": 0.0172, "nonwordVerdicts": {"none": 84, "rare": 5}}, {"pass": "B1 (blind)", "log": "review-b1.json", "entries": 1161, "errors": 42, "improves": 106, "errorRate": 0.0362, "nonwordVerdicts": {"none": 83, "rare": 1}}, {"pass": "A2 (re-review, pass B over 2%)", "log": "review-a2.json", "entries": 1161, "errors": 41, "improves": 74, "errorRate": 0.0353, "nonwordVerdicts": {"none": 84, "rare": 0}}, {"pass": "B2 (final, blind)", "log": "review-b2.json", "entries": 1161, "errors": 4, "improves": 24, "errorRate": 0.0034, "nonwordVerdicts": {"none": 83, "rare": 1}}],
+ "passes": [{"pass": "A1", "log": "review-a1.json", "entries": 1160, "errors": 20, "improves": 142, "errorRate": 0.0172, "nonwordVerdicts": {"none": 84, "rare": 5}}, {"pass": "B1 (blind)", "log": "review-b1.json", "entries": 1161, "errors": 42, "improves": 106, "errorRate": 0.0362, "nonwordVerdicts": {"none": 83, "rare": 1}}, {"pass": "A2 (re-review, pass B over 2%)", "log": "review-a2.json", "entries": 1161, "errors": 41, "improves": 74, "errorRate": 0.0353, "nonwordVerdicts": {"none": 84, "rare": 0}}, {"pass": "B2 (final, blind)", "log": "review-b2.json", "entries": 1161, "errors": 4, "improves": 24, "errorRate": 0.0034, "nonwordVerdicts": {"none": 83, "rare": 1}}, {"pass": "R7 fix (after the independent German review)", "log": "review-r7-fix.json", "entries": 218, "errors": 1, "improves": 11, "note": "six forms promoted from rare, three low fixes, 25 rare duplicates removed, rare noise scan; 1 medium error (a clue), fixed"}],
  "note": "Pass B's 42 errors include 8 that are missing rare-list words (not wrong content): 34 content errors, 2.9%. The re-review's 41 include about 10 already fixed in the authoring sources but shown stale (verbs read from the last build). Most errors in B and the re-review were clues another form of the family could answer; the final blind pass found 4 errors in 1,161 forms (0.34%), all fixed.",
  "ids": [
   "PF:abarbeiten.verb",
@@ -1127,6 +1127,12 @@
   "PW:vorstellbar",
   "PW:zerlegbar",
   "PW:zufällig",
-  "PW:Überlegung"
+  "PW:Überlegung",
+  "PF:befallen.verb",
+  "PF:der_Besteller",
+  "PF:die_Erarbeitung",
+  "PF:die_Übertretung",
+  "PF:vernehmen.verb",
+  "PF:zuhalten.verb"
  ]
 }

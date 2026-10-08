@@ -38,22 +38,14 @@
   {"key": "miss|", "word": "misshören", "why": "DWDS: misshören, rare (mishear)"},
   {"key": "er|", "word": "erhören", "why": "exists: answer (a prayer, a plea); unerhört = outrageous"},
   {"key": "hin|", "word": "hinhören", "why": "exists: listen closely; left out because it is too close to zuhören"},
-  {"key": "auf|er", "word": "Aufhörer", "why": "Found by the lexicon check: 224 DWDS corpus hits."},
-  {"key": "ge|er", "word": "Gehörer", "why": "Found by the lexicon check: 31 DWDS corpus hits."},
-  {"key": "an|er", "word": "Anhörer", "why": "Found by the lexicon check: 358 DWDS corpus hits."},
   {"key": "mit|er", "word": "Mithörer", "why": "Found by the lexicon check: DWDS has an entry; 1705 DWDS corpus hits; wordfreq 1.15."},
-  {"key": "zu|bar", "word": "zuhörbar", "why": "Found by the lexicon check: 12 DWDS corpus hits."},
   {"key": "an|bar", "word": "anhörbar", "why": "Found by the lexicon check: DWDS has an entry; 1024 DWDS corpus hits."},
   {"key": "über|bar", "word": "überhörbar", "why": "Found by the lexicon check: DWDS has an entry; 1000 DWDS corpus hits."},
-  {"key": "ver|ung", "word": "Verhörung", "why": "Found by the lexicon check: 160 DWDS corpus hits; wordfreq 1.16."},
   {"key": "ver|er", "word": "Verhörer", "why": "Found by the lexicon check: DWDS has an entry; 1986 DWDS corpus hits; wordfreq 1.64."},
   {"key": "ab|ung", "word": "Abhörung", "why": "Found by the lexicon check: 1889 DWDS corpus hits; wordfreq 1.9."},
   {"key": "ab|bar", "word": "abhörbar", "why": "Found by the lexicon check: DWDS has an entry; 887 DWDS corpus hits."},
   {"key": "ab|er", "word": "Abhörer", "why": "Found by the lexicon check: 493 DWDS corpus hits; wordfreq 1.07."},
-  {"key": "über|ung", "word": "Überhörung", "why": "Found by the lexicon check: 13 DWDS corpus hits."},
-  {"key": "heraus|bar", "word": "heraushörbar", "why": "Found by the lexicon check: DWDS has an entry; 352 DWDS corpus hits."},
-  {"key": "mit|bar", "word": "mithörbar", "why": "Found by the lexicon check: 52 DWDS corpus hits."},
-  {"key": "zu|ung", "word": "Zuhörung", "why": "Found by the lexicon check: 11 DWDS corpus hits."}
+  {"key": "heraus|bar", "word": "heraushörbar", "why": "Found by the lexicon check: DWDS has an entry; 352 DWDS corpus hits."}
  ],
  "reviewedBy": "model-2pass",
  "reviewedAt": "2026-10-08"

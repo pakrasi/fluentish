@@ -38,7 +38,7 @@
  ],
  "rare": [
   {"key": "be|", "word": "bekaufen", "why": "DWDS has an entry (regional, colloquial: sich bekaufen = buy badly)"},
-  {"key": "auf|er", "word": "Aufkaufer", "why": "Found by the lexicon check: 48 DWDS corpus hits."}
+  {"key": "auf|er", "word": "Aufkäufer", "why": "The word is Aufkäufer (DWDS has an entry); the lexicon check looked up the spelling without the umlaut."}
  ],
  "reviewedBy": "model-2pass",
  "reviewedAt": "2026-10-08"
