@@ -13,7 +13,8 @@
        word type rolls Verb to Noun, the article drops on a dotted arc from its ending, the stress dot pops.
      - browse by Prefix (every verb with that prefix across roots) or by Ending (every word made with it).
    Opens as a page, or inside a sheet over a round (boot.js) so a look never ends the round. Knowledge comes from the
-   one knowledge score (data/knowledge.js); nothing here writes a card. */
+   one knowledge score (data/knowledge.js); nothing here writes a card. Each group of the tree runs by level (A1 first),
+   then by frequency. */
 import { h, replace, announce } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
@@ -198,11 +199,11 @@ export async function mountFamily(el, ctx, rootArg, { sheet = false, close } = {
   /** @param {Family} fam */
   function sections(fam) {
     /** @type {HTMLElement[]} */ const out = [];
-    const walk = (/** @type {Form} */ f, /** @type {number} */ dep, /** @type {HTMLElement} */ ul) => { ul.append(row(fam, f, dep)); for (const kf of kidsOf(fam, f.id)) walk(kf, dep + 1, ul); };
+    const walk = (/** @type {Form} */ f, /** @type {number} */ dep, /** @type {HTMLElement} */ ul) => { ul.append(row(fam, f, dep)); for (const kf of byLevel(kidsOf(fam, f.id))) walk(kf, dep + 1, ul); };
     const sec = (/** @type {string} */ id, /** @type {string} */ title, /** @type {string} */ rule, /** @type {Form[]} */ items) => {
       if (!items.length) return;
       const ul = h('ul', { class: 'fv-list' });
-      items.forEach(f => walk(f, 0, ul));
+      byLevel(items).forEach(f => walk(f, 0, ul));
       out.push(h('section', { class: 'fv-sec', 'aria-labelledby': `fv-h-${id}` }, h('h2', { id: `fv-h-${id}` }, title), h('p', { class: 'fv-rule' }, rule), ul));
     };
     const kids = kidsOf(fam, fam.forms[0].id);
@@ -446,6 +447,12 @@ export async function mountFamily(el, ctx, rootArg, { sheet = false, close } = {
   // in a sheet, Esc is the dialog's own (it closes after the round's key handlers have seen the dialog open)
   return () => { alive = false; finishAll(); };
 }
+
+const LEVEL_ORDER = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+/** The tree's order: by level (A1 first, a form without one last), then the most common first. @param {Form[]} list */
+export const byLevel = list => [...list].sort((a, b) => levelRank(a) - levelRank(b) || (b.zipf || 0) - (a.zipf || 0));
+/** @param {Form} f */
+const levelRank = f => { const i = LEVEL_ORDER.indexOf(String(f.level || '')); return i < 0 ? LEVEL_ORDER.length : i; };
 
 /** An id safe in an element id. @param {string} id */
 const cssId = id => String(id).replace(/[^\w-]/g, '_');
