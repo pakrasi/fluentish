@@ -12,7 +12,9 @@
        (it never takes the place of a row before it), priority 46 (between Word building and the old game row),
        minutes = board size × the review cost. It shows once prepare() has made the day's board (family-data.js
        todayBoard): not in a new learner's first week, and with an exam ahead only when he has seen six or more
-       forms of a root (new items pause then). "4 of 10 found" while in progress, the done tick at the end.
+       forms of a root (new items pause then). "4 of 10 found" while in progress, the done tick at the end. Its place
+       stays after the core work (an optional 4-minute row must not push a review row out of a short day); while it is
+       in the day's plan and not done, Today's hero carries a line to it, so it is in view without scrolling.
        It replaces Split or stay on Today (the owner's decision of 8 Oct): the board asks splits or stays for every
        verb on it, and Split or stay stays in the Word building hub. */
 import { DECK } from '../../domain/wordbuild.js';

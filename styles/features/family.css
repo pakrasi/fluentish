@@ -373,6 +373,13 @@ body.kb .pz-top { justify-content: end; }
   .pz-sqs i.is-now { outline: 2px solid Highlight; }
 }
 
+/* ---------- Today's hero: one line to Today's family while it is in the plan (today/index.js) ---------- */
+.hero-fam { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 10px; min-height: var(--tap); margin-top: var(--s-3); padding-top: var(--s-2);
+  border-top: 1px solid var(--hairline); color: var(--ink); text-decoration: none; font: 500 15px/1.3 var(--font-ui); }
+.hero-fam-d { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 400; color: var(--ink-2); }
+.hero-fam svg { color: var(--ink-3); }
+.hero-fam:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+
 /* ---------- the Word building hub's top section (hub.js) ---------- */
 .wb-famtop { margin-bottom: 0; padding: 14px 16px 16px; border-radius: var(--r-card); background: var(--surface); box-shadow: var(--shadow-card); display: grid; gap: 6px; }
 .wb-famtop .label { color: var(--ink-3); }

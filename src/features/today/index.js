@@ -100,6 +100,11 @@ export async function mount(el, ctx) {
       : h('p', { class: 'label' }, h('b', { class: 'tnum ink' }, String(Math.round(plan.minutes.done))), ' ', t('today.minutesOf', { n: plan.minutes.budget }));
     const heroBtn = primary ? h('a', { class: 'btn btn-primary pressable hero-btn', href: fromToday(primary.href) }, primaryLabel(primary)) : null;
     const atmoEl = h('div', { class: 'atmo', 'aria-hidden': 'true' });
+    // Today's family while it is in today's plan and not done: one line in the hero, so the daily game is in view
+    // without scrolling (its plan row keeps its place after the core work; round 7 review)
+    const famRow = plan.rows.find((/** @type {any} */ r) => r.id === 'build.family' && !r.done);
+    const famEl = famRow ? h('a', { class: 'hero-fam pressable', href: famRow.href },
+      h('span', { class: 'hero-fam-t' }, famRow.title), h('span', { class: 'hero-fam-d' }, famRow.detail), icon('next', { size: 16 })) : null;
     if (countdown) {
       const num = h('span', { class: 'numeral' }, String(c.daysLeft));
       const runEl = h('div', { class: 'runway' });
@@ -113,7 +118,7 @@ export async function mount(el, ctx) {
         head,
         h('p', { class: 'caption hero-date' }, dateText, h('span', { class: 'hero-edit' }, ` · ${t('today.editDate')}`)));
       const el = h('section', { class: 'hero today-hero', 'aria-label': t('today.countdown') }, atmoEl, link, runEl,
-        h('div', { class: 'hero-foot' }, minutesLine, heroBtn));
+        h('div', { class: 'hero-foot' }, minutesLine, heroBtn), famEl);
       return {
         el,
         after() {
@@ -179,7 +184,7 @@ export async function mount(el, ctx) {
       fresh ? null : weekLine,
       kindEl,
       welcomeEl,
-      h('div', { class: 'hero-foot' }, todayLine, heroBtn));
+      h('div', { class: 'hero-foot' }, todayLine, heroBtn), famEl);
     return {
       el,
       /** @param {{strip: HTMLElement | null} | null} [patch] Study anyway: the strip on screen to change in place */
