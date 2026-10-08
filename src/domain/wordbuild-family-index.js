@@ -6,6 +6,9 @@
 
 import { familyModel } from './wordbuild-family.js';
 
+// Today's root from the index alone, and the board rules (defined beside boardFor, which uses them)
+export { pickRoot, rootEntryOf, BOARD_RULES, boardRule, learnsArticle } from './wordbuild-family.js';
+
 /** A root's file name: ASCII (hören → hoeren, schließen → schliessen), so paths and manifest ids stay plain. @param {string} root */
 export const familySlug = root => root.toLowerCase().replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss');
 /** The manifest id of a root's family file (content/build/family/<slug>.json). @param {string} root */
@@ -53,6 +56,9 @@ export function indexOf(c) {
  * @param {IndexForm} x
  */
 export const indexForm = x => ({ id: x[0], card: x[1], lemma: x[2], level: x[3], board: x[4].includes('b'), rare: x[4].includes('r') });
+
+/** The index's roots as pickRoot reads them: pickRoot({ roots: rootEntries(c.familyIndex), … }). @param {{roots: IndexRoot[]}} index */
+export const rootEntries = index => index.roots.map(r => ({ root: r.root, forms: r.forms.map(indexForm) }));
 
 /**
  * Word id → its family ({root, form}), from the index alone: what wordbuild-family.js familyIndex gives from the

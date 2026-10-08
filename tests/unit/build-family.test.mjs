@@ -81,8 +81,25 @@ test('family content: valid, every board the right size, PF ids never shadow a P
   assert.ok(pf.length > 300, `${pf.length} PF cards`);
   for (const id of pf) assert.ok(!old.has(id), id);
   for (const fam of C.families) {
-    for (const [lv, n] of Object.entries(BOARD_SIZE)) if (lv !== 'A2' || fam.boards.A2) assert.equal(fam.boards[lv]?.words.length, n, `${fam.root} ${lv}`);
+    // the level's size, fewer only when the ring of prefix tiles is full (bringen: B1 and B2 of 9)
+    for (const [lv, n] of Object.entries(BOARD_SIZE)) if (lv !== 'A2' || fam.boards.A2) assert.ok(fam.boards[lv].words.length <= n && fam.boards[lv].words.length >= (fam.root === 'bringen' && lv !== 'A2' ? 9 : n), `${fam.root} ${lv}: ${fam.boards[lv].words.length}`);
     assert.ok(fam.boards.B1 && fam.boards.B2, `${fam.root}: B1 and B2 boards`);
     assert.ok(fam.none.length >= 1, `${fam.root}: no checked non-word`);
   }
+});
+
+test('family boards: the validator holds the content boards to the mix (verbs, article nouns, exceptions) and wants an A2 board where one is possible', () => {
+  const ctx = { words: J('content/igloo/words/de.json') };
+  const base = () => /** @type {any} */ (structuredClone(C));
+  const errs = (/** @type {any} */ c) => validateFamilies(c, ctx).filter(e => /family stellen board|family stellen:/.test(e));
+  assert.deepEqual(errs(base()), []);
+  const st = (/** @type {any} */ c) => c.families.find((/** @type {any} */ f) => f.root === 'stellen');
+  const has = (/** @type {any} */ c, /** @type {RegExp} */ re) => assert.ok(errs(c).some(e => re.test(e)), `expected ${re}: ${errs(c).join(' | ')}`);
+  const nounsOnly = (/** @type {any} */ c, /** @type {string} */ lv) => { const f = st(c); const ns = f.forms.filter((/** @type {any} */ x) => x.board && x.cls === 'noun' && !x.rare && ['A1', 'A2', 'B1', 'B2'].includes(x.level)).map((/** @type {any} */ x) => x.id); f.boards[lv].words = ns.slice(0, f.boards[lv].words.length); f.boards[lv].light = f.boards[lv].words.slice(0, 6); return c; };
+  has(nounsOnly(base(), 'B1'), /board B1: \d+ verbs, at least 4/);
+  // every -ung noun, no noun whose article must be learnt
+  let c = base(); { const f = st(c); const ung = f.forms.filter((/** @type {any} */ x) => x.board && x.artBy === 'ending' && ['A1', 'A2', 'B1', 'B2'].includes(x.level)).map((/** @type {any} */ x) => x.id); f.boards.B1.words = [...f.boards.B1.words.filter((/** @type {string} */ id) => id.endsWith('.verb')).slice(0, 4), ...ung].slice(0, 10); }
+  has(c, /board B1: \d+ nouns whose ending gives the article, at most 3/);
+  has(c, /board B1: 0 nouns whose article must be learnt/);
+  c = base(); delete st(c).boards.A2; has(c, /six board forms at A1 to B1, but no A2 board/);
 });

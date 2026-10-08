@@ -143,17 +143,39 @@ export function readFamilies(dir, only = []) {
 export const CORPUS_MIN = 200;
 const HOW = /** @type {Record<string, string>} */ ({ T: 'lit', M: 'pic', O: 'word' });
 /** Key order of a built form (readable diffs, stable output). */
-const ORDER = ['id', 'card', 'word', 'cls', 'art', 'adjNoun', 'pl', 'kind', 'refl', 'aux', 'pp', 'parent', 'add', 'side', 'pre', 'suf', 'key', 'seg', 'stress',
+const ORDER = ['id', 'card', 'word', 'cls', 'art', 'artBy', 'adjNoun', 'pl', 'kind', 'refl', 'aux', 'pp', 'parent', 'add', 'side', 'pre', 'suf', 'key', 'seg', 'stress',
   'en', 'clue', 'ex', 'exEn', 'why', 'note', 'grade', 'how', 'level', 'zipf', 'rare', 'board', 'lemma', 'lex', 'src'];
 const ordered = (/** @type {any} */ o) => Object.fromEntries(ORDER.filter(k => o[k] !== undefined).map(k => [k, o[k]]));
 
+/** Endings whose article never varies (FAMILY-SCHEMA Board rules: artBy 'ending'); the rest of the noun endings only
+ *  usually give theirs (the bare stem der, -e die, -t die, -nis das). -ling is always der. */
+export const ARTICLE_ALWAYS = new Set(['ung', 'heit', 'keit', 'schaft', 'in', 'er', 'inf', 'ling']);
+const EXTRA_NOUN_ART = /** @type {Record<string, string>} */ ({ ling: 'der' });
+
+/**
+ * How a board noun's article is known: 'ending' (its ending always gives it), 'usual' (its ending usually does) or
+ * 'except' (against its ending's usual article). Undefined for anything else: not a noun, a compound (the last part
+ * gives it), a participle or adjective noun, a plural, a noun with no noun ending.
+ * @param {any} f a built form @param {Map<string, any>} S suffixes[] by id @returns {'ending'|'usual'|'except'|undefined}
+ */
+export function artByOf(f, S) {
+  if (f.cls !== 'noun' || f.adjNoun || f.pl || f.side === 'cmp' || (f.seg || []).some((/** @type {string[]} */ x) => x[0] === 'c')) return undefined;
+  const last = [...(f.suf || [])].reverse().find((/** @type {string} */ s) => (S.has(s) && S.get(s).cls === 'noun') || EXTRA_NOUN_ART[s]);
+  if (!last) return undefined;
+  const art = S.has(last) ? S.get(last).art : EXTRA_NOUN_ART[last];
+  if (!art) return undefined;
+  if (art !== f.art) return 'except';
+  return ARTICLE_ALWAYS.has(last) ? 'ending' : 'usual';
+}
+
 /**
  * Build the families.
- * @param {any[]} authored readFamilies() @param {{words: any[], verbs: any[], chains: any[], roots: any[], lexcheck: any}} ctx
+ * @param {any[]} authored readFamilies() @param {{words: any[], verbs: any[], chains: any[], roots: any[], lexcheck: any, suffixes?: any[]}} ctx
  * @returns {{families: any[], problems: string[]}}
  */
-export function buildFamilies(authored, { words, verbs, chains, roots, lexcheck }) {
+export function buildFamilies(authored, { words, verbs, chains, roots, lexcheck, suffixes = [] }) {
   const byId = new Map(words.map(w => [w.id, w]));
+  const S = new Map(suffixes.map(s => [s.id, s]));
   const V = new Map(verbs.map(v => [v.id, v]));
   const lx = (lexcheck && lexcheck.words) || {};
   /** @type {string[]} */ const problems = [];
@@ -226,6 +248,7 @@ export function buildFamilies(authored, { words, verbs, chains, roots, lexcheck 
       }
       if (f.seg && typeof raw.stress !== 'number') f.stress = stressOf(f, parent);
       if (f.parent !== null && !f.card) f.card = `PF:${f.id}`;
+      { const ab = artByOf(f, S); if (ab) f.artBy = ab; }
       if (f.parent === null) f.card = null;
       if (f.board === undefined) f.board = f.parent !== null && f.cls !== 'adv' && f.cls !== 'conj' && f.cls !== 'prep' && f.side !== 'cmp' && !f.pl && !f.adjNoun && !f.rare
         && (f.pre.filter((/** @type {string} */ p) => p !== 'un').length <= 1);

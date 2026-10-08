@@ -54,6 +54,7 @@ import { gradeTyped, lexiconOf } from './wordbuild-grade.js';
  * @property {number} [stressIdx] the stressed vowel's index in word (the content's stress)
  * @property {[string, string][]} [seg] the written parts (p prefix, r root, s ending, i inflection, c compound, l link)
  * @property {boolean} [adjNoun] @property {boolean} [pl] @property {boolean} [clueAuthored]
+ * @property {'ending'|'usual'|'except'} [artBy] a board noun: how its article is known (FAMILY-SCHEMA Board rules)
  */
 /**
  * @typedef {object} Family
@@ -76,6 +77,8 @@ export const ARTICLES = ['der', 'die', 'das'];
 export const TRIES = 3;
 /** New words a board may hold (out of Word building's share of the day's allowance). */
 export const BOARD_NEW = 3;
+/** Prefix tiles round the root at most (board words' prefixes and the distractors). */
+export const RING_MAX = 10;
 /** Days a root waits before it can be today's root again. */
 export const ROOT_REST = 14;
 /** Days of puzzle log kept. */
@@ -197,7 +200,7 @@ function fromFamily(fam, P, info) {
       add: x.add, side: x.side === 'cmp' ? undefined : x.side, pre, suf, kind: x.kind, join: null, stress: 'stem', grade: x.grade, how: x.how, en: x.en, clue: x.clue || x.en, clueAuthored: !!x.clue,
       ex: x.ex, exEn: x.exEn, why: x.why, note: x.note, level: x.level || null, zipf: x.zipf ?? null, lemma: x.lemma ?? null, rare: !!x.rare, pp: x.pp, aux: x.aux,
       card: x.parent == null ? null : x.card || null, key: null, board: !!x.board && !x.adjNoun && !x.pl, stressIdx: Number.isInteger(x.stress) ? x.stress : undefined,
-      seg: Array.isArray(x.seg) ? x.seg : undefined, adjNoun: !!x.adjNoun, pl: !!x.pl };
+      seg: Array.isArray(x.seg) ? x.seg : undefined, adjNoun: !!x.adjNoun, pl: !!x.pl, artBy: x.artBy };
     forms.push(f); byId.set(f.id, f);
   }
   for (const f of forms) {
@@ -339,6 +342,62 @@ export function hashOf(s) {
 }
 
 /**
+ * The board rules (content/build/FAMILY-SCHEMA.md "Board rules", round 7 second pass): at least 40% verbs; at most a
+ * few nouns whose ending gives the article away (artBy 'ending': -ung, -heit, -keit, -schaft, -in, -er, the
+ * infinitive), some whose article must be learnt ('usual': the bare stem, -e, -t, -nis; 'except': against its
+ * ending's usual article), and from B1 an exception when the family has one at the level. Each holds where the
+ * family allows (enough playable forms of that kind). The validator holds the content's boards to the same numbers.
+ */
+export const BOARD_RULES = /** @type {const} */ ({
+  verbShare: 0.4,
+  ending: { A2: 2, B1: 3, B2: 4, light: 2 },
+  learn: { A2: 1, B1: 2, B2: 2, light: 1 },
+  except: { A2: 0, B1: 1, B2: 1, light: 0 },
+});
+/** The rule set of a board: its size and the counts. @param {number} L the level's index @param {boolean} [light] */
+export function boardRule(L, light = false) {
+  const k = light ? 'light' : L <= 1 ? 'A2' : L === 2 ? 'B1' : 'B2';
+  const size = light ? 6 : L <= 1 ? 6 : L === 2 || L > 5 ? 10 : 12;
+  return { size, verbs: Math.ceil(BOARD_RULES.verbShare * size), ending: BOARD_RULES.ending[k], learn: BOARD_RULES.learn[k], except: BOARD_RULES.except[k] };
+}
+/** A noun whose article must be learnt (its ending does not give it away). @param {{cls: string, artBy?: string}} f */
+export const learnsArticle = f => f.cls === 'noun' && (f.artBy === 'usual' || f.artBy === 'except');
+
+/**
+ * @typedef {{id: string, card: string | null, lemma: string | null, level: string | null, board: boolean, rare?: boolean}} RootForm
+ *   what root choice reads of a form (the index in de.json has it for every family: familyIndex)
+ * @typedef {{root: string, forms: RootForm[]}} RootEntry
+ */
+/** A family as root choice sees it (the same fields as the index's forms). @param {Family} fam @returns {RootEntry} */
+export const rootEntryOf = fam => ({ root: fam.root, forms: fam.forms.map(f => ({ id: f.id, card: f.card, lemma: f.lemma ?? null, level: f.level ?? null, board: !!(f.card && f.key && f.board !== false && f.clue), rare: !!f.rare })) });
+
+/**
+ * Today's root, from what the index in de.json holds (no family file needed): a root with 6 or more playable forms (a
+ * board form at or under his level + 1, not paused by a report, not rare below B2), not used in the last 14 days,
+ * the one used longest ago first (never used first: every playable root comes round, round 7 second pass), then the
+ * most due forms, then the most unseen forms at his level, then a hash of the day. Null when no root is playable.
+ * @param {{roots: RootEntry[], cards: Record<string, any>, day: string, level?: string | null, isDue: (rec: any) => boolean,
+ *   state?: (f: any) => string, recent?: string[], reported?: Set<string>, root?: string | null}} o
+ * @returns {string | null}
+ */
+export function pickRoot({ roots, cards, day, level = 'B1', isDue, state = () => 'unseen', recent = [], reported = new Set(), root = null }) {
+  const L = lv(level || 'B1');
+  const playable = (/** @type {RootEntry} */ r) => r.forms.filter(f => f.board && !reported.has(f.id) && lv(f.level || 'B1') <= L + 1 && !(f.rare && L < 3));
+  const due = (/** @type {RootForm} */ f) => { const r = cards[/** @type {string} */ (f.card)]; return !!(r && r.reps && isDue(r)); };
+  const seen = (/** @type {RootForm} */ f) => !!(cards[/** @type {string} */ (f.card)]?.reps) || ['known', 'shaky', 'unknown'].includes(state(f));
+  const rest = new Set(recent.slice(-ROOT_REST));
+  let pool = roots.filter(r => playable(r).length >= 6);
+  if (root) pool = pool.filter(r => r.root === root);
+  if (!pool.length) return null;
+  const fresh = pool.filter(r => !rest.has(r.root));
+  const cands = (fresh.length ? fresh : pool).map(r => {
+    const p = playable(r);
+    return { r, last: recent.lastIndexOf(r.root), due: p.filter(due).length, unseen: p.filter(f => !seen(f) && lv(f.level || 'B1') <= L).length, h: hashOf(`${day}|${r.root}`) };
+  }).sort((a, b) => a.last - b.last || b.due - a.due || b.unseen - a.unseen || a.h - b.h);
+  return cands[0].r.root;
+}
+
+/**
  * @typedef {object} Board
  * @property {string} root @property {string} day @property {string} level
  * @property {string[]} cards   the board's words, by card id, in clue order
@@ -371,43 +430,62 @@ export function boardFor({ families, cards, day, level = 'B1', light = false, ne
   const playable = (/** @type {Family} */ fam) => fam.forms.filter(f => f.card && f.key && f.board !== false && f.clue && !reported.has(f.id) && lv(f.level || 'B1') <= L + 1 && !(f.rare && L < 3));
   const due = (/** @type {Form} */ f) => { const r = cards[/** @type {string} */ (f.card)]; return !!(r && r.reps && isDue(r)); };
   const seen = (/** @type {Form} */ f) => !!(cards[/** @type {string} */ (f.card)]?.reps) || ['known', 'shaky', 'unknown'].includes(state(f));
-  const rest = new Set(recent.slice(-ROOT_REST));
-  let pool = [...families.values()].filter(fam => playable(fam).length >= 6);
-  if (root) pool = pool.filter(f => f.root === root);
-  if (!pool.length) return L <= 1 && root ? boardFor({ families, cards, day, level: 'B1', light: true, newLeft, paused, isDue, state, recent, reported, root }) : null;
-  const fresh = pool.filter(f => !rest.has(f.root));
-  const cands = (fresh.length ? fresh : pool).map(fam => {
-    const p = playable(fam);
-    return { fam, due: p.filter(due).length, unseen: p.filter(f => !seen(f) && lv(f.level || 'B1') <= L).length, h: hashOf(`${day}|${fam.root}`) };
-  }).sort((a, b) => b.due - a.due || b.unseen - a.unseen || a.h - b.h);
-  const fam = cands[0].fam;
+  // the root: pickRoot, which the plan can run on the index alone (one rule, so both give the same root)
+  const picked = pickRoot({ roots: [...families.values()].map(rootEntryOf), cards, day, level, isDue, state, recent, reported, root });
+  if (!picked) return L <= 1 && root ? boardFor({ families, cards, day, level: 'B1', light: true, newLeft, paused, isDue, state, recent, reported, root }) : null;
+  const fam = /** @type {Family} */ (families.get(picked));
   const p = playable(fam);
+  // the mix (BOARD_RULES): where the family allows, so each need is capped by what it has at this level
+  const rule = boardRule(L, light);
+  const needV = Math.min(rule.verbs, p.filter(f => f.cls === 'verb').length);
+  const needL = Math.min(rule.learn, p.filter(learnsArticle).length);
+  const needE = Math.min(rule.except, p.filter(f => f.artBy === 'except' && lv(f.level || 'B1') <= L).length);
   /** @type {Form[]} */ const pick = [];
   const keys = new Set();
-  const take = (/** @type {Form} */ f) => {
+  const count = (/** @type {(f: Form) => boolean} */ fn) => pick.filter(fn).length;
+  /** May f join the board? strict: the mix holds (an 'ending' noun under its cap, and room left for the verbs and the
+   *  article nouns still needed). @param {Form} f @param {boolean} [strict] */
+  const take = (f, strict = true) => {
     if (pick.length >= size || pick.includes(f)) return false;
     // below B2 one reading of a dual verb per board (two clues on the same tiles); the clues must differ
     if (L < 3 && keys.has(f.key)) return false;
     if (pick.some(x => x.clue === f.clue && x.cls === f.cls)) return false;
-    // ten prefixes round the root at most (un- of unverständlich is a tile of its own)
+    // ten prefixes round the root at most (un- of unverständlich is a tile of its own), with room for the level's
+    // distractors (A2 one, B1 a checked non-word, B2 two: tilesFor)
     const ring = new Set(pick.flatMap(x => x.pre));
-    if (f.pre.some(p => !ring.has(p)) && new Set([...ring, ...f.pre]).size > 10) return false;
+    if (f.pre.some(p => !ring.has(p)) && new Set([...ring, ...f.pre]).size > RING_MAX - (L >= 3 ? 2 : 1)) return false;
+    if (strict) {
+      if (f.cls === 'noun' && f.artBy === 'ending' && count(x => x.cls === 'noun' && x.artBy === 'ending') >= rule.ending) return false;
+      const v = Math.max(0, needV - count(x => x.cls === 'verb') - (f.cls === 'verb' ? 1 : 0));
+      const l = Math.max(0, needL - count(learnsArticle) - (learnsArticle(f) ? 1 : 0));
+      const e = Math.max(0, needE - count(x => x.artBy === 'except') - (f.artBy === 'except' ? 1 : 0));
+      if (size - pick.length - 1 < v + Math.max(l, e)) return false;
+    }
     pick.push(f); keys.add(f.key); return true;
   };
   const z = (/** @type {Form} */ f) => -(f.zipf || 0);
-  // 1. due reviews of the root, lowest level first
+  // 1. due reviews of the root, lowest level first (never dropped for the mix)
   const dueForms = p.filter(due).sort((a, b) => lv(a.level) - lv(b.level) || z(a) - z(b));
-  dueForms.forEach(take);
+  for (const f of dueForms) take(f, false);
   // 2. new forms inside the allowance
   /** @type {Form[]} */ const fresh2 = [];
   const allowed = paused ? 0 : Math.max(0, Math.min(newLeft, BOARD_NEW));
   const unseenForms = p.filter(f => !seen(f)).sort((a, b) => (GRADE[a.grade || 'T'] ?? 0) - (GRADE[b.grade || 'T'] ?? 0) || (lv(a.level) > L ? 1 : 0) - (lv(b.level) > L ? 1 : 0) || z(a) - z(b));
   for (const f of unseenForms) { if (fresh2.length >= allowed) break; if (take(f)) fresh2.push(f); }
-  // 3. forms he has seen, shaky first
+  // 3. what the mix still needs (forms he has seen first, shaky first; then unseen ones as practice, which writes
+  //    nothing, not while new items pause): an exception, nouns whose article must be learnt, verbs
   const rank = /** @type {Record<string, number>} */ ({ shaky: 0, unknown: 1, known: 2, unseen: 3 });
-  p.filter(f => seen(f) && !due(f)).sort((a, b) => (rank[state(a)] ?? 3) - (rank[state(b)] ?? 3) || z(a) - z(b)).forEach(take);
-  // 4. practice: more unseen forms, which write nothing (not while new items pause)
-  if (!paused) unseenForms.forEach(take);
+  const seenForms = p.filter(f => seen(f) && !due(f)).sort((a, b) => (rank[state(a)] ?? 3) - (rank[state(b)] ?? 3) || z(a) - z(b));
+  const more = [...seenForms, ...(paused ? [] : unseenForms)];
+  for (const f of more) if (f.artBy === 'except' && lv(f.level || 'B1') <= L && count(x => x.artBy === 'except') < needE) take(f);
+  for (const f of more) if (learnsArticle(f) && count(learnsArticle) < needL) take(f);
+  for (const f of more) if (f.cls === 'verb' && count(x => x.cls === 'verb') < needV) take(f);
+  // 4. forms he has seen, shaky first
+  for (const f of seenForms) take(f);
+  // 5. practice: more unseen forms, which write nothing (not while new items pause)
+  if (!paused) unseenForms.forEach(f => take(f));
+  // 6. where the family allows no better: fill the board without the mix
+  for (const f of more) take(f, false);
   if (pick.length < Math.min(6, size) && fam.boards) {
     // the content's default board for the level (FAMILY-SCHEMA boards: always valid), when the composition falls short
     const lvlName = L <= 1 && fam.boards.A2 ? 'A2' : L >= 3 && fam.boards.B2 ? 'B2' : 'B1';
@@ -439,8 +517,8 @@ export function tilesFor(fam, pick, L) {
     .filter((p, i, a) => a.indexOf(p) === i && !pre.has(p) && !realPre.includes(p));
   const nReal = L <= 1 ? 1 : L === 2 ? 1 : 2, nNon = L <= 1 ? 0 : L === 2 ? 1 : 2;
   // the checked non-words first (B1: nine and one non-word), then the real distractors, ten round the root at most
-  for (const p of nonPre.slice(0, nNon)) if (pre.size < 10) pre.add(p);
-  for (const p of realPre.slice(0, nReal)) if (pre.size < 10) pre.add(p);
+  for (const p of nonPre.slice(0, nNon)) if (pre.size < RING_MAX) pre.add(p);
+  for (const p of realPre.slice(0, nReal)) if (pre.size < RING_MAX) pre.add(p);
   if (L >= 3) {
     const more = [...new Set(fam.forms.filter(f => f.key && f.suf.length === 1).map(f => f.suf[0]))].filter(s => !suf.has(s));
     for (const s of more) if (suf.size < 4) suf.add(s);

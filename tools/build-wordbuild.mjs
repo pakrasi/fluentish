@@ -51,7 +51,7 @@ export function build(words) {
   const authored = readFamilies(path.join(SRC, 'families'), ONLY);
   if (authored.length) {
     const lexcheck = existsSync(path.join(SRC, 'family-lexcheck.de.json')) ? read('family-lexcheck.de.json') : { words: {} };
-    const { families, problems } = buildFamilies(authored, { words, verbs, chains, roots, lexcheck });
+    const { families, problems } = buildFamilies(authored, { words, verbs, chains, roots, lexcheck, suffixes: read('suffixes.de.json') });
     if (problems.length) throw new Error(`families: ${problems.length} problem(s)\n  ${problems.slice(0, 60).join('\n  ')}`);
     for (const fam of families) {
       fam.none = fam.none.map((/** @type {any} */ n) => ({ ...n, chk: noneCheck(n.word, lexcheck) }));

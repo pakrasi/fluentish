@@ -10,7 +10,7 @@
    - a word is called "not a German word" only when it is in no lexicon the build knows (the word list, the cluster
      morphology, every build word) and the recorded checks found it neither in DWDS nor in wordfreq. */
 
-import { tileKey } from './wordbuild-family.js';
+import { tileKey, RING_MAX, boardRule } from './wordbuild-family.js';
 
 const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 const INSEP = new Set(['be', 'emp', 'ent', 'er', 'ge', 'miss', 'ver', 'zer']);
@@ -278,11 +278,13 @@ export function validateFamilies(c, { words = [], morph = {} } = {}) {
       english(`${at} rare ${r.word}`, r.en); english(`${at} rare ${r.word}`, r.why);
     }
     // boards (B1 and B2 in every shipped family, tests/unit/build-family.test.mjs; A2 when the family has 6 forms at A1 to B1)
+    if (fam.boards && !fam.boards.A2 && fam.forms.filter((/** @type {any} */ f) => f.board && f.card && f.clue && tileKey(f) === f.key && LEVELS.indexOf(f.level) <= 2 && !f.rare).length >= LIGHT_SIZE) bad(`${at}: six board forms at A1 to B1, but no A2 board`);
     for (const [lv, b] of Object.entries(fam.boards || {})) {
       const ba = `${at} board ${lv}`;
       if (!BOARD_SIZE[lv]) { bad(`${ba}: unknown level`); continue; }
       const ids = b.words || [];
-      if (ids.length !== BOARD_SIZE[lv]) bad(`${ba}: ${ids.length} words, expected ${BOARD_SIZE[lv]}`);
+      // the level's size; fewer only when the ring of prefix tiles is full (bringen: every verb its own prefix)
+      if (ids.length > BOARD_SIZE[lv] || ids.length < LIGHT_SIZE || (ids.length < BOARD_SIZE[lv] && ((b.tiles && b.tiles.pre) || []).length < RING_MAX - 1)) bad(`${ba}: ${ids.length} words, expected ${BOARD_SIZE[lv]}`);
       if (new Set(ids).size !== ids.length) bad(`${ba}: a word twice`);
       if (!Array.isArray(b.light) || b.light.length !== Math.min(LIGHT_SIZE, ids.length) || b.light.some((/** @type {string} */ x) => !ids.includes(x))) bad(`${ba}: light is ${LIGHT_SIZE} of the board's words`);
       const tp = new Set((b.tiles && b.tiles.pre) || []), ts = new Set((b.tiles && b.tiles.suf) || []);
@@ -296,13 +298,31 @@ export function validateFamilies(c, { words = [], morph = {} } = {}) {
         for (const p of f.pre) if (!tp.has(p)) bad(`${ba}: no tile for ${p}- (${id})`);
         for (const s of f.suf) if (!ts.has(s)) bad(`${ba}: no tile for -${s} (${id})`);
       }
+      // the mix (FAMILY-SCHEMA Board rules, the game's boardRule), where the family allows: verbs, nouns whose article
+      // must be learnt, an exception from B1, few nouns whose ending gives the article; light by the same rule
+      const L = { A2: 1, B1: 2, B2: 3 }[lv] || 2;
+      const playable = fam.forms.filter((/** @type {any} */ f) => f.board && f.card && f.clue && tileKey(f) === f.key && LEVELS.indexOf(f.level) <= LEVELS.indexOf(BOARD_MAX[lv]) && !(f.rare && lv !== 'B2'));
+      const mix = (/** @type {any[]} */ fs, /** @type {any[]} */ pool, /** @type {boolean} */ light, /** @type {string} */ at) => {
+        const rule = boardRule(L, light);
+        const n = (/** @type {any[]} */ xs, /** @type {(f: any) => boolean} */ fn) => xs.filter(fn).length;
+        const verb = (/** @type {any} */ f) => f.cls === 'verb', learn = (/** @type {any} */ f) => f.cls === 'noun' && (f.artBy === 'usual' || f.artBy === 'except');
+        const except = (/** @type {any} */ f) => f.artBy === 'except' && LEVELS.indexOf(f.level) <= L, ending = (/** @type {any} */ f) => f.cls === 'noun' && f.artBy === 'ending';
+        if (n(fs, verb) < Math.min(rule.verbs, n(pool, verb))) bad(`${at}: ${n(fs, verb)} verbs, at least ${Math.min(rule.verbs, n(pool, verb))} (40%)`);
+        if (n(fs, learn) < Math.min(rule.learn, n(pool, learn))) bad(`${at}: ${n(fs, learn)} nouns whose article must be learnt, at least ${Math.min(rule.learn, n(pool, learn))}`);
+        if (n(fs, except) < Math.min(rule.except, n(pool, except))) bad(`${at}: no noun against its ending's article (the family has one at ${lv})`);
+        if (n(fs, ending) > rule.ending && n(pool, f => !ending(f)) >= fs.length - rule.ending) bad(`${at}: ${n(fs, ending)} nouns whose ending gives the article, at most ${rule.ending}`);
+      };
+      const fs = ids.map((/** @type {string} */ id) => F.get(id)).filter(Boolean);
+      mix(fs, playable, false, ba);
+      if (Array.isArray(b.light)) mix(b.light.map((/** @type {string} */ id) => F.get(id)).filter(Boolean), fs, true, `${ba} light`);
       const onBoard = new Set(ids.map((/** @type {string} */ id) => (F.get(id) || { pre: [] }).pre[0]));
       let nNone = 0;
       for (const d of b.distract || []) {
         if (!tp.has(d.pre)) bad(`${ba}: distractor ${d.pre} is not a tile`);
         if (onBoard.has(d.pre)) bad(`${ba}: distractor ${d.pre} is on the board`);
         if (d.is === 'none') { nNone++; if (!noneKeys.has(`${d.pre}|`)) bad(`${ba}: distractor ${d.pre}: ${d.pre}|${fam.root} is not a checked non-word`); }
-        else if (d.is === 'extra') { if (!fam.forms.some((/** @type {any} */ f) => f.key === `${d.pre}|`)) bad(`${ba}: distractor ${d.pre}: no form ${d.pre}|`); }
+        // extra: the tile builds a real word of the family that is not on the board (alone or with an ending)
+        else if (d.is === 'extra') { if (!fam.forms.some((/** @type {any} */ f) => f.board && f.pre.length === 1 && f.pre[0] === d.pre)) bad(`${ba}: distractor ${d.pre}: no board form of the family has only this prefix`); }
         else bad(`${ba}: distractor ${d.pre}: is ${d.is}`);
       }
       const nd = (b.distract || []).length;

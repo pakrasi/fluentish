@@ -83,8 +83,13 @@ to them. "Where the family allows" means: unless the root has too few playable f
   `except` (against its ending's usual article: das Verbot, das Gehalt, der Nachkomme, das Gefälle, der Gefallen).
   A board holds at most 2 (A2, Light), 3 (B1) or 4 (B2) `ending` nouns, at least 1 (A2) or 2 (B1, B2) `usual` or
   `except` nouns, and from B1 an `except` noun when the family has one at the level.
-- Content boards: A2 where the family has six board forms at A1 to B1, B1 and B2 always; `light` is 6 of `words` with
-  the same verb rule.
+- **Room for distractors.** Board words use at most 9 prefix tiles (A2, B1) or 8 (B2) of the ring's 10, so the
+  level's distractors always fit (A2 one, B1 a checked non-word, B2 two with a non-word). A family whose words each
+  need their own prefix gets a smaller board (bringen: 9 at B1 and B2).
+- Content boards are composed by the same rule (`tools/family-boards.mjs`: `boardFor` for a new learner on that root):
+  A2 wherever the family has six board forms at A1 to B1 (the validator asks for one then), B1 and B2 always; `light`
+  is 6 of `words` by the same rule. An `extra` distractor is a prefix that, alone or with an ending, builds a board
+  form of the family that is not on the board.
 
 ## A family (one file, and one entry of the old `families[]`)
 ```jsonc
@@ -129,17 +134,17 @@ to them. "Where the family allows" means: unless the root has too few playable f
 | `grade`, `how` | Derivability from its parent: `T` literal (`lit`), `M` picture (`pic`/`hist`), `O` learn as a word (`word`). |
 | `level`, `zipf` | CEFR (word list when listed) and Zipf frequency (wordfreq, CC BY-SA 4.0; word list value when listed). |
 | `rare` | Real but rare: never on A2/B1 boards. |
-| `artBy` | Nouns on a board (not compounds or adjNoun): `ending` · `usual` · `except`, how the article is known (Board rules). Built from `suffixes[]`. |
+| `artBy` | Nouns with a noun ending (not compounds, adjNoun or plurals): `ending` · `usual` · `except`, how the article is known (Board rules). Built from `suffixes[]` (and -ling, der). |
 | `board` | Eligible for a board: single article, at most one prefix (or `un` + one), not `pl`/`adjNoun`/`cmp`, a unique clue, and a key the tiles build (`tileKey`; the validator checks it). |
 | `lemma` | Word-list id or `null`. Knowledge item: `W:<lemma>` when set, else the card id (PV/PW rules as today). |
 | `lex` | Where the form was found: `list` (word list), `dwds` (a DWDS dictionary entry), `corpus` (200+ hits in the DWDS corpora), `wf` (wordfreq Zipf > 0). Every form has `list`, `dwds` or `corpus`. |
 
 ## Board
 ```jsonc
-{ "words": ["bestellen.verb", …],      // the level's board, in clue order (A2 6, B1 10, B2 12)
+{ "words": ["bestellen.verb", …],      // the level's board, in clue order (A2 6, B1 10, B2 12; fewer only when the ring is full)
   "light": [ … ],                      // the Light-day board: 6 of `words`
   "tiles": { "pre": ["auf","vor",…], "suf": ["ung","er"] },   // ring order; every board word's parts are tiles
-  "distract": [ { "pre": "zer", "is": "none" }, { "pre": "an", "is": "extra" } ] }   // extra = builds a real word not on the board
+  "distract": [ { "pre": "zer", "is": "none" }, { "pre": "an", "is": "extra" } ] }   // extra = builds a real word not on the board (alone or with an ending)
 ```
 A2: 6 prefixes + 1 distractor; B1: + 1 checked non-word; B2: + 2 (§5.3). `un` is a prefix tile and every ending of a
 chain is a tile. The game may swap board words for due or new ones from the same family (`boardFor`); `words` is the
