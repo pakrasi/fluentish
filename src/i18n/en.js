@@ -2127,7 +2127,7 @@ export default {
   'build.today.near': '{word} is a word, with another meaning.',
   'build.today.article': 'Right word, wrong article. {rule}',
   'build.today.hint': 'The first part: {pre}-',
-  'build.today.splitAsk': '{word}. In a main clause, does {pre}- split off?',
+  'build.today.splitAsk': 'In a main clause, does {pre}- split off?',
   'build.today.splitGroup': 'Does the prefix split off?',
   'build.today.splitWrong.s': 'It splits off.',
   'build.today.splitWrong.i': 'It stays on.',

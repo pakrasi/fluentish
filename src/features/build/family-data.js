@@ -11,7 +11,7 @@
 import * as F from '../../domain/wordbuild-family.js';
 import { dayAllowance, todayPlan } from '../../domain/allowance.js';
 import { courseGoal } from '../../domain/levels.js';
-import { loadContent, cardsOf, dueFns, saveAnswer } from './data.js';
+import { loadContent, cardsOf, dueFns, saveAnswer, today as todayState } from './data.js';
 
 export const FAMILY = 'build.family';
 export const REPORTS = 'build.reports';
@@ -66,6 +66,7 @@ export function todayBoard(ctx, d, fams, k = null) {
   const have = F.dayOf(log, c.today);
   if (have && fams.has(have.root)) return have;
   const settings = ctx.settings();
+  todayState(ctx, d, k);   // writes kv 'build'.stats (the open new items), which the allowance reads
   const a = dayAllowance({ store: ctx.store, c, settings });
   const b = a.decks.build;
   const g = courseGoal(settings);
