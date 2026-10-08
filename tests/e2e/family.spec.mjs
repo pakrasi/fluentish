@@ -68,7 +68,7 @@ test("Today's row opens Today's family; build every word, the done screen, and o
   expect(n).toBeGreaterThanOrEqual(6);
   for (let i = 0; i < n; i++) await solveOne(page);
   await expect(page.getByText(`of ${n} words found`)).toBeVisible({ timeout: 10_000 });
-  await expect(page.getByRole('heading', { level: 2, name: 'stellen' })).toBeVisible();
+  await expect(page.getByRole('heading', { level: 2, name: "Today's board is done" })).toBeVisible();
   await checkA11y(page, "Today's family done");
   // the schedule: a board word writes only when it was due today or new inside the allowance
   const log = /** @type {any} */ (await familyLog(page));
