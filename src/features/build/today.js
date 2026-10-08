@@ -531,9 +531,10 @@ export async function mountToday(el, ctx) {
   /** The content's line on how the parts give the meaning, without the "aus = out:" the parts already say. @param {Form} f @returns {string} */
   function whyLine(f) {
     if (f.grade === 'O' && !f.why) return t('build.today.learnWhy').trim();
-    // a noun or adjective without its own line has its verb's: die Ausstellung, from ausstellen (aus = out: …)
+    // a noun or adjective without its own line has its verb's first sentence (the verb's other senses are not the
+    // noun's): die Ausstellung, from ausstellen: put things out where people can see them.
     const parent = !f.why && f.parent ? fam.byId.get(f.parent) : null;
-    if (parent && parent.why && parent.cls === 'verb') { const pw = /** @type {string} */ (whyLine(parent)); return pw ? t('build.today.learn.from', { word: parent.word, why: pw.charAt(0).toLowerCase() + pw.slice(1) }) : ''; }
+    if (parent && parent.why && parent.cls === 'verb') { const pw = /** @type {string} */ (whyLine(parent)).split(/(?<=\.)\s+/)[0]; return pw ? t('build.today.learn.from', { word: parent.word, why: pw.charAt(0).toLowerCase() + pw.slice(1) }) : ''; }
     const w = String(f.why || '');
     const p = f.pre.length ? [...f.pre].reverse()[f.pre.length - 1] : '';
     const m = p ? new RegExp(`^${p}-? = [^:]+:\\s*`, 'i').exec(w) : null;

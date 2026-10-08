@@ -263,17 +263,36 @@ building page linked both ways with the Map's family group and from every word s
   line where it comes apart), an inseparable verb's weld (a 1.5 px ink line under it), the stress dot under the stressed
   vowel (the content's index when it has one). Joints and welds on verbs only; the marks are aria-hidden and the word's
   name says them.
-- **Word family** (`#/practice/build/family/<root>`): the head, Root · Prefix · Ending, the root chips, the ring (verbs at
-  their compass places, solid spoke splits, dotted never splits; Atlas knowledge encodings; the derivability bar under
-  each tile; the nouns as 8 px squares outside) over the tree (Splits off / Never splits / From the root itself), the
-  tree being the list version. A row opens its card and the word builds itself (motion table of WORDGAMES-DESIGN §8).
-  From 900 px the head and ring are a sticky 440 px column. Inside a round it opens as a bottom sheet.
-- **Today's family** (`#/practice/build/today`): full screen, fits 390 × 664 without scrolling. Head, the root line, the
-  count with one square per meaning (ink first try, hatched later, outlined shown, accent now; also the board button),
-  the clue card (meaning, meta, tries, the build row), one status line, the hive (root 88 × 56 ink, prefix tiles
-  52 × 40 round it), endings and articles, the thumb row (Delete, Type, Check). Flips: right is ink, a real word with
-  another meaning is a dashed outline, not part of it is struck through in ink-3; shape carries every state. Splits /
-  Stays replaces the thumb row. Holds (1.5 s, 2.2 s after a missed split) are the same with reduced motion.
+- **Word family** (`#/practice/build/family/<root>`): the head (with On the map), Root · Prefix · Ending, the root
+  chips, the ring over the tree (Splits off / Never splits / From the root itself), the tree being the list version.
+  The ring holds at most 12 verbs: the 8 compass places (auf up, ab down, ein forward, aus back, vor, nach, zu, an) and
+  the four places beside the side points, the only between-places whose labels clear their neighbours at 360 px. Any
+  other verb is a chip under the ring, the most common first, and opens its row. A dual verb's two tiles carry a joint
+  (splits) or a weld (never splits). The nouns are 8 px squares in a short row just outside their verb's tile. Solid
+  spoke splits, dotted never splits; Atlas knowledge encodings; the derivability bar under each tile. Each group of the
+  tree runs by level (A1 first), then frequency. A row opens its card and the word builds itself (motion table of
+  WORDGAMES-DESIGN §8; a noun takes its capital when its ending lands). Keyboard: a skip link to the words; the root
+  chips, the ring and the chips under it are one tab stop each (arrows move, Enter opens); every tile's name starts
+  with the text it shows (WCAG 2.5.3). From 900 px the head and ring are a sticky 440 px column. Inside a round it
+  opens as a bottom sheet. With one file per root it draws from its root's file and loads the rest after the first
+  paint (`family-files.js`).
+- **Today's family** (`#/practice/build/today`): full screen, fits 390 × 664 and 360 × 664 at every level without
+  scrolling (swept over A2, B1 and B2 boards on 14 days). Head; the root (a link to its family) and the count on one
+  row; one square per meaning (ink first try, hatched later, grey-filled shown, outlined open, accent now; a tap opens
+  the board); the clue card (meaning, a size smaller when long, meta, tries, the build row, and the status line, which
+  takes room only when it speaks); the hive; endings and articles (40 tall, 44 to touch); the thumb row (Delete, Type,
+  Check). The hive is a ring of up to 9 short prefixes round the root (88 × 56 ink); with 10 or more, a long prefix
+  (wieder), or endings on two rows, it is three rows laid out by the browser, the shortest prefixes beside the root.
+  Two endings share a row with the articles behind a rule; more take a row of their own. Flips: right is ink, a real
+  word with another meaning is a dashed outline, not part of it is struck through in ink-3; shape carries every state.
+  Splits / Stays replaces the thumb row. **A found or shown word teaches:** in the tiles' place, at their height, its
+  parts with what each means (aus- out + stell put + -ung die, always), the content's line on how they give the
+  meaning (a noun without one has its verb's first sentence), the change (Splits off or Never splits with the
+  authored Perfekt; a noun's article with its ending's rule) and the derivability, the example with its English. It
+  stays until Next (Enter, ‹ ›, a typed letter); there is no timer. **The done screen** counts only (no ranks, no
+  streak): the figure and the squares, "Tomorrow: <root>" (named now and kept for tomorrow's board), the board's
+  prefixes and endings with what each means, every word found, shown or extra as a link to its card in the family.
+  Today's hero carries one line to the game while its row is in the day's plan and not done.
 
 ## Explore (Look up › Map)
 
